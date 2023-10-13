@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWSTEPAP242DOCSTRING
 "RWStepAP242 module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_rwstepap242.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_rwstepap242.html"
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPAP242DOCSTRING) RWStepAP242
 
@@ -98,19 +98,20 @@ class RWStepAP242_RWDraughtingModelItemAssociation {
 		/****************** RWStepAP242_RWDraughtingModelItemAssociation ******************/
 		/**** md5 signature: dbfb3d49364205432661b665fceafd14 ****/
 		%feature("compactdefaultargs") RWStepAP242_RWDraughtingModelItemAssociation;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") RWStepAP242_RWDraughtingModelItemAssociation;
 		 RWStepAP242_RWDraughtingModelItemAssociation();
 
 		/****************** ReadStep ******************/
 		/**** md5 signature: 0abbb9a5c2437c6b5761e691711854a5 ****/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 data: StepData_StepReaderData
@@ -118,41 +119,51 @@ num: int
 ach: Interface_Check
 ent: StepAP242_DraughtingModelItemAssociation
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP242_DraughtingModelItemAssociation> & ent);
 
 		/****************** Share ******************/
 		/**** md5 signature: 9346b348717af48142ac7e7f4b4702d8 ****/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: StepAP242_DraughtingModelItemAssociation
 iter: Interface_EntityIterator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP242_DraughtingModelItemAssociation> & ent, Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		/**** md5 signature: 9f52d2d7c94084d12f95ad65da9ff683 ****/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 SW: StepData_StepWriter
 ent: StepAP242_DraughtingModelItemAssociation
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") WriteStep;
 		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepAP242_DraughtingModelItemAssociation> & ent);
 
@@ -173,19 +184,20 @@ class RWStepAP242_RWGeometricItemSpecificUsage {
 		/****************** RWStepAP242_RWGeometricItemSpecificUsage ******************/
 		/**** md5 signature: 7c9dfa09bac8cb2aa685d1ed66e81465 ****/
 		%feature("compactdefaultargs") RWStepAP242_RWGeometricItemSpecificUsage;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") RWStepAP242_RWGeometricItemSpecificUsage;
 		 RWStepAP242_RWGeometricItemSpecificUsage();
 
 		/****************** ReadStep ******************/
 		/**** md5 signature: 9ecf5cd2fcdbeede5841a00bc3d16f96 ****/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 data: StepData_StepReaderData
@@ -193,41 +205,51 @@ num: int
 ach: Interface_Check
 ent: StepAP242_GeometricItemSpecificUsage
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP242_GeometricItemSpecificUsage> & ent);
 
 		/****************** Share ******************/
 		/**** md5 signature: 02ed373334edda3df13bd62767f1b506 ****/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: StepAP242_GeometricItemSpecificUsage
 iter: Interface_EntityIterator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP242_GeometricItemSpecificUsage> & ent, Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		/**** md5 signature: 658b58508ad20d653ffc5a9218044cf1 ****/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 SW: StepData_StepWriter
 ent: StepAP242_GeometricItemSpecificUsage
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") WriteStep;
 		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepAP242_GeometricItemSpecificUsage> & ent);
 
@@ -248,19 +270,20 @@ class RWStepAP242_RWIdAttribute {
 		/****************** RWStepAP242_RWIdAttribute ******************/
 		/**** md5 signature: f0eb83ee74c33397b5571b0378722fe0 ****/
 		%feature("compactdefaultargs") RWStepAP242_RWIdAttribute;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") RWStepAP242_RWIdAttribute;
 		 RWStepAP242_RWIdAttribute();
 
 		/****************** ReadStep ******************/
 		/**** md5 signature: 51a0bc6b45a7497648a0242f21aa444a ****/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 data: StepData_StepReaderData
@@ -268,41 +291,51 @@ num: int
 ach: Interface_Check
 ent: StepAP242_IdAttribute
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP242_IdAttribute> & ent);
 
 		/****************** Share ******************/
 		/**** md5 signature: e60e6a1989c151c14d510567b312fd25 ****/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: StepAP242_IdAttribute
 iter: Interface_EntityIterator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP242_IdAttribute> & ent, Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		/**** md5 signature: a91d57c547a53d84ab4a7f1e0b3cbfbd ****/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 SW: StepData_StepWriter
 ent: StepAP242_IdAttribute
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") WriteStep;
 		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepAP242_IdAttribute> & ent);
 
@@ -323,19 +356,20 @@ class RWStepAP242_RWItemIdentifiedRepresentationUsage {
 		/****************** RWStepAP242_RWItemIdentifiedRepresentationUsage ******************/
 		/**** md5 signature: 2f506dbc78207be04b26d1640dc60c8c ****/
 		%feature("compactdefaultargs") RWStepAP242_RWItemIdentifiedRepresentationUsage;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") RWStepAP242_RWItemIdentifiedRepresentationUsage;
 		 RWStepAP242_RWItemIdentifiedRepresentationUsage();
 
 		/****************** ReadStep ******************/
 		/**** md5 signature: 6ee535343e2679f45d9dc76f6d222523 ****/
 		%feature("compactdefaultargs") ReadStep;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 data: StepData_StepReaderData
@@ -343,41 +377,51 @@ num: int
 ach: Interface_Check
 ent: StepAP242_ItemIdentifiedRepresentationUsage
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP242_ItemIdentifiedRepresentationUsage> & ent);
 
 		/****************** Share ******************/
 		/**** md5 signature: 2b20880f3c8802938966e6065601fadf ****/
 		%feature("compactdefaultargs") Share;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ent: StepAP242_ItemIdentifiedRepresentationUsage
 iter: Interface_EntityIterator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP242_ItemIdentifiedRepresentationUsage> & ent, Interface_EntityIterator & iter);
 
 		/****************** WriteStep ******************/
 		/**** md5 signature: 2db1166e6f6c6c3d7ac5fd2c86c98a17 ****/
 		%feature("compactdefaultargs") WriteStep;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 SW: StepData_StepWriter
 ent: StepAP242_ItemIdentifiedRepresentationUsage
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") WriteStep;
 		void WriteStep(StepData_StepWriter & SW, const opencascade::handle<StepAP242_ItemIdentifiedRepresentationUsage> & ent);
 

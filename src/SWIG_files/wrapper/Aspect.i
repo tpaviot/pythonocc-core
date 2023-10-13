@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ASPECTDOCSTRING
 "Aspect module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_aspect.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_aspect.html"
 %enddef
 %module (package="OCC.Core", docstring=ASPECTDOCSTRING) Aspect
 
@@ -1208,37 +1208,44 @@ class Aspect_Background {
 		/****************** Aspect_Background ******************/
 		/**** md5 signature: c285d3f164d7d45415123925b55dfa2d ****/
 		%feature("compactdefaultargs") Aspect_Background;
-		%feature("autodoc", "Creates a window background. default color : noc_matragray.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a window background. default color: noc_matragray.
 ") Aspect_Background;
 		 Aspect_Background();
 
 		/****************** Aspect_Background ******************/
 		/**** md5 signature: 5dbd53dd21ee3414ceec63d3dadf45f2 ****/
 		%feature("compactdefaultargs") Aspect_Background;
-		%feature("autodoc", "Creates a window background with the colour <acolor>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 AColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a window background with the colour <acolor>.
 ") Aspect_Background;
 		 Aspect_Background(const Quantity_Color & AColor);
 
 		/****************** Color ******************/
 		/**** md5 signature: b37a2e584a895a08fcf8ead60940b246 ****/
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "Returns the colour of the window background <self>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Returns the colour of the window background <self>.
 ") Color;
 		Quantity_Color Color();
 
@@ -1254,15 +1261,18 @@ Quantity_Color
 		/****************** SetColor ******************/
 		/**** md5 signature: 5aebf70a123538e7dff670112c56db0d ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Modifies the colour of the window background <self>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 AColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the colour of the window background <self>.
 ") SetColor;
 		void SetColor(const Quantity_Color & AColor);
 
@@ -1283,33 +1293,39 @@ class Aspect_DisplayConnection : public Standard_Transient {
 		/****************** GetDefaultFBConfig ******************/
 		/**** md5 signature: 622b64beb2b73c32aace98cc90ab7793 ****/
 		%feature("compactdefaultargs") GetDefaultFBConfig;
-		%feature("autodoc", "Returns native window fb config (glxfbconfig on xlib).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_FBConfig
+
+Description
+-----------
+Return native window fb config (glxfbconfig on xlib).
 ") GetDefaultFBConfig;
 		Aspect_FBConfig GetDefaultFBConfig();
 
 		/****************** GetDefaultVisualInfo ******************/
 		/**** md5 signature: dde27c64c5cbb24e80531c18197370c1 ****/
 		%feature("compactdefaultargs") GetDefaultVisualInfo;
-		%feature("autodoc", "Return default window visual or null when undefined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_XVisualInfo *
+
+Description
+-----------
+Return default window visual or null when undefined.
 ") GetDefaultVisualInfo;
 		Aspect_XVisualInfo * GetDefaultVisualInfo();
 
 		/****************** GetDisplayAspect ******************/
 		/**** md5 signature: b7c859e60cde1d6a2d363b0c0841abb9 ****/
 		%feature("compactdefaultargs") GetDisplayAspect;
-		%feature("autodoc", "Returns pointer to display structure that serves as the connection to the x server.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_XDisplay *
+
+Description
+-----------
+Return pointer to display structure that serves as the connection to the x server.
 ") GetDisplayAspect;
 		Aspect_XDisplay * GetDisplayAspect();
 
@@ -1371,38 +1387,45 @@ class Aspect_GenId {
 		/****************** Aspect_GenId ******************/
 		/**** md5 signature: 569c368c12c13ee3f3906663aa53662b ****/
 		%feature("compactdefaultargs") Aspect_GenId;
-		%feature("autodoc", "Creates an available set of identifiers with the lower bound 0 and the upper bound int_max / 2.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates an available set of identifiers with the lower bound 0 and the upper bound int_max / 2.
 ") Aspect_GenId;
 		 Aspect_GenId();
 
 		/****************** Aspect_GenId ******************/
 		/**** md5 signature: 3f26c1994924a0cb83cef8d1c5e3f8d3 ****/
 		%feature("compactdefaultargs") Aspect_GenId;
-		%feature("autodoc", "Creates an available set of identifiers with specified range. raises identdefinitionerror if theupper is less than thelow.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLow: int
 theUpper: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an available set of identifiers with specified range. raises identdefinitionerror if theupper is less than thelow.
 ") Aspect_GenId;
 		 Aspect_GenId(const Standard_Integer theLow, const Standard_Integer theUpper);
 
 		/****************** Available ******************/
 		/**** md5 signature: 697caaa4e9190a2cfddfe8f6ce24ea8c ****/
 		%feature("compactdefaultargs") Available;
-		%feature("autodoc", "Returns the number of available identifiers.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of available identifiers.
 ") Available;
 		Standard_Integer Available();
 
@@ -1418,84 +1441,100 @@ int
 		/****************** Free ******************/
 		/**** md5 signature: adf04b00a0d9dc585c1f31bcdbc395bf ****/
 		%feature("compactdefaultargs") Free;
-		%feature("autodoc", "Free all identifiers - make the whole range available again.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Free all identifiers - make the whole range available again.
 ") Free;
 		void Free();
 
 		/****************** Free ******************/
 		/**** md5 signature: 912044af0159c0455ab1de14a2ea922d ****/
 		%feature("compactdefaultargs") Free;
-		%feature("autodoc", "Free specified identifier. warning - method has no protection against double-freeing!.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theId: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Free specified identifier. warning - method has no protection against double-freeing!.
 ") Free;
 		void Free(const Standard_Integer theId);
 
 		/****************** HasFree ******************/
 		/**** md5 signature: b1851639e312df8e9d1643954f18fb9e ****/
 		%feature("compactdefaultargs") HasFree;
-		%feature("autodoc", "Returns true if there are available identifiers in range.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if there are available identifiers in range.
 ") HasFree;
 		Standard_Boolean HasFree();
 
 		/****************** Lower ******************/
 		/**** md5 signature: a2a9f1c3c17fa0f26434aadaabeff45a ****/
 		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "Returns the lower identifier in range.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the lower identifier in range.
 ") Lower;
 		Standard_Integer Lower();
 
 		/****************** Next ******************/
 		/**** md5 signature: e7361d634adcab8f63c24d757e1e478e ****/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "Returns the next available identifier. warning: raises identdefinitionerror if all identifiers are busy.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the next available identifier. warning: raises identdefinitionerror if all identifiers are busy.
 ") Next;
 		Standard_Integer Next();
 
 		/****************** Next ******************/
 		/**** md5 signature: 3fd1eee7f153c7ff797dea1b9f67ad85 ****/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "Generates the next available identifier. @param theid [out] generated identifier returns false if all identifiers are busy.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theId: int
+
+Description
+-----------
+Generates the next available identifier. @param theid [out] generated identifier return false if all identifiers are busy.
 ") Next;
 		Standard_Boolean Next(Standard_Integer &OutValue);
 
 		/****************** Upper ******************/
 		/**** md5 signature: 621f04fab59b49711e54299100973c4e ****/
 		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "Returns the upper identifier in range.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the upper identifier in range.
 ") Upper;
 		Standard_Integer Upper();
 
@@ -1517,77 +1556,91 @@ class Aspect_Grid : public Standard_Transient {
 		/****************** Activate ******************/
 		/**** md5 signature: 3c1c2136e4be5cb74d5a6a6df9f2730e ****/
 		%feature("compactdefaultargs") Activate;
-		%feature("autodoc", "Activates the grid. the hit method will return gridx and gridx computed according to the steps of the grid.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Activates the grid. the hit method will return gridx and gridx computed according to the steps of the grid.
 ") Activate;
 		void Activate();
 
 		/****************** Colors ******************/
 		/**** md5 signature: febac332dabf87330fc8ae564a90811c ****/
 		%feature("compactdefaultargs") Colors;
-		%feature("autodoc", "Returns the colors of the grid.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aColor: Quantity_Color
 aTenthColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the colors of the grid.
 ") Colors;
 		void Colors(Quantity_Color & aColor, Quantity_Color & aTenthColor);
 
 		/****************** Compute ******************/
 		/**** md5 signature: f2dc3bb20b3dea64f42829e338efc410 ****/
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Returns the point of the grid the closest to the point x,y.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: float
 Y: float
 
-Returns
+Return
 -------
 gridX: float
 gridY: float
+
+Description
+-----------
+Returns the point of the grid the closest to the point x,y.
 ") Compute;
 		virtual void Compute(const Standard_Real X, const Standard_Real Y, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Deactivate ******************/
 		/**** md5 signature: d5b1d14a550597a64031c7a7feceee08 ****/
 		%feature("compactdefaultargs") Deactivate;
-		%feature("autodoc", "Deactivates the grid. the hit method will return gridx and gridx as the enter value x & y.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Deactivates the grid. the hit method will return gridx and gridx as the enter value x & y.
 ") Deactivate;
 		void Deactivate();
 
 		/****************** Display ******************/
 		/**** md5 signature: a5bb9d443eb910f59769ed67aea52525 ****/
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "Display the grid at screen.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Display the grid at screen.
 ") Display;
 		virtual void Display();
 
 		/****************** DrawMode ******************/
 		/**** md5 signature: 820acf5cdbd9b081ca2fdb9e8fa43978 ****/
 		%feature("compactdefaultargs") DrawMode;
-		%feature("autodoc", "Returns the grid aspect.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_GridDrawMode
+
+Description
+-----------
+Returns the grid aspect.
 ") DrawMode;
 		Aspect_GridDrawMode DrawMode();
 
@@ -1603,201 +1656,239 @@ Aspect_GridDrawMode
 		/****************** Erase ******************/
 		/**** md5 signature: c55517fe39ff6c9fe42803167b097498 ****/
 		%feature("compactdefaultargs") Erase;
-		%feature("autodoc", "Erase the grid from screen.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Erase the grid from screen.
 ") Erase;
 		virtual void Erase();
 
 		/****************** Hit ******************/
 		/**** md5 signature: a0d754d9f4e2a7f6a6b3cbe673f29375 ****/
 		%feature("compactdefaultargs") Hit;
-		%feature("autodoc", "Returns the point of the grid the closest to the point x,y if the grid is active. if the grid is not active returns x,y.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: float
 Y: float
 
-Returns
+Return
 -------
 gridX: float
 gridY: float
+
+Description
+-----------
+Returns the point of the grid the closest to the point x,y if the grid is active. if the grid is not active returns x,y.
 ") Hit;
 		void Hit(const Standard_Real X, const Standard_Real Y, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Init ******************/
 		/**** md5 signature: ae70d610df2081e50f19659c49fb9bd4 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Init;
 		virtual void Init();
 
 		/****************** IsActive ******************/
 		/**** md5 signature: 1430a89053d4b0413f25b185201efe70 ****/
 		%feature("compactdefaultargs") IsActive;
-		%feature("autodoc", "Returns true when the grid is active.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when the grid is active.
 ") IsActive;
 		Standard_Boolean IsActive();
 
 		/****************** IsDisplayed ******************/
 		/**** md5 signature: f0a946c4c132eaa80b7a2b5b8752ab0c ****/
 		%feature("compactdefaultargs") IsDisplayed;
-		%feature("autodoc", "Returns true when the grid is displayed at screen.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when the grid is displayed at screen.
 ") IsDisplayed;
 		virtual Standard_Boolean IsDisplayed();
 
 		/****************** Rotate ******************/
 		/**** md5 signature: ba6155601a6a3ebf5db401b4fcb0cac9 ****/
 		%feature("compactdefaultargs") Rotate;
-		%feature("autodoc", "Rotate the grid from a relative angle.
-
+		%feature("autodoc", "
 Parameters
 ----------
 anAngle: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Rotate the grid from a relative angle.
 ") Rotate;
 		void Rotate(const Standard_Real anAngle);
 
 		/****************** RotationAngle ******************/
 		/**** md5 signature: 6c7adcb07df938548950d9bd86bc732a ****/
 		%feature("compactdefaultargs") RotationAngle;
-		%feature("autodoc", "Returns the x angle of the grid.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the x angle of the grid.
 ") RotationAngle;
 		Standard_Real RotationAngle();
 
 		/****************** SetColors ******************/
 		/**** md5 signature: f81cf1490ceea17485c0de0269e7ec9c ****/
 		%feature("compactdefaultargs") SetColors;
-		%feature("autodoc", "Change the colors of the grid.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aColor: Quantity_Color
 aTenthColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the colors of the grid.
 ") SetColors;
 		virtual void SetColors(const Quantity_Color & aColor, const Quantity_Color & aTenthColor);
 
 		/****************** SetDrawMode ******************/
 		/**** md5 signature: ee6037d77208349cb9a8e316a9952fc6 ****/
 		%feature("compactdefaultargs") SetDrawMode;
-		%feature("autodoc", "Change the grid aspect.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aDrawMode: Aspect_GridDrawMode
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the grid aspect.
 ") SetDrawMode;
 		void SetDrawMode(const Aspect_GridDrawMode aDrawMode);
 
 		/****************** SetRotationAngle ******************/
 		/**** md5 signature: f85165df588b8bb105e7c1fc95c0038c ****/
 		%feature("compactdefaultargs") SetRotationAngle;
-		%feature("autodoc", "Defines the orientation of the grid.
-
+		%feature("autodoc", "
 Parameters
 ----------
 anAngle: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the orientation of the grid.
 ") SetRotationAngle;
 		void SetRotationAngle(const Standard_Real anAngle);
 
 		/****************** SetXOrigin ******************/
 		/**** md5 signature: 5f29e91eabd84d1fb448e2f1a42216fa ****/
 		%feature("compactdefaultargs") SetXOrigin;
-		%feature("autodoc", "Defines the x origin of the grid.
-
+		%feature("autodoc", "
 Parameters
 ----------
 anOrigin: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the x origin of the grid.
 ") SetXOrigin;
 		void SetXOrigin(const Standard_Real anOrigin);
 
 		/****************** SetYOrigin ******************/
 		/**** md5 signature: 8ae28e02e415aeae0cabe4ebeb845aac ****/
 		%feature("compactdefaultargs") SetYOrigin;
-		%feature("autodoc", "Defines the y origin of the grid.
-
+		%feature("autodoc", "
 Parameters
 ----------
 anOrigin: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the y origin of the grid.
 ") SetYOrigin;
 		void SetYOrigin(const Standard_Real anOrigin);
 
 		/****************** Translate ******************/
 		/**** md5 signature: 2c4d53c487acc4e66ea6ff494e659356 ****/
 		%feature("compactdefaultargs") Translate;
-		%feature("autodoc", "Translate the grid from a relative distance.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aDx: float
 aDy: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Translate the grid from a relative distance.
 ") Translate;
 		void Translate(const Standard_Real aDx, const Standard_Real aDy);
 
 		/****************** XOrigin ******************/
 		/**** md5 signature: 2ca8cc35b96fb011ff973786f0ef31b1 ****/
 		%feature("compactdefaultargs") XOrigin;
-		%feature("autodoc", "Returns the x origin of the grid.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the x origin of the grid.
 ") XOrigin;
 		Standard_Real XOrigin();
 
 		/****************** YOrigin ******************/
 		/**** md5 signature: 7f8bdf33836dd27df5ea3c3e718919d0 ****/
 		%feature("compactdefaultargs") YOrigin;
-		%feature("autodoc", "Returns the x origin of the grid.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the x origin of the grid.
 ") YOrigin;
 		Standard_Real YOrigin();
 
@@ -1822,68 +1913,78 @@ class Aspect_ScrollDelta {
 		/****************** Aspect_ScrollDelta ******************/
 		/**** md5 signature: 0d3fcbaf34563dcd0f20bf50c1b22bc1 ****/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Aspect_ScrollDelta;
 		 Aspect_ScrollDelta();
 
 		/****************** Aspect_ScrollDelta ******************/
 		/**** md5 signature: f8460f2fd92f69dbd6ae1c79508cf38b ****/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
-		%feature("autodoc", "Constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: NCollection_Vec2<int>
 theValue: float
-theFlags: Aspect_VKeyFlags,optional
-	default value is Aspect_VKeyFlags_NONE
+theFlags: Aspect_VKeyFlags (optional, default to Aspect_VKeyFlags_NONE)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructor.
 ") Aspect_ScrollDelta;
 		 Aspect_ScrollDelta(const NCollection_Vec2<int> & thePnt, Standard_Real theValue, Aspect_VKeyFlags theFlags = Aspect_VKeyFlags_NONE);
 
 		/****************** Aspect_ScrollDelta ******************/
 		/**** md5 signature: 4c6a15a03d5e8065050d3ebd39119299 ****/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
-		%feature("autodoc", "Constructor with undefined point.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: float
-theFlags: Aspect_VKeyFlags,optional
-	default value is Aspect_VKeyFlags_NONE
+theFlags: Aspect_VKeyFlags (optional, default to Aspect_VKeyFlags_NONE)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructor with undefined point.
 ") Aspect_ScrollDelta;
 		 Aspect_ScrollDelta(Standard_Real theValue, Aspect_VKeyFlags theFlags = Aspect_VKeyFlags_NONE);
 
 		/****************** HasPoint ******************/
 		/**** md5 signature: 314e70d3c9f0b28261d75c0c6244be38 ****/
 		%feature("compactdefaultargs") HasPoint;
-		%feature("autodoc", "Return true if action has point defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if action has point defined.
 ") HasPoint;
 		bool HasPoint();
 
 		/****************** ResetPoint ******************/
 		/**** md5 signature: d4f07a32710ac608e876db8058caee64 ****/
 		%feature("compactdefaultargs") ResetPoint;
-		%feature("autodoc", "Reset at point.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Reset at point.
 ") ResetPoint;
 		void ResetPoint();
 
@@ -1904,19 +2005,20 @@ class Aspect_SkydomeBackground {
 		/****************** Aspect_SkydomeBackground ******************/
 		/**** md5 signature: 3c25f69c902a4ad07c515cd932d3d294 ****/
 		%feature("compactdefaultargs") Aspect_SkydomeBackground;
-		%feature("autodoc", "Creates a window skydome background. by default skydome is initialized with sun at its zenith (0.0, 1.0, 0.0), average clody (0.2), zero time parameter, zero fogginess, 512x512 texture size.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a window skydome background. by default skydome is initialized with sun at its zenith (0.0, 1.0, 0.0), average clody (0.2), zero time parameter, zero fogginess, 512x512 texture size.
 ") Aspect_SkydomeBackground;
 		 Aspect_SkydomeBackground();
 
 		/****************** Aspect_SkydomeBackground ******************/
 		/**** md5 signature: 3a75c743ed1f3d8ea420373174e19a33 ****/
 		%feature("compactdefaultargs") Aspect_SkydomeBackground;
-		%feature("autodoc", "Creates a window skydome background with given parameters. @param[in] thesundirection direction to the sun (moon). sun direction with negative y component  represents moon with (-x, -y, -z) direction. @param[in] thecloudiness cloud intensity, 0.0 means no clouds at all and 1.0 - high clody. @param[in] thetime time parameter of simulation. might be tweaked to slightly change appearance. @param[in] thefogginess fog intensity, 0.0 means no fog and 1.0 - high fogginess @param[in] thesize size of cubemap side in pixels.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSunDirection: gp_Dir
@@ -1925,20 +2027,26 @@ theTime: float
 theFogginess: float
 theSize: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a window skydome background with given parameters. @param[in] thesundirection direction to the sun (moon). sun direction with negative y component  represents moon with (-x, -y, -z) direction. @param[in] thecloudiness cloud intensity, 0.0 means no clouds at all and 1.0 - high clody. @param[in] thetime time parameter of simulation. might be tweaked to slightly change appearance. @param[in] thefogginess fog intensity, 0.0 means no fog and 1.0 - high fogginess @param[in] thesize size of cubemap side in pixels.
 ") Aspect_SkydomeBackground;
 		 Aspect_SkydomeBackground(const gp_Dir & theSunDirection, Standard_ShortReal theCloudiness, Standard_ShortReal theTime, Standard_ShortReal theFogginess, Standard_Integer theSize);
 
 		/****************** Cloudiness ******************/
 		/**** md5 signature: dc5cc52623d8691a38ed69cd8a0c18b7 ****/
 		%feature("compactdefaultargs") Cloudiness;
-		%feature("autodoc", "Get cloud intensity. by default this value is 0.2 0.0 means no clouds at all and 1.0 - high clody.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get cloud intensity. by default this value is 0.2 0.0 means no clouds at all and 1.0 - high clody.
 ") Cloudiness;
 		Standard_ShortReal Cloudiness();
 
@@ -1954,119 +2062,142 @@ float
 		/****************** Fogginess ******************/
 		/**** md5 signature: c50b52b93dcf09580ca9736bc7f6571e ****/
 		%feature("compactdefaultargs") Fogginess;
-		%feature("autodoc", "Get fog intensity. by default this value is 0.0 0.0 means no fog and 1.0 - high fogginess.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get fog intensity. by default this value is 0.0 0.0 means no fog and 1.0 - high fogginess.
 ") Fogginess;
 		Standard_ShortReal Fogginess();
 
 		/****************** SetCloudiness ******************/
 		/**** md5 signature: 920d86159a2674d4c13553ecbeb16824 ****/
 		%feature("compactdefaultargs") SetCloudiness;
-		%feature("autodoc", "Set cloud intensity. by default this value is 0.2 0.0 means no clouds at all and 1.0 - high clody.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCloudiness: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set cloud intensity. by default this value is 0.2 0.0 means no clouds at all and 1.0 - high clody.
 ") SetCloudiness;
 		void SetCloudiness(Standard_ShortReal theCloudiness);
 
 		/****************** SetFogginess ******************/
 		/**** md5 signature: 96294984cc974e9ab6dd33824cb4a7b8 ****/
 		%feature("compactdefaultargs") SetFogginess;
-		%feature("autodoc", "Set fog intensity. by default this value is 0.0 0.0 means no fog and 1.0 - high fogginess.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFogginess: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set fog intensity. by default this value is 0.0 0.0 means no fog and 1.0 - high fogginess.
 ") SetFogginess;
 		void SetFogginess(Standard_ShortReal theFogginess);
 
 		/****************** SetSize ******************/
 		/**** md5 signature: 5a379cce6c2fb68b87bbdd7ae6575397 ****/
 		%feature("compactdefaultargs") SetSize;
-		%feature("autodoc", "Set size of cubemap. by default this value is 512.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSize: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set size of cubemap. by default this value is 512.
 ") SetSize;
 		void SetSize(Standard_Integer theSize);
 
 		/****************** SetSunDirection ******************/
 		/**** md5 signature: d85bbe95c7e3d45dd1408af0a7346203 ****/
 		%feature("compactdefaultargs") SetSunDirection;
-		%feature("autodoc", "Set sun direction. by default this value is (0, 1, 0) sun direction with negative y component represents moon with (-x, -y, -z) direction.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSunDirection: gp_Dir
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set sun direction. by default this value is (0, 1, 0) sun direction with negative y component represents moon with (-x, -y, -z) direction.
 ") SetSunDirection;
 		void SetSunDirection(const gp_Dir & theSunDirection);
 
 		/****************** SetTimeParameter ******************/
 		/**** md5 signature: a44786d752ad3eaf0c2cb124be7e0294 ****/
 		%feature("compactdefaultargs") SetTimeParameter;
-		%feature("autodoc", "Set time of cloud simulation. by default this value is 0.0 this value might be tweaked to slightly change appearance of clouds.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTime: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set time of cloud simulation. by default this value is 0.0 this value might be tweaked to slightly change appearance of clouds.
 ") SetTimeParameter;
 		void SetTimeParameter(Standard_ShortReal theTime);
 
 		/****************** Size ******************/
 		/**** md5 signature: fe6e16e0f1e86558dd017c7384c76cd6 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Get size of cubemap. by default this value is 512.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Get size of cubemap. by default this value is 512.
 ") Size;
 		Standard_Integer Size();
 
 		/****************** SunDirection ******************/
 		/**** md5 signature: 468ebca31659264b29a8630921783c51 ****/
 		%feature("compactdefaultargs") SunDirection;
-		%feature("autodoc", "Get sun direction. by default this value is (0, 1, 0) sun direction with negative y component represents moon with (-x, -y, -z) direction.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Dir
+
+Description
+-----------
+Get sun direction. by default this value is (0, 1, 0) sun direction with negative y component represents moon with (-x, -y, -z) direction.
 ") SunDirection;
 		const gp_Dir SunDirection();
 
 		/****************** TimeParameter ******************/
 		/**** md5 signature: cab33c32ebd5264ea67ec9d3936a9232 ****/
 		%feature("compactdefaultargs") TimeParameter;
-		%feature("autodoc", "Get time of cloud simulation. by default this value is 0.0 this value might be tweaked to slightly change appearance of clouds.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get time of cloud simulation. by default this value is 0.0 this value might be tweaked to slightly change appearance of clouds.
 ") TimeParameter;
 		Standard_ShortReal TimeParameter();
 
@@ -2088,55 +2219,65 @@ class Aspect_Touch {
 		/****************** Aspect_Touch ******************/
 		/**** md5 signature: a51d1277d944673675b62a1916b1d065 ****/
 		%feature("compactdefaultargs") Aspect_Touch;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Aspect_Touch;
 		 Aspect_Touch();
 
 		/****************** Aspect_Touch ******************/
 		/**** md5 signature: f577ccd3298bca230729e387e7c8ee22 ****/
 		%feature("compactdefaultargs") Aspect_Touch;
-		%feature("autodoc", "Constructor with initialization.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: NCollection_Vec2<float>
 theIsPreciseDevice: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructor with initialization.
 ") Aspect_Touch;
 		 Aspect_Touch(const NCollection_Vec2<Standard_Real> & thePnt, Standard_Boolean theIsPreciseDevice);
 
 		/****************** Aspect_Touch ******************/
 		/**** md5 signature: d7a9f77f97f217469aa14c1453a5ec71 ****/
 		%feature("compactdefaultargs") Aspect_Touch;
-		%feature("autodoc", "Constructor with initialization.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
 theY: float
 theIsPreciseDevice: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructor with initialization.
 ") Aspect_Touch;
 		 Aspect_Touch(Standard_Real theX, Standard_Real theY, Standard_Boolean theIsPreciseDevice);
 
 		/****************** Delta ******************/
 		/**** md5 signature: 633ea93d8b8f65b7d72a9eb7e3592640 ****/
 		%feature("compactdefaultargs") Delta;
-		%feature("autodoc", "Return values delta.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Vec2<float >
+
+Description
+-----------
+Return values delta.
 ") Delta;
 		NCollection_Vec2<Standard_Real > Delta();
 
@@ -2162,11 +2303,13 @@ class Aspect_TrackedDevicePose {
 		/****************** Aspect_TrackedDevicePose ******************/
 		/**** md5 signature: 02737e00df27ee4bc5574676177782f9 ****/
 		%feature("compactdefaultargs") Aspect_TrackedDevicePose;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Aspect_TrackedDevicePose;
 		 Aspect_TrackedDevicePose();
 
@@ -2188,107 +2331,127 @@ class Aspect_Window : public Standard_Transient {
 		/****************** Background ******************/
 		/**** md5 signature: c745ba92fb6d5e6544856c59b201a620 ****/
 		%feature("compactdefaultargs") Background;
-		%feature("autodoc", "Returns the window background.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_Background
+
+Description
+-----------
+Returns the window background.
 ") Background;
 		Aspect_Background Background();
 
 		/****************** BackgroundFillMethod ******************/
 		/**** md5 signature: 3dc602ad8e5026afe96d15088c7b9833 ****/
 		%feature("compactdefaultargs") BackgroundFillMethod;
-		%feature("autodoc", "Returns the current image background fill mode.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_FillMethod
+
+Description
+-----------
+Returns the current image background fill mode.
 ") BackgroundFillMethod;
 		Aspect_FillMethod BackgroundFillMethod();
 
 		/****************** ConvertPointFromBacking ******************/
 		/**** md5 signature: 621f59446c2c34234eba0b43cd724552 ****/
 		%feature("compactdefaultargs") ConvertPointFromBacking;
-		%feature("autodoc", "Convert point from backing store units to logical units.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: Graphic3d_Vec2d
 
-Returns
+Return
 -------
 Graphic3d_Vec2d
+
+Description
+-----------
+Convert point from backing store units to logical units.
 ") ConvertPointFromBacking;
 		virtual Graphic3d_Vec2d ConvertPointFromBacking(const Graphic3d_Vec2d & thePnt);
 
 		/****************** ConvertPointToBacking ******************/
 		/**** md5 signature: 37a4876c01cca0dee435e17d82ae73d5 ****/
 		%feature("compactdefaultargs") ConvertPointToBacking;
-		%feature("autodoc", "Convert point from logical units into backing store units.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: Graphic3d_Vec2d
 
-Returns
+Return
 -------
 Graphic3d_Vec2d
+
+Description
+-----------
+Convert point from logical units into backing store units.
 ") ConvertPointToBacking;
 		virtual Graphic3d_Vec2d ConvertPointToBacking(const Graphic3d_Vec2d & thePnt);
 
 		/****************** DevicePixelRatio ******************/
 		/**** md5 signature: 6492ff955dcc6243b26fa4c3bdea7bf0 ****/
 		%feature("compactdefaultargs") DevicePixelRatio;
-		%feature("autodoc", "Return device pixel ratio (logical to backing store scale factor).
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return device pixel ratio (logical to backing store scale factor).
 ") DevicePixelRatio;
 		virtual Standard_Real DevicePixelRatio();
 
 		/****************** Dimensions ******************/
 		/**** md5 signature: 7e270212c8ea0579f85528495512097b ****/
 		%feature("compactdefaultargs") Dimensions;
-		%feature("autodoc", "Returns window dimensions.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2i
+
+Description
+-----------
+Returns window dimensions.
 ") Dimensions;
 		Graphic3d_Vec2i Dimensions();
 
 		/****************** DisplayConnection ******************/
 		/**** md5 signature: 411dcd7f318927d5a5c6c027eda3726a ****/
 		%feature("compactdefaultargs") DisplayConnection;
-		%feature("autodoc", "Returns connection to display or null.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Aspect_DisplayConnection>
+
+Description
+-----------
+Returns connection to display or null.
 ") DisplayConnection;
 		const opencascade::handle<Aspect_DisplayConnection> & DisplayConnection();
 
 		/****************** DoMapping ******************/
 		/**** md5 signature: bccedbb13c087bbcb0fdc2dc4be5fafa ****/
 		%feature("compactdefaultargs") DoMapping;
-		%feature("autodoc", "Apply the mapping change to the window <self>. and returns true if the window is mapped at screen.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Apply the mapping change to the window <self>. and returns true if the window is mapped at screen.
 ") DoMapping;
 		virtual Standard_Boolean DoMapping();
 
 		/****************** DoResize ******************/
 		/**** md5 signature: 53e251c7364926b7f0881bdd95b8bb10 ****/
 		%feature("compactdefaultargs") DoResize;
-		%feature("autodoc", "Apply the resizing to the window <self>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfResize
+
+Description
+-----------
+Apply the resizing to the window <self>.
 ") DoResize;
 		virtual Aspect_TypeOfResize DoResize();
 
@@ -2304,227 +2467,270 @@ Aspect_TypeOfResize
 		/****************** GradientBackground ******************/
 		/**** md5 signature: d48840592ec4f12118e8b8d065c33698 ****/
 		%feature("compactdefaultargs") GradientBackground;
-		%feature("autodoc", "Returns the window gradient background.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_GradientBackground
+
+Description
+-----------
+Returns the window gradient background.
 ") GradientBackground;
 		Aspect_GradientBackground GradientBackground();
 
 		/****************** InvalidateContent ******************/
 		/**** md5 signature: c3842a52e192571bdc8176fffa5e2159 ****/
 		%feature("compactdefaultargs") InvalidateContent;
-		%feature("autodoc", "Invalidate entire window content. //! implementation is expected to allow calling this method from non-gui thread, e.g. by queuing exposure event into window message queue or in other thread-safe manner. //! optional display argument should be passed when called from non-gui thread on platforms implementing thread-unsafe connections to display. null can be passed instead otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDisp: Aspect_DisplayConnection
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Invalidate entire window content. //! implementation is expected to allow calling this method from non-gui thread, e.g. by queuing exposure event into window message queue or in other thread-safe manner. //! optional display argument should be passed when called from non-gui thread on platforms implementing thread-unsafe connections to display. null can be passed instead otherwise.
 ") InvalidateContent;
 		virtual void InvalidateContent(const opencascade::handle<Aspect_DisplayConnection> & theDisp);
 
 		/****************** IsMapped ******************/
 		/**** md5 signature: 4d5cfb66280177c9e63a17b79e45005f ****/
 		%feature("compactdefaultargs") IsMapped;
-		%feature("autodoc", "Returns true if the window <self> is opened and false if the window is closed.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the window <self> is opened and false if the window is closed.
 ") IsMapped;
 		virtual Standard_Boolean IsMapped();
 
 		/****************** IsVirtual ******************/
 		/**** md5 signature: 6b108b5483133abeb2e67cd521931989 ****/
 		%feature("compactdefaultargs") IsVirtual;
-		%feature("autodoc", "Returns true if the window <self> is virtual.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the window <self> is virtual.
 ") IsVirtual;
 		Standard_Boolean IsVirtual();
 
 		/****************** Map ******************/
 		/**** md5 signature: 0e63cf65e00294792f8d62b1c43bea62 ****/
 		%feature("compactdefaultargs") Map;
-		%feature("autodoc", "Opens the window <self>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Opens the window <self>.
 ") Map;
 		virtual void Map();
 
 		/****************** NativeFBConfig ******************/
 		/**** md5 signature: 4c353bf7a84ef94261f833f6d54eaa5e ****/
 		%feature("compactdefaultargs") NativeFBConfig;
-		%feature("autodoc", "Returns native window fb config (glxfbconfig on xlib).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_FBConfig
+
+Description
+-----------
+Returns native window fb config (glxfbconfig on xlib).
 ") NativeFBConfig;
 		virtual Aspect_FBConfig NativeFBConfig();
 
 		/****************** Position ******************/
 		/**** md5 signature: 30fa6ef63eb4cfa1d4d0a6a072935a04 ****/
 		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "Returns the window position in pixel.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 X1: int
 Y1: int
 X2: int
 Y2: int
+
+Description
+-----------
+Returns the window position in pixel.
 ") Position;
 		virtual void Position(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** Ratio ******************/
 		/**** md5 signature: d40ca1d2627bbb87a34e5c89b2c7db06 ****/
 		%feature("compactdefaultargs") Ratio;
-		%feature("autodoc", "Returns the window ratio equal to the physical width/height dimensions.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the window ratio equal to the physical width/height dimensions.
 ") Ratio;
 		virtual Standard_Real Ratio();
 
 		/****************** SetBackground ******************/
 		/**** md5 signature: 1060a0f428ba58a6057f242d39040d7b ****/
 		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "Modifies the window background.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBack: Aspect_Background
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the window background.
 ") SetBackground;
 		void SetBackground(const Aspect_Background & theBack);
 
 		/****************** SetBackground ******************/
 		/**** md5 signature: cbe59d034bfe68360b6e7b8aeecdb1e1 ****/
 		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "Modifies the window background.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the window background.
 ") SetBackground;
 		void SetBackground(const Quantity_Color & theColor);
 
 		/****************** SetBackground ******************/
 		/**** md5 signature: f4e2412715795dcef62591ecfa331106 ****/
 		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "Modifies the window gradient background.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBackground: Aspect_GradientBackground
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the window gradient background.
 ") SetBackground;
 		void SetBackground(const Aspect_GradientBackground & theBackground);
 
 		/****************** SetBackground ******************/
 		/**** md5 signature: 333d66c15042163afcf370e304fa7b6a ****/
 		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "Modifies the window gradient background.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFirstColor: Quantity_Color
 theSecondColor: Quantity_Color
 theFillMethod: Aspect_GradientFillMethod
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the window gradient background.
 ") SetBackground;
 		void SetBackground(const Quantity_Color & theFirstColor, const Quantity_Color & theSecondColor, const Aspect_GradientFillMethod theFillMethod);
 
 		/****************** SetTitle ******************/
 		/**** md5 signature: e6432d7e27226322b8262b3f3f4d5a28 ****/
 		%feature("compactdefaultargs") SetTitle;
-		%feature("autodoc", "Sets window title.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTitle: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets window title.
 ") SetTitle;
 		virtual void SetTitle(TCollection_AsciiString theTitle);
 
 		/****************** SetVirtual ******************/
 		/**** md5 signature: f013b7099e5195f3ad8ac5f9c350083a ****/
 		%feature("compactdefaultargs") SetVirtual;
-		%feature("autodoc", "Setup the virtual state.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVirtual: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup the virtual state.
 ") SetVirtual;
 		void SetVirtual(const Standard_Boolean theVirtual);
 
 		/****************** Size ******************/
 		/**** md5 signature: 5ff69e0e67e54ec54de4bd366eb3aa6a ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Returns the window size in pixel.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 Width: int
 Height: int
+
+Description
+-----------
+Returns the window size in pixel.
 ") Size;
 		virtual void Size(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** TopLeft ******************/
 		/**** md5 signature: 3da1646606e47f0bfb9b901a144b8b7a ****/
 		%feature("compactdefaultargs") TopLeft;
-		%feature("autodoc", "Returns window top-left corner.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2i
+
+Description
+-----------
+Returns window top-left corner.
 ") TopLeft;
 		Graphic3d_Vec2i TopLeft();
 
 		/****************** Unmap ******************/
 		/**** md5 signature: 2681daf3d4beece6a894fb54cb645818 ****/
 		%feature("compactdefaultargs") Unmap;
-		%feature("autodoc", "Closes the window <self>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Closes the window <self>.
 ") Unmap;
 		virtual void Unmap();
 
@@ -2556,143 +2762,164 @@ class Aspect_WindowInputListener {
 		/****************** AddTouchPoint ******************/
 		/**** md5 signature: 93b82d6d34eb813c208bc4163ef671c4 ****/
 		%feature("compactdefaultargs") AddTouchPoint;
-		%feature("autodoc", "Add touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates @param theclearbefore if true previously registered touches will be removed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theId: Standard_Size
 thePnt: Graphic3d_Vec2d
-theClearBefore: bool,optional
-	default value is false
+theClearBefore: bool (optional, default to false)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Add touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates @param theclearbefore if true previously registered touches will be removed.
 ") AddTouchPoint;
 		virtual void AddTouchPoint(Standard_Size theId, const Graphic3d_Vec2d & thePnt, Standard_Boolean theClearBefore = false);
 
 		/****************** Change3dMouseIsNoRotate ******************/
 		/**** md5 signature: b2ff1af628a01e66606ed582c146ef69 ****/
 		%feature("compactdefaultargs") Change3dMouseIsNoRotate;
-		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Vec3<bool>
+
+Description
+-----------
+Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
 ") Change3dMouseIsNoRotate;
 		NCollection_Vec3<bool> & Change3dMouseIsNoRotate();
 
 		/****************** Change3dMouseToReverse ******************/
 		/**** md5 signature: 74994d53f8199fd2049bc1854acbcdb2 ****/
 		%feature("compactdefaultargs") Change3dMouseToReverse;
-		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Vec3<bool>
+
+Description
+-----------
+Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
 ") Change3dMouseToReverse;
 		NCollection_Vec3<bool> & Change3dMouseToReverse();
 
 		/****************** ChangeKeys ******************/
 		/**** md5 signature: 5ba331e57bcd00b6539ab5d9145324ac ****/
 		%feature("compactdefaultargs") ChangeKeys;
-		%feature("autodoc", "Return keyboard state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_VKeySet
+
+Description
+-----------
+Return keyboard state.
 ") ChangeKeys;
 		Aspect_VKeySet & ChangeKeys();
 
 		/****************** EventTime ******************/
 		/**** md5 signature: 6bdc5b17561b5be0e9e4dbdd76a72ace ****/
 		%feature("compactdefaultargs") EventTime;
-		%feature("autodoc", "Return event time (e.g. current time).
-
-Returns
+		%feature("autodoc", "Return
 -------
 double
+
+Description
+-----------
+Return event time (e.g. current time).
 ") EventTime;
 		double EventTime();
 
 		/****************** Get3dMouseIsNoRotate ******************/
 		/**** md5 signature: ae14b65261c4d2a6b12679cc1f5c5ed4 ****/
 		%feature("compactdefaultargs") Get3dMouseIsNoRotate;
-		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Vec3<bool>
+
+Description
+-----------
+Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
 ") Get3dMouseIsNoRotate;
 		const NCollection_Vec3<bool> & Get3dMouseIsNoRotate();
 
 		/****************** Get3dMouseRotationScale ******************/
 		/**** md5 signature: 6e7927184907412546b0e3bf5c131f00 ****/
 		%feature("compactdefaultargs") Get3dMouseRotationScale;
-		%feature("autodoc", "Return acceleration ratio for rotation event; 4.0 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return acceleration ratio for rotation event; 4.0 by default.
 ") Get3dMouseRotationScale;
 		float Get3dMouseRotationScale();
 
 		/****************** Get3dMouseToReverse ******************/
 		/**** md5 signature: a365f1e9e4397aece1eb44aa7383f6d5 ****/
 		%feature("compactdefaultargs") Get3dMouseToReverse;
-		%feature("autodoc", "Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Vec3<bool>
+
+Description
+-----------
+Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
 ") Get3dMouseToReverse;
 		const NCollection_Vec3<bool> & Get3dMouseToReverse();
 
 		/****************** Get3dMouseTranslationScale ******************/
 		/**** md5 signature: f426a4558b5227de61530d9d20b93e7e ****/
 		%feature("compactdefaultargs") Get3dMouseTranslationScale;
-		%feature("autodoc", "Return acceleration ratio for translation event; 2.0 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return acceleration ratio for translation event; 2.0 by default.
 ") Get3dMouseTranslationScale;
 		float Get3dMouseTranslationScale();
 
 		/****************** HasTouchPoints ******************/
 		/**** md5 signature: f6532233e79841283a6d00ea2e7477d5 ****/
 		%feature("compactdefaultargs") HasTouchPoints;
-		%feature("autodoc", "Return true if touches map is not empty.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if touches map is not empty.
 ") HasTouchPoints;
 		bool HasTouchPoints();
 
 		/****************** KeyDown ******************/
 		/**** md5 signature: 5192d78be0f66dc0b2cf998103ed19af ****/
 		%feature("compactdefaultargs") KeyDown;
-		%feature("autodoc", "Press key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theKey: Aspect_VKey
 theTime: double
-thePressure: double,optional
-	default value is 1.0
+thePressure: double (optional, default to 1.0)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Press key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
 ") KeyDown;
 		virtual void KeyDown(Aspect_VKey theKey, double theTime, double thePressure = 1.0);
 
 		/****************** KeyFromAxis ******************/
 		/**** md5 signature: a8592c856484d5ea635556005b4dbf66 ****/
 		%feature("compactdefaultargs") KeyFromAxis;
-		%feature("autodoc", "Simulate key up/down events from axis value. default implementation updates internal cache.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNegative: Aspect_VKey
@@ -2700,66 +2927,78 @@ thePositive: Aspect_VKey
 theTime: double
 thePressure: double
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Simulate key up/down events from axis value. default implementation updates internal cache.
 ") KeyFromAxis;
 		virtual void KeyFromAxis(Aspect_VKey theNegative, Aspect_VKey thePositive, double theTime, double thePressure);
 
 		/****************** KeyUp ******************/
 		/**** md5 signature: facf026fe52d5d68e622d779a08b26c3 ****/
 		%feature("compactdefaultargs") KeyUp;
-		%feature("autodoc", "Release key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theKey: Aspect_VKey
 theTime: double
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Release key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
 ") KeyUp;
 		virtual void KeyUp(Aspect_VKey theKey, double theTime);
 
 		/****************** Keys ******************/
 		/**** md5 signature: 71088904ae13bced99cf6e1155c58478 ****/
 		%feature("compactdefaultargs") Keys;
-		%feature("autodoc", "Return keyboard state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_VKeySet
+
+Description
+-----------
+Return keyboard state.
 ") Keys;
 		const Aspect_VKeySet & Keys();
 
 		/****************** LastMouseFlags ******************/
 		/**** md5 signature: 891e38e0b645d78e87ef09c802ac2d63 ****/
 		%feature("compactdefaultargs") LastMouseFlags;
-		%feature("autodoc", "Return active key modifiers passed with last mouse event.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_VKeyFlags
+
+Description
+-----------
+Return active key modifiers passed with last mouse event.
 ") LastMouseFlags;
 		Aspect_VKeyFlags LastMouseFlags();
 
 		/****************** LastMousePosition ******************/
 		/**** md5 signature: 69040771a57339f922c8a0c6021122bb ****/
 		%feature("compactdefaultargs") LastMousePosition;
-		%feature("autodoc", "Return last mouse position.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2i
+
+Description
+-----------
+Return last mouse position.
 ") LastMousePosition;
 		const Graphic3d_Vec2i & LastMousePosition();
 
 		/****************** PressMouseButton ******************/
 		/**** md5 signature: 3011ceaa0add6213ae689425180a9aab ****/
 		%feature("compactdefaultargs") PressMouseButton;
-		%feature("autodoc", "Handle mouse button press event. this method is expected to be called from ui thread. default implementation redirects to updatemouseposition(). @param thepoint mouse cursor position @param thebutton pressed button @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if window content should be redrawn.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoint: Graphic3d_Vec2i
@@ -2767,91 +3006,108 @@ theButton: Aspect_VKeyMouse
 theModifiers: Aspect_VKeyFlags
 theIsEmulated: bool
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Handle mouse button press event. this method is expected to be called from ui thread. default implementation redirects to updatemouseposition(). @param thepoint mouse cursor position @param thebutton pressed button @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen return true if window content should be redrawn.
 ") PressMouseButton;
 		bool PressMouseButton(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
 		/****************** PressedMouseButtons ******************/
 		/**** md5 signature: 28ea733557be0052235dc8a7fe3ed119 ****/
 		%feature("compactdefaultargs") PressedMouseButtons;
-		%feature("autodoc", "Return currently pressed mouse buttons.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_VKeyMouse
+
+Description
+-----------
+Return currently pressed mouse buttons.
 ") PressedMouseButtons;
 		Aspect_VKeyMouse PressedMouseButtons();
 
 		/****************** ProcessClose ******************/
 		/**** md5 signature: 59654ad0d3a6816d4daa90e13a580cde ****/
 		%feature("compactdefaultargs") ProcessClose;
-		%feature("autodoc", "Handle window close event.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Handle window close event.
 ") ProcessClose;
 		virtual void ProcessClose();
 
 		/****************** ProcessConfigure ******************/
 		/**** md5 signature: ca30e387334b4284a619ea054d2c8c75 ****/
 		%feature("compactdefaultargs") ProcessConfigure;
-		%feature("autodoc", "Handle window resize event.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsResized: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Handle window resize event.
 ") ProcessConfigure;
 		virtual void ProcessConfigure(bool theIsResized);
 
 		/****************** ProcessExpose ******************/
 		/**** md5 signature: f597030918979508d41a1535a55a52da ****/
 		%feature("compactdefaultargs") ProcessExpose;
-		%feature("autodoc", "Handle expose event (window content has been invalidation and should be redrawn).
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Handle expose event (window content has been invalidation and should be redrawn).
 ") ProcessExpose;
 		virtual void ProcessExpose();
 
 		/****************** ProcessFocus ******************/
 		/**** md5 signature: 62ed591bdb7901b7386a340b9d7b2f9b ****/
 		%feature("compactdefaultargs") ProcessFocus;
-		%feature("autodoc", "Handle focus event.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsActivated: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Handle focus event.
 ") ProcessFocus;
 		virtual void ProcessFocus(bool theIsActivated);
 
 		/****************** ProcessInput ******************/
 		/**** md5 signature: 25eccaa30cc27b2a88e167899d319730 ****/
 		%feature("compactdefaultargs") ProcessInput;
-		%feature("autodoc", "Handle window input event immediately (flush input buffer or ignore).
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Handle window input event immediately (flush input buffer or ignore).
 ") ProcessInput;
 		virtual void ProcessInput();
 
 		/****************** ReleaseMouseButton ******************/
 		/**** md5 signature: a9b43da8768564266828a78fde53802f ****/
 		%feature("compactdefaultargs") ReleaseMouseButton;
-		%feature("autodoc", "Handle mouse button release event. this method is expected to be called from ui thread. default implementation redirects to updatemouseposition(). @param thepoint mouse cursor position @param thebutton released button @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if window content should be redrawn.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoint: Graphic3d_Vec2i
@@ -2859,116 +3115,137 @@ theButton: Aspect_VKeyMouse
 theModifiers: Aspect_VKeyFlags
 theIsEmulated: bool
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Handle mouse button release event. this method is expected to be called from ui thread. default implementation redirects to updatemouseposition(). @param thepoint mouse cursor position @param thebutton released button @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen return true if window content should be redrawn.
 ") ReleaseMouseButton;
 		bool ReleaseMouseButton(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
 		/****************** RemoveTouchPoint ******************/
 		/**** md5 signature: 45c3401339716ca58b815f7e44a3d196 ****/
 		%feature("compactdefaultargs") RemoveTouchPoint;
-		%feature("autodoc", "Remove touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param theclearselectpnts if true will initiate clearing of selection points returns true if point has been removed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theId: Standard_Size
-theClearSelectPnts: bool,optional
-	default value is false
+theClearSelectPnts: bool (optional, default to false)
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Remove touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param theclearselectpnts if true will initiate clearing of selection points return true if point has been removed.
 ") RemoveTouchPoint;
 		virtual bool RemoveTouchPoint(Standard_Size theId, Standard_Boolean theClearSelectPnts = false);
 
 		/****************** Set3dMousePreciseInput ******************/
 		/**** md5 signature: 0ff4172c7dce21c124fb3941d21634cd ****/
 		%feature("compactdefaultargs") Set3dMousePreciseInput;
-		%feature("autodoc", "Set quadric acceleration flag.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsQuadric: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set quadric acceleration flag.
 ") Set3dMousePreciseInput;
 		void Set3dMousePreciseInput(bool theIsQuadric);
 
 		/****************** Set3dMouseRotationScale ******************/
 		/**** md5 signature: 26cc1d3413bc1ed0806210cb74503bf8 ****/
 		%feature("compactdefaultargs") Set3dMouseRotationScale;
-		%feature("autodoc", "Set acceleration ratio for rotation event.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScale: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set acceleration ratio for rotation event.
 ") Set3dMouseRotationScale;
 		void Set3dMouseRotationScale(float theScale);
 
 		/****************** Set3dMouseTranslationScale ******************/
 		/**** md5 signature: d66cf6c87510f4cf28118e77235f6dc1 ****/
 		%feature("compactdefaultargs") Set3dMouseTranslationScale;
-		%feature("autodoc", "Set acceleration ratio for translation event.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScale: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set acceleration ratio for translation event.
 ") Set3dMouseTranslationScale;
 		void Set3dMouseTranslationScale(float theScale);
 
 		/****************** To3dMousePreciseInput ******************/
 		/**** md5 signature: e7d1cbbce6f739652fb2dcffebfdc574 ****/
 		%feature("compactdefaultargs") To3dMousePreciseInput;
-		%feature("autodoc", "Return quadric acceleration flag; true by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return quadric acceleration flag; true by default.
 ") To3dMousePreciseInput;
 		bool To3dMousePreciseInput();
 
 		/****************** TouchPoints ******************/
 		/**** md5 signature: aae5a0777c45c41be0cc42d98cb8d6a5 ****/
 		%feature("compactdefaultargs") TouchPoints;
-		%feature("autodoc", "Return map of active touches.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TouchMap
+
+Description
+-----------
+Return map of active touches.
 ") TouchPoints;
 		const Aspect_TouchMap & TouchPoints();
 
 		/****************** Update3dMouse ******************/
 		/**** md5 signature: 989c941c2b66167e2e5fa84999e81fe3 ****/
 		%feature("compactdefaultargs") Update3dMouse;
-		%feature("autodoc", "Process 3d mouse input event (redirects to translation, rotation and keys).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEvent: WNT_HIDSpaceMouse
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Process 3d mouse input event (redirects to translation, rotation and keys).
 ") Update3dMouse;
 		virtual bool Update3dMouse(const WNT_HIDSpaceMouse & theEvent);
 
 		/****************** UpdateMouseButtons ******************/
 		/**** md5 signature: 344a32c08e48df63d66f82e75f14f4ac ****/
 		%feature("compactdefaultargs") UpdateMouseButtons;
-		%feature("autodoc", "Handle mouse button press/release event. this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if window content should be redrawn.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoint: Graphic3d_Vec2i
@@ -2976,17 +3253,20 @@ theButtons: Aspect_VKeyMouse
 theModifiers: Aspect_VKeyFlags
 theIsEmulated: bool
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Handle mouse button press/release event. this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen return true if window content should be redrawn.
 ") UpdateMouseButtons;
 		virtual bool UpdateMouseButtons(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButtons, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
 		/****************** UpdateMousePosition ******************/
 		/**** md5 signature: 217f410d7de77f6f79b905cc2f67eaf4 ****/
 		%feature("compactdefaultargs") UpdateMousePosition;
-		%feature("autodoc", "Handle mouse cursor movement event. this method is expected to be called from ui thread. default implementation does nothing. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen returns true if window content should be redrawn.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoint: Graphic3d_Vec2i
@@ -2994,85 +3274,104 @@ theButtons: Aspect_VKeyMouse
 theModifiers: Aspect_VKeyFlags
 theIsEmulated: bool
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Handle mouse cursor movement event. this method is expected to be called from ui thread. default implementation does nothing. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen return true if window content should be redrawn.
 ") UpdateMousePosition;
 		virtual bool UpdateMousePosition(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButtons, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
 		/****************** UpdateMouseScroll ******************/
 		/**** md5 signature: 33a1d2af16e7dcdaa2ec2c0ec68a7748 ****/
 		%feature("compactdefaultargs") UpdateMouseScroll;
-		%feature("autodoc", "Update mouse scroll event. this method is expected to be called from ui thread. @param thedelta mouse cursor position and delta returns true if new event has been created or false if existing one has been updated.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDelta: Aspect_ScrollDelta
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Update mouse scroll event. this method is expected to be called from ui thread. @param thedelta mouse cursor position and delta return true if new event has been created or false if existing one has been updated.
 ") UpdateMouseScroll;
 		virtual bool UpdateMouseScroll(const Aspect_ScrollDelta & theDelta);
 
 		/****************** UpdateTouchPoint ******************/
 		/**** md5 signature: 32b5b3a5782487b44b49157cf52c6e04 ****/
 		%feature("compactdefaultargs") UpdateTouchPoint;
-		%feature("autodoc", "Update touch point with the given id. if point with specified id was not registered before, it will be added. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theId: Standard_Size
 thePnt: Graphic3d_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Update touch point with the given id. if point with specified id was not registered before, it will be added. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates.
 ") UpdateTouchPoint;
 		virtual void UpdateTouchPoint(Standard_Size theId, const Graphic3d_Vec2d & thePnt);
 
 		/****************** update3dMouseKeys ******************/
 		/**** md5 signature: 7068d4e0858b2659de00f111094ecc7f ****/
 		%feature("compactdefaultargs") update3dMouseKeys;
-		%feature("autodoc", "Process 3d mouse input keys event.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEvent: WNT_HIDSpaceMouse
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Process 3d mouse input keys event.
 ") update3dMouseKeys;
 		virtual bool update3dMouseKeys(const WNT_HIDSpaceMouse & theEvent);
 
 		/****************** update3dMouseRotation ******************/
 		/**** md5 signature: 0e88dd09859b6f02e48c9b73ec73f69b ****/
 		%feature("compactdefaultargs") update3dMouseRotation;
-		%feature("autodoc", "Process 3d mouse input rotation event.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEvent: WNT_HIDSpaceMouse
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Process 3d mouse input rotation event.
 ") update3dMouseRotation;
 		virtual bool update3dMouseRotation(const WNT_HIDSpaceMouse & theEvent);
 
 		/****************** update3dMouseTranslation ******************/
 		/**** md5 signature: c826319c70a567fbe2c3401c0a5c2471 ****/
 		%feature("compactdefaultargs") update3dMouseTranslation;
-		%feature("autodoc", "Process 3d mouse input translation event.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEvent: WNT_HIDSpaceMouse
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Process 3d mouse input translation event.
 ") update3dMouseTranslation;
 		virtual bool update3dMouseTranslation(const WNT_HIDSpaceMouse & theEvent);
 
@@ -3093,75 +3392,89 @@ class Aspect_XRAction : public Standard_Transient {
 		/****************** Aspect_XRAction ******************/
 		/**** md5 signature: 40a266a780195e2fd6ebc2e8b13a5281 ****/
 		%feature("compactdefaultargs") Aspect_XRAction;
-		%feature("autodoc", "Main constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theId: str
 theType: Aspect_XRActionType
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Main constructor.
 ") Aspect_XRAction;
 		 Aspect_XRAction(TCollection_AsciiString theId, const Aspect_XRActionType theType);
 
 		/****************** Id ******************/
 		/**** md5 signature: 932272b78b9184cc2485436a72cc2df4 ****/
 		%feature("compactdefaultargs") Id;
-		%feature("autodoc", "Return action id.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Return action id.
 ") Id;
 		const TCollection_AsciiString & Id();
 
 		/****************** IsValid ******************/
 		/**** md5 signature: 735088818cf24ebe0ebc7005a507da69 ****/
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "Return true if action is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if action is defined.
 ") IsValid;
 		bool IsValid();
 
 		/****************** RawHandle ******************/
 		/**** md5 signature: 9d20e0a6fff437dc17426cf4e026b189 ****/
 		%feature("compactdefaultargs") RawHandle;
-		%feature("autodoc", "Return action handle.
-
-Returns
+		%feature("autodoc", "Return
 -------
 uint64_t
+
+Description
+-----------
+Return action handle.
 ") RawHandle;
 		uint64_t RawHandle();
 
 		/****************** SetRawHandle ******************/
 		/**** md5 signature: deb51d9baa50e7628d1bd2ab92c27b11 ****/
 		%feature("compactdefaultargs") SetRawHandle;
-		%feature("autodoc", "Set action handle.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHande: uint64_t
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set action handle.
 ") SetRawHandle;
 		void SetRawHandle(uint64_t theHande);
 
 		/****************** Type ******************/
 		/**** md5 signature: 0d72e5323e44404dea40a38f3ba7d11c ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "Return action type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_XRActionType
+
+Description
+-----------
+Return action type.
 ") Type;
 		Aspect_XRActionType Type();
 
@@ -3184,78 +3497,93 @@ class Aspect_XRActionSet : public Standard_Transient {
 		/****************** Aspect_XRActionSet ******************/
 		/**** md5 signature: d45a5ec20e38bdb339eb2ee8d975e996 ****/
 		%feature("compactdefaultargs") Aspect_XRActionSet;
-		%feature("autodoc", "Main constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theId: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Main constructor.
 ") Aspect_XRActionSet;
 		 Aspect_XRActionSet(TCollection_AsciiString theId);
 
 		/****************** Actions ******************/
 		/**** md5 signature: 8711ba344778f38c5ecdfeccb1ff6133 ****/
 		%feature("compactdefaultargs") Actions;
-		%feature("autodoc", "Return map of actions.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_XRActionMap
+
+Description
+-----------
+Return map of actions.
 ") Actions;
 		const Aspect_XRActionMap & Actions();
 
 		/****************** AddAction ******************/
 		/**** md5 signature: 41c9367a03de48c635cea24270f2015a ****/
 		%feature("compactdefaultargs") AddAction;
-		%feature("autodoc", "Add action.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAction: Aspect_XRAction
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Add action.
 ") AddAction;
 		void AddAction(const opencascade::handle<Aspect_XRAction> & theAction);
 
 		/****************** Id ******************/
 		/**** md5 signature: 932272b78b9184cc2485436a72cc2df4 ****/
 		%feature("compactdefaultargs") Id;
-		%feature("autodoc", "Return action id.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Return action id.
 ") Id;
 		const TCollection_AsciiString & Id();
 
 		/****************** RawHandle ******************/
 		/**** md5 signature: 9d20e0a6fff437dc17426cf4e026b189 ****/
 		%feature("compactdefaultargs") RawHandle;
-		%feature("autodoc", "Return action handle.
-
-Returns
+		%feature("autodoc", "Return
 -------
 uint64_t
+
+Description
+-----------
+Return action handle.
 ") RawHandle;
 		uint64_t RawHandle();
 
 		/****************** SetRawHandle ******************/
 		/**** md5 signature: deb51d9baa50e7628d1bd2ab92c27b11 ****/
 		%feature("compactdefaultargs") SetRawHandle;
-		%feature("autodoc", "Set action handle.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHande: uint64_t
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set action handle.
 ") SetRawHandle;
 		void SetRawHandle(uint64_t theHande);
 
@@ -3283,22 +3611,26 @@ class Aspect_XRAnalogActionData {
 		/****************** Aspect_XRAnalogActionData ******************/
 		/**** md5 signature: 2f2cb24f7e51cc622f48142c162305a9 ****/
 		%feature("compactdefaultargs") Aspect_XRAnalogActionData;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Aspect_XRAnalogActionData;
 		 Aspect_XRAnalogActionData();
 
 		/****************** IsChanged ******************/
 		/**** md5 signature: 6d97ce9bcd3b0740efa5aa99476487a7 ****/
 		%feature("compactdefaultargs") IsChanged;
-		%feature("autodoc", "Return true if delta is non-zero.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if delta is non-zero.
 ") IsChanged;
 		bool IsChanged();
 
@@ -3324,11 +3656,13 @@ class Aspect_XRDigitalActionData {
 		/****************** Aspect_XRDigitalActionData ******************/
 		/**** md5 signature: 11e9cfb288833ee07981b262b013a14e ****/
 		%feature("compactdefaultargs") Aspect_XRDigitalActionData;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Aspect_XRDigitalActionData;
 		 Aspect_XRDigitalActionData();
 
@@ -3353,22 +3687,26 @@ class Aspect_XRHapticActionData {
 		/****************** Aspect_XRHapticActionData ******************/
 		/**** md5 signature: c42f3b26d235df1234aa3b319bd587d7 ****/
 		%feature("compactdefaultargs") Aspect_XRHapticActionData;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Aspect_XRHapticActionData;
 		 Aspect_XRHapticActionData();
 
 		/****************** IsValid ******************/
 		/**** md5 signature: 735088818cf24ebe0ebc7005a507da69 ****/
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "Return true if data is not empty.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if data is not empty.
 ") IsValid;
 		bool IsValid();
 
@@ -3392,11 +3730,13 @@ class Aspect_XRPoseActionData {
 		/****************** Aspect_XRPoseActionData ******************/
 		/**** md5 signature: 37cbeeeffeaedd7d742097ec767fe262 ****/
 		%feature("compactdefaultargs") Aspect_XRPoseActionData;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Aspect_XRPoseActionData;
 		 Aspect_XRPoseActionData();
 
@@ -3454,397 +3794,470 @@ TrackingUniverseOrigin_Standing = TrackingUniverseOrigin.TrackingUniverseOrigin_
 		/****************** AbortHapticVibrationAction ******************/
 		/**** md5 signature: 2c091ce7d5b95edbd8b37ef2a7d5033f ****/
 		%feature("compactdefaultargs") AbortHapticVibrationAction;
-		%feature("autodoc", "Abort vibration.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAction: Aspect_XRAction
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Abort vibration.
 ") AbortHapticVibrationAction;
 		void AbortHapticVibrationAction(const opencascade::handle<Aspect_XRAction> & theAction);
 
 		/****************** Aspect ******************/
 		/**** md5 signature: 2e31d5d4e9d98682a1043fbc438ab30a ****/
 		%feature("compactdefaultargs") Aspect;
-		%feature("autodoc", "Return aspect ratio.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return aspect ratio.
 ") Aspect;
 		Standard_Real Aspect();
 
 		/****************** Close ******************/
 		/**** md5 signature: 1b03fb860325770bc6fb04462ecfd6fe ****/
 		%feature("compactdefaultargs") Close;
-		%feature("autodoc", "Release session.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Release session.
 ") Close;
 		virtual void Close();
 
 		/****************** DisplayFrequency ******************/
 		/**** md5 signature: 7bc433f33163de75c917820a29539856 ****/
 		%feature("compactdefaultargs") DisplayFrequency;
-		%feature("autodoc", "Return display frequency or 0 if unknown.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return display frequency or 0 if unknown.
 ") DisplayFrequency;
 		Standard_ShortReal DisplayFrequency();
 
 		/****************** EyeToHeadTransform ******************/
 		/**** md5 signature: f29783bde9cca028ac265ae76bdafba8 ****/
 		%feature("compactdefaultargs") EyeToHeadTransform;
-		%feature("autodoc", "Return transformation from eye to head.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEye: Aspect_Eye
 
-Returns
+Return
 -------
 NCollection_Mat4<double >
+
+Description
+-----------
+Return transformation from eye to head.
 ") EyeToHeadTransform;
 		virtual NCollection_Mat4<double > EyeToHeadTransform(Aspect_Eye theEye);
 
 		/****************** FieldOfView ******************/
 		/**** md5 signature: db3c9855b4bf6bb7c82f4c6a1b35efb3 ****/
 		%feature("compactdefaultargs") FieldOfView;
-		%feature("autodoc", "Return field of view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return field of view.
 ") FieldOfView;
 		Standard_Real FieldOfView();
 
 		/****************** GenericAction ******************/
 		/**** md5 signature: 7b32709a9882affc64e34a4979e4522d ****/
 		%feature("compactdefaultargs") GenericAction;
-		%feature("autodoc", "Return generic action for specific hand or null if undefined.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDevice: Aspect_XRTrackedDeviceRole
 theAction: Aspect_XRGenericAction
 
-Returns
+Return
 -------
 opencascade::handle<Aspect_XRAction>
+
+Description
+-----------
+Return generic action for specific hand or null if undefined.
 ") GenericAction;
 		const opencascade::handle<Aspect_XRAction> & GenericAction(Aspect_XRTrackedDeviceRole theDevice, Aspect_XRGenericAction theAction);
 
 		/****************** GetAnalogActionData ******************/
 		/**** md5 signature: 8ba907292e43d1a641030bff3bf5b326 ****/
 		%feature("compactdefaultargs") GetAnalogActionData;
-		%feature("autodoc", "Fetch data for digital input action (like axis). @param theaction [in] action of aspect_xractiontype_inputanalog type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAction: Aspect_XRAction
 
-Returns
+Return
 -------
 Aspect_XRAnalogActionData
+
+Description
+-----------
+Fetch data for digital input action (like axis). @param theaction [in] action of aspect_xractiontype_inputanalog type.
 ") GetAnalogActionData;
 		virtual Aspect_XRAnalogActionData GetAnalogActionData(const opencascade::handle<Aspect_XRAction> & theAction);
 
 		/****************** GetDigitalActionData ******************/
 		/**** md5 signature: 481010d4545a367f4cd3dfec52bd745b ****/
 		%feature("compactdefaultargs") GetDigitalActionData;
-		%feature("autodoc", "Fetch data for digital input action (like button). @param theaction [in] action of aspect_xractiontype_inputdigital type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAction: Aspect_XRAction
 
-Returns
+Return
 -------
 Aspect_XRDigitalActionData
+
+Description
+-----------
+Fetch data for digital input action (like button). @param theaction [in] action of aspect_xractiontype_inputdigital type.
 ") GetDigitalActionData;
 		virtual Aspect_XRDigitalActionData GetDigitalActionData(const opencascade::handle<Aspect_XRAction> & theAction);
 
 		/****************** GetPoseActionDataForNextFrame ******************/
 		/**** md5 signature: 98eeea2ec9abd109afa8aea11fadf00d ****/
 		%feature("compactdefaultargs") GetPoseActionDataForNextFrame;
-		%feature("autodoc", "Fetch data for pose input action (like fingertip position). the returned values will match the values returned by the last call to waitposes(). @param theaction [in] action of aspect_xractiontype_inputpose type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAction: Aspect_XRAction
 
-Returns
+Return
 -------
 Aspect_XRPoseActionData
+
+Description
+-----------
+Fetch data for pose input action (like fingertip position). the returned values will match the values returned by the last call to waitposes(). @param theaction [in] action of aspect_xractiontype_inputpose type.
 ") GetPoseActionDataForNextFrame;
 		virtual Aspect_XRPoseActionData GetPoseActionDataForNextFrame(const opencascade::handle<Aspect_XRAction> & theAction);
 
 		/****************** GetString ******************/
 		/**** md5 signature: 995a5d10180a3ba1d11d529669c70c62 ****/
 		%feature("compactdefaultargs") GetString;
-		%feature("autodoc", "Query information.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theInfo: InfoString
 
-Returns
+Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Query information.
 ") GetString;
 		virtual TCollection_AsciiString GetString(InfoString theInfo);
 
 		/****************** HasProjectionFrustums ******************/
 		/**** md5 signature: b21c3c98901bb0d2fe751c0f535b874e ****/
 		%feature("compactdefaultargs") HasProjectionFrustums;
-		%feature("autodoc", "Return false if projection frustums are unsupported and general 4x4 projection matrix should be fetched instead.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return false if projection frustums are unsupported and general 4x4 projection matrix should be fetched instead.
 ") HasProjectionFrustums;
 		virtual bool HasProjectionFrustums();
 
 		/****************** HasTrackedPose ******************/
 		/**** md5 signature: dcd15c00cc4b480b4c1512a9d69b0c35 ****/
 		%feature("compactdefaultargs") HasTrackedPose;
-		%feature("autodoc", "Return true if device orientation is defined.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDevice: int
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Return true if device orientation is defined.
 ") HasTrackedPose;
 		bool HasTrackedPose(Standard_Integer theDevice);
 
 		/****************** HeadPose ******************/
 		/**** md5 signature: d492f7441f83aa8c0f430cdab6e86f73 ****/
 		%feature("compactdefaultargs") HeadPose;
-		%feature("autodoc", "Return head orientation in right-handed system: +y is up +x is to the right -z is forward distance unit is meters by default (@sa unitfactor()).
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Trsf
+
+Description
+-----------
+Return head orientation in right-handed system: +y is up +x is to the right -z is forward distance unit is meters by default (@sa unitfactor()).
 ") HeadPose;
 		const gp_Trsf HeadPose();
 
 		/****************** HeadToEyeTransform ******************/
 		/**** md5 signature: eefc127028406cfe34b43880dc164bed ****/
 		%feature("compactdefaultargs") HeadToEyeTransform;
-		%feature("autodoc", "Return transformation from head to eye.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEye: Aspect_Eye
 
-Returns
+Return
 -------
 NCollection_Mat4<double >
+
+Description
+-----------
+Return transformation from head to eye.
 ") HeadToEyeTransform;
 		NCollection_Mat4<double > HeadToEyeTransform(Aspect_Eye theEye);
 
 		/****************** IOD ******************/
 		/**** md5 signature: 0cc7208beeec9544d745fd8edb710bd8 ****/
 		%feature("compactdefaultargs") IOD;
-		%feature("autodoc", "Return intra-ocular distance (iod); also known as interpupillary distance (ipd). defined in meters by default (@sa unitfactor()).
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return intra-ocular distance (iod); also known as interpupillary distance (ipd). defined in meters by default (@sa unitfactor()).
 ") IOD;
 		Standard_Real IOD();
 
 		/****************** IsOpen ******************/
 		/**** md5 signature: cbb165b1058ff52986668925b81dfa08 ****/
 		%feature("compactdefaultargs") IsOpen;
-		%feature("autodoc", "Return true if session is opened.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if session is opened.
 ") IsOpen;
 		virtual bool IsOpen();
 
 		/****************** LeftHandPose ******************/
 		/**** md5 signature: ff3b4ff1b6e9278d95fc3d221947728e ****/
 		%feature("compactdefaultargs") LeftHandPose;
-		%feature("autodoc", "Return left hand orientation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Trsf
+
+Description
+-----------
+Return left hand orientation.
 ") LeftHandPose;
 		gp_Trsf LeftHandPose();
 
 		/****************** LoadRenderModel ******************/
 		/**** md5 signature: bff61e6a6656e5eb23f9e9b72f8fdb71 ****/
 		%feature("compactdefaultargs") LoadRenderModel;
-		%feature("autodoc", "Load model for displaying device. @param thedevice [in] device index @param thetexture [out] texture source returns model triangulation or null if not found.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDevice: int
 theTexture: Image_Texture
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_ArrayOfTriangles>
+
+Description
+-----------
+Load model for displaying device. @param thedevice [in] device index @param thetexture [out] texture source return model triangulation or null if not found.
 ") LoadRenderModel;
 		opencascade::handle<Graphic3d_ArrayOfTriangles> LoadRenderModel(Standard_Integer theDevice, opencascade::handle<Image_Texture> & theTexture);
 
 		/****************** LoadRenderModel ******************/
 		/**** md5 signature: c440d49a8c5ac84455fadd4495c2ab80 ****/
 		%feature("compactdefaultargs") LoadRenderModel;
-		%feature("autodoc", "Load model for displaying device. @param thedevice [in] device index @param thetoapplyunitfactor [in] flag to apply unit scale factor @param thetexture [out] texture source returns model triangulation or null if not found.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDevice: int
 theToApplyUnitFactor: bool
 theTexture: Image_Texture
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_ArrayOfTriangles>
+
+Description
+-----------
+Load model for displaying device. @param thedevice [in] device index @param thetoapplyunitfactor [in] flag to apply unit scale factor @param thetexture [out] texture source return model triangulation or null if not found.
 ") LoadRenderModel;
 		opencascade::handle<Graphic3d_ArrayOfTriangles> LoadRenderModel(Standard_Integer theDevice, Standard_Boolean theToApplyUnitFactor, opencascade::handle<Image_Texture> & theTexture);
 
 		/****************** NamedTrackedDevice ******************/
 		/**** md5 signature: 6224d7e8e485715e872fc28cc2afe1f0 ****/
 		%feature("compactdefaultargs") NamedTrackedDevice;
-		%feature("autodoc", "Return index of tracked device of known role, or -1 if undefined.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDevice: Aspect_XRTrackedDeviceRole
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Return index of tracked device of known role, or -1 if undefined.
 ") NamedTrackedDevice;
 		virtual Standard_Integer NamedTrackedDevice(Aspect_XRTrackedDeviceRole theDevice);
 
 		/****************** Open ******************/
 		/**** md5 signature: d00ec1bf018b5e93ac2a5d97d9dde636 ****/
 		%feature("compactdefaultargs") Open;
-		%feature("autodoc", "Initialize session.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Initialize session.
 ") Open;
 		virtual bool Open();
 
 		/****************** ProcessEvents ******************/
 		/**** md5 signature: 240ee1d1e4a0e42cba1c56aac9611f29 ****/
 		%feature("compactdefaultargs") ProcessEvents;
-		%feature("autodoc", "Receive xr events.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Receive xr events.
 ") ProcessEvents;
 		virtual void ProcessEvents();
 
 		/****************** ProjectionFrustum ******************/
 		/**** md5 signature: 9dc4ecde0b8d7e55944cdeade4e5bbf9 ****/
 		%feature("compactdefaultargs") ProjectionFrustum;
-		%feature("autodoc", "Return projection frustum. @sa hasprojectionfrustums().
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEye: Aspect_Eye
 
-Returns
+Return
 -------
 Aspect_FrustumLRBT<double>
+
+Description
+-----------
+Return projection frustum. @sa hasprojectionfrustums().
 ") ProjectionFrustum;
 		const Aspect_FrustumLRBT<double> & ProjectionFrustum(Aspect_Eye theEye);
 
 		/****************** ProjectionMatrix ******************/
 		/**** md5 signature: 5da23c248f3062bca81dea5a0b78608f ****/
 		%feature("compactdefaultargs") ProjectionMatrix;
-		%feature("autodoc", "Return projection matrix.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEye: Aspect_Eye
 theZNear: double
 theZFar: double
 
-Returns
+Return
 -------
 NCollection_Mat4<double >
+
+Description
+-----------
+Return projection matrix.
 ") ProjectionMatrix;
 		virtual NCollection_Mat4<double > ProjectionMatrix(Aspect_Eye theEye, double theZNear, double theZFar);
 
 		/****************** RecommendedViewport ******************/
 		/**** md5 signature: 1072307c44dc5ac0c775b17e1c89ea5c ****/
 		%feature("compactdefaultargs") RecommendedViewport;
-		%feature("autodoc", "Return recommended viewport width x height for rendering into vr.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Vec2<int >
+
+Description
+-----------
+Return recommended viewport width x height for rendering into vr.
 ") RecommendedViewport;
 		virtual NCollection_Vec2<int > RecommendedViewport();
 
 		/****************** RightHandPose ******************/
 		/**** md5 signature: b997db6d22c5309fef58aaa7a85929a9 ****/
 		%feature("compactdefaultargs") RightHandPose;
-		%feature("autodoc", "Return right hand orientation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Trsf
+
+Description
+-----------
+Return right hand orientation.
 ") RightHandPose;
 		gp_Trsf RightHandPose();
 
 		/****************** SetTrackingOrigin ******************/
 		/**** md5 signature: c5848a9d52580d64afea846e587f5e68 ****/
 		%feature("compactdefaultargs") SetTrackingOrigin;
-		%feature("autodoc", "Set tracking origin.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOrigin: TrackingUniverseOrigin
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set tracking origin.
 ") SetTrackingOrigin;
 		virtual void SetTrackingOrigin(TrackingUniverseOrigin theOrigin);
 
 		/****************** SetUnitFactor ******************/
 		/**** md5 signature: 7440cb148f828c471e5d9b5248eb7c9b ****/
 		%feature("compactdefaultargs") SetUnitFactor;
-		%feature("autodoc", "Set unit scale factor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFactor: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set unit scale factor.
 ") SetUnitFactor;
 		void SetUnitFactor(Standard_Real theFactor);
 
 		/****************** SubmitEye ******************/
 		/**** md5 signature: e715d68400865ca08b80b6b4be7a6117 ****/
 		%feature("compactdefaultargs") SubmitEye;
-		%feature("autodoc", "Submit texture eye to xr composer. @param thetexture [in] texture handle @param thegraphicslib [in] graphics library in which texture handle is defined @param thecolorspace [in] texture color space;  srgb means no color conversion by composer;  linear means to srgb color conversion by composer @param theeye [in] eye to display returns false on error.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTexture: void *
@@ -3852,69 +4265,84 @@ theGraphicsLib: Aspect_GraphicsLibrary
 theColorSpace: Aspect_ColorSpace
 theEye: Aspect_Eye
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Submit texture eye to xr composer. @param thetexture [in] texture handle @param thegraphicslib [in] graphics library in which texture handle is defined @param thecolorspace [in] texture color space;  srgb means no color conversion by composer;  linear means to srgb color conversion by composer @param theeye [in] eye to display return false on error.
 ") SubmitEye;
 		virtual bool SubmitEye(void * theTexture, Aspect_GraphicsLibrary theGraphicsLib, Aspect_ColorSpace theColorSpace, Aspect_Eye theEye);
 
 		/****************** TrackedPoses ******************/
 		/**** md5 signature: 1e6c5e707589403f73daf6e2bdd7bf60 ****/
 		%feature("compactdefaultargs") TrackedPoses;
-		%feature("autodoc", "Return number of tracked poses array.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TrackedDevicePoseArray
+
+Description
+-----------
+Return number of tracked poses array.
 ") TrackedPoses;
 		const Aspect_TrackedDevicePoseArray & TrackedPoses();
 
 		/****************** TrackingOrigin ******************/
 		/**** md5 signature: db35db8c9365604e0d9a180025f9d9da ****/
 		%feature("compactdefaultargs") TrackingOrigin;
-		%feature("autodoc", "Return tracking origin.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_XRSession::TrackingUniverseOrigin
+
+Description
+-----------
+Return tracking origin.
 ") TrackingOrigin;
 		Aspect_XRSession::TrackingUniverseOrigin TrackingOrigin();
 
 		/****************** TriggerHapticVibrationAction ******************/
 		/**** md5 signature: 039fc9219b24c9a39bd343511f01b47b ****/
 		%feature("compactdefaultargs") TriggerHapticVibrationAction;
-		%feature("autodoc", "Trigger vibration.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAction: Aspect_XRAction
 theParams: Aspect_XRHapticActionData
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Trigger vibration.
 ") TriggerHapticVibrationAction;
 		void TriggerHapticVibrationAction(const opencascade::handle<Aspect_XRAction> & theAction, const Aspect_XRHapticActionData & theParams);
 
 		/****************** UnitFactor ******************/
 		/**** md5 signature: ef896b413f2d707283340a4407bd979a ****/
 		%feature("compactdefaultargs") UnitFactor;
-		%feature("autodoc", "Return unit scale factor defined as scale factor for m (meters); 1.0 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return unit scale factor defined as scale factor for m (meters); 1.0 by default.
 ") UnitFactor;
 		Standard_Real UnitFactor();
 
 		/****************** WaitPoses ******************/
 		/**** md5 signature: 2cd6ece8094e306806174f976e95a323 ****/
 		%feature("compactdefaultargs") WaitPoses;
-		%feature("autodoc", "Fetch actual poses of tracked devices.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Fetch actual poses of tracked devices.
 ") WaitPoses;
 		virtual bool WaitPoses();
 
@@ -3940,56 +4368,65 @@ class Aspect_GradientBackground : public Aspect_Background {
 		/****************** Aspect_GradientBackground ******************/
 		/**** md5 signature: 2a3b12e3984621a36868307403d00696 ****/
 		%feature("compactdefaultargs") Aspect_GradientBackground;
-		%feature("autodoc", "Creates a window gradient background. default color is quantity_noc_black. default fill method is aspect_gradientfillmethod_none.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a window gradient background. default color is quantity_noc_black. default fill method is aspect_gradientfillmethod_none.
 ") Aspect_GradientBackground;
 		 Aspect_GradientBackground();
 
 		/****************** Aspect_GradientBackground ******************/
 		/**** md5 signature: 85f06b5f3ce72c2ed98cd0a1aa2d2a99 ****/
 		%feature("compactdefaultargs") Aspect_GradientBackground;
-		%feature("autodoc", "Creates a window gradient background with two colours.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor1: Quantity_Color
 theColor2: Quantity_Color
-theMethod: Aspect_GradientFillMethod,optional
-	default value is Aspect_GradientFillMethod_Horizontal
+theMethod: Aspect_GradientFillMethod (optional, default to Aspect_GradientFillMethod_Horizontal)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a window gradient background with two colours.
 ") Aspect_GradientBackground;
 		 Aspect_GradientBackground(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theMethod = Aspect_GradientFillMethod_Horizontal);
 
 		/****************** BgGradientFillMethod ******************/
 		/**** md5 signature: 7ed50907542306114d5e90acbea724cc ****/
 		%feature("compactdefaultargs") BgGradientFillMethod;
-		%feature("autodoc", "Returns the current gradient background fill mode.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_GradientFillMethod
+
+Description
+-----------
+Returns the current gradient background fill mode.
 ") BgGradientFillMethod;
 		Aspect_GradientFillMethod BgGradientFillMethod();
 
 		/****************** Colors ******************/
 		/**** md5 signature: 2e3f4d55b92b83e682d47f9e5901fc34 ****/
 		%feature("compactdefaultargs") Colors;
-		%feature("autodoc", "Returns colours of the window gradient background.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor1: Quantity_Color
 theColor2: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns colours of the window gradient background.
 ") Colors;
 		void Colors(Quantity_Color & theColor1, Quantity_Color & theColor2);
 
@@ -4005,18 +4442,20 @@ None
 		/****************** SetColors ******************/
 		/**** md5 signature: ca78c9c4d4c2f941b5264058f8f3157f ****/
 		%feature("compactdefaultargs") SetColors;
-		%feature("autodoc", "Modifies the colours of the window gradient background.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor1: Quantity_Color
 theColor2: Quantity_Color
-theMethod: Aspect_GradientFillMethod,optional
-	default value is Aspect_GradientFillMethod_Horizontal
+theMethod: Aspect_GradientFillMethod (optional, default to Aspect_GradientFillMethod_Horizontal)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the colours of the window gradient background.
 ") SetColors;
 		void SetColors(const Quantity_Color & theColor1, const Quantity_Color & theColor2, const Aspect_GradientFillMethod theMethod = Aspect_GradientFillMethod_Horizontal);
 
@@ -4040,218 +4479,257 @@ class Aspect_OpenVRSession : public Aspect_XRSession {
 		/****************** Aspect_OpenVRSession ******************/
 		/**** md5 signature: 8b3b2149154ace218f7a658179bb9520 ****/
 		%feature("compactdefaultargs") Aspect_OpenVRSession;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Aspect_OpenVRSession;
 		 Aspect_OpenVRSession();
 
 		/****************** Close ******************/
 		/**** md5 signature: af3f9495fd31a183ccb17c90b08cd92c ****/
 		%feature("compactdefaultargs") Close;
-		%feature("autodoc", "Release session.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Release session.
 ") Close;
 		virtual void Close();
 
 		/****************** EyeToHeadTransform ******************/
 		/**** md5 signature: 4415cbfdc523c9bc0033cf691701a27a ****/
 		%feature("compactdefaultargs") EyeToHeadTransform;
-		%feature("autodoc", "Return transformation from eye to head. vr::geteyetoheadtransform() wrapper.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEye: Aspect_Eye
 
-Returns
+Return
 -------
 NCollection_Mat4<double >
+
+Description
+-----------
+Return transformation from eye to head. vr::geteyetoheadtransform() wrapper.
 ") EyeToHeadTransform;
 		virtual NCollection_Mat4<double > EyeToHeadTransform(Aspect_Eye theEye);
 
 		/****************** GetAnalogActionData ******************/
 		/**** md5 signature: 7774d891f52d1f379e2c6300ddcfa99c ****/
 		%feature("compactdefaultargs") GetAnalogActionData;
-		%feature("autodoc", "Fetch data for analog input action (like axis).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAction: Aspect_XRAction
 
-Returns
+Return
 -------
 Aspect_XRAnalogActionData
+
+Description
+-----------
+Fetch data for analog input action (like axis).
 ") GetAnalogActionData;
 		virtual Aspect_XRAnalogActionData GetAnalogActionData(const opencascade::handle<Aspect_XRAction> & theAction);
 
 		/****************** GetDigitalActionData ******************/
 		/**** md5 signature: 62087c046bab5d0c5cfd257afcb1772b ****/
 		%feature("compactdefaultargs") GetDigitalActionData;
-		%feature("autodoc", "Fetch data for digital input action (like button).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAction: Aspect_XRAction
 
-Returns
+Return
 -------
 Aspect_XRDigitalActionData
+
+Description
+-----------
+Fetch data for digital input action (like button).
 ") GetDigitalActionData;
 		virtual Aspect_XRDigitalActionData GetDigitalActionData(const opencascade::handle<Aspect_XRAction> & theAction);
 
 		/****************** GetPoseActionDataForNextFrame ******************/
 		/**** md5 signature: 94b2429e28b3df982111ec7a8efde11d ****/
 		%feature("compactdefaultargs") GetPoseActionDataForNextFrame;
-		%feature("autodoc", "Fetch data for pose input action (like fingertip position).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAction: Aspect_XRAction
 
-Returns
+Return
 -------
 Aspect_XRPoseActionData
+
+Description
+-----------
+Fetch data for pose input action (like fingertip position).
 ") GetPoseActionDataForNextFrame;
 		virtual Aspect_XRPoseActionData GetPoseActionDataForNextFrame(const opencascade::handle<Aspect_XRAction> & theAction);
 
 		/****************** GetString ******************/
 		/**** md5 signature: 3a5fdf2eb740dfbb9e9ab8002cc6ed4f ****/
 		%feature("compactdefaultargs") GetString;
-		%feature("autodoc", "Query information.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theInfo: InfoString
 
-Returns
+Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Query information.
 ") GetString;
 		virtual TCollection_AsciiString GetString(InfoString theInfo);
 
 		/****************** HasProjectionFrustums ******************/
 		/**** md5 signature: b05b67863b5b65463aa7504a39e5d4ea ****/
 		%feature("compactdefaultargs") HasProjectionFrustums;
-		%feature("autodoc", "Return true.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true.
 ") HasProjectionFrustums;
 		virtual bool HasProjectionFrustums();
 
 		/****************** IsHmdPresent ******************/
 		/**** md5 signature: 4d92006ecb61453020c0338ef46db688 ****/
 		%feature("compactdefaultargs") IsHmdPresent;
-		%feature("autodoc", "Return true if an hmd may be presented on the system (e.g. to show vr checkbox in application gui). this is fast check, and even if it returns true, opening session may fail.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if an hmd may be presented on the system (e.g. to show vr checkbox in application gui). this is fast check, and even if it returns true, opening session may fail.
 ") IsHmdPresent;
 		static bool IsHmdPresent();
 
 		/****************** IsOpen ******************/
 		/**** md5 signature: 207917360702df01f95e48cf1c178d3d ****/
 		%feature("compactdefaultargs") IsOpen;
-		%feature("autodoc", "Return true if session is opened.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if session is opened.
 ") IsOpen;
 		virtual bool IsOpen();
 
 		/****************** NamedTrackedDevice ******************/
 		/**** md5 signature: fd01aebe7b7d48f130828b68b0d31a8b ****/
 		%feature("compactdefaultargs") NamedTrackedDevice;
-		%feature("autodoc", "Return index of tracked device of known role.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDevice: Aspect_XRTrackedDeviceRole
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Return index of tracked device of known role.
 ") NamedTrackedDevice;
 		virtual Standard_Integer NamedTrackedDevice(Aspect_XRTrackedDeviceRole theDevice);
 
 		/****************** Open ******************/
 		/**** md5 signature: 46feeb1ae37ec453aafb34d187389cb4 ****/
 		%feature("compactdefaultargs") Open;
-		%feature("autodoc", "Initialize session.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Initialize session.
 ") Open;
 		virtual bool Open();
 
 		/****************** ProcessEvents ******************/
 		/**** md5 signature: 2a27463c633ed52dfa06a85b1bab9a97 ****/
 		%feature("compactdefaultargs") ProcessEvents;
-		%feature("autodoc", "Receive xr events.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Receive xr events.
 ") ProcessEvents;
 		virtual void ProcessEvents();
 
 		/****************** ProjectionMatrix ******************/
 		/**** md5 signature: 1e7c67acc983090242ecfc7d738f648b ****/
 		%feature("compactdefaultargs") ProjectionMatrix;
-		%feature("autodoc", "Return projection matrix.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEye: Aspect_Eye
 theZNear: double
 theZFar: double
 
-Returns
+Return
 -------
 NCollection_Mat4<double >
+
+Description
+-----------
+Return projection matrix.
 ") ProjectionMatrix;
 		virtual NCollection_Mat4<double > ProjectionMatrix(Aspect_Eye theEye, double theZNear, double theZFar);
 
 		/****************** RecommendedViewport ******************/
 		/**** md5 signature: 67fa46d4104407c65ef24f06d7830ce5 ****/
 		%feature("compactdefaultargs") RecommendedViewport;
-		%feature("autodoc", "Return recommended viewport width x height for rendering into vr.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Vec2<int >
+
+Description
+-----------
+Return recommended viewport width x height for rendering into vr.
 ") RecommendedViewport;
 		virtual NCollection_Vec2<int > RecommendedViewport();
 
 		/****************** SetTrackingOrigin ******************/
 		/**** md5 signature: 76cb2a6b6235da6e0398fa78d9f5cc46 ****/
 		%feature("compactdefaultargs") SetTrackingOrigin;
-		%feature("autodoc", "Set tracking origin.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOrigin: TrackingUniverseOrigin
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set tracking origin.
 ") SetTrackingOrigin;
 		virtual void SetTrackingOrigin(TrackingUniverseOrigin theOrigin);
 
 		/****************** SubmitEye ******************/
 		/**** md5 signature: 7a622ff719a9418d497f3caffcac0d80 ****/
 		%feature("compactdefaultargs") SubmitEye;
-		%feature("autodoc", "Submit texture eye to xr composer. @param thetexture [in] texture handle @param thegraphicslib [in] graphics library in which texture handle is defined @param thecolorspace [in] texture color space;  srgb means no color conversion by composer;  linear means to srgb color conversion by composer @param theeye [in] eye to display returns false on error.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTexture: void *
@@ -4259,20 +4737,26 @@ theGraphicsLib: Aspect_GraphicsLibrary
 theColorSpace: Aspect_ColorSpace
 theEye: Aspect_Eye
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Submit texture eye to xr composer. @param thetexture [in] texture handle @param thegraphicslib [in] graphics library in which texture handle is defined @param thecolorspace [in] texture color space;  srgb means no color conversion by composer;  linear means to srgb color conversion by composer @param theeye [in] eye to display return false on error.
 ") SubmitEye;
 		virtual bool SubmitEye(void * theTexture, Aspect_GraphicsLibrary theGraphicsLib, Aspect_ColorSpace theColorSpace, Aspect_Eye theEye);
 
 		/****************** WaitPoses ******************/
 		/**** md5 signature: 5922daa4301bb4074ae95962b4f8d15b ****/
 		%feature("compactdefaultargs") WaitPoses;
-		%feature("autodoc", "Fetch actual poses of tracked devices.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Fetch actual poses of tracked devices.
 ") WaitPoses;
 		virtual bool WaitPoses();
 

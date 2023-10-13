@@ -9,20 +9,16 @@ from OCC.Core.TopoDS import *
 from OCC.Core.TopAbs import *
 from OCC.Core.Message import *
 
+
 class ShapeProcessAPI_ApplySequence:
     def __init__(self, rscName: str, seqName: Optional[str] = "") -> None: ...
     def ClearMap(self) -> None: ...
     def Context(self) -> ShapeProcess_ShapeContext: ...
     def Map(self) -> TopTools_DataMapOfShapeShape: ...
-    def PrepareShape(
-        self,
-        shape: TopoDS_Shape,
-        fillmap: Optional[bool] = False,
-        until: Optional[TopAbs_ShapeEnum] = TopAbs_SHAPE,
-        theProgress: Optional[Message_ProgressRange] = Message_ProgressRange(),
-    ) -> TopoDS_Shape: ...
+    def PrepareShape(self, shape: TopoDS_Shape, fillmap: Optional[bool] = False, until: Optional[TopAbs_ShapeEnum] = TopAbs_SHAPE, theProgress: Optional[Message_ProgressRange] = Message_ProgressRange()) -> TopoDS_Shape: ...
     def PrintPreparationResult(self) -> None: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

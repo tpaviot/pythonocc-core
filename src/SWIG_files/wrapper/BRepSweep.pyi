@@ -10,12 +10,11 @@ from OCC.Core.Sweep import *
 from OCC.Core.gp import *
 from OCC.Core.TopLoc import *
 
+
 class BRepSweep_Builder:
     def __init__(self, aBuilder: BRep_Builder) -> None: ...
     @overload
-    def Add(
-        self, aShape1: TopoDS_Shape, aShape2: TopoDS_Shape, Orient: TopAbs_Orientation
-    ) -> None: ...
+    def Add(self, aShape1: TopoDS_Shape, aShape2: TopoDS_Shape, Orient: TopAbs_Orientation) -> None: ...
     @overload
     def Add(self, aShape1: TopoDS_Shape, aShape2: TopoDS_Shape) -> None: ...
     def Builder(self) -> BRep_Builder: ...
@@ -35,29 +34,13 @@ class BRepSweep_Iterator:
 
 class BRepSweep_NumLinearRegularSweep:
     def Closed(self) -> bool: ...
-    def DirectSolid(
-        self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape
-    ) -> TopAbs_Orientation: ...
+    def DirectSolid(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> TopAbs_Orientation: ...
     @overload
     def FirstShape(self) -> TopoDS_Shape: ...
     @overload
     def FirstShape(self, aGenS: TopoDS_Shape) -> TopoDS_Shape: ...
-    def GDDShapeIsToAdd(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-        aSubDirS: Sweep_NumShape,
-    ) -> bool: ...
-    def GGDShapeIsToAdd(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aSubGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-    ) -> bool: ...
+    def GDDShapeIsToAdd(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape, aSubDirS: Sweep_NumShape) -> bool: ...
+    def GGDShapeIsToAdd(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aSubGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
     def GenIsUsed(self, theS: TopoDS_Shape) -> bool: ...
     def HasShape(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
     def IsInvariant(self, aGenS: TopoDS_Shape) -> bool: ...
@@ -66,78 +49,18 @@ class BRepSweep_NumLinearRegularSweep:
     def LastShape(self) -> TopoDS_Shape: ...
     @overload
     def LastShape(self, aGenS: TopoDS_Shape) -> TopoDS_Shape: ...
-    def MakeEmptyDirectingEdge(
-        self, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyFace(
-        self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyGeneratingEdge(
-        self, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyVertex(
-        self, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def SeparatedWires(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aSubGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-    ) -> bool: ...
+    def MakeEmptyDirectingEdge(self, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyFace(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyGeneratingEdge(self, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyVertex(self, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> TopoDS_Shape: ...
+    def SeparatedWires(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aSubGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
     def SetContinuity(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> None: ...
-    def SetDirectingPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetDirectingParameter(
-        self,
-        aNewEdge: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
-    def SetGeneratingPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        aDirV: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetGeneratingParameter(
-        self,
-        aNewEdge: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
-    def SetPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenF: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetParameters(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenF: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
+    def SetDirectingPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenE: TopoDS_Shape, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetDirectingParameter(self, aNewEdge: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape, aDirV: Sweep_NumShape) -> None: ...
+    def SetGeneratingPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenE: TopoDS_Shape, aDirE: Sweep_NumShape, aDirV: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetGeneratingParameter(self, aNewEdge: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenE: TopoDS_Shape, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> None: ...
+    def SetPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenF: TopoDS_Shape, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetParameters(self, aNewFace: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenF: TopoDS_Shape, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> None: ...
     @overload
     def Shape(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> TopoDS_Shape: ...
     @overload
@@ -148,22 +71,9 @@ class BRepSweep_NumLinearRegularSweep:
 
 class BRepSweep_Prism:
     @overload
-    def __init__(
-        self,
-        S: TopoDS_Shape,
-        V: gp_Vec,
-        Copy: Optional[bool] = False,
-        Canonize: Optional[bool] = True,
-    ) -> None: ...
+    def __init__(self, S: TopoDS_Shape, V: gp_Vec, Copy: Optional[bool] = False, Canonize: Optional[bool] = True) -> None: ...
     @overload
-    def __init__(
-        self,
-        S: TopoDS_Shape,
-        D: gp_Dir,
-        Inf: Optional[bool] = True,
-        Copy: Optional[bool] = False,
-        Canonize: Optional[bool] = True,
-    ) -> None: ...
+    def __init__(self, S: TopoDS_Shape, D: gp_Dir, Inf: Optional[bool] = True, Copy: Optional[bool] = False, Canonize: Optional[bool] = True) -> None: ...
     @overload
     def FirstShape(self) -> TopoDS_Shape: ...
     @overload
@@ -182,13 +92,9 @@ class BRepSweep_Prism:
 
 class BRepSweep_Revol:
     @overload
-    def __init__(
-        self, S: TopoDS_Shape, A: gp_Ax1, D: float, C: Optional[bool] = False
-    ) -> None: ...
+    def __init__(self, S: TopoDS_Shape, A: gp_Ax1, D: float, C: Optional[bool] = False) -> None: ...
     @overload
-    def __init__(
-        self, S: TopoDS_Shape, A: gp_Ax1, C: Optional[bool] = False
-    ) -> None: ...
+    def __init__(self, S: TopoDS_Shape, A: gp_Ax1, C: Optional[bool] = False) -> None: ...
     def Angle(self) -> float: ...
     def Axe(self) -> gp_Ax1: ...
     @overload
@@ -215,309 +121,68 @@ class BRepSweep_Tool:
     def Type(self, aShape: TopoDS_Shape) -> TopAbs_ShapeEnum: ...
 
 class BRepSweep_Trsf(BRepSweep_NumLinearRegularSweep):
-    def GDDShapeIsToAdd(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-        aSubDirS: Sweep_NumShape,
-    ) -> bool: ...
-    def GGDShapeIsToAdd(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aSubGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-    ) -> bool: ...
+    def GDDShapeIsToAdd(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape, aSubDirS: Sweep_NumShape) -> bool: ...
+    def GGDShapeIsToAdd(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aSubGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
     def HasShape(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
     def Init(self) -> None: ...
     def IsInvariant(self, aGenS: TopoDS_Shape) -> bool: ...
-    def MakeEmptyDirectingEdge(
-        self, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyFace(
-        self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyGeneratingEdge(
-        self, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyVertex(
-        self, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
+    def MakeEmptyDirectingEdge(self, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyFace(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyGeneratingEdge(self, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyVertex(self, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> TopoDS_Shape: ...
     def Process(self, aGenS: TopoDS_Shape, aDirV: Sweep_NumShape) -> bool: ...
-    def SeparatedWires(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aSubGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-    ) -> bool: ...
+    def SeparatedWires(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aSubGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
     def SetContinuity(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> None: ...
-    def SetDirectingPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetDirectingParameter(
-        self,
-        aNewEdge: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
-    def SetGeneratingPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        aDirV: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetGeneratingParameter(
-        self,
-        aNewEdge: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
-    def SetPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenF: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetParameters(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenF: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
+    def SetDirectingPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenE: TopoDS_Shape, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetDirectingParameter(self, aNewEdge: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape, aDirV: Sweep_NumShape) -> None: ...
+    def SetGeneratingPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenE: TopoDS_Shape, aDirE: Sweep_NumShape, aDirV: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetGeneratingParameter(self, aNewEdge: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenE: TopoDS_Shape, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> None: ...
+    def SetPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenF: TopoDS_Shape, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetParameters(self, aNewFace: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenF: TopoDS_Shape, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> None: ...
 
 class BRepSweep_Rotation(BRepSweep_Trsf):
-    def __init__(
-        self,
-        S: TopoDS_Shape,
-        N: Sweep_NumShape,
-        L: TopLoc_Location,
-        A: gp_Ax1,
-        D: float,
-        C: bool,
-    ) -> None: ...
+    def __init__(self, S: TopoDS_Shape, N: Sweep_NumShape, L: TopLoc_Location, A: gp_Ax1, D: float, C: bool) -> None: ...
     def Angle(self) -> float: ...
     def Axe(self) -> gp_Ax1: ...
-    def DirectSolid(
-        self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape
-    ) -> TopAbs_Orientation: ...
-    def GDDShapeIsToAdd(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-        aSubDirS: Sweep_NumShape,
-    ) -> bool: ...
-    def GGDShapeIsToAdd(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aSubGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-    ) -> bool: ...
+    def DirectSolid(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> TopAbs_Orientation: ...
+    def GDDShapeIsToAdd(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape, aSubDirS: Sweep_NumShape) -> bool: ...
+    def GGDShapeIsToAdd(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aSubGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
     def HasShape(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
     def IsInvariant(self, aGenS: TopoDS_Shape) -> bool: ...
-    def MakeEmptyDirectingEdge(
-        self, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyFace(
-        self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyGeneratingEdge(
-        self, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyVertex(
-        self, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def SeparatedWires(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aSubGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-    ) -> bool: ...
-    def SetDirectingPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetDirectingParameter(
-        self,
-        aNewEdge: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
-    def SetGeneratingPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        aDirV: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetGeneratingParameter(
-        self,
-        aNewEdge: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
-    def SetPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenF: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetParameters(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenF: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
+    def MakeEmptyDirectingEdge(self, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyFace(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyGeneratingEdge(self, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyVertex(self, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> TopoDS_Shape: ...
+    def SeparatedWires(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aSubGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
+    def SetDirectingPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenE: TopoDS_Shape, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetDirectingParameter(self, aNewEdge: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape, aDirV: Sweep_NumShape) -> None: ...
+    def SetGeneratingPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenE: TopoDS_Shape, aDirE: Sweep_NumShape, aDirV: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetGeneratingParameter(self, aNewEdge: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenE: TopoDS_Shape, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> None: ...
+    def SetPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenF: TopoDS_Shape, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetParameters(self, aNewFace: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenF: TopoDS_Shape, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> None: ...
     def SplitShell(self, aNewShape: TopoDS_Shape) -> TopoDS_Shape: ...
 
 class BRepSweep_Translation(BRepSweep_Trsf):
-    def __init__(
-        self,
-        S: TopoDS_Shape,
-        N: Sweep_NumShape,
-        L: TopLoc_Location,
-        V: gp_Vec,
-        C: bool,
-        Canonize: Optional[bool] = True,
-    ) -> None: ...
-    def DirectSolid(
-        self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape
-    ) -> TopAbs_Orientation: ...
-    def GDDShapeIsToAdd(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-        aSubDirS: Sweep_NumShape,
-    ) -> bool: ...
-    def GGDShapeIsToAdd(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aSubGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-    ) -> bool: ...
+    def __init__(self, S: TopoDS_Shape, N: Sweep_NumShape, L: TopLoc_Location, V: gp_Vec, C: bool, Canonize: Optional[bool] = True) -> None: ...
+    def DirectSolid(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> TopAbs_Orientation: ...
+    def GDDShapeIsToAdd(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape, aSubDirS: Sweep_NumShape) -> bool: ...
+    def GGDShapeIsToAdd(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aSubGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
     def HasShape(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
     def IsInvariant(self, aGenS: TopoDS_Shape) -> bool: ...
-    def MakeEmptyDirectingEdge(
-        self, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyFace(
-        self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyGeneratingEdge(
-        self, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def MakeEmptyVertex(
-        self, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape
-    ) -> TopoDS_Shape: ...
-    def SeparatedWires(
-        self,
-        aNewShape: TopoDS_Shape,
-        aNewSubShape: TopoDS_Shape,
-        aGenS: TopoDS_Shape,
-        aSubGenS: TopoDS_Shape,
-        aDirS: Sweep_NumShape,
-    ) -> bool: ...
-    def SetDirectingPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetDirectingParameter(
-        self,
-        aNewEdge: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
-    def SetGeneratingPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aDirE: Sweep_NumShape,
-        aDirV: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetGeneratingParameter(
-        self,
-        aNewEdge: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
-    def SetPCurve(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewEdge: TopoDS_Shape,
-        aGenF: TopoDS_Shape,
-        aGenE: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-        orien: TopAbs_Orientation,
-    ) -> None: ...
-    def SetParameters(
-        self,
-        aNewFace: TopoDS_Shape,
-        aNewVertex: TopoDS_Shape,
-        aGenF: TopoDS_Shape,
-        aGenV: TopoDS_Shape,
-        aDirV: Sweep_NumShape,
-    ) -> None: ...
+    def MakeEmptyDirectingEdge(self, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyFace(self, aGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyGeneratingEdge(self, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape) -> TopoDS_Shape: ...
+    def MakeEmptyVertex(self, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> TopoDS_Shape: ...
+    def SeparatedWires(self, aNewShape: TopoDS_Shape, aNewSubShape: TopoDS_Shape, aGenS: TopoDS_Shape, aSubGenS: TopoDS_Shape, aDirS: Sweep_NumShape) -> bool: ...
+    def SetDirectingPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenE: TopoDS_Shape, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetDirectingParameter(self, aNewEdge: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenV: TopoDS_Shape, aDirE: Sweep_NumShape, aDirV: Sweep_NumShape) -> None: ...
+    def SetGeneratingPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenE: TopoDS_Shape, aDirE: Sweep_NumShape, aDirV: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetGeneratingParameter(self, aNewEdge: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenE: TopoDS_Shape, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> None: ...
+    def SetPCurve(self, aNewFace: TopoDS_Shape, aNewEdge: TopoDS_Shape, aGenF: TopoDS_Shape, aGenE: TopoDS_Shape, aDirV: Sweep_NumShape, orien: TopAbs_Orientation) -> None: ...
+    def SetParameters(self, aNewFace: TopoDS_Shape, aNewVertex: TopoDS_Shape, aGenF: TopoDS_Shape, aGenV: TopoDS_Shape, aDirV: Sweep_NumShape) -> None: ...
     def Vec(self) -> gp_Vec: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

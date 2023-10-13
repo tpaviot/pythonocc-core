@@ -7,6 +7,7 @@ from OCC.Core.gp import *
 from OCC.Core.TColgp import *
 from OCC.Core.TColStd import *
 
+
 class GProp_EquaType(IntEnum):
     GProp_Plane: int = ...
     GProp_Line: int = ...
@@ -113,13 +114,9 @@ class GProp_PGProps(GProp_GProps):
     @overload
     def __init__(self, Pnts: TColgp_Array2OfPnt) -> None: ...
     @overload
-    def __init__(
-        self, Pnts: TColgp_Array1OfPnt, Density: TColStd_Array1OfReal
-    ) -> None: ...
+    def __init__(self, Pnts: TColgp_Array1OfPnt, Density: TColStd_Array1OfReal) -> None: ...
     @overload
-    def __init__(
-        self, Pnts: TColgp_Array2OfPnt, Density: TColStd_Array2OfReal
-    ) -> None: ...
+    def __init__(self, Pnts: TColgp_Array2OfPnt, Density: TColStd_Array2OfReal) -> None: ...
     @overload
     def AddPoint(self, P: gp_Pnt) -> None: ...
     @overload
@@ -132,137 +129,54 @@ class GProp_PGProps(GProp_GProps):
     def Barycentre(Pnts: TColgp_Array2OfPnt) -> gp_Pnt: ...
     @overload
     @staticmethod
-    def Barycentre(
-        Pnts: TColgp_Array1OfPnt, Density: TColStd_Array1OfReal, G: gp_Pnt
-    ) -> float: ...
+    def Barycentre(Pnts: TColgp_Array1OfPnt, Density: TColStd_Array1OfReal, G: gp_Pnt) -> float: ...
     @overload
     @staticmethod
-    def Barycentre(
-        Pnts: TColgp_Array2OfPnt, Density: TColStd_Array2OfReal, G: gp_Pnt
-    ) -> float: ...
+    def Barycentre(Pnts: TColgp_Array2OfPnt, Density: TColStd_Array2OfReal, G: gp_Pnt) -> float: ...
 
 class GProp_SelGProps(GProp_GProps):
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(
-        self,
-        S: gp_Cylinder,
-        Alpha1: float,
-        Alpha2: float,
-        Z1: float,
-        Z2: float,
-        SLocation: gp_Pnt,
-    ) -> None: ...
+    def __init__(self, S: gp_Cylinder, Alpha1: float, Alpha2: float, Z1: float, Z2: float, SLocation: gp_Pnt) -> None: ...
     @overload
-    def __init__(
-        self,
-        S: gp_Cone,
-        Alpha1: float,
-        Alpha2: float,
-        Z1: float,
-        Z2: float,
-        SLocation: gp_Pnt,
-    ) -> None: ...
+    def __init__(self, S: gp_Cone, Alpha1: float, Alpha2: float, Z1: float, Z2: float, SLocation: gp_Pnt) -> None: ...
     @overload
-    def __init__(
-        self,
-        S: gp_Sphere,
-        Teta1: float,
-        Teta2: float,
-        Alpha1: float,
-        Alpha2: float,
-        SLocation: gp_Pnt,
-    ) -> None: ...
+    def __init__(self, S: gp_Sphere, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float, SLocation: gp_Pnt) -> None: ...
     @overload
-    def __init__(
-        self,
-        S: gp_Torus,
-        Teta1: float,
-        Teta2: float,
-        Alpha1: float,
-        Alpha2: float,
-        SLocation: gp_Pnt,
-    ) -> None: ...
+    def __init__(self, S: gp_Torus, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float, SLocation: gp_Pnt) -> None: ...
     @overload
-    def Perform(
-        self, S: gp_Cylinder, Alpha1: float, Alpha2: float, Z1: float, Z2: float
-    ) -> None: ...
+    def Perform(self, S: gp_Cylinder, Alpha1: float, Alpha2: float, Z1: float, Z2: float) -> None: ...
     @overload
-    def Perform(
-        self, S: gp_Cone, Alpha1: float, Alpha2: float, Z1: float, Z2: float
-    ) -> None: ...
+    def Perform(self, S: gp_Cone, Alpha1: float, Alpha2: float, Z1: float, Z2: float) -> None: ...
     @overload
-    def Perform(
-        self, S: gp_Sphere, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float
-    ) -> None: ...
+    def Perform(self, S: gp_Sphere, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float) -> None: ...
     @overload
-    def Perform(
-        self, S: gp_Torus, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float
-    ) -> None: ...
+    def Perform(self, S: gp_Torus, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float) -> None: ...
     def SetLocation(self, SLocation: gp_Pnt) -> None: ...
 
 class GProp_VelGProps(GProp_GProps):
     @overload
     def __init__(self) -> None: ...
     @overload
-    def __init__(
-        self,
-        S: gp_Cylinder,
-        Alpha1: float,
-        Alpha2: float,
-        Z1: float,
-        Z2: float,
-        VLocation: gp_Pnt,
-    ) -> None: ...
+    def __init__(self, S: gp_Cylinder, Alpha1: float, Alpha2: float, Z1: float, Z2: float, VLocation: gp_Pnt) -> None: ...
     @overload
-    def __init__(
-        self,
-        S: gp_Cone,
-        Alpha1: float,
-        Alpha2: float,
-        Z1: float,
-        Z2: float,
-        VLocation: gp_Pnt,
-    ) -> None: ...
+    def __init__(self, S: gp_Cone, Alpha1: float, Alpha2: float, Z1: float, Z2: float, VLocation: gp_Pnt) -> None: ...
     @overload
-    def __init__(
-        self,
-        S: gp_Sphere,
-        Teta1: float,
-        Teta2: float,
-        Alpha1: float,
-        Alpha2: float,
-        VLocation: gp_Pnt,
-    ) -> None: ...
+    def __init__(self, S: gp_Sphere, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float, VLocation: gp_Pnt) -> None: ...
     @overload
-    def __init__(
-        self,
-        S: gp_Torus,
-        Teta1: float,
-        Teta2: float,
-        Alpha1: float,
-        Alpha2: float,
-        VLocation: gp_Pnt,
-    ) -> None: ...
+    def __init__(self, S: gp_Torus, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float, VLocation: gp_Pnt) -> None: ...
     @overload
-    def Perform(
-        self, S: gp_Cylinder, Alpha1: float, Alpha2: float, Z1: float, Z2: float
-    ) -> None: ...
+    def Perform(self, S: gp_Cylinder, Alpha1: float, Alpha2: float, Z1: float, Z2: float) -> None: ...
     @overload
-    def Perform(
-        self, S: gp_Cone, Alpha1: float, Alpha2: float, Z1: float, Z2: float
-    ) -> None: ...
+    def Perform(self, S: gp_Cone, Alpha1: float, Alpha2: float, Z1: float, Z2: float) -> None: ...
     @overload
-    def Perform(
-        self, S: gp_Sphere, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float
-    ) -> None: ...
+    def Perform(self, S: gp_Sphere, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float) -> None: ...
     @overload
-    def Perform(
-        self, S: gp_Torus, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float
-    ) -> None: ...
+    def Perform(self, S: gp_Torus, Teta1: float, Teta2: float, Alpha1: float, Alpha2: float) -> None: ...
     def SetLocation(self, VLocation: gp_Pnt) -> None: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

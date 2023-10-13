@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMTOOLSDOCSTRING
 "GeomTools module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_geomtools.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_geomtools.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMTOOLSDOCSTRING) GeomTools
 
@@ -88,26 +88,31 @@ class GeomTools {
 		/****************** GetUndefinedTypeHandler ******************/
 		/**** md5 signature: 4feeff4a1f6ab5a12fb2effedf9bc1c3 ****/
 		%feature("compactdefaultargs") GetUndefinedTypeHandler;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<GeomTools_UndefinedTypeHandler>
+
+Description
+-----------
+No available documentation.
 ") GetUndefinedTypeHandler;
 		static opencascade::handle<GeomTools_UndefinedTypeHandler> GetUndefinedTypeHandler();
 
 		/****************** SetUndefinedTypeHandler ******************/
 		/**** md5 signature: 924bb9ac20d7bc97a8eee36d4f9f3c0b ****/
 		%feature("compactdefaultargs") SetUndefinedTypeHandler;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aHandler: GeomTools_UndefinedTypeHandler
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetUndefinedTypeHandler;
 		static void SetUndefinedTypeHandler(const opencascade::handle<GeomTools_UndefinedTypeHandler> & aHandler);
 
@@ -128,52 +133,62 @@ class GeomTools_Curve2dSet {
 		/****************** GeomTools_Curve2dSet ******************/
 		/**** md5 signature: fd1845b0ee77ab29f7ca4ee6ff8d9279 ****/
 		%feature("compactdefaultargs") GeomTools_Curve2dSet;
-		%feature("autodoc", "Returns an empty set of curves.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns an empty set of curves.
 ") GeomTools_Curve2dSet;
 		 GeomTools_Curve2dSet();
 
 		/****************** Add ******************/
 		/**** md5 signature: 947264273ed6b5c72eac1f308b1f2487 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Incorporate a new curve in the set and returns its index.
-
+		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Curve
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Incorporate a new curve in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const opencascade::handle<Geom2d_Curve> & C);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the content of the set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Clears the content of the set.
 ") Clear;
 		void Clear();
 
 		/****************** Curve2d ******************/
 		/**** md5 signature: aca04b75893a006fca996d6d157d858d ****/
 		%feature("compactdefaultargs") Curve2d;
-		%feature("autodoc", "Returns the curve of index <i>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 I: int
 
-Returns
+Return
 -------
 opencascade::handle<Geom2d_Curve>
+
+Description
+-----------
+Returns the curve of index <i>.
 ") Curve2d;
 		opencascade::handle<Geom2d_Curve> Curve2d(const Standard_Integer I);
 
@@ -188,15 +203,18 @@ opencascade::handle<Geom2d_Curve>
 		/****************** Index ******************/
 		/**** md5 signature: e1559320ddf80ce0263d324c781a3407 ****/
 		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "Returns the index of <l>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Curve
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns the index of <l>.
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom2d_Curve> & C);
 
@@ -239,52 +257,62 @@ class GeomTools_CurveSet {
 		/****************** GeomTools_CurveSet ******************/
 		/**** md5 signature: db7c2b276941a40dfd1eecce0ab38615 ****/
 		%feature("compactdefaultargs") GeomTools_CurveSet;
-		%feature("autodoc", "Returns an empty set of curves.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns an empty set of curves.
 ") GeomTools_CurveSet;
 		 GeomTools_CurveSet();
 
 		/****************** Add ******************/
 		/**** md5 signature: 4548eacacd2a36c829559b37d6b57411 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Incorporate a new curve in the set and returns its index.
-
+		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Curve
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Incorporate a new curve in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const opencascade::handle<Geom_Curve> & C);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the content of the set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Clears the content of the set.
 ") Clear;
 		void Clear();
 
 		/****************** Curve ******************/
 		/**** md5 signature: 3509a433898cb7510761da8b37eedb3b ****/
 		%feature("compactdefaultargs") Curve;
-		%feature("autodoc", "Returns the curve of index <i>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 I: int
 
-Returns
+Return
 -------
 opencascade::handle<Geom_Curve>
+
+Description
+-----------
+Returns the curve of index <i>.
 ") Curve;
 		opencascade::handle<Geom_Curve> Curve(const Standard_Integer I);
 
@@ -299,15 +327,18 @@ opencascade::handle<Geom_Curve>
 		/****************** Index ******************/
 		/**** md5 signature: c53cbf4d0efdfb90843e67e9b32c5252 ****/
 		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "Returns the index of <l>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Curve
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns the index of <l>.
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom_Curve> & C);
 
@@ -350,37 +381,44 @@ class GeomTools_SurfaceSet {
 		/****************** GeomTools_SurfaceSet ******************/
 		/**** md5 signature: 13978194ee9f9c91ee7a81cdf7063dc2 ****/
 		%feature("compactdefaultargs") GeomTools_SurfaceSet;
-		%feature("autodoc", "Returns an empty set of surfaces.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Returns an empty set of surfaces.
 ") GeomTools_SurfaceSet;
 		 GeomTools_SurfaceSet();
 
 		/****************** Add ******************/
 		/**** md5 signature: 6108c9acf8995214a7cb8b8e5a0b937c ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Incorporate a new surface in the set and returns its index.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Incorporate a new surface in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const opencascade::handle<Geom_Surface> & S);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the content of the set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Clears the content of the set.
 ") Clear;
 		void Clear();
 
@@ -395,15 +433,18 @@ None
 		/****************** Index ******************/
 		/**** md5 signature: 7fc50802d17ebd7c660284e6560fb7f6 ****/
 		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "Returns the index of <l>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_Surface
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns the index of <l>.
 ") Index;
 		Standard_Integer Index(const opencascade::handle<Geom_Surface> & S);
 
@@ -424,15 +465,18 @@ int
 		/****************** Surface ******************/
 		/**** md5 signature: f08a9f2a886e0a3933ae15a38f9b8dda ****/
 		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "Returns the surface of index <i>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 I: int
 
-Returns
+Return
 -------
 opencascade::handle<Geom_Surface>
+
+Description
+-----------
+Returns the surface of index <i>.
 ") Surface;
 		opencascade::handle<Geom_Surface> Surface(const Standard_Integer I);
 
@@ -461,11 +505,13 @@ class GeomTools_UndefinedTypeHandler : public Standard_Transient {
 		/****************** GeomTools_UndefinedTypeHandler ******************/
 		/**** md5 signature: cc90fa1e9e672821392fcca7d830ff55 ****/
 		%feature("compactdefaultargs") GeomTools_UndefinedTypeHandler;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") GeomTools_UndefinedTypeHandler;
 		 GeomTools_UndefinedTypeHandler();
 

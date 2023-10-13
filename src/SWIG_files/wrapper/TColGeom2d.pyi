@@ -5,6 +5,7 @@ from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 from OCC.Core.Geom2d import *
 
+
 class TColGeom2d_Array1OfBSplineCurve:
     @overload
     def __init__(self) -> None: ...
@@ -124,34 +125,31 @@ class TColGeom2d_SequenceOfGeometry:
 
 # harray1 classes
 
-class TColGeom2d_HArray1OfBezierCurve(
-    TColGeom2d_Array1OfBezierCurve, Standard_Transient
-):
+class TColGeom2d_HArray1OfBezierCurve(TColGeom2d_Array1OfBezierCurve, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> TColGeom2d_Array1OfBezierCurve: ...
+
 
 class TColGeom2d_HArray1OfCurve(TColGeom2d_Array1OfCurve, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> TColGeom2d_Array1OfCurve: ...
 
-class TColGeom2d_HArray1OfBSplineCurve(
-    TColGeom2d_Array1OfBSplineCurve, Standard_Transient
-):
+
+class TColGeom2d_HArray1OfBSplineCurve(TColGeom2d_Array1OfBSplineCurve, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> TColGeom2d_Array1OfBSplineCurve: ...
 
 # harray2 classes
 # hsequence classes
 
-class TColGeom2d_HSequenceOfBoundedCurve(
-    TColGeom2d_SequenceOfBoundedCurve, Standard_Transient
-):
+class TColGeom2d_HSequenceOfBoundedCurve(TColGeom2d_SequenceOfBoundedCurve, Standard_Transient):
     @overload
     def __init__(self) -> None: ...
     @overload
     def __init__(self, other: TColGeom2d_SequenceOfBoundedCurve) -> None: ...
     def Sequence(self) -> TColGeom2d_SequenceOfBoundedCurve: ...
     def Append(self, theSequence: TColGeom2d_SequenceOfBoundedCurve) -> None: ...
+
 
 class TColGeom2d_HSequenceOfCurve(TColGeom2d_SequenceOfCurve, Standard_Transient):
     @overload
@@ -160,3 +158,5 @@ class TColGeom2d_HSequenceOfCurve(TColGeom2d_SequenceOfCurve, Standard_Transient
     def __init__(self, other: TColGeom2d_SequenceOfCurve) -> None: ...
     def Sequence(self) -> TColGeom2d_SequenceOfCurve: ...
     def Append(self, theSequence: TColGeom2d_SequenceOfCurve) -> None: ...
+
+

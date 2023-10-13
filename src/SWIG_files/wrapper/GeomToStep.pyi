@@ -9,6 +9,7 @@ from OCC.Core.Geom2d import *
 from OCC.Core.StepGeom import *
 from OCC.Core.TColgp import *
 
+
 class GeomToStep_Root:
     def IsDone(self) -> bool: ...
 
@@ -223,3 +224,4 @@ class GeomToStep_MakeVector(GeomToStep_Root):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

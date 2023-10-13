@@ -4,6 +4,7 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
+
 class precision:
     @staticmethod
     def Angular() -> float: ...
@@ -53,3 +54,4 @@ class precision:
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

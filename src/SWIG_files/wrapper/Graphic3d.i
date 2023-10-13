@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GRAPHIC3DDOCSTRING
 "Graphic3d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_graphic3d.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_graphic3d.html"
 %enddef
 %module (package="OCC.Core", docstring=GRAPHIC3DDOCSTRING) Graphic3d
 
@@ -1778,39 +1778,44 @@ class Graphic3d_ArrayOfPrimitives : public Standard_Transient {
 		/****************** AddBound ******************/
 		/**** md5 signature: 45f5d59342e3b9c57d19fd15d8eac485 ****/
 		%feature("compactdefaultargs") AddBound;
-		%feature("autodoc", "Adds a bound of length theedgenumber in the bound array returns the actual bounds number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEdgeNumber: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a bound of length theedgenumber in the bound array return the actual bounds number.
 ") AddBound;
 		Standard_Integer AddBound(const Standard_Integer theEdgeNumber);
 
 		/****************** AddBound ******************/
 		/**** md5 signature: 88f0391d52dc6680cf337e34aa631b82 ****/
 		%feature("compactdefaultargs") AddBound;
-		%feature("autodoc", "Adds a bound of length theedgenumber and bound color thebcolor in the bound array. warning: thebcolor is ignored when the hasbcolors constructor parameter is false returns the actual bounds number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEdgeNumber: int
 theBColor: Quantity_Color
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a bound of length theedgenumber and bound color thebcolor in the bound array. warning: thebcolor is ignored when the hasbcolors constructor parameter is false return the actual bounds number.
 ") AddBound;
 		Standard_Integer AddBound(const Standard_Integer theEdgeNumber, const Quantity_Color & theBColor);
 
 		/****************** AddBound ******************/
 		/**** md5 signature: 9d345aea4491437a2c630cf48fc5736d ****/
 		%feature("compactdefaultargs") AddBound;
-		%feature("autodoc", "Adds a bound of length theedgenumber and bound color coordinates in the bound array. warning: <ther,theg,theb> are ignored when the hasbcolors constructor parameter is false returns the actual bounds number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEdgeNumber: int
@@ -1818,65 +1823,77 @@ theR: float
 theG: float
 theB: float
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a bound of length theedgenumber and bound color coordinates in the bound array. warning: <ther,theg,theb> are ignored when the hasbcolors constructor parameter is false return the actual bounds number.
 ") AddBound;
 		Standard_Integer AddBound(const Standard_Integer theEdgeNumber, const Standard_Real theR, const Standard_Real theG, const Standard_Real theB);
 
 		/****************** AddEdge ******************/
 		/**** md5 signature: a337180540a69a89c433701f71109d97 ****/
 		%feature("compactdefaultargs") AddEdge;
-		%feature("autodoc", "Adds an edge in the range [1,vertexnumber()] in the array. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexIndex: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds an edge in the range [1,vertexnumber()] in the array. return the actual edges number.
 ") AddEdge;
 		Standard_Integer AddEdge(const Standard_Integer theVertexIndex);
 
 		/****************** AddEdges ******************/
 		/**** md5 signature: c159e024359f7e072df55602f0b31ca0 ****/
 		%feature("compactdefaultargs") AddEdges;
-		%feature("autodoc", "Convenience method, adds two vertex indices (a segment) in the range [1,vertexnumber()] in the array. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexIndex1: int
 theVertexIndex2: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Convenience method, adds two vertex indices (a segment) in the range [1,vertexnumber()] in the array. return the actual edges number.
 ") AddEdges;
 		Standard_Integer AddEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2);
 
 		/****************** AddEdges ******************/
 		/**** md5 signature: 9de790c6ce21825c622a6c76faec42c2 ****/
 		%feature("compactdefaultargs") AddEdges;
-		%feature("autodoc", "Convenience method, adds three vertex indices (a triangle) in the range [1,vertexnumber()] in the array. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexIndex1: int
 theVertexIndex2: int
 theVertexIndex3: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Convenience method, adds three vertex indices (a triangle) in the range [1,vertexnumber()] in the array. return the actual edges number.
 ") AddEdges;
 		Standard_Integer AddEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2, Standard_Integer theVertexIndex3);
 
 		/****************** AddEdges ******************/
 		/**** md5 signature: 065757fab0a76be2253c1620408a24bb ****/
 		%feature("compactdefaultargs") AddEdges;
-		%feature("autodoc", "Convenience method, adds four vertex indices (a quad) in the range [1,vertexnumber()] in the array. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexIndex1: int
@@ -1884,34 +1901,40 @@ theVertexIndex2: int
 theVertexIndex3: int
 theVertexIndex4: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Convenience method, adds four vertex indices (a quad) in the range [1,vertexnumber()] in the array. return the actual edges number.
 ") AddEdges;
 		Standard_Integer AddEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2, Standard_Integer theVertexIndex3, Standard_Integer theVertexIndex4);
 
 		/****************** AddPolylineEdges ******************/
 		/**** md5 signature: 749e22dfb377d41dc2b585bd080e46e7 ****/
 		%feature("compactdefaultargs") AddPolylineEdges;
-		%feature("autodoc", "Add line strip (polyline) into indexed segments array. n-1 segments are added from n input nodes (or n with closed flag). raises exception if array is not of type graphic3d_topa_segments. @param thevertexlower [in] index of first node defining line strip fun (center) @param thevertexupper [in] index of last node defining triangle fun @param thetoclose [in] close triangle fan (connect first and last points).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexLower: int
 theVertexUpper: int
 theToClose: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Add line strip (polyline) into indexed segments array. n-1 segments are added from n input nodes (or n with closed flag). raises exception if array is not of type graphic3d_topa_segments. @param thevertexlower [in] index of first node defining line strip fun (center) @param thevertexupper [in] index of last node defining triangle fun @param thetoclose [in] close triangle fan (connect first and last points).
 ") AddPolylineEdges;
 		void AddPolylineEdges(Standard_Integer theVertexLower, Standard_Integer theVertexUpper, Standard_Boolean theToClose);
 
 		/****************** AddQuadEdges ******************/
 		/**** md5 signature: 7b670bbbf06f7a015e96240c3f52ae53 ****/
 		%feature("compactdefaultargs") AddQuadEdges;
-		%feature("autodoc", "Convenience method, adds four vertex indices (a quad) in the range [1,vertexnumber()] in the array of quads. raises exception if array is not of type graphic3d_topa_quadrangles. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexIndex1: int
@@ -1919,17 +1942,20 @@ theVertexIndex2: int
 theVertexIndex3: int
 theVertexIndex4: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Convenience method, adds four vertex indices (a quad) in the range [1,vertexnumber()] in the array of quads. raises exception if array is not of type graphic3d_topa_quadrangles. return the actual edges number.
 ") AddQuadEdges;
 		Standard_Integer AddQuadEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2, Standard_Integer theVertexIndex3, Standard_Integer theVertexIndex4);
 
 		/****************** AddQuadTriangleEdges ******************/
 		/**** md5 signature: 08a6ca10f8c05b6f3d0ed729fa1c7717 ****/
 		%feature("compactdefaultargs") AddQuadTriangleEdges;
-		%feature("autodoc", "Convenience method, adds quad indices in the range [1,vertexnumber()] into array or triangles as two triangles. raises exception if array is not of type graphic3d_topa_triangles. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexIndex1: int
@@ -1937,256 +1963,304 @@ theVertexIndex2: int
 theVertexIndex3: int
 theVertexIndex4: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Convenience method, adds quad indices in the range [1,vertexnumber()] into array or triangles as two triangles. raises exception if array is not of type graphic3d_topa_triangles. return the actual edges number.
 ") AddQuadTriangleEdges;
 		Standard_Integer AddQuadTriangleEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2, Standard_Integer theVertexIndex3, Standard_Integer theVertexIndex4);
 
 		/****************** AddQuadTriangleEdges ******************/
 		/**** md5 signature: 93b4fa18236aa40b6729b06a213db528 ****/
 		%feature("compactdefaultargs") AddQuadTriangleEdges;
-		%feature("autodoc", "Convenience method, adds quad indices in the range [1,vertexnumber()] into array or triangles as two triangles. raises exception if array is not of type graphic3d_topa_triangles. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndexes: Graphic3d_Vec4i
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Convenience method, adds quad indices in the range [1,vertexnumber()] into array or triangles as two triangles. raises exception if array is not of type graphic3d_topa_triangles. return the actual edges number.
 ") AddQuadTriangleEdges;
 		Standard_Integer AddQuadTriangleEdges(const Graphic3d_Vec4i & theIndexes);
 
 		/****************** AddSegmentEdges ******************/
 		/**** md5 signature: 812cf610cd5921290f6119742ec1aa5d ****/
 		%feature("compactdefaultargs") AddSegmentEdges;
-		%feature("autodoc", "Convenience method, adds two vertex indices (a segment) in the range [1,vertexnumber()] in the array of segments (graphic3d_topa_segments). raises exception if array is not of type graphic3d_topa_segments. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexIndex1: int
 theVertexIndex2: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Convenience method, adds two vertex indices (a segment) in the range [1,vertexnumber()] in the array of segments (graphic3d_topa_segments). raises exception if array is not of type graphic3d_topa_segments. return the actual edges number.
 ") AddSegmentEdges;
 		Standard_Integer AddSegmentEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2);
 
 		/****************** AddTriangleEdges ******************/
 		/**** md5 signature: ae138feffd3cec4d9fbb1a4013327b5c ****/
 		%feature("compactdefaultargs") AddTriangleEdges;
-		%feature("autodoc", "Convenience method, adds three vertex indices of triangle in the range [1,vertexnumber()] in the array of triangles. raises exception if array is not of type graphic3d_topa_triangles. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexIndex1: int
 theVertexIndex2: int
 theVertexIndex3: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Convenience method, adds three vertex indices of triangle in the range [1,vertexnumber()] in the array of triangles. raises exception if array is not of type graphic3d_topa_triangles. return the actual edges number.
 ") AddTriangleEdges;
 		Standard_Integer AddTriangleEdges(Standard_Integer theVertexIndex1, Standard_Integer theVertexIndex2, Standard_Integer theVertexIndex3);
 
 		/****************** AddTriangleEdges ******************/
 		/**** md5 signature: 6163a4915340f6513dbdb76707d4a0b4 ****/
 		%feature("compactdefaultargs") AddTriangleEdges;
-		%feature("autodoc", "Convenience method, adds three vertex indices of triangle in the range [1,vertexnumber()] in the array of triangles. raises exception if array is not of type graphic3d_topa_triangles. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndexes: Graphic3d_Vec3i
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Convenience method, adds three vertex indices of triangle in the range [1,vertexnumber()] in the array of triangles. raises exception if array is not of type graphic3d_topa_triangles. return the actual edges number.
 ") AddTriangleEdges;
 		Standard_Integer AddTriangleEdges(const Graphic3d_Vec3i & theIndexes);
 
 		/****************** AddTriangleEdges ******************/
 		/**** md5 signature: c5131d7ede1221a7cae3ab2062568237 ****/
 		%feature("compactdefaultargs") AddTriangleEdges;
-		%feature("autodoc", "Convenience method, adds three vertex indices (4th component is ignored) of triangle in the range [1,vertexnumber()] in the array of triangles. raises exception if array is not of type graphic3d_topa_triangles. returns the actual edges number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndexes: Graphic3d_Vec4i
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Convenience method, adds three vertex indices (4th component is ignored) of triangle in the range [1,vertexnumber()] in the array of triangles. raises exception if array is not of type graphic3d_topa_triangles. return the actual edges number.
 ") AddTriangleEdges;
 		Standard_Integer AddTriangleEdges(const Graphic3d_Vec4i & theIndexes);
 
 		/****************** AddTriangleFanEdges ******************/
 		/**** md5 signature: e6d862393c3f57833b04578f4c4193bc ****/
 		%feature("compactdefaultargs") AddTriangleFanEdges;
-		%feature("autodoc", "Add triangle fan into indexed triangulation array. n-2 triangles are added from n input nodes (or n-1 with closed flag). raises exception if array is not of type graphic3d_topa_triangles. @param thevertexlower [in] index of first node defining triangle fun (center) @param thevertexupper [in] index of last node defining triangle fun @param thetoclose [in] close triangle fan (connect first and last points).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexLower: int
 theVertexUpper: int
 theToClose: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Add triangle fan into indexed triangulation array. n-2 triangles are added from n input nodes (or n-1 with closed flag). raises exception if array is not of type graphic3d_topa_triangles. @param thevertexlower [in] index of first node defining triangle fun (center) @param thevertexupper [in] index of last node defining triangle fun @param thetoclose [in] close triangle fan (connect first and last points).
 ") AddTriangleFanEdges;
 		void AddTriangleFanEdges(Standard_Integer theVertexLower, Standard_Integer theVertexUpper, Standard_Boolean theToClose);
 
 		/****************** AddTriangleStripEdges ******************/
 		/**** md5 signature: 106a3dbd089917972c1de2620e13e7bf ****/
 		%feature("compactdefaultargs") AddTriangleStripEdges;
-		%feature("autodoc", "Add triangle strip into indexed triangulation array. n-2 triangles are added from n input nodes. raises exception if array is not of type graphic3d_topa_triangles. @param thevertexlower [in] index of first node defining triangle strip @param thevertexupper [in] index of last node defining triangle strip.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexLower: int
 theVertexUpper: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Add triangle strip into indexed triangulation array. n-2 triangles are added from n input nodes. raises exception if array is not of type graphic3d_topa_triangles. @param thevertexlower [in] index of first node defining triangle strip @param thevertexupper [in] index of last node defining triangle strip.
 ") AddTriangleStripEdges;
 		void AddTriangleStripEdges(Standard_Integer theVertexLower, Standard_Integer theVertexUpper);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: d3ee5a248d80d53a0bcf8b586e80b0a4 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice in the array. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertex: gp_Pnt
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice in the array. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: fcfc56a216df20b766d90f52a30148f5 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice in the array. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertex: Graphic3d_Vec3
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice in the array. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Graphic3d_Vec3 & theVertex);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: 77f6f198f3626a49348ea76447a25e28 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice in the array. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
 theY: float
 theZ: float
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice in the array. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: 04746c940ff6f95c88b267613db887f8 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice in the array. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
 theY: float
 theZ: float
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice in the array. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: 701dea54fa31ef19ea6b2b542758d8bb ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice and vertex color in the vertex array. warning: thecolor is ignored when the hasvcolors constructor parameter is false returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertex: gp_Pnt
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice and vertex color in the vertex array. warning: thecolor is ignored when the hasvcolors constructor parameter is false return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const Quantity_Color & theColor);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: 9a535b3a9cf6bbd6d8548b7278d90ea0 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice and vertex color in the vertex array. warning: thecolor is ignored when the hasvcolors constructor parameter is false @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertex: gp_Pnt
 theColor32: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice and vertex color in the vertex array. warning: thecolor is ignored when the hasvcolors constructor parameter is false @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const Standard_Integer theColor32);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: a0fa023c09c610f286353c31554b4d64 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice and vertex color in the vertex array. warning: thecolor is ignored when the hasvcolors constructor parameter is false returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertex: gp_Pnt
 theColor: Graphic3d_Vec4ub
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice and vertex color in the vertex array. warning: thecolor is ignored when the hasvcolors constructor parameter is false return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const Graphic3d_Vec4ub & theColor);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: a7443c39b4f7ca8918bca32bb7015cdc ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice and vertex normal in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertex: gp_Pnt
 theNormal: gp_Dir
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice and vertex normal in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const gp_Dir & theNormal);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: ef48b0ea76122595143cb8054d85115d ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice and vertex normal in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
@@ -2196,17 +2270,20 @@ theNX: float
 theNY: float
 theNZ: float
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice and vertex normal in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theNX, const Standard_Real theNY, const Standard_Real theNZ);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: e8be3cef3c1140a0f0ab1df6c25d8ca7 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice and vertex normal in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
@@ -2216,67 +2293,79 @@ theNX: float
 theNY: float
 theNZ: float
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice and vertex normal in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ, const Standard_ShortReal theNX, const Standard_ShortReal theNY, const Standard_ShortReal theNZ);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: 99cd346a0e12c323c7277fc8a5be3f68 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice,vertex normal and color in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false and thecolor is ignored when the hasvcolors constructor parameter is false. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertex: gp_Pnt
 theNormal: gp_Dir
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice,vertex normal and color in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false and thecolor is ignored when the hasvcolors constructor parameter is false. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const gp_Dir & theNormal, const Quantity_Color & theColor);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: c8947445d0b06c4fed7b9d9a2a659c76 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice,vertex normal and color in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false and thecolor is ignored when the hasvcolors constructor parameter is false. @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertex: gp_Pnt
 theNormal: gp_Dir
 theColor32: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice,vertex normal and color in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false and thecolor is ignored when the hasvcolors constructor parameter is false. @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const gp_Dir & theNormal, const Standard_Integer theColor32);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: f70849cdbf2fca1ec18460230e2280f5 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice and vertex texture in the vertex array. thetexel is ignored when the hasvtexels constructor parameter is false. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertex: gp_Pnt
 theTexel: gp_Pnt2d
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice and vertex texture in the vertex array. thetexel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const gp_Pnt2d & theTexel);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: 29a6b26750e79323531699b1cd47f410 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice and vertex texture coordinates in the vertex array. texel is ignored when the hasvtexels constructor parameter is false. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
@@ -2285,17 +2374,20 @@ theZ: float
 theTX: float
 theTY: float
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice and vertex texture coordinates in the vertex array. texel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theTX, const Standard_Real theTY);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: 6132710dd06cefe09ea61ba7231572dd ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice and vertex texture coordinates in the vertex array. texel is ignored when the hasvtexels constructor parameter is false. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
@@ -2304,34 +2396,40 @@ theZ: float
 theTX: float
 theTY: float
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice and vertex texture coordinates in the vertex array. texel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ, const Standard_ShortReal theTX, const Standard_ShortReal theTY);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: c979e838840e23ee6185c18334d02ad0 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice,vertex normal and texture in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false and thetexel is ignored when the hasvtexels constructor parameter is false. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertex: gp_Pnt
 theNormal: gp_Dir
 theTexel: gp_Pnt2d
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice,vertex normal and texture in the vertex array. warning: thenormal is ignored when the hasvnormals constructor parameter is false and thetexel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const gp_Pnt & theVertex, const gp_Dir & theNormal, const gp_Pnt2d & theTexel);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: c02664b5a8ddaf04d99cd78fbc93c537 ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice,vertex normal and texture in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false and texel is ignored when the hasvtexels constructor parameter is false. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
@@ -2343,17 +2441,20 @@ theNZ: float
 theTX: float
 theTY: float
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice,vertex normal and texture in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false and texel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theNX, const Standard_Real theNY, const Standard_Real theNZ, const Standard_Real theTX, const Standard_Real theTY);
 
 		/****************** AddVertex ******************/
 		/**** md5 signature: 491a14da93bc4d1f38f3a182fe553c5b ****/
 		%feature("compactdefaultargs") AddVertex;
-		%feature("autodoc", "Adds a vertice,vertex normal and texture in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false and texel is ignored when the hasvtexels constructor parameter is false. returns the actual vertex number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
@@ -2365,108 +2466,128 @@ theNZ: float
 theTX: float
 theTY: float
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Adds a vertice,vertex normal and texture in the vertex array. warning: normal is ignored when the hasvnormals constructor parameter is false and texel is ignored when the hasvtexels constructor parameter is false. return the actual vertex number.
 ") AddVertex;
 		Standard_Integer AddVertex(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ, const Standard_ShortReal theNX, const Standard_ShortReal theNY, const Standard_ShortReal theNZ, const Standard_ShortReal theTX, const Standard_ShortReal theTY);
 
 		/****************** Attributes ******************/
 		/**** md5 signature: 1610a8a8ea9ac2d06e2257d3ddc49edd ****/
 		%feature("compactdefaultargs") Attributes;
-		%feature("autodoc", "Returns vertex attributes buffer (colors, normals, texture coordinates).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_Buffer>
+
+Description
+-----------
+Returns vertex attributes buffer (colors, normals, texture coordinates).
 ") Attributes;
 		const opencascade::handle<Graphic3d_Buffer> & Attributes();
 
 		/****************** Bound ******************/
 		/**** md5 signature: 3b1056ea4935cbc39e9e500b5504c00f ****/
 		%feature("compactdefaultargs") Bound;
-		%feature("autodoc", "Returns the edge number at rank therank.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns the edge number at rank therank.
 ") Bound;
 		Standard_Integer Bound(const Standard_Integer theRank);
 
 		/****************** BoundColor ******************/
 		/**** md5 signature: 5e034e4401a51a2792a514433b5c1f4e ****/
 		%feature("compactdefaultargs") BoundColor;
-		%feature("autodoc", "Returns the bound color at rank therank from the bound table if defined.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 Quantity_Color
+
+Description
+-----------
+Returns the bound color at rank therank from the bound table if defined.
 ") BoundColor;
 		Quantity_Color BoundColor(const Standard_Integer theRank);
 
 		/****************** BoundColor ******************/
 		/**** md5 signature: 9bb86279f4d1437684b86975ec15944c ****/
 		%feature("compactdefaultargs") BoundColor;
-		%feature("autodoc", "Returns the bound color values at rank therank from the bound table if defined.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 theR: float
 theG: float
 theB: float
+
+Description
+-----------
+Returns the bound color values at rank therank from the bound table if defined.
 ") BoundColor;
 		void BoundColor(const Standard_Integer theRank, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** BoundNumber ******************/
 		/**** md5 signature: 47733e681c876fb95a4e7500f3b4f8aa ****/
 		%feature("compactdefaultargs") BoundNumber;
-		%feature("autodoc", "Returns the number of defined bounds.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of defined bounds.
 ") BoundNumber;
 		Standard_Integer BoundNumber();
 
 		/****************** BoundNumberAllocated ******************/
 		/**** md5 signature: 078f355b4b64c8e7c909a9a09c143f3b ****/
 		%feature("compactdefaultargs") BoundNumberAllocated;
-		%feature("autodoc", "Returns the number of allocated bounds.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of allocated bounds.
 ") BoundNumberAllocated;
 		Standard_Integer BoundNumberAllocated();
 
 		/****************** Bounds ******************/
 		/**** md5 signature: aa4b6d27ab81123f0a7d91851b604a91 ****/
 		%feature("compactdefaultargs") Bounds;
-		%feature("autodoc", "Returns optional bounds buffer.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_BoundBuffer>
+
+Description
+-----------
+Returns optional bounds buffer.
 ") Bounds;
 		const opencascade::handle<Graphic3d_BoundBuffer> & Bounds();
 
 		/****************** CreateArray ******************/
 		/**** md5 signature: 397c1bd22f23a2bbf1d4fb56b6294022 ****/
 		%feature("compactdefaultargs") CreateArray;
-		%feature("autodoc", "Create an array of specified type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfPrimitiveArray
@@ -2474,17 +2595,20 @@ theMaxVertexs: int
 theMaxEdges: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_ArrayOfPrimitives>
+
+Description
+-----------
+Create an array of specified type.
 ") CreateArray;
 		static opencascade::handle<Graphic3d_ArrayOfPrimitives> CreateArray(Graphic3d_TypeOfPrimitiveArray theType, Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges, int theArrayFlags);
 
 		/****************** CreateArray ******************/
 		/**** md5 signature: 065b84c5ccc6d4353c689d650e2a71c7 ****/
 		%feature("compactdefaultargs") CreateArray;
-		%feature("autodoc", "Create an array of specified type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfPrimitiveArray
@@ -2493,147 +2617,174 @@ theMaxBounds: int
 theMaxEdges: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_ArrayOfPrimitives>
+
+Description
+-----------
+Create an array of specified type.
 ") CreateArray;
 		static opencascade::handle<Graphic3d_ArrayOfPrimitives> CreateArray(Graphic3d_TypeOfPrimitiveArray theType, Standard_Integer theMaxVertexs, Standard_Integer theMaxBounds, Standard_Integer theMaxEdges, int theArrayFlags);
 
 		/****************** Edge ******************/
 		/**** md5 signature: 109d05368b034560c8c45295acff88b7 ****/
 		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "Returns the vertex index at rank therank in the range [1,edgenumber()].
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns the vertex index at rank therank in the range [1,edgenumber()].
 ") Edge;
 		Standard_Integer Edge(const Standard_Integer theRank);
 
 		/****************** EdgeNumber ******************/
 		/**** md5 signature: 898d7eb3e12f6c69ff0badaf7425349f ****/
 		%feature("compactdefaultargs") EdgeNumber;
-		%feature("autodoc", "Returns the number of defined edges.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of defined edges.
 ") EdgeNumber;
 		Standard_Integer EdgeNumber();
 
 		/****************** EdgeNumberAllocated ******************/
 		/**** md5 signature: 139f246b08a8ce0f55c6095b947cd3fa ****/
 		%feature("compactdefaultargs") EdgeNumberAllocated;
-		%feature("autodoc", "Returns the number of allocated edges.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of allocated edges.
 ") EdgeNumberAllocated;
 		Standard_Integer EdgeNumberAllocated();
 
 		/****************** HasBoundColors ******************/
 		/**** md5 signature: df286c44188250f686e57a7dd18d920b ****/
 		%feature("compactdefaultargs") HasBoundColors;
-		%feature("autodoc", "Returns true when bound colors array is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when bound colors array is defined.
 ") HasBoundColors;
 		Standard_Boolean HasBoundColors();
 
 		/****************** HasVertexColors ******************/
 		/**** md5 signature: fa868ff9e1fa2eafb8056b01f75d6453 ****/
 		%feature("compactdefaultargs") HasVertexColors;
-		%feature("autodoc", "Returns true when vertex colors array is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when vertex colors array is defined.
 ") HasVertexColors;
 		Standard_Boolean HasVertexColors();
 
 		/****************** HasVertexNormals ******************/
 		/**** md5 signature: f69d9e0b50cc347b8c12d527538021e3 ****/
 		%feature("compactdefaultargs") HasVertexNormals;
-		%feature("autodoc", "Returns true when vertex normals array is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when vertex normals array is defined.
 ") HasVertexNormals;
 		Standard_Boolean HasVertexNormals();
 
 		/****************** HasVertexTexels ******************/
 		/**** md5 signature: 189ef2b540a7aeb886d9e42f911a79f4 ****/
 		%feature("compactdefaultargs") HasVertexTexels;
-		%feature("autodoc", "Returns true when vertex texels array is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when vertex texels array is defined.
 ") HasVertexTexels;
 		Standard_Boolean HasVertexTexels();
 
 		/****************** Indices ******************/
 		/**** md5 signature: 1bb8a727555fded0b4938a4c1f24b002 ****/
 		%feature("compactdefaultargs") Indices;
-		%feature("autodoc", "Returns optional index buffer.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_IndexBuffer>
+
+Description
+-----------
+Returns optional index buffer.
 ") Indices;
 		const opencascade::handle<Graphic3d_IndexBuffer> & Indices();
 
 		/****************** IsValid ******************/
 		/**** md5 signature: 184ccb4a09475d4c8f058e2d3ed097b2 ****/
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "Returns true only when the contains of this array is available.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true only when the contains of this array is available.
 ") IsValid;
 		Standard_Boolean IsValid();
 
 		/****************** ItemNumber ******************/
 		/**** md5 signature: 27fb333f2c63f512e18325a79deeb603 ****/
 		%feature("compactdefaultargs") ItemNumber;
-		%feature("autodoc", "Returns the number of total items according to the array type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of total items according to the array type.
 ") ItemNumber;
 		Standard_Integer ItemNumber();
 
 		/****************** SetBoundColor ******************/
 		/**** md5 signature: 0293a9c310b80e98889b74c21981c4c8 ****/
 		%feature("compactdefaultargs") SetBoundColor;
-		%feature("autodoc", "Change the bound color of rank theindex in the array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the bound color of rank theindex in the array.
 ") SetBoundColor;
 		void SetBoundColor(const Standard_Integer theIndex, const Quantity_Color & theColor);
 
 		/****************** SetBoundColor ******************/
 		/**** md5 signature: 1a706fdd93611a8eafb16a5f7330adfc ****/
 		%feature("compactdefaultargs") SetBoundColor;
-		%feature("autodoc", "Change the bound color of rank theindex in the array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
@@ -2641,33 +2792,39 @@ theR: float
 theG: float
 theB: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the bound color of rank theindex in the array.
 ") SetBoundColor;
 		void SetBoundColor(const Standard_Integer theIndex, const Standard_Real theR, const Standard_Real theG, const Standard_Real theB);
 
 		/****************** SetVertexColor ******************/
 		/**** md5 signature: 5e3741ae404c07188cda0cf2c04c1af9 ****/
 		%feature("compactdefaultargs") SetVertexColor;
-		%feature("autodoc", "Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor node color.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor node color.
 ") SetVertexColor;
 		void SetVertexColor(const Standard_Integer theIndex, const Quantity_Color & theColor);
 
 		/****************** SetVertexColor ******************/
 		/**** md5 signature: 7af065799323ec7bfb7d70ea95f7628d ****/
 		%feature("compactdefaultargs") SetVertexColor;
-		%feature("autodoc", "Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] ther red color value within [0, 1] range @param[in] theg green color value within [0, 1] range @param[in] theb blue color value within [0, 1] range.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
@@ -2675,65 +2832,77 @@ theR: float
 theG: float
 theB: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] ther red color value within [0, 1] range @param[in] theg green color value within [0, 1] range @param[in] theb blue color value within [0, 1] range.
 ") SetVertexColor;
 		void SetVertexColor(const Standard_Integer theIndex, const Standard_Real theR, const Standard_Real theG, const Standard_Real theB);
 
 		/****************** SetVertexColor ******************/
 		/**** md5 signature: 365ecc2a1256e9e4dfce4691a873708a ****/
 		%feature("compactdefaultargs") SetVertexColor;
-		%feature("autodoc", "Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor node rgba color values within [0, 255] range.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theColor: Graphic3d_Vec4ub
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the vertex color in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor node rgba color values within [0, 255] range.
 ") SetVertexColor;
 		void SetVertexColor(const Standard_Integer theIndex, const Graphic3d_Vec4ub & theColor);
 
 		/****************** SetVertexColor ******************/
 		/**** md5 signature: eeeed96e9c367036c67cad249943f072 ****/
 		%feature("compactdefaultargs") SetVertexColor;
-		%feature("autodoc", "Change the vertex color in the array. @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor32 packed rgba color values.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theColor32: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the vertex color in the array. @code thecolor32 = alpha << 24 + blue << 16 + green << 8 + red @endcode @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thecolor32 packed rgba color values.
 ") SetVertexColor;
 		void SetVertexColor(const Standard_Integer theIndex, const Standard_Integer theColor32);
 
 		/****************** SetVertexNormal ******************/
 		/**** md5 signature: 56e59c0948b5301def0a7eca1379fd17 ****/
 		%feature("compactdefaultargs") SetVertexNormal;
-		%feature("autodoc", "Change the vertex normal in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thenormal normalized surface normal.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theNormal: gp_Dir
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the vertex normal in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thenormal normalized surface normal.
 ") SetVertexNormal;
 		void SetVertexNormal(const Standard_Integer theIndex, const gp_Dir & theNormal);
 
 		/****************** SetVertexNormal ******************/
 		/**** md5 signature: 63c2e7dcdaea066bc49bcf66ad7ca7f6 ****/
 		%feature("compactdefaultargs") SetVertexNormal;
-		%feature("autodoc", "Change the vertex normal in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thenx surface normal x component @param[in] theny surface normal y component @param[in] thenz surface normal z component.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
@@ -2741,66 +2910,78 @@ theNX: float
 theNY: float
 theNZ: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the vertex normal in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thenx surface normal x component @param[in] theny surface normal y component @param[in] thenz surface normal z component.
 ") SetVertexNormal;
 		void SetVertexNormal(const Standard_Integer theIndex, const Standard_Real theNX, const Standard_Real theNY, const Standard_Real theNZ);
 
 		/****************** SetVertexTexel ******************/
 		/**** md5 signature: d290b59df93ca78d439630a79c10fb96 ****/
 		%feature("compactdefaultargs") SetVertexTexel;
-		%feature("autodoc", "Change the vertex texel in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thetexel node uv coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theTexel: gp_Pnt2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the vertex texel in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thetexel node uv coordinates.
 ") SetVertexTexel;
 		void SetVertexTexel(const Standard_Integer theIndex, const gp_Pnt2d & theTexel);
 
 		/****************** SetVertexTexel ******************/
 		/**** md5 signature: 591a2402f51c2d9464abbf0004c2aab8 ****/
 		%feature("compactdefaultargs") SetVertexTexel;
-		%feature("autodoc", "Change the vertex texel in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thetx node u coordinate @param[in] thety node v coordinate.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theTX: float
 theTY: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the vertex texel in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thetx node u coordinate @param[in] thety node v coordinate.
 ") SetVertexTexel;
 		void SetVertexTexel(const Standard_Integer theIndex, const Standard_Real theTX, const Standard_Real theTY);
 
 		/****************** SetVertice ******************/
 		/**** md5 signature: 2b9b1a547f8ab7430320d077f7134a28 ****/
 		%feature("compactdefaultargs") SetVertice;
-		%feature("autodoc", "Change the vertice of rank theindex in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thevertex 3d coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theVertex: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the vertice of rank theindex in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thevertex 3d coordinates.
 ") SetVertice;
 		void SetVertice(const Standard_Integer theIndex, const gp_Pnt & theVertex);
 
 		/****************** SetVertice ******************/
 		/**** md5 signature: df303311bc01466daff43a98c2282220 ****/
 		%feature("compactdefaultargs") SetVertice;
-		%feature("autodoc", "Change the vertice in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thex coordinate x @param[in] they coordinate y @param[in] thez coordinate z.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
@@ -2808,211 +2989,253 @@ theX: float
 theY: float
 theZ: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the vertice in the array. @param[in] theindex node index within [1, vertexnumberallocated()] range @param[in] thex coordinate x @param[in] they coordinate y @param[in] thez coordinate z.
 ") SetVertice;
 		void SetVertice(const Standard_Integer theIndex, const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ);
 
 		/****************** StringType ******************/
 		/**** md5 signature: 7838785945a0a28ff90576bc900c0fc9 ****/
 		%feature("compactdefaultargs") StringType;
-		%feature("autodoc", "Returns the string type of this primitive.
-
-Returns
+		%feature("autodoc", "Return
 -------
 str
+
+Description
+-----------
+Returns the string type of this primitive.
 ") StringType;
 		Standard_CString StringType();
 
 		/****************** Type ******************/
 		/**** md5 signature: 766ba92896e370dd36bb18b553d14b69 ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "Returns the type of this primitive.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfPrimitiveArray
+
+Description
+-----------
+Returns the type of this primitive.
 ") Type;
 		Graphic3d_TypeOfPrimitiveArray Type();
 
 		/****************** VertexColor ******************/
 		/**** md5 signature: 894c541db7b41bdf5464eb184c84acbc ****/
 		%feature("compactdefaultargs") VertexColor;
-		%feature("autodoc", "Returns the vertex color at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range returns node color rgb value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 Quantity_Color
+
+Description
+-----------
+Returns the vertex color at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range return node color rgb value.
 ") VertexColor;
 		Quantity_Color VertexColor(const Standard_Integer theRank);
 
 		/****************** VertexColor ******************/
 		/**** md5 signature: 7de9a853ec7251d7d89a341ebd53d5cb ****/
 		%feature("compactdefaultargs") VertexColor;
-		%feature("autodoc", "Returns the vertex color from the vertex table if defined. @param[in] theindex node index within [1, vertexnumber()] range @param[out] thecolor node rgba color values within [0, 255] range.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theColor: Graphic3d_Vec4ub
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the vertex color from the vertex table if defined. @param[in] theindex node index within [1, vertexnumber()] range @param[out] thecolor node rgba color values within [0, 255] range.
 ") VertexColor;
 		void VertexColor(const Standard_Integer theIndex, Graphic3d_Vec4ub & theColor);
 
 		/****************** VertexColor ******************/
 		/**** md5 signature: da4a7941920a5d3bfbc05b00562a2a98 ****/
 		%feature("compactdefaultargs") VertexColor;
-		%feature("autodoc", "Returns the vertex color values from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] ther node red color component value within [0, 1] range @param[out] theg node green color component value within [0, 1] range @param[out] theb node blue color component value within [0, 1] range.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 theR: float
 theG: float
 theB: float
+
+Description
+-----------
+Returns the vertex color values from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] ther node red color component value within [0, 1] range @param[out] theg node green color component value within [0, 1] range @param[out] theb node blue color component value within [0, 1] range.
 ") VertexColor;
 		void VertexColor(const Standard_Integer theRank, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** VertexColor ******************/
 		/**** md5 signature: 40aea0b0194d19a40dd5ce23e97b877c ****/
 		%feature("compactdefaultargs") VertexColor;
-		%feature("autodoc", "Returns the vertex color values from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thecolor node rgba color packed into 32-bit integer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 theColor: int
+
+Description
+-----------
+Returns the vertex color values from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thecolor node rgba color packed into 32-bit integer.
 ") VertexColor;
 		void VertexColor(const Standard_Integer theRank, Standard_Integer &OutValue);
 
 		/****************** VertexNormal ******************/
 		/**** md5 signature: 23971fdb573e3fdf90a1785d18fde66e ****/
 		%feature("compactdefaultargs") VertexNormal;
-		%feature("autodoc", "Returns the vertex normal from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range returns normalized 3d vector defining surface normal.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 gp_Dir
+
+Description
+-----------
+Returns the vertex normal from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range return normalized 3d vector defining surface normal.
 ") VertexNormal;
 		gp_Dir VertexNormal(const Standard_Integer theRank);
 
 		/****************** VertexNormal ******************/
 		/**** md5 signature: 9cb8eef363df84964f026aeed71d96a7 ****/
 		%feature("compactdefaultargs") VertexNormal;
-		%feature("autodoc", "Returns the vertex normal coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thenx normal x coordinate @param[out] theny normal y coordinate @param[out] thenz normal z coordinate.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 theNX: float
 theNY: float
 theNZ: float
+
+Description
+-----------
+Returns the vertex normal coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thenx normal x coordinate @param[out] theny normal y coordinate @param[out] thenz normal z coordinate.
 ") VertexNormal;
 		void VertexNormal(const Standard_Integer theRank, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** VertexNumber ******************/
 		/**** md5 signature: 36051493accf9c2cd1057f35d93097d9 ****/
 		%feature("compactdefaultargs") VertexNumber;
-		%feature("autodoc", "Returns the number of defined vertex.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of defined vertex.
 ") VertexNumber;
 		Standard_Integer VertexNumber();
 
 		/****************** VertexNumberAllocated ******************/
 		/**** md5 signature: dff3d562e375cc252acecbd0a6f9e318 ****/
 		%feature("compactdefaultargs") VertexNumberAllocated;
-		%feature("autodoc", "Returns the number of allocated vertex.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of allocated vertex.
 ") VertexNumberAllocated;
 		Standard_Integer VertexNumberAllocated();
 
 		/****************** VertexTexel ******************/
 		/**** md5 signature: 01f81ccb106fdd8a29d253220a7a126e ****/
 		%feature("compactdefaultargs") VertexTexel;
-		%feature("autodoc", "Returns the vertex texture at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range returns uv coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 gp_Pnt2d
+
+Description
+-----------
+Returns the vertex texture at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range return uv coordinates.
 ") VertexTexel;
 		gp_Pnt2d VertexTexel(const Standard_Integer theRank);
 
 		/****************** VertexTexel ******************/
 		/**** md5 signature: 91f5db91f39ec84c9ae06927d6fc5937 ****/
 		%feature("compactdefaultargs") VertexTexel;
-		%feature("autodoc", "Returns the vertex texture coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thetx texel u coordinate value @param[out] thety texel v coordinate value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 theTX: float
 theTY: float
+
+Description
+-----------
+Returns the vertex texture coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thetx texel u coordinate value @param[out] thety texel v coordinate value.
 ") VertexTexel;
 		void VertexTexel(const Standard_Integer theRank, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Vertice ******************/
 		/**** md5 signature: 39ce48129cb147a713a12c21a8e35a55 ****/
 		%feature("compactdefaultargs") Vertice;
-		%feature("autodoc", "Returns the vertice from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range returns node 3d coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the vertice from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range return node 3d coordinates.
 ") Vertice;
 		gp_Pnt Vertice(const Standard_Integer theRank);
 
 		/****************** Vertice ******************/
 		/**** md5 signature: 9a4d98ac80934cdba48966df4fecbe00 ****/
 		%feature("compactdefaultargs") Vertice;
-		%feature("autodoc", "Returns the vertice coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thex node x coordinate value @param[out] they node y coordinate value @param[out] thez node z coordinate value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 theX: float
 theY: float
 theZ: float
+
+Description
+-----------
+Returns the vertice coordinates at rank therank from the vertex table if defined. @param[in] therank node index within [1, vertexnumber()] range @param[out] thex node x coordinate value @param[out] they node y coordinate value @param[out] thez node z coordinate value.
 ") Vertice;
 		void Vertice(const Standard_Integer theRank, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3035,195 +3258,231 @@ class Graphic3d_Aspects : public Standard_Transient {
 		/****************** Graphic3d_Aspects ******************/
 		/**** md5 signature: e28433a8ce967ebeaba5ca07028bdd70 ****/
 		%feature("compactdefaultargs") Graphic3d_Aspects;
-		%feature("autodoc", "Creates a context table for drawing primitives defined with the following default values:.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a context table for drawing primitives defined with the following default values:.
 ") Graphic3d_Aspects;
 		 Graphic3d_Aspects();
 
 		/****************** AllowBackFace ******************/
 		/**** md5 signature: c90f5a2b43fff04968eb4dde02cb190f ****/
 		%feature("compactdefaultargs") AllowBackFace;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AllowBackFace;
 		void AllowBackFace();
 
 		/****************** AlphaCutoff ******************/
 		/**** md5 signature: 24016059420e9e5c6d337d7b29b53858 ****/
 		%feature("compactdefaultargs") AlphaCutoff;
-		%feature("autodoc", "Returns alpha cutoff threshold, for discarding fragments within graphic3d_alphamode_mask mode (0.5 by default). if the alpha value is greater than or equal to this value then it is rendered as fully opaque, otherwise, it is rendered as fully transparent.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns alpha cutoff threshold, for discarding fragments within graphic3d_alphamode_mask mode (0.5 by default). if the alpha value is greater than or equal to this value then it is rendered as fully opaque, otherwise, it is rendered as fully transparent.
 ") AlphaCutoff;
 		Standard_ShortReal AlphaCutoff();
 
 		/****************** AlphaMode ******************/
 		/**** md5 signature: c141b940ccd51adaa91c404b4d4a5d76 ****/
 		%feature("compactdefaultargs") AlphaMode;
-		%feature("autodoc", "Returns the way how alpha value should be treated (graphic3d_alphamode_blendauto by default, for backward compatibility).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_AlphaMode
+
+Description
+-----------
+Returns the way how alpha value should be treated (graphic3d_alphamode_blendauto by default, for backward compatibility).
 ") AlphaMode;
 		Graphic3d_AlphaMode AlphaMode();
 
 		/****************** BackFace ******************/
 		/**** md5 signature: d634528b3c0ee7a40c5cedfafb5cbf5c ****/
 		%feature("compactdefaultargs") BackFace;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") BackFace;
 		bool BackFace();
 
 		/****************** BackInteriorColor ******************/
 		/**** md5 signature: e43c9444d80ba6362541272eb09b8d61 ****/
 		%feature("compactdefaultargs") BackInteriorColor;
-		%feature("autodoc", "Return back interior color.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Return back interior color.
 ") BackInteriorColor;
 		const Quantity_Color & BackInteriorColor();
 
 		/****************** BackInteriorColorRGBA ******************/
 		/**** md5 signature: fd87b0cbfd66e53bad2724623161e871 ****/
 		%feature("compactdefaultargs") BackInteriorColorRGBA;
-		%feature("autodoc", "Return back interior color.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_ColorRGBA
+
+Description
+-----------
+Return back interior color.
 ") BackInteriorColorRGBA;
 		const Quantity_ColorRGBA & BackInteriorColorRGBA();
 
 		/****************** BackMaterial ******************/
 		/**** md5 signature: d61ddc63820fda6c18f961c1b8f4fac2 ****/
 		%feature("compactdefaultargs") BackMaterial;
-		%feature("autodoc", "Returns the surface material of internal faces.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_MaterialAspect
+
+Description
+-----------
+Returns the surface material of internal faces.
 ") BackMaterial;
 		const Graphic3d_MaterialAspect & BackMaterial();
 
 		/****************** ChangeBackMaterial ******************/
 		/**** md5 signature: bf42bcce6fb2c7cbca5951a18913d8b2 ****/
 		%feature("compactdefaultargs") ChangeBackMaterial;
-		%feature("autodoc", "Returns the surface material of internal faces.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_MaterialAspect
+
+Description
+-----------
+Returns the surface material of internal faces.
 ") ChangeBackMaterial;
 		Graphic3d_MaterialAspect & ChangeBackMaterial();
 
 		/****************** ChangeFrontMaterial ******************/
 		/**** md5 signature: 896bb6b9197226375817929795f577c8 ****/
 		%feature("compactdefaultargs") ChangeFrontMaterial;
-		%feature("autodoc", "Returns the surface material of external faces.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_MaterialAspect
+
+Description
+-----------
+Returns the surface material of external faces.
 ") ChangeFrontMaterial;
 		Graphic3d_MaterialAspect & ChangeFrontMaterial();
 
 		/****************** Color ******************/
 		/**** md5 signature: 7cec116411eb20e52d1fabf3015346da ****/
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "Return the color.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Return the color.
 ") Color;
 		const Quantity_Color & Color();
 
 		/****************** ColorRGBA ******************/
 		/**** md5 signature: 615b6d48d8bc4764a07d0e2ff837764b ****/
 		%feature("compactdefaultargs") ColorRGBA;
-		%feature("autodoc", "Return color.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_ColorRGBA
+
+Description
+-----------
+Return color.
 ") ColorRGBA;
 		const Quantity_ColorRGBA & ColorRGBA();
 
 		/****************** ColorSubTitle ******************/
 		/**** md5 signature: ec9fb7d73de227b76a49a632255940a1 ****/
 		%feature("compactdefaultargs") ColorSubTitle;
-		%feature("autodoc", "Return text background/shadow color; equals to edgecolor() property.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Return text background/shadow color; equals to edgecolor() property.
 ") ColorSubTitle;
 		const Quantity_Color & ColorSubTitle();
 
 		/****************** ColorSubTitleRGBA ******************/
 		/**** md5 signature: 19c99bba7072d8a37082e5e5db18e02f ****/
 		%feature("compactdefaultargs") ColorSubTitleRGBA;
-		%feature("autodoc", "Returns text background/shadow color; equals to edgecolor() property.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_ColorRGBA
+
+Description
+-----------
+Returns text background/shadow color; equals to edgecolor() property.
 ") ColorSubTitleRGBA;
 		const Quantity_ColorRGBA & ColorSubTitleRGBA();
 
 		/****************** DefaultLinePatternForType ******************/
 		/**** md5 signature: db0377d31ee56d14b26490c9ec64f6aa ****/
 		%feature("compactdefaultargs") DefaultLinePatternForType;
-		%feature("autodoc", "Return stipple line pattern for line type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Aspect_TypeOfLine
 
-Returns
+Return
 -------
 uint16_t
+
+Description
+-----------
+Return stipple line pattern for line type.
 ") DefaultLinePatternForType;
 		static uint16_t DefaultLinePatternForType(Aspect_TypeOfLine theType);
 
 		/****************** DefaultLineTypeForPattern ******************/
 		/**** md5 signature: 86cfe3bd72966e1639229affebe88fde ****/
 		%feature("compactdefaultargs") DefaultLineTypeForPattern;
-		%feature("autodoc", "Return line type for stipple line pattern.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePattern: uint16_t
 
-Returns
+Return
 -------
 Aspect_TypeOfLine
+
+Description
+-----------
+Return line type for stipple line pattern.
 ") DefaultLineTypeForPattern;
 		static Aspect_TypeOfLine DefaultLineTypeForPattern(uint16_t thePattern);
 
 		/****************** Distinguish ******************/
 		/**** md5 signature: 0454cac171c21f4684edced692b81ef0 ****/
 		%feature("compactdefaultargs") Distinguish;
-		%feature("autodoc", "Returns true if material properties should be distinguished for back and front faces (false by default).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if material properties should be distinguished for back and front faces (false by default).
 ") Distinguish;
 		bool Distinguish();
 
@@ -3239,1144 +3498,1360 @@ bool
 		/****************** EdgeColor ******************/
 		/**** md5 signature: e3bf049881e7a42425197782f2de2754 ****/
 		%feature("compactdefaultargs") EdgeColor;
-		%feature("autodoc", "Return color of edges.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Return color of edges.
 ") EdgeColor;
 		const Quantity_Color & EdgeColor();
 
 		/****************** EdgeColorRGBA ******************/
 		/**** md5 signature: 7f6e351360a662eeb14730bdbc180102 ****/
 		%feature("compactdefaultargs") EdgeColorRGBA;
-		%feature("autodoc", "Return color of edges.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_ColorRGBA
+
+Description
+-----------
+Return color of edges.
 ") EdgeColorRGBA;
 		const Quantity_ColorRGBA & EdgeColorRGBA();
 
 		/****************** EdgeLineType ******************/
 		/**** md5 signature: 88c19f6858297c0d6ca1eb0808721938 ****/
 		%feature("compactdefaultargs") EdgeLineType;
-		%feature("autodoc", "Return edges line type (same as linetype()).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfLine
+
+Description
+-----------
+Return edges line type (same as linetype()).
 ") EdgeLineType;
 		Aspect_TypeOfLine EdgeLineType();
 
 		/****************** EdgeWidth ******************/
 		/**** md5 signature: a6059e81322b478bfe4e887cc682adeb ****/
 		%feature("compactdefaultargs") EdgeWidth;
-		%feature("autodoc", "Return width for edges in pixels (same as linewidth()).
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return width for edges in pixels (same as linewidth()).
 ") EdgeWidth;
 		Standard_ShortReal EdgeWidth();
 
 		/****************** FaceCulling ******************/
 		/**** md5 signature: ea5bcfdb7347bbf80f346aa702bd7b90 ****/
 		%feature("compactdefaultargs") FaceCulling;
-		%feature("autodoc", "Return face culling mode; graphic3d_faceculling_backclosed by default. a back-facing polygon is defined as a polygon whose vertices are in a clockwise order with respect to screen coordinates.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfBackfacingModel
+
+Description
+-----------
+Return face culling mode; graphic3d_faceculling_backclosed by default. a back-facing polygon is defined as a polygon whose vertices are in a clockwise order with respect to screen coordinates.
 ") FaceCulling;
 		Graphic3d_TypeOfBackfacingModel FaceCulling();
 
 		/****************** FrontMaterial ******************/
 		/**** md5 signature: 41b8cfff159c56853a21e11111805499 ****/
 		%feature("compactdefaultargs") FrontMaterial;
-		%feature("autodoc", "Returns the surface material of external faces.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_MaterialAspect
+
+Description
+-----------
+Returns the surface material of external faces.
 ") FrontMaterial;
 		const Graphic3d_MaterialAspect & FrontMaterial();
 
 		/****************** HatchStyle ******************/
 		/**** md5 signature: 07b62677450d3df62f68cd2f20b612da ****/
 		%feature("compactdefaultargs") HatchStyle;
-		%feature("autodoc", "Returns the hatch type used when interiorstyle is is_hatch.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_HatchStyle>
+
+Description
+-----------
+Returns the hatch type used when interiorstyle is is_hatch.
 ") HatchStyle;
 		const opencascade::handle<Graphic3d_HatchStyle> & HatchStyle();
 
 		/****************** InteriorColor ******************/
 		/**** md5 signature: 257c7e47a9943279e873d8c441621100 ****/
 		%feature("compactdefaultargs") InteriorColor;
-		%feature("autodoc", "Return interior color.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Return interior color.
 ") InteriorColor;
 		const Quantity_Color & InteriorColor();
 
 		/****************** InteriorColorRGBA ******************/
 		/**** md5 signature: 384d675ce829aa2e285b913e4365eb79 ****/
 		%feature("compactdefaultargs") InteriorColorRGBA;
-		%feature("autodoc", "Return interior color.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_ColorRGBA
+
+Description
+-----------
+Return interior color.
 ") InteriorColorRGBA;
 		const Quantity_ColorRGBA & InteriorColorRGBA();
 
 		/****************** InteriorStyle ******************/
 		/**** md5 signature: 45d0297b03618fc24ff5055820bfb55e ****/
 		%feature("compactdefaultargs") InteriorStyle;
-		%feature("autodoc", "Return interior rendering style; aspect_is_solid by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_InteriorStyle
+
+Description
+-----------
+Return interior rendering style; aspect_is_solid by default.
 ") InteriorStyle;
 		Aspect_InteriorStyle InteriorStyle();
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 9c6c9deb326013434fe87e965e640203 ****/
 		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "Check for equality with another aspects.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_Aspects
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Check for equality with another aspects.
 ") IsEqual;
 		bool IsEqual(const Graphic3d_Aspects & theOther);
 
 		/****************** IsMarkerSprite ******************/
 		/**** md5 signature: 37db8501fdef81ffca82c4ea0edb64df ****/
 		%feature("compactdefaultargs") IsMarkerSprite;
-		%feature("autodoc", "Returns true if marker should be drawn using marker sprite (either user-provided or generated).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if marker should be drawn using marker sprite (either user-provided or generated).
 ") IsMarkerSprite;
 		bool IsMarkerSprite();
 
 		/****************** IsTextZoomable ******************/
 		/**** md5 signature: eb038d91f0438c94d940691891b24f36 ****/
 		%feature("compactdefaultargs") IsTextZoomable;
-		%feature("autodoc", "Returns true when the text zoomable is on.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when the text zoomable is on.
 ") IsTextZoomable;
 		bool IsTextZoomable();
 
 		/****************** LinePattern ******************/
 		/**** md5 signature: 0f5a2917d18d0384d2bca639fea5b45b ****/
 		%feature("compactdefaultargs") LinePattern;
-		%feature("autodoc", "Return custom stipple line pattern; 0xffff by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 uint16_t
+
+Description
+-----------
+Return custom stipple line pattern; 0xffff by default.
 ") LinePattern;
 		uint16_t LinePattern();
 
 		/****************** LineStippleFactor ******************/
 		/**** md5 signature: e63889618f2bf3b4350144cbc25324dc ****/
 		%feature("compactdefaultargs") LineStippleFactor;
-		%feature("autodoc", "Return a multiplier for each bit in the line stipple pattern within [1, 256] range; 1 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 uint16_t
+
+Description
+-----------
+Return a multiplier for each bit in the line stipple pattern within [1, 256] range; 1 by default.
 ") LineStippleFactor;
 		uint16_t LineStippleFactor();
 
 		/****************** LineType ******************/
 		/**** md5 signature: 6ae68230b33e9e754a59131adc3dc5c1 ****/
 		%feature("compactdefaultargs") LineType;
-		%feature("autodoc", "Return line type; aspect_tol_solid by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfLine
+
+Description
+-----------
+Return line type; aspect_tol_solid by default.
 ") LineType;
 		Aspect_TypeOfLine LineType();
 
 		/****************** LineWidth ******************/
 		/**** md5 signature: 525ec9e8ba2d3cc4dafdb10c0f3d85f8 ****/
 		%feature("compactdefaultargs") LineWidth;
-		%feature("autodoc", "Return width for edges in pixels; 1.0 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return width for edges in pixels; 1.0 by default.
 ") LineWidth;
 		Standard_ShortReal LineWidth();
 
 		/****************** MarkerImage ******************/
 		/**** md5 signature: f83a5773dd88984525c91de89afe25a4 ****/
 		%feature("compactdefaultargs") MarkerImage;
-		%feature("autodoc", "Returns marker's image texture. could be null handle if marker aspect has been initialized as default type of marker.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_MarkerImage>
+
+Description
+-----------
+Returns marker's image texture. could be null handle if marker aspect has been initialized as default type of marker.
 ") MarkerImage;
 		const opencascade::handle<Graphic3d_MarkerImage> & MarkerImage();
 
 		/****************** MarkerScale ******************/
 		/**** md5 signature: aad2097b5af4a9b644438f7144b91d17 ****/
 		%feature("compactdefaultargs") MarkerScale;
-		%feature("autodoc", "Return marker scale factor; 1.0 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return marker scale factor; 1.0 by default.
 ") MarkerScale;
 		Standard_ShortReal MarkerScale();
 
 		/****************** MarkerType ******************/
 		/**** md5 signature: 191ac2efa41e30b533cb10620a7a11df ****/
 		%feature("compactdefaultargs") MarkerType;
-		%feature("autodoc", "Return marker type; aspect_tom_point by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfMarker
+
+Description
+-----------
+Return marker type; aspect_tom_point by default.
 ") MarkerType;
 		Aspect_TypeOfMarker MarkerType();
 
 		/****************** PolygonOffset ******************/
 		/**** md5 signature: 5bc0db1ff0ef7eec07c4eb78b80f6cca ****/
 		%feature("compactdefaultargs") PolygonOffset;
-		%feature("autodoc", "Returns current polygon offsets settings.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_PolygonOffset
+
+Description
+-----------
+Returns current polygon offsets settings.
 ") PolygonOffset;
 		const Graphic3d_PolygonOffset & PolygonOffset();
 
 		/****************** PolygonOffsets ******************/
 		/**** md5 signature: 73eaf06610be37df77e4abd92c14e4d2 ****/
 		%feature("compactdefaultargs") PolygonOffsets;
-		%feature("autodoc", "Returns current polygon offsets settings.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theMode: int
 theFactor: float
 theUnits: float
+
+Description
+-----------
+Returns current polygon offsets settings.
 ") PolygonOffsets;
 		void PolygonOffsets(Standard_Integer &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** SetAlphaMode ******************/
 		/**** md5 signature: b84cdd4cb6d53fa03454718b7ba18032 ****/
 		%feature("compactdefaultargs") SetAlphaMode;
-		%feature("autodoc", "Defines the way how alpha value should be treated.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: Graphic3d_AlphaMode
-theAlphaCutoff: float,optional
-	default value is 0.5f
+theAlphaCutoff: float (optional, default to 0.5f)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the way how alpha value should be treated.
 ") SetAlphaMode;
 		void SetAlphaMode(Graphic3d_AlphaMode theMode, Standard_ShortReal theAlphaCutoff = 0.5f);
 
 		/****************** SetBackInteriorColor ******************/
 		/**** md5 signature: 0eb222f94cb4cedfb4675fc7a778c746 ****/
 		%feature("compactdefaultargs") SetBackInteriorColor;
-		%feature("autodoc", "Modifies the color of the interior of the back face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the color of the interior of the back face.
 ") SetBackInteriorColor;
 		void SetBackInteriorColor(const Quantity_Color & theColor);
 
 		/****************** SetBackInteriorColor ******************/
 		/**** md5 signature: 1ac4b62834b23720aa71ec554afa2b42 ****/
 		%feature("compactdefaultargs") SetBackInteriorColor;
-		%feature("autodoc", "Modifies the color of the interior of the back face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_ColorRGBA
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the color of the interior of the back face.
 ") SetBackInteriorColor;
 		void SetBackInteriorColor(const Quantity_ColorRGBA & theColor);
 
 		/****************** SetBackMaterial ******************/
 		/**** md5 signature: 0796d7a91bd9fded95bfe550066edd54 ****/
 		%feature("compactdefaultargs") SetBackMaterial;
-		%feature("autodoc", "Modifies the surface material of internal faces.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaterial: Graphic3d_MaterialAspect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the surface material of internal faces.
 ") SetBackMaterial;
 		void SetBackMaterial(const Graphic3d_MaterialAspect & theMaterial);
 
 		/****************** SetColor ******************/
 		/**** md5 signature: 289e78889c9a8b48d6cf1ce3b205415d ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Modifies the color.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the color.
 ") SetColor;
 		void SetColor(const Quantity_Color & theColor);
 
 		/****************** SetColorSubTitle ******************/
 		/**** md5 signature: b8dff86a23c012bf0fc166e089f32797 ****/
 		%feature("compactdefaultargs") SetColorSubTitle;
-		%feature("autodoc", "Modifies text background/shadow color; equals to edgecolor() property.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies text background/shadow color; equals to edgecolor() property.
 ") SetColorSubTitle;
 		void SetColorSubTitle(const Quantity_Color & theColor);
 
 		/****************** SetColorSubTitle ******************/
 		/**** md5 signature: 366032eddc73ad7164a54cb28550c2e6 ****/
 		%feature("compactdefaultargs") SetColorSubTitle;
-		%feature("autodoc", "Modifies text background/shadow color; equals to edgecolor() property.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_ColorRGBA
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies text background/shadow color; equals to edgecolor() property.
 ") SetColorSubTitle;
 		void SetColorSubTitle(const Quantity_ColorRGBA & theColor);
 
 		/****************** SetDistinguish ******************/
 		/**** md5 signature: 76455feae8e798c74be25ad0b45d935f ****/
 		%feature("compactdefaultargs") SetDistinguish;
-		%feature("autodoc", "Set material distinction between front and back faces.
-
+		%feature("autodoc", "
 Parameters
 ----------
 toDistinguish: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set material distinction between front and back faces.
 ") SetDistinguish;
 		void SetDistinguish(bool toDistinguish);
 
 		/****************** SetDistinguishOff ******************/
 		/**** md5 signature: 63b9d9d34afec45ea7929fa232816c0a ****/
 		%feature("compactdefaultargs") SetDistinguishOff;
-		%feature("autodoc", "Forbids material distinction between front and back faces.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Forbids material distinction between front and back faces.
 ") SetDistinguishOff;
 		void SetDistinguishOff();
 
 		/****************** SetDistinguishOn ******************/
 		/**** md5 signature: 11cab8d2ed03315d6cef72413a6f2c0e ****/
 		%feature("compactdefaultargs") SetDistinguishOn;
-		%feature("autodoc", "Allows material distinction between front and back faces.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Allows material distinction between front and back faces.
 ") SetDistinguishOn;
 		void SetDistinguishOn();
 
 		/****************** SetDrawEdges ******************/
 		/**** md5 signature: ed098dddd2db1cbebf5f0f5b7faab252 ****/
 		%feature("compactdefaultargs") SetDrawEdges;
-		%feature("autodoc", "Set if mesh edges should be drawn or not.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToDraw: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if mesh edges should be drawn or not.
 ") SetDrawEdges;
 		void SetDrawEdges(bool theToDraw);
 
 		/****************** SetDrawSilhouette ******************/
 		/**** md5 signature: 97a46083210a65f184ecb83925fdec43 ****/
 		%feature("compactdefaultargs") SetDrawSilhouette;
-		%feature("autodoc", "Enables/disables drawing silhouette (outline).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToDraw: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Enables/disables drawing silhouette (outline).
 ") SetDrawSilhouette;
 		void SetDrawSilhouette(bool theToDraw);
 
 		/****************** SetEdgeColor ******************/
 		/**** md5 signature: d00577edf69caa0380c91743cfde58a3 ****/
 		%feature("compactdefaultargs") SetEdgeColor;
-		%feature("autodoc", "Modifies the color of the edge of the face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the color of the edge of the face.
 ") SetEdgeColor;
 		void SetEdgeColor(const Quantity_Color & theColor);
 
 		/****************** SetEdgeColor ******************/
 		/**** md5 signature: 4dc69c28314e0005ef63bdc261ea2d54 ****/
 		%feature("compactdefaultargs") SetEdgeColor;
-		%feature("autodoc", "Modifies the color of the edge of the face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_ColorRGBA
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the color of the edge of the face.
 ") SetEdgeColor;
 		void SetEdgeColor(const Quantity_ColorRGBA & theColor);
 
 		/****************** SetEdgeLineType ******************/
 		/**** md5 signature: b1791fa33e1cb77a340b2371826e303d ****/
 		%feature("compactdefaultargs") SetEdgeLineType;
-		%feature("autodoc", "Modifies the edge line type (same as setlinetype()).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Aspect_TypeOfLine
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the edge line type (same as setlinetype()).
 ") SetEdgeLineType;
 		void SetEdgeLineType(Aspect_TypeOfLine theType);
 
 		/****************** SetEdgeOff ******************/
 		/**** md5 signature: 209653f93a4a475b948b658dadb3c5b8 ****/
 		%feature("compactdefaultargs") SetEdgeOff;
-		%feature("autodoc", "The edges of fillareas are not drawn.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+The edges of fillareas are not drawn.
 ") SetEdgeOff;
 		void SetEdgeOff();
 
 		/****************** SetEdgeOn ******************/
 		/**** md5 signature: 12716e13a8bcb1a1053a2855ca9739e1 ****/
 		%feature("compactdefaultargs") SetEdgeOn;
-		%feature("autodoc", "The edges of fillareas are drawn.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+The edges of fillareas are drawn.
 ") SetEdgeOn;
 		void SetEdgeOn();
 
 		/****************** SetEdgeWidth ******************/
 		/**** md5 signature: 1b9374e10baaa83634a6a4139bb9f9f7 ****/
 		%feature("compactdefaultargs") SetEdgeWidth;
-		%feature("autodoc", "Modifies the edge thickness (same as setlinewidth()).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWidth: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the edge thickness (same as setlinewidth()).
 ") SetEdgeWidth;
 		void SetEdgeWidth(Standard_Real theWidth);
 
 		/****************** SetFaceCulling ******************/
 		/**** md5 signature: e33027971df977c7340567a81a044749 ****/
 		%feature("compactdefaultargs") SetFaceCulling;
-		%feature("autodoc", "Set face culling mode.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCulling: Graphic3d_TypeOfBackfacingModel
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set face culling mode.
 ") SetFaceCulling;
 		void SetFaceCulling(Graphic3d_TypeOfBackfacingModel theCulling);
 
 		/****************** SetFrontMaterial ******************/
 		/**** md5 signature: 14c2813796ead5a225d907bc718417d2 ****/
 		%feature("compactdefaultargs") SetFrontMaterial;
-		%feature("autodoc", "Modifies the surface material of external faces.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaterial: Graphic3d_MaterialAspect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the surface material of external faces.
 ") SetFrontMaterial;
 		void SetFrontMaterial(const Graphic3d_MaterialAspect & theMaterial);
 
 		/****************** SetHatchStyle ******************/
 		/**** md5 signature: b0caa9e27048ee8a4af14f32988bab5a ****/
 		%feature("compactdefaultargs") SetHatchStyle;
-		%feature("autodoc", "Modifies the hatch type used when interiorstyle is is_hatch.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStyle: Graphic3d_HatchStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the hatch type used when interiorstyle is is_hatch.
 ") SetHatchStyle;
 		void SetHatchStyle(const opencascade::handle<Graphic3d_HatchStyle> & theStyle);
 
 		/****************** SetHatchStyle ******************/
 		/**** md5 signature: 571c2e2029ec1961c6be66b9697ae219 ****/
 		%feature("compactdefaultargs") SetHatchStyle;
-		%feature("autodoc", "Modifies the hatch type used when interiorstyle is is_hatch @warning this method always creates a new handle for a given hatch style.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStyle: Aspect_HatchStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the hatch type used when interiorstyle is is_hatch @warning this method always creates a new handle for a given hatch style.
 ") SetHatchStyle;
 		void SetHatchStyle(const Aspect_HatchStyle theStyle);
 
 		/****************** SetInteriorColor ******************/
 		/**** md5 signature: a5ea883367163149052e810bf49eda6b ****/
 		%feature("compactdefaultargs") SetInteriorColor;
-		%feature("autodoc", "Modifies the color of the interior of the face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the color of the interior of the face.
 ") SetInteriorColor;
 		void SetInteriorColor(const Quantity_Color & theColor);
 
 		/****************** SetInteriorColor ******************/
 		/**** md5 signature: 167ecffce763f5a546bc032caffcc7be ****/
 		%feature("compactdefaultargs") SetInteriorColor;
-		%feature("autodoc", "Modifies the color of the interior of the face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_ColorRGBA
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the color of the interior of the face.
 ") SetInteriorColor;
 		void SetInteriorColor(const Quantity_ColorRGBA & theColor);
 
 		/****************** SetInteriorStyle ******************/
 		/**** md5 signature: a275ca9769f814a82eb74f1486e02ca5 ****/
 		%feature("compactdefaultargs") SetInteriorStyle;
-		%feature("autodoc", "Modifies the interior type used for rendering.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStyle: Aspect_InteriorStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the interior type used for rendering.
 ") SetInteriorStyle;
 		void SetInteriorStyle(const Aspect_InteriorStyle theStyle);
 
 		/****************** SetLinePattern ******************/
 		/**** md5 signature: dcb92c889cf404e8110d52ab7ef1878a ****/
 		%feature("compactdefaultargs") SetLinePattern;
-		%feature("autodoc", "Modifies the stipple line pattern, and changes line type to aspect_tol_userdefined for non-standard pattern.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePattern: uint16_t
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the stipple line pattern, and changes line type to aspect_tol_userdefined for non-standard pattern.
 ") SetLinePattern;
 		void SetLinePattern(uint16_t thePattern);
 
 		/****************** SetLineStippleFactor ******************/
 		/**** md5 signature: 5a4ce4aa1b2cbf776034be5e022001ab ****/
 		%feature("compactdefaultargs") SetLineStippleFactor;
-		%feature("autodoc", "Set a multiplier for each bit in the line stipple pattern.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFactor: uint16_t
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set a multiplier for each bit in the line stipple pattern.
 ") SetLineStippleFactor;
 		void SetLineStippleFactor(uint16_t theFactor);
 
 		/****************** SetLineType ******************/
 		/**** md5 signature: 62e1ffe971a62e7ffb6bed2fec770aa5 ****/
 		%feature("compactdefaultargs") SetLineType;
-		%feature("autodoc", "Modifies the line type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Aspect_TypeOfLine
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the line type.
 ") SetLineType;
 		void SetLineType(Aspect_TypeOfLine theType);
 
 		/****************** SetLineWidth ******************/
 		/**** md5 signature: 0eb60d9fdb84bb68cf3a753adfe98805 ****/
 		%feature("compactdefaultargs") SetLineWidth;
-		%feature("autodoc", "Modifies the line thickness warning: raises standard_outofrange if the width is a negative value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWidth: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the line thickness warning: raises standard_outofrange if the width is a negative value.
 ") SetLineWidth;
 		void SetLineWidth(Standard_ShortReal theWidth);
 
 		/****************** SetMarkerImage ******************/
 		/**** md5 signature: 8819a7c66f25d37dc3c3b63f7a6e58bd ****/
 		%feature("compactdefaultargs") SetMarkerImage;
-		%feature("autodoc", "Set marker's image texture.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theImage: Graphic3d_MarkerImage
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set marker's image texture.
 ") SetMarkerImage;
 		void SetMarkerImage(const opencascade::handle<Graphic3d_MarkerImage> & theImage);
 
 		/****************** SetMarkerScale ******************/
 		/**** md5 signature: 60ed397efaf31205c838730941f1b45b ****/
 		%feature("compactdefaultargs") SetMarkerScale;
-		%feature("autodoc", "Modifies the scale factor. marker type aspect_tom_point is not affected by the marker size scale factor. it is always the smallest displayable dot. warning: raises standard_outofrange if the scale is a negative value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScale: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the scale factor. marker type aspect_tom_point is not affected by the marker size scale factor. it is always the smallest displayable dot. warning: raises standard_outofrange if the scale is a negative value.
 ") SetMarkerScale;
 		void SetMarkerScale(const Standard_ShortReal theScale);
 
 		/****************** SetMarkerType ******************/
 		/**** md5 signature: 4c156fccf7ff437b07f34c3e68fc8687 ****/
 		%feature("compactdefaultargs") SetMarkerType;
-		%feature("autodoc", "Modifies the type of marker.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Aspect_TypeOfMarker
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the type of marker.
 ") SetMarkerType;
 		void SetMarkerType(Aspect_TypeOfMarker theType);
 
 		/****************** SetPolygonOffset ******************/
 		/**** md5 signature: de9a863ce5dbd13394cd0a5ee6099e7d ****/
 		%feature("compactdefaultargs") SetPolygonOffset;
-		%feature("autodoc", "Sets polygon offsets settings.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOffset: Graphic3d_PolygonOffset
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets polygon offsets settings.
 ") SetPolygonOffset;
 		void SetPolygonOffset(const Graphic3d_PolygonOffset & theOffset);
 
 		/****************** SetPolygonOffsets ******************/
 		/**** md5 signature: 875b08faf986672214b47ef3a8042de0 ****/
 		%feature("compactdefaultargs") SetPolygonOffsets;
-		%feature("autodoc", "Sets up opengl polygon offsets mechanism. <amode> parameter can contain various combinations of aspect_polygonoffsetmode enumeration elements (aspect_pom_none means that polygon offsets are not changed). if <amode> is different from aspect_pom_off and aspect_pom_none, then <afactor> and <aunits> arguments are used by graphic renderer to calculate a depth offset value: //! offset = <afactor> * m + <aunits> * r, where m - maximum depth slope for the polygon currently being displayed, r - minimum window coordinates depth resolution (implementation-specific) //! default settings for occ 3d viewer: mode = aspect_pom_fill, factor = 1., units = 0. //! negative offset values move polygons closer to the viewport, while positive values shift polygons away. consult opengl reference for details (glpolygonoffset function description).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: int
-theFactor: float,optional
-	default value is 1.0f
-theUnits: float,optional
-	default value is 0.0f
+theFactor: float (optional, default to 1.0f)
+theUnits: float (optional, default to 0.0f)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets up opengl polygon offsets mechanism. <amode> parameter can contain various combinations of aspect_polygonoffsetmode enumeration elements (aspect_pom_none means that polygon offsets are not changed). if <amode> is different from aspect_pom_off and aspect_pom_none, then <afactor> and <aunits> arguments are used by graphic renderer to calculate a depth offset value: //! offset = <afactor> * m + <aunits> * r, where m - maximum depth slope for the polygon currently being displayed, r - minimum window coordinates depth resolution (implementation-specific) //! default settings for occ 3d viewer: mode = aspect_pom_fill, factor = 1., units = 0. //! negative offset values move polygons closer to the viewport, while positive values shift polygons away. consult opengl reference for details (glpolygonoffset function description).
 ") SetPolygonOffsets;
 		void SetPolygonOffsets(const Standard_Integer theMode, const Standard_ShortReal theFactor = 1.0f, const Standard_ShortReal theUnits = 0.0f);
 
 		/****************** SetShaderProgram ******************/
 		/**** md5 signature: c84389c506ab3fabe77cf1234a780afa ****/
 		%feature("compactdefaultargs") SetShaderProgram;
-		%feature("autodoc", "Sets up opengl/glsl shader program.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProgram: Graphic3d_ShaderProgram
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets up opengl/glsl shader program.
 ") SetShaderProgram;
 		void SetShaderProgram(const opencascade::handle<Graphic3d_ShaderProgram> & theProgram);
 
 		/****************** SetShadingModel ******************/
 		/**** md5 signature: b67fea2d2f670ea5a35640bade585ab6 ****/
 		%feature("compactdefaultargs") SetShadingModel;
-		%feature("autodoc", "Sets shading model.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShadingModel: Graphic3d_TypeOfShadingModel
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets shading model.
 ") SetShadingModel;
 		void SetShadingModel(const Graphic3d_TypeOfShadingModel theShadingModel);
 
 		/****************** SetSkipFirstEdge ******************/
 		/**** md5 signature: f2d4f63e4a0ad4c4929bcef0cec93d44 ****/
 		%feature("compactdefaultargs") SetSkipFirstEdge;
-		%feature("autodoc", "Set skip first triangle edge flag for drawing wireframe presentation of quads array split into triangles.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToSkipFirstEdge: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set skip first triangle edge flag for drawing wireframe presentation of quads array split into triangles.
 ") SetSkipFirstEdge;
 		void SetSkipFirstEdge(bool theToSkipFirstEdge);
 
 		/****************** SetSuppressBackFaces ******************/
 		/**** md5 signature: 564c9f4e84c67aeaced26807dd97d26a ****/
 		%feature("compactdefaultargs") SetSuppressBackFaces;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToSuppress: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetSuppressBackFaces;
 		void SetSuppressBackFaces(bool theToSuppress);
 
 		/****************** SetTextAngle ******************/
 		/**** md5 signature: 3ee52ff3f2c11f29011661351a275d89 ****/
 		%feature("compactdefaultargs") SetTextAngle;
-		%feature("autodoc", "Turns usage of text rotated.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAngle: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Turns usage of text rotated.
 ") SetTextAngle;
 		void SetTextAngle(Standard_ShortReal theAngle);
 
 		/****************** SetTextDisplayType ******************/
 		/**** md5 signature: 2e96c2145c3c7f0b188d92bddea3f5af ****/
 		%feature("compactdefaultargs") SetTextDisplayType;
-		%feature("autodoc", "Sets display type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Aspect_TypeOfDisplayText
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets display type.
 ") SetTextDisplayType;
 		void SetTextDisplayType(Aspect_TypeOfDisplayText theType);
 
 		/****************** SetTextFont ******************/
 		/**** md5 signature: c18c74f455bd2b8d768cc533264b5e0c ****/
 		%feature("compactdefaultargs") SetTextFont;
-		%feature("autodoc", "Modifies the font.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFont: TCollection_HAsciiString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the font.
 ") SetTextFont;
 		void SetTextFont(const opencascade::handle<TCollection_HAsciiString> & theFont);
 
 		/****************** SetTextFontAspect ******************/
 		/**** md5 signature: e898525ff5b5d8c72752eab8f189cfaf ****/
 		%feature("compactdefaultargs") SetTextFontAspect;
-		%feature("autodoc", "Turns usage of aspect text.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFontAspect: Font_FontAspect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Turns usage of aspect text.
 ") SetTextFontAspect;
 		void SetTextFontAspect(Font_FontAspect theFontAspect);
 
 		/****************** SetTextStyle ******************/
 		/**** md5 signature: e039456428ed8ebe7153ce18e9ea6326 ****/
 		%feature("compactdefaultargs") SetTextStyle;
-		%feature("autodoc", "Modifies the style of the text.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStyle: Aspect_TypeOfStyleText
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the style of the text.
 ") SetTextStyle;
 		void SetTextStyle(Aspect_TypeOfStyleText theStyle);
 
 		/****************** SetTextZoomable ******************/
 		/**** md5 signature: 799263abda100ba563c33475ad702060 ****/
 		%feature("compactdefaultargs") SetTextZoomable;
-		%feature("autodoc", "Turns usage of text zoomable on/off.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFlag: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Turns usage of text zoomable on/off.
 ") SetTextZoomable;
 		void SetTextZoomable(bool theFlag);
 
 		/****************** SetTextureMap ******************/
 		/**** md5 signature: 4d0afcd350d6e9df864d41b902c76518 ****/
 		%feature("compactdefaultargs") SetTextureMap;
-		%feature("autodoc", "Assign texture to be mapped. see also settexturemapon() to actually activate texture mapping. ////standard_deprecated('deprecated method, settextureset() should be used instead').
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTexture: Graphic3d_TextureMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign texture to be mapped. see also settexturemapon() to actually activate texture mapping. ////standard_deprecated('deprecated method, settextureset() should be used instead').
 ") SetTextureMap;
 		void SetTextureMap(const opencascade::handle<Graphic3d_TextureMap> & theTexture);
 
 		/****************** SetTextureMapOff ******************/
 		/**** md5 signature: 3c272f8a19f195db8799bfd674501adc ****/
 		%feature("compactdefaultargs") SetTextureMapOff;
-		%feature("autodoc", "Disable texture mapping.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Disable texture mapping.
 ") SetTextureMapOff;
 		void SetTextureMapOff();
 
 		/****************** SetTextureMapOn ******************/
 		/**** md5 signature: 8125d601fb4d3e18193da8566d56acf6 ****/
 		%feature("compactdefaultargs") SetTextureMapOn;
-		%feature("autodoc", "Enable or disable texture mapping (has no effect if texture is not set).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToMap: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Enable or disable texture mapping (has no effect if texture is not set).
 ") SetTextureMapOn;
 		void SetTextureMapOn(bool theToMap);
 
 		/****************** SetTextureMapOn ******************/
 		/**** md5 signature: 0d7467974fbdade3c449a3231166dff5 ****/
 		%feature("compactdefaultargs") SetTextureMapOn;
-		%feature("autodoc", "Enable texture mapping (has no effect if texture is not set).
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Enable texture mapping (has no effect if texture is not set).
 ") SetTextureMapOn;
 		void SetTextureMapOn();
 
 		/****************** SetTextureSet ******************/
 		/**** md5 signature: 944fc8551c5f0eb6dce05b79e6b27914 ****/
 		%feature("compactdefaultargs") SetTextureSet;
-		%feature("autodoc", "Setup texture array to be mapped.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTextures: Graphic3d_TextureSet
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup texture array to be mapped.
 ") SetTextureSet;
 		void SetTextureSet(const opencascade::handle<Graphic3d_TextureSet> & theTextures);
 
 		/****************** ShaderProgram ******************/
 		/**** md5 signature: 857f7359f9600b740c8753a620f5d3f1 ****/
 		%feature("compactdefaultargs") ShaderProgram;
-		%feature("autodoc", "Return shader program.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_ShaderProgram>
+
+Description
+-----------
+Return shader program.
 ") ShaderProgram;
 		const opencascade::handle<Graphic3d_ShaderProgram> & ShaderProgram();
 
 		/****************** ShadingModel ******************/
 		/**** md5 signature: abf83d7e5f232094cc54f18d79b6661e ****/
 		%feature("compactdefaultargs") ShadingModel;
-		%feature("autodoc", "Returns shading model; graphic3d_typeofshadingmodel_default by default. graphic3d_tosm_default means that shading model set as default for entire viewer will be used.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfShadingModel
+
+Description
+-----------
+Returns shading model; graphic3d_typeofshadingmodel_default by default. graphic3d_tosm_default means that shading model set as default for entire viewer will be used.
 ") ShadingModel;
 		Graphic3d_TypeOfShadingModel ShadingModel();
 
 		/****************** SuppressBackFace ******************/
 		/**** md5 signature: 40795a90417758ffefc9ee3a73a12893 ****/
 		%feature("compactdefaultargs") SuppressBackFace;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SuppressBackFace;
 		void SuppressBackFace();
 
 		/****************** TextAngle ******************/
 		/**** md5 signature: 6861f63feeea7d00ebdaeb2dcaa31bb6 ****/
 		%feature("compactdefaultargs") TextAngle;
-		%feature("autodoc", "Returns angle of degree.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns angle of degree.
 ") TextAngle;
 		Standard_ShortReal TextAngle();
 
 		/****************** TextDisplayType ******************/
 		/**** md5 signature: ea1f820655d16faac3b1a1ea22eee6dd ****/
 		%feature("compactdefaultargs") TextDisplayType;
-		%feature("autodoc", "Returns display type; aspect_todt_normal by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfDisplayText
+
+Description
+-----------
+Returns display type; aspect_todt_normal by default.
 ") TextDisplayType;
 		Aspect_TypeOfDisplayText TextDisplayType();
 
 		/****************** TextFont ******************/
 		/**** md5 signature: 5136fe0c05487d07cd0e4d290be5ba22 ****/
 		%feature("compactdefaultargs") TextFont;
-		%feature("autodoc", "Returns the font; null string by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TCollection_HAsciiString>
+
+Description
+-----------
+Returns the font; null string by default.
 ") TextFont;
 		const opencascade::handle<TCollection_HAsciiString> & TextFont();
 
 		/****************** TextFontAspect ******************/
 		/**** md5 signature: a701b63eb2707cde117bd21c1051e309 ****/
 		%feature("compactdefaultargs") TextFontAspect;
-		%feature("autodoc", "Returns text fontaspect.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Font_FontAspect
+
+Description
+-----------
+Returns text fontaspect.
 ") TextFontAspect;
 		Font_FontAspect TextFontAspect();
 
 		/****************** TextStyle ******************/
 		/**** md5 signature: 5b8dce3790d8c9a8bbe5b487fc4173d7 ****/
 		%feature("compactdefaultargs") TextStyle;
-		%feature("autodoc", "Returns the text style; aspect_tost_normal by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfStyleText
+
+Description
+-----------
+Returns the text style; aspect_tost_normal by default.
 ") TextStyle;
 		Aspect_TypeOfStyleText TextStyle();
 
 		/****************** TextureMap ******************/
 		/**** md5 signature: d3f3eab9972845b733ae189c505c62cb ****/
 		%feature("compactdefaultargs") TextureMap;
-		%feature("autodoc", "Return texture to be mapped. ////standard_deprecated('deprecated method, textureset() should be used instead').
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_TextureMap>
+
+Description
+-----------
+Return texture to be mapped. ////standard_deprecated('deprecated method, textureset() should be used instead').
 ") TextureMap;
 		opencascade::handle<Graphic3d_TextureMap> TextureMap();
 
 		/****************** TextureMapState ******************/
 		/**** md5 signature: c311bbaba192ed972f153a49cf92dd65 ****/
 		%feature("compactdefaultargs") TextureMapState;
-		%feature("autodoc", "Return true if texture mapping is enabled (false by default).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if texture mapping is enabled (false by default).
 ") TextureMapState;
 		bool TextureMapState();
 
 		/****************** TextureSet ******************/
 		/**** md5 signature: 2ff25b571bcd3bc16bd831d38b3d247c ****/
 		%feature("compactdefaultargs") TextureSet;
-		%feature("autodoc", "Return texture array to be mapped.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_TextureSet>
+
+Description
+-----------
+Return texture array to be mapped.
 ") TextureSet;
 		const opencascade::handle<Graphic3d_TextureSet> & TextureSet();
 
 		/****************** ToDrawEdges ******************/
 		/**** md5 signature: ebb13a2795fd190f68dd5ad205901719 ****/
 		%feature("compactdefaultargs") ToDrawEdges;
-		%feature("autodoc", "Returns true if mesh edges should be drawn (false by default).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if mesh edges should be drawn (false by default).
 ") ToDrawEdges;
 		bool ToDrawEdges();
 
 		/****************** ToDrawSilhouette ******************/
 		/**** md5 signature: 2c0c0fd754c64cc57f345fc665cc8f33 ****/
 		%feature("compactdefaultargs") ToDrawSilhouette;
-		%feature("autodoc", "Returns true if silhouette (outline) should be drawn (with edge color and width); false by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if silhouette (outline) should be drawn (with edge color and width); false by default.
 ") ToDrawSilhouette;
 		bool ToDrawSilhouette();
 
 		/****************** ToMapTexture ******************/
 		/**** md5 signature: a39a45bca6ada99b43c1aa203f766447 ****/
 		%feature("compactdefaultargs") ToMapTexture;
-		%feature("autodoc", "Return true if texture mapping is enabled (false by default).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if texture mapping is enabled (false by default).
 ") ToMapTexture;
 		bool ToMapTexture();
 
 		/****************** ToSkipFirstEdge ******************/
 		/**** md5 signature: ba01086b9308813c90b7110fc2f4ac55 ****/
 		%feature("compactdefaultargs") ToSkipFirstEdge;
-		%feature("autodoc", "Returns true if drawing element edges should discard first edge in triangle; false by default. graphics hardware works mostly with triangles, so that wireframe presentation will draw triangle edges by default. this flag allows rendering wireframe presentation of quad-only array split into triangles. for this, quads should be split in specific order, so that the quad diagonal (to be not rendered) goes first: 1------2 / / triangle #1: 2-0-1; triangle #2: 0-2-3 0------3.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if drawing element edges should discard first edge in triangle; false by default. graphics hardware works mostly with triangles, so that wireframe presentation will draw triangle edges by default. this flag allows rendering wireframe presentation of quad-only array split into triangles. for this, quads should be split in specific order, so that the quad diagonal (to be not rendered) goes first: 1------2 / / triangle #1: 2-0-1; triangle #2: 0-2-3 0------3.
 ") ToSkipFirstEdge;
 		bool ToSkipFirstEdge();
 
 		/****************** ToSuppressBackFaces ******************/
 		/**** md5 signature: 291ab01b16ecdd1cdd1cbdf740311643 ****/
 		%feature("compactdefaultargs") ToSuppressBackFaces;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") ToSuppressBackFaces;
 		bool ToSuppressBackFaces();
 
@@ -4401,26 +4876,31 @@ class Graphic3d_Attribute {
 		/****************** Stride ******************/
 		/**** md5 signature: a77b679b88eb698b5f0f9ecff72ba9ba ****/
 		%feature("compactdefaultargs") Stride;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") Stride;
 		Standard_Integer Stride();
 
 		/****************** Stride ******************/
 		/**** md5 signature: 7575368fa3b9ff6936d85d9a182b40a3 ****/
 		%feature("compactdefaultargs") Stride;
-		%feature("autodoc", "Returns size of attribute of specified data type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfData
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Return size of attribute of specified data type.
 ") Stride;
 		static Standard_Integer Stride(const Graphic3d_TypeOfData theType);
 
@@ -4449,34 +4929,38 @@ class Graphic3d_BSDF {
 		/****************** Graphic3d_BSDF ******************/
 		/**** md5 signature: ef3e719f8cae4402739eaa9a4c4dfb45 ****/
 		%feature("compactdefaultargs") Graphic3d_BSDF;
-		%feature("autodoc", "Creates uninitialized bsdf.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates uninitialized bsdf.
 ") Graphic3d_BSDF;
 		 Graphic3d_BSDF();
 
 		/****************** CreateDiffuse ******************/
 		/**** md5 signature: c45c01d44b9511054d6d111c7ff8e5c1 ****/
 		%feature("compactdefaultargs") CreateDiffuse;
-		%feature("autodoc", "Creates bsdf describing diffuse (lambertian) surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWeight: Graphic3d_Vec3
 
-Returns
+Return
 -------
 Graphic3d_BSDF
+
+Description
+-----------
+Creates bsdf describing diffuse (lambertian) surface.
 ") CreateDiffuse;
 		static Graphic3d_BSDF CreateDiffuse(const Graphic3d_Vec3 & theWeight);
 
 		/****************** CreateGlass ******************/
 		/**** md5 signature: 8ed0e5780bcdc30c99e1d934e7dd310a ****/
 		%feature("compactdefaultargs") CreateGlass;
-		%feature("autodoc", "Creates bsdf describing glass-like object. glass-like bsdf mixes refraction and reflection effects at grazing angles using physically-based fresnel dielectric model.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWeight: Graphic3d_Vec3
@@ -4484,58 +4968,71 @@ theAbsorptionColor: Graphic3d_Vec3
 theAbsorptionCoeff: float
 theRefractionIndex: float
 
-Returns
+Return
 -------
 Graphic3d_BSDF
+
+Description
+-----------
+Creates bsdf describing glass-like object. glass-like bsdf mixes refraction and reflection effects at grazing angles using physically-based fresnel dielectric model.
 ") CreateGlass;
 		static Graphic3d_BSDF CreateGlass(const Graphic3d_Vec3 & theWeight, const Graphic3d_Vec3 & theAbsorptionColor, const Standard_ShortReal theAbsorptionCoeff, const Standard_ShortReal theRefractionIndex);
 
 		/****************** CreateMetallic ******************/
 		/**** md5 signature: 07a0b4d54faa0c1ac4d80864cbfcef9e ****/
 		%feature("compactdefaultargs") CreateMetallic;
-		%feature("autodoc", "Creates bsdf describing polished metallic-like surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWeight: Graphic3d_Vec3
 theFresnel: Graphic3d_Fresnel
 theRoughness: float
 
-Returns
+Return
 -------
 Graphic3d_BSDF
+
+Description
+-----------
+Creates bsdf describing polished metallic-like surface.
 ") CreateMetallic;
 		static Graphic3d_BSDF CreateMetallic(const Graphic3d_Vec3 & theWeight, const Graphic3d_Fresnel & theFresnel, const Standard_ShortReal theRoughness);
 
 		/****************** CreateMetallicRoughness ******************/
 		/**** md5 signature: 930ca7145736f61c5c901f75de9967f5 ****/
 		%feature("compactdefaultargs") CreateMetallicRoughness;
-		%feature("autodoc", "Creates bsdf from pbr metallic-roughness material.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePbr: Graphic3d_PBRMaterial
 
-Returns
+Return
 -------
 Graphic3d_BSDF
+
+Description
+-----------
+Creates bsdf from pbr metallic-roughness material.
 ") CreateMetallicRoughness;
 		static Graphic3d_BSDF CreateMetallicRoughness(const Graphic3d_PBRMaterial & thePbr);
 
 		/****************** CreateTransparent ******************/
 		/**** md5 signature: 52d78d15959bff96f6cccedb7f40bfd1 ****/
 		%feature("compactdefaultargs") CreateTransparent;
-		%feature("autodoc", "Creates bsdf describing transparent object. transparent bsdf models simple transparency without refraction (the ray passes straight through the surface).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWeight: Graphic3d_Vec3
 theAbsorptionColor: Graphic3d_Vec3
 theAbsorptionCoeff: float
 
-Returns
+Return
 -------
 Graphic3d_BSDF
+
+Description
+-----------
+Creates bsdf describing transparent object. transparent bsdf models simple transparency without refraction (the ray passes straight through the surface).
 ") CreateTransparent;
 		static Graphic3d_BSDF CreateTransparent(const Graphic3d_Vec3 & theWeight, const Graphic3d_Vec3 & theAbsorptionColor, const Standard_ShortReal theAbsorptionCoeff);
 
@@ -4551,11 +5048,13 @@ Graphic3d_BSDF
 		/****************** Normalize ******************/
 		/**** md5 signature: 587346cf1e1c12fdf674aedc915ccd95 ****/
 		%feature("compactdefaultargs") Normalize;
-		%feature("autodoc", "Normalizes bsdf components.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Normalizes bsdf components.
 ") Normalize;
 		void Normalize();
 
@@ -4594,15 +5093,18 @@ class Graphic3d_BoundBuffer : public NCollection_Buffer {
 		/****************** Graphic3d_BoundBuffer ******************/
 		/**** md5 signature: bc430c6678816ed8a40cb9c1495ede84 ****/
 		%feature("compactdefaultargs") Graphic3d_BoundBuffer;
-		%feature("autodoc", "Empty constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAlloc: NCollection_BaseAllocator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_BoundBuffer;
 		 Graphic3d_BoundBuffer(const opencascade::handle<NCollection_BaseAllocator> & theAlloc);
 
@@ -4618,16 +5120,19 @@ None
 		/****************** Init ******************/
 		/**** md5 signature: 694bf4addd159e7bda9f19dbe5cbf854 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Allocates new empty array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNbBounds: int
 theHasColors: bool
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Allocates new empty array.
 ") Init;
 		bool Init(const Standard_Integer theNbBounds, const Standard_Boolean theHasColors);
 
@@ -4655,75 +5160,89 @@ class Graphic3d_BufferRange {
 		/****************** Graphic3d_BufferRange ******************/
 		/**** md5 signature: 94437812d48eee6ddb30061db0a9b246 ****/
 		%feature("compactdefaultargs") Graphic3d_BufferRange;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_BufferRange;
 		 Graphic3d_BufferRange();
 
 		/****************** Graphic3d_BufferRange ******************/
 		/**** md5 signature: c2f9b36c74e0c3ead5cea47fd1098635 ****/
 		%feature("compactdefaultargs") Graphic3d_BufferRange;
-		%feature("autodoc", "Constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStart: int
 theLength: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructor.
 ") Graphic3d_BufferRange;
 		 Graphic3d_BufferRange(Standard_Integer theStart, Standard_Integer theLength);
 
 		/****************** Clear ******************/
 		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clear the range.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Clear the range.
 ") Clear;
 		void Clear();
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "Return true if range is empty.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if range is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
 		/****************** Unite ******************/
 		/**** md5 signature: 29f02a09e87c574e51a3b11bdb6d001b ****/
 		%feature("compactdefaultargs") Unite;
-		%feature("autodoc", "Add another range to this one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRange: Graphic3d_BufferRange
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Add another range to this one.
 ") Unite;
 		void Unite(const Graphic3d_BufferRange & theRange);
 
 		/****************** Upper ******************/
 		/**** md5 signature: 621f04fab59b49711e54299100973c4e ****/
 		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "Return the upper element within the range.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return the upper element within the range.
 ") Upper;
 		Standard_Integer Upper();
 
@@ -4745,69 +5264,82 @@ class Graphic3d_BvhCStructureSet : public BVH_PrimitiveSet3d {
 		/****************** Box ******************/
 		/**** md5 signature: a5f68fc9201d04910b61f3ac1f69fb22 ****/
 		%feature("compactdefaultargs") Box;
-		%feature("autodoc", "Returns aabb of the structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 
-Returns
+Return
 -------
 Graphic3d_BndBox3d
+
+Description
+-----------
+Returns aabb of the structure.
 ") Box;
 		virtual Graphic3d_BndBox3d Box(const Standard_Integer theIdx);
 
 		/****************** Center ******************/
 		/**** md5 signature: 82dec1d5725b85fd9fe04818aa66dc03 ****/
 		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "Calculates center of the aabb along given axis.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 theAxis: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Calculates center of the aabb along given axis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
 		/****************** Size ******************/
 		/**** md5 signature: 8b9290cdf9c653fc150b9b31776f3f21 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Returns total number of structures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns total number of structures.
 ") Size;
 		virtual Standard_Integer Size();
 
 		/****************** Structures ******************/
 		/**** md5 signature: 0247b44b3928398f253d7072dc172188 ****/
 		%feature("compactdefaultargs") Structures;
-		%feature("autodoc", "Access directly a collection of structures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_IndexedMap< Graphic3d_CStructure *>
+
+Description
+-----------
+Access directly a collection of structures.
 ") Structures;
 		const NCollection_IndexedMap<const Graphic3d_CStructure *> & Structures();
 
 		/****************** Swap ******************/
 		/**** md5 signature: 19b601a9d7acdae056493eb6f9eb0b63 ****/
 		%feature("compactdefaultargs") Swap;
-		%feature("autodoc", "Swaps structures with the given indices.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx1: int
 theIdx2: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Swaps structures with the given indices.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
@@ -4851,127 +5383,151 @@ class Graphic3d_CLight : public Standard_Transient {
 		/****************** Graphic3d_CLight ******************/
 		/**** md5 signature: b809aefcc1870097241707b7d23d4549 ****/
 		%feature("compactdefaultargs") Graphic3d_CLight;
-		%feature("autodoc", "Empty constructor, which should be followed by light source properties configuration.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfLightSource
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Empty constructor, which should be followed by light source properties configuration.
 ") Graphic3d_CLight;
 		 Graphic3d_CLight(Graphic3d_TypeOfLightSource theType);
 
 		/****************** Angle ******************/
 		/**** md5 signature: 41b2615139437164740cbeacae4fe9f5 ****/
 		%feature("compactdefaultargs") Angle;
-		%feature("autodoc", "Returns an angle in radians of the cone created by the spot; 30 degrees by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns an angle in radians of the cone created by the spot; 30 degrees by default.
 ") Angle;
 		Standard_ShortReal Angle();
 
 		/****************** Attenuation ******************/
 		/**** md5 signature: 138ad3e86d9e999df0a2cc8e1a95f005 ****/
 		%feature("compactdefaultargs") Attenuation;
-		%feature("autodoc", "Returns the attenuation factors.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theConstAttenuation: float
 theLinearAttenuation: float
+
+Description
+-----------
+Returns the attenuation factors.
 ") Attenuation;
 		void Attenuation(Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Color ******************/
 		/**** md5 signature: 7cec116411eb20e52d1fabf3015346da ****/
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "Returns the color of the light source; white by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Returns the color of the light source; white by default.
 ") Color;
 		const Quantity_Color & Color();
 
 		/****************** Concentration ******************/
 		/**** md5 signature: 00797319ff62613b378edbbcb740c6c3 ****/
 		%feature("compactdefaultargs") Concentration;
-		%feature("autodoc", "Returns intensity distribution of the spot light, within [0.0, 1.0] range; 1.0 by default. this coefficient should be converted into spotlight exponent within [0.0, 128.0] range: @code float aspotexponent = concentration() * 128.0; anattenuation *= pow (acosa, aspotexponent);' @endcode the concentration factor determines the dispersion of the light on the surface, the default value (1.0) corresponds to a minimum of dispersion.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns intensity distribution of the spot light, within [0.0, 1.0] range; 1.0 by default. this coefficient should be converted into spotlight exponent within [0.0, 128.0] range: @code float aspotexponent = concentration() * 128.0; anattenuation *= pow (acosa, aspotexponent);' @endcode the concentration factor determines the dispersion of the light on the surface, the default value (1.0) corresponds to a minimum of dispersion.
 ") Concentration;
 		Standard_ShortReal Concentration();
 
 		/****************** ConstAttenuation ******************/
 		/**** md5 signature: 955df55921c2d7f944ed3a5b85ed3da8 ****/
 		%feature("compactdefaultargs") ConstAttenuation;
-		%feature("autodoc", "Returns constant attenuation factor of positional/spot light source; 1.0f by default. distance attenuation factors of reducing positional/spot light intensity depending on the distance from its position: @code float anattenuation = 1.0 / (constattenuation() + linearattenuation() * thedistance + quadraticattenuation() * thedistance * thedistance); @endcode.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns constant attenuation factor of positional/spot light source; 1.0f by default. distance attenuation factors of reducing positional/spot light intensity depending on the distance from its position: @code float anattenuation = 1.0 / (constattenuation() + linearattenuation() * thedistance + quadraticattenuation() * thedistance * thedistance); @endcode.
 ") ConstAttenuation;
 		Standard_ShortReal ConstAttenuation();
 
 		/****************** CopyFrom ******************/
 		/**** md5 signature: b7e56d0aeca413f462788f3208bf0c98 ****/
 		%feature("compactdefaultargs") CopyFrom;
-		%feature("autodoc", "Copy parameters from another light source excluding source type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLight: Graphic3d_CLight
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Copy parameters from another light source excluding source type.
 ") CopyFrom;
 		void CopyFrom(const opencascade::handle<Graphic3d_CLight> & theLight);
 
 		/****************** Direction ******************/
 		/**** md5 signature: 2b0a515c17ee028a8b572032cfbdfabb ****/
 		%feature("compactdefaultargs") Direction;
-		%feature("autodoc", "Returns direction of directional/spot light.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Dir
+
+Description
+-----------
+Returns direction of directional/spot light.
 ") Direction;
 		gp_Dir Direction();
 
 		/****************** Direction ******************/
 		/**** md5 signature: f9a9767b8636b03f1d308f2bf07ba8ee ****/
 		%feature("compactdefaultargs") Direction;
-		%feature("autodoc", "Returns the thevx, thevy, thevz direction of the light source.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theVx: float
 theVy: float
 theVz: float
+
+Description
+-----------
+Returns the thevx, thevy, thevz direction of the light source.
 ") Direction;
 		void Direction(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** DisplayPosition ******************/
 		/**** md5 signature: 9f9045903ce58e7bb413ba477b693cee ****/
 		%feature("compactdefaultargs") DisplayPosition;
-		%feature("autodoc", "Returns location of positional/spot/directional light, which is the same as returned by position().
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns location of positional/spot/directional light, which is the same as returned by position().
 ") DisplayPosition;
 		const gp_Pnt DisplayPosition();
 
@@ -4987,474 +5543,564 @@ gp_Pnt
 		/****************** GetId ******************/
 		/**** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ****/
 		%feature("compactdefaultargs") GetId;
-		%feature("autodoc", "Returns light resource identifier string.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Return light resource identifier string.
 ") GetId;
 		const TCollection_AsciiString & GetId();
 
 		/****************** HasRange ******************/
 		/**** md5 signature: 042ed400a2eaebbd19bb0801da6f5043 ****/
 		%feature("compactdefaultargs") HasRange;
-		%feature("autodoc", "Returns true if maximum distance of point light source is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if maximum distance of point light source is defined.
 ") HasRange;
 		bool HasRange();
 
 		/****************** Headlight ******************/
 		/**** md5 signature: 222c71e1f3cae4705cc3b43c4928858f ****/
 		%feature("compactdefaultargs") Headlight;
-		%feature("autodoc", "Alias for isheadlight().
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Alias for isheadlight().
 ") Headlight;
 		Standard_Boolean Headlight();
 
 		/****************** Intensity ******************/
 		/**** md5 signature: 3cd894ea98a6fd6919aeb71739e682b4 ****/
 		%feature("compactdefaultargs") Intensity;
-		%feature("autodoc", "Returns the intensity of light source; 1.0 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the intensity of light source; 1.0 by default.
 ") Intensity;
 		Standard_ShortReal Intensity();
 
 		/****************** IsEnabled ******************/
 		/**** md5 signature: cf6340b5d1701025377d42db5601a57b ****/
 		%feature("compactdefaultargs") IsEnabled;
-		%feature("autodoc", "Check that the light source is turned on; true by default. this flag affects all occurrences of light sources, where it was registered and activated; so that it is possible defining an active light in view which is actually in disabled state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Check that the light source is turned on; true by default. this flag affects all occurrences of light sources, where it was registered and activated; so that it is possible defining an active light in view which is actually in disabled state.
 ") IsEnabled;
 		Standard_Boolean IsEnabled();
 
 		/****************** IsHeadlight ******************/
 		/**** md5 signature: ed9492c7a2018410826cfd476ac03601 ****/
 		%feature("compactdefaultargs") IsHeadlight;
-		%feature("autodoc", "Returns true if the light is a headlight; false by default. headlight flag means that light position/direction are defined not in a world coordinate system, but relative to the camera orientation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the light is a headlight; false by default. headlight flag means that light position/direction are defined not in a world coordinate system, but relative to the camera orientation.
 ") IsHeadlight;
 		Standard_Boolean IsHeadlight();
 
 		/****************** LinearAttenuation ******************/
 		/**** md5 signature: 337763593f2aac7ec6e7b3cec0582a66 ****/
 		%feature("compactdefaultargs") LinearAttenuation;
-		%feature("autodoc", "Returns linear attenuation factor of positional/spot light source; 0.0 by default. distance attenuation factors of reducing positional/spot light intensity depending on the distance from its position: @code float anattenuation = 1.0 / (constattenuation() + linearattenuation() * thedistance + quadraticattenuation() * thedistance * thedistance); @endcode.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns linear attenuation factor of positional/spot light source; 0.0 by default. distance attenuation factors of reducing positional/spot light intensity depending on the distance from its position: @code float anattenuation = 1.0 / (constattenuation() + linearattenuation() * thedistance + quadraticattenuation() * thedistance * thedistance); @endcode.
 ") LinearAttenuation;
 		Standard_ShortReal LinearAttenuation();
 
 		/****************** Name ******************/
 		/**** md5 signature: efed61b92683387cd746fb27e0376505 ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Returns light source name; empty string by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns light source name; empty string by default.
 ") Name;
 		const TCollection_AsciiString & Name();
 
 		/****************** PackedColor ******************/
 		/**** md5 signature: 22ee208bf99f0966d5f098e6a42171f3 ****/
 		%feature("compactdefaultargs") PackedColor;
-		%feature("autodoc", "Returns the color of the light source with dummy alpha component, which should be ignored.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec4
+
+Description
+-----------
+Returns the color of the light source with dummy alpha component, which should be ignored.
 ") PackedColor;
 		const Graphic3d_Vec4 & PackedColor();
 
 		/****************** PackedDirection ******************/
 		/**** md5 signature: ddba5f518f01ac83f17e032c314997bc ****/
 		%feature("compactdefaultargs") PackedDirection;
-		%feature("autodoc", "Returns direction of directional/spot light.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec3
+
+Description
+-----------
+Returns direction of directional/spot light.
 ") PackedDirection;
 		Graphic3d_Vec3 PackedDirection();
 
 		/****************** PackedDirectionRange ******************/
 		/**** md5 signature: 17165b5921369c255346f4b6e9061750 ****/
 		%feature("compactdefaultargs") PackedDirectionRange;
-		%feature("autodoc", "Returns direction of directional/spot light and range for positional/spot light in alpha channel.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec4
+
+Description
+-----------
+Returns direction of directional/spot light and range for positional/spot light in alpha channel.
 ") PackedDirectionRange;
 		const Graphic3d_Vec4 & PackedDirectionRange();
 
 		/****************** PackedParams ******************/
 		/**** md5 signature: f2247bd3e1bb49038fe7d24d792f8d76 ****/
 		%feature("compactdefaultargs") PackedParams;
-		%feature("autodoc", "Packed light parameters.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec4
+
+Description
+-----------
+Packed light parameters.
 ") PackedParams;
 		const Graphic3d_Vec4 & PackedParams();
 
 		/****************** Position ******************/
 		/**** md5 signature: 0ab08d371c89be0cb1eecbddf304bb77 ****/
 		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "Returns location of positional/spot light; (0, 0, 0) by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns location of positional/spot light; (0, 0, 0) by default.
 ") Position;
 		const gp_Pnt Position();
 
 		/****************** Position ******************/
 		/**** md5 signature: 1e2d12f55e7683cd829717411e07e0be ****/
 		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "Returns location of positional/spot light.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theX: float
 theY: float
 theZ: float
+
+Description
+-----------
+Returns location of positional/spot light.
 ") Position;
 		void Position(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Range ******************/
 		/**** md5 signature: 1ea59a087c0e2277a922e47f32156491 ****/
 		%feature("compactdefaultargs") Range;
-		%feature("autodoc", "Returns maximum distance on which point light source affects to objects and is considered during illumination calculations. 0.0 means disabling range considering at all without any distance limits. has sense only for point light sources (positional and spot). .
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns maximum distance on which point light source affects to objects and is considered during illumination calculations. 0.0 means disabling range considering at all without any distance limits. has sense only for point light sources (positional and spot). .
 ") Range;
 		Standard_ShortReal Range();
 
 		/****************** Revision ******************/
 		/**** md5 signature: dfd4fb672d125a081a8b5a357ac81453 ****/
 		%feature("compactdefaultargs") Revision;
-		%feature("autodoc", "Returns modification counter.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Size
+
+Description
+-----------
+Return modification counter.
 ") Revision;
 		Standard_Size Revision();
 
 		/****************** SetAngle ******************/
 		/**** md5 signature: 700ce7b7721533c8d8ed689aadbfaf50 ****/
 		%feature("compactdefaultargs") SetAngle;
-		%feature("autodoc", "Angle in radians of the cone created by the spot, should be within range (0.0, m_pi).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAngle: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Angle in radians of the cone created by the spot, should be within range (0.0, m_pi).
 ") SetAngle;
 		void SetAngle(Standard_ShortReal theAngle);
 
 		/****************** SetAttenuation ******************/
 		/**** md5 signature: a6bf04efd7505ff51d24f2c2a49aacac ****/
 		%feature("compactdefaultargs") SetAttenuation;
-		%feature("autodoc", "Defines the coefficients of attenuation; values should be >= 0.0 and their summ should not be equal to 0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theConstAttenuation: float
 theLinearAttenuation: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the coefficients of attenuation; values should be >= 0.0 and their summ should not be equal to 0.
 ") SetAttenuation;
 		void SetAttenuation(Standard_ShortReal theConstAttenuation, Standard_ShortReal theLinearAttenuation);
 
 		/****************** SetCastShadows ******************/
 		/**** md5 signature: 6c8123526be03dc05fd82df402fea742 ****/
 		%feature("compactdefaultargs") SetCastShadows;
-		%feature("autodoc", "Enable/disable shadow casting.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToCast: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Enable/disable shadow casting.
 ") SetCastShadows;
 		void SetCastShadows(Standard_Boolean theToCast);
 
 		/****************** SetColor ******************/
 		/**** md5 signature: 4493bec663df9e92c429e56b9c76a307 ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Defines the color of a light source by giving the basic color.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the color of a light source by giving the basic color.
 ") SetColor;
 		void SetColor(const Quantity_Color & theColor);
 
 		/****************** SetConcentration ******************/
 		/**** md5 signature: baf57a4fee917494a62ee102134e1147 ****/
 		%feature("compactdefaultargs") SetConcentration;
-		%feature("autodoc", "Defines the coefficient of concentration; value should be within range [0.0, 1.0].
-
+		%feature("autodoc", "
 Parameters
 ----------
 theConcentration: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the coefficient of concentration; value should be within range [0.0, 1.0].
 ") SetConcentration;
 		void SetConcentration(Standard_ShortReal theConcentration);
 
 		/****************** SetDirection ******************/
 		/**** md5 signature: cefc66d5cea733e39294753286bacaa0 ****/
 		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "Sets direction of directional/spot light.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDir: gp_Dir
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets direction of directional/spot light.
 ") SetDirection;
 		void SetDirection(const gp_Dir & theDir);
 
 		/****************** SetDirection ******************/
 		/**** md5 signature: 73ed886e97258b8835579cb8f83a633a ****/
 		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "Sets direction of directional/spot light.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVx: float
 theVy: float
 theVz: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets direction of directional/spot light.
 ") SetDirection;
 		void SetDirection(Standard_Real theVx, Standard_Real theVy, Standard_Real theVz);
 
 		/****************** SetDisplayPosition ******************/
 		/**** md5 signature: 8e4ce2892bc6f683fa9f79a8be114bde ****/
 		%feature("compactdefaultargs") SetDisplayPosition;
-		%feature("autodoc", "Setup location of positional/spot/directional light, which is the same as setposition() but allows directional light source (technically having no position, but this point can be used for displaying light source presentation).
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePosition: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup location of positional/spot/directional light, which is the same as setposition() but allows directional light source (technically having no position, but this point can be used for displaying light source presentation).
 ") SetDisplayPosition;
 		void SetDisplayPosition(const gp_Pnt & thePosition);
 
 		/****************** SetEnabled ******************/
 		/**** md5 signature: 5a0e19770edfe90c320cb0dfe22869f5 ****/
 		%feature("compactdefaultargs") SetEnabled;
-		%feature("autodoc", "Change enabled state of the light state. this call does not remove or deactivate light source in views/viewers; instead it turns it off so that it just have no effect.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsOn: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change enabled state of the light state. this call does not remove or deactivate light source in views/viewers; instead it turns it off so that it just have no effect.
 ") SetEnabled;
 		void SetEnabled(Standard_Boolean theIsOn);
 
 		/****************** SetHeadlight ******************/
 		/**** md5 signature: ccf6c26d8d11ba1f2e65e8364abea4f8 ****/
 		%feature("compactdefaultargs") SetHeadlight;
-		%feature("autodoc", "Setup headlight flag.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup headlight flag.
 ") SetHeadlight;
 		void SetHeadlight(Standard_Boolean theValue);
 
 		/****************** SetIntensity ******************/
 		/**** md5 signature: aee63a4d018b5d87eda97195df2aebb0 ****/
 		%feature("compactdefaultargs") SetIntensity;
-		%feature("autodoc", "Modifies the intensity of light source, which should be > 0.0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the intensity of light source, which should be > 0.0.
 ") SetIntensity;
 		void SetIntensity(Standard_ShortReal theValue);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 273df384551aa519beda71c20cd913ae ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "Sets light source name.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets light source name.
 ") SetName;
 		void SetName(TCollection_AsciiString theName);
 
 		/****************** SetPosition ******************/
 		/**** md5 signature: 6cd7cdcecb59ee7f74eb9c342f464f4d ****/
 		%feature("compactdefaultargs") SetPosition;
-		%feature("autodoc", "Setup location of positional/spot light.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePosition: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup location of positional/spot light.
 ") SetPosition;
 		void SetPosition(const gp_Pnt & thePosition);
 
 		/****************** SetPosition ******************/
 		/**** md5 signature: b21299d058cfd78669786aee2c76c273 ****/
 		%feature("compactdefaultargs") SetPosition;
-		%feature("autodoc", "Setup location of positional/spot light.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
 theY: float
 theZ: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup location of positional/spot light.
 ") SetPosition;
 		void SetPosition(Standard_Real theX, Standard_Real theY, Standard_Real theZ);
 
 		/****************** SetRange ******************/
 		/**** md5 signature: 5397d27cf61a5e5479e51e18fce6ae0a ****/
 		%feature("compactdefaultargs") SetRange;
-		%feature("autodoc", "Modifies maximum distance on which point light source affects to objects and is considered during illumination calculations. positional and spot lights are only point light sources. 0.0 means disabling range considering at all without any distance limits.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies maximum distance on which point light source affects to objects and is considered during illumination calculations. positional and spot lights are only point light sources. 0.0 means disabling range considering at all without any distance limits.
 ") SetRange;
 		void SetRange(Standard_ShortReal theValue);
 
 		/****************** SetSmoothAngle ******************/
 		/**** md5 signature: 1d78f5070c438d17265af49cce69d5d4 ****/
 		%feature("compactdefaultargs") SetSmoothAngle;
-		%feature("autodoc", "Modifies the smoothing angle (in radians) of directional light source; should be within range [0.0, m_pi/2].
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the smoothing angle (in radians) of directional light source; should be within range [0.0, m_pi/2].
 ") SetSmoothAngle;
 		void SetSmoothAngle(Standard_ShortReal theValue);
 
 		/****************** SetSmoothRadius ******************/
 		/**** md5 signature: 3ac37530c050d4e84740bc9c813cb909 ****/
 		%feature("compactdefaultargs") SetSmoothRadius;
-		%feature("autodoc", "Modifies the smoothing radius of positional/spot light; should be >= 0.0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the smoothing radius of positional/spot light; should be >= 0.0.
 ") SetSmoothRadius;
 		void SetSmoothRadius(Standard_ShortReal theValue);
 
 		/****************** Smoothness ******************/
 		/**** md5 signature: 14c83a1aa47eeaff0bfc5d8551bb92fb ****/
 		%feature("compactdefaultargs") Smoothness;
-		%feature("autodoc", "Returns the smoothness of light source (either smoothing angle for directional light or smoothing radius in case of positional light); 0.0 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the smoothness of light source (either smoothing angle for directional light or smoothing radius in case of positional light); 0.0 by default.
 ") Smoothness;
 		Standard_ShortReal Smoothness();
 
 		/****************** ToCastShadows ******************/
 		/**** md5 signature: 42fa17b918615dd5ad47daf5d1997b53 ****/
 		%feature("compactdefaultargs") ToCastShadows;
-		%feature("autodoc", "Return true if shadow casting is enabled; false by default. has no effect in ray-tracing rendering mode.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if shadow casting is enabled; false by default. has no effect in ray-tracing rendering mode.
 ") ToCastShadows;
 		Standard_Boolean ToCastShadows();
 
 		/****************** Type ******************/
 		/**** md5 signature: d146d133611b424d902f31165fccb442 ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "Returns the type of the light, cannot be changed after object construction.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfLightSource
+
+Description
+-----------
+Returns the type of the light, cannot be changed after object construction.
 ") Type;
 		Graphic3d_TypeOfLightSource Type();
 
@@ -5489,85 +6135,101 @@ class Graphic3d_CStructure : public Standard_Transient {
 		/****************** BndBoxClipCheck ******************/
 		/**** md5 signature: ba16999388552eb20836b46e7cf59d0f ****/
 		%feature("compactdefaultargs") BndBoxClipCheck;
-		%feature("autodoc", "Returns whether check of object's bounding box clipping is enabled before drawing of object; true by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns whether check of object's bounding box clipping is enabled before drawing of object; true by default.
 ") BndBoxClipCheck;
 		Standard_Boolean BndBoxClipCheck();
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: ec5ef849abfa47e8ebee30a0057dc18a ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of this presentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_BndBox3d
+
+Description
+-----------
+Return bounding box of this presentation.
 ") BoundingBox;
 		const Graphic3d_BndBox3d & BoundingBox();
 
 		/****************** ChangeBoundingBox ******************/
 		/**** md5 signature: 2730d3d1929f140f237adc334ee1f48d ****/
 		%feature("compactdefaultargs") ChangeBoundingBox;
-		%feature("autodoc", "Returns bounding box of this presentation without transformation matrix applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_BndBox3d
+
+Description
+-----------
+Return bounding box of this presentation without transformation matrix applied.
 ") ChangeBoundingBox;
 		Graphic3d_BndBox3d & ChangeBoundingBox();
 
 		/****************** Clear ******************/
 		/**** md5 signature: d67699716a1d70f3f12e5a2b1d81e2d9 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clear graphic data.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Clear graphic data.
 ") Clear;
 		virtual void Clear();
 
 		/****************** ClipPlanes ******************/
 		/**** md5 signature: 26ab80085e76b6f03b64af6598080486 ****/
 		%feature("compactdefaultargs") ClipPlanes;
-		%feature("autodoc", "Returns associated clip planes.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_SequenceOfHClipPlane>
+
+Description
+-----------
+Return associated clip planes.
 ") ClipPlanes;
 		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ClipPlanes();
 
 		/****************** Connect ******************/
 		/**** md5 signature: 3c18c412a5529a81d24ebc61ca8f72d3 ****/
 		%feature("compactdefaultargs") Connect;
-		%feature("autodoc", "Connect other structure to this one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_CStructure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Connect other structure to this one.
 ") Connect;
 		virtual void Connect(Graphic3d_CStructure & theStructure);
 
 		/****************** Disconnect ******************/
 		/**** md5 signature: e59d6dd5eef3e2f62b99a476301243d1 ****/
 		%feature("compactdefaultargs") Disconnect;
-		%feature("autodoc", "Disconnect other structure to this one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_CStructure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Disconnect other structure to this one.
 ") Disconnect;
 		virtual void Disconnect(Graphic3d_CStructure & theStructure);
 
@@ -5583,397 +6245,473 @@ None
 		/****************** GraphicDriver ******************/
 		/**** md5 signature: 92aa99aef6bae4d6a3fd285cb7eb38ce ****/
 		%feature("compactdefaultargs") GraphicDriver;
-		%feature("autodoc", "Returns graphic driver created this structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_GraphicDriver>
+
+Description
+-----------
+Return graphic driver created this structure.
 ") GraphicDriver;
 		const opencascade::handle<Graphic3d_GraphicDriver> & GraphicDriver();
 
 		/****************** GraphicHighlight ******************/
 		/**** md5 signature: be2986c2bc05d7038f912626e0a46896 ****/
 		%feature("compactdefaultargs") GraphicHighlight;
-		%feature("autodoc", "Highlights structure with the given style.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStyle: Graphic3d_PresentationAttributes
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Highlights structure with the given style.
 ") GraphicHighlight;
 		virtual void GraphicHighlight(const opencascade::handle<Graphic3d_PresentationAttributes> & theStyle);
 
 		/****************** GraphicUnhighlight ******************/
 		/**** md5 signature: b264492d04a5b76206f1040464d0e471 ****/
 		%feature("compactdefaultargs") GraphicUnhighlight;
-		%feature("autodoc", "Unhighlights the structure and invalidates pointer to structure's highlight style.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Unhighlights the structure and invalidates pointer to structure's highlight style.
 ") GraphicUnhighlight;
 		virtual void GraphicUnhighlight();
 
 		/****************** Groups ******************/
 		/**** md5 signature: d58f58de9bde8c9bb93737989f881ace ****/
 		%feature("compactdefaultargs") Groups;
-		%feature("autodoc", "Returns graphic groups.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_SequenceOfGroup
+
+Description
+-----------
+Return graphic groups.
 ") Groups;
 		const Graphic3d_SequenceOfGroup & Groups();
 
 		/****************** HasGroupTransformPersistence ******************/
 		/**** md5 signature: 5d4952bc8c8bf1e884760e5b9bb8f355 ****/
 		%feature("compactdefaultargs") HasGroupTransformPersistence;
-		%feature("autodoc", "Return true if some groups might have transform persistence; false by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if some groups might have transform persistence; false by default.
 ") HasGroupTransformPersistence;
 		bool HasGroupTransformPersistence();
 
 		/****************** HighlightStyle ******************/
 		/**** md5 signature: 8178b69ba5e9aec0fad5df24b6a36d07 ****/
 		%feature("compactdefaultargs") HighlightStyle;
-		%feature("autodoc", "Returns valid handle to highlight style of the structure in case if highlight flag is set to true.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_PresentationAttributes>
+
+Description
+-----------
+Returns valid handle to highlight style of the structure in case if highlight flag is set to true.
 ") HighlightStyle;
 		const opencascade::handle<Graphic3d_PresentationAttributes> & HighlightStyle();
 
 		/****************** Identification ******************/
 		/**** md5 signature: f18c91e46c1b20a4777abd8f80b5550f ****/
 		%feature("compactdefaultargs") Identification;
-		%feature("autodoc", "Return structure id (generated by graphic3d_graphicdriver::newidentification() during structure construction).
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return structure id (generated by graphic3d_graphicdriver::newidentification() during structure construction).
 ") Identification;
 		Standard_Integer Identification();
 
 		/****************** IsAlwaysRendered ******************/
 		/**** md5 signature: d6f70384d08093407d656cc6da2cd218 ****/
 		%feature("compactdefaultargs") IsAlwaysRendered;
-		%feature("autodoc", "Checks if the structure should be included into bvh tree or not.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Checks if the structure should be included into bvh tree or not.
 ") IsAlwaysRendered;
 		Standard_Boolean IsAlwaysRendered();
 
 		/****************** IsCulled ******************/
 		/**** md5 signature: 89cdc36c57aff6236faae7db404fe552 ****/
 		%feature("compactdefaultargs") IsCulled;
-		%feature("autodoc", "Returns false if the structure hits the current view volume, otherwise returns true.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns false if the structure hits the current view volume, otherwise returns true.
 ") IsCulled;
 		Standard_Boolean IsCulled();
 
 		/****************** IsVisible ******************/
 		/**** md5 signature: 6d47e4fe91edc0d54b9a3b231c878799 ****/
 		%feature("compactdefaultargs") IsVisible;
-		%feature("autodoc", "Return structure visibility flag.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return structure visibility flag.
 ") IsVisible;
 		bool IsVisible();
 
 		/****************** IsVisible ******************/
 		/**** md5 signature: fde091b526f03186c5a82e89779d5e52 ****/
 		%feature("compactdefaultargs") IsVisible;
-		%feature("autodoc", "Return structure visibility considering both view affinity and global visibility state.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theViewId: int
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Return structure visibility considering both view affinity and global visibility state.
 ") IsVisible;
 		bool IsVisible(const Standard_Integer theViewId);
 
 		/****************** MarkAsNotCulled ******************/
 		/**** md5 signature: 897aa286c42261d59dc236206e1c43d7 ****/
 		%feature("compactdefaultargs") MarkAsNotCulled;
-		%feature("autodoc", "Marks structure as overlapping the current view volume one. the method is called during traverse of bvh tree.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Marks structure as overlapping the current view volume one. the method is called during traverse of bvh tree.
 ") MarkAsNotCulled;
 		void MarkAsNotCulled();
 
 		/****************** NewGroup ******************/
 		/**** md5 signature: b29eff19261565b2197170e2fddd4a01 ****/
 		%feature("compactdefaultargs") NewGroup;
-		%feature("autodoc", "Create new group within this structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStruct: Graphic3d_Structure
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_Group>
+
+Description
+-----------
+Create new group within this structure.
 ") NewGroup;
 		virtual opencascade::handle<Graphic3d_Group> NewGroup(const opencascade::handle<Graphic3d_Structure> & theStruct);
 
 		/****************** OnVisibilityChanged ******************/
 		/**** md5 signature: f939450daae8a4e0791763dd0796b996 ****/
 		%feature("compactdefaultargs") OnVisibilityChanged;
-		%feature("autodoc", "Update structure visibility state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Update structure visibility state.
 ") OnVisibilityChanged;
 		virtual void OnVisibilityChanged();
 
 		/****************** PreviousPriority ******************/
 		/**** md5 signature: 5ce130b5e3a1bc1ab2fddea0442f64cf ****/
 		%feature("compactdefaultargs") PreviousPriority;
-		%feature("autodoc", "Return previous structure display priority.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_DisplayPriority
+
+Description
+-----------
+Return previous structure display priority.
 ") PreviousPriority;
 		Graphic3d_DisplayPriority PreviousPriority();
 
 		/****************** Priority ******************/
 		/**** md5 signature: 27196dd56c108e83889182b069af6715 ****/
 		%feature("compactdefaultargs") Priority;
-		%feature("autodoc", "Return structure display priority.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_DisplayPriority
+
+Description
+-----------
+Return structure display priority.
 ") Priority;
 		Graphic3d_DisplayPriority Priority();
 
 		/****************** RemoveGroup ******************/
 		/**** md5 signature: 5306031610a77c3eda50a31cbc46b00d ****/
 		%feature("compactdefaultargs") RemoveGroup;
-		%feature("autodoc", "Remove group from this structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theGroup: Graphic3d_Group
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Remove group from this structure.
 ") RemoveGroup;
 		virtual void RemoveGroup(const opencascade::handle<Graphic3d_Group> & theGroup);
 
 		/****************** SetBndBoxClipCheck ******************/
 		/**** md5 signature: 0046cc05b019a8f9300c74bddba97a52 ****/
 		%feature("compactdefaultargs") SetBndBoxClipCheck;
-		%feature("autodoc", "Enable/disable check of object's bounding box clipping before drawing of object.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBndBoxClipCheck: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Enable/disable check of object's bounding box clipping before drawing of object.
 ") SetBndBoxClipCheck;
 		void SetBndBoxClipCheck(Standard_Boolean theBndBoxClipCheck);
 
 		/****************** SetClipPlanes ******************/
 		/**** md5 signature: e4333b4a8793a61136630719405f0b4b ****/
 		%feature("compactdefaultargs") SetClipPlanes;
-		%feature("autodoc", "Pass clip planes to the associated graphic driver structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePlanes: Graphic3d_SequenceOfHClipPlane
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Pass clip planes to the associated graphic driver structure.
 ") SetClipPlanes;
 		void SetClipPlanes(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
 
 		/****************** SetCulled ******************/
 		/**** md5 signature: c6355e8b8015481c20219430f581b8c9 ****/
 		%feature("compactdefaultargs") SetCulled;
-		%feature("autodoc", "Marks structure as culled/not culled - note that isalwaysrendered() is ignored here!.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsCulled: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Marks structure as culled/not culled - note that isalwaysrendered() is ignored here!.
 ") SetCulled;
 		void SetCulled(Standard_Boolean theIsCulled);
 
 		/****************** SetGroupTransformPersistence ******************/
 		/**** md5 signature: bac91b6506cf81c7d593e9f62c6eaf8b ****/
 		%feature("compactdefaultargs") SetGroupTransformPersistence;
-		%feature("autodoc", "Set if some groups might have transform persistence.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if some groups might have transform persistence.
 ") SetGroupTransformPersistence;
 		void SetGroupTransformPersistence(bool theValue);
 
 		/****************** SetPreviousPriority ******************/
 		/**** md5 signature: 6694962343cf95554e722769581ba96f ****/
 		%feature("compactdefaultargs") SetPreviousPriority;
-		%feature("autodoc", "Set previous structure display priority.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePriority: Graphic3d_DisplayPriority
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set previous structure display priority.
 ") SetPreviousPriority;
 		void SetPreviousPriority(Graphic3d_DisplayPriority thePriority);
 
 		/****************** SetPriority ******************/
 		/**** md5 signature: 4f328308d16b2119887631e15176fd97 ****/
 		%feature("compactdefaultargs") SetPriority;
-		%feature("autodoc", "Set structure display priority.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePriority: Graphic3d_DisplayPriority
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set structure display priority.
 ") SetPriority;
 		void SetPriority(Graphic3d_DisplayPriority thePriority);
 
 		/****************** SetTransformPersistence ******************/
 		/**** md5 signature: ebaa62acbe8ec5abd3805f5c94502bd2 ****/
 		%feature("compactdefaultargs") SetTransformPersistence;
-		%feature("autodoc", "Set transformation persistence.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTrsfPers: Graphic3d_TransformPers
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set transformation persistence.
 ") SetTransformPersistence;
 		virtual void SetTransformPersistence(const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
 		/****************** SetTransformation ******************/
 		/**** md5 signature: e50f985bc8429fcabc770ae98629b0e4 ****/
 		%feature("compactdefaultargs") SetTransformation;
-		%feature("autodoc", "Assign transformation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTrsf: TopLoc_Datum3D
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign transformation.
 ") SetTransformation;
 		virtual void SetTransformation(const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
 		/****************** SetZLayer ******************/
 		/**** md5 signature: ce2e4a880a4e9d0bd19b68aa8a0ed6bd ****/
 		%feature("compactdefaultargs") SetZLayer;
-		%feature("autodoc", "Set z layer id to display the structure in specified layer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerIndex: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set z layer id to display the structure in specified layer.
 ") SetZLayer;
 		virtual void SetZLayer(int theLayerIndex);
 
 		/****************** ShadowLink ******************/
 		/**** md5 signature: 79e4828e5441bba02c128c277a5e9ce4 ****/
 		%feature("compactdefaultargs") ShadowLink;
-		%feature("autodoc", "Create shadow link to this structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theManager: Graphic3d_StructureManager
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_CStructure>
+
+Description
+-----------
+Create shadow link to this structure.
 ") ShadowLink;
 		virtual opencascade::handle<Graphic3d_CStructure> ShadowLink(const opencascade::handle<Graphic3d_StructureManager> & theManager);
 
 		/****************** TransformPersistence ******************/
 		/**** md5 signature: f93fa6b8590ec0070c74ed0573b98382 ****/
 		%feature("compactdefaultargs") TransformPersistence;
-		%feature("autodoc", "Return transformation persistence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_TransformPers>
+
+Description
+-----------
+Return transformation persistence.
 ") TransformPersistence;
 		const opencascade::handle<Graphic3d_TransformPers> & TransformPersistence();
 
 		/****************** Transformation ******************/
 		/**** md5 signature: db8c043002ade3619cbf19c2cdc0b508 ****/
 		%feature("compactdefaultargs") Transformation;
-		%feature("autodoc", "Return transformation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TopLoc_Datum3D>
+
+Description
+-----------
+Return transformation.
 ") Transformation;
 		const opencascade::handle<TopLoc_Datum3D> & Transformation();
 
 		/****************** ZLayer ******************/
 		/**** md5 signature: 7420fa5788bb824c02345ee38be45933 ****/
 		%feature("compactdefaultargs") ZLayer;
-		%feature("autodoc", "Get z layer id.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_ZLayerId
+
+Description
+-----------
+Get z layer id.
 ") ZLayer;
 		Graphic3d_ZLayerId ZLayer();
 
 		/****************** updateLayerTransformation ******************/
 		/**** md5 signature: 2021ed30aa6033d5b3430e3eb071c124 ****/
 		%feature("compactdefaultargs") updateLayerTransformation;
-		%feature("autodoc", "Update render transformation matrix.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Update render transformation matrix.
 ") updateLayerTransformation;
 		virtual void updateLayerTransformation();
 
@@ -6059,186 +6797,222 @@ Projection_MonoRightEye = Projection.Projection_MonoRightEye
 		/****************** Graphic3d_Camera ******************/
 		/**** md5 signature: df0f7364c3262676d798db4877bc89d1 ****/
 		%feature("compactdefaultargs") Graphic3d_Camera;
-		%feature("autodoc", "Default constructor. initializes camera with the following properties: eye (0, 0, -2); center (0, 0, 0); up (0, 1, 0); type (orthographic); fovy (45); scale (1000); isstereo(false); znear (0.001); zfar (3000.0); aspect(1); zfocus(1.0); zfocustype(relative); iod(0.05); iodtype(relative).
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor. initializes camera with the following properties: eye (0, 0, -2); center (0, 0, 0); up (0, 1, 0); type (orthographic); fovy (45); scale (1000); isstereo(false); znear (0.001); zfar (3000.0); aspect(1); zfocus(1.0); zfocustype(relative); iod(0.05); iodtype(relative).
 ") Graphic3d_Camera;
 		 Graphic3d_Camera();
 
 		/****************** Graphic3d_Camera ******************/
 		/**** md5 signature: 1a7bd2806a6306d0308f2ffa1ae2ea8b ****/
 		%feature("compactdefaultargs") Graphic3d_Camera;
-		%feature("autodoc", "Copy constructor. @param theother [in] the camera to copy from.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_Camera
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Copy constructor. @param theother [in] the camera to copy from.
 ") Graphic3d_Camera;
 		 Graphic3d_Camera(const opencascade::handle<Graphic3d_Camera> & theOther);
 
 		/****************** Aspect ******************/
 		/**** md5 signature: 2e31d5d4e9d98682a1043fbc438ab30a ****/
 		%feature("compactdefaultargs") Aspect;
-		%feature("autodoc", "Get camera display ratio. returns display ratio.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get camera display ratio. return display ratio.
 ") Aspect;
 		Standard_Real Aspect();
 
 		/****************** AxialScale ******************/
 		/**** md5 signature: a34dc3fbf3c0151be08f9ddac5ac6f5c ****/
 		%feature("compactdefaultargs") AxialScale;
-		%feature("autodoc", "Get camera axial scale. returns camera's axial scale.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_XYZ
+
+Description
+-----------
+Get camera axial scale. return camera's axial scale.
 ") AxialScale;
 		const gp_XYZ AxialScale();
 
 		/****************** Center ******************/
 		/**** md5 signature: 6e010c335ea3ad7f510ab4dc46be6265 ****/
 		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "Get center of the camera, e.g. the point where camera looks at. this point is computed as eye() translated along direction() at distance(). returns the point where the camera looks at.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Get center of the camera, e.g. the point where camera looks at. this point is computed as eye() translated along direction() at distance(). return the point where the camera looks at.
 ") Center;
 		gp_Pnt Center();
 
 		/****************** ConvertProj2View ******************/
 		/**** md5 signature: 61f7cc7d630b6fa50bfb62f8bba100e4 ****/
 		%feature("compactdefaultargs") ConvertProj2View;
-		%feature("autodoc", "Convert point from projection coordinate space to view coordinate space. @param thepnt [in] the point in ndc. returns point in vcs.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 gp_Pnt
+
+Description
+-----------
+Convert point from projection coordinate space to view coordinate space. @param thepnt [in] the point in ndc. return point in vcs.
 ") ConvertProj2View;
 		gp_Pnt ConvertProj2View(const gp_Pnt & thePnt);
 
 		/****************** ConvertView2Proj ******************/
 		/**** md5 signature: 9b7fb83ada635448d430e47d15684c73 ****/
 		%feature("compactdefaultargs") ConvertView2Proj;
-		%feature("autodoc", "Convert point from view coordinate space to projection coordinate space. @param thepnt [in] the point in vcs. returns point in ndc.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 gp_Pnt
+
+Description
+-----------
+Convert point from view coordinate space to projection coordinate space. @param thepnt [in] the point in vcs. return point in ndc.
 ") ConvertView2Proj;
 		gp_Pnt ConvertView2Proj(const gp_Pnt & thePnt);
 
 		/****************** ConvertView2World ******************/
 		/**** md5 signature: b33cff606a6ff19c9474ccbac1b3618c ****/
 		%feature("compactdefaultargs") ConvertView2World;
-		%feature("autodoc", "Convert point from view coordinate space to world coordinates. @param thepnt [in] the 3d point in vcs. returns point in wcs.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 gp_Pnt
+
+Description
+-----------
+Convert point from view coordinate space to world coordinates. @param thepnt [in] the 3d point in vcs. return point in wcs.
 ") ConvertView2World;
 		gp_Pnt ConvertView2World(const gp_Pnt & thePnt);
 
 		/****************** ConvertWorld2View ******************/
 		/**** md5 signature: d48a0df358800a049be17a0e29f01828 ****/
 		%feature("compactdefaultargs") ConvertWorld2View;
-		%feature("autodoc", "Convert point from world coordinate space to view coordinate space. @param thepnt [in] the 3d point in wcs. returns point in vcs.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 gp_Pnt
+
+Description
+-----------
+Convert point from world coordinate space to view coordinate space. @param thepnt [in] the 3d point in wcs. return point in vcs.
 ") ConvertWorld2View;
 		gp_Pnt ConvertWorld2View(const gp_Pnt & thePnt);
 
 		/****************** Copy ******************/
 		/**** md5 signature: a197e78409862ab70e2f4b022adc6706 ****/
 		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "Copy properties of another camera. @param theother [in] the camera to copy from.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_Camera
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Copy properties of another camera. @param theother [in] the camera to copy from.
 ") Copy;
 		void Copy(const opencascade::handle<Graphic3d_Camera> & theOther);
 
 		/****************** CopyMappingData ******************/
 		/**** md5 signature: fa827f178d7b4e25e2c784fd749a08d9 ****/
 		%feature("compactdefaultargs") CopyMappingData;
-		%feature("autodoc", "Initialize mapping related parameters from other camera handle.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOtherCamera: Graphic3d_Camera
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize mapping related parameters from other camera handle.
 ") CopyMappingData;
 		void CopyMappingData(const opencascade::handle<Graphic3d_Camera> & theOtherCamera);
 
 		/****************** CopyOrientationData ******************/
 		/**** md5 signature: a3dee68836d129923d0ab58babe72b9f ****/
 		%feature("compactdefaultargs") CopyOrientationData;
-		%feature("autodoc", "Initialize orientation related parameters from other camera handle.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOtherCamera: Graphic3d_Camera
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize orientation related parameters from other camera handle.
 ") CopyOrientationData;
 		void CopyOrientationData(const opencascade::handle<Graphic3d_Camera> & theOtherCamera);
 
 		/****************** Direction ******************/
 		/**** md5 signature: fe17f01a1a479d7628e85d427dbda641 ****/
 		%feature("compactdefaultargs") Direction;
-		%feature("autodoc", "Get camera look direction. returns camera look direction.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Dir
+
+Description
+-----------
+Get camera look direction. return camera look direction.
 ") Direction;
 		const gp_Dir Direction();
 
 		/****************** Distance ******************/
 		/**** md5 signature: d47317206a0fb34e540004324dbfafd8 ****/
 		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "Get distance of eye from camera center. returns the distance.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get distance of eye from camera center. return the distance.
 ") Distance;
 		Standard_Real Distance();
 
@@ -6254,69 +7028,79 @@ float
 		/****************** Eye ******************/
 		/**** md5 signature: 5d89a7e69918722c78431c69f97cda69 ****/
 		%feature("compactdefaultargs") Eye;
-		%feature("autodoc", "Get camera eye position. returns camera eye location.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Get camera eye position. return camera eye location.
 ") Eye;
 		const gp_Pnt Eye();
 
 		/****************** FOV2d ******************/
 		/**** md5 signature: 364ad7cb412ab28660c499c82aee2d10 ****/
 		%feature("compactdefaultargs") FOV2d;
-		%feature("autodoc", "Get field of view (fov) restriction for 2d on-screen elements; 180 degrees by default. when 2d fov is smaller than fovy or fovx, 2d elements defined within offset from view corner will be extended to fit into specified 2d fov. this can be useful to make 2d elements sharply visible, like in case of hmd normally having extra large fovy.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get field of view (fov) restriction for 2d on-screen elements; 180 degrees by default. when 2d fov is smaller than fovy or fovx, 2d elements defined within offset from view corner will be extended to fit into specified 2d fov. this can be useful to make 2d elements sharply visible, like in case of hmd normally having extra large fovy.
 ") FOV2d;
 		Standard_Real FOV2d();
 
 		/****************** FOVx ******************/
 		/**** md5 signature: e830aeb674883f9accab89bdae2edb59 ****/
 		%feature("compactdefaultargs") FOVx;
-		%feature("autodoc", "Get field of view (fov) in x axis. returns the fov value in degrees.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get field of view (fov) in x axis. return the fov value in degrees.
 ") FOVx;
 		Standard_Real FOVx();
 
 		/****************** FOVy ******************/
 		/**** md5 signature: 2e66b09969f86dd4b5d2b9a3c09837f5 ****/
 		%feature("compactdefaultargs") FOVy;
-		%feature("autodoc", "Get field of view (fov) in y axis. returns the fov value in degrees.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get field of view (fov) in y axis. return the fov value in degrees.
 ") FOVy;
 		Standard_Real FOVy();
 
 		/****************** FitMinMax ******************/
 		/**** md5 signature: 8534daaad2c9f347907bc7500a901a64 ****/
 		%feature("compactdefaultargs") FitMinMax;
-		%feature("autodoc", "Adjust camera to fit in specified aabb.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBox: Bnd_Box
 theResolution: float
 theToEnlargeIfLine: bool
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Adjust camera to fit in specified aabb.
 ") FitMinMax;
 		bool FitMinMax(const Bnd_Box & theBox, const Standard_Real theResolution, const bool theToEnlargeIfLine);
 
 		/****************** Frustum ******************/
 		/**** md5 signature: cf93be954a6467b83bd07e5a762a6fe9 ****/
 		%feature("compactdefaultargs") Frustum;
-		%feature("autodoc", "Calculate wcs frustum planes for the camera projection volume. frustum is a convex volume determined by six planes directing inwards. the frustum planes are usually used as inputs for camera algorithms. thus, if any changes to projection matrix calculation are necessary, the frustum planes calculation should be also touched. @param theleft [out] the frustum plane for left side of view. @param theright [out] the frustum plane for right side of view. @param thebottom [out] the frustum plane for bottom side of view. @param thetop [out] the frustum plane for top side of view. @param thenear [out] the frustum plane for near side of view. @param thefar [out] the frustum plane for far side of view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLeft: gp_Pln
@@ -6326,56 +7110,65 @@ theTop: gp_Pln
 theNear: gp_Pln
 theFar: gp_Pln
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Calculate wcs frustum planes for the camera projection volume. frustum is a convex volume determined by six planes directing inwards. the frustum planes are usually used as inputs for camera algorithms. thus, if any changes to projection matrix calculation are necessary, the frustum planes calculation should be also touched. @param theleft [out] the frustum plane for left side of view. @param theright [out] the frustum plane for right side of view. @param thebottom [out] the frustum plane for bottom side of view. @param thetop [out] the frustum plane for top side of view. @param thenear [out] the frustum plane for near side of view. @param thefar [out] the frustum plane for far side of view.
 ") Frustum;
 		void Frustum(gp_Pln & theLeft, gp_Pln & theRight, gp_Pln & theBottom, gp_Pln & theTop, gp_Pln & theNear, gp_Pln & theFar);
 
 		/****************** FrustumPoints ******************/
 		/**** md5 signature: d944a131c8ab93e846cb55932c041f2c ****/
 		%feature("compactdefaultargs") FrustumPoints;
-		%feature("autodoc", "Fill array of current view frustum corners. the size of this array is equal to frustumverticesnb. the order of vertices is as defined in frustumvert_* enumeration.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoints: NCollection_Array1<Graphic3d_Vec3d>
-theModelWorld: Graphic3d_Mat4d,optional
-	default value is Graphic3d_Mat4d()
+theModelWorld: Graphic3d_Mat4d (optional, default to Graphic3d_Mat4d())
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Fill array of current view frustum corners. the size of this array is equal to frustumverticesnb. the order of vertices is as defined in frustumvert_* enumeration.
 ") FrustumPoints;
 		void FrustumPoints(NCollection_Array1<Graphic3d_Vec3d> & thePoints, const Graphic3d_Mat4d & theModelWorld = Graphic3d_Mat4d());
 
 		/****************** GetIODType ******************/
 		/**** md5 signature: 930a27532abcc8fe5dc7b294192f1acf ****/
 		%feature("compactdefaultargs") GetIODType;
-		%feature("autodoc", "Get intraocular distance definition type. returns definition type used for intraocular distance.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Camera::IODType
+
+Description
+-----------
+Get intraocular distance definition type. return definition type used for intraocular distance.
 ") GetIODType;
 		Graphic3d_Camera::IODType GetIODType();
 
 		/****************** IOD ******************/
 		/**** md5 signature: 0cc7208beeec9544d745fd8edb710bd8 ****/
 		%feature("compactdefaultargs") IOD;
-		%feature("autodoc", "Get intraocular distance value. returns absolute or relative iod value depending on its definition type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get intraocular distance value. return absolute or relative iod value depending on its definition type.
 ") IOD;
 		Standard_Real IOD();
 
 		/****************** Interpolate ******************/
 		/**** md5 signature: cf58d049943cb5707d151a3600470e95 ****/
 		%feature("compactdefaultargs") Interpolate;
-		%feature("autodoc", "Linear interpolation tool for camera orientation and position. this tool interpolates camera parameters scale, eye, center, rotation (up and direction vectors) independently. @sa graphic3d_cameralerp //! eye/center interpolation is performed through defining an anchor point in-between center and eye. the anchor position is defined as point near to the camera point which has smaller translation part. the main idea is to keep the distance between center and eye (which will change if center and eye translation will be interpolated independently). e.g.: - when both center and eye are moved at the same vector -> both will be just translated by straight line; - when center is not moved -> camera eye will move around center through arc; - when eye is not moved -> camera center will move around eye through arc; - when both center and eye are move by different vectors -> transformation will be something in between, and will try interpolate linearly the distance between center and eye. //! this transformation might be not in line with user expectations. in this case, application might define intermediate camera positions for interpolation or implement own interpolation logic. //! @param thestart [in] initial camera position @param theend [in] final camera position @param thet [in] step between initial and final positions within [0,1] range @param thecamera [out] interpolation result.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStart: Graphic3d_Camera
@@ -6383,387 +7176,459 @@ theEnd: Graphic3d_Camera
 theT: double
 theCamera: Graphic3d_Camera
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Linear interpolation tool for camera orientation and position. this tool interpolates camera parameters scale, eye, center, rotation (up and direction vectors) independently. @sa graphic3d_cameralerp //! eye/center interpolation is performed through defining an anchor point in-between center and eye. the anchor position is defined as point near to the camera point which has smaller translation part. the main idea is to keep the distance between center and eye (which will change if center and eye translation will be interpolated independently). e.g.: - when both center and eye are moved at the same vector -> both will be just translated by straight line; - when center is not moved -> camera eye will move around center through arc; - when eye is not moved -> camera center will move around eye through arc; - when both center and eye are move by different vectors -> transformation will be something in between, and will try interpolate linearly the distance between center and eye. //! this transformation might be not in line with user expectations. in this case, application might define intermediate camera positions for interpolation or implement own interpolation logic. //! @param thestart [in] initial camera position @param theend [in] final camera position @param thet [in] step between initial and final positions within [0,1] range @param thecamera [out] interpolation result.
 ") Interpolate;
 		static void Interpolate(const opencascade::handle<Graphic3d_Camera> & theStart, const opencascade::handle<Graphic3d_Camera> & theEnd, const double theT, opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****************** InvalidateOrientation ******************/
 		/**** md5 signature: db406d3073ea0c1be275948df298cd3b ****/
 		%feature("compactdefaultargs") InvalidateOrientation;
-		%feature("autodoc", "Invalidate orientation matrix. the matrix will be updated on request.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Invalidate orientation matrix. the matrix will be updated on request.
 ") InvalidateOrientation;
 		void InvalidateOrientation();
 
 		/****************** InvalidateProjection ******************/
 		/**** md5 signature: 0d6d6b15fdde9614d7c09fbbef20f7af ****/
 		%feature("compactdefaultargs") InvalidateProjection;
-		%feature("autodoc", "Invalidate state of projection matrix. the matrix will be updated on request.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Invalidate state of projection matrix. the matrix will be updated on request.
 ") InvalidateProjection;
 		void InvalidateProjection();
 
 		/****************** IsCustomMonoProjection ******************/
 		/**** md5 signature: f40f82bd48e25f5f239d265ca31a9419 ****/
 		%feature("compactdefaultargs") IsCustomMonoProjection;
-		%feature("autodoc", "Return true if custom projection matrix is set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if custom projection matrix is set.
 ") IsCustomMonoProjection;
 		bool IsCustomMonoProjection();
 
 		/****************** IsCustomStereoFrustum ******************/
 		/**** md5 signature: 79a61811976022584d3a16a0132ac5d5 ****/
 		%feature("compactdefaultargs") IsCustomStereoFrustum;
-		%feature("autodoc", "Return true if custom stereo frustums are set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if custom stereo frustums are set.
 ") IsCustomStereoFrustum;
 		bool IsCustomStereoFrustum();
 
 		/****************** IsCustomStereoProjection ******************/
 		/**** md5 signature: f95aa0bf9f02210f97a0b93d8ac62ce5 ****/
 		%feature("compactdefaultargs") IsCustomStereoProjection;
-		%feature("autodoc", "Return true if custom stereo projection matrices are set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if custom stereo projection matrices are set.
 ") IsCustomStereoProjection;
 		bool IsCustomStereoProjection();
 
 		/****************** IsOrthographic ******************/
 		/**** md5 signature: 318f821f87d8d72003d6a5bc300749dd ****/
 		%feature("compactdefaultargs") IsOrthographic;
-		%feature("autodoc", "Check that the camera projection is orthographic. returns boolean flag that indicates whether the camera's projection is orthographic or not.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Check that the camera projection is orthographic. return boolean flag that indicates whether the camera's projection is orthographic or not.
 ") IsOrthographic;
 		Standard_Boolean IsOrthographic();
 
 		/****************** IsStereo ******************/
 		/**** md5 signature: 1afd17937fddc58ff897af57df66cb75 ****/
 		%feature("compactdefaultargs") IsStereo;
-		%feature("autodoc", "Check whether the camera projection is stereo. please note that stereo rendering is now implemented with support of quad buffering. returns boolean flag indicating whether the stereographic l/r projection is chosen.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Check whether the camera projection is stereo. please note that stereo rendering is now implemented with support of quad buffering. return boolean flag indicating whether the stereographic l/r projection is chosen.
 ") IsStereo;
 		Standard_Boolean IsStereo();
 
 		/****************** IsZeroToOneDepth ******************/
 		/**** md5 signature: 8d8fb797f50b5085b4ddc21e963e39ad ****/
 		%feature("compactdefaultargs") IsZeroToOneDepth;
-		%feature("autodoc", "Return true if camera should calculate projection matrix for [0, 1] depth range or for [-1, 1] range. false by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if camera should calculate projection matrix for [0, 1] depth range or for [-1, 1] range. false by default.
 ") IsZeroToOneDepth;
 		Standard_Boolean IsZeroToOneDepth();
 
 		/****************** MoveEyeTo ******************/
 		/**** md5 signature: 8805118f8cd5bdfe0afd4ef0aee46699 ****/
 		%feature("compactdefaultargs") MoveEyeTo;
-		%feature("autodoc", "Sets camera eye position. unlike seteye(), this method only changes eye point and preserves camera direction. @param theeye [in] the location of camera's eye. @sa seteye().
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEye: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets camera eye position. unlike seteye(), this method only changes eye point and preserves camera direction. @param theeye [in] the location of camera's eye. @sa seteye().
 ") MoveEyeTo;
 		void MoveEyeTo(const gp_Pnt & theEye);
 
 		/****************** NDC2dOffsetX ******************/
 		/**** md5 signature: 02b90a20975095bd3d05c44e0ba14c40 ****/
 		%feature("compactdefaultargs") NDC2dOffsetX;
-		%feature("autodoc", "Return offset to the view corner in ndc space within dimension x for 2d on-screen elements, which is normally 0.5. can be clamped when fovx exceeds fov2d.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return offset to the view corner in ndc space within dimension x for 2d on-screen elements, which is normally 0.5. can be clamped when fovx exceeds fov2d.
 ") NDC2dOffsetX;
 		Standard_Real NDC2dOffsetX();
 
 		/****************** NDC2dOffsetY ******************/
 		/**** md5 signature: 9daa3c64c4b36c604c8fd2e772f0ea20 ****/
 		%feature("compactdefaultargs") NDC2dOffsetY;
-		%feature("autodoc", "Return offset to the view corner in ndc space within dimension x for 2d on-screen elements, which is normally 0.5. can be clamped when fovy exceeds fov2d.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return offset to the view corner in ndc space within dimension x for 2d on-screen elements, which is normally 0.5. can be clamped when fovy exceeds fov2d.
 ") NDC2dOffsetY;
 		Standard_Real NDC2dOffsetY();
 
 		/****************** OrientationMatrix ******************/
 		/**** md5 signature: 88de92cfa5006e361a76bdeda10d31c1 ****/
 		%feature("compactdefaultargs") OrientationMatrix;
-		%feature("autodoc", "Get orientation matrix. returns camera orientation matrix.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Mat4d
+
+Description
+-----------
+Get orientation matrix. return camera orientation matrix.
 ") OrientationMatrix;
 		const Graphic3d_Mat4d & OrientationMatrix();
 
 		/****************** OrientationMatrixF ******************/
 		/**** md5 signature: 3b95faa8431d412ddc01f1835005fa73 ****/
 		%feature("compactdefaultargs") OrientationMatrixF;
-		%feature("autodoc", "Get orientation matrix of standard_shortreal precision. returns camera orientation matrix.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Mat4
+
+Description
+-----------
+Get orientation matrix of standard_shortreal precision. return camera orientation matrix.
 ") OrientationMatrixF;
 		const Graphic3d_Mat4 & OrientationMatrixF();
 
 		/****************** OrthogonalizeUp ******************/
 		/**** md5 signature: e85fd67d4179af26c6f84c4298353c05 ****/
 		%feature("compactdefaultargs") OrthogonalizeUp;
-		%feature("autodoc", "Orthogonalize up direction vector.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Orthogonalize up direction vector.
 ") OrthogonalizeUp;
 		void OrthogonalizeUp();
 
 		/****************** OrthogonalizedUp ******************/
 		/**** md5 signature: 8e9cca336a7e02481013c3c654a54700 ****/
 		%feature("compactdefaultargs") OrthogonalizedUp;
-		%feature("autodoc", "Return a copy of orthogonalized up direction vector.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Dir
+
+Description
+-----------
+Return a copy of orthogonalized up direction vector.
 ") OrthogonalizedUp;
 		gp_Dir OrthogonalizedUp();
 
 		/****************** Project ******************/
 		/**** md5 signature: abd4a94d8c8aae54509e94ad36fb4ac1 ****/
 		%feature("compactdefaultargs") Project;
-		%feature("autodoc", "Project point from world coordinate space to normalized device coordinates (mapping). @param thepnt [in] the 3d point in wcs. returns mapped point in ndc.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 gp_Pnt
+
+Description
+-----------
+Project point from world coordinate space to normalized device coordinates (mapping). @param thepnt [in] the 3d point in wcs. return mapped point in ndc.
 ") Project;
 		gp_Pnt Project(const gp_Pnt & thePnt);
 
 		/****************** ProjectionMatrix ******************/
 		/**** md5 signature: ba648dd7b6de7cfe7eaed2ae24ad2b05 ****/
 		%feature("compactdefaultargs") ProjectionMatrix;
-		%feature("autodoc", "Get monographic or middle point projection matrix used for monographic rendering and for point projection / unprojection. returns monographic projection matrix.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Mat4d
+
+Description
+-----------
+Get monographic or middle point projection matrix used for monographic rendering and for point projection / unprojection. return monographic projection matrix.
 ") ProjectionMatrix;
 		const Graphic3d_Mat4d & ProjectionMatrix();
 
 		/****************** ProjectionMatrixF ******************/
 		/**** md5 signature: a5f82f5f68117e11b8e5eece1ad9d98b ****/
 		%feature("compactdefaultargs") ProjectionMatrixF;
-		%feature("autodoc", "Get monographic or middle point projection matrix of standard_shortreal precision used for monographic rendering and for point projection / unprojection. returns monographic projection matrix.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Mat4
+
+Description
+-----------
+Get monographic or middle point projection matrix of standard_shortreal precision used for monographic rendering and for point projection / unprojection. return monographic projection matrix.
 ") ProjectionMatrixF;
 		const Graphic3d_Mat4 & ProjectionMatrixF();
 
 		/****************** ProjectionState ******************/
 		/**** md5 signature: dbf784bf5fda4e30033e082dc2260fff ****/
 		%feature("compactdefaultargs") ProjectionState;
-		%feature("autodoc", "Returns modification state of camera projection matrix.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Size
+
+Description
+-----------
+Returns modification state of camera projection matrix.
 ") ProjectionState;
 		Standard_Size ProjectionState();
 
 		/****************** ProjectionStereoLeft ******************/
 		/**** md5 signature: ec4a0e24a0c232fcdfa1c6284ceac296 ****/
 		%feature("compactdefaultargs") ProjectionStereoLeft;
-		%feature("autodoc", "Returns stereographic matrix computed for left eye. please note that this method is used for rendering for <i>projection_stereo</i>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Mat4d
+
+Description
+-----------
+Return stereographic matrix computed for left eye. please note that this method is used for rendering for <i>projection_stereo</i>.
 ") ProjectionStereoLeft;
 		const Graphic3d_Mat4d & ProjectionStereoLeft();
 
 		/****************** ProjectionStereoLeftF ******************/
 		/**** md5 signature: 5f258843e5dfdded67d0927b47976d1e ****/
 		%feature("compactdefaultargs") ProjectionStereoLeftF;
-		%feature("autodoc", "Returns stereographic matrix of standard_shortreal precision computed for left eye. please note that this method is used for rendering for <i>projection_stereo</i>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Mat4
+
+Description
+-----------
+Return stereographic matrix of standard_shortreal precision computed for left eye. please note that this method is used for rendering for <i>projection_stereo</i>.
 ") ProjectionStereoLeftF;
 		const Graphic3d_Mat4 & ProjectionStereoLeftF();
 
 		/****************** ProjectionStereoRight ******************/
 		/**** md5 signature: 3a9e2a1d2a659fd2dc60749ffc3d8e8f ****/
 		%feature("compactdefaultargs") ProjectionStereoRight;
-		%feature("autodoc", "Returns stereographic matrix computed for right eye. please note that this method is used for rendering for <i>projection_stereo</i>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Mat4d
+
+Description
+-----------
+Return stereographic matrix computed for right eye. please note that this method is used for rendering for <i>projection_stereo</i>.
 ") ProjectionStereoRight;
 		const Graphic3d_Mat4d & ProjectionStereoRight();
 
 		/****************** ProjectionStereoRightF ******************/
 		/**** md5 signature: 7020498144994c8b5300275ef6765553 ****/
 		%feature("compactdefaultargs") ProjectionStereoRightF;
-		%feature("autodoc", "Returns stereographic matrix of standard_shortreal precision computed for right eye. please note that this method is used for rendering for <i>projection_stereo</i>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Mat4
+
+Description
+-----------
+Return stereographic matrix of standard_shortreal precision computed for right eye. please note that this method is used for rendering for <i>projection_stereo</i>.
 ") ProjectionStereoRightF;
 		const Graphic3d_Mat4 & ProjectionStereoRightF();
 
 		/****************** ProjectionType ******************/
 		/**** md5 signature: bbd21df5398364c0e880bd19f5b180dd ****/
 		%feature("compactdefaultargs") ProjectionType;
-		%feature("autodoc", "Returns camera projection type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Camera::Projection
+
+Description
+-----------
+Return camera projection type.
 ") ProjectionType;
 		Graphic3d_Camera::Projection ProjectionType();
 
 		/****************** ResetCustomProjection ******************/
 		/**** md5 signature: c76eab2fdadc47ea772ac6e33aae3e3e ****/
 		%feature("compactdefaultargs") ResetCustomProjection;
-		%feature("autodoc", "Unset all custom frustums and projection matrices.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Unset all custom frustums and projection matrices.
 ") ResetCustomProjection;
 		void ResetCustomProjection();
 
 		/****************** Scale ******************/
 		/**** md5 signature: 4c0fd48707c01e5a42b2a639ca08da30 ****/
 		%feature("compactdefaultargs") Scale;
-		%feature("autodoc", "Get camera scale. returns camera scale factor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get camera scale. return camera scale factor.
 ") Scale;
 		Standard_Real Scale();
 
 		/****************** SetAspect ******************/
 		/**** md5 signature: eeb63fa0e0a34af2268b36c5ae66d337 ****/
 		%feature("compactdefaultargs") SetAspect;
-		%feature("autodoc", "Changes width / height display ratio. @param theaspect [in] the display ratio.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAspect: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes width / height display ratio. @param theaspect [in] the display ratio.
 ") SetAspect;
 		void SetAspect(const Standard_Real theAspect);
 
 		/****************** SetAxialScale ******************/
 		/**** md5 signature: 3a595f07bdcb576462e6ff2b1385e904 ****/
 		%feature("compactdefaultargs") SetAxialScale;
-		%feature("autodoc", "Set camera axial scale. @param theaxialscale [in] the axial scale vector.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAxialScale: gp_XYZ
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set camera axial scale. @param theaxialscale [in] the axial scale vector.
 ") SetAxialScale;
 		void SetAxialScale(const gp_XYZ & theAxialScale);
 
 		/****************** SetCenter ******************/
 		/**** md5 signature: d37eaee629aacdd36ba1b49cba7ff093 ****/
 		%feature("compactdefaultargs") SetCenter;
-		%feature("autodoc", "Sets center of the camera, e.g. the point where camera looks at. this methods changes camera direction, so that the new direction is computed from current eye position to specified center position. @param thecenter [in] the point where the camera looks at.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCenter: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets center of the camera, e.g. the point where camera looks at. this methods changes camera direction, so that the new direction is computed from current eye position to specified center position. @param thecenter [in] the point where the camera looks at.
 ") SetCenter;
 		void SetCenter(const gp_Pnt & theCenter);
 
 		/****************** SetCustomMonoProjection ******************/
 		/**** md5 signature: a06f0e9f6800264c899ece0a233f9052 ****/
 		%feature("compactdefaultargs") SetCustomMonoProjection;
-		%feature("autodoc", "Set custom projection matrix.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProj: Graphic3d_Mat4d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set custom projection matrix.
 ") SetCustomMonoProjection;
 		void SetCustomMonoProjection(const Graphic3d_Mat4d & theProj);
 
 		/****************** SetCustomStereoFrustums ******************/
 		/**** md5 signature: e324df4b1a8197646b676683a9a3fb10 ****/
 		%feature("compactdefaultargs") SetCustomStereoFrustums;
-		%feature("autodoc", "Set custom stereo frustums. these can be retrieved from apis like openvr.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFrustumL: Aspect_FrustumLRBT<float>
 theFrustumR: Aspect_FrustumLRBT<float>
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set custom stereo frustums. these can be retrieved from apis like openvr.
 ") SetCustomStereoFrustums;
 		void SetCustomStereoFrustums(const Aspect_FrustumLRBT<Standard_Real> & theFrustumL, const Aspect_FrustumLRBT<Standard_Real> & theFrustumR);
 
 		/****************** SetCustomStereoProjection ******************/
 		/**** md5 signature: 0d141663aa8aaa10812ad72746bbc873 ****/
 		%feature("compactdefaultargs") SetCustomStereoProjection;
-		%feature("autodoc", "Set custom stereo projection matrices. @param theprojl [in] left eye projection matrix @param theheadtoeyel [in] left head to eye translation matrix @param theprojr [in] right eye projection matrix @param theheadtoeyer [in] right head to eye translation matrix.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProjL: Graphic3d_Mat4d
@@ -6771,268 +7636,320 @@ theHeadToEyeL: Graphic3d_Mat4d
 theProjR: Graphic3d_Mat4d
 theHeadToEyeR: Graphic3d_Mat4d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set custom stereo projection matrices. @param theprojl [in] left eye projection matrix @param theheadtoeyel [in] left head to eye translation matrix @param theprojr [in] right eye projection matrix @param theheadtoeyer [in] right head to eye translation matrix.
 ") SetCustomStereoProjection;
 		void SetCustomStereoProjection(const Graphic3d_Mat4d & theProjL, const Graphic3d_Mat4d & theHeadToEyeL, const Graphic3d_Mat4d & theProjR, const Graphic3d_Mat4d & theHeadToEyeR);
 
 		/****************** SetDirection ******************/
 		/**** md5 signature: cefc66d5cea733e39294753286bacaa0 ****/
 		%feature("compactdefaultargs") SetDirection;
-		%feature("autodoc", "Sets camera look direction and computes the new eye position relative to current center. warning! this method does not verify that the current up() vector is orthogonal to the new direction. @param thedir [in] the direction.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDir: gp_Dir
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets camera look direction and computes the new eye position relative to current center. warning! this method does not verify that the current up() vector is orthogonal to the new direction. @param thedir [in] the direction.
 ") SetDirection;
 		void SetDirection(const gp_Dir & theDir);
 
 		/****************** SetDirectionFromEye ******************/
 		/**** md5 signature: bdeb39a6f9bad4d21e8fd65f1dd48e35 ****/
 		%feature("compactdefaultargs") SetDirectionFromEye;
-		%feature("autodoc", "Sets camera look direction preserving the current eye() position. warning! this method does not verify that the current up() vector is orthogonal to the new direction. @param thedir [in] the direction.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDir: gp_Dir
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets camera look direction preserving the current eye() position. warning! this method does not verify that the current up() vector is orthogonal to the new direction. @param thedir [in] the direction.
 ") SetDirectionFromEye;
 		void SetDirectionFromEye(const gp_Dir & theDir);
 
 		/****************** SetDistance ******************/
 		/**** md5 signature: c8c6fc158515b5750dd8a9adb08f4b0c ****/
 		%feature("compactdefaultargs") SetDistance;
-		%feature("autodoc", "Set distance of eye from camera center. @param thedistance [in] the distance.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDistance: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set distance of eye from camera center. @param thedistance [in] the distance.
 ") SetDistance;
 		void SetDistance(const Standard_Real theDistance);
 
 		/****************** SetEye ******************/
 		/**** md5 signature: 087ce1b13605c60b90cb65401431043b ****/
 		%feature("compactdefaultargs") SetEye;
-		%feature("autodoc", "Sets camera eye position. warning! for backward compatibility reasons, this method also changes view direction, so that the new direction is computed from new eye position to old center position. @param theeye [in] the location of camera's eye. @sa moveeyeto(), seteyeandcenter().
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEye: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets camera eye position. warning! for backward compatibility reasons, this method also changes view direction, so that the new direction is computed from new eye position to old center position. @param theeye [in] the location of camera's eye. @sa moveeyeto(), seteyeandcenter().
 ") SetEye;
 		void SetEye(const gp_Pnt & theEye);
 
 		/****************** SetEyeAndCenter ******************/
 		/**** md5 signature: 9fba3596e320aa26e99834ae5f012844 ****/
 		%feature("compactdefaultargs") SetEyeAndCenter;
-		%feature("autodoc", "Sets camera eye and center positions. @param theeye [in] the location of camera's eye @param thecenter [in] the location of camera's center.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEye: gp_Pnt
 theCenter: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets camera eye and center positions. @param theeye [in] the location of camera's eye @param thecenter [in] the location of camera's center.
 ") SetEyeAndCenter;
 		void SetEyeAndCenter(const gp_Pnt & theEye, const gp_Pnt & theCenter);
 
 		/****************** SetFOV2d ******************/
 		/**** md5 signature: 1286ea5aea3a756d3a3d85a68f3345e3 ****/
 		%feature("compactdefaultargs") SetFOV2d;
-		%feature("autodoc", "Set field of view (fov) restriction for 2d on-screen elements.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFOV: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set field of view (fov) restriction for 2d on-screen elements.
 ") SetFOV2d;
 		void SetFOV2d(Standard_Real theFOV);
 
 		/****************** SetFOVy ******************/
 		/**** md5 signature: 7e8348c77345d30f965072441cac49c1 ****/
 		%feature("compactdefaultargs") SetFOVy;
-		%feature("autodoc", "Set field of view (fov) in y axis for perspective projection. field of view in x axis is automatically scaled from view aspect ratio. @param thefovy [in] the fov in degrees.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFOVy: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set field of view (fov) in y axis for perspective projection. field of view in x axis is automatically scaled from view aspect ratio. @param thefovy [in] the fov in degrees.
 ") SetFOVy;
 		void SetFOVy(const Standard_Real theFOVy);
 
 		/****************** SetIOD ******************/
 		/**** md5 signature: c0bcc11ae79e6b07a1734b3b75fd3b31 ****/
 		%feature("compactdefaultargs") SetIOD;
-		%feature("autodoc", "Sets intraocular distance. @param thetype [in] the iod definition type. iod can be defined as absolute value or relatively to (as coefficient of) camera focal length. @param theiod [in] the intraocular distance.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: IODType
 theIOD: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets intraocular distance. @param thetype [in] the iod definition type. iod can be defined as absolute value or relatively to (as coefficient of) camera focal length. @param theiod [in] the intraocular distance.
 ") SetIOD;
 		void SetIOD(IODType theType, const Standard_Real theIOD);
 
 		/****************** SetIdentityOrientation ******************/
 		/**** md5 signature: 9cd866c96241fdf94bd0dbc5729d9125 ****/
 		%feature("compactdefaultargs") SetIdentityOrientation;
-		%feature("autodoc", "Sets camera parameters to make current orientation matrix identity one.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Sets camera parameters to make current orientation matrix identity one.
 ") SetIdentityOrientation;
 		void SetIdentityOrientation();
 
 		/****************** SetProjectionType ******************/
 		/**** md5 signature: 500231e331fd3294fa2c82d618e95738 ****/
 		%feature("compactdefaultargs") SetProjectionType;
-		%feature("autodoc", "Change camera projection type. when switching to perspective projection from orthographic one, the znear and zfar are reset to default values (0.001, 3000.0) if less than 0.0. @param[in] theprojection the camera projection type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProjection: Projection
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change camera projection type. when switching to perspective projection from orthographic one, the znear and zfar are reset to default values (0.001, 3000.0) if less than 0.0. @param[in] theprojection the camera projection type.
 ") SetProjectionType;
 		void SetProjectionType(Projection theProjection);
 
 		/****************** SetScale ******************/
 		/**** md5 signature: 91bbbb1646dedfb8018b2c1849bc71ad ****/
 		%feature("compactdefaultargs") SetScale;
-		%feature("autodoc", "Sets camera scale. for orthographic projection the scale factor corresponds to parallel scale of view mapping (i.e. size of viewport). for perspective camera scale is converted to distance. the scale specifies equal size of the view projection in both dimensions assuming that the aspect is 1.0. the projection height and width are specified with the scale and correspondingly multiplied by the aspect. @param thescale [in] the scale factor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScale: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets camera scale. for orthographic projection the scale factor corresponds to parallel scale of view mapping (i.e. size of viewport). for perspective camera scale is converted to distance. the scale specifies equal size of the view projection in both dimensions assuming that the aspect is 1.0. the projection height and width are specified with the scale and correspondingly multiplied by the aspect. @param thescale [in] the scale factor.
 ") SetScale;
 		void SetScale(const Standard_Real theScale);
 
 		/****************** SetTile ******************/
 		/**** md5 signature: abe7d7a3bf0a3dd2a74a1495dad37c06 ****/
 		%feature("compactdefaultargs") SetTile;
-		%feature("autodoc", "Sets the tile defining the drawing sub-area within view. note that tile defining a region outside the view boundaries is also valid - use method graphic3d_cameratile::cropped() to assign a cropped copy. @param thetile tile definition.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTile: Graphic3d_CameraTile
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the tile defining the drawing sub-area within view. note that tile defining a region outside the view boundaries is also valid - use method graphic3d_cameratile::cropped() to assign a cropped copy. @param thetile tile definition.
 ") SetTile;
 		void SetTile(const Graphic3d_CameraTile & theTile);
 
 		/****************** SetUp ******************/
 		/**** md5 signature: 0db426f44d387a8cf5f78ad20e6deab6 ****/
 		%feature("compactdefaultargs") SetUp;
-		%feature("autodoc", "Sets camera up direction vector, orthogonal to camera direction. warning! this method does not verify that the new up vector is orthogonal to the current direction(). @param theup [in] the up direction vector. @sa orthogonalizeup().
-
+		%feature("autodoc", "
 Parameters
 ----------
 theUp: gp_Dir
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets camera up direction vector, orthogonal to camera direction. warning! this method does not verify that the new up vector is orthogonal to the current direction(). @param theup [in] the up direction vector. @sa orthogonalizeup().
 ") SetUp;
 		void SetUp(const gp_Dir & theUp);
 
 		/****************** SetZFocus ******************/
 		/**** md5 signature: 0e26f1b989f88503e97c491f84f52385 ****/
 		%feature("compactdefaultargs") SetZFocus;
-		%feature("autodoc", "Sets stereographic focus distance. @param thetype [in] the focus definition type. focus can be defined as absolute value or relatively to (as coefficient of) coefficient of camera focal length. @param thezfocus [in] the focus absolute value or coefficient depending on the passed definition type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: FocusType
 theZFocus: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets stereographic focus distance. @param thetype [in] the focus definition type. focus can be defined as absolute value or relatively to (as coefficient of) coefficient of camera focal length. @param thezfocus [in] the focus absolute value or coefficient depending on the passed definition type.
 ") SetZFocus;
 		void SetZFocus(FocusType theType, const Standard_Real theZFocus);
 
 		/****************** SetZRange ******************/
 		/**** md5 signature: 6d876323f01ef4ad68156548ad5ee5cf ****/
 		%feature("compactdefaultargs") SetZRange;
-		%feature("autodoc", "Change the near and far z-clipping plane positions. for orthographic projection, theznear, thezfar can be negative or positive. for perspective projection, only positive values are allowed. program error exception is raised if non-positive values are specified for perspective projection or theznear >= thezfar. @param theznear [in] the distance of the plane from the eye. @param thezfar [in] the distance of the plane from the eye.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theZNear: float
 theZFar: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change the near and far z-clipping plane positions. for orthographic projection, theznear, thezfar can be negative or positive. for perspective projection, only positive values are allowed. program error exception is raised if non-positive values are specified for perspective projection or theznear >= thezfar. @param theznear [in] the distance of the plane from the eye. @param thezfar [in] the distance of the plane from the eye.
 ") SetZRange;
 		void SetZRange(const Standard_Real theZNear, const Standard_Real theZFar);
 
 		/****************** SetZeroToOneDepth ******************/
 		/**** md5 signature: 8075a923559379f4227d16bcb147a4c2 ****/
 		%feature("compactdefaultargs") SetZeroToOneDepth;
-		%feature("autodoc", "Set using [0, 1] depth range or [-1, 1] range.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsZeroToOne: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set using [0, 1] depth range or [-1, 1] range.
 ") SetZeroToOneDepth;
 		void SetZeroToOneDepth(Standard_Boolean theIsZeroToOne);
 
 		/****************** SideRight ******************/
 		/**** md5 signature: 376ce920b40e8da4926fcbcf98d049aa ****/
 		%feature("compactdefaultargs") SideRight;
-		%feature("autodoc", "Right side direction.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Dir
+
+Description
+-----------
+Right side direction.
 ") SideRight;
 		gp_Dir SideRight();
 
 		/****************** StereoProjection ******************/
 		/**** md5 signature: 6bcdb8d5aa0c1c1de01f77ee0b591ae3 ****/
 		%feature("compactdefaultargs") StereoProjection;
-		%feature("autodoc", "Get stereo projection matrices. @param theprojl [out] left eye projection matrix @param theheadtoeyel [out] left head to eye translation matrix @param theprojr [out] right eye projection matrix @param theheadtoeyer [out] right head to eye translation matrix.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProjL: Graphic3d_Mat4d
@@ -7040,17 +7957,20 @@ theHeadToEyeL: Graphic3d_Mat4d
 theProjR: Graphic3d_Mat4d
 theHeadToEyeR: Graphic3d_Mat4d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Get stereo projection matrices. @param theprojl [out] left eye projection matrix @param theheadtoeyel [out] left head to eye translation matrix @param theprojr [out] right eye projection matrix @param theheadtoeyer [out] right head to eye translation matrix.
 ") StereoProjection;
 		void StereoProjection(Graphic3d_Mat4d & theProjL, Graphic3d_Mat4d & theHeadToEyeL, Graphic3d_Mat4d & theProjR, Graphic3d_Mat4d & theHeadToEyeR);
 
 		/****************** StereoProjectionF ******************/
 		/**** md5 signature: e96cdfa262961efb535855e288a4b864 ****/
 		%feature("compactdefaultargs") StereoProjectionF;
-		%feature("autodoc", "Get stereo projection matrices. @param theprojl [out] left eye projection matrix @param theheadtoeyel [out] left head to eye translation matrix @param theprojr [out] right eye projection matrix @param theheadtoeyer [out] right head to eye translation matrix.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProjL: Graphic3d_Mat4
@@ -7058,188 +7978,225 @@ theHeadToEyeL: Graphic3d_Mat4
 theProjR: Graphic3d_Mat4
 theHeadToEyeR: Graphic3d_Mat4
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Get stereo projection matrices. @param theprojl [out] left eye projection matrix @param theheadtoeyel [out] left head to eye translation matrix @param theprojr [out] right eye projection matrix @param theheadtoeyer [out] right head to eye translation matrix.
 ") StereoProjectionF;
 		void StereoProjectionF(Graphic3d_Mat4 & theProjL, Graphic3d_Mat4 & theHeadToEyeL, Graphic3d_Mat4 & theProjR, Graphic3d_Mat4 & theHeadToEyeR);
 
 		/****************** Tile ******************/
 		/**** md5 signature: 0a39fc9b82eb1069228eaa7fbe821f43 ****/
 		%feature("compactdefaultargs") Tile;
-		%feature("autodoc", "Get current tile.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_CameraTile
+
+Description
+-----------
+Get current tile.
 ") Tile;
 		const Graphic3d_CameraTile & Tile();
 
 		/****************** Transform ******************/
 		/**** md5 signature: b1d3d70da15a244a49acf6a481c2ab71 ****/
 		%feature("compactdefaultargs") Transform;
-		%feature("autodoc", "Transform orientation components of the camera: eye, up and center points. @param thetrsf [in] the transformation to apply.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTrsf: gp_Trsf
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Transform orientation components of the camera: eye, up and center points. @param thetrsf [in] the transformation to apply.
 ") Transform;
 		void Transform(const gp_Trsf & theTrsf);
 
 		/****************** UnProject ******************/
 		/**** md5 signature: 4a3a5e034749d6ce0dd134e64f4b1f61 ****/
 		%feature("compactdefaultargs") UnProject;
-		%feature("autodoc", "Unproject point from normalized device coordinates to world coordinate space. @param thepnt [in] the ndc point. returns 3d point in wcs.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 gp_Pnt
+
+Description
+-----------
+Unproject point from normalized device coordinates to world coordinate space. @param thepnt [in] the ndc point. return 3d point in wcs.
 ") UnProject;
 		gp_Pnt UnProject(const gp_Pnt & thePnt);
 
 		/****************** Up ******************/
 		/**** md5 signature: 41ad6369dbf47f223fab4663017e77bb ****/
 		%feature("compactdefaultargs") Up;
-		%feature("autodoc", "Get camera up direction vector. returns camera's up direction vector.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Dir
+
+Description
+-----------
+Get camera up direction vector. return camera's up direction vector.
 ") Up;
 		const gp_Dir Up();
 
 		/****************** ViewDimensions ******************/
 		/**** md5 signature: 661ee1816a495608297e7b53f28eb6a6 ****/
 		%feature("compactdefaultargs") ViewDimensions;
-		%feature("autodoc", "Calculate view plane size at center (target) point and distance between zfar and znear planes. returns values in form of gp_pnt (width, height, depth).
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_XYZ
+
+Description
+-----------
+Calculate view plane size at center (target) point and distance between zfar and znear planes. return values in form of gp_pnt (width, height, depth).
 ") ViewDimensions;
 		gp_XYZ ViewDimensions();
 
 		/****************** ViewDimensions ******************/
 		/**** md5 signature: 6c498c72fa3574ad8e37572fce939564 ****/
 		%feature("compactdefaultargs") ViewDimensions;
-		%feature("autodoc", "Calculate view plane size at center point with specified z offset and distance between zfar and znear planes. @param thezvalue [in] the distance from the eye in eye-to-center direction returns values in form of gp_pnt (width, height, depth).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theZValue: float
 
-Returns
+Return
 -------
 gp_XYZ
+
+Description
+-----------
+Calculate view plane size at center point with specified z offset and distance between zfar and znear planes. @param thezvalue [in] the distance from the eye in eye-to-center direction return values in form of gp_pnt (width, height, depth).
 ") ViewDimensions;
 		gp_XYZ ViewDimensions(const Standard_Real theZValue);
 
 		/****************** WorldViewProjState ******************/
 		/**** md5 signature: 84fd216afc4c582ff7d76c1c302180f8 ****/
 		%feature("compactdefaultargs") WorldViewProjState;
-		%feature("autodoc", "Returns projection modification state of the camera.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_WorldViewProjState
+
+Description
+-----------
+Return projection modification state of the camera.
 ") WorldViewProjState;
 		const Graphic3d_WorldViewProjState & WorldViewProjState();
 
 		/****************** WorldViewState ******************/
 		/**** md5 signature: dd48ecc3dd461f96c04674477cae89e2 ****/
 		%feature("compactdefaultargs") WorldViewState;
-		%feature("autodoc", "Returns modification state of camera world view transformation matrix.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Size
+
+Description
+-----------
+Returns modification state of camera world view transformation matrix.
 ") WorldViewState;
 		Standard_Size WorldViewState();
 
 		/****************** ZFar ******************/
 		/**** md5 signature: 964ffb86c4f0761cc30f6df7df4f03e2 ****/
 		%feature("compactdefaultargs") ZFar;
-		%feature("autodoc", "Get the far z-clipping plane position. returns the distance of the plane from the eye.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get the far z-clipping plane position. return the distance of the plane from the eye.
 ") ZFar;
 		Standard_Real ZFar();
 
 		/****************** ZFitAll ******************/
 		/**** md5 signature: 05d966459b935643d69af2cf50829645 ****/
 		%feature("compactdefaultargs") ZFitAll;
-		%feature("autodoc", "Estimate z-min and z-max planes of projection volume to match the displayed objects. the methods ensures that view volume will be close by depth range to the displayed objects. fitting assumes that for orthogonal projection the view volume contains the displayed objects completely. for zoomed perspective view, the view volume is adjusted such that it contains the objects or their parts, located in front of the camera. @param[in] thescalefactor the scale factor for z-range. the range between z-min, z-max projection volume planes evaluated by z fitting method will be scaled using this coefficient. program error exception is thrown if negative or zero value is passed. @param[in] theminmax applicative min max boundaries. @param[in] thegraphicbb real graphical boundaries (not accounting infinite flag).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScaleFactor: float
 theMinMax: Bnd_Box
 theGraphicBB: Bnd_Box
 
-Returns
+Return
 -------
 theZNear: float
 theZFar: float
+
+Description
+-----------
+Estimate z-min and z-max planes of projection volume to match the displayed objects. the methods ensures that view volume will be close by depth range to the displayed objects. fitting assumes that for orthogonal projection the view volume contains the displayed objects completely. for zoomed perspective view, the view volume is adjusted such that it contains the objects or their parts, located in front of the camera. @param[in] thescalefactor the scale factor for z-range. the range between z-min, z-max projection volume planes evaluated by z fitting method will be scaled using this coefficient. program error exception is thrown if negative or zero value is passed. @param[in] theminmax applicative min max boundaries. @param[in] thegraphicbb real graphical boundaries (not accounting infinite flag).
 ") ZFitAll;
 		bool ZFitAll(const Standard_Real theScaleFactor, const Bnd_Box & theMinMax, const Bnd_Box & theGraphicBB, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** ZFitAll ******************/
 		/**** md5 signature: 431aafb7dcaaeeaea4d2b662cebd3417 ****/
 		%feature("compactdefaultargs") ZFitAll;
-		%feature("autodoc", "Change z-min and z-max planes of projection volume to match the displayed objects.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScaleFactor: float
 theMinMax: Bnd_Box
 theGraphicBB: Bnd_Box
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change z-min and z-max planes of projection volume to match the displayed objects.
 ") ZFitAll;
 		void ZFitAll(const Standard_Real theScaleFactor, const Bnd_Box & theMinMax, const Bnd_Box & theGraphicBB);
 
 		/****************** ZFocus ******************/
 		/**** md5 signature: 09048d726d0db5df6fad62567f583796 ****/
 		%feature("compactdefaultargs") ZFocus;
-		%feature("autodoc", "Get stereographic focus value. returns absolute or relative stereographic focus value depending on its definition type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get stereographic focus value. return absolute or relative stereographic focus value depending on its definition type.
 ") ZFocus;
 		Standard_Real ZFocus();
 
 		/****************** ZFocusType ******************/
 		/**** md5 signature: d91de11345e7927a542a3d871a961945 ****/
 		%feature("compactdefaultargs") ZFocusType;
-		%feature("autodoc", "Get stereographic focus definition type. returns definition type used for stereographic focus.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Camera::FocusType
+
+Description
+-----------
+Get stereographic focus definition type. return definition type used for stereographic focus.
 ") ZFocusType;
 		Graphic3d_Camera::FocusType ZFocusType();
 
 		/****************** ZNear ******************/
 		/**** md5 signature: 064fcaad895c76398a583e8c5a72378d ****/
 		%feature("compactdefaultargs") ZNear;
-		%feature("autodoc", "Get the near z-clipping plane position. returns the distance of the plane from the eye.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Get the near z-clipping plane position. return the distance of the plane from the eye.
 ") ZNear;
 		Standard_Real ZNear();
 
@@ -7266,22 +8223,26 @@ class Graphic3d_CameraTile {
 		/****************** Graphic3d_CameraTile ******************/
 		/**** md5 signature: a7ff85bc9b9a5b07dcd347f9ff8a974a ****/
 		%feature("compactdefaultargs") Graphic3d_CameraTile;
-		%feature("autodoc", "Default constructor. initializes the empty tile of zero size and lower-left offset orientation. such tile is considered uninitialized (invalid).
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor. initializes the empty tile of zero size and lower-left offset orientation. such tile is considered uninitialized (invalid).
 ") Graphic3d_CameraTile;
 		 Graphic3d_CameraTile();
 
 		/****************** Cropped ******************/
 		/**** md5 signature: a5617e2e92bfe0db3d15d224e16314ae ****/
 		%feature("compactdefaultargs") Cropped;
-		%feature("autodoc", "Return the copy cropped by total size.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_CameraTile
+
+Description
+-----------
+Return the copy cropped by total size.
 ") Cropped;
 		Graphic3d_CameraTile Cropped();
 
@@ -7297,22 +8258,26 @@ Graphic3d_CameraTile
 		/****************** IsValid ******************/
 		/**** md5 signature: 735088818cf24ebe0ebc7005a507da69 ****/
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "Return true if tile has been defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if tile has been defined.
 ") IsValid;
 		bool IsValid();
 
 		/****************** OffsetLowerLeft ******************/
 		/**** md5 signature: 168ce1d0b9d01a1cdfe047346bf9efa6 ****/
 		%feature("compactdefaultargs") OffsetLowerLeft;
-		%feature("autodoc", "Return offset position from lower-left corner.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2i
+
+Description
+-----------
+Return offset position from lower-left corner.
 ") OffsetLowerLeft;
 		Graphic3d_Vec2i OffsetLowerLeft();
 
@@ -7348,155 +8313,184 @@ typedef Graphic3d_Vec4d Equation;
 		/****************** Graphic3d_ClipPlane ******************/
 		/**** md5 signature: 3b2ca438d53477ffa620c2e2afb936dd ****/
 		%feature("compactdefaultargs") Graphic3d_ClipPlane;
-		%feature("autodoc", "Default constructor. initializes clip plane container with the following properties: - equation (0.0, 0.0, 1.0, 0) - ison (true), - iscapping (false), - material (graphic3d_nameofmaterial_default), - texture (null), - hatchstyle (aspect_hs_horizontal), - ishatchon (false).
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor. initializes clip plane container with the following properties: - equation (0.0, 0.0, 1.0, 0) - ison (true), - iscapping (false), - material (graphic3d_nameofmaterial_default), - texture (null), - hatchstyle (aspect_hs_horizontal), - ishatchon (false).
 ") Graphic3d_ClipPlane;
 		 Graphic3d_ClipPlane();
 
 		/****************** Graphic3d_ClipPlane ******************/
 		/**** md5 signature: 0062f35ffc7c667c1c200b3134c67513 ****/
 		%feature("compactdefaultargs") Graphic3d_ClipPlane;
-		%feature("autodoc", "Copy constructor. @param theother [in] the copied plane.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_ClipPlane
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Copy constructor. @param theother [in] the copied plane.
 ") Graphic3d_ClipPlane;
 		 Graphic3d_ClipPlane(const Graphic3d_ClipPlane & theOther);
 
 		/****************** Graphic3d_ClipPlane ******************/
 		/**** md5 signature: 9db5d38753759a147c1721425903054b ****/
 		%feature("compactdefaultargs") Graphic3d_ClipPlane;
-		%feature("autodoc", "Construct clip plane for the passed equation. by default the plane is on, capping is turned off. @param theequation [in] the plane equation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEquation: Graphic3d_Vec4d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Construct clip plane for the passed equation. by default the plane is on, capping is turned off. @param theequation [in] the plane equation.
 ") Graphic3d_ClipPlane;
 		 Graphic3d_ClipPlane(const Graphic3d_Vec4d & theEquation);
 
 		/****************** Graphic3d_ClipPlane ******************/
 		/**** md5 signature: ce150c029c2679d13f4817496ec71dce ****/
 		%feature("compactdefaultargs") Graphic3d_ClipPlane;
-		%feature("autodoc", "Construct clip plane from the passed geometrical definition. by default the plane is on, capping is turned off. @param theplane [in] the plane.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePlane: gp_Pln
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Construct clip plane from the passed geometrical definition. by default the plane is on, capping is turned off. @param theplane [in] the plane.
 ") Graphic3d_ClipPlane;
 		 Graphic3d_ClipPlane(const gp_Pln & thePlane);
 
 		/****************** CappingAspect ******************/
 		/**** md5 signature: 089018478933d1873fb8c8f77f715460 ****/
 		%feature("compactdefaultargs") CappingAspect;
-		%feature("autodoc", "Return capping aspect. returns capping surface rendering aspect.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_AspectFillArea3d>
+
+Description
+-----------
+Return capping aspect. return capping surface rendering aspect.
 ") CappingAspect;
 		const opencascade::handle<Graphic3d_AspectFillArea3d> & CappingAspect();
 
 		/****************** CappingColor ******************/
 		/**** md5 signature: 33f268077fa3eff9a8efe1dfdb8ff254 ****/
 		%feature("compactdefaultargs") CappingColor;
-		%feature("autodoc", "Return color for rendering capping surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Return color for rendering capping surface.
 ") CappingColor;
 		Quantity_Color CappingColor();
 
 		/****************** CappingCustomHatch ******************/
 		/**** md5 signature: 532100c1eaf8f2f7678ae86555b0dbce ****/
 		%feature("compactdefaultargs") CappingCustomHatch;
-		%feature("autodoc", "Returns hatching style.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_HatchStyle>
+
+Description
+-----------
+Return hatching style.
 ") CappingCustomHatch;
 		const opencascade::handle<Graphic3d_HatchStyle> & CappingCustomHatch();
 
 		/****************** CappingHatch ******************/
 		/**** md5 signature: fae6085bab7c0cb9f8a29bfa1408219e ****/
 		%feature("compactdefaultargs") CappingHatch;
-		%feature("autodoc", "Returns hatching style.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_HatchStyle
+
+Description
+-----------
+Return hatching style.
 ") CappingHatch;
 		Aspect_HatchStyle CappingHatch();
 
 		/****************** CappingMaterial ******************/
 		/**** md5 signature: ec7378d4d0978973feaf4727f2ab39ab ****/
 		%feature("compactdefaultargs") CappingMaterial;
-		%feature("autodoc", "Returns capping material.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_MaterialAspect
+
+Description
+-----------
+Return capping material.
 ") CappingMaterial;
 		const Graphic3d_MaterialAspect & CappingMaterial();
 
 		/****************** CappingTexture ******************/
 		/**** md5 signature: c85811b236f28b12f8dac89a1840ec99 ****/
 		%feature("compactdefaultargs") CappingTexture;
-		%feature("autodoc", "Returns capping texture map.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_TextureMap>
+
+Description
+-----------
+Return capping texture map.
 ") CappingTexture;
 		opencascade::handle<Graphic3d_TextureMap> CappingTexture();
 
 		/****************** ChainNextPlane ******************/
 		/**** md5 signature: 590a5956e7c7383ad373846e3c900c1a ****/
 		%feature("compactdefaultargs") ChainNextPlane;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_ClipPlane>
+
+Description
+-----------
+No available documentation.
 ") ChainNextPlane;
 		const opencascade::handle<Graphic3d_ClipPlane> & ChainNextPlane();
 
 		/****************** ChainPreviousPlane ******************/
 		/**** md5 signature: 56fcbd3157911ddbf4ff1e520118af54 ****/
 		%feature("compactdefaultargs") ChainPreviousPlane;
-		%feature("autodoc", "Return the previous plane in a chain of planes defining logical and operation, or null if there is no chain or it is a first element in chain. when clipping is defined by a chain of planes, it cuts a space only in case if check fails for all planes in chain.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_ClipPlane>
+
+Description
+-----------
+Return the previous plane in a chain of planes defining logical and operation, or null if there is no chain or it is a first element in chain. when clipping is defined by a chain of planes, it cuts a space only in case if check fails for all planes in chain.
 ") ChainPreviousPlane;
 		opencascade::handle<Graphic3d_ClipPlane> ChainPreviousPlane();
 
 		/****************** Clone ******************/
 		/**** md5 signature: ee5ee1ed8f05ee0371050d9c2ee0b36e ****/
 		%feature("compactdefaultargs") Clone;
-		%feature("autodoc", "Clone plane. virtual method to simplify copying procedure if plane class is redefined at application level to add specific fields to it e.g. id, name, etc. returns new instance of clipping plane with same properties and attributes.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_ClipPlane>
+
+Description
+-----------
+Clone plane. virtual method to simplify copying procedure if plane class is redefined at application level to add specific fields to it e.g. id, name, etc. return new instance of clipping plane with same properties and attributes.
 ") Clone;
 		virtual opencascade::handle<Graphic3d_ClipPlane> Clone();
 
@@ -7512,532 +8506,635 @@ opencascade::handle<Graphic3d_ClipPlane>
 		/****************** GetEquation ******************/
 		/**** md5 signature: f90e88f602ccaf023d48ae4419875876 ****/
 		%feature("compactdefaultargs") GetEquation;
-		%feature("autodoc", "Get 4-component equation vector for clipping plane. returns clipping plane equation vector.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec4d
+
+Description
+-----------
+Get 4-component equation vector for clipping plane. return clipping plane equation vector.
 ") GetEquation;
 		const Graphic3d_Vec4d & GetEquation();
 
 		/****************** GetId ******************/
 		/**** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ****/
 		%feature("compactdefaultargs") GetId;
-		%feature("autodoc", "This id is used for managing associated resources in graphical driver. the clip plane can be assigned within a range of io which can be displayed in separate opengl contexts. for each of the context an associated opengl resource for graphical aspects should be created and kept. the resources are stored in graphical driver for each of individual groups of shared context under the clip plane identifier. returns clip plane resource identifier string.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+This id is used for managing associated resources in graphical driver. the clip plane can be assigned within a range of io which can be displayed in separate opengl contexts. for each of the context an associated opengl resource for graphical aspects should be created and kept. the resources are stored in graphical driver for each of individual groups of shared context under the clip plane identifier. return clip plane resource identifier string.
 ") GetId;
 		const TCollection_AsciiString & GetId();
 
 		/****************** IsBoxFullInHalfspace ******************/
 		/**** md5 signature: a0b159cba8922ee1b65ffbd9144c8d82 ****/
 		%feature("compactdefaultargs") IsBoxFullInHalfspace;
-		%feature("autodoc", "Check if the given bounding box is fully inside (or touches from inside) the half-space (e.g. not discarded by clipping plane).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBox: Graphic3d_BndBox3d
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Check if the given bounding box is fully inside (or touches from inside) the half-space (e.g. not discarded by clipping plane).
 ") IsBoxFullInHalfspace;
 		bool IsBoxFullInHalfspace(const Graphic3d_BndBox3d & theBox);
 
 		/****************** IsBoxFullOutHalfspace ******************/
 		/**** md5 signature: 31a9362d0ef14fb2257bdbe2be1a2f5b ****/
 		%feature("compactdefaultargs") IsBoxFullOutHalfspace;
-		%feature("autodoc", "Check if the given bounding box is fully outside of the half-space (e.g. should be discarded by clipping plane).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBox: Graphic3d_BndBox3d
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Check if the given bounding box is fully outside of the half-space (e.g. should be discarded by clipping plane).
 ") IsBoxFullOutHalfspace;
 		bool IsBoxFullOutHalfspace(const Graphic3d_BndBox3d & theBox);
 
 		/****************** IsCapping ******************/
 		/**** md5 signature: 3852d09ed857ea6f90093e3c0e886998 ****/
 		%feature("compactdefaultargs") IsCapping;
-		%feature("autodoc", "Check state of capping surface rendering. returns true (turned on) or false depending on the state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Check state of capping surface rendering. return true (turned on) or false depending on the state.
 ") IsCapping;
 		Standard_Boolean IsCapping();
 
 		/****************** IsChain ******************/
 		/**** md5 signature: 275327d8619ec098030c75aff4fc4255 ****/
 		%feature("compactdefaultargs") IsChain;
-		%feature("autodoc", "Return true if this item defines a conjunction (logical and) between a set of planes. graphic3d_clipplane item defines either a clipping halfspace (single clipping plane) or a clipping volume defined by a logical and (conjunction) operation between a set of planes defined as a chain (so that the volume cuts a space only in case if check fails for all planes in the chain). //! note that graphic3d_clipplane item cannot: - define a chain with logical or (disjunction) operation; this should be done through graphic3d_sequenceofhclipplane. - define nested chains. - disable chain items; only entire chain can be disabled (by disabled a head of chain). //! the head of a chain defines all visual properties of the chain, so that graphic3d_clipplane of next items in a chain merely defines only geometrical definition of the plane.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if this item defines a conjunction (logical and) between a set of planes. graphic3d_clipplane item defines either a clipping halfspace (single clipping plane) or a clipping volume defined by a logical and (conjunction) operation between a set of planes defined as a chain (so that the volume cuts a space only in case if check fails for all planes in the chain). //! note that graphic3d_clipplane item cannot: - define a chain with logical or (disjunction) operation; this should be done through graphic3d_sequenceofhclipplane. - define nested chains. - disable chain items; only entire chain can be disabled (by disabled a head of chain). //! the head of a chain defines all visual properties of the chain, so that graphic3d_clipplane of next items in a chain merely defines only geometrical definition of the plane.
 ") IsChain;
 		Standard_Boolean IsChain();
 
 		/****************** IsHatchOn ******************/
 		/**** md5 signature: dfc03a237b0a94fee4556bb97c33045d ****/
 		%feature("compactdefaultargs") IsHatchOn;
-		%feature("autodoc", "Returns true if hatching mask is turned on.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if hatching mask is turned on.
 ") IsHatchOn;
 		Standard_Boolean IsHatchOn();
 
 		/****************** IsOn ******************/
 		/**** md5 signature: 29d4dc3f4d3c0bb2a5278d3fd8f2ab9d ****/
 		%feature("compactdefaultargs") IsOn;
-		%feature("autodoc", "Check that the clipping plane is turned on. returns boolean flag indicating whether the plane is in on or off state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Check that the clipping plane is turned on. return boolean flag indicating whether the plane is in on or off state.
 ") IsOn;
 		Standard_Boolean IsOn();
 
 		/****************** IsPointOutHalfspace ******************/
 		/**** md5 signature: 8a146bb3e10718f0de2b2c154345d96b ****/
 		%feature("compactdefaultargs") IsPointOutHalfspace;
-		%feature("autodoc", "Check if the given point is outside of the half-space (e.g. should be discarded by clipping plane).
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoint: Graphic3d_Vec4d
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Check if the given point is outside of the half-space (e.g. should be discarded by clipping plane).
 ") IsPointOutHalfspace;
 		bool IsPointOutHalfspace(const Graphic3d_Vec4d & thePoint);
 
 		/****************** MCountAspect ******************/
 		/**** md5 signature: 8830fdfa4d09c90a999edeb3eb87701e ****/
 		%feature("compactdefaultargs") MCountAspect;
-		%feature("autodoc", "Returns modification counter for aspect.
-
-Returns
+		%feature("autodoc", "Return
 -------
 unsigned int
+
+Description
+-----------
+Return modification counter for aspect.
 ") MCountAspect;
 		unsigned int MCountAspect();
 
 		/****************** MCountEquation ******************/
 		/**** md5 signature: 5832a40d63cc226fe20b6b671be705a3 ****/
 		%feature("compactdefaultargs") MCountEquation;
-		%feature("autodoc", "Returns modification counter for equation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 unsigned int
+
+Description
+-----------
+Return modification counter for equation.
 ") MCountEquation;
 		unsigned int MCountEquation();
 
 		/****************** NbChainNextPlanes ******************/
 		/**** md5 signature: 0f33e85ff6ff914d2afb4e187d3c047f ****/
 		%feature("compactdefaultargs") NbChainNextPlanes;
-		%feature("autodoc", "Return the number of chains in forward direction (including this item, so it is always >= 1). for a head of chain - returns the length of entire chain.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return the number of chains in forward direction (including this item, so it is always >= 1). for a head of chain - returns the length of entire chain.
 ") NbChainNextPlanes;
 		Standard_Integer NbChainNextPlanes();
 
 		/****************** ProbeBox ******************/
 		/**** md5 signature: 5f3d2825cbe32814ce21e29efaeda1a2 ****/
 		%feature("compactdefaultargs") ProbeBox;
-		%feature("autodoc", "Check if the given bounding box is fully outside / fully inside.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBox: Graphic3d_BndBox3d
 
-Returns
+Return
 -------
 Graphic3d_ClipState
+
+Description
+-----------
+Check if the given bounding box is fully outside / fully inside.
 ") ProbeBox;
 		Graphic3d_ClipState ProbeBox(const Graphic3d_BndBox3d & theBox);
 
 		/****************** ProbeBoxHalfspace ******************/
 		/**** md5 signature: 464d13bf3a5e166ddc73317866dccf1c ****/
 		%feature("compactdefaultargs") ProbeBoxHalfspace;
-		%feature("autodoc", "Check if the given bounding box is fully outside / fully inside the half-space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBox: Graphic3d_BndBox3d
 
-Returns
+Return
 -------
 Graphic3d_ClipState
+
+Description
+-----------
+Check if the given bounding box is fully outside / fully inside the half-space.
 ") ProbeBoxHalfspace;
 		Graphic3d_ClipState ProbeBoxHalfspace(const Graphic3d_BndBox3d & theBox);
 
 		/****************** ProbeBoxMaxPointHalfspace ******************/
 		/**** md5 signature: 812d9878fe277ef39844dc7ca7f3512f ****/
 		%feature("compactdefaultargs") ProbeBoxMaxPointHalfspace;
-		%feature("autodoc", "Check if the given bounding box is fully outside of the half-space (e.g. should be discarded by clipping plane).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBox: Graphic3d_BndBox3d
 
-Returns
+Return
 -------
 Graphic3d_ClipState
+
+Description
+-----------
+Check if the given bounding box is fully outside of the half-space (e.g. should be discarded by clipping plane).
 ") ProbeBoxMaxPointHalfspace;
 		Graphic3d_ClipState ProbeBoxMaxPointHalfspace(const Graphic3d_BndBox3d & theBox);
 
 		/****************** ProbeBoxTouch ******************/
 		/**** md5 signature: b61cbdfec61b407c0ced5644de804cd2 ****/
 		%feature("compactdefaultargs") ProbeBoxTouch;
-		%feature("autodoc", "Check if the given bounding box is in and touch the clipping planes.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBox: Graphic3d_BndBox3d
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Check if the given bounding box is in and touch the clipping planes.
 ") ProbeBoxTouch;
 		Standard_Boolean ProbeBoxTouch(const Graphic3d_BndBox3d & theBox);
 
 		/****************** ProbePoint ******************/
 		/**** md5 signature: 79a1751e98637e715e52c2e577918dba ****/
 		%feature("compactdefaultargs") ProbePoint;
-		%feature("autodoc", "Check if the given point is outside / inside / on section.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoint: Graphic3d_Vec4d
 
-Returns
+Return
 -------
 Graphic3d_ClipState
+
+Description
+-----------
+Check if the given point is outside / inside / on section.
 ") ProbePoint;
 		Graphic3d_ClipState ProbePoint(const Graphic3d_Vec4d & thePoint);
 
 		/****************** ProbePointHalfspace ******************/
 		/**** md5 signature: 2f148cbbb313492af2c494bd6fc47f5e ****/
 		%feature("compactdefaultargs") ProbePointHalfspace;
-		%feature("autodoc", "Check if the given point is outside of the half-space (e.g. should be discarded by clipping plane).
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoint: Graphic3d_Vec4d
 
-Returns
+Return
 -------
 Graphic3d_ClipState
+
+Description
+-----------
+Check if the given point is outside of the half-space (e.g. should be discarded by clipping plane).
 ") ProbePointHalfspace;
 		Graphic3d_ClipState ProbePointHalfspace(const Graphic3d_Vec4d & thePoint);
 
 		/****************** ReversedEquation ******************/
 		/**** md5 signature: 5b2a254a5180a1d8c2b1c1e8fbc9ec71 ****/
 		%feature("compactdefaultargs") ReversedEquation;
-		%feature("autodoc", "Get 4-component equation vector for clipping plane. returns clipping plane equation vector.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec4d
+
+Description
+-----------
+Get 4-component equation vector for clipping plane. return clipping plane equation vector.
 ") ReversedEquation;
 		const Graphic3d_Vec4d & ReversedEquation();
 
 		/****************** SetCapping ******************/
 		/**** md5 signature: 54c220d994e44dfef27b51e5ce974f8c ****/
 		%feature("compactdefaultargs") SetCapping;
-		%feature("autodoc", "Change state of capping surface rendering. @param theison [in] the flag specifying whether the graphic driver should perform rendering of capping surface produced by this plane. the graphic driver produces this surface for convex graphics by means of stencil-test and multi-pass rendering.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsOn: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change state of capping surface rendering. @param theison [in] the flag specifying whether the graphic driver should perform rendering of capping surface produced by this plane. the graphic driver produces this surface for convex graphics by means of stencil-test and multi-pass rendering.
 ") SetCapping;
 		void SetCapping(const Standard_Boolean theIsOn);
 
 		/****************** SetCappingAspect ******************/
 		/**** md5 signature: 05e5452fa2f16c42f53e07e167e0c74c ****/
 		%feature("compactdefaultargs") SetCappingAspect;
-		%feature("autodoc", "Assign capping aspect.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAspect: Graphic3d_AspectFillArea3d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign capping aspect.
 ") SetCappingAspect;
 		void SetCappingAspect(const opencascade::handle<Graphic3d_AspectFillArea3d> & theAspect);
 
 		/****************** SetCappingColor ******************/
 		/**** md5 signature: 10386b0387534dee2103d52514974548 ****/
 		%feature("compactdefaultargs") SetCappingColor;
-		%feature("autodoc", "Set color for rendering capping surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set color for rendering capping surface.
 ") SetCappingColor;
 		void SetCappingColor(const Quantity_Color & theColor);
 
 		/****************** SetCappingCustomHatch ******************/
 		/**** md5 signature: ecfc6c86b835ff55c032e0a8aac2b943 ****/
 		%feature("compactdefaultargs") SetCappingCustomHatch;
-		%feature("autodoc", "Set custom hatch style (stipple) and turn hatching on. @param thestyle [in] the hatch pattern.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStyle: Graphic3d_HatchStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set custom hatch style (stipple) and turn hatching on. @param thestyle [in] the hatch pattern.
 ") SetCappingCustomHatch;
 		void SetCappingCustomHatch(const opencascade::handle<Graphic3d_HatchStyle> & theStyle);
 
 		/****************** SetCappingHatch ******************/
 		/**** md5 signature: a50e75b7fcb29f11c28ec851617bdfed ****/
 		%feature("compactdefaultargs") SetCappingHatch;
-		%feature("autodoc", "Set hatch style (stipple) and turn hatching on. @param thestyle [in] the hatch style.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStyle: Aspect_HatchStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set hatch style (stipple) and turn hatching on. @param thestyle [in] the hatch style.
 ") SetCappingHatch;
 		void SetCappingHatch(const Aspect_HatchStyle theStyle);
 
 		/****************** SetCappingHatchOff ******************/
 		/**** md5 signature: f2dd155c48ac58bb23b0a9c116a086ef ****/
 		%feature("compactdefaultargs") SetCappingHatchOff;
-		%feature("autodoc", "Turn off hatching.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Turn off hatching.
 ") SetCappingHatchOff;
 		void SetCappingHatchOff();
 
 		/****************** SetCappingHatchOn ******************/
 		/**** md5 signature: e5893da8bdba3236c35ccb5c4adce968 ****/
 		%feature("compactdefaultargs") SetCappingHatchOn;
-		%feature("autodoc", "Turn on hatching.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Turn on hatching.
 ") SetCappingHatchOn;
 		void SetCappingHatchOn();
 
 		/****************** SetCappingMaterial ******************/
 		/**** md5 signature: b5325c1f11df13050b1636f8016bf728 ****/
 		%feature("compactdefaultargs") SetCappingMaterial;
-		%feature("autodoc", "Set material for rendering capping surface. @param themat [in] the material.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMat: Graphic3d_MaterialAspect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set material for rendering capping surface. @param themat [in] the material.
 ") SetCappingMaterial;
 		void SetCappingMaterial(const Graphic3d_MaterialAspect & theMat);
 
 		/****************** SetCappingTexture ******************/
 		/**** md5 signature: 35e14b782b0f235bd0b0178b374ee4ed ****/
 		%feature("compactdefaultargs") SetCappingTexture;
-		%feature("autodoc", "Set texture to be applied on capping surface. @param thetexture [in] the texture.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTexture: Graphic3d_TextureMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set texture to be applied on capping surface. @param thetexture [in] the texture.
 ") SetCappingTexture;
 		void SetCappingTexture(const opencascade::handle<Graphic3d_TextureMap> & theTexture);
 
 		/****************** SetChainNextPlane ******************/
 		/**** md5 signature: ee3b0bf19a25924a1f50d8bbe82b3864 ****/
 		%feature("compactdefaultargs") SetChainNextPlane;
-		%feature("autodoc", "Set the next plane in a chain of planes. this operation also updates relationship between chains (previous/next items), so that the previously set next plane is cut off.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePlane: Graphic3d_ClipPlane
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the next plane in a chain of planes. this operation also updates relationship between chains (previous/next items), so that the previously set next plane is cut off.
 ") SetChainNextPlane;
 		void SetChainNextPlane(const opencascade::handle<Graphic3d_ClipPlane> & thePlane);
 
 		/****************** SetEquation ******************/
 		/**** md5 signature: 98d9ebe26ccc7ae757c1c0c2fbd0deac ****/
 		%feature("compactdefaultargs") SetEquation;
-		%feature("autodoc", "Set plane equation by its geometrical definition. the equation is specified in 'world' coordinate system. @param theplane [in] the plane.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePlane: gp_Pln
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set plane equation by its geometrical definition. the equation is specified in 'world' coordinate system. @param theplane [in] the plane.
 ") SetEquation;
 		void SetEquation(const gp_Pln & thePlane);
 
 		/****************** SetEquation ******************/
 		/**** md5 signature: 8c7f72ef1ff7ce47b30f7e955727c798 ****/
 		%feature("compactdefaultargs") SetEquation;
-		%feature("autodoc", "Set 4-component equation vector for clipping plane. the equation is specified in 'world' coordinate system. @param theequation [in] the xyzw (or 'abcd') equation vector.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEquation: Graphic3d_Vec4d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set 4-component equation vector for clipping plane. the equation is specified in 'world' coordinate system. @param theequation [in] the xyzw (or 'abcd') equation vector.
 ") SetEquation;
 		void SetEquation(const Graphic3d_Vec4d & theEquation);
 
 		/****************** SetOn ******************/
 		/**** md5 signature: 438c4d087bc93b9978e14cf889d92523 ****/
 		%feature("compactdefaultargs") SetOn;
-		%feature("autodoc", "Change state of the clipping plane. @param theison [in] the flag specifying whether the graphic driver clipping by this plane should be turned on or off.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsOn: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change state of the clipping plane. @param theison [in] the flag specifying whether the graphic driver clipping by this plane should be turned on or off.
 ") SetOn;
 		void SetOn(const Standard_Boolean theIsOn);
 
 		/****************** SetUseObjectMaterial ******************/
 		/**** md5 signature: e51a3e4f157cf6f18a41a74204f89d3c ****/
 		%feature("compactdefaultargs") SetUseObjectMaterial;
-		%feature("autodoc", "Set flag for controlling the source of capping plane material.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToUse: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set flag for controlling the source of capping plane material.
 ") SetUseObjectMaterial;
 		void SetUseObjectMaterial(bool theToUse);
 
 		/****************** SetUseObjectShader ******************/
 		/**** md5 signature: 08936a5622e7e6c690bcd0fdc6728577 ****/
 		%feature("compactdefaultargs") SetUseObjectShader;
-		%feature("autodoc", "Set flag for controlling the source of capping plane shader program.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToUse: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set flag for controlling the source of capping plane shader program.
 ") SetUseObjectShader;
 		void SetUseObjectShader(bool theToUse);
 
 		/****************** SetUseObjectTexture ******************/
 		/**** md5 signature: a821504e886ab26fbcd6787ec057f6d3 ****/
 		%feature("compactdefaultargs") SetUseObjectTexture;
-		%feature("autodoc", "Set flag for controlling the source of capping plane texture.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToUse: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set flag for controlling the source of capping plane texture.
 ") SetUseObjectTexture;
 		void SetUseObjectTexture(bool theToUse);
 
 		/****************** ToPlane ******************/
 		/**** md5 signature: ced66f82ed6e4053653d7c0e8408465b ****/
 		%feature("compactdefaultargs") ToPlane;
-		%feature("autodoc", "Get geometrical definition. returns geometrical definition of clipping plane.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pln
+
+Description
+-----------
+Get geometrical definition. return geometrical definition of clipping plane.
 ") ToPlane;
 		const gp_Pln ToPlane();
 
 		/****************** ToUseObjectMaterial ******************/
 		/**** md5 signature: 7deeaffbde57fcf043e1072b354f79d2 ****/
 		%feature("compactdefaultargs") ToUseObjectMaterial;
-		%feature("autodoc", "Flag indicating whether material for capping plane should be taken from object. default value: false (use dedicated capping plane material).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Flag indicating whether material for capping plane should be taken from object. default value: false (use dedicated capping plane material).
 ") ToUseObjectMaterial;
 		bool ToUseObjectMaterial();
 
 		/****************** ToUseObjectProperties ******************/
 		/**** md5 signature: b739e66c383bfb4362cc7ca9e1937819 ****/
 		%feature("compactdefaultargs") ToUseObjectProperties;
-		%feature("autodoc", "Return true if some fill area aspect properties should be taken from object.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if some fill area aspect properties should be taken from object.
 ") ToUseObjectProperties;
 		bool ToUseObjectProperties();
 
 		/****************** ToUseObjectShader ******************/
 		/**** md5 signature: c8a22f1ea268d72862ff604db660d838 ****/
 		%feature("compactdefaultargs") ToUseObjectShader;
-		%feature("autodoc", "Flag indicating whether shader program for capping plane should be taken from object. default value: false.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Flag indicating whether shader program for capping plane should be taken from object. default value: false.
 ") ToUseObjectShader;
 		bool ToUseObjectShader();
 
 		/****************** ToUseObjectTexture ******************/
 		/**** md5 signature: 36cf8eff8e41cb2efc2bfc6ef994b489 ****/
 		%feature("compactdefaultargs") ToUseObjectTexture;
-		%feature("autodoc", "Flag indicating whether texture for capping plane should be taken from object. default value: false.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Flag indicating whether texture for capping plane should be taken from object. default value: false.
 ") ToUseObjectTexture;
 		bool ToUseObjectTexture();
 
@@ -8065,265 +9162,308 @@ class Graphic3d_CullingTool {
 		/****************** Graphic3d_CullingTool ******************/
 		/**** md5 signature: 5f02547bbbbc6c5cc18b9c6bb32866ba ****/
 		%feature("compactdefaultargs") Graphic3d_CullingTool;
-		%feature("autodoc", "Creates an empty selector object with parallel projection type by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates an empty selector object with parallel projection type by default.
 ") Graphic3d_CullingTool;
 		 Graphic3d_CullingTool();
 
 		/****************** CacheClipPtsProjections ******************/
 		/**** md5 signature: c6a5b8ea56ba980df85f6ba6c94374cb ****/
 		%feature("compactdefaultargs") CacheClipPtsProjections;
-		%feature("autodoc", "Caches view volume's vertices projections along its normals and aabbs dimensions. must be called at the beginning of each bvh tree traverse loop.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Caches view volume's vertices projections along its normals and aabbs dimensions. must be called at the beginning of each bvh tree traverse loop.
 ") CacheClipPtsProjections;
 		void CacheClipPtsProjections();
 
 		/****************** Camera ******************/
 		/**** md5 signature: 9722357b74290d4bf6f13f9113469012 ****/
 		%feature("compactdefaultargs") Camera;
-		%feature("autodoc", "Return the camera definition.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_Camera>
+
+Description
+-----------
+Return the camera definition.
 ") Camera;
 		const opencascade::handle<Graphic3d_Camera> & Camera();
 
 		/****************** CameraDirection ******************/
 		/**** md5 signature: 7fa7bc6baa9810145092ce9da965e1e1 ****/
 		%feature("compactdefaultargs") CameraDirection;
-		%feature("autodoc", "Returns camera direction.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec3d
+
+Description
+-----------
+Returns camera direction.
 ") CameraDirection;
 		const Graphic3d_Vec3d & CameraDirection();
 
 		/****************** CameraEye ******************/
 		/**** md5 signature: fdd35ec282a94b10206ab3827588f91b ****/
 		%feature("compactdefaultargs") CameraEye;
-		%feature("autodoc", "Returns camera eye position.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec3d
+
+Description
+-----------
+Returns camera eye position.
 ") CameraEye;
 		const Graphic3d_Vec3d & CameraEye();
 
 		/****************** IsCulled ******************/
 		/**** md5 signature: 1de085262679894159d0ba7635e539c9 ****/
 		%feature("compactdefaultargs") IsCulled;
-		%feature("autodoc", "Checks whether given aabb should be entirely culled or not. @param thectx [in] culling properties @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true returns true if aabb is completely outside of view frustum or culled by size/distance; false in case of partial or complete overlap (use theisinside to distinguish).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCtx: CullingContext
 theMinPnt: Graphic3d_Vec3d
 theMaxPnt: Graphic3d_Vec3d
-theIsInside: bool *,optional
-	default value is NULL
+theIsInside: bool * (optional, default to NULL)
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether given aabb should be entirely culled or not. @param thectx [in] culling properties @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true return true if aabb is completely outside of view frustum or culled by size/distance; false in case of partial or complete overlap (use theisinside to distinguish).
 ") IsCulled;
 		bool IsCulled(CullingContext theCtx, const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt, Standard_Boolean * theIsInside = NULL);
 
 		/****************** IsOutFrustum ******************/
 		/**** md5 signature: 8308deb96ff5cf2378a5c538662ac121 ****/
 		%feature("compactdefaultargs") IsOutFrustum;
-		%feature("autodoc", "Detects if aabb overlaps view volume using separating axis theorem (sat). @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true returns true if aabb is completely outside of view frustum; false in case of partial or complete overlap (use theisinside to distinguish) @sa selectmgr_frustum::hasoverlap().
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMinPnt: Graphic3d_Vec3d
 theMaxPnt: Graphic3d_Vec3d
-theIsInside: bool *,optional
-	default value is NULL
+theIsInside: bool * (optional, default to NULL)
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Detects if aabb overlaps view volume using separating axis theorem (sat). @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true return true if aabb is completely outside of view frustum; false in case of partial or complete overlap (use theisinside to distinguish) @sa selectmgr_frustum::hasoverlap().
 ") IsOutFrustum;
 		bool IsOutFrustum(const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt, Standard_Boolean * theIsInside = NULL);
 
 		/****************** IsTooDistant ******************/
 		/**** md5 signature: 7f9321a17f9e3b0dd4d3f95855d943b1 ****/
 		%feature("compactdefaultargs") IsTooDistant;
-		%feature("autodoc", "Returns true if given aabb should be discarded by distance culling criterion. @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true returns true if aabb is completely behind culling distance; false in case of partial or complete overlap (use theisinside to distinguish).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCtx: CullingContext
 theMinPnt: Graphic3d_Vec3d
 theMaxPnt: Graphic3d_Vec3d
-theIsInside: bool *,optional
-	default value is NULL
+theIsInside: bool * (optional, default to NULL)
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns true if given aabb should be discarded by distance culling criterion. @param theminpnt [in] maximum point of aabb @param themaxpnt [in] minimum point of aabb @param theisinside [out] flag indicating if aabb is fully inside; initial value should be set to true return true if aabb is completely behind culling distance; false in case of partial or complete overlap (use theisinside to distinguish).
 ") IsTooDistant;
 		bool IsTooDistant(CullingContext theCtx, const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt, Standard_Boolean * theIsInside = NULL);
 
 		/****************** IsTooSmall ******************/
 		/**** md5 signature: 8dd1be1c332a828b50bd50b99ca83f24 ****/
 		%feature("compactdefaultargs") IsTooSmall;
-		%feature("autodoc", "Returns true if given aabb should be discarded by size culling criterion.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCtx: CullingContext
 theMinPnt: Graphic3d_Vec3d
 theMaxPnt: Graphic3d_Vec3d
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns true if given aabb should be discarded by size culling criterion.
 ") IsTooSmall;
 		bool IsTooSmall(CullingContext theCtx, const Graphic3d_Vec3d & theMinPnt, const Graphic3d_Vec3d & theMaxPnt);
 
 		/****************** ProjectionMatrix ******************/
 		/**** md5 signature: 74099661eed9cbb71b1b28e0d2bc7ed7 ****/
 		%feature("compactdefaultargs") ProjectionMatrix;
-		%feature("autodoc", "Returns current projection matrix.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Mat4d
+
+Description
+-----------
+Returns current projection matrix.
 ") ProjectionMatrix;
 		const Graphic3d_Mat4d & ProjectionMatrix();
 
 		/****************** SetCullingDistance ******************/
 		/**** md5 signature: 2c124390ed1785355c4fc42a9d178ce1 ****/
 		%feature("compactdefaultargs") SetCullingDistance;
-		%feature("autodoc", "Setup distance culling.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCtx: CullingContext
 theDistance: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup distance culling.
 ") SetCullingDistance;
 		void SetCullingDistance(CullingContext theCtx, Standard_Real theDistance);
 
 		/****************** SetCullingSize ******************/
 		/**** md5 signature: 1674520241dff328a7784cfe9a955a47 ****/
 		%feature("compactdefaultargs") SetCullingSize;
-		%feature("autodoc", "Setup size culling.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCtx: CullingContext
 theSize: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup size culling.
 ") SetCullingSize;
 		void SetCullingSize(CullingContext theCtx, Standard_Real theSize);
 
 		/****************** SetViewVolume ******************/
 		/**** md5 signature: d764b63bb91ca03cf3925f731886ca22 ****/
 		%feature("compactdefaultargs") SetViewVolume;
-		%feature("autodoc", "Retrieves view volume's planes equations and its vertices from projection and world-view matrices. @param thecamera [in] camera definition @param themodelworld [in] optional object transformation for computing frustum in object local coordinate system.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCamera: Graphic3d_Camera
-theModelWorld: Graphic3d_Mat4d,optional
-	default value is Graphic3d_Mat4d()
+theModelWorld: Graphic3d_Mat4d (optional, default to Graphic3d_Mat4d())
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Retrieves view volume's planes equations and its vertices from projection and world-view matrices. @param thecamera [in] camera definition @param themodelworld [in] optional object transformation for computing frustum in object local coordinate system.
 ") SetViewVolume;
 		void SetViewVolume(const opencascade::handle<Graphic3d_Camera> & theCamera, const Graphic3d_Mat4d & theModelWorld = Graphic3d_Mat4d());
 
 		/****************** SetViewportSize ******************/
 		/**** md5 signature: 0ebb6bfbf02f6ffd9190084c8511593a ****/
 		%feature("compactdefaultargs") SetViewportSize;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theViewportWidth: int
 theViewportHeight: int
 theResolutionRatio: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetViewportSize;
 		void SetViewportSize(Standard_Integer theViewportWidth, Standard_Integer theViewportHeight, Standard_Real theResolutionRatio);
 
 		/****************** SignedPlanePointDistance ******************/
 		/**** md5 signature: 6be6a3052882dbe6b39affcb3eff62e2 ****/
 		%feature("compactdefaultargs") SignedPlanePointDistance;
-		%feature("autodoc", "Calculates signed distance from plane to point. @param thenormal [in] the plane's normal. @param thepnt [in].
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNormal: Graphic3d_Vec4d
 thePnt: Graphic3d_Vec4d
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Calculates signed distance from plane to point. @param thenormal [in] the plane's normal. @param thepnt [in].
 ") SignedPlanePointDistance;
 		Standard_Real SignedPlanePointDistance(const Graphic3d_Vec4d & theNormal, const Graphic3d_Vec4d & thePnt);
 
 		/****************** ViewportHeight ******************/
 		/**** md5 signature: c197043069d1304d1eeb77ca9ae3a846 ****/
 		%feature("compactdefaultargs") ViewportHeight;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") ViewportHeight;
 		Standard_Integer ViewportHeight();
 
 		/****************** ViewportWidth ******************/
 		/**** md5 signature: b2bf685bf2a0b5a187dd849825582a14 ****/
 		%feature("compactdefaultargs") ViewportWidth;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") ViewportWidth;
 		Standard_Integer ViewportWidth();
 
 		/****************** WorldViewMatrix ******************/
 		/**** md5 signature: fa375b9f28a3a5704ed8ad4248bd49d3 ****/
 		%feature("compactdefaultargs") WorldViewMatrix;
-		%feature("autodoc", "Returns current world view transformation matrix.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Mat4d
+
+Description
+-----------
+Returns current world view transformation matrix.
 ") WorldViewMatrix;
 		const Graphic3d_Mat4d & WorldViewMatrix();
 
 		/****************** WorldViewProjState ******************/
 		/**** md5 signature: 84fd216afc4c582ff7d76c1c302180f8 ****/
 		%feature("compactdefaultargs") WorldViewProjState;
-		%feature("autodoc", "Returns state of current world view projection transformation matrices.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_WorldViewProjState
+
+Description
+-----------
+Returns state of current world view projection transformation matrices.
 ") WorldViewProjState;
 		const Graphic3d_WorldViewProjState & WorldViewProjState();
 
@@ -8362,37 +9502,44 @@ class Graphic3d_FrameStats : public Standard_Transient {
 		/****************** ActiveDataFrame ******************/
 		/**** md5 signature: e89e1c4808bb7032e3058fd748c2ba1e ****/
 		%feature("compactdefaultargs") ActiveDataFrame;
-		%feature("autodoc", "Returns currently filling data frame for modification, should be called between ::framestart() and ::frameend() calls.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_FrameStatsDataTmp
+
+Description
+-----------
+Returns currently filling data frame for modification, should be called between ::framestart() and ::frameend() calls.
 ") ActiveDataFrame;
 		Graphic3d_FrameStatsDataTmp & ActiveDataFrame();
 
 		/****************** ChangeCounter ******************/
 		/**** md5 signature: 6c6f58c1a9759b9295d132d8096def96 ****/
 		%feature("compactdefaultargs") ChangeCounter;
-		%feature("autodoc", "Returns value of specified counter for modification, should be called between ::framestart() and ::frameend() calls.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCounter: Graphic3d_FrameStatsCounter
 
-Returns
+Return
 -------
 Standard_Size
+
+Description
+-----------
+Returns value of specified counter for modification, should be called between ::framestart() and ::frameend() calls.
 ") ChangeCounter;
 		Standard_Size & ChangeCounter(Graphic3d_FrameStatsCounter theCounter);
 
 		/****************** ChangeDataFrames ******************/
 		/**** md5 signature: 9486d6288d46f6501e052e63e78363a5 ****/
 		%feature("compactdefaultargs") ChangeDataFrames;
-		%feature("autodoc", "Returns data frames.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Array1<Graphic3d_FrameStatsData>
+
+Description
+-----------
+Returns data frames.
 ") ChangeDataFrames;
 		NCollection_Array1<Graphic3d_FrameStatsData> & ChangeDataFrames();
 
@@ -8412,233 +9559,277 @@ NCollection_Array1<Graphic3d_FrameStatsData>
 		/****************** CounterValue ******************/
 		/**** md5 signature: 8ed1805ec25d6c758e5e1db19f97ff24 ****/
 		%feature("compactdefaultargs") CounterValue;
-		%feature("autodoc", "Returns value of specified counter, cached between stats updates. should not be called between ::framestart() and ::frameend() calls.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCounter: Graphic3d_FrameStatsCounter
 
-Returns
+Return
 -------
 Standard_Size
+
+Description
+-----------
+Returns value of specified counter, cached between stats updates. should not be called between ::framestart() and ::frameend() calls.
 ") CounterValue;
 		Standard_Size CounterValue(Graphic3d_FrameStatsCounter theCounter);
 
 		/****************** DataFrames ******************/
 		/**** md5 signature: 00192e1420bc8aaf54d99dc695bc8868 ****/
 		%feature("compactdefaultargs") DataFrames;
-		%feature("autodoc", "Returns data frames.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Array1<Graphic3d_FrameStatsData>
+
+Description
+-----------
+Returns data frames.
 ") DataFrames;
 		const NCollection_Array1<Graphic3d_FrameStatsData> & DataFrames();
 
 		/****************** FormatStats ******************/
 		/**** md5 signature: 5b9dead4afc40b78e32eab45fce6ef06 ****/
 		%feature("compactdefaultargs") FormatStats;
-		%feature("autodoc", "Returns formatted string.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFlags: Graphic3d_RenderingParams::PerfCounters
 
-Returns
+Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns formatted string.
 ") FormatStats;
 		virtual TCollection_AsciiString FormatStats(Graphic3d_RenderingParams::PerfCounters theFlags);
 
 		/****************** FormatStats ******************/
 		/**** md5 signature: 71153f3ccc3724ca46659b9cf568545a ****/
 		%feature("compactdefaultargs") FormatStats;
-		%feature("autodoc", "Fill in the dictionary with formatted statistic info.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDict: TColStd_IndexedDataMapOfStringString
 theFlags: Graphic3d_RenderingParams::PerfCounters
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Fill in the dictionary with formatted statistic info.
 ") FormatStats;
 		virtual void FormatStats(TColStd_IndexedDataMapOfStringString & theDict, Graphic3d_RenderingParams::PerfCounters theFlags);
 
 		/****************** FrameDuration ******************/
 		/**** md5 signature: 7570137c484d67bab578be1e30a71da6 ****/
 		%feature("compactdefaultargs") FrameDuration;
-		%feature("autodoc", "Returns duration of the last frame in seconds.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns duration of the last frame in seconds.
 ") FrameDuration;
 		Standard_Real FrameDuration();
 
 		/****************** FrameEnd ******************/
 		/**** md5 signature: a1a62d3a296e8bc083bd2a2e33e0b401 ****/
 		%feature("compactdefaultargs") FrameEnd;
-		%feature("autodoc", "Frame redraw finished.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theView: Graphic3d_CView
 theIsImmediateOnly: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Frame redraw finished.
 ") FrameEnd;
 		virtual void FrameEnd(const opencascade::handle<Graphic3d_CView> & theView, bool theIsImmediateOnly);
 
 		/****************** FrameRate ******************/
 		/**** md5 signature: db6b7e7c7a863be8aaa983bb362e35a4 ****/
 		%feature("compactdefaultargs") FrameRate;
-		%feature("autodoc", "Returns fps (frames per seconds, elapsed time). this number indicates an actual frame rate averaged for several frames within updateinterval() duration, basing on a real elapsed time between updates.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns fps (frames per seconds, elapsed time). this number indicates an actual frame rate averaged for several frames within updateinterval() duration, basing on a real elapsed time between updates.
 ") FrameRate;
 		Standard_Real FrameRate();
 
 		/****************** FrameRateCpu ******************/
 		/**** md5 signature: 9cfad4d801704890362508e1c186ca95 ****/
 		%feature("compactdefaultargs") FrameRateCpu;
-		%feature("autodoc", "Returns cpu fps (frames per seconds, cpu time). this number indicates a predicted frame rate, basing on cpu elapsed time between updates and not real elapsed time (which might include periods of cpu inactivity). number is expected to be greater then actual frame rate returned by framerate(). values significantly greater actual frame rate indicate that rendering is limited by gpu performance (cpu is stalled in-between), while values around actual frame rate indicate rendering being limited by cpu performance (gpu is stalled in-between).
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns cpu fps (frames per seconds, cpu time). this number indicates a predicted frame rate, basing on cpu elapsed time between updates and not real elapsed time (which might include periods of cpu inactivity). number is expected to be greater then actual frame rate returned by framerate(). values significantly greater actual frame rate indicate that rendering is limited by gpu performance (cpu is stalled in-between), while values around actual frame rate indicate rendering being limited by cpu performance (gpu is stalled in-between).
 ") FrameRateCpu;
 		Standard_Real FrameRateCpu();
 
 		/****************** FrameStart ******************/
 		/**** md5 signature: 4321aa56927dd15c9aa2049a53d48d01 ****/
 		%feature("compactdefaultargs") FrameStart;
-		%feature("autodoc", "Frame redraw started.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theView: Graphic3d_CView
 theIsImmediateOnly: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Frame redraw started.
 ") FrameStart;
 		virtual void FrameStart(const opencascade::handle<Graphic3d_CView> & theView, bool theIsImmediateOnly);
 
 		/****************** HasCulledLayers ******************/
 		/**** md5 signature: 07d35cdfa68362efadd4c5c6defc91ab ****/
 		%feature("compactdefaultargs") HasCulledLayers;
-		%feature("autodoc", "Returns true if some layers have been culled.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if some layers have been culled.
 ") HasCulledLayers;
 		Standard_Boolean HasCulledLayers();
 
 		/****************** HasCulledStructs ******************/
 		/**** md5 signature: 30345793eefb3ed2b862dde8ff60a65c ****/
 		%feature("compactdefaultargs") HasCulledStructs;
-		%feature("autodoc", "Returns true if some structures have been culled.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if some structures have been culled.
 ") HasCulledStructs;
 		Standard_Boolean HasCulledStructs();
 
 		/****************** IsLongLineFormat ******************/
 		/**** md5 signature: abc47073f1604f901c805b2df31306d1 ****/
 		%feature("compactdefaultargs") IsLongLineFormat;
-		%feature("autodoc", "Prefer longer lines over more greater of lines.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Prefer longer lines over more greater of lines.
 ") IsLongLineFormat;
 		Standard_Boolean IsLongLineFormat();
 
 		/****************** LastDataFrame ******************/
 		/**** md5 signature: 43a5ae643ec463959ba072b87a1e8878 ****/
 		%feature("compactdefaultargs") LastDataFrame;
-		%feature("autodoc", "Returns last data frame, cached between stats updates. should not be called between ::framestart() and ::frameend() calls.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_FrameStatsData
+
+Description
+-----------
+Returns last data frame, cached between stats updates. should not be called between ::framestart() and ::frameend() calls.
 ") LastDataFrame;
 		const Graphic3d_FrameStatsData & LastDataFrame();
 
 		/****************** LastDataFrameIndex ******************/
 		/**** md5 signature: 8d078e5e0a649cb271949b10cabbffff ****/
 		%feature("compactdefaultargs") LastDataFrameIndex;
-		%feature("autodoc", "Returns last data frame index.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns last data frame index.
 ") LastDataFrameIndex;
 		Standard_Integer LastDataFrameIndex();
 
 		/****************** SetLongLineFormat ******************/
 		/**** md5 signature: 7c2dae77684bf1fd79c5bdc9baac3daa ****/
 		%feature("compactdefaultargs") SetLongLineFormat;
-		%feature("autodoc", "Set if format should prefer longer lines over greater number of lines.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if format should prefer longer lines over greater number of lines.
 ") SetLongLineFormat;
 		void SetLongLineFormat(Standard_Boolean theValue);
 
 		/****************** SetUpdateInterval ******************/
 		/**** md5 signature: 3a384af54fceff3c5ab5cf3b5ae9bba1 ****/
 		%feature("compactdefaultargs") SetUpdateInterval;
-		%feature("autodoc", "Sets interval in seconds for updating values.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theInterval: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets interval in seconds for updating values.
 ") SetUpdateInterval;
 		void SetUpdateInterval(Standard_Real theInterval);
 
 		/****************** TimerValue ******************/
 		/**** md5 signature: cc2d4e10fff345f6e76c0ca736f6baba ****/
 		%feature("compactdefaultargs") TimerValue;
-		%feature("autodoc", "Returns value of specified timer for modification, should be called between ::framestart() and ::frameend() calls. should not be called between ::framestart() and ::frameend() calls.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTimer: Graphic3d_FrameStatsTimer
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns value of specified timer for modification, should be called between ::framestart() and ::frameend() calls. should not be called between ::framestart() and ::frameend() calls.
 ") TimerValue;
 		Standard_Real TimerValue(Graphic3d_FrameStatsTimer theTimer);
 
 		/****************** UpdateInterval ******************/
 		/**** md5 signature: a2231f8474a76de156ff0cd51bd23440 ****/
 		%feature("compactdefaultargs") UpdateInterval;
-		%feature("autodoc", "Returns interval in seconds for updating meters across several frames; 1 second by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns interval in seconds for updating meters across several frames; 1 second by default.
 ") UpdateInterval;
 		Standard_Real UpdateInterval();
 
@@ -8661,111 +9852,132 @@ class Graphic3d_FrameStatsData {
 		/****************** Graphic3d_FrameStatsData ******************/
 		/**** md5 signature: cb20320dae57ead2c8bcffdd55733e51 ****/
 		%feature("compactdefaultargs") Graphic3d_FrameStatsData;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_FrameStatsData;
 		 Graphic3d_FrameStatsData();
 
 		/****************** CounterValue ******************/
 		/**** md5 signature: ea9c1c4755f5d30677125656248b20e1 ****/
 		%feature("compactdefaultargs") CounterValue;
-		%feature("autodoc", "Get counter value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: Graphic3d_FrameStatsCounter
 
-Returns
+Return
 -------
 Standard_Size
+
+Description
+-----------
+Get counter value.
 ") CounterValue;
 		Standard_Size CounterValue(Graphic3d_FrameStatsCounter theIndex);
 
 		/****************** FillMax ******************/
 		/**** md5 signature: aba2493eb7aceb56692dcd34d61c14d1 ****/
 		%feature("compactdefaultargs") FillMax;
-		%feature("autodoc", "Fill with maximum values.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_FrameStatsData
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Fill with maximum values.
 ") FillMax;
 		void FillMax(const Graphic3d_FrameStatsData & theOther);
 
 		/****************** FrameRate ******************/
 		/**** md5 signature: db6b7e7c7a863be8aaa983bb362e35a4 ****/
 		%feature("compactdefaultargs") FrameRate;
-		%feature("autodoc", "Returns fps (frames per seconds, elapsed time). this number indicates an actual frame rate averaged for several frames within updateinterval() duration, basing on a real elapsed time between updates.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns fps (frames per seconds, elapsed time). this number indicates an actual frame rate averaged for several frames within updateinterval() duration, basing on a real elapsed time between updates.
 ") FrameRate;
 		Standard_Real FrameRate();
 
 		/****************** FrameRateCpu ******************/
 		/**** md5 signature: 9cfad4d801704890362508e1c186ca95 ****/
 		%feature("compactdefaultargs") FrameRateCpu;
-		%feature("autodoc", "Returns cpu fps (frames per seconds, cpu time). this number indicates a predicted frame rate, basing on cpu elapsed time between updates and not real elapsed time (which might include periods of cpu inactivity). number is expected to be greater then actual frame rate returned by framerate(). values significantly greater actual frame rate indicate that rendering is limited by gpu performance (cpu is stalled in-between), while values around actual frame rate indicate rendering being limited by cpu performance (gpu is stalled in-between).
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns cpu fps (frames per seconds, cpu time). this number indicates a predicted frame rate, basing on cpu elapsed time between updates and not real elapsed time (which might include periods of cpu inactivity). number is expected to be greater then actual frame rate returned by framerate(). values significantly greater actual frame rate indicate that rendering is limited by gpu performance (cpu is stalled in-between), while values around actual frame rate indicate rendering being limited by cpu performance (gpu is stalled in-between).
 ") FrameRateCpu;
 		Standard_Real FrameRateCpu();
 
 		/****************** ImmediateFrameRate ******************/
 		/**** md5 signature: 7d7a73e6546c64c304be750b5b030a96 ****/
 		%feature("compactdefaultargs") ImmediateFrameRate;
-		%feature("autodoc", "Returns fps for immediate redraws.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns fps for immediate redraws.
 ") ImmediateFrameRate;
 		Standard_Real ImmediateFrameRate();
 
 		/****************** ImmediateFrameRateCpu ******************/
 		/**** md5 signature: 07fc29b568f47dc03d0111758def8aeb ****/
 		%feature("compactdefaultargs") ImmediateFrameRateCpu;
-		%feature("autodoc", "Returns cpu fps for immediate redraws.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns cpu fps for immediate redraws.
 ") ImmediateFrameRateCpu;
 		Standard_Real ImmediateFrameRateCpu();
 
 		/****************** Reset ******************/
 		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
 		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "Reset data.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Reset data.
 ") Reset;
 		void Reset();
 
 		/****************** TimerValue ******************/
 		/**** md5 signature: 06c524b566bfa85e501093ca7529ef04 ****/
 		%feature("compactdefaultargs") TimerValue;
-		%feature("autodoc", "Get timer value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: Graphic3d_FrameStatsTimer
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Get timer value.
 ") TimerValue;
 		Standard_Real TimerValue(Graphic3d_FrameStatsTimer theIndex);
 
@@ -8786,88 +9998,105 @@ class Graphic3d_Fresnel {
 		/****************** Graphic3d_Fresnel ******************/
 		/**** md5 signature: 9be7b9d3e911d9507c81ff78fff65010 ****/
 		%feature("compactdefaultargs") Graphic3d_Fresnel;
-		%feature("autodoc", "Creates uninitialized fresnel factor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates uninitialized fresnel factor.
 ") Graphic3d_Fresnel;
 		 Graphic3d_Fresnel();
 
 		/****************** CreateConductor ******************/
 		/**** md5 signature: 3896ad59ad90a71df054ecc6356058e5 ****/
 		%feature("compactdefaultargs") CreateConductor;
-		%feature("autodoc", "Creates fresnel factor for physical-based conductor model.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRefractionIndex: float
 theAbsorptionIndex: float
 
-Returns
+Return
 -------
 Graphic3d_Fresnel
+
+Description
+-----------
+Creates fresnel factor for physical-based conductor model.
 ") CreateConductor;
 		static Graphic3d_Fresnel CreateConductor(Standard_ShortReal theRefractionIndex, Standard_ShortReal theAbsorptionIndex);
 
 		/****************** CreateConductor ******************/
 		/**** md5 signature: abc67701a99807361ff15bbaf583e29d ****/
 		%feature("compactdefaultargs") CreateConductor;
-		%feature("autodoc", "Creates fresnel factor for physical-based conductor model (spectral version).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRefractionIndex: Graphic3d_Vec3
 theAbsorptionIndex: Graphic3d_Vec3
 
-Returns
+Return
 -------
 Graphic3d_Fresnel
+
+Description
+-----------
+Creates fresnel factor for physical-based conductor model (spectral version).
 ") CreateConductor;
 		static Graphic3d_Fresnel CreateConductor(const Graphic3d_Vec3 & theRefractionIndex, const Graphic3d_Vec3 & theAbsorptionIndex);
 
 		/****************** CreateConstant ******************/
 		/**** md5 signature: 21995c7091d353b4a89830b625704749 ****/
 		%feature("compactdefaultargs") CreateConstant;
-		%feature("autodoc", "Creates fresnel factor for constant reflection.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theReflection: float
 
-Returns
+Return
 -------
 Graphic3d_Fresnel
+
+Description
+-----------
+Creates fresnel factor for constant reflection.
 ") CreateConstant;
 		static Graphic3d_Fresnel CreateConstant(const Standard_ShortReal theReflection);
 
 		/****************** CreateDielectric ******************/
 		/**** md5 signature: 489a65bd3502f304c610256e94f153d5 ****/
 		%feature("compactdefaultargs") CreateDielectric;
-		%feature("autodoc", "Creates fresnel factor for physical-based dielectric model.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRefractionIndex: float
 
-Returns
+Return
 -------
 Graphic3d_Fresnel
+
+Description
+-----------
+Creates fresnel factor for physical-based dielectric model.
 ") CreateDielectric;
 		static Graphic3d_Fresnel CreateDielectric(Standard_ShortReal theRefractionIndex);
 
 		/****************** CreateSchlick ******************/
 		/**** md5 signature: 960e03655e99f98cc62d846358f21995 ****/
 		%feature("compactdefaultargs") CreateSchlick;
-		%feature("autodoc", "Creates schlick's approximation of fresnel factor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSpecularColor: Graphic3d_Vec3
 
-Returns
+Return
 -------
 Graphic3d_Fresnel
+
+Description
+-----------
+Creates schlick's approximation of fresnel factor.
 ") CreateSchlick;
 		static Graphic3d_Fresnel CreateSchlick(const Graphic3d_Vec3 & theSpecularColor);
 
@@ -8883,22 +10112,26 @@ Graphic3d_Fresnel
 		/****************** FresnelType ******************/
 		/**** md5 signature: 98c0c74d03fd3aa57b6d6ab4409e1720 ****/
 		%feature("compactdefaultargs") FresnelType;
-		%feature("autodoc", "Returns type of fresnel.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_FresnelModel
+
+Description
+-----------
+Returns type of fresnel.
 ") FresnelType;
 		Graphic3d_FresnelModel FresnelType();
 
 		/****************** Serialize ******************/
 		/**** md5 signature: 5c6373d91e665c9ae95dd301c1660748 ****/
 		%feature("compactdefaultargs") Serialize;
-		%feature("autodoc", "Returns serialized representation of fresnel factor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec4
+
+Description
+-----------
+Returns serialized representation of fresnel factor.
 ") Serialize;
 		Graphic3d_Vec4 Serialize();
 
@@ -8934,405 +10167,469 @@ class Graphic3d_GraduatedTrihedron {
 		/****************** Graphic3d_GraduatedTrihedron ******************/
 		/**** md5 signature: ec9c13b0c8c821bbf378eaa07133baa4 ****/
 		%feature("compactdefaultargs") Graphic3d_GraduatedTrihedron;
-		%feature("autodoc", "Default constructor constructs the default graduated trihedron with grid, x, y, z axes, and tickmarks.
-
+		%feature("autodoc", "
 Parameters
 ----------
-theNamesFont: str,optional
-	default value is 'Arial'
-theNamesStyle: Font_FontAspect,optional
-	default value is Font_FA_Bold
-theNamesSize: int,optional
-	default value is 12
-theValuesFont: str,optional
-	default value is 'Arial'
-theValuesStyle: Font_FontAspect,optional
-	default value is Font_FA_Regular
-theValuesSize: int,optional
-	default value is 12
-theArrowsLength: float,optional
-	default value is 30.0f
-theGridColor: Quantity_Color,optional
-	default value is Quantity_NOC_WHITE
-theToDrawGrid: bool,optional
-	default value is Standard_True
-theToDrawAxes: bool,optional
-	default value is Standard_True
+theNamesFont: str (optional, default to 'Arial')
+theNamesStyle: Font_FontAspect (optional, default to Font_FA_Bold)
+theNamesSize: int (optional, default to 12)
+theValuesFont: str (optional, default to 'Arial')
+theValuesStyle: Font_FontAspect (optional, default to Font_FA_Regular)
+theValuesSize: int (optional, default to 12)
+theArrowsLength: float (optional, default to 30.0f)
+theGridColor: Quantity_Color (optional, default to Quantity_NOC_WHITE)
+theToDrawGrid: bool (optional, default to Standard_True)
+theToDrawAxes: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Default constructor constructs the default graduated trihedron with grid, x, y, z axes, and tickmarks.
 ") Graphic3d_GraduatedTrihedron;
 		 Graphic3d_GraduatedTrihedron(TCollection_AsciiString theNamesFont = "Arial", const Font_FontAspect & theNamesStyle = Font_FA_Bold, const Standard_Integer theNamesSize = 12, TCollection_AsciiString theValuesFont = "Arial", const Font_FontAspect & theValuesStyle = Font_FA_Regular, const Standard_Integer theValuesSize = 12, const Standard_ShortReal theArrowsLength = 30.0f, const Quantity_Color theGridColor = Quantity_NOC_WHITE, const Standard_Boolean theToDrawGrid = Standard_True, const Standard_Boolean theToDrawAxes = Standard_True);
 
 		/****************** ArrowsLength ******************/
 		/**** md5 signature: 436b8e7aca635cad334a456158318fd2 ****/
 		%feature("compactdefaultargs") ArrowsLength;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") ArrowsLength;
 		Standard_ShortReal ArrowsLength();
 
 		/****************** AxisAspectAt ******************/
 		/**** md5 signature: 63f00fa442fc1d6ba02cc6bb79bcd525 ****/
 		%feature("compactdefaultargs") AxisAspectAt;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 
-Returns
+Return
 -------
 Graphic3d_GraduatedTrihedron::AxisAspect
+
+Description
+-----------
+No available documentation.
 ") AxisAspectAt;
 		Graphic3d_GraduatedTrihedron::AxisAspect AxisAspectAt(const Standard_Integer theIndex);
 
 		/****************** ChangeAxisAspect ******************/
 		/**** md5 signature: f74ee84e653b5a8df6857698f64af27a ****/
 		%feature("compactdefaultargs") ChangeAxisAspect;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 
-Returns
+Return
 -------
 Graphic3d_GraduatedTrihedron::AxisAspect
+
+Description
+-----------
+No available documentation.
 ") ChangeAxisAspect;
 		Graphic3d_GraduatedTrihedron::AxisAspect ChangeAxisAspect(const Standard_Integer theIndex);
 
 		/****************** ChangeXAxisAspect ******************/
 		/**** md5 signature: 0db2f493a8dc9d6a74d8770813ea91e3 ****/
 		%feature("compactdefaultargs") ChangeXAxisAspect;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_GraduatedTrihedron::AxisAspect
+
+Description
+-----------
+No available documentation.
 ") ChangeXAxisAspect;
 		Graphic3d_GraduatedTrihedron::AxisAspect ChangeXAxisAspect();
 
 		/****************** ChangeYAxisAspect ******************/
 		/**** md5 signature: 26bef1416c24df17fe629630d5fad032 ****/
 		%feature("compactdefaultargs") ChangeYAxisAspect;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_GraduatedTrihedron::AxisAspect
+
+Description
+-----------
+No available documentation.
 ") ChangeYAxisAspect;
 		Graphic3d_GraduatedTrihedron::AxisAspect ChangeYAxisAspect();
 
 		/****************** ChangeZAxisAspect ******************/
 		/**** md5 signature: 0c6e16c99d91d275f7b741d01a32696b ****/
 		%feature("compactdefaultargs") ChangeZAxisAspect;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_GraduatedTrihedron::AxisAspect
+
+Description
+-----------
+No available documentation.
 ") ChangeZAxisAspect;
 		Graphic3d_GraduatedTrihedron::AxisAspect ChangeZAxisAspect();
 
 		/****************** CubicAxesCallback ******************/
 		/**** md5 signature: e81eb3ee65b29fa8f4156e206e325740 ****/
 		%feature("compactdefaultargs") CubicAxesCallback;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theView: Graphic3d_CView *
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") CubicAxesCallback;
 		Standard_Boolean CubicAxesCallback(Graphic3d_CView * theView);
 
 		/****************** GridColor ******************/
 		/**** md5 signature: 0a94080e9f8d07e2f072c1b5c94f2339 ****/
 		%feature("compactdefaultargs") GridColor;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+No available documentation.
 ") GridColor;
 		const Quantity_Color & GridColor();
 
 		/****************** NamesFont ******************/
 		/**** md5 signature: fff09ee152b933c30f0bd84d05698758 ****/
 		%feature("compactdefaultargs") NamesFont;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+No available documentation.
 ") NamesFont;
 		const TCollection_AsciiString & NamesFont();
 
 		/****************** NamesFontAspect ******************/
 		/**** md5 signature: 24ee92075d6b91f3b6cd462739a1b92f ****/
 		%feature("compactdefaultargs") NamesFontAspect;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Font_FontAspect
+
+Description
+-----------
+No available documentation.
 ") NamesFontAspect;
 		Font_FontAspect NamesFontAspect();
 
 		/****************** NamesSize ******************/
 		/**** md5 signature: 17215cfa08f82381387f9dfe83f61587 ****/
 		%feature("compactdefaultargs") NamesSize;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NamesSize;
 		Standard_Integer NamesSize();
 
 		/****************** SetArrowsLength ******************/
 		/**** md5 signature: 38ff5a23220c65a1f862b638e9fac6ff ****/
 		%feature("compactdefaultargs") SetArrowsLength;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetArrowsLength;
 		void SetArrowsLength(const Standard_ShortReal theValue);
 
 		/****************** SetDrawAxes ******************/
 		/**** md5 signature: 8cf33b2c06e2ff3c55144a9ba910b0bc ****/
 		%feature("compactdefaultargs") SetDrawAxes;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToDraw: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetDrawAxes;
 		void SetDrawAxes(const Standard_Boolean theToDraw);
 
 		/****************** SetDrawGrid ******************/
 		/**** md5 signature: fa65b49e26273d355a2f5ff328b4c492 ****/
 		%feature("compactdefaultargs") SetDrawGrid;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToDraw: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetDrawGrid;
 		void SetDrawGrid(const Standard_Boolean theToDraw);
 
 		/****************** SetGridColor ******************/
 		/**** md5 signature: 9f70fd93cff9ed9f03df433cb59530c7 ****/
 		%feature("compactdefaultargs") SetGridColor;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetGridColor;
 		void SetGridColor(const Quantity_Color & theColor);
 
 		/****************** SetNamesFont ******************/
 		/**** md5 signature: 04ce69c162ca06059e2e9948b6c7a5d5 ****/
 		%feature("compactdefaultargs") SetNamesFont;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFont: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetNamesFont;
 		void SetNamesFont(TCollection_AsciiString theFont);
 
 		/****************** SetNamesFontAspect ******************/
 		/**** md5 signature: 95599011b4aa83f2326f3a73b956d72c ****/
 		%feature("compactdefaultargs") SetNamesFontAspect;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAspect: Font_FontAspect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetNamesFontAspect;
 		void SetNamesFontAspect(Font_FontAspect theAspect);
 
 		/****************** SetNamesSize ******************/
 		/**** md5 signature: 5197b3ebdbe16bf2e7f2bb37243c892c ****/
 		%feature("compactdefaultargs") SetNamesSize;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetNamesSize;
 		void SetNamesSize(const Standard_Integer theValue);
 
 		/****************** SetValuesFont ******************/
 		/**** md5 signature: 51c17c292b99eeb2899776619385aecc ****/
 		%feature("compactdefaultargs") SetValuesFont;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFont: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetValuesFont;
 		void SetValuesFont(TCollection_AsciiString theFont);
 
 		/****************** SetValuesFontAspect ******************/
 		/**** md5 signature: d802052a96e2bd0dacd9adf90fe293cd ****/
 		%feature("compactdefaultargs") SetValuesFontAspect;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAspect: Font_FontAspect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetValuesFontAspect;
 		void SetValuesFontAspect(Font_FontAspect theAspect);
 
 		/****************** SetValuesSize ******************/
 		/**** md5 signature: 8c13262fe0c038d5e2de60a7db47d290 ****/
 		%feature("compactdefaultargs") SetValuesSize;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetValuesSize;
 		void SetValuesSize(const Standard_Integer theValue);
 
 		/****************** ToDrawAxes ******************/
 		/**** md5 signature: cf79dcc6451b48c9e4ca8d3f257bcc8d ****/
 		%feature("compactdefaultargs") ToDrawAxes;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") ToDrawAxes;
 		Standard_Boolean ToDrawAxes();
 
 		/****************** ToDrawGrid ******************/
 		/**** md5 signature: e0c0dc60660d64e816c5cc0aa0d56cbe ****/
 		%feature("compactdefaultargs") ToDrawGrid;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") ToDrawGrid;
 		Standard_Boolean ToDrawGrid();
 
 		/****************** ValuesFont ******************/
 		/**** md5 signature: fb3c190dc717e90b8fb6d2d17f5e867a ****/
 		%feature("compactdefaultargs") ValuesFont;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+No available documentation.
 ") ValuesFont;
 		const TCollection_AsciiString & ValuesFont();
 
 		/****************** ValuesFontAspect ******************/
 		/**** md5 signature: b14f920e832d04b2a45fcad2054971b1 ****/
 		%feature("compactdefaultargs") ValuesFontAspect;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Font_FontAspect
+
+Description
+-----------
+No available documentation.
 ") ValuesFontAspect;
 		Font_FontAspect ValuesFontAspect();
 
 		/****************** ValuesSize ******************/
 		/**** md5 signature: 2e3346ad769be956d03b5627833824b5 ****/
 		%feature("compactdefaultargs") ValuesSize;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") ValuesSize;
 		Standard_Integer ValuesSize();
 
 		/****************** XAxisAspect ******************/
 		/**** md5 signature: 658c3ee5f9ab4ee1108f1949964cb378 ****/
 		%feature("compactdefaultargs") XAxisAspect;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_GraduatedTrihedron::AxisAspect
+
+Description
+-----------
+No available documentation.
 ") XAxisAspect;
 		Graphic3d_GraduatedTrihedron::AxisAspect XAxisAspect();
 
 		/****************** YAxisAspect ******************/
 		/**** md5 signature: 5e948e695e24c65afc182aae4b8c4f74 ****/
 		%feature("compactdefaultargs") YAxisAspect;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_GraduatedTrihedron::AxisAspect
+
+Description
+-----------
+No available documentation.
 ") YAxisAspect;
 		Graphic3d_GraduatedTrihedron::AxisAspect YAxisAspect();
 
 		/****************** ZAxisAspect ******************/
 		/**** md5 signature: cdd43014b9d477d11415b709e5cebb35 ****/
 		%feature("compactdefaultargs") ZAxisAspect;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_GraduatedTrihedron::AxisAspect
+
+Description
+-----------
+No available documentation.
 ") ZAxisAspect;
 		Graphic3d_GraduatedTrihedron::AxisAspect ZAxisAspect();
 
@@ -9358,41 +10655,49 @@ class Graphic3d_GraphicDriver : public Standard_Transient {
 		/****************** CreateStructure ******************/
 		/**** md5 signature: a36ec42089c49a5b3cd014c42cce26aa ****/
 		%feature("compactdefaultargs") CreateStructure;
-		%feature("autodoc", "Creates new empty graphic structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theManager: Graphic3d_StructureManager
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_CStructure>
+
+Description
+-----------
+Creates new empty graphic structure.
 ") CreateStructure;
 		virtual opencascade::handle<Graphic3d_CStructure> CreateStructure(const opencascade::handle<Graphic3d_StructureManager> & theManager);
 
 		/****************** CreateView ******************/
 		/**** md5 signature: efb7ebf01d81afbe1ea2502c9f4f1c84 ****/
 		%feature("compactdefaultargs") CreateView;
-		%feature("autodoc", "Creates new view for this graphic driver.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: Graphic3d_StructureManager
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_CView>
+
+Description
+-----------
+Creates new view for this graphic driver.
 ") CreateView;
 		virtual opencascade::handle<Graphic3d_CView> CreateView(const opencascade::handle<Graphic3d_StructureManager> & theMgr);
 
 		/****************** DefaultTextHeight ******************/
 		/**** md5 signature: 3468b2d78c3f72d41f67a14efead2574 ****/
 		%feature("compactdefaultargs") DefaultTextHeight;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") DefaultTextHeight;
 		virtual Standard_ShortReal DefaultTextHeight();
 
@@ -9408,302 +10713,359 @@ float
 		/****************** EnableVBO ******************/
 		/**** md5 signature: 6811071ed08bc9212270309c90e38f22 ****/
 		%feature("compactdefaultargs") EnableVBO;
-		%feature("autodoc", "Enables/disables usage of opengl vertex buffer arrays while drawing primitive arrays.
-
+		%feature("autodoc", "
 Parameters
 ----------
 status: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Enables/disables usage of opengl vertex buffer arrays while drawing primitive arrays.
 ") EnableVBO;
 		virtual void EnableVBO(const Standard_Boolean status);
 
 		/****************** GetDisplayConnection ******************/
 		/**** md5 signature: 23fb6073a1974917a907039ad426bbdd ****/
 		%feature("compactdefaultargs") GetDisplayConnection;
-		%feature("autodoc", "Returns handle to display connection.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Aspect_DisplayConnection>
+
+Description
+-----------
+Returns handle to display connection.
 ") GetDisplayConnection;
 		const opencascade::handle<Aspect_DisplayConnection> & GetDisplayConnection();
 
 		/****************** InquireLightLimit ******************/
 		/**** md5 signature: 5ff4f7fa144f2d6e14ce9b9d5c238660 ****/
 		%feature("compactdefaultargs") InquireLightLimit;
-		%feature("autodoc", "Request maximum number of active light sources supported by driver and hardware.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Request maximum number of active light sources supported by driver and hardware.
 ") InquireLightLimit;
 		Standard_Integer InquireLightLimit();
 
 		/****************** InquireLimit ******************/
 		/**** md5 signature: f47665093e68deaf2e3b6fd6b18ed76a ****/
 		%feature("compactdefaultargs") InquireLimit;
-		%feature("autodoc", "Request limit of graphic resource of specific type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfLimit
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Request limit of graphic resource of specific type.
 ") InquireLimit;
 		virtual Standard_Integer InquireLimit(const Graphic3d_TypeOfLimit theType);
 
 		/****************** InquirePlaneLimit ******************/
 		/**** md5 signature: 7edec336d772e2570a4950bec285d141 ****/
 		%feature("compactdefaultargs") InquirePlaneLimit;
-		%feature("autodoc", "Request maximum number of active clipping planes supported by driver and hardware.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Request maximum number of active clipping planes supported by driver and hardware.
 ") InquirePlaneLimit;
 		Standard_Integer InquirePlaneLimit();
 
 		/****************** InquireViewLimit ******************/
 		/**** md5 signature: cd87f9a9e2cdd455e23f74b19c9d84ce ****/
 		%feature("compactdefaultargs") InquireViewLimit;
-		%feature("autodoc", "Request maximum number of views supported by driver.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Request maximum number of views supported by driver.
 ") InquireViewLimit;
 		Standard_Integer InquireViewLimit();
 
 		/****************** InsertLayerAfter ******************/
 		/**** md5 signature: cd9549addd4543aedd353e8c4428d456 ****/
 		%feature("compactdefaultargs") InsertLayerAfter;
-		%feature("autodoc", "Adds a layer to all views. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerbefore [in] id of layer to append new layer after.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNewLayerId: int
 theSettings: Graphic3d_ZLayerSettings
 theLayerBefore: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Adds a layer to all views. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerbefore [in] id of layer to append new layer after.
 ") InsertLayerAfter;
 		virtual void InsertLayerAfter(int theNewLayerId, const Graphic3d_ZLayerSettings & theSettings, int theLayerBefore);
 
 		/****************** InsertLayerBefore ******************/
 		/**** md5 signature: 9598fd696d1336a754aefafafac0a974 ****/
 		%feature("compactdefaultargs") InsertLayerBefore;
-		%feature("autodoc", "Adds a layer to all views. to add a structure to desired layer on display it is necessary to set the layer id for the structure. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerafter [in] id of layer to append new layer before.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNewLayerId: int
 theSettings: Graphic3d_ZLayerSettings
 theLayerAfter: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Adds a layer to all views. to add a structure to desired layer on display it is necessary to set the layer id for the structure. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerafter [in] id of layer to append new layer before.
 ") InsertLayerBefore;
 		virtual void InsertLayerBefore(int theNewLayerId, const Graphic3d_ZLayerSettings & theSettings, int theLayerAfter);
 
 		/****************** IsVerticalSync ******************/
 		/**** md5 signature: 985d8beb785bea58cbbe2cfd1d737440 ****/
 		%feature("compactdefaultargs") IsVerticalSync;
-		%feature("autodoc", "Returns true if vertical synchronization with display refresh rate (vsync) should be used; true by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if vertical synchronization with display refresh rate (vsync) should be used; true by default.
 ") IsVerticalSync;
 		virtual bool IsVerticalSync();
 
 		/****************** MemoryInfo ******************/
 		/**** md5 signature: 394a73f4371f143116eaf8ac960ff9af ****/
 		%feature("compactdefaultargs") MemoryInfo;
-		%feature("autodoc", "Returns information about gpu memory usage.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFreeBytes: Standard_Size
 theInfo: str
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns information about gpu memory usage.
 ") MemoryInfo;
 		virtual Standard_Boolean MemoryInfo(Standard_Size & theFreeBytes, TCollection_AsciiString & theInfo);
 
 		/****************** NewIdentification ******************/
 		/**** md5 signature: 2dc1eb68ffc5fa05f6b6a65a989a6f86 ****/
 		%feature("compactdefaultargs") NewIdentification;
-		%feature("autodoc", "Returns a new identification number for a new structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns a new identification number for a new structure.
 ") NewIdentification;
 		Standard_Integer NewIdentification();
 
 		/****************** RemoveIdentification ******************/
 		/**** md5 signature: 6e9ebbb4dfc46f8a838ef1eb899d886e ****/
 		%feature("compactdefaultargs") RemoveIdentification;
-		%feature("autodoc", "Frees the identifier of a structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theId: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Frees the identifier of a structure.
 ") RemoveIdentification;
 		void RemoveIdentification(const Standard_Integer theId);
 
 		/****************** RemoveStructure ******************/
 		/**** md5 signature: 374b074d13ec64b455e2c467ed5728e5 ****/
 		%feature("compactdefaultargs") RemoveStructure;
-		%feature("autodoc", "Removes structure from graphic driver and releases its resources.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCStructure: Graphic3d_CStructure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Removes structure from graphic driver and releases its resources.
 ") RemoveStructure;
 		virtual void RemoveStructure(opencascade::handle<Graphic3d_CStructure> & theCStructure);
 
 		/****************** RemoveView ******************/
 		/**** md5 signature: a2826f043434590367fb0ea3fe65f310 ****/
 		%feature("compactdefaultargs") RemoveView;
-		%feature("autodoc", "Removes view from graphic driver and releases its resources.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theView: Graphic3d_CView
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Removes view from graphic driver and releases its resources.
 ") RemoveView;
 		virtual void RemoveView(const opencascade::handle<Graphic3d_CView> & theView);
 
 		/****************** RemoveZLayer ******************/
 		/**** md5 signature: 50d5f44e4a544e7ce1c8003cf95dee16 ****/
 		%feature("compactdefaultargs") RemoveZLayer;
-		%feature("autodoc", "Removes z layer. all structures displayed at the moment in layer will be displayed in default layer (the bottom-level z layer). by default, there are always default bottom-level layer that can't be removed. the passed thelayerid should be not less than 0 (reserved for default layers that can not be removed).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerId: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Removes z layer. all structures displayed at the moment in layer will be displayed in default layer (the bottom-level z layer). by default, there are always default bottom-level layer that can't be removed. the passed thelayerid should be not less than 0 (reserved for default layers that can not be removed).
 ") RemoveZLayer;
 		virtual void RemoveZLayer(int theLayerId);
 
 		/****************** SetVerticalSync ******************/
 		/**** md5 signature: 12e74570c44c853016ba468efbe54dc5 ****/
 		%feature("compactdefaultargs") SetVerticalSync;
-		%feature("autodoc", "Set if vertical synchronization with display refresh rate (vsync) should be used.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToEnable: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if vertical synchronization with display refresh rate (vsync) should be used.
 ") SetVerticalSync;
 		virtual void SetVerticalSync(bool theToEnable);
 
 		/****************** SetZLayerSettings ******************/
 		/**** md5 signature: 526c66f52cf13826d826173b0d84d35e ****/
 		%feature("compactdefaultargs") SetZLayerSettings;
-		%feature("autodoc", "Sets the settings for a single z layer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerId: int
 theSettings: Graphic3d_ZLayerSettings
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the settings for a single z layer.
 ") SetZLayerSettings;
 		virtual void SetZLayerSettings(int theLayerId, const Graphic3d_ZLayerSettings & theSettings);
 
 		/****************** TextSize ******************/
 		/**** md5 signature: 3929c24ac11029eb0d5ad88ea3a802ba ****/
 		%feature("compactdefaultargs") TextSize;
-		%feature("autodoc", "Computes text width.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theView: Graphic3d_CView
 theText: str
 theHeight: float
 
-Returns
+Return
 -------
 theWidth: float
 theAscent: float
 theDescent: float
+
+Description
+-----------
+Computes text width.
 ") TextSize;
 		virtual void TextSize(const opencascade::handle<Graphic3d_CView> & theView, Standard_CString theText, const Standard_ShortReal theHeight, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** ViewExists ******************/
 		/**** md5 signature: af8cd22ce3ec7eb123e125bb1c41a940 ****/
 		%feature("compactdefaultargs") ViewExists;
-		%feature("autodoc", "Returns view associated with the window if it is exists and is activated. returns standard_true if the view associated to the window exists.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWindow: Aspect_Window
 theView: Graphic3d_CView
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns view associated with the window if it is exists and is activated. returns standard_true if the view associated to the window exists.
 ") ViewExists;
 		virtual Standard_Boolean ViewExists(const opencascade::handle<Aspect_Window> & theWindow, opencascade::handle<Graphic3d_CView> & theView);
 
 		/****************** ZLayerSettings ******************/
 		/**** md5 signature: e38c9e174f323fbe425dc9e1a52d5a50 ****/
 		%feature("compactdefaultargs") ZLayerSettings;
-		%feature("autodoc", "Returns the settings of a single z layer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerId: int
 
-Returns
+Return
 -------
 Graphic3d_ZLayerSettings
+
+Description
+-----------
+Returns the settings of a single z layer.
 ") ZLayerSettings;
 		virtual const Graphic3d_ZLayerSettings & ZLayerSettings(int theLayerId);
 
 		/****************** ZLayers ******************/
 		/**** md5 signature: 2c5d352609ae944ae5b005c305c126b7 ****/
 		%feature("compactdefaultargs") ZLayers;
-		%feature("autodoc", "Returns list of z layers defined for the graphical driver.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerSeq: TColStd_SequenceOfInteger
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns list of z layers defined for the graphical driver.
 ") ZLayers;
 		virtual void ZLayers(TColStd_SequenceOfInteger & theLayerSeq);
 
@@ -9731,80 +11093,94 @@ class Graphic3d_GraphicDriverFactory : public Standard_Transient {
 		/****************** CreateDriver ******************/
 		/**** md5 signature: 51916739a7171cbbc64ee23ff291b6b9 ****/
 		%feature("compactdefaultargs") CreateDriver;
-		%feature("autodoc", "Creates new empty graphic driver.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDisp: Aspect_DisplayConnection
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_GraphicDriver>
+
+Description
+-----------
+Creates new empty graphic driver.
 ") CreateDriver;
 		virtual opencascade::handle<Graphic3d_GraphicDriver> CreateDriver(const opencascade::handle<Aspect_DisplayConnection> & theDisp);
 
 		/****************** DefaultDriverFactory ******************/
 		/**** md5 signature: e914dd4d0cb1a2d6e284026448f6a910 ****/
 		%feature("compactdefaultargs") DefaultDriverFactory;
-		%feature("autodoc", "Return default driver factory or null if no one was registered.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_GraphicDriverFactory>
+
+Description
+-----------
+Return default driver factory or null if no one was registered.
 ") DefaultDriverFactory;
 		static opencascade::handle<Graphic3d_GraphicDriverFactory> DefaultDriverFactory();
 
 		/****************** DriverFactories ******************/
 		/**** md5 signature: f5c793eba0a0cbe749cc4b42ec1ea74e ****/
 		%feature("compactdefaultargs") DriverFactories;
-		%feature("autodoc", "Return the global map of registered driver factories.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_GraphicDriverFactoryList
+
+Description
+-----------
+Return the global map of registered driver factories.
 ") DriverFactories;
 		static const Graphic3d_GraphicDriverFactoryList & DriverFactories();
 
 		/****************** Name ******************/
 		/**** md5 signature: efed61b92683387cd746fb27e0376505 ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Return driver factory name.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Return driver factory name.
 ") Name;
 		const TCollection_AsciiString & Name();
 
 		/****************** RegisterFactory ******************/
 		/**** md5 signature: 881e0cdc731f704ba93123921ea34592 ****/
 		%feature("compactdefaultargs") RegisterFactory;
-		%feature("autodoc", "Registers factory. @param thefactory [in] factory to register @param theispreferred [in] add to the beginning of the list when true, or add to the end otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFactory: Graphic3d_GraphicDriverFactory
-theIsPreferred: bool,optional
-	default value is false
+theIsPreferred: bool (optional, default to false)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Registers factory. @param thefactory [in] factory to register @param theispreferred [in] add to the beginning of the list when true, or add to the end otherwise.
 ") RegisterFactory;
 		static void RegisterFactory(const opencascade::handle<Graphic3d_GraphicDriverFactory> & theFactory, bool theIsPreferred = false);
 
 		/****************** UnregisterFactory ******************/
 		/**** md5 signature: 9fe2bdc1459cba7162127ec6a3412054 ****/
 		%feature("compactdefaultargs") UnregisterFactory;
-		%feature("autodoc", "Unregisters factory.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Unregisters factory.
 ") UnregisterFactory;
 		static void UnregisterFactory(TCollection_AsciiString theName);
 
@@ -9828,103 +11204,117 @@ class Graphic3d_Group : public Standard_Transient {
 		/****************** AddPrimitiveArray ******************/
 		/**** md5 signature: 648b1531454ce3d80607126cfde5e856 ****/
 		%feature("compactdefaultargs") AddPrimitiveArray;
-		%feature("autodoc", "Adds an array of primitives for display.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfPrimitiveArray
 theIndices: Graphic3d_IndexBuffer
 theAttribs: Graphic3d_Buffer
 theBounds: Graphic3d_BoundBuffer
-theToEvalMinMax: bool,optional
-	default value is Standard_True
+theToEvalMinMax: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Adds an array of primitives for display.
 ") AddPrimitiveArray;
 		virtual void AddPrimitiveArray(const Graphic3d_TypeOfPrimitiveArray theType, const opencascade::handle<Graphic3d_IndexBuffer> & theIndices, const opencascade::handle<Graphic3d_Buffer> & theAttribs, const opencascade::handle<Graphic3d_BoundBuffer> & theBounds, const Standard_Boolean theToEvalMinMax = Standard_True);
 
 		/****************** AddPrimitiveArray ******************/
 		/**** md5 signature: 483cbcc8915e618f81f2f6d4fe35c560 ****/
 		%feature("compactdefaultargs") AddPrimitiveArray;
-		%feature("autodoc", "Adds an array of primitives for display.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePrim: Graphic3d_ArrayOfPrimitives
-theToEvalMinMax: bool,optional
-	default value is Standard_True
+theToEvalMinMax: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Adds an array of primitives for display.
 ") AddPrimitiveArray;
 		void AddPrimitiveArray(const opencascade::handle<Graphic3d_ArrayOfPrimitives> & thePrim, const Standard_Boolean theToEvalMinMax = Standard_True);
 
 		/****************** AddText ******************/
 		/**** md5 signature: 19b3326e1331f5e87bbd213aa947b55f ****/
 		%feature("compactdefaultargs") AddText;
-		%feature("autodoc", "Adds a text for display.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTextParams: Graphic3d_Text
-theToEvalMinMax: bool,optional
-	default value is Standard_True
+theToEvalMinMax: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Adds a text for display.
 ") AddText;
 		virtual void AddText(const opencascade::handle<Graphic3d_Text> & theTextParams, const Standard_Boolean theToEvalMinMax = Standard_True);
 
 		/****************** Aspects ******************/
 		/**** md5 signature: 04e82c25c53238d777eaf039de6caaf9 ****/
 		%feature("compactdefaultargs") Aspects;
-		%feature("autodoc", "Return fill area aspect.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_Aspects>
+
+Description
+-----------
+Return fill area aspect.
 ") Aspects;
 		virtual opencascade::handle<Graphic3d_Aspects> Aspects();
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: e41af9b36a07039d2315bd8651dda9c4 ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns boundary box of the group <self> without transformation applied,.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_BndBox4f
+
+Description
+-----------
+Returns boundary box of the group <self> without transformation applied,.
 ") BoundingBox;
 		const Graphic3d_BndBox4f & BoundingBox();
 
 		/****************** ChangeBoundingBox ******************/
 		/**** md5 signature: cc4a360d34add196038ff35d6beec779 ****/
 		%feature("compactdefaultargs") ChangeBoundingBox;
-		%feature("autodoc", "Returns non-const boundary box of the group <self> without transformation applied,.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_BndBox4f
+
+Description
+-----------
+Returns non-const boundary box of the group <self> without transformation applied,.
 ") ChangeBoundingBox;
 		Graphic3d_BndBox4f & ChangeBoundingBox();
 
 		/****************** Clear ******************/
 		/**** md5 signature: 0e2f50fd5440bc5f4814bdd0ad5f3eb9 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Suppress all primitives and attributes of <self>. to clear group without update in graphic3d_structuremanager pass standard_false as <theupdatestructuremgr>. this used on context and viewer destruction, when the pointer to structure manager in graphic3d_structure could be already released (pointers are used here to avoid handle cross-reference);.
-
+		%feature("autodoc", "
 Parameters
 ----------
-theUpdateStructureMgr: bool,optional
-	default value is Standard_True
+theUpdateStructureMgr: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Suppress all primitives and attributes of <self>. to clear group without update in graphic3d_structuremanager pass standard_false as <theupdatestructuremgr>. this used on context and viewer destruction, when the pointer to structure manager in graphic3d_structure could be already released (pointers are used here to avoid handle cross-reference);.
 ") Clear;
 		virtual void Clear(const Standard_Boolean theUpdateStructureMgr = Standard_True);
 
@@ -9940,62 +11330,69 @@ None
 		/****************** IsClosed ******************/
 		/**** md5 signature: 87cef9bebf52c7a89467bdbada7b297e ****/
 		%feature("compactdefaultargs") IsClosed;
-		%feature("autodoc", "Return true if primitive arrays within this graphic group form closed volume (do no contain open shells).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if primitive arrays within this graphic group form closed volume (do no contain open shells).
 ") IsClosed;
 		bool IsClosed();
 
 		/****************** IsDeleted ******************/
 		/**** md5 signature: 6c5c2d96a6fd32f5afc5a8404c4309ad ****/
 		%feature("compactdefaultargs") IsDeleted;
-		%feature("autodoc", "Returns standard_true if the group <self> is deleted. <self> is deleted after the call remove (me) or the associated structure is deleted.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if the group <self> is deleted. <self> is deleted after the call remove (me) or the associated structure is deleted.
 ") IsDeleted;
 		Standard_Boolean IsDeleted();
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "Returns standard_true if the group <self> is empty.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if the group <self> is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
 		/****************** Marker ******************/
 		/**** md5 signature: 05c6752a3af35606f6018312dff052b6 ****/
 		%feature("compactdefaultargs") Marker;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoint: Graphic3d_Vertex
-theToEvalMinMax: bool,optional
-	default value is Standard_True
+theToEvalMinMax: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Marker;
 		void Marker(const Graphic3d_Vertex & thePoint, const Standard_Boolean theToEvalMinMax = Standard_True);
 
 		/****************** MinMaxValues ******************/
 		/**** md5 signature: 3ca31dabd208b1ca1f2662d7711e5336 ****/
 		%feature("compactdefaultargs") MinMaxValues;
-		%feature("autodoc", "Returns the coordinates of the boundary box of the group.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theXMin: float
 theYMin: float
@@ -10003,71 +11400,85 @@ theZMin: float
 theXMax: float
 theYMax: float
 theZMax: float
+
+Description
+-----------
+Returns the coordinates of the boundary box of the group.
 ") MinMaxValues;
 		void MinMaxValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Remove ******************/
 		/**** md5 signature: 0346504d7ac570fc8960fb72d5ad5f20 ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "Suppress the group <self> in the structure. warning: no more graphic operations in <self> after this call. modifies the current modelling transform persistence (pan, zoom or rotate) get the current modelling transform persistence (pan, zoom or rotate).
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Suppress the group <self> in the structure. warning: no more graphic operations in <self> after this call. modifies the current modelling transform persistence (pan, zoom or rotate) get the current modelling transform persistence (pan, zoom or rotate).
 ") Remove;
 		void Remove();
 
 		/****************** ReplaceAspects ******************/
 		/**** md5 signature: f7cf00115e0ec4403854bdfa90338928 ****/
 		%feature("compactdefaultargs") ReplaceAspects;
-		%feature("autodoc", "Replace aspects specified in the replacement map.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMap: Graphic3d_MapOfAspectsToAspects
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Replace aspects specified in the replacement map.
 ") ReplaceAspects;
 		virtual void ReplaceAspects(const Graphic3d_MapOfAspectsToAspects & theMap);
 
 		/****************** SetClosed ******************/
 		/**** md5 signature: 1b75d364558b57c72138f423e78d6873 ****/
 		%feature("compactdefaultargs") SetClosed;
-		%feature("autodoc", "Changes property shown that primitive arrays within this group form closed volume (do no contain open shells).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsClosed: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes property shown that primitive arrays within this group form closed volume (do no contain open shells).
 ") SetClosed;
 		void SetClosed(const bool theIsClosed);
 
 		/****************** SetFlippingOptions ******************/
 		/**** md5 signature: 1c9508224229b51123afcc9bf23d24b8 ****/
 		%feature("compactdefaultargs") SetFlippingOptions;
-		%feature("autodoc", "Sets the flipping to theisenabled state.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsEnabled: bool
 theRefPlane: gp_Ax2
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the flipping to theisenabled state.
 ") SetFlippingOptions;
 		virtual void SetFlippingOptions(const Standard_Boolean theIsEnabled, const gp_Ax2 & theRefPlane);
 
 		/****************** SetMinMaxValues ******************/
 		/**** md5 signature: 8f1b3603bf0ea239a49c1aaa9521120e ****/
 		%feature("compactdefaultargs") SetMinMaxValues;
-		%feature("autodoc", "Sets the coordinates of the boundary box of the group.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theXMin: float
@@ -10077,84 +11488,100 @@ theXMax: float
 theYMax: float
 theZMax: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the coordinates of the boundary box of the group.
 ") SetMinMaxValues;
 		void SetMinMaxValues(const Standard_Real theXMin, const Standard_Real theYMin, const Standard_Real theZMin, const Standard_Real theXMax, const Standard_Real theYMax, const Standard_Real theZMax);
 
 		/****************** SetPrimitivesAspect ******************/
 		/**** md5 signature: 3da7a768fd766aa68016939deaeb98d8 ****/
 		%feature("compactdefaultargs") SetPrimitivesAspect;
-		%feature("autodoc", "Modifies the current context of the group to give another aspect for all the primitives created after this call in the group.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAspect: Graphic3d_Aspects
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the current context of the group to give another aspect for all the primitives created after this call in the group.
 ") SetPrimitivesAspect;
 		virtual void SetPrimitivesAspect(const opencascade::handle<Graphic3d_Aspects> & theAspect);
 
 		/****************** SetStencilTestOptions ******************/
 		/**** md5 signature: 6457feb9f8a1394b8d573403c194ddb8 ****/
 		%feature("compactdefaultargs") SetStencilTestOptions;
-		%feature("autodoc", "Sets the stencil test to theisenabled state;.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsEnabled: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the stencil test to theisenabled state;.
 ") SetStencilTestOptions;
 		virtual void SetStencilTestOptions(const Standard_Boolean theIsEnabled);
 
 		/****************** SetTransformPersistence ******************/
 		/**** md5 signature: 9823ebeffde5eb16b0c205a862e3b2c2 ****/
 		%feature("compactdefaultargs") SetTransformPersistence;
-		%feature("autodoc", "Set transformation persistence.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTrsfPers: Graphic3d_TransformPers
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set transformation persistence.
 ") SetTransformPersistence;
 		virtual void SetTransformPersistence(const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
 		/****************** Structure ******************/
 		/**** md5 signature: 81c8bb8d3594116a073834f280567560 ****/
 		%feature("compactdefaultargs") Structure;
-		%feature("autodoc", "Returns the structure containing the group <self>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_Structure>
+
+Description
+-----------
+Returns the structure containing the group <self>.
 ") Structure;
 		opencascade::handle<Graphic3d_Structure> Structure();
 
 		/****************** SynchronizeAspects ******************/
 		/**** md5 signature: bdb913d6b6228a4dc1b27616e05ced5a ****/
 		%feature("compactdefaultargs") SynchronizeAspects;
-		%feature("autodoc", "Update presentation aspects after their modification.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Update presentation aspects after their modification.
 ") SynchronizeAspects;
 		virtual void SynchronizeAspects();
 
 		/****************** Text ******************/
 		/**** md5 signature: 5bc384ee5866377b1906b786bf720d9f ****/
 		%feature("compactdefaultargs") Text;
-		%feature("autodoc", "Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight : height of text. (relative to the normalized projection coordinates (npc) space). aangle : orientation of the text (with respect to the horizontal).
-
+		%feature("autodoc", "
 Parameters
 ----------
 AText: str
@@ -10164,39 +11591,43 @@ AAngle: float
 ATp: Graphic3d_TextPath
 AHta: Graphic3d_HorizontalTextAlignment
 AVta: Graphic3d_VerticalTextAlignment
-EvalMinMax: bool,optional
-	default value is Standard_True
+EvalMinMax: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight: height of text. (relative to the normalized projection coordinates (npc) space). aangle: orientation of the text (with respect to the horizontal).
 ") Text;
 		virtual void Text(Standard_CString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Real AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
 
 		/****************** Text ******************/
 		/**** md5 signature: be90bceed3d1f9ecfe73fb5d7eec2212 ****/
 		%feature("compactdefaultargs") Text;
-		%feature("autodoc", "Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight : height of text. (relative to the normalized projection coordinates (npc) space). the other attributes have the following default values: aangle : pi / 2. atp : tp_right ahta : hta_left avta : vta_bottom.
-
+		%feature("autodoc", "
 Parameters
 ----------
 AText: str
 APoint: Graphic3d_Vertex
 AHeight: float
-EvalMinMax: bool,optional
-	default value is Standard_True
+EvalMinMax: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight: height of text. (relative to the normalized projection coordinates (npc) space). the other attributes have the following default values: aangle: pi / 2. atp: tp_right ahta: hta_left avta: vta_bottom.
 ") Text;
 		void Text(Standard_CString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
 
 		/****************** Text ******************/
 		/**** md5 signature: 167eaea4dace1c338b0f703a2ac8d6fe ****/
 		%feature("compactdefaultargs") Text;
-		%feature("autodoc", "Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight : height of text. (relative to the normalized projection coordinates (npc) space). aangle : orientation of the text (with respect to the horizontal).
-
+		%feature("autodoc", "
 Parameters
 ----------
 AText: str
@@ -10206,39 +11637,43 @@ AAngle: float
 ATp: Graphic3d_TextPath
 AHta: Graphic3d_HorizontalTextAlignment
 AVta: Graphic3d_VerticalTextAlignment
-EvalMinMax: bool,optional
-	default value is Standard_True
+EvalMinMax: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight: height of text. (relative to the normalized projection coordinates (npc) space). aangle: orientation of the text (with respect to the horizontal).
 ") Text;
 		void Text(TCollection_ExtendedString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Real AAngle, const Graphic3d_TextPath ATp, const Graphic3d_HorizontalTextAlignment AHta, const Graphic3d_VerticalTextAlignment AVta, const Standard_Boolean EvalMinMax = Standard_True);
 
 		/****************** Text ******************/
 		/**** md5 signature: f0783ae39f19a1a065467da9245f7532 ****/
 		%feature("compactdefaultargs") Text;
-		%feature("autodoc", "Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight : height of text. (relative to the normalized projection coordinates (npc) space). the other attributes have the following default values: aangle : pi / 2. atp : tp_right ahta : hta_left avta : vta_bottom.
-
+		%feature("autodoc", "
 Parameters
 ----------
 AText: str
 APoint: Graphic3d_Vertex
 AHeight: float
-EvalMinMax: bool,optional
-	default value is Standard_True
+EvalMinMax: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates the string <atext> at position <apoint>. the 3d point of attachment is projected. the text is written in the plane of projection. the attributes are given with respect to the plane of projection. aheight: height of text. (relative to the normalized projection coordinates (npc) space). the other attributes have the following default values: aangle: pi / 2. atp: tp_right ahta: hta_left avta: vta_bottom.
 ") Text;
 		void Text(TCollection_ExtendedString AText, const Graphic3d_Vertex & APoint, const Standard_Real AHeight, const Standard_Boolean EvalMinMax = Standard_True);
 
 		/****************** Text ******************/
 		/**** md5 signature: 812712c97896a87a2f25f26ff37669e8 ****/
 		%feature("compactdefaultargs") Text;
-		%feature("autodoc", "Creates the string <thetext> at orientation <theorientation> in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTextUtf: str
@@ -10248,22 +11683,23 @@ theAngle: float
 theTp: Graphic3d_TextPath
 theHTA: Graphic3d_HorizontalTextAlignment
 theVTA: Graphic3d_VerticalTextAlignment
-theToEvalMinMax: bool,optional
-	default value is Standard_True
-theHasOwnAnchor: bool,optional
-	default value is Standard_True
+theToEvalMinMax: bool (optional, default to Standard_True)
+theHasOwnAnchor: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates the string <thetext> at orientation <theorientation> in 3d space.
 ") Text;
 		virtual void Text(Standard_CString theTextUtf, const gp_Ax2 & theOrientation, const Standard_Real theHeight, const Standard_Real theAngle, const Graphic3d_TextPath theTp, const Graphic3d_HorizontalTextAlignment theHTA, const Graphic3d_VerticalTextAlignment theVTA, const Standard_Boolean theToEvalMinMax = Standard_True, const Standard_Boolean theHasOwnAnchor = Standard_True);
 
 		/****************** Text ******************/
 		/**** md5 signature: 25f0d7834c7faf3babb07e3c6cec385f ****/
 		%feature("compactdefaultargs") Text;
-		%feature("autodoc", "Creates the string <thetext> at orientation <theorientation> in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theText: str
@@ -10273,25 +11709,29 @@ theAngle: float
 theTp: Graphic3d_TextPath
 theHTA: Graphic3d_HorizontalTextAlignment
 theVTA: Graphic3d_VerticalTextAlignment
-theToEvalMinMax: bool,optional
-	default value is Standard_True
-theHasOwnAnchor: bool,optional
-	default value is Standard_True
+theToEvalMinMax: bool (optional, default to Standard_True)
+theHasOwnAnchor: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates the string <thetext> at orientation <theorientation> in 3d space.
 ") Text;
 		virtual void Text(TCollection_ExtendedString theText, const gp_Ax2 & theOrientation, const Standard_Real theHeight, const Standard_Real theAngle, const Graphic3d_TextPath theTp, const Graphic3d_HorizontalTextAlignment theHTA, const Graphic3d_VerticalTextAlignment theVTA, const Standard_Boolean theToEvalMinMax = Standard_True, const Standard_Boolean theHasOwnAnchor = Standard_True);
 
 		/****************** TransformPersistence ******************/
 		/**** md5 signature: f93fa6b8590ec0070c74ed0573b98382 ****/
 		%feature("compactdefaultargs") TransformPersistence;
-		%feature("autodoc", "Return transformation persistence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_TransformPers>
+
+Description
+-----------
+Return transformation persistence.
 ") TransformPersistence;
 		const opencascade::handle<Graphic3d_TransformPers> & TransformPersistence();
 
@@ -10318,30 +11758,36 @@ class Graphic3d_HatchStyle : public Standard_Transient {
 		/****************** Graphic3d_HatchStyle ******************/
 		/**** md5 signature: fcfca120b17f6cffb59f0865a47ae202 ****/
 		%feature("compactdefaultargs") Graphic3d_HatchStyle;
-		%feature("autodoc", "Creates a new custom hatch style with the given pattern and unique style id @warning raises a program error if given pattern image is not a valid 32*32 bitmap.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePattern: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a new custom hatch style with the given pattern and unique style id @warning raises a program error if given pattern image is not a valid 32*32 bitmap.
 ") Graphic3d_HatchStyle;
 		 Graphic3d_HatchStyle(const opencascade::handle<Image_PixMap> & thePattern);
 
 		/****************** Graphic3d_HatchStyle ******************/
 		/**** md5 signature: dc1a1adbb2417ab3893a3b23a73a2d32 ****/
 		%feature("compactdefaultargs") Graphic3d_HatchStyle;
-		%feature("autodoc", "Creates a new predefined hatch style with the given id in aspect_hatchstyle enum. gpu memory for the pattern will not be allocated.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Aspect_HatchStyle
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a new predefined hatch style with the given id in aspect_hatchstyle enum. gpu memory for the pattern will not be allocated.
 ") Graphic3d_HatchStyle;
 		 Graphic3d_HatchStyle(const Aspect_HatchStyle theType);
 
@@ -10357,22 +11803,26 @@ None
 		/****************** HatchType ******************/
 		/**** md5 signature: 2c6a35919cbda160bae1aceb31a8d63f ****/
 		%feature("compactdefaultargs") HatchType;
-		%feature("autodoc", "In case if predefined occt style is used, returns index in aspect_hatchstyle enumeration. if the style is custom, returns unique index of the style.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+In case if predefined occt style is used, returns index in aspect_hatchstyle enumeration. if the style is custom, returns unique index of the style.
 ") HatchType;
 		Standard_Integer HatchType();
 
 		/****************** Pattern ******************/
 		/**** md5 signature: e0a5d2b4bbfd105d9cae001a4ba77d8b ****/
 		%feature("compactdefaultargs") Pattern;
-		%feature("autodoc", "Returns the pattern of custom hatch style.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Byte *
+
+Description
+-----------
+Returns the pattern of custom hatch style.
 ") Pattern;
 		const Standard_Byte * Pattern();
 
@@ -10396,52 +11846,58 @@ class Graphic3d_Layer : public Standard_Transient {
 		/****************** Add ******************/
 		/**** md5 signature: feed5b038d881a49c0e3926c15ce7a1f ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStruct: Graphic3d_CStructure *
 thePriority: Graphic3d_DisplayPriority
-isForChangePriority: bool,optional
-	default value is Standard_False
+isForChangePriority: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Add;
 		void Add(const Graphic3d_CStructure * theStruct, Graphic3d_DisplayPriority thePriority, Standard_Boolean isForChangePriority = Standard_False);
 
 		/****************** Append ******************/
 		/**** md5 signature: f0f4bee4c0b9813775925533dc644b0f ****/
 		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "Append layer of acceptable type (with similar number of priorities or less). returns standard_false if the list can not be accepted.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_Layer
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Append layer of acceptable type (with similar number of priorities or less). returns standard_false if the list can not be accepted.
 ") Append;
 		Standard_Boolean Append(const Graphic3d_Layer & theOther);
 
 		/****************** ArrayOfStructures ******************/
 		/**** md5 signature: ef8aba76a7ca6f293f49290963a7477e ****/
 		%feature("compactdefaultargs") ArrayOfStructures;
-		%feature("autodoc", "Returns array of structures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_ArrayOfIndexedMapOfStructure
+
+Description
+-----------
+Returns array of structures.
 ") ArrayOfStructures;
 		const Graphic3d_ArrayOfIndexedMapOfStructure & ArrayOfStructures();
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 03e858a364fe586794f1c216400cfe53 ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns layer bounding box. @param theviewid view index to consider view affinity in structure @param thecamera camera definition @param thewindowwidth viewport width (for applying transformation-persistence) @param thewindowheight viewport height (for applying transformation-persistence) @param thetoincludeauxiliary consider also auxiliary presentations (with infinite flag or with trihedron transformation persistence) returns computed bounding box.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theViewId: int
@@ -10450,31 +11906,39 @@ theWindowWidth: int
 theWindowHeight: int
 theToIncludeAuxiliary: bool
 
-Returns
+Return
 -------
 Bnd_Box
+
+Description
+-----------
+Returns layer bounding box. @param theviewid view index to consider view affinity in structure @param thecamera camera definition @param thewindowwidth viewport width (for applying transformation-persistence) @param thewindowheight viewport height (for applying transformation-persistence) @param thetoincludeauxiliary consider also auxiliary presentations (with infinite flag or with trihedron transformation persistence) return computed bounding box.
 ") BoundingBox;
 		Bnd_Box BoundingBox(Standard_Integer theViewId, const opencascade::handle<Graphic3d_Camera> & theCamera, Standard_Integer theWindowWidth, Standard_Integer theWindowHeight, Standard_Boolean theToIncludeAuxiliary);
 
 		/****************** CullableStructuresBVH ******************/
 		/**** md5 signature: 60ec6c782e60ccf43b3cc5b479341c0e ****/
 		%feature("compactdefaultargs") CullableStructuresBVH;
-		%feature("autodoc", "Returns set of graphic3d_cstructures structures for building bvh tree.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_BvhCStructureSet
+
+Description
+-----------
+Returns set of graphic3d_cstructures structures for building bvh tree.
 ") CullableStructuresBVH;
 		const Graphic3d_BvhCStructureSet & CullableStructuresBVH();
 
 		/****************** CullableTrsfPersStructuresBVH ******************/
 		/**** md5 signature: 5e076cad1e27fea5cee8db2320d707c1 ****/
 		%feature("compactdefaultargs") CullableTrsfPersStructuresBVH;
-		%feature("autodoc", "Returns set of transform persistent graphic3d_cstructures for building bvh tree.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_BvhCStructureSetTrsfPers
+
+Description
+-----------
+Returns set of transform persistent graphic3d_cstructures for building bvh tree.
 ") CullableTrsfPersStructuresBVH;
 		const Graphic3d_BvhCStructureSetTrsfPers & CullableTrsfPersStructuresBVH();
 
@@ -10490,193 +11954,225 @@ Graphic3d_BvhCStructureSetTrsfPers
 		/****************** InvalidateBVHData ******************/
 		/**** md5 signature: 2fc22393f4d4ca2ae42c7f6212a1152a ****/
 		%feature("compactdefaultargs") InvalidateBVHData;
-		%feature("autodoc", "Marks bvh tree for given priority list as dirty and marks primitive set for rebuild.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Marks bvh tree for given priority list as dirty and marks primitive set for rebuild.
 ") InvalidateBVHData;
 		void InvalidateBVHData();
 
 		/****************** InvalidateBoundingBox ******************/
 		/**** md5 signature: 134d1ff4127e86b51d809ffbbe1c1cd3 ****/
 		%feature("compactdefaultargs") InvalidateBoundingBox;
-		%feature("autodoc", "Marks cached bounding box as obsolete.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Marks cached bounding box as obsolete.
 ") InvalidateBoundingBox;
 		void InvalidateBoundingBox();
 
 		/****************** IsCulled ******************/
 		/**** md5 signature: a84f045efd889fe7503c666a795c890b ****/
 		%feature("compactdefaultargs") IsCulled;
-		%feature("autodoc", "Returns true if layer is empty or has been discarded entirely by culling test.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if layer is empty or has been discarded entirely by culling test.
 ") IsCulled;
 		bool IsCulled();
 
 		/****************** IsImmediate ******************/
 		/**** md5 signature: 61db5a8037272eb61c5a3a4e001931f7 ****/
 		%feature("compactdefaultargs") IsImmediate;
-		%feature("autodoc", "Return true if layer was marked with immediate flag.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if layer was marked with immediate flag.
 ") IsImmediate;
 		Standard_Boolean IsImmediate();
 
 		/****************** LayerId ******************/
 		/**** md5 signature: 4f3c96277ad1ad37bbea41df7a98d1f6 ****/
 		%feature("compactdefaultargs") LayerId;
-		%feature("autodoc", "Return layer id.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_ZLayerId
+
+Description
+-----------
+Return layer id.
 ") LayerId;
 		Graphic3d_ZLayerId LayerId();
 
 		/****************** LayerSettings ******************/
 		/**** md5 signature: 77eff82582831e6aef7199e37c0feb22 ****/
 		%feature("compactdefaultargs") LayerSettings;
-		%feature("autodoc", "Returns settings of the layer object.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_ZLayerSettings
+
+Description
+-----------
+Returns settings of the layer object.
 ") LayerSettings;
 		const Graphic3d_ZLayerSettings & LayerSettings();
 
 		/****************** NbOfTransformPersistenceObjects ******************/
 		/**** md5 signature: 5f5d969ec7ca74366f93764250c7f0c8 ****/
 		%feature("compactdefaultargs") NbOfTransformPersistenceObjects;
-		%feature("autodoc", "Returns number of transform persistence objects.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of transform persistence objects.
 ") NbOfTransformPersistenceObjects;
 		Standard_Integer NbOfTransformPersistenceObjects();
 
 		/****************** NbPriorities ******************/
 		/**** md5 signature: 1a2f502bbb62a4131f9ef6c23352ef0a ****/
 		%feature("compactdefaultargs") NbPriorities;
-		%feature("autodoc", "Returns the number of available priority levels.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of available priority levels.
 ") NbPriorities;
 		Standard_Integer NbPriorities();
 
 		/****************** NbStructures ******************/
 		/**** md5 signature: d259ac5fb8c75b2b5950645466f32a00 ****/
 		%feature("compactdefaultargs") NbStructures;
-		%feature("autodoc", "Returns the number of structures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return the number of structures.
 ") NbStructures;
 		Standard_Integer NbStructures();
 
 		/****************** NbStructuresNotCulled ******************/
 		/**** md5 signature: 024c9852203b0ea0e8743d7cb97679ce ****/
 		%feature("compactdefaultargs") NbStructuresNotCulled;
-		%feature("autodoc", "Number of not culled structures in the layer.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Number of not culled structures in the layer.
 ") NbStructuresNotCulled;
 		Standard_Integer NbStructuresNotCulled();
 
 		/****************** NonCullableStructures ******************/
 		/**** md5 signature: 38e7d008dfded361055484ef1e53d42e ****/
 		%feature("compactdefaultargs") NonCullableStructures;
-		%feature("autodoc", "Returns indexed map of always rendered structures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_IndexedMap< Graphic3d_CStructure *>
+
+Description
+-----------
+Returns indexed map of always rendered structures.
 ") NonCullableStructures;
 		const NCollection_IndexedMap<const Graphic3d_CStructure *> & NonCullableStructures();
 
 		/****************** Remove ******************/
 		/**** md5 signature: f3eb2ac6b6511df0e3dec81686ca7861 ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "Remove structure and returns its priority, if the structure is not found, method returns negative value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStruct: Graphic3d_CStructure *
-isForChangePriority: bool,optional
-	default value is Standard_False
+isForChangePriority: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 thePriority: Graphic3d_DisplayPriority
+
+Description
+-----------
+Remove structure and returns its priority, if the structure is not found, method returns negative value.
 ") Remove;
 		bool Remove(const Graphic3d_CStructure * theStruct, Graphic3d_DisplayPriority &OutValue, Standard_Boolean isForChangePriority = Standard_False);
 
 		/****************** SetLayerSettings ******************/
 		/**** md5 signature: 6813e1662f9cf34807e9b6113ac4bcc6 ****/
 		%feature("compactdefaultargs") SetLayerSettings;
-		%feature("autodoc", "Sets settings of the layer object.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSettings: Graphic3d_ZLayerSettings
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets settings of the layer object.
 ") SetLayerSettings;
 		void SetLayerSettings(const Graphic3d_ZLayerSettings & theSettings);
 
 		/****************** Structures ******************/
 		/**** md5 signature: e3166735d417528b34f96d1e86e7e6cb ****/
 		%feature("compactdefaultargs") Structures;
-		%feature("autodoc", "Returns structures for specified priority.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePriority: Graphic3d_DisplayPriority
 
-Returns
+Return
 -------
 Graphic3d_IndexedMapOfStructure
+
+Description
+-----------
+Returns structures for specified priority.
 ") Structures;
 		const Graphic3d_IndexedMapOfStructure & Structures(Graphic3d_DisplayPriority thePriority);
 
 		/****************** UpdateCulling ******************/
 		/**** md5 signature: 0c055279e50b63637445857e0a3e6256 ****/
 		%feature("compactdefaultargs") UpdateCulling;
-		%feature("autodoc", "Update culling state - should be called before rendering. traverses through bvh tree to determine which structures are in view volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theViewId: int
 theSelector: Graphic3d_CullingTool
 theFrustumCullingState: Graphic3d_RenderingParams::FrustumCulling
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Update culling state - should be called before rendering. traverses through bvh tree to determine which structures are in view volume.
 ") UpdateCulling;
 		void UpdateCulling(Standard_Integer theViewId, const Graphic3d_CullingTool & theSelector, const Graphic3d_RenderingParams::FrustumCulling theFrustumCullingState);
 
 		/****************** considerZoomPersistenceObjects ******************/
 		/**** md5 signature: 1823e6b21bd9f11b0ca765b9a0f8c4aa ****/
 		%feature("compactdefaultargs") considerZoomPersistenceObjects;
-		%feature("autodoc", "Returns zoom-scale factor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theViewId: int
@@ -10684,9 +12180,13 @@ theCamera: Graphic3d_Camera
 theWindowWidth: int
 theWindowHeight: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns zoom-scale factor.
 ") considerZoomPersistenceObjects;
 		Standard_Real considerZoomPersistenceObjects(Standard_Integer theViewId, const opencascade::handle<Graphic3d_Camera> & theCamera, Standard_Integer theWindowWidth, Standard_Integer theWindowHeight);
 
@@ -10753,222 +12253,264 @@ IterationFilter_ActiveShadowCasters = IterationFilter.IterationFilter_ActiveShad
 		/****************** Graphic3d_LightSet ******************/
 		/**** md5 signature: f1fa4a2d1fa9fa24f50a84f14f029c24 ****/
 		%feature("compactdefaultargs") Graphic3d_LightSet;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_LightSet;
 		 Graphic3d_LightSet();
 
 		/****************** Add ******************/
 		/**** md5 signature: b5ceec7821158030561464f163d50030 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Append new light source.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLight: Graphic3d_CLight
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Append new light source.
 ") Add;
 		Standard_Boolean Add(const opencascade::handle<Graphic3d_CLight> & theLight);
 
 		/****************** AmbientColor ******************/
 		/**** md5 signature: 193bc0979d168e33958f599a7678d64b ****/
 		%feature("compactdefaultargs") AmbientColor;
-		%feature("autodoc", "Returns cumulative ambient color, which is computed as sum of all enabled ambient light sources. values are not clamped (can be greater than 1.0f) and alpha component is fixed to 1.0f. @sa updaterevision().
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec4
+
+Description
+-----------
+Returns cumulative ambient color, which is computed as sum of all enabled ambient light sources. values are not clamped (can be greater than 1.0f) and alpha component is fixed to 1.0f. @sa updaterevision().
 ") AmbientColor;
 		const Graphic3d_Vec4 & AmbientColor();
 
 		/****************** Contains ******************/
 		/**** md5 signature: 2c7d8831be7d7b5ada9f3a8004c0e508 ****/
 		%feature("compactdefaultargs") Contains;
-		%feature("autodoc", "Return true if light source is defined in this set.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLight: Graphic3d_CLight
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Return true if light source is defined in this set.
 ") Contains;
 		Standard_Boolean Contains(const opencascade::handle<Graphic3d_CLight> & theLight);
 
 		/****************** Extent ******************/
 		/**** md5 signature: 19453f219e568f9c5109a0fd06459e95 ****/
 		%feature("compactdefaultargs") Extent;
-		%feature("autodoc", "Return number of light sources.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return number of light sources.
 ") Extent;
 		Standard_Integer Extent();
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "Return true if lights list is empty.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if lights list is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
 		/****************** KeyEnabledLong ******************/
 		/**** md5 signature: daad6128aa16c8c7ca6093b32c70f88e ****/
 		%feature("compactdefaultargs") KeyEnabledLong;
-		%feature("autodoc", "Returns a string defining a list of enabled light sources as concatenation of letters 'd' (directional), 'p' (point), 's' (spot) depending on the type of light source in the list. example: 'dppp'. @sa updaterevision().
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns a string defining a list of enabled light sources as concatenation of letters 'd' (directional), 'p' (point), 's' (spot) depending on the type of light source in the list. example: 'dppp'. @sa updaterevision().
 ") KeyEnabledLong;
 		const TCollection_AsciiString & KeyEnabledLong();
 
 		/****************** KeyEnabledShort ******************/
 		/**** md5 signature: 60cb0cca9e6d8d2f31105c94dbfdcfda ****/
 		%feature("compactdefaultargs") KeyEnabledShort;
-		%feature("autodoc", "Returns a string defining a list of enabled light sources as concatenation of letters 'd' (directional), 'p' (point), 's' (spot) depending on the type of light source in the list, specified only once. example: 'dp'. @sa updaterevision().
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns a string defining a list of enabled light sources as concatenation of letters 'd' (directional), 'p' (point), 's' (spot) depending on the type of light source in the list, specified only once. example: 'dp'. @sa updaterevision().
 ") KeyEnabledShort;
 		const TCollection_AsciiString & KeyEnabledShort();
 
 		/****************** Lower ******************/
 		/**** md5 signature: a2a9f1c3c17fa0f26434aadaabeff45a ****/
 		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "Return lower light index.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return lower light index.
 ") Lower;
 		Standard_Integer Lower();
 
 		/****************** NbCastShadows ******************/
 		/**** md5 signature: 8268c951e42727175fd4493925bcb7be ****/
 		%feature("compactdefaultargs") NbCastShadows;
-		%feature("autodoc", "Returns total amount of enabled lights castings shadows. @sa updaterevision().
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns total amount of enabled lights castings shadows. @sa updaterevision().
 ") NbCastShadows;
 		Standard_Integer NbCastShadows();
 
 		/****************** NbEnabled ******************/
 		/**** md5 signature: 310cabcdfa0ca3f2a531d50ff77c4b75 ****/
 		%feature("compactdefaultargs") NbEnabled;
-		%feature("autodoc", "Returns total amount of enabled lights excluding ambient. @sa updaterevision().
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns total amount of enabled lights excluding ambient. @sa updaterevision().
 ") NbEnabled;
 		Standard_Integer NbEnabled();
 
 		/****************** NbEnabledLightsOfType ******************/
 		/**** md5 signature: bf3a9c28dac03b65b9452e6cae08692c ****/
 		%feature("compactdefaultargs") NbEnabledLightsOfType;
-		%feature("autodoc", "Returns total amount of enabled lights of specified type. @sa updaterevision().
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfLightSource
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns total amount of enabled lights of specified type. @sa updaterevision().
 ") NbEnabledLightsOfType;
 		Standard_Integer NbEnabledLightsOfType(Graphic3d_TypeOfLightSource theType);
 
 		/****************** NbLightsOfType ******************/
 		/**** md5 signature: aee4b2ae85df781b874d194cab94c96a ****/
 		%feature("compactdefaultargs") NbLightsOfType;
-		%feature("autodoc", "Returns total amount of lights of specified type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfLightSource
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Returns total amount of lights of specified type.
 ") NbLightsOfType;
 		Standard_Integer NbLightsOfType(Graphic3d_TypeOfLightSource theType);
 
 		/****************** Remove ******************/
 		/**** md5 signature: 40d0453244ce8c060ba3373b165a7b1d ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "Remove light source.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLight: Graphic3d_CLight
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Remove light source.
 ") Remove;
 		Standard_Boolean Remove(const opencascade::handle<Graphic3d_CLight> & theLight);
 
 		/****************** Revision ******************/
 		/**** md5 signature: dfd4fb672d125a081a8b5a357ac81453 ****/
 		%feature("compactdefaultargs") Revision;
-		%feature("autodoc", "Return light sources revision. @sa updaterevision().
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Size
+
+Description
+-----------
+Return light sources revision. @sa updaterevision().
 ") Revision;
 		Standard_Size Revision();
 
 		/****************** UpdateRevision ******************/
 		/**** md5 signature: 82265ef0f028adc05e9e39a5dab4e5db ****/
 		%feature("compactdefaultargs") UpdateRevision;
-		%feature("autodoc", "Update light sources revision.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Size
+
+Description
+-----------
+Update light sources revision.
 ") UpdateRevision;
 		Standard_Size UpdateRevision();
 
 		/****************** Upper ******************/
 		/**** md5 signature: 621f04fab59b49711e54299100973c4e ****/
 		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "Return upper light index.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return upper light index.
 ") Upper;
 		Standard_Integer Upper();
 
 		/****************** Value ******************/
 		/**** md5 signature: 0b6f47ab82b955df69f2afd3dc3abf2e ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Return the light source for specified index within range [lower(), upper()].
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_CLight>
+
+Description
+-----------
+Return the light source for specified index within range [lower(), upper()].
 ") Value;
 		const opencascade::handle<Graphic3d_CLight> & Value(Standard_Integer theIndex);
 
@@ -10991,139 +12533,161 @@ class Graphic3d_MarkerImage : public Standard_Transient {
 		/****************** Graphic3d_MarkerImage ******************/
 		/**** md5 signature: d3ac2496cb00be3c17e763f95b6979e4 ****/
 		%feature("compactdefaultargs") Graphic3d_MarkerImage;
-		%feature("autodoc", "Constructor from existing pixmap. @param theimage [in] source image @param theimagealpha [in] colorless image.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theImage: Image_PixMap
-theImageAlpha: Image_PixMap,optional
-	default value is opencascade::handle<Image_PixMap>()
+theImageAlpha: Image_PixMap (optional, default to opencascade::handle<Image_PixMap>())
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructor from existing pixmap. @param theimage [in] source image @param theimagealpha [in] colorless image.
 ") Graphic3d_MarkerImage;
 		 Graphic3d_MarkerImage(const opencascade::handle<Image_PixMap> & theImage, const opencascade::handle<Image_PixMap> & theImageAlpha = opencascade::handle<Image_PixMap>());
 
 		/****************** Graphic3d_MarkerImage ******************/
 		/**** md5 signature: a6caa361147ec336c585b84756fa4363 ****/
 		%feature("compactdefaultargs") Graphic3d_MarkerImage;
-		%feature("autodoc", "Creates marker image from array of bytes (method for compatibility with old markers definition). @param thebitmap [in] source bitmap stored as array of bytes @param thewidth [in] number of bits in a row @param theheight [in] number of bits in a column.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBitMap: TColStd_HArray1OfByte
 theWidth: int
 theHeight: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates marker image from array of bytes (method for compatibility with old markers definition). @param thebitmap [in] source bitmap stored as array of bytes @param thewidth [in] number of bits in a row @param theheight [in] number of bits in a column.
 ") Graphic3d_MarkerImage;
 		 Graphic3d_MarkerImage(const opencascade::handle<TColStd_HArray1OfByte> & theBitMap, const Standard_Integer theWidth, const Standard_Integer theHeight);
 
 		/****************** GetBitMapArray ******************/
 		/**** md5 signature: 3e4ff0526892338bba5648eae6b30846 ****/
 		%feature("compactdefaultargs") GetBitMapArray;
-		%feature("autodoc", "Return marker image as array of bytes. if an instance of the class has been initialized with image, it will be converted to bitmap based on the parameter thealphavalue. @param thealphavalue pixels in the image that have alpha value greater than  or equal to this parameter will be stored in bitmap as '1',  others will be stored as '0' @param theistopdown [in] flag indicating expected rows order in returned bitmap, which is bottom-up by default.
-
+		%feature("autodoc", "
 Parameters
 ----------
-theAlphaValue: float,optional
-	default value is 0.5
-theIsTopDown: bool,optional
-	default value is false
+theAlphaValue: float (optional, default to 0.5)
+theIsTopDown: bool (optional, default to false)
 
-Returns
+Return
 -------
 opencascade::handle<TColStd_HArray1OfByte>
+
+Description
+-----------
+Return marker image as array of bytes. if an instance of the class has been initialized with image, it will be converted to bitmap based on the parameter thealphavalue. @param thealphavalue pixels in the image that have alpha value greater than  or equal to this parameter will be stored in bitmap as '1',  others will be stored as '0' @param theistopdown [in] flag indicating expected rows order in returned bitmap, which is bottom-up by default.
 ") GetBitMapArray;
 		opencascade::handle<TColStd_HArray1OfByte> GetBitMapArray(const Standard_Real theAlphaValue = 0.5, const Standard_Boolean theIsTopDown = false);
 
 		/****************** GetImage ******************/
 		/**** md5 signature: 7c5ebfa0efa07e00e52abb3fc0528025 ****/
 		%feature("compactdefaultargs") GetImage;
-		%feature("autodoc", "Return marker image. if an instance of the class has been initialized with a bitmap, it will be converted to image.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Image_PixMap>
+
+Description
+-----------
+Return marker image. if an instance of the class has been initialized with a bitmap, it will be converted to image.
 ") GetImage;
 		const opencascade::handle<Image_PixMap> & GetImage();
 
 		/****************** GetImageAlpha ******************/
 		/**** md5 signature: b0e6060aafe710fcaa00bf6675fccfe4 ****/
 		%feature("compactdefaultargs") GetImageAlpha;
-		%feature("autodoc", "Return image alpha as grayscale image. note that if an instance of the class has been initialized with a bitmap or with grayscale image this method will return exactly the same image as getimage().
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Image_PixMap>
+
+Description
+-----------
+Return image alpha as grayscale image. note that if an instance of the class has been initialized with a bitmap or with grayscale image this method will return exactly the same image as getimage().
 ") GetImageAlpha;
 		const opencascade::handle<Image_PixMap> & GetImageAlpha();
 
 		/****************** GetImageAlphaId ******************/
 		/**** md5 signature: 7b5ae989b5c104ce2610c4c118e2ae01 ****/
 		%feature("compactdefaultargs") GetImageAlphaId;
-		%feature("autodoc", "Return an unique id. this id will be used to manage resource in graphic driver.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Return an unique id. this id will be used to manage resource in graphic driver.
 ") GetImageAlphaId;
 		const TCollection_AsciiString & GetImageAlphaId();
 
 		/****************** GetImageId ******************/
 		/**** md5 signature: 602256488e6c98131d81feb766841aac ****/
 		%feature("compactdefaultargs") GetImageId;
-		%feature("autodoc", "Return an unique id. this id will be used to manage resource in graphic driver.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Return an unique id. this id will be used to manage resource in graphic driver.
 ") GetImageId;
 		const TCollection_AsciiString & GetImageId();
 
 		/****************** GetTextureSize ******************/
 		/**** md5 signature: 613d235550caf2f8304bcaae6f035920 ****/
 		%feature("compactdefaultargs") GetTextureSize;
-		%feature("autodoc", "Return texture size.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theWidth: int
 theHeight: int
+
+Description
+-----------
+Return texture size.
 ") GetTextureSize;
 		void GetTextureSize(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** IsColoredImage ******************/
 		/**** md5 signature: 6d8b2537eda1816475d431cea851a65c ****/
 		%feature("compactdefaultargs") IsColoredImage;
-		%feature("autodoc", "Return true if marker image has colors (e.g. rgba and not grayscale).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if marker image has colors (e.g. rgba and not grayscale).
 ") IsColoredImage;
 		bool IsColoredImage();
 
 		/****************** StandardMarker ******************/
 		/**** md5 signature: e6c015746d2bfa03543fbc162a052699 ****/
 		%feature("compactdefaultargs") StandardMarker;
-		%feature("autodoc", "Returns a marker image for the marker of the specified type, scale and color.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMarkerType: Aspect_TypeOfMarker
 theScale: float
 theColor: Graphic3d_Vec4
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_MarkerImage>
+
+Description
+-----------
+Returns a marker image for the marker of the specified type, scale and color.
 ") StandardMarker;
 		static opencascade::handle<Graphic3d_MarkerImage> StandardMarker(const Aspect_TypeOfMarker theMarkerType, const Standard_ShortReal theScale, const Graphic3d_Vec4 & theColor);
 
@@ -11146,81 +12710,96 @@ class Graphic3d_MaterialAspect {
 		/****************** Graphic3d_MaterialAspect ******************/
 		/**** md5 signature: f65a0596643873ad9942f8a59f366520 ****/
 		%feature("compactdefaultargs") Graphic3d_MaterialAspect;
-		%feature("autodoc", "Creates a material from default values.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a material from default values.
 ") Graphic3d_MaterialAspect;
 		 Graphic3d_MaterialAspect();
 
 		/****************** Graphic3d_MaterialAspect ******************/
 		/**** md5 signature: b21c8dcad98059d7147f4fa75b4a1d23 ****/
 		%feature("compactdefaultargs") Graphic3d_MaterialAspect;
-		%feature("autodoc", "Creates a generic material.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: Graphic3d_NameOfMaterial
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a generic material.
 ") Graphic3d_MaterialAspect;
 		 Graphic3d_MaterialAspect(const Graphic3d_NameOfMaterial theName);
 
 		/****************** Alpha ******************/
 		/**** md5 signature: 7ca16a70b060b6cea195b679eee9d6a0 ****/
 		%feature("compactdefaultargs") Alpha;
-		%feature("autodoc", "Returns the alpha coefficient of the surface (1.0 - transparency); 1.0 means opaque.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the alpha coefficient of the surface (1.0 - transparency); 1.0 means opaque.
 ") Alpha;
 		Standard_ShortReal Alpha();
 
 		/****************** AmbientColor ******************/
 		/**** md5 signature: e4a244c2e5729c893bef272554a0e36f ****/
 		%feature("compactdefaultargs") AmbientColor;
-		%feature("autodoc", "Returns the ambient color of the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Returns the ambient color of the surface.
 ") AmbientColor;
 		const Quantity_Color & AmbientColor();
 
 		/****************** BSDF ******************/
 		/**** md5 signature: 0e4f43101c28e33adbb6ee92a6718d50 ****/
 		%feature("compactdefaultargs") BSDF;
-		%feature("autodoc", "Returns bsdf (bidirectional scattering distribution function).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_BSDF
+
+Description
+-----------
+Returns bsdf (bidirectional scattering distribution function).
 ") BSDF;
 		const Graphic3d_BSDF & BSDF();
 
 		/****************** Color ******************/
 		/**** md5 signature: 7cec116411eb20e52d1fabf3015346da ****/
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "Returns the diffuse color of the surface. warning! this method does not return color for graphic3d_material_aspect material (color is defined by graphic3d_aspects::interiorcolor()).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Returns the diffuse color of the surface. warning! this method does not return color for graphic3d_material_aspect material (color is defined by graphic3d_aspects::interiorcolor()).
 ") Color;
 		const Quantity_Color & Color();
 
 		/****************** DiffuseColor ******************/
 		/**** md5 signature: 446509545f5afda1c3e3353ec03d6c00 ****/
 		%feature("compactdefaultargs") DiffuseColor;
-		%feature("autodoc", "Returns the diffuse color of the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Returns the diffuse color of the surface.
 ") DiffuseColor;
 		const Quantity_Color & DiffuseColor();
 
@@ -11236,488 +12815,583 @@ Quantity_Color
 		/****************** EmissiveColor ******************/
 		/**** md5 signature: 8e2c00d43bcbb308aeca1ba33f04a139 ****/
 		%feature("compactdefaultargs") EmissiveColor;
-		%feature("autodoc", "Returns the emissive color of the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Returns the emissive color of the surface.
 ") EmissiveColor;
 		const Quantity_Color & EmissiveColor();
 
 		/****************** IncreaseShine ******************/
 		/**** md5 signature: 27025ec6ea9d020eb18bb3c5506ed91d ****/
 		%feature("compactdefaultargs") IncreaseShine;
-		%feature("autodoc", "Increases or decreases the luminosity. @param thedelta a signed percentage.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDelta: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Increases or decreases the luminosity. @param thedelta a signed percentage.
 ") IncreaseShine;
 		void IncreaseShine(const Standard_ShortReal theDelta);
 
 		/****************** IsDifferent ******************/
 		/**** md5 signature: 0b6b071c1cbbb7bdf97e4a6899992d11 ****/
 		%feature("compactdefaultargs") IsDifferent;
-		%feature("autodoc", "Returns true if this material differs from specified one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_MaterialAspect
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns true if this material differs from specified one.
 ") IsDifferent;
 		Standard_Boolean IsDifferent(const Graphic3d_MaterialAspect & theOther);
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 07e8862cc8ec437b30e22992934a7ba6 ****/
 		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "Returns true if this material is identical to specified one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_MaterialAspect
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns true if this material is identical to specified one.
 ") IsEqual;
 		Standard_Boolean IsEqual(const Graphic3d_MaterialAspect & theOther);
 
 		/****************** MaterialFromName ******************/
 		/**** md5 signature: 09fb9c26447367905c9ef4e50ddb0939 ****/
 		%feature("compactdefaultargs") MaterialFromName;
-		%feature("autodoc", "Finds the material for specified name. @param thename [in] name to find @param themat [out] found material returns false if name was unrecognized.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 
-Returns
+Return
 -------
 theMat: Graphic3d_NameOfMaterial
+
+Description
+-----------
+Finds the material for specified name. @param thename [in] name to find @param themat [out] found material return false if name was unrecognized.
 ") MaterialFromName;
 		static Standard_Boolean MaterialFromName(Standard_CString theName, Graphic3d_NameOfMaterial &OutValue);
 
 		/****************** MaterialFromName ******************/
 		/**** md5 signature: 5208b8b1000547cce2f00804c81986c6 ****/
 		%feature("compactdefaultargs") MaterialFromName;
-		%feature("autodoc", "Returns the material for specified name or graphic3d_nameofmaterial_default if name is unknown.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 
-Returns
+Return
 -------
 Graphic3d_NameOfMaterial
+
+Description
+-----------
+Returns the material for specified name or graphic3d_nameofmaterial_default if name is unknown.
 ") MaterialFromName;
 		static Graphic3d_NameOfMaterial MaterialFromName(Standard_CString theName);
 
 		/****************** MaterialName ******************/
 		/**** md5 signature: d372647674cf61e514d12db5cd3f1b18 ****/
 		%feature("compactdefaultargs") MaterialName;
-		%feature("autodoc", "Returns the name of the predefined material of specified rank within range [1, numberofmaterials()].
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 str
+
+Description
+-----------
+Returns the name of the predefined material of specified rank within range [1, numberofmaterials()].
 ") MaterialName;
 		static Standard_CString MaterialName(const Standard_Integer theRank);
 
 		/****************** MaterialName ******************/
 		/**** md5 signature: 6e198d14926374db627e08901b3098c0 ****/
 		%feature("compactdefaultargs") MaterialName;
-		%feature("autodoc", "Returns the given name of this material. this might be:.
-
-Returns
+		%feature("autodoc", "Return
 -------
 str
+
+Description
+-----------
+Returns the given name of this material. this might be:.
 ") MaterialName;
 		Standard_CString MaterialName();
 
 		/****************** MaterialType ******************/
 		/**** md5 signature: 062008507cb52b85e69ad9189fb25451 ****/
 		%feature("compactdefaultargs") MaterialType;
-		%feature("autodoc", "Returns the type of the predefined material of specified rank within range [1, numberofmaterials()].
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 Graphic3d_TypeOfMaterial
+
+Description
+-----------
+Returns the type of the predefined material of specified rank within range [1, numberofmaterials()].
 ") MaterialType;
 		static Graphic3d_TypeOfMaterial MaterialType(const Standard_Integer theRank);
 
 		/****************** MaterialType ******************/
 		/**** md5 signature: a535fdabfcb61ac6089ae7ac4e67bd14 ****/
 		%feature("compactdefaultargs") MaterialType;
-		%feature("autodoc", "Returns material type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfMaterial
+
+Description
+-----------
+Returns material type.
 ") MaterialType;
 		Graphic3d_TypeOfMaterial MaterialType();
 
 		/****************** MaterialType ******************/
 		/**** md5 signature: c1acda1c132bb60cbfdfd61bf961071e ****/
 		%feature("compactdefaultargs") MaterialType;
-		%feature("autodoc", "Returns true if type of this material is equal to specified type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfMaterial
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns true if type of this material is equal to specified type.
 ") MaterialType;
 		Standard_Boolean MaterialType(const Graphic3d_TypeOfMaterial theType);
 
 		/****************** Name ******************/
 		/**** md5 signature: 7b95abe48c4d39c49b4f0fb25727b291 ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Returns the material name (within predefined enumeration).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_NameOfMaterial
+
+Description
+-----------
+Returns the material name (within predefined enumeration).
 ") Name;
 		Graphic3d_NameOfMaterial Name();
 
 		/****************** NumberOfMaterials ******************/
 		/**** md5 signature: 4c1f8a5993d3fd603dfbf69a0b908768 ****/
 		%feature("compactdefaultargs") NumberOfMaterials;
-		%feature("autodoc", "Returns the number of predefined textures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of predefined textures.
 ") NumberOfMaterials;
 		static Standard_Integer NumberOfMaterials();
 
 		/****************** PBRMaterial ******************/
 		/**** md5 signature: 11b0baa2ee2b4c812546a5f61cfead63 ****/
 		%feature("compactdefaultargs") PBRMaterial;
-		%feature("autodoc", "Returns physically based representation of material.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_PBRMaterial
+
+Description
+-----------
+Returns physically based representation of material.
 ") PBRMaterial;
 		const Graphic3d_PBRMaterial & PBRMaterial();
 
 		/****************** ReflectionMode ******************/
 		/**** md5 signature: d37a0fd919e6ea813d6e18de89c04bce ****/
 		%feature("compactdefaultargs") ReflectionMode;
-		%feature("autodoc", "Returns true if the reflection mode is active, false otherwise.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfReflection
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns true if the reflection mode is active, false otherwise.
 ") ReflectionMode;
 		Standard_Boolean ReflectionMode(const Graphic3d_TypeOfReflection theType);
 
 		/****************** RefractionIndex ******************/
 		/**** md5 signature: 37e26b8eeb89ee70e535356ff72df1b3 ****/
 		%feature("compactdefaultargs") RefractionIndex;
-		%feature("autodoc", "Returns the refraction index of the material.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the refraction index of the material.
 ") RefractionIndex;
 		Standard_ShortReal RefractionIndex();
 
 		/****************** RequestedName ******************/
 		/**** md5 signature: fe6f9143f405caf35794a3ef6fa8ed54 ****/
 		%feature("compactdefaultargs") RequestedName;
-		%feature("autodoc", "Returns the material name within predefined enumeration which has been requested (before modifications).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_NameOfMaterial
+
+Description
+-----------
+Returns the material name within predefined enumeration which has been requested (before modifications).
 ") RequestedName;
 		Graphic3d_NameOfMaterial RequestedName();
 
 		/****************** Reset ******************/
 		/**** md5 signature: e3081050d274769a1cd4a93969da94c6 ****/
 		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "Resets the material with the original values according to the material name but leave the current color values untouched for the material of type aspect.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Resets the material with the original values according to the material name but leave the current color values untouched for the material of type aspect.
 ") Reset;
 		void Reset();
 
 		/****************** SetAlpha ******************/
 		/**** md5 signature: b1ec2a54a74fcdd6f5f79e6e88318f2a ****/
 		%feature("compactdefaultargs") SetAlpha;
-		%feature("autodoc", "Modifies the alpha coefficient of the surface, where 1.0 is opaque and 0.0 is fully transparent.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the alpha coefficient of the surface, where 1.0 is opaque and 0.0 is fully transparent.
 ") SetAlpha;
 		void SetAlpha(Standard_ShortReal theValue);
 
 		/****************** SetAmbientColor ******************/
 		/**** md5 signature: d846703cfa0eddd0c6b6bbd51fe20b71 ****/
 		%feature("compactdefaultargs") SetAmbientColor;
-		%feature("autodoc", "Modifies the ambient color of the surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the ambient color of the surface.
 ") SetAmbientColor;
 		void SetAmbientColor(const Quantity_Color & theColor);
 
 		/****************** SetBSDF ******************/
 		/**** md5 signature: 97077de057f37bb47c74045c23a1223f ****/
 		%feature("compactdefaultargs") SetBSDF;
-		%feature("autodoc", "Modifies the bsdf (bidirectional scattering distribution function).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBSDF: Graphic3d_BSDF
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the bsdf (bidirectional scattering distribution function).
 ") SetBSDF;
 		void SetBSDF(const Graphic3d_BSDF & theBSDF);
 
 		/****************** SetColor ******************/
 		/**** md5 signature: 4493bec663df9e92c429e56b9c76a307 ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Modifies the ambient and diffuse color of the surface. warning! has no effect for graphic3d_material_aspect material (color should be set to graphic3d_aspects::setinteriorcolor()).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the ambient and diffuse color of the surface. warning! has no effect for graphic3d_material_aspect material (color should be set to graphic3d_aspects::setinteriorcolor()).
 ") SetColor;
 		void SetColor(const Quantity_Color & theColor);
 
 		/****************** SetDiffuseColor ******************/
 		/**** md5 signature: 21aac63ac919b9eb2a7eca4f09279c40 ****/
 		%feature("compactdefaultargs") SetDiffuseColor;
-		%feature("autodoc", "Modifies the diffuse color of the surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the diffuse color of the surface.
 ") SetDiffuseColor;
 		void SetDiffuseColor(const Quantity_Color & theColor);
 
 		/****************** SetEmissiveColor ******************/
 		/**** md5 signature: 9415dcf0db51ccae64f7c1ae8c719400 ****/
 		%feature("compactdefaultargs") SetEmissiveColor;
-		%feature("autodoc", "Modifies the emissive color of the surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the emissive color of the surface.
 ") SetEmissiveColor;
 		void SetEmissiveColor(const Quantity_Color & theColor);
 
 		/****************** SetMaterialName ******************/
 		/**** md5 signature: e0eaa3dfb67d9662b0405487353b4154 ****/
 		%feature("compactdefaultargs") SetMaterialName;
-		%feature("autodoc", "The current material become a 'userdefined' material. set the name of the 'userdefined' material.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+The current material become a 'userdefined' material. set the name of the 'userdefined' material.
 ") SetMaterialName;
 		void SetMaterialName(TCollection_AsciiString theName);
 
 		/****************** SetMaterialType ******************/
 		/**** md5 signature: ab421f4a4a9e8596a2d576bdcb2e892a ****/
 		%feature("compactdefaultargs") SetMaterialType;
-		%feature("autodoc", "Set material type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfMaterial
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set material type.
 ") SetMaterialType;
 		void SetMaterialType(const Graphic3d_TypeOfMaterial theType);
 
 		/****************** SetPBRMaterial ******************/
 		/**** md5 signature: 57a79c1118f3c400f690d5b27f4be2e1 ****/
 		%feature("compactdefaultargs") SetPBRMaterial;
-		%feature("autodoc", "Modifies the physically based representation of material.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePBRMaterial: Graphic3d_PBRMaterial
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the physically based representation of material.
 ") SetPBRMaterial;
 		void SetPBRMaterial(const Graphic3d_PBRMaterial & thePBRMaterial);
 
 		/****************** SetReflectionModeOff ******************/
 		/**** md5 signature: 54ab6b720121b4b30907a4a5ec49da13 ****/
 		%feature("compactdefaultargs") SetReflectionModeOff;
-		%feature("autodoc", "Deactivates the reflective properties of the surface with specified reflection type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfReflection
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Deactivates the reflective properties of the surface with specified reflection type.
 ") SetReflectionModeOff;
 		void SetReflectionModeOff(const Graphic3d_TypeOfReflection theType);
 
 		/****************** SetRefractionIndex ******************/
 		/**** md5 signature: 4800c76294be3402148efd2a431e791d ****/
 		%feature("compactdefaultargs") SetRefractionIndex;
-		%feature("autodoc", "Modifies the refraction index of the material. warning: raises materialdefinitionerror if given value is a lesser than 1.0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the refraction index of the material. warning: raises materialdefinitionerror if given value is a lesser than 1.0.
 ") SetRefractionIndex;
 		void SetRefractionIndex(const Standard_ShortReal theValue);
 
 		/****************** SetShininess ******************/
 		/**** md5 signature: a3f2f285335feddcd80b0c2107b986f6 ****/
 		%feature("compactdefaultargs") SetShininess;
-		%feature("autodoc", "Modifies the luminosity of the surface. warning: raises materialdefinitionerror if given value is a negative value or greater than 1.0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the luminosity of the surface. warning: raises materialdefinitionerror if given value is a negative value or greater than 1.0.
 ") SetShininess;
 		void SetShininess(const Standard_ShortReal theValue);
 
 		/****************** SetSpecularColor ******************/
 		/**** md5 signature: 64f6579cc62bba02bc4da29b4557b091 ****/
 		%feature("compactdefaultargs") SetSpecularColor;
-		%feature("autodoc", "Modifies the specular color of the surface.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the specular color of the surface.
 ") SetSpecularColor;
 		void SetSpecularColor(const Quantity_Color & theColor);
 
 		/****************** SetTransparency ******************/
 		/**** md5 signature: ae35c1320747f9ea1028feec38480fd1 ****/
 		%feature("compactdefaultargs") SetTransparency;
-		%feature("autodoc", "Modifies the transparency coefficient of the surface, where 0 is opaque and 1 is fully transparent. transparency is applicable to materials that have at least one of reflection modes (ambient, diffuse, specular or emissive) enabled. see also setreflectionmodeon() and setreflectionmodeoff() methods. //! warning: raises materialdefinitionerror if given value is a negative value or greater than 1.0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the transparency coefficient of the surface, where 0 is opaque and 1 is fully transparent. transparency is applicable to materials that have at least one of reflection modes (ambient, diffuse, specular or emissive) enabled. see also setreflectionmodeon() and setreflectionmodeoff() methods. //! warning: raises materialdefinitionerror if given value is a negative value or greater than 1.0.
 ") SetTransparency;
 		void SetTransparency(const Standard_ShortReal theValue);
 
 		/****************** Shininess ******************/
 		/**** md5 signature: a4bf27bb1bd7bef573404edb592e65f3 ****/
 		%feature("compactdefaultargs") Shininess;
-		%feature("autodoc", "Returns the luminosity of the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the luminosity of the surface.
 ") Shininess;
 		Standard_ShortReal Shininess();
 
 		/****************** SpecularColor ******************/
 		/**** md5 signature: 8248d955c130699f6669657101e22663 ****/
 		%feature("compactdefaultargs") SpecularColor;
-		%feature("autodoc", "Returns the specular color of the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Returns the specular color of the surface.
 ") SpecularColor;
 		const Quantity_Color & SpecularColor();
 
 		/****************** StringName ******************/
 		/**** md5 signature: 8107033bd84a45ab4a9514a887a7886e ****/
 		%feature("compactdefaultargs") StringName;
-		%feature("autodoc", "Returns the given name of this material. this might be: - given name set by method ::setmaterialname() - standard name for a material within enumeration - 'userdefined' for non-standard material without name specified externally.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns the given name of this material. this might be: - given name set by method ::setmaterialname() - standard name for a material within enumeration - 'userdefined' for non-standard material without name specified externally.
 ") StringName;
 		const TCollection_AsciiString & StringName();
 
 		/****************** Transparency ******************/
 		/**** md5 signature: aaef40cf92b2687b1ecee77a6c9e4eed ****/
 		%feature("compactdefaultargs") Transparency;
-		%feature("autodoc", "Returns the transparency coefficient of the surface (1.0 - alpha); 0.0 means opaque.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the transparency coefficient of the surface (1.0 - alpha); 0.0 means opaque.
 ") Transparency;
 		Standard_ShortReal Transparency();
 
@@ -11766,48 +13440,57 @@ class Graphic3d_PBRMaterial {
 		/****************** Graphic3d_PBRMaterial ******************/
 		/**** md5 signature: 64dd925225d772eec2f56a6ac286f833 ****/
 		%feature("compactdefaultargs") Graphic3d_PBRMaterial;
-		%feature("autodoc", "Creates new physically based material in metallic-roughness system. 'metallic' parameter is 0 by default. 'roughness' parameter is 1 by default. 'color' parameter is (0, 0, 0) by default. 'alpha' parameter is 1 by default. 'ior' parameter is 1.5 by default. 'emission' parameter is (0, 0, 0) by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates new physically based material in metallic-roughness system. 'metallic' parameter is 0 by default. 'roughness' parameter is 1 by default. 'color' parameter is (0, 0, 0) by default. 'alpha' parameter is 1 by default. 'ior' parameter is 1.5 by default. 'emission' parameter is (0, 0, 0) by default.
 ") Graphic3d_PBRMaterial;
 		 Graphic3d_PBRMaterial();
 
 		/****************** Graphic3d_PBRMaterial ******************/
 		/**** md5 signature: 188dd61673e5afc8f39b43e588caae9a ****/
 		%feature("compactdefaultargs") Graphic3d_PBRMaterial;
-		%feature("autodoc", "Creates new physically based material in metallic-roughness system from graphic3d_bsdf.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBSDF: Graphic3d_BSDF
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates new physically based material in metallic-roughness system from graphic3d_bsdf.
 ") Graphic3d_PBRMaterial;
 		 Graphic3d_PBRMaterial(const Graphic3d_BSDF & theBSDF);
 
 		/****************** Alpha ******************/
 		/**** md5 signature: 7ca16a70b060b6cea195b679eee9d6a0 ****/
 		%feature("compactdefaultargs") Alpha;
-		%feature("autodoc", "Returns alpha component in range [0, 1].
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns alpha component in range [0, 1].
 ") Alpha;
 		Standard_ShortReal Alpha();
 
 		/****************** Color ******************/
 		/**** md5 signature: 3dcb129093b0c22e4d1f5785248243fd ****/
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "Returns albedo color with alpha component of material.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_ColorRGBA
+
+Description
+-----------
+Returns albedo color with alpha component of material.
 ") Color;
 		const Quantity_ColorRGBA & Color();
 
@@ -11823,265 +13506,315 @@ Quantity_ColorRGBA
 		/****************** Emission ******************/
 		/**** md5 signature: c655a085501e39074cbb93ac5e382e46 ****/
 		%feature("compactdefaultargs") Emission;
-		%feature("autodoc", "Returns light intensity emitted by material. values are greater or equal 0.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec3
+
+Description
+-----------
+Returns light intensity emitted by material. values are greater or equal 0.
 ") Emission;
 		Graphic3d_Vec3 Emission();
 
 		/****************** GenerateEnvLUT ******************/
 		/**** md5 signature: ab6e4772a25884134f897d33a68ddf4d ****/
 		%feature("compactdefaultargs") GenerateEnvLUT;
-		%feature("autodoc", "Generates 2d look up table of scale and bias for fresnell zero coefficient. it is needed for calculation reflectance part of environment lighting. @param [out] thelut table storage (must be image_format_rgf). @param [in] thenbintegralsamples number of importance samples in hemisphere integral calculation for every table item.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLUT: Image_PixMap
-theNbIntegralSamples: unsigned int,optional
-	default value is 1024
+theNbIntegralSamples: unsigned int (optional, default to 1024)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Generates 2d look up table of scale and bias for fresnell zero coefficient. it is needed for calculation reflectance part of environment lighting. @param [out] thelut table storage (must be image_format_rgf). @param [in] thenbintegralsamples number of importance samples in hemisphere integral calculation for every table item.
 ") GenerateEnvLUT;
 		static void GenerateEnvLUT(const opencascade::handle<Image_PixMap> & theLUT, unsigned int theNbIntegralSamples = 1024);
 
 		/****************** IOR ******************/
 		/**** md5 signature: b1465ee4bbbb7a8f7c299b2a56eb15a8 ****/
 		%feature("compactdefaultargs") IOR;
-		%feature("autodoc", "Returns index of refraction in [1, 3] range.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns index of refraction in [1, 3] range.
 ") IOR;
 		Standard_ShortReal IOR();
 
 		/****************** Metallic ******************/
 		/**** md5 signature: 8bd7c53e22cc2a2b21e5c0434e48276c ****/
 		%feature("compactdefaultargs") Metallic;
-		%feature("autodoc", "Returns material's metallic coefficient in [0, 1] range. 1 for metals and 0 for dielectrics. it is preferable to be exactly 0 or 1. average values are needed for textures mixing in shader.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns material's metallic coefficient in [0, 1] range. 1 for metals and 0 for dielectrics. it is preferable to be exactly 0 or 1. average values are needed for textures mixing in shader.
 ") Metallic;
 		Standard_ShortReal Metallic();
 
 		/****************** MetallicFromSpecular ******************/
 		/**** md5 signature: 27c53cec8c0dd276c5b248f63ca14fcf ****/
 		%feature("compactdefaultargs") MetallicFromSpecular;
-		%feature("autodoc", "Compute material metallicity from common material (specular color). @param thespecular [in] specular color returns metallicity within [0..1] range.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSpecular: Quantity_Color
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Compute material metallicity from common material (specular color). @param thespecular [in] specular color return metallicity within [0..1] range.
 ") MetallicFromSpecular;
 		static Standard_ShortReal MetallicFromSpecular(const Quantity_Color & theSpecular);
 
 		/****************** MinRoughness ******************/
 		/**** md5 signature: 0e84424a47d8034aac6ef0b7a62f783c ****/
 		%feature("compactdefaultargs") MinRoughness;
-		%feature("autodoc", "Roughness cannot be 0 in real calculations, so it returns minimal achievable level of roughness in practice.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Roughness cannot be 0 in real calculations, so it returns minimal achievable level of roughness in practice.
 ") MinRoughness;
 		static Standard_ShortReal MinRoughness();
 
 		/****************** NormalizedRoughness ******************/
 		/**** md5 signature: 3529cdcbc7456fdc310d9a6041054ab9 ****/
 		%feature("compactdefaultargs") NormalizedRoughness;
-		%feature("autodoc", "Returns roughness mapping parameter in [0, 1] range. roughness is defined in [0, 1] for handful material settings and is mapped to [minroughness, 1] for calculations.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns roughness mapping parameter in [0, 1] range. roughness is defined in [0, 1] for handful material settings and is mapped to [minroughness, 1] for calculations.
 ") NormalizedRoughness;
 		Standard_ShortReal NormalizedRoughness();
 
 		/****************** Roughness ******************/
 		/**** md5 signature: 2ca3e4780591f2dbc25fa2386701ec84 ****/
 		%feature("compactdefaultargs") Roughness;
-		%feature("autodoc", "Maps roughness from [0, 1] to [minroughness, 1] for calculations.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNormalizedRoughness: float
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Maps roughness from [0, 1] to [minroughness, 1] for calculations.
 ") Roughness;
 		static Standard_ShortReal Roughness(Standard_ShortReal theNormalizedRoughness);
 
 		/****************** Roughness ******************/
 		/**** md5 signature: 784711f951bd833d4004d37f7c42b07a ****/
 		%feature("compactdefaultargs") Roughness;
-		%feature("autodoc", "Returns real value of roughness in [minroughness, 1] range for calculations.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns real value of roughness in [minroughness, 1] range for calculations.
 ") Roughness;
 		Standard_ShortReal Roughness();
 
 		/****************** RoughnessFromSpecular ******************/
 		/**** md5 signature: 44dd1364b75d91323ee031503ffee6c6 ****/
 		%feature("compactdefaultargs") RoughnessFromSpecular;
-		%feature("autodoc", "Compute material roughness from common material (specular color + shininess). @param thespecular [in] specular color @param theshiness [in] normalized shininess coefficient within [0..1] range returns roughness within [0..1] range.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSpecular: Quantity_Color
 theShiness: float
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Compute material roughness from common material (specular color + shininess). @param thespecular [in] specular color @param theshiness [in] normalized shininess coefficient within [0..1] range return roughness within [0..1] range.
 ") RoughnessFromSpecular;
 		static Standard_ShortReal RoughnessFromSpecular(const Quantity_Color & theSpecular, const Standard_Real theShiness);
 
 		/****************** SetAlpha ******************/
 		/**** md5 signature: a1e0c52de92b74ec7f421e8de558fe97 ****/
 		%feature("compactdefaultargs") SetAlpha;
-		%feature("autodoc", "Modifies alpha component.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAlpha: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies alpha component.
 ") SetAlpha;
 		void SetAlpha(Standard_ShortReal theAlpha);
 
 		/****************** SetBSDF ******************/
 		/**** md5 signature: 02fb8f9f231182513d89209ed4badf55 ****/
 		%feature("compactdefaultargs") SetBSDF;
-		%feature("autodoc", "Generates material in metallic-roughness system from graphic3d_bsdf.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBSDF: Graphic3d_BSDF
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Generates material in metallic-roughness system from graphic3d_bsdf.
 ") SetBSDF;
 		void SetBSDF(const Graphic3d_BSDF & theBSDF);
 
 		/****************** SetColor ******************/
 		/**** md5 signature: f154347034a6e0870fb5d6aa0e2b3b0a ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Modifies albedo color with alpha component.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_ColorRGBA
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies albedo color with alpha component.
 ") SetColor;
 		void SetColor(const Quantity_ColorRGBA & theColor);
 
 		/****************** SetColor ******************/
 		/**** md5 signature: 4493bec663df9e92c429e56b9c76a307 ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Modifies only albedo color.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies only albedo color.
 ") SetColor;
 		void SetColor(const Quantity_Color & theColor);
 
 		/****************** SetEmission ******************/
 		/**** md5 signature: b3f27095cc29e2ca02b2d2951dae7dae ****/
 		%feature("compactdefaultargs") SetEmission;
-		%feature("autodoc", "Modifies light intensity emitted by material.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEmission: Graphic3d_Vec3
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies light intensity emitted by material.
 ") SetEmission;
 		void SetEmission(const Graphic3d_Vec3 & theEmission);
 
 		/****************** SetIOR ******************/
 		/**** md5 signature: 92ef3fe5506ccc215535935078b10610 ****/
 		%feature("compactdefaultargs") SetIOR;
-		%feature("autodoc", "Modifies index of refraction in [1, 3] range. in practice affects only on non-metal materials reflection possibilities.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIOR: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies index of refraction in [1, 3] range. in practice affects only on non-metal materials reflection possibilities.
 ") SetIOR;
 		void SetIOR(Standard_ShortReal theIOR);
 
 		/****************** SetMetallic ******************/
 		/**** md5 signature: 03795224bca5abdc5266bfae0a7b19a5 ****/
 		%feature("compactdefaultargs") SetMetallic;
-		%feature("autodoc", "Modifies metallic coefficient of material in [0, 1] range.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMetallic: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies metallic coefficient of material in [0, 1] range.
 ") SetMetallic;
 		void SetMetallic(Standard_ShortReal theMetallic);
 
 		/****************** SetRoughness ******************/
 		/**** md5 signature: 4539668633a96800f657dae5b809af24 ****/
 		%feature("compactdefaultargs") SetRoughness;
-		%feature("autodoc", "Modifies roughness coefficient of material in [0, 1] range.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRoughness: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies roughness coefficient of material in [0, 1] range.
 ") SetRoughness;
 		void SetRoughness(Standard_ShortReal theRoughness);
 
 		/****************** SpecIBLMapSamplesFactor ******************/
 		/**** md5 signature: 412f2effabf45708ae22fed0ba2dff54 ****/
 		%feature("compactdefaultargs") SpecIBLMapSamplesFactor;
-		%feature("autodoc", "Shows how much times less samples can be used in certain roughness value specular ibl map generation in compare with samples number for map with roughness of 1. specular ibl maps with less roughness values have higher resolution but require less samples for the same quality of baking. so that reducing samples number is good strategy to improve performance of baking. the samples number for specular ibl map with roughness of 1 (the maximum possible samples number) is expected to be defined as baking parameter. samples number for other roughness values can be calculated by multiplication origin samples number by this factor. @param theprobability value from 0 to 1 controlling strength of samples reducing. bigger values result in slower reduction to provide better quality but worse performance. value of 1 doesn't affect at all so that 1 will be returned (it can be used to disable reduction strategy). @param theroughness roughness value of current generated specular ibl map (from 0 to 1). returns factor to calculate number of samples for current specular ibl map baking. be aware! it has no obligation to return 1 in case of roughness of 1. be aware! it produces poor quality with small number of origin samples. in that case it is recommended to be disabled.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProbability: float
 theRoughness: float
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Shows how much times less samples can be used in certain roughness value specular ibl map generation in compare with samples number for map with roughness of 1. specular ibl maps with less roughness values have higher resolution but require less samples for the same quality of baking. so that reducing samples number is good strategy to improve performance of baking. the samples number for specular ibl map with roughness of 1 (the maximum possible samples number) is expected to be defined as baking parameter. samples number for other roughness values can be calculated by multiplication origin samples number by this factor. @param theprobability value from 0 to 1 controlling strength of samples reducing. bigger values result in slower reduction to provide better quality but worse performance. value of 1 doesn't affect at all so that 1 will be returned (it can be used to disable reduction strategy). @param theroughness roughness value of current generated specular ibl map (from 0 to 1). return factor to calculate number of samples for current specular ibl map baking. be aware! it has no obligation to return 1 in case of roughness of 1. be aware! it produces poor quality with small number of origin samples. in that case it is recommended to be disabled.
 ") SpecIBLMapSamplesFactor;
 		static Standard_ShortReal SpecIBLMapSamplesFactor(Standard_ShortReal theProbability, Standard_ShortReal theRoughness);
 
@@ -12119,11 +13852,13 @@ class Graphic3d_PolygonOffset {
 		/****************** Graphic3d_PolygonOffset ******************/
 		/**** md5 signature: d32d266ad893dbdf6f93b0afae8a9bb9 ****/
 		%feature("compactdefaultargs") Graphic3d_PolygonOffset;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_PolygonOffset;
 		 Graphic3d_PolygonOffset();
 
@@ -12167,55 +13902,65 @@ class Graphic3d_PresentationAttributes : public Standard_Transient {
 		/****************** Graphic3d_PresentationAttributes ******************/
 		/**** md5 signature: 278bc90569b579d12d8d802b786248db ****/
 		%feature("compactdefaultargs") Graphic3d_PresentationAttributes;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_PresentationAttributes;
 		 Graphic3d_PresentationAttributes();
 
 		/****************** BasicFillAreaAspect ******************/
 		/**** md5 signature: 893da1066ab7497d7a1e4022f39ad6ec ****/
 		%feature("compactdefaultargs") BasicFillAreaAspect;
-		%feature("autodoc", "Return basic presentation fill area aspect, null by default. when set, might be used instead of color() property.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_AspectFillArea3d>
+
+Description
+-----------
+Return basic presentation fill area aspect, null by default. when set, might be used instead of color() property.
 ") BasicFillAreaAspect;
 		const opencascade::handle<Graphic3d_AspectFillArea3d> & BasicFillAreaAspect();
 
 		/****************** Color ******************/
 		/**** md5 signature: 7cec116411eb20e52d1fabf3015346da ****/
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "Returns basic presentation color, quantity_noc_white by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Returns basic presentation color, quantity_noc_white by default.
 ") Color;
 		const Quantity_Color & Color();
 
 		/****************** ColorRGBA ******************/
 		/**** md5 signature: 615b6d48d8bc4764a07d0e2ff837764b ****/
 		%feature("compactdefaultargs") ColorRGBA;
-		%feature("autodoc", "Returns basic presentation color (including alpha channel).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_ColorRGBA
+
+Description
+-----------
+Returns basic presentation color (including alpha channel).
 ") ColorRGBA;
 		const Quantity_ColorRGBA & ColorRGBA();
 
 		/****************** DisplayMode ******************/
 		/**** md5 signature: 87ab8eae5ccb1d4f4dfd02dc34d6febc ****/
 		%feature("compactdefaultargs") DisplayMode;
-		%feature("autodoc", "Returns display mode, 0 by default. -1 means undefined (main display mode of presentation to be used).
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns display mode, 0 by default. -1 means undefined (main display mode of presentation to be used).
 ") DisplayMode;
 		Standard_Integer DisplayMode();
 
@@ -12231,123 +13976,147 @@ int
 		/****************** Method ******************/
 		/**** md5 signature: b302ac4956523d91e861bf2704dd879d ****/
 		%feature("compactdefaultargs") Method;
-		%feature("autodoc", "Returns highlight method, aspect_tohm_color by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfHighlightMethod
+
+Description
+-----------
+Returns highlight method, aspect_tohm_color by default.
 ") Method;
 		Aspect_TypeOfHighlightMethod Method();
 
 		/****************** SetBasicFillAreaAspect ******************/
 		/**** md5 signature: 9c360396619883e6313847d330724906 ****/
 		%feature("compactdefaultargs") SetBasicFillAreaAspect;
-		%feature("autodoc", "Sets basic presentation fill area aspect.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAspect: Graphic3d_AspectFillArea3d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets basic presentation fill area aspect.
 ") SetBasicFillAreaAspect;
 		virtual void SetBasicFillAreaAspect(const opencascade::handle<Graphic3d_AspectFillArea3d> & theAspect);
 
 		/****************** SetColor ******************/
 		/**** md5 signature: 00f0a4e343c1e144a6992078bccbe32c ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Sets basic presentation color (rgb components, does not modifies transparency).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets basic presentation color (rgb components, does not modifies transparency).
 ") SetColor;
 		virtual void SetColor(const Quantity_Color & theColor);
 
 		/****************** SetDisplayMode ******************/
 		/**** md5 signature: 8fcdb511077259bc82849c206b53a806 ****/
 		%feature("compactdefaultargs") SetDisplayMode;
-		%feature("autodoc", "Sets display mode.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets display mode.
 ") SetDisplayMode;
 		virtual void SetDisplayMode(const Standard_Integer theMode);
 
 		/****************** SetMethod ******************/
 		/**** md5 signature: b7b1fb8e3db7c212dfca06ddad4bd2fa ****/
 		%feature("compactdefaultargs") SetMethod;
-		%feature("autodoc", "Changes highlight method to the given one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMethod: Aspect_TypeOfHighlightMethod
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes highlight method to the given one.
 ") SetMethod;
 		virtual void SetMethod(const Aspect_TypeOfHighlightMethod theMethod);
 
 		/****************** SetTransparency ******************/
 		/**** md5 signature: d0d6ebef60a8faad8436f8a967d31954 ****/
 		%feature("compactdefaultargs") SetTransparency;
-		%feature("autodoc", "Sets basic presentation transparency (0 - opaque, 1 - fully transparent).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTranspCoef: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets basic presentation transparency (0 - opaque, 1 - fully transparent).
 ") SetTransparency;
 		virtual void SetTransparency(const Standard_ShortReal theTranspCoef);
 
 		/****************** SetZLayer ******************/
 		/**** md5 signature: ecf007389b4013cc9520dae6bc2141f2 ****/
 		%feature("compactdefaultargs") SetZLayer;
-		%feature("autodoc", "Sets presentation zlayer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayer: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets presentation zlayer.
 ") SetZLayer;
 		virtual void SetZLayer(int theLayer);
 
 		/****************** Transparency ******************/
 		/**** md5 signature: aaef40cf92b2687b1ecee77a6c9e4eed ****/
 		%feature("compactdefaultargs") Transparency;
-		%feature("autodoc", "Returns basic presentation transparency (0 - opaque, 1 - fully transparent), 0 by default (opaque).
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns basic presentation transparency (0 - opaque, 1 - fully transparent), 0 by default (opaque).
 ") Transparency;
 		Standard_ShortReal Transparency();
 
 		/****************** ZLayer ******************/
 		/**** md5 signature: 7420fa5788bb824c02345ee38be45933 ****/
 		%feature("compactdefaultargs") ZLayer;
-		%feature("autodoc", "Returns presentation zlayer, graphic3d_zlayerid_default by default. graphic3d_zlayerid_unknown means undefined (a layer of main presentation to be used).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_ZLayerId
+
+Description
+-----------
+Returns presentation zlayer, graphic3d_zlayerid_default by default. graphic3d_zlayerid_unknown means undefined (a layer of main presentation to be used).
 ") ZLayer;
 		Graphic3d_ZLayerId ZLayer();
 
@@ -12532,11 +14301,13 @@ PerfCounters_All = PerfCounters.PerfCounters_All
 		/****************** Graphic3d_RenderingParams ******************/
 		/**** md5 signature: 604df3cf93dfd3384e91a3c3f46c32b4 ****/
 		%feature("compactdefaultargs") Graphic3d_RenderingParams;
-		%feature("autodoc", "Creates default rendering parameters.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates default rendering parameters.
 ") Graphic3d_RenderingParams;
 		 Graphic3d_RenderingParams();
 
@@ -12552,11 +14323,13 @@ None
 		/****************** ResolutionRatio ******************/
 		/**** md5 signature: 57d680035ff41120d22ad8575654a631 ****/
 		%feature("compactdefaultargs") ResolutionRatio;
-		%feature("autodoc", "Returns resolution ratio.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns resolution ratio.
 ") ResolutionRatio;
 		Standard_ShortReal ResolutionRatio();
 
@@ -12578,37 +14351,44 @@ class Graphic3d_SequenceOfHClipPlane : public Standard_Transient {
 		/****************** Graphic3d_SequenceOfHClipPlane ******************/
 		/**** md5 signature: dea7065ac573d924d683688d8c6ccbf7 ****/
 		%feature("compactdefaultargs") Graphic3d_SequenceOfHClipPlane;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_SequenceOfHClipPlane;
 		 Graphic3d_SequenceOfHClipPlane();
 
 		/****************** Append ******************/
 		/**** md5 signature: 3e9b7d5c84d70e6e8931014728e4bacd ****/
 		%feature("compactdefaultargs") Append;
-		%feature("autodoc", "Append a plane. returns true if new item has been added (false if item already existed).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theItem: Graphic3d_ClipPlane
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Append a plane. return true if new item has been added (false if item already existed).
 ") Append;
 		bool Append(const opencascade::handle<Graphic3d_ClipPlane> & theItem);
 
 		/****************** Clear ******************/
 		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clear the items out.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Clear the items out.
 ") Clear;
 		void Clear();
 
@@ -12624,89 +14404,106 @@ None
 		/****************** First ******************/
 		/**** md5 signature: cc797633cf7616f9dd4c3a09257e2742 ****/
 		%feature("compactdefaultargs") First;
-		%feature("autodoc", "Return the first item in sequence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_ClipPlane>
+
+Description
+-----------
+Return the first item in sequence.
 ") First;
 		const opencascade::handle<Graphic3d_ClipPlane> & First();
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: 70a41d5fe65955a28167088305fc6991 ****/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "Return true if sequence is empty.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if sequence is empty.
 ") IsEmpty;
 		bool IsEmpty();
 
 		/****************** Remove ******************/
 		/**** md5 signature: 310df33a7b799f6704691d7306814390 ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "Remove a plane. returns true if item has been found and removed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theItem: Graphic3d_ClipPlane
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Remove a plane. return true if item has been found and removed.
 ") Remove;
 		bool Remove(const opencascade::handle<Graphic3d_ClipPlane> & theItem);
 
 		/****************** Remove ******************/
 		/**** md5 signature: 67407ac4263b5ce4b1474bcb59790580 ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "Remove a plane.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theItem: Iterator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Remove a plane.
 ") Remove;
 		void Remove(Iterator theItem);
 
 		/****************** SetOverrideGlobal ******************/
 		/**** md5 signature: 53f2f55e405ecf8a104090892f86e38a ****/
 		%feature("compactdefaultargs") SetOverrideGlobal;
-		%feature("autodoc", "Setup flag defining if local properties should override global properties.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToOverride: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup flag defining if local properties should override global properties.
 ") SetOverrideGlobal;
 		void SetOverrideGlobal(const Standard_Boolean theToOverride);
 
 		/****************** Size ******************/
 		/**** md5 signature: fe6e16e0f1e86558dd017c7384c76cd6 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Return the number of items in sequence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return the number of items in sequence.
 ") Size;
 		Standard_Integer Size();
 
 		/****************** ToOverrideGlobal ******************/
 		/**** md5 signature: 1ecec5e4e17820cdf69ff2c94817a50e ****/
 		%feature("compactdefaultargs") ToOverrideGlobal;
-		%feature("autodoc", "Return true if local properties should override global properties.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if local properties should override global properties.
 ") ToOverrideGlobal;
 		Standard_Boolean ToOverrideGlobal();
 
@@ -12729,38 +14526,45 @@ class Graphic3d_ShaderAttribute : public Standard_Transient {
 		/****************** Graphic3d_ShaderAttribute ******************/
 		/**** md5 signature: ac60c401f73357877da49c7c5879e543 ****/
 		%feature("compactdefaultargs") Graphic3d_ShaderAttribute;
-		%feature("autodoc", "Creates new attribute.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 theLocation: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates new attribute.
 ") Graphic3d_ShaderAttribute;
 		 Graphic3d_ShaderAttribute(TCollection_AsciiString theName, const int theLocation);
 
 		/****************** Location ******************/
 		/**** md5 signature: fbf2df819f76398dfe948e6957cd938c ****/
 		%feature("compactdefaultargs") Location;
-		%feature("autodoc", "Returns attribute location to be bound on glsl program linkage stage.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns attribute location to be bound on glsl program linkage stage.
 ") Location;
 		int Location();
 
 		/****************** Name ******************/
 		/**** md5 signature: efed61b92683387cd746fb27e0376505 ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Returns name of shader variable.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns name of shader variable.
 ") Name;
 		const TCollection_AsciiString & Name();
 
@@ -12783,191 +14587,226 @@ class Graphic3d_ShaderManager : public Standard_Transient {
 		/****************** Graphic3d_ShaderManager ******************/
 		/**** md5 signature: edfeeb57072df8ac6b8bbe060349c47b ****/
 		%feature("compactdefaultargs") Graphic3d_ShaderManager;
-		%feature("autodoc", "Creates new empty shader manager.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theGapi: Aspect_GraphicsLibrary
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates new empty shader manager.
 ") Graphic3d_ShaderManager;
 		 Graphic3d_ShaderManager(Aspect_GraphicsLibrary theGapi);
 
 		/****************** EnableGlslExtension ******************/
 		/**** md5 signature: 1565a9dd67aaa4d6dd088e174916e417 ****/
 		%feature("compactdefaultargs") EnableGlslExtension;
-		%feature("autodoc", "Set if specified extension is available or not.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theExt: Graphic3d_GlslExtension
-theToEnable: bool,optional
-	default value is true
+theToEnable: bool (optional, default to true)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if specified extension is available or not.
 ") EnableGlslExtension;
 		void EnableGlslExtension(Graphic3d_GlslExtension theExt, bool theToEnable = true);
 
 		/****************** GapiVersionMajor ******************/
 		/**** md5 signature: f87f51f10b0102d41b85c84177130dc9 ****/
 		%feature("compactdefaultargs") GapiVersionMajor;
-		%feature("autodoc", "Return gapi version major number.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return gapi version major number.
 ") GapiVersionMajor;
 		Standard_Integer GapiVersionMajor();
 
 		/****************** GapiVersionMinor ******************/
 		/**** md5 signature: bf64344ac1d7ae2c0d9779cb934c10bf ****/
 		%feature("compactdefaultargs") GapiVersionMinor;
-		%feature("autodoc", "Return gapi version minor number.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return gapi version minor number.
 ") GapiVersionMinor;
 		Standard_Integer GapiVersionMinor();
 
 		/****************** HasFlatShading ******************/
 		/**** md5 signature: a51a9477453ff3d09379b95ae7696ad9 ****/
 		%feature("compactdefaultargs") HasFlatShading;
-		%feature("autodoc", "Return flag indicating flat shading usage; true by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return flag indicating flat shading usage; true by default.
 ") HasFlatShading;
 		bool HasFlatShading();
 
 		/****************** HasGlslExtension ******************/
 		/**** md5 signature: 01a7060cef40b7151ed90bed2bb6ebff ****/
 		%feature("compactdefaultargs") HasGlslExtension;
-		%feature("autodoc", "Return true if specified extension is available.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theExt: Graphic3d_GlslExtension
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Return true if specified extension is available.
 ") HasGlslExtension;
 		bool HasGlslExtension(Graphic3d_GlslExtension theExt);
 
 		/****************** IsGapiGreaterEqual ******************/
 		/**** md5 signature: 4a31134aa43661fc23e2c56c331f7adc ****/
 		%feature("compactdefaultargs") IsGapiGreaterEqual;
-		%feature("autodoc", "Returns true if detected gl version is greater or equal to requested one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVerMajor: int
 theVerMinor: int
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Return true if detected gl version is greater or equal to requested one.
 ") IsGapiGreaterEqual;
 		bool IsGapiGreaterEqual(Standard_Integer theVerMajor, Standard_Integer theVerMinor);
 
 		/****************** SetEmulateDepthClamp ******************/
 		/**** md5 signature: 2c1c7d42fdb29063f356221242f1caf1 ****/
 		%feature("compactdefaultargs") SetEmulateDepthClamp;
-		%feature("autodoc", "Set if depth clamping should be emulated by glsl program.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToEmulate: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if depth clamping should be emulated by glsl program.
 ") SetEmulateDepthClamp;
 		void SetEmulateDepthClamp(bool theToEmulate);
 
 		/****************** SetFlatShading ******************/
 		/**** md5 signature: bab132dee77734acb97a0cdf54af397d ****/
 		%feature("compactdefaultargs") SetFlatShading;
-		%feature("autodoc", "Set flag indicating flat shading usage.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToUse: bool
 theToReverseSign: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set flag indicating flat shading usage.
 ") SetFlatShading;
 		void SetFlatShading(bool theToUse, bool theToReverseSign);
 
 		/****************** SetGapiVersion ******************/
 		/**** md5 signature: 2285029be324641721312837e81f9585 ****/
 		%feature("compactdefaultargs") SetGapiVersion;
-		%feature("autodoc", "Return gapi version major number.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVerMajor: int
 theVerMinor: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Return gapi version major number.
 ") SetGapiVersion;
 		void SetGapiVersion(Standard_Integer theVerMajor, Standard_Integer theVerMinor);
 
 		/****************** SetUseRedAlpha ******************/
 		/**** md5 signature: 277e2b94c5211c66781ef954a1639590 ****/
 		%feature("compactdefaultargs") SetUseRedAlpha;
-		%feature("autodoc", "Set if red channel should be used instead of alpha for single-channel textures.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theUseRedAlpha: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if red channel should be used instead of alpha for single-channel textures.
 ") SetUseRedAlpha;
 		void SetUseRedAlpha(bool theUseRedAlpha);
 
 		/****************** ToEmulateDepthClamp ******************/
 		/**** md5 signature: b2141ccb1ef4ecb8bee1dfcfd044bdad ****/
 		%feature("compactdefaultargs") ToEmulateDepthClamp;
-		%feature("autodoc", "Return true if depth clamping should be emulated by glsl program; true by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if depth clamping should be emulated by glsl program; true by default.
 ") ToEmulateDepthClamp;
 		bool ToEmulateDepthClamp();
 
 		/****************** ToReverseDFdxSign ******************/
 		/**** md5 signature: 7bb219efdbfeed91f830488b98532a50 ****/
 		%feature("compactdefaultargs") ToReverseDFdxSign;
-		%feature("autodoc", "Return flag indicating flat shading should reverse normal flag; false by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return flag indicating flat shading should reverse normal flag; false by default.
 ") ToReverseDFdxSign;
 		bool ToReverseDFdxSign();
 
 		/****************** UseRedAlpha ******************/
 		/**** md5 signature: 9336849b35eb84dccae6637e8d89217c ****/
 		%feature("compactdefaultargs") UseRedAlpha;
-		%feature("autodoc", "Return true if red channel should be used instead of alpha for single-channel textures (e.g. gapi supports only gl_red textures and not gl_alpha).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if red channel should be used instead of alpha for single-channel textures (e.g. gapi supports only gl_red textures and not gl_alpha).
 ") UseRedAlpha;
 		bool UseRedAlpha();
 
@@ -12993,87 +14832,103 @@ typedef NCollection_Sequence<ShaderVariable> ShaderVariableList;
 		/****************** CreateFromFile ******************/
 		/**** md5 signature: 0e4d93f61abfea2d28122dfc98e7db35 ****/
 		%feature("compactdefaultargs") CreateFromFile;
-		%feature("autodoc", "Creates new shader object from specified file.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfShaderObject
 thePath: str
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_ShaderObject>
+
+Description
+-----------
+Creates new shader object from specified file.
 ") CreateFromFile;
 		static opencascade::handle<Graphic3d_ShaderObject> CreateFromFile(const Graphic3d_TypeOfShaderObject theType, TCollection_AsciiString thePath);
 
 		/****************** CreateFromSource ******************/
 		/**** md5 signature: 89c8327f0382cb4ddac7df3854e7859f ****/
 		%feature("compactdefaultargs") CreateFromSource;
-		%feature("autodoc", "Creates new shader object from specified source.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfShaderObject
 theSource: str
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_ShaderObject>
+
+Description
+-----------
+Creates new shader object from specified source.
 ") CreateFromSource;
 		static opencascade::handle<Graphic3d_ShaderObject> CreateFromSource(const Graphic3d_TypeOfShaderObject theType, TCollection_AsciiString theSource);
 
 		/****************** GetId ******************/
 		/**** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ****/
 		%feature("compactdefaultargs") GetId;
-		%feature("autodoc", "Returns unique id used to manage resource in graphic driver.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns unique id used to manage resource in graphic driver.
 ") GetId;
 		const TCollection_AsciiString & GetId();
 
 		/****************** IsDone ******************/
 		/**** md5 signature: 1dfe5875b8bc7f7b11380fb4ab8a9eb0 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Checks if the shader object is valid or not.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Checks if the shader object is valid or not.
 ") IsDone;
 		virtual Standard_Boolean IsDone();
 
 		/****************** Path ******************/
 		/**** md5 signature: 9d11d277fbcc37203e7dc39c30ea2e54 ****/
 		%feature("compactdefaultargs") Path;
-		%feature("autodoc", "Returns the full path to the shader source.
-
-Returns
+		%feature("autodoc", "Return
 -------
 OSD_Path
+
+Description
+-----------
+Returns the full path to the shader source.
 ") Path;
 		const OSD_Path & Path();
 
 		/****************** Source ******************/
 		/**** md5 signature: d9259fdeceadf330dfe57a7ddd24a1da ****/
 		%feature("compactdefaultargs") Source;
-		%feature("autodoc", "Returns the source code of the shader object.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns the source code of the shader object.
 ") Source;
 		const TCollection_AsciiString & Source();
 
 		/****************** Type ******************/
 		/**** md5 signature: 89254e60d0dba2f7a980c3b9f0ba5aec ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "Returns type of the shader object.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfShaderObject
+
+Description
+-----------
+Returns type of the shader object.
 ") Type;
 		Graphic3d_TypeOfShaderObject Type();
 
@@ -13096,551 +14951,656 @@ class Graphic3d_ShaderProgram : public Standard_Transient {
 		/****************** Graphic3d_ShaderProgram ******************/
 		/**** md5 signature: c9d506f6dd35044b3c228ea1da082f9b ****/
 		%feature("compactdefaultargs") Graphic3d_ShaderProgram;
-		%feature("autodoc", "Creates new empty program object.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates new empty program object.
 ") Graphic3d_ShaderProgram;
 		 Graphic3d_ShaderProgram();
 
 		/****************** AppendToHeader ******************/
 		/**** md5 signature: ced78f90ca9cb4c305e39fbff11e02ab ****/
 		%feature("compactdefaultargs") AppendToHeader;
-		%feature("autodoc", "Append line to glsl header.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHeaderLine: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Append line to glsl header.
 ") AppendToHeader;
 		void AppendToHeader(TCollection_AsciiString theHeaderLine);
 
 		/****************** AttachShader ******************/
 		/**** md5 signature: 2ed7a5ea2e4cd4e4595f652b67432170 ****/
 		%feature("compactdefaultargs") AttachShader;
-		%feature("autodoc", "Attaches shader object to the program object.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShader: Graphic3d_ShaderObject
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Attaches shader object to the program object.
 ") AttachShader;
 		Standard_Boolean AttachShader(const opencascade::handle<Graphic3d_ShaderObject> & theShader);
 
 		/****************** ClearVariables ******************/
 		/**** md5 signature: 1fb8537bc7c1634b6f48bef407b06bee ****/
 		%feature("compactdefaultargs") ClearVariables;
-		%feature("autodoc", "Removes all custom uniform variables from the program.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Removes all custom uniform variables from the program.
 ") ClearVariables;
 		void ClearVariables();
 
 		/****************** DetachShader ******************/
 		/**** md5 signature: 7cfa919e29e311aecd5f963d86cc4a27 ****/
 		%feature("compactdefaultargs") DetachShader;
-		%feature("autodoc", "Detaches shader object from the program object.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShader: Graphic3d_ShaderObject
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Detaches shader object from the program object.
 ") DetachShader;
 		Standard_Boolean DetachShader(const opencascade::handle<Graphic3d_ShaderObject> & theShader);
 
 		/****************** GetId ******************/
 		/**** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ****/
 		%feature("compactdefaultargs") GetId;
-		%feature("autodoc", "Returns unique id used to manage resource in graphic driver.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns unique id used to manage resource in graphic driver.
 ") GetId;
 		const TCollection_AsciiString & GetId();
 
 		/****************** HasAlphaTest ******************/
 		/**** md5 signature: 6df3b76c7ea9b16d638eb1284b3c0848 ****/
 		%feature("compactdefaultargs") HasAlphaTest;
-		%feature("autodoc", "Return true if fragment shader should perform alpha test; false by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if fragment shader should perform alpha test; false by default.
 ") HasAlphaTest;
 		Standard_Boolean HasAlphaTest();
 
 		/****************** HasDefaultSampler ******************/
 		/**** md5 signature: 304ee6311b90029618e7e8295769f5ed ****/
 		%feature("compactdefaultargs") HasDefaultSampler;
-		%feature("autodoc", "Return true if standard program header should define default texture sampler occsampler0; true by default for compatibility.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if standard program header should define default texture sampler occsampler0; true by default for compatibility.
 ") HasDefaultSampler;
 		Standard_Boolean HasDefaultSampler();
 
 		/****************** Header ******************/
 		/**** md5 signature: f88fb6c2e88340b6cea1c010e1447033 ****/
 		%feature("compactdefaultargs") Header;
-		%feature("autodoc", "Returns glsl header (version code and extensions).
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns glsl header (version code and extensions).
 ") Header;
 		const TCollection_AsciiString & Header();
 
 		/****************** IsDone ******************/
 		/**** md5 signature: 1dfe5875b8bc7f7b11380fb4ab8a9eb0 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Checks if the program object is valid or not.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Checks if the program object is valid or not.
 ") IsDone;
 		virtual Standard_Boolean IsDone();
 
 		/****************** IsPBR ******************/
 		/**** md5 signature: 326d20b786202fbb81b42cbfa3a0ab63 ****/
 		%feature("compactdefaultargs") IsPBR;
-		%feature("autodoc", "Return true if standard program header should define functions and variables used in pbr pipeline. false by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if standard program header should define functions and variables used in pbr pipeline. false by default.
 ") IsPBR;
 		Standard_Boolean IsPBR();
 
 		/****************** NbClipPlanesMax ******************/
 		/**** md5 signature: e666dcb5a703f731f3fc4a8bf3e8ce5d ****/
 		%feature("compactdefaultargs") NbClipPlanesMax;
-		%feature("autodoc", "Return the length of array of clipping planes (the_max_clip_planes), to be used for initialization occclipplaneequations. default value is the_max_clip_planes_default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return the length of array of clipping planes (the_max_clip_planes), to be used for initialization occclipplaneequations. default value is the_max_clip_planes_default.
 ") NbClipPlanesMax;
 		Standard_Integer NbClipPlanesMax();
 
 		/****************** NbFragmentOutputs ******************/
 		/**** md5 signature: b8a018cb9eedaa692aac7ce974057841 ****/
 		%feature("compactdefaultargs") NbFragmentOutputs;
-		%feature("autodoc", "Returns the number (1+) of fragment shader outputs to be written to (more than 1 can be in case of multiple draw buffers); 1 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number (1+) of fragment shader outputs to be written to (more than 1 can be in case of multiple draw buffers); 1 by default.
 ") NbFragmentOutputs;
 		Standard_Integer NbFragmentOutputs();
 
 		/****************** NbLightsMax ******************/
 		/**** md5 signature: c83e0182963cd9edab4c66afcb84e379 ****/
 		%feature("compactdefaultargs") NbLightsMax;
-		%feature("autodoc", "Return the length of array of light sources (the_max_lights), to be used for initialization occlightsources. default value is the_max_lights_default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return the length of array of light sources (the_max_lights), to be used for initialization occlightsources. default value is the_max_lights_default.
 ") NbLightsMax;
 		Standard_Integer NbLightsMax();
 
 		/****************** NbShadowMaps ******************/
 		/**** md5 signature: ec9f08ef816a580d66da175e8ad9a2cd ****/
 		%feature("compactdefaultargs") NbShadowMaps;
-		%feature("autodoc", "Return the length of array of shadow maps (the_nb_shadowmaps); 0 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return the length of array of shadow maps (the_nb_shadowmaps); 0 by default.
 ") NbShadowMaps;
 		Standard_Integer NbShadowMaps();
 
 		/****************** OitOutput ******************/
 		/**** md5 signature: 0ae1e43420d7eec8a047a3c7cc6e1bec ****/
 		%feature("compactdefaultargs") OitOutput;
-		%feature("autodoc", "Return if fragment shader color should output to oit buffers; off by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_RenderTransparentMethod
+
+Description
+-----------
+Return if fragment shader color should output to oit buffers; off by default.
 ") OitOutput;
 		Graphic3d_RenderTransparentMethod OitOutput();
 
 		/****************** PushVariableFloat ******************/
 		/**** md5 signature: c7116542657a4d73523f19701b47cc97 ****/
 		%feature("compactdefaultargs") PushVariableFloat;
-		%feature("autodoc", "Pushes float uniform.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 theValue: float
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Pushes float uniform.
 ") PushVariableFloat;
 		Standard_Boolean PushVariableFloat(TCollection_AsciiString theName, const float theValue);
 
 		/****************** PushVariableInt ******************/
 		/**** md5 signature: bff478b182d9509a10882ce90419df79 ****/
 		%feature("compactdefaultargs") PushVariableInt;
-		%feature("autodoc", "Pushes int uniform.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 theValue: int
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Pushes int uniform.
 ") PushVariableInt;
 		Standard_Boolean PushVariableInt(TCollection_AsciiString theName, const int theValue);
 
 		/****************** PushVariableVec2 ******************/
 		/**** md5 signature: d02a003a9e11b722eacd37101ed0969b ****/
 		%feature("compactdefaultargs") PushVariableVec2;
-		%feature("autodoc", "Pushes vec2 uniform.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 theValue: Graphic3d_Vec2
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Pushes vec2 uniform.
 ") PushVariableVec2;
 		Standard_Boolean PushVariableVec2(TCollection_AsciiString theName, const Graphic3d_Vec2 & theValue);
 
 		/****************** PushVariableVec2i ******************/
 		/**** md5 signature: 231cdfeb088221c570d577a2e6af3ff2 ****/
 		%feature("compactdefaultargs") PushVariableVec2i;
-		%feature("autodoc", "Pushes vec2i uniform.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 theValue: Graphic3d_Vec2i
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Pushes vec2i uniform.
 ") PushVariableVec2i;
 		Standard_Boolean PushVariableVec2i(TCollection_AsciiString theName, const Graphic3d_Vec2i & theValue);
 
 		/****************** PushVariableVec3 ******************/
 		/**** md5 signature: 1e87fc6f4bed1bc59e32f075b299547f ****/
 		%feature("compactdefaultargs") PushVariableVec3;
-		%feature("autodoc", "Pushes vec3 uniform.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 theValue: Graphic3d_Vec3
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Pushes vec3 uniform.
 ") PushVariableVec3;
 		Standard_Boolean PushVariableVec3(TCollection_AsciiString theName, const Graphic3d_Vec3 & theValue);
 
 		/****************** PushVariableVec3i ******************/
 		/**** md5 signature: 76fcf0dab680077a9b9928f249715893 ****/
 		%feature("compactdefaultargs") PushVariableVec3i;
-		%feature("autodoc", "Pushes vec3i uniform.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 theValue: Graphic3d_Vec3i
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Pushes vec3i uniform.
 ") PushVariableVec3i;
 		Standard_Boolean PushVariableVec3i(TCollection_AsciiString theName, const Graphic3d_Vec3i & theValue);
 
 		/****************** PushVariableVec4 ******************/
 		/**** md5 signature: f48a6fd2b2fd4d2432e7e4555e958e8b ****/
 		%feature("compactdefaultargs") PushVariableVec4;
-		%feature("autodoc", "Pushes vec4 uniform.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 theValue: Graphic3d_Vec4
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Pushes vec4 uniform.
 ") PushVariableVec4;
 		Standard_Boolean PushVariableVec4(TCollection_AsciiString theName, const Graphic3d_Vec4 & theValue);
 
 		/****************** PushVariableVec4i ******************/
 		/**** md5 signature: 9cdd0cf7f8b36932596f084b1b32b4be ****/
 		%feature("compactdefaultargs") PushVariableVec4i;
-		%feature("autodoc", "Pushes vec4i uniform.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 theValue: Graphic3d_Vec4i
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Pushes vec4i uniform.
 ") PushVariableVec4i;
 		Standard_Boolean PushVariableVec4i(TCollection_AsciiString theName, const Graphic3d_Vec4i & theValue);
 
 		/****************** SetAlphaTest ******************/
 		/**** md5 signature: 0c8337e06f013097bf7fc3735dfd4764 ****/
 		%feature("compactdefaultargs") SetAlphaTest;
-		%feature("autodoc", "Set if fragment shader should perform alpha test. note that this flag is designed for usage with - custom shader program may discard fragment regardless this flag.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAlphaTest: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if fragment shader should perform alpha test. note that this flag is designed for usage with - custom shader program may discard fragment regardless this flag.
 ") SetAlphaTest;
 		void SetAlphaTest(Standard_Boolean theAlphaTest);
 
 		/****************** SetDefaultSampler ******************/
 		/**** md5 signature: 6fabb1070d83a5e585d90a85b32e7260 ****/
 		%feature("compactdefaultargs") SetDefaultSampler;
-		%feature("autodoc", "Set if standard program header should define default texture sampler occsampler0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHasDefSampler: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if standard program header should define default texture sampler occsampler0.
 ") SetDefaultSampler;
 		void SetDefaultSampler(Standard_Boolean theHasDefSampler);
 
 		/****************** SetHeader ******************/
 		/**** md5 signature: 62f27581c0fcf7d3abe6ce528a7ab63d ****/
 		%feature("compactdefaultargs") SetHeader;
-		%feature("autodoc", "Setup glsl header containing language version code and used extensions. will be prepended to the very beginning of the source code. example: @code #version 300 es #extension gl_arb_bindless_texture : require @endcode.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHeader: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup glsl header containing language version code and used extensions. will be prepended to the very beginning of the source code. example: @code #version 300 es #extension gl_arb_bindless_texture: require @endcode.
 ") SetHeader;
 		void SetHeader(TCollection_AsciiString theHeader);
 
 		/****************** SetId ******************/
 		/**** md5 signature: 64840b5ae68646959ed97ec8254f3d04 ****/
 		%feature("compactdefaultargs") SetId;
-		%feature("autodoc", "Sets unique id used to manage resource in graphic driver. warning! graphic3d_shaderprogram constructor generates a unique id for proper resource management; however if application overrides it, it is responsibility of application to avoid name collisions.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theId: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets unique id used to manage resource in graphic driver. warning! graphic3d_shaderprogram constructor generates a unique id for proper resource management; however if application overrides it, it is responsibility of application to avoid name collisions.
 ") SetId;
 		void SetId(TCollection_AsciiString theId);
 
 		/****************** SetNbClipPlanesMax ******************/
 		/**** md5 signature: 8f90ee3fa5faecc284bd831b0a828a6a ****/
 		%feature("compactdefaultargs") SetNbClipPlanesMax;
-		%feature("autodoc", "Specify the length of array of clipping planes (the_max_clip_planes).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNbPlanes: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Specify the length of array of clipping planes (the_max_clip_planes).
 ") SetNbClipPlanesMax;
 		void SetNbClipPlanesMax(Standard_Integer theNbPlanes);
 
 		/****************** SetNbFragmentOutputs ******************/
 		/**** md5 signature: 72f045948c50b43bdddedbb592dcaa8c ****/
 		%feature("compactdefaultargs") SetNbFragmentOutputs;
-		%feature("autodoc", "Sets the number of fragment shader outputs to be written to. should be done before glsl program initialization.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNbOutputs: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the number of fragment shader outputs to be written to. should be done before glsl program initialization.
 ") SetNbFragmentOutputs;
 		void SetNbFragmentOutputs(const Standard_Integer theNbOutputs);
 
 		/****************** SetNbLightsMax ******************/
 		/**** md5 signature: b18ad1a5a6f5d6962441de77b7b89768 ****/
 		%feature("compactdefaultargs") SetNbLightsMax;
-		%feature("autodoc", "Specify the length of array of light sources (the_max_lights).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNbLights: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Specify the length of array of light sources (the_max_lights).
 ") SetNbLightsMax;
 		void SetNbLightsMax(Standard_Integer theNbLights);
 
 		/****************** SetNbShadowMaps ******************/
 		/**** md5 signature: aac8225eccfa92b2c5e90ece00477fa9 ****/
 		%feature("compactdefaultargs") SetNbShadowMaps;
-		%feature("autodoc", "Specify the length of array of shadow maps (the_nb_shadowmaps).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNbMaps: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Specify the length of array of shadow maps (the_nb_shadowmaps).
 ") SetNbShadowMaps;
 		void SetNbShadowMaps(Standard_Integer theNbMaps);
 
 		/****************** SetOitOutput ******************/
 		/**** md5 signature: aa6fe5dfd1ae6a7a74b9b5a4d50b58b4 ****/
 		%feature("compactdefaultargs") SetOitOutput;
-		%feature("autodoc", "Set if fragment shader color should output to oit buffers. note that weighted oit also requires at least 2 fragment outputs (color + coverage), and depth peeling requires at least 3 fragment outputs (depth + front color + back color),.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOutput: Graphic3d_RenderTransparentMethod
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if fragment shader color should output to oit buffers. note that weighted oit also requires at least 2 fragment outputs (color + coverage), and depth peeling requires at least 3 fragment outputs (depth + front color + back color),.
 ") SetOitOutput;
 		void SetOitOutput(Graphic3d_RenderTransparentMethod theOutput);
 
 		/****************** SetPBR ******************/
 		/**** md5 signature: d5ce79ee9840bebe45640f0c5c7692f5 ****/
 		%feature("compactdefaultargs") SetPBR;
-		%feature("autodoc", "Sets whether standard program header should define functions and variables used in pbr pipeline.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsPBR: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets whether standard program header should define functions and variables used in pbr pipeline.
 ") SetPBR;
 		void SetPBR(Standard_Boolean theIsPBR);
 
 		/****************** SetTextureSetBits ******************/
 		/**** md5 signature: 4730c4f840866bab8f03b369d0776b1d ****/
 		%feature("compactdefaultargs") SetTextureSetBits;
-		%feature("autodoc", "Set texture units declared within the program.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBits: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set texture units declared within the program.
 ") SetTextureSetBits;
 		void SetTextureSetBits(Standard_Integer theBits);
 
 		/****************** SetVertexAttributes ******************/
 		/**** md5 signature: d458b2610c968b561baf99376e731a61 ****/
 		%feature("compactdefaultargs") SetVertexAttributes;
-		%feature("autodoc", "Assign the list of custom vertex attributes. should be done before glsl program initialization.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAttributes: Graphic3d_ShaderAttributeList
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign the list of custom vertex attributes. should be done before glsl program initialization.
 ") SetVertexAttributes;
 		void SetVertexAttributes(const Graphic3d_ShaderAttributeList & theAttributes);
 
 		/****************** ShaderObjects ******************/
 		/**** md5 signature: 7e25b5a519ed39da5f0b6eccd62c6a47 ****/
 		%feature("compactdefaultargs") ShaderObjects;
-		%feature("autodoc", "Returns list of attached shader objects.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_ShaderObjectList
+
+Description
+-----------
+Returns list of attached shader objects.
 ") ShaderObjects;
 		const Graphic3d_ShaderObjectList & ShaderObjects();
 
 		/****************** ShadersFolder ******************/
 		/**** md5 signature: f26477e080b56e162a878346206bf912 ****/
 		%feature("compactdefaultargs") ShadersFolder;
-		%feature("autodoc", "The path to glsl programs determined from csf_shadersdirectory or casroot environment variables. returns the root folder with default glsl programs.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+The path to glsl programs determined from csf_shadersdirectory or casroot environment variables. return the root folder with default glsl programs.
 ") ShadersFolder;
 		static const TCollection_AsciiString & ShadersFolder();
 
 		/****************** TextureSetBits ******************/
 		/**** md5 signature: 748e5de75393d4ed953f4a49bdb69b11 ****/
 		%feature("compactdefaultargs") TextureSetBits;
-		%feature("autodoc", "Return texture units declared within the program, @sa graphic3d_texturesetbits.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return texture units declared within the program, @sa graphic3d_texturesetbits.
 ") TextureSetBits;
 		Standard_Integer TextureSetBits();
 
 		/****************** Variables ******************/
 		/**** md5 signature: 855892b48f0dfd5ecdd5470d0adadc38 ****/
 		%feature("compactdefaultargs") Variables;
-		%feature("autodoc", "The list of currently pushed but not applied custom uniform variables. this list is automatically cleared after applying to glsl program.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_ShaderVariableList
+
+Description
+-----------
+The list of currently pushed but not applied custom uniform variables. this list is automatically cleared after applying to glsl program.
 ") Variables;
 		const Graphic3d_ShaderVariableList & Variables();
 
 		/****************** VertexAttributes ******************/
 		/**** md5 signature: 6825a17f79cf7bb099fb26f98bace75e ****/
 		%feature("compactdefaultargs") VertexAttributes;
-		%feature("autodoc", "Return the list of custom vertex attributes.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_ShaderAttributeList
+
+Description
+-----------
+Return the list of custom vertex attributes.
 ") VertexAttributes;
 		const Graphic3d_ShaderAttributeList & VertexAttributes();
 
@@ -13668,33 +15628,39 @@ class Graphic3d_ShaderVariable : public Standard_Transient {
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Checks if the shader variable is valid or not.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Checks if the shader variable is valid or not.
 ") IsDone;
 		Standard_Boolean IsDone();
 
 		/****************** Name ******************/
 		/**** md5 signature: 8e64a3d42cb69d5f0c279aca58e35ec7 ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Returns name of shader variable.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns name of shader variable.
 ") Name;
 		const TCollection_AsciiString & Name();
 
 		/****************** Value ******************/
 		/**** md5 signature: b5672bd7d1d1e292ec75e023c5063098 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns interface of shader variable value.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_ValueInterface *
+
+Description
+-----------
+Returns interface of shader variable value.
 ") Value;
 		Graphic3d_ValueInterface * Value();
 
@@ -13721,231 +15687,271 @@ class Graphic3d_Structure : public Standard_Transient {
 		/****************** Graphic3d_Structure ******************/
 		/**** md5 signature: d67667fa513f680c04d0cca3b0091e43 ****/
 		%feature("compactdefaultargs") Graphic3d_Structure;
-		%feature("autodoc", "Creates a graphic object in the manager themanager. it will appear in all the views of the visualiser. the structure is not displayed when it is created. @param themanager structure manager holding this structure @param thelinkprs another structure for creating a shadow (linked) structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theManager: Graphic3d_StructureManager
-theLinkPrs: Graphic3d_Structure,optional
-	default value is opencascade::handle<Graphic3d_Structure>()
+theLinkPrs: Graphic3d_Structure (optional, default to opencascade::handle<Graphic3d_Structure>())
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a graphic object in the manager themanager. it will appear in all the views of the visualiser. the structure is not displayed when it is created. @param themanager structure manager holding this structure @param thelinkprs another structure for creating a shadow (linked) structure.
 ") Graphic3d_Structure;
 		 Graphic3d_Structure(const opencascade::handle<Graphic3d_StructureManager> & theManager, const opencascade::handle<Graphic3d_Structure> & theLinkPrs = opencascade::handle<Graphic3d_Structure>());
 
 		/****************** AcceptConnection ******************/
 		/**** md5 signature: 848936d7e0d23ea065cf38de97257d2e ****/
 		%feature("compactdefaultargs") AcceptConnection;
-		%feature("autodoc", "Returns standard_true if the connection is possible between <astructure1> and <astructure2> without a creation of a cycle. //! it's not possible to call the method astructure1->connect (astructure2, typeofconnection) if - the set of all ancestors of <astructure1> contains <astructure1> and if the typeofconnection == toc_descendant - the set of all descendants of <astructure1> contains <astructure2> and if the typeofconnection == toc_ancestor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure1: Graphic3d_Structure *
 theStructure2: Graphic3d_Structure *
 theType: Graphic3d_TypeOfConnection
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if the connection is possible between <astructure1> and <astructure2> without a creation of a cycle. //! it's not possible to call the method astructure1->connect (astructure2, typeofconnection) if - the set of all ancestors of <astructure1> contains <astructure1> and if the typeofconnection == toc_descendant - the set of all descendants of <astructure1> contains <astructure2> and if the typeofconnection == toc_ancestor.
 ") AcceptConnection;
 		static Standard_Boolean AcceptConnection(Graphic3d_Structure * theStructure1, Graphic3d_Structure * theStructure2, Graphic3d_TypeOfConnection theType);
 
 		/****************** Ancestors ******************/
 		/**** md5 signature: 30a119a49fca0145e6abee3237ebd871 ****/
 		%feature("compactdefaultargs") Ancestors;
-		%feature("autodoc", "Returns the group of structures to which <self> is connected.
-
+		%feature("autodoc", "
 Parameters
 ----------
 SG: Graphic3d_MapOfStructure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the group of structures to which <self> is connected.
 ") Ancestors;
 		void Ancestors(Graphic3d_MapOfStructure & SG);
 
 		/****************** CStructure ******************/
 		/**** md5 signature: 8536306818e6758deef120ea5bed2397 ****/
 		%feature("compactdefaultargs") CStructure;
-		%feature("autodoc", "Returns the low-level structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_CStructure>
+
+Description
+-----------
+Returns the low-level structure.
 ") CStructure;
 		const opencascade::handle<Graphic3d_CStructure> & CStructure();
 
 		/****************** CalculateBoundBox ******************/
 		/**** md5 signature: 3cd917a65fbfcb31c0e55116f05f4157 ****/
 		%feature("compactdefaultargs") CalculateBoundBox;
-		%feature("autodoc", "Computes axis-aligned bounding box of a structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Computes axis-aligned bounding box of a structure.
 ") CalculateBoundBox;
 		virtual void CalculateBoundBox();
 
 		/****************** Clear ******************/
 		/**** md5 signature: 454e74f017dda05b166605a85eeb7a19 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "If withdestruction == standard_true then suppress all the groups of primitives in the structure. and it is mandatory to create a new group in <self>. if withdestruction == standard_false then clears all the groups of primitives in the structure. and all the groups are conserved and empty. they will be erased at the next screen update. the structure itself is conserved. the transformation and the attributes of <self> are conserved. the childs of <self> are conserved.
-
+		%feature("autodoc", "
 Parameters
 ----------
-WithDestruction: bool,optional
-	default value is Standard_True
+WithDestruction: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+If withdestruction == standard_true then suppress all the groups of primitives in the structure. and it is mandatory to create a new group in <self>. if withdestruction == standard_false then clears all the groups of primitives in the structure. and all the groups are conserved and empty. they will be erased at the next screen update. the structure itself is conserved. the transformation and the attributes of <self> are conserved. the childs of <self> are conserved.
 ") Clear;
 		virtual void Clear(const Standard_Boolean WithDestruction = Standard_True);
 
 		/****************** ClipPlanes ******************/
 		/**** md5 signature: 26ab80085e76b6f03b64af6598080486 ****/
 		%feature("compactdefaultargs") ClipPlanes;
-		%feature("autodoc", "Get clip planes slicing the structure on rendering. returns set of clip planes.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_SequenceOfHClipPlane>
+
+Description
+-----------
+Get clip planes slicing the structure on rendering. return set of clip planes.
 ") ClipPlanes;
 		const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ClipPlanes();
 
 		/****************** Compute ******************/
 		/**** md5 signature: 4dfc24dddeda03f1df06c9a5cb138df0 ****/
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Compute;
 		virtual void Compute();
 
 		/****************** ComputeVisual ******************/
 		/**** md5 signature: 751db0567d7c16c28d68a3f12ecf6a77 ****/
 		%feature("compactdefaultargs") ComputeVisual;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfStructure
+
+Description
+-----------
+No available documentation.
 ") ComputeVisual;
 		Graphic3d_TypeOfStructure ComputeVisual();
 
 		/****************** Connect ******************/
 		/**** md5 signature: 2d740fb9596c625efc0e0120d3cf3b14 ****/
 		%feature("compactdefaultargs") Connect;
-		%feature("autodoc", "If atype is toc_descendant then add <astructure> as a child structure of <self>. if atype is toc_ancestor then add <astructure> as a parent structure of <self>. the connection propagates display, highlight, erase, remove, and stacks the transformations. no connection if the graph of the structures contains a cycle and <withcheck> is standard_true;.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure *
 theType: Graphic3d_TypeOfConnection
-theWithCheck: bool,optional
-	default value is Standard_False
+theWithCheck: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+If atype is toc_descendant then add <astructure> as a child structure of <self>. if atype is toc_ancestor then add <astructure> as a parent structure of <self>. the connection propagates display, highlight, erase, remove, and stacks the transformations. no connection if the graph of the structures contains a cycle and <withcheck> is standard_true;.
 ") Connect;
 		void Connect(Graphic3d_Structure * theStructure, Graphic3d_TypeOfConnection theType, Standard_Boolean theWithCheck = Standard_False);
 
 		/****************** Connect ******************/
 		/**** md5 signature: 9e0e0ae43d339f64ec839f31730c4cad ****/
 		%feature("compactdefaultargs") Connect;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePrs: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Connect;
 		void Connect(const opencascade::handle<Graphic3d_Structure> & thePrs);
 
 		/****************** CurrentGroup ******************/
 		/**** md5 signature: dc1f0b5eea98b580e880b9e6c8061d8f ****/
 		%feature("compactdefaultargs") CurrentGroup;
-		%feature("autodoc", "Returns the last created group or creates new one if list is empty.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_Group>
+
+Description
+-----------
+Returns the last created group or creates new one if list is empty.
 ") CurrentGroup;
 		opencascade::handle<Graphic3d_Group> CurrentGroup();
 
 		/****************** Descendants ******************/
 		/**** md5 signature: 6868f845687fc9b9352d8ad58268d070 ****/
 		%feature("compactdefaultargs") Descendants;
-		%feature("autodoc", "Returns the group of structures connected to <self>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 SG: Graphic3d_MapOfStructure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the group of structures connected to <self>.
 ") Descendants;
 		void Descendants(Graphic3d_MapOfStructure & SG);
 
 		/****************** Disconnect ******************/
 		/**** md5 signature: f16e2a64d5f4c2c9802fe7e384632817 ****/
 		%feature("compactdefaultargs") Disconnect;
-		%feature("autodoc", "Suppress the connection between <astructure> and <self>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure *
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Suppress the connection between <astructure> and <self>.
 ") Disconnect;
 		void Disconnect(Graphic3d_Structure * theStructure);
 
 		/****************** DisconnectAll ******************/
 		/**** md5 signature: 2c9ce51fe44c5f626279c3983bae6668 ****/
 		%feature("compactdefaultargs") DisconnectAll;
-		%feature("autodoc", "If atype is toc_descendant then suppress all the connections with the child structures of <self>. if atype is toc_ancestor then suppress all the connections with the parent structures of <self>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 AType: Graphic3d_TypeOfConnection
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+If atype is toc_descendant then suppress all the connections with the child structures of <self>. if atype is toc_ancestor then suppress all the connections with the parent structures of <self>.
 ") DisconnectAll;
 		void DisconnectAll(const Graphic3d_TypeOfConnection AType);
 
 		/****************** Display ******************/
 		/**** md5 signature: 3c4cca883a8ef6cb513945de5fd9c904 ****/
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "Displays the structure <self> in all the views of the visualiser.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Displays the structure <self> in all the views of the visualiser.
 ") Display;
 		virtual void Display();
 
 		/****************** DisplayPriority ******************/
 		/**** md5 signature: 569cd12ac8a5e3ea17f776921edea002 ****/
 		%feature("compactdefaultargs") DisplayPriority;
-		%feature("autodoc", "Returns the current display priority for this structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_DisplayPriority
+
+Description
+-----------
+Returns the current display priority for this structure.
 ") DisplayPriority;
 		Graphic3d_DisplayPriority DisplayPriority();
 
@@ -13961,659 +15967,780 @@ Graphic3d_DisplayPriority
 		/****************** Erase ******************/
 		/**** md5 signature: 61a58cd527074b370b7b4538af53adc9 ****/
 		%feature("compactdefaultargs") Erase;
-		%feature("autodoc", "Erases this structure in all the views of the visualiser.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Erases this structure in all the views of the visualiser.
 ") Erase;
 		virtual void Erase();
 
 		/****************** GetZLayer ******************/
 		/**** md5 signature: 9e218901096cdecec418e74ac6fe9f8e ****/
 		%feature("compactdefaultargs") GetZLayer;
-		%feature("autodoc", "Get z layer id of displayed structure. the method returns -1 if the structure has no id (deleted from graphic driver).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_ZLayerId
+
+Description
+-----------
+Get z layer id of displayed structure. the method returns -1 if the structure has no id (deleted from graphic driver).
 ") GetZLayer;
 		Graphic3d_ZLayerId GetZLayer();
 
 		/****************** GraphicClear ******************/
 		/**** md5 signature: f3e59f6688be1e05f2d68ebbb6dd0a49 ****/
 		%feature("compactdefaultargs") GraphicClear;
-		%feature("autodoc", "Clears the structure <self>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 WithDestruction: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Clears the structure <self>.
 ") GraphicClear;
 		void GraphicClear(const Standard_Boolean WithDestruction);
 
 		/****************** GraphicConnect ******************/
 		/**** md5 signature: 25414aa036ce4f9c880fca991929e226 ****/
 		%feature("compactdefaultargs") GraphicConnect;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDaughter: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") GraphicConnect;
 		void GraphicConnect(const opencascade::handle<Graphic3d_Structure> & theDaughter);
 
 		/****************** GraphicDisconnect ******************/
 		/**** md5 signature: de24d017a05f43bfaaaa80e642a46101 ****/
 		%feature("compactdefaultargs") GraphicDisconnect;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDaughter: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") GraphicDisconnect;
 		void GraphicDisconnect(const opencascade::handle<Graphic3d_Structure> & theDaughter);
 
 		/****************** GraphicTransform ******************/
 		/**** md5 signature: 9d5e921112bd06c55d92d6ab11115760 ****/
 		%feature("compactdefaultargs") GraphicTransform;
-		%feature("autodoc", "Internal method which sets new transformation without calling graphic manager callbacks.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTrsf: TopLoc_Datum3D
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Internal method which sets new transformation without calling graphic manager callbacks.
 ") GraphicTransform;
 		void GraphicTransform(const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
 		/****************** Groups ******************/
 		/**** md5 signature: d58f58de9bde8c9bb93737989f881ace ****/
 		%feature("compactdefaultargs") Groups;
-		%feature("autodoc", "Returns the groups sequence included in this structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_SequenceOfGroup
+
+Description
+-----------
+Returns the groups sequence included in this structure.
 ") Groups;
 		const Graphic3d_SequenceOfGroup & Groups();
 
 		/****************** HLRValidation ******************/
 		/**** md5 signature: 7c948b7a593b11d1648ac6560e4fcd4e ****/
 		%feature("compactdefaultargs") HLRValidation;
-		%feature("autodoc", "Hidden parts stored in this structure are valid if: 1) the owner is defined. 2) they are not invalid.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Hidden parts stored in this structure are valid if: 1) the owner is defined. 2) they are not invalid.
 ") HLRValidation;
 		Standard_Boolean HLRValidation();
 
 		/****************** Highlight ******************/
 		/**** md5 signature: 2f79c6807b996e997028f88c66547141 ****/
 		%feature("compactdefaultargs") Highlight;
-		%feature("autodoc", "Highlights the structure in all the views with the given style @param thestyle [in] the style (type of highlighting: box/color, color and opacity) @param thetoupdatemgr [in] defines whether related computed structures will be highlighted via structure manager or not.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStyle: Graphic3d_PresentationAttributes
-theToUpdateMgr: bool,optional
-	default value is Standard_True
+theToUpdateMgr: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Highlights the structure in all the views with the given style @param thestyle [in] the style (type of highlighting: box/color, color and opacity) @param thetoupdatemgr [in] defines whether related computed structures will be highlighted via structure manager or not.
 ") Highlight;
 		void Highlight(const opencascade::handle<Graphic3d_PresentationAttributes> & theStyle, const Standard_Boolean theToUpdateMgr = Standard_True);
 
 		/****************** HighlightStyle ******************/
 		/**** md5 signature: 8178b69ba5e9aec0fad5df24b6a36d07 ****/
 		%feature("compactdefaultargs") HighlightStyle;
-		%feature("autodoc", "Returns the highlight attributes.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_PresentationAttributes>
+
+Description
+-----------
+Returns the highlight attributes.
 ") HighlightStyle;
 		const opencascade::handle<Graphic3d_PresentationAttributes> & HighlightStyle();
 
 		/****************** Identification ******************/
 		/**** md5 signature: f18c91e46c1b20a4777abd8f80b5550f ****/
 		%feature("compactdefaultargs") Identification;
-		%feature("autodoc", "Returns the identification number of this structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the identification number of this structure.
 ") Identification;
 		Standard_Integer Identification();
 
 		/****************** IsDeleted ******************/
 		/**** md5 signature: f30d8bbdb3983c8c28e79a704fa27920 ****/
 		%feature("compactdefaultargs") IsDeleted;
-		%feature("autodoc", "Returns true if this structure is deleted (after remove() call).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if this structure is deleted (after remove() call).
 ") IsDeleted;
 		Standard_Boolean IsDeleted();
 
 		/****************** IsDisplayed ******************/
 		/**** md5 signature: 9ecbb5540141c9e9732c9946cab3de18 ****/
 		%feature("compactdefaultargs") IsDisplayed;
-		%feature("autodoc", "Returns the display indicator for this structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns the display indicator for this structure.
 ") IsDisplayed;
 		virtual Standard_Boolean IsDisplayed();
 
 		/****************** IsEmpty ******************/
 		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
 		%feature("compactdefaultargs") IsEmpty;
-		%feature("autodoc", "Returns standard_true if the structure <self> is empty. warning: a structure is empty if : it do not have group or all the groups are empties and it do not have descendant or all the descendants are empties.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if the structure <self> is empty. warning: a structure is empty if: it do not have group or all the groups are empties and it do not have descendant or all the descendants are empties.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
 		/****************** IsHighlighted ******************/
 		/**** md5 signature: 583f6ffd53a2d75ad144ad1c1fb800bb ****/
 		%feature("compactdefaultargs") IsHighlighted;
-		%feature("autodoc", "Returns the highlight indicator for this structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns the highlight indicator for this structure.
 ") IsHighlighted;
 		virtual Standard_Boolean IsHighlighted();
 
 		/****************** IsInfinite ******************/
 		/**** md5 signature: 7633661c322c89b950f649430bd827bf ****/
 		%feature("compactdefaultargs") IsInfinite;
-		%feature("autodoc", "Returns standard_true if the structure <self> is infinite.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true if the structure <self> is infinite.
 ") IsInfinite;
 		Standard_Boolean IsInfinite();
 
 		/****************** IsMutable ******************/
 		/**** md5 signature: 3ee3916ef3d39d63be5557b524ac1b86 ****/
 		%feature("compactdefaultargs") IsMutable;
-		%feature("autodoc", "Returns true if structure has mutable nature (content or location are be changed regularly). mutable structure will be managed in different way than static onces.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if structure has mutable nature (content or location are be changed regularly). mutable structure will be managed in different way than static onces.
 ") IsMutable;
 		Standard_Boolean IsMutable();
 
 		/****************** IsTransformed ******************/
 		/**** md5 signature: 9b72ea9014a7f74b75411f3cb15d5e01 ****/
 		%feature("compactdefaultargs") IsTransformed;
-		%feature("autodoc", "Returns true if the structure is transformed.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the structure is transformed.
 ") IsTransformed;
 		Standard_Boolean IsTransformed();
 
 		/****************** IsVisible ******************/
 		/**** md5 signature: d2de178c6bd2985a6f06b17107c0b3e4 ****/
 		%feature("compactdefaultargs") IsVisible;
-		%feature("autodoc", "Returns the visibility indicator for this structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns the visibility indicator for this structure.
 ") IsVisible;
 		Standard_Boolean IsVisible();
 
 		/****************** MinMaxValues ******************/
 		/**** md5 signature: 8cca1ef5f121ffd0d02be51223cb1475 ****/
 		%feature("compactdefaultargs") MinMaxValues;
-		%feature("autodoc", "Returns the coordinates of the boundary box of the structure <self>. if <thetoignoreinfiniteflag> is true, the method returns actual graphical boundaries of the graphic3d_group components. otherwise, the method returns boundaries taking into account infinite state of the structure. this approach generally used for application specific fit operation (e.g. fitting the model into screen, not taking into account infinite helper elements). warning: if the structure <self> is empty then the empty box is returned, if the structure <self> is infinite then the whole box is returned.
-
+		%feature("autodoc", "
 Parameters
 ----------
-theToIgnoreInfiniteFlag: bool,optional
-	default value is Standard_False
+theToIgnoreInfiniteFlag: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 Bnd_Box
+
+Description
+-----------
+Returns the coordinates of the boundary box of the structure <self>. if <thetoignoreinfiniteflag> is true, the method returns actual graphical boundaries of the graphic3d_group components. otherwise, the method returns boundaries taking into account infinite state of the structure. this approach generally used for application specific fit operation (e.g. fitting the model into screen, not taking into account infinite helper elements). warning: if the structure <self> is empty then the empty box is returned, if the structure <self> is infinite then the whole box is returned.
 ") MinMaxValues;
 		Bnd_Box MinMaxValues(const Standard_Boolean theToIgnoreInfiniteFlag = Standard_False);
 
 		/****************** Network ******************/
 		/**** md5 signature: 1f04794fd49a26ab24b1976d3d47fc2a ****/
 		%feature("compactdefaultargs") Network;
-		%feature("autodoc", "Returns <aset> the group of structures : - directly or indirectly connected to <astructure> if the typeofconnection == toc_descendant - to which <astructure> is directly or indirectly connected if the typeofconnection == toc_ancestor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure *
 theType: Graphic3d_TypeOfConnection
 theSet: NCollection_Map<Graphic3d_Structure *>
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns <aset> the group of structures: - directly or indirectly connected to <astructure> if the typeofconnection == toc_descendant - to which <astructure> is directly or indirectly connected if the typeofconnection == toc_ancestor.
 ") Network;
 		static void Network(Graphic3d_Structure * theStructure, const Graphic3d_TypeOfConnection theType, NCollection_Map<Graphic3d_Structure *> & theSet);
 
 		/****************** NewGroup ******************/
 		/**** md5 signature: 2179c9c42459d394fb9020a6a6dec876 ****/
 		%feature("compactdefaultargs") NewGroup;
-		%feature("autodoc", "Append new group to this structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_Group>
+
+Description
+-----------
+Append new group to this structure.
 ") NewGroup;
 		opencascade::handle<Graphic3d_Group> NewGroup();
 
 		/****************** NumberOfGroups ******************/
 		/**** md5 signature: e843bea55577f651361f78ab56ad5e34 ****/
 		%feature("compactdefaultargs") NumberOfGroups;
-		%feature("autodoc", "Returns the current number of groups in this structure.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the current number of groups in this structure.
 ") NumberOfGroups;
 		Standard_Integer NumberOfGroups();
 
 		/****************** Owner ******************/
 		/**** md5 signature: ba418fdbece313ec9cc73895f3a761a0 ****/
 		%feature("compactdefaultargs") Owner;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Address
+
+Description
+-----------
+No available documentation.
 ") Owner;
 		Standard_Address Owner();
 
 		/****************** PrintNetwork ******************/
 		/**** md5 signature: f1e583afd3eefb370d3f45b8d7cc688e ****/
 		%feature("compactdefaultargs") PrintNetwork;
-		%feature("autodoc", "Prints information about the network associated with the structure <astructure>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 AStructure: Graphic3d_Structure
 AType: Graphic3d_TypeOfConnection
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Prints information about the network associated with the structure <astructure>.
 ") PrintNetwork;
 		static void PrintNetwork(const opencascade::handle<Graphic3d_Structure> & AStructure, const Graphic3d_TypeOfConnection AType);
 
 		/****************** ReCompute ******************/
 		/**** md5 signature: 6619326e603ccdb36e9cfecd2b36ae53 ****/
 		%feature("compactdefaultargs") ReCompute;
-		%feature("autodoc", "Forces a new construction of the structure <self> if <self> is displayed and tos_computed.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Forces a new construction of the structure <self> if <self> is displayed and tos_computed.
 ") ReCompute;
 		void ReCompute();
 
 		/****************** ReCompute ******************/
 		/**** md5 signature: 546d2e35de2d763b0501620176659a8b ****/
 		%feature("compactdefaultargs") ReCompute;
-		%feature("autodoc", "Forces a new construction of the structure <self> if <self> is displayed in <aprojetor> and tos_computed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aProjector: Graphic3d_DataStructureManager
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Forces a new construction of the structure <self> if <self> is displayed in <aprojetor> and tos_computed.
 ") ReCompute;
 		void ReCompute(const opencascade::handle<Graphic3d_DataStructureManager> & aProjector);
 
 		/****************** Remove ******************/
 		/**** md5 signature: 0346504d7ac570fc8960fb72d5ad5f20 ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "Suppress the structure <self>. it will be erased at the next screen update. warning: no more graphic operations in <self> after this call. category: methods to modify the class definition.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Suppress the structure <self>. it will be erased at the next screen update. warning: no more graphic operations in <self> after this call. category: methods to modify the class definition.
 ") Remove;
 		void Remove();
 
 		/****************** Remove ******************/
 		/**** md5 signature: 91b66b071a3ae47ea82fbf40dc4f2290 ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePrs: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Remove;
 		void Remove(const opencascade::handle<Graphic3d_Structure> & thePrs);
 
 		/****************** Remove ******************/
 		/**** md5 signature: 090f833049a2c27ad3b00f3de10a2737 ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "Suppress the structure in the list of descendants or in the list of ancestors.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePtr: Graphic3d_Structure *
 theType: Graphic3d_TypeOfConnection
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Suppress the structure in the list of descendants or in the list of ancestors.
 ") Remove;
 		void Remove(Graphic3d_Structure * thePtr, const Graphic3d_TypeOfConnection theType);
 
 		/****************** RemoveAll ******************/
 		/**** md5 signature: 21d367538c35ee0fd687e7543534de8e ****/
 		%feature("compactdefaultargs") RemoveAll;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") RemoveAll;
 		void RemoveAll();
 
 		/****************** ResetDisplayPriority ******************/
 		/**** md5 signature: 7e9a6fef73d14b5bf0e50b4d1a74fe4f ****/
 		%feature("compactdefaultargs") ResetDisplayPriority;
-		%feature("autodoc", "Reset the current priority of the structure to the previous priority. warning: if structure is displayed then the setdisplaypriority() method erases it and displays with the previous priority.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Reset the current priority of the structure to the previous priority. warning: if structure is displayed then the setdisplaypriority() method erases it and displays with the previous priority.
 ") ResetDisplayPriority;
 		void ResetDisplayPriority();
 
 		/****************** SetClipPlanes ******************/
 		/**** md5 signature: e4333b4a8793a61136630719405f0b4b ****/
 		%feature("compactdefaultargs") SetClipPlanes;
-		%feature("autodoc", "Changes a sequence of clip planes slicing the structure on rendering. @param theplanes [in] the set of clip planes.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePlanes: Graphic3d_SequenceOfHClipPlane
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes a sequence of clip planes slicing the structure on rendering. @param theplanes [in] the set of clip planes.
 ") SetClipPlanes;
 		void SetClipPlanes(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
 
 		/****************** SetComputeVisual ******************/
 		/**** md5 signature: f3be360944707961d7edf642114e6153 ****/
 		%feature("compactdefaultargs") SetComputeVisual;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVisual: Graphic3d_TypeOfStructure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetComputeVisual;
 		void SetComputeVisual(const Graphic3d_TypeOfStructure theVisual);
 
 		/****************** SetDisplayPriority ******************/
 		/**** md5 signature: 7ab59d52dbc820e0408e02d58be68382 ****/
 		%feature("compactdefaultargs") SetDisplayPriority;
-		%feature("autodoc", "Modifies the order of displaying the structure. values are between 0 and 10. structures are drawn according to their display priorities in ascending order. a structure of priority 10 is displayed the last and appears over the others. the default value is 5. warning: if structure is displayed then the setdisplaypriority method erases it and displays with the new priority. raises graphic3d_prioritydefinitionerror if priority is greater than 10 or a negative value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePriority: Graphic3d_DisplayPriority
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the order of displaying the structure. values are between 0 and 10. structures are drawn according to their display priorities in ascending order. a structure of priority 10 is displayed the last and appears over the others. the default value is 5. warning: if structure is displayed then the setdisplaypriority method erases it and displays with the new priority. raises graphic3d_prioritydefinitionerror if priority is greater than 10 or a negative value.
 ") SetDisplayPriority;
 		void SetDisplayPriority(const Graphic3d_DisplayPriority thePriority);
 
 		/****************** SetDisplayPriority ******************/
 		/**** md5 signature: 257b1a4d2b02b4df2a7bdb13d8cd1785 ****/
 		%feature("compactdefaultargs") SetDisplayPriority;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePriority: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetDisplayPriority;
 		void SetDisplayPriority(const Standard_Integer thePriority);
 
 		/****************** SetHLRValidation ******************/
 		/**** md5 signature: 6a04c1b7f9ddd201cd2765dc7cdbe2db ****/
 		%feature("compactdefaultargs") SetHLRValidation;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFlag: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetHLRValidation;
 		void SetHLRValidation(const Standard_Boolean theFlag);
 
 		/****************** SetInfiniteState ******************/
 		/**** md5 signature: 9f4cff7414f5b0e15c20bad197a89a41 ****/
 		%feature("compactdefaultargs") SetInfiniteState;
-		%feature("autodoc", "Sets infinite flag. when true, the minmaxvalues method returns: thexmin = theymin = thezmin = realfirst(). thexmax = theymax = thezmax = reallast(). by default, structure is created not infinite but empty.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToSet: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets infinite flag. when true, the minmaxvalues method returns: thexmin = theymin = thezmin = realfirst(). thexmax = theymax = thezmax = reallast(). by default, structure is created not infinite but empty.
 ") SetInfiniteState;
 		void SetInfiniteState(const Standard_Boolean theToSet);
 
 		/****************** SetIsForHighlight ******************/
 		/**** md5 signature: e31d652958b3a66e22fec5a3cb5a2bdd ****/
 		%feature("compactdefaultargs") SetIsForHighlight;
-		%feature("autodoc", "Marks the structure <self> representing wired structure needed for highlight only so it won't be added to bvh tree.
-
+		%feature("autodoc", "
 Parameters
 ----------
 isForHighlight: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Marks the structure <self> representing wired structure needed for highlight only so it won't be added to bvh tree.
 ") SetIsForHighlight;
 		void SetIsForHighlight(const Standard_Boolean isForHighlight);
 
 		/****************** SetMutable ******************/
 		/**** md5 signature: 7064c07aba56b6576bc333ebc76ce783 ****/
 		%feature("compactdefaultargs") SetMutable;
-		%feature("autodoc", "Sets if the structure location has mutable nature (content or location will be changed regularly).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsMutable: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets if the structure location has mutable nature (content or location will be changed regularly).
 ") SetMutable;
 		void SetMutable(const Standard_Boolean theIsMutable);
 
 		/****************** SetOwner ******************/
 		/**** md5 signature: 91cb9cd7e90ba624db681c064887fc16 ****/
 		%feature("compactdefaultargs") SetOwner;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwner: Standard_Address
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetOwner;
 		void SetOwner(const Standard_Address theOwner);
 
 		/****************** SetTransformPersistence ******************/
 		/**** md5 signature: 58f8832cbff26a7b2b30abc76e733511 ****/
 		%feature("compactdefaultargs") SetTransformPersistence;
-		%feature("autodoc", "Modifies the current transform persistence (pan, zoom or rotate).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTrsfPers: Graphic3d_TransformPers
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the current transform persistence (pan, zoom or rotate).
 ") SetTransformPersistence;
 		void SetTransformPersistence(const opencascade::handle<Graphic3d_TransformPers> & theTrsfPers);
 
 		/****************** SetTransformation ******************/
 		/**** md5 signature: 5ed349b7755a32982bb5ffa30e287efc ****/
 		%feature("compactdefaultargs") SetTransformation;
-		%feature("autodoc", "Modifies the current local transformation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTrsf: TopLoc_Datum3D
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the current local transformation.
 ") SetTransformation;
 		void SetTransformation(const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
 		/****************** SetVisible ******************/
 		/**** md5 signature: f4dcdbb4f4eb850359a072447385fecf ****/
 		%feature("compactdefaultargs") SetVisible;
-		%feature("autodoc", "Modifies the visibility indicator to standard_true or standard_false for the structure <self>. the default value at the definition of <self> is standard_true.
-
+		%feature("autodoc", "
 Parameters
 ----------
 AValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the visibility indicator to standard_true or standard_false for the structure <self>. the default value at the definition of <self> is standard_true.
 ") SetVisible;
 		void SetVisible(const Standard_Boolean AValue);
 
 		/****************** SetVisual ******************/
 		/**** md5 signature: a541b1b8c8f18e85eee24ee866323f66 ****/
 		%feature("compactdefaultargs") SetVisual;
-		%feature("autodoc", "Modifies the visualisation mode for the structure <self>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 AVisual: Graphic3d_TypeOfStructure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the visualisation mode for the structure <self>.
 ") SetVisual;
 		virtual void SetVisual(const Graphic3d_TypeOfStructure AVisual);
 
 		/****************** SetZLayer ******************/
 		/**** md5 signature: 1234e282b3516163b291390663f2b62b ****/
 		%feature("compactdefaultargs") SetZLayer;
-		%feature("autodoc", "Set z layer id for the structure. the z layer mechanism allows to display structures presented in higher layers in overlay of structures in lower layers by switching off z buffer depth test between layers.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerId: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set z layer id for the structure. the z layer mechanism allows to display structures presented in higher layers in overlay of structures in lower layers by switching off z buffer depth test between layers.
 ") SetZLayer;
 		void SetZLayer(int theLayerId);
 
 		/****************** SetZoomLimit ******************/
 		/**** md5 signature: b82384debbefbfbcf6ed40f4e3fc08fd ****/
 		%feature("compactdefaultargs") SetZoomLimit;
-		%feature("autodoc", "Modifies the minimum and maximum zoom coefficients for the structure <self>. the default value at the definition of <self> is unlimited. category: methods to modify the class definition warning: raises structuredefinitionerror if <limitinf> is greater than <limitsup> or if <limitinf> or <limitsup> is a negative value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 LimitInf: float
 LimitSup: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the minimum and maximum zoom coefficients for the structure <self>. the default value at the definition of <self> is unlimited. category: methods to modify the class definition warning: raises structuredefinitionerror if <limitinf> is greater than <limitsup> or if <limitinf> or <limitsup> is a negative value.
 ") SetZoomLimit;
 		void SetZoomLimit(const Standard_Real LimitInf, const Standard_Real LimitSup);
 
 		/****************** TransformPersistence ******************/
 		/**** md5 signature: f93fa6b8590ec0070c74ed0573b98382 ****/
 		%feature("compactdefaultargs") TransformPersistence;
-		%feature("autodoc", "Returns transform persistence of the presentable object.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_TransformPers>
+
+Description
+-----------
+Return transform persistence of the presentable object.
 ") TransformPersistence;
 		const opencascade::handle<Graphic3d_TransformPers> & TransformPersistence();
 
 		/****************** Transformation ******************/
 		/**** md5 signature: db8c043002ade3619cbf19c2cdc0b508 ****/
 		%feature("compactdefaultargs") Transformation;
-		%feature("autodoc", "Return local transformation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TopLoc_Datum3D>
+
+Description
+-----------
+Return local transformation.
 ") Transformation;
 		const opencascade::handle<TopLoc_Datum3D> & Transformation();
 
 		/****************** Transforms ******************/
 		/**** md5 signature: 41f8190738fa3a976ef45fd1ae2cefe0 ****/
 		%feature("compactdefaultargs") Transforms;
-		%feature("autodoc", "Transforms thex, they, thez with the transformation thetrsf.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTrsf: gp_Trsf
@@ -14621,49 +16748,60 @@ theX: float
 theY: float
 theZ: float
 
-Returns
+Return
 -------
 theNewX: float
 theNewY: float
 theNewZ: float
+
+Description
+-----------
+Transforms thex, they, thez with the transformation thetrsf.
 ") Transforms;
 		static void Transforms(const gp_Trsf & theTrsf, const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** UnHighlight ******************/
 		/**** md5 signature: 39ce43ce3b46f356efde8e354316b376 ****/
 		%feature("compactdefaultargs") UnHighlight;
-		%feature("autodoc", "Suppresses the highlight for the structure <self> in all the views of the visualiser.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Suppresses the highlight for the structure <self> in all the views of the visualiser.
 ") UnHighlight;
 		void UnHighlight();
 
 		/****************** Visual ******************/
 		/**** md5 signature: db220160db9236600897688cadcd5ce7 ****/
 		%feature("compactdefaultargs") Visual;
-		%feature("autodoc", "Returns the visualisation mode for the structure <self>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfStructure
+
+Description
+-----------
+Returns the visualisation mode for the structure <self>.
 ") Visual;
 		Graphic3d_TypeOfStructure Visual();
 
 		/****************** computeHLR ******************/
 		/**** md5 signature: 3f519e2f0f12a70d51d7226a8c10f959 ****/
 		%feature("compactdefaultargs") computeHLR;
-		%feature("autodoc", "Returns the new structure defined for the new visualization.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProjector: Graphic3d_Camera
 theStructure: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the new structure defined for the new visualization.
 ") computeHLR;
 		virtual void computeHLR(const opencascade::handle<Graphic3d_Camera> & theProjector, opencascade::handle<Graphic3d_Structure> & theStructure);
 
@@ -14686,137 +16824,163 @@ class Graphic3d_StructureManager : public Standard_Transient {
 		/****************** Graphic3d_StructureManager ******************/
 		/**** md5 signature: bf06c4f7a4fd2e5e28e43056a4a6b6d3 ****/
 		%feature("compactdefaultargs") Graphic3d_StructureManager;
-		%feature("autodoc", "Initializes the viewmanager. currently creating of more than 100 viewer instances is not supported and leads to initializationerror and initialization failure. this limitation might be addressed in some future occt releases. warning: raises initialisationerror if the initialization of the viewmanager failed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDriver: Graphic3d_GraphicDriver
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initializes the viewmanager. currently creating of more than 100 viewer instances is not supported and leads to initializationerror and initialization failure. this limitation might be addressed in some future occt releases. warning: raises initialisationerror if the initialization of the viewmanager failed.
 ") Graphic3d_StructureManager;
 		 Graphic3d_StructureManager(const opencascade::handle<Graphic3d_GraphicDriver> & theDriver);
 
 		/****************** ChangeDisplayPriority ******************/
 		/**** md5 signature: f4e4404a4991ec3c3960c0f024d20108 ****/
 		%feature("compactdefaultargs") ChangeDisplayPriority;
-		%feature("autodoc", "Changes the display priority of the structure <astructure>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure
 theOldPriority: Graphic3d_DisplayPriority
 theNewPriority: Graphic3d_DisplayPriority
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes the display priority of the structure <astructure>.
 ") ChangeDisplayPriority;
 		virtual void ChangeDisplayPriority(const opencascade::handle<Graphic3d_Structure> & theStructure, const Graphic3d_DisplayPriority theOldPriority, const Graphic3d_DisplayPriority theNewPriority);
 
 		/****************** ChangeZLayer ******************/
 		/**** md5 signature: d68c801a4cace524cd37e40b6911217d ****/
 		%feature("compactdefaultargs") ChangeZLayer;
-		%feature("autodoc", "Change z layer for structure. the z layer mechanism allows to display structures in higher layers in overlay of structures in lower layers.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure
 theLayerId: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change z layer for structure. the z layer mechanism allows to display structures in higher layers in overlay of structures in lower layers.
 ") ChangeZLayer;
 		virtual void ChangeZLayer(const opencascade::handle<Graphic3d_Structure> & theStructure, int theLayerId);
 
 		/****************** Clear ******************/
 		/**** md5 signature: bc3243fa7b973482ba302c258c16ea88 ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure *
 theWithDestruction: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Clears the structure.
 ") Clear;
 		virtual void Clear(Graphic3d_Structure * theStructure, const Standard_Boolean theWithDestruction);
 
 		/****************** Connect ******************/
 		/**** md5 signature: 9b16e71d7a09bd5e9e14f2b36df2da35 ****/
 		%feature("compactdefaultargs") Connect;
-		%feature("autodoc", "Connects the structures.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMother: Graphic3d_Structure *
 theDaughter: Graphic3d_Structure *
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Connects the structures.
 ") Connect;
 		virtual void Connect(const Graphic3d_Structure * theMother, const Graphic3d_Structure * theDaughter);
 
 		/****************** DefinedViews ******************/
 		/**** md5 signature: d5e8d85b2dd4e7bed7107e0d9b8eadc4 ****/
 		%feature("compactdefaultargs") DefinedViews;
-		%feature("autodoc", "Returns the group of views defined in the structure manager.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_IndexedMapOfView
+
+Description
+-----------
+Returns the group of views defined in the structure manager.
 ") DefinedViews;
 		const Graphic3d_IndexedMapOfView & DefinedViews();
 
 		/****************** Disconnect ******************/
 		/**** md5 signature: 3ba10497297476c17744bdf68bcf5062 ****/
 		%feature("compactdefaultargs") Disconnect;
-		%feature("autodoc", "Disconnects the structures.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMother: Graphic3d_Structure *
 theDaughter: Graphic3d_Structure *
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Disconnects the structures.
 ") Disconnect;
 		virtual void Disconnect(const Graphic3d_Structure * theMother, const Graphic3d_Structure * theDaughter);
 
 		/****************** Display ******************/
 		/**** md5 signature: 0a0ff1e10f8ac4b3e756504382415923 ****/
 		%feature("compactdefaultargs") Display;
-		%feature("autodoc", "Display the structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Display the structure.
 ") Display;
 		virtual void Display(const opencascade::handle<Graphic3d_Structure> & theStructure);
 
 		/****************** DisplayedStructures ******************/
 		/**** md5 signature: 4e1b7e53694d843df9afca99b1dae04f ****/
 		%feature("compactdefaultargs") DisplayedStructures;
-		%feature("autodoc", "Returns the set of structures displayed in visualiser <self>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 SG: Graphic3d_MapOfStructure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the set of structures displayed in visualiser <self>.
 ") DisplayedStructures;
 		void DisplayedStructures(Graphic3d_MapOfStructure & SG);
 
@@ -14832,317 +16996,377 @@ None
 		/****************** Erase ******************/
 		/**** md5 signature: 6b8959c3f27bc8bb25573acddfac71b2 ****/
 		%feature("compactdefaultargs") Erase;
-		%feature("autodoc", "Erases all the structures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Erases all the structures.
 ") Erase;
 		virtual void Erase();
 
 		/****************** Erase ******************/
 		/**** md5 signature: 33fbe9ece3c4395e53fad2a8c75ab2e3 ****/
 		%feature("compactdefaultargs") Erase;
-		%feature("autodoc", "Erases the structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Erases the structure.
 ") Erase;
 		virtual void Erase(const opencascade::handle<Graphic3d_Structure> & theStructure);
 
 		/****************** GraphicDriver ******************/
 		/**** md5 signature: 5e26d54a69268bb1bfaed21ac554840d ****/
 		%feature("compactdefaultargs") GraphicDriver;
-		%feature("autodoc", "Returns the graphic driver of <self>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_GraphicDriver>
+
+Description
+-----------
+Returns the graphic driver of <self>.
 ") GraphicDriver;
 		const opencascade::handle<Graphic3d_GraphicDriver> & GraphicDriver();
 
 		/****************** Highlight ******************/
 		/**** md5 signature: 9252511647a737dcb6a04cd2d948f231 ****/
 		%feature("compactdefaultargs") Highlight;
-		%feature("autodoc", "Highlights the structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Highlights the structure.
 ") Highlight;
 		virtual void Highlight(const opencascade::handle<Graphic3d_Structure> & theStructure);
 
 		/****************** HighlightedStructures ******************/
 		/**** md5 signature: e69502508e647c45fb75408c49495c8a ****/
 		%feature("compactdefaultargs") HighlightedStructures;
-		%feature("autodoc", "Returns the set of highlighted structures in a visualiser <self>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 SG: Graphic3d_MapOfStructure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the set of highlighted structures in a visualiser <self>.
 ") HighlightedStructures;
 		void HighlightedStructures(Graphic3d_MapOfStructure & SG);
 
 		/****************** Identification ******************/
 		/**** md5 signature: 52f1107b9de1f2ac6d8015fc932be4e8 ****/
 		%feature("compactdefaultargs") Identification;
-		%feature("autodoc", "Attaches the view to this structure manager and sets its identification number within the manager.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theView: Graphic3d_CView *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Attaches the view to this structure manager and sets its identification number within the manager.
 ") Identification;
 		Standard_Integer Identification(Graphic3d_CView * theView);
 
 		/****************** Identification ******************/
 		/**** md5 signature: a53224867a430811054a9ea29719306c ****/
 		%feature("compactdefaultargs") Identification;
-		%feature("autodoc", "Returns the structure with the identification number <aid>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 AId: int
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_Structure>
+
+Description
+-----------
+Returns the structure with the identification number <aid>.
 ") Identification;
 		virtual opencascade::handle<Graphic3d_Structure> Identification(const Standard_Integer AId);
 
 		/****************** IsDeviceLost ******************/
 		/**** md5 signature: 0b1111f6d6e5892ffaaa28f2317aba65 ****/
 		%feature("compactdefaultargs") IsDeviceLost;
-		%feature("autodoc", "Returns true if device lost flag has been set and presentation data should be reuploaded onto graphics driver.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if device lost flag has been set and presentation data should be reuploaded onto graphics driver.
 ") IsDeviceLost;
 		Standard_Boolean IsDeviceLost();
 
 		/****************** MaxNumOfViews ******************/
 		/**** md5 signature: e14f2fbfa5bce9b7d36aae6946806247 ****/
 		%feature("compactdefaultargs") MaxNumOfViews;
-		%feature("autodoc", "Returns the theoretical maximum number of definable views in the manager. warning: it's not possible to accept an infinite number of definable views because each view must have an identification and we have different managers.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the theoretical maximum number of definable views in the manager. warning: it's not possible to accept an infinite number of definable views because each view must have an identification and we have different managers.
 ") MaxNumOfViews;
 		Standard_Integer MaxNumOfViews();
 
 		/****************** ObjectAffinity ******************/
 		/**** md5 signature: e79830514c49bd4e88b290587984cd82 ****/
 		%feature("compactdefaultargs") ObjectAffinity;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theObject: Standard_Transient
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_ViewAffinity>
+
+Description
+-----------
+No available documentation.
 ") ObjectAffinity;
 		const opencascade::handle<Graphic3d_ViewAffinity> & ObjectAffinity(const opencascade::handle<Standard_Transient> & theObject);
 
 		/****************** ReCompute ******************/
 		/**** md5 signature: 616a39795d0668f6d0f2c39a483d0904 ****/
 		%feature("compactdefaultargs") ReCompute;
-		%feature("autodoc", "Forces a new construction of the structure. if <thestructure> is displayed and tos_computed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Forces a new construction of the structure. if <thestructure> is displayed and tos_computed.
 ") ReCompute;
 		virtual void ReCompute(const opencascade::handle<Graphic3d_Structure> & theStructure);
 
 		/****************** ReCompute ******************/
 		/**** md5 signature: 83bb72430a81d8098709d68b51aa6597 ****/
 		%feature("compactdefaultargs") ReCompute;
-		%feature("autodoc", "Forces a new construction of the structure. if <thestructure> is displayed in <theprojector> and tos_computed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure
 theProjector: Graphic3d_DataStructureManager
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Forces a new construction of the structure. if <thestructure> is displayed in <theprojector> and tos_computed.
 ") ReCompute;
 		virtual void ReCompute(const opencascade::handle<Graphic3d_Structure> & theStructure, const opencascade::handle<Graphic3d_DataStructureManager> & theProjector);
 
 		/****************** RecomputeStructures ******************/
 		/**** md5 signature: a39bdc19ae8e5c57049d7855f816f653 ****/
 		%feature("compactdefaultargs") RecomputeStructures;
-		%feature("autodoc", "Recomputes all structures in the manager. resets device lost flag.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Recomputes all structures in the manager. resets device lost flag.
 ") RecomputeStructures;
 		void RecomputeStructures();
 
 		/****************** RecomputeStructures ******************/
 		/**** md5 signature: 23f732c9b4599ff2d3ab40d5d84e000f ****/
 		%feature("compactdefaultargs") RecomputeStructures;
-		%feature("autodoc", "Recomputes all structures from thestructures.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructures: NCollection_Map<Graphic3d_Structure *>
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Recomputes all structures from thestructures.
 ") RecomputeStructures;
 		void RecomputeStructures(const NCollection_Map<Graphic3d_Structure *> & theStructures);
 
 		/****************** RegisterObject ******************/
 		/**** md5 signature: 4d90aa666e5fb41b5a16e9a69b45f2f9 ****/
 		%feature("compactdefaultargs") RegisterObject;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theObject: Standard_Transient
 theAffinity: Graphic3d_ViewAffinity
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") RegisterObject;
 		void RegisterObject(const opencascade::handle<Standard_Transient> & theObject, const opencascade::handle<Graphic3d_ViewAffinity> & theAffinity);
 
 		/****************** Remove ******************/
 		/**** md5 signature: 57a23cda69c531e8d176ae30ce8f77c6 ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "Deletes and erases the 3d structure manager.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Deletes and erases the 3d structure manager.
 ") Remove;
 		virtual void Remove();
 
 		/****************** SetDeviceLost ******************/
 		/**** md5 signature: 9920384e372fd3747be47d84dd393cc9 ****/
 		%feature("compactdefaultargs") SetDeviceLost;
-		%feature("autodoc", "Sets device lost flag.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Sets device lost flag.
 ") SetDeviceLost;
 		void SetDeviceLost();
 
 		/****************** SetTransform ******************/
 		/**** md5 signature: 752db10fe087601901e4c13e5c05d40c ****/
 		%feature("compactdefaultargs") SetTransform;
-		%feature("autodoc", "Transforms the structure.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure
 theTrsf: TopLoc_Datum3D
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Transforms the structure.
 ") SetTransform;
 		virtual void SetTransform(const opencascade::handle<Graphic3d_Structure> & theStructure, const opencascade::handle<TopLoc_Datum3D> & theTrsf);
 
 		/****************** UnHighlight ******************/
 		/**** md5 signature: e841c00d90be06504c3125a91194b8d4 ****/
 		%feature("compactdefaultargs") UnHighlight;
-		%feature("autodoc", "Suppress the highlighting on the structure <astructure>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 AStructure: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Suppress the highlighting on the structure <astructure>.
 ") UnHighlight;
 		virtual void UnHighlight(const opencascade::handle<Graphic3d_Structure> & AStructure);
 
 		/****************** UnHighlight ******************/
 		/**** md5 signature: 019aca52f7d908cf9e1b3c79e24f8902 ****/
 		%feature("compactdefaultargs") UnHighlight;
-		%feature("autodoc", "Suppresses the highlighting on all the structures in <self>.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Suppresses the highlighting on all the structures in <self>.
 ") UnHighlight;
 		virtual void UnHighlight();
 
 		/****************** UnIdentification ******************/
 		/**** md5 signature: 2c03450c9a17c6e28a5a2d56dcb8592e ****/
 		%feature("compactdefaultargs") UnIdentification;
-		%feature("autodoc", "Detach the view from this structure manager and release its identification.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theView: Graphic3d_CView *
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Detach the view from this structure manager and release its identification.
 ") UnIdentification;
 		void UnIdentification(Graphic3d_CView * theView);
 
 		/****************** UnregisterObject ******************/
 		/**** md5 signature: f51c6ce76ba73a05d8e97a2b939c5d3f ****/
 		%feature("compactdefaultargs") UnregisterObject;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theObject: Standard_Transient
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") UnregisterObject;
 		void UnregisterObject(const opencascade::handle<Standard_Transient> & theObject);
 
 		/****************** Update ******************/
 		/**** md5 signature: acf4c29ded22955e1c1cc7a6b217934b ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "Invalidates bounding box of specified zlayerid.
-
+		%feature("autodoc", "
 Parameters
 ----------
-theLayerId: int,optional
-	default value is Graphic3d_ZLayerId_UNKNOWN
+theLayerId: int (optional, default to Graphic3d_ZLayerId_UNKNOWN)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Invalidates bounding box of specified zlayerid.
 ") Update;
 		virtual void Update(int theLayerId = Graphic3d_ZLayerId_UNKNOWN);
 
@@ -15165,275 +17389,328 @@ class Graphic3d_Text : public Standard_Transient {
 		/****************** Graphic3d_Text ******************/
 		/**** md5 signature: 6012ed3dffaa1a4255c544b39bea25dd ****/
 		%feature("compactdefaultargs") Graphic3d_Text;
-		%feature("autodoc", "Creates default text parameters.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHeight: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates default text parameters.
 ") Graphic3d_Text;
 		 Graphic3d_Text(const Standard_ShortReal theHeight);
 
 		/****************** HasOwnAnchorPoint ******************/
 		/**** md5 signature: e37194a0a04c6cfedb999cfbbcc9f46f ****/
 		%feature("compactdefaultargs") HasOwnAnchorPoint;
-		%feature("autodoc", "Returns true if the text has an anchor point.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the text has an anchor point.
 ") HasOwnAnchorPoint;
 		Standard_Boolean HasOwnAnchorPoint();
 
 		/****************** HasPlane ******************/
 		/**** md5 signature: 7cf03566771455c19f444d8a2236d65d ****/
 		%feature("compactdefaultargs") HasPlane;
-		%feature("autodoc", "Returns true if the text is filled by a point.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the text is filled by a point.
 ") HasPlane;
 		Standard_Boolean HasPlane();
 
 		/****************** Height ******************/
 		/**** md5 signature: 2749b028ff801f014d4fc0eb3de70908 ****/
 		%feature("compactdefaultargs") Height;
-		%feature("autodoc", "Sets height of text. (relative to the normalized projection coordinates (npc) space).
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Sets height of text. (relative to the normalized projection coordinates (npc) space).
 ") Height;
 		Standard_ShortReal Height();
 
 		/****************** HorizontalAlignment ******************/
 		/**** md5 signature: 0115f65c224e2508253706dbcaed911d ****/
 		%feature("compactdefaultargs") HorizontalAlignment;
-		%feature("autodoc", "Returns horizontal alignment of text.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_HorizontalTextAlignment
+
+Description
+-----------
+Returns horizontal alignment of text.
 ") HorizontalAlignment;
 		Graphic3d_HorizontalTextAlignment HorizontalAlignment();
 
 		/****************** Orientation ******************/
 		/**** md5 signature: 1f9ae1b5d6671bf7cb13e335b8bca8c1 ****/
 		%feature("compactdefaultargs") Orientation;
-		%feature("autodoc", "Returns text orientation in 3d space.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Ax2
+
+Description
+-----------
+Returns text orientation in 3d space.
 ") Orientation;
 		const gp_Ax2 Orientation();
 
 		/****************** Position ******************/
 		/**** md5 signature: 0ab08d371c89be0cb1eecbddf304bb77 ****/
 		%feature("compactdefaultargs") Position;
-		%feature("autodoc", "The 3d point of attachment is projected. if the orientation is defined, the text is written in the plane of projection.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+The 3d point of attachment is projected. if the orientation is defined, the text is written in the plane of projection.
 ") Position;
 		const gp_Pnt Position();
 
 		/****************** ResetOrientation ******************/
 		/**** md5 signature: 39aa72f39fb0e0c37f3b9a1f32b4aff2 ****/
 		%feature("compactdefaultargs") ResetOrientation;
-		%feature("autodoc", "Reset text orientation in 3d space.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Reset text orientation in 3d space.
 ") ResetOrientation;
 		void ResetOrientation();
 
 		/****************** SetHeight ******************/
 		/**** md5 signature: 24248b1fc0e6c80226c704e83d71a29f ****/
 		%feature("compactdefaultargs") SetHeight;
-		%feature("autodoc", "Returns height of text.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHeight: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns height of text.
 ") SetHeight;
 		void SetHeight(const Standard_ShortReal theHeight);
 
 		/****************** SetHorizontalAlignment ******************/
 		/**** md5 signature: c370b9f2a669008a609171c1a458cd46 ****/
 		%feature("compactdefaultargs") SetHorizontalAlignment;
-		%feature("autodoc", "Sets horizontal alignment of text.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theJustification: Graphic3d_HorizontalTextAlignment
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets horizontal alignment of text.
 ") SetHorizontalAlignment;
 		void SetHorizontalAlignment(const Graphic3d_HorizontalTextAlignment theJustification);
 
 		/****************** SetOrientation ******************/
 		/**** md5 signature: d0d8bca65c36cd5ecf7c66f85b6b744c ****/
 		%feature("compactdefaultargs") SetOrientation;
-		%feature("autodoc", "Sets text orientation in 3d space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOrientation: gp_Ax2
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets text orientation in 3d space.
 ") SetOrientation;
 		void SetOrientation(const gp_Ax2 & theOrientation);
 
 		/****************** SetOwnAnchorPoint ******************/
 		/**** md5 signature: b48699145325bc254e9d2cd35b25e774 ****/
 		%feature("compactdefaultargs") SetOwnAnchorPoint;
-		%feature("autodoc", "Returns true if the text has an anchor point.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHasOwnAnchor: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns true if the text has an anchor point.
 ") SetOwnAnchorPoint;
 		void SetOwnAnchorPoint(const Standard_Boolean theHasOwnAnchor);
 
 		/****************** SetPosition ******************/
 		/**** md5 signature: 40bc31d1ad46a4aeef196d0c734ac91e ****/
 		%feature("compactdefaultargs") SetPosition;
-		%feature("autodoc", "Sets text point.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoint: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets text point.
 ") SetPosition;
 		void SetPosition(const gp_Pnt & thePoint);
 
 		/****************** SetText ******************/
 		/**** md5 signature: b9cc63ce3bb2835eedd0b5fe50bc4dff ****/
 		%feature("compactdefaultargs") SetText;
-		%feature("autodoc", "Sets text value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theText: NCollection_String
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets text value.
 ") SetText;
 		void SetText(const NCollection_String & theText);
 
 		/****************** SetText ******************/
 		/**** md5 signature: a0929e0bbb89cb9df8d2f7df87ca9f0c ****/
 		%feature("compactdefaultargs") SetText;
-		%feature("autodoc", "Sets text value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theText: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets text value.
 ") SetText;
 		void SetText(TCollection_AsciiString theText);
 
 		/****************** SetText ******************/
 		/**** md5 signature: b3558520ae610ca542b0fb6b77a0768d ****/
 		%feature("compactdefaultargs") SetText;
-		%feature("autodoc", "Sets text value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theText: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets text value.
 ") SetText;
 		void SetText(Standard_CString theText);
 
 		/****************** SetTextFormatter ******************/
 		/**** md5 signature: 69d92dbd5b2f2ec93859c8dcc0b4f585 ****/
 		%feature("compactdefaultargs") SetTextFormatter;
-		%feature("autodoc", "Setup text default formatter for text within this context.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFormatter: Font_TextFormatter
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup text default formatter for text within this context.
 ") SetTextFormatter;
 		void SetTextFormatter(const opencascade::handle<Font_TextFormatter> & theFormatter);
 
 		/****************** SetVerticalAlignment ******************/
 		/**** md5 signature: e2cc7b2cf917c58381cfba8c8ed8d4a9 ****/
 		%feature("compactdefaultargs") SetVerticalAlignment;
-		%feature("autodoc", "Sets vertical alignment of text.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theJustification: Graphic3d_VerticalTextAlignment
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets vertical alignment of text.
 ") SetVerticalAlignment;
 		void SetVerticalAlignment(const Graphic3d_VerticalTextAlignment theJustification);
 
 		/****************** Text ******************/
 		/**** md5 signature: 5bba17eb833e5c94c8648407a843b411 ****/
 		%feature("compactdefaultargs") Text;
-		%feature("autodoc", "Returns text value.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_String
+
+Description
+-----------
+Returns text value.
 ") Text;
 		const NCollection_String & Text();
 
 		/****************** TextFormatter ******************/
 		/**** md5 signature: 8f3bf7d01406c07afa85cad5f2782460 ****/
 		%feature("compactdefaultargs") TextFormatter;
-		%feature("autodoc", "Returns text formatter; null by default, which means standard text formatter will be used.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Font_TextFormatter>
+
+Description
+-----------
+Return text formatter; null by default, which means standard text formatter will be used.
 ") TextFormatter;
 		const opencascade::handle<Font_TextFormatter> & TextFormatter();
 
 		/****************** VerticalAlignment ******************/
 		/**** md5 signature: dbd4e8c974d13845b9700ce5eef112db ****/
 		%feature("compactdefaultargs") VerticalAlignment;
-		%feature("autodoc", "Returns vertical alignment of text.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_VerticalTextAlignment
+
+Description
+-----------
+Returns vertical alignment of text.
 ") VerticalAlignment;
 		Graphic3d_VerticalTextAlignment VerticalAlignment();
 
@@ -15456,319 +17733,378 @@ class Graphic3d_TextureParams : public Standard_Transient {
 		/****************** Graphic3d_TextureParams ******************/
 		/**** md5 signature: 1f8634f1fd425055e350bfa7cb51434a ****/
 		%feature("compactdefaultargs") Graphic3d_TextureParams;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") Graphic3d_TextureParams;
 		 Graphic3d_TextureParams();
 
 		/****************** AnisoFilter ******************/
 		/**** md5 signature: a1063e5b1b0fa8938fd8b3515bad43e0 ****/
 		%feature("compactdefaultargs") AnisoFilter;
-		%feature("autodoc", "Returns level of anisontropy texture filter. default value is graphic3d_lota_off.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_LevelOfTextureAnisotropy
+
+Description
+-----------
+Return level of anisontropy texture filter. default value is graphic3d_lota_off.
 ") AnisoFilter;
 		Graphic3d_LevelOfTextureAnisotropy AnisoFilter();
 
 		/****************** BaseLevel ******************/
 		/**** md5 signature: bd5cd038b03d4843d073ba22cb296fb9 ****/
 		%feature("compactdefaultargs") BaseLevel;
-		%feature("autodoc", "Returns base texture mipmap level; 0 by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return base texture mipmap level; 0 by default.
 ") BaseLevel;
 		Standard_Integer BaseLevel();
 
 		/****************** Filter ******************/
 		/**** md5 signature: a357879488fd75e79ba560704b544b81 ****/
 		%feature("compactdefaultargs") Filter;
-		%feature("autodoc", "Returns texture interpolation filter. default value is graphic3d_totf_nearest.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfTextureFilter
+
+Description
+-----------
+Return texture interpolation filter. default value is graphic3d_totf_nearest.
 ") Filter;
 		Graphic3d_TypeOfTextureFilter Filter();
 
 		/****************** GenMode ******************/
 		/**** md5 signature: 865c3f01d0a1a976e30ff5c43a0adb43 ****/
 		%feature("compactdefaultargs") GenMode;
-		%feature("autodoc", "Returns texture coordinates generation mode. default value is graphic3d_totm_manual.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfTextureMode
+
+Description
+-----------
+Return texture coordinates generation mode. default value is graphic3d_totm_manual.
 ") GenMode;
 		Graphic3d_TypeOfTextureMode GenMode();
 
 		/****************** GenPlaneS ******************/
 		/**** md5 signature: 5a420b7a06162b9eccd6c8b8edbcf21e ****/
 		%feature("compactdefaultargs") GenPlaneS;
-		%feature("autodoc", "Returns texture coordinates generation plane s.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec4
+
+Description
+-----------
+Return texture coordinates generation plane s.
 ") GenPlaneS;
 		const Graphic3d_Vec4 & GenPlaneS();
 
 		/****************** GenPlaneT ******************/
 		/**** md5 signature: 1f7102ba69a225576aa7584451b08127 ****/
 		%feature("compactdefaultargs") GenPlaneT;
-		%feature("autodoc", "Returns texture coordinates generation plane t.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec4
+
+Description
+-----------
+Return texture coordinates generation plane t.
 ") GenPlaneT;
 		const Graphic3d_Vec4 & GenPlaneT();
 
 		/****************** IsModulate ******************/
 		/**** md5 signature: 2e8a5b0702d5e7213cfba98e2c4f2f2c ****/
 		%feature("compactdefaultargs") IsModulate;
-		%feature("autodoc", "Returns true if the texture is modulate. default value is false.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if the texture is modulate. default value is false.
 ") IsModulate;
 		Standard_Boolean IsModulate();
 
 		/****************** IsRepeat ******************/
 		/**** md5 signature: 48fdc4527eeb413a8039f361c8a061d6 ****/
 		%feature("compactdefaultargs") IsRepeat;
-		%feature("autodoc", "Returns true if the texture repeat is enabled. default value is false.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if the texture repeat is enabled. default value is false.
 ") IsRepeat;
 		Standard_Boolean IsRepeat();
 
 		/****************** MaxLevel ******************/
 		/**** md5 signature: 48bccc243567720be1d38f951400554e ****/
 		%feature("compactdefaultargs") MaxLevel;
-		%feature("autodoc", "Return maximum texture mipmap array level; 1000 by default. real rendering limit will take into account mipmap generation flags and presence of mipmaps in loaded image.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return maximum texture mipmap array level; 1000 by default. real rendering limit will take into account mipmap generation flags and presence of mipmaps in loaded image.
 ") MaxLevel;
 		Standard_Integer MaxLevel();
 
 		/****************** Rotation ******************/
 		/**** md5 signature: d53c3826c94a0b70b7a80893867da975 ****/
 		%feature("compactdefaultargs") Rotation;
-		%feature("autodoc", "Return rotation angle in degrees; 0 by default. complete transformation matrix: rotation -> translation -> scale.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return rotation angle in degrees; 0 by default. complete transformation matrix: rotation -> translation -> scale.
 ") Rotation;
 		Standard_ShortReal Rotation();
 
 		/****************** SamplerRevision ******************/
 		/**** md5 signature: 40f8d1557d5754972b0c490348d69fc6 ****/
 		%feature("compactdefaultargs") SamplerRevision;
-		%feature("autodoc", "Return modification counter of parameters related to sampler state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 unsigned int
+
+Description
+-----------
+Return modification counter of parameters related to sampler state.
 ") SamplerRevision;
 		unsigned int SamplerRevision();
 
 		/****************** Scale ******************/
 		/**** md5 signature: 749fcbc9447e25bbdb6b3afe657a7089 ****/
 		%feature("compactdefaultargs") Scale;
-		%feature("autodoc", "Return scale factor; (1.0; 1.0) by default, which means no scaling. complete transformation matrix: rotation -> translation -> scale.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2
+
+Description
+-----------
+Return scale factor; (1.0; 1.0) by default, which means no scaling. complete transformation matrix: rotation -> translation -> scale.
 ") Scale;
 		const Graphic3d_Vec2 & Scale();
 
 		/****************** SetAnisoFilter ******************/
 		/**** md5 signature: 999fe7bc1a26aa6af8d56299c100b537 ****/
 		%feature("compactdefaultargs") SetAnisoFilter;
-		%feature("autodoc", "@param thelevel level of anisontropy texture filter.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLevel: Graphic3d_LevelOfTextureAnisotropy
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+@param thelevel level of anisontropy texture filter.
 ") SetAnisoFilter;
 		void SetAnisoFilter(const Graphic3d_LevelOfTextureAnisotropy theLevel);
 
 		/****************** SetFilter ******************/
 		/**** md5 signature: 3e35939457e589374a37bc96d8d155cb ****/
 		%feature("compactdefaultargs") SetFilter;
-		%feature("autodoc", "@param thefilter texture interpolation filter.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFilter: Graphic3d_TypeOfTextureFilter
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+@param thefilter texture interpolation filter.
 ") SetFilter;
 		void SetFilter(const Graphic3d_TypeOfTextureFilter theFilter);
 
 		/****************** SetGenMode ******************/
 		/**** md5 signature: b4acdbe0ff4d2dc520dafd45d0e6d940 ****/
 		%feature("compactdefaultargs") SetGenMode;
-		%feature("autodoc", "Setup texture coordinates generation mode.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: Graphic3d_TypeOfTextureMode
 thePlaneS: Graphic3d_Vec4
 thePlaneT: Graphic3d_Vec4
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup texture coordinates generation mode.
 ") SetGenMode;
 		void SetGenMode(const Graphic3d_TypeOfTextureMode theMode, const Graphic3d_Vec4 thePlaneS, const Graphic3d_Vec4 thePlaneT);
 
 		/****************** SetLevelsRange ******************/
 		/**** md5 signature: b24d431f7e4dd71b065ec5fa5065a79f ****/
 		%feature("compactdefaultargs") SetLevelsRange;
-		%feature("autodoc", "Setups texture mipmap array levels range. the lowest value will be the base level. the remaining one will be the maximum level.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFirstLevel: int
-theSecondLevel: int,optional
-	default value is 0
+theSecondLevel: int (optional, default to 0)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setups texture mipmap array levels range. the lowest value will be the base level. the remaining one will be the maximum level.
 ") SetLevelsRange;
 		void SetLevelsRange(Standard_Integer theFirstLevel, Standard_Integer theSecondLevel = 0);
 
 		/****************** SetModulate ******************/
 		/**** md5 signature: 3c85d900631fe71e18cedc97c620af1a ****/
 		%feature("compactdefaultargs") SetModulate;
-		%feature("autodoc", "@param thetomodulate turn modulation on/off.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToModulate: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+@param thetomodulate turn modulation on/off.
 ") SetModulate;
 		void SetModulate(const Standard_Boolean theToModulate);
 
 		/****************** SetRepeat ******************/
 		/**** md5 signature: 3437fd549ca95467f7667436330a056e ****/
 		%feature("compactdefaultargs") SetRepeat;
-		%feature("autodoc", "@param thetorepeat turn texture repeat mode on or off (clamping).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToRepeat: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+@param thetorepeat turn texture repeat mode on or off (clamping).
 ") SetRepeat;
 		void SetRepeat(const Standard_Boolean theToRepeat);
 
 		/****************** SetRotation ******************/
 		/**** md5 signature: c2ea257b5cd47d5de38d465842e0f46e ****/
 		%feature("compactdefaultargs") SetRotation;
-		%feature("autodoc", "@param theangledegrees rotation angle.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAngleDegrees: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+@param theangledegrees rotation angle.
 ") SetRotation;
 		void SetRotation(const Standard_ShortReal theAngleDegrees);
 
 		/****************** SetScale ******************/
 		/**** md5 signature: 5a849909ddec6d7e52c33fd14b93ad3d ****/
 		%feature("compactdefaultargs") SetScale;
-		%feature("autodoc", "@param thescale scale factor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScale: Graphic3d_Vec2
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+@param thescale scale factor.
 ") SetScale;
 		void SetScale(const Graphic3d_Vec2 theScale);
 
 		/****************** SetTextureUnit ******************/
 		/**** md5 signature: 393fd5a96f811431db83dea5936e3ae0 ****/
 		%feature("compactdefaultargs") SetTextureUnit;
-		%feature("autodoc", "Setup default texture unit.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theUnit: Graphic3d_TextureUnit
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup default texture unit.
 ") SetTextureUnit;
 		void SetTextureUnit(Graphic3d_TextureUnit theUnit);
 
 		/****************** SetTranslation ******************/
 		/**** md5 signature: bceecf42517fe1b905986c976ae2a5a7 ****/
 		%feature("compactdefaultargs") SetTranslation;
-		%feature("autodoc", "@param thevec translation vector.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVec: Graphic3d_Vec2
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+@param thevec translation vector.
 ") SetTranslation;
 		void SetTranslation(const Graphic3d_Vec2 theVec);
 
 		/****************** TextureUnit ******************/
 		/**** md5 signature: 6c8ba285b3ae7bd2d38f3d7687772552 ****/
 		%feature("compactdefaultargs") TextureUnit;
-		%feature("autodoc", "Default texture unit to be used, default is graphic3d_textureunit_basecolor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TextureUnit
+
+Description
+-----------
+Default texture unit to be used, default is graphic3d_textureunit_basecolor.
 ") TextureUnit;
 		Graphic3d_TextureUnit TextureUnit();
 
 		/****************** Translation ******************/
 		/**** md5 signature: e0f5ca18e3bbef2c5fd7c5ba80429fdd ****/
 		%feature("compactdefaultargs") Translation;
-		%feature("autodoc", "Return translation vector; (0.0; 0.0), which means no translation. complete transformation matrix: rotation -> translation -> scale.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2
+
+Description
+-----------
+Return translation vector; (0.0; 0.0), which means no translation. complete transformation matrix: rotation -> translation -> scale.
 ") Translation;
 		const Graphic3d_Vec2 & Translation();
 
@@ -15792,181 +18128,215 @@ class Graphic3d_TextureRoot : public Standard_Transient {
 		/****************** GetCompressedImage ******************/
 		/**** md5 signature: 322f70ba268453e61044f97de1c28ac0 ****/
 		%feature("compactdefaultargs") GetCompressedImage;
-		%feature("autodoc", "This method will be called by graphic driver each time when texture resource should be created. it is called in front of getimage() for uploading compressed image formats natively supported by gpu. @param thesupported [in] the list of supported compressed texture formats;  returning image in unsupported format will result in texture upload failure returns compressed pixmap or null if image is not in supported compressed format.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSupported: Image_SupportedFormats
 
-Returns
+Return
 -------
 opencascade::handle<Image_CompressedPixMap>
+
+Description
+-----------
+This method will be called by graphic driver each time when texture resource should be created. it is called in front of getimage() for uploading compressed image formats natively supported by gpu. @param thesupported [in] the list of supported compressed texture formats;  returning image in unsupported format will result in texture upload failure return compressed pixmap or null if image is not in supported compressed format.
 ") GetCompressedImage;
 		virtual opencascade::handle<Image_CompressedPixMap> GetCompressedImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** GetId ******************/
 		/**** md5 signature: 1df69bdce80fc1a96745f12b83255cb1 ****/
 		%feature("compactdefaultargs") GetId;
-		%feature("autodoc", "This id will be used to manage resource in graphic driver. //! default implementation generates unique id within constructor; inheritors may re-initialize it within their constructor, but should never modify it afterwards. //! multiple graphic3d_textureroot instances with same id will be treated as single texture with different parameters to optimize memory usage though this will be more natural to use same instance of graphic3d_textureroot when possible. //! if this id is set to empty string by inheritor, then independent graphical resource will be created for each instance of graphic3d_aspectfillarea3d where texture will be used. //! returns texture identifier.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+This id will be used to manage resource in graphic driver. //! default implementation generates unique id within constructor; inheritors may re-initialize it within their constructor, but should never modify it afterwards. //! multiple graphic3d_textureroot instances with same id will be treated as single texture with different parameters to optimize memory usage though this will be more natural to use same instance of graphic3d_textureroot when possible. //! if this id is set to empty string by inheritor, then independent graphical resource will be created for each instance of graphic3d_aspectfillarea3d where texture will be used. //! return texture identifier.
 ") GetId;
 		const TCollection_AsciiString & GetId();
 
 		/****************** GetImage ******************/
 		/**** md5 signature: 27fa61f16bc56c895dcc1af9896bbe91 ****/
 		%feature("compactdefaultargs") GetImage;
-		%feature("autodoc", "This method will be called by graphic driver each time when texture resource should be created. default constructors allow defining the texture source as path to texture image or directly as pixmap. if the source is defined as path, then the image will be dynamically loaded when this method is called (and no copy will be preserved in this class instance). inheritors may dynamically generate the image. notice, image data should be in bottom-up order (see image_pixmap::istopdown())! returns the image for texture.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSupported: Image_SupportedFormats
 
-Returns
+Return
 -------
 opencascade::handle<Image_PixMap>
+
+Description
+-----------
+This method will be called by graphic driver each time when texture resource should be created. default constructors allow defining the texture source as path to texture image or directly as pixmap. if the source is defined as path, then the image will be dynamically loaded when this method is called (and no copy will be preserved in this class instance). inheritors may dynamically generate the image. notice, image data should be in bottom-up order (see image_pixmap::istopdown())! return the image for texture.
 ") GetImage;
 		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** GetParams ******************/
 		/**** md5 signature: 9bad86532a93a9e68d3d67730d29041c ****/
 		%feature("compactdefaultargs") GetParams;
-		%feature("autodoc", "Returns low-level texture parameters.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_TextureParams>
+
+Description
+-----------
+Return low-level texture parameters.
 ") GetParams;
 		const opencascade::handle<Graphic3d_TextureParams> & GetParams();
 
 		/****************** HasMipmaps ******************/
 		/**** md5 signature: b3b5fb053a7b49996b2be90fa9333800 ****/
 		%feature("compactdefaultargs") HasMipmaps;
-		%feature("autodoc", "Returns whether mipmaps should be generated or not.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns whether mipmaps should be generated or not.
 ") HasMipmaps;
 		Standard_Boolean HasMipmaps();
 
 		/****************** IsColorMap ******************/
 		/**** md5 signature: 09bcde660e67336c50f82f601f3d70f3 ****/
 		%feature("compactdefaultargs") IsColorMap;
-		%feature("autodoc", "Return flag indicating color nature of values within the texture; true by default. //! this flag will be used to interpret 8-bit per channel rgb(a) images as srgb(a) textures with implicit linearizion of color components. has no effect on images with floating point values (always considered linearized). //! when set to false, such images will be interpreted as textures will be linear component values, which is useful for rgb(a) textures defining non-color properties (like normalmap/metalness/roughness).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return flag indicating color nature of values within the texture; true by default. //! this flag will be used to interpret 8-bit per channel rgb(a) images as srgb(a) textures with implicit linearizion of color components. has no effect on images with floating point values (always considered linearized). //! when set to false, such images will be interpreted as textures will be linear component values, which is useful for rgb(a) textures defining non-color properties (like normalmap/metalness/roughness).
 ") IsColorMap;
 		Standard_Boolean IsColorMap();
 
 		/****************** IsDone ******************/
 		/**** md5 signature: 1dfe5875b8bc7f7b11380fb4ab8a9eb0 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Checks if a texture class is valid or not. returns true if the construction of the class is correct.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Checks if a texture class is valid or not. return true if the construction of the class is correct.
 ") IsDone;
 		virtual Standard_Boolean IsDone();
 
 		/****************** IsTopDown ******************/
 		/**** md5 signature: c4ef22d04c4fb25721f5f617e14f3343 ****/
 		%feature("compactdefaultargs") IsTopDown;
-		%feature("autodoc", "Returns whether row's memory layout is top-down.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns whether row's memory layout is top-down.
 ") IsTopDown;
 		Standard_Boolean IsTopDown();
 
 		/****************** Path ******************/
 		/**** md5 signature: 9d11d277fbcc37203e7dc39c30ea2e54 ****/
 		%feature("compactdefaultargs") Path;
-		%feature("autodoc", "Returns the full path of the defined texture. it could be empty path if getimage() is overridden to load image not from file.
-
-Returns
+		%feature("autodoc", "Return
 -------
 OSD_Path
+
+Description
+-----------
+Returns the full path of the defined texture. it could be empty path if getimage() is overridden to load image not from file.
 ") Path;
 		const OSD_Path & Path();
 
 		/****************** Revision ******************/
 		/**** md5 signature: dfd4fb672d125a081a8b5a357ac81453 ****/
 		%feature("compactdefaultargs") Revision;
-		%feature("autodoc", "Return image revision.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Size
+
+Description
+-----------
+Return image revision.
 ") Revision;
 		Standard_Size Revision();
 
 		/****************** SetColorMap ******************/
 		/**** md5 signature: 376f64ee4f4eaa7a85553f71d89fe16a ****/
 		%feature("compactdefaultargs") SetColorMap;
-		%feature("autodoc", "Set flag indicating color nature of values within the texture.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsColor: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set flag indicating color nature of values within the texture.
 ") SetColorMap;
 		void SetColorMap(Standard_Boolean theIsColor);
 
 		/****************** SetMipmapsGeneration ******************/
 		/**** md5 signature: e14a34fe3ead5b13a7caa5b8e688c68d ****/
 		%feature("compactdefaultargs") SetMipmapsGeneration;
-		%feature("autodoc", "Sets whether to generate mipmaps or not.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToGenerateMipmaps: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets whether to generate mipmaps or not.
 ") SetMipmapsGeneration;
 		void SetMipmapsGeneration(Standard_Boolean theToGenerateMipmaps);
 
 		/****************** TexturesFolder ******************/
 		/**** md5 signature: d0c7ddde8409f509c5551965f8259175 ****/
 		%feature("compactdefaultargs") TexturesFolder;
-		%feature("autodoc", "The path to textures determined from csf_mdtvtexturesdirectory or casroot environment variables. returns the root folder with default textures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+The path to textures determined from csf_mdtvtexturesdirectory or casroot environment variables. return the root folder with default textures.
 ") TexturesFolder;
 		static TCollection_AsciiString TexturesFolder();
 
 		/****************** Type ******************/
 		/**** md5 signature: 87a980c7b2776950ff29967ed1d02b26 ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "Returns the texture type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfTexture
+
+Description
+-----------
+Return the texture type.
 ") Type;
 		Graphic3d_TypeOfTexture Type();
 
 		/****************** UpdateRevision ******************/
 		/**** md5 signature: c6fa6eed894b58a10a8244acfe852d71 ****/
 		%feature("compactdefaultargs") UpdateRevision;
-		%feature("autodoc", "Update image revision. can be used for signaling changes in the texture source (e.g. file update, pixmap update) without re-creating texture source itself (since unique id should be never modified).
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Update image revision. can be used for signaling changes in the texture source (e.g. file update, pixmap update) without re-creating texture source itself (since unique id should be never modified).
 ") UpdateRevision;
 		void UpdateRevision();
 
@@ -15994,71 +18364,83 @@ class Graphic3d_TransformPers : public Standard_Transient {
 		/****************** Graphic3d_TransformPers ******************/
 		/**** md5 signature: e5399f0d92c32c30dda437b6c88cb861 ****/
 		%feature("compactdefaultargs") Graphic3d_TransformPers;
-		%feature("autodoc", "Set transformation persistence.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: Graphic3d_TransModeFlags
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set transformation persistence.
 ") Graphic3d_TransformPers;
 		 Graphic3d_TransformPers(const Graphic3d_TransModeFlags theMode);
 
 		/****************** Graphic3d_TransformPers ******************/
 		/**** md5 signature: a245a37190e9f18adce1d9bb26438568 ****/
 		%feature("compactdefaultargs") Graphic3d_TransformPers;
-		%feature("autodoc", "Set zoom/rotate transformation persistence with an anchor 3d point. anchor point defines the origin of local coordinate system within world coordinate system. throws an exception if persistence mode is not graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: Graphic3d_TransModeFlags
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set zoom/rotate transformation persistence with an anchor 3d point. anchor point defines the origin of local coordinate system within world coordinate system. throws an exception if persistence mode is not graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers.
 ") Graphic3d_TransformPers;
 		 Graphic3d_TransformPers(const Graphic3d_TransModeFlags theMode, const gp_Pnt & thePnt);
 
 		/****************** Graphic3d_TransformPers ******************/
 		/**** md5 signature: f98fee54d16912d9416a71ed8ddb5ba7 ****/
 		%feature("compactdefaultargs") Graphic3d_TransformPers;
-		%feature("autodoc", "Set 2d/trihedron transformation persistence with a corner and 2d offset. 2d offset defines the origin of local coordinate system as projection of 2d point on screen plane into world coordinate system. throws an exception if persistence mode is not graphic3d_tmf_triedronpers or graphic3d_tmf_2d. the offset is a positive displacement from the view corner in pixels.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: Graphic3d_TransModeFlags
 theCorner: Aspect_TypeOfTriedronPosition
-theOffset: Graphic3d_Vec2i,optional
-	default value is Graphic3d_Vec2i(0,0)
+theOffset: Graphic3d_Vec2i (optional, default to Graphic3d_Vec2i(0,0))
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set 2d/trihedron transformation persistence with a corner and 2d offset. 2d offset defines the origin of local coordinate system as projection of 2d point on screen plane into world coordinate system. throws an exception if persistence mode is not graphic3d_tmf_triedronpers or graphic3d_tmf_2d. the offset is a positive displacement from the view corner in pixels.
 ") Graphic3d_TransformPers;
 		 Graphic3d_TransformPers(const Graphic3d_TransModeFlags theMode, const Aspect_TypeOfTriedronPosition theCorner, const Graphic3d_Vec2i & theOffset = Graphic3d_Vec2i(0,0));
 
 		/****************** AnchorPoint ******************/
 		/**** md5 signature: 24c970dd532b9a0543ee0f7fb95708ac ****/
 		%feature("compactdefaultargs") AnchorPoint;
-		%feature("autodoc", "Return the anchor point for zoom/rotate transformation persistence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Return the anchor point for zoom/rotate transformation persistence.
 ") AnchorPoint;
 		gp_Pnt AnchorPoint();
 
 		/****************** Corner2d ******************/
 		/**** md5 signature: 47d0ef849af382ad94cf96ab6591598c ****/
 		%feature("compactdefaultargs") Corner2d;
-		%feature("autodoc", "Return the corner for 2d/trihedron transformation persistence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfTriedronPosition
+
+Description
+-----------
+Return the corner for 2d/trihedron transformation persistence.
 ") Corner2d;
 		Aspect_TypeOfTriedronPosition Corner2d();
 
@@ -16074,180 +18456,214 @@ Aspect_TypeOfTriedronPosition
 		/****************** Flags ******************/
 		/**** md5 signature: 1ee922393b058833fc0aafbba922310e ****/
 		%feature("compactdefaultargs") Flags;
-		%feature("autodoc", "Transformation persistence mode flags.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TransModeFlags
+
+Description
+-----------
+Transformation persistence mode flags.
 ") Flags;
 		Graphic3d_TransModeFlags Flags();
 
 		/****************** IsTrihedronOr2d ******************/
 		/**** md5 signature: 6f4a3b2e29bd3584ee33aa1290e6374b ****/
 		%feature("compactdefaultargs") IsTrihedronOr2d;
-		%feature("autodoc", "Return true if specified mode is 2d/trihedron transformation persistence.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: Graphic3d_TransModeFlags
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Return true if specified mode is 2d/trihedron transformation persistence.
 ") IsTrihedronOr2d;
 		static Standard_Boolean IsTrihedronOr2d(Graphic3d_TransModeFlags theMode);
 
 		/****************** IsTrihedronOr2d ******************/
 		/**** md5 signature: 1d764a4c8a5f9df1f68e36da91f68ec6 ****/
 		%feature("compactdefaultargs") IsTrihedronOr2d;
-		%feature("autodoc", "Return true for graphic3d_tmf_triedronpers and graphic3d_tmf_2d modes.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true for graphic3d_tmf_triedronpers and graphic3d_tmf_2d modes.
 ") IsTrihedronOr2d;
 		Standard_Boolean IsTrihedronOr2d();
 
 		/****************** IsZoomOrRotate ******************/
 		/**** md5 signature: ee67f3edf6ab921f54b6730d4e22548f ****/
 		%feature("compactdefaultargs") IsZoomOrRotate;
-		%feature("autodoc", "Return true if specified mode is zoom/rotate transformation persistence.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: Graphic3d_TransModeFlags
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Return true if specified mode is zoom/rotate transformation persistence.
 ") IsZoomOrRotate;
 		static Standard_Boolean IsZoomOrRotate(Graphic3d_TransModeFlags theMode);
 
 		/****************** IsZoomOrRotate ******************/
 		/**** md5 signature: e46098cc01346c0c4f43e28969b89421 ****/
 		%feature("compactdefaultargs") IsZoomOrRotate;
-		%feature("autodoc", "Return true for graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers modes.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true for graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers modes.
 ") IsZoomOrRotate;
 		Standard_Boolean IsZoomOrRotate();
 
 		/****************** Mode ******************/
 		/**** md5 signature: fc769168c308516a63fd1a068ba7ec96 ****/
 		%feature("compactdefaultargs") Mode;
-		%feature("autodoc", "Transformation persistence mode flags.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TransModeFlags
+
+Description
+-----------
+Transformation persistence mode flags.
 ") Mode;
 		Graphic3d_TransModeFlags Mode();
 
 		/****************** Offset2d ******************/
 		/**** md5 signature: 31558c339ca324947c39e15706cc227b ****/
 		%feature("compactdefaultargs") Offset2d;
-		%feature("autodoc", "Return the offset from the corner for 2d/trihedron transformation persistence.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2i
+
+Description
+-----------
+Return the offset from the corner for 2d/trihedron transformation persistence.
 ") Offset2d;
 		Graphic3d_Vec2i Offset2d();
 
 		/****************** SetAnchorPoint ******************/
 		/**** md5 signature: 791d6ffdf9f2a9e21b4091951f17aca3 ****/
 		%feature("compactdefaultargs") SetAnchorPoint;
-		%feature("autodoc", "Set the anchor point for zoom/rotate transformation persistence.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the anchor point for zoom/rotate transformation persistence.
 ") SetAnchorPoint;
 		void SetAnchorPoint(const gp_Pnt & thePnt);
 
 		/****************** SetCorner2d ******************/
 		/**** md5 signature: 70376b1b4341ac8d3e2ef2d5291a020c ****/
 		%feature("compactdefaultargs") SetCorner2d;
-		%feature("autodoc", "Set the corner for 2d/trihedron transformation persistence.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePos: Aspect_TypeOfTriedronPosition
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the corner for 2d/trihedron transformation persistence.
 ") SetCorner2d;
 		void SetCorner2d(const Aspect_TypeOfTriedronPosition thePos);
 
 		/****************** SetOffset2d ******************/
 		/**** md5 signature: b9845b0a9d8b8577262ee117bc4e9eb9 ****/
 		%feature("compactdefaultargs") SetOffset2d;
-		%feature("autodoc", "Set the offset from the corner for 2d/trihedron transformation persistence.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOffset: Graphic3d_Vec2i
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the offset from the corner for 2d/trihedron transformation persistence.
 ") SetOffset2d;
 		void SetOffset2d(const Graphic3d_Vec2i & theOffset);
 
 		/****************** SetPersistence ******************/
 		/**** md5 signature: 8d6cba5c3f91ef1d2aeb958fcae727e2 ****/
 		%feature("compactdefaultargs") SetPersistence;
-		%feature("autodoc", "Set zoom/rotate transformation persistence with an anchor 3d point. throws an exception if persistence mode is not graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: Graphic3d_TransModeFlags
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set zoom/rotate transformation persistence with an anchor 3d point. throws an exception if persistence mode is not graphic3d_tmf_zoompers, graphic3d_tmf_zoomrotatepers or graphic3d_tmf_rotatepers.
 ") SetPersistence;
 		void SetPersistence(const Graphic3d_TransModeFlags theMode, const gp_Pnt & thePnt);
 
 		/****************** SetPersistence ******************/
 		/**** md5 signature: a0a9f08be007f7ac698b81db815d9f07 ****/
 		%feature("compactdefaultargs") SetPersistence;
-		%feature("autodoc", "Set 2d/trihedron transformation persistence with a corner and 2d offset. throws an exception if persistence mode is not graphic3d_tmf_triedronpers or graphic3d_tmf_2d.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: Graphic3d_TransModeFlags
 theCorner: Aspect_TypeOfTriedronPosition
 theOffset: Graphic3d_Vec2i
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set 2d/trihedron transformation persistence with a corner and 2d offset. throws an exception if persistence mode is not graphic3d_tmf_triedronpers or graphic3d_tmf_2d.
 ") SetPersistence;
 		void SetPersistence(const Graphic3d_TransModeFlags theMode, const Aspect_TypeOfTriedronPosition theCorner, const Graphic3d_Vec2i & theOffset);
 
 		/****************** persistentScale ******************/
 		/**** md5 signature: 13772c1e0fd97e6d89e163f1469ae7f4 ****/
 		%feature("compactdefaultargs") persistentScale;
-		%feature("autodoc", "Find scale value based on the camera position and view dimensions @param thecamera [in] camera definition @param theviewportwidth [in] the width of viewport. @param theviewportheight [in] the height of viewport.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCamera: Graphic3d_Camera
 theViewportWidth: int
 theViewportHeight: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Find scale value based on the camera position and view dimensions @param thecamera [in] camera definition @param theviewportwidth [in] the width of viewport. @param theviewportheight [in] the height of viewport.
 ") persistentScale;
 		virtual Standard_Real persistentScale(const opencascade::handle<Graphic3d_Camera> & theCamera, const Standard_Integer theViewportWidth, const Standard_Integer theViewportHeight);
 
@@ -16385,15 +18801,18 @@ class Graphic3d_ValidatedCubeMapOrder {
 		/****************** Graphic3d_ValidatedCubeMapOrder ******************/
 		/**** md5 signature: 2fe7fe89c9940ff0544fe6a05ee9410b ****/
 		%feature("compactdefaultargs") Graphic3d_ValidatedCubeMapOrder;
-		%feature("autodoc", "Copy constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_ValidatedCubeMapOrder
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Copy constructor.
 ") Graphic3d_ValidatedCubeMapOrder;
 		 Graphic3d_ValidatedCubeMapOrder(const Graphic3d_ValidatedCubeMapOrder & theOther);
 
@@ -16415,11 +18834,13 @@ class Graphic3d_ValueInterface {
 		/****************** TypeID ******************/
 		/**** md5 signature: 1b87d5773d0bbd2bc2a8b684ebde24e0 ****/
 		%feature("compactdefaultargs") TypeID;
-		%feature("autodoc", "Returns unique identifier of value type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Size
+
+Description
+-----------
+Returns unique identifier of value type.
 ") TypeID;
 		virtual Standard_Size TypeID();
 
@@ -16445,92 +18866,109 @@ class Graphic3d_Vertex {
 		/****************** Graphic3d_Vertex ******************/
 		/**** md5 signature: 103e205f0886b0005b0cbeab1659769a ****/
 		%feature("compactdefaultargs") Graphic3d_Vertex;
-		%feature("autodoc", "Creates a point with 0.0, 0.0, 0.0 coordinates.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a point with 0.0, 0.0, 0.0 coordinates.
 ") Graphic3d_Vertex;
 		 Graphic3d_Vertex();
 
 		/****************** Graphic3d_Vertex ******************/
 		/**** md5 signature: 58adb81acdd9e39f4d304878f2e3a411 ****/
 		%feature("compactdefaultargs") Graphic3d_Vertex;
-		%feature("autodoc", "Creates a point with thex, they and thez coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
 theY: float
 theZ: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point with thex, they and thez coordinates.
 ") Graphic3d_Vertex;
 		 Graphic3d_Vertex(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ);
 
 		/****************** Graphic3d_Vertex ******************/
 		/**** md5 signature: 735a391be0243255a0f0f9924a777503 ****/
 		%feature("compactdefaultargs") Graphic3d_Vertex;
-		%feature("autodoc", "Creates a point with thex, they and thez coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
 theY: float
 theZ: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a point with thex, they and thez coordinates.
 ") Graphic3d_Vertex;
 		 Graphic3d_Vertex(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ);
 
 		/****************** Coord ******************/
 		/**** md5 signature: 280c830b5f369e462575f5e7a2cb8c56 ****/
 		%feature("compactdefaultargs") Coord;
-		%feature("autodoc", "Returns the coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theX: float
 theY: float
 theZ: float
+
+Description
+-----------
+Returns the coordinates.
 ") Coord;
 		void Coord(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** Coord ******************/
 		/**** md5 signature: 5ef85c73f9c80cea4d8dc9bec59c3e4d ****/
 		%feature("compactdefaultargs") Coord;
-		%feature("autodoc", "Returns the coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theX: float
 theY: float
 theZ: float
+
+Description
+-----------
+Returns the coordinates.
 ") Coord;
 		void Coord(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
 		/****************** Distance ******************/
 		/**** md5 signature: a9d6b779bf81c2942bd9222c13bfcfe4 ****/
 		%feature("compactdefaultargs") Distance;
-		%feature("autodoc", "Returns the distance between two points.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_Vertex
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns the distance between two points.
 ") Distance;
 		Standard_ShortReal Distance(const Graphic3d_Vertex & theOther);
 
@@ -16546,67 +18984,79 @@ float
 		/****************** SetCoord ******************/
 		/**** md5 signature: f784278aa131d15fe22f13b088f67335 ****/
 		%feature("compactdefaultargs") SetCoord;
-		%feature("autodoc", "Modifies the coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
 theY: float
 theZ: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the coordinates.
 ") SetCoord;
 		void SetCoord(const Standard_ShortReal theX, const Standard_ShortReal theY, const Standard_ShortReal theZ);
 
 		/****************** SetCoord ******************/
 		/**** md5 signature: c4b478464992cf7989de7989abd51418 ****/
 		%feature("compactdefaultargs") SetCoord;
-		%feature("autodoc", "Modifies the coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX: float
 theY: float
 theZ: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the coordinates.
 ") SetCoord;
 		void SetCoord(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ);
 
 		/****************** X ******************/
 		/**** md5 signature: 6ff8a8ccaac67562ded54933ac1f6eaf ****/
 		%feature("compactdefaultargs") X;
-		%feature("autodoc", "Returns the x coordinates.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the x coordinates.
 ") X;
 		Standard_ShortReal X();
 
 		/****************** Y ******************/
 		/**** md5 signature: 9b54d9ad44bedfdc5535f532139b29f0 ****/
 		%feature("compactdefaultargs") Y;
-		%feature("autodoc", "Returns the y coordinate.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the y coordinate.
 ") Y;
 		Standard_ShortReal Y();
 
 		/****************** Z ******************/
 		/**** md5 signature: 17127e512c97003b5692a4758e10a77f ****/
 		%feature("compactdefaultargs") Z;
-		%feature("autodoc", "Returns the z coordinate.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the z coordinate.
 ") Z;
 		Standard_ShortReal Z();
 
@@ -16627,11 +19077,13 @@ class Graphic3d_ViewAffinity : public Standard_Transient {
 		/****************** Graphic3d_ViewAffinity ******************/
 		/**** md5 signature: c28b9859f1b5f4571ffe5d01bf2fbe3b ****/
 		%feature("compactdefaultargs") Graphic3d_ViewAffinity;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_ViewAffinity;
 		 Graphic3d_ViewAffinity();
 
@@ -16647,46 +19099,55 @@ None
 		/****************** IsVisible ******************/
 		/**** md5 signature: fde091b526f03186c5a82e89779d5e52 ****/
 		%feature("compactdefaultargs") IsVisible;
-		%feature("autodoc", "Return visibility flag.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theViewId: int
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Return visibility flag.
 ") IsVisible;
 		bool IsVisible(const Standard_Integer theViewId);
 
 		/****************** SetVisible ******************/
 		/**** md5 signature: cde22849400e9fb6f271e91c79dfa42a ****/
 		%feature("compactdefaultargs") SetVisible;
-		%feature("autodoc", "Setup visibility flag for all views.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsVisible: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup visibility flag for all views.
 ") SetVisible;
 		void SetVisible(const Standard_Boolean theIsVisible);
 
 		/****************** SetVisible ******************/
 		/**** md5 signature: 3aeebb679c566c8acd531184eca6daa9 ****/
 		%feature("compactdefaultargs") SetVisible;
-		%feature("autodoc", "Setup visibility flag.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theViewId: int
 theIsVisible: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup visibility flag.
 ") SetVisible;
 		void SetVisible(const Standard_Integer theViewId, const bool theIsVisible);
 
@@ -16709,29 +19170,33 @@ class Graphic3d_WorldViewProjState {
 		/****************** Graphic3d_WorldViewProjState ******************/
 		/**** md5 signature: f3b196715a217ca6c1db7f0c9868b4d7 ****/
 		%feature("compactdefaultargs") Graphic3d_WorldViewProjState;
-		%feature("autodoc", "Default constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default constructor.
 ") Graphic3d_WorldViewProjState;
 		 Graphic3d_WorldViewProjState();
 
 		/****************** Graphic3d_WorldViewProjState ******************/
 		/**** md5 signature: 11a4e45328ad41acbf0f5625445abd79 ****/
 		%feature("compactdefaultargs") Graphic3d_WorldViewProjState;
-		%feature("autodoc", "Constructor for custom projector type. @param theprojectionstate [in] the projection state. @param theworldviewstate [in] the world view state. @param thecamera [in] the pointer to the class supplying projection and  world view matrices (camera).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProjectionState: Standard_Size
 theWorldViewState: Standard_Size
-theCamera: Standard_Transient *,optional
-	default value is NULL
+theCamera: Standard_Transient * (optional, default to NULL)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructor for custom projector type. @param theprojectionstate [in] the projection state. @param theworldviewstate [in] the world view state. @param thecamera [in] the pointer to the class supplying projection and  world view matrices (camera).
 ") Graphic3d_WorldViewProjState;
 		 Graphic3d_WorldViewProjState(const Standard_Size theProjectionState, const Standard_Size theWorldViewState, const Standard_Transient * theCamera = NULL);
 
@@ -16747,123 +19212,144 @@ None
 		/****************** Initialize ******************/
 		/**** md5 signature: 79ec01c7a66add6844dd4f3e0bf2488b ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize world view projection state.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theProjectionState: Standard_Size
 theWorldViewState: Standard_Size
-theCamera: Standard_Transient *,optional
-	default value is NULL
+theCamera: Standard_Transient * (optional, default to NULL)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize world view projection state.
 ") Initialize;
 		void Initialize(const Standard_Size theProjectionState, const Standard_Size theWorldViewState, const Standard_Transient * theCamera = NULL);
 
 		/****************** Initialize ******************/
 		/**** md5 signature: 31f405ac6fae9f709587162aa5922302 ****/
 		%feature("compactdefaultargs") Initialize;
-		%feature("autodoc", "Initialize world view projection state.
-
+		%feature("autodoc", "
 Parameters
 ----------
-theCamera: Standard_Transient *,optional
-	default value is NULL
+theCamera: Standard_Transient * (optional, default to NULL)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initialize world view projection state.
 ") Initialize;
 		void Initialize(const Standard_Transient * theCamera = NULL);
 
 		/****************** IsChanged ******************/
 		/**** md5 signature: 7b602c9fd7a31f20730c410acc59604f ****/
 		%feature("compactdefaultargs") IsChanged;
-		%feature("autodoc", "Compare with other world view projection state. returns true when the projection of the given camera state differs from this one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theState: Graphic3d_WorldViewProjState
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Compare with other world view projection state. return true when the projection of the given camera state differs from this one.
 ") IsChanged;
 		Standard_Boolean IsChanged(const Graphic3d_WorldViewProjState & theState);
 
 		/****************** IsProjectionChanged ******************/
 		/**** md5 signature: 285d1d0942afda16612026a76e1e11e5 ****/
 		%feature("compactdefaultargs") IsProjectionChanged;
-		%feature("autodoc", "Compare projection with other state. returns true when the projection of the given camera state differs from this one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theState: Graphic3d_WorldViewProjState
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Compare projection with other state. return true when the projection of the given camera state differs from this one.
 ") IsProjectionChanged;
 		Standard_Boolean IsProjectionChanged(const Graphic3d_WorldViewProjState & theState);
 
 		/****************** IsValid ******************/
 		/**** md5 signature: c1993b3b31d320b598a9a9b27c56914e ****/
 		%feature("compactdefaultargs") IsValid;
-		%feature("autodoc", "Check state validity. returns true if state is set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Check state validity. return true if state is set.
 ") IsValid;
 		Standard_Boolean IsValid();
 
 		/****************** IsWorldViewChanged ******************/
 		/**** md5 signature: 71ed06d06ff39395fa4c6d11ac16365d ****/
 		%feature("compactdefaultargs") IsWorldViewChanged;
-		%feature("autodoc", "Compare world view transformation with other state. returns true when the orientation of the given camera state differs from this one.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theState: Graphic3d_WorldViewProjState
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Compare world view transformation with other state. return true when the orientation of the given camera state differs from this one.
 ") IsWorldViewChanged;
 		Standard_Boolean IsWorldViewChanged(const Graphic3d_WorldViewProjState & theState);
 
 		/****************** ProjectionState ******************/
 		/**** md5 signature: 295098b9e05efc777696be9ced035265 ****/
 		%feature("compactdefaultargs") ProjectionState;
-		%feature("autodoc", "Returns projection state counter.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Size
+
+Description
+-----------
+Return projection state counter.
 ") ProjectionState;
 		Standard_Size & ProjectionState();
 
 		/****************** Reset ******************/
 		/**** md5 signature: e3081050d274769a1cd4a93969da94c6 ****/
 		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "Invalidate world view projection state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Invalidate world view projection state.
 ") Reset;
 		void Reset();
 
 		/****************** WorldViewState ******************/
 		/**** md5 signature: b496d314b27737b75554d89d662eeaac ****/
 		%feature("compactdefaultargs") WorldViewState;
-		%feature("autodoc", "Returns world view state counter.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Standard_Size
+
+Description
+-----------
+Return world view state counter.
 ") WorldViewState;
 		Standard_Size & WorldViewState();
 
@@ -16912,44 +19398,52 @@ class Graphic3d_ZLayerSettings {
 		/****************** Graphic3d_ZLayerSettings ******************/
 		/**** md5 signature: 61c792fdd142303f6bdad7c9f5308568 ****/
 		%feature("compactdefaultargs") Graphic3d_ZLayerSettings;
-		%feature("autodoc", "Default settings.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Default settings.
 ") Graphic3d_ZLayerSettings;
 		 Graphic3d_ZLayerSettings();
 
 		/****************** ChangePolygonOffset ******************/
 		/**** md5 signature: 41fd26be43fe21937e5010441b302f14 ****/
 		%feature("compactdefaultargs") ChangePolygonOffset;
-		%feature("autodoc", "Modify glpolygonoffset() arguments.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_PolygonOffset
+
+Description
+-----------
+Modify glpolygonoffset() arguments.
 ") ChangePolygonOffset;
 		Graphic3d_PolygonOffset & ChangePolygonOffset();
 
 		/****************** CullingDistance ******************/
 		/**** md5 signature: e6b8750d3a7361597b6f3bc26dcd69c4 ****/
 		%feature("compactdefaultargs") CullingDistance;
-		%feature("autodoc", "Return the distance to discard drawing of distant objects (distance from camera eye point); by default it is infinite (distance culling is disabled). since camera eye definition has no strong meaning within orthographic projection, option is considered only within perspective projection. note also that this option has effect only when frustum culling is enabled.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return the distance to discard drawing of distant objects (distance from camera eye point); by default it is infinite (distance culling is disabled). since camera eye definition has no strong meaning within orthographic projection, option is considered only within perspective projection. note also that this option has effect only when frustum culling is enabled.
 ") CullingDistance;
 		Standard_Real CullingDistance();
 
 		/****************** CullingSize ******************/
 		/**** md5 signature: 125efcbef75ecd620b89e827333ea9d2 ****/
 		%feature("compactdefaultargs") CullingSize;
-		%feature("autodoc", "Return the size to discard drawing of small objects; by default it is infinite (size culling is disabled). current implementation checks the length of projected diagonal of bounding box in pixels for discarding. note that this option has effect only when frustum culling is enabled.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return the size to discard drawing of small objects; by default it is infinite (size culling is disabled). current implementation checks the length of projected diagonal of bounding box in pixels for discarding. note that this option has effect only when frustum culling is enabled.
 ") CullingSize;
 		Standard_Real CullingSize();
 
@@ -16965,371 +19459,442 @@ float
 		/****************** HasCullingDistance ******************/
 		/**** md5 signature: 3cc1577ecc805ada9625500f00095068 ****/
 		%feature("compactdefaultargs") HasCullingDistance;
-		%feature("autodoc", "Return true, if culling of distant objects (distance culling) should be performed; false by default. @sa cullingdistance().
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true, if culling of distant objects (distance culling) should be performed; false by default. @sa cullingdistance().
 ") HasCullingDistance;
 		Standard_Boolean HasCullingDistance();
 
 		/****************** HasCullingSize ******************/
 		/**** md5 signature: 6bda045d9e6aceefe9df2f45440bbaa8 ****/
 		%feature("compactdefaultargs") HasCullingSize;
-		%feature("autodoc", "Return true, if culling of small objects (size culling) should be performed; false by default. @sa cullingsize().
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true, if culling of small objects (size culling) should be performed; false by default. @sa cullingsize().
 ") HasCullingSize;
 		Standard_Boolean HasCullingSize();
 
 		/****************** IsImmediate ******************/
 		/**** md5 signature: 61db5a8037272eb61c5a3a4e001931f7 ****/
 		%feature("compactdefaultargs") IsImmediate;
-		%feature("autodoc", "Return true if this layer should be drawn after all normal (non-immediate) layers.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if this layer should be drawn after all normal (non-immediate) layers.
 ") IsImmediate;
 		Standard_Boolean IsImmediate();
 
 		/****************** IsRaytracable ******************/
 		/**** md5 signature: 839809fe4128a7739e1916048b03998d ****/
 		%feature("compactdefaultargs") IsRaytracable;
-		%feature("autodoc", "Returns true if layer should be processed by ray-tracing renderer; true by default. note that this flag is ignored for layers with isimmediate() flag.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if layer should be processed by ray-tracing renderer; true by default. note that this flag is ignored for layers with isimmediate() flag.
 ") IsRaytracable;
 		Standard_Boolean IsRaytracable();
 
 		/****************** Lights ******************/
 		/**** md5 signature: 63f7d6694870edc26ea8df652c3f0f2b ****/
 		%feature("compactdefaultargs") Lights;
-		%feature("autodoc", "Return lights list to be used for rendering presentations within this z-layer; null by default. null list (but not empty list!) means that default lights assigned to the view should be used instead of per-layer lights.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_LightSet>
+
+Description
+-----------
+Return lights list to be used for rendering presentations within this z-layer; null by default. null list (but not empty list!) means that default lights assigned to the view should be used instead of per-layer lights.
 ") Lights;
 		const opencascade::handle<Graphic3d_LightSet> & Lights();
 
 		/****************** Name ******************/
 		/**** md5 signature: efed61b92683387cd746fb27e0376505 ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Return user-provided name.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Return user-provided name.
 ") Name;
 		const TCollection_AsciiString & Name();
 
 		/****************** Origin ******************/
 		/**** md5 signature: 294b7efa433672e306faca1de51564b0 ****/
 		%feature("compactdefaultargs") Origin;
-		%feature("autodoc", "Return the origin of all objects within the layer.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_XYZ
+
+Description
+-----------
+Return the origin of all objects within the layer.
 ") Origin;
 		const gp_XYZ Origin();
 
 		/****************** OriginTransformation ******************/
 		/**** md5 signature: 0f49de7d9e3a42a8f750204a13409c6c ****/
 		%feature("compactdefaultargs") OriginTransformation;
-		%feature("autodoc", "Return the transformation to the origin.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TopLoc_Datum3D>
+
+Description
+-----------
+Return the transformation to the origin.
 ") OriginTransformation;
 		const opencascade::handle<TopLoc_Datum3D> & OriginTransformation();
 
 		/****************** PolygonOffset ******************/
 		/**** md5 signature: 5bc0db1ff0ef7eec07c4eb78b80f6cca ****/
 		%feature("compactdefaultargs") PolygonOffset;
-		%feature("autodoc", "Return glpolygonoffset() arguments.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_PolygonOffset
+
+Description
+-----------
+Return glpolygonoffset() arguments.
 ") PolygonOffset;
 		const Graphic3d_PolygonOffset & PolygonOffset();
 
 		/****************** SetClearDepth ******************/
 		/**** md5 signature: e1cb8b4b9c9c690792097f7904691bf4 ****/
 		%feature("compactdefaultargs") SetClearDepth;
-		%feature("autodoc", "Set if depth values should be cleared before drawing the layer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if depth values should be cleared before drawing the layer.
 ") SetClearDepth;
 		void SetClearDepth(const Standard_Boolean theValue);
 
 		/****************** SetCullingDistance ******************/
 		/**** md5 signature: 212f1b9b3fad158e803c37ed4ea70813 ****/
 		%feature("compactdefaultargs") SetCullingDistance;
-		%feature("autodoc", "Set the distance to discard drawing objects.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDistance: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the distance to discard drawing objects.
 ") SetCullingDistance;
 		void SetCullingDistance(Standard_Real theDistance);
 
 		/****************** SetCullingSize ******************/
 		/**** md5 signature: de1e67e83be84528f7afa7d200b49f34 ****/
 		%feature("compactdefaultargs") SetCullingSize;
-		%feature("autodoc", "Set the distance to discard drawing objects.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSize: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the distance to discard drawing objects.
 ") SetCullingSize;
 		void SetCullingSize(Standard_Real theSize);
 
 		/****************** SetDepthOffsetNegative ******************/
 		/**** md5 signature: 8504702a9a57f02a9fc5f9a049047757 ****/
 		%feature("compactdefaultargs") SetDepthOffsetNegative;
-		%feature("autodoc", "Sets minimal possible negative depth offset.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Sets minimal possible negative depth offset.
 ") SetDepthOffsetNegative;
 		void SetDepthOffsetNegative();
 
 		/****************** SetDepthOffsetPositive ******************/
 		/**** md5 signature: e5422a61a52cf834e79732a19c969150 ****/
 		%feature("compactdefaultargs") SetDepthOffsetPositive;
-		%feature("autodoc", "Sets minimal possible positive depth offset.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Sets minimal possible positive depth offset.
 ") SetDepthOffsetPositive;
 		void SetDepthOffsetPositive();
 
 		/****************** SetEnableDepthTest ******************/
 		/**** md5 signature: 78f70f77ea0ae712508fd0672ebe8861 ****/
 		%feature("compactdefaultargs") SetEnableDepthTest;
-		%feature("autodoc", "Set if depth test should be enabled.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if depth test should be enabled.
 ") SetEnableDepthTest;
 		void SetEnableDepthTest(const Standard_Boolean theValue);
 
 		/****************** SetEnableDepthWrite ******************/
 		/**** md5 signature: 3ff81b20d6640750aa45dc9dc6946e4f ****/
 		%feature("compactdefaultargs") SetEnableDepthWrite;
-		%feature("autodoc", "Set if depth values should be written during rendering.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if depth values should be written during rendering.
 ") SetEnableDepthWrite;
 		void SetEnableDepthWrite(const Standard_Boolean theValue);
 
 		/****************** SetEnvironmentTexture ******************/
 		/**** md5 signature: fa23cac6f55518df8e0828d12c17be15 ****/
 		%feature("compactdefaultargs") SetEnvironmentTexture;
-		%feature("autodoc", "Set the flag to allow/prevent environment texture mapping usage for specific layer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the flag to allow/prevent environment texture mapping usage for specific layer.
 ") SetEnvironmentTexture;
 		void SetEnvironmentTexture(const Standard_Boolean theValue);
 
 		/****************** SetImmediate ******************/
 		/**** md5 signature: 100eea613280df3a64cdb947b26cc07a ****/
 		%feature("compactdefaultargs") SetImmediate;
-		%feature("autodoc", "Set the flag indicating the immediate layer, which should be drawn after all normal (non-immediate) layers.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the flag indicating the immediate layer, which should be drawn after all normal (non-immediate) layers.
 ") SetImmediate;
 		void SetImmediate(const Standard_Boolean theValue);
 
 		/****************** SetLights ******************/
 		/**** md5 signature: 853164d2a8de34064a3aea2df906c3fa ****/
 		%feature("compactdefaultargs") SetLights;
-		%feature("autodoc", "Assign lights list to be used.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLights: Graphic3d_LightSet
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign lights list to be used.
 ") SetLights;
 		void SetLights(const opencascade::handle<Graphic3d_LightSet> & theLights);
 
 		/****************** SetName ******************/
 		/**** md5 signature: 273df384551aa519beda71c20cd913ae ****/
 		%feature("compactdefaultargs") SetName;
-		%feature("autodoc", "Set custom name.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set custom name.
 ") SetName;
 		void SetName(TCollection_AsciiString theName);
 
 		/****************** SetOrigin ******************/
 		/**** md5 signature: 4e4636f1039090357f364099b018aa8c ****/
 		%feature("compactdefaultargs") SetOrigin;
-		%feature("autodoc", "Set the origin of all objects within the layer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOrigin: gp_XYZ
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the origin of all objects within the layer.
 ") SetOrigin;
 		void SetOrigin(const gp_XYZ & theOrigin);
 
 		/****************** SetPolygonOffset ******************/
 		/**** md5 signature: 683821e43c43689ce29cb4e52c777595 ****/
 		%feature("compactdefaultargs") SetPolygonOffset;
-		%feature("autodoc", "Setup glpolygonoffset() arguments.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theParams: Graphic3d_PolygonOffset
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup glpolygonoffset() arguments.
 ") SetPolygonOffset;
 		void SetPolygonOffset(const Graphic3d_PolygonOffset & theParams);
 
 		/****************** SetRaytracable ******************/
 		/**** md5 signature: 0468f0baf3ca14a2925941309bdbf40e ****/
 		%feature("compactdefaultargs") SetRaytracable;
-		%feature("autodoc", "Sets if layer should be processed by ray-tracing renderer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToRaytrace: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets if layer should be processed by ray-tracing renderer.
 ") SetRaytracable;
 		void SetRaytracable(Standard_Boolean theToRaytrace);
 
 		/****************** SetRenderInDepthPrepass ******************/
 		/**** md5 signature: fc37593c3b579d516790714fcbd125b9 ****/
 		%feature("compactdefaultargs") SetRenderInDepthPrepass;
-		%feature("autodoc", "Set if layer should be rendered within depth pre-pass.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToRender: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if layer should be rendered within depth pre-pass.
 ") SetRenderInDepthPrepass;
 		void SetRenderInDepthPrepass(Standard_Boolean theToRender);
 
 		/****************** ToClearDepth ******************/
 		/**** md5 signature: 588e7a6cb8079fc5baf75d9b354fd7ff ****/
 		%feature("compactdefaultargs") ToClearDepth;
-		%feature("autodoc", "Return true if depth values should be cleared before drawing the layer.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if depth values should be cleared before drawing the layer.
 ") ToClearDepth;
 		Standard_Boolean ToClearDepth();
 
 		/****************** ToEnableDepthTest ******************/
 		/**** md5 signature: c9240b5e49476699d42027d5a30bdaae ****/
 		%feature("compactdefaultargs") ToEnableDepthTest;
-		%feature("autodoc", "Return true if depth test should be enabled.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if depth test should be enabled.
 ") ToEnableDepthTest;
 		Standard_Boolean ToEnableDepthTest();
 
 		/****************** ToEnableDepthWrite ******************/
 		/**** md5 signature: 759b5fd3e3cdd67e1da4d8719af3ce76 ****/
 		%feature("compactdefaultargs") ToEnableDepthWrite;
-		%feature("autodoc", "Return true depth values should be written during rendering.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true depth values should be written during rendering.
 ") ToEnableDepthWrite;
 		Standard_Boolean ToEnableDepthWrite();
 
 		/****************** ToRenderInDepthPrepass ******************/
 		/**** md5 signature: 947be431c547603abdb326ceb200b0d2 ****/
 		%feature("compactdefaultargs") ToRenderInDepthPrepass;
-		%feature("autodoc", "Return true if layer should be rendered within depth pre-pass; true by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if layer should be rendered within depth pre-pass; true by default.
 ") ToRenderInDepthPrepass;
 		Standard_Boolean ToRenderInDepthPrepass();
 
 		/****************** UseEnvironmentTexture ******************/
 		/**** md5 signature: 68ad1adf6d667cdaeaafe524a8e45f33 ****/
 		%feature("compactdefaultargs") UseEnvironmentTexture;
-		%feature("autodoc", "Return flag to allow/prevent environment texture mapping usage for specific layer.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return flag to allow/prevent environment texture mapping usage for specific layer.
 ") UseEnvironmentTexture;
 		Standard_Boolean UseEnvironmentTexture();
 
@@ -17368,35 +19933,39 @@ class Graphic3d_ArrayOfPoints : public Graphic3d_ArrayOfPrimitives {
 		/****************** Graphic3d_ArrayOfPoints ******************/
 		/**** md5 signature: 9866408ffddda8e43620807962ce2d37 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfPoints;
-		%feature("autodoc", "Creates an array of points (graphic3d_topa_points). the array must be filled using the addvertex(point) method. @param themaxvertexs maximum number of points @param thearrayflags array flags.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of points (graphic3d_topa_points). the array must be filled using the addvertex(point) method. @param themaxvertexs maximum number of points @param thearrayflags array flags.
 ") Graphic3d_ArrayOfPoints;
 		 Graphic3d_ArrayOfPoints(Standard_Integer theMaxVertexs, int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfPoints ******************/
 		/**** md5 signature: e23aec21f5a3377c8f261c30be246dda ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfPoints;
-		%feature("autodoc", "Creates an array of points (graphic3d_topa_points). the array must be filled using the addvertex(point) method. @param themaxvertexs maximum number of points @param thehasvcolors when true, addvertex(point,color) should be used for specifying vertex color @param thehasvnormals when true, addvertex(point,normal) should be used for specifying vertex normal.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
-theHasVColors: bool,optional
-	default value is Standard_False
-theHasVNormals: bool,optional
-	default value is Standard_False
+theHasVColors: bool (optional, default to Standard_False)
+theHasVNormals: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of points (graphic3d_topa_points). the array must be filled using the addvertex(point) method. @param themaxvertexs maximum number of points @param thehasvcolors when true, addvertex(point,color) should be used for specifying vertex color @param thehasvnormals when true, addvertex(point,normal) should be used for specifying vertex normal.
 ") Graphic3d_ArrayOfPoints;
 		 Graphic3d_ArrayOfPoints(Standard_Integer theMaxVertexs, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasVNormals = Standard_False);
 
@@ -17419,8 +19988,7 @@ class Graphic3d_ArrayOfPolygons : public Graphic3d_ArrayOfPrimitives {
 		/****************** Graphic3d_ArrayOfPolygons ******************/
 		/**** md5 signature: 4629424b2c4652e778084defb0a8b3f4 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfPolygons;
-		%feature("autodoc", "Creates an array of polygons (graphic3d_topa_polygons), a polygon can be filled as: 1) creating a single polygon defined with his vertexes, i.e: @code myarray = graphic3d_arrayofpolygons (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate polygons defined with a predefined number of bounds and the number of vertex per bound, i.e: @code myarray = graphic3d_arrayofpolygons (7, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (3); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x7, y7, z7); @endcode 3) creating a single indexed polygon defined with his vertex ans edges, i.e: @code myarray = graphic3d_arrayofpolygons (4, 0, 6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (4); @endcode 4) creating separate polygons defined with a predefined number of bounds and the number of edges per bound, i.e: @code myarray = graphic3d_arrayofpolygons (6, 4, 14); myarray->addbound (3); myarray->addvertex (x1, y1, z1); myarray->addvertex (x2, y2, z2); myarray->addvertex (x3, y3, z3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addbound (3); myarray->addvertex (x4, y4, z4); myarray->addvertex (x5, y5, z5); myarray->addvertex (x6, y6, z6); myarray->addedge (4); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (2); myarray->addedge (3); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (1); myarray->addedge (3); myarray->addedge (5); myarray->addedge (4); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
@@ -17428,36 +19996,37 @@ theMaxBounds: int
 theMaxEdges: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of polygons (graphic3d_topa_polygons), a polygon can be filled as: 1) creating a single polygon defined with his vertexes, i.e: @code myarray = graphic3d_arrayofpolygons (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate polygons defined with a predefined number of bounds and the number of vertex per bound, i.e: @code myarray = graphic3d_arrayofpolygons (7, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (3); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x7, y7, z7); @endcode 3) creating a single indexed polygon defined with his vertex ans edges, i.e: @code myarray = graphic3d_arrayofpolygons (4, 0, 6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (4); @endcode 4) creating separate polygons defined with a predefined number of bounds and the number of edges per bound, i.e: @code myarray = graphic3d_arrayofpolygons (6, 4, 14); myarray->addbound (3); myarray->addvertex (x1, y1, z1); myarray->addvertex (x2, y2, z2); myarray->addvertex (x3, y3, z3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addbound (3); myarray->addvertex (x4, y4, z4); myarray->addvertex (x5, y5, z5); myarray->addvertex (x6, y6, z6); myarray->addedge (4); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (2); myarray->addedge (3); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (1); myarray->addedge (3); myarray->addedge (5); myarray->addedge (4); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
 ") Graphic3d_ArrayOfPolygons;
 		 Graphic3d_ArrayOfPolygons(Standard_Integer theMaxVertexs, Standard_Integer theMaxBounds, Standard_Integer theMaxEdges, int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfPolygons ******************/
 		/**** md5 signature: 2ff4b6a1e0b5d7de1f909b3d7c4ca0c2 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfPolygons;
-		%feature("autodoc", "Creates an array of polygons (graphic3d_topa_polygons): @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
-theMaxBounds: int,optional
-	default value is 0
-theMaxEdges: int,optional
-	default value is 0
-theHasVNormals: bool,optional
-	default value is Standard_False
-theHasVColors: bool,optional
-	default value is Standard_False
-theHasBColors: bool,optional
-	default value is Standard_False
-theHasVTexels: bool,optional
-	default value is Standard_False
+theMaxBounds: int (optional, default to 0)
+theMaxEdges: int (optional, default to 0)
+theHasVNormals: bool (optional, default to Standard_False)
+theHasVColors: bool (optional, default to Standard_False)
+theHasBColors: bool (optional, default to Standard_False)
+theHasVTexels: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of polygons (graphic3d_topa_polygons): @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array.
 ") Graphic3d_ArrayOfPolygons;
 		 Graphic3d_ArrayOfPolygons(const Standard_Integer theMaxVertexs, const Standard_Integer theMaxBounds = 0, const Standard_Integer theMaxEdges = 0, const Standard_Boolean theHasVNormals = Standard_False, const Standard_Boolean theHasVColors = Standard_False, const Standard_Boolean theHasBColors = Standard_False, const Standard_Boolean theHasVTexels = Standard_False);
 
@@ -17480,8 +20049,7 @@ class Graphic3d_ArrayOfPolylines : public Graphic3d_ArrayOfPrimitives {
 		/****************** Graphic3d_ArrayOfPolylines ******************/
 		/**** md5 signature: 2858b0d5a664aaebc96ffb4bd6ad7f05 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfPolylines;
-		%feature("autodoc", "Creates an array of polylines (graphic3d_topa_polylines), a polyline can be filled as: 1) creating a single polyline defined with his vertexes, i.e: @code myarray = graphic3d_arrayofpolylines (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate polylines defined with a predefined number of bounds and the number of vertex per bound, i.e: @code myarray = graphic3d_arrayofpolylines (7, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (3); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x7, y7, z7); @endcode 3) creating a single indexed polyline defined with his vertex and edges, i.e: @code myarray = graphic3d_arrayofpolylines (4, 0, 6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (4); @endcode 4) creating separate polylines defined with a predefined number of bounds and the number of edges per bound, i.e: @code myarray = graphic3d_arrayofpolylines (6, 4, 14); myarray->addbound (3); myarray->addvertex (x1, y1, z1); myarray->addvertex (x2, y2, z2); myarray->addvertex (x3, y3, z3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addbound (3); myarray->addvertex (x4, y4, z4); myarray->addvertex (x5, y5, z5); myarray->addvertex (x6, y6, z6); myarray->addedge (4); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (2); myarray->addedge (3); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (1); myarray->addedge (3); myarray->addedge (5); myarray->addedge (4); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
@@ -17489,32 +20057,35 @@ theMaxBounds: int
 theMaxEdges: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of polylines (graphic3d_topa_polylines), a polyline can be filled as: 1) creating a single polyline defined with his vertexes, i.e: @code myarray = graphic3d_arrayofpolylines (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate polylines defined with a predefined number of bounds and the number of vertex per bound, i.e: @code myarray = graphic3d_arrayofpolylines (7, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (3); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x7, y7, z7); @endcode 3) creating a single indexed polyline defined with his vertex and edges, i.e: @code myarray = graphic3d_arrayofpolylines (4, 0, 6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (4); @endcode 4) creating separate polylines defined with a predefined number of bounds and the number of edges per bound, i.e: @code myarray = graphic3d_arrayofpolylines (6, 4, 14); myarray->addbound (3); myarray->addvertex (x1, y1, z1); myarray->addvertex (x2, y2, z2); myarray->addvertex (x3, y3, z3); myarray->addedge (1); myarray->addedge (2); myarray->addedge (3); myarray->addbound (3); myarray->addvertex (x4, y4, z4); myarray->addvertex (x5, y5, z5); myarray->addvertex (x6, y6, z6); myarray->addedge (4); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (2); myarray->addedge (3); myarray->addedge (5); myarray->addedge (6); myarray->addbound (4); myarray->addedge (1); myarray->addedge (3); myarray->addedge (5); myarray->addedge (4); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
 ") Graphic3d_ArrayOfPolylines;
 		 Graphic3d_ArrayOfPolylines(Standard_Integer theMaxVertexs, Standard_Integer theMaxBounds, Standard_Integer theMaxEdges, int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfPolylines ******************/
 		/**** md5 signature: e1db2523232b718202cc226ddf9e6da6 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfPolylines;
-		%feature("autodoc", "Creates an array of polylines (graphic3d_topa_polylines). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array @param thehasvcolors when true addvertex(point,color) or addvertex(point,normal,color) should be used to specify per-vertex color values @param thehasbcolors when true addbound(number,color) should be used to specify sub-group color.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
-theMaxBounds: int,optional
-	default value is 0
-theMaxEdges: int,optional
-	default value is 0
-theHasVColors: bool,optional
-	default value is Standard_False
-theHasBColors: bool,optional
-	default value is Standard_False
+theMaxBounds: int (optional, default to 0)
+theMaxEdges: int (optional, default to 0)
+theHasVColors: bool (optional, default to Standard_False)
+theHasBColors: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of polylines (graphic3d_topa_polylines). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxbounds defines the maximum allowed bound number in the array @param themaxedges defines the maximum allowed edge number in the array @param thehasvcolors when true addvertex(point,color) or addvertex(point,normal,color) should be used to specify per-vertex color values @param thehasbcolors when true addbound(number,color) should be used to specify sub-group color.
 ") Graphic3d_ArrayOfPolylines;
 		 Graphic3d_ArrayOfPolylines(Standard_Integer theMaxVertexs, Standard_Integer theMaxBounds = 0, Standard_Integer theMaxEdges = 0, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasBColors = Standard_False);
 
@@ -17537,42 +20108,43 @@ class Graphic3d_ArrayOfQuadrangleStrips : public Graphic3d_ArrayOfPrimitives {
 		/****************** Graphic3d_ArrayOfQuadrangleStrips ******************/
 		/**** md5 signature: 277bb8ecb46f10be8a9349b516f8c076 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfQuadrangleStrips;
-		%feature("autodoc", "Creates an array of quadrangle strips (graphic3d_topa_quadranglestrips), a polygon can be filled as: 1) creating a single strip defined with his vertexes, i.e: @code myarray = graphic3d_arrayofquadranglestrips (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate strips defined with a predefined number of strips and the number of vertex per strip, i.e: @code myarray = graphic3d_arrayofquadranglestrips (8, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (4); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x8, y8, z8); @endcode the number of quadrangle really drawn is: vertexnumber()/2 - min(1, boundnumber()). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array @param thearrayflags array flags.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
 theMaxStrips: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of quadrangle strips (graphic3d_topa_quadranglestrips), a polygon can be filled as: 1) creating a single strip defined with his vertexes, i.e: @code myarray = graphic3d_arrayofquadranglestrips (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate strips defined with a predefined number of strips and the number of vertex per strip, i.e: @code myarray = graphic3d_arrayofquadranglestrips (8, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (4); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x8, y8, z8); @endcode the number of quadrangle really drawn is: vertexnumber()/2 - min(1, boundnumber()). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array @param thearrayflags array flags.
 ") Graphic3d_ArrayOfQuadrangleStrips;
 		 Graphic3d_ArrayOfQuadrangleStrips(Standard_Integer theMaxVertexs, Standard_Integer theMaxStrips, int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfQuadrangleStrips ******************/
 		/**** md5 signature: c92dd453e13c4b336d2361db52e2d35a ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfQuadrangleStrips;
-		%feature("autodoc", "Creates an array of quadrangle strips (graphic3d_topa_quadranglestrips). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
-theMaxStrips: int,optional
-	default value is 0
-theHasVNormals: bool,optional
-	default value is Standard_False
-theHasVColors: bool,optional
-	default value is Standard_False
-theHasSColors: bool,optional
-	default value is Standard_False
-theHasVTexels: bool,optional
-	default value is Standard_False
+theMaxStrips: int (optional, default to 0)
+theHasVNormals: bool (optional, default to Standard_False)
+theHasVColors: bool (optional, default to Standard_False)
+theHasSColors: bool (optional, default to Standard_False)
+theHasVTexels: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of quadrangle strips (graphic3d_topa_quadranglestrips). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array.
 ") Graphic3d_ArrayOfQuadrangleStrips;
 		 Graphic3d_ArrayOfQuadrangleStrips(Standard_Integer theMaxVertexs, Standard_Integer theMaxStrips = 0, Standard_Boolean theHasVNormals = Standard_False, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasSColors = Standard_False, Standard_Boolean theHasVTexels = Standard_False);
 
@@ -17595,40 +20167,42 @@ class Graphic3d_ArrayOfQuadrangles : public Graphic3d_ArrayOfPrimitives {
 		/****************** Graphic3d_ArrayOfQuadrangles ******************/
 		/**** md5 signature: f8ddd2d308778b47550d7e463e1a544b ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfQuadrangles;
-		%feature("autodoc", "Creates an array of quadrangles (graphic3d_topa_quadrangles), a quadrangle can be filled as: 1) creating a set of quadrangles defined with his vertexes, i.e: @code myarray = graphic3d_arrayofquadrangles (8); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x8, y8, z8); @endcode 2) creating a set of indexed quadrangles defined with his vertex ans edges, i.e: @code myarray = graphic3d_arrayofquadrangles (6, 8); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x6, y6, z6); myarray->addedges (1, 2, 3, 4); myarray->addedges (3, 4, 5, 6); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array (for indexed array) @param thearrayflags array flags.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
 theMaxEdges: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of quadrangles (graphic3d_topa_quadrangles), a quadrangle can be filled as: 1) creating a set of quadrangles defined with his vertexes, i.e: @code myarray = graphic3d_arrayofquadrangles (8); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x8, y8, z8); @endcode 2) creating a set of indexed quadrangles defined with his vertex ans edges, i.e: @code myarray = graphic3d_arrayofquadrangles (6, 8); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x6, y6, z6); myarray->addedges (1, 2, 3, 4); myarray->addedges (3, 4, 5, 6); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array (for indexed array) @param thearrayflags array flags.
 ") Graphic3d_ArrayOfQuadrangles;
 		 Graphic3d_ArrayOfQuadrangles(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges, int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfQuadrangles ******************/
 		/**** md5 signature: f065933ee43e2327588f4142a9145e5a ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfQuadrangles;
-		%feature("autodoc", "Creates an array of quadrangles (graphic3d_topa_quadrangles). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array (for indexed array).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
-theMaxEdges: int,optional
-	default value is 0
-theHasVNormals: bool,optional
-	default value is Standard_False
-theHasVColors: bool,optional
-	default value is Standard_False
-theHasVTexels: bool,optional
-	default value is Standard_False
+theMaxEdges: int (optional, default to 0)
+theHasVNormals: bool (optional, default to Standard_False)
+theHasVColors: bool (optional, default to Standard_False)
+theHasVTexels: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of quadrangles (graphic3d_topa_quadrangles). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array (for indexed array).
 ") Graphic3d_ArrayOfQuadrangles;
 		 Graphic3d_ArrayOfQuadrangles(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges = 0, Standard_Boolean theHasVNormals = Standard_False, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasVTexels = Standard_False);
 
@@ -17651,36 +20225,40 @@ class Graphic3d_ArrayOfSegments : public Graphic3d_ArrayOfPrimitives {
 		/****************** Graphic3d_ArrayOfSegments ******************/
 		/**** md5 signature: 3c6cb6cf80cee23c3d0e4b39d2cbdf64 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfSegments;
-		%feature("autodoc", "Creates an array of segments (graphic3d_topa_segments), a segment can be filled as: 1) creating a set of segments defined with his vertexes, i.e: @code myarray = graphic3d_arrayofsegments (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); @endcode 2) creating a set of indexed segments defined with his vertex and edges, i.e: @code myarray = graphic3d_arrayofsegments (4, 8); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedges (1, 2); myarray->addedges (3, 4); myarray->addedges (2, 4); myarray->addedges (1, 3); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
 theMaxEdges: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of segments (graphic3d_topa_segments), a segment can be filled as: 1) creating a set of segments defined with his vertexes, i.e: @code myarray = graphic3d_arrayofsegments (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); @endcode 2) creating a set of indexed segments defined with his vertex and edges, i.e: @code myarray = graphic3d_arrayofsegments (4, 8); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedges (1, 2); myarray->addedges (3, 4); myarray->addedges (2, 4); myarray->addedges (1, 3); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
 ") Graphic3d_ArrayOfSegments;
 		 Graphic3d_ArrayOfSegments(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges, int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfSegments ******************/
 		/**** md5 signature: 049e0ca57b4606c80d2bbed9e17f9215 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfSegments;
-		%feature("autodoc", "Creates an array of segments (graphic3d_topa_segments). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thehasvcolors when true, addvertex(point,color) should be used for specifying vertex color.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
-theMaxEdges: int,optional
-	default value is 0
-theHasVColors: bool,optional
-	default value is Standard_False
+theMaxEdges: int (optional, default to 0)
+theHasVColors: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of segments (graphic3d_topa_segments). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thehasvcolors when true, addvertex(point,color) should be used for specifying vertex color.
 ") Graphic3d_ArrayOfSegments;
 		 Graphic3d_ArrayOfSegments(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges = 0, Standard_Boolean theHasVColors = Standard_False);
 
@@ -17703,42 +20281,43 @@ class Graphic3d_ArrayOfTriangleFans : public Graphic3d_ArrayOfPrimitives {
 		/****************** Graphic3d_ArrayOfTriangleFans ******************/
 		/**** md5 signature: 3f7228ef3b65fc90c8bec18f0704c643 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfTriangleFans;
-		%feature("autodoc", "Creates an array of triangle fans (graphic3d_topa_trianglefans), a polygon can be filled as: 1) creating a single fan defined with his vertexes, i.e: @code myarray = graphic3d_arrayoftrianglefans (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate fans defined with a predefined number of fans and the number of vertex per fan, i.e: @code myarray = graphic3d_arrayoftrianglefans (8, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (4); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x8, y8, z8); @endcode the number of triangle really drawn is: vertexnumber() - 2 * min(1, boundnumber()) @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxfans defines the maximum allowed fan number in the array @param thearrayflags array flags.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
 theMaxFans: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of triangle fans (graphic3d_topa_trianglefans), a polygon can be filled as: 1) creating a single fan defined with his vertexes, i.e: @code myarray = graphic3d_arrayoftrianglefans (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate fans defined with a predefined number of fans and the number of vertex per fan, i.e: @code myarray = graphic3d_arrayoftrianglefans (8, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (4); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x8, y8, z8); @endcode the number of triangle really drawn is: vertexnumber() - 2 * min(1, boundnumber()) @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxfans defines the maximum allowed fan number in the array @param thearrayflags array flags.
 ") Graphic3d_ArrayOfTriangleFans;
 		 Graphic3d_ArrayOfTriangleFans(Standard_Integer theMaxVertexs, Standard_Integer theMaxFans, int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfTriangleFans ******************/
 		/**** md5 signature: e67f0dcb6454a6062a430efb34826659 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfTriangleFans;
-		%feature("autodoc", "Creates an array of triangle fans (graphic3d_topa_trianglefans). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxfans defines the maximum allowed fan number in the array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
-theMaxFans: int,optional
-	default value is 0
-theHasVNormals: bool,optional
-	default value is Standard_False
-theHasVColors: bool,optional
-	default value is Standard_False
-theHasBColors: bool,optional
-	default value is Standard_False
-theHasVTexels: bool,optional
-	default value is Standard_False
+theMaxFans: int (optional, default to 0)
+theHasVNormals: bool (optional, default to Standard_False)
+theHasVColors: bool (optional, default to Standard_False)
+theHasBColors: bool (optional, default to Standard_False)
+theHasVTexels: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of triangle fans (graphic3d_topa_trianglefans). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxfans defines the maximum allowed fan number in the array.
 ") Graphic3d_ArrayOfTriangleFans;
 		 Graphic3d_ArrayOfTriangleFans(Standard_Integer theMaxVertexs, Standard_Integer theMaxFans = 0, Standard_Boolean theHasVNormals = Standard_False, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasBColors = Standard_False, Standard_Boolean theHasVTexels = Standard_False);
 
@@ -17761,42 +20340,43 @@ class Graphic3d_ArrayOfTriangleStrips : public Graphic3d_ArrayOfPrimitives {
 		/****************** Graphic3d_ArrayOfTriangleStrips ******************/
 		/**** md5 signature: dd457b403c988dd009e1899bf7ea230b ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfTriangleStrips;
-		%feature("autodoc", "Creates an array of triangle strips (graphic3d_topa_trianglestrips), a polygon can be filled as: 1) creating a single strip defined with his vertexes, i.e: @code myarray = graphic3d_arrayoftrianglestrips (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate strips defined with a predefined number of strips and the number of vertex per strip, i.e: @code myarray = graphic3d_arrayoftrianglestrips (8, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (4); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x8, y8, z8); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array;  the number of triangle really drawn is: vertexnumber() - 2 * min(1, boundnumber()) @param thearrayflags array flags.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
 theMaxStrips: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of triangle strips (graphic3d_topa_trianglestrips), a polygon can be filled as: 1) creating a single strip defined with his vertexes, i.e: @code myarray = graphic3d_arrayoftrianglestrips (7); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x7, y7, z7); @endcode 2) creating separate strips defined with a predefined number of strips and the number of vertex per strip, i.e: @code myarray = graphic3d_arrayoftrianglestrips (8, 2); myarray->addbound (4); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addbound (4); myarray->addvertex (x5, y5, z5); .... myarray->addvertex (x8, y8, z8); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array;  the number of triangle really drawn is: vertexnumber() - 2 * min(1, boundnumber()) @param thearrayflags array flags.
 ") Graphic3d_ArrayOfTriangleStrips;
 		 Graphic3d_ArrayOfTriangleStrips(Standard_Integer theMaxVertexs, Standard_Integer theMaxStrips, int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfTriangleStrips ******************/
 		/**** md5 signature: 222b9b054008dbec147a724f1f116abb ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfTriangleStrips;
-		%feature("autodoc", "Creates an array of triangle strips (graphic3d_topa_trianglestrips). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array;  the number of triangle really drawn is: vertexnumber() - 2 * min(1, boundnumber()) @param thehasvnormals when true, addvertex(point,normal), addvertex(point,normal,color) or addvertex(point,normal,texel) should be used to specify vertex normal;  vertex normals should be specified coherent to triangle orientation (defined by order of vertexes within triangle) for proper rendering @param thehasvcolors when true, addvertex(point,color) or addvertex(point,normal,color) should be used to specify vertex color @param thehasbcolors when true, addbound(number,color) should be used to specify sub-group color @param thehasvtexels when true, addvertex(point,texel) or addvertex(point,normal,texel) should be used to specify vertex uv coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
-theMaxStrips: int,optional
-	default value is 0
-theHasVNormals: bool,optional
-	default value is Standard_False
-theHasVColors: bool,optional
-	default value is Standard_False
-theHasBColors: bool,optional
-	default value is Standard_False
-theHasVTexels: bool,optional
-	default value is Standard_False
+theMaxStrips: int (optional, default to 0)
+theHasVNormals: bool (optional, default to Standard_False)
+theHasVColors: bool (optional, default to Standard_False)
+theHasBColors: bool (optional, default to Standard_False)
+theHasVTexels: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of triangle strips (graphic3d_topa_trianglestrips). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxstrips defines the maximum allowed strip number in the array;  the number of triangle really drawn is: vertexnumber() - 2 * min(1, boundnumber()) @param thehasvnormals when true, addvertex(point,normal), addvertex(point,normal,color) or addvertex(point,normal,texel) should be used to specify vertex normal;  vertex normals should be specified coherent to triangle orientation (defined by order of vertexes within triangle) for proper rendering @param thehasvcolors when true, addvertex(point,color) or addvertex(point,normal,color) should be used to specify vertex color @param thehasbcolors when true, addbound(number,color) should be used to specify sub-group color @param thehasvtexels when true, addvertex(point,texel) or addvertex(point,normal,texel) should be used to specify vertex uv coordinates.
 ") Graphic3d_ArrayOfTriangleStrips;
 		 Graphic3d_ArrayOfTriangleStrips(Standard_Integer theMaxVertexs, Standard_Integer theMaxStrips = 0, Standard_Boolean theHasVNormals = Standard_False, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasBColors = Standard_False, Standard_Boolean theHasVTexels = Standard_False);
 
@@ -17819,40 +20399,42 @@ class Graphic3d_ArrayOfTriangles : public Graphic3d_ArrayOfPrimitives {
 		/****************** Graphic3d_ArrayOfTriangles ******************/
 		/**** md5 signature: 09576520473edff92dc5aa14f5a2840c ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfTriangles;
-		%feature("autodoc", "Creates an array of triangles (graphic3d_topa_triangles), a triangle can be filled as: 1) creating a set of triangles defined with his vertexes, i.e: @code myarray = graphic3d_arrayoftriangles (6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x6, y6, z6); @endcode 3) creating a set of indexed triangles defined with his vertex and edges, i.e: @code myarray = graphic3d_arrayoftriangles (4, 6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedges (1, 2, 3); myarray->addedges (2, 3, 4); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
 theMaxEdges: int
 theArrayFlags: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of triangles (graphic3d_topa_triangles), a triangle can be filled as: 1) creating a set of triangles defined with his vertexes, i.e: @code myarray = graphic3d_arrayoftriangles (6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x6, y6, z6); @endcode 3) creating a set of indexed triangles defined with his vertex and edges, i.e: @code myarray = graphic3d_arrayoftriangles (4, 6); myarray->addvertex (x1, y1, z1); .... myarray->addvertex (x4, y4, z4); myarray->addedges (1, 2, 3); myarray->addedges (2, 3, 4); @endcode @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thearrayflags array flags.
 ") Graphic3d_ArrayOfTriangles;
 		 Graphic3d_ArrayOfTriangles(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges, int theArrayFlags);
 
 		/****************** Graphic3d_ArrayOfTriangles ******************/
 		/**** md5 signature: 25029d6215f24644ca66e88a3e052eb7 ****/
 		%feature("compactdefaultargs") Graphic3d_ArrayOfTriangles;
-		%feature("autodoc", "Creates an array of triangles (graphic3d_topa_triangles). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thehasvnormals when true, addvertex(point,normal), addvertex(point,normal,color) or addvertex(point,normal,texel) should be used to specify vertex normal;  vertex normals should be specified coherent to triangle orientation (defined by order of vertexes within triangle) for proper rendering @param thehasvcolors when true, addvertex(point,color) or addvertex(point,normal,color) should be used to specify vertex color @param thehasvtexels when true, addvertex(point,texel) or addvertex(point,normal,texel) should be used to specify vertex uv coordinates.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMaxVertexs: int
-theMaxEdges: int,optional
-	default value is 0
-theHasVNormals: bool,optional
-	default value is Standard_False
-theHasVColors: bool,optional
-	default value is Standard_False
-theHasVTexels: bool,optional
-	default value is Standard_False
+theMaxEdges: int (optional, default to 0)
+theHasVNormals: bool (optional, default to Standard_False)
+theHasVColors: bool (optional, default to Standard_False)
+theHasVTexels: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an array of triangles (graphic3d_topa_triangles). @param themaxvertexs defines the maximum allowed vertex number in the array @param themaxedges defines the maximum allowed edge number in the array @param thehasvnormals when true, addvertex(point,normal), addvertex(point,normal,color) or addvertex(point,normal,texel) should be used to specify vertex normal;  vertex normals should be specified coherent to triangle orientation (defined by order of vertexes within triangle) for proper rendering @param thehasvcolors when true, addvertex(point,color) or addvertex(point,normal,color) should be used to specify vertex color @param thehasvtexels when true, addvertex(point,texel) or addvertex(point,normal,texel) should be used to specify vertex uv coordinates.
 ") Graphic3d_ArrayOfTriangles;
 		 Graphic3d_ArrayOfTriangles(Standard_Integer theMaxVertexs, Standard_Integer theMaxEdges = 0, Standard_Boolean theHasVNormals = Standard_False, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasVTexels = Standard_False);
 
@@ -17875,19 +20457,20 @@ class Graphic3d_AspectFillArea3d : public Graphic3d_Aspects {
 		/****************** Graphic3d_AspectFillArea3d ******************/
 		/**** md5 signature: fc9693ef99225219e1bd8c3ab519d2a4 ****/
 		%feature("compactdefaultargs") Graphic3d_AspectFillArea3d;
-		%feature("autodoc", "Creates a context table for fill area primitives defined with the following default values: //! interiorstyle : aspect_is_empty interiorcolor : quantity_noc_cyan1 edgecolor : quantity_noc_white edgelinetype : aspect_tol_solid edgewidth : 1.0 frontmaterial : nom_brass backmaterial : nom_brass hatchstyle : aspect_hs_solid //! display of back-facing filled polygons. no distinction between external and internal faces of fillareas. the edges are not drawn. polygon offset parameters: mode = aspect_pom_none, factor = 1., units = 0.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a context table for fill area primitives defined with the following default values: //! interiorstyle: aspect_is_empty interiorcolor: quantity_noc_cyan1 edgecolor: quantity_noc_white edgelinetype: aspect_tol_solid edgewidth: 1.0 frontmaterial: nom_brass backmaterial: nom_brass hatchstyle: aspect_hs_solid //! display of back-facing filled polygons. no distinction between external and internal faces of fillareas. the edges are not drawn. polygon offset parameters: mode = aspect_pom_none, factor = 1., units = 0.
 ") Graphic3d_AspectFillArea3d;
 		 Graphic3d_AspectFillArea3d();
 
 		/****************** Graphic3d_AspectFillArea3d ******************/
 		/**** md5 signature: 6b91accbdda8840fff2de72ceb656a94 ****/
 		%feature("compactdefaultargs") Graphic3d_AspectFillArea3d;
-		%feature("autodoc", "Creates a context table for fill area primitives defined with the specified values. display of back-facing filled polygons. no distinction between external and internal faces of fillareas. the edges are not drawn. polygon offset parameters: mode = aspect_pom_none, factor = 1., units = 0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theInterior: Aspect_InteriorStyle
@@ -17898,20 +20481,26 @@ theEdgeWidth: float
 theFrontMaterial: Graphic3d_MaterialAspect
 theBackMaterial: Graphic3d_MaterialAspect
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a context table for fill area primitives defined with the specified values. display of back-facing filled polygons. no distinction between external and internal faces of fillareas. the edges are not drawn. polygon offset parameters: mode = aspect_pom_none, factor = 1., units = 0.
 ") Graphic3d_AspectFillArea3d;
 		 Graphic3d_AspectFillArea3d(const Aspect_InteriorStyle theInterior, const Quantity_Color & theInteriorColor, const Quantity_Color & theEdgeColor, const Aspect_TypeOfLine theEdgeLineType, const Standard_Real theEdgeWidth, const Graphic3d_MaterialAspect & theFrontMaterial, const Graphic3d_MaterialAspect & theBackMaterial);
 
 		/****************** Edge ******************/
 		/**** md5 signature: f282c08249e0c353d7b7113fe2375737 ****/
 		%feature("compactdefaultargs") Edge;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") Edge;
 		bool Edge();
 
@@ -17934,95 +20523,113 @@ class Graphic3d_AspectLine3d : public Graphic3d_Aspects {
 		/****************** Graphic3d_AspectLine3d ******************/
 		/**** md5 signature: ae16253e3fb05b880b08c284f9894b56 ****/
 		%feature("compactdefaultargs") Graphic3d_AspectLine3d;
-		%feature("autodoc", "Creates a context table for line primitives defined with the following default values: //! color = quantity_noc_yellow; type = aspect_tol_solid; width = 1.0;.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a context table for line primitives defined with the following default values: //! color = quantity_noc_yellow; type = aspect_tol_solid; width = 1.0;.
 ") Graphic3d_AspectLine3d;
 		 Graphic3d_AspectLine3d();
 
 		/****************** Graphic3d_AspectLine3d ******************/
 		/**** md5 signature: 738ef8d7f293046a9cd124a0ca5f3679 ****/
 		%feature("compactdefaultargs") Graphic3d_AspectLine3d;
-		%feature("autodoc", "Creates a context table for line primitives defined with the specified values. warning: thewidth is the 'line width scale factor'. the nominal line width is 1 pixel. the width of the line is determined by applying the line width scale factor to this nominal line width. the supported line widths vary by 1-pixel units.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 theType: Aspect_TypeOfLine
 theWidth: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a context table for line primitives defined with the specified values. warning: thewidth is the 'line width scale factor'. the nominal line width is 1 pixel. the width of the line is determined by applying the line width scale factor to this nominal line width. the supported line widths vary by 1-pixel units.
 ") Graphic3d_AspectLine3d;
 		 Graphic3d_AspectLine3d(const Quantity_Color & theColor, Aspect_TypeOfLine theType, Standard_Real theWidth);
 
 		/****************** SetType ******************/
 		/**** md5 signature: 1258fda167a7e43236300c87e492edae ****/
 		%feature("compactdefaultargs") SetType;
-		%feature("autodoc", "Modifies the type of line.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Aspect_TypeOfLine
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the type of line.
 ") SetType;
 		void SetType(const Aspect_TypeOfLine theType);
 
 		/****************** SetWidth ******************/
 		/**** md5 signature: a388bd43f011bc773d8da404945719b5 ****/
 		%feature("compactdefaultargs") SetWidth;
-		%feature("autodoc", "Modifies the line thickness. warning: raises standard_outofrange if the width is a negative value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWidth: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the line thickness. warning: raises standard_outofrange if the width is a negative value.
 ") SetWidth;
 		void SetWidth(const Standard_Real theWidth);
 
 		/****************** SetWidth ******************/
 		/**** md5 signature: b1510877c180282274c63236776cd180 ****/
 		%feature("compactdefaultargs") SetWidth;
-		%feature("autodoc", "Modifies the line thickness. warning: raises standard_outofrange if the width is a negative value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWidth: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the line thickness. warning: raises standard_outofrange if the width is a negative value.
 ") SetWidth;
 		void SetWidth(Standard_ShortReal theWidth);
 
 		/****************** Type ******************/
 		/**** md5 signature: 69333bf72673a8c7a5413520ea633cca ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "Return line type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfLine
+
+Description
+-----------
+Return line type.
 ") Type;
 		Aspect_TypeOfLine Type();
 
 		/****************** Width ******************/
 		/**** md5 signature: 31e04bb147ff1c492115f0ced1ab0e7a ****/
 		%feature("compactdefaultargs") Width;
-		%feature("autodoc", "Return line width.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return line width.
 ") Width;
 		Standard_ShortReal Width();
 
@@ -18045,36 +20652,40 @@ class Graphic3d_AspectMarker3d : public Graphic3d_Aspects {
 		/****************** Graphic3d_AspectMarker3d ******************/
 		/**** md5 signature: c51eae27bcfca01452a3972b6341bd3a ****/
 		%feature("compactdefaultargs") Graphic3d_AspectMarker3d;
-		%feature("autodoc", "Creates a context table for marker primitives defined with the following default values: //! marker type : tom_x color : yellow scale factor: 1.0.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a context table for marker primitives defined with the following default values: //! marker type: tom_x color: yellow scale factor: 1.0.
 ") Graphic3d_AspectMarker3d;
 		 Graphic3d_AspectMarker3d();
 
 		/****************** Graphic3d_AspectMarker3d ******************/
 		/**** md5 signature: 158ad3b17f8d5f5276bb4394e35d5687 ****/
 		%feature("compactdefaultargs") Graphic3d_AspectMarker3d;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Aspect_TypeOfMarker
 theColor: Quantity_Color
 theScale: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Graphic3d_AspectMarker3d;
 		 Graphic3d_AspectMarker3d(const Aspect_TypeOfMarker theType, const Quantity_Color & theColor, const Standard_Real theScale);
 
 		/****************** Graphic3d_AspectMarker3d ******************/
 		/**** md5 signature: f9ef89cda276ebb2df53a7a8df36d6b1 ****/
 		%feature("compactdefaultargs") Graphic3d_AspectMarker3d;
-		%feature("autodoc", "Creates a context table for marker primitives defined with the specified values.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
@@ -18082,134 +20693,162 @@ theWidth: int
 theHeight: int
 theTextureBitmap: TColStd_HArray1OfByte
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a context table for marker primitives defined with the specified values.
 ") Graphic3d_AspectMarker3d;
 		 Graphic3d_AspectMarker3d(const Quantity_Color & theColor, const Standard_Integer theWidth, const Standard_Integer theHeight, const opencascade::handle<TColStd_HArray1OfByte> & theTextureBitmap);
 
 		/****************** Graphic3d_AspectMarker3d ******************/
 		/**** md5 signature: 19dbb9e9a8dcd21db65647860865917a ****/
 		%feature("compactdefaultargs") Graphic3d_AspectMarker3d;
-		%feature("autodoc", "Creates a context table for marker primitives defined with the specified values.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTextureImage: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a context table for marker primitives defined with the specified values.
 ") Graphic3d_AspectMarker3d;
 		 Graphic3d_AspectMarker3d(const opencascade::handle<Image_PixMap> & theTextureImage);
 
 		/****************** GetMarkerImage ******************/
 		/**** md5 signature: b7168bb49cffd5553e6520fc754c4a1b ****/
 		%feature("compactdefaultargs") GetMarkerImage;
-		%feature("autodoc", "Returns marker's image texture. could be null handle if marker aspect has been initialized as default type of marker.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_MarkerImage>
+
+Description
+-----------
+Returns marker's image texture. could be null handle if marker aspect has been initialized as default type of marker.
 ") GetMarkerImage;
 		const opencascade::handle<Graphic3d_MarkerImage> & GetMarkerImage();
 
 		/****************** GetTextureSize ******************/
 		/**** md5 signature: 613d235550caf2f8304bcaae6f035920 ****/
 		%feature("compactdefaultargs") GetTextureSize;
-		%feature("autodoc", "Returns marker's texture size.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theWidth: int
 theHeight: int
+
+Description
+-----------
+Returns marker's texture size.
 ") GetTextureSize;
 		void GetTextureSize(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** Scale ******************/
 		/**** md5 signature: b4ceb05c3d88f9721cfe708d9e1f5a31 ****/
 		%feature("compactdefaultargs") Scale;
-		%feature("autodoc", "Return scale factor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return scale factor.
 ") Scale;
 		Standard_ShortReal Scale();
 
 		/****************** SetBitMap ******************/
 		/**** md5 signature: 97ea5c70d7a586d522536650f8323bab ****/
 		%feature("compactdefaultargs") SetBitMap;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWidth: int
 theHeight: int
 theTexture: TColStd_HArray1OfByte
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetBitMap;
 		void SetBitMap(const Standard_Integer theWidth, const Standard_Integer theHeight, const opencascade::handle<TColStd_HArray1OfByte> & theTexture);
 
 		/****************** SetScale ******************/
 		/**** md5 signature: 33c64129c52c27576265502678977122 ****/
 		%feature("compactdefaultargs") SetScale;
-		%feature("autodoc", "Modifies the scale factor. marker type aspect_tom_point is not affected by the marker size scale factor. it is always the smallest displayable dot. warning: raises standard_outofrange if the scale is a negative value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScale: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the scale factor. marker type aspect_tom_point is not affected by the marker size scale factor. it is always the smallest displayable dot. warning: raises standard_outofrange if the scale is a negative value.
 ") SetScale;
 		void SetScale(const Standard_ShortReal theScale);
 
 		/****************** SetScale ******************/
 		/**** md5 signature: 85c1419c4c5459593a06ce585a34394d ****/
 		%feature("compactdefaultargs") SetScale;
-		%feature("autodoc", "Assign scale factor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScale: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign scale factor.
 ") SetScale;
 		void SetScale(const Standard_Real theScale);
 
 		/****************** SetType ******************/
 		/**** md5 signature: 01912a20786b2b3a7afea3ef50011de0 ****/
 		%feature("compactdefaultargs") SetType;
-		%feature("autodoc", "Modifies the type of marker.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Aspect_TypeOfMarker
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the type of marker.
 ") SetType;
 		void SetType(const Aspect_TypeOfMarker theType);
 
 		/****************** Type ******************/
 		/**** md5 signature: aec8d966145097ca0717d502ba9f44da ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "Return marker type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfMarker
+
+Description
+-----------
+Return marker type.
 ") Type;
 		Aspect_TypeOfMarker Type();
 
@@ -18232,66 +20871,75 @@ class Graphic3d_AspectText3d : public Graphic3d_Aspects {
 		/****************** Graphic3d_AspectText3d ******************/
 		/**** md5 signature: d9ab7314327e2d2b23b642cf8f21fef9 ****/
 		%feature("compactdefaultargs") Graphic3d_AspectText3d;
-		%feature("autodoc", "Creates a context table for text primitives defined with the following default values: color : quantity_noc_yellow font : font_nof_ascii_mono the style : aspect_tost_normal the display type : aspect_todt_normal.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a context table for text primitives defined with the following default values: color: quantity_noc_yellow font: font_nof_ascii_mono the style: aspect_tost_normal the display type: aspect_todt_normal.
 ") Graphic3d_AspectText3d;
 		 Graphic3d_AspectText3d();
 
 		/****************** Graphic3d_AspectText3d ******************/
 		/**** md5 signature: 82c469f1309f271996da93b40eaa1ded ****/
 		%feature("compactdefaultargs") Graphic3d_AspectText3d;
-		%feature("autodoc", "Creates a context table for text primitives defined with the specified values. @param thecolor [in] text color @param thefont [in] font family name or alias like font_nof_ascii_mono @param theexpansionfactor [in] deprecated parameter, has no effect @param thespace [in] deprecated parameter, has no effect @param thestyle [in] font style @param thedisplaytype [in] display mode.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 theFont: str
 theExpansionFactor: float
 theSpace: float
-theStyle: Aspect_TypeOfStyleText,optional
-	default value is Aspect_TOST_NORMAL
-theDisplayType: Aspect_TypeOfDisplayText,optional
-	default value is Aspect_TODT_NORMAL
+theStyle: Aspect_TypeOfStyleText (optional, default to Aspect_TOST_NORMAL)
+theDisplayType: Aspect_TypeOfDisplayText (optional, default to Aspect_TODT_NORMAL)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a context table for text primitives defined with the specified values. @param thecolor [in] text color @param thefont [in] font family name or alias like font_nof_ascii_mono @param theexpansionfactor [in] deprecated parameter, has no effect @param thespace [in] deprecated parameter, has no effect @param thestyle [in] font style @param thedisplaytype [in] display mode.
 ") Graphic3d_AspectText3d;
 		 Graphic3d_AspectText3d(const Quantity_Color & theColor, Standard_CString theFont, Standard_Real theExpansionFactor, Standard_Real theSpace, Aspect_TypeOfStyleText theStyle = Aspect_TOST_NORMAL, Aspect_TypeOfDisplayText theDisplayType = Aspect_TODT_NORMAL);
 
 		/****************** Color ******************/
 		/**** md5 signature: 7cec116411eb20e52d1fabf3015346da ****/
 		%feature("compactdefaultargs") Color;
-		%feature("autodoc", "Return the text color.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_Color
+
+Description
+-----------
+Return the text color.
 ") Color;
 		const Quantity_Color & Color();
 
 		/****************** ColorRGBA ******************/
 		/**** md5 signature: 615b6d48d8bc4764a07d0e2ff837764b ****/
 		%feature("compactdefaultargs") ColorRGBA;
-		%feature("autodoc", "Return the text color.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Quantity_ColorRGBA
+
+Description
+-----------
+Return the text color.
 ") ColorRGBA;
 		const Quantity_ColorRGBA & ColorRGBA();
 
 		/****************** DisplayType ******************/
 		/**** md5 signature: 041325771462897bef38e38a8d051921 ****/
 		%feature("compactdefaultargs") DisplayType;
-		%feature("autodoc", "Return display type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfDisplayText
+
+Description
+-----------
+Return display type.
 ") DisplayType;
 		Aspect_TypeOfDisplayText DisplayType();
 
@@ -18307,160 +20955,191 @@ Aspect_TypeOfDisplayText
 		/****************** Font ******************/
 		/**** md5 signature: 246154ff4659a4acf077229295e5855e ****/
 		%feature("compactdefaultargs") Font;
-		%feature("autodoc", "Return the font.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Return the font.
 ") Font;
 		const TCollection_AsciiString & Font();
 
 		/****************** GetTextAngle ******************/
 		/**** md5 signature: b315e51286635e62f20ccde3a9d86b97 ****/
 		%feature("compactdefaultargs") GetTextAngle;
-		%feature("autodoc", "Returns angle of degree.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns angle of degree.
 ") GetTextAngle;
 		Standard_ShortReal GetTextAngle();
 
 		/****************** GetTextFontAspect ******************/
 		/**** md5 signature: 4cd71b07b0ec9eb017ea12670bda379e ****/
 		%feature("compactdefaultargs") GetTextFontAspect;
-		%feature("autodoc", "Returns text fontaspect.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Font_FontAspect
+
+Description
+-----------
+Returns text fontaspect.
 ") GetTextFontAspect;
 		Font_FontAspect GetTextFontAspect();
 
 		/****************** GetTextZoomable ******************/
 		/**** md5 signature: 47c9fd4a0ce90ee835f95292957687a7 ****/
 		%feature("compactdefaultargs") GetTextZoomable;
-		%feature("autodoc", "Returns true when the text zoomable is on.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true when the text zoomable is on.
 ") GetTextZoomable;
 		bool GetTextZoomable();
 
 		/****************** SetColor ******************/
 		/**** md5 signature: 289e78889c9a8b48d6cf1ce3b205415d ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Modifies the color.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_Color
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the color.
 ") SetColor;
 		void SetColor(const Quantity_Color & theColor);
 
 		/****************** SetColor ******************/
 		/**** md5 signature: 4dd7c6505348ed91f3ee5831c87631e8 ****/
 		%feature("compactdefaultargs") SetColor;
-		%feature("autodoc", "Modifies the color.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theColor: Quantity_ColorRGBA
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the color.
 ") SetColor;
 		void SetColor(const Quantity_ColorRGBA & theColor);
 
 		/****************** SetDisplayType ******************/
 		/**** md5 signature: d72cac4cee8a504e1c4b2e47a848e48c ****/
 		%feature("compactdefaultargs") SetDisplayType;
-		%feature("autodoc", "Define the display type of the text.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDisplayType: Aspect_TypeOfDisplayText
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Define the display type of the text.
 ") SetDisplayType;
 		void SetDisplayType(Aspect_TypeOfDisplayText theDisplayType);
 
 		/****************** SetFont ******************/
 		/**** md5 signature: 7f2969793d80ece6d22485bcb15f06b4 ****/
 		%feature("compactdefaultargs") SetFont;
-		%feature("autodoc", "Modifies the font.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFont: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the font.
 ") SetFont;
 		void SetFont(TCollection_AsciiString theFont);
 
 		/****************** SetFont ******************/
 		/**** md5 signature: 61d12f4a548c85ea1d3fd6a76e34b6f6 ****/
 		%feature("compactdefaultargs") SetFont;
-		%feature("autodoc", "Modifies the font.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFont: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the font.
 ") SetFont;
 		void SetFont(Standard_CString theFont);
 
 		/****************** SetStyle ******************/
 		/**** md5 signature: 79f0871ccb7f1986360bdd74fe84ff94 ****/
 		%feature("compactdefaultargs") SetStyle;
-		%feature("autodoc", "Modifies the style of the text.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStyle: Aspect_TypeOfStyleText
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Modifies the style of the text.
 ") SetStyle;
 		void SetStyle(Aspect_TypeOfStyleText theStyle);
 
 		/****************** SetTextAngle ******************/
 		/**** md5 signature: fc0c098fc733d21359076cebc1de4918 ****/
 		%feature("compactdefaultargs") SetTextAngle;
-		%feature("autodoc", "Turns usage of text rotated.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAngle: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Turns usage of text rotated.
 ") SetTextAngle;
 		void SetTextAngle(const Standard_Real theAngle);
 
 		/****************** Style ******************/
 		/**** md5 signature: e2414cb4ef0eae6c2683ae26a37cf27b ****/
 		%feature("compactdefaultargs") Style;
-		%feature("autodoc", "Return the text style.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfStyleText
+
+Description
+-----------
+Return the text style.
 ") Style;
 		Aspect_TypeOfStyleText Style();
 
@@ -18483,196 +21162,233 @@ class Graphic3d_AttribBuffer : public Graphic3d_Buffer {
 		/****************** Graphic3d_AttribBuffer ******************/
 		/**** md5 signature: ef37a99e8ced63b1b1500bcd9e77ee57 ****/
 		%feature("compactdefaultargs") Graphic3d_AttribBuffer;
-		%feature("autodoc", "Empty constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAlloc: NCollection_BaseAllocator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_AttribBuffer;
 		 Graphic3d_AttribBuffer(const opencascade::handle<NCollection_BaseAllocator> & theAlloc);
 
 		/****************** Init ******************/
 		/**** md5 signature: efd8f630ef313a60a30b451800660618 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Allocates new empty array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNbElems: int
 theAttribs: Graphic3d_Attribute *
 theNbAttribs: int
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Allocates new empty array.
 ") Init;
 		bool Init(const Standard_Integer theNbElems, const Graphic3d_Attribute * theAttribs, const Standard_Integer theNbAttribs);
 
 		/****************** Init ******************/
 		/**** md5 signature: 3686a62adfda09716233ac96d4580561 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Allocates new empty array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNbElems: int
 theAttribs: Graphic3d_Array1OfAttribute
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Allocates new empty array.
 ") Init;
 		bool Init(const Standard_Integer theNbElems, const Graphic3d_Array1OfAttribute & theAttribs);
 
 		/****************** Invalidate ******************/
 		/**** md5 signature: 5fa41df075457f024f8e1ad188e9c543 ****/
 		%feature("compactdefaultargs") Invalidate;
-		%feature("autodoc", "Invalidate the entire buffer data.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Invalidate the entire buffer data.
 ") Invalidate;
 		virtual void Invalidate();
 
 		/****************** Invalidate ******************/
 		/**** md5 signature: ec3013667242ba75bc5251cc640927ce ****/
 		%feature("compactdefaultargs") Invalidate;
-		%feature("autodoc", "Invalidate the entire attribute data.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAttributeIndex: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Invalidate the entire attribute data.
 ") Invalidate;
 		void Invalidate(Standard_Integer theAttributeIndex);
 
 		/****************** Invalidate ******************/
 		/**** md5 signature: 7b6607c72ab9b0722bf33feb2ca8f23c ****/
 		%feature("compactdefaultargs") Invalidate;
-		%feature("autodoc", "Invalidate attribute data within specified sub-range (starting from 0).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAttributeIndex: int
 theVertexLower: int
 theVertexUpper: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Invalidate attribute data within specified sub-range (starting from 0).
 ") Invalidate;
 		void Invalidate(Standard_Integer theAttributeIndex, Standard_Integer theVertexLower, Standard_Integer theVertexUpper);
 
 		/****************** Invalidate ******************/
 		/**** md5 signature: a138322d465e7bebd22ffe0eb2ebc740 ****/
 		%feature("compactdefaultargs") Invalidate;
-		%feature("autodoc", "Invalidate all attribute data within specified vertex sub-range (starting from 0).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVertexLower: int
 theVertexUpper: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Invalidate all attribute data within specified vertex sub-range (starting from 0).
 ") Invalidate;
 		void Invalidate(Standard_Integer theVertexLower, Standard_Integer theVertexUpper);
 
 		/****************** InvalidatedRange ******************/
 		/**** md5 signature: 1765d375955ded2f60eeea3cf03bf4f5 ****/
 		%feature("compactdefaultargs") InvalidatedRange;
-		%feature("autodoc", "Return invalidated range.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_BufferRange
+
+Description
+-----------
+Return invalidated range.
 ") InvalidatedRange;
 		virtual Graphic3d_BufferRange InvalidatedRange();
 
 		/****************** IsInterleaved ******************/
 		/**** md5 signature: 24b2daa7a9774fbc2d204a2305a8d70e ****/
 		%feature("compactdefaultargs") IsInterleaved;
-		%feature("autodoc", "Return true for interleaved array; true by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true for interleaved array; true by default.
 ") IsInterleaved;
 		virtual Standard_Boolean IsInterleaved();
 
 		/****************** IsMutable ******************/
 		/**** md5 signature: 0a65ba39d455381471f162d17685710f ****/
 		%feature("compactdefaultargs") IsMutable;
-		%feature("autodoc", "Return true if data can be invalidated; false by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if data can be invalidated; false by default.
 ") IsMutable;
 		virtual Standard_Boolean IsMutable();
 
 		/****************** SetInterleaved ******************/
 		/**** md5 signature: 11f6f819b808e977ca0d4b17a552cf01 ****/
 		%feature("compactdefaultargs") SetInterleaved;
-		%feature("autodoc", "Setup interleaved/non-interleaved array. warning! filling non-interleaved buffer should be implemented on user side without graphic3d_buffer auxiliary methods designed for interleaved data.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsInterleaved: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup interleaved/non-interleaved array. warning! filling non-interleaved buffer should be implemented on user side without graphic3d_buffer auxiliary methods designed for interleaved data.
 ") SetInterleaved;
 		void SetInterleaved(Standard_Boolean theIsInterleaved);
 
 		/****************** SetMutable ******************/
 		/**** md5 signature: f43b6d10e772d092b660f3e185275e03 ****/
 		%feature("compactdefaultargs") SetMutable;
-		%feature("autodoc", "Set if data can be invalidated.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMutable: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if data can be invalidated.
 ") SetMutable;
 		void SetMutable(Standard_Boolean theMutable);
 
 		/****************** Validate ******************/
 		/**** md5 signature: c7581a0f47fe76012f2b11e6385e07da ****/
 		%feature("compactdefaultargs") Validate;
-		%feature("autodoc", "Reset invalidated range.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Reset invalidated range.
 ") Validate;
 		virtual void Validate();
 
 		/****************** invalidate ******************/
 		/**** md5 signature: a9dd52496baf9a9923d231297af5db43 ****/
 		%feature("compactdefaultargs") invalidate;
-		%feature("autodoc", "Invalidate specified sub-range of data (as byte offsets).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRange: Graphic3d_BufferRange
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Invalidate specified sub-range of data (as byte offsets).
 ") invalidate;
 		void invalidate(const Graphic3d_BufferRange & theRange);
 
@@ -18694,285 +21410,338 @@ class Graphic3d_CView : public Graphic3d_DataStructureManager {
 		/****************** Activate ******************/
 		/**** md5 signature: 7e7c8b081c69288260a14e2e3cd963e1 ****/
 		%feature("compactdefaultargs") Activate;
-		%feature("autodoc", "Activates the view. maps presentations defined within structure manager onto this view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Activates the view. maps presentations defined within structure manager onto this view.
 ") Activate;
 		virtual void Activate();
 
 		/****************** AddSubview ******************/
 		/**** md5 signature: 087614f43cc50ee37f740a2917be8ce5 ****/
 		%feature("compactdefaultargs") AddSubview;
-		%feature("autodoc", "Add subview to the list.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theView: Graphic3d_CView
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Add subview to the list.
 ") AddSubview;
 		void AddSubview(const opencascade::handle<Graphic3d_CView> & theView);
 
 		/****************** BackfacingModel ******************/
 		/**** md5 signature: 4ef77cd5fd8e610f48c8d749a75b591a ****/
 		%feature("compactdefaultargs") BackfacingModel;
-		%feature("autodoc", "Return backfacing model used for the view; graphic3d_typeofbackfacingmodel_auto by default, which means that backface culling is defined by each presentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfBackfacingModel
+
+Description
+-----------
+Return backfacing model used for the view; graphic3d_typeofbackfacingmodel_auto by default, which means that backface culling is defined by each presentation.
 ") BackfacingModel;
 		Graphic3d_TypeOfBackfacingModel BackfacingModel();
 
 		/****************** Background ******************/
 		/**** md5 signature: c0f5419b36969bcbaab4d536acce707c ****/
 		%feature("compactdefaultargs") Background;
-		%feature("autodoc", "Returns background fill color.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_Background
+
+Description
+-----------
+Returns background fill color.
 ") Background;
 		virtual Aspect_Background Background();
 
 		/****************** BackgroundCubeMap ******************/
 		/**** md5 signature: 47f07577dff92db22c0b16758c2eaba4 ****/
 		%feature("compactdefaultargs") BackgroundCubeMap;
-		%feature("autodoc", "Returns cubemap being set last time on background.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_CubeMap>
+
+Description
+-----------
+Returns cubemap being set last time on background.
 ") BackgroundCubeMap;
 		const opencascade::handle<Graphic3d_CubeMap> & BackgroundCubeMap();
 
 		/****************** BackgroundImage ******************/
 		/**** md5 signature: f2258721f5f4ef8ccd929c4758ab15a8 ****/
 		%feature("compactdefaultargs") BackgroundImage;
-		%feature("autodoc", "Returns background image texture map.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_TextureMap>
+
+Description
+-----------
+Returns background image texture map.
 ") BackgroundImage;
 		const opencascade::handle<Graphic3d_TextureMap> & BackgroundImage();
 
 		/****************** BackgroundImageStyle ******************/
 		/**** md5 signature: 9774e4b7f39a9586153cd8d1fad543ea ****/
 		%feature("compactdefaultargs") BackgroundImageStyle;
-		%feature("autodoc", "Returns background image fill style.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_FillMethod
+
+Description
+-----------
+Returns background image fill style.
 ") BackgroundImageStyle;
 		virtual Aspect_FillMethod BackgroundImageStyle();
 
 		/****************** BackgroundSkydome ******************/
 		/**** md5 signature: d7cf91d14be3f61f07eadf45a044328f ****/
 		%feature("compactdefaultargs") BackgroundSkydome;
-		%feature("autodoc", "Returns skydome aspect;.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_SkydomeBackground
+
+Description
+-----------
+Returns skydome aspect;.
 ") BackgroundSkydome;
 		const Aspect_SkydomeBackground & BackgroundSkydome();
 
 		/****************** BackgroundType ******************/
 		/**** md5 signature: cc22829f256c1e73c4aabb07733228f1 ****/
 		%feature("compactdefaultargs") BackgroundType;
-		%feature("autodoc", "Returns background type.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfBackground
+
+Description
+-----------
+Returns background type.
 ") BackgroundType;
 		Graphic3d_TypeOfBackground BackgroundType();
 
 		/****************** BaseXRCamera ******************/
 		/**** md5 signature: 569eec9cf9a0c2d6e3c15fcafd8f7e68 ****/
 		%feature("compactdefaultargs") BaseXRCamera;
-		%feature("autodoc", "Returns anchor camera definition (without tracked head orientation).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_Camera>
+
+Description
+-----------
+Returns anchor camera definition (without tracked head orientation).
 ") BaseXRCamera;
 		const opencascade::handle<Graphic3d_Camera> & BaseXRCamera();
 
 		/****************** BufferDump ******************/
 		/**** md5 signature: 716004d6a0bd1ac5e5aa64dd37c87b9e ****/
 		%feature("compactdefaultargs") BufferDump;
-		%feature("autodoc", "Dump active rendering buffer into specified memory buffer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theImage: Image_PixMap
 theBufferType: Graphic3d_BufferType
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Dump active rendering buffer into specified memory buffer.
 ") BufferDump;
 		virtual Standard_Boolean BufferDump(Image_PixMap & theImage, const Graphic3d_BufferType & theBufferType);
 
 		/****************** Camera ******************/
 		/**** md5 signature: 178e27da6085ece6a945beb076bf42ba ****/
 		%feature("compactdefaultargs") Camera;
-		%feature("autodoc", "Returns camera object of the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_Camera>
+
+Description
+-----------
+Returns camera object of the view.
 ") Camera;
 		virtual const opencascade::handle<Graphic3d_Camera> & Camera();
 
 		/****************** ChangeRenderingParams ******************/
 		/**** md5 signature: 2930edc0d67ff31509e235f7390593e4 ****/
 		%feature("compactdefaultargs") ChangeRenderingParams;
-		%feature("autodoc", "Returns reference to current rendering parameters and effect settings.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_RenderingParams
+
+Description
+-----------
+Returns reference to current rendering parameters and effect settings.
 ") ChangeRenderingParams;
 		Graphic3d_RenderingParams & ChangeRenderingParams();
 
 		/****************** ClipPlanes ******************/
 		/**** md5 signature: 5b56a7bba4df7465362e074ad237bc00 ****/
 		%feature("compactdefaultargs") ClipPlanes;
-		%feature("autodoc", "Returns list of clip planes set for the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_SequenceOfHClipPlane>
+
+Description
+-----------
+Returns list of clip planes set for the view.
 ") ClipPlanes;
 		virtual const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & ClipPlanes();
 
 		/****************** Compute ******************/
 		/**** md5 signature: 3472bca0870d21fcbdb4784495b49568 ****/
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Computes the new presentation of the structures displayed in this view with the type graphic3d_tos_computed.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Computes the new presentation of the structures displayed in this view with the type graphic3d_tos_computed.
 ") Compute;
 		void Compute();
 
 		/****************** ComputeXRBaseCameraFromPosed ******************/
 		/**** md5 signature: 9f9d9d6588f52bd74d24d69371b17125 ****/
 		%feature("compactdefaultargs") ComputeXRBaseCameraFromPosed;
-		%feature("autodoc", "Update based camera from posed camera by applying reversed transformation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCamPosed: Graphic3d_Camera
 thePoseTrsf: gp_Trsf
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Update based camera from posed camera by applying reversed transformation.
 ") ComputeXRBaseCameraFromPosed;
 		void ComputeXRBaseCameraFromPosed(const Graphic3d_Camera & theCamPosed, const gp_Trsf & thePoseTrsf);
 
 		/****************** ComputeXRPosedCameraFromBase ******************/
 		/**** md5 signature: fa0309bf3b3ea6e737859c88c31d7c83 ****/
 		%feature("compactdefaultargs") ComputeXRPosedCameraFromBase;
-		%feature("autodoc", "Compute camera position based on xr pose.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCam: Graphic3d_Camera
 theXRTrsf: gp_Trsf
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Compute camera position based on xr pose.
 ") ComputeXRPosedCameraFromBase;
 		void ComputeXRPosedCameraFromBase(Graphic3d_Camera & theCam, const gp_Trsf & theXRTrsf);
 
 		/****************** ComputedMode ******************/
 		/**** md5 signature: 47a490ca5aa934708fe6a7c8b60e9268 ****/
 		%feature("compactdefaultargs") ComputedMode;
-		%feature("autodoc", "Returns the computed hlr mode state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns the computed hlr mode state.
 ") ComputedMode;
 		Standard_Boolean ComputedMode();
 
 		/****************** ConsiderZoomPersistenceObjects ******************/
 		/**** md5 signature: 517e2d477f182b4d19d02e051688f6b4 ****/
 		%feature("compactdefaultargs") ConsiderZoomPersistenceObjects;
-		%feature("autodoc", "Returns zoom-scale factor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns zoom-scale factor.
 ") ConsiderZoomPersistenceObjects;
 		Standard_Real ConsiderZoomPersistenceObjects();
 
 		/****************** CopySettings ******************/
 		/**** md5 signature: 4026fe6fd42530f6aedac7fd6bd368b1 ****/
 		%feature("compactdefaultargs") CopySettings;
-		%feature("autodoc", "Copy visualization settings from another view. method is used for cloning views in viewer when its required to create view with same view properties.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOther: Graphic3d_CView
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Copy visualization settings from another view. method is used for cloning views in viewer when its required to create view with same view properties.
 ") CopySettings;
 		virtual void CopySettings(const opencascade::handle<Graphic3d_CView> & theOther);
 
 		/****************** Deactivate ******************/
 		/**** md5 signature: 884a7db0d96bdb6edb481d4f62218aaf ****/
 		%feature("compactdefaultargs") Deactivate;
-		%feature("autodoc", "Deactivates the view. unmaps presentations defined within structure manager. the view in deactivated state will ignore actions on structures such as display().
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Deactivates the view. unmaps presentations defined within structure manager. the view in deactivated state will ignore actions on structures such as display().
 ") Deactivate;
 		virtual void Deactivate();
 
 		/****************** DiagnosticInformation ******************/
 		/**** md5 signature: da095c0cd0b5dfa1d87dd0c32f1ccf9e ****/
 		%feature("compactdefaultargs") DiagnosticInformation;
-		%feature("autodoc", "Fill in the dictionary with diagnostic info. should be called within rendering thread. //! this api should be used only for user output or for creating automated reports. the format of returned information (e.g. key-value layout) is not part of this api and can be changed at any time. thus application should not parse returned information to weed out specific parameters.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDict: TColStd_IndexedDataMapOfStringString
 theFlags: Graphic3d_DiagnosticInfo
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Fill in the dictionary with diagnostic info. should be called within rendering thread. //! this api should be used only for user output or for creating automated reports. the format of returned information (e.g. key-value layout) is not part of this api and can be changed at any time. thus application should not parse returned information to weed out specific parameters.
 ") DiagnosticInformation;
 		virtual void DiagnosticInformation(TColStd_IndexedDataMapOfStringString & theDict, Graphic3d_DiagnosticInfo theFlags);
 
 		/****************** DisplayedStructures ******************/
 		/**** md5 signature: 86236884b0a7239a666185096566b138 ****/
 		%feature("compactdefaultargs") DisplayedStructures;
-		%feature("autodoc", "Returns the set of structures displayed in this view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructures: Graphic3d_MapOfStructure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the set of structures displayed in this view.
 ") DisplayedStructures;
 		void DisplayedStructures(Graphic3d_MapOfStructure & theStructures);
 
@@ -18988,1305 +21757,1547 @@ None
 		/****************** FBO ******************/
 		/**** md5 signature: 5e8daf4b78cdbaaa4589b241d71103f7 ****/
 		%feature("compactdefaultargs") FBO;
-		%feature("autodoc", "Returns pointer to an assigned framebuffer object.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Standard_Transient>
+
+Description
+-----------
+Returns pointer to an assigned framebuffer object.
 ") FBO;
 		virtual opencascade::handle<Standard_Transient> FBO();
 
 		/****************** FBOChangeViewport ******************/
 		/**** md5 signature: 6a8026d7a7e417578b8a57b73a445662 ****/
 		%feature("compactdefaultargs") FBOChangeViewport;
-		%feature("autodoc", "Change offscreen fbo viewport.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFbo: Standard_Transient
 theWidth: int
 theHeight: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change offscreen fbo viewport.
 ") FBOChangeViewport;
 		virtual void FBOChangeViewport(const opencascade::handle<Standard_Transient> & theFbo, const Standard_Integer theWidth, const Standard_Integer theHeight);
 
 		/****************** FBOCreate ******************/
 		/**** md5 signature: 4cb62cd5199a422d9b597aef75098329 ****/
 		%feature("compactdefaultargs") FBOCreate;
-		%feature("autodoc", "Generate offscreen fbo in the graphic library. if not supported on hardware returns null.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWidth: int
 theHeight: int
 
-Returns
+Return
 -------
 opencascade::handle<Standard_Transient>
+
+Description
+-----------
+Generate offscreen fbo in the graphic library. if not supported on hardware returns null.
 ") FBOCreate;
 		virtual opencascade::handle<Standard_Transient> FBOCreate(const Standard_Integer theWidth, const Standard_Integer theHeight);
 
 		/****************** FBOGetDimensions ******************/
 		/**** md5 signature: 9608c0fe7ac03d251e04b595d019afb9 ****/
 		%feature("compactdefaultargs") FBOGetDimensions;
-		%feature("autodoc", "Read offscreen fbo configuration.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFbo: Standard_Transient
 
-Returns
+Return
 -------
 theWidth: int
 theHeight: int
 theWidthMax: int
 theHeightMax: int
+
+Description
+-----------
+Read offscreen fbo configuration.
 ") FBOGetDimensions;
 		virtual void FBOGetDimensions(const opencascade::handle<Standard_Transient> & theFbo, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** FBORelease ******************/
 		/**** md5 signature: 44c6f29e61488023133cd287c55a3837 ****/
 		%feature("compactdefaultargs") FBORelease;
-		%feature("autodoc", "Remove offscreen fbo from the graphic library.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFbo: Standard_Transient
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Remove offscreen fbo from the graphic library.
 ") FBORelease;
 		virtual void FBORelease(opencascade::handle<Standard_Transient> & theFbo);
 
 		/****************** GetGraduatedTrihedron ******************/
 		/**** md5 signature: f68dfc8ae14469bea2db4aa0eff51178 ****/
 		%feature("compactdefaultargs") GetGraduatedTrihedron;
-		%feature("autodoc", "Returns data of a graduated trihedron.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_GraduatedTrihedron
+
+Description
+-----------
+Returns data of a graduated trihedron.
 ") GetGraduatedTrihedron;
 		virtual const Graphic3d_GraduatedTrihedron & GetGraduatedTrihedron();
 
 		/****************** GradientBackground ******************/
 		/**** md5 signature: 860c66cfd19114f1764c97d887bff69f ****/
 		%feature("compactdefaultargs") GradientBackground;
-		%feature("autodoc", "Returns gradient background fill colors.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_GradientBackground
+
+Description
+-----------
+Returns gradient background fill colors.
 ") GradientBackground;
 		virtual Aspect_GradientBackground GradientBackground();
 
 		/****************** GraduatedTrihedronDisplay ******************/
 		/**** md5 signature: 1857c6cf14b31109b498769c67b0bbf5 ****/
 		%feature("compactdefaultargs") GraduatedTrihedronDisplay;
-		%feature("autodoc", "Displays graduated trihedron.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTrihedronData: Graphic3d_GraduatedTrihedron
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Displays graduated trihedron.
 ") GraduatedTrihedronDisplay;
 		virtual void GraduatedTrihedronDisplay(const Graphic3d_GraduatedTrihedron & theTrihedronData);
 
 		/****************** GraduatedTrihedronErase ******************/
 		/**** md5 signature: 6d8f0387a39ea0593d498b477b7b4924 ****/
 		%feature("compactdefaultargs") GraduatedTrihedronErase;
-		%feature("autodoc", "Erases graduated trihedron.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Erases graduated trihedron.
 ") GraduatedTrihedronErase;
 		virtual void GraduatedTrihedronErase();
 
 		/****************** GraduatedTrihedronMinMaxValues ******************/
 		/**** md5 signature: 5d5f09a8a1541444dc42103b4da3297a ****/
 		%feature("compactdefaultargs") GraduatedTrihedronMinMaxValues;
-		%feature("autodoc", "Sets minimum and maximum points of scene bounding box for graduated trihedron stored in graphic view object. @param themin [in] the minimum point of scene. @param themax [in] the maximum point of scene.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMin: Graphic3d_Vec3
 theMax: Graphic3d_Vec3
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets minimum and maximum points of scene bounding box for graduated trihedron stored in graphic view object. @param themin [in] the minimum point of scene. @param themax [in] the maximum point of scene.
 ") GraduatedTrihedronMinMaxValues;
 		virtual void GraduatedTrihedronMinMaxValues(const Graphic3d_Vec3 theMin, const Graphic3d_Vec3 theMax);
 
 		/****************** IBLCubeMap ******************/
 		/**** md5 signature: ffcaee8919807a8917521c40504678ca ****/
 		%feature("compactdefaultargs") IBLCubeMap;
-		%feature("autodoc", "Returns cubemap being set last time on background.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_CubeMap>
+
+Description
+-----------
+Returns cubemap being set last time on background.
 ") IBLCubeMap;
 		const opencascade::handle<Graphic3d_CubeMap> & IBLCubeMap();
 
 		/****************** Identification ******************/
 		/**** md5 signature: f18c91e46c1b20a4777abd8f80b5550f ****/
 		%feature("compactdefaultargs") Identification;
-		%feature("autodoc", "Returns the identification number of the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the identification number of the view.
 ") Identification;
 		Standard_Integer Identification();
 
 		/****************** InitXR ******************/
 		/**** md5 signature: f0cfcfb26e15030c0c3215f30584f420 ****/
 		%feature("compactdefaultargs") InitXR;
-		%feature("autodoc", "Initialize xr session.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Initialize xr session.
 ") InitXR;
 		virtual bool InitXR();
 
 		/****************** InsertLayerAfter ******************/
 		/**** md5 signature: cd9549addd4543aedd353e8c4428d456 ****/
 		%feature("compactdefaultargs") InsertLayerAfter;
-		%feature("autodoc", "Add a layer to the view. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerbefore [in] id of layer to append new layer after.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNewLayerId: int
 theSettings: Graphic3d_ZLayerSettings
 theLayerBefore: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Add a layer to the view. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerbefore [in] id of layer to append new layer after.
 ") InsertLayerAfter;
 		virtual void InsertLayerAfter(int theNewLayerId, const Graphic3d_ZLayerSettings & theSettings, int theLayerBefore);
 
 		/****************** InsertLayerBefore ******************/
 		/**** md5 signature: 9598fd696d1336a754aefafafac0a974 ****/
 		%feature("compactdefaultargs") InsertLayerBefore;
-		%feature("autodoc", "Add a layer to the view. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerafter [in] id of layer to append new layer before.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNewLayerId: int
 theSettings: Graphic3d_ZLayerSettings
 theLayerAfter: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Add a layer to the view. @param thenewlayerid [in] id of new layer, should be > 0 (negative values are reserved for default layers). @param thesettings [in] new layer settings @param thelayerafter [in] id of layer to append new layer before.
 ") InsertLayerBefore;
 		virtual void InsertLayerBefore(int theNewLayerId, const Graphic3d_ZLayerSettings & theSettings, int theLayerAfter);
 
 		/****************** Invalidate ******************/
 		/**** md5 signature: 0d262fd592615fabc45f7dcd58c1a952 ****/
 		%feature("compactdefaultargs") Invalidate;
-		%feature("autodoc", "Invalidates content of the view but does not redraw it.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Invalidates content of the view but does not redraw it.
 ") Invalidate;
 		virtual void Invalidate();
 
 		/****************** InvalidateBVHData ******************/
 		/**** md5 signature: ae791789e23a7abf5abac66c4f52eb7b ****/
 		%feature("compactdefaultargs") InvalidateBVHData;
-		%feature("autodoc", "Marks bvh tree and the set of bvh primitives of correspondent priority list with id thelayerid as outdated.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerId: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Marks bvh tree and the set of bvh primitives of correspondent priority list with id thelayerid as outdated.
 ") InvalidateBVHData;
 		virtual void InvalidateBVHData(int theLayerId);
 
 		/****************** InvalidateZLayerBoundingBox ******************/
 		/**** md5 signature: 64b6a380e8baca315ec3508262f94c43 ****/
 		%feature("compactdefaultargs") InvalidateZLayerBoundingBox;
-		%feature("autodoc", "Returns the bounding box of all structures displayed in the z layer.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerId: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the bounding box of all structures displayed in the z layer.
 ") InvalidateZLayerBoundingBox;
 		virtual void InvalidateZLayerBoundingBox(int theLayerId);
 
 		/****************** IsActive ******************/
 		/**** md5 signature: 1430a89053d4b0413f25b185201efe70 ****/
 		%feature("compactdefaultargs") IsActive;
-		%feature("autodoc", "Returns the activity flag of the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns the activity flag of the view.
 ") IsActive;
 		Standard_Boolean IsActive();
 
 		/****************** IsActiveXR ******************/
 		/**** md5 signature: 28ef08380cd2c5428fe9c695d6a8357a ****/
 		%feature("compactdefaultargs") IsActiveXR;
-		%feature("autodoc", "Return true if there is active xr session.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if there is active xr session.
 ") IsActiveXR;
 		bool IsActiveXR();
 
 		/****************** IsComputed ******************/
 		/**** md5 signature: 3a53e61165b8b2a3e53d2934d0813196 ****/
 		%feature("compactdefaultargs") IsComputed;
-		%feature("autodoc", "Returns standard_true in case if the structure with the given <thestructid> is in list of structures to be computed and stores computed struct to <thecomputedstruct>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructId: int
 theComputedStruct: Graphic3d_Structure
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns standard_true in case if the structure with the given <thestructid> is in list of structures to be computed and stores computed struct to <thecomputedstruct>.
 ") IsComputed;
 		Standard_Boolean IsComputed(const Standard_Integer theStructId, opencascade::handle<Graphic3d_Structure> & theComputedStruct);
 
 		/****************** IsDefined ******************/
 		/**** md5 signature: 53efe3fde1dfd0e608676fdf7684ec59 ****/
 		%feature("compactdefaultargs") IsDefined;
-		%feature("autodoc", "Returns true if the window associated to the view is defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the window associated to the view is defined.
 ") IsDefined;
 		virtual Standard_Boolean IsDefined();
 
 		/****************** IsInvalidated ******************/
 		/**** md5 signature: 0566439ede2ceedb1e26d13d1e8f7d9d ****/
 		%feature("compactdefaultargs") IsInvalidated;
-		%feature("autodoc", "Return true if view content cache has been invalidated.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if view content cache has been invalidated.
 ") IsInvalidated;
 		virtual Standard_Boolean IsInvalidated();
 
 		/****************** IsRemoved ******************/
 		/**** md5 signature: 11569d63b02751ba09069246971eb4d4 ****/
 		%feature("compactdefaultargs") IsRemoved;
-		%feature("autodoc", "Returns true if the view was removed.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the view was removed.
 ") IsRemoved;
 		Standard_Boolean IsRemoved();
 
 		/****************** IsSubViewRelativeSize ******************/
 		/**** md5 signature: 04ae131a78555ab50e814ca94d8066c9 ****/
 		%feature("compactdefaultargs") IsSubViewRelativeSize;
-		%feature("autodoc", "Return true if subview size is set as proportions relative to parent view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if subview size is set as proportions relative to parent view.
 ") IsSubViewRelativeSize;
 		bool IsSubViewRelativeSize();
 
 		/****************** IsSubview ******************/
 		/**** md5 signature: e4786984f763125a6b3ee9d1975a34eb ****/
 		%feature("compactdefaultargs") IsSubview;
-		%feature("autodoc", "Return true if this is a subview of another view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if this is a subview of another view.
 ") IsSubview;
 		bool IsSubview();
 
 		/****************** IsSubviewComposer ******************/
 		/**** md5 signature: dda8477995e5b91e1a15cec3f2e75a4f ****/
 		%feature("compactdefaultargs") IsSubviewComposer;
-		%feature("autodoc", "Return true if this is view performs rendering of subviews and nothing else; false by default. by default, view with subviews will render main scene and blit subviews on top of it. rendering of main scene might become redundant in case if subviews cover entire window of parent view. this flag allows to disable rendering of the main scene in such scenarios without creation of a dedicated v3d_viewer instance just for composing subviews.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if this is view performs rendering of subviews and nothing else; false by default. by default, view with subviews will render main scene and blit subviews on top of it. rendering of main scene might become redundant in case if subviews cover entire window of parent view. this flag allows to disable rendering of the main scene in such scenarios without creation of a dedicated v3d_viewer instance just for composing subviews.
 ") IsSubviewComposer;
 		bool IsSubviewComposer();
 
 		/****************** Layer ******************/
 		/**** md5 signature: 98e13d408eec5014ccb45661ed58591c ****/
 		%feature("compactdefaultargs") Layer;
-		%feature("autodoc", "Returns layer with given id or null if undefined.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerId: int
 
-Returns
+Return
 -------
 opencascade::handle<Graphic3d_Layer>
+
+Description
+-----------
+Returns layer with given id or null if undefined.
 ") Layer;
 		virtual opencascade::handle<Graphic3d_Layer> Layer(int theLayerId);
 
 		/****************** Layers ******************/
 		/**** md5 signature: 1e44473170da77295f9e9d0552ecdd21 ****/
 		%feature("compactdefaultargs") Layers;
-		%feature("autodoc", "Returns the list of layers.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_List<opencascade::handle<Graphic3d_Layer>>
+
+Description
+-----------
+Returns the list of layers.
 ") Layers;
 		virtual const NCollection_List<opencascade::handle<Graphic3d_Layer>> & Layers();
 
 		/****************** Lights ******************/
 		/**** md5 signature: 1a679ee088dc3706926637bb7a9e9e5d ****/
 		%feature("compactdefaultargs") Lights;
-		%feature("autodoc", "Returns list of lights of the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_LightSet>
+
+Description
+-----------
+Returns list of lights of the view.
 ") Lights;
 		virtual const opencascade::handle<Graphic3d_LightSet> & Lights();
 
 		/****************** MinMaxValues ******************/
 		/**** md5 signature: 45fc67a9cdb7ade9e92898ace7263f05 ****/
 		%feature("compactdefaultargs") MinMaxValues;
-		%feature("autodoc", "Returns the bounding box of all structures displayed in the view. if thetoincludeauxiliary is true, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite and other auxiliary structures. @param thetoincludeauxiliary consider also auxiliary presentations (with infinite flag or with trihedron transformation persistence) returns computed bounding box.
-
+		%feature("autodoc", "
 Parameters
 ----------
-theToIncludeAuxiliary: bool,optional
-	default value is Standard_False
+theToIncludeAuxiliary: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 Bnd_Box
+
+Description
+-----------
+Returns the bounding box of all structures displayed in the view. if thetoincludeauxiliary is true, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite and other auxiliary structures. @param thetoincludeauxiliary consider also auxiliary presentations (with infinite flag or with trihedron transformation persistence) return computed bounding box.
 ") MinMaxValues;
 		virtual Bnd_Box MinMaxValues(const Standard_Boolean theToIncludeAuxiliary = Standard_False);
 
 		/****************** MinMaxValues ******************/
 		/**** md5 signature: 711091af61f4dcdf9b8b0cf2f13e9983 ****/
 		%feature("compactdefaultargs") MinMaxValues;
-		%feature("autodoc", "Returns the coordinates of the boundary box of all structures in the set <theset>. if <thetoignoreinfiniteflag> is true, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite structures.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSet: Graphic3d_MapOfStructure
-theToIncludeAuxiliary: bool,optional
-	default value is Standard_False
+theToIncludeAuxiliary: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 Bnd_Box
+
+Description
+-----------
+Returns the coordinates of the boundary box of all structures in the set <theset>. if <thetoignoreinfiniteflag> is true, then the boundary box also includes minimum and maximum limits of graphical elements forming parts of infinite structures.
 ") MinMaxValues;
 		Bnd_Box MinMaxValues(const Graphic3d_MapOfStructure & theSet, const Standard_Boolean theToIncludeAuxiliary = Standard_False);
 
 		/****************** NumberOfDisplayedStructures ******************/
 		/**** md5 signature: 08b9051bcff19d077afd4b2918ac8068 ****/
 		%feature("compactdefaultargs") NumberOfDisplayedStructures;
-		%feature("autodoc", "Returns number of displayed structures in the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns number of displayed structures in the view.
 ") NumberOfDisplayedStructures;
 		virtual Standard_Integer NumberOfDisplayedStructures();
 
 		/****************** ParentView ******************/
 		/**** md5 signature: 3277b1d4697d1e5bf1050aa6b3b068c0 ****/
 		%feature("compactdefaultargs") ParentView;
-		%feature("autodoc", "Return parent view or null if this is not a subview.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_CView *
+
+Description
+-----------
+Return parent view or null if this is not a subview.
 ") ParentView;
 		Graphic3d_CView * ParentView();
 
 		/****************** PoseXRToWorld ******************/
 		/**** md5 signature: cd46f66daada283828955a8fd56f2748 ****/
 		%feature("compactdefaultargs") PoseXRToWorld;
-		%feature("autodoc", "Convert xr pose to world space. @param theposexr [in] transformation defined in vr local coordinate system,  oriented as y-up, x-right and -z-forward returns transformation defining orientation of xr pose in world space.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoseXR: gp_Trsf
 
-Returns
+Return
 -------
 gp_Trsf
+
+Description
+-----------
+Convert xr pose to world space. @param theposexr [in] transformation defined in vr local coordinate system,  oriented as y-up, x-right and -z-forward return transformation defining orientation of xr pose in world space.
 ") PoseXRToWorld;
 		gp_Trsf PoseXRToWorld(const gp_Trsf & thePoseXR);
 
 		/****************** PosedXRCamera ******************/
 		/**** md5 signature: e3ae35712648cbfe2d75aec41667d8f6 ****/
 		%feature("compactdefaultargs") PosedXRCamera;
-		%feature("autodoc", "Returns transient xr camera position with tracked head orientation applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_Camera>
+
+Description
+-----------
+Returns transient xr camera position with tracked head orientation applied.
 ") PosedXRCamera;
 		const opencascade::handle<Graphic3d_Camera> & PosedXRCamera();
 
 		/****************** ProcessXRInput ******************/
 		/**** md5 signature: 0a11ab43e728eaafd87463f58bb331be ****/
 		%feature("compactdefaultargs") ProcessXRInput;
-		%feature("autodoc", "Process input.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Process input.
 ") ProcessXRInput;
 		virtual void ProcessXRInput();
 
 		/****************** ReCompute ******************/
 		/**** md5 signature: b298f491838ab5574e489a3b63373f8a ****/
 		%feature("compactdefaultargs") ReCompute;
-		%feature("autodoc", "Computes the new presentation of the structure displayed in this view with the type graphic3d_tos_computed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStructure: Graphic3d_Structure
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Computes the new presentation of the structure displayed in this view with the type graphic3d_tos_computed.
 ") ReCompute;
 		void ReCompute(const opencascade::handle<Graphic3d_Structure> & theStructure);
 
 		/****************** Redraw ******************/
 		/**** md5 signature: c693da13110ee5c0f4c37aa33fad1c21 ****/
 		%feature("compactdefaultargs") Redraw;
-		%feature("autodoc", "Redraw content of the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Redraw content of the view.
 ") Redraw;
 		virtual void Redraw();
 
 		/****************** RedrawImmediate ******************/
 		/**** md5 signature: 8dd0e1a7e818e6f07904b7cf852a1a0f ****/
 		%feature("compactdefaultargs") RedrawImmediate;
-		%feature("autodoc", "Redraw immediate content of the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Redraw immediate content of the view.
 ") RedrawImmediate;
 		virtual void RedrawImmediate();
 
 		/****************** ReleaseXR ******************/
 		/**** md5 signature: 1c0ce0247e26ce1f13490859dca30cde ****/
 		%feature("compactdefaultargs") ReleaseXR;
-		%feature("autodoc", "Release xr session.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Release xr session.
 ") ReleaseXR;
 		virtual void ReleaseXR();
 
 		/****************** Remove ******************/
 		/**** md5 signature: 57a23cda69c531e8d176ae30ce8f77c6 ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "Erases the view and removes from graphic driver. no more graphic operations are allowed in this view after the call.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Erases the view and removes from graphic driver. no more graphic operations are allowed in this view after the call.
 ") Remove;
 		virtual void Remove();
 
 		/****************** RemoveSubview ******************/
 		/**** md5 signature: 6f7136c88cbfcfcd7c8c06abc029efcd ****/
 		%feature("compactdefaultargs") RemoveSubview;
-		%feature("autodoc", "Remove subview from the list.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theView: Graphic3d_CView *
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Remove subview from the list.
 ") RemoveSubview;
 		bool RemoveSubview(const Graphic3d_CView * theView);
 
 		/****************** RemoveZLayer ******************/
 		/**** md5 signature: 50d5f44e4a544e7ce1c8003cf95dee16 ****/
 		%feature("compactdefaultargs") RemoveZLayer;
-		%feature("autodoc", "Remove z layer from the specified view. all structures displayed at the moment in layer will be displayed in default layer ( the bottom-level z layer ). to unset layer id from associated structures use method unsetzlayer (...).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerId: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Remove z layer from the specified view. all structures displayed at the moment in layer will be displayed in default layer ( the bottom-level z layer ). to unset layer id from associated structures use method unsetzlayer (...).
 ") RemoveZLayer;
 		virtual void RemoveZLayer(int theLayerId);
 
 		/****************** RenderingParams ******************/
 		/**** md5 signature: 09614d1dcd3a2492545d199d3739d373 ****/
 		%feature("compactdefaultargs") RenderingParams;
-		%feature("autodoc", "Returns current rendering parameters and effect settings.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_RenderingParams
+
+Description
+-----------
+Returns current rendering parameters and effect settings.
 ") RenderingParams;
 		const Graphic3d_RenderingParams & RenderingParams();
 
 		/****************** Resized ******************/
 		/**** md5 signature: 9c00c8ed1347651e53fd1021899219e9 ****/
 		%feature("compactdefaultargs") Resized;
-		%feature("autodoc", "Handle changing size of the rendering window.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Handle changing size of the rendering window.
 ") Resized;
 		virtual void Resized();
 
 		/****************** SetBackfacingModel ******************/
 		/**** md5 signature: 50bd0f3a514b4efa9480a06d75957fff ****/
 		%feature("compactdefaultargs") SetBackfacingModel;
-		%feature("autodoc", "Sets backfacing model for the view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theModel: Graphic3d_TypeOfBackfacingModel
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets backfacing model for the view.
 ") SetBackfacingModel;
 		void SetBackfacingModel(const Graphic3d_TypeOfBackfacingModel theModel);
 
 		/****************** SetBackground ******************/
 		/**** md5 signature: cca9f3f3a8cb129a25f49b97be82ed5b ****/
 		%feature("compactdefaultargs") SetBackground;
-		%feature("autodoc", "Sets background fill color.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBackground: Aspect_Background
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets background fill color.
 ") SetBackground;
 		virtual void SetBackground(const Aspect_Background & theBackground);
 
 		/****************** SetBackgroundImage ******************/
 		/**** md5 signature: 1c72826e85fea7198f78abbd76aa1207 ****/
 		%feature("compactdefaultargs") SetBackgroundImage;
-		%feature("autodoc", "Sets image texture or environment cubemap as background. @param thetexturemap [in] source to set a background;  should be either graphic3d_texture2d or graphic3d_cubemap @param thetoupdatepbrenv [in] defines whether ibl maps will be generated or not  (see generatepbrenvironment()).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTextureMap: Graphic3d_TextureMap
-theToUpdatePBREnv: bool,optional
-	default value is Standard_True
+theToUpdatePBREnv: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets image texture or environment cubemap as background. @param thetexturemap [in] source to set a background;  should be either graphic3d_texture2d or graphic3d_cubemap @param thetoupdatepbrenv [in] defines whether ibl maps will be generated or not  (see generatepbrenvironment()).
 ") SetBackgroundImage;
 		virtual void SetBackgroundImage(const opencascade::handle<Graphic3d_TextureMap> & theTextureMap, Standard_Boolean theToUpdatePBREnv = Standard_True);
 
 		/****************** SetBackgroundImageStyle ******************/
 		/**** md5 signature: 6d6171020c144a8806fd6d5bea661430 ****/
 		%feature("compactdefaultargs") SetBackgroundImageStyle;
-		%feature("autodoc", "Sets background image fill style.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFillStyle: Aspect_FillMethod
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets background image fill style.
 ") SetBackgroundImageStyle;
 		virtual void SetBackgroundImageStyle(const Aspect_FillMethod theFillStyle);
 
 		/****************** SetBackgroundSkydome ******************/
 		/**** md5 signature: 25ac38bc9b5749e5230aaefbd5f8cce1 ****/
 		%feature("compactdefaultargs") SetBackgroundSkydome;
-		%feature("autodoc", "Sets skydome aspect.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAspect: Aspect_SkydomeBackground
-theToUpdatePBREnv: bool,optional
-	default value is Standard_True
+theToUpdatePBREnv: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets skydome aspect.
 ") SetBackgroundSkydome;
 		void SetBackgroundSkydome(const Aspect_SkydomeBackground & theAspect, Standard_Boolean theToUpdatePBREnv = Standard_True);
 
 		/****************** SetBackgroundType ******************/
 		/**** md5 signature: 7cbcdf16f22591f5670a7bcbaa8dd21a ****/
 		%feature("compactdefaultargs") SetBackgroundType;
-		%feature("autodoc", "Sets background type.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfBackground
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets background type.
 ") SetBackgroundType;
 		void SetBackgroundType(Graphic3d_TypeOfBackground theType);
 
 		/****************** SetBaseXRCamera ******************/
 		/**** md5 signature: 091dbe28d6cd379e4f8bd1d66388c13d ****/
 		%feature("compactdefaultargs") SetBaseXRCamera;
-		%feature("autodoc", "Sets anchor camera definition.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCamera: Graphic3d_Camera
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets anchor camera definition.
 ") SetBaseXRCamera;
 		void SetBaseXRCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****************** SetCamera ******************/
 		/**** md5 signature: 257054b2420336cef22ca287c4c2483a ****/
 		%feature("compactdefaultargs") SetCamera;
-		%feature("autodoc", "Sets camera used by the view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCamera: Graphic3d_Camera
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets camera used by the view.
 ") SetCamera;
 		virtual void SetCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****************** SetClipPlanes ******************/
 		/**** md5 signature: dfb002b318ba4ae6bef35e01c5bfad78 ****/
 		%feature("compactdefaultargs") SetClipPlanes;
-		%feature("autodoc", "Sets list of clip planes for the view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePlanes: Graphic3d_SequenceOfHClipPlane
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets list of clip planes for the view.
 ") SetClipPlanes;
 		virtual void SetClipPlanes(const opencascade::handle<Graphic3d_SequenceOfHClipPlane> & thePlanes);
 
 		/****************** SetComputedMode ******************/
 		/**** md5 signature: 269d3bae92efe31d98d859df0012cf4d ****/
 		%feature("compactdefaultargs") SetComputedMode;
-		%feature("autodoc", "Switches computed hlr mode in the view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMode: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Switches computed hlr mode in the view.
 ") SetComputedMode;
 		void SetComputedMode(const Standard_Boolean theMode);
 
 		/****************** SetFBO ******************/
 		/**** md5 signature: 5027c300bed11eda941fac313a783a69 ****/
 		%feature("compactdefaultargs") SetFBO;
-		%feature("autodoc", "Sets framebuffer object for offscreen rendering.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFbo: Standard_Transient
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets framebuffer object for offscreen rendering.
 ") SetFBO;
 		virtual void SetFBO(const opencascade::handle<Standard_Transient> & theFbo);
 
 		/****************** SetGradientBackground ******************/
 		/**** md5 signature: 4a3410413657f94e88bdabc17279ecfc ****/
 		%feature("compactdefaultargs") SetGradientBackground;
-		%feature("autodoc", "Sets gradient background fill colors.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theBackground: Aspect_GradientBackground
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets gradient background fill colors.
 ") SetGradientBackground;
 		virtual void SetGradientBackground(const Aspect_GradientBackground & theBackground);
 
 		/****************** SetImageBasedLighting ******************/
 		/**** md5 signature: e76255c15ac3a2efb6498739f2e1599d ****/
 		%feature("compactdefaultargs") SetImageBasedLighting;
-		%feature("autodoc", "Enables or disables ibl (image based lighting) from background cubemap. has no effect if pbr is not used. @param[in] thetoenableibl enable or disable ibl from background cubemap.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToEnableIBL: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Enables or disables ibl (image based lighting) from background cubemap. has no effect if pbr is not used. @param[in] thetoenableibl enable or disable ibl from background cubemap.
 ") SetImageBasedLighting;
 		virtual void SetImageBasedLighting(Standard_Boolean theToEnableIBL);
 
 		/****************** SetImmediateModeDrawToFront ******************/
 		/**** md5 signature: b0f4841bb78325eef8ed7c80bcaab0be ****/
 		%feature("compactdefaultargs") SetImmediateModeDrawToFront;
-		%feature("autodoc", "@param thedrawtofrontbuffer advanced option to modify rendering mode: 1. true. drawing immediate mode structures directly to the front buffer over the scene image. fast, so preferred for interactive work (used by default). however these extra drawings will be missed in image dump since it is performed from back buffer. notice that since no pre-buffering used the v-sync will be ignored and rendering could be seen in run-time (in case of slow hardware) and/or tearing may appear. so this is strongly recommended to draw only simple (fast) structures. 2. false. drawing immediate mode structures to the back buffer. the complete scene is redrawn first, so this mode is slower if scene contains complex data and/or v-sync is turned on. but it works in any case and is especially useful for view dump because the dump image is read from the back buffer. returns previous mode.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDrawToFrontBuffer: bool
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+@param thedrawtofrontbuffer advanced option to modify rendering mode: 1. true. drawing immediate mode structures directly to the front buffer over the scene image. fast, so preferred for interactive work (used by default). however these extra drawings will be missed in image dump since it is performed from back buffer. notice that since no pre-buffering used the v-sync will be ignored and rendering could be seen in run-time (in case of slow hardware) and/or tearing may appear. so this is strongly recommended to draw only simple (fast) structures. 2. false. drawing immediate mode structures to the back buffer. the complete scene is redrawn first, so this mode is slower if scene contains complex data and/or v-sync is turned on. but it works in any case and is especially useful for view dump because the dump image is read from the back buffer. return previous mode.
 ") SetImmediateModeDrawToFront;
 		virtual Standard_Boolean SetImmediateModeDrawToFront(const Standard_Boolean theDrawToFrontBuffer);
 
 		/****************** SetLights ******************/
 		/**** md5 signature: a176e7a4912580ea247e20fd706028d2 ****/
 		%feature("compactdefaultargs") SetLights;
-		%feature("autodoc", "Sets list of lights for the view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLights: Graphic3d_LightSet
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets list of lights for the view.
 ") SetLights;
 		virtual void SetLights(const opencascade::handle<Graphic3d_LightSet> & theLights);
 
 		/****************** SetPosedXRCamera ******************/
 		/**** md5 signature: 3ebb69930ad9744c104a2fc32ac0f92c ****/
 		%feature("compactdefaultargs") SetPosedXRCamera;
-		%feature("autodoc", "Sets transient xr camera position with tracked head orientation applied.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCamera: Graphic3d_Camera
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets transient xr camera position with tracked head orientation applied.
 ") SetPosedXRCamera;
 		void SetPosedXRCamera(const opencascade::handle<Graphic3d_Camera> & theCamera);
 
 		/****************** SetShadingModel ******************/
 		/**** md5 signature: e0128a9924c3f8c7395b0ec1521ffcee ****/
 		%feature("compactdefaultargs") SetShadingModel;
-		%feature("autodoc", "Sets default shading model of the view. will throw an exception on attempt to set graphic3d_typeofshadingmodel_default.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theModel: Graphic3d_TypeOfShadingModel
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets default shading model of the view. will throw an exception on attempt to set graphic3d_typeofshadingmodel_default.
 ") SetShadingModel;
 		void SetShadingModel(Graphic3d_TypeOfShadingModel theModel);
 
 		/****************** SetSubviewComposer ******************/
 		/**** md5 signature: 55fbfea061f30b97532f4558c8bca661 ****/
 		%feature("compactdefaultargs") SetSubviewComposer;
-		%feature("autodoc", "Set if this view should perform composing of subviews and nothing else.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsComposer: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if this view should perform composing of subviews and nothing else.
 ") SetSubviewComposer;
 		void SetSubviewComposer(bool theIsComposer);
 
 		/****************** SetSubviewCorner ******************/
 		/**** md5 signature: ef48b2f01aa985acb05b2f3d5b12b84d ****/
 		%feature("compactdefaultargs") SetSubviewCorner;
-		%feature("autodoc", "Set subview position within parent view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePos: Aspect_TypeOfTriedronPosition
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set subview position within parent view.
 ") SetSubviewCorner;
 		void SetSubviewCorner(Aspect_TypeOfTriedronPosition thePos);
 
 		/****************** SetSubviewMargins ******************/
 		/**** md5 signature: a6919c6660a99e485ffb16751b7be266 ****/
 		%feature("compactdefaultargs") SetSubviewMargins;
-		%feature("autodoc", "Set subview margins in pixels.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMargins: Graphic3d_Vec2i
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set subview margins in pixels.
 ") SetSubviewMargins;
 		void SetSubviewMargins(const Graphic3d_Vec2i & theMargins);
 
 		/****************** SetSubviewOffset ******************/
 		/**** md5 signature: 6d26aade394333d2428f8b425dec96ad ****/
 		%feature("compactdefaultargs") SetSubviewOffset;
-		%feature("autodoc", "Set corner offset within parent view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOffset: Graphic3d_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set corner offset within parent view.
 ") SetSubviewOffset;
 		void SetSubviewOffset(const Graphic3d_Vec2d & theOffset);
 
 		/****************** SetSubviewSize ******************/
 		/**** md5 signature: 3890d8e907c658450bb26e7d2b440749 ****/
 		%feature("compactdefaultargs") SetSubviewSize;
-		%feature("autodoc", "Set subview size relative to parent view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSize: Graphic3d_Vec2d
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set subview size relative to parent view.
 ") SetSubviewSize;
 		void SetSubviewSize(const Graphic3d_Vec2d & theSize);
 
 		/****************** SetTextureEnv ******************/
 		/**** md5 signature: 7529a79a886636c7ffd10c57b2f00357 ****/
 		%feature("compactdefaultargs") SetTextureEnv;
-		%feature("autodoc", "Sets environment texture for the view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTextureEnv: Graphic3d_TextureEnv
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets environment texture for the view.
 ") SetTextureEnv;
 		virtual void SetTextureEnv(const opencascade::handle<Graphic3d_TextureEnv> & theTextureEnv);
 
 		/****************** SetUnitFactor ******************/
 		/**** md5 signature: 0f6b445dcbb608951a49277d2dbdeae6 ****/
 		%feature("compactdefaultargs") SetUnitFactor;
-		%feature("autodoc", "Set unit scale factor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFactor: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set unit scale factor.
 ") SetUnitFactor;
 		void SetUnitFactor(Standard_Real theFactor);
 
 		/****************** SetVisualizationType ******************/
 		/**** md5 signature: 74ef6d939c9ef213220425899afe5cea ****/
 		%feature("compactdefaultargs") SetVisualizationType;
-		%feature("autodoc", "Sets visualization type of the view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theType: Graphic3d_TypeOfVisualization
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets visualization type of the view.
 ") SetVisualizationType;
 		void SetVisualizationType(const Graphic3d_TypeOfVisualization theType);
 
 		/****************** SetWindow ******************/
 		/**** md5 signature: 202e4c90685904ae9b9d19f3767b6834 ****/
 		%feature("compactdefaultargs") SetWindow;
-		%feature("autodoc", "Creates and maps rendering window to the view. @param[in] theparentview parent view or null @param[in] thewindow the window @param[in] thecontext the rendering context; if null the context will be created internally.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theParentVIew: Graphic3d_CView
 theWindow: Aspect_Window
 theContext: Aspect_RenderingContext
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates and maps rendering window to the view. @param[in] theparentview parent view or null @param[in] thewindow the window @param[in] thecontext the rendering context; if null the context will be created internally.
 ") SetWindow;
 		virtual void SetWindow(const opencascade::handle<Graphic3d_CView> & theParentVIew, const opencascade::handle<Aspect_Window> & theWindow, const Aspect_RenderingContext theContext);
 
 		/****************** SetXRSession ******************/
 		/**** md5 signature: a15f51b514a0e7938f3cd4b88c551f83 ****/
 		%feature("compactdefaultargs") SetXRSession;
-		%feature("autodoc", "Set xr session.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSession: Aspect_XRSession
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set xr session.
 ") SetXRSession;
 		void SetXRSession(const opencascade::handle<Aspect_XRSession> & theSession);
 
 		/****************** SetZLayerSettings ******************/
 		/**** md5 signature: 526c66f52cf13826d826173b0d84d35e ****/
 		%feature("compactdefaultargs") SetZLayerSettings;
-		%feature("autodoc", "Sets the settings for a single z layer of specified view.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLayerId: int
 theSettings: Graphic3d_ZLayerSettings
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the settings for a single z layer of specified view.
 ") SetZLayerSettings;
 		virtual void SetZLayerSettings(int theLayerId, const Graphic3d_ZLayerSettings & theSettings);
 
 		/****************** SetupXRPosedCamera ******************/
 		/**** md5 signature: 10b421be502d3cbb0c3da0fb35ba9851 ****/
 		%feature("compactdefaultargs") SetupXRPosedCamera;
-		%feature("autodoc", "Compute posedxrcamera() based on current xr head pose and make it active.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Compute posedxrcamera() based on current xr head pose and make it active.
 ") SetupXRPosedCamera;
 		void SetupXRPosedCamera();
 
 		/****************** ShadingModel ******************/
 		/**** md5 signature: abf83d7e5f232094cc54f18d79b6661e ****/
 		%feature("compactdefaultargs") ShadingModel;
-		%feature("autodoc", "Returns default shading model of the view; graphic3d_typeofshadingmodel_phong by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfShadingModel
+
+Description
+-----------
+Returns default shading model of the view; graphic3d_typeofshadingmodel_phong by default.
 ") ShadingModel;
 		Graphic3d_TypeOfShadingModel ShadingModel();
 
 		/****************** StatisticInformation ******************/
 		/**** md5 signature: be606496c5e13c6784f40079328b5f5b ****/
 		%feature("compactdefaultargs") StatisticInformation;
-		%feature("autodoc", "Returns string with statistic performance info.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns string with statistic performance info.
 ") StatisticInformation;
 		virtual TCollection_AsciiString StatisticInformation();
 
 		/****************** StatisticInformation ******************/
 		/**** md5 signature: ab1f0374e6e5854189b7667f0f157e02 ****/
 		%feature("compactdefaultargs") StatisticInformation;
-		%feature("autodoc", "Fills in the dictionary with statistic performance info.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theDict: TColStd_IndexedDataMapOfStringString
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Fills in the dictionary with statistic performance info.
 ") StatisticInformation;
 		virtual void StatisticInformation(TColStd_IndexedDataMapOfStringString & theDict);
 
 		/****************** StructureManager ******************/
 		/**** md5 signature: 5843678469524fb10153c08d2adb183d ****/
 		%feature("compactdefaultargs") StructureManager;
-		%feature("autodoc", "Returns the structure manager handle which manage structures associated with this view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_StructureManager>
+
+Description
+-----------
+Returns the structure manager handle which manage structures associated with this view.
 ") StructureManager;
 		const opencascade::handle<Graphic3d_StructureManager> & StructureManager();
 
 		/****************** SubviewCorner ******************/
 		/**** md5 signature: 7d5ec294d7810d260a8b0d02149f04fc ****/
 		%feature("compactdefaultargs") SubviewCorner;
-		%feature("autodoc", "Return subview position within parent view; aspect_totp_left_upper by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Aspect_TypeOfTriedronPosition
+
+Description
+-----------
+Return subview position within parent view; aspect_totp_left_upper by default.
 ") SubviewCorner;
 		Aspect_TypeOfTriedronPosition SubviewCorner();
 
 		/****************** SubviewMargins ******************/
 		/**** md5 signature: 73441877b09bb8003f7fe45cacf86b75 ****/
 		%feature("compactdefaultargs") SubviewMargins;
-		%feature("autodoc", "Return subview margins in pixels; (0,0) by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2i
+
+Description
+-----------
+Return subview margins in pixels; (0,0) by default.
 ") SubviewMargins;
 		const Graphic3d_Vec2i & SubviewMargins();
 
 		/****************** SubviewOffset ******************/
 		/**** md5 signature: fc348ef0813f987030ebe7057973514b ****/
 		%feature("compactdefaultargs") SubviewOffset;
-		%feature("autodoc", "Return corner offset within parent view; (0.0,0.0) by default. values >= 2 define offset in pixels; values <= 1.0 define offset as fraction of parent view dimensions.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2d
+
+Description
+-----------
+Return corner offset within parent view; (0.0,0.0) by default. values >= 2 define offset in pixels; values <= 1.0 define offset as fraction of parent view dimensions.
 ") SubviewOffset;
 		const Graphic3d_Vec2d & SubviewOffset();
 
 		/****************** SubviewResized ******************/
 		/**** md5 signature: e7bf10595e82dd8df76b634c88d3e63e ****/
 		%feature("compactdefaultargs") SubviewResized;
-		%feature("autodoc", "Update subview position and dimensions.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWindow: Aspect_NeutralWindow
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Update subview position and dimensions.
 ") SubviewResized;
 		void SubviewResized(const opencascade::handle<Aspect_NeutralWindow> & theWindow);
 
 		/****************** SubviewSize ******************/
 		/**** md5 signature: a519d860eba4b733614423ade1860ec8 ****/
 		%feature("compactdefaultargs") SubviewSize;
-		%feature("autodoc", "Return subview dimensions; (1.0, 1.0) by default. values >= 2 define size in pixels; values <= 1.0 define size as fraction of parent view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2d
+
+Description
+-----------
+Return subview dimensions; (1.0, 1.0) by default. values >= 2 define size in pixels; values <= 1.0 define size as fraction of parent view.
 ") SubviewSize;
 		const Graphic3d_Vec2d & SubviewSize();
 
 		/****************** SubviewTopLeft ******************/
 		/**** md5 signature: 3d89968b4b5447313ffc8e599f37ec11 ****/
 		%feature("compactdefaultargs") SubviewTopLeft;
-		%feature("autodoc", "Return subview top-left position relative to parent view in pixels.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2i
+
+Description
+-----------
+Return subview top-left position relative to parent view in pixels.
 ") SubviewTopLeft;
 		const Graphic3d_Vec2i & SubviewTopLeft();
 
 		/****************** Subviews ******************/
 		/**** md5 signature: efad4d5ad0d94cfbce25117f22a13570 ****/
 		%feature("compactdefaultargs") Subviews;
-		%feature("autodoc", "Return subview list.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Sequence<opencascade::handle<Graphic3d_CView>>
+
+Description
+-----------
+Return subview list.
 ") Subviews;
 		const NCollection_Sequence<opencascade::handle<Graphic3d_CView>> & Subviews();
 
 		/****************** SynchronizeXRBaseToPosedCamera ******************/
 		/**** md5 signature: 871de4dab7795f0e2c4a6d9779b77617 ****/
 		%feature("compactdefaultargs") SynchronizeXRBaseToPosedCamera;
-		%feature("autodoc", "Recomputes posedxrcamera() based on basexrcamera() and head orientation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Recomputes posedxrcamera() based on basexrcamera() and head orientation.
 ") SynchronizeXRBaseToPosedCamera;
 		void SynchronizeXRBaseToPosedCamera();
 
 		/****************** SynchronizeXRPosedToBaseCamera ******************/
 		/**** md5 signature: a6d48b080f5581be36e592a34874b56b ****/
 		%feature("compactdefaultargs") SynchronizeXRPosedToBaseCamera;
-		%feature("autodoc", "Checks if posedxrcamera() has been modified since setupxrposedcamera() and copies these modifications to basexrcamera().
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Checks if posedxrcamera() has been modified since setupxrposedcamera() and copies these modifications to basexrcamera().
 ") SynchronizeXRPosedToBaseCamera;
 		void SynchronizeXRPosedToBaseCamera();
 
 		/****************** TextureEnv ******************/
 		/**** md5 signature: 69a1becf8add8a150fed319c6c1816f8 ****/
 		%feature("compactdefaultargs") TextureEnv;
-		%feature("autodoc", "Returns environment texture set for the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_TextureEnv>
+
+Description
+-----------
+Returns environment texture set for the view.
 ") TextureEnv;
 		const opencascade::handle<Graphic3d_TextureEnv> & TextureEnv();
 
 		/****************** TurnViewXRCamera ******************/
 		/**** md5 signature: b541a212e2a9d644acb1e40cadfae6e8 ****/
 		%feature("compactdefaultargs") TurnViewXRCamera;
-		%feature("autodoc", "Turn xr camera direction using current (head) eye position as anchor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTrsfTurn: gp_Trsf
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Turn xr camera direction using current (head) eye position as anchor.
 ") TurnViewXRCamera;
 		void TurnViewXRCamera(const gp_Trsf & theTrsfTurn);
 
 		/****************** UnitFactor ******************/
 		/**** md5 signature: ef896b413f2d707283340a4407bd979a ****/
 		%feature("compactdefaultargs") UnitFactor;
-		%feature("autodoc", "Return unit scale factor defined as scale factor for m (meters); 1.0 by default. normally, view definition is unitless, however some operations like vr input requires proper units mapping.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Return unit scale factor defined as scale factor for m (meters); 1.0 by default. normally, view definition is unitless, however some operations like vr input requires proper units mapping.
 ") UnitFactor;
 		Standard_Real UnitFactor();
 
 		/****************** UnsetXRPosedCamera ******************/
 		/**** md5 signature: df56638996c669fe022e488f9d17f78a ****/
 		%feature("compactdefaultargs") UnsetXRPosedCamera;
-		%feature("autodoc", "Set current camera back to basexrcamera() and copy temporary modifications of posedxrcamera(). calls synchronizexrposedtobasecamera() beforehand.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Set current camera back to basexrcamera() and copy temporary modifications of posedxrcamera(). calls synchronizexrposedtobasecamera() beforehand.
 ") UnsetXRPosedCamera;
 		void UnsetXRPosedCamera();
 
 		/****************** Update ******************/
 		/**** md5 signature: 42afb73ab8b865201bb1288942842c78 ****/
 		%feature("compactdefaultargs") Update;
-		%feature("autodoc", "Invalidates bounding box of specified zlayerid.
-
+		%feature("autodoc", "
 Parameters
 ----------
-theLayerId: int,optional
-	default value is Graphic3d_ZLayerId_UNKNOWN
+theLayerId: int (optional, default to Graphic3d_ZLayerId_UNKNOWN)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Invalidates bounding box of specified zlayerid.
 ") Update;
 		void Update(int theLayerId = Graphic3d_ZLayerId_UNKNOWN);
 
 		/****************** ViewAxisInWorld ******************/
 		/**** md5 signature: 06c02c071e04e67bc6c53cce8ff03eae ****/
 		%feature("compactdefaultargs") ViewAxisInWorld;
-		%feature("autodoc", "Returns view direction in the world space based on xr pose. @param theposexr [in] transformation defined in vr local coordinate system,  oriented as y-up, x-right and -z-forward.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePoseXR: gp_Trsf
 
-Returns
+Return
 -------
 gp_Ax1
+
+Description
+-----------
+Returns view direction in the world space based on xr pose. @param theposexr [in] transformation defined in vr local coordinate system,  oriented as y-up, x-right and -z-forward.
 ") ViewAxisInWorld;
 		gp_Ax1 ViewAxisInWorld(const gp_Trsf & thePoseXR);
 
 		/****************** VisualizationType ******************/
 		/**** md5 signature: c16f318d97b0af9f922f150a729b4b3e ****/
 		%feature("compactdefaultargs") VisualizationType;
-		%feature("autodoc", "Returns visualization type of the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_TypeOfVisualization
+
+Description
+-----------
+Returns visualization type of the view.
 ") VisualizationType;
 		Graphic3d_TypeOfVisualization VisualizationType();
 
 		/****************** Window ******************/
 		/**** md5 signature: 72ad541502b66387894c3f250aaf45d4 ****/
 		%feature("compactdefaultargs") Window;
-		%feature("autodoc", "Returns the window associated to the view.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Aspect_Window>
+
+Description
+-----------
+Returns the window associated to the view.
 ") Window;
 		virtual opencascade::handle<Aspect_Window> Window();
 
 		/****************** XRSession ******************/
 		/**** md5 signature: 6e06f1519d78ccfed4af5ad1424bd1b2 ****/
 		%feature("compactdefaultargs") XRSession;
-		%feature("autodoc", "Return xr session.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Aspect_XRSession>
+
+Description
+-----------
+Return xr session.
 ") XRSession;
 		const opencascade::handle<Aspect_XRSession> & XRSession();
 
 		/****************** ZLayerMax ******************/
 		/**** md5 signature: 67e70575f7909ee70bd13a50f93fcb39 ****/
 		%feature("compactdefaultargs") ZLayerMax;
-		%feature("autodoc", "Returns the maximum z layer id. first layer id is graphic3d_zlayerid_default, last id is zlayermax().
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the maximum z layer id. first layer id is graphic3d_zlayerid_default, last id is zlayermax().
 ") ZLayerMax;
 		virtual Standard_Integer ZLayerMax();
 
@@ -20309,26 +23320,31 @@ class Graphic3d_FrameStatsDataTmp : public Graphic3d_FrameStatsData {
 		/****************** Graphic3d_FrameStatsDataTmp ******************/
 		/**** md5 signature: 88d77300987d2c206b338f657e5c0f18 ****/
 		%feature("compactdefaultargs") Graphic3d_FrameStatsDataTmp;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_FrameStatsDataTmp;
 		 Graphic3d_FrameStatsDataTmp();
 
 		/****************** ChangeCounterValue ******************/
 		/**** md5 signature: 0df043c4b99f49752c83a73d0f638c50 ****/
 		%feature("compactdefaultargs") ChangeCounterValue;
-		%feature("autodoc", "Get counter value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: Graphic3d_FrameStatsCounter
 
-Returns
+Return
 -------
 Standard_Size
+
+Description
+-----------
+Get counter value.
 ") ChangeCounterValue;
 		Standard_Size & ChangeCounterValue(Graphic3d_FrameStatsCounter theIndex);
 
@@ -20387,15 +23403,18 @@ Standard_Size
 		/****************** ChangeTimer ******************/
 		/**** md5 signature: 338985f32bc00db9d3129a5133cf5dcb ****/
 		%feature("compactdefaultargs") ChangeTimer;
-		%feature("autodoc", "Return a timer object for time measurements.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theTimer: Graphic3d_FrameStatsTimer
 
-Returns
+Return
 -------
 OSD_Timer
+
+Description
+-----------
+Return a timer object for time measurements.
 ") ChangeTimer;
 		OSD_Timer & ChangeTimer(Graphic3d_FrameStatsTimer theTimer);
 
@@ -20415,27 +23434,32 @@ OSD_Timer
 		/****************** FlushTimers ******************/
 		/**** md5 signature: f0811a083eeb26d2ee2bd735fbc535b6 ****/
 		%feature("compactdefaultargs") FlushTimers;
-		%feature("autodoc", "Compute average data considering the amount of rendered frames.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNbFrames: Standard_Size
 theIsFinal: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Compute average data considering the amount of rendered frames.
 ") FlushTimers;
 		void FlushTimers(Standard_Size theNbFrames, bool theIsFinal);
 
 		/****************** Reset ******************/
 		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
 		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "Reset data.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Reset data.
 ") Reset;
 		void Reset();
 
@@ -20459,137 +23483,162 @@ class Graphic3d_MediaTextureSet : public Graphic3d_TextureSet, public Media_IFra
 		/****************** Graphic3d_MediaTextureSet ******************/
 		/**** md5 signature: 3de3d4d8ea0c3573cfb22874d93b1777 ****/
 		%feature("compactdefaultargs") Graphic3d_MediaTextureSet;
-		%feature("autodoc", "Empty constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_MediaTextureSet;
 		 Graphic3d_MediaTextureSet();
 
 		/****************** Duration ******************/
 		/**** md5 signature: 7dbbe5f7e0b63b92819c252fd1239f67 ****/
 		%feature("compactdefaultargs") Duration;
-		%feature("autodoc", "Return duration in seconds.
-
-Returns
+		%feature("autodoc", "Return
 -------
 double
+
+Description
+-----------
+Return duration in seconds.
 ") Duration;
 		double Duration();
 
 		/****************** FrameSize ******************/
 		/**** md5 signature: e640cf558c35c23f125dae4b07426e7e ****/
 		%feature("compactdefaultargs") FrameSize;
-		%feature("autodoc", "Return front frame dimensions.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_Vec2i
+
+Description
+-----------
+Return front frame dimensions.
 ") FrameSize;
 		Graphic3d_Vec2i FrameSize();
 
 		/****************** Input ******************/
 		/**** md5 signature: f6133f739797d33668dfa0592653ea45 ****/
 		%feature("compactdefaultargs") Input;
-		%feature("autodoc", "Return input media.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Return input media.
 ") Input;
 		const TCollection_AsciiString & Input();
 
 		/****************** IsFullRangeYUV ******************/
 		/**** md5 signature: 9638452164c38e352bfab652ef53936c ****/
 		%feature("compactdefaultargs") IsFullRangeYUV;
-		%feature("autodoc", "Return true if yuv range is full.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if yuv range is full.
 ") IsFullRangeYUV;
 		Standard_Boolean IsFullRangeYUV();
 
 		/****************** IsPlanarYUV ******************/
 		/**** md5 signature: 743e7a0a6bfda8c7550857122cff1ccf ****/
 		%feature("compactdefaultargs") IsPlanarYUV;
-		%feature("autodoc", "Return true if texture set defined 3 yuv planes.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if texture set defined 3 yuv planes.
 ") IsPlanarYUV;
 		Standard_Boolean IsPlanarYUV();
 
 		/****************** Notify ******************/
 		/**** md5 signature: 2491f7f734b89141b57f81cc2f5a48ba ****/
 		%feature("compactdefaultargs") Notify;
-		%feature("autodoc", "Call callback.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Call callback.
 ") Notify;
 		void Notify();
 
 		/****************** OpenInput ******************/
 		/**** md5 signature: 860c3b6e78ac92cbd8cf0044e55bef88 ****/
 		%feature("compactdefaultargs") OpenInput;
-		%feature("autodoc", "Open specified file. passing an empty path would close current input.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePath: str
 theToWait: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Open specified file. passing an empty path would close current input.
 ") OpenInput;
 		void OpenInput(TCollection_AsciiString thePath, Standard_Boolean theToWait);
 
 		/****************** PlayerContext ******************/
 		/**** md5 signature: 5fc0e0cbec11700279e3e8631feee60b ****/
 		%feature("compactdefaultargs") PlayerContext;
-		%feature("autodoc", "Return player context; it can be null until first openinput().
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Media_PlayerContext>
+
+Description
+-----------
+Return player context; it can be null until first openinput().
 ") PlayerContext;
 		const opencascade::handle<Media_PlayerContext> & PlayerContext();
 
 		/****************** Progress ******************/
 		/**** md5 signature: a2570a54b89c9d02c8a49bac78772b2a ****/
 		%feature("compactdefaultargs") Progress;
-		%feature("autodoc", "Return playback progress in seconds.
-
-Returns
+		%feature("autodoc", "Return
 -------
 double
+
+Description
+-----------
+Return playback progress in seconds.
 ") Progress;
 		double Progress();
 
 		/****************** ShaderProgram ******************/
 		/**** md5 signature: b1d414c1bce3b143f4f8567b5e109ee2 ****/
 		%feature("compactdefaultargs") ShaderProgram;
-		%feature("autodoc", "Return shader program for displaying texture set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Graphic3d_ShaderProgram>
+
+Description
+-----------
+Return shader program for displaying texture set.
 ") ShaderProgram;
 		opencascade::handle<Graphic3d_ShaderProgram> ShaderProgram();
 
 		/****************** SwapFrames ******************/
 		/**** md5 signature: 55cf0b71e0b6c94345c0d4774faee526 ****/
 		%feature("compactdefaultargs") SwapFrames;
-		%feature("autodoc", "Swap front/back frames.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Swap front/back frames.
 ") SwapFrames;
 		Standard_Boolean SwapFrames();
 
@@ -20616,82 +23665,98 @@ class Graphic3d_TextureEnv : public Graphic3d_TextureRoot {
 		/****************** Graphic3d_TextureEnv ******************/
 		/**** md5 signature: 2112b4d65f1fbb19be75b979414ef96b ****/
 		%feature("compactdefaultargs") Graphic3d_TextureEnv;
-		%feature("autodoc", "Creates an environment texture from a file.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFileName: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an environment texture from a file.
 ") Graphic3d_TextureEnv;
 		 Graphic3d_TextureEnv(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_TextureEnv ******************/
 		/**** md5 signature: ceed081a5b5bebc2038ab1db122c6085 ****/
 		%feature("compactdefaultargs") Graphic3d_TextureEnv;
-		%feature("autodoc", "Creates an environment texture from a predefined texture name set.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theName: Graphic3d_NameOfTextureEnv
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an environment texture from a predefined texture name set.
 ") Graphic3d_TextureEnv;
 		 Graphic3d_TextureEnv(const Graphic3d_NameOfTextureEnv theName);
 
 		/****************** Graphic3d_TextureEnv ******************/
 		/**** md5 signature: cf902025332194a30f00f51e839b2ba2 ****/
 		%feature("compactdefaultargs") Graphic3d_TextureEnv;
-		%feature("autodoc", "Creates an environment texture from the pixmap.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePixMap: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates an environment texture from the pixmap.
 ") Graphic3d_TextureEnv;
 		 Graphic3d_TextureEnv(const opencascade::handle<Image_PixMap> & thePixMap);
 
 		/****************** Name ******************/
 		/**** md5 signature: b18daa83e0f455d1890b80e7b2432c14 ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Returns the name of the predefined textures or not_env_unknown when the name is given as a filename.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_NameOfTextureEnv
+
+Description
+-----------
+Returns the name of the predefined textures or not_env_unknown when the name is given as a filename.
 ") Name;
 		Graphic3d_NameOfTextureEnv Name();
 
 		/****************** NumberOfTextures ******************/
 		/**** md5 signature: 696bdd43958bf4c752e9ef1d41242de3 ****/
 		%feature("compactdefaultargs") NumberOfTextures;
-		%feature("autodoc", "Returns the number of predefined textures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of predefined textures.
 ") NumberOfTextures;
 		static Standard_Integer NumberOfTextures();
 
 		/****************** TextureName ******************/
 		/**** md5 signature: 47ab46166fc3b73b226fc480a80ffd43 ****/
 		%feature("compactdefaultargs") TextureName;
-		%feature("autodoc", "Returns the name of the predefined texture of rank <arank>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns the name of the predefined texture of rank <arank>.
 ") TextureName;
 		static TCollection_AsciiString TextureName(const Standard_Integer theRank);
 
@@ -20715,125 +23780,148 @@ class Graphic3d_TextureMap : public Graphic3d_TextureRoot {
 		/****************** AnisoFilter ******************/
 		/**** md5 signature: 616e07e87d398d0de8754a2bd09bff5a ****/
 		%feature("compactdefaultargs") AnisoFilter;
-		%feature("autodoc", "Returns level of anisotropy texture filter. default value is graphic3d_lota_off.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_LevelOfTextureAnisotropy
+
+Description
+-----------
+Return level of anisotropy texture filter. default value is graphic3d_lota_off.
 ") AnisoFilter;
 		Graphic3d_LevelOfTextureAnisotropy AnisoFilter();
 
 		/****************** DisableModulate ******************/
 		/**** md5 signature: 578fca54e32c9ab5aef797fdad9bc761 ****/
 		%feature("compactdefaultargs") DisableModulate;
-		%feature("autodoc", "Disable texture modulate mode. the image is directly decal on the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Disable texture modulate mode. the image is directly decal on the surface.
 ") DisableModulate;
 		void DisableModulate();
 
 		/****************** DisableRepeat ******************/
 		/**** md5 signature: 4de6e4194dd0c2daff17603fbe7d5da6 ****/
 		%feature("compactdefaultargs") DisableRepeat;
-		%feature("autodoc", "Use this methods if you want to disable texture repetition on your objects.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Use this methods if you want to disable texture repetition on your objects.
 ") DisableRepeat;
 		void DisableRepeat();
 
 		/****************** DisableSmooth ******************/
 		/**** md5 signature: 84f2db317172b668042c5f156ea5b230 ****/
 		%feature("compactdefaultargs") DisableSmooth;
-		%feature("autodoc", "Disable texture smoothing.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Disable texture smoothing.
 ") DisableSmooth;
 		void DisableSmooth();
 
 		/****************** EnableModulate ******************/
 		/**** md5 signature: 46c33aa561af11d8817f95477a9ded73 ****/
 		%feature("compactdefaultargs") EnableModulate;
-		%feature("autodoc", "Enable texture modulate mode. the image is modulate with the shading of the surface.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Enable texture modulate mode. the image is modulate with the shading of the surface.
 ") EnableModulate;
 		void EnableModulate();
 
 		/****************** EnableRepeat ******************/
 		/**** md5 signature: d118f94ba7c0d3844f3dce4aeefd9e4f ****/
 		%feature("compactdefaultargs") EnableRepeat;
-		%feature("autodoc", "Use this methods if you want to enable texture repetition on your objects.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Use this methods if you want to enable texture repetition on your objects.
 ") EnableRepeat;
 		void EnableRepeat();
 
 		/****************** EnableSmooth ******************/
 		/**** md5 signature: cee9b8d17c0a74300f6ee9f08ef3bf01 ****/
 		%feature("compactdefaultargs") EnableSmooth;
-		%feature("autodoc", "Enable texture smoothing.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Enable texture smoothing.
 ") EnableSmooth;
 		void EnableSmooth();
 
 		/****************** IsModulate ******************/
 		/**** md5 signature: c988cac31c9f56f4ae7e4d7bc8be9b43 ****/
 		%feature("compactdefaultargs") IsModulate;
-		%feature("autodoc", "Returns true if the texture is modulate.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the texture is modulate.
 ") IsModulate;
 		Standard_Boolean IsModulate();
 
 		/****************** IsRepeat ******************/
 		/**** md5 signature: 4a2c9886f3b35c5848ec7ce52a0727a8 ****/
 		%feature("compactdefaultargs") IsRepeat;
-		%feature("autodoc", "Returns true if the texture repeat is enable.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the texture repeat is enable.
 ") IsRepeat;
 		Standard_Boolean IsRepeat();
 
 		/****************** IsSmoothed ******************/
 		/**** md5 signature: 2d5a2ef9bb0094d5bfbb197c81960bd6 ****/
 		%feature("compactdefaultargs") IsSmoothed;
-		%feature("autodoc", "Returns true if the texture is smoothed.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the texture is smoothed.
 ") IsSmoothed;
 		Standard_Boolean IsSmoothed();
 
 		/****************** SetAnisoFilter ******************/
 		/**** md5 signature: 999fe7bc1a26aa6af8d56299c100b537 ****/
 		%feature("compactdefaultargs") SetAnisoFilter;
-		%feature("autodoc", "@param thelevel level of anisotropy texture filter.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theLevel: Graphic3d_LevelOfTextureAnisotropy
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+@param thelevel level of anisotropy texture filter.
 ") SetAnisoFilter;
 		void SetAnisoFilter(const Graphic3d_LevelOfTextureAnisotropy theLevel);
 
@@ -20856,33 +23944,39 @@ class Graphic3d_TransformPersScaledAbove : public Graphic3d_TransformPers {
 		/****************** Graphic3d_TransformPersScaledAbove ******************/
 		/**** md5 signature: e443e72334bf0b55384099549c5d0a03 ****/
 		%feature("compactdefaultargs") Graphic3d_TransformPersScaledAbove;
-		%feature("autodoc", "Create a zoom transformation persistence with an anchor 3d point and a scale value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScale: float
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Create a zoom transformation persistence with an anchor 3d point and a scale value.
 ") Graphic3d_TransformPersScaledAbove;
 		 Graphic3d_TransformPersScaledAbove(const Standard_Real theScale, const gp_Pnt & thePnt);
 
 		/****************** persistentScale ******************/
 		/**** md5 signature: 5fd7f2855c98b96ed768f1ff30fcb8ba ****/
 		%feature("compactdefaultargs") persistentScale;
-		%feature("autodoc", "Find scale value based on the camera position and view dimensions if the camera scale value less than the persistence scale, zoom persistence is not applied. @param thecamera [in] camera definition @param theviewportwidth [in] the width of viewport. @param theviewportheight [in] the height of viewport.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCamera: Graphic3d_Camera
 theViewportWidth: int
 theViewportHeight: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Find scale value based on the camera position and view dimensions if the camera scale value less than the persistence scale, zoom persistence is not applied. @param thecamera [in] camera definition @param theviewportwidth [in] the width of viewport. @param theviewportheight [in] the height of viewport.
 ") persistentScale;
 		virtual Standard_Real persistentScale(const opencascade::handle<Graphic3d_Camera> & theCamera, const Standard_Integer theViewportWidth, const Standard_Integer theViewportHeight);
 
@@ -20909,126 +24003,150 @@ class Graphic3d_CubeMap : public Graphic3d_TextureMap {
 		/****************** CompressedValue ******************/
 		/**** md5 signature: bf947852bd98eb2918f411f1fb6ed99a ****/
 		%feature("compactdefaultargs") CompressedValue;
-		%feature("autodoc", "Returns current cubemap side as compressed pixmap. returns null handle if current side is invalid or if image is not in supported compressed format.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSupported: Image_SupportedFormats
 
-Returns
+Return
 -------
 opencascade::handle<Image_CompressedPixMap>
+
+Description
+-----------
+Returns current cubemap side as compressed pixmap. returns null handle if current side is invalid or if image is not in supported compressed format.
 ") CompressedValue;
 		virtual opencascade::handle<Image_CompressedPixMap> CompressedValue(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** CurrentSide ******************/
 		/**** md5 signature: 868f3bc8b7395cad6d44ef8baafa777c ****/
 		%feature("compactdefaultargs") CurrentSide;
-		%feature("autodoc", "Returns current cubemap side (iterator state).
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_CubeMapSide
+
+Description
+-----------
+Returns current cubemap side (iterator state).
 ") CurrentSide;
 		Graphic3d_CubeMapSide CurrentSide();
 
 		/****************** HasMipmaps ******************/
 		/**** md5 signature: b3b5fb053a7b49996b2be90fa9333800 ****/
 		%feature("compactdefaultargs") HasMipmaps;
-		%feature("autodoc", "Returns whether mipmaps of cubemap will be generated or not.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns whether mipmaps of cubemap will be generated or not.
 ") HasMipmaps;
 		Standard_Boolean HasMipmaps();
 
 		/****************** More ******************/
 		/**** md5 signature: cff271d3b32940da94bada40648f9096 ****/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "Returns whether the iterator has reached the end (true if it hasn't). .
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns whether the iterator has reached the end (true if it hasn't). .
 ") More;
 		Standard_Boolean More();
 
 		/****************** Next ******************/
 		/**** md5 signature: 1201a55f750036045cd397a65f07fc7d ****/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "Moves iterator to the next cubemap side. uses opengl cubemap sides order +x -> -x -> +y -> -y -> +z -> -z.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Moves iterator to the next cubemap side. uses opengl cubemap sides order +x -> -x -> +y -> -y -> +z -> -z.
 ") Next;
 		void Next();
 
 		/****************** Reset ******************/
 		/**** md5 signature: 1730adde2bf4f51544d37f5915605dd4 ****/
 		%feature("compactdefaultargs") Reset;
-		%feature("autodoc", "Sets iterator state to +x cubemap side.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_CubeMap
+
+Description
+-----------
+Sets iterator state to +x cubemap side.
 ") Reset;
 		Graphic3d_CubeMap & Reset();
 
 		/****************** SetMipmapsGeneration ******************/
 		/**** md5 signature: e14a34fe3ead5b13a7caa5b8e688c68d ****/
 		%feature("compactdefaultargs") SetMipmapsGeneration;
-		%feature("autodoc", "Sets whether to generate mipmaps of cubemap or not.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToGenerateMipmaps: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets whether to generate mipmaps of cubemap or not.
 ") SetMipmapsGeneration;
 		void SetMipmapsGeneration(Standard_Boolean theToGenerateMipmaps);
 
 		/****************** SetZInversion ******************/
 		/**** md5 signature: 6a544fc617109268dc916d0b4f3a3d85 ****/
 		%feature("compactdefaultargs") SetZInversion;
-		%feature("autodoc", "Sets z axis inversion (vertical flipping).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theZIsInverted: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets z axis inversion (vertical flipping).
 ") SetZInversion;
 		void SetZInversion(Standard_Boolean theZIsInverted);
 
 		/****************** Value ******************/
 		/**** md5 signature: 163288e9c0b00e99cbafd39e941416a5 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns pixmap containing current side of cubemap. returns null handle if current side is invalid.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSupported: Image_SupportedFormats
 
-Returns
+Return
 -------
 opencascade::handle<Image_PixMap>
+
+Description
+-----------
+Returns pixmap containing current side of cubemap. returns null handle if current side is invalid.
 ") Value;
 		virtual opencascade::handle<Image_PixMap> Value(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** ZIsInverted ******************/
 		/**** md5 signature: ffdf11f19a4a4dfbecf2e4f3e6052001 ****/
 		%feature("compactdefaultargs") ZIsInverted;
-		%feature("autodoc", "Returns whether z axis is inverted.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns whether z axis is inverted.
 ") ZIsInverted;
 		Standard_Boolean ZIsInverted();
 
@@ -21051,90 +24169,107 @@ class Graphic3d_MutableIndexBuffer : public Graphic3d_IndexBuffer {
 		/****************** Graphic3d_MutableIndexBuffer ******************/
 		/**** md5 signature: 6c19f80602f2b82b4f45c578ca95634c ****/
 		%feature("compactdefaultargs") Graphic3d_MutableIndexBuffer;
-		%feature("autodoc", "Empty constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAlloc: NCollection_BaseAllocator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Graphic3d_MutableIndexBuffer;
 		 Graphic3d_MutableIndexBuffer(const opencascade::handle<NCollection_BaseAllocator> & theAlloc);
 
 		/****************** Invalidate ******************/
 		/**** md5 signature: 99d0b01edd9229062a44adaeeede137f ****/
 		%feature("compactdefaultargs") Invalidate;
-		%feature("autodoc", "Invalidate the entire buffer data.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Invalidate the entire buffer data.
 ") Invalidate;
 		virtual void Invalidate();
 
 		/****************** Invalidate ******************/
 		/**** md5 signature: 92b6f6cc86dc5bc8126f3a600cd120d0 ****/
 		%feature("compactdefaultargs") Invalidate;
-		%feature("autodoc", "Invalidate the given indexes (starting from 0).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndexLower: int
 theIndexUpper: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Invalidate the given indexes (starting from 0).
 ") Invalidate;
 		void Invalidate(Standard_Integer theIndexLower, Standard_Integer theIndexUpper);
 
 		/****************** InvalidatedRange ******************/
 		/**** md5 signature: 1765d375955ded2f60eeea3cf03bf4f5 ****/
 		%feature("compactdefaultargs") InvalidatedRange;
-		%feature("autodoc", "Return invalidated range.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_BufferRange
+
+Description
+-----------
+Return invalidated range.
 ") InvalidatedRange;
 		virtual Graphic3d_BufferRange InvalidatedRange();
 
 		/****************** IsMutable ******************/
 		/**** md5 signature: 0a65ba39d455381471f162d17685710f ****/
 		%feature("compactdefaultargs") IsMutable;
-		%feature("autodoc", "Return true if data can be invalidated.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if data can be invalidated.
 ") IsMutable;
 		virtual Standard_Boolean IsMutable();
 
 		/****************** Validate ******************/
 		/**** md5 signature: c7581a0f47fe76012f2b11e6385e07da ****/
 		%feature("compactdefaultargs") Validate;
-		%feature("autodoc", "Reset invalidated range.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Reset invalidated range.
 ") Validate;
 		virtual void Validate();
 
 		/****************** invalidate ******************/
 		/**** md5 signature: d1325b233234527746db5858cd03173a ****/
 		%feature("compactdefaultargs") invalidate;
-		%feature("autodoc", "Invalidate specified sub-range of data (as byte offsets).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRange: Graphic3d_BufferRange
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Invalidate specified sub-range of data (as byte offsets).
 ") invalidate;
 		void invalidate(const Graphic3d_BufferRange & theRange);
 
@@ -21156,37 +24291,44 @@ class Graphic3d_Texture1D : public Graphic3d_TextureMap {
 		/****************** Name ******************/
 		/**** md5 signature: c5471c14d098eed717caf07f9214bf7e ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Returns the name of the predefined textures or not_1d_unknown when the name is given as a filename.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_NameOfTexture1D
+
+Description
+-----------
+Returns the name of the predefined textures or not_1d_unknown when the name is given as a filename.
 ") Name;
 		Graphic3d_NameOfTexture1D Name();
 
 		/****************** NumberOfTextures ******************/
 		/**** md5 signature: 696bdd43958bf4c752e9ef1d41242de3 ****/
 		%feature("compactdefaultargs") NumberOfTextures;
-		%feature("autodoc", "Returns the number of predefined textures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of predefined textures.
 ") NumberOfTextures;
 		static Standard_Integer NumberOfTextures();
 
 		/****************** TextureName ******************/
 		/**** md5 signature: e8839f3a4756cc5104c3948195dcb53a ****/
 		%feature("compactdefaultargs") TextureName;
-		%feature("autodoc", "Returns the name of the predefined texture of rank <arank>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aRank: int
 
-Returns
+Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns the name of the predefined texture of rank <arank>.
 ") TextureName;
 		static TCollection_AsciiString TextureName(const Standard_Integer aRank);
 
@@ -21209,97 +24351,116 @@ class Graphic3d_Texture2D : public Graphic3d_TextureMap {
 		/****************** Graphic3d_Texture2D ******************/
 		/**** md5 signature: 42799dbe2ef101e14db536cd8b8ed8e0 ****/
 		%feature("compactdefaultargs") Graphic3d_Texture2D;
-		%feature("autodoc", "Creates a texture from a file. mipmaps levels will be automatically generated if needed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFileName: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from a file. mipmaps levels will be automatically generated if needed.
 ") Graphic3d_Texture2D;
 		 Graphic3d_Texture2D(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_Texture2D ******************/
 		/**** md5 signature: 1148eac074475874ab0ee8fd1f12cc0c ****/
 		%feature("compactdefaultargs") Graphic3d_Texture2D;
-		%feature("autodoc", "Creates a texture from a predefined texture name set. mipmaps levels will be automatically generated if needed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNOT: Graphic3d_NameOfTexture2D
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from a predefined texture name set. mipmaps levels will be automatically generated if needed.
 ") Graphic3d_Texture2D;
 		 Graphic3d_Texture2D(const Graphic3d_NameOfTexture2D theNOT);
 
 		/****************** Graphic3d_Texture2D ******************/
 		/**** md5 signature: f31bc2827b957c944fcc334f2c5c43a4 ****/
 		%feature("compactdefaultargs") Graphic3d_Texture2D;
-		%feature("autodoc", "Creates a texture from the pixmap. mipmaps levels will be automatically generated if needed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePixMap: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from the pixmap. mipmaps levels will be automatically generated if needed.
 ") Graphic3d_Texture2D;
 		 Graphic3d_Texture2D(const opencascade::handle<Image_PixMap> & thePixMap);
 
 		/****************** Name ******************/
 		/**** md5 signature: dda2451d076770a05a4cf60ebc1b2135 ****/
 		%feature("compactdefaultargs") Name;
-		%feature("autodoc", "Returns the name of the predefined textures or not_2d_unknown when the name is given as a filename.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_NameOfTexture2D
+
+Description
+-----------
+Returns the name of the predefined textures or not_2d_unknown when the name is given as a filename.
 ") Name;
 		Graphic3d_NameOfTexture2D Name();
 
 		/****************** NumberOfTextures ******************/
 		/**** md5 signature: 696bdd43958bf4c752e9ef1d41242de3 ****/
 		%feature("compactdefaultargs") NumberOfTextures;
-		%feature("autodoc", "Returns the number of predefined textures.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the number of predefined textures.
 ") NumberOfTextures;
 		static Standard_Integer NumberOfTextures();
 
 		/****************** SetImage ******************/
 		/**** md5 signature: 1588c589999c87638afeed7026805f57 ****/
 		%feature("compactdefaultargs") SetImage;
-		%feature("autodoc", "Assign new image to the texture. note that this method does not invalidate already uploaded resources - consider calling ::updaterevision() if needed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePixMap: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign new image to the texture. note that this method does not invalidate already uploaded resources - consider calling ::updaterevision() if needed.
 ") SetImage;
 		void SetImage(const opencascade::handle<Image_PixMap> & thePixMap);
 
 		/****************** TextureName ******************/
 		/**** md5 signature: 47ab46166fc3b73b226fc480a80ffd43 ****/
 		%feature("compactdefaultargs") TextureName;
-		%feature("autodoc", "Returns the name of the predefined texture of rank <arank>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theRank: int
 
-Returns
+Return
 -------
 TCollection_AsciiString
+
+Description
+-----------
+Returns the name of the predefined texture of rank <arank>.
 ") TextureName;
 		static TCollection_AsciiString TextureName(const Standard_Integer theRank);
 
@@ -21322,75 +24483,90 @@ class Graphic3d_Texture3D : public Graphic3d_TextureMap {
 		/****************** Graphic3d_Texture3D ******************/
 		/**** md5 signature: 6fcc5f22036cf564f191b2df12d5acf4 ****/
 		%feature("compactdefaultargs") Graphic3d_Texture3D;
-		%feature("autodoc", "Creates a texture from a file.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFileName: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from a file.
 ") Graphic3d_Texture3D;
 		 Graphic3d_Texture3D(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_Texture3D ******************/
 		/**** md5 signature: 12b8a332dec18b02096d54770852207e ****/
 		%feature("compactdefaultargs") Graphic3d_Texture3D;
-		%feature("autodoc", "Creates a texture from the pixmap.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePixMap: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from the pixmap.
 ") Graphic3d_Texture3D;
 		 Graphic3d_Texture3D(const opencascade::handle<Image_PixMap> & thePixMap);
 
 		/****************** Graphic3d_Texture3D ******************/
 		/**** md5 signature: b32ff230302c7b38b4a2a75c7f11b74e ****/
 		%feature("compactdefaultargs") Graphic3d_Texture3D;
-		%feature("autodoc", "Creates a texture from a file.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFiles: NCollection_Array1<TCollection_AsciiString>
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from a file.
 ") Graphic3d_Texture3D;
 		 Graphic3d_Texture3D(const NCollection_Array1<TCollection_AsciiString> & theFiles);
 
 		/****************** GetImage ******************/
 		/**** md5 signature: 98e90e03819b0bd5f7f8f4733cc9ed0c ****/
 		%feature("compactdefaultargs") GetImage;
-		%feature("autodoc", "Load and return image.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSupported: Image_SupportedFormats
 
-Returns
+Return
 -------
 opencascade::handle<Image_PixMap>
+
+Description
+-----------
+Load and return image.
 ") GetImage;
 		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** SetImage ******************/
 		/**** md5 signature: 1588c589999c87638afeed7026805f57 ****/
 		%feature("compactdefaultargs") SetImage;
-		%feature("autodoc", "Assign new image to the texture. note that this method does not invalidate already uploaded resources - consider calling ::updaterevision() if needed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePixMap: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign new image to the texture. note that this method does not invalidate already uploaded resources - consider calling ::updaterevision() if needed.
 ") SetImage;
 		void SetImage(const opencascade::handle<Image_PixMap> & thePixMap);
 
@@ -21416,86 +24592,103 @@ class Graphic3d_CubeMapSeparate : public Graphic3d_CubeMap {
 		/****************** Graphic3d_CubeMapSeparate ******************/
 		/**** md5 signature: f214f0a66b33cb73305ea1065b68a323 ****/
 		%feature("compactdefaultargs") Graphic3d_CubeMapSeparate;
-		%feature("autodoc", "Initializes cubemap to be loaded from file. @thepaths - array of paths to separate image files (has to have size equal 6).
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePaths: NCollection_Array1<TCollection_AsciiString>
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initializes cubemap to be loaded from file. @thepaths - array of paths to separate image files (has to have size equal 6).
 ") Graphic3d_CubeMapSeparate;
 		 Graphic3d_CubeMapSeparate(const NCollection_Array1<TCollection_AsciiString> & thePaths);
 
 		/****************** Graphic3d_CubeMapSeparate ******************/
 		/**** md5 signature: 56d466dfd473af1aaaef0bb290e3c427 ****/
 		%feature("compactdefaultargs") Graphic3d_CubeMapSeparate;
-		%feature("autodoc", "Initializes cubemap to be set directly from pixmaps. @theimages - array if pixmaps (has to have size equal 6).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theImages: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initializes cubemap to be set directly from pixmaps. @theimages - array if pixmaps (has to have size equal 6).
 ") Graphic3d_CubeMapSeparate;
 		 Graphic3d_CubeMapSeparate(const NCollection_Array1<opencascade::handle<Image_PixMap> > & theImages);
 
 		/****************** CompressedValue ******************/
 		/**** md5 signature: f357dccfdcfbfbec49c26eb1988350c9 ****/
 		%feature("compactdefaultargs") CompressedValue;
-		%feature("autodoc", "Returns current cubemap side as compressed pixmap.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSupported: Image_SupportedFormats
 
-Returns
+Return
 -------
 opencascade::handle<Image_CompressedPixMap>
+
+Description
+-----------
+Returns current cubemap side as compressed pixmap.
 ") CompressedValue;
 		virtual opencascade::handle<Image_CompressedPixMap> CompressedValue(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** GetImage ******************/
 		/**** md5 signature: 5f0e2d5083b762faecd7d3f85dab9f62 ****/
 		%feature("compactdefaultargs") GetImage;
-		%feature("autodoc", "Returns null.
-
+		%feature("autodoc", "
 Parameters
 ----------
 &: Image_SupportedFormats
 
-Returns
+Return
 -------
 opencascade::handle<Image_PixMap>
+
+Description
+-----------
+Returns null.
 ") GetImage;
 		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats > &);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: c9aa3a454774a145a334d5dad12c1786 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "Checks if a texture class is valid or not. returns true if the construction of the class is correct.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Checks if a texture class is valid or not. returns true if the construction of the class is correct.
 ") IsDone;
 		Standard_Boolean IsDone();
 
 		/****************** Value ******************/
 		/**** md5 signature: 973ad687ef3acb09815b3ad7953bfaf5 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Returns current side of cubemap as pixmap. returns null handle if current side or whole cubemap is invalid. all origin images have to have the same sizes, format and quad shapes to form valid cubemap.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSupported: Image_SupportedFormats
 
-Returns
+Return
 -------
 opencascade::handle<Image_PixMap>
+
+Description
+-----------
+Returns current side of cubemap as pixmap. returns null handle if current side or whole cubemap is invalid. all origin images have to have the same sizes, format and quad shapes to form valid cubemap.
 ") Value;
 		virtual opencascade::handle<Image_PixMap> Value(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
@@ -21518,69 +24711,81 @@ class Graphic3d_MediaTexture : public Graphic3d_Texture2D {
 		/****************** Graphic3d_MediaTexture ******************/
 		/**** md5 signature: 3965dd3594affeb30e766f4f2d92c702 ****/
 		%feature("compactdefaultargs") Graphic3d_MediaTexture;
-		%feature("autodoc", "Main constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMutex: Standard_HMutex
-thePlane: int,optional
-	default value is -1
+thePlane: int (optional, default to -1)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Main constructor.
 ") Graphic3d_MediaTexture;
 		 Graphic3d_MediaTexture(const opencascade::handle<Standard_HMutex> & theMutex, Standard_Integer thePlane = -1);
 
 		/****************** Frame ******************/
 		/**** md5 signature: 72eed6e2d3ed40f13a456563c383f7ca ****/
 		%feature("compactdefaultargs") Frame;
-		%feature("autodoc", "Return the frame.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Media_Frame>
+
+Description
+-----------
+Return the frame.
 ") Frame;
 		const opencascade::handle<Media_Frame> & Frame();
 
 		/****************** GenerateNewId ******************/
 		/**** md5 signature: 1495d713b8162c3177562c052a16c340 ****/
 		%feature("compactdefaultargs") GenerateNewId;
-		%feature("autodoc", "Regenerate a new texture id.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Regenerate a new texture id.
 ") GenerateNewId;
 		void GenerateNewId();
 
 		/****************** GetImage ******************/
 		/**** md5 signature: 98e90e03819b0bd5f7f8f4733cc9ed0c ****/
 		%feature("compactdefaultargs") GetImage;
-		%feature("autodoc", "Image reader.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSupported: Image_SupportedFormats
 
-Returns
+Return
 -------
 opencascade::handle<Image_PixMap>
+
+Description
+-----------
+Image reader.
 ") GetImage;
 		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
 		/****************** SetFrame ******************/
 		/**** md5 signature: 0dfb0fadea2ff545daa07a8643107bce ****/
 		%feature("compactdefaultargs") SetFrame;
-		%feature("autodoc", "Set the frame.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFrame: Media_Frame
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set the frame.
 ") SetFrame;
 		void SetFrame(const opencascade::handle<Media_Frame> & theFrame);
 
@@ -21603,45 +24808,54 @@ class Graphic3d_Texture1Dmanual : public Graphic3d_Texture1D {
 		/****************** Graphic3d_Texture1Dmanual ******************/
 		/**** md5 signature: 16246a6717a0283bbe82f098c0f243dd ****/
 		%feature("compactdefaultargs") Graphic3d_Texture1Dmanual;
-		%feature("autodoc", "Creates a texture from the file filename.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFileName: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from the file filename.
 ") Graphic3d_Texture1Dmanual;
 		 Graphic3d_Texture1Dmanual(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_Texture1Dmanual ******************/
 		/**** md5 signature: 523b409c896dd67bb73e53f0713b5b88 ****/
 		%feature("compactdefaultargs") Graphic3d_Texture1Dmanual;
-		%feature("autodoc", "Create a texture from a predefined texture name set.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNOT: Graphic3d_NameOfTexture1D
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Create a texture from a predefined texture name set.
 ") Graphic3d_Texture1Dmanual;
 		 Graphic3d_Texture1Dmanual(const Graphic3d_NameOfTexture1D theNOT);
 
 		/****************** Graphic3d_Texture1Dmanual ******************/
 		/**** md5 signature: 144f42d65129f67ad24cb0055b483270 ****/
 		%feature("compactdefaultargs") Graphic3d_Texture1Dmanual;
-		%feature("autodoc", "Creates a texture from the pixmap.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePixMap: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from the pixmap.
 ") Graphic3d_Texture1Dmanual;
 		 Graphic3d_Texture1Dmanual(const opencascade::handle<Image_PixMap> & thePixMap);
 
@@ -21664,57 +24878,65 @@ class Graphic3d_Texture1Dsegment : public Graphic3d_Texture1D {
 		/****************** Graphic3d_Texture1Dsegment ******************/
 		/**** md5 signature: 234567f0eac87576d69ef98d81103965 ****/
 		%feature("compactdefaultargs") Graphic3d_Texture1Dsegment;
-		%feature("autodoc", "Creates a texture from a file.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFileName: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from a file.
 ") Graphic3d_Texture1Dsegment;
 		 Graphic3d_Texture1Dsegment(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_Texture1Dsegment ******************/
 		/**** md5 signature: a05398d4cb31cf6396ad390a24ec4de7 ****/
 		%feature("compactdefaultargs") Graphic3d_Texture1Dsegment;
-		%feature("autodoc", "Creates a texture from a predefined texture name set.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNOT: Graphic3d_NameOfTexture1D
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from a predefined texture name set.
 ") Graphic3d_Texture1Dsegment;
 		 Graphic3d_Texture1Dsegment(const Graphic3d_NameOfTexture1D theNOT);
 
 		/****************** Graphic3d_Texture1Dsegment ******************/
 		/**** md5 signature: 7a32ead788f54fc5cf095c004f556eb5 ****/
 		%feature("compactdefaultargs") Graphic3d_Texture1Dsegment;
-		%feature("autodoc", "Creates a texture from the pixmap.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePixMap: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from the pixmap.
 ") Graphic3d_Texture1Dsegment;
 		 Graphic3d_Texture1Dsegment(const opencascade::handle<Image_PixMap> & thePixMap);
 
 		/****************** Segment ******************/
 		/**** md5 signature: 298be0f2ffeb1900226c372b5e3bec9f ****/
 		%feature("compactdefaultargs") Segment;
-		%feature("autodoc", "Returns the values of the current segment x1, y1, z1 , x2, y2, z2.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theX1: float
 theY1: float
@@ -21722,14 +24944,17 @@ theZ1: float
 theX2: float
 theY2: float
 theZ2: float
+
+Description
+-----------
+Returns the values of the current segment x1, y1, z1 , x2, y2, z2.
 ") Segment;
 		void Segment(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** SetSegment ******************/
 		/**** md5 signature: 9bdaf54faa2c28520a6560abbbfcb0b5 ****/
 		%feature("compactdefaultargs") SetSegment;
-		%feature("autodoc", "Sets the texture application bounds. defines the way the texture is stretched across facets. default values are <0.0, 0.0, 0.0> , <0.0, 0.0, 1.0>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theX1: float
@@ -21739,9 +24964,13 @@ theX2: float
 theY2: float
 theZ2: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the texture application bounds. defines the way the texture is stretched across facets. default values are <0.0, 0.0, 0.0> , <0.0, 0.0, 1.0>.
 ") SetSegment;
 		void SetSegment(const Standard_ShortReal theX1, const Standard_ShortReal theY1, const Standard_ShortReal theZ1, const Standard_ShortReal theX2, const Standard_ShortReal theY2, const Standard_ShortReal theZ2);
 
@@ -21764,155 +24993,183 @@ class Graphic3d_Texture2Dplane : public Graphic3d_Texture2D {
 		/****************** Graphic3d_Texture2Dplane ******************/
 		/**** md5 signature: a6f25585f63ff0136a842aab922c1b7f ****/
 		%feature("compactdefaultargs") Graphic3d_Texture2Dplane;
-		%feature("autodoc", "Creates a texture from a file.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFileName: str
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from a file.
 ") Graphic3d_Texture2Dplane;
 		 Graphic3d_Texture2Dplane(TCollection_AsciiString theFileName);
 
 		/****************** Graphic3d_Texture2Dplane ******************/
 		/**** md5 signature: aea36b4535b2f3f95d113fe310be496a ****/
 		%feature("compactdefaultargs") Graphic3d_Texture2Dplane;
-		%feature("autodoc", "Creates a texture from a predefined texture name set.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNOT: Graphic3d_NameOfTexture2D
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from a predefined texture name set.
 ") Graphic3d_Texture2Dplane;
 		 Graphic3d_Texture2Dplane(const Graphic3d_NameOfTexture2D theNOT);
 
 		/****************** Graphic3d_Texture2Dplane ******************/
 		/**** md5 signature: cbf8f493755871b02307b8b4fe0a64b6 ****/
 		%feature("compactdefaultargs") Graphic3d_Texture2Dplane;
-		%feature("autodoc", "Creates a texture from the pixmap.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePixMap: Image_PixMap
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creates a texture from the pixmap.
 ") Graphic3d_Texture2Dplane;
 		 Graphic3d_Texture2Dplane(const opencascade::handle<Image_PixMap> & thePixMap);
 
 		/****************** Plane ******************/
 		/**** md5 signature: 13e7ba511c49d3739032bf490c857606 ****/
 		%feature("compactdefaultargs") Plane;
-		%feature("autodoc", "Returns the current texture plane name or notp_unknown when the plane is user defined.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Graphic3d_NameOfTexturePlane
+
+Description
+-----------
+Returns the current texture plane name or notp_unknown when the plane is user defined.
 ") Plane;
 		Graphic3d_NameOfTexturePlane Plane();
 
 		/****************** PlaneS ******************/
 		/**** md5 signature: 03ed1711912de7c15e0e53299ff2e99b ****/
 		%feature("compactdefaultargs") PlaneS;
-		%feature("autodoc", "Returns the current texture plane s equation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 A: float
 B: float
 C: float
 D: float
+
+Description
+-----------
+Returns the current texture plane s equation.
 ") PlaneS;
 		void PlaneS(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** PlaneT ******************/
 		/**** md5 signature: 0f64deb688509a59d7d495773093d9b1 ****/
 		%feature("compactdefaultargs") PlaneT;
-		%feature("autodoc", "Returns the current texture plane t equation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 A: float
 B: float
 C: float
 D: float
+
+Description
+-----------
+Returns the current texture plane t equation.
 ") PlaneT;
 		void PlaneT(Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue, Standard_ShortReal &OutValue);
 
 		/****************** Rotation ******************/
 		/**** md5 signature: 340e4ac958aa75f22cf9693956702cf3 ****/
 		%feature("compactdefaultargs") Rotation;
-		%feature("autodoc", "Returns the current texture rotation angle.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theVal: float
+
+Description
+-----------
+Returns the current texture rotation angle.
 ") Rotation;
 		void Rotation(Standard_ShortReal &OutValue);
 
 		/****************** ScaleS ******************/
 		/**** md5 signature: e3176db3295b91f7337ec77e06b297fe ****/
 		%feature("compactdefaultargs") ScaleS;
-		%feature("autodoc", "Returns the current texture s scale value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theVal: float
+
+Description
+-----------
+Returns the current texture s scale value.
 ") ScaleS;
 		void ScaleS(Standard_ShortReal &OutValue);
 
 		/****************** ScaleT ******************/
 		/**** md5 signature: 2181a84eae66e0185f0f40f06a9e33aa ****/
 		%feature("compactdefaultargs") ScaleT;
-		%feature("autodoc", "Returns the current texture t scale value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theVal: float
+
+Description
+-----------
+Returns the current texture t scale value.
 ") ScaleT;
 		void ScaleT(Standard_ShortReal &OutValue);
 
 		/****************** SetPlane ******************/
 		/**** md5 signature: 5813f7058833e3ba0aacb0bc8ba39472 ****/
 		%feature("compactdefaultargs") SetPlane;
-		%feature("autodoc", "Defines the texture projection plane for both s and t texture coordinate default is notp_xy meaning: <1.0, 0.0, 0.0, 0.0> for s and <0.0, 1.0, 0.0, 0.0> for t.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePlane: Graphic3d_NameOfTexturePlane
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the texture projection plane for both s and t texture coordinate default is notp_xy meaning: <1.0, 0.0, 0.0, 0.0> for s and <0.0, 1.0, 0.0, 0.0> for t.
 ") SetPlane;
 		void SetPlane(const Graphic3d_NameOfTexturePlane thePlane);
 
 		/****************** SetPlaneS ******************/
 		/**** md5 signature: 296dac1d9f26755b1c24beed7af0e903 ****/
 		%feature("compactdefaultargs") SetPlaneS;
-		%feature("autodoc", "Defines the texture projection plane for texture coordinate s default is <1.0, 0.0, 0.0, 0.0>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 A: float
@@ -21920,17 +25177,20 @@ B: float
 C: float
 D: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the texture projection plane for texture coordinate s default is <1.0, 0.0, 0.0, 0.0>.
 ") SetPlaneS;
 		void SetPlaneS(const Standard_ShortReal A, const Standard_ShortReal B, const Standard_ShortReal C, const Standard_ShortReal D);
 
 		/****************** SetPlaneT ******************/
 		/**** md5 signature: feeac175bf7d9bfb7c1e3c8be5c79fdd ****/
 		%feature("compactdefaultargs") SetPlaneT;
-		%feature("autodoc", "Defines the texture projection plane for texture coordinate t default is <0.0, 1.0, 0.0, 0.0>.
-
+		%feature("autodoc", "
 Parameters
 ----------
 A: float
@@ -21938,112 +25198,137 @@ B: float
 C: float
 D: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the texture projection plane for texture coordinate t default is <0.0, 1.0, 0.0, 0.0>.
 ") SetPlaneT;
 		void SetPlaneT(const Standard_ShortReal A, const Standard_ShortReal B, const Standard_ShortReal C, const Standard_ShortReal D);
 
 		/****************** SetRotation ******************/
 		/**** md5 signature: 58c05b8fc74c716139b125085ca02925 ****/
 		%feature("compactdefaultargs") SetRotation;
-		%feature("autodoc", "Sets the rotation angle of the whole texture. the same result might be achieved by recomputing the s and t plane equation but it's not the easiest way... the angle is expressed in degrees default is 0.0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVal: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the rotation angle of the whole texture. the same result might be achieved by recomputing the s and t plane equation but it's not the easiest way... the angle is expressed in degrees default is 0.0.
 ") SetRotation;
 		void SetRotation(const Standard_ShortReal theVal);
 
 		/****************** SetScaleS ******************/
 		/**** md5 signature: 9a2f7627109ba2c51b8db23824221bab ****/
 		%feature("compactdefaultargs") SetScaleS;
-		%feature("autodoc", "Defines the texture scale for the s texture coordinate much easier than recomputing the s plane equation but the result is the same default to 1.0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVal: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the texture scale for the s texture coordinate much easier than recomputing the s plane equation but the result is the same default to 1.0.
 ") SetScaleS;
 		void SetScaleS(const Standard_ShortReal theVal);
 
 		/****************** SetScaleT ******************/
 		/**** md5 signature: ab76d8f3af260002928757b3a4d8c8ca ****/
 		%feature("compactdefaultargs") SetScaleT;
-		%feature("autodoc", "Defines the texture scale for the t texture coordinate much easier than recompution the t plane equation but the result is the same default to 1.0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVal: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the texture scale for the t texture coordinate much easier than recompution the t plane equation but the result is the same default to 1.0.
 ") SetScaleT;
 		void SetScaleT(const Standard_ShortReal theVal);
 
 		/****************** SetTranslateS ******************/
 		/**** md5 signature: 8554f981ca1c6e23734a3ce8ec143b0a ****/
 		%feature("compactdefaultargs") SetTranslateS;
-		%feature("autodoc", "Defines the texture translation for the s texture coordinate you can obtain the same effect by modifying the s plane equation but its not easier. default to 0.0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVal: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the texture translation for the s texture coordinate you can obtain the same effect by modifying the s plane equation but its not easier. default to 0.0.
 ") SetTranslateS;
 		void SetTranslateS(const Standard_ShortReal theVal);
 
 		/****************** SetTranslateT ******************/
 		/**** md5 signature: a9e2b58b7597fd99185d4733db7cab52 ****/
 		%feature("compactdefaultargs") SetTranslateT;
-		%feature("autodoc", "Defines the texture translation for the t texture coordinate you can obtain the same effect by modifying the t plane equation but its not easier. default to 0.0.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVal: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines the texture translation for the t texture coordinate you can obtain the same effect by modifying the t plane equation but its not easier. default to 0.0.
 ") SetTranslateT;
 		void SetTranslateT(const Standard_ShortReal theVal);
 
 		/****************** TranslateS ******************/
 		/**** md5 signature: a8485b07c9a630a032b6325b56ca5439 ****/
 		%feature("compactdefaultargs") TranslateS;
-		%feature("autodoc", "Returns the current texture s translation value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theVal: float
+
+Description
+-----------
+Returns the current texture s translation value.
 ") TranslateS;
 		void TranslateS(Standard_ShortReal &OutValue);
 
 		/****************** TranslateT ******************/
 		/**** md5 signature: 9fc4f8423a49d11a60255baa317fbaf1 ****/
 		%feature("compactdefaultargs") TranslateT;
-		%feature("autodoc", "Returns the current texture t translation value.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theVal: float
+
+Description
+-----------
+Returns the current texture t translation value.
 ") TranslateT;
 		void TranslateT(Standard_ShortReal &OutValue);
 

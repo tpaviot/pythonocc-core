@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SELECT3DDOCSTRING
 "Select3D module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_select3d.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_select3d.html"
 %enddef
 %module (package="OCC.Core", docstring=SELECT3DDOCSTRING) Select3D
 
@@ -167,105 +167,125 @@ class Select3D_BVHIndexBuffer : public Graphic3d_Buffer {
 		/****************** Select3D_BVHIndexBuffer ******************/
 		/**** md5 signature: 9c6a695201e9d6a1c47446f6ab981c91 ****/
 		%feature("compactdefaultargs") Select3D_BVHIndexBuffer;
-		%feature("autodoc", "Empty constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAlloc: NCollection_BaseAllocator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Empty constructor.
 ") Select3D_BVHIndexBuffer;
 		 Select3D_BVHIndexBuffer(const opencascade::handle<NCollection_BaseAllocator> & theAlloc);
 
 		/****************** HasPatches ******************/
 		/**** md5 signature: 53cf8fd429fed66d08db8181c096f9bd ****/
 		%feature("compactdefaultargs") HasPatches;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") HasPatches;
 		bool HasPatches();
 
 		/****************** Index ******************/
 		/**** md5 signature: 3813b791a9252766ab0ad02ee41ef86e ****/
 		%feature("compactdefaultargs") Index;
-		%feature("autodoc", "Access index at specified position.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Access index at specified position.
 ") Index;
 		Standard_Integer Index(const Standard_Integer theIndex);
 
 		/****************** Init ******************/
 		/**** md5 signature: 634abd9dd733003a4393c5d7b8a34a8b ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Allocates new empty index array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNbElems: int
 theHasPatches: bool
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Allocates new empty index array.
 ") Init;
 		bool Init(const Standard_Integer theNbElems, const bool theHasPatches);
 
 		/****************** PatchSize ******************/
 		/**** md5 signature: facb4cc1bc70b8df9d9b1cc6318abaa2 ****/
 		%feature("compactdefaultargs") PatchSize;
-		%feature("autodoc", "Access index at specified position.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+Access index at specified position.
 ") PatchSize;
 		Standard_Integer PatchSize(const Standard_Integer theIndex);
 
 		/****************** SetIndex ******************/
 		/**** md5 signature: 33fd14c6d6a781288709878ecce41472 ****/
 		%feature("compactdefaultargs") SetIndex;
-		%feature("autodoc", "Change index at specified position.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theValue: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change index at specified position.
 ") SetIndex;
 		void SetIndex(const Standard_Integer theIndex, const Standard_Integer theValue);
 
 		/****************** SetIndex ******************/
 		/**** md5 signature: 4018ec1b19d679d7f3f49bf7e35c70a4 ****/
 		%feature("compactdefaultargs") SetIndex;
-		%feature("autodoc", "Change index at specified position.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theValue: int
 thePatchSize: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Change index at specified position.
 ") SetIndex;
 		void SetIndex(const Standard_Integer theIndex, const Standard_Integer theValue, const Standard_Integer thePatchSize);
 
@@ -305,88 +325,105 @@ class Select3D_PointData {
 		/****************** Select3D_PointData ******************/
 		/**** md5 signature: 85c98e02ccdc6aa842a8add8fc9ae869 ****/
 		%feature("compactdefaultargs") Select3D_PointData;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theNbPoints: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Select3D_PointData;
 		 Select3D_PointData(const Standard_Integer theNbPoints);
 
 		/****************** Pnt ******************/
 		/**** md5 signature: 3cb8ae9ddca79b860927c65a37f2985f ****/
 		%feature("compactdefaultargs") Pnt;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 
-Returns
+Return
 -------
 Select3D_Pnt
+
+Description
+-----------
+No available documentation.
 ") Pnt;
 		const Select3D_Pnt & Pnt(const Standard_Integer theIndex);
 
 		/****************** Pnt3d ******************/
 		/**** md5 signature: 286695fbfbf32cc16502281be97aabf3 ****/
 		%feature("compactdefaultargs") Pnt3d;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 
-Returns
+Return
 -------
 gp_Pnt
+
+Description
+-----------
+No available documentation.
 ") Pnt3d;
 		gp_Pnt Pnt3d(const Standard_Integer theIndex);
 
 		/****************** SetPnt ******************/
 		/**** md5 signature: 0024249bbd519fe8fac799be8859f696 ****/
 		%feature("compactdefaultargs") SetPnt;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theValue: Select3D_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPnt;
 		void SetPnt(const Standard_Integer theIndex, const Select3D_Pnt & theValue);
 
 		/****************** SetPnt ******************/
 		/**** md5 signature: 59876da69ab513de069032bc3d2b00bc ****/
 		%feature("compactdefaultargs") SetPnt;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 theValue: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetPnt;
 		void SetPnt(const Standard_Integer theIndex, const gp_Pnt & theValue);
 
 		/****************** Size ******************/
 		/**** md5 signature: fe6e16e0f1e86558dd017c7384c76cd6 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") Size;
 		Standard_Integer Size();
 
@@ -410,24 +447,26 @@ class Select3D_SensitiveBox : public Select3D_SensitiveEntity {
 		/****************** Select3D_SensitiveBox ******************/
 		/**** md5 signature: 43837d953f8e8ba92f51581379e8aa94 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveBox;
-		%feature("autodoc", "Constructs a sensitive box object defined by the owner theownerid, and the box thebox.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 theBox: Bnd_Box
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive box object defined by the owner theownerid, and the box thebox.
 ") Select3D_SensitiveBox;
 		 Select3D_SensitiveBox(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Bnd_Box & theBox);
 
 		/****************** Select3D_SensitiveBox ******************/
 		/**** md5 signature: 191a9877a3e707d16abdb1ff7e49db8a ****/
 		%feature("compactdefaultargs") Select3D_SensitiveBox;
-		%feature("autodoc", "Constructs a sensitive box object defined by the owner theownerid, and the coordinates thexmin, theymin, thezmin, thexmax, theymax, thezmax. thexmin, theymin and thezmin define the minimum point in the front lower left hand corner of the box, and thexmax, theymax and thezmax define the maximum point in the back upper right hand corner of the box.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
@@ -438,31 +477,39 @@ theXMax: float
 theYMax: float
 theZMax: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive box object defined by the owner theownerid, and the coordinates thexmin, theymin, thezmin, thexmax, theymax, thezmax. thexmin, theymin and thezmin define the minimum point in the front lower left hand corner of the box, and thexmax, theymax and thezmax define the maximum point in the back upper right hand corner of the box.
 ") Select3D_SensitiveBox;
 		 Select3D_SensitiveBox(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Real theXMin, const Standard_Real theYMin, const Standard_Real theZMin, const Standard_Real theXMax, const Standard_Real theYMax, const Standard_Real theZMax);
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns coordinates of the box. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns coordinates of the box. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of the box. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of the box. if location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -478,49 +525,58 @@ gp_Pnt
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+No available documentation.
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the box overlaps current selecting volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: SelectBasics_SelectingVolumeManager
 thePickResult: SelectBasics_PickResult
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether the box overlaps current selecting volume.
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of sub-entities in sensitive.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of sub-entities in sensitive.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** ToBuildBVH ******************/
 		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
 		%feature("compactdefaultargs") ToBuildBVH;
-		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if bvh tree is in invalidated state.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -550,8 +606,7 @@ class Select3D_SensitiveCylinder : public Select3D_SensitiveEntity {
 		/****************** Select3D_SensitiveCylinder ******************/
 		/**** md5 signature: d3eb90bf89db274e1e5fce77acbb637f ****/
 		%feature("compactdefaultargs") Select3D_SensitiveCylinder;
-		%feature("autodoc", "Constructs a sensitive cylinder object defined by the owner theownerid, @param[in] thebottomrad cylinder bottom radius @param[in] thetoprad cylinder top radius @param[in] theheight cylinder height.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
@@ -559,127 +614,151 @@ theBottomRad: float
 theTopRad: float
 theHeight: float
 theTrsf: gp_Trsf
-theIsHollow: bool,optional
-	default value is Standard_False
+theIsHollow: bool (optional, default to Standard_False)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive cylinder object defined by the owner theownerid, @param[in] thebottomrad cylinder bottom radius @param[in] thetoprad cylinder top radius @param[in] theheight cylinder height.
 ") Select3D_SensitiveCylinder;
 		 Select3D_SensitiveCylinder(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow = Standard_False);
 
 		/****************** BottomRadius ******************/
 		/**** md5 signature: de685b24782911749c814e3c0fb81603 ****/
 		%feature("compactdefaultargs") BottomRadius;
-		%feature("autodoc", "Returns cylinder bottom radius.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns cylinder bottom radius.
 ") BottomRadius;
 		Standard_Real BottomRadius();
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of the cylinder. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of the cylinder. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of the cylinder with transformation applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of the cylinder with transformation applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
 		/****************** Height ******************/
 		/**** md5 signature: e5e3c5b90c971d7ac0e43c341f82b9e0 ****/
 		%feature("compactdefaultargs") Height;
-		%feature("autodoc", "Returns cylinder height.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns cylinder height.
 ") Height;
 		Standard_Real Height();
 
 		/****************** IsHollow ******************/
 		/**** md5 signature: fc875a52f0c9fdfe42f7e6284763402e ****/
 		%feature("compactdefaultargs") IsHollow;
-		%feature("autodoc", "Returns true if the cylinder is empty inside.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the cylinder is empty inside.
 ") IsHollow;
 		Standard_Boolean IsHollow();
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the cylinder overlaps current selecting volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: SelectBasics_SelectingVolumeManager
 thePickResult: SelectBasics_PickResult
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether the cylinder overlaps current selecting volume.
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: d42012759817bcd1e404a0d71391ca3b ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of points.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of points.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** ToBuildBVH ******************/
 		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
 		%feature("compactdefaultargs") ToBuildBVH;
-		%feature("autodoc", "Always returns standard_false.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Always returns standard_false.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
 		/****************** TopRadius ******************/
 		/**** md5 signature: ab96280c7a81a4f44a22a754e94dab2a ****/
 		%feature("compactdefaultargs") TopRadius;
-		%feature("autodoc", "Returns cylinder top radius.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns cylinder top radius.
 ") TopRadius;
 		Standard_Real TopRadius();
 
 		/****************** Transformation ******************/
 		/**** md5 signature: 4340f0c35d6856faf6f9daeca03f9595 ****/
 		%feature("compactdefaultargs") Transformation;
-		%feature("autodoc", "Returns cylinder transformation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Trsf
+
+Description
+-----------
+Returns cylinder transformation.
 ") Transformation;
 		const gp_Trsf Transformation();
 
@@ -702,67 +781,79 @@ class Select3D_SensitiveFace : public Select3D_SensitiveEntity {
 		/****************** Select3D_SensitiveFace ******************/
 		/**** md5 signature: 0dded17802ba6930997df4755c28eab4 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveFace;
-		%feature("autodoc", "Constructs a sensitive face object defined by the owner theownerid, the array of points thepoints, and the sensitivity type thetype. the array of points is the outer polygon of the geometric face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 thePoints: TColgp_Array1OfPnt
 theType: Select3D_TypeOfSensitivity
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive face object defined by the owner theownerid, the array of points thepoints, and the sensitivity type thetype. the array of points is the outer polygon of the geometric face.
 ") Select3D_SensitiveFace;
 		 Select3D_SensitiveFace(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints, const Select3D_TypeOfSensitivity theType);
 
 		/****************** Select3D_SensitiveFace ******************/
 		/**** md5 signature: 3ac4fc48ff80cf011f9d4f586b560867 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveFace;
-		%feature("autodoc", "Constructs a sensitive face object defined by the owner theownerid, the array of points thepoints, and the sensitivity type thetype. the array of points is the outer polygon of the geometric face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 thePoints: TColgp_HArray1OfPnt
 theType: Select3D_TypeOfSensitivity
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive face object defined by the owner theownerid, the array of points thepoints, and the sensitivity type thetype. the array of points is the outer polygon of the geometric face.
 ") Select3D_SensitiveFace;
 		 Select3D_SensitiveFace(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePoints, const Select3D_TypeOfSensitivity theType);
 
 		/****************** BVH ******************/
 		/**** md5 signature: 9d26e1a47d3d96ad1039d301e2b44c49 ****/
 		%feature("compactdefaultargs") BVH;
-		%feature("autodoc", "Builds bvh tree for the face.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Builds bvh tree for the face.
 ") BVH;
 		virtual void BVH();
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of the face. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of the face. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of the face. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of the face. if location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -778,64 +869,76 @@ gp_Pnt
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+No available documentation.
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** GetPoints ******************/
 		/**** md5 signature: e17b824aad178e25b59611b92e732ef8 ****/
 		%feature("compactdefaultargs") GetPoints;
-		%feature("autodoc", "Initializes the given array theharrayofpnt by 3d coordinates of vertices of the face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHArrayOfPnt: TColgp_HArray1OfPnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initializes the given array theharrayofpnt by 3d coordinates of vertices of the face.
 ") GetPoints;
 		void GetPoints(opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the face overlaps current selecting volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: SelectBasics_SelectingVolumeManager
 thePickResult: SelectBasics_PickResult
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether the face overlaps current selecting volume.
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of sub-entities (points or planar convex polygons).
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of sub-entities (points or planar convex polygons).
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** ToBuildBVH ******************/
 		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
 		%feature("compactdefaultargs") ToBuildBVH;
-		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if bvh tree is in invalidated state.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -858,38 +961,45 @@ class Select3D_SensitivePoint : public Select3D_SensitiveEntity {
 		/****************** Select3D_SensitivePoint ******************/
 		/**** md5 signature: b377653179f828011c220b36c7e0c91a ****/
 		%feature("compactdefaultargs") Select3D_SensitivePoint;
-		%feature("autodoc", "Constructs a sensitive point object defined by the owner ownerid and the point point.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 thePoint: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive point object defined by the owner ownerid and the point point.
 ") Select3D_SensitivePoint;
 		 Select3D_SensitivePoint(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Pnt & thePoint);
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of the point. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of the point. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of point. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of point. if location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -905,60 +1015,71 @@ gp_Pnt
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+No available documentation.
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the point overlaps current selecting volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: SelectBasics_SelectingVolumeManager
 thePickResult: SelectBasics_PickResult
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether the point overlaps current selecting volume.
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of sub-entities in sensitive.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of sub-entities in sensitive.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** Point ******************/
 		/**** md5 signature: 4e742d9ca138939180edee86d3b37a8f ****/
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "Returns the point used at the time of construction.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the point used at the time of construction.
 ") Point;
 		const gp_Pnt Point();
 
 		/****************** ToBuildBVH ******************/
 		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
 		%feature("compactdefaultargs") ToBuildBVH;
-		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if bvh tree is in invalidated state.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -981,39 +1102,46 @@ class Select3D_SensitiveSegment : public Select3D_SensitiveEntity {
 		/****************** Select3D_SensitiveSegment ******************/
 		/**** md5 signature: c141ce483d131fd3396b3073763c27b3 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveSegment;
-		%feature("autodoc", "Constructs the sensitive segment object defined by the owner theownerid, the points thefirstpnt, thelastpnt.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 theFirstPnt: gp_Pnt
 theLastPnt: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs the sensitive segment object defined by the owner theownerid, the points thefirstpnt, thelastpnt.
 ") Select3D_SensitiveSegment;
 		 Select3D_SensitiveSegment(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Pnt & theFirstPnt, const gp_Pnt & theLastPnt);
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of the segment. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of the segment. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of the segment. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of the segment. if location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -1029,131 +1157,156 @@ gp_Pnt
 		/****************** EndPoint ******************/
 		/**** md5 signature: 215af104676c67d500840bc0352e57ff ****/
 		%feature("compactdefaultargs") EndPoint;
-		%feature("autodoc", "Gives the 3d end point of the segment.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Gives the 3d end point of the segment.
 ") EndPoint;
 		const gp_Pnt EndPoint();
 
 		/****************** EndPoint ******************/
 		/**** md5 signature: 5a1d0dd53d485d40e815a64c0b7e0098 ****/
 		%feature("compactdefaultargs") EndPoint;
-		%feature("autodoc", "Changes the end point of the segment.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes the end point of the segment.
 ") EndPoint;
 		void EndPoint(const gp_Pnt & thePnt);
 
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+No available documentation.
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the segment overlaps current selecting volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: SelectBasics_SelectingVolumeManager
 thePickResult: SelectBasics_PickResult
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether the segment overlaps current selecting volume.
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of points.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of points.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** SetEndPoint ******************/
 		/**** md5 signature: 55015a3f04b6aa4f76e293195e6af803 ****/
 		%feature("compactdefaultargs") SetEndPoint;
-		%feature("autodoc", "Changes the end point of the segment.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes the end point of the segment.
 ") SetEndPoint;
 		void SetEndPoint(const gp_Pnt & thePnt);
 
 		/****************** SetStartPoint ******************/
 		/**** md5 signature: 174c4484c3a3dbce9b4ca018cb428284 ****/
 		%feature("compactdefaultargs") SetStartPoint;
-		%feature("autodoc", "Changes the start point of the segment;.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes the start point of the segment;.
 ") SetStartPoint;
 		void SetStartPoint(const gp_Pnt & thePnt);
 
 		/****************** StartPoint ******************/
 		/**** md5 signature: 2612c145bdd0fcec4fb2333727d26824 ****/
 		%feature("compactdefaultargs") StartPoint;
-		%feature("autodoc", "Gives the 3d start point of the segment.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Gives the 3d start point of the segment.
 ") StartPoint;
 		const gp_Pnt StartPoint();
 
 		/****************** StartPoint ******************/
 		/**** md5 signature: 12d46965d72c0ef983e6c5d12da8a947 ****/
 		%feature("compactdefaultargs") StartPoint;
-		%feature("autodoc", "Changes the start point of the segment;.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes the start point of the segment;.
 ") StartPoint;
 		void StartPoint(const gp_Pnt & thePnt);
 
 		/****************** ToBuildBVH ******************/
 		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
 		%feature("compactdefaultargs") ToBuildBVH;
-		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if bvh tree is in invalidated state.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -1179,121 +1332,143 @@ class Select3D_SensitiveSphere : public Select3D_SensitiveEntity {
 		/****************** Select3D_SensitiveSphere ******************/
 		/**** md5 signature: 938b4c90c8a9ff2c3ef8aefa2cca1875 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveSphere;
-		%feature("autodoc", "Constructs a sensitive sphere object defined by the owner theownerid, the center of the sphere and it's radius.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 theCenter: gp_Pnt
 theRadius: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive sphere object defined by the owner theownerid, the center of the sphere and it's radius.
 ") Select3D_SensitiveSphere;
 		 Select3D_SensitiveSphere(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Pnt & theCenter, const Standard_Real theRadius);
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of the sphere. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of the sphere. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 91b253b06a291fc09a167246137ee4aa ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of the sphere with transformation applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of the sphere with transformation applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "Returns the copy of this.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+Returns the copy of this.
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** LastDetectedPoint ******************/
 		/**** md5 signature: e21e43f41a76a4e73c8bd23b296057d3 ****/
 		%feature("compactdefaultargs") LastDetectedPoint;
-		%feature("autodoc", "Returns the position of detected point on the sphere.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the position of detected point on the sphere.
 ") LastDetectedPoint;
 		const gp_Pnt LastDetectedPoint();
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the sphere overlaps current selecting volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: SelectBasics_SelectingVolumeManager
 thePickResult: SelectBasics_PickResult
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether the sphere overlaps current selecting volume.
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: d42012759817bcd1e404a0d71391ca3b ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of points.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of points.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** Radius ******************/
 		/**** md5 signature: e995997e31f334f223fb359fc7382a66 ****/
 		%feature("compactdefaultargs") Radius;
-		%feature("autodoc", "Returns the radius of the sphere.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the radius of the sphere.
 ") Radius;
 		Standard_Real Radius();
 
 		/****************** ResetLastDetectedPoint ******************/
 		/**** md5 signature: 1cbeaf92700ac7b137749cc664093495 ****/
 		%feature("compactdefaultargs") ResetLastDetectedPoint;
-		%feature("autodoc", "Invalidate the position of detected point on the sphere.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Invalidate the position of detected point on the sphere.
 ") ResetLastDetectedPoint;
 		void ResetLastDetectedPoint();
 
 		/****************** ToBuildBVH ******************/
 		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
 		%feature("compactdefaultargs") ToBuildBVH;
-		%feature("autodoc", "Always returns standard_false.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Always returns standard_false.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -1316,53 +1491,61 @@ class Select3D_SensitiveTriangle : public Select3D_SensitiveEntity {
 		/****************** Select3D_SensitiveTriangle ******************/
 		/**** md5 signature: 45fd0e1195c3cfc8f8c7681ecf71dc8a ****/
 		%feature("compactdefaultargs") Select3D_SensitiveTriangle;
-		%feature("autodoc", "Constructs a sensitive triangle object defined by the owner theownerid, the points p1, p2, p3, and the type of sensitivity sensitivity.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 thePnt0: gp_Pnt
 thePnt1: gp_Pnt
 thePnt2: gp_Pnt
-theType: Select3D_TypeOfSensitivity,optional
-	default value is Select3D_TOS_INTERIOR
+theType: Select3D_TypeOfSensitivity (optional, default to Select3D_TOS_INTERIOR)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive triangle object defined by the owner theownerid, the points p1, p2, p3, and the type of sensitivity sensitivity.
 ") Select3D_SensitiveTriangle;
 		 Select3D_SensitiveTriangle(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Pnt & thePnt0, const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const Select3D_TypeOfSensitivity theType = Select3D_TOS_INTERIOR);
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of the triangle. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of the triangle. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** Center3D ******************/
 		/**** md5 signature: 1abffa9f7c08b130939075b3b4320455 ****/
 		%feature("compactdefaultargs") Center3D;
-		%feature("autodoc", "Returns the center point of the sensitive triangle created at construction time.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the center point of the sensitive triangle created at construction time.
 ") Center3D;
 		gp_Pnt Center3D();
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 91b253b06a291fc09a167246137ee4aa ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+No available documentation.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -1378,66 +1561,78 @@ gp_Pnt
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "Returns the copy of this.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+Returns the copy of this.
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the triangle overlaps current selecting volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: SelectBasics_SelectingVolumeManager
 thePickResult: SelectBasics_PickResult
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether the triangle overlaps current selecting volume.
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: d42012759817bcd1e404a0d71391ca3b ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of points.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of points.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** Points3D ******************/
 		/**** md5 signature: c926675a908ce3d4a3055fe72df15440 ****/
 		%feature("compactdefaultargs") Points3D;
-		%feature("autodoc", "Returns the 3d points p1, p2, p3 used at the time of construction.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePnt0: gp_Pnt
 thePnt1: gp_Pnt
 thePnt2: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the 3d points p1, p2, p3 used at the time of construction.
 ") Points3D;
 		void Points3D(gp_Pnt & thePnt0, gp_Pnt & thePnt1, gp_Pnt & thePnt2);
 
 		/****************** ToBuildBVH ******************/
 		/**** md5 signature: 3e202142e81f8f905fd9631c2ddd9a95 ****/
 		%feature("compactdefaultargs") ToBuildBVH;
-		%feature("autodoc", "Returns true if bvh tree is in invalidated state.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if bvh tree is in invalidated state.
 ") ToBuildBVH;
 		virtual Standard_Boolean ToBuildBVH();
 
@@ -1460,69 +1655,82 @@ class Select3D_InteriorSensitivePointSet : public Select3D_SensitiveSet {
 		/****************** Select3D_InteriorSensitivePointSet ******************/
 		/**** md5 signature: 7bf2ce90ff997cbf43870d34985c5465 ****/
 		%feature("compactdefaultargs") Select3D_InteriorSensitivePointSet;
-		%feature("autodoc", "Splits the given point set thepoints onto planar convex polygons.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 thePoints: TColgp_Array1OfPnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Splits the given point set thepoints onto planar convex polygons.
 ") Select3D_InteriorSensitivePointSet;
 		 Select3D_InteriorSensitivePointSet(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints);
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of the point set. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of the point set. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** Box ******************/
 		/**** md5 signature: 9170e3bfd20dbcabd7ec332ab26bb9fa ****/
 		%feature("compactdefaultargs") Box;
-		%feature("autodoc", "Returns bounding box of planar convex polygon with index theidx.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 
-Returns
+Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of planar convex polygon with index theidx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
 		/****************** Center ******************/
 		/**** md5 signature: 82dec1d5725b85fd9fe04818aa66dc03 ****/
 		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "Returns geometry center of planar convex polygon with index theidx in the vector along the given axis theaxis.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 theAxis: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns geometry center of planar convex polygon with index theidx in the vector along the given axis theaxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of the point set. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of the point set. if location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -1538,53 +1746,63 @@ gp_Pnt
 		/****************** GetPoints ******************/
 		/**** md5 signature: 2354af8c2d25c775f74f460a205fdea9 ****/
 		%feature("compactdefaultargs") GetPoints;
-		%feature("autodoc", "Initializes the given array theharrayofpnt by 3d coordinates of vertices of the whole point set.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHArrayOfPnt: TColgp_HArray1OfPnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Initializes the given array theharrayofpnt by 3d coordinates of vertices of the whole point set.
 ") GetPoints;
 		virtual void GetPoints(opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of points in set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of points in set.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** Size ******************/
 		/**** md5 signature: 8b9290cdf9c653fc150b9b31776f3f21 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Returns the length of vector of planar convex polygons.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the length of vector of planar convex polygons.
 ") Size;
 		virtual Standard_Integer Size();
 
 		/****************** Swap ******************/
 		/**** md5 signature: 19b601a9d7acdae056493eb6f9eb0b63 ****/
 		%feature("compactdefaultargs") Swap;
-		%feature("autodoc", "Swaps items with indexes theidx1 and theidx2 in the vector.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx1: int
 theIdx2: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Swaps items with indexes theidx1 and theidx2 in the vector.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
@@ -1607,129 +1825,151 @@ class Select3D_SensitiveGroup : public Select3D_SensitiveSet {
 		/****************** Select3D_SensitiveGroup ******************/
 		/**** md5 signature: fd207baedec0e33849cc15f1dadc5dae ****/
 		%feature("compactdefaultargs") Select3D_SensitiveGroup;
-		%feature("autodoc", "Constructs an empty sensitive group object. this is a set of sensitive 3d entities. the sensitive entities will be defined using the function add to fill the entity owner ownerid. if matchall is false, nothing can be added.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
-theIsMustMatchAll: bool,optional
-	default value is Standard_True
+theIsMustMatchAll: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs an empty sensitive group object. this is a set of sensitive 3d entities. the sensitive entities will be defined using the function add to fill the entity owner ownerid. if matchall is false, nothing can be added.
 ") Select3D_SensitiveGroup;
 		 Select3D_SensitiveGroup(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Boolean theIsMustMatchAll = Standard_True);
 
 		/****************** Select3D_SensitiveGroup ******************/
 		/**** md5 signature: 36caf2c6191c440285723bfa7dff1c27 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveGroup;
-		%feature("autodoc", "Constructs a sensitive group object defined by the list thelist and the entity owner ownerid. if matchall is false, nothing is done.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 theEntities: Select3D_EntitySequence
-theIsMustMatchAll: bool,optional
-	default value is Standard_True
+theIsMustMatchAll: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive group object defined by the list thelist and the entity owner ownerid. if matchall is false, nothing is done.
 ") Select3D_SensitiveGroup;
 		 Select3D_SensitiveGroup(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, Select3D_EntitySequence & theEntities, const Standard_Boolean theIsMustMatchAll = Standard_True);
 
 		/****************** Add ******************/
 		/**** md5 signature: 701615335d3ca47380922689d3d9debf ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds the list of sensitive entities ll to the empty sensitive group object created at construction time.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theEntities: Select3D_EntitySequence
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Adds the list of sensitive entities ll to the empty sensitive group object created at construction time.
 ") Add;
 		void Add(Select3D_EntitySequence & theEntities);
 
 		/****************** Add ******************/
 		/**** md5 signature: 71a26d66d0f562b3cb53c9a86dd02409 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds the sensitive entity asensitive to the non-empty sensitive group object created at construction time.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSensitive: Select3D_SensitiveEntity
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Adds the sensitive entity asensitive to the non-empty sensitive group object created at construction time.
 ") Add;
 		void Add(const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of the group. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of the group. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** Box ******************/
 		/**** md5 signature: 9170e3bfd20dbcabd7ec332ab26bb9fa ****/
 		%feature("compactdefaultargs") Box;
-		%feature("autodoc", "Returns bounding box of sensitive entity with index theidx.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 
-Returns
+Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of sensitive entity with index theidx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
 		/****************** Center ******************/
 		/**** md5 signature: 82dec1d5725b85fd9fe04818aa66dc03 ****/
 		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "Returns geometry center of sensitive entity index theidx in the vector along the given axis theaxis.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 theAxis: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns geometry center of sensitive entity index theidx in the vector along the given axis theaxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of entity set. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of entity set. if location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
 		/****************** Clear ******************/
 		/**** md5 signature: 04e06e275d2bf51a1788968453d01f4e ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Removes all sensitive entities from the list used at the time of construction, or added using the function add.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Removes all sensitive entities from the list used at the time of construction, or added using the function add.
 ") Clear;
 		void Clear();
 
@@ -1745,210 +1985,250 @@ None
 		/****************** Entities ******************/
 		/**** md5 signature: 42d351b73d32e041dcc72923d4f98551 ****/
 		%feature("compactdefaultargs") Entities;
-		%feature("autodoc", "Gets group content.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_IndexedMapOfEntity
+
+Description
+-----------
+Gets group content.
 ") Entities;
 		const Select3D_IndexedMapOfEntity & Entities();
 
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+No available documentation.
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** IsIn ******************/
 		/**** md5 signature: 2d39ed6aa83e356d9188b1de20d14ef2 ****/
 		%feature("compactdefaultargs") IsIn;
-		%feature("autodoc", "Returns true if the sensitive entity asensitive is in the list used at the time of construction, or added using the function add.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSensitive: Select3D_SensitiveEntity
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Returns true if the sensitive entity asensitive is in the list used at the time of construction, or added using the function add.
 ") IsIn;
 		Standard_Boolean IsIn(const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
 		/****************** LastDetectedEntity ******************/
 		/**** md5 signature: 4ab2c72ef86d1b14ed739f60f17a6d43 ****/
 		%feature("compactdefaultargs") LastDetectedEntity;
-		%feature("autodoc", "Return last detected entity.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+Return last detected entity.
 ") LastDetectedEntity;
 		opencascade::handle<Select3D_SensitiveEntity> LastDetectedEntity();
 
 		/****************** LastDetectedEntityIndex ******************/
 		/**** md5 signature: 27f7458d82b74acf2cf2a771f3757f1a ****/
 		%feature("compactdefaultargs") LastDetectedEntityIndex;
-		%feature("autodoc", "Return index of last detected entity.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return index of last detected entity.
 ") LastDetectedEntityIndex;
 		Standard_Integer LastDetectedEntityIndex();
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the group overlaps current selecting volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: SelectBasics_SelectingVolumeManager
 thePickResult: SelectBasics_PickResult
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether the group overlaps current selecting volume.
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** MustMatchAll ******************/
 		/**** md5 signature: 7e54d886721e54a9e195f8e6b53f8dd1 ****/
 		%feature("compactdefaultargs") MustMatchAll;
-		%feature("autodoc", "Returns true if all sensitive entities in the list used at the time of construction, or added using the function add must be matched.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if all sensitive entities in the list used at the time of construction, or added using the function add must be matched.
 ") MustMatchAll;
 		Standard_Boolean MustMatchAll();
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of sub-entities.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of sub-entities.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** Remove ******************/
 		/**** md5 signature: cae24c639aaf899e147db1bbdc14c1ad ****/
 		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSensitive: Select3D_SensitiveEntity
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Remove;
 		void Remove(const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
 		/****************** Set ******************/
 		/**** md5 signature: 11d87127ec7ca03e9ecc4f0cb1e9a069 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the owner for all entities in group.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the owner for all entities in group.
 ") Set;
 		void Set(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
 		/****************** SetCheckOverlapAll ******************/
 		/**** md5 signature: 27b5bd71122ddf584898c36405d97ea1 ****/
 		%feature("compactdefaultargs") SetCheckOverlapAll;
-		%feature("autodoc", "Returns true if all sensitive entities should be checked within rectangular/polygonal selection, false by default. can be useful for sensitive entities holding detection results as class property.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToCheckAll: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns true if all sensitive entities should be checked within rectangular/polygonal selection, false by default. can be useful for sensitive entities holding detection results as class property.
 ") SetCheckOverlapAll;
 		void SetCheckOverlapAll(Standard_Boolean theToCheckAll);
 
 		/****************** SetMatchType ******************/
 		/**** md5 signature: 26d691c58a50795e02a9bde3648c1ee1 ****/
 		%feature("compactdefaultargs") SetMatchType;
-		%feature("autodoc", "Sets the requirement that all sensitive entities in the list used at the time of construction, or added using the function add must be matched.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIsMustMatchAll: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the requirement that all sensitive entities in the list used at the time of construction, or added using the function add must be matched.
 ") SetMatchType;
 		void SetMatchType(const Standard_Boolean theIsMustMatchAll);
 
 		/****************** Size ******************/
 		/**** md5 signature: 8b9290cdf9c653fc150b9b31776f3f21 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Returns the length of vector of sensitive entities.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the length of vector of sensitive entities.
 ") Size;
 		virtual Standard_Integer Size();
 
 		/****************** SubEntity ******************/
 		/**** md5 signature: 2448e26e892ea0b00fa03dc3402972db ****/
 		%feature("compactdefaultargs") SubEntity;
-		%feature("autodoc", "Access entity by index [1, nbsubelements()].
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIndex: int
 
-Returns
+Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+Access entity by index [1, nbsubelements()].
 ") SubEntity;
 		const opencascade::handle<Select3D_SensitiveEntity> & SubEntity(const Standard_Integer theIndex);
 
 		/****************** Swap ******************/
 		/**** md5 signature: 19b601a9d7acdae056493eb6f9eb0b63 ****/
 		%feature("compactdefaultargs") Swap;
-		%feature("autodoc", "Swaps items with indexes theidx1 and theidx2 in the vector.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx1: int
 theIdx2: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Swaps items with indexes theidx1 and theidx2 in the vector.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
 		/****************** ToCheckOverlapAll ******************/
 		/**** md5 signature: 875bef1ee1e34f40b91789156eae894b ****/
 		%feature("compactdefaultargs") ToCheckOverlapAll;
-		%feature("autodoc", "Returns true if all sensitive entities should be checked within rectangular/polygonal selection, false by default. can be useful for sensitive entities holding detection results as class property.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if all sensitive entities should be checked within rectangular/polygonal selection, false by default. can be useful for sensitive entities holding detection results as class property.
 ") ToCheckOverlapAll;
 		Standard_Boolean ToCheckOverlapAll();
 
@@ -1971,142 +2251,164 @@ class Select3D_SensitivePoly : public Select3D_SensitiveSet {
 		/****************** Select3D_SensitivePoly ******************/
 		/**** md5 signature: 9d308518f5fa071ef38a66461cee9694 ****/
 		%feature("compactdefaultargs") Select3D_SensitivePoly;
-		%feature("autodoc", "Constructs a sensitive face object defined by the owner ownerid, the array of points thepoints, and the sensitivity type sensitivity. the array of points is the outer polygon of the geometric face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 thePoints: TColgp_Array1OfPnt
 theIsBVHEnabled: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive face object defined by the owner ownerid, the array of points thepoints, and the sensitivity type sensitivity. the array of points is the outer polygon of the geometric face.
 ") Select3D_SensitivePoly;
 		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints, const Standard_Boolean theIsBVHEnabled);
 
 		/****************** Select3D_SensitivePoly ******************/
 		/**** md5 signature: 811c4034b4d71af56a15a159fa43226f ****/
 		%feature("compactdefaultargs") Select3D_SensitivePoly;
-		%feature("autodoc", "Constructs a sensitive face object defined by the owner ownerid, the array of points thepoints, and the sensitivity type sensitivity. the array of points is the outer polygon of the geometric face.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 thePoints: TColgp_HArray1OfPnt
 theIsBVHEnabled: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive face object defined by the owner ownerid, the array of points thepoints, and the sensitivity type sensitivity. the array of points is the outer polygon of the geometric face.
 ") Select3D_SensitivePoly;
 		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePoints, const Standard_Boolean theIsBVHEnabled);
 
 		/****************** Select3D_SensitivePoly ******************/
 		/**** md5 signature: 52e8ce412d90abc5526f83da936e6b21 ****/
 		%feature("compactdefaultargs") Select3D_SensitivePoly;
-		%feature("autodoc", "Constructs the sensitive arc object defined by the owner theownerid, the circle thecircle, the parameters theu1 and theu2, the boolean theisfilled and the number of points thenbpnts. theu1 and theu2 define the first and last points of the arc on thecircle.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 theCircle: gp_Circ
 theU1: float
 theU2: float
-theIsFilled: bool,optional
-	default value is Standard_False
-theNbPnts: int,optional
-	default value is 12
+theIsFilled: bool (optional, default to Standard_False)
+theNbPnts: int (optional, default to 12)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs the sensitive arc object defined by the owner theownerid, the circle thecircle, the parameters theu1 and theu2, the boolean theisfilled and the number of points thenbpnts. theu1 and theu2 define the first and last points of the arc on thecircle.
 ") Select3D_SensitivePoly;
 		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const gp_Circ & theCircle, const Standard_Real theU1, const Standard_Real theU2, const Standard_Boolean theIsFilled = Standard_False, const Standard_Integer theNbPnts = 12);
 
 		/****************** Select3D_SensitivePoly ******************/
 		/**** md5 signature: a3f092b363cabde2cdf6a5c26e88592c ****/
 		%feature("compactdefaultargs") Select3D_SensitivePoly;
-		%feature("autodoc", "Constructs a sensitive curve or arc object defined by the owner theownerid, the theisbvhenabled flag, and the maximum number of points on the curve: thenbpnts.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 theIsBVHEnabled: bool
-theNbPnts: int,optional
-	default value is 6
+theNbPnts: int (optional, default to 6)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive curve or arc object defined by the owner theownerid, the theisbvhenabled flag, and the maximum number of points on the curve: thenbpnts.
 ") Select3D_SensitivePoly;
 		 Select3D_SensitivePoly(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const Standard_Boolean theIsBVHEnabled, const Standard_Integer theNbPnts = 6);
 
 		/****************** ArrayBounds ******************/
 		/**** md5 signature: ca35524752beb56d2950eda84c029cd5 ****/
 		%feature("compactdefaultargs") ArrayBounds;
-		%feature("autodoc", "Return array bounds.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 theLow: int
 theUp: int
+
+Description
+-----------
+Return array bounds.
 ") ArrayBounds;
 		void ArrayBounds(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of a polygon. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of a polygon. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** Box ******************/
 		/**** md5 signature: 9170e3bfd20dbcabd7ec332ab26bb9fa ****/
 		%feature("compactdefaultargs") Box;
-		%feature("autodoc", "Returns bounding box of segment with index theidx.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 
-Returns
+Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of segment with index theidx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
 		/****************** Center ******************/
 		/**** md5 signature: 82dec1d5725b85fd9fe04818aa66dc03 ****/
 		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "Returns geometry center of sensitive entity index theidx in the vector along the given axis theaxis.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 theAxis: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns geometry center of sensitive entity index theidx in the vector along the given axis theaxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of the point set. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of the point set. if location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -2122,84 +2424,100 @@ gp_Pnt
 		/****************** GetPoint3d ******************/
 		/**** md5 signature: 8954ccbf381dbf8b2025244d12bd916a ****/
 		%feature("compactdefaultargs") GetPoint3d;
-		%feature("autodoc", "Return point.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePntIdx: int
 
-Returns
+Return
 -------
 gp_Pnt
+
+Description
+-----------
+Return point.
 ") GetPoint3d;
 		gp_Pnt GetPoint3d(const Standard_Integer thePntIdx);
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the poly overlaps current selecting volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: SelectBasics_SelectingVolumeManager
 thePickResult: SelectBasics_PickResult
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether the poly overlaps current selecting volume.
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of segments in poly.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of segments in poly.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** Points3D ******************/
 		/**** md5 signature: 75d7709bd28fde40c9bc6d79961a3593 ****/
 		%feature("compactdefaultargs") Points3D;
-		%feature("autodoc", "Returns the 3d points of the array used at construction time.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theHArrayOfPnt: TColgp_HArray1OfPnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Returns the 3d points of the array used at construction time.
 ") Points3D;
 		void Points3D(opencascade::handle<TColgp_HArray1OfPnt> & theHArrayOfPnt);
 
 		/****************** Size ******************/
 		/**** md5 signature: 8b9290cdf9c653fc150b9b31776f3f21 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Returns the amount of segments of the poly.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of segments of the poly.
 ") Size;
 		virtual Standard_Integer Size();
 
 		/****************** Swap ******************/
 		/**** md5 signature: 19b601a9d7acdae056493eb6f9eb0b63 ****/
 		%feature("compactdefaultargs") Swap;
-		%feature("autodoc", "Swaps items with indexes theidx1 and theidx2 in the vector.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx1: int
 theIdx2: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Swaps items with indexes theidx1 and theidx2 in the vector.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
@@ -2222,79 +2540,94 @@ class Select3D_SensitivePrimitiveArray : public Select3D_SensitiveSet {
 		/****************** Select3D_SensitivePrimitiveArray ******************/
 		/**** md5 signature: e979fc7a01383bbb2653515fc22158e2 ****/
 		%feature("compactdefaultargs") Select3D_SensitivePrimitiveArray;
-		%feature("autodoc", "Constructs an empty sensitive object.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs an empty sensitive object.
 ") Select3D_SensitivePrimitiveArray;
 		 Select3D_SensitivePrimitiveArray(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
 		/****************** BVH ******************/
 		/**** md5 signature: 9d26e1a47d3d96ad1039d301e2b44c49 ****/
 		%feature("compactdefaultargs") BVH;
-		%feature("autodoc", "Builds bvh tree for sensitive set.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Builds bvh tree for sensitive set.
 ") BVH;
 		virtual void BVH();
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of the triangulation. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of the triangulation. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** Box ******************/
 		/**** md5 signature: 9170e3bfd20dbcabd7ec332ab26bb9fa ****/
 		%feature("compactdefaultargs") Box;
-		%feature("autodoc", "Returns bounding box of triangle/edge with index theidx.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 
-Returns
+Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of triangle/edge with index theidx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
 		/****************** Center ******************/
 		/**** md5 signature: 82dec1d5725b85fd9fe04818aa66dc03 ****/
 		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "Returns geometry center of triangle/edge with index theidx in array along the given axis theaxis.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 theAxis: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns geometry center of triangle/edge with index theidx in array along the given axis theaxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 91b253b06a291fc09a167246137ee4aa ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of triangulation. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of triangulation. if location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -2310,30 +2643,33 @@ gp_Pnt
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+No available documentation.
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** HasInitLocation ******************/
 		/**** md5 signature: 2f2ca2178ba8fd2ae56606bb60c8d510 ****/
 		%feature("compactdefaultargs") HasInitLocation;
-		%feature("autodoc", "Returns true if the shape corresponding to the entity has init location.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if the shape corresponding to the entity has init location.
 ") HasInitLocation;
 		virtual Standard_Boolean HasInitLocation();
 
 		/****************** InitPoints ******************/
 		/**** md5 signature: bfd4705553f063b0df9b8c7567138f3e ****/
 		%feature("compactdefaultargs") InitPoints;
-		%feature("autodoc", "Initialize the sensitive object from point set. the sub-set of points can be specified by arguments theindexlower and theindexupper (these are for iterating theindices, not to restrict the actual index values!). @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array defining points @param theinitloc location @param theindexlower the theindices range - first value (inclusive), starting from 0 @param theindexupper the theindices range - last value (inclusive), upto theindices->nbelements-1 @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVerts: Graphic3d_Buffer
@@ -2341,63 +2677,66 @@ theIndices: Graphic3d_IndexBuffer
 theInitLoc: TopLoc_Location
 theIndexLower: int
 theIndexUpper: int
-theToEvalMinMax: bool,optional
-	default value is true
-theNbGroups: int,optional
-	default value is 1
+theToEvalMinMax: bool (optional, default to true)
+theNbGroups: int (optional, default to 1)
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Initialize the sensitive object from point set. the sub-set of points can be specified by arguments theindexlower and theindexupper (these are for iterating theindices, not to restrict the actual index values!). @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array defining points @param theinitloc location @param theindexlower the theindices range - first value (inclusive), starting from 0 @param theindexupper the theindices range - last value (inclusive), upto theindices->nbelements-1 @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
 ") InitPoints;
 		bool InitPoints(const opencascade::handle<Graphic3d_Buffer> & theVerts, const opencascade::handle<Graphic3d_IndexBuffer> & theIndices, const TopLoc_Location & theInitLoc, const Standard_Integer theIndexLower, const Standard_Integer theIndexUpper, const bool theToEvalMinMax = true, const Standard_Integer theNbGroups = 1);
 
 		/****************** InitPoints ******************/
 		/**** md5 signature: 7d67b2fe07fac21563bf66870adbfd9c ****/
 		%feature("compactdefaultargs") InitPoints;
-		%feature("autodoc", "Initialize the sensitive object from point set. @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array to define subset of points @param theinitloc location @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVerts: Graphic3d_Buffer
 theIndices: Graphic3d_IndexBuffer
 theInitLoc: TopLoc_Location
-theToEvalMinMax: bool,optional
-	default value is true
-theNbGroups: int,optional
-	default value is 1
+theToEvalMinMax: bool (optional, default to true)
+theNbGroups: int (optional, default to 1)
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Initialize the sensitive object from point set. @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array to define subset of points @param theinitloc location @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
 ") InitPoints;
 		bool InitPoints(const opencascade::handle<Graphic3d_Buffer> & theVerts, const opencascade::handle<Graphic3d_IndexBuffer> & theIndices, const TopLoc_Location & theInitLoc, const bool theToEvalMinMax = true, const Standard_Integer theNbGroups = 1);
 
 		/****************** InitPoints ******************/
 		/**** md5 signature: a04816edc1a680ebb73c6687b4191bdd ****/
 		%feature("compactdefaultargs") InitPoints;
-		%feature("autodoc", "Initialize the sensitive object from point set. @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theinitloc location @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVerts: Graphic3d_Buffer
 theInitLoc: TopLoc_Location
-theToEvalMinMax: bool,optional
-	default value is true
-theNbGroups: int,optional
-	default value is 1
+theToEvalMinMax: bool (optional, default to true)
+theNbGroups: int (optional, default to 1)
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Initialize the sensitive object from point set. @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theinitloc location @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
 ") InitPoints;
 		bool InitPoints(const opencascade::handle<Graphic3d_Buffer> & theVerts, const TopLoc_Location & theInitLoc, const bool theToEvalMinMax = true, const Standard_Integer theNbGroups = 1);
 
 		/****************** InitTriangulation ******************/
 		/**** md5 signature: ce24faf5867ec3991ebec1c581b5f298 ****/
 		%feature("compactdefaultargs") InitTriangulation;
-		%feature("autodoc", "Initialize the sensitive object from triangualtion. the sub-triangulation can be specified by arguments theindexlower and theindexupper (these are for iterating theindices, not to restrict the actual index values!). @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array defining triangulation @param theinitloc location @param theindexlower the theindices range - first value (inclusive), starting from 0 and multiple by 3 @param theindexupper the theindices range - last value (inclusive), upto theindices->nbelements-1 and multiple by 3 @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVerts: Graphic3d_Buffer
@@ -2405,259 +2744,302 @@ theIndices: Graphic3d_IndexBuffer
 theInitLoc: TopLoc_Location
 theIndexLower: int
 theIndexUpper: int
-theToEvalMinMax: bool,optional
-	default value is true
-theNbGroups: int,optional
-	default value is 1
+theToEvalMinMax: bool (optional, default to true)
+theNbGroups: int (optional, default to 1)
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Initialize the sensitive object from triangualtion. the sub-triangulation can be specified by arguments theindexlower and theindexupper (these are for iterating theindices, not to restrict the actual index values!). @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array defining triangulation @param theinitloc location @param theindexlower the theindices range - first value (inclusive), starting from 0 and multiple by 3 @param theindexupper the theindices range - last value (inclusive), upto theindices->nbelements-1 and multiple by 3 @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
 ") InitTriangulation;
 		bool InitTriangulation(const opencascade::handle<Graphic3d_Buffer> & theVerts, const opencascade::handle<Graphic3d_IndexBuffer> & theIndices, const TopLoc_Location & theInitLoc, const Standard_Integer theIndexLower, const Standard_Integer theIndexUpper, const bool theToEvalMinMax = true, const Standard_Integer theNbGroups = 1);
 
 		/****************** InitTriangulation ******************/
 		/**** md5 signature: 727ec637e86959b870a66b3685952f7d ****/
 		%feature("compactdefaultargs") InitTriangulation;
-		%feature("autodoc", "Initialize the sensitive object from triangualtion. @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array defining triangulation @param theinitloc location @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theVerts: Graphic3d_Buffer
 theIndices: Graphic3d_IndexBuffer
 theInitLoc: TopLoc_Location
-theToEvalMinMax: bool,optional
-	default value is true
-theNbGroups: int,optional
-	default value is 1
+theToEvalMinMax: bool (optional, default to true)
+theNbGroups: int (optional, default to 1)
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Initialize the sensitive object from triangualtion. @param theverts attributes array containing graphic3d_toa_pos with type graphic3d_tod_vec3 or graphic3d_tod_vec2 @param theindices index array defining triangulation @param theinitloc location @param thetoevalminmax compute bounding box within initialization @param thenbgroups number of groups to split the vertex array into several parts.
 ") InitTriangulation;
 		bool InitTriangulation(const opencascade::handle<Graphic3d_Buffer> & theVerts, const opencascade::handle<Graphic3d_IndexBuffer> & theIndices, const TopLoc_Location & theInitLoc, const bool theToEvalMinMax = true, const Standard_Integer theNbGroups = 1);
 
 		/****************** InvInitLocation ******************/
 		/**** md5 signature: d453f1b5f819804ab1ebcb09aa1795ef ****/
 		%feature("compactdefaultargs") InvInitLocation;
-		%feature("autodoc", "Returns inversed location transformation matrix if the shape corresponding to this entity has init location set. otherwise, returns identity matrix.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_GTrsf
+
+Description
+-----------
+Returns inversed location transformation matrix if the shape corresponding to this entity has init location set. otherwise, returns identity matrix.
 ") InvInitLocation;
 		virtual gp_GTrsf InvInitLocation();
 
 		/****************** LastDetectedEdgeNode1 ******************/
 		/**** md5 signature: 2723fef04ca805f4b9a759330b58cd32 ****/
 		%feature("compactdefaultargs") LastDetectedEdgeNode1;
-		%feature("autodoc", "Return the first node of last topmost detected edge or -1 if undefined (axis picking).
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return the first node of last topmost detected edge or -1 if undefined (axis picking).
 ") LastDetectedEdgeNode1;
 		Standard_Integer LastDetectedEdgeNode1();
 
 		/****************** LastDetectedEdgeNode2 ******************/
 		/**** md5 signature: 13dda425dae7b66afc52c4bb3ff9597a ****/
 		%feature("compactdefaultargs") LastDetectedEdgeNode2;
-		%feature("autodoc", "Return the second node of last topmost detected edge or -1 if undefined (axis picking).
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return the second node of last topmost detected edge or -1 if undefined (axis picking).
 ") LastDetectedEdgeNode2;
 		Standard_Integer LastDetectedEdgeNode2();
 
 		/****************** LastDetectedElement ******************/
 		/**** md5 signature: 9f397b614aafc1829ec4cf44dba88e93 ****/
 		%feature("compactdefaultargs") LastDetectedElement;
-		%feature("autodoc", "Return last topmost detected element or -1 if undefined (axis picking).
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return last topmost detected element or -1 if undefined (axis picking).
 ") LastDetectedElement;
 		Standard_Integer LastDetectedElement();
 
 		/****************** LastDetectedElementMap ******************/
 		/**** md5 signature: 8edbbf73f5ab93d34cf8200876c9eec5 ****/
 		%feature("compactdefaultargs") LastDetectedElementMap;
-		%feature("autodoc", "Return the index map of last detected elements (rectangle selection).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HPackedMapOfInteger>
+
+Description
+-----------
+Return the index map of last detected elements (rectangle selection).
 ") LastDetectedElementMap;
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & LastDetectedElementMap();
 
 		/****************** LastDetectedNode ******************/
 		/**** md5 signature: 5d2c968b0604d69e16a9d55c407eec57 ****/
 		%feature("compactdefaultargs") LastDetectedNode;
-		%feature("autodoc", "Return last topmost detected node or -1 if undefined (axis picking).
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return last topmost detected node or -1 if undefined (axis picking).
 ") LastDetectedNode;
 		Standard_Integer LastDetectedNode();
 
 		/****************** LastDetectedNodeMap ******************/
 		/**** md5 signature: ee310ecefcf2b0f3d524fbea07a8233d ****/
 		%feature("compactdefaultargs") LastDetectedNodeMap;
-		%feature("autodoc", "Return the index map of last detected nodes (rectangle selection).
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HPackedMapOfInteger>
+
+Description
+-----------
+Return the index map of last detected nodes (rectangle selection).
 ") LastDetectedNodeMap;
 		const opencascade::handle<TColStd_HPackedMapOfInteger> & LastDetectedNodeMap();
 
 		/****************** Matches ******************/
 		/**** md5 signature: 9840986fdc32d0b45aedaac5faa8bc9b ****/
 		%feature("compactdefaultargs") Matches;
-		%feature("autodoc", "Checks whether the sensitive entity is overlapped by current selecting volume.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMgr: SelectBasics_SelectingVolumeManager
 thePickResult: SelectBasics_PickResult
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Checks whether the sensitive entity is overlapped by current selecting volume.
 ") Matches;
 		virtual Standard_Boolean Matches(SelectBasics_SelectingVolumeManager & theMgr, SelectBasics_PickResult & thePickResult);
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: d42012759817bcd1e404a0d71391ca3b ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of nodes in triangulation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of nodes in triangulation.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** PatchDistance ******************/
 		/**** md5 signature: 72b34e618288176764f8858ad0077052 ****/
 		%feature("compactdefaultargs") PatchDistance;
-		%feature("autodoc", "Maximum allowed distance between consequential elements in patch (shortreallast() by default). has no effect on indexed triangulation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Maximum allowed distance between consequential elements in patch (shortreallast() by default). has no effect on indexed triangulation.
 ") PatchDistance;
 		float PatchDistance();
 
 		/****************** PatchSizeMax ******************/
 		/**** md5 signature: 30475981212019fe8170929546a5e642 ****/
 		%feature("compactdefaultargs") PatchSizeMax;
-		%feature("autodoc", "Return patch size limit (1 by default).
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Return patch size limit (1 by default).
 ") PatchSizeMax;
 		Standard_Integer PatchSizeMax();
 
 		/****************** Set ******************/
 		/**** md5 signature: c8e9ba6cfb71a146bdf01904a869f931 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the owner for all entities in group.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the owner for all entities in group.
 ") Set;
 		virtual void Set(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
 		/****************** SetDetectEdges ******************/
 		/**** md5 signature: a26d1686459c68391358356b73437f76 ****/
 		%feature("compactdefaultargs") SetDetectEdges;
-		%feature("autodoc", "Setup keeping of the index of last topmost detected edge (axis picking).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToDetect: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup keeping of the index of last topmost detected edge (axis picking).
 ") SetDetectEdges;
 		void SetDetectEdges(bool theToDetect);
 
 		/****************** SetDetectElementMap ******************/
 		/**** md5 signature: 5ba3c37f3226811d72fffddba246e4f2 ****/
 		%feature("compactdefaultargs") SetDetectElementMap;
-		%feature("autodoc", "Setup keeping of the index map of last detected elements (rectangle selection).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToDetect: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup keeping of the index map of last detected elements (rectangle selection).
 ") SetDetectElementMap;
 		void SetDetectElementMap(bool theToDetect);
 
 		/****************** SetDetectElements ******************/
 		/**** md5 signature: 816ecbcd16acb4a0889732e898b9d170 ****/
 		%feature("compactdefaultargs") SetDetectElements;
-		%feature("autodoc", "Setup keeping of the index of last topmost detected element (axis picking).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToDetect: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup keeping of the index of last topmost detected element (axis picking).
 ") SetDetectElements;
 		void SetDetectElements(bool theToDetect);
 
 		/****************** SetDetectNodeMap ******************/
 		/**** md5 signature: b91bfbc9b1e325f51ad3a3f26627bc71 ****/
 		%feature("compactdefaultargs") SetDetectNodeMap;
-		%feature("autodoc", "Setup keeping of the index map of last detected nodes (rectangle selection).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToDetect: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup keeping of the index map of last detected nodes (rectangle selection).
 ") SetDetectNodeMap;
 		void SetDetectNodeMap(bool theToDetect);
 
 		/****************** SetDetectNodes ******************/
 		/**** md5 signature: 96604965c040f113f7d5b762fe160ae6 ****/
 		%feature("compactdefaultargs") SetDetectNodes;
-		%feature("autodoc", "Setup keeping of the index of last topmost detected node (for axis picking).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theToDetect: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Setup keeping of the index of last topmost detected node (for axis picking).
 ") SetDetectNodes;
 		void SetDetectNodes(bool theToDetect);
 
 		/****************** SetMinMax ******************/
 		/**** md5 signature: c614019cf375507cd0ceffcf3651ccf5 ****/
 		%feature("compactdefaultargs") SetMinMax;
-		%feature("autodoc", "Assign new not transformed bounding box.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMinX: double
@@ -2667,121 +3049,146 @@ theMaxX: double
 theMaxY: double
 theMaxZ: double
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign new not transformed bounding box.
 ") SetMinMax;
 		void SetMinMax(double theMinX, double theMinY, double theMinZ, double theMaxX, double theMaxY, double theMaxZ);
 
 		/****************** SetPatchDistance ******************/
 		/**** md5 signature: ec5df1d4b9185094136fca34ba233269 ****/
 		%feature("compactdefaultargs") SetPatchDistance;
-		%feature("autodoc", "Assign patch distance limit. should be set before initialization.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePatchDistMax: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign patch distance limit. should be set before initialization.
 ") SetPatchDistance;
 		void SetPatchDistance(const float thePatchDistMax);
 
 		/****************** SetPatchSizeMax ******************/
 		/**** md5 signature: 41a8afa883826c9fa243c83aae7475be ****/
 		%feature("compactdefaultargs") SetPatchSizeMax;
-		%feature("autodoc", "Assign patch size limit. should be set before initialization.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePatchSizeMax: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Assign patch size limit. should be set before initialization.
 ") SetPatchSizeMax;
 		void SetPatchSizeMax(const Standard_Integer thePatchSizeMax);
 
 		/****************** Size ******************/
 		/**** md5 signature: 8b9290cdf9c653fc150b9b31776f3f21 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Returns the length of array of triangles or edges.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the length of array of triangles or edges.
 ") Size;
 		virtual Standard_Integer Size();
 
 		/****************** Swap ******************/
 		/**** md5 signature: 19b601a9d7acdae056493eb6f9eb0b63 ****/
 		%feature("compactdefaultargs") Swap;
-		%feature("autodoc", "Swaps items with indexes theidx1 and theidx2 in array.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx1: int
 theIdx2: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Swaps items with indexes theidx1 and theidx2 in array.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
 		/****************** ToDetectEdges ******************/
 		/**** md5 signature: 15119fc733d2345d8ed332615da403e1 ****/
 		%feature("compactdefaultargs") ToDetectEdges;
-		%feature("autodoc", "Return flag to keep index of last topmost detected edge, false by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return flag to keep index of last topmost detected edge, false by default.
 ") ToDetectEdges;
 		bool ToDetectEdges();
 
 		/****************** ToDetectElementMap ******************/
 		/**** md5 signature: 690a85a7a9272c55e3f0805d524ab445 ****/
 		%feature("compactdefaultargs") ToDetectElementMap;
-		%feature("autodoc", "Return flag to keep index map of last detected elements, false by default (rectangle selection).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return flag to keep index map of last detected elements, false by default (rectangle selection).
 ") ToDetectElementMap;
 		bool ToDetectElementMap();
 
 		/****************** ToDetectElements ******************/
 		/**** md5 signature: c76df8d2715825d3545e5af6cad85b8d ****/
 		%feature("compactdefaultargs") ToDetectElements;
-		%feature("autodoc", "Return flag to keep index of last topmost detected element, true by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return flag to keep index of last topmost detected element, true by default.
 ") ToDetectElements;
 		bool ToDetectElements();
 
 		/****************** ToDetectNodeMap ******************/
 		/**** md5 signature: 26cd700cf476a82f4fd0104546847e4c ****/
 		%feature("compactdefaultargs") ToDetectNodeMap;
-		%feature("autodoc", "Return flag to keep index map of last detected nodes, false by default (rectangle selection).
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return flag to keep index map of last detected nodes, false by default (rectangle selection).
 ") ToDetectNodeMap;
 		bool ToDetectNodeMap();
 
 		/****************** ToDetectNodes ******************/
 		/**** md5 signature: 5ca867c129f9642ea5cae5a7ba6ad432 ****/
 		%feature("compactdefaultargs") ToDetectNodes;
-		%feature("autodoc", "Return flag to keep index of last topmost detected node, false by default.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return flag to keep index of last topmost detected node, false by default.
 ") ToDetectNodes;
 		bool ToDetectNodes();
 
@@ -2807,83 +3214,99 @@ class Select3D_SensitiveWire : public Select3D_SensitiveSet {
 		/****************** Select3D_SensitiveWire ******************/
 		/**** md5 signature: 1af2bd91a63a516dda0a07be9c92cb47 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveWire;
-		%feature("autodoc", "Constructs a sensitive wire object defined by the owner theownerid.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive wire object defined by the owner theownerid.
 ") Select3D_SensitiveWire;
 		 Select3D_SensitiveWire(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
 		/****************** Add ******************/
 		/**** md5 signature: 71a26d66d0f562b3cb53c9a86dd02409 ****/
 		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "Adds the sensitive entity thesensitive to this framework.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theSensitive: Select3D_SensitiveEntity
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Adds the sensitive entity thesensitive to this framework.
 ") Add;
 		void Add(const opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
 		/****************** BoundingBox ******************/
 		/**** md5 signature: 32bbe8c17aea605d2fa20f6fee7f740c ****/
 		%feature("compactdefaultargs") BoundingBox;
-		%feature("autodoc", "Returns bounding box of the wire. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of the wire. if location transformation is set, it will be applied.
 ") BoundingBox;
 		virtual Select3D_BndBox3d BoundingBox();
 
 		/****************** Box ******************/
 		/**** md5 signature: 9170e3bfd20dbcabd7ec332ab26bb9fa ****/
 		%feature("compactdefaultargs") Box;
-		%feature("autodoc", "Returns bounding box of sensitive entity with index theidx.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 
-Returns
+Return
 -------
 Select3D_BndBox3d
+
+Description
+-----------
+Returns bounding box of sensitive entity with index theidx.
 ") Box;
 		virtual Select3D_BndBox3d Box(const Standard_Integer theIdx);
 
 		/****************** Center ******************/
 		/**** md5 signature: 82dec1d5725b85fd9fe04818aa66dc03 ****/
 		%feature("compactdefaultargs") Center;
-		%feature("autodoc", "Returns geometry center of sensitive entity index theidx in the vector along the given axis theaxis.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx: int
 theAxis: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns geometry center of sensitive entity index theidx in the vector along the given axis theaxis.
 ") Center;
 		virtual Standard_Real Center(const Standard_Integer theIdx, const Standard_Integer theAxis);
 
 		/****************** CenterOfGeometry ******************/
 		/**** md5 signature: 25c8cb59bf9cf3d8018e9e747d82efdc ****/
 		%feature("compactdefaultargs") CenterOfGeometry;
-		%feature("autodoc", "Returns center of the wire. if location transformation is set, it will be applied.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns center of the wire. if location transformation is set, it will be applied.
 ") CenterOfGeometry;
 		virtual gp_Pnt CenterOfGeometry();
 
@@ -2899,86 +3322,102 @@ gp_Pnt
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+No available documentation.
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 
 		/****************** GetEdges ******************/
 		/**** md5 signature: b2dcae186f6b9da5ddd472727b335434 ****/
 		%feature("compactdefaultargs") GetEdges;
-		%feature("autodoc", "Returns the sensitive edges stored in this wire.
-
-Returns
+		%feature("autodoc", "Return
 -------
 NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>>
+
+Description
+-----------
+Returns the sensitive edges stored in this wire.
 ") GetEdges;
 		const NCollection_Vector<opencascade::handle<Select3D_SensitiveEntity>> & GetEdges();
 
 		/****************** GetLastDetected ******************/
 		/**** md5 signature: 618560e22f06fc3b5edfe11a01332b7b ****/
 		%feature("compactdefaultargs") GetLastDetected;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+No available documentation.
 ") GetLastDetected;
 		opencascade::handle<Select3D_SensitiveEntity> GetLastDetected();
 
 		/****************** NbSubElements ******************/
 		/**** md5 signature: 67776b0ab204a0dd707f457a7c3a6214 ****/
 		%feature("compactdefaultargs") NbSubElements;
-		%feature("autodoc", "Returns the amount of sub-entities.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the amount of sub-entities.
 ") NbSubElements;
 		virtual Standard_Integer NbSubElements();
 
 		/****************** Set ******************/
 		/**** md5 signature: c8e9ba6cfb71a146bdf01904a869f931 ****/
 		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "Sets the owner for all entities in wire.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the owner for all entities in wire.
 ") Set;
 		virtual void Set(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId);
 
 		/****************** Size ******************/
 		/**** md5 signature: 8b9290cdf9c653fc150b9b31776f3f21 ****/
 		%feature("compactdefaultargs") Size;
-		%feature("autodoc", "Returns the length of vector of sensitive entities.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the length of vector of sensitive entities.
 ") Size;
 		virtual Standard_Integer Size();
 
 		/****************** Swap ******************/
 		/**** md5 signature: 19b601a9d7acdae056493eb6f9eb0b63 ****/
 		%feature("compactdefaultargs") Swap;
-		%feature("autodoc", "Swaps items with indexes theidx1 and theidx2 in the vector.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theIdx1: int
 theIdx2: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Swaps items with indexes theidx1 and theidx2 in the vector.
 ") Swap;
 		virtual void Swap(const Standard_Integer theIdx1, const Standard_Integer theIdx2);
 
@@ -3001,61 +3440,71 @@ class Select3D_SensitiveCurve : public Select3D_SensitivePoly {
 		/****************** Select3D_SensitiveCurve ******************/
 		/**** md5 signature: c9a40bfe5b28b7b974abc3c2b3e80be9 ****/
 		%feature("compactdefaultargs") Select3D_SensitiveCurve;
-		%feature("autodoc", "Constructs a sensitive curve object defined by the owner theownerid, the curve thecurve, and the maximum number of points on the curve: thenbpnts.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 theCurve: Geom_Curve
-theNbPnts: int,optional
-	default value is 17
+theNbPnts: int (optional, default to 17)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive curve object defined by the owner theownerid, the curve thecurve, and the maximum number of points on the curve: thenbpnts.
 ") Select3D_SensitiveCurve;
 		 Select3D_SensitiveCurve(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<Geom_Curve> & theCurve, const Standard_Integer theNbPnts = 17);
 
 		/****************** Select3D_SensitiveCurve ******************/
 		/**** md5 signature: 7a075ef9a4a11328500ba9c017f585cc ****/
 		%feature("compactdefaultargs") Select3D_SensitiveCurve;
-		%feature("autodoc", "Constructs a sensitive curve object defined by the owner theownerid and the set of points thepoints.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 thePoints: TColgp_HArray1OfPnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructs a sensitive curve object defined by the owner theownerid and the set of points thepoints.
 ") Select3D_SensitiveCurve;
 		 Select3D_SensitiveCurve(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const opencascade::handle<TColgp_HArray1OfPnt> & thePoints);
 
 		/****************** Select3D_SensitiveCurve ******************/
 		/**** md5 signature: abd5d275c7562c14c8baf355ecfc2a3d ****/
 		%feature("compactdefaultargs") Select3D_SensitiveCurve;
-		%feature("autodoc", "Creation of sensitive curve from points. warning : this method should disappear in the next version...
-
+		%feature("autodoc", "
 Parameters
 ----------
 theOwnerId: SelectMgr_EntityOwner
 thePoints: TColgp_Array1OfPnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Creation of sensitive curve from points. warning: this method should disappear in the next version...
 ") Select3D_SensitiveCurve;
 		 Select3D_SensitiveCurve(const opencascade::handle<SelectMgr_EntityOwner> & theOwnerId, const TColgp_Array1OfPnt & thePoints);
 
 		/****************** GetConnected ******************/
 		/**** md5 signature: 2d4e6989177861b3aea0f57481cfcdfc ****/
 		%feature("compactdefaultargs") GetConnected;
-		%feature("autodoc", "Returns the copy of this.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<Select3D_SensitiveEntity>
+
+Description
+-----------
+Returns the copy of this.
 ") GetConnected;
 		virtual opencascade::handle<Select3D_SensitiveEntity> GetConnected();
 

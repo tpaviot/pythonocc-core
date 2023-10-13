@@ -31,138 +31,139 @@ class NCollection_StdAllocator:
     def __init__(self, X: NCollection_StdAllocator) -> None: ...
     def Allocator(self) -> NCollection_BaseAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_ListNode: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Array2: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_SparseArray: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_IndexedDataMap: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_DefaultHasher: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_IncAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Mat3: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_UtfIterator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_EBTree: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Vec4: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Shared: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_AlignedAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Sequence: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_AliasedArray: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_BaseVector: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_UBTreeFiller: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_StdAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_BaseAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_BaseList: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_List: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_DataMap: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_SparseArrayBase: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Vec2: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Map: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_WinHeapAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_HeapAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_IndexedMap: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Vec3: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_TListNode: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Vector: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_UBTree: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_LocalArray: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_AccAllocator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Lerp: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Mat4: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_TListIterator: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_UtfString: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_BaseMap: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Array1: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Handle: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_DoubleMap: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_SeqNode: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_BaseSequence: ...
 
-# classnotwrapped
+#classnotwrapped
 class NCollection_Buffer: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

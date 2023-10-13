@@ -7,6 +7,7 @@ from OCC.Core.gp import *
 from OCC.Core.Geom import *
 from OCC.Core.gce import *
 
+
 class GC_MakeMirror:
     @overload
     def __init__(self, Point: gp_Pnt) -> None: ...
@@ -48,9 +49,7 @@ class GC_Root:
 
 class GC_MakeArcOfCircle(GC_Root):
     @overload
-    def __init__(
-        self, Circ: gp_Circ, Alpha1: float, Alpha2: float, Sense: bool
-    ) -> None: ...
+    def __init__(self, Circ: gp_Circ, Alpha1: float, Alpha2: float, Sense: bool) -> None: ...
     @overload
     def __init__(self, Circ: gp_Circ, P: gp_Pnt, Alpha: float, Sense: bool) -> None: ...
     @overload
@@ -63,24 +62,16 @@ class GC_MakeArcOfCircle(GC_Root):
 
 class GC_MakeArcOfEllipse(GC_Root):
     @overload
-    def __init__(
-        self, Elips: gp_Elips, Alpha1: float, Alpha2: float, Sense: bool
-    ) -> None: ...
+    def __init__(self, Elips: gp_Elips, Alpha1: float, Alpha2: float, Sense: bool) -> None: ...
     @overload
-    def __init__(
-        self, Elips: gp_Elips, P: gp_Pnt, Alpha: float, Sense: bool
-    ) -> None: ...
+    def __init__(self, Elips: gp_Elips, P: gp_Pnt, Alpha: float, Sense: bool) -> None: ...
     @overload
-    def __init__(
-        self, Elips: gp_Elips, P1: gp_Pnt, P2: gp_Pnt, Sense: bool
-    ) -> None: ...
+    def __init__(self, Elips: gp_Elips, P1: gp_Pnt, P2: gp_Pnt, Sense: bool) -> None: ...
     def Value(self) -> Geom_TrimmedCurve: ...
 
 class GC_MakeArcOfHyperbola(GC_Root):
     @overload
-    def __init__(
-        self, Hypr: gp_Hypr, Alpha1: float, Alpha2: float, Sense: bool
-    ) -> None: ...
+    def __init__(self, Hypr: gp_Hypr, Alpha1: float, Alpha2: float, Sense: bool) -> None: ...
     @overload
     def __init__(self, Hypr: gp_Hypr, P: gp_Pnt, Alpha: float, Sense: bool) -> None: ...
     @overload
@@ -89,17 +80,11 @@ class GC_MakeArcOfHyperbola(GC_Root):
 
 class GC_MakeArcOfParabola(GC_Root):
     @overload
-    def __init__(
-        self, Parab: gp_Parab, Alpha1: float, Alpha2: float, Sense: bool
-    ) -> None: ...
+    def __init__(self, Parab: gp_Parab, Alpha1: float, Alpha2: float, Sense: bool) -> None: ...
     @overload
-    def __init__(
-        self, Parab: gp_Parab, P: gp_Pnt, Alpha: float, Sense: bool
-    ) -> None: ...
+    def __init__(self, Parab: gp_Parab, P: gp_Pnt, Alpha: float, Sense: bool) -> None: ...
     @overload
-    def __init__(
-        self, Parab: gp_Parab, P1: gp_Pnt, P2: gp_Pnt, Sense: bool
-    ) -> None: ...
+    def __init__(self, Parab: gp_Parab, P1: gp_Pnt, P2: gp_Pnt, Sense: bool) -> None: ...
     def Value(self) -> Geom_TrimmedCurve: ...
 
 class GC_MakeCircle(GC_Root):
@@ -227,3 +212,4 @@ class GC_MakeTrimmedCylinder(GC_Root):
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

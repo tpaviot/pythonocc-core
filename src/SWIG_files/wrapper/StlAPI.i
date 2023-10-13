@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STLAPIDOCSTRING
 "StlAPI module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_stlapi.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stlapi.html"
 %enddef
 %module (package="OCC.Core", docstring=STLAPIDOCSTRING) StlAPI
 
@@ -87,34 +87,39 @@ class StlAPI {
 		/****************** Read ******************/
 		/**** md5 signature: 04193a3dd7bc184e35d71f6296bb4160 ****/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "Legacy interface. read stl file and create a shape composed of triangular faces, one per facet. this approach is very inefficient, especially for large files. consider reading stl file to poly_triangulation object instead (see class rwstl).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 aFile: str
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Legacy interface. read stl file and create a shape composed of triangular faces, one per facet. this approach is very inefficient, especially for large files. consider reading stl file to poly_triangulation object instead (see class rwstl).
 ") Read;
 		static Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString aFile);
 
 		/****************** Write ******************/
 		/**** md5 signature: 6440898486e448da078517629383a97a ****/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "Convert and write shape to stl format. file is written in binary if aasciimode is false otherwise it is written in ascii (by default).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theFile: str
-theAsciiMode: bool,optional
-	default value is Standard_True
+theAsciiMode: bool (optional, default to Standard_True)
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Convert and write shape to stl format. file is written in binary if aasciimode is false otherwise it is written in ascii (by default).
 ") Write;
 		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theAsciiMode = Standard_True);
 
@@ -135,16 +140,19 @@ class StlAPI_Reader {
 		/****************** Read ******************/
 		/**** md5 signature: 7175fc9409b969fddd6af571d4af05e4 ****/
 		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "Reads stl file to the topods_shape (each triangle is converted to the face). returns true if reading is successful.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theFileName: str
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Reads stl file to the topods_shape (each triangle is converted to the face). return true if reading is successful.
 ") Read;
 		Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString theFileName);
 
@@ -165,11 +173,13 @@ class StlAPI_Writer {
 		/****************** StlAPI_Writer ******************/
 		/**** md5 signature: bb0903a29083f9fab3c6442a6e38972c ****/
 		%feature("compactdefaultargs") StlAPI_Writer;
-		%feature("autodoc", "Creates a writer object with default parameters: asciimode.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Creates a writer object with default parameters: asciimode.
 ") StlAPI_Writer;
 		 StlAPI_Writer();
 
@@ -189,18 +199,20 @@ None
 		/****************** Write ******************/
 		/**** md5 signature: 2af1d9f86c5642907de91a1eb03fe67f ****/
 		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "Converts a given shape to stl format and writes it to file with a given filename. eturn the error state.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theFileName: str
-theProgress: Message_ProgressRange,optional
-	default value is Message_ProgressRange()
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Converts a given shape to stl format and writes it to file with a given filename. eturn the error state.
 ") Write;
 		Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFileName, const Message_ProgressRange & theProgress = Message_ProgressRange());
 

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ADVAPP2VARDOCSTRING
 "AdvApp2Var module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_advapp2var.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_advapp2var.html"
 %enddef
 %module (package="OCC.Core", docstring=ADVAPP2VARDOCSTRING) AdvApp2Var
 
@@ -157,8 +157,7 @@ class AdvApp2Var_ApproxAFunc2Var {
 		/****************** AdvApp2Var_ApproxAFunc2Var ******************/
 		/**** md5 signature: 6379ab64b1b4c1e0c124bdc6f7c7f799 ****/
 		%feature("compactdefaultargs") AdvApp2Var_ApproxAFunc2Var;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Num1DSS: int
@@ -185,17 +184,20 @@ Func: AdvApp2Var_EvaluatorFunc2Var
 UChoice: AdvApprox_Cutting
 VChoice: AdvApprox_Cutting
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_ApproxAFunc2Var;
 		 AdvApp2Var_ApproxAFunc2Var(const Standard_Integer Num1DSS, const Standard_Integer Num2DSS, const Standard_Integer Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const opencascade::handle<TColStd_HArray2OfReal> & OneDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & TwoDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & ThreeDTolFr, const Standard_Real FirstInU, const Standard_Real LastInU, const Standard_Real FirstInV, const Standard_Real LastInV, const GeomAbs_IsoType FavorIso, const GeomAbs_Shape ContInU, const GeomAbs_Shape ContInV, const Standard_Integer PrecisCode, const Standard_Integer MaxDegInU, const Standard_Integer MaxDegInV, const Standard_Integer MaxPatch, const AdvApp2Var_EvaluatorFunc2Var & Func, AdvApprox_Cutting & UChoice, AdvApprox_Cutting & VChoice);
 
 		/****************** AdvApp2Var_ApproxAFunc2Var ******************/
 		/**** md5 signature: cb5f144bc0526b9241a11be61366792e ****/
 		%feature("compactdefaultargs") AdvApp2Var_ApproxAFunc2Var;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Num1DSS: int
@@ -223,56 +225,69 @@ Crit: AdvApp2Var_Criterion
 UChoice: AdvApprox_Cutting
 VChoice: AdvApprox_Cutting
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_ApproxAFunc2Var;
 		 AdvApp2Var_ApproxAFunc2Var(const Standard_Integer Num1DSS, const Standard_Integer Num2DSS, const Standard_Integer Num3DSS, const opencascade::handle<TColStd_HArray1OfReal> & OneDTol, const opencascade::handle<TColStd_HArray1OfReal> & TwoDTol, const opencascade::handle<TColStd_HArray1OfReal> & ThreeDTol, const opencascade::handle<TColStd_HArray2OfReal> & OneDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & TwoDTolFr, const opencascade::handle<TColStd_HArray2OfReal> & ThreeDTolFr, const Standard_Real FirstInU, const Standard_Real LastInU, const Standard_Real FirstInV, const Standard_Real LastInV, const GeomAbs_IsoType FavorIso, const GeomAbs_Shape ContInU, const GeomAbs_Shape ContInV, const Standard_Integer PrecisCode, const Standard_Integer MaxDegInU, const Standard_Integer MaxDegInV, const Standard_Integer MaxPatch, const AdvApp2Var_EvaluatorFunc2Var & Func, const AdvApp2Var_Criterion & Crit, AdvApprox_Cutting & UChoice, AdvApprox_Cutting & VChoice);
 
 		/****************** AverageError ******************/
 		/**** md5 signature: d3a5b5e32b36bc7e79202cfa1abaedbe ****/
 		%feature("compactdefaultargs") AverageError;
-		%feature("autodoc", "Returns the average errors.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Dimension: int
 
-Returns
+Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+Returns the average errors.
 ") AverageError;
 		opencascade::handle<TColStd_HArray1OfReal> AverageError(const Standard_Integer Dimension);
 
 		/****************** AverageError ******************/
 		/**** md5 signature: b46c820432bcb3498c5c88e842dca097 ****/
 		%feature("compactdefaultargs") AverageError;
-		%feature("autodoc", "Returns the average error of the bsplinesurface of range index.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Dimension: int
 Index: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns the average error of the bsplinesurface of range index.
 ") AverageError;
 		Standard_Real AverageError(const Standard_Integer Dimension, const Standard_Integer Index);
 
 		/****************** CritError ******************/
 		/**** md5 signature: cfeaabf78ae9cebfb4b197eb333f93f2 ****/
 		%feature("compactdefaultargs") CritError;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Dimension: int
 Index: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") CritError;
 		Standard_Real CritError(const Standard_Integer Dimension, const Standard_Integer Index);
 
@@ -287,167 +302,199 @@ float
 		/****************** HasResult ******************/
 		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
 		%feature("compactdefaultargs") HasResult;
-		%feature("autodoc", "True if the approximation did come out with a result that is not necessarely within the required tolerance or a result that is not recognized with the wished continuities.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+True if the approximation did come out with a result that is not necessarely within the required tolerance or a result that is not recognized with the wished continuities.
 ") HasResult;
 		Standard_Boolean HasResult();
 
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
 		%feature("compactdefaultargs") IsDone;
-		%feature("autodoc", "True if the approximation succeeded within the imposed tolerances and the wished continuities.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+True if the approximation succeeded within the imposed tolerances and the wished continuities.
 ") IsDone;
 		Standard_Boolean IsDone();
 
 		/****************** MaxError ******************/
 		/**** md5 signature: 65f67ba992f5651ddbda653be6688fd1 ****/
 		%feature("compactdefaultargs") MaxError;
-		%feature("autodoc", "Returns the errors max.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Dimension: int
 
-Returns
+Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+Returns the errors max.
 ") MaxError;
 		opencascade::handle<TColStd_HArray1OfReal> MaxError(const Standard_Integer Dimension);
 
 		/****************** MaxError ******************/
 		/**** md5 signature: 5025e53abdc4b5b4ec15e940b792a6ea ****/
 		%feature("compactdefaultargs") MaxError;
-		%feature("autodoc", "Returns the error max of the bsplinesurface of range index.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Dimension: int
 Index: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns the error max of the bsplinesurface of range index.
 ") MaxError;
 		Standard_Real MaxError(const Standard_Integer Dimension, const Standard_Integer Index);
 
 		/****************** NumSubSpaces ******************/
 		/**** md5 signature: 1f04f546c1efa091a0725c4b06bc8324 ****/
 		%feature("compactdefaultargs") NumSubSpaces;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Dimension: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NumSubSpaces;
 		Standard_Integer NumSubSpaces(const Standard_Integer Dimension);
 
 		/****************** Surface ******************/
 		/**** md5 signature: c06dcd87a2a0e19728e106a09c270879 ****/
 		%feature("compactdefaultargs") Surface;
-		%feature("autodoc", "Returns the bsplinesurface of range index.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 
-Returns
+Return
 -------
 opencascade::handle<Geom_BSplineSurface>
+
+Description
+-----------
+Returns the bsplinesurface of range index.
 ") Surface;
 		opencascade::handle<Geom_BSplineSurface> Surface(const Standard_Integer Index);
 
 		/****************** UDegree ******************/
 		/**** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ****/
 		%feature("compactdefaultargs") UDegree;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") UDegree;
 		Standard_Integer UDegree();
 
 		/****************** UFrontError ******************/
 		/**** md5 signature: 0a65d91af85c1f21c459707f3707a4be ****/
 		%feature("compactdefaultargs") UFrontError;
-		%feature("autodoc", "Returns the errors max on ufrontiers warning: dimension must be equal to 3.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Dimension: int
 
-Returns
+Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+Returns the errors max on ufrontiers warning: dimension must be equal to 3.
 ") UFrontError;
 		opencascade::handle<TColStd_HArray1OfReal> UFrontError(const Standard_Integer Dimension);
 
 		/****************** UFrontError ******************/
 		/**** md5 signature: 7013ba67bcdab606aa7a3dff1c57a4d9 ****/
 		%feature("compactdefaultargs") UFrontError;
-		%feature("autodoc", "Returns the error max of the bsplinesurface of range index on a ufrontier.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Dimension: int
 Index: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns the error max of the bsplinesurface of range index on a ufrontier.
 ") UFrontError;
 		Standard_Real UFrontError(const Standard_Integer Dimension, const Standard_Integer Index);
 
 		/****************** VDegree ******************/
 		/**** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ****/
 		%feature("compactdefaultargs") VDegree;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") VDegree;
 		Standard_Integer VDegree();
 
 		/****************** VFrontError ******************/
 		/**** md5 signature: c67297c0cd6479a8b7b6ed44f0b54d22 ****/
 		%feature("compactdefaultargs") VFrontError;
-		%feature("autodoc", "Returns the errors max on vfrontiers warning: dimension must be equal to 3.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Dimension: int
 
-Returns
+Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+Returns the errors max on vfrontiers warning: dimension must be equal to 3.
 ") VFrontError;
 		opencascade::handle<TColStd_HArray1OfReal> VFrontError(const Standard_Integer Dimension);
 
 		/****************** VFrontError ******************/
 		/**** md5 signature: 8dd750790f1ee2230900ab6006316f3f ****/
 		%feature("compactdefaultargs") VFrontError;
-		%feature("autodoc", "Returns the error max of the bsplinesurface of range index on a vfrontier.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Dimension: int
 Index: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns the error max of the bsplinesurface of range index on a vfrontier.
 ") VFrontError;
 		Standard_Real VFrontError(const Standard_Integer Dimension, const Standard_Integer Index);
 
@@ -468,25 +515,27 @@ class AdvApp2Var_ApproxF2var {
 		/****************** mma1her_ ******************/
 		/**** md5 signature: 340a71780d0d59f85eb5ef4e22592c91 ****/
 		%feature("compactdefaultargs") mma1her_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : integer *
 : doublereal *
 : integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma1her_;
 		static int mma1her_(const integer * , doublereal * , integer * );
 
 		/****************** mma2ac1_ ******************/
 		/**** md5 signature: 2cb2859fe6a263b9e735e90035090c4d ****/
 		%feature("compactdefaultargs") mma2ac1_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : integer *
@@ -502,17 +551,20 @@ Parameters
 : doublereal *
 : doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2ac1_;
 		static int mma2ac1_(const integer * , const integer * , const integer * , const integer * , const integer * , const doublereal * , const doublereal * , const doublereal * , const doublereal * , const doublereal * , const doublereal * , doublereal * );
 
 		/****************** mma2ac2_ ******************/
 		/**** md5 signature: 3fc501ea89c6f69223da0748a5067c51 ****/
 		%feature("compactdefaultargs") mma2ac2_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : integer *
@@ -527,17 +579,20 @@ Parameters
 : doublereal *
 : doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2ac2_;
 		static int mma2ac2_(const integer * , const integer * , const integer * , const integer * , const integer * , const integer * , const doublereal * , const integer * , const doublereal * , const doublereal * , doublereal * );
 
 		/****************** mma2ac3_ ******************/
 		/**** md5 signature: 2014e6f62c9c1b3f4638d01a4d1c8b84 ****/
 		%feature("compactdefaultargs") mma2ac3_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : integer *
@@ -552,17 +607,20 @@ Parameters
 : doublereal *
 : doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2ac3_;
 		static int mma2ac3_(const integer * , const integer * , const integer * , const integer * , const integer * , const integer * , const doublereal * , const integer * , const doublereal * , const doublereal * , doublereal * );
 
 		/****************** mma2can_ ******************/
 		/**** md5 signature: 6567d45f17981e806023a3f3d386ebd4 ****/
 		%feature("compactdefaultargs") mma2can_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : integer *
@@ -577,17 +635,20 @@ Parameters
 : doublereal *
 : integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2can_;
 		static int mma2can_(const integer * , const integer * , const integer * , const integer * , const integer * , const integer * , const integer * , const doublereal * , doublereal * , doublereal * , integer * );
 
 		/****************** mma2cdi_ ******************/
 		/**** md5 signature: 6822f06275dfe10240eb63f63cb8154a ****/
 		%feature("compactdefaultargs") mma2cdi_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -615,17 +676,20 @@ disotb: doublereal *
 diditb: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2cdi_;
 		static int mma2cdi_(integer * ndimen, integer * nbpntu, doublereal * urootl, integer * nbpntv, doublereal * vrootl, integer * iordru, integer * iordrv, doublereal * contr1, doublereal * contr2, doublereal * contr3, doublereal * contr4, doublereal * sotbu1, doublereal * sotbu2, doublereal * ditbu1, doublereal * ditbu2, doublereal * sotbv1, doublereal * sotbv2, doublereal * ditbv1, doublereal * ditbv2, doublereal * sosotb, doublereal * soditb, doublereal * disotb, doublereal * diditb, integer * iercod);
 
 		/****************** mma2ce1_ ******************/
 		/**** md5 signature: 425c3d53b101c9c0f002c96ad41e6fc3 ****/
 		%feature("compactdefaultargs") mma2ce1_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 numdec: integer *
@@ -655,17 +719,20 @@ ndegpv: integer *
 itydec: integer *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2ce1_;
 		static int mma2ce1_(integer * numdec, integer * ndimen, integer * nbsesp, integer * ndimse, integer * ndminu, integer * ndminv, integer * ndguli, integer * ndgvli, integer * ndjacu, integer * ndjacv, integer * iordru, integer * iordrv, integer * nbpntu, integer * nbpntv, doublereal * epsapr, doublereal * sosotb, doublereal * disotb, doublereal * soditb, doublereal * diditb, doublereal * patjac, doublereal * errmax, doublereal * errmoy, integer * ndegpu, integer * ndegpv, integer * itydec, integer * iercod);
 
 		/****************** mma2ds1_ ******************/
 		/**** md5 signature: a21bcf00d7cc3ec0c2e76dc7755429fe ****/
 		%feature("compactdefaultargs") mma2ds1_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -685,17 +752,20 @@ fpntab: doublereal *
 ttable: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2ds1_;
 		static int mma2ds1_(integer * ndimen, doublereal * uintfn, doublereal * vintfn, const AdvApp2Var_EvaluatorFunc2Var & foncnp, integer * nbpntu, integer * nbpntv, doublereal * urootb, doublereal * vrootb, integer * isofav, doublereal * sosotb, doublereal * disotb, doublereal * soditb, doublereal * diditb, doublereal * fpntab, doublereal * ttable, integer * iercod);
 
 		/****************** mma2fnc_ ******************/
 		/**** md5 signature: 18763f0e21666ad6ab99c64fb6dbb75d ****/
 		%feature("compactdefaultargs") mma2fnc_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -725,17 +795,20 @@ errmax: doublereal *
 errmoy: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2fnc_;
 		static int mma2fnc_(integer * ndimen, integer * nbsesp, integer * ndimse, doublereal * uvfonc, const AdvApp2Var_EvaluatorFunc2Var & foncnp, doublereal * tconst, integer * isofav, integer * nbroot, doublereal * rootlg, integer * iordre, integer * ideriv, integer * ndgjac, integer * nbcrmx, integer * ncflim, doublereal * epsapr, integer * ncoeff, doublereal * courbe, integer * nbcrbe, doublereal * somtab, doublereal * diftab, doublereal * contr1, doublereal * contr2, doublereal * tabdec, doublereal * errmax, doublereal * errmoy, integer * iercod);
 
 		/****************** mma2fx6_ ******************/
 		/**** md5 signature: 3e9466bd52c1a918c5d9e90482550972 ****/
 		%feature("compactdefaultargs") mma2fx6_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ncfmxu: integer *
@@ -754,34 +827,40 @@ errmax: doublereal *
 ncoefu: integer *
 ncoefv: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2fx6_;
 		static int mma2fx6_(integer * ncfmxu, integer * ncfmxv, integer * ndimen, integer * nbsesp, integer * ndimse, integer * nbupat, integer * nbvpat, integer * iordru, integer * iordrv, doublereal * epsapr, doublereal * epsfro, doublereal * patcan, doublereal * errmax, integer * ncoefu, integer * ncoefv);
 
 		/****************** mma2jmx_ ******************/
 		/**** md5 signature: 1d8a613ee6223c570e2deac14273a3d7 ****/
 		%feature("compactdefaultargs") mma2jmx_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndgjac: integer *
 iordre: integer *
 xjacmx: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2jmx_;
 		static int mma2jmx_(integer * ndgjac, integer * iordre, doublereal * xjacmx);
 
 		/****************** mma2roo_ ******************/
 		/**** md5 signature: 2b9206bd8c653739680ae42d9246a3e2 ****/
 		%feature("compactdefaultargs") mma2roo_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 nbpntu: integer *
@@ -789,17 +868,20 @@ nbpntv: integer *
 urootl: doublereal *
 vrootl: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mma2roo_;
 		static int mma2roo_(integer * nbpntu, integer * nbpntv, doublereal * urootl, doublereal * vrootl);
 
 		/****************** mmapptt_ ******************/
 		/**** md5 signature: df26bb1629da819cc478cf38ae76a65b ****/
 		%feature("compactdefaultargs") mmapptt_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : integer *
@@ -808,9 +890,13 @@ Parameters
 : doublereal *
 : integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmapptt_;
 		static int mmapptt_(const integer * , const integer * , const integer * , doublereal * , integer * );
 
@@ -831,19 +917,20 @@ class AdvApp2Var_Context {
 		/****************** AdvApp2Var_Context ******************/
 		/**** md5 signature: cc918e3d6337a3e3d6fef3c7fa6e90a5 ****/
 		%feature("compactdefaultargs") AdvApp2Var_Context;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Context;
 		 AdvApp2Var_Context();
 
 		/****************** AdvApp2Var_Context ******************/
 		/**** md5 signature: 21cd87756d9328ae205fa641ee18a3e8 ****/
 		%feature("compactdefaultargs") AdvApp2Var_Context;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ifav: int
@@ -862,207 +949,247 @@ tof1D: TColStd_HArray2OfReal
 tof2D: TColStd_HArray2OfReal
 tof3D: TColStd_HArray2OfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Context;
 		 AdvApp2Var_Context(const Standard_Integer ifav, const Standard_Integer iu, const Standard_Integer iv, const Standard_Integer nlimu, const Standard_Integer nlimv, const Standard_Integer iprecis, const Standard_Integer nb1Dss, const Standard_Integer nb2Dss, const Standard_Integer nb3Dss, const opencascade::handle<TColStd_HArray1OfReal> & tol1D, const opencascade::handle<TColStd_HArray1OfReal> & tol2D, const opencascade::handle<TColStd_HArray1OfReal> & tol3D, const opencascade::handle<TColStd_HArray2OfReal> & tof1D, const opencascade::handle<TColStd_HArray2OfReal> & tof2D, const opencascade::handle<TColStd_HArray2OfReal> & tof3D);
 
 		/****************** CToler ******************/
 		/**** md5 signature: 24bd3fb0eebd880254f8ac1ee89f8d89 ****/
 		%feature("compactdefaultargs") CToler;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfReal>
+
+Description
+-----------
+No available documentation.
 ") CToler;
 		opencascade::handle<TColStd_HArray2OfReal> CToler();
 
 		/****************** FToler ******************/
 		/**** md5 signature: d5ab5676361cb292c8f03db44e65e0b8 ****/
 		%feature("compactdefaultargs") FToler;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfReal>
+
+Description
+-----------
+No available documentation.
 ") FToler;
 		opencascade::handle<TColStd_HArray2OfReal> FToler();
 
 		/****************** FavorIso ******************/
 		/**** md5 signature: c6d174e38329c613da300ca8a0f5d50f ****/
 		%feature("compactdefaultargs") FavorIso;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") FavorIso;
 		Standard_Integer FavorIso();
 
 		/****************** IToler ******************/
 		/**** md5 signature: 2d6a816890d9a18a597840c55f73f6fb ****/
 		%feature("compactdefaultargs") IToler;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") IToler;
 		opencascade::handle<TColStd_HArray1OfReal> IToler();
 
 		/****************** TotalDimension ******************/
 		/**** md5 signature: f052f99d2f000729ae53d6c6fee257cf ****/
 		%feature("compactdefaultargs") TotalDimension;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") TotalDimension;
 		Standard_Integer TotalDimension();
 
 		/****************** TotalNumberSSP ******************/
 		/**** md5 signature: faf2dd9e8595d670d21dc10f3c6a6913 ****/
 		%feature("compactdefaultargs") TotalNumberSSP;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") TotalNumberSSP;
 		Standard_Integer TotalNumberSSP();
 
 		/****************** UGauss ******************/
 		/**** md5 signature: 9a6b5ace3b55823419bfede442d992cd ****/
 		%feature("compactdefaultargs") UGauss;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") UGauss;
 		opencascade::handle<TColStd_HArray1OfReal> UGauss();
 
 		/****************** UJacDeg ******************/
 		/**** md5 signature: 8044fad5cd7721e5b1833954c8c1f64c ****/
 		%feature("compactdefaultargs") UJacDeg;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") UJacDeg;
 		Standard_Integer UJacDeg();
 
 		/****************** UJacMax ******************/
 		/**** md5 signature: c8c8acc46da154a394ae1ee532d52d75 ****/
 		%feature("compactdefaultargs") UJacMax;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") UJacMax;
 		opencascade::handle<TColStd_HArray1OfReal> UJacMax();
 
 		/****************** ULimit ******************/
 		/**** md5 signature: 43d12bdc3dda11b989b8554e085d81f0 ****/
 		%feature("compactdefaultargs") ULimit;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") ULimit;
 		Standard_Integer ULimit();
 
 		/****************** UOrder ******************/
 		/**** md5 signature: 3bb505464047fef2900b8b2c2896c41e ****/
 		%feature("compactdefaultargs") UOrder;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") UOrder;
 		Standard_Integer UOrder();
 
 		/****************** URoots ******************/
 		/**** md5 signature: 4c908ffe6bc2d725142f172a06cf0c1a ****/
 		%feature("compactdefaultargs") URoots;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") URoots;
 		opencascade::handle<TColStd_HArray1OfReal> URoots();
 
 		/****************** VGauss ******************/
 		/**** md5 signature: 66196d55762d9b1232b870bb36f21d59 ****/
 		%feature("compactdefaultargs") VGauss;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") VGauss;
 		opencascade::handle<TColStd_HArray1OfReal> VGauss();
 
 		/****************** VJacDeg ******************/
 		/**** md5 signature: f9bfee79cd23f4af3716e80cf6ddba4a ****/
 		%feature("compactdefaultargs") VJacDeg;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") VJacDeg;
 		Standard_Integer VJacDeg();
 
 		/****************** VJacMax ******************/
 		/**** md5 signature: 78706a3e7697c048821f62c71af456df ****/
 		%feature("compactdefaultargs") VJacMax;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") VJacMax;
 		opencascade::handle<TColStd_HArray1OfReal> VJacMax();
 
 		/****************** VLimit ******************/
 		/**** md5 signature: e8accebaf43ffe9314093c4a788410d4 ****/
 		%feature("compactdefaultargs") VLimit;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") VLimit;
 		Standard_Integer VLimit();
 
 		/****************** VOrder ******************/
 		/**** md5 signature: 704529177e651451c5029c517db99652 ****/
 		%feature("compactdefaultargs") VOrder;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") VOrder;
 		Standard_Integer VOrder();
 
 		/****************** VRoots ******************/
 		/**** md5 signature: 54311a504719af5252d92bb212279e0e ****/
 		%feature("compactdefaultargs") VRoots;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") VRoots;
 		opencascade::handle<TColStd_HArray1OfReal> VRoots();
 
@@ -1084,64 +1211,76 @@ class AdvApp2Var_Criterion {
 		/****************** IsSatisfied ******************/
 		/**** md5 signature: 628e527776d280624d73fc40a69ddb25 ****/
 		%feature("compactdefaultargs") IsSatisfied;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: AdvApp2Var_Patch
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") IsSatisfied;
 		virtual Standard_Boolean IsSatisfied(const AdvApp2Var_Patch & P);
 
 		/****************** MaxValue ******************/
 		/**** md5 signature: 90bad7204548ba76bfdb4dc2b65fa9de ****/
 		%feature("compactdefaultargs") MaxValue;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") MaxValue;
 		Standard_Real MaxValue();
 
 		/****************** Repartition ******************/
 		/**** md5 signature: cff4f841f0657cd7a89a6b578a81602b ****/
 		%feature("compactdefaultargs") Repartition;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 AdvApp2Var_CriterionRepartition
+
+Description
+-----------
+No available documentation.
 ") Repartition;
 		AdvApp2Var_CriterionRepartition Repartition();
 
 		/****************** Type ******************/
 		/**** md5 signature: 1b9684751cac1e3e89787b772495a1ed ****/
 		%feature("compactdefaultargs") Type;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 AdvApp2Var_CriterionType
+
+Description
+-----------
+No available documentation.
 ") Type;
 		AdvApp2Var_CriterionType Type();
 
 		/****************** Value ******************/
 		/**** md5 signature: bd5a3e3cc8b366204940110914f05bd9 ****/
 		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 P: AdvApp2Var_Patch
 C: AdvApp2Var_Context
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Value;
 		virtual void Value(AdvApp2Var_Patch & P, const AdvApp2Var_Context & C);
 
@@ -1162,121 +1301,143 @@ class AdvApp2Var_Data {
 		/****************** Getmaovpar ******************/
 		/**** md5 signature: 8be6c57b8566deaa01e416a23bd10998 ****/
 		%feature("compactdefaultargs") Getmaovpar;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 maovpar_1_
+
+Description
+-----------
+No available documentation.
 ") Getmaovpar;
 		static maovpar_1_ & Getmaovpar();
 
 		/****************** Getmaovpch ******************/
 		/**** md5 signature: 334543f940b9215443e5709331588bab ****/
 		%feature("compactdefaultargs") Getmaovpch;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 maovpch_1_
+
+Description
+-----------
+No available documentation.
 ") Getmaovpch;
 		static maovpch_1_ & Getmaovpch();
 
 		/****************** Getmdnombr ******************/
 		/**** md5 signature: ac61a22aa001b1c0a5ee35b5c3602fd3 ****/
 		%feature("compactdefaultargs") Getmdnombr;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 mdnombr_1_
+
+Description
+-----------
+No available documentation.
 ") Getmdnombr;
 		static mdnombr_1_ & Getmdnombr();
 
 		/****************** Getminombr ******************/
 		/**** md5 signature: e8d64195164353bb0d45e76471e1c166 ****/
 		%feature("compactdefaultargs") Getminombr;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 minombr_1_
+
+Description
+-----------
+No available documentation.
 ") Getminombr;
 		static minombr_1_ & Getminombr();
 
 		/****************** Getmlgdrtl ******************/
 		/**** md5 signature: 91d40b6c00de974dbdc2bb896a280dcf ****/
 		%feature("compactdefaultargs") Getmlgdrtl;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 mlgdrtl_1_
+
+Description
+-----------
+No available documentation.
 ") Getmlgdrtl;
 		static mlgdrtl_1_ & Getmlgdrtl();
 
 		/****************** Getmmapgs0 ******************/
 		/**** md5 signature: 79c6c799aa3e3857c5cf09c5affb7c09 ****/
 		%feature("compactdefaultargs") Getmmapgs0;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 mmapgs0_1_
+
+Description
+-----------
+No available documentation.
 ") Getmmapgs0;
 		static mmapgs0_1_ & Getmmapgs0();
 
 		/****************** Getmmapgs1 ******************/
 		/**** md5 signature: 421c69fcd1506661b0c60d98977952bb ****/
 		%feature("compactdefaultargs") Getmmapgs1;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 mmapgs1_1_
+
+Description
+-----------
+No available documentation.
 ") Getmmapgs1;
 		static mmapgs1_1_ & Getmmapgs1();
 
 		/****************** Getmmapgs2 ******************/
 		/**** md5 signature: cd17b54466c50e23724fb4ca4086c700 ****/
 		%feature("compactdefaultargs") Getmmapgs2;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 mmapgs2_1_
+
+Description
+-----------
+No available documentation.
 ") Getmmapgs2;
 		static mmapgs2_1_ & Getmmapgs2();
 
 		/****************** Getmmapgss ******************/
 		/**** md5 signature: 2da5fe3a3d53bfd1ed26a2f7054305e0 ****/
 		%feature("compactdefaultargs") Getmmapgss;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 mmapgss_1_
+
+Description
+-----------
+No available documentation.
 ") Getmmapgss;
 		static mmapgss_1_ & Getmmapgss();
 
 		/****************** Getmmcmcnp ******************/
 		/**** md5 signature: 7d0b6ef51dfee2c7e36ff733bfb092f1 ****/
 		%feature("compactdefaultargs") Getmmcmcnp;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 mmcmcnp_1_
+
+Description
+-----------
+No available documentation.
 ") Getmmcmcnp;
 		static mmcmcnp_1_ & Getmmcmcnp();
 
 		/****************** Getmmjcobi ******************/
 		/**** md5 signature: 17e6be3fe538455810b1d4b422cf768d ****/
 		%feature("compactdefaultargs") Getmmjcobi;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 mmjcobi_1_
+
+Description
+-----------
+No available documentation.
 ") Getmmjcobi;
 		static mmjcobi_1_ & Getmmjcobi();
 
@@ -1300,221 +1461,262 @@ class AdvApp2Var_Framework {
 		/****************** AdvApp2Var_Framework ******************/
 		/**** md5 signature: 818737758a4dfd25fda3f71a4e5485ad ****/
 		%feature("compactdefaultargs") AdvApp2Var_Framework;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Framework;
 		 AdvApp2Var_Framework();
 
 		/****************** AdvApp2Var_Framework ******************/
 		/**** md5 signature: 960e0b78689457d0b96130210d6b1b29 ****/
 		%feature("compactdefaultargs") AdvApp2Var_Framework;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Frame: AdvApp2Var_SequenceOfNode
 UFrontier: AdvApp2Var_SequenceOfStrip
 VFrontier: AdvApp2Var_SequenceOfStrip
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Framework;
 		 AdvApp2Var_Framework(const AdvApp2Var_SequenceOfNode & Frame, const AdvApp2Var_SequenceOfStrip & UFrontier, const AdvApp2Var_SequenceOfStrip & VFrontier);
 
 		/****************** ChangeIso ******************/
 		/**** md5 signature: 3fec201f44a8293dfa569255b6814bbb ****/
 		%feature("compactdefaultargs") ChangeIso;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 IndexIso: int
 IndexStrip: int
 anIso: AdvApp2Var_Iso
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") ChangeIso;
 		void ChangeIso(const Standard_Integer IndexIso, const Standard_Integer IndexStrip, const opencascade::handle<AdvApp2Var_Iso> & anIso);
 
 		/****************** FirstNode ******************/
 		/**** md5 signature: 7e2537d33d03d4ae88afbab57eff7727 ****/
 		%feature("compactdefaultargs") FirstNode;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Type: GeomAbs_IsoType
 IndexIso: int
 IndexStrip: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") FirstNode;
 		Standard_Integer FirstNode(const GeomAbs_IsoType Type, const Standard_Integer IndexIso, const Standard_Integer IndexStrip);
 
 		/****************** FirstNotApprox ******************/
 		/**** md5 signature: 227783178d7bb021aee9bed3eb70dd7f ****/
 		%feature("compactdefaultargs") FirstNotApprox;
-		%feature("autodoc", "Search the index of the first iso not approximated, if all isos are approximated null is returned.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 IndexIso: int
 IndexStrip: int
+
+Description
+-----------
+Search the index of the first iso not approximated, if all isos are approximated null is returned.
 ") FirstNotApprox;
 		opencascade::handle<AdvApp2Var_Iso> FirstNotApprox(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** IsoU ******************/
 		/**** md5 signature: e9d88953cce2797fb11a4e1b24499c34 ****/
 		%feature("compactdefaultargs") IsoU;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 U: float
 V0: float
 V1: float
 
-Returns
+Return
 -------
 AdvApp2Var_Iso
+
+Description
+-----------
+No available documentation.
 ") IsoU;
 		const AdvApp2Var_Iso & IsoU(const Standard_Real U, const Standard_Real V0, const Standard_Real V1);
 
 		/****************** IsoV ******************/
 		/**** md5 signature: 359e34e6c22686add688faaa999793c8 ****/
 		%feature("compactdefaultargs") IsoV;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 U0: float
 U1: float
 V: float
 
-Returns
+Return
 -------
 AdvApp2Var_Iso
+
+Description
+-----------
+No available documentation.
 ") IsoV;
 		const AdvApp2Var_Iso & IsoV(const Standard_Real U0, const Standard_Real U1, const Standard_Real V);
 
 		/****************** LastNode ******************/
 		/**** md5 signature: c5ec3a09215187eaa4100a7b4686bdb3 ****/
 		%feature("compactdefaultargs") LastNode;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Type: GeomAbs_IsoType
 IndexIso: int
 IndexStrip: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") LastNode;
 		Standard_Integer LastNode(const GeomAbs_IsoType Type, const Standard_Integer IndexIso, const Standard_Integer IndexStrip);
 
 		/****************** Node ******************/
 		/**** md5 signature: 1d29de45887544e302e72092c1d86599 ****/
 		%feature("compactdefaultargs") Node;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 IndexNode: int
 
-Returns
+Return
 -------
 opencascade::handle<AdvApp2Var_Node>
+
+Description
+-----------
+No available documentation.
 ") Node;
 		const opencascade::handle<AdvApp2Var_Node> & Node(const Standard_Integer IndexNode);
 
 		/****************** Node ******************/
 		/**** md5 signature: c9d756687d8ab078da4b83b35aee2845 ****/
 		%feature("compactdefaultargs") Node;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 U: float
 V: float
 
-Returns
+Return
 -------
 opencascade::handle<AdvApp2Var_Node>
+
+Description
+-----------
+No available documentation.
 ") Node;
 		const opencascade::handle<AdvApp2Var_Node> & Node(const Standard_Real U, const Standard_Real V);
 
 		/****************** UEquation ******************/
 		/**** md5 signature: eae095443123601e82f5e427f107c558 ****/
 		%feature("compactdefaultargs") UEquation;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 IndexIso: int
 IndexStrip: int
 
-Returns
+Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") UEquation;
 		const opencascade::handle<TColStd_HArray1OfReal> & UEquation(const Standard_Integer IndexIso, const Standard_Integer IndexStrip);
 
 		/****************** UpdateInU ******************/
 		/**** md5 signature: 6ceeb1ee9354cac6afc634b1d9c74e7c ****/
 		%feature("compactdefaultargs") UpdateInU;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 CuttingValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") UpdateInU;
 		void UpdateInU(const Standard_Real CuttingValue);
 
 		/****************** UpdateInV ******************/
 		/**** md5 signature: c0f8535993a7fefff54e4fb95c170b72 ****/
 		%feature("compactdefaultargs") UpdateInV;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 CuttingValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") UpdateInV;
 		void UpdateInV(const Standard_Real CuttingValue);
 
 		/****************** VEquation ******************/
 		/**** md5 signature: b409a4641e852e2861825c39dc2922c1 ****/
 		%feature("compactdefaultargs") VEquation;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 IndexIso: int
 IndexStrip: int
 
-Returns
+Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") VEquation;
 		const opencascade::handle<TColStd_HArray1OfReal> & VEquation(const Standard_Integer IndexIso, const Standard_Integer IndexStrip);
 
@@ -1538,8 +1740,7 @@ class AdvApp2Var_MathBase {
 		/****************** mdsptpt_ ******************/
 		/**** md5 signature: d0cc0c7502e5928d82f8b656b6dd1fa0 ****/
 		%feature("compactdefaultargs") mdsptpt_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -1547,17 +1748,20 @@ point1: doublereal *
 point2: doublereal *
 distan: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mdsptpt_;
 		static int mdsptpt_(integer * ndimen, doublereal * point1, doublereal * point2, doublereal * distan);
 
 		/****************** mmapcmp_ ******************/
 		/**** md5 signature: ddc220b71480aa8b72622753a27c1a08 ****/
 		%feature("compactdefaultargs") mmapcmp_;
-		%feature("autodoc", "///.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : integer *
@@ -1566,17 +1770,20 @@ Parameters
 : double *
 : double *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+///.
 ") mmapcmp_;
 		static int mmapcmp_(integer * , integer * , integer * , double * , double * );
 
 		/****************** mmaperx_ ******************/
 		/**** md5 signature: 3e2559039cb3bda8c6d64ac866023ed5 ****/
 		%feature("compactdefaultargs") mmaperx_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ncofmx: integer *
@@ -1589,17 +1796,20 @@ ycvmax: doublereal *
 errmax: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmaperx_;
 		static int mmaperx_(integer * ncofmx, integer * ndimen, integer * ncoeff, integer * iordre, doublereal * crvjac, integer * ncfnew, doublereal * ycvmax, doublereal * errmax, integer * iercod);
 
 		/****************** mmarcin_ ******************/
 		/**** md5 signature: c26a2d31e50b2e630a193421191f8420 ****/
 		%feature("compactdefaultargs") mmarcin_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimax: integer *
@@ -1611,17 +1821,20 @@ u1: doublereal *
 crvnew: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmarcin_;
 		static int mmarcin_(integer * ndimax, integer * ndim, integer * ncoeff, doublereal * crvold, doublereal * u0, doublereal * u1, doublereal * crvnew, integer * iercod);
 
 		/****************** mmbulld_ ******************/
 		/**** md5 signature: a6e5ee873b96338395e569d9e9188ef2 ****/
 		%feature("compactdefaultargs") mmbulld_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 nbcoln: integer *
@@ -1629,17 +1842,20 @@ nblign: integer *
 dtabtr: doublereal *
 numcle: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmbulld_;
 		static int mmbulld_(integer * nbcoln, integer * nblign, doublereal * dtabtr, integer * numcle);
 
 		/****************** mmcdriv_ ******************/
 		/**** md5 signature: 44a825407cbe882facc2d5a6e2edfbbd ****/
 		%feature("compactdefaultargs") mmcdriv_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -1649,17 +1865,20 @@ ideriv: integer *
 ncofdv: integer *
 crvdrv: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmcdriv_;
 		static int mmcdriv_(integer * ndimen, integer * ncoeff, doublereal * courbe, integer * ideriv, integer * ncofdv, doublereal * crvdrv);
 
 		/****************** mmcglc1_ ******************/
 		/**** md5 signature: 1ced960f022f6bb9a52d4739071f227c ****/
 		%feature("compactdefaultargs") mmcglc1_;
-		%feature("autodoc", "///.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimax: integer *
@@ -1673,17 +1892,20 @@ xlongc: doublereal *
 erreur: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+///.
 ") mmcglc1_;
 		static int mmcglc1_(integer * ndimax, integer * ndimen, integer * ncoeff, doublereal * courbe, doublereal * tdebut, doublereal * tfinal, doublereal * epsiln, doublereal * xlongc, doublereal * erreur, integer * iercod);
 
 		/****************** mmcvctx_ ******************/
 		/**** md5 signature: 5f90652ee7a4410f4c19f327eeb75459 ****/
 		%feature("compactdefaultargs") mmcvctx_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -1695,17 +1917,20 @@ tabaux: doublereal *
 xmatri: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmcvctx_;
 		static int mmcvctx_(integer * ndimen, integer * ncofmx, integer * nderiv, doublereal * ctrtes, doublereal * crvres, doublereal * tabaux, doublereal * xmatri, integer * iercod);
 
 		/****************** mmcvinv_ ******************/
 		/**** md5 signature: d83fa9f36dfce85985ef06a9963e1c45 ****/
 		%feature("compactdefaultargs") mmcvinv_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimax: integer *
@@ -1714,17 +1939,20 @@ ndim: integer *
 curveo: doublereal *
 curve: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmcvinv_;
 		static int mmcvinv_(integer * ndimax, integer * ncoef, integer * ndim, doublereal * curveo, doublereal * curve);
 
 		/****************** mmdrc11_ ******************/
 		/**** md5 signature: a28ee8f5001caafb97564920bd3ce882 ****/
 		%feature("compactdefaultargs") mmdrc11_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : integer *
@@ -1734,17 +1962,20 @@ Parameters
 : doublereal *
 : doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmdrc11_;
 		static int mmdrc11_(integer * , integer * , integer * , doublereal * , doublereal * , doublereal * );
 
 		/****************** mmdrvck_ ******************/
 		/**** md5 signature: 525722fedd3aebf005d25056187dddf4 ****/
 		%feature("compactdefaultargs") mmdrvck_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ncoeff: integer *
@@ -1754,32 +1985,38 @@ ideriv: integer *
 tparam: doublereal *
 pntcrb: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmdrvck_;
 		static int mmdrvck_(integer * ncoeff, integer * ndimen, doublereal * courbe, integer * ideriv, doublereal * tparam, doublereal * pntcrb);
 
 		/****************** mmeps1_ ******************/
 		/**** md5 signature: ab904ccf5f764d7370e8f091a5379338 ****/
 		%feature("compactdefaultargs") mmeps1_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 epsilo: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmeps1_;
 		static int mmeps1_(doublereal * epsilo);
 
 		/****************** mmfmca8_ ******************/
 		/**** md5 signature: c9877e732829f9386b22d78cdded7be7 ****/
 		%feature("compactdefaultargs") mmfmca8_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -1791,17 +2028,20 @@ ncfvmx: integer *
 tabini: doublereal *
 tabres: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmfmca8_;
 		static int mmfmca8_(const integer * ndimen, const integer * ncoefu, const integer * ncoefv, const integer * ndimax, const integer * ncfumx, const integer * ncfvmx, doublereal * tabini, doublereal * tabres);
 
 		/****************** mmfmca9_ ******************/
 		/**** md5 signature: cdef922fdd9cca02e97d563176bdee76 ****/
 		%feature("compactdefaultargs") mmfmca9_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : integer *
@@ -1813,17 +2053,20 @@ Parameters
 : doublereal *
 : doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmfmca9_;
 		static int mmfmca9_(integer * , integer * , integer * , integer * , integer * , integer * , doublereal * , doublereal * );
 
 		/****************** mmfmcar_ ******************/
 		/**** md5 signature: 2f3d1dabb652936348dd204ce98331a8 ****/
 		%feature("compactdefaultargs") mmfmcar_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -1838,17 +2081,20 @@ vpara2: doublereal *
 patnew: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmfmcar_;
 		static int mmfmcar_(integer * ndimen, integer * ncofmx, integer * ncoefu, integer * ncoefv, doublereal * patold, doublereal * upara1, doublereal * upara2, doublereal * vpara1, doublereal * vpara2, doublereal * patnew, integer * iercod);
 
 		/****************** mmfmcb5_ ******************/
 		/**** md5 signature: 56a81c8b6cc564145902ada0223ca749 ****/
 		%feature("compactdefaultargs") mmfmcb5_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : integer *
@@ -1861,17 +2107,20 @@ Parameters
 : doublereal *
 : integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmfmcb5_;
 		static int mmfmcb5_(integer * , integer * , integer * , doublereal * , integer * , integer * , integer * , doublereal * , integer * );
 
 		/****************** mmfmtb1_ ******************/
 		/**** md5 signature: 8a4ac823cf2bfaa5d0b3a5b23ce64fec ****/
 		%feature("compactdefaultargs") mmfmtb1_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 maxsz1: integer *
@@ -1884,17 +2133,20 @@ isize2: integer *
 jsize2: integer *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmfmtb1_;
 		static int mmfmtb1_(integer * maxsz1, doublereal * table1, integer * isize1, integer * jsize1, integer * maxsz2, doublereal * table2, integer * isize2, integer * jsize2, integer * iercod);
 
 		/****************** mmhjcan_ ******************/
 		/**** md5 signature: 446f4e5fc4471218506e9b511d9c6d33 ****/
 		%feature("compactdefaultargs") mmhjcan_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -1907,17 +2159,20 @@ tdecop: doublereal *
 tcbnew: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmhjcan_;
 		static int mmhjcan_(integer * ndimen, integer * ncourb, integer * ncftab, integer * orcont, integer * ncflim, doublereal * tcbold, doublereal * tdecop, doublereal * tcbnew, integer * iercod);
 
 		/****************** mminltt_ ******************/
 		/**** md5 signature: f6302a533cf8887921d63b52fd1db29d ****/
 		%feature("compactdefaultargs") mminltt_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ncolmx: integer *
@@ -1929,17 +2184,20 @@ ajoute: doublereal *
 epseg: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mminltt_;
 		static int mminltt_(integer * ncolmx, integer * nlgnmx, doublereal * tabtri, integer * nbrcol, integer * nbrlgn, doublereal * ajoute, doublereal * epseg, integer * iercod);
 
 		/****************** mmjacan_ ******************/
 		/**** md5 signature: 9434e56960effb3e5ef4b134391a328e ****/
 		%feature("compactdefaultargs") mmjacan_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ideriv: integer *
@@ -1947,17 +2205,20 @@ ndeg: integer *
 poljac: doublereal *
 polcan: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmjacan_;
 		static int mmjacan_(const integer * ideriv, integer * ndeg, doublereal * poljac, doublereal * polcan);
 
 		/****************** mmjaccv_ ******************/
 		/**** md5 signature: b65686bb9f09d9ff3a5414b37737b25f ****/
 		%feature("compactdefaultargs") mmjaccv_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ncoef: integer *
@@ -1967,17 +2228,20 @@ crvlgd: doublereal *
 polaux: doublereal *
 crvcan: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmjaccv_;
 		static int mmjaccv_(const integer * ncoef, const integer * ndim, const integer * ider, const doublereal * crvlgd, doublereal * polaux, doublereal * crvcan);
 
 		/****************** mmmpocur_ ******************/
 		/**** md5 signature: 74e6aabd8a9a0120f39cdca7f2a2ab4c ****/
 		%feature("compactdefaultargs") mmmpocur_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ncofmx: integer *
@@ -1987,17 +2251,20 @@ courbe: doublereal *
 tparam: doublereal *
 tabval: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmmpocur_;
 		static int mmmpocur_(integer * ncofmx, integer * ndim, integer * ndeg, doublereal * courbe, doublereal * tparam, doublereal * tabval);
 
 		/****************** mmmrslwd_ ******************/
 		/**** md5 signature: a95d2925ac37222049e9bf15d84c3cb5 ****/
 		%feature("compactdefaultargs") mmmrslwd_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 normax: integer *
@@ -2010,17 +2277,20 @@ aaux: doublereal *
 xmat: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmmrslwd_;
 		static int mmmrslwd_(integer * normax, integer * nordre, integer * ndim, doublereal * amat, doublereal * bmat, doublereal * epspiv, doublereal * aaux, doublereal * xmat, integer * iercod);
 
 		/****************** mmpobas_ ******************/
 		/**** md5 signature: 7bc22d5de8ef6a29982a574e3973164e ****/
 		%feature("compactdefaultargs") mmpobas_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 tparam: doublereal *
@@ -2030,17 +2300,20 @@ nderiv: integer *
 valbas: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmpobas_;
 		static int mmpobas_(doublereal * tparam, integer * iordre, integer * ncoeff, integer * nderiv, doublereal * valbas, integer * iercod);
 
 		/****************** mmpocrb_ ******************/
 		/**** md5 signature: a12dcc0fd2ee502b557d028a01877b8d ****/
 		%feature("compactdefaultargs") mmpocrb_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimax: integer *
@@ -2050,17 +2323,20 @@ ndim: integer *
 tparam: doublereal *
 pntcrb: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmpocrb_;
 		static int mmpocrb_(integer * ndimax, integer * ncoeff, doublereal * courbe, integer * ndim, doublereal * tparam, doublereal * pntcrb);
 
 		/****************** mmposui_ ******************/
 		/**** md5 signature: 34280b75c6efa74cfc4d92b1604d7018 ****/
 		%feature("compactdefaultargs") mmposui_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 dimmat: integer *
@@ -2069,17 +2345,20 @@ aposit: integer *
 posuiv: integer *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmposui_;
 		static int mmposui_(integer * dimmat, integer * nistoc, integer * aposit, integer * posuiv, integer * iercod);
 
 		/****************** mmresol_ ******************/
 		/**** md5 signature: 6a24def37f274fef1c72ffabb3fb8a78 ****/
 		%feature("compactdefaultargs") mmresol_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 hdimen: integer *
@@ -2099,33 +2378,39 @@ mposit: integer *
 vecsol: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmresol_;
 		static int mmresol_(integer * hdimen, integer * gdimen, integer * hnstoc, integer * gnstoc, integer * mnstoc, doublereal * matsyh, doublereal * matsyg, doublereal * vecsyh, doublereal * vecsyg, integer * hposit, integer * hposui, integer * gposit, integer * mmposui, integer * mposit, doublereal * vecsol, integer * iercod);
 
 		/****************** mmrtptt_ ******************/
 		/**** md5 signature: bf320f4ce6a9651125680601f69e4537 ****/
 		%feature("compactdefaultargs") mmrtptt_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndglgd: integer *
 rtlegd: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmrtptt_;
 		static int mmrtptt_(integer * ndglgd, doublereal * rtlegd);
 
 		/****************** mmsrre2_ ******************/
 		/**** md5 signature: 11a570be7ee4b84e48a67aa8ec09f727 ****/
 		%feature("compactdefaultargs") mmsrre2_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 tparam: doublereal *
@@ -2136,17 +2421,20 @@ numint: integer *
 itypen: integer *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmsrre2_;
 		static int mmsrre2_(doublereal * tparam, integer * nbrval, doublereal * tablev, doublereal * epsil, integer * numint, integer * itypen, integer * iercod);
 
 		/****************** mmtrpjj_ ******************/
 		/**** md5 signature: 0569f5b50e1f2f007294ac92dcbfad1c ****/
 		%feature("compactdefaultargs") mmtrpjj_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ncofmx: integer *
@@ -2159,17 +2447,20 @@ ycvmax: doublereal *
 errmax: doublereal *
 ncfnew: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmtrpjj_;
 		static int mmtrpjj_(integer * ncofmx, integer * ndimen, integer * ncoeff, doublereal * epsi3d, integer * iordre, doublereal * crvlgd, doublereal * ycvmax, doublereal * errmax, integer * ncfnew);
 
 		/****************** mmunivt_ ******************/
 		/**** md5 signature: 16381a0150e98e032a27d190626c862c ****/
 		%feature("compactdefaultargs") mmunivt_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -2178,32 +2469,38 @@ vecnrm: doublereal *
 epsiln: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmunivt_;
 		static int mmunivt_(integer * ndimen, doublereal * vector, doublereal * vecnrm, doublereal * epsiln, integer * iercod);
 
 		/****************** mmveps3_ ******************/
 		/**** md5 signature: 23174d833a81b088dd2fea3e5aa72ce3 ****/
 		%feature("compactdefaultargs") mmveps3_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 eps03: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmveps3_;
 		static int mmveps3_(doublereal * eps03);
 
 		/****************** mmvncol_ ******************/
 		/**** md5 signature: 4f89cab0e4d7a63481dc99370fbc8fb2 ****/
 		%feature("compactdefaultargs") mmvncol_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
@@ -2211,17 +2508,20 @@ vecin: doublereal *
 vecout: doublereal *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mmvncol_;
 		static int mmvncol_(integer * ndimen, doublereal * vecin, doublereal * vecout, integer * iercod);
 
 		/****************** mmwprcs_ ******************/
 		/**** md5 signature: 477d823794f68972576604130750f753 ****/
 		%feature("compactdefaultargs") mmwprcs_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : doublereal *
@@ -2231,34 +2531,40 @@ Parameters
 : integer *
 : integer *
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") mmwprcs_;
 		static void mmwprcs_(doublereal * , doublereal * , doublereal * , doublereal * , integer * , integer * );
 
 		/****************** msc_ ******************/
 		/**** md5 signature: 3114f971d87dcb65a2ab7e6d240393b5 ****/
 		%feature("compactdefaultargs") msc_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
 vecte1: doublereal *
 vecte2: doublereal *
 
-Returns
+Return
 -------
 doublereal
+
+Description
+-----------
+No available documentation.
 ") msc_;
 		static doublereal msc_(integer * ndimen, doublereal * vecte1, doublereal * vecte2);
 
 		/****************** mvsheld_ ******************/
 		/**** md5 signature: 4ecbda11b378509d5fa7a83d2e283759 ****/
 		%feature("compactdefaultargs") mvsheld_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 n: integer *
@@ -2266,41 +2572,51 @@ is: integer *
 dtab: doublereal *
 icle: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mvsheld_;
 		static int mvsheld_(integer * n, integer * is, doublereal * dtab, integer * icle);
 
 		/****************** mzsnorm_ ******************/
 		/**** md5 signature: cdbf39590da261aaf47c5ccd25c4da77 ****/
 		%feature("compactdefaultargs") mzsnorm_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ndimen: integer *
 vecteu: doublereal *
 
-Returns
+Return
 -------
 doublereal
+
+Description
+-----------
+No available documentation.
 ") mzsnorm_;
 		static doublereal mzsnorm_(integer * ndimen, doublereal * vecteu);
 
 		/****************** pow__di ******************/
 		/**** md5 signature: e4a7f433243cba4d130c7523c160c9cd ****/
 		%feature("compactdefaultargs") pow__di;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 x: doublereal *
 n: integer *
 
-Returns
+Return
 -------
 doublereal
+
+Description
+-----------
+No available documentation.
 ") pow__di;
 		static doublereal pow__di(doublereal * x, integer * n);
 
@@ -2325,183 +2641,218 @@ class AdvApp2Var_Network {
 		/****************** AdvApp2Var_Network ******************/
 		/**** md5 signature: d17d550414bf3ecdb9a7860fb411e42f ****/
 		%feature("compactdefaultargs") AdvApp2Var_Network;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Network;
 		 AdvApp2Var_Network();
 
 		/****************** AdvApp2Var_Network ******************/
 		/**** md5 signature: 193c289f215945d46188eaeb35e19607 ****/
 		%feature("compactdefaultargs") AdvApp2Var_Network;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Net: AdvApp2Var_SequenceOfPatch
 TheU: TColStd_SequenceOfReal
 TheV: TColStd_SequenceOfReal
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Network;
 		 AdvApp2Var_Network(const AdvApp2Var_SequenceOfPatch & Net, const TColStd_SequenceOfReal & TheU, const TColStd_SequenceOfReal & TheV);
 
 		/****************** ChangePatch ******************/
 		/**** md5 signature: 49bf90b6471d1093efa33d9d67b1d5ff ****/
 		%feature("compactdefaultargs") ChangePatch;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 
-Returns
+Return
 -------
 AdvApp2Var_Patch
+
+Description
+-----------
+No available documentation.
 ") ChangePatch;
 		AdvApp2Var_Patch & ChangePatch(const Standard_Integer Index);
 
 		/****************** FirstNotApprox ******************/
 		/**** md5 signature: 71bb30feb26f00338924d16d7bd6d369 ****/
 		%feature("compactdefaultargs") FirstNotApprox;
-		%feature("autodoc", "Search the index of the first patch not approximated, if all patches are approximated standard_false is returned.
-
+		%feature("autodoc", "
 Parameters
 ----------
 
-Returns
+Return
 -------
 Index: int
+
+Description
+-----------
+Search the index of the first patch not approximated, if all patches are approximated standard_false is returned.
 ") FirstNotApprox;
 		Standard_Boolean FirstNotApprox(Standard_Integer &OutValue);
 
 		/****************** NbPatch ******************/
 		/**** md5 signature: e694837768b0b0d655ecd0758a2789f8 ****/
 		%feature("compactdefaultargs") NbPatch;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbPatch;
 		Standard_Integer NbPatch();
 
 		/****************** NbPatchInU ******************/
 		/**** md5 signature: 3f35fc1ac6634939a320e7ad44a7f7a1 ****/
 		%feature("compactdefaultargs") NbPatchInU;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbPatchInU;
 		Standard_Integer NbPatchInU();
 
 		/****************** NbPatchInV ******************/
 		/**** md5 signature: f81c6419ee7410e1e8c617bbe5c3f7ab ****/
 		%feature("compactdefaultargs") NbPatchInV;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbPatchInV;
 		Standard_Integer NbPatchInV();
 
 		/****************** Patch ******************/
 		/**** md5 signature: d7ebd409a545712c8a1fd621e1074507 ****/
 		%feature("compactdefaultargs") Patch;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 UIndex: int
 VIndex: int
 
-Returns
+Return
 -------
 AdvApp2Var_Patch
+
+Description
+-----------
+No available documentation.
 ") Patch;
 		const AdvApp2Var_Patch & Patch(const Standard_Integer UIndex, const Standard_Integer VIndex);
 
 		/****************** SameDegree ******************/
 		/**** md5 signature: 7e217979ae78b3668d6f94e6a8ad1993 ****/
 		%feature("compactdefaultargs") SameDegree;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 iu: int
 iv: int
 
-Returns
+Return
 -------
 ncfu: int
 ncfv: int
+
+Description
+-----------
+No available documentation.
 ") SameDegree;
 		void SameDegree(const Standard_Integer iu, const Standard_Integer iv, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
 		/****************** UParameter ******************/
 		/**** md5 signature: 71719dc788a69ec419550ca101145d24 ****/
 		%feature("compactdefaultargs") UParameter;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") UParameter;
 		Standard_Real UParameter(const Standard_Integer Index);
 
 		/****************** UpdateInU ******************/
 		/**** md5 signature: 6ceeb1ee9354cac6afc634b1d9c74e7c ****/
 		%feature("compactdefaultargs") UpdateInU;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 CuttingValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") UpdateInU;
 		void UpdateInU(const Standard_Real CuttingValue);
 
 		/****************** UpdateInV ******************/
 		/**** md5 signature: c0f8535993a7fefff54e4fb95c170b72 ****/
 		%feature("compactdefaultargs") UpdateInV;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 CuttingValue: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") UpdateInV;
 		void UpdateInV(const Standard_Real CuttingValue);
 
 		/****************** VParameter ******************/
 		/**** md5 signature: 33aa4b550b26911e9a612085aed53f03 ****/
 		%feature("compactdefaultargs") VParameter;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Index: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") VParameter;
 		Standard_Real VParameter(const Standard_Integer Index);
 
@@ -2522,159 +2873,188 @@ class AdvApp2Var_Node : public Standard_Transient {
 		/****************** AdvApp2Var_Node ******************/
 		/**** md5 signature: 757375f90af24c95af5d449c30bcf4b6 ****/
 		%feature("compactdefaultargs") AdvApp2Var_Node;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Node;
 		 AdvApp2Var_Node();
 
 		/****************** AdvApp2Var_Node ******************/
 		/**** md5 signature: d2cda16fc3142332455215854e92a317 ****/
 		%feature("compactdefaultargs") AdvApp2Var_Node;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 iu: int
 iv: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Node;
 		 AdvApp2Var_Node(const Standard_Integer iu, const Standard_Integer iv);
 
 		/****************** AdvApp2Var_Node ******************/
 		/**** md5 signature: 02101f67a99867a736cba2d1116fa5ee ****/
 		%feature("compactdefaultargs") AdvApp2Var_Node;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 UV: gp_XY
 iu: int
 iv: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Node;
 		 AdvApp2Var_Node(const gp_XY & UV, const Standard_Integer iu, const Standard_Integer iv);
 
 		/****************** Coord ******************/
 		/**** md5 signature: 55c3583d2b85a3d85724dfd062f17fa4 ****/
 		%feature("compactdefaultargs") Coord;
-		%feature("autodoc", "Returns the coordinates (u,v) of the node.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_XY
+
+Description
+-----------
+Returns the coordinates (u,v) of the node.
 ") Coord;
 		const gp_XY Coord();
 
 		/****************** Error ******************/
 		/**** md5 signature: 4813a340da2d4e85dbd4db1c55725856 ****/
 		%feature("compactdefaultargs") Error;
-		%feature("autodoc", "Returns the error between f(u,v) and its approximation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 iu: int
 iv: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns the error between f(u,v) and its approximation.
 ") Error;
 		Standard_Real Error(const Standard_Integer iu, const Standard_Integer iv);
 
 		/****************** Point ******************/
 		/**** md5 signature: 749335184bea0e3e4adcaec95037b5c4 ****/
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "Returns the value f(u,v) or its derivates on the node (u,v).
-
+		%feature("autodoc", "
 Parameters
 ----------
 iu: int
 iv: int
 
-Returns
+Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the value f(u,v) or its derivates on the node (u,v).
 ") Point;
 		const gp_Pnt Point(const Standard_Integer iu, const Standard_Integer iv);
 
 		/****************** SetCoord ******************/
 		/**** md5 signature: 4e5a25b156489466ba1a9a9f348b2305 ****/
 		%feature("compactdefaultargs") SetCoord;
-		%feature("autodoc", "Changes the coordinates (u,v) to (x1,x2).
-
+		%feature("autodoc", "
 Parameters
 ----------
 x1: float
 x2: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Changes the coordinates (u,v) to (x1,x2).
 ") SetCoord;
 		void SetCoord(const Standard_Real x1, const Standard_Real x2);
 
 		/****************** SetError ******************/
 		/**** md5 signature: bdc80934791ff9f2bae407029b05b646 ****/
 		%feature("compactdefaultargs") SetError;
-		%feature("autodoc", "Affects the error between f(u,v) and its approximation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 iu: int
 iv: int
 error: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Affects the error between f(u,v) and its approximation.
 ") SetError;
 		void SetError(const Standard_Integer iu, const Standard_Integer iv, const Standard_Real error);
 
 		/****************** SetPoint ******************/
 		/**** md5 signature: 76994ba669d4525ebd26c6236bb72440 ****/
 		%feature("compactdefaultargs") SetPoint;
-		%feature("autodoc", "Affects the value f(u,v) or its derivates on the node (u,v).
-
+		%feature("autodoc", "
 Parameters
 ----------
 iu: int
 iv: int
 Pt: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Affects the value f(u,v) or its derivates on the node (u,v).
 ") SetPoint;
 		void SetPoint(const Standard_Integer iu, const Standard_Integer iv, const gp_Pnt & Pt);
 
 		/****************** UOrder ******************/
 		/**** md5 signature: 240f145a108dc3ebbbcea6f9c3c264fc ****/
 		%feature("compactdefaultargs") UOrder;
-		%feature("autodoc", "Returns the continuity order in u of the node.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the continuity order in u of the node.
 ") UOrder;
 		Standard_Integer UOrder();
 
 		/****************** VOrder ******************/
 		/**** md5 signature: bacd1acb31115deb5ae2d0800c99aadf ****/
 		%feature("compactdefaultargs") VOrder;
-		%feature("autodoc", "Returns the continuity order in v of the node.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+Returns the continuity order in v of the node.
 ") VOrder;
 		Standard_Integer VOrder();
 
@@ -2697,19 +3077,20 @@ class AdvApp2Var_Patch : public Standard_Transient {
 		/****************** AdvApp2Var_Patch ******************/
 		/**** md5 signature: d33d6d4645686ec8d5b284576c0f601e ****/
 		%feature("compactdefaultargs") AdvApp2Var_Patch;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Patch;
 		 AdvApp2Var_Patch();
 
 		/****************** AdvApp2Var_Patch ******************/
 		/**** md5 signature: 009293243a6ed1ff77c648dd22d8cf3b ****/
 		%feature("compactdefaultargs") AdvApp2Var_Patch;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 U0: float
@@ -2719,59 +3100,70 @@ V1: float
 iu: int
 iv: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_Patch;
 		 AdvApp2Var_Patch(const Standard_Real U0, const Standard_Real U1, const Standard_Real V0, const Standard_Real V1, const Standard_Integer iu, const Standard_Integer iv);
 
 		/****************** AddConstraints ******************/
 		/**** md5 signature: abf03d99820fa7dc9c1dcf3e4036e911 ****/
 		%feature("compactdefaultargs") AddConstraints;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Conditions: AdvApp2Var_Context
 Constraints: AdvApp2Var_Framework
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AddConstraints;
 		void AddConstraints(const AdvApp2Var_Context & Conditions, const AdvApp2Var_Framework & Constraints);
 
 		/****************** AddErrors ******************/
 		/**** md5 signature: e042d0a7d13c92b6b2ba54fe1e7f2429 ****/
 		%feature("compactdefaultargs") AddErrors;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Constraints: AdvApp2Var_Framework
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AddErrors;
 		void AddErrors(const AdvApp2Var_Framework & Constraints);
 
 		/****************** AverageErrors ******************/
 		/**** md5 signature: d8502ea596eaa24c6ddd3c29b947b322 ****/
 		%feature("compactdefaultargs") AverageErrors;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") AverageErrors;
 		opencascade::handle<TColStd_HArray1OfReal> AverageErrors();
 
 		/****************** ChangeDomain ******************/
 		/**** md5 signature: 2ac5144771fa2395ab4c3175f83f7fdd ****/
 		%feature("compactdefaultargs") ChangeDomain;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 a: float
@@ -2779,309 +3171,368 @@ b: float
 c: float
 d: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") ChangeDomain;
 		void ChangeDomain(const Standard_Real a, const Standard_Real b, const Standard_Real c, const Standard_Real d);
 
 		/****************** ChangeNbCoeff ******************/
 		/**** md5 signature: 802370e7ae3255f35692248af680e738 ****/
 		%feature("compactdefaultargs") ChangeNbCoeff;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 NbCoeffU: int
 NbCoeffV: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") ChangeNbCoeff;
 		void ChangeNbCoeff(const Standard_Integer NbCoeffU, const Standard_Integer NbCoeffV);
 
 		/****************** Coefficients ******************/
 		/**** md5 signature: e17d56434ae80ca1c852d61d7c3ca62a ****/
 		%feature("compactdefaultargs") Coefficients;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 SSPIndex: int
 Conditions: AdvApp2Var_Context
 
-Returns
+Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") Coefficients;
 		opencascade::handle<TColStd_HArray1OfReal> Coefficients(const Standard_Integer SSPIndex, const AdvApp2Var_Context & Conditions);
 
 		/****************** CritValue ******************/
 		/**** md5 signature: 23a54416c5dbe722901061f446e55cde ****/
 		%feature("compactdefaultargs") CritValue;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") CritValue;
 		Standard_Real CritValue();
 
 		/****************** CutSense ******************/
 		/**** md5 signature: 992e37471b9e9d39f6176f987d7026a1 ****/
 		%feature("compactdefaultargs") CutSense;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") CutSense;
 		Standard_Integer CutSense();
 
 		/****************** CutSense ******************/
 		/**** md5 signature: 521a8a559c48f0a748d039ed8b373ff4 ****/
 		%feature("compactdefaultargs") CutSense;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Crit: AdvApp2Var_Criterion
 NumDec: int
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") CutSense;
 		Standard_Integer CutSense(const AdvApp2Var_Criterion & Crit, const Standard_Integer NumDec);
 
 		/****************** Discretise ******************/
 		/**** md5 signature: c6ff2fab99b0d1f461ae97d16b7121e3 ****/
 		%feature("compactdefaultargs") Discretise;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Conditions: AdvApp2Var_Context
 Constraints: AdvApp2Var_Framework
 func: AdvApp2Var_EvaluatorFunc2Var
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Discretise;
 		void Discretise(const AdvApp2Var_Context & Conditions, const AdvApp2Var_Framework & Constraints, const AdvApp2Var_EvaluatorFunc2Var & func);
 
 		/****************** HasResult ******************/
 		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
 		%feature("compactdefaultargs") HasResult;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") HasResult;
 		Standard_Boolean HasResult();
 
 		/****************** IsApproximated ******************/
 		/**** md5 signature: 7c34eaf99169909b82e07df22d055afb ****/
 		%feature("compactdefaultargs") IsApproximated;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") IsApproximated;
 		Standard_Boolean IsApproximated();
 
 		/****************** IsDiscretised ******************/
 		/**** md5 signature: 47baa977dd394ace9e32cb703e3423fb ****/
 		%feature("compactdefaultargs") IsDiscretised;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") IsDiscretised;
 		Standard_Boolean IsDiscretised();
 
 		/****************** IsoErrors ******************/
 		/**** md5 signature: 8ea111f68143778d4a8973276e928d0b ****/
 		%feature("compactdefaultargs") IsoErrors;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray2OfReal>
+
+Description
+-----------
+No available documentation.
 ") IsoErrors;
 		opencascade::handle<TColStd_HArray2OfReal> IsoErrors();
 
 		/****************** MakeApprox ******************/
 		/**** md5 signature: 276a3e9cd61d2de916908db5672bd9b2 ****/
 		%feature("compactdefaultargs") MakeApprox;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Conditions: AdvApp2Var_Context
 Constraints: AdvApp2Var_Framework
 NumDec: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") MakeApprox;
 		void MakeApprox(const AdvApp2Var_Context & Conditions, const AdvApp2Var_Framework & Constraints, const Standard_Integer NumDec);
 
 		/****************** MaxErrors ******************/
 		/**** md5 signature: 2c31ae61bc19ac28b8afc8aaffbdb3d7 ****/
 		%feature("compactdefaultargs") MaxErrors;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<TColStd_HArray1OfReal>
+
+Description
+-----------
+No available documentation.
 ") MaxErrors;
 		opencascade::handle<TColStd_HArray1OfReal> MaxErrors();
 
 		/****************** NbCoeffInU ******************/
 		/**** md5 signature: 69cd17080302de88c9d27eb417982d70 ****/
 		%feature("compactdefaultargs") NbCoeffInU;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbCoeffInU;
 		Standard_Integer NbCoeffInU();
 
 		/****************** NbCoeffInV ******************/
 		/**** md5 signature: 5fdc9c87479a6f2cd28f37494a151db7 ****/
 		%feature("compactdefaultargs") NbCoeffInV;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") NbCoeffInV;
 		Standard_Integer NbCoeffInV();
 
 		/****************** OverwriteApprox ******************/
 		/**** md5 signature: 498eeb5383c32fe019241a25212632dc ****/
 		%feature("compactdefaultargs") OverwriteApprox;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") OverwriteApprox;
 		void OverwriteApprox();
 
 		/****************** Poles ******************/
 		/**** md5 signature: a678e8da8145f8a2e18659df95598b78 ****/
 		%feature("compactdefaultargs") Poles;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 SSPIndex: int
 Conditions: AdvApp2Var_Context
 
-Returns
+Return
 -------
 opencascade::handle<TColgp_HArray2OfPnt>
+
+Description
+-----------
+No available documentation.
 ") Poles;
 		opencascade::handle<TColgp_HArray2OfPnt> Poles(const Standard_Integer SSPIndex, const AdvApp2Var_Context & Conditions);
 
 		/****************** ResetApprox ******************/
 		/**** md5 signature: 95158c4db01998815f8d16a93f8762e3 ****/
 		%feature("compactdefaultargs") ResetApprox;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") ResetApprox;
 		void ResetApprox();
 
 		/****************** SetCritValue ******************/
 		/**** md5 signature: fa8644c9d9151b6fc16f33d9ba06eb43 ****/
 		%feature("compactdefaultargs") SetCritValue;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 dist: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetCritValue;
 		void SetCritValue(const Standard_Real dist);
 
 		/****************** U0 ******************/
 		/**** md5 signature: 339bb715a75de7a8b4555f6a339ebd10 ****/
 		%feature("compactdefaultargs") U0;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") U0;
 		Standard_Real U0();
 
 		/****************** U1 ******************/
 		/**** md5 signature: dc11e0157513dfb2ced295d3b3c19ebf ****/
 		%feature("compactdefaultargs") U1;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") U1;
 		Standard_Real U1();
 
 		/****************** UOrder ******************/
 		/**** md5 signature: 3bb505464047fef2900b8b2c2896c41e ****/
 		%feature("compactdefaultargs") UOrder;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") UOrder;
 		Standard_Integer UOrder();
 
 		/****************** V0 ******************/
 		/**** md5 signature: 00b73901144f5edffff220d5d949eac1 ****/
 		%feature("compactdefaultargs") V0;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") V0;
 		Standard_Real V0();
 
 		/****************** V1 ******************/
 		/**** md5 signature: 4690fe5b6fc46d61802a6f0d508c99e5 ****/
 		%feature("compactdefaultargs") V1;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+No available documentation.
 ") V1;
 		Standard_Real V1();
 
 		/****************** VOrder ******************/
 		/**** md5 signature: 704529177e651451c5029c517db99652 ****/
 		%feature("compactdefaultargs") VOrder;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") VOrder;
 		Standard_Integer VOrder();
 
@@ -3105,57 +3556,65 @@ class AdvApp2Var_SysBase {
 		/****************** AdvApp2Var_SysBase ******************/
 		/**** md5 signature: 037dbb5c455e29c97a0cdd1615e8c69a ****/
 		%feature("compactdefaultargs") AdvApp2Var_SysBase;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") AdvApp2Var_SysBase;
 		 AdvApp2Var_SysBase();
 
 		/****************** do__fio ******************/
 		/**** md5 signature: 2cf3b2f76e4397a39b6b26f1f24587d6 ****/
 		%feature("compactdefaultargs") do__fio;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") do__fio;
 		static int do__fio();
 
 		/****************** do__lio ******************/
 		/**** md5 signature: 1aad0eab41f21d50ea885ddaf41bd76b ****/
 		%feature("compactdefaultargs") do__lio;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") do__lio;
 		static int do__lio();
 
 		/****************** macinit_ ******************/
 		/**** md5 signature: b882f9f2083ffeb7a4d047c8c9eed173 ****/
 		%feature("compactdefaultargs") macinit_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 : int *
 : int *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") macinit_;
 		static int macinit_(int * , int * );
 
 		/****************** macrai4_ ******************/
 		/**** md5 signature: 0b82b8932cd90447e9719c6d0ea6770e ****/
 		%feature("compactdefaultargs") macrai4_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 nbelem: integer *
@@ -3164,17 +3623,20 @@ itablo: integer *
 iofset: intptr_t *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") macrai4_;
 		int macrai4_(integer * nbelem, integer * maxelm, integer * itablo, intptr_t * iofset, integer * iercod);
 
 		/****************** macrar8_ ******************/
 		/**** md5 signature: 0fe325ba06bc2bb7a2a56adaadaef79f ****/
 		%feature("compactdefaultargs") macrar8_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 nbelem: integer *
@@ -3183,17 +3645,20 @@ xtablo: doublereal *
 iofset: intptr_t *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") macrar8_;
 		int macrar8_(integer * nbelem, integer * maxelm, doublereal * xtablo, intptr_t * iofset, integer * iercod);
 
 		/****************** macrdi4_ ******************/
 		/**** md5 signature: adbf9dc4998d49cdeb9ec904ae5369d9 ****/
 		%feature("compactdefaultargs") macrdi4_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 nbelem: integer *
@@ -3202,17 +3667,20 @@ itablo: integer *
 iofset: intptr_t *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") macrdi4_;
 		int macrdi4_(integer * nbelem, integer * maxelm, integer * itablo, intptr_t * iofset, integer * iercod);
 
 		/****************** macrdr8_ ******************/
 		/**** md5 signature: 59c1de640359cc81a9ba0b28ba054a45 ****/
 		%feature("compactdefaultargs") macrdr8_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 nbelem: integer *
@@ -3221,77 +3689,91 @@ xtablo: doublereal *
 iofset: intptr_t *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") macrdr8_;
 		int macrdr8_(integer * nbelem, integer * maxelm, doublereal * xtablo, intptr_t * iofset, integer * iercod);
 
 		/****************** maermsg_ ******************/
 		/**** md5 signature: 3521f6514eb56f1d2efe552ec8bb7ef0 ****/
 		%feature("compactdefaultargs") maermsg_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 cnompg: char *
 icoder: integer *
 cnompg_len: ftnlen
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") maermsg_;
 		static int maermsg_(const char * cnompg, integer * icoder, ftnlen cnompg_len);
 
 		/****************** mainial_ ******************/
 		/**** md5 signature: 22a172c01af47b94bac0122c7c454091 ****/
 		%feature("compactdefaultargs") mainial_;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mainial_;
 		int mainial_();
 
 		/****************** maitbr8_ ******************/
 		/**** md5 signature: b9cb20c149f17c408909c17bd7b8ed49 ****/
 		%feature("compactdefaultargs") maitbr8_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 itaill: integer *
 xtab: doublereal *
 xval: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") maitbr8_;
 		static int maitbr8_(integer * itaill, doublereal * xtab, doublereal * xval);
 
 		/****************** maovsr8_ ******************/
 		/**** md5 signature: 4ed73ca13a51d2c0e3c314b21da45c12 ****/
 		%feature("compactdefaultargs") maovsr8_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ivalcs: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") maovsr8_;
 		static int maovsr8_(integer * ivalcs);
 
 		/****************** mcrdelt_ ******************/
 		/**** md5 signature: 819c57c0f692a59c62677eb50adb81a4 ****/
 		%feature("compactdefaultargs") mcrdelt_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 iunit: integer *
@@ -3300,34 +3782,40 @@ t: void *
 iofset: intptr_t *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mcrdelt_;
 		int mcrdelt_(integer * iunit, integer * isize, void * t, intptr_t * iofset, integer * iercod);
 
 		/****************** mcrfill_ ******************/
 		/**** md5 signature: be4b67960201d9ced29ceedc9f961ab3 ****/
 		%feature("compactdefaultargs") mcrfill_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 size: integer *
 tin: void *
 tout: void *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mcrfill_;
 		static int mcrfill_(integer * size, void * tin, void * tout);
 
 		/****************** mcrrqst_ ******************/
 		/**** md5 signature: 4679deece1dda86417c4beb0334c93cb ****/
 		%feature("compactdefaultargs") mcrrqst_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 iunit: integer *
@@ -3336,134 +3824,161 @@ t: void *
 iofset: intptr_t *
 iercod: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mcrrqst_;
 		int mcrrqst_(integer * iunit, integer * isize, void * t, intptr_t * iofset, integer * iercod);
 
 		/****************** mgenmsg_ ******************/
 		/**** md5 signature: 1b59b230a367abddf3b9cd6a99b39487 ****/
 		%feature("compactdefaultargs") mgenmsg_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 nomprg: char *
 nomprg_len: ftnlen
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mgenmsg_;
 		static int mgenmsg_(const char * nomprg, ftnlen nomprg_len);
 
 		/****************** mgsomsg_ ******************/
 		/**** md5 signature: 31f3734e692045616afd66e3f8757450 ****/
 		%feature("compactdefaultargs") mgsomsg_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 nomprg: char *
 nomprg_len: ftnlen
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mgsomsg_;
 		static int mgsomsg_(const char * nomprg, ftnlen nomprg_len);
 
 		/****************** miraz_ ******************/
 		/**** md5 signature: 24a2a1e4b8fd6828d77f5010fa9d9f7f ****/
 		%feature("compactdefaultargs") miraz_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 taille: integer *
 adt: void *
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") miraz_;
 		static void miraz_(integer * taille, void * adt);
 
 		/****************** mnfndeb_ ******************/
 		/**** md5 signature: e206e56e1443aff338ea92ec4b50fe55 ****/
 		%feature("compactdefaultargs") mnfndeb_;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 integer
+
+Description
+-----------
+No available documentation.
 ") mnfndeb_;
 		static integer mnfndeb_();
 
 		/****************** msifill_ ******************/
 		/**** md5 signature: b3303f70cf7f1647dd193e2d74bb0381 ****/
 		%feature("compactdefaultargs") msifill_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 nbintg: integer *
 ivecin: integer *
 ivecou: integer *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") msifill_;
 		static int msifill_(integer * nbintg, integer * ivecin, integer * ivecou);
 
 		/****************** msrfill_ ******************/
 		/**** md5 signature: 4da81a3e2f58e8e272de26cef456ca5c ****/
 		%feature("compactdefaultargs") msrfill_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 nbreel: integer *
 vecent: doublereal *
 vecsor: doublereal *
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") msrfill_;
 		static int msrfill_(integer * nbreel, doublereal * vecent, doublereal * vecsor);
 
 		/****************** mswrdbg_ ******************/
 		/**** md5 signature: b893a114fc87aec8b4d99925d2ba32a0 ****/
 		%feature("compactdefaultargs") mswrdbg_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 ctexte: char *
 ctexte_len: ftnlen
 
-Returns
+Return
 -------
 int
+
+Description
+-----------
+No available documentation.
 ") mswrdbg_;
 		static int mswrdbg_(const char * ctexte, ftnlen ctexte_len);
 
 		/****************** mvriraz_ ******************/
 		/**** md5 signature: 50aaf265d23e4b6465b101662340699b ****/
 		%feature("compactdefaultargs") mvriraz_;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 taille: integer *
 adt: void *
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") mvriraz_;
 		static void mvriraz_(integer * taille, void * adt);
 

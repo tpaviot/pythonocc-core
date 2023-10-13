@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINDRIVERSDOCSTRING
 "BinDrivers module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_bindrivers.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_bindrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=BINDRIVERSDOCSTRING) BinDrivers
 
@@ -109,45 +109,54 @@ class BinDrivers {
 		/****************** AttributeDrivers ******************/
 		/**** md5 signature: a3052842141074dac4fa7742d5b7f7f0 ****/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "Creates the table of drivers of types supported.
-
+		%feature("autodoc", "
 Parameters
 ----------
 MsgDrv: Message_Messenger
 
-Returns
+Return
 -------
 opencascade::handle<BinMDF_ADriverTable>
+
+Description
+-----------
+Creates the table of drivers of types supported.
 ") AttributeDrivers;
 		static opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & MsgDrv);
 
 		/****************** DefineFormat ******************/
 		/**** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ****/
 		%feature("compactdefaultargs") DefineFormat;
-		%feature("autodoc", "Defines format 'binocaf' and registers its read and write drivers in the specified application.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theApp: TDocStd_Application
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Defines format 'binocaf' and registers its read and write drivers in the specified application.
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
 		/****************** Factory ******************/
 		/**** md5 signature: 9e70ed3bca71e988f9b9e86628ed8ed4 ****/
 		%feature("compactdefaultargs") Factory;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theGUID: Standard_GUID
 
-Returns
+Return
 -------
 opencascade::handle<Standard_Transient>
+
+Description
+-----------
+No available documentation.
 ") Factory;
 		static const opencascade::handle<Standard_Transient> & Factory(const Standard_GUID & theGUID);
 
@@ -168,53 +177,63 @@ class BinDrivers_DocumentRetrievalDriver : public BinLDrivers_DocumentRetrievalD
 		/****************** BinDrivers_DocumentRetrievalDriver ******************/
 		/**** md5 signature: 88a86fff6ba1732274c9249348dbc12e ****/
 		%feature("compactdefaultargs") BinDrivers_DocumentRetrievalDriver;
-		%feature("autodoc", "Constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Constructor.
 ") BinDrivers_DocumentRetrievalDriver;
 		 BinDrivers_DocumentRetrievalDriver();
 
 		/****************** AttributeDrivers ******************/
 		/**** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ****/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMsgDriver: Message_Messenger
 
-Returns
+Return
 -------
 opencascade::handle<BinMDF_ADriverTable>
+
+Description
+-----------
+No available documentation.
 ") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Clear ******************/
 		/**** md5 signature: f671931d03948860d0ead34afbe920aa ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the namedshape driver.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Clears the namedshape driver.
 ") Clear;
 		virtual void Clear();
 
 		/****************** EnableQuickPartReading ******************/
 		/**** md5 signature: f261e2d709a543f0a293a3d73e15d394 ****/
 		%feature("compactdefaultargs") EnableQuickPartReading;
-		%feature("autodoc", "Enables reading in the quick part access mode.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMessageDriver: Message_Messenger
 theValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Enables reading in the quick part access mode.
 ") EnableQuickPartReading;
 		virtual void EnableQuickPartReading(const opencascade::handle<Message_Messenger> & theMessageDriver, Standard_Boolean theValue);
 
@@ -237,107 +256,127 @@ class BinDrivers_DocumentStorageDriver : public BinLDrivers_DocumentStorageDrive
 		/****************** BinDrivers_DocumentStorageDriver ******************/
 		/**** md5 signature: ffc37e36fdced2b619cac020c0f0156f ****/
 		%feature("compactdefaultargs") BinDrivers_DocumentStorageDriver;
-		%feature("autodoc", "Constructor.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Constructor.
 ") BinDrivers_DocumentStorageDriver;
 		 BinDrivers_DocumentStorageDriver();
 
 		/****************** AttributeDrivers ******************/
 		/**** md5 signature: e2cb6a81c25c6d4dac001821709e8847 ****/
 		%feature("compactdefaultargs") AttributeDrivers;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMsgDriver: Message_Messenger
 
-Returns
+Return
 -------
 opencascade::handle<BinMDF_ADriverTable>
+
+Description
+-----------
+No available documentation.
 ") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
 		/****************** Clear ******************/
 		/**** md5 signature: f671931d03948860d0ead34afbe920aa ****/
 		%feature("compactdefaultargs") Clear;
-		%feature("autodoc", "Clears the namedshape driver.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Clears the namedshape driver.
 ") Clear;
 		virtual void Clear();
 
 		/****************** EnableQuickPartWriting ******************/
 		/**** md5 signature: 67669b500f4a4f57fa9f8e71b5f7bab8 ****/
 		%feature("compactdefaultargs") EnableQuickPartWriting;
-		%feature("autodoc", "Enables writing in the quick part access mode.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMessageDriver: Message_Messenger
 theValue: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Enables writing in the quick part access mode.
 ") EnableQuickPartWriting;
 		void EnableQuickPartWriting(const opencascade::handle<Message_Messenger> & theMessageDriver, const Standard_Boolean theValue);
 
 		/****************** IsWithNormals ******************/
 		/**** md5 signature: 9d2bdcdcd1f884eaceb6d40879d090bb ****/
 		%feature("compactdefaultargs") IsWithNormals;
-		%feature("autodoc", "Return true if shape should be stored with triangulation normals.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if shape should be stored with triangulation normals.
 ") IsWithNormals;
 		Standard_Boolean IsWithNormals();
 
 		/****************** IsWithTriangles ******************/
 		/**** md5 signature: 32c48a11bbc2ae55f906cde0d81b8f2d ****/
 		%feature("compactdefaultargs") IsWithTriangles;
-		%feature("autodoc", "Return true if shape should be stored with triangles.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Return true if shape should be stored with triangles.
 ") IsWithTriangles;
 		Standard_Boolean IsWithTriangles();
 
 		/****************** SetWithNormals ******************/
 		/**** md5 signature: 7fde6e7e5f05b8658b05741a6e66c3d2 ****/
 		%feature("compactdefaultargs") SetWithNormals;
-		%feature("autodoc", "Set if triangulation should be stored with normals or not.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMessageDriver: Message_Messenger
 theWithTriangulation: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if triangulation should be stored with normals or not.
 ") SetWithNormals;
 		void SetWithNormals(const opencascade::handle<Message_Messenger> & theMessageDriver, const Standard_Boolean theWithTriangulation);
 
 		/****************** SetWithTriangles ******************/
 		/**** md5 signature: db0227376859215948d44ae6c914f15c ****/
 		%feature("compactdefaultargs") SetWithTriangles;
-		%feature("autodoc", "Set if triangulation should be stored or not.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theMessageDriver: Message_Messenger
 theWithTriangulation: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Set if triangulation should be stored or not.
 ") SetWithTriangles;
 		void SetWithTriangles(const opencascade::handle<Message_Messenger> & theMessageDriver, const Standard_Boolean theWithTriangulation);
 

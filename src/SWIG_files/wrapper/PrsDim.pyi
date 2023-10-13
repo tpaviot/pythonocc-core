@@ -17,35 +17,24 @@ from OCC.Core.PrsMgr import *
 from OCC.Core.DsgPrs import *
 from OCC.Core.TColStd import *
 
+
 class PrsDim_DimensionSelectionMode(IntEnum):
     PrsDim_DimensionSelectionMode_All: int = ...
     PrsDim_DimensionSelectionMode_Line: int = ...
     PrsDim_DimensionSelectionMode_Text: int = ...
 
-PrsDim_DimensionSelectionMode_All = (
-    PrsDim_DimensionSelectionMode.PrsDim_DimensionSelectionMode_All
-)
-PrsDim_DimensionSelectionMode_Line = (
-    PrsDim_DimensionSelectionMode.PrsDim_DimensionSelectionMode_Line
-)
-PrsDim_DimensionSelectionMode_Text = (
-    PrsDim_DimensionSelectionMode.PrsDim_DimensionSelectionMode_Text
-)
+PrsDim_DimensionSelectionMode_All = PrsDim_DimensionSelectionMode.PrsDim_DimensionSelectionMode_All
+PrsDim_DimensionSelectionMode_Line = PrsDim_DimensionSelectionMode.PrsDim_DimensionSelectionMode_Line
+PrsDim_DimensionSelectionMode_Text = PrsDim_DimensionSelectionMode.PrsDim_DimensionSelectionMode_Text
 
 class PrsDim_DisplaySpecialSymbol(IntEnum):
     PrsDim_DisplaySpecialSymbol_No: int = ...
     PrsDim_DisplaySpecialSymbol_Before: int = ...
     PrsDim_DisplaySpecialSymbol_After: int = ...
 
-PrsDim_DisplaySpecialSymbol_No = (
-    PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_No
-)
-PrsDim_DisplaySpecialSymbol_Before = (
-    PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_Before
-)
-PrsDim_DisplaySpecialSymbol_After = (
-    PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_After
-)
+PrsDim_DisplaySpecialSymbol_No = PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_No
+PrsDim_DisplaySpecialSymbol_Before = PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_Before
+PrsDim_DisplaySpecialSymbol_After = PrsDim_DisplaySpecialSymbol.PrsDim_DisplaySpecialSymbol_After
 
 class PrsDim_KindOfDimension(IntEnum):
     PrsDim_KOD_NONE: int = ...
@@ -135,18 +124,10 @@ class PrsDim_TypeOfAngleArrowVisibility(IntEnum):
     PrsDim_TypeOfAngleArrowVisibility_Second: int = ...
     PrsDim_TypeOfAngleArrowVisibility_None: int = ...
 
-PrsDim_TypeOfAngleArrowVisibility_Both = (
-    PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_Both
-)
-PrsDim_TypeOfAngleArrowVisibility_First = (
-    PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_First
-)
-PrsDim_TypeOfAngleArrowVisibility_Second = (
-    PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_Second
-)
-PrsDim_TypeOfAngleArrowVisibility_None = (
-    PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_None
-)
+PrsDim_TypeOfAngleArrowVisibility_Both = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_Both
+PrsDim_TypeOfAngleArrowVisibility_First = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_First
+PrsDim_TypeOfAngleArrowVisibility_Second = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_Second
+PrsDim_TypeOfAngleArrowVisibility_None = PrsDim_TypeOfAngleArrowVisibility.PrsDim_TypeOfAngleArrowVisibility_None
 
 class PrsDim_TypeOfDist(IntEnum):
     PrsDim_TypeOfDist_Unknown: int = ...
@@ -159,152 +140,48 @@ PrsDim_TypeOfDist_Vertical = PrsDim_TypeOfDist.PrsDim_TypeOfDist_Vertical
 
 class prsdim:
     @staticmethod
-    def ComputeGeomCurve(
-        aCurve: Geom_Curve,
-        first1: float,
-        last1: float,
-        FirstPnt1: gp_Pnt,
-        LastPnt1: gp_Pnt,
-        aPlane: Geom_Plane,
-    ) -> Tuple[bool, bool]: ...
+    def ComputeGeomCurve(aCurve: Geom_Curve, first1: float, last1: float, FirstPnt1: gp_Pnt, LastPnt1: gp_Pnt, aPlane: Geom_Plane) -> Tuple[bool, bool]: ...
     @overload
     @staticmethod
-    def ComputeGeometry(
-        theEdge: TopoDS_Edge,
-        theCurve: Geom_Curve,
-        theFirstPnt: gp_Pnt,
-        theLastPnt: gp_Pnt,
-    ) -> bool: ...
+    def ComputeGeometry(theEdge: TopoDS_Edge, theCurve: Geom_Curve, theFirstPnt: gp_Pnt, theLastPnt: gp_Pnt) -> bool: ...
     @overload
     @staticmethod
-    def ComputeGeometry(
-        theEdge: TopoDS_Edge,
-        theCurve: Geom_Curve,
-        theFirstPnt: gp_Pnt,
-        theLastPnt: gp_Pnt,
-    ) -> Tuple[bool, bool]: ...
+    def ComputeGeometry(theEdge: TopoDS_Edge, theCurve: Geom_Curve, theFirstPnt: gp_Pnt, theLastPnt: gp_Pnt) -> Tuple[bool, bool]: ...
     @overload
     @staticmethod
-    def ComputeGeometry(
-        theEdge: TopoDS_Edge,
-        theCurve: Geom_Curve,
-        theFirstPnt: gp_Pnt,
-        theLastPnt: gp_Pnt,
-        theExtCurve: Geom_Curve,
-        thePlane: Geom_Plane,
-    ) -> Tuple[bool, bool, bool]: ...
+    def ComputeGeometry(theEdge: TopoDS_Edge, theCurve: Geom_Curve, theFirstPnt: gp_Pnt, theLastPnt: gp_Pnt, theExtCurve: Geom_Curve, thePlane: Geom_Plane) -> Tuple[bool, bool, bool]: ...
     @overload
     @staticmethod
-    def ComputeGeometry(
-        theFirstEdge: TopoDS_Edge,
-        theSecondEdge: TopoDS_Edge,
-        theFirstCurve: Geom_Curve,
-        theSecondCurve: Geom_Curve,
-        theFirstPnt1: gp_Pnt,
-        theLastPnt1: gp_Pnt,
-        theFirstPnt2: gp_Pnt,
-        theLastPnt2: gp_Pnt,
-        thePlane: Geom_Plane,
-    ) -> bool: ...
+    def ComputeGeometry(theFirstEdge: TopoDS_Edge, theSecondEdge: TopoDS_Edge, theFirstCurve: Geom_Curve, theSecondCurve: Geom_Curve, theFirstPnt1: gp_Pnt, theLastPnt1: gp_Pnt, theFirstPnt2: gp_Pnt, theLastPnt2: gp_Pnt, thePlane: Geom_Plane) -> bool: ...
     @overload
     @staticmethod
-    def ComputeGeometry(
-        theFirstEdge: TopoDS_Edge,
-        theSecondEdge: TopoDS_Edge,
-        theFirstCurve: Geom_Curve,
-        theSecondCurve: Geom_Curve,
-        theFirstPnt1: gp_Pnt,
-        theLastPnt1: gp_Pnt,
-        theFirstPnt2: gp_Pnt,
-        theLastPnt2: gp_Pnt,
-    ) -> Tuple[bool, bool, bool]: ...
+    def ComputeGeometry(theFirstEdge: TopoDS_Edge, theSecondEdge: TopoDS_Edge, theFirstCurve: Geom_Curve, theSecondCurve: Geom_Curve, theFirstPnt1: gp_Pnt, theLastPnt1: gp_Pnt, theFirstPnt2: gp_Pnt, theLastPnt2: gp_Pnt) -> Tuple[bool, bool, bool]: ...
     @overload
     @staticmethod
-    def ComputeGeometry(
-        theFirstEdge: TopoDS_Edge,
-        theSecondEdge: TopoDS_Edge,
-        theFirstCurve: Geom_Curve,
-        theSecondCurve: Geom_Curve,
-        theFirstPnt1: gp_Pnt,
-        theLastPnt1: gp_Pnt,
-        theFirstPnt2: gp_Pnt,
-        theLastPnt2: gp_Pnt,
-        theExtCurve: Geom_Curve,
-        thePlane: Geom_Plane,
-    ) -> Tuple[bool, int, bool, bool]: ...
+    def ComputeGeometry(theFirstEdge: TopoDS_Edge, theSecondEdge: TopoDS_Edge, theFirstCurve: Geom_Curve, theSecondCurve: Geom_Curve, theFirstPnt1: gp_Pnt, theLastPnt1: gp_Pnt, theFirstPnt2: gp_Pnt, theLastPnt2: gp_Pnt, theExtCurve: Geom_Curve, thePlane: Geom_Plane) -> Tuple[bool, int, bool, bool]: ...
     @overload
     @staticmethod
-    def ComputeGeometry(
-        aVertex: TopoDS_Vertex, point: gp_Pnt, aPlane: Geom_Plane
-    ) -> Tuple[bool, bool]: ...
+    def ComputeGeometry(aVertex: TopoDS_Vertex, point: gp_Pnt, aPlane: Geom_Plane) -> Tuple[bool, bool]: ...
     @staticmethod
-    def ComputeProjEdgePresentation(
-        aPres: Prs3d_Presentation,
-        aDrawer: Prs3d_Drawer,
-        anEdge: TopoDS_Edge,
-        ProjCurve: Geom_Curve,
-        FirstP: gp_Pnt,
-        LastP: gp_Pnt,
-        aColor: Optional[Quantity_NameOfColor] = Quantity_NOC_PURPLE,
-        aWidth: Optional[float] = 2,
-        aProjTOL: Optional[Aspect_TypeOfLine] = Aspect_TOL_DASH,
-        aCallTOL: Optional[Aspect_TypeOfLine] = Aspect_TOL_DOT,
-    ) -> None: ...
+    def ComputeProjEdgePresentation(aPres: Prs3d_Presentation, aDrawer: Prs3d_Drawer, anEdge: TopoDS_Edge, ProjCurve: Geom_Curve, FirstP: gp_Pnt, LastP: gp_Pnt, aColor: Optional[Quantity_NameOfColor] = Quantity_NOC_PURPLE, aWidth: Optional[float] = 2, aProjTOL: Optional[Aspect_TypeOfLine] = Aspect_TOL_DASH, aCallTOL: Optional[Aspect_TypeOfLine] = Aspect_TOL_DOT) -> None: ...
     @staticmethod
-    def ComputeProjVertexPresentation(
-        aPres: Prs3d_Presentation,
-        aDrawer: Prs3d_Drawer,
-        aVertex: TopoDS_Vertex,
-        ProjPoint: gp_Pnt,
-        aColor: Optional[Quantity_NameOfColor] = Quantity_NOC_PURPLE,
-        aWidth: Optional[float] = 2,
-        aProjTOM: Optional[Aspect_TypeOfMarker] = Aspect_TOM_PLUS,
-        aCallTOL: Optional[Aspect_TypeOfLine] = Aspect_TOL_DOT,
-    ) -> None: ...
+    def ComputeProjVertexPresentation(aPres: Prs3d_Presentation, aDrawer: Prs3d_Drawer, aVertex: TopoDS_Vertex, ProjPoint: gp_Pnt, aColor: Optional[Quantity_NameOfColor] = Quantity_NOC_PURPLE, aWidth: Optional[float] = 2, aProjTOM: Optional[Aspect_TypeOfMarker] = Aspect_TOM_PLUS, aCallTOL: Optional[Aspect_TypeOfLine] = Aspect_TOL_DOT) -> None: ...
     @staticmethod
     def DistanceFromApex(elips: gp_Elips, Apex: gp_Pnt, par: float) -> float: ...
     @staticmethod
     def Farest(aShape: TopoDS_Shape, aPoint: gp_Pnt) -> gp_Pnt: ...
     @staticmethod
-    def GetPlaneFromFace(
-        aFace: TopoDS_Face, aPlane: gp_Pln, aSurf: Geom_Surface
-    ) -> Tuple[bool, PrsDim_KindOfSurface, float]: ...
+    def GetPlaneFromFace(aFace: TopoDS_Face, aPlane: gp_Pln, aSurf: Geom_Surface) -> Tuple[bool, PrsDim_KindOfSurface, float]: ...
     @staticmethod
     def InDomain(aFirstPar: float, aLastPar: float, anAttachPar: float) -> bool: ...
     @staticmethod
-    def InitAngleBetweenCurvilinearFaces(
-        theFirstFace: TopoDS_Face,
-        theSecondFace: TopoDS_Face,
-        theFirstSurfType: PrsDim_KindOfSurface,
-        theSecondSurfType: PrsDim_KindOfSurface,
-        theCenter: gp_Pnt,
-        theFirstAttach: gp_Pnt,
-        theSecondAttach: gp_Pnt,
-        theIsFirstPointSet: Optional[bool] = False,
-    ) -> bool: ...
+    def InitAngleBetweenCurvilinearFaces(theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face, theFirstSurfType: PrsDim_KindOfSurface, theSecondSurfType: PrsDim_KindOfSurface, theCenter: gp_Pnt, theFirstAttach: gp_Pnt, theSecondAttach: gp_Pnt, theIsFirstPointSet: Optional[bool] = False) -> bool: ...
     @staticmethod
-    def InitAngleBetweenPlanarFaces(
-        theFirstFace: TopoDS_Face,
-        theSecondFace: TopoDS_Face,
-        theCenter: gp_Pnt,
-        theFirstAttach: gp_Pnt,
-        theSecondAttach: gp_Pnt,
-        theIsFirstPointSet: Optional[bool] = False,
-    ) -> bool: ...
+    def InitAngleBetweenPlanarFaces(theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face, theCenter: gp_Pnt, theFirstAttach: gp_Pnt, theSecondAttach: gp_Pnt, theIsFirstPointSet: Optional[bool] = False) -> bool: ...
     @staticmethod
-    def InitFaceLength(
-        aFace: TopoDS_Face, aPlane: gp_Pln, aSurface: Geom_Surface
-    ) -> Tuple[PrsDim_KindOfSurface, float]: ...
+    def InitFaceLength(aFace: TopoDS_Face, aPlane: gp_Pln, aSurface: Geom_Surface) -> Tuple[PrsDim_KindOfSurface, float]: ...
     @staticmethod
-    def InitLengthBetweenCurvilinearFaces(
-        theFirstFace: TopoDS_Face,
-        theSecondFace: TopoDS_Face,
-        theFirstSurf: Geom_Surface,
-        theSecondSurf: Geom_Surface,
-        theFirstAttach: gp_Pnt,
-        theSecondAttach: gp_Pnt,
-        theDirOnPlane: gp_Dir,
-    ) -> None: ...
+    def InitLengthBetweenCurvilinearFaces(theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face, theFirstSurf: Geom_Surface, theSecondSurf: Geom_Surface, theFirstAttach: gp_Pnt, theSecondAttach: gp_Pnt, theDirOnPlane: gp_Dir) -> None: ...
     @overload
     @staticmethod
     def Nearest(aShape: TopoDS_Shape, aPoint: gp_Pnt) -> gp_Pnt: ...
@@ -313,25 +190,15 @@ class prsdim:
     def Nearest(theLine: gp_Lin, thePoint: gp_Pnt) -> gp_Pnt: ...
     @overload
     @staticmethod
-    def Nearest(
-        theCurve: Geom_Curve,
-        thePoint: gp_Pnt,
-        theFirstPoint: gp_Pnt,
-        theLastPoint: gp_Pnt,
-        theNearestPoint: gp_Pnt,
-    ) -> bool: ...
+    def Nearest(theCurve: Geom_Curve, thePoint: gp_Pnt, theFirstPoint: gp_Pnt, theLastPoint: gp_Pnt, theNearestPoint: gp_Pnt) -> bool: ...
     @staticmethod
-    def NearestApex(
-        elips: gp_Elips, pApex: gp_Pnt, nApex: gp_Pnt, fpara: float, lpara: float
-    ) -> Tuple[gp_Pnt, bool]: ...
+    def NearestApex(elips: gp_Elips, pApex: gp_Pnt, nApex: gp_Pnt, fpara: float, lpara: float) -> Tuple[gp_Pnt, bool]: ...
     @staticmethod
     def ProjectPointOnLine(aPoint: gp_Pnt, aLine: gp_Lin) -> gp_Pnt: ...
     @staticmethod
     def ProjectPointOnPlane(aPoint: gp_Pnt, aPlane: gp_Pln) -> gp_Pnt: ...
     @staticmethod
-    def TranslatePointToBound(
-        aPoint: gp_Pnt, aDir: gp_Dir, aBndBox: Bnd_Box
-    ) -> gp_Pnt: ...
+    def TranslatePointToBound(aPoint: gp_Pnt, aDir: gp_Dir, aBndBox: Bnd_Box) -> gp_Pnt: ...
 
 class PrsDim_Dimension(AIS_InteractiveObject):
     def AcceptDisplayMode(self, theMode: int) -> bool: ...
@@ -356,9 +223,7 @@ class PrsDim_Dimension(AIS_InteractiveObject):
     @overload
     def SetCustomValue(self, theValue: str) -> None: ...
     def SetDimensionAspect(self, theDimensionAspect: Prs3d_DimensionAspect) -> None: ...
-    def SetDisplaySpecialSymbol(
-        self, theDisplaySpecSymbol: PrsDim_DisplaySpecialSymbol
-    ) -> None: ...
+    def SetDisplaySpecialSymbol(self, theDisplaySpecSymbol: PrsDim_DisplaySpecialSymbol) -> None: ...
     def SetFlyout(self, theFlyout: float) -> None: ...
     def SetSelToleranceForText2d(self, theTol: float) -> None: ...
     def SetSpecialSymbol(self, theSpecialSymbol: Standard_ExtCharacter) -> None: ...
@@ -368,22 +233,11 @@ class PrsDim_Dimension(AIS_InteractiveObject):
     def UnsetFixedTextPosition(self) -> None: ...
 
 class PrsDim_DimensionOwner(SelectMgr_EntityOwner):
-    def __init__(
-        self,
-        theSelObject: SelectMgr_SelectableObject,
-        theSelMode: PrsDim_DimensionSelectionMode,
-        thePriority: Optional[int] = 0,
-    ) -> None: ...
-    def HilightWithColor(
-        self, thePM: PrsMgr_PresentationManager, theStyle: Prs3d_Drawer, theMode: int
-    ) -> None: ...
-    def IsHilighted(
-        self, thePM: PrsMgr_PresentationManager, theMode: Optional[int] = 0
-    ) -> bool: ...
+    def __init__(self, theSelObject: SelectMgr_SelectableObject, theSelMode: PrsDim_DimensionSelectionMode, thePriority: Optional[int] = 0) -> None: ...
+    def HilightWithColor(self, thePM: PrsMgr_PresentationManager, theStyle: Prs3d_Drawer, theMode: int) -> None: ...
+    def IsHilighted(self, thePM: PrsMgr_PresentationManager, theMode: Optional[int] = 0) -> bool: ...
     def SelectionMode(self) -> PrsDim_DimensionSelectionMode: ...
-    def Unhilight(
-        self, thePM: PrsMgr_PresentationManager, theMode: Optional[int] = 0
-    ) -> None: ...
+    def Unhilight(self, thePM: PrsMgr_PresentationManager, theMode: Optional[int] = 0) -> None: ...
 
 class PrsDim_Relation(AIS_InteractiveObject):
     def AcceptDisplayMode(self, theMode: int) -> bool: ...
@@ -398,15 +252,7 @@ class PrsDim_Relation(AIS_InteractiveObject):
     def SecondShape(self) -> TopoDS_Shape: ...
     def SetArrowSize(self, theArrowSize: float) -> None: ...
     def SetAutomaticPosition(self, theStatus: bool) -> None: ...
-    def SetBndBox(
-        self,
-        theXmin: float,
-        theYmin: float,
-        theZmin: float,
-        theXmax: float,
-        theYmax: float,
-        theZmax: float,
-    ) -> None: ...
+    def SetBndBox(self, theXmin: float, theYmin: float, theZmin: float, theXmax: float, theYmax: float, theZmax: float) -> None: ...
     def SetColor(self, theColor: Quantity_Color) -> None: ...
     def SetExtShape(self, theIndex: int) -> None: ...
     def SetFirstShape(self, aFShape: TopoDS_Shape) -> None: ...
@@ -425,30 +271,17 @@ class PrsDim_Relation(AIS_InteractiveObject):
 
 class PrsDim_AngleDimension(PrsDim_Dimension):
     @overload
-    def __init__(
-        self, theFirstEdge: TopoDS_Edge, theSecondEdge: TopoDS_Edge
-    ) -> None: ...
+    def __init__(self, theFirstEdge: TopoDS_Edge, theSecondEdge: TopoDS_Edge) -> None: ...
     @overload
-    def __init__(
-        self, theFirstPoint: gp_Pnt, theSecondPoint: gp_Pnt, theThirdPoint: gp_Pnt
-    ) -> None: ...
+    def __init__(self, theFirstPoint: gp_Pnt, theSecondPoint: gp_Pnt, theThirdPoint: gp_Pnt) -> None: ...
     @overload
-    def __init__(
-        self,
-        theFirstVertex: TopoDS_Vertex,
-        theSecondVertex: TopoDS_Vertex,
-        theThirdVertex: TopoDS_Vertex,
-    ) -> None: ...
+    def __init__(self, theFirstVertex: TopoDS_Vertex, theSecondVertex: TopoDS_Vertex, theThirdVertex: TopoDS_Vertex) -> None: ...
     @overload
     def __init__(self, theCone: TopoDS_Face) -> None: ...
     @overload
-    def __init__(
-        self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face
-    ) -> None: ...
+    def __init__(self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face) -> None: ...
     @overload
-    def __init__(
-        self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face, thePoint: gp_Pnt
-    ) -> None: ...
+    def __init__(self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face, thePoint: gp_Pnt) -> None: ...
     def CenterPoint(self) -> gp_Pnt: ...
     def FirstPoint(self) -> gp_Pnt: ...
     def FirstShape(self) -> TopoDS_Shape: ...
@@ -459,35 +292,20 @@ class PrsDim_AngleDimension(PrsDim_Dimension):
     def GetType(self) -> PrsDim_TypeOfAngle: ...
     def SecondPoint(self) -> gp_Pnt: ...
     def SecondShape(self) -> TopoDS_Shape: ...
-    def SetArrowsVisibility(
-        self, theType: PrsDim_TypeOfAngleArrowVisibility
-    ) -> None: ...
+    def SetArrowsVisibility(self, theType: PrsDim_TypeOfAngleArrowVisibility) -> None: ...
     def SetDisplayUnits(self, theUnits: str) -> None: ...
     @overload
-    def SetMeasuredGeometry(
-        self, theFirstEdge: TopoDS_Edge, theSecondEdge: TopoDS_Edge
-    ) -> None: ...
+    def SetMeasuredGeometry(self, theFirstEdge: TopoDS_Edge, theSecondEdge: TopoDS_Edge) -> None: ...
     @overload
-    def SetMeasuredGeometry(
-        self, theFirstPoint: gp_Pnt, theSecondPoint: gp_Pnt, theThridPoint: gp_Pnt
-    ) -> None: ...
+    def SetMeasuredGeometry(self, theFirstPoint: gp_Pnt, theSecondPoint: gp_Pnt, theThridPoint: gp_Pnt) -> None: ...
     @overload
-    def SetMeasuredGeometry(
-        self,
-        theFirstVertex: TopoDS_Vertex,
-        theSecondVertex: TopoDS_Vertex,
-        theThirdVertex: TopoDS_Vertex,
-    ) -> None: ...
+    def SetMeasuredGeometry(self, theFirstVertex: TopoDS_Vertex, theSecondVertex: TopoDS_Vertex, theThirdVertex: TopoDS_Vertex) -> None: ...
     @overload
     def SetMeasuredGeometry(self, theCone: TopoDS_Face) -> None: ...
     @overload
-    def SetMeasuredGeometry(
-        self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face
-    ) -> None: ...
+    def SetMeasuredGeometry(self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face) -> None: ...
     @overload
-    def SetMeasuredGeometry(
-        self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face, thePoint: gp_Pnt
-    ) -> None: ...
+    def SetMeasuredGeometry(self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face, thePoint: gp_Pnt) -> None: ...
     def SetModelUnits(self, theUnits: str) -> None: ...
     def SetTextPosition(self, theTextPos: gp_Pnt) -> None: ...
     def SetType(self, theType: PrsDim_TypeOfAngle) -> None: ...
@@ -495,20 +313,9 @@ class PrsDim_AngleDimension(PrsDim_Dimension):
 
 class PrsDim_Chamf2dDimension(PrsDim_Relation):
     @overload
-    def __init__(
-        self, aFShape: TopoDS_Shape, aPlane: Geom_Plane, aVal: float, aText: str
-    ) -> None: ...
+    def __init__(self, aFShape: TopoDS_Shape, aPlane: Geom_Plane, aVal: float, aText: str) -> None: ...
     @overload
-    def __init__(
-        self,
-        aFShape: TopoDS_Shape,
-        aPlane: Geom_Plane,
-        aVal: float,
-        aText: str,
-        aPosition: gp_Pnt,
-        aSymbolPrs: DsgPrs_ArrowSide,
-        anArrowSize: Optional[float] = 0.0,
-    ) -> None: ...
+    def __init__(self, aFShape: TopoDS_Shape, aPlane: Geom_Plane, aVal: float, aText: str, aPosition: gp_Pnt, aSymbolPrs: DsgPrs_ArrowSide, anArrowSize: Optional[float] = 0.0) -> None: ...
     def IsMovable(self) -> bool: ...
     def KindOfDimension(self) -> PrsDim_KindOfDimension: ...
 
@@ -516,22 +323,12 @@ class PrsDim_Chamf3dDimension(PrsDim_Relation):
     @overload
     def __init__(self, aFShape: TopoDS_Shape, aVal: float, aText: str) -> None: ...
     @overload
-    def __init__(
-        self,
-        aFShape: TopoDS_Shape,
-        aVal: float,
-        aText: str,
-        aPosition: gp_Pnt,
-        aSymbolPrs: DsgPrs_ArrowSide,
-        anArrowSize: Optional[float] = 0.0,
-    ) -> None: ...
+    def __init__(self, aFShape: TopoDS_Shape, aVal: float, aText: str, aPosition: gp_Pnt, aSymbolPrs: DsgPrs_ArrowSide, anArrowSize: Optional[float] = 0.0) -> None: ...
     def IsMovable(self) -> bool: ...
     def KindOfDimension(self) -> PrsDim_KindOfDimension: ...
 
 class PrsDim_ConcentricRelation(PrsDim_Relation):
-    def __init__(
-        self, aFShape: TopoDS_Shape, aSShape: TopoDS_Shape, aPlane: Geom_Plane
-    ) -> None: ...
+    def __init__(self, aFShape: TopoDS_Shape, aSShape: TopoDS_Shape, aPlane: Geom_Plane) -> None: ...
 
 class PrsDim_DiameterDimension(PrsDim_Dimension):
     @overload
@@ -562,108 +359,36 @@ class PrsDim_EllipseRadiusDimension(PrsDim_Relation):
     def KindOfDimension(self) -> PrsDim_KindOfDimension: ...
 
 class PrsDim_EqualDistanceRelation(PrsDim_Relation):
-    def __init__(
-        self,
-        aShape1: TopoDS_Shape,
-        aShape2: TopoDS_Shape,
-        aShape3: TopoDS_Shape,
-        aShape4: TopoDS_Shape,
-        aPlane: Geom_Plane,
-    ) -> None: ...
+    def __init__(self, aShape1: TopoDS_Shape, aShape2: TopoDS_Shape, aShape3: TopoDS_Shape, aShape4: TopoDS_Shape, aPlane: Geom_Plane) -> None: ...
     @staticmethod
-    def ComputeOneEdgeOneVertexLength(
-        aPresentation: Prs3d_Presentation,
-        aDrawer: Prs3d_Drawer,
-        ArrowSize: float,
-        FirstShape: TopoDS_Shape,
-        SecondShape: TopoDS_Shape,
-        Plane: Geom_Plane,
-        AutomaticPos: bool,
-        IsSetBndBox: bool,
-        BndBox: Bnd_Box,
-        Position: gp_Pnt,
-        FirstAttach: gp_Pnt,
-        SecondAttach: gp_Pnt,
-        FirstExtreme: gp_Pnt,
-        SecondExtreme: gp_Pnt,
-    ) -> DsgPrs_ArrowSide: ...
+    def ComputeOneEdgeOneVertexLength(aPresentation: Prs3d_Presentation, aDrawer: Prs3d_Drawer, ArrowSize: float, FirstShape: TopoDS_Shape, SecondShape: TopoDS_Shape, Plane: Geom_Plane, AutomaticPos: bool, IsSetBndBox: bool, BndBox: Bnd_Box, Position: gp_Pnt, FirstAttach: gp_Pnt, SecondAttach: gp_Pnt, FirstExtreme: gp_Pnt, SecondExtreme: gp_Pnt) -> DsgPrs_ArrowSide: ...
     @staticmethod
-    def ComputeTwoEdgesLength(
-        aPresentation: Prs3d_Presentation,
-        aDrawer: Prs3d_Drawer,
-        ArrowSize: float,
-        FirstEdge: TopoDS_Edge,
-        SecondEdge: TopoDS_Edge,
-        Plane: Geom_Plane,
-        AutomaticPos: bool,
-        IsSetBndBox: bool,
-        BndBox: Bnd_Box,
-        Position: gp_Pnt,
-        FirstAttach: gp_Pnt,
-        SecondAttach: gp_Pnt,
-        FirstExtreme: gp_Pnt,
-        SecondExtreme: gp_Pnt,
-    ) -> DsgPrs_ArrowSide: ...
+    def ComputeTwoEdgesLength(aPresentation: Prs3d_Presentation, aDrawer: Prs3d_Drawer, ArrowSize: float, FirstEdge: TopoDS_Edge, SecondEdge: TopoDS_Edge, Plane: Geom_Plane, AutomaticPos: bool, IsSetBndBox: bool, BndBox: Bnd_Box, Position: gp_Pnt, FirstAttach: gp_Pnt, SecondAttach: gp_Pnt, FirstExtreme: gp_Pnt, SecondExtreme: gp_Pnt) -> DsgPrs_ArrowSide: ...
     @staticmethod
-    def ComputeTwoVerticesLength(
-        aPresentation: Prs3d_Presentation,
-        aDrawer: Prs3d_Drawer,
-        ArrowSize: float,
-        FirstVertex: TopoDS_Vertex,
-        SecondVertex: TopoDS_Vertex,
-        Plane: Geom_Plane,
-        AutomaticPos: bool,
-        IsSetBndBox: bool,
-        BndBox: Bnd_Box,
-        TypeDist: PrsDim_TypeOfDist,
-        Position: gp_Pnt,
-        FirstAttach: gp_Pnt,
-        SecondAttach: gp_Pnt,
-        FirstExtreme: gp_Pnt,
-        SecondExtreme: gp_Pnt,
-    ) -> DsgPrs_ArrowSide: ...
+    def ComputeTwoVerticesLength(aPresentation: Prs3d_Presentation, aDrawer: Prs3d_Drawer, ArrowSize: float, FirstVertex: TopoDS_Vertex, SecondVertex: TopoDS_Vertex, Plane: Geom_Plane, AutomaticPos: bool, IsSetBndBox: bool, BndBox: Bnd_Box, TypeDist: PrsDim_TypeOfDist, Position: gp_Pnt, FirstAttach: gp_Pnt, SecondAttach: gp_Pnt, FirstExtreme: gp_Pnt, SecondExtreme: gp_Pnt) -> DsgPrs_ArrowSide: ...
     def SetShape3(self, aShape: TopoDS_Shape) -> None: ...
     def SetShape4(self, aShape: TopoDS_Shape) -> None: ...
     def Shape3(self) -> TopoDS_Shape: ...
     def Shape4(self) -> TopoDS_Shape: ...
 
 class PrsDim_EqualRadiusRelation(PrsDim_Relation):
-    def __init__(
-        self, aFirstEdge: TopoDS_Edge, aSecondEdge: TopoDS_Edge, aPlane: Geom_Plane
-    ) -> None: ...
+    def __init__(self, aFirstEdge: TopoDS_Edge, aSecondEdge: TopoDS_Edge, aPlane: Geom_Plane) -> None: ...
 
 class PrsDim_FixRelation(PrsDim_Relation):
     @overload
-    def __init__(
-        self, aShape: TopoDS_Shape, aPlane: Geom_Plane, aWire: TopoDS_Wire
-    ) -> None: ...
+    def __init__(self, aShape: TopoDS_Shape, aPlane: Geom_Plane, aWire: TopoDS_Wire) -> None: ...
     @overload
-    def __init__(
-        self,
-        aShape: TopoDS_Shape,
-        aPlane: Geom_Plane,
-        aWire: TopoDS_Wire,
-        aPosition: gp_Pnt,
-        anArrowSize: Optional[float] = 0.01,
-    ) -> None: ...
+    def __init__(self, aShape: TopoDS_Shape, aPlane: Geom_Plane, aWire: TopoDS_Wire, aPosition: gp_Pnt, anArrowSize: Optional[float] = 0.01) -> None: ...
     @overload
     def __init__(self, aShape: TopoDS_Shape, aPlane: Geom_Plane) -> None: ...
     @overload
-    def __init__(
-        self,
-        aShape: TopoDS_Shape,
-        aPlane: Geom_Plane,
-        aPosition: gp_Pnt,
-        anArrowSize: Optional[float] = 0.01,
-    ) -> None: ...
+    def __init__(self, aShape: TopoDS_Shape, aPlane: Geom_Plane, aPosition: gp_Pnt, anArrowSize: Optional[float] = 0.01) -> None: ...
     def IsMovable(self) -> bool: ...
     def SetWire(self, aWire: TopoDS_Wire) -> None: ...
     def Wire(self) -> TopoDS_Wire: ...
 
 class PrsDim_IdenticRelation(PrsDim_Relation):
-    def __init__(
-        self, FirstShape: TopoDS_Shape, SecondShape: TopoDS_Shape, aPlane: Geom_Plane
-    ) -> None: ...
+    def __init__(self, FirstShape: TopoDS_Shape, SecondShape: TopoDS_Shape, aPlane: Geom_Plane) -> None: ...
     def AddUser(self, theUser: Standard_Transient) -> None: ...
     def ClearUsers(self) -> None: ...
     def HasUsers(self) -> bool: ...
@@ -676,20 +401,11 @@ class PrsDim_LengthDimension(PrsDim_Dimension):
     @overload
     def __init__(self, theFace: TopoDS_Face, theEdge: TopoDS_Edge) -> None: ...
     @overload
-    def __init__(
-        self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face
-    ) -> None: ...
+    def __init__(self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face) -> None: ...
     @overload
-    def __init__(
-        self, theFirstPoint: gp_Pnt, theSecondPoint: gp_Pnt, thePlane: gp_Pln
-    ) -> None: ...
+    def __init__(self, theFirstPoint: gp_Pnt, theSecondPoint: gp_Pnt, thePlane: gp_Pln) -> None: ...
     @overload
-    def __init__(
-        self,
-        theFirstShape: TopoDS_Shape,
-        theSecondShape: TopoDS_Shape,
-        thePlane: gp_Pln,
-    ) -> None: ...
+    def __init__(self, theFirstShape: TopoDS_Shape, theSecondShape: TopoDS_Shape, thePlane: gp_Pln) -> None: ...
     @overload
     def __init__(self, theEdge: TopoDS_Edge, thePlane: gp_Pln) -> None: ...
     def FirstPoint(self) -> gp_Pnt: ...
@@ -699,76 +415,42 @@ class PrsDim_LengthDimension(PrsDim_Dimension):
     def GetTextPosition(self) -> gp_Pnt: ...
     def SecondPoint(self) -> gp_Pnt: ...
     def SecondShape(self) -> TopoDS_Shape: ...
-    def SetDirection(
-        self, theDirection: gp_Dir, theUseDirection: Optional[bool] = True
-    ) -> None: ...
+    def SetDirection(self, theDirection: gp_Dir, theUseDirection: Optional[bool] = True) -> None: ...
     def SetDisplayUnits(self, theUnits: str) -> None: ...
     @overload
-    def SetMeasuredGeometry(
-        self, theFirstPoint: gp_Pnt, theSecondPoint: gp_Pnt, thePlane: gp_Pln
-    ) -> None: ...
+    def SetMeasuredGeometry(self, theFirstPoint: gp_Pnt, theSecondPoint: gp_Pnt, thePlane: gp_Pln) -> None: ...
     @overload
     def SetMeasuredGeometry(self, theEdge: TopoDS_Edge, thePlane: gp_Pln) -> None: ...
     @overload
-    def SetMeasuredGeometry(
-        self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face
-    ) -> None: ...
+    def SetMeasuredGeometry(self, theFirstFace: TopoDS_Face, theSecondFace: TopoDS_Face) -> None: ...
     @overload
-    def SetMeasuredGeometry(
-        self, theFace: TopoDS_Face, theEdge: TopoDS_Edge
-    ) -> None: ...
-    def SetMeasuredShapes(
-        self, theFirstShape: TopoDS_Shape, theSecondShape: TopoDS_Shape
-    ) -> None: ...
+    def SetMeasuredGeometry(self, theFace: TopoDS_Face, theEdge: TopoDS_Edge) -> None: ...
+    def SetMeasuredShapes(self, theFirstShape: TopoDS_Shape, theSecondShape: TopoDS_Shape) -> None: ...
     def SetModelUnits(self, theUnits: str) -> None: ...
     def SetTextPosition(self, theTextPos: gp_Pnt) -> None: ...
 
 class PrsDim_MidPointRelation(PrsDim_Relation):
-    def __init__(
-        self,
-        aSymmTool: TopoDS_Shape,
-        FirstShape: TopoDS_Shape,
-        SecondShape: TopoDS_Shape,
-        aPlane: Geom_Plane,
-    ) -> None: ...
+    def __init__(self, aSymmTool: TopoDS_Shape, FirstShape: TopoDS_Shape, SecondShape: TopoDS_Shape, aPlane: Geom_Plane) -> None: ...
     def GetTool(self) -> TopoDS_Shape: ...
     def IsMovable(self) -> bool: ...
     def SetTool(self, aMidPointTool: TopoDS_Shape) -> None: ...
 
 class PrsDim_OffsetDimension(PrsDim_Relation):
-    def __init__(
-        self,
-        FistShape: TopoDS_Shape,
-        SecondShape: TopoDS_Shape,
-        aVal: float,
-        aText: str,
-    ) -> None: ...
+    def __init__(self, FistShape: TopoDS_Shape, SecondShape: TopoDS_Shape, aVal: float, aText: str) -> None: ...
     def IsMovable(self) -> bool: ...
     def KindOfDimension(self) -> PrsDim_KindOfDimension: ...
     def SetRelativePos(self, aTrsf: gp_Trsf) -> None: ...
 
 class PrsDim_ParallelRelation(PrsDim_Relation):
     @overload
-    def __init__(
-        self, aFShape: TopoDS_Shape, aSShape: TopoDS_Shape, aPlane: Geom_Plane
-    ) -> None: ...
+    def __init__(self, aFShape: TopoDS_Shape, aSShape: TopoDS_Shape, aPlane: Geom_Plane) -> None: ...
     @overload
-    def __init__(
-        self,
-        aFShape: TopoDS_Shape,
-        aSShape: TopoDS_Shape,
-        aPlane: Geom_Plane,
-        aPosition: gp_Pnt,
-        aSymbolPrs: DsgPrs_ArrowSide,
-        anArrowSize: Optional[float] = 0.01,
-    ) -> None: ...
+    def __init__(self, aFShape: TopoDS_Shape, aSShape: TopoDS_Shape, aPlane: Geom_Plane, aPosition: gp_Pnt, aSymbolPrs: DsgPrs_ArrowSide, anArrowSize: Optional[float] = 0.01) -> None: ...
     def IsMovable(self) -> bool: ...
 
 class PrsDim_PerpendicularRelation(PrsDim_Relation):
     @overload
-    def __init__(
-        self, aFShape: TopoDS_Shape, aSShape: TopoDS_Shape, aPlane: Geom_Plane
-    ) -> None: ...
+    def __init__(self, aFShape: TopoDS_Shape, aSShape: TopoDS_Shape, aPlane: Geom_Plane) -> None: ...
     @overload
     def __init__(self, aFShape: TopoDS_Shape, aSShape: TopoDS_Shape) -> None: ...
 
@@ -788,45 +470,23 @@ class PrsDim_RadiusDimension(PrsDim_Dimension):
     @overload
     def SetMeasuredGeometry(self, theCircle: gp_Circ) -> None: ...
     @overload
-    def SetMeasuredGeometry(
-        self,
-        theCircle: gp_Circ,
-        theAnchorPoint: gp_Pnt,
-        theHasAnchor: Optional[bool] = True,
-    ) -> None: ...
+    def SetMeasuredGeometry(self, theCircle: gp_Circ, theAnchorPoint: gp_Pnt, theHasAnchor: Optional[bool] = True) -> None: ...
     @overload
     def SetMeasuredGeometry(self, theShape: TopoDS_Shape) -> None: ...
     @overload
-    def SetMeasuredGeometry(
-        self,
-        theShape: TopoDS_Shape,
-        theAnchorPoint: gp_Pnt,
-        theHasAnchor: Optional[bool] = True,
-    ) -> None: ...
+    def SetMeasuredGeometry(self, theShape: TopoDS_Shape, theAnchorPoint: gp_Pnt, theHasAnchor: Optional[bool] = True) -> None: ...
     def SetModelUnits(self, theUnits: str) -> None: ...
     def SetTextPosition(self, theTextPos: gp_Pnt) -> None: ...
     def Shape(self) -> TopoDS_Shape: ...
 
 class PrsDim_SymmetricRelation(PrsDim_Relation):
-    def __init__(
-        self,
-        aSymmTool: TopoDS_Shape,
-        FirstShape: TopoDS_Shape,
-        SecondShape: TopoDS_Shape,
-        aPlane: Geom_Plane,
-    ) -> None: ...
+    def __init__(self, aSymmTool: TopoDS_Shape, FirstShape: TopoDS_Shape, SecondShape: TopoDS_Shape, aPlane: Geom_Plane) -> None: ...
     def GetTool(self) -> TopoDS_Shape: ...
     def IsMovable(self) -> bool: ...
     def SetTool(self, aSymmetricTool: TopoDS_Shape) -> None: ...
 
 class PrsDim_TangentRelation(PrsDim_Relation):
-    def __init__(
-        self,
-        aFShape: TopoDS_Shape,
-        aSShape: TopoDS_Shape,
-        aPlane: Geom_Plane,
-        anExternRef: Optional[int] = 0,
-    ) -> None: ...
+    def __init__(self, aFShape: TopoDS_Shape, aSShape: TopoDS_Shape, aPlane: Geom_Plane, anExternRef: Optional[int] = 0) -> None: ...
     def ExternRef(self) -> int: ...
     def SetExternRef(self, aRef: int) -> None: ...
 
@@ -834,30 +494,15 @@ class PrsDim_MaxRadiusDimension(PrsDim_EllipseRadiusDimension):
     @overload
     def __init__(self, aShape: TopoDS_Shape, aVal: float, aText: str) -> None: ...
     @overload
-    def __init__(
-        self,
-        aShape: TopoDS_Shape,
-        aVal: float,
-        aText: str,
-        aPosition: gp_Pnt,
-        aSymbolPrs: DsgPrs_ArrowSide,
-        anArrowSize: Optional[float] = 0.0,
-    ) -> None: ...
+    def __init__(self, aShape: TopoDS_Shape, aVal: float, aText: str, aPosition: gp_Pnt, aSymbolPrs: DsgPrs_ArrowSide, anArrowSize: Optional[float] = 0.0) -> None: ...
 
 class PrsDim_MinRadiusDimension(PrsDim_EllipseRadiusDimension):
     @overload
     def __init__(self, aShape: TopoDS_Shape, aVal: float, aText: str) -> None: ...
     @overload
-    def __init__(
-        self,
-        aShape: TopoDS_Shape,
-        aVal: float,
-        aText: str,
-        aPosition: gp_Pnt,
-        aSymbolPrs: DsgPrs_ArrowSide,
-        anArrowSize: Optional[float] = 0.0,
-    ) -> None: ...
+    def __init__(self, aShape: TopoDS_Shape, aVal: float, aText: str, aPosition: gp_Pnt, aSymbolPrs: DsgPrs_ArrowSide, anArrowSize: Optional[float] = 0.0) -> None: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

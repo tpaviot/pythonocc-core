@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 2a51574
+git revision : 05f2f4b
 
 operating system : Linux 64bit 6.2.0-34-generic
 
 occt version targeted : 7.7.2
 
-date : 2023-10-08 06:57:00.374195
+date : 2023-10-13 09:21:36.932126
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -3452,7 +3452,6 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Enum: 
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: Poly
-[INFO ]      skipped method Poly::be2309d5542c18666f33b14649134b1d
 [INFO ]  Class: Poly_ArrayOfNodes
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Poly_ArrayOfUVNodes
@@ -3466,6 +3465,14 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Class: Poly_CoherentTriangle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
+[INFO ]  Class: Poly_CoherentTriangulation
+[INFO ]      Wrap nested class Poly_CoherentTriangulation::IteratorOfTriangle
+[INFO ]      Wrap nested class Poly_CoherentTriangulation::IteratorOfNode
+[INFO ]      Wrap nested class Poly_CoherentTriangulation::IteratorOfLink
+[INFO ]      Wrap nested class Poly_CoherentTriangulation::TwoIntegers
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_List<int>, seems to be a template
+[WARNI]      [TypeHint] Skipping type NCollection_List<TwoIntegers>, seems to be a template
 [INFO ]  Class: Poly_Connect
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Poly_MergeNodesTool
@@ -4174,9 +4181,6 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Class: RWGltf_ConfigurationNode
 [INFO ]      Wrap nested class RWGltf_ConfigurationNode::RWGltf_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: RWGltf_DracoParameters
 [INFO ]  Class: RWGltf_GltfAccessor
 [INFO ]  Class: RWGltf_GltfBufferView
@@ -4194,7 +4198,6 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Class: RWGltf_MaterialMetallicRoughness
 [INFO ]  Class: RWGltf_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Class: RWGltf_TriangulationReader
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<TopoDS_Face>, seems to be a template
 [WARNI]      [TypeHint] Skipping type rapidjson::ParseErrorCode, should contain _
@@ -4232,9 +4235,6 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Class: RWObj_ConfigurationNode
 [INFO ]      Wrap nested class RWObj_ConfigurationNode::RWObj_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: RWObj_IShapeReceiver
 [INFO ]      Class RWObj_IShapeReceiver is abstract, using %nodefaultctor.
 [INFO ]  Class: RWObj_Material
@@ -4242,7 +4242,6 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Class: RWObj_ObjWriterContext
 [INFO ]  Class: RWObj_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Class: RWObj_Reader
 [INFO ]      Class RWObj_Reader is abstract, using %nodefaultctor.
 [INFO ]      Wrap nested class RWObj_Reader::ObjVec3iHasher
@@ -4258,14 +4257,10 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Class: RWPly_ConfigurationNode
 [INFO ]      Wrap nested class RWPly_ConfigurationNode::RWPly_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: RWPly_PlyWriterContext
 [WARNI]      [TypeHint] Skip type std::shared_ptr<std::ostream>, because of trailing :
 [INFO ]  Class: RWPly_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Processing toolkit TKSTEP ===
 [INFO ]  ## Processing module GeomToStep
 [INFO ]  Class: GeomToStep_Root
@@ -6251,12 +6246,8 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Class: RWStl_ConfigurationNode
 [INFO ]      Wrap nested class RWStl_ConfigurationNode::RWStl_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: RWStl_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  ## Processing module StlAPI
 [INFO ]  Class: StlAPI
 [INFO ]  Class: StlAPI_Reader
@@ -7801,9 +7792,6 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Enum: WriteMode_RepresentationType
 [INFO ]  Enum: WriteMode_WriterVersion
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: Vrml_Coordinate3
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Vrml_Cube
@@ -7839,7 +7827,6 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Class: Vrml_PointSet
 [INFO ]  Class: Vrml_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Class: Vrml_Rotation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Vrml_SFImage
@@ -8088,6 +8075,34 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Enum: XCAFView_ProjectionType
 [INFO ]  Class: XCAFView_Object
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Processing toolkit TKXDE ===
+[INFO ]  ## Processing module DE
+[WARNI]      [TypeHint] Skip type TCollection_AsciiString,opencascade::handle, because of trailing :
+[INFO ]  Class: DE_ConfigurationContext
+[INFO ]  Class: DE_ConfigurationNode
+[INFO ]      Class DE_ConfigurationNode is abstract, using %nodefaultctor.
+[INFO ]      Wrap nested class DE_ConfigurationNode::DE_SectionGlobal
+[INFO ]  Constructor skipped for abstract class DE_ConfigurationNode
+[INFO ]  Constructor skipped for abstract class DE_ConfigurationNode
+[INFO ]  Class: DE_Provider
+[INFO ]      Class DE_Provider is abstract, using %nodefaultctor.
+[INFO ]  Constructor skipped for abstract class DE_Provider
+[INFO ]  Constructor skipped for abstract class DE_Provider
+[INFO ]  Class: DE_Wrapper
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Processing toolkit TKXDECascade ===
+[INFO ]  ## Processing module DEBRepCascade
+[INFO ]  Class: DEBRepCascade_ConfigurationNode
+[INFO ]      Wrap nested class DEBRepCascade_ConfigurationNode::DEBRep_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEBRepCascade_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  ## Processing module DEXCAFCascade
+[INFO ]  Class: DEXCAFCascade_ConfigurationNode
+[INFO ]      Wrap nested class DEXCAFCascade_ConfigurationNode::XCAFDoc_InternalSection
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: DEXCAFCascade_Provider
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Processing toolkit TKXDEIGES ===
 [INFO ]  ## Processing module IGESCAFControl
 [INFO ]  Class: IGESCAFControl
@@ -8102,12 +8117,8 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Enum: WriteMode_PlaneMode
 [INFO ]  Enum: WriteMode_PrecisionMode
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: IGESCAFControl_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Class: IGESCAFControl_Reader
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IGESCAFControl_Writer
@@ -8140,9 +8151,6 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Enum: WriteMode_StepSchema
 [INFO ]  Enum: WriteMode_VertexMode
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_Provider, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationContext, DE not in module list
 [INFO ]  Class: STEPCAFControl_Controller
 [INFO ]  Class: STEPCAFControl_ExternFile
 [INFO ]  Class: STEPCAFControl_GDTProperty
@@ -8166,7 +8174,6 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Enum passed by reference: XCAFDimTolObjects_GeomToleranceTypeValue & theType changed to XCAFDimTolObjects_GeomToleranceTypeValue &OutValue
 [INFO ]  Class: STEPCAFControl_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping unknown type DE_ConfigurationNode, DE not in module list
 [INFO ]  Class: STEPCAFControl_Reader
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
@@ -9042,8 +9049,8 @@ date : 2023-10-08 06:57:00.374195
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 17.82s
+SWIG interface file generation completed in 17.21s
 #################################################
 
-[INFO ]  Number of classes: 4747
-[INFO ]  Number of methods: 47358
+[INFO ]  Number of classes: 4756
+[INFO ]  Number of methods: 47502

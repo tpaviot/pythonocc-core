@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define NCOLLECTIONDOCSTRING
 "NCollection module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_ncollection.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_ncollection.html"
 %enddef
 %module (package="OCC.Core", docstring=NCOLLECTIONDOCSTRING) NCollection
 
@@ -187,52 +187,62 @@ typedef void value_type;
 		/****************** NCollection_StdAllocator ******************/
 		/**** md5 signature: 240c03d4b72541b1a032e1913b305d8b ****/
 		%feature("compactdefaultargs") NCollection_StdAllocator;
-		%feature("autodoc", "/*! creates an object using default open cascade allocation mechanism, i.e. which uses standard::allocate() and standard::free() underneath. */.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+/*! creates an object using default open cascade allocation mechanism, i.e. which uses standard::allocate() and standard::free() underneath. */.
 ") NCollection_StdAllocator;
 		 NCollection_StdAllocator();
 
 		/****************** NCollection_StdAllocator ******************/
 		/**** md5 signature: c45105f788e0b68d85b5ae58987f113a ****/
 		%feature("compactdefaultargs") NCollection_StdAllocator;
-		%feature("autodoc", "/*! saves \a thealloc as an underlying allocator instance.*/.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theAlloc: NCollection_BaseAllocator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+/*! saves \a thealloc as an underlying allocator instance.*/.
 ") NCollection_StdAllocator;
 		 NCollection_StdAllocator(const opencascade::handle<NCollection_BaseAllocator> & theAlloc);
 
 		/****************** NCollection_StdAllocator ******************/
 		/**** md5 signature: d36f86ffeabb62b4a5cec1623b3cf39b ****/
 		%feature("compactdefaultargs") NCollection_StdAllocator;
-		%feature("autodoc", "/*! copies allocator() from \a x.*/.
-
+		%feature("autodoc", "
 Parameters
 ----------
 X: NCollection_StdAllocator
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+/*! copies allocator() from \a x.*/.
 ") NCollection_StdAllocator;
 		 NCollection_StdAllocator(const NCollection_StdAllocator & X);
 
 		/****************** Allocator ******************/
 		/**** md5 signature: c2190efebec564fb34d6c8e52682605e ****/
 		%feature("compactdefaultargs") Allocator;
-		%feature("autodoc", "/*! returns an object specified in the constructor.*/.
-
-Returns
+		%feature("autodoc", "Return
 -------
 opencascade::handle<NCollection_BaseAllocator>
+
+Description
+-----------
+/*! returns an object specified in the constructor.*/.
 ") Allocator;
 		const opencascade::handle<NCollection_BaseAllocator> & Allocator();
 

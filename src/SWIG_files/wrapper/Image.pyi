@@ -4,6 +4,8 @@ from typing import overload, NewType, Optional, Tuple
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
 
+
+
 class Image_CompressedFormat(IntEnum):
     Image_CompressedFormat_UNKNOWN: int = ...
     Image_CompressedFormat_RGB_S3TC_DXT1: int = ...
@@ -12,18 +14,10 @@ class Image_CompressedFormat(IntEnum):
     Image_CompressedFormat_RGBA_S3TC_DXT5: int = ...
 
 Image_CompressedFormat_UNKNOWN = Image_CompressedFormat.Image_CompressedFormat_UNKNOWN
-Image_CompressedFormat_RGB_S3TC_DXT1 = (
-    Image_CompressedFormat.Image_CompressedFormat_RGB_S3TC_DXT1
-)
-Image_CompressedFormat_RGBA_S3TC_DXT1 = (
-    Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT1
-)
-Image_CompressedFormat_RGBA_S3TC_DXT3 = (
-    Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT3
-)
-Image_CompressedFormat_RGBA_S3TC_DXT5 = (
-    Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT5
-)
+Image_CompressedFormat_RGB_S3TC_DXT1 = Image_CompressedFormat.Image_CompressedFormat_RGB_S3TC_DXT1
+Image_CompressedFormat_RGBA_S3TC_DXT1 = Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT1
+Image_CompressedFormat_RGBA_S3TC_DXT3 = Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT3
+Image_CompressedFormat_RGBA_S3TC_DXT5 = Image_CompressedFormat.Image_CompressedFormat_RGBA_S3TC_DXT5
 
 class Image_Format(IntEnum):
     Image_Format_UNKNOWN: int = ...
@@ -68,72 +62,73 @@ Image_Format_RGF_half = Image_Format.Image_Format_RGF_half
 Image_Format_RGBAF_half = Image_Format.Image_Format_RGBAF_half
 Image_Format_Gray16 = Image_Format.Image_Format_Gray16
 
-# classnotwrapped
+#classnotwrapped
 class Image_Texture: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_SupportedFormats: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_CompressedPixMap: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_PixMapData: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_Diff: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_PixMap: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_VideoParams: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_VideoRecorder: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_DDSParser: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_PixMapTypedData: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorRGB: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorRGB32: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorRGBA: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorBGR: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorBGR32: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorBGRA: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorRGF: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorRGBF: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorBGRF: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorRGBAF: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_ColorBGRAF: ...
 
-# classnotwrapped
+#classnotwrapped
 class Image_AlienPixMap: ...
 
 # harray1 classes
 # harray2 classes
 # hsequence classes
+

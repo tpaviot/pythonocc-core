@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APPROXINTDOCSTRING
 "ApproxInt module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_approxint.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_approxint.html"
 %enddef
 %module (package="OCC.Core", docstring=APPROXINTDOCSTRING) ApproxInt
 
@@ -101,8 +101,7 @@ class ApproxInt_KnotTools {
 		/****************** BuildCurvature ******************/
 		/**** md5 signature: b62269124f28a23358303630ee8d4ebf ****/
 		%feature("compactdefaultargs") BuildCurvature;
-		%feature("autodoc", "Builds discrete curvature.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCoords: NCollection_LocalArray<float>
@@ -110,17 +109,20 @@ theDim: int
 thePars: math_Vector
 theCurv: TColStd_Array1OfReal
 
-Returns
+Return
 -------
 theMaxCurv: float
+
+Description
+-----------
+Builds discrete curvature.
 ") BuildCurvature;
 		static void BuildCurvature(const NCollection_LocalArray<Standard_Real> & theCoords, const Standard_Integer theDim, const math_Vector & thePars, TColStd_Array1OfReal & theCurv, Standard_Real &OutValue);
 
 		/****************** BuildKnots ******************/
 		/**** md5 signature: 49c65485e14fc730360039ad6109a047 ****/
 		%feature("compactdefaultargs") BuildKnots;
-		%feature("autodoc", "Main function to build optimal knot sequence. at least one set from (thepntsxyz, thepntsu1v1, thepntsu2v2) should exist. @param thepntsxyz - set of 3d points. @param thepntsu1v1 - set of 2d points. @param thepntsu2v2 - set of 2d points. @param thepars - expected parameters associated with set. @param theapproxxyz - flag, existence of 3d set. @param theapproxu1v1 - flag existence of first 2d set. @param theapproxu2v2 - flag existence of second 2d set. @param theminnbpnts - minimal number of points per knot interval. @param theknots - output knots sequence.
-
+		%feature("autodoc", "
 Parameters
 ----------
 thePntsXYZ: TColgp_Array1OfPnt
@@ -133,17 +135,20 @@ theApproxU2V2: bool
 theMinNbPnts: int
 theKnots: NCollection_Vector<int>
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Main function to build optimal knot sequence. at least one set from (thepntsxyz, thepntsu1v1, thepntsu2v2) should exist. @param thepntsxyz - set of 3d points. @param thepntsu1v1 - set of 2d points. @param thepntsu2v2 - set of 2d points. @param thepars - expected parameters associated with set. @param theapproxxyz - flag, existence of 3d set. @param theapproxu1v1 - flag existence of first 2d set. @param theapproxu2v2 - flag existence of second 2d set. @param theminnbpnts - minimal number of points per knot interval. @param theknots - output knots sequence.
 ") BuildKnots;
 		static void BuildKnots(const TColgp_Array1OfPnt & thePntsXYZ, const TColgp_Array1OfPnt2d & thePntsU1V1, const TColgp_Array1OfPnt2d & thePntsU2V2, const math_Vector & thePars, const Standard_Boolean theApproxXYZ, const Standard_Boolean theApproxU1V1, const Standard_Boolean theApproxU2V2, const Standard_Integer theMinNbPnts, NCollection_Vector<Standard_Integer> & theKnots);
 
 		/****************** DefineParType ******************/
 		/**** md5 signature: e1d91690eade86173e6384cbb3ec9b53 ****/
 		%feature("compactdefaultargs") DefineParType;
-		%feature("autodoc", "Defines preferable parametrization type for thewl .
-
+		%feature("autodoc", "
 Parameters
 ----------
 theWL: IntPatch_WLine
@@ -153,9 +158,13 @@ theApproxXYZ: bool
 theApproxU1V1: bool
 theApproxU2V2: bool
 
-Returns
+Return
 -------
 Approx_ParametrizationType
+
+Description
+-----------
+Defines preferable parametrization type for thewl .
 ") DefineParType;
 		static Approx_ParametrizationType DefineParType(const opencascade::handle<IntPatch_WLine> & theWL, const Standard_Integer theFpar, const Standard_Integer theLpar, const Standard_Boolean theApproxXYZ, const Standard_Boolean theApproxU1V1, const Standard_Boolean theApproxU2V2);
 
@@ -177,8 +186,7 @@ class ApproxInt_SvSurfaces {
 		/****************** Compute ******************/
 		/**** md5 signature: 9bdd8cb0fe1ff936e14f942b7906c8f7 ****/
 		%feature("compactdefaultargs") Compute;
-		%feature("autodoc", "Returns true if tg,tguv1 tguv2 can be computed.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Pt: gp_Pnt
@@ -186,31 +194,36 @@ Tg: gp_Vec
 Tguv1: gp_Vec2d
 Tguv2: gp_Vec2d
 
-Returns
+Return
 -------
 u1: float
 v1: float
 u2: float
 v2: float
+
+Description
+-----------
+Returns true if tg,tguv1 tguv2 can be computed.
 ") Compute;
 		virtual Standard_Boolean Compute(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & Pt, gp_Vec & Tg, gp_Vec2d & Tguv1, gp_Vec2d & Tguv2);
 
 		/****************** GetUseSolver ******************/
 		/**** md5 signature: 0cd3174a4b9b13255f5e86b8e6432347 ****/
 		%feature("compactdefaultargs") GetUseSolver;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") GetUseSolver;
 		virtual Standard_Boolean GetUseSolver();
 
 		/****************** Pnt ******************/
 		/**** md5 signature: 16f6732cc231fab7357ba8adcca3b24d ****/
 		%feature("compactdefaultargs") Pnt;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 u1: float
@@ -219,17 +232,20 @@ u2: float
 v2: float
 P: gp_Pnt
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Pnt;
 		virtual void Pnt(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Pnt & P);
 
 		/****************** SeekPoint ******************/
 		/**** md5 signature: 8aa752ba1a03beb45a63885928b32852 ****/
 		%feature("compactdefaultargs") SeekPoint;
-		%feature("autodoc", "Computes point on curve and parameters on the surfaces.
-
+		%feature("autodoc", "
 Parameters
 ----------
 u1: float
@@ -238,32 +254,38 @@ u2: float
 v2: float
 Point: IntSurf_PntOn2S
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+Computes point on curve and parameters on the surfaces.
 ") SeekPoint;
 		virtual Standard_Boolean SeekPoint(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, IntSurf_PntOn2S & Point);
 
 		/****************** SetUseSolver ******************/
 		/**** md5 signature: 8daf390fbfdad2bd58b32fcfe3098b8e ****/
 		%feature("compactdefaultargs") SetUseSolver;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theUseSol: bool
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") SetUseSolver;
 		void SetUseSolver(const Standard_Boolean theUseSol);
 
 		/****************** Tangency ******************/
 		/**** md5 signature: 2d07e542429be7042ab790c78def5d62 ****/
 		%feature("compactdefaultargs") Tangency;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 u1: float
@@ -272,17 +294,20 @@ u2: float
 v2: float
 Tg: gp_Vec
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") Tangency;
 		virtual Standard_Boolean Tangency(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec & Tg);
 
 		/****************** TangencyOnSurf1 ******************/
 		/**** md5 signature: ee7bf3b7674ea843f917140a18295d41 ****/
 		%feature("compactdefaultargs") TangencyOnSurf1;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 u1: float
@@ -291,17 +316,20 @@ u2: float
 v2: float
 Tg: gp_Vec2d
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") TangencyOnSurf1;
 		virtual Standard_Boolean TangencyOnSurf1(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec2d & Tg);
 
 		/****************** TangencyOnSurf2 ******************/
 		/**** md5 signature: f01fe4b58e226a7dd00bc8969effe750 ****/
 		%feature("compactdefaultargs") TangencyOnSurf2;
-		%feature("autodoc", "No available documentation.
-
+		%feature("autodoc", "
 Parameters
 ----------
 u1: float
@@ -310,9 +338,13 @@ u2: float
 v2: float
 Tg: gp_Vec2d
 
-Returns
+Return
 -------
 bool
+
+Description
+-----------
+No available documentation.
 ") TangencyOnSurf2;
 		virtual Standard_Boolean TangencyOnSurf2(const Standard_Real u1, const Standard_Real v1, const Standard_Real u2, const Standard_Real v2, gp_Vec2d & Tg);
 

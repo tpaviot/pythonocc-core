@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPINTCURVESURFACEDOCSTRING
 "BRepIntCurveSurface module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_brepintcurvesurface.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_brepintcurvesurface.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPINTCURVESURFACEDOCSTRING) BRepIntCurveSurface
 
@@ -98,186 +98,220 @@ class BRepIntCurveSurface_Inter {
 		/****************** BRepIntCurveSurface_Inter ******************/
 		/**** md5 signature: b746fb1d3b88cfc1c23fbf7d63f720ba ****/
 		%feature("compactdefaultargs") BRepIntCurveSurface_Inter;
-		%feature("autodoc", "Empty constructor;.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Empty constructor;.
 ") BRepIntCurveSurface_Inter;
 		 BRepIntCurveSurface_Inter();
 
 		/****************** Face ******************/
 		/**** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ****/
 		%feature("compactdefaultargs") Face;
-		%feature("autodoc", "Returns the current face.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TopoDS_Face
+
+Description
+-----------
+Returns the current face.
 ") Face;
 		const TopoDS_Face Face();
 
 		/****************** Init ******************/
 		/**** md5 signature: 07985eba3bf85498690ed01b37f51fca ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Load the shape, the curve and initialize the tolerance used for the classification.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theCurve: GeomAdaptor_Curve
 theTol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Load the shape, the curve and initialize the tolerance used for the classification.
 ") Init;
 		void Init(const TopoDS_Shape & theShape, const GeomAdaptor_Curve & theCurve, const Standard_Real theTol);
 
 		/****************** Init ******************/
 		/**** md5 signature: 3b1e312f54bb7607e78407ff166c1205 ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Load the shape, the curve and initialize the tolerance used for the classification.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theLine: gp_Lin
 theTol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Load the shape, the curve and initialize the tolerance used for the classification.
 ") Init;
 		void Init(const TopoDS_Shape & theShape, const gp_Lin & theLine, const Standard_Real theTol);
 
 		/****************** Init ******************/
 		/**** md5 signature: 520ca4890c4d0b4a44c85c9b44d9905c ****/
 		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "Method to find intersections of specified curve with loaded shape.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theCurve: GeomAdaptor_Curve
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Method to find intersections of specified curve with loaded shape.
 ") Init;
 		void Init(const GeomAdaptor_Curve & theCurve);
 
 		/****************** Load ******************/
 		/**** md5 signature: a747fed191518a6d90101ad47bb98e22 ****/
 		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "Load the shape, and initialize the tolerance used for the classification.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theShape: TopoDS_Shape
 theTol: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Load the shape, and initialize the tolerance used for the classification.
 ") Load;
 		void Load(const TopoDS_Shape & theShape, const Standard_Real theTol);
 
 		/****************** More ******************/
 		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
 		%feature("compactdefaultargs") More;
-		%feature("autodoc", "Returns true if there is a current face.
-
-Returns
+		%feature("autodoc", "Return
 -------
 bool
+
+Description
+-----------
+Returns true if there is a current face.
 ") More;
 		Standard_Boolean More();
 
 		/****************** Next ******************/
 		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
 		%feature("compactdefaultargs") Next;
-		%feature("autodoc", "Sets the next intersection point to check.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+Sets the next intersection point to check.
 ") Next;
 		void Next();
 
 		/****************** Pnt ******************/
 		/**** md5 signature: c0bafeed50f4eebb5964e2bf8520bf90 ****/
 		%feature("compactdefaultargs") Pnt;
-		%feature("autodoc", "Returns the current geometric point.
-
-Returns
+		%feature("autodoc", "Return
 -------
 gp_Pnt
+
+Description
+-----------
+Returns the current geometric point.
 ") Pnt;
 		const gp_Pnt Pnt();
 
 		/****************** Point ******************/
 		/**** md5 signature: 39b389cfd53f7848e2a79affac9ccd3b ****/
 		%feature("compactdefaultargs") Point;
-		%feature("autodoc", "Returns the current intersection point.
-
-Returns
+		%feature("autodoc", "Return
 -------
 IntCurveSurface_IntersectionPoint
+
+Description
+-----------
+Returns the current intersection point.
 ") Point;
 		IntCurveSurface_IntersectionPoint Point();
 
 		/****************** State ******************/
 		/**** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ****/
 		%feature("compactdefaultargs") State;
-		%feature("autodoc", "Returns the current state (in or on).
-
-Returns
+		%feature("autodoc", "Return
 -------
 TopAbs_State
+
+Description
+-----------
+Returns the current state (in or on).
 ") State;
 		TopAbs_State State();
 
 		/****************** Transition ******************/
 		/**** md5 signature: bd528dc9c78a60a5b26409b8cf4f3afe ****/
 		%feature("compactdefaultargs") Transition;
-		%feature("autodoc", "Returns the transition of the line on the surface (in or out or unknown).
-
-Returns
+		%feature("autodoc", "Return
 -------
 IntCurveSurface_TransitionOnCurve
+
+Description
+-----------
+Returns the transition of the line on the surface (in or out or unknown).
 ") Transition;
 		IntCurveSurface_TransitionOnCurve Transition();
 
 		/****************** U ******************/
 		/**** md5 signature: dd41b21b6ce05c48c2d8d002663816e1 ****/
 		%feature("compactdefaultargs") U;
-		%feature("autodoc", "Returns the u parameter of the current point on the current face.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the u parameter of the current point on the current face.
 ") U;
 		Standard_Real U();
 
 		/****************** V ******************/
 		/**** md5 signature: a561db1f9ebb0e926d3862b2e88ce187 ****/
 		%feature("compactdefaultargs") V;
-		%feature("autodoc", "Returns the v parameter of the current point on the current face.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the v parameter of the current point on the current face.
 ") V;
 		Standard_Real V();
 
 		/****************** W ******************/
 		/**** md5 signature: dde24677dd63b48ccacea2fe8006eed7 ****/
 		%feature("compactdefaultargs") W;
-		%feature("autodoc", "Returns the parameter of the current point on the curve.
-
-Returns
+		%feature("autodoc", "Return
 -------
 float
+
+Description
+-----------
+Returns the parameter of the current point on the curve.
 ") W;
 		Standard_Real W();
 

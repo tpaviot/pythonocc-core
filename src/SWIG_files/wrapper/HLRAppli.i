@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HLRAPPLIDOCSTRING
 "HLRAppli module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_hlrappli.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_hlrappli.html"
 %enddef
 %module (package="OCC.Core", docstring=HLRAPPLIDOCSTRING) HLRAppli
 
@@ -101,62 +101,71 @@ class HLRAppli_ReflectLines {
 		/****************** HLRAppli_ReflectLines ******************/
 		/**** md5 signature: c68fdca60efe22186684369fafa6346f ****/
 		%feature("compactdefaultargs") HLRAppli_ReflectLines;
-		%feature("autodoc", "Constructor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 aShape: TopoDS_Shape
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Constructor.
 ") HLRAppli_ReflectLines;
 		 HLRAppli_ReflectLines(const TopoDS_Shape & aShape);
 
 		/****************** GetCompoundOf3dEdges ******************/
 		/**** md5 signature: 56814c9f5f74fb78cdeb6b9ce73f3eda ****/
 		%feature("compactdefaultargs") GetCompoundOf3dEdges;
-		%feature("autodoc", "Returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d.
-
+		%feature("autodoc", "
 Parameters
 ----------
 type: HLRBRep_TypeOfResultingEdge
 visible: bool
 In3d: bool
 
-Returns
+Return
 -------
 TopoDS_Shape
+
+Description
+-----------
+Returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d.
 ") GetCompoundOf3dEdges;
 		TopoDS_Shape GetCompoundOf3dEdges(const HLRBRep_TypeOfResultingEdge type, const Standard_Boolean visible, const Standard_Boolean In3d);
 
 		/****************** GetResult ******************/
 		/**** md5 signature: 61ceaea87a267f8cb3587a019bfaa140 ****/
 		%feature("compactdefaultargs") GetResult;
-		%feature("autodoc", "Returns resulting compound of reflect lines represented by edges in 3d.
-
-Returns
+		%feature("autodoc", "Return
 -------
 TopoDS_Shape
+
+Description
+-----------
+Returns resulting compound of reflect lines represented by edges in 3d.
 ") GetResult;
 		TopoDS_Shape GetResult();
 
 		/****************** Perform ******************/
 		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
 		%feature("compactdefaultargs") Perform;
-		%feature("autodoc", "No available documentation.
-
-Returns
+		%feature("autodoc", "Return
 -------
 None
+
+Description
+-----------
+No available documentation.
 ") Perform;
 		void Perform();
 
 		/****************** SetAxes ******************/
 		/**** md5 signature: 4220cc44329eacefbd57c3d09a70953f ****/
 		%feature("compactdefaultargs") SetAxes;
-		%feature("autodoc", "Sets the normal to the plane of visualisation, the coordinates of the view point and the coordinates of the vertical direction vector.
-
+		%feature("autodoc", "
 Parameters
 ----------
 Nx: float
@@ -169,9 +178,13 @@ XUp: float
 YUp: float
 ZUp: float
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets the normal to the plane of visualisation, the coordinates of the view point and the coordinates of the vertical direction vector.
 ") SetAxes;
 		void SetAxes(const Standard_Real Nx, const Standard_Real Ny, const Standard_Real Nz, const Standard_Real XAt, const Standard_Real YAt, const Standard_Real ZAt, const Standard_Real XUp, const Standard_Real YUp, const Standard_Real ZUp);
 

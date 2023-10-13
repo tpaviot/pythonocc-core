@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define UNITSMETHODSDOCSTRING
 "UnitsMethods module, see official documentation at
-https://www.opencascade.com/doc/occt-7.6.0/refman/html/package_unitsmethods.html"
+https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_unitsmethods.html"
 %enddef
 %module (package="OCC.Core", docstring=UNITSMETHODSDOCSTRING) UnitsMethods
 
@@ -119,144 +119,167 @@ class UnitsMethods {
 		/****************** DumpLengthUnit ******************/
 		/**** md5 signature: 7e9f29252fe39aeb476d32067ef2003b ****/
 		%feature("compactdefaultargs") DumpLengthUnit;
-		%feature("autodoc", "Returns string name for the given scale factor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theScaleFactor: float
-theBaseUnit: UnitsMethods_LengthUnit,optional
-	default value is UnitsMethods_LengthUnit_Millimeter
+theBaseUnit: UnitsMethods_LengthUnit (optional, default to UnitsMethods_LengthUnit_Millimeter)
 
-Returns
+Return
 -------
 str
+
+Description
+-----------
+Returns string name for the given scale factor.
 ") DumpLengthUnit;
 		static Standard_CString DumpLengthUnit(const Standard_Real theScaleFactor, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
 		/****************** DumpLengthUnit ******************/
 		/**** md5 signature: 041378fbbb50f903a1e84aa7dd62133b ****/
 		%feature("compactdefaultargs") DumpLengthUnit;
-		%feature("autodoc", "Returns string for the given value of lengthunit.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theUnit: UnitsMethods_LengthUnit
 
-Returns
+Return
 -------
 str
+
+Description
+-----------
+Returns string for the given value of lengthunit.
 ") DumpLengthUnit;
 		static Standard_CString DumpLengthUnit(const UnitsMethods_LengthUnit theUnit);
 
 		/****************** GetCasCadeLengthUnit ******************/
 		/**** md5 signature: 4a35e7f810a7fd635427969f415c00c2 ****/
 		%feature("compactdefaultargs") GetCasCadeLengthUnit;
-		%feature("autodoc", "Returns value of current internal unit for cascade in millemeters by default.
-
+		%feature("autodoc", "
 Parameters
 ----------
-theBaseUnit: UnitsMethods_LengthUnit,optional
-	default value is UnitsMethods_LengthUnit_Millimeter
+theBaseUnit: UnitsMethods_LengthUnit (optional, default to UnitsMethods_LengthUnit_Millimeter)
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns value of current internal unit for cascade in millemeters by default.
 ") GetCasCadeLengthUnit;
 		static Standard_Real GetCasCadeLengthUnit(const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
 		/****************** GetLengthFactorValue ******************/
 		/**** md5 signature: 17395326a1aa02b6c1d23575c8d21a16 ****/
 		%feature("compactdefaultargs") GetLengthFactorValue;
-		%feature("autodoc", "Returns value of unit encoded by parameter theunit (integer value denoting unit, as described in iges standard) in millimeters by default.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theUnit: int
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns value of unit encoded by parameter theunit (integer value denoting unit, as described in iges standard) in millimeters by default.
 ") GetLengthFactorValue;
 		static Standard_Real GetLengthFactorValue(const Standard_Integer theUnit);
 
 		/****************** GetLengthUnitByFactorValue ******************/
 		/**** md5 signature: c591653a1cdd834dd045be23996370a7 ****/
 		%feature("compactdefaultargs") GetLengthUnitByFactorValue;
-		%feature("autodoc", "Returns the enumeration corresponding to the given scale factor.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFactorValue: float
-theBaseUnit: UnitsMethods_LengthUnit,optional
-	default value is UnitsMethods_LengthUnit_Millimeter
+theBaseUnit: UnitsMethods_LengthUnit (optional, default to UnitsMethods_LengthUnit_Millimeter)
 
-Returns
+Return
 -------
 UnitsMethods_LengthUnit
+
+Description
+-----------
+Returns the enumeration corresponding to the given scale factor.
 ") GetLengthUnitByFactorValue;
 		static UnitsMethods_LengthUnit GetLengthUnitByFactorValue(const Standard_Real theFactorValue, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
 		/****************** GetLengthUnitScale ******************/
 		/**** md5 signature: 6bccef8b04bf4f4544844ae745cb54b1 ****/
 		%feature("compactdefaultargs") GetLengthUnitScale;
-		%feature("autodoc", "Returns the scale factor for switch from first given unit to second given unit.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theFromUnit: UnitsMethods_LengthUnit
 theToUnit: UnitsMethods_LengthUnit
 
-Returns
+Return
 -------
 float
+
+Description
+-----------
+Returns the scale factor for switch from first given unit to second given unit.
 ") GetLengthUnitScale;
 		static Standard_Real GetLengthUnitScale(const UnitsMethods_LengthUnit theFromUnit, const UnitsMethods_LengthUnit theToUnit);
 
 		/****************** LengthUnitFromString ******************/
 		/**** md5 signature: 9c68ff81b8a33221a8ac8c7a597944f3 ****/
 		%feature("compactdefaultargs") LengthUnitFromString;
-		%feature("autodoc", "Make conversion of given string to value of lengthunit.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theStr: str
 theCaseSensitive: bool
 
-Returns
+Return
 -------
 UnitsMethods_LengthUnit
+
+Description
+-----------
+Make conversion of given string to value of lengthunit.
 ") LengthUnitFromString;
 		static UnitsMethods_LengthUnit LengthUnitFromString(Standard_CString theStr, const Standard_Boolean theCaseSensitive);
 
 		/****************** SetCasCadeLengthUnit ******************/
 		/**** md5 signature: bae022cf6fb5e154dc0ccbb433978128 ****/
 		%feature("compactdefaultargs") SetCasCadeLengthUnit;
-		%feature("autodoc", "Sets value of current internal unit for cascade.
-
+		%feature("autodoc", "
 Parameters
 ----------
 theUnitValue: float
-theBaseUnit: UnitsMethods_LengthUnit,optional
-	default value is UnitsMethods_LengthUnit_Millimeter
+theBaseUnit: UnitsMethods_LengthUnit (optional, default to UnitsMethods_LengthUnit_Millimeter)
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets value of current internal unit for cascade.
 ") SetCasCadeLengthUnit;
 		static void SetCasCadeLengthUnit(const Standard_Real theUnitValue, const UnitsMethods_LengthUnit theBaseUnit = UnitsMethods_LengthUnit_Millimeter);
 
 		/****************** SetCasCadeLengthUnit ******************/
 		/**** md5 signature: 888651f664c4b13f838427a3d533c4b5 ****/
 		%feature("compactdefaultargs") SetCasCadeLengthUnit;
-		%feature("autodoc", "Sets value of current internal unit for cascade by parameter theunit (integer value denoting unit, as described in iges standard).
-
+		%feature("autodoc", "
 Parameters
 ----------
 theUnit: int
 
-Returns
+Return
 -------
 None
+
+Description
+-----------
+Sets value of current internal unit for cascade by parameter theunit (integer value denoting unit, as described in iges standard).
 ") SetCasCadeLengthUnit;
 		static void SetCasCadeLengthUnit(const Standard_Integer theUnit);
 
