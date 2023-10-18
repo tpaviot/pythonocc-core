@@ -606,8 +606,8 @@ class TestWrapperFeatures(unittest.TestCase):
         line = Geom_Line.DownCast(curve)
         self.assertTrue(isinstance(line, Geom_Curve))
         # Hence, it should not be possible to downcast it as a B-Spline curve
-        bspline = Geom_BSplineCurve.DownCast(curve)
-        self.assertTrue(bspline is None)
+        with self.assertRaises(SystemError):
+            Geom_BSplineCurve.DownCast(curve)
 
     def test_return_enum(self) -> None:
         """Check that returned enums are properly handled, whether they're returned

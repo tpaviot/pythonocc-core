@@ -177,7 +177,12 @@ WRAP_OCC_TRANSIENT(const, TYPE)
     }
 
     opencascade::handle<TYPE>  Handle_ ## TYPE ## _DownCast(const opencascade::handle<Standard_Transient>& t) {
-        return opencascade::handle<TYPE>::DownCast(t);
+        opencascade::handle<TYPE> downcasted_hanle = opencascade::handle<TYPE>::DownCast(t);
+        if (downcasted_hanle.IsNull()) {
+            PyErr_SetString(PyExc_RuntimeError, "Failed to downcast to TYPE.");
+            return NULL;
+        }
+        return downcasted_hanle;
     }
 
     bool Handle_ ## TYPE ## _IsNull(const opencascade::handle<TYPE> & t) {
