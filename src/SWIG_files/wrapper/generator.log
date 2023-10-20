@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 05f2f4b
+git revision : 5e59e69
 
 operating system : Linux 64bit 6.2.0-34-generic
 
 occt version targeted : 7.7.2
 
-date : 2023-10-13 12:08:35.756632
+date : 2023-10-21 07:41:36.499236
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -150,6 +150,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: BOPTools_CoupleOfShape
 [INFO ]  Class: BOPTools_Set
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: BOPTools_SetMapHasher
 [INFO ]  ## Processing module BRepAlgoAPI
 [INFO ]  Class: BRepAlgoAPI_Check
@@ -178,6 +179,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntTools_CommonPrt
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: IntTools_Context
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntTools_Curve
@@ -203,8 +205,10 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: IntTools_ShrunkRange
 [INFO ]  Class: IntTools_SurfaceRangeLocalizeData
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: IntTools_SurfaceRangeSample
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: IntTools_SurfaceRangeSampleMapHasher
 [INFO ]  Class: IntTools_Tools
 [INFO ]  Class: IntTools_TopolTool
@@ -304,6 +308,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: BinTools_ShapeSet
 [INFO ]  Class: BinTools_ShapeWriter
 [WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[INFO ]      operand << cannot be wrapped
+[INFO ]      operand << cannot be wrapped
 [INFO ]  ## Processing module TopExp
 [INFO ]  Class: TopExp
 [INFO ]  Class: TopExp_Explorer
@@ -360,6 +366,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: TopoDS_TWire
 [INFO ]  Class: TopoDS_Vertex
 [INFO ]  Class: TopoDS_Wire
+[INFO ]      operand << cannot be wrapped
 [INFO ]  Processing toolkit TKBin ===
 [INFO ]  ## Processing module BinDrivers
 [INFO ]  Enum: BinDrivers_Marker
@@ -450,6 +457,18 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand Standard_Boolean cannot be wrapped
+[INFO ]      operand ! cannot be wrapped
+[INFO ]      operand >> cannot be wrapped
+[INFO ]      operand >> cannot be wrapped
+[INFO ]      operand >> cannot be wrapped
+[INFO ]      operand >> cannot be wrapped
+[INFO ]      operand >> cannot be wrapped
+[INFO ]      operand >> cannot be wrapped
+[INFO ]      operand >> cannot be wrapped
+[INFO ]      operand >> cannot be wrapped
+[INFO ]      operand >> cannot be wrapped
+[INFO ]      operand >> cannot be wrapped
 [INFO ]  Class: BinObjMgt_RRelocationTable
 [INFO ]  Processing toolkit TKBinTObj ===
 [INFO ]  ## Processing module BinTObjDrivers
@@ -691,6 +710,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopOpeBRepDS_GeometryData
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: TopOpeBRepDS_Interference
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Enum passed by reference: TopOpeBRepDS_Kind &GK changed to TopOpeBRepDS_Kind &OutValue
@@ -713,6 +733,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: TopOpeBRepDS_ShapeWithState
 [INFO ]  Class: TopOpeBRepDS_Surface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: TopOpeBRepDS_SurfaceExplorer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopOpeBRepDS_TKI
@@ -1000,9 +1021,12 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepBlend_AppSurface
 [INFO ]      explicitly excluded method BRepBlend_AppSurface::c8d3e7f26c4ee8a50f4eca5274d79e63
+[INFO ]  Class: BRepBlend_BlendTool
 [INFO ]  Class: BRepBlend_CurvPointRadInv
 [INFO ]  Class: BRepBlend_Extremity
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]  Class: BRepBlend_HCurve2dTool
+[INFO ]  Class: BRepBlend_HCurveTool
 [INFO ]  Class: BRepBlend_Line
 [INFO ]  Class: BRepBlend_PointOnRst
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -1074,6 +1098,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: BlendFunc_RuledInv
 [INFO ]  Class: BlendFunc_Tensor
 [INFO ]      Creating Get and Set methods for method ChangeValue
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: BlendFunc_ChamfInv
 [INFO ]  Class: BlendFunc_Chamfer
 [INFO ]  Class: BlendFunc_ConstThroat
@@ -1121,11 +1147,15 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: ChFiDS_ElSpine
 [INFO ]  Class: ChFiDS_FaceInterference
 [INFO ]  Class: ChFiDS_Map
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: ChFiDS_Regul
 [INFO ]  Class: ChFiDS_Spine
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ChFiDS_Stripe
 [INFO ]  Class: ChFiDS_StripeMap
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: ChFiDS_SurfData
 [INFO ]  Class: ChFiDS_ChamfSpine
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -1168,11 +1198,13 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      Class Geom2d_Conic is abstract, using %nodefaultctor.
 [INFO ]  Class: Geom2d_Direction
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand ^ cannot be wrapped
 [INFO ]  Class: Geom2d_Line
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2d_OffsetCurve
 [INFO ]  Class: Geom2d_VectorWithMagnitude
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand ^ cannot be wrapped
 [INFO ]  Class: Geom2d_BSplineCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2d_BezierCurve
@@ -1481,6 +1513,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  ## Processing module Geom2dAPI
 [INFO ]  Class: Geom2dAPI_ExtremaCurveCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand Standard_Integer cannot be wrapped
+[INFO ]      operand Standard_Real cannot be wrapped
 [INFO ]  Class: Geom2dAPI_InterCurveCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dAPI_Interpolate
@@ -1492,6 +1526,9 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dAPI_ProjectPointOnCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand Standard_Integer cannot be wrapped
+[INFO ]      operand gp_Pnt2d cannot be wrapped
+[INFO ]      operand Standard_Real cannot be wrapped
 [INFO ]  ## Processing module Geom2dGcc
 [INFO ]  Enum: Geom2dGcc_Type1
 [INFO ]  Enum: Geom2dGcc_Type2
@@ -1625,6 +1662,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Enum passed by reference: TopAbs_Orientation &Or changed to TopAbs_Orientation &OutValue
 [INFO ]  Enum passed by reference: TopAbs_Orientation & Or changed to TopAbs_Orientation &OutValue
 [INFO ]  Enum passed by reference: TopAbs_Orientation & Or changed to TopAbs_Orientation &OutValue
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: Geom2dHatch_FClass2dOfClassifier
 [INFO ]  Class: Geom2dHatch_Hatcher
 [INFO ]      explicitly excluded method Geom2dHatch_Hatcher::ec0624071ec7da54b3d9dacc7bcb05f9
@@ -1662,10 +1701,16 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: GeomAPI
 [INFO ]  Class: GeomAPI_ExtremaCurveCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand Standard_Integer cannot be wrapped
+[INFO ]      operand Standard_Real cannot be wrapped
 [INFO ]  Class: GeomAPI_ExtremaCurveSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand Standard_Integer cannot be wrapped
+[INFO ]      operand Standard_Real cannot be wrapped
 [INFO ]  Class: GeomAPI_ExtremaSurfaceSurface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand Standard_Integer cannot be wrapped
+[INFO ]      operand Standard_Real cannot be wrapped
 [INFO ]  Class: GeomAPI_IntCS
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomAPI_IntSS
@@ -1682,8 +1727,14 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomAPI_ProjectPointOnCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand Standard_Integer cannot be wrapped
+[INFO ]      operand gp_Pnt cannot be wrapped
+[INFO ]      operand Standard_Real cannot be wrapped
 [INFO ]  Class: GeomAPI_ProjectPointOnSurf
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand Standard_Integer cannot be wrapped
+[INFO ]      operand gp_Pnt cannot be wrapped
+[INFO ]      operand Standard_Real cannot be wrapped
 [INFO ]  ## Processing module GeomFill
 [INFO ]  Found HARRAY1 definitionGeomFill_HArray1OfLocationLaw: GeomFill_Array1OfLocationLaw
 [INFO ]  Found HARRAY1 definitionGeomFill_HArray1OfSectionLaw: GeomFill_Array1OfSectionLaw
@@ -1732,6 +1783,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: GeomFill_SweepFunction
 [INFO ]  Class: GeomFill_Tensor
 [INFO ]      Creating Get and Set methods for method ChangeValue
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: GeomFill_TgtField
 [INFO ]      Class GeomFill_TgtField is abstract, using %nodefaultctor.
 [INFO ]  Class: GeomFill_TrihedronLaw
@@ -1976,6 +2029,9 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: IntPolyh_PointNormal
 [INFO ]  Class: IntPolyh_SectionLine
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
 [INFO ]  Class: IntPolyh_StartPoint
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntPolyh_Tools
@@ -2033,6 +2089,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      Class Intf_Polygon2d is abstract, using %nodefaultctor.
 [INFO ]  Class: Intf_SectionLine
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Intf_SectionPoint
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Enum passed by reference: Intf_PIType &Dim changed to Intf_PIType &OutValue
@@ -2112,6 +2169,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: Plate_PlaneConstraint
 [INFO ]  Class: Plate_Plate
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Plate_SampledCurveConstraint
 [INFO ]  ## Processing module TopClass
 [INFO ]  Class: TopClass_SolidExplorer
@@ -2238,8 +2296,11 @@ date : 2023-10-13 12:08:35.756632
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [INFO ]  Class: AdvApp2Var_Network
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: AdvApp2Var_Node
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: AdvApp2Var_Patch
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AdvApp2Var_SysBase
@@ -2752,51 +2813,74 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Enum: gce_ErrorType
 [INFO ]  Class: gce_MakeMirror
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Trsf cannot be wrapped
 [INFO ]  Class: gce_MakeMirror2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Trsf2d cannot be wrapped
 [INFO ]  Class: gce_MakeRotation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Trsf cannot be wrapped
 [INFO ]  Class: gce_MakeRotation2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Trsf2d cannot be wrapped
 [INFO ]  Class: gce_MakeScale
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Trsf cannot be wrapped
 [INFO ]  Class: gce_MakeScale2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Trsf2d cannot be wrapped
 [INFO ]  Class: gce_MakeTranslation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Trsf cannot be wrapped
 [INFO ]  Class: gce_MakeTranslation2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Trsf2d cannot be wrapped
 [INFO ]  Class: gce_Root
 [INFO ]  Class: gce_MakeCirc
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Circ cannot be wrapped
 [INFO ]  Class: gce_MakeCirc2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Circ2d cannot be wrapped
 [INFO ]  Class: gce_MakeCone
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Cone cannot be wrapped
 [INFO ]  Class: gce_MakeCylinder
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Cylinder cannot be wrapped
 [INFO ]  Class: gce_MakeDir
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Dir cannot be wrapped
 [INFO ]  Class: gce_MakeDir2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Dir2d cannot be wrapped
 [INFO ]  Class: gce_MakeElips
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Elips cannot be wrapped
 [INFO ]  Class: gce_MakeElips2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Elips2d cannot be wrapped
 [INFO ]  Class: gce_MakeHypr
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Hypr cannot be wrapped
 [INFO ]  Class: gce_MakeHypr2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Hypr2d cannot be wrapped
 [INFO ]  Class: gce_MakeLin
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Lin cannot be wrapped
 [INFO ]  Class: gce_MakeLin2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Lin2d cannot be wrapped
 [INFO ]  Class: gce_MakeParab
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Parab cannot be wrapped
 [INFO ]  Class: gce_MakeParab2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Parab2d cannot be wrapped
 [INFO ]  Class: gce_MakePln
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Pln cannot be wrapped
 [INFO ]  Processing toolkit TKHLR ===
 [INFO ]  ## Processing module Contap
 [INFO ]  Found HSEQUENCE definitionContap_TheHSequenceOfPoint: Contap_TheSequenceOfPoint
@@ -3225,8 +3309,10 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: TDataStd
 [INFO ]  Class: TDataStd_AsciiString
 [INFO ]  Class: TDataStd_BooleanArray
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: TDataStd_BooleanList
 [INFO ]  Class: TDataStd_ByteArray
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: TDataStd_ChildNodeIterator
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TDataStd_Current
@@ -3237,6 +3323,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: TDataStd_DeltaOnModificationOfRealArray
 [INFO ]  Class: TDataStd_Expression
 [INFO ]  Class: TDataStd_ExtStringArray
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: TDataStd_ExtStringList
 [INFO ]  Class: TDataStd_HDataMapOfStringByte
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -3253,12 +3340,15 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: TDataStd_IntPackedMap
 [INFO ]  Class: TDataStd_Integer
 [INFO ]  Class: TDataStd_IntegerArray
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: TDataStd_IntegerList
 [INFO ]  Class: TDataStd_NamedData
 [INFO ]  Class: TDataStd_Real
 [INFO ]  Class: TDataStd_RealArray
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: TDataStd_RealList
 [INFO ]  Class: TDataStd_ReferenceArray
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: TDataStd_ReferenceList
 [INFO ]  Class: TDataStd_TreeNode
 [INFO ]  Class: TDataStd_UAttribute
@@ -3322,12 +3412,14 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: BSplCLib_EvaluatorFunction
 [INFO ]      Class BSplCLib_EvaluatorFunction is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class BSplCLib_EvaluatorFunction
+[INFO ]      operand () cannot be wrapped
 [INFO ]  ## Processing module BSplSLib
 [INFO ]  Class: BSplSLib
 [INFO ]  Class: BSplSLib_Cache
 [INFO ]  Class: BSplSLib_EvaluatorFunction
 [INFO ]      Class BSplSLib_EvaluatorFunction is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class BSplSLib_EvaluatorFunction
+[INFO ]      operand () cannot be wrapped
 [INFO ]  ## Processing module BVH
 [INFO ]  Enum: 
 [INFO ]  Class: BVH_AxisSelector<T,2>
@@ -3513,8 +3605,14 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: Poly
 [INFO ]  Class: Poly_ArrayOfNodes
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
 [INFO ]  Class: Poly_ArrayOfUVNodes
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
 [INFO ]  Class: Poly_CoherentLink
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Poly_CoherentNode
@@ -3547,6 +3645,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: Poly_Triangle
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method ChangeValue
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: Poly_Triangulation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec3f>, seems to be a template
@@ -3591,9 +3691,12 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: TopLoc_ItemLocation
 [INFO ]  Class: TopLoc_Location
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Trsf cannot be wrapped
 [INFO ]  Class: TopLoc_SListNodeOfItemLocation
 [INFO ]  Class: TopLoc_SListOfItemLocation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand = cannot be wrapped
 [INFO ]  ## Processing module gp
 [INFO ]  Enum: gp_EulerSequence
 [INFO ]  Enum: gp_TrsfForm
@@ -3618,16 +3721,21 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: gp_Dir
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand ^ cannot be wrapped
+[INFO ]      operand ^= cannot be wrapped
 [INFO ]  Class: gp_Dir2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand ^ cannot be wrapped
 [INFO ]  Class: gp_Elips
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: gp_Elips2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: gp_GTrsf
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: gp_GTrsf2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: gp_Hypr
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: gp_Hypr2d
@@ -3639,9 +3747,13 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: gp_Mat
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method ChangeValue
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: gp_Mat2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method ChangeValue
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: gp_Parab
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: gp_Parab2d
@@ -3668,14 +3780,20 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: gp_Vec
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand ^ cannot be wrapped
+[INFO ]      operand ^= cannot be wrapped
 [INFO ]  Class: gp_Vec2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand ^ cannot be wrapped
 [INFO ]  Class: gp_XY
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method ChangeCoord
+[INFO ]      operand ^ cannot be wrapped
 [INFO ]  Class: gp_XYZ
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method ChangeCoord
+[INFO ]      operand ^ cannot be wrapped
+[INFO ]      operand ^= cannot be wrapped
 [INFO ]  ## Processing module math
 [INFO ]  Enum: math_Status
 [INFO ]  Class: math
@@ -3695,6 +3813,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: math_DoubleTab
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method Value
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: math_EigenValuesSearcher
 [INFO ]  Class: math_FRPR
 [INFO ]  Class: math_Function
@@ -3723,12 +3842,17 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method Value
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: math_Jacobi
 [INFO ]  Class: math_KronrodSingleIntegration
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: math_Matrix
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method Value
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: math_MultipleVarFunction
 [INFO ]      Class math_MultipleVarFunction is abstract, using %nodefaultctor.
 [INFO ]  Class: math_NewtonFunctionRoot
@@ -3755,6 +3879,9 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      Creating Get and Set methods for method Value
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: math_FunctionSetWithDerivatives
 [INFO ]      Class math_FunctionSetWithDerivatives is abstract, using %nodefaultctor.
 [INFO ]  Class: math_FunctionWithDerivative
@@ -3764,6 +3891,9 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: math_MultipleVarFunctionWithHessian
 [INFO ]      Class math_MultipleVarFunctionWithHessian is abstract, using %nodefaultctor.
 [INFO ]  Class: math_TrigonometricEquationFunction
+[INFO ]      operand < cannot be wrapped
+[INFO ]      operand << cannot be wrapped
+[INFO ]      operand << cannot be wrapped
 [INFO ]  Processing toolkit TKMesh ===
 [INFO ]  ## Processing module BRepMesh
 [INFO ]  Enum: BRepMesh_DegreeOfFreedom
@@ -3792,6 +3922,14 @@ date : 2023-10-13 12:08:35.756632
 [WARNI]      [TypeHint] Skipping type const IMeshData::MapOfInteger &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::ListOfInteger &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::MapOfInteger &, should contain _
+[INFO ]      operand () cannot be wrapped
+[INFO ]  Class: BRepMesh_DefaultRangeSplitter
+[WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
+[WARNI]      [TypeHint] Skip type std::pair<float,, because of trailing :
+[WARNI]      [TypeHint] Skip type std::pair<float,, because of trailing :
+[WARNI]      [TypeHint] Skip type std::pair<float,, because of trailing :
+[WARNI]      [TypeHint] Skip type std::pair<float,, because of trailing :
+[WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  Class: BRepMesh_Deflection
 [WARNI]      [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IWireHandle &, should contain _
@@ -3816,9 +3954,11 @@ date : 2023-10-13 12:08:35.756632
 [WARNI]      [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IEdgeHandle &, should contain _
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: BRepMesh_FaceChecker
 [INFO ]      Wrap nested class BRepMesh_FaceChecker::Segment
 [WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: BRepMesh_FaceDiscret
 [INFO ]  Class: BRepMesh_GeomTool
 [INFO ]  Enum: IntFlag
@@ -3837,6 +3977,8 @@ date : 2023-10-13 12:08:35.756632
 [WARNI]      [TypeHint] Skipping type IMeshData::MapOfIntegerInteger &, should contain _
 [INFO ]  Class: BRepMesh_ModelBuilder
 [INFO ]  Class: BRepMesh_ModelHealer
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: BRepMesh_ModelPostProcessor
 [INFO ]  Class: BRepMesh_ModelPreProcessor
 [INFO ]  Class: BRepMesh_OrientedEdge
@@ -3858,6 +4000,7 @@ date : 2023-10-13 12:08:35.756632
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<gp_XYZ>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_List<Poly_Triangle>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_List<Poly_Triangle>, seems to be a template
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: BRepMesh_Vertex
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepMesh_VertexInspector
@@ -3866,14 +4009,28 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: BRepMesh_VertexTool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type const IMeshData::ListOfInteger &, should contain _
-[INFO ]  Class: BRepMesh_DelabellaBaseMeshAlgo
+[INFO ]  Class: BRepMesh_ConeRangeSplitter
+[INFO ]      explicitly excluded method BRepMesh_ConeRangeSplitter::ffa8458e807831112a8c31bb7d2b2798
+[INFO ]  Class: BRepMesh_CylinderRangeSplitter
+[WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  Class: BRepMesh_Edge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: BRepMesh_ExtrusionRangeSplitter
 [INFO ]  Class: BRepMesh_IncrementalMesh
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: BRepMesh_UndefinedRangeSplitter
+[INFO ]  Class: BRepMesh_SphereRangeSplitter
+[INFO ]  Class: BRepMesh_UVParamRangeSplitter
+[WARNI]      [TypeHint] Skipping type const IMeshData::IMapOfReal &, should contain _
+[WARNI]      [TypeHint] Skipping type IMeshData::IMapOfReal &, should contain _
+[WARNI]      [TypeHint] Skipping type const IMeshData::IMapOfReal &, should contain _
+[WARNI]      [TypeHint] Skipping type IMeshData::IMapOfReal &, should contain _
+[WARNI]      [TypeHint] Skipping type const IMeshData::IFaceHandle &, should contain _
 [INFO ]  Class: BRepMesh_DelaunayBaseMeshAlgo
+[INFO ]  Class: BRepMesh_NURBSRangeSplitter
+[INFO ]  Class: BRepMesh_TorusRangeSplitter
+[INFO ]  Class: BRepMesh_BoundaryParamsRangeSplitter
+[INFO ]  Class: BRepMesh_DelabellaBaseMeshAlgo
+[INFO ]  Class: BRepMesh_ExtrusionRangeSplitter
+[INFO ]  Class: BRepMesh_UndefinedRangeSplitter
 [INFO ]  ## Processing module BRepMeshData
 [INFO ]  Class: BRepMeshData_Curve
 [INFO ]      explicitly excluded method BRepMeshData_Curve::e93fed6728af60627a48bef10a547595
@@ -4028,6 +4185,10 @@ date : 2023-10-13 12:08:35.756632
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: MeshVS_Buffer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand void* cannot be wrapped
+[INFO ]      operand Standard_Real& cannot be wrapped
+[INFO ]      operand Standard_Integer& cannot be wrapped
+[INFO ]      operand gp_Pnt& cannot be wrapped
 [INFO ]  Class: MeshVS_CommonSensitiveEntity
 [INFO ]  Class: MeshVS_DataSource
 [INFO ]      Class MeshVS_DataSource is abstract, using %nodefaultctor.
@@ -4160,6 +4321,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepPrim_FaceBuilder
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Face cannot be wrapped
 [INFO ]  Class: BRepPrim_GWedge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepPrim_OneAxis
@@ -4178,8 +4340,11 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  ## Processing module BRepPrimAPI
 [INFO ]  Class: BRepPrimAPI_MakeBox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Shell cannot be wrapped
+[INFO ]      operand TopoDS_Solid cannot be wrapped
 [INFO ]  Class: BRepPrimAPI_MakeHalfSpace
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Solid cannot be wrapped
 [INFO ]  Class: BRepPrimAPI_MakeOneAxis
 [INFO ]      Class BRepPrimAPI_MakeOneAxis is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class BRepPrimAPI_MakeOneAxis
@@ -4189,6 +4354,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      Class BRepPrimAPI_MakeSweep is abstract, using %nodefaultctor.
 [INFO ]  Class: BRepPrimAPI_MakeWedge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Shell cannot be wrapped
+[INFO ]      operand TopoDS_Solid cannot be wrapped
 [INFO ]  Class: BRepPrimAPI_MakeCone
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepPrimAPI_MakeCylinder
@@ -4603,6 +4770,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: StepToTopoDS_PointPair
 [INFO ]  Class: StepToTopoDS_PointPairHasher
 [INFO ]  Class: StepToTopoDS_Root
+[INFO ]  Class: StepToTopoDS_Tool
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: StepToTopoDS_MakeTransformed
 [INFO ]  Class: StepToTopoDS_TranslateCompositeCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -6383,6 +6552,10 @@ date : 2023-10-13 12:08:35.756632
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<float>, seems to be a template
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<float, seems to be a template
 [INFO ]  Class: Aspect_TrackedDevicePose
+[INFO ]  Class: Aspect_VKeySet
+[INFO ]      Wrap nested class Aspect_VKeySet::KeyState
+[WARNI]      [TypeHint] Skipping type double &, should contain _
+[WARNI]      [TypeHint] Skipping type double &, should contain _
 [INFO ]  Class: Aspect_Window
 [INFO ]      Class Aspect_Window is abstract, using %nodefaultctor.
 [INFO ]      explicitly excluded method Aspect_Window::a936f0d076380de95a4ee9674fbc4aa3
@@ -6546,6 +6719,9 @@ date : 2023-10-13 12:08:35.756632
 [WARNI]      [TypeHint] Skip type Graphic3d_RenderingParams::PerfCounters, because of trailing :
 [WARNI]      [TypeHint] Skip type Graphic3d_RenderingParams::PerfCounters, because of trailing :
 [INFO ]  Class: Graphic3d_FrameStatsData
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
 [INFO ]  Class: Graphic3d_Fresnel
 [INFO ]  Class: Graphic3d_GraduatedTrihedron
 [INFO ]      Wrap nested class Graphic3d_GraduatedTrihedron::AxisAspect
@@ -6634,6 +6810,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: Graphic3d_UniformValueTypeID<Standard_Integer>
 [INFO ]  Class: Graphic3d_UniformValueTypeID<Standard_ShortReal>
 [INFO ]  Class: Graphic3d_ValidatedCubeMapOrder
+[INFO ]      operand -> cannot be wrapped
 [INFO ]  Class: Graphic3d_ValueInterface
 [INFO ]      Class Graphic3d_ValueInterface is abstract, using %nodefaultctor.
 [INFO ]      explicitly excluded method Graphic3d_ValueInterface::cfc5c1a97af7a3cc5892a65704ecfc1b
@@ -6683,6 +6860,9 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      Creating Get and Set methods for method ChangeImmediateFrameRate
 [INFO ]      Creating Get and Set methods for method ChangeImmediateFrameRateCpu
 [INFO ]      Creating Get and Set methods for method ChangeTimerValue
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
 [INFO ]  Class: Graphic3d_MediaTextureSet
 [INFO ]      explicitly excluded method Graphic3d_MediaTextureSet::6cd54bd353308339998409ead11d6658
 [INFO ]  Class: Graphic3d_TextureEnv
@@ -7074,6 +7254,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      explicitly excluded method BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox
 [INFO ]      explicitly excluded method BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox::585075c65a8681dedf24240dbb90f7f4
+[INFO ]  Class: BRepApprox_SurfaceTool
 [INFO ]  Class: BRepApprox_TheComputeLineBezierOfApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepApprox_TheComputeLineOfApprox
@@ -7121,23 +7302,33 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: BRepBuilderAPI_VertexInspector
 [INFO ]  Class: BRepBuilderAPI_BndBoxTreeSelector
 [INFO ]  Class: BRepBuilderAPI_MakeShape
+[INFO ]      operand TopoDS_Shape cannot be wrapped
 [INFO ]  Class: BRepBuilderAPI_MakeEdge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Edge cannot be wrapped
 [INFO ]  Class: BRepBuilderAPI_MakeEdge2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Edge cannot be wrapped
 [INFO ]  Class: BRepBuilderAPI_MakeFace
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Face cannot be wrapped
 [INFO ]  Class: BRepBuilderAPI_MakePolygon
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Edge cannot be wrapped
+[INFO ]      operand TopoDS_Wire cannot be wrapped
 [INFO ]  Class: BRepBuilderAPI_MakeShapeOnMesh
 [INFO ]  Class: BRepBuilderAPI_MakeShell
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Shell cannot be wrapped
 [INFO ]  Class: BRepBuilderAPI_MakeSolid
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Solid cannot be wrapped
 [INFO ]  Class: BRepBuilderAPI_MakeVertex
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Vertex cannot be wrapped
 [INFO ]  Class: BRepBuilderAPI_MakeWire
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Wire cannot be wrapped
 [INFO ]  Class: BRepBuilderAPI_ModifyShape
 [INFO ]  Class: BRepBuilderAPI_Copy
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7279,23 +7470,33 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: BRepLib_ValidateEdge
 [INFO ]      explicitly excluded method BRepLib_ValidateEdge::e317acb89ec96fb57ad5d8a365a0c932
 [INFO ]  Class: BRepLib_MakeShape
+[INFO ]      operand TopoDS_Shape cannot be wrapped
 [INFO ]  Class: BRepLib_MakeEdge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Edge cannot be wrapped
 [INFO ]  Class: BRepLib_MakeEdge2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Edge cannot be wrapped
 [INFO ]  Class: BRepLib_MakeFace
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Face cannot be wrapped
 [INFO ]  Class: BRepLib_MakePolygon
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Edge cannot be wrapped
+[INFO ]      operand TopoDS_Wire cannot be wrapped
 [INFO ]  Class: BRepLib_MakeShell
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Shell cannot be wrapped
 [INFO ]  Class: BRepLib_MakeSolid
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Solid cannot be wrapped
 [INFO ]  Class: BRepLib_MakeVertex
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Vertex cannot be wrapped
 [INFO ]  Class: BRepLib_MakeWire
 [INFO ]      Wrap nested class BRepLib_MakeWire::BRepLib_BndBoxVertexSelector
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand TopoDS_Wire cannot be wrapped
 [INFO ]  ## Processing module BRepMAT2d
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: BRepMAT2d_BisectingLocus
@@ -7305,6 +7506,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module BRepTopAdaptor
 [INFO ]  Class: BRepTopAdaptor_FClass2d
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: BRepTopAdaptor_HVertex
 [INFO ]  Class: BRepTopAdaptor_Tool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7345,7 +7547,9 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: MAT_Edge
 [INFO ]  Class: MAT_Graph
 [INFO ]  Class: MAT_ListOfBisector
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: MAT_ListOfEdge
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: MAT_Node
 [INFO ]  Class: MAT_TListNodeOfListOfBisector
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -7445,6 +7649,10 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      Wrap nested class AIS_ViewInputBuffer::_viewRotation
 [INFO ]      Wrap nested class AIS_ViewInputBuffer::_zrotateParams
 [INFO ]  Class: AIS_WalkDelta
+[INFO ]      operand [] cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
+[INFO ]      operand [] cannot be wrapped
 [INFO ]  Class: AIS_WalkPart
 [INFO ]  Class: AIS_AnimationCamera
 [INFO ]  Class: AIS_Axis
@@ -7645,6 +7853,9 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: Select3D_BVHIndexBuffer
 [INFO ]  Class: Select3D_Pnt
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand gp_Pnt cannot be wrapped
+[INFO ]      operand gp_XYZ cannot be wrapped
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Select3D_PointData
 [INFO ]  Class: Select3D_SensitiveBox
 [INFO ]      explicitly excluded method Select3D_SensitiveBox::d063d786782f9c4237f2859ea9adc264
@@ -7962,6 +8173,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
+[INFO ]      operand TopoDS_Shape cannot be wrapped
 [WARNI]      [TypeHint] Skipping type Iterator, should contain _
 [WARNI]      [TypeHint] Skip type VrmlData_MapOfNode::Iterator, because of trailing :
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
@@ -8433,6 +8645,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: Interface_GlobalNodeOfReaderLib
 [INFO ]  Class: Interface_Graph
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Interface_HGraph
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Interface_IntList
@@ -8445,10 +8658,13 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: Interface_LineBuffer
 [INFO ]  Class: Interface_MSG
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand Standard_CString cannot be wrapped
 [INFO ]  Class: Interface_MapAsciiStringHasher
 [INFO ]  Class: Interface_NodeOfGeneralLib
 [INFO ]  Class: Interface_NodeOfReaderLib
 [INFO ]  Class: Interface_ParamList
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: Interface_ParamSet
 [INFO ]  Class: Interface_Protocol
 [INFO ]      Class Interface_Protocol is abstract, using %nodefaultctor.
@@ -8460,6 +8676,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Interface_STAT
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Interface_ShareFlags
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Interface_ShareTool
@@ -8530,6 +8747,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: StepData_EnumTool
 [INFO ]  Class: StepData_Field
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: StepData_FieldList
 [INFO ]  Class: StepData_FileRecognizer
 [INFO ]      Class StepData_FileRecognizer is abstract, using %nodefaultctor.
@@ -8754,6 +8972,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: XmlObjMgt_GP
 [INFO ]  Class: XmlObjMgt_Persistent
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand XmlObjMgt_Element& cannot be wrapped
+[INFO ]      operand constXmlObjMgt_Element& cannot be wrapped
 [INFO ]  Class: XmlObjMgt_RRelocationTable
 [INFO ]  Class: XmlObjMgt_SRelocationTable
 [INFO ]  Processing toolkit TKXmlTObj ===
@@ -8824,6 +9044,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: Message_ExecStatus
 [INFO ]  Enum: StatusRange
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand &= cannot be wrapped
+[INFO ]      operand |= cannot be wrapped
 [INFO ]  Class: Message_Level
 [INFO ]  Class: Message_Messenger
 [INFO ]      Wrap nested class Message_Messenger::StreamBuffer
@@ -8853,6 +9075,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand constTCollection_ExtendedString& cannot be wrapped
 [INFO ]  Class: Message_MsgFile
 [INFO ]  Class: Message_Printer
 [INFO ]      Class Message_Printer is abstract, using %nodefaultctor.
@@ -8860,6 +9083,7 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      Class Message_ProgressIndicator is abstract, using %nodefaultctor.
 [INFO ]  Class: Message_ProgressRange
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Message_Report
 [WARNI]      [TypeHint] Skipping type NCollection_IndexedMap<Message_MetricType>, seems to be a template
 [INFO ]  Class: Message_AlertExtended
@@ -8875,10 +9099,12 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Found HSEQUENCE definitionHClassName: _SequenceType_
 [INFO ]  Found HARRAY1 definitionHClassName: _Array1Type_
 [INFO ]  Found HARRAY2 definitionHClassName: _Array2Type_
+[INFO ]  Enum: NCollection_CellFilter_Action
 [WARNI]  Template ) skipped because name doesn't contain '_'.
 [INFO ]  Class: NCollection_StdAllocator<void>
 [INFO ]      Wrap nested class NCollection_StdAllocator<void>::rebind
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  ## Processing module OSD
 [INFO ]  Enum: OSD_FromWhere
 [INFO ]  Enum: OSD_KindFile
@@ -8913,9 +9139,11 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: Quantity_Date
 [INFO ]      operator< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand > cannot be wrapped
 [INFO ]  Class: Quantity_Period
 [INFO ]      operator< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand > cannot be wrapped
 [INFO ]  ## Processing module Resource
 [INFO ]  Enum: Resource_FormatType
 [INFO ]  Class: Resource_LexicalCompare
@@ -8941,16 +9169,20 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      explicitly excluded method Standard_ErrorHandler::ef042789fa8460b413c73405dcff195e
 [INFO ]  Class: Standard_GUID
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Standard_MMgrRoot
 [INFO ]      Class Standard_MMgrRoot is abstract, using %nodefaultctor.
 [INFO ]  Class: Standard_Static_Assert<true>
 [INFO ]  Class: Standard_Transient
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Standard_UUID
 [INFO ]  Class: Standard_Failure
 [INFO ]      Wrap nested class Standard_Failure::StringRef
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Standard_MMgrOpt
 [INFO ]      explicitly excluded method Standard_MMgrOpt::32213e26879b7b9d5ec9e1af79f3f5b8
 [INFO ]  Class: Standard_MMgrRaw
@@ -8984,6 +9216,10 @@ date : 2023-10-13 12:08:35.756632
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] Skipping unknown type __cdecl,  not in module list
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
+[INFO ]      operand << cannot be wrapped
+[INFO ]      operand << cannot be wrapped
+[INFO ]      operand << cannot be wrapped
+[INFO ]      operand new cannot be wrapped
 [INFO ]  ## Processing module StdFail
 [INFO ]  ## Processing module Storage
 [INFO ]  Found HARRAY1 definitionStorage_HArrayOfSchema: Storage_ArrayOfSchema
@@ -9065,6 +9301,10 @@ date : 2023-10-13 12:08:35.756632
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
+[INFO ]      operand &= cannot be wrapped
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand ^= cannot be wrapped
+[INFO ]      operand |= cannot be wrapped
 [INFO ]  ## Processing module TCollection
 [INFO ]  Class: TCollection
 [INFO ]  Class: TCollection_AsciiString
@@ -9072,12 +9312,21 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]      operator< skipped because invalid name
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand > cannot be wrapped
 [INFO ]  Class: TCollection_ExtendedString
 [INFO ]      operator< skipped because invalid name
 [INFO ]      operator< skipped because invalid name
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      explicitly excluded method TCollection_ExtendedString::e5ff9f94dec233d371e2d6eeef7b39cf
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand = cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand > cannot be wrapped
 [INFO ]  Class: TCollection_HAsciiString
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TCollection_HExtendedString
@@ -9116,6 +9365,10 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: Units_UnitSentence
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Units_UnitsLexicon
+[INFO ]      operand <= cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand > cannot be wrapped
+[INFO ]      operand >= cannot be wrapped
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
@@ -9130,8 +9383,8 @@ date : 2023-10-13 12:08:35.756632
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 17.46s
+SWIG interface file generation completed in 17.22s
 #################################################
 
-[INFO ]  Number of classes: 4756
-[INFO ]  Number of methods: 47532
+[INFO ]  Number of classes: 4770
+[INFO ]  Number of methods: 47702

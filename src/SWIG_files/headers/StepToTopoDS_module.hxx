@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -40,6 +40,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepToTopoDS_PointPairHasher.hxx>
 #include<StepToTopoDS_PointVertexMap.hxx>
 #include<StepToTopoDS_Root.hxx>
+#include<StepToTopoDS_Tool.hxx>
 #include<StepToTopoDS_TranslateCompositeCurve.hxx>
 #include<StepToTopoDS_TranslateCurveBoundedSurface.hxx>
 #include<StepToTopoDS_TranslateEdge.hxx>

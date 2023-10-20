@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -113,6 +113,7 @@ Convert_Polynomial = Convert_ParameterisationType.Convert_Polynomial
 /* end templates declaration */
 
 /* typedefs */
+typedef void Convert_CosAndSinEvalFunction ( Standard_Real, const Standard_Integer, const TColgp_Array1OfPnt2d &, const TColStd_Array1OfReal &, const TColStd_Array1OfInteger *, Standard_Real Result [ 2 ] );
 typedef NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt>> Convert_SequenceOfArray1OfPoles;
 typedef TColgp_SequenceOfArray1OfPnt2d Convert_SequenceOfArray1OfPoles2d;
 /* end typedefs declaration */

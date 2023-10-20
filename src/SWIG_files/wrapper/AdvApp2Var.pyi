@@ -10,6 +10,31 @@ from OCC.Core.Geom import *
 from OCC.Core.gp import *
 from OCC.Core.TColgp import *
 
+C_f = NewType("C_f", None)
+E_f = NewType("E_f", float)
+H_f = NewType("H_f", None)
+# the following typedef cannot be wrapped as is
+Multitype = NewType("Multitype", Any)
+# the following typedef cannot be wrapped as is
+Namelist = NewType("Namelist", Any)
+# the following typedef cannot be wrapped as is
+Vardesc = NewType("Vardesc", Any)
+Z_f = NewType("Z_f", None)
+address = NewType("address", str)
+doublereal = NewType("doublereal", float)
+flag = NewType("flag", int)
+ftnint = NewType("ftnint", int)
+ftnlen = NewType("ftnlen", int)
+integer = NewType("integer", int)
+integer1 = NewType("integer1", str)
+logical = NewType("logical", int)
+logical1 = NewType("logical1", str)
+longint = NewType("longint", int)
+real = NewType("real", float)
+shortint = NewType("shortint", int)
+shortlogical = NewType("shortlogical", int)
+uinteger = NewType("uinteger", int)
+ulongint = NewType("ulongint", int)
 
 class AdvApp2Var_SequenceOfNode:
     def __init__(self) -> None: ...

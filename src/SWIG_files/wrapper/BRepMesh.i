@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -37,7 +37,6 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_brepmesh.html"
 
 
 %{
-#include<BRepMesh_Delaun.hxx>
 #include<BRepMesh_module.hxx>
 
 //Dependencies
@@ -47,11 +46,11 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_brepmesh.html"
 #include<Message_module.hxx>
 #include<gp_module.hxx>
 #include<TopAbs_module.hxx>
+#include<BRepAdaptor_module.hxx>
 #include<TopoDS_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TCollection_module.hxx>
 #include<TColStd_module.hxx>
-#include<BRepAdaptor_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<Poly_module.hxx>
 #include<Bnd_module.hxx>
@@ -80,11 +79,11 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_brepmesh.html"
 %import Message.i
 %import gp.i
 %import TopAbs.i
+%import BRepAdaptor.i
 %import TopoDS.i
 %import GeomAbs.i
 %import TCollection.i
 %import TColStd.i
-%import BRepAdaptor.i
 %import Adaptor3d.i
 %import Poly.i
 %import Bnd.i
@@ -1400,6 +1399,211 @@ Substitutes the node with the given index by new one. @param theindex index of n
 %make_alias(BRepMesh_DataStructureOfDelaun)
 
 %extend BRepMesh_DataStructureOfDelaun {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/**************************************
+* class BRepMesh_DefaultRangeSplitter *
+**************************************/
+class BRepMesh_DefaultRangeSplitter {
+	public:
+		/****************** BRepMesh_DefaultRangeSplitter ******************/
+		/**** md5 signature: f6f76c0a073db41195586070561931fd ****/
+		%feature("compactdefaultargs") BRepMesh_DefaultRangeSplitter;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") BRepMesh_DefaultRangeSplitter;
+		 BRepMesh_DefaultRangeSplitter();
+
+		/****************** AddPoint ******************/
+		/**** md5 signature: 3771804d13147da01f7a0a6ebdcc9a45 ****/
+		%feature("compactdefaultargs") AddPoint;
+		%feature("autodoc", "
+Parameters
+----------
+thePoint: gp_Pnt2d
+
+Return
+-------
+None
+
+Description
+-----------
+Registers border point.
+") AddPoint;
+		virtual void AddPoint(const gp_Pnt2d & thePoint);
+
+		/****************** AdjustRange ******************/
+		/**** md5 signature: ddbe360d718a2ef25835d18d405aa99b ****/
+		%feature("compactdefaultargs") AdjustRange;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Updates discrete range of surface according to its geometric range.
+") AdjustRange;
+		virtual void AdjustRange();
+
+		/****************** GetDFace ******************/
+		/**** md5 signature: 66ba0efe4a5555cea366f7d6aabb3193 ****/
+		%feature("compactdefaultargs") GetDFace;
+		%feature("autodoc", "Return
+-------
+IMeshData::IFaceHandle
+
+Description
+-----------
+Returns face model.
+") GetDFace;
+		const IMeshData::IFaceHandle & GetDFace();
+
+		/****************** GetDelta ******************/
+		/**** md5 signature: edc641b55de58529d198ed0511aa6fd8 ****/
+		%feature("compactdefaultargs") GetDelta;
+		%feature("autodoc", "Return
+-------
+std::pair<float, float>
+
+Description
+-----------
+Returns delta.
+") GetDelta;
+		const std::pair<Standard_Real, Standard_Real> & GetDelta();
+
+		/****************** GetRangeU ******************/
+		/**** md5 signature: c43a174b289ad155ae8bf9f1e53b8062 ****/
+		%feature("compactdefaultargs") GetRangeU;
+		%feature("autodoc", "Return
+-------
+std::pair<float, float>
+
+Description
+-----------
+Returns u range.
+") GetRangeU;
+		const std::pair<Standard_Real, Standard_Real> & GetRangeU();
+
+		/****************** GetRangeV ******************/
+		/**** md5 signature: f67b728346251d3015b0f0c227498055 ****/
+		%feature("compactdefaultargs") GetRangeV;
+		%feature("autodoc", "Return
+-------
+std::pair<float, float>
+
+Description
+-----------
+Returns v range.
+") GetRangeV;
+		const std::pair<Standard_Real, Standard_Real> & GetRangeV();
+
+		/****************** GetSurface ******************/
+		/**** md5 signature: 6aa03522ab6b1d17fd10abc283bef0d7 ****/
+		%feature("compactdefaultargs") GetSurface;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<BRepAdaptor_Surface>
+
+Description
+-----------
+Returns surface.
+") GetSurface;
+		const opencascade::handle<BRepAdaptor_Surface> & GetSurface();
+
+		/****************** GetToleranceUV ******************/
+		/**** md5 signature: fc1231c20c5ec088ee9c6e57c8d00c11 ****/
+		%feature("compactdefaultargs") GetToleranceUV;
+		%feature("autodoc", "Return
+-------
+std::pair<float, float>
+
+Description
+-----------
+No available documentation.
+") GetToleranceUV;
+		const std::pair<Standard_Real, Standard_Real> & GetToleranceUV();
+
+		/****************** IsValid ******************/
+		/**** md5 signature: 4e89d8566bfc31662c40412a922c328e ****/
+		%feature("compactdefaultargs") IsValid;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if computed range is valid.
+") IsValid;
+		virtual Standard_Boolean IsValid();
+
+		/****************** Point ******************/
+		/**** md5 signature: a5831d9dd1c33d274655f020e0ba9a9e ****/
+		%feature("compactdefaultargs") Point;
+		%feature("autodoc", "
+Parameters
+----------
+thePoint2d: gp_Pnt2d
+
+Return
+-------
+gp_Pnt
+
+Description
+-----------
+Returns point in 3d space corresponded to the given point defined in parameteric space of surface.
+") Point;
+		gp_Pnt Point(const gp_Pnt2d & thePoint2d);
+
+		/****************** Reset ******************/
+		/**** md5 signature: ac4f00ee28ad32a0f5f23f21d5b1091c ****/
+		%feature("compactdefaultargs") Reset;
+		%feature("autodoc", "
+Parameters
+----------
+theDFace: IMeshData::IFaceHandle
+theParameters: IMeshTools_Parameters
+
+Return
+-------
+None
+
+Description
+-----------
+Resets this splitter. must be called before first use.
+") Reset;
+		virtual void Reset(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters);
+
+		/****************** Scale ******************/
+		/**** md5 signature: a9c2738909350fd1cfc1874519d9a0d4 ****/
+		%feature("compactdefaultargs") Scale;
+		%feature("autodoc", "
+Parameters
+----------
+thePoint: gp_Pnt2d
+isToFaceBasis: bool
+
+Return
+-------
+gp_Pnt2d
+
+Description
+-----------
+Scales the given point from real parametric space to face basis and otherwise. @param thepoint point to be scaled. @param istofacebasis if true converts point to face basis, otherwise performs reverse conversion. return scaled point.
+") Scale;
+		gp_Pnt2d Scale(const gp_Pnt2d & thePoint, const Standard_Boolean isToFaceBasis);
+
+};
+
+
+%extend BRepMesh_DefaultRangeSplitter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4897,17 +5101,14 @@ Substitutes vertex with the given by the given vertex with attributes. @param th
 	}
 };
 
-/*****************************************
-* class BRepMesh_ConstrainedBaseMeshAlgo *
-*****************************************/
-/***************************************
-* class BRepMesh_DelabellaBaseMeshAlgo *
-***************************************/
-class BRepMesh_DelabellaBaseMeshAlgo : public BRepMesh_CustomBaseMeshAlgo {
+/***********************************
+* class BRepMesh_ConeRangeSplitter *
+***********************************/
+class BRepMesh_ConeRangeSplitter : public BRepMesh_DefaultRangeSplitter {
 	public:
-		/****************** BRepMesh_DelabellaBaseMeshAlgo ******************/
-		/**** md5 signature: b41dc635f954c50092b5b7a76bf71647 ****/
-		%feature("compactdefaultargs") BRepMesh_DelabellaBaseMeshAlgo;
+		/****************** BRepMesh_ConeRangeSplitter ******************/
+		/**** md5 signature: ba9b7871f353a07a84a26d54da44b4ce ****/
+		%feature("compactdefaultargs") BRepMesh_ConeRangeSplitter;
 		%feature("autodoc", "Return
 -------
 None
@@ -4915,13 +5116,66 @@ None
 Description
 -----------
 Constructor.
-") BRepMesh_DelabellaBaseMeshAlgo;
-		 BRepMesh_DelabellaBaseMeshAlgo();
+") BRepMesh_ConeRangeSplitter;
+		 BRepMesh_ConeRangeSplitter();
 
 };
 
 
-%extend BRepMesh_DelabellaBaseMeshAlgo {
+%extend BRepMesh_ConeRangeSplitter {
+	%pythoncode {
+	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def GetSplitSteps(self):
+		pass
+	}
+};
+
+/*****************************************
+* class BRepMesh_ConstrainedBaseMeshAlgo *
+*****************************************/
+/***************************************
+* class BRepMesh_CylinderRangeSplitter *
+***************************************/
+class BRepMesh_CylinderRangeSplitter : public BRepMesh_DefaultRangeSplitter {
+	public:
+		/****************** BRepMesh_CylinderRangeSplitter ******************/
+		/**** md5 signature: 2727878f8b6f6d1e103a1f10931a8b01 ****/
+		%feature("compactdefaultargs") BRepMesh_CylinderRangeSplitter;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") BRepMesh_CylinderRangeSplitter;
+		 BRepMesh_CylinderRangeSplitter();
+
+		/****************** Reset ******************/
+		/**** md5 signature: aa395f2a8deaeb8df261ef127aeaa147 ****/
+		%feature("compactdefaultargs") Reset;
+		%feature("autodoc", "
+Parameters
+----------
+theDFace: IMeshData::IFaceHandle
+theParameters: IMeshTools_Parameters
+
+Return
+-------
+None
+
+Description
+-----------
+Resets this splitter. must be called before first use.
+") Reset;
+		virtual void Reset(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters);
+
+};
+
+
+%extend BRepMesh_CylinderRangeSplitter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5056,33 +5310,6 @@ def __eq__(self, right):
 
 
 %extend BRepMesh_Edge {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************************
-* class BRepMesh_ExtrusionRangeSplitter *
-****************************************/
-class BRepMesh_ExtrusionRangeSplitter : public BRepMesh_NURBSRangeSplitter {
-	public:
-		/****************** BRepMesh_ExtrusionRangeSplitter ******************/
-		/**** md5 signature: d07f4ec89669b0f89c1b66fc1e06d3ae ****/
-		%feature("compactdefaultargs") BRepMesh_ExtrusionRangeSplitter;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Constructor.
-") BRepMesh_ExtrusionRangeSplitter;
-		 BRepMesh_ExtrusionRangeSplitter();
-
-};
-
-
-%extend BRepMesh_ExtrusionRangeSplitter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5300,14 +5527,14 @@ Setup multi-threading usage flag set by default in discret() static method (thus
 	}
 };
 
-/****************************************
-* class BRepMesh_UndefinedRangeSplitter *
-****************************************/
-class BRepMesh_UndefinedRangeSplitter : public BRepMesh_NURBSRangeSplitter {
+/*************************************
+* class BRepMesh_SphereRangeSplitter *
+*************************************/
+class BRepMesh_SphereRangeSplitter : public BRepMesh_DefaultRangeSplitter {
 	public:
-		/****************** BRepMesh_UndefinedRangeSplitter ******************/
-		/**** md5 signature: 8f04bf79f8ca9eff32045bf37a6720ba ****/
-		%feature("compactdefaultargs") BRepMesh_UndefinedRangeSplitter;
+		/****************** BRepMesh_SphereRangeSplitter ******************/
+		/**** md5 signature: 87cfa646eba8434e78ad57e06fec3877 ****/
+		%feature("compactdefaultargs") BRepMesh_SphereRangeSplitter;
 		%feature("autodoc", "Return
 -------
 None
@@ -5315,18 +5542,119 @@ None
 Description
 -----------
 Constructor.
-") BRepMesh_UndefinedRangeSplitter;
-		 BRepMesh_UndefinedRangeSplitter();
+") BRepMesh_SphereRangeSplitter;
+		 BRepMesh_SphereRangeSplitter();
 
 };
 
 
-%extend BRepMesh_UndefinedRangeSplitter {
+%extend BRepMesh_SphereRangeSplitter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
 };
 
+/**************************************
+* class BRepMesh_UVParamRangeSplitter *
+**************************************/
+class BRepMesh_UVParamRangeSplitter : public BRepMesh_DefaultRangeSplitter {
+	public:
+		/****************** BRepMesh_UVParamRangeSplitter ******************/
+		/**** md5 signature: 67ecdfad250fd0a84fb935ac4c1d8a40 ****/
+		%feature("compactdefaultargs") BRepMesh_UVParamRangeSplitter;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") BRepMesh_UVParamRangeSplitter;
+		 BRepMesh_UVParamRangeSplitter();
+
+		/****************** GetParametersU ******************/
+		/**** md5 signature: 5ee87ca295b7089622b34597ba0fa7dc ****/
+		%feature("compactdefaultargs") GetParametersU;
+		%feature("autodoc", "Return
+-------
+IMeshData::IMapOfReal
+
+Description
+-----------
+Returns u parameters.
+") GetParametersU;
+		const IMeshData::IMapOfReal & GetParametersU();
+
+		/****************** GetParametersU ******************/
+		/**** md5 signature: 6ffbc2e9c1bbf06f60cc0560c30ac041 ****/
+		%feature("compactdefaultargs") GetParametersU;
+		%feature("autodoc", "Return
+-------
+IMeshData::IMapOfReal
+
+Description
+-----------
+Returns u parameters.
+") GetParametersU;
+		IMeshData::IMapOfReal & GetParametersU();
+
+		/****************** GetParametersV ******************/
+		/**** md5 signature: 307ff0c2c9d7f6c020220dd1bb3fafcb ****/
+		%feature("compactdefaultargs") GetParametersV;
+		%feature("autodoc", "Return
+-------
+IMeshData::IMapOfReal
+
+Description
+-----------
+Returns v parameters.
+") GetParametersV;
+		const IMeshData::IMapOfReal & GetParametersV();
+
+		/****************** GetParametersV ******************/
+		/**** md5 signature: da5da90265c614d65bf736490d481963 ****/
+		%feature("compactdefaultargs") GetParametersV;
+		%feature("autodoc", "Return
+-------
+IMeshData::IMapOfReal
+
+Description
+-----------
+Returns v parameters.
+") GetParametersV;
+		IMeshData::IMapOfReal & GetParametersV();
+
+		/****************** Reset ******************/
+		/**** md5 signature: 4e9461d13bccb12249cf7fc75170d1a6 ****/
+		%feature("compactdefaultargs") Reset;
+		%feature("autodoc", "
+Parameters
+----------
+theDFace: IMeshData::IFaceHandle
+theParameters: IMeshTools_Parameters
+
+Return
+-------
+None
+
+Description
+-----------
+Resets this splitter.
+") Reset;
+		virtual void Reset(const IMeshData::IFaceHandle & theDFace, const IMeshTools_Parameters & theParameters);
+
+};
+
+
+%extend BRepMesh_UVParamRangeSplitter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************************
+* class BRepMesh_CustomBaseMeshAlgo *
+************************************/
 /**************************************
 * class BRepMesh_DelaunayBaseMeshAlgo *
 **************************************/
@@ -5349,6 +5677,217 @@ Constructor.
 
 
 %extend BRepMesh_DelaunayBaseMeshAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************************
+* class BRepMesh_NURBSRangeSplitter *
+************************************/
+class BRepMesh_NURBSRangeSplitter : public BRepMesh_UVParamRangeSplitter {
+	public:
+		/****************** BRepMesh_NURBSRangeSplitter ******************/
+		/**** md5 signature: 10713871cb23211ba4a316e12a7f927a ****/
+		%feature("compactdefaultargs") BRepMesh_NURBSRangeSplitter;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") BRepMesh_NURBSRangeSplitter;
+		 BRepMesh_NURBSRangeSplitter();
+
+		/****************** AdjustRange ******************/
+		/**** md5 signature: c094c053316b0e2e1a84ba1d968cecee ****/
+		%feature("compactdefaultargs") AdjustRange;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Updates discrete range of surface according to its geometric range.
+") AdjustRange;
+		virtual void AdjustRange();
+
+};
+
+
+%extend BRepMesh_NURBSRangeSplitter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/************************************
+* class BRepMesh_TorusRangeSplitter *
+************************************/
+class BRepMesh_TorusRangeSplitter : public BRepMesh_UVParamRangeSplitter {
+	public:
+		/****************** BRepMesh_TorusRangeSplitter ******************/
+		/**** md5 signature: 6d8b6c55817e30ebe786ea5e4218b2a5 ****/
+		%feature("compactdefaultargs") BRepMesh_TorusRangeSplitter;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") BRepMesh_TorusRangeSplitter;
+		 BRepMesh_TorusRangeSplitter();
+
+		/****************** AddPoint ******************/
+		/**** md5 signature: e522468f1a359a4578ca51a7b27bd0e5 ****/
+		%feature("compactdefaultargs") AddPoint;
+		%feature("autodoc", "
+Parameters
+----------
+thePoint: gp_Pnt2d
+
+Return
+-------
+None
+
+Description
+-----------
+Registers border point.
+") AddPoint;
+		virtual void AddPoint(const gp_Pnt2d & thePoint);
+
+};
+
+
+%extend BRepMesh_TorusRangeSplitter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*********************************************
+* class BRepMesh_BoundaryParamsRangeSplitter *
+*********************************************/
+class BRepMesh_BoundaryParamsRangeSplitter : public BRepMesh_NURBSRangeSplitter {
+	public:
+		/****************** BRepMesh_BoundaryParamsRangeSplitter ******************/
+		/**** md5 signature: d6bdcdb002fbb8b2b9d893b2ba111ff7 ****/
+		%feature("compactdefaultargs") BRepMesh_BoundaryParamsRangeSplitter;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") BRepMesh_BoundaryParamsRangeSplitter;
+		 BRepMesh_BoundaryParamsRangeSplitter();
+
+		/****************** AddPoint ******************/
+		/**** md5 signature: 6d02802acf31247d3e34a9fd4dfdf153 ****/
+		%feature("compactdefaultargs") AddPoint;
+		%feature("autodoc", "
+Parameters
+----------
+thePoint: gp_Pnt2d
+
+Return
+-------
+None
+
+Description
+-----------
+Registers border point.
+") AddPoint;
+		virtual void AddPoint(const gp_Pnt2d & thePoint);
+
+};
+
+
+%extend BRepMesh_BoundaryParamsRangeSplitter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/***************************************
+* class BRepMesh_DelabellaBaseMeshAlgo *
+***************************************/
+class BRepMesh_DelabellaBaseMeshAlgo : public BRepMesh_CustomBaseMeshAlgo {
+	public:
+		/****************** BRepMesh_DelabellaBaseMeshAlgo ******************/
+		/**** md5 signature: b41dc635f954c50092b5b7a76bf71647 ****/
+		%feature("compactdefaultargs") BRepMesh_DelabellaBaseMeshAlgo;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") BRepMesh_DelabellaBaseMeshAlgo;
+		 BRepMesh_DelabellaBaseMeshAlgo();
+
+};
+
+
+%extend BRepMesh_DelabellaBaseMeshAlgo {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/****************************************
+* class BRepMesh_ExtrusionRangeSplitter *
+****************************************/
+class BRepMesh_ExtrusionRangeSplitter : public BRepMesh_NURBSRangeSplitter {
+	public:
+		/****************** BRepMesh_ExtrusionRangeSplitter ******************/
+		/**** md5 signature: d07f4ec89669b0f89c1b66fc1e06d3ae ****/
+		%feature("compactdefaultargs") BRepMesh_ExtrusionRangeSplitter;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") BRepMesh_ExtrusionRangeSplitter;
+		 BRepMesh_ExtrusionRangeSplitter();
+
+};
+
+
+%extend BRepMesh_ExtrusionRangeSplitter {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/****************************************
+* class BRepMesh_UndefinedRangeSplitter *
+****************************************/
+class BRepMesh_UndefinedRangeSplitter : public BRepMesh_NURBSRangeSplitter {
+	public:
+		/****************** BRepMesh_UndefinedRangeSplitter ******************/
+		/**** md5 signature: 8f04bf79f8ca9eff32045bf37a6720ba ****/
+		%feature("compactdefaultargs") BRepMesh_UndefinedRangeSplitter;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") BRepMesh_UndefinedRangeSplitter;
+		 BRepMesh_UndefinedRangeSplitter();
+
+};
+
+
+%extend BRepMesh_UndefinedRangeSplitter {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

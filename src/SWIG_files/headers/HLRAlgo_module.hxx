@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -20,6 +20,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<HLRAlgo.hxx>
+#include<HLRAlgo_Array1OfPHDat.hxx>
 #include<HLRAlgo_Array1OfPINod.hxx>
 #include<HLRAlgo_Array1OfPISeg.hxx>
 #include<HLRAlgo_Array1OfTData.hxx>
@@ -40,6 +41,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<HLRAlgo_ListOfBPoint.hxx>
 #include<HLRAlgo_PolyAlgo.hxx>
 #include<HLRAlgo_PolyData.hxx>
+#include<HLRAlgo_PolyHidingData.hxx>
 #include<HLRAlgo_PolyInternalData.hxx>
 #include<HLRAlgo_PolyInternalNode.hxx>
 #include<HLRAlgo_PolyInternalSegment.hxx>
