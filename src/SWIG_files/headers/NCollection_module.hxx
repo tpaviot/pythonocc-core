@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -30,6 +30,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_BaseSequence.hxx>
 #include<NCollection_BaseVector.hxx>
 #include<NCollection_Buffer.hxx>
+#include<NCollection_CellFilter.hxx>
 #include<NCollection_DataMap.hxx>
 #include<NCollection_DefaultHasher.hxx>
 #include<NCollection_DefineAlloc.hxx>

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -37,7 +37,6 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_breptopadaptor.ht
 
 
 %{
-#include<BRepAdaptor_Curve2d.hxx>
 #include<BRepTopAdaptor_module.hxx>
 
 //Dependencies

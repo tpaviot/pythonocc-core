@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -143,10 +143,33 @@ AdvApp2Var_Relative = AdvApp2Var_CriterionType.AdvApp2Var_Relative
 /* end templates declaration */
 
 /* typedefs */
+typedef int ( * S_fp ) ( );
 typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Node>> AdvApp2Var_SequenceOfNode;
 typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Patch>> AdvApp2Var_SequenceOfPatch;
 typedef NCollection_Sequence<AdvApp2Var_Strip> AdvApp2Var_SequenceOfStrip;
 typedef NCollection_Sequence<opencascade::handle<AdvApp2Var_Iso>> AdvApp2Var_Strip;
+typedef VOID C_f;
+typedef doublereal E_f;
+typedef VOID H_f;
+typedef union Multitype Multitype;
+typedef struct Namelist Namelist;
+typedef struct Vardesc Vardesc;
+typedef VOID Z_f;
+typedef char * address;
+typedef double doublereal;
+typedef long int flag;
+typedef long int ftnint;
+typedef long int ftnlen;
+typedef int integer;
+typedef char integer1;
+typedef long int logical;
+typedef char logical1;
+typedef long long longint;
+typedef float real;
+typedef short int shortint;
+typedef short int shortlogical;
+typedef unsigned long uinteger;
+typedef unsigned long long ulongint;
 /* end typedefs declaration */
 
 /***********************************
@@ -3991,6 +4014,36 @@ No available documentation.
 	}
 };
 
+/******************
+* class Multitype *
+******************/
+/*****************
+* class Namelist *
+*****************/
+/****************
+* class Vardesc *
+****************/
+/**************
+* class alist *
+**************/
+/***************
+* class cilist *
+***************/
+/***************
+* class cllist *
+***************/
+/****************
+* class complex *
+****************/
+/**********************
+* class doublecomplex *
+**********************/
+/****************
+* class icilist *
+****************/
+/***************
+* class inlist *
+***************/
 /*******************
 * class maovpar_1_ *
 *******************/
@@ -4024,6 +4077,9 @@ No available documentation.
 /*******************
 * class mmjcobi_1_ *
 *******************/
+/**************
+* class olist *
+**************/
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped

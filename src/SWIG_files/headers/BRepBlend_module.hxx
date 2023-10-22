@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -25,6 +25,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepBlend_AppFuncRstRst.hxx>
 #include<BRepBlend_AppSurf.hxx>
 #include<BRepBlend_AppSurface.hxx>
+#include<BRepBlend_BlendTool.hxx>
 #include<BRepBlend_CSCircular.hxx>
 #include<BRepBlend_CSConstRad.hxx>
 #include<BRepBlend_CSWalking.hxx>
@@ -42,6 +43,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BRepBlend_EvolRad.hxx>
 #include<BRepBlend_EvolRadInv.hxx>
 #include<BRepBlend_Extremity.hxx>
+#include<BRepBlend_HCurve2dTool.hxx>
+#include<BRepBlend_HCurveTool.hxx>
 #include<BRepBlend_Line.hxx>
 #include<BRepBlend_PointOnRst.hxx>
 #include<BRepBlend_RstRstConstRad.hxx>

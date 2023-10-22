@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -364,6 +364,9 @@ Returns a box which is the result of applying the given transformation to this b
 * class BVH_Geometry *
 *********************/
 /**************************
+* class BVH_IndexedBoxSet *
+**************************/
+/**************************
 * class BVH_LinearBuilder *
 **************************/
 /*******************
@@ -704,6 +707,10 @@ class BVH_BoxSet:
 
 @classnotwrapped
 class BVH_Tools:
+	pass
+
+@classnotwrapped
+class BVH_IndexedBoxSet:
 	pass
 
 @classnotwrapped

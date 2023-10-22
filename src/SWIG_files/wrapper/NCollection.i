@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -86,10 +86,21 @@ from OCC.Core.Exception import *
 %ignore NCollection_List::Last();
 %ignore NCollection_TListIterator::Value();
 /* public enums */
+enum NCollection_CellFilter_Action {
+	CellFilter_Keep = 0,
+	CellFilter_Purge = 1,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class NCollection_CellFilter_Action(IntEnum):
+	CellFilter_Keep = 0
+	CellFilter_Purge = 1
+CellFilter_Keep = NCollection_CellFilter_Action.CellFilter_Keep
+CellFilter_Purge = NCollection_CellFilter_Action.CellFilter_Purge
 };
 /* end python proxy for enums */
 
@@ -145,6 +156,15 @@ typedef size_t Standard_Size;
 /***************************
 * class NCollection_Buffer *
 ***************************/
+/*******************************
+* class NCollection_CellFilter *
+*******************************/
+/*******************************************
+* class NCollection_CellFilter_InspectorXY *
+*******************************************/
+/********************************************
+* class NCollection_CellFilter_InspectorXYZ *
+********************************************/
 /**********************************
 * class NCollection_DefaultHasher *
 **********************************/
@@ -255,6 +275,9 @@ Description
 	}
 };
 
+/********************************
+* class NCollection_StlIterator *
+********************************/
 /***************************
 * class NCollection_UBTree *
 ***************************/
@@ -381,6 +404,18 @@ class NCollection_AlignedAllocator:
 	pass
 
 @classnotwrapped
+class NCollection_CellFilter:
+	pass
+
+@classnotwrapped
+class NCollection_CellFilter_InspectorXYZ:
+	pass
+
+@classnotwrapped
+class NCollection_CellFilter_InspectorXY:
+	pass
+
+@classnotwrapped
 class NCollection_Sequence:
 	pass
 
@@ -458,6 +493,10 @@ class NCollection_UBTree:
 
 @classnotwrapped
 class NCollection_LocalArray:
+	pass
+
+@classnotwrapped
+class NCollection_StlIterator:
 	pass
 
 @classnotwrapped

@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2022 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -71,6 +71,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Aspect_Units.hxx>
 #include<Aspect_VKey.hxx>
 #include<Aspect_VKeyFlags.hxx>
+#include<Aspect_VKeySet.hxx>
 #include<Aspect_WidthOfLine.hxx>
 #include<Aspect_Window.hxx>
 #include<Aspect_WindowDefinitionError.hxx>
