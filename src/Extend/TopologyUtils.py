@@ -34,6 +34,7 @@ from OCC.Core.TopAbs import (
     TopAbs_COMPOUND,
     TopAbs_COMPSOLID,
     TopAbs_ShapeEnum,
+    TopAbs_Orientation,
 )
 from OCC.Core.TopExp import TopExp_Explorer, topexp
 from OCC.Core.TopTools import (
@@ -579,6 +580,10 @@ def discretize_edge(
     for i in range(1, discretizer.NbPoints() + 1):
         p = curve_adaptator.Value(discretizer.Parameter(i))
         points.append(p.Coord())
+
+    if a_topods_edge.Orientation() == TopAbs_Orientation.TopAbs_REVERSED:
+        points.reverse()
+
     return points
 
 
