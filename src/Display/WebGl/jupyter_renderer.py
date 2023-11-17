@@ -847,10 +847,6 @@ class JupyterRenderer:
 
         edge_line = Line(geometry=edge_geometry, material=edge_material, name=edge_id)
 
-        # and to the dict of shapes, to have a mapping between meshes and shapes
-        edge_id = f"{uuid.uuid4().hex}"
-        self._shapes[edge_id] = shp
-
         return edge_line
 
     def AddShapeToScene(
