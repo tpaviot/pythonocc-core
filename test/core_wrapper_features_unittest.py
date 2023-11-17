@@ -64,7 +64,7 @@ from OCC.Core.gp import (
 )
 from OCC.Core.math import math_Matrix, math_Vector
 from OCC.Core.GC import GC_MakeSegment
-from OCC.Core.STEPControl import STEPControl_Writer
+from OCC.Core.STEPControl import STEPControl_Writer, STEPControl_AsIs
 from OCC.Core.Interface import Interface_Static
 from OCC.Core.GCE2d import GCE2d_MakeSegment
 from OCC.Core.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
@@ -111,6 +111,12 @@ from OCC.Core.Exception import (
     MethodNotWrappedError,
     ClassNotWrappedError,
 )
+from OCC.Core.BinXCAFDrivers import binxcafdrivers
+from OCC.Core.TDocStd import TDocStd_Application, TDocStd_Document
+from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool
+from OCC.Core.TDataStd import TDataStd_Name
+from OCC.Core.STEPCAFControl import STEPCAFControl_Writer
+from OCC.Core.IFSelect import IFSelect_RetDone
 
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
@@ -967,6 +973,36 @@ class TestWrapperFeatures(unittest.TestCase):
         with self.assertWarns(DeprecationWarning):
             gp_OX()
         self.assertTrue(isinstance(gp.OX(), gp_Ax1))
+
+    def test_wrap_extendedstring_as_pyunicodestring(self):
+        """not necessary anymore to instanciate a TCollection_ExtendedString,
+        pass a regular python string"""
+        # Create XDE document
+        app = TDocStd_Application()
+        binxcafdrivers.DefineFormat(app)
+        doc = TDocStd_Document(f"example")
+        app.NewDocument("BinXCAF", doc)
+        shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+        shape = BRepPrimAPI_MakeBox(10, 10, 10).Shape()
+        label = shape_tool.AddShape(shape, False)
+
+        a_unicode_string = "Some text with umlauts äöü and japanese (琵琶)"
+        TDataStd_Name.Set(label, a_unicode_string)
+        # Initialize the STEP exporter
+        step_writer = STEPCAFControl_Writer()
+        Interface_Static.SetIVal("write.stepcaf.subshapes.name", 1)
+        Interface_Static.SetCVal("write.step.schema", "AP214")
+        Interface_Static.SetCVal("write.step.product.name", "my product")
+        step_writer.Transfer(doc, STEPControl_AsIs)
+        status = step_writer.Write("compound_with_unicode_label.step")
+
+        if status != IFSelect_RetDone:
+            raise AssertionError("write failed")
+
+        # check that the unicode string was actually exported to file
+        with open("compound_with_unicode_label.step", "r", encoding="utf8") as f:
+            step_file_content = f.read()
+            self.assertTrue(a_unicode_string in step_file_content)
 
 
 def suite() -> unittest.TestSuite:

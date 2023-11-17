@@ -50,7 +50,7 @@ TCollection_ExtendedString parameter transformation
 
 %typemap(in) TCollection_ExtendedString
 {
-    $1 = TCollection_ExtendedString(PyUnicode_AsUTF8($input));
+    $1 = TCollection_ExtendedString(PyUnicode_AsUTF8($input), true);
 }
 %typemap(typecheck, precedence=SWIG_TYPECHECK_INTEGER) TCollection_ExtendedString {
     $1 = PyUnicode_Check($input) ? 1 : 0;
