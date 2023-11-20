@@ -145,12 +145,11 @@ def init_display(
                 # point on curve
                 _id = wx.NewId()
                 check_callable(_callable)
-                try:
-                    self._menus[menu_name].Append(
-                        _id, _callable.__name__.replace("_", " ").lower()
-                    )
-                except KeyError:
+                if not menu_name in self._menus:
                     raise ValueError(f"the menu item {menu_name} does not exist")
+                self._menus[menu_name].Append(
+                    _id, _callable.__name__.replace("_", " ").lower()
+                )
                 self.Bind(wx.EVT_MENU, _callable, id=_id)
 
         app = wx.App(False)
@@ -216,17 +215,16 @@ def init_display(
 
             def add_function_to_menu(self, menu_name: str, _callable: Callable) -> None:
                 check_callable(_callable)
-                try:
-                    _action = QtWidgets.QAction(
-                        _callable.__name__.replace("_", " ").lower(), self
-                    )
-                    # if not, the "exit" action is now shown...
-                    _action.setMenuRole(QtWidgets.QAction.NoRole)
-                    _action.triggered.connect(_callable)
-
-                    self._menus[menu_name].addAction(_action)
-                except KeyError:
+                if not menu_name in self._menus:
                     raise ValueError(f"the menu item {menu_name} does not exist")
+                qaction = (
+                    QtGui.QAction
+                    if used_backend in ["pyqt6", "pyside6"]
+                    else QtWidgets.QAction
+                )
+                _action = qaction(_callable.__name__.replace("_", " ").lower(), self)
+                _action.triggered.connect(_callable)
+                self._menus[menu_name].addAction(_action)
 
         # following couple of lines is a tweak to enable ipython --gui='qt'
         app = QtWidgets.QApplication(sys.argv)
@@ -248,7 +246,8 @@ def init_display(
 
         def start_display() -> None:
             win.raise_()  # make the application float to the top
-            app.exec_()
+            main_loop = app.exec if used_backend in ["pyqt6", "pyside6"] else app.exec_
+            main_loop()
 
     if display_triedron:
         display.display_triedron()

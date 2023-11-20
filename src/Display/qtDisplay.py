@@ -197,12 +197,12 @@ class qtViewer3d(qtBaseViewer):
         pt = event.pos()
         modifiers = event.modifiers()
 
-        if event.button() == QtCore.Qt.LeftButton:
+        if event.button() == QtCore.Qt.MouseButton.LeftButton:
             if self._select_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
                 self._display.SelectArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
                 self._select_area = False
-            elif modifiers == QtCore.Qt.ShiftModifier:
+            elif modifiers == QtCore.Qt.Modifier.SHIFT:
                 self._display.ShiftSelect(pt.x(), pt.y())
             else:
                 # single select otherwise
@@ -211,7 +211,7 @@ class qtViewer3d(qtBaseViewer):
                 if self._display.selected_shapes is not None:
                     self.sig_topods_selected.emit(self._display.selected_shapes)
 
-        elif event.button() == QtCore.Qt.RightButton:
+        elif event.button() == QtCore.Qt.MouseButton.RightButton:
             if self._zoom_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
                 self._display.ZoomArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
@@ -234,11 +234,17 @@ class qtViewer3d(qtBaseViewer):
         buttons = evt.buttons()
         modifiers = evt.modifiers()
         # ROTATE
-        if buttons == QtCore.Qt.LeftButton and modifiers != QtCore.Qt.ShiftModifier:
+        if (
+            buttons == QtCore.Qt.MouseButton.LeftButton
+            and modifiers != QtCore.Qt.Modifier.SHIFT
+        ):
             self.cursor = "rotate"
             self._display.Rotation(pt.x(), pt.y())
             self._drawbox = False
-        elif buttons == QtCore.Qt.RightButton and modifiers != QtCore.Qt.ShiftModifier:
+        elif (
+            buttons == QtCore.Qt.MouseButton.RightButton
+            and modifiers != QtCore.Qt.Modifier.SHIFT
+        ):
             self.cursor = "zoom"
             self._display.Repaint()
             self._display.DynamicZoom(
@@ -250,7 +256,7 @@ class qtViewer3d(qtBaseViewer):
             self.dragStartPosX = pt.x()
             self.dragStartPosY = pt.y()
             self._drawbox = False
-        elif buttons == QtCore.Qt.MiddleButton:
+        elif buttons == QtCore.Qt.MouseButton.MiddleButton:
             dx = pt.x() - self.dragStartPosX
             dy = pt.y() - self.dragStartPosY
             self.dragStartPosX = pt.x()
@@ -258,12 +264,12 @@ class qtViewer3d(qtBaseViewer):
             self.cursor = "pan"
             self._display.Pan(dx, -dy)
             self._drawbox = False
-        elif buttons == QtCore.Qt.RightButton:
+        elif buttons == QtCore.Qt.MouseButton.RightButton:
             self._zoom_area = True
             self.cursor = "zoom-area"
             self.DrawBox(evt)
             self.update()
-        elif buttons == QtCore.Qt.LeftButton:
+        elif buttons == QtCore.Qt.MouseButton.LeftButton:
             self._select_area = True
             self.DrawBox(evt)
             self.update()
@@ -334,7 +340,10 @@ class qtViewer3dWithManipulator(qtViewer3d):
         buttons = int(evt.buttons())
         modifiers = evt.modifiers()
         # TRANSFORM via MANIPULATOR or ROTATE
-        if buttons == QtCore.Qt.LeftButton and modifiers != QtCore.Qt.ShiftModifier:
+        if (
+            buttons == QtCore.Qt.Button.LeftButton
+            and modifiers != QtCore.Qt.Modifier.SHIFT
+        ):
             if self.manipulator.HasActiveMode():
                 self.trsf = self.manipulator.Transform(
                     pt.x(), pt.y(), self._display.GetView()
@@ -345,7 +354,10 @@ class qtViewer3dWithManipulator(qtViewer3d):
                 self.cursor = "rotate"
                 self._display.Rotation(pt.x(), pt.y())
                 self._drawbox = False
-        elif buttons == QtCore.Qt.RightButton and modifiers != QtCore.Qt.ShiftModifier:
+        elif (
+            buttons == QtCore.Qt.MouseButton.RightButton
+            and modifiers != QtCore.Qt.Modifier.SHIFT
+        ):
             self.cursor = "zoom"
             self._display.Repaint()
             self._display.DynamicZoom(
@@ -357,7 +369,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
             self.dragStartPosX = pt.x()
             self.dragStartPosY = pt.y()
             self._drawbox = False
-        elif buttons == QtCore.Qt.MidButton:
+        elif buttons == QtCore.Qt.MouseButton.MidButton:
             dx = pt.x() - self.dragStartPosX
             dy = pt.y() - self.dragStartPosY
             self.dragStartPosX = pt.x()
@@ -365,12 +377,12 @@ class qtViewer3dWithManipulator(qtViewer3d):
             self.cursor = "pan"
             self._display.Pan(dx, -dy)
             self._drawbox = False
-        elif buttons == QtCore.Qt.RightButton:
+        elif buttons == QtCore.Qt.MouseButton.RightButton:
             self._zoom_area = True
             self.cursor = "zoom-area"
             self.DrawBox(evt)
             self.update()
-        elif buttons == QtCore.Qt.LeftButton:
+        elif buttons == QtCore.Qt.MouseButton.LeftButton:
             self._select_area = True
             self.DrawBox(evt)
             self.update()
@@ -395,7 +407,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
     def mouseReleaseEvent(self, event):
         pt = event.pos()
         modifiers = event.modifiers()
-        if event.button() == QtCore.Qt.LeftButton:
+        if event.button() == QtCore.Qt.MouseButton.LeftButton:
             if self.manip_moved:
                 self.trsf_manip.append(self.trsf)
                 self.manip_moved = False
@@ -403,7 +415,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
                 [Xmin, Ymin, dx, dy] = self._drawbox
                 self._display.SelectArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
                 self._select_area = False
-            elif modifiers == QtCore.Qt.ShiftModifier:
+            elif modifiers == QtCore.Qt.Modifier.SHIFT:
                 self._display.ShiftSelect(pt.x(), pt.y())
             else:
                 # single select otherwise
@@ -412,7 +424,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
                 if self._display.selected_shapes is not None:
                     self.sig_topods_selected.emit(self._display.selected_shapes)
 
-        elif event.button() == QtCore.Qt.RightButton:
+        elif event.button() == QtCore.Qt.MouseButton.RightButton:
             if self._zoom_area:
                 [Xmin, Ymin, dx, dy] = self._drawbox
                 self._display.ZoomArea(Xmin, Ymin, Xmin + dx, Ymin + dy)
