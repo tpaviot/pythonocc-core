@@ -341,7 +341,7 @@ class qtViewer3dWithManipulator(qtViewer3d):
         modifiers = evt.modifiers()
         # TRANSFORM via MANIPULATOR or ROTATE
         if (
-            buttons == QtCore.Qt.Button.LeftButton
+            buttons == QtCore.Qt.MouseButton.LeftButton
             and modifiers != QtCore.Qt.Modifier.SHIFT
         ):
             if self.manipulator.HasActiveMode():
