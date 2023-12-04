@@ -87,12 +87,18 @@ from OCC.Core.Exception import *
 };
 
 
-%define Handle_Graphic3d_TextureSet Handle(Graphic3d_TextureSet)
-%enddef
-%define Handle_Aspect_DisplayConnection Handle(Aspect_DisplayConnection)
-%enddef
-%define Handle_Graphic3d_NMapOfTransient Handle(Graphic3d_NMapOfTransient)
-%enddef
+#ifdef BUILD_MESHDS_NUMPY
+%{
+#define SWIG_FILE_WITH_INIT
+%}
+%include ../SWIG_files/common/numpy.i
+
+%init %{
+   import_array();
+%}
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* Vertices, int nVerts1, int nVerts2) };
+%apply (int* IN_ARRAY2, int DIM1, int DIM2) { (int* Colors, int nColors1, int nColors2) };
+#endif
 /* public enums */
 enum  {
 	Graphic3d_FrameStatsCounter_NB = Graphic3d_FrameStatsCounter_NbPointsImmediate + 1,
@@ -20338,7 +20344,46 @@ Creates an array of points (graphic3d_topa_points). the array must be filled usi
 ") Graphic3d_ArrayOfPoints;
 		 Graphic3d_ArrayOfPoints(Standard_Integer theMaxVertexs, Standard_Boolean theHasVColors = Standard_False, Standard_Boolean theHasVNormals = Standard_False);
 
-};
+
+        /****************** AddVerticesFromNumpyArray ******************/
+        %feature("autodoc", "AddVerticesFromNumpyArray");
+        %extend{
+            void AddVerticesFromNumpyArray(double* Vertices, int nVerts1, int nVerts2) {
+            double x=0., y=0., z=0.;
+            size_t vertIDX = 0;
+
+            for (size_t vertID = 0; vertID < nVerts1; vertID++)
+            {
+                x = Vertices[vertIDX];
+                y = Vertices[vertIDX + 1];
+                z = Vertices[vertIDX + 2];
+                vertIDX += 3;
+                self->AddVertex(gp_Pnt(x,y,z));
+            }
+        }
+        };
+        /****************** AddVerticesColorsFromNumpyArray ******************/
+        %feature("autodoc", "AddVerticesColorsFromNumpyArray");
+        %extend{
+            void AddVerticesColorsFromNumpyArray(double* Vertices, int nVerts1, int nVerts2, int* Colors, int nColors1, int nColors2) {
+            double x=0., y=0., z=0.;
+            int r=0, g=0, b=0;
+            size_t vertIDX = 0;
+
+            for (size_t vertID = 0; vertID < nVerts1; vertID++)
+            {
+                x = Vertices[vertIDX];
+                y = Vertices[vertIDX + 1];
+                z = Vertices[vertIDX + 2];
+                r = Colors[vertIDX,0];
+                g = Colors[vertIDX,1];
+                b = Colors[vertIDX,2];
+                vertIDX += 3;
+                self->AddVertex(gp_Pnt(x,y,z), Quantity_Color(r, g, b, Quantity_TOC_RGB));
+            }
+            }
+        };
+        };
 
 
 %make_alias(Graphic3d_ArrayOfPoints)
