@@ -55,10 +55,16 @@ class tkViewer3d(tk.Frame):
         self._display.Pan(dx, -dy)
 
     def Zoom(self, event):
+        # Linux
         if event.num == 4:  # zoom in
             zoom_factor = 2.0
         elif event.num == 5:  # zoom out
             zoom_factor = 0.5
+        # Windows
+        if event.delta < 0:  # zoom out
+            zoom_factor = 1/1.2
+        elif event.delta > 0: # zoom in
+            zoom_factor = 1.2
         self._display.ZoomFactor(zoom_factor)
 
     def Resize(self, event):
