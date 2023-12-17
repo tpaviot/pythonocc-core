@@ -79,9 +79,11 @@ RUN cmake \
   ..
 
 RUN make -j4 && make install 
+
+RUN  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/build/occt772/lib
 ```
 
-If `PYTHONOCC_INSTALL_DIRECTORY` is unset, it will be installed to `site-packages/OCC`.
+If `PYTHONOCC_INSTALL_DIRECTORY` is unset, it will be installed to `site-packages/OCC`. Also add your LD_LIBRARY_PATH in your .bashrc file.
 
 Build pythonocc with numpy support
 ----------------------------------
