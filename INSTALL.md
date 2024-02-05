@@ -115,8 +115,8 @@ test
 In order to check that everything is ok, run the pythonocc unittest suite:
 
 ```bash
-cd ../test
-python run_tests.py
+pip install pytest
+pytest
 ```
 
 demos
