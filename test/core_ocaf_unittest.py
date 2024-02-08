@@ -119,6 +119,67 @@ class TestOCAF(unittest.TestCase):
         a_shape = shape_tool.GetShape(label_shp)
         self.assertFalse(a_shape.IsNull())
 
+    def test_read_write_step_string(self) -> None:
+        """Writes a step file as a string and reads it back"""
+        ##### write
+            
+        ### initialisation
+        doc = TDocStd_Document("pythonocc-doc")
+        self.assertTrue(doc is not None)
+
+        # Get root assembly
+        shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+        colors = XCAFDoc_DocumentTool.ColorTool(doc.Main())
+        ### create the shape to export
+        test_shape = BRepPrimAPI_MakeBox(100.0, 100.0, 100.0).Shape()
+
+        ### add shape
+        shp_label = shape_tool.AddShape(test_shape)
+        ### set a color for this shape
+        r = 1.0
+        g = b = 0.5
+        red_color = Quantity_Color(r, g, b, Quantity_TypeOfColor.Quantity_TOC_RGB)
+        colors.SetColor(shp_label, red_color, XCAFDoc_ColorGen)
+        # write file
+        WS = XSControl_WorkSession()
+        writer = STEPCAFControl_Writer(WS, False)
+        writer.Transfer(doc, STEPControl_AsIs)
+        step_str = writer.WriteString()
+
+        ##### read
+
+        # create an handle to a document
+        doc = TDocStd_Document("pythonocc-doc")
+        # Get root assembly
+        shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
+        l_colors = XCAFDoc_DocumentTool.ColorTool(doc.Main())
+        step_reader = STEPCAFControl_Reader()
+        step_reader.SetColorMode(True)
+        step_reader.SetLayerMode(True)
+        step_reader.SetNameMode(True)
+        step_reader.SetMatMode(True)
+        status = step_reader.ReadString("myfile.step", step_str)
+        self.assertEqual(status, IFSelect_RetDone)
+        step_reader.Transfer(doc)
+
+        labels = TDF_LabelSequence()
+        color_labels = TDF_LabelSequence()
+
+        shape_tool.GetFreeShapes(labels)
+
+        self.assertEqual(labels.Length(), 1)
+        sub_shapes_labels = TDF_LabelSequence()
+        self.assertFalse(shape_tool.IsAssembly(labels.Value(1)))
+        shape_tool.GetSubShapes(labels.Value(1), sub_shapes_labels)
+        self.assertEqual(sub_shapes_labels.Length(), 0)
+
+        l_colors.GetColors(color_labels)
+        self.assertEqual(color_labels.Length(), 1)
+
+        label_shp = labels.Value(1)
+        a_shape = shape_tool.GetShape(label_shp)
+        self.assertFalse(a_shape.IsNull())
+
     def test_read_step_material(self) -> None:
         # create an handle to a document
         doc = TDocStd_Document("pythonocc-doc")

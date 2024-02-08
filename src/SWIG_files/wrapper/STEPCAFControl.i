@@ -1873,6 +1873,27 @@ Loads a file from stream and returns the read status. @param thename [in] auxili
 ") ReadStream;
 		IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
 
+		%feature("autodoc", "
+Parameters
+----------
+theName: str
+theIStream: str
+
+Return
+-------
+IFSelect_ReturnStatus
+
+Description
+-----------
+Loads a file from a string and returns the read status. @param thename [in] auxiliary file name @param src [in] the string to read and return read status.
+") ReadString;
+		%extend{
+		    IFSelect_ReturnStatus ReadString(Standard_CString theName, const std::string & src) {
+				std::stringstream s(src);
+				return self->ReadStream(theName, s);
+		    }
+		}
+
 		/****************** Reader ******************/
 		/**** md5 signature: c54201c04d6a5ca89c65eb2fb14b8396 ****/
 		%feature("compactdefaultargs") Reader;
@@ -2553,6 +2574,27 @@ Description
 Writes all the produced models into the stream. provided for use like single-file writer.
 ") WriteStream;
 		IFSelect_ReturnStatus WriteStream(std::ostream & theStream);
+
+		%feature("autodoc", "
+Return
+-------
+str
+
+Description
+-----------
+Writes all the produced models to a string and returns it. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.
+") WriteString;
+		%extend{
+		    std::string WriteString(bool full_precision = true) {
+				std::stringstream s;
+				if(full_precision) {
+                    s.precision(17);
+                    s.setf(std::ios::scientific);
+				}
+				self->WriteStream(s);
+				return s.str();
+		    }
+		}
 
 		/****************** Writer ******************/
 		/**** md5 signature: 056d4f3221d283b7d58d92ddd5c40dd7 ****/
