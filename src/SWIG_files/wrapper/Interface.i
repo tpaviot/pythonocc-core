@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_interface.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1504,6 +1505,25 @@ Returns count of recorded warning messages.
 ") NbWarnings;
 		Standard_Integer NbWarnings();
 
+		/****************** Print ******************/
+		/**** md5 signature: cd6f31420152be00482d8b2c47fd50c1 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+level: int
+final: int (optional, default to 1)
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the messages of the check to an messenger <level> = 1: only fails <level> = 2: fails and warnings <level> = 3: all (fails, warnings, info msg) <final>: if positive (d) prints final values of messages if negative, prints originals if null, prints both forms.
+") Print;
+		void Print(std::ostream &OutValue, const Standard_Integer level, const Standard_Integer final = 1);
+
 		/****************** Remove ******************/
 		/**** md5 signature: fbc96bff34dc8f4089235a7befff9769 ****/
 		%feature("compactdefaultargs") Remove;
@@ -2005,6 +2025,45 @@ Returns number of entity for the check currently iterated or 0 for globalcheck.
 ") Number;
 		Standard_Integer Number();
 
+		/****************** Print ******************/
+		/**** md5 signature: fbbffa04ee2028cd35a21f2ac0226d1e ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+failsonly: bool
+final: int (optional, default to 0)
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the list of checks with their attached numbers if <failsonly> is true, prints only fail messages if <failsonly> is false, prints all messages if <final> = 0 (d), prints also original messages if different if <final> < 0, prints only original messages if <final> > 0, prints only final messages it uses the recorded model if it is defined remark: works apart from the iteration methods (no interference).
+") Print;
+		void Print(std::ostream &OutValue, const Standard_Boolean failsonly, const Standard_Integer final = 0);
+
+		/****************** Print ******************/
+		/**** md5 signature: 287a76ed6178a67e94c843a507962cc1 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+model: Interface_InterfaceModel
+failsonly: bool
+final: int (optional, default to 0)
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Works as print without a model, but for entities which have no attached number (number not positive), tries to compute this number from <model> and displays 'original' or 'computed'.
+") Print;
+		void Print(std::ostream &OutValue, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Boolean failsonly, const Standard_Integer final = 0);
+
 		/****************** Remove ******************/
 		/**** md5 signature: 81170abf4e017303192fc5e4bf72fea9 ****/
 		%feature("compactdefaultargs") Remove;
@@ -2281,6 +2340,42 @@ Description
 Fills as required a check with the error and warning messages produced by checking a given entity. for an erroneous or corrected entity: check build at analyse time; else, check computed for entity (verify integrity), can use a graph as required to control context.
 ") FillCheck;
 		void FillCheck(const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & sh, opencascade::handle<Interface_Check> & ach);
+
+		/****************** Print ******************/
+		/**** md5 signature: 77b918ff1d1ec5c1b0230477d5a40611 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+ach: Interface_Check
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Utility method which prints the content of a check.
+") Print;
+		void Print(const opencascade::handle<Interface_Check> & ach, std::ostream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: 14d98babb92b15fa230bc4228bcc71be ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+list: Interface_CheckIterator
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Simply lists all the checks and the content (messages) and the entity, if there is, of each check (if all checks are ok, nothing is printed).
+") Print;
+		void Print(const Interface_CheckIterator & list, std::ostream &OutValue);
 
 		/****************** UnknownEntities ******************/
 		/**** md5 signature: bd331908c549b04b25469271a771e03d ****/
@@ -6956,6 +7051,24 @@ Clears the list of entities (service whendelete).
             $self->DispatchStatus()=value;
             }
         };
+		/****************** DumpHeader ******************/
+		/**** md5 signature: aa1f14cdc284ebad5c520a0f2f1e0070 ****/
+		%feature("compactdefaultargs") DumpHeader;
+		%feature("autodoc", "
+Parameters
+----------
+level: int (optional, default to 0)
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Dumps header in a short, easy to read, form, onto a stream <level> allows to print more or less parts of the header, if necessary. 0 for basic print.
+") DumpHeader;
+		virtual void DumpHeader(std::ostream &OutValue, const Standard_Integer level = 0);
+
 		/****************** Entities ******************/
 		/**** md5 signature: 5b7a9453b66b65586915cfb6dcb67a37 ****/
 		%feature("compactdefaultargs") Entities;
@@ -7289,6 +7402,61 @@ Description
 Returns the number of an entity in the model if it contains it. else returns 0. for a reportentity, looks at concerned entity. returns the directory entry number of an entity in the model if it contains it. else returns 0. for a reportentity, looks at concerned entity.
 ") Number;
 		Standard_Integer Number(const opencascade::handle<Standard_Transient> & anentity);
+
+		/****************** Print ******************/
+		/**** md5 signature: f32d9b13a42d350bd451be6e924bdd04 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+ent: Standard_Transient
+mode: int (optional, default to 0)
+
+Return
+-------
+s: Standard_OStream
+
+Description
+-----------
+Prints identification of a given entity in <self>, in order to be printed in a list or phrase <mode> < 0: prints only its number <mode> = 1: just calls printlabel <mode> = 0 (d): prints its number plus '/' plus printlabel if <ent> == <self>, simply prints 'global' if <ent> is unknown, prints '/its type'.
+") Print;
+		void Print(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue, const Standard_Integer mode = 0);
+
+		/****************** PrintLabel ******************/
+		/**** md5 signature: 52220811631aa24ac981dc628dc618c9 ****/
+		%feature("compactdefaultargs") PrintLabel;
+		%feature("autodoc", "
+Parameters
+----------
+ent: Standard_Transient
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints label specific to each norm, for a given entity. must only print label itself, in order to be included in a phrase. can call the result of stringlabel, but not obliged.
+") PrintLabel;
+		virtual void PrintLabel(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
+
+		/****************** PrintToLog ******************/
+		/**** md5 signature: b7aa819e37079792a003e300dd25e367 ****/
+		%feature("compactdefaultargs") PrintToLog;
+		%feature("autodoc", "
+Parameters
+----------
+ent: Standard_Transient
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints label specific to each norm in log format, for a given entity. by default, just calls printlabel, can be redefined.
+") PrintToLog;
+		virtual void PrintToLog(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
 		/****************** Protocol ******************/
 		/**** md5 signature: 2dce80af32cedc07d353d312ab7e2c73 ****/
@@ -8183,21 +8351,61 @@ Decodes a date to numeric integer values returns true if ok, false if text does 
 ") NDate;
 		static Standard_Boolean NDate(Standard_CString text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/****************** Print ******************/
+		/**** md5 signature: 8ceabb583669672b2199c7b698914502 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+val: str
+max: int
+just: int (optional, default to -1)
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintTraceToString() {
-            std::stringstream s;
-            self->PrintTrace(s);
-            return s.str();}
-        };
+Return
+-------
+S: Standard_OStream
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Description
+-----------
+Prints a string on an output stream, as follows: accompanied with blanks, to give up to <max> charis at all, justified according just: -1 (d): left 0: center 1: right maximum 76 characters.
+") Print;
+		static void Print(std::ostream &OutValue, Standard_CString val, const Standard_Integer max, const Standard_Integer just = -1);
+
+		/****************** PrintTrace ******************/
+		/**** md5 signature: 1e6fc924febc04632e11bb3880253bee ****/
+		%feature("compactdefaultargs") PrintTrace;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the recorded errors (without title; can be empty, this is the normally expected case).
+") PrintTrace;
+		static void PrintTrace(std::ostream &OutValue);
+
+		/****************** Read ******************/
+		/**** md5 signature: f8598b09b5e3b635ed31058415611435 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+S: str
+
+Return
+-------
+int
+
+Description
+-----------
+Reads a list of messages from a stream, returns read count 0 means empty file, -1 means error.
+") Read;
+		static Standard_Integer Read(std::istream & S);
+
 		/****************** Read ******************/
 		/**** md5 signature: 858a3ab50e2d14b2c69b3dde90ff0915 ****/
 		%feature("compactdefaultargs") Read;
@@ -8328,6 +8536,24 @@ Description
 Returns the translated message, in a functional form with operator () was c++: return const.
 ") Value;
 		Standard_CString Value();
+
+		/****************** Write ******************/
+		/**** md5 signature: 5d0fb0710cbfaa527a5eba31f6de7c16 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+rootkey: str (optional, default to "")
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Writes the list of messages recorded to be translated, to a stream. writes all the list (default) or only keys which begin by <rootkey>. returns the count of written messages.
+") Write;
+		static Standard_Integer Write(std::ostream &OutValue, Standard_CString rootkey = "");
 
 };
 
@@ -10310,6 +10536,24 @@ Returns the count of sharing entities of an entity, which are kind of a given ty
 ") NbTypedSharings;
 		Standard_Integer NbTypedSharings(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Type> & atype);
 
+		/****************** Print ******************/
+		/**** md5 signature: 2f38257dbca8db3ebc49f083711c4d06 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+iter: Interface_EntityIterator
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Utility method which prints the content of an iterator (by their numbers).
+") Print;
+		void Print(const Interface_EntityIterator & iter, std::ostream &OutValue);
+
 		/****************** RootEntities ******************/
 		/**** md5 signature: 63cd32bddc79c5ff7cf79d39668774c9 ****/
 		%feature("compactdefaultargs") RootEntities;
@@ -11443,14 +11687,23 @@ Returns a list of names of statics: <mode> = 0 (d): criter is for family <mode> 
 ") Items;
 		static opencascade::handle<TColStd_HSequenceOfHAsciiString> Items(const Standard_Integer mode = 0, Standard_CString criter = "");
 
+		/****************** PrintStatic ******************/
+		/**** md5 signature: 7f17a7202d6963fb7283a5d0144d0ad0 ****/
+		%feature("compactdefaultargs") PrintStatic;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintStaticToString() {
-            std::stringstream s;
-            self->PrintStatic(s);
-            return s.str();}
-        };
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Writes the properties of a parameter in the diagnostic file. these include: - name - family, - wildcard (if it has one) - current status (empty string if it was updated or if it is the original one) - value.
+") PrintStatic;
+		void PrintStatic(std::ostream &OutValue);
+
 		/****************** RVal ******************/
 		/**** md5 signature: 916bf9a6651fba4b6f0c699767b5c1ed ****/
 		%feature("compactdefaultargs") RVal;
@@ -11755,6 +12008,18 @@ def Interface_MSG_NDate(*args):
 	return Interface_MSG.NDate(*args)
 
 @deprecated
+def Interface_MSG_Print(*args):
+	return Interface_MSG.Print(*args)
+
+@deprecated
+def Interface_MSG_PrintTrace(*args):
+	return Interface_MSG.PrintTrace(*args)
+
+@deprecated
+def Interface_MSG_Read(*args):
+	return Interface_MSG.Read(*args)
+
+@deprecated
 def Interface_MSG_Read(*args):
 	return Interface_MSG.Read(*args)
 
@@ -11777,6 +12042,10 @@ def Interface_MSG_TDate(*args):
 @deprecated
 def Interface_MSG_Translated(*args):
 	return Interface_MSG.Translated(*args)
+
+@deprecated
+def Interface_MSG_Write(*args):
+	return Interface_MSG.Write(*args)
 
 @deprecated
 def Interface_MapAsciiStringHasher_HashCode(*args):

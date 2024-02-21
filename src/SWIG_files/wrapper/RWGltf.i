@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_rwgltf.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1697,18 +1698,17 @@ Main constructor.
 		%feature("autodoc", "
 Parameters
 ----------
-theBinFile: std::ostream
 theStyle: XCAFPrs_Style
 
 Return
 -------
-None
+theBinFile: std::ostream
 
 Description
 -----------
 Add material images into glb stream. @param thebinfile [in] [out] output file stream @param thestyle [in] material images to add.
 ") AddGlbImages;
-		void AddGlbImages(std::ostream & theBinFile, const XCAFPrs_Style & theStyle);
+		void AddGlbImages(std::ostream &OutValue, const XCAFPrs_Style & theStyle);
 
 		/****************** AddImages ******************/
 		/**** md5 signature: 3aa5121db2a6a900aa23f78102a3d9de ****/

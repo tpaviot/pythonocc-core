@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_binobjmgt.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -875,20 +876,42 @@ Put c array of float, thelength is the number of elements.
 ") PutShortRealArray;
 		BinObjMgt_Persistent & PutShortRealArray(const BinObjMgt_PShortReal theArray, const Standard_Integer theLength);
 
+		/****************** Read ******************/
+		/**** md5 signature: 703e11a3fb46f18575a45a43966aa937 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+theIS: str
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Return
+-------
+Standard_IStream
 
-            %feature("autodoc", "1");
-            %extend{
-                void SetIStreamFromString(std::string src) {
-                std::stringstream s(src);
-                self->SetIStream(s);}
-            };
+Description
+-----------
+Retrieves <self> from the stream. inline standard_istream& operator>> (standard_istream&, binobjmgt_persistent&) is also available.
+") Read;
+		Standard_IStream & Read(std::istream & theIS);
+
+		/****************** SetIStream ******************/
+		/**** md5 signature: 5d0249291c7182c496c2994cfe459a5d ****/
+		%feature("compactdefaultargs") SetIStream;
+		%feature("autodoc", "
+Parameters
+----------
+theStream: str
+
+Return
+-------
+None
+
+Description
+-----------
+Sets the stream for direct reading.
+") SetIStream;
+		void SetIStream(std::istream & theStream);
+
 		/****************** SetId ******************/
 		/**** md5 signature: 3131e8337f46d2a085b133db913d7e12 ****/
 		%feature("compactdefaultargs") SetId;
@@ -907,14 +930,23 @@ Sets the id of the object.
 ") SetId;
 		void SetId(const Standard_Integer theId);
 
+		/****************** SetOStream ******************/
+		/**** md5 signature: 05ebcdbd2bdd64c5cb2e8dd9a9b0f378 ****/
+		%feature("compactdefaultargs") SetOStream;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string SetOStreamToString() {
-            std::stringstream s;
-            self->SetOStream(s);
-            return s.str();}
-        };
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Sets the stream for direct writing.
+") SetOStream;
+		void SetOStream(std::ostream &OutValue);
+
 		/****************** SetPosition ******************/
 		/**** md5 signature: 734a09cc1c2f91af755a362f6ac9dbb1 ****/
 		%feature("compactdefaultargs") SetPosition;
@@ -989,6 +1021,24 @@ Description
 Returns the id of the type of the object.
 ") TypeId;
 		Standard_Integer TypeId();
+
+		/****************** Write ******************/
+		/**** md5 signature: 84710283a2afe6c7aea0d3158b3cf2ea ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+theDirectStream: bool (optional, default to Standard_False)
+
+Return
+-------
+theOS: Standard_OStream
+
+Description
+-----------
+Stores <self> to the stream. inline standard_ostream& operator<< (standard_ostream&, binobjmgt_persistent&) is also available. if thedirectstream is true, after this data the direct stream data is stored.
+") Write;
+		Standard_OStream & Write(std::ostream &OutValue, const Standard_Boolean theDirectStream = Standard_False);
 
 };
 

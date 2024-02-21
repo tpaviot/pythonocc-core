@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_localanalysis.htm
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -107,6 +108,42 @@ LocalAnalysis_CurvatureNotDefined = LocalAnalysis_StatusErrorType.LocalAnalysis_
 %rename(localanalysis) LocalAnalysis;
 class LocalAnalysis {
 	public:
+		/****************** Dump ******************/
+		/**** md5 signature: 0c461d717d7298d3576332c66a4c9d44 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+surfconti: LocalAnalysis_SurfaceContinuity
+
+Return
+-------
+o: Standard_OStream
+
+Description
+-----------
+This class compute s and gives tools to check the local continuity between two points situated on 2 curves. //! this function gives information about a variable curvecontinuity.
+") Dump;
+		static void Dump(const LocalAnalysis_SurfaceContinuity & surfconti, std::ostream &OutValue);
+
+		/****************** Dump ******************/
+		/**** md5 signature: 74ee8e149b67cec4713e41bac235b420 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+curvconti: LocalAnalysis_CurveContinuity
+
+Return
+-------
+o: Standard_OStream
+
+Description
+-----------
+This function gives information about a variable surfacecontinuity.
+") Dump;
+		static void Dump(const LocalAnalysis_CurveContinuity & curvconti, std::ostream &OutValue);
+
 };
 
 
@@ -739,4 +776,15 @@ No available documentation.
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
+}
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def localanalysis_Dump(*args):
+	return localanalysis.Dump(*args)
+
+@deprecated
+def localanalysis_Dump(*args):
+	return localanalysis.Dump(*args)
+
 }

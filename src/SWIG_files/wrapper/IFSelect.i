@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_ifselect.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -2378,14 +2379,43 @@ From an edited value, returns its ... value (original one) null means that this 
 ") OriginalValue;
 		opencascade::handle<TCollection_HAsciiString> OriginalValue(const Standard_Integer num);
 
+		/****************** PrintDefs ******************/
+		/**** md5 signature: 46629d4f069d37bd12c0384fcc538c0d ****/
+		%feature("compactdefaultargs") PrintDefs;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintDefsToString() {
-            std::stringstream s;
-            self->PrintDefs(s);
-            return s.str();}
-        };
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints definitions, relative to the editor.
+") PrintDefs;
+		void PrintDefs(std::ostream &OutValue);
+
+		/****************** PrintValues ******************/
+		/**** md5 signature: 9580ee383589529b4c579a30e8eb8c2b ****/
+		%feature("compactdefaultargs") PrintValues;
+		%feature("autodoc", "
+Parameters
+----------
+what: int
+names: bool
+alsolist: bool (optional, default to Standard_False)
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints values, according to what and alsolist <names> true: prints long names; false: prints short names <what> < 0: prints original values (+ flag modified) <what> > 0: prints final values (+flag modified) <what> = 0: prints modified values (original + edited) <alsolist> false (d): lists are printed only as their count <alsolist> true: lists are printed for all their items.
+") PrintValues;
+		void PrintValues(std::ostream &OutValue, const Standard_Integer what, const Standard_Boolean names, const Standard_Boolean alsolist = Standard_False);
+
 		/****************** RankFromNumber ******************/
 		/**** md5 signature: fe822a7d919e60ec0cdab5e6f2363afe ****/
 		%feature("compactdefaultargs") RankFromNumber;
@@ -2775,14 +2805,41 @@ Returns the count of typed values.
 ") NbValues;
 		Standard_Integer NbValues();
 
+		/****************** PrintDefs ******************/
+		/**** md5 signature: 5eb01ddb6757ab25c90b1081fcc7f846 ****/
+		%feature("compactdefaultargs") PrintDefs;
+		%feature("autodoc", "
+Parameters
+----------
+labels: bool (optional, default to Standard_False)
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintNamesToString() {
-            std::stringstream s;
-            self->PrintNames(s);
-            return s.str();}
-        };
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") PrintDefs;
+		void PrintDefs(std::ostream &OutValue, const Standard_Boolean labels = Standard_False);
+
+		/****************** PrintNames ******************/
+		/**** md5 signature: 02f5b2a426678e69e3d51e32f074a88c ****/
+		%feature("compactdefaultargs") PrintNames;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") PrintNames;
+		void PrintNames(std::ostream &OutValue);
+
 		/****************** Recognize ******************/
 		/**** md5 signature: 8378a2193566cc16fc414dbb42c7fa11 ****/
 		%feature("compactdefaultargs") Recognize;
@@ -6394,22 +6451,59 @@ Returns the number of times a signature was counted, 0 if it has not been record
 ") NbTimes;
 		Standard_Integer NbTimes(Standard_CString sign);
 
+		/****************** PrintCount ******************/
+		/**** md5 signature: 52dc9956b3be6f0fa8745979cb86a350 ****/
+		%feature("compactdefaultargs") PrintCount;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintCountToString() {
-            std::stringstream s;
-            self->PrintCount(s);
-            return s.str();}
-        };
+Return
+-------
+S: Standard_OStream
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintSumToString() {
-            std::stringstream s;
-            self->PrintSum(s);
-            return s.str();}
-        };
+Description
+-----------
+Prints the counts of items (not the list).
+") PrintCount;
+		virtual void PrintCount(std::ostream &OutValue);
+
+		/****************** PrintList ******************/
+		/**** md5 signature: bcbb5a17846c2054455e1d0575bea15a ****/
+		%feature("compactdefaultargs") PrintList;
+		%feature("autodoc", "
+Parameters
+----------
+model: Interface_InterfaceModel
+mod: IFSelect_PrintCount (optional, default to IFSelect_ListByItem)
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the lists of items, if they are present (else, prints a message 'no list available') uses <model> to determine for each entity to be listed, its number, and its specific identifier (by printlabel) <mod> gives a mode for printing: - countbyitem: just count (as printcount) - shortbyitem: minimum i.e. count plus 5 first entity numbers - shortbyitem(d) complete list of entity numbers (0: 'global') - entitiesbyitem: list of (entity number/printlabel from the model) other modes are ignored.
+") PrintList;
+		virtual void PrintList(std::ostream &OutValue, const opencascade::handle<Interface_InterfaceModel> & model, const IFSelect_PrintCount mod = IFSelect_ListByItem);
+
+		/****************** PrintSum ******************/
+		/**** md5 signature: 12295d942889bf52eeb33b08fd2a6899 ****/
+		%feature("compactdefaultargs") PrintSum;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints a summary item which has the greatest count of entities for items which are numeric values: their count, maximum, minimum values, cumul, average.
+") PrintSum;
+		virtual void PrintSum(std::ostream &OutValue);
+
 		/****************** SetList ******************/
 		/**** md5 signature: b238846d95b165f74a942ebb6e50644f ****/
 		%feature("compactdefaultargs") SetList;
@@ -6572,6 +6666,47 @@ Performs the copy of entities from an original model to a new one. it must also 
 ") CopyModel;
 		virtual Standard_Boolean CopyModel(const opencascade::handle<Interface_InterfaceModel> & original, const opencascade::handle<Interface_InterfaceModel> & newmodel, const Interface_EntityIterator & list, Interface_CopyTool & TC);
 
+		/****************** DumpEntity ******************/
+		/**** md5 signature: f8408c5a3c33881cd6f64d4f853e5b90 ****/
+		%feature("compactdefaultargs") DumpEntity;
+		%feature("autodoc", "
+Parameters
+----------
+model: Interface_InterfaceModel
+protocol: Interface_Protocol
+entity: Standard_Transient
+level: int
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Gives the way of dumping an entity under a form comprehensive for each norm. <model> helps to identify, number ... entities. <level> is to be interpreted for each norm (because of the formats which can be very different).
+") DumpEntity;
+		virtual void DumpEntity(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol, const opencascade::handle<Standard_Transient> & entity, std::ostream &OutValue, const Standard_Integer level);
+
+		/****************** DumpEntity ******************/
+		/**** md5 signature: d4ac4e0fc19594eff493ccd280b9aab2 ****/
+		%feature("compactdefaultargs") DumpEntity;
+		%feature("autodoc", "
+Parameters
+----------
+model: Interface_InterfaceModel
+protocol: Interface_Protocol
+entity: Standard_Transient
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Calls deferred dumpentity with the recorded default level.
+") DumpEntity;
+		void DumpEntity(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol, const opencascade::handle<Standard_Transient> & entity, std::ostream &OutValue);
+
 		/****************** DumpHelp ******************/
 		/**** md5 signature: f61ff69745dfa047c7a47cefecb0fa1c ****/
 		%feature("compactdefaultargs") DumpHelp;
@@ -6635,7 +6770,7 @@ Gives the way to read a file and transfer it to a model <mod> is the resulting m
 Parameters
 ----------
 theName: str
-theIStream: std::istream
+theIStream: str
 model: Interface_InterfaceModel
 protocol: Interface_Protocol
 
@@ -7116,6 +7251,43 @@ Description
 Returns the rank of a dispatch in the shareout, or 0 if <disp> is not in the shareout or not in the worksession.
 ") DispatchRank;
 		Standard_Integer DispatchRank(const opencascade::handle<IFSelect_Dispatch> & disp);
+
+		/****************** DumpEntity ******************/
+		/**** md5 signature: f990cff2a6a7f265e11d7bac988dbbd6 ****/
+		%feature("compactdefaultargs") DumpEntity;
+		%feature("autodoc", "
+Parameters
+----------
+ent: Standard_Transient
+level: int
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Dumps a starting entity according to the current norm. to do this, it calls dumpentity from worklibrary. <level> is to be interpreted for each norm: see specific classes of worklibrary for it. generally, 0 if for very basic (only type ...), greater values give more and more details.
+") DumpEntity;
+		void DumpEntity(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer level, std::ostream &OutValue);
+
+		/****************** DumpModel ******************/
+		/**** md5 signature: d1b07e5d32687faa97f239407098b2d6 ****/
+		%feature("compactdefaultargs") DumpModel;
+		%feature("autodoc", "
+Parameters
+----------
+level: int
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Lists the content of the input model (if there is one) according level: 0 -> gives only count of entities and roots 1 -> lists also roots; 2 -> lists all entities (by tracetype) 3 -> performs a call to checklist (fails) and lists the result 4 -> as 3 but all checklist (fails + warnings) 5,6,7: as 3 but resp. count,list,labels by fail 8,9,10: as 4 but resp. count,list,labels by message.
+") DumpModel;
+		void DumpModel(const Standard_Integer level, std::ostream &OutValue);
 
 		/****************** DumpSelection ******************/
 		/**** md5 signature: 678949be99cdcf061da9cb44548ea4f4 ****/
@@ -7818,6 +7990,25 @@ Returns the check list produced by the last execution of either: evaluatefile(fo
 ") LastRunCheckList;
 		Interface_CheckIterator LastRunCheckList();
 
+		/****************** ListEntities ******************/
+		/**** md5 signature: 7dcb72658ee62c200859aa51b254701d ****/
+		%feature("compactdefaultargs") ListEntities;
+		%feature("autodoc", "
+Parameters
+----------
+iter: Interface_EntityIterator
+mode: int
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Internal method which displays an entityiterator <mode> 0 gives short display (only entity numbers) 1 gives a more complete trace (1 line per entity) (can be used each time a trace has to be output from a list) 2 gives a form suitable for givelist: (n1,n2,n3...).
+") ListEntities;
+		void ListEntities(const Interface_EntityIterator & iter, const Standard_Integer mode, std::ostream &OutValue);
+
 		/****************** ListFinalModifiers ******************/
 		/**** md5 signature: b6f48db447f14a56611601af586a67c5 ****/
 		%feature("compactdefaultargs") ListFinalModifiers;
@@ -8239,6 +8430,63 @@ From a given label in model, returns the corresponding number starts from first 
 ") NumberFromLabel;
 		Standard_Integer NumberFromLabel(Standard_CString val, const Standard_Integer afternum = 0);
 
+		/****************** PrintCheckList ******************/
+		/**** md5 signature: abe5e5f6e65ec20b5fa1bdc0150abd4b ****/
+		%feature("compactdefaultargs") PrintCheckList;
+		%feature("autodoc", "
+Parameters
+----------
+checklist: Interface_CheckIterator
+failsonly: bool
+mode: IFSelect_PrintCount
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints a checkiterator to the current trace file, controlled with the current model complete or fails only, according to <failsonly> <mode> defines the mode of printing 0: sequential, according entities; else with a checkcounter 1: according messages, count of entities 2: id but with list of entities, designated by their numbers 3: as 2 but with labels of entities.
+") PrintCheckList;
+		void PrintCheckList(std::ostream &OutValue, const Interface_CheckIterator & checklist, const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
+
+		/****************** PrintEntityStatus ******************/
+		/**** md5 signature: 23f12785981bcfcd0d9cd330e2c76792 ****/
+		%feature("compactdefaultargs") PrintEntityStatus;
+		%feature("autodoc", "
+Parameters
+----------
+ent: Standard_Transient
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints main information about an entity: its number, type, validity (and checks if any), category, shareds and sharings.. mutable because it can recompute checks as necessary.
+") PrintEntityStatus;
+		void PrintEntityStatus(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
+
+		/****************** PrintSignatureList ******************/
+		/**** md5 signature: eea2888114f184bae9fc2d6912607a7f ****/
+		%feature("compactdefaultargs") PrintSignatureList;
+		%feature("autodoc", "
+Parameters
+----------
+signlist: IFSelect_SignatureList
+mode: IFSelect_PrintCount
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints a signaturelist to the current trace file, controlled with the current model <mode> defines the mode of printing (see signaturelist).
+") PrintSignatureList;
+		void PrintSignatureList(std::ostream &OutValue, const opencascade::handle<IFSelect_SignatureList> & signlist, const IFSelect_PrintCount mode);
+
 		/****************** Protocol ******************/
 		/**** md5 signature: 1c9ddeeacf191f917e4377fcdad955ea ****/
 		%feature("compactdefaultargs") Protocol;
@@ -8332,7 +8580,7 @@ Reads a file with the worklibrary (sets model and loadedfile) returns a integer 
 Parameters
 ----------
 theName: str
-theIStream: std::istream
+theIStream: str
 
 Return
 -------

@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_tfunction.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -337,14 +338,23 @@ Removes all drivers. returns true if the driver has been removed successfully.
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: cfe815398c9c4191063c65e53f786693 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** FindDriver ******************/
 		/**** md5 signature: 40071a232ea53c66f7cc98d78279429a ****/
 		%feature("compactdefaultargs") FindDriver;
@@ -445,19 +455,40 @@ No available documentation.
 ") TFunction_Function;
 		 TFunction_Function();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -769,14 +800,23 @@ Defines a reference to the function as a previous one.
 ") AddPrevious;
 		Standard_Boolean AddPrevious(const TDF_Label & func);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -1408,14 +1448,23 @@ Returns the current list of functions. if the iterator uses the execution status
 ") Current;
 		virtual const TDF_LabelList & Current();
 
+		/****************** Dump ******************/
+		/**** md5 signature: ee51cac270c7787d1809a1cb8cf01d91 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** GetMaxNbThreads ******************/
 		/**** md5 signature: f69c96860a70a701f350c27debbc0ecf ****/
 		%feature("compactdefaultargs") GetMaxNbThreads;
@@ -1599,14 +1648,23 @@ Sets status of execution.
 ") Done;
 		void Done(const Standard_Boolean status);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
+
+Description
+-----------
+Prints th data of the attributes (touched, impacted and valid labels).
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -1937,14 +1995,23 @@ Returns the scope of functions for modification. warning: don't use this method 
 ") ChangeFunctions;
 		TFunction_DoubleMapOfIntegerLabel & ChangeFunctions();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** GetFreeID ******************/
 		/**** md5 signature: 34e64d8664d6cf8b1d7cb4b452f9928a ****/
 		%feature("compactdefaultargs") GetFreeID;

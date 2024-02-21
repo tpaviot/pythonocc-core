@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_monitool.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -2086,22 +2087,40 @@ Returns map of timers.
 ") Dictionary;
 		static MoniTool_DataMapOfTimer & Dictionary();
 
+		/****************** Dump ******************/
+		/**** md5 signature: ba17251f1205c984d981679cb87ee281 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+ostr: Standard_OStream
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpTimersToString() {
-            std::stringstream s;
-            self->DumpTimers(s);
-            return s.str();}
-        };
+Description
+-----------
+Dumps current state of a timer shortly (one-line output).
+") Dump;
+		void Dump(std::ostream &OutValue);
+
+		/****************** DumpTimers ******************/
+		/**** md5 signature: a163d6e3a2170cc59ce7e312bac33510 ****/
+		%feature("compactdefaultargs") DumpTimers;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+ostr: Standard_OStream
+
+Description
+-----------
+Dumps contents of the whole dictionary.
+") DumpTimers;
+		static void DumpTimers(std::ostream &OutValue);
+
 		/****************** GetAmendments ******************/
 		/**** md5 signature: c2be8078ab69a477345c7d01bfe03646 ****/
 		%feature("compactdefaultargs") GetAmendments;
@@ -2816,22 +2835,40 @@ Returns the value as transient object, only for object/entity remark that the 'h
 ") ObjectValue;
 		opencascade::handle<Standard_Transient> ObjectValue();
 
+		/****************** Print ******************/
+		/**** md5 signature: d481ea44f76183e17a04f4e32b90f550 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+S: Standard_OStream
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintValueToString() {
-            std::stringstream s;
-            self->PrintValue(s);
-            return s.str();}
-        };
+Description
+-----------
+Prints definition, specification, and actual status and value.
+") Print;
+		virtual void Print(std::ostream &OutValue);
+
+		/****************** PrintValue ******************/
+		/**** md5 signature: a5c0ed204815d55a64ad2d065f7106ab ****/
+		%feature("compactdefaultargs") PrintValue;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints only the value.
+") PrintValue;
+		void PrintValue(std::ostream &OutValue);
+
 		/****************** RealLimit ******************/
 		/**** md5 signature: 89c72e2e3893a95f4283fcadf76436b4 ****/
 		%feature("compactdefaultargs") RealLimit;
@@ -3454,6 +3491,10 @@ def MoniTool_Timer_ComputeAmendments(*args):
 @deprecated
 def MoniTool_Timer_Dictionary(*args):
 	return MoniTool_Timer.Dictionary(*args)
+
+@deprecated
+def MoniTool_Timer_DumpTimers(*args):
+	return MoniTool_Timer.DumpTimers(*args)
 
 @deprecated
 def MoniTool_Timer_GetAmendments(*args):

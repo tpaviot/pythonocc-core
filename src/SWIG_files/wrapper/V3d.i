@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_v3d.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -553,10 +554,22 @@ No available documentation.
 		void Display();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -879,10 +892,22 @@ No available documentation.
 		virtual void Display();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -1068,10 +1093,22 @@ Display trihedron.
 		void Display(const V3d_View & theView);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2026,10 +2063,22 @@ Dumps the full contents of the view into the image file. this is an alias for to
 		Standard_Boolean Dump(Standard_CString theFile, const Graphic3d_BufferType & theBufferType = Graphic3d_BT_RGB);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -4999,10 +5048,22 @@ Return graphic driver instance.
 		const opencascade::handle<Graphic3d_GraphicDriver> & Driver();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}

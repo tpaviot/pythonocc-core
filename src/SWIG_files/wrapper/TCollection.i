@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_tcollection.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1207,21 +1208,41 @@ Inserts the string other at the beginning of this ascii string. example tcollect
 ") Prepend;
 		void Prepend(TCollection_AsciiString other);
 
+		/****************** Print ******************/
+		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+astream: Standard_OStream
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadFromString(std::string src) {
-                std::stringstream s(src);
-                self->Read(s);}
-            };
+Description
+-----------
+Displays <self> on a stream.
+") Print;
+		void Print(std::ostream &OutValue);
+
+		/****************** Read ******************/
+		/**** md5 signature: e0872b647041ae5015cfaa77802dd596 ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+astream: str
+
+Return
+-------
+None
+
+Description
+-----------
+Read <self> from a stream.
+") Read;
+		void Read(std::istream & astream);
+
 		/****************** RealValue ******************/
 		/**** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ****/
 		%feature("compactdefaultargs") RealValue;
@@ -2442,14 +2463,23 @@ Returns expected cstring length in utf8 coding. it can be used for memory calcul
 ") LengthOfCString;
 		Standard_Integer LengthOfCString();
 
+		/****************** Print ******************/
+		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+astream: Standard_OStream
+
+Description
+-----------
+Displays <self> .
+") Print;
+		void Print(std::ostream &OutValue);
+
 		/****************** Remove ******************/
 		/**** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ****/
 		%feature("compactdefaultargs") Remove;
@@ -3526,14 +3556,23 @@ Inserts the other string at the beginning of the string <self> example: before m
 ") Prepend;
 		void Prepend(const opencascade::handle<TCollection_HAsciiString> & other);
 
+		/****************** Print ******************/
+		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+astream: Standard_OStream
+
+Description
+-----------
+Prints this string on the stream <astream>.
+") Print;
+		void Print(std::ostream &OutValue);
+
 		/****************** RealValue ******************/
 		/**** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ****/
 		%feature("compactdefaultargs") RealValue;
@@ -4263,14 +4302,23 @@ Returns number of characters in <self>. this is the same functionality as 'strle
 ") Length;
 		Standard_Integer Length();
 
+		/****************** Print ******************/
+		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+astream: Standard_OStream
+
+Description
+-----------
+Displays <self> .
+") Print;
+		void Print(std::ostream &OutValue);
+
 		/****************** Remove ******************/
 		/**** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ****/
 		%feature("compactdefaultargs") Remove;

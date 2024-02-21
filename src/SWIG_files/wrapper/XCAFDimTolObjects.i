@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_xcafdimtolobjects
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -852,10 +853,22 @@ Adds a modifier to the datum sequence of modifiers.
 		void AddModifier(const XCAFDimTolObjects_DatumSingleModif theModifier);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -1513,10 +1526,22 @@ Adds a modifier to the dimension sequence of modifiers.
 		void AddModifier(const XCAFDimTolObjects_DimensionModif theModifier);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2437,10 +2462,22 @@ Adds a tolerance modifier to the sequence of modifiers.
 		void AddModifier(const XCAFDimTolObjects_GeomToleranceModif theModifier);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}

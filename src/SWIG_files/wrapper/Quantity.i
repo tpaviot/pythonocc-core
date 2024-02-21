@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_quantity.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -2279,10 +2280,22 @@ Returns the distance between two colors. it's a value between 0 and the square r
 		Standard_Real Distance(const Quantity_Color & theColor);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2349,10 +2362,22 @@ Returns the hue component (hue angle) of the color in degrees within range [0.0;
 		Standard_Real Hue();
 
 
-        /****************** InitFromJsonString ******************/
-        %feature("autodoc", "1");
+        /****************** InitFromJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+json_string: the string
+
+Return
+-------
+bool
+
+Description
+-----------
+Init the object from a JSON string.
+") InitFromJson;
         %extend{
-            bool InitFromJsonString(std::string json_string) {
+            bool InitFromJson(std::string json_string) {
             std::stringstream s(json_string);
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
@@ -2648,7 +2673,7 @@ def __eq__(self, right):
 %extend Quantity_Color {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -2656,7 +2681,7 @@ def __eq__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = Quantity_Color()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Quantity_Color')
@@ -2718,7 +2743,7 @@ Returns true if two colors are equal.
 %extend Quantity_ColorHasher {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -2726,7 +2751,7 @@ Returns true if two colors are equal.
 %pythoncode {
     def __setstate__(self, state):
         inst = Quantity_ColorHasher()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Quantity_ColorHasher')
@@ -2953,10 +2978,22 @@ Convert srgb components into linear rgb using opengl specs formula.
 		static NCollection_Vec4<float > Convert_sRGB_To_LinearRGB(const NCollection_Vec4<float> & theRGB);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2975,10 +3012,22 @@ Return rgb color value.
 		const Quantity_Color & GetRGB();
 
 
-        /****************** InitFromJsonString ******************/
-        %feature("autodoc", "1");
+        /****************** InitFromJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+json_string: the string
+
+Return
+-------
+bool
+
+Description
+-----------
+Init the object from a JSON string.
+") InitFromJson;
         %extend{
-            bool InitFromJsonString(std::string json_string) {
+            bool InitFromJson(std::string json_string) {
             std::stringstream s(json_string);
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
@@ -3111,7 +3160,7 @@ def __eq__(self, right):
 %extend Quantity_ColorRGBA {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -3119,7 +3168,7 @@ def __eq__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = Quantity_ColorRGBA()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Quantity_ColorRGBA')
@@ -3181,7 +3230,7 @@ Returns true if two colors are equal.
 %extend Quantity_ColorRGBAHasher {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -3189,7 +3238,7 @@ Returns true if two colors are equal.
 %pythoncode {
     def __setstate__(self, state):
         inst = Quantity_ColorRGBAHasher()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Quantity_ColorRGBAHasher')
@@ -3605,7 +3654,7 @@ def __eq__(self, right):
 %extend Quantity_Date {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -3613,7 +3662,7 @@ def __eq__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = Quantity_Date()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Quantity_Date')
@@ -3943,7 +3992,7 @@ def __eq__(self, right):
 %extend Quantity_Period {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -3951,7 +4000,7 @@ def __eq__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = Quantity_Period()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Quantity_Period')

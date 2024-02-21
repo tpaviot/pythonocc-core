@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_xscontrol.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -993,6 +994,25 @@ Prints the check list attached to loaded data, on the standard trace file (start
 ") PrintCheckLoad;
 		void PrintCheckLoad(const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
 
+		/****************** PrintCheckLoad ******************/
+		/**** md5 signature: ca487156a90b4b3b2c6320bc467c731d ****/
+		%feature("compactdefaultargs") PrintCheckLoad;
+		%feature("autodoc", "
+Parameters
+----------
+failsonly: bool
+mode: IFSelect_PrintCount
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Prints the check list attached to loaded data.
+") PrintCheckLoad;
+		void PrintCheckLoad(std::ostream &OutValue, const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
+
 		/****************** PrintCheckTransfer ******************/
 		/**** md5 signature: 6750f68e6aed952f2529ea394507d25f ****/
 		%feature("compactdefaultargs") PrintCheckTransfer;
@@ -1012,6 +1032,25 @@ Displays check results for the last translation of iges or step entities to open
 ") PrintCheckTransfer;
 		void PrintCheckTransfer(const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
 
+		/****************** PrintCheckTransfer ******************/
+		/**** md5 signature: 09d1abfff46e1d492cfc6662fd49988d ****/
+		%feature("compactdefaultargs") PrintCheckTransfer;
+		%feature("autodoc", "
+Parameters
+----------
+failsonly: bool
+mode: IFSelect_PrintCount
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Displays check results for the last translation of iges or step entities to open cascade entities.
+") PrintCheckTransfer;
+		void PrintCheckTransfer(std::ostream &OutValue, const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
+
 		/****************** PrintStatsTransfer ******************/
 		/**** md5 signature: 148fec90ff7b063449e9624a36399cda ****/
 		%feature("compactdefaultargs") PrintStatsTransfer;
@@ -1030,6 +1069,25 @@ Description
 Displays the statistics for the last translation. what defines the kind of statistics that are displayed as follows: - 0 gives general statistics (number of translated roots, number of warnings, number of fail messages), - 1 gives root results, - 2 gives statistics for all checked entities, - 3 gives the list of translated entities, - 4 gives warning and fail messages, - 5 gives fail messages only. the use of mode depends on the value of what. if what is 0, mode is ignored. if what is 1, 2 or 3, mode defines the following: - 0 lists the numbers of iges or step entities in the respective model - 1 gives the number, identifier, type and result type for each iges or step entity and/or its status (fail, warning, etc.) - 2 gives maximum information for each iges or step entity (i.e. checks) - 3 gives the number of entities per type of iges or step entity - 4 gives the number of iges or step entities per result type and/or status - 5 gives the number of pairs (iges or step or result type and status) - 6 gives the number of pairs (iges or step or result type and status) and the list of entity numbers in the iges or step model. if what is 4 or 5, mode defines the warning and fail messages as follows: - if mode is 0 all warnings and checks per entity are returned - if mode is 2 the list of entities per warning is returned. if mode is not set, only the list of all entities per warning is given.
 ") PrintStatsTransfer;
 		void PrintStatsTransfer(const Standard_Integer what, const Standard_Integer mode = 0);
+
+		/****************** PrintStatsTransfer ******************/
+		/**** md5 signature: fc32c8e9efabbaf8d728d672c3d2b5bb ****/
+		%feature("compactdefaultargs") PrintStatsTransfer;
+		%feature("autodoc", "
+Parameters
+----------
+what: int
+mode: int (optional, default to 0)
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Displays the statistics for the last translation.
+") PrintStatsTransfer;
+		void PrintStatsTransfer(std::ostream &OutValue, const Standard_Integer what, const Standard_Integer mode = 0);
 
 		/****************** ReadFile ******************/
 		/**** md5 signature: 0c5675761cd6df0c5f286882695ad872 ****/
@@ -1056,7 +1114,7 @@ Loads a file and returns the read status zero for a model which compies with the
 Parameters
 ----------
 theName: str
-theIStream: std::istream
+theIStream: str
 
 Return
 -------
@@ -1938,6 +1996,25 @@ Description
 Returns the currently set interfacemodel.
 ") Model;
 		const opencascade::handle<Interface_InterfaceModel> & Model();
+
+		/****************** PrintStats ******************/
+		/**** md5 signature: 1c7ce9a7eeef2971ad247597c52d38d8 ****/
+		%feature("compactdefaultargs") PrintStats;
+		%feature("autodoc", "
+Parameters
+----------
+theWhat: int
+theMode: int (optional, default to 0)
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Prints statistics on current trace file, according <what> and <mode>. see printstatsprocess for details.
+") PrintStats;
+		void PrintStats(std::ostream &OutValue, const Standard_Integer theWhat, const Standard_Integer theMode = 0);
 
 		/****************** PrintStatsOnList ******************/
 		/**** md5 signature: 163b44563c2a8ec32944ebf6b8b54c19 ****/
@@ -3701,6 +3778,25 @@ Description
 Returns the norm controller itself.
 ") NormAdaptor;
 		const opencascade::handle<XSControl_Controller> & NormAdaptor();
+
+		/****************** PrintTransferStatus ******************/
+		/**** md5 signature: 00bdb09211e1e6bb5ba474ef2dd4ac70 ****/
+		%feature("compactdefaultargs") PrintTransferStatus;
+		%feature("autodoc", "
+Parameters
+----------
+theNum: int
+theWri: bool
+
+Return
+-------
+theS: Standard_OStream
+
+Description
+-----------
+Prints the transfer status of a transferred item, as being the mapped n0 <num>, from mapwriter if <wri> is true, or from mapreader if <wri> is false returns true when done, false else (i.e. num out of range).
+") PrintTransferStatus;
+		Standard_Boolean PrintTransferStatus(const Standard_Integer theNum, const Standard_Boolean theWri, std::ostream &OutValue);
 
 		/****************** Result ******************/
 		/**** md5 signature: 648bf58b2605b71bf5b4112cce9715c1 ****/

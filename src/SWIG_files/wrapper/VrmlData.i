@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_vrmldata.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -509,14 +510,23 @@ Description
 ") Allocator;
 		const opencascade::handle<NCollection_IncAllocator> & Allocator();
 
+		/****************** Dump ******************/
+		/**** md5 signature: c7b7f3310b5193de5f2365d935cd2c95 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+/** * diagnostic dump of the contents */.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** FindNode ******************/
 		/**** md5 signature: bb943cbcf67db155aea431d31d5e4097 ****/
 		%feature("compactdefaultargs") FindNode;

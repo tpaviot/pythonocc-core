@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_topopebrepbuild.h
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -5198,14 +5199,23 @@ No available documentation.
 ") Current;
 		void Current(TopAbs_State & s1, TopAbs_State & s2);
 
+		/****************** Dump ******************/
+		/**** md5 signature: e60d722f65a7811be636699da7600e78 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** Init ******************/
 		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
 		%feature("compactdefaultargs") Init;
@@ -5277,14 +5287,23 @@ No available documentation.
 ******************************/
 class TopOpeBRepBuild_GTool {
 	public:
+		/****************** Dump ******************/
+		/**** md5 signature: 7ac13aaed5b6d1996e76f06146a4af9d ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		static void Dump(std::ostream &OutValue);
+
 		/****************** GComDiff ******************/
 		/**** md5 signature: 728073c8bdab2220cb285e5911b15d15 ****/
 		%feature("compactdefaultargs") GComDiff;
@@ -5630,14 +5649,80 @@ No available documentation.
 ") CopyPermuted;
 		TopOpeBRepBuild_GTopo CopyPermuted();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 8c9af92dbb883764baa3ebb3e5b82f7c ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+s: Standard_Address (optional, default to NULL)
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpTypeToString() {
-            std::stringstream s;
-            self->DumpType(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual void Dump(std::ostream &OutValue, const Standard_Address s = NULL);
+
+		/****************** DumpSSB ******************/
+		/**** md5 signature: f191eecc210b5827d05e7cd4594ead98 ****/
+		%feature("compactdefaultargs") DumpSSB;
+		%feature("autodoc", "
+Parameters
+----------
+s1: TopAbs_State
+s2: TopAbs_State
+b: bool
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") DumpSSB;
+		static void DumpSSB(std::ostream &OutValue, const TopAbs_State s1, const TopAbs_State s2, const Standard_Boolean b);
+
+		/****************** DumpType ******************/
+		/**** md5 signature: 958d66f716a6ca18d4ec9ac299b310e2 ****/
+		%feature("compactdefaultargs") DumpType;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") DumpType;
+		void DumpType(std::ostream &OutValue);
+
+		/****************** DumpVal ******************/
+		/**** md5 signature: 8a87e48d25d7176e71c93b30dca770f3 ****/
+		%feature("compactdefaultargs") DumpVal;
+		%feature("autodoc", "
+Parameters
+----------
+s1: TopAbs_State
+s2: TopAbs_State
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") DumpVal;
+		void DumpVal(std::ostream &OutValue, const TopAbs_State s1, const TopAbs_State s2);
+
 		/****************** GIndex ******************/
 		/**** md5 signature: 139dc2b2cf616d5e5205293f4637e677 ****/
 		%feature("compactdefaultargs") GIndex;
@@ -7054,6 +7139,44 @@ Description
 No available documentation.
 ") DumpBB;
 		virtual void DumpBB();
+
+		/****************** DumpCheck ******************/
+		/**** md5 signature: a08a701cbae28cab87a77d32a92880ac ****/
+		%feature("compactdefaultargs") DumpCheck;
+		%feature("autodoc", "
+Parameters
+----------
+str: str
+S: TopoDS_Shape
+chk: bool
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") DumpCheck;
+		void DumpCheck(std::ostream &OutValue, TCollection_AsciiString str, const TopoDS_Shape & S, const Standard_Boolean chk);
+
+		/****************** DumpName ******************/
+		/**** md5 signature: e73ae5ec230cf0b21dee0ddf6cc25888 ****/
+		%feature("compactdefaultargs") DumpName;
+		%feature("autodoc", "
+Parameters
+----------
+str: str
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") DumpName;
+		void DumpName(std::ostream &OutValue, TCollection_AsciiString str);
 
 		/****************** DumpSS ******************/
 		/**** md5 signature: cdc9acb51bec94239bc4daf1ba078420 ****/
@@ -11167,6 +11290,10 @@ def TopOpeBRepBuild_CorrectFace2d_GetP2dFL(*args):
 	return TopOpeBRepBuild_CorrectFace2d.GetP2dFL(*args)
 
 @deprecated
+def TopOpeBRepBuild_GTool_Dump(*args):
+	return TopOpeBRepBuild_GTool.Dump(*args)
+
+@deprecated
 def TopOpeBRepBuild_GTool_GComDiff(*args):
 	return TopOpeBRepBuild_GTool.GComDiff(*args)
 
@@ -11201,6 +11328,10 @@ def TopOpeBRepBuild_GTool_GFusSame(*args):
 @deprecated
 def TopOpeBRepBuild_GTool_GFusUnsh(*args):
 	return TopOpeBRepBuild_GTool.GFusUnsh(*args)
+
+@deprecated
+def TopOpeBRepBuild_GTopo_DumpSSB(*args):
+	return TopOpeBRepBuild_GTopo.DumpSSB(*args)
 
 @deprecated
 def TopOpeBRepBuild_Tools_CheckFaceClosed2d(*args):

@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_tnaming.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -368,6 +369,60 @@ Description
 Returns true if outer wire is found and the found wire in <thewire>.
 ") OuterWire;
 		static Standard_Boolean OuterWire(const TopoDS_Face & theFace, TopoDS_Wire & theWire);
+
+		/****************** Print ******************/
+		/**** md5 signature: 2b639b8df3fe00401374dd95e415224e ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+EVOL: TNaming_Evolution
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the evolution <evol> as a string on the stream <s> and returns <s>.
+") Print;
+		static Standard_OStream & Print(const TNaming_Evolution EVOL, std::ostream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: 0086f15e63801a19d591d96a9d20bb2a ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+NAME: TNaming_NameType
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the name of name type <name> as a string on the stream <s> and returns <s>.
+") Print;
+		static Standard_OStream & Print(const TNaming_NameType NAME, std::ostream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: acadfcdd30dbbb74b400e87246c92ac0 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+ACCESS: TDF_Label
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the content of usedshapes private attribute as a string table on the stream <s> and returns <s>.
+") Print;
+		static Standard_OStream & Print(const TDF_Label & ACCESS, std::ostream &OutValue);
 
 		/****************** Replicate ******************/
 		/**** md5 signature: b05536a641bcb5721eea10c9d85c5058 ****/
@@ -1646,10 +1701,22 @@ No available documentation.
 		const TDF_Label & ContextLabel();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2031,19 +2098,40 @@ Makes a deltaonremoval on <self> because <self> has disappeared from the ds.
 ") DeltaOnRemoval;
 		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+Dumps the attribute on <astream>.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2254,23 +2342,63 @@ No available documentation.
 ") ChangeName;
 		TNaming_Name & ChangeName();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****************** ExtendedDump ******************/
+		/**** md5 signature: cdafdec412b1ac94fc1e049a6ac0bb97 ****/
+		%feature("compactdefaultargs") ExtendedDump;
+		%feature("autodoc", "
+Parameters
+----------
+aFilter: TDF_IDFilter
+aMap: TDF_AttributeIndexedMap
+
+Return
+-------
+anOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") ExtendedDump;
+		virtual void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, TDF_AttributeIndexedMap & aMap);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -2926,10 +3054,22 @@ No available documentation.
 		 TNaming_RefShape(const TopoDS_Shape & S);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -4456,19 +4596,40 @@ No available documentation.
 ") Destroy;
 		void Destroy();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+Dumps the attribute on <astream>.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -4630,6 +4791,18 @@ def tnaming_OuterShell(*args):
 @deprecated
 def tnaming_OuterWire(*args):
 	return tnaming.OuterWire(*args)
+
+@deprecated
+def tnaming_Print(*args):
+	return tnaming.Print(*args)
+
+@deprecated
+def tnaming_Print(*args):
+	return tnaming.Print(*args)
+
+@deprecated
+def tnaming_Print(*args):
+	return tnaming.Print(*args)
 
 @deprecated
 def tnaming_Replicate(*args):

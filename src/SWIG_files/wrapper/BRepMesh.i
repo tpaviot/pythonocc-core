@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_brepmesh.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1328,14 +1329,23 @@ Removes node from the mesh in case if it has no connected links and its type is 
 ") RemoveNode;
 		void RemoveNode(const Standard_Integer theIndex, const Standard_Boolean isForce = Standard_False);
 
+		/****************** Statistics ******************/
+		/**** md5 signature: 1a1dab8d9fff60f7ef456c28f93e75d1 ****/
+		%feature("compactdefaultargs") Statistics;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string StatisticsToString() {
-            std::stringstream s;
-            self->Statistics(s);
-            return s.str();}
-        };
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Dumps information about this structure. @param thestream stream to be used for dump.
+") Statistics;
+		void Statistics(std::ostream &OutValue);
+
 		/****************** SubstituteElement ******************/
 		/**** md5 signature: 12a4e39048c62f85d59c6cb6b113dccd ****/
 		%feature("compactdefaultargs") SubstituteElement;
@@ -5063,14 +5073,23 @@ Sets the tolerance to be used for identification of coincident vertices. @param 
 ") SetTolerance;
 		void SetTolerance(const Standard_Real theToleranceX, const Standard_Real theToleranceY);
 
+		/****************** Statistics ******************/
+		/**** md5 signature: 1a1dab8d9fff60f7ef456c28f93e75d1 ****/
+		%feature("compactdefaultargs") Statistics;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string StatisticsToString() {
-            std::stringstream s;
-            self->Statistics(s);
-            return s.str();}
-        };
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Prints statistics.
+") Statistics;
+		void Statistics(std::ostream &OutValue);
+
 		/****************** Substitute ******************/
 		/**** md5 signature: 02ac53c87b5a046c4ee9a0b10ac44d20 ****/
 		%feature("compactdefaultargs") Substitute;

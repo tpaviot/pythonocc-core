@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_brepcheck.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -283,6 +284,24 @@ Description
 Returns the resolution on the surface.
 ") PrecSurface;
 		static Standard_Real PrecSurface(const opencascade::handle<Adaptor3d_Surface> & aAHSurf);
+
+		/****************** Print ******************/
+		/**** md5 signature: 0f4f5589255e0cda18fd387e5d4e5b49 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+Stat: BRepCheck_Status
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		static void Print(const BRepCheck_Status Stat, std::ostream &OutValue);
 
 		/****************** SelfIntersection ******************/
 		/**** md5 signature: bb04b20d19bd60ec83e4525199c06c3b ****/
@@ -1680,6 +1699,10 @@ def brepcheck_PrecCurve(*args):
 @deprecated
 def brepcheck_PrecSurface(*args):
 	return brepcheck.PrecSurface(*args)
+
+@deprecated
+def brepcheck_Print(*args):
+	return brepcheck.Print(*args)
 
 @deprecated
 def brepcheck_SelfIntersection(*args):

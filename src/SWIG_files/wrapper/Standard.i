@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_standard.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -799,14 +800,23 @@ No available documentation.
 ") IsSame;
 		Standard_Boolean IsSame(const Standard_GUID & uid);
 
+		/****************** ShallowDump ******************/
+		/**** md5 signature: 81ee27b22dec06425d33dc871c4cc32d ****/
+		%feature("compactdefaultargs") ShallowDump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
+Return
+-------
+aStream: Standard_OStream
+
+Description
+-----------
+Display the guid with the following format: //! '00000000-0000-0000-0000-000000000000'.
+") ShallowDump;
+		void ShallowDump(std::ostream &OutValue);
+
 		/****************** ToCString ******************/
 		/**** md5 signature: bf4dad3d25b8e651de1bf421311dfc4f ****/
 		%feature("compactdefaultargs") ToCString;
@@ -1458,14 +1468,23 @@ Used to construct an instance of the exception object as a handle.
 ") NewInstance;
 		static opencascade::handle<Standard_Failure> NewInstance(Standard_CString theMessage, Standard_CString theStackTrace);
 
+		/****************** Print ******************/
+		/**** md5 signature: 938e58a4c905f64555b1dcca06400750 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Prints on the stream @p thestream the exception name followed by the error message. //! note: there is a short-cut @c operator<< (standard_ostream&, opencascade::handle<standard_failure>&).
+") Print;
+		void Print(std::ostream &OutValue);
+
 		/****************** Raise ******************/
 		/**** md5 signature: 91c037d4badacf1008e024b8b4afb779 ****/
 		%feature("compactdefaultargs") Raise;
@@ -1490,7 +1509,7 @@ Raises an exception of type 'failure' and associates an error message to it. the
 		%feature("autodoc", "
 Parameters
 ----------
-aReason: Standard_SStream
+aReason: std::stringstream
 
 Return
 -------
@@ -1500,7 +1519,7 @@ Description
 -----------
 Raises an exception of type 'failure' and associates an error message to it. the message can be constructed at run-time.
 ") Raise;
-		static void Raise(const Standard_SStream & aReason);
+		static void Raise(const std::stringstream & aReason);
 
 		/****************** Reraise ******************/
 		/**** md5 signature: 657c2a99b33e637f9ff1c137fe6e034b ****/
@@ -1539,7 +1558,7 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-aReason: Standard_SStream
+aReason: std::stringstream
 
 Return
 -------
@@ -1549,7 +1568,7 @@ Description
 -----------
 Reraises a caught exception and changes its error message.
 ") Reraise;
-		void Reraise(const Standard_SStream & aReason);
+		void Reraise(const std::stringstream & aReason);
 
 		/****************** SetDefaultStackTraceLength ******************/
 		/**** md5 signature: 0a05375e4fbc3fd48e63e470f065603f ****/
@@ -2003,7 +2022,7 @@ Raises exception with specified message string.
 		%feature("autodoc", "
 Parameters
 ----------
-theMessage: Standard_SStream
+theMessage: std::stringstream
 
 Return
 -------
@@ -2013,7 +2032,7 @@ Description
 -----------
 Raises exception with specified message string.
 ") Raise;
-		static void Raise(Standard_SStream & theMessage);
+		static void Raise(std::stringstream & theMessage);
 
 		/****************** SetMessageString ******************/
 		/**** md5 signature: d5bbb32eb858a536bd5764be9d18926b ****/
@@ -2118,14 +2137,23 @@ Returns descriptor of the base class in the hierarchy.
 ") Parent;
 		const opencascade::handle<Standard_Type> & Parent();
 
+		/****************** Print ******************/
+		/**** md5 signature: 938e58a4c905f64555b1dcca06400750 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Prints type (address of descriptor + name) to a stream.
+") Print;
+		void Print(std::ostream &OutValue);
+
 		/****************** Register ******************/
 		/**** md5 signature: 8e6b8df94dcb0fc4b1d9d92877cf9314 ****/
 		%feature("compactdefaultargs") Register;

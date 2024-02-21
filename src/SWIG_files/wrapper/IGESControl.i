@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_igescontrol.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -722,6 +723,24 @@ Description
 No available documentation.
 ") TransferProcess;
 		const opencascade::handle<Transfer_FinderProcess> & TransferProcess();
+
+		/****************** Write ******************/
+		/**** md5 signature: 641c31af3cf254e70aab3e12c5732d18 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+fnes: bool (optional, default to Standard_False)
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Computes then writes the model to an ostream returns true when done, false in case of error.
+") Write;
+		Standard_Boolean Write(std::ostream &OutValue, const Standard_Boolean fnes = Standard_False);
 
 		/****************** Write ******************/
 		/**** md5 signature: 336d0511a9ae227341af6444cb65363f ****/

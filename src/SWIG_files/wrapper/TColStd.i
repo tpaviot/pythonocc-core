@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_tcolstd.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1070,14 +1071,23 @@ No available documentation.
 ") Remove;
 		Standard_Boolean Remove(const Standard_Integer aKey);
 
+		/****************** Statistics ******************/
+		/**** md5 signature: 1a1dab8d9fff60f7ef456c28f93e75d1 ****/
+		%feature("compactdefaultargs") Statistics;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string StatisticsToString() {
-            std::stringstream s;
-            self->Statistics(s);
-            return s.str();}
-        };
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Prints useful statistics about the map. it can be used to test the quality of the hashcoding.
+") Statistics;
+		void Statistics(std::ostream &OutValue);
+
 		/****************** Subtract ******************/
 		/**** md5 signature: 190f8077cde18ce8900964ed206c3e98 ****/
 		%feature("compactdefaultargs") Subtract;

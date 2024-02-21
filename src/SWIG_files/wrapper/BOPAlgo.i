@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_bopalgo.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -623,22 +624,40 @@ Clears the warnings of the algorithm.
 ") ClearWarnings;
 		void ClearWarnings();
 
+		/****************** DumpErrors ******************/
+		/**** md5 signature: 90a98b1a0d228edd0b78f11fc13715d9 ****/
+		%feature("compactdefaultargs") DumpErrors;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpErrorsToString() {
-            std::stringstream s;
-            self->DumpErrors(s);
-            return s.str();}
-        };
+Return
+-------
+theOS: Standard_OStream
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpWarningsToString() {
-            std::stringstream s;
-            self->DumpWarnings(s);
-            return s.str();}
-        };
+Description
+-----------
+Dumps the error status into the given stream.
+") DumpErrors;
+		void DumpErrors(std::ostream &OutValue);
+
+		/****************** DumpWarnings ******************/
+		/**** md5 signature: b7a54acbfda1ad785ffbd552beb749fd ****/
+		%feature("compactdefaultargs") DumpWarnings;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+theOS: Standard_OStream
+
+Description
+-----------
+Dumps the warning statuses into the given stream.
+") DumpWarnings;
+		void DumpWarnings(std::ostream &OutValue);
+
 		/****************** FuzzyValue ******************/
 		/**** md5 signature: c7081d612ee5325e18733e215807d19f ****/
 		%feature("compactdefaultargs") FuzzyValue;

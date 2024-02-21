@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_toploc.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -120,10 +121,22 @@ Constructs a datum3d form a trsf from gp. an error is raised if the trsf is not 
 		 TopLoc_Datum3D(const gp_Trsf & T);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -141,14 +154,23 @@ Return transformation form.
 ") Form;
 		gp_TrsfForm Form();
 
+		/****************** ShallowDump ******************/
+		/**** md5 signature: becb37fcb2ae0b90bde25605537706e5 ****/
+		%feature("compactdefaultargs") ShallowDump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Writes the contents of this datum3d to the stream s.
+") ShallowDump;
+		void ShallowDump(std::ostream &OutValue);
+
 		/****************** Transformation ******************/
 		/**** md5 signature: 4340f0c35d6856faf6f9daeca03f9595 ****/
 		%feature("compactdefaultargs") Transformation;
@@ -211,10 +233,22 @@ Sets the elementary datum to <d> sets the exponent to <p>.
 		 TopLoc_ItemLocation(const opencascade::handle<TopLoc_Datum3D> & D, const Standard_Integer P);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -314,10 +348,22 @@ Returns <self> / <other>.
 		TopLoc_Location Divided(const TopLoc_Location & Other);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -527,14 +573,23 @@ No available documentation.
 ") ScalePrec;
 		static Standard_Real ScalePrec();
 
+		/****************** ShallowDump ******************/
+		/**** md5 signature: becb37fcb2ae0b90bde25605537706e5 ****/
+		%feature("compactdefaultargs") ShallowDump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string ShallowDumpToString() {
-            std::stringstream s;
-            self->ShallowDump(s);
-            return s.str();}
-        };
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the contents of <self> on the stream <s>.
+") ShallowDump;
+		void ShallowDump(std::ostream &OutValue);
+
 		/****************** Transformation ******************/
 		/**** md5 signature: 567e6ee373139970f4679dbb49e28e7c ****/
 		%feature("compactdefaultargs") Transformation;

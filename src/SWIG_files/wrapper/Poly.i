@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_poly.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -194,6 +195,60 @@ Compute node normals for face triangulation as mean normal of surrounding triang
 ") ComputeNormals;
 		static void ComputeNormals(const opencascade::handle<Poly_Triangulation> & Tri);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 20ef821c6b6ca818ea67764cc6c404e0 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+T: Poly_Triangulation
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Dumps the triangulation. this is a call to the previous method with comapct set to false.
+") Dump;
+		static void Dump(const opencascade::handle<Poly_Triangulation> & T, std::ostream &OutValue);
+
+		/****************** Dump ******************/
+		/**** md5 signature: 124fa6bb0d1c932fed8d7c2f072153ff ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+P: Poly_Polygon3D
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Dumps the 3d polygon. this is a call to the previous method with comapct set to false.
+") Dump;
+		static void Dump(const opencascade::handle<Poly_Polygon3D> & P, std::ostream &OutValue);
+
+		/****************** Dump ******************/
+		/**** md5 signature: cec175f277279955d3c47430641a6e45 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+P: Poly_Polygon2D
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Dumps the 2d polygon. this is a call to the previous method with comapct set to false.
+") Dump;
+		static void Dump(const opencascade::handle<Poly_Polygon2D> & P, std::ostream &OutValue);
+
 		/****************** Intersect ******************/
 		/**** md5 signature: 71cc08bc38965ffeef03bdfbfe9c34a4 ****/
 		%feature("compactdefaultargs") Intersect;
@@ -259,27 +314,117 @@ Computes parameters of the point p on triangle defined by points p1, p2, and p3,
 ") PointOnTriangle;
 		static Standard_Real PointOnTriangle(const gp_XY & P1, const gp_XY & P2, const gp_XY & P3, const gp_XY & P, gp_XY & UV);
 
+		/****************** ReadPolygon2D ******************/
+		/**** md5 signature: 5203f6d8bfde5b08c5cdc75dc617276a ****/
+		%feature("compactdefaultargs") ReadPolygon2D;
+		%feature("autodoc", "
+Parameters
+----------
+IS: str
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadPolygon2DFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadPolygon2D(s);}
-            };
+Return
+-------
+opencascade::handle<Poly_Polygon2D>
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadPolygon3DFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadPolygon3D(s);}
-            };
+Description
+-----------
+Reads a 2d polygon from the stream <is>.
+") ReadPolygon2D;
+		static opencascade::handle<Poly_Polygon2D> ReadPolygon2D(std::istream & IS);
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadTriangulationFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadTriangulation(s);}
-            };
+		/****************** ReadPolygon3D ******************/
+		/**** md5 signature: b03d53c160a0fe0fe5c347003d67f6e3 ****/
+		%feature("compactdefaultargs") ReadPolygon3D;
+		%feature("autodoc", "
+Parameters
+----------
+IS: str
+
+Return
+-------
+opencascade::handle<Poly_Polygon3D>
+
+Description
+-----------
+Reads a 3d polygon from the stream <is>.
+") ReadPolygon3D;
+		static opencascade::handle<Poly_Polygon3D> ReadPolygon3D(std::istream & IS);
+
+		/****************** ReadTriangulation ******************/
+		/**** md5 signature: ed5c32c8ff81d9265e69f08077c31530 ****/
+		%feature("compactdefaultargs") ReadTriangulation;
+		%feature("autodoc", "
+Parameters
+----------
+IS: str
+
+Return
+-------
+opencascade::handle<Poly_Triangulation>
+
+Description
+-----------
+Reads a triangulation from the stream <is>.
+") ReadTriangulation;
+		static opencascade::handle<Poly_Triangulation> ReadTriangulation(std::istream & IS);
+
+		/****************** Write ******************/
+		/**** md5 signature: bbcae193e547f8e4d5c04a8c44cf6fdd ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+T: Poly_Triangulation
+Compact: bool (optional, default to Standard_True)
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Writes the content of the triangulation <t> on the stream <os>. if <compact> is true this is a 'save' format intended to be read back with the read method. if compact is false it is a 'dump' format intended to be informative.
+") Write;
+		static void Write(const opencascade::handle<Poly_Triangulation> & T, std::ostream &OutValue, const Standard_Boolean Compact = Standard_True);
+
+		/****************** Write ******************/
+		/**** md5 signature: a0bed661a393965709bba5b5fe673585 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+P: Poly_Polygon3D
+Compact: bool (optional, default to Standard_True)
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Writes the content of the 3d polygon <p> on the stream <os>. if <compact> is true this is a 'save' format intended to be read back with the read method. if compact is false it is a 'dump' format intended to be informative.
+") Write;
+		static void Write(const opencascade::handle<Poly_Polygon3D> & P, std::ostream &OutValue, const Standard_Boolean Compact = Standard_True);
+
+		/****************** Write ******************/
+		/**** md5 signature: b1b1fb366e3d9a725c25026564e0ba21 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+P: Poly_Polygon2D
+Compact: bool (optional, default to Standard_True)
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Writes the content of the 2d polygon <p> on the stream <os>. if <compact> is true this is a 'save' format intended to be read back with the read method. if compact is false it is a 'dump' format intended to be informative.
+") Write;
+		static void Write(const opencascade::handle<Poly_Polygon2D> & P, std::ostream &OutValue, const Standard_Boolean Compact = Standard_True);
+
 };
 
 
@@ -966,14 +1111,23 @@ Description
 ") Clear;
 		void Clear(const opencascade::handle<NCollection_BaseAllocator > &);
 
+		/****************** Dump ******************/
+		/**** md5 signature: c7b7f3310b5193de5f2365d935cd2c95 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** GetIndex ******************/
 		/**** md5 signature: be68311c24420307bc05134408d2c9e3 ****/
 		%feature("compactdefaultargs") GetIndex;
@@ -1560,14 +1714,23 @@ Description
 ") Deflection;
 		Standard_Real Deflection();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 67deed0701458c3d54847bd8f3e44642 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+&: Standard_OStream
+
+Description
+-----------
+/** * debugging output. */.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** FindTriangle ******************/
 		/**** md5 signature: 0bd57b9c3b2e3b0b46985d4808a94564 ****/
 		%feature("compactdefaultargs") FindTriangle;
@@ -2604,10 +2767,22 @@ Sets the deflection of this polygon.
 		void Deflection(const Standard_Real theDefl);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2781,10 +2956,22 @@ Sets the deflection of this polygon. see more on deflection in poly_polygon2d.
 		void Deflection(const Standard_Real theDefl);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2984,10 +3171,22 @@ Sets the deflection of this polygon. see more on deflection in poly_polygones2d.
 		void Deflection(const Standard_Real theDefl);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3538,10 +3737,22 @@ Loads triangulation data into new poly_triangulation object from some deferred s
 		virtual opencascade::handle<Poly_Triangulation> DetachedLoadDeferredData(const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -4402,6 +4613,18 @@ def poly_ComputeNormals(*args):
 	return poly.ComputeNormals(*args)
 
 @deprecated
+def poly_Dump(*args):
+	return poly.Dump(*args)
+
+@deprecated
+def poly_Dump(*args):
+	return poly.Dump(*args)
+
+@deprecated
+def poly_Dump(*args):
+	return poly.Dump(*args)
+
+@deprecated
 def poly_Intersect(*args):
 	return poly.Intersect(*args)
 
@@ -4412,6 +4635,30 @@ def poly_IntersectTriLine(*args):
 @deprecated
 def poly_PointOnTriangle(*args):
 	return poly.PointOnTriangle(*args)
+
+@deprecated
+def poly_ReadPolygon2D(*args):
+	return poly.ReadPolygon2D(*args)
+
+@deprecated
+def poly_ReadPolygon3D(*args):
+	return poly.ReadPolygon3D(*args)
+
+@deprecated
+def poly_ReadTriangulation(*args):
+	return poly.ReadTriangulation(*args)
+
+@deprecated
+def poly_Write(*args):
+	return poly.Write(*args)
+
+@deprecated
+def poly_Write(*args):
+	return poly.Write(*args)
+
+@deprecated
+def poly_Write(*args):
+	return poly.Write(*args)
 
 @deprecated
 def Poly_MergeNodesTool_MergeNodes(*args):

@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_approx.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -352,14 +353,23 @@ No available documentation.
 ") Curve;
 		opencascade::handle<Geom_BSplineCurve> Curve();
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+o: Standard_OStream
+
+Description
+-----------
+Print on the stream o information about the object.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** HasResult ******************/
 		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
 		%feature("compactdefaultargs") HasResult;
@@ -698,14 +708,23 @@ Returns the bspline curve corresponding to the reparametrized 3d curve.
 ") Curve3d;
 		opencascade::handle<Geom_BSplineCurve> Curve3d();
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+o: Standard_OStream
+
+Description
+-----------
+Print the maximum errors(s).
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** HasResult ******************/
 		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
 		%feature("compactdefaultargs") HasResult;
@@ -2098,14 +2117,23 @@ No available documentation.
 ") Curves2dShape;
 		void Curves2dShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+o: Standard_OStream
+
+Description
+-----------
+Display information on approximation.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** Eval ******************/
 		/**** md5 signature: 71e7f11e45548ac47de3b270019a0b2d ****/
 		%feature("compactdefaultargs") Eval;

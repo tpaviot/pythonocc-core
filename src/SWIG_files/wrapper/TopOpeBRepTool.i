@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_topopebreptool.ht
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -211,6 +212,24 @@ Description
 Builds up the correct list of faces <loff> from <lof>, using faulty shapes from map <mshnok>. <lof> is the list of <f>'s descendant faces. returns false if building fails.
 ") MakeFaces;
 		static Standard_Boolean MakeFaces(const TopoDS_Face & F, const TopTools_ListOfShape & LOF, const TopTools_IndexedMapOfOrientedShape & MshNOK, TopTools_ListOfShape & LOFF);
+
+		/****************** Print ******************/
+		/**** md5 signature: f7153ca19881868c1f5cfcc1057b3413 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+OCT: TopOpeBRepTool_OutCurveType
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints <oct> as string on stream <s>; returns <s>.
+") Print;
+		static Standard_OStream & Print(const TopOpeBRepTool_OutCurveType OCT, std::ostream &OutValue);
 
 		/****************** PurgeClosingEdges ******************/
 		/**** md5 signature: 3f09068948e5882f4cb7f9c6684a5042 ****/
@@ -3366,14 +3385,23 @@ Creates an explorer on the shape <s>. //! <tofind> is the type of shapes to sear
 ") TopOpeBRepTool_ShapeExplorer;
 		 TopOpeBRepTool_ShapeExplorer(const TopoDS_Shape & S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
 
+		/****************** DumpCurrent ******************/
+		/**** md5 signature: db73845179d5206e02697128b933f101 ****/
+		%feature("compactdefaultargs") DumpCurrent;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpCurrentToString() {
-            std::stringstream s;
-            self->DumpCurrent(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Dump info on current shape to stream.
+") DumpCurrent;
+		Standard_OStream & DumpCurrent(std::ostream &OutValue);
+
 		/****************** Index ******************/
 		/**** md5 signature: 0be2d384cf83d16771bb3f9c857c6326 ****/
 		%feature("compactdefaultargs") Index;
@@ -5689,6 +5717,10 @@ def topopebreptool_CorrectONUVISO(*args):
 @deprecated
 def topopebreptool_MakeFaces(*args):
 	return topopebreptool.MakeFaces(*args)
+
+@deprecated
+def topopebreptool_Print(*args):
+	return topopebreptool.Print(*args)
 
 @deprecated
 def topopebreptool_PurgeClosingEdges(*args):

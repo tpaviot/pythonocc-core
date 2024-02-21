@@ -23,7 +23,12 @@ LocalAnalysis_NormalNotDefined = LocalAnalysis_StatusErrorType.LocalAnalysis_Nor
 LocalAnalysis_CurvatureNotDefined = LocalAnalysis_StatusErrorType.LocalAnalysis_CurvatureNotDefined
 
 class localanalysis:
-    pass
+    @overload
+    @staticmethod
+    def Dump(surfconti: LocalAnalysis_SurfaceContinuity) -> str: ...
+    @overload
+    @staticmethod
+    def Dump(curvconti: LocalAnalysis_CurveContinuity) -> str: ...
 
 class LocalAnalysis_CurveContinuity:
     def __init__(self, Curv1: Geom_Curve, u1: float, Curv2: Geom_Curve, u2: float, Order: GeomAbs_Shape, EpsNul: Optional[float] = 0.001, EpsC0: Optional[float] = 0.001, EpsC1: Optional[float] = 0.001, EpsC2: Optional[float] = 0.001, EpsG1: Optional[float] = 0.001, EpsG2: Optional[float] = 0.001, Percent: Optional[float] = 0.01, Maxlen: Optional[float] = 10000) -> None: ...
