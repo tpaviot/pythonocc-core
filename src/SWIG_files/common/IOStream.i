@@ -22,14 +22,36 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %include <python/std_iostream.i>
 %include <python/std_string.i>
 
-/*
-Standard_OStream & function transformation
-The float number is returned in the output tuple
-*/
-%typemap(argout) Standard_OStream &OutValue {
+// Standard_IStream
+%typemap(in) std::istream& {
+  PyObject* temp_bytes = PyUnicode_AsEncodedString($input, "UTF-8", "strict");
+  std::string data(PyBytes_AsString(temp_bytes));
+  std::stringstream* ss = new std::stringstream(data);
+  $1 = ss;
+}
+
+%typemap(freearg) std::istream& {
+  delete $1;
+}
+
+// Standard_SStream
+%typemap(in) std::stringstream & {
+  PyObject* temp_bytes = PyUnicode_AsEncodedString($input, "UTF-8", "strict");
+  std::string data(PyBytes_AsString(temp_bytes));
+  std::stringstream* ss = new std::stringstream(data);
+  $1 = ss;
+}
+
+%typemap(freearg) std::stringstream & {
+  delete $1;
+}
+
+%typemap(argout) std::ostream &OutValue {
     PyObject *o, *o2, *o3;
-    std::ostringstream *output = static_cast<std::ostringstream *> ($1);
-    o = PyString_FromString(output->str().c_str());
+    
+    std::string str = ((std::stringstream*)$1)->str();
+    o = PyUnicode_FromString(str.c_str());
+    
     if ((!$result) || ($result == Py_None)) {
         $result = o;
     } else {
@@ -47,16 +69,7 @@ The float number is returned in the output tuple
     }
 }
 
-%typemap(in, numinputs=0) Standard_OStream &OutValue (std::ostringstream temp) {
+%typemap(in, numinputs=0) std::ostream &OutValue (std::stringstream temp) {
     $1 = &temp;
 }
 
-/*
-Standard_IStream & function transformation
-takes a string as input
-*/
-%typemap(in) Standard_IStream & {
-    char * in = PyString_AsString($input);
-    std::istringstream ss(in);
-    $1 = &ss;
-}
