@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_tdatastd.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -229,6 +230,24 @@ Appends to <anidlist> the list of the attributes ids of this package. caution: <
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
+		/****************** Print ******************/
+		/**** md5 signature: 34ef93cfb1f41df788d00d50ea442396 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+DIM: TDataStd_RealEnum
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the name of the real dimension <dim> as a string on the stream <s> and returns <s>.
+") Print;
+		static Standard_OStream & Print(const TDataStd_RealEnum DIM, std::ostream &OutValue);
+
 };
 
 
@@ -256,19 +275,40 @@ No available documentation.
 ") TDataStd_AsciiString;
 		 TDataStd_AsciiString();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -492,19 +532,40 @@ No available documentation.
 ") TDataStd_BooleanArray;
 		 TDataStd_BooleanArray();
 
+		/****************** Dump ******************/
+		/**** md5 signature: b935d5dd68e95802ac42f7875d3b6b15 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -843,19 +904,40 @@ No available documentation.
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -1209,19 +1291,40 @@ Makes a deltaonmodification between <self> and <anoldattribute>.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
+		/****************** Dump ******************/
+		/**** md5 signature: b935d5dd68e95802ac42f7875d3b6b15 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -1661,19 +1764,40 @@ No available documentation.
 ") TDataStd_Current;
 		 TDataStd_Current();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2103,19 +2227,40 @@ No available documentation.
 ") TDataStd_Expression;
 		 TDataStd_Expression();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2350,19 +2495,40 @@ Makes a deltaonmodification between <self> and <anoldattribute>.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2703,19 +2869,40 @@ No available documentation.
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3665,19 +3852,40 @@ Makes a deltaonmodification between <self> and <anoldattribute>.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3907,19 +4115,40 @@ No available documentation.
 ") TDataStd_Integer;
 		 TDataStd_Integer();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -4193,19 +4422,40 @@ Makes a deltaonmodification between <self> and <anoldattribute>.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -4546,19 +4796,40 @@ No available documentation.
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -5052,19 +5323,40 @@ Clear data.
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -5849,19 +6141,40 @@ No available documentation.
 ") TDataStd_Real;
 		 TDataStd_Real();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -6166,19 +6479,40 @@ Makes a deltaonmodification between <self> and <anoldattribute>.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -6519,19 +6853,40 @@ No available documentation.
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -6904,19 +7259,40 @@ No available documentation.
 ") TDataStd_ReferenceArray;
 		 TDataStd_ReferenceArray();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -7274,19 +7650,40 @@ No available documentation.
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -7785,19 +8182,40 @@ Returns the depth of this tree node in the overall tree node structure. in other
 ") Depth;
 		Standard_Integer Depth();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -8415,19 +8833,40 @@ No available documentation.
 ") TDataStd_UAttribute;
 		 TDataStd_UAttribute();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -8623,19 +9062,40 @@ If <self> is assigned delete the associated expression attribute.
 ") Desassign;
 		void Desassign();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -8971,14 +9431,23 @@ No available documentation.
 ") TDataStd_Comment;
 		 TDataStd_Comment();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -9125,14 +9594,23 @@ Creates a new sub-label and sets the sub-directory dir on that label.
 ") AddDirectory;
 		static opencascade::handle<TDataStd_Directory> AddDirectory(const opencascade::handle<TDataStd_Directory> & dir);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** Find ******************/
 		/**** md5 signature: c975c2b1384d4b33c2a54d78edf27d11 ****/
 		%feature("compactdefaultargs") Find;
@@ -9243,14 +9721,23 @@ No available documentation.
 ") TDataStd_Name;
 		 TDataStd_Name();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -9419,14 +9906,23 @@ Tool to create an real attribute from <value>, insert it in a new son label of <
 ") Append;
 		opencascade::handle<TDataStd_Integer> Append(const Standard_Integer value, const Standard_Boolean isExported = Standard_False);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** Find ******************/
 		/**** md5 signature: 400d5175f4317bb9f7f5240746dcd5c9 ****/
 		%feature("compactdefaultargs") Find;
@@ -9519,19 +10015,40 @@ No available documentation.
 ") TDataStd_Relation;
 		 TDataStd_Relation();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -9640,14 +10157,23 @@ No available documentation.
 ") TDataStd_Tick;
 		 TDataStd_Tick();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** GetID ******************/
 		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
 		%feature("compactdefaultargs") GetID;
@@ -9737,6 +10263,10 @@ class TDataStd_HLabelArray1 : public TDataStd_LabelArray1, public Standard_Trans
 @deprecated
 def tdatastd_IDList(*args):
 	return tdatastd.IDList(*args)
+
+@deprecated
+def tdatastd_Print(*args):
+	return tdatastd.Print(*args)
 
 @deprecated
 def TDataStd_AsciiString_GetID(*args):

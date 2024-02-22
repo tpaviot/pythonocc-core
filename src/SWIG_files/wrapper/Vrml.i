@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_vrml.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -311,14 +312,41 @@ Vrml_POINT = Vrml_WWWAnchorMap.Vrml_POINT
 %rename(vrml) Vrml;
 class Vrml {
 	public:
+		/****************** CommentWriter ******************/
+		/**** md5 signature: e5bd2e2e43a6101d02a4c0fc033b4914 ****/
+		%feature("compactdefaultargs") CommentWriter;
+		%feature("autodoc", "
+Parameters
+----------
+aComment: str
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string VrmlHeaderWriterToString() {
-            std::stringstream s;
-            self->VrmlHeaderWriter(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") CommentWriter;
+		static Standard_OStream & CommentWriter(Standard_CString aComment, std::ostream &OutValue);
+
+		/****************** VrmlHeaderWriter ******************/
+		/**** md5 signature: e0e105d95fec65a919874d86d7edc262 ****/
+		%feature("compactdefaultargs") VrmlHeaderWriter;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+Writes a header in anostream (vrml file). writes one line of commentary in anostream (vrml file).
+") VrmlHeaderWriter;
+		static Standard_OStream & VrmlHeaderWriter(std::ostream &OutValue);
+
 };
 
 
@@ -380,14 +408,23 @@ No available documentation.
 ") Justification;
 		Vrml_AsciiTextJustification Justification();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetJustification ******************/
 		/**** md5 signature: 3950698a2301d05e87ab121d39eef7c5 ****/
 		%feature("compactdefaultargs") SetJustification;
@@ -574,14 +611,23 @@ No available documentation.
 ") Parts;
 		Vrml_ConeParts Parts();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetBottomRadius ******************/
 		/**** md5 signature: 83831c7af161fbeed20e59efdcef6cc9 ****/
 		%feature("compactdefaultargs") SetBottomRadius;
@@ -896,14 +942,23 @@ No available documentation.
 ") Point;
 		opencascade::handle<TColgp_HArray1OfVec> Point();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetPoint ******************/
 		/**** md5 signature: 2531979fc318076a2efdf95b81e431c9 ****/
 		%feature("compactdefaultargs") SetPoint;
@@ -984,14 +1039,23 @@ No available documentation.
 ") Height;
 		Standard_Real Height();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetDepth ******************/
 		/**** md5 signature: 4ed376ce95444c7357cf149677ef5fde ****/
 		%feature("compactdefaultargs") SetDepth;
@@ -1119,14 +1183,23 @@ No available documentation.
 ") Parts;
 		Vrml_CylinderParts Parts();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** Radius ******************/
 		/**** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ****/
 		%feature("compactdefaultargs") Radius;
@@ -1294,14 +1367,23 @@ No available documentation.
 ") OnOff;
 		Standard_Boolean OnOff();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetColor ******************/
 		/**** md5 signature: 5aebf70a123538e7dff670112c56db0d ****/
 		%feature("compactdefaultargs") SetColor;
@@ -1421,14 +1503,23 @@ No available documentation.
 ") Family;
 		Vrml_FontStyleFamily Family();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetFamily ******************/
 		/**** md5 signature: b0100e13b2e059fb2e8b420788ec2a61 ****/
 		%feature("compactdefaultargs") SetFamily;
@@ -1536,14 +1627,23 @@ No available documentation.
 ") Vrml_Group;
 		 Vrml_Group();
 
+		/****************** Print ******************/
+		/**** md5 signature: a7a6d9b084f11fb866b7f1da61c9ed6a ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 };
 
 
@@ -1631,14 +1731,23 @@ No available documentation.
 ") NormalIndex;
 		opencascade::handle<TColStd_HArray1OfInteger> NormalIndex();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetCoordIndex ******************/
 		/**** md5 signature: 8aac1fe12bc1ddfc66bc94e00112273c ****/
 		%feature("compactdefaultargs") SetCoordIndex;
@@ -1813,14 +1922,23 @@ No available documentation.
 ") NormalIndex;
 		opencascade::handle<TColStd_HArray1OfInteger> NormalIndex();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetCoordIndex ******************/
 		/**** md5 signature: 8aac1fe12bc1ddfc66bc94e00112273c ****/
 		%feature("compactdefaultargs") SetCoordIndex;
@@ -1940,14 +2058,23 @@ No available documentation.
 ") Vrml_Info;
 		 Vrml_Info(TCollection_AsciiString aString = "<Undefinedinfo>");
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetString ******************/
 		/**** md5 signature: 019f64b9292447922865012d29fa7284 ****/
 		%feature("compactdefaultargs") SetString;
@@ -2011,22 +2138,40 @@ Adds 'def <myname>' in anostream (vrml file).
 ") Vrml_Instancing;
 		 Vrml_Instancing(TCollection_AsciiString aString);
 
+		/****************** DEF ******************/
+		/**** md5 signature: fe8bfe9657d4f251c355fca5a13dd2a4 ****/
+		%feature("compactdefaultargs") DEF;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DEFToString() {
-            std::stringstream s;
-            self->DEF(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string USEToString() {
-            std::stringstream s;
-            self->USE(s);
-            return s.str();}
-        };
+Description
+-----------
+Adds 'use <myname>' in anostream (vrml file).
+") DEF;
+		Standard_OStream & DEF(std::ostream &OutValue);
+
+		/****************** USE ******************/
+		/**** md5 signature: c92fba46c3b0b224b98b48141a9c9704 ****/
+		%feature("compactdefaultargs") USE;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") USE;
+		Standard_OStream & USE(std::ostream &OutValue);
+
 };
 
 
@@ -2086,14 +2231,23 @@ No available documentation.
 ") Center;
 		gp_Vec Center();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** Range ******************/
 		/**** md5 signature: bef409c2278798ac43ffa883362425bc ****/
 		%feature("compactdefaultargs") Range;
@@ -2234,14 +2388,23 @@ No available documentation.
 ") EmissiveColor;
 		opencascade::handle<Quantity_HArray1OfColor> EmissiveColor();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetAmbientColor ******************/
 		/**** md5 signature: 7a2810fd7bedaae7bea499eb43ecaf68 ****/
 		%feature("compactdefaultargs") SetAmbientColor;
@@ -2436,14 +2599,23 @@ No available documentation.
 ") Vrml_MaterialBinding;
 		 Vrml_MaterialBinding();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetValue ******************/
 		/**** md5 signature: 9a4a4ae4644775e0ec704e6ef977a484 ****/
 		%feature("compactdefaultargs") SetValue;
@@ -2533,14 +2705,23 @@ No available documentation.
 ") Matrix;
 		gp_Trsf Matrix();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetMatrix ******************/
 		/**** md5 signature: f79b6bacc75e1dffe6f1d2919243ae9b ****/
 		%feature("compactdefaultargs") SetMatrix;
@@ -2604,14 +2785,23 @@ No available documentation.
 ") Vrml_Normal;
 		 Vrml_Normal();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetVector ******************/
 		/**** md5 signature: b29dd66700a7c683cf81610080b02141 ****/
 		%feature("compactdefaultargs") SetVector;
@@ -2690,14 +2880,23 @@ No available documentation.
 ") Vrml_NormalBinding;
 		 Vrml_NormalBinding();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetValue ******************/
 		/**** md5 signature: 9a4a4ae4644775e0ec704e6ef977a484 ****/
 		%feature("compactdefaultargs") SetValue;
@@ -2829,14 +3028,23 @@ No available documentation.
 ") Position;
 		gp_Vec Position();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetFocalDistance ******************/
 		/**** md5 signature: a4382c9d94c6cdb3a408a0da734eb053 ****/
 		%feature("compactdefaultargs") SetFocalDistance;
@@ -3009,14 +3217,23 @@ No available documentation.
 ") Position;
 		gp_Vec Position();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetAngle ******************/
 		/**** md5 signature: bb3d72a5f4b071f4f97fb610aca9900b ****/
 		%feature("compactdefaultargs") SetAngle;
@@ -3189,14 +3406,23 @@ No available documentation.
 ") OnOff;
 		Standard_Boolean OnOff();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetColor ******************/
 		/**** md5 signature: 5aebf70a123538e7dff670112c56db0d ****/
 		%feature("compactdefaultargs") SetColor;
@@ -3315,14 +3541,23 @@ No available documentation.
 ") NumPoints;
 		Standard_Integer NumPoints();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetNumPoints ******************/
 		/**** md5 signature: 2c8c0cd8de922cf96b80a152f2efbd3b ****/
 		%feature("compactdefaultargs") SetNumPoints;
@@ -3652,14 +3887,23 @@ No available documentation.
 ") Vrml_Rotation;
 		 Vrml_Rotation(const Vrml_SFRotation & aRotation);
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** Rotation ******************/
 		/**** md5 signature: df13dcf1c8ca3c02d862abf4780b0be5 ****/
 		%feature("compactdefaultargs") Rotation;
@@ -4095,14 +4339,23 @@ No available documentation.
 ") Vrml_Scale;
 		 Vrml_Scale(const gp_Vec & aScaleFactor);
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** ScaleFactor ******************/
 		/**** md5 signature: ddee81c1cf7d4715bc12bd5fcf83ddcc ****/
 		%feature("compactdefaultargs") ScaleFactor;
@@ -4179,14 +4432,23 @@ No available documentation.
 ") Vrml_Separator;
 		 Vrml_Separator();
 
+		/****************** Print ******************/
+		/**** md5 signature: a7a6d9b084f11fb866b7f1da61c9ed6a ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** RenderCulling ******************/
 		/**** md5 signature: 9c2b5b6ae8ed9c9a82906bd6ee4c0f5c ****/
 		%feature("compactdefaultargs") RenderCulling;
@@ -4279,14 +4541,23 @@ No available documentation.
 ") FaceType;
 		Vrml_FaceType FaceType();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetAngle ******************/
 		/**** md5 signature: bae7a4d675d363cefe680523e72e869e ****/
 		%feature("compactdefaultargs") SetAngle;
@@ -4417,14 +4688,23 @@ No available documentation.
 ") Vrml_Sphere;
 		 Vrml_Sphere(const Standard_Real aRadius = 1);
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** Radius ******************/
 		/**** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ****/
 		%feature("compactdefaultargs") Radius;
@@ -4598,14 +4878,23 @@ No available documentation.
 ") OnOff;
 		Standard_Boolean OnOff();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetColor ******************/
 		/**** md5 signature: 5aebf70a123538e7dff670112c56db0d ****/
 		%feature("compactdefaultargs") SetColor;
@@ -4764,14 +5053,23 @@ No available documentation.
 ") Vrml_Switch;
 		 Vrml_Switch(const Standard_Integer aWhichChild = -1);
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetWhichChild ******************/
 		/**** md5 signature: 903116d3053cda016d7b4d8c736e11f8 ****/
 		%feature("compactdefaultargs") SetWhichChild;
@@ -4877,14 +5175,23 @@ No available documentation.
 ") Image;
 		opencascade::handle<Vrml_SFImage> Image();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetFilename ******************/
 		/**** md5 signature: 6a233cc8b98d909eb32820cdf5db7e12 ****/
 		%feature("compactdefaultargs") SetFilename;
@@ -5044,14 +5351,23 @@ No available documentation.
 ") Center;
 		gp_Vec2d Center();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** Rotation ******************/
 		/**** md5 signature: 88f76ec12684cd0cd3209460634d1bdf ****/
 		%feature("compactdefaultargs") Rotation;
@@ -5221,14 +5537,23 @@ No available documentation.
 ") Point;
 		opencascade::handle<TColgp_HArray1OfVec2d> Point();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetPoint ******************/
 		/**** md5 signature: 576fe8b6b9484adc1a8a9d7148ed1d10 ****/
 		%feature("compactdefaultargs") SetPoint;
@@ -5311,14 +5636,23 @@ No available documentation.
 ") Center;
 		gp_Vec Center();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** Rotation ******************/
 		/**** md5 signature: df13dcf1c8ca3c02d862abf4780b0be5 ****/
 		%feature("compactdefaultargs") Rotation;
@@ -5488,14 +5822,23 @@ No available documentation.
 ") Vrml_TransformSeparator;
 		 Vrml_TransformSeparator();
 
+		/****************** Print ******************/
+		/**** md5 signature: a7a6d9b084f11fb866b7f1da61c9ed6a ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 };
 
 
@@ -5541,14 +5884,23 @@ No available documentation.
 ") Vrml_Translation;
 		 Vrml_Translation(const gp_Vec & aTranslation);
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetTranslation ******************/
 		/**** md5 signature: 1646e68b1d3f51460ff79d25f8092903 ****/
 		%feature("compactdefaultargs") SetTranslation;
@@ -5653,14 +6005,23 @@ No available documentation.
 ") Name;
 		TCollection_AsciiString Name();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetDescription ******************/
 		/**** md5 signature: 24d19d040b0a10c936dfd6335381c7d8 ****/
 		%feature("compactdefaultargs") SetDescription;
@@ -5801,14 +6162,23 @@ No available documentation.
 ") Name;
 		TCollection_AsciiString Name();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetBboxCenter ******************/
 		/**** md5 signature: 75eefe6a1bfe942ba05eca3afdd6a9bf ****/
 		%feature("compactdefaultargs") SetBboxCenter;
@@ -5877,4 +6247,15 @@ No available documentation.
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
+}
+/* deprecated methods */
+%pythoncode {
+@deprecated
+def vrml_CommentWriter(*args):
+	return vrml.CommentWriter(*args)
+
+@deprecated
+def vrml_VrmlHeaderWriter(*args):
+	return vrml.VrmlHeaderWriter(*args)
+
 }

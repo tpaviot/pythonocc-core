@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_topabs.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -180,6 +181,60 @@ Description
 Compose the orientation <or1> and <or2>. this composition is not symmetric (if you switch <or1> and <or2> the result is different). it assumes that <or1> is the orientation of a shape s1 containing a shape s2 of orientation or2. the result is the cumulated orientation of s2 in s1. the composition law is: //! \ or2 forward reversed internal external or1 ------------------------------------- forward | forward reversed internal external | reversed | reversed forward internal external | internal | internal internal internal internal | external | external external external external note: the top corner in the table is the most important for the purposes of open cascade topology and shape sharing.
 ") Compose;
 		static TopAbs_Orientation Compose(const TopAbs_Orientation Or1, const TopAbs_Orientation Or2);
+
+		/****************** Print ******************/
+		/**** md5 signature: f2bc915db789eecaddaf7f8a542302b9 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+theShapeType: TopAbs_ShapeEnum
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Prints the name of shape type as a string on the stream.
+") Print;
+		static Standard_OStream & Print(const TopAbs_ShapeEnum theShapeType, std::ostream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: 6ad8c3d2eaff28edc070aae5129544a1 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+theOrientation: TopAbs_Orientation
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Prints the name of the orientation as a string on the stream.
+") Print;
+		static Standard_OStream & Print(const TopAbs_Orientation theOrientation, std::ostream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: 9a9b3768d9e4f7b3106175734ca85d5b ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+St: TopAbs_State
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the name of the state <st> as a string on the stream <s> and returns <s>.
+") Print;
+		static Standard_OStream & Print(const TopAbs_State St, std::ostream &OutValue);
 
 		/****************** Reverse ******************/
 		/**** md5 signature: 24070ddabf8011f0d7eb29a4dc573a82 ****/
@@ -331,6 +386,18 @@ def topabs_Complement(*args):
 @deprecated
 def topabs_Compose(*args):
 	return topabs.Compose(*args)
+
+@deprecated
+def topabs_Print(*args):
+	return topabs.Print(*args)
+
+@deprecated
+def topabs_Print(*args):
+	return topabs.Print(*args)
+
+@deprecated
+def topabs_Print(*args):
+	return topabs.Print(*args)
 
 @deprecated
 def topabs_Reverse(*args):

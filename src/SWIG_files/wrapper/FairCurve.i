@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_faircurve.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -158,14 +159,23 @@ Returns the computed curve a 2d bspline.
 ") Curve;
 		opencascade::handle<Geom2d_BSplineCurve> Curve();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3285fe47a669df0eece9c96593dad879 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+o: Standard_OStream
+
+Description
+-----------
+Prints on the stream o information on the current state of the object. //! private methodes --------------------------------------.
+") Dump;
+		virtual void Dump(std::ostream &OutValue);
+
 		/****************** GetAngle1 ******************/
 		/**** md5 signature: 4d8e16f87d9a075ff3d1c86749675db9 ****/
 		%feature("compactdefaultargs") GetAngle1;
@@ -1255,14 +1265,23 @@ Computes the curve with respect to the constraints, nbiterations and tolerance. 
 ") Compute;
 		virtual Standard_Boolean Compute(FairCurve_AnalysisCode &OutValue, const Standard_Integer NbIterations = 50, const Standard_Real Tolerance = 1.0e-3);
 
+		/****************** Dump ******************/
+		/**** md5 signature: b42defe2d7a7208961fa81b225a70479 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+o: Standard_OStream
+
+Description
+-----------
+Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+") Dump;
+		virtual void Dump(std::ostream &OutValue);
+
 		/****************** GetCurvature1 ******************/
 		/**** md5 signature: 52b65eab76a83b1bbd4a765dc4226232 ****/
 		%feature("compactdefaultargs") GetCurvature1;

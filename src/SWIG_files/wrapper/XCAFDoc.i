@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_xcafdoc.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -538,19 +539,40 @@ Class methods =============.
 ") XCAFDoc_Area;
 		 XCAFDoc_Area();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -988,10 +1010,22 @@ Constructs an item id from a formatted path, where label entries are separated b
 		 XCAFDoc_AssemblyItemId(TCollection_AsciiString theString);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -1178,19 +1212,40 @@ Reverts the reference to empty state.
 ") ClearExtraRef;
 		void ClearExtraRef();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 5900f1be94c8ace2c0d3b27c867f6964 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+theOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -1665,19 +1720,40 @@ Class methods =============.
 ") XCAFDoc_Centroid;
 		 XCAFDoc_Centroid();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2190,10 +2266,22 @@ No available documentation.
 		 XCAFDoc_Color();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2591,10 +2679,22 @@ Returns the label under which colors are stored.
 		TDF_Label BaseLabel();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3373,10 +3473,22 @@ No available documentation.
 		 XCAFDoc_Datum();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3616,10 +3728,22 @@ No available documentation.
 		 XCAFDoc_DimTol();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3918,10 +4042,22 @@ Returns the label under which gd&t table is stored.
 		TDF_Label BaseLabel();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -4684,10 +4820,22 @@ No available documentation.
 		 XCAFDoc_Dimension();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -5692,19 +5840,40 @@ Return index of <ch>, or zero if there is no such graphnode.
 ") ChildIndex;
 		Standard_Integer ChildIndex(const opencascade::handle<XCAFDoc_GraphNode> & Ch);
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -6181,10 +6350,22 @@ Returns the label under which layers are stored.
 		TDF_Label BaseLabel();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -6823,19 +7004,40 @@ No available documentation.
 ") XCAFDoc_LengthUnit;
 		 XCAFDoc_LengthUnit();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -7051,10 +7253,22 @@ Class methods =============.
 		 XCAFDoc_Location();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -7215,10 +7429,22 @@ No available documentation.
 		 XCAFDoc_Material();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -7474,10 +7700,22 @@ Returns the label under which colors are stored.
 		TDF_Label BaseLabel();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -7674,19 +7912,40 @@ Returns internal xcafdoc_shapetool tool.
 %nodefaultctor XCAFDoc_Note;
 class XCAFDoc_Note : public TDF_Attribute {
 	public:
+		/****************** Dump ******************/
+		/**** md5 signature: 5900f1be94c8ace2c0d3b27c867f6964 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+theOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -8146,14 +8405,23 @@ Deletes all notes that aren't linked to annotated items. eturn number of deleted
 ") DeleteOrphanNotes;
 		Standard_Integer DeleteOrphanNotes();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 5900f1be94c8ace2c0d3b27c867f6964 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+theOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** FindAnnotatedItem ******************/
 		/**** md5 signature: 7e562ae1ec4bb3d6b2a750f4a95ec514 ****/
 		%feature("compactdefaultargs") FindAnnotatedItem;
@@ -8815,10 +9083,22 @@ Creates an empty tool.
 		 XCAFDoc_ShapeMapTool();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -9151,23 +9431,82 @@ Compute a sequence of simple shapes.
 ") ComputeSimpleShapes;
 		void ComputeSimpleShapes();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 9525c4d4f916b1cfc4b55811ff206921 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+deep: bool
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+theDumpLog: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		Standard_OStream & Dump(std::ostream &OutValue, const Standard_Boolean deep);
+
+		/****************** Dump ******************/
+		/**** md5 signature: 312419919cb512dd33889a5d722f75a9 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+theDumpLog: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
+		/****************** DumpShape ******************/
+		/**** md5 signature: b32ec97d93175bc3ce06699fc7ba1c6b ****/
+		%feature("compactdefaultargs") DumpShape;
+		%feature("autodoc", "
+Parameters
+----------
+L: TDF_Label
+level: int (optional, default to 0)
+deep: bool (optional, default to Standard_False)
+
+Return
+-------
+theDumpLog: Standard_OStream
+
+Description
+-----------
+Print to std::ostream <thedumplog> type of shape found on <l> label and the entry of <l>, with <level> tabs before. if <deep>, print also tshape and location addresses.
+") DumpShape;
+		static void DumpShape(std::ostream &OutValue, const TDF_Label & L, const Standard_Integer level = 0, const Standard_Boolean deep = Standard_False);
+
 		/****************** Expand ******************/
 		/**** md5 signature: 303313cc4599e4d88e82e690ea6d0ec6 ****/
 		%feature("compactdefaultargs") Expand;
@@ -10911,10 +11250,22 @@ Return pbr material or convert common into pbr material.
 		XCAFDoc_VisMaterialPBR ConvertToPbrMaterial();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -11313,10 +11664,22 @@ Empty constructor.
 		 XCAFDoc_VisMaterialCommon();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -11378,10 +11741,22 @@ Empty constructor.
 		 XCAFDoc_VisMaterialPBR();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -11873,19 +12248,40 @@ Class methods =============.
 ") XCAFDoc_Volume;
 		 XCAFDoc_Volume();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+anOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+No available documentation.
+") Dump;
+		virtual Standard_OStream & Dump(std::ostream &OutValue);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -12026,14 +12422,23 @@ Returns byte data array.
 ") Data;
 		const opencascade::handle<TColStd_HArray1OfByte> & Data();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 5900f1be94c8ace2c0d3b27c867f6964 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+theOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: 02af6bbbdbedcc1ca4399ebdbd529b59 ****/
 		%feature("compactdefaultargs") Get;
@@ -12295,14 +12700,23 @@ Returns the comment text.
 ") Comment;
 		const TCollection_ExtendedString & Comment();
 
+		/****************** Dump ******************/
+		/**** md5 signature: 5900f1be94c8ace2c0d3b27c867f6964 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+theOS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		Standard_OStream & Dump(std::ostream &OutValue);
+
 		/****************** Get ******************/
 		/**** md5 signature: 821f268035461249ad0ec3f1760ab2ea ****/
 		%feature("compactdefaultargs") Get;
@@ -13089,6 +13503,10 @@ def XCAFDoc_ShapeMapTool_Set(*args):
 @deprecated
 def XCAFDoc_ShapeTool_AutoNaming(*args):
 	return XCAFDoc_ShapeTool.AutoNaming(*args)
+
+@deprecated
+def XCAFDoc_ShapeTool_DumpShape(*args):
+	return XCAFDoc_ShapeTool.DumpShape(*args)
 
 @deprecated
 def XCAFDoc_ShapeTool_FindSHUO(*args):

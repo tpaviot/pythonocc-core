@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_breptools.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -308,6 +309,24 @@ Detect closedness of face in u and v directions.
 ") DetectClosedness;
 		static void DetectClosedness(const TopoDS_Face & theFace, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
+		/****************** Dump ******************/
+		/**** md5 signature: d8fbac42c489d0bae98b03b1387b21c5 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+Sh: TopoDS_Shape
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Dumps the topological structure and the geometry of <sh> on the stream <s>.
+") Dump;
+		static void Dump(const TopoDS_Shape & Sh, std::ostream &OutValue);
+
 		/****************** EvalAndUpdateTol ******************/
 		/**** md5 signature: 16be652a9c224d56f94960b2cade0539 ****/
 		%feature("compactdefaultargs") EvalAndUpdateTol;
@@ -445,6 +464,27 @@ Description
 Returns the outer most wire of <f>. returns a null wire if <f> has no wires.
 ") OuterWire;
 		static TopoDS_Wire OuterWire(const TopoDS_Face & F);
+
+		/****************** Read ******************/
+		/**** md5 signature: f8f4ebe237e52067b8c32d38777547cb ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+Sh: TopoDS_Shape
+S: str
+B: BRep_Builder
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+None
+
+Description
+-----------
+Reads a shape from <s> in returns it in <sh>. <b> is used to build the shape.
+") Read;
+		static void Read(TopoDS_Shape & Sh, std::istream & S, const BRep_Builder & B, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Read ******************/
 		/**** md5 signature: 5e5d6e702af29b2284954f484072b531 ****/
@@ -807,6 +847,47 @@ For each edge of the face <f> reset the uv points to the bounding points of the 
 		static void UpdateFaceUVPoints(const TopoDS_Face & theF);
 
 		/****************** Write ******************/
+		/**** md5 signature: 92da105c9c540199f80c0283d45c56e0 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Writes the shape to the stream in an ascii format toptools_formatversion_version_1. this alias writes shape with triangulation data. @param theshape [in] the shape to write @param thestream [in][out] the stream to output shape into @param therange the range of progress indicator to fill in.
+") Write;
+		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
+		/**** md5 signature: 9549ae676c065d5541189e667b74dffd ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+theShape: TopoDS_Shape
+theWithTriangles: bool
+theWithNormals: bool
+theVersion: TopTools_FormatVersion
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Writes the shape to the stream in an ascii format of specified version. @param theshape [in] the shape to write @param thestream [in][out] the stream to output shape into @param thewithtriangles [in] flag which specifies whether to save shape with (true) or without (false) triangles;  has no effect on triangulation-only geometry @param thewithnormals [in] flag which specifies whether to save triangulation with (true) or without (false) normals;  has no effect on triangulation-only geometry @param theversion [in] the toptools format version @param theprogress the range of progress indicator to fill in.
+") Write;
+		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Write ******************/
 		/**** md5 signature: 2b0742433c64d0c04f4d2d4d98afcfa2 ****/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
@@ -957,14 +1038,23 @@ Clears the history.
 ") Clear;
 		void Clear();
 
+		/****************** Dump ******************/
+		/**** md5 signature: b0b4810c084d0c0f210602a019840cff ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+theS: Standard_OStream
+
+Description
+-----------
+Prints the brief description of the history into a stream.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** Generated ******************/
 		/**** md5 signature: 308ecbb5e9f94e72f26d5a5fd518be68 ****/
 		%feature("compactdefaultargs") Generated;
@@ -2084,38 +2174,92 @@ Clears the content of the set.
 ") Clear;
 		virtual void Clear();
 
+		/****************** DumpGeometry ******************/
+		/**** md5 signature: 8a10297a2e0a44206d544cf3208c2ebd ****/
+		%feature("compactdefaultargs") DumpGeometry;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpGeometryToString() {
-            std::stringstream s;
-            self->DumpGeometry(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpPolygon3DToString() {
-            std::stringstream s;
-            self->DumpPolygon3D(s);
-            return s.str();}
-        };
+Description
+-----------
+Dumps the geometry of me on the stream <os>.
+") DumpGeometry;
+		virtual void DumpGeometry(std::ostream &OutValue);
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpPolygonOnTriangulationToString() {
-            std::stringstream s;
-            self->DumpPolygonOnTriangulation(s);
-            return s.str();}
-        };
+		/****************** DumpGeometry ******************/
+		/**** md5 signature: 441eb2169ad0b3222fe794ba8ea21d05 ****/
+		%feature("compactdefaultargs") DumpGeometry;
+		%feature("autodoc", "
+Parameters
+----------
+S: TopoDS_Shape
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpTriangulationToString() {
-            std::stringstream s;
-            self->DumpTriangulation(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Dumps the geometry of <s> on the stream <os>.
+") DumpGeometry;
+		virtual void DumpGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
+
+		/****************** DumpPolygon3D ******************/
+		/**** md5 signature: d71dc2828833ae37d1fdf2e355dbb1b6 ****/
+		%feature("compactdefaultargs") DumpPolygon3D;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Dumps the 3d polygons on the stream <os>.
+") DumpPolygon3D;
+		void DumpPolygon3D(std::ostream &OutValue);
+
+		/****************** DumpPolygonOnTriangulation ******************/
+		/**** md5 signature: ebede4d5757370c7f0a77e3b47b20ea8 ****/
+		%feature("compactdefaultargs") DumpPolygonOnTriangulation;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Dumps the polygons on triangulation on the stream <os>.
+") DumpPolygonOnTriangulation;
+		void DumpPolygonOnTriangulation(std::ostream &OutValue);
+
+		/****************** DumpTriangulation ******************/
+		/**** md5 signature: 573377e15caf72db43c4f0909c6d6c4b ****/
+		%feature("compactdefaultargs") DumpTriangulation;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Dumps the triangulation on the stream <os>.
+") DumpTriangulation;
+		void DumpTriangulation(std::ostream &OutValue);
+
 		/****************** IsWithNormals ******************/
 		/**** md5 signature: 49f5baecd893691e08f163fb559d8b06 ****/
 		%feature("compactdefaultargs") IsWithNormals;
@@ -2142,34 +2286,102 @@ Return true if shape should be stored with triangles.
 ") IsWithTriangles;
 		Standard_Boolean IsWithTriangles();
 
+		/****************** ReadGeometry ******************/
+		/**** md5 signature: 29982a86f8628bd19687b88946d88b2b ****/
+		%feature("compactdefaultargs") ReadGeometry;
+		%feature("autodoc", "
+Parameters
+----------
+IS: str
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadGeometryFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadGeometry(s);}
-            };
+Return
+-------
+None
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadPolygon3DFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadPolygon3D(s);}
-            };
+Description
+-----------
+Reads the geometry of me from the stream <is>.
+") ReadGeometry;
+		virtual void ReadGeometry(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadPolygonOnTriangulationFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadPolygonOnTriangulation(s);}
-            };
+		/****************** ReadGeometry ******************/
+		/**** md5 signature: aec2489bee709d857b09eddd7a62d272 ****/
+		%feature("compactdefaultargs") ReadGeometry;
+		%feature("autodoc", "
+Parameters
+----------
+T: TopAbs_ShapeEnum
+IS: str
+S: TopoDS_Shape
 
-            %feature("autodoc", "1");
-            %extend{
-                void ReadTriangulationFromString(std::string src) {
-                std::stringstream s(src);
-                self->ReadTriangulation(s);}
-            };
+Return
+-------
+None
+
+Description
+-----------
+Reads the geometry of a shape of type <t> from the stream <is> and returns it in <s>.
+") ReadGeometry;
+		virtual void ReadGeometry(const TopAbs_ShapeEnum T, std::istream & IS, TopoDS_Shape & S);
+
+		/****************** ReadPolygon3D ******************/
+		/**** md5 signature: e637370098b2bac74ea2ad781985457f ****/
+		%feature("compactdefaultargs") ReadPolygon3D;
+		%feature("autodoc", "
+Parameters
+----------
+IS: str
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+None
+
+Description
+-----------
+Reads the 3d polygons of me from the stream <is>.
+") ReadPolygon3D;
+		void ReadPolygon3D(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** ReadPolygonOnTriangulation ******************/
+		/**** md5 signature: 8c589d9572a02a58a24994948b7ca837 ****/
+		%feature("compactdefaultargs") ReadPolygonOnTriangulation;
+		%feature("autodoc", "
+Parameters
+----------
+IS: str
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+None
+
+Description
+-----------
+Reads the polygons on triangulation of me from the stream <is>.
+") ReadPolygonOnTriangulation;
+		void ReadPolygonOnTriangulation(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** ReadTriangulation ******************/
+		/**** md5 signature: 2c884f46fbe1934a9efd5f890623beee ****/
+		%feature("compactdefaultargs") ReadTriangulation;
+		%feature("autodoc", "
+Parameters
+----------
+IS: str
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+None
+
+Description
+-----------
+Reads the triangulation of me from the stream <is>.
+") ReadTriangulation;
+		void ReadTriangulation(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
 		/****************** SetWithNormals ******************/
 		/**** md5 signature: 9f03f91e56766f46bd17d99a089a0a21 ****/
 		%feature("compactdefaultargs") SetWithNormals;
@@ -2206,14 +2418,99 @@ Define if shape will be stored with triangles. ignored (always written) if face 
 ") SetWithTriangles;
 		void SetWithTriangles(const Standard_Boolean theWithTriangles);
 
+		/****************** WriteGeometry ******************/
+		/**** md5 signature: 4f112c9f4ab0e11dc4ef39084df9e9d4 ****/
+		%feature("compactdefaultargs") WriteGeometry;
+		%feature("autodoc", "
+Parameters
+----------
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string WriteGeometryToString() {
-            std::stringstream s;
-            self->WriteGeometry(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Writes the geometry of me on the stream <os> in a format that can be read back by read.
+") WriteGeometry;
+		virtual void WriteGeometry(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** WriteGeometry ******************/
+		/**** md5 signature: ce5d0a3d33cc100dd52fd3b965ea1743 ****/
+		%feature("compactdefaultargs") WriteGeometry;
+		%feature("autodoc", "
+Parameters
+----------
+S: TopoDS_Shape
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Writes the geometry of <s> on the stream <os> in a format that can be read back by read.
+") WriteGeometry;
+		virtual void WriteGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
+
+		/****************** WritePolygon3D ******************/
+		/**** md5 signature: adec09c9b52ff86073162dcfc4f3bda4 ****/
+		%feature("compactdefaultargs") WritePolygon3D;
+		%feature("autodoc", "
+Parameters
+----------
+Compact: bool (optional, default to Standard_True)
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Writes the 3d polygons on the stream <os> in a format that can be read back by read.
+") WritePolygon3D;
+		void WritePolygon3D(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** WritePolygonOnTriangulation ******************/
+		/**** md5 signature: b6577cbf6cdb2bc0baa774f88dfd3418 ****/
+		%feature("compactdefaultargs") WritePolygonOnTriangulation;
+		%feature("autodoc", "
+Parameters
+----------
+Compact: bool (optional, default to Standard_True)
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Writes the polygons on triangulation on the stream <os> in a format that can be read back by read.
+") WritePolygonOnTriangulation;
+		void WritePolygonOnTriangulation(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** WriteTriangulation ******************/
+		/**** md5 signature: 63a7d12f83f3bef281e1178d99ed272d ****/
+		%feature("compactdefaultargs") WriteTriangulation;
+		%feature("autodoc", "
+Parameters
+----------
+Compact: bool (optional, default to Standard_True)
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Writes the triangulation on the stream <os> in a format that can be read back by read.
+") WriteTriangulation;
+		void WriteTriangulation(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
 };
 
 
@@ -3507,6 +3804,10 @@ def breptools_DetectClosedness(*args):
 	return breptools.DetectClosedness(*args)
 
 @deprecated
+def breptools_Dump(*args):
+	return breptools.Dump(*args)
+
+@deprecated
 def breptools_EvalAndUpdateTol(*args):
 	return breptools.EvalAndUpdateTol(*args)
 
@@ -3533,6 +3834,10 @@ def breptools_OriEdgeInFace(*args):
 @deprecated
 def breptools_OuterWire(*args):
 	return breptools.OuterWire(*args)
+
+@deprecated
+def breptools_Read(*args):
+	return breptools.Read(*args)
 
 @deprecated
 def breptools_Read(*args):
@@ -3609,6 +3914,14 @@ def breptools_Update(*args):
 @deprecated
 def breptools_UpdateFaceUVPoints(*args):
 	return breptools.UpdateFaceUVPoints(*args)
+
+@deprecated
+def breptools_Write(*args):
+	return breptools.Write(*args)
+
+@deprecated
+def breptools_Write(*args):
+	return breptools.Write(*args)
 
 @deprecated
 def breptools_Write(*args):

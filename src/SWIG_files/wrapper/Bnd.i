@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_bnd.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -2141,10 +2142,22 @@ No available documentation.
 		void Dump();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2229,10 +2242,22 @@ Returns true if this box has finite part.
 		Standard_Boolean HasFinitePart();
 
 
-        /****************** InitFromJsonString ******************/
-        %feature("autodoc", "1");
+        /****************** InitFromJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+json_string: the string
+
+Return
+-------
+bool
+
+Description
+-----------
+Init the object from a JSON string.
+") InitFromJson;
         %extend{
-            bool InitFromJsonString(std::string json_string) {
+            bool InitFromJson(std::string json_string) {
             std::stringstream s(json_string);
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
@@ -2797,7 +2822,7 @@ Adds a point of coordinates (x,y,z) to this bounding box.
 %extend Bnd_Box {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -2805,7 +2830,7 @@ Adds a point of coordinates (x,y,z) to this bounding box.
 %pythoncode {
     def __setstate__(self, state):
         inst = Bnd_Box()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Bnd_Box')
@@ -3373,7 +3398,7 @@ Adds a point of coordinates (x,y) to this bounding box.
 %extend Bnd_Box2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -3381,7 +3406,7 @@ Adds a point of coordinates (x,y) to this bounding box.
 %pythoncode {
     def __setstate__(self, state):
         inst = Bnd_Box2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Bnd_Box2d')
@@ -3503,10 +3528,22 @@ Returns the center of obb.
 		const gp_XYZ Center();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3864,7 +3901,7 @@ Returns the z dimension of obb.
 %extend Bnd_OBB {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -3872,7 +3909,7 @@ Returns the z dimension of obb.
 %pythoncode {
     def __setstate__(self, state):
         inst = Bnd_OBB()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Bnd_OBB')
@@ -3989,10 +4026,22 @@ Returns range value (max-min). returns negative value for void range.
 		Standard_Real Delta();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -4297,7 +4346,7 @@ def __eq__(self, right):
 %extend Bnd_Range {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -4305,7 +4354,7 @@ def __eq__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = Bnd_Range()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Bnd_Range')
@@ -4607,7 +4656,7 @@ Returns the v parameter on shape.
 %extend Bnd_Sphere {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -4615,7 +4664,7 @@ Returns the v parameter on shape.
 %pythoncode {
     def __setstate__(self, state):
         inst = Bnd_Sphere()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Bnd_Sphere')
@@ -4675,7 +4724,7 @@ Converts the given bnd_box to bvh_box.
 %extend Bnd_Tools {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -4683,7 +4732,7 @@ Converts the given bnd_box to bvh_box.
 %pythoncode {
     def __setstate__(self, state):
         inst = Bnd_Tools()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of Bnd_Tools')

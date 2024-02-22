@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_gp.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -488,19 +489,43 @@ Returns the direction of <self>.
 		const gp_Dir Direction();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
 
-        /****************** InitFromJsonString ******************/
-        %feature("autodoc", "1");
+        /****************** InitFromJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+json_string: the string
+
+Return
+-------
+bool
+
+Description
+-----------
+Init the object from a JSON string.
+") InitFromJson;
         %extend{
-            bool InitFromJsonString(std::string json_string) {
+            bool InitFromJson(std::string json_string) {
             std::stringstream s(json_string);
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
@@ -958,7 +983,7 @@ Translates this axis by: the vector (thep1, thep2) defined from point thep1 to p
 %extend gp_Ax1 {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -966,7 +991,7 @@ Translates this axis by: the vector (thep1, thep2) defined from point thep1 to p
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Ax1()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Ax1')
@@ -1080,19 +1105,43 @@ Returns the main direction of <self>.
 		const gp_Dir Direction();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
 
-        /****************** InitFromJsonString ******************/
-        %feature("autodoc", "1");
+        /****************** InitFromJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+json_string: the string
+
+Return
+-------
+bool
+
+Description
+-----------
+Init the object from a JSON string.
+") InitFromJson;
         %extend{
-            bool InitFromJsonString(std::string json_string) {
+            bool InitFromJson(std::string json_string) {
             std::stringstream s(json_string);
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
@@ -1567,7 +1616,7 @@ Returns the 'ydirection' of <self>.
 %extend gp_Ax2 {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -1575,7 +1624,7 @@ Returns the 'ydirection' of <self>.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Ax2()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Ax2')
@@ -1665,10 +1714,22 @@ Creates - a coordinate system where its origin is the origin of thea and its 'x 
 		 gp_Ax22d(const gp_Ax2d & theA, const Standard_Boolean theIsSense = Standard_True);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2111,7 +2172,7 @@ Returns the 'ydirection' of <self>.
 %extend gp_Ax22d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -2119,7 +2180,7 @@ Returns the 'ydirection' of <self>.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Ax22d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Ax22d')
@@ -2200,10 +2261,22 @@ Returns the direction of <self>.
 		const gp_Dir2d Direction();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2625,7 +2698,7 @@ Translates an axis placement from the point thep1 to the point thep2.
 %extend gp_Ax2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -2633,7 +2706,7 @@ Translates an axis placement from the point thep1 to the point thep2.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Ax2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Ax2d')
@@ -2791,19 +2864,43 @@ Returns the main direction of <self>.
 		const gp_Dir Direction();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
 
-        /****************** InitFromJsonString ******************/
-        %feature("autodoc", "1");
+        /****************** InitFromJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+json_string: the string
+
+Return
+-------
+bool
+
+Description
+-----------
+Init the object from a JSON string.
+") InitFromJson;
         %extend{
-            bool InitFromJsonString(std::string json_string) {
+            bool InitFromJson(std::string json_string) {
             std::stringstream s(json_string);
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
@@ -3317,7 +3414,7 @@ Reverses the z direction of <self>.
 %extend gp_Ax3 {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -3325,7 +3422,7 @@ Reverses the z direction of <self>.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Ax3()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Ax3')
@@ -3906,7 +4003,7 @@ Returns the 'yaxis' of the circle. this axis and the 'xaxis' define the plane of
 %extend gp_Circ {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -3914,7 +4011,7 @@ Returns the 'yaxis' of the circle. this axis and the 'xaxis' define the plane of
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Circ()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Circ')
@@ -4558,7 +4655,7 @@ Returns the y axis of the circle. reverses the direction of the circle.
 %extend gp_Circ2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -4566,7 +4663,7 @@ Returns the y axis of the circle. reverses the direction of the circle.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Circ2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Circ2d')
@@ -5176,7 +5273,7 @@ Returns the yaxis of the reference plane.
 %extend gp_Cone {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -5184,7 +5281,7 @@ Returns the yaxis of the reference plane.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Cone()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Cone')
@@ -5749,7 +5846,7 @@ Returns the axis y of the cylinder.
 %extend gp_Cylinder {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -5757,7 +5854,7 @@ Returns the axis y of the cylinder.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Cylinder()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Cylinder')
@@ -6029,19 +6126,43 @@ Computes the triple scalar product <self> * (thev1 ^ thev2). warnings: the compu
 		Standard_Real DotCross(const gp_Dir & theV1, const gp_Dir & theV2);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
 
-        /****************** InitFromJsonString ******************/
-        %feature("autodoc", "1");
+        /****************** InitFromJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+json_string: the string
+
+Return
+-------
+bool
+
+Description
+-----------
+Init the object from a JSON string.
+") InitFromJson;
         %extend{
-            bool InitFromJsonString(std::string json_string) {
+            bool InitFromJson(std::string json_string) {
             std::stringstream s(json_string);
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
@@ -6531,7 +6652,7 @@ No available documentation.
 %extend gp_Dir {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -6539,7 +6660,7 @@ No available documentation.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Dir()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Dir')
@@ -6715,10 +6836,22 @@ Computes the scalar product.
 		Standard_Real Dot(const gp_Dir2d & theOther);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -7138,7 +7271,7 @@ No available documentation.
 %extend gp_Dir2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -7146,7 +7279,7 @@ No available documentation.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Dir2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Dir2d')
@@ -7782,7 +7915,7 @@ Returns the 'yaxis' of the ellipse whose unit vector is the 'x direction' or the
 %extend gp_Elips {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -7790,7 +7923,7 @@ Returns the 'yaxis' of the ellipse whose unit vector is the 'x direction' or the
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Elips()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Elips')
@@ -8477,7 +8610,7 @@ Returns the minor axis of the ellipse. reverses the direction of the circle.
 %extend gp_Elips2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -8485,7 +8618,7 @@ Returns the minor axis of the ellipse. reverses the direction of the circle.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Elips2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Elips2d')
@@ -8553,10 +8686,22 @@ Creates a transformation based on the matrix them and the vector thev where them
 		 gp_GTrsf(const gp_Mat & theM, const gp_XYZ & theV);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -8972,7 +9117,7 @@ def __imul__(self, right):
 %extend gp_GTrsf {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -8980,7 +9125,7 @@ def __imul__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_GTrsf()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_GTrsf')
@@ -9443,7 +9588,7 @@ def __imul__(self, right):
 %extend gp_GTrsf2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -9451,7 +9596,7 @@ def __imul__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_GTrsf2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_GTrsf2d')
@@ -10139,7 +10284,7 @@ Computes an axis, whose - the origin is the center of this hyperbola, and - the 
 %extend gp_Hypr {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -10147,7 +10292,7 @@ Computes an axis, whose - the origin is the center of this hyperbola, and - the 
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Hypr()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Hypr')
@@ -10886,7 +11031,7 @@ Computes an axis whose - the origin is the center of this hyperbola, and - the u
 %extend gp_Hypr2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -10894,7 +11039,7 @@ Computes an axis whose - the origin is the center of this hyperbola, and - the u
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Hypr2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Hypr2d')
@@ -11508,7 +11653,7 @@ Translates a line from the point thep1 to the point thep2.
 %extend gp_Lin {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -11516,7 +11661,7 @@ Translates a line from the point thep1 to the point thep2.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Lin()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Lin')
@@ -12133,7 +12278,7 @@ Translates a line from the point thep1 to the point thep2.
 %extend gp_Lin2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -12141,7 +12286,7 @@ Translates a line from the point thep1 to the point thep2.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Lin2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Lin2d')
@@ -12347,10 +12492,22 @@ Divides all the coefficients of the matrix by scalar.
 		gp_Mat Divided(const Standard_Real theScalar);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -12975,7 +13132,7 @@ def __itruediv__(self, right):
 %extend gp_Mat {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -12983,7 +13140,7 @@ def __itruediv__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Mat()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Mat')
@@ -13730,7 +13887,7 @@ def __itruediv__(self, right):
 %extend gp_Mat2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -13738,7 +13895,7 @@ def __itruediv__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Mat2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Mat2d')
@@ -14296,7 +14453,7 @@ It is an axis parallel to the directrix of the parabola. the location point of t
 %extend gp_Parab {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -14304,7 +14461,7 @@ It is an axis parallel to the directrix of the parabola. the location point of t
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Parab()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Parab')
@@ -14882,7 +15039,7 @@ Translates a parabola from the point thep1 to the point thep2.
 %extend gp_Parab2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -14890,7 +15047,7 @@ Translates a parabola from the point thep1 to the point thep2.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Parab2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Parab2d')
@@ -15118,10 +15275,22 @@ Computes the distance between two planes.
 		Standard_Real Distance(const gp_Pln & theOther);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -15613,7 +15782,7 @@ Returns the y axis of the plane.
 %extend gp_Pln {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -15621,7 +15790,7 @@ Returns the y axis of the plane.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Pln()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Pln')
@@ -15791,19 +15960,43 @@ Computes the distance between two points.
 		Standard_Real Distance(const gp_Pnt & theOther);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
 
-        /****************** InitFromJsonString ******************/
-        %feature("autodoc", "1");
+        /****************** InitFromJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+json_string: the string
+
+Return
+-------
+bool
+
+Description
+-----------
+Init the object from a JSON string.
+") InitFromJson;
         %extend{
-            bool InitFromJsonString(std::string json_string) {
+            bool InitFromJson(std::string json_string) {
             std::stringstream s(json_string);
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
@@ -16309,7 +16502,7 @@ For this point, returns its z coordinate.
 %extend gp_Pnt {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -16317,7 +16510,7 @@ For this point, returns its z coordinate.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Pnt()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Pnt')
@@ -16465,10 +16658,22 @@ Computes the distance between two points.
 		Standard_Real Distance(const gp_Pnt2d & theOther);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -16906,7 +17111,7 @@ For this point, returns its y coordinate.
 %extend gp_Pnt2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -16914,7 +17119,7 @@ For this point, returns its y coordinate.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Pnt2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Pnt2d')
@@ -17788,7 +17993,7 @@ def __isub__(self, right):
 %extend gp_Quaternion {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -17796,7 +18001,7 @@ def __isub__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Quaternion()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Quaternion')
@@ -17929,7 +18134,7 @@ Set interpolated quaternion for thet position (from 0.0 to 1.0).
 %extend gp_QuaternionNLerp {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -17937,7 +18142,7 @@ Set interpolated quaternion for thet position (from 0.0 to 1.0).
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_QuaternionNLerp()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_QuaternionNLerp')
@@ -18070,7 +18275,7 @@ Set interpolated quaternion for thet position (from 0.0 to 1.0).
 %extend gp_QuaternionSLerp {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -18078,7 +18283,7 @@ Set interpolated quaternion for thet position (from 0.0 to 1.0).
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_QuaternionSLerp()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_QuaternionSLerp')
@@ -18638,7 +18843,7 @@ Returns the axis y of the sphere.
 %extend gp_Sphere {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -18646,7 +18851,7 @@ Returns the axis y of the sphere.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Sphere()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Sphere')
@@ -19261,7 +19466,7 @@ Returns the axis y of the torus.
 %extend gp_Torus {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -19269,7 +19474,7 @@ Returns the axis y of the torus.
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Torus()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Torus')
@@ -19318,10 +19523,22 @@ Creates a 3d transformation from the 2d transformation thet. the resulting trans
 		 gp_Trsf(const gp_Trsf2d & theT);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -19384,10 +19601,22 @@ Computes the homogeneous vectorial part of the transformation. it is a 3*3 matri
 		const gp_Mat HVectorialPart();
 
 
-        /****************** InitFromJsonString ******************/
-        %feature("autodoc", "1");
+        /****************** InitFromJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+json_string: the string
+
+Return
+-------
+bool
+
+Description
+-----------
+Init the object from a JSON string.
+") InitFromJson;
         %extend{
-            bool InitFromJsonString(std::string json_string) {
+            bool InitFromJson(std::string json_string) {
             std::stringstream s(json_string);
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
@@ -19975,7 +20204,7 @@ def __imul__(self, right):
 %extend gp_Trsf {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -19983,7 +20212,7 @@ def __imul__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Trsf()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Trsf')
@@ -20536,7 +20765,7 @@ def __imul__(self, right):
 %extend gp_Trsf2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -20544,7 +20773,7 @@ def __imul__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Trsf2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Trsf2d')
@@ -20943,10 +21172,22 @@ Computes the triple scalar product <self> * (thev1 ^ thev2).
 		Standard_Real DotCross(const gp_Vec & theV1, const gp_Vec & theV2);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -21842,7 +22083,7 @@ def __itruediv__(self, right):
 %extend gp_Vec {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -21850,7 +22091,7 @@ def __itruediv__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Vec()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Vec')
@@ -22939,7 +23180,7 @@ def __itruediv__(self, right):
 %extend gp_Vec2d {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -22947,7 +23188,7 @@ def __itruediv__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_Vec2d()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_Vec2d')
@@ -23806,7 +24047,7 @@ def __itruediv__(self, right):
 %extend gp_XY {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -23814,7 +24055,7 @@ def __itruediv__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_XY()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_XY')
@@ -24147,10 +24388,22 @@ Computes the triple scalar product.
 		Standard_Real DotCross(const gp_XYZ & theCoord1, const gp_XYZ & theCoord2);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -24169,10 +24422,22 @@ Returns a const ptr to coordinates location. is useful for algorithms, but does 
 		const Standard_Real * GetData();
 
 
-        /****************** InitFromJsonString ******************/
-        %feature("autodoc", "1");
+        /****************** InitFromJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+json_string: the string
+
+Return
+-------
+bool
+
+Description
+-----------
+Init the object from a JSON string.
+") InitFromJson;
         %extend{
-            bool InitFromJsonString(std::string json_string) {
+            bool InitFromJson(std::string json_string) {
             std::stringstream s(json_string);
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
@@ -24860,7 +25125,7 @@ def __itruediv__(self, right):
 %extend gp_XYZ {
 %pythoncode {
     def __getstate__(self):
-        return self.DumpJsonToString()
+        return self.DumpJson()
     }
 };
 
@@ -24868,7 +25133,7 @@ def __itruediv__(self, right):
 %pythoncode {
     def __setstate__(self, state):
         inst = gp_XYZ()
-        if inst.InitFromJsonString(state):
+        if inst.InitFromJson(state):
             self.this = inst.this
         else:
             raise IOError('Failed to set state of gp_XYZ')

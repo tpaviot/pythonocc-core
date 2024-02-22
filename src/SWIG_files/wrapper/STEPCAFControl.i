@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepcafcontrol.ht
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -1861,7 +1862,7 @@ Loads a file and returns the read status provided for use like single-file reade
 Parameters
 ----------
 theName: str
-theIStream: std::istream
+theIStream: str
 
 Return
 -------
@@ -2542,17 +2543,16 @@ Writes all the produced models into file in case of multimodel with extern refer
 		%feature("autodoc", "
 Parameters
 ----------
-theStream: std::ostream
 
 Return
 -------
-IFSelect_ReturnStatus
+theStream: std::ostream
 
 Description
 -----------
 Writes all the produced models into the stream. provided for use like single-file writer.
 ") WriteStream;
-		IFSelect_ReturnStatus WriteStream(std::ostream & theStream);
+		IFSelect_ReturnStatus WriteStream(std::ostream &OutValue);
 
 		/****************** Writer ******************/
 		/**** md5 signature: 056d4f3221d283b7d58d92ddd5c40dd7 ****/

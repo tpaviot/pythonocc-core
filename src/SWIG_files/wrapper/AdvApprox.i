@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_advapprox.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -230,14 +231,23 @@ No available documentation.
 ") Degree;
 		Standard_Integer Degree();
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+o: Standard_OStream
+
+Description
+-----------
+Display information on approximation.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** HasResult ******************/
 		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
 		%feature("compactdefaultargs") HasResult;
@@ -599,14 +609,23 @@ No available documentation.
 ") DifTab;
 		opencascade::handle<TColStd_HArray1OfReal> DifTab();
 
+		/****************** Dump ******************/
+		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+o: Standard_OStream
+
+Description
+-----------
+Display information on approximation.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** FirstConstr ******************/
 		/**** md5 signature: f7818f8b2283dc680ce2b42c85a59f9d ****/
 		%feature("compactdefaultargs") FirstConstr;

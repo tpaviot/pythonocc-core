@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepselections.ht
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -259,14 +260,23 @@ No available documentation.
 ") STEPSelections_AssemblyExplorer;
 		 STEPSelections_AssemblyExplorer(const Interface_Graph & G);
 
+		/****************** Dump ******************/
+		/**** md5 signature: e60d722f65a7811be636699da7600e78 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+os: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
 		/****************** FillListWithGraph ******************/
 		/**** md5 signature: 22e0b69a9c944196630d2867ebc6b70f ****/
 		%feature("compactdefaultargs") FillListWithGraph;

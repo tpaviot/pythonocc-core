@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_binldrivers.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -231,6 +232,29 @@ Retrieves the content of the file into a new document.
 ") Read;
 		virtual void Read(TCollection_ExtendedString theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		/****************** Read ******************/
+		/**** md5 signature: 771be11c877b12fef9f44e77dfdf48ba ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+theIStream: str
+theStorageData: Storage_Data
+theDoc: CDM_Document
+theApplication: CDM_Application
+theFilter: PCDM_ReaderFilter (optional, default to opencascade::handle<PCDM_ReaderFilter>())
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") Read;
+		virtual void Read(std::istream & theIStream, const opencascade::handle<Storage_Data> & theStorageData, const opencascade::handle<CDM_Document> & theDoc, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
+
 };
 
 
@@ -331,6 +355,26 @@ Query the offset of the section in the persistent file.
 ") Offset;
 		uint64_t Offset();
 
+		/****************** ReadTOC ******************/
+		/**** md5 signature: 6d892ade1242a16e99246162955f59d3 ****/
+		%feature("compactdefaultargs") ReadTOC;
+		%feature("autodoc", "
+Parameters
+----------
+theSection: BinLDrivers_DocumentSection
+theIS: str
+theDocFormatVersion: TDocStd_FormatVersion
+
+Return
+-------
+bool
+
+Description
+-----------
+Fill a documentsection instance from the data that are read from toc. returns false in case of the stream reading problem.
+") ReadTOC;
+		static Standard_Boolean ReadTOC(BinLDrivers_DocumentSection & theSection, std::istream & theIS, const TDocStd_FormatVersion theDocFormatVersion);
+
 		/****************** SetLength ******************/
 		/**** md5 signature: 9c89e70c52c75c8f071a4a8b0807f508 ****/
 		%feature("compactdefaultargs") SetLength;
@@ -366,6 +410,43 @@ Description
 Set the offset of the section in the persistent file.
 ") SetOffset;
 		void SetOffset(const uint64_t theOffset);
+
+		/****************** Write ******************/
+		/**** md5 signature: f8a305892a9630863531b16bb0e8d748 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+theOffset: uint64_t
+theDocFormatVersion: TDocStd_FormatVersion
+
+Return
+-------
+theOS: Standard_OStream
+
+Description
+-----------
+Save offset and length data into the section entry in the document toc (list of sections).
+") Write;
+		void Write(std::ostream &OutValue, const uint64_t theOffset, const TDocStd_FormatVersion theDocFormatVersion);
+
+		/****************** WriteTOC ******************/
+		/**** md5 signature: 1286c7467df97ba170437cf09bae7984 ****/
+		%feature("compactdefaultargs") WriteTOC;
+		%feature("autodoc", "
+Parameters
+----------
+theDocFormatVersion: TDocStd_FormatVersion
+
+Return
+-------
+theOS: Standard_OStream
+
+Description
+-----------
+Create a section entry in the document toc (list of sections).
+") WriteTOC;
+		void WriteTOC(std::ostream &OutValue, const TDocStd_FormatVersion theDocFormatVersion);
 
 };
 
@@ -469,6 +550,25 @@ Write <thedocument> to the binary file <thefilename>.
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, TCollection_ExtendedString theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
+		/****************** Write ******************/
+		/**** md5 signature: 1593005190d18463c833b2c78ffb13a5 ****/
+		%feature("compactdefaultargs") Write;
+		%feature("autodoc", "
+Parameters
+----------
+theDocument: CDM_Document
+theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+theOStream: Standard_OStream
+
+Description
+-----------
+Write <thedocument> to theostream.
+") Write;
+		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
+
 };
 
 
@@ -499,5 +599,9 @@ def binldrivers_DefineFormat(*args):
 @deprecated
 def binldrivers_Factory(*args):
 	return binldrivers.Factory(*args)
+
+@deprecated
+def BinLDrivers_DocumentSection_ReadTOC(*args):
+	return BinLDrivers_DocumentSection.ReadTOC(*args)
 
 }

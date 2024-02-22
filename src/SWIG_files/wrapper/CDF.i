@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_cdf.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -365,6 +366,27 @@ Description
 Puts the document in the current session directory and calls the virtual method activate on it.
 ") Open;
 		void Open(const opencascade::handle<CDM_Document> & aDocument);
+
+		/****************** Read ******************/
+		/**** md5 signature: fed3647299064218aa4c2d8dceec103f ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+theIStream: str
+theDocument: CDM_Document
+theFilter: PCDM_ReaderFilter (optional, default to opencascade::handle<PCDM_ReaderFilter>())
+theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+None
+
+Description
+-----------
+Reads thedocument from standard seekable stream theistream, the stream should support seek functionality.
+") Read;
+		void Read(std::istream & theIStream, opencascade::handle<CDM_Document> & theDocument, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theRange = Message_ProgressRange());
 
 		/****************** ReaderFromFormat ******************/
 		/**** md5 signature: aab6344d555db3220a1fcf7db3c7d59e ****/

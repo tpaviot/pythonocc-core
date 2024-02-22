@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_cdm.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -161,10 +162,22 @@ This method is called before the update of a document. by default, writes in mes
 		virtual void BeginOfUpdate(const opencascade::handle<CDM_Document> & aDocument);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -546,10 +559,22 @@ Returns the to document of the reference identified by areferenceidentifier. if 
 		opencascade::handle<CDM_Document> Document(const Standard_Integer aReferenceIdentifier);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -912,14 +937,23 @@ No available documentation.
 ") Open;
 		void Open(const opencascade::handle<CDM_Application> & anApplication);
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** Reference ******************/
 		/**** md5 signature: 8fb9128b48e5f8568694a49ff83331ff ****/
 		%feature("compactdefaultargs") Reference;
@@ -1436,10 +1470,22 @@ No available documentation.
 		opencascade::handle<CDM_Document> Document();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -1582,14 +1628,23 @@ No available documentation.
 ") Path;
 		TCollection_ExtendedString Path();
 
+		/****************** Print ******************/
+		/**** md5 signature: fb65164879bb8268c90b67d68359a682 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintToString() {
-            std::stringstream s;
-            self->Print(s);
-            return s.str();}
-        };
+Return
+-------
+anOStream: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		Standard_OStream & Print(std::ostream &OutValue);
+
 		/****************** SetIsReadOnly ******************/
 		/**** md5 signature: 9f4f8649234a1411f6086a147fb0f5ad ****/
 		%feature("compactdefaultargs") SetIsReadOnly;
@@ -1673,10 +1728,22 @@ No available documentation.
 		Standard_Integer DocumentVersion();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}

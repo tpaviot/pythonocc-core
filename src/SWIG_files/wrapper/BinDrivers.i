@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_bindrivers.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -205,6 +206,25 @@ No available documentation.
 ") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
+		/****************** CheckShapeSection ******************/
+		/**** md5 signature: 700e6a408d65152684bc7e5f46482651 ****/
+		%feature("compactdefaultargs") CheckShapeSection;
+		%feature("autodoc", "
+Parameters
+----------
+thePos: Storage_Position
+theIS: str
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") CheckShapeSection;
+		virtual void CheckShapeSection(const Storage_Position & thePos, std::istream & theIS);
+
 		/****************** Clear ******************/
 		/**** md5 signature: f671931d03948860d0ead34afbe920aa ****/
 		%feature("compactdefaultargs") Clear;
@@ -236,6 +256,27 @@ Description
 Enables reading in the quick part access mode.
 ") EnableQuickPartReading;
 		virtual void EnableQuickPartReading(const opencascade::handle<Message_Messenger> & theMessageDriver, Standard_Boolean theValue);
+
+		/****************** ReadShapeSection ******************/
+		/**** md5 signature: 7bf07d0fc30fd0c1486d23e896f3c271 ****/
+		%feature("compactdefaultargs") ReadShapeSection;
+		%feature("autodoc", "
+Parameters
+----------
+theSection: BinLDrivers_DocumentSection
+theIS: str
+isMess: bool (optional, default to Standard_False)
+theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") ReadShapeSection;
+		virtual void ReadShapeSection(BinLDrivers_DocumentSection & theSection, std::istream & theIS, const Standard_Boolean isMess = Standard_False, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 
@@ -379,6 +420,26 @@ Description
 Set if triangulation should be stored or not.
 ") SetWithTriangles;
 		void SetWithTriangles(const opencascade::handle<Message_Messenger> & theMessageDriver, const Standard_Boolean theWithTriangulation);
+
+		/****************** WriteShapeSection ******************/
+		/**** md5 signature: 64e554649673659ee22057bde5256cf5 ****/
+		%feature("compactdefaultargs") WriteShapeSection;
+		%feature("autodoc", "
+Parameters
+----------
+theDocSection: BinLDrivers_DocumentSection
+theDocVer: TDocStd_FormatVersion
+theRange: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+theOS: Standard_OStream
+
+Description
+-----------
+Implements the procedure of writing a shape section to file.
+") WriteShapeSection;
+		virtual void WriteShapeSection(BinLDrivers_DocumentSection & theDocSection, std::ostream &OutValue, const TDocStd_FormatVersion theDocVer, const Message_ProgressRange & theRange = Message_ProgressRange());
 
 };
 

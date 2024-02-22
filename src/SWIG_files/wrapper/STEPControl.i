@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepcontrol.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -955,17 +956,16 @@ Writes a step model in the file identified by filename.
 		%feature("autodoc", "
 Parameters
 ----------
-theOStream: std::ostream
 
 Return
 -------
-IFSelect_ReturnStatus
+theOStream: std::ostream
 
 Description
 -----------
 Writes a step model in the std::ostream.
 ") WriteStream;
-		IFSelect_ReturnStatus WriteStream(std::ostream & theOStream);
+		IFSelect_ReturnStatus WriteStream(std::ostream &OutValue);
 
 };
 

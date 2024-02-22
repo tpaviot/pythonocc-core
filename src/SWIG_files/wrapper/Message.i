@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_message.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -816,10 +817,22 @@ Converts message metric to osd memory info type. @param themetric [in] message m
 class Message_Alert : public Standard_Transient {
 	public:
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -1308,10 +1321,22 @@ Empty constructor.
 		 Message_Attribute(TCollection_AsciiString theName = TCollection_AsciiString());
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -1476,10 +1501,22 @@ Clears collected alerts with specified type @param thetype an alert type.
 		void Clear(const opencascade::handle<Standard_Type> & theType);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2104,10 +2141,22 @@ Returns sequence of printers the sequence can be modified.
 		Message_SequenceOfPrinters & ChangePrinters();
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -2755,7 +2804,7 @@ Send a string message with specified trace level. the object is converted to str
 		%feature("autodoc", "
 Parameters
 ----------
-theStream: Standard_SStream
+theStream: std::stringstream
 theGravity: Message_Gravity
 
 Return
@@ -2766,7 +2815,7 @@ Description
 -----------
 Send a string message with specified trace level. stream is converted to string value. default implementation calls first method send().
 ") SendStringStream;
-		virtual void SendStringStream(const Standard_SStream & theStream, const Message_Gravity theGravity);
+		virtual void SendStringStream(const std::stringstream & theStream, const Message_Gravity theGravity);
 
 		/****************** SetTraceLevel ******************/
 		/**** md5 signature: 76564510956a50ca65a88b0d62efe400 ****/
@@ -3108,19 +3157,58 @@ Removes all activated metrics.
 ") ClearMetrics;
 		void ClearMetrics();
 
+		/****************** Dump ******************/
+		/**** md5 signature: c086355fe494bcbcf3ea9cc5c4ebee71 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpToString() {
-            std::stringstream s;
-            self->Dump(s);
-            return s.str();}
-        };
+Return
+-------
+theOS: Standard_OStream
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+Description
+-----------
+Dumps all collected alerts to stream.
+") Dump;
+		void Dump(std::ostream &OutValue);
+
+		/****************** Dump ******************/
+		/**** md5 signature: d701e8989524635f96b7e9629956e021 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+theGravity: Message_Gravity
+
+Return
+-------
+theOS: Standard_OStream
+
+Description
+-----------
+Dumps collected alerts with specified gravity to stream.
+") Dump;
+		void Dump(std::ostream &OutValue, Message_Gravity theGravity);
+
+
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3439,10 +3527,22 @@ Returns class provided hierarchy of alerts if created or create if the parameter
 		opencascade::handle<Message_CompositeAlerts> CompositeAlerts(const Standard_Boolean theToCreate = Standard_False);
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3544,10 +3644,22 @@ Constructor with string argument.
 		 Message_AttributeMeter(TCollection_AsciiString theName = TCollection_AsciiString());
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3766,10 +3878,22 @@ Constructor with string argument.
 		 Message_AttributeObject(const opencascade::handle<Standard_Transient> & theObject, TCollection_AsciiString theName = TCollection_AsciiString());
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3827,7 +3951,7 @@ class Message_AttributeStream : public Message_Attribute {
 		%feature("autodoc", "
 Parameters
 ----------
-theStream: Standard_SStream
+theStream: std::stringstream
 theName: str (optional, default to TCollection_AsciiString())
 
 Return
@@ -3838,13 +3962,25 @@ Description
 -----------
 Constructor with string argument.
 ") Message_AttributeStream;
-		 Message_AttributeStream(const Standard_SStream & theStream, TCollection_AsciiString theName = TCollection_AsciiString());
+		 Message_AttributeStream(const std::stringstream & theStream, TCollection_AsciiString theName = TCollection_AsciiString());
 
 
-        /****************** DumpJsonToString ******************/
-        %feature("autodoc", "Json string serializer.");
+        /****************** DumpJson ******************/
+        %feature("autodoc", "
+Parameters
+----------
+depth: int, default=-1
+
+Return
+-------
+str
+
+Description
+-----------
+Dump the object to JSON string.
+") DumpJson;
         %extend{
-            std::string DumpJsonToString(int depth=-1) {
+            std::string DumpJson(int depth=-1) {
             std::stringstream s;
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
@@ -3855,7 +3991,7 @@ Constructor with string argument.
 		%feature("autodoc", "
 Parameters
 ----------
-theStream: Standard_SStream
+theStream: std::stringstream
 
 Return
 -------
@@ -3865,7 +4001,7 @@ Description
 -----------
 Sets stream value.
 ") SetStream;
-		void SetStream(const Standard_SStream & theStream);
+		void SetStream(const std::stringstream & theStream);
 
 		/****************** Stream ******************/
 		/**** md5 signature: bf624542447549e8d924a142424a736a ****/
@@ -3962,6 +4098,26 @@ Description
 Returns reference to the output stream.
 ") GetStream;
 		Standard_OStream & GetStream();
+
+		/****************** SetConsoleTextColor ******************/
+		/**** md5 signature: 1e71fea88218cee7455b23d16ccf2510 ****/
+		%feature("compactdefaultargs") SetConsoleTextColor;
+		%feature("autodoc", "
+Parameters
+----------
+theOStream: Standard_OStream *
+theTextColor: Message_ConsoleColor
+theIsIntenseText: bool (optional, default to false)
+
+Return
+-------
+None
+
+Description
+-----------
+Setup console text color. //! on windows, this would affect active terminal color output. on other systems, this would put special terminal codes; the terminal should support these codes or them will appear in text otherwise. the same will happen when stream is redirected into text file. //! beware that within multi-threaded environment inducing console colors might lead to colored text mixture due to concurrency.
+") SetConsoleTextColor;
+		static void SetConsoleTextColor(Standard_OStream * theOStream, Message_ConsoleColor theTextColor, bool theIsIntenseText = false);
 
 		/****************** SetToColorize ******************/
 		/**** md5 signature: b4f903af5677d00a1f393de87002a6a5 ****/
@@ -4096,7 +4252,7 @@ Send a string message with specified trace level. the object is converted to str
 		%feature("autodoc", "
 Parameters
 ----------
-theStream: Standard_SStream
+theStream: std::stringstream
 theGravity: Message_Gravity
 
 Return
@@ -4107,7 +4263,7 @@ Description
 -----------
 Send a string message with specified trace level. stream is converted to string value. default implementation calls first method send().
 ") SendStringStream;
-		virtual void SendStringStream(const Standard_SStream & theStream, const Message_Gravity theGravity);
+		virtual void SendStringStream(const std::stringstream & theStream, const Message_Gravity theGravity);
 
 		/****************** SetReport ******************/
 		/**** md5 signature: f93d4cd16d2a9be962c8ab7766dddef1 ****/
@@ -4320,5 +4476,9 @@ def Message_AttributeMeter_StopAlert(*args):
 @deprecated
 def Message_AttributeMeter_UndefinedMetricValue(*args):
 	return Message_AttributeMeter.UndefinedMetricValue(*args)
+
+@deprecated
+def Message_PrinterOStream_SetConsoleTextColor(*args):
+	return Message_PrinterOStream.SetConsoleTextColor(*args)
 
 }

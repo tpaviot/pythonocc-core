@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 5e59e69
+git revision : aeba585
 
-operating system : Linux 64bit 6.2.0-34-generic
+operating system : Linux 64bit 6.5.0-18-generic
 
 occt version targeted : 7.7.2
 
-date : 2023-10-21 07:41:36.499236
+date : 2024-02-22 14:15:04.324859
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -303,9 +303,14 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]  Class: BinTools_CurveSet
 [INFO ]  Class: BinTools_LocationSet
 [INFO ]  Class: BinTools_ShapeSetBase
+[WARNI]      [TypeHint] Skipping type std::istream, should contain _
+[WARNI]      [TypeHint] Skipping type std::istream, should contain _
+[WARNI]      [TypeHint] param name missing or '&', skip method type hint
+[WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [INFO ]  Class: BinTools_SurfaceSet
 [INFO ]  Class: BinTools_ShapeReader
 [INFO ]  Class: BinTools_ShapeSet
+[WARNI]      [TypeHint] Skipping type std::istream, should contain _
 [INFO ]  Class: BinTools_ShapeWriter
 [WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [INFO ]      operand << cannot be wrapped
@@ -392,6 +397,7 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]  Class: BinLDrivers_DocumentRetrievalDriver
 [INFO ]  Class: BinLDrivers_DocumentSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
@@ -4416,7 +4422,6 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]  Class: RWGltf_GltfLatePrimitiveArray
 [WARNI]      [TypeHint] Skipping type NCollection_Sequence<RWGltf_GltfPrimArrayData>, seems to be a template
 [INFO ]  Class: RWGltf_GltfMaterialMap
-[WARNI]      [TypeHint] Skipping type std::ostream &, should contain _
 [INFO ]  Class: RWGltf_GltfOStreamWriter
 [WARNI]      [TypeHint] Skipping type rapidjson::OStreamWrapper &, should contain _
 [INFO ]  Class: RWGltf_GltfPrimArrayData
@@ -4616,7 +4621,6 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: STEPControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type std::ostream &, should contain _
 [INFO ]  ## Processing module STEPEdit
 [INFO ]  Class: STEPEdit
 [INFO ]  Class: STEPEdit_EditContext
@@ -8452,11 +8456,9 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]  Class: STEPCAFControl_Reader
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
-[WARNI]      [TypeHint] Skipping type std::istream &, should contain _
 [INFO ]  Class: STEPCAFControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
-[WARNI]      [TypeHint] Skipping type std::ostream &, should contain _
 [INFO ]  Processing toolkit TKXMesh ===
 [INFO ]  ## Processing module XBRepMesh
 [INFO ]  Class: XBRepMesh
@@ -8530,9 +8532,7 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]      Class IFSelect_Transformer is abstract, using %nodefaultctor.
 [INFO ]  Class: IFSelect_WorkLibrary
 [INFO ]      Class IFSelect_WorkLibrary is abstract, using %nodefaultctor.
-[WARNI]      [TypeHint] Skipping type std::istream &, should contain _
 [INFO ]  Class: IFSelect_WorkSession
-[WARNI]      [TypeHint] Skipping type std::istream &, should contain _
 [WARNI]      [TypeHint] Skip type NCollection_Vector<opencascade::handle<Standard_Transient>, because of trailing :
 [INFO ]  Class: IFSelect_Act
 [INFO ]  Class: IFSelect_BasicDumper
@@ -8879,7 +8879,6 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]  Class: XSControl_Functions
 [INFO ]  Class: XSControl_Reader
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[WARNI]      [TypeHint] Skipping type std::istream &, should contain _
 [INFO ]  Class: XSControl_SelectForTransfer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: XSControl_SignTransferStatus
@@ -9079,6 +9078,7 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]  Class: Message_MsgFile
 [INFO ]  Class: Message_Printer
 [INFO ]      Class Message_Printer is abstract, using %nodefaultctor.
+[WARNI]      [TypeHint] Skipping type const std::stringstream &, should contain _
 [INFO ]  Class: Message_ProgressIndicator
 [INFO ]      Class Message_ProgressIndicator is abstract, using %nodefaultctor.
 [INFO ]  Class: Message_ProgressRange
@@ -9090,10 +9090,13 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]  Class: Message_AttributeMeter
 [INFO ]  Class: Message_AttributeObject
 [INFO ]  Class: Message_AttributeStream
+[WARNI]      [TypeHint] Skipping type const std::stringstream &, should contain _
+[WARNI]      [TypeHint] Skipping type const std::stringstream &, should contain _
 [INFO ]  Class: Message_PrinterOStream
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Message_PrinterSystemLog
 [INFO ]  Class: Message_PrinterToReport
+[WARNI]      [TypeHint] Skipping type const std::stringstream &, should contain _
 [INFO ]  Class: Message_ProgressSentry
 [INFO ]  ## Processing module NCollection
 [INFO ]  Found HSEQUENCE definitionHClassName: _SequenceType_
@@ -9182,12 +9185,15 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]  Class: Standard_Failure
 [INFO ]      Wrap nested class Standard_Failure::StringRef
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type const std::stringstream &, should contain _
+[WARNI]      [TypeHint] Skipping type const std::stringstream &, should contain _
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Standard_MMgrOpt
 [INFO ]      explicitly excluded method Standard_MMgrOpt::32213e26879b7b9d5ec9e1af79f3f5b8
 [INFO ]  Class: Standard_MMgrRaw
 [INFO ]  Class: Standard_MMgrTBBalloc
 [INFO ]  Class: Standard_OutOfMemory
+[WARNI]      [TypeHint] Skipping type std::stringstream &, should contain _
 [INFO ]  Class: Standard_Persistent
 [INFO ]      Creating Get and Set methods for method TypeNum
 [INFO ]  Class: Standard_Type
@@ -9383,7 +9389,7 @@ date : 2023-10-21 07:41:36.499236
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 17.22s
+SWIG interface file generation completed in 17.48s
 #################################################
 
 [INFO ]  Number of classes: 4770

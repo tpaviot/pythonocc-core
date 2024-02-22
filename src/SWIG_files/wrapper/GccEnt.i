@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_gccent.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -279,6 +280,24 @@ Description
 Returns the string name for a given position. @param theposition position type return string identifier from the list unqualified enclosing enclosed outside noqualifier.
 ") PositionToString;
 		static Standard_CString PositionToString(GccEnt_Position thePosition);
+
+		/****************** Print ******************/
+		/**** md5 signature: 068a92268570b76299d24afa3d55cb04 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+thePosition: GccEnt_Position
+
+Return
+-------
+theStream: Standard_OStream
+
+Description
+-----------
+Prints the name of position type as a string on the stream.
+") Print;
+		static Standard_OStream & Print(const GccEnt_Position thePosition, std::ostream &OutValue);
 
 		/****************** Unqualified ******************/
 		/**** md5 signature: 0b3ce4b2adf987fc69edb4f535e49b85 ****/
@@ -573,6 +592,10 @@ def gccent_PositionFromString(*args):
 @deprecated
 def gccent_PositionToString(*args):
 	return gccent.PositionToString(*args)
+
+@deprecated
+def gccent_Print(*args):
+	return gccent.Print(*args)
 
 @deprecated
 def gccent_Unqualified(*args):

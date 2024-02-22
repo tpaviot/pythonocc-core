@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_topopebrep.html"
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -284,6 +285,24 @@ typedef NCollection_Sequence<TopOpeBRep_Point2d> TopOpeBRep_SequenceOfPoint2d;
 %rename(topopebrep) TopOpeBRep;
 class TopOpeBRep {
 	public:
+		/****************** Print ******************/
+		/**** md5 signature: 298bc80cbe2b2fc0f4814ac9efa8edb6 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+TLC: TopOpeBRep_TypeLineCurve
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+Prints the name of <tlc> as a string on the stream <s> and returns <s>.
+") Print;
+		static Standard_OStream & Print(const TopOpeBRep_TypeLineCurve TLC, std::ostream &OutValue);
+
 };
 
 
@@ -3688,14 +3707,23 @@ No available documentation.
 ") DumpBipoint;
 		void DumpBipoint(const TopOpeBRep_Bipoint & B, TCollection_AsciiString s1, TCollection_AsciiString s2);
 
+		/****************** DumpLineTransitions ******************/
+		/**** md5 signature: edfe93f308df46bfc812b4b00425d99c ****/
+		%feature("compactdefaultargs") DumpLineTransitions;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpLineTransitionsToString() {
-            std::stringstream s;
-            self->DumpLineTransitions(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") DumpLineTransitions;
+		Standard_OStream & DumpLineTransitions(std::ostream &OutValue);
+
 		/****************** DumpType ******************/
 		/**** md5 signature: b34c01a6723403b4978ae19d96842616 ****/
 		%feature("compactdefaultargs") DumpType;
@@ -5523,14 +5551,23 @@ No available documentation.
 ") Current;
 		const TopoDS_Shape Current();
 
+		/****************** DumpCurrent ******************/
+		/**** md5 signature: 2cfbfd895f7349c098bf212a528228ac ****/
+		%feature("compactdefaultargs") DumpCurrent;
+		%feature("autodoc", "
+Parameters
+----------
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string DumpCurrentToString() {
-            std::stringstream s;
-            self->DumpCurrent(s);
-            return s.str();}
-        };
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") DumpCurrent;
+		Standard_OStream & DumpCurrent(std::ostream &OutValue);
+
 		/****************** Index ******************/
 		/**** md5 signature: 407d80ef3037d55996765198adea3908 ****/
 		%feature("compactdefaultargs") Index;
@@ -5676,6 +5713,44 @@ Description
 Updates vpointinter flag 'keep' with <keep>.
 ") ChangeKeep;
 		void ChangeKeep(const Standard_Boolean keep);
+
+		/****************** Dump ******************/
+		/**** md5 signature: 5579594f426ee060a7dba148d700be11 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+I: int
+F: TopoDS_Face
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		Standard_OStream & Dump(const Standard_Integer I, const TopoDS_Face & F, std::ostream &OutValue);
+
+		/****************** Dump ******************/
+		/**** md5 signature: 1f8e051df2589ec6a071609bf7470fc1 ****/
+		%feature("compactdefaultargs") Dump;
+		%feature("autodoc", "
+Parameters
+----------
+F1: TopoDS_Face
+F2: TopoDS_Face
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Dump;
+		Standard_OStream & Dump(const TopoDS_Face & F1, const TopoDS_Face & F2, std::ostream &OutValue);
 
 		/****************** Edge ******************/
 		/**** md5 signature: 69a02b36daf6e7cb7791cc5ef6d9ffd2 ****/
@@ -6871,6 +6946,10 @@ class TopOpeBRep_HArray1OfVPointInter : public TopOpeBRep_Array1OfVPointInter, p
 }
 /* deprecated methods */
 %pythoncode {
+@deprecated
+def topopebrep_Print(*args):
+	return topopebrep.Print(*args)
+
 @deprecated
 def TopOpeBRep_FFTransitionTool_ProcessEdgeONTransition(*args):
 	return TopOpeBRep_FFTransitionTool.ProcessEdgeONTransition(*args)

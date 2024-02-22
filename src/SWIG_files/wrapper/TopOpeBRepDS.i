@@ -34,6 +34,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_topopebrepds.html
 %include ../common/EnumTemplates.i
 %include ../common/Operators.i
 %include ../common/OccHandle.i
+%include ../common/IOStream.i
 
 
 %{
@@ -404,6 +405,100 @@ Description
 No available documentation.
 ") KindToShape;
 		static TopAbs_ShapeEnum KindToShape(const TopOpeBRepDS_Kind K);
+
+		/****************** Print ******************/
+		/**** md5 signature: 0ef9d8e552686e3841b3de5afdb9e892 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+S: TopAbs_State
+
+Return
+-------
+OS: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		static Standard_OStream & Print(const TopAbs_State S, std::ostream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: 3a4129a4c2148a798a76811bead8b8ba ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+K: TopOpeBRepDS_Kind
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		static Standard_OStream & Print(const TopOpeBRepDS_Kind K, std::ostream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: 5d0e4822af3cf499d0d29a1903417a5b ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+K: TopOpeBRepDS_Kind
+I: int
+B: str (optional, default to "")
+A: str (optional, default to "")
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		static Standard_OStream & Print(const TopOpeBRepDS_Kind K, const Standard_Integer I, std::ostream &OutValue, TCollection_AsciiString B = "", TCollection_AsciiString A = "");
+
+		/****************** Print ******************/
+		/**** md5 signature: 4d591b5485e1695cd7750b55883e11d9 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+T: TopAbs_ShapeEnum
+I: int
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		static Standard_OStream & Print(const TopAbs_ShapeEnum T, const Standard_Integer I, std::ostream &OutValue);
+
+		/****************** Print ******************/
+		/**** md5 signature: a5f6b6cef25348e934b1a293f0918f9b ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+C: TopOpeBRepDS_Config
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") Print;
+		static Standard_OStream & Print(const TopOpeBRepDS_Config C, std::ostream &OutValue);
 
 		/****************** SPrint ******************/
 		/**** md5 signature: 8e8bd1974589e4b4a60a8ae1d385d1b2 ****/
@@ -1693,14 +1788,77 @@ Verifie que les vertex non samedomain sont bien nonsamedomain, que les vertex sa
 ") OneVertexOnPnt;
 		Standard_Boolean OneVertexOnPnt();
 
+		/****************** Print ******************/
+		/**** md5 signature: 086af6ff7c70fce4047a52ee56d84e30 ****/
+		%feature("compactdefaultargs") Print;
+		%feature("autodoc", "
+Parameters
+----------
+stat: TopOpeBRepDS_CheckStatus
 
-        %feature("autodoc", "1");
-        %extend{
-            std::string PrintIntgToString() {
-            std::stringstream s;
-            self->PrintIntg(s);
-            return s.str();}
-        };
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the name of checkstatus <stat> as a string.
+") Print;
+		Standard_OStream & Print(const TopOpeBRepDS_CheckStatus stat, std::ostream &OutValue);
+
+		/****************** PrintIntg ******************/
+		/**** md5 signature: 87c9033c33359faee40e17ca777bad2d ****/
+		%feature("compactdefaultargs") PrintIntg;
+		%feature("autodoc", "
+Parameters
+----------
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+No available documentation.
+") PrintIntg;
+		Standard_OStream & PrintIntg(std::ostream &OutValue);
+
+		/****************** PrintShape ******************/
+		/**** md5 signature: c932bb977c67cb2dcc0f16639aaccff2 ****/
+		%feature("compactdefaultargs") PrintShape;
+		%feature("autodoc", "
+Parameters
+----------
+SE: TopAbs_ShapeEnum
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the name of checkstatus <stat> as a string.
+") PrintShape;
+		Standard_OStream & PrintShape(const TopAbs_ShapeEnum SE, std::ostream &OutValue);
+
+		/****************** PrintShape ******************/
+		/**** md5 signature: d41a7aa820a314e867e8755240d58f62 ****/
+		%feature("compactdefaultargs") PrintShape;
+		%feature("autodoc", "
+Parameters
+----------
+index: int
+
+Return
+-------
+S: Standard_OStream
+
+Description
+-----------
+Prints the name of checkstatus <stat> as a string.
+") PrintShape;
+		Standard_OStream & PrintShape(const Standard_Integer index, std::ostream &OutValue);
+
 };
 
 
@@ -9447,6 +9605,26 @@ def topopebrepds_IsTopology(*args):
 @deprecated
 def topopebrepds_KindToShape(*args):
 	return topopebrepds.KindToShape(*args)
+
+@deprecated
+def topopebrepds_Print(*args):
+	return topopebrepds.Print(*args)
+
+@deprecated
+def topopebrepds_Print(*args):
+	return topopebrepds.Print(*args)
+
+@deprecated
+def topopebrepds_Print(*args):
+	return topopebrepds.Print(*args)
+
+@deprecated
+def topopebrepds_Print(*args):
+	return topopebrepds.Print(*args)
+
+@deprecated
+def topopebrepds_Print(*args):
+	return topopebrepds.Print(*args)
 
 @deprecated
 def topopebrepds_SPrint(*args):
