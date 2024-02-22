@@ -719,27 +719,38 @@ class OffscreenRenderer(Viewer3d):
         color=None,
         transparency=None,
         update=True,
+        dump_image=True,
+        dump_image_path=None,
+        dump_image_filename=None,
     ):
         # call the "original" DisplayShape method
         r = super(OffscreenRenderer, self).DisplayShape(
             shapes, material, texture, color, transparency, update
         )  # always update
-        if (
+        if dump_image or (
             os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE") == "1"
         ):  # dump to jpeg file
             timestamp = ("%f" % time.time()).split(".")[0]
-            self.capture_number += 1
-            image_filename = "capture-%i-%s.jpeg" % (
-                self.capture_number,
-                timestamp.replace(" ", "-"),
-            )
+
             if os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH"):
                 path = os.getenv("PYTHONOCC_OFFSCREEN_RENDERER_DUMP_IMAGE_PATH")
                 if not os.path.isdir(path):
                     raise IOError(f"{path} is not a valid path")
+            elif dump_image_path is not None:
+                if not os.path.isdir(dump_image_path):
+                    raise IOError(f"{dump_image_path} is not a valid path")
+                path = dump_image_path
             else:
                 path = os.getcwd()
-            image_full_name = os.path.join(path, image_filename)
+            if dump_image_filename is None:
+                self.capture_number += 1
+                image_filename = "capture-%i-%s.jpeg" % (
+                    self.capture_number,
+                    timestamp.replace(" ", "-"),
+                )
+                image_full_name = os.path.join(path, image_filename)
+            else:
+                image_full_name = os.path.join(path, dump_image_filename)
             self.View.Dump(image_full_name)
             if not os.path.isfile(image_full_name):
                 raise IOError("OffscreenRenderer failed to render image to file")
