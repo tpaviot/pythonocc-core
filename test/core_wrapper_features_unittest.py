@@ -64,7 +64,11 @@ from OCC.Core.gp import (
 )
 from OCC.Core.math import math_Matrix, math_Vector
 from OCC.Core.GC import GC_MakeSegment
-from OCC.Core.STEPControl import STEPControl_Writer, STEPControl_AsIs
+from OCC.Core.STEPControl import (
+    STEPControl_Writer,
+    STEPControl_AsIs,
+    STEPControl_Reader,
+)
 from OCC.Core.Interface import Interface_Static
 from OCC.Core.GCE2d import GCE2d_MakeSegment
 from OCC.Core.ShapeFix import ShapeFix_Solid, ShapeFix_Wire
@@ -735,15 +739,15 @@ class TestWrapperFeatures(unittest.TestCase):
         visible_smooth_edges = hlr_shapes.Rg1LineVCompound()
         self.assertTrue(visible_smooth_edges is None)
 
-    def test_DumpToString(self) -> None:
+    def test_Dump(self) -> None:
         """some objects can be serialized to a string"""
         v = math_Vector(0, 2)
-        serialized_v = v.DumpToString()
+        serialized_v = v.Dump()
         # should output
         expected_output = "math_Vector of Length = 3\nmath_Vector(0) = 0\nmath_Vector(1) = 0\nmath_Vector(2) = 0\n"
         self.assertEqual(expected_output, serialized_v)
 
-    def test_DumpJsonToString(self) -> None:
+    def test_DumpJson(self) -> None:
         """Since opencascade 7x, some objects can be serialized to json"""
         # create a sphere with a radius of 10.
         sph = BRepPrimAPI_MakeSphere(10.0).Shape()
@@ -761,7 +765,7 @@ class TestWrapperFeatures(unittest.TestCase):
             [-10.0, -10.0, -10.0],
         )
         # check dump json export is working
-        json_string = bnd_box.DumpJsonToString()
+        json_string = bnd_box.DumpJson()
         # try to  the output string
         json_imported_dict = json.loads(json_string)
         self.assertEqual(json_imported_dict["CornerMin"], [-10, -10, -10])
@@ -772,7 +776,7 @@ class TestWrapperFeatures(unittest.TestCase):
         # create a sphere with a radius of 10.
         p1 = gp_Pnt(1.0, 3.14, -5)
         p2 = gp_Pnt()
-        p2.InitFromJsonString(p1.DumpJsonToString())
+        p2.InitFromJson(p1.DumpJson())
         self.assertEqual(p2.X(), 1.0)
         self.assertEqual(p2.Y(), 3.14)
         self.assertEqual(p2.Z(), -5)
@@ -1003,6 +1007,26 @@ class TestWrapperFeatures(unittest.TestCase):
         with open("compound_with_unicode_label.step", "r", encoding="utf8") as f:
             step_file_content = f.read()
             self.assertTrue(a_unicode_string in step_file_content)
+
+    def test_ReadStream(self):
+        """read a step file from a string"""
+        with open(
+            os.path.join(".", "test_io", "io1-ug-214.stp"), "r", encoding="utf8"
+        ) as step_file:
+            step_file_content = step_file.read()
+        step_reader = STEPControl_Reader()
+        result = step_reader.ReadStream("stream_name", step_file_content)
+        self.assertEqual(result, IFSelect_RetDone)
+        step_reader.TransferRoots()
+
+    def test_WriteStream(self):
+        """write a step file to a string"""
+        the_shape = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+        step_writer = STEPControl_Writer()
+        step_writer.Transfer(the_shape, STEPControl_AsIs)
+        result, step_str = step_writer.WriteStream()
+        self.assertEqual(result, IFSelect_RetDone)
+        self.assertEqual(len(step_str), 15416)  # 15416 characters in the step string
 
 
 def suite() -> unittest.TestSuite:

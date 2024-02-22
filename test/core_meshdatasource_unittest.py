@@ -126,10 +126,10 @@ class TestMeshDataSource(unittest.TestCase):
         # get all nodes
         all_nodes = a_data_source.GetAllNodes()
         self.assertEqual(all_nodes.NbBuckets(), 101)
-        all_nodes.StatisticsToString()
+        all_nodes.Statistics()
         # get all GetAllElements
         all_elements = a_data_source.GetAllElements()
-        all_elements.StatisticsToString()
+        all_elements.Statistics()
         self.assertEqual(all_elements.NbBuckets(), 101)
 
     def test_create_mesh_datasource_from_numpy_ndarray(self):
