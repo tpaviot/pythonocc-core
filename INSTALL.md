@@ -34,7 +34,7 @@ Build OpenCascade
 Download/extract version 7.7.2 https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=cec1ecd0c9f3b3d2572c47035d11949e8dfa85e2;sf=tgz
 
 ```bash
-wget -o occt-7.7.2.tgz https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=cec1ecd0c9f3b3d2572c47035d11949e8dfa85e2;sf=tgz
+wget -O occt-7.7.2.tgz https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=cec1ecd0c9f3b3d2572c47035d11949e8dfa85e2;sf=tgz
 tar -zxvf occt-7.7.2.tgz
 ```
 
