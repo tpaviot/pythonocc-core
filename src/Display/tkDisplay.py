@@ -56,9 +56,9 @@ class tkViewer3d(tk.Frame):
 
     def Zoom(self, event):
         # Linux
-        if event.num == 4:  # zoom in
+        if event.num == 4 or event.delta > 0:  # zoom in
             zoom_factor = 2.0
-        elif event.num == 5:  # zoom out
+        elif event.num == 5 or event.delta < 0:  # zoom out
             zoom_factor = 0.5
         # Windows
         if event.delta < 0:  # zoom out
