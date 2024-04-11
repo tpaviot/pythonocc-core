@@ -21,6 +21,7 @@ import os
 import socket
 import webbrowser
 import errno
+import random
 
 
 def get_available_port(port):
@@ -51,20 +52,20 @@ def get_available_port(port):
     return port
 
 
-def get_interface_ip(family: socket.AddressFamily) -> str:
+def get_interface_ipv4() -> str:
     """Get the IP address of an external interface. Used when binding to
     0.0.0.0 or ::1 to show a more useful URL. Inspire of `werkzeug`.
 
     :meta private:
     """
     # arbitrary private address
-    host = "2001:db8::1" if family == socket.AF_INET6 else "192.0.2.1"
+    host = ".".join(map(str, (random.randint(128, 255) for _ in range(4))))
 
-    with socket.socket(family, socket.SOCK_DGRAM) as s:
+    with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
         try:
             s.connect((host, 58162))
         except OSError:
-            return "::1" if family == socket.AF_INET6 else "127.0.0.1"
+            return "127.0.0.1"
 
         return s.getsockname()[0]  # type: ignore
 
@@ -94,7 +95,7 @@ def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=Fals
         print(f"\n## Serving {x3d_path} using SimpleHTTPServer")
         display_hostname = "localhost"
         if addr == "0.0.0.0":  # Did not consider ipv6 `::` because httpd does not support it
-            display_hostname = get_interface_ip(socket.AF_INET)
+            display_hostname = get_interface_ipv4()
             print(f"## Running on all addresses ({addr})")
         print("## Open your webbrowser at the URL: http://%s:%i" % (display_hostname, port))
         # open webbrowser
