@@ -58,7 +58,7 @@ def get_interface_ip(family: socket.AddressFamily) -> str:
     :meta private:
     """
     # arbitrary private address
-    host = "fd31:f903:5ab5:1::1" if family == socket.AF_INET6 else "10.253.155.219"
+    host = "2001:db8::1" if family == socket.AF_INET6 else "192.0.2.1"
 
     with socket.socket(family, socket.SOCK_DGRAM) as s:
         try:
