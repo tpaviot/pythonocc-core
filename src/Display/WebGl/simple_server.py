@@ -51,6 +51,24 @@ def get_available_port(port):
     return port
 
 
+def get_interface_ip(family: socket.AddressFamily) -> str:
+    """Get the IP address of an external interface. Used when binding to
+    0.0.0.0 or ::1 to show a more useful URL. Inspire of `werkzeug`.
+
+    :meta private:
+    """
+    # arbitrary private address
+    host = "2001:db8::1" if family == socket.AF_INET6 else "192.0.2.1"
+
+    with socket.socket(family, socket.SOCK_DGRAM) as s:
+        try:
+            s.connect((host, 58162))
+        except OSError:
+            return "::1" if family == socket.AF_INET6 else "127.0.0.1"
+
+        return s.getsockname()[0]  # type: ignore
+
+
 def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=False):
     """starts the server if the PYTHONOCC_SHUNT_WEB_SERVER
     env var is not set
@@ -74,10 +92,14 @@ def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=Fals
         port = get_available_port(port)
         httpd = HTTPServer((addr, port), SimpleHTTPRequestHandler)
         print(f"\n## Serving {x3d_path} using SimpleHTTPServer")
-        print("## Open your webbrowser at the URL: http://localhost:%i" % port)
+        display_hostname = "localhost"
+        if addr == "0.0.0.0":  # Did not consider ipv6 `::` because httpd does not support it
+            display_hostname = get_interface_ip(socket.AF_INET)
+            print(f"## Running on all addresses ({addr})")
+        print("## Open your webbrowser at the URL: http://%s:%i" % (display_hostname, port))
         # open webbrowser
         if open_webbrowser:
-            webbrowser.open("http://localhost:%i" % port, new=2)
+            webbrowser.open("http://%s:%i" % (display_hostname, port), new=2)
         # starts the web_server
         httpd.serve_forever()
     else:  # use flask
@@ -103,4 +125,4 @@ def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=Fals
 if __name__ == "__main__":
     get_available_port(port=8080)
     get_available_port(port=5022)
-    start_server(port=8080)
+    start_server(addr="0.0.0.0", port=8080)
