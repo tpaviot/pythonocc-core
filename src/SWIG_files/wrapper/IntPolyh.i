@@ -194,30 +194,6 @@ Returns the first index.
 ") FirstValue;
 		Standard_Integer FirstValue();
 
-		/****************** HashCode ******************/
-		/**** md5 signature: 72f7d6afdc2f4b2c860a8e39d683afaf ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for this couple, in the range [1, theupperbound] @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		Standard_Integer HashCode(const Standard_Integer theUpperBound);
-
-        %extend {
-            Standard_Integer __hash__() {
-            return $self->HashCode(2147483647);
-            }
-        };
-
 		/****************** IsAnalyzed ******************/
 		/**** md5 signature: d6b39f513274b640bd7a5567aecc3da1 ****/
 		%feature("compactdefaultargs") IsAnalyzed;
@@ -317,62 +293,24 @@ Sets the triangles.
 ") SetCoupleValue;
 		void SetCoupleValue(const Standard_Integer theInd1, const Standard_Integer theInd2);
 
+
+%extend{
+    bool __eq_wrapper__(const IntPolyh_Couple other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
 %extend IntPolyh_Couple {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*********************************
-* class IntPolyh_CoupleMapHasher *
-*********************************/
-class IntPolyh_CoupleMapHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 00744901424dd820a90397dcc6763723 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theCouple: IntPolyh_Couple
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given couple, in the range [1, theupperbound] @param thecouple the couple which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const IntPolyh_Couple & theCouple, const Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 554f371024af7c975216fab50c200abe ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-theCouple1: IntPolyh_Couple
-theCouple2: IntPolyh_Couple
-
-Return
--------
-bool
-
-Description
------------
-No available documentation.
-") IsEqual;
-		static Standard_Boolean IsEqual(const IntPolyh_Couple & theCouple1, const IntPolyh_Couple & theCouple2);
-
-};
-
-
-%extend IntPolyh_CoupleMapHasher {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1392,6 +1330,24 @@ Description
 No available documentation.
 ") IntPolyh_SectionLine;
 		 IntPolyh_SectionLine(const Standard_Integer nn);
+
+		/****************** IntPolyh_SectionLine ******************/
+		/**** md5 signature: e7391118f138d629612227fec24a238d ****/
+		%feature("compactdefaultargs") IntPolyh_SectionLine;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: IntPolyh_SectionLine
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") IntPolyh_SectionLine;
+		 IntPolyh_SectionLine(const IntPolyh_SectionLine & theOther);
 
 		/****************** ChangeValue ******************/
 		/**** md5 signature: 7107f0e7ad6356869980a743b544f7da ****/
@@ -2799,6 +2755,9 @@ Returns the third point.
 	}
 };
 
+/******************************
+* class hash<IntPolyh_Couple> *
+******************************/
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
@@ -2819,14 +2778,6 @@ class IntPolyh_MaillageAffinage:
 }
 /* deprecated methods */
 %pythoncode {
-@deprecated
-def IntPolyh_CoupleMapHasher_HashCode(*args):
-	return IntPolyh_CoupleMapHasher.HashCode(*args)
-
-@deprecated
-def IntPolyh_CoupleMapHasher_IsEqual(*args):
-	return IntPolyh_CoupleMapHasher.IsEqual(*args)
-
 @deprecated
 def IntPolyh_Tools_ComputeDeflection(*args):
 	return IntPolyh_Tools.ComputeDeflection(*args)

@@ -27,10 +27,6 @@ MeshVS_MapOfTwoNodes = NewType("MeshVS_MapOfTwoNodes", Any)
 MeshVS_MeshPtr = NewType("MeshVS_MeshPtr", MeshVS_Mesh)
 # the following typedef cannot be wrapped as is
 MeshVS_NodePair = NewType("MeshVS_NodePair", Any)
-# the following typedef cannot be wrapped as is
-MeshVS_TwoColorsHasher = NewType("MeshVS_TwoColorsHasher", Any)
-# the following typedef cannot be wrapped as is
-MeshVS_TwoNodesHasher = NewType("MeshVS_TwoNodesHasher", Any)
 
 class MeshVS_Array1OfSequenceOfInteger:
     @overload
@@ -410,10 +406,7 @@ class MeshVS_SensitiveSegment(Select3D_SensitiveSegment):
     def __init__(self, theOwner: SelectMgr_EntityOwner, theFirstPnt: gp_Pnt, theLastPnt: gp_Pnt) -> None: ...
 
 class MeshVS_SymmetricPairHasher:
-    @staticmethod
-    def HashCode(theNodePair: MeshVS_NodePair, theUpperBound: int) -> int: ...
-    @staticmethod
-    def IsEqual(thePair1: MeshVS_NodePair, thePair2: MeshVS_NodePair) -> bool: ...
+    pass
 
 class MeshVS_Tool:
     @overload

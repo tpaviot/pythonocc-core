@@ -45,7 +45,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TNaming_Name.hxx>
 #include<TNaming_NameType.hxx>
 #include<TNaming_NamedShape.hxx>
-#include<TNaming_NamedShapeHasher.hxx>
 #include<TNaming_Naming.hxx>
 #include<TNaming_NamingTool.hxx>
 #include<TNaming_NewShapeIterator.hxx>

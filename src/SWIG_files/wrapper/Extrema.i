@@ -243,10 +243,10 @@ Extrema_ExtFlag_MINMAX = Extrema_ExtFlag.Extrema_ExtFlag_MINMAX
     __next__ = next
     }
 };
-%template(Extrema_Array2OfPOnCurv) NCollection_Array2<Extrema_POnCurv>;
-%template(Extrema_Array2OfPOnCurv2d) NCollection_Array2<Extrema_POnCurv2d>;
-%template(Extrema_Array2OfPOnSurf) NCollection_Array2<Extrema_POnSurf>;
-%template(Extrema_Array2OfPOnSurfParams) NCollection_Array2<Extrema_POnSurfParams>;
+//%template(Extrema_Array2OfPOnCurv) NCollection_Array2<Extrema_POnCurv>;
+//%template(Extrema_Array2OfPOnCurv2d) NCollection_Array2<Extrema_POnCurv2d>;
+//%template(Extrema_Array2OfPOnSurf) NCollection_Array2<Extrema_POnSurf>;
+//%template(Extrema_Array2OfPOnSurfParams) NCollection_Array2<Extrema_POnSurfParams>;
 %template(Extrema_SequenceOfPOnCurv) NCollection_Sequence<Extrema_POnCurv>;
 
 %extend NCollection_Sequence<Extrema_POnCurv> {
@@ -8701,25 +8701,7 @@ Constructor.
 ") Extrema_FuncPSDist;
 		 Extrema_FuncPSDist(const Adaptor3d_Surface & theS, const gp_Pnt & theP);
 
-		/****************** Gradient ******************/
-		/**** md5 signature: 3c2c6e3dc1adb80c90a5b990a7bd765e ****/
-		%feature("compactdefaultargs") Gradient;
-		%feature("autodoc", "
-Parameters
-----------
-X: math_Vector
-G: math_Vector
-
-Return
--------
-bool
-
-Description
------------
-Gradient.
-") Gradient;
-		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
-
+		
 		/****************** NbVariables ******************/
 		/**** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ****/
 		%feature("compactdefaultargs") NbVariables;
@@ -8732,44 +8714,6 @@ Description
 Number of variables.
 ") NbVariables;
 		Standard_Integer NbVariables();
-
-		/****************** Value ******************/
-		/**** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ****/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-X: math_Vector
-
-Return
--------
-F: float
-
-Description
------------
-Value.
-") Value;
-		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
-
-		/****************** Values ******************/
-		/**** md5 signature: f0f16d7b5e9269bb29d01310f0af0e74 ****/
-		%feature("compactdefaultargs") Values;
-		%feature("autodoc", "
-Parameters
-----------
-X: math_Vector
-G: math_Vector
-
-Return
--------
-F: float
-
-Description
------------
-Value and gradient.
-") Values;
-		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
-
 };
 
 

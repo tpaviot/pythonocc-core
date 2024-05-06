@@ -21,12 +21,14 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<StepData.hxx>
 #include<StepData_Array1OfField.hxx>
+#include<StepData_ConfParameters.hxx>
 #include<StepData_DefaultGeneral.hxx>
 #include<StepData_Described.hxx>
 #include<StepData_ECDescr.hxx>
 #include<StepData_EDescr.hxx>
 #include<StepData_ESDescr.hxx>
 #include<StepData_EnumTool.hxx>
+#include<StepData_Factors.hxx>
 #include<StepData_Field.hxx>
 #include<StepData_FieldList.hxx>
 #include<StepData_FieldList1.hxx>
@@ -36,7 +38,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepData_FileRecognizer.hxx>
 #include<StepData_FreeFormEntity.hxx>
 #include<StepData_GeneralModule.hxx>
-#include<StepData_GlobalFactors.hxx>
 #include<StepData_GlobalNodeOfWriterLib.hxx>
 #include<StepData_HArray1OfField.hxx>
 #include<StepData_Logical.hxx>

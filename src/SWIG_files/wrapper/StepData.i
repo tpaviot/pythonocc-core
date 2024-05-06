@@ -43,8 +43,8 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepdata.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<Interface_module.hxx>
 #include<TCollection_module.hxx>
+#include<Interface_module.hxx>
 #include<TColStd_module.hxx>
 #include<Resource_module.hxx>
 #include<MoniTool_module.hxx>
@@ -57,8 +57,8 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepdata.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import Interface.i
 %import TCollection.i
+%import Interface.i
 %import TColStd.i
 %import Resource.i
 
@@ -224,6 +224,335 @@ Returns a protocol from stepdata (avoids to create it).
 
 
 %extend StepData {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/********************************
+* class StepData_ConfParameters *
+********************************/
+class StepData_ConfParameters {
+	public:
+/* public enums */
+enum AngleUnitMode {
+	AngleUnitMode_File = 0,
+	AngleUnitMode_Rad = 1,
+	AngleUnitMode_Deg = 2,
+};
+
+enum RWMode_Tessellated {
+	RWMode_Tessellated_Off = 0,
+	RWMode_Tessellated_On = 1,
+	RWMode_Tessellated_OnNoBRep = 2,
+};
+
+enum ReadMode_AssemblyLevel {
+	ReadMode_AssemblyLevel_All = 1,
+	ReadMode_AssemblyLevel_Assembly = 2,
+	ReadMode_AssemblyLevel_Structure = 3,
+	ReadMode_AssemblyLevel_Shape = 4,
+};
+
+enum ReadMode_BSplineContinuity {
+	ReadMode_BSplineContinuity_C0 = 0,
+	ReadMode_BSplineContinuity_C1 = 1,
+	ReadMode_BSplineContinuity_C2 = 2,
+};
+
+enum ReadMode_MaxPrecision {
+	ReadMode_MaxPrecision_Preferred = 0,
+	ReadMode_MaxPrecision_Forced = 1,
+};
+
+enum ReadMode_Precision {
+	ReadMode_Precision_File = 0,
+	ReadMode_Precision_User = 1,
+};
+
+enum ReadMode_ProductContext {
+	ReadMode_ProductContext_All = 1,
+	ReadMode_ProductContext_Design = 2,
+	ReadMode_ProductContext_Analysis = 3,
+};
+
+enum ReadMode_ShapeRepr {
+	ReadMode_ShapeRepr_All = 1,
+	ReadMode_ShapeRepr_ABSR = 2,
+	ReadMode_ShapeRepr_MSSR = 3,
+	ReadMode_ShapeRepr_GBSSR = 4,
+	ReadMode_ShapeRepr_FBSR = 5,
+	ReadMode_ShapeRepr_EBWSR = 6,
+	ReadMode_ShapeRepr_GBWSR = 7,
+};
+
+enum ReadMode_SurfaceCurve {
+	ReadMode_SurfaceCurve_Default = 0,
+	ReadMode_SurfaceCurve_2DUse_Preferred = 2,
+	ReadMode_SurfaceCurve_2DUse_Forced = - 2,
+	ReadMode_SurfaceCurve_3DUse_Preferred = 3,
+	ReadMode_SurfaceCurve_3DUse_Forced = - 3,
+};
+
+enum WriteMode_Assembly {
+	WriteMode_Assembly_Off = 0,
+	WriteMode_Assembly_On = 1,
+	WriteMode_Assembly_Auto = 2,
+};
+
+enum WriteMode_PrecisionMode {
+	WriteMode_PrecisionMode_Least = - 1,
+	WriteMode_PrecisionMode_Average = 0,
+	WriteMode_PrecisionMode_Greatest = 1,
+	WriteMode_PrecisionMode_Session = 2,
+};
+
+enum WriteMode_StepSchema {
+	WriteMode_StepSchema_AP214CD = 1,
+	WriteMode_StepSchema_AP214DIS = 2,
+	WriteMode_StepSchema_AP203 = 3,
+	WriteMode_StepSchema_AP214IS = 4,
+	WriteMode_StepSchema_AP242DIS = 5,
+};
+
+enum WriteMode_VertexMode {
+	WriteMode_VertexMode_OneCompound = 0,
+	WriteMode_VertexMode_SingleVertex = 1,
+};
+
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+
+class AngleUnitMode(IntEnum):
+	AngleUnitMode_File = 0
+	AngleUnitMode_Rad = 1
+	AngleUnitMode_Deg = 2
+AngleUnitMode_File = AngleUnitMode.AngleUnitMode_File
+AngleUnitMode_Rad = AngleUnitMode.AngleUnitMode_Rad
+AngleUnitMode_Deg = AngleUnitMode.AngleUnitMode_Deg
+
+class RWMode_Tessellated(IntEnum):
+	RWMode_Tessellated_Off = 0
+	RWMode_Tessellated_On = 1
+	RWMode_Tessellated_OnNoBRep = 2
+RWMode_Tessellated_Off = RWMode_Tessellated.RWMode_Tessellated_Off
+RWMode_Tessellated_On = RWMode_Tessellated.RWMode_Tessellated_On
+RWMode_Tessellated_OnNoBRep = RWMode_Tessellated.RWMode_Tessellated_OnNoBRep
+
+class ReadMode_AssemblyLevel(IntEnum):
+	ReadMode_AssemblyLevel_All = 1
+	ReadMode_AssemblyLevel_Assembly = 2
+	ReadMode_AssemblyLevel_Structure = 3
+	ReadMode_AssemblyLevel_Shape = 4
+ReadMode_AssemblyLevel_All = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_All
+ReadMode_AssemblyLevel_Assembly = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Assembly
+ReadMode_AssemblyLevel_Structure = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Structure
+ReadMode_AssemblyLevel_Shape = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Shape
+
+class ReadMode_BSplineContinuity(IntEnum):
+	ReadMode_BSplineContinuity_C0 = 0
+	ReadMode_BSplineContinuity_C1 = 1
+	ReadMode_BSplineContinuity_C2 = 2
+ReadMode_BSplineContinuity_C0 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C0
+ReadMode_BSplineContinuity_C1 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C1
+ReadMode_BSplineContinuity_C2 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C2
+
+class ReadMode_MaxPrecision(IntEnum):
+	ReadMode_MaxPrecision_Preferred = 0
+	ReadMode_MaxPrecision_Forced = 1
+ReadMode_MaxPrecision_Preferred = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Preferred
+ReadMode_MaxPrecision_Forced = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Forced
+
+class ReadMode_Precision(IntEnum):
+	ReadMode_Precision_File = 0
+	ReadMode_Precision_User = 1
+ReadMode_Precision_File = ReadMode_Precision.ReadMode_Precision_File
+ReadMode_Precision_User = ReadMode_Precision.ReadMode_Precision_User
+
+class ReadMode_ProductContext(IntEnum):
+	ReadMode_ProductContext_All = 1
+	ReadMode_ProductContext_Design = 2
+	ReadMode_ProductContext_Analysis = 3
+ReadMode_ProductContext_All = ReadMode_ProductContext.ReadMode_ProductContext_All
+ReadMode_ProductContext_Design = ReadMode_ProductContext.ReadMode_ProductContext_Design
+ReadMode_ProductContext_Analysis = ReadMode_ProductContext.ReadMode_ProductContext_Analysis
+
+class ReadMode_ShapeRepr(IntEnum):
+	ReadMode_ShapeRepr_All = 1
+	ReadMode_ShapeRepr_ABSR = 2
+	ReadMode_ShapeRepr_MSSR = 3
+	ReadMode_ShapeRepr_GBSSR = 4
+	ReadMode_ShapeRepr_FBSR = 5
+	ReadMode_ShapeRepr_EBWSR = 6
+	ReadMode_ShapeRepr_GBWSR = 7
+ReadMode_ShapeRepr_All = ReadMode_ShapeRepr.ReadMode_ShapeRepr_All
+ReadMode_ShapeRepr_ABSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_ABSR
+ReadMode_ShapeRepr_MSSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_MSSR
+ReadMode_ShapeRepr_GBSSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_GBSSR
+ReadMode_ShapeRepr_FBSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_FBSR
+ReadMode_ShapeRepr_EBWSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_EBWSR
+ReadMode_ShapeRepr_GBWSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_GBWSR
+
+class ReadMode_SurfaceCurve(IntEnum):
+	ReadMode_SurfaceCurve_Default = 0
+	ReadMode_SurfaceCurve_2DUse_Preferred = 2
+	ReadMode_SurfaceCurve_2DUse_Forced = - 2
+	ReadMode_SurfaceCurve_3DUse_Preferred = 3
+	ReadMode_SurfaceCurve_3DUse_Forced = - 3
+ReadMode_SurfaceCurve_Default = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_Default
+ReadMode_SurfaceCurve_2DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Preferred
+ReadMode_SurfaceCurve_2DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Forced
+ReadMode_SurfaceCurve_3DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Preferred
+ReadMode_SurfaceCurve_3DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Forced
+
+class WriteMode_Assembly(IntEnum):
+	WriteMode_Assembly_Off = 0
+	WriteMode_Assembly_On = 1
+	WriteMode_Assembly_Auto = 2
+WriteMode_Assembly_Off = WriteMode_Assembly.WriteMode_Assembly_Off
+WriteMode_Assembly_On = WriteMode_Assembly.WriteMode_Assembly_On
+WriteMode_Assembly_Auto = WriteMode_Assembly.WriteMode_Assembly_Auto
+
+class WriteMode_PrecisionMode(IntEnum):
+	WriteMode_PrecisionMode_Least = - 1
+	WriteMode_PrecisionMode_Average = 0
+	WriteMode_PrecisionMode_Greatest = 1
+	WriteMode_PrecisionMode_Session = 2
+WriteMode_PrecisionMode_Least = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Least
+WriteMode_PrecisionMode_Average = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Average
+WriteMode_PrecisionMode_Greatest = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Greatest
+WriteMode_PrecisionMode_Session = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Session
+
+class WriteMode_StepSchema(IntEnum):
+	WriteMode_StepSchema_AP214CD = 1
+	WriteMode_StepSchema_AP214DIS = 2
+	WriteMode_StepSchema_AP203 = 3
+	WriteMode_StepSchema_AP214IS = 4
+	WriteMode_StepSchema_AP242DIS = 5
+WriteMode_StepSchema_AP214CD = WriteMode_StepSchema.WriteMode_StepSchema_AP214CD
+WriteMode_StepSchema_AP214DIS = WriteMode_StepSchema.WriteMode_StepSchema_AP214DIS
+WriteMode_StepSchema_AP203 = WriteMode_StepSchema.WriteMode_StepSchema_AP203
+WriteMode_StepSchema_AP214IS = WriteMode_StepSchema.WriteMode_StepSchema_AP214IS
+WriteMode_StepSchema_AP242DIS = WriteMode_StepSchema.WriteMode_StepSchema_AP242DIS
+
+class WriteMode_VertexMode(IntEnum):
+	WriteMode_VertexMode_OneCompound = 0
+	WriteMode_VertexMode_SingleVertex = 1
+WriteMode_VertexMode_OneCompound = WriteMode_VertexMode.WriteMode_VertexMode_OneCompound
+WriteMode_VertexMode_SingleVertex = WriteMode_VertexMode.WriteMode_VertexMode_SingleVertex
+};
+/* end python proxy for enums */
+
+		ReadMode_BSplineContinuity ReadBSplineContinuity;
+		ReadMode_Precision ReadPrecisionMode;
+		double ReadPrecisionVal;
+		ReadMode_MaxPrecision ReadMaxPrecisionMode;
+		double ReadMaxPrecisionVal;
+		bool ReadSameParamMode;
+		ReadMode_SurfaceCurve ReadSurfaceCurveMode;
+		double EncodeRegAngle;
+		AngleUnitMode AngleUnit;
+		TCollection_AsciiString ReadResourceName;
+		TCollection_AsciiString ReadSequence;
+		bool ReadProductMode;
+		ReadMode_ProductContext ReadProductContext;
+		ReadMode_ShapeRepr ReadShapeRepr;
+		RWMode_Tessellated ReadTessellated;
+		ReadMode_AssemblyLevel ReadAssemblyLevel;
+		bool ReadRelationship;
+		bool ReadShapeAspect;
+		bool ReadConstrRelation;
+		bool ReadSubshapeNames;
+		Resource_FormatType ReadCodePage;
+		bool ReadNonmanifold;
+		bool ReadIdeas;
+		bool ReadAllShapes;
+		bool ReadRootTransformation;
+		bool ReadColor;
+		bool ReadName;
+		bool ReadLayer;
+		bool ReadProps;
+		WriteMode_PrecisionMode WritePrecisionMode;
+		double WritePrecisionVal;
+		WriteMode_Assembly WriteAssembly;
+		WriteMode_StepSchema WriteSchema;
+		RWMode_Tessellated WriteTessellated;
+		TCollection_AsciiString WriteProductName;
+		bool WriteSurfaceCurMode;
+		UnitsMethods_LengthUnit WriteUnit;
+		TCollection_AsciiString WriteResourceName;
+		TCollection_AsciiString WriteSequence;
+		WriteMode_VertexMode WriteVertexMode;
+		bool WriteSubshapeNames;
+		bool WriteColor;
+		bool WriteNonmanifold;
+		bool WriteName;
+		bool WriteLayer;
+		bool WriteProps;
+		STEPControl_StepModelType WriteModelType;
+		/****************** StepData_ConfParameters ******************/
+		/**** md5 signature: 6cd16b53e26cd95b2cccf6e0b916f490 ****/
+		%feature("compactdefaultargs") StepData_ConfParameters;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") StepData_ConfParameters;
+		 StepData_ConfParameters();
+
+		/****************** GetString ******************/
+		/**** md5 signature: 0b97a9f1604c7e3c66fd073f257dbba1 ****/
+		%feature("compactdefaultargs") GetString;
+		%feature("autodoc", "
+Parameters
+----------
+theMode: ReadMode_ProductContext
+
+Return
+-------
+TCollection_AsciiString
+
+Description
+-----------
+No available documentation.
+") GetString;
+		TCollection_AsciiString GetString(ReadMode_ProductContext theMode);
+
+		/****************** InitFromStatic ******************/
+		/**** md5 signature: de21b82628fd5143cf3f7d14ba546a72 ****/
+		%feature("compactdefaultargs") InitFromStatic;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Initialize parameters.
+") InitFromStatic;
+		void InitFromStatic();
+
+		/****************** Reset ******************/
+		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
+		%feature("compactdefaultargs") Reset;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Reset used parameters.
+") Reset;
+		void Reset();
+
+};
+
+
+%extend StepData_ConfParameters {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -654,6 +983,149 @@ Same as above but works on an asciistring.
 
 
 %extend StepData_EnumTool {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*************************
+* class StepData_Factors *
+*************************/
+class StepData_Factors {
+	public:
+		/****************** StepData_Factors ******************/
+		/**** md5 signature: 6dd57ab5fc7f0b37f726172c0e5475a8 ****/
+		%feature("compactdefaultargs") StepData_Factors;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Constructor.
+") StepData_Factors;
+		 StepData_Factors();
+
+		/****************** CascadeUnit ******************/
+		/**** md5 signature: 0a04d480977f0e8fef0df000d9bf1748 ****/
+		%feature("compactdefaultargs") CascadeUnit;
+		%feature("autodoc", "Return
+-------
+float
+
+Description
+-----------
+Returns length unit for current transfer process (mm by default).
+") CascadeUnit;
+		Standard_Real CascadeUnit();
+
+		/****************** FactorDegreeRadian ******************/
+		/**** md5 signature: c42d3d03e3dd317c6901b788646067a0 ****/
+		%feature("compactdefaultargs") FactorDegreeRadian;
+		%feature("autodoc", "Return
+-------
+float
+
+Description
+-----------
+Returns transient factor degree radian for conversion of angles at one stage of transfer process.
+") FactorDegreeRadian;
+		Standard_Real FactorDegreeRadian();
+
+		/****************** FactorRadianDegree ******************/
+		/**** md5 signature: 3fe70ab620009bf6d8e5fdd4492c13fe ****/
+		%feature("compactdefaultargs") FactorRadianDegree;
+		%feature("autodoc", "Return
+-------
+float
+
+Description
+-----------
+Returns transient factor radian degree for conversion of angles at one stage of transfer process.
+") FactorRadianDegree;
+		Standard_Real FactorRadianDegree();
+
+		/****************** InitializeFactors ******************/
+		/**** md5 signature: cd04360a2d1cbd674218ed3c1e732874 ****/
+		%feature("compactdefaultargs") InitializeFactors;
+		%feature("autodoc", "
+Parameters
+----------
+theLengthFactor: float
+thePlaneAngleFactor: float
+theSolidAngleFactor: float
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes the 3 factors for the conversion of units.
+") InitializeFactors;
+		void InitializeFactors(const Standard_Real theLengthFactor, const Standard_Real thePlaneAngleFactor, const Standard_Real theSolidAngleFactor);
+
+		/****************** LengthFactor ******************/
+		/**** md5 signature: 15771254030d5d42fe1035afb35f49f8 ****/
+		%feature("compactdefaultargs") LengthFactor;
+		%feature("autodoc", "Return
+-------
+float
+
+Description
+-----------
+Returns transient length factor for scaling of shapes at one stage of transfer process.
+") LengthFactor;
+		Standard_Real LengthFactor();
+
+		/****************** PlaneAngleFactor ******************/
+		/**** md5 signature: 24a746fdf36cb34234bfa6984c9c2721 ****/
+		%feature("compactdefaultargs") PlaneAngleFactor;
+		%feature("autodoc", "Return
+-------
+float
+
+Description
+-----------
+Returns transient plane angle factor for conversion of angles at one stage of transfer process.
+") PlaneAngleFactor;
+		Standard_Real PlaneAngleFactor();
+
+		/****************** SetCascadeUnit ******************/
+		/**** md5 signature: 9681d8ff7bf315f004a2dba0dc32aacc ****/
+		%feature("compactdefaultargs") SetCascadeUnit;
+		%feature("autodoc", "
+Parameters
+----------
+theUnit: float
+
+Return
+-------
+None
+
+Description
+-----------
+Sets length unit for current transfer process.
+") SetCascadeUnit;
+		void SetCascadeUnit(const Standard_Real theUnit);
+
+		/****************** SolidAngleFactor ******************/
+		/**** md5 signature: 5c610c278e1133bf63025e97445bcd03 ****/
+		%feature("compactdefaultargs") SolidAngleFactor;
+		%feature("autodoc", "Return
+-------
+float
+
+Description
+-----------
+Returns transient solid angle factor for conversion of angles at one stage of transfer process.
+") SolidAngleFactor;
+		Standard_Real SolidAngleFactor();
+
+};
+
+
+%extend StepData_Factors {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -1681,150 +2153,6 @@ Specific filling of the list of entities shared by an entity <ent>. can use the 
 %make_alias(StepData_GeneralModule)
 
 %extend StepData_GeneralModule {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*******************************
-* class StepData_GlobalFactors *
-*******************************/
-%nodefaultctor StepData_GlobalFactors;
-class StepData_GlobalFactors {
-	public:
-		/****************** CascadeUnit ******************/
-		/**** md5 signature: 1d922b1909929662e8a86e6a23ede302 ****/
-		%feature("compactdefaultargs") CascadeUnit;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns length unit for current transfer process (mm by default).
-") CascadeUnit;
-		Standard_Real CascadeUnit();
-
-		/****************** FactorDegreeRadian ******************/
-		/**** md5 signature: fedc74b704a2e72463aac2b15d888fed ****/
-		%feature("compactdefaultargs") FactorDegreeRadian;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns transient factor degree radian for conversion of angles at one stage of transfer process.
-") FactorDegreeRadian;
-		Standard_Real FactorDegreeRadian();
-
-		/****************** FactorRadianDegree ******************/
-		/**** md5 signature: 5bd933935fec8d7cc09bfb26a323362d ****/
-		%feature("compactdefaultargs") FactorRadianDegree;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns transient factor radian degree for conversion of angles at one stage of transfer process.
-") FactorRadianDegree;
-		Standard_Real FactorRadianDegree();
-
-		/****************** InitializeFactors ******************/
-		/**** md5 signature: cd04360a2d1cbd674218ed3c1e732874 ****/
-		%feature("compactdefaultargs") InitializeFactors;
-		%feature("autodoc", "
-Parameters
-----------
-theLengthFactor: float
-thePlaneAngleFactor: float
-theSolidAngleFactor: float
-
-Return
--------
-None
-
-Description
------------
-Initializes the 3 factors for the conversion of units.
-") InitializeFactors;
-		void InitializeFactors(const Standard_Real theLengthFactor, const Standard_Real thePlaneAngleFactor, const Standard_Real theSolidAngleFactor);
-
-		/****************** Intance ******************/
-		/**** md5 signature: 7f5502a01c51de8576abf266a805c432 ****/
-		%feature("compactdefaultargs") Intance;
-		%feature("autodoc", "Return
--------
-StepData_GlobalFactors
-
-Description
------------
-Returns a global static object.
-") Intance;
-		static StepData_GlobalFactors & Intance();
-
-		/****************** LengthFactor ******************/
-		/**** md5 signature: 8ecee2a738cfd3d25ea62faec23cb9f3 ****/
-		%feature("compactdefaultargs") LengthFactor;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns transient length factor for scaling of shapes at one stage of transfer process.
-") LengthFactor;
-		Standard_Real LengthFactor();
-
-		/****************** PlaneAngleFactor ******************/
-		/**** md5 signature: 5ab6ca47a256360934b00071841825fc ****/
-		%feature("compactdefaultargs") PlaneAngleFactor;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns transient plane angle factor for conversion of angles at one stage of transfer process.
-") PlaneAngleFactor;
-		Standard_Real PlaneAngleFactor();
-
-		/****************** SetCascadeUnit ******************/
-		/**** md5 signature: 9681d8ff7bf315f004a2dba0dc32aacc ****/
-		%feature("compactdefaultargs") SetCascadeUnit;
-		%feature("autodoc", "
-Parameters
-----------
-theUnit: float
-
-Return
--------
-None
-
-Description
------------
-Sets length unit for current transfer process.
-") SetCascadeUnit;
-		void SetCascadeUnit(const Standard_Real theUnit);
-
-		/****************** SolidAngleFactor ******************/
-		/**** md5 signature: 191f77f63c19e48f9e70e03bdbc69a21 ****/
-		%feature("compactdefaultargs") SolidAngleFactor;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns transient solid angle factor for conversion of angles at one stage of transfer process.
-") SolidAngleFactor;
-		Standard_Real SolidAngleFactor();
-
-};
-
-
-%extend StepData_GlobalFactors {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4126,6 +4454,7 @@ Gives an access to the tool which is used to work: this allow to acts on some pa
 ***************************/
 class StepData_StepModel : public Interface_InterfaceModel {
 	public:
+		StepData_ConfParameters InternalParameters;
 		/****************** StepData_StepModel ******************/
 		/**** md5 signature: c99203119f72afa543e25ef26579062e ****/
 		%feature("compactdefaultargs") StepData_StepModel;
@@ -8381,10 +8710,6 @@ def stepdata_Init(*args):
 @deprecated
 def stepdata_Protocol(*args):
 	return stepdata.Protocol(*args)
-
-@deprecated
-def StepData_GlobalFactors_Intance(*args):
-	return StepData_GlobalFactors.Intance(*args)
 
 @deprecated
 def StepData_WriterLib_SetGlobal(*args):

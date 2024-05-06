@@ -9959,6 +9959,42 @@ Empty constructor.
 ") Graphic3d_FrameStatsData;
 		 Graphic3d_FrameStatsData();
 
+		/****************** Graphic3d_FrameStatsData ******************/
+		/**** md5 signature: e1e7b95b04e8c9d86b8beb9e219b6832 ****/
+		%feature("compactdefaultargs") Graphic3d_FrameStatsData;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: Graphic3d_FrameStatsData
+
+Return
+-------
+None
+
+Description
+-----------
+Copy constructor.
+") Graphic3d_FrameStatsData;
+		 Graphic3d_FrameStatsData(const Graphic3d_FrameStatsData & theOther);
+
+		/****************** Graphic3d_FrameStatsData ******************/
+		/**** md5 signature: 4636c48bd62685dc1d69e0b603913f9b ****/
+		%feature("compactdefaultargs") Graphic3d_FrameStatsData;
+		%feature("autodoc", "
+Parameters
+----------
+theOther: Graphic3d_FrameStatsData
+
+Return
+-------
+None
+
+Description
+-----------
+Move constructor.
+") Graphic3d_FrameStatsData;
+		 Graphic3d_FrameStatsData(Graphic3d_FrameStatsData & theOther);
+
 		/****************** CounterValue ******************/
 		/**** md5 signature: ea9c1c4755f5d30677125656248b20e1 ****/
 		%feature("compactdefaultargs") CounterValue;
@@ -18911,6 +18947,26 @@ Description
 Set 2d/trihedron transformation persistence with a corner and 2d offset. throws an exception if persistence mode is not graphic3d_tmf_triedronpers or graphic3d_tmf_2d.
 ") SetPersistence;
 		void SetPersistence(const Graphic3d_TransModeFlags theMode, const Aspect_TypeOfTriedronPosition theCorner, const Graphic3d_Vec2i & theOffset);
+
+		/****************** persistentRotationMatrix ******************/
+		/**** md5 signature: 9a9678602541ad71f065a4b489f6ee69 ****/
+		%feature("compactdefaultargs") persistentRotationMatrix;
+		%feature("autodoc", "
+Parameters
+----------
+theCamera: Graphic3d_Camera
+theViewportWidth: int
+theViewportHeight: int
+
+Return
+-------
+NCollection_Mat3<float >
+
+Description
+-----------
+Create orientation matrix based on camera and view dimensions. default implementation locks rotation by nullifying rotation component. camera and view dimensions are not used, by default. @param thecamera [in] camera definition @param theviewportwidth [in] the width of viewport @param theviewportheight [in] the height of viewport.
+") persistentRotationMatrix;
+		virtual NCollection_Mat3<Standard_Real > persistentRotationMatrix(const opencascade::handle<Graphic3d_Camera> & theCamera, const Standard_Integer theViewportWidth, const Standard_Integer theViewportHeight);
 
 		/****************** persistentScale ******************/
 		/**** md5 signature: 13772c1e0fd97e6d89e163f1469ae7f4 ****/

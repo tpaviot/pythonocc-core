@@ -184,9 +184,8 @@ TNaming_SHELLIN = TNaming_NameType.TNaming_SHELLIN
         return self.Size()
     }
 };
-%template(TNaming_MapOfNamedShape) NCollection_Map<opencascade::handle<TNaming_NamedShape>,TNaming_NamedShapeHasher>;
+%template(TNaming_MapOfNamedShape) NCollection_Map<opencascade::handle<TNaming_NamedShape>>;
 %template(TNaming_MapOfShape) NCollection_Map<TopoDS_Shape>;
-%template(TNaming_NamedShapeHasher) NCollection_DefaultHasher<opencascade::handle<TNaming_NamedShape>>;
 /* end templates declaration */
 
 /* typedefs */
@@ -202,11 +201,10 @@ typedef NCollection_List<opencascade::handle<TNaming_NamedShape>>::Iterator TNam
 typedef NCollection_List<TopTools_IndexedDataMapOfShapeListOfShape> TNaming_ListOfIndexedDataMapOfShapeListOfShape;
 typedef NCollection_List<TopTools_MapOfShape> TNaming_ListOfMapOfShape;
 typedef NCollection_List<opencascade::handle<TNaming_NamedShape>> TNaming_ListOfNamedShape;
-typedef NCollection_Map<opencascade::handle<TNaming_NamedShape>, TNaming_NamedShapeHasher>::Iterator TNaming_MapIteratorOfMapOfNamedShape;
+typedef NCollection_Map<opencascade::handle<TNaming_NamedShape>>::Iterator TNaming_MapIteratorOfMapOfNamedShape;
 typedef TNaming_MapOfShape::Iterator TNaming_MapIteratorOfMapOfShape;
-typedef NCollection_Map<opencascade::handle<TNaming_NamedShape>, TNaming_NamedShapeHasher> TNaming_MapOfNamedShape;
+typedef NCollection_Map<opencascade::handle<TNaming_NamedShape>> TNaming_MapOfNamedShape;
 typedef NCollection_Map<TopoDS_Shape> TNaming_MapOfShape;
-typedef NCollection_DefaultHasher<opencascade::handle<TNaming_NamedShape>> TNaming_NamedShapeHasher;
 typedef TNaming_NamedShape * TNaming_PtrAttribute;
 typedef TNaming_Node * TNaming_PtrNode;
 typedef TNaming_RefShape * TNaming_PtrRefShape;

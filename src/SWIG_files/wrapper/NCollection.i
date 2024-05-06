@@ -41,14 +41,12 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_ncollection.html"
 #include<NCollection_module.hxx>
 
 //Dependencies
-#include<Standard_module.hxx>
 #include<gp_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
-%import Standard.i
 
 %pythoncode {
 from enum import IntEnum
@@ -133,11 +131,11 @@ typedef size_t Standard_Size;
 /*********************************
 * class NCollection_AliasedArray *
 *********************************/
+/******************************
+* class NCollection_Allocator *
+******************************/
 /***************************
 * class NCollection_Array1 *
-***************************/
-/***************************
-* class NCollection_Array2 *
 ***************************/
 /**********************************
 * class NCollection_BaseAllocator *
@@ -148,12 +146,12 @@ typedef size_t Standard_Size;
 /****************************
 * class NCollection_BaseMap *
 ****************************/
+/**************************************
+* class NCollection_BasePointerVector *
+**************************************/
 /*********************************
 * class NCollection_BaseSequence *
 *********************************/
-/*******************************
-* class NCollection_BaseVector *
-*******************************/
 /***************************
 * class NCollection_Buffer *
 ***************************/
@@ -169,9 +167,18 @@ typedef size_t Standard_Size;
 /**********************************
 * class NCollection_DefaultHasher *
 **********************************/
+/*********************************
+* class NCollection_DynamicArray *
+*********************************/
 /***************************
 * class NCollection_Handle *
 ***************************/
+/************************************
+* class NCollection_IndexedIterator *
+************************************/
+/*****************************
+* class NCollection_Iterator *
+*****************************/
 /*************************
 * class NCollection_Lerp *
 *************************/
@@ -187,95 +194,15 @@ typedef size_t Standard_Size;
 /*************************
 * class NCollection_Mat4 *
 *************************/
+/*********************************
+* class NCollection_OccAllocator *
+*********************************/
 /****************************
 * class NCollection_SeqNode *
 ****************************/
 /************************************
 * class NCollection_SparseArrayBase *
 ************************************/
-/*********************************
-* class NCollection_StdAllocator *
-*********************************/
-/***************************************
-* class NCollection_StdAllocator<void> *
-***************************************/
-class NCollection_StdAllocator<void> {
-	public:
-typedef void * pointer;
-typedef const void * const_pointer;
-typedef void value_type;
-		class rebind {};
-		/****************** NCollection_StdAllocator ******************/
-		/**** md5 signature: 240c03d4b72541b1a032e1913b305d8b ****/
-		%feature("compactdefaultargs") NCollection_StdAllocator;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-/*! creates an object using default open cascade allocation mechanism, i.e. which uses standard::allocate() and standard::free() underneath. */.
-") NCollection_StdAllocator;
-		 NCollection_StdAllocator();
-
-		/****************** NCollection_StdAllocator ******************/
-		/**** md5 signature: c45105f788e0b68d85b5ae58987f113a ****/
-		%feature("compactdefaultargs") NCollection_StdAllocator;
-		%feature("autodoc", "
-Parameters
-----------
-theAlloc: NCollection_BaseAllocator
-
-Return
--------
-None
-
-Description
------------
-/*! saves \a thealloc as an underlying allocator instance.*/.
-") NCollection_StdAllocator;
-		 NCollection_StdAllocator(const opencascade::handle<NCollection_BaseAllocator> & theAlloc);
-
-		/****************** NCollection_StdAllocator ******************/
-		/**** md5 signature: d36f86ffeabb62b4a5cec1623b3cf39b ****/
-		%feature("compactdefaultargs") NCollection_StdAllocator;
-		%feature("autodoc", "
-Parameters
-----------
-X: NCollection_StdAllocator
-
-Return
--------
-None
-
-Description
------------
-/*! copies allocator() from \a x.*/.
-") NCollection_StdAllocator;
-		 NCollection_StdAllocator(const NCollection_StdAllocator & X);
-
-		/****************** Allocator ******************/
-		/**** md5 signature: c2190efebec564fb34d6c8e52682605e ****/
-		%feature("compactdefaultargs") Allocator;
-		%feature("autodoc", "Return
--------
-opencascade::handle<NCollection_BaseAllocator>
-
-Description
------------
-/*! returns an object specified in the constructor.*/.
-") Allocator;
-		const opencascade::handle<NCollection_BaseAllocator> & Allocator();
-
-};
-
-
-%extend NCollection_StdAllocator<void> {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /********************************
 * class NCollection_StlIterator *
 ********************************/
@@ -306,6 +233,9 @@ Description
 /*************************************
 * class NCollection_AlignedAllocator *
 *************************************/
+/***************************
+* class NCollection_Array2 *
+***************************/
 /****************************
 * class NCollection_DataMap *
 ****************************/
@@ -348,9 +278,6 @@ Description
 /******************************
 * class NCollection_TListNode *
 ******************************/
-/***************************
-* class NCollection_Vector *
-***************************/
 /*************************************
 * class NCollection_WinHeapAllocator *
 *************************************/
@@ -382,6 +309,10 @@ class NCollection_IncAllocator:
 
 @classnotwrapped
 class NCollection_Mat3:
+	pass
+
+@classnotwrapped
+class NCollection_IndexedIterator:
 	pass
 
 @classnotwrapped
@@ -417,6 +348,10 @@ class NCollection_CellFilter_InspectorXY:
 	pass
 
 @classnotwrapped
+class NCollection_Iterator:
+	pass
+
+@classnotwrapped
 class NCollection_Sequence:
 	pass
 
@@ -425,15 +360,7 @@ class NCollection_AliasedArray:
 	pass
 
 @classnotwrapped
-class NCollection_BaseVector:
-	pass
-
-@classnotwrapped
 class NCollection_UBTreeFiller:
-	pass
-
-@classnotwrapped
-class NCollection_StdAllocator:
 	pass
 
 @classnotwrapped
@@ -485,15 +412,19 @@ class NCollection_TListNode:
 	pass
 
 @classnotwrapped
-class NCollection_Vector:
-	pass
-
-@classnotwrapped
 class NCollection_UBTree:
 	pass
 
 @classnotwrapped
 class NCollection_LocalArray:
+	pass
+
+@classnotwrapped
+class NCollection_BasePointerVector:
+	pass
+
+@classnotwrapped
+class NCollection_Allocator:
 	pass
 
 @classnotwrapped
@@ -513,6 +444,10 @@ class NCollection_Mat4:
 	pass
 
 @classnotwrapped
+class NCollection_OccAllocator:
+	pass
+
+@classnotwrapped
 class NCollection_TListIterator:
 	pass
 
@@ -522,6 +457,10 @@ class NCollection_UtfString:
 
 @classnotwrapped
 class NCollection_BaseMap:
+	pass
+
+@classnotwrapped
+class NCollection_DynamicArray:
 	pass
 
 @classnotwrapped

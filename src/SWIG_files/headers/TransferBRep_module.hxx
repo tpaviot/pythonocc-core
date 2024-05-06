@@ -22,7 +22,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TransferBRep.hxx>
 #include<TransferBRep_BinderOfShape.hxx>
 #include<TransferBRep_HSequenceOfTransferResultInfo.hxx>
-#include<TransferBRep_OrientedShapeMapper.hxx>
 #include<TransferBRep_Reader.hxx>
 #include<TransferBRep_SequenceOfTransferResultInfo.hxx>
 #include<TransferBRep_ShapeBinder.hxx>

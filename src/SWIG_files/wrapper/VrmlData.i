@@ -1027,6 +1027,12 @@ Description
 	}
 };
 
+/*****************************************************
+* class equal_to<opencascade::handle<VrmlData_Node>> *
+*****************************************************/
+/*************************************************
+* class hash<opencascade::handle<VrmlData_Node>> *
+*************************************************/
 /****************************
 * class VrmlData_Appearance *
 ****************************/
@@ -1579,6 +1585,19 @@ Description
 ") VrmlData_Material;
 		 VrmlData_Material(const VrmlData_Scene & theScene, const char * theName, const Standard_Real theAmbientIntensity = -1, const Standard_Real theShininess = -1, const Standard_Real theTransparency = -1);
 
+		/****************** AmbientColor ******************/
+		/**** md5 signature: 5fbe476d31e03b68b11845a1f91d2082 ****/
+		%feature("compactdefaultargs") AmbientColor;
+		%feature("autodoc", "Return
+-------
+Quantity_Color
+
+Description
+-----------
+/** * query the ambient color */.
+") AmbientColor;
+		const Quantity_Color & AmbientColor();
+
 		/****************** AmbientIntensity ******************/
 		/**** md5 signature: d32af26bf065597070a37499321d5992 ****/
 		%feature("compactdefaultargs") AmbientIntensity;
@@ -1666,6 +1685,24 @@ Description
 /** * read the node from input stream. */.
 ") Read;
 		virtual VrmlData_ErrorStatus Read(VrmlData_InBuffer & theBuffer);
+
+		/****************** SetAmbientColor ******************/
+		/**** md5 signature: 873429e2370ae4f721b603f1ebb96dad ****/
+		%feature("compactdefaultargs") SetAmbientColor;
+		%feature("autodoc", "
+Parameters
+----------
+theColor: Quantity_Color
+
+Return
+-------
+None
+
+Description
+-----------
+/** * query the ambient color */.
+") SetAmbientColor;
+		void SetAmbientColor(const Quantity_Color & theColor);
 
 		/****************** SetAmbientIntensity ******************/
 		/**** md5 signature: 71cfa04b401f8be3353ac2a3dc8275a4 ****/

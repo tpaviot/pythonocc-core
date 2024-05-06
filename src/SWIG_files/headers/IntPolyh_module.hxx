@@ -27,7 +27,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntPolyh_ArrayOfTangentZones.hxx>
 #include<IntPolyh_ArrayOfTriangles.hxx>
 #include<IntPolyh_Couple.hxx>
-#include<IntPolyh_CoupleMapHasher.hxx>
 #include<IntPolyh_Edge.hxx>
 #include<IntPolyh_Intersection.hxx>
 #include<IntPolyh_ListOfCouples.hxx>

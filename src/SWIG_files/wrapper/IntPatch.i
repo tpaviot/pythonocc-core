@@ -4510,34 +4510,6 @@ Adds the point defined as intersection of two isolines (u = 0 and v = 0) on theq
 ") AddCrossUVIsoPoint;
 		static Standard_Boolean AddCrossUVIsoPoint(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const Standard_Real theTol3d, IntSurf_PntOn2S & theAddedPoint, const Standard_Boolean theIsReversed = Standard_False);
 
-		/****************** AddPointOnUorVIso ******************/
-		/**** md5 signature: 6d7f1b0b3a8049412346caa7b5338111 ****/
-		%feature("compactdefaultargs") AddPointOnUorVIso;
-		%feature("autodoc", "
-Parameters
-----------
-theQSurf: Adaptor3d_Surface
-thePSurf: Adaptor3d_Surface
-theRefPt: IntSurf_PntOn2S
-theIsU: bool
-theIsoParameter: float
-theToler: math_Vector
-theInitPoint: math_Vector
-theInfBound: math_Vector
-theSupBound: math_Vector
-theAddedPoint: IntSurf_PntOn2S
-theIsReversed: bool (optional, default to Standard_False)
-
-Return
--------
-bool
-
-Description
------------
-Adds the point lain strictly in the isoline u = 0 or v = 0 of theqsurf, in theline. therefpt is used to correct adjusting parameters. if theisreversed is true then theqsurf corresponds to the second (otherwise, the first) surface while forming intersection point intsurf_pnton2s. all math_vector-objects must be filled as follows: [1] - u-parameter of thepsurf; [2] - v-parameter of thepsurf; [3] - u- (if v-isoline is considered) or v-parameter (if u-isoline is considered) of theqsurf.
-") AddPointOnUorVIso;
-		static Standard_Boolean AddPointOnUorVIso(const opencascade::handle<Adaptor3d_Surface> & theQSurf, const opencascade::handle<Adaptor3d_Surface> & thePSurf, const IntSurf_PntOn2S & theRefPt, const Standard_Boolean theIsU, const Standard_Real theIsoParameter, const math_Vector & theToler, const math_Vector & theInitPoint, const math_Vector & theInfBound, const math_Vector & theSupBound, IntSurf_PntOn2S & theAddedPoint, const Standard_Boolean theIsReversed = Standard_False);
-
 		/****************** AddSingularPole ******************/
 		/**** md5 signature: 73120d8dbfbdfee3c4c757432a86b338 ****/
 		%feature("compactdefaultargs") AddSingularPole;

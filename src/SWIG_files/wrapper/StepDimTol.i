@@ -534,41 +534,7 @@ StepDimTol_SDRMTranslation = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_
     __next__ = next
     }
 };
-%template(StepDimTol_Array1OfGeometricToleranceModifier) NCollection_Array1<StepDimTol_GeometricToleranceModifier>;
 
-%extend NCollection_Array1<StepDimTol_GeometricToleranceModifier> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
 %template(StepDimTol_Array1OfToleranceZoneTarget) NCollection_Array1<StepDimTol_ToleranceZoneTarget>;
 
 %extend NCollection_Array1<StepDimTol_ToleranceZoneTarget> {

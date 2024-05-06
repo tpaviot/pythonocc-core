@@ -20,9 +20,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<StepToTopoDS.hxx>
-#include<StepToTopoDS_Builder.hxx>
+//#include<StepToTopoDS_Builder.hxx>
 #include<StepToTopoDS_BuilderError.hxx>
-#include<StepToTopoDS_CartesianPointHasher.hxx>
 #include<StepToTopoDS_DataMapIteratorOfDataMapOfRI.hxx>
 #include<StepToTopoDS_DataMapIteratorOfDataMapOfRINames.hxx>
 #include<StepToTopoDS_DataMapIteratorOfDataMapOfTRI.hxx>
@@ -37,7 +36,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepToTopoDS_NMTool.hxx>
 #include<StepToTopoDS_PointEdgeMap.hxx>
 #include<StepToTopoDS_PointPair.hxx>
-#include<StepToTopoDS_PointPairHasher.hxx>
 #include<StepToTopoDS_PointVertexMap.hxx>
 #include<StepToTopoDS_Root.hxx>
 #include<StepToTopoDS_Tool.hxx>

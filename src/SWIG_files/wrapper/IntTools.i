@@ -196,8 +196,8 @@ from OCC.Core.Exception import *
     __next__ = next
     }
 };
-%template(IntTools_DataMapOfCurveSampleBox) NCollection_DataMap<IntTools_CurveRangeSample,Bnd_Box,IntTools_CurveRangeSampleMapHasher>;
-%template(IntTools_DataMapOfSurfaceSampleBox) NCollection_DataMap<IntTools_SurfaceRangeSample,Bnd_Box,IntTools_SurfaceRangeSampleMapHasher>;
+%template(IntTools_DataMapOfCurveSampleBox) NCollection_DataMap<IntTools_CurveRangeSample,Bnd_Box>;
+%template(IntTools_DataMapOfSurfaceSampleBox) NCollection_DataMap<IntTools_SurfaceRangeSample,Bnd_Box>;
 %template(IntTools_ListIteratorOfListOfBox) NCollection_TListIterator<Bnd_Box>;
 %template(IntTools_ListIteratorOfListOfCurveRangeSample) NCollection_TListIterator<IntTools_CurveRangeSample>;
 %template(IntTools_ListIteratorOfListOfSurfaceRangeSample) NCollection_TListIterator<IntTools_SurfaceRangeSample>;
@@ -225,8 +225,8 @@ from OCC.Core.Exception import *
         return self.Size()
     }
 };
-%template(IntTools_MapOfCurveSample) NCollection_Map<IntTools_CurveRangeSample,IntTools_CurveRangeSampleMapHasher>;
-%template(IntTools_MapOfSurfaceSample) NCollection_Map<IntTools_SurfaceRangeSample,IntTools_SurfaceRangeSampleMapHasher>;
+%template(IntTools_MapOfCurveSample) NCollection_Map<IntTools_CurveRangeSample>;
+%template(IntTools_MapOfSurfaceSample) NCollection_Map<IntTools_SurfaceRangeSample>;
 %template(IntTools_SequenceOfCommonPrts) NCollection_Sequence<IntTools_CommonPrt>;
 
 %extend NCollection_Sequence<IntTools_CommonPrt> {
@@ -273,20 +273,20 @@ from OCC.Core.Exception import *
 typedef NCollection_Array1<IntTools_Range> IntTools_Array1OfRange;
 typedef NCollection_Array1<IntTools_Root> IntTools_Array1OfRoots;
 typedef TColStd_Array1OfReal IntTools_CArray1OfReal;
-typedef NCollection_DataMap<IntTools_CurveRangeSample, Bnd_Box, IntTools_CurveRangeSampleMapHasher>::Iterator IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
-typedef NCollection_DataMap<IntTools_SurfaceRangeSample, Bnd_Box, IntTools_SurfaceRangeSampleMapHasher>::Iterator IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
-typedef NCollection_DataMap<IntTools_CurveRangeSample, Bnd_Box, IntTools_CurveRangeSampleMapHasher> IntTools_DataMapOfCurveSampleBox;
-typedef NCollection_DataMap<IntTools_SurfaceRangeSample, Bnd_Box, IntTools_SurfaceRangeSampleMapHasher> IntTools_DataMapOfSurfaceSampleBox;
+typedef NCollection_DataMap<IntTools_CurveRangeSample, Bnd_Box>::Iterator IntTools_DataMapIteratorOfDataMapOfCurveSampleBox;
+typedef NCollection_DataMap<IntTools_SurfaceRangeSample, Bnd_Box>::Iterator IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox;
+typedef NCollection_DataMap<IntTools_CurveRangeSample, Bnd_Box> IntTools_DataMapOfCurveSampleBox;
+typedef NCollection_DataMap<IntTools_SurfaceRangeSample, Bnd_Box> IntTools_DataMapOfSurfaceSampleBox;
 typedef NCollection_List<Bnd_Box>::Iterator IntTools_ListIteratorOfListOfBox;
 typedef NCollection_List<IntTools_CurveRangeSample>::Iterator IntTools_ListIteratorOfListOfCurveRangeSample;
 typedef NCollection_List<IntTools_SurfaceRangeSample>::Iterator IntTools_ListIteratorOfListOfSurfaceRangeSample;
 typedef NCollection_List<Bnd_Box> IntTools_ListOfBox;
 typedef NCollection_List<IntTools_CurveRangeSample> IntTools_ListOfCurveRangeSample;
 typedef NCollection_List<IntTools_SurfaceRangeSample> IntTools_ListOfSurfaceRangeSample;
-typedef NCollection_Map<IntTools_CurveRangeSample, IntTools_CurveRangeSampleMapHasher>::Iterator IntTools_MapIteratorOfMapOfCurveSample;
-typedef NCollection_Map<IntTools_SurfaceRangeSample, IntTools_SurfaceRangeSampleMapHasher>::Iterator IntTools_MapIteratorOfMapOfSurfaceSample;
-typedef NCollection_Map<IntTools_CurveRangeSample, IntTools_CurveRangeSampleMapHasher> IntTools_MapOfCurveSample;
-typedef NCollection_Map<IntTools_SurfaceRangeSample, IntTools_SurfaceRangeSampleMapHasher> IntTools_MapOfSurfaceSample;
+typedef NCollection_Map<IntTools_CurveRangeSample>::Iterator IntTools_MapIteratorOfMapOfCurveSample;
+typedef NCollection_Map<IntTools_SurfaceRangeSample>::Iterator IntTools_MapIteratorOfMapOfSurfaceSample;
+typedef NCollection_Map<IntTools_CurveRangeSample> IntTools_MapOfCurveSample;
+typedef NCollection_Map<IntTools_SurfaceRangeSample> IntTools_MapOfSurfaceSample;
 typedef NCollection_Sequence<IntTools_CommonPrt> IntTools_SequenceOfCommonPrts;
 typedef NCollection_Sequence<IntTools_Curve> IntTools_SequenceOfCurves;
 typedef NCollection_Sequence<IntTools_PntOn2Faces> IntTools_SequenceOfPntOn2Faces;
@@ -2267,58 +2267,6 @@ No available documentation.
 
 
 %extend IntTools_CurveRangeLocalizeData {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*******************************************
-* class IntTools_CurveRangeSampleMapHasher *
-*******************************************/
-class IntTools_CurveRangeSampleMapHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 693b5d51486ed409caaa0e5852c654f0 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theKey: IntTools_CurveRangeSample
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given key, in the range [1, theupperbound] @param thekey the key which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const IntTools_CurveRangeSample & theKey, const Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 4d1714c29d69b36b600c5e46a135d5a8 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-S1: IntTools_CurveRangeSample
-S2: IntTools_CurveRangeSample
-
-Return
--------
-bool
-
-Description
------------
-Returns true when the two keys are the same. two same keys must have the same hashcode, the contrary is not necessary.
-") IsEqual;
-		static Standard_Boolean IsEqual(const IntTools_CurveRangeSample & S1, const IntTools_CurveRangeSample & S2);
-
-};
-
-
-%extend IntTools_CurveRangeSampleMapHasher {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5549,62 +5497,24 @@ No available documentation.
 ") SetSampleRangeV;
 		void SetSampleRangeV(const IntTools_CurveRangeSample & theRangeSampleV);
 
+
+%extend{
+    bool __eq_wrapper__(const IntTools_SurfaceRangeSample other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
 %extend IntTools_SurfaceRangeSample {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*********************************************
-* class IntTools_SurfaceRangeSampleMapHasher *
-*********************************************/
-class IntTools_SurfaceRangeSampleMapHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 6ee701ed7444348a33c6581638820b5d ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theKey: IntTools_SurfaceRangeSample
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given key, in the range [1, theupperbound] @param thekey the key which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const IntTools_SurfaceRangeSample & theKey, Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 4a42ac47392dd9c52f7bcd81ded299d5 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-S1: IntTools_SurfaceRangeSample
-S2: IntTools_SurfaceRangeSample
-
-Return
--------
-bool
-
-Description
------------
-Returns true when the two keys are the same. two same keys must have the same hashcode, the contrary is not necessary.
-") IsEqual;
-		static Standard_Boolean IsEqual(const IntTools_SurfaceRangeSample & S1, const IntTools_SurfaceRangeSample & S2);
-
-};
-
-
-%extend IntTools_SurfaceRangeSampleMapHasher {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -6350,6 +6260,9 @@ No available documentation.
 	}
 };
 
+/****************************************
+* class hash<IntTools_CurveRangeSample> *
+****************************************/
 /**********************************
 * class IntTools_CurveRangeSample *
 **********************************/
@@ -6473,6 +6386,20 @@ No available documentation.
 ") SetRangeIndex;
 		void SetRangeIndex(const Standard_Integer theIndex);
 
+
+%extend{
+    bool __eq_wrapper__(const IntTools_CurveRangeSample other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
@@ -6530,22 +6457,6 @@ def inttools_RemoveIdenticalRoots(*args):
 @deprecated
 def inttools_SortRoots(*args):
 	return inttools.SortRoots(*args)
-
-@deprecated
-def IntTools_CurveRangeSampleMapHasher_HashCode(*args):
-	return IntTools_CurveRangeSampleMapHasher.HashCode(*args)
-
-@deprecated
-def IntTools_CurveRangeSampleMapHasher_IsEqual(*args):
-	return IntTools_CurveRangeSampleMapHasher.IsEqual(*args)
-
-@deprecated
-def IntTools_SurfaceRangeSampleMapHasher_HashCode(*args):
-	return IntTools_SurfaceRangeSampleMapHasher.HashCode(*args)
-
-@deprecated
-def IntTools_SurfaceRangeSampleMapHasher_IsEqual(*args):
-	return IntTools_SurfaceRangeSampleMapHasher.IsEqual(*args)
 
 @deprecated
 def IntTools_Tools_CheckCurve(*args):

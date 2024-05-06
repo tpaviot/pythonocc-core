@@ -3228,30 +3228,6 @@ Returns index of first node of the link.
 ") FirstNode;
 		Standard_Integer FirstNode();
 
-		/****************** HashCode ******************/
-		/**** md5 signature: 72f7d6afdc2f4b2c860a8e39d683afaf ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for this oriented edge, in the range [1, theupperbound] @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		Standard_Integer HashCode(const Standard_Integer theUpperBound);
-
-        %extend {
-            Standard_Integer __hash__() {
-            return $self->HashCode(2147483647);
-            }
-        };
-
 		/****************** IsEqual ******************/
 		/**** md5 signature: 1a1e5601f44f2e973a1227eedc8ed008 ****/
 		%feature("compactdefaultargs") IsEqual;
@@ -4184,30 +4160,6 @@ Gets edges with orientations composing the triangle. @param[out] theedges array 
 ") Edges;
 		void Edges(Standard_Integer ( & theEdges )[3], Standard_Boolean ( & theOrientations )[3]);
 
-		/****************** HashCode ******************/
-		/**** md5 signature: 72f7d6afdc2f4b2c860a8e39d683afaf ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for this triangle, in the range [1, theupperbound] @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		Standard_Integer HashCode(const Standard_Integer theUpperBound);
-
-        %extend {
-            Standard_Integer __hash__() {
-            return $self->HashCode(2147483647);
-            }
-        };
-
 		/****************** Initialize ******************/
 		/**** md5 signature: ee51ba187d1dbaa84273b1e2cd325f9a ****/
 		%feature("compactdefaultargs") Initialize;
@@ -4472,30 +4424,6 @@ Description
 Returns position of the vertex in parametric space.
 ") Coord;
 		const gp_XY Coord();
-
-		/****************** HashCode ******************/
-		/**** md5 signature: 72f7d6afdc2f4b2c860a8e39d683afaf ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for this vertex, in the range [1, theupperbound] @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		Standard_Integer HashCode(const Standard_Integer theUpperBound);
-
-        %extend {
-            Standard_Integer __hash__() {
-            return $self->HashCode(2147483647);
-            }
-        };
 
 		/****************** Initialize ******************/
 		/**** md5 signature: 50c4b34339c1d3c34b891aeeeeec544f ****/
@@ -5120,6 +5048,18 @@ Substitutes vertex with the given by the given vertex with attributes. @param th
 	}
 };
 
+/****************************
+* class hash<BRepMesh_Edge> *
+****************************/
+/************************************
+* class hash<BRepMesh_OrientedEdge> *
+************************************/
+/********************************
+* class hash<BRepMesh_Triangle> *
+********************************/
+/******************************
+* class hash<BRepMesh_Vertex> *
+******************************/
 /***********************************
 * class BRepMesh_ConeRangeSplitter *
 ***********************************/

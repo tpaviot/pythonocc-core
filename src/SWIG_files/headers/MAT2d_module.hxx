@@ -38,7 +38,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MAT2d_DataMapOfIntegerPnt2d.hxx>
 #include<MAT2d_DataMapOfIntegerSequenceOfConnexion.hxx>
 #include<MAT2d_DataMapOfIntegerVec2d.hxx>
-#include<MAT2d_MapBiIntHasher.hxx>
 #include<MAT2d_Mat2d.hxx>
 #include<MAT2d_MiniPath.hxx>
 #include<MAT2d_SequenceOfConnexion.hxx>

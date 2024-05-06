@@ -60,7 +60,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Interface_LineBuffer.hxx>
 #include<Interface_MSG.hxx>
 #include<Interface_Macros.hxx>
-#include<Interface_MapAsciiStringHasher.hxx>
 #include<Interface_NodeOfGeneralLib.hxx>
 #include<Interface_NodeOfReaderLib.hxx>
 #include<Interface_ParamList.hxx>

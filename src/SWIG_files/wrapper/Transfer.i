@@ -166,14 +166,14 @@ Transfer_UndefUser = Transfer_UndefMode.Transfer_UndefUser
     }
 };
 %template(Transfer_TransferMapOfProcessForFinder) NCollection_IndexedDataMap<opencascade::handle<Transfer_Finder>,opencascade::handle<Transfer_Binder>,Transfer_FindHasher>;
-%template(Transfer_TransferMapOfProcessForTransient) NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>,opencascade::handle<Transfer_Binder>,TColStd_MapTransientHasher>;
+%template(Transfer_TransferMapOfProcessForTransient) NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>,opencascade::handle<Transfer_Binder>>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Sequence<opencascade::handle<Transfer_Binder>> Transfer_SequenceOfBinder;
 typedef NCollection_Sequence<opencascade::handle<Transfer_Finder>> Transfer_SequenceOfFinder;
 typedef NCollection_IndexedDataMap<opencascade::handle<Transfer_Finder>, opencascade::handle<Transfer_Binder>, Transfer_FindHasher> Transfer_TransferMapOfProcessForFinder;
-typedef NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Transfer_Binder>, TColStd_MapTransientHasher> Transfer_TransferMapOfProcessForTransient;
+typedef NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Transfer_Binder>> Transfer_TransferMapOfProcessForTransient;
 /* end typedefs declaration */
 
 /*****************************************
@@ -902,44 +902,6 @@ Returns the content of the dispatchcontrol: it can be used for a direct call, if
 ****************************/
 class Transfer_FindHasher {
 	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 1abd55acd1294120566671207b2f009c ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theFinder: Handle ( Transfer_Finder )
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Returns hash code for the given finder, in the range [1, theupperbound]. asks the finder its hash code, then transforms it to be in the required range @param thefinder the finder which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const Handle ( Transfer_Finder ) & theFinder, Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: ca64cb1ad49afab41adb3682d1ade24a ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-K1: Transfer_Finder
-K2: Transfer_Finder
-
-Return
--------
-bool
-
-Description
------------
-Returns true if two keys are the same. the test does not work on the finders themselves but by calling their methods equates.
-") IsEqual;
-		static Standard_Boolean IsEqual(const opencascade::handle<Transfer_Finder> & K1, const opencascade::handle<Transfer_Finder> & K2);
-
 };
 
 
@@ -1063,17 +1025,17 @@ Gets the list of attributes from <other>, by copying it by default, considers al
 		void GetAttributes(const opencascade::handle<Transfer_Finder> & other, Standard_CString fromname = "", const Standard_Boolean copied = Standard_True);
 
 		/****************** GetHashCode ******************/
-		/**** md5 signature: bff72276a4c4e09c342f668ee3cdf337 ****/
+		/**** md5 signature: 7287addabc58f18bcef75f2c632e90c4 ****/
 		%feature("compactdefaultargs") GetHashCode;
 		%feature("autodoc", "Return
 -------
-int
+size_t
 
 Description
 -----------
 Returns the hashcode which has been stored by sethashcode (remark that hashcode could be deferred then be defined by sub-classes, the result is the same).
 ") GetHashCode;
-		Standard_Integer GetHashCode();
+		size_t GetHashCode();
 
 		/****************** GetIntegerAttribute ******************/
 		/**** md5 signature: ea2fdae17b02c2aa020d84d6b452688b ****/
@@ -5514,14 +5476,6 @@ def Transfer_DataInfo_Type(*args):
 @deprecated
 def Transfer_DataInfo_TypeName(*args):
 	return Transfer_DataInfo.TypeName(*args)
-
-@deprecated
-def Transfer_FindHasher_HashCode(*args):
-	return Transfer_FindHasher.HashCode(*args)
-
-@deprecated
-def Transfer_FindHasher_IsEqual(*args):
-	return Transfer_FindHasher.IsEqual(*args)
 
 @deprecated
 def Transfer_SimpleBinderOfTransient_GetTypedResult(*args):

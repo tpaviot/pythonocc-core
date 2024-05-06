@@ -114,6 +114,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<RWStepVisual_RWTextStyleForDefinedFont.hxx>
 #include<RWStepVisual_RWTextStyleWithBoxCharacteristics.hxx>
 #include<RWStepVisual_RWTriangulatedFace.hxx>
+#include<RWStepVisual_RWTriangulatedSurfaceSet.hxx>
 #include<RWStepVisual_RWViewVolume.hxx>
 
 #endif // RWSTEPVISUAL_HXX

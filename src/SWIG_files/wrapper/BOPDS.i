@@ -110,9 +110,9 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(BOPDS_DataMapOfIntegerListOfPaveBlock) NCollection_DataMap<Standard_Integer,BOPDS_ListOfPaveBlock,TColStd_MapIntegerHasher>;
+%template(BOPDS_DataMapOfIntegerListOfPaveBlock) NCollection_DataMap<Standard_Integer,BOPDS_ListOfPaveBlock>;
 
-%extend NCollection_DataMap<Standard_Integer,BOPDS_ListOfPaveBlock,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,BOPDS_ListOfPaveBlock> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (BOPDS_DataMapOfIntegerListOfPaveBlock::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -123,13 +123,13 @@ from OCC.Core.Exception import *
     return l;
     }
 };
-%template(BOPDS_DataMapOfPaveBlockListOfInteger) NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger,TColStd_MapTransientHasher>;
-%template(BOPDS_DataMapOfPaveBlockListOfPaveBlock) NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>,BOPDS_ListOfPaveBlock,TColStd_MapTransientHasher>;
+%template(BOPDS_DataMapOfPaveBlockListOfInteger) NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger>;
+%template(BOPDS_DataMapOfPaveBlockListOfPaveBlock) NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>,BOPDS_ListOfPaveBlock>;
 %template(BOPDS_DataMapOfShapeCoupleOfPaveBlocks) NCollection_DataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>;
-%template(BOPDS_IndexedDataMapOfPaveBlockListOfInteger) NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger,TColStd_MapTransientHasher>;
-%template(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock) NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>,BOPDS_ListOfPaveBlock,TColStd_MapTransientHasher>;
+%template(BOPDS_IndexedDataMapOfPaveBlockListOfInteger) NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_ListOfInteger>;
+%template(BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock) NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>,BOPDS_ListOfPaveBlock>;
 %template(BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks) NCollection_IndexedDataMap<TopoDS_Shape,BOPDS_CoupleOfPaveBlocks,TopTools_ShapeMapHasher>;
-%template(BOPDS_IndexedMapOfPaveBlock) NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>,TColStd_MapTransientHasher>;
+%template(BOPDS_IndexedMapOfPaveBlock) NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>>;
 %template(BOPDS_ListOfPave) NCollection_List<BOPDS_Pave>;
 
 %extend NCollection_List<BOPDS_Pave> {
@@ -146,10 +146,10 @@ from OCC.Core.Exception import *
         return self.Size()
     }
 };
-%template(BOPDS_MapOfCommonBlock) NCollection_Map<opencascade::handle<BOPDS_CommonBlock>,TColStd_MapTransientHasher>;
-%template(BOPDS_MapOfPair) NCollection_Map<BOPDS_Pair,BOPDS_PairMapHasher>;
-%template(BOPDS_MapOfPave) NCollection_Map<BOPDS_Pave,BOPDS_PaveMapHasher>;
-%template(BOPDS_MapOfPaveBlock) NCollection_Map<opencascade::handle<BOPDS_PaveBlock>,TColStd_MapTransientHasher>;
+%template(BOPDS_MapOfCommonBlock) NCollection_Map<opencascade::handle<BOPDS_CommonBlock>>;
+%template(BOPDS_MapOfPair) NCollection_Map<BOPDS_Pair>;
+%template(BOPDS_MapOfPave) NCollection_Map<BOPDS_Pave>;
+%template(BOPDS_MapOfPaveBlock) NCollection_Map<opencascade::handle<BOPDS_PaveBlock>>;
 %template(BOPDS_VectorOfCurve) NCollection_Vector<BOPDS_Curve>;
 %template(BOPDS_VectorOfFaceInfo) NCollection_Vector<BOPDS_FaceInfo>;
 %template(BOPDS_VectorOfIndexRange) NCollection_Vector<BOPDS_IndexRange>;
@@ -210,14 +210,14 @@ typedef BOPDS_DataMapOfPaveBlockCommonBlock::Iterator BOPDS_DataMapIteratorOfDat
 typedef BOPDS_DataMapOfPaveBlockListOfInteger::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfInteger;
 typedef BOPDS_DataMapOfPaveBlockListOfPaveBlock::Iterator BOPDS_DataMapIteratorOfDataMapOfPaveBlockListOfPaveBlock;
 typedef BOPDS_DataMapOfShapeCoupleOfPaveBlocks::Iterator BOPDS_DataMapIteratorOfDataMapOfShapeCoupleOfPaveBlocks;
-typedef NCollection_DataMap<Standard_Integer, BOPDS_ListOfPaveBlock, TColStd_MapIntegerHasher> BOPDS_DataMapOfIntegerListOfPaveBlock;
-typedef NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_ListOfInteger, TColStd_MapTransientHasher> BOPDS_DataMapOfPaveBlockListOfInteger;
-typedef NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock, TColStd_MapTransientHasher> BOPDS_DataMapOfPaveBlockListOfPaveBlock;
+typedef NCollection_DataMap<Standard_Integer, BOPDS_ListOfPaveBlock> BOPDS_DataMapOfIntegerListOfPaveBlock;
+typedef NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_ListOfInteger> BOPDS_DataMapOfPaveBlockListOfInteger;
+typedef NCollection_DataMap<opencascade::handle<BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock> BOPDS_DataMapOfPaveBlockListOfPaveBlock;
 typedef NCollection_DataMap<TopoDS_Shape, BOPDS_CoupleOfPaveBlocks, TopTools_ShapeMapHasher> BOPDS_DataMapOfShapeCoupleOfPaveBlocks;
-typedef NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_ListOfInteger, TColStd_MapTransientHasher> BOPDS_IndexedDataMapOfPaveBlockListOfInteger;
-typedef NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock, TColStd_MapTransientHasher> BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock;
+typedef NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_ListOfInteger> BOPDS_IndexedDataMapOfPaveBlockListOfInteger;
+typedef NCollection_IndexedDataMap<opencascade::handle<BOPDS_PaveBlock>, BOPDS_ListOfPaveBlock> BOPDS_IndexedDataMapOfPaveBlockListOfPaveBlock;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, BOPDS_CoupleOfPaveBlocks, TopTools_ShapeMapHasher> BOPDS_IndexedDataMapOfShapeCoupleOfPaveBlocks;
-typedef NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>, TColStd_MapTransientHasher> BOPDS_IndexedMapOfPaveBlock;
+typedef NCollection_IndexedMap<opencascade::handle<BOPDS_PaveBlock>> BOPDS_IndexedMapOfPaveBlock;
 typedef BOPDS_ListOfPave::Iterator BOPDS_ListIteratorOfListOfPave;
 typedef BOPDS_ListOfPaveBlock::Iterator BOPDS_ListIteratorOfListOfPaveBlock;
 typedef NCollection_List<BOPDS_Pave> BOPDS_ListOfPave;
@@ -226,10 +226,10 @@ typedef BOPDS_MapOfCommonBlock::Iterator BOPDS_MapIteratorOfMapOfCommonBlock;
 typedef BOPDS_MapOfPair::Iterator BOPDS_MapIteratorOfMapOfPair;
 typedef BOPDS_MapOfPave::Iterator BOPDS_MapIteratorOfMapOfPave;
 typedef BOPDS_MapOfPaveBlock::Iterator BOPDS_MapIteratorOfMapOfPaveBlock;
-typedef NCollection_Map<opencascade::handle<BOPDS_CommonBlock>, TColStd_MapTransientHasher> BOPDS_MapOfCommonBlock;
-typedef NCollection_Map<BOPDS_Pair, BOPDS_PairMapHasher> BOPDS_MapOfPair;
-typedef NCollection_Map<BOPDS_Pave, BOPDS_PaveMapHasher> BOPDS_MapOfPave;
-typedef NCollection_Map<opencascade::handle<BOPDS_PaveBlock>, TColStd_MapTransientHasher> BOPDS_MapOfPaveBlock;
+typedef NCollection_Map<opencascade::handle<BOPDS_CommonBlock>> BOPDS_MapOfCommonBlock;
+typedef NCollection_Map<BOPDS_Pair> BOPDS_MapOfPair;
+typedef NCollection_Map<BOPDS_Pave> BOPDS_MapOfPave;
+typedef NCollection_Map<opencascade::handle<BOPDS_PaveBlock>> BOPDS_MapOfPaveBlock;
 typedef BOPDS_DS * BOPDS_PDS;
 typedef BOPDS_Iterator * BOPDS_PIterator;
 typedef BOPDS_IteratorSI * BOPDS_PIteratorSI;
@@ -3094,30 +3094,6 @@ No available documentation.
 ") BOPDS_Pair;
 		 BOPDS_Pair(const Standard_Integer theIndex1, const Standard_Integer theIndex2);
 
-		/****************** HashCode ******************/
-		/**** md5 signature: 72f7d6afdc2f4b2c860a8e39d683afaf ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for this pair, in the range [1, theupperbound] @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		Standard_Integer HashCode(const Standard_Integer theUpperBound);
-
-        %extend {
-            Standard_Integer __hash__() {
-            return $self->HashCode(2147483647);
-            }
-        };
-
 		/****************** Indices ******************/
 		/**** md5 signature: fc670924ecc87d0f1a8c9d00f037ebe4 ****/
 		%feature("compactdefaultargs") Indices;
@@ -3173,62 +3149,24 @@ Sets the indices.
 ") SetIndices;
 		void SetIndices(const Standard_Integer theIndex1, const Standard_Integer theIndex2);
 
+
+%extend{
+    bool __eq_wrapper__(const BOPDS_Pair other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
 %extend BOPDS_Pair {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class BOPDS_PairMapHasher *
-****************************/
-class BOPDS_PairMapHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: c85e47133175d83798068d7e64809c5e ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-thePair: BOPDS_Pair
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given pair, in the range [1, theupperbound] @param thepair the pair which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const BOPDS_Pair & thePair, const Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 71eb4c6ff68b1ae40d9a934717eb05d6 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-thePair1: BOPDS_Pair
-thePair2: BOPDS_Pair
-
-Return
--------
-bool
-
-Description
------------
-No available documentation.
-") IsEqual;
-		static Standard_Boolean IsEqual(const BOPDS_Pair & thePair1, const BOPDS_Pair & thePair2);
-
-};
-
-
-%extend BOPDS_PairMapHasher {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3878,58 +3816,6 @@ Modifier updates the pave block. the extra paves are used to create new pave blo
 %make_alias(BOPDS_PaveBlock)
 
 %extend BOPDS_PaveBlock {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/****************************
-* class BOPDS_PaveMapHasher *
-****************************/
-class BOPDS_PaveMapHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 791c31f9fec12e23fd1b0cd45faa28b6 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-thePave: BOPDS_Pave
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given pave, in the range [1, theupperbound] @param thepave the pave which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const BOPDS_Pave & thePave, Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: d444894a28e2a9e217e1b1a112cf58a6 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-aPave1: BOPDS_Pave
-aPave2: BOPDS_Pave
-
-Return
--------
-bool
-
-Description
------------
-No available documentation.
-") IsEqual;
-		static Standard_Boolean IsEqual(const BOPDS_Pave & aPave1, const BOPDS_Pave & aPave2);
-
-};
-
-
-%extend BOPDS_PaveMapHasher {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4733,6 +4619,12 @@ Converts the type of shape <thet>, to integer value, that is returned.
 	}
 };
 
+/*************************
+* class hash<BOPDS_Pair> *
+*************************/
+/*************************
+* class hash<BOPDS_Pave> *
+*************************/
 /***********************
 * class BOPDS_InterfEE *
 ***********************/
@@ -5483,22 +5375,6 @@ def BOPDS_DS_NbInterfTypes(*args):
 @deprecated
 def BOPDS_Iterator_NbExtInterfs(*args):
 	return BOPDS_Iterator.NbExtInterfs(*args)
-
-@deprecated
-def BOPDS_PairMapHasher_HashCode(*args):
-	return BOPDS_PairMapHasher.HashCode(*args)
-
-@deprecated
-def BOPDS_PairMapHasher_IsEqual(*args):
-	return BOPDS_PairMapHasher.IsEqual(*args)
-
-@deprecated
-def BOPDS_PaveMapHasher_HashCode(*args):
-	return BOPDS_PaveMapHasher.HashCode(*args)
-
-@deprecated
-def BOPDS_PaveMapHasher_IsEqual(*args):
-	return BOPDS_PaveMapHasher.IsEqual(*args)
 
 @deprecated
 def BOPDS_Tools_HasBRep(*args):

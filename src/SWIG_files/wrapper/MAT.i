@@ -90,9 +90,9 @@ MAT_Right = MAT_Side.MAT_Right
 /* end handles declaration */
 
 /* templates */
-%template(MAT_DataMapOfIntegerArc) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Arc>,TColStd_MapIntegerHasher>;
+%template(MAT_DataMapOfIntegerArc) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Arc>>;
 
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Arc>,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Arc>> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT_DataMapOfIntegerArc::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -103,9 +103,9 @@ MAT_Right = MAT_Side.MAT_Right
     return l;
     }
 };
-%template(MAT_DataMapOfIntegerBasicElt) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_BasicElt>,TColStd_MapIntegerHasher>;
+%template(MAT_DataMapOfIntegerBasicElt) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_BasicElt>>;
 
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_BasicElt>,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_BasicElt>> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT_DataMapOfIntegerBasicElt::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -116,9 +116,9 @@ MAT_Right = MAT_Side.MAT_Right
     return l;
     }
 };
-%template(MAT_DataMapOfIntegerBisector) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Bisector>,TColStd_MapIntegerHasher>;
+%template(MAT_DataMapOfIntegerBisector) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Bisector>>;
 
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Bisector>,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Bisector>> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT_DataMapOfIntegerBisector::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -129,9 +129,9 @@ MAT_Right = MAT_Side.MAT_Right
     return l;
     }
 };
-%template(MAT_DataMapOfIntegerNode) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Node>,TColStd_MapIntegerHasher>;
+%template(MAT_DataMapOfIntegerNode) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Node>>;
 
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Node>,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT_Node>> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT_DataMapOfIntegerNode::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -161,14 +161,14 @@ MAT_Right = MAT_Side.MAT_Right
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Arc>, TColStd_MapIntegerHasher>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerArc;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_BasicElt>, TColStd_MapIntegerHasher>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Bisector>, TColStd_MapIntegerHasher>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerBisector;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Node>, TColStd_MapIntegerHasher>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerNode;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Arc>, TColStd_MapIntegerHasher> MAT_DataMapOfIntegerArc;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_BasicElt>, TColStd_MapIntegerHasher> MAT_DataMapOfIntegerBasicElt;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Bisector>, TColStd_MapIntegerHasher> MAT_DataMapOfIntegerBisector;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Node>, TColStd_MapIntegerHasher> MAT_DataMapOfIntegerNode;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Arc>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerArc;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_BasicElt>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerBasicElt;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Bisector>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerBisector;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Node>>::Iterator MAT_DataMapIteratorOfDataMapOfIntegerNode;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Arc>> MAT_DataMapOfIntegerArc;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_BasicElt>> MAT_DataMapOfIntegerBasicElt;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Bisector>> MAT_DataMapOfIntegerBisector;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT_Node>> MAT_DataMapOfIntegerNode;
 typedef NCollection_Sequence<opencascade::handle<MAT_Arc>> MAT_SequenceOfArc;
 typedef NCollection_Sequence<opencascade::handle<MAT_BasicElt>> MAT_SequenceOfBasicElt;
 /* end typedefs declaration */

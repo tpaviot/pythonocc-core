@@ -82,7 +82,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColStd_ListOfInteger.hxx>
 #include<TColStd_ListOfReal.hxx>
 #include<TColStd_ListOfTransient.hxx>
-#include<TColStd_MapIntegerHasher.hxx>
 #include<TColStd_MapIteratorOfMapOfAsciiString.hxx>
 #include<TColStd_MapIteratorOfMapOfInteger.hxx>
 #include<TColStd_MapIteratorOfMapOfReal.hxx>
@@ -92,8 +91,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TColStd_MapOfInteger.hxx>
 #include<TColStd_MapOfReal.hxx>
 #include<TColStd_MapOfTransient.hxx>
-#include<TColStd_MapRealHasher.hxx>
-#include<TColStd_MapTransientHasher.hxx>
 #include<TColStd_PackedMapOfInteger.hxx>
 #include<TColStd_SequenceOfAddress.hxx>
 #include<TColStd_SequenceOfAsciiString.hxx>

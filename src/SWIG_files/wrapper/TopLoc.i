@@ -72,16 +72,14 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(TopLoc_IndexedMapOfLocation) NCollection_IndexedMap<TopLoc_Location,TopLoc_MapLocationHasher>;
-%template(TopLoc_MapLocationHasher) NCollection_DefaultHasher<TopLoc_Location>;
-%template(TopLoc_MapOfLocation) NCollection_Map<TopLoc_Location,TopLoc_MapLocationHasher>;
+%template(TopLoc_IndexedMapOfLocation) NCollection_IndexedMap<TopLoc_Location>;
+%template(TopLoc_MapOfLocation) NCollection_Map<TopLoc_Location>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_IndexedMap<TopLoc_Location, TopLoc_MapLocationHasher> TopLoc_IndexedMapOfLocation;
-typedef NCollection_Map<TopLoc_Location, TopLoc_MapLocationHasher>::Iterator TopLoc_MapIteratorOfMapOfLocation;
-typedef NCollection_DefaultHasher<TopLoc_Location> TopLoc_MapLocationHasher;
-typedef NCollection_Map<TopLoc_Location, TopLoc_MapLocationHasher> TopLoc_MapOfLocation;
+typedef NCollection_IndexedMap<TopLoc_Location> TopLoc_IndexedMapOfLocation;
+typedef NCollection_Map<TopLoc_Location>::Iterator TopLoc_MapIteratorOfMapOfLocation;
+typedef NCollection_Map<TopLoc_Location> TopLoc_MapOfLocation;
 /* end typedefs declaration */
 
 /***********************
@@ -395,28 +393,17 @@ Returns the power elevation of the first elementary datum. exceptions standard_n
 		Standard_Integer FirstPower();
 
 		/****************** HashCode ******************/
-		/**** md5 signature: 63d1f963e092468b3b680fe64f4cfd8b ****/
+		/**** md5 signature: 06b666a7ce1ccd2c4e4b4282e54344e0 ****/
 		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theUpperBound: int
-
-Return
+		%feature("autodoc", "Return
 -------
-int
+size_t
 
 Description
 -----------
-Returns a hashed value for this local coordinate system. this value is used, with map tables, to store and retrieve the object easily, and is in the range [1, theupperbound]. @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
+Returns a hashed value for this local coordinate system. this value is used, with map tables, to store and retrieve the object easily return a computed hash code.
 ") HashCode;
-		Standard_Integer HashCode(Standard_Integer theUpperBound);
-
-        %extend {
-            Standard_Integer __hash__() {
-            return $self->HashCode(2147483647);
-            }
-        };
+		size_t HashCode();
 
 		/****************** Identity ******************/
 		/**** md5 signature: 64fc51a3ba989a9b1d65ef638ba90638 ****/

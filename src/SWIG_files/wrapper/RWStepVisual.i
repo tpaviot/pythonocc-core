@@ -7973,6 +7973,92 @@ No available documentation.
 	}
 };
 
+/**********************************************
+* class RWStepVisual_RWTriangulatedSurfaceSet *
+**********************************************/
+class RWStepVisual_RWTriangulatedSurfaceSet {
+	public:
+		/****************** RWStepVisual_RWTriangulatedSurfaceSet ******************/
+		/**** md5 signature: 5e9df6518bf7b36708cb1fbd2f749332 ****/
+		%feature("compactdefaultargs") RWStepVisual_RWTriangulatedSurfaceSet;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Default constructor.
+") RWStepVisual_RWTriangulatedSurfaceSet;
+		 RWStepVisual_RWTriangulatedSurfaceSet();
+
+		/****************** ReadStep ******************/
+		/**** md5 signature: b4e19d8bf1f714d429a78d95d0a88947 ****/
+		%feature("compactdefaultargs") ReadStep;
+		%feature("autodoc", "
+Parameters
+----------
+theData: StepData_StepReaderData
+theNum: int
+theCheck: Interface_Check
+theEnt: StepVisual_TriangulatedSurfaceSet
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") ReadStep;
+		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theCheck, const opencascade::handle<StepVisual_TriangulatedSurfaceSet> & theEnt);
+
+		/****************** Share ******************/
+		/**** md5 signature: 2dceaa42cdf81fa599f890a8b2f3de2e ****/
+		%feature("compactdefaultargs") Share;
+		%feature("autodoc", "
+Parameters
+----------
+theEnt: StepVisual_TriangulatedSurfaceSet
+theIter: Interface_EntityIterator
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") Share;
+		void Share(const opencascade::handle<StepVisual_TriangulatedSurfaceSet> & theEnt, Interface_EntityIterator & theIter);
+
+		/****************** WriteStep ******************/
+		/**** md5 signature: b585af38434e68b7729b4a1a0bfb3e75 ****/
+		%feature("compactdefaultargs") WriteStep;
+		%feature("autodoc", "
+Parameters
+----------
+theSW: StepData_StepWriter
+theEnt: StepVisual_TriangulatedSurfaceSet
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") WriteStep;
+		void WriteStep(StepData_StepWriter & theSW, const opencascade::handle<StepVisual_TriangulatedSurfaceSet> & theEnt);
+
+};
+
+
+%extend RWStepVisual_RWTriangulatedSurfaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /**********************************
 * class RWStepVisual_RWViewVolume *
 **********************************/

@@ -26,8 +26,6 @@ TColStd_IndexedMapOfReal = NewType("TColStd_IndexedMapOfReal", Any)
 # the following typedef cannot be wrapped as is
 TColStd_IndexedMapOfTransient = NewType("TColStd_IndexedMapOfTransient", Any)
 # the following typedef cannot be wrapped as is
-TColStd_MapIntegerHasher = NewType("TColStd_MapIntegerHasher", Any)
-# the following typedef cannot be wrapped as is
 TColStd_MapIteratorOfMapOfAsciiString = NewType("TColStd_MapIteratorOfMapOfAsciiString", Any)
 # the following typedef cannot be wrapped as is
 TColStd_MapIteratorOfMapOfInteger = NewType("TColStd_MapIteratorOfMapOfInteger", Any)
@@ -45,10 +43,6 @@ TColStd_MapOfInteger = NewType("TColStd_MapOfInteger", Any)
 TColStd_MapOfReal = NewType("TColStd_MapOfReal", Any)
 # the following typedef cannot be wrapped as is
 TColStd_MapOfTransient = NewType("TColStd_MapOfTransient", Any)
-# the following typedef cannot be wrapped as is
-TColStd_MapRealHasher = NewType("TColStd_MapRealHasher", Any)
-# the following typedef cannot be wrapped as is
-TColStd_MapTransientHasher = NewType("TColStd_MapTransientHasher", Any)
 
 class TColStd_Array1OfAsciiString:
     @overload

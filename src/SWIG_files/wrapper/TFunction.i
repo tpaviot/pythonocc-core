@@ -99,7 +99,7 @@ TFunction_ES_Failed = TFunction_ExecutionStatus.TFunction_ES_Failed
 /* end handles declaration */
 
 /* templates */
-%template(TFunction_Array1OfDataMapOfGUIDDriver) NCollection_Array1<TFunction_DataMapOfGUIDDriver>;
+//%template(TFunction_Array1OfDataMapOfGUIDDriver) NCollection_Array1<TFunction_DataMapOfGUIDDriver>;
 
 %extend NCollection_Array1<TFunction_DataMapOfGUIDDriver> {
     %pythoncode {
@@ -134,19 +134,19 @@ TFunction_ES_Failed = TFunction_ExecutionStatus.TFunction_ES_Failed
     __next__ = next
     }
 };
-%template(TFunction_DataMapOfGUIDDriver) NCollection_DataMap<Standard_GUID,opencascade::handle<TFunction_Driver>,Standard_GUID>;
-%template(TFunction_DataMapOfLabelListOfLabel) NCollection_DataMap<TDF_Label,TDF_LabelList,TDF_LabelMapHasher>;
-%template(TFunction_DoubleMapOfIntegerLabel) NCollection_DoubleMap<Standard_Integer,TDF_Label,TColStd_MapIntegerHasher,TDF_LabelMapHasher>;
+%template(TFunction_DataMapOfGUIDDriver) NCollection_DataMap<Standard_GUID,opencascade::handle<TFunction_Driver>>;
+%template(TFunction_DataMapOfLabelListOfLabel) NCollection_DataMap<TDF_Label,TDF_LabelList>;
+%template(TFunction_DoubleMapOfIntegerLabel) NCollection_DoubleMap<Standard_Integer,TDF_Label>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Array1<TFunction_DataMapOfGUIDDriver> TFunction_Array1OfDataMapOfGUIDDriver;
-typedef NCollection_DataMap<Standard_GUID, opencascade::handle<TFunction_Driver>, Standard_GUID>::Iterator TFunction_DataMapIteratorOfDataMapOfGUIDDriver;
-typedef NCollection_DataMap<TDF_Label, TDF_LabelList, TDF_LabelMapHasher>::Iterator TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel;
-typedef NCollection_DataMap<Standard_GUID, opencascade::handle<TFunction_Driver>, Standard_GUID> TFunction_DataMapOfGUIDDriver;
-typedef NCollection_DataMap<TDF_Label, TDF_LabelList, TDF_LabelMapHasher> TFunction_DataMapOfLabelListOfLabel;
-typedef NCollection_DoubleMap<Standard_Integer, TDF_Label, TColStd_MapIntegerHasher, TDF_LabelMapHasher>::Iterator TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel;
-typedef NCollection_DoubleMap<Standard_Integer, TDF_Label, TColStd_MapIntegerHasher, TDF_LabelMapHasher> TFunction_DoubleMapOfIntegerLabel;
+typedef NCollection_DataMap<Standard_GUID, opencascade::handle<TFunction_Driver>>::Iterator TFunction_DataMapIteratorOfDataMapOfGUIDDriver;
+typedef NCollection_DataMap<TDF_Label, TDF_LabelList>::Iterator TFunction_DataMapIteratorOfDataMapOfLabelListOfLabel;
+typedef NCollection_DataMap<Standard_GUID, opencascade::handle<TFunction_Driver>> TFunction_DataMapOfGUIDDriver;
+typedef NCollection_DataMap<TDF_Label, TDF_LabelList> TFunction_DataMapOfLabelListOfLabel;
+typedef NCollection_DoubleMap<Standard_Integer, TDF_Label>::Iterator TFunction_DoubleMapIteratorOfDoubleMapOfIntegerLabel;
+typedef NCollection_DoubleMap<Standard_Integer, TDF_Label> TFunction_DoubleMapOfIntegerLabel;
 /* end typedefs declaration */
 
 /*************************

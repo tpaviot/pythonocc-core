@@ -65,7 +65,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TopTools_MapOfOrientedShape.hxx>
 #include<TopTools_MapOfShape.hxx>
 #include<TopTools_MutexForShapeProvider.hxx>
-#include<TopTools_OrientedShapeMapHasher.hxx>
 #include<TopTools_SequenceOfShape.hxx>
 #include<TopTools_ShapeMapHasher.hxx>
 #include<TopTools_ShapeSet.hxx>

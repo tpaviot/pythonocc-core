@@ -174,14 +174,14 @@ ShapeExtend_FAIL = ShapeExtend_Status.ShapeExtend_FAIL
 
 /* templates */
 %template(ShapeExtend_DataMapOfShapeListOfMsg) NCollection_DataMap<TopoDS_Shape,Message_ListOfMsg,TopTools_ShapeMapHasher>;
-%template(ShapeExtend_DataMapOfTransientListOfMsg) NCollection_DataMap<opencascade::handle<Standard_Transient>,Message_ListOfMsg,TColStd_MapTransientHasher>;
+%template(ShapeExtend_DataMapOfTransientListOfMsg) NCollection_DataMap<opencascade::handle<Standard_Transient>,Message_ListOfMsg>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_DataMap<TopoDS_Shape, Message_ListOfMsg, TopTools_ShapeMapHasher>::Iterator ShapeExtend_DataMapIteratorOfDataMapOfShapeListOfMsg;
-typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Message_ListOfMsg, TColStd_MapTransientHasher>::Iterator ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg;
+typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Message_ListOfMsg>::Iterator ShapeExtend_DataMapIteratorOfDataMapOfTransientListOfMsg;
 typedef NCollection_DataMap<TopoDS_Shape, Message_ListOfMsg, TopTools_ShapeMapHasher> ShapeExtend_DataMapOfShapeListOfMsg;
-typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Message_ListOfMsg, TColStd_MapTransientHasher> ShapeExtend_DataMapOfTransientListOfMsg;
+typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Message_ListOfMsg> ShapeExtend_DataMapOfTransientListOfMsg;
 /* end typedefs declaration */
 
 /********************

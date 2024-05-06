@@ -87,14 +87,14 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(BRepMAT2d_DataMapOfBasicEltShape) NCollection_DataMap<opencascade::handle<MAT_BasicElt>,TopoDS_Shape,TColStd_MapTransientHasher>;
+%template(BRepMAT2d_DataMapOfBasicEltShape) NCollection_DataMap<opencascade::handle<MAT_BasicElt>,TopoDS_Shape>;
 %template(BRepMAT2d_DataMapOfShapeSequenceOfBasicElt) NCollection_DataMap<TopoDS_Shape,MAT_SequenceOfBasicElt,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<opencascade::handle<MAT_BasicElt>, TopoDS_Shape, TColStd_MapTransientHasher>::Iterator BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape;
+typedef NCollection_DataMap<opencascade::handle<MAT_BasicElt>, TopoDS_Shape>::Iterator BRepMAT2d_DataMapIteratorOfDataMapOfBasicEltShape;
 typedef NCollection_DataMap<TopoDS_Shape, MAT_SequenceOfBasicElt, TopTools_ShapeMapHasher>::Iterator BRepMAT2d_DataMapIteratorOfDataMapOfShapeSequenceOfBasicElt;
-typedef NCollection_DataMap<opencascade::handle<MAT_BasicElt>, TopoDS_Shape, TColStd_MapTransientHasher> BRepMAT2d_DataMapOfBasicEltShape;
+typedef NCollection_DataMap<opencascade::handle<MAT_BasicElt>, TopoDS_Shape> BRepMAT2d_DataMapOfBasicEltShape;
 typedef NCollection_DataMap<TopoDS_Shape, MAT_SequenceOfBasicElt, TopTools_ShapeMapHasher> BRepMAT2d_DataMapOfShapeSequenceOfBasicElt;
 /* end typedefs declaration */
 

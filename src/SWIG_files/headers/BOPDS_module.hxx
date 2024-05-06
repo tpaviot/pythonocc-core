@@ -47,10 +47,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPDS_PIterator.hxx>
 #include<BOPDS_PIteratorSI.hxx>
 #include<BOPDS_Pair.hxx>
-#include<BOPDS_PairMapHasher.hxx>
 #include<BOPDS_Pave.hxx>
 #include<BOPDS_PaveBlock.hxx>
-#include<BOPDS_PaveMapHasher.hxx>
 #include<BOPDS_Point.hxx>
 #include<BOPDS_ShapeInfo.hxx>
 #include<BOPDS_SubIterator.hxx>

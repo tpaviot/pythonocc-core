@@ -21,7 +21,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<Standard.hxx>
 #include<Standard_AbortiveTransaction.hxx>
-#include<Standard_Address.hxx>
 #include<Standard_ArrayStreamBuffer.hxx>
 #include<Standard_Assert.hxx>
 #include<Standard_Atomic.hxx>
@@ -29,6 +28,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_Byte.hxx>
 #include<Standard_CLocaleSentry.hxx>
 #include<Standard_CString.hxx>
+#include<Standard_CStringHasher.hxx>
 #include<Standard_Character.hxx>
 #include<Standard_Condition.hxx>
 #include<Standard_ConstructionError.hxx>
@@ -42,11 +42,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_Dump.hxx>
 #include<Standard_ErrorHandler.hxx>
 #include<Standard_ExtCharacter.hxx>
-#include<Standard_ExtString.hxx>
 #include<Standard_Failure.hxx>
 #include<Standard_GUID.hxx>
 #include<Standard_Handle.hxx>
 #include<Standard_HandlerStatus.hxx>
+#include<Standard_HashUtils.hxx>
 #include<Standard_IStream.hxx>
 #include<Standard_ImmutableObject.hxx>
 #include<Standard_Integer.hxx>
@@ -54,9 +54,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_LicenseError.hxx>
 #include<Standard_LicenseNotFound.hxx>
 #include<Standard_MMgrOpt.hxx>
-#include<Standard_MMgrRaw.hxx>
 #include<Standard_MMgrRoot.hxx>
-#include<Standard_MMgrTBBalloc.hxx>
 #include<Standard_Macro.hxx>
 #include<Standard_MultiplyDefined.hxx>
 #include<Standard_Mutex.hxx>
@@ -84,7 +82,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_Real.hxx>
 #include<Standard_SStream.hxx>
 #include<Standard_ShortReal.hxx>
-#include<Standard_Size.hxx>
 #include<Standard_Std.hxx>
 #include<Standard_Stream.hxx>
 #include<Standard_ThreadId.hxx>
@@ -99,6 +96,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<Standard_WarningDisableFunctionCast.hxx>
 #include<Standard_WarningsDisable.hxx>
 #include<Standard_WarningsRestore.hxx>
-#include<Standard_math.hxx>
 
 #endif // STANDARD_HXX

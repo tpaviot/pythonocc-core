@@ -1179,8 +1179,8 @@ Aspect_XRTrackedDeviceRole_Other = Aspect_XRTrackedDeviceRole.Aspect_XRTrackedDe
     __next__ = next
     }
 };
-%template(Aspect_XRActionMap) NCollection_IndexedDataMap<TCollection_AsciiString,opencascade::handle<Aspect_XRAction>,TCollection_AsciiString>;
-%template(Aspect_XRActionSetMap) NCollection_IndexedDataMap<TCollection_AsciiString,opencascade::handle<Aspect_XRActionSet>,TCollection_AsciiString>;
+%template(Aspect_XRActionMap) NCollection_IndexedDataMap<TCollection_AsciiString,opencascade::handle<Aspect_XRAction>>;
+%template(Aspect_XRActionSetMap) NCollection_IndexedDataMap<TCollection_AsciiString,opencascade::handle<Aspect_XRActionSet>>;
 /* end templates declaration */
 
 /* typedefs */
@@ -1195,8 +1195,8 @@ typedef NCollection_Array1<Aspect_TrackedDevicePose> Aspect_TrackedDevicePoseArr
 typedef unsigned int Aspect_VKey;
 typedef unsigned int Aspect_VKeyFlags;
 typedef unsigned int Aspect_VKeyMouse;
-typedef NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Aspect_XRAction>, TCollection_AsciiString> Aspect_XRActionMap;
-typedef NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Aspect_XRActionSet>, TCollection_AsciiString> Aspect_XRActionSetMap;
+typedef NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Aspect_XRAction>> Aspect_XRActionMap;
+typedef NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Aspect_XRActionSet>> Aspect_XRActionSetMap;
 typedef struct __GLXFBConfigRec * GLXFBConfig;
 typedef void * HANDLE;
 /* end typedefs declaration */

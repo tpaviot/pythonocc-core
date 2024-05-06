@@ -1090,7 +1090,7 @@ Displays the statistics for the last translation.
 		void PrintStatsTransfer(std::ostream &OutValue, const Standard_Integer what, const Standard_Integer mode = 0);
 
 		/****************** ReadFile ******************/
-		/**** md5 signature: 0c5675761cd6df0c5f286882695ad872 ****/
+		/**** md5 signature: 9bcb992176922214d5a97bb552525a68 ****/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
@@ -1105,10 +1105,10 @@ Description
 -----------
 Loads a file and returns the read status zero for a model which compies with the controller.
 ") ReadFile;
-		IFSelect_ReturnStatus ReadFile(Standard_CString filename);
+		virtual IFSelect_ReturnStatus ReadFile(Standard_CString filename);
 
 		/****************** ReadStream ******************/
-		/**** md5 signature: ee73b79142d0bdf122db2d304fa9d6f3 ****/
+		/**** md5 signature: aed7209903d9aa23c26d3f25b7956d06 ****/
 		%feature("compactdefaultargs") ReadStream;
 		%feature("autodoc", "
 Parameters
@@ -1124,7 +1124,7 @@ Description
 -----------
 Loads a file from stream and returns the read status.
 ") ReadStream;
-		IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
+		virtual IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
 
 		/****************** RootForTransfer ******************/
 		/**** md5 signature: c2a76b8d96e252b5e6c8127f08dd357b ****/
@@ -3710,7 +3710,7 @@ In addition to basic cleardata, clears transfer and management for interactive u
 		virtual void ClearData(const Standard_Integer theMode);
 
 		/****************** Context ******************/
-		/**** md5 signature: 7cd4d0e47bf5324a740ce16c99b439c1 ****/
+		/**** md5 signature: d5688196fd398cc8343bbd06a6d3a0ad ****/
 		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "Return
 -------
@@ -3720,7 +3720,7 @@ Description
 -----------
 Returns the current context list, null if not defined the context is given to the transientprocess for transferread.
 ") Context;
-		const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> & Context();
+		NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> Context();
 
 		/****************** InitTransferReader ******************/
 		/**** md5 signature: ed10d9fce1a711a68af788321fdb54fc ****/
@@ -3854,7 +3854,7 @@ Returns the name of the last selected norm. if none is defined, returns an empty
 		Standard_CString SelectedNorm(const Standard_Boolean theRsc = Standard_False);
 
 		/****************** SetAllContext ******************/
-		/**** md5 signature: c9d911ff4f5d4a8bfcada1763844bd0a ****/
+		/**** md5 signature: 062ca6fabb8fcb6dfa4021d82f6bfafa ****/
 		%feature("compactdefaultargs") SetAllContext;
 		%feature("autodoc", "
 Parameters
@@ -3869,7 +3869,7 @@ Description
 -----------
 Sets the current context list, as a whole sets it to the transferreader.
 ") SetAllContext;
-		void SetAllContext(const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > & theContext);
+		void SetAllContext(NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > theContext);
 
 		/****************** SetController ******************/
 		/**** md5 signature: d7eabfce93065329564b5f68591b841a ****/

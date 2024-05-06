@@ -139,7 +139,7 @@ TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion.TDocStd_FormatVersion_CURR
 /* end handles declaration */
 
 /* templates */
-%template(TDocStd_LabelIDMapDataMap) NCollection_DataMap<TDF_Label,TDF_IDMap,TDF_LabelMapHasher>;
+%template(TDocStd_LabelIDMapDataMap) NCollection_DataMap<TDF_Label,TDF_IDMap>;
 %template(TDocStd_SequenceOfApplicationDelta) NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>>;
 
 %extend NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>> {
@@ -159,8 +159,8 @@ TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion.TDocStd_FormatVersion_CURR
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TDF_Label, TDF_IDMap, TDF_LabelMapHasher>::Iterator TDocStd_DataMapIteratorOfLabelIDMapDataMap;
-typedef NCollection_DataMap<TDF_Label, TDF_IDMap, TDF_LabelMapHasher> TDocStd_LabelIDMapDataMap;
+typedef NCollection_DataMap<TDF_Label, TDF_IDMap>::Iterator TDocStd_DataMapIteratorOfLabelIDMapDataMap;
+typedef NCollection_DataMap<TDF_Label, TDF_IDMap> TDocStd_LabelIDMapDataMap;
 typedef NCollection_Sequence<opencascade::handle<TDocStd_ApplicationDelta>> TDocStd_SequenceOfApplicationDelta;
 typedef NCollection_Sequence<opencascade::handle<TDocStd_Document>> TDocStd_SequenceOfDocument;
 typedef TDocStd_XLink * TDocStd_XLinkPtr;

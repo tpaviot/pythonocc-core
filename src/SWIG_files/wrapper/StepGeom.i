@@ -548,8 +548,6 @@ StepGeom_tpUnspecified = StepGeom_TrimmingPreference.StepGeom_tpUnspecified
     __next__ = next
     }
 };
-%template(StepGeom_Array2OfCartesianPoint) NCollection_Array2<opencascade::handle<StepGeom_CartesianPoint>>;
-%template(StepGeom_Array2OfSurfacePatch) NCollection_Array2<opencascade::handle<StepGeom_SurfacePatch>>;
 /* end templates declaration */
 
 /* typedefs */

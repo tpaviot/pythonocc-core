@@ -82,15 +82,15 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(XmlMDF_MapOfDriver) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<XmlMDF_ADriver>,TCollection_AsciiString>;
-%template(XmlMDF_TypeADriverMap) NCollection_DataMap<opencascade::handle<Standard_Type>,opencascade::handle<XmlMDF_ADriver>,TColStd_MapTransientHasher>;
+%template(XmlMDF_MapOfDriver) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<XmlMDF_ADriver>>;
+%template(XmlMDF_TypeADriverMap) NCollection_DataMap<opencascade::handle<Standard_Type>,opencascade::handle<XmlMDF_ADriver>>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<XmlMDF_ADriver>, TCollection_AsciiString>::Iterator XmlMDF_DataMapIteratorOfMapOfDriver;
-typedef NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>, TColStd_MapTransientHasher>::Iterator XmlMDF_DataMapIteratorOfTypeADriverMap;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<XmlMDF_ADriver>, TCollection_AsciiString> XmlMDF_MapOfDriver;
-typedef NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>, TColStd_MapTransientHasher> XmlMDF_TypeADriverMap;
+typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<XmlMDF_ADriver>>::Iterator XmlMDF_DataMapIteratorOfMapOfDriver;
+typedef NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>>::Iterator XmlMDF_DataMapIteratorOfTypeADriverMap;
+typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<XmlMDF_ADriver>> XmlMDF_MapOfDriver;
+typedef NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>> XmlMDF_TypeADriverMap;
 /* end typedefs declaration */
 
 /***************

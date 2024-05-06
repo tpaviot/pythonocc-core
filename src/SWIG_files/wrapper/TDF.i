@@ -131,7 +131,7 @@ enum  {
     __next__ = next
     }
 };
-%template(TDF_AttributeDataMap) NCollection_DataMap<opencascade::handle<TDF_Attribute>,opencascade::handle<TDF_Attribute>,TColStd_MapTransientHasher>;
+%template(TDF_AttributeDataMap) NCollection_DataMap<opencascade::handle<TDF_Attribute>,opencascade::handle<TDF_Attribute>>;
 %template(TDF_AttributeDeltaList) NCollection_List<opencascade::handle<TDF_AttributeDelta>>;
 
 %extend NCollection_List<opencascade::handle<TDF_AttributeDelta>> {
@@ -140,8 +140,8 @@ enum  {
         return self.Size()
     }
 };
-%template(TDF_AttributeDoubleMap) NCollection_DoubleMap<opencascade::handle<TDF_Attribute>,opencascade::handle<TDF_Attribute>,TColStd_MapTransientHasher,TColStd_MapTransientHasher>;
-%template(TDF_AttributeIndexedMap) NCollection_IndexedMap<opencascade::handle<TDF_Attribute>,TColStd_MapTransientHasher>;
+%template(TDF_AttributeDoubleMap) NCollection_DoubleMap<opencascade::handle<TDF_Attribute>,opencascade::handle<TDF_Attribute>>;
+%template(TDF_AttributeIndexedMap) NCollection_IndexedMap<opencascade::handle<TDF_Attribute>>;
 %template(TDF_AttributeList) NCollection_List<opencascade::handle<TDF_Attribute>>;
 
 %extend NCollection_List<opencascade::handle<TDF_Attribute>> {
@@ -150,7 +150,7 @@ enum  {
         return self.Size()
     }
 };
-%template(TDF_AttributeMap) NCollection_Map<opencascade::handle<TDF_Attribute>,TColStd_MapTransientHasher>;
+%template(TDF_AttributeMap) NCollection_Map<opencascade::handle<TDF_Attribute>>;
 %template(TDF_AttributeSequence) NCollection_Sequence<opencascade::handle<TDF_Attribute>>;
 
 %extend NCollection_Sequence<opencascade::handle<TDF_Attribute>> {
@@ -167,7 +167,7 @@ enum  {
         return self.Size()
     }
 };
-%template(TDF_GUIDProgIDMap) NCollection_DoubleMap<Standard_GUID,TCollection_ExtendedString,Standard_GUID,TCollection_ExtendedString>;
+%template(TDF_GUIDProgIDMap) NCollection_DoubleMap<Standard_GUID,TCollection_ExtendedString>;
 %template(TDF_HAllocator) opencascade::handle<NCollection_BaseAllocator>;
 %template(TDF_IDList) NCollection_List<Standard_GUID>;
 
@@ -177,11 +177,11 @@ enum  {
         return self.Size()
     }
 };
-%template(TDF_IDMap) NCollection_Map<Standard_GUID,Standard_GUID>;
-%template(TDF_LabelDataMap) NCollection_DataMap<TDF_Label,TDF_Label,TDF_LabelMapHasher>;
-%template(TDF_LabelDoubleMap) NCollection_DoubleMap<TDF_Label,TDF_Label,TDF_LabelMapHasher,TDF_LabelMapHasher>;
-%template(TDF_LabelIndexedMap) NCollection_IndexedMap<TDF_Label,TDF_LabelMapHasher>;
-%template(TDF_LabelIntegerMap) NCollection_DataMap<TDF_Label,Standard_Integer,TDF_LabelMapHasher>;
+%template(TDF_IDMap) NCollection_Map<Standard_GUID>;
+%template(TDF_LabelDataMap) NCollection_DataMap<TDF_Label,TDF_Label>;
+%template(TDF_LabelDoubleMap) NCollection_DoubleMap<TDF_Label,TDF_Label>;
+%template(TDF_LabelIndexedMap) NCollection_IndexedMap<TDF_Label>;
+%template(TDF_LabelIntegerMap) NCollection_DataMap<TDF_Label,Standard_Integer>;
 %template(TDF_LabelList) NCollection_List<TDF_Label>;
 
 %extend NCollection_List<TDF_Label> {
@@ -190,7 +190,7 @@ enum  {
         return self.Size()
     }
 };
-%template(TDF_LabelMap) NCollection_Map<TDF_Label,TDF_LabelMapHasher>;
+%template(TDF_LabelMap) NCollection_Map<TDF_Label>;
 %template(TDF_LabelSequence) NCollection_Sequence<TDF_Label>;
 
 %extend NCollection_Sequence<TDF_Label> {
@@ -208,30 +208,30 @@ enum  {
 
 /* typedefs */
 typedef NCollection_Array1<opencascade::handle<TDF_Attribute>> TDF_AttributeArray1;
-typedef NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher> TDF_AttributeDataMap;
+typedef NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>> TDF_AttributeDataMap;
 typedef NCollection_List<opencascade::handle<TDF_AttributeDelta>> TDF_AttributeDeltaList;
-typedef NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher, TColStd_MapTransientHasher> TDF_AttributeDoubleMap;
-typedef NCollection_IndexedMap<opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher> TDF_AttributeIndexedMap;
+typedef NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>> TDF_AttributeDoubleMap;
+typedef NCollection_IndexedMap<opencascade::handle<TDF_Attribute>> TDF_AttributeIndexedMap;
 typedef NCollection_List<opencascade::handle<TDF_Attribute>> TDF_AttributeList;
-typedef NCollection_Map<opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher> TDF_AttributeMap;
+typedef NCollection_Map<opencascade::handle<TDF_Attribute>> TDF_AttributeMap;
 typedef NCollection_Sequence<opencascade::handle<TDF_Attribute>> TDF_AttributeSequence;
-typedef NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher>::Iterator TDF_DataMapIteratorOfAttributeDataMap;
-typedef NCollection_DataMap<TDF_Label, TDF_Label, TDF_LabelMapHasher>::Iterator TDF_DataMapIteratorOfLabelDataMap;
-typedef NCollection_DataMap<TDF_Label, Standard_Integer, TDF_LabelMapHasher>::Iterator TDF_DataMapIteratorOfLabelIntegerMap;
+typedef NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>>::Iterator TDF_DataMapIteratorOfAttributeDataMap;
+typedef NCollection_DataMap<TDF_Label, TDF_Label>::Iterator TDF_DataMapIteratorOfLabelDataMap;
+typedef NCollection_DataMap<TDF_Label, Standard_Integer>::Iterator TDF_DataMapIteratorOfLabelIntegerMap;
 typedef NCollection_List<opencascade::handle<TDF_Delta>> TDF_DeltaList;
-typedef NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher, TColStd_MapTransientHasher>::Iterator TDF_DoubleMapIteratorOfAttributeDoubleMap;
-typedef NCollection_DoubleMap<Standard_GUID, TCollection_ExtendedString, Standard_GUID, TCollection_ExtendedString>::Iterator TDF_DoubleMapIteratorOfGUIDProgIDMap;
-typedef NCollection_DoubleMap<TDF_Label, TDF_Label, TDF_LabelMapHasher, TDF_LabelMapHasher>::Iterator TDF_DoubleMapIteratorOfLabelDoubleMap;
-typedef NCollection_DoubleMap<Standard_GUID, TCollection_ExtendedString, Standard_GUID, TCollection_ExtendedString> TDF_GUIDProgIDMap;
+typedef NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>>::Iterator TDF_DoubleMapIteratorOfAttributeDoubleMap;
+typedef NCollection_DoubleMap<Standard_GUID, TCollection_ExtendedString>::Iterator TDF_DoubleMapIteratorOfGUIDProgIDMap;
+typedef NCollection_DoubleMap<TDF_Label, TDF_Label>::Iterator TDF_DoubleMapIteratorOfLabelDoubleMap;
+typedef NCollection_DoubleMap<Standard_GUID, TCollection_ExtendedString> TDF_GUIDProgIDMap;
 typedef opencascade::handle<NCollection_BaseAllocator> TDF_HAllocator;
 typedef NCollection_List<Standard_GUID> TDF_IDList;
-typedef NCollection_Map<Standard_GUID, Standard_GUID> TDF_IDMap;
-typedef NCollection_DataMap<TDF_Label, TDF_Label, TDF_LabelMapHasher> TDF_LabelDataMap;
-typedef NCollection_DoubleMap<TDF_Label, TDF_Label, TDF_LabelMapHasher, TDF_LabelMapHasher> TDF_LabelDoubleMap;
-typedef NCollection_IndexedMap<TDF_Label, TDF_LabelMapHasher> TDF_LabelIndexedMap;
-typedef NCollection_DataMap<TDF_Label, Standard_Integer, TDF_LabelMapHasher> TDF_LabelIntegerMap;
+typedef NCollection_Map<Standard_GUID> TDF_IDMap;
+typedef NCollection_DataMap<TDF_Label, TDF_Label> TDF_LabelDataMap;
+typedef NCollection_DoubleMap<TDF_Label, TDF_Label> TDF_LabelDoubleMap;
+typedef NCollection_IndexedMap<TDF_Label> TDF_LabelIndexedMap;
+typedef NCollection_DataMap<TDF_Label, Standard_Integer> TDF_LabelIntegerMap;
 typedef NCollection_List<TDF_Label> TDF_LabelList;
-typedef NCollection_Map<TDF_Label, TDF_LabelMapHasher> TDF_LabelMap;
+typedef NCollection_Map<TDF_Label> TDF_LabelMap;
 typedef TDF_LabelNode * TDF_LabelNodePtr;
 typedef NCollection_Sequence<TDF_Label> TDF_LabelSequence;
 typedef NCollection_List<opencascade::handle<TDF_AttributeDelta>>::Iterator TDF_ListIteratorOfAttributeDeltaList;
@@ -239,9 +239,9 @@ typedef NCollection_List<opencascade::handle<TDF_Attribute>>::Iterator TDF_ListI
 typedef NCollection_List<opencascade::handle<TDF_Delta>>::Iterator TDF_ListIteratorOfDeltaList;
 typedef NCollection_List<Standard_GUID>::Iterator TDF_ListIteratorOfIDList;
 typedef NCollection_List<TDF_Label>::Iterator TDF_ListIteratorOfLabelList;
-typedef NCollection_Map<opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher>::Iterator TDF_MapIteratorOfAttributeMap;
-typedef NCollection_Map<Standard_GUID, Standard_GUID>::Iterator TDF_MapIteratorOfIDMap;
-typedef NCollection_Map<TDF_Label, TDF_LabelMapHasher>::Iterator TDF_MapIteratorOfLabelMap;
+typedef NCollection_Map<opencascade::handle<TDF_Attribute>>::Iterator TDF_MapIteratorOfAttributeMap;
+typedef NCollection_Map<Standard_GUID>::Iterator TDF_MapIteratorOfIDMap;
+typedef NCollection_Map<TDF_Label>::Iterator TDF_MapIteratorOfLabelMap;
 /* end typedefs declaration */
 
 /************
@@ -2919,6 +2919,7 @@ Attributes with id owned by <anidlist> are to be kept and the filter will answer
 ******************/
 class TDF_Label {
 	public:
+		friend struct std:: hash;
 		/****************** TDF_Label ******************/
 		/**** md5 signature: 1a8e59ba046467c4e163db826620fcdb ****/
 		%feature("compactdefaultargs") TDF_Label;
@@ -3526,58 +3527,6 @@ def __eq__(self, right):
 
 
 %extend TDF_Label {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/***************************
-* class TDF_LabelMapHasher *
-***************************/
-class TDF_LabelMapHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 2cdcc033ac044fed1fb3a8fdba71cfaf ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theLabel: TDF_Label
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given label, in the range [1, theupperbound] @param thelabel the label which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const TDF_Label & theLabel, const Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: b850e580db72fa846faf5aeaf4129849 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-aLab1: TDF_Label
-aLab2: TDF_Label
-
-Return
--------
-bool
-
-Description
------------
-Returns true when the two keys are the same. two same keys must have the same hashcode, the contrary is not necessary.
-") IsEqual;
-		static Standard_Boolean IsEqual(const TDF_Label & aLab1, const TDF_Label & aLab2);
-
-};
-
-
-%extend TDF_LabelMapHasher {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -5365,14 +5314,6 @@ def TDF_CopyTool_Copy(*args):
 @deprecated
 def TDF_CopyTool_Copy(*args):
 	return TDF_CopyTool.Copy(*args)
-
-@deprecated
-def TDF_LabelMapHasher_HashCode(*args):
-	return TDF_LabelMapHasher.HashCode(*args)
-
-@deprecated
-def TDF_LabelMapHasher_IsEqual(*args):
-	return TDF_LabelMapHasher.IsEqual(*args)
 
 @deprecated
 def TDF_Tool_CountLabels(*args):

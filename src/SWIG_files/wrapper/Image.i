@@ -219,6 +219,12 @@ Image_Format_Gray16 = Image_Format.Image_Format_Gray16
 /****************************
 * class Image_VideoRecorder *
 ****************************/
+/*****************************************************
+* class equal_to<opencascade::handle<Image_Texture>> *
+*****************************************************/
+/*************************************************
+* class hash<opencascade::handle<Image_Texture>> *
+*************************************************/
 /**************************
 * class Image_AlienPixMap *
 **************************/
@@ -229,6 +235,14 @@ Image_Format_Gray16 = Image_Format.Image_Format_Gray16
 %pythoncode {
 @classnotwrapped
 class Image_Texture:
+	pass
+
+@classnotwrapped
+class equal_to:
+	pass
+
+@classnotwrapped
+class hash:
 	pass
 
 @classnotwrapped

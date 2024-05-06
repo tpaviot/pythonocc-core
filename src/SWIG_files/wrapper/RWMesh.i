@@ -394,9 +394,29 @@ bool
 
 Description
 -----------
-Read the data from specified file. the document instance should be set beforehand.
+Open stream and pass it to perform method. the document instance should be set beforehand.
 ") Perform;
 		bool Perform(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
+
+		/****************** Perform ******************/
+		/**** md5 signature: e74612796e1192fc32457c954904c5a3 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "
+Parameters
+----------
+theStream: str
+theProgress: Message_ProgressRange
+theFile: str (optional, default to "")
+
+Return
+-------
+bool
+
+Description
+-----------
+Read the data from specified file.
+") Perform;
+		bool Perform(std::istream & theStream, const Message_ProgressRange & theProgress, TCollection_AsciiString theFile = "");
 
 		/****************** ProbeHeader ******************/
 		/**** md5 signature: 62d0d942adff0fd3f5d25c775b2e2dde ****/
@@ -413,9 +433,29 @@ bool
 
 Description
 -----------
-Read the header data from specified file without reading entire model. the main purpose is collecting metadata and external references - for copying model into a new location, for example. can be not implemented (unsupported by format / reader).
+Open stream and pass it to probeheader method.
 ") ProbeHeader;
 		Standard_Boolean ProbeHeader(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** ProbeHeader ******************/
+		/**** md5 signature: 2c51efd9dc4fbfa64c12b5e56a4545c2 ****/
+		%feature("compactdefaultargs") ProbeHeader;
+		%feature("autodoc", "
+Parameters
+----------
+theStream: str
+theFile: str (optional, default to "")
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Read the header data from specified file without reading entire model. the main purpose is collecting metadata and external references - for copying model into a new location, for example. can be not implemented (unsupported by format / reader).
+") ProbeHeader;
+		Standard_Boolean ProbeHeader(std::istream & theStream, TCollection_AsciiString theFile = "", const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** RootPrefix ******************/
 		/**** md5 signature: 23690698ed70038f8be604f633be3713 ****/

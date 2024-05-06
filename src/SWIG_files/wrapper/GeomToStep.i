@@ -44,6 +44,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_geomtostep.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
+#include<StepData_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<StepGeom_module.hxx>
@@ -70,6 +71,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_geomtostep.html"
 %import Standard.i
 %import NCollection.i
 %import gp.i
+%import StepData.i
 %import Geom.i
 %import Geom2d.i
 %import StepGeom.i
@@ -130,12 +132,13 @@ No available documentation.
 class GeomToStep_MakeAxis1Placement : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeAxis1Placement ******************/
-		/**** md5 signature: 2be8f824a962cb6b1a88fffde17c4d5d ****/
+		/**** md5 signature: 23f2a720ef6a9ff46fccf01ef039010d ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis1Placement;
 		%feature("autodoc", "
 Parameters
 ----------
 A: gp_Ax1
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -145,15 +148,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis1Placement;
-		 GeomToStep_MakeAxis1Placement(const gp_Ax1 & A);
+		 GeomToStep_MakeAxis1Placement(const gp_Ax1 & A, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeAxis1Placement ******************/
-		/**** md5 signature: a58bb2cefdafd6b258e8b0fd4ada4284 ****/
+		/**** md5 signature: 6a352872423705f883664707e9adf56c ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis1Placement;
 		%feature("autodoc", "
 Parameters
 ----------
 A: gp_Ax2d
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -163,15 +167,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis1Placement;
-		 GeomToStep_MakeAxis1Placement(const gp_Ax2d & A);
+		 GeomToStep_MakeAxis1Placement(const gp_Ax2d & A, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeAxis1Placement ******************/
-		/**** md5 signature: 92f79e539c570438f8a1cfd093a71d04 ****/
+		/**** md5 signature: 12f19716b6c46af2ff8e6dd1b5cb8c98 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis1Placement;
 		%feature("autodoc", "
 Parameters
 ----------
 A: Geom_Axis1Placement
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -181,15 +186,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis1Placement;
-		 GeomToStep_MakeAxis1Placement(const opencascade::handle<Geom_Axis1Placement> & A);
+		 GeomToStep_MakeAxis1Placement(const opencascade::handle<Geom_Axis1Placement> & A, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeAxis1Placement ******************/
-		/**** md5 signature: 29a48684c1f93bd4b0344358159941c0 ****/
+		/**** md5 signature: aa958acf9c1e205cc70bd93c519f72ba ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis1Placement;
 		%feature("autodoc", "
 Parameters
 ----------
 A: Geom2d_AxisPlacement
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -199,7 +205,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis1Placement;
-		 GeomToStep_MakeAxis1Placement(const opencascade::handle<Geom2d_AxisPlacement> & A);
+		 GeomToStep_MakeAxis1Placement(const opencascade::handle<Geom2d_AxisPlacement> & A, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 826c238a515cde09bfad20f8cb8f997e ****/
@@ -229,12 +235,13 @@ No available documentation.
 class GeomToStep_MakeAxis2Placement2d : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeAxis2Placement2d ******************/
-		/**** md5 signature: 27498f5c01a30d6939af2f37d54f81ec ****/
+		/**** md5 signature: 91cfaee62700f7fb0dba18448b931a94 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement2d;
 		%feature("autodoc", "
 Parameters
 ----------
 A: gp_Ax2
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -244,15 +251,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis2Placement2d;
-		 GeomToStep_MakeAxis2Placement2d(const gp_Ax2 & A);
+		 GeomToStep_MakeAxis2Placement2d(const gp_Ax2 & A, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeAxis2Placement2d ******************/
-		/**** md5 signature: fd0402e25d800a7748f244fbd2f7180d ****/
+		/**** md5 signature: 5c3ac906770d613dd9242c3bb625f00d ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement2d;
 		%feature("autodoc", "
 Parameters
 ----------
 A: gp_Ax22d
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -262,7 +270,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis2Placement2d;
-		 GeomToStep_MakeAxis2Placement2d(const gp_Ax22d & A);
+		 GeomToStep_MakeAxis2Placement2d(const gp_Ax22d & A, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: fd6775dac4f45bf86ed16a2db3a9ab0e ****/
@@ -292,9 +300,14 @@ No available documentation.
 class GeomToStep_MakeAxis2Placement3d : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeAxis2Placement3d ******************/
-		/**** md5 signature: 7a4344d98382d4c2cc25e0e5690d27b3 ****/
+		/**** md5 signature: 19d9a3ada51620a86dc7e908de37a18c ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement3d;
-		%feature("autodoc", "Return
+		%feature("autodoc", "
+Parameters
+----------
+theLocalFactors: StepData_Factors
+
+Return
 -------
 None
 
@@ -302,15 +315,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis2Placement3d;
-		 GeomToStep_MakeAxis2Placement3d();
+		 GeomToStep_MakeAxis2Placement3d(const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeAxis2Placement3d ******************/
-		/**** md5 signature: 1e6071e6ee5aedc6a5dd7219e9cdb342 ****/
+		/**** md5 signature: ed8aa9891cb80732968dd41849ea4572 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement3d;
 		%feature("autodoc", "
 Parameters
 ----------
 A: gp_Ax2
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -320,15 +334,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis2Placement3d;
-		 GeomToStep_MakeAxis2Placement3d(const gp_Ax2 & A);
+		 GeomToStep_MakeAxis2Placement3d(const gp_Ax2 & A, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeAxis2Placement3d ******************/
-		/**** md5 signature: bc58ab37e147cb21d1f2726d891efdbe ****/
+		/**** md5 signature: e2f6ac232af9d39883b4a8fec9440c2f ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement3d;
 		%feature("autodoc", "
 Parameters
 ----------
 A: gp_Ax3
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -338,15 +353,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis2Placement3d;
-		 GeomToStep_MakeAxis2Placement3d(const gp_Ax3 & A);
+		 GeomToStep_MakeAxis2Placement3d(const gp_Ax3 & A, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeAxis2Placement3d ******************/
-		/**** md5 signature: 589afaf1d1580dd5c7a50dff532ae9e1 ****/
+		/**** md5 signature: 6078a629914631707647428e102d195d ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement3d;
 		%feature("autodoc", "
 Parameters
 ----------
 T: gp_Trsf
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -356,15 +372,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis2Placement3d;
-		 GeomToStep_MakeAxis2Placement3d(const gp_Trsf & T);
+		 GeomToStep_MakeAxis2Placement3d(const gp_Trsf & T, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeAxis2Placement3d ******************/
-		/**** md5 signature: f53a75001b9afa02e522665f22736f6e ****/
+		/**** md5 signature: 42b13374be48240aeb5830789486ed45 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeAxis2Placement3d;
 		%feature("autodoc", "
 Parameters
 ----------
 A: Geom_Axis2Placement
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -374,7 +391,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeAxis2Placement3d;
-		 GeomToStep_MakeAxis2Placement3d(const opencascade::handle<Geom_Axis2Placement> & A);
+		 GeomToStep_MakeAxis2Placement3d(const opencascade::handle<Geom_Axis2Placement> & A, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: f95f278cf626b19b259b48adafc008bb ****/
@@ -404,12 +421,13 @@ No available documentation.
 class GeomToStep_MakeBSplineCurveWithKnots : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBSplineCurveWithKnots ******************/
-		/**** md5 signature: 210a890e52b1c00aaf4c5a9276785534 ****/
+		/**** md5 signature: bec85a435d922e4b3b46dfc98c36e6c8 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineCurveWithKnots;
 		%feature("autodoc", "
 Parameters
 ----------
 Bsplin: Geom_BSplineCurve
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -419,15 +437,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeBSplineCurveWithKnots;
-		 GeomToStep_MakeBSplineCurveWithKnots(const opencascade::handle<Geom_BSplineCurve> & Bsplin);
+		 GeomToStep_MakeBSplineCurveWithKnots(const opencascade::handle<Geom_BSplineCurve> & Bsplin, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeBSplineCurveWithKnots ******************/
-		/**** md5 signature: d537c0e07f2366b24f08cf903b9c169c ****/
+		/**** md5 signature: e7fba3748d588484242892ad375ed7a9 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineCurveWithKnots;
 		%feature("autodoc", "
 Parameters
 ----------
 Bsplin: Geom2d_BSplineCurve
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -437,7 +456,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeBSplineCurveWithKnots;
-		 GeomToStep_MakeBSplineCurveWithKnots(const opencascade::handle<Geom2d_BSplineCurve> & Bsplin);
+		 GeomToStep_MakeBSplineCurveWithKnots(const opencascade::handle<Geom2d_BSplineCurve> & Bsplin, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 1b731bf635b8e50fa67b95f0d582d03d ****/
@@ -467,12 +486,13 @@ No available documentation.
 class GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve ******************/
-		/**** md5 signature: 4f5e961efdc1af524431baafb60995fd ****/
+		/**** md5 signature: c9d8c32f8c827e1703c474b20b211ad7 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 Bsplin: Geom_BSplineCurve
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -482,15 +502,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
-		 GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve(const opencascade::handle<Geom_BSplineCurve> & Bsplin);
+		 GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve(const opencascade::handle<Geom_BSplineCurve> & Bsplin, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve ******************/
-		/**** md5 signature: 10e0b7e94adc782cdcda1fe04867b9a4 ****/
+		/**** md5 signature: 01fde1523d35fa4a9b35556bd3f4d537 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 Bsplin: Geom2d_BSplineCurve
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -500,7 +521,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve;
-		 GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & Bsplin);
+		 GeomToStep_MakeBSplineCurveWithKnotsAndRationalBSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & Bsplin, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 84cd9e1e595173cabf00e66c8bef9b60 ****/
@@ -530,12 +551,13 @@ No available documentation.
 class GeomToStep_MakeBSplineSurfaceWithKnots : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBSplineSurfaceWithKnots ******************/
-		/**** md5 signature: 1212fbf8350b3a81384a4de7af90542a ****/
+		/**** md5 signature: e742c3889349bb47d4968ba413eed4de ****/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineSurfaceWithKnots;
 		%feature("autodoc", "
 Parameters
 ----------
 Bsplin: Geom_BSplineSurface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -545,7 +567,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeBSplineSurfaceWithKnots;
-		 GeomToStep_MakeBSplineSurfaceWithKnots(const opencascade::handle<Geom_BSplineSurface> & Bsplin);
+		 GeomToStep_MakeBSplineSurfaceWithKnots(const opencascade::handle<Geom_BSplineSurface> & Bsplin, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 27aae6d778ee1370363b372f4d752e4e ****/
@@ -575,12 +597,13 @@ No available documentation.
 class GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface ******************/
-		/**** md5 signature: 48b898d7712754710ad00a9af275c9f6 ****/
+		/**** md5 signature: b291b4bf758b8b7d2f72668c8e555fed ****/
 		%feature("compactdefaultargs") GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 Bsplin: Geom_BSplineSurface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -590,7 +613,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface;
-		 GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface(const opencascade::handle<Geom_BSplineSurface> & Bsplin);
+		 GeomToStep_MakeBSplineSurfaceWithKnotsAndRationalBSplineSurface(const opencascade::handle<Geom_BSplineSurface> & Bsplin, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: a06321cb9eb199bcc8e3c8ede0e3269e ****/
@@ -620,12 +643,13 @@ No available documentation.
 class GeomToStep_MakeBoundedCurve : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBoundedCurve ******************/
-		/**** md5 signature: 7283eca7730952f397fc6a12bec57062 ****/
+		/**** md5 signature: 230725ff67a6f1ad318ee87223791295 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeBoundedCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_BoundedCurve
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -635,15 +659,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeBoundedCurve;
-		 GeomToStep_MakeBoundedCurve(const opencascade::handle<Geom_BoundedCurve> & C);
+		 GeomToStep_MakeBoundedCurve(const opencascade::handle<Geom_BoundedCurve> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeBoundedCurve ******************/
-		/**** md5 signature: 303d93fb16e69b6e25d1aff1b7d80702 ****/
+		/**** md5 signature: 26533e2ae4a23960277cb97ecec565bf ****/
 		%feature("compactdefaultargs") GeomToStep_MakeBoundedCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_BoundedCurve
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -653,7 +678,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeBoundedCurve;
-		 GeomToStep_MakeBoundedCurve(const opencascade::handle<Geom2d_BoundedCurve> & C);
+		 GeomToStep_MakeBoundedCurve(const opencascade::handle<Geom2d_BoundedCurve> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 693482260abb67f388c20546bc0d24b2 ****/
@@ -683,12 +708,13 @@ No available documentation.
 class GeomToStep_MakeBoundedSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeBoundedSurface ******************/
-		/**** md5 signature: 988748bc048bb20959f60b246582955d ****/
+		/**** md5 signature: f662ed1f5eba3321fdd9c6b84afbdc4c ****/
 		%feature("compactdefaultargs") GeomToStep_MakeBoundedSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_BoundedSurface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -698,7 +724,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeBoundedSurface;
-		 GeomToStep_MakeBoundedSurface(const opencascade::handle<Geom_BoundedSurface> & C);
+		 GeomToStep_MakeBoundedSurface(const opencascade::handle<Geom_BoundedSurface> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 9a92c08dbdf434f48685da487d3d28f3 ****/
@@ -728,12 +754,13 @@ No available documentation.
 class GeomToStep_MakeCartesianPoint : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeCartesianPoint ******************/
-		/**** md5 signature: b84c42af67a942cd68844ada4930e745 ****/
+		/**** md5 signature: 74e9f5cbf9842287ca51dc34abbad5b6 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeCartesianPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt
+aFactor: float
 
 Return
 -------
@@ -743,15 +770,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCartesianPoint;
-		 GeomToStep_MakeCartesianPoint(const gp_Pnt & P);
+		 GeomToStep_MakeCartesianPoint(const gp_Pnt & P, const Standard_Real aFactor);
 
 		/****************** GeomToStep_MakeCartesianPoint ******************/
-		/**** md5 signature: c9724ae97bba9639960007cf82bd31a4 ****/
+		/**** md5 signature: 46436d2765f98b7fe67cf41815e72b94 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeCartesianPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pnt2d
+aFactor: float
 
 Return
 -------
@@ -761,15 +789,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCartesianPoint;
-		 GeomToStep_MakeCartesianPoint(const gp_Pnt2d & P);
+		 GeomToStep_MakeCartesianPoint(const gp_Pnt2d & P, const Standard_Real aFactor);
 
 		/****************** GeomToStep_MakeCartesianPoint ******************/
-		/**** md5 signature: 3daa8f2f1ee05d547e89a0fc9872b000 ****/
+		/**** md5 signature: c518b49d4336bfbe94bf5b60e7979eaf ****/
 		%feature("compactdefaultargs") GeomToStep_MakeCartesianPoint;
 		%feature("autodoc", "
 Parameters
 ----------
 P: Geom_CartesianPoint
+aFactor: float
 
 Return
 -------
@@ -779,7 +808,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCartesianPoint;
-		 GeomToStep_MakeCartesianPoint(const opencascade::handle<Geom_CartesianPoint> & P);
+		 GeomToStep_MakeCartesianPoint(const opencascade::handle<Geom_CartesianPoint> & P, const Standard_Real aFactor);
 
 		/****************** GeomToStep_MakeCartesianPoint ******************/
 		/**** md5 signature: b0da04ef2617163db5aa8dbb8c5d5fb6 ****/
@@ -827,12 +856,13 @@ No available documentation.
 class GeomToStep_MakeCircle : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeCircle ******************/
-		/**** md5 signature: 2f72f8e3f08a90ffd0270a7dfbb23caa ****/
+		/**** md5 signature: 8f0182feb970bff3f107869e72d3e430 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeCircle;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Circ
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -842,15 +872,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCircle;
-		 GeomToStep_MakeCircle(const gp_Circ & C);
+		 GeomToStep_MakeCircle(const gp_Circ & C, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeCircle ******************/
-		/**** md5 signature: 054957a79af67bdf132c9cf0a6d3cb01 ****/
+		/**** md5 signature: 703a19c0ee3ef88894aeb2a08c688a90 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeCircle;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Circle
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -860,15 +891,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCircle;
-		 GeomToStep_MakeCircle(const opencascade::handle<Geom_Circle> & C);
+		 GeomToStep_MakeCircle(const opencascade::handle<Geom_Circle> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeCircle ******************/
-		/**** md5 signature: b341801ea270536e460f9dd39243b0e8 ****/
+		/**** md5 signature: 3834eee34cdad5f19122324d0ffa33eb ****/
 		%feature("compactdefaultargs") GeomToStep_MakeCircle;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Circle
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -878,7 +910,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCircle;
-		 GeomToStep_MakeCircle(const opencascade::handle<Geom2d_Circle> & C);
+		 GeomToStep_MakeCircle(const opencascade::handle<Geom2d_Circle> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 80089f77380b5fe8369810effae824ea ****/
@@ -908,12 +940,13 @@ No available documentation.
 class GeomToStep_MakeConic : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeConic ******************/
-		/**** md5 signature: e70a236489a0090f7f6fa70f4a394742 ****/
+		/**** md5 signature: 7300d50d377e0943b5d2f1933e3b2e1b ****/
 		%feature("compactdefaultargs") GeomToStep_MakeConic;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Conic
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -923,15 +956,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeConic;
-		 GeomToStep_MakeConic(const opencascade::handle<Geom_Conic> & C);
+		 GeomToStep_MakeConic(const opencascade::handle<Geom_Conic> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeConic ******************/
-		/**** md5 signature: 9a02438248377454c678f7339834ec89 ****/
+		/**** md5 signature: af76a76241c9a650158b41a030617afe ****/
 		%feature("compactdefaultargs") GeomToStep_MakeConic;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Conic
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -941,7 +975,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeConic;
-		 GeomToStep_MakeConic(const opencascade::handle<Geom2d_Conic> & C);
+		 GeomToStep_MakeConic(const opencascade::handle<Geom2d_Conic> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: a33da9e5838fbe8136b90f4da4466085 ****/
@@ -971,12 +1005,13 @@ No available documentation.
 class GeomToStep_MakeConicalSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeConicalSurface ******************/
-		/**** md5 signature: a605217ad4f974056fcce09709a7c684 ****/
+		/**** md5 signature: f6d2a358a91b794dec4babc3c3e49a26 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeConicalSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 CSurf: Geom_ConicalSurface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -986,7 +1021,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeConicalSurface;
-		 GeomToStep_MakeConicalSurface(const opencascade::handle<Geom_ConicalSurface> & CSurf);
+		 GeomToStep_MakeConicalSurface(const opencascade::handle<Geom_ConicalSurface> & CSurf, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 9b07229bd79c88714b08af93e4f07fc7 ****/
@@ -1016,12 +1051,13 @@ No available documentation.
 class GeomToStep_MakeCurve : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeCurve ******************/
-		/**** md5 signature: bb5255f68512c92d4883862ecc54c574 ****/
+		/**** md5 signature: 6cd947dba721787b09944fc02ec93285 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Curve
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1031,15 +1067,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCurve;
-		 GeomToStep_MakeCurve(const opencascade::handle<Geom_Curve> & C);
+		 GeomToStep_MakeCurve(const opencascade::handle<Geom_Curve> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeCurve ******************/
-		/**** md5 signature: 5ab1fc83eedad28e334ebf0132972fe5 ****/
+		/**** md5 signature: aeec745ed860fe4966eeb0c02c55987d ****/
 		%feature("compactdefaultargs") GeomToStep_MakeCurve;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Curve
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1049,7 +1086,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCurve;
-		 GeomToStep_MakeCurve(const opencascade::handle<Geom2d_Curve> & C);
+		 GeomToStep_MakeCurve(const opencascade::handle<Geom2d_Curve> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 90c4cf738d09355ed37f8d102747f878 ****/
@@ -1079,12 +1116,13 @@ No available documentation.
 class GeomToStep_MakeCylindricalSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeCylindricalSurface ******************/
-		/**** md5 signature: 375d2cf6afe8574c544c249abc20cc8b ****/
+		/**** md5 signature: 9d5957654d4a87ffd5ac56d7d8914d89 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeCylindricalSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 CSurf: Geom_CylindricalSurface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1094,7 +1132,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeCylindricalSurface;
-		 GeomToStep_MakeCylindricalSurface(const opencascade::handle<Geom_CylindricalSurface> & CSurf);
+		 GeomToStep_MakeCylindricalSurface(const opencascade::handle<Geom_CylindricalSurface> & CSurf, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 786ce73042a06c87aa97211d7cddaa97 ****/
@@ -1223,12 +1261,13 @@ No available documentation.
 class GeomToStep_MakeElementarySurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeElementarySurface ******************/
-		/**** md5 signature: 3ae7c5ba754dffe8799cf7091b3ff3b8 ****/
+		/**** md5 signature: fb0459c21925460d03b247c03b6462a3 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeElementarySurface;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_ElementarySurface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1238,7 +1277,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeElementarySurface;
-		 GeomToStep_MakeElementarySurface(const opencascade::handle<Geom_ElementarySurface> & S);
+		 GeomToStep_MakeElementarySurface(const opencascade::handle<Geom_ElementarySurface> & S, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 56d8a982bff3e047141a1101fca174b2 ****/
@@ -1268,12 +1307,13 @@ No available documentation.
 class GeomToStep_MakeEllipse : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeEllipse ******************/
-		/**** md5 signature: 82e5696ac668fe1810c6d1631e6fad8e ****/
+		/**** md5 signature: 23448c3f57fb3705c21256625a4b2c68 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeEllipse;
 		%feature("autodoc", "
 Parameters
 ----------
 C: gp_Elips
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1283,15 +1323,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeEllipse;
-		 GeomToStep_MakeEllipse(const gp_Elips & C);
+		 GeomToStep_MakeEllipse(const gp_Elips & C, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeEllipse ******************/
-		/**** md5 signature: 252c59426b9164facf44fb4426fd8625 ****/
+		/**** md5 signature: f92a44781a9f8486b5d4137f775affe8 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeEllipse;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Ellipse
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1301,15 +1342,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeEllipse;
-		 GeomToStep_MakeEllipse(const opencascade::handle<Geom_Ellipse> & C);
+		 GeomToStep_MakeEllipse(const opencascade::handle<Geom_Ellipse> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeEllipse ******************/
-		/**** md5 signature: ae5ce1e20a27e1c70df10153d750bc22 ****/
+		/**** md5 signature: eb87499c5f5b4bff86d41edd98e6cef5 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeEllipse;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Ellipse
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1319,7 +1361,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeEllipse;
-		 GeomToStep_MakeEllipse(const opencascade::handle<Geom2d_Ellipse> & C);
+		 GeomToStep_MakeEllipse(const opencascade::handle<Geom2d_Ellipse> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 033062f99ca07e5b0fd30154d26db816 ****/
@@ -1349,12 +1391,13 @@ No available documentation.
 class GeomToStep_MakeHyperbola : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeHyperbola ******************/
-		/**** md5 signature: 9fe54c9565e13d698d6a49268ae2f1af ****/
+		/**** md5 signature: 8553f5e1c4464c996be770957d023fd4 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeHyperbola;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Hyperbola
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1364,15 +1407,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeHyperbola;
-		 GeomToStep_MakeHyperbola(const opencascade::handle<Geom2d_Hyperbola> & C);
+		 GeomToStep_MakeHyperbola(const opencascade::handle<Geom2d_Hyperbola> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeHyperbola ******************/
-		/**** md5 signature: 3d11cabd65320649f6557be1f82d054e ****/
+		/**** md5 signature: 53863d6f33160b5cf2ac0c14cf1810c8 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeHyperbola;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Hyperbola
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1382,7 +1426,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeHyperbola;
-		 GeomToStep_MakeHyperbola(const opencascade::handle<Geom_Hyperbola> & C);
+		 GeomToStep_MakeHyperbola(const opencascade::handle<Geom_Hyperbola> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 6c6adecb4fa9565b161e019885d473e4 ****/
@@ -1412,12 +1456,13 @@ No available documentation.
 class GeomToStep_MakeLine : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeLine ******************/
-		/**** md5 signature: c0d438af1b02bfde7a1c8bc592d78786 ****/
+		/**** md5 signature: 1dfae9a238b269fb0317b5d578063660 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeLine;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1427,15 +1472,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeLine;
-		 GeomToStep_MakeLine(const gp_Lin & L);
+		 GeomToStep_MakeLine(const gp_Lin & L, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeLine ******************/
-		/**** md5 signature: 62858f7baad50458662c2c8c9a4271fc ****/
+		/**** md5 signature: 35ec3b23443bff8dcb9ba548bb3ca6a6 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeLine;
 		%feature("autodoc", "
 Parameters
 ----------
 L: gp_Lin2d
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1445,15 +1491,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeLine;
-		 GeomToStep_MakeLine(const gp_Lin2d & L);
+		 GeomToStep_MakeLine(const gp_Lin2d & L, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeLine ******************/
-		/**** md5 signature: 6e42c7ff1cd6a03a6464642c511baf9f ****/
+		/**** md5 signature: fc5eea45ae7e3adcb149960d80680c89 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeLine;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Line
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1463,15 +1510,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeLine;
-		 GeomToStep_MakeLine(const opencascade::handle<Geom_Line> & C);
+		 GeomToStep_MakeLine(const opencascade::handle<Geom_Line> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeLine ******************/
-		/**** md5 signature: 18dc6ae6195e56950b2df26c102a4d9c ****/
+		/**** md5 signature: 14d9e5e86478ef2be3db763f3a180efd ****/
 		%feature("compactdefaultargs") GeomToStep_MakeLine;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Line
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1481,7 +1529,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeLine;
-		 GeomToStep_MakeLine(const opencascade::handle<Geom2d_Line> & C);
+		 GeomToStep_MakeLine(const opencascade::handle<Geom2d_Line> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 1b26fd610fca6c8f1a6698b83ca8a479 ****/
@@ -1511,12 +1559,13 @@ No available documentation.
 class GeomToStep_MakeParabola : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeParabola ******************/
-		/**** md5 signature: 4a64d084dd41af3e709cad5b2dd9fac9 ****/
+		/**** md5 signature: ba2fc02ba2ae1fbc5094a0c225c1bcb6 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeParabola;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom2d_Parabola
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1526,15 +1575,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeParabola;
-		 GeomToStep_MakeParabola(const opencascade::handle<Geom2d_Parabola> & C);
+		 GeomToStep_MakeParabola(const opencascade::handle<Geom2d_Parabola> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeParabola ******************/
-		/**** md5 signature: 92261bd165f609d286ca0b65571c5e52 ****/
+		/**** md5 signature: 78751a750f4cc7027214fd3df3d1b677 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeParabola;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Parabola
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1544,7 +1594,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeParabola;
-		 GeomToStep_MakeParabola(const opencascade::handle<Geom_Parabola> & C);
+		 GeomToStep_MakeParabola(const opencascade::handle<Geom_Parabola> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: a296c7ec9f53c22a518a48499f61ba32 ****/
@@ -1574,12 +1624,13 @@ No available documentation.
 class GeomToStep_MakePlane : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakePlane ******************/
-		/**** md5 signature: 801d7a1779d49353a51b11a3fa85948b ****/
+		/**** md5 signature: 2d7f74de7db9884298bbc9301ce8a21d ****/
 		%feature("compactdefaultargs") GeomToStep_MakePlane;
 		%feature("autodoc", "
 Parameters
 ----------
 P: gp_Pln
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1589,15 +1640,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakePlane;
-		 GeomToStep_MakePlane(const gp_Pln & P);
+		 GeomToStep_MakePlane(const gp_Pln & P, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakePlane ******************/
-		/**** md5 signature: f561c716e53a19d27e87e2c79df516c0 ****/
+		/**** md5 signature: da09601d3077cb467eaecce0e404a231 ****/
 		%feature("compactdefaultargs") GeomToStep_MakePlane;
 		%feature("autodoc", "
 Parameters
 ----------
 P: Geom_Plane
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1607,7 +1659,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakePlane;
-		 GeomToStep_MakePlane(const opencascade::handle<Geom_Plane> & P);
+		 GeomToStep_MakePlane(const opencascade::handle<Geom_Plane> & P, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 9f597b4134bcd4a7e61386b3204aac13 ****/
@@ -1637,12 +1689,13 @@ No available documentation.
 class GeomToStep_MakePolyline : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakePolyline ******************/
-		/**** md5 signature: 3f26012995f4cb3329c4614f1b3afdc7 ****/
+		/**** md5 signature: e2eb7531dbd85c394aab964bdf5ed50d ****/
 		%feature("compactdefaultargs") GeomToStep_MakePolyline;
 		%feature("autodoc", "
 Parameters
 ----------
 P: TColgp_Array1OfPnt
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1652,15 +1705,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakePolyline;
-		 GeomToStep_MakePolyline(const TColgp_Array1OfPnt & P);
+		 GeomToStep_MakePolyline(const TColgp_Array1OfPnt & P, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakePolyline ******************/
-		/**** md5 signature: c6f282f72e4c9bb53965b191d5d67ad9 ****/
+		/**** md5 signature: be1a390ee3dd02b701e4f13d58b3a77f ****/
 		%feature("compactdefaultargs") GeomToStep_MakePolyline;
 		%feature("autodoc", "
 Parameters
 ----------
 P: TColgp_Array1OfPnt2d
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1670,7 +1724,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakePolyline;
-		 GeomToStep_MakePolyline(const TColgp_Array1OfPnt2d & P);
+		 GeomToStep_MakePolyline(const TColgp_Array1OfPnt2d & P, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 7a62b6b5beb908aa8df3a455e1d0bf50 ****/
@@ -1700,12 +1754,13 @@ No available documentation.
 class GeomToStep_MakeRectangularTrimmedSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeRectangularTrimmedSurface ******************/
-		/**** md5 signature: 0fd8d8ad2b2ee1581aee4db6ce450c1c ****/
+		/**** md5 signature: 7cf6c675e441e682aaf06e3d3b3fcbd7 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeRectangularTrimmedSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 RTSurf: Geom_RectangularTrimmedSurface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1715,7 +1770,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeRectangularTrimmedSurface;
-		 GeomToStep_MakeRectangularTrimmedSurface(const opencascade::handle<Geom_RectangularTrimmedSurface> & RTSurf);
+		 GeomToStep_MakeRectangularTrimmedSurface(const opencascade::handle<Geom_RectangularTrimmedSurface> & RTSurf, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 7004b5c6ee1fa69dbdca41030ebbbde0 ****/
@@ -1745,12 +1800,13 @@ No available documentation.
 class GeomToStep_MakeSphericalSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeSphericalSurface ******************/
-		/**** md5 signature: 7d10a064d2201c8a0f97bec76ff0ebdd ****/
+		/**** md5 signature: 385b084b11f96a21112d6211a1b698b0 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeSphericalSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 CSurf: Geom_SphericalSurface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1760,7 +1816,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeSphericalSurface;
-		 GeomToStep_MakeSphericalSurface(const opencascade::handle<Geom_SphericalSurface> & CSurf);
+		 GeomToStep_MakeSphericalSurface(const opencascade::handle<Geom_SphericalSurface> & CSurf, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 5c4c96e28e4a9a68a945fed65f098946 ****/
@@ -1790,12 +1846,13 @@ No available documentation.
 class GeomToStep_MakeSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeSurface ******************/
-		/**** md5 signature: afcc0b60b6e657ec82f3d473b6933d85 ****/
+		/**** md5 signature: 6fd014173523a87891b6be24263b7c8a ****/
 		%feature("compactdefaultargs") GeomToStep_MakeSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 C: Geom_Surface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1805,7 +1862,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeSurface;
-		 GeomToStep_MakeSurface(const opencascade::handle<Geom_Surface> & C);
+		 GeomToStep_MakeSurface(const opencascade::handle<Geom_Surface> & C, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 244a35854a6e95acd7c5691913295e49 ****/
@@ -1835,12 +1892,13 @@ No available documentation.
 class GeomToStep_MakeSurfaceOfLinearExtrusion : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeSurfaceOfLinearExtrusion ******************/
-		/**** md5 signature: abd84c0b21f04083d774a8b035cdac68 ****/
+		/**** md5 signature: 84dafe22d5b9ef3b774084d838fcd4e7 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeSurfaceOfLinearExtrusion;
 		%feature("autodoc", "
 Parameters
 ----------
 CSurf: Geom_SurfaceOfLinearExtrusion
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1850,7 +1908,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeSurfaceOfLinearExtrusion;
-		 GeomToStep_MakeSurfaceOfLinearExtrusion(const opencascade::handle<Geom_SurfaceOfLinearExtrusion> & CSurf);
+		 GeomToStep_MakeSurfaceOfLinearExtrusion(const opencascade::handle<Geom_SurfaceOfLinearExtrusion> & CSurf, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 312250b48ce2d90238af05ea19c0f830 ****/
@@ -1880,12 +1938,13 @@ No available documentation.
 class GeomToStep_MakeSurfaceOfRevolution : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeSurfaceOfRevolution ******************/
-		/**** md5 signature: 49401a986d9bd656e7d32899600ba573 ****/
+		/**** md5 signature: da9355170765d89ba81a6c9790867d64 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeSurfaceOfRevolution;
 		%feature("autodoc", "
 Parameters
 ----------
 RevSurf: Geom_SurfaceOfRevolution
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1895,7 +1954,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeSurfaceOfRevolution;
-		 GeomToStep_MakeSurfaceOfRevolution(const opencascade::handle<Geom_SurfaceOfRevolution> & RevSurf);
+		 GeomToStep_MakeSurfaceOfRevolution(const opencascade::handle<Geom_SurfaceOfRevolution> & RevSurf, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: f69be605fb08041e2f817b56da3c4768 ****/
@@ -1925,12 +1984,13 @@ No available documentation.
 class GeomToStep_MakeSweptSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeSweptSurface ******************/
-		/**** md5 signature: 79d0683fbea0a16815c3b58500ae6615 ****/
+		/**** md5 signature: dcfd9d8e07e18589887cd34bf629bf90 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeSweptSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 S: Geom_SweptSurface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1940,7 +2000,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeSweptSurface;
-		 GeomToStep_MakeSweptSurface(const opencascade::handle<Geom_SweptSurface> & S);
+		 GeomToStep_MakeSweptSurface(const opencascade::handle<Geom_SweptSurface> & S, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: a0380db370203c91a9dc85d79a7b90c7 ****/
@@ -1970,12 +2030,13 @@ No available documentation.
 class GeomToStep_MakeToroidalSurface : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeToroidalSurface ******************/
-		/**** md5 signature: 9ee36bfc74ac983ba8fa76b8725b8668 ****/
+		/**** md5 signature: 919f5ff44ac4d8fedd16c7050b895a03 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeToroidalSurface;
 		%feature("autodoc", "
 Parameters
 ----------
 TorSurf: Geom_ToroidalSurface
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -1985,7 +2046,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeToroidalSurface;
-		 GeomToStep_MakeToroidalSurface(const opencascade::handle<Geom_ToroidalSurface> & TorSurf);
+		 GeomToStep_MakeToroidalSurface(const opencascade::handle<Geom_ToroidalSurface> & TorSurf, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 2edf9d448c16344361dded7bf98b9bec ****/
@@ -2015,12 +2076,13 @@ No available documentation.
 class GeomToStep_MakeVector : public GeomToStep_Root {
 	public:
 		/****************** GeomToStep_MakeVector ******************/
-		/**** md5 signature: be046140949ec667a63e6fc65b19b27c ****/
+		/**** md5 signature: 39a2bf6e4ffa4513d85fc956bc1db166 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeVector;
 		%feature("autodoc", "
 Parameters
 ----------
 V: gp_Vec
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -2030,15 +2092,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeVector;
-		 GeomToStep_MakeVector(const gp_Vec & V);
+		 GeomToStep_MakeVector(const gp_Vec & V, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeVector ******************/
-		/**** md5 signature: 110a72e0683080fbf82a32b632bf5e7e ****/
+		/**** md5 signature: 603e1681fde695a5c02febdec1200e6d ****/
 		%feature("compactdefaultargs") GeomToStep_MakeVector;
 		%feature("autodoc", "
 Parameters
 ----------
 V: gp_Vec2d
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -2048,15 +2111,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeVector;
-		 GeomToStep_MakeVector(const gp_Vec2d & V);
+		 GeomToStep_MakeVector(const gp_Vec2d & V, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeVector ******************/
-		/**** md5 signature: 2c8b9414783e81a8713f29edf39b6afc ****/
+		/**** md5 signature: f3f8d4e051c545d7782b02dc38d98ae2 ****/
 		%feature("compactdefaultargs") GeomToStep_MakeVector;
 		%feature("autodoc", "
 Parameters
 ----------
 V: Geom_Vector
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -2066,15 +2130,16 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeVector;
-		 GeomToStep_MakeVector(const opencascade::handle<Geom_Vector> & V);
+		 GeomToStep_MakeVector(const opencascade::handle<Geom_Vector> & V, const StepData_Factors & theLocalFactors);
 
 		/****************** GeomToStep_MakeVector ******************/
-		/**** md5 signature: 78475fac79df8750c18b0a8b4d95edcf ****/
+		/**** md5 signature: c1942d2790b268640c554a824b9320ea ****/
 		%feature("compactdefaultargs") GeomToStep_MakeVector;
 		%feature("autodoc", "
 Parameters
 ----------
 V: Geom2d_Vector
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -2084,7 +2149,7 @@ Description
 -----------
 No available documentation.
 ") GeomToStep_MakeVector;
-		 GeomToStep_MakeVector(const opencascade::handle<Geom2d_Vector> & V);
+		 GeomToStep_MakeVector(const opencascade::handle<Geom2d_Vector> & V, const StepData_Factors & theLocalFactors);
 
 		/****************** Value ******************/
 		/**** md5 signature: 1d775fed97804779e81e2e206028af29 ****/
