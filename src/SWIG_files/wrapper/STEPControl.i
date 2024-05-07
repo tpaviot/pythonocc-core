@@ -813,26 +813,7 @@ Loads a file from stream and returns the read status.
 ") ReadStream;
 		virtual IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
 
-		/****************** ReadStream ******************/
-		/**** md5 signature: 670ef148332e793552b9d850beda7220 ****/
-		%feature("compactdefaultargs") ReadStream;
-		%feature("autodoc", "
-Parameters
-----------
-theName: str
-theParams: StepData_ConfParameters
-theIStream: str
-
-Return
--------
-IFSelect_ReturnStatus
-
-Description
------------
-Loads a file from stream and returns the read status.
-") ReadStream;
-		IFSelect_ReturnStatus ReadStream(Standard_CString theName, const StepData_ConfParameters & theParams, std::istream & theIStream);
-
+	
 		/****************** SetSystemLengthUnit ******************/
 		/**** md5 signature: 510dfa5f705479dabe69cd18ff63f186 ****/
 		%feature("compactdefaultargs") SetSystemLengthUnit;
