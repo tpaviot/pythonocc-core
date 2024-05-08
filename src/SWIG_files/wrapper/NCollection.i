@@ -53,45 +53,36 @@ from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
-%include "NCollection_Allocator.hxx";
+%include "NCollection_TypeDef.hxx";
 %include "NCollection_Array1.hxx";
 %include "NCollection_Array2.hxx";
-%include "NCollection_CellFilter.hxx";
-%include "NCollection_DataMap.hxx";
-%include "NCollection_DefaultHasher.hxx";
-%include "NCollection_DefineAlloc.hxx";
-%include "NCollection_DefineHArray1.hxx";
-%include "NCollection_DefineHArray2.hxx";
-%include "NCollection_DefineHSequence.hxx";
-%include "NCollection_DefineHasher.hxx";
-%include "NCollection_DoubleMap.hxx";
-%include "NCollection_DynamicArray.hxx";
-%include "NCollection_HArray1.hxx";
-%include "NCollection_HArray2.hxx";
-%include "NCollection_HSequence.hxx";
-%include "NCollection_Handle.hxx";
-%include "NCollection_IndexedDataMap.hxx";
-%include "NCollection_IndexedMap.hxx";
-%include "NCollection_Iterator.hxx";
-%include "NCollection_Lerp.hxx";
-%include "NCollection_List.hxx";
-%include "NCollection_LocalArray.hxx";
 %include "NCollection_Map.hxx";
-%include "NCollection_OccAllocator.hxx";
+%include "NCollection_DefaultHasher.hxx";
+%include "NCollection_List.hxx";
 %include "NCollection_Sequence.hxx";
-%include "NCollection_SparseArray.hxx";
-%include "NCollection_StlIterator.hxx";
-%include "NCollection_String.hxx";
-%include "NCollection_TListIterator.hxx";
-%include "NCollection_TListNode.hxx";
-%include "NCollection_TypeDef.hxx";
+%include "NCollection_DataMap.hxx";
+%include "NCollection_IndexedMap.hxx";
+%include "NCollection_IndexedDataMap.hxx";
+%include "NCollection_DoubleMap.hxx";
+%include "NCollection_DefineAlloc.hxx";
+%include "Standard_Macro.hxx";
+%include "Standard_DefineAlloc.hxx";
+%include "NCollection_UBTree.hxx";
 %include "NCollection_UBTreeFiller.hxx";
-%include "NCollection_UtfIterator.hxx";
-%include "NCollection_UtfString.hxx";
+%include "NCollection_Lerp.hxx";
+%include "NCollection_Vector.hxx";
 %include "NCollection_Vec2.hxx";
 %include "NCollection_Vec3.hxx";
 %include "NCollection_Vec4.hxx";
-%include "NCollection_Vector.hxx";
+%include "NCollection_Mat4.hxx";
+%include "NCollection_TListIterator.hxx";
+%include "NCollection_UtfString.hxx";
+%include "NCollection_UtfIterator.hxx";
+%include "NCollection_SparseArray.hxx";
+
+%ignore NCollection_List::First();
+%ignore NCollection_List::Last();
+%ignore NCollection_TListIterator::Value();
 
 /* public enums */
 enum NCollection_CellFilter_Action {
