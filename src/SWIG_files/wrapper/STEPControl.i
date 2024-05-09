@@ -44,18 +44,18 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepcontrol.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<Transfer_module.hxx>
+#include<Interface_module.hxx>
 #include<StepRepr_module.hxx>
 #include<gp_module.hxx>
+#include<StepData_module.hxx>
 #include<StepGeom_module.hxx>
 #include<Message_module.hxx>
 #include<TopoDS_module.hxx>
 #include<StepShape_module.hxx>
 #include<TopTools_module.hxx>
 #include<XSControl_module.hxx>
-#include<Interface_module.hxx>
 #include<IFSelect_module.hxx>
 #include<TColStd_module.hxx>
-#include<StepData_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
 #include<StepBasic_module.hxx>
@@ -73,18 +73,18 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepcontrol.html"
 %import Standard.i
 %import NCollection.i
 %import Transfer.i
+%import Interface.i
 %import StepRepr.i
 %import gp.i
+%import StepData.i
 %import StepGeom.i
 %import Message.i
 %import TopoDS.i
 %import StepShape.i
 %import TopTools.i
 %import XSControl.i
-%import Interface.i
 %import IFSelect.i
 %import TColStd.i
-%import StepData.i
 
 %pythoncode {
 from enum import IntEnum
@@ -146,9 +146,14 @@ STEPControl_Hybrid = STEPControl_StepModelType.STEPControl_Hybrid
 class STEPControl_ActorRead : public Transfer_ActorOfTransientProcess {
 	public:
 		/****************** STEPControl_ActorRead ******************/
-		/**** md5 signature: ab9100062f8a922f218c6a0504abfb91 ****/
+		/**** md5 signature: 3db9995490b830cc7f74e7be7a6678ca ****/
 		%feature("compactdefaultargs") STEPControl_ActorRead;
-		%feature("autodoc", "Return
+		%feature("autodoc", "
+Parameters
+----------
+theModel: Interface_InterfaceModel
+
+Return
 -------
 None
 
@@ -156,10 +161,10 @@ Description
 -----------
 No available documentation.
 ") STEPControl_ActorRead;
-		 STEPControl_ActorRead();
+		 STEPControl_ActorRead(const opencascade::handle<Interface_InterfaceModel> & theModel);
 
 		/****************** ComputeSRRWT ******************/
-		/**** md5 signature: fc3bd92ca9c97c087036a77ec2889f00 ****/
+		/**** md5 signature: f9ca4b8df5c4dc01a7e3ec56cae60587 ****/
 		%feature("compactdefaultargs") ComputeSRRWT;
 		%feature("autodoc", "
 Parameters
@@ -167,6 +172,7 @@ Parameters
 SRR: StepRepr_RepresentationRelationship
 TP: Transfer_TransientProcess
 Trsf: gp_Trsf
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -176,10 +182,10 @@ Description
 -----------
 Computes transformation defined by given representation_relationship_with_transformation.
 ") ComputeSRRWT;
-		Standard_Boolean ComputeSRRWT(const opencascade::handle<StepRepr_RepresentationRelationship> & SRR, const opencascade::handle<Transfer_TransientProcess> & TP, gp_Trsf & Trsf);
+		Standard_Boolean ComputeSRRWT(const opencascade::handle<StepRepr_RepresentationRelationship> & SRR, const opencascade::handle<Transfer_TransientProcess> & TP, gp_Trsf & Trsf, const StepData_Factors & theLocalFactors);
 
 		/****************** ComputeTransformation ******************/
-		/**** md5 signature: 8619e92e662485281c32651f59c79183 ****/
+		/**** md5 signature: d6414bb6e98eb222202073d5f4896a57 ****/
 		%feature("compactdefaultargs") ComputeTransformation;
 		%feature("autodoc", "
 Parameters
@@ -190,6 +196,7 @@ OrigContext: StepRepr_Representation
 TargContext: StepRepr_Representation
 TP: Transfer_TransientProcess
 Trsf: gp_Trsf
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -199,16 +206,17 @@ Description
 -----------
 Computes transformation defined by two axis placements (in mapped_item or item_defined_transformation) taking into account their representation contexts (i.e. units, which may be different) returns true if transformation is computed and is not an identity.
 ") ComputeTransformation;
-		Standard_Boolean ComputeTransformation(const opencascade::handle<StepGeom_Axis2Placement3d> & Origin, const opencascade::handle<StepGeom_Axis2Placement3d> & Target, const opencascade::handle<StepRepr_Representation> & OrigContext, const opencascade::handle<StepRepr_Representation> & TargContext, const opencascade::handle<Transfer_TransientProcess> & TP, gp_Trsf & Trsf);
+		Standard_Boolean ComputeTransformation(const opencascade::handle<StepGeom_Axis2Placement3d> & Origin, const opencascade::handle<StepGeom_Axis2Placement3d> & Target, const opencascade::handle<StepRepr_Representation> & OrigContext, const opencascade::handle<StepRepr_Representation> & TargContext, const opencascade::handle<Transfer_TransientProcess> & TP, gp_Trsf & Trsf, const StepData_Factors & theLocalFactors);
 
 		/****************** PrepareUnits ******************/
-		/**** md5 signature: e97db3df5c8677df1ea5c1d0844b0274 ****/
+		/**** md5 signature: 63ce94b1126b9c64ca3da9ab4aa6183a ****/
 		%feature("compactdefaultargs") PrepareUnits;
 		%feature("autodoc", "
 Parameters
 ----------
 rep: StepRepr_Representation
 TP: Transfer_TransientProcess
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -218,7 +226,7 @@ Description
 -----------
 Set units and tolerances context by given shaperepresentation.
 ") PrepareUnits;
-		void PrepareUnits(const opencascade::handle<StepRepr_Representation> & rep, const opencascade::handle<Transfer_TransientProcess> & TP);
+		void PrepareUnits(const opencascade::handle<StepRepr_Representation> & rep, const opencascade::handle<Transfer_TransientProcess> & TP, StepData_Factors & theLocalFactors);
 
 		/****************** Recognize ******************/
 		/**** md5 signature: b84cbd6b814e0bcf2e581fe12af7f160 ****/
@@ -239,9 +247,15 @@ No available documentation.
 		virtual Standard_Boolean Recognize(const opencascade::handle<Standard_Transient> & start);
 
 		/****************** ResetUnits ******************/
-		/**** md5 signature: 09f63cdb31330a8f9aae531bb7ba5098 ****/
+		/**** md5 signature: 8429c548f4f797bc814f8dd3c5320781 ****/
 		%feature("compactdefaultargs") ResetUnits;
-		%feature("autodoc", "Return
+		%feature("autodoc", "
+Parameters
+----------
+theModel: StepData_StepModel
+theLocalFactors: StepData_Factors
+
+Return
 -------
 None
 
@@ -249,7 +263,25 @@ Description
 -----------
 Reset units and tolerances context to default (mm, radians, read.precision.val, etc.).
 ") ResetUnits;
-		void ResetUnits();
+		void ResetUnits(opencascade::handle<StepData_StepModel> & theModel, StepData_Factors & theLocalFactors);
+
+		/****************** SetModel ******************/
+		/**** md5 signature: 461c1771a4e752c1a120a7e3b022e295 ****/
+		%feature("compactdefaultargs") SetModel;
+		%feature("autodoc", "
+Parameters
+----------
+theModel: Interface_InterfaceModel
+
+Return
+-------
+None
+
+Description
+-----------
+Set model.
+") SetModel;
+		void SetModel(const opencascade::handle<Interface_InterfaceModel> & theModel);
 
 		/****************** Transfer ******************/
 		/**** md5 signature: e4303fa9409798bd20ec402569b65ae8 ****/
@@ -272,13 +304,14 @@ No available documentation.
 		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferShape ******************/
-		/**** md5 signature: 05655e247963f237ae9185d9880fc442 ****/
+		/**** md5 signature: b04993c045c693628fd7e63e3bc7af19 ****/
 		%feature("compactdefaultargs") TransferShape;
 		%feature("autodoc", "
 Parameters
 ----------
 start: Standard_Transient
 TP: Transfer_TransientProcess
+theLocalFactors: StepData_Factors
 isManifold: bool (optional, default to Standard_True)
 theUseTrsf: bool (optional, default to Standard_False)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
@@ -291,7 +324,7 @@ Description
 -----------
 Theusetrsf - special flag for using axis2placement from shaperepresentation for transform root shape.
 ") TransferShape;
-		opencascade::handle<Transfer_Binder> TransferShape(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Standard_Boolean isManifold = Standard_True, const Standard_Boolean theUseTrsf = Standard_False, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		opencascade::handle<Transfer_Binder> TransferShape(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const StepData_Factors & theLocalFactors, const Standard_Boolean isManifold = Standard_True, const Standard_Boolean theUseTrsf = Standard_False, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -336,11 +369,12 @@ No available documentation.
 		Standard_Integer GroupMode();
 
 		/****************** IsAssembly ******************/
-		/**** md5 signature: 4d96d17194b8b2b39186d8d8b9014898 ****/
+		/**** md5 signature: 051fbb66b5b9566decb5e8a712f1cb3e ****/
 		%feature("compactdefaultargs") IsAssembly;
 		%feature("autodoc", "
 Parameters
 ----------
+theModel: StepData_StepModel
 S: TopoDS_Shape
 
 Return
@@ -351,7 +385,7 @@ Description
 -----------
 Customizable method to check whether shape s should be written as assembly or not default implementation uses flag groupmode and analyses the shape itself note: this method can modify shape.
 ") IsAssembly;
-		virtual Standard_Boolean IsAssembly(TopoDS_Shape & S);
+		virtual Standard_Boolean IsAssembly(const opencascade::handle<StepData_StepModel> & theModel, TopoDS_Shape & S);
 
 		/****************** Mode ******************/
 		/**** md5 signature: 017da31d79f3a481eb542e4aaf03f760 ****/
@@ -459,7 +493,7 @@ No available documentation.
 		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferCompound ******************/
-		/**** md5 signature: 6a2f848df7aa1f7f69e1e3e1ce00286c ****/
+		/**** md5 signature: 9cab98affbe0fb86b9dc56ce1b0bec9d ****/
 		%feature("compactdefaultargs") TransferCompound;
 		%feature("autodoc", "
 Parameters
@@ -467,6 +501,7 @@ Parameters
 start: Transfer_Finder
 SDR: StepShape_ShapeDefinitionRepresentation
 FP: Transfer_FinderProcess
+theLocalFactors: StepData_Factors
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -477,10 +512,10 @@ Description
 -----------
 No available documentation.
 ") TransferCompound;
-		opencascade::handle<Transfer_Binder> TransferCompound(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR, const opencascade::handle<Transfer_FinderProcess> & FP, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		opencascade::handle<Transfer_Binder> TransferCompound(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferShape ******************/
-		/**** md5 signature: 8b811b8fef3007706626222b66e29aa0 ****/
+		/**** md5 signature: 228683b2f5c93fe53b041315fdac3204 ****/
 		%feature("compactdefaultargs") TransferShape;
 		%feature("autodoc", "
 Parameters
@@ -488,6 +523,7 @@ Parameters
 start: Transfer_Finder
 SDR: StepShape_ShapeDefinitionRepresentation
 FP: Transfer_FinderProcess
+theLocalFactors: StepData_Factors
 shapeGroup: TopTools_HSequenceOfShape (optional, default to NULL)
 isManifold: bool (optional, default to Standard_True)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
@@ -500,10 +536,10 @@ Description
 -----------
 No available documentation.
 ") TransferShape;
-		opencascade::handle<Transfer_Binder> TransferShape(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<TopTools_HSequenceOfShape> & shapeGroup = NULL, const Standard_Boolean isManifold = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		opencascade::handle<Transfer_Binder> TransferShape(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const opencascade::handle<TopTools_HSequenceOfShape> & shapeGroup = NULL, const Standard_Boolean isManifold = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** TransferSubShape ******************/
-		/**** md5 signature: 4542462da125e38bb7916b1bae3048c2 ****/
+		/**** md5 signature: 56fdc5e8235c5ebcdb511f61cf21dd7b ****/
 		%feature("compactdefaultargs") TransferSubShape;
 		%feature("autodoc", "
 Parameters
@@ -512,6 +548,7 @@ start: Transfer_Finder
 SDR: StepShape_ShapeDefinitionRepresentation
 AX1: StepGeom_Axis2Placement3d
 FP: Transfer_FinderProcess
+theLocalFactors: StepData_Factors
 shapeGroup: TopTools_HSequenceOfShape (optional, default to NULL)
 isManifold: bool (optional, default to Standard_True)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
@@ -524,7 +561,7 @@ Description
 -----------
 No available documentation.
 ") TransferSubShape;
-		opencascade::handle<Transfer_Binder> TransferSubShape(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR, opencascade::handle<StepGeom_Axis2Placement3d> & AX1, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<TopTools_HSequenceOfShape> & shapeGroup = NULL, const Standard_Boolean isManifold = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		opencascade::handle<Transfer_Binder> TransferSubShape(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<StepShape_ShapeDefinitionRepresentation> & SDR, opencascade::handle<StepGeom_Axis2Placement3d> & AX1, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const opencascade::handle<TopTools_HSequenceOfShape> & shapeGroup = NULL, const Standard_Boolean isManifold = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 };
 
@@ -554,6 +591,24 @@ Description
 Initializes the use of step norm (the first time) and returns a controller.
 ") STEPControl_Controller;
 		 STEPControl_Controller();
+
+		/****************** ActorRead ******************/
+		/**** md5 signature: 5ac0aad8bce759b1e8eca4fdc80b538e ****/
+		%feature("compactdefaultargs") ActorRead;
+		%feature("autodoc", "
+Parameters
+----------
+theModel: Interface_InterfaceModel
+
+Return
+-------
+opencascade::handle<Transfer_ActorOfTransientProcess>
+
+Description
+-----------
+Returns the actor for read attached to the pair (norm,appli).
+") ActorRead;
+		opencascade::handle<Transfer_ActorOfTransientProcess> ActorRead(const opencascade::handle<Interface_InterfaceModel> & theModel);
 
 		/****************** Customise ******************/
 		/**** md5 signature: 0ba1e38a71954b942c677f3a42125b9f ****/
@@ -702,6 +757,62 @@ Determines the list of root entities from model which are candidate for a transf
 ") NbRootsForTransfer;
 		virtual Standard_Integer NbRootsForTransfer();
 
+		/****************** ReadFile ******************/
+		/**** md5 signature: 43e0408ba769e2f8280c3d4118e4dbfe ****/
+		%feature("compactdefaultargs") ReadFile;
+		%feature("autodoc", "
+Parameters
+----------
+filename: str
+
+Return
+-------
+IFSelect_ReturnStatus
+
+Description
+-----------
+Loads a file and returns the read status zero for a model which compies with the controller.
+") ReadFile;
+		virtual IFSelect_ReturnStatus ReadFile(Standard_CString filename);
+
+		/****************** ReadFile ******************/
+		/**** md5 signature: a114cde5b0c55bde8c8d4b7a6791062c ****/
+		%feature("compactdefaultargs") ReadFile;
+		%feature("autodoc", "
+Parameters
+----------
+filename: str
+theParams: StepData_ConfParameters
+
+Return
+-------
+IFSelect_ReturnStatus
+
+Description
+-----------
+Loads a file and returns the read status zero for a model which compies with the controller.
+") ReadFile;
+		IFSelect_ReturnStatus ReadFile(Standard_CString filename, const StepData_ConfParameters & theParams);
+
+		/****************** ReadStream ******************/
+		/**** md5 signature: 468612e1b7574162a37279817cf6848c ****/
+		%feature("compactdefaultargs") ReadStream;
+		%feature("autodoc", "
+Parameters
+----------
+theName: str
+theIStream: str
+
+Return
+-------
+IFSelect_ReturnStatus
+
+Description
+-----------
+Loads a file from stream and returns the read status.
+") ReadStream;
+		virtual IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
+
 		/****************** SetSystemLengthUnit ******************/
 		/**** md5 signature: 510dfa5f705479dabe69cd18ff63f186 ****/
 		%feature("compactdefaultargs") SetSystemLengthUnit;
@@ -716,7 +827,7 @@ None
 
 Description
 -----------
-Sets system length unit used by transfer process.
+Sets system length unit used by transfer process. performs only if a model is not null.
 ") SetSystemLengthUnit;
 		void SetSystemLengthUnit(const Standard_Real theLengthUnit);
 
@@ -742,7 +853,7 @@ float
 
 Description
 -----------
-Returns system length unit used by transfer process.
+Returns system length unit used by transfer process. performs only if a model is not null.
 ") SystemLengthUnit;
 		Standard_Real SystemLengthUnit();
 
@@ -905,6 +1016,28 @@ Description
 Translates shape sh to a step entity. mode defines the step entity type to be output: - stepcontrolstd_asis translates a shape to its highest possible step representation. - stepcontrolstd_manifoldsolidbrep translates a shape to a step manifold_solid_brep or brep_with_voids entity. - stepcontrolstd_facetedbrep translates a shape into a step faceted_brep entity. - stepcontrolstd_shellbasedsurfacemodel translates a shape into a step shell_based_surface_model entity. - stepcontrolstd_geometriccurveset translates a shape into a step geometric_curve_set entity.
 ") Transfer;
 		IFSelect_ReturnStatus Transfer(const TopoDS_Shape & sh, const STEPControl_StepModelType mode, const Standard_Boolean compgraph = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Transfer ******************/
+		/**** md5 signature: f0cf09d91d7e8768a38076b515c98fcc ****/
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "
+Parameters
+----------
+sh: TopoDS_Shape
+mode: STEPControl_StepModelType
+theParams: StepData_ConfParameters
+compgraph: bool (optional, default to Standard_True)
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+IFSelect_ReturnStatus
+
+Description
+-----------
+Translates shape sh to a step entity.
+") Transfer;
+		IFSelect_ReturnStatus Transfer(const TopoDS_Shape & sh, const STEPControl_StepModelType mode, const StepData_ConfParameters & theParams, const Standard_Boolean compgraph = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** UnsetTolerance ******************/
 		/**** md5 signature: 2d51d628282b502d22281b67c393ff77 ****/

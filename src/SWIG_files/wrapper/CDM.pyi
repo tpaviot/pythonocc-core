@@ -8,8 +8,6 @@ from OCC.Core.TCollection import *
 from OCC.Core.Message import *
 from OCC.Core.Resource import *
 
-# the following typedef cannot be wrapped as is
-CDM_DocumentHasher = NewType("CDM_DocumentHasher", Any)
 CDM_DocumentPointer = NewType("CDM_DocumentPointer", CDM_Document)
 # the following typedef cannot be wrapped as is
 CDM_MapIteratorOfMapOfDocument = NewType("CDM_MapIteratorOfMapOfDocument", Any)

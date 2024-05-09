@@ -22,7 +22,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TObj_Application.hxx>
 #include<TObj_Assistant.hxx>
 #include<TObj_CheckModel.hxx>
-#include<TObj_Common.hxx>
 #include<TObj_Container.hxx>
 #include<TObj_DeletingMode.hxx>
 #include<TObj_HiddenPartition.hxx>

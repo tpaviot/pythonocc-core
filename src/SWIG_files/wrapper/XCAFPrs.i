@@ -132,17 +132,17 @@ enum  {
 /* end handles declaration */
 
 /* templates */
-%template(XCAFPrs_DataMapOfStyleShape) NCollection_DataMap<XCAFPrs_Style,TopoDS_Shape,XCAFPrs_Style>;
-%template(XCAFPrs_DataMapOfStyleTransient) NCollection_DataMap<XCAFPrs_Style,opencascade::handle<Standard_Transient>,XCAFPrs_Style>;
+%template(XCAFPrs_DataMapOfStyleShape) NCollection_DataMap<XCAFPrs_Style,TopoDS_Shape>;
+%template(XCAFPrs_DataMapOfStyleTransient) NCollection_DataMap<XCAFPrs_Style,opencascade::handle<Standard_Transient>>;
 %template(XCAFPrs_IndexedDataMapOfShapeStyle) NCollection_IndexedDataMap<TopoDS_Shape,XCAFPrs_Style,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<XCAFPrs_Style, TopoDS_Shape, XCAFPrs_Style>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
-typedef NCollection_DataMap<XCAFPrs_Style, opencascade::handle<Standard_Transient>, XCAFPrs_Style>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
+typedef NCollection_DataMap<XCAFPrs_Style, TopoDS_Shape>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfStyleShape;
+typedef NCollection_DataMap<XCAFPrs_Style, opencascade::handle<Standard_Transient>>::Iterator XCAFPrs_DataMapIteratorOfDataMapOfStyleTransient;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher>::Iterator XCAFPrs_DataMapIteratorOfIndexedDataMapOfShapeStyle;
-typedef NCollection_DataMap<XCAFPrs_Style, TopoDS_Shape, XCAFPrs_Style> XCAFPrs_DataMapOfStyleShape;
-typedef NCollection_DataMap<XCAFPrs_Style, opencascade::handle<Standard_Transient>, XCAFPrs_Style> XCAFPrs_DataMapOfStyleTransient;
+typedef NCollection_DataMap<XCAFPrs_Style, TopoDS_Shape> XCAFPrs_DataMapOfStyleShape;
+typedef NCollection_DataMap<XCAFPrs_Style, opencascade::handle<Standard_Transient>> XCAFPrs_DataMapOfStyleTransient;
 typedef Standard_Integer XCAFPrs_DocumentExplorerFlags;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMapHasher> XCAFPrs_IndexedDataMapOfShapeStyle;
 /* end typedefs declaration */
@@ -710,44 +710,20 @@ No available documentation.
 ") XCAFPrs_DocumentNode;
 		 XCAFPrs_DocumentNode();
 
-		/****************** HashCode ******************/
-		/**** md5 signature: 6a62ab8adacc91a2ac899dc50b20f6d3 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theNode: XCAFPrs_DocumentNode
-theN: int
 
-Return
--------
-int
-
-Description
------------
-Return hash code based on node string identifier.
-") HashCode;
-		static Standard_Integer HashCode(const XCAFPrs_DocumentNode & theNode, const Standard_Integer theN);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 16d5b263d370e7f3ed5af768125b2f7b ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-theNode1: XCAFPrs_DocumentNode
-theNode2: XCAFPrs_DocumentNode
-
-Return
--------
-bool
-
-Description
------------
-Return true if two document nodes has the same string identifier.
-") IsEqual;
-		static Standard_Boolean IsEqual(const XCAFPrs_DocumentNode & theNode1, const XCAFPrs_DocumentNode & theNode2);
-
+%extend{
+    bool __eq_wrapper__(const XCAFPrs_DocumentNode other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
@@ -810,6 +786,7 @@ No available documentation.
 **********************/
 class XCAFPrs_Style {
 	public:
+		friend struct std:: hash;
 		/****************** XCAFPrs_Style ******************/
 		/**** md5 signature: 9543f66d0ab16adfbffa6f1ff76c2dd5 ****/
 		%feature("compactdefaultargs") XCAFPrs_Style;
@@ -896,25 +873,6 @@ Return surface color.
 ") GetColorSurfRGBA;
 		const Quantity_ColorRGBA & GetColorSurfRGBA();
 
-		/****************** HashCode ******************/
-		/**** md5 signature: 815866ace2120ed6a0aade78641943c6 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theStyle: XCAFPrs_Style
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given set of styling settings, in the range [1, theupperbound] @param thestyle the set of styling settings which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const XCAFPrs_Style & theStyle, const Standard_Integer theUpperBound);
-
 		/****************** IsEmpty ******************/
 		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
 		%feature("compactdefaultargs") IsEmpty;
@@ -945,25 +903,6 @@ Description
 Returns true if styles are the same methods for using style as key in maps.
 ") IsEqual;
 		Standard_Boolean IsEqual(const XCAFPrs_Style & theOther);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: c0449415bf9985342d955191e7ff7a56 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-theS1: XCAFPrs_Style
-theS2: XCAFPrs_Style
-
-Return
--------
-bool
-
-Description
------------
-Returns true when the two keys are the same.
-") IsEqual;
-		static Standard_Boolean IsEqual(const XCAFPrs_Style & theS1, const XCAFPrs_Style & theS2);
 
 		/****************** IsSetColorCurv ******************/
 		/**** md5 signature: 64313982bf697dffdbaa22ea5a964e21 ****/
@@ -1240,6 +1179,12 @@ Return image source.
 	}
 };
 
+/***********************************
+* class hash<XCAFPrs_DocumentNode> *
+***********************************/
+/****************************
+* class hash<XCAFPrs_Style> *
+****************************/
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
@@ -1277,23 +1222,7 @@ def XCAFPrs_DocumentExplorer_FindShapeFromPathId(*args):
 	return XCAFPrs_DocumentExplorer.FindShapeFromPathId(*args)
 
 @deprecated
-def XCAFPrs_DocumentNode_HashCode(*args):
-	return XCAFPrs_DocumentNode.HashCode(*args)
-
-@deprecated
-def XCAFPrs_DocumentNode_IsEqual(*args):
-	return XCAFPrs_DocumentNode.IsEqual(*args)
-
-@deprecated
 def XCAFPrs_Driver_GetID(*args):
 	return XCAFPrs_Driver.GetID(*args)
-
-@deprecated
-def XCAFPrs_Style_HashCode(*args):
-	return XCAFPrs_Style.HashCode(*args)
-
-@deprecated
-def XCAFPrs_Style_IsEqual(*args):
-	return XCAFPrs_Style.IsEqual(*args)
 
 }

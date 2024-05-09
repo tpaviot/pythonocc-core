@@ -55,10 +55,10 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepconstruct.htm
 #include<StepData_module.hxx>
 #include<TCollection_module.hxx>
 #include<TColStd_module.hxx>
-#include<gp_module.hxx>
 #include<XSControl_module.hxx>
 #include<StepVisual_module.hxx>
 #include<Quantity_module.hxx>
+#include<gp_module.hxx>
 #include<TopTools_module.hxx>
 #include<IFSelect_module.hxx>
 #include<Message_module.hxx>
@@ -88,10 +88,10 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepconstruct.htm
 %import StepData.i
 %import TCollection.i
 %import TColStd.i
-%import gp.i
 %import XSControl.i
 %import StepVisual.i
 %import Quantity.i
+%import gp.i
 
 %pythoncode {
 from enum import IntEnum
@@ -110,15 +110,15 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(STEPConstruct_DataMapOfAsciiStringTransient) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Standard_Transient>,TCollection_AsciiString>;
-%template(STEPConstruct_DataMapOfPointTransient) NCollection_DataMap<gp_Pnt,opencascade::handle<Standard_Transient>,STEPConstruct_PointHasher>;
+%template(STEPConstruct_DataMapOfAsciiStringTransient) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Standard_Transient>>;
+%template(STEPConstruct_DataMapOfPointTransient) NCollection_DataMap<gp_Pnt,opencascade::handle<Standard_Transient>>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>, TCollection_AsciiString>::Iterator STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient;
-typedef NCollection_DataMap<gp_Pnt, opencascade::handle<Standard_Transient>, STEPConstruct_PointHasher>::Iterator STEPConstruct_DataMapIteratorOfDataMapOfPointTransient;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>, TCollection_AsciiString> STEPConstruct_DataMapOfAsciiStringTransient;
-typedef NCollection_DataMap<gp_Pnt, opencascade::handle<Standard_Transient>, STEPConstruct_PointHasher> STEPConstruct_DataMapOfPointTransient;
+typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>>::Iterator STEPConstruct_DataMapIteratorOfDataMapOfAsciiStringTransient;
+typedef NCollection_DataMap<gp_Pnt, opencascade::handle<Standard_Transient>>::Iterator STEPConstruct_DataMapIteratorOfDataMapOfPointTransient;
+typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> STEPConstruct_DataMapOfAsciiStringTransient;
+typedef NCollection_DataMap<gp_Pnt, opencascade::handle<Standard_Transient>> STEPConstruct_DataMapOfPointTransient;
 /* end typedefs declaration */
 
 /**********************
@@ -1225,6 +1225,24 @@ No available documentation.
 ") SetACyear;
 		void SetACyear(const Standard_Integer year);
 
+		/****************** SetGlobalFactor ******************/
+		/**** md5 signature: 5028f8e2221225ecea3206930d81e67f ****/
+		%feature("compactdefaultargs") SetGlobalFactor;
+		%feature("autodoc", "
+Parameters
+----------
+theGlobalFactor: StepData_Factors
+
+Return
+-------
+None
+
+Description
+-----------
+No available documentation.
+") SetGlobalFactor;
+		void SetGlobalFactor(const StepData_Factors & theGlobalFactor);
+
 		/****************** SetIndex ******************/
 		/**** md5 signature: e532bcf6ded7ea35dd810f127d134732 ****/
 		%feature("compactdefaultargs") SetIndex;
@@ -1346,7 +1364,7 @@ No available documentation.
 		Standard_Boolean IsDone();
 
 		/****************** MakeSDR ******************/
-		/**** md5 signature: 9b8ea74a1baa05413a9ef01e3514bfe7 ****/
+		/**** md5 signature: 97781b0e3545c0a0c5fda0a3f0af72a3 ****/
 		%feature("compactdefaultargs") MakeSDR;
 		%feature("autodoc", "
 Parameters
@@ -1354,6 +1372,7 @@ Parameters
 aShape: StepShape_ShapeRepresentation
 aName: TCollection_HAsciiString
 AC: StepBasic_ApplicationContext
+theStepModel: StepData_StepModel
 
 Return
 -------
@@ -1363,7 +1382,7 @@ Description
 -----------
 No available documentation.
 ") MakeSDR;
-		void MakeSDR(const opencascade::handle<StepShape_ShapeRepresentation> & aShape, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_ApplicationContext> & AC);
+		void MakeSDR(const opencascade::handle<StepShape_ShapeRepresentation> & aShape, const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepBasic_ApplicationContext> & AC, opencascade::handle<StepData_StepModel> & theStepModel);
 
 		/****************** PC ******************/
 		/**** md5 signature: 4b00ee1014f481885d4ebd1bc2d9b97f ****/
@@ -1961,58 +1980,6 @@ No available documentation.
 	}
 };
 
-/**********************************
-* class STEPConstruct_PointHasher *
-**********************************/
-class STEPConstruct_PointHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 884d62c38cbd2664bf75c1613ed6418f ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-thePoint: gp_Pnt
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the point, in the range [1, theupperbound] @param thepoint the point which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const gp_Pnt & thePoint, const Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 348dee123ab0451d70df039c91381cb7 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-Point1: gp_Pnt
-Point2: gp_Pnt
-
-Return
--------
-bool
-
-Description
------------
-Returns true when the two keys are the same. two same keys must have the same hashcode, the contrary is not necessary.
-") IsEqual;
-		static Standard_Boolean IsEqual(const gp_Pnt & Point1, const gp_Pnt & Point2);
-
-};
-
-
-%extend STEPConstruct_PointHasher {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /***************************
 * class STEPConstruct_Tool *
 ***************************/
@@ -2173,12 +2140,13 @@ Returns the areafactor.
 		Standard_Real AreaFactor();
 
 		/****************** ComputeFactors ******************/
-		/**** md5 signature: 1cd2099da645efb869040f3450e85399 ****/
+		/**** md5 signature: e55ed6e1c621d2c51e4d002edf932ba0 ****/
 		%feature("compactdefaultargs") ComputeFactors;
 		%feature("autodoc", "
 Parameters
 ----------
 aContext: StepRepr_GlobalUnitAssignedContext
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -2188,15 +2156,16 @@ Description
 -----------
 Computes the length, plane angle and solid angle conversion factor . returns a status, 0 if ok.
 ") ComputeFactors;
-		Standard_Integer ComputeFactors(const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aContext);
+		Standard_Integer ComputeFactors(const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aContext, const StepData_Factors & theLocalFactors);
 
 		/****************** ComputeFactors ******************/
-		/**** md5 signature: 0ed4ffd250ec4e5abaee054ded1f1b0d ****/
+		/**** md5 signature: 15b5118d0051c0095eba8b5157449a74 ****/
 		%feature("compactdefaultargs") ComputeFactors;
 		%feature("autodoc", "
 Parameters
 ----------
 aUnit: StepBasic_NamedUnit
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -2206,7 +2175,7 @@ Description
 -----------
 No available documentation.
 ") ComputeFactors;
-		Standard_Integer ComputeFactors(const opencascade::handle<StepBasic_NamedUnit> & aUnit);
+		Standard_Integer ComputeFactors(const opencascade::handle<StepBasic_NamedUnit> & aUnit, const StepData_Factors & theLocalFactors);
 
 		/****************** ComputeTolerance ******************/
 		/**** md5 signature: 9a5806980a9e9e53879adea3026bf9a2 ****/
@@ -2258,12 +2227,14 @@ Tells if a uncertainty (for length) is recorded.
 		Standard_Boolean HasUncertainty();
 
 		/****************** Init ******************/
-		/**** md5 signature: f5a5725cc2022d6209fecd6301561bac ****/
+		/**** md5 signature: 2d945e7576dd2b4dd757de65980d76e4 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 Tol3d: float
+theModel: StepData_StepModel
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -2273,7 +2244,7 @@ Description
 -----------
 Creates new context (units are mm and radians, uncertainty equal to tol3d).
 ") Init;
-		void Init(const Standard_Real Tol3d);
+		void Init(const Standard_Real Tol3d, const opencascade::handle<StepData_StepModel> & theModel, const StepData_Factors & theLocalFactors);
 
 		/****************** IsDone ******************/
 		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
@@ -2809,13 +2780,14 @@ Clears all defined styles and psa sequence.
 		void ClearStyles();
 
 		/****************** CreateMDGPR ******************/
-		/**** md5 signature: 8485de9c2c2de832f4f067ff0e6544ad ****/
+		/**** md5 signature: e7a829061e38a38ebfd438078ef6d466 ****/
 		%feature("compactdefaultargs") CreateMDGPR;
 		%feature("autodoc", "
 Parameters
 ----------
 Context: StepRepr_RepresentationContext
 MDGPR: StepVisual_MechanicalDesignGeometricPresentationRepresentation
+theStepModel: StepData_StepModel
 
 Return
 -------
@@ -2825,7 +2797,7 @@ Description
 -----------
 Create mdgpr, fill it with all the styles previously defined, and add it to the model.
 ") CreateMDGPR;
-		Standard_Boolean CreateMDGPR(const opencascade::handle<StepRepr_RepresentationContext> & Context, opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> & MDGPR);
+		Standard_Boolean CreateMDGPR(const opencascade::handle<StepRepr_RepresentationContext> & Context, opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> & MDGPR, opencascade::handle<StepData_StepModel> & theStepModel);
 
 		/****************** CreateNAUOSRD ******************/
 		/**** md5 signature: 2dc1e1e3a3196d80506df8dd27ab2f97 ****/
@@ -3301,7 +3273,7 @@ Returns sdr associated with given ppd or null if not found (when, try getpropcds
 		opencascade::handle<StepBasic_ProductDefinition> GetPropPD(const opencascade::handle<StepRepr_PropertyDefinition> & PD);
 
 		/****************** GetPropPnt ******************/
-		/**** md5 signature: 039be3ee6ea8f00d4012c24fe1b03dd9 ****/
+		/**** md5 signature: a60d17b46f6f4bd29463c9b913c2a95d ****/
 		%feature("compactdefaultargs") GetPropPnt;
 		%feature("autodoc", "
 Parameters
@@ -3309,6 +3281,7 @@ Parameters
 item: StepRepr_RepresentationItem
 Context: StepRepr_RepresentationContext
 Pnt: gp_Pnt
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -3318,15 +3291,16 @@ Description
 -----------
 Returns value of centriod property (or false if it is not).
 ") GetPropPnt;
-		Standard_Boolean GetPropPnt(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepRepr_RepresentationContext> & Context, gp_Pnt & Pnt);
+		Standard_Boolean GetPropPnt(const opencascade::handle<StepRepr_RepresentationItem> & item, const opencascade::handle<StepRepr_RepresentationContext> & Context, gp_Pnt & Pnt, const StepData_Factors & theLocalFactors);
 
 		/****************** GetPropReal ******************/
-		/**** md5 signature: 24654874ae79115566db0c15d04ac24a ****/
+		/**** md5 signature: 66572bdefcdc26e4643f74706fbf7d2b ****/
 		%feature("compactdefaultargs") GetPropReal;
 		%feature("autodoc", "
 Parameters
 ----------
 item: StepRepr_RepresentationItem
+theLocalFactors: StepData_Factors
 
 Return
 -------
@@ -3337,7 +3311,7 @@ Description
 -----------
 Returns value of real-valued property (area or volume) if property is neither area nor volume, returns false else returns true and isarea indicates whether property is area or volume.
 ") GetPropReal;
-		Standard_Boolean GetPropReal(const opencascade::handle<StepRepr_RepresentationItem> & item, Standard_Real &OutValue, Standard_Boolean &OutValue);
+		Standard_Boolean GetPropReal(const opencascade::handle<StepRepr_RepresentationItem> & item, Standard_Real &OutValue, Standard_Boolean &OutValue, const StepData_Factors & theLocalFactors);
 
 		/****************** GetPropShape ******************/
 		/**** md5 signature: 16026c6cc5e907b0af72d056c5f3be1c ****/
@@ -3465,14 +3439,6 @@ def stepconstruct_FindShape(*args):
 @deprecated
 def STEPConstruct_Assembly_CheckSRRReversesNAUO(*args):
 	return STEPConstruct_Assembly.CheckSRRReversesNAUO(*args)
-
-@deprecated
-def STEPConstruct_PointHasher_HashCode(*args):
-	return STEPConstruct_PointHasher.HashCode(*args)
-
-@deprecated
-def STEPConstruct_PointHasher_IsEqual(*args):
-	return STEPConstruct_PointHasher.IsEqual(*args)
 
 @deprecated
 def STEPConstruct_UnitContext_ConvertSiPrefix(*args):

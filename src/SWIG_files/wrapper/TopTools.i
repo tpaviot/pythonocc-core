@@ -105,41 +105,6 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
 /* end handles declaration */
 
 /* templates */
-%template(TopTools_Array1OfListOfShape) NCollection_Array1<TopTools_ListOfShape>;
-
-%extend NCollection_Array1<TopTools_ListOfShape> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
 %template(TopTools_Array1OfShape) NCollection_Array1<TopoDS_Shape>;
 
 %extend NCollection_Array1<TopoDS_Shape> {
@@ -176,9 +141,9 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
     }
 };
 %template(TopTools_Array2OfShape) NCollection_Array2<TopoDS_Shape>;
-%template(TopTools_DataMapOfIntegerListOfShape) NCollection_DataMap<Standard_Integer,TopTools_ListOfShape,TColStd_MapIntegerHasher>;
+%template(TopTools_DataMapOfIntegerListOfShape) NCollection_DataMap<Standard_Integer,TopTools_ListOfShape>;
 
-%extend NCollection_DataMap<Standard_Integer,TopTools_ListOfShape,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,TopTools_ListOfShape> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (TopTools_DataMapOfIntegerListOfShape::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -189,9 +154,9 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
     return l;
     }
 };
-%template(TopTools_DataMapOfIntegerShape) NCollection_DataMap<Standard_Integer,TopoDS_Shape,TColStd_MapIntegerHasher>;
+%template(TopTools_DataMapOfIntegerShape) NCollection_DataMap<Standard_Integer,TopoDS_Shape>;
 
-%extend NCollection_DataMap<Standard_Integer,TopoDS_Shape,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,TopoDS_Shape> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (TopTools_DataMapOfIntegerShape::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -202,8 +167,8 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
     return l;
     }
 };
-%template(TopTools_DataMapOfOrientedShapeInteger) NCollection_DataMap<TopoDS_Shape,Standard_Integer,TopTools_OrientedShapeMapHasher>;
-%template(TopTools_DataMapOfOrientedShapeShape) NCollection_DataMap<TopoDS_Shape,TopoDS_Shape,TopTools_OrientedShapeMapHasher>;
+%template(TopTools_DataMapOfOrientedShapeInteger) NCollection_DataMap<TopoDS_Shape,Standard_Integer>;
+%template(TopTools_DataMapOfOrientedShapeShape) NCollection_DataMap<TopoDS_Shape,TopoDS_Shape>;
 %template(TopTools_DataMapOfShapeBox) NCollection_DataMap<TopoDS_Shape,Bnd_Box,TopTools_ShapeMapHasher>;
 %template(TopTools_DataMapOfShapeInteger) NCollection_DataMap<TopoDS_Shape,Standard_Integer,TopTools_ShapeMapHasher>;
 %template(TopTools_DataMapOfShapeListOfInteger) NCollection_DataMap<TopoDS_Shape,TColStd_ListOfInteger,TopTools_ShapeMapHasher>;
@@ -215,7 +180,7 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
 %template(TopTools_IndexedDataMapOfShapeListOfShape) NCollection_IndexedDataMap<TopoDS_Shape,TopTools_ListOfShape,TopTools_ShapeMapHasher>;
 %template(TopTools_IndexedDataMapOfShapeReal) NCollection_IndexedDataMap<TopoDS_Shape,Standard_Real,TopTools_ShapeMapHasher>;
 %template(TopTools_IndexedDataMapOfShapeShape) NCollection_IndexedDataMap<TopoDS_Shape,TopoDS_Shape,TopTools_ShapeMapHasher>;
-%template(TopTools_IndexedMapOfOrientedShape) NCollection_IndexedMap<TopoDS_Shape,TopTools_OrientedShapeMapHasher>;
+%template(TopTools_IndexedMapOfOrientedShape) NCollection_IndexedMap<TopoDS_Shape>;
 %template(TopTools_IndexedMapOfShape) NCollection_IndexedMap<TopoDS_Shape,TopTools_ShapeMapHasher>;
 %template(TopTools_ListIteratorOfListOfShape) NCollection_TListIterator<TopoDS_Shape>;
 %template(TopTools_ListOfListOfShape) NCollection_List<TopTools_ListOfShape>;
@@ -234,7 +199,7 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
         return self.Size()
     }
 };
-%template(TopTools_MapOfOrientedShape) NCollection_Map<TopoDS_Shape,TopTools_OrientedShapeMapHasher>;
+%template(TopTools_MapOfOrientedShape) NCollection_Map<TopoDS_Shape>;
 %template(TopTools_MapOfShape) NCollection_Map<TopoDS_Shape,TopTools_ShapeMapHasher>;
 %template(TopTools_SequenceOfShape) NCollection_Sequence<TopoDS_Shape>;
 
@@ -250,10 +215,10 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
 typedef NCollection_Array1<TopTools_ListOfShape> TopTools_Array1OfListOfShape;
 typedef NCollection_Array1<TopoDS_Shape> TopTools_Array1OfShape;
 typedef NCollection_Array2<TopoDS_Shape> TopTools_Array2OfShape;
-typedef NCollection_DataMap<Standard_Integer, TopTools_ListOfShape, TColStd_MapIntegerHasher>::Iterator TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape;
-typedef NCollection_DataMap<Standard_Integer, TopoDS_Shape, TColStd_MapIntegerHasher>::Iterator TopTools_DataMapIteratorOfDataMapOfIntegerShape;
-typedef NCollection_DataMap<TopoDS_Shape, Standard_Integer, TopTools_OrientedShapeMapHasher>::Iterator TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger;
-typedef NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_OrientedShapeMapHasher>::Iterator TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
+typedef NCollection_DataMap<Standard_Integer, TopTools_ListOfShape>::Iterator TopTools_DataMapIteratorOfDataMapOfIntegerListOfShape;
+typedef NCollection_DataMap<Standard_Integer, TopoDS_Shape>::Iterator TopTools_DataMapIteratorOfDataMapOfIntegerShape;
+typedef NCollection_DataMap<TopoDS_Shape, Standard_Integer>::Iterator TopTools_DataMapIteratorOfDataMapOfOrientedShapeInteger;
+typedef NCollection_DataMap<TopoDS_Shape, TopoDS_Shape>::Iterator TopTools_DataMapIteratorOfDataMapOfOrientedShapeShape;
 typedef TopTools_DataMapOfShapeBox::Iterator TopTools_DataMapIteratorOfDataMapOfShapeBox;
 typedef NCollection_DataMap<TopoDS_Shape, Standard_Integer, TopTools_ShapeMapHasher>::Iterator TopTools_DataMapIteratorOfDataMapOfShapeInteger;
 typedef NCollection_DataMap<TopoDS_Shape, TColStd_ListOfInteger, TopTools_ShapeMapHasher>::Iterator TopTools_DataMapIteratorOfDataMapOfShapeListOfInteger;
@@ -261,10 +226,10 @@ typedef NCollection_DataMap<TopoDS_Shape, TopTools_ListOfShape, TopTools_ShapeMa
 typedef NCollection_DataMap<TopoDS_Shape, Standard_Real, TopTools_ShapeMapHasher>::Iterator TopTools_DataMapIteratorOfDataMapOfShapeReal;
 typedef NCollection_DataMap<TopoDS_Shape, TopTools_SequenceOfShape, TopTools_ShapeMapHasher>::Iterator TopTools_DataMapIteratorOfDataMapOfShapeSequenceOfShape;
 typedef NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher>::Iterator TopTools_DataMapIteratorOfDataMapOfShapeShape;
-typedef NCollection_DataMap<Standard_Integer, TopTools_ListOfShape, TColStd_MapIntegerHasher> TopTools_DataMapOfIntegerListOfShape;
-typedef NCollection_DataMap<Standard_Integer, TopoDS_Shape, TColStd_MapIntegerHasher> TopTools_DataMapOfIntegerShape;
-typedef NCollection_DataMap<TopoDS_Shape, Standard_Integer, TopTools_OrientedShapeMapHasher> TopTools_DataMapOfOrientedShapeInteger;
-typedef NCollection_DataMap<TopoDS_Shape, TopoDS_Shape, TopTools_OrientedShapeMapHasher> TopTools_DataMapOfOrientedShapeShape;
+typedef NCollection_DataMap<Standard_Integer, TopTools_ListOfShape> TopTools_DataMapOfIntegerListOfShape;
+typedef NCollection_DataMap<Standard_Integer, TopoDS_Shape> TopTools_DataMapOfIntegerShape;
+typedef NCollection_DataMap<TopoDS_Shape, Standard_Integer> TopTools_DataMapOfOrientedShapeInteger;
+typedef NCollection_DataMap<TopoDS_Shape, TopoDS_Shape> TopTools_DataMapOfOrientedShapeShape;
 typedef NCollection_DataMap<TopoDS_Shape, Bnd_Box, TopTools_ShapeMapHasher> TopTools_DataMapOfShapeBox;
 typedef NCollection_DataMap<TopoDS_Shape, Standard_Integer, TopTools_ShapeMapHasher> TopTools_DataMapOfShapeInteger;
 typedef NCollection_DataMap<TopoDS_Shape, TColStd_ListOfInteger, TopTools_ShapeMapHasher> TopTools_DataMapOfShapeListOfInteger;
@@ -276,16 +241,16 @@ typedef NCollection_IndexedDataMap<TopoDS_Shape, Standard_Address, TopTools_Shap
 typedef NCollection_IndexedDataMap<TopoDS_Shape, TopTools_ListOfShape, TopTools_ShapeMapHasher> TopTools_IndexedDataMapOfShapeListOfShape;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, Standard_Real, TopTools_ShapeMapHasher> TopTools_IndexedDataMapOfShapeReal;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, TopoDS_Shape, TopTools_ShapeMapHasher> TopTools_IndexedDataMapOfShapeShape;
-typedef NCollection_IndexedMap<TopoDS_Shape, TopTools_OrientedShapeMapHasher> TopTools_IndexedMapOfOrientedShape;
+typedef NCollection_IndexedMap<TopoDS_Shape> TopTools_IndexedMapOfOrientedShape;
 typedef NCollection_IndexedMap<TopoDS_Shape, TopTools_ShapeMapHasher> TopTools_IndexedMapOfShape;
 typedef TopTools_ListOfListOfShape::Iterator TopTools_ListIteratorOfListOfListOfShape;
 typedef NCollection_List<TopoDS_Shape>::Iterator TopTools_ListIteratorOfListOfShape;
 typedef NCollection_List<TopTools_ListOfShape> TopTools_ListOfListOfShape;
 typedef NCollection_List<TopoDS_Shape> TopTools_ListOfShape;
 typedef TopTools_LocationSet * TopTools_LocationSetPtr;
-typedef NCollection_Map<TopoDS_Shape, TopTools_OrientedShapeMapHasher>::Iterator TopTools_MapIteratorOfMapOfOrientedShape;
+typedef NCollection_Map<TopoDS_Shape>::Iterator TopTools_MapIteratorOfMapOfOrientedShape;
 typedef NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher>::Iterator TopTools_MapIteratorOfMapOfShape;
-typedef NCollection_Map<TopoDS_Shape, TopTools_OrientedShapeMapHasher> TopTools_MapOfOrientedShape;
+typedef NCollection_Map<TopoDS_Shape> TopTools_MapOfOrientedShape;
 typedef NCollection_Map<TopoDS_Shape, TopTools_ShapeMapHasher> TopTools_MapOfShape;
 typedef NCollection_Sequence<TopoDS_Shape> TopTools_SequenceOfShape;
 /* end typedefs declaration */
@@ -584,101 +549,11 @@ Removes all mutexes.
 	}
 };
 
-/****************************************
-* class TopTools_OrientedShapeMapHasher *
-****************************************/
-class TopTools_OrientedShapeMapHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: cf743343a1907f73e2da55e3b4f8638f ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theShape: TopoDS_Shape
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given shape, in the range [1, theupperbound] @param theshape the shape which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const TopoDS_Shape & theShape, const Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 6cfded5b10e66f3ff935b8fedf5531b0 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-S1: TopoDS_Shape
-S2: TopoDS_Shape
-
-Return
--------
-bool
-
-Description
------------
-Returns true when the two keys are equal. two same keys must have the same hashcode, the contrary is not necessary.
-") IsEqual;
-		static Standard_Boolean IsEqual(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
-
-};
-
-
-%extend TopTools_OrientedShapeMapHasher {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /********************************
 * class TopTools_ShapeMapHasher *
 ********************************/
 class TopTools_ShapeMapHasher {
 	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 2620d20054f9679679d76587e338d89d ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theShape: TopoDS_Shape
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given shape, in the range [1, theupperbound] @param theshape the shape which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const TopoDS_Shape & theShape, Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 6cfded5b10e66f3ff935b8fedf5531b0 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-S1: TopoDS_Shape
-S2: TopoDS_Shape
-
-Return
--------
-bool
-
-Description
------------
-Returns true when the two keys are the same. two same keys must have the same hashcode, the contrary is not necessary.
-") IsEqual;
-		static Standard_Boolean IsEqual(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
-
 };
 
 
@@ -1224,21 +1099,5 @@ def toptools_Dummy(*args):
 @deprecated
 def toptools_Dump(*args):
 	return toptools.Dump(*args)
-
-@deprecated
-def TopTools_OrientedShapeMapHasher_HashCode(*args):
-	return TopTools_OrientedShapeMapHasher.HashCode(*args)
-
-@deprecated
-def TopTools_OrientedShapeMapHasher_IsEqual(*args):
-	return TopTools_OrientedShapeMapHasher.IsEqual(*args)
-
-@deprecated
-def TopTools_ShapeMapHasher_HashCode(*args):
-	return TopTools_ShapeMapHasher.HashCode(*args)
-
-@deprecated
-def TopTools_ShapeMapHasher_IsEqual(*args):
-	return TopTools_ShapeMapHasher.IsEqual(*args)
 
 }

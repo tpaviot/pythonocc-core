@@ -21,8 +21,6 @@ TNaming_MapIteratorOfMapOfShape = NewType("TNaming_MapIteratorOfMapOfShape", Any
 TNaming_MapOfNamedShape = NewType("TNaming_MapOfNamedShape", Any)
 # the following typedef cannot be wrapped as is
 TNaming_MapOfShape = NewType("TNaming_MapOfShape", Any)
-# the following typedef cannot be wrapped as is
-TNaming_NamedShapeHasher = NewType("TNaming_NamedShapeHasher", Any)
 TNaming_PtrAttribute = NewType("TNaming_PtrAttribute", TNaming_NamedShape)
 TNaming_PtrNode = NewType("TNaming_PtrNode", TNaming_Node)
 TNaming_PtrRefShape = NewType("TNaming_PtrRefShape", TNaming_RefShape)

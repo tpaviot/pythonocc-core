@@ -46,6 +46,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepcafcontrol.ht
 #include<StepBasic_module.hxx>
 #include<StepShape_module.hxx>
 #include<STEPControl_module.hxx>
+#include<StepData_module.hxx>
 #include<TopoDS_module.hxx>
 #include<DE_module.hxx>
 #include<TColStd_module.hxx>
@@ -99,6 +100,7 @@ https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepcafcontrol.ht
 %import StepBasic.i
 %import StepShape.i
 %import STEPControl.i
+%import StepData.i
 %import TopoDS.i
 %import DE.i
 %import TColStd.i
@@ -137,25 +139,25 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(STEPCAFControl_DataMapOfLabelExternFile) NCollection_DataMap<TDF_Label,opencascade::handle<STEPCAFControl_ExternFile>,TDF_LabelMapHasher>;
-%template(STEPCAFControl_DataMapOfLabelShape) NCollection_DataMap<TDF_Label,TopoDS_Shape,TDF_LabelMapHasher>;
-%template(STEPCAFControl_DataMapOfPDExternFile) NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>,opencascade::handle<STEPCAFControl_ExternFile>,TColStd_MapTransientHasher>;
-%template(STEPCAFControl_DataMapOfSDRExternFile) NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>,opencascade::handle<STEPCAFControl_ExternFile>,TColStd_MapTransientHasher>;
+%template(STEPCAFControl_DataMapOfLabelExternFile) NCollection_DataMap<TDF_Label,opencascade::handle<STEPCAFControl_ExternFile>>;
+%template(STEPCAFControl_DataMapOfLabelShape) NCollection_DataMap<TDF_Label,TopoDS_Shape>;
+%template(STEPCAFControl_DataMapOfPDExternFile) NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>,opencascade::handle<STEPCAFControl_ExternFile>>;
+%template(STEPCAFControl_DataMapOfSDRExternFile) NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>,opencascade::handle<STEPCAFControl_ExternFile>>;
 %template(STEPCAFControl_DataMapOfShapePD) NCollection_DataMap<TopoDS_Shape,opencascade::handle<StepBasic_ProductDefinition>,TopTools_ShapeMapHasher>;
 %template(STEPCAFControl_DataMapOfShapeSDR) NCollection_DataMap<TopoDS_Shape,opencascade::handle<StepShape_ShapeDefinitionRepresentation>,TopTools_ShapeMapHasher>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TDF_Label, opencascade::handle<STEPCAFControl_ExternFile>, TDF_LabelMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
-typedef NCollection_DataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
-typedef NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
-typedef NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
+typedef NCollection_DataMap<TDF_Label, opencascade::handle<STEPCAFControl_ExternFile>>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelExternFile;
+typedef NCollection_DataMap<TDF_Label, TopoDS_Shape>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfLabelShape;
+typedef NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfPDExternFile;
+typedef NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfSDRExternFile;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<StepBasic_ProductDefinition>, TopTools_ShapeMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfShapePD;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<StepShape_ShapeDefinitionRepresentation>, TopTools_ShapeMapHasher>::Iterator STEPCAFControl_DataMapIteratorOfDataMapOfShapeSDR;
-typedef NCollection_DataMap<TDF_Label, opencascade::handle<STEPCAFControl_ExternFile>, TDF_LabelMapHasher> STEPCAFControl_DataMapOfLabelExternFile;
-typedef NCollection_DataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher> STEPCAFControl_DataMapOfLabelShape;
-typedef NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher> STEPCAFControl_DataMapOfPDExternFile;
-typedef NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher> STEPCAFControl_DataMapOfSDRExternFile;
+typedef NCollection_DataMap<TDF_Label, opencascade::handle<STEPCAFControl_ExternFile>> STEPCAFControl_DataMapOfLabelExternFile;
+typedef NCollection_DataMap<TDF_Label, TopoDS_Shape> STEPCAFControl_DataMapOfLabelShape;
+typedef NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>> STEPCAFControl_DataMapOfPDExternFile;
+typedef NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>> STEPCAFControl_DataMapOfSDRExternFile;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<StepBasic_ProductDefinition>, TopTools_ShapeMapHasher> STEPCAFControl_DataMapOfShapePD;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<StepShape_ShapeDefinitionRepresentation>, TopTools_ShapeMapHasher> STEPCAFControl_DataMapOfShapeSDR;
 /* end typedefs declaration */
@@ -192,11 +194,12 @@ Clears map of shapes registered as assemblies.
 		void ClearMap();
 
 		/****************** IsAssembly ******************/
-		/**** md5 signature: 30d578b0e9cf9ae797fce09e72f62fcb ****/
+		/**** md5 signature: d21c3d42bc73d26bc8a22aa2065c7dc4 ****/
 		%feature("compactdefaultargs") IsAssembly;
 		%feature("autodoc", "
 Parameters
 ----------
+theModel: StepData_StepModel
 S: TopoDS_Shape
 
 Return
@@ -207,7 +210,7 @@ Description
 -----------
 Check whether shape s is assembly returns true if shape is registered in assemblies map.
 ") IsAssembly;
-		virtual Standard_Boolean IsAssembly(TopoDS_Shape & S);
+		virtual Standard_Boolean IsAssembly(const opencascade::handle<StepData_StepModel> & theModel, TopoDS_Shape & S);
 
 		/****************** RegisterAssembly ******************/
 		/**** md5 signature: 622c0a9708d57976d3998396359aa735 ****/
@@ -261,219 +264,7 @@ Set standard mode of work in standard mode actor (default) behaves exactly as it
 *****************************************/
 class STEPCAFControl_ConfigurationNode : public DE_ConfigurationNode {
 	public:
-		class STEPCAFControl_InternalSection {};
-/* public enums */
-enum AngleUnitMode {
-	AngleUnitMode_File = 0,
-	AngleUnitMode_Rad = 1,
-	AngleUnitMode_Deg = 2,
-};
-
-enum RWMode_Tessellated {
-	RWMode_Tessellated_Off = 0,
-	RWMode_Tessellated_On = 1,
-	RWMode_Tessellated_OnNoBRep = 2,
-};
-
-enum ReadMode_AssemblyLevel {
-	ReadMode_AssemblyLevel_All = 1,
-	ReadMode_AssemblyLevel_Assembly = 2,
-	ReadMode_AssemblyLevel_Structure = 3,
-	ReadMode_AssemblyLevel_Shape = 4,
-};
-
-enum ReadMode_BSplineContinuity {
-	ReadMode_BSplineContinuity_C0 = 0,
-	ReadMode_BSplineContinuity_C1 = 1,
-	ReadMode_BSplineContinuity_C2 = 2,
-};
-
-enum ReadMode_MaxPrecision {
-	ReadMode_MaxPrecision_Preferred = 0,
-	ReadMode_MaxPrecision_Forced = 1,
-};
-
-enum ReadMode_Precision {
-	ReadMode_Precision_File = 0,
-	ReadMode_Precision_User = 1,
-};
-
-enum ReadMode_ProductContext {
-	ReadMode_ProductContext_All = 1,
-	ReadMode_ProductContext_Design = 2,
-	ReadMode_ProductContext_Analysis = 3,
-};
-
-enum ReadMode_ShapeRepr {
-	ReadMode_ShapeRepr_All = 1,
-	ReadMode_ShapeRepr_ABSR = 2,
-	ReadMode_ShapeRepr_MSSR = 3,
-	ReadMode_ShapeRepr_GBSSR = 4,
-	ReadMode_ShapeRepr_FBSR = 5,
-	ReadMode_ShapeRepr_EBWSR = 6,
-	ReadMode_ShapeRepr_GBWSR = 7,
-};
-
-enum ReadMode_SurfaceCurve {
-	ReadMode_SurfaceCurve_Default = 0,
-	ReadMode_SurfaceCurve_2DUse_Preferred = 2,
-	ReadMode_SurfaceCurve_2DUse_Forced = - 2,
-	ReadMode_SurfaceCurve_3DUse_Preferred = 3,
-	ReadMode_SurfaceCurve_3DUse_Forced = - 3,
-};
-
-enum WriteMode_Assembly {
-	WriteMode_Assembly_Off = 0,
-	WriteMode_Assembly_On = 1,
-	WriteMode_Assembly_Auto = 2,
-};
-
-enum WriteMode_PrecisionMode {
-	WriteMode_PrecisionMode_Least = - 1,
-	WriteMode_PrecisionMode_Average = 0,
-	WriteMode_PrecisionMode_Greatest = 1,
-	WriteMode_PrecisionMode_Session = 2,
-};
-
-enum WriteMode_StepSchema {
-	WriteMode_StepSchema_AP214CD = 1,
-	WriteMode_StepSchema_AP214DIS = 2,
-	WriteMode_StepSchema_AP203 = 3,
-	WriteMode_StepSchema_AP214IS = 4,
-	WriteMode_StepSchema_AP242DIS = 5,
-};
-
-enum WriteMode_VertexMode {
-	WriteMode_VertexMode_OneCompound = 0,
-	WriteMode_VertexMode_SingleVertex = 1,
-};
-
-/* end public enums declaration */
-
-/* python proxy classes for enums */
-%pythoncode {
-
-class AngleUnitMode(IntEnum):
-	AngleUnitMode_File = 0
-	AngleUnitMode_Rad = 1
-	AngleUnitMode_Deg = 2
-AngleUnitMode_File = AngleUnitMode.AngleUnitMode_File
-AngleUnitMode_Rad = AngleUnitMode.AngleUnitMode_Rad
-AngleUnitMode_Deg = AngleUnitMode.AngleUnitMode_Deg
-
-class RWMode_Tessellated(IntEnum):
-	RWMode_Tessellated_Off = 0
-	RWMode_Tessellated_On = 1
-	RWMode_Tessellated_OnNoBRep = 2
-RWMode_Tessellated_Off = RWMode_Tessellated.RWMode_Tessellated_Off
-RWMode_Tessellated_On = RWMode_Tessellated.RWMode_Tessellated_On
-RWMode_Tessellated_OnNoBRep = RWMode_Tessellated.RWMode_Tessellated_OnNoBRep
-
-class ReadMode_AssemblyLevel(IntEnum):
-	ReadMode_AssemblyLevel_All = 1
-	ReadMode_AssemblyLevel_Assembly = 2
-	ReadMode_AssemblyLevel_Structure = 3
-	ReadMode_AssemblyLevel_Shape = 4
-ReadMode_AssemblyLevel_All = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_All
-ReadMode_AssemblyLevel_Assembly = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Assembly
-ReadMode_AssemblyLevel_Structure = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Structure
-ReadMode_AssemblyLevel_Shape = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Shape
-
-class ReadMode_BSplineContinuity(IntEnum):
-	ReadMode_BSplineContinuity_C0 = 0
-	ReadMode_BSplineContinuity_C1 = 1
-	ReadMode_BSplineContinuity_C2 = 2
-ReadMode_BSplineContinuity_C0 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C0
-ReadMode_BSplineContinuity_C1 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C1
-ReadMode_BSplineContinuity_C2 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C2
-
-class ReadMode_MaxPrecision(IntEnum):
-	ReadMode_MaxPrecision_Preferred = 0
-	ReadMode_MaxPrecision_Forced = 1
-ReadMode_MaxPrecision_Preferred = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Preferred
-ReadMode_MaxPrecision_Forced = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Forced
-
-class ReadMode_Precision(IntEnum):
-	ReadMode_Precision_File = 0
-	ReadMode_Precision_User = 1
-ReadMode_Precision_File = ReadMode_Precision.ReadMode_Precision_File
-ReadMode_Precision_User = ReadMode_Precision.ReadMode_Precision_User
-
-class ReadMode_ProductContext(IntEnum):
-	ReadMode_ProductContext_All = 1
-	ReadMode_ProductContext_Design = 2
-	ReadMode_ProductContext_Analysis = 3
-ReadMode_ProductContext_All = ReadMode_ProductContext.ReadMode_ProductContext_All
-ReadMode_ProductContext_Design = ReadMode_ProductContext.ReadMode_ProductContext_Design
-ReadMode_ProductContext_Analysis = ReadMode_ProductContext.ReadMode_ProductContext_Analysis
-
-class ReadMode_ShapeRepr(IntEnum):
-	ReadMode_ShapeRepr_All = 1
-	ReadMode_ShapeRepr_ABSR = 2
-	ReadMode_ShapeRepr_MSSR = 3
-	ReadMode_ShapeRepr_GBSSR = 4
-	ReadMode_ShapeRepr_FBSR = 5
-	ReadMode_ShapeRepr_EBWSR = 6
-	ReadMode_ShapeRepr_GBWSR = 7
-ReadMode_ShapeRepr_All = ReadMode_ShapeRepr.ReadMode_ShapeRepr_All
-ReadMode_ShapeRepr_ABSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_ABSR
-ReadMode_ShapeRepr_MSSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_MSSR
-ReadMode_ShapeRepr_GBSSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_GBSSR
-ReadMode_ShapeRepr_FBSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_FBSR
-ReadMode_ShapeRepr_EBWSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_EBWSR
-ReadMode_ShapeRepr_GBWSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_GBWSR
-
-class ReadMode_SurfaceCurve(IntEnum):
-	ReadMode_SurfaceCurve_Default = 0
-	ReadMode_SurfaceCurve_2DUse_Preferred = 2
-	ReadMode_SurfaceCurve_2DUse_Forced = - 2
-	ReadMode_SurfaceCurve_3DUse_Preferred = 3
-	ReadMode_SurfaceCurve_3DUse_Forced = - 3
-ReadMode_SurfaceCurve_Default = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_Default
-ReadMode_SurfaceCurve_2DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Preferred
-ReadMode_SurfaceCurve_2DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Forced
-ReadMode_SurfaceCurve_3DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Preferred
-ReadMode_SurfaceCurve_3DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Forced
-
-class WriteMode_Assembly(IntEnum):
-	WriteMode_Assembly_Off = 0
-	WriteMode_Assembly_On = 1
-	WriteMode_Assembly_Auto = 2
-WriteMode_Assembly_Off = WriteMode_Assembly.WriteMode_Assembly_Off
-WriteMode_Assembly_On = WriteMode_Assembly.WriteMode_Assembly_On
-WriteMode_Assembly_Auto = WriteMode_Assembly.WriteMode_Assembly_Auto
-
-class WriteMode_PrecisionMode(IntEnum):
-	WriteMode_PrecisionMode_Least = - 1
-	WriteMode_PrecisionMode_Average = 0
-	WriteMode_PrecisionMode_Greatest = 1
-	WriteMode_PrecisionMode_Session = 2
-WriteMode_PrecisionMode_Least = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Least
-WriteMode_PrecisionMode_Average = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Average
-WriteMode_PrecisionMode_Greatest = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Greatest
-WriteMode_PrecisionMode_Session = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Session
-
-class WriteMode_StepSchema(IntEnum):
-	WriteMode_StepSchema_AP214CD = 1
-	WriteMode_StepSchema_AP214DIS = 2
-	WriteMode_StepSchema_AP203 = 3
-	WriteMode_StepSchema_AP214IS = 4
-	WriteMode_StepSchema_AP242DIS = 5
-WriteMode_StepSchema_AP214CD = WriteMode_StepSchema.WriteMode_StepSchema_AP214CD
-WriteMode_StepSchema_AP214DIS = WriteMode_StepSchema.WriteMode_StepSchema_AP214DIS
-WriteMode_StepSchema_AP203 = WriteMode_StepSchema.WriteMode_StepSchema_AP203
-WriteMode_StepSchema_AP214IS = WriteMode_StepSchema.WriteMode_StepSchema_AP214IS
-WriteMode_StepSchema_AP242DIS = WriteMode_StepSchema.WriteMode_StepSchema_AP242DIS
-
-class WriteMode_VertexMode(IntEnum):
-	WriteMode_VertexMode_OneCompound = 0
-	WriteMode_VertexMode_SingleVertex = 1
-WriteMode_VertexMode_OneCompound = WriteMode_VertexMode.WriteMode_VertexMode_OneCompound
-WriteMode_VertexMode_SingleVertex = WriteMode_VertexMode.WriteMode_VertexMode_SingleVertex
-};
-/* end python proxy for enums */
-
-		STEPCAFControl_InternalSection InternalParameters;
+		StepData_ConfParameters InternalParameters;
 		/****************** STEPCAFControl_ConfigurationNode ******************/
 		/**** md5 signature: 6f36f5fec71c0b21b0bc1a66ab772a2b ****/
 		%feature("compactdefaultargs") STEPCAFControl_ConfigurationNode;
@@ -1818,6 +1609,27 @@ No available documentation.
 		Standard_Boolean Perform(TCollection_AsciiString filename, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Perform ******************/
+		/**** md5 signature: 9c767efac10e8207c6a8cc6042959575 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "
+Parameters
+----------
+filename: str
+doc: TDocStd_Document
+theParams: StepData_ConfParameters
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") Perform;
+		Standard_Boolean Perform(TCollection_AsciiString filename, const opencascade::handle<TDocStd_Document> & doc, const StepData_ConfParameters & theParams, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Perform ******************/
 		/**** md5 signature: a4a2998dbb462f3822a286fdffd32a42 ****/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
@@ -1837,6 +1649,27 @@ Translate step file given by filename into the document return true if succeeded
 ") Perform;
 		Standard_Boolean Perform(Standard_CString filename, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		/****************** Perform ******************/
+		/**** md5 signature: 1c21a2a68c9b14dff8925015e1daef71 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "
+Parameters
+----------
+filename: str
+doc: TDocStd_Document
+theParams: StepData_ConfParameters
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Translate step file given by filename into the document return true if succeeded, and false in case of fail.
+") Perform;
+		Standard_Boolean Perform(Standard_CString filename, const opencascade::handle<TDocStd_Document> & doc, const StepData_ConfParameters & theParams, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
 		/****************** ReadFile ******************/
 		/**** md5 signature: d86a92113a329cc8dabf010061f31392 ****/
 		%feature("compactdefaultargs") ReadFile;
@@ -1854,6 +1687,25 @@ Description
 Loads a file and returns the read status provided for use like single-file reader. @param thefilename [in] file to open return read status.
 ") ReadFile;
 		IFSelect_ReturnStatus ReadFile(Standard_CString theFileName);
+
+		/****************** ReadFile ******************/
+		/**** md5 signature: 18ccd7e2ac811941268bab9a4aa374b2 ****/
+		%feature("compactdefaultargs") ReadFile;
+		%feature("autodoc", "
+Parameters
+----------
+theFileName: str
+theParams: StepData_ConfParameters
+
+Return
+-------
+IFSelect_ReturnStatus
+
+Description
+-----------
+Loads a file and returns the read status provided for use like single-file reader. @param thefilename [in] file to open @param theparams [in] default configuration parameters return read status.
+") ReadFile;
+		IFSelect_ReturnStatus ReadFile(Standard_CString theFileName, const StepData_ConfParameters & theParams);
 
 		/****************** ReadStream ******************/
 		/**** md5 signature: ee73b79142d0bdf122db2d304fa9d6f3 ****/
@@ -2330,6 +2182,27 @@ Transfers a document and writes it to a step file returns true if translation is
 ") Perform;
 		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & theDoc, Standard_CString theFileName, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
+		/****************** Perform ******************/
+		/**** md5 signature: 8a60d61459d37e420f614292c6216ca5 ****/
+		%feature("compactdefaultargs") Perform;
+		%feature("autodoc", "
+Parameters
+----------
+theDoc: TDocStd_Document
+theFileName: str
+theParams: StepData_ConfParameters
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Transfers a document and writes it to a step file this method uses if need to set parameters avoiding initialization from interface_static returns true if translation is ok.
+") Perform;
+		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & theDoc, Standard_CString theFileName, const StepData_ConfParameters & theParams, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
 		/****************** SetColorMode ******************/
 		/**** md5 signature: f341158b4cc5262e2e5cb7b941cc9031 ****/
 		%feature("compactdefaultargs") SetColorMode;
@@ -2478,6 +2351,28 @@ Transfers a document (or single label) to a step model the mode of translation o
 		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & theDoc, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transfer ******************/
+		/**** md5 signature: 970d009e8f79969ac77eca0061e59fda ****/
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "
+Parameters
+----------
+theDoc: TDocStd_Document
+theParams: StepData_ConfParameters
+theMode: STEPControl_StepModelType (optional, default to STEPControl_AsIs)
+theIsMulti: str (optional, default to 0)
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Transfers a document (or single label) to a step model this method uses if need to set parameters avoiding initialization from interface_static @param theparams configuration parameters @param themode mode of translation of shape is asis @param theismulti if multi is not null pointer, it switches to multifile  mode (with external refs), and string pointed by <multi>  gives prefix for names of extern files (can be empty string) @param theprogress progress indicator returns true if translation is ok.
+") Transfer;
+		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & theDoc, const StepData_ConfParameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Transfer ******************/
 		/**** md5 signature: 40f710aeab310ab1eff9bbdbe733b162 ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
@@ -2499,6 +2394,28 @@ Method to transfer part of the document specified by label.
 		Standard_Boolean Transfer(const TDF_Label & theLabel, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Transfer ******************/
+		/**** md5 signature: 0c3ea07a34b582e18aef6a4af8264315 ****/
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "
+Parameters
+----------
+theLabel: TDF_Label
+theParams: StepData_ConfParameters
+theMode: STEPControl_StepModelType (optional, default to STEPControl_AsIs)
+theIsMulti: str (optional, default to 0)
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Method to transfer part of the document specified by label this method uses if need to set parameters avoiding initialization from interface_static.
+") Transfer;
+		Standard_Boolean Transfer(const TDF_Label & theLabel, const StepData_ConfParameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Transfer ******************/
 		/**** md5 signature: 4e3f0900d966cc07a5e2191b2b4ba7a6 ****/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
@@ -2518,6 +2435,28 @@ Description
 Mehod to writing sequence of root assemblies or part of the file specified by use by one label .
 ") Transfer;
 		Standard_Boolean Transfer(const TDF_LabelSequence & theLabelSeq, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+
+		/****************** Transfer ******************/
+		/**** md5 signature: cb2f8074b76f84b20e521af394ddfe46 ****/
+		%feature("compactdefaultargs") Transfer;
+		%feature("autodoc", "
+Parameters
+----------
+theLabelSeq: TDF_LabelSequence
+theParams: StepData_ConfParameters
+theMode: STEPControl_StepModelType (optional, default to STEPControl_AsIs)
+theIsMulti: str (optional, default to 0)
+theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
+
+Return
+-------
+bool
+
+Description
+-----------
+Mehod to writing sequence of root assemblies or part of the file specified by use by one label this method uses if need to set parameters avoiding initialization from interface_static.
+") Transfer;
+		Standard_Boolean Transfer(const TDF_LabelSequence & theLabelSeq, const StepData_ConfParameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****************** Write ******************/
 		/**** md5 signature: 14544d6ececf228a5871ef6afa0279ae ****/

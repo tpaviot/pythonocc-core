@@ -62,7 +62,7 @@ from OCC.Core.gp import (
     gp,
     gp_OX,
 )
-from OCC.Core.math import math_Matrix, math_Vector
+from OCC.Core.math import math_Matrix
 from OCC.Core.GC import GC_MakeSegment
 from OCC.Core.STEPControl import (
     STEPControl_Writer,
@@ -741,11 +741,11 @@ class TestWrapperFeatures(unittest.TestCase):
 
     def test_Dump(self) -> None:
         """some objects can be serialized to a string"""
-        v = math_Vector(0, 2)
-        serialized_v = v.Dump()
+        math_matrix = math_Matrix(1, 2, 3, 4)
+        serialized_matrix = math_matrix.Dump()
         # should output
-        expected_output = "math_Vector of Length = 3\nmath_Vector(0) = 0\nmath_Vector(1) = 0\nmath_Vector(2) = 0\n"
-        self.assertEqual(expected_output, serialized_v)
+        expected_output = "math_Matrix of RowNumber = 2 and ColNumber = 2\nmath_Matrix ( 1, 3 ) = 0\nmath_Matrix ( 1, 4 ) = 0\nmath_Matrix ( 2, 3 ) = 0\nmath_Matrix ( 2, 4 ) = 0\n"
+        self.assertEqual(expected_output, serialized_matrix)
 
     def test_DumpJson(self) -> None:
         """Since opencascade 7x, some objects can be serialized to json"""

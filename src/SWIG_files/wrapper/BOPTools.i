@@ -99,7 +99,7 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(BOPTools_IndexedDataMapOfSetShape) NCollection_IndexedDataMap<BOPTools_Set,TopoDS_Shape,BOPTools_SetMapHasher>;
+%template(BOPTools_IndexedDataMapOfSetShape) NCollection_IndexedDataMap<BOPTools_Set,TopoDS_Shape>;
 %template(BOPTools_ListOfConnexityBlock) NCollection_List<BOPTools_ConnexityBlock>;
 
 %extend NCollection_List<BOPTools_ConnexityBlock> {
@@ -116,7 +116,7 @@ from OCC.Core.Exception import *
         return self.Size()
     }
 };
-%template(BOPTools_MapOfSet) NCollection_Map<BOPTools_Set,BOPTools_SetMapHasher>;
+%template(BOPTools_MapOfSet) NCollection_Map<BOPTools_Set>;
 /* end templates declaration */
 
 /* typedefs */
@@ -126,13 +126,13 @@ typedef BOPTools_BoxSelector<2> BOPTools_Box2dTreeSelector;
 typedef BOPTools_PairSelector<3> BOPTools_BoxPairSelector;
 typedef BOPTools_BoxSet<Standard_Real, 3, Standard_Integer> BOPTools_BoxTree;
 typedef BOPTools_BoxSelector<3> BOPTools_BoxTreeSelector;
-typedef NCollection_IndexedDataMap<BOPTools_Set, TopoDS_Shape, BOPTools_SetMapHasher> BOPTools_IndexedDataMapOfSetShape;
+typedef NCollection_IndexedDataMap<BOPTools_Set, TopoDS_Shape> BOPTools_IndexedDataMapOfSetShape;
 typedef BOPTools_ListOfConnexityBlock::Iterator BOPTools_ListIteratorOfListOfConnexityBlock;
 typedef BOPTools_ListOfCoupleOfShape::Iterator BOPTools_ListIteratorOfListOfCoupleOfShape;
 typedef NCollection_List<BOPTools_ConnexityBlock> BOPTools_ListOfConnexityBlock;
 typedef NCollection_List<BOPTools_CoupleOfShape> BOPTools_ListOfCoupleOfShape;
 typedef BOPTools_MapOfSet::Iterator BOPTools_MapIteratorOfMapOfSet;
-typedef NCollection_Map<BOPTools_Set, BOPTools_SetMapHasher> BOPTools_MapOfSet;
+typedef NCollection_Map<BOPTools_Set> BOPTools_MapOfSet;
 /* end typedefs declaration */
 
 /***************************
@@ -2405,29 +2405,18 @@ No available documentation.
 ") Assign;
 		BOPTools_Set & Assign(const BOPTools_Set & Other);
 
-		/****************** HashCode ******************/
-		/**** md5 signature: 63d1f963e092468b3b680fe64f4cfd8b ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theUpperBound: int
-
-Return
+		/****************** GetSum ******************/
+		/**** md5 signature: 527ff5550a99b698021be9c8afb7a809 ****/
+		%feature("compactdefaultargs") GetSum;
+		%feature("autodoc", "Return
 -------
-int
+size_t
 
 Description
 -----------
-Computes a hash code for this set, in the range [1, theupperbound] @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		Standard_Integer HashCode(Standard_Integer theUpperBound);
-
-        %extend {
-            Standard_Integer __hash__() {
-            return $self->HashCode(2147483647);
-            }
-        };
+No available documentation.
+") GetSum;
+		size_t GetSum();
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 474281f165027d105331737daa2a5ea2 ****/
@@ -2473,6 +2462,20 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape();
 
+
+%extend{
+    bool __eq_wrapper__(const BOPTools_Set other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
@@ -2482,58 +2485,9 @@ No available documentation.
 	}
 };
 
-/******************************
-* class BOPTools_SetMapHasher *
-******************************/
-class BOPTools_SetMapHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 220deeafd2a95fc89ac8b862700a0376 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theSet: BOPTools_Set
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given set, in the range [1, theupperbound] @param theset the set which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const BOPTools_Set & theSet, Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 6f4d5f2a8ff9524cb65b61ca63e7eaed ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-aSet1: BOPTools_Set
-aSet2: BOPTools_Set
-
-Return
--------
-bool
-
-Description
------------
-No available documentation.
-") IsEqual;
-		static Standard_Boolean IsEqual(const BOPTools_Set & aSet1, const BOPTools_Set & aSet2);
-
-};
-
-
-%extend BOPTools_SetMapHasher {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
+/***************************
+* class hash<BOPTools_Set> *
+***************************/
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
@@ -2929,13 +2883,5 @@ def BOPTools_AlgoTools3D_PointNearEdge(*args):
 @deprecated
 def BOPTools_AlgoTools3D_SenseFlag(*args):
 	return BOPTools_AlgoTools3D.SenseFlag(*args)
-
-@deprecated
-def BOPTools_SetMapHasher_HashCode(*args):
-	return BOPTools_SetMapHasher.HashCode(*args)
-
-@deprecated
-def BOPTools_SetMapHasher_IsEqual(*args):
-	return BOPTools_SetMapHasher.IsEqual(*args)
 
 }

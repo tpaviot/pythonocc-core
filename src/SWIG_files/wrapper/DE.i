@@ -94,15 +94,15 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(DE_ConfigurationFormatMap) NCollection_DataMap<TCollection_AsciiString,DE_ConfigurationVendorMap,TCollection_AsciiString>;
-%template(DE_ConfigurationVendorMap) NCollection_IndexedDataMap<TCollection_AsciiString,opencascade::handle<DE_ConfigurationNode>,TCollection_AsciiString>;
-%template(DE_ResourceMap) NCollection_DataMap<TCollection_AsciiString,TCollection_AsciiString,TCollection_AsciiString>;
+%template(DE_ConfigurationFormatMap) NCollection_DataMap<TCollection_AsciiString,DE_ConfigurationVendorMap>;
+%template(DE_ConfigurationVendorMap) NCollection_IndexedDataMap<TCollection_AsciiString,opencascade::handle<DE_ConfigurationNode>>;
+%template(DE_ResourceMap) NCollection_DataMap<TCollection_AsciiString,TCollection_AsciiString>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_AsciiString, DE_ConfigurationVendorMap, TCollection_AsciiString> DE_ConfigurationFormatMap;
-typedef NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<DE_ConfigurationNode>, TCollection_AsciiString> DE_ConfigurationVendorMap;
-typedef NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString> DE_ResourceMap;
+typedef NCollection_DataMap<TCollection_AsciiString, DE_ConfigurationVendorMap> DE_ConfigurationFormatMap;
+typedef NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<DE_ConfigurationNode>> DE_ConfigurationVendorMap;
+typedef NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString> DE_ResourceMap;
 /* end typedefs declaration */
 
 /********************************
@@ -660,6 +660,9 @@ Update loading status. checking for the ability to read and write. @param[in] th
 	}
 };
 
+/************************
+* class DE_PluginHolder *
+************************/
 /********************
 * class DE_Provider *
 ********************/
@@ -1045,8 +1048,21 @@ Find available provider from the configuration. if there are several providers, 
 ") FindProvider;
 		virtual Standard_Boolean FindProvider(TCollection_AsciiString thePath, const Standard_Boolean theToImport, opencascade::handle<DE_Provider> & theProvider);
 
+		/****************** GlobalLoadMutex ******************/
+		/**** md5 signature: 697f6434ea0d77c8fc11f1d70733107a ****/
+		%feature("compactdefaultargs") GlobalLoadMutex;
+		%feature("autodoc", "Return
+-------
+Standard_Mutex
+
+Description
+-----------
+No available documentation.
+") GlobalLoadMutex;
+		static Standard_Mutex & GlobalLoadMutex();
+
 		/****************** GlobalWrapper ******************/
-		/**** md5 signature: 4639e4982446e5ed38961af5b70cfef8 ****/
+		/**** md5 signature: ace26dd3eb9eb53a4aa43a02d795749b ****/
 		%feature("compactdefaultargs") GlobalWrapper;
 		%feature("autodoc", "Return
 -------
@@ -1056,7 +1072,7 @@ Description
 -----------
 Gets global configuration singleton. if wrapper is not set, create it by default as base class object. return point to global configuration.
 ") GlobalWrapper;
-		static opencascade::handle<DE_Wrapper> GlobalWrapper();
+		static const opencascade::handle<DE_Wrapper> & GlobalWrapper();
 
 		/****************** KeepUpdates ******************/
 		/**** md5 signature: 544bb1c1219d5ad8a52415cd9d472045 ****/
@@ -1281,6 +1297,24 @@ Sets flag that keeps changes on configuration nodes which are being updated, fal
 ") SetKeepUpdates;
 		void SetKeepUpdates(const Standard_Boolean theToKeepUpdates);
 
+		/****************** UnBind ******************/
+		/**** md5 signature: a24be7b2a3b0d23c7167000ca320b6d1 ****/
+		%feature("compactdefaultargs") UnBind;
+		%feature("autodoc", "
+Parameters
+----------
+theNode: DE_ConfigurationNode
+
+Return
+-------
+bool
+
+Description
+-----------
+Removes node with the same type from the map @param[in] thenode input node to remove the same return standard_true if removed.
+") UnBind;
+		Standard_Boolean UnBind(const opencascade::handle<DE_ConfigurationNode> & theNode);
+
 		/****************** UpdateLoad ******************/
 		/**** md5 signature: e6ea8d1aa59c1e0ab1496dac5ec01fcf ****/
 		%feature("compactdefaultargs") UpdateLoad;
@@ -1392,6 +1426,14 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class DE_PluginHolder:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
@@ -1400,6 +1442,10 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 }
 /* deprecated methods */
 %pythoncode {
+@deprecated
+def DE_Wrapper_GlobalLoadMutex(*args):
+	return DE_Wrapper.GlobalLoadMutex(*args)
+
 @deprecated
 def DE_Wrapper_GlobalWrapper(*args):
 	return DE_Wrapper.GlobalWrapper(*args)

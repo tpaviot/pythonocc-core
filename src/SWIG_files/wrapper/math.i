@@ -64,6 +64,10 @@ from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
+
+%include "math_VectorBase.hxx";
+%template(math_Vector) math_VectorBase<double>;
+typedef math_VectorBase<double> math_Vector;
 /* public enums */
 enum math_Status {
 	math_OK = 0,
@@ -3927,669 +3931,6 @@ Given the integer index, this routine returns the corresponding least square sol
 	}
 };
 
-/***************************
-* class math_IntegerVector *
-***************************/
-class math_IntegerVector {
-	public:
-		/****************** math_IntegerVector ******************/
-		/**** md5 signature: dd6f29403a7348f09b915bb39a25605e ****/
-		%feature("compactdefaultargs") math_IntegerVector;
-		%feature("autodoc", "
-Parameters
-----------
-theFirst: int
-theLast: int
-
-Return
--------
-None
-
-Description
------------
-Constructs an integervector in the range [lower..upper].
-") math_IntegerVector;
-		 math_IntegerVector(const Standard_Integer theFirst, const Standard_Integer theLast);
-
-		/****************** math_IntegerVector ******************/
-		/**** md5 signature: 345490133e420bea4f84e5e2707b7e52 ****/
-		%feature("compactdefaultargs") math_IntegerVector;
-		%feature("autodoc", "
-Parameters
-----------
-theFirst: int
-theLast: int
-theInitialValue: int
-
-Return
--------
-None
-
-Description
------------
-Constructs an integervector in the range [lower..upper] with all the elements set to theinitialvalue.
-") math_IntegerVector;
-		 math_IntegerVector(const Standard_Integer theFirst, const Standard_Integer theLast, const Standard_Integer theInitialValue);
-
-		/****************** math_IntegerVector ******************/
-		/**** md5 signature: 49fbbeb75c300b6063d437f2af6fe0bb ****/
-		%feature("compactdefaultargs") math_IntegerVector;
-		%feature("autodoc", "
-Parameters
-----------
-theTab: int *
-theFirst: int
-theLast: int
-
-Return
--------
-None
-
-Description
------------
-Constructs an integervector in the range [lower..upper] which share the 'c array' thetab.
-") math_IntegerVector;
-		 math_IntegerVector(const Standard_Integer * theTab, const Standard_Integer theFirst, const Standard_Integer theLast);
-
-		/****************** math_IntegerVector ******************/
-		/**** md5 signature: f1586b36b5b70b4ff6a229ccf65586bb ****/
-		%feature("compactdefaultargs") math_IntegerVector;
-		%feature("autodoc", "
-Parameters
-----------
-theOther: math_IntegerVector
-
-Return
--------
-None
-
-Description
------------
-Constructs a copy for initialization. an exception is raised if the lengths of the integervectors are different.
-") math_IntegerVector;
-		 math_IntegerVector(const math_IntegerVector & theOther);
-
-		/****************** Add ******************/
-		/**** md5 signature: d59b55cb3cda572381b8f137571731c8 ****/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: math_IntegerVector
-
-Return
--------
-None
-
-Description
------------
-Adds the integervector 'theright' to an integervector. an exception is raised if the integervectors have not the same length. an exception is raised if the lengths are not equal.
-") Add;
-		void Add(const math_IntegerVector & theRight);
-
-		/****************** Add ******************/
-		/**** md5 signature: e5eedd5faacfa5cc21b6669f312f4c1c ****/
-		%feature("compactdefaultargs") Add;
-		%feature("autodoc", "
-Parameters
-----------
-theLeft: math_IntegerVector
-theRight: math_IntegerVector
-
-Return
--------
-None
-
-Description
------------
-Sets an integervector to the sum of the integervector 'theleft' and the integervector 'theright'. an exception is raised if the lengths are different.
-") Add;
-		void Add(const math_IntegerVector & theLeft, const math_IntegerVector & theRight);
-
-		/****************** Added ******************/
-		/**** md5 signature: 11085b85ab2222269ff4b2729b81197e ****/
-		%feature("compactdefaultargs") Added;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: math_IntegerVector
-
-Return
--------
-math_IntegerVector
-
-Description
------------
-Adds the integervector 'theright' to an integervector. an exception is raised if the integervectors have not the same length. an exception is raised if the lengths are not equal.
-") Added;
-		math_IntegerVector Added(const math_IntegerVector & theRight);
-
-		/****************** Dump ******************/
-		/**** md5 signature: 85af5cb6e1b130aa09c69332795e4c2f ****/
-		%feature("compactdefaultargs") Dump;
-		%feature("autodoc", "
-Parameters
-----------
-
-Return
--------
-theO: Standard_OStream
-
-Description
------------
-Prints on the stream theo information on the current state of the object. is used to redefine the operator <<.
-") Dump;
-		void Dump(std::ostream &OutValue);
-
-		/****************** Init ******************/
-		/**** md5 signature: 1fe27bc9df2ed19eff044a233606ff79 ****/
-		%feature("compactdefaultargs") Init;
-		%feature("autodoc", "
-Parameters
-----------
-theInitialValue: int
-
-Return
--------
-None
-
-Description
------------
-Initialize an integervector with all the elements set to theinitialvalue.
-") Init;
-		void Init(const Standard_Integer theInitialValue);
-
-		/****************** Initialized ******************/
-		/**** md5 signature: bcb67217a11e3fd1e64981cd832a9562 ****/
-		%feature("compactdefaultargs") Initialized;
-		%feature("autodoc", "
-Parameters
-----------
-theOther: math_IntegerVector
-
-Return
--------
-math_IntegerVector
-
-Description
------------
-Initialises an integervector by copying 'theother'. an exception is raised if the lengths are different.
-") Initialized;
-		math_IntegerVector & Initialized(const math_IntegerVector & theOther);
-
-		/****************** Inverse ******************/
-		/**** md5 signature: e5ef7487164db57b00bf4cf434bf77ea ****/
-		%feature("compactdefaultargs") Inverse;
-		%feature("autodoc", "Return
--------
-math_IntegerVector
-
-Description
------------
-Returns the inverse integervector of an integervector.
-") Inverse;
-		math_IntegerVector Inverse();
-
-		/****************** Invert ******************/
-		/**** md5 signature: 980f166f600d23a8c77565829af2eeff ****/
-		%feature("compactdefaultargs") Invert;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Inverses an integervector.
-") Invert;
-		void Invert();
-
-		/****************** Length ******************/
-		/**** md5 signature: 6b6369fdcfb9287d25c91be73ca43a4f ****/
-		%feature("compactdefaultargs") Length;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the length of an integervector.
-") Length;
-		Standard_Integer Length();
-
-		/****************** Lower ******************/
-		/**** md5 signature: 6c38bb0c1489e359c874ded75054c1be ****/
-		%feature("compactdefaultargs") Lower;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the value of the lower index of an integervector.
-") Lower;
-		Standard_Integer Lower();
-
-		/****************** Max ******************/
-		/**** md5 signature: 470538a8afd0d98566fced0034decdc6 ****/
-		%feature("compactdefaultargs") Max;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the value of the index of the maximum element of an integervector.
-") Max;
-		Standard_Integer Max();
-
-		/****************** Min ******************/
-		/**** md5 signature: 4a083fc951cd22097fbae8d3269aa1cb ****/
-		%feature("compactdefaultargs") Min;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the value of the index of the minimum element of an integervector.
-") Min;
-		Standard_Integer Min();
-
-		/****************** Multiplied ******************/
-		/**** md5 signature: fe5fc4e51ee7314bdfd41b893d4bd971 ****/
-		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: int
-
-Return
--------
-math_IntegerVector
-
-Description
------------
-Returns the product of an integervector by an integer value.
-") Multiplied;
-		math_IntegerVector Multiplied(const Standard_Integer theRight);
-
-		/****************** Multiplied ******************/
-		/**** md5 signature: dd8f42337232726d2b0bd2fbd06d93a7 ****/
-		%feature("compactdefaultargs") Multiplied;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: math_IntegerVector
-
-Return
--------
-int
-
-Description
------------
-Returns the inner product of 2 integervectors. an exception is raised if the lengths are not equal.
-") Multiplied;
-		Standard_Integer Multiplied(const math_IntegerVector & theRight);
-
-		/****************** Multiply ******************/
-		/**** md5 signature: 6856a68c712e4c5d6632baec09c5232c ****/
-		%feature("compactdefaultargs") Multiply;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: int
-
-Return
--------
-None
-
-Description
------------
-Returns the product of an integervector by an integer value.
-") Multiply;
-		void Multiply(const Standard_Integer theRight);
-
-		/****************** Multiply ******************/
-		/**** md5 signature: fd2120456de46c864b27187a04406c2c ****/
-		%feature("compactdefaultargs") Multiply;
-		%feature("autodoc", "
-Parameters
-----------
-theLeft: int
-theRight: math_IntegerVector
-
-Return
--------
-None
-
-Description
------------
-Returns the multiplication of an integer by an integervector.
-") Multiply;
-		void Multiply(const Standard_Integer theLeft, const math_IntegerVector & theRight);
-
-		/****************** Norm ******************/
-		/**** md5 signature: ef03a75c3e2c2e2728051dc33ad502de ****/
-		%feature("compactdefaultargs") Norm;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the value of the norm of an integervector.
-") Norm;
-		Standard_Real Norm();
-
-		/****************** Norm2 ******************/
-		/**** md5 signature: aa0fc8823225be6949f93bb2b3c831b7 ****/
-		%feature("compactdefaultargs") Norm2;
-		%feature("autodoc", "Return
--------
-float
-
-Description
------------
-Returns the value of the square of the norm of an integervector.
-") Norm2;
-		Standard_Real Norm2();
-
-		/****************** Opposite ******************/
-		/**** md5 signature: 24b0a54dc68eb531854a4f7d5f03836c ****/
-		%feature("compactdefaultargs") Opposite;
-		%feature("autodoc", "Return
--------
-math_IntegerVector
-
-Description
------------
-Returns the opposite of an integervector.
-") Opposite;
-		math_IntegerVector Opposite();
-
-		/****************** Set ******************/
-		/**** md5 signature: 73d586552d511e7b08e85de3ec92c081 ****/
-		%feature("compactdefaultargs") Set;
-		%feature("autodoc", "
-Parameters
-----------
-theI1: int
-theI2: int
-theV: math_IntegerVector
-
-Return
--------
-None
-
-Description
------------
-Sets an integervector from 'thei1' to 'thei2' to the integervector 'thev'; an exception is raised if 'thei1' is less than 'lowerindex' or 'thei2' is greater than 'upperindex' or 'thei1' is greater than 'thei2'. an exception is raised if 'thei2-thei1+1' is different from the length of 'thev'.
-") Set;
-		void Set(const Standard_Integer theI1, const Standard_Integer theI2, const math_IntegerVector & theV);
-
-		/****************** Slice ******************/
-		/**** md5 signature: 96cb088cbcf3941edf97a7c5a36fd697 ****/
-		%feature("compactdefaultargs") Slice;
-		%feature("autodoc", "
-Parameters
-----------
-theI1: int
-theI2: int
-
-Return
--------
-math_IntegerVector
-
-Description
------------
-Slices the values of the integervector between 'thei1' and 'thei2': example: [2, 1, 2, 3, 4, 5] becomes [2, 4, 3, 2, 1, 5] between 2 and 5. an exception is raised if 'thei1' is less than 'lowerindex' or 'thei2' is greater than 'upperindex'.
-") Slice;
-		math_IntegerVector Slice(const Standard_Integer theI1, const Standard_Integer theI2);
-
-		/****************** Subtract ******************/
-		/**** md5 signature: 7ea5decda372d35902482b059c690765 ****/
-		%feature("compactdefaultargs") Subtract;
-		%feature("autodoc", "
-Parameters
-----------
-theLeft: math_IntegerVector
-theRight: math_IntegerVector
-
-Return
--------
-None
-
-Description
------------
-Sets an integervector to the substraction of 'theright' from 'theleft'. an exception is raised if the integervectors have not the same length.
-") Subtract;
-		void Subtract(const math_IntegerVector & theLeft, const math_IntegerVector & theRight);
-
-		/****************** Subtract ******************/
-		/**** md5 signature: ba7d1271fd0cdca925ca6cc8a069b03a ****/
-		%feature("compactdefaultargs") Subtract;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: math_IntegerVector
-
-Return
--------
-None
-
-Description
------------
-Returns the subtraction of 'theright' from 'me'. an exception is raised if the integervectors have not the same length.
-") Subtract;
-		void Subtract(const math_IntegerVector & theRight);
-
-		/****************** Subtracted ******************/
-		/**** md5 signature: 7fd896bca3cac6c44c43bd107bd0de46 ****/
-		%feature("compactdefaultargs") Subtracted;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: math_IntegerVector
-
-Return
--------
-math_IntegerVector
-
-Description
------------
-Returns the subtraction of 'theright' from 'me'. an exception is raised if the integervectors have not the same length.
-") Subtracted;
-		math_IntegerVector Subtracted(const math_IntegerVector & theRight);
-
-		/****************** TMultiplied ******************/
-		/**** md5 signature: 13080b39e009b6f7a13a659502705477 ****/
-		%feature("compactdefaultargs") TMultiplied;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: int
-
-Return
--------
-math_IntegerVector
-
-Description
------------
-Returns the product of a vector and a real value.
-") TMultiplied;
-		math_IntegerVector TMultiplied(const Standard_Integer theRight);
-
-		/****************** Upper ******************/
-		/**** md5 signature: 049ea67a2fce112afef7cc7f87f4a43d ****/
-		%feature("compactdefaultargs") Upper;
-		%feature("autodoc", "Return
--------
-int
-
-Description
------------
-Returns the value of the upper index of an integervector.
-") Upper;
-		Standard_Integer Upper();
-
-		/****************** Value ******************/
-		/**** md5 signature: a737b7e1628947c8b4a6110611c56acb ****/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "
-Parameters
-----------
-theNum: int
-
-Return
--------
-int
-
-Description
------------
-Accesses the value of index thenum of an integervector.
-") Value;
-		const Standard_Integer & Value(const Standard_Integer theNum);
-
-
-        %feature("autodoc","1");
-        %extend {
-            Standard_Integer GetValue(const Standard_Integer theNum) {
-            return (Standard_Integer) $self->Value(theNum);
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetValue(const Standard_Integer theNum,Standard_Integer value) {
-            $self->Value(theNum)=value;
-            }
-        };
-		/****************** operator * ******************/
-		/**** md5 signature: eb8b881a959d28e5cbc50023c6d0165b ****/
-		%feature("compactdefaultargs") operator *;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: int
-
-Return
--------
-math_IntegerVector
-
-Description
------------
-No available documentation.
-") operator *;
-		math_IntegerVector operator *(const Standard_Integer theRight);
-
-		/****************** operator * ******************/
-		/**** md5 signature: f82ed54abdb72c653000d4216de35fcd ****/
-		%feature("compactdefaultargs") operator *;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: math_IntegerVector
-
-Return
--------
-int
-
-Description
------------
-No available documentation.
-") operator *;
-		Standard_Integer operator *(const math_IntegerVector & theRight);
-
-
-%extend{
-    void __imul_wrapper__(const Standard_Integer other) {
-    *self *= other;
-    }
-}
-%pythoncode {
-def __imul__(self, right):
-    self.__imul_wrapper__(right)
-    return self
-}
-		/****************** operator + ******************/
-		/**** md5 signature: 4be85aca9907ec496a654cd1ec103d55 ****/
-		%feature("compactdefaultargs") operator +;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: math_IntegerVector
-
-Return
--------
-math_IntegerVector
-
-Description
------------
-No available documentation.
-") operator +;
-		math_IntegerVector operator +(const math_IntegerVector & theRight);
-
-
-%extend{
-    void __iadd_wrapper__(const math_IntegerVector other) {
-    *self += other;
-    }
-}
-%pythoncode {
-def __iadd__(self, right):
-    self.__iadd_wrapper__(right)
-    return self
-}
-		/****************** operator - ******************/
-		/**** md5 signature: f0ec488bae9aeec942f9fa0e31599c2e ****/
-		%feature("compactdefaultargs") operator -;
-		%feature("autodoc", "Return
--------
-math_IntegerVector
-
-Description
------------
-No available documentation.
-") operator -;
-		math_IntegerVector operator -();
-
-		/****************** operator - ******************/
-		/**** md5 signature: 94840c75a17b3e0700e1bd677249476e ****/
-		%feature("compactdefaultargs") operator -;
-		%feature("autodoc", "
-Parameters
-----------
-theRight: math_IntegerVector
-
-Return
--------
-math_IntegerVector
-
-Description
------------
-No available documentation.
-") operator -;
-		math_IntegerVector operator -(const math_IntegerVector & theRight);
-
-
-%extend{
-    void __isub_wrapper__(const math_IntegerVector other) {
-    *self -= other;
-    }
-}
-%pythoncode {
-def __isub__(self, right):
-    self.__isub_wrapper__(right)
-    return self
-}
-};
-
-
-%extend math_IntegerVector {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /********************
 * class math_Jacobi *
 ********************/
@@ -5077,7 +4418,7 @@ Adds the matrix <right> to a matrix. an exception is raised if the dimensions ar
 		math_Matrix Added(const math_Matrix & Right);
 
 		/****************** Col ******************/
-		/**** md5 signature: 32259ea88ecf2b63d5c88ac3c5036ec0 ****/
+		/**** md5 signature: b15846fb1b6a2c6ec09ca6168bece890 ****/
 		%feature("compactdefaultargs") Col;
 		%feature("autodoc", "
 Parameters
@@ -5086,13 +4427,13 @@ Col: int
 
 Return
 -------
-math_Vector
+math_VectorBase<>
 
 Description
 -----------
 Returns the column of index <col> of a matrix.
 ") Col;
-		math_Vector Col(const Standard_Integer Col);
+		math_VectorBase<> Col(const Standard_Integer Col);
 
 		/****************** ColNumber ******************/
 		/**** md5 signature: 882aa03dc37daf0f801ae41010e2da38 ****/
@@ -5298,22 +4639,22 @@ Returns the product of 2 matrices. an exception is raised if the dimensions are 
 		math_Matrix Multiplied(const math_Matrix & Right);
 
 		/****************** Multiplied ******************/
-		/**** md5 signature: 64eec8a907773d08ae3f68d23c8477dd ****/
+		/**** md5 signature: b4056adc3e5c0bf27ded58aa21ef6614 ****/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "
 Parameters
 ----------
-Right: math_Vector
+Right: math_VectorBase<>
 
 Return
 -------
-math_Vector
+math_VectorBase<>
 
 Description
 -----------
 Returns the product of a matrix by a vector. an exception is raised if the dimensions are different.
 ") Multiplied;
-		math_Vector Multiplied(const math_Vector & Right);
+		math_VectorBase<> Multiplied(const math_VectorBase<> & Right);
 
 		/****************** Multiply ******************/
 		/**** md5 signature: 5ee084e97968bb7d941b7910877f1660 ****/
@@ -5334,13 +4675,13 @@ Sets this matrix to the product of the matrix left, and the matrix right. exampl
 		void Multiply(const Standard_Real Right);
 
 		/****************** Multiply ******************/
-		/**** md5 signature: aac6da5b9ceeb73786728535defecde8 ****/
+		/**** md5 signature: d757e89d1f4c06521af7618e8d61d820 ****/
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "
 Parameters
 ----------
-Left: math_Vector
-Right: math_Vector
+Left: math_VectorBase<>
+Right: math_VectorBase<>
 
 Return
 -------
@@ -5350,7 +4691,7 @@ Description
 -----------
 Computes a matrix as the product of 2 vectors. an exception is raised if the dimensions are different. <self> = <left> * <right>.
 ") Multiply;
-		void Multiply(const math_Vector & Left, const math_Vector & Right);
+		void Multiply(const math_VectorBase<> & Left, const math_VectorBase<> & Right);
 
 		/****************** Multiply ******************/
 		/**** md5 signature: a18f56da5b6c06519b2e3307243df1fb ****/
@@ -5403,7 +4744,7 @@ Returns the opposite of a matrix. an exception is raised if the dimensions are d
 		math_Matrix Opposite();
 
 		/****************** Row ******************/
-		/**** md5 signature: 851a8974ea0e9c3398cbed144c88f1f5 ****/
+		/**** md5 signature: 31d2c0c130b883eeacb01ccac9c5e91f ****/
 		%feature("compactdefaultargs") Row;
 		%feature("autodoc", "
 Parameters
@@ -5412,13 +4753,13 @@ Row: int
 
 Return
 -------
-math_Vector
+math_VectorBase<>
 
 Description
 -----------
 Returns the row of index row of a matrix.
 ") Row;
-		math_Vector Row(const Standard_Integer Row);
+		math_VectorBase<> Row(const Standard_Integer Row);
 
 		/****************** RowNumber ******************/
 		/**** md5 signature: de7ecc828bda324cd39ec9c186cfcef4 ****/
@@ -5456,13 +4797,13 @@ Sets the values of this matrix, - from index i1 to index i2 on the row dimension
 		void Set(const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer J1, const Standard_Integer J2, const math_Matrix & M);
 
 		/****************** SetCol ******************/
-		/**** md5 signature: e3ab4bac3435f3c290a9f2292479499c ****/
+		/**** md5 signature: b5eace4866b0933fa40ccb4cf957535b ****/
 		%feature("compactdefaultargs") SetCol;
 		%feature("autodoc", "
 Parameters
 ----------
 Col: int
-V: math_Vector
+V: math_VectorBase<>
 
 Return
 -------
@@ -5472,7 +4813,7 @@ Description
 -----------
 Sets the column of index col of a matrix to the vector <v>. an exception is raised if the dimensions are different. an exception is raises if <col> is inferior to the lower column of the matrix or <col> is superior to the upper column.
 ") SetCol;
-		void SetCol(const Standard_Integer Col, const math_Vector & V);
+		void SetCol(const Standard_Integer Col, const math_VectorBase<> & V);
 
 		/****************** SetDiag ******************/
 		/**** md5 signature: b58618439e80c58e9a1a8322d9250ac3 ****/
@@ -5493,13 +4834,13 @@ Sets the diagonal of a matrix to the value <value>. an exception is raised if th
 		void SetDiag(const Standard_Real Value);
 
 		/****************** SetRow ******************/
-		/**** md5 signature: 668a9f23e674b9bb298d8e5b56bf77d3 ****/
+		/**** md5 signature: 2ae66ea842007fa5172475960bd4693f ****/
 		%feature("compactdefaultargs") SetRow;
 		%feature("autodoc", "
 Parameters
 ----------
 Row: int
-V: math_Vector
+V: math_VectorBase<>
 
 Return
 -------
@@ -5509,7 +4850,7 @@ Description
 -----------
 Sets the row of index row of a matrix to the vector <v>. an exception is raised if the dimensions are different. an exception is raises if <row> is inferior to the lower row of the matrix or <row> is superior to the upper row.
 ") SetRow;
-		void SetRow(const Standard_Integer Row, const math_Vector & V);
+		void SetRow(const Standard_Integer Row, const math_VectorBase<> & V);
 
 		/****************** Subtract ******************/
 		/**** md5 signature: 57225649e8bf41e040f2022e6ddd9393 ****/
@@ -5761,22 +5102,22 @@ No available documentation.
 		math_Matrix operator *(const math_Matrix & Right);
 
 		/****************** operator * ******************/
-		/**** md5 signature: d07becabbde2ee3b83d3e4abadaa01f0 ****/
+		/**** md5 signature: c0a9ea7843feb8ee31a4f8ef5d1efe6c ****/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", "
 Parameters
 ----------
-Right: math_Vector
+Right: math_VectorBase<>
 
 Return
 -------
-math_Vector
+math_VectorBase<>
 
 Description
 -----------
 No available documentation.
 ") operator *;
-		math_Vector operator *(const math_Vector & Right);
+		math_VectorBase<> operator *(const math_VectorBase<> & Right);
 
 
 %extend{
@@ -7462,14 +6803,15 @@ No available documentation.
 	}
 };
 
-/********************
-* class math_Vector *
-********************/
-class math_Vector {
+/************************
+* class math_VectorBase *
+************************/
+class math_VectorBase {
 	public:
-		/****************** math_Vector ******************/
-		/**** md5 signature: 1a74438a487a14d6d15fe510ae695e42 ****/
-		%feature("compactdefaultargs") math_Vector;
+		DEFINE_NCOLLECTION_ALLOC ;
+		/****************** math_VectorBase ******************/
+		/**** md5 signature: 7686b4feb365f437bc9a18125aa19da4 ****/
+		%feature("compactdefaultargs") math_VectorBase;
 		%feature("autodoc", "
 Parameters
 ----------
@@ -7483,18 +6825,18 @@ None
 Description
 -----------
 Constructs a non-initialized vector in the range [thelower..theupper] 'thelower' and 'theupper' are the indexes of the lower and upper bounds of the constructed vector.
-") math_Vector;
-		 math_Vector(const Standard_Integer theLower, const Standard_Integer theUpper);
+") math_VectorBase;
+		 math_VectorBase(const Standard_Integer theLower, const Standard_Integer theUpper);
 
-		/****************** math_Vector ******************/
-		/**** md5 signature: 0ea591b3860a4e3f376925614a2fe35e ****/
-		%feature("compactdefaultargs") math_Vector;
+		/****************** math_VectorBase ******************/
+		/**** md5 signature: 2d03fad9ab30b62c9dcd67c7637e8461 ****/
+		%feature("compactdefaultargs") math_VectorBase;
 		%feature("autodoc", "
 Parameters
 ----------
 theLower: int
 theUpper: int
-theInitialValue: float
+theInitialValue: TheItemType
 
 Return
 -------
@@ -7503,16 +6845,16 @@ None
 Description
 -----------
 Constructs a vector in the range [thelower..theupper] whose values are all initialized with the value 'theinitialvalue'.
-") math_Vector;
-		 math_Vector(const Standard_Integer theLower, const Standard_Integer theUpper, const Standard_Real theInitialValue);
+") math_VectorBase;
+		 math_VectorBase(const Standard_Integer theLower, const Standard_Integer theUpper, const TheItemType theInitialValue);
 
-		/****************** math_Vector ******************/
-		/**** md5 signature: ffcccf7973d3d8d9d6621c4656921960 ****/
-		%feature("compactdefaultargs") math_Vector;
+		/****************** math_VectorBase ******************/
+		/**** md5 signature: 0f2151b4c598679afa77d119814cb20a ****/
+		%feature("compactdefaultargs") math_VectorBase;
 		%feature("autodoc", "
 Parameters
 ----------
-theTab: float *
+theTab: TheItemType *
 theLower: int
 theUpper: int
 
@@ -7522,13 +6864,13 @@ None
 
 Description
 -----------
-Constructs a vector in the range [thelower..theupper] with the 'c array' thetab.
-") math_Vector;
-		 math_Vector(const Standard_Real * theTab, const Standard_Integer theLower, const Standard_Integer theUpper);
+Constructs a vector in the range [thelower..theupper] whose values are all initialized with the value 'theinitialvalue'.
+") math_VectorBase;
+		 math_VectorBase(const TheItemType * theTab, const Standard_Integer theLower, const Standard_Integer theUpper);
 
-		/****************** math_Vector ******************/
-		/**** md5 signature: 783b16a2947c36192e1aceb3d9fb3d36 ****/
-		%feature("compactdefaultargs") math_Vector;
+		/****************** math_VectorBase ******************/
+		/**** md5 signature: 1a770cae0421dedd586122ec2fab579a ****/
+		%feature("compactdefaultargs") math_VectorBase;
 		%feature("autodoc", "
 Parameters
 ----------
@@ -7540,13 +6882,13 @@ None
 
 Description
 -----------
-Constructor for converting gp_xy to math_vector.
-") math_Vector;
-		 math_Vector(const gp_XY & Other);
+Constructor for converting gp_xy to math_vectorbase.
+") math_VectorBase;
+		 math_VectorBase(const gp_XY & Other);
 
-		/****************** math_Vector ******************/
-		/**** md5 signature: 89eb2933ca32035d5a1dad5049047a1e ****/
-		%feature("compactdefaultargs") math_Vector;
+		/****************** math_VectorBase ******************/
+		/**** md5 signature: 14142c413558f31e3a412a73f8d54dae ****/
+		%feature("compactdefaultargs") math_VectorBase;
 		%feature("autodoc", "
 Parameters
 ----------
@@ -7558,17 +6900,17 @@ None
 
 Description
 -----------
-Constructor for converting gp_xyz to math_vector.
-") math_Vector;
-		 math_Vector(const gp_XYZ & Other);
+Constructor for converting gp_xyz to math_vectorbase.
+") math_VectorBase;
+		 math_VectorBase(const gp_XYZ & Other);
 
-		/****************** math_Vector ******************/
-		/**** md5 signature: 746f57a3645832238f786d93f69ef038 ****/
-		%feature("compactdefaultargs") math_Vector;
+		/****************** math_VectorBase ******************/
+		/**** md5 signature: d18900ccf21bb37ad65886a18ac2d697 ****/
+		%feature("compactdefaultargs") math_VectorBase;
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: math_Vector
+theOther: math_VectorBase
 
 Return
 -------
@@ -7577,16 +6919,16 @@ None
 Description
 -----------
 Constructs a copy for initialization. an exception is raised if the lengths of the vectors are different.
-") math_Vector;
-		 math_Vector(const math_Vector & theOther);
+") math_VectorBase;
+		 math_VectorBase(const math_VectorBase & theOther);
 
 		/****************** Add ******************/
-		/**** md5 signature: eebbb4d66749dd407fbf815989c45e63 ****/
+		/**** md5 signature: 406ad6a980d99822c293c6e3a9d4cb70 ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: math_Vector
+theRight: math_VectorBase
 
 Return
 -------
@@ -7596,16 +6938,16 @@ Description
 -----------
 Adds the vector 'theright' to a vector. an exception is raised if the vectors have not the same length. warning in order to avoid time-consuming copying of vectors, it is preferable to use operator += or the function add whenever possible.
 ") Add;
-		void Add(const math_Vector & theRight);
+		void Add(const math_VectorBase & theRight);
 
 		/****************** Add ******************/
-		/**** md5 signature: a71b03734396fe22879699e51c8c7cde ****/
+		/**** md5 signature: 640c27ff88206df2d3ad3ceea356dedc ****/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
-theLeft: math_Vector
-theRight: math_Vector
+theLeft: math_VectorBase
+theRight: math_VectorBase
 
 Return
 -------
@@ -7615,33 +6957,33 @@ Description
 -----------
 Sets a vector to the sum of the vector 'theleft' and the vector 'theright'. an exception is raised if the lengths are different.
 ") Add;
-		void Add(const math_Vector & theLeft, const math_Vector & theRight);
+		void Add(const math_VectorBase & theLeft, const math_VectorBase & theRight);
 
 		/****************** Added ******************/
-		/**** md5 signature: ecd23b04cfbe9343812ca4ce04ef0d59 ****/
+		/**** md5 signature: c3351e889dda3cb36cc692883cc3fb3c ****/
 		%feature("compactdefaultargs") Added;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: math_Vector
+theRight: math_VectorBase
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
-Adds the vector theright to a vector. an exception is raised if the vectors have not the same length. an exception is raised if the lengths are not equal.
+Returns new vector as adding curent vector with the value 'theright'. an exception is raised if the vectors have not the same length. an exception is raised if the lengths are not equal.
 ") Added;
-		math_Vector Added(const math_Vector & theRight);
+		math_VectorBase Added(const math_VectorBase & theRight);
 
 		/****************** Divide ******************/
-		/**** md5 signature: 85c3521ca7f51beb326744a3511d642a ****/
+		/**** md5 signature: 4c38226132921225dc3efb92899de892 ****/
 		%feature("compactdefaultargs") Divide;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: float
+theRight: TheItemType
 
 Return
 -------
@@ -7651,28 +6993,28 @@ Description
 -----------
 Divides a vector by the value 'theright'. an exception is raised if 'theright' = 0.
 ") Divide;
-		void Divide(const Standard_Real theRight);
+		void Divide(const TheItemType theRight);
 
 		/****************** Divided ******************/
-		/**** md5 signature: b5cb8453aaed6434d74bff48ef43a2d5 ****/
+		/**** md5 signature: 41a1c2fa8886e8bff755ba30a36c75d3 ****/
 		%feature("compactdefaultargs") Divided;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: float
+theRight: TheItemType
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
-Divides a vector by the value 'theright'. an exception is raised if 'theright' = 0.
+Returns new vector as dividing current vector with the value 'theright'. an exception is raised if 'theright' = 0.
 ") Divided;
-		math_Vector Divided(const Standard_Real theRight);
+		math_VectorBase Divided(const TheItemType theRight);
 
 		/****************** Dump ******************/
-		/**** md5 signature: 85af5cb6e1b130aa09c69332795e4c2f ****/
+		/**** md5 signature: 35eee087c3e3933aebbdeb4f86b6bc00 ****/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -7689,12 +7031,12 @@ Prints information on the current state of the object. is used to redefine the o
 		void Dump(std::ostream &OutValue);
 
 		/****************** Init ******************/
-		/**** md5 signature: aa5adf884f0373c9b54359f444273ad5 ****/
+		/**** md5 signature: a0223922650b6ede02b379a08b9c110b ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
-theInitialValue: float
+theInitialValue: TheItemType
 
 Return
 -------
@@ -7704,41 +7046,41 @@ Description
 -----------
 Initialize all the elements of a vector with 'theinitialvalue'.
 ") Init;
-		void Init(const Standard_Real theInitialValue);
+		void Init(const TheItemType theInitialValue);
 
 		/****************** Initialized ******************/
-		/**** md5 signature: 176526852f04bc77a737d191c0b99e41 ****/
+		/**** md5 signature: f12410610a77ebebcfb2e36b8f1704d1 ****/
 		%feature("compactdefaultargs") Initialized;
 		%feature("autodoc", "
 Parameters
 ----------
-theOther: math_Vector
+theOther: math_VectorBase
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 Initialises a vector by copying 'theother'. an exception is raised if the lengths are different.
 ") Initialized;
-		math_Vector & Initialized(const math_Vector & theOther);
+		math_VectorBase & Initialized(const math_VectorBase & theOther);
 
 		/****************** Inverse ******************/
-		/**** md5 signature: 19aaab77c1e6950a13166132d06133b8 ****/
+		/**** md5 signature: 2fb034194d4b55ea5739f844697023bc ****/
 		%feature("compactdefaultargs") Inverse;
 		%feature("autodoc", "Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 Inverts this vector and creates a new vector.
 ") Inverse;
-		math_Vector Inverse();
+		math_VectorBase Inverse();
 
 		/****************** Invert ******************/
-		/**** md5 signature: 980f166f600d23a8c77565829af2eeff ****/
+		/**** md5 signature: 9a8aecae0e33749c0966f8f73d6470a3 ****/
 		%feature("compactdefaultargs") Invert;
 		%feature("autodoc", "Return
 -------
@@ -7772,12 +7114,12 @@ int
 
 Description
 -----------
-Returns the value of the thelower index of a vector.
+Returns the lower index of the vector.
 ") Lower;
 		Standard_Integer Lower();
 
 		/****************** Max ******************/
-		/**** md5 signature: 470538a8afd0d98566fced0034decdc6 ****/
+		/**** md5 signature: 47905521473c8d5ef278f16432367e67 ****/
 		%feature("compactdefaultargs") Max;
 		%feature("autodoc", "Return
 -------
@@ -7785,12 +7127,12 @@ int
 
 Description
 -----------
-Returns the value of the 'index' of the maximum element of a vector.
+Returns the index of the maximum element of a vector. (first found).
 ") Max;
 		Standard_Integer Max();
 
 		/****************** Min ******************/
-		/**** md5 signature: 4a083fc951cd22097fbae8d3269aa1cb ****/
+		/**** md5 signature: 9ee266bc01938069e46d023cc25e59f0 ****/
 		%feature("compactdefaultargs") Min;
 		%feature("autodoc", "Return
 -------
@@ -7798,48 +7140,48 @@ int
 
 Description
 -----------
-Returns the value of the 'index' of the minimum element of a vector.
+returns the index of the minimum element of a vector. (first found).
 ") Min;
 		Standard_Integer Min();
 
 		/****************** Multiplied ******************/
-		/**** md5 signature: b4f731f3e86918d21a91f54e4372becc ****/
+		/**** md5 signature: 76e6ff92fc8b61378a2e9df99fc75405 ****/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: float
+theRight: TheItemType
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 Returns the product of a vector and a real value.
 ") Multiplied;
-		math_Vector Multiplied(const Standard_Real theRight);
+		math_VectorBase Multiplied(const TheItemType theRight);
 
 		/****************** Multiplied ******************/
-		/**** md5 signature: 69b2fda6108b1155fed07715979fedfb ****/
+		/**** md5 signature: 75cb970c73bc29d38fb2f128bafec327 ****/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: math_Vector
+theRight: math_VectorBase
 
 Return
 -------
-float
+TheItemType
 
 Description
 -----------
 Returns the inner product of 2 vectors. an exception is raised if the lengths are not equal.
 ") Multiplied;
-		Standard_Real Multiplied(const math_Vector & theRight);
+		TheItemType Multiplied(const math_VectorBase & theRight);
 
 		/****************** Multiplied ******************/
-		/**** md5 signature: 48c383d54aa533457945a2534a8a440e ****/
+		/**** md5 signature: 10ad2b0e6a89e08058ee0f39ff893d49 ****/
 		%feature("compactdefaultargs") Multiplied;
 		%feature("autodoc", "
 Parameters
@@ -7848,21 +7190,21 @@ theRight: math_Matrix
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 Returns the product of a vector by a matrix.
 ") Multiplied;
-		math_Vector Multiplied(const math_Matrix & theRight);
+		math_VectorBase Multiplied(const math_Matrix & theRight);
 
 		/****************** Multiply ******************/
-		/**** md5 signature: 71e5ff1628aad85905443b0db3494a5c ****/
+		/**** md5 signature: b9f27f49a3f6736805012129156c9d9d ****/
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: float
+theRight: TheItemType
 
 Return
 -------
@@ -7870,17 +7212,17 @@ None
 
 Description
 -----------
-Returns the product of a vector and a real value.
+Updates current vector by multiplying each element on current value.
 ") Multiply;
-		void Multiply(const Standard_Real theRight);
+		void Multiply(const TheItemType theRight);
 
 		/****************** Multiply ******************/
-		/**** md5 signature: cd27b618ac7da789982b325dbe89def3 ****/
+		/**** md5 signature: c2795ae734d8e01d57e2a78af486b449 ****/
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "
 Parameters
 ----------
-theLeft: math_Vector
+theLeft: math_VectorBase
 theRight: math_Matrix
 
 Return
@@ -7891,16 +7233,16 @@ Description
 -----------
 Sets a vector to the product of the vector 'theleft' with the matrix 'theright'.
 ") Multiply;
-		void Multiply(const math_Vector & theLeft, const math_Matrix & theRight);
+		void Multiply(const math_VectorBase & theLeft, const math_Matrix & theRight);
 
 		/****************** Multiply ******************/
-		/**** md5 signature: ff587ee10e410c99f7fa38991414bf94 ****/
+		/**** md5 signature: 31c76d87f171ace0160968d13426b791 ****/
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "
 Parameters
 ----------
 theLeft: math_Matrix
-theRight: math_Vector
+theRight: math_VectorBase
 
 Return
 -------
@@ -7910,16 +7252,16 @@ Description
 -----------
 //!sets a vector to the product of the matrix 'theleft' with the vector 'theright'.
 ") Multiply;
-		void Multiply(const math_Matrix & theLeft, const math_Vector & theRight);
+		void Multiply(const math_Matrix & theLeft, const math_VectorBase & theRight);
 
 		/****************** Multiply ******************/
-		/**** md5 signature: b333dc90a92c0a05dabe71ae99d9bb19 ****/
+		/**** md5 signature: 8cad65698ed17e73c4dea7fe27d379e3 ****/
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "
 Parameters
 ----------
-theLeft: float
-theRight: math_Vector
+theLeft: TheItemType
+theRight: math_VectorBase
 
 Return
 -------
@@ -7929,10 +7271,10 @@ Description
 -----------
 Returns the multiplication of a real by a vector. 'me' = 'theleft' * 'theright'.
 ") Multiply;
-		void Multiply(const Standard_Real theLeft, const math_Vector & theRight);
+		void Multiply(const TheItemType theLeft, const math_VectorBase & theRight);
 
 		/****************** Norm ******************/
-		/**** md5 signature: ef03a75c3e2c2e2728051dc33ad502de ****/
+		/**** md5 signature: 6dc5ad9590bf60f4194e824ee34dfd92 ****/
 		%feature("compactdefaultargs") Norm;
 		%feature("autodoc", "Return
 -------
@@ -7945,7 +7287,7 @@ Returns the value or the square of the norm of this vector.
 		Standard_Real Norm();
 
 		/****************** Norm2 ******************/
-		/**** md5 signature: aa0fc8823225be6949f93bb2b3c831b7 ****/
+		/**** md5 signature: 015f3c35df9e248d3352ccc59186890c ****/
 		%feature("compactdefaultargs") Norm2;
 		%feature("autodoc", "Return
 -------
@@ -7958,7 +7300,7 @@ Returns the value of the square of the norm of a vector.
 		Standard_Real Norm2();
 
 		/****************** Normalize ******************/
-		/**** md5 signature: 587346cf1e1c12fdf674aedc915ccd95 ****/
+		/**** md5 signature: fb41beeacae8c73221eb233b282f51e2 ****/
 		%feature("compactdefaultargs") Normalize;
 		%feature("autodoc", "Return
 -------
@@ -7971,40 +7313,40 @@ Normalizes this vector (the norm of the result is equal to 1.0) and assigns the 
 		void Normalize();
 
 		/****************** Normalized ******************/
-		/**** md5 signature: f20dec53671606b804477a8ed8c244c7 ****/
+		/**** md5 signature: 2b064f64c103c167de66f0764377c508 ****/
 		%feature("compactdefaultargs") Normalized;
 		%feature("autodoc", "Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 Normalizes this vector (the norm of the result is equal to 1.0) and creates a new vector exceptions standard_nullvalue if this vector is null (i.e. if its norm is less than or equal to standard_real::realepsilon().
 ") Normalized;
-		math_Vector Normalized();
+		math_VectorBase Normalized();
 
 		/****************** Opposite ******************/
-		/**** md5 signature: fd960269a3567caabbca35db86851a1c ****/
+		/**** md5 signature: d5552f58a791312c2d11b926119859a7 ****/
 		%feature("compactdefaultargs") Opposite;
 		%feature("autodoc", "Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 Returns the opposite of a vector.
 ") Opposite;
-		math_Vector Opposite();
+		math_VectorBase Opposite();
 
 		/****************** Set ******************/
-		/**** md5 signature: 966261a166d0c715305cef8102956fa3 ****/
+		/**** md5 signature: 830a48b15d65db27497e146bf86f4516 ****/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
 ----------
 theI1: int
 theI2: int
-theV: math_Vector
+theV: math_VectorBase
 
 Return
 -------
@@ -8014,10 +7356,10 @@ Description
 -----------
 Sets a vector from 'thei1' to 'thei2' to the vector 'thev'; an exception is raised if 'thei1' is less than 'lowerindex' or 'thei2' is greater than 'upperindex' or 'thei1' is greater than 'thei2'. an exception is raised if 'thei2-thei1+1' is different from the 'length' of 'thev'.
 ") Set;
-		void Set(const Standard_Integer theI1, const Standard_Integer theI2, const math_Vector & theV);
+		void Set(const Standard_Integer theI1, const Standard_Integer theI2, const math_VectorBase & theV);
 
 		/****************** Slice ******************/
-		/**** md5 signature: 1acc2f70fc8c7c86b03909222d850231 ****/
+		/**** md5 signature: 8c4254c203c7c45e0b179a38d2dbc99e ****/
 		%feature("compactdefaultargs") Slice;
 		%feature("autodoc", "
 Parameters
@@ -8027,22 +7369,22 @@ theI2: int
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 //!creates a new vector by inverting the values of this vector between indexes 'thei1' and 'thei2'. if the values of this vector were (1., 2., 3., 4.,5., 6.), by slicing it between indexes 2 and 5 the values of the resulting vector are (1., 5., 4., 3., 2., 6.).
 ") Slice;
-		math_Vector Slice(const Standard_Integer theI1, const Standard_Integer theI2);
+		math_VectorBase Slice(const Standard_Integer theI1, const Standard_Integer theI2);
 
 		/****************** Subtract ******************/
-		/**** md5 signature: 3e473d10fb921765beefd54b9c35fd5a ****/
+		/**** md5 signature: b32c188ee5360b0cd12b1b6672df7e79 ****/
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "
 Parameters
 ----------
-theLeft: math_Vector
-theRight: math_Vector
+theLeft: math_VectorBase
+theRight: math_VectorBase
 
 Return
 -------
@@ -8052,15 +7394,15 @@ Description
 -----------
 Sets a vector to the subtraction of the vector theright from the vector theleft. an exception is raised if the vectors have not the same length. warning in order to avoid time-consuming copying of vectors, it is preferable to use operator -= or the function subtract whenever possible.
 ") Subtract;
-		void Subtract(const math_Vector & theLeft, const math_Vector & theRight);
+		void Subtract(const math_VectorBase & theLeft, const math_VectorBase & theRight);
 
 		/****************** Subtract ******************/
-		/**** md5 signature: b364cf184dd7ba24a7a03e7424ecf129 ****/
+		/**** md5 signature: 4f0daa1e70b1e132b8c9b9a8d52ccd39 ****/
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: math_Vector
+theRight: math_VectorBase
 
 Return
 -------
@@ -8070,52 +7412,52 @@ Description
 -----------
 Returns the subtraction of 'theright' from 'me'. an exception is raised if the vectors have not the same length.
 ") Subtract;
-		void Subtract(const math_Vector & theRight);
+		void Subtract(const math_VectorBase & theRight);
 
 		/****************** Subtracted ******************/
-		/**** md5 signature: 2b94f430c7926807d334a9760edde513 ****/
+		/**** md5 signature: a61fbab5df591d9b1e911c61d9a33a2a ****/
 		%feature("compactdefaultargs") Subtracted;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: math_Vector
+theRight: math_VectorBase
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 Returns the subtraction of 'theright' from 'me'. an exception is raised if the vectors have not the same length.
 ") Subtracted;
-		math_Vector Subtracted(const math_Vector & theRight);
+		math_VectorBase Subtracted(const math_VectorBase & theRight);
 
 		/****************** TMultiplied ******************/
-		/**** md5 signature: 9a3310df1f91a712122711ba97c5d8ef ****/
+		/**** md5 signature: 678f7a48be8d557310f69d186c1254f5 ****/
 		%feature("compactdefaultargs") TMultiplied;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: float
+theRight: TheItemType
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 Returns the product of a vector and a real value.
 ") TMultiplied;
-		math_Vector TMultiplied(const Standard_Real theRight);
+		math_VectorBase TMultiplied(const TheItemType theRight);
 
 		/****************** TMultiply ******************/
-		/**** md5 signature: c5f15549c0f280585b475ffb50417c0b ****/
+		/**** md5 signature: 2805d50d59fefec5c37586eaba852930 ****/
 		%feature("compactdefaultargs") TMultiply;
 		%feature("autodoc", "
 Parameters
 ----------
 theTLeft: math_Matrix
-theRight: math_Vector
+theRight: math_VectorBase
 
 Return
 -------
@@ -8125,15 +7467,15 @@ Description
 -----------
 Sets a vector to the product of the transpose of the matrix 'thetleft' by the vector 'theright'.
 ") TMultiply;
-		void TMultiply(const math_Matrix & theTLeft, const math_Vector & theRight);
+		void TMultiply(const math_Matrix & theTLeft, const math_VectorBase & theRight);
 
 		/****************** TMultiply ******************/
-		/**** md5 signature: 1d422a24e71400f9c77f9f50888a73c4 ****/
+		/**** md5 signature: f516d448889e1ae7326efd958a1dbd12 ****/
 		%feature("compactdefaultargs") TMultiply;
 		%feature("autodoc", "
 Parameters
 ----------
-theLeft: math_Vector
+theLeft: math_VectorBase
 theTRight: math_Matrix
 
 Return
@@ -8144,7 +7486,7 @@ Description
 -----------
 Sets a vector to the product of the vector 'theleft' by the transpose of the matrix 'thetright'.
 ") TMultiply;
-		void TMultiply(const math_Vector & theLeft, const math_Matrix & theTRight);
+		void TMultiply(const math_VectorBase & theLeft, const math_Matrix & theTRight);
 
 		/****************** Upper ******************/
 		/**** md5 signature: 049ea67a2fce112afef7cc7f87f4a43d ****/
@@ -8155,12 +7497,12 @@ int
 
 Description
 -----------
-Returns the value of the theupper index of a vector.
+Returns the upper index of the vector.
 ") Upper;
 		Standard_Integer Upper();
 
 		/****************** Value ******************/
-		/**** md5 signature: 51ca32c5ce4b1bce383f158e12c2ed93 ****/
+		/**** md5 signature: 6dee698cd6f46f729700853e54d6930f ****/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -8169,65 +7511,70 @@ theNum: int
 
 Return
 -------
-float
+TheItemType
 
 Description
 -----------
 Accesses the value of index 'thenum' of a vector.
 ") Value;
-		const Standard_Real & Value(const Standard_Integer theNum);
+		const TheItemType & Value(const Standard_Integer theNum);
 
+		/****************** Value ******************/
+		/**** md5 signature: f417184bccf4dce48f252e224d5df03e ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "
+Parameters
+----------
+theNum: int
 
-        %feature("autodoc","1");
-        %extend {
-            Standard_Real GetValue(const Standard_Integer theNum) {
-            return (Standard_Real) $self->Value(theNum);
-            }
-        };
-        %feature("autodoc","1");
-        %extend {
-            void SetValue(const Standard_Integer theNum,Standard_Real value) {
-            $self->Value(theNum)=value;
-            }
-        };
+Return
+-------
+TheItemType
+
+Description
+-----------
+Accesses (in read or write mode) the value of index 'thenum' of a vector.
+") Value;
+		TheItemType & Value(const Standard_Integer theNum);
+
 		/****************** operator * ******************/
-		/**** md5 signature: 37cd52b96c4154ef3556979c35376966 ****/
+		/**** md5 signature: 8dfcf1e91fc509d4a307b07a5bca2638 ****/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: float
+theRight: TheItemType
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 No available documentation.
 ") operator *;
-		math_Vector operator *(const Standard_Real theRight);
+		math_VectorBase operator *(const TheItemType theRight);
 
 		/****************** operator * ******************/
-		/**** md5 signature: 90daa0f5a02ccd826ae0cf8841aa6310 ****/
+		/**** md5 signature: fda9687607ed3a7eea56e85639fa4ce8 ****/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: math_Vector
+theRight: math_VectorBase
 
 Return
 -------
-float
+TheItemType
 
 Description
 -----------
 No available documentation.
 ") operator *;
-		Standard_Real operator *(const math_Vector & theRight);
+		TheItemType operator *(const math_VectorBase & theRight);
 
 		/****************** operator * ******************/
-		/**** md5 signature: 3d35d4e4c72c9d281612a4fed14f4976 ****/
+		/**** md5 signature: 138b8b1209dec3f877e1eb092ad470f7 ****/
 		%feature("compactdefaultargs") operator *;
 		%feature("autodoc", "
 Parameters
@@ -8236,17 +7583,17 @@ theRight: math_Matrix
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 No available documentation.
 ") operator *;
-		math_Vector operator *(const math_Matrix & theRight);
+		math_VectorBase operator *(const math_Matrix & theRight);
 
 
 %extend{
-    void __imul_wrapper__(const Standard_Real other) {
+    void __imul_wrapper__(const TheItemType other) {
     *self *= other;
     }
 }
@@ -8256,26 +7603,26 @@ def __imul__(self, right):
     return self
 }
 		/****************** operator + ******************/
-		/**** md5 signature: 61f1917d2835ee61d96a19d57b4aa9d1 ****/
+		/**** md5 signature: 95089290e7711a5bf90619699b701c2e ****/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: math_Vector
+theRight: math_VectorBase
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 No available documentation.
 ") operator +;
-		math_Vector operator +(const math_Vector & theRight);
+		math_VectorBase operator +(const math_VectorBase & theRight);
 
 
 %extend{
-    void __iadd_wrapper__(const math_Vector other) {
+    void __iadd_wrapper__(const math_VectorBase other) {
     *self += other;
     }
 }
@@ -8285,39 +7632,39 @@ def __iadd__(self, right):
     return self
 }
 		/****************** operator - ******************/
-		/**** md5 signature: 2121a0f80a0d235e2e6ade07c0b70312 ****/
+		/**** md5 signature: 57aafa6ca11843dd9f4862a50a2f234b ****/
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 No available documentation.
 ") operator -;
-		math_Vector operator -();
+		math_VectorBase operator -();
 
 		/****************** operator - ******************/
-		/**** md5 signature: b9b95202aba838046a1fb299c8a45458 ****/
+		/**** md5 signature: f36827c7b63741cabac85d1c6aaaee3f ****/
 		%feature("compactdefaultargs") operator -;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: math_Vector
+theRight: math_VectorBase
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 No available documentation.
 ") operator -;
-		math_Vector operator -(const math_Vector & theRight);
+		math_VectorBase operator -(const math_VectorBase & theRight);
 
 
 %extend{
-    void __isub_wrapper__(const math_Vector other) {
+    void __isub_wrapper__(const math_VectorBase other) {
     *self -= other;
     }
 }
@@ -8327,26 +7674,26 @@ def __isub__(self, right):
     return self
 }
 		/****************** operator / ******************/
-		/**** md5 signature: 962acf898a7f3f4cabec802f523bba4a ****/
+		/**** md5 signature: c4cf88a6a3686a711cc3c45185eec507 ****/
 		%feature("compactdefaultargs") operator /;
 		%feature("autodoc", "
 Parameters
 ----------
-theRight: float
+theRight: TheItemType
 
 Return
 -------
-math_Vector
+math_VectorBase
 
 Description
 -----------
 No available documentation.
 ") operator /;
-		math_Vector operator /(const Standard_Real theRight);
+		math_VectorBase operator /(const TheItemType theRight);
 
 
 %extend{
-    void __itruediv_wrapper__(const Standard_Real other) {
+    void __itruediv_wrapper__(const TheItemType other) {
     *self /= other;
     }
 }
@@ -8358,7 +7705,7 @@ def __itruediv__(self, right):
 };
 
 
-%extend math_Vector {
+%extend math_VectorBase {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

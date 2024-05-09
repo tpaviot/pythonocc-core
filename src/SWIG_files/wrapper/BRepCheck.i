@@ -203,7 +203,7 @@ BRepCheck_CheckFail = BRepCheck_Status.BRepCheck_CheckFail
 /* end handles declaration */
 
 /* templates */
-%template(BRepCheck_IndexedDataMapOfShapeResult) NCollection_IndexedDataMap<TopoDS_Shape,opencascade::handle<BRepCheck_Result>,TopTools_OrientedShapeMapHasher>;
+%template(BRepCheck_IndexedDataMapOfShapeResult) NCollection_IndexedDataMap<TopoDS_Shape,opencascade::handle<BRepCheck_Result>>;
 %template(BRepCheck_ListIteratorOfListOfStatus) NCollection_TListIterator<BRepCheck_Status>;
 %template(BRepCheck_ListOfStatus) NCollection_List<BRepCheck_Status>;
 
@@ -219,7 +219,7 @@ BRepCheck_CheckFail = BRepCheck_Status.BRepCheck_CheckFail
 typedef NCollection_DataMap<TopoDS_Shape, Handle ( NCollection_Shared<BRepCheck_ListOfStatus>), TopTools_ShapeMapHasher>::Iterator BRepCheck_DataMapIteratorOfDataMapOfShapeListOfStatus;
 typedef NCollection_DataMap<TopoDS_Shape, Handle ( NCollection_Shared<BRepCheck_ListOfStatus>), TopTools_ShapeMapHasher> BRepCheck_DataMapOfShapeListOfStatus;
 typedef NCollection_Shared<BRepCheck_ListOfStatus> BRepCheck_HListOfStatus;
-typedef NCollection_IndexedDataMap<TopoDS_Shape, opencascade::handle<BRepCheck_Result>, TopTools_OrientedShapeMapHasher> BRepCheck_IndexedDataMapOfShapeResult;
+typedef NCollection_IndexedDataMap<TopoDS_Shape, opencascade::handle<BRepCheck_Result>> BRepCheck_IndexedDataMapOfShapeResult;
 typedef NCollection_List<BRepCheck_Status>::Iterator BRepCheck_ListIteratorOfListOfStatus;
 typedef NCollection_List<BRepCheck_Status> BRepCheck_ListOfStatus;
 /* end typedefs declaration */

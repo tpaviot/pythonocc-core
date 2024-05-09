@@ -959,7 +959,6 @@ Returns quantity of part usage occurrences. \param [in] thenode - one-based part
 *******************************/
 class XCAFDoc_AssemblyItemId {
 	public:
-		class Hasher {};
 		/****************** XCAFDoc_AssemblyItemId ******************/
 		/**** md5 signature: 3be71f2dc646719d8cb62bac0797d937 ****/
 		%feature("compactdefaultargs") XCAFDoc_AssemblyItemId;
@@ -1172,6 +1171,20 @@ Returns the full pass as a formatted string.
 ") ToString;
 		TCollection_AsciiString ToString();
 
+
+%extend{
+    bool __eq_wrapper__(const XCAFDoc_AssemblyItemId other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
@@ -4260,12 +4273,12 @@ Returns a sequence of dimension labels currently stored in the gd&t table.
 		void GetDimensionLabels(TDF_LabelSequence & theLabels);
 
 		/****************** GetGDTPresentations ******************/
-		/**** md5 signature: a26953d21d44fa7d4472494fc996a947 ****/
+		/**** md5 signature: d56c55b273c67e9c64e4bb8d45f185c4 ****/
 		%feature("compactdefaultargs") GetGDTPresentations;
 		%feature("autodoc", "
 Parameters
 ----------
-theGDTLabelToShape: NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher>
+theGDTLabelToShape: NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>
 
 Return
 -------
@@ -4275,7 +4288,7 @@ Description
 -----------
 Fill the map gdt label -> shape presentation .
 ") GetGDTPresentations;
-		void GetGDTPresentations(NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher> & theGDTLabelToShape);
+		void GetGDTPresentations(NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape> & theGDTLabelToShape);
 
 		/****************** GetGeomToleranceLabels ******************/
 		/**** md5 signature: 2d6c1e791bb5b7a6b1a122177cbe232c ****/
@@ -4704,12 +4717,12 @@ Sets a dimension to the target label.
 		void SetDimension(const TDF_Label & theL, const TDF_Label & theDimL);
 
 		/****************** SetGDTPresentations ******************/
-		/**** md5 signature: d4e6966638f7a6a582773b37cdf58473 ****/
+		/**** md5 signature: dc81af26228cca24292b0f76736e0486 ****/
 		%feature("compactdefaultargs") SetGDTPresentations;
 		%feature("autodoc", "
 Parameters
 ----------
-theGDTLabelToPrs: NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher>
+theGDTLabelToPrs: NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape>
 
 Return
 -------
@@ -4719,7 +4732,7 @@ Description
 -----------
 Set shape presentation for gdt labels according to given map (thegdtlabeltoprs) thegdtlabeltoprsname map is an additional argument, can be used to set presentation names. if label is not in the thegdtlabeltoprsname map, the presentation name will be empty.
 ") SetGDTPresentations;
-		void SetGDTPresentations(NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape, TDF_LabelMapHasher> & theGDTLabelToPrs);
+		void SetGDTPresentations(NCollection_IndexedDataMap<TDF_Label, TopoDS_Shape> & theGDTLabelToPrs);
 
 		/****************** SetGeomTolerance ******************/
 		/**** md5 signature: 58ad83a4333f88636ad5771b734333df ****/
@@ -12391,6 +12404,9 @@ Find, or create, an volume attribute and set its value.
 	}
 };
 
+/*************************************
+* class hash<XCAFDoc_AssemblyItemId> *
+*************************************/
 /****************************
 * class XCAFDoc_NoteBinData *
 ****************************/

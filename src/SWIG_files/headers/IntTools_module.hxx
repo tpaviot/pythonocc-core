@@ -30,8 +30,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntTools_Curve.hxx>
 #include<IntTools_CurveRangeLocalizeData.hxx>
 #include<IntTools_CurveRangeSample.hxx>
-#include<IntTools_CurveRangeSampleMapHasher.hxx>
-#include<IntTools_DataMapIteratorOfDataMapOfCurveSampleBox.hxx>
 #include<IntTools_DataMapIteratorOfDataMapOfSurfaceSampleBox.hxx>
 #include<IntTools_DataMapOfCurveSampleBox.hxx>
 #include<IntTools_DataMapOfSurfaceSampleBox.hxx>
@@ -62,7 +60,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<IntTools_ShrunkRange.hxx>
 #include<IntTools_SurfaceRangeLocalizeData.hxx>
 #include<IntTools_SurfaceRangeSample.hxx>
-#include<IntTools_SurfaceRangeSampleMapHasher.hxx>
 #include<IntTools_Tools.hxx>
 #include<IntTools_TopolTool.hxx>
 #include<IntTools_WLineTool.hxx>

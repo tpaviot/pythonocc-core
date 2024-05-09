@@ -26,11 +26,11 @@ requirements:
 
   host:
     - python {{ python }}
-    - occt ==7.7.2
+    - occt ==7.8.1
     - numpy >=1.17
 
   run:
-    - occt ==7.7.2
+    - occt ==7.8.1
     - six
     - numpy >=1.17
 

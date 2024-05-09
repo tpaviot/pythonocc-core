@@ -124,13 +124,21 @@ typedef wchar_t Standard_WideChar;
 %rename(standard) Standard;
 class Standard {
 	public:
+/* public enums */
+/* end public enums declaration */
+
+/* python proxy classes for enums */
+%pythoncode {
+};
+/* end python proxy for enums */
+
 		/****************** Allocate ******************/
-		/**** md5 signature: 10c0da91eb50ef90687a2d94eada1414 ****/
+		/**** md5 signature: 09eaa961b9be732030ff1c621353d016 ****/
 		%feature("compactdefaultargs") Allocate;
 		%feature("autodoc", "
 Parameters
 ----------
-aSize: Standard_Size
+theSize: Standard_Size
 
 Return
 -------
@@ -138,9 +146,9 @@ Standard_Address
 
 Description
 -----------
-Allocates memory blocks asize - bytes to allocate.
+Allocates memory blocks thesize - bytes to allocate.
 ") Allocate;
-		static Standard_Address Allocate(const Standard_Size aSize);
+		static Standard_Address Allocate(const Standard_Size theSize);
 
 		/****************** AllocateAligned ******************/
 		/**** md5 signature: a54b3a9a279a6d719651145508c0e4f9 ****/
@@ -161,6 +169,37 @@ Allocates aligned memory blocks. should be used with cpu instructions which requ
 ") AllocateAligned;
 		static Standard_Address AllocateAligned(const Standard_Size theSize, const Standard_Size theAlign);
 
+		/****************** AllocateOptimal ******************/
+		/**** md5 signature: 4c348d2bb50a6b904a6ae27173357a73 ****/
+		%feature("compactdefaultargs") AllocateOptimal;
+		%feature("autodoc", "
+Parameters
+----------
+theSize: Standard_Size
+
+Return
+-------
+Standard_Address
+
+Description
+-----------
+Allocates memory blocks thesize - bytes to allocate.
+") AllocateOptimal;
+		static Standard_Address AllocateOptimal(const Standard_Size theSize);
+
+		/****************** GetAllocatorType ******************/
+		/**** md5 signature: e9a5a562f8900ba3133563f92652391b ****/
+		%feature("compactdefaultargs") GetAllocatorType;
+		%feature("autodoc", "Return
+-------
+Standard::AllocatorType
+
+Description
+-----------
+Returns default allocator type.
+") GetAllocatorType;
+		static Standard::AllocatorType GetAllocatorType();
+
 		/****************** Purge ******************/
 		/**** md5 signature: 964c9688a284e751f362d44404b428a8 ****/
 		%feature("compactdefaultargs") Purge;
@@ -175,13 +214,13 @@ Deallocates the storage retained on the free list and clears the list. returns n
 		static Standard_Integer Purge();
 
 		/****************** Reallocate ******************/
-		/**** md5 signature: e02f1587334da5138d36de642aadf9d7 ****/
+		/**** md5 signature: 98508e78322bc56368b10399906f4ebe ****/
 		%feature("compactdefaultargs") Reallocate;
 		%feature("autodoc", "
 Parameters
 ----------
-aStorage: Standard_Address
-aNewSize: Standard_Size
+theStorage: Standard_Address
+theNewSize: Standard_Size
 
 Return
 -------
@@ -189,9 +228,9 @@ Standard_Address
 
 Description
 -----------
-Reallocates memory blocks astorage - previously allocated memory block anewsize - new size in bytes.
+Reallocates memory blocks thestorage - previously allocated memory block thenewsize - new size in bytes.
 ") Reallocate;
-		static Standard_Address Reallocate(const Standard_Address aStorage, const Standard_Size aNewSize);
+		static Standard_Address Reallocate(const Standard_Address theStorage, const Standard_Size theNewSize);
 
 		/****************** StackTrace ******************/
 		/**** md5 signature: 11cdd0e88a61817ce1133c83a30be60d ****/
@@ -298,6 +337,20 @@ Read a bunch of bytes at once.
 
 
 %extend Standard_ArrayStreamBuffer {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
+/*******************************
+* class Standard_CStringHasher *
+*******************************/
+class Standard_CStringHasher {
+	public:
+};
+
+
+%extend Standard_CStringHasher {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -542,6 +595,7 @@ Removes handler from the handlers list.
 **********************/
 class Standard_GUID {
 	public:
+		friend struct std:: hash;
 		/****************** Standard_GUID ******************/
 		/**** md5 signature: bd47278e877fa95d24363f9cfe93d187 ****/
 		%feature("compactdefaultargs") Standard_GUID;
@@ -707,62 +761,6 @@ Description
 Check the format of a guid string. it checks the size, the position of the '-' and the correct size of fields.
 ") CheckGUIDFormat;
 		static Standard_Boolean CheckGUIDFormat(Standard_CString aGuid);
-
-		/****************** Hash ******************/
-		/**** md5 signature: 2ca4d5ed910085d9b74b734c3ce42e00 ****/
-		%feature("compactdefaultargs") Hash;
-		%feature("autodoc", "
-Parameters
-----------
-Upper: int
-
-Return
--------
-int
-
-Description
------------
-Hash function for guid.
-") Hash;
-		Standard_Integer Hash(const Standard_Integer Upper);
-
-		/****************** HashCode ******************/
-		/**** md5 signature: 7ea33f659d5f35ed8ce799bbe4c3a63c ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theGUID: Standard_GUID
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given guid of the standard_integer type, in the range [1, theupperbound] @param theguid the guid which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const Standard_GUID & theGUID, Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 1086fb5abd39daacfcf7d55bcaffafcd ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-string1: Standard_GUID
-string2: Standard_GUID
-
-Return
--------
-bool
-
-Description
------------
-Returns true when the two guid are the same.
-") IsEqual;
-		static Standard_Boolean IsEqual(const Standard_GUID & string1, const Standard_GUID & string2);
 
 		/****************** IsNotSame ******************/
 		/**** md5 signature: 3b6791d861dce7aeca50422c5b579eb8 ****/
@@ -1065,7 +1063,7 @@ Copy constructor -- does nothing.
 		 Standard_Transient(const Standard_Transient &);
 
 		/****************** DecrementRefCounter ******************/
-		/**** md5 signature: a89aaf197af2027c94584579bca62fa3 ****/
+		/**** md5 signature: cffc0f5f216bbc1c29b2cc1acb246d17 ****/
 		%feature("compactdefaultargs") DecrementRefCounter;
 		%feature("autodoc", "Return
 -------
@@ -1078,7 +1076,7 @@ Decrements the reference counter of this object; returns the decremented value.
 		Standard_Integer DecrementRefCounter();
 
 		/****************** Delete ******************/
-		/**** md5 signature: ef51856c130170c546ad4993294bfe08 ****/
+		/**** md5 signature: 1033f3d10272190e9265f60bb3fd5e6a ****/
 		%feature("compactdefaultargs") Delete;
 		%feature("autodoc", "Return
 -------
@@ -1104,7 +1102,7 @@ Returns a type descriptor about this object.
 		virtual const opencascade::handle<Standard_Type> & DynamicType();
 
 		/****************** GetRefCount ******************/
-		/**** md5 signature: 823f634c14521d142c777f76623eccd8 ****/
+		/**** md5 signature: d203a7228b821c79144dcefd346a06e8 ****/
 		%feature("compactdefaultargs") GetRefCount;
 		%feature("autodoc", "Return
 -------
@@ -1117,7 +1115,7 @@ Get the reference counter of this object.
 		Standard_Integer GetRefCount();
 
 		/****************** IncrementRefCounter ******************/
-		/**** md5 signature: cb838e11007df4d1d17f859dd4af8576 ****/
+		/**** md5 signature: 750593e1aaf93d2c0f8c8d422e1418c2 ****/
 		%feature("compactdefaultargs") IncrementRefCounter;
 		%feature("autodoc", "Return
 -------
@@ -1228,17 +1226,17 @@ Returns type descriptor of standard_transient class.
 		static const opencascade::handle<Standard_Type> & get_type_descriptor();
 
 		/****************** get_type_name ******************/
-		/**** md5 signature: 0a54cf9404a0c6240157b48171ec4352 ****/
+		/**** md5 signature: a94e79c0295819f8f00f43f91727e0f3 ****/
 		%feature("compactdefaultargs") get_type_name;
 		%feature("autodoc", "Return
 -------
-char *
+expr  char *
 
 Description
 -----------
 No available documentation.
 ") get_type_name;
-		static const char * get_type_name();
+		static constexpr const char * get_type_name();
 
 };
 
@@ -1290,6 +1288,12 @@ class Standard_UUID {
 /****************************************
 * class has_type<T,std::tuple<U,Ts...>> *
 ****************************************/
+/****************************
+* class hash<Standard_GUID> *
+****************************/
+/****************************************************
+* class hash<opencascade::handle<TheTransientType>> *
+****************************************************/
 /*****************************
 * class is_base_but_not_same *
 *****************************/
@@ -1748,180 +1752,6 @@ Reallocate previously allocated aptr to a new size; new address is returned. in 
 	}
 };
 
-/*************************
-* class Standard_MMgrRaw *
-*************************/
-class Standard_MMgrRaw : public Standard_MMgrRoot {
-	public:
-		/****************** Standard_MMgrRaw ******************/
-		/**** md5 signature: f78bd7fece1a72bba3156a68497887ac ****/
-		%feature("compactdefaultargs") Standard_MMgrRaw;
-		%feature("autodoc", "
-Parameters
-----------
-aClear: bool (optional, default to Standard_False)
-
-Return
--------
-None
-
-Description
------------
-Constructor; if aclear is true, the memory will be nullified upon allocation.
-") Standard_MMgrRaw;
-		 Standard_MMgrRaw(const Standard_Boolean aClear = Standard_False);
-
-		/****************** Allocate ******************/
-		/**** md5 signature: 6442d3c642cfcdb40262dcd5e55ab759 ****/
-		%feature("compactdefaultargs") Allocate;
-		%feature("autodoc", "
-Parameters
-----------
-aSize: Standard_Size
-
-Return
--------
-Standard_Address
-
-Description
------------
-Allocate asize bytes .
-") Allocate;
-		virtual Standard_Address Allocate(const Standard_Size aSize);
-
-		/****************** Free ******************/
-		/**** md5 signature: 99b92bf95d137ab3f4eb77330f696570 ****/
-		%feature("compactdefaultargs") Free;
-		%feature("autodoc", "
-Parameters
-----------
-thePtr: Standard_Address
-
-Return
--------
-None
-
-Description
------------
-Free allocated memory. the pointer is nullified.
-") Free;
-		virtual void Free(Standard_Address thePtr);
-
-		/****************** Reallocate ******************/
-		/**** md5 signature: 4f35659a2196551b32d4dfcffd290549 ****/
-		%feature("compactdefaultargs") Reallocate;
-		%feature("autodoc", "
-Parameters
-----------
-thePtr: Standard_Address
-theSize: Standard_Size
-
-Return
--------
-Standard_Address
-
-Description
------------
-Reallocate aptr to the size asize. the new pointer is returned.
-") Reallocate;
-		virtual Standard_Address Reallocate(Standard_Address thePtr, const Standard_Size theSize);
-
-};
-
-
-%extend Standard_MMgrRaw {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/******************************
-* class Standard_MMgrTBBalloc *
-******************************/
-class Standard_MMgrTBBalloc : public Standard_MMgrRoot {
-	public:
-		/****************** Standard_MMgrTBBalloc ******************/
-		/**** md5 signature: 0ba7db7cc2974c9824fe719733bdda15 ****/
-		%feature("compactdefaultargs") Standard_MMgrTBBalloc;
-		%feature("autodoc", "
-Parameters
-----------
-aClear: bool (optional, default to Standard_False)
-
-Return
--------
-None
-
-Description
------------
-Constructor; if aclear is true, the memory will be nullified upon allocation.
-") Standard_MMgrTBBalloc;
-		 Standard_MMgrTBBalloc(const Standard_Boolean aClear = Standard_False);
-
-		/****************** Allocate ******************/
-		/**** md5 signature: 6442d3c642cfcdb40262dcd5e55ab759 ****/
-		%feature("compactdefaultargs") Allocate;
-		%feature("autodoc", "
-Parameters
-----------
-aSize: Standard_Size
-
-Return
--------
-Standard_Address
-
-Description
------------
-Allocate asize bytes .
-") Allocate;
-		virtual Standard_Address Allocate(const Standard_Size aSize);
-
-		/****************** Free ******************/
-		/**** md5 signature: 99b92bf95d137ab3f4eb77330f696570 ****/
-		%feature("compactdefaultargs") Free;
-		%feature("autodoc", "
-Parameters
-----------
-thePtr: Standard_Address
-
-Return
--------
-None
-
-Description
------------
-Free allocated memory.
-") Free;
-		virtual void Free(Standard_Address thePtr);
-
-		/****************** Reallocate ******************/
-		/**** md5 signature: 4f35659a2196551b32d4dfcffd290549 ****/
-		%feature("compactdefaultargs") Reallocate;
-		%feature("autodoc", "
-Parameters
-----------
-thePtr: Standard_Address
-theSize: Standard_Size
-
-Return
--------
-Standard_Address
-
-Description
------------
-Reallocate aptr to the size asize. the new pointer is returned.
-") Reallocate;
-		virtual Standard_Address Reallocate(Standard_Address thePtr, const Standard_Size theSize);
-
-};
-
-
-%extend Standard_MMgrTBBalloc {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /***********************
 * class Standard_Mutex *
 ***********************/
@@ -2155,12 +1985,12 @@ Prints type (address of descriptor + name) to a stream.
 		void Print(std::ostream &OutValue);
 
 		/****************** Register ******************/
-		/**** md5 signature: 8e6b8df94dcb0fc4b1d9d92877cf9314 ****/
+		/**** md5 signature: 47cbf72eb6b8d1175d67182ad31c3816 ****/
 		%feature("compactdefaultargs") Register;
 		%feature("autodoc", "
 Parameters
 ----------
-theSystemName: char *
+theInfo: std::type_info
 theName: char *
 theSize: Standard_Size
 theParent: Standard_Type
@@ -2171,9 +2001,9 @@ Standard_Type *
 
 Description
 -----------
-Register a type; returns either new or existing descriptor. //! @param thesystemname name of the class as returned by typeid(class).name() @param thename name of the class to be stored in name field @param thesize size of the class instance @param theparent base class in the transient hierarchy //! note that this function is intended for use by opencascade::type_instance only. .
+Register a type; returns either new or existing descriptor. //! @param theinfo object stores system name of the class @param thename name of the class to be stored in name field @param thesize size of the class instance @param theparent base class in the transient hierarchy //! note that this function is intended for use by opencascade::type_instance only. .
 ") Register;
-		static Standard_Type * Register(const char * theSystemName, const char * theName, Standard_Size theSize, const opencascade::handle<Standard_Type> & theParent);
+		static Standard_Type * Register(const std::type_info & theInfo, const char * theName, Standard_Size theSize, const opencascade::handle<Standard_Type> & theParent);
 
 		/****************** Size ******************/
 		/**** md5 signature: 84043604cd4d694d29fbe523f032e5d8 ****/
@@ -2297,6 +2127,14 @@ def standard_AllocateAligned(*args):
 	return standard.AllocateAligned(*args)
 
 @deprecated
+def standard_AllocateOptimal(*args):
+	return standard.AllocateOptimal(*args)
+
+@deprecated
+def standard_GetAllocatorType(*args):
+	return standard.GetAllocatorType(*args)
+
+@deprecated
 def standard_Purge(*args):
 	return standard.Purge(*args)
 
@@ -2319,14 +2157,6 @@ def Standard_ErrorHandler_LastCaughtError(*args):
 @deprecated
 def Standard_GUID_CheckGUIDFormat(*args):
 	return Standard_GUID.CheckGUIDFormat(*args)
-
-@deprecated
-def Standard_GUID_HashCode(*args):
-	return Standard_GUID.HashCode(*args)
-
-@deprecated
-def Standard_GUID_IsEqual(*args):
-	return Standard_GUID.IsEqual(*args)
 
 @deprecated
 def Standard_Failure_DefaultStackTraceLength(*args):

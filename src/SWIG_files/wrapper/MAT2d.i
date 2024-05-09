@@ -84,12 +84,11 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(MAT2d_Array2OfConnexion) NCollection_Array2<opencascade::handle<MAT2d_Connexion>>;
-%template(MAT2d_DataMapOfBiIntInteger) NCollection_DataMap<MAT2d_BiInt,Standard_Integer,MAT2d_MapBiIntHasher>;
-%template(MAT2d_DataMapOfBiIntSequenceOfInteger) NCollection_DataMap<MAT2d_BiInt,TColStd_SequenceOfInteger,MAT2d_MapBiIntHasher>;
-%template(MAT2d_DataMapOfIntegerBisec) NCollection_DataMap<Standard_Integer,Bisector_Bisec,TColStd_MapIntegerHasher>;
+%template(MAT2d_DataMapOfBiIntInteger) NCollection_DataMap<MAT2d_BiInt,Standard_Integer>;
+%template(MAT2d_DataMapOfBiIntSequenceOfInteger) NCollection_DataMap<MAT2d_BiInt,TColStd_SequenceOfInteger>;
+%template(MAT2d_DataMapOfIntegerBisec) NCollection_DataMap<Standard_Integer,Bisector_Bisec>;
 
-%extend NCollection_DataMap<Standard_Integer,Bisector_Bisec,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,Bisector_Bisec> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT2d_DataMapOfIntegerBisec::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -100,9 +99,9 @@ from OCC.Core.Exception import *
     return l;
     }
 };
-%template(MAT2d_DataMapOfIntegerConnexion) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT2d_Connexion>,TColStd_MapIntegerHasher>;
+%template(MAT2d_DataMapOfIntegerConnexion) NCollection_DataMap<Standard_Integer,opencascade::handle<MAT2d_Connexion>>;
 
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT2d_Connexion>,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MAT2d_Connexion>> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT2d_DataMapOfIntegerConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -113,9 +112,9 @@ from OCC.Core.Exception import *
     return l;
     }
 };
-%template(MAT2d_DataMapOfIntegerPnt2d) NCollection_DataMap<Standard_Integer,gp_Pnt2d,TColStd_MapIntegerHasher>;
+%template(MAT2d_DataMapOfIntegerPnt2d) NCollection_DataMap<Standard_Integer,gp_Pnt2d>;
 
-%extend NCollection_DataMap<Standard_Integer,gp_Pnt2d,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,gp_Pnt2d> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT2d_DataMapOfIntegerPnt2d::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -126,9 +125,9 @@ from OCC.Core.Exception import *
     return l;
     }
 };
-%template(MAT2d_DataMapOfIntegerSequenceOfConnexion) NCollection_DataMap<Standard_Integer,MAT2d_SequenceOfConnexion,TColStd_MapIntegerHasher>;
+%template(MAT2d_DataMapOfIntegerSequenceOfConnexion) NCollection_DataMap<Standard_Integer,MAT2d_SequenceOfConnexion>;
 
-%extend NCollection_DataMap<Standard_Integer,MAT2d_SequenceOfConnexion,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,MAT2d_SequenceOfConnexion> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT2d_DataMapOfIntegerSequenceOfConnexion::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -139,9 +138,9 @@ from OCC.Core.Exception import *
     return l;
     }
 };
-%template(MAT2d_DataMapOfIntegerVec2d) NCollection_DataMap<Standard_Integer,gp_Vec2d,TColStd_MapIntegerHasher>;
+%template(MAT2d_DataMapOfIntegerVec2d) NCollection_DataMap<Standard_Integer,gp_Vec2d>;
 
-%extend NCollection_DataMap<Standard_Integer,gp_Vec2d,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,gp_Vec2d> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MAT2d_DataMapOfIntegerVec2d::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -180,20 +179,20 @@ from OCC.Core.Exception import *
 
 /* typedefs */
 typedef NCollection_Array2<opencascade::handle<MAT2d_Connexion>> MAT2d_Array2OfConnexion;
-typedef NCollection_DataMap<MAT2d_BiInt, Standard_Integer, MAT2d_MapBiIntHasher>::Iterator MAT2d_DataMapIteratorOfDataMapOfBiIntInteger;
-typedef NCollection_DataMap<MAT2d_BiInt, TColStd_SequenceOfInteger, MAT2d_MapBiIntHasher>::Iterator MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger;
-typedef NCollection_DataMap<Standard_Integer, Bisector_Bisec, TColStd_MapIntegerHasher>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerBisec;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT2d_Connexion>, TColStd_MapIntegerHasher>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerConnexion;
-typedef NCollection_DataMap<Standard_Integer, gp_Pnt2d, TColStd_MapIntegerHasher>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d;
-typedef NCollection_DataMap<Standard_Integer, MAT2d_SequenceOfConnexion, TColStd_MapIntegerHasher>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion;
-typedef NCollection_DataMap<Standard_Integer, gp_Vec2d, TColStd_MapIntegerHasher>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d;
-typedef NCollection_DataMap<MAT2d_BiInt, Standard_Integer, MAT2d_MapBiIntHasher> MAT2d_DataMapOfBiIntInteger;
-typedef NCollection_DataMap<MAT2d_BiInt, TColStd_SequenceOfInteger, MAT2d_MapBiIntHasher> MAT2d_DataMapOfBiIntSequenceOfInteger;
-typedef NCollection_DataMap<Standard_Integer, Bisector_Bisec, TColStd_MapIntegerHasher> MAT2d_DataMapOfIntegerBisec;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT2d_Connexion>, TColStd_MapIntegerHasher> MAT2d_DataMapOfIntegerConnexion;
-typedef NCollection_DataMap<Standard_Integer, gp_Pnt2d, TColStd_MapIntegerHasher> MAT2d_DataMapOfIntegerPnt2d;
-typedef NCollection_DataMap<Standard_Integer, MAT2d_SequenceOfConnexion, TColStd_MapIntegerHasher> MAT2d_DataMapOfIntegerSequenceOfConnexion;
-typedef NCollection_DataMap<Standard_Integer, gp_Vec2d, TColStd_MapIntegerHasher> MAT2d_DataMapOfIntegerVec2d;
+typedef NCollection_DataMap<MAT2d_BiInt, Standard_Integer>::Iterator MAT2d_DataMapIteratorOfDataMapOfBiIntInteger;
+typedef NCollection_DataMap<MAT2d_BiInt, TColStd_SequenceOfInteger>::Iterator MAT2d_DataMapIteratorOfDataMapOfBiIntSequenceOfInteger;
+typedef NCollection_DataMap<Standard_Integer, Bisector_Bisec>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerBisec;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT2d_Connexion>>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerConnexion;
+typedef NCollection_DataMap<Standard_Integer, gp_Pnt2d>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerPnt2d;
+typedef NCollection_DataMap<Standard_Integer, MAT2d_SequenceOfConnexion>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerSequenceOfConnexion;
+typedef NCollection_DataMap<Standard_Integer, gp_Vec2d>::Iterator MAT2d_DataMapIteratorOfDataMapOfIntegerVec2d;
+typedef NCollection_DataMap<MAT2d_BiInt, Standard_Integer> MAT2d_DataMapOfBiIntInteger;
+typedef NCollection_DataMap<MAT2d_BiInt, TColStd_SequenceOfInteger> MAT2d_DataMapOfBiIntSequenceOfInteger;
+typedef NCollection_DataMap<Standard_Integer, Bisector_Bisec> MAT2d_DataMapOfIntegerBisec;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MAT2d_Connexion>> MAT2d_DataMapOfIntegerConnexion;
+typedef NCollection_DataMap<Standard_Integer, gp_Pnt2d> MAT2d_DataMapOfIntegerPnt2d;
+typedef NCollection_DataMap<Standard_Integer, MAT2d_SequenceOfConnexion> MAT2d_DataMapOfIntegerSequenceOfConnexion;
+typedef NCollection_DataMap<Standard_Integer, gp_Vec2d> MAT2d_DataMapOfIntegerVec2d;
 typedef NCollection_Sequence<opencascade::handle<MAT2d_Connexion>> MAT2d_SequenceOfConnexion;
 typedef NCollection_Sequence<TColGeom2d_SequenceOfCurve> MAT2d_SequenceOfSequenceOfCurve;
 typedef NCollection_Sequence<TColGeom2d_SequenceOfGeometry> MAT2d_SequenceOfSequenceOfGeometry;
@@ -874,58 +873,6 @@ Returns the reverse connexion of <self>. the firstpoint is the secondpoint. the 
 /***********************
 * class MAT2d_CutCurve *
 ***********************/
-/*****************************
-* class MAT2d_MapBiIntHasher *
-*****************************/
-class MAT2d_MapBiIntHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 2d93262f8aa010d2027358817cd87e99 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theKey: MAT2d_BiInt
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given key, in the range [1, theupperbound] @param thekey the key which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const MAT2d_BiInt & theKey, const Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 900a967a8cd8c34f415beccf506796f6 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-Key1: MAT2d_BiInt
-Key2: MAT2d_BiInt
-
-Return
--------
-bool
-
-Description
------------
-No available documentation.
-") IsEqual;
-		static Standard_Boolean IsEqual(const MAT2d_BiInt & Key1, const MAT2d_BiInt & Key2);
-
-};
-
-
-%extend MAT2d_MapBiIntHasher {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /********************
 * class MAT2d_Mat2d *
 ********************/
@@ -1646,6 +1593,9 @@ Trims the geometric bisector by the point of index <apoint> in <thegeompnts>. if
 	}
 };
 
+/**************************
+* class hash<MAT2d_BiInt> *
+**************************/
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
@@ -1663,15 +1613,4 @@ class MAT2d_CutCurve:
 /* hsequence classes */
 /* class aliases */
 %pythoncode {
-}
-/* deprecated methods */
-%pythoncode {
-@deprecated
-def MAT2d_MapBiIntHasher_HashCode(*args):
-	return MAT2d_MapBiIntHasher.HashCode(*args)
-
-@deprecated
-def MAT2d_MapBiIntHasher_IsEqual(*args):
-	return MAT2d_MapBiIntHasher.IsEqual(*args)
-
 }

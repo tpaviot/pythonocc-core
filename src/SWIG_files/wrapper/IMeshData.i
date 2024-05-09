@@ -135,13 +135,13 @@ typedef IMeshData::NCollection_Shared<NCollection_Array1<BRepMesh_Vertex>> IMesh
 typedef IMeshData::NCollection_Shared<NCollection_EBTree<Standard_Integer, Bnd_Box2d>> IMeshData::BndBox2dTree;
 typedef IMeshData::NCollection_UBTreeFiller<Standard_Integer, Bnd_Box2d> IMeshData::BndBox2dTreeFiller;
 typedef IMeshData::NCollection_CellFilter<BRepMesh_CircleInspector> IMeshData::CircleCellFilter;
-typedef IMeshData::NCollection_Shared<NCollection_DataMap<IFacePtr, ListOfInteger, WeakEqual<IMeshData_Face>>> IMeshData::DMapOfIFacePtrsListOfInteger;
-typedef NCollection_Shared<NCollection_DataMap<IFacePtr, opencascade::handle<MapOfIEdgePtr>, WeakEqual<IMeshData_Face>>> IMeshData::DMapOfIFacePtrsMapOfIEdgePtrs;
+typedef IMeshData::NCollection_Shared<NCollection_DataMap<IFacePtr, ListOfInteger>> IMeshData::DMapOfIFacePtrsListOfInteger;
+typedef NCollection_Shared<NCollection_DataMap<IFacePtr, opencascade::handle<MapOfIEdgePtr>>> IMeshData::DMapOfIFacePtrsMapOfIEdgePtrs;
 typedef IMeshData::NCollection_Shared<NCollection_DataMap<Standard_Integer, ListOfInteger>> IMeshData::DMapOfIntegerListOfInteger;
 typedef IMeshData::NCollection_Shared<NCollection_DataMap<TopoDS_Shape, Standard_Integer, TopTools_ShapeMapHasher>> IMeshData::DMapOfShapeInteger;
 typedef opencascade::handle<ICurveArrayAdaptor> IMeshData::ICurveArrayAdaptorHandle;
 typedef opencascade::handle<IMeshData_Curve> IMeshData::ICurveHandle;
-typedef IMeshData::NCollection_Shared<NCollection_IndexedDataMap<IFacePtr, ListOfIPCurves, WeakEqual<IMeshData_Face>>> IMeshData::IDMapOfIFacePtrsListOfIPCurves;
+typedef IMeshData::NCollection_Shared<NCollection_IndexedDataMap<IFacePtr, ListOfIPCurves>> IMeshData::IDMapOfIFacePtrsListOfIPCurves;
 typedef IMeshData::NCollection_Shared<NCollection_IndexedDataMap<BRepMesh_Edge, BRepMesh_PairOfIndex>> IMeshData::IDMapOfLink;
 typedef opencascade::handle<IMeshData_Edge> IMeshData::IEdgeHandle;
 typedef IMeshData::IMeshData_Edge * IMeshData::IEdgePtr;
@@ -154,16 +154,16 @@ typedef IMeshData::TColStd_MapIteratorOfPackedMapOfInteger IMeshData::IteratorOf
 typedef IMeshData::NCollection_Shared<NCollection_List<IPCurveHandle>> IMeshData::ListOfIPCurves;
 typedef IMeshData::NCollection_Shared<NCollection_List<Standard_Integer>> IMeshData::ListOfInteger;
 typedef IMeshData::NCollection_Shared<NCollection_List<gp_Pnt2d>> IMeshData::ListOfPnt2d;
-typedef IMeshData::NCollection_Shared<NCollection_Map<IEdgePtr, WeakEqual<IMeshData_Edge>>> IMeshData::MapOfIEdgePtr;
-typedef IMeshData::NCollection_Shared<NCollection_Map<IFacePtr, WeakEqual<IMeshData_Face>>> IMeshData::MapOfIFacePtr;
+typedef IMeshData::NCollection_Shared<NCollection_Map<IEdgePtr>> IMeshData::MapOfIEdgePtr;
+typedef IMeshData::NCollection_Shared<NCollection_Map<IFacePtr>> IMeshData::MapOfIFacePtr;
 typedef IMeshData::NCollection_Shared<TColStd_PackedMapOfInteger> IMeshData::MapOfInteger;
-typedef IMeshData::NCollection_Shared<NCollection_DataMap<Standard_Integer, Standard_Integer>> IMeshData::MapOfIntegerInteger;
+typedef IMeshData::NCollection_Shared<NCollection_DataMap<Standard_Integer, Standard_Boolean>> IMeshData::MapOfIntegerInteger;
 typedef IMeshData::NCollection_Shared<NCollection_Map<BRepMesh_OrientedEdge>> IMeshData::MapOfOrientedEdges;
 typedef IMeshData::NCollection_Shared<NCollection_Map<Standard_Real>> IMeshData::MapOfReal;
-typedef std::deque<Standard_Integer, NCollection_StdAllocator<Standard_Integer>> IMeshData::Model::SequenceOfInteger;
-typedef std::deque<gp_Pnt, NCollection_StdAllocator<gp_Pnt>> IMeshData::Model::SequenceOfPnt;
-typedef std::deque<gp_Pnt2d, NCollection_StdAllocator<gp_Pnt2d>> IMeshData::Model::SequenceOfPnt2d;
-typedef std::deque<Standard_Real, NCollection_StdAllocator<Standard_Real>> IMeshData::Model::SequenceOfReal;
+typedef std::deque<Standard_Integer, NCollection_OccAllocator<Standard_Integer>> IMeshData::Model::SequenceOfInteger;
+typedef std::deque<gp_Pnt, NCollection_OccAllocator<gp_Pnt>> IMeshData::Model::SequenceOfPnt;
+typedef std::deque<gp_Pnt2d, NCollection_OccAllocator<gp_Pnt2d>> IMeshData::Model::SequenceOfPnt2d;
+typedef std::deque<Standard_Real, NCollection_OccAllocator<Standard_Real>> IMeshData::Model::SequenceOfReal;
 typedef IMeshData::NCollection_Shared<NCollection_Sequence<Bnd_B2d>> IMeshData::SequenceOfBndB2d;
 typedef IMeshData::NCollection_Shared<NCollection_Sequence<Standard_Integer>> IMeshData::SequenceOfInteger;
 typedef IMeshData::NCollection_Shared<NCollection_Sequence<Standard_Real>> IMeshData::SequenceOfReal;
@@ -395,9 +395,6 @@ Adds status to status flags of a face.
 	}
 };
 
-/******************
-* class WeakEqual *
-******************/
 /************************
 * class IMeshData_Curve *
 ************************/

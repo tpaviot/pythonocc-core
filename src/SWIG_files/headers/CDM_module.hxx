@@ -23,7 +23,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<CDM_CanCloseStatus.hxx>
 #include<CDM_DataMapIteratorOfMetaDataLookUpTable.hxx>
 #include<CDM_Document.hxx>
-#include<CDM_DocumentHasher.hxx>
 #include<CDM_DocumentPointer.hxx>
 #include<CDM_ListIteratorOfListOfDocument.hxx>
 #include<CDM_ListIteratorOfListOfReferences.hxx>

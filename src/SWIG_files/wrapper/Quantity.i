@@ -2693,76 +2693,6 @@ def __eq__(self, right):
 	}
 };
 
-/*****************************
-* class Quantity_ColorHasher *
-*****************************/
-class Quantity_ColorHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 8fd37c076f802d432dcef25930612415 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theColor: Quantity_Color
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Returns hash code for the given rgb color, in the range [1, theupperbound] @param thecolor the rgb color object which hash code is to be computed @param theupperbound the upper bound of the range a computing range must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const Quantity_Color & theColor, const Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: a0becaf8231438906c4ce4901fd8290b ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-theColor1: Quantity_Color
-theColor2: Quantity_Color
-
-Return
--------
-bool
-
-Description
------------
-Returns true if two colors are equal.
-") IsEqual;
-		static Standard_Boolean IsEqual(const Quantity_Color & theColor1, const Quantity_Color & theColor2);
-
-};
-
-
-
-%extend Quantity_ColorHasher {
-%pythoncode {
-    def __getstate__(self):
-        return self.DumpJson()
-    }
-};
-
-%extend Quantity_ColorHasher {
-%pythoncode {
-    def __setstate__(self, state):
-        inst = Quantity_ColorHasher()
-        if inst.InitFromJson(state):
-            self.this = inst.this
-        else:
-            raise IOError('Failed to set state of Quantity_ColorHasher')
-    }
-};
-%extend Quantity_ColorHasher {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /***************************
 * class Quantity_ColorRGBA *
 ***************************/
@@ -3175,76 +3105,6 @@ def __eq__(self, right):
     }
 };
 %extend Quantity_ColorRGBA {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*********************************
-* class Quantity_ColorRGBAHasher *
-*********************************/
-class Quantity_ColorRGBAHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 8fc030a9b42b32361b4374d824d85f29 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theColor: Quantity_ColorRGBA
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Returns hash code for the given rgba color, in the range [1, theupperbound] @param thecolor the rgba color object which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const Quantity_ColorRGBA & theColor, const Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 19e2fc14fd433f961e867bf190723e87 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-theColor1: Quantity_ColorRGBA
-theColor2: Quantity_ColorRGBA
-
-Return
--------
-bool
-
-Description
------------
-Returns true if two colors are equal.
-") IsEqual;
-		static Standard_Boolean IsEqual(const Quantity_ColorRGBA & theColor1, const Quantity_ColorRGBA & theColor2);
-
-};
-
-
-
-%extend Quantity_ColorRGBAHasher {
-%pythoncode {
-    def __getstate__(self):
-        return self.DumpJson()
-    }
-};
-
-%extend Quantity_ColorRGBAHasher {
-%pythoncode {
-    def __setstate__(self, state):
-        inst = Quantity_ColorRGBAHasher()
-        if inst.InitFromJson(state):
-            self.this = inst.this
-        else:
-            raise IOError('Failed to set state of Quantity_ColorRGBAHasher')
-    }
-};
-%extend Quantity_ColorRGBAHasher {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -4012,6 +3872,12 @@ def __eq__(self, right):
 	}
 };
 
+/*****************************
+* class hash<Quantity_Color> *
+*****************************/
+/*********************************
+* class hash<Quantity_ColorRGBA> *
+*********************************/
 /* harray1 classes */
 
 class Quantity_HArray1OfColor : public Quantity_Array1OfColor, public Standard_Transient {
@@ -4080,14 +3946,6 @@ def Quantity_Color_StringName(*args):
 	return Quantity_Color.StringName(*args)
 
 @deprecated
-def Quantity_ColorHasher_HashCode(*args):
-	return Quantity_ColorHasher.HashCode(*args)
-
-@deprecated
-def Quantity_ColorHasher_IsEqual(*args):
-	return Quantity_ColorHasher.IsEqual(*args)
-
-@deprecated
 def Quantity_ColorRGBA_ColorFromHex(*args):
 	return Quantity_ColorRGBA.ColorFromHex(*args)
 
@@ -4098,14 +3956,6 @@ def Quantity_ColorRGBA_ColorFromName(*args):
 @deprecated
 def Quantity_ColorRGBA_ColorToHex(*args):
 	return Quantity_ColorRGBA.ColorToHex(*args)
-
-@deprecated
-def Quantity_ColorRGBAHasher_HashCode(*args):
-	return Quantity_ColorRGBAHasher.HashCode(*args)
-
-@deprecated
-def Quantity_ColorRGBAHasher_IsEqual(*args):
-	return Quantity_ColorRGBAHasher.IsEqual(*args)
 
 @deprecated
 def Quantity_Date_IsLeap(*args):

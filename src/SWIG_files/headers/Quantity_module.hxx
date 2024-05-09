@@ -21,9 +21,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 #include<Quantity_Array1OfColor.hxx>
 #include<Quantity_Color.hxx>
-#include<Quantity_ColorHasher.hxx>
 #include<Quantity_ColorRGBA.hxx>
-#include<Quantity_ColorRGBAHasher.hxx>
 #include<Quantity_Date.hxx>
 #include<Quantity_DateDefinitionError.hxx>
 #include<Quantity_HArray1OfColor.hxx>

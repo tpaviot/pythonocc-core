@@ -197,6 +197,9 @@ typedef NCollection_Vec3<Standard_ShortReal> gp_Vec3f;
 /**********************************
 * class NCollection_Lerp<gp_Trsf> *
 **********************************/
+/*************************
+* class equal_to<gp_Pnt> *
+*************************/
 /***********
 * class gp *
 ***********/
@@ -25145,6 +25148,9 @@ def __itruediv__(self, right):
 	}
 };
 
+/*********************
+* class hash<gp_Pnt> *
+*********************/
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

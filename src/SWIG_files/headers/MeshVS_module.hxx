@@ -76,9 +76,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<MeshVS_TextPrsBuilder.hxx>
 #include<MeshVS_Tool.hxx>
 #include<MeshVS_TwoColors.hxx>
-#include<MeshVS_TwoColorsHasher.hxx>
 #include<MeshVS_TwoNodes.hxx>
-#include<MeshVS_TwoNodesHasher.hxx>
 #include<MeshVS_VectorPrsBuilder.hxx>
 
 #endif // MESHVS_HXX

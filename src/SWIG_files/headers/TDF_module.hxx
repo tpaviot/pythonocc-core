@@ -69,7 +69,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<TDF_LabelIntegerMap.hxx>
 #include<TDF_LabelList.hxx>
 #include<TDF_LabelMap.hxx>
-#include<TDF_LabelMapHasher.hxx>
 #include<TDF_LabelNode.hxx>
 #include<TDF_LabelNodePtr.hxx>
 #include<TDF_LabelSequence.hxx>

@@ -126,9 +126,10 @@ enum AIS_DisplayMode {
 
 enum AIS_DragAction {
 	AIS_DragAction_Start = 0,
-	AIS_DragAction_Update = 1,
-	AIS_DragAction_Stop = 2,
-	AIS_DragAction_Abort = 3,
+	AIS_DragAction_Confirmed = 1,
+	AIS_DragAction_Update = 2,
+	AIS_DragAction_Stop = 3,
+	AIS_DragAction_Abort = 4,
 };
 
 enum AIS_KindOfInteractive {
@@ -304,10 +305,12 @@ AIS_Shaded = AIS_DisplayMode.AIS_Shaded
 
 class AIS_DragAction(IntEnum):
 	AIS_DragAction_Start = 0
-	AIS_DragAction_Update = 1
-	AIS_DragAction_Stop = 2
-	AIS_DragAction_Abort = 3
+	AIS_DragAction_Confirmed = 1
+	AIS_DragAction_Update = 2
+	AIS_DragAction_Stop = 3
+	AIS_DragAction_Abort = 4
 AIS_DragAction_Start = AIS_DragAction.AIS_DragAction_Start
+AIS_DragAction_Confirmed = AIS_DragAction.AIS_DragAction_Confirmed
 AIS_DragAction_Update = AIS_DragAction.AIS_DragAction_Update
 AIS_DragAction_Stop = AIS_DragAction.AIS_DragAction_Stop
 AIS_DragAction_Abort = AIS_DragAction.AIS_DragAction_Abort
@@ -598,7 +601,7 @@ AIS_WalkTranslation_Up = AIS_WalkTranslation.AIS_WalkTranslation_Up
 /* end handles declaration */
 
 /* templates */
-%template(AIS_DataMapOfIOStatus) NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>,opencascade::handle<AIS_GlobalStatus>,TColStd_MapTransientHasher>;
+%template(AIS_DataMapOfIOStatus) NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>,opencascade::handle<AIS_GlobalStatus>>;
 %template(AIS_DataMapOfShapeDrawer) NCollection_DataMap<TopoDS_Shape,opencascade::handle<AIS_ColoredDrawer>,TopTools_ShapeMapHasher>;
 %template(AIS_ListIteratorOfListOfInteractive) NCollection_TListIterator<opencascade::handle<AIS_InteractiveObject>>;
 %template(AIS_ListOfInteractive) NCollection_List<opencascade::handle<AIS_InteractiveObject>>;
@@ -658,8 +661,8 @@ AIS_WalkTranslation_Up = AIS_WalkTranslation.AIS_WalkTranslation_Up
 
 /* typedefs */
 typedef Media_Timer AIS_AnimationTimer;
-typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator AIS_DataMapIteratorOfDataMapOfIOStatus;
-typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher> AIS_DataMapOfIOStatus;
+typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>>::Iterator AIS_DataMapIteratorOfDataMapOfIOStatus;
+typedef NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>> AIS_DataMapOfIOStatus;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<AIS_ColoredDrawer>, TopTools_ShapeMapHasher> AIS_DataMapOfShapeDrawer;
 typedef PrsMgr_DisplayStatus AIS_DisplayStatus;
 typedef NCollection_List<opencascade::handle<AIS_InteractiveObject>>::Iterator AIS_ListIteratorOfListOfInteractive;
@@ -17338,7 +17341,6 @@ Removes any non-default settings for size of this trihedron object. if the objec
 *********************/
 class AIS_ViewCube : public AIS_InteractiveObject {
 	public:
-		class IntegerHasher {};
 		/****************** AIS_ViewCube ******************/
 		/**** md5 signature: 582207f6972f9893779647b1bc5ed072 ****/
 		%feature("compactdefaultargs") AIS_ViewCube;

@@ -65,12 +65,12 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* templates */
-%template(Plugin_MapOfFunctions) NCollection_DataMap<TCollection_AsciiString,OSD_Function,TCollection_AsciiString>;
+%template(Plugin_MapOfFunctions) NCollection_DataMap<TCollection_AsciiString,OSD_Function>;
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_AsciiString, OSD_Function, TCollection_AsciiString>::Iterator Plugin_DataMapIteratorOfMapOfFunctions;
-typedef NCollection_DataMap<TCollection_AsciiString, OSD_Function, TCollection_AsciiString> Plugin_MapOfFunctions;
+typedef NCollection_DataMap<TCollection_AsciiString, OSD_Function>::Iterator Plugin_DataMapIteratorOfMapOfFunctions;
+typedef NCollection_DataMap<TCollection_AsciiString, OSD_Function> Plugin_MapOfFunctions;
 /* end typedefs declaration */
 
 /***************

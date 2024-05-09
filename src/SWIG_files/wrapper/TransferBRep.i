@@ -82,7 +82,6 @@ from OCC.Core.Exception import *
 
 /* handles */
 %wrap_handle(TransferBRep_BinderOfShape)
-%wrap_handle(TransferBRep_OrientedShapeMapper)
 %wrap_handle(TransferBRep_ShapeListBinder)
 %wrap_handle(TransferBRep_ShapeMapper)
 %wrap_handle(TransferBRep_TransferResultInfo)
@@ -564,97 +563,6 @@ Defines the result.
 %make_alias(TransferBRep_BinderOfShape)
 
 %extend TransferBRep_BinderOfShape {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************************
-* class TransferBRep_OrientedShapeMapper *
-*****************************************/
-class TransferBRep_OrientedShapeMapper : public Transfer_Finder {
-	public:
-		/****************** TransferBRep_OrientedShapeMapper ******************/
-		/**** md5 signature: 0b4e06a9db31fff4671aff2e303ee765 ****/
-		%feature("compactdefaultargs") TransferBRep_OrientedShapeMapper;
-		%feature("autodoc", "
-Parameters
-----------
-akey: TopoDS_Shape
-
-Return
--------
-None
-
-Description
------------
-Creates a mapper with a value. this value can then not be changed. it is used by the hasher to compute the hashcode, which will then be stored for an immediate reading.
-") TransferBRep_OrientedShapeMapper;
-		 TransferBRep_OrientedShapeMapper(const TopoDS_Shape & akey);
-
-		/****************** Equates ******************/
-		/**** md5 signature: 2bde7773554342cacb5dfc4ee8d4c0f3 ****/
-		%feature("compactdefaultargs") Equates;
-		%feature("autodoc", "
-Parameters
-----------
-other: Transfer_Finder
-
-Return
--------
-bool
-
-Description
------------
-Specific testof equality: defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
-") Equates;
-		Standard_Boolean Equates(const opencascade::handle<Transfer_Finder> & other);
-
-		/****************** Value ******************/
-		/**** md5 signature: 9e28ce63f808ff9cca4234cb4dd1cbd0 ****/
-		%feature("compactdefaultargs") Value;
-		%feature("autodoc", "Return
--------
-TopoDS_Shape
-
-Description
------------
-Returns the contained value.
-") Value;
-		const TopoDS_Shape Value();
-
-		/****************** ValueType ******************/
-		/**** md5 signature: 40aa6e907b5cbe34817c19e20e6dde6e ****/
-		%feature("compactdefaultargs") ValueType;
-		%feature("autodoc", "Return
--------
-opencascade::handle<Standard_Type>
-
-Description
------------
-Returns the type of the value. by default, returns the dynamictype of <self>, but can be redefined.
-") ValueType;
-		virtual opencascade::handle<Standard_Type> ValueType();
-
-		/****************** ValueTypeName ******************/
-		/**** md5 signature: d49d824d6a98cbb182d37bee73d4be07 ****/
-		%feature("compactdefaultargs") ValueTypeName;
-		%feature("autodoc", "Return
--------
-str
-
-Description
------------
-Returns the name of the type of the value. default is name of valuetype, unless it is for a non-handled object.
-") ValueTypeName;
-		virtual Standard_CString ValueTypeName();
-
-};
-
-
-%make_alias(TransferBRep_OrientedShapeMapper)
-
-%extend TransferBRep_OrientedShapeMapper {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}

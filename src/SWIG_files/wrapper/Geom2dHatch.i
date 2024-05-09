@@ -91,9 +91,9 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(Geom2dHatch_Hatchings) NCollection_DataMap<Standard_Integer,Geom2dHatch_Hatching,TColStd_MapIntegerHasher>;
+%template(Geom2dHatch_Hatchings) NCollection_DataMap<Standard_Integer,Geom2dHatch_Hatching>;
 
-%extend NCollection_DataMap<Standard_Integer,Geom2dHatch_Hatching,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,Geom2dHatch_Hatching> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (Geom2dHatch_Hatchings::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -104,9 +104,9 @@ from OCC.Core.Exception import *
     return l;
     }
 };
-%template(Geom2dHatch_MapOfElements) NCollection_DataMap<Standard_Integer,Geom2dHatch_Element,TColStd_MapIntegerHasher>;
+%template(Geom2dHatch_MapOfElements) NCollection_DataMap<Standard_Integer,Geom2dHatch_Element>;
 
-%extend NCollection_DataMap<Standard_Integer,Geom2dHatch_Element,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,Geom2dHatch_Element> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (Geom2dHatch_MapOfElements::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -120,10 +120,10 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Hatching, TColStd_MapIntegerHasher>::Iterator Geom2dHatch_DataMapIteratorOfHatchings;
-typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Element, TColStd_MapIntegerHasher>::Iterator Geom2dHatch_DataMapIteratorOfMapOfElements;
-typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Hatching, TColStd_MapIntegerHasher> Geom2dHatch_Hatchings;
-typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Element, TColStd_MapIntegerHasher> Geom2dHatch_MapOfElements;
+typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Hatching>::Iterator Geom2dHatch_DataMapIteratorOfHatchings;
+typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Element>::Iterator Geom2dHatch_DataMapIteratorOfMapOfElements;
+typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Hatching> Geom2dHatch_Hatchings;
+typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Element> Geom2dHatch_MapOfElements;
 /* end typedefs declaration */
 
 /*******************************

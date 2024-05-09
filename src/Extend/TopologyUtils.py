@@ -61,8 +61,6 @@ from OCC.Core.GCPnts import (
 )
 from OCC.Core.BRepAdaptor import BRepAdaptor_Curve
 
-MAX_32_BIT_INT = 2**31 - 1
-
 
 def _number_of_topo(iterable: Iterable) -> int:
     return sum(1 for _ in iterable)
@@ -219,7 +217,7 @@ class TopologyExplorer:
             filter_orientation_seq: List = []
             filter_orientation_hash_codes = {}
             for i in seq:
-                i_hash_code = i.HashCode(MAX_32_BIT_INT)
+                i_hash_code = hash(i)
                 if i_hash_code not in filter_orientation_hash_codes:
                     filter_orientation_seq.append(i)
                     filter_orientation_hash_codes[i_hash_code] = [
@@ -339,7 +337,7 @@ class TopologyExplorer:
             topo_entity = self.topology_factory[topology_type_2](
                 topology_iterator.Value()
             )
-            topo_entity_hash_code = topo_entity.HashCode(MAX_32_BIT_INT)
+            topo_entity_hash_code = hash(topo_entity)
             # return the entity if not in set
             # to assure we're not returning entities several times
             if topo_entity not in topo_set:

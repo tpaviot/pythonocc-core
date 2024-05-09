@@ -214,9 +214,9 @@ Storage_ReadSolve = Storage_SolveMode.Storage_ReadSolve
     __next__ = next
     }
 };
-%template(Storage_MapOfCallBack) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_TypedCallBack>,TCollection_AsciiString>;
-%template(Storage_MapOfPers) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_Root>,TCollection_AsciiString>;
-%template(Storage_PType) NCollection_IndexedDataMap<TCollection_AsciiString,Standard_Integer,TCollection_AsciiString>;
+%template(Storage_MapOfCallBack) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_TypedCallBack>>;
+%template(Storage_MapOfPers) NCollection_DataMap<TCollection_AsciiString,opencascade::handle<Storage_Root>>;
+%template(Storage_PType) NCollection_IndexedDataMap<TCollection_AsciiString,Standard_Integer>;
 %template(Storage_SeqOfRoot) NCollection_Sequence<opencascade::handle<Storage_Root>>;
 
 %extend NCollection_Sequence<opencascade::handle<Storage_Root>> {
@@ -230,11 +230,11 @@ Storage_ReadSolve = Storage_SolveMode.Storage_ReadSolve
 /* typedefs */
 typedef NCollection_Array1<opencascade::handle<Storage_CallBack>> Storage_ArrayOfCallBack;
 typedef NCollection_Array1<opencascade::handle<Storage_Schema>> Storage_ArrayOfSchema;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_TypedCallBack>, TCollection_AsciiString>::Iterator Storage_DataMapIteratorOfMapOfCallBack;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_Root>, TCollection_AsciiString>::Iterator Storage_DataMapIteratorOfMapOfPers;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_TypedCallBack>, TCollection_AsciiString> Storage_MapOfCallBack;
-typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_Root>, TCollection_AsciiString> Storage_MapOfPers;
-typedef NCollection_IndexedDataMap<TCollection_AsciiString, Standard_Integer, TCollection_AsciiString> Storage_PType;
+typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_TypedCallBack>>::Iterator Storage_DataMapIteratorOfMapOfCallBack;
+typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_Root>>::Iterator Storage_DataMapIteratorOfMapOfPers;
+typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_TypedCallBack>> Storage_MapOfCallBack;
+typedef NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Storage_Root>> Storage_MapOfPers;
+typedef NCollection_IndexedDataMap<TCollection_AsciiString, Standard_Integer> Storage_PType;
 typedef long Storage_Position;
 typedef NCollection_Sequence<opencascade::handle<Storage_Root>> Storage_SeqOfRoot;
 /* end typedefs declaration */

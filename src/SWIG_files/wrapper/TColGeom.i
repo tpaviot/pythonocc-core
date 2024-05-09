@@ -218,7 +218,6 @@ from OCC.Core.Exception import *
     __next__ = next
     }
 };
-%template(TColGeom_Array2OfBezierSurface) NCollection_Array2<opencascade::handle<Geom_BezierSurface>>;
 %template(TColGeom_Array2OfSurface) NCollection_Array2<opencascade::handle<Geom_Surface>>;
 %template(TColGeom_SequenceOfBoundedCurve) NCollection_Sequence<opencascade::handle<Geom_BoundedCurve>>;
 

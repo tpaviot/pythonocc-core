@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : aeba585
+git revision : 0b07ce7
 
-operating system : Linux 64bit 6.5.0-18-generic
+operating system : Linux 64bit 6.5.0-28-generic
 
-occt version targeted : 7.7.2
+occt version targeted : 7.8.1
 
-date : 2024-02-22 14:15:04.324859
+date : 2024-05-09 18:04:40.785979
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -23,8 +23,8 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: BOPAlgo_SectionAttribute
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPAlgo_Tools
-[INFO ]      explicitly excluded method BOPAlgo_Tools::733d7ed0a9fca43f216a0bb3b6632d28
-[INFO ]      explicitly excluded method BOPAlgo_Tools::5772aaab1d085b3252bd793794406e8d
+[INFO ]      explicitly excluded method BOPAlgo_Tools::27eeac060ed6c134c914fd1e4ad85035
+[INFO ]      explicitly excluded method BOPAlgo_Tools::5ff475d954896966f7f32df307c3f112
 [INFO ]      explicitly excluded method BOPAlgo_Tools::2289f9d00797235618dbe00d98b36117
 [INFO ]  Class: BOPAlgo_WireEdgeSet
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -83,7 +83,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: BOPAlgo_Splitter
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module BOPDS
-[WARNI]      [TypeHint] Skipping unknown type int,BOPDS_ListOfPaveBlock,TColStd_MapIntegerHasher, int,BOPDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,BOPDS_ListOfPaveBlock, int,BOPDS not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -108,12 +108,10 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: BOPDS_Pair
 [INFO ]      operator< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: BOPDS_PairMapHasher
 [INFO ]  Class: BOPDS_Pave
 [INFO ]      operator< skipped because invalid name
 [INFO ]  Class: BOPDS_PaveBlock
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: BOPDS_PaveMapHasher
 [INFO ]  Class: BOPDS_Point
 [INFO ]  Class: BOPDS_ShapeInfo
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -150,8 +148,8 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: BOPTools_CoupleOfShape
 [INFO ]  Class: BOPTools_Set
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]      operand = cannot be wrapped
-[INFO ]  Class: BOPTools_SetMapHasher
 [INFO ]  ## Processing module BRepAlgoAPI
 [INFO ]  Class: BRepAlgoAPI_Check
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -185,7 +183,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: IntTools_Curve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntTools_CurveRangeLocalizeData
-[INFO ]  Class: IntTools_CurveRangeSampleMapHasher
 [INFO ]  Class: IntTools_EdgeEdge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntTools_EdgeFace
@@ -209,7 +206,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: IntTools_SurfaceRangeSample
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      operand = cannot be wrapped
-[INFO ]  Class: IntTools_SurfaceRangeSampleMapHasher
 [INFO ]  Class: IntTools_Tools
 [INFO ]  Class: IntTools_TopolTool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -312,7 +308,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: BinTools_ShapeSet
 [WARNI]      [TypeHint] Skipping type std::istream, should contain _
 [INFO ]  Class: BinTools_ShapeWriter
-[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [INFO ]      operand << cannot be wrapped
 [INFO ]      operand << cannot be wrapped
 [INFO ]  ## Processing module TopExp
@@ -326,13 +321,14 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Found HARRAY1 definitionTopTools_HArray1OfListOfShape: TopTools_Array1OfListOfShape
 [INFO ]  Enum: 
 [INFO ]  Enum: TopTools_FormatVersion
-[WARNI]      [TypeHint] Skipping unknown type int,TopTools_ListOfShape,TColStd_MapIntegerHasher, int,TopTools not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,TopoDS_Shape,TColStd_MapIntegerHasher, int,TopoDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopTools_ListOfShape, int,TopTools not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopoDS_Shape, int,TopoDS not in module list
 [INFO ]  Class: TopTools
 [INFO ]  Class: TopTools_LocationSet
 [INFO ]  Class: TopTools_MutexForShapeProvider
-[INFO ]  Class: TopTools_OrientedShapeMapHasher
 [INFO ]  Class: TopTools_ShapeMapHasher
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: TopTools_ShapeSet
 [INFO ]  ## Processing module TopoDS
 [INFO ]  Class: TopoDS
@@ -404,8 +400,8 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [INFO ]  Class: BinLDrivers_DocumentStorageDriver
 [INFO ]  ## Processing module BinMDF
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<BinMDF_ADriver>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<BinMDF_ADriver>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<BinMDF_ADriver>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<BinMDF_ADriver>>::Iterator
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: BinMDF
@@ -680,16 +676,16 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Enum: TopOpeBRepDS_CheckStatus
 [INFO ]  Enum: TopOpeBRepDS_Config
 [INFO ]  Enum: TopOpeBRepDS_Kind
-[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_CheckStatus,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_ListOfInterference,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_CheckStatus, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_ListOfInterference, int,TopOpeBRepDS not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type int,TopoDS_Shape,TColStd_MapIntegerHasher,TopTools_ShapeMapHasher, int,TopoDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopoDS_Shape,NCollection_DefaultHasher, int,TopoDS not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_CurveData,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_ShapeData,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_PointData,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_SurfaceData,TColStd_MapIntegerHasher, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_CurveData, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_ShapeData, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_PointData, int,TopOpeBRepDS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TopOpeBRepDS_SurfaceData, int,TopOpeBRepDS not in module list
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [INFO ]  Class: TopOpeBRepDS
 [INFO ]  Class: TopOpeBRepDS_Association
@@ -860,7 +856,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Enum: TNaming_NameType
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: TNaming
 [INFO ]  Class: TNaming_Builder
 [INFO ]  Class: TNaming_CopyShape
@@ -910,7 +905,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: CDF_FWOSDriver
 [INFO ]  ## Processing module CDM
 [INFO ]  Enum: CDM_CanCloseStatus
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -1429,7 +1423,6 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  ## Processing module TopAbs
 [INFO ]  Enum: TopAbs_Orientation
 [INFO ]  Enum: TopAbs_ShapeEnum
@@ -1657,8 +1650,8 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: Geom2dGcc_QCurve
 [INFO ]  Class: Geom2dGcc_QualifiedCurve
 [INFO ]  ## Processing module Geom2dHatch
-[WARNI]      [TypeHint] Skipping unknown type int,Geom2dHatch_Hatching,TColStd_MapIntegerHasher, int,Geom2dHatch not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,Geom2dHatch_Element,TColStd_MapIntegerHasher, int,Geom2dHatch not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Geom2dHatch_Hatching, int,Geom2dHatch not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Geom2dHatch_Element, int,Geom2dHatch not in module list
 [INFO ]  Class: Geom2dHatch_Classifier
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dHatch_Element
@@ -1992,6 +1985,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: IntPatch_PrmPrmIntersection_T3Bits
 [INFO ]  Class: IntPatch_RstInt
 [INFO ]  Class: IntPatch_SpecialPoints
+[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
 [INFO ]  Class: IntPatch_TheIWLineOfTheIWalking
 [INFO ]  Class: IntPatch_TheIWalking
 [INFO ]  Class: IntPatch_ThePathPointOfTheSOnBounds
@@ -2024,7 +2018,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  ## Processing module IntPolyh
 [INFO ]  Class: IntPolyh_Couple
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: IntPolyh_CoupleMapHasher
 [INFO ]  Class: IntPolyh_Edge
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntPolyh_Intersection
@@ -2504,6 +2497,9 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: Extrema_FuncExtSS
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Extrema_FuncPSDist
+[INFO ]      explicitly excluded method Extrema_FuncPSDist::3c2c6e3dc1adb80c90a5b990a7bd765e
+[INFO ]      explicitly excluded method Extrema_FuncPSDist::f0f16d7b5e9269bb29d01310f0af0e74
+[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
 [INFO ]  Class: Extrema_FuncPSNorm
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Extrema_GenExtCS
@@ -2563,20 +2559,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  ## Processing module FEmTool
 [INFO ]  Found HARRAY2 definitionFEmTool_HAssemblyTable: FEmTool_AssemblyTable
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[INFO ]  Class: FEmTool_Assembly
-[INFO ]  Class: FEmTool_Curve
-[INFO ]  Class: FEmTool_ElementaryCriterion
-[INFO ]      Class FEmTool_ElementaryCriterion is abstract, using %nodefaultctor.
-[INFO ]      Constructor skipped for abstract class FEmTool_ElementaryCriterion
-[INFO ]  Class: FEmTool_ElementsOfRefMatrix
-[INFO ]  Class: FEmTool_SparseMatrix
-[INFO ]      Class FEmTool_SparseMatrix is abstract, using %nodefaultctor.
-[INFO ]  Class: FEmTool_LinearFlexion
-[INFO ]  Class: FEmTool_LinearJerk
-[INFO ]  Class: FEmTool_LinearTension
-[INFO ]  Class: FEmTool_ProfileMatrix
-[INFO ]      Creating Get and Set methods for method ChangeValue
 [INFO ]  ## Processing module GC
 [INFO ]  Class: GC_MakeMirror
 [INFO ]      handle<Geom_Transformation>& skipped because invalid name
@@ -3243,19 +3225,23 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skipping unknown type IGESGeom_TrimmedSurface, IGESGeom not in module list
 [INFO ]  Processing toolkit TKIVtk ===
 [INFO ]  ## Processing module IVtk
+[WARNI]  No file for module IVtk. Please check that the module name is part of occt.
 [INFO ]  ## Processing module IVtkOCC
+[WARNI]  No file for module IVtkOCC. Please check that the module name is part of occt.
 [INFO ]  ## Processing module IVtkTools
+[WARNI]  No file for module IVtkTools. Please check that the module name is part of occt.
 [INFO ]  ## Processing module IVtkVTK
+[WARNI]  No file for module IVtkVTK. Please check that the module name is part of occt.
 [INFO ]  Processing toolkit TKLCAF ===
 [INFO ]  ## Processing module AppStdL
 [INFO ]  Class: AppStdL_Application
 [INFO ]  ## Processing module TDF
 [INFO ]  Found HARRAY1 definitionTDF_HAttributeArray1: TDF_AttributeArray1
 [INFO ]  Enum: 
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher>::Iterator
-[WARNI]  This template type cannot be handled: NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>, TColStd_MapTransientHasher, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>>
+[WARNI]  This template type cannot be handled: NCollection_DoubleMap<opencascade::handle<TDF_Attribute>, opencascade::handle<TDF_Attribute>>::Iterator
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -3293,7 +3279,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: TDF_IDFilter
 [INFO ]  Class: TDF_Label
 [INFO ]      operator<< skipped because invalid name
-[INFO ]  Class: TDF_LabelMapHasher
 [INFO ]  Class: TDF_RelocationTable
 [INFO ]  Class: TDF_Tool
 [INFO ]  Class: TDF_Transaction
@@ -3389,7 +3374,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Found HARRAY1 definitionTFunction_HArray1OfDataMapOfGUIDDriver: TFunction_Array1OfDataMapOfGUIDDriver
 [INFO ]  Enum: TFunction_ExecutionStatus
 [WARNI]      [TypeHint] Skip type Standard_GUID,opencascade::handle, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type int,TDF_Label,TColStd_MapIntegerHasher,TDF_LabelMapHasher, int,TDF not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TDF_Label, int,TDF not in module list
 [INFO ]  Class: TFunction_Driver
 [INFO ]      Class TFunction_Driver is abstract, using %nodefaultctor.
 [INFO ]  Class: TFunction_DriverTable
@@ -3657,8 +3642,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Vec3f>, seems to be a template
 [INFO ]  Class: Poly_TriangulationParameters
-[WARNI]      [TypeHint] Skip type Poly_MakeLoops::Link, because of trailing :
-[WARNI]      [TypeHint] Skip type Poly_MakeLoops::Link, because of trailing :
 [INFO ]  ## Processing module Precision
 [INFO ]  Class: Precision
 [INFO ]  ## Processing module TColgp
@@ -3698,6 +3681,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: TopLoc_Location
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      operand gp_Trsf cannot be wrapped
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]  Class: TopLoc_SListNodeOfItemLocation
 [INFO ]  Class: TopLoc_SListOfItemLocation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -3844,20 +3828,21 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]      Wrap nested class math_GlobOptMin::NCollection_CellFilter_Inspector
 [INFO ]  Class: math_Householder
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: math_IntegerVector
-[INFO ]      operator<< skipped because invalid name
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]      Creating Get and Set methods for method Value
-[INFO ]      operand () cannot be wrapped
-[INFO ]      operand () cannot be wrapped
-[INFO ]      operand = cannot be wrapped
 [INFO ]  Class: math_Jacobi
 [INFO ]  Class: math_KronrodSingleIntegration
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: math_Matrix
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
 [INFO ]      Creating Get and Set methods for method Value
 [INFO ]      operand () cannot be wrapped
+[WARNI]      [TypeHint] Skipping type math_VectorBase<>, seems to be a template
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: math_MultipleVarFunction
 [INFO ]      Class math_MultipleVarFunction is abstract, using %nodefaultctor.
@@ -3881,12 +3866,24 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: math_ValueAndWeight
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: math_Vector
+[INFO ]  Class: math_VectorBase
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]      Creating Get and Set methods for method Value
+[WARNI]      [TypeHint] Skipping type const TheItemType, should contain _
+[WARNI]      [TypeHint] Skipping type const TheItemType *, should contain _
+[WARNI]      [TypeHint] Skipping type const TheItemType, should contain _
+[WARNI]      [TypeHint] Skipping type const TheItemType, should contain _
+[WARNI]      [TypeHint] Skipping type const TheItemType, should contain _
+[WARNI]      [TypeHint] Skipping type const TheItemType, should contain _
+[WARNI]      [TypeHint] Skipping type TheItemType, should contain _
+[WARNI]      [TypeHint] Skipping type const TheItemType, should contain _
+[WARNI]      [TypeHint] Skipping type const TheItemType, should contain _
+[WARNI]      [TypeHint] Skipping type const TheItemType, should contain _
+[WARNI]      [TypeHint] Skipping type const TheItemType &, should contain _
+[WARNI]      [TypeHint] Skipping type TheItemType &, should contain _
 [INFO ]      operand () cannot be wrapped
 [INFO ]      operand () cannot be wrapped
+[WARNI]      [TypeHint] Skipping type TheItemType, should contain _
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: math_FunctionSetWithDerivatives
 [INFO ]      Class math_FunctionSetWithDerivatives is abstract, using %nodefaultctor.
@@ -3897,6 +3894,15 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: math_MultipleVarFunctionWithHessian
 [INFO ]      Class math_MultipleVarFunctionWithHessian is abstract, using %nodefaultctor.
 [INFO ]  Class: math_TrigonometricEquationFunction
+[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<int, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<int, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<int, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
+[WARNI]      [TypeHint] Skipping type math_VectorBase<double, seems to be a template
 [INFO ]      operand < cannot be wrapped
 [INFO ]      operand << cannot be wrapped
 [INFO ]      operand << cannot be wrapped
@@ -4069,7 +4075,7 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skipping type virtual const IMeshData::IEdgePtr &, should contain _
 [INFO ]  ## Processing module IMeshData
 [INFO ]  Enum: IMeshData_Status
-[WARNI]  This template type cannot be handled: NCollection_Shared<NCollection_DataMap<IFacePtr, opencascade::handle<MapOfIEdgePtr>, WeakEqual<IMeshData_Face>>>
+[WARNI]  This template type cannot be handled: NCollection_Shared<NCollection_DataMap<IFacePtr, opencascade::handle<MapOfIEdgePtr>>>
 [WARNI]  Template IMeshData::Array1OfInteger skipped because name doesn't contain '_'.
 [WARNI]  Template IMeshData::Array1OfVertexOfDelaun skipped because name doesn't contain '_'.
 [WARNI]  Template IMeshData::BndBox2dTree skipped because name doesn't contain '_'.
@@ -4179,14 +4185,13 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Enum: MeshVS_MeshSelectionMethod
 [INFO ]  Enum: MeshVS_SelectionModeFlags
 [WARNI]      [TypeHint] Skip type int,opencascade::handle, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type int,TCollection_AsciiString,TColStd_MapIntegerHasher, int,TCollection not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,bool,TColStd_MapIntegerHasher, int,bool,TColStd not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,Quantity_Color,TColStd_MapIntegerHasher, int,Quantity not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,Graphic3d_MaterialAspect,TColStd_MapIntegerHasher, int,Graphic3d not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TCollection_AsciiString, int,TCollection not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Quantity_Color, int,Quantity not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Graphic3d_MaterialAspect, int,Graphic3d not in module list
 [WARNI]      [TypeHint] Skip type int,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type int,opencascade::handle, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type int,MeshVS_TwoColors,TColStd_MapIntegerHasher, int,MeshVS not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,gp_Vec,TColStd_MapIntegerHasher, int,gp not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,MeshVS_TwoColors, int,MeshVS not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,gp_Vec, int,gp not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: MeshVS_Buffer
@@ -4221,6 +4226,8 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: MeshVS_SensitiveSegment
 [INFO ]  Class: MeshVS_SymmetricPairHasher
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: MeshVS_Tool
 [INFO ]  Class: MeshVS_TwoColors
 [INFO ]  Class: MeshVS_TwoNodes
@@ -4412,6 +4419,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: RWGltf_CafWriter
 [INFO ]      Wrap nested class RWGltf_CafWriter::Mesh
 [INFO ]      Wrap nested class RWGltf_CafWriter::RWGltf_StyledShape
+[INFO ]      Wrap nested class RWGltf_CafWriter::Hasher
 [INFO ]  Class: RWGltf_ConfigurationNode
 [INFO ]      Wrap nested class RWGltf_ConfigurationNode::RWGltf_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -4602,7 +4610,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: STEPConstruct_ContextTool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: STEPConstruct_Part
-[INFO ]  Class: STEPConstruct_PointHasher
 [INFO ]  Class: STEPConstruct_Tool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: STEPConstruct_UnitContext
@@ -4618,6 +4625,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: STEPControl_ActorWrite
 [INFO ]  Class: STEPControl_Controller
 [INFO ]  Class: STEPControl_Reader
+[INFO ]      explicitly excluded method STEPControl_Reader::670ef148332e793552b9d850beda7220
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: STEPControl_Writer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -4767,12 +4775,10 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: StepToTopoDS
-[INFO ]  Class: StepToTopoDS_CartesianPointHasher
 [INFO ]  Class: StepToTopoDS_GeometricTool
 [INFO ]  Class: StepToTopoDS_NMTool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: StepToTopoDS_PointPair
-[INFO ]  Class: StepToTopoDS_PointPairHasher
 [INFO ]  Class: StepToTopoDS_Root
 [INFO ]  Class: StepToTopoDS_Tool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -4927,8 +4933,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Enum: StepElement_EnumeratedVolumeElementPurpose
 [INFO ]  Enum: StepElement_UnspecifiedValue
 [INFO ]  Enum: StepElement_Volume3dElementShape
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -5276,6 +5280,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: RWStepVisual_RWTextStyleForDefinedFont
 [INFO ]  Class: RWStepVisual_RWTextStyleWithBoxCharacteristics
 [INFO ]  Class: RWStepVisual_RWTriangulatedFace
+[INFO ]  Class: RWStepVisual_RWTriangulatedSurfaceSet
 [INFO ]  Class: RWStepVisual_RWViewVolume
 [INFO ]  ## Processing module StepDimTol
 [INFO ]  Found HARRAY1 definitionStepDimTol_HArray1OfGeometricToleranceModifier: StepDimTol_Array1OfGeometricToleranceModifier
@@ -5602,6 +5607,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: StepVisual_TessellatedEdge
 [INFO ]  Class: StepVisual_TessellatedFace
 [INFO ]  Class: StepVisual_TessellatedVertex
+[INFO ]  Class: StepVisual_TriangulatedSurfaceSet
 [INFO ]  Class: StepVisual_AnnotationCurveOccurrenceAndGeomReprItem
 [INFO ]  Class: StepVisual_ComplexTriangulatedFace
 [INFO ]  Class: StepVisual_CubicBezierTessellatedEdge
@@ -6158,8 +6164,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Enum: StepGeom_PreferredSurfaceCurveRepresentation
 [INFO ]  Enum: StepGeom_TransitionCode
 [INFO ]  Enum: StepGeom_TrimmingPreference
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -6723,6 +6727,8 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skip type Graphic3d_RenderingParams::PerfCounters, because of trailing :
 [WARNI]      [TypeHint] Skip type Graphic3d_RenderingParams::PerfCounters, because of trailing :
 [INFO ]  Class: Graphic3d_FrameStatsData
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand [] cannot be wrapped
 [INFO ]      operand [] cannot be wrapped
@@ -6805,6 +6811,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]      Wrap nested class Graphic3d_TransformPers::PersParams3d
 [INFO ]      Wrap nested class Graphic3d_TransformPers::PersParams2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping type NCollection_Mat3<float, seems to be a template
 [INFO ]  Class: Graphic3d_UniformValueTypeID<Graphic3d_Vec2>
 [INFO ]  Class: Graphic3d_UniformValueTypeID<Graphic3d_Vec2i>
 [INFO ]  Class: Graphic3d_UniformValueTypeID<Graphic3d_Vec3>
@@ -6901,6 +6908,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Enum: Image_CompressedFormat
 [INFO ]  Enum: Image_Format
 [INFO ]  ## Processing module InterfaceGraphic
+[WARNI]  No file for module InterfaceGraphic. Please check that the module name is part of occt.
 [INFO ]  ## Processing module Media
 [INFO ]  Class: Media_BufferPool
 [WARNI]      [TypeHint] Skipping type AVBufferRef *, should contain _
@@ -6939,6 +6947,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: Media_Scaler
 [INFO ]  Class: Media_Timer
 [INFO ]  ## Processing module TColQuantity
+[WARNI]  No file for module TColQuantity. Please check that the module name is part of occt.
 [INFO ]  Processing toolkit TKShHealing ===
 [INFO ]  ## Processing module ShapeAlgo
 [INFO ]  Class: ShapeAlgo
@@ -7562,18 +7571,16 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: MAT_Zone
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module MAT2d
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type int,Bisector_Bisec,TColStd_MapIntegerHasher, int,Bisector not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,Bisector_Bisec, int,Bisector not in module list
 [WARNI]      [TypeHint] Skip type int,opencascade::handle, because of trailing :
-[WARNI]      [TypeHint] Skipping unknown type int,gp_Pnt2d,TColStd_MapIntegerHasher, int,gp not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,MAT2d_SequenceOfConnexion,TColStd_MapIntegerHasher, int,MAT2d not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,gp_Vec2d,TColStd_MapIntegerHasher, int,gp not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,gp_Pnt2d, int,gp not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,MAT2d_SequenceOfConnexion, int,MAT2d not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,gp_Vec2d, int,gp not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: MAT2d_BiInt
 [INFO ]  Class: MAT2d_Circuit
 [INFO ]  Class: MAT2d_Connexion
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: MAT2d_MapBiIntHasher
 [INFO ]  Class: MAT2d_Mat2d
 [INFO ]  Class: MAT2d_MiniPath
 [INFO ]  Class: MAT2d_Tool2d
@@ -7601,8 +7608,8 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Enum: AIS_ViewSelectionTool
 [INFO ]  Enum: AIS_WalkRotation
 [INFO ]  Enum: AIS_WalkTranslation
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>>::Iterator
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -7712,7 +7719,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: AIS_Triangulation
 [INFO ]  Class: AIS_Trihedron
 [INFO ]  Class: AIS_ViewCube
-[INFO ]      Wrap nested class AIS_ViewCube::IntegerHasher
 [INFO ]  Class: AIS_XRTrackedDevice
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AIS_AnimationAxisRotation
@@ -8259,7 +8265,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Enum: XCAFDimTolObjects_GeomToleranceTypeValue
 [INFO ]  Enum: XCAFDimTolObjects_GeomToleranceZoneModif
 [INFO ]  Enum: XCAFDimTolObjects_ToleranceZoneAffectedPlane
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle<XCAFDimTolObjects_DatumObject>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle<XCAFDimTolObjects_DatumObject>>
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -8292,7 +8298,6 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skipping type const AdjacencyMap &, should contain _
 [WARNI]      [TypeHint] Skip type XCAFDoc_AssemblyGraph::NodeType, because of trailing :
 [INFO ]  Class: XCAFDoc_AssemblyItemId
-[INFO ]      Wrap nested class XCAFDoc_AssemblyItemId::Hasher
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: XCAFDoc_AssemblyItemRef
 [INFO ]  Class: XCAFDoc_AssemblyIterator
@@ -8404,10 +8409,10 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Processing toolkit TKXDESTEP ===
 [INFO ]  ## Processing module STEPCAFControl
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>>::Iterator
 [WARNI]      [TypeHint] Skip type TDF_Label,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -8415,20 +8420,6 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [INFO ]  Class: STEPCAFControl_ActorWrite
 [INFO ]  Class: STEPCAFControl_ConfigurationNode
-[INFO ]      Wrap nested class STEPCAFControl_ConfigurationNode::STEPCAFControl_InternalSection
-[INFO ]  Enum: AngleUnitMode
-[INFO ]  Enum: RWMode_Tessellated
-[INFO ]  Enum: ReadMode_AssemblyLevel
-[INFO ]  Enum: ReadMode_BSplineContinuity
-[INFO ]  Enum: ReadMode_MaxPrecision
-[INFO ]  Enum: ReadMode_Precision
-[INFO ]  Enum: ReadMode_ProductContext
-[INFO ]  Enum: ReadMode_ShapeRepr
-[INFO ]  Enum: ReadMode_SurfaceCurve
-[INFO ]  Enum: WriteMode_Assembly
-[INFO ]  Enum: WriteMode_PrecisionMode
-[INFO ]  Enum: WriteMode_StepSchema
-[INFO ]  Enum: WriteMode_VertexMode
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: STEPCAFControl_Controller
 [INFO ]  Class: STEPCAFControl_ExternFile
@@ -8659,7 +8650,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: Interface_MSG
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      operand Standard_CString cannot be wrapped
-[INFO ]  Class: Interface_MapAsciiStringHasher
 [INFO ]  Class: Interface_NodeOfGeneralLib
 [INFO ]  Class: Interface_NodeOfReaderLib
 [INFO ]  Class: Interface_ParamList
@@ -8708,13 +8698,12 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
 [INFO ]  Class: MoniTool_CaseData
 [INFO ]  Class: MoniTool_DataInfo
-[INFO ]  Class: MoniTool_ElemHasher
 [INFO ]  Class: MoniTool_Element
 [INFO ]      Class MoniTool_Element is abstract, using %nodefaultctor.
 [INFO ]      Constructor skipped for abstract class MoniTool_Element
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]  Class: MoniTool_IntVal
 [INFO ]      Creating Get and Set methods for method CValue
-[INFO ]  Class: MoniTool_MTHasher
 [INFO ]  Class: MoniTool_RealVal
 [INFO ]      Creating Get and Set methods for method CValue
 [INFO ]  Class: MoniTool_SignText
@@ -8740,11 +8729,27 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Found HARRAY1 definitionStepData_HArray1OfField: StepData_Array1OfField
 [INFO ]  Enum: StepData_Logical
 [INFO ]  Class: StepData
+[INFO ]  Class: StepData_ConfParameters
+[INFO ]  Enum: AngleUnitMode
+[INFO ]  Enum: RWMode_Tessellated
+[INFO ]  Enum: ReadMode_AssemblyLevel
+[INFO ]  Enum: ReadMode_BSplineContinuity
+[INFO ]  Enum: ReadMode_MaxPrecision
+[INFO ]  Enum: ReadMode_Precision
+[INFO ]  Enum: ReadMode_ProductContext
+[INFO ]  Enum: ReadMode_ShapeRepr
+[INFO ]  Enum: ReadMode_SurfaceCurve
+[INFO ]  Enum: WriteMode_Assembly
+[INFO ]  Enum: WriteMode_PrecisionMode
+[INFO ]  Enum: WriteMode_StepSchema
+[INFO ]  Enum: WriteMode_VertexMode
+[WARNI]      [TypeHint] Skipping unknown type ReadMode_ProductContext, ReadMode not in module list
 [INFO ]  Class: StepData_Described
 [INFO ]      Class StepData_Described is abstract, using %nodefaultctor.
 [INFO ]  Class: StepData_EDescr
 [INFO ]      Class StepData_EDescr is abstract, using %nodefaultctor.
 [INFO ]  Class: StepData_EnumTool
+[INFO ]  Class: StepData_Factors
 [INFO ]  Class: StepData_Field
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]      operand = cannot be wrapped
@@ -8753,7 +8758,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]      Class StepData_FileRecognizer is abstract, using %nodefaultctor.
 [INFO ]  Class: StepData_GeneralModule
 [INFO ]      Class StepData_GeneralModule is abstract, using %nodefaultctor.
-[INFO ]  Class: StepData_GlobalFactors
 [INFO ]  Class: StepData_GlobalNodeOfWriterLib
 [INFO ]  Class: StepData_NodeOfWriterLib
 [INFO ]  Class: StepData_PDescr
@@ -8799,7 +8803,7 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Enum: Transfer_StatusExec
 [INFO ]  Enum: Transfer_StatusResult
 [INFO ]  Enum: Transfer_UndefMode
-[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Transfer_Binder>, TColStd_MapTransientHasher>
+[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Transfer_Binder>>
 [WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Transfer_Finder>, opencascade::handle<Transfer_Binder>, Transfer_FindHasher>
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -8812,9 +8816,12 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: Transfer_DataInfo
 [INFO ]  Class: Transfer_DispatchControl
 [INFO ]  Class: Transfer_FindHasher
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: Transfer_Finder
 [INFO ]      Class Transfer_Finder is abstract, using %nodefaultctor.
 [WARNI]      [TypeHint] Skipping type NCollection_DataMap<TCollection_AsciiString,, seems to be a template
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]  Class: Transfer_MapContainer
 [INFO ]  Class: Transfer_ProcessForTransient
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -8850,7 +8857,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]      explicitly excluded method TransferBRep::ac74a29e16eb22df08dfa425a4da450d
 [INFO ]  Class: TransferBRep_BinderOfShape
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: TransferBRep_OrientedShapeMapper
 [INFO ]  Class: TransferBRep_Reader
 [INFO ]      Creating Get and Set methods for method ModeNewTransfer
 [INFO ]  Class: TransferBRep_ShapeInfo
@@ -8920,8 +8926,8 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: XmlLDrivers_NamespaceDef
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module XmlMDF
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Type>, opencascade::handle<XmlMDF_ADriver>>::Iterator
 [WARNI]      [TypeHint] Skip type TCollection_AsciiString,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: XmlMDF
@@ -9104,10 +9110,6 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Found HARRAY2 definitionHClassName: _Array2Type_
 [INFO ]  Enum: NCollection_CellFilter_Action
 [WARNI]  Template ) skipped because name doesn't contain '_'.
-[INFO ]  Class: NCollection_StdAllocator<void>
-[INFO ]      Wrap nested class NCollection_StdAllocator<void>::rebind
-[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]      operand = cannot be wrapped
 [INFO ]  ## Processing module OSD
 [INFO ]  Enum: OSD_FromWhere
 [INFO ]  Enum: OSD_KindFile
@@ -9134,11 +9136,9 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Enum passed by reference: Quantity_NameOfColor &theColor changed to Quantity_NameOfColor &OutValue
 [INFO ]  Enum passed by reference: Quantity_NameOfColor & theColor changed to Quantity_NameOfColor &OutValue
 [INFO ]  Enum passed by reference: Quantity_NameOfColor & theColor changed to Quantity_NameOfColor &OutValue
-[INFO ]  Class: Quantity_ColorHasher
 [INFO ]  Class: Quantity_ColorRGBA
 [INFO ]      operatorconstNCollection_Vec4<float>& skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
-[INFO ]  Class: Quantity_ColorRGBAHasher
 [INFO ]  Class: Quantity_Date
 [INFO ]      operator< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -9156,15 +9156,20 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  ## Processing module Standard
 [INFO ]  Enum: Standard_HandlerStatus
 [INFO ]  Class: Standard
+[INFO ]  Skipping Enum: AllocatorType
 [INFO ]      explicitly excluded method Standard::c08bde37db97ce4a32e3da69499d7b90
 [INFO ]      explicitly excluded method Standard::8b3c74dce6128034d5d885320f05ce8a
 [INFO ]      explicitly excluded method Standard::b29cd18b024c2dcaa2a51ddf56e6359c
 [INFO ]      explicitly excluded method Standard::382687142ca6751e11361bcd57352cf6
+[WARNI]      [TypeHint] Skipping type static Standard::AllocatorType, should contain _
 [INFO ]  Class: Standard_ArrayStreamBuffer
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [WARNI]      [TypeHint] Skipping type virtual std::streamsize, should contain _
 [WARNI]      [TypeHint] Skipping type std::streamsize, should contain _
+[INFO ]  Class: Standard_CStringHasher
+[INFO ]      operand () cannot be wrapped
+[INFO ]      operand () cannot be wrapped
 [INFO ]  Class: Standard_Condition
 [INFO ]      explicitly excluded method Standard_Condition::3d6aeea9cf734fccbb0537336d54c48e
 [INFO ]  Class: Standard_ErrorHandler
@@ -9190,13 +9195,12 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: Standard_MMgrOpt
 [INFO ]      explicitly excluded method Standard_MMgrOpt::32213e26879b7b9d5ec9e1af79f3f5b8
-[INFO ]  Class: Standard_MMgrRaw
-[INFO ]  Class: Standard_MMgrTBBalloc
 [INFO ]  Class: Standard_OutOfMemory
 [WARNI]      [TypeHint] Skipping type std::stringstream &, should contain _
 [INFO ]  Class: Standard_Persistent
 [INFO ]      Creating Get and Set methods for method TypeNum
 [INFO ]  Class: Standard_Type
+[WARNI]      [TypeHint] Skip type std::type_info, because of trailing :
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] Skipping type const, should contain _
@@ -9204,8 +9208,16 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] Skipping type const, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [WARNI]      [TypeHint] Skipping type FILE *, should contain _
 [WARNI]      [TypeHint] Skipping type const, should contain _
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint32_t, uint32 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
+[WARNI]      [TypeHint] Skipping unknown type uint64_t, uint64 not in module list
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] Skipping type const, should contain _
@@ -9216,12 +9228,6 @@ date : 2024-02-22 14:15:04.324859
 [WARNI]      [TypeHint] Skipping type volatile long *, should contain _
 [WARNI]      [TypeHint] Skipping type long, should contain _
 [WARNI]      [TypeHint] Skipping type volatile long *, should contain _
-[WARNI]      [TypeHint] Skipping unknown type __cdecl,  not in module list
-[WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] Skipping unknown type __cdecl,  not in module list
-[WARNI]      [TypeHint] param name missing or '&', skip method type hint
-[WARNI]      [TypeHint] Skipping unknown type __cdecl,  not in module list
-[WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [INFO ]      operand << cannot be wrapped
 [INFO ]      operand << cannot be wrapped
 [INFO ]      operand << cannot be wrapped
@@ -9262,23 +9268,16 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Found HSEQUENCE definitionTColStd_HSequenceOfReal: TColStd_SequenceOfReal
 [INFO ]  Found HSEQUENCE definitionTColStd_HSequenceOfAsciiString: TColStd_SequenceOfAsciiString
 [INFO ]  Found HARRAY1 definitionTColStd_HArray1OfReal: TColStd_Array1OfReal
-[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher>
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>, TColStd_MapTransientHasher>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>>::Iterator
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type int,int,TColStd_MapIntegerHasher, int,int,TColStd not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,TColStd_ListOfInteger,TColStd_MapIntegerHasher, int,TColStd not in module list
-[WARNI]      [TypeHint] Skipping unknown type int,float,TColStd_MapIntegerHasher, int,float,TColStd not in module list
+[WARNI]      [TypeHint] Skipping unknown type int,TColStd_ListOfInteger, int,TColStd not in module list
 [WARNI]      [TypeHint] Skip type int,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type int,TColStd_MapIntegerHasher, int,TColStd not in module list
-[WARNI]      [TypeHint] Skipping unknown type float,TColStd_MapRealHasher, float,TColStd not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
-[WARNI]      [TypeHint] Skipping unknown type int,TColStd_MapIntegerHasher, int,TColStd not in module list
-[WARNI]      [TypeHint] Skipping unknown type float,TColStd_MapRealHasher, float,TColStd not in module list
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -9314,21 +9313,25 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  ## Processing module TCollection
 [INFO ]  Class: TCollection
 [INFO ]  Class: TCollection_AsciiString
+[INFO ]      explicitly excluded method TCollection_AsciiString::7e1255beb7ed081150718757834992c6
 [INFO ]      operator< skipped because invalid name
 [INFO ]      operator< skipped because invalid name
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand > cannot be wrapped
 [INFO ]      operand > cannot be wrapped
 [INFO ]  Class: TCollection_ExtendedString
+[INFO ]      explicitly excluded method TCollection_ExtendedString::65fff4a141c762cb6d030518fe8f7f05
 [INFO ]      operator< skipped because invalid name
 [INFO ]      operator< skipped because invalid name
 [INFO ]      operator<< skipped because invalid name
 [INFO ]      explicitly excluded method TCollection_ExtendedString::e5ff9f94dec233d371e2d6eeef7b39cf
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]      [TypeHint] Skipping unknown type size_t, size not in module list
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand = cannot be wrapped
 [INFO ]      operand > cannot be wrapped
@@ -9389,8 +9392,8 @@ date : 2024-02-22 14:15:04.324859
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 17.48s
+SWIG interface file generation completed in 18.12s
 #################################################
 
-[INFO ]  Number of classes: 4770
-[INFO ]  Number of methods: 47702
+[INFO ]  Number of classes: 4743
+[INFO ]  Number of methods: 47537

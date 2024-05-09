@@ -737,7 +737,7 @@ XCAFDimTolObjects_ToleranceZoneAffectedPlane_Orientation = XCAFDimTolObjects_Tol
 /* end handles declaration */
 
 /* templates */
-%template(XCAFDimTolObjects_DataMapOfToleranceDatum) NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>,opencascade::handle<XCAFDimTolObjects_DatumObject>,TColStd_MapTransientHasher>;
+%template(XCAFDimTolObjects_DataMapOfToleranceDatum) NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>,opencascade::handle<XCAFDimTolObjects_DatumObject>>;
 %template(XCAFDimTolObjects_DatumModifiersSequence) NCollection_Sequence<XCAFDimTolObjects_DatumSingleModif>;
 
 %extend NCollection_Sequence<XCAFDimTolObjects_DatumSingleModif> {
@@ -789,7 +789,7 @@ XCAFDimTolObjects_ToleranceZoneAffectedPlane_Orientation = XCAFDimTolObjects_Tol
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle<XCAFDimTolObjects_DatumObject>, TColStd_MapTransientHasher> XCAFDimTolObjects_DataMapOfToleranceDatum;
+typedef NCollection_DataMap<opencascade::handle<XCAFDimTolObjects_GeomToleranceObject>, opencascade::handle<XCAFDimTolObjects_DatumObject>> XCAFDimTolObjects_DataMapOfToleranceDatum;
 typedef NCollection_Sequence<XCAFDimTolObjects_DatumSingleModif> XCAFDimTolObjects_DatumModifiersSequence;
 typedef NCollection_Sequence<opencascade::handle<XCAFDimTolObjects_DatumObject>> XCAFDimTolObjects_DatumObjectSequence;
 typedef NCollection_Sequence<XCAFDimTolObjects_DimensionModif> XCAFDimTolObjects_DimensionModifiersSequence;

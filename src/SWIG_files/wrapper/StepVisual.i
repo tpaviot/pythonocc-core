@@ -11067,7 +11067,7 @@ Default constructor.
 		 StepVisual_ComplexTriangulatedSurfaceSet();
 
 		/****************** Init ******************/
-		/**** md5 signature: 3b113fbc7ec06fe4a160b5ba8e9cbaee ****/
+		/**** md5 signature: 63566f9c374f4f0aa10d5acf4d88a990 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11077,8 +11077,8 @@ theTessellatedSurfaceSet_Coordinates: StepVisual_CoordinatesList
 theTessellatedSurfaceSet_Pnmax: int
 theTessellatedSurfaceSet_Normals: TColStd_HArray2OfReal
 thePnindex: TColStd_HArray1OfInteger
-theTriangleStrips: TColStd_HArray2OfInteger
-theTriangleFans: TColStd_HArray2OfInteger
+theTriangleStrips: TColStd_HArray1OfTransient
+theTriangleFans: TColStd_HArray1OfTransient
 
 Return
 -------
@@ -11088,7 +11088,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedSurfaceSet_Coordinates, const Standard_Integer theTessellatedSurfaceSet_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedSurfaceSet_Normals, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedSurfaceSet_Coordinates, const Standard_Integer theTessellatedSurfaceSet_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedSurfaceSet_Normals, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleStrips, const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleFans);
 
 		/****************** NbPnindex ******************/
 		/**** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ****/
@@ -11179,12 +11179,12 @@ Sets field pnindex.
 		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
 
 		/****************** SetTriangleFans ******************/
-		/**** md5 signature: db9f04781f28ff74c0a910d332b01a50 ****/
+		/**** md5 signature: 9629b6105819199c0dd3f0e14db0df98 ****/
 		%feature("compactdefaultargs") SetTriangleFans;
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangleFans: TColStd_HArray2OfInteger
+theTriangleFans: TColStd_HArray1OfTransient
 
 Return
 -------
@@ -11194,15 +11194,15 @@ Description
 -----------
 Sets field trianglefans.
 ") SetTriangleFans;
-		void SetTriangleFans(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
+		void SetTriangleFans(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleFans);
 
 		/****************** SetTriangleStrips ******************/
-		/**** md5 signature: 305b524e4a12d6718cd4b65ad6a59730 ****/
+		/**** md5 signature: 49e636f3062980a08cfdfaafe4ef656a ****/
 		%feature("compactdefaultargs") SetTriangleStrips;
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangleStrips: TColStd_HArray2OfInteger
+theTriangleStrips: TColStd_HArray1OfTransient
 
 Return
 -------
@@ -11212,33 +11212,33 @@ Description
 -----------
 Sets field trianglestrips.
 ") SetTriangleStrips;
-		void SetTriangleStrips(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips);
+		void SetTriangleStrips(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleStrips);
 
 		/****************** TriangleFans ******************/
-		/**** md5 signature: 66cea853512deea6cf6d0195d2138e10 ****/
+		/**** md5 signature: 07232d50b3ce09c2619ce7c6fa0c1c43 ****/
 		%feature("compactdefaultargs") TriangleFans;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfInteger>
+opencascade::handle<TColStd_HArray1OfTransient>
 
 Description
 -----------
 Returns field trianglefans.
 ") TriangleFans;
-		opencascade::handle<TColStd_HArray2OfInteger> TriangleFans();
+		opencascade::handle<TColStd_HArray1OfTransient> TriangleFans();
 
 		/****************** TriangleStrips ******************/
-		/**** md5 signature: c2afe2543561429d8c5267016bec1fb9 ****/
+		/**** md5 signature: dd10a0721f01f517c2ac8d65518e6951 ****/
 		%feature("compactdefaultargs") TriangleStrips;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfInteger>
+opencascade::handle<TColStd_HArray1OfTransient>
 
 Description
 -----------
 Returns field trianglestrips.
 ") TriangleStrips;
-		opencascade::handle<TColStd_HArray2OfInteger> TriangleStrips();
+		opencascade::handle<TColStd_HArray1OfTransient> TriangleStrips();
 
 };
 
@@ -12107,6 +12107,162 @@ Returns field topologicallink.
 	}
 };
 
+/******************************************
+* class StepVisual_TriangulatedSurfaceSet *
+******************************************/
+class StepVisual_TriangulatedSurfaceSet : public StepVisual_TessellatedSurfaceSet {
+	public:
+		/****************** StepVisual_TriangulatedSurfaceSet ******************/
+		/**** md5 signature: 32db05e1a02d1f6fbe879157f6382766 ****/
+		%feature("compactdefaultargs") StepVisual_TriangulatedSurfaceSet;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Default constructor.
+") StepVisual_TriangulatedSurfaceSet;
+		 StepVisual_TriangulatedSurfaceSet();
+
+		/****************** Init ******************/
+		/**** md5 signature: 3ffa47b673439b6a5d3f4f39a3856c61 ****/
+		%feature("compactdefaultargs") Init;
+		%feature("autodoc", "
+Parameters
+----------
+theRepresentationItemName: TCollection_HAsciiString
+theTessellatedFaceCoordinates: StepVisual_CoordinatesList
+theTessellatedFacePnmax: int
+theTessellatedFaceNormals: TColStd_HArray2OfReal
+thePnindex: TColStd_HArray1OfInteger
+theTriangles: TColStd_HArray2OfInteger
+
+Return
+-------
+None
+
+Description
+-----------
+Initialize all fields (own and inherited).
+") Init;
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItemName, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFaceCoordinates, const Standard_Integer theTessellatedFacePnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFaceNormals, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
+
+		/****************** NbPnindex ******************/
+		/**** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ****/
+		%feature("compactdefaultargs") NbPnindex;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns number of pnindex.
+") NbPnindex;
+		Standard_Integer NbPnindex();
+
+		/****************** NbTriangles ******************/
+		/**** md5 signature: c1e2294db77a16b75e32923c5461b457 ****/
+		%feature("compactdefaultargs") NbTriangles;
+		%feature("autodoc", "Return
+-------
+int
+
+Description
+-----------
+Returns number of triangles.
+") NbTriangles;
+		Standard_Integer NbTriangles();
+
+		/****************** Pnindex ******************/
+		/**** md5 signature: cff3c5eb8d6e25aa45b47da9a42703c3 ****/
+		%feature("compactdefaultargs") Pnindex;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<TColStd_HArray1OfInteger>
+
+Description
+-----------
+Returns field pnindex.
+") Pnindex;
+		const opencascade::handle<TColStd_HArray1OfInteger> Pnindex();
+
+		/****************** PnindexValue ******************/
+		/**** md5 signature: fee0b439b0a18d03931d2516a7a9914f ****/
+		%feature("compactdefaultargs") PnindexValue;
+		%feature("autodoc", "
+Parameters
+----------
+theNum: int
+
+Return
+-------
+int
+
+Description
+-----------
+Returns value of pnindex by its num.
+") PnindexValue;
+		Standard_Integer PnindexValue(const Standard_Integer theNum);
+
+		/****************** SetPnindex ******************/
+		/**** md5 signature: 110102dd4b7257dec29b0db217b97edf ****/
+		%feature("compactdefaultargs") SetPnindex;
+		%feature("autodoc", "
+Parameters
+----------
+thePnindex: TColStd_HArray1OfInteger
+
+Return
+-------
+None
+
+Description
+-----------
+Sets field pnindex.
+") SetPnindex;
+		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
+
+		/****************** SetTriangles ******************/
+		/**** md5 signature: fd0f621d0e44e0a5ea8c27a6e3ac9a39 ****/
+		%feature("compactdefaultargs") SetTriangles;
+		%feature("autodoc", "
+Parameters
+----------
+theTriangles: TColStd_HArray2OfInteger
+
+Return
+-------
+None
+
+Description
+-----------
+Sets field triangles.
+") SetTriangles;
+		void SetTriangles(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangles);
+
+		/****************** Triangles ******************/
+		/**** md5 signature: 240ee640b11d228ad1fef9537a847098 ****/
+		%feature("compactdefaultargs") Triangles;
+		%feature("autodoc", "Return
+-------
+opencascade::handle<TColStd_HArray2OfInteger>
+
+Description
+-----------
+Returns field triangles.
+") Triangles;
+		const opencascade::handle<TColStd_HArray2OfInteger> Triangles();
+
+};
+
+
+%extend StepVisual_TriangulatedSurfaceSet {
+	%pythoncode {
+	__repr__ = _dumps_object
+	}
+};
+
 /************************************************************
 * class StepVisual_AnnotationCurveOccurrenceAndGeomReprItem *
 ************************************************************/
@@ -12155,7 +12311,7 @@ Default constructor.
 		 StepVisual_ComplexTriangulatedFace();
 
 		/****************** Init ******************/
-		/**** md5 signature: e1774105fd821d5c7b890a1a4073cc6f ****/
+		/**** md5 signature: b7f18cc4ed3463aaf8bf8db40c193d48 ****/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -12167,8 +12323,8 @@ theTessellatedFace_Normals: TColStd_HArray2OfReal
 theHasTessellatedFace_GeometricLink: bool
 theTessellatedFace_GeometricLink: StepVisual_FaceOrSurface
 thePnindex: TColStd_HArray1OfInteger
-theTriangleStrips: TColStd_HArray2OfInteger
-theTriangleFans: TColStd_HArray2OfInteger
+theTriangleStrips: TColStd_HArray1OfTransient
+theTriangleFans: TColStd_HArray1OfTransient
 
 Return
 -------
@@ -12178,7 +12334,7 @@ Description
 -----------
 Initialize all fields (own and inherited).
 ") Init;
-		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips, const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
+		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const opencascade::handle<StepVisual_CoordinatesList> & theTessellatedFace_Coordinates, const Standard_Integer theTessellatedFace_Pnmax, const opencascade::handle<TColStd_HArray2OfReal> & theTessellatedFace_Normals, const Standard_Boolean theHasTessellatedFace_GeometricLink, const StepVisual_FaceOrSurface & theTessellatedFace_GeometricLink, const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex, const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleStrips, const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleFans);
 
 		/****************** NbPnindex ******************/
 		/**** md5 signature: 03e8354a763a2dc9d1f09532c550e87a ****/
@@ -12269,12 +12425,12 @@ Sets field pnindex.
 		void SetPnindex(const opencascade::handle<TColStd_HArray1OfInteger> & thePnindex);
 
 		/****************** SetTriangleFans ******************/
-		/**** md5 signature: db9f04781f28ff74c0a910d332b01a50 ****/
+		/**** md5 signature: 9629b6105819199c0dd3f0e14db0df98 ****/
 		%feature("compactdefaultargs") SetTriangleFans;
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangleFans: TColStd_HArray2OfInteger
+theTriangleFans: TColStd_HArray1OfTransient
 
 Return
 -------
@@ -12284,15 +12440,15 @@ Description
 -----------
 Sets field trianglefans.
 ") SetTriangleFans;
-		void SetTriangleFans(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleFans);
+		void SetTriangleFans(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleFans);
 
 		/****************** SetTriangleStrips ******************/
-		/**** md5 signature: 305b524e4a12d6718cd4b65ad6a59730 ****/
+		/**** md5 signature: 49e636f3062980a08cfdfaafe4ef656a ****/
 		%feature("compactdefaultargs") SetTriangleStrips;
 		%feature("autodoc", "
 Parameters
 ----------
-theTriangleStrips: TColStd_HArray2OfInteger
+theTriangleStrips: TColStd_HArray1OfTransient
 
 Return
 -------
@@ -12302,33 +12458,33 @@ Description
 -----------
 Sets field trianglestrips.
 ") SetTriangleStrips;
-		void SetTriangleStrips(const opencascade::handle<TColStd_HArray2OfInteger> & theTriangleStrips);
+		void SetTriangleStrips(const opencascade::handle<TColStd_HArray1OfTransient> & theTriangleStrips);
 
 		/****************** TriangleFans ******************/
-		/**** md5 signature: 66cea853512deea6cf6d0195d2138e10 ****/
+		/**** md5 signature: 07232d50b3ce09c2619ce7c6fa0c1c43 ****/
 		%feature("compactdefaultargs") TriangleFans;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfInteger>
+opencascade::handle<TColStd_HArray1OfTransient>
 
 Description
 -----------
 Returns field trianglefans.
 ") TriangleFans;
-		opencascade::handle<TColStd_HArray2OfInteger> TriangleFans();
+		opencascade::handle<TColStd_HArray1OfTransient> TriangleFans();
 
 		/****************** TriangleStrips ******************/
-		/**** md5 signature: c2afe2543561429d8c5267016bec1fb9 ****/
+		/**** md5 signature: dd10a0721f01f517c2ac8d65518e6951 ****/
 		%feature("compactdefaultargs") TriangleStrips;
 		%feature("autodoc", "Return
 -------
-opencascade::handle<TColStd_HArray2OfInteger>
+opencascade::handle<TColStd_HArray1OfTransient>
 
 Description
 -----------
 Returns field trianglestrips.
 ") TriangleStrips;
-		opencascade::handle<TColStd_HArray2OfInteger> TriangleStrips();
+		opencascade::handle<TColStd_HArray1OfTransient> TriangleStrips();
 
 };
 

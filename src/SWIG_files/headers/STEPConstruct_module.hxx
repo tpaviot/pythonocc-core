@@ -29,7 +29,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<STEPConstruct_DataMapOfPointTransient.hxx>
 #include<STEPConstruct_ExternRefs.hxx>
 #include<STEPConstruct_Part.hxx>
-#include<STEPConstruct_PointHasher.hxx>
 #include<STEPConstruct_Styles.hxx>
 #include<STEPConstruct_Tool.hxx>
 #include<STEPConstruct_UnitContext.hxx>

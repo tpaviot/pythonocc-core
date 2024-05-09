@@ -391,10 +391,10 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
     __next__ = next
     }
 };
-%template(MeshVS_DataMapOfColorMapOfInteger) NCollection_DataMap<Quantity_Color,TColStd_MapOfInteger,Quantity_ColorHasher>;
-%template(MeshVS_DataMapOfHArray1OfSequenceOfInteger) NCollection_DataMap<Standard_Integer,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>,TColStd_MapIntegerHasher>;
+%template(MeshVS_DataMapOfColorMapOfInteger) NCollection_DataMap<Quantity_Color,TColStd_MapOfInteger>;
+%template(MeshVS_DataMapOfHArray1OfSequenceOfInteger) NCollection_DataMap<Standard_Integer,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>;
 
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MeshVS_DataMapOfHArray1OfSequenceOfInteger::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -405,9 +405,9 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
     return l;
     }
 };
-%template(MeshVS_DataMapOfIntegerAsciiString) NCollection_DataMap<Standard_Integer,TCollection_AsciiString,TColStd_MapIntegerHasher>;
+%template(MeshVS_DataMapOfIntegerAsciiString) NCollection_DataMap<Standard_Integer,TCollection_AsciiString>;
 
-%extend NCollection_DataMap<Standard_Integer,TCollection_AsciiString,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,TCollection_AsciiString> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MeshVS_DataMapOfIntegerAsciiString::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -418,9 +418,9 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
     return l;
     }
 };
-%template(MeshVS_DataMapOfIntegerBoolean) NCollection_DataMap<Standard_Integer,Standard_Boolean,TColStd_MapIntegerHasher>;
+%template(MeshVS_DataMapOfIntegerBoolean) NCollection_DataMap<Standard_Integer,Standard_Boolean>;
 
-%extend NCollection_DataMap<Standard_Integer,Standard_Boolean,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,Standard_Boolean> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MeshVS_DataMapOfIntegerBoolean::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -431,9 +431,9 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
     return l;
     }
 };
-%template(MeshVS_DataMapOfIntegerColor) NCollection_DataMap<Standard_Integer,Quantity_Color,TColStd_MapIntegerHasher>;
+%template(MeshVS_DataMapOfIntegerColor) NCollection_DataMap<Standard_Integer,Quantity_Color>;
 
-%extend NCollection_DataMap<Standard_Integer,Quantity_Color,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,Quantity_Color> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MeshVS_DataMapOfIntegerColor::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -444,9 +444,9 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
     return l;
     }
 };
-%template(MeshVS_DataMapOfIntegerMaterial) NCollection_DataMap<Standard_Integer,Graphic3d_MaterialAspect,TColStd_MapIntegerHasher>;
+%template(MeshVS_DataMapOfIntegerMaterial) NCollection_DataMap<Standard_Integer,Graphic3d_MaterialAspect>;
 
-%extend NCollection_DataMap<Standard_Integer,Graphic3d_MaterialAspect,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,Graphic3d_MaterialAspect> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MeshVS_DataMapOfIntegerMaterial::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -457,9 +457,9 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
     return l;
     }
 };
-%template(MeshVS_DataMapOfIntegerMeshEntityOwner) NCollection_DataMap<Standard_Integer,opencascade::handle<MeshVS_MeshEntityOwner>,TColStd_MapIntegerHasher>;
+%template(MeshVS_DataMapOfIntegerMeshEntityOwner) NCollection_DataMap<Standard_Integer,opencascade::handle<MeshVS_MeshEntityOwner>>;
 
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MeshVS_MeshEntityOwner>,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,opencascade::handle<MeshVS_MeshEntityOwner>> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MeshVS_DataMapOfIntegerMeshEntityOwner::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -470,9 +470,9 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
     return l;
     }
 };
-%template(MeshVS_DataMapOfIntegerOwner) NCollection_DataMap<Standard_Integer,opencascade::handle<SelectMgr_EntityOwner>,TColStd_MapIntegerHasher>;
+%template(MeshVS_DataMapOfIntegerOwner) NCollection_DataMap<Standard_Integer,opencascade::handle<SelectMgr_EntityOwner>>;
 
-%extend NCollection_DataMap<Standard_Integer,opencascade::handle<SelectMgr_EntityOwner>,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,opencascade::handle<SelectMgr_EntityOwner>> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MeshVS_DataMapOfIntegerOwner::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -483,9 +483,9 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
     return l;
     }
 };
-%template(MeshVS_DataMapOfIntegerTwoColors) NCollection_DataMap<Standard_Integer,MeshVS_TwoColors,TColStd_MapIntegerHasher>;
+%template(MeshVS_DataMapOfIntegerTwoColors) NCollection_DataMap<Standard_Integer,MeshVS_TwoColors>;
 
-%extend NCollection_DataMap<Standard_Integer,MeshVS_TwoColors,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,MeshVS_TwoColors> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MeshVS_DataMapOfIntegerTwoColors::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -496,9 +496,9 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
     return l;
     }
 };
-%template(MeshVS_DataMapOfIntegerVector) NCollection_DataMap<Standard_Integer,gp_Vec,TColStd_MapIntegerHasher>;
+%template(MeshVS_DataMapOfIntegerVector) NCollection_DataMap<Standard_Integer,gp_Vec>;
 
-%extend NCollection_DataMap<Standard_Integer,gp_Vec,TColStd_MapIntegerHasher> {
+%extend NCollection_DataMap<Standard_Integer,gp_Vec> {
     PyObject* Keys() {
         PyObject *l=PyList_New(0);
         for (MeshVS_DataMapOfIntegerVector::Iterator anIt1(*self); anIt1.More(); anIt1.Next()) {
@@ -509,8 +509,8 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
     return l;
     }
 };
-%template(MeshVS_DataMapOfTwoColorsMapOfInteger) NCollection_DataMap<MeshVS_TwoColors,TColStd_MapOfInteger,MeshVS_TwoColorsHasher>;
-%template(MeshVS_MapOfTwoNodes) NCollection_Map<MeshVS_TwoNodes,MeshVS_TwoNodesHasher>;
+%template(MeshVS_DataMapOfTwoColorsMapOfInteger) NCollection_DataMap<MeshVS_TwoColors,TColStd_MapOfInteger>;
+%template(MeshVS_MapOfTwoNodes) NCollection_Map<MeshVS_TwoNodes>;
 %template(MeshVS_PolyhedronVerts) NCollection_List<opencascade::handle<TColgp_HArray1OfPnt>>;
 
 %extend NCollection_List<opencascade::handle<TColgp_HArray1OfPnt>> {
@@ -528,45 +528,41 @@ MeshVS_SMF_Group = MeshVS_SelectionModeFlags.MeshVS_SMF_Group
         return self.Size()
     }
 };
-%template(MeshVS_TwoColorsHasher) NCollection_DefaultHasher<MeshVS_TwoColors>;
-%template(MeshVS_TwoNodesHasher) NCollection_DefaultHasher<MeshVS_TwoNodes>;
 /* end templates declaration */
 
 /* typedefs */
 typedef NCollection_Array1<TColStd_SequenceOfInteger> MeshVS_Array1OfSequenceOfInteger;
 typedef Standard_Integer MeshVS_BuilderPriority;
-typedef NCollection_DataMap<Quantity_Color, TColStd_MapOfInteger, Quantity_ColorHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger;
-typedef NCollection_DataMap<Standard_Integer, TCollection_AsciiString, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString;
-typedef NCollection_DataMap<Standard_Integer, Standard_Boolean, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean;
-typedef NCollection_DataMap<Standard_Integer, Quantity_Color, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerColor;
-typedef NCollection_DataMap<Standard_Integer, Graphic3d_MaterialAspect, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_MeshEntityOwner>, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<SelectMgr_EntityOwner>, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerOwner;
-typedef NCollection_DataMap<Standard_Integer, MeshVS_TwoColors, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors;
-typedef NCollection_DataMap<Standard_Integer, gp_Vec, TColStd_MapIntegerHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerVector;
-typedef NCollection_DataMap<MeshVS_TwoColors, TColStd_MapOfInteger, MeshVS_TwoColorsHasher>::Iterator MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger;
-typedef NCollection_DataMap<Quantity_Color, TColStd_MapOfInteger, Quantity_ColorHasher> MeshVS_DataMapOfColorMapOfInteger;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>, TColStd_MapIntegerHasher> MeshVS_DataMapOfHArray1OfSequenceOfInteger;
-typedef NCollection_DataMap<Standard_Integer, TCollection_AsciiString, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerAsciiString;
-typedef NCollection_DataMap<Standard_Integer, Standard_Boolean, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerBoolean;
-typedef NCollection_DataMap<Standard_Integer, Quantity_Color, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerColor;
-typedef NCollection_DataMap<Standard_Integer, Graphic3d_MaterialAspect, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerMaterial;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_MeshEntityOwner>, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerMeshEntityOwner;
-typedef NCollection_DataMap<Standard_Integer, opencascade::handle<SelectMgr_EntityOwner>, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerOwner;
-typedef NCollection_DataMap<Standard_Integer, MeshVS_TwoColors, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerTwoColors;
-typedef NCollection_DataMap<Standard_Integer, gp_Vec, TColStd_MapIntegerHasher> MeshVS_DataMapOfIntegerVector;
-typedef NCollection_DataMap<MeshVS_TwoColors, TColStd_MapOfInteger, MeshVS_TwoColorsHasher> MeshVS_DataMapOfTwoColorsMapOfInteger;
+typedef NCollection_DataMap<Quantity_Color, TColStd_MapOfInteger>::Iterator MeshVS_DataMapIteratorOfDataMapOfColorMapOfInteger;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>>::Iterator MeshVS_DataMapIteratorOfDataMapOfHArray1OfSequenceOfInteger;
+typedef NCollection_DataMap<Standard_Integer, TCollection_AsciiString>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerAsciiString;
+typedef NCollection_DataMap<Standard_Integer, Standard_Boolean>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerBoolean;
+typedef NCollection_DataMap<Standard_Integer, Quantity_Color>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerColor;
+typedef NCollection_DataMap<Standard_Integer, Graphic3d_MaterialAspect>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerMaterial;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_MeshEntityOwner>>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerMeshEntityOwner;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<SelectMgr_EntityOwner>>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerOwner;
+typedef NCollection_DataMap<Standard_Integer, MeshVS_TwoColors>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerTwoColors;
+typedef NCollection_DataMap<Standard_Integer, gp_Vec>::Iterator MeshVS_DataMapIteratorOfDataMapOfIntegerVector;
+typedef NCollection_DataMap<MeshVS_TwoColors, TColStd_MapOfInteger>::Iterator MeshVS_DataMapIteratorOfDataMapOfTwoColorsMapOfInteger;
+typedef NCollection_DataMap<Quantity_Color, TColStd_MapOfInteger> MeshVS_DataMapOfColorMapOfInteger;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_HArray1OfSequenceOfInteger>> MeshVS_DataMapOfHArray1OfSequenceOfInteger;
+typedef NCollection_DataMap<Standard_Integer, TCollection_AsciiString> MeshVS_DataMapOfIntegerAsciiString;
+typedef NCollection_DataMap<Standard_Integer, Standard_Boolean> MeshVS_DataMapOfIntegerBoolean;
+typedef NCollection_DataMap<Standard_Integer, Quantity_Color> MeshVS_DataMapOfIntegerColor;
+typedef NCollection_DataMap<Standard_Integer, Graphic3d_MaterialAspect> MeshVS_DataMapOfIntegerMaterial;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<MeshVS_MeshEntityOwner>> MeshVS_DataMapOfIntegerMeshEntityOwner;
+typedef NCollection_DataMap<Standard_Integer, opencascade::handle<SelectMgr_EntityOwner>> MeshVS_DataMapOfIntegerOwner;
+typedef NCollection_DataMap<Standard_Integer, MeshVS_TwoColors> MeshVS_DataMapOfIntegerTwoColors;
+typedef NCollection_DataMap<Standard_Integer, gp_Vec> MeshVS_DataMapOfIntegerVector;
+typedef NCollection_DataMap<MeshVS_TwoColors, TColStd_MapOfInteger> MeshVS_DataMapOfTwoColorsMapOfInteger;
 typedef Standard_Integer MeshVS_DisplayModeFlags;
-typedef NCollection_Map<MeshVS_TwoNodes, MeshVS_TwoNodesHasher>::Iterator MeshVS_MapIteratorOfMapOfTwoNodes;
-typedef NCollection_Map<MeshVS_TwoNodes, MeshVS_TwoNodesHasher> MeshVS_MapOfTwoNodes;
+typedef NCollection_Map<MeshVS_TwoNodes>::Iterator MeshVS_MapIteratorOfMapOfTwoNodes;
+typedef NCollection_Map<MeshVS_TwoNodes> MeshVS_MapOfTwoNodes;
 typedef MeshVS_Mesh * MeshVS_MeshPtr;
 typedef std::pair<Standard_Integer, Standard_Integer> MeshVS_NodePair;
 typedef NCollection_List<opencascade::handle<TColgp_HArray1OfPnt>> MeshVS_PolyhedronVerts;
 typedef NCollection_List<opencascade::handle<TColgp_HArray1OfPnt>>::Iterator MeshVS_PolyhedronVertsIter;
 typedef NCollection_Sequence<opencascade::handle<MeshVS_PrsBuilder>> MeshVS_SequenceOfPrsBuilder;
-typedef NCollection_DefaultHasher<MeshVS_TwoColors> MeshVS_TwoColorsHasher;
-typedef NCollection_DefaultHasher<MeshVS_TwoNodes> MeshVS_TwoNodesHasher;
 /* end typedefs declaration */
 
 /**********************
@@ -3372,44 +3368,6 @@ No available documentation.
 ***********************************/
 class MeshVS_SymmetricPairHasher {
 	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: aedcb80faa6c1ae5983ea6c9930793b2 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theNodePair: MeshVS_NodePair
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the node pair, in the range [1, theupperbound] @param thenodepair the node pair which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const MeshVS_NodePair & theNodePair, const Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: b067ecbfd671478a0c046f63d5cd878e ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-thePair1: MeshVS_NodePair
-thePair2: MeshVS_NodePair
-
-Return
--------
-bool
-
-Description
------------
-No available documentation.
-") IsEqual;
-		static Standard_Boolean IsEqual(const MeshVS_NodePair & thePair1, const MeshVS_NodePair & thePair2);
-
 };
 
 
@@ -3578,6 +3536,20 @@ class MeshVS_TwoColors {
 		unsigned int r2;
 		unsigned int g2;
 		unsigned int b2;
+
+%extend{
+    bool __eq_wrapper__(const MeshVS_TwoColors other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
@@ -3613,6 +3585,20 @@ No available documentation.
 ") MeshVS_TwoNodes;
 		 MeshVS_TwoNodes(Standard_Integer aFirst = 0, Standard_Integer aSecond = 0);
 
+
+%extend{
+    bool __eq_wrapper__(const MeshVS_TwoNodes other) {
+    if (*self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
@@ -3622,6 +3608,12 @@ No available documentation.
 	}
 };
 
+/*******************************
+* class hash<MeshVS_TwoColors> *
+*******************************/
+/******************************
+* class hash<MeshVS_TwoNodes> *
+******************************/
 /****************************
 * class MeshVS_DataSource3D *
 ****************************/
@@ -5196,14 +5188,6 @@ class MeshVS_HArray1OfSequenceOfInteger : public MeshVS_Array1OfSequenceOfIntege
 }
 /* deprecated methods */
 %pythoncode {
-@deprecated
-def MeshVS_SymmetricPairHasher_HashCode(*args):
-	return MeshVS_SymmetricPairHasher.HashCode(*args)
-
-@deprecated
-def MeshVS_SymmetricPairHasher_IsEqual(*args):
-	return MeshVS_SymmetricPairHasher.IsEqual(*args)
-
 @deprecated
 def MeshVS_Tool_CreateAspectFillArea3d(*args):
 	return MeshVS_Tool.CreateAspectFillArea3d(*args)

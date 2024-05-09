@@ -255,7 +255,7 @@ Initializes a asciistring with another asciistring.
 		 TCollection_AsciiString(TCollection_AsciiString astring);
 
 		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 77b3f342a0e7402e7425759425c20ae9 ****/
+		/**** md5 signature: 867cfae82c6e1128bdc8e781dba235d1 ****/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -706,23 +706,17 @@ Returns the index of the first character of <self> that is not present in the se
 		Standard_Integer FirstLocationNotInSet(TCollection_AsciiString Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
 		/****************** HashCode ******************/
-		/**** md5 signature: e2da36afc8f40403f8d6004d8f435bb2 ****/
+		/**** md5 signature: 06b666a7ce1ccd2c4e4b4282e54344e0 ****/
 		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theAsciiString: str
-theUpperBound: int
-
-Return
+		%feature("autodoc", "Return
 -------
-int
+size_t
 
 Description
 -----------
-Computes a hash code for the given ascii string, in the range [1, theupperbound]. returns the same integer value as the hash function for tcollection_extendedstring @param theasciistring the ascii string which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
+Computes a hash code for the given ascii string returns the same integer value as the hash function for tcollection_extendedstring return a computed hash code.
 ") HashCode;
-		static Standard_Integer HashCode(TCollection_AsciiString theAsciiString, Standard_Integer theUpperBound);
+		size_t HashCode();
 
 		/****************** Insert ******************/
 		/**** md5 signature: 7904375fda1b58849d10a2c96c86615b ****/
@@ -1847,6 +1841,10 @@ def __eq__(self, right):
 %extend TCollection_AsciiString {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Move(self):
+		pass
 	}
 };
 
@@ -2033,7 +2031,7 @@ Initializes a extendedstring with another extendedstring.
 		 TCollection_ExtendedString(TCollection_ExtendedString astring);
 
 		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 48db9560fec5e00cc0d2840716162fbf ****/
+		/**** md5 signature: 696d0585a11ad0b287ebc6ba57bac634 ****/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -2192,23 +2190,17 @@ Determines whether the end of this string instance matches the specified string.
 		Standard_Boolean EndsWith(TCollection_ExtendedString theEndString);
 
 		/****************** HashCode ******************/
-		/**** md5 signature: a6589c5513a379021f17112f206c8ccb ****/
+		/**** md5 signature: 9c314e4c582b8527413f7ff4f2563524 ****/
 		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theString: str
-theUpperBound: int
-
-Return
+		%feature("autodoc", "Return
 -------
-int
+size_t
 
 Description
 -----------
-Returns a hashed value for the extended string within the range 1 .. theupper. note: if string is ascii, the computed value is the same as the value computed with the hashcode function on a tcollection_asciistring string composed with equivalent ascii characters. @param thestring the extended string which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
+Returns a hashed value for the extended string. note: if string is ascii, the computed value is the same as the value computed with the hashcode function on a tcollection_asciistring string composed with equivalent ascii characters. return a computed hash code.
 ") HashCode;
-		static Standard_Integer HashCode(TCollection_ExtendedString theString, const Standard_Integer theUpperBound);
+		size_t HashCode();
 
 		/****************** Insert ******************/
 		/**** md5 signature: 0697ac1ff05f55e6371b2412e6df94e9 ****/
@@ -2826,6 +2818,10 @@ def __eq__(self, right):
 	@methodnotwrapped
 	def ToWideString(self):
 		pass
+
+	@methodnotwrapped
+	def Move(self):
+		pass
 	}
 };
 
@@ -2955,6 +2951,24 @@ Description
 Initializes a hasciistring with a asciistring.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(TCollection_AsciiString aString);
+
+		/****************** TCollection_HAsciiString ******************/
+		/**** md5 signature: e40da8f0650af2c2ce01fec510892658 ****/
+		%feature("compactdefaultargs") TCollection_HAsciiString;
+		%feature("autodoc", "
+Parameters
+----------
+theString: str
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes a hasciistring with a asciistring.
+") TCollection_HAsciiString;
+		 TCollection_HAsciiString(TCollection_AsciiString & theString);
 
 		/****************** TCollection_HAsciiString ******************/
 		/**** md5 signature: 84b0260612dd7af944e9b7fbb8cd5693 ****/
@@ -4063,9 +4077,27 @@ None
 
 Description
 -----------
-Initializes a hextendedstring with a hextendedstring.
+Initializes a hextendedstring with a extendedstring.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(TCollection_ExtendedString aString);
+
+		/****************** TCollection_HExtendedString ******************/
+		/**** md5 signature: ab1073128cdb22935e69377eec67a8cb ****/
+		%feature("compactdefaultargs") TCollection_HExtendedString;
+		%feature("autodoc", "
+Parameters
+----------
+theString: str
+
+Return
+-------
+None
+
+Description
+-----------
+Initializes a hextendedstring with a extendedstring.
+") TCollection_HExtendedString;
+		 TCollection_HExtendedString(TCollection_ExtendedString & theString);
 
 		/****************** TCollection_HExtendedString ******************/
 		/**** md5 signature: af4627abe66bf228b7e542a0d52004e1 ****/
@@ -4540,6 +4572,15 @@ Returns extcharacter at position <where> in <self>. if <where> is less than zero
 	}
 };
 
+/*******************************************************************
+* class equal_to<opencascade::handle<TCollection_HExtendedString>> *
+*******************************************************************/
+/*****************************************
+* class hash<TCollection_ExtendedString> *
+*****************************************/
+/***************************************************************
+* class hash<opencascade::handle<TCollection_HExtendedString>> *
+***************************************************************/
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */
@@ -4553,10 +4594,6 @@ def tcollection_NextPrimeForMap(*args):
 	return tcollection.NextPrimeForMap(*args)
 
 @deprecated
-def TCollection_AsciiString_HashCode(*args):
-	return TCollection_AsciiString.HashCode(*args)
-
-@deprecated
 def TCollection_AsciiString_IsEqual(*args):
 	return TCollection_AsciiString.IsEqual(*args)
 
@@ -4567,10 +4604,6 @@ def TCollection_AsciiString_IsEqual(*args):
 @deprecated
 def TCollection_AsciiString_IsSameString(*args):
 	return TCollection_AsciiString.IsSameString(*args)
-
-@deprecated
-def TCollection_ExtendedString_HashCode(*args):
-	return TCollection_ExtendedString.HashCode(*args)
 
 @deprecated
 def TCollection_ExtendedString_IsEqual(*args):

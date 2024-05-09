@@ -549,9 +549,6 @@ StepElement_Pyramid = StepElement_Volume3dElementShape.StepElement_Pyramid
     __next__ = next
     }
 };
-%template(StepElement_Array2OfCurveElementPurposeMember) NCollection_Array2<opencascade::handle<StepElement_CurveElementPurposeMember>>;
-%template(StepElement_Array2OfSurfaceElementPurpose) NCollection_Array2<StepElement_SurfaceElementPurpose>;
-%template(StepElement_Array2OfSurfaceElementPurposeMember) NCollection_Array2<opencascade::handle<StepElement_SurfaceElementPurposeMember>>;
 %template(StepElement_SequenceOfCurveElementPurposeMember) NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>>;
 
 %extend NCollection_Sequence<opencascade::handle<StepElement_CurveElementPurposeMember>> {

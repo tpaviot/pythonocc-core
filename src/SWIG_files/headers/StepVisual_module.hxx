@@ -194,6 +194,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepVisual_TextStyleForDefinedFont.hxx>
 #include<StepVisual_TextStyleWithBoxCharacteristics.hxx>
 #include<StepVisual_TriangulatedFace.hxx>
+#include<StepVisual_TriangulatedSurfaceSet.hxx>
 #include<StepVisual_ViewVolume.hxx>
 
 #endif // STEPVISUAL_HXX

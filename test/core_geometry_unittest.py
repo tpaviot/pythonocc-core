@@ -68,7 +68,7 @@ from OCC.Core.GccEnt import gccent
 from OCC.Core.gce import gce_MakeCirc2d
 from OCC.Core.GccAna import GccAna_Lin2d2Tan, GccAna_Circ2d2TanRad
 from OCC.Core.GeomConvert import GeomConvert_CompBezierSurfacesToBSplineSurface
-from OCC.Core.TColGeom import TColGeom_Array2OfBezierSurface
+#from OCC.Core.TColGeom import TColGeom_Array2OfBezierSurface
 from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeVertex,
     BRepBuilderAPI_MakeEdge2d,
@@ -556,27 +556,27 @@ class TestGeometry(unittest.TestCase):
         array4.SetValue(3, 2, gp_Pnt(4, 5, 2))
         array4.SetValue(3, 3, gp_Pnt(5, 5, 1))
 
-        BZ1, BZ2, BZ3, BZ4 = map(Geom_BezierSurface, [array1, array2, array3, array4])
-        bezierarray = TColGeom_Array2OfBezierSurface(1, 2, 1, 2)
-        bezierarray.SetValue(1, 1, BZ1)
-        bezierarray.SetValue(1, 2, BZ2)
-        bezierarray.SetValue(2, 1, BZ3)
-        bezierarray.SetValue(2, 2, BZ4)
+        # BZ1, BZ2, BZ3, BZ4 = map(Geom_BezierSurface, [array1, array2, array3, array4])
+        # bezierarray = TColGeom_Array2OfBezierSurface(1, 2, 1, 2)
+        # bezierarray.SetValue(1, 1, BZ1)
+        # bezierarray.SetValue(1, 2, BZ2)
+        # bezierarray.SetValue(2, 1, BZ3)
+        # bezierarray.SetValue(2, 2, BZ4)
 
-        BB = GeomConvert_CompBezierSurfacesToBSplineSurface(bezierarray)
-        self.assertTrue(BB.IsDone())
-        poles = BB.Poles().Array2()
-        uknots = BB.UKnots().Array1()
-        vknots = BB.VKnots().Array1()
-        umult = BB.UMultiplicities().Array1()
-        vmult = BB.VMultiplicities().Array1()
-        udeg = BB.UDegree()
-        vdeg = BB.VDegree()
+        # BB = GeomConvert_CompBezierSurfacesToBSplineSurface(bezierarray)
+        # self.assertTrue(BB.IsDone())
+        # poles = BB.Poles().Array2()
+        # uknots = BB.UKnots().Array1()
+        # vknots = BB.VKnots().Array1()
+        # umult = BB.UMultiplicities().Array1()
+        # vmult = BB.VMultiplicities().Array1()
+        # udeg = BB.UDegree()
+        # vdeg = BB.VDegree()
 
-        BSPLSURF = Geom_BSplineSurface(
-            poles, uknots, vknots, umult, vmult, udeg, vdeg, False, False
-        )
-        BSPLSURF.Translate(gp_Vec(0, 0, 2))
+        # BSPLSURF = Geom_BSplineSurface(
+        #     poles, uknots, vknots, umult, vmult, udeg, vdeg, False, False
+        # )
+        # BSPLSURF.Translate(gp_Vec(0, 0, 2))
 
     def test_surfaces_from_offsets(self):
         """Test: surfaces from offsets"""

@@ -129,7 +129,7 @@ MoniTool_ValueBinary = MoniTool_ValueType.MoniTool_ValueBinary
 
 /* templates */
 %template(MoniTool_DataMapOfShapeTransient) NCollection_DataMap<TopoDS_Shape,opencascade::handle<Standard_Transient>,TopTools_ShapeMapHasher>;
-%template(MoniTool_DataMapOfTimer) NCollection_DataMap<Standard_CString,opencascade::handle<MoniTool_Timer>,MoniTool_MTHasher>;
+%template(MoniTool_DataMapOfTimer) NCollection_DataMap<Standard_CString,opencascade::handle<MoniTool_Timer>,Standard_CStringHasher>;
 %template(MoniTool_IndexedDataMapOfShapeTransient) NCollection_IndexedDataMap<TopoDS_Shape,opencascade::handle<Standard_Transient>,TopTools_ShapeMapHasher>;
 %template(MoniTool_SequenceOfElement) NCollection_Sequence<opencascade::handle<MoniTool_Element>>;
 
@@ -144,9 +144,9 @@ MoniTool_ValueBinary = MoniTool_ValueType.MoniTool_ValueBinary
 /* typedefs */
 typedef opencascade::handle<TCollection_HAsciiString>( * MoniTool_ValueInterpret ) ( const opencascade::handle<MoniTool_TypedValue>& typval, const opencascade::handle<TCollection_HAsciiString>& val, const Standard_Boolean native );
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfShapeTransient;
-typedef NCollection_DataMap<Standard_CString, opencascade::handle<MoniTool_Timer>, MoniTool_MTHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfTimer;
+typedef NCollection_DataMap<Standard_CString, opencascade::handle<MoniTool_Timer>, Standard_CStringHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfTimer;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> MoniTool_DataMapOfShapeTransient;
-typedef NCollection_DataMap<Standard_CString, opencascade::handle<MoniTool_Timer>, MoniTool_MTHasher> MoniTool_DataMapOfTimer;
+typedef NCollection_DataMap<Standard_CString, opencascade::handle<MoniTool_Timer>, Standard_CStringHasher> MoniTool_DataMapOfTimer;
 typedef NCollection_IndexedDataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> MoniTool_IndexedDataMapOfShapeTransient;
 typedef NCollection_Sequence<opencascade::handle<MoniTool_Element>> MoniTool_SequenceOfElement;
 /* end typedefs declaration */
@@ -1402,58 +1402,6 @@ Returns type name (string) allows to name type of non-handled objects.
 	}
 };
 
-/****************************
-* class MoniTool_ElemHasher *
-****************************/
-class MoniTool_ElemHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 36ed3693281a4c1efb408c6d81ea9442 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theElement: Handle ( MoniTool_Element )
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Returns hash code for the given element, in the range [1, theupperbound]. asks theelement its hashcode, then transforms it to be in the required range. @param theelement the element which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(const Handle ( MoniTool_Element ) & theElement, Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 84b993ef1cb63a485f6d39c8e686a3d8 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-K1: MoniTool_Element
-K2: MoniTool_Element
-
-Return
--------
-bool
-
-Description
------------
-Returns true if two keys are the same. the test does not work on the elements themselves but by calling their methods equates.
-") IsEqual;
-		static Standard_Boolean IsEqual(const opencascade::handle<MoniTool_Element> & K1, const opencascade::handle<MoniTool_Element> & K2);
-
-};
-
-
-%extend MoniTool_ElemHasher {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /*************************
 * class MoniTool_Element *
 *************************/
@@ -1492,17 +1440,17 @@ Specific testof equality: to be defined by each sub-class, must be false if elem
 		virtual Standard_Boolean Equates(const opencascade::handle<MoniTool_Element> & other);
 
 		/****************** GetHashCode ******************/
-		/**** md5 signature: bff72276a4c4e09c342f668ee3cdf337 ****/
+		/**** md5 signature: 7287addabc58f18bcef75f2c632e90c4 ****/
 		%feature("compactdefaultargs") GetHashCode;
 		%feature("autodoc", "Return
 -------
-int
+size_t
 
 Description
 -----------
 Returns the hashcode which has been stored by sethashcode (remark that hashcode could be deferred then be defined by sub-classes, the result is the same).
 ") GetHashCode;
-		Standard_Integer GetHashCode();
+		size_t GetHashCode();
 
 		/****************** ListAttr ******************/
 		/**** md5 signature: 89db2371bd1b9507aadc1fc2ccd6a47b ****/
@@ -1609,58 +1557,6 @@ No available documentation.
 %make_alias(MoniTool_IntVal)
 
 %extend MoniTool_IntVal {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/**************************
-* class MoniTool_MTHasher *
-**************************/
-class MoniTool_MTHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: 41f46f76df5600cf4764d092181522c3 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theString: str
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Returns hash code for the given string, in the range [1, theupperbound] @param thestring the string which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(Standard_CString theString, Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: d58faee5604f73146448a83725c5050b ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-Str1: str
-Str2: str
-
-Return
--------
-bool
-
-Description
------------
-Returns true when the two cstring are the same. two same strings must have the same hashcode, the contrary is not necessary. default str1 == str2.
-") IsEqual;
-		static Standard_Boolean IsEqual(Standard_CString Str1, Standard_CString Str2);
-
-};
-
-
-%extend MoniTool_MTHasher {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -3459,22 +3355,6 @@ def MoniTool_DataInfo_Type(*args):
 @deprecated
 def MoniTool_DataInfo_TypeName(*args):
 	return MoniTool_DataInfo.TypeName(*args)
-
-@deprecated
-def MoniTool_ElemHasher_HashCode(*args):
-	return MoniTool_ElemHasher.HashCode(*args)
-
-@deprecated
-def MoniTool_ElemHasher_IsEqual(*args):
-	return MoniTool_ElemHasher.IsEqual(*args)
-
-@deprecated
-def MoniTool_MTHasher_HashCode(*args):
-	return MoniTool_MTHasher.HashCode(*args)
-
-@deprecated
-def MoniTool_MTHasher_IsEqual(*args):
-	return MoniTool_MTHasher.IsEqual(*args)
 
 @deprecated
 def MoniTool_Stat_Current(*args):

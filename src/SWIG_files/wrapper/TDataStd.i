@@ -127,11 +127,11 @@ TDataStd_ANGULAR = TDataStd_RealEnum.TDataStd_ANGULAR
 /* end handles declaration */
 
 /* templates */
-%template(TDataStd_DataMapOfStringByte) NCollection_DataMap<TCollection_ExtendedString,Standard_Byte,TCollection_ExtendedString>;
-%template(TDataStd_DataMapOfStringHArray1OfInteger) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<TColStd_HArray1OfInteger>,TCollection_ExtendedString>;
-%template(TDataStd_DataMapOfStringHArray1OfReal) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<TColStd_HArray1OfReal>,TCollection_ExtendedString>;
-%template(TDataStd_DataMapOfStringReal) NCollection_DataMap<TCollection_ExtendedString,Standard_Real,TCollection_ExtendedString>;
-%template(TDataStd_DataMapOfStringString) NCollection_DataMap<TCollection_ExtendedString,TCollection_ExtendedString,TCollection_ExtendedString>;
+%template(TDataStd_DataMapOfStringByte) NCollection_DataMap<TCollection_ExtendedString,Standard_Byte>;
+%template(TDataStd_DataMapOfStringHArray1OfInteger) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<TColStd_HArray1OfInteger>>;
+%template(TDataStd_DataMapOfStringHArray1OfReal) NCollection_DataMap<TCollection_ExtendedString,opencascade::handle<TColStd_HArray1OfReal>>;
+%template(TDataStd_DataMapOfStringReal) NCollection_DataMap<TCollection_ExtendedString,Standard_Real>;
+%template(TDataStd_DataMapOfStringString) NCollection_DataMap<TCollection_ExtendedString,TCollection_ExtendedString>;
 %template(TDataStd_LabelArray1) NCollection_Array1<TDF_Label>;
 
 %extend NCollection_Array1<TDF_Label> {
@@ -188,16 +188,16 @@ TDataStd_ANGULAR = TDataStd_RealEnum.TDataStd_ANGULAR
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Byte, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringByte;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Real, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringReal;
-typedef NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringString;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Byte, TCollection_ExtendedString> TDataStd_DataMapOfStringByte;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>, TCollection_ExtendedString> TDataStd_DataMapOfStringHArray1OfInteger;
-typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>, TCollection_ExtendedString> TDataStd_DataMapOfStringHArray1OfReal;
-typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Real, TCollection_ExtendedString> TDataStd_DataMapOfStringReal;
-typedef NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString, TCollection_ExtendedString> TDataStd_DataMapOfStringString;
+typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Byte>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringByte;
+typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfInteger;
+typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringHArray1OfReal;
+typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Real>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringReal;
+typedef NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString>::Iterator TDataStd_DataMapIteratorOfDataMapOfStringString;
+typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Byte> TDataStd_DataMapOfStringByte;
+typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfInteger>> TDataStd_DataMapOfStringHArray1OfInteger;
+typedef NCollection_DataMap<TCollection_ExtendedString, opencascade::handle<TColStd_HArray1OfReal>> TDataStd_DataMapOfStringHArray1OfReal;
+typedef NCollection_DataMap<TCollection_ExtendedString, Standard_Real> TDataStd_DataMapOfStringReal;
+typedef NCollection_DataMap<TCollection_ExtendedString, TCollection_ExtendedString> TDataStd_DataMapOfStringString;
 typedef NCollection_Array1<TDF_Label> TDataStd_LabelArray1;
 typedef NCollection_List<Standard_Byte>::Iterator TDataStd_ListIteratorOfListOfByte;
 typedef NCollection_List<TCollection_ExtendedString>::Iterator TDataStd_ListIteratorOfListOfExtendedString;
@@ -5597,7 +5597,7 @@ Returns true if the attribute contains this named array of real values.
 		Standard_Boolean HasArrayOfReals(TCollection_ExtendedString theName);
 
 		/****************** HasArraysOfIntegers ******************/
-		/**** md5 signature: 4eb40476bed752475b28d589eb3557f3 ****/
+		/**** md5 signature: 630276ad2915cc0f5cb7a7fae1577c12 ****/
 		%feature("compactdefaultargs") HasArraysOfIntegers;
 		%feature("autodoc", "Return
 -------
@@ -5610,7 +5610,7 @@ Returns true if there are some named arrays of integer values in the attribute.
 		Standard_Boolean HasArraysOfIntegers();
 
 		/****************** HasArraysOfReals ******************/
-		/**** md5 signature: b3341be264afdd2f76e521b7b6f32993 ****/
+		/**** md5 signature: 3a700fb256757684d41d9b2cb7dfbe60 ****/
 		%feature("compactdefaultargs") HasArraysOfReals;
 		%feature("autodoc", "Return
 -------
@@ -5641,7 +5641,7 @@ Returns true if the attribute contains this named byte.
 		Standard_Boolean HasByte(TCollection_ExtendedString theName);
 
 		/****************** HasBytes ******************/
-		/**** md5 signature: 0451a850345dbe15a00e9048eab7e808 ****/
+		/**** md5 signature: 94a3934cdf294db1b998b35763579703 ****/
 		%feature("compactdefaultargs") HasBytes;
 		%feature("autodoc", "Return
 -------
@@ -5685,7 +5685,7 @@ Returns true if the attribute contains specified by name integer value.
 		Standard_Boolean HasInteger(TCollection_ExtendedString theName);
 
 		/****************** HasIntegers ******************/
-		/**** md5 signature: ced4a2334acc044b72b0f671617a1019 ****/
+		/**** md5 signature: aa7fb571afe1cc8055a6c72701aedd1e ****/
 		%feature("compactdefaultargs") HasIntegers;
 		%feature("autodoc", "Return
 -------
@@ -5716,7 +5716,7 @@ Returns true if the attribute contains a real specified by name.
 		Standard_Boolean HasReal(TCollection_ExtendedString theName);
 
 		/****************** HasReals ******************/
-		/**** md5 signature: 14759d335b5245924e19e98e05dc851e ****/
+		/**** md5 signature: d08f33ee376c6cd75a9d81cc491b4176 ****/
 		%feature("compactdefaultargs") HasReals;
 		%feature("autodoc", "Return
 -------
@@ -5747,7 +5747,7 @@ Returns true if the attribute contains this named string.
 		Standard_Boolean HasString(TCollection_ExtendedString theName);
 
 		/****************** HasStrings ******************/
-		/**** md5 signature: ff76feca31b86b3fc49e4aa6b2e1aa81 ****/
+		/**** md5 signature: 91968d2a3a35cf447a545790772a5e0a ****/
 		%feature("compactdefaultargs") HasStrings;
 		%feature("autodoc", "Return
 -------

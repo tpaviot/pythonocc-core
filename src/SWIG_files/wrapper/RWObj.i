@@ -1292,9 +1292,29 @@ bool
 
 Description
 -----------
-Probe data from obj file (comments, external references) without actually reading mesh data. although mesh data will not be collected, the full file content will be parsed, due to obj format limitations. @param thefile path to the file @param theprogress progress indicator return true if success, false on error or user break. @sa filecomments(), externalfiles(), nbprobenodes(), nbprobeelems().
+Open stream and pass it to probe method. @param thefile path to the file @param theprogress progress indicator return true if success, false on error or user break. @sa filecomments(), externalfiles(), nbprobenodes(), nbprobeelems().
 ") Probe;
 		Standard_Boolean Probe(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
+
+		/****************** Probe ******************/
+		/**** md5 signature: 8376516956f14db4066de53fb560bbd8 ****/
+		%feature("compactdefaultargs") Probe;
+		%feature("autodoc", "
+Parameters
+----------
+theStream: str
+theFile: str
+theProgress: Message_ProgressRange
+
+Return
+-------
+bool
+
+Description
+-----------
+Probe data from obj file (comments, external references) without actually reading mesh data. although mesh data will not be collected, the full file content will be parsed, due to obj format limitations. @param thestream input stream @param thefile path to the file @param theprogress progress indicator return true if success, false on error or user break. @sa filecomments(), externalfiles(), nbprobenodes(), nbprobeelems().
+") Probe;
+		Standard_Boolean Probe(std::istream & theStream, TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
 
 		/****************** Read ******************/
 		/**** md5 signature: 22d0a4b3b93a1e3452e7be9b291128a7 ****/
@@ -1311,9 +1331,29 @@ bool
 
 Description
 -----------
-Reads data from obj file. unicode paths can be given in utf-8 encoding. returns true if success, false on error or user break.
+Open stream and pass it to read method returns true if success, false on error.
 ") Read;
 		Standard_Boolean Read(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
+
+		/****************** Read ******************/
+		/**** md5 signature: fdd87a6a5d4e606e047cd74101908aae ****/
+		%feature("compactdefaultargs") Read;
+		%feature("autodoc", "
+Parameters
+----------
+theStream: str
+theFile: str
+theProgress: Message_ProgressRange
+
+Return
+-------
+bool
+
+Description
+-----------
+Reads data from obj file. unicode paths can be given in utf-8 encoding. returns true if success, false on error or user break.
+") Read;
+		Standard_Boolean Read(std::istream & theStream, TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
 
 		/****************** SetMemoryLimit ******************/
 		/**** md5 signature: 6570682bb3b681c7b6ede732333556b3 ****/

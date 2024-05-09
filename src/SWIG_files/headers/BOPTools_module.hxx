@@ -33,6 +33,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BOPTools_PairSelector.hxx>
 #include<BOPTools_Parallel.hxx>
 #include<BOPTools_Set.hxx>
-#include<BOPTools_SetMapHasher.hxx>
 
 #endif // BOPTOOLS_HXX

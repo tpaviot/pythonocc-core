@@ -260,8 +260,8 @@ Interface_ParamBinary = Interface_ParamType.Interface_ParamBinary
     __next__ = next
     }
 };
-%template(Interface_DataMapOfTransientInteger) NCollection_DataMap<opencascade::handle<Standard_Transient>,Standard_Integer,TColStd_MapTransientHasher>;
-%template(Interface_IndexedMapOfAsciiString) NCollection_IndexedMap<TCollection_AsciiString,Interface_MapAsciiStringHasher>;
+%template(Interface_DataMapOfTransientInteger) NCollection_DataMap<opencascade::handle<Standard_Transient>,Standard_Integer>;
+%template(Interface_IndexedMapOfAsciiString) NCollection_IndexedMap<TCollection_AsciiString>;
 %template(Interface_SequenceOfCheck) NCollection_Sequence<opencascade::handle<Interface_Check>>;
 
 %extend NCollection_Sequence<opencascade::handle<Interface_Check>> {
@@ -277,9 +277,9 @@ Interface_ParamBinary = Interface_ParamType.Interface_ParamBinary
 typedef Standard_Boolean ( * Interface_ValueSatisfies ) ( const opencascade::handle<TCollection_HAsciiString>& val );
 typedef NCollection_Array1<Interface_FileParameter> Interface_Array1OfFileParameter;
 typedef NCollection_Array1<opencascade::handle<TCollection_HAsciiString>> Interface_Array1OfHAsciiString;
-typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Standard_Integer, TColStd_MapTransientHasher>::Iterator Interface_DataMapIteratorOfDataMapOfTransientInteger;
-typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Standard_Integer, TColStd_MapTransientHasher> Interface_DataMapOfTransientInteger;
-typedef NCollection_IndexedMap<TCollection_AsciiString, Interface_MapAsciiStringHasher> Interface_IndexedMapOfAsciiString;
+typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Standard_Integer>::Iterator Interface_DataMapIteratorOfDataMapOfTransientInteger;
+typedef NCollection_DataMap<opencascade::handle<Standard_Transient>, Standard_Integer> Interface_DataMapOfTransientInteger;
+typedef NCollection_IndexedMap<TCollection_AsciiString> Interface_IndexedMapOfAsciiString;
 typedef NCollection_Sequence<opencascade::handle<Interface_Check>> Interface_SequenceOfCheck;
 typedef NCollection_Vector<Interface_FileParameter> Interface_VectorOfFileParameter;
 /* end typedefs declaration */
@@ -8564,58 +8564,6 @@ Writes the list of messages recorded to be translated, to a stream. writes all t
 	}
 };
 
-/***************************************
-* class Interface_MapAsciiStringHasher *
-***************************************/
-class Interface_MapAsciiStringHasher {
-	public:
-		/****************** HashCode ******************/
-		/**** md5 signature: e2da36afc8f40403f8d6004d8f435bb2 ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theAsciiString: str
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Computes a hash code for the given ascii string, in the range [1, theupperbound] @param theasciistring the ascii string which hash code is to be computed @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		static Standard_Integer HashCode(TCollection_AsciiString theAsciiString, Standard_Integer theUpperBound);
-
-		/****************** IsEqual ******************/
-		/**** md5 signature: 35e2d5de13dedd4a3cad858a55372251 ****/
-		%feature("compactdefaultargs") IsEqual;
-		%feature("autodoc", "
-Parameters
-----------
-K1: str
-K2: str
-
-Return
--------
-bool
-
-Description
------------
-No available documentation.
-") IsEqual;
-		static Standard_Boolean IsEqual(TCollection_AsciiString K1, TCollection_AsciiString K2);
-
-};
-
-
-%extend Interface_MapAsciiStringHasher {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /***********************************
 * class Interface_NodeOfGeneralLib *
 ***********************************/
@@ -11517,12 +11465,12 @@ Returns the family. it can be: a resource name for applis, an internal name betw
 		Standard_CString Family();
 
 		/****************** FillMap ******************/
-		/**** md5 signature: e51e3c4131980a267a8de08fac73e54c ****/
+		/**** md5 signature: 72aec84e532a60d574204def21e2557c ****/
 		%feature("compactdefaultargs") FillMap;
 		%feature("autodoc", "
 Parameters
 ----------
-theMap: NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString>
+theMap: NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString>
 
 Return
 -------
@@ -11532,7 +11480,7 @@ Description
 -----------
 Fills given string-to-string map with all static data.
 ") FillMap;
-		static void FillMap(NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString, TCollection_AsciiString> & theMap);
+		static void FillMap(NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString> & theMap);
 
 		/****************** IDef ******************/
 		/**** md5 signature: 809047165ba17b6256ca717fd657b669 ****/
@@ -12046,14 +11994,6 @@ def Interface_MSG_Translated(*args):
 @deprecated
 def Interface_MSG_Write(*args):
 	return Interface_MSG.Write(*args)
-
-@deprecated
-def Interface_MapAsciiStringHasher_HashCode(*args):
-	return Interface_MapAsciiStringHasher.HashCode(*args)
-
-@deprecated
-def Interface_MapAsciiStringHasher_IsEqual(*args):
-	return Interface_MapAsciiStringHasher.IsEqual(*args)
 
 @deprecated
 def Interface_Protocol_Active(*args):

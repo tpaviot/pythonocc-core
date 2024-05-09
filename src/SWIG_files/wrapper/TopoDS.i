@@ -1177,30 +1177,6 @@ Sets the free flag.
 ") Free;
 		void Free(Standard_Boolean theIsFree);
 
-		/****************** HashCode ******************/
-		/**** md5 signature: 63d1f963e092468b3b680fe64f4cfd8b ****/
-		%feature("compactdefaultargs") HashCode;
-		%feature("autodoc", "
-Parameters
-----------
-theUpperBound: int
-
-Return
--------
-int
-
-Description
------------
-Returns a hashed value denoting <self>. this value is in the range [1, theupperbound]. it is computed from the tshape and the location. the orientation is not used. @param theupperbound the upper bound of the range a computing hash code must be within return a computed hash code, in the range [1, theupperbound].
-") HashCode;
-		Standard_Integer HashCode(Standard_Integer theUpperBound);
-
-        %extend {
-            Standard_Integer __hash__() {
-            return $self->HashCode(2147483647);
-            }
-        };
-
 		/****************** Infinite ******************/
 		/**** md5 signature: 9f918e9fa7267ec7961ed78dd974f109 ****/
 		%feature("compactdefaultargs") Infinite;
@@ -1677,6 +1653,13 @@ def __eq__(self, right):
 
 
 %extend TopoDS_Shape {
+    size_t __hash__() {
+    std::hash<TopoDS_Shape> shapeHasher;
+    size_t hashValue = shapeHasher(*self);
+    return hashValue;}
+};
+
+%extend TopoDS_Shape {
 %pythoncode {
     def __getstate__(self):
         from .BRepTools import breptools
@@ -2019,13 +2002,40 @@ Returns the type as a term of the shapeenum enum: vertex, edge, wire, face, ....
 	}
 };
 
+/*******************************
+* class hash<TopoDS_CompSolid> *
+*******************************/
+/******************************
+* class hash<TopoDS_Compound> *
+******************************/
+/**************************
+* class hash<TopoDS_Edge> *
+**************************/
+/**************************
+* class hash<TopoDS_Face> *
+**************************/
+/***************************
+* class hash<TopoDS_Shape> *
+***************************/
+/***************************
+* class hash<TopoDS_Shell> *
+***************************/
+/***************************
+* class hash<TopoDS_Solid> *
+***************************/
+/****************************
+* class hash<TopoDS_Vertex> *
+****************************/
+/**************************
+* class hash<TopoDS_Wire> *
+**************************/
 /*************************
 * class TopoDS_CompSolid *
 *************************/
 class TopoDS_CompSolid : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_CompSolid ******************/
-		/**** md5 signature: 81a2d394d7066c960d9b2c542e737183 ****/
+		/**** md5 signature: 4e70b1dcdd85f3c4a5879f40c5c14bf3 ****/
 		%feature("compactdefaultargs") TopoDS_CompSolid;
 		%feature("autodoc", "Return
 -------
@@ -2052,7 +2062,7 @@ Constructs an undefined compsolid.
 class TopoDS_Compound : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Compound ******************/
-		/**** md5 signature: 8cbdc34d3d5ac0c9181f908949a30ec5 ****/
+		/**** md5 signature: 62e9eeb255aba3f819f1225fe00186c5 ****/
 		%feature("compactdefaultargs") TopoDS_Compound;
 		%feature("autodoc", "Return
 -------
@@ -2079,7 +2089,7 @@ Constructs an undefined compound.
 class TopoDS_Edge : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Edge ******************/
-		/**** md5 signature: 24f17faffc9220258aaf8f49f905587d ****/
+		/**** md5 signature: 9416e6e6aa14e71109ceb91046f13c31 ****/
 		%feature("compactdefaultargs") TopoDS_Edge;
 		%feature("autodoc", "Return
 -------
@@ -2106,7 +2116,7 @@ Undefined edge.
 class TopoDS_Face : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Face ******************/
-		/**** md5 signature: 8ea316a9eb86a247f40f1855b303da4a ****/
+		/**** md5 signature: c7ffccf9e49ec92b2a176332a9b1d12e ****/
 		%feature("compactdefaultargs") TopoDS_Face;
 		%feature("autodoc", "Return
 -------
@@ -2133,7 +2143,7 @@ Undefined face.
 class TopoDS_Shell : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Shell ******************/
-		/**** md5 signature: 6c2c7afd029247018dcce6e7019961b6 ****/
+		/**** md5 signature: e86f38971b810d1bc2e49dcbd1f86083 ****/
 		%feature("compactdefaultargs") TopoDS_Shell;
 		%feature("autodoc", "Return
 -------
@@ -2160,7 +2170,7 @@ Constructs an undefined shell.
 class TopoDS_Solid : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Solid ******************/
-		/**** md5 signature: 27228574635e72d535f1813662c47439 ****/
+		/**** md5 signature: aef7a16add6d43f5c6e263c45c82e991 ****/
 		%feature("compactdefaultargs") TopoDS_Solid;
 		%feature("autodoc", "Return
 -------
@@ -2579,7 +2589,7 @@ class TopoDS_Vertex : public TopoDS_Shape {
 		%feature("autodoc", "1");
 		TopoDS_Vertex(const TopoDS_Vertex arg0);
 		/****************** TopoDS_Vertex ******************/
-		/**** md5 signature: 6e05aeb40aeec3c0acc661c2013c12a2 ****/
+		/**** md5 signature: a529b84382b7576bf953dad316a4b27f ****/
 		%feature("compactdefaultargs") TopoDS_Vertex;
 		%feature("autodoc", "Return
 -------
@@ -2606,7 +2616,7 @@ Undefined vertex.
 class TopoDS_Wire : public TopoDS_Shape {
 	public:
 		/****************** TopoDS_Wire ******************/
-		/**** md5 signature: 4ea4cbfc05e07a09a47af95d1f3de96b ****/
+		/**** md5 signature: 5bad3ab78b3030254c7036e91e02efc6 ****/
 		%feature("compactdefaultargs") TopoDS_Wire;
 		%feature("autodoc", "Return
 -------

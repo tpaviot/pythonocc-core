@@ -669,6 +669,7 @@ class RWGltf_CafWriter : public Standard_Transient {
 	public:
 		class Mesh {};
 		class RWGltf_StyledShape {};
+		class Hasher {};
 		/****************** RWGltf_CafWriter ******************/
 		/**** md5 signature: ff99e81d575a475273adc594a6a9069b ****/
 		%feature("compactdefaultargs") RWGltf_CafWriter;
@@ -1943,7 +1944,7 @@ No available documentation.
 /********************************
 * class RWGltf_GltfSceneNodeMap *
 ********************************/
-class RWGltf_GltfSceneNodeMap : public NCollection_IndexedMap<XCAFPrs_DocumentNode,XCAFPrs_DocumentNode> {
+class RWGltf_GltfSceneNodeMap : public NCollection_IndexedMap<XCAFPrs_DocumentNode> {
 	public:
 		/****************** RWGltf_GltfSceneNodeMap ******************/
 		/**** md5 signature: 7eb6a53ba949dbdb457796ba63fb4a03 ****/
