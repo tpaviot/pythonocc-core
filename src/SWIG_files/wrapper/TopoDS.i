@@ -1177,13 +1177,6 @@ Sets the free flag.
 ") Free;
 		void Free(Standard_Boolean theIsFree);
 
-%extend {
-    size_t __hash__() {
-    std::hash<TopoDS_Shape> shapeHasher;
-    size_t hashValue = shapeHasher(*self);
-    return hashValue;}
-};
-
 		/****************** Infinite ******************/
 		/**** md5 signature: 9f918e9fa7267ec7961ed78dd974f109 ****/
 		%feature("compactdefaultargs") Infinite;
@@ -1658,6 +1651,13 @@ def __eq__(self, right):
 };
 
 
+
+%extend TopoDS_Shape {
+    size_t __hash__() {
+    std::hash<TopoDS_Shape> shapeHasher;
+    size_t hashValue = shapeHasher(*self);
+    return hashValue;}
+};
 
 %extend TopoDS_Shape {
 %pythoncode {

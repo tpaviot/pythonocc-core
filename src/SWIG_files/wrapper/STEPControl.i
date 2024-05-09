@@ -813,7 +813,6 @@ Loads a file from stream and returns the read status.
 ") ReadStream;
 		virtual IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
 
-	
 		/****************** SetSystemLengthUnit ******************/
 		/**** md5 signature: 510dfa5f705479dabe69cd18ff63f186 ****/
 		%feature("compactdefaultargs") SetSystemLengthUnit;

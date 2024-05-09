@@ -660,7 +660,9 @@ Update loading status. checking for the ability to read and write. @param[in] th
 	}
 };
 
-
+/************************
+* class DE_PluginHolder *
+************************/
 /********************
 * class DE_Provider *
 ********************/
@@ -1424,6 +1426,14 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 	}
 };
 
+/* python proxy for excluded classes */
+%pythoncode {
+@classnotwrapped
+class DE_PluginHolder:
+	pass
+
+}
+/* end python proxy for excluded classes */
 /* harray1 classes */
 /* harray2 classes */
 /* hsequence classes */

@@ -20,7 +20,6 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 
 #include<StepToTopoDS.hxx>
-//#include<StepToTopoDS_Builder.hxx>
 #include<StepToTopoDS_BuilderError.hxx>
 #include<StepToTopoDS_DataMapIteratorOfDataMapOfRI.hxx>
 #include<StepToTopoDS_DataMapIteratorOfDataMapOfRINames.hxx>

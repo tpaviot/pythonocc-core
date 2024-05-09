@@ -18,7 +18,8 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #ifndef XCAFDOC_HXX
 #define XCAFDOC_HXX
 
-#include <TDF_Label.hxx>
+
+#include<TDF_Label.hxx>
 #include<XCAFDoc.hxx>
 #include<XCAFDoc_Area.hxx>
 #include<XCAFDoc_AssemblyGraph.hxx>

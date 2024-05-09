@@ -53,6 +53,7 @@ from enum import IntEnum
 from OCC.Core.Exception import *
 };
 
+
 %include "NCollection_TypeDef.hxx";
 %include "NCollection_Array1.hxx";
 %include "NCollection_Array2.hxx";
@@ -83,7 +84,6 @@ from OCC.Core.Exception import *
 %ignore NCollection_List::First();
 %ignore NCollection_List::Last();
 %ignore NCollection_TListIterator::Value();
-
 /* public enums */
 enum NCollection_CellFilter_Action {
 	CellFilter_Keep = 0,

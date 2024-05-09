@@ -90,7 +90,6 @@ GccEnt_noqualifier = GccEnt_Position.GccEnt_noqualifier
 /* end handles declaration */
 
 /* templates */
-
 /* end templates declaration */
 
 /* typedefs */

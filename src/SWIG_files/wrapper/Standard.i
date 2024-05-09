@@ -128,6 +128,8 @@ class Standard {
 /* end public enums declaration */
 
 /* python proxy classes for enums */
+%pythoncode {
+};
 /* end python proxy for enums */
 
 		/****************** Allocate ******************/

@@ -243,10 +243,6 @@ Extrema_ExtFlag_MINMAX = Extrema_ExtFlag.Extrema_ExtFlag_MINMAX
     __next__ = next
     }
 };
-//%template(Extrema_Array2OfPOnCurv) NCollection_Array2<Extrema_POnCurv>;
-//%template(Extrema_Array2OfPOnCurv2d) NCollection_Array2<Extrema_POnCurv2d>;
-//%template(Extrema_Array2OfPOnSurf) NCollection_Array2<Extrema_POnSurf>;
-//%template(Extrema_Array2OfPOnSurfParams) NCollection_Array2<Extrema_POnSurfParams>;
 %template(Extrema_SequenceOfPOnCurv) NCollection_Sequence<Extrema_POnCurv>;
 
 %extend NCollection_Sequence<Extrema_POnCurv> {
@@ -8701,7 +8697,6 @@ Constructor.
 ") Extrema_FuncPSDist;
 		 Extrema_FuncPSDist(const Adaptor3d_Surface & theS, const gp_Pnt & theP);
 
-		
 		/****************** NbVariables ******************/
 		/**** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ****/
 		%feature("compactdefaultargs") NbVariables;
@@ -8714,12 +8709,39 @@ Description
 Number of variables.
 ") NbVariables;
 		Standard_Integer NbVariables();
+
+		/****************** Value ******************/
+		/**** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ****/
+		%feature("compactdefaultargs") Value;
+		%feature("autodoc", "
+Parameters
+----------
+X: math_VectorBase<double >
+
+Return
+-------
+F: float
+
+Description
+-----------
+Value.
+") Value;
+		Standard_Boolean Value(math_VectorBase<double > X, Standard_Real &OutValue);
+
 };
 
 
 %extend Extrema_FuncPSDist {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Gradient(self):
+		pass
+
+	@methodnotwrapped
+	def Values(self):
+		pass
 	}
 };
 

@@ -534,7 +534,6 @@ StepDimTol_SDRMTranslation = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_
     __next__ = next
     }
 };
-
 %template(StepDimTol_Array1OfToleranceZoneTarget) NCollection_Array1<StepDimTol_ToleranceZoneTarget>;
 
 %extend NCollection_Array1<StepDimTol_ToleranceZoneTarget> {
