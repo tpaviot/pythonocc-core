@@ -21,8 +21,8 @@ project(PYTHONOCC)
 
 # set pythonOCC version
 set(PYTHONOCC_VERSION_MAJOR 7)
-set(PYTHONOCC_VERSION_MINOR 7)
-set(PYTHONOCC_VERSION_PATCH 2)
+set(PYTHONOCC_VERSION_MINOR 8)
+set(PYTHONOCC_VERSION_PATCH 1)
 
 #  Empty for official releases, set to -dev, -rc1, etc for development releases
 set(PYTHONOCC_VERSION_DEVEL )
