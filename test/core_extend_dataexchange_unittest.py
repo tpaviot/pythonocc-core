@@ -55,6 +55,7 @@ IGES_45_FACES = get_test_fullname("example_45_faces.iges")
 STL_ASCII_SAMPLE_FILE = get_test_fullname("bottle_ascii.stl")
 STL_BINARY_SAMPLE_FILE = get_test_fullname("cube_binary.stl")
 GLTF_ASCII_SAMPLE_FILE = get_test_fullname("Duck.gltf")
+GLTF_BINARY_SAMPLE_FILE = get_test_fullname("Duck.gltf")
 
 # the basic geometry to test exporters
 A_TOPODS_SHAPE = BRepPrimAPI_MakeTorus(200, 50).Shape()
@@ -99,8 +100,11 @@ class TestExtendDataExchange(unittest.TestCase):
         export_shape_to_svg(A_TOPODS_SHAPE, svg_filename)
         self.check_is_file(svg_filename)
 
-    def test_read_gltf_file(self):
+    def test_read_gltf_ascii_file(self):
         shp = read_gltf_file(GLTF_ASCII_SAMPLE_FILE)
+
+    def test_read_gltf_binary_file(self):
+        shp = read_gltf_file(GLTF_BINARY_SAMPLE_FILE)
 
     def test_write_step_ap203(self):
         ap203_filename = get_test_fullname("sample_ap_203.stp")
