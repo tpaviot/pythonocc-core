@@ -121,7 +121,7 @@ from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool
 from OCC.Core.TDataStd import TDataStd_Name
 from OCC.Core.STEPCAFControl import STEPCAFControl_Writer
 from OCC.Core.IFSelect import IFSelect_RetDone
-
+from OCC.Core.ShapeAnalysis import ShapeAnalysis_FreeBounds
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
 
@@ -1027,6 +1027,22 @@ class TestWrapperFeatures(unittest.TestCase):
         result, step_str = step_writer.WriteStream()
         self.assertEqual(result, IFSelect_RetDone)
         self.assertEqual(len(step_str), 15416)  # 15416 characters in the step string
+
+    def test_shape_analysis_free_bounds(self):
+        """test special wrapper for ShapeAnalysis::ConnectEdgesToWires"""
+        p1 = gp_Pnt()
+        p2 = gp_Pnt(1, 0, 0)
+        e1 = BRepBuilderAPI_MakeEdge(p1, p2).Edge()
+
+        p3 = gp_Pnt(1, 1, 0)
+        e2 = BRepBuilderAPI_MakeEdge(p2, p3).Edge()
+
+        edges = TopTools_HSequenceOfShape()
+        edges.Append(e1)
+        edges.Append(e2)
+
+        result = ShapeAnalysis_FreeBounds.ConnectEdgesToWires(edges, 1.0e-7, False)
+        self.assertEqual(result.Length(), 1)
 
 
 def suite() -> unittest.TestSuite:
