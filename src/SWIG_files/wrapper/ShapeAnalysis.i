@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEANALYSISDOCSTRING
 "ShapeAnalysis module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_shapeanalysis.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_shapeanalysis.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEANALYSISDOCSTRING) ShapeAnalysis
 
@@ -2280,70 +2280,6 @@ Builds actual free bounds of the <shape>. <shape> should be a compound of shells
 ") ShapeAnalysis_FreeBounds;
 		 ShapeAnalysis_FreeBounds(const TopoDS_Shape & shape, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_True, const Standard_Boolean checkinternaledges = Standard_False);
 
-		/****************** ConnectEdgesToWires ******************/
-		/**** md5 signature: 6fcc51b9a4f6e720b15cb08a6b8abe01 ****/
-		%feature("compactdefaultargs") ConnectEdgesToWires;
-		%feature("autodoc", "
-Parameters
-----------
-edges: TopTools_HSequenceOfShape
-toler: float
-shared: bool
-wires: TopTools_HSequenceOfShape
-
-Return
--------
-None
-
-Description
------------
-Builds sequnce of <wires> out of sequence of not sorted <edges>. tries to build wires of maximum length. building a wire is stopped when no edges can be connected to it at its head or at its tail. //! orientation of the edge can change when connecting. if <shared> is true connection is performed only when adjacent edges share the same vertex. if <shared> is false connection is performed only when ends of adjacent edges are at distance less than <toler>.
-") ConnectEdgesToWires;
-		static void ConnectEdgesToWires(opencascade::handle<TopTools_HSequenceOfShape> & edges, const Standard_Real toler, const Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape> & wires);
-
-		/****************** ConnectWiresToWires ******************/
-		/**** md5 signature: 65e7beffc0860523c7e2928eb79c19e4 ****/
-		%feature("compactdefaultargs") ConnectWiresToWires;
-		%feature("autodoc", "
-Parameters
-----------
-iwires: TopTools_HSequenceOfShape
-toler: float
-shared: bool
-owires: TopTools_HSequenceOfShape
-
-Return
--------
-None
-
-Description
------------
-No available documentation.
-") ConnectWiresToWires;
-		static void ConnectWiresToWires(opencascade::handle<TopTools_HSequenceOfShape> & iwires, const Standard_Real toler, const Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape> & owires);
-
-		/****************** ConnectWiresToWires ******************/
-		/**** md5 signature: 009f594b7e71f4d33210458b3bbfb661 ****/
-		%feature("compactdefaultargs") ConnectWiresToWires;
-		%feature("autodoc", "
-Parameters
-----------
-iwires: TopTools_HSequenceOfShape
-toler: float
-shared: bool
-owires: TopTools_HSequenceOfShape
-vertices: TopTools_DataMapOfShapeShape
-
-Return
--------
-None
-
-Description
------------
-Builds sequnce of <owires> out of sequence of not sorted <iwires>. tries to build wires of maximum length. building a wire is stopped when no wires can be connected to it at its head or at its tail. //! orientation of the wire can change when connecting. if <shared> is true connection is performed only when adjacent wires share the same vertex. if <shared> is false connection is performed only when ends of adjacent wires are at distance less than <toler>. map <vertices> stores the correspondence between original end vertices of the wires and new connecting vertices.
-") ConnectWiresToWires;
-		static void ConnectWiresToWires(opencascade::handle<TopTools_HSequenceOfShape> & iwires, const Standard_Real toler, const Standard_Boolean shared, opencascade::handle<TopTools_HSequenceOfShape> & owires, TopTools_DataMapOfShapeShape & vertices);
-
 		/****************** DispatchWires ******************/
 		/**** md5 signature: 10c7bcfb1c66932d655ad49617f8df2b ****/
 		%feature("compactdefaultargs") DispatchWires;
@@ -2415,6 +2351,28 @@ Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires r
 };
 
 
+
+%extend ShapeAnalysis_FreeBounds {
+    static Handle(TopTools_HSequenceOfShape) ConnectEdgesToWires(opencascade::handle<TopTools_HSequenceOfShape> & edges,
+              const Standard_Real toler,
+              const Standard_Boolean shared)
+        {
+            Handle(TopTools_HSequenceOfShape) owires = new TopTools_HSequenceOfShape;
+            ShapeAnalysis_FreeBounds::ConnectEdgesToWires(edges, toler, shared, owires);
+            return owires;
+        }
+    };
+
+%extend ShapeAnalysis_FreeBounds {
+    static Handle(TopTools_HSequenceOfShape) ConnectWiresToWires(opencascade::handle<TopTools_HSequenceOfShape> & iwires,
+              const Standard_Real toler,
+              const Standard_Boolean shared)
+        {
+            Handle(TopTools_HSequenceOfShape) owires = new TopTools_HSequenceOfShape;
+            ShapeAnalysis_FreeBounds::ConnectWiresToWires(iwires, toler, shared, owires);
+            return owires;
+        }
+    };
 %extend ShapeAnalysis_FreeBounds {
 	%pythoncode {
 	__repr__ = _dumps_object
@@ -6998,18 +6956,6 @@ def ShapeAnalysis_Curve_IsPlanar(*args):
 @deprecated
 def ShapeAnalysis_Curve_IsPlanar(*args):
 	return ShapeAnalysis_Curve.IsPlanar(*args)
-
-@deprecated
-def ShapeAnalysis_FreeBounds_ConnectEdgesToWires(*args):
-	return ShapeAnalysis_FreeBounds.ConnectEdgesToWires(*args)
-
-@deprecated
-def ShapeAnalysis_FreeBounds_ConnectWiresToWires(*args):
-	return ShapeAnalysis_FreeBounds.ConnectWiresToWires(*args)
-
-@deprecated
-def ShapeAnalysis_FreeBounds_ConnectWiresToWires(*args):
-	return ShapeAnalysis_FreeBounds.ConnectWiresToWires(*args)
 
 @deprecated
 def ShapeAnalysis_FreeBounds_DispatchWires(*args):
