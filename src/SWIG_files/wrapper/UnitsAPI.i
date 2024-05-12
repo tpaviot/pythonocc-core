@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define UNITSAPIDOCSTRING
 "UnitsAPI module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_unitsapi.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_unitsapi.html"
 %enddef
 %module (package="OCC.Core", docstring=UNITSAPIDOCSTRING) UnitsAPI
 

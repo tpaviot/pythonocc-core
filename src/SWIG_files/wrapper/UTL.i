@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define UTLDOCSTRING
 "UTL module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_utl.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_utl.html"
 %enddef
 %module (package="OCC.Core", docstring=UTLDOCSTRING) UTL
 

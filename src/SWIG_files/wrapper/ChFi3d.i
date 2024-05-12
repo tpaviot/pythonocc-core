@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CHFI3DDOCSTRING
 "ChFi3d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_chfi3d.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_chfi3d.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFI3DDOCSTRING) ChFi3d
 

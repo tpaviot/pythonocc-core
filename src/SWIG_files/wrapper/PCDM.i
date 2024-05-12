@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PCDMDOCSTRING
 "PCDM module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_pcdm.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_pcdm.html"
 %enddef
 %module (package="OCC.Core", docstring=PCDMDOCSTRING) PCDM
 

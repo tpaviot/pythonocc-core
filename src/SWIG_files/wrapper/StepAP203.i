@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPAP203DOCSTRING
 "StepAP203 module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepap203.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_stepap203.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPAP203DOCSTRING) StepAP203
 

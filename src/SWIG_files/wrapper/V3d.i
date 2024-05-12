@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define V3DDOCSTRING
 "V3d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_v3d.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_v3d.html"
 %enddef
 %module (package="OCC.Core", docstring=V3DDOCSTRING) V3d
 

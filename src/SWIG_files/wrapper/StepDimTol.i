@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPDIMTOLDOCSTRING
 "StepDimTol module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_stepdimtol.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_stepdimtol.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPDIMTOLDOCSTRING) StepDimTol
 

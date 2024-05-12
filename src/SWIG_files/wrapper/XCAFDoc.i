@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XCAFDOCDOCSTRING
 "XCAFDoc module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_xcafdoc.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_xcafdoc.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFDOCDOCSTRING) XCAFDoc
 

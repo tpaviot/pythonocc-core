@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BNDDOCSTRING
 "Bnd module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_bnd.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_bnd.html"
 %enddef
 %module (package="OCC.Core", docstring=BNDDOCSTRING) Bnd
 

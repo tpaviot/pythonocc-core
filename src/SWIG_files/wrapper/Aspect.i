@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ASPECTDOCSTRING
 "Aspect module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_aspect.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_aspect.html"
 %enddef
 %module (package="OCC.Core", docstring=ASPECTDOCSTRING) Aspect
 
@@ -1350,10 +1350,6 @@ Return pointer to display structure that serves as the connection to the x serve
 %extend Aspect_DisplayConnection {
 	%pythoncode {
 	__repr__ = _dumps_object
-
-	@methodnotwrapped
-	def Aspect_DisplayConnection(self):
-		pass
 
 	@methodnotwrapped
 	def GetAtom(self):

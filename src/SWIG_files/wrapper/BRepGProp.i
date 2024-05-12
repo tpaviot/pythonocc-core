@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPGPROPDOCSTRING
 "BRepGProp module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_brepgprop.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepgprop.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPGPROPDOCSTRING) BRepGProp
 

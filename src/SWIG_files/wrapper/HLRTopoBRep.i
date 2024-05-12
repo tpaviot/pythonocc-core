@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HLRTOPOBREPDOCSTRING
 "HLRTopoBRep module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_hlrtopobrep.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_hlrtopobrep.html"
 %enddef
 %module (package="OCC.Core", docstring=HLRTOPOBREPDOCSTRING) HLRTopoBRep
 

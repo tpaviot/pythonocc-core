@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 0b07ce7
+git revision : 2a5eb79
 
 operating system : Linux 64bit 6.5.0-28-generic
 
 occt version targeted : 7.8.1
 
-date : 2024-05-09 18:04:40.785979
+date : 2024-05-12 07:22:38.072136
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -6965,6 +6965,9 @@ date : 2024-05-09 18:04:40.785979
 [INFO ]  Class: ShapeAnalysis_FreeBoundData
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ShapeAnalysis_FreeBounds
+[INFO ]      explicitly excluded method ShapeAnalysis_FreeBounds::6fcc51b9a4f6e720b15cb08a6b8abe01
+[INFO ]      explicitly excluded method ShapeAnalysis_FreeBounds::65e7beffc0860523c7e2928eb79c19e4
+[INFO ]      explicitly excluded method ShapeAnalysis_FreeBounds::009f594b7e71f4d33210458b3bbfb661
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: ShapeAnalysis_FreeBoundsProperties
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -9392,8 +9395,8 @@ date : 2024-05-09 18:04:40.785979
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 18.12s
+SWIG interface file generation completed in 18.17s
 #################################################
 
 [INFO ]  Number of classes: 4743
-[INFO ]  Number of methods: 47537
+[INFO ]  Number of methods: 47534

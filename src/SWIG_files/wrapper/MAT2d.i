@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MAT2DDOCSTRING
 "MAT2d module, see official documentation at
-https://www.opencascade.com/doc/occt-7.7.0/refman/html/package_mat2d.html"
+https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_mat2d.html"
 %enddef
 %module (package="OCC.Core", docstring=MAT2DDOCSTRING) MAT2d
 
