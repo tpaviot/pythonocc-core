@@ -51,4 +51,4 @@ test:
 about:
   home: https://github.com/tpaviot/pythonocc-core
   license: LGPL
-  summary: An industrial strength 3D CAD python package
+  summary: Python package for 3D geometry CAD/BIM/CAM
