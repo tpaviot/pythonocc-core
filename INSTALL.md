@@ -1,14 +1,14 @@
-Build pythonocc-7.7.2 from scratch on a fresh Ubuntu 22.04 install
+Build pythonocc-7.8.1 from scratch on a fresh Ubuntu 22.04 install
 ------------------------------------------------------------------
 
 Requirements
 ------------
 
-pythonOCC-7.7.2 needs the following libraries or programs to be installed before you
+pythonOCC-7.8.1 needs the following libraries or programs to be installed before you
 can compile/use it:
 
-*   the python programming language (<https://www.python.org>). Python 3.8 or more is required.
-*   OpenCascade 7.7.2 (<https://dev.opencascade.org>)
+*   the python programming language (<https://www.python.org>). Python 3.9 or more is required.
+*   OpenCascade 7.8.1 (<https://dev.opencascade.org>)
 *   SWIG 4.1.1 (<https://www.swig.org>)
 *   rapidjson (<https://rapidjson.org/>) for Gltf import/export
 *   cmake
@@ -31,16 +31,16 @@ cd swig-4.1.1
 
 Build OpenCascade
 -----------------
-Download/extract version 7.7.2 https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=cec1ecd0c9f3b3d2572c47035d11949e8dfa85e2;sf=tgz
+Download/extract version 7.8.1 https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=bd2a789f15235755ce4d1a3b07379a2e062fdc2e;sf=tgz
 
 ```bash
-wget -O occt-7.7.2.tgz https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=cec1ecd0c9f3b3d2572c47035d11949e8dfa85e2;sf=tgz
-tar -zxvf occt-7.7.2.tgz
+wget -O occt-7.8.1.tgz https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=bd2a789f15235755ce4d1a3b07379a2e062fdc2e;sf=tgz
+tar -zxvf occt-7.8.1.tgz
 ```
 
 Prepare the build stage:
 ```bash
-cd occt-cec1ecd
+cd occt-bd2a789
 mkdir cmake-build
 cd cmake-build
 ```
@@ -48,7 +48,7 @@ cd cmake-build
 Choose an installation destination. Default is /usr/local, but it is better to set up
 an other folder so that it's easier to work with concurrent versions.
 ```bash
-$ cmake -DINSTALL_DIR=/opt/build/occt772 -DBUILD_RELEASE_DISABLE_EXCEPTIONS=OFF ..
+$ cmake -DINSTALL_DIR=/opt/occt781 -DBUILD_RELEASE_DISABLE_EXCEPTIONS=OFF ..
 ```
 then
 ```bash
@@ -57,7 +57,7 @@ sudo make install
 ```
 and finally add the libraries to the system
 ```bash
-echo "/opt/build/occt772/lib" >> /etc/ld.so.conf.d/occt.conf
+echo "/opt/occt781/lib" >> /etc/ld.so.conf.d/occt.conf
 ```
 
 Build pythonocc
@@ -72,15 +72,15 @@ cd xx/pythonocc-core
 mkdir cmake-build && cd cmake-build
 
 RUN cmake \
- -DOCCT_INCLUDE_DIR=/opt/build/occt772/include/opencascade \
- -DOCCT_LIBRARY_DIR=/opt/build/occt772/lib \
+ -DOCCT_INCLUDE_DIR=/opt/occt781/include/opencascade \
+ -DOCCT_LIBRARY_DIR=/opt/occt781/lib \
  -DPYTHONOCC_BUILD_TYPE=Release \
  -DPYTHONOCC_INSTALL_DIRECTORY=<PATH-TO-INSTALL> \
   ..
 
 RUN make -j4 && make install 
 
-RUN  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/build/occt772/lib
+RUN  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/build/occt781/lib
 ```
 
 If `PYTHONOCC_INSTALL_DIRECTORY` is unset, it will be installed to `site-packages/OCC`. Also add your LD_LIBRARY_PATH in your .bashrc file.
@@ -107,7 +107,7 @@ additional dependencies
 -----------------------
 Additional python packages are required if you want to benefit from all pythonocc features.
 ```
-pip install svgwrite numpy matplotlib PyQt5
+pip install svgwrite numpy numpy-stl matplotlib PyQt5
 ```
 
 test
