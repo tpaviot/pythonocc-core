@@ -37,8 +37,7 @@
 #include <BRepBndLib.hxx>
 #include <BRep_Tool.hxx>
 #include <TopoDS_Face.hxx>
-
-static const double EPSILON = 1.e-9;
+#include <Precision.hxx>
 
 //---------------------------------------------------------------------------
 ShapeTesselator::ShapeTesselator(TopoDS_Shape aShape):
@@ -138,8 +137,11 @@ void ShapeTesselator::Tesselate(bool compute_edges, float mesh_quality, bool par
                 const gp_Pnt2d& uv_pnt = myT->UVNode(i);
                 gp_Pnt p; gp_Vec n;
                 prop.Normal(uv_pnt.X(),uv_pnt.Y(),p,n);
-                if (n.Magnitude() > EPSILON) {
+                if (n.SquareMagnitude() > Precision::SquareConfusion()) {
                     n.Normalize();
+                }
+                else {
+                    n.SetCoord(0., 0., 0.);
                 }
                 if (myFace.Orientation() == TopAbs_INTERNAL) {
                     n.Reverse();
