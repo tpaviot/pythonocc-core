@@ -87,8 +87,13 @@ class TestExtendDataExchange(unittest.TestCase):
         all_shapes = read_iges_file(
             IGES_45_FACES, return_as_shapes=True, verbosity=True
         )
-        self.assertEqual(len(all_shapes), 1)
-        topo_explorer = TopologyExplorer(all_shapes[0])
+        self.assertEqual(len(all_shapes), 45)
+
+    def test_read_iges_45_shapes_as_one_compound(self):
+        shapes = read_iges_file(IGES_45_FACES, return_as_shapes=False, verbosity=True)
+        self.assertEqual(len(shapes), 1)
+        self.assertIsInstance(shapes[0], TopoDS_Compound)
+        topo_explorer = TopologyExplorer(shapes[0])
         self.assertEqual(topo_explorer.number_of_faces(), 45)
 
     def test_read_stl_file(self):

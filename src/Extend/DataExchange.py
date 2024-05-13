@@ -464,13 +464,6 @@ def read_iges_file(
     iges_reader.SetReadVisible(visible_only)
     status = iges_reader.ReadFile(filename)
 
-    _shapes = []
-
-    builder = BRep_Builder()
-    compound = TopoDS_Compound()
-    builder.MakeCompound(compound)
-    empty_compound = True
-
     if status != IFSelect_RetDone:  # check status
         raise IOError("Cannot read IGES file")
 
@@ -482,26 +475,20 @@ def read_iges_file(
     iges_reader.TransferRoots()
     nbr = iges_reader.NbShapes()
 
+    _shapes = []
     for i in range(1, nbr + 1):
         a_shp = iges_reader.Shape(i)
         if not a_shp.IsNull():
-            if a_shp.ShapeType() in [TopAbs_SOLID, TopAbs_SHELL, TopAbs_COMPOUND]:
-                _shapes.append(a_shp)
-            else:  # other shape types are merged into a compound
-                builder.Add(compound, a_shp)
-                empty_compound = False
-
-    if not empty_compound:
-        _shapes.append(compound)
+            _shapes.append(a_shp)
 
     # create a compound and store all shapes
     if not return_as_shapes:
-        builder_2 = BRep_Builder()
-        compound_2 = TopoDS_Compound()
-        builder_2.MakeCompound(compound_2)
+        builder = BRep_Builder()
+        compound = TopoDS_Compound()
+        builder.MakeCompound(compound)
         for s in _shapes:
-            builder_2.Add(compound_2, s)
-        _shapes = compound_2
+            builder.Add(compound, s)
+        return [compound]
 
     return _shapes
 
