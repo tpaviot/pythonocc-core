@@ -43,28 +43,6 @@ MeshDS_DataSource::MeshDS_DataSource(double* Vertices, const int nVerts1, const 
 }
 
 
-MeshDS_DataSource::MeshDS_DataSource(double Vertices[][3], int Faces[][3])
-{
-	//size_t nVerts = Vertices.size();
-	const size_t nVerts = sizeof Vertices / 3;
-	std::vector<gp_Pnt> CoordData;
-	CoordData.resize(nVerts);
-
-	for (size_t vertID = 0; vertID < nVerts; vertID++)
-	{
-		CoordData[vertID] = gp_Pnt(Vertices[vertID][0], Vertices[vertID][1], Vertices[vertID][2]);
-	}
-
-	std::vector<std::vector<int>> FVec =
-	{
-		std::vector<int>(std::begin(Faces[0]), std::end(Faces[0])),
-		std::vector<int>(std::begin(Faces[1]), std::end(Faces[1])),
-		std::vector<int>(std::begin(Faces[2]), std::end(Faces[2])),
-	};
-
-	InitializeFromData(CoordData, FVec);
-}
-
 MeshDS_DataSource::MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri)
 {
 	// initialize arrays
@@ -72,16 +50,17 @@ MeshDS_DataSource::MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri)
 	std::vector<std::vector<int>> Ele2NodeData;
 	CoordData.resize(polyTri->NbNodes());
 	Ele2NodeData.resize(polyTri->NbTriangles());
-	const TColgp_Array1OfPnt& nodes = polyTri->MapNodeArray()->Array1();
-	for (Standard_Integer nodeId = nodes.Lower(); nodeId <= nodes.Upper(); nodeId++) {
-		const gp_Pnt& node = nodes.Value(nodeId);
-		CoordData[nodeId - nodes.Lower()] = node;
+
+	for (Standard_Integer nodeId=1;nodeId <= polyTri->NbNodes(); nodeId++) {
+		const gp_Pnt& node = polyTri->Node(nodeId).XYZ();
+		CoordData[nodeId - 1] = node;
 	}
+
 	// convert triangle data
 	const Poly_Array1OfTriangle& triangles = polyTri->Triangles();
 	for (Standard_Integer ElementID = triangles.Lower(); ElementID <= triangles.Upper(); ElementID++) {
 		const Poly_Triangle& tri = triangles.Value(ElementID);
-		Ele2NodeData[ElementID - triangles.Lower()] = std::vector<int>{ tri(1) - nodes.Lower(), tri(2) - nodes.Lower(), tri(3) - nodes.Lower() };
+		Ele2NodeData[ElementID - triangles.Lower()] = std::vector<int>{ tri(1) - 1, tri(2) - 1, tri(3) - 1 };
 	}
 	InitializeFromData(CoordData, Ele2NodeData);
 }

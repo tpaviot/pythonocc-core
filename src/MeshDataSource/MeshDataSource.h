@@ -43,11 +43,6 @@ public:
 	//! Node normals are calculated averaging the normals of the neighboring elements
 	MeshDS_DataSource(std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData);
 
-	//! Initialize data source from vector of vertices and vector of faces (triangles)
-	//!
-	//!
-	MeshDS_DataSource(double Vertices[][3], int Faces[][3]);
-
 	MeshDS_DataSource(double* Vertices, int nVerts1, int nVerts2, int* Faces, int nFaces1, int nFaces2);
 
 	//! Initialize data source from STL triangulation
