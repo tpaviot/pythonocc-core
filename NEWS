@@ -1,13 +1,24 @@
 Current
 =======
 
+Version 7.8.1 - May 2024
+========================
+
+This release requires opencascade-7.8.1
+
+* wrapper: port to opencascade-7.8.1
+
+* wrapper: fix istream and ostream swig wrapper, fix ReadStream and WriteStream for STEP files
+
+* wrapper: Fix ShapeAnalysis::ConnectEdgesToWires wrapper, #745
+
 * display: Fix tk zoom on Window, #1291
 
 * display: Fix PyQt6 viewer, fix issue #1279
 
 * jupyter: Fix wrong edge orientation in discretize_edge, #1275
 
-* jupyter: fix redundant code in jpuyter renderer
+* jupyter: fix redundant code in jupyter renderer
 
 * wrapper: Fix ExtendedString unicode, #1278
 
