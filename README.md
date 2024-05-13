@@ -1,7 +1,7 @@
 [![Azure Build Status](https://dev.azure.com/tpaviot/pythonocc-core/_apis/build/status/tpaviot.pythonocc-core?branchName=master)](https://dev.azure.com/tpaviot/pythonocc-core/_build?definitionId=2)
 [![Downloads Badge](https://anaconda.org/conda-forge/pythonocc-core/badges/downloads.svg)](https://anaconda.org/conda-forge/pythonocc-core)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/67c121324b8d4f37bc27029464c87020)](https://www.codacy.com/app/tpaviot/pythonocc-core?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tpaviot/pythonocc-core&amp;utm_campaign=Badge_Grade)
-[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.7.2)
+[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.8.1)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3605364.svg)](https://doi.org/10.5281/zenodo.3605364)
 
 pythonocc-core
@@ -11,7 +11,7 @@ About
 -----
 pythonocc provides 3D modeling and dataexchange features. It is intended to CAD/PDM/PLM and BIM related development. It is based on the OpenCascade Technology modeling kernel.
 
-Latest release: [pythonocc-core 7.7.2 (October 2023)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.7.2)
+Latest release: [pythonocc-core 7.8.1 (May 2024)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.8.1)
 
 Features
 --------
@@ -26,17 +26,17 @@ pythonocc provides the following features:
 
 Try online at mybinder
 ----------------------
-Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.7.0) to open a jupyter notebook running the latest pythonocc-core 7.7.2, gmesh (<http://gmsh.info/>) and latest IfcOpenshell (<https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.6.0>) dev branch.
+Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.8.1) to open a jupyter notebook running the latest pythonocc-core 7.8.1, gmesh (<http://gmsh.info/>) and latest IfcOpenshell (<https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.6.0>) dev branch.
 
 Install with conda
 ------------------
-pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the conda-forge channel) for python 3.8, 3.9 and 3.10. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.9:
+pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/pythonocc-core) (they depend on third part libraries made available from the conda-forge channel) for python 3.9, 3.10 and 3.11. This will get you up and running in minutes whether you run win32/win64/linux64/osx64. Here is an example for python 3.10:
 
 ```bash
 # first create an environment
-conda create --name=pyoccenv python=3.9
+conda create --name=pyoccenv python=3.10
 source activate pyoccenv
-conda install -c conda-forge pythonocc-core=7.7.2
+conda install -c conda-forge pythonocc-core=7.8.1
 ```
 
 Other conda channels may provide pythonocc-core packages, check https://anaconda.org/search?q=pythonocc-core.
@@ -47,9 +47,9 @@ Read the [INSTALL.md](https://github.com/tpaviot/pythonocc-core/blob/master/INST
 
 Cite as
 -------
-pythonocc is widely used in the industrial and academic communities. It is registered as a Zenodo open caccess software (https://zenodo.org/record/7471333) and should be cited as:
+pythonocc is widely used in the industrial and academic communities. It is registered as a Zenodo open access software (https://zenodo.org/record/7471333) and should be cited as:
 
-Thomas Paviot. (2022). pythonocc (7.7.2). Zenodo. https://doi.org/10.5281/zenodo.3605364
+Paviot, T. (2022). "pythonocc". Zenodo. https://doi.org/10.5281/zenodo.3605364
 
 Other pythonocc related resources
 ---------------------------------
