@@ -22,8 +22,8 @@ jobs:
 
 - template:  conda-build.yml
   parameters:
-    name: macOS_11_python39
-    vmImage: 'macOS-11'
+    name: macOS_12_python39
+    vmImage: 'macOS-12'
     py_maj: 3
     py_min: 9
 
@@ -43,8 +43,8 @@ jobs:
 
 - template:  conda-build.yml
   parameters:
-    name: macOS_11_python310
-    vmImage: 'macOS-11'
+    name: macOS_12_python310
+    vmImage: 'macOS-12'
     py_maj: 3
     py_min: 10
 
@@ -64,8 +64,8 @@ jobs:
 
 - template:  conda-build.yml
   parameters:
-    name: macOS_11_python311
-    vmImage: 'macOS-11'
+    name: macOS_12_python311
+    vmImage: 'macOS-12'
     py_maj: 3
     py_min: 11
 
