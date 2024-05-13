@@ -68,7 +68,7 @@ from OCC.Core.GccEnt import gccent
 from OCC.Core.gce import gce_MakeCirc2d
 from OCC.Core.GccAna import GccAna_Lin2d2Tan, GccAna_Circ2d2TanRad
 from OCC.Core.GeomConvert import GeomConvert_CompBezierSurfacesToBSplineSurface
-#from OCC.Core.TColGeom import TColGeom_Array2OfBezierSurface
+
 from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeVertex,
     BRepBuilderAPI_MakeEdge2d,
