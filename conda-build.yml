@@ -37,13 +37,18 @@ jobs:
         conda config --add channels https://conda.anaconda.org/conda-forge
     displayName: 'Conda config and info'
 
-  # on windows, set arch if ever 32 is in the build name
-  - ${{ if contains(parameters.name, '32') }}:
-    - bash: |
-        set CONDA_SUBDIR=win-32 && \
-        conda config --env --set subdir win-32
-      displayName: 'Windows force 32 bit build'
-
+  - ${{ if eq(parameters.vmImage, 'windows-2019') }}:
+    - script: |
+        call "C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat"
+      displayName: 'Set Windows environment'
+      env:
+        CXX: "cl.exe"
+  - ${{ if eq(parameters.vmImage, 'windows-2022') }}:
+    - script: |
+        call "C:\\Program Files\\Microsoft Visual Studio\\2022\\Enterprise\\VC\\Auxiliary\\Build\\vcvars64.bat"
+      displayName: 'Set Windows environment'
+      env:
+        CXX: "cl.exe"
   - bash: conda create --yes --quiet --name build_env conda-build conda-verify libarchive python=${{ parameters.py_maj }}.${{ parameters.py_min }} anaconda-client
     displayName: Create Anaconda environment
     
