@@ -23,14 +23,14 @@ jobs:
 - template:  conda-build.yml
   parameters:
     name: macOS_12_python39
-    vmImage: 'macOS-12'
+    vmImage: 'macOS-latest'
     py_maj: 3
     py_min: 9
 
 - template:  conda-build.yml
   parameters:
-    name: Windows_VS2022_python39
-    vmImage: 'windows-2022'
+    name: Windows_VS2019_python39
+    vmImage: 'windows-2019'
     py_maj: 3
     py_min: 9
 
@@ -44,14 +44,14 @@ jobs:
 - template:  conda-build.yml
   parameters:
     name: macOS_12_python310
-    vmImage: 'macOS-12'
+    vmImage: 'macOS-latest'
     py_maj: 3
     py_min: 10
 
 - template:  conda-build.yml
   parameters:
-    name: Windows_VS2022_python310
-    vmImage: 'windows-2022'
+    name: Windows_VS2019_python310
+    vmImage: 'windows-2019'
     py_maj: 3
     py_min: 10
 
@@ -65,13 +65,13 @@ jobs:
 - template:  conda-build.yml
   parameters:
     name: macOS_12_python311
-    vmImage: 'macOS-12'
+    vmImage: 'macOS-latest'
     py_maj: 3
     py_min: 11
 
 - template:  conda-build.yml
   parameters:
-    name: Windows_VS2022_python311
-    vmImage: 'windows-2022'
+    name: Windows_VS2019_python311
+    vmImage: 'windows-2019'
     py_maj: 3
     py_min: 11
