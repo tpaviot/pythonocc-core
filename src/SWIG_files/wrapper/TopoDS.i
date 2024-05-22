@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -86,20 +86,9 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(TopoDS_ListIteratorOfListOfShape) NCollection_TListIterator<TopoDS_Shape>;
-%template(TopoDS_ListOfShape) NCollection_List<TopoDS_Shape>;
-
-%extend NCollection_List<TopoDS_Shape> {
-    %pythoncode {
-    def __len__(self):
-        return self.Size()
-    }
-};
 /* end templates declaration */
 
 /* typedefs */
-typedef NCollection_List<TopoDS_Shape>::Iterator TopoDS_ListIteratorOfListOfShape;
-typedef NCollection_List<TopoDS_Shape> TopoDS_ListOfShape;
 /* end typedefs declaration */
 
 /***************
