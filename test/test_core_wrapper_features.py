@@ -33,6 +33,7 @@ from OCC.Core.AIS import AIS_Manipulator
 from OCC.Core.Standard import Standard_Transient
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
+from OCC.Core.BRepAdaptor import BRepAdaptor_Surface
 from OCC.Core.BRepClass import BRepClass_FaceExplorer, BRepClass_Edge
 from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_Sewing
 from OCC.Core.BRepBndLib import brepbndlib
@@ -120,8 +121,10 @@ from OCC.Core.TDocStd import TDocStd_Application, TDocStd_Document
 from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool
 from OCC.Core.TDataStd import TDataStd_Name
 from OCC.Core.STEPCAFControl import STEPCAFControl_Writer
+from OCC.Core.IGESCAFControl import IGESCAFControl_Reader
 from OCC.Core.IFSelect import IFSelect_RetDone
 from OCC.Core.ShapeAnalysis import ShapeAnalysis_FreeBounds
+
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
 
@@ -1026,7 +1029,9 @@ class TestWrapperFeatures(unittest.TestCase):
         step_writer.Transfer(the_shape, STEPControl_AsIs)
         result, step_str = step_writer.WriteStream()
         self.assertEqual(result, IFSelect_RetDone)
-        self.assertGreater(len(step_str), 15000) # TODO: length depends on architecture?
+        self.assertGreater(
+            len(step_str), 15000
+        )  # TODO: length depends on architecture?
 
     def test_shape_analysis_free_bounds(self):
         """test special wrapper for ShapeAnalysis::ConnectEdgesToWires"""
@@ -1043,6 +1048,35 @@ class TestWrapperFeatures(unittest.TestCase):
 
         result = ShapeAnalysis_FreeBounds.ConnectEdgesToWires(edges, 1.0e-7, False)
         self.assertEqual(result.Length(), 1)
+
+    def test_const_ref_return(self):
+        """const byref should be wrapped as copy constructors to prevent memory issues,
+        see issue #1277"""
+
+        def get_bounds(adaptor):
+            return list(adaptor.Surface().BSpline().Bounds())
+
+        a_reader = IGESCAFControl_Reader()
+        iges_filename = os.path.join(".", "test_io", "testfile.igs")
+        if a_reader.ReadFile(iges_filename) != 1:
+            raise ValueError("Can't open IGES file.")
+
+        a_doc = TDocStd_Document("iges")
+        if not a_reader.Transfer(a_doc):
+            raise ValueError("Cannot transfer data from IGES file.")
+
+        shape_tool = XCAFDoc_DocumentTool.ShapeTool(a_doc.Main())
+
+        shp_labels = TDF_LabelSequence()
+        shape_tool.GetShapes(shp_labels)
+
+        shape_label = shp_labels.Value(1)
+        shape = shape_tool.GetShape(shape_label)
+
+        adaptor = BRepAdaptor_Surface(shape)
+        bounds = get_bounds(adaptor)
+        # should returns [0.0, 35.53017372307497, 0.0, 27.81101597164092]
+        self.assertEqual(bounds, [0.0, 35.53017372307497, 0.0, 27.81101597164092])
 
 
 def suite() -> unittest.TestSuite:

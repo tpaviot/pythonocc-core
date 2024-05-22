@@ -49,9 +49,9 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepadaptor.html"
 #include<gp_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<TColStd_module.hxx>
-#include<GeomAdaptor_module.hxx>
 #include<Geom2dAdaptor_module.hxx>
 #include<Adaptor2d_module.hxx>
+#include<GeomAdaptor_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Message_module.hxx>
@@ -69,9 +69,9 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepadaptor.html"
 %import gp.i
 %import GeomAbs.i
 %import TColStd.i
-%import GeomAdaptor.i
 %import Geom2dAdaptor.i
 %import Adaptor2d.i
+%import GeomAdaptor.i
 
 %pythoncode {
 from enum import IntEnum
@@ -838,7 +838,7 @@ Description
 -----------
 Returns the curve of the edge.
 ") Curve;
-		const GeomAdaptor_Curve & Curve();
+		GeomAdaptor_Curve Curve();
 
 		/****************** CurveOnSurface ******************/
 		/**** md5 signature: f06c54ea203f128f90114fb7bd684518 ****/
@@ -851,7 +851,7 @@ Description
 -----------
 Returns the curveonsurface of the edge.
 ") CurveOnSurface;
-		const Adaptor3d_CurveOnSurface & CurveOnSurface();
+		Adaptor3d_CurveOnSurface CurveOnSurface();
 
 		/****************** D0 ******************/
 		/**** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ****/
@@ -2084,7 +2084,7 @@ Description
 -----------
 Returns the surface.
 ") Surface;
-		const GeomAdaptor_Surface & Surface();
+		GeomAdaptor_Surface Surface();
 
 		/****************** Tolerance ******************/
 		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/

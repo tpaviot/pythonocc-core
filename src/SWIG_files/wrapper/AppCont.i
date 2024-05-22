@@ -294,7 +294,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		const AppParCurves_MultiCurve & Value();
+		AppParCurves_MultiCurve Value();
 
 };
 

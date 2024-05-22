@@ -61,7 +61,6 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_stdprs.html"
 #include<Bnd_module.hxx>
 #include<TopTools_module.hxx>
 #include<TopAbs_module.hxx>
-#include<Adaptor2d_module.hxx>
 #include<BRepLib_module.hxx>
 #include<Adaptor3d_module.hxx>
 #include<GeomAdaptor_module.hxx>
@@ -79,6 +78,7 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_stdprs.html"
 #include<Media_module.hxx>
 #include<Prs3d_module.hxx>
 #include<BRepTools_module.hxx>
+#include<Adaptor2d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -104,7 +104,6 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_stdprs.html"
 %import Bnd.i
 %import TopTools.i
 %import TopAbs.i
-%import Adaptor2d.i
 %import BRepLib.i
 
 %pythoncode {
@@ -2102,7 +2101,7 @@ Description
 -----------
 Return current curve.
 ") Value;
-		const Adaptor2d_Curve2d & Value();
+		Adaptor2d_Curve2d Value();
 
 };
 

@@ -6364,7 +6364,7 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		const IntAna_Curve & Curve();
+		IntAna_Curve Curve();
 
 		/****************** D1 ******************/
 		/**** md5 signature: ba74a6b24051c3de7f090b0e159de939 ****/

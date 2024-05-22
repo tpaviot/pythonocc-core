@@ -21,7 +21,6 @@ from OCC.Core.GeomAbs import *
 from OCC.Core.Bnd import *
 from OCC.Core.TopTools import *
 from OCC.Core.TopAbs import *
-from OCC.Core.Adaptor2d import *
 from OCC.Core.BRepLib import *
 
 StdPrs_BndBox = NewType("StdPrs_BndBox", Prs3d_BndBox)

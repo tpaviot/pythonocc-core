@@ -358,7 +358,7 @@ Description
 -----------
 Get the result curve after approximation.
 ") GetResult;
-		const TColGeom2d_SequenceOfCurve & GetResult();
+		TColGeom2d_SequenceOfCurve GetResult();
 
 };
 

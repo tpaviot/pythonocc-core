@@ -1997,7 +1997,7 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		const TColGeom_SequenceOfCurve & Curves(const TColgp_SequenceOfPnt & Spt);
+		TColGeom_SequenceOfCurve Curves(const TColgp_SequenceOfPnt & Spt);
 
 		/****************** FirstShape ******************/
 		/**** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ****/

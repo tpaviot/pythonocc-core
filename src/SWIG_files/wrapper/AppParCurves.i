@@ -861,7 +861,7 @@ Description
 -----------
 Returns the index multipoint. an exception is raised if index <0 or index >degree+1.
 ") Value;
-		const AppParCurves_MultiPoint & Value(const Standard_Integer Index);
+		AppParCurves_MultiPoint Value(const Standard_Integer Index);
 
 		/****************** Value ******************/
 		/**** md5 signature: 36d681f12c55158bec87d7926565a2ae ****/

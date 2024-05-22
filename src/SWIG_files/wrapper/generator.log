@@ -8,7 +8,7 @@ operating system : Linux 64bit 6.5.0-35-generic
 
 occt version targeted : 7.8.1
 
-date : 2024-05-22 09:11:26.666677
+date : 2024-05-22 13:48:56.569965
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -98,6 +98,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPDS_Curve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const IntTools_Curve & wrapped as a copy
+[WARNI]  const IntTools_Curve & wrapped as a copy
 [INFO ]  Class: BOPDS_DS
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPDS_FaceInfo
@@ -125,6 +127,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: BOPDS_InterfEZ
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPDS_InterfFF
+[WARNI]  const BOPDS_VectorOfCurve & wrapped as a copy
+[WARNI]  const BOPDS_VectorOfCurve & wrapped as a copy
 [INFO ]  Class: BOPDS_InterfFZ
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BOPDS_InterfVE
@@ -189,6 +193,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: IntTools_FClass2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntTools_FaceFace
+[WARNI]  const IntTools_SequenceOfCurves & wrapped as a copy
+[WARNI]  const IntTools_SequenceOfCurves & wrapped as a copy
 [INFO ]  Class: IntTools_MarkedRangeSet
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntTools_PntOn2Faces
@@ -205,6 +211,10 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: IntTools_SurfaceRangeSample
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const IntTools_CurveRangeSample & wrapped as a copy
+[WARNI]  const IntTools_CurveRangeSample & wrapped as a copy
+[WARNI]  const IntTools_CurveRangeSample & wrapped as a copy
+[WARNI]  const IntTools_CurveRangeSample & wrapped as a copy
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: IntTools_Tools
 [INFO ]  Class: IntTools_TopolTool
@@ -222,6 +232,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      Class BRep_CurveRepresentation is abstract, using %nodefaultctor.
 [INFO ]  Class: BRep_PointRepresentation
 [INFO ]  Class: BRep_TEdge
+[WARNI]  const BRep_ListOfCurveRepresentation & wrapped as a copy
+[WARNI]  const BRep_ListOfCurveRepresentation & wrapped as a copy
 [INFO ]  Class: BRep_TFace
 [INFO ]  Class: BRep_TVertex
 [INFO ]  Class: BRep_Tool
@@ -246,10 +258,16 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepAdaptor_Curve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const GeomAdaptor_Curve & wrapped as a copy
+[WARNI]  const GeomAdaptor_Curve & wrapped as a copy
+[WARNI]  const Adaptor3d_CurveOnSurface & wrapped as a copy
+[WARNI]  const Adaptor3d_CurveOnSurface & wrapped as a copy
 [INFO ]  Class: BRepAdaptor_Curve2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepAdaptor_Surface
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const GeomAdaptor_Surface & wrapped as a copy
+[WARNI]  const GeomAdaptor_Surface & wrapped as a copy
 [INFO ]  ## Processing module BRepLProp
 [INFO ]  Class: BRepLProp
 [INFO ]  Class: BRepLProp_CLProps
@@ -584,6 +602,10 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: TopOpeBRep_DSFiller
 [INFO ]  Class: TopOpeBRep_EdgesFiller
 [INFO ]  Class: TopOpeBRep_EdgesIntersector
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
+[WARNI]  const BRepAdaptor_Surface & wrapped as a copy
+[WARNI]  const BRepAdaptor_Surface & wrapped as a copy
 [INFO ]  Class: TopOpeBRep_FFDumper
 [INFO ]  Class: TopOpeBRep_FFTransitionTool
 [INFO ]  Class: TopOpeBRep_FaceEdgeFiller
@@ -592,6 +614,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: TopOpeBRep_FacesIntersector
 [INFO ]  Class: TopOpeBRep_GeomTool
 [INFO ]  Class: TopOpeBRep_Hctxee2d
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
 [INFO ]  Class: TopOpeBRep_Hctxff2d
 [INFO ]  Class: TopOpeBRep_LineInter
 [INFO ]  Class: TopOpeBRep_Point2d
@@ -697,7 +721,15 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopOpeBRepDS_CurveExplorer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const TopOpeBRepDS_Curve & wrapped as a copy
+[WARNI]  const TopOpeBRepDS_Curve & wrapped as a copy
+[WARNI]  const TopOpeBRepDS_Curve & wrapped as a copy
+[WARNI]  const TopOpeBRepDS_Curve & wrapped as a copy
 [INFO ]  Class: TopOpeBRepDS_DataStructure
+[WARNI]  const TopOpeBRepDS_Curve & wrapped as a copy
+[WARNI]  const TopOpeBRepDS_Curve & wrapped as a copy
+[WARNI]  const TopOpeBRepDS_Surface & wrapped as a copy
+[WARNI]  const TopOpeBRepDS_Surface & wrapped as a copy
 [INFO ]  Class: TopOpeBRepDS_Dumper
 [INFO ]  Class: TopOpeBRepDS_EIR
 [INFO ]  Class: TopOpeBRepDS_Edge3dInterferenceTool
@@ -738,6 +770,10 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      operand = cannot be wrapped
 [INFO ]  Class: TopOpeBRepDS_SurfaceExplorer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const TopOpeBRepDS_Surface & wrapped as a copy
+[WARNI]  const TopOpeBRepDS_Surface & wrapped as a copy
+[WARNI]  const TopOpeBRepDS_Surface & wrapped as a copy
+[WARNI]  const TopOpeBRepDS_Surface & wrapped as a copy
 [INFO ]  Class: TopOpeBRepDS_TKI
 [INFO ]  Enum passed by reference: TopOpeBRepDS_Kind &K changed to TopOpeBRepDS_Kind &OutValue
 [INFO ]  Enum passed by reference: TopOpeBRepDS_Kind & K changed to TopOpeBRepDS_Kind &OutValue
@@ -806,6 +842,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: TopOpeBRepTool_CLASSI
 [INFO ]  Class: TopOpeBRepTool_CORRISO
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const GeomAdaptor_Surface & wrapped as a copy
+[WARNI]  const GeomAdaptor_Surface & wrapped as a copy
 [INFO ]  Class: TopOpeBRepTool_CurveTool
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: TopOpeBRepTool_FuseEdges
@@ -999,6 +1037,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: LocOpe_LinearForm
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: LocOpe_Pipe
+[WARNI]  const TColGeom_SequenceOfCurve & wrapped as a copy
+[WARNI]  const TColGeom_SequenceOfCurve & wrapped as a copy
 [INFO ]  Class: LocOpe_PntFace
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: LocOpe_Prism
@@ -1152,6 +1192,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: ChFiDS_Regul
 [INFO ]  Class: ChFiDS_Spine
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const BRepAdaptor_Curve & wrapped as a copy
+[WARNI]  const BRepAdaptor_Curve & wrapped as a copy
 [INFO ]  Class: ChFiDS_Stripe
 [INFO ]  Class: ChFiDS_StripeMap
 [INFO ]      operand () cannot be wrapped
@@ -1654,8 +1696,12 @@ date : 2024-05-22 09:11:26.666677
 [WARNI]      [TypeHint] Skipping unknown type int,Geom2dHatch_Element, int,Geom2dHatch not in module list
 [INFO ]  Class: Geom2dHatch_Classifier
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
 [INFO ]  Class: Geom2dHatch_Element
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
 [INFO ]  Class: Geom2dHatch_Elements
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Enum passed by reference: TopAbs_Orientation &Or changed to TopAbs_Orientation &OutValue
@@ -1667,8 +1713,14 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: Geom2dHatch_Hatcher
 [INFO ]      explicitly excluded method Geom2dHatch_Hatcher::ec0624071ec7da54b3d9dacc7bcb05f9
 [INFO ]      explicitly excluded method Geom2dHatch_Hatcher::ac32eb89cd1bb24e500241057a62dcef
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
 [INFO ]  Class: Geom2dHatch_Hatching
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
+[WARNI]  const Geom2dAdaptor_Curve & wrapped as a copy
 [INFO ]  Class: Geom2dHatch_Intersector
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module Geom2dInt
@@ -1826,6 +1878,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: GeomInt_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfWLApprox
 [INFO ]  Class: GeomInt_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfWLApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: GeomInt_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfWLApprox
 [INFO ]  Class: GeomInt_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfWLApprox
 [INFO ]  Class: GeomInt_IntSS
@@ -1839,11 +1893,19 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: GeomInt_MyGradientOfTheComputeLineBezierOfWLApprox
 [INFO ]  Class: GeomInt_MyGradientbisOfTheComputeLineOfWLApprox
 [INFO ]  Class: GeomInt_ParFunctionOfMyGradientOfTheComputeLineBezierOfWLApprox
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: GeomInt_ParFunctionOfMyGradientbisOfTheComputeLineOfWLApprox
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: GeomInt_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfWLApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: GeomInt_ParLeastSquareOfMyGradientbisOfTheComputeLineOfWLApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: GeomInt_ParameterAndOrientation
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: GeomInt_ResConstraintOfMyGradientOfTheComputeLineBezierOfWLApprox
@@ -1852,8 +1914,14 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      explicitly excluded method GeomInt_ResConstraintOfMyGradientbisOfTheComputeLineOfWLApprox::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: GeomInt_TheComputeLineBezierOfWLApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: GeomInt_TheComputeLineOfWLApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: GeomInt_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfWLApprox
 [INFO ]  Class: GeomInt_TheImpPrmSvSurfacesOfWLApprox
 [INFO ]      explicitly excluded method GeomInt_TheImpPrmSvSurfacesOfWLApprox::b41c1a9755d3e00fb915462d51a8d0c5
@@ -1923,6 +1991,10 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  ## Processing module IntCurveSurface
 [INFO ]  Enum: IntCurveSurface_TransitionOnCurve
 [INFO ]  Class: IntCurveSurface_Intersection
+[WARNI]  const IntCurveSurface_IntersectionPoint & wrapped as a copy
+[WARNI]  const IntCurveSurface_IntersectionPoint & wrapped as a copy
+[WARNI]  const IntCurveSurface_IntersectionSegment & wrapped as a copy
+[WARNI]  const IntCurveSurface_IntersectionSegment & wrapped as a copy
 [INFO ]  Class: IntCurveSurface_IntersectionPoint
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Enum passed by reference: IntCurveSurface_TransitionOnCurve &TrCurv changed to IntCurveSurface_TransitionOnCurve &OutValue
@@ -1930,6 +2002,10 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Enum passed by reference: IntCurveSurface_TransitionOnCurve & TrCurv changed to IntCurveSurface_TransitionOnCurve &OutValue
 [INFO ]  Class: IntCurveSurface_IntersectionSegment
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const IntCurveSurface_IntersectionPoint & wrapped as a copy
+[WARNI]  const IntCurveSurface_IntersectionPoint & wrapped as a copy
+[WARNI]  const IntCurveSurface_IntersectionPoint & wrapped as a copy
+[WARNI]  const IntCurveSurface_IntersectionPoint & wrapped as a copy
 [INFO ]  Class: IntCurveSurface_TheCSFunctionOfHInter
 [INFO ]  Class: IntCurveSurface_TheExactHInter
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -2000,6 +2076,8 @@ date : 2024-05-22 09:11:26.666677
 [WARNI]      [TypeHint] Skipping type NCollection_List<gp_Pnt>, seems to be a template
 [INFO ]  Class: IntPatch_ALine
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const IntAna_Curve & wrapped as a copy
+[WARNI]  const IntAna_Curve & wrapped as a copy
 [INFO ]  Class: IntPatch_GLine
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntPatch_PointLine
@@ -2324,16 +2402,26 @@ date : 2024-05-22 09:11:26.666677
 [WARNI]      [TypeHint] Skipping type const, should contain _
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<gp_Pnt2d>, seems to be a template
 [INFO ]  Class: AppCont_LeastSquare
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  ## Processing module AppDef
 [INFO ]  Found HARRAY1 definitionAppDef_HArray1OfMultiPointConstraint: AppDef_Array1OfMultiPointConstraint
 [INFO ]  Class: AppDef_BSpGradient_BFGSOfMyBSplGradientOfBSplineCompute
 [INFO ]  Class: AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute
 [INFO ]  Class: AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: AppDef_BSplineCompute
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: AppDef_Compute
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: AppDef_Gradient_BFGSOfMyGradientOfCompute
 [INFO ]  Class: AppDef_Gradient_BFGSOfMyGradientbisOfBSplineCompute
 [INFO ]  Class: AppDef_Gradient_BFGSOfTheGradient
@@ -2348,14 +2436,26 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: AppDef_MyGradientbisOfBSplineCompute
 [INFO ]  Class: AppDef_MyLineTool
 [INFO ]  Class: AppDef_ParFunctionOfMyGradientOfCompute
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: AppDef_ParFunctionOfMyGradientbisOfBSplineCompute
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: AppDef_ParFunctionOfTheGradient
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: AppDef_ParLeastSquareOfMyGradientOfCompute
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: AppDef_ParLeastSquareOfTheGradient
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: AppDef_ResConstraintOfMyGradientOfCompute
 [INFO ]      explicitly excluded method AppDef_ResConstraintOfMyGradientOfCompute::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: AppDef_ResConstraintOfMyGradientbisOfBSplineCompute
@@ -2365,9 +2465,13 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: AppDef_SmoothCriterion
 [INFO ]      Class AppDef_SmoothCriterion is abstract, using %nodefaultctor.
 [INFO ]  Class: AppDef_TheFunction
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: AppDef_TheGradient
 [INFO ]  Class: AppDef_TheLeastSquares
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: AppDef_TheResol
 [INFO ]      explicitly excluded method AppDef_TheResol::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: AppDef_Variational
@@ -2384,6 +2488,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AppParCurves_MultiCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiPoint & wrapped as a copy
+[WARNI]  const AppParCurves_MultiPoint & wrapped as a copy
 [INFO ]  Class: AppParCurves_MultiPoint
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: AppParCurves_MultiBSpCurve
@@ -2408,6 +2514,10 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: Approx_FitAndDivide2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Approx_MCurvesToBSpCurve
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: Approx_SameParameter
 [INFO ]      Wrap nested class Approx_SameParameter::Approx_SameParameter_Data
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -2679,6 +2789,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: Geom2dConvert
 [INFO ]  Class: Geom2dConvert_ApproxArcsSegments
 [INFO ]  Enum: Status
+[WARNI]  const TColGeom2d_SequenceOfCurve & wrapped as a copy
+[WARNI]  const TColGeom2d_SequenceOfCurve & wrapped as a copy
 [INFO ]  Class: Geom2dConvert_ApproxCurve
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Geom2dConvert_BSplineCurveKnotSplitting
@@ -2752,6 +2864,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntAna_IntQuadQuad
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const IntAna_Curve & wrapped as a copy
+[WARNI]  const IntAna_Curve & wrapped as a copy
 [INFO ]  Class: IntAna_QuadQuadGeo
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IntAna_Quadric
@@ -2978,6 +3092,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: HLRBRep_CLPropsATool
 [INFO ]  Class: HLRBRep_Curve
+[WARNI]  const BRepAdaptor_Curve & wrapped as a copy
+[WARNI]  const BRepAdaptor_Curve & wrapped as a copy
 [INFO ]  Class: HLRBRep_CurveTool
 [INFO ]  Class: HLRBRep_Data
 [INFO ]  Enum passed by reference: TopAbs_State &stbef changed to TopAbs_State &OutValue
@@ -2989,6 +3105,8 @@ date : 2024-05-22 09:11:26.666677
 [WARNI]      [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [INFO ]  Class: HLRBRep_EdgeBuilder
 [INFO ]  Class: HLRBRep_EdgeData
+[WARNI]  const HLRBRep_Curve & wrapped as a copy
+[WARNI]  const HLRBRep_Curve & wrapped as a copy
 [WARNI]      [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [WARNI]      [TypeHint] Skip type HLRAlgo_EdgesBlock::MinMaxIndices, because of trailing :
 [INFO ]  Class: HLRBRep_EdgeFaceTool
@@ -3005,6 +3123,10 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: HLRBRep_InternalAlgo
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: HLRBRep_Intersector
+[WARNI]  const IntCurveSurface_IntersectionPoint & wrapped as a copy
+[WARNI]  const IntCurveSurface_IntersectionPoint & wrapped as a copy
+[WARNI]  const IntCurveSurface_IntersectionSegment & wrapped as a copy
+[WARNI]  const IntCurveSurface_IntersectionSegment & wrapped as a copy
 [INFO ]  Class: HLRBRep_LineTool
 [INFO ]  Class: HLRBRep_MyImpParToolOfTheIntersectorOfTheIntConicCurveOfCInter
 [INFO ]  Class: HLRBRep_PCLocFOfTheLocateExtPCOfTheProjPCurOfCInter
@@ -4050,11 +4172,17 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: BRepMeshData_Edge
 [INFO ]      explicitly excluded method BRepMeshData_Edge::e8d6738845f91c92210ce790a49e03f3
 [INFO ]      explicitly excluded method BRepMeshData_Edge::ff61b2da6dc7f21e13dbd3b2176f4bc2
-[WARNI]      [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]      [TypeHint] Skipping type virtual IMeshData::IPCurveHandle, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
-[WARNI]      [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]      [TypeHint] Skipping type virtual IMeshData::IPCurveHandle, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
-[WARNI]      [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]      [TypeHint] Skipping type virtual IMeshData::IPCurveHandle, should contain _
 [INFO ]  Class: BRepMeshData_Face
 [INFO ]      explicitly excluded method BRepMeshData_Face::fcdc6ed44a3e8b0d569e6091846a0dcb
 [INFO ]      explicitly excluded method BRepMeshData_Face::1e5346ee7136cd72652bc15beb720ddd
@@ -4140,12 +4268,20 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: IMeshData_TessellatedShape
 [INFO ]  Class: IMeshData_Edge
 [INFO ]      Class IMeshData_Edge is abstract, using %nodefaultctor.
-[WARNI]      [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]      [TypeHint] Skipping type virtual IMeshData::IPCurveHandle, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
-[WARNI]      [TypeHint] Skipping type const IMeshData::ICurveHandle &, should contain _
-[WARNI]      [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  const IMeshData::ICurveHandle & wrapped as a copy
+[WARNI]  const IMeshData::ICurveHandle & wrapped as a copy
+[WARNI]      [TypeHint] Skipping type IMeshData::ICurveHandle, should contain _
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]      [TypeHint] Skipping type virtual IMeshData::IPCurveHandle, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::IFacePtr &, should contain _
-[WARNI]      [TypeHint] Skipping type virtual const IMeshData::IPCurveHandle &, should contain _
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]  const IMeshData::IPCurveHandle & wrapped as a copy
+[WARNI]      [TypeHint] Skipping type virtual IMeshData::IPCurveHandle, should contain _
 [WARNI]      [TypeHint] Skipping type const IMeshData::ICurveHandle &, should contain _
 [INFO ]  Class: IMeshData_Face
 [INFO ]      Class IMeshData_Face is abstract, using %nodefaultctor.
@@ -7248,12 +7384,16 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]      explicitly excluded method BRepApprox_Approx::feaea2fa9dfb02e45ec734de2587dd81
 [INFO ]      explicitly excluded method BRepApprox_Approx::6f6fdc0a69d4cc86951ba71e2faf2a3d
 [INFO ]      explicitly excluded method BRepApprox_Approx::c04b01412cba7220c024b5eb4532697f
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: BRepApprox_ApproxLine
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepApprox_BSpGradient_BFGSOfMyBSplGradientOfTheComputeLineOfApprox
 [INFO ]  Class: BRepApprox_BSpParFunctionOfMyBSplGradientOfTheComputeLineOfApprox
 [INFO ]  Class: BRepApprox_BSpParLeastSquareOfMyBSplGradientOfTheComputeLineOfApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: BRepApprox_Gradient_BFGSOfMyGradientOfTheComputeLineBezierOfApprox
 [INFO ]  Class: BRepApprox_Gradient_BFGSOfMyGradientbisOfTheComputeLineOfApprox
 [INFO ]  Class: BRepApprox_MyBSplGradientOfTheComputeLineOfApprox
@@ -7261,11 +7401,19 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: BRepApprox_MyGradientOfTheComputeLineBezierOfApprox
 [INFO ]  Class: BRepApprox_MyGradientbisOfTheComputeLineOfApprox
 [INFO ]  Class: BRepApprox_ParFunctionOfMyGradientOfTheComputeLineBezierOfApprox
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: BRepApprox_ParFunctionOfMyGradientbisOfTheComputeLineOfApprox
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: BRepApprox_ParLeastSquareOfMyGradientOfTheComputeLineBezierOfApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: BRepApprox_ParLeastSquareOfMyGradientbisOfTheComputeLineOfApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox
 [INFO ]      explicitly excluded method BRepApprox_ResConstraintOfMyGradientOfTheComputeLineBezierOfApprox::585075c65a8681dedf24240dbb90f7f4
 [INFO ]  Class: BRepApprox_ResConstraintOfMyGradientbisOfTheComputeLineOfApprox
@@ -7273,9 +7421,19 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: BRepApprox_SurfaceTool
 [INFO ]  Class: BRepApprox_TheComputeLineBezierOfApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiCurve & wrapped as a copy
 [INFO ]  Class: BRepApprox_TheComputeLineOfApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
+[WARNI]  const AppParCurves_MultiBSpCurve & wrapped as a copy
 [INFO ]  Class: BRepApprox_TheFunctionOfTheInt2SOfThePrmPrmSvSurfacesOfApprox
+[WARNI]  const BRepAdaptor_Surface & wrapped as a copy
+[WARNI]  const BRepAdaptor_Surface & wrapped as a copy
+[WARNI]  const BRepAdaptor_Surface & wrapped as a copy
+[WARNI]  const BRepAdaptor_Surface & wrapped as a copy
 [INFO ]  Enum passed by reference: IntImp_ConstIsoparametric &BestChoix changed to IntImp_ConstIsoparametric &OutValue
 [INFO ]  Enum passed by reference: IntImp_ConstIsoparametric & BestChoix changed to IntImp_ConstIsoparametric &OutValue
 [INFO ]  Enum passed by reference: IntImp_ConstIsoparametric & BestChoix changed to IntImp_ConstIsoparametric &OutValue
@@ -7290,6 +7448,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: BRepApprox_ThePrmPrmSvSurfacesOfApprox
 [INFO ]  Class: BRepApprox_TheZerImpFuncOfTheImpPrmSvSurfacesOfApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const BRepAdaptor_Surface & wrapped as a copy
+[WARNI]  const BRepAdaptor_Surface & wrapped as a copy
 [INFO ]  ## Processing module BRepBndLib
 [INFO ]  Class: BRepBndLib
 [INFO ]  ## Processing module BRepBuilderAPI
@@ -7518,6 +7678,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: BRepMAT2d_BisectingLocus
 [INFO ]  Class: BRepMAT2d_Explorer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const TColGeom2d_SequenceOfCurve & wrapped as a copy
+[WARNI]  const TColGeom2d_SequenceOfCurve & wrapped as a copy
 [INFO ]  Class: BRepMAT2d_LinkTopoBilo
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module BRepTopAdaptor
@@ -7988,6 +8150,8 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: StdPrs_ToolPoint
 [INFO ]  Class: StdPrs_ToolRFace
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
+[WARNI]  const Adaptor2d_Curve2d & wrapped as a copy
+[WARNI]  const Adaptor2d_Curve2d & wrapped as a copy
 [INFO ]  Class: StdPrs_ToolTriangulatedShape
 [INFO ]  Class: StdPrs_ToolVertex
 [INFO ]  Class: StdPrs_WFDeflectionRestrictedFace
@@ -9395,7 +9559,7 @@ date : 2024-05-22 09:11:26.666677
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 17.55s
+SWIG interface file generation completed in 17.47s
 #################################################
 
 [INFO ]  Number of classes: 4743

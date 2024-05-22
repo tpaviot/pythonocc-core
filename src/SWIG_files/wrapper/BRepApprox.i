@@ -45,10 +45,10 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepapprox.html"
 #include<NCollection_module.hxx>
 #include<Approx_module.hxx>
 #include<math_module.hxx>
-#include<AppParCurves_module.hxx>
 #include<Geom_module.hxx>
 #include<Geom2d_module.hxx>
 #include<IntSurf_module.hxx>
+#include<AppParCurves_module.hxx>
 #include<TColStd_module.hxx>
 #include<BRepAdaptor_module.hxx>
 #include<gp_module.hxx>
@@ -76,10 +76,10 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepapprox.html"
 %import NCollection.i
 %import Approx.i
 %import math.i
-%import AppParCurves.i
 %import Geom.i
 %import Geom2d.i
 %import IntSurf.i
+%import AppParCurves.i
 %import TColStd.i
 %import BRepAdaptor.i
 %import gp.i
@@ -246,7 +246,7 @@ Description
 -----------
 No available documentation.
 ") Value;
-		const AppParCurves_MultiBSpCurve & Value(const Standard_Integer Index);
+		AppParCurves_MultiBSpCurve Value(const Standard_Integer Index);
 
 };
 
@@ -808,7 +808,7 @@ Description
 -----------
 Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
 ") BSplineValue;
-		const AppParCurves_MultiBSpCurve & BSplineValue();
+		AppParCurves_MultiBSpCurve BSplineValue();
 
 		/****************** BezierValue ******************/
 		/**** md5 signature: 2bbd29cb039e6bcdcdf61afe82651ac1 ****/
@@ -1622,7 +1622,7 @@ Description
 -----------
 Returns the multicurve approximating the set after computing the value f or grad(f).
 ") CurveValue;
-		const AppParCurves_MultiCurve & CurveValue();
+		AppParCurves_MultiCurve CurveValue();
 
 		/****************** Error ******************/
 		/**** md5 signature: 59bc36aa259ae04fcbc9c2a60fae6dfb ****/
@@ -1837,7 +1837,7 @@ Description
 -----------
 Returns the multicurve approximating the set after computing the value f or grad(f).
 ") CurveValue;
-		const AppParCurves_MultiCurve & CurveValue();
+		AppParCurves_MultiCurve CurveValue();
 
 		/****************** Error ******************/
 		/**** md5 signature: 59bc36aa259ae04fcbc9c2a60fae6dfb ****/
@@ -2127,7 +2127,7 @@ Description
 -----------
 Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
 ") BSplineValue;
-		const AppParCurves_MultiBSpCurve & BSplineValue();
+		AppParCurves_MultiBSpCurve BSplineValue();
 
 		/****************** BezierValue ******************/
 		/**** md5 signature: 2bbd29cb039e6bcdcdf61afe82651ac1 ****/
@@ -2505,7 +2505,7 @@ Description
 -----------
 Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
 ") BSplineValue;
-		const AppParCurves_MultiBSpCurve & BSplineValue();
+		AppParCurves_MultiBSpCurve BSplineValue();
 
 		/****************** BezierValue ******************/
 		/**** md5 signature: 2bbd29cb039e6bcdcdf61afe82651ac1 ****/
@@ -4094,7 +4094,7 @@ Description
 -----------
 Returns the result of the approximation.
 ") SplineValue;
-		const AppParCurves_MultiBSpCurve & SplineValue();
+		AppParCurves_MultiBSpCurve SplineValue();
 
 		/****************** Value ******************/
 		/**** md5 signature: ce9a9d43a5aa1f3754abfba817bb7838 ****/
@@ -4112,7 +4112,7 @@ Description
 -----------
 Returns the result of the approximation.
 ") Value;
-		const AppParCurves_MultiCurve & Value(const Standard_Integer Index = 1);
+		AppParCurves_MultiCurve Value(const Standard_Integer Index = 1);
 
 };
 
@@ -4520,7 +4520,7 @@ Description
 -----------
 Returns the result of the approximation.
 ") Value;
-		const AppParCurves_MultiBSpCurve & Value();
+		AppParCurves_MultiBSpCurve Value();
 
 };
 
@@ -4566,7 +4566,7 @@ Description
 -----------
 No available documentation.
 ") AuxillarSurface1;
-		const BRepAdaptor_Surface & AuxillarSurface1();
+		BRepAdaptor_Surface AuxillarSurface1();
 
 		/****************** AuxillarSurface2 ******************/
 		/**** md5 signature: 6195097157048ebf7856e69ebf2099cb ****/
@@ -4579,7 +4579,7 @@ Description
 -----------
 No available documentation.
 ") AuxillarSurface2;
-		const BRepAdaptor_Surface & AuxillarSurface2();
+		BRepAdaptor_Surface AuxillarSurface2();
 
 		/****************** ComputeParameters ******************/
 		/**** md5 signature: 5686d6c4ca7c470ce5a820727bd25544 ****/
@@ -6189,7 +6189,7 @@ Description
 -----------
 No available documentation.
 ") PSurface;
-		const BRepAdaptor_Surface & PSurface();
+		BRepAdaptor_Surface PSurface();
 
 		/****************** Point ******************/
 		/**** md5 signature: 177e376cc11d1fedb2819bac56591ea8 ****/

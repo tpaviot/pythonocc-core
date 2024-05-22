@@ -50,15 +50,14 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_topopebrep.html"
 #include<TopOpeBRepDS_module.hxx>
 #include<TopoDS_module.hxx>
 #include<TopOpeBRepTool_module.hxx>
-#include<Geom2dAdaptor_module.hxx>
 #include<TCollection_module.hxx>
 #include<Bnd_module.hxx>
-#include<BRepAdaptor_module.hxx>
 #include<TopAbs_module.hxx>
 #include<gp_module.hxx>
 #include<TopTools_module.hxx>
 #include<Geom2d_module.hxx>
 #include<Geom_module.hxx>
+#include<BRepAdaptor_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
 #include<TopLoc_module.hxx>
@@ -88,15 +87,14 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_topopebrep.html"
 %import TopOpeBRepDS.i
 %import TopoDS.i
 %import TopOpeBRepTool.i
-%import Geom2dAdaptor.i
 %import TCollection.i
 %import Bnd.i
-%import BRepAdaptor.i
 %import TopAbs.i
 %import gp.i
 %import TopTools.i
 %import Geom2d.i
 %import Geom.i
+%import BRepAdaptor.i
 
 %pythoncode {
 from enum import IntEnum
@@ -893,7 +891,7 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		const Geom2dAdaptor_Curve & Curve(const Standard_Integer Index);
+		Geom2dAdaptor_Curve Curve(const Standard_Integer Index);
 
 		/****************** Dimension ******************/
 		/**** md5 signature: bffc3d9b070e68685a6f532f4d09951a ****/
@@ -1276,7 +1274,7 @@ Description
 -----------
 No available documentation.
 ") Surface;
-		const BRepAdaptor_Surface & Surface(const Standard_Integer Index);
+		BRepAdaptor_Surface Surface(const Standard_Integer Index);
 
 		/****************** SurfacesSameOriented ******************/
 		/**** md5 signature: 5a73f090b826c38dcc30efe0cb99df4e ****/
@@ -3290,7 +3288,7 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		const Geom2dAdaptor_Curve & Curve(const Standard_Integer I);
+		Geom2dAdaptor_Curve Curve(const Standard_Integer I);
 
 		/****************** Domain ******************/
 		/**** md5 signature: 61e11500fa994362ee7273166a3b2637 ****/

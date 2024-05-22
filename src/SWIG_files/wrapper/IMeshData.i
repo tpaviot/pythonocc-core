@@ -848,7 +848,7 @@ Description
 -----------
 Adds discrete pcurve for the specified discrete face.
 ") AddPCurve;
-		virtual const IMeshData::IPCurveHandle & AddPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
+		virtual IMeshData::IPCurveHandle AddPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
 
 		/****************** Clear ******************/
 		/**** md5 signature: ad9c9c46f2d5dcba0434153969fd3853 ****/
@@ -892,7 +892,7 @@ Description
 -----------
 Returns 3d curve associated with current edge.
 ") GetCurve;
-		const IMeshData::ICurveHandle & GetCurve();
+		IMeshData::ICurveHandle GetCurve();
 
 		/****************** GetDegenerated ******************/
 		/**** md5 signature: 6af080d4196d23a38e41ee2a54e037a8 ****/
@@ -937,7 +937,7 @@ Description
 -----------
 Returns pcurve for the specified discrete face.
 ") GetPCurve;
-		virtual const IMeshData::IPCurveHandle & GetPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
+		virtual IMeshData::IPCurveHandle GetPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
 
 		/****************** GetPCurve ******************/
 		/**** md5 signature: 6734b6ef219f8b326c14b5d29699b4aa ****/
@@ -955,7 +955,7 @@ Description
 -----------
 Returns pcurve with the given index.
 ") GetPCurve;
-		virtual const IMeshData::IPCurveHandle & GetPCurve(const Standard_Integer theIndex);
+		virtual IMeshData::IPCurveHandle GetPCurve(const Standard_Integer theIndex);
 
 		/****************** GetSameParam ******************/
 		/**** md5 signature: 2e33942b755b5337e15e6f47f768a210 ****/

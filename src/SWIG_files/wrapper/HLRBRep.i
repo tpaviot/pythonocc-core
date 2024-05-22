@@ -2680,7 +2680,7 @@ Description
 -----------
 Returns the 3d curve.
 ") GetCurve;
-		const BRepAdaptor_Curve & GetCurve();
+		BRepAdaptor_Curve GetCurve();
 
 		/****************** GetType ******************/
 		/**** md5 signature: 6d4e6ae7972633971ba343e8afc91aa1 ****/
@@ -4731,7 +4731,7 @@ Description
 -----------
 No available documentation.
 ") Geometry;
-		const HLRBRep_Curve & Geometry();
+		HLRBRep_Curve Geometry();
 
 		/****************** HideCount ******************/
 		/**** md5 signature: 38d1acd9954e54785f99bc88211278f2 ****/
@@ -7855,7 +7855,7 @@ Description
 -----------
 No available documentation.
 ") CSPoint;
-		const IntCurveSurface_IntersectionPoint & CSPoint(const Standard_Integer N);
+		IntCurveSurface_IntersectionPoint CSPoint(const Standard_Integer N);
 
 		/****************** CSSegment ******************/
 		/**** md5 signature: cdcfb6a547ece08784f0bdf0d0732007 ****/
@@ -7873,7 +7873,7 @@ Description
 -----------
 No available documentation.
 ") CSSegment;
-		const IntCurveSurface_IntersectionSegment & CSSegment(const Standard_Integer N);
+		IntCurveSurface_IntersectionSegment CSSegment(const Standard_Integer N);
 
 		/****************** Destroy ******************/
 		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/

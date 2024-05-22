@@ -49,7 +49,6 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepmat2d.html"
 #include<Geom2d_module.hxx>
 #include<gp_module.hxx>
 #include<TopoDS_module.hxx>
-#include<TColGeom2d_module.hxx>
 #include<TColStd_module.hxx>
 #include<TopLoc_module.hxx>
 #include<Message_module.hxx>
@@ -67,7 +66,6 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepmat2d.html"
 %import Geom2d.i
 %import gp.i
 %import TopoDS.i
-%import TColGeom2d.i
 %import TColStd.i
 
 %pythoncode {
@@ -361,7 +359,7 @@ Description
 -----------
 No available documentation.
 ") Contour;
-		const TColGeom2d_SequenceOfCurve & Contour(const Standard_Integer IndexContour);
+		TColGeom2d_SequenceOfCurve Contour(const Standard_Integer IndexContour);
 
 		/****************** GetIsClosed ******************/
 		/**** md5 signature: fe2549f56b3cb80b5c2da5e5e50f62a0 ****/

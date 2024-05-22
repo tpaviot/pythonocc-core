@@ -2403,7 +2403,7 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		const TopOpeBRepDS_Curve & Curve();
+		TopOpeBRepDS_Curve Curve();
 
 		/****************** Curve ******************/
 		/**** md5 signature: f53cb61e2b022b236aa70ffbec11ac31 ****/
@@ -2421,7 +2421,7 @@ Description
 -----------
 No available documentation.
 ") Curve;
-		const TopOpeBRepDS_Curve & Curve(const Standard_Integer I);
+		TopOpeBRepDS_Curve Curve(const Standard_Integer I);
 
 		/****************** Index ******************/
 		/**** md5 signature: 407d80ef3037d55996765198adea3908 ****/
@@ -3247,7 +3247,7 @@ Description
 -----------
 Returns the curve of index <i>.
 ") Curve;
-		const TopOpeBRepDS_Curve & Curve(const Standard_Integer I);
+		TopOpeBRepDS_Curve Curve(const Standard_Integer I);
 
 		/****************** CurveInterferences ******************/
 		/**** md5 signature: 0ae607216e1128d734c938cbcd7a9b19 ****/
@@ -4222,7 +4222,7 @@ Description
 -----------
 Returns the surface of index <i>.
 ") Surface;
-		const TopOpeBRepDS_Surface & Surface(const Standard_Integer I);
+		TopOpeBRepDS_Surface Surface(const Standard_Integer I);
 
 		/****************** SurfaceInterferences ******************/
 		/**** md5 signature: 732d2b836e88fd503fa982b880b0a0eb ****/
@@ -7733,7 +7733,7 @@ Description
 -----------
 No available documentation.
 ") Surface;
-		const TopOpeBRepDS_Surface & Surface();
+		TopOpeBRepDS_Surface Surface();
 
 		/****************** Surface ******************/
 		/**** md5 signature: 0fa398e726541e213860705286d521cb ****/
@@ -7751,7 +7751,7 @@ Description
 -----------
 No available documentation.
 ") Surface;
-		const TopOpeBRepDS_Surface & Surface(const Standard_Integer I);
+		TopOpeBRepDS_Surface Surface(const Standard_Integer I);
 
 };
 

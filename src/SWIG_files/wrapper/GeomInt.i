@@ -621,7 +621,7 @@ Description
 -----------
 Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
 ") BSplineValue;
-		const AppParCurves_MultiBSpCurve & BSplineValue();
+		AppParCurves_MultiBSpCurve BSplineValue();
 
 		/****************** BezierValue ******************/
 		/**** md5 signature: 2bbd29cb039e6bcdcdf61afe82651ac1 ****/
@@ -2171,7 +2171,7 @@ Description
 -----------
 Returns the multicurve approximating the set after computing the value f or grad(f).
 ") CurveValue;
-		const AppParCurves_MultiCurve & CurveValue();
+		AppParCurves_MultiCurve CurveValue();
 
 		/****************** Error ******************/
 		/**** md5 signature: 59bc36aa259ae04fcbc9c2a60fae6dfb ****/
@@ -2386,7 +2386,7 @@ Description
 -----------
 Returns the multicurve approximating the set after computing the value f or grad(f).
 ") CurveValue;
-		const AppParCurves_MultiCurve & CurveValue();
+		AppParCurves_MultiCurve CurveValue();
 
 		/****************** Error ******************/
 		/**** md5 signature: 59bc36aa259ae04fcbc9c2a60fae6dfb ****/
@@ -2676,7 +2676,7 @@ Description
 -----------
 Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
 ") BSplineValue;
-		const AppParCurves_MultiBSpCurve & BSplineValue();
+		AppParCurves_MultiBSpCurve BSplineValue();
 
 		/****************** BezierValue ******************/
 		/**** md5 signature: 2bbd29cb039e6bcdcdf61afe82651ac1 ****/
@@ -3054,7 +3054,7 @@ Description
 -----------
 Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
 ") BSplineValue;
-		const AppParCurves_MultiBSpCurve & BSplineValue();
+		AppParCurves_MultiBSpCurve BSplineValue();
 
 		/****************** BezierValue ******************/
 		/**** md5 signature: 2bbd29cb039e6bcdcdf61afe82651ac1 ****/
@@ -3997,7 +3997,7 @@ Description
 -----------
 Returns the result of the approximation.
 ") SplineValue;
-		const AppParCurves_MultiBSpCurve & SplineValue();
+		AppParCurves_MultiBSpCurve SplineValue();
 
 		/****************** Value ******************/
 		/**** md5 signature: ce9a9d43a5aa1f3754abfba817bb7838 ****/
@@ -4015,7 +4015,7 @@ Description
 -----------
 Returns the result of the approximation.
 ") Value;
-		const AppParCurves_MultiCurve & Value(const Standard_Integer Index = 1);
+		AppParCurves_MultiCurve Value(const Standard_Integer Index = 1);
 
 };
 
@@ -4423,7 +4423,7 @@ Description
 -----------
 Returns the result of the approximation.
 ") Value;
-		const AppParCurves_MultiBSpCurve & Value();
+		AppParCurves_MultiBSpCurve Value();
 
 };
 

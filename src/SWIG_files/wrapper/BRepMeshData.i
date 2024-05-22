@@ -323,7 +323,7 @@ Description
 -----------
 Adds discrete pcurve for the specified discrete face.
 ") AddPCurve;
-		virtual const IMeshData::IPCurveHandle & AddPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
+		virtual IMeshData::IPCurveHandle AddPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
 
 		/****************** GetPCurve ******************/
 		/**** md5 signature: 4c651c871b35e5f5f12404be43db3374 ****/
@@ -342,7 +342,7 @@ Description
 -----------
 Returns pcurve for the specified discrete face.
 ") GetPCurve;
-		virtual const IMeshData::IPCurveHandle & GetPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
+		virtual IMeshData::IPCurveHandle GetPCurve(const IMeshData::IFacePtr & theDFace, const TopAbs_Orientation theOrientation);
 
 		/****************** GetPCurve ******************/
 		/**** md5 signature: c2f904a58e6d4fae050f2bef2b323320 ****/
@@ -360,7 +360,7 @@ Description
 -----------
 Returns pcurve with the given index.
 ") GetPCurve;
-		virtual const IMeshData::IPCurveHandle & GetPCurve(const Standard_Integer theIndex);
+		virtual IMeshData::IPCurveHandle GetPCurve(const Standard_Integer theIndex);
 
 		/****************** PCurvesNb ******************/
 		/**** md5 signature: 396e4ba5fd70d100e8e49ef4d5da81c6 ****/
