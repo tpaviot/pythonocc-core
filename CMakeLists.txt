@@ -110,7 +110,7 @@ message(STATUS "Python library release: ${Python3_LIBRARY_RELEASE}")
 ########
 # SWIG #
 ########
-find_package(SWIG 4.1.1 REQUIRED)
+find_package(SWIG 4.2.1 REQUIRED)
 include(${SWIG_USE_FILE})
 set(SWIG_FILES_PATH src/SWIG_files/wrapper)
 set(CMAKE_SWIG_FLAGS ${CMAKE_SWIG_FLAGS} -fvirtual)
