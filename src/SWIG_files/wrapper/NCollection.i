@@ -1,5 +1,5 @@
 /*
-Copyright 2008-2023 Thomas Paviot (tpaviot@gmail.com)
+Copyright 2008-2024 Thomas Paviot (tpaviot@gmail.com)
 
 This file is part of pythonOCC.
 pythonOCC is free software: you can redistribute it and/or modify
@@ -54,9 +54,15 @@ from OCC.Core.Exception import *
 };
 
 
+%include "Standard_Macro.hxx";
+%include "Standard_DefineAlloc.hxx";
+%include "NCollection_DefineAlloc.hxx";
 %include "NCollection_TypeDef.hxx";
 %include "NCollection_Array1.hxx";
 %include "NCollection_Array2.hxx";
+%include "NCollection_BaseList.hxx";
+%include "NCollection_BaseMap.hxx";
+%include "NCollection_BasePointerVector.hxx";
 %include "NCollection_Map.hxx";
 %include "NCollection_DefaultHasher.hxx";
 %include "NCollection_List.hxx";
@@ -66,8 +72,6 @@ from OCC.Core.Exception import *
 %include "NCollection_IndexedDataMap.hxx";
 %include "NCollection_DoubleMap.hxx";
 %include "NCollection_DefineAlloc.hxx";
-%include "Standard_Macro.hxx";
-%include "Standard_DefineAlloc.hxx";
 %include "NCollection_UBTree.hxx";
 %include "NCollection_UBTreeFiller.hxx";
 %include "NCollection_Lerp.hxx";
