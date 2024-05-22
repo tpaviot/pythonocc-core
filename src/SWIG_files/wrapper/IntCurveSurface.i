@@ -214,7 +214,7 @@ Description
 -----------
 Returns the intersectionpoint of range <index> raises notdone if the computation has failed or if the computation has not been done raises outofrange if index is not in the range <1..nbpoints>.
 ") Point;
-		const IntCurveSurface_IntersectionPoint & Point(const Standard_Integer Index);
+		IntCurveSurface_IntersectionPoint Point(const Standard_Integer Index);
 
 		/****************** Segment ******************/
 		/**** md5 signature: 7447c62bdef950bcde1897b587756423 ****/
@@ -232,7 +232,7 @@ Description
 -----------
 Returns the intersectionsegment of range <index> raises notdone if the computation has failed or if the computation has not been done raises outofrange if index is not in the range <1..nbsegment>.
 ") Segment;
-		const IntCurveSurface_IntersectionSegment & Segment(const Standard_Integer Index);
+		IntCurveSurface_IntersectionSegment Segment(const Standard_Integer Index);
 
 };
 
@@ -492,7 +492,7 @@ Description
 -----------
 No available documentation.
 ") FirstPoint;
-		const IntCurveSurface_IntersectionPoint & FirstPoint();
+		IntCurveSurface_IntersectionPoint FirstPoint();
 
 		/****************** SecondPoint ******************/
 		/**** md5 signature: f9e618a1839283d5ae57e523171f81fd ****/
@@ -523,7 +523,7 @@ Description
 -----------
 No available documentation.
 ") SecondPoint;
-		const IntCurveSurface_IntersectionPoint & SecondPoint();
+		IntCurveSurface_IntersectionPoint SecondPoint();
 
 		/****************** SetValues ******************/
 		/**** md5 signature: 8c4f62db01e7a648d2d3ac4f7be53b7c ****/

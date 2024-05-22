@@ -2188,7 +2188,7 @@ Description
 -----------
 No available documentation.
 ") Curves;
-		const BRep_ListOfCurveRepresentation & Curves();
+		BRep_ListOfCurveRepresentation Curves();
 
 		/****************** Degenerated ******************/
 		/**** md5 signature: ecd3f4abf547c73285489df59f09d893 ****/

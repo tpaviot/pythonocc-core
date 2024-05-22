@@ -52,7 +52,6 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_chfids.html"
 #include<TColStd_module.hxx>
 #include<Geom2d_module.hxx>
 #include<TopTools_module.hxx>
-#include<BRepAdaptor_module.hxx>
 #include<Law_module.hxx>
 #include<Message_module.hxx>
 #include<TopLoc_module.hxx>
@@ -77,7 +76,6 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_chfids.html"
 %import TColStd.i
 %import Geom2d.i
 %import TopTools.i
-%import BRepAdaptor.i
 %import Law.i
 
 %pythoncode {
@@ -2128,7 +2126,7 @@ Description
 -----------
 Sets the current curve and returns it.
 ") CurrentElementarySpine;
-		const BRepAdaptor_Curve & CurrentElementarySpine(const Standard_Integer Index);
+		BRepAdaptor_Curve CurrentElementarySpine(const Standard_Integer Index);
 
 		/****************** CurrentIndexOfElementarySpine ******************/
 		/**** md5 signature: 6987473580f0e6e3e57d9cf51fd473ea ****/

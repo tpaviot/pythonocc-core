@@ -12,7 +12,6 @@ from OCC.Core.GeomAbs import *
 from OCC.Core.TColStd import *
 from OCC.Core.Geom2d import *
 from OCC.Core.TopTools import *
-from OCC.Core.BRepAdaptor import *
 from OCC.Core.Law import *
 
 # the following typedef cannot be wrapped as is

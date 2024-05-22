@@ -9,9 +9,9 @@ from OCC.Core.Geom import *
 from OCC.Core.gp import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.TColStd import *
-from OCC.Core.GeomAdaptor import *
 from OCC.Core.Geom2dAdaptor import *
 from OCC.Core.Adaptor2d import *
+from OCC.Core.GeomAdaptor import *
 
 
 class BRepAdaptor_Array1OfCurve:

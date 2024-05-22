@@ -3113,7 +3113,7 @@ Description
 -----------
 Returns sequence of 3d curves as result of intersection.
 ") Lines;
-		const IntTools_SequenceOfCurves & Lines();
+		IntTools_SequenceOfCurves Lines();
 
 		/****************** Perform ******************/
 		/**** md5 signature: fc787f09bbe9fa2375bf6639020db29c ****/
@@ -5318,7 +5318,7 @@ Description
 -----------
 No available documentation.
 ") GetSampleRangeU;
-		const IntTools_CurveRangeSample & GetSampleRangeU();
+		IntTools_CurveRangeSample GetSampleRangeU();
 
 		/****************** GetSampleRangeV ******************/
 		/**** md5 signature: 964dc9ccf4277374195c5fbb755fb5fe ****/
@@ -5331,7 +5331,7 @@ Description
 -----------
 No available documentation.
 ") GetSampleRangeV;
-		const IntTools_CurveRangeSample & GetSampleRangeV();
+		IntTools_CurveRangeSample GetSampleRangeV();
 
 		/****************** IsEqual ******************/
 		/**** md5 signature: 080f0097ea4e0085b67175107f1752fc ****/

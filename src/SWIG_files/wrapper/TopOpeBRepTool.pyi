@@ -10,7 +10,6 @@ from OCC.Core.TopAbs import *
 from OCC.Core.Bnd import *
 from OCC.Core.TColStd import *
 from OCC.Core.Geom2d import *
-from OCC.Core.GeomAdaptor import *
 from OCC.Core.Geom import *
 from OCC.Core.TColgp import *
 from OCC.Core.gp import *

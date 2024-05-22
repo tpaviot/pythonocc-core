@@ -9,7 +9,6 @@ from OCC.Core.Bisector import *
 from OCC.Core.Geom2d import *
 from OCC.Core.gp import *
 from OCC.Core.TopoDS import *
-from OCC.Core.TColGeom2d import *
 from OCC.Core.TColStd import *
 
 

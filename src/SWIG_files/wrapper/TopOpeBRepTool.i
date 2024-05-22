@@ -50,7 +50,6 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_topopebreptool.ht
 #include<Bnd_module.hxx>
 #include<TColStd_module.hxx>
 #include<Geom2d_module.hxx>
-#include<GeomAdaptor_module.hxx>
 #include<Geom_module.hxx>
 #include<TColgp_module.hxx>
 #include<gp_module.hxx>
@@ -88,7 +87,6 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_topopebreptool.ht
 %import Bnd.i
 %import TColStd.i
 %import Geom2d.i
-%import GeomAdaptor.i
 %import Geom.i
 %import TColgp.i
 %import gp.i
@@ -1211,7 +1209,7 @@ Description
 -----------
 No available documentation.
 ") GASref;
-		const GeomAdaptor_Surface & GASref();
+		GeomAdaptor_Surface GASref();
 
 		/****************** GetnewS ******************/
 		/**** md5 signature: 1028993659225ad8087e09930d5f8d97 ****/

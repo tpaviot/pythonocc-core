@@ -1742,7 +1742,7 @@ Description
 -----------
 Return the composite multicurves as a multibspcurve.
 ") ChangeValue;
-		const AppParCurves_MultiBSpCurve & ChangeValue();
+		AppParCurves_MultiBSpCurve ChangeValue();
 
 		/****************** Perform ******************/
 		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
@@ -1799,7 +1799,7 @@ Description
 -----------
 Return the composite multicurves as a multibspcurve.
 ") Value;
-		const AppParCurves_MultiBSpCurve & Value();
+		AppParCurves_MultiBSpCurve Value();
 
 };
 

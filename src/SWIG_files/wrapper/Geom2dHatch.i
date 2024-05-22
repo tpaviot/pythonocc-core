@@ -44,9 +44,9 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geom2dhatch.html"
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
 #include<gp_module.hxx>
-#include<Geom2dAdaptor_module.hxx>
 #include<IntRes2d_module.hxx>
 #include<TopAbs_module.hxx>
+#include<Geom2dAdaptor_module.hxx>
 #include<Geom2d_module.hxx>
 #include<HatchGen_module.hxx>
 #include<Geom2dInt_module.hxx>
@@ -67,9 +67,9 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geom2dhatch.html"
 %import Standard.i
 %import NCollection.i
 %import gp.i
-%import Geom2dAdaptor.i
 %import IntRes2d.i
 %import TopAbs.i
+%import Geom2dAdaptor.i
 %import Geom2d.i
 %import HatchGen.i
 %import Geom2dInt.i
@@ -175,7 +175,7 @@ Description
 -----------
 Returns the edge used to determine the classification. when the state is on this is the edge containing the point.
 ") Edge;
-		const Geom2dAdaptor_Curve & Edge();
+		Geom2dAdaptor_Curve Edge();
 
 		/****************** EdgeParameter ******************/
 		/**** md5 signature: a4ccdc0e9c154705af034e3ac274511c ****/
@@ -332,7 +332,7 @@ Description
 -----------
 Returns the curve associated to the element.
 ") Curve;
-		const Geom2dAdaptor_Curve & Curve();
+		Geom2dAdaptor_Curve Curve();
 
 		/****************** Orientation ******************/
 		/**** md5 signature: 854e5a15aa2f2078927a5c9e7d88dcf5 ****/
@@ -1138,7 +1138,7 @@ Description
 -----------
 Returns the curve associated to the inde-th element.
 ") ElementCurve;
-		const Geom2dAdaptor_Curve & ElementCurve(const Standard_Integer IndE);
+		Geom2dAdaptor_Curve ElementCurve(const Standard_Integer IndE);
 
 		/****************** HatchingCurve ******************/
 		/**** md5 signature: b1fa8a098ff9f80a6f4e6d2a784c6793 ****/
@@ -1156,7 +1156,7 @@ Description
 -----------
 Returns the curve associated to the indh-th hatching.
 ") HatchingCurve;
-		const Geom2dAdaptor_Curve & HatchingCurve(const Standard_Integer IndH);
+		Geom2dAdaptor_Curve HatchingCurve(const Standard_Integer IndH);
 
 		/****************** Intersector ******************/
 		/**** md5 signature: d4ab1df6bb73c74fdc4de0978582e354 ****/
@@ -1612,7 +1612,7 @@ Description
 -----------
 Returns the curve associated to the hatching.
 ") Curve;
-		const Geom2dAdaptor_Curve & Curve();
+		Geom2dAdaptor_Curve Curve();
 
 		/****************** Domain ******************/
 		/**** md5 signature: f3c8220f5a10c7deff66f6c669170c4f ****/

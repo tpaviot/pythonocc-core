@@ -964,7 +964,7 @@ Description
 -----------
 Selector returns the curve.
 ") Curve;
-		const IntTools_Curve & Curve();
+		IntTools_Curve Curve();
 
 		/****************** HasEdge ******************/
 		/**** md5 signature: b29d7c6fb0d75a5501e02d3f7002ad41 ****/
@@ -4877,7 +4877,7 @@ Description
 -----------
 /** * selector * returns the intersection curves * return * intersection curves */.
 ") Curves;
-		const BOPDS_VectorOfCurve & Curves();
+		BOPDS_VectorOfCurve Curves();
 
 		/****************** Init ******************/
 		/**** md5 signature: 4ef383c666596f906f9ce4d66071677d ****/

@@ -1237,7 +1237,7 @@ Description
 -----------
 Returns the curve of range n.
 ") Curve;
-		const IntAna_Curve & Curve(const Standard_Integer N);
+		IntAna_Curve Curve(const Standard_Integer N);
 
 		/****************** HasNextCurve ******************/
 		/**** md5 signature: a7a1cf3c623e1f0a7533ded2abd35b22 ****/
