@@ -43,6 +43,7 @@ test:
   requires:
     - pyqt >=5
     - mypy
+    - pytest
     - svgwrite
     - wxpython >=4
     - pyside2 >=5
