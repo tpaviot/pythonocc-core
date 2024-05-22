@@ -78,6 +78,7 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_stdprs.html"
 #include<Media_module.hxx>
 #include<Prs3d_module.hxx>
 #include<BRepTools_module.hxx>
+#include<Adaptor2d_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
