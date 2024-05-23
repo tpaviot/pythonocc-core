@@ -115,14 +115,16 @@ from OCC.Core.Exception import (
     MethodNotWrappedError,
     ClassNotWrappedError,
 )
-from OCC.Core.BinXCAFDrivers import binxcafdrivers
-from OCC.Core.TDocStd import TDocStd_Application, TDocStd_Document
+from OCC.Core.TDocStd import TDocStd_Document
 from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool
 from OCC.Core.TDataStd import TDataStd_Name
 from OCC.Core.STEPCAFControl import STEPCAFControl_Writer
 from OCC.Core.IGESCAFControl import IGESCAFControl_Reader
 from OCC.Core.IFSelect import IFSelect_RetDone
 from OCC.Core.ShapeAnalysis import ShapeAnalysis_FreeBounds
+from OCC.Core.APIHeaderSection import APIHeaderSection_MakeHeader
+from OCC.Core.TCollection import TCollection_HAsciiString
+from OCC.Core.Interface import Interface_HArray1OfHAsciiString
 
 from OCC.Extend.TopologyUtils import TopologyExplorer
 
@@ -1027,22 +1029,36 @@ def test_wrap_extendedstring_as_pyunicodestring():
     """not necessary anymore to instanciate a TCollection_ExtendedString,
     pass a regular python string"""
     # Create XDE document
-    app = TDocStd_Application()
-    binxcafdrivers.DefineFormat(app)
     doc = TDocStd_Document("example")
-    app.NewDocument("BinXCAF", doc)
     shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
     shape = BRepPrimAPI_MakeBox(10, 10, 10).Shape()
     label = shape_tool.AddShape(shape, False)
 
     a_unicode_string = "Some text with umlauts äöü and japanese (琵琶)"
     TDataStd_Name.Set(label, a_unicode_string)
-    # Initialize the STEP exporter
+
     step_writer = STEPCAFControl_Writer()
     Interface_Static.SetIVal("write.stepcaf.subshapes.name", 1)
     Interface_Static.SetCVal("write.step.schema", "AP214")
     Interface_Static.SetCVal("write.step.product.name", "my product")
     step_writer.Transfer(doc, STEPControl_AsIs)
+
+    # Initialize the STEP exporter
+    hs = APIHeaderSection_MakeHeader(step_writer.ChangeWriter().Model())
+    hs.SetName(TCollection_HAsciiString("model name"))
+    hs.SetAuthorValue(1, TCollection_HAsciiString("My name"))
+    hs.SetAuthorisation(TCollection_HAsciiString("authorization"))
+
+    descr = Interface_HArray1OfHAsciiString(1, 3)
+    descr.SetValue(1, TCollection_HAsciiString("a description"))
+    descr.SetValue(2, TCollection_HAsciiString("split into"))
+    descr.SetValue(3, TCollection_HAsciiString("three items"))
+    hs.SetDescription(descr)
+
+    org = Interface_HArray1OfHAsciiString(1, 1)
+    org.SetValue(1, TCollection_HAsciiString("pythonocc organization"))
+    hs.SetOrganization(org)
+
     status = step_writer.Write("compound_with_unicode_label.step")
 
     if status != IFSelect_RetDone:
