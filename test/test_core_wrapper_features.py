@@ -32,7 +32,7 @@ from OCC.Core.AIS import AIS_Manipulator
 from OCC.Core.Standard import Standard_Transient
 from OCC.Core.Bnd import Bnd_Box
 from OCC.Core.BRepExtrema import BRepExtrema_ShapeProximity
-from OCC.Core.BRepAdaptor import BRepAdaptor_Surface
+from OCC.Core.BRepAdaptor import BRepAdaptor_Curve, BRepAdaptor_Surface
 from OCC.Core.BRepClass import BRepClass_FaceExplorer, BRepClass_Edge
 from OCC.Core.BRepOffsetAPI import BRepOffsetAPI_Sewing
 from OCC.Core.BRepBndLib import brepbndlib
@@ -1121,3 +1121,16 @@ def test_const_ref_return():
     bounds = get_bounds(adaptor)
     # should returns [0.0, 35.53017372307497, 0.0, 27.81101597164092]
     assert bounds == [0.0, 35.53017372307497, 0.0, 27.81101597164092]
+
+
+def test_const_ref_return_2():
+    """See issue #1218"""
+
+    def make_curve():
+        p1 = gp_Pnt(5, -5, 0)
+        p2 = gp_Pnt(5, 5, 0)
+        ed1 = BRepBuilderAPI_MakeEdge(p2, p1).Edge()
+        c = BRepAdaptor_Curve(ed1).Curve().Curve()
+        return c
+
+    assert isinstance(make_curve(), Geom_Curve)
