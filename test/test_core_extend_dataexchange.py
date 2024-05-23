@@ -18,7 +18,6 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import unittest
 
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeTorus
 from OCC.Core.TopoDS import TopoDS_Compound
@@ -61,107 +60,113 @@ GLTF_BINARY_SAMPLE_FILE = get_test_fullname("Duck.gltf")
 A_TOPODS_SHAPE = BRepPrimAPI_MakeTorus(200, 50).Shape()
 
 
-class TestExtendDataExchange(unittest.TestCase):
-    def check_is_file(self, filename):
-        self.assertTrue(os.path.isfile(filename))
-
-    def test_read_step_file(self):
-        read_step_file(STEP_AP203_SAMPLE_FILE)
-        read_step_file(STEP_AP214_SAMPLE_FILE)
-
-    def test_read_step_file_multiple_shape_as_root(self):
-        t = read_step_file(STEP_MULTIPLE_ROOT, as_compound=True)
-        self.assertTrue(isinstance(t, TopoDS_Compound))
-
-        l = read_step_file(STEP_MULTIPLE_ROOT, as_compound=False)
-        self.assertEqual(len(l), 3)
-
-    def test_read_step_file_names_colors(self):
-        read_step_file_with_names_colors(STEP_AP203_SAMPLE_FILE)
-        read_step_file_with_names_colors(STEP_AP214_SAMPLE_FILE)
-
-    def test_read_iges_file(self):
-        read_iges_file(IGES_SAMPLE_FILE)
-
-    def test_read_iges_45_shapes(self):
-        all_shapes = read_iges_file(
-            IGES_45_FACES, return_as_shapes=True, verbosity=True
-        )
-        self.assertEqual(len(all_shapes), 45)
-
-    def test_read_iges_45_shapes_as_one_compound(self):
-        shapes = read_iges_file(IGES_45_FACES, return_as_shapes=False, verbosity=True)
-        self.assertEqual(len(shapes), 1)
-        self.assertIsInstance(shapes[0], TopoDS_Compound)
-        topo_explorer = TopologyExplorer(shapes[0])
-        self.assertEqual(topo_explorer.number_of_faces(), 45)
-
-    def test_read_stl_file(self):
-        read_stl_file(STL_ASCII_SAMPLE_FILE)
-        read_stl_file(STL_BINARY_SAMPLE_FILE)
-
-    def test_export_shape_to_svg(self):
-        svg_filename = get_test_fullname("sample.svg")
-        export_shape_to_svg(A_TOPODS_SHAPE, svg_filename)
-        self.check_is_file(svg_filename)
-
-    def test_read_gltf_ascii_file(self):
-        shp = read_gltf_file(GLTF_ASCII_SAMPLE_FILE)
-
-    def test_read_gltf_binary_file(self):
-        shp = read_gltf_file(GLTF_BINARY_SAMPLE_FILE)
-
-    def test_write_step_ap203(self):
-        ap203_filename = get_test_fullname("sample_ap_203.stp")
-        write_step_file(A_TOPODS_SHAPE, ap203_filename, application_protocol="AP203")
-        self.check_is_file(ap203_filename)
-
-    def test_write_step_ap214(self):
-        as214_filename = get_test_fullname("sample_214.stp")
-        write_step_file(A_TOPODS_SHAPE, as214_filename, application_protocol="AP214IS")
-        self.check_is_file(as214_filename)
-
-    def test_write_step_ap242(self):
-        ap242_filename = get_test_fullname("sample_242.stp")
-        write_step_file(A_TOPODS_SHAPE, ap242_filename, application_protocol="AP242DIS")
-        self.check_is_file(ap242_filename)
-
-    def test_write_iges(self):
-        iges_filename = get_test_fullname("sample.igs")
-        write_iges_file(A_TOPODS_SHAPE, iges_filename)
-        self.check_is_file(iges_filename)
-
-    def test_stl_ascii(self):
-        stl_ascii_filename = get_test_fullname("sample_ascii.stl")
-        write_stl_file(A_TOPODS_SHAPE, stl_ascii_filename, mode="ascii")
-        self.check_is_file(stl_ascii_filename)
-
-    def test_stl_binary(self):
-        stl_binary_filename = get_test_fullname("sample_binary.stl")
-        write_stl_file(A_TOPODS_SHAPE, stl_binary_filename, mode="binary")
-        self.check_is_file(stl_binary_filename)
-
-    def test_write_ply(self):
-        ply_filename = get_test_fullname("sample.ply")
-        write_ply_file(A_TOPODS_SHAPE, ply_filename)
-        self.check_is_file(ply_filename)
-
-    def test_write_obj(self):
-        obj_filename = get_test_fullname("sample.obj")
-        write_obj_file(A_TOPODS_SHAPE, obj_filename)
-        self.check_is_file(obj_filename)
-
-    def test_write_gltf(self):
-        gltf_filename = get_test_fullname("sample.gltf")
-        write_gltf_file(A_TOPODS_SHAPE, gltf_filename)
-        self.check_is_file(gltf_filename)
+def check_is_file(filename):
+    assert os.path.isfile(filename)
 
 
-def suite():
-    test_suite = unittest.TestSuite()
-    test_suite.addTest(unittest.makeSuite(TestExtendDataExchange))
-    return test_suite
+def test_read_step_file():
+    read_step_file(STEP_AP203_SAMPLE_FILE)
+    read_step_file(STEP_AP214_SAMPLE_FILE)
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_read_step_file_multiple_shape_as_root():
+    t = read_step_file(STEP_MULTIPLE_ROOT, as_compound=True)
+    assert isinstance(t, TopoDS_Compound)
+
+    l = read_step_file(STEP_MULTIPLE_ROOT, as_compound=False)
+    assert len(l) == 3
+
+
+def test_read_step_file_names_colors():
+    read_step_file_with_names_colors(STEP_AP203_SAMPLE_FILE)
+    read_step_file_with_names_colors(STEP_AP214_SAMPLE_FILE)
+
+
+def test_read_iges_file():
+    read_iges_file(IGES_SAMPLE_FILE)
+
+
+def test_read_iges_45_shapes():
+    all_shapes = read_iges_file(IGES_45_FACES, return_as_shapes=True, verbosity=True)
+    assert len(all_shapes) == 45
+
+
+def test_read_iges_45_shapes_as_one_compound():
+    shapes = read_iges_file(IGES_45_FACES, return_as_shapes=False, verbosity=True)
+    assert len(shapes) == 1
+    assert isinstance(shapes[0], TopoDS_Compound)
+    topo_explorer = TopologyExplorer(shapes[0])
+    assert topo_explorer.number_of_faces() == 45
+
+
+def test_read_stl_file():
+    read_stl_file(STL_ASCII_SAMPLE_FILE)
+    read_stl_file(STL_BINARY_SAMPLE_FILE)
+
+
+def test_export_shape_to_svg():
+    svg_filename = get_test_fullname("sample.svg")
+    export_shape_to_svg(A_TOPODS_SHAPE, svg_filename)
+    check_is_file(svg_filename)
+
+
+def test_read_gltf_ascii_file():
+    shp = read_gltf_file(GLTF_ASCII_SAMPLE_FILE)
+
+
+def test_read_gltf_binary_file():
+    shp = read_gltf_file(GLTF_BINARY_SAMPLE_FILE)
+
+
+def test_write_step_ap203():
+    ap203_filename = get_test_fullname("sample_ap_203.stp")
+    write_step_file(A_TOPODS_SHAPE, ap203_filename, application_protocol="AP203")
+    check_is_file(ap203_filename)
+
+
+def test_write_step_ap214():
+    as214_filename = get_test_fullname("sample_214.stp")
+    write_step_file(A_TOPODS_SHAPE, as214_filename, application_protocol="AP214IS")
+    check_is_file(as214_filename)
+
+
+def test_write_step_ap242():
+    ap242_filename = get_test_fullname("sample_242.stp")
+    write_step_file(A_TOPODS_SHAPE, ap242_filename, application_protocol="AP242DIS")
+    check_is_file(ap242_filename)
+
+
+def test_write_iges():
+    iges_filename = get_test_fullname("sample.igs")
+    write_iges_file(A_TOPODS_SHAPE, iges_filename)
+    check_is_file(iges_filename)
+
+
+def test_stl_ascii():
+    stl_ascii_filename = get_test_fullname("sample_ascii.stl")
+    write_stl_file(A_TOPODS_SHAPE, stl_ascii_filename, mode="ascii")
+    check_is_file(stl_ascii_filename)
+
+
+def test_stl_binary():
+    stl_binary_filename = get_test_fullname("sample_binary.stl")
+    write_stl_file(A_TOPODS_SHAPE, stl_binary_filename, mode="binary")
+    check_is_file(stl_binary_filename)
+
+
+def test_write_ply():
+    ply_filename = get_test_fullname("sample.ply")
+    write_ply_file(A_TOPODS_SHAPE, ply_filename)
+    check_is_file(ply_filename)
+
+
+def test_write_obj():
+    obj_filename = get_test_fullname("sample.obj")
+    write_obj_file(A_TOPODS_SHAPE, obj_filename)
+    check_is_file(obj_filename)
+
+
+def test_write_gltf():
+    gltf_filename = get_test_fullname("sample.gltf")
+    write_gltf_file(A_TOPODS_SHAPE, gltf_filename)
+    check_is_file(gltf_filename)
