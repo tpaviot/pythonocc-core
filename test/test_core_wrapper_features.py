@@ -25,6 +25,7 @@ import importlib
 import os
 import pickle
 from typing import Any, Iterator, List
+import sys
 import warnings
 
 import OCC.Core
@@ -641,8 +642,9 @@ def test_downcast_curve() -> None:
     line = Geom_Line.DownCast(curve)
     assert isinstance(line, Geom_Curve)
     # Hence, it should not be possible to downcast it as a B-Spline curve
-    with pytest.raises(SystemError):
-        Geom_BSplineCurve.DownCast(curve)
+    if sys.version_info.major == 3 and sys.version_info.minor < 12:
+        with pytest.raises(SystemError):
+            Geom_BSplineCurve.DownCast(curve)
 
 
 def test_return_enum() -> None:

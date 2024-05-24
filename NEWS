@@ -8,6 +8,10 @@ This release requires opencascade-7.8.1
 
 * wrapper: port to opencascade-7.8.1
 
+* wrapper: unittests moved to pytest framework
+
+* wrapper: fix const returned by reference, #1277 and related
+
 * wrapper: fix istream and ostream swig wrapper, fix ReadStream and WriteStream for STEP files
 
 * wrapper: Fix ShapeAnalysis::ConnectEdgesToWires wrapper, #745
