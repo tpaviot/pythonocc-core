@@ -87,8 +87,8 @@ endif(OPENGL_FOUND)
 option_with_default(PYTHONOCC_WRAP_DATAEXCHANGE "Compile DataExchange wrapper" ON)
 option_with_default(PYTHONOCC_WRAP_OCAF "Compile OCCT Application Framework wrapper" ON)
 option_with_default(SWIG_HIDE_WARNINGS "Check this option if you want a less verbose swig output." ON)
-option_with_default(OCCT_HIDE_DEPRECATED "Check this option if you want a less verbose swig output." ON)
-option_with_default(PYTHONOCC_MESHDS_NUMPY "Enable using numpy to speed up mesh data source arrays." OFF)
+option_with_default(OCCT_HIDE_DEPRECATED "Check this option to disable deprecation warnings for OCCT." ON)
+option_with_default(PYTHONOCC_MESHDS_NUMPY "Enable using numpy to speed up mesh data source arrays (requires numpy dev libraries and headers)." OFF)
 
 ############
 # Python 3 #
