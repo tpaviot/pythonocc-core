@@ -8,6 +8,8 @@ This release requires opencascade-7.8.1
 
 * wrapper: port to opencascade-7.8.1
 
+* wrapper: support for python 3.12
+
 * wrapper: unittests moved to pytest framework
 
 * wrapper: fix const returned by reference, #1277 and related
@@ -354,7 +356,7 @@ Version 0.16.4 - April 2016
 
 This release requires oce-0.16.0 or oce-0.16.1
 
-* New memeory management system: previous pythonocc released
+* New memory management system: previous pythonocc released
 suffered from memory issues (leaks). The release introduces a
 much better way to deal with the OCE handles
 
