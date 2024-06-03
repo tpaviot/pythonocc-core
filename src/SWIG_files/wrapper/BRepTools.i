@@ -987,6 +987,19 @@ TRelationType_Modified = TRelationType.TRelationType_Modified
 };
 /* end python proxy for enums */
 
+		/****************** BRepTools_History ******************/
+		/**** md5 signature: 4a35f50a2b6bb1bb1303ad7d8374073c ****/
+		%feature("compactdefaultargs") BRepTools_History;
+		%feature("autodoc", "Return
+-------
+None
+
+Description
+-----------
+Empty constructor.
+") BRepTools_History;
+		 BRepTools_History();
+
 		/****************** AddGenerated ******************/
 		/**** md5 signature: a7f4c29c6486250bd1401110ad1490c1 ****/
 		%feature("compactdefaultargs") AddGenerated;
@@ -1148,6 +1161,42 @@ Returns 'true' if the type of the shape is supported by the history.
 ") IsSupportedType;
 		static Standard_Boolean IsSupportedType(const TopoDS_Shape & theShape);
 
+		/****************** Merge ******************/
+		/**** md5 signature: fb045f600989a1f096e90b81d587d65a ****/
+		%feature("compactdefaultargs") Merge;
+		%feature("autodoc", "
+Parameters
+----------
+theHistory23: BRepTools_History
+
+Return
+-------
+None
+
+Description
+-----------
+Merges the next history to this history.
+") Merge;
+		void Merge(const opencascade::handle<BRepTools_History> & theHistory23);
+
+		/****************** Merge ******************/
+		/**** md5 signature: bcea4b93e38784928b17c2d0cc2cf68c ****/
+		%feature("compactdefaultargs") Merge;
+		%feature("autodoc", "
+Parameters
+----------
+theHistory23: BRepTools_History
+
+Return
+-------
+None
+
+Description
+-----------
+Merges the next history to this history.
+") Merge;
+		void Merge(const BRepTools_History & theHistory23);
+
 		/****************** Modified ******************/
 		/**** md5 signature: ea431397963162255277d1bdbac78ef8 ****/
 		%feature("compactdefaultargs") Modified;
@@ -1230,14 +1279,6 @@ Set the second shape as the only modified one from the first one.
 %extend BRepTools_History {
 	%pythoncode {
 	__repr__ = _dumps_object
-
-	@methodnotwrapped
-	def BRepTools_History(self):
-		pass
-
-	@methodnotwrapped
-	def Merge(self):
-		pass
 	}
 };
 
@@ -2054,10 +2095,6 @@ Returns the new value for an individual shape if not recorded, returns the origi
 %extend BRepTools_ReShape {
 	%pythoncode {
 	__repr__ = _dumps_object
-
-	@methodnotwrapped
-	def Merge(self):
-		pass
 	}
 };
 
