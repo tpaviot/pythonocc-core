@@ -107,6 +107,7 @@ from OCC.Core.TopTools import (
     TopTools_HArray2OfShape,
     TopTools_HSequenceOfShape,
     TopTools_ListOfShape,
+    TopTools_ListIteratorOfListOfShape,
 )
 from OCC.Core.TDF import TDF_LabelNode
 from OCC.Core.Quantity import Quantity_NameOfColor, Quantity_Color
@@ -1152,3 +1153,28 @@ def test_const_ref_return_2():
         return c
 
     assert isinstance(make_curve(), Geom_Curve)
+
+
+def test_iterator():
+    """See issue #1326"""
+    shp1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    shp2 = BRepPrimAPI_MakeBox(20, 30, 40).Shape()
+
+    los = TopTools_ListOfShape()
+
+    los.Append(shp1)
+    los.Append(shp2)
+
+    assert los.Size() == 2
+
+    it = TopTools_ListIteratorOfListOfShape(los)
+
+    shps = []
+    while it.More():
+        next_shp = it.Value()
+        assert not next_shp.IsNull()
+        shps.append(next_shp)
+        it.Next()
+
+    assert shp1.IsSame(shps[0])
+    assert shp2.IsSame(shps[1])
