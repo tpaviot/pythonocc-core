@@ -103,6 +103,20 @@ $ python
 >>>
 ```
 
+For Windows OS users, you may encounter the following error:
+
+```bash
+>>> ImportError: DLL load failed while importing _gp:
+```
+
+To resolve this issue, you need to import the OCCT DLL directory as follows:
+
+```bash
+>>> import os
+>>> os.add_dll_directory('path/to/occt/bin')
+>>> from OCC.Core.gp import gp_Pnt
+```
+
 additional dependencies
 -----------------------
 Additional python packages are required if you want to benefit from all pythonocc features.
