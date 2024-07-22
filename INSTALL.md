@@ -74,7 +74,7 @@ mkdir cmake-build && cd cmake-build
 RUN cmake \
  -DOCCT_INCLUDE_DIR=/opt/occt781/include/opencascade \
  -DOCCT_LIBRARY_DIR=/opt/occt781/lib \
- -DPYTHONOCC_BUILD_TYPE=Release \
+ -DCMAKE_BUILD_TYPE=Release \
  -DPYTHONOCC_INSTALL_DIRECTORY=<PATH-TO-INSTALL> \
   ..
 
