@@ -9,7 +9,7 @@ can compile/use it:
 
 *   the python programming language (<https://www.python.org>). Python 3.9 or more is required.
 *   OpenCascade 7.8.1 (<https://dev.opencascade.org>)
-*   SWIG 4.1.1 (<https://www.swig.org>)
+*   SWIG 4.2.1 (<https://www.swig.org>)
 *   rapidjson (<https://rapidjson.org/>) for Gltf import/export
 *   cmake
 
@@ -21,11 +21,11 @@ sudo apt-get install -y wget libglu1-mesa-dev libgl1-mesa-dev libxmu-dev libxi-d
 
 Build swig
 ----------
-The required swgi version is 4.1.1. Unfortunately, the ubuntu ppa only provides an outdated 4.0.2 version. If swig 4.1.1 is not available on your machine, you have to download/build by yourself (depends on libpcre2, previously installed):
+The required swgi version is 4.2.1. Unfortunately, the ubuntu ppa only provides an outdated. If swig 4.2.1 is not available on your machine, you have to download/build by yourself (depends on libpcre2, previously installed):
 ```bash
-wget http://prdownloads.sourceforge.net/swig/swig-4.1.1.tar.gz
-tar -zxvf swig-4.1.1.tar.gz
-cd swig-4.1.1
+wget http://prdownloads.sourceforge.net/swig/swig-4.2.1.tar.gz
+tar -zxvf swig-4.2.1.tar.gz
+cd swig-4.2.1
 ./configure && make -j4 && make install
 ```
 
