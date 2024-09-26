@@ -72,13 +72,13 @@ cd pythonocc-core
 mkdir cmake-build && cd cmake-build
 
 # Path to the installation folder
-INSTALL_DIR=<PATH-TO-INSTALL>
+PYTHONOCC_INSTALL_DIRECTORY=<PATH-TO-INSTALL>
 
 cmake \
  -DOCCT_INCLUDE_DIR=/opt/occt781/include/opencascade \
  -DOCCT_LIBRARY_DIR=/opt/occt781/lib \
  -DCMAKE_BUILD_TYPE=Release \
- -DPYTHONOCC_INSTALL_DIRECTORY=$INSTALL_DIR \
+ -DPYTHONOCC_INSTALL_DIRECTORY=$PYTHONOCC_INSTALL_DIRECTORY \
   ..
 
 make -j4 && make install 
