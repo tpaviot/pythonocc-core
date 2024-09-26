@@ -68,19 +68,22 @@ git clone https://github.com/tpaviot/pythonocc-core.git
 ```
 then
 ```bash
-cd xx/pythonocc-core
+cd pythonocc-core
 mkdir cmake-build && cd cmake-build
 
-RUN cmake \
+# Path to the installation folder
+INSTALL_DIR=<PATH-TO-INSTALL>
+
+cmake \
  -DOCCT_INCLUDE_DIR=/opt/occt781/include/opencascade \
  -DOCCT_LIBRARY_DIR=/opt/occt781/lib \
  -DCMAKE_BUILD_TYPE=Release \
- -DPYTHONOCC_INSTALL_DIRECTORY=<PATH-TO-INSTALL> \
+ -DPYTHONOCC_INSTALL_DIRECTORY=$INSTALL_DIR \
   ..
 
-RUN make -j4 && make install 
+make -j4 && make install 
 
-RUN  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/build/occt781/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/build/occt781/lib
 ```
 
 If `PYTHONOCC_INSTALL_DIRECTORY` is unset, it will be installed to `site-packages/OCC`. Also add your LD_LIBRARY_PATH in your .bashrc file.
