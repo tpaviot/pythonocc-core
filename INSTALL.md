@@ -31,16 +31,16 @@ cd swig-4.2.1
 
 Build OpenCascade
 -----------------
-Download/extract version 7.8.1 https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=bd2a789f15235755ce4d1a3b07379a2e062fdc2e;sf=tgz
+Download/extract version 7.8.1 https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_8_1.tar.gz
 
 ```bash
-wget -O occt-7.8.1.tgz https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=bd2a789f15235755ce4d1a3b07379a2e062fdc2e;sf=tgz
-tar -zxvf occt-7.8.1.tgz
+wget https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_8_1.tar.gz
+tar -xvzf V7_8_1.tar.gz
 ```
 
 Prepare the build stage:
 ```bash
-cd occt-bd2a789
+cd OCCT-7.8.1
 mkdir cmake-build
 cd cmake-build
 ```
