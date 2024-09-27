@@ -31,16 +31,16 @@ cd swig-4.2.1
 
 Build OpenCascade
 -----------------
-Download/extract version 7.8.1 https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=bd2a789f15235755ce4d1a3b07379a2e062fdc2e;sf=tgz
+Download/extract version 7.8.1 https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_8_1.tar.gz
 
 ```bash
-wget -O occt-7.8.1.tgz https://git.dev.opencascade.org/gitweb/?p=occt.git;a=snapshot;h=bd2a789f15235755ce4d1a3b07379a2e062fdc2e;sf=tgz
-tar -zxvf occt-7.8.1.tgz
+wget https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_8_1.tar.gz
+tar -xvzf V7_8_1.tar.gz
 ```
 
 Prepare the build stage:
 ```bash
-cd occt-bd2a789
+cd OCCT-7.8.1
 mkdir cmake-build
 cd cmake-build
 ```
@@ -68,19 +68,22 @@ git clone https://github.com/tpaviot/pythonocc-core.git
 ```
 then
 ```bash
-cd xx/pythonocc-core
+cd pythonocc-core
 mkdir cmake-build && cd cmake-build
 
-RUN cmake \
+# Path to the installation folder
+PYTHONOCC_INSTALL_DIRECTORY=<PATH-TO-INSTALL>
+
+cmake \
  -DOCCT_INCLUDE_DIR=/opt/occt781/include/opencascade \
  -DOCCT_LIBRARY_DIR=/opt/occt781/lib \
  -DCMAKE_BUILD_TYPE=Release \
- -DPYTHONOCC_INSTALL_DIRECTORY=<PATH-TO-INSTALL> \
+ -DPYTHONOCC_INSTALL_DIRECTORY=$PYTHONOCC_INSTALL_DIRECTORY \
   ..
 
-RUN make -j4 && make install 
+make -j4 && make install 
 
-RUN  export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/build/occt781/lib
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/build/occt781/lib
 ```
 
 If `PYTHONOCC_INSTALL_DIRECTORY` is unset, it will be installed to `site-packages/OCC`. Also add your LD_LIBRARY_PATH in your .bashrc file.
