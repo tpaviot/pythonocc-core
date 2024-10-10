@@ -111,8 +111,8 @@ def read_step_file(filename, as_compound=True, verbosity=True):
     if _nbs == 0:
         raise AssertionError("No shape to transfer.")
     if _nbs == 1:  # most cases
-        return step_reader.Shape(1)
-    if _nbs > 1:
+        shps = [step_reader.Shape(1)]
+    else:
         print("Number of shapes:", _nbs)
         shps = []
         # loop over root shapes
@@ -120,14 +120,14 @@ def read_step_file(filename, as_compound=True, verbosity=True):
             new_shp = step_reader.Shape(k)
             if not new_shp.IsNull():
                 shps.append(new_shp)
-        if as_compound:
-            compound, result = list_of_shapes_to_compound(shps)
-            if not result:
-                print("Warning: all shapes were not added to the compound")
-            return compound
-        print("Warning, returns a list of shapes.")
-        return shps
-    return None
+    if as_compound:
+        compound, result = list_of_shapes_to_compound(shps)
+        if not result:
+            print("Warning: all shapes were not added to the compound")
+        return compound
+
+    print("Warning, returns a list of shapes.")
+    return shps
 
 
 def write_step_file(a_shape, filename, application_protocol="AP203"):
