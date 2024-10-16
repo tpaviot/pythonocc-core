@@ -45,7 +45,7 @@ test:
     - mypy
     - pytest
     - svgwrite
-    - wxpython >=4
+    - wxpython ==4.2.1
     - pyside6
 
 about:
