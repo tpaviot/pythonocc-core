@@ -2,7 +2,7 @@ mkdir build
 cd build
 
 REM Configure step
-cmake -G "Ninja" ^
+cmake -G "Visual Studio 17 2022" -A x64 ^
  -DCMAKE_BUILD_TYPE=Release ^
  -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" ^
  -DCMAKE_LIBRARY_PATH="%LIBRARY_LIB%" ^
