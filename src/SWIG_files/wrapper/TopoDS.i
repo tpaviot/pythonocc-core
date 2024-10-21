@@ -1980,10 +1980,43 @@ Returns the type as a term of the shapeenum enum: vertex, edge, wire, face, ....
 ") ShapeType;
 		virtual TopAbs_ShapeEnum ShapeType();
 
+
+%extend{
+    bool __ne_wrapper__(const opencascade::handle<TopoDS_TShape> & other) {
+    if (self!=other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __ne__(self, right):
+    try:
+        return self.__ne_wrapper__(right)
+    except:
+        return True
+}
+
+%extend{
+    bool __eq_wrapper__(const opencascade::handle<TopoDS_TShape> & other) {
+    if (self==other) return true;
+    else return false;
+    }
+}
+%pythoncode {
+def __eq__(self, right):
+    try:
+        return self.__eq_wrapper__(right)
+    except:
+        return False
+}
 };
 
 
 %make_alias(TopoDS_TShape)
+
+%extend TopoDS_TShape {
+    size_t __hash__() {
+    return opencascade::hash(self);}
+};
 
 %extend TopoDS_TShape {
 	%pythoncode {
