@@ -1,8 +1,8 @@
 parameters:
   name: 'Conda build job'
-  vmImage: 'Ubuntu-18.04'
+  vmImage: 'ubuntu-22.04'
   py_maj: '3'
-  py_min: '6'
+  py_min: '9'
 
 jobs:
 - job: ${{ parameters.name }}
@@ -12,9 +12,20 @@ jobs:
     vmImage: ${{ parameters.vmImage }}
     
   steps: 
-  
+  # install conda on osx
+  - ${{ if contains(parameters.vmImage, 'macOS') }}:
+    - bash: |
+        curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
+        bash Miniconda3-latest-MacOSX-x86_64.sh -b -p $HOME/miniconda
+        echo "##vso[task.prependpath]$HOME/miniconda/bin"
+      displayName: 'Install Miniconda on macOS'
   #activate conda
-  - ${{ if or(contains(parameters.vmImage, 'macOS'),contains(parameters.vmImage, 'Ubuntu')) }}:
+  - ${{ if contains(parameters.vmImage, 'macOS') }}:
+    - bash: |
+        source $HOME/miniconda/bin/activate
+        conda init bash
+      displayName: 'Add conda to PATH'
+  - ${{ if contains(parameters.vmImage, 'ubuntu') }}:
     - bash: echo "##vso[task.prependpath]$CONDA/bin"
       displayName: 'Add conda to PATH'
   - ${{ if contains(parameters.vmImage, 'win') }}:
@@ -22,7 +33,7 @@ jobs:
       displayName: 'Add conda to PATH'
 
   # Ubuntu install opengl items and remove swig packages that conflict with anaconda
-  - ${{ if contains(parameters.vmImage, 'Ubuntu') }}:
+  - ${{ if contains(parameters.vmImage, 'ubuntu') }}:
     - bash: |
         sudo apt-get update && \
         sudo apt-get -q -y install libglu1-mesa-dev libgl1-mesa-dev libxmu-dev libxi-dev && \
