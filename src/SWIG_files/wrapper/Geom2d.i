@@ -52,6 +52,17 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geom2d.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
+
+%{
+#define SWIG_FILE_WITH_INIT
+%}
+%include ../common/numpy.i
+%include ../common/ArrayMacros.i
+
+%init %{
+	import_array();
+%}
+
 %import Standard.i
 %import NCollection.i
 %import gp.i
@@ -60,6 +71,8 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geom2d.html"
 %import TColStd.i
 
 %pythoncode {
+import numpy as np
+
 from enum import IntEnum
 from OCC.Core.Exception import *
 };
@@ -97,6 +110,9 @@ from OCC.Core.Exception import *
 
 /* templates */
 /* end templates declaration */
+
+%apply (double* IN_ARRAY1, int DIM1) { (double* numpyArrayU, int nRowsU) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArrayResultArgout, int aSizeArgout) };
 
 /* typedefs */
 /* end typedefs declaration */
@@ -1424,6 +1440,8 @@ Computes the point of parameter u on <self>. if the curve is periodic then the r
 	__repr__ = _dumps_object
 	}
 };
+
+Curve2dArrayEvalExtend(Geom2d_Curve)
 
 /*********************
 * class Geom2d_Point *

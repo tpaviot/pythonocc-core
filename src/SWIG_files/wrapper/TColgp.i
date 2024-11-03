@@ -49,10 +49,23 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tcolgp.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
+
+%{
+#define SWIG_FILE_WITH_INIT
+%}
+%include ../common/numpy.i
+%include ../common/ArrayMacros.i
+
+%init %{
+	import_array();
+%}
+
 %import Standard.i
 %import NCollection.i
 
 %pythoncode {
+import numpy as np
+
 from enum import IntEnum
 from OCC.Core.Exception import *
 };
@@ -96,367 +109,37 @@ from OCC.Core.Exception import *
 %wrap_handle(TColgp_HSequenceOfDir)
 /* end handles declaration */
 
+
 /* templates */
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nDims2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+
 %template(TColgp_Array1OfCirc2d) NCollection_Array1<gp_Circ2d>;
-
-%extend NCollection_Array1<gp_Circ2d> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TColgp_Array1OfDir) NCollection_Array1<gp_Dir>;
-
-%extend NCollection_Array1<gp_Dir> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TColgp_Array1OfDir2d) NCollection_Array1<gp_Dir2d>;
-
-%extend NCollection_Array1<gp_Dir2d> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
+Array1ExtendIter(gp_Circ2d)
+Array1Of3DTemplate(TColgp_Array1OfDir, gp_Dir)
+Array1Of2DTemplate(TColgp_Array1OfDir2d, gp_Dir2d)
 %template(TColgp_Array1OfLin2d) NCollection_Array1<gp_Lin2d>;
+Array1ExtendIter(gp_Lin2d)
+Array1Of3DTemplate(TColgp_Array1OfPnt, gp_Pnt)
+Array1Of2DTemplate(TColgp_Array1OfPnt2d, gp_Pnt2d)
+Array1Of3DTemplate(TColgp_Array1OfVec, gp_Vec)
+Array1Of2DTemplate(TColgp_Array1OfVec2d, gp_Vec2d)
+Array1Of2DTemplate(TColgp_Array1OfXY, gp_XY)
+Array1Of3DTemplate(TColgp_Array1OfXYZ, gp_XYZ)
 
-%extend NCollection_Array1<gp_Lin2d> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
+%apply (double* IN_ARRAY3, int DIM1, int DIM2, int DIM3) { (double* numpyArray3, int nRows3, int nCols3, int nDims3) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray3Argout, int aSizeArgout) };
 
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TColgp_Array1OfPnt) NCollection_Array1<gp_Pnt>;
-
-%extend NCollection_Array1<gp_Pnt> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TColgp_Array1OfPnt2d) NCollection_Array1<gp_Pnt2d>;
-
-%extend NCollection_Array1<gp_Pnt2d> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TColgp_Array1OfVec) NCollection_Array1<gp_Vec>;
-
-%extend NCollection_Array1<gp_Vec> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TColgp_Array1OfVec2d) NCollection_Array1<gp_Vec2d>;
-
-%extend NCollection_Array1<gp_Vec2d> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TColgp_Array1OfXY) NCollection_Array1<gp_XY>;
-
-%extend NCollection_Array1<gp_XY> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TColgp_Array1OfXYZ) NCollection_Array1<gp_XYZ>;
-
-%extend NCollection_Array1<gp_XYZ> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
 %template(TColgp_Array2OfCirc2d) NCollection_Array2<gp_Circ2d>;
-%template(TColgp_Array2OfDir) NCollection_Array2<gp_Dir>;
-%template(TColgp_Array2OfDir2d) NCollection_Array2<gp_Dir2d>;
+Array2Of3DTemplate(TColgp_Array2OfDir, gp_Dir)
+Array2Of2DTemplate(TColgp_Array2OfDir2d, gp_Dir2d)
 %template(TColgp_Array2OfLin2d) NCollection_Array2<gp_Lin2d>;
-%template(TColgp_Array2OfPnt) NCollection_Array2<gp_Pnt>;
-%template(TColgp_Array2OfPnt2d) NCollection_Array2<gp_Pnt2d>;
-%template(TColgp_Array2OfVec) NCollection_Array2<gp_Vec>;
-%template(TColgp_Array2OfVec2d) NCollection_Array2<gp_Vec2d>;
-%template(TColgp_Array2OfXY) NCollection_Array2<gp_XY>;
-%template(TColgp_Array2OfXYZ) NCollection_Array2<gp_XYZ>;
+Array2Of3DTemplate(TColgp_Array2OfPnt, gp_Pnt)
+Array2Of2DTemplate(TColgp_Array2OfPnt2d, gp_Pnt2d)
+Array2Of3DTemplate(TColgp_Array2OfVec, gp_Vec)
+Array2Of2DTemplate(TColgp_Array2OfVec2d, gp_Vec2d)
+Array2Of2DTemplate(TColgp_Array2OfXY, gp_XY)
+Array2Of3DTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfArray1OfPnt2d) NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>>;
 
 %extend NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>> {
@@ -465,6 +148,7 @@ from OCC.Core.Exception import *
         return self.Size()
     }
 };
+
 %template(TColgp_SequenceOfAx1) NCollection_Sequence<gp_Ax1>;
 
 %extend NCollection_Sequence<gp_Ax1> {
