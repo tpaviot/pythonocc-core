@@ -23,7 +23,7 @@ import sys
 from typing import Any, Callable, List, Optional, Tuple
 
 from OCC import VERSION
-from OCC.Display.backend import load_backend, get_qt_modules
+from OCC.Display.backend import get_qt_modules, load_backend
 from OCC.Display.OCCViewer import OffscreenRenderer
 
 log = logging.getLogger(__name__)
@@ -86,6 +86,7 @@ def init_display(
     # tkinter SimpleGui
     if used_backend == "tk":
         import tkinter as tk
+
         from OCC.Display.tkDisplay import tkViewer3d
 
         root = tk.Tk()
@@ -145,7 +146,7 @@ def init_display(
                 # point on curve
                 _id = wx.NewId()
                 check_callable(_callable)
-                if not menu_name in self._menus:
+                if menu_name not in self._menus:
                     raise ValueError(f"the menu item {menu_name} does not exist")
                 self._menus[menu_name].Append(
                     _id, _callable.__name__.replace("_", " ").lower()
@@ -215,7 +216,7 @@ def init_display(
 
             def add_function_to_menu(self, menu_name: str, _callable: Callable) -> None:
                 check_callable(_callable)
-                if not menu_name in self._menus:
+                if menu_name not in self._menus:
                     raise ValueError(f"the menu item {menu_name} does not exist")
                 qaction = (
                     QtGui.QAction
@@ -227,7 +228,7 @@ def init_display(
                 self._menus[menu_name].addAction(_action)
 
         # following couple of lines is a tweak to enable ipython --gui='qt'
-        app = QtWidgets.QApplication(sys.argv)
+        app = QtWidgets.QApplication.instance() or QtWidgets.QApplication(sys.argv)
         win = MainWindow()
         win.resize(size[0] - 1, size[1] - 1)
         win.show()
