@@ -1,9 +1,15 @@
+import sys
 from unittest.mock import patch
 
 import pytest
 from OCC.Core.BRepPrimAPI import BRepPrimAPI_MakeCylinder
 from OCC.Display.backend import load_backend
 from OCC.Display.SimpleGui import init_display
+
+pytestmark = pytest.mark.skipif(
+    sys.platform == "linux",
+    reason="Avoid problems with Qt and Ubuntu machines on Azure",
+)
 
 
 @pytest.fixture
