@@ -2641,8 +2641,8 @@ Returns in thec1, thec2 and thec3 the components of this color according to the 
 
 %extend{
     bool __ne_wrapper__(const Quantity_Color other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -2655,8 +2655,8 @@ def __ne__(self, right):
 
 %extend{
     bool __eq_wrapper__(const Quantity_Color other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -3058,8 +3058,8 @@ Assign new values to the color.
 
 %extend{
     bool __ne_wrapper__(const Quantity_ColorRGBA other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -3072,8 +3072,8 @@ def __ne__(self, right):
 
 %extend{
     bool __eq_wrapper__(const Quantity_ColorRGBA other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -3496,8 +3496,8 @@ No available documentation.
 
 %extend{
     bool __eq_wrapper__(const Quantity_Date other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -3834,8 +3834,8 @@ No available documentation.
 
 %extend{
     bool __eq_wrapper__(const Quantity_Period other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

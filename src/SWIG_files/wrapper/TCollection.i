@@ -1637,8 +1637,8 @@ Returns character at position <where> in <self>. if <where> is less than zero or
 
 %extend{
     bool __ne_wrapper__(const Standard_CString other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -1651,8 +1651,8 @@ def __ne__(self, right):
 
 %extend{
     bool __ne_wrapper__(const TCollection_AsciiString other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -1810,8 +1810,8 @@ def __iadd__(self, right):
 
 %extend{
     bool __eq_wrapper__(const Standard_CString other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -1824,8 +1824,8 @@ def __eq__(self, right):
 
 %extend{
     bool __eq_wrapper__(const TCollection_AsciiString other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -2726,8 +2726,8 @@ Returns character at position <where> in <self>. if <where> is less than zero or
 
 %extend{
     bool __ne_wrapper__(const Standard_ExtString other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -2740,8 +2740,8 @@ def __ne__(self, right):
 
 %extend{
     bool __ne_wrapper__(const TCollection_ExtendedString other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -2783,8 +2783,8 @@ def __iadd__(self, right):
 
 %extend{
     bool __eq_wrapper__(const Standard_ExtString other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -2797,8 +2797,8 @@ def __eq__(self, right):
 
 %extend{
     bool __eq_wrapper__(const TCollection_ExtendedString other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

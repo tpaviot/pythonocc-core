@@ -539,6 +539,38 @@ def test_neq_operator() -> None:
     assert shape_1 != "some_string"
 
 
+def test_tshape_hash_operator() -> None:
+    shape_1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    shape_2 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    # Create a shape that differs from shape_2, but has the same TShape
+    shape_3 = shape_2.Reversed()
+    assert hash(shape_1.TShape()) == hash(shape_1.TShape())
+    assert not hash(shape_1.TShape()) == hash(shape_2.TShape())
+    assert hash(shape_2.TShape()) == hash(shape_3.TShape())
+
+
+def test_tshape_eq_operator() -> None:
+    shape_1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    shape_2 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    # Create a shape that differs from shape_2, but has the same TShape
+    shape_3 = shape_2.Reversed()
+    assert shape_1.TShape() == shape_1.TShape()
+    assert not shape_1.TShape() == shape_2.TShape()
+    assert shape_2.TShape() == shape_3.TShape()
+    assert not shape_1.TShape() == "some_string"
+
+
+def test_tshape_neq_operator() -> None:
+    shape_1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    shape_2 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
+    # Create a shape that differs from shape_2, but has the same TShape
+    shape_3 = shape_2.Reversed()
+    assert not shape_1.TShape() != shape_1.TShape()
+    assert shape_1.TShape() != shape_2.TShape()
+    assert not shape_2.TShape() != shape_3.TShape()
+    assert shape_1.TShape() != "some_string"
+
+
 def test_inherit_topods_shape() -> None:
     class InheritEdge(TopoDS_Edge):
         def __init__(self, edge: TopoDS_Edge) -> None:

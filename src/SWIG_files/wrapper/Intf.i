@@ -744,8 +744,8 @@ Reverses the order of the elements of the sectionline.
 
 %extend{
     bool __eq_wrapper__(const Intf_SectionLine other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -1065,8 +1065,8 @@ Returns the type of the section point on the second element.
 
 %extend{
     bool __eq_wrapper__(const Intf_SectionPoint other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -1413,8 +1413,8 @@ Returns true if <thepi> is in the parameter range of the tangentzone.
 
 %extend{
     bool __eq_wrapper__(const Intf_TangentZone other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

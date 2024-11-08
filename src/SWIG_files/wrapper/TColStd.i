@@ -1135,8 +1135,8 @@ def __isub__(self, right):
 
 %extend{
     bool __eq_wrapper__(const TColStd_PackedMapOfInteger other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

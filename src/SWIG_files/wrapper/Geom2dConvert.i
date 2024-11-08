@@ -930,8 +930,8 @@ Change the value of the derivative at the point.
 
 %extend{
     bool __ne_wrapper__(const Geom2dConvert_PPoint other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -944,8 +944,8 @@ def __ne__(self, right):
 
 %extend{
     bool __eq_wrapper__(const Geom2dConvert_PPoint other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

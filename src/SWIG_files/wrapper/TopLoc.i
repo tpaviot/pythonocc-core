@@ -593,8 +593,8 @@ Returns the transformation associated to the coordinate system.
 
 %extend{
     bool __ne_wrapper__(const TopLoc_Location other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -643,8 +643,8 @@ No available documentation.
 
 %extend{
     bool __eq_wrapper__(const TopLoc_Location other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

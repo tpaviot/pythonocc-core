@@ -3152,8 +3152,8 @@ Sets the indices.
 
 %extend{
     bool __eq_wrapper__(const BOPDS_Pair other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -3322,8 +3322,8 @@ Modifier sets the parameter of vertex <theparameter>.
 
 %extend{
     bool __eq_wrapper__(const BOPDS_Pave other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

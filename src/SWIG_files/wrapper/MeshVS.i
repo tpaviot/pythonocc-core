@@ -3539,8 +3539,8 @@ class MeshVS_TwoColors {
 
 %extend{
     bool __eq_wrapper__(const MeshVS_TwoColors other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -3588,8 +3588,8 @@ No available documentation.
 
 %extend{
     bool __eq_wrapper__(const MeshVS_TwoNodes other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

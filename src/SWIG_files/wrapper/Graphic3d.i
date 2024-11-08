@@ -5086,8 +5086,8 @@ Normalizes bsdf components.
 
 %extend{
     bool __eq_wrapper__(const Graphic3d_BSDF other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -8369,8 +8369,8 @@ Return offset position from lower-left corner.
 
 %extend{
     bool __eq_wrapper__(const Graphic3d_CameraTile other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -10283,8 +10283,8 @@ Returns serialized representation of fresnel factor.
 
 %extend{
     bool __eq_wrapper__(const Graphic3d_Fresnel other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -13603,8 +13603,8 @@ Returns the transparency coefficient of the surface (1.0 - alpha); 0.0 means opa
 
 %extend{
     bool __ne_wrapper__(const Graphic3d_MaterialAspect other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -13617,8 +13617,8 @@ def __ne__(self, right):
 
 %extend{
     bool __eq_wrapper__(const Graphic3d_MaterialAspect other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -14038,8 +14038,8 @@ Shows how much times less samples can be used in certain roughness value specula
 
 %extend{
     bool __eq_wrapper__(const Graphic3d_PBRMaterial other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -14103,8 +14103,8 @@ Dump the object to JSON string.
 
 %extend{
     bool __eq_wrapper__(const Graphic3d_PolygonOffset other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -19713,8 +19713,8 @@ Return world view state counter.
 
 %extend{
     bool __ne_wrapper__(const Graphic3d_WorldViewProjState other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -19727,8 +19727,8 @@ def __ne__(self, right):
 
 %extend{
     bool __eq_wrapper__(const Graphic3d_WorldViewProjState other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
