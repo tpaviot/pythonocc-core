@@ -88,6 +88,10 @@ from OCC.Core.Exception import *
 %ignore NCollection_List::First();
 %ignore NCollection_List::Last();
 %ignore NCollection_TListIterator::Value();
+
+%ignore NCollection_Array2::Value();
+%ignore NCollection_Array2::ChangeValue();
+%ignore NCollection_Array2::operator();
 /* public enums */
 enum NCollection_CellFilter_Action {
 	CellFilter_Keep = 0,
