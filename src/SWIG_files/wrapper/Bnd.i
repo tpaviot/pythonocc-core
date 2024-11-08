@@ -4328,8 +4328,8 @@ Joins *this and theother to one interval. replaces *this to the result. returns 
 
 %extend{
     bool __eq_wrapper__(const Bnd_Range other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

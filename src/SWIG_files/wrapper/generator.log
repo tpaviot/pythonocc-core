@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 0a2712e
+git revision : 020d4e8
 
-operating system : Linux 64bit 6.5.0-35-generic
+operating system : Linux 64bit 6.8.0-48-generic
 
 occt version targeted : 7.8.1
 
-date : 2024-05-22 13:48:56.569965
+date : 2024-11-08 14:20:50.686717
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -280,11 +280,7 @@ date : 2024-05-22 13:48:56.569965
 [INFO ]  Class: BRepTools
 [INFO ]  Class: BRepTools_History
 [INFO ]  Enum: TRelationType
-[INFO ]      explicitly excluded method BRepTools_History::4a35f50a2b6bb1bb1303ad7d8374073c
-[INFO ]      explicitly excluded method BRepTools_History::7dfa827711ec2050a35ebaeda60fa3a6
-[INFO ]      explicitly excluded method BRepTools_History::fb045f600989a1f096e90b81d587d65a
-[INFO ]      explicitly excluded method BRepTools_History::bcea4b93e38784928b17c2d0cc2cf68c
-[INFO ]      explicitly excluded method BRepTools_History::1e361db725f2785773b933e1d47f0346
+[INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepTools_Modification
 [INFO ]      Class BRepTools_Modification is abstract, using %nodefaultctor.
 [INFO ]  Class: BRepTools_Modifier
@@ -296,7 +292,6 @@ date : 2024-05-22 13:48:56.569965
 [INFO ]  Class: BRepTools_Quilt
 [INFO ]  Class: BRepTools_ReShape
 [INFO ]      Wrap nested class BRepTools_ReShape::TReplacement
-[INFO ]      explicitly excluded method BRepTools_ReShape::4a1e1cf3a68bb84f97ab6c753f9ff817
 [INFO ]  Class: BRepTools_ShapeSet
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: BRepTools_Substitution
@@ -4635,7 +4630,7 @@ date : 2024-05-22 13:48:56.569965
 [INFO ]      Wrap nested class RWPly_ConfigurationNode::RWPly_InternalSection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: RWPly_PlyWriterContext
-[WARNI]      [TypeHint] Skip type std::shared_ptr<std::ostream>, because of trailing :
+[INFO ]      explicitly excluded method RWPly_PlyWriterContext::8602e84f6acfb0cc325e9d67eb1ded24
 [INFO ]  Class: RWPly_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Processing toolkit TKSTEP ===
@@ -9559,8 +9554,8 @@ date : 2024-05-22 13:48:56.569965
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 17.47s
+SWIG interface file generation completed in 17.97s
 #################################################
 
 [INFO ]  Number of classes: 4743
-[INFO ]  Number of methods: 47534
+[INFO ]  Number of methods: 47536

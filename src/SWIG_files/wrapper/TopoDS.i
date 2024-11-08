@@ -1612,8 +1612,8 @@ No available documentation.
 
 %extend{
     bool __ne_wrapper__(const TopoDS_Shape other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -1626,8 +1626,8 @@ def __ne__(self, right):
 
 %extend{
     bool __eq_wrapper__(const TopoDS_Shape other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -1643,9 +1643,10 @@ def __eq__(self, right):
 
 %extend TopoDS_Shape {
     size_t __hash__() {
-    std::hash<TopoDS_Shape> shapeHasher;
-    size_t hashValue = shapeHasher(*self);
-    return hashValue;}
+        std::hash<TopoDS_Shape> shapeHasher;
+        size_t hashValue = shapeHasher(*self);
+        return hashValue;
+    }
 };
 
 %extend TopoDS_Shape {

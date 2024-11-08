@@ -857,8 +857,8 @@ No available documentation.
 
 %extend{
     bool __eq_wrapper__(const StepToTopoDS_PointPair other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

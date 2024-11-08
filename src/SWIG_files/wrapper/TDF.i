@@ -2919,7 +2919,7 @@ Attributes with id owned by <anidlist> are to be kept and the filter will answer
 ******************/
 class TDF_Label {
 	public:
-		friend struct std:: hash;
+		friend struct std::hash ;
 		/****************** TDF_Label ******************/
 		/**** md5 signature: 1a8e59ba046467c4e163db826620fcdb ****/
 		%feature("compactdefaultargs") TDF_Label;
@@ -3485,8 +3485,8 @@ Returns the current transaction index.
 
 %extend{
     bool __ne_wrapper__(const TDF_Label other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -3499,8 +3499,8 @@ def __ne__(self, right):
 
 %extend{
     bool __eq_wrapper__(const TDF_Label other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

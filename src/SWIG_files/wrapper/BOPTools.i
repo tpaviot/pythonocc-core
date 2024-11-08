@@ -2466,8 +2466,8 @@ No available documentation.
 
 %extend{
     bool __eq_wrapper__(const BOPTools_Set other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

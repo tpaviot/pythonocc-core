@@ -798,25 +798,6 @@ Return number of written vertices.
 ") NbWrittenVertices;
 		Standard_Integer NbWrittenVertices();
 
-		/****************** Open ******************/
-		/**** md5 signature: 8602e84f6acfb0cc325e9d67eb1ded24 ****/
-		%feature("compactdefaultargs") Open;
-		%feature("autodoc", "
-Parameters
-----------
-theName: str
-theStream: std::shared_ptr<std::ostream> (optional, default to std::shared_ptr<std::ostream>())
-
-Return
--------
-bool
-
-Description
------------
-Open file for writing.
-") Open;
-		bool Open(TCollection_AsciiString theName, const std::shared_ptr<std::ostream> & theStream = std::shared_ptr<std::ostream>());
-
 		/****************** SetColors ******************/
 		/**** md5 signature: ba154b7155d7a27211ce6b222d360537 ****/
 		%feature("compactdefaultargs") SetColors;
@@ -1052,6 +1033,10 @@ Write single point with all attributes. @param[in] thepoint 3d point coordinates
 %extend RWPly_PlyWriterContext {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Open(self):
+		pass
 	}
 };
 

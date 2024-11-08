@@ -296,8 +296,8 @@ Sets the triangles.
 
 %extend{
     bool __eq_wrapper__(const IntPolyh_Couple other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

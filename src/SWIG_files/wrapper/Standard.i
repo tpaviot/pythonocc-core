@@ -595,7 +595,7 @@ Removes handler from the handlers list.
 **********************/
 class Standard_GUID {
 	public:
-		friend struct std:: hash;
+		friend struct std::hash ;
 		/****************** Standard_GUID ******************/
 		/**** md5 signature: bd47278e877fa95d24363f9cfe93d187 ****/
 		%feature("compactdefaultargs") Standard_GUID;
@@ -867,8 +867,8 @@ No available documentation.
 
 %extend{
     bool __ne_wrapper__(const Standard_GUID other) {
-    if (*self!=other) return true;
-    else return false;
+        if (*self!=other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -881,8 +881,8 @@ def __ne__(self, right):
 
 %extend{
     bool __eq_wrapper__(const Standard_GUID other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -1243,6 +1243,36 @@ No available documentation.
 
 %make_alias(Standard_Transient)
 
+
+%extend Standard_Transient {
+    %pythoncode {
+    __repr__ = _dumps_object
+
+    def __eq__(self, right):
+        if not isinstance(right, Standard_Transient):
+            return False
+        return self.__eq_wrapper__(right)
+
+    def __ne__(self, right):
+        if not isinstance(right, Standard_Transient):
+            return True
+        return self.__ne_wrapper__(right)
+    }
+};
+
+%extend Standard_Transient {
+    bool __eq_wrapper__(const opencascade::handle<Standard_Transient> & other) {
+        if (self==other) return true;
+        else return false;
+    }
+    bool __ne_wrapper__(const opencascade::handle<Standard_Transient> & other) {
+        if (self!=other) return true;
+        else return false;
+    }
+    size_t __hash__() {
+        return opencascade::hash(self);
+    }
+};
 %extend Standard_Transient {
 	%pythoncode {
 	__repr__ = _dumps_object

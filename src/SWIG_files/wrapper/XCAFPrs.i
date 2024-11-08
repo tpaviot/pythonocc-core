@@ -713,8 +713,8 @@ No available documentation.
 
 %extend{
     bool __eq_wrapper__(const XCAFPrs_DocumentNode other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -786,7 +786,7 @@ No available documentation.
 **********************/
 class XCAFPrs_Style {
 	public:
-		friend struct std:: hash;
+		friend struct std::hash ;
 		/****************** XCAFPrs_Style ******************/
 		/**** md5 signature: 9543f66d0ab16adfbffa6f1ff76c2dd5 ****/
 		%feature("compactdefaultargs") XCAFPrs_Style;
@@ -1075,8 +1075,8 @@ Manage surface color setting.
 
 %extend{
     bool __eq_wrapper__(const XCAFPrs_Style other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

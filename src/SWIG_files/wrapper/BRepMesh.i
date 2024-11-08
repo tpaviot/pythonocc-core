@@ -3262,8 +3262,8 @@ Returns index of last node of the link.
 
 %extend{
     bool __eq_wrapper__(const BRepMesh_OrientedEdge other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -4232,8 +4232,8 @@ Sets movability of the triangle.
 
 %extend{
     bool __eq_wrapper__(const BRepMesh_Triangle other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -4510,8 +4510,8 @@ Sets movability of the vertex.
 
 %extend{
     bool __eq_wrapper__(const BRepMesh_Vertex other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
@@ -5254,8 +5254,8 @@ Sets movability flag of the link. @param themovability flag to be set.
 
 %extend{
     bool __eq_wrapper__(const BRepMesh_Edge other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

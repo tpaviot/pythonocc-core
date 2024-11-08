@@ -1174,8 +1174,8 @@ Returns the full pass as a formatted string.
 
 %extend{
     bool __eq_wrapper__(const XCAFDoc_AssemblyItemId other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {

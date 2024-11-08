@@ -305,8 +305,8 @@ No available documentation.
 
 %extend{
     bool __eq_wrapper__(const MAT2d_BiInt other) {
-    if (*self==other) return true;
-    else return false;
+        if (*self==other) return true;
+        else return false;
     }
 }
 %pythoncode {
