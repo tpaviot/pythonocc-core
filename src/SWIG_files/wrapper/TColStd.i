@@ -49,11 +49,24 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tcolstd.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
+
+%{
+#define SWIG_FILE_WITH_INIT
+%}
+%include ../common/numpy.i
+%include ../common/ArrayMacros.i
+
+%init %{
+	import_array();
+%}
+
 %import Standard.i
 %import NCollection.i
 %import TCollection.i
 
 %pythoncode {
+import numpy as np
+
 from enum import IntEnum
 from OCC.Core.Exception import *
 };
@@ -93,289 +106,40 @@ from OCC.Core.Exception import *
 
 /* templates */
 %template(TColStd_Array1OfAsciiString) NCollection_Array1<TCollection_AsciiString>;
+Array1ExtendIter(TCollection_AsciiString)
 
-%extend NCollection_Array1<TCollection_AsciiString> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
 %template(TColStd_Array1OfBoolean) NCollection_Array1<Standard_Boolean>;
+Array1ExtendIter(Standard_Boolean)
 
-%extend NCollection_Array1<Standard_Boolean> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
 %template(TColStd_Array1OfByte) NCollection_Array1<Standard_Byte>;
+Array1ExtendIter(Standard_Byte)
 
-%extend NCollection_Array1<Standard_Byte> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
 %template(TColStd_Array1OfCharacter) NCollection_Array1<Standard_Character>;
+Array1ExtendIter(Standard_Character)
 
-%extend NCollection_Array1<Standard_Character> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
 %template(TColStd_Array1OfExtendedString) NCollection_Array1<TCollection_ExtendedString>;
+Array1ExtendIter(TCollection_ExtendedString)
 
-%extend NCollection_Array1<TCollection_ExtendedString> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
+%apply (long long* IN_ARRAY1, int DIM1) { (long long* numpyArray1, int nRows1) };
+%apply (long long* ARGOUT_ARRAY1, int DIM1) { (long long* numpyArray1Argout, int nRows1Argout) };
+Array1Template(TColStd_Array1OfInteger, long long, Standard_Integer)
 
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
+%apply (double* IN_ARRAY1, int DIM1) { (double* numpyArray1, int nRows1) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray1Argout, int nRows1Argout) };
+Array1Template(TColStd_Array1OfReal, double, Standard_Real)
 
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TColStd_Array1OfInteger) NCollection_Array1<Standard_Integer>;
-
-%extend NCollection_Array1<Standard_Integer> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TColStd_Array1OfReal) NCollection_Array1<Standard_Real>;
-
-%extend NCollection_Array1<Standard_Real> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
 %template(TColStd_Array1OfTransient) NCollection_Array1<opencascade::handle<Standard_Transient>>;
+Array1ExtendIter(opencascade::handle<Standard_Transient>)
 
-%extend NCollection_Array1<opencascade::handle<Standard_Transient>> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
 %template(TColStd_Array2OfBoolean) NCollection_Array2<Standard_Boolean>;
 %template(TColStd_Array2OfCharacter) NCollection_Array2<Standard_Character>;
-%template(TColStd_Array2OfInteger) NCollection_Array2<Standard_Integer>;
-%template(TColStd_Array2OfReal) NCollection_Array2<Standard_Real>;
+
+%apply (long long* IN_ARRAY2, int DIM1, int DIM2) { (long long* numpyArray2, int nRows2, int nCols2) };
+%apply (long long* ARGOUT_ARRAY1, int DIM1) { (long long* numpyArray2Argout, int aSizeArgout) };
+Array2Template(TColStd_Array2OfInteger, long long, Standard_Integer)
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nCols2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+Array2Template(TColStd_Array2OfReal, double, Standard_Real)
 %template(TColStd_Array2OfTransient) NCollection_Array2<opencascade::handle<Standard_Transient>>;
 %template(TColStd_DataMapOfAsciiStringInteger) NCollection_DataMap<TCollection_AsciiString,Standard_Integer>;
 %template(TColStd_DataMapOfIntegerInteger) NCollection_DataMap<Standard_Integer,Standard_Integer>;

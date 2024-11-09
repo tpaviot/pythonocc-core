@@ -49,10 +49,23 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tshort.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
+
+%{
+#define SWIG_FILE_WITH_INIT
+%}
+%include ../common/numpy.i
+%include ../common/ArrayMacros.i
+
+%init %{
+	import_array();
+%}
+
 %import Standard.i
 %import NCollection.i
 
 %pythoncode {
+import numpy as np
+
 from enum import IntEnum
 from OCC.Core.Exception import *
 };
@@ -72,42 +85,13 @@ from OCC.Core.Exception import *
 /* end handles declaration */
 
 /* templates */
-%template(TShort_Array1OfShortReal) NCollection_Array1<Standard_ShortReal>;
+%apply (float* IN_ARRAY1, int DIM1) { (float* numpyArray1, int nRows1) };
+%apply (float* ARGOUT_ARRAY1, int DIM1) { (float* numpyArray1Argout, int nRows1Argout) };
+Array1Template(TShort_Array1OfShortReal, float, Standard_ShortReal)
 
-%extend NCollection_Array1<Standard_ShortReal> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
-%template(TShort_Array2OfShortReal) NCollection_Array2<Standard_ShortReal>;
+%apply (float* IN_ARRAY2, int DIM1, int DIM2) { (float* numpyArray2, int nRows2, int nCols2) };
+%apply (float* ARGOUT_ARRAY1, int DIM1) { (float* numpyArray2Argout, int aSizeArgout) };
+Array2Template(TShort_Array2OfShortReal, float, Standard_ShortReal)
 %template(TShort_SequenceOfShortReal) NCollection_Sequence<Standard_ShortReal>;
 
 %extend NCollection_Sequence<Standard_ShortReal> {

@@ -55,6 +55,17 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_poly.html"
 #include<TCollection_module.hxx>
 #include<Storage_module.hxx>
 %};
+
+%{
+#define SWIG_FILE_WITH_INIT
+%}
+%include ../common/numpy.i
+%include ../common/ArrayMacros.i
+
+%init %{
+	import_array();
+%}
+
 %import Standard.i
 %import NCollection.i
 %import gp.i
@@ -65,6 +76,8 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_poly.html"
 %import TShort.i
 
 %pythoncode {
+import numpy as np
+
 from enum import IntEnum
 from OCC.Core.Exception import *
 };
@@ -99,41 +112,10 @@ enum  {
 /* end handles declaration */
 
 /* templates */
-%template(Poly_Array1OfTriangle) NCollection_Array1<Poly_Triangle>;
+%apply (long long* IN_ARRAY2, int DIM1, int DIM2) { (long long* numpyArray2, int nRows2, int nDims2) };
+%apply (long long* ARGOUT_ARRAY1, int DIM1) { (long long* numpyArray2Argout, int aSizeArgout) };
+Array1OfTriaTemplate(Poly_Array1OfTriangle, Poly_Triangle)
 
-%extend NCollection_Array1<Poly_Triangle> {
-    %pythoncode {
-    def __getitem__(self, index):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            return self.Value(index + self.Lower())
-
-    def __setitem__(self, index, value):
-        if index + self.Lower() > self.Upper():
-            raise IndexError("index out of range")
-        else:
-            self.SetValue(index + self.Lower(), value)
-
-    def __len__(self):
-        return self.Length()
-
-    def __iter__(self):
-        self.low = self.Lower()
-        self.up = self.Upper()
-        self.current = self.Lower() - 1
-        return self
-
-    def next(self):
-        if self.current >= self.Upper():
-            raise StopIteration
-        else:
-            self.current += 1
-        return self.Value(self.current)
-
-    __next__ = next
-    }
-};
 %template(Poly_ListOfTriangulation) NCollection_List<opencascade::handle<Poly_Triangulation>>;
 
 %extend NCollection_List<opencascade::handle<Poly_Triangulation>> {
