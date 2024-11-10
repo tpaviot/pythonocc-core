@@ -35,6 +35,7 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tcolstd.html"
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 %include ../common/IOStream.i
+%include ../common/ArrayMacros.i
 
 
 %{
@@ -50,23 +51,34 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tcolstd.html"
 #include<Storage_module.hxx>
 %};
 
+/*
+numpy support for Geom, Geom2d, Poly, TColStd, TColgp, TShort see
+https://github.com/tpaviot/pythonocc-core/pull/1381
+*/
 %{
 #define SWIG_FILE_WITH_INIT
 %}
 %include ../common/numpy.i
-%include ../common/ArrayMacros.i
 
 %init %{
-	import_array();
+        import_array();
 %}
 
+%pythoncode {
+    import numpy as np
+}
+%apply (double* IN_ARRAY1, int DIM1) { (double* numpyArrayU, int nRowsU) };
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArrayUV, int nRowsUV, int nColUV) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArrayResultArgout, int aSizeArgout) };
+
+/*
+end of numpy support section
+*/
 %import Standard.i
 %import NCollection.i
 %import TCollection.i
 
 %pythoncode {
-import numpy as np
-
 from enum import IntEnum
 from OCC.Core.Exception import *
 };
@@ -122,24 +134,21 @@ Array1ExtendIter(TCollection_ExtendedString)
 
 %apply (long long* IN_ARRAY1, int DIM1) { (long long* numpyArray1, int nRows1) };
 %apply (long long* ARGOUT_ARRAY1, int DIM1) { (long long* numpyArray1Argout, int nRows1Argout) };
-Array1Template(TColStd_Array1OfInteger, long long, Standard_Integer)
-
+Array1NumpyTemplate(TColStd_Array1OfInteger, long long, Standard_Integer)
 %apply (double* IN_ARRAY1, int DIM1) { (double* numpyArray1, int nRows1) };
 %apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray1Argout, int nRows1Argout) };
-Array1Template(TColStd_Array1OfReal, double, Standard_Real)
-
+Array1NumpyTemplate(TColStd_Array1OfReal, double, Standard_Real)
 %template(TColStd_Array1OfTransient) NCollection_Array1<opencascade::handle<Standard_Transient>>;
 Array1ExtendIter(opencascade::handle<Standard_Transient>)
 
 %template(TColStd_Array2OfBoolean) NCollection_Array2<Standard_Boolean>;
 %template(TColStd_Array2OfCharacter) NCollection_Array2<Standard_Character>;
-
 %apply (long long* IN_ARRAY2, int DIM1, int DIM2) { (long long* numpyArray2, int nRows2, int nCols2) };
 %apply (long long* ARGOUT_ARRAY1, int DIM1) { (long long* numpyArray2Argout, int aSizeArgout) };
-Array2Template(TColStd_Array2OfInteger, long long, Standard_Integer)
+Array2NumpyTemplate(TColStd_Array2OfInteger, long long, Standard_Integer)
 %apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nCols2) };
 %apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
-Array2Template(TColStd_Array2OfReal, double, Standard_Real)
+Array2NumpyTemplate(TColStd_Array2OfReal, double, Standard_Real)
 %template(TColStd_Array2OfTransient) NCollection_Array2<opencascade::handle<Standard_Transient>>;
 %template(TColStd_DataMapOfAsciiStringInteger) NCollection_DataMap<TCollection_AsciiString,Standard_Integer>;
 %template(TColStd_DataMapOfIntegerInteger) NCollection_DataMap<Standard_Integer,Standard_Integer>;
