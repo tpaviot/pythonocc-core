@@ -15,13 +15,8 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-""" This module provides unittests for the visualization wrapper
-Usage :
-$ python core_visualization_unittest.python """
-
 import json
 import os
-import unittest
 from xml.etree import ElementTree as ET
 
 from OCC.Core.BRepPrimAPI import (

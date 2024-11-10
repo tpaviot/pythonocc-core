@@ -20,16 +20,10 @@
 from contextlib import contextmanager
 import os
 from typing import Any, Iterator
-import unittest
 import warnings
 
-from OCC.Core.TCollection import TCollection_ExtendedString
 from OCC.Core.TDocStd import TDocStd_Document
-from OCC.Core.XCAFDoc import (
-    XCAFDoc_DocumentTool,
-    XCAFDoc_ColorGen,
-    XCAFDoc_Material,
-)
+from OCC.Core.XCAFDoc import XCAFDoc_DocumentTool, XCAFDoc_ColorGen
 from OCC.Core.STEPCAFControl import STEPCAFControl_Reader, STEPCAFControl_Writer
 from OCC.Core.IFSelect import IFSelect_RetDone
 from OCC.Core.Quantity import Quantity_Color, Quantity_TypeOfColor
@@ -185,6 +179,7 @@ def test_read_step_material() -> None:
     for i in range(1, number_of_shapes + 1):
         label = shape_labels.Value(i)
         a_shape = shape_tool.GetShape(label)
+        assert not a_shape.IsNull()
 
     # materials
     number_of_materials = material_labels.Length()

@@ -187,26 +187,26 @@ def test_list() -> None:
     P1 = gp_Pnt(1, 2, 3)
     P2 = gp_Pnt(2, 3, 4)
     P3 = gp_Pnt(5, 7, 8)
-    l = [P1, P2]
-    assert P1 in l
-    assert P3 not in l
-    assert l.index(P1) == 0
-    assert l.index(P2) == 1
+    list_of_points = [P1, P2]
+    assert P1 in list_of_points
+    assert P3 not in list_of_points
+    assert list_of_points.index(P1) == 0
+    assert list_of_points.index(P2) == 1
     # Do the same for Vertices (TopoDS_Shape has
     # a HashCode() method overloaded
     V1 = BRepBuilderAPI_MakeVertex(P1).Vertex()
     V2 = BRepBuilderAPI_MakeVertex(P2).Vertex()
     V3 = BRepBuilderAPI_MakeVertex(P3).Vertex()
-    vl = [V1, V2]
-    assert V1 in vl
-    assert V3 not in vl
+    list_of_vertices = [V1, V2]
+    assert V1 in list_of_vertices
+    assert V3 not in list_of_vertices
     # index test()
-    assert vl.index(V1) == 0
-    assert vl.index(V2) == 1
+    assert list_of_vertices.index(V1) == 0
+    assert list_of_vertices.index(V2) == 1
     # reverse() test
-    vl.reverse()
-    assert vl.index(V1) == 1
-    assert vl.index(V2) == 0
+    list_of_vertices.reverse()
+    assert list_of_vertices.index(V1) == 1
+    assert list_of_vertices.index(V2) == 0
 
 
 def test_dict() -> None:
@@ -849,8 +849,8 @@ def test_ImportFromJson() -> None:
 
 
 def test_json_pickle() -> None:
-    p1 = gp_Pnt(-1.0, 0.414, 7.88)
-    dmp = pickle.dumps(p1)
+    point = gp_Pnt(-1.0, 0.414, 7.88)
+    dmp = pickle.dumps(point)
     res = pickle.loads(dmp)
     assert res.X() == -1.0
     assert res.Y() == 0.414
@@ -868,22 +868,22 @@ def test_harray1_harray2_hsequence() -> None:
 
 def test_NCollection_List() -> None:
     """Check that python proxy for NCollection_List is ok"""
-    l = TopTools_ListOfShape()
+    list_of_shapes = TopTools_ListOfShape()
     shp1 = BRepPrimAPI_MakeBox(10, 20, 30).Shape()
     shp2 = BRepPrimAPI_MakeBox(20, 30, 40).Shape()
-    l.Append(shp1)
-    l.Append(shp2)
-    assert l.Size() == 2
-    assert len(l) == 2
-    l.RemoveFirst()
-    assert len(l) == 1
+    list_of_shapes.Append(shp1)
+    list_of_shapes.Append(shp2)
+    assert list_of_shapes.Size() == 2
+    assert len(list_of_shapes) == 2
+    list_of_shapes.RemoveFirst()
+    assert len(list_of_shapes) == 1
 
 
 def test_NCollection_Sequence() -> None:
     """Check that python proxy for NCollection_Sequence is ok"""
-    l = TDF_LabelSequence()
-    assert l.Size() == 0
-    assert len(l) == 0
+    tdf_label_sequence = TDF_LabelSequence()
+    assert tdf_label_sequence.Size() == 0
+    assert len(tdf_label_sequence) == 0
 
 
 def test_NCollection_Datamap_extension() -> None:

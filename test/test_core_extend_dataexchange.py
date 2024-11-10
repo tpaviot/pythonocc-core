@@ -74,6 +74,7 @@ def test_read_step_file_multiple_shape_as_root():
     assert isinstance(t, TopoDS_Compound)
 
     l = read_step_file(STEP_MULTIPLE_ROOT, as_compound=False)
+    assert isinstance(l, list)
     assert len(l) == 3
 
 
@@ -83,7 +84,9 @@ def test_read_step_file_names_colors():
 
 
 def test_read_iges_file():
-    read_iges_file(IGES_SAMPLE_FILE)
+    list_of_shapes = read_iges_file(IGES_SAMPLE_FILE)
+    assert isinstance(list_of_shapes, list)
+    assert len(list_of_shapes) == 1
 
 
 def test_read_iges_45_shapes():
@@ -112,10 +115,12 @@ def test_export_shape_to_svg():
 
 def test_read_gltf_ascii_file():
     shp = read_gltf_file(GLTF_ASCII_SAMPLE_FILE)
+    assert not shp.IsNull()
 
 
 def test_read_gltf_binary_file():
     shp = read_gltf_file(GLTF_BINARY_SAMPLE_FILE)
+    assert not shp.IsNull()
 
 
 def test_write_step_ap203():
