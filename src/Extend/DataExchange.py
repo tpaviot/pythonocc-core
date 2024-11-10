@@ -18,7 +18,6 @@
 import os
 
 from OCC.Core.TopoDS import TopoDS_Shape
-from OCC.Core.TopAbs import TopAbs_SOLID, TopAbs_SHELL, TopAbs_COMPOUND
 from OCC.Core.BRepTools import breptools
 from OCC.Core.BRepMesh import BRepMesh_IncrementalMesh
 from OCC.Core.StlAPI import stlapi, StlAPI_Writer
@@ -54,7 +53,7 @@ from OCC.Core.RWPly import RWPly_CafWriter
 from OCC.Core.Message import Message_ProgressRange
 
 from OCC.Core.RWGltf import RWGltf_CafReader, RWGltf_CafWriter
-from OCC.Core.RWObj import RWObj_CafWriter, RWObj_CafReader
+from OCC.Core.RWObj import RWObj_CafWriter
 from OCC.Core.RWMesh import (
     RWMesh_CoordinateSystem_posYfwd_posZup,
     RWMesh_CoordinateSystem_negZfwd_posYup,
@@ -743,7 +742,7 @@ def read_gltf_file(
     status = gltf_reader.Perform(filename, Message_ProgressRange())
 
     if status != IFSelect_RetDone:
-        raise IOError("Error while writing shape to STEP file.")
+        raise IOError("Error while reading GLTF file.")
 
     labels = TDF_LabelSequence()
     shape_tool.GetFreeShapes(labels)
@@ -778,4 +777,4 @@ def write_gltf_file(a_shape, gltf_filename):
     status = rwgltf_writer.Perform(doc, a_file_info, Message_ProgressRange())
 
     if status != IFSelect_RetDone:
-        raise IOError("Error while writing shape to STEP file.")
+        raise IOError("Error while writing shape to GLTF file.")
