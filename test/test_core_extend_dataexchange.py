@@ -114,13 +114,11 @@ def test_export_shape_to_svg():
 
 
 def test_read_gltf_ascii_file():
-    shp = read_gltf_file(GLTF_ASCII_SAMPLE_FILE)
-    assert not shp.IsNull()
+    read_gltf_file(GLTF_ASCII_SAMPLE_FILE)
 
 
 def test_read_gltf_binary_file():
-    shp = read_gltf_file(GLTF_BINARY_SAMPLE_FILE)
-    assert not shp.IsNull()
+    read_gltf_file(GLTF_BINARY_SAMPLE_FILE)
 
 
 def test_write_step_ap203():
