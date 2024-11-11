@@ -17,8 +17,6 @@
 ##You should have received a copy of the GNU Lesser General Public License
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
-import unittest
-
 from OCC.Core.gp import (
     gp,
     gp_Pnt,
@@ -45,8 +43,6 @@ from OCC.Core.Geom import (
     Geom_Circle,
     Geom_SphericalSurface,
     Geom_OffsetSurface,
-    Geom_BezierSurface,
-    Geom_BSplineSurface,
     Geom_SurfaceOfRevolution,
     Geom_RectangularTrimmedSurface,
     Geom_BSplineCurve,
@@ -67,7 +63,6 @@ from OCC.Core.Geom2dConvert import geom2dconvert
 from OCC.Core.GccEnt import gccent
 from OCC.Core.gce import gce_MakeCirc2d
 from OCC.Core.GccAna import GccAna_Lin2d2Tan, GccAna_Circ2d2TanRad
-from OCC.Core.GeomConvert import GeomConvert_CompBezierSurfacesToBSplineSurface
 
 from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeVertex,
@@ -194,7 +189,7 @@ def test_project_point_on_curve():
         # in any case, it should be > 1
         assert distance > 1.0
 
-    pstring = f"N : at Distance : {repr(PPC.LowerDistance())}"
+    assert PPC.LowerDistance() > 0.0
 
     for i in range(1, nb_results + 1):
         Q = PPC.Point(i)

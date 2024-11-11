@@ -35,6 +35,7 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_poly.html"
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 %include ../common/IOStream.i
+%include ../common/ArrayMacros.i
 
 
 %{
@@ -56,16 +57,29 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_poly.html"
 #include<Storage_module.hxx>
 %};
 
+/*
+numpy support for Geom, Geom2d, Poly, TColStd, TColgp, TShort see
+https://github.com/tpaviot/pythonocc-core/pull/1381
+*/
 %{
 #define SWIG_FILE_WITH_INIT
 %}
 %include ../common/numpy.i
-%include ../common/ArrayMacros.i
 
 %init %{
-	import_array();
+        import_array();
 %}
 
+%pythoncode {
+    import numpy as np
+}
+%apply (double* IN_ARRAY1, int DIM1) { (double* numpyArrayU, int nRowsU) };
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArrayUV, int nRowsUV, int nColUV) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArrayResultArgout, int aSizeArgout) };
+
+/*
+end of numpy support section
+*/
 %import Standard.i
 %import NCollection.i
 %import gp.i
@@ -76,8 +90,6 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_poly.html"
 %import TShort.i
 
 %pythoncode {
-import numpy as np
-
 from enum import IntEnum
 from OCC.Core.Exception import *
 };
@@ -114,7 +126,7 @@ enum  {
 /* templates */
 %apply (long long* IN_ARRAY2, int DIM1, int DIM2) { (long long* numpyArray2, int nRows2, int nDims2) };
 %apply (long long* ARGOUT_ARRAY1, int DIM1) { (long long* numpyArray2Argout, int aSizeArgout) };
-Array1OfTriaTemplate(Poly_Array1OfTriangle, Poly_Triangle)
+Array1OfTriaNumpyTemplate(Poly_Array1OfTriangle, Poly_Triangle)
 
 %template(Poly_ListOfTriangulation) NCollection_List<opencascade::handle<Poly_Triangulation>>;
 

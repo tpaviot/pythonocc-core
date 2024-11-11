@@ -18,7 +18,6 @@
 ##along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 
 import math
-import unittest
 
 from OCC.Core.BRepPrimAPI import (
     BRepPrimAPI_MakeBox,

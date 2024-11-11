@@ -53,7 +53,7 @@
 
 %enddef
 
-%define Array1Template(name, array_dtype, T)
+%define Array1NumpyTemplate(name, array_dtype, T)
 
     %template(name) NCollection_Array1<T>;
 
@@ -91,7 +91,7 @@
 
 %enddef
 
-%define Array2Template(name, array_dtype, T)
+%define Array2NumpyTemplate(name, array_dtype, T)
 
     %template(name) NCollection_Array2<T>;
 
@@ -140,7 +140,7 @@
 
 %enddef
 
-%define Array1Of2DTemplate(name, T)
+%define Array1Of2DNumpyTemplate(name, T)
 
     %template(name) NCollection_Array1<T>;
 
@@ -187,7 +187,7 @@
 
 %enddef
 
-%define Array1Of3DTemplate(name, T)
+%define Array1Of3DNumpyTemplate(name, T)
 
     %template(name) NCollection_Array1<T>;
 
@@ -236,7 +236,7 @@
 
 %enddef
 
-%define Array1OfTriaTemplate(name, T)
+%define Array1OfTriaNumpyTemplate(name, T)
 
     %template(name) NCollection_Array1<T>;
 
@@ -285,7 +285,7 @@
 
 %enddef
 
-%define Array2Of2DTemplate(name, T)
+%define Array2Of2DNumpyTemplate(name, T)
 
     %template(name) NCollection_Array2<T>;
 
@@ -339,7 +339,7 @@
 
 %enddef
 
-%define Array2Of3DTemplate(name, T)
+%define Array2Of3DNumpyTemplate(name, T)
 
     %template(name) NCollection_Array2<T>;
 

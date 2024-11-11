@@ -35,6 +35,7 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tcolgp.html"
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 %include ../common/IOStream.i
+%include ../common/ArrayMacros.i
 
 
 %{
@@ -50,22 +51,33 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tcolgp.html"
 #include<Storage_module.hxx>
 %};
 
+/*
+numpy support for Geom, Geom2d, Poly, TColStd, TColgp, TShort see
+https://github.com/tpaviot/pythonocc-core/pull/1381
+*/
 %{
 #define SWIG_FILE_WITH_INIT
 %}
 %include ../common/numpy.i
-%include ../common/ArrayMacros.i
 
 %init %{
-	import_array();
+        import_array();
 %}
 
+%pythoncode {
+    import numpy as np
+}
+%apply (double* IN_ARRAY1, int DIM1) { (double* numpyArrayU, int nRowsU) };
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArrayUV, int nRowsUV, int nColUV) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArrayResultArgout, int aSizeArgout) };
+
+/*
+end of numpy support section
+*/
 %import Standard.i
 %import NCollection.i
 
 %pythoncode {
-import numpy as np
-
 from enum import IntEnum
 from OCC.Core.Exception import *
 };
@@ -109,37 +121,63 @@ from OCC.Core.Exception import *
 %wrap_handle(TColgp_HSequenceOfDir)
 /* end handles declaration */
 
-
 /* templates */
-%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nDims2) };
-%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
-
 %template(TColgp_Array1OfCirc2d) NCollection_Array1<gp_Circ2d>;
 Array1ExtendIter(gp_Circ2d)
-Array1Of3DTemplate(TColgp_Array1OfDir, gp_Dir)
-Array1Of2DTemplate(TColgp_Array1OfDir2d, gp_Dir2d)
+
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nDims2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+Array1Of3DNumpyTemplate(TColgp_Array1OfDir, gp_Dir)
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nDims2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+Array1Of2DNumpyTemplate(TColgp_Array1OfDir2d, gp_Dir2d)
 %template(TColgp_Array1OfLin2d) NCollection_Array1<gp_Lin2d>;
 Array1ExtendIter(gp_Lin2d)
-Array1Of3DTemplate(TColgp_Array1OfPnt, gp_Pnt)
-Array1Of2DTemplate(TColgp_Array1OfPnt2d, gp_Pnt2d)
-Array1Of3DTemplate(TColgp_Array1OfVec, gp_Vec)
-Array1Of2DTemplate(TColgp_Array1OfVec2d, gp_Vec2d)
-Array1Of2DTemplate(TColgp_Array1OfXY, gp_XY)
-Array1Of3DTemplate(TColgp_Array1OfXYZ, gp_XYZ)
 
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nDims2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+Array1Of3DNumpyTemplate(TColgp_Array1OfPnt, gp_Pnt)
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nDims2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+Array1Of2DNumpyTemplate(TColgp_Array1OfPnt2d, gp_Pnt2d)
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nDims2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+Array1Of3DNumpyTemplate(TColgp_Array1OfVec, gp_Vec)
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nDims2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+Array1Of2DNumpyTemplate(TColgp_Array1OfVec2d, gp_Vec2d)
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nDims2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+Array1Of2DNumpyTemplate(TColgp_Array1OfXY, gp_XY)
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArray2, int nRows2, int nDims2) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray2Argout, int aSizeArgout) };
+Array1Of3DNumpyTemplate(TColgp_Array1OfXYZ, gp_XYZ)
+%template(TColgp_Array2OfCirc2d) NCollection_Array2<gp_Circ2d>;
 %apply (double* IN_ARRAY3, int DIM1, int DIM2, int DIM3) { (double* numpyArray3, int nRows3, int nCols3, int nDims3) };
 %apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray3Argout, int aSizeArgout) };
-
-%template(TColgp_Array2OfCirc2d) NCollection_Array2<gp_Circ2d>;
-Array2Of3DTemplate(TColgp_Array2OfDir, gp_Dir)
-Array2Of2DTemplate(TColgp_Array2OfDir2d, gp_Dir2d)
+Array2Of3DNumpyTemplate(TColgp_Array2OfDir, gp_Dir)
+%apply (double* IN_ARRAY3, int DIM1, int DIM2, int DIM3) { (double* numpyArray3, int nRows3, int nCols3, int nDims3) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray3Argout, int aSizeArgout) };
+Array2Of2DNumpyTemplate(TColgp_Array2OfDir2d, gp_Dir2d)
 %template(TColgp_Array2OfLin2d) NCollection_Array2<gp_Lin2d>;
-Array2Of3DTemplate(TColgp_Array2OfPnt, gp_Pnt)
-Array2Of2DTemplate(TColgp_Array2OfPnt2d, gp_Pnt2d)
-Array2Of3DTemplate(TColgp_Array2OfVec, gp_Vec)
-Array2Of2DTemplate(TColgp_Array2OfVec2d, gp_Vec2d)
-Array2Of2DTemplate(TColgp_Array2OfXY, gp_XY)
-Array2Of3DTemplate(TColgp_Array2OfXYZ, gp_XYZ)
+%apply (double* IN_ARRAY3, int DIM1, int DIM2, int DIM3) { (double* numpyArray3, int nRows3, int nCols3, int nDims3) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray3Argout, int aSizeArgout) };
+Array2Of3DNumpyTemplate(TColgp_Array2OfPnt, gp_Pnt)
+%apply (double* IN_ARRAY3, int DIM1, int DIM2, int DIM3) { (double* numpyArray3, int nRows3, int nCols3, int nDims3) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray3Argout, int aSizeArgout) };
+Array2Of2DNumpyTemplate(TColgp_Array2OfPnt2d, gp_Pnt2d)
+%apply (double* IN_ARRAY3, int DIM1, int DIM2, int DIM3) { (double* numpyArray3, int nRows3, int nCols3, int nDims3) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray3Argout, int aSizeArgout) };
+Array2Of3DNumpyTemplate(TColgp_Array2OfVec, gp_Vec)
+%apply (double* IN_ARRAY3, int DIM1, int DIM2, int DIM3) { (double* numpyArray3, int nRows3, int nCols3, int nDims3) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray3Argout, int aSizeArgout) };
+Array2Of2DNumpyTemplate(TColgp_Array2OfVec2d, gp_Vec2d)
+%apply (double* IN_ARRAY3, int DIM1, int DIM2, int DIM3) { (double* numpyArray3, int nRows3, int nCols3, int nDims3) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray3Argout, int aSizeArgout) };
+Array2Of2DNumpyTemplate(TColgp_Array2OfXY, gp_XY)
+%apply (double* IN_ARRAY3, int DIM1, int DIM2, int DIM3) { (double* numpyArray3, int nRows3, int nCols3, int nDims3) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArray3Argout, int aSizeArgout) };
+Array2Of3DNumpyTemplate(TColgp_Array2OfXYZ, gp_XYZ)
 %template(TColgp_SequenceOfArray1OfPnt2d) NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>>;
 
 %extend NCollection_Sequence<opencascade::handle<TColgp_HArray1OfPnt2d>> {
@@ -148,7 +186,6 @@ Array2Of3DTemplate(TColgp_Array2OfXYZ, gp_XYZ)
         return self.Size()
     }
 };
-
 %template(TColgp_SequenceOfAx1) NCollection_Sequence<gp_Ax1>;
 
 %extend NCollection_Sequence<gp_Ax1> {

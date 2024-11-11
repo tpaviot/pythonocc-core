@@ -35,6 +35,7 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tshort.html"
 %include ../common/Operators.i
 %include ../common/OccHandle.i
 %include ../common/IOStream.i
+%include ../common/ArrayMacros.i
 
 
 %{
@@ -50,22 +51,33 @@ https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tshort.html"
 #include<Storage_module.hxx>
 %};
 
+/*
+numpy support for Geom, Geom2d, Poly, TColStd, TColgp, TShort see
+https://github.com/tpaviot/pythonocc-core/pull/1381
+*/
 %{
 #define SWIG_FILE_WITH_INIT
 %}
 %include ../common/numpy.i
-%include ../common/ArrayMacros.i
 
 %init %{
-	import_array();
+        import_array();
 %}
 
+%pythoncode {
+    import numpy as np
+}
+%apply (double* IN_ARRAY1, int DIM1) { (double* numpyArrayU, int nRowsU) };
+%apply (double* IN_ARRAY2, int DIM1, int DIM2) { (double* numpyArrayUV, int nRowsUV, int nColUV) };
+%apply (double* ARGOUT_ARRAY1, int DIM1) { (double* numpyArrayResultArgout, int aSizeArgout) };
+
+/*
+end of numpy support section
+*/
 %import Standard.i
 %import NCollection.i
 
 %pythoncode {
-import numpy as np
-
 from enum import IntEnum
 from OCC.Core.Exception import *
 };
@@ -87,11 +99,10 @@ from OCC.Core.Exception import *
 /* templates */
 %apply (float* IN_ARRAY1, int DIM1) { (float* numpyArray1, int nRows1) };
 %apply (float* ARGOUT_ARRAY1, int DIM1) { (float* numpyArray1Argout, int nRows1Argout) };
-Array1Template(TShort_Array1OfShortReal, float, Standard_ShortReal)
-
+Array1NumpyTemplate(TShort_Array1OfShortReal, float, Standard_ShortReal)
 %apply (float* IN_ARRAY2, int DIM1, int DIM2) { (float* numpyArray2, int nRows2, int nCols2) };
 %apply (float* ARGOUT_ARRAY1, int DIM1) { (float* numpyArray2Argout, int aSizeArgout) };
-Array2Template(TShort_Array2OfShortReal, float, Standard_ShortReal)
+Array2NumpyTemplate(TShort_Array2OfShortReal, float, Standard_ShortReal)
 %template(TShort_SequenceOfShortReal) NCollection_Sequence<Standard_ShortReal>;
 
 %extend NCollection_Sequence<Standard_ShortReal> {

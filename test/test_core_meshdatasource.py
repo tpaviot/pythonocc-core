@@ -17,7 +17,6 @@
 
 from math import sqrt
 import os
-import unittest
 
 from OCC.Core.gp import gp_Pnt, gp_Vec
 from OCC.Core.MeshDS import MeshDS_DataSource
