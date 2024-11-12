@@ -42,7 +42,6 @@ pythonOCC 7.8.1 requires the following components:
 | Python | ≥ 3.9 | Runtime environment |
 | OpenCascade | 7.8.1 | Core CAD functionality |
 | SWIG | 4.2.1 | Interface generation |
-| RapidJSON | Latest | GLTF import/export |
 | CMake | ≥ 3.1 | Build system |
 
 ## Build Process (Linux)
@@ -162,6 +161,7 @@ Before starting the build process, ensure your system meets these requirements:
 | Python | ≥ 3.9 | [Download](https://www.python.org/downloads/) |
 | CMake | ≥ 3.1 | [Download](https://cmake.org/download/) |
 | Git | Latest | [Download](https://git-scm.com/download/win) |
+| RapidJSON | Latest | [Download](https://github.com/Tencent/rapidjson.git) |
 | SWIG | 4.2.1 | [Download](http://www.swig.org/download.html) |
 | OpenCascade | 7.8.1 | [Download](https://dev.opencascade.org/download) |
 
@@ -194,15 +194,20 @@ Before starting the build process, ensure your system meets these requirements:
    - Extract to C:\swigwin
    - Add C:\swigwin to the system PATH
 
+6. Install RapidJSON
+    - Clone the git repository git clone https://github.com/Tencent/rapidjson.git
+
 ### 2. Installing OpenCascade (Windows)
 
 1. Download OpenCascade 7.8.1 for Windows
-2. Extract to C:\OpenCASCADE-7.8.1
+2. Extract to, for example, C:\OpenCASCADE-7.8.1
 3. Set environment variables:
 ```batch
 setx CASROOT "C:\OpenCASCADE-7.8.1"
 setx PATH "%PATH%;%CASROOT%\win64\vc14\bin"
 ```
+
+If the binaries are not available, consider compiling by yourself OCCT on Windows. Refer to the official OpenCascade Technology documentation https://dev.opencascade.org/doc/overview/html/build_upgrade.html
 
 ### 3. Building pythonOCC (Windows)
 
@@ -225,6 +230,12 @@ cmake -G "Visual Studio 16 2019" -A x64 ^
     -DOCCT_INCLUDE_DIR=C:\OpenCASCADE-7.8.1\inc ^
     -DOCCT_LIBRARY_DIR=C:\OpenCASCADE-7.8.1\win64\vc14\lib ^
     ..
+```
+
+If using CMake GUI, make sure to set these two variables before clicking the "Generate" button:
+```
+OCCT_INCLUDE_DIR=C:\OpenCASCADE-7.8.1\inc
+OCCT_LIBRARY_DIR=C:\OpenCASCADE-7.8.1\win64\vc14\lib
 ```
 
 4. Build:
@@ -319,9 +330,9 @@ python3 examples/core_classic_occ_bottle.py
 ```bash
 >>> ImportError: DLL load failed while importing _gp:
 ```
-set the ```OCCT_ESSENTIALS_PATH``` environment variable
+set the ```OCCT_ESSENTIALS_ROOT``` environment variable
 ```batch
-setx OCCT_ESSENTIALS_PATH "%CASROOT%\win64\vc14\bin"
+setx OCCT_ESSENTIALS_ROOT "%CASROOT%\win64\vc14\bin"
 ```
 
 2. **CMake configuration errors**:
