@@ -1,127 +1,333 @@
-Build pythonocc-7.8.1 from scratch on a fresh Ubuntu 22.04 install
-------------------------------------------------------------------
+# Building pythonOCC 7.8.1 - Complete Guide for Linux and Windows
 
-Requirements
-------------
+## Table of Contents
+- [Linux Build Guide](#linux-build-guide)
+  - [Prerequisites (Linux)](#prerequisites-linux)
+  - [System Requirements (Linux)](#system-requirements-linux)
+  - [Build Process (Linux)](#build-process-linux)
+    - [1. Installing System Dependencies](#1-installing-system-dependencies-linux)
+    - [2. Building SWIG](#2-building-swig-linux)
+    - [3. Building OpenCascade](#3-building-opencascade-linux)
+    - [4. Building pythonOCC](#4-building-pythonocc-linux)
+  - [Optional Features (Linux)](#optional-features-linux)
+- [Windows Build Guide](#windows-build-guide)
+  - [Prerequisites (Windows)](#prerequisites-windows)
+  - [System Requirements (Windows)](#system-requirements-windows)
+  - [Build Process (Windows)](#build-process-windows)
+    - [1. Installing Required Software](#1-installing-required-software-windows)
+    - [2. Installing OpenCascade](#2-installing-opencascade-windows)
+    - [3. Building pythonOCC](#3-building-pythonocc-windows)
+  - [Optional Features (Windows)](#optional-features-windows)
+- [Common Steps](#common-steps)
+  - [Testing](#testing)
+  - [Demo Applications](#demo-applications)
 
-pythonOCC-7.8.1 needs the following libraries or programs to be installed before you
-can compile/use it:
+# Linux Build Guide
 
-*   the python programming language (<https://www.python.org>). Python 3.9 or more is required.
-*   OpenCascade 7.8.1 (<https://dev.opencascade.org>)
-*   SWIG 4.2.1 (<https://www.swig.org>)
-*   rapidjson (<https://rapidjson.org/>) for Gltf import/export
-*   cmake
+## Prerequisites (Linux)
 
-All the necessary libraries can be downloaded/installed using apt:
+Before starting the build process, ensure your system meets these requirements:
+
+- Ubuntu 22.04 LTS (fresh installation recommended)
+- At least 8GB of free disk space
+- Internet connection for downloading packages
+- Sudo privileges
+
+## System Requirements (Linux)
+
+pythonOCC 7.8.1 requires the following components:
+
+| Component | Version | Purpose |
+|-----------|---------|---------|
+| Python | ≥ 3.9 | Runtime environment |
+| OpenCascade | 7.8.1 | Core CAD functionality |
+| SWIG | 4.2.1 | Interface generation |
+| RapidJSON | Latest | GLTF import/export |
+| CMake | ≥ 3.1 | Build system |
+
+## Build Process (Linux)
+
+### 1. Installing System Dependencies (Linux)
+
+First, update your system and install required packages:
+
 ```bash
 sudo apt-get update
-sudo apt-get install -y wget libglu1-mesa-dev libgl1-mesa-dev libxmu-dev libxi-dev build-essential cmake libfreetype6-dev tk-dev python3-dev rapidjson-dev python3 git python3-pip libpcre2-dev
+sudo apt-get install -y \
+    wget \
+    libglu1-mesa-dev \
+    libgl1-mesa-dev \
+    libxmu-dev \
+    libxi-dev \
+    build-essential \
+    cmake \
+    libfreetype6-dev \
+    tk-dev \
+    python3-dev \
+    rapidjson-dev \
+    python3 \
+    git \
+    python3-pip \
+    libpcre2-dev
 ```
 
-Build swig
-----------
-The required swgi version is 4.2.1. Unfortunately, the ubuntu ppa only provides an outdated. If swig 4.2.1 is not available on your machine, you have to download/build by yourself (depends on libpcre2, previously installed):
+### 2. Building SWIG (Linux)
+
+SWIG 4.2.1 is required but not available in Ubuntu's default repositories. Build it from source:
+
 ```bash
 wget http://prdownloads.sourceforge.net/swig/swig-4.2.1.tar.gz
 tar -zxvf swig-4.2.1.tar.gz
 cd swig-4.2.1
-./configure && make -j4 && make install
+./configure
+make -j$(nproc)
+sudo make install
 ```
 
-Build OpenCascade
------------------
-Download/extract version 7.8.1 https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_8_1.tar.gz
+### 3. Building OpenCascade (Linux)
+
+Download and extract OpenCascade 7.8.1:
 
 ```bash
 wget https://github.com/Open-Cascade-SAS/OCCT/archive/refs/tags/V7_8_1.tar.gz
 tar -xvzf V7_8_1.tar.gz
-```
-
-Prepare the build stage:
-```bash
 cd OCCT-7.8.1
 mkdir cmake-build
 cd cmake-build
 ```
 
-Choose an installation destination. Default is /usr/local, but it is better to set up
-an other folder so that it's easier to work with concurrent versions.
+Configure and build OpenCascade:
+
 ```bash
-$ cmake -DINSTALL_DIR=/opt/occt781 -DBUILD_RELEASE_DISABLE_EXCEPTIONS=OFF ..
-```
-then
-```bash
-make -j4
+cmake -DINSTALL_DIR=/opt/occt781 \
+      -DBUILD_RELEASE_DISABLE_EXCEPTIONS=OFF \
+      ..
+
+make -j$(nproc)
 sudo make install
 ```
-and finally add the libraries to the system
+
+Add OpenCascade libraries to the system:
+
 ```bash
-echo "/opt/occt781/lib" >> /etc/ld.so.conf.d/occt.conf
+sudo bash -c 'echo "/opt/occt781/lib" >> /etc/ld.so.conf.d/occt.conf'
+sudo ldconfig
 ```
 
-Build pythonocc
----------------
-First create a local copy of the git repository:
+### 4. Building pythonOCC (Linux)
+
+Clone and build pythonOCC:
+
 ```bash
 git clone https://github.com/tpaviot/pythonocc-core.git
-```
-then
-```bash
 cd pythonocc-core
 mkdir cmake-build && cd cmake-build
 
-# Path to the installation folder
-PYTHONOCC_INSTALL_DIRECTORY=<PATH-TO-INSTALL>
+# Set installation directory (optional)
+PYTHONOCC_INSTALL_DIRECTORY=${PYTHONOCC_INSTALL_DIRECTORY:-/usr/local}
 
 cmake \
- -DOCCT_INCLUDE_DIR=/opt/occt781/include/opencascade \
- -DOCCT_LIBRARY_DIR=/opt/occt781/lib \
- -DCMAKE_BUILD_TYPE=Release \
- -DPYTHONOCC_INSTALL_DIRECTORY=$PYTHONOCC_INSTALL_DIRECTORY \
-  ..
+    -DOCCT_INCLUDE_DIR=/opt/occt781/include/opencascade \
+    -DOCCT_LIBRARY_DIR=/opt/occt781/lib \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DPYTHONOCC_INSTALL_DIRECTORY=$PYTHONOCC_INSTALL_DIRECTORY \
+    ..
 
-make -j4 && make install 
-
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/build/occt781/lib
+make -j$(nproc) && sudo make install
 ```
 
-If `PYTHONOCC_INSTALL_DIRECTORY` is unset, it will be installed to `site-packages/OCC`. Also add your LD_LIBRARY_PATH in your .bashrc file.
+Add OpenCascade libraries to your environment:
 
-Build pythonocc with numpy support
-----------------------------------
-numpy enables fast STL file loading. In order to benefit from this feature, you must install the numpy package (including the dev part), and compile pythonocc with:
 ```bash
- -DPYTHONOCC_MESHDS_NUMPY=ON
+echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/occt781/lib' >> ~/.bashrc
+source ~/.bashrc
 ```
 
-simple test
------------
+# Windows Build Guide
+
+## Prerequisites (Windows)
+
+Before starting the build process, ensure your system meets these requirements:
+
+- Windows 10 or 11 (64-bit)
+- At least 10GB of free disk space
+- Internet connection for downloading packages
+- Administrator privileges
+
+## System Requirements (Windows)
+
+| Component | Version | Download Link |
+|-----------|---------|---------------|
+| Visual Studio | 2019 or 2022 Community | [Download](https://visualstudio.microsoft.com/downloads/) |
+| Python | ≥ 3.9 | [Download](https://www.python.org/downloads/) |
+| CMake | ≥ 3.1 | [Download](https://cmake.org/download/) |
+| Git | Latest | [Download](https://git-scm.com/download/win) |
+| SWIG | 4.2.1 | [Download](http://www.swig.org/download.html) |
+| OpenCascade | 7.8.1 | [Download](https://dev.opencascade.org/download) |
+
+## Build Process (Windows)
+
+### 1. Installing Required Software (Windows)
+
+1. Install Visual Studio 2019/2022 Community Edition:
+   - During installation, select "Desktop development with C++"
+   - Include "Windows 10 SDK" and "MSBuild"
+
+2. Install Python 3.9 or later:
+   - Download and run the installer
+   - Check "Add Python to PATH"
+   - Choose "Customize installation"
+   - Select "pip" and "py launcher"
+   - Install for all users
+
+3. Install CMake:
+   - Download and run the installer
+   - Add CMake to the system PATH for all users
+
+4. Install Git:
+   - Download and run the installer
+   - Use Git from Windows Command Prompt
+   - Use OpenSSL library
+
+5. Install SWIG:
+   - Download SWIG 4.2.1 for Windows
+   - Extract to C:\swigwin
+   - Add C:\swigwin to the system PATH
+
+### 2. Installing OpenCascade (Windows)
+
+1. Download OpenCascade 7.8.1 for Windows
+2. Extract to C:\OpenCASCADE-7.8.1
+3. Set environment variables:
+```batch
+setx CASROOT "C:\OpenCASCADE-7.8.1"
+setx PATH "%PATH%;%CASROOT%\win64\vc14\bin"
+```
+
+### 3. Building pythonOCC (Windows)
+
+1. Clone the repository:
+```batch
+git clone https://github.com/tpaviot/pythonocc-core.git
+cd pythonocc-core
+```
+
+2. Create build directory:
+```batch
+mkdir cmake-build
+cd cmake-build
+```
+
+3. Configure with CMake:
+```batch
+cmake -G "Visual Studio 16 2019" -A x64 ^
+    -DCMAKE_BUILD_TYPE=Release ^
+    -DOCCT_INCLUDE_DIR=C:\OpenCASCADE-7.8.1\inc ^
+    -DOCCT_LIBRARY_DIR=C:\OpenCASCADE-7.8.1\win64\vc14\lib ^
+    ..
+```
+
+4. Build:
+```batch
+cmake --build . --config Release
+```
+
+5. Install:
+```batch
+cmake --install .
+```
+
+# Common Steps
+
+## Optional Features
+
+### NumPy Support
+
+To enable fast STL file loading with NumPy support:
+
+1. Install NumPy:
 ```bash
-$ python
+pip install numpy
+```
+
+2. Add the following CMake flag during pythonOCC configuration:
+```bash
+-DPYTHONOCC_MESHDS_NUMPY=ON
+```
+
+### Additional Dependencies
+
+Install additional Python packages for full functionality:
+
+```bash
+pip install svgwrite numpy numpy-stl matplotlib PyQt5
+```
+
+## Testing
+
+### Quick Test
+
+Verify the installation:
+
+```python
+python3
 >>> from OCC.Core.gp import gp_Pnt
 >>> p = gp_Pnt(1., 2., 3.)
 >>> p.X()
 1.0
->>>
 ```
 
-additional dependencies
------------------------
-Additional python packages are required if you want to benefit from all pythonocc features.
-```
-pip install svgwrite numpy numpy-stl matplotlib PyQt5
-```
+### Full Test Suite
 
-test
-----
-In order to check that everything is ok, run the pythonocc unittest suite:
+Run the complete test suite:
 
 ```bash
 pip install pytest
 pytest
 ```
 
-demos
------
-Download/test demos available at <https://github.com/tpaviot/pythonocc-demos>
+## Demo Applications
+
+Try the demo applications:
+
+```bash
+git clone https://github.com/tpaviot/pythonocc-demos
+cd pythonocc-demos
+python3 examples/core_classic_occ_bottle.py
+```
+
+## Troubleshooting
+
+### Linux Issues
+
+1. **Library not found errors**:
+   ```bash
+   sudo ldconfig
+   ```
+
+2. **SWIG version mismatch**:
+   - Ensure no other SWIG versions are installed
+   - Verify installation: `swig -version`
+
+### Windows Issues
+
+1. **DLL not found errors**:
+   - Verify PATH environment variable includes OpenCascade bin directory
+   - Check Visual Studio installation
+   - if you encounter the following error:
+
+```bash
+>>> ImportError: DLL load failed while importing _gp:
+```
+set the ```OCCT_ESSENTIALS_PATH``` environment variable
+```batch
+setx OCCT_ESSENTIALS_PATH "%CASROOT%\win64\vc14\bin"
+```
+
+2. **CMake configuration errors**:
+   - Ensure all paths use backslashes
+   - Verify Visual Studio installation
+   - Check environment variables
+
+For more examples and documentation, visit:
+- [Demo Repository](https://github.com/tpaviot/pythonocc-demos)
