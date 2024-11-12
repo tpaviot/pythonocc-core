@@ -18,11 +18,11 @@ def initialize_occt_libraries(occt_essentials_path) -> None:
     Initializes the OCCT libraries by adding all DLL directories to the DLL search path.
 
     Raises:
-        AssertionError: If the OCCT_ESSENTIALS_PATH environment variable is not set.
+        AssertionError: If the OCCT_ESSENTIALS_ROOT environment variable is not set.
     """
     if not os.path.exists(occt_essentials_path):
         raise AssertionError(
-            f"OCCT_ESSENTIALS_PATH({occt_essentials_path}) is not set correctly."
+            f"OCCT_ESSENTIALS_ROOT({occt_essentials_path}) is not set correctly."
         )
 
     for root, dirs, files in os.walk(occt_essentials_path):
@@ -31,8 +31,9 @@ def initialize_occt_libraries(occt_essentials_path) -> None:
         for file in files:
             if Path(file).suffix.lower() == ".dll":
                 os.add_dll_directory(root)
+                break
 
 
 # on windows, see #1347
-if platform.system() == "windows" and "OCCT_ESSENTIALS_PATH" in os.environ:
-    initialize_occt_libraries(occt_essentials_path=os.environ["OCCT_ESSENTIALS_PATH"])
+if platform.system() == "windows" and "OCCT_ESSENTIALS_ROOT" in os.environ:
+    initialize_occt_libraries(occt_essentials_path=os.environ["OCCT_ESSENTIALS_ROOT"])
