@@ -3,7 +3,7 @@
 import sys
 import uuid
 
-from OCC.Display.WebGl.threejs_renderer import (
+from threejs_renderer import (
     ThreejsRenderer,
     OCC_VERSION,
     THREEJS_RELEASE,
