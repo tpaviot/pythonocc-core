@@ -302,7 +302,7 @@ void ShapeTesselator::EnsureMeshIsComputed()
     printf("The mesh is not computed. Currently computing with default parameters ...");
     Compute(true, 1.0, false);
     printf("done\n");
-    printf("Call explicitely the Compute method to set the parameters value.");
+    printf("Call explicitely the Compute method to set the parameters value.\n");
   }
 }
 
