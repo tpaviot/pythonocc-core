@@ -1,22 +1,22 @@
 pythonOCC is developed and maintained by Thomas Paviot (tpaviot@gmail.com).
 
-The pythonocc-core package contains contributions from :
+The pythonocc-core package contains contributions from (alphabetical sort):
 
 Adam Urbańczyk
 François Granade
 Hinko Kočevar
 Jelle Feringa
 Jeremy Wright
+Johannes Verherstraeten
+Kristoffer Andersen
 Martin Siggel
 Matthis Thorade
+Tanneguy de Villemagne
+Thomas Severin
 Thomas Krijnen
 Trevor Laughlin
-Jelle Feringa
 nxsofsys
-Thomas Severin
-Kristoffer Andersen
-Tanneguy de Villemagne
+Rafael Senties Martinelli
 Simon Klein
-Johannes Verherstraeten
 
 Please report any missing name
