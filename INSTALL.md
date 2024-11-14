@@ -197,17 +197,26 @@ Before starting the build process, ensure your system meets these requirements:
 6. Install RapidJSON
     - Clone the git repository git clone https://github.com/Tencent/rapidjson.git
 
+Binaries for dependencies can be downloaded at https://dev.opencascade.org/resources/download/3rd-party-components
+
 ### 2. Installing OpenCascade (Windows)
 
 1. Download OpenCascade 7.8.1 for Windows
-2. Extract to, for example, C:\OpenCASCADE-7.8.1
-3. Set environment variables:
-```batch
-setx CASROOT "C:\OpenCASCADE-7.8.1"
-setx PATH "%PATH%;%CASROOT%\win64\vc14\bin"
-```
+2. Extract to, for example, occt-7.8.1
 
 If the binaries are not available, consider compiling by yourself OCCT on Windows. Refer to the official OpenCascade Technology documentation https://dev.opencascade.org/doc/overview/html/build_upgrade.html
+
+When installing OpenCascade and third-party libraries, you should have a structure similar to the one described at https://dev.opencascade.org/doc/overview/html/index.html#intro_install_windows
+
+C:\OpenCASCADE-7.8.1-vc10-64
+├── ffmpeg-3.3.4-gpl-64
+├── freeimage-3.17.0-vc10-64
+├── freetype-2.6.3-vc10-64
+├── occt-7.8.1
+├── qt486-vc10-64
+├── tclkit-86-64
+├── vtk-6.1.0-vc10-64
+└── zlib-1.2.8-vc10-64
 
 ### 3. Building pythonOCC (Windows)
 
@@ -227,15 +236,16 @@ cd cmake-build
 ```batch
 cmake -G "Visual Studio 16 2019" -A x64 ^
     -DCMAKE_BUILD_TYPE=Release ^
-    -DOCCT_INCLUDE_DIR=C:\OpenCASCADE-7.8.1\inc ^
-    -DOCCT_LIBRARY_DIR=C:\OpenCASCADE-7.8.1\win64\vc14\lib ^
+    -DOCCT_INCLUDE_DIR=C:\OpenCASCADE-7.8.1-vc10-64\occt-7.8.1\inc ^
+    -DOCCT_LIBRARY_DIR=C:\OpenCASCADE-7.8.1-vc10-64\occt-7.8.1\win64\vc14\lib ^
+    -DOCCT_ESSENTIALS_ROOT=C:\OpenCASCADE-7.8.1-vc10-64
     ..
 ```
 
 If using CMake GUI, make sure to set these two variables before clicking the "Generate" button:
 ```
-OCCT_INCLUDE_DIR=C:\OpenCASCADE-7.8.1\inc
-OCCT_LIBRARY_DIR=C:\OpenCASCADE-7.8.1\win64\vc14\lib
+OCCT_INCLUDE_DIR=C:\OpenCASCADE-7.8.1-vc10-64\occt-7.8.1\inc
+OCCT_LIBRARY_DIR=C:\OpenCASCADE-7.8.1-vc10-64\occt-7.8.1\win64\vc14\lib
 ```
 
 4. Build:
@@ -327,15 +337,16 @@ python3 examples/core_classic_occ_bottle.py
    - Check Visual Studio installation
    - if you encounter the following error:
 
-```bash
->>> ImportError: DLL load failed while importing _gp:
-```
-set the ```OCCT_ESSENTIALS_ROOT``` environment variable
+2. **DLL not found** for 3rd part libraries:
+
+If it was not done at build time, you can define the OCCT_ESSENTIALS_ROOT path
+at run time, by setting the env var:
+
 ```batch
 setx OCCT_ESSENTIALS_ROOT "%CASROOT%\win64\vc14\bin"
 ```
 
-2. **CMake configuration errors**:
+3. **CMake configuration errors**:
    - Ensure all paths use backslashes
    - Verify Visual Studio installation
    - Check environment variables
