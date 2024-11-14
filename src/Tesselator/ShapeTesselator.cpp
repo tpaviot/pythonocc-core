@@ -158,11 +158,11 @@ void ShapeTesselator::Tesselate(bool compute_edges, float mesh_quality, bool par
     
         //write triangle buffer
         TopAbs_Orientation orient = myFace.Orientation();
-        const Poly_Array1OfTriangle& triangles   = myT->Triangles();
-        this_face->tri_indexes  = new int[triangles.Length()* 3];
-        for (Standard_Integer nt = 1; nt <= myT->NbTriangles(); nt++) {
+        const Standard_Integer trianglesNb = myT->NbTriangles();
+        this_face->tri_indexes  = new int[trianglesNb * 3];
+        for (Standard_Integer nt = 1; nt <= trianglesNb; nt++) {
             Standard_Integer n0 , n1 , n2;
-            triangles(nt).Get(n0, n1, n2);
+            myT->Triangle(nt).Get(n0, n1, n2);
             if (orient == TopAbs_REVERSED) {
                 Standard_Integer tmp=n1;
                 n1 = n2;
