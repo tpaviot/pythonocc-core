@@ -2552,6 +2552,21 @@ Writes the triangulation on the stream <os> in a format that can be read back by
 };
 
 
+
+%extend BRepTools_ShapeSet {
+    static TopoDS_Shape ReadFromString(const std::string & src) {
+       std::stringstream s(src);
+       TopoDS_Shape shape;
+       BRep_Builder b;
+       BRepTools::Read(shape, s, b);
+       return shape;
+    };
+    std::string WriteToString() {
+        std::stringstream s;
+        self->Write(s);
+        return s.str();
+    };
+};
 %extend BRepTools_ShapeSet {
 	%pythoncode {
 	__repr__ = _dumps_object

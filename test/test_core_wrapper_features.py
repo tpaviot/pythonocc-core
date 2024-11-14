@@ -48,6 +48,7 @@ from OCC.Core.BRepBuilderAPI import (
     BRepBuilderAPI_MakeEdge,
     BRepBuilderAPI_Sewing,
 )
+from OCC.Core.BRepTools import BRepTools_ShapeSet
 from OCC.Core.gp import (
     gp_Pnt,
     gp_Vec,
@@ -1210,3 +1211,10 @@ def test_iterator():
 
     assert shp1.IsSame(shps[0])
     assert shp2.IsSame(shps[1])
+
+
+def test_breptools_shape_set_extensions():
+    with open(os.path.join(".", "test_io", "Motor-c.brep"), "r", encoding="utf8") as f:
+        brep_string_content = f.read()
+    new_shape_set = BRepTools_ShapeSet()
+    new_shape_set.ReadFromString(brep_string_content)
