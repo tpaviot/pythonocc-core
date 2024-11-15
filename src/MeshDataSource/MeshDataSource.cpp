@@ -3,7 +3,7 @@
 
 IMPLEMENT_STANDARD_RTTIEXT(MeshDS_DataSource, MeshVS_DataSource)
 
-MeshDS_DataSource::MeshDS_DataSource(std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData)
+MeshDS_DataSource::MeshDS_DataSource(const std::vector<gp_Pnt>& CoordData, const std::vector<std::vector<int>>& Ele2NodeData)
 {
 	InitializeFromData(CoordData, Ele2NodeData);
 }
@@ -69,7 +69,7 @@ MeshDS_DataSource::MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri)
 // Purpose  :
 //================================================================
 void MeshDS_DataSource::SetElemNormals
-(std::vector<gp_Vec>& ElemNormalsData)
+(const std::vector<gp_Vec>& ElemNormalsData)
 {
 	for (size_t ElementId = 1; ElementId <= ElemNormalsData.size(); ElementId++)
 	{
@@ -84,7 +84,7 @@ void MeshDS_DataSource::SetElemNormals
 // Purpose  :
 //================================================================
 void MeshDS_DataSource::SetNodeNormals
-(std::vector<std::vector<gp_Vec>>& NodeNormalsData)
+(const std::vector<std::vector<gp_Vec>>& NodeNormalsData)
 {
 	for (size_t ElementId = 1; ElementId <= myElemNodes->NbRows(); ElementId++)
 	{
@@ -250,7 +250,7 @@ Standard_Boolean MeshDS_DataSource::GetNodeNormal
 // Purpose  :
 //================================================================
 void MeshDS_DataSource::InitializeFromData
-(std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData)
+(const std::vector<gp_Pnt>& CoordData, const std::vector<std::vector<int>>& Ele2NodeData)
 {
 	//initialize arrays
 	myNodeCoords = new TColStd_HArray2OfReal(1, CoordData.size(), 1, 3);

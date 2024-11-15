@@ -41,7 +41,7 @@ public:
 	//! Initialize data source with vector of nodes and vector of elements (triangles or quadrangles) 
 	//! Face normals are calculated using the three first nodes of each element
 	//! Node normals are calculated averaging the normals of the neighboring elements
-	MeshDS_DataSource(std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData);
+	MeshDS_DataSource(const std::vector<gp_Pnt>& CoordData, const std::vector<std::vector<int>>& Ele2NodeData);
 
 	MeshDS_DataSource(double* Vertices, int nVerts1, int nVerts2, int* Faces, int nFaces1, int nFaces2);
 
@@ -51,10 +51,10 @@ public:
 	MeshDS_DataSource(const Handle(Poly_Triangulation)& polyTri);
 
 	//! This method define the normal of the face for each element
-	void SetElemNormals(std::vector<gp_Vec>& ElemNormalsData);
+	void SetElemNormals(const std::vector<gp_Vec>& ElemNormalsData);
 
 	//! This method define the normal of all nodes for each element
-	void SetNodeNormals(std::vector<std::vector<gp_Vec>>& NodeNormalsData);
+	void SetNodeNormals(const std::vector<std::vector<gp_Vec>>& NodeNormalsData);
 
 	//! Returns geometry information about node ( if IsElement is False ) or element ( IsElement is True )
 	//! by co-ordinates. For element this method must return all its nodes co-ordinates in the strict order: X, Y, Z and
@@ -98,7 +98,7 @@ private:
 	Handle(TColStd_HArray2OfReal) myNodeCoords;
 	Handle(TColStd_HArray2OfReal) myElemNormals;
 	Handle(TColStd_HArray2OfReal) myNodeNormals;
-	void InitializeFromData(std::vector<gp_Pnt>& CoordData, std::vector<std::vector<int>>& Ele2NodeData);
+	void InitializeFromData(const std::vector<gp_Pnt>& CoordData, const std::vector<std::vector<int>>& Ele2NodeData);
 	void InitializeFromData(double* Vertices, const int nVerts1, const int nVerts2, int* Faces, const int nFaces1, const int nFaces2);
 };
 

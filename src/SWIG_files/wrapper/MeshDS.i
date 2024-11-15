@@ -94,11 +94,11 @@ from OCC.Core.Exception import *
 
 class MeshDS_DataSource : public MeshVS_DataSource {
     public:
-        MeshDS_DataSource(std::vector<gp_Pnt> CoordData, std::vector<std::vector<int>> Ele2NodeData);
+        MeshDS_DataSource(const std::vector<gp_Pnt> CoordData, const std::vector<std::vector<int>> Ele2NodeData);
         MeshDS_DataSource(double* Vertices, int nVerts1, int nVerts2, int* Faces, int nFaces1, int nFaces2);
         MeshDS_DataSource(const opencascade::handle<Poly_Triangulation> & polyTri);
-        void SetElemNormals(std::vector<gp_Vec> ElemNormalsData);
-        void SetNodeNormals(std::vector<std::vector<gp_Vec>> NodeNormalsData);
+        void SetElemNormals(const std::vector<gp_Vec> ElemNormalsData);
+        void SetNodeNormals(const std::vector<std::vector<gp_Vec>> NodeNormalsData);
         Standard_Boolean GetGeom(Standard_Integer ID, Standard_Boolean IsElement, TColStd_Array1OfReal& Coords, Standard_Integer &OutValue, MeshVS_EntityType& Type);
      	Standard_Boolean GetGeomType(Standard_Integer ID, Standard_Boolean IsElement, MeshVS_EntityType& Type);
 		Standard_Address GetAddr(Standard_Integer ID, Standard_Boolean IsElement);
