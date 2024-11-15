@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEANALYSISDOCSTRING
 "ShapeAnalysis module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_shapeanalysis.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeanalysis.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEANALYSISDOCSTRING) ShapeAnalysis
 
@@ -132,8 +132,8 @@ typedef NCollection_Sequence<opencascade::handle<ShapeAnalysis_FreeBoundData>> S
 %rename(shapeanalysis) ShapeAnalysis;
 class ShapeAnalysis {
 	public:
-		/****************** AdjustByPeriod ******************/
-		/**** md5 signature: be1804eaaac865fa80ec1f574f0e78ff ****/
+		/****** ShapeAnalysis::AdjustByPeriod ******/
+		/****** md5 signature: be1804eaaac865fa80ec1f574f0e78ff ******/
 		%feature("compactdefaultargs") AdjustByPeriod;
 		%feature("autodoc", "
 Parameters
@@ -152,8 +152,8 @@ Returns a shift required to move point <val> to the range [toval-period/2,toval+
 ") AdjustByPeriod;
 		static Standard_Real AdjustByPeriod(const Standard_Real Val, const Standard_Real ToVal, const Standard_Real Period);
 
-		/****************** AdjustToPeriod ******************/
-		/**** md5 signature: 232511229d47cce6737abd010c6492ba ****/
+		/****** ShapeAnalysis::AdjustToPeriod ******/
+		/****** md5 signature: 232511229d47cce6737abd010c6492ba ******/
 		%feature("compactdefaultargs") AdjustToPeriod;
 		%feature("autodoc", "
 Parameters
@@ -172,8 +172,8 @@ Returns a shift required to move point <val> to the range [valmin,valmax]. this 
 ") AdjustToPeriod;
 		static Standard_Real AdjustToPeriod(const Standard_Real Val, const Standard_Real ValMin, const Standard_Real ValMax);
 
-		/****************** ContourArea ******************/
-		/**** md5 signature: 4c9212a6c58b05d0930827ce004d7ec7 ****/
+		/****** ShapeAnalysis::ContourArea ******/
+		/****** md5 signature: 4c9212a6c58b05d0930827ce004d7ec7 ******/
 		%feature("compactdefaultargs") ContourArea;
 		%feature("autodoc", "
 Parameters
@@ -190,8 +190,8 @@ Returns a total area of 3d wire.
 ") ContourArea;
 		static Standard_Real ContourArea(const TopoDS_Wire & theWire);
 
-		/****************** FindBounds ******************/
-		/**** md5 signature: 5d164ba876b522b672fae6c0b8983a06 ****/
+		/****** ShapeAnalysis::FindBounds ******/
+		/****** md5 signature: 5d164ba876b522b672fae6c0b8983a06 ******/
 		%feature("compactdefaultargs") FindBounds;
 		%feature("autodoc", "
 Parameters
@@ -210,8 +210,8 @@ Finds the start and end vertices of the shape shape can be of the following type
 ") FindBounds;
 		static void FindBounds(const TopoDS_Shape & shape, TopoDS_Vertex & V1, TopoDS_Vertex & V2);
 
-		/****************** GetFaceUVBounds ******************/
-		/**** md5 signature: 9503e389b6155ebde06f66b1966a448f ****/
+		/****** ShapeAnalysis::GetFaceUVBounds ******/
+		/****** md5 signature: 9503e389b6155ebde06f66b1966a448f ******/
 		%feature("compactdefaultargs") GetFaceUVBounds;
 		%feature("autodoc", "
 Parameters
@@ -231,8 +231,8 @@ Computes exact uv bounds of all wires on the face.
 ") GetFaceUVBounds;
 		static void GetFaceUVBounds(const TopoDS_Face & F, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** IsOuterBound ******************/
-		/**** md5 signature: 97a2819fb02af6841f518636ffd8f746 ****/
+		/****** ShapeAnalysis::IsOuterBound ******/
+		/****** md5 signature: 97a2819fb02af6841f518636ffd8f746 ******/
 		%feature("compactdefaultargs") IsOuterBound;
 		%feature("autodoc", "
 Parameters
@@ -249,8 +249,8 @@ Returns true if <f> has outer bound.
 ") IsOuterBound;
 		static Standard_Boolean IsOuterBound(const TopoDS_Face & face);
 
-		/****************** OuterWire ******************/
-		/**** md5 signature: 4eacb2464bf572e4b11b76bcce3c541d ****/
+		/****** ShapeAnalysis::OuterWire ******/
+		/****** md5 signature: 4eacb2464bf572e4b11b76bcce3c541d ******/
 		%feature("compactdefaultargs") OuterWire;
 		%feature("autodoc", "
 Parameters
@@ -267,8 +267,8 @@ Returns positively oriented wire in the face. if there is no such wire - returns
 ") OuterWire;
 		static TopoDS_Wire OuterWire(const TopoDS_Face & theFace);
 
-		/****************** TotCross2D ******************/
-		/**** md5 signature: d02b539165ef061eca69acd36cb763dd ****/
+		/****** ShapeAnalysis::TotCross2D ******/
+		/****** md5 signature: d02b539165ef061eca69acd36cb763dd ******/
 		%feature("compactdefaultargs") TotCross2D;
 		%feature("autodoc", "
 Parameters
@@ -300,8 +300,8 @@ Returns a total area of 2d wire.
 *******************************************/
 class ShapeAnalysis_CanonicalRecognition {
 	public:
-		/****************** ShapeAnalysis_CanonicalRecognition ******************/
-		/**** md5 signature: 5c815ddb5c04eb763ce71ef952e88976 ****/
+		/****** ShapeAnalysis_CanonicalRecognition::ShapeAnalysis_CanonicalRecognition ******/
+		/****** md5 signature: 5c815ddb5c04eb763ce71ef952e88976 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_CanonicalRecognition;
 		%feature("autodoc", "Return
 -------
@@ -313,8 +313,8 @@ Empty constructor.
 ") ShapeAnalysis_CanonicalRecognition;
 		 ShapeAnalysis_CanonicalRecognition();
 
-		/****************** ShapeAnalysis_CanonicalRecognition ******************/
-		/**** md5 signature: c724d5f7f97549ca385d39f6f5ad765d ****/
+		/****** ShapeAnalysis_CanonicalRecognition::ShapeAnalysis_CanonicalRecognition ******/
+		/****** md5 signature: c724d5f7f97549ca385d39f6f5ad765d ******/
 		%feature("compactdefaultargs") ShapeAnalysis_CanonicalRecognition;
 		%feature("autodoc", "
 Parameters
@@ -331,8 +331,8 @@ Constructor with shape initialisation.
 ") ShapeAnalysis_CanonicalRecognition;
 		 ShapeAnalysis_CanonicalRecognition(const TopoDS_Shape & theShape);
 
-		/****************** ClearStatus ******************/
-		/**** md5 signature: 868f4799999f2c207835d2d54d713a4f ****/
+		/****** ShapeAnalysis_CanonicalRecognition::ClearStatus ******/
+		/****** md5 signature: 868f4799999f2c207835d2d54d713a4f ******/
 		%feature("compactdefaultargs") ClearStatus;
 		%feature("autodoc", "Return
 -------
@@ -344,8 +344,8 @@ Returns status to be equal 0.
 ") ClearStatus;
 		void ClearStatus();
 
-		/****************** GetGap ******************/
-		/**** md5 signature: 6750af4846e7c73d2306166a820dd5a3 ****/
+		/****** ShapeAnalysis_CanonicalRecognition::GetGap ******/
+		/****** md5 signature: 6750af4846e7c73d2306166a820dd5a3 ******/
 		%feature("compactdefaultargs") GetGap;
 		%feature("autodoc", "Return
 -------
@@ -357,8 +357,8 @@ Returns deviation between input geometry entity and analytical entity.
 ") GetGap;
 		Standard_Real GetGap();
 
-		/****************** GetShape ******************/
-		/**** md5 signature: 7c167c51f2939d15d5bfddc807114b00 ****/
+		/****** ShapeAnalysis_CanonicalRecognition::GetShape ******/
+		/****** md5 signature: 7c167c51f2939d15d5bfddc807114b00 ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "Return
 -------
@@ -370,8 +370,8 @@ Returns input shape.
 ") GetShape;
 		const TopoDS_Shape GetShape();
 
-		/****************** GetStatus ******************/
-		/**** md5 signature: 5833e1b616ca4e6620ae6e8d9d361c54 ****/
+		/****** ShapeAnalysis_CanonicalRecognition::GetStatus ******/
+		/****** md5 signature: 5833e1b616ca4e6620ae6e8d9d361c54 ******/
 		%feature("compactdefaultargs") GetStatus;
 		%feature("autodoc", "Return
 -------
@@ -383,8 +383,8 @@ Returns status of operation. current meaning of possible values of status: -1 - 
 ") GetStatus;
 		Standard_Integer GetStatus();
 
-		/****************** IsCircle ******************/
-		/**** md5 signature: 291c319ba30921dc2ce073891dcd1c6a ****/
+		/****** ShapeAnalysis_CanonicalRecognition::IsCircle ******/
+		/****** md5 signature: 291c319ba30921dc2ce073891dcd1c6a ******/
 		%feature("compactdefaultargs") IsCircle;
 		%feature("autodoc", "
 Parameters
@@ -402,8 +402,8 @@ Returns true if the underlined curve can be represent by circle with tolerance t
 ") IsCircle;
 		Standard_Boolean IsCircle(const Standard_Real theTol, gp_Circ & theCirc);
 
-		/****************** IsCone ******************/
-		/**** md5 signature: 3ee8d204db0a9969c37a9a077c5209c5 ****/
+		/****** ShapeAnalysis_CanonicalRecognition::IsCone ******/
+		/****** md5 signature: 3ee8d204db0a9969c37a9a077c5209c5 ******/
 		%feature("compactdefaultargs") IsCone;
 		%feature("autodoc", "
 Parameters
@@ -421,8 +421,8 @@ Returns true if the underlined surface can be represent by conical one with tole
 ") IsCone;
 		Standard_Boolean IsCone(const Standard_Real theTol, gp_Cone & theCone);
 
-		/****************** IsCylinder ******************/
-		/**** md5 signature: 3cd23f6df09c0359b8056833b2ae5115 ****/
+		/****** ShapeAnalysis_CanonicalRecognition::IsCylinder ******/
+		/****** md5 signature: 3cd23f6df09c0359b8056833b2ae5115 ******/
 		%feature("compactdefaultargs") IsCylinder;
 		%feature("autodoc", "
 Parameters
@@ -440,8 +440,8 @@ Returns true if the underlined surface can be represent by cylindrical one with 
 ") IsCylinder;
 		Standard_Boolean IsCylinder(const Standard_Real theTol, gp_Cylinder & theCyl);
 
-		/****************** IsEllipse ******************/
-		/**** md5 signature: 7b3958be9b23168fa3898fe37a797c86 ****/
+		/****** ShapeAnalysis_CanonicalRecognition::IsEllipse ******/
+		/****** md5 signature: 7b3958be9b23168fa3898fe37a797c86 ******/
 		%feature("compactdefaultargs") IsEllipse;
 		%feature("autodoc", "
 Parameters
@@ -459,8 +459,8 @@ Returns true if the underlined curve can be represent by ellipse with tolerance 
 ") IsEllipse;
 		Standard_Boolean IsEllipse(const Standard_Real theTol, gp_Elips & theElips);
 
-		/****************** IsLine ******************/
-		/**** md5 signature: fbfb5e40e9ca6661061ebe1c8bdb8322 ****/
+		/****** ShapeAnalysis_CanonicalRecognition::IsLine ******/
+		/****** md5 signature: fbfb5e40e9ca6661061ebe1c8bdb8322 ******/
 		%feature("compactdefaultargs") IsLine;
 		%feature("autodoc", "
 Parameters
@@ -478,8 +478,8 @@ Returns true if the underlined curve can be represent by line with tolerance the
 ") IsLine;
 		Standard_Boolean IsLine(const Standard_Real theTol, gp_Lin & theLin);
 
-		/****************** IsPlane ******************/
-		/**** md5 signature: 2d5e0a085eb132b5333a0b8de3ec7e9d ****/
+		/****** ShapeAnalysis_CanonicalRecognition::IsPlane ******/
+		/****** md5 signature: 2d5e0a085eb132b5333a0b8de3ec7e9d ******/
 		%feature("compactdefaultargs") IsPlane;
 		%feature("autodoc", "
 Parameters
@@ -497,8 +497,8 @@ Returns true if the underlined surface can be represent by plane with tolerance 
 ") IsPlane;
 		Standard_Boolean IsPlane(const Standard_Real theTol, gp_Pln & thePln);
 
-		/****************** IsSphere ******************/
-		/**** md5 signature: a9c3a50effc875d233eb621174f5f38c ****/
+		/****** ShapeAnalysis_CanonicalRecognition::IsSphere ******/
+		/****** md5 signature: a9c3a50effc875d233eb621174f5f38c ******/
 		%feature("compactdefaultargs") IsSphere;
 		%feature("autodoc", "
 Parameters
@@ -516,8 +516,8 @@ Returns true if the underlined surface can be represent by spherical one with to
 ") IsSphere;
 		Standard_Boolean IsSphere(const Standard_Real theTol, gp_Sphere & theSphere);
 
-		/****************** SetShape ******************/
-		/**** md5 signature: 26c388bb1dfffadc50ffdc7a812f81ef ****/
+		/****** ShapeAnalysis_CanonicalRecognition::SetShape ******/
+		/****** md5 signature: 26c388bb1dfffadc50ffdc7a812f81ef ******/
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "
 Parameters
@@ -548,8 +548,8 @@ Sets shape.
 *************************************/
 class ShapeAnalysis_CheckSmallFace {
 	public:
-		/****************** ShapeAnalysis_CheckSmallFace ******************/
-		/**** md5 signature: 682c1315e887393b2bb9d3f1f6aa911f ****/
+		/****** ShapeAnalysis_CheckSmallFace::ShapeAnalysis_CheckSmallFace ******/
+		/****** md5 signature: 682c1315e887393b2bb9d3f1f6aa911f ******/
 		%feature("compactdefaultargs") ShapeAnalysis_CheckSmallFace;
 		%feature("autodoc", "Return
 -------
@@ -561,8 +561,8 @@ Creates an empty tool checks a shape i.e. each of its faces, records checks as d
 ") ShapeAnalysis_CheckSmallFace;
 		 ShapeAnalysis_CheckSmallFace();
 
-		/****************** CheckPin ******************/
-		/**** md5 signature: ec914c3ed292a266d322789b08190a90 ****/
+		/****** ShapeAnalysis_CheckSmallFace::CheckPin ******/
+		/****** md5 signature: ec914c3ed292a266d322789b08190a90 ******/
 		%feature("compactdefaultargs") CheckPin;
 		%feature("autodoc", "
 Parameters
@@ -580,8 +580,8 @@ Checks if a face has a pin, which can be edited no singularity: no pin, returns 
 ") CheckPin;
 		Standard_Boolean CheckPin(const TopoDS_Face & F, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** CheckPinEdges ******************/
-		/**** md5 signature: 9d8afc6cc952c4c1da332e8e3bc992ed ****/
+		/****** ShapeAnalysis_CheckSmallFace::CheckPinEdges ******/
+		/****** md5 signature: 9d8afc6cc952c4c1da332e8e3bc992ed ******/
 		%feature("compactdefaultargs") CheckPinEdges;
 		%feature("autodoc", "
 Parameters
@@ -602,8 +602,8 @@ No available documentation.
 ") CheckPinEdges;
 		Standard_Boolean CheckPinEdges(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge, const Standard_Real coef1, const Standard_Real coef2, const Standard_Real toler);
 
-		/****************** CheckPinFace ******************/
-		/**** md5 signature: 135637d57e18b98615c1a47af6cd6df6 ****/
+		/****** ShapeAnalysis_CheckSmallFace::CheckPinFace ******/
+		/****** md5 signature: 135637d57e18b98615c1a47af6cd6df6 ******/
 		%feature("compactdefaultargs") CheckPinFace;
 		%feature("autodoc", "
 Parameters
@@ -622,8 +622,8 @@ No available documentation.
 ") CheckPinFace;
 		Standard_Boolean CheckPinFace(const TopoDS_Face & F, TopTools_DataMapOfShapeShape & mapEdges, const Standard_Real toler = -1.0);
 
-		/****************** CheckSingleStrip ******************/
-		/**** md5 signature: aebb017176453136c30b9fcf29cd2793 ****/
+		/****** ShapeAnalysis_CheckSmallFace::CheckSingleStrip ******/
+		/****** md5 signature: aebb017176453136c30b9fcf29cd2793 ******/
 		%feature("compactdefaultargs") CheckSingleStrip;
 		%feature("autodoc", "
 Parameters
@@ -643,8 +643,8 @@ Checks if a face is a single strip, i.e. brings two great edges which are confus
 ") CheckSingleStrip;
 		Standard_Boolean CheckSingleStrip(const TopoDS_Face & F, TopoDS_Edge & E1, TopoDS_Edge & E2, const Standard_Real tol = -1.0);
 
-		/****************** CheckSplittingVertices ******************/
-		/**** md5 signature: 0fcbdf30e6784d94388046ae44d18275 ****/
+		/****** ShapeAnalysis_CheckSmallFace::CheckSplittingVertices ******/
+		/****** md5 signature: 0fcbdf30e6784d94388046ae44d18275 ******/
 		%feature("compactdefaultargs") CheckSplittingVertices;
 		%feature("autodoc", "
 Parameters
@@ -664,8 +664,8 @@ Checks if a face brings vertices which split it, either confused with non adjace
 ") CheckSplittingVertices;
 		Standard_Integer CheckSplittingVertices(const TopoDS_Face & F, TopTools_DataMapOfShapeListOfShape & MapEdges, ShapeAnalysis_DataMapOfShapeListOfReal & MapParam, TopoDS_Compound & theAllVert);
 
-		/****************** CheckSpotFace ******************/
-		/**** md5 signature: 9f5f36ac1f166da259f547599106aeed ****/
+		/****** ShapeAnalysis_CheckSmallFace::CheckSpotFace ******/
+		/****** md5 signature: 9f5f36ac1f166da259f547599106aeed ******/
 		%feature("compactdefaultargs") CheckSpotFace;
 		%feature("autodoc", "
 Parameters
@@ -683,8 +683,8 @@ Acts as isspotface, but records in <infos> a diagnostic 'spotface' with the pnt 
 ") CheckSpotFace;
 		Standard_Boolean CheckSpotFace(const TopoDS_Face & F, const Standard_Real tol = -1.0);
 
-		/****************** CheckStripEdges ******************/
-		/**** md5 signature: 42ba06453bc54a008a2fceabf501b5fa ****/
+		/****** ShapeAnalysis_CheckSmallFace::CheckStripEdges ******/
+		/****** md5 signature: 42ba06453bc54a008a2fceabf501b5fa ******/
 		%feature("compactdefaultargs") CheckStripEdges;
 		%feature("autodoc", "
 Parameters
@@ -703,8 +703,8 @@ Checks if two edges define a strip, i.e. distance maxi below tolerance, given or
 ") CheckStripEdges;
 		Standard_Boolean CheckStripEdges(const TopoDS_Edge & E1, const TopoDS_Edge & E2, const Standard_Real tol, Standard_Real &OutValue);
 
-		/****************** CheckStripFace ******************/
-		/**** md5 signature: bb1c74772a52f3068a401268987912f6 ****/
+		/****** ShapeAnalysis_CheckSmallFace::CheckStripFace ******/
+		/****** md5 signature: bb1c74772a52f3068a401268987912f6 ******/
 		%feature("compactdefaultargs") CheckStripFace;
 		%feature("autodoc", "
 Parameters
@@ -724,8 +724,8 @@ Checks if a face is as a strip returns 0 if not or non determined, 1 if in u, 2 
 ") CheckStripFace;
 		Standard_Boolean CheckStripFace(const TopoDS_Face & F, TopoDS_Edge & E1, TopoDS_Edge & E2, const Standard_Real tol = -1.0);
 
-		/****************** CheckTwisted ******************/
-		/**** md5 signature: 9d566bb09d1596d6f36a8c1556c983db ****/
+		/****** ShapeAnalysis_CheckSmallFace::CheckTwisted ******/
+		/****** md5 signature: 9d566bb09d1596d6f36a8c1556c983db ******/
 		%feature("compactdefaultargs") CheckTwisted;
 		%feature("autodoc", "
 Parameters
@@ -743,8 +743,8 @@ Checks if a face is twisted (apart from checking pin, i.e. it does not give info
 ") CheckTwisted;
 		Standard_Boolean CheckTwisted(const TopoDS_Face & F, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** FindStripEdges ******************/
-		/**** md5 signature: 488fc04364bde628e00f8bf16852f40f ****/
+		/****** ShapeAnalysis_CheckSmallFace::FindStripEdges ******/
+		/****** md5 signature: 488fc04364bde628e00f8bf16852f40f ******/
 		%feature("compactdefaultargs") FindStripEdges;
 		%feature("autodoc", "
 Parameters
@@ -764,8 +764,8 @@ Searches for two and only two edges up tolerance returns true if ok, false if no
 ") FindStripEdges;
 		Standard_Boolean FindStripEdges(const TopoDS_Face & F, TopoDS_Edge & E1, TopoDS_Edge & E2, const Standard_Real tol, Standard_Real &OutValue);
 
-		/****************** IsSpotFace ******************/
-		/**** md5 signature: 8c34df07c1fdc08c125976674dda3d88 ****/
+		/****** ShapeAnalysis_CheckSmallFace::IsSpotFace ******/
+		/****** md5 signature: 8c34df07c1fdc08c125976674dda3d88 ******/
 		%feature("compactdefaultargs") IsSpotFace;
 		%feature("autodoc", "
 Parameters
@@ -784,8 +784,8 @@ Checks if a face is as a spot returns 0 if not, 1 if yes, 2 if yes and all verti
 ") IsSpotFace;
 		Standard_Integer IsSpotFace(const TopoDS_Face & F, gp_Pnt & spot, Standard_Real &OutValue, const Standard_Real tol = -1.0);
 
-		/****************** IsStripSupport ******************/
-		/**** md5 signature: b15b26fb47eda2274229ed81f7963b1a ****/
+		/****** ShapeAnalysis_CheckSmallFace::IsStripSupport ******/
+		/****** md5 signature: b15b26fb47eda2274229ed81f7963b1a ******/
 		%feature("compactdefaultargs") IsStripSupport;
 		%feature("autodoc", "
 Parameters
@@ -803,8 +803,8 @@ Checks if a face lies on a surface which is a strip so the face is a strip. but 
 ") IsStripSupport;
 		Standard_Boolean IsStripSupport(const TopoDS_Face & F, const Standard_Real tol = -1.0);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: fc6e9b0c16aebccb1a4d05571a3e6ef6 ****/
+		/****** ShapeAnalysis_CheckSmallFace::SetTolerance ******/
+		/****** md5 signature: fc6e9b0c16aebccb1a4d05571a3e6ef6 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -821,8 +821,8 @@ Sets a fixed tolerance to check small face by default, local tolerance zone is c
 ") SetTolerance;
 		void SetTolerance(const Standard_Real tol);
 
-		/****************** Status ******************/
-		/**** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ****/
+		/****** ShapeAnalysis_CheckSmallFace::Status ******/
+		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -839,8 +839,8 @@ Returns the status of last call to perform() shapeextend_ok: face was ok, nothin
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
-		/****************** StatusPin ******************/
-		/**** md5 signature: 45b836979dc59d2b7b6c234582b1b72f ****/
+		/****** ShapeAnalysis_CheckSmallFace::StatusPin ******/
+		/****** md5 signature: 45b836979dc59d2b7b6c234582b1b72f ******/
 		%feature("compactdefaultargs") StatusPin;
 		%feature("autodoc", "
 Parameters
@@ -857,8 +857,8 @@ No available documentation.
 ") StatusPin;
 		Standard_Boolean StatusPin(const ShapeExtend_Status status);
 
-		/****************** StatusPinEdges ******************/
-		/**** md5 signature: 723d6f964223beb649a25c0f85ed663a ****/
+		/****** ShapeAnalysis_CheckSmallFace::StatusPinEdges ******/
+		/****** md5 signature: 723d6f964223beb649a25c0f85ed663a ******/
 		%feature("compactdefaultargs") StatusPinEdges;
 		%feature("autodoc", "
 Parameters
@@ -875,8 +875,8 @@ No available documentation.
 ") StatusPinEdges;
 		Standard_Boolean StatusPinEdges(const ShapeExtend_Status status);
 
-		/****************** StatusPinFace ******************/
-		/**** md5 signature: 59e4599274ed14a030688190ace532f5 ****/
+		/****** ShapeAnalysis_CheckSmallFace::StatusPinFace ******/
+		/****** md5 signature: 59e4599274ed14a030688190ace532f5 ******/
 		%feature("compactdefaultargs") StatusPinFace;
 		%feature("autodoc", "
 Parameters
@@ -893,8 +893,8 @@ No available documentation.
 ") StatusPinFace;
 		Standard_Boolean StatusPinFace(const ShapeExtend_Status status);
 
-		/****************** StatusSplitVert ******************/
-		/**** md5 signature: 0adcd483785ac3ebc36cc37402218893 ****/
+		/****** ShapeAnalysis_CheckSmallFace::StatusSplitVert ******/
+		/****** md5 signature: 0adcd483785ac3ebc36cc37402218893 ******/
 		%feature("compactdefaultargs") StatusSplitVert;
 		%feature("autodoc", "
 Parameters
@@ -911,8 +911,8 @@ No available documentation.
 ") StatusSplitVert;
 		Standard_Boolean StatusSplitVert(const ShapeExtend_Status status);
 
-		/****************** StatusSpot ******************/
-		/**** md5 signature: 9a0a63ed0084d833e10cc12c34d3539e ****/
+		/****** ShapeAnalysis_CheckSmallFace::StatusSpot ******/
+		/****** md5 signature: 9a0a63ed0084d833e10cc12c34d3539e ******/
 		%feature("compactdefaultargs") StatusSpot;
 		%feature("autodoc", "
 Parameters
@@ -929,8 +929,8 @@ No available documentation.
 ") StatusSpot;
 		Standard_Boolean StatusSpot(const ShapeExtend_Status status);
 
-		/****************** StatusStrip ******************/
-		/**** md5 signature: 9368cd6c24b8903ef7a265abae338ec3 ****/
+		/****** ShapeAnalysis_CheckSmallFace::StatusStrip ******/
+		/****** md5 signature: 9368cd6c24b8903ef7a265abae338ec3 ******/
 		%feature("compactdefaultargs") StatusStrip;
 		%feature("autodoc", "
 Parameters
@@ -947,8 +947,8 @@ No available documentation.
 ") StatusStrip;
 		Standard_Boolean StatusStrip(const ShapeExtend_Status status);
 
-		/****************** StatusTwisted ******************/
-		/**** md5 signature: 79ba4e0de264d0a5e360f383f04ae6ec ****/
+		/****** ShapeAnalysis_CheckSmallFace::StatusTwisted ******/
+		/****** md5 signature: 79ba4e0de264d0a5e360f383f04ae6ec ******/
 		%feature("compactdefaultargs") StatusTwisted;
 		%feature("autodoc", "
 Parameters
@@ -965,8 +965,8 @@ No available documentation.
 ") StatusTwisted;
 		Standard_Boolean StatusTwisted(const ShapeExtend_Status status);
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/****** ShapeAnalysis_CheckSmallFace::Tolerance ******/
+		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -992,8 +992,8 @@ Returns the tolerance to check small faces, negative value if local tolerances z
 ****************************/
 class ShapeAnalysis_Curve {
 	public:
-		/****************** FillBndBox ******************/
-		/**** md5 signature: f89b9c3c2b8dd0039e709244626bb65e ****/
+		/****** ShapeAnalysis_Curve::FillBndBox ******/
+		/****** md5 signature: f89b9c3c2b8dd0039e709244626bb65e ******/
 		%feature("compactdefaultargs") FillBndBox;
 		%feature("autodoc", "
 Parameters
@@ -1015,8 +1015,8 @@ Computes a boundary box on segment of curve c2d from first to last. this is done
 ") FillBndBox;
 		void FillBndBox(const opencascade::handle<Geom2d_Curve> & C2d, const Standard_Real First, const Standard_Real Last, const Standard_Integer NPoints, const Standard_Boolean Exact, Bnd_Box2d & Box);
 
-		/****************** GetSamplePoints ******************/
-		/**** md5 signature: 35ed63bcd8b3dcf25b492ce90c8d7391 ****/
+		/****** ShapeAnalysis_Curve::GetSamplePoints ******/
+		/****** md5 signature: 35ed63bcd8b3dcf25b492ce90c8d7391 ******/
 		%feature("compactdefaultargs") GetSamplePoints;
 		%feature("autodoc", "
 Parameters
@@ -1036,8 +1036,8 @@ Returns sample points which will serve as linearisation of the2d curve in range 
 ") GetSamplePoints;
 		static Standard_Boolean GetSamplePoints(const opencascade::handle<Geom2d_Curve> & curve, const Standard_Real first, const Standard_Real last, TColgp_SequenceOfPnt2d & seq);
 
-		/****************** GetSamplePoints ******************/
-		/**** md5 signature: 27536dca3bf5cbe57386f53deec75fa4 ****/
+		/****** ShapeAnalysis_Curve::GetSamplePoints ******/
+		/****** md5 signature: 27536dca3bf5cbe57386f53deec75fa4 ******/
 		%feature("compactdefaultargs") GetSamplePoints;
 		%feature("autodoc", "
 Parameters
@@ -1057,8 +1057,8 @@ Returns sample points which will serve as linearisation of the curve in range (f
 ") GetSamplePoints;
 		static Standard_Boolean GetSamplePoints(const opencascade::handle<Geom_Curve> & curve, const Standard_Real first, const Standard_Real last, TColgp_SequenceOfPnt & seq);
 
-		/****************** IsClosed ******************/
-		/**** md5 signature: ffd30074e57d137811ed8c73f85b663f ****/
+		/****** ShapeAnalysis_Curve::IsClosed ******/
+		/****** md5 signature: ffd30074e57d137811ed8c73f85b663f ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -1076,8 +1076,8 @@ Tells if the curve is closed with given precision. if <preci> < 0 then precision
 ") IsClosed;
 		static Standard_Boolean IsClosed(const opencascade::handle<Geom_Curve> & curve, const Standard_Real preci = -1);
 
-		/****************** IsPeriodic ******************/
-		/**** md5 signature: 77bfaeae3bd1dc05e7cd84ea4c4fbc6a ****/
+		/****** ShapeAnalysis_Curve::IsPeriodic ******/
+		/****** md5 signature: 77bfaeae3bd1dc05e7cd84ea4c4fbc6a ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -1094,8 +1094,8 @@ This method was implemented as fix for changes in trimmed curve behaviour. for t
 ") IsPeriodic;
 		static Standard_Boolean IsPeriodic(const opencascade::handle<Geom_Curve> & curve);
 
-		/****************** IsPeriodic ******************/
-		/**** md5 signature: 74012048a4f42b6a8953853367de2d1e ****/
+		/****** ShapeAnalysis_Curve::IsPeriodic ******/
+		/****** md5 signature: 74012048a4f42b6a8953853367de2d1e ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -1112,8 +1112,8 @@ The same as for curve3d.
 ") IsPeriodic;
 		static Standard_Boolean IsPeriodic(const opencascade::handle<Geom2d_Curve> & curve);
 
-		/****************** IsPlanar ******************/
-		/**** md5 signature: 8d42e9d9d775ff62270b1ea21363217d ****/
+		/****** ShapeAnalysis_Curve::IsPlanar ******/
+		/****** md5 signature: 8d42e9d9d775ff62270b1ea21363217d ******/
 		%feature("compactdefaultargs") IsPlanar;
 		%feature("autodoc", "
 Parameters
@@ -1132,8 +1132,8 @@ Checks if points are planar with given preci. if normal has not zero modulus, ch
 ") IsPlanar;
 		static Standard_Boolean IsPlanar(const TColgp_Array1OfPnt & pnts, gp_XYZ & Normal, const Standard_Real preci = 0);
 
-		/****************** IsPlanar ******************/
-		/**** md5 signature: 51381d62b31dcf78c955461d276c0d26 ****/
+		/****** ShapeAnalysis_Curve::IsPlanar ******/
+		/****** md5 signature: 51381d62b31dcf78c955461d276c0d26 ******/
 		%feature("compactdefaultargs") IsPlanar;
 		%feature("autodoc", "
 Parameters
@@ -1152,8 +1152,8 @@ Checks if curve is planar with given preci. if normal has not zero modulus, chec
 ") IsPlanar;
 		static Standard_Boolean IsPlanar(const opencascade::handle<Geom_Curve> & curve, gp_XYZ & Normal, const Standard_Real preci = 0);
 
-		/****************** NextProject ******************/
-		/**** md5 signature: 574e0b66ca9898b75d27ec40fcac4b72 ****/
+		/****** ShapeAnalysis_Curve::NextProject ******/
+		/****** md5 signature: 574e0b66ca9898b75d27ec40fcac4b72 ******/
 		%feature("compactdefaultargs") NextProject;
 		%feature("autodoc", "
 Parameters
@@ -1177,8 +1177,8 @@ Projects a point on a curve using newton method. <paramprev> is taken as the fir
 ") NextProject;
 		Standard_Real NextProject(const Standard_Real paramPrev, const opencascade::handle<Geom_Curve> & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue, const Standard_Real cf, const Standard_Real cl, const Standard_Boolean AdjustToEnds = Standard_True);
 
-		/****************** NextProject ******************/
-		/**** md5 signature: 43e8de3fcfb3bb035f141dbbfaaec453 ****/
+		/****** ShapeAnalysis_Curve::NextProject ******/
+		/****** md5 signature: 43e8de3fcfb3bb035f141dbbfaaec453 ******/
 		%feature("compactdefaultargs") NextProject;
 		%feature("autodoc", "
 Parameters
@@ -1199,8 +1199,8 @@ Projects a point on a curve using newton method. <paramprev> is taken as the fir
 ") NextProject;
 		Standard_Real NextProject(const Standard_Real paramPrev, const Adaptor3d_Curve & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue);
 
-		/****************** Project ******************/
-		/**** md5 signature: 186437c4729079938ebb98c0875bb8a7 ****/
+		/****** ShapeAnalysis_Curve::Project ******/
+		/****** md5 signature: 186437c4729079938ebb98c0875bb8a7 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -1221,8 +1221,8 @@ Projects a point on a curve. computes the projected point and its parameter on t
 ") Project;
 		Standard_Real Project(const opencascade::handle<Geom_Curve> & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue, const Standard_Boolean AdjustToEnds = Standard_True);
 
-		/****************** Project ******************/
-		/**** md5 signature: 0beba894dd1fd86f65e71a22d532cef4 ****/
+		/****** ShapeAnalysis_Curve::Project ******/
+		/****** md5 signature: 0beba894dd1fd86f65e71a22d532cef4 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -1243,8 +1243,8 @@ Projects a point on a curve. computes the projected point and its parameter on t
 ") Project;
 		Standard_Real Project(const Adaptor3d_Curve & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue, const Standard_Boolean AdjustToEnds = Standard_True);
 
-		/****************** Project ******************/
-		/**** md5 signature: 3d1aeb0cc5527c48ff4e25cf4bee7958 ****/
+		/****** ShapeAnalysis_Curve::Project ******/
+		/****** md5 signature: 3d1aeb0cc5527c48ff4e25cf4bee7958 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -1267,8 +1267,8 @@ Projects a point on a curve, but parameters are limited between <cf> and <cl>. t
 ") Project;
 		Standard_Real Project(const opencascade::handle<Geom_Curve> & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue, const Standard_Real cf, const Standard_Real cl, const Standard_Boolean AdjustToEnds = Standard_True);
 
-		/****************** ProjectAct ******************/
-		/**** md5 signature: f2146af7b32beba8e530690f1149ab19 ****/
+		/****** ShapeAnalysis_Curve::ProjectAct ******/
+		/****** md5 signature: f2146af7b32beba8e530690f1149ab19 ******/
 		%feature("compactdefaultargs") ProjectAct;
 		%feature("autodoc", "
 Parameters
@@ -1288,8 +1288,8 @@ No available documentation.
 ") ProjectAct;
 		Standard_Real ProjectAct(const Adaptor3d_Curve & C3D, const gp_Pnt & P3D, const Standard_Real preci, gp_Pnt & proj, Standard_Real &OutValue);
 
-		/****************** SelectForwardSeam ******************/
-		/**** md5 signature: 5e6ac6f0ed4d3dd993a587de809382d5 ****/
+		/****** ShapeAnalysis_Curve::SelectForwardSeam ******/
+		/****** md5 signature: 5e6ac6f0ed4d3dd993a587de809382d5 ******/
 		%feature("compactdefaultargs") SelectForwardSeam;
 		%feature("autodoc", "
 Parameters
@@ -1307,8 +1307,8 @@ Defines which pcurve (c1 or c2) should be chosen for forward seam edge.
 ") SelectForwardSeam;
 		Standard_Integer SelectForwardSeam(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2);
 
-		/****************** ValidateRange ******************/
-		/**** md5 signature: fb7b86b0323f61587893e47a01c31271 ****/
+		/****** ShapeAnalysis_Curve::ValidateRange ******/
+		/****** md5 signature: fb7b86b0323f61587893e47a01c31271 ******/
 		%feature("compactdefaultargs") ValidateRange;
 		%feature("autodoc", "
 Parameters
@@ -1341,8 +1341,8 @@ Validate parameters first and last for the given curve in order to make them val
 ***************************/
 class ShapeAnalysis_Edge {
 	public:
-		/****************** ShapeAnalysis_Edge ******************/
-		/**** md5 signature: c99946c01f04aee5eb380ccca26bc3af ****/
+		/****** ShapeAnalysis_Edge::ShapeAnalysis_Edge ******/
+		/****** md5 signature: c99946c01f04aee5eb380ccca26bc3af ******/
 		%feature("compactdefaultargs") ShapeAnalysis_Edge;
 		%feature("autodoc", "Return
 -------
@@ -1354,8 +1354,8 @@ Empty constructor; initialises status to ok.
 ") ShapeAnalysis_Edge;
 		 ShapeAnalysis_Edge();
 
-		/****************** BoundUV ******************/
-		/**** md5 signature: e5e22bda7ac9cae9eec606988778f69f ****/
+		/****** ShapeAnalysis_Edge::BoundUV ******/
+		/****** md5 signature: e5e22bda7ac9cae9eec606988778f69f ******/
 		%feature("compactdefaultargs") BoundUV;
 		%feature("autodoc", "
 Parameters
@@ -1375,8 +1375,8 @@ No available documentation.
 ") BoundUV;
 		Standard_Boolean BoundUV(const TopoDS_Edge & edge, const TopoDS_Face & face, gp_Pnt2d & first, gp_Pnt2d & last);
 
-		/****************** BoundUV ******************/
-		/**** md5 signature: adf12ad3021cfe06ac86d8a18e1a6831 ****/
+		/****** ShapeAnalysis_Edge::BoundUV ******/
+		/****** md5 signature: adf12ad3021cfe06ac86d8a18e1a6831 ******/
 		%feature("compactdefaultargs") BoundUV;
 		%feature("autodoc", "
 Parameters
@@ -1397,8 +1397,8 @@ Returns the ends of pcurve calls method pcurve with <orient> equal to true.
 ") BoundUV;
 		Standard_Boolean BoundUV(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, gp_Pnt2d & first, gp_Pnt2d & last);
 
-		/****************** CheckCurve3dWithPCurve ******************/
-		/**** md5 signature: 75d50ab437af2b4443581722613dc01a ****/
+		/****** ShapeAnalysis_Edge::CheckCurve3dWithPCurve ******/
+		/****** md5 signature: 75d50ab437af2b4443581722613dc01a ******/
 		%feature("compactdefaultargs") CheckCurve3dWithPCurve;
 		%feature("autodoc", "
 Parameters
@@ -1416,8 +1416,8 @@ No available documentation.
 ") CheckCurve3dWithPCurve;
 		Standard_Boolean CheckCurve3dWithPCurve(const TopoDS_Edge & edge, const TopoDS_Face & face);
 
-		/****************** CheckCurve3dWithPCurve ******************/
-		/**** md5 signature: 27026b5c86a00e977fe1bd7242941752 ****/
+		/****** ShapeAnalysis_Edge::CheckCurve3dWithPCurve ******/
+		/****** md5 signature: 27026b5c86a00e977fe1bd7242941752 ******/
 		%feature("compactdefaultargs") CheckCurve3dWithPCurve;
 		%feature("autodoc", "
 Parameters
@@ -1436,8 +1436,8 @@ Checks mutual orientation of 3d curve and pcurve on the analysis of curves bound
 ") CheckCurve3dWithPCurve;
 		Standard_Boolean CheckCurve3dWithPCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
 
-		/****************** CheckOverlapping ******************/
-		/**** md5 signature: 8ce837196cc14fae3f308905714a9765 ****/
+		/****** ShapeAnalysis_Edge::CheckOverlapping ******/
+		/****** md5 signature: 8ce837196cc14fae3f308905714a9765 ******/
 		%feature("compactdefaultargs") CheckOverlapping;
 		%feature("autodoc", "
 Parameters
@@ -1456,8 +1456,8 @@ Checks the first edge is overlapped with second edge. if distance between two ed
 ") CheckOverlapping;
 		Standard_Boolean CheckOverlapping(const TopoDS_Edge & theEdge1, const TopoDS_Edge & theEdge2, Standard_Real &OutValue, const Standard_Real theDomainDist = 0.0);
 
-		/****************** CheckPCurveRange ******************/
-		/**** md5 signature: 1c915eee568b23ca90e4d13b9e928749 ****/
+		/****** ShapeAnalysis_Edge::CheckPCurveRange ******/
+		/****** md5 signature: 1c915eee568b23ca90e4d13b9e928749 ******/
 		%feature("compactdefaultargs") CheckPCurveRange;
 		%feature("autodoc", "
 Parameters
@@ -1476,8 +1476,8 @@ Checks possibility for pcurve thepc to have range [thefirst, thelast] (edge rang
 ") CheckPCurveRange;
 		Standard_Boolean CheckPCurveRange(const Standard_Real theFirst, const Standard_Real theLast, const opencascade::handle<Geom2d_Curve> & thePC);
 
-		/****************** CheckSameParameter ******************/
-		/**** md5 signature: 2ae6dcdc8bd749faeacf199fa53d23aa ****/
+		/****** ShapeAnalysis_Edge::CheckSameParameter ******/
+		/****** md5 signature: 2ae6dcdc8bd749faeacf199fa53d23aa ******/
 		%feature("compactdefaultargs") CheckSameParameter;
 		%feature("autodoc", "
 Parameters
@@ -1495,8 +1495,8 @@ Checks the edge to be sameparameter. calculates the maximal deviation between 3d
 ") CheckSameParameter;
 		Standard_Boolean CheckSameParameter(const TopoDS_Edge & edge, Standard_Real &OutValue, const Standard_Integer NbControl = 23);
 
-		/****************** CheckSameParameter ******************/
-		/**** md5 signature: ea9136dabd409c2bd866cf4e9355e8a5 ****/
+		/****** ShapeAnalysis_Edge::CheckSameParameter ******/
+		/****** md5 signature: ea9136dabd409c2bd866cf4e9355e8a5 ******/
 		%feature("compactdefaultargs") CheckSameParameter;
 		%feature("autodoc", "
 Parameters
@@ -1515,8 +1515,8 @@ Checks the edge to be sameparameter. calculates the maximal deviation between 3d
 ") CheckSameParameter;
 		Standard_Boolean CheckSameParameter(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, Standard_Real &OutValue, const Standard_Integer theNbControl = 23);
 
-		/****************** CheckVertexTolerance ******************/
-		/**** md5 signature: 661b5f3482d8c846735ebcb84acb3420 ****/
+		/****** ShapeAnalysis_Edge::CheckVertexTolerance ******/
+		/****** md5 signature: 661b5f3482d8c846735ebcb84acb3420 ******/
 		%feature("compactdefaultargs") CheckVertexTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1535,8 +1535,8 @@ No available documentation.
 ") CheckVertexTolerance;
 		Standard_Boolean CheckVertexTolerance(const TopoDS_Edge & edge, const TopoDS_Face & face, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** CheckVertexTolerance ******************/
-		/**** md5 signature: 809a2185e68e2c2577b90ce440e968a1 ****/
+		/****** ShapeAnalysis_Edge::CheckVertexTolerance ******/
+		/****** md5 signature: 809a2185e68e2c2577b90ce440e968a1 ******/
 		%feature("compactdefaultargs") CheckVertexTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1554,8 +1554,8 @@ Checks if it is necessary to increase tolerances of the edge vertices to compris
 ") CheckVertexTolerance;
 		Standard_Boolean CheckVertexTolerance(const TopoDS_Edge & edge, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** CheckVerticesWithCurve3d ******************/
-		/**** md5 signature: ef9c76a46a86528df9f9bc0c626bb285 ****/
+		/****** ShapeAnalysis_Edge::CheckVerticesWithCurve3d ******/
+		/****** md5 signature: ef9c76a46a86528df9f9bc0c626bb285 ******/
 		%feature("compactdefaultargs") CheckVerticesWithCurve3d;
 		%feature("autodoc", "
 Parameters
@@ -1574,8 +1574,8 @@ Checks the start and/or end vertex of the edge for matching with 3d curve with t
 ") CheckVerticesWithCurve3d;
 		Standard_Boolean CheckVerticesWithCurve3d(const TopoDS_Edge & edge, const Standard_Real preci = -1, const Standard_Integer vtx = 0);
 
-		/****************** CheckVerticesWithPCurve ******************/
-		/**** md5 signature: 073672091cfedac6c0b89f7faf486702 ****/
+		/****** ShapeAnalysis_Edge::CheckVerticesWithPCurve ******/
+		/****** md5 signature: 073672091cfedac6c0b89f7faf486702 ******/
 		%feature("compactdefaultargs") CheckVerticesWithPCurve;
 		%feature("autodoc", "
 Parameters
@@ -1595,8 +1595,8 @@ No available documentation.
 ") CheckVerticesWithPCurve;
 		Standard_Boolean CheckVerticesWithPCurve(const TopoDS_Edge & edge, const TopoDS_Face & face, const Standard_Real preci = -1, const Standard_Integer vtx = 0);
 
-		/****************** CheckVerticesWithPCurve ******************/
-		/**** md5 signature: 6dcb667f22bcd8c805c80d0f2322ed47 ****/
+		/****** ShapeAnalysis_Edge::CheckVerticesWithPCurve ******/
+		/****** md5 signature: 6dcb667f22bcd8c805c80d0f2322ed47 ******/
 		%feature("compactdefaultargs") CheckVerticesWithPCurve;
 		%feature("autodoc", "
 Parameters
@@ -1617,8 +1617,8 @@ Checks the start and/or end vertex of the edge for matching with pcurve with the
 ") CheckVerticesWithPCurve;
 		Standard_Boolean CheckVerticesWithPCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, const Standard_Real preci = -1, const Standard_Integer vtx = 0);
 
-		/****************** Curve3d ******************/
-		/**** md5 signature: a62c7816a4324c1eb17a7617f6fa678f ****/
+		/****** ShapeAnalysis_Edge::Curve3d ******/
+		/****** md5 signature: a62c7816a4324c1eb17a7617f6fa678f ******/
 		%feature("compactdefaultargs") Curve3d;
 		%feature("autodoc", "
 Parameters
@@ -1638,8 +1638,8 @@ Returns the 3d curve and bounding parameteres for the edge returns false if no 3
 ") Curve3d;
 		Standard_Boolean Curve3d(const TopoDS_Edge & edge, opencascade::handle<Geom_Curve> & C3d, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean orient = Standard_True);
 
-		/****************** FirstVertex ******************/
-		/**** md5 signature: c76f9f550e6853d1bca033d063cd7695 ****/
+		/****** ShapeAnalysis_Edge::FirstVertex ******/
+		/****** md5 signature: c76f9f550e6853d1bca033d063cd7695 ******/
 		%feature("compactdefaultargs") FirstVertex;
 		%feature("autodoc", "
 Parameters
@@ -1656,8 +1656,8 @@ Returns start vertex of the edge (taking edge orientation into account).
 ") FirstVertex;
 		TopoDS_Vertex FirstVertex(const TopoDS_Edge & edge);
 
-		/****************** GetEndTangent2d ******************/
-		/**** md5 signature: bc383e612c5da27eed0047cfdefac844 ****/
+		/****** ShapeAnalysis_Edge::GetEndTangent2d ******/
+		/****** md5 signature: bc383e612c5da27eed0047cfdefac844 ******/
 		%feature("compactdefaultargs") GetEndTangent2d;
 		%feature("autodoc", "
 Parameters
@@ -1679,8 +1679,8 @@ No available documentation.
 ") GetEndTangent2d;
 		Standard_Boolean GetEndTangent2d(const TopoDS_Edge & edge, const TopoDS_Face & face, const Standard_Boolean atEnd, gp_Pnt2d & pos, gp_Vec2d & tang, const Standard_Real dparam = 0.0);
 
-		/****************** GetEndTangent2d ******************/
-		/**** md5 signature: c54ab8ad8f5a550116a71bb84550b206 ****/
+		/****** ShapeAnalysis_Edge::GetEndTangent2d ******/
+		/****** md5 signature: c54ab8ad8f5a550116a71bb84550b206 ******/
 		%feature("compactdefaultargs") GetEndTangent2d;
 		%feature("autodoc", "
 Parameters
@@ -1703,8 +1703,8 @@ Returns tangent of the edge pcurve at its start (if atend is false) or end (if t
 ") GetEndTangent2d;
 		Standard_Boolean GetEndTangent2d(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, const Standard_Boolean atEnd, gp_Pnt2d & pos, gp_Vec2d & tang, const Standard_Real dparam = 0.0);
 
-		/****************** HasCurve3d ******************/
-		/**** md5 signature: d78b94609050f6e09a2bfa1b5ea3a34e ****/
+		/****** ShapeAnalysis_Edge::HasCurve3d ******/
+		/****** md5 signature: d78b94609050f6e09a2bfa1b5ea3a34e ******/
 		%feature("compactdefaultargs") HasCurve3d;
 		%feature("autodoc", "
 Parameters
@@ -1721,8 +1721,8 @@ Tells if the edge has a 3d curve.
 ") HasCurve3d;
 		Standard_Boolean HasCurve3d(const TopoDS_Edge & edge);
 
-		/****************** HasPCurve ******************/
-		/**** md5 signature: f605c533d49084a841df7413f97d5c66 ****/
+		/****** ShapeAnalysis_Edge::HasPCurve ******/
+		/****** md5 signature: f605c533d49084a841df7413f97d5c66 ******/
 		%feature("compactdefaultargs") HasPCurve;
 		%feature("autodoc", "
 Parameters
@@ -1740,8 +1740,8 @@ Tells if the edge has a pcurve on the face.
 ") HasPCurve;
 		Standard_Boolean HasPCurve(const TopoDS_Edge & edge, const TopoDS_Face & face);
 
-		/****************** HasPCurve ******************/
-		/**** md5 signature: 2b47f8283d127329517d4019a6fd4de6 ****/
+		/****** ShapeAnalysis_Edge::HasPCurve ******/
+		/****** md5 signature: 2b47f8283d127329517d4019a6fd4de6 ******/
 		%feature("compactdefaultargs") HasPCurve;
 		%feature("autodoc", "
 Parameters
@@ -1760,8 +1760,8 @@ Tells if the edge has a pcurve on the surface (with location).
 ") HasPCurve;
 		Standard_Boolean HasPCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
 
-		/****************** IsClosed3d ******************/
-		/**** md5 signature: 61d8e2f9ed5200ce2ecef6abfdcc8389 ****/
+		/****** ShapeAnalysis_Edge::IsClosed3d ******/
+		/****** md5 signature: 61d8e2f9ed5200ce2ecef6abfdcc8389 ******/
 		%feature("compactdefaultargs") IsClosed3d;
 		%feature("autodoc", "
 Parameters
@@ -1778,8 +1778,8 @@ Gives true if the edge has a 3d curve, this curve is closed, and the edge has th
 ") IsClosed3d;
 		Standard_Boolean IsClosed3d(const TopoDS_Edge & edge);
 
-		/****************** IsSeam ******************/
-		/**** md5 signature: 0fc8e916c998f86260978e3135d9950c ****/
+		/****** ShapeAnalysis_Edge::IsSeam ******/
+		/****** md5 signature: 0fc8e916c998f86260978e3135d9950c ******/
 		%feature("compactdefaultargs") IsSeam;
 		%feature("autodoc", "
 Parameters
@@ -1797,8 +1797,8 @@ No available documentation.
 ") IsSeam;
 		Standard_Boolean IsSeam(const TopoDS_Edge & edge, const TopoDS_Face & face);
 
-		/****************** IsSeam ******************/
-		/**** md5 signature: 2d9e2b62d151785ef467c6500e14f00c ****/
+		/****** ShapeAnalysis_Edge::IsSeam ******/
+		/****** md5 signature: 2d9e2b62d151785ef467c6500e14f00c ******/
 		%feature("compactdefaultargs") IsSeam;
 		%feature("autodoc", "
 Parameters
@@ -1817,8 +1817,8 @@ Returns true if the edge has two pcurves on one surface.
 ") IsSeam;
 		Standard_Boolean IsSeam(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
 
-		/****************** LastVertex ******************/
-		/**** md5 signature: f5a64f47da5ff503b5b692bcee807785 ****/
+		/****** ShapeAnalysis_Edge::LastVertex ******/
+		/****** md5 signature: f5a64f47da5ff503b5b692bcee807785 ******/
 		%feature("compactdefaultargs") LastVertex;
 		%feature("autodoc", "
 Parameters
@@ -1835,8 +1835,8 @@ Returns end vertex of the edge (taking edge orientation into account).
 ") LastVertex;
 		TopoDS_Vertex LastVertex(const TopoDS_Edge & edge);
 
-		/****************** PCurve ******************/
-		/**** md5 signature: 8fb620ff338d11fa9b54fa8e15c7fe67 ****/
+		/****** ShapeAnalysis_Edge::PCurve ******/
+		/****** md5 signature: 8fb620ff338d11fa9b54fa8e15c7fe67 ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "
 Parameters
@@ -1857,8 +1857,8 @@ No available documentation.
 ") PCurve;
 		Standard_Boolean PCurve(const TopoDS_Edge & edge, const TopoDS_Face & face, opencascade::handle<Geom2d_Curve> & C2d, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean orient = Standard_True);
 
-		/****************** PCurve ******************/
-		/**** md5 signature: 6f3235c72f09fd5bbf5e17072f2b330b ****/
+		/****** ShapeAnalysis_Edge::PCurve ******/
+		/****** md5 signature: 6f3235c72f09fd5bbf5e17072f2b330b ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "
 Parameters
@@ -1880,8 +1880,8 @@ Returns the pcurve and bounding parameteres for the edge lying on the surface. r
 ") PCurve;
 		Standard_Boolean PCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, opencascade::handle<Geom2d_Curve> & C2d, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean orient = Standard_True);
 
-		/****************** Status ******************/
-		/**** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ****/
+		/****** ShapeAnalysis_Edge::Status ******/
+		/****** md5 signature: 1d6b7ae9195134a3f7a36f14c85fbd58 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -1912,8 +1912,8 @@ Returns the status (in the form of true/false) of last check.
 ************************************/
 class ShapeAnalysis_FreeBoundData : public Standard_Transient {
 	public:
-		/****************** ShapeAnalysis_FreeBoundData ******************/
-		/**** md5 signature: 673f7c237d3c08e9bc5d7e90947aabeb ****/
+		/****** ShapeAnalysis_FreeBoundData::ShapeAnalysis_FreeBoundData ******/
+		/****** md5 signature: 673f7c237d3c08e9bc5d7e90947aabeb ******/
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBoundData;
 		%feature("autodoc", "Return
 -------
@@ -1925,8 +1925,8 @@ Empty constructor.
 ") ShapeAnalysis_FreeBoundData;
 		 ShapeAnalysis_FreeBoundData();
 
-		/****************** ShapeAnalysis_FreeBoundData ******************/
-		/**** md5 signature: 5c230c41d6e0726fe9ccfc7ed409f380 ****/
+		/****** ShapeAnalysis_FreeBoundData::ShapeAnalysis_FreeBoundData ******/
+		/****** md5 signature: 5c230c41d6e0726fe9ccfc7ed409f380 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBoundData;
 		%feature("autodoc", "
 Parameters
@@ -1943,8 +1943,8 @@ Creates object with contour given in the form of topods_wire.
 ") ShapeAnalysis_FreeBoundData;
 		 ShapeAnalysis_FreeBoundData(const TopoDS_Wire & freebound);
 
-		/****************** AddNotch ******************/
-		/**** md5 signature: 296cc4725ce03a2bad8cbeccc177d04d ****/
+		/****** ShapeAnalysis_FreeBoundData::AddNotch ******/
+		/****** md5 signature: 296cc4725ce03a2bad8cbeccc177d04d ******/
 		%feature("compactdefaultargs") AddNotch;
 		%feature("autodoc", "
 Parameters
@@ -1962,8 +1962,8 @@ Adds notch on the contour with its maximum width.
 ") AddNotch;
 		void AddNotch(const TopoDS_Wire & notch, const Standard_Real width);
 
-		/****************** Area ******************/
-		/**** md5 signature: a514cbcf0bd2f53e9374f58dcecded92 ****/
+		/****** ShapeAnalysis_FreeBoundData::Area ******/
+		/****** md5 signature: a514cbcf0bd2f53e9374f58dcecded92 ******/
 		%feature("compactdefaultargs") Area;
 		%feature("autodoc", "Return
 -------
@@ -1975,8 +1975,8 @@ Returns area of the contour.
 ") Area;
 		Standard_Real Area();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** ShapeAnalysis_FreeBoundData::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1988,8 +1988,8 @@ Clears all properties of the contour. contour bound itself is not cleared.
 ") Clear;
 		void Clear();
 
-		/****************** FreeBound ******************/
-		/**** md5 signature: 8bc13ac492a4bb5f0e5014bae56b0d19 ****/
+		/****** ShapeAnalysis_FreeBoundData::FreeBound ******/
+		/****** md5 signature: 8bc13ac492a4bb5f0e5014bae56b0d19 ******/
 		%feature("compactdefaultargs") FreeBound;
 		%feature("autodoc", "Return
 -------
@@ -2001,8 +2001,8 @@ Returns contour.
 ") FreeBound;
 		TopoDS_Wire FreeBound();
 
-		/****************** NbNotches ******************/
-		/**** md5 signature: 3d1684d1cd9b93f5c29f2bd6573355fd ****/
+		/****** ShapeAnalysis_FreeBoundData::NbNotches ******/
+		/****** md5 signature: 3d1684d1cd9b93f5c29f2bd6573355fd ******/
 		%feature("compactdefaultargs") NbNotches;
 		%feature("autodoc", "Return
 -------
@@ -2014,8 +2014,8 @@ Returns number of notches on the contour.
 ") NbNotches;
 		Standard_Integer NbNotches();
 
-		/****************** Notch ******************/
-		/**** md5 signature: 8e9156bec4aa1837516ae821060b1117 ****/
+		/****** ShapeAnalysis_FreeBoundData::Notch ******/
+		/****** md5 signature: 8e9156bec4aa1837516ae821060b1117 ******/
 		%feature("compactdefaultargs") Notch;
 		%feature("autodoc", "
 Parameters
@@ -2032,8 +2032,8 @@ Returns notch on the contour.
 ") Notch;
 		TopoDS_Wire Notch(const Standard_Integer index);
 
-		/****************** NotchWidth ******************/
-		/**** md5 signature: 61d945a5d7959176a609a43b1fa9f5dc ****/
+		/****** ShapeAnalysis_FreeBoundData::NotchWidth ******/
+		/****** md5 signature: 61d945a5d7959176a609a43b1fa9f5dc ******/
 		%feature("compactdefaultargs") NotchWidth;
 		%feature("autodoc", "
 Parameters
@@ -2050,8 +2050,8 @@ Returns maximum width of notch specified by its rank number on the contour.
 ") NotchWidth;
 		Standard_Real NotchWidth(const Standard_Integer index);
 
-		/****************** NotchWidth ******************/
-		/**** md5 signature: b55832f9bd5a1d184c7dabacbc932f36 ****/
+		/****** ShapeAnalysis_FreeBoundData::NotchWidth ******/
+		/****** md5 signature: b55832f9bd5a1d184c7dabacbc932f36 ******/
 		%feature("compactdefaultargs") NotchWidth;
 		%feature("autodoc", "
 Parameters
@@ -2068,8 +2068,8 @@ Returns maximum width of notch specified as topods_wire on the contour.
 ") NotchWidth;
 		Standard_Real NotchWidth(const TopoDS_Wire & notch);
 
-		/****************** Notches ******************/
-		/**** md5 signature: ddeba163c0380866b24b518f9f1db364 ****/
+		/****** ShapeAnalysis_FreeBoundData::Notches ******/
+		/****** md5 signature: ddeba163c0380866b24b518f9f1db364 ******/
 		%feature("compactdefaultargs") Notches;
 		%feature("autodoc", "Return
 -------
@@ -2081,8 +2081,8 @@ Returns sequence of notches on the contour.
 ") Notches;
 		opencascade::handle<TopTools_HSequenceOfShape> Notches();
 
-		/****************** Perimeter ******************/
-		/**** md5 signature: c2755d4db216dfa69dda7f57131c1224 ****/
+		/****** ShapeAnalysis_FreeBoundData::Perimeter ******/
+		/****** md5 signature: c2755d4db216dfa69dda7f57131c1224 ******/
 		%feature("compactdefaultargs") Perimeter;
 		%feature("autodoc", "Return
 -------
@@ -2094,8 +2094,8 @@ Returns perimeter of the contour.
 ") Perimeter;
 		Standard_Real Perimeter();
 
-		/****************** Ratio ******************/
-		/**** md5 signature: f6ad8c294bcbb055f97a9d19ae1aa2a2 ****/
+		/****** ShapeAnalysis_FreeBoundData::Ratio ******/
+		/****** md5 signature: f6ad8c294bcbb055f97a9d19ae1aa2a2 ******/
 		%feature("compactdefaultargs") Ratio;
 		%feature("autodoc", "Return
 -------
@@ -2107,8 +2107,8 @@ Returns ratio of average length to average width of the contour.
 ") Ratio;
 		Standard_Real Ratio();
 
-		/****************** SetArea ******************/
-		/**** md5 signature: ca196224c16686242be84aef415b6e2c ****/
+		/****** ShapeAnalysis_FreeBoundData::SetArea ******/
+		/****** md5 signature: ca196224c16686242be84aef415b6e2c ******/
 		%feature("compactdefaultargs") SetArea;
 		%feature("autodoc", "
 Parameters
@@ -2125,8 +2125,8 @@ Sets area of the contour.
 ") SetArea;
 		void SetArea(const Standard_Real area);
 
-		/****************** SetFreeBound ******************/
-		/**** md5 signature: 4c1843023f46905f032f30ae4c3c6696 ****/
+		/****** ShapeAnalysis_FreeBoundData::SetFreeBound ******/
+		/****** md5 signature: 4c1843023f46905f032f30ae4c3c6696 ******/
 		%feature("compactdefaultargs") SetFreeBound;
 		%feature("autodoc", "
 Parameters
@@ -2143,8 +2143,8 @@ Sets contour.
 ") SetFreeBound;
 		void SetFreeBound(const TopoDS_Wire & freebound);
 
-		/****************** SetPerimeter ******************/
-		/**** md5 signature: 7108a39a557363155f1a5e4a4e1f31b9 ****/
+		/****** ShapeAnalysis_FreeBoundData::SetPerimeter ******/
+		/****** md5 signature: 7108a39a557363155f1a5e4a4e1f31b9 ******/
 		%feature("compactdefaultargs") SetPerimeter;
 		%feature("autodoc", "
 Parameters
@@ -2161,8 +2161,8 @@ Sets perimeter of the contour.
 ") SetPerimeter;
 		void SetPerimeter(const Standard_Real perimeter);
 
-		/****************** SetRatio ******************/
-		/**** md5 signature: cc4a35be4cdecff3ce638489af66189a ****/
+		/****** ShapeAnalysis_FreeBoundData::SetRatio ******/
+		/****** md5 signature: cc4a35be4cdecff3ce638489af66189a ******/
 		%feature("compactdefaultargs") SetRatio;
 		%feature("autodoc", "
 Parameters
@@ -2179,8 +2179,8 @@ Sets ratio of average length to average width of the contour.
 ") SetRatio;
 		void SetRatio(const Standard_Real ratio);
 
-		/****************** SetWidth ******************/
-		/**** md5 signature: 59e35a19d9637de95c5046e29f33e9bb ****/
+		/****** ShapeAnalysis_FreeBoundData::SetWidth ******/
+		/****** md5 signature: 59e35a19d9637de95c5046e29f33e9bb ******/
 		%feature("compactdefaultargs") SetWidth;
 		%feature("autodoc", "
 Parameters
@@ -2197,8 +2197,8 @@ Sets average width of the contour.
 ") SetWidth;
 		void SetWidth(const Standard_Real width);
 
-		/****************** Width ******************/
-		/**** md5 signature: e40fe8cb5cdcf41ad2ab06ede13e859b ****/
+		/****** ShapeAnalysis_FreeBoundData::Width ******/
+		/****** md5 signature: e40fe8cb5cdcf41ad2ab06ede13e859b ******/
 		%feature("compactdefaultargs") Width;
 		%feature("autodoc", "Return
 -------
@@ -2226,8 +2226,8 @@ Returns average width of the contour.
 *********************************/
 class ShapeAnalysis_FreeBounds {
 	public:
-		/****************** ShapeAnalysis_FreeBounds ******************/
-		/**** md5 signature: 5da92b1e8a436f1cc0d04bb54787a6bf ****/
+		/****** ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds ******/
+		/****** md5 signature: 5da92b1e8a436f1cc0d04bb54787a6bf ******/
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBounds;
 		%feature("autodoc", "Return
 -------
@@ -2239,8 +2239,8 @@ Empty constructor.
 ") ShapeAnalysis_FreeBounds;
 		 ShapeAnalysis_FreeBounds();
 
-		/****************** ShapeAnalysis_FreeBounds ******************/
-		/**** md5 signature: ce4ce708210e4665a3c9bed93e0bf258 ****/
+		/****** ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds ******/
+		/****** md5 signature: ce4ce708210e4665a3c9bed93e0bf258 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBounds;
 		%feature("autodoc", "
 Parameters
@@ -2260,8 +2260,8 @@ Builds forecasting free bounds of the <shape>. <shape> should be a compound of f
 ") ShapeAnalysis_FreeBounds;
 		 ShapeAnalysis_FreeBounds(const TopoDS_Shape & shape, const Standard_Real toler, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_True);
 
-		/****************** ShapeAnalysis_FreeBounds ******************/
-		/**** md5 signature: 1c11ce8aaf8a9c07156a0ca820ea6f78 ****/
+		/****** ShapeAnalysis_FreeBounds::ShapeAnalysis_FreeBounds ******/
+		/****** md5 signature: 1c11ce8aaf8a9c07156a0ca820ea6f78 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBounds;
 		%feature("autodoc", "
 Parameters
@@ -2281,8 +2281,8 @@ Builds actual free bounds of the <shape>. <shape> should be a compound of shells
 ") ShapeAnalysis_FreeBounds;
 		 ShapeAnalysis_FreeBounds(const TopoDS_Shape & shape, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_True, const Standard_Boolean checkinternaledges = Standard_False);
 
-		/****************** DispatchWires ******************/
-		/**** md5 signature: 10c7bcfb1c66932d655ad49617f8df2b ****/
+		/****** ShapeAnalysis_FreeBounds::DispatchWires ******/
+		/****** md5 signature: 10c7bcfb1c66932d655ad49617f8df2b ******/
 		%feature("compactdefaultargs") DispatchWires;
 		%feature("autodoc", "
 Parameters
@@ -2301,8 +2301,8 @@ Dispatches sequence of <wires> into two compounds <closed> for closed wires and 
 ") DispatchWires;
 		static void DispatchWires(const opencascade::handle<TopTools_HSequenceOfShape> & wires, TopoDS_Compound & closed, TopoDS_Compound & open);
 
-		/****************** GetClosedWires ******************/
-		/**** md5 signature: 90f975347145fad77d9189e1b9eb60f3 ****/
+		/****** ShapeAnalysis_FreeBounds::GetClosedWires ******/
+		/****** md5 signature: 90f975347145fad77d9189e1b9eb60f3 ******/
 		%feature("compactdefaultargs") GetClosedWires;
 		%feature("autodoc", "Return
 -------
@@ -2314,8 +2314,8 @@ Returns compound of closed wires out of free edges.
 ") GetClosedWires;
 		const TopoDS_Compound GetClosedWires();
 
-		/****************** GetOpenWires ******************/
-		/**** md5 signature: 593c247336f0173d978a7190a7ee588f ****/
+		/****** ShapeAnalysis_FreeBounds::GetOpenWires ******/
+		/****** md5 signature: 593c247336f0173d978a7190a7ee588f ******/
 		%feature("compactdefaultargs") GetOpenWires;
 		%feature("autodoc", "Return
 -------
@@ -2327,8 +2327,8 @@ Returns compound of open wires out of free edges.
 ") GetOpenWires;
 		const TopoDS_Compound GetOpenWires();
 
-		/****************** SplitWires ******************/
-		/**** md5 signature: 3c46178d0a5bed184b71d617a06437ea ****/
+		/****** ShapeAnalysis_FreeBounds::SplitWires ******/
+		/****** md5 signature: 3c46178d0a5bed184b71d617a06437ea ******/
 		%feature("compactdefaultargs") SplitWires;
 		%feature("autodoc", "
 Parameters
@@ -2385,8 +2385,8 @@ Extracts closed sub-wires out of <wires> and adds them to <closed>, open wires r
 *******************************************/
 class ShapeAnalysis_FreeBoundsProperties {
 	public:
-		/****************** ShapeAnalysis_FreeBoundsProperties ******************/
-		/**** md5 signature: 6902457036bde4e2dfacfed7ad607c36 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties ******/
+		/****** md5 signature: 6902457036bde4e2dfacfed7ad607c36 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBoundsProperties;
 		%feature("autodoc", "Return
 -------
@@ -2398,8 +2398,8 @@ Empty constructor.
 ") ShapeAnalysis_FreeBoundsProperties;
 		 ShapeAnalysis_FreeBoundsProperties();
 
-		/****************** ShapeAnalysis_FreeBoundsProperties ******************/
-		/**** md5 signature: 2371a658568ed2f269ca1d7fed42a9b1 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties ******/
+		/****** md5 signature: 2371a658568ed2f269ca1d7fed42a9b1 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBoundsProperties;
 		%feature("autodoc", "
 Parameters
@@ -2419,8 +2419,8 @@ Creates the object and calls corresponding init. <shape> should be a compound of
 ") ShapeAnalysis_FreeBoundsProperties;
 		 ShapeAnalysis_FreeBoundsProperties(const TopoDS_Shape & shape, const Standard_Real tolerance, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_False);
 
-		/****************** ShapeAnalysis_FreeBoundsProperties ******************/
-		/**** md5 signature: 132b5d79208ca37c5eb1d92d0f663df9 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::ShapeAnalysis_FreeBoundsProperties ******/
+		/****** md5 signature: 132b5d79208ca37c5eb1d92d0f663df9 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_FreeBoundsProperties;
 		%feature("autodoc", "
 Parameters
@@ -2439,8 +2439,8 @@ Creates the object and calls corresponding init. <shape> should be a compound of
 ") ShapeAnalysis_FreeBoundsProperties;
 		 ShapeAnalysis_FreeBoundsProperties(const TopoDS_Shape & shape, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_False);
 
-		/****************** CheckContours ******************/
-		/**** md5 signature: 5bae4be1fe56ada2c3fba18f4955d6ce ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::CheckContours ******/
+		/****** md5 signature: 5bae4be1fe56ada2c3fba18f4955d6ce ******/
 		%feature("compactdefaultargs") CheckContours;
 		%feature("autodoc", "
 Parameters
@@ -2457,8 +2457,8 @@ No available documentation.
 ") CheckContours;
 		Standard_Boolean CheckContours(const Standard_Real prec = 0.0);
 
-		/****************** CheckNotches ******************/
-		/**** md5 signature: e0adbd03dc5e2e35f4a2145fb24837fc ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::CheckNotches ******/
+		/****** md5 signature: e0adbd03dc5e2e35f4a2145fb24837fc ******/
 		%feature("compactdefaultargs") CheckNotches;
 		%feature("autodoc", "
 Parameters
@@ -2475,8 +2475,8 @@ No available documentation.
 ") CheckNotches;
 		Standard_Boolean CheckNotches(const Standard_Real prec = 0.0);
 
-		/****************** CheckNotches ******************/
-		/**** md5 signature: c2af94c18680779c1fe35c641fa9181f ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::CheckNotches ******/
+		/****** md5 signature: c2af94c18680779c1fe35c641fa9181f ******/
 		%feature("compactdefaultargs") CheckNotches;
 		%feature("autodoc", "
 Parameters
@@ -2494,8 +2494,8 @@ No available documentation.
 ") CheckNotches;
 		Standard_Boolean CheckNotches(opencascade::handle<ShapeAnalysis_FreeBoundData> & fbData, const Standard_Real prec = 0.0);
 
-		/****************** CheckNotches ******************/
-		/**** md5 signature: 688bb40fbae25b5be28e2d92ecdf9d58 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::CheckNotches ******/
+		/****** md5 signature: 688bb40fbae25b5be28e2d92ecdf9d58 ******/
 		%feature("compactdefaultargs") CheckNotches;
 		%feature("autodoc", "
 Parameters
@@ -2515,8 +2515,8 @@ No available documentation.
 ") CheckNotches;
 		Standard_Boolean CheckNotches(const TopoDS_Wire & freebound, const Standard_Integer num, TopoDS_Wire & notch, Standard_Real &OutValue, const Standard_Real prec = 0.0);
 
-		/****************** ClosedFreeBound ******************/
-		/**** md5 signature: 448f89098fcf19a7253dcb8d477c56aa ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::ClosedFreeBound ******/
+		/****** md5 signature: 448f89098fcf19a7253dcb8d477c56aa ******/
 		%feature("compactdefaultargs") ClosedFreeBound;
 		%feature("autodoc", "
 Parameters
@@ -2533,8 +2533,8 @@ Returns properties of closed free bound specified by its rank number.
 ") ClosedFreeBound;
 		opencascade::handle<ShapeAnalysis_FreeBoundData> ClosedFreeBound(const Standard_Integer index);
 
-		/****************** ClosedFreeBounds ******************/
-		/**** md5 signature: 51ee12dff9915049e3a7ce415979dd66 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::ClosedFreeBounds ******/
+		/****** md5 signature: 51ee12dff9915049e3a7ce415979dd66 ******/
 		%feature("compactdefaultargs") ClosedFreeBounds;
 		%feature("autodoc", "Return
 -------
@@ -2546,8 +2546,8 @@ Returns all closed free bounds.
 ") ClosedFreeBounds;
 		opencascade::handle<ShapeAnalysis_HSequenceOfFreeBounds> ClosedFreeBounds();
 
-		/****************** DispatchBounds ******************/
-		/**** md5 signature: ff99f9e699cdc42c2fb973a818fde35f ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::DispatchBounds ******/
+		/****** md5 signature: ff99f9e699cdc42c2fb973a818fde35f ******/
 		%feature("compactdefaultargs") DispatchBounds;
 		%feature("autodoc", "Return
 -------
@@ -2559,8 +2559,8 @@ No available documentation.
 ") DispatchBounds;
 		Standard_Boolean DispatchBounds();
 
-		/****************** FillProperties ******************/
-		/**** md5 signature: dc2629081041ef4e84d2550dd2f4168c ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::FillProperties ******/
+		/****** md5 signature: dc2629081041ef4e84d2550dd2f4168c ******/
 		%feature("compactdefaultargs") FillProperties;
 		%feature("autodoc", "
 Parameters
@@ -2578,8 +2578,8 @@ No available documentation.
 ") FillProperties;
 		Standard_Boolean FillProperties(opencascade::handle<ShapeAnalysis_FreeBoundData> & fbData, const Standard_Real prec = 0.0);
 
-		/****************** Init ******************/
-		/**** md5 signature: 4f89df93af73e5b28d51583b204c1cb4 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::Init ******/
+		/****** md5 signature: 4f89df93af73e5b28d51583b204c1cb4 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2599,8 +2599,8 @@ Initializes the object with given parameters. <shape> should be a compound of fa
 ") Init;
 		void Init(const TopoDS_Shape & shape, const Standard_Real tolerance, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_False);
 
-		/****************** Init ******************/
-		/**** md5 signature: 733d5f1e34b89852a44f53b4380084f3 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::Init ******/
+		/****** md5 signature: 733d5f1e34b89852a44f53b4380084f3 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2619,8 +2619,8 @@ Initializes the object with given parameters. <shape> should be a compound of sh
 ") Init;
 		void Init(const TopoDS_Shape & shape, const Standard_Boolean splitclosed = Standard_False, const Standard_Boolean splitopen = Standard_False);
 
-		/****************** IsLoaded ******************/
-		/**** md5 signature: 5ed802f56c3a94dc70391badb380a6ed ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::IsLoaded ******/
+		/****** md5 signature: 5ed802f56c3a94dc70391badb380a6ed ******/
 		%feature("compactdefaultargs") IsLoaded;
 		%feature("autodoc", "Return
 -------
@@ -2632,8 +2632,8 @@ Returns true if shape is loaded.
 ") IsLoaded;
 		Standard_Boolean IsLoaded();
 
-		/****************** NbClosedFreeBounds ******************/
-		/**** md5 signature: 45470f062c41c14a8e9dcdef889185e4 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::NbClosedFreeBounds ******/
+		/****** md5 signature: 45470f062c41c14a8e9dcdef889185e4 ******/
 		%feature("compactdefaultargs") NbClosedFreeBounds;
 		%feature("autodoc", "Return
 -------
@@ -2645,8 +2645,8 @@ Returns number of closed free bounds.
 ") NbClosedFreeBounds;
 		Standard_Integer NbClosedFreeBounds();
 
-		/****************** NbFreeBounds ******************/
-		/**** md5 signature: 7d1a3929ae11c65651a7b6696268014d ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::NbFreeBounds ******/
+		/****** md5 signature: 7d1a3929ae11c65651a7b6696268014d ******/
 		%feature("compactdefaultargs") NbFreeBounds;
 		%feature("autodoc", "Return
 -------
@@ -2658,8 +2658,8 @@ Returns number of free bounds.
 ") NbFreeBounds;
 		Standard_Integer NbFreeBounds();
 
-		/****************** NbOpenFreeBounds ******************/
-		/**** md5 signature: 7c7a0fd03a368d42fc99bc6f8213179b ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::NbOpenFreeBounds ******/
+		/****** md5 signature: 7c7a0fd03a368d42fc99bc6f8213179b ******/
 		%feature("compactdefaultargs") NbOpenFreeBounds;
 		%feature("autodoc", "Return
 -------
@@ -2671,8 +2671,8 @@ Returns number of open free bounds.
 ") NbOpenFreeBounds;
 		Standard_Integer NbOpenFreeBounds();
 
-		/****************** OpenFreeBound ******************/
-		/**** md5 signature: 759aa7338b83d3e58c42dc695040d019 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::OpenFreeBound ******/
+		/****** md5 signature: 759aa7338b83d3e58c42dc695040d019 ******/
 		%feature("compactdefaultargs") OpenFreeBound;
 		%feature("autodoc", "
 Parameters
@@ -2689,8 +2689,8 @@ Returns properties of open free bound specified by its rank number.
 ") OpenFreeBound;
 		opencascade::handle<ShapeAnalysis_FreeBoundData> OpenFreeBound(const Standard_Integer index);
 
-		/****************** OpenFreeBounds ******************/
-		/**** md5 signature: 0c359373fc2a8ebaaaab8ff06e382edb ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::OpenFreeBounds ******/
+		/****** md5 signature: 0c359373fc2a8ebaaaab8ff06e382edb ******/
 		%feature("compactdefaultargs") OpenFreeBounds;
 		%feature("autodoc", "Return
 -------
@@ -2702,8 +2702,8 @@ Returns all open free bounds.
 ") OpenFreeBounds;
 		opencascade::handle<ShapeAnalysis_HSequenceOfFreeBounds> OpenFreeBounds();
 
-		/****************** Perform ******************/
-		/**** md5 signature: dc83e5133003c9f9c7b166df8b5a4192 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::Perform ******/
+		/****** md5 signature: dc83e5133003c9f9c7b166df8b5a4192 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -2715,8 +2715,8 @@ Builds and analyzes free bounds of the shape. first calls shapeanalysis_freeboun
 ") Perform;
 		Standard_Boolean Perform();
 
-		/****************** Shape ******************/
-		/**** md5 signature: 3aece276415d56b8bd9afa5bf371db57 ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::Shape ******/
+		/****** md5 signature: 3aece276415d56b8bd9afa5bf371db57 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -2728,8 +2728,8 @@ Returns shape.
 ") Shape;
 		TopoDS_Shape Shape();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/****** ShapeAnalysis_FreeBoundsProperties::Tolerance ******/
+		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -2755,8 +2755,8 @@ Returns tolerance.
 ***************************/
 class ShapeAnalysis_Geom {
 	public:
-		/****************** NearestPlane ******************/
-		/**** md5 signature: 1abacc2e7c3cb3438e51b9db1f625c35 ****/
+		/****** ShapeAnalysis_Geom::NearestPlane ******/
+		/****** md5 signature: 1abacc2e7c3cb3438e51b9db1f625c35 ******/
 		%feature("compactdefaultargs") NearestPlane;
 		%feature("autodoc", "
 Parameters
@@ -2774,8 +2774,8 @@ Builds a plane out of a set of points in array returns in <dmax> the maximal dis
 ") NearestPlane;
 		static Standard_Boolean NearestPlane(const TColgp_Array1OfPnt & Pnts, gp_Pln & aPln, Standard_Real &OutValue);
 
-		/****************** PositionTrsf ******************/
-		/**** md5 signature: 2a3f3a6e4f8ae606dbb46116193e80b1 ****/
+		/****** ShapeAnalysis_Geom::PositionTrsf ******/
+		/****** md5 signature: 2a3f3a6e4f8ae606dbb46116193e80b1 ******/
 		%feature("compactdefaultargs") PositionTrsf;
 		%feature("autodoc", "
 Parameters
@@ -2809,8 +2809,8 @@ Builds transformation object out of matrix. matrix must be 3 x 4. unit is used a
 ************************************/
 class ShapeAnalysis_ShapeContents {
 	public:
-		/****************** ShapeAnalysis_ShapeContents ******************/
-		/**** md5 signature: 37f686aff70d09482f8278b2e5ede2ed ****/
+		/****** ShapeAnalysis_ShapeContents::ShapeAnalysis_ShapeContents ******/
+		/****** md5 signature: 37f686aff70d09482f8278b2e5ede2ed ******/
 		%feature("compactdefaultargs") ShapeAnalysis_ShapeContents;
 		%feature("autodoc", "Return
 -------
@@ -2822,8 +2822,8 @@ Initialize fields and call clearflags().
 ") ShapeAnalysis_ShapeContents;
 		 ShapeAnalysis_ShapeContents();
 
-		/****************** BigSplineSec ******************/
-		/**** md5 signature: 54d972c865f7c7aa668cde4b02c0832a ****/
+		/****** ShapeAnalysis_ShapeContents::BigSplineSec ******/
+		/****** md5 signature: 54d972c865f7c7aa668cde4b02c0832a ******/
 		%feature("compactdefaultargs") BigSplineSec;
 		%feature("autodoc", "Return
 -------
@@ -2835,8 +2835,8 @@ No available documentation.
 ") BigSplineSec;
 		const opencascade::handle<TopTools_HSequenceOfShape> & BigSplineSec();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** ShapeAnalysis_ShapeContents::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -2848,8 +2848,8 @@ Clears all accumulated statistics.
 ") Clear;
 		void Clear();
 
-		/****************** ClearFlags ******************/
-		/**** md5 signature: 85d2349db84c8892f957d96fa3a7b729 ****/
+		/****** ShapeAnalysis_ShapeContents::ClearFlags ******/
+		/****** md5 signature: 85d2349db84c8892f957d96fa3a7b729 ******/
 		%feature("compactdefaultargs") ClearFlags;
 		%feature("autodoc", "Return
 -------
@@ -2861,8 +2861,8 @@ Clears all flags.
 ") ClearFlags;
 		void ClearFlags();
 
-		/****************** IndirectSec ******************/
-		/**** md5 signature: 4fcb801915109654e44e027f9cf7dd5e ****/
+		/****** ShapeAnalysis_ShapeContents::IndirectSec ******/
+		/****** md5 signature: 4fcb801915109654e44e027f9cf7dd5e ******/
 		%feature("compactdefaultargs") IndirectSec;
 		%feature("autodoc", "Return
 -------
@@ -2965,8 +2965,8 @@ No available documentation.
             $self->ModifyTrimmed3dMode()=value;
             }
         };
-		/****************** NbBSplibeSurf ******************/
-		/**** md5 signature: a158c4118473734c13a9c47a1a1d0965 ****/
+		/****** ShapeAnalysis_ShapeContents::NbBSplibeSurf ******/
+		/****** md5 signature: a158c4118473734c13a9c47a1a1d0965 ******/
 		%feature("compactdefaultargs") NbBSplibeSurf;
 		%feature("autodoc", "Return
 -------
@@ -2978,8 +2978,8 @@ No available documentation.
 ") NbBSplibeSurf;
 		Standard_Integer NbBSplibeSurf();
 
-		/****************** NbBezierSurf ******************/
-		/**** md5 signature: f230d6bd348270373890003db3887aa7 ****/
+		/****** ShapeAnalysis_ShapeContents::NbBezierSurf ******/
+		/****** md5 signature: f230d6bd348270373890003db3887aa7 ******/
 		%feature("compactdefaultargs") NbBezierSurf;
 		%feature("autodoc", "Return
 -------
@@ -2991,8 +2991,8 @@ No available documentation.
 ") NbBezierSurf;
 		Standard_Integer NbBezierSurf();
 
-		/****************** NbBigSplines ******************/
-		/**** md5 signature: b902850b4b063fb8100fe14f9ec25d99 ****/
+		/****** ShapeAnalysis_ShapeContents::NbBigSplines ******/
+		/****** md5 signature: b902850b4b063fb8100fe14f9ec25d99 ******/
 		%feature("compactdefaultargs") NbBigSplines;
 		%feature("autodoc", "Return
 -------
@@ -3004,8 +3004,8 @@ No available documentation.
 ") NbBigSplines;
 		Standard_Integer NbBigSplines();
 
-		/****************** NbC0Curves ******************/
-		/**** md5 signature: eb9f63c0673c781381a6e9316402f984 ****/
+		/****** ShapeAnalysis_ShapeContents::NbC0Curves ******/
+		/****** md5 signature: eb9f63c0673c781381a6e9316402f984 ******/
 		%feature("compactdefaultargs") NbC0Curves;
 		%feature("autodoc", "Return
 -------
@@ -3017,8 +3017,8 @@ No available documentation.
 ") NbC0Curves;
 		Standard_Integer NbC0Curves();
 
-		/****************** NbC0Surfaces ******************/
-		/**** md5 signature: 02810c9805ebe930183428b77fee41da ****/
+		/****** ShapeAnalysis_ShapeContents::NbC0Surfaces ******/
+		/****** md5 signature: 02810c9805ebe930183428b77fee41da ******/
 		%feature("compactdefaultargs") NbC0Surfaces;
 		%feature("autodoc", "Return
 -------
@@ -3030,8 +3030,8 @@ No available documentation.
 ") NbC0Surfaces;
 		Standard_Integer NbC0Surfaces();
 
-		/****************** NbEdges ******************/
-		/**** md5 signature: 31924aa1f5b2c848f6f0ca402e060038 ****/
+		/****** ShapeAnalysis_ShapeContents::NbEdges ******/
+		/****** md5 signature: 31924aa1f5b2c848f6f0ca402e060038 ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -3043,8 +3043,8 @@ No available documentation.
 ") NbEdges;
 		Standard_Integer NbEdges();
 
-		/****************** NbFaceWithSevWires ******************/
-		/**** md5 signature: 775f8eb64ab3f3c9a3a49c47fe16047b ****/
+		/****** ShapeAnalysis_ShapeContents::NbFaceWithSevWires ******/
+		/****** md5 signature: 775f8eb64ab3f3c9a3a49c47fe16047b ******/
 		%feature("compactdefaultargs") NbFaceWithSevWires;
 		%feature("autodoc", "Return
 -------
@@ -3056,8 +3056,8 @@ No available documentation.
 ") NbFaceWithSevWires;
 		Standard_Integer NbFaceWithSevWires();
 
-		/****************** NbFaces ******************/
-		/**** md5 signature: d13128d0cc6393b9d04e2d25833180b2 ****/
+		/****** ShapeAnalysis_ShapeContents::NbFaces ******/
+		/****** md5 signature: d13128d0cc6393b9d04e2d25833180b2 ******/
 		%feature("compactdefaultargs") NbFaces;
 		%feature("autodoc", "Return
 -------
@@ -3069,8 +3069,8 @@ No available documentation.
 ") NbFaces;
 		Standard_Integer NbFaces();
 
-		/****************** NbFreeEdges ******************/
-		/**** md5 signature: aee040571e4e5e4bf01f4afeb43b0c31 ****/
+		/****** ShapeAnalysis_ShapeContents::NbFreeEdges ******/
+		/****** md5 signature: aee040571e4e5e4bf01f4afeb43b0c31 ******/
 		%feature("compactdefaultargs") NbFreeEdges;
 		%feature("autodoc", "Return
 -------
@@ -3082,8 +3082,8 @@ No available documentation.
 ") NbFreeEdges;
 		Standard_Integer NbFreeEdges();
 
-		/****************** NbFreeFaces ******************/
-		/**** md5 signature: c0112838d3d1e64094a2d567b7b46be2 ****/
+		/****** ShapeAnalysis_ShapeContents::NbFreeFaces ******/
+		/****** md5 signature: c0112838d3d1e64094a2d567b7b46be2 ******/
 		%feature("compactdefaultargs") NbFreeFaces;
 		%feature("autodoc", "Return
 -------
@@ -3095,8 +3095,8 @@ No available documentation.
 ") NbFreeFaces;
 		Standard_Integer NbFreeFaces();
 
-		/****************** NbFreeWires ******************/
-		/**** md5 signature: c92f135ee9df08cc79c9ef24cefda860 ****/
+		/****** ShapeAnalysis_ShapeContents::NbFreeWires ******/
+		/****** md5 signature: c92f135ee9df08cc79c9ef24cefda860 ******/
 		%feature("compactdefaultargs") NbFreeWires;
 		%feature("autodoc", "Return
 -------
@@ -3108,8 +3108,8 @@ No available documentation.
 ") NbFreeWires;
 		Standard_Integer NbFreeWires();
 
-		/****************** NbIndirectSurf ******************/
-		/**** md5 signature: cce29bb337068b157451319ee82ba077 ****/
+		/****** ShapeAnalysis_ShapeContents::NbIndirectSurf ******/
+		/****** md5 signature: cce29bb337068b157451319ee82ba077 ******/
 		%feature("compactdefaultargs") NbIndirectSurf;
 		%feature("autodoc", "Return
 -------
@@ -3121,8 +3121,8 @@ No available documentation.
 ") NbIndirectSurf;
 		Standard_Integer NbIndirectSurf();
 
-		/****************** NbNoPCurve ******************/
-		/**** md5 signature: dd9ab53719003ad1fff0d19d4ec2a383 ****/
+		/****** ShapeAnalysis_ShapeContents::NbNoPCurve ******/
+		/****** md5 signature: dd9ab53719003ad1fff0d19d4ec2a383 ******/
 		%feature("compactdefaultargs") NbNoPCurve;
 		%feature("autodoc", "Return
 -------
@@ -3134,8 +3134,8 @@ No available documentation.
 ") NbNoPCurve;
 		Standard_Integer NbNoPCurve();
 
-		/****************** NbOffsetCurves ******************/
-		/**** md5 signature: 967fb9d18380f7c2bcc8319df6e8df84 ****/
+		/****** ShapeAnalysis_ShapeContents::NbOffsetCurves ******/
+		/****** md5 signature: 967fb9d18380f7c2bcc8319df6e8df84 ******/
 		%feature("compactdefaultargs") NbOffsetCurves;
 		%feature("autodoc", "Return
 -------
@@ -3147,8 +3147,8 @@ No available documentation.
 ") NbOffsetCurves;
 		Standard_Integer NbOffsetCurves();
 
-		/****************** NbOffsetSurf ******************/
-		/**** md5 signature: e57363e69044105891867110d2345e39 ****/
+		/****** ShapeAnalysis_ShapeContents::NbOffsetSurf ******/
+		/****** md5 signature: e57363e69044105891867110d2345e39 ******/
 		%feature("compactdefaultargs") NbOffsetSurf;
 		%feature("autodoc", "Return
 -------
@@ -3160,8 +3160,8 @@ No available documentation.
 ") NbOffsetSurf;
 		Standard_Integer NbOffsetSurf();
 
-		/****************** NbSharedEdges ******************/
-		/**** md5 signature: c61367063a15b3c10c7d747eb798d342 ****/
+		/****** ShapeAnalysis_ShapeContents::NbSharedEdges ******/
+		/****** md5 signature: c61367063a15b3c10c7d747eb798d342 ******/
 		%feature("compactdefaultargs") NbSharedEdges;
 		%feature("autodoc", "Return
 -------
@@ -3173,8 +3173,8 @@ No available documentation.
 ") NbSharedEdges;
 		Standard_Integer NbSharedEdges();
 
-		/****************** NbSharedFaces ******************/
-		/**** md5 signature: 933c219efa9e6b7b0da7310630ac52f9 ****/
+		/****** ShapeAnalysis_ShapeContents::NbSharedFaces ******/
+		/****** md5 signature: 933c219efa9e6b7b0da7310630ac52f9 ******/
 		%feature("compactdefaultargs") NbSharedFaces;
 		%feature("autodoc", "Return
 -------
@@ -3186,8 +3186,8 @@ No available documentation.
 ") NbSharedFaces;
 		Standard_Integer NbSharedFaces();
 
-		/****************** NbSharedFreeEdges ******************/
-		/**** md5 signature: 8ca35fad5a9eb10427cf93e1412d3b7c ****/
+		/****** ShapeAnalysis_ShapeContents::NbSharedFreeEdges ******/
+		/****** md5 signature: 8ca35fad5a9eb10427cf93e1412d3b7c ******/
 		%feature("compactdefaultargs") NbSharedFreeEdges;
 		%feature("autodoc", "Return
 -------
@@ -3199,8 +3199,8 @@ No available documentation.
 ") NbSharedFreeEdges;
 		Standard_Integer NbSharedFreeEdges();
 
-		/****************** NbSharedFreeWires ******************/
-		/**** md5 signature: 20452abf53c6cf2997c540ef9f6240f8 ****/
+		/****** ShapeAnalysis_ShapeContents::NbSharedFreeWires ******/
+		/****** md5 signature: 20452abf53c6cf2997c540ef9f6240f8 ******/
 		%feature("compactdefaultargs") NbSharedFreeWires;
 		%feature("autodoc", "Return
 -------
@@ -3212,8 +3212,8 @@ No available documentation.
 ") NbSharedFreeWires;
 		Standard_Integer NbSharedFreeWires();
 
-		/****************** NbSharedShells ******************/
-		/**** md5 signature: 21799d026c4b5244949caca935eb9973 ****/
+		/****** ShapeAnalysis_ShapeContents::NbSharedShells ******/
+		/****** md5 signature: 21799d026c4b5244949caca935eb9973 ******/
 		%feature("compactdefaultargs") NbSharedShells;
 		%feature("autodoc", "Return
 -------
@@ -3225,8 +3225,8 @@ No available documentation.
 ") NbSharedShells;
 		Standard_Integer NbSharedShells();
 
-		/****************** NbSharedSolids ******************/
-		/**** md5 signature: e889313fe5c4a42d2e3a95ea02050236 ****/
+		/****** ShapeAnalysis_ShapeContents::NbSharedSolids ******/
+		/****** md5 signature: e889313fe5c4a42d2e3a95ea02050236 ******/
 		%feature("compactdefaultargs") NbSharedSolids;
 		%feature("autodoc", "Return
 -------
@@ -3238,8 +3238,8 @@ No available documentation.
 ") NbSharedSolids;
 		Standard_Integer NbSharedSolids();
 
-		/****************** NbSharedVertices ******************/
-		/**** md5 signature: 372916a5a5f969d74b8ce75741bf9c8b ****/
+		/****** ShapeAnalysis_ShapeContents::NbSharedVertices ******/
+		/****** md5 signature: 372916a5a5f969d74b8ce75741bf9c8b ******/
 		%feature("compactdefaultargs") NbSharedVertices;
 		%feature("autodoc", "Return
 -------
@@ -3251,8 +3251,8 @@ No available documentation.
 ") NbSharedVertices;
 		Standard_Integer NbSharedVertices();
 
-		/****************** NbSharedWires ******************/
-		/**** md5 signature: 45baeee356041349c927f30542e85ac6 ****/
+		/****** ShapeAnalysis_ShapeContents::NbSharedWires ******/
+		/****** md5 signature: 45baeee356041349c927f30542e85ac6 ******/
 		%feature("compactdefaultargs") NbSharedWires;
 		%feature("autodoc", "Return
 -------
@@ -3264,8 +3264,8 @@ No available documentation.
 ") NbSharedWires;
 		Standard_Integer NbSharedWires();
 
-		/****************** NbShells ******************/
-		/**** md5 signature: 90611081501be215cf608e5c6dbae82b ****/
+		/****** ShapeAnalysis_ShapeContents::NbShells ******/
+		/****** md5 signature: 90611081501be215cf608e5c6dbae82b ******/
 		%feature("compactdefaultargs") NbShells;
 		%feature("autodoc", "Return
 -------
@@ -3277,8 +3277,8 @@ No available documentation.
 ") NbShells;
 		Standard_Integer NbShells();
 
-		/****************** NbSolids ******************/
-		/**** md5 signature: e487e0540ab54972941cb8ff851eb69d ****/
+		/****** ShapeAnalysis_ShapeContents::NbSolids ******/
+		/****** md5 signature: e487e0540ab54972941cb8ff851eb69d ******/
 		%feature("compactdefaultargs") NbSolids;
 		%feature("autodoc", "Return
 -------
@@ -3290,8 +3290,8 @@ No available documentation.
 ") NbSolids;
 		Standard_Integer NbSolids();
 
-		/****************** NbSolidsWithVoids ******************/
-		/**** md5 signature: 061a635d0c847222bbd6ab14fadeb7dd ****/
+		/****** ShapeAnalysis_ShapeContents::NbSolidsWithVoids ******/
+		/****** md5 signature: 061a635d0c847222bbd6ab14fadeb7dd ******/
 		%feature("compactdefaultargs") NbSolidsWithVoids;
 		%feature("autodoc", "Return
 -------
@@ -3303,8 +3303,8 @@ No available documentation.
 ") NbSolidsWithVoids;
 		Standard_Integer NbSolidsWithVoids();
 
-		/****************** NbTrimSurf ******************/
-		/**** md5 signature: 3efdf188aeaea9dcfc5fd783da55a4bd ****/
+		/****** ShapeAnalysis_ShapeContents::NbTrimSurf ******/
+		/****** md5 signature: 3efdf188aeaea9dcfc5fd783da55a4bd ******/
 		%feature("compactdefaultargs") NbTrimSurf;
 		%feature("autodoc", "Return
 -------
@@ -3316,8 +3316,8 @@ No available documentation.
 ") NbTrimSurf;
 		Standard_Integer NbTrimSurf();
 
-		/****************** NbTrimmedCurve2d ******************/
-		/**** md5 signature: ecad0e4f50e5e6221cc5208bcc031620 ****/
+		/****** ShapeAnalysis_ShapeContents::NbTrimmedCurve2d ******/
+		/****** md5 signature: ecad0e4f50e5e6221cc5208bcc031620 ******/
 		%feature("compactdefaultargs") NbTrimmedCurve2d;
 		%feature("autodoc", "Return
 -------
@@ -3329,8 +3329,8 @@ No available documentation.
 ") NbTrimmedCurve2d;
 		Standard_Integer NbTrimmedCurve2d();
 
-		/****************** NbTrimmedCurve3d ******************/
-		/**** md5 signature: ab37744f32810f0b89cc4c34952add89 ****/
+		/****** ShapeAnalysis_ShapeContents::NbTrimmedCurve3d ******/
+		/****** md5 signature: ab37744f32810f0b89cc4c34952add89 ******/
 		%feature("compactdefaultargs") NbTrimmedCurve3d;
 		%feature("autodoc", "Return
 -------
@@ -3342,8 +3342,8 @@ No available documentation.
 ") NbTrimmedCurve3d;
 		Standard_Integer NbTrimmedCurve3d();
 
-		/****************** NbVertices ******************/
-		/**** md5 signature: fdb7d948cb5ffe9c7da397697d4125c9 ****/
+		/****** ShapeAnalysis_ShapeContents::NbVertices ******/
+		/****** md5 signature: fdb7d948cb5ffe9c7da397697d4125c9 ******/
 		%feature("compactdefaultargs") NbVertices;
 		%feature("autodoc", "Return
 -------
@@ -3355,8 +3355,8 @@ No available documentation.
 ") NbVertices;
 		Standard_Integer NbVertices();
 
-		/****************** NbWireWithSevSeams ******************/
-		/**** md5 signature: 980097a25054a46469c805a1232fc68b ****/
+		/****** ShapeAnalysis_ShapeContents::NbWireWithSevSeams ******/
+		/****** md5 signature: 980097a25054a46469c805a1232fc68b ******/
 		%feature("compactdefaultargs") NbWireWithSevSeams;
 		%feature("autodoc", "Return
 -------
@@ -3368,8 +3368,8 @@ No available documentation.
 ") NbWireWithSevSeams;
 		Standard_Integer NbWireWithSevSeams();
 
-		/****************** NbWireWitnSeam ******************/
-		/**** md5 signature: 4c637a5e0b69a5fbb251f366da6bc6f2 ****/
+		/****** ShapeAnalysis_ShapeContents::NbWireWitnSeam ******/
+		/****** md5 signature: 4c637a5e0b69a5fbb251f366da6bc6f2 ******/
 		%feature("compactdefaultargs") NbWireWitnSeam;
 		%feature("autodoc", "Return
 -------
@@ -3381,8 +3381,8 @@ No available documentation.
 ") NbWireWitnSeam;
 		Standard_Integer NbWireWitnSeam();
 
-		/****************** NbWires ******************/
-		/**** md5 signature: bce549b9d0543bc5dacda7fa2e69e8be ****/
+		/****** ShapeAnalysis_ShapeContents::NbWires ******/
+		/****** md5 signature: bce549b9d0543bc5dacda7fa2e69e8be ******/
 		%feature("compactdefaultargs") NbWires;
 		%feature("autodoc", "Return
 -------
@@ -3394,8 +3394,8 @@ No available documentation.
 ") NbWires;
 		Standard_Integer NbWires();
 
-		/****************** OffsetCurveSec ******************/
-		/**** md5 signature: eb1ffd42724130745142fbafb6d6f429 ****/
+		/****** ShapeAnalysis_ShapeContents::OffsetCurveSec ******/
+		/****** md5 signature: eb1ffd42724130745142fbafb6d6f429 ******/
 		%feature("compactdefaultargs") OffsetCurveSec;
 		%feature("autodoc", "Return
 -------
@@ -3407,8 +3407,8 @@ No available documentation.
 ") OffsetCurveSec;
 		const opencascade::handle<TopTools_HSequenceOfShape> & OffsetCurveSec();
 
-		/****************** OffsetSurfaceSec ******************/
-		/**** md5 signature: 9dea0424704ec339188ce6a0460530ef ****/
+		/****** ShapeAnalysis_ShapeContents::OffsetSurfaceSec ******/
+		/****** md5 signature: 9dea0424704ec339188ce6a0460530ef ******/
 		%feature("compactdefaultargs") OffsetSurfaceSec;
 		%feature("autodoc", "Return
 -------
@@ -3420,8 +3420,8 @@ No available documentation.
 ") OffsetSurfaceSec;
 		const opencascade::handle<TopTools_HSequenceOfShape> & OffsetSurfaceSec();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 16888c81df64e609e09767552e6bb5d4 ****/
+		/****** ShapeAnalysis_ShapeContents::Perform ******/
+		/****** md5 signature: 16888c81df64e609e09767552e6bb5d4 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -3438,8 +3438,8 @@ Counts quantities of sun-shapes in shape and stores sub-shapes according to flag
 ") Perform;
 		void Perform(const TopoDS_Shape & shape);
 
-		/****************** Trimmed2dSec ******************/
-		/**** md5 signature: 693d57b465052fb2bdb308b10040bd27 ****/
+		/****** ShapeAnalysis_ShapeContents::Trimmed2dSec ******/
+		/****** md5 signature: 693d57b465052fb2bdb308b10040bd27 ******/
 		%feature("compactdefaultargs") Trimmed2dSec;
 		%feature("autodoc", "Return
 -------
@@ -3451,8 +3451,8 @@ No available documentation.
 ") Trimmed2dSec;
 		const opencascade::handle<TopTools_HSequenceOfShape> & Trimmed2dSec();
 
-		/****************** Trimmed3dSec ******************/
-		/**** md5 signature: e81b2c686b92f9cab25b8105b7b0deaf ****/
+		/****** ShapeAnalysis_ShapeContents::Trimmed3dSec ******/
+		/****** md5 signature: e81b2c686b92f9cab25b8105b7b0deaf ******/
 		%feature("compactdefaultargs") Trimmed3dSec;
 		%feature("autodoc", "Return
 -------
@@ -3478,8 +3478,8 @@ No available documentation.
 *************************************/
 class ShapeAnalysis_ShapeTolerance {
 	public:
-		/****************** ShapeAnalysis_ShapeTolerance ******************/
-		/**** md5 signature: 752fdf574bf9608126622d6475fe8772 ****/
+		/****** ShapeAnalysis_ShapeTolerance::ShapeAnalysis_ShapeTolerance ******/
+		/****** md5 signature: 752fdf574bf9608126622d6475fe8772 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_ShapeTolerance;
 		%feature("autodoc", "Return
 -------
@@ -3491,8 +3491,8 @@ Empty constructor.
 ") ShapeAnalysis_ShapeTolerance;
 		 ShapeAnalysis_ShapeTolerance();
 
-		/****************** AddTolerance ******************/
-		/**** md5 signature: c795a520a700e7a235b1f6e3cfa644eb ****/
+		/****** ShapeAnalysis_ShapeTolerance::AddTolerance ******/
+		/****** md5 signature: c795a520a700e7a235b1f6e3cfa644eb ******/
 		%feature("compactdefaultargs") AddTolerance;
 		%feature("autodoc", "
 Parameters
@@ -3510,8 +3510,8 @@ Adds data on new shape to compute cumulated tolerance (prepares three computatio
 ") AddTolerance;
 		void AddTolerance(const TopoDS_Shape & shape, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
 
-		/****************** GlobalTolerance ******************/
-		/**** md5 signature: 115c6d7ad9f1f8f4b668991936ba059b ****/
+		/****** ShapeAnalysis_ShapeTolerance::GlobalTolerance ******/
+		/****** md5 signature: 115c6d7ad9f1f8f4b668991936ba059b ******/
 		%feature("compactdefaultargs") GlobalTolerance;
 		%feature("autodoc", "
 Parameters
@@ -3528,8 +3528,8 @@ Returns the computed tolerance according to the <mode> <mode> = 0: average <mode
 ") GlobalTolerance;
 		Standard_Real GlobalTolerance(const Standard_Integer mode);
 
-		/****************** InTolerance ******************/
-		/**** md5 signature: 34f3d0dc44ad0b857efc153f6da3a07f ****/
+		/****** ShapeAnalysis_ShapeTolerance::InTolerance ******/
+		/****** md5 signature: 34f3d0dc44ad0b857efc153f6da3a07f ******/
 		%feature("compactdefaultargs") InTolerance;
 		%feature("autodoc", "
 Parameters
@@ -3549,8 +3549,8 @@ Determines which shapes have a tolerance within a given interval <type> is inter
 ") InTolerance;
 		opencascade::handle<TopTools_HSequenceOfShape> InTolerance(const TopoDS_Shape & shape, const Standard_Real valmin, const Standard_Real valmax, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
 
-		/****************** InitTolerance ******************/
-		/**** md5 signature: b0b32e3190ada2249e730ea00f6d78db ****/
+		/****** ShapeAnalysis_ShapeTolerance::InitTolerance ******/
+		/****** md5 signature: b0b32e3190ada2249e730ea00f6d78db ******/
 		%feature("compactdefaultargs") InitTolerance;
 		%feature("autodoc", "Return
 -------
@@ -3562,8 +3562,8 @@ Initializes computation of cumulated tolerance.
 ") InitTolerance;
 		void InitTolerance();
 
-		/****************** OverTolerance ******************/
-		/**** md5 signature: c7797ddd43e323f4bfc02b03651ea6eb ****/
+		/****** ShapeAnalysis_ShapeTolerance::OverTolerance ******/
+		/****** md5 signature: c7797ddd43e323f4bfc02b03651ea6eb ******/
 		%feature("compactdefaultargs") OverTolerance;
 		%feature("autodoc", "
 Parameters
@@ -3582,8 +3582,8 @@ Determines which shapes have a tolerance over the given value <type> is interpre
 ") OverTolerance;
 		opencascade::handle<TopTools_HSequenceOfShape> OverTolerance(const TopoDS_Shape & shape, const Standard_Real value, const TopAbs_ShapeEnum type = TopAbs_SHAPE);
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 4fba2d270084aa728e36b5461151c988 ****/
+		/****** ShapeAnalysis_ShapeTolerance::Tolerance ******/
+		/****** md5 signature: 4fba2d270084aa728e36b5461151c988 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -3616,8 +3616,8 @@ Determines a tolerance from the ones stored in a shape remark: calls inittoleran
 ****************************/
 class ShapeAnalysis_Shell {
 	public:
-		/****************** ShapeAnalysis_Shell ******************/
-		/**** md5 signature: 030764f0c6c6127fdde3ea04e3e06130 ****/
+		/****** ShapeAnalysis_Shell::ShapeAnalysis_Shell ******/
+		/****** md5 signature: 030764f0c6c6127fdde3ea04e3e06130 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_Shell;
 		%feature("autodoc", "Return
 -------
@@ -3629,8 +3629,8 @@ Empty constructor.
 ") ShapeAnalysis_Shell;
 		 ShapeAnalysis_Shell();
 
-		/****************** BadEdges ******************/
-		/**** md5 signature: 271874605067d1f8e996561e77de6c92 ****/
+		/****** ShapeAnalysis_Shell::BadEdges ******/
+		/****** md5 signature: 271874605067d1f8e996561e77de6c92 ******/
 		%feature("compactdefaultargs") BadEdges;
 		%feature("autodoc", "Return
 -------
@@ -3642,8 +3642,8 @@ Returns the list of bad edges as a compound it is empty (not null) if no edge ar
 ") BadEdges;
 		TopoDS_Compound BadEdges();
 
-		/****************** CheckOrientedShells ******************/
-		/**** md5 signature: 3972e6d2240bfe7162bfdcaaf99283d5 ****/
+		/****** ShapeAnalysis_Shell::CheckOrientedShells ******/
+		/****** md5 signature: 3972e6d2240bfe7162bfdcaaf99283d5 ******/
 		%feature("compactdefaultargs") CheckOrientedShells;
 		%feature("autodoc", "
 Parameters
@@ -3662,8 +3662,8 @@ Checks if shells fulfill orientation condition, i.e. if each edge is, either pre
 ") CheckOrientedShells;
 		Standard_Boolean CheckOrientedShells(const TopoDS_Shape & shape, const Standard_Boolean alsofree = Standard_False, const Standard_Boolean checkinternaledges = Standard_False);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** ShapeAnalysis_Shell::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -3675,8 +3675,8 @@ Clears data about loaded shells and performed checks.
 ") Clear;
 		void Clear();
 
-		/****************** FreeEdges ******************/
-		/**** md5 signature: 0cd90c82c4861535bb5e6f08392933ea ****/
+		/****** ShapeAnalysis_Shell::FreeEdges ******/
+		/****** md5 signature: 0cd90c82c4861535bb5e6f08392933ea ******/
 		%feature("compactdefaultargs") FreeEdges;
 		%feature("autodoc", "Return
 -------
@@ -3688,8 +3688,8 @@ Returns the list of free (not connected) edges as a compound it is empty (not nu
 ") FreeEdges;
 		TopoDS_Compound FreeEdges();
 
-		/****************** HasBadEdges ******************/
-		/**** md5 signature: 1fdc9d123b53c4be47feca0d4b89c645 ****/
+		/****** ShapeAnalysis_Shell::HasBadEdges ******/
+		/****** md5 signature: 1fdc9d123b53c4be47feca0d4b89c645 ******/
 		%feature("compactdefaultargs") HasBadEdges;
 		%feature("autodoc", "Return
 -------
@@ -3701,8 +3701,8 @@ Tells if at least one edge is recorded as bad.
 ") HasBadEdges;
 		Standard_Boolean HasBadEdges();
 
-		/****************** HasConnectedEdges ******************/
-		/**** md5 signature: 373f92fac7e5286dd20af827cf765c81 ****/
+		/****** ShapeAnalysis_Shell::HasConnectedEdges ******/
+		/****** md5 signature: 373f92fac7e5286dd20af827cf765c81 ******/
 		%feature("compactdefaultargs") HasConnectedEdges;
 		%feature("autodoc", "Return
 -------
@@ -3714,8 +3714,8 @@ Tells if at least one edge is connected (shared twice or more).
 ") HasConnectedEdges;
 		Standard_Boolean HasConnectedEdges();
 
-		/****************** HasFreeEdges ******************/
-		/**** md5 signature: 453c0e08bc8a20438ea1fa8a96a1d03d ****/
+		/****** ShapeAnalysis_Shell::HasFreeEdges ******/
+		/****** md5 signature: 453c0e08bc8a20438ea1fa8a96a1d03d ******/
 		%feature("compactdefaultargs") HasFreeEdges;
 		%feature("autodoc", "Return
 -------
@@ -3727,8 +3727,8 @@ Tells if at least one edge is recorded as free (not connected).
 ") HasFreeEdges;
 		Standard_Boolean HasFreeEdges();
 
-		/****************** IsLoaded ******************/
-		/**** md5 signature: 09f9f0a8c6a9692ece2c431867ab4a4b ****/
+		/****** ShapeAnalysis_Shell::IsLoaded ******/
+		/****** md5 signature: 09f9f0a8c6a9692ece2c431867ab4a4b ******/
 		%feature("compactdefaultargs") IsLoaded;
 		%feature("autodoc", "
 Parameters
@@ -3745,8 +3745,8 @@ Tells if a shape is loaded (only shells are checked).
 ") IsLoaded;
 		Standard_Boolean IsLoaded(const TopoDS_Shape & shape);
 
-		/****************** LoadShells ******************/
-		/**** md5 signature: 2024b788d50a942b98ddddf711a74af9 ****/
+		/****** ShapeAnalysis_Shell::LoadShells ******/
+		/****** md5 signature: 2024b788d50a942b98ddddf711a74af9 ******/
 		%feature("compactdefaultargs") LoadShells;
 		%feature("autodoc", "
 Parameters
@@ -3763,8 +3763,8 @@ Adds shells contained in the <shape> to the list of loaded shells.
 ") LoadShells;
 		void LoadShells(const TopoDS_Shape & shape);
 
-		/****************** Loaded ******************/
-		/**** md5 signature: f983b60bdef3285fe766a30d6d4f39bf ****/
+		/****** ShapeAnalysis_Shell::Loaded ******/
+		/****** md5 signature: f983b60bdef3285fe766a30d6d4f39bf ******/
 		%feature("compactdefaultargs") Loaded;
 		%feature("autodoc", "
 Parameters
@@ -3781,8 +3781,8 @@ Returns a loaded shape specified by its rank number. returns null shape if <num>
 ") Loaded;
 		TopoDS_Shape Loaded(const Standard_Integer num);
 
-		/****************** NbLoaded ******************/
-		/**** md5 signature: e3f6e4c2ee1e6268545981474925e902 ****/
+		/****** ShapeAnalysis_Shell::NbLoaded ******/
+		/****** md5 signature: e3f6e4c2ee1e6268545981474925e902 ******/
 		%feature("compactdefaultargs") NbLoaded;
 		%feature("autodoc", "Return
 -------
@@ -3808,8 +3808,8 @@ Returns the actual number of loaded shapes (i.e. shells).
 ******************************/
 class ShapeAnalysis_Surface : public Standard_Transient {
 	public:
-		/****************** ShapeAnalysis_Surface ******************/
-		/**** md5 signature: 21960ac3090a4d57a0c39ee76c52d600 ****/
+		/****** ShapeAnalysis_Surface::ShapeAnalysis_Surface ******/
+		/****** md5 signature: 21960ac3090a4d57a0c39ee76c52d600 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_Surface;
 		%feature("autodoc", "
 Parameters
@@ -3826,8 +3826,8 @@ Creates an analyzer object on the basis of existing surface.
 ") ShapeAnalysis_Surface;
 		 ShapeAnalysis_Surface(const opencascade::handle<Geom_Surface> & S);
 
-		/****************** Adaptor3d ******************/
-		/**** md5 signature: 4a7d7b95e745d7a630f736bb0273d63e ****/
+		/****** ShapeAnalysis_Surface::Adaptor3d ******/
+		/****** md5 signature: 4a7d7b95e745d7a630f736bb0273d63e ******/
 		%feature("compactdefaultargs") Adaptor3d;
 		%feature("autodoc", "Return
 -------
@@ -3839,8 +3839,8 @@ Returns the adaptor. creates it if not yet done.
 ") Adaptor3d;
 		const opencascade::handle<GeomAdaptor_Surface> & Adaptor3d();
 
-		/****************** Bounds ******************/
-		/**** md5 signature: 76f4d0acb9d784f5c349713b7a3066ed ****/
+		/****** ShapeAnalysis_Surface::Bounds ******/
+		/****** md5 signature: 76f4d0acb9d784f5c349713b7a3066ed ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -3859,8 +3859,8 @@ Returns the bounds of the surface (from bounds from surface, but buffered).
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ComputeBoundIsos ******************/
-		/**** md5 signature: 3dcfe49429fdfd803732ee03b652e6e1 ****/
+		/****** ShapeAnalysis_Surface::ComputeBoundIsos ******/
+		/****** md5 signature: 3dcfe49429fdfd803732ee03b652e6e1 ******/
 		%feature("compactdefaultargs") ComputeBoundIsos;
 		%feature("autodoc", "Return
 -------
@@ -3872,8 +3872,8 @@ Computes bound isos (protected against exceptions).
 ") ComputeBoundIsos;
 		void ComputeBoundIsos();
 
-		/****************** DegeneratedValues ******************/
-		/**** md5 signature: 57e334455cc553bf915f92b359503cb8 ****/
+		/****** ShapeAnalysis_Surface::DegeneratedValues ******/
+		/****** md5 signature: 57e334455cc553bf915f92b359503cb8 ******/
 		%feature("compactdefaultargs") DegeneratedValues;
 		%feature("autodoc", "
 Parameters
@@ -3895,8 +3895,8 @@ Returns true if there is at least one surface iso-line which is considered as de
 ") DegeneratedValues;
 		Standard_Boolean DegeneratedValues(const gp_Pnt & P3d, const Standard_Real preci, gp_Pnt2d & firstP2d, gp_Pnt2d & lastP2d, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean forward = Standard_True);
 
-		/****************** Gap ******************/
-		/**** md5 signature: 57884ecbe8d7b5b092e706848a3678db ****/
+		/****** ShapeAnalysis_Surface::Gap ******/
+		/****** md5 signature: 57884ecbe8d7b5b092e706848a3678db ******/
 		%feature("compactdefaultargs") Gap;
 		%feature("autodoc", "Return
 -------
@@ -3908,8 +3908,8 @@ Returns 3d distance found by one of the following methods. isdegenerated, degene
 ") Gap;
 		Standard_Real Gap();
 
-		/****************** GetBoxUF ******************/
-		/**** md5 signature: c9dc3f4e9f51cd84d29c0f0f9a257ab0 ****/
+		/****** ShapeAnalysis_Surface::GetBoxUF ******/
+		/****** md5 signature: c9dc3f4e9f51cd84d29c0f0f9a257ab0 ******/
 		%feature("compactdefaultargs") GetBoxUF;
 		%feature("autodoc", "Return
 -------
@@ -3921,8 +3921,8 @@ No available documentation.
 ") GetBoxUF;
 		const Bnd_Box & GetBoxUF();
 
-		/****************** GetBoxUL ******************/
-		/**** md5 signature: d318da69dd8f77566946e59fbbc6953c ****/
+		/****** ShapeAnalysis_Surface::GetBoxUL ******/
+		/****** md5 signature: d318da69dd8f77566946e59fbbc6953c ******/
 		%feature("compactdefaultargs") GetBoxUL;
 		%feature("autodoc", "Return
 -------
@@ -3934,8 +3934,8 @@ No available documentation.
 ") GetBoxUL;
 		const Bnd_Box & GetBoxUL();
 
-		/****************** GetBoxVF ******************/
-		/**** md5 signature: ca11982da2a9d9bf73b8fa28c6b275c7 ****/
+		/****** ShapeAnalysis_Surface::GetBoxVF ******/
+		/****** md5 signature: ca11982da2a9d9bf73b8fa28c6b275c7 ******/
 		%feature("compactdefaultargs") GetBoxVF;
 		%feature("autodoc", "Return
 -------
@@ -3947,8 +3947,8 @@ No available documentation.
 ") GetBoxVF;
 		const Bnd_Box & GetBoxVF();
 
-		/****************** GetBoxVL ******************/
-		/**** md5 signature: d91c1f96f4c164c0878a8c290feb374d ****/
+		/****** ShapeAnalysis_Surface::GetBoxVL ******/
+		/****** md5 signature: d91c1f96f4c164c0878a8c290feb374d ******/
 		%feature("compactdefaultargs") GetBoxVL;
 		%feature("autodoc", "Return
 -------
@@ -3960,8 +3960,8 @@ No available documentation.
 ") GetBoxVL;
 		const Bnd_Box & GetBoxVL();
 
-		/****************** HasSingularities ******************/
-		/**** md5 signature: 9ce7b9e8c08f14f920b7503e4fd1ae36 ****/
+		/****** ShapeAnalysis_Surface::HasSingularities ******/
+		/****** md5 signature: 9ce7b9e8c08f14f920b7503e4fd1ae36 ******/
 		%feature("compactdefaultargs") HasSingularities;
 		%feature("autodoc", "
 Parameters
@@ -3978,8 +3978,8 @@ Returns true if the surface has singularities for the given precision (i.e. if t
 ") HasSingularities;
 		Standard_Boolean HasSingularities(const Standard_Real preci);
 
-		/****************** Init ******************/
-		/**** md5 signature: ae778074c5c355f705c26cfe08f002f6 ****/
+		/****** ShapeAnalysis_Surface::Init ******/
+		/****** md5 signature: ae778074c5c355f705c26cfe08f002f6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3996,8 +3996,8 @@ Loads existing surface.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S);
 
-		/****************** Init ******************/
-		/**** md5 signature: da66c8f34aff2bbbe192e6bb10dec122 ****/
+		/****** ShapeAnalysis_Surface::Init ******/
+		/****** md5 signature: da66c8f34aff2bbbe192e6bb10dec122 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4014,8 +4014,8 @@ Reads all the data from another surface, without recomputing.
 ") Init;
 		void Init(const opencascade::handle<ShapeAnalysis_Surface> & other);
 
-		/****************** IsDegenerated ******************/
-		/**** md5 signature: 2e83fa02bb73008ad42dcf354f3309e0 ****/
+		/****** ShapeAnalysis_Surface::IsDegenerated ******/
+		/****** md5 signature: 2e83fa02bb73008ad42dcf354f3309e0 ******/
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -4033,8 +4033,8 @@ Returns true if there is at least one surface boundary which is considered as de
 ") IsDegenerated;
 		Standard_Boolean IsDegenerated(const gp_Pnt & P3d, const Standard_Real preci);
 
-		/****************** IsDegenerated ******************/
-		/**** md5 signature: 73b532d2945208b748a3d0135fc0559d ****/
+		/****** ShapeAnalysis_Surface::IsDegenerated ******/
+		/****** md5 signature: 73b532d2945208b748a3d0135fc0559d ******/
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -4054,8 +4054,8 @@ Returns true if straight pcurve going from point p2d1 to p2d2 is degenerate, i.e
 ") IsDegenerated;
 		Standard_Boolean IsDegenerated(const gp_Pnt2d & p2d1, const gp_Pnt2d & p2d2, const Standard_Real tol, const Standard_Real ratio);
 
-		/****************** IsUClosed ******************/
-		/**** md5 signature: c40ec6bf32caddb2bddec999a738f122 ****/
+		/****** ShapeAnalysis_Surface::IsUClosed ******/
+		/****** md5 signature: c40ec6bf32caddb2bddec999a738f122 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "
 Parameters
@@ -4072,8 +4072,8 @@ Tells if the surface is spatially closed in u with given precision. if <preci> <
 ") IsUClosed;
 		Standard_Boolean IsUClosed(const Standard_Real preci = -1);
 
-		/****************** IsVClosed ******************/
-		/**** md5 signature: f6d9fabf565ea50ba091c941e92de75d ****/
+		/****** ShapeAnalysis_Surface::IsVClosed ******/
+		/****** md5 signature: f6d9fabf565ea50ba091c941e92de75d ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "
 Parameters
@@ -4090,8 +4090,8 @@ Tells if the surface is spatially closed in v with given precision. if <preci> <
 ") IsVClosed;
 		Standard_Boolean IsVClosed(const Standard_Real preci = -1);
 
-		/****************** NbSingularities ******************/
-		/**** md5 signature: 7d7076a67b99b706ffbc6b95cf1eb7d6 ****/
+		/****** ShapeAnalysis_Surface::NbSingularities ******/
+		/****** md5 signature: 7d7076a67b99b706ffbc6b95cf1eb7d6 ******/
 		%feature("compactdefaultargs") NbSingularities;
 		%feature("autodoc", "
 Parameters
@@ -4108,8 +4108,8 @@ Returns the number of singularities for the given precision (i.e. number of surf
 ") NbSingularities;
 		Standard_Integer NbSingularities(const Standard_Real preci);
 
-		/****************** NextValueOfUV ******************/
-		/**** md5 signature: 8f75d76c37899f095d2b498ceb77fdd1 ****/
+		/****** ShapeAnalysis_Surface::NextValueOfUV ******/
+		/****** md5 signature: 8f75d76c37899f095d2b498ceb77fdd1 ******/
 		%feature("compactdefaultargs") NextValueOfUV;
 		%feature("autodoc", "
 Parameters
@@ -4129,8 +4129,8 @@ Projects a point p3d on the surface. does the same thing as valueofuv but tries 
 ") NextValueOfUV;
 		gp_Pnt2d NextValueOfUV(const gp_Pnt2d & p2dPrev, const gp_Pnt & P3D, const Standard_Real preci, const Standard_Real maxpreci = -1.0);
 
-		/****************** ProjectDegenerated ******************/
-		/**** md5 signature: 68d10f9a8bc6625bfc577f28b5ce9a6e ****/
+		/****** ShapeAnalysis_Surface::ProjectDegenerated ******/
+		/****** md5 signature: 68d10f9a8bc6625bfc577f28b5ce9a6e ******/
 		%feature("compactdefaultargs") ProjectDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -4150,8 +4150,8 @@ Projects a point <p3d> on a singularity by computing one of the coordinates of p
 ") ProjectDegenerated;
 		Standard_Boolean ProjectDegenerated(const gp_Pnt & P3d, const Standard_Real preci, const gp_Pnt2d & neighbour, gp_Pnt2d & result);
 
-		/****************** ProjectDegenerated ******************/
-		/**** md5 signature: 3f70c3d1eada5fb87f6635ce6fb33825 ****/
+		/****** ShapeAnalysis_Surface::ProjectDegenerated ******/
+		/****** md5 signature: 3f70c3d1eada5fb87f6635ce6fb33825 ******/
 		%feature("compactdefaultargs") ProjectDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -4172,8 +4172,8 @@ Checks points at the beginning (direct is true) or end (direct is false) of arra
 ") ProjectDegenerated;
 		Standard_Boolean ProjectDegenerated(const Standard_Integer nbrPnt, const TColgp_SequenceOfPnt & points, TColgp_SequenceOfPnt2d & pnt2d, const Standard_Real preci, const Standard_Boolean direct);
 
-		/****************** SetDomain ******************/
-		/**** md5 signature: 242f6d4e5af20c56462421b031aafd66 ****/
+		/****** ShapeAnalysis_Surface::SetDomain ******/
+		/****** md5 signature: 242f6d4e5af20c56462421b031aafd66 ******/
 		%feature("compactdefaultargs") SetDomain;
 		%feature("autodoc", "
 Parameters
@@ -4193,8 +4193,8 @@ No available documentation.
 ") SetDomain;
 		void SetDomain(const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2);
 
-		/****************** Singularity ******************/
-		/**** md5 signature: 3da019b1f8fced06e45e0430b0c745b0 ****/
+		/****** ShapeAnalysis_Surface::Singularity ******/
+		/****** md5 signature: 3da019b1f8fced06e45e0430b0c745b0 ******/
 		%feature("compactdefaultargs") Singularity;
 		%feature("autodoc", "
 Parameters
@@ -4217,8 +4217,8 @@ Returns the characteristics of the singularity specified by its rank number <num
 ") Singularity;
 		Standard_Boolean Singularity(const Standard_Integer num, Standard_Real &OutValue, gp_Pnt & P3d, gp_Pnt2d & firstP2d, gp_Pnt2d & lastP2d, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue);
 
-		/****************** Surface ******************/
-		/**** md5 signature: a469e18cbceeb351572a461f96ff0f4d ****/
+		/****** ShapeAnalysis_Surface::Surface ******/
+		/****** md5 signature: a469e18cbceeb351572a461f96ff0f4d ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -4230,8 +4230,8 @@ Returns a surface being analyzed.
 ") Surface;
 		const opencascade::handle<Geom_Surface> & Surface();
 
-		/****************** TrueAdaptor3d ******************/
-		/**** md5 signature: 83b3798d6206a15a81c91320fc25472f ****/
+		/****** ShapeAnalysis_Surface::TrueAdaptor3d ******/
+		/****** md5 signature: 83b3798d6206a15a81c91320fc25472f ******/
 		%feature("compactdefaultargs") TrueAdaptor3d;
 		%feature("autodoc", "Return
 -------
@@ -4243,8 +4243,8 @@ Returns the adaptor (may be null if method adaptor() was not called).
 ") TrueAdaptor3d;
 		const opencascade::handle<GeomAdaptor_Surface> & TrueAdaptor3d();
 
-		/****************** UCloseVal ******************/
-		/**** md5 signature: 6b05bece8dc5d04e6e44b77fe1c48cb5 ****/
+		/****** ShapeAnalysis_Surface::UCloseVal ******/
+		/****** md5 signature: 6b05bece8dc5d04e6e44b77fe1c48cb5 ******/
 		%feature("compactdefaultargs") UCloseVal;
 		%feature("autodoc", "Return
 -------
@@ -4256,8 +4256,8 @@ Returns minimum value to consider the surface as u-closed.
 ") UCloseVal;
 		Standard_Real UCloseVal();
 
-		/****************** UIso ******************/
-		/**** md5 signature: c1c342549cd981b000bd1d4af5482ca4 ****/
+		/****** ShapeAnalysis_Surface::UIso ******/
+		/****** md5 signature: c1c342549cd981b000bd1d4af5482ca4 ******/
 		%feature("compactdefaultargs") UIso;
 		%feature("autodoc", "
 Parameters
@@ -4274,8 +4274,8 @@ Returns a u-iso. null if not possible or failed remark: bound isos are buffered.
 ") UIso;
 		opencascade::handle<Geom_Curve> UIso(const Standard_Real U);
 
-		/****************** UVFromIso ******************/
-		/**** md5 signature: e2de878450fa82115c49dd434fcfc093 ****/
+		/****** ShapeAnalysis_Surface::UVFromIso ******/
+		/****** md5 signature: e2de878450fa82115c49dd434fcfc093 ******/
 		%feature("compactdefaultargs") UVFromIso;
 		%feature("autodoc", "
 Parameters
@@ -4294,8 +4294,8 @@ Tries a refinement of an already computed couple (u,v) by using projecting 3d po
 ") UVFromIso;
 		Standard_Real UVFromIso(const gp_Pnt & P3D, const Standard_Real preci, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** VCloseVal ******************/
-		/**** md5 signature: b8919a074acc63a2b5cc3c96ab56f22f ****/
+		/****** ShapeAnalysis_Surface::VCloseVal ******/
+		/****** md5 signature: b8919a074acc63a2b5cc3c96ab56f22f ******/
 		%feature("compactdefaultargs") VCloseVal;
 		%feature("autodoc", "Return
 -------
@@ -4307,8 +4307,8 @@ Returns minimum value to consider the surface as v-closed.
 ") VCloseVal;
 		Standard_Real VCloseVal();
 
-		/****************** VIso ******************/
-		/**** md5 signature: ebe921330c7ad9c072516f16a826029a ****/
+		/****** ShapeAnalysis_Surface::VIso ******/
+		/****** md5 signature: ebe921330c7ad9c072516f16a826029a ******/
 		%feature("compactdefaultargs") VIso;
 		%feature("autodoc", "
 Parameters
@@ -4325,8 +4325,8 @@ Returns a v-iso. null if not possible or failed remark: bound isos are buffered.
 ") VIso;
 		opencascade::handle<Geom_Curve> VIso(const Standard_Real V);
 
-		/****************** Value ******************/
-		/**** md5 signature: cbce9954c3f8356bc5ff7daec7cc3d73 ****/
+		/****** ShapeAnalysis_Surface::Value ******/
+		/****** md5 signature: cbce9954c3f8356bc5ff7daec7cc3d73 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -4344,8 +4344,8 @@ Returns a 3d point specified by parameters in surface parametrical space.
 ") Value;
 		gp_Pnt Value(const Standard_Real u, const Standard_Real v);
 
-		/****************** Value ******************/
-		/**** md5 signature: 0fe24f801581318aa93b8fb433b0846a ****/
+		/****** ShapeAnalysis_Surface::Value ******/
+		/****** md5 signature: 0fe24f801581318aa93b8fb433b0846a ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -4362,8 +4362,8 @@ Returns a 3d point specified by a point in surface parametrical space.
 ") Value;
 		gp_Pnt Value(const gp_Pnt2d & p2d);
 
-		/****************** ValueOfUV ******************/
-		/**** md5 signature: 30c2501f79ba8097c2637171078cf0f6 ****/
+		/****** ShapeAnalysis_Surface::ValueOfUV ******/
+		/****** md5 signature: 30c2501f79ba8097c2637171078cf0f6 ******/
 		%feature("compactdefaultargs") ValueOfUV;
 		%feature("autodoc", "
 Parameters
@@ -4397,8 +4397,8 @@ Computes the parameters in the surface parametrical space of 3d point. the resul
 *****************************************/
 class ShapeAnalysis_TransferParameters : public Standard_Transient {
 	public:
-		/****************** ShapeAnalysis_TransferParameters ******************/
-		/**** md5 signature: e478d03b43439148c5c85e4933eadb2d ****/
+		/****** ShapeAnalysis_TransferParameters::ShapeAnalysis_TransferParameters ******/
+		/****** md5 signature: e478d03b43439148c5c85e4933eadb2d ******/
 		%feature("compactdefaultargs") ShapeAnalysis_TransferParameters;
 		%feature("autodoc", "Return
 -------
@@ -4410,8 +4410,8 @@ Creates empty tool with myshift = 0 and myscale = 1.
 ") ShapeAnalysis_TransferParameters;
 		 ShapeAnalysis_TransferParameters();
 
-		/****************** ShapeAnalysis_TransferParameters ******************/
-		/**** md5 signature: 35134c0d6d2075be25ca3b61e29d1a6b ****/
+		/****** ShapeAnalysis_TransferParameters::ShapeAnalysis_TransferParameters ******/
+		/****** md5 signature: 35134c0d6d2075be25ca3b61e29d1a6b ******/
 		%feature("compactdefaultargs") ShapeAnalysis_TransferParameters;
 		%feature("autodoc", "
 Parameters
@@ -4429,8 +4429,8 @@ Creates a tool and initializes it with edge and face.
 ") ShapeAnalysis_TransferParameters;
 		 ShapeAnalysis_TransferParameters(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** Init ******************/
-		/**** md5 signature: ef2c331746b4da93a143b60fab0ba8d9 ****/
+		/****** ShapeAnalysis_TransferParameters::Init ******/
+		/****** md5 signature: ef2c331746b4da93a143b60fab0ba8d9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4448,8 +4448,8 @@ Initialize a tool with edge and face.
 ") Init;
 		virtual void Init(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** IsSameRange ******************/
-		/**** md5 signature: 99648b02a9860bd70f64a9d5370c88dc ****/
+		/****** ShapeAnalysis_TransferParameters::IsSameRange ******/
+		/****** md5 signature: 99648b02a9860bd70f64a9d5370c88dc ******/
 		%feature("compactdefaultargs") IsSameRange;
 		%feature("autodoc", "Return
 -------
@@ -4461,8 +4461,8 @@ Returns true if 3d curve of edge and pcurve are samerange (in default implementa
 ") IsSameRange;
 		virtual Standard_Boolean IsSameRange();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 569a38113f890abeb573d5f03eff3bee ****/
+		/****** ShapeAnalysis_TransferParameters::Perform ******/
+		/****** md5 signature: 569a38113f890abeb573d5f03eff3bee ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4480,8 +4480,8 @@ Transfers parameters given by sequence params from 3d curve to pcurve (if to2d i
 ") Perform;
 		virtual opencascade::handle<TColStd_HSequenceOfReal> Perform(const opencascade::handle<TColStd_HSequenceOfReal> & Params, const Standard_Boolean To2d);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 219bbdcc68f6f7c5ccf614efead2dc54 ****/
+		/****** ShapeAnalysis_TransferParameters::Perform ******/
+		/****** md5 signature: 219bbdcc68f6f7c5ccf614efead2dc54 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4499,8 +4499,8 @@ Transfers parameter given by sequence params from 3d curve to pcurve (if to2d is
 ") Perform;
 		virtual Standard_Real Perform(const Standard_Real Param, const Standard_Boolean To2d);
 
-		/****************** SetMaxTolerance ******************/
-		/**** md5 signature: ab801fe49011ef1da17c304e1a6984da ****/
+		/****** ShapeAnalysis_TransferParameters::SetMaxTolerance ******/
+		/****** md5 signature: ab801fe49011ef1da17c304e1a6984da ******/
 		%feature("compactdefaultargs") SetMaxTolerance;
 		%feature("autodoc", "
 Parameters
@@ -4517,8 +4517,8 @@ Sets maximal tolerance to use linear recomputation of parameters.
 ") SetMaxTolerance;
 		void SetMaxTolerance(const Standard_Real maxtol);
 
-		/****************** TransferRange ******************/
-		/**** md5 signature: 48dc87038b2cb3597a7bacd486d3949a ****/
+		/****** ShapeAnalysis_TransferParameters::TransferRange ******/
+		/****** md5 signature: 48dc87038b2cb3597a7bacd486d3949a ******/
 		%feature("compactdefaultargs") TransferRange;
 		%feature("autodoc", "
 Parameters
@@ -4554,8 +4554,8 @@ Recomputes range of curves from newedge. if is2d equals true parameters are reco
 ***************************/
 class ShapeAnalysis_Wire : public Standard_Transient {
 	public:
-		/****************** ShapeAnalysis_Wire ******************/
-		/**** md5 signature: cce979af71799d0af9492d8d05e74c7f ****/
+		/****** ShapeAnalysis_Wire::ShapeAnalysis_Wire ******/
+		/****** md5 signature: cce979af71799d0af9492d8d05e74c7f ******/
 		%feature("compactdefaultargs") ShapeAnalysis_Wire;
 		%feature("autodoc", "Return
 -------
@@ -4567,8 +4567,8 @@ Empty constructor.
 ") ShapeAnalysis_Wire;
 		 ShapeAnalysis_Wire();
 
-		/****************** ShapeAnalysis_Wire ******************/
-		/**** md5 signature: ffbc3647ff20aed51e29b0e68f1b9b48 ****/
+		/****** ShapeAnalysis_Wire::ShapeAnalysis_Wire ******/
+		/****** md5 signature: ffbc3647ff20aed51e29b0e68f1b9b48 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_Wire;
 		%feature("autodoc", "
 Parameters
@@ -4587,8 +4587,8 @@ Creates object with standard topods_wire, face and precision.
 ") ShapeAnalysis_Wire;
 		 ShapeAnalysis_Wire(const TopoDS_Wire & wire, const TopoDS_Face & face, const Standard_Real precision);
 
-		/****************** ShapeAnalysis_Wire ******************/
-		/**** md5 signature: dae85a89d668b4972f6f80ec74417e75 ****/
+		/****** ShapeAnalysis_Wire::ShapeAnalysis_Wire ******/
+		/****** md5 signature: dae85a89d668b4972f6f80ec74417e75 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_Wire;
 		%feature("autodoc", "
 Parameters
@@ -4607,8 +4607,8 @@ Creates the object with wiredata object, face and precision.
 ") ShapeAnalysis_Wire;
 		 ShapeAnalysis_Wire(const opencascade::handle<ShapeExtend_WireData> & sbwd, const TopoDS_Face & face, const Standard_Real precision);
 
-		/****************** CheckClosed ******************/
-		/**** md5 signature: c049a36b9fb9e1ba653b29bb7648cddf ****/
+		/****** ShapeAnalysis_Wire::CheckClosed ******/
+		/****** md5 signature: c049a36b9fb9e1ba653b29bb7648cddf ******/
 		%feature("compactdefaultargs") CheckClosed;
 		%feature("autodoc", "
 Parameters
@@ -4625,8 +4625,8 @@ Checks if wire is closed, performs checkconnected, checkdegenerated and checklac
 ") CheckClosed;
 		Standard_Boolean CheckClosed(const Standard_Real prec = 0.0);
 
-		/****************** CheckConnected ******************/
-		/**** md5 signature: af19f6a4d210c6631cae8c4163489f90 ****/
+		/****** ShapeAnalysis_Wire::CheckConnected ******/
+		/****** md5 signature: af19f6a4d210c6631cae8c4163489f90 ******/
 		%feature("compactdefaultargs") CheckConnected;
 		%feature("autodoc", "
 Parameters
@@ -4643,8 +4643,8 @@ Calls to checkconnected for each edge returns: true if at least one pair of disc
 ") CheckConnected;
 		Standard_Boolean CheckConnected(const Standard_Real prec = 0.0);
 
-		/****************** CheckConnected ******************/
-		/**** md5 signature: abaeb0271f4e2c19ab97ef3799de3bfd ****/
+		/****** ShapeAnalysis_Wire::CheckConnected ******/
+		/****** md5 signature: abaeb0271f4e2c19ab97ef3799de3bfd ******/
 		%feature("compactdefaultargs") CheckConnected;
 		%feature("autodoc", "
 Parameters
@@ -4662,8 +4662,8 @@ Checks connected edges (num-th and preceding). tests with starting preci from <s
 ") CheckConnected;
 		Standard_Boolean CheckConnected(const Standard_Integer num, const Standard_Real prec = 0.0);
 
-		/****************** CheckCurveGap ******************/
-		/**** md5 signature: 5fa6f13569f3b55f1b6a53093f41a4fc ****/
+		/****** ShapeAnalysis_Wire::CheckCurveGap ******/
+		/****** md5 signature: 5fa6f13569f3b55f1b6a53093f41a4fc ******/
 		%feature("compactdefaultargs") CheckCurveGap;
 		%feature("autodoc", "
 Parameters
@@ -4680,8 +4680,8 @@ Checks gap between points on 3d curve and points on surface generated by pcurve 
 ") CheckCurveGap;
 		Standard_Boolean CheckCurveGap(const Standard_Integer num = 0);
 
-		/****************** CheckCurveGaps ******************/
-		/**** md5 signature: 868735f423ab1e8b899d12d32c2e2d3c ****/
+		/****** ShapeAnalysis_Wire::CheckCurveGaps ******/
+		/****** md5 signature: 868735f423ab1e8b899d12d32c2e2d3c ******/
 		%feature("compactdefaultargs") CheckCurveGaps;
 		%feature("autodoc", "Return
 -------
@@ -4693,8 +4693,8 @@ No available documentation.
 ") CheckCurveGaps;
 		Standard_Boolean CheckCurveGaps();
 
-		/****************** CheckDegenerated ******************/
-		/**** md5 signature: 7bfd145b6f006c99f2e59a712b4f8356 ****/
+		/****** ShapeAnalysis_Wire::CheckDegenerated ******/
+		/****** md5 signature: 7bfd145b6f006c99f2e59a712b4f8356 ******/
 		%feature("compactdefaultargs") CheckDegenerated;
 		%feature("autodoc", "Return
 -------
@@ -4706,8 +4706,8 @@ Calls to checkdegenerated for each edge returns: true if at least one incorrect 
 ") CheckDegenerated;
 		Standard_Boolean CheckDegenerated();
 
-		/****************** CheckDegenerated ******************/
-		/**** md5 signature: 1fa1510ebdf1a3475b2c4f751616ed2a ****/
+		/****** ShapeAnalysis_Wire::CheckDegenerated ******/
+		/****** md5 signature: 1fa1510ebdf1a3475b2c4f751616ed2a ******/
 		%feature("compactdefaultargs") CheckDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -4726,8 +4726,8 @@ Checks for degenerated edge between two adjacent ones. fills parameters dgnr1 an
 ") CheckDegenerated;
 		Standard_Boolean CheckDegenerated(const Standard_Integer num, gp_Pnt2d & dgnr1, gp_Pnt2d & dgnr2);
 
-		/****************** CheckDegenerated ******************/
-		/**** md5 signature: 3b6ebe420548c955a4d9aa0875ccbfd4 ****/
+		/****** ShapeAnalysis_Wire::CheckDegenerated ******/
+		/****** md5 signature: 3b6ebe420548c955a4d9aa0875ccbfd4 ******/
 		%feature("compactdefaultargs") CheckDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -4744,8 +4744,8 @@ Checks for degenerated edge between two adjacent ones. remark: calls previous fu
 ") CheckDegenerated;
 		Standard_Boolean CheckDegenerated(const Standard_Integer num);
 
-		/****************** CheckEdgeCurves ******************/
-		/**** md5 signature: f765d450e50275b806856816ca07a0ce ****/
+		/****** ShapeAnalysis_Wire::CheckEdgeCurves ******/
+		/****** md5 signature: f765d450e50275b806856816ca07a0ce ******/
 		%feature("compactdefaultargs") CheckEdgeCurves;
 		%feature("autodoc", "Return
 -------
@@ -4757,8 +4757,8 @@ Checks edges geometry (consistency of 2d and 3d senses, adjasment of curves to t
 ") CheckEdgeCurves;
 		Standard_Boolean CheckEdgeCurves();
 
-		/****************** CheckGap2d ******************/
-		/**** md5 signature: 24f4a5e0b2b4a9af5acc632ecdd068d3 ****/
+		/****** ShapeAnalysis_Wire::CheckGap2d ******/
+		/****** md5 signature: 24f4a5e0b2b4a9af5acc632ecdd068d3 ******/
 		%feature("compactdefaultargs") CheckGap2d;
 		%feature("autodoc", "
 Parameters
@@ -4775,8 +4775,8 @@ Checks gap between edges in 2d (pcurves). checks the distance between ends of pc
 ") CheckGap2d;
 		Standard_Boolean CheckGap2d(const Standard_Integer num = 0);
 
-		/****************** CheckGap3d ******************/
-		/**** md5 signature: ffb83a77fe32afc90de4b17a854712b9 ****/
+		/****** ShapeAnalysis_Wire::CheckGap3d ******/
+		/****** md5 signature: ffb83a77fe32afc90de4b17a854712b9 ******/
 		%feature("compactdefaultargs") CheckGap3d;
 		%feature("autodoc", "
 Parameters
@@ -4793,8 +4793,8 @@ Checks gap between edges in 3d (3d curves). checks the distance between ends of 
 ") CheckGap3d;
 		Standard_Boolean CheckGap3d(const Standard_Integer num = 0);
 
-		/****************** CheckGaps2d ******************/
-		/**** md5 signature: 8410cfe06b9be03db82c22b21ff5c6c3 ****/
+		/****** ShapeAnalysis_Wire::CheckGaps2d ******/
+		/****** md5 signature: 8410cfe06b9be03db82c22b21ff5c6c3 ******/
 		%feature("compactdefaultargs") CheckGaps2d;
 		%feature("autodoc", "Return
 -------
@@ -4806,8 +4806,8 @@ No available documentation.
 ") CheckGaps2d;
 		Standard_Boolean CheckGaps2d();
 
-		/****************** CheckGaps3d ******************/
-		/**** md5 signature: a0d70b63c85bc72ac2abc05d68972a68 ****/
+		/****** ShapeAnalysis_Wire::CheckGaps3d ******/
+		/****** md5 signature: a0d70b63c85bc72ac2abc05d68972a68 ******/
 		%feature("compactdefaultargs") CheckGaps3d;
 		%feature("autodoc", "Return
 -------
@@ -4819,8 +4819,8 @@ No available documentation.
 ") CheckGaps3d;
 		Standard_Boolean CheckGaps3d();
 
-		/****************** CheckIntersectingEdges ******************/
-		/**** md5 signature: fddcf1c5324c54e2c483221ecc83134d ****/
+		/****** ShapeAnalysis_Wire::CheckIntersectingEdges ******/
+		/****** md5 signature: fddcf1c5324c54e2c483221ecc83134d ******/
 		%feature("compactdefaultargs") CheckIntersectingEdges;
 		%feature("autodoc", "
 Parameters
@@ -4840,8 +4840,8 @@ Checks two adjacent edges for intersecting. intersection is reported only if int
 ") CheckIntersectingEdges;
 		Standard_Boolean CheckIntersectingEdges(const Standard_Integer num, IntRes2d_SequenceOfIntersectionPoint & points2d, TColgp_SequenceOfPnt & points3d, TColStd_SequenceOfReal & errors);
 
-		/****************** CheckIntersectingEdges ******************/
-		/**** md5 signature: f391a41b1a78af6ec3a8c8d3350a1ce0 ****/
+		/****** ShapeAnalysis_Wire::CheckIntersectingEdges ******/
+		/****** md5 signature: f391a41b1a78af6ec3a8c8d3350a1ce0 ******/
 		%feature("compactdefaultargs") CheckIntersectingEdges;
 		%feature("autodoc", "
 Parameters
@@ -4858,8 +4858,8 @@ Checks two adjacent edges for intersecting. remark: calls the previous method st
 ") CheckIntersectingEdges;
 		Standard_Boolean CheckIntersectingEdges(const Standard_Integer num);
 
-		/****************** CheckIntersectingEdges ******************/
-		/**** md5 signature: 7f7647c46034ee073b7fc12bde95bba7 ****/
+		/****** ShapeAnalysis_Wire::CheckIntersectingEdges ******/
+		/****** md5 signature: 7f7647c46034ee073b7fc12bde95bba7 ******/
 		%feature("compactdefaultargs") CheckIntersectingEdges;
 		%feature("autodoc", "
 Parameters
@@ -4880,8 +4880,8 @@ Checks i-th and j-th edges for intersecting. remark: see the previous method for
 ") CheckIntersectingEdges;
 		Standard_Boolean CheckIntersectingEdges(const Standard_Integer num1, const Standard_Integer num2, IntRes2d_SequenceOfIntersectionPoint & points2d, TColgp_SequenceOfPnt & points3d, TColStd_SequenceOfReal & errors);
 
-		/****************** CheckIntersectingEdges ******************/
-		/**** md5 signature: f20740aaee100f7e77b31f2e64a64c53 ****/
+		/****** ShapeAnalysis_Wire::CheckIntersectingEdges ******/
+		/****** md5 signature: f20740aaee100f7e77b31f2e64a64c53 ******/
 		%feature("compactdefaultargs") CheckIntersectingEdges;
 		%feature("autodoc", "
 Parameters
@@ -4899,8 +4899,8 @@ Checks i-th and j-th edges for intersecting. remark: calls previous method. stat
 ") CheckIntersectingEdges;
 		Standard_Boolean CheckIntersectingEdges(const Standard_Integer num1, const Standard_Integer num2);
 
-		/****************** CheckLacking ******************/
-		/**** md5 signature: b9a150e87c8ddbaeb71fedfce81e0e0a ****/
+		/****** ShapeAnalysis_Wire::CheckLacking ******/
+		/****** md5 signature: b9a150e87c8ddbaeb71fedfce81e0e0a ******/
 		%feature("compactdefaultargs") CheckLacking;
 		%feature("autodoc", "Return
 -------
@@ -4912,8 +4912,8 @@ Calls to checklacking for each edge returns: true if at least one lacking edge w
 ") CheckLacking;
 		Standard_Boolean CheckLacking();
 
-		/****************** CheckLacking ******************/
-		/**** md5 signature: 46fb470311870e747acd5d1ce85dca8a ****/
+		/****** ShapeAnalysis_Wire::CheckLacking ******/
+		/****** md5 signature: 46fb470311870e747acd5d1ce85dca8a ******/
 		%feature("compactdefaultargs") CheckLacking;
 		%feature("autodoc", "
 Parameters
@@ -4933,8 +4933,8 @@ Checks if there is a gap in 2d between edges, not comprised by the tolerance of 
 ") CheckLacking;
 		Standard_Boolean CheckLacking(const Standard_Integer num, const Standard_Real Tolerance, gp_Pnt2d & p2d1, gp_Pnt2d & p2d2);
 
-		/****************** CheckLacking ******************/
-		/**** md5 signature: 2206a679277c4649255f484456730ef6 ****/
+		/****** ShapeAnalysis_Wire::CheckLacking ******/
+		/****** md5 signature: 2206a679277c4649255f484456730ef6 ******/
 		%feature("compactdefaultargs") CheckLacking;
 		%feature("autodoc", "
 Parameters
@@ -4952,8 +4952,8 @@ Checks if there is a gap in 2d between edges and not comprised by vertex toleran
 ") CheckLacking;
 		Standard_Boolean CheckLacking(const Standard_Integer num, const Standard_Real Tolerance = 0.0);
 
-		/****************** CheckLoop ******************/
-		/**** md5 signature: c95ccb397df77c1565de7d6d15910099 ****/
+		/****** ShapeAnalysis_Wire::CheckLoop ******/
+		/****** md5 signature: c95ccb397df77c1565de7d6d15910099 ******/
 		%feature("compactdefaultargs") CheckLoop;
 		%feature("autodoc", "
 Parameters
@@ -4973,8 +4973,8 @@ Checks existence of loop on wire and return vertices which are loop vertices (ve
 ") CheckLoop;
 		Standard_Boolean CheckLoop(TopTools_IndexedMapOfShape & aMapLoopVertices, TopTools_DataMapOfShapeListOfShape & aMapVertexEdges, TopTools_MapOfShape & aMapSmallEdges, TopTools_MapOfShape & aMapSeemEdges);
 
-		/****************** CheckNotchedEdges ******************/
-		/**** md5 signature: fa138234ce28880d741cf30db7ee496f ****/
+		/****** ShapeAnalysis_Wire::CheckNotchedEdges ******/
+		/****** md5 signature: fa138234ce28880d741cf30db7ee496f ******/
 		%feature("compactdefaultargs") CheckNotchedEdges;
 		%feature("autodoc", "
 Parameters
@@ -4993,8 +4993,8 @@ Detects a notch.
 ") CheckNotchedEdges;
 		Standard_Boolean CheckNotchedEdges(const Standard_Integer num, Standard_Integer &OutValue, Standard_Real &OutValue, const Standard_Real Tolerance = 0.0);
 
-		/****************** CheckOrder ******************/
-		/**** md5 signature: 0c24436001ebd425c86bdc68dbe4c3c5 ****/
+		/****** ShapeAnalysis_Wire::CheckOrder ******/
+		/****** md5 signature: 0c24436001ebd425c86bdc68dbe4c3c5 ******/
 		%feature("compactdefaultargs") CheckOrder;
 		%feature("autodoc", "
 Parameters
@@ -5012,8 +5012,8 @@ Calls checkorder and returns false if wire is already ordered (tail-to-head), tr
 ") CheckOrder;
 		Standard_Boolean CheckOrder(const Standard_Boolean isClosed = Standard_True, const Standard_Boolean mode3d = Standard_True);
 
-		/****************** CheckOrder ******************/
-		/**** md5 signature: 90589d1674c86d09625d55d1a899f1bb ****/
+		/****** ShapeAnalysis_Wire::CheckOrder ******/
+		/****** md5 signature: 90589d1674c86d09625d55d1a899f1bb ******/
 		%feature("compactdefaultargs") CheckOrder;
 		%feature("autodoc", "
 Parameters
@@ -5033,8 +5033,8 @@ Analyzes the order of the edges in the wire, uses class wireorder for that purpo
 ") CheckOrder;
 		Standard_Boolean CheckOrder(ShapeAnalysis_WireOrder & sawo, Standard_Boolean isClosed = Standard_True, Standard_Boolean theMode3D = Standard_True, Standard_Boolean theModeBoth = Standard_False);
 
-		/****************** CheckOuterBound ******************/
-		/**** md5 signature: fa98a8de9235f276333826373de925cc ****/
+		/****** ShapeAnalysis_Wire::CheckOuterBound ******/
+		/****** md5 signature: fa98a8de9235f276333826373de925cc ******/
 		%feature("compactdefaultargs") CheckOuterBound;
 		%feature("autodoc", "
 Parameters
@@ -5051,8 +5051,8 @@ Checks if wire defines an outer bound on the face uses shapeanalysis::isouterbou
 ") CheckOuterBound;
 		Standard_Boolean CheckOuterBound(const Standard_Boolean APIMake = Standard_True);
 
-		/****************** CheckSeam ******************/
-		/**** md5 signature: 3e220d590fcf51314c04169f7c36b88c ****/
+		/****** ShapeAnalysis_Wire::CheckSeam ******/
+		/****** md5 signature: 3e220d590fcf51314c04169f7c36b88c ******/
 		%feature("compactdefaultargs") CheckSeam;
 		%feature("autodoc", "
 Parameters
@@ -5072,8 +5072,8 @@ Checks if a seam pcurves are correct oriented returns: false (status ok) if give
 ") CheckSeam;
 		Standard_Boolean CheckSeam(const Standard_Integer num, opencascade::handle<Geom2d_Curve> & C1, opencascade::handle<Geom2d_Curve> & C2, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** CheckSeam ******************/
-		/**** md5 signature: f6efbc8a6369b2127add9abc08f468a7 ****/
+		/****** ShapeAnalysis_Wire::CheckSeam ******/
+		/****** md5 signature: f6efbc8a6369b2127add9abc08f468a7 ******/
 		%feature("compactdefaultargs") CheckSeam;
 		%feature("autodoc", "
 Parameters
@@ -5090,8 +5090,8 @@ Checks if a seam pcurves are correct oriented see previous functions for details
 ") CheckSeam;
 		Standard_Boolean CheckSeam(const Standard_Integer num);
 
-		/****************** CheckSelfIntersectingEdge ******************/
-		/**** md5 signature: 3e1cfb25605cda3e634c2fe6a570e449 ****/
+		/****** ShapeAnalysis_Wire::CheckSelfIntersectingEdge ******/
+		/****** md5 signature: 3e1cfb25605cda3e634c2fe6a570e449 ******/
 		%feature("compactdefaultargs") CheckSelfIntersectingEdge;
 		%feature("autodoc", "
 Parameters
@@ -5110,8 +5110,8 @@ Checks if num-th edge is self-intersecting. self-intersection is reported only i
 ") CheckSelfIntersectingEdge;
 		Standard_Boolean CheckSelfIntersectingEdge(const Standard_Integer num, IntRes2d_SequenceOfIntersectionPoint & points2d, TColgp_SequenceOfPnt & points3d);
 
-		/****************** CheckSelfIntersectingEdge ******************/
-		/**** md5 signature: f867bf45439d9b4871e37a6621b4cdc0 ****/
+		/****** ShapeAnalysis_Wire::CheckSelfIntersectingEdge ******/
+		/****** md5 signature: f867bf45439d9b4871e37a6621b4cdc0 ******/
 		%feature("compactdefaultargs") CheckSelfIntersectingEdge;
 		%feature("autodoc", "
 Parameters
@@ -5128,8 +5128,8 @@ No available documentation.
 ") CheckSelfIntersectingEdge;
 		Standard_Boolean CheckSelfIntersectingEdge(const Standard_Integer num);
 
-		/****************** CheckSelfIntersection ******************/
-		/**** md5 signature: 828f8e26a77ac090be6a96994828b03d ****/
+		/****** ShapeAnalysis_Wire::CheckSelfIntersection ******/
+		/****** md5 signature: 828f8e26a77ac090be6a96994828b03d ******/
 		%feature("compactdefaultargs") CheckSelfIntersection;
 		%feature("autodoc", "Return
 -------
@@ -5141,8 +5141,8 @@ Checks self-intersection of the wire (considering pcurves) looks for self-inters
 ") CheckSelfIntersection;
 		Standard_Boolean CheckSelfIntersection();
 
-		/****************** CheckShapeConnect ******************/
-		/**** md5 signature: 0a79b66d7b431d4b26c20c6461576e0b ****/
+		/****** ShapeAnalysis_Wire::CheckShapeConnect ******/
+		/****** md5 signature: 0a79b66d7b431d4b26c20c6461576e0b ******/
 		%feature("compactdefaultargs") CheckShapeConnect;
 		%feature("autodoc", "
 Parameters
@@ -5160,8 +5160,8 @@ Checks with what orientation <shape> (wire or edge) can be connected to the wire
 ") CheckShapeConnect;
 		Standard_Boolean CheckShapeConnect(const TopoDS_Shape & shape, const Standard_Real prec = 0.0);
 
-		/****************** CheckShapeConnect ******************/
-		/**** md5 signature: 0b1571f9c750cbf62d65d5a450d12b85 ****/
+		/****** ShapeAnalysis_Wire::CheckShapeConnect ******/
+		/****** md5 signature: 0b1571f9c750cbf62d65d5a450d12b85 ******/
 		%feature("compactdefaultargs") CheckShapeConnect;
 		%feature("autodoc", "
 Parameters
@@ -5182,8 +5182,8 @@ The same as previous checkshapeconnect but is more advanced. it returns the dist
 ") CheckShapeConnect;
 		Standard_Boolean CheckShapeConnect(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const TopoDS_Shape & shape, const Standard_Real prec = 0.0);
 
-		/****************** CheckSmall ******************/
-		/**** md5 signature: 5573c69b574523f74c4f89bcac123cff ****/
+		/****** ShapeAnalysis_Wire::CheckSmall ******/
+		/****** md5 signature: 5573c69b574523f74c4f89bcac123cff ******/
 		%feature("compactdefaultargs") CheckSmall;
 		%feature("autodoc", "
 Parameters
@@ -5200,8 +5200,8 @@ Calls to checksmall for each edge returns: true if at least one small edge was d
 ") CheckSmall;
 		Standard_Boolean CheckSmall(const Standard_Real precsmall = 0.0);
 
-		/****************** CheckSmall ******************/
-		/**** md5 signature: 920ff3411d0f144713715d87d6f71556 ****/
+		/****** ShapeAnalysis_Wire::CheckSmall ******/
+		/****** md5 signature: 920ff3411d0f144713715d87d6f71556 ******/
 		%feature("compactdefaultargs") CheckSmall;
 		%feature("autodoc", "
 Parameters
@@ -5219,8 +5219,8 @@ Checks if an edge has a length not greater than mypreci or precsmall (if it is s
 ") CheckSmall;
 		Standard_Boolean CheckSmall(const Standard_Integer num, const Standard_Real precsmall = 0.0);
 
-		/****************** CheckSmallArea ******************/
-		/**** md5 signature: e3d75b4d4d23e31912c108414bc6189c ****/
+		/****** ShapeAnalysis_Wire::CheckSmallArea ******/
+		/****** md5 signature: e3d75b4d4d23e31912c108414bc6189c ******/
 		%feature("compactdefaultargs") CheckSmallArea;
 		%feature("autodoc", "
 Parameters
@@ -5237,8 +5237,8 @@ Checks if wire has parametric area less than precision.
 ") CheckSmallArea;
 		Standard_Boolean CheckSmallArea(const TopoDS_Wire & theWire);
 
-		/****************** CheckTail ******************/
-		/**** md5 signature: 321fb81a600bd5e9a348e9ae3975c76a ****/
+		/****** ShapeAnalysis_Wire::CheckTail ******/
+		/****** md5 signature: 321fb81a600bd5e9a348e9ae3975c76a ******/
 		%feature("compactdefaultargs") CheckTail;
 		%feature("autodoc", "
 Parameters
@@ -5263,8 +5263,8 @@ No available documentation.
 ") CheckTail;
 		Standard_Boolean CheckTail(const TopoDS_Edge & theEdge1, const TopoDS_Edge & theEdge2, const Standard_Real theMaxSine, const Standard_Real theMaxWidth, const Standard_Real theMaxTolerance, TopoDS_Edge & theEdge11, TopoDS_Edge & theEdge12, TopoDS_Edge & theEdge21, TopoDS_Edge & theEdge22);
 
-		/****************** ClearStatuses ******************/
-		/**** md5 signature: a36409698de6df03133c5f14bec35cf8 ****/
+		/****** ShapeAnalysis_Wire::ClearStatuses ******/
+		/****** md5 signature: a36409698de6df03133c5f14bec35cf8 ******/
 		%feature("compactdefaultargs") ClearStatuses;
 		%feature("autodoc", "Return
 -------
@@ -5276,8 +5276,8 @@ Unsets all the status and distance fields wire, face and precision are not clear
 ") ClearStatuses;
 		void ClearStatuses();
 
-		/****************** Face ******************/
-		/**** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ****/
+		/****** ShapeAnalysis_Wire::Face ******/
+		/****** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "Return
 -------
@@ -5289,8 +5289,8 @@ Returns the working face.
 ") Face;
 		const TopoDS_Face Face();
 
-		/****************** Init ******************/
-		/**** md5 signature: 68dad83539fb82c5a5e93add092d0610 ****/
+		/****** ShapeAnalysis_Wire::Init ******/
+		/****** md5 signature: 68dad83539fb82c5a5e93add092d0610 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5309,8 +5309,8 @@ Initializes the object with standard topods_wire, face and precision.
 ") Init;
 		void Init(const TopoDS_Wire & wire, const TopoDS_Face & face, const Standard_Real precision);
 
-		/****************** Init ******************/
-		/**** md5 signature: 11ec60f70bd155e35a6abf335e18eb63 ****/
+		/****** ShapeAnalysis_Wire::Init ******/
+		/****** md5 signature: 11ec60f70bd155e35a6abf335e18eb63 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5329,8 +5329,8 @@ Initializes the object with wiredata object, face and precision.
 ") Init;
 		void Init(const opencascade::handle<ShapeExtend_WireData> & sbwd, const TopoDS_Face & face, const Standard_Real precision);
 
-		/****************** IsLoaded ******************/
-		/**** md5 signature: 5ed802f56c3a94dc70391badb380a6ed ****/
+		/****** ShapeAnalysis_Wire::IsLoaded ******/
+		/****** md5 signature: 5ed802f56c3a94dc70391badb380a6ed ******/
 		%feature("compactdefaultargs") IsLoaded;
 		%feature("autodoc", "Return
 -------
@@ -5342,8 +5342,8 @@ Returns true if wire is loaded and has number of edges >0.
 ") IsLoaded;
 		Standard_Boolean IsLoaded();
 
-		/****************** IsReady ******************/
-		/**** md5 signature: 68a96b040fc0b59848125a1a3ef33dcb ****/
+		/****** ShapeAnalysis_Wire::IsReady ******/
+		/****** md5 signature: 68a96b040fc0b59848125a1a3ef33dcb ******/
 		%feature("compactdefaultargs") IsReady;
 		%feature("autodoc", "Return
 -------
@@ -5355,8 +5355,8 @@ Returns true if isloaded and underlying face is not null.
 ") IsReady;
 		Standard_Boolean IsReady();
 
-		/****************** LastCheckStatus ******************/
-		/**** md5 signature: 51a8334fdef2c5ed71ca2129b25a052b ****/
+		/****** ShapeAnalysis_Wire::LastCheckStatus ******/
+		/****** md5 signature: 51a8334fdef2c5ed71ca2129b25a052b ******/
 		%feature("compactdefaultargs") LastCheckStatus;
 		%feature("autodoc", "
 Parameters
@@ -5373,8 +5373,8 @@ Querying the status of the last performed 'advanced' checking procedure.
 ") LastCheckStatus;
 		Standard_Boolean LastCheckStatus(const ShapeExtend_Status Status);
 
-		/****************** Load ******************/
-		/**** md5 signature: 2fdca06c20821b51a2c36237ba0af41b ****/
+		/****** ShapeAnalysis_Wire::Load ******/
+		/****** md5 signature: 2fdca06c20821b51a2c36237ba0af41b ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -5391,8 +5391,8 @@ Loads the object with standard topods_wire.
 ") Load;
 		void Load(const TopoDS_Wire & wire);
 
-		/****************** Load ******************/
-		/**** md5 signature: 16e0e231784ecdcbd10a3dadfc16b8d6 ****/
+		/****** ShapeAnalysis_Wire::Load ******/
+		/****** md5 signature: 16e0e231784ecdcbd10a3dadfc16b8d6 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -5409,8 +5409,8 @@ Loads the object with wiredata object.
 ") Load;
 		void Load(const opencascade::handle<ShapeExtend_WireData> & sbwd);
 
-		/****************** MaxDistance2d ******************/
-		/**** md5 signature: 7dd9f555060a06797b716d88f0343b12 ****/
+		/****** ShapeAnalysis_Wire::MaxDistance2d ******/
+		/****** md5 signature: 7dd9f555060a06797b716d88f0343b12 ******/
 		%feature("compactdefaultargs") MaxDistance2d;
 		%feature("autodoc", "Return
 -------
@@ -5422,8 +5422,8 @@ Returns the last maximal distance in 2d-uv computed by checkcontinuity2d.
 ") MaxDistance2d;
 		Standard_Real MaxDistance2d();
 
-		/****************** MaxDistance3d ******************/
-		/**** md5 signature: cf45bbfcae90a0b146267435ebec2958 ****/
+		/****** ShapeAnalysis_Wire::MaxDistance3d ******/
+		/****** md5 signature: cf45bbfcae90a0b146267435ebec2958 ******/
 		%feature("compactdefaultargs") MaxDistance3d;
 		%feature("autodoc", "Return
 -------
@@ -5435,8 +5435,8 @@ Returns the last maximal distance in 3d computed by checkorientation, checkconne
 ") MaxDistance3d;
 		Standard_Real MaxDistance3d();
 
-		/****************** MinDistance2d ******************/
-		/**** md5 signature: 8a48ed473b0d51a316aea751627b5127 ****/
+		/****** ShapeAnalysis_Wire::MinDistance2d ******/
+		/****** md5 signature: 8a48ed473b0d51a316aea751627b5127 ******/
 		%feature("compactdefaultargs") MinDistance2d;
 		%feature("autodoc", "Return
 -------
@@ -5448,8 +5448,8 @@ Returns the last lowest distance in 2d-uv computed by checkcontinuity2d.
 ") MinDistance2d;
 		Standard_Real MinDistance2d();
 
-		/****************** MinDistance3d ******************/
-		/**** md5 signature: 3fff8e0c66577dd711e9ba64f1975381 ****/
+		/****** ShapeAnalysis_Wire::MinDistance3d ******/
+		/****** md5 signature: 3fff8e0c66577dd711e9ba64f1975381 ******/
 		%feature("compactdefaultargs") MinDistance3d;
 		%feature("autodoc", "Return
 -------
@@ -5461,8 +5461,8 @@ Returns the last lowest distance in 3d computed by checkorientation, checkconnec
 ") MinDistance3d;
 		Standard_Real MinDistance3d();
 
-		/****************** NbEdges ******************/
-		/**** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ****/
+		/****** ShapeAnalysis_Wire::NbEdges ******/
+		/****** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -5474,8 +5474,8 @@ Returns the number of edges in the wire, or 0 if it is not loaded.
 ") NbEdges;
 		Standard_Integer NbEdges();
 
-		/****************** Perform ******************/
-		/**** md5 signature: dc83e5133003c9f9c7b166df8b5a4192 ****/
+		/****** ShapeAnalysis_Wire::Perform ******/
+		/****** md5 signature: dc83e5133003c9f9c7b166df8b5a4192 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -5487,8 +5487,8 @@ Performs all the checks in the following order: checkorder, checksmall, checkcon
 ") Perform;
 		Standard_Boolean Perform();
 
-		/****************** Precision ******************/
-		/**** md5 signature: 34c7e39bd57a685873eea74fa4629747 ****/
+		/****** ShapeAnalysis_Wire::Precision ******/
+		/****** md5 signature: 34c7e39bd57a685873eea74fa4629747 ******/
 		%feature("compactdefaultargs") Precision;
 		%feature("autodoc", "Return
 -------
@@ -5500,8 +5500,8 @@ Returns the value of precision.
 ") Precision;
 		Standard_Real Precision();
 
-		/****************** SetFace ******************/
-		/**** md5 signature: ad791c3e7afa47c0cda20c76d19a66b4 ****/
+		/****** ShapeAnalysis_Wire::SetFace ******/
+		/****** md5 signature: ad791c3e7afa47c0cda20c76d19a66b4 ******/
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", "
 Parameters
@@ -5518,8 +5518,8 @@ Loads the face the wire lies on.
 ") SetFace;
 		void SetFace(const TopoDS_Face & face);
 
-		/****************** SetPrecision ******************/
-		/**** md5 signature: e3b8a71e74ae511a0d07cc55d5930b63 ****/
+		/****** ShapeAnalysis_Wire::SetPrecision ******/
+		/****** md5 signature: e3b8a71e74ae511a0d07cc55d5930b63 ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
@@ -5536,8 +5536,8 @@ No available documentation.
 ") SetPrecision;
 		void SetPrecision(const Standard_Real precision);
 
-		/****************** SetSurface ******************/
-		/**** md5 signature: 3ac5100009a432b14cb9404ac523d9ec ****/
+		/****** ShapeAnalysis_Wire::SetSurface ******/
+		/****** md5 signature: 3ac5100009a432b14cb9404ac523d9ec ******/
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "
 Parameters
@@ -5554,8 +5554,8 @@ Loads the surface the wire lies on.
 ") SetSurface;
 		void SetSurface(const opencascade::handle<Geom_Surface> & surface);
 
-		/****************** SetSurface ******************/
-		/**** md5 signature: fbd30086fe99f723922515229a71cc75 ****/
+		/****** ShapeAnalysis_Wire::SetSurface ******/
+		/****** md5 signature: fbd30086fe99f723922515229a71cc75 ******/
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "
 Parameters
@@ -5573,8 +5573,8 @@ Loads the surface the wire lies on.
 ") SetSurface;
 		void SetSurface(const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
 
-		/****************** StatusClosed ******************/
-		/**** md5 signature: 397ec850ca398b7fd0a894a002d47198 ****/
+		/****** ShapeAnalysis_Wire::StatusClosed ******/
+		/****** md5 signature: 397ec850ca398b7fd0a894a002d47198 ******/
 		%feature("compactdefaultargs") StatusClosed;
 		%feature("autodoc", "
 Parameters
@@ -5591,8 +5591,8 @@ No available documentation.
 ") StatusClosed;
 		Standard_Boolean StatusClosed(const ShapeExtend_Status Status);
 
-		/****************** StatusConnected ******************/
-		/**** md5 signature: 778e67ce9161a6c5b336734febb775f3 ****/
+		/****** ShapeAnalysis_Wire::StatusConnected ******/
+		/****** md5 signature: 778e67ce9161a6c5b336734febb775f3 ******/
 		%feature("compactdefaultargs") StatusConnected;
 		%feature("autodoc", "
 Parameters
@@ -5609,8 +5609,8 @@ No available documentation.
 ") StatusConnected;
 		Standard_Boolean StatusConnected(const ShapeExtend_Status Status);
 
-		/****************** StatusCurveGaps ******************/
-		/**** md5 signature: 615d7aa6851d43464e3e5ed3fde9cba6 ****/
+		/****** ShapeAnalysis_Wire::StatusCurveGaps ******/
+		/****** md5 signature: 615d7aa6851d43464e3e5ed3fde9cba6 ******/
 		%feature("compactdefaultargs") StatusCurveGaps;
 		%feature("autodoc", "
 Parameters
@@ -5627,8 +5627,8 @@ No available documentation.
 ") StatusCurveGaps;
 		Standard_Boolean StatusCurveGaps(const ShapeExtend_Status Status);
 
-		/****************** StatusDegenerated ******************/
-		/**** md5 signature: 83150213c249c7e49e122df8861b868c ****/
+		/****** ShapeAnalysis_Wire::StatusDegenerated ******/
+		/****** md5 signature: 83150213c249c7e49e122df8861b868c ******/
 		%feature("compactdefaultargs") StatusDegenerated;
 		%feature("autodoc", "
 Parameters
@@ -5645,8 +5645,8 @@ No available documentation.
 ") StatusDegenerated;
 		Standard_Boolean StatusDegenerated(const ShapeExtend_Status Status);
 
-		/****************** StatusEdgeCurves ******************/
-		/**** md5 signature: 7db5a16b2f75f1f3c8e3020d7471e69b ****/
+		/****** ShapeAnalysis_Wire::StatusEdgeCurves ******/
+		/****** md5 signature: 7db5a16b2f75f1f3c8e3020d7471e69b ******/
 		%feature("compactdefaultargs") StatusEdgeCurves;
 		%feature("autodoc", "
 Parameters
@@ -5663,8 +5663,8 @@ No available documentation.
 ") StatusEdgeCurves;
 		Standard_Boolean StatusEdgeCurves(const ShapeExtend_Status Status);
 
-		/****************** StatusGaps2d ******************/
-		/**** md5 signature: 1f5eabaad5dc9661856b002b6e183eee ****/
+		/****** ShapeAnalysis_Wire::StatusGaps2d ******/
+		/****** md5 signature: 1f5eabaad5dc9661856b002b6e183eee ******/
 		%feature("compactdefaultargs") StatusGaps2d;
 		%feature("autodoc", "
 Parameters
@@ -5681,8 +5681,8 @@ No available documentation.
 ") StatusGaps2d;
 		Standard_Boolean StatusGaps2d(const ShapeExtend_Status Status);
 
-		/****************** StatusGaps3d ******************/
-		/**** md5 signature: 825f4f566e8fba4e295cd4bec34c5c53 ****/
+		/****** ShapeAnalysis_Wire::StatusGaps3d ******/
+		/****** md5 signature: 825f4f566e8fba4e295cd4bec34c5c53 ******/
 		%feature("compactdefaultargs") StatusGaps3d;
 		%feature("autodoc", "
 Parameters
@@ -5699,8 +5699,8 @@ No available documentation.
 ") StatusGaps3d;
 		Standard_Boolean StatusGaps3d(const ShapeExtend_Status Status);
 
-		/****************** StatusLacking ******************/
-		/**** md5 signature: 52ad411d37899450cdc3de41cf0e88fc ****/
+		/****** ShapeAnalysis_Wire::StatusLacking ******/
+		/****** md5 signature: 52ad411d37899450cdc3de41cf0e88fc ******/
 		%feature("compactdefaultargs") StatusLacking;
 		%feature("autodoc", "
 Parameters
@@ -5717,8 +5717,8 @@ No available documentation.
 ") StatusLacking;
 		Standard_Boolean StatusLacking(const ShapeExtend_Status Status);
 
-		/****************** StatusLoop ******************/
-		/**** md5 signature: fad1872c07eb0301e971a36d93da478e ****/
+		/****** ShapeAnalysis_Wire::StatusLoop ******/
+		/****** md5 signature: fad1872c07eb0301e971a36d93da478e ******/
 		%feature("compactdefaultargs") StatusLoop;
 		%feature("autodoc", "
 Parameters
@@ -5735,8 +5735,8 @@ No available documentation.
 ") StatusLoop;
 		Standard_Boolean StatusLoop(const ShapeExtend_Status Status);
 
-		/****************** StatusOrder ******************/
-		/**** md5 signature: 5ff6f9a9e3f6f4cb2f5b7fcce399309e ****/
+		/****** ShapeAnalysis_Wire::StatusOrder ******/
+		/****** md5 signature: 5ff6f9a9e3f6f4cb2f5b7fcce399309e ******/
 		%feature("compactdefaultargs") StatusOrder;
 		%feature("autodoc", "
 Parameters
@@ -5753,8 +5753,8 @@ No available documentation.
 ") StatusOrder;
 		Standard_Boolean StatusOrder(const ShapeExtend_Status Status);
 
-		/****************** StatusSelfIntersection ******************/
-		/**** md5 signature: bccc7d7d1b860f4aeb57ab0f15684134 ****/
+		/****** ShapeAnalysis_Wire::StatusSelfIntersection ******/
+		/****** md5 signature: bccc7d7d1b860f4aeb57ab0f15684134 ******/
 		%feature("compactdefaultargs") StatusSelfIntersection;
 		%feature("autodoc", "
 Parameters
@@ -5771,8 +5771,8 @@ No available documentation.
 ") StatusSelfIntersection;
 		Standard_Boolean StatusSelfIntersection(const ShapeExtend_Status Status);
 
-		/****************** StatusSmall ******************/
-		/**** md5 signature: 946de8888b815d7dc1018b04a0e6371a ****/
+		/****** ShapeAnalysis_Wire::StatusSmall ******/
+		/****** md5 signature: 946de8888b815d7dc1018b04a0e6371a ******/
 		%feature("compactdefaultargs") StatusSmall;
 		%feature("autodoc", "
 Parameters
@@ -5789,8 +5789,8 @@ No available documentation.
 ") StatusSmall;
 		Standard_Boolean StatusSmall(const ShapeExtend_Status Status);
 
-		/****************** Surface ******************/
-		/**** md5 signature: 218f80180f9895a3f4012d683258cf67 ****/
+		/****** ShapeAnalysis_Wire::Surface ******/
+		/****** md5 signature: 218f80180f9895a3f4012d683258cf67 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -5802,8 +5802,8 @@ Returns the working surface.
 ") Surface;
 		const opencascade::handle<ShapeAnalysis_Surface> & Surface();
 
-		/****************** WireData ******************/
-		/**** md5 signature: c8792f073dea4df1af697814fbf5f311 ****/
+		/****** ShapeAnalysis_Wire::WireData ******/
+		/****** md5 signature: c8792f073dea4df1af697814fbf5f311 ******/
 		%feature("compactdefaultargs") WireData;
 		%feature("autodoc", "Return
 -------
@@ -5831,8 +5831,8 @@ Returns wire object being analyzed.
 ********************************/
 class ShapeAnalysis_WireOrder {
 	public:
-		/****************** ShapeAnalysis_WireOrder ******************/
-		/**** md5 signature: 001651a67bf407b71fcd46ae3b8b54a3 ****/
+		/****** ShapeAnalysis_WireOrder::ShapeAnalysis_WireOrder ******/
+		/****** md5 signature: 001651a67bf407b71fcd46ae3b8b54a3 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_WireOrder;
 		%feature("autodoc", "Return
 -------
@@ -5844,8 +5844,8 @@ Empty constructor.
 ") ShapeAnalysis_WireOrder;
 		 ShapeAnalysis_WireOrder();
 
-		/****************** ShapeAnalysis_WireOrder ******************/
-		/**** md5 signature: d0ab6ef719feb71ca41da9094852a860 ****/
+		/****** ShapeAnalysis_WireOrder::ShapeAnalysis_WireOrder ******/
+		/****** md5 signature: d0ab6ef719feb71ca41da9094852a860 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_WireOrder;
 		%feature("autodoc", "
 Parameters
@@ -5864,8 +5864,8 @@ Creates a wireorder. flag <themode3d> defines 3d or 2d mode. flag <themodeboth> 
 ") ShapeAnalysis_WireOrder;
 		 ShapeAnalysis_WireOrder(const Standard_Boolean theMode3D, const Standard_Real theTolerance, const Standard_Boolean theModeBoth = Standard_False);
 
-		/****************** Add ******************/
-		/**** md5 signature: 754529ef22ef038c5c7a4f365a6100e0 ****/
+		/****** ShapeAnalysis_WireOrder::Add ******/
+		/****** md5 signature: 754529ef22ef038c5c7a4f365a6100e0 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -5883,8 +5883,8 @@ Adds a couple of points 3d (start, end).
 ") Add;
 		void Add(const gp_XYZ & theStart3d, const gp_XYZ & theEnd3d);
 
-		/****************** Add ******************/
-		/**** md5 signature: de1924393c4f894699d89aee766a6d97 ****/
+		/****** ShapeAnalysis_WireOrder::Add ******/
+		/****** md5 signature: de1924393c4f894699d89aee766a6d97 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -5902,8 +5902,8 @@ Adds a couple of points 2d (start, end).
 ") Add;
 		void Add(const gp_XY & theStart2d, const gp_XY & theEnd2d);
 
-		/****************** Add ******************/
-		/**** md5 signature: 99e5beddea56c9e57f7d6f9f9780408d ****/
+		/****** ShapeAnalysis_WireOrder::Add ******/
+		/****** md5 signature: 99e5beddea56c9e57f7d6f9f9780408d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -5923,8 +5923,8 @@ Adds a couple of points 3d and 2d (start, end).
 ") Add;
 		void Add(const gp_XYZ & theStart3d, const gp_XYZ & theEnd3d, const gp_XY & theStart2d, const gp_XY & theEnd2d);
 
-		/****************** Chain ******************/
-		/**** md5 signature: 5a804521be62174818d234e9543ffe87 ****/
+		/****** ShapeAnalysis_WireOrder::Chain ******/
+		/****** md5 signature: 5a804521be62174818d234e9543ffe87 ******/
 		%feature("compactdefaultargs") Chain;
 		%feature("autodoc", "
 Parameters
@@ -5942,8 +5942,8 @@ Returns, for the chain n0 num, starting and ending numbers of edges. in the list
 ") Chain;
 		void Chain(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** ShapeAnalysis_WireOrder::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -5955,8 +5955,8 @@ Clears the list of edges, but not mode and tol.
 ") Clear;
 		void Clear();
 
-		/****************** Couple ******************/
-		/**** md5 signature: 2a340a10e5a036164b759e5917463d42 ****/
+		/****** ShapeAnalysis_WireOrder::Couple ******/
+		/****** md5 signature: 2a340a10e5a036164b759e5917463d42 ******/
 		%feature("compactdefaultargs") Couple;
 		%feature("autodoc", "
 Parameters
@@ -5974,8 +5974,8 @@ Returns, for the couple n0 num, the two implied edges in the list of ordered edg
 ") Couple;
 		void Couple(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** Gap ******************/
-		/**** md5 signature: 367d72f7f9d9f8ac382afd0e4369ad2c ****/
+		/****** ShapeAnalysis_WireOrder::Gap ******/
+		/****** md5 signature: 367d72f7f9d9f8ac382afd0e4369ad2c ******/
 		%feature("compactdefaultargs") Gap;
 		%feature("autodoc", "
 Parameters
@@ -5992,8 +5992,8 @@ Returns the gap between a couple and its preceding <num> is considered ordered i
 ") Gap;
 		Standard_Real Gap(const Standard_Integer num = 0);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** ShapeAnalysis_WireOrder::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -6018,8 +6018,8 @@ Tells if perform has been done else, the following methods returns original valu
             $self->KeepLoopsMode()=value;
             }
         };
-		/****************** NbChains ******************/
-		/**** md5 signature: d1b0201e9b14205fe927c9a01e044ab3 ****/
+		/****** ShapeAnalysis_WireOrder::NbChains ******/
+		/****** md5 signature: d1b0201e9b14205fe927c9a01e044ab3 ******/
 		%feature("compactdefaultargs") NbChains;
 		%feature("autodoc", "Return
 -------
@@ -6031,8 +6031,8 @@ Returns the count of computed chains.
 ") NbChains;
 		Standard_Integer NbChains();
 
-		/****************** NbCouples ******************/
-		/**** md5 signature: 8136e94ad4eb50396f3e8640b01713e3 ****/
+		/****** ShapeAnalysis_WireOrder::NbCouples ******/
+		/****** md5 signature: 8136e94ad4eb50396f3e8640b01713e3 ******/
 		%feature("compactdefaultargs") NbCouples;
 		%feature("autodoc", "Return
 -------
@@ -6044,8 +6044,8 @@ Returns the count of computed couples.
 ") NbCouples;
 		Standard_Integer NbCouples();
 
-		/****************** NbEdges ******************/
-		/**** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ****/
+		/****** ShapeAnalysis_WireOrder::NbEdges ******/
+		/****** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -6057,8 +6057,8 @@ Returns the count of added couples of points (one per edges).
 ") NbEdges;
 		Standard_Integer NbEdges();
 
-		/****************** Ordered ******************/
-		/**** md5 signature: a6b04776796d4f3e7848f3e21c897904 ****/
+		/****** ShapeAnalysis_WireOrder::Ordered ******/
+		/****** md5 signature: a6b04776796d4f3e7848f3e21c897904 ******/
 		%feature("compactdefaultargs") Ordered;
 		%feature("autodoc", "
 Parameters
@@ -6075,8 +6075,8 @@ Returns the number of original edge which correspond to the newly ordered number
 ") Ordered;
 		Standard_Integer Ordered(const Standard_Integer theIdx);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 076cdff70150a5d09e5d54a72cb0d21a ****/
+		/****** ShapeAnalysis_WireOrder::Perform ******/
+		/****** md5 signature: 076cdff70150a5d09e5d54a72cb0d21a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -6093,8 +6093,8 @@ Computes the better order optimised if the couples were already in order the cri
 ") Perform;
 		void Perform(const Standard_Boolean closed = Standard_True);
 
-		/****************** SetChains ******************/
-		/**** md5 signature: dbd76054f8e57d3c27a853a9a2aceb72 ****/
+		/****** ShapeAnalysis_WireOrder::SetChains ******/
+		/****** md5 signature: dbd76054f8e57d3c27a853a9a2aceb72 ******/
 		%feature("compactdefaultargs") SetChains;
 		%feature("autodoc", "
 Parameters
@@ -6111,8 +6111,8 @@ Determines the chains inside which successive edges have a gap less than a given
 ") SetChains;
 		void SetChains(const Standard_Real gap);
 
-		/****************** SetCouples ******************/
-		/**** md5 signature: a10a2fc2bfd71b64ba1ba3a44e57e444 ****/
+		/****** ShapeAnalysis_WireOrder::SetCouples ******/
+		/****** md5 signature: a10a2fc2bfd71b64ba1ba3a44e57e444 ******/
 		%feature("compactdefaultargs") SetCouples;
 		%feature("autodoc", "
 Parameters
@@ -6129,8 +6129,8 @@ Determines the couples of edges for which end and start fit inside a given gap. 
 ") SetCouples;
 		void SetCouples(const Standard_Real gap);
 
-		/****************** SetMode ******************/
-		/**** md5 signature: cfbbac7a6fa12a25d1c54f35b11c32ef ****/
+		/****** ShapeAnalysis_WireOrder::SetMode ******/
+		/****** md5 signature: cfbbac7a6fa12a25d1c54f35b11c32ef ******/
 		%feature("compactdefaultargs") SetMode;
 		%feature("autodoc", "
 Parameters
@@ -6149,8 +6149,8 @@ Sets new values. clears the edge list if the mode (<themode3d> or <themodeboth> 
 ") SetMode;
 		void SetMode(const Standard_Boolean theMode3D, const Standard_Real theTolerance, const Standard_Boolean theModeBoth = Standard_False);
 
-		/****************** Status ******************/
-		/**** md5 signature: 95453a41824a64084ab7e8075846ede5 ****/
+		/****** ShapeAnalysis_WireOrder::Status ******/
+		/****** md5 signature: 95453a41824a64084ab7e8075846ede5 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "Return
 -------
@@ -6162,8 +6162,8 @@ Returns the status of the order (0 if not done): 0: all edges are direct and in 
 ") Status;
 		Standard_Integer Status();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/****** ShapeAnalysis_WireOrder::Tolerance ******/
+		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -6175,8 +6175,8 @@ Returns the working tolerance.
 ") Tolerance;
 		Standard_Real Tolerance();
 
-		/****************** XY ******************/
-		/**** md5 signature: 7e9845fe73353a5c68a0d556a4e79634 ****/
+		/****** ShapeAnalysis_WireOrder::XY ******/
+		/****** md5 signature: 7e9845fe73353a5c68a0d556a4e79634 ******/
 		%feature("compactdefaultargs") XY;
 		%feature("autodoc", "
 Parameters
@@ -6195,8 +6195,8 @@ Returns the values of the couple <num>, as 2d values.
 ") XY;
 		void XY(const Standard_Integer theIdx, gp_XY & theStart2D, gp_XY & theEnd2D);
 
-		/****************** XYZ ******************/
-		/**** md5 signature: 9e110ee78927a99c1388f3839593d1eb ****/
+		/****** ShapeAnalysis_WireOrder::XYZ ******/
+		/****** md5 signature: 9e110ee78927a99c1388f3839593d1eb ******/
 		%feature("compactdefaultargs") XYZ;
 		%feature("autodoc", "
 Parameters
@@ -6229,8 +6229,8 @@ Returns the values of the couple <num>, as 3d values.
 *********************************/
 class ShapeAnalysis_WireVertex {
 	public:
-		/****************** ShapeAnalysis_WireVertex ******************/
-		/**** md5 signature: 444b04297e14f11e95d21a75cdc9e8a3 ****/
+		/****** ShapeAnalysis_WireVertex::ShapeAnalysis_WireVertex ******/
+		/****** md5 signature: 444b04297e14f11e95d21a75cdc9e8a3 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_WireVertex;
 		%feature("autodoc", "Return
 -------
@@ -6242,8 +6242,8 @@ Empty constructor.
 ") ShapeAnalysis_WireVertex;
 		 ShapeAnalysis_WireVertex();
 
-		/****************** Analyze ******************/
-		/**** md5 signature: fb838ab94d167046cb960d898ad849da ****/
+		/****** ShapeAnalysis_WireVertex::Analyze ******/
+		/****** md5 signature: fb838ab94d167046cb960d898ad849da ******/
 		%feature("compactdefaultargs") Analyze;
 		%feature("autodoc", "Return
 -------
@@ -6255,8 +6255,8 @@ No available documentation.
 ") Analyze;
 		void Analyze();
 
-		/****************** Data ******************/
-		/**** md5 signature: ebe1966f41fb4acf2b591d40ed683c05 ****/
+		/****** ShapeAnalysis_WireVertex::Data ******/
+		/****** md5 signature: ebe1966f41fb4acf2b591d40ed683c05 ******/
 		%feature("compactdefaultargs") Data;
 		%feature("autodoc", "
 Parameters
@@ -6275,8 +6275,8 @@ Returns the recorded status for a vertex with its recorded position and paramete
 ") Data;
 		Standard_Integer Data(const Standard_Integer num, gp_XYZ & pos, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Init ******************/
-		/**** md5 signature: ce6401735f705d8382645a726c79e907 ****/
+		/****** ShapeAnalysis_WireVertex::Init ******/
+		/****** md5 signature: ce6401735f705d8382645a726c79e907 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6294,8 +6294,8 @@ No available documentation.
 ") Init;
 		void Init(const TopoDS_Wire & wire, const Standard_Real preci);
 
-		/****************** Init ******************/
-		/**** md5 signature: 76c5d44fec2bd90d7a469781424ff530 ****/
+		/****** ShapeAnalysis_WireVertex::Init ******/
+		/****** md5 signature: 76c5d44fec2bd90d7a469781424ff530 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6313,8 +6313,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<ShapeExtend_WireData> & swbd, const Standard_Real preci);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** ShapeAnalysis_WireVertex::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -6326,8 +6326,8 @@ Returns true if analysis was performed, else returns false.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Load ******************/
-		/**** md5 signature: 2fdca06c20821b51a2c36237ba0af41b ****/
+		/****** ShapeAnalysis_WireVertex::Load ******/
+		/****** md5 signature: 2fdca06c20821b51a2c36237ba0af41b ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -6344,8 +6344,8 @@ No available documentation.
 ") Load;
 		void Load(const TopoDS_Wire & wire);
 
-		/****************** Load ******************/
-		/**** md5 signature: 16e0e231784ecdcbd10a3dadfc16b8d6 ****/
+		/****** ShapeAnalysis_WireVertex::Load ******/
+		/****** md5 signature: 16e0e231784ecdcbd10a3dadfc16b8d6 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -6362,8 +6362,8 @@ No available documentation.
 ") Load;
 		void Load(const opencascade::handle<ShapeExtend_WireData> & sbwd);
 
-		/****************** NbEdges ******************/
-		/**** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ****/
+		/****** ShapeAnalysis_WireVertex::NbEdges ******/
+		/****** md5 signature: b4dae8fc9e9992109d200aaac9bd9ada ******/
 		%feature("compactdefaultargs") NbEdges;
 		%feature("autodoc", "Return
 -------
@@ -6375,8 +6375,8 @@ Returns the number of edges in analyzed wire (i.e. the length of all arrays).
 ") NbEdges;
 		Standard_Integer NbEdges();
 
-		/****************** NextCriter ******************/
-		/**** md5 signature: 8d20f809415da8f7521c50560380badb ****/
+		/****** ShapeAnalysis_WireVertex::NextCriter ******/
+		/****** md5 signature: 8d20f809415da8f7521c50560380badb ******/
 		%feature("compactdefaultargs") NextCriter;
 		%feature("autodoc", "
 Parameters
@@ -6394,8 +6394,8 @@ For a given criter, returns the rank of the vertex which follows <num> and has t
 ") NextCriter;
 		Standard_Integer NextCriter(const Standard_Integer crit, const Standard_Integer num = 0);
 
-		/****************** NextStatus ******************/
-		/**** md5 signature: b6638b4681eae9cc19224bb9aed78215 ****/
+		/****** ShapeAnalysis_WireVertex::NextStatus ******/
+		/****** md5 signature: b6638b4681eae9cc19224bb9aed78215 ******/
 		%feature("compactdefaultargs") NextStatus;
 		%feature("autodoc", "
 Parameters
@@ -6413,8 +6413,8 @@ For a given status, returns the rank of the vertex which follows <num> and has t
 ") NextStatus;
 		Standard_Integer NextStatus(const Standard_Integer stat, const Standard_Integer num = 0);
 
-		/****************** Position ******************/
-		/**** md5 signature: f9981d08b82f33639f27e8c71acde75d ****/
+		/****** ShapeAnalysis_WireVertex::Position ******/
+		/****** md5 signature: f9981d08b82f33639f27e8c71acde75d ******/
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "
 Parameters
@@ -6431,8 +6431,8 @@ No available documentation.
 ") Position;
 		gp_XYZ Position(const Standard_Integer num);
 
-		/****************** Precision ******************/
-		/**** md5 signature: 34c7e39bd57a685873eea74fa4629747 ****/
+		/****** ShapeAnalysis_WireVertex::Precision ******/
+		/****** md5 signature: 34c7e39bd57a685873eea74fa4629747 ******/
 		%feature("compactdefaultargs") Precision;
 		%feature("autodoc", "Return
 -------
@@ -6444,8 +6444,8 @@ Returns precision value used in analysis.
 ") Precision;
 		Standard_Real Precision();
 
-		/****************** SetClose ******************/
-		/**** md5 signature: c3009edf142ec6f875d8378bfdca0af8 ****/
+		/****** ShapeAnalysis_WireVertex::SetClose ******/
+		/****** md5 signature: c3009edf142ec6f875d8378bfdca0af8 ******/
 		%feature("compactdefaultargs") SetClose;
 		%feature("autodoc", "
 Parameters
@@ -6462,8 +6462,8 @@ Records status 'close coords' (at the precision of <self>).
 ") SetClose;
 		void SetClose(const Standard_Integer num);
 
-		/****************** SetDisjoined ******************/
-		/**** md5 signature: a40c9d24ea6472d55c9cee7bb946d2a1 ****/
+		/****** ShapeAnalysis_WireVertex::SetDisjoined ******/
+		/****** md5 signature: a40c9d24ea6472d55c9cee7bb946d2a1 ******/
 		%feature("compactdefaultargs") SetDisjoined;
 		%feature("autodoc", "
 Parameters
@@ -6480,8 +6480,8 @@ Description
 ") SetDisjoined;
 		void SetDisjoined(const Standard_Integer num);
 
-		/****************** SetEnd ******************/
-		/**** md5 signature: c7fabda1b23b9b9674f25e44bc282ae3 ****/
+		/****** ShapeAnalysis_WireVertex::SetEnd ******/
+		/****** md5 signature: c7fabda1b23b9b9674f25e44bc282ae3 ******/
 		%feature("compactdefaultargs") SetEnd;
 		%feature("autodoc", "
 Parameters
@@ -6500,8 +6500,8 @@ Description
 ") SetEnd;
 		void SetEnd(const Standard_Integer num, const gp_XYZ & pos, const Standard_Real ufol);
 
-		/****************** SetInters ******************/
-		/**** md5 signature: fe3d221c509ef08f54b84f9770f207e3 ****/
+		/****** ShapeAnalysis_WireVertex::SetInters ******/
+		/****** md5 signature: fe3d221c509ef08f54b84f9770f207e3 ******/
 		%feature("compactdefaultargs") SetInters;
 		%feature("autodoc", "
 Parameters
@@ -6521,8 +6521,8 @@ Description
 ") SetInters;
 		void SetInters(const Standard_Integer num, const gp_XYZ & pos, const Standard_Real upre, const Standard_Real ufol);
 
-		/****************** SetPrecision ******************/
-		/**** md5 signature: a601cf881702916ad1a5bcd1fec314c4 ****/
+		/****** ShapeAnalysis_WireVertex::SetPrecision ******/
+		/****** md5 signature: a601cf881702916ad1a5bcd1fec314c4 ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
@@ -6539,8 +6539,8 @@ Sets the precision for work analysing: for each vertex, comparison between the e
 ") SetPrecision;
 		void SetPrecision(const Standard_Real preci);
 
-		/****************** SetSameCoords ******************/
-		/**** md5 signature: 342c4783b9bbe5879b60d8401f809824 ****/
+		/****** ShapeAnalysis_WireVertex::SetSameCoords ******/
+		/****** md5 signature: 342c4783b9bbe5879b60d8401f809824 ******/
 		%feature("compactdefaultargs") SetSameCoords;
 		%feature("autodoc", "
 Parameters
@@ -6557,8 +6557,8 @@ Records status 'same coords' (at the vertices tolerances).
 ") SetSameCoords;
 		void SetSameCoords(const Standard_Integer num);
 
-		/****************** SetSameVertex ******************/
-		/**** md5 signature: 076a84d63f82cbff4929d872c559a795 ****/
+		/****** ShapeAnalysis_WireVertex::SetSameVertex ******/
+		/****** md5 signature: 076a84d63f82cbff4929d872c559a795 ******/
 		%feature("compactdefaultargs") SetSameVertex;
 		%feature("autodoc", "
 Parameters
@@ -6575,8 +6575,8 @@ Records status 'same vertex' (logically) on vertex <num>.
 ") SetSameVertex;
 		void SetSameVertex(const Standard_Integer num);
 
-		/****************** SetStart ******************/
-		/**** md5 signature: 1b976331febdffff9819237d0da2d19b ****/
+		/****** ShapeAnalysis_WireVertex::SetStart ******/
+		/****** md5 signature: 1b976331febdffff9819237d0da2d19b ******/
 		%feature("compactdefaultargs") SetStart;
 		%feature("autodoc", "
 Parameters
@@ -6595,8 +6595,8 @@ Description
 ") SetStart;
 		void SetStart(const Standard_Integer num, const gp_XYZ & pos, const Standard_Real upre);
 
-		/****************** Status ******************/
-		/**** md5 signature: fe83936279a1a53fbd5bae4ee4fd0684 ****/
+		/****** ShapeAnalysis_WireVertex::Status ******/
+		/****** md5 signature: fe83936279a1a53fbd5bae4ee4fd0684 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -6613,8 +6613,8 @@ Returns the recorded status for a vertex more detail by method data.
 ") Status;
 		Standard_Integer Status(const Standard_Integer num);
 
-		/****************** UFollowing ******************/
-		/**** md5 signature: 6cb314fd1e9b110d50f5297ae810bcfb ****/
+		/****** ShapeAnalysis_WireVertex::UFollowing ******/
+		/****** md5 signature: 6cb314fd1e9b110d50f5297ae810bcfb ******/
 		%feature("compactdefaultargs") UFollowing;
 		%feature("autodoc", "
 Parameters
@@ -6631,8 +6631,8 @@ No available documentation.
 ") UFollowing;
 		Standard_Real UFollowing(const Standard_Integer num);
 
-		/****************** UPrevious ******************/
-		/**** md5 signature: 987cbdeff9f2aa95add4bb35a6575252 ****/
+		/****** ShapeAnalysis_WireVertex::UPrevious ******/
+		/****** md5 signature: 987cbdeff9f2aa95add4bb35a6575252 ******/
 		%feature("compactdefaultargs") UPrevious;
 		%feature("autodoc", "
 Parameters
@@ -6649,8 +6649,8 @@ No available documentation.
 ") UPrevious;
 		Standard_Real UPrevious(const Standard_Integer num);
 
-		/****************** WireData ******************/
-		/**** md5 signature: c8792f073dea4df1af697814fbf5f311 ****/
+		/****** ShapeAnalysis_WireVertex::WireData ******/
+		/****** md5 signature: c8792f073dea4df1af697814fbf5f311 ******/
 		%feature("compactdefaultargs") WireData;
 		%feature("autodoc", "Return
 -------
@@ -6679,8 +6679,8 @@ Returns analyzed wire.
 *********************************************/
 class ShapeAnalysis_TransferParametersProj : public ShapeAnalysis_TransferParameters {
 	public:
-		/****************** ShapeAnalysis_TransferParametersProj ******************/
-		/**** md5 signature: 05907c49624548dfe8719171abdd39c5 ****/
+		/****** ShapeAnalysis_TransferParametersProj::ShapeAnalysis_TransferParametersProj ******/
+		/****** md5 signature: 05907c49624548dfe8719171abdd39c5 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_TransferParametersProj;
 		%feature("autodoc", "Return
 -------
@@ -6692,8 +6692,8 @@ Creates empty constructor.
 ") ShapeAnalysis_TransferParametersProj;
 		 ShapeAnalysis_TransferParametersProj();
 
-		/****************** ShapeAnalysis_TransferParametersProj ******************/
-		/**** md5 signature: c3846ac7e9f414d4e4ed6ff260e1e218 ****/
+		/****** ShapeAnalysis_TransferParametersProj::ShapeAnalysis_TransferParametersProj ******/
+		/****** md5 signature: c3846ac7e9f414d4e4ed6ff260e1e218 ******/
 		%feature("compactdefaultargs") ShapeAnalysis_TransferParametersProj;
 		%feature("autodoc", "
 Parameters
@@ -6711,8 +6711,8 @@ No available documentation.
 ") ShapeAnalysis_TransferParametersProj;
 		 ShapeAnalysis_TransferParametersProj(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** CopyNMVertex ******************/
-		/**** md5 signature: 2fd9e6642b19e8c9963f6bdb0cdbaa3c ****/
+		/****** ShapeAnalysis_TransferParametersProj::CopyNMVertex ******/
+		/****** md5 signature: 2fd9e6642b19e8c9963f6bdb0cdbaa3c ******/
 		%feature("compactdefaultargs") CopyNMVertex;
 		%feature("autodoc", "
 Parameters
@@ -6731,8 +6731,8 @@ Make a copy of non-manifold vertex thevert (i.e. create new tvertex and replace 
 ") CopyNMVertex;
 		static TopoDS_Vertex CopyNMVertex(const TopoDS_Vertex & theVert, const TopoDS_Edge & toedge, const TopoDS_Edge & fromedge);
 
-		/****************** CopyNMVertex ******************/
-		/**** md5 signature: c1184339f62e903b30e9b1b1d5b694cf ****/
+		/****** ShapeAnalysis_TransferParametersProj::CopyNMVertex ******/
+		/****** md5 signature: c1184339f62e903b30e9b1b1d5b694cf ******/
 		%feature("compactdefaultargs") CopyNMVertex;
 		%feature("autodoc", "
 Parameters
@@ -6764,8 +6764,8 @@ Make a copy of non-manifold vertex thevert (i.e. create new tvertex and replace 
             $self->ForceProjection()=value;
             }
         };
-		/****************** Init ******************/
-		/**** md5 signature: 3c32c972be306684e0073a8837daa347 ****/
+		/****** ShapeAnalysis_TransferParametersProj::Init ******/
+		/****** md5 signature: 3c32c972be306684e0073a8837daa347 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6783,8 +6783,8 @@ No available documentation.
 ") Init;
 		virtual void Init(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** IsSameRange ******************/
-		/**** md5 signature: b43cec9b7a0b7a0b0a76b1621fd6cbe2 ****/
+		/****** ShapeAnalysis_TransferParametersProj::IsSameRange ******/
+		/****** md5 signature: b43cec9b7a0b7a0b0a76b1621fd6cbe2 ******/
 		%feature("compactdefaultargs") IsSameRange;
 		%feature("autodoc", "Return
 -------
@@ -6796,8 +6796,8 @@ Returns false;.
 ") IsSameRange;
 		virtual Standard_Boolean IsSameRange();
 
-		/****************** Perform ******************/
-		/**** md5 signature: da484c93300b4b1696cc44e270785889 ****/
+		/****** ShapeAnalysis_TransferParametersProj::Perform ******/
+		/****** md5 signature: da484c93300b4b1696cc44e270785889 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -6815,8 +6815,8 @@ Transfers parameters given by sequence params from 3d curve to pcurve (if to2d i
 ") Perform;
 		virtual opencascade::handle<TColStd_HSequenceOfReal> Perform(const opencascade::handle<TColStd_HSequenceOfReal> & Papams, const Standard_Boolean To2d);
 
-		/****************** Perform ******************/
-		/**** md5 signature: b4f4fac0124409915bf808658afa996b ****/
+		/****** ShapeAnalysis_TransferParametersProj::Perform ******/
+		/****** md5 signature: b4f4fac0124409915bf808658afa996b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -6834,8 +6834,8 @@ Transfers parameter given by param from 3d curve to pcurve (if to2d is true) or 
 ") Perform;
 		virtual Standard_Real Perform(const Standard_Real Param, const Standard_Boolean To2d);
 
-		/****************** TransferRange ******************/
-		/**** md5 signature: 2048b3cf3f6e338e1741a033a65021be ****/
+		/****** ShapeAnalysis_TransferParametersProj::TransferRange ******/
+		/****** md5 signature: 2048b3cf3f6e338e1741a033a65021be ******/
 		%feature("compactdefaultargs") TransferRange;
 		%feature("autodoc", "
 Parameters

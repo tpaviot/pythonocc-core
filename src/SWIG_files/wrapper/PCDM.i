@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PCDMDOCSTRING
 "PCDM module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_pcdm.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_pcdm.html"
 %enddef
 %module (package="OCC.Core", docstring=PCDMDOCSTRING) PCDM
 
@@ -242,8 +242,8 @@ typedef NCollection_Sequence<PCDM_Reference> PCDM_SequenceOfReference;
 %rename(pcdm) PCDM;
 class PCDM {
 	public:
-		/****************** FileDriverType ******************/
-		/**** md5 signature: 97feffff0539527a32e20dbd56a70780 ****/
+		/****** PCDM::FileDriverType ******/
+		/****** md5 signature: 97feffff0539527a32e20dbd56a70780 ******/
 		%feature("compactdefaultargs") FileDriverType;
 		%feature("autodoc", "
 Parameters
@@ -261,8 +261,8 @@ No available documentation.
 ") FileDriverType;
 		static PCDM_TypeOfFileDriver FileDriverType(TCollection_AsciiString aFileName, opencascade::handle<Storage_BaseDriver> & aBaseDriver);
 
-		/****************** FileDriverType ******************/
-		/**** md5 signature: 86ad52e7b1f77003aaab8c0233051baf ****/
+		/****** PCDM::FileDriverType ******/
+		/****** md5 signature: 86ad52e7b1f77003aaab8c0233051baf ******/
 		%feature("compactdefaultargs") FileDriverType;
 		%feature("autodoc", "
 Parameters
@@ -301,8 +301,8 @@ No available documentation.
 %nodefaultctor PCDM_ReadWriter;
 class PCDM_ReadWriter : public Standard_Transient {
 	public:
-		/****************** FileFormat ******************/
-		/**** md5 signature: b520f0cc5162eb6c2dc2ec34b97c43ec ****/
+		/****** PCDM_ReadWriter::FileFormat ******/
+		/****** md5 signature: b520f0cc5162eb6c2dc2ec34b97c43ec ******/
 		%feature("compactdefaultargs") FileFormat;
 		%feature("autodoc", "
 Parameters
@@ -319,8 +319,8 @@ Tries to get a format in the file. returns an empty string if the file could not
 ") FileFormat;
 		static TCollection_ExtendedString FileFormat(TCollection_ExtendedString aFileName);
 
-		/****************** FileFormat ******************/
-		/**** md5 signature: 290efbfac7ae6d5a7f55f592df7bd7f7 ****/
+		/****** PCDM_ReadWriter::FileFormat ******/
+		/****** md5 signature: 290efbfac7ae6d5a7f55f592df7bd7f7 ******/
 		%feature("compactdefaultargs") FileFormat;
 		%feature("autodoc", "
 Parameters
@@ -338,8 +338,8 @@ Tries to get a format from the stream. returns an empty string if the file could
 ") FileFormat;
 		static TCollection_ExtendedString FileFormat(std::istream & theIStream, opencascade::handle<Storage_Data> & theData);
 
-		/****************** Open ******************/
-		/**** md5 signature: a144cbf2785ef2f8f31a70359be3305c ****/
+		/****** PCDM_ReadWriter::Open ******/
+		/****** md5 signature: a144cbf2785ef2f8f31a70359be3305c ******/
 		%feature("compactdefaultargs") Open;
 		%feature("autodoc", "
 Parameters
@@ -358,8 +358,8 @@ No available documentation.
 ") Open;
 		static void Open(const opencascade::handle<Storage_BaseDriver> & aDriver, TCollection_ExtendedString aFileName, const Storage_OpenMode anOpenMode);
 
-		/****************** ReadDocumentVersion ******************/
-		/**** md5 signature: bf1f618098d7343ef9fbe7740b59f3aa ****/
+		/****** PCDM_ReadWriter::ReadDocumentVersion ******/
+		/****** md5 signature: bf1f618098d7343ef9fbe7740b59f3aa ******/
 		%feature("compactdefaultargs") ReadDocumentVersion;
 		%feature("autodoc", "
 Parameters
@@ -377,8 +377,8 @@ No available documentation.
 ") ReadDocumentVersion;
 		virtual Standard_Integer ReadDocumentVersion(TCollection_ExtendedString aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** ReadExtensions ******************/
-		/**** md5 signature: 2739d7ca0016c071d9071f6a6efd593b ****/
+		/****** PCDM_ReadWriter::ReadExtensions ******/
+		/****** md5 signature: 2739d7ca0016c071d9071f6a6efd593b ******/
 		%feature("compactdefaultargs") ReadExtensions;
 		%feature("autodoc", "
 Parameters
@@ -397,8 +397,8 @@ No available documentation.
 ") ReadExtensions;
 		virtual void ReadExtensions(TCollection_ExtendedString aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** ReadReferenceCounter ******************/
-		/**** md5 signature: c78e646bc2907d99bd148ca5d6ab0520 ****/
+		/****** PCDM_ReadWriter::ReadReferenceCounter ******/
+		/****** md5 signature: c78e646bc2907d99bd148ca5d6ab0520 ******/
 		%feature("compactdefaultargs") ReadReferenceCounter;
 		%feature("autodoc", "
 Parameters
@@ -416,8 +416,8 @@ No available documentation.
 ") ReadReferenceCounter;
 		virtual Standard_Integer ReadReferenceCounter(TCollection_ExtendedString theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** ReadReferences ******************/
-		/**** md5 signature: b3faa5a407a9c6a70f34faa350ed3328 ****/
+		/****** PCDM_ReadWriter::ReadReferences ******/
+		/****** md5 signature: b3faa5a407a9c6a70f34faa350ed3328 ******/
 		%feature("compactdefaultargs") ReadReferences;
 		%feature("autodoc", "
 Parameters
@@ -436,8 +436,8 @@ No available documentation.
 ") ReadReferences;
 		virtual void ReadReferences(TCollection_ExtendedString aFileName, PCDM_SequenceOfReference & theReferences, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** Reader ******************/
-		/**** md5 signature: 5abfb4fc6587b1edbdb91359566a4f72 ****/
+		/****** PCDM_ReadWriter::Reader ******/
+		/****** md5 signature: 5abfb4fc6587b1edbdb91359566a4f72 ******/
 		%feature("compactdefaultargs") Reader;
 		%feature("autodoc", "
 Parameters
@@ -454,8 +454,8 @@ Returns the convenient reader for a file.
 ") Reader;
 		static opencascade::handle<PCDM_ReadWriter> Reader(TCollection_ExtendedString aFileName);
 
-		/****************** Version ******************/
-		/**** md5 signature: 3a6502e85781045440638f7269538a9b ****/
+		/****** PCDM_ReadWriter::Version ******/
+		/****** md5 signature: 3a6502e85781045440638f7269538a9b ******/
 		%feature("compactdefaultargs") Version;
 		%feature("autodoc", "Return
 -------
@@ -467,8 +467,8 @@ Returns pcdm_readwriter_1.
 ") Version;
 		virtual TCollection_AsciiString Version();
 
-		/****************** WriteExtensions ******************/
-		/**** md5 signature: ff046bbd64ddfb5c98b698fb97500cce ****/
+		/****** PCDM_ReadWriter::WriteExtensions ******/
+		/****** md5 signature: ff046bbd64ddfb5c98b698fb97500cce ******/
 		%feature("compactdefaultargs") WriteExtensions;
 		%feature("autodoc", "
 Parameters
@@ -486,8 +486,8 @@ No available documentation.
 ") WriteExtensions;
 		virtual void WriteExtensions(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
-		/****************** WriteFileFormat ******************/
-		/**** md5 signature: a5aae79ebf9a26cf742edfd2cad4f010 ****/
+		/****** PCDM_ReadWriter::WriteFileFormat ******/
+		/****** md5 signature: a5aae79ebf9a26cf742edfd2cad4f010 ******/
 		%feature("compactdefaultargs") WriteFileFormat;
 		%feature("autodoc", "
 Parameters
@@ -505,8 +505,8 @@ No available documentation.
 ") WriteFileFormat;
 		static void WriteFileFormat(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
-		/****************** WriteReferenceCounter ******************/
-		/**** md5 signature: 288d068aadabd53bbeea3b420603b92b ****/
+		/****** PCDM_ReadWriter::WriteReferenceCounter ******/
+		/****** md5 signature: 288d068aadabd53bbeea3b420603b92b ******/
 		%feature("compactdefaultargs") WriteReferenceCounter;
 		%feature("autodoc", "
 Parameters
@@ -524,8 +524,8 @@ No available documentation.
 ") WriteReferenceCounter;
 		virtual void WriteReferenceCounter(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
-		/****************** WriteReferences ******************/
-		/**** md5 signature: a29b472aa14bc7a7c4fa45af6a247126 ****/
+		/****** PCDM_ReadWriter::WriteReferences ******/
+		/****** md5 signature: a29b472aa14bc7a7c4fa45af6a247126 ******/
 		%feature("compactdefaultargs") WriteReferences;
 		%feature("autodoc", "
 Parameters
@@ -544,8 +544,8 @@ No available documentation.
 ") WriteReferences;
 		virtual void WriteReferences(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString theReferencerFileName);
 
-		/****************** WriteVersion ******************/
-		/**** md5 signature: 159c6fe061eaba42cff513dc8813ee2f ****/
+		/****** PCDM_ReadWriter::WriteVersion ******/
+		/****** md5 signature: 159c6fe061eaba42cff513dc8813ee2f ******/
 		%feature("compactdefaultargs") WriteVersion;
 		%feature("autodoc", "
 Parameters
@@ -563,8 +563,8 @@ No available documentation.
 ") WriteVersion;
 		virtual void WriteVersion(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
-		/****************** Writer ******************/
-		/**** md5 signature: 64097579d1166d4efdc2fd6a6f0a76a8 ****/
+		/****** PCDM_ReadWriter::Writer ******/
+		/****** md5 signature: 64097579d1166d4efdc2fd6a6f0a76a8 ******/
 		%feature("compactdefaultargs") Writer;
 		%feature("autodoc", "Return
 -------
@@ -593,8 +593,8 @@ No available documentation.
 %nodefaultctor PCDM_Reader;
 class PCDM_Reader : public Standard_Transient {
 	public:
-		/****************** GetStatus ******************/
-		/**** md5 signature: 7da0146422c21bfb19406a01283cc862 ****/
+		/****** PCDM_Reader::GetStatus ******/
+		/****** md5 signature: 7da0146422c21bfb19406a01283cc862 ******/
 		%feature("compactdefaultargs") GetStatus;
 		%feature("autodoc", "Return
 -------
@@ -606,8 +606,8 @@ No available documentation.
 ") GetStatus;
 		PCDM_ReaderStatus GetStatus();
 
-		/****************** Read ******************/
-		/**** md5 signature: 2802ce2a9e685240bc6f6a5656a76a5d ****/
+		/****** PCDM_Reader::Read ******/
+		/****** md5 signature: 2802ce2a9e685240bc6f6a5656a76a5d ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -628,8 +628,8 @@ Retrieves the content of the file into a new document.
 ") Read;
 		virtual void Read(TCollection_ExtendedString aFileName, const opencascade::handle<CDM_Document> & aNewDocument, const opencascade::handle<CDM_Application> & anApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Read ******************/
-		/**** md5 signature: 8f1b39567f4c794c23a8f443996b71d0 ****/
+		/****** PCDM_Reader::Read ******/
+		/****** md5 signature: 8f1b39567f4c794c23a8f443996b71d0 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -689,8 +689,8 @@ AppendMode_Overwrite = AppendMode.AppendMode_Overwrite
 };
 /* end python proxy for enums */
 
-		/****************** PCDM_ReaderFilter ******************/
-		/**** md5 signature: 4fdd663fc1eb9a0562bfea80432f3678 ****/
+		/****** PCDM_ReaderFilter::PCDM_ReaderFilter ******/
+		/****** md5 signature: 4fdd663fc1eb9a0562bfea80432f3678 ******/
 		%feature("compactdefaultargs") PCDM_ReaderFilter;
 		%feature("autodoc", "Return
 -------
@@ -702,8 +702,8 @@ Creates an empty filter, so, all will be retrieved if nothing else is defined.
 ") PCDM_ReaderFilter;
 		 PCDM_ReaderFilter();
 
-		/****************** PCDM_ReaderFilter ******************/
-		/**** md5 signature: f469ce07b40ad960e4e48a472d2bc963 ****/
+		/****** PCDM_ReaderFilter::PCDM_ReaderFilter ******/
+		/****** md5 signature: f469ce07b40ad960e4e48a472d2bc963 ******/
 		%feature("compactdefaultargs") PCDM_ReaderFilter;
 		%feature("autodoc", "
 Parameters
@@ -720,8 +720,8 @@ Creates a filter to skip only one type of attributes.
 ") PCDM_ReaderFilter;
 		 PCDM_ReaderFilter(const opencascade::handle<Standard_Type> & theSkipped);
 
-		/****************** PCDM_ReaderFilter ******************/
-		/**** md5 signature: 3dade491e95ccf0d8aa64edf2c0d55c6 ****/
+		/****** PCDM_ReaderFilter::PCDM_ReaderFilter ******/
+		/****** md5 signature: 3dade491e95ccf0d8aa64edf2c0d55c6 ******/
 		%feature("compactdefaultargs") PCDM_ReaderFilter;
 		%feature("autodoc", "
 Parameters
@@ -738,8 +738,8 @@ Creates a filter to read only sub-labels of a label-path. like, for '0:2' it wil
 ") PCDM_ReaderFilter;
 		 PCDM_ReaderFilter(TCollection_AsciiString theEntryToRead);
 
-		/****************** PCDM_ReaderFilter ******************/
-		/**** md5 signature: 1b48284ae16fd29a0ea550b504663349 ****/
+		/****** PCDM_ReaderFilter::PCDM_ReaderFilter ******/
+		/****** md5 signature: 1b48284ae16fd29a0ea550b504663349 ******/
 		%feature("compactdefaultargs") PCDM_ReaderFilter;
 		%feature("autodoc", "
 Parameters
@@ -756,8 +756,8 @@ Creates a filter to append the content of file to open to existing document.
 ") PCDM_ReaderFilter;
 		 PCDM_ReaderFilter(AppendMode theAppend);
 
-		/****************** AddPath ******************/
-		/**** md5 signature: e26d150e60c619c720dd8dad7e857bbd ****/
+		/****** PCDM_ReaderFilter::AddPath ******/
+		/****** md5 signature: e26d150e60c619c720dd8dad7e857bbd ******/
 		%feature("compactdefaultargs") AddPath;
 		%feature("autodoc", "
 Parameters
@@ -774,8 +774,8 @@ Adds sub-tree path (like '0:2').
 ") AddPath;
 		void AddPath(TCollection_AsciiString theEntryToRead);
 
-		/****************** AddRead ******************/
-		/**** md5 signature: d55bf2b468f6fe99832137308b5afb34 ****/
+		/****** PCDM_ReaderFilter::AddRead ******/
+		/****** md5 signature: d55bf2b468f6fe99832137308b5afb34 ******/
 		%feature("compactdefaultargs") AddRead;
 		%feature("autodoc", "
 Parameters
@@ -792,8 +792,8 @@ Adds attribute to read by type. disables the skipped attributes added.
 ") AddRead;
 		void AddRead(const opencascade::handle<Standard_Type> & theRead);
 
-		/****************** AddRead ******************/
-		/**** md5 signature: a04c52605884c67563792b4d56cfb04d ****/
+		/****** PCDM_ReaderFilter::AddRead ******/
+		/****** md5 signature: a04c52605884c67563792b4d56cfb04d ******/
 		%feature("compactdefaultargs") AddRead;
 		%feature("autodoc", "
 Parameters
@@ -810,8 +810,8 @@ Adds attribute to read by type name. disables the skipped attributes added.
 ") AddRead;
 		void AddRead(TCollection_AsciiString theRead);
 
-		/****************** AddSkipped ******************/
-		/**** md5 signature: 17a3c13212ccf5121e7ea6f008a46a9e ****/
+		/****** PCDM_ReaderFilter::AddSkipped ******/
+		/****** md5 signature: 17a3c13212ccf5121e7ea6f008a46a9e ******/
 		%feature("compactdefaultargs") AddSkipped;
 		%feature("autodoc", "
 Parameters
@@ -828,8 +828,8 @@ Adds skipped attribute by type.
 ") AddSkipped;
 		void AddSkipped(const opencascade::handle<Standard_Type> & theSkipped);
 
-		/****************** AddSkipped ******************/
-		/**** md5 signature: 1641b144b6c36dce12e568a2a0acb7f7 ****/
+		/****** PCDM_ReaderFilter::AddSkipped ******/
+		/****** md5 signature: 1641b144b6c36dce12e568a2a0acb7f7 ******/
 		%feature("compactdefaultargs") AddSkipped;
 		%feature("autodoc", "
 Parameters
@@ -846,8 +846,8 @@ Adds skipped attribute by type name.
 ") AddSkipped;
 		void AddSkipped(TCollection_AsciiString theSkipped);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** PCDM_ReaderFilter::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -859,8 +859,8 @@ Makes filter pass all data.
 ") Clear;
 		void Clear();
 
-		/****************** Down ******************/
-		/**** md5 signature: 684b38c2ad7e6446dc5e63e3fe7acc0a ****/
+		/****** PCDM_ReaderFilter::Down ******/
+		/****** md5 signature: 684b38c2ad7e6446dc5e63e3fe7acc0a ******/
 		%feature("compactdefaultargs") Down;
 		%feature("autodoc", "
 Parameters
@@ -877,8 +877,8 @@ Iteration to the child with defined tag.
 ") Down;
 		virtual void Down(const int & theTag);
 
-		/****************** IsAppendMode ******************/
-		/**** md5 signature: c53202a73f18a553c82d098bdc9ca535 ****/
+		/****** PCDM_ReaderFilter::IsAppendMode ******/
+		/****** md5 signature: c53202a73f18a553c82d098bdc9ca535 ******/
 		%feature("compactdefaultargs") IsAppendMode;
 		%feature("autodoc", "Return
 -------
@@ -890,8 +890,8 @@ Returns true if appending to the document is performed.
 ") IsAppendMode;
 		Standard_Boolean IsAppendMode();
 
-		/****************** IsPartTree ******************/
-		/**** md5 signature: 642fca9fea4b8f850c4c9c7fb083d1c3 ****/
+		/****** PCDM_ReaderFilter::IsPartTree ******/
+		/****** md5 signature: 642fca9fea4b8f850c4c9c7fb083d1c3 ******/
 		%feature("compactdefaultargs") IsPartTree;
 		%feature("autodoc", "Return
 -------
@@ -903,8 +903,8 @@ Returns true if only part of the document tree will be retrieved.
 ") IsPartTree;
 		virtual Standard_Boolean IsPartTree();
 
-		/****************** IsPassed ******************/
-		/**** md5 signature: ff46ea18ae42f633977d14e6c1b34ba2 ****/
+		/****** PCDM_ReaderFilter::IsPassed ******/
+		/****** md5 signature: ff46ea18ae42f633977d14e6c1b34ba2 ******/
 		%feature("compactdefaultargs") IsPassed;
 		%feature("autodoc", "
 Parameters
@@ -921,8 +921,8 @@ Returns true if attribute must be read.
 ") IsPassed;
 		virtual Standard_Boolean IsPassed(const opencascade::handle<Standard_Type> & theAttributeID);
 
-		/****************** IsPassed ******************/
-		/**** md5 signature: 9e2e882b262a07e940f0bef16e372b54 ****/
+		/****** PCDM_ReaderFilter::IsPassed ******/
+		/****** md5 signature: 9e2e882b262a07e940f0bef16e372b54 ******/
 		%feature("compactdefaultargs") IsPassed;
 		%feature("autodoc", "
 Parameters
@@ -939,8 +939,8 @@ Returns true if content of the label must be read.
 ") IsPassed;
 		virtual Standard_Boolean IsPassed(TCollection_AsciiString theEntry);
 
-		/****************** IsPassed ******************/
-		/**** md5 signature: 5e48514b31a5fa61d8a015c3e7729542 ****/
+		/****** PCDM_ReaderFilter::IsPassed ******/
+		/****** md5 signature: 5e48514b31a5fa61d8a015c3e7729542 ******/
 		%feature("compactdefaultargs") IsPassed;
 		%feature("autodoc", "Return
 -------
@@ -952,8 +952,8 @@ Returns true if content of the currently iterated label must be read.
 ") IsPassed;
 		virtual Standard_Boolean IsPassed();
 
-		/****************** IsPassedAttr ******************/
-		/**** md5 signature: c87c4d1f2fdc991decf6199f8cd8a28e ****/
+		/****** PCDM_ReaderFilter::IsPassedAttr ******/
+		/****** md5 signature: c87c4d1f2fdc991decf6199f8cd8a28e ******/
 		%feature("compactdefaultargs") IsPassedAttr;
 		%feature("autodoc", "
 Parameters
@@ -970,8 +970,8 @@ Returns true if attribute must be read.
 ") IsPassedAttr;
 		virtual Standard_Boolean IsPassedAttr(TCollection_AsciiString theAttributeType);
 
-		/****************** IsSubPassed ******************/
-		/**** md5 signature: ba594a6a5c6a8d3f037af25ddb422741 ****/
+		/****** PCDM_ReaderFilter::IsSubPassed ******/
+		/****** md5 signature: ba594a6a5c6a8d3f037af25ddb422741 ******/
 		%feature("compactdefaultargs") IsSubPassed;
 		%feature("autodoc", "
 Parameters
@@ -988,8 +988,8 @@ Returns true if some sub-label of the given label is passed.
 ") IsSubPassed;
 		virtual Standard_Boolean IsSubPassed(TCollection_AsciiString theEntry);
 
-		/****************** IsSubPassed ******************/
-		/**** md5 signature: ac3b63e0f17ab0448083482de2136688 ****/
+		/****** PCDM_ReaderFilter::IsSubPassed ******/
+		/****** md5 signature: ac3b63e0f17ab0448083482de2136688 ******/
 		%feature("compactdefaultargs") IsSubPassed;
 		%feature("autodoc", "Return
 -------
@@ -1001,8 +1001,8 @@ Returns true if some sub-label of the currently iterated label is passed.
 ") IsSubPassed;
 		virtual Standard_Boolean IsSubPassed();
 
-		/****************** Mode ******************/
-		/**** md5 signature: b965c8583016b065ce8a0e74db3f348a ****/
+		/****** PCDM_ReaderFilter::Mode ******/
+		/****** md5 signature: b965c8583016b065ce8a0e74db3f348a ******/
 		%feature("compactdefaultargs") Mode;
 		%feature("autodoc", "Return
 -------
@@ -1014,8 +1014,8 @@ Returns the append mode.
 ") Mode;
 		PCDM_ReaderFilter::AppendMode Mode();
 
-		/****************** StartIteration ******************/
-		/**** md5 signature: e37a7287631a4e3700eac402b9e23054 ****/
+		/****** PCDM_ReaderFilter::StartIteration ******/
+		/****** md5 signature: e37a7287631a4e3700eac402b9e23054 ******/
 		%feature("compactdefaultargs") StartIteration;
 		%feature("autodoc", "Return
 -------
@@ -1027,8 +1027,8 @@ Starts the tree iterator. it is used for fast searching of passed labels if the 
 ") StartIteration;
 		virtual void StartIteration();
 
-		/****************** Up ******************/
-		/**** md5 signature: bd266ecf07c8b3333e4c76605f7dd842 ****/
+		/****** PCDM_ReaderFilter::Up ******/
+		/****** md5 signature: bd266ecf07c8b3333e4c76605f7dd842 ******/
 		%feature("compactdefaultargs") Up;
 		%feature("autodoc", "Return
 -------
@@ -1056,8 +1056,8 @@ Iteration to the child label.
 ***********************/
 class PCDM_Reference {
 	public:
-		/****************** PCDM_Reference ******************/
-		/**** md5 signature: fcb919a21fac80885f7167c85ef93229 ****/
+		/****** PCDM_Reference::PCDM_Reference ******/
+		/****** md5 signature: fcb919a21fac80885f7167c85ef93229 ******/
 		%feature("compactdefaultargs") PCDM_Reference;
 		%feature("autodoc", "Return
 -------
@@ -1069,8 +1069,8 @@ No available documentation.
 ") PCDM_Reference;
 		 PCDM_Reference();
 
-		/****************** PCDM_Reference ******************/
-		/**** md5 signature: a461ba6e086806da3bb8a64471ca9927 ****/
+		/****** PCDM_Reference::PCDM_Reference ******/
+		/****** md5 signature: a461ba6e086806da3bb8a64471ca9927 ******/
 		%feature("compactdefaultargs") PCDM_Reference;
 		%feature("autodoc", "
 Parameters
@@ -1089,8 +1089,8 @@ No available documentation.
 ") PCDM_Reference;
 		 PCDM_Reference(const Standard_Integer aReferenceIdentifier, TCollection_ExtendedString aFileName, const Standard_Integer aDocumentVersion);
 
-		/****************** DocumentVersion ******************/
-		/**** md5 signature: bf19019d65def7107fbf722b45605af2 ****/
+		/****** PCDM_Reference::DocumentVersion ******/
+		/****** md5 signature: bf19019d65def7107fbf722b45605af2 ******/
 		%feature("compactdefaultargs") DocumentVersion;
 		%feature("autodoc", "Return
 -------
@@ -1102,8 +1102,8 @@ No available documentation.
 ") DocumentVersion;
 		Standard_Integer DocumentVersion();
 
-		/****************** FileName ******************/
-		/**** md5 signature: 55453540d5ecaade8ddcde5846f5b88f ****/
+		/****** PCDM_Reference::FileName ******/
+		/****** md5 signature: 55453540d5ecaade8ddcde5846f5b88f ******/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "Return
 -------
@@ -1115,8 +1115,8 @@ No available documentation.
 ") FileName;
 		TCollection_ExtendedString FileName();
 
-		/****************** ReferenceIdentifier ******************/
-		/**** md5 signature: 0b6f1d6aeee20151c55bab21628d6c27 ****/
+		/****** PCDM_Reference::ReferenceIdentifier ******/
+		/****** md5 signature: 0b6f1d6aeee20151c55bab21628d6c27 ******/
 		%feature("compactdefaultargs") ReferenceIdentifier;
 		%feature("autodoc", "Return
 -------
@@ -1142,8 +1142,8 @@ No available documentation.
 *******************************/
 class PCDM_ReferenceIterator : public Standard_Transient {
 	public:
-		/****************** PCDM_ReferenceIterator ******************/
-		/**** md5 signature: bc2c61f33a2535f4140a63d8a42bf573 ****/
+		/****** PCDM_ReferenceIterator::PCDM_ReferenceIterator ******/
+		/****** md5 signature: bc2c61f33a2535f4140a63d8a42bf573 ******/
 		%feature("compactdefaultargs") PCDM_ReferenceIterator;
 		%feature("autodoc", "
 Parameters
@@ -1160,8 +1160,8 @@ Warning! the constructor does not initialization.
 ") PCDM_ReferenceIterator;
 		 PCDM_ReferenceIterator(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
-		/****************** Init ******************/
-		/**** md5 signature: e27dcfd0fb2609919194e4e256a89398 ****/
+		/****** PCDM_ReferenceIterator::Init ******/
+		/****** md5 signature: e27dcfd0fb2609919194e4e256a89398 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1178,8 +1178,8 @@ No available documentation.
 ") Init;
 		virtual void Init(const opencascade::handle<CDM_MetaData> & aMetaData);
 
-		/****************** LoadReferences ******************/
-		/**** md5 signature: 1c28e34b7e3d8ffab22557e150b82442 ****/
+		/****** PCDM_ReferenceIterator::LoadReferences ******/
+		/****** md5 signature: 1c28e34b7e3d8ffab22557e150b82442 ******/
 		%feature("compactdefaultargs") LoadReferences;
 		%feature("autodoc", "
 Parameters
@@ -1216,8 +1216,8 @@ No available documentation.
 %nodefaultctor PCDM_Writer;
 class PCDM_Writer : public Standard_Transient {
 	public:
-		/****************** Write ******************/
-		/**** md5 signature: 129162c4da19577c25e00185debd1e17 ****/
+		/****** PCDM_Writer::Write ******/
+		/****** md5 signature: 129162c4da19577c25e00185debd1e17 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1236,8 +1236,8 @@ No available documentation.
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 8baf1d701c86c68efb7596bfc9c38f31 ****/
+		/****** PCDM_Writer::Write ******/
+		/****** md5 signature: 8baf1d701c86c68efb7596bfc9c38f31 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1271,8 +1271,8 @@ Write <thedocument> to theostream.
 **************************/
 class PCDM_ReadWriter_1 : public PCDM_ReadWriter {
 	public:
-		/****************** PCDM_ReadWriter_1 ******************/
-		/**** md5 signature: 3712b2a104424c2ca788af2565ee13ef ****/
+		/****** PCDM_ReadWriter_1::PCDM_ReadWriter_1 ******/
+		/****** md5 signature: 3712b2a104424c2ca788af2565ee13ef ******/
 		%feature("compactdefaultargs") PCDM_ReadWriter_1;
 		%feature("autodoc", "Return
 -------
@@ -1284,8 +1284,8 @@ No available documentation.
 ") PCDM_ReadWriter_1;
 		 PCDM_ReadWriter_1();
 
-		/****************** ReadDocumentVersion ******************/
-		/**** md5 signature: 6fa0d97ebadaf88d4c19a79af48272e8 ****/
+		/****** PCDM_ReadWriter_1::ReadDocumentVersion ******/
+		/****** md5 signature: 6fa0d97ebadaf88d4c19a79af48272e8 ******/
 		%feature("compactdefaultargs") ReadDocumentVersion;
 		%feature("autodoc", "
 Parameters
@@ -1303,8 +1303,8 @@ No available documentation.
 ") ReadDocumentVersion;
 		Standard_Integer ReadDocumentVersion(TCollection_ExtendedString aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** ReadExtensions ******************/
-		/**** md5 signature: e79724363b9b64d4ee07dc721eaab89c ****/
+		/****** PCDM_ReadWriter_1::ReadExtensions ******/
+		/****** md5 signature: e79724363b9b64d4ee07dc721eaab89c ******/
 		%feature("compactdefaultargs") ReadExtensions;
 		%feature("autodoc", "
 Parameters
@@ -1323,8 +1323,8 @@ No available documentation.
 ") ReadExtensions;
 		void ReadExtensions(TCollection_ExtendedString aFileName, TColStd_SequenceOfExtendedString & theExtensions, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** ReadReferenceCounter ******************/
-		/**** md5 signature: 2a9d538fbc9a34aae5162f188bc0dec8 ****/
+		/****** PCDM_ReadWriter_1::ReadReferenceCounter ******/
+		/****** md5 signature: 2a9d538fbc9a34aae5162f188bc0dec8 ******/
 		%feature("compactdefaultargs") ReadReferenceCounter;
 		%feature("autodoc", "
 Parameters
@@ -1342,8 +1342,8 @@ No available documentation.
 ") ReadReferenceCounter;
 		Standard_Integer ReadReferenceCounter(TCollection_ExtendedString aFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** ReadReferences ******************/
-		/**** md5 signature: c890e9c775ee329a9c416a624708d4fb ****/
+		/****** PCDM_ReadWriter_1::ReadReferences ******/
+		/****** md5 signature: c890e9c775ee329a9c416a624708d4fb ******/
 		%feature("compactdefaultargs") ReadReferences;
 		%feature("autodoc", "
 Parameters
@@ -1362,8 +1362,8 @@ No available documentation.
 ") ReadReferences;
 		void ReadReferences(TCollection_ExtendedString aFileName, PCDM_SequenceOfReference & theReferences, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** Version ******************/
-		/**** md5 signature: 0ac00c5dd4c467cbc7e9c3010b5092a6 ****/
+		/****** PCDM_ReadWriter_1::Version ******/
+		/****** md5 signature: 0ac00c5dd4c467cbc7e9c3010b5092a6 ******/
 		%feature("compactdefaultargs") Version;
 		%feature("autodoc", "Return
 -------
@@ -1375,8 +1375,8 @@ Returns pcdm_readwriter_1.
 ") Version;
 		TCollection_AsciiString Version();
 
-		/****************** WriteExtensions ******************/
-		/**** md5 signature: 85b751cddf0f4ac1b87e8791d6807b9c ****/
+		/****** PCDM_ReadWriter_1::WriteExtensions ******/
+		/****** md5 signature: 85b751cddf0f4ac1b87e8791d6807b9c ******/
 		%feature("compactdefaultargs") WriteExtensions;
 		%feature("autodoc", "
 Parameters
@@ -1394,8 +1394,8 @@ No available documentation.
 ") WriteExtensions;
 		void WriteExtensions(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
-		/****************** WriteReferenceCounter ******************/
-		/**** md5 signature: f007ff2a88f7afd58caed0ad641afa67 ****/
+		/****** PCDM_ReadWriter_1::WriteReferenceCounter ******/
+		/****** md5 signature: f007ff2a88f7afd58caed0ad641afa67 ******/
 		%feature("compactdefaultargs") WriteReferenceCounter;
 		%feature("autodoc", "
 Parameters
@@ -1413,8 +1413,8 @@ No available documentation.
 ") WriteReferenceCounter;
 		void WriteReferenceCounter(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument);
 
-		/****************** WriteReferences ******************/
-		/**** md5 signature: 60084cf94d2b5578acc0f69aeb515c97 ****/
+		/****** PCDM_ReadWriter_1::WriteReferences ******/
+		/****** md5 signature: 60084cf94d2b5578acc0f69aeb515c97 ******/
 		%feature("compactdefaultargs") WriteReferences;
 		%feature("autodoc", "
 Parameters
@@ -1433,8 +1433,8 @@ No available documentation.
 ") WriteReferences;
 		void WriteReferences(const opencascade::handle<Storage_Data> & aData, const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString theReferencerFileName);
 
-		/****************** WriteVersion ******************/
-		/**** md5 signature: 1237b39223ebf6a0c84b2cfc30675d46 ****/
+		/****** PCDM_ReadWriter_1::WriteVersion ******/
+		/****** md5 signature: 1237b39223ebf6a0c84b2cfc30675d46 ******/
 		%feature("compactdefaultargs") WriteVersion;
 		%feature("autodoc", "
 Parameters
@@ -1469,8 +1469,8 @@ No available documentation.
 %nodefaultctor PCDM_RetrievalDriver;
 class PCDM_RetrievalDriver : public PCDM_Reader {
 	public:
-		/****************** DocumentVersion ******************/
-		/**** md5 signature: f11c15e892e5505b77706d6fd7a1801f ****/
+		/****** PCDM_RetrievalDriver::DocumentVersion ******/
+		/****** md5 signature: f11c15e892e5505b77706d6fd7a1801f ******/
 		%feature("compactdefaultargs") DocumentVersion;
 		%feature("autodoc", "
 Parameters
@@ -1488,8 +1488,8 @@ No available documentation.
 ") DocumentVersion;
 		static Standard_Integer DocumentVersion(TCollection_ExtendedString theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** GetFormat ******************/
-		/**** md5 signature: fffd3a693cb020e12e5658bc526df844 ****/
+		/****** PCDM_RetrievalDriver::GetFormat ******/
+		/****** md5 signature: fffd3a693cb020e12e5658bc526df844 ******/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "Return
 -------
@@ -1501,8 +1501,8 @@ No available documentation.
 ") GetFormat;
 		TCollection_ExtendedString GetFormat();
 
-		/****************** ReferenceCounter ******************/
-		/**** md5 signature: 088a295a6318f05f8f6c481d75ee6b7d ****/
+		/****** PCDM_RetrievalDriver::ReferenceCounter ******/
+		/****** md5 signature: 088a295a6318f05f8f6c481d75ee6b7d ******/
 		%feature("compactdefaultargs") ReferenceCounter;
 		%feature("autodoc", "
 Parameters
@@ -1520,8 +1520,8 @@ No available documentation.
 ") ReferenceCounter;
 		static Standard_Integer ReferenceCounter(TCollection_ExtendedString theFileName, const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** SetFormat ******************/
-		/**** md5 signature: 0a047ddc473d166aa027611e6069ffc3 ****/
+		/****** PCDM_RetrievalDriver::SetFormat ******/
+		/****** md5 signature: 0a047ddc473d166aa027611e6069ffc3 ******/
 		%feature("compactdefaultargs") SetFormat;
 		%feature("autodoc", "
 Parameters
@@ -1554,8 +1554,8 @@ No available documentation.
 ***************************/
 class PCDM_StorageDriver : public PCDM_Writer {
 	public:
-		/****************** GetFormat ******************/
-		/**** md5 signature: fffd3a693cb020e12e5658bc526df844 ****/
+		/****** PCDM_StorageDriver::GetFormat ******/
+		/****** md5 signature: fffd3a693cb020e12e5658bc526df844 ******/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "Return
 -------
@@ -1567,8 +1567,8 @@ No available documentation.
 ") GetFormat;
 		TCollection_ExtendedString GetFormat();
 
-		/****************** GetStoreStatus ******************/
-		/**** md5 signature: aa33a6ff6e8cb07ab8472ff009fae2e1 ****/
+		/****** PCDM_StorageDriver::GetStoreStatus ******/
+		/****** md5 signature: aa33a6ff6e8cb07ab8472ff009fae2e1 ******/
 		%feature("compactdefaultargs") GetStoreStatus;
 		%feature("autodoc", "Return
 -------
@@ -1580,8 +1580,8 @@ No available documentation.
 ") GetStoreStatus;
 		PCDM_StoreStatus GetStoreStatus();
 
-		/****************** IsError ******************/
-		/**** md5 signature: c52b85ee17e423925f2cd97bf6879614 ****/
+		/****** PCDM_StorageDriver::IsError ******/
+		/****** md5 signature: c52b85ee17e423925f2cd97bf6879614 ******/
 		%feature("compactdefaultargs") IsError;
 		%feature("autodoc", "Return
 -------
@@ -1593,8 +1593,8 @@ No available documentation.
 ") IsError;
 		Standard_Boolean IsError();
 
-		/****************** Make ******************/
-		/**** md5 signature: 39cf823dff5118394c88e4f36d9f1903 ****/
+		/****** PCDM_StorageDriver::Make ******/
+		/****** md5 signature: 39cf823dff5118394c88e4f36d9f1903 ******/
 		%feature("compactdefaultargs") Make;
 		%feature("autodoc", "
 Parameters
@@ -1611,8 +1611,8 @@ Raises notimplemented.
 ") Make;
 		virtual opencascade::handle<PCDM_Document> Make(const opencascade::handle<CDM_Document> & aDocument);
 
-		/****************** Make ******************/
-		/**** md5 signature: 41f831e6d4c5111bd8e3059da3abdca8 ****/
+		/****** PCDM_StorageDriver::Make ******/
+		/****** md5 signature: 41f831e6d4c5111bd8e3059da3abdca8 ******/
 		%feature("compactdefaultargs") Make;
 		%feature("autodoc", "
 Parameters
@@ -1630,8 +1630,8 @@ By default, puts in the sequence the document returns by the previous make metho
 ") Make;
 		virtual void Make(const opencascade::handle<CDM_Document> & aDocument, PCDM_SequenceOfDocument & Documents);
 
-		/****************** SetFormat ******************/
-		/**** md5 signature: 0a047ddc473d166aa027611e6069ffc3 ****/
+		/****** PCDM_StorageDriver::SetFormat ******/
+		/****** md5 signature: 0a047ddc473d166aa027611e6069ffc3 ******/
 		%feature("compactdefaultargs") SetFormat;
 		%feature("autodoc", "
 Parameters
@@ -1648,8 +1648,8 @@ No available documentation.
 ") SetFormat;
 		void SetFormat(TCollection_ExtendedString aformat);
 
-		/****************** SetIsError ******************/
-		/**** md5 signature: 62f1d1b8739fce144b7c044eeba2371b ****/
+		/****** PCDM_StorageDriver::SetIsError ******/
+		/****** md5 signature: 62f1d1b8739fce144b7c044eeba2371b ******/
 		%feature("compactdefaultargs") SetIsError;
 		%feature("autodoc", "
 Parameters
@@ -1666,8 +1666,8 @@ No available documentation.
 ") SetIsError;
 		void SetIsError(const Standard_Boolean theIsError);
 
-		/****************** SetStoreStatus ******************/
-		/**** md5 signature: 93e09ef2094b69fe064748e4a8b36ded ****/
+		/****** PCDM_StorageDriver::SetStoreStatus ******/
+		/****** md5 signature: 93e09ef2094b69fe064748e4a8b36ded ******/
 		%feature("compactdefaultargs") SetStoreStatus;
 		%feature("autodoc", "
 Parameters
@@ -1684,8 +1684,8 @@ No available documentation.
 ") SetStoreStatus;
 		void SetStoreStatus(const PCDM_StoreStatus theStoreStatus);
 
-		/****************** Write ******************/
-		/**** md5 signature: 530bf2b64cafb9602dd07d7293c739c7 ****/
+		/****** PCDM_StorageDriver::Write ******/
+		/****** md5 signature: 530bf2b64cafb9602dd07d7293c739c7 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1704,8 +1704,8 @@ Warning! raises drivererror if an error occurs during inside the make method. st
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 1593005190d18463c833b2c78ffb13a5 ****/
+		/****** PCDM_StorageDriver::Write ******/
+		/****** md5 signature: 1593005190d18463c833b2c78ffb13a5 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters

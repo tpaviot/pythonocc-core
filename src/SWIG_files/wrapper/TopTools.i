@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPTOOLSDOCSTRING
 "TopTools module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_toptools.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_toptools.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPTOOLSDOCSTRING) TopTools
 
@@ -230,8 +230,8 @@ typedef NCollection_Sequence<TopoDS_Shape> TopTools_SequenceOfShape;
 %rename(toptools) TopTools;
 class TopTools {
 	public:
-		/****************** Dummy ******************/
-		/**** md5 signature: 3d202e2bac865a0ccb3610a850392a11 ****/
+		/****** TopTools::Dummy ******/
+		/****** md5 signature: 3d202e2bac865a0ccb3610a850392a11 ******/
 		%feature("compactdefaultargs") Dummy;
 		%feature("autodoc", "
 Parameters
@@ -248,8 +248,8 @@ This is to bypass an extraction bug. it will force the inclusion of standard_int
 ") Dummy;
 		static void Dummy(const Standard_Integer I);
 
-		/****************** Dump ******************/
-		/**** md5 signature: d8fbac42c489d0bae98b03b1387b21c5 ****/
+		/****** TopTools::Dump ******/
+		/****** md5 signature: d8fbac42c489d0bae98b03b1387b21c5 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -280,8 +280,8 @@ A set of shapes. can be dump, wrote or read. dumps the topological structure of 
 *****************************/
 class TopTools_LocationSet {
 	public:
-		/****************** TopTools_LocationSet ******************/
-		/**** md5 signature: 533a3b5dd3fb89d3615ab5684bea4bc6 ****/
+		/****** TopTools_LocationSet::TopTools_LocationSet ******/
+		/****** md5 signature: 533a3b5dd3fb89d3615ab5684bea4bc6 ******/
 		%feature("compactdefaultargs") TopTools_LocationSet;
 		%feature("autodoc", "Return
 -------
@@ -293,8 +293,8 @@ Returns an empty set of locations.
 ") TopTools_LocationSet;
 		 TopTools_LocationSet();
 
-		/****************** Add ******************/
-		/**** md5 signature: 6d3b7662960d74b2d6e66b85d46b59f7 ****/
+		/****** TopTools_LocationSet::Add ******/
+		/****** md5 signature: 6d3b7662960d74b2d6e66b85d46b59f7 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -311,8 +311,8 @@ Incorporate a new location in the set and returns its index.
 ") Add;
 		Standard_Integer Add(const TopLoc_Location & L);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TopTools_LocationSet::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -324,8 +324,8 @@ Clears the content of the set.
 ") Clear;
 		void Clear();
 
-		/****************** Dump ******************/
-		/**** md5 signature: e60d722f65a7811be636699da7600e78 ****/
+		/****** TopTools_LocationSet::Dump ******/
+		/****** md5 signature: e60d722f65a7811be636699da7600e78 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -341,8 +341,8 @@ Dumps the content of me on the stream <os>.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
-		/****************** Index ******************/
-		/**** md5 signature: fbb01960bb9b443c36d99f6e7b11f6c5 ****/
+		/****** TopTools_LocationSet::Index ******/
+		/****** md5 signature: fbb01960bb9b443c36d99f6e7b11f6c5 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -359,8 +359,8 @@ Returns the index of <l>.
 ") Index;
 		Standard_Integer Index(const TopLoc_Location & L);
 
-		/****************** Location ******************/
-		/**** md5 signature: dc46e30cfdcf3a3cf13e5f29298f5163 ****/
+		/****** TopTools_LocationSet::Location ******/
+		/****** md5 signature: dc46e30cfdcf3a3cf13e5f29298f5163 ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
@@ -377,8 +377,8 @@ Returns the location of index <i>.
 ") Location;
 		const TopLoc_Location & Location(const Standard_Integer I);
 
-		/****************** Read ******************/
-		/**** md5 signature: e5ce096318e6663d7e9f744e8d66b70b ****/
+		/****** TopTools_LocationSet::Read ******/
+		/****** md5 signature: e5ce096318e6663d7e9f744e8d66b70b ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -396,8 +396,8 @@ Reads the content of me from the stream <is>. me is first cleared.
 ") Read;
 		void Read(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 6a95f1af9efa3b2eec48861a606241ee ****/
+		/****** TopTools_LocationSet::Write ******/
+		/****** md5 signature: 6a95f1af9efa3b2eec48861a606241ee ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -428,8 +428,8 @@ Writes the content of me on the stream <os> in a format that can be read back by
 ***************************************/
 class TopTools_MutexForShapeProvider {
 	public:
-		/****************** TopTools_MutexForShapeProvider ******************/
-		/**** md5 signature: 186234db6cbd1a9407b42684a8f3081d ****/
+		/****** TopTools_MutexForShapeProvider::TopTools_MutexForShapeProvider ******/
+		/****** md5 signature: 186234db6cbd1a9407b42684a8f3081d ******/
 		%feature("compactdefaultargs") TopTools_MutexForShapeProvider;
 		%feature("autodoc", "Return
 -------
@@ -441,8 +441,8 @@ Constructor.
 ") TopTools_MutexForShapeProvider;
 		 TopTools_MutexForShapeProvider();
 
-		/****************** CreateMutexForShape ******************/
-		/**** md5 signature: b5392c05a309d51d95fab879c6f4617b ****/
+		/****** TopTools_MutexForShapeProvider::CreateMutexForShape ******/
+		/****** md5 signature: b5392c05a309d51d95fab879c6f4617b ******/
 		%feature("compactdefaultargs") CreateMutexForShape;
 		%feature("autodoc", "
 Parameters
@@ -459,8 +459,8 @@ Creates and associates mutex with theshape.
 ") CreateMutexForShape;
 		void CreateMutexForShape(const TopoDS_Shape & theShape);
 
-		/****************** CreateMutexesForSubShapes ******************/
-		/**** md5 signature: 530747123c3841aaa5f39dcd5b102477 ****/
+		/****** TopTools_MutexForShapeProvider::CreateMutexesForSubShapes ******/
+		/****** md5 signature: 530747123c3841aaa5f39dcd5b102477 ******/
 		%feature("compactdefaultargs") CreateMutexesForSubShapes;
 		%feature("autodoc", "
 Parameters
@@ -478,8 +478,8 @@ Creates and associates mutexes with each sub-shape of type thetype in theshape.
 ") CreateMutexesForSubShapes;
 		void CreateMutexesForSubShapes(const TopoDS_Shape & theShape, const TopAbs_ShapeEnum theType);
 
-		/****************** GetMutex ******************/
-		/**** md5 signature: 48d2b8ac7b66d60ead3fd28dc2f08e09 ****/
+		/****** TopTools_MutexForShapeProvider::GetMutex ******/
+		/****** md5 signature: 48d2b8ac7b66d60ead3fd28dc2f08e09 ******/
 		%feature("compactdefaultargs") GetMutex;
 		%feature("autodoc", "
 Parameters
@@ -496,8 +496,8 @@ Returns pointer to mutex associated with theshape. in case when mutex not found 
 ") GetMutex;
 		Standard_Mutex * GetMutex(const TopoDS_Shape & theShape);
 
-		/****************** RemoveAllMutexes ******************/
-		/**** md5 signature: d2ba49e58f7b852bc20e81e25b6b909d ****/
+		/****** TopTools_MutexForShapeProvider::RemoveAllMutexes ******/
+		/****** md5 signature: d2ba49e58f7b852bc20e81e25b6b909d ******/
 		%feature("compactdefaultargs") RemoveAllMutexes;
 		%feature("autodoc", "Return
 -------
@@ -537,8 +537,8 @@ class TopTools_ShapeMapHasher {
 **************************/
 class TopTools_ShapeSet {
 	public:
-		/****************** TopTools_ShapeSet ******************/
-		/**** md5 signature: bd8be06687b281459575af973cd3b635 ****/
+		/****** TopTools_ShapeSet::TopTools_ShapeSet ******/
+		/****** md5 signature: bd8be06687b281459575af973cd3b635 ******/
 		%feature("compactdefaultargs") TopTools_ShapeSet;
 		%feature("autodoc", "Return
 -------
@@ -550,8 +550,8 @@ Builds an empty shapeset.
 ") TopTools_ShapeSet;
 		 TopTools_ShapeSet();
 
-		/****************** Add ******************/
-		/**** md5 signature: 53c72d7ee288afd721c7b0a7e7296012 ****/
+		/****** TopTools_ShapeSet::Add ******/
+		/****** md5 signature: 53c72d7ee288afd721c7b0a7e7296012 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -568,8 +568,8 @@ Stores <s> and its sub-shape. returns the index of <s>. the method addgeometry i
 ") Add;
 		Standard_Integer Add(const TopoDS_Shape & S);
 
-		/****************** AddGeometry ******************/
-		/**** md5 signature: 0fd943cd475c8e07eb80f1f4508f536a ****/
+		/****** TopTools_ShapeSet::AddGeometry ******/
+		/****** md5 signature: 0fd943cd475c8e07eb80f1f4508f536a ******/
 		%feature("compactdefaultargs") AddGeometry;
 		%feature("autodoc", "
 Parameters
@@ -586,8 +586,8 @@ Stores the geometry of <s>.
 ") AddGeometry;
 		virtual void AddGeometry(const TopoDS_Shape & S);
 
-		/****************** AddShapes ******************/
-		/**** md5 signature: e51de0c8f9d77467626b59e64779aeff ****/
+		/****** TopTools_ShapeSet::AddShapes ******/
+		/****** md5 signature: e51de0c8f9d77467626b59e64779aeff ******/
 		%feature("compactdefaultargs") AddShapes;
 		%feature("autodoc", "
 Parameters
@@ -605,8 +605,8 @@ Inserts the shape <s2> in the shape <s1>. this method must be redefined to use t
 ") AddShapes;
 		virtual void AddShapes(TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
-		/****************** ChangeLocations ******************/
-		/**** md5 signature: 30f61a461f3fc1bda3bafd1089a88635 ****/
+		/****** TopTools_ShapeSet::ChangeLocations ******/
+		/****** md5 signature: 30f61a461f3fc1bda3bafd1089a88635 ******/
 		%feature("compactdefaultargs") ChangeLocations;
 		%feature("autodoc", "Return
 -------
@@ -618,8 +618,8 @@ No available documentation.
 ") ChangeLocations;
 		TopTools_LocationSet & ChangeLocations();
 
-		/****************** Check ******************/
-		/**** md5 signature: e332cba2d27e7a4823bf6a422228a39a ****/
+		/****** TopTools_ShapeSet::Check ******/
+		/****** md5 signature: e332cba2d27e7a4823bf6a422228a39a ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -637,8 +637,8 @@ This method is called after each new completed shape. <t> is the type. <s> is th
 ") Check;
 		virtual void Check(const TopAbs_ShapeEnum T, TopoDS_Shape & S);
 
-		/****************** Clear ******************/
-		/**** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ****/
+		/****** TopTools_ShapeSet::Clear ******/
+		/****** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -650,8 +650,8 @@ Clears the content of the set. this method can be redefined.
 ") Clear;
 		virtual void Clear();
 
-		/****************** Dump ******************/
-		/**** md5 signature: d32daf6ada75088f1d8019b60f0a3a12 ****/
+		/****** TopTools_ShapeSet::Dump ******/
+		/****** md5 signature: d32daf6ada75088f1d8019b60f0a3a12 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -667,8 +667,8 @@ Dumps the content of me on the stream <os>. //! dumps the shapes from first to l
 ") Dump;
 		virtual void Dump(std::ostream &OutValue);
 
-		/****************** Dump ******************/
-		/**** md5 signature: c9c059aea0364c06c52deb47fd3e508c ****/
+		/****** TopTools_ShapeSet::Dump ******/
+		/****** md5 signature: c9c059aea0364c06c52deb47fd3e508c ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -685,8 +685,8 @@ Dumps on <os> the shape <s>. dumps the orientation, the index of the tshape and 
 ") Dump;
 		void Dump(const TopoDS_Shape & S, std::ostream &OutValue);
 
-		/****************** DumpExtent ******************/
-		/**** md5 signature: 87d4d6365aae6f521deeef6773174baf ****/
+		/****** TopTools_ShapeSet::DumpExtent ******/
+		/****** md5 signature: 87d4d6365aae6f521deeef6773174baf ******/
 		%feature("compactdefaultargs") DumpExtent;
 		%feature("autodoc", "
 Parameters
@@ -702,8 +702,8 @@ Dumps the number of objects in me on the stream <os>. (number of shapes of each 
 ") DumpExtent;
 		Standard_OStream & DumpExtent(std::ostream &OutValue);
 
-		/****************** DumpExtent ******************/
-		/**** md5 signature: 953cfb15db6760ae7a9bad9220b58b2c ****/
+		/****** TopTools_ShapeSet::DumpExtent ******/
+		/****** md5 signature: 953cfb15db6760ae7a9bad9220b58b2c ******/
 		%feature("compactdefaultargs") DumpExtent;
 		%feature("autodoc", "
 Parameters
@@ -720,8 +720,8 @@ Dumps the number of objects in me in the string s (number of shapes of each type
 ") DumpExtent;
 		void DumpExtent(TCollection_AsciiString & S);
 
-		/****************** DumpGeometry ******************/
-		/**** md5 signature: 653744bf97783eb78e2934b320b67e17 ****/
+		/****** TopTools_ShapeSet::DumpGeometry ******/
+		/****** md5 signature: 653744bf97783eb78e2934b320b67e17 ******/
 		%feature("compactdefaultargs") DumpGeometry;
 		%feature("autodoc", "
 Parameters
@@ -737,8 +737,8 @@ Dumps the geometry of me on the stream <os>.
 ") DumpGeometry;
 		virtual void DumpGeometry(std::ostream &OutValue);
 
-		/****************** DumpGeometry ******************/
-		/**** md5 signature: b3c7ad4e016db98e090d5f57d68cefa1 ****/
+		/****** TopTools_ShapeSet::DumpGeometry ******/
+		/****** md5 signature: b3c7ad4e016db98e090d5f57d68cefa1 ******/
 		%feature("compactdefaultargs") DumpGeometry;
 		%feature("autodoc", "
 Parameters
@@ -755,8 +755,8 @@ Dumps the geometry of <s> on the stream <os>.
 ") DumpGeometry;
 		virtual void DumpGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
 
-		/****************** FormatNb ******************/
-		/**** md5 signature: 4ba7a37f990f272738aa2003a22fc1da ****/
+		/****** TopTools_ShapeSet::FormatNb ******/
+		/****** md5 signature: 4ba7a37f990f272738aa2003a22fc1da ******/
 		%feature("compactdefaultargs") FormatNb;
 		%feature("autodoc", "Return
 -------
@@ -768,8 +768,8 @@ Returns the toptools_formatversion.
 ") FormatNb;
 		Standard_Integer FormatNb();
 
-		/****************** Index ******************/
-		/**** md5 signature: 9e94bb6d7b4221be4165f8639cd27d92 ****/
+		/****** TopTools_ShapeSet::Index ******/
+		/****** md5 signature: 9e94bb6d7b4221be4165f8639cd27d92 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -786,8 +786,8 @@ Returns the index of <s>.
 ") Index;
 		Standard_Integer Index(const TopoDS_Shape & S);
 
-		/****************** Locations ******************/
-		/**** md5 signature: 24a4ea3b7fee823f5a1c0a3fbabad43e ****/
+		/****** TopTools_ShapeSet::Locations ******/
+		/****** md5 signature: 24a4ea3b7fee823f5a1c0a3fbabad43e ******/
 		%feature("compactdefaultargs") Locations;
 		%feature("autodoc", "Return
 -------
@@ -799,8 +799,8 @@ No available documentation.
 ") Locations;
 		const TopTools_LocationSet & Locations();
 
-		/****************** NbShapes ******************/
-		/**** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ****/
+		/****** TopTools_ShapeSet::NbShapes ******/
+		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -812,8 +812,8 @@ Returns number of shapes read from file.
 ") NbShapes;
 		Standard_Integer NbShapes();
 
-		/****************** Read ******************/
-		/**** md5 signature: d5549d1f1479104ba7c0f767b82c0b6d ****/
+		/****** TopTools_ShapeSet::Read ******/
+		/****** md5 signature: d5549d1f1479104ba7c0f767b82c0b6d ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -831,8 +831,8 @@ Reads the content of me from the stream <is>. me is first cleared. //! reads the
 ") Read;
 		virtual void Read(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Read ******************/
-		/**** md5 signature: b491f021d6a632b4b6084137add9d6b1 ****/
+		/****** TopTools_ShapeSet::Read ******/
+		/****** md5 signature: b491f021d6a632b4b6084137add9d6b1 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -850,8 +850,8 @@ Reads from <is> a shape and returns it in s.
 ") Read;
 		void Read(TopoDS_Shape & S, std::istream & IS);
 
-		/****************** ReadGeometry ******************/
-		/**** md5 signature: f2d381e51fecc68108716b044058cd47 ****/
+		/****** TopTools_ShapeSet::ReadGeometry ******/
+		/****** md5 signature: f2d381e51fecc68108716b044058cd47 ******/
 		%feature("compactdefaultargs") ReadGeometry;
 		%feature("autodoc", "
 Parameters
@@ -869,8 +869,8 @@ Reads the geometry of me from the stream <is>.
 ") ReadGeometry;
 		virtual void ReadGeometry(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** ReadGeometry ******************/
-		/**** md5 signature: 4e371a9743f73b6a83ec48df91308b56 ****/
+		/****** TopTools_ShapeSet::ReadGeometry ******/
+		/****** md5 signature: 4e371a9743f73b6a83ec48df91308b56 ******/
 		%feature("compactdefaultargs") ReadGeometry;
 		%feature("autodoc", "
 Parameters
@@ -889,8 +889,8 @@ Reads the geometry of a shape of type <t> from the stream <is> and returns it in
 ") ReadGeometry;
 		virtual void ReadGeometry(const TopAbs_ShapeEnum T, std::istream & IS, TopoDS_Shape & S);
 
-		/****************** SetFormatNb ******************/
-		/**** md5 signature: efa61c5f0aa586c699f53e1139cd95f9 ****/
+		/****** TopTools_ShapeSet::SetFormatNb ******/
+		/****** md5 signature: efa61c5f0aa586c699f53e1139cd95f9 ******/
 		%feature("compactdefaultargs") SetFormatNb;
 		%feature("autodoc", "
 Parameters
@@ -907,8 +907,8 @@ Sets the toptools_formatversion.
 ") SetFormatNb;
 		void SetFormatNb(const Standard_Integer theFormatNb);
 
-		/****************** Shape ******************/
-		/**** md5 signature: 243b850f6d21a0fba84095c942dbd917 ****/
+		/****** TopTools_ShapeSet::Shape ******/
+		/****** md5 signature: 243b850f6d21a0fba84095c942dbd917 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -925,8 +925,8 @@ Returns the sub-shape of index <i>.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer I);
 
-		/****************** Write ******************/
-		/**** md5 signature: 5f1f156d742c1fe03f970b14ab71611c ****/
+		/****** TopTools_ShapeSet::Write ******/
+		/****** md5 signature: 5f1f156d742c1fe03f970b14ab71611c ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -943,8 +943,8 @@ Writes the content of me on the stream <os> in a format that can be read back by
 ") Write;
 		virtual void Write(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 5b68b962cc3758ff010ddb00740bcb56 ****/
+		/****** TopTools_ShapeSet::Write ******/
+		/****** md5 signature: 5b68b962cc3758ff010ddb00740bcb56 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -961,8 +961,8 @@ Writes on <os> the shape <s>. writes the orientation, the index of the tshape an
 ") Write;
 		void Write(const TopoDS_Shape & S, std::ostream &OutValue);
 
-		/****************** WriteGeometry ******************/
-		/**** md5 signature: 75c884e05520446878220235ba67ae24 ****/
+		/****** TopTools_ShapeSet::WriteGeometry ******/
+		/****** md5 signature: 75c884e05520446878220235ba67ae24 ******/
 		%feature("compactdefaultargs") WriteGeometry;
 		%feature("autodoc", "
 Parameters
@@ -979,8 +979,8 @@ Writes the geometry of me on the stream <os> in a format that can be read back b
 ") WriteGeometry;
 		virtual void WriteGeometry(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** WriteGeometry ******************/
-		/**** md5 signature: 122b2c21a82fbea7b7f8cfce352176e9 ****/
+		/****** TopTools_ShapeSet::WriteGeometry ******/
+		/****** md5 signature: 122b2c21a82fbea7b7f8cfce352176e9 ******/
 		%feature("compactdefaultargs") WriteGeometry;
 		%feature("autodoc", "
 Parameters

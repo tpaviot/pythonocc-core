@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PLIBDOCSTRING
 "PLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_plib.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_plib.html"
 %enddef
 %module (package="OCC.Core", docstring=PLIBDOCSTRING) PLib
 
@@ -92,8 +92,8 @@ from OCC.Core.Exception import *
 %rename(plib) PLib;
 class PLib {
 	public:
-		/****************** Bin ******************/
-		/**** md5 signature: e4b9b3840dd91f636abfcd255a208497 ****/
+		/****** PLib::Bin ******/
+		/****** md5 signature: e4b9b3840dd91f636abfcd255a208497 ******/
 		%feature("compactdefaultargs") Bin;
 		%feature("autodoc", "
 Parameters
@@ -111,8 +111,8 @@ Returns the binomial cnp. n should be <= bsplclib::maxdegree().
 ") Bin;
 		static Standard_Real Bin(const Standard_Integer N, const Standard_Integer P);
 
-		/****************** CoefficientsPoles ******************/
-		/**** md5 signature: 195b25b4fc3f47a2d3abcac292c0176f ****/
+		/****** PLib::CoefficientsPoles ******/
+		/****** md5 signature: 195b25b4fc3f47a2d3abcac292c0176f ******/
 		%feature("compactdefaultargs") CoefficientsPoles;
 		%feature("autodoc", "
 Parameters
@@ -132,8 +132,8 @@ No available documentation.
 ") CoefficientsPoles;
 		static void CoefficientsPoles(const TColgp_Array1OfPnt & Coefs, const TColStd_Array1OfReal * WCoefs, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal * WPoles);
 
-		/****************** CoefficientsPoles ******************/
-		/**** md5 signature: 63a65fa5260f82dd66eaf7230614332f ****/
+		/****** PLib::CoefficientsPoles ******/
+		/****** md5 signature: 63a65fa5260f82dd66eaf7230614332f ******/
 		%feature("compactdefaultargs") CoefficientsPoles;
 		%feature("autodoc", "
 Parameters
@@ -153,8 +153,8 @@ No available documentation.
 ") CoefficientsPoles;
 		static void CoefficientsPoles(const TColgp_Array1OfPnt2d & Coefs, const TColStd_Array1OfReal * WCoefs, TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal * WPoles);
 
-		/****************** CoefficientsPoles ******************/
-		/**** md5 signature: c17e5fac9521597fee289a3e908c8f4a ****/
+		/****** PLib::CoefficientsPoles ******/
+		/****** md5 signature: c17e5fac9521597fee289a3e908c8f4a ******/
 		%feature("compactdefaultargs") CoefficientsPoles;
 		%feature("autodoc", "
 Parameters
@@ -174,8 +174,8 @@ No available documentation.
 ") CoefficientsPoles;
 		static void CoefficientsPoles(const TColStd_Array1OfReal & Coefs, const TColStd_Array1OfReal * WCoefs, TColStd_Array1OfReal & Poles, TColStd_Array1OfReal * WPoles);
 
-		/****************** CoefficientsPoles ******************/
-		/**** md5 signature: a1c040d1c8b25e8ca6d970e69ba4cb59 ****/
+		/****** PLib::CoefficientsPoles ******/
+		/****** md5 signature: a1c040d1c8b25e8ca6d970e69ba4cb59 ******/
 		%feature("compactdefaultargs") CoefficientsPoles;
 		%feature("autodoc", "
 Parameters
@@ -196,8 +196,8 @@ No available documentation.
 ") CoefficientsPoles;
 		static void CoefficientsPoles(const Standard_Integer dim, const TColStd_Array1OfReal & Coefs, const TColStd_Array1OfReal * WCoefs, TColStd_Array1OfReal & Poles, TColStd_Array1OfReal * WPoles);
 
-		/****************** CoefficientsPoles ******************/
-		/**** md5 signature: 1928d807b7a7d000457f8323ac17dd0b ****/
+		/****** PLib::CoefficientsPoles ******/
+		/****** md5 signature: 1928d807b7a7d000457f8323ac17dd0b ******/
 		%feature("compactdefaultargs") CoefficientsPoles;
 		%feature("autodoc", "
 Parameters
@@ -217,8 +217,8 @@ No available documentation.
 ") CoefficientsPoles;
 		static void CoefficientsPoles(const TColgp_Array2OfPnt & Coefs, const TColStd_Array2OfReal * WCoefs, TColgp_Array2OfPnt & Poles, TColStd_Array2OfReal * WPoles);
 
-		/****************** ConstraintOrder ******************/
-		/**** md5 signature: c3e04cc0436b2e274987d2c1758747ef ****/
+		/****** PLib::ConstraintOrder ******/
+		/****** md5 signature: c3e04cc0436b2e274987d2c1758747ef ******/
 		%feature("compactdefaultargs") ConstraintOrder;
 		%feature("autodoc", "
 Parameters
@@ -235,8 +235,8 @@ Translates from integer to geomabs_shape.
 ") ConstraintOrder;
 		static GeomAbs_Shape ConstraintOrder(const Standard_Integer NivConstr);
 
-		/****************** EvalCubicHermite ******************/
-		/**** md5 signature: 70b5084cb477532383770ec1daed2d40 ****/
+		/****** PLib::EvalCubicHermite ******/
+		/****** md5 signature: 70b5084cb477532383770ec1daed2d40 ******/
 		%feature("compactdefaultargs") EvalCubicHermite;
 		%feature("autodoc", "
 Parameters
@@ -258,8 +258,8 @@ Performs the cubic hermite interpolation of given series of points with given pa
 ") EvalCubicHermite;
 		static Standard_Integer EvalCubicHermite(const Standard_Real U, const Standard_Integer DerivativeOrder, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** EvalLagrange ******************/
-		/**** md5 signature: db70dc230b872e9d346e3aab66b28d83 ****/
+		/****** PLib::EvalLagrange ******/
+		/****** md5 signature: db70dc230b872e9d346e3aab66b28d83 ******/
 		%feature("compactdefaultargs") EvalLagrange;
 		%feature("autodoc", "
 Parameters
@@ -281,8 +281,8 @@ Performs the lagrange interpolation of given series of points with given paramet
 ") EvalLagrange;
 		static Standard_Integer EvalLagrange(const Standard_Real U, const Standard_Integer DerivativeOrder, const Standard_Integer Degree, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** EvalLength ******************/
-		/**** md5 signature: 3aa31ba2f2ab37b1f6fc9b8bdcf6816f ****/
+		/****** PLib::EvalLength ******/
+		/****** md5 signature: 3aa31ba2f2ab37b1f6fc9b8bdcf6816f ******/
 		%feature("compactdefaultargs") EvalLength;
 		%feature("autodoc", "
 Parameters
@@ -303,8 +303,8 @@ No available documentation.
 ") EvalLength;
 		static void EvalLength(const Standard_Integer Degree, const Standard_Integer Dimension, Standard_Real &OutValue, const Standard_Real U1, const Standard_Real U2, Standard_Real &OutValue);
 
-		/****************** EvalLength ******************/
-		/**** md5 signature: 267e4cccfb903dd0fdb924058dd1468b ****/
+		/****** PLib::EvalLength ******/
+		/****** md5 signature: 267e4cccfb903dd0fdb924058dd1468b ******/
 		%feature("compactdefaultargs") EvalLength;
 		%feature("autodoc", "
 Parameters
@@ -327,8 +327,8 @@ No available documentation.
 ") EvalLength;
 		static void EvalLength(const Standard_Integer Degree, const Standard_Integer Dimension, Standard_Real &OutValue, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** EvalPoly2Var ******************/
-		/**** md5 signature: f820034b111d664eb87d8d6417e36fc7 ****/
+		/****** PLib::EvalPoly2Var ******/
+		/****** md5 signature: f820034b111d664eb87d8d6417e36fc7 ******/
 		%feature("compactdefaultargs") EvalPoly2Var;
 		%feature("autodoc", "
 Parameters
@@ -352,8 +352,8 @@ Applies evalpolynomial twice to evaluate the derivative of orders uderivativeord
 ") EvalPoly2Var;
 		static void EvalPoly2Var(const Standard_Real U, const Standard_Real V, const Standard_Integer UDerivativeOrder, const Standard_Integer VDerivativeOrder, const Standard_Integer UDegree, const Standard_Integer VDegree, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** EvalPolynomial ******************/
-		/**** md5 signature: ab7638add7201ad9dc7d8b63cb124efa ****/
+		/****** PLib::EvalPolynomial ******/
+		/****** md5 signature: ab7638add7201ad9dc7d8b63cb124efa ******/
 		%feature("compactdefaultargs") EvalPolynomial;
 		%feature("autodoc", "
 Parameters
@@ -374,8 +374,8 @@ Performs horner method with synthetic division for derivatives parameter <u>, wi
 ") EvalPolynomial;
 		static void EvalPolynomial(const Standard_Real U, const Standard_Integer DerivativeOrder, const Standard_Integer Degree, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetPoles ******************/
-		/**** md5 signature: 2874b68a426f530b41fb67400bb8aae7 ****/
+		/****** PLib::GetPoles ******/
+		/****** md5 signature: 2874b68a426f530b41fb67400bb8aae7 ******/
 		%feature("compactdefaultargs") GetPoles;
 		%feature("autodoc", "
 Parameters
@@ -393,8 +393,8 @@ Get from fp the coordinates of the poles.
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt & Poles);
 
-		/****************** GetPoles ******************/
-		/**** md5 signature: c37f131df7c30bbe3fca9344aa3fc8da ****/
+		/****** PLib::GetPoles ******/
+		/****** md5 signature: c37f131df7c30bbe3fca9344aa3fc8da ******/
 		%feature("compactdefaultargs") GetPoles;
 		%feature("autodoc", "
 Parameters
@@ -413,8 +413,8 @@ Get from fp the coordinates of the poles.
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weights);
 
-		/****************** GetPoles ******************/
-		/**** md5 signature: ddf0d332e656e1c3a043920fe83ffb70 ****/
+		/****** PLib::GetPoles ******/
+		/****** md5 signature: ddf0d332e656e1c3a043920fe83ffb70 ******/
 		%feature("compactdefaultargs") GetPoles;
 		%feature("autodoc", "
 Parameters
@@ -432,8 +432,8 @@ Get from fp the coordinates of the poles.
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt2d & Poles);
 
-		/****************** GetPoles ******************/
-		/**** md5 signature: b34f0e2297a04885105b1f320932d644 ****/
+		/****** PLib::GetPoles ******/
+		/****** md5 signature: b34f0e2297a04885105b1f320932d644 ******/
 		%feature("compactdefaultargs") GetPoles;
 		%feature("autodoc", "
 Parameters
@@ -452,8 +452,8 @@ Get from fp the coordinates of the poles.
 ") GetPoles;
 		static void GetPoles(const TColStd_Array1OfReal & FP, TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal & Weights);
 
-		/****************** HermiteCoefficients ******************/
-		/**** md5 signature: f870a248c586ad640a2195fe36341a77 ****/
+		/****** PLib::HermiteCoefficients ******/
+		/****** md5 signature: f870a248c586ad640a2195fe36341a77 ******/
 		%feature("compactdefaultargs") HermiteCoefficients;
 		%feature("autodoc", "
 Parameters
@@ -474,8 +474,8 @@ This build the coefficient of hermite's polynomes on [firstparameter, lastparame
 ") HermiteCoefficients;
 		static Standard_Boolean HermiteCoefficients(const Standard_Real FirstParameter, const Standard_Real LastParameter, const Standard_Integer FirstOrder, const Standard_Integer LastOrder, math_Matrix & MatrixCoefs);
 
-		/****************** HermiteInterpolate ******************/
-		/**** md5 signature: 46e9dad0babe6a2a789abf9623adf18f ****/
+		/****** PLib::HermiteInterpolate ******/
+		/****** md5 signature: 46e9dad0babe6a2a789abf9623adf18f ******/
 		%feature("compactdefaultargs") HermiteInterpolate;
 		%feature("autodoc", "
 Parameters
@@ -499,8 +499,8 @@ Compute the coefficients in the canonical base of the polynomial satisfying the 
 ") HermiteInterpolate;
 		static Standard_Boolean HermiteInterpolate(const Standard_Integer Dimension, const Standard_Real FirstParameter, const Standard_Real LastParameter, const Standard_Integer FirstOrder, const Standard_Integer LastOrder, const TColStd_Array2OfReal & FirstConstr, const TColStd_Array2OfReal & LastConstr, TColStd_Array1OfReal & Coefficients);
 
-		/****************** JacobiParameters ******************/
-		/**** md5 signature: 16abc4702f8918e99ae70cddff5b364d ****/
+		/****** PLib::JacobiParameters ******/
+		/****** md5 signature: 16abc4702f8918e99ae70cddff5b364d ******/
 		%feature("compactdefaultargs") JacobiParameters;
 		%feature("autodoc", "
 Parameters
@@ -520,8 +520,8 @@ Compute the number of points used for integral computations (nbgausspoints) and 
 ") JacobiParameters;
 		static void JacobiParameters(const GeomAbs_Shape ConstraintOrder, const Standard_Integer MaxDegree, const Standard_Integer Code, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** NivConstr ******************/
-		/**** md5 signature: 0da399a2a4094066f87aa5554c588dfe ****/
+		/****** PLib::NivConstr ******/
+		/****** md5 signature: 0da399a2a4094066f87aa5554c588dfe ******/
 		%feature("compactdefaultargs") NivConstr;
 		%feature("autodoc", "
 Parameters
@@ -538,8 +538,8 @@ Translates from geomabs_shape to integer.
 ") NivConstr;
 		static Standard_Integer NivConstr(const GeomAbs_Shape ConstraintOrder);
 
-		/****************** NoDerivativeEvalPolynomial ******************/
-		/**** md5 signature: b734aed0c3d7b9e9e322b362cd422d18 ****/
+		/****** PLib::NoDerivativeEvalPolynomial ******/
+		/****** md5 signature: b734aed0c3d7b9e9e322b362cd422d18 ******/
 		%feature("compactdefaultargs") NoDerivativeEvalPolynomial;
 		%feature("autodoc", "
 Parameters
@@ -560,8 +560,8 @@ Same as above with derivativeorder = 0;.
 ") NoDerivativeEvalPolynomial;
 		static void NoDerivativeEvalPolynomial(const Standard_Real U, const Standard_Integer Degree, const Standard_Integer Dimension, const Standard_Integer DegreeDimension, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** NoWeights ******************/
-		/**** md5 signature: c62456e1087764e789de71e3c64f70ac ****/
+		/****** PLib::NoWeights ******/
+		/****** md5 signature: c62456e1087764e789de71e3c64f70ac ******/
 		%feature("compactdefaultargs") NoWeights;
 		%feature("autodoc", "Return
 -------
@@ -573,8 +573,8 @@ Used as argument for a non rational functions.
 ") NoWeights;
 		static TColStd_Array1OfReal * NoWeights();
 
-		/****************** NoWeights2 ******************/
-		/**** md5 signature: 4e85666f7316eb9ea248be00715a2600 ****/
+		/****** PLib::NoWeights2 ******/
+		/****** md5 signature: 4e85666f7316eb9ea248be00715a2600 ******/
 		%feature("compactdefaultargs") NoWeights2;
 		%feature("autodoc", "Return
 -------
@@ -586,8 +586,8 @@ Used as argument for a non rational functions.
 ") NoWeights2;
 		static TColStd_Array2OfReal * NoWeights2();
 
-		/****************** RationalDerivative ******************/
-		/**** md5 signature: 73b52c09f25fc1cb9a4f36df7003b108 ****/
+		/****** PLib::RationalDerivative ******/
+		/****** md5 signature: 73b52c09f25fc1cb9a4f36df7003b108 ******/
 		%feature("compactdefaultargs") RationalDerivative;
 		%feature("autodoc", "
 Parameters
@@ -608,8 +608,8 @@ Computes the derivatives of a ratio at order <n> in dimension <dimension>. //! <
 ") RationalDerivative;
 		static void RationalDerivative(const Standard_Integer Degree, const Standard_Integer N, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Boolean All = Standard_True);
 
-		/****************** RationalDerivatives ******************/
-		/**** md5 signature: 181f56d901cd67387121827789aa2d4b ****/
+		/****** PLib::RationalDerivatives ******/
+		/****** md5 signature: 181f56d901cd67387121827789aa2d4b ******/
 		%feature("compactdefaultargs") RationalDerivatives;
 		%feature("autodoc", "
 Parameters
@@ -629,8 +629,8 @@ Computes derivativesrequest derivatives of a ratio at of a bspline function of d
 ") RationalDerivatives;
 		static void RationalDerivatives(const Standard_Integer DerivativesRequest, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SetPoles ******************/
-		/**** md5 signature: 6863d9194c7fb66b1688878d0f0370ef ****/
+		/****** PLib::SetPoles ******/
+		/****** md5 signature: 6863d9194c7fb66b1688878d0f0370ef ******/
 		%feature("compactdefaultargs") SetPoles;
 		%feature("autodoc", "
 Parameters
@@ -648,8 +648,8 @@ Copy in fp the coordinates of the poles.
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & FP);
 
-		/****************** SetPoles ******************/
-		/**** md5 signature: a37c76776d33a974dd4d6d361b465857 ****/
+		/****** PLib::SetPoles ******/
+		/****** md5 signature: a37c76776d33a974dd4d6d361b465857 ******/
 		%feature("compactdefaultargs") SetPoles;
 		%feature("autodoc", "
 Parameters
@@ -668,8 +668,8 @@ Copy in fp the coordinates of the poles.
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & FP);
 
-		/****************** SetPoles ******************/
-		/**** md5 signature: cdcb170a2456b522559c0a3585f22913 ****/
+		/****** PLib::SetPoles ******/
+		/****** md5 signature: cdcb170a2456b522559c0a3585f22913 ******/
 		%feature("compactdefaultargs") SetPoles;
 		%feature("autodoc", "
 Parameters
@@ -687,8 +687,8 @@ Copy in fp the coordinates of the poles.
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal & FP);
 
-		/****************** SetPoles ******************/
-		/**** md5 signature: f375797a6c7bf3162c62e48364aecaec ****/
+		/****** PLib::SetPoles ******/
+		/****** md5 signature: f375797a6c7bf3162c62e48364aecaec ******/
 		%feature("compactdefaultargs") SetPoles;
 		%feature("autodoc", "
 Parameters
@@ -707,8 +707,8 @@ Copy in fp the coordinates of the poles.
 ") SetPoles;
 		static void SetPoles(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & FP);
 
-		/****************** Trimming ******************/
-		/**** md5 signature: 6609651055bd7c0e00841abc195f1706 ****/
+		/****** PLib::Trimming ******/
+		/****** md5 signature: 6609651055bd7c0e00841abc195f1706 ******/
 		%feature("compactdefaultargs") Trimming;
 		%feature("autodoc", "
 Parameters
@@ -728,8 +728,8 @@ No available documentation.
 ") Trimming;
 		static void Trimming(const Standard_Real U1, const Standard_Real U2, TColgp_Array1OfPnt & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
-		/****************** Trimming ******************/
-		/**** md5 signature: 7eeab872da522f8774bfc35b5b5f5919 ****/
+		/****** PLib::Trimming ******/
+		/****** md5 signature: 7eeab872da522f8774bfc35b5b5f5919 ******/
 		%feature("compactdefaultargs") Trimming;
 		%feature("autodoc", "
 Parameters
@@ -749,8 +749,8 @@ No available documentation.
 ") Trimming;
 		static void Trimming(const Standard_Real U1, const Standard_Real U2, TColgp_Array1OfPnt2d & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
-		/****************** Trimming ******************/
-		/**** md5 signature: 974b1a36e127e05843f89ecf24f7ba7b ****/
+		/****** PLib::Trimming ******/
+		/****** md5 signature: 974b1a36e127e05843f89ecf24f7ba7b ******/
 		%feature("compactdefaultargs") Trimming;
 		%feature("autodoc", "
 Parameters
@@ -770,8 +770,8 @@ No available documentation.
 ") Trimming;
 		static void Trimming(const Standard_Real U1, const Standard_Real U2, TColStd_Array1OfReal & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
-		/****************** Trimming ******************/
-		/**** md5 signature: 988ea67a983cad3e330deec4dd65618a ****/
+		/****** PLib::Trimming ******/
+		/****** md5 signature: 988ea67a983cad3e330deec4dd65618a ******/
 		%feature("compactdefaultargs") Trimming;
 		%feature("autodoc", "
 Parameters
@@ -792,8 +792,8 @@ No available documentation.
 ") Trimming;
 		static void Trimming(const Standard_Real U1, const Standard_Real U2, const Standard_Integer dim, TColStd_Array1OfReal & Coeffs, TColStd_Array1OfReal * WCoeffs);
 
-		/****************** UTrimming ******************/
-		/**** md5 signature: ccff40edf0e7de4bc4a182d01d29bccc ****/
+		/****** PLib::UTrimming ******/
+		/****** md5 signature: ccff40edf0e7de4bc4a182d01d29bccc ******/
 		%feature("compactdefaultargs") UTrimming;
 		%feature("autodoc", "
 Parameters
@@ -813,8 +813,8 @@ No available documentation.
 ") UTrimming;
 		static void UTrimming(const Standard_Real U1, const Standard_Real U2, TColgp_Array2OfPnt & Coeffs, TColStd_Array2OfReal * WCoeffs);
 
-		/****************** VTrimming ******************/
-		/**** md5 signature: 788469a98a448c44619d0216add2bfd5 ****/
+		/****** PLib::VTrimming ******/
+		/****** md5 signature: 788469a98a448c44619d0216add2bfd5 ******/
 		%feature("compactdefaultargs") VTrimming;
 		%feature("autodoc", "
 Parameters
@@ -849,8 +849,8 @@ No available documentation.
 %nodefaultctor PLib_Base;
 class PLib_Base : public Standard_Transient {
 	public:
-		/****************** D0 ******************/
-		/**** md5 signature: f5babd3072a7b188ca9fffa004c97654 ****/
+		/****** PLib_Base::D0 ******/
+		/****** md5 signature: f5babd3072a7b188ca9fffa004c97654 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -868,8 +868,8 @@ Compute the values of the basis functions in u.
 ") D0;
 		virtual void D0(const Standard_Real U, TColStd_Array1OfReal & BasisValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: d9d9a58968cf2d0e1e57a17f029b9b19 ****/
+		/****** PLib_Base::D1 ******/
+		/****** md5 signature: d9d9a58968cf2d0e1e57a17f029b9b19 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -888,8 +888,8 @@ Compute the values and the derivatives values of the basis functions in u.
 ") D1;
 		virtual void D1(const Standard_Real U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 134c337bf429a01cef36366523309f86 ****/
+		/****** PLib_Base::D2 ******/
+		/****** md5 signature: 134c337bf429a01cef36366523309f86 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -909,8 +909,8 @@ Compute the values and the derivatives values of the basis functions in u.
 ") D2;
 		virtual void D2(const Standard_Real U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1, TColStd_Array1OfReal & BasisD2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 66c75b8d20f2e32609ebd575117d6026 ****/
+		/****** PLib_Base::D3 ******/
+		/****** md5 signature: 66c75b8d20f2e32609ebd575117d6026 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -931,8 +931,8 @@ Compute the values and the derivatives values of the basis functions in u.
 ") D3;
 		virtual void D3(const Standard_Real U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1, TColStd_Array1OfReal & BasisD2, TColStd_Array1OfReal & BasisD3);
 
-		/****************** ReduceDegree ******************/
-		/**** md5 signature: ca1b70fa2f327261ff1d4aea96cde1e7 ****/
+		/****** PLib_Base::ReduceDegree ******/
+		/****** md5 signature: ca1b70fa2f327261ff1d4aea96cde1e7 ******/
 		%feature("compactdefaultargs") ReduceDegree;
 		%feature("autodoc", "
 Parameters
@@ -953,8 +953,8 @@ Compute newdegree <= maxdegree so that maxerror is lower than tol. maxerror can 
 ") ReduceDegree;
 		virtual void ReduceDegree(const Standard_Integer Dimension, const Standard_Integer MaxDegree, const Standard_Real Tol, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
-		/****************** ToCoefficients ******************/
-		/**** md5 signature: f782a7c383866602d159de31b8e68112 ****/
+		/****** PLib_Base::ToCoefficients ******/
+		/****** md5 signature: f782a7c383866602d159de31b8e68112 ******/
 		%feature("compactdefaultargs") ToCoefficients;
 		%feature("autodoc", "
 Parameters
@@ -974,8 +974,8 @@ Convert the polynomial p(t) in the canonical base.
 ") ToCoefficients;
 		virtual void ToCoefficients(const Standard_Integer Dimension, const Standard_Integer Degree, const TColStd_Array1OfReal & CoeffinBase, TColStd_Array1OfReal & Coefficients);
 
-		/****************** WorkDegree ******************/
-		/**** md5 signature: 9a1ca2a01d0260cba5c5864a0622a4bb ****/
+		/****** PLib_Base::WorkDegree ******/
+		/****** md5 signature: 9a1ca2a01d0260cba5c5864a0622a4bb ******/
 		%feature("compactdefaultargs") WorkDegree;
 		%feature("autodoc", "Return
 -------
@@ -1003,8 +1003,8 @@ Returns workdegree.
 ************************************/
 class PLib_DoubleJacobiPolynomial {
 	public:
-		/****************** PLib_DoubleJacobiPolynomial ******************/
-		/**** md5 signature: de463bd0cd7c05a53bea601d0037764a ****/
+		/****** PLib_DoubleJacobiPolynomial::PLib_DoubleJacobiPolynomial ******/
+		/****** md5 signature: de463bd0cd7c05a53bea601d0037764a ******/
 		%feature("compactdefaultargs") PLib_DoubleJacobiPolynomial;
 		%feature("autodoc", "Return
 -------
@@ -1016,8 +1016,8 @@ No available documentation.
 ") PLib_DoubleJacobiPolynomial;
 		 PLib_DoubleJacobiPolynomial();
 
-		/****************** PLib_DoubleJacobiPolynomial ******************/
-		/**** md5 signature: 49f9338666d135519dabf31bcc8c23e3 ****/
+		/****** PLib_DoubleJacobiPolynomial::PLib_DoubleJacobiPolynomial ******/
+		/****** md5 signature: 49f9338666d135519dabf31bcc8c23e3 ******/
 		%feature("compactdefaultargs") PLib_DoubleJacobiPolynomial;
 		%feature("autodoc", "
 Parameters
@@ -1035,8 +1035,8 @@ No available documentation.
 ") PLib_DoubleJacobiPolynomial;
 		 PLib_DoubleJacobiPolynomial(const opencascade::handle<PLib_JacobiPolynomial> & JacPolU, const opencascade::handle<PLib_JacobiPolynomial> & JacPolV);
 
-		/****************** AverageError ******************/
-		/**** md5 signature: 59c1f819623f1745c15ea941a534a3c6 ****/
+		/****** PLib_DoubleJacobiPolynomial::AverageError ******/
+		/****** md5 signature: 59c1f819623f1745c15ea941a534a3c6 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "
 Parameters
@@ -1057,8 +1057,8 @@ No available documentation.
 ") AverageError;
 		Standard_Real AverageError(const Standard_Integer Dimension, const Standard_Integer DegreeU, const Standard_Integer DegreeV, const Standard_Integer dJacCoeff, const TColStd_Array1OfReal & JacCoeff);
 
-		/****************** MaxError ******************/
-		/**** md5 signature: bc59636dbf7a805929772dcec393550a ****/
+		/****** PLib_DoubleJacobiPolynomial::MaxError ******/
+		/****** md5 signature: bc59636dbf7a805929772dcec393550a ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "
 Parameters
@@ -1082,8 +1082,8 @@ No available documentation.
 ") MaxError;
 		Standard_Real MaxError(const Standard_Integer Dimension, const Standard_Integer MinDegreeU, const Standard_Integer MaxDegreeU, const Standard_Integer MinDegreeV, const Standard_Integer MaxDegreeV, const Standard_Integer dJacCoeff, const TColStd_Array1OfReal & JacCoeff, const Standard_Real Error);
 
-		/****************** MaxErrorU ******************/
-		/**** md5 signature: fa1c1a1b84cc2387af19de3d28c7f149 ****/
+		/****** PLib_DoubleJacobiPolynomial::MaxErrorU ******/
+		/****** md5 signature: fa1c1a1b84cc2387af19de3d28c7f149 ******/
 		%feature("compactdefaultargs") MaxErrorU;
 		%feature("autodoc", "
 Parameters
@@ -1104,8 +1104,8 @@ No available documentation.
 ") MaxErrorU;
 		Standard_Real MaxErrorU(const Standard_Integer Dimension, const Standard_Integer DegreeU, const Standard_Integer DegreeV, const Standard_Integer dJacCoeff, const TColStd_Array1OfReal & JacCoeff);
 
-		/****************** MaxErrorV ******************/
-		/**** md5 signature: 24a809baa701e14e9eeacba743288173 ****/
+		/****** PLib_DoubleJacobiPolynomial::MaxErrorV ******/
+		/****** md5 signature: 24a809baa701e14e9eeacba743288173 ******/
 		%feature("compactdefaultargs") MaxErrorV;
 		%feature("autodoc", "
 Parameters
@@ -1126,8 +1126,8 @@ No available documentation.
 ") MaxErrorV;
 		Standard_Real MaxErrorV(const Standard_Integer Dimension, const Standard_Integer DegreeU, const Standard_Integer DegreeV, const Standard_Integer dJacCoeff, const TColStd_Array1OfReal & JacCoeff);
 
-		/****************** ReduceDegree ******************/
-		/**** md5 signature: 77ba30a13eb302f19648d95566fd2879 ****/
+		/****** PLib_DoubleJacobiPolynomial::ReduceDegree ******/
+		/****** md5 signature: 77ba30a13eb302f19648d95566fd2879 ******/
 		%feature("compactdefaultargs") ReduceDegree;
 		%feature("autodoc", "
 Parameters
@@ -1153,8 +1153,8 @@ No available documentation.
 ") ReduceDegree;
 		void ReduceDegree(const Standard_Integer Dimension, const Standard_Integer MinDegreeU, const Standard_Integer MaxDegreeU, const Standard_Integer MinDegreeV, const Standard_Integer MaxDegreeV, const Standard_Integer dJacCoeff, const TColStd_Array1OfReal & JacCoeff, const Standard_Real EpmsCut, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** TabMaxU ******************/
-		/**** md5 signature: fc95031f2fdeddc86d00107cc1fea84d ****/
+		/****** PLib_DoubleJacobiPolynomial::TabMaxU ******/
+		/****** md5 signature: fc95031f2fdeddc86d00107cc1fea84d ******/
 		%feature("compactdefaultargs") TabMaxU;
 		%feature("autodoc", "Return
 -------
@@ -1166,8 +1166,8 @@ Returns mytabmaxu;.
 ") TabMaxU;
 		opencascade::handle<TColStd_HArray1OfReal> TabMaxU();
 
-		/****************** TabMaxV ******************/
-		/**** md5 signature: 3eced45af4cd28d8005f62873ad702f4 ****/
+		/****** PLib_DoubleJacobiPolynomial::TabMaxV ******/
+		/****** md5 signature: 3eced45af4cd28d8005f62873ad702f4 ******/
 		%feature("compactdefaultargs") TabMaxV;
 		%feature("autodoc", "Return
 -------
@@ -1179,8 +1179,8 @@ Returns mytabmaxv;.
 ") TabMaxV;
 		opencascade::handle<TColStd_HArray1OfReal> TabMaxV();
 
-		/****************** U ******************/
-		/**** md5 signature: 888b3c693208ad6e93cd32ea973e39b6 ****/
+		/****** PLib_DoubleJacobiPolynomial::U ******/
+		/****** md5 signature: 888b3c693208ad6e93cd32ea973e39b6 ******/
 		%feature("compactdefaultargs") U;
 		%feature("autodoc", "Return
 -------
@@ -1192,8 +1192,8 @@ Returns myjacpolu;.
 ") U;
 		opencascade::handle<PLib_JacobiPolynomial> U();
 
-		/****************** V ******************/
-		/**** md5 signature: 948c918cfc3846192241d6b03888e5d8 ****/
+		/****** PLib_DoubleJacobiPolynomial::V ******/
+		/****** md5 signature: 948c918cfc3846192241d6b03888e5d8 ******/
 		%feature("compactdefaultargs") V;
 		%feature("autodoc", "Return
 -------
@@ -1205,8 +1205,8 @@ Returns myjacpolv;.
 ") V;
 		opencascade::handle<PLib_JacobiPolynomial> V();
 
-		/****************** WDoubleJacobiToCoefficients ******************/
-		/**** md5 signature: 7486e56c849e6ee4aaca40f890784054 ****/
+		/****** PLib_DoubleJacobiPolynomial::WDoubleJacobiToCoefficients ******/
+		/****** md5 signature: 7486e56c849e6ee4aaca40f890784054 ******/
 		%feature("compactdefaultargs") WDoubleJacobiToCoefficients;
 		%feature("autodoc", "
 Parameters
@@ -1241,8 +1241,8 @@ No available documentation.
 **************************/
 class PLib_HermitJacobi : public PLib_Base {
 	public:
-		/****************** PLib_HermitJacobi ******************/
-		/**** md5 signature: cba66df678b1af8e782a27e59df85c21 ****/
+		/****** PLib_HermitJacobi::PLib_HermitJacobi ******/
+		/****** md5 signature: cba66df678b1af8e782a27e59df85c21 ******/
 		%feature("compactdefaultargs") PLib_HermitJacobi;
 		%feature("autodoc", "
 Parameters
@@ -1260,8 +1260,8 @@ Initialize the polynomial class degree has to be <= 30 constraintorder has to be
 ") PLib_HermitJacobi;
 		 PLib_HermitJacobi(const Standard_Integer WorkDegree, const GeomAbs_Shape ConstraintOrder);
 
-		/****************** AverageError ******************/
-		/**** md5 signature: a9a12575c7d1c3a88bf0b0575c067ea1 ****/
+		/****** PLib_HermitJacobi::AverageError ******/
+		/****** md5 signature: a9a12575c7d1c3a88bf0b0575c067ea1 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "
 Parameters
@@ -1279,8 +1279,8 @@ No available documentation.
 ") AverageError;
 		Standard_Real AverageError(const Standard_Integer Dimension, Standard_Real &OutValue, const Standard_Integer NewDegree);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 09c80be2d04ee5a218e542ce631154a4 ****/
+		/****** PLib_HermitJacobi::D0 ******/
+		/****** md5 signature: 09c80be2d04ee5a218e542ce631154a4 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -1298,8 +1298,8 @@ Compute the values of the basis functions in u.
 ") D0;
 		void D0(const Standard_Real U, TColStd_Array1OfReal & BasisValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: b03786188171580f3cb776bc09557910 ****/
+		/****** PLib_HermitJacobi::D1 ******/
+		/****** md5 signature: b03786188171580f3cb776bc09557910 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1318,8 +1318,8 @@ Compute the values and the derivatives values of the basis functions in u.
 ") D1;
 		void D1(const Standard_Real U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 8351d01efc2c719802b2311de6c56189 ****/
+		/****** PLib_HermitJacobi::D2 ******/
+		/****** md5 signature: 8351d01efc2c719802b2311de6c56189 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -1339,8 +1339,8 @@ Compute the values and the derivatives values of the basis functions in u.
 ") D2;
 		void D2(const Standard_Real U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1, TColStd_Array1OfReal & BasisD2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 4dc2082da716976d329ea0bb061d0924 ****/
+		/****** PLib_HermitJacobi::D3 ******/
+		/****** md5 signature: 4dc2082da716976d329ea0bb061d0924 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -1361,8 +1361,8 @@ Compute the values and the derivatives values of the basis functions in u.
 ") D3;
 		void D3(const Standard_Real U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1, TColStd_Array1OfReal & BasisD2, TColStd_Array1OfReal & BasisD3);
 
-		/****************** MaxError ******************/
-		/**** md5 signature: 2345d026ce40e07d223c7963b1e4404d ****/
+		/****** PLib_HermitJacobi::MaxError ******/
+		/****** md5 signature: 2345d026ce40e07d223c7963b1e4404d ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "
 Parameters
@@ -1380,8 +1380,8 @@ This method computes the maximum error on the polynomial w(t) q(t) obtained by m
 ") MaxError;
 		Standard_Real MaxError(const Standard_Integer Dimension, Standard_Real &OutValue, const Standard_Integer NewDegree);
 
-		/****************** NivConstr ******************/
-		/**** md5 signature: f6a2f8af8bbecc140e8868581b3445e5 ****/
+		/****** PLib_HermitJacobi::NivConstr ******/
+		/****** md5 signature: f6a2f8af8bbecc140e8868581b3445e5 ******/
 		%feature("compactdefaultargs") NivConstr;
 		%feature("autodoc", "Return
 -------
@@ -1393,8 +1393,8 @@ Returns nivconstr.
 ") NivConstr;
 		Standard_Integer NivConstr();
 
-		/****************** ReduceDegree ******************/
-		/**** md5 signature: ff23be12c9df448943274c01cf909a73 ****/
+		/****** PLib_HermitJacobi::ReduceDegree ******/
+		/****** md5 signature: ff23be12c9df448943274c01cf909a73 ******/
 		%feature("compactdefaultargs") ReduceDegree;
 		%feature("autodoc", "
 Parameters
@@ -1415,8 +1415,8 @@ Compute newdegree <= maxdegree so that maxerror is lower than tol. maxerror can 
 ") ReduceDegree;
 		void ReduceDegree(const Standard_Integer Dimension, const Standard_Integer MaxDegree, const Standard_Real Tol, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
-		/****************** ToCoefficients ******************/
-		/**** md5 signature: a251e30979bee64ba1fd366e4690d6f2 ****/
+		/****** PLib_HermitJacobi::ToCoefficients ******/
+		/****** md5 signature: a251e30979bee64ba1fd366e4690d6f2 ******/
 		%feature("compactdefaultargs") ToCoefficients;
 		%feature("autodoc", "
 Parameters
@@ -1436,8 +1436,8 @@ Convert the polynomial p(t) = h(t) + w(t) q(t) in the canonical base.
 ") ToCoefficients;
 		void ToCoefficients(const Standard_Integer Dimension, const Standard_Integer Degree, const TColStd_Array1OfReal & HermJacCoeff, TColStd_Array1OfReal & Coefficients);
 
-		/****************** WorkDegree ******************/
-		/**** md5 signature: 0fafe1aec89490c754959fbbbd4a6908 ****/
+		/****** PLib_HermitJacobi::WorkDegree ******/
+		/****** md5 signature: 0fafe1aec89490c754959fbbbd4a6908 ******/
 		%feature("compactdefaultargs") WorkDegree;
 		%feature("autodoc", "Return
 -------
@@ -1465,8 +1465,8 @@ Returns workdegree.
 ******************************/
 class PLib_JacobiPolynomial : public PLib_Base {
 	public:
-		/****************** PLib_JacobiPolynomial ******************/
-		/**** md5 signature: be57bd43ad8816e1ff65244f66d15a7d ****/
+		/****** PLib_JacobiPolynomial::PLib_JacobiPolynomial ******/
+		/****** md5 signature: be57bd43ad8816e1ff65244f66d15a7d ******/
 		%feature("compactdefaultargs") PLib_JacobiPolynomial;
 		%feature("autodoc", "
 Parameters
@@ -1484,8 +1484,8 @@ Initialize the polynomial class degree has to be <= 30 constraintorder has to be
 ") PLib_JacobiPolynomial;
 		 PLib_JacobiPolynomial(const Standard_Integer WorkDegree, const GeomAbs_Shape ConstraintOrder);
 
-		/****************** AverageError ******************/
-		/**** md5 signature: 105a3adb8c2438de6a03a39558a2fdf7 ****/
+		/****** PLib_JacobiPolynomial::AverageError ******/
+		/****** md5 signature: 105a3adb8c2438de6a03a39558a2fdf7 ******/
 		%feature("compactdefaultargs") AverageError;
 		%feature("autodoc", "
 Parameters
@@ -1503,8 +1503,8 @@ No available documentation.
 ") AverageError;
 		Standard_Real AverageError(const Standard_Integer Dimension, Standard_Real &OutValue, const Standard_Integer NewDegree);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 09c80be2d04ee5a218e542ce631154a4 ****/
+		/****** PLib_JacobiPolynomial::D0 ******/
+		/****** md5 signature: 09c80be2d04ee5a218e542ce631154a4 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -1522,8 +1522,8 @@ Compute the values of the basis functions in u.
 ") D0;
 		void D0(const Standard_Real U, TColStd_Array1OfReal & BasisValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: b03786188171580f3cb776bc09557910 ****/
+		/****** PLib_JacobiPolynomial::D1 ******/
+		/****** md5 signature: b03786188171580f3cb776bc09557910 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1542,8 +1542,8 @@ Compute the values and the derivatives values of the basis functions in u.
 ") D1;
 		void D1(const Standard_Real U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 8351d01efc2c719802b2311de6c56189 ****/
+		/****** PLib_JacobiPolynomial::D2 ******/
+		/****** md5 signature: 8351d01efc2c719802b2311de6c56189 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -1563,8 +1563,8 @@ Compute the values and the derivatives values of the basis functions in u.
 ") D2;
 		void D2(const Standard_Real U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1, TColStd_Array1OfReal & BasisD2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 4dc2082da716976d329ea0bb061d0924 ****/
+		/****** PLib_JacobiPolynomial::D3 ******/
+		/****** md5 signature: 4dc2082da716976d329ea0bb061d0924 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -1585,8 +1585,8 @@ Compute the values and the derivatives values of the basis functions in u.
 ") D3;
 		void D3(const Standard_Real U, TColStd_Array1OfReal & BasisValue, TColStd_Array1OfReal & BasisD1, TColStd_Array1OfReal & BasisD2, TColStd_Array1OfReal & BasisD3);
 
-		/****************** MaxError ******************/
-		/**** md5 signature: 53f6b08ebe2907b85f487eb8d618147c ****/
+		/****** PLib_JacobiPolynomial::MaxError ******/
+		/****** md5 signature: 53f6b08ebe2907b85f487eb8d618147c ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "
 Parameters
@@ -1604,8 +1604,8 @@ This method computes the maximum error on the polynomial w(t) q(t) obtained by m
 ") MaxError;
 		Standard_Real MaxError(const Standard_Integer Dimension, Standard_Real &OutValue, const Standard_Integer NewDegree);
 
-		/****************** MaxValue ******************/
-		/**** md5 signature: fada13e95068e5e093ec1e3d3bdbd555 ****/
+		/****** PLib_JacobiPolynomial::MaxValue ******/
+		/****** md5 signature: fada13e95068e5e093ec1e3d3bdbd555 ******/
 		%feature("compactdefaultargs") MaxValue;
 		%feature("autodoc", "
 Parameters
@@ -1622,8 +1622,8 @@ This method loads for k=0,q the maximum value of abs ( w(t)*jk(t) )for t bellong
 ") MaxValue;
 		void MaxValue(TColStd_Array1OfReal & TabMax);
 
-		/****************** NivConstr ******************/
-		/**** md5 signature: f6a2f8af8bbecc140e8868581b3445e5 ****/
+		/****** PLib_JacobiPolynomial::NivConstr ******/
+		/****** md5 signature: f6a2f8af8bbecc140e8868581b3445e5 ******/
 		%feature("compactdefaultargs") NivConstr;
 		%feature("autodoc", "Return
 -------
@@ -1635,8 +1635,8 @@ Returns nivconstr.
 ") NivConstr;
 		Standard_Integer NivConstr();
 
-		/****************** Points ******************/
-		/**** md5 signature: 653579675c537b457b38505106af2c77 ****/
+		/****** PLib_JacobiPolynomial::Points ******/
+		/****** md5 signature: 653579675c537b457b38505106af2c77 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -1654,8 +1654,8 @@ Returns the jacobi points for gauss integration ie the positive values of the le
 ") Points;
 		void Points(const Standard_Integer NbGaussPoints, TColStd_Array1OfReal & TabPoints);
 
-		/****************** ReduceDegree ******************/
-		/**** md5 signature: f3d1d0bcdf80f3699f0ff0a659fee202 ****/
+		/****** PLib_JacobiPolynomial::ReduceDegree ******/
+		/****** md5 signature: f3d1d0bcdf80f3699f0ff0a659fee202 ******/
 		%feature("compactdefaultargs") ReduceDegree;
 		%feature("autodoc", "
 Parameters
@@ -1676,8 +1676,8 @@ Compute newdegree <= maxdegree so that maxerror is lower than tol. maxerror can 
 ") ReduceDegree;
 		void ReduceDegree(const Standard_Integer Dimension, const Standard_Integer MaxDegree, const Standard_Real Tol, Standard_Real &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue);
 
-		/****************** ToCoefficients ******************/
-		/**** md5 signature: ff80fc0ff0d7e1c4e5d1180709a294be ****/
+		/****** PLib_JacobiPolynomial::ToCoefficients ******/
+		/****** md5 signature: ff80fc0ff0d7e1c4e5d1180709a294be ******/
 		%feature("compactdefaultargs") ToCoefficients;
 		%feature("autodoc", "
 Parameters
@@ -1697,8 +1697,8 @@ Convert the polynomial p(t) = r(t) + w(t) q(t) in the canonical base.
 ") ToCoefficients;
 		void ToCoefficients(const Standard_Integer Dimension, const Standard_Integer Degree, const TColStd_Array1OfReal & JacCoeff, TColStd_Array1OfReal & Coefficients);
 
-		/****************** Weights ******************/
-		/**** md5 signature: 4ae0ffe39406097290e31be2570d9f0d ****/
+		/****** PLib_JacobiPolynomial::Weights ******/
+		/****** md5 signature: 4ae0ffe39406097290e31be2570d9f0d ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "
 Parameters
@@ -1716,8 +1716,8 @@ Returns the jacobi weigths for gauss integration only for the positive values of
 ") Weights;
 		void Weights(const Standard_Integer NbGaussPoints, TColStd_Array2OfReal & TabWeights);
 
-		/****************** WorkDegree ******************/
-		/**** md5 signature: 0fafe1aec89490c754959fbbbd4a6908 ****/
+		/****** PLib_JacobiPolynomial::WorkDegree ******/
+		/****** md5 signature: 0fafe1aec89490c754959fbbbd4a6908 ******/
 		%feature("compactdefaultargs") WorkDegree;
 		%feature("autodoc", "Return
 -------

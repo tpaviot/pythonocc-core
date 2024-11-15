@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPALGOAPIDOCSTRING
 "BRepAlgoAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepalgoapi.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepalgoapi.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPALGOAPIDOCSTRING) BRepAlgoAPI
 
@@ -117,8 +117,8 @@ from OCC.Core.Exception import *
 **************************/
 class BRepAlgoAPI_Check : public BOPAlgo_Options {
 	public:
-		/****************** BRepAlgoAPI_Check ******************/
-		/**** md5 signature: 411402657614d45c8444ed8f583c4d89 ****/
+		/****** BRepAlgoAPI_Check::BRepAlgoAPI_Check ******/
+		/****** md5 signature: 411402657614d45c8444ed8f583c4d89 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Check;
 		%feature("autodoc", "Return
 -------
@@ -130,8 +130,8 @@ Empty constructor.
 ") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check();
 
-		/****************** BRepAlgoAPI_Check ******************/
-		/**** md5 signature: 4c7f74c0b1475c6354942a65d5c7e394 ****/
+		/****** BRepAlgoAPI_Check::BRepAlgoAPI_Check ******/
+		/****** md5 signature: 4c7f74c0b1475c6354942a65d5c7e394 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Check;
 		%feature("autodoc", "
 Parameters
@@ -151,8 +151,8 @@ Constructor for checking single shape. //! @param thes [in] - the shape to check
 ") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check(const TopoDS_Shape & theS, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True, const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** BRepAlgoAPI_Check ******************/
-		/**** md5 signature: 6d8665f00fc74c35f58fdcae0bcdc4ea ****/
+		/****** BRepAlgoAPI_Check::BRepAlgoAPI_Check ******/
+		/****** md5 signature: 6d8665f00fc74c35f58fdcae0bcdc4ea ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Check;
 		%feature("autodoc", "
 Parameters
@@ -174,8 +174,8 @@ Constructor for checking the couple of shapes. additionally to the validity chec
 ") BRepAlgoAPI_Check;
 		 BRepAlgoAPI_Check(const TopoDS_Shape & theS1, const TopoDS_Shape & theS2, const BOPAlgo_Operation theOp = BOPAlgo_UNKNOWN, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True, const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** IsValid ******************/
-		/**** md5 signature: c1993b3b31d320b598a9a9b27c56914e ****/
+		/****** BRepAlgoAPI_Check::IsValid ******/
+		/****** md5 signature: c1993b3b31d320b598a9a9b27c56914e ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Return
 -------
@@ -187,8 +187,8 @@ Shows whether shape(s) valid or not.
 ") IsValid;
 		Standard_Boolean IsValid();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 237808a6b51056c9f8e292d343f26d7d ****/
+		/****** BRepAlgoAPI_Check::Perform ******/
+		/****** md5 signature: 237808a6b51056c9f8e292d343f26d7d ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -205,8 +205,8 @@ Performs the check.
 ") Perform;
 		void Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** Result ******************/
-		/**** md5 signature: 7cf3309b46dab6da497e78cfc1a9af75 ****/
+		/****** BRepAlgoAPI_Check::Result ******/
+		/****** md5 signature: 7cf3309b46dab6da497e78cfc1a9af75 ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
@@ -218,8 +218,8 @@ Returns faulty shapes.
 ") Result;
 		const BOPAlgo_ListOfCheckResult & Result();
 
-		/****************** SetData ******************/
-		/**** md5 signature: c1fd665a073df98354476ae857f43c48 ****/
+		/****** BRepAlgoAPI_Check::SetData ******/
+		/****** md5 signature: c1fd665a073df98354476ae857f43c48 ******/
 		%feature("compactdefaultargs") SetData;
 		%feature("autodoc", "
 Parameters
@@ -238,8 +238,8 @@ Initializes the algorithm with single shape. //! @param thes [in] - the shape to
 ") SetData;
 		void SetData(const TopoDS_Shape & theS, const Standard_Boolean bTestSE = Standard_True, const Standard_Boolean bTestSI = Standard_True);
 
-		/****************** SetData ******************/
-		/**** md5 signature: 80850e26186481dcc7772de06de5db11 ****/
+		/****** BRepAlgoAPI_Check::SetData ******/
+		/****** md5 signature: 80850e26186481dcc7772de06de5db11 ******/
 		%feature("compactdefaultargs") SetData;
 		%feature("autodoc", "
 Parameters
@@ -276,8 +276,8 @@ Initializes the algorithm with couple of shapes. additionally to the validity ch
 %ignore BRepAlgoAPI_Algo::~BRepAlgoAPI_Algo();
 class BRepAlgoAPI_Algo : public BRepBuilderAPI_MakeShape, protected BOPAlgo_Options {
 	public:
-		/****************** Shape ******************/
-		/**** md5 signature: b8642bc5a50083ee24c608b46f5bf1c8 ****/
+		/****** BRepAlgoAPI_Algo::Shape ******/
+		/****** md5 signature: b8642bc5a50083ee24c608b46f5bf1c8 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -303,8 +303,8 @@ Returns a shape built by the shape construction algorithm. does not check if the
 ********************************/
 class BRepAlgoAPI_BuilderAlgo : public BRepAlgoAPI_Algo {
 	public:
-		/****************** BRepAlgoAPI_BuilderAlgo ******************/
-		/**** md5 signature: f034b0ea83263b0b12a5034e2ab03c28 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo ******/
+		/****** md5 signature: f034b0ea83263b0b12a5034e2ab03c28 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_BuilderAlgo;
 		%feature("autodoc", "Return
 -------
@@ -316,8 +316,8 @@ Empty constructor.
 ") BRepAlgoAPI_BuilderAlgo;
 		 BRepAlgoAPI_BuilderAlgo();
 
-		/****************** BRepAlgoAPI_BuilderAlgo ******************/
-		/**** md5 signature: 87f0646930c224a38e316c8395128e53 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::BRepAlgoAPI_BuilderAlgo ******/
+		/****** md5 signature: 87f0646930c224a38e316c8395128e53 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_BuilderAlgo;
 		%feature("autodoc", "
 Parameters
@@ -334,8 +334,8 @@ Constructor with prepared filler object.
 ") BRepAlgoAPI_BuilderAlgo;
 		 BRepAlgoAPI_BuilderAlgo(const BOPAlgo_PaveFiller & thePF);
 
-		/****************** Arguments ******************/
-		/**** md5 signature: 5c44416d889811943ccde89673d3c270 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::Arguments ******/
+		/****** md5 signature: 5c44416d889811943ccde89673d3c270 ******/
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "Return
 -------
@@ -347,8 +347,8 @@ Gets the arguments.
 ") Arguments;
 		const TopTools_ListOfShape & Arguments();
 
-		/****************** Build ******************/
-		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
+		/****** BRepAlgoAPI_BuilderAlgo::Build ******/
+		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -365,8 +365,8 @@ Performs the algorithm.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** Builder ******************/
-		/**** md5 signature: 8b185d6cf1a66c51174428861a33b6c7 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::Builder ******/
+		/****** md5 signature: 8b185d6cf1a66c51174428861a33b6c7 ******/
 		%feature("compactdefaultargs") Builder;
 		%feature("autodoc", "Return
 -------
@@ -378,8 +378,8 @@ Returns the building tool.
 ") Builder;
 		const BOPAlgo_PBuilder & Builder();
 
-		/****************** CheckInverted ******************/
-		/**** md5 signature: ce3c18df15bc3282101b99ee82f78b47 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::CheckInverted ******/
+		/****** md5 signature: ce3c18df15bc3282101b99ee82f78b47 ******/
 		%feature("compactdefaultargs") CheckInverted;
 		%feature("autodoc", "Return
 -------
@@ -391,8 +391,8 @@ Returns the flag defining whether the check for input solids on inverted status 
 ") CheckInverted;
 		Standard_Boolean CheckInverted();
 
-		/****************** DSFiller ******************/
-		/**** md5 signature: eacda80fa3f8437b06bd46026236195a ****/
+		/****** BRepAlgoAPI_BuilderAlgo::DSFiller ******/
+		/****** md5 signature: eacda80fa3f8437b06bd46026236195a ******/
 		%feature("compactdefaultargs") DSFiller;
 		%feature("autodoc", "Return
 -------
@@ -404,8 +404,8 @@ Returns the intersection tool.
 ") DSFiller;
 		const BOPAlgo_PPaveFiller & DSFiller();
 
-		/****************** Generated ******************/
-		/**** md5 signature: 6765eaeea6b04c9e5e12d95bf0d36ae9 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::Generated ******/
+		/****** md5 signature: 6765eaeea6b04c9e5e12d95bf0d36ae9 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -422,8 +422,8 @@ Returns the list of shapes generated from the shape <thes>. in frames of boolean
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
 
-		/****************** Glue ******************/
-		/**** md5 signature: 2a0ac34b43f154dd0238ac1408d9079b ****/
+		/****** BRepAlgoAPI_BuilderAlgo::Glue ******/
+		/****** md5 signature: 2a0ac34b43f154dd0238ac1408d9079b ******/
 		%feature("compactdefaultargs") Glue;
 		%feature("autodoc", "Return
 -------
@@ -435,8 +435,8 @@ Returns the glue option of the algorithm.
 ") Glue;
 		BOPAlgo_GlueEnum Glue();
 
-		/****************** HasDeleted ******************/
-		/**** md5 signature: 62e1a47bba6730979f45045197c457ad ****/
+		/****** BRepAlgoAPI_BuilderAlgo::HasDeleted ******/
+		/****** md5 signature: 62e1a47bba6730979f45045197c457ad ******/
 		%feature("compactdefaultargs") HasDeleted;
 		%feature("autodoc", "Return
 -------
@@ -448,8 +448,8 @@ Returns true if any of the input shapes has been deleted during operation. norma
 ") HasDeleted;
 		virtual Standard_Boolean HasDeleted();
 
-		/****************** HasGenerated ******************/
-		/**** md5 signature: 41e62931be9792b7588a37969bdd21d8 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::HasGenerated ******/
+		/****** md5 signature: 41e62931be9792b7588a37969bdd21d8 ******/
 		%feature("compactdefaultargs") HasGenerated;
 		%feature("autodoc", "Return
 -------
@@ -461,8 +461,8 @@ Returns true if any of the input shapes has generated shapes during operation.
 ") HasGenerated;
 		virtual Standard_Boolean HasGenerated();
 
-		/****************** HasHistory ******************/
-		/**** md5 signature: 707ba290c9cd0157e12b7038a0944657 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::HasHistory ******/
+		/****** md5 signature: 707ba290c9cd0157e12b7038a0944657 ******/
 		%feature("compactdefaultargs") HasHistory;
 		%feature("autodoc", "Return
 -------
@@ -474,8 +474,8 @@ Returns flag of history availability.
 ") HasHistory;
 		Standard_Boolean HasHistory();
 
-		/****************** HasModified ******************/
-		/**** md5 signature: 33dead3a6879f4d3e05d3f85aabe6d13 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::HasModified ******/
+		/****** md5 signature: 33dead3a6879f4d3e05d3f85aabe6d13 ******/
 		%feature("compactdefaultargs") HasModified;
 		%feature("autodoc", "Return
 -------
@@ -487,8 +487,8 @@ Returns true if any of the input shapes has been modified during operation.
 ") HasModified;
 		virtual Standard_Boolean HasModified();
 
-		/****************** History ******************/
-		/**** md5 signature: a47770f1ee9d6f229a149d416a698dc5 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::History ******/
+		/****** md5 signature: a47770f1ee9d6f229a149d416a698dc5 ******/
 		%feature("compactdefaultargs") History;
 		%feature("autodoc", "Return
 -------
@@ -500,8 +500,8 @@ History tool.
 ") History;
 		opencascade::handle<BRepTools_History> History();
 
-		/****************** IsDeleted ******************/
-		/**** md5 signature: 431a14f43afb5fe71090f69dcb3e4037 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::IsDeleted ******/
+		/****** md5 signature: 431a14f43afb5fe71090f69dcb3e4037 ******/
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "
 Parameters
@@ -518,8 +518,8 @@ Checks if the shape <thes> has been completely removed from the result, i.e. the
 ") IsDeleted;
 		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & aS);
 
-		/****************** Modified ******************/
-		/**** md5 signature: 4e20601bbc1c3aead85ab39355caf9fd ****/
+		/****** BRepAlgoAPI_BuilderAlgo::Modified ******/
+		/****** md5 signature: 4e20601bbc1c3aead85ab39355caf9fd ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -536,8 +536,8 @@ Returns the shapes modified from the shape <thes>. if any, the list will contain
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
-		/****************** NonDestructive ******************/
-		/**** md5 signature: debf4165891df54bd9a565d235f0d378 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::NonDestructive ******/
+		/****** md5 signature: debf4165891df54bd9a565d235f0d378 ******/
 		%feature("compactdefaultargs") NonDestructive;
 		%feature("autodoc", "Return
 -------
@@ -549,8 +549,8 @@ Returns the flag that defines the mode of treatment. in non-destructive mode the
 ") NonDestructive;
 		Standard_Boolean NonDestructive();
 
-		/****************** SectionEdges ******************/
-		/**** md5 signature: 8d1d78adb60588ec6c6d9bac5ddb95cb ****/
+		/****** BRepAlgoAPI_BuilderAlgo::SectionEdges ******/
+		/****** md5 signature: 8d1d78adb60588ec6c6d9bac5ddb95cb ******/
 		%feature("compactdefaultargs") SectionEdges;
 		%feature("autodoc", "Return
 -------
@@ -562,8 +562,8 @@ Returns a list of section edges. the edges represent the result of intersection 
 ") SectionEdges;
 		const TopTools_ListOfShape & SectionEdges();
 
-		/****************** SetArguments ******************/
-		/**** md5 signature: c8050caf960534f7d5c8a2cd210eb861 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::SetArguments ******/
+		/****** md5 signature: c8050caf960534f7d5c8a2cd210eb861 ******/
 		%feature("compactdefaultargs") SetArguments;
 		%feature("autodoc", "
 Parameters
@@ -580,8 +580,8 @@ Sets the arguments.
 ") SetArguments;
 		void SetArguments(const TopTools_ListOfShape & theLS);
 
-		/****************** SetCheckInverted ******************/
-		/**** md5 signature: 9645001f4ab756df382f60cfc76654bc ****/
+		/****** BRepAlgoAPI_BuilderAlgo::SetCheckInverted ******/
+		/****** md5 signature: 9645001f4ab756df382f60cfc76654bc ******/
 		%feature("compactdefaultargs") SetCheckInverted;
 		%feature("autodoc", "
 Parameters
@@ -598,8 +598,8 @@ Enables/disables the check of the input solids for inverted status.
 ") SetCheckInverted;
 		void SetCheckInverted(const Standard_Boolean theCheck);
 
-		/****************** SetGlue ******************/
-		/**** md5 signature: bae09c43d6b988a5d7d19b6376a5aa05 ****/
+		/****** BRepAlgoAPI_BuilderAlgo::SetGlue ******/
+		/****** md5 signature: bae09c43d6b988a5d7d19b6376a5aa05 ******/
 		%feature("compactdefaultargs") SetGlue;
 		%feature("autodoc", "
 Parameters
@@ -616,8 +616,8 @@ Sets the glue option for the algorithm, which allows increasing performance of t
 ") SetGlue;
 		void SetGlue(const BOPAlgo_GlueEnum theGlue);
 
-		/****************** SetNonDestructive ******************/
-		/**** md5 signature: 0a29c6536a8337536ce71b892337fbbb ****/
+		/****** BRepAlgoAPI_BuilderAlgo::SetNonDestructive ******/
+		/****** md5 signature: 0a29c6536a8337536ce71b892337fbbb ******/
 		%feature("compactdefaultargs") SetNonDestructive;
 		%feature("autodoc", "
 Parameters
@@ -634,8 +634,8 @@ Sets the flag that defines the mode of treatment. in non-destructive mode the ar
 ") SetNonDestructive;
 		void SetNonDestructive(const Standard_Boolean theFlag);
 
-		/****************** SetToFillHistory ******************/
-		/**** md5 signature: 0645816549ab38af8118c8f63f46c0ea ****/
+		/****** BRepAlgoAPI_BuilderAlgo::SetToFillHistory ******/
+		/****** md5 signature: 0645816549ab38af8118c8f63f46c0ea ******/
 		%feature("compactdefaultargs") SetToFillHistory;
 		%feature("autodoc", "
 Parameters
@@ -652,8 +652,8 @@ Allows disabling the history collection.
 ") SetToFillHistory;
 		void SetToFillHistory(const Standard_Boolean theHistFlag);
 
-		/****************** SimplifyResult ******************/
-		/**** md5 signature: 88e0cdcd55300620756ca014f3c6371d ****/
+		/****** BRepAlgoAPI_BuilderAlgo::SimplifyResult ******/
+		/****** md5 signature: 88e0cdcd55300620756ca014f3c6371d ******/
 		%feature("compactdefaultargs") SimplifyResult;
 		%feature("autodoc", "
 Parameters
@@ -686,8 +686,8 @@ Simplification of the result shape is performed by the means of *shapeupgrade_un
 ********************************/
 class BRepAlgoAPI_Defeaturing : public BRepAlgoAPI_Algo {
 	public:
-		/****************** BRepAlgoAPI_Defeaturing ******************/
-		/**** md5 signature: c00608d9bba8810c82a05b46e3e4f871 ****/
+		/****** BRepAlgoAPI_Defeaturing::BRepAlgoAPI_Defeaturing ******/
+		/****** md5 signature: c00608d9bba8810c82a05b46e3e4f871 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Defeaturing;
 		%feature("autodoc", "Return
 -------
@@ -699,8 +699,8 @@ Empty constructor.
 ") BRepAlgoAPI_Defeaturing;
 		 BRepAlgoAPI_Defeaturing();
 
-		/****************** AddFaceToRemove ******************/
-		/**** md5 signature: 26c9409a587f43491552f28dbeb97ed4 ****/
+		/****** BRepAlgoAPI_Defeaturing::AddFaceToRemove ******/
+		/****** md5 signature: 26c9409a587f43491552f28dbeb97ed4 ******/
 		%feature("compactdefaultargs") AddFaceToRemove;
 		%feature("autodoc", "
 Parameters
@@ -717,8 +717,8 @@ Adds the features to remove from the input shape. @param theface [in] the shape 
 ") AddFaceToRemove;
 		void AddFaceToRemove(const TopoDS_Shape & theFace);
 
-		/****************** AddFacesToRemove ******************/
-		/**** md5 signature: de6da71dc89a49bec36f3c8a28a2c6dd ****/
+		/****** BRepAlgoAPI_Defeaturing::AddFacesToRemove ******/
+		/****** md5 signature: de6da71dc89a49bec36f3c8a28a2c6dd ******/
 		%feature("compactdefaultargs") AddFacesToRemove;
 		%feature("autodoc", "
 Parameters
@@ -735,8 +735,8 @@ Adds the faces to remove from the input shape. @param thefaces [in] the list of 
 ") AddFacesToRemove;
 		void AddFacesToRemove(const TopTools_ListOfShape & theFaces);
 
-		/****************** Build ******************/
-		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
+		/****** BRepAlgoAPI_Defeaturing::Build ******/
+		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -753,8 +753,8 @@ Performs the operation.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** FacesToRemove ******************/
-		/**** md5 signature: 947971dfb74df8135dc7f7ce60eaaa90 ****/
+		/****** BRepAlgoAPI_Defeaturing::FacesToRemove ******/
+		/****** md5 signature: 947971dfb74df8135dc7f7ce60eaaa90 ******/
 		%feature("compactdefaultargs") FacesToRemove;
 		%feature("autodoc", "Return
 -------
@@ -766,8 +766,8 @@ Returns the list of faces which have been requested for removal from the input s
 ") FacesToRemove;
 		const TopTools_ListOfShape & FacesToRemove();
 
-		/****************** Generated ******************/
-		/**** md5 signature: 6765eaeea6b04c9e5e12d95bf0d36ae9 ****/
+		/****** BRepAlgoAPI_Defeaturing::Generated ******/
+		/****** md5 signature: 6765eaeea6b04c9e5e12d95bf0d36ae9 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -784,8 +784,8 @@ Returns the list of shapes generated from the shape <thes> during the operation.
 ") Generated;
 		virtual const TopTools_ListOfShape & Generated(const TopoDS_Shape & theS);
 
-		/****************** HasDeleted ******************/
-		/**** md5 signature: 62e1a47bba6730979f45045197c457ad ****/
+		/****** BRepAlgoAPI_Defeaturing::HasDeleted ******/
+		/****** md5 signature: 62e1a47bba6730979f45045197c457ad ******/
 		%feature("compactdefaultargs") HasDeleted;
 		%feature("autodoc", "Return
 -------
@@ -797,8 +797,8 @@ Returns true if any of the input shapes has been deleted during operation.
 ") HasDeleted;
 		virtual Standard_Boolean HasDeleted();
 
-		/****************** HasGenerated ******************/
-		/**** md5 signature: 41e62931be9792b7588a37969bdd21d8 ****/
+		/****** BRepAlgoAPI_Defeaturing::HasGenerated ******/
+		/****** md5 signature: 41e62931be9792b7588a37969bdd21d8 ******/
 		%feature("compactdefaultargs") HasGenerated;
 		%feature("autodoc", "Return
 -------
@@ -810,8 +810,8 @@ Returns true if any of the input shapes has generated shapes during operation.
 ") HasGenerated;
 		virtual Standard_Boolean HasGenerated();
 
-		/****************** HasHistory ******************/
-		/**** md5 signature: 707ba290c9cd0157e12b7038a0944657 ****/
+		/****** BRepAlgoAPI_Defeaturing::HasHistory ******/
+		/****** md5 signature: 707ba290c9cd0157e12b7038a0944657 ******/
 		%feature("compactdefaultargs") HasHistory;
 		%feature("autodoc", "Return
 -------
@@ -823,8 +823,8 @@ Returns whether the history was requested or not.
 ") HasHistory;
 		Standard_Boolean HasHistory();
 
-		/****************** HasModified ******************/
-		/**** md5 signature: 33dead3a6879f4d3e05d3f85aabe6d13 ****/
+		/****** BRepAlgoAPI_Defeaturing::HasModified ******/
+		/****** md5 signature: 33dead3a6879f4d3e05d3f85aabe6d13 ******/
 		%feature("compactdefaultargs") HasModified;
 		%feature("autodoc", "Return
 -------
@@ -836,8 +836,8 @@ Returns true if any of the input shapes has been modified during operation.
 ") HasModified;
 		virtual Standard_Boolean HasModified();
 
-		/****************** History ******************/
-		/**** md5 signature: 1926fba5b3ef6c8825eef7dc63e4c382 ****/
+		/****** BRepAlgoAPI_Defeaturing::History ******/
+		/****** md5 signature: 1926fba5b3ef6c8825eef7dc63e4c382 ******/
 		%feature("compactdefaultargs") History;
 		%feature("autodoc", "Return
 -------
@@ -849,8 +849,8 @@ Returns the history of shapes modifications.
 ") History;
 		opencascade::handle<BRepTools_History> History();
 
-		/****************** InputShape ******************/
-		/**** md5 signature: c0c04276bd1d5989adf5070d423aadb7 ****/
+		/****** BRepAlgoAPI_Defeaturing::InputShape ******/
+		/****** md5 signature: c0c04276bd1d5989adf5070d423aadb7 ******/
 		%feature("compactdefaultargs") InputShape;
 		%feature("autodoc", "Return
 -------
@@ -862,8 +862,8 @@ Returns the input shape.
 ") InputShape;
 		const TopoDS_Shape InputShape();
 
-		/****************** IsDeleted ******************/
-		/**** md5 signature: e03e7b54c17bc7f23491a2c633b6e283 ****/
+		/****** BRepAlgoAPI_Defeaturing::IsDeleted ******/
+		/****** md5 signature: e03e7b54c17bc7f23491a2c633b6e283 ******/
 		%feature("compactdefaultargs") IsDeleted;
 		%feature("autodoc", "
 Parameters
@@ -880,8 +880,8 @@ Returns true if the shape <thes> has been deleted during the operation. it means
 ") IsDeleted;
 		virtual Standard_Boolean IsDeleted(const TopoDS_Shape & theS);
 
-		/****************** Modified ******************/
-		/**** md5 signature: 4e20601bbc1c3aead85ab39355caf9fd ****/
+		/****** BRepAlgoAPI_Defeaturing::Modified ******/
+		/****** md5 signature: 4e20601bbc1c3aead85ab39355caf9fd ******/
 		%feature("compactdefaultargs") Modified;
 		%feature("autodoc", "
 Parameters
@@ -898,8 +898,8 @@ Returns the list of shapes modified from the shape <thes> during the operation.
 ") Modified;
 		virtual const TopTools_ListOfShape & Modified(const TopoDS_Shape & theS);
 
-		/****************** SetShape ******************/
-		/**** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ****/
+		/****** BRepAlgoAPI_Defeaturing::SetShape ******/
+		/****** md5 signature: 927e2ebe2fb5354dfb3da3c53e512cad ******/
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "
 Parameters
@@ -916,8 +916,8 @@ Sets the shape for processing. @param theshape [in] the shape to remove the feat
 ") SetShape;
 		void SetShape(const TopoDS_Shape & theShape);
 
-		/****************** SetToFillHistory ******************/
-		/**** md5 signature: 74ee5996560ad06ab737a4c8f4c7350d ****/
+		/****** BRepAlgoAPI_Defeaturing::SetToFillHistory ******/
+		/****** md5 signature: 74ee5996560ad06ab737a4c8f4c7350d ******/
 		%feature("compactdefaultargs") SetToFillHistory;
 		%feature("autodoc", "
 Parameters
@@ -948,8 +948,8 @@ Defines whether to track the modification of the shapes or not.
 *************************************/
 class BRepAlgoAPI_BooleanOperation : public BRepAlgoAPI_BuilderAlgo {
 	public:
-		/****************** BRepAlgoAPI_BooleanOperation ******************/
-		/**** md5 signature: ecd6042de04813653a64f217d81e1a57 ****/
+		/****** BRepAlgoAPI_BooleanOperation::BRepAlgoAPI_BooleanOperation ******/
+		/****** md5 signature: ecd6042de04813653a64f217d81e1a57 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_BooleanOperation;
 		%feature("autodoc", "Return
 -------
@@ -961,8 +961,8 @@ Empty constructor.
 ") BRepAlgoAPI_BooleanOperation;
 		 BRepAlgoAPI_BooleanOperation();
 
-		/****************** BRepAlgoAPI_BooleanOperation ******************/
-		/**** md5 signature: 911dfe6e6653bd69280d3f5c21f112f5 ****/
+		/****** BRepAlgoAPI_BooleanOperation::BRepAlgoAPI_BooleanOperation ******/
+		/****** md5 signature: 911dfe6e6653bd69280d3f5c21f112f5 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_BooleanOperation;
 		%feature("autodoc", "
 Parameters
@@ -979,8 +979,8 @@ Constructor with precomputed intersections of arguments.
 ") BRepAlgoAPI_BooleanOperation;
 		 BRepAlgoAPI_BooleanOperation(const BOPAlgo_PaveFiller & thePF);
 
-		/****************** Build ******************/
-		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
+		/****** BRepAlgoAPI_BooleanOperation::Build ******/
+		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -997,8 +997,8 @@ Performs the boolean operation.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** Operation ******************/
-		/**** md5 signature: 3fe7ad033306b813a524bc39f03a5e6e ****/
+		/****** BRepAlgoAPI_BooleanOperation::Operation ******/
+		/****** md5 signature: 3fe7ad033306b813a524bc39f03a5e6e ******/
 		%feature("compactdefaultargs") Operation;
 		%feature("autodoc", "Return
 -------
@@ -1010,8 +1010,8 @@ Returns the type of boolean operation.
 ") Operation;
 		BOPAlgo_Operation Operation();
 
-		/****************** SetOperation ******************/
-		/**** md5 signature: cef1e63b0452d16e7996e89724a77c38 ****/
+		/****** BRepAlgoAPI_BooleanOperation::SetOperation ******/
+		/****** md5 signature: cef1e63b0452d16e7996e89724a77c38 ******/
 		%feature("compactdefaultargs") SetOperation;
 		%feature("autodoc", "
 Parameters
@@ -1028,8 +1028,8 @@ Sets the type of boolean operation.
 ") SetOperation;
 		void SetOperation(const BOPAlgo_Operation theBOP);
 
-		/****************** SetTools ******************/
-		/**** md5 signature: 3be2cbb7f8439cb12462b3704230f424 ****/
+		/****** BRepAlgoAPI_BooleanOperation::SetTools ******/
+		/****** md5 signature: 3be2cbb7f8439cb12462b3704230f424 ******/
 		%feature("compactdefaultargs") SetTools;
 		%feature("autodoc", "
 Parameters
@@ -1046,8 +1046,8 @@ Sets the tool arguments.
 ") SetTools;
 		void SetTools(const TopTools_ListOfShape & theLS);
 
-		/****************** Shape1 ******************/
-		/**** md5 signature: 8981b86985f46147f6d78d0ef2565c6e ****/
+		/****** BRepAlgoAPI_BooleanOperation::Shape1 ******/
+		/****** md5 signature: 8981b86985f46147f6d78d0ef2565c6e ******/
 		%feature("compactdefaultargs") Shape1;
 		%feature("autodoc", "Return
 -------
@@ -1059,8 +1059,8 @@ Returns the first argument involved in this boolean operation. obsolete.
 ") Shape1;
 		const TopoDS_Shape Shape1();
 
-		/****************** Shape2 ******************/
-		/**** md5 signature: 2c54bae91519136523ed62dc1f27ae72 ****/
+		/****** BRepAlgoAPI_BooleanOperation::Shape2 ******/
+		/****** md5 signature: 2c54bae91519136523ed62dc1f27ae72 ******/
 		%feature("compactdefaultargs") Shape2;
 		%feature("autodoc", "Return
 -------
@@ -1072,8 +1072,8 @@ Returns the second argument involved in this boolean operation. obsolete.
 ") Shape2;
 		const TopoDS_Shape Shape2();
 
-		/****************** Tools ******************/
-		/**** md5 signature: 0471973aac274d4f863776957a65fd19 ****/
+		/****** BRepAlgoAPI_BooleanOperation::Tools ******/
+		/****** md5 signature: 0471973aac274d4f863776957a65fd19 ******/
 		%feature("compactdefaultargs") Tools;
 		%feature("autodoc", "Return
 -------
@@ -1099,8 +1099,8 @@ Returns the tools arguments.
 *****************************/
 class BRepAlgoAPI_Splitter : public BRepAlgoAPI_BuilderAlgo {
 	public:
-		/****************** BRepAlgoAPI_Splitter ******************/
-		/**** md5 signature: 9ef21f13bc074dc22af2512d12d68538 ****/
+		/****** BRepAlgoAPI_Splitter::BRepAlgoAPI_Splitter ******/
+		/****** md5 signature: 9ef21f13bc074dc22af2512d12d68538 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Splitter;
 		%feature("autodoc", "Return
 -------
@@ -1112,8 +1112,8 @@ Empty constructor.
 ") BRepAlgoAPI_Splitter;
 		 BRepAlgoAPI_Splitter();
 
-		/****************** BRepAlgoAPI_Splitter ******************/
-		/**** md5 signature: 7e6131d308f84171e35c6eadd0d40875 ****/
+		/****** BRepAlgoAPI_Splitter::BRepAlgoAPI_Splitter ******/
+		/****** md5 signature: 7e6131d308f84171e35c6eadd0d40875 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Splitter;
 		%feature("autodoc", "
 Parameters
@@ -1130,8 +1130,8 @@ Constructor with already prepared intersection tool - pavefiller.
 ") BRepAlgoAPI_Splitter;
 		 BRepAlgoAPI_Splitter(const BOPAlgo_PaveFiller & thePF);
 
-		/****************** Build ******************/
-		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
+		/****** BRepAlgoAPI_Splitter::Build ******/
+		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -1148,8 +1148,8 @@ Performs the split operation. performs the intersection of the argument shapes (
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** SetTools ******************/
-		/**** md5 signature: 3be2cbb7f8439cb12462b3704230f424 ****/
+		/****** BRepAlgoAPI_Splitter::SetTools ******/
+		/****** md5 signature: 3be2cbb7f8439cb12462b3704230f424 ******/
 		%feature("compactdefaultargs") SetTools;
 		%feature("autodoc", "
 Parameters
@@ -1166,8 +1166,8 @@ Sets the tool arguments.
 ") SetTools;
 		void SetTools(const TopTools_ListOfShape & theLS);
 
-		/****************** Tools ******************/
-		/**** md5 signature: 0471973aac274d4f863776957a65fd19 ****/
+		/****** BRepAlgoAPI_Splitter::Tools ******/
+		/****** md5 signature: 0471973aac274d4f863776957a65fd19 ******/
 		%feature("compactdefaultargs") Tools;
 		%feature("autodoc", "Return
 -------
@@ -1193,8 +1193,8 @@ Returns the tool arguments.
 ***************************/
 class BRepAlgoAPI_Common : public BRepAlgoAPI_BooleanOperation {
 	public:
-		/****************** BRepAlgoAPI_Common ******************/
-		/**** md5 signature: f91369cacf90268e3d29941c629e6143 ****/
+		/****** BRepAlgoAPI_Common::BRepAlgoAPI_Common ******/
+		/****** md5 signature: f91369cacf90268e3d29941c629e6143 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Common;
 		%feature("autodoc", "Return
 -------
@@ -1206,8 +1206,8 @@ Empty constructor.
 ") BRepAlgoAPI_Common;
 		 BRepAlgoAPI_Common();
 
-		/****************** BRepAlgoAPI_Common ******************/
-		/**** md5 signature: 221ea98268ab300eec5e97d97aab1008 ****/
+		/****** BRepAlgoAPI_Common::BRepAlgoAPI_Common ******/
+		/****** md5 signature: 221ea98268ab300eec5e97d97aab1008 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Common;
 		%feature("autodoc", "
 Parameters
@@ -1224,8 +1224,8 @@ Empty constructor <pf> - pavefiller object that is carried out.
 ") BRepAlgoAPI_Common;
 		 BRepAlgoAPI_Common(const BOPAlgo_PaveFiller & PF);
 
-		/****************** BRepAlgoAPI_Common ******************/
-		/**** md5 signature: 281aea6470a4b9efa44abd92f03bd429 ****/
+		/****** BRepAlgoAPI_Common::BRepAlgoAPI_Common ******/
+		/****** md5 signature: 281aea6470a4b9efa44abd92f03bd429 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Common;
 		%feature("autodoc", "
 Parameters
@@ -1244,8 +1244,8 @@ Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type o
 ") BRepAlgoAPI_Common;
 		 BRepAlgoAPI_Common(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** BRepAlgoAPI_Common ******************/
-		/**** md5 signature: 435fb55f2697ff39118c51724120f6f5 ****/
+		/****** BRepAlgoAPI_Common::BRepAlgoAPI_Common ******/
+		/****** md5 signature: 435fb55f2697ff39118c51724120f6f5 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Common;
 		%feature("autodoc", "
 Parameters
@@ -1279,8 +1279,8 @@ Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type o
 ************************/
 class BRepAlgoAPI_Cut : public BRepAlgoAPI_BooleanOperation {
 	public:
-		/****************** BRepAlgoAPI_Cut ******************/
-		/**** md5 signature: 629dc45f6ac54a1d0dd3eb613bb25729 ****/
+		/****** BRepAlgoAPI_Cut::BRepAlgoAPI_Cut ******/
+		/****** md5 signature: 629dc45f6ac54a1d0dd3eb613bb25729 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Cut;
 		%feature("autodoc", "Return
 -------
@@ -1292,8 +1292,8 @@ Empty constructor.
 ") BRepAlgoAPI_Cut;
 		 BRepAlgoAPI_Cut();
 
-		/****************** BRepAlgoAPI_Cut ******************/
-		/**** md5 signature: d1f642f339e236fdb33a884982f2791a ****/
+		/****** BRepAlgoAPI_Cut::BRepAlgoAPI_Cut ******/
+		/****** md5 signature: d1f642f339e236fdb33a884982f2791a ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Cut;
 		%feature("autodoc", "
 Parameters
@@ -1310,8 +1310,8 @@ Empty constructor <pf> - pavefiller object that is carried out.
 ") BRepAlgoAPI_Cut;
 		 BRepAlgoAPI_Cut(const BOPAlgo_PaveFiller & PF);
 
-		/****************** BRepAlgoAPI_Cut ******************/
-		/**** md5 signature: aa1da534b9c66c537779d74c3ab72d96 ****/
+		/****** BRepAlgoAPI_Cut::BRepAlgoAPI_Cut ******/
+		/****** md5 signature: aa1da534b9c66c537779d74c3ab72d96 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Cut;
 		%feature("autodoc", "
 Parameters
@@ -1330,8 +1330,8 @@ Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type o
 ") BRepAlgoAPI_Cut;
 		 BRepAlgoAPI_Cut(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** BRepAlgoAPI_Cut ******************/
-		/**** md5 signature: ac4b1606254f036b586cca6028e78c28 ****/
+		/****** BRepAlgoAPI_Cut::BRepAlgoAPI_Cut ******/
+		/****** md5 signature: ac4b1606254f036b586cca6028e78c28 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Cut;
 		%feature("autodoc", "
 Parameters
@@ -1366,8 +1366,8 @@ Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type o
 *************************/
 class BRepAlgoAPI_Fuse : public BRepAlgoAPI_BooleanOperation {
 	public:
-		/****************** BRepAlgoAPI_Fuse ******************/
-		/**** md5 signature: ba31d780d01f5752b12d845f4446df0f ****/
+		/****** BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse ******/
+		/****** md5 signature: ba31d780d01f5752b12d845f4446df0f ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Fuse;
 		%feature("autodoc", "Return
 -------
@@ -1379,8 +1379,8 @@ Empty constructor.
 ") BRepAlgoAPI_Fuse;
 		 BRepAlgoAPI_Fuse();
 
-		/****************** BRepAlgoAPI_Fuse ******************/
-		/**** md5 signature: 7689d836e2615ec52255c3ee260ddb69 ****/
+		/****** BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse ******/
+		/****** md5 signature: 7689d836e2615ec52255c3ee260ddb69 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Fuse;
 		%feature("autodoc", "
 Parameters
@@ -1397,8 +1397,8 @@ Empty constructor <pf> - pavefiller object that is carried out.
 ") BRepAlgoAPI_Fuse;
 		 BRepAlgoAPI_Fuse(const BOPAlgo_PaveFiller & PF);
 
-		/****************** BRepAlgoAPI_Fuse ******************/
-		/**** md5 signature: 997b51870f06f995a1de922a1d169097 ****/
+		/****** BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse ******/
+		/****** md5 signature: 997b51870f06f995a1de922a1d169097 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Fuse;
 		%feature("autodoc", "
 Parameters
@@ -1417,8 +1417,8 @@ Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type o
 ") BRepAlgoAPI_Fuse;
 		 BRepAlgoAPI_Fuse(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** BRepAlgoAPI_Fuse ******************/
-		/**** md5 signature: 0619d132bb7d5cd901bfe7d534a8a34b ****/
+		/****** BRepAlgoAPI_Fuse::BRepAlgoAPI_Fuse ******/
+		/****** md5 signature: 0619d132bb7d5cd901bfe7d534a8a34b ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Fuse;
 		%feature("autodoc", "
 Parameters
@@ -1452,8 +1452,8 @@ Constructor with two shapes <s1> -argument <s2> -tool <anoperation> - the type o
 ****************************/
 class BRepAlgoAPI_Section : public BRepAlgoAPI_BooleanOperation {
 	public:
-		/****************** BRepAlgoAPI_Section ******************/
-		/**** md5 signature: a47f0ceb741798857db55d2032f40092 ****/
+		/****** BRepAlgoAPI_Section::BRepAlgoAPI_Section ******/
+		/****** md5 signature: a47f0ceb741798857db55d2032f40092 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
 		%feature("autodoc", "Return
 -------
@@ -1465,8 +1465,8 @@ Empty constructor.
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section();
 
-		/****************** BRepAlgoAPI_Section ******************/
-		/**** md5 signature: bda2ec08baeb2e74ab6cb69daaf2c885 ****/
+		/****** BRepAlgoAPI_Section::BRepAlgoAPI_Section ******/
+		/****** md5 signature: bda2ec08baeb2e74ab6cb69daaf2c885 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
 		%feature("autodoc", "
 Parameters
@@ -1483,8 +1483,8 @@ Empty constructor <pf> - pavefiller object that is carried out.
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const BOPAlgo_PaveFiller & PF);
 
-		/****************** BRepAlgoAPI_Section ******************/
-		/**** md5 signature: cb5bfbec844bcec9b0cb0f6e222e3512 ****/
+		/****** BRepAlgoAPI_Section::BRepAlgoAPI_Section ******/
+		/****** md5 signature: cb5bfbec844bcec9b0cb0f6e222e3512 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
 		%feature("autodoc", "
 Parameters
@@ -1503,8 +1503,8 @@ Constructor with two shapes <s1> -argument <s2> -tool <performnow> - the flag: i
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Standard_Boolean PerformNow = Standard_True);
 
-		/****************** BRepAlgoAPI_Section ******************/
-		/**** md5 signature: 6f2f6902a99b64288c481b6cad474b59 ****/
+		/****** BRepAlgoAPI_Section::BRepAlgoAPI_Section ******/
+		/****** md5 signature: 6f2f6902a99b64288c481b6cad474b59 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
 		%feature("autodoc", "
 Parameters
@@ -1524,8 +1524,8 @@ Constructor with two shapes <s1> -argument <s2> -tool <pf> - pavefiller object t
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const BOPAlgo_PaveFiller & aDSF, const Standard_Boolean PerformNow = Standard_True);
 
-		/****************** BRepAlgoAPI_Section ******************/
-		/**** md5 signature: 30e774e5a1508f5dd6195bbba8028bdd ****/
+		/****** BRepAlgoAPI_Section::BRepAlgoAPI_Section ******/
+		/****** md5 signature: 30e774e5a1508f5dd6195bbba8028bdd ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
 		%feature("autodoc", "
 Parameters
@@ -1544,8 +1544,8 @@ Constructor with two shapes <s1> - argument <pl> - tool <performnow> - the flag:
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const TopoDS_Shape & S1, const gp_Pln & Pl, const Standard_Boolean PerformNow = Standard_True);
 
-		/****************** BRepAlgoAPI_Section ******************/
-		/**** md5 signature: c287bb4bc888ac88d0cb0da777c82aa7 ****/
+		/****** BRepAlgoAPI_Section::BRepAlgoAPI_Section ******/
+		/****** md5 signature: c287bb4bc888ac88d0cb0da777c82aa7 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
 		%feature("autodoc", "
 Parameters
@@ -1564,8 +1564,8 @@ Constructor with two shapes <s1> - argument <sf> - tool <performnow> - the flag:
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const TopoDS_Shape & S1, const opencascade::handle<Geom_Surface> & Sf, const Standard_Boolean PerformNow = Standard_True);
 
-		/****************** BRepAlgoAPI_Section ******************/
-		/**** md5 signature: 672281bf6f9f679b4d466fb17e60f6c9 ****/
+		/****** BRepAlgoAPI_Section::BRepAlgoAPI_Section ******/
+		/****** md5 signature: 672281bf6f9f679b4d466fb17e60f6c9 ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
 		%feature("autodoc", "
 Parameters
@@ -1584,8 +1584,8 @@ Constructor with two shapes <sf> - argument <s2> - tool <performnow> - the flag:
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const opencascade::handle<Geom_Surface> & Sf, const TopoDS_Shape & S2, const Standard_Boolean PerformNow = Standard_True);
 
-		/****************** BRepAlgoAPI_Section ******************/
-		/**** md5 signature: b272770396cfbca61affc5a095f04dbc ****/
+		/****** BRepAlgoAPI_Section::BRepAlgoAPI_Section ******/
+		/****** md5 signature: b272770396cfbca61affc5a095f04dbc ******/
 		%feature("compactdefaultargs") BRepAlgoAPI_Section;
 		%feature("autodoc", "
 Parameters
@@ -1604,8 +1604,8 @@ Constructor with two shapes <sf1> - argument <sf2> - tool <performnow> - the fla
 ") BRepAlgoAPI_Section;
 		 BRepAlgoAPI_Section(const opencascade::handle<Geom_Surface> & Sf1, const opencascade::handle<Geom_Surface> & Sf2, const Standard_Boolean PerformNow = Standard_True);
 
-		/****************** Approximation ******************/
-		/**** md5 signature: f599ca30fa002b2a3dc329decde6ce74 ****/
+		/****** BRepAlgoAPI_Section::Approximation ******/
+		/****** md5 signature: f599ca30fa002b2a3dc329decde6ce74 ******/
 		%feature("compactdefaultargs") Approximation;
 		%feature("autodoc", "
 Parameters
@@ -1622,8 +1622,8 @@ No available documentation.
 ") Approximation;
 		void Approximation(const Standard_Boolean B);
 
-		/****************** Build ******************/
-		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
+		/****** BRepAlgoAPI_Section::Build ******/
+		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -1640,8 +1640,8 @@ Performs the algorithm filling interference data structure (if it is necessary) 
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** ComputePCurveOn1 ******************/
-		/**** md5 signature: e4a8add7cd0d8f532479132026321808 ****/
+		/****** BRepAlgoAPI_Section::ComputePCurveOn1 ******/
+		/****** md5 signature: e4a8add7cd0d8f532479132026321808 ******/
 		%feature("compactdefaultargs") ComputePCurveOn1;
 		%feature("autodoc", "
 Parameters
@@ -1658,8 +1658,8 @@ Indicates whether the p-curve should be (or not) performed on the argument. by d
 ") ComputePCurveOn1;
 		void ComputePCurveOn1(const Standard_Boolean B);
 
-		/****************** ComputePCurveOn2 ******************/
-		/**** md5 signature: 69d49dff388a83191da02eb8e1945b69 ****/
+		/****** BRepAlgoAPI_Section::ComputePCurveOn2 ******/
+		/****** md5 signature: 69d49dff388a83191da02eb8e1945b69 ******/
 		%feature("compactdefaultargs") ComputePCurveOn2;
 		%feature("autodoc", "
 Parameters
@@ -1676,8 +1676,8 @@ Indicates whether the p-curve should be (or not) performed on the tool. by defau
 ") ComputePCurveOn2;
 		void ComputePCurveOn2(const Standard_Boolean B);
 
-		/****************** HasAncestorFaceOn1 ******************/
-		/**** md5 signature: 36605047037cbfa30f9efcc59b149e44 ****/
+		/****** BRepAlgoAPI_Section::HasAncestorFaceOn1 ******/
+		/****** md5 signature: 36605047037cbfa30f9efcc59b149e44 ******/
 		%feature("compactdefaultargs") HasAncestorFaceOn1;
 		%feature("autodoc", "
 Parameters
@@ -1695,8 +1695,8 @@ Get the face of the first part giving section edge <e>. returns true on the 3 fo
 ") HasAncestorFaceOn1;
 		Standard_Boolean HasAncestorFaceOn1(const TopoDS_Shape & E, TopoDS_Shape & F);
 
-		/****************** HasAncestorFaceOn2 ******************/
-		/**** md5 signature: 0642a4fb4df5a635412bd18e5f65e916 ****/
+		/****** BRepAlgoAPI_Section::HasAncestorFaceOn2 ******/
+		/****** md5 signature: 0642a4fb4df5a635412bd18e5f65e916 ******/
 		%feature("compactdefaultargs") HasAncestorFaceOn2;
 		%feature("autodoc", "
 Parameters
@@ -1714,8 +1714,8 @@ Identifies the ancestor faces of the intersection edge e resulting from the last
 ") HasAncestorFaceOn2;
 		Standard_Boolean HasAncestorFaceOn2(const TopoDS_Shape & E, TopoDS_Shape & F);
 
-		/****************** Init1 ******************/
-		/**** md5 signature: 7fa686f55d72920afc50e65b8a84a805 ****/
+		/****** BRepAlgoAPI_Section::Init1 ******/
+		/****** md5 signature: 7fa686f55d72920afc50e65b8a84a805 ******/
 		%feature("compactdefaultargs") Init1;
 		%feature("autodoc", "
 Parameters
@@ -1732,8 +1732,8 @@ Initialize the argument <s1> - argument obsolete.
 ") Init1;
 		void Init1(const TopoDS_Shape & S1);
 
-		/****************** Init1 ******************/
-		/**** md5 signature: 1e834e5b66aacf2f588a792cb0edcd57 ****/
+		/****** BRepAlgoAPI_Section::Init1 ******/
+		/****** md5 signature: 1e834e5b66aacf2f588a792cb0edcd57 ******/
 		%feature("compactdefaultargs") Init1;
 		%feature("autodoc", "
 Parameters
@@ -1750,8 +1750,8 @@ Initialize the argument <pl> - argument obsolete.
 ") Init1;
 		void Init1(const gp_Pln & Pl);
 
-		/****************** Init1 ******************/
-		/**** md5 signature: a94f1a0649d28cfd679dcbe46833b484 ****/
+		/****** BRepAlgoAPI_Section::Init1 ******/
+		/****** md5 signature: a94f1a0649d28cfd679dcbe46833b484 ******/
 		%feature("compactdefaultargs") Init1;
 		%feature("autodoc", "
 Parameters
@@ -1768,8 +1768,8 @@ Initialize the argument <sf> - argument obsolete.
 ") Init1;
 		void Init1(const opencascade::handle<Geom_Surface> & Sf);
 
-		/****************** Init2 ******************/
-		/**** md5 signature: 8a35dc2983e205023df1fac2afbf3b01 ****/
+		/****** BRepAlgoAPI_Section::Init2 ******/
+		/****** md5 signature: 8a35dc2983e205023df1fac2afbf3b01 ******/
 		%feature("compactdefaultargs") Init2;
 		%feature("autodoc", "
 Parameters
@@ -1786,8 +1786,8 @@ Initialize the tool <s2> - tool obsolete.
 ") Init2;
 		void Init2(const TopoDS_Shape & S2);
 
-		/****************** Init2 ******************/
-		/**** md5 signature: 1fb6fdb5216fde3b15724409206adcfe ****/
+		/****** BRepAlgoAPI_Section::Init2 ******/
+		/****** md5 signature: 1fb6fdb5216fde3b15724409206adcfe ******/
 		%feature("compactdefaultargs") Init2;
 		%feature("autodoc", "
 Parameters
@@ -1804,8 +1804,8 @@ Initialize the tool <pl> - tool obsolete.
 ") Init2;
 		void Init2(const gp_Pln & Pl);
 
-		/****************** Init2 ******************/
-		/**** md5 signature: 86865e03b7bd5eecac0d55746d523771 ****/
+		/****** BRepAlgoAPI_Section::Init2 ******/
+		/****** md5 signature: 86865e03b7bd5eecac0d55746d523771 ******/
 		%feature("compactdefaultargs") Init2;
 		%feature("autodoc", "
 Parameters

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPTOGEOMDOCSTRING
 "StepToGeom module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_steptogeom.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_steptogeom.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPTOGEOMDOCSTRING) StepToGeom
 
@@ -107,8 +107,8 @@ from OCC.Core.Exception import *
 %rename(steptogeom) StepToGeom;
 class StepToGeom {
 	public:
-		/****************** MakeAxis1Placement ******************/
-		/**** md5 signature: 497af862e00ca406f13a0793cbc3e893 ****/
+		/****** StepToGeom::MakeAxis1Placement ******/
+		/****** md5 signature: 497af862e00ca406f13a0793cbc3e893 ******/
 		%feature("compactdefaultargs") MakeAxis1Placement;
 		%feature("autodoc", "
 Parameters
@@ -126,8 +126,8 @@ No available documentation.
 ") MakeAxis1Placement;
 		static opencascade::handle<Geom_Axis1Placement> MakeAxis1Placement(const opencascade::handle<StepGeom_Axis1Placement> & SA, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeAxis2Placement ******************/
-		/**** md5 signature: 2e366052f7936befb7c794e733521080 ****/
+		/****** StepToGeom::MakeAxis2Placement ******/
+		/****** md5 signature: 2e366052f7936befb7c794e733521080 ******/
 		%feature("compactdefaultargs") MakeAxis2Placement;
 		%feature("autodoc", "
 Parameters
@@ -145,8 +145,8 @@ No available documentation.
 ") MakeAxis2Placement;
 		static opencascade::handle<Geom_Axis2Placement> MakeAxis2Placement(const opencascade::handle<StepGeom_Axis2Placement3d> & SA, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeAxis2Placement ******************/
-		/**** md5 signature: 9c31e6d955fc394caecd4f46d406587b ****/
+		/****** StepToGeom::MakeAxis2Placement ******/
+		/****** md5 signature: 9c31e6d955fc394caecd4f46d406587b ******/
 		%feature("compactdefaultargs") MakeAxis2Placement;
 		%feature("autodoc", "
 Parameters
@@ -163,8 +163,8 @@ No available documentation.
 ") MakeAxis2Placement;
 		static opencascade::handle<Geom_Axis2Placement> MakeAxis2Placement(const opencascade::handle<StepGeom_SuParameters> & SP);
 
-		/****************** MakeAxisPlacement ******************/
-		/**** md5 signature: 070972f5605d50fec92df3ee4b8f4995 ****/
+		/****** StepToGeom::MakeAxisPlacement ******/
+		/****** md5 signature: 070972f5605d50fec92df3ee4b8f4995 ******/
 		%feature("compactdefaultargs") MakeAxisPlacement;
 		%feature("autodoc", "
 Parameters
@@ -182,8 +182,8 @@ No available documentation.
 ") MakeAxisPlacement;
 		static opencascade::handle<Geom2d_AxisPlacement> MakeAxisPlacement(const opencascade::handle<StepGeom_Axis2Placement2d> & SA, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeBSplineCurve ******************/
-		/**** md5 signature: 105ed8764d2ea9950ffc4d9ef15d4695 ****/
+		/****** StepToGeom::MakeBSplineCurve ******/
+		/****** md5 signature: 105ed8764d2ea9950ffc4d9ef15d4695 ******/
 		%feature("compactdefaultargs") MakeBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -201,8 +201,8 @@ No available documentation.
 ") MakeBSplineCurve;
 		static opencascade::handle<Geom_BSplineCurve> MakeBSplineCurve(const opencascade::handle<StepGeom_BSplineCurve> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeBSplineCurve2d ******************/
-		/**** md5 signature: 47c8465f841fe50f3c8498f3973e934e ****/
+		/****** StepToGeom::MakeBSplineCurve2d ******/
+		/****** md5 signature: 47c8465f841fe50f3c8498f3973e934e ******/
 		%feature("compactdefaultargs") MakeBSplineCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -220,8 +220,8 @@ No available documentation.
 ") MakeBSplineCurve2d;
 		static opencascade::handle<Geom2d_BSplineCurve> MakeBSplineCurve2d(const opencascade::handle<StepGeom_BSplineCurve> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeBSplineSurface ******************/
-		/**** md5 signature: 7d86fb58fc31e3660266b59e6533b0d6 ****/
+		/****** StepToGeom::MakeBSplineSurface ******/
+		/****** md5 signature: 7d86fb58fc31e3660266b59e6533b0d6 ******/
 		%feature("compactdefaultargs") MakeBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -239,8 +239,8 @@ No available documentation.
 ") MakeBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> MakeBSplineSurface(const opencascade::handle<StepGeom_BSplineSurface> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeBoundedCurve ******************/
-		/**** md5 signature: c741eaa54ce3e5ad283641767993b742 ****/
+		/****** StepToGeom::MakeBoundedCurve ******/
+		/****** md5 signature: c741eaa54ce3e5ad283641767993b742 ******/
 		%feature("compactdefaultargs") MakeBoundedCurve;
 		%feature("autodoc", "
 Parameters
@@ -258,8 +258,8 @@ No available documentation.
 ") MakeBoundedCurve;
 		static opencascade::handle<Geom_BoundedCurve> MakeBoundedCurve(const opencascade::handle<StepGeom_BoundedCurve> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeBoundedCurve2d ******************/
-		/**** md5 signature: eefaf6fdcf95f733f4a271525c9d27ee ****/
+		/****** StepToGeom::MakeBoundedCurve2d ******/
+		/****** md5 signature: eefaf6fdcf95f733f4a271525c9d27ee ******/
 		%feature("compactdefaultargs") MakeBoundedCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -277,8 +277,8 @@ No available documentation.
 ") MakeBoundedCurve2d;
 		static opencascade::handle<Geom2d_BoundedCurve> MakeBoundedCurve2d(const opencascade::handle<StepGeom_BoundedCurve> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeBoundedSurface ******************/
-		/**** md5 signature: 3635f4a3dd706161233bd0cf1326e9f5 ****/
+		/****** StepToGeom::MakeBoundedSurface ******/
+		/****** md5 signature: 3635f4a3dd706161233bd0cf1326e9f5 ******/
 		%feature("compactdefaultargs") MakeBoundedSurface;
 		%feature("autodoc", "
 Parameters
@@ -296,8 +296,8 @@ No available documentation.
 ") MakeBoundedSurface;
 		static opencascade::handle<Geom_BoundedSurface> MakeBoundedSurface(const opencascade::handle<StepGeom_BoundedSurface> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeCartesianPoint ******************/
-		/**** md5 signature: 72fc54286cd1815dbb68c47bb44c38cd ****/
+		/****** StepToGeom::MakeCartesianPoint ******/
+		/****** md5 signature: 72fc54286cd1815dbb68c47bb44c38cd ******/
 		%feature("compactdefaultargs") MakeCartesianPoint;
 		%feature("autodoc", "
 Parameters
@@ -315,8 +315,8 @@ No available documentation.
 ") MakeCartesianPoint;
 		static opencascade::handle<Geom_CartesianPoint> MakeCartesianPoint(const opencascade::handle<StepGeom_CartesianPoint> & SP, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeCartesianPoint2d ******************/
-		/**** md5 signature: d0479b556ff8dfd79b5d4d222d6717b2 ****/
+		/****** StepToGeom::MakeCartesianPoint2d ******/
+		/****** md5 signature: d0479b556ff8dfd79b5d4d222d6717b2 ******/
 		%feature("compactdefaultargs") MakeCartesianPoint2d;
 		%feature("autodoc", "
 Parameters
@@ -334,8 +334,8 @@ No available documentation.
 ") MakeCartesianPoint2d;
 		static opencascade::handle<Geom2d_CartesianPoint> MakeCartesianPoint2d(const opencascade::handle<StepGeom_CartesianPoint> & SP, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeCircle ******************/
-		/**** md5 signature: aecce9fd71272e4884412e2011ab1f50 ****/
+		/****** StepToGeom::MakeCircle ******/
+		/****** md5 signature: aecce9fd71272e4884412e2011ab1f50 ******/
 		%feature("compactdefaultargs") MakeCircle;
 		%feature("autodoc", "
 Parameters
@@ -353,8 +353,8 @@ No available documentation.
 ") MakeCircle;
 		static opencascade::handle<Geom_Circle> MakeCircle(const opencascade::handle<StepGeom_Circle> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeCircle2d ******************/
-		/**** md5 signature: 5310ab54982eb53424a065ab2723facf ****/
+		/****** StepToGeom::MakeCircle2d ******/
+		/****** md5 signature: 5310ab54982eb53424a065ab2723facf ******/
 		%feature("compactdefaultargs") MakeCircle2d;
 		%feature("autodoc", "
 Parameters
@@ -372,8 +372,8 @@ No available documentation.
 ") MakeCircle2d;
 		static opencascade::handle<Geom2d_Circle> MakeCircle2d(const opencascade::handle<StepGeom_Circle> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeConic ******************/
-		/**** md5 signature: 9f640f3238eb8b3eafca377d97e879f0 ****/
+		/****** StepToGeom::MakeConic ******/
+		/****** md5 signature: 9f640f3238eb8b3eafca377d97e879f0 ******/
 		%feature("compactdefaultargs") MakeConic;
 		%feature("autodoc", "
 Parameters
@@ -391,8 +391,8 @@ No available documentation.
 ") MakeConic;
 		static opencascade::handle<Geom_Conic> MakeConic(const opencascade::handle<StepGeom_Conic> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeConic2d ******************/
-		/**** md5 signature: 01d3e837e46416f2c8f44cb5714d7a7d ****/
+		/****** StepToGeom::MakeConic2d ******/
+		/****** md5 signature: 01d3e837e46416f2c8f44cb5714d7a7d ******/
 		%feature("compactdefaultargs") MakeConic2d;
 		%feature("autodoc", "
 Parameters
@@ -410,8 +410,8 @@ No available documentation.
 ") MakeConic2d;
 		static opencascade::handle<Geom2d_Conic> MakeConic2d(const opencascade::handle<StepGeom_Conic> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeConicalSurface ******************/
-		/**** md5 signature: 8901f4d2c3f3caaa8d80ad0e5f1835df ****/
+		/****** StepToGeom::MakeConicalSurface ******/
+		/****** md5 signature: 8901f4d2c3f3caaa8d80ad0e5f1835df ******/
 		%feature("compactdefaultargs") MakeConicalSurface;
 		%feature("autodoc", "
 Parameters
@@ -429,8 +429,8 @@ No available documentation.
 ") MakeConicalSurface;
 		static opencascade::handle<Geom_ConicalSurface> MakeConicalSurface(const opencascade::handle<StepGeom_ConicalSurface> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeCurve ******************/
-		/**** md5 signature: ed25c6c44492172fa9385e48e885752f ****/
+		/****** StepToGeom::MakeCurve ******/
+		/****** md5 signature: ed25c6c44492172fa9385e48e885752f ******/
 		%feature("compactdefaultargs") MakeCurve;
 		%feature("autodoc", "
 Parameters
@@ -448,8 +448,8 @@ No available documentation.
 ") MakeCurve;
 		static opencascade::handle<Geom_Curve> MakeCurve(const opencascade::handle<StepGeom_Curve> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeCurve2d ******************/
-		/**** md5 signature: 88f05d026c74abcf3aadfab6ca702f78 ****/
+		/****** StepToGeom::MakeCurve2d ******/
+		/****** md5 signature: 88f05d026c74abcf3aadfab6ca702f78 ******/
 		%feature("compactdefaultargs") MakeCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -467,8 +467,8 @@ No available documentation.
 ") MakeCurve2d;
 		static opencascade::handle<Geom2d_Curve> MakeCurve2d(const opencascade::handle<StepGeom_Curve> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeCylindricalSurface ******************/
-		/**** md5 signature: 54e2991c1978fe91ccc9c193c6b495ff ****/
+		/****** StepToGeom::MakeCylindricalSurface ******/
+		/****** md5 signature: 54e2991c1978fe91ccc9c193c6b495ff ******/
 		%feature("compactdefaultargs") MakeCylindricalSurface;
 		%feature("autodoc", "
 Parameters
@@ -486,8 +486,8 @@ No available documentation.
 ") MakeCylindricalSurface;
 		static opencascade::handle<Geom_CylindricalSurface> MakeCylindricalSurface(const opencascade::handle<StepGeom_CylindricalSurface> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeDirection ******************/
-		/**** md5 signature: ab447b404195ec0d7870691bec92b043 ****/
+		/****** StepToGeom::MakeDirection ******/
+		/****** md5 signature: ab447b404195ec0d7870691bec92b043 ******/
 		%feature("compactdefaultargs") MakeDirection;
 		%feature("autodoc", "
 Parameters
@@ -504,8 +504,8 @@ No available documentation.
 ") MakeDirection;
 		static opencascade::handle<Geom_Direction> MakeDirection(const opencascade::handle<StepGeom_Direction> & SD);
 
-		/****************** MakeDirection2d ******************/
-		/**** md5 signature: 8bf8a7b40255be99f58f3af845adeaad ****/
+		/****** StepToGeom::MakeDirection2d ******/
+		/****** md5 signature: 8bf8a7b40255be99f58f3af845adeaad ******/
 		%feature("compactdefaultargs") MakeDirection2d;
 		%feature("autodoc", "
 Parameters
@@ -522,8 +522,8 @@ No available documentation.
 ") MakeDirection2d;
 		static opencascade::handle<Geom2d_Direction> MakeDirection2d(const opencascade::handle<StepGeom_Direction> & SD);
 
-		/****************** MakeElementarySurface ******************/
-		/**** md5 signature: 252cfe02472d13c8834aa3f42a5e905f ****/
+		/****** StepToGeom::MakeElementarySurface ******/
+		/****** md5 signature: 252cfe02472d13c8834aa3f42a5e905f ******/
 		%feature("compactdefaultargs") MakeElementarySurface;
 		%feature("autodoc", "
 Parameters
@@ -541,8 +541,8 @@ No available documentation.
 ") MakeElementarySurface;
 		static opencascade::handle<Geom_ElementarySurface> MakeElementarySurface(const opencascade::handle<StepGeom_ElementarySurface> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeEllipse ******************/
-		/**** md5 signature: 76abaa4660df053bdc81ceee387579a8 ****/
+		/****** StepToGeom::MakeEllipse ******/
+		/****** md5 signature: 76abaa4660df053bdc81ceee387579a8 ******/
 		%feature("compactdefaultargs") MakeEllipse;
 		%feature("autodoc", "
 Parameters
@@ -560,8 +560,8 @@ No available documentation.
 ") MakeEllipse;
 		static opencascade::handle<Geom_Ellipse> MakeEllipse(const opencascade::handle<StepGeom_Ellipse> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeEllipse2d ******************/
-		/**** md5 signature: 4f8a96a0bc41c49ad7aca2671fb7e09b ****/
+		/****** StepToGeom::MakeEllipse2d ******/
+		/****** md5 signature: 4f8a96a0bc41c49ad7aca2671fb7e09b ******/
 		%feature("compactdefaultargs") MakeEllipse2d;
 		%feature("autodoc", "
 Parameters
@@ -579,8 +579,8 @@ No available documentation.
 ") MakeEllipse2d;
 		static opencascade::handle<Geom2d_Ellipse> MakeEllipse2d(const opencascade::handle<StepGeom_Ellipse> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeHyperbola ******************/
-		/**** md5 signature: 3fce62260a3d293ea0ce6374d8e22549 ****/
+		/****** StepToGeom::MakeHyperbola ******/
+		/****** md5 signature: 3fce62260a3d293ea0ce6374d8e22549 ******/
 		%feature("compactdefaultargs") MakeHyperbola;
 		%feature("autodoc", "
 Parameters
@@ -598,8 +598,8 @@ No available documentation.
 ") MakeHyperbola;
 		static opencascade::handle<Geom_Hyperbola> MakeHyperbola(const opencascade::handle<StepGeom_Hyperbola> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeHyperbola2d ******************/
-		/**** md5 signature: e017665be17d1a986dc4ff76ad333a9f ****/
+		/****** StepToGeom::MakeHyperbola2d ******/
+		/****** md5 signature: e017665be17d1a986dc4ff76ad333a9f ******/
 		%feature("compactdefaultargs") MakeHyperbola2d;
 		%feature("autodoc", "
 Parameters
@@ -617,8 +617,8 @@ No available documentation.
 ") MakeHyperbola2d;
 		static opencascade::handle<Geom2d_Hyperbola> MakeHyperbola2d(const opencascade::handle<StepGeom_Hyperbola> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeLine ******************/
-		/**** md5 signature: b3a5ee7f92ea5c9b308c7f2086799f71 ****/
+		/****** StepToGeom::MakeLine ******/
+		/****** md5 signature: b3a5ee7f92ea5c9b308c7f2086799f71 ******/
 		%feature("compactdefaultargs") MakeLine;
 		%feature("autodoc", "
 Parameters
@@ -636,8 +636,8 @@ No available documentation.
 ") MakeLine;
 		static opencascade::handle<Geom_Line> MakeLine(const opencascade::handle<StepGeom_Line> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeLine2d ******************/
-		/**** md5 signature: 62ddf93401b0b1e7ea7fe04f8bff1514 ****/
+		/****** StepToGeom::MakeLine2d ******/
+		/****** md5 signature: 62ddf93401b0b1e7ea7fe04f8bff1514 ******/
 		%feature("compactdefaultargs") MakeLine2d;
 		%feature("autodoc", "
 Parameters
@@ -655,8 +655,8 @@ No available documentation.
 ") MakeLine2d;
 		static opencascade::handle<Geom2d_Line> MakeLine2d(const opencascade::handle<StepGeom_Line> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeParabola ******************/
-		/**** md5 signature: 4acfa225320bf6375fd528e6a1631919 ****/
+		/****** StepToGeom::MakeParabola ******/
+		/****** md5 signature: 4acfa225320bf6375fd528e6a1631919 ******/
 		%feature("compactdefaultargs") MakeParabola;
 		%feature("autodoc", "
 Parameters
@@ -674,8 +674,8 @@ No available documentation.
 ") MakeParabola;
 		static opencascade::handle<Geom_Parabola> MakeParabola(const opencascade::handle<StepGeom_Parabola> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeParabola2d ******************/
-		/**** md5 signature: 0840b9e446bf9b1744fae8258d88f5e1 ****/
+		/****** StepToGeom::MakeParabola2d ******/
+		/****** md5 signature: 0840b9e446bf9b1744fae8258d88f5e1 ******/
 		%feature("compactdefaultargs") MakeParabola2d;
 		%feature("autodoc", "
 Parameters
@@ -693,8 +693,8 @@ No available documentation.
 ") MakeParabola2d;
 		static opencascade::handle<Geom2d_Parabola> MakeParabola2d(const opencascade::handle<StepGeom_Parabola> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakePlane ******************/
-		/**** md5 signature: 97424bd4c75aa9596c2f9d4d407fe179 ****/
+		/****** StepToGeom::MakePlane ******/
+		/****** md5 signature: 97424bd4c75aa9596c2f9d4d407fe179 ******/
 		%feature("compactdefaultargs") MakePlane;
 		%feature("autodoc", "
 Parameters
@@ -712,8 +712,8 @@ No available documentation.
 ") MakePlane;
 		static opencascade::handle<Geom_Plane> MakePlane(const opencascade::handle<StepGeom_Plane> & SP, const StepData_Factors & theLocalFactors);
 
-		/****************** MakePolyline ******************/
-		/**** md5 signature: e2aa3e8d6ad3c4888fd7417dd0c4e42a ****/
+		/****** StepToGeom::MakePolyline ******/
+		/****** md5 signature: e2aa3e8d6ad3c4888fd7417dd0c4e42a ******/
 		%feature("compactdefaultargs") MakePolyline;
 		%feature("autodoc", "
 Parameters
@@ -731,8 +731,8 @@ No available documentation.
 ") MakePolyline;
 		static opencascade::handle<Geom_BSplineCurve> MakePolyline(const opencascade::handle<StepGeom_Polyline> & SPL, const StepData_Factors & theLocalFactors);
 
-		/****************** MakePolyline2d ******************/
-		/**** md5 signature: b129428f51b35713b2e1beac6eb14b8a ****/
+		/****** StepToGeom::MakePolyline2d ******/
+		/****** md5 signature: b129428f51b35713b2e1beac6eb14b8a ******/
 		%feature("compactdefaultargs") MakePolyline2d;
 		%feature("autodoc", "
 Parameters
@@ -750,8 +750,8 @@ No available documentation.
 ") MakePolyline2d;
 		static opencascade::handle<Geom2d_BSplineCurve> MakePolyline2d(const opencascade::handle<StepGeom_Polyline> & SPL, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeRectangularTrimmedSurface ******************/
-		/**** md5 signature: e9110018bcf0562035a19536f8c90de1 ****/
+		/****** StepToGeom::MakeRectangularTrimmedSurface ******/
+		/****** md5 signature: e9110018bcf0562035a19536f8c90de1 ******/
 		%feature("compactdefaultargs") MakeRectangularTrimmedSurface;
 		%feature("autodoc", "
 Parameters
@@ -769,8 +769,8 @@ No available documentation.
 ") MakeRectangularTrimmedSurface;
 		static opencascade::handle<Geom_RectangularTrimmedSurface> MakeRectangularTrimmedSurface(const opencascade::handle<StepGeom_RectangularTrimmedSurface> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeSphericalSurface ******************/
-		/**** md5 signature: 0c8a734c6b1030eb1db14c8aab540c50 ****/
+		/****** StepToGeom::MakeSphericalSurface ******/
+		/****** md5 signature: 0c8a734c6b1030eb1db14c8aab540c50 ******/
 		%feature("compactdefaultargs") MakeSphericalSurface;
 		%feature("autodoc", "
 Parameters
@@ -788,8 +788,8 @@ No available documentation.
 ") MakeSphericalSurface;
 		static opencascade::handle<Geom_SphericalSurface> MakeSphericalSurface(const opencascade::handle<StepGeom_SphericalSurface> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeSurface ******************/
-		/**** md5 signature: 4cecdd61ccd3bceea60727712227b557 ****/
+		/****** StepToGeom::MakeSurface ******/
+		/****** md5 signature: 4cecdd61ccd3bceea60727712227b557 ******/
 		%feature("compactdefaultargs") MakeSurface;
 		%feature("autodoc", "
 Parameters
@@ -807,8 +807,8 @@ No available documentation.
 ") MakeSurface;
 		static opencascade::handle<Geom_Surface> MakeSurface(const opencascade::handle<StepGeom_Surface> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeSurfaceOfLinearExtrusion ******************/
-		/**** md5 signature: 63536e270a57c397b202585f46b3521a ****/
+		/****** StepToGeom::MakeSurfaceOfLinearExtrusion ******/
+		/****** md5 signature: 63536e270a57c397b202585f46b3521a ******/
 		%feature("compactdefaultargs") MakeSurfaceOfLinearExtrusion;
 		%feature("autodoc", "
 Parameters
@@ -826,8 +826,8 @@ No available documentation.
 ") MakeSurfaceOfLinearExtrusion;
 		static opencascade::handle<Geom_SurfaceOfLinearExtrusion> MakeSurfaceOfLinearExtrusion(const opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeSurfaceOfRevolution ******************/
-		/**** md5 signature: 059b8cb954153e222d7dfaf46d75ed90 ****/
+		/****** StepToGeom::MakeSurfaceOfRevolution ******/
+		/****** md5 signature: 059b8cb954153e222d7dfaf46d75ed90 ******/
 		%feature("compactdefaultargs") MakeSurfaceOfRevolution;
 		%feature("autodoc", "
 Parameters
@@ -845,8 +845,8 @@ No available documentation.
 ") MakeSurfaceOfRevolution;
 		static opencascade::handle<Geom_SurfaceOfRevolution> MakeSurfaceOfRevolution(const opencascade::handle<StepGeom_SurfaceOfRevolution> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeSweptSurface ******************/
-		/**** md5 signature: af7ee673f53633b8438570a253ca2462 ****/
+		/****** StepToGeom::MakeSweptSurface ******/
+		/****** md5 signature: af7ee673f53633b8438570a253ca2462 ******/
 		%feature("compactdefaultargs") MakeSweptSurface;
 		%feature("autodoc", "
 Parameters
@@ -864,8 +864,8 @@ No available documentation.
 ") MakeSweptSurface;
 		static opencascade::handle<Geom_SweptSurface> MakeSweptSurface(const opencascade::handle<StepGeom_SweptSurface> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeToroidalSurface ******************/
-		/**** md5 signature: 0b3e3d9cdaf591f9a406518b3aead681 ****/
+		/****** StepToGeom::MakeToroidalSurface ******/
+		/****** md5 signature: 0b3e3d9cdaf591f9a406518b3aead681 ******/
 		%feature("compactdefaultargs") MakeToroidalSurface;
 		%feature("autodoc", "
 Parameters
@@ -883,8 +883,8 @@ No available documentation.
 ") MakeToroidalSurface;
 		static opencascade::handle<Geom_ToroidalSurface> MakeToroidalSurface(const opencascade::handle<StepGeom_ToroidalSurface> & SS, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeTransformation2d ******************/
-		/**** md5 signature: 0c5bf1a1e90bacc10c80ef04260bf5a9 ****/
+		/****** StepToGeom::MakeTransformation2d ******/
+		/****** md5 signature: 0c5bf1a1e90bacc10c80ef04260bf5a9 ******/
 		%feature("compactdefaultargs") MakeTransformation2d;
 		%feature("autodoc", "
 Parameters
@@ -903,8 +903,8 @@ No available documentation.
 ") MakeTransformation2d;
 		static Standard_Boolean MakeTransformation2d(const opencascade::handle<StepGeom_CartesianTransformationOperator2d> & SCTO, gp_Trsf2d & CT, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeTransformation3d ******************/
-		/**** md5 signature: 5ae1ad4f8a4ae552af06aafa0f7130c6 ****/
+		/****** StepToGeom::MakeTransformation3d ******/
+		/****** md5 signature: 5ae1ad4f8a4ae552af06aafa0f7130c6 ******/
 		%feature("compactdefaultargs") MakeTransformation3d;
 		%feature("autodoc", "
 Parameters
@@ -923,8 +923,8 @@ No available documentation.
 ") MakeTransformation3d;
 		static Standard_Boolean MakeTransformation3d(const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & SCTO, gp_Trsf & CT, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeTrimmedCurve ******************/
-		/**** md5 signature: d0ecd8b0b1f2442f14f46ec99b661233 ****/
+		/****** StepToGeom::MakeTrimmedCurve ******/
+		/****** md5 signature: d0ecd8b0b1f2442f14f46ec99b661233 ******/
 		%feature("compactdefaultargs") MakeTrimmedCurve;
 		%feature("autodoc", "
 Parameters
@@ -942,8 +942,8 @@ No available documentation.
 ") MakeTrimmedCurve;
 		static opencascade::handle<Geom_TrimmedCurve> MakeTrimmedCurve(const opencascade::handle<StepGeom_TrimmedCurve> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeTrimmedCurve2d ******************/
-		/**** md5 signature: c3a2f660586af700b369d9a3b35ed5a1 ****/
+		/****** StepToGeom::MakeTrimmedCurve2d ******/
+		/****** md5 signature: c3a2f660586af700b369d9a3b35ed5a1 ******/
 		%feature("compactdefaultargs") MakeTrimmedCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -961,8 +961,8 @@ No available documentation.
 ") MakeTrimmedCurve2d;
 		static opencascade::handle<Geom2d_BSplineCurve> MakeTrimmedCurve2d(const opencascade::handle<StepGeom_TrimmedCurve> & SC, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeVectorWithMagnitude ******************/
-		/**** md5 signature: 5f77285d4d5e1367516aacd5d80bbf1a ****/
+		/****** StepToGeom::MakeVectorWithMagnitude ******/
+		/****** md5 signature: 5f77285d4d5e1367516aacd5d80bbf1a ******/
 		%feature("compactdefaultargs") MakeVectorWithMagnitude;
 		%feature("autodoc", "
 Parameters
@@ -980,8 +980,8 @@ No available documentation.
 ") MakeVectorWithMagnitude;
 		static opencascade::handle<Geom_VectorWithMagnitude> MakeVectorWithMagnitude(const opencascade::handle<StepGeom_Vector> & SV, const StepData_Factors & theLocalFactors);
 
-		/****************** MakeVectorWithMagnitude2d ******************/
-		/**** md5 signature: 4fb91506f943c82636c09792ad2f9c30 ****/
+		/****** StepToGeom::MakeVectorWithMagnitude2d ******/
+		/****** md5 signature: 4fb91506f943c82636c09792ad2f9c30 ******/
 		%feature("compactdefaultargs") MakeVectorWithMagnitude2d;
 		%feature("autodoc", "
 Parameters
@@ -998,8 +998,8 @@ No available documentation.
 ") MakeVectorWithMagnitude2d;
 		static opencascade::handle<Geom2d_VectorWithMagnitude> MakeVectorWithMagnitude2d(const opencascade::handle<StepGeom_Vector> & SV);
 
-		/****************** MakeYprRotation ******************/
-		/**** md5 signature: de9dc847a92c9949d29654e63b9eb686 ****/
+		/****** StepToGeom::MakeYprRotation ******/
+		/****** md5 signature: de9dc847a92c9949d29654e63b9eb686 ******/
 		%feature("compactdefaultargs") MakeYprRotation;
 		%feature("autodoc", "
 Parameters

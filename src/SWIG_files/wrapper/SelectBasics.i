@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SELECTBASICSDOCSTRING
 "SelectBasics module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_selectbasics.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_selectbasics.html"
 %enddef
 %module (package="OCC.Core", docstring=SELECTBASICSDOCSTRING) SelectBasics
 
@@ -90,8 +90,8 @@ from OCC.Core.Exception import *
 %rename(selectbasics) SelectBasics;
 class SelectBasics {
 	public:
-		/****************** MaxOwnerPriority ******************/
-		/**** md5 signature: 87c4c8fbae09e9b90b74aa582df2924a ****/
+		/****** SelectBasics::MaxOwnerPriority ******/
+		/****** md5 signature: 87c4c8fbae09e9b90b74aa582df2924a ******/
 		%feature("compactdefaultargs") MaxOwnerPriority;
 		%feature("autodoc", "Return
 -------
@@ -103,8 +103,8 @@ Structure to provide all-in-one result of selection of sensitive for 'matches' m
 ") MaxOwnerPriority;
 		static Standard_Integer MaxOwnerPriority();
 
-		/****************** MinOwnerPriority ******************/
-		/**** md5 signature: d127234fdcddfbfba2493b87cb50a82b ****/
+		/****** SelectBasics::MinOwnerPriority ******/
+		/****** md5 signature: d127234fdcddfbfba2493b87cb50a82b ******/
 		%feature("compactdefaultargs") MinOwnerPriority;
 		%feature("autodoc", "Return
 -------
@@ -130,8 +130,8 @@ No available documentation.
 ********************************/
 class SelectBasics_PickResult {
 	public:
-		/****************** SelectBasics_PickResult ******************/
-		/**** md5 signature: 70c24972c2e1acb414eec1dcb85de08a ****/
+		/****** SelectBasics_PickResult::SelectBasics_PickResult ******/
+		/****** md5 signature: 70c24972c2e1acb414eec1dcb85de08a ******/
 		%feature("compactdefaultargs") SelectBasics_PickResult;
 		%feature("autodoc", "Return
 -------
@@ -143,8 +143,8 @@ Empty constructor defining an invalid result.
 ") SelectBasics_PickResult;
 		 SelectBasics_PickResult();
 
-		/****************** SelectBasics_PickResult ******************/
-		/**** md5 signature: efe0549d557fe14d14d3bce83544927e ****/
+		/****** SelectBasics_PickResult::SelectBasics_PickResult ******/
+		/****** md5 signature: efe0549d557fe14d14d3bce83544927e ******/
 		%feature("compactdefaultargs") SelectBasics_PickResult;
 		%feature("autodoc", "
 Parameters
@@ -163,8 +163,8 @@ Constructor with initialization.
 ") SelectBasics_PickResult;
 		 SelectBasics_PickResult(Standard_Real theDepth, Standard_Real theDistToCenter, const gp_Pnt & theObjPickedPnt);
 
-		/****************** Depth ******************/
-		/**** md5 signature: 25ee6373f55a52708b56125539b46226 ****/
+		/****** SelectBasics_PickResult::Depth ******/
+		/****** md5 signature: 25ee6373f55a52708b56125539b46226 ******/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Return
 -------
@@ -176,8 +176,8 @@ Return depth along picking ray.
 ") Depth;
 		Standard_Real Depth();
 
-		/****************** DistToGeomCenter ******************/
-		/**** md5 signature: 07d82d88f16b57d130cf7123362c8d01 ****/
+		/****** SelectBasics_PickResult::DistToGeomCenter ******/
+		/****** md5 signature: 07d82d88f16b57d130cf7123362c8d01 ******/
 		%feature("compactdefaultargs") DistToGeomCenter;
 		%feature("autodoc", "Return
 -------
@@ -189,8 +189,8 @@ Return distance to geometry center (auxiliary value for comparing results).
 ") DistToGeomCenter;
 		Standard_Real DistToGeomCenter();
 
-		/****************** HasPickedPoint ******************/
-		/**** md5 signature: 621f45af5c1eb7c5e15872d0374f6b99 ****/
+		/****** SelectBasics_PickResult::HasPickedPoint ******/
+		/****** md5 signature: 621f45af5c1eb7c5e15872d0374f6b99 ******/
 		%feature("compactdefaultargs") HasPickedPoint;
 		%feature("autodoc", "Return
 -------
@@ -202,8 +202,8 @@ Return true if picked point lying on detected entity was set.
 ") HasPickedPoint;
 		Standard_Boolean HasPickedPoint();
 
-		/****************** Invalidate ******************/
-		/**** md5 signature: 704a551b2c709fd4c2d751a8cf3ee8ff ****/
+		/****** SelectBasics_PickResult::Invalidate ******/
+		/****** md5 signature: 704a551b2c709fd4c2d751a8cf3ee8ff ******/
 		%feature("compactdefaultargs") Invalidate;
 		%feature("autodoc", "Return
 -------
@@ -215,8 +215,8 @@ Reset depth value.
 ") Invalidate;
 		void Invalidate();
 
-		/****************** IsValid ******************/
-		/**** md5 signature: 7d115ff85bb657b98ab8790006673845 ****/
+		/****** SelectBasics_PickResult::IsValid ******/
+		/****** md5 signature: 7d115ff85bb657b98ab8790006673845 ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Return
 -------
@@ -228,8 +228,8 @@ Return true if result was been defined.
 ") IsValid;
 		Standard_Boolean IsValid();
 
-		/****************** Min ******************/
-		/**** md5 signature: 6422e8d9851b1c76234f967288b153a4 ****/
+		/****** SelectBasics_PickResult::Min ******/
+		/****** md5 signature: 6422e8d9851b1c76234f967288b153a4 ******/
 		%feature("compactdefaultargs") Min;
 		%feature("autodoc", "
 Parameters
@@ -247,8 +247,8 @@ Return closest result between two pick results according to depth value.
 ") Min;
 		static const SelectBasics_PickResult & Min(const SelectBasics_PickResult & thePickResult1, const SelectBasics_PickResult & thePickResult2);
 
-		/****************** PickedPoint ******************/
-		/**** md5 signature: e5411db2d7bfcda96402fde38f143185 ****/
+		/****** SelectBasics_PickResult::PickedPoint ******/
+		/****** md5 signature: e5411db2d7bfcda96402fde38f143185 ******/
 		%feature("compactdefaultargs") PickedPoint;
 		%feature("autodoc", "Return
 -------
@@ -260,8 +260,8 @@ Return picked point lying on detected entity. warning! point is defined in local
 ") PickedPoint;
 		const gp_Pnt PickedPoint();
 
-		/****************** SetDepth ******************/
-		/**** md5 signature: 20b371790974ee9cc48c83264842232b ****/
+		/****** SelectBasics_PickResult::SetDepth ******/
+		/****** md5 signature: 20b371790974ee9cc48c83264842232b ******/
 		%feature("compactdefaultargs") SetDepth;
 		%feature("autodoc", "
 Parameters
@@ -278,8 +278,8 @@ Set depth along picking ray.
 ") SetDepth;
 		void SetDepth(Standard_Real theDepth);
 
-		/****************** SetDistToGeomCenter ******************/
-		/**** md5 signature: 83a88150dabab87b04c89a6695a6f142 ****/
+		/****** SelectBasics_PickResult::SetDistToGeomCenter ******/
+		/****** md5 signature: 83a88150dabab87b04c89a6695a6f142 ******/
 		%feature("compactdefaultargs") SetDistToGeomCenter;
 		%feature("autodoc", "
 Parameters
@@ -296,8 +296,8 @@ Set distance to geometry center.
 ") SetDistToGeomCenter;
 		void SetDistToGeomCenter(Standard_Real theDistToCenter);
 
-		/****************** SetPickedPoint ******************/
-		/**** md5 signature: a0d31924196d7102372ca1122f6e29a4 ****/
+		/****** SelectBasics_PickResult::SetPickedPoint ******/
+		/****** md5 signature: a0d31924196d7102372ca1122f6e29a4 ******/
 		%feature("compactdefaultargs") SetPickedPoint;
 		%feature("autodoc", "
 Parameters
@@ -314,8 +314,8 @@ Set picked point.
 ") SetPickedPoint;
 		void SetPickedPoint(const gp_Pnt & theObjPickedPnt);
 
-		/****************** SetSurfaceNormal ******************/
-		/**** md5 signature: 43b093289dee163937e2e1c9a5f571fe ****/
+		/****** SelectBasics_PickResult::SetSurfaceNormal ******/
+		/****** md5 signature: 43b093289dee163937e2e1c9a5f571fe ******/
 		%feature("compactdefaultargs") SetSurfaceNormal;
 		%feature("autodoc", "
 Parameters
@@ -332,8 +332,8 @@ Set surface normal at picked point.
 ") SetSurfaceNormal;
 		void SetSurfaceNormal(const NCollection_Vec3<float> & theNormal);
 
-		/****************** SetSurfaceNormal ******************/
-		/**** md5 signature: af0bec65600d14cfebb8a4739418cb17 ****/
+		/****** SelectBasics_PickResult::SetSurfaceNormal ******/
+		/****** md5 signature: af0bec65600d14cfebb8a4739418cb17 ******/
 		%feature("compactdefaultargs") SetSurfaceNormal;
 		%feature("autodoc", "
 Parameters
@@ -350,8 +350,8 @@ Set surface normal at picked point.
 ") SetSurfaceNormal;
 		void SetSurfaceNormal(const gp_Vec & theNormal);
 
-		/****************** SurfaceNormal ******************/
-		/**** md5 signature: 2a41a55d2fef560c0c85bc0c696120ab ****/
+		/****** SelectBasics_PickResult::SurfaceNormal ******/
+		/****** md5 signature: 2a41a55d2fef560c0c85bc0c696120ab ******/
 		%feature("compactdefaultargs") SurfaceNormal;
 		%feature("autodoc", "Return
 -------
@@ -378,8 +378,8 @@ Return (unnormalized) surface normal at picked point or zero vector if undefined
 %nodefaultctor SelectBasics_SelectingVolumeManager;
 class SelectBasics_SelectingVolumeManager {
 	public:
-		/****************** DetectedPoint ******************/
-		/**** md5 signature: 1cc054e8948b7dd95fff0b23ad64230e ****/
+		/****** SelectBasics_SelectingVolumeManager::DetectedPoint ******/
+		/****** md5 signature: 1cc054e8948b7dd95fff0b23ad64230e ******/
 		%feature("compactdefaultargs") DetectedPoint;
 		%feature("autodoc", "
 Parameters
@@ -396,8 +396,8 @@ Return 3d point corresponding to specified depth within picking ray.
 ") DetectedPoint;
 		virtual gp_Pnt DetectedPoint(const Standard_Real theDepth);
 
-		/****************** DistToGeometryCenter ******************/
-		/**** md5 signature: 3ed12881a75ce1f126dcb222173a8123 ****/
+		/****** SelectBasics_SelectingVolumeManager::DistToGeometryCenter ******/
+		/****** md5 signature: 3ed12881a75ce1f126dcb222173a8123 ******/
 		%feature("compactdefaultargs") DistToGeometryCenter;
 		%feature("autodoc", "
 Parameters
@@ -435,8 +435,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** GetActiveSelectionType ******************/
-		/**** md5 signature: 56d78b21d70ce91662f965e54361b877 ****/
+		/****** SelectBasics_SelectingVolumeManager::GetActiveSelectionType ******/
+		/****** md5 signature: 56d78b21d70ce91662f965e54361b877 ******/
 		%feature("compactdefaultargs") GetActiveSelectionType;
 		%feature("autodoc", "Return
 -------
@@ -448,8 +448,8 @@ Return selection type.
 ") GetActiveSelectionType;
 		virtual Standard_Integer GetActiveSelectionType();
 
-		/****************** GetFarPickedPnt ******************/
-		/**** md5 signature: 98748d26ff588dc3070493ca523b8947 ****/
+		/****** SelectBasics_SelectingVolumeManager::GetFarPickedPnt ******/
+		/****** md5 signature: 98748d26ff588dc3070493ca523b8947 ******/
 		%feature("compactdefaultargs") GetFarPickedPnt;
 		%feature("autodoc", "Return
 -------
@@ -461,8 +461,8 @@ Valid only for point and rectangular selection. returns projection of 2d mouse p
 ") GetFarPickedPnt;
 		virtual gp_Pnt GetFarPickedPnt();
 
-		/****************** GetMousePosition ******************/
-		/**** md5 signature: dc663ddc1edfd7aac3a43a6122139863 ****/
+		/****** SelectBasics_SelectingVolumeManager::GetMousePosition ******/
+		/****** md5 signature: dc663ddc1edfd7aac3a43a6122139863 ******/
 		%feature("compactdefaultargs") GetMousePosition;
 		%feature("autodoc", "Return
 -------
@@ -474,8 +474,8 @@ Returns mouse coordinates for point selection mode. return infinite point in cas
 ") GetMousePosition;
 		virtual gp_Pnt2d GetMousePosition();
 
-		/****************** GetNearPickedPnt ******************/
-		/**** md5 signature: 40f25cf5811df8ab5573eff7cb14f3a1 ****/
+		/****** SelectBasics_SelectingVolumeManager::GetNearPickedPnt ******/
+		/****** md5 signature: 40f25cf5811df8ab5573eff7cb14f3a1 ******/
 		%feature("compactdefaultargs") GetNearPickedPnt;
 		%feature("autodoc", "Return
 -------
@@ -487,8 +487,8 @@ Valid only for point and rectangular selection. returns projection of 2d mouse p
 ") GetNearPickedPnt;
 		virtual gp_Pnt GetNearPickedPnt();
 
-		/****************** GetPlanes ******************/
-		/**** md5 signature: d44b074df2b940111bb3147c05251a88 ****/
+		/****** SelectBasics_SelectingVolumeManager::GetPlanes ******/
+		/****** md5 signature: d44b074df2b940111bb3147c05251a88 ******/
 		%feature("compactdefaultargs") GetPlanes;
 		%feature("autodoc", "
 Parameters
@@ -505,8 +505,8 @@ Stores plane equation coefficients (in the following form: ax + by + cz + d = 0)
 ") GetPlanes;
 		virtual void GetPlanes(NCollection_Vector<NCollection_Vec4<Standard_Real> > & thePlaneEquations);
 
-		/****************** GetViewRayDirection ******************/
-		/**** md5 signature: 0c7768eea029564c9cfc1831463172ef ****/
+		/****** SelectBasics_SelectingVolumeManager::GetViewRayDirection ******/
+		/****** md5 signature: 0c7768eea029564c9cfc1831463172ef ******/
 		%feature("compactdefaultargs") GetViewRayDirection;
 		%feature("autodoc", "Return
 -------
@@ -518,8 +518,8 @@ Valid only for point and rectangular selection. returns view ray direction.
 ") GetViewRayDirection;
 		virtual gp_Dir GetViewRayDirection();
 
-		/****************** IsOverlapAllowed ******************/
-		/**** md5 signature: f2e1ce20431c82909b70df801eabd2d8 ****/
+		/****** SelectBasics_SelectingVolumeManager::IsOverlapAllowed ******/
+		/****** md5 signature: f2e1ce20431c82909b70df801eabd2d8 ******/
 		%feature("compactdefaultargs") IsOverlapAllowed;
 		%feature("autodoc", "Return
 -------
@@ -531,8 +531,8 @@ Returns flag indicating if partial overlapping of entities is allowed or should 
 ") IsOverlapAllowed;
 		virtual Standard_Boolean IsOverlapAllowed();
 
-		/****************** IsScalableActiveVolume ******************/
-		/**** md5 signature: c27f91fde12737acec5b9ec7447775f2 ****/
+		/****** SelectBasics_SelectingVolumeManager::IsScalableActiveVolume ******/
+		/****** md5 signature: c27f91fde12737acec5b9ec7447775f2 ******/
 		%feature("compactdefaultargs") IsScalableActiveVolume;
 		%feature("autodoc", "Return
 -------
@@ -544,8 +544,8 @@ Checks if it is possible to scale current active selecting volume.
 ") IsScalableActiveVolume;
 		virtual Standard_Boolean IsScalableActiveVolume();
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: d747c1f315399efa5510406d844e66b8 ****/
+		/****** SelectBasics_SelectingVolumeManager::Overlaps ******/
+		/****** md5 signature: d747c1f315399efa5510406d844e66b8 ******/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "
 Parameters
@@ -564,8 +564,8 @@ No available documentation.
 ") Overlaps;
 		Standard_Boolean Overlaps(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, SelectBasics_PickResult & thePickResult);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: ad02c57aff478dbb9ccd37f6b975d8db ****/
+		/****** SelectBasics_SelectingVolumeManager::Overlaps ******/
+		/****** md5 signature: ad02c57aff478dbb9ccd37f6b975d8db ******/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "
 Parameters
@@ -584,8 +584,8 @@ No available documentation.
 ") Overlaps;
 		Standard_Boolean Overlaps(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, Standard_Boolean * theInside = NULL);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 3a4578f15989fa698334fa48608734d7 ****/
+		/****** SelectBasics_SelectingVolumeManager::Overlaps ******/
+		/****** md5 signature: 3a4578f15989fa698334fa48608734d7 ******/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "
 Parameters
@@ -603,8 +603,8 @@ No available documentation.
 ") Overlaps;
 		Standard_Boolean Overlaps(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 2c48ffca243441d5070db20896ed9bb7 ****/
+		/****** SelectBasics_SelectingVolumeManager::Overlaps ******/
+		/****** md5 signature: 2c48ffca243441d5070db20896ed9bb7 ******/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "
 Parameters
@@ -621,8 +621,8 @@ No available documentation.
 ") Overlaps;
 		Standard_Boolean Overlaps(const gp_Pnt & thePnt);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 5d261ebac348da6356e9955565f46997 ****/
+		/****** SelectBasics_SelectingVolumeManager::Overlaps ******/
+		/****** md5 signature: 5d261ebac348da6356e9955565f46997 ******/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "
 Parameters
@@ -641,8 +641,8 @@ No available documentation.
 ") Overlaps;
 		Standard_Boolean Overlaps(const opencascade::handle<TColgp_HArray1OfPnt> & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 11133a04341e3e346c79060e72efe3aa ****/
+		/****** SelectBasics_SelectingVolumeManager::Overlaps ******/
+		/****** md5 signature: 11133a04341e3e346c79060e72efe3aa ******/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "
 Parameters
@@ -661,8 +661,8 @@ No available documentation.
 ") Overlaps;
 		Standard_Boolean Overlaps(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 36eec5cecf417a156dfa620892dc5290 ****/
+		/****** SelectBasics_SelectingVolumeManager::Overlaps ******/
+		/****** md5 signature: 36eec5cecf417a156dfa620892dc5290 ******/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "
 Parameters
@@ -681,8 +681,8 @@ No available documentation.
 ") Overlaps;
 		Standard_Boolean Overlaps(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, SelectBasics_PickResult & thePickResult);
 
-		/****************** Overlaps ******************/
-		/**** md5 signature: 10a5476373eb96d6f98c2e052cb99c4f ****/
+		/****** SelectBasics_SelectingVolumeManager::Overlaps ******/
+		/****** md5 signature: 10a5476373eb96d6f98c2e052cb99c4f ******/
 		%feature("compactdefaultargs") Overlaps;
 		%feature("autodoc", "
 Parameters
@@ -703,8 +703,8 @@ No available documentation.
 ") Overlaps;
 		Standard_Boolean Overlaps(const gp_Pnt & thePnt1, const gp_Pnt & thePnt2, const gp_Pnt & thePnt3, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
-		/****************** OverlapsBox ******************/
-		/**** md5 signature: cf352690fe6e8f14e29256111299bf78 ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsBox ******/
+		/****** md5 signature: cf352690fe6e8f14e29256111299bf78 ******/
 		%feature("compactdefaultargs") OverlapsBox;
 		%feature("autodoc", "
 Parameters
@@ -723,8 +723,8 @@ Returns true if selecting volume is overlapped by box thebox.
 ") OverlapsBox;
 		virtual Standard_Boolean OverlapsBox(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, SelectBasics_PickResult & thePickResult);
 
-		/****************** OverlapsBox ******************/
-		/**** md5 signature: 6a9476f5f0056d3a045e2d26d3a0d4c8 ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsBox ******/
+		/****** md5 signature: 6a9476f5f0056d3a045e2d26d3a0d4c8 ******/
 		%feature("compactdefaultargs") OverlapsBox;
 		%feature("autodoc", "
 Parameters
@@ -743,8 +743,8 @@ Returns true if selecting volume is overlapped by axis-aligned bounding box with
 ") OverlapsBox;
 		virtual Standard_Boolean OverlapsBox(const NCollection_Vec3<Standard_Real> & theBoxMin, const NCollection_Vec3<Standard_Real> & theBoxMax, Standard_Boolean * theInside = NULL);
 
-		/****************** OverlapsCircle ******************/
-		/**** md5 signature: a8fa475b8c0320c2289cffbaffd6f1a5 ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsCircle ******/
+		/****** md5 signature: a8fa475b8c0320c2289cffbaffd6f1a5 ******/
 		%feature("compactdefaultargs") OverlapsCircle;
 		%feature("autodoc", "
 Parameters
@@ -764,8 +764,8 @@ Returns true if selecting volume is overlapped by circle with radius theradius, 
 ") OverlapsCircle;
 		virtual Standard_Boolean OverlapsCircle(const Standard_Real theRadius, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, SelectBasics_PickResult & thePickResult);
 
-		/****************** OverlapsCircle ******************/
-		/**** md5 signature: c970c6818a43476df9f248bc6c7558b6 ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsCircle ******/
+		/****** md5 signature: c970c6818a43476df9f248bc6c7558b6 ******/
 		%feature("compactdefaultargs") OverlapsCircle;
 		%feature("autodoc", "
 Parameters
@@ -785,8 +785,8 @@ Returns true if selecting volume is overlapped by circle with radius theradius, 
 ") OverlapsCircle;
 		virtual Standard_Boolean OverlapsCircle(const Standard_Real theRadius, const gp_Trsf & theTrsf, const Standard_Boolean theIsFilled, Standard_Boolean * theInside = NULL);
 
-		/****************** OverlapsCylinder ******************/
-		/**** md5 signature: b39aa1ecbb42ea81200fd25f27606124 ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsCylinder ******/
+		/****** md5 signature: b39aa1ecbb42ea81200fd25f27606124 ******/
 		%feature("compactdefaultargs") OverlapsCylinder;
 		%feature("autodoc", "
 Parameters
@@ -808,8 +808,8 @@ Returns true if selecting volume is overlapped by cylinder (or cone) with radius
 ") OverlapsCylinder;
 		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, SelectBasics_PickResult & thePickResult);
 
-		/****************** OverlapsCylinder ******************/
-		/**** md5 signature: 4ee34537f7f0591987b1ee29ed104939 ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsCylinder ******/
+		/****** md5 signature: 4ee34537f7f0591987b1ee29ed104939 ******/
 		%feature("compactdefaultargs") OverlapsCylinder;
 		%feature("autodoc", "
 Parameters
@@ -831,8 +831,8 @@ Returns true if selecting volume is overlapped by cylinder (or cone) with radius
 ") OverlapsCylinder;
 		virtual Standard_Boolean OverlapsCylinder(const Standard_Real theBottomRad, const Standard_Real theTopRad, const Standard_Real theHeight, const gp_Trsf & theTrsf, const Standard_Boolean theIsHollow, Standard_Boolean * theInside = NULL);
 
-		/****************** OverlapsPoint ******************/
-		/**** md5 signature: 60fbb482729178a9e23a299d60c9d746 ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsPoint ******/
+		/****** md5 signature: 60fbb482729178a9e23a299d60c9d746 ******/
 		%feature("compactdefaultargs") OverlapsPoint;
 		%feature("autodoc", "
 Parameters
@@ -850,8 +850,8 @@ Returns true if selecting volume is overlapped by point thepnt.
 ") OverlapsPoint;
 		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt, SelectBasics_PickResult & thePickResult);
 
-		/****************** OverlapsPoint ******************/
-		/**** md5 signature: 7d294e46b6d94e1ca91f519f8b1d482d ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsPoint ******/
+		/****** md5 signature: 7d294e46b6d94e1ca91f519f8b1d482d ******/
 		%feature("compactdefaultargs") OverlapsPoint;
 		%feature("autodoc", "
 Parameters
@@ -868,8 +868,8 @@ Returns true if selecting volume is overlapped by point thepnt. does not perform
 ") OverlapsPoint;
 		virtual Standard_Boolean OverlapsPoint(const gp_Pnt & thePnt);
 
-		/****************** OverlapsPolygon ******************/
-		/**** md5 signature: 3a1e3541e3075520cd2fcde5b9115bf8 ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsPolygon ******/
+		/****** md5 signature: 3a1e3541e3075520cd2fcde5b9115bf8 ******/
 		%feature("compactdefaultargs") OverlapsPolygon;
 		%feature("autodoc", "
 Parameters
@@ -888,8 +888,8 @@ Returns true if selecting volume is overlapped by planar convex polygon, which p
 ") OverlapsPolygon;
 		virtual Standard_Boolean OverlapsPolygon(const TColgp_Array1OfPnt & theArrayOfPts, Standard_Integer theSensType, SelectBasics_PickResult & thePickResult);
 
-		/****************** OverlapsSegment ******************/
-		/**** md5 signature: a823340c5214f1edddbd9ffe133acbee ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsSegment ******/
+		/****** md5 signature: a823340c5214f1edddbd9ffe133acbee ******/
 		%feature("compactdefaultargs") OverlapsSegment;
 		%feature("autodoc", "
 Parameters
@@ -908,8 +908,8 @@ Returns true if selecting volume is overlapped by line segment with start point 
 ") OverlapsSegment;
 		virtual Standard_Boolean OverlapsSegment(const gp_Pnt & thePt1, const gp_Pnt & thePt2, SelectBasics_PickResult & thePickResult);
 
-		/****************** OverlapsSphere ******************/
-		/**** md5 signature: 87e22026b65bcca16d984778fe81e17c ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsSphere ******/
+		/****** md5 signature: 87e22026b65bcca16d984778fe81e17c ******/
 		%feature("compactdefaultargs") OverlapsSphere;
 		%feature("autodoc", "
 Parameters
@@ -928,8 +928,8 @@ Returns true if selecting volume is overlapped by sphere with center thecenter a
 ") OverlapsSphere;
 		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, SelectBasics_PickResult & thePickResult);
 
-		/****************** OverlapsSphere ******************/
-		/**** md5 signature: 32b443cedf236c938f70d5163436b508 ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsSphere ******/
+		/****** md5 signature: 32b443cedf236c938f70d5163436b508 ******/
 		%feature("compactdefaultargs") OverlapsSphere;
 		%feature("autodoc", "
 Parameters
@@ -948,8 +948,8 @@ Returns true if selecting volume is overlapped by sphere with center thecenter a
 ") OverlapsSphere;
 		virtual Standard_Boolean OverlapsSphere(const gp_Pnt & theCenter, const Standard_Real theRadius, Standard_Boolean * theInside = NULL);
 
-		/****************** OverlapsTriangle ******************/
-		/**** md5 signature: 3271f8a7e98caa5cd64a9dcea6559740 ****/
+		/****** SelectBasics_SelectingVolumeManager::OverlapsTriangle ******/
+		/****** md5 signature: 3271f8a7e98caa5cd64a9dcea6559740 ******/
 		%feature("compactdefaultargs") OverlapsTriangle;
 		%feature("autodoc", "
 Parameters

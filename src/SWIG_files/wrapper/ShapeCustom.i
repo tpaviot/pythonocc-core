@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPECUSTOMDOCSTRING
 "ShapeCustom module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_shapecustom.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapecustom.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPECUSTOMDOCSTRING) ShapeCustom
 
@@ -113,8 +113,8 @@ from OCC.Core.Exception import *
 %rename(shapecustom) ShapeCustom;
 class ShapeCustom {
 	public:
-		/****************** BSplineRestriction ******************/
-		/**** md5 signature: aebcbbeca6c85938d31274f99d5fa8df ****/
+		/****** ShapeCustom::BSplineRestriction ******/
+		/****** md5 signature: aebcbbeca6c85938d31274f99d5fa8df ******/
 		%feature("compactdefaultargs") BSplineRestriction;
 		%feature("autodoc", "
 Parameters
@@ -140,8 +140,8 @@ Returns a new shape with all surfaces, curves and pcurves which type is bspline/
 ") BSplineRestriction;
 		static TopoDS_Shape BSplineRestriction(const TopoDS_Shape & S, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer MaxDegree, const Standard_Integer MaxNbSegment, const GeomAbs_Shape Continuity3d, const GeomAbs_Shape Continuity2d, const Standard_Boolean Degree, const Standard_Boolean Rational, const opencascade::handle<ShapeCustom_RestrictionParameters> & aParameters);
 
-		/****************** ConvertToBSpline ******************/
-		/**** md5 signature: 6c100eef1dffb18f0599f9fc958a3ea5 ****/
+		/****** ShapeCustom::ConvertToBSpline ******/
+		/****** md5 signature: 6c100eef1dffb18f0599f9fc958a3ea5 ******/
 		%feature("compactdefaultargs") ConvertToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -162,8 +162,8 @@ Returns a new shape with all surfaces of linear extrusion, revolution, offset, a
 ") ConvertToBSpline;
 		static TopoDS_Shape ConvertToBSpline(const TopoDS_Shape & S, const Standard_Boolean extrMode, const Standard_Boolean revolMode, const Standard_Boolean offsetMode, const Standard_Boolean planeMode = Standard_False);
 
-		/****************** ConvertToRevolution ******************/
-		/**** md5 signature: 0be795010a96d7159af52a2f09c8ebfd ****/
+		/****** ShapeCustom::ConvertToRevolution ******/
+		/****** md5 signature: 0be795010a96d7159af52a2f09c8ebfd ******/
 		%feature("compactdefaultargs") ConvertToRevolution;
 		%feature("autodoc", "
 Parameters
@@ -180,8 +180,8 @@ Returns a new shape with all elementary periodic surfaces converted to geom_surf
 ") ConvertToRevolution;
 		static TopoDS_Shape ConvertToRevolution(const TopoDS_Shape & S);
 
-		/****************** DirectFaces ******************/
-		/**** md5 signature: 27616d29c55c4d7c6aec89a5258015f4 ****/
+		/****** ShapeCustom::DirectFaces ******/
+		/****** md5 signature: 27616d29c55c4d7c6aec89a5258015f4 ******/
 		%feature("compactdefaultargs") DirectFaces;
 		%feature("autodoc", "
 Parameters
@@ -198,8 +198,8 @@ Returns a new shape without indirect surfaces.
 ") DirectFaces;
 		static TopoDS_Shape DirectFaces(const TopoDS_Shape & S);
 
-		/****************** ScaleShape ******************/
-		/**** md5 signature: 9a3be75955799568ca36cbebad18a34e ****/
+		/****** ShapeCustom::ScaleShape ******/
+		/****** md5 signature: 9a3be75955799568ca36cbebad18a34e ******/
 		%feature("compactdefaultargs") ScaleShape;
 		%feature("autodoc", "
 Parameters
@@ -217,8 +217,8 @@ Returns a new shape which is scaled original.
 ") ScaleShape;
 		static TopoDS_Shape ScaleShape(const TopoDS_Shape & S, const Standard_Real scale);
 
-		/****************** SweptToElementary ******************/
-		/**** md5 signature: c4291da18c66402c3080df4840126b40 ****/
+		/****** ShapeCustom::SweptToElementary ******/
+		/****** md5 signature: c4291da18c66402c3080df4840126b40 ******/
 		%feature("compactdefaultargs") SweptToElementary;
 		%feature("autodoc", "
 Parameters
@@ -253,8 +253,8 @@ Returns a new shape with all surfaces of revolution and linear extrusion convert
 **************************/
 class ShapeCustom_Curve {
 	public:
-		/****************** ShapeCustom_Curve ******************/
-		/**** md5 signature: a3441ab910bd667288a6237276f3fd9c ****/
+		/****** ShapeCustom_Curve::ShapeCustom_Curve ******/
+		/****** md5 signature: a3441ab910bd667288a6237276f3fd9c ******/
 		%feature("compactdefaultargs") ShapeCustom_Curve;
 		%feature("autodoc", "Return
 -------
@@ -266,8 +266,8 @@ No available documentation.
 ") ShapeCustom_Curve;
 		 ShapeCustom_Curve();
 
-		/****************** ShapeCustom_Curve ******************/
-		/**** md5 signature: e2cdb4d3492fed5a1a5e975c5506e655 ****/
+		/****** ShapeCustom_Curve::ShapeCustom_Curve ******/
+		/****** md5 signature: e2cdb4d3492fed5a1a5e975c5506e655 ******/
 		%feature("compactdefaultargs") ShapeCustom_Curve;
 		%feature("autodoc", "
 Parameters
@@ -284,8 +284,8 @@ No available documentation.
 ") ShapeCustom_Curve;
 		 ShapeCustom_Curve(const opencascade::handle<Geom_Curve> & C);
 
-		/****************** ConvertToPeriodic ******************/
-		/**** md5 signature: c8da636eaa8b626715587b76ad0488c8 ****/
+		/****** ShapeCustom_Curve::ConvertToPeriodic ******/
+		/****** md5 signature: c8da636eaa8b626715587b76ad0488c8 ******/
 		%feature("compactdefaultargs") ConvertToPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -303,8 +303,8 @@ Tries to convert the curve to the periodic form returns the resulting curve work
 ") ConvertToPeriodic;
 		opencascade::handle<Geom_Curve> ConvertToPeriodic(const Standard_Boolean substitute, const Standard_Real preci = -1);
 
-		/****************** Init ******************/
-		/**** md5 signature: 3a7fb0adde1a97c68f435539513bba2c ****/
+		/****** ShapeCustom_Curve::Init ******/
+		/****** md5 signature: 3a7fb0adde1a97c68f435539513bba2c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -335,8 +335,8 @@ No available documentation.
 ****************************/
 class ShapeCustom_Curve2d {
 	public:
-		/****************** ConvertToLine2d ******************/
-		/**** md5 signature: 6c7bb1bfbf35f5a8ac7c87b422872ec8 ****/
+		/****** ShapeCustom_Curve2d::ConvertToLine2d ******/
+		/****** md5 signature: 6c7bb1bfbf35f5a8ac7c87b422872ec8 ******/
 		%feature("compactdefaultargs") ConvertToLine2d;
 		%feature("autodoc", "
 Parameters
@@ -358,8 +358,8 @@ Try to convert bspline2d or bezier2d to line 2d only if it is linear. recalculat
 ") ConvertToLine2d;
 		static opencascade::handle<Geom2d_Line> ConvertToLine2d(const opencascade::handle<Geom2d_Curve> & theCurve, const Standard_Real theFirstIn, const Standard_Real theLastIn, const Standard_Real theTolerance, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** IsLinear ******************/
-		/**** md5 signature: efb90e3e50d224abe7af366edfbccbdb ****/
+		/****** ShapeCustom_Curve2d::IsLinear ******/
+		/****** md5 signature: efb90e3e50d224abe7af366edfbccbdb ******/
 		%feature("compactdefaultargs") IsLinear;
 		%feature("autodoc", "
 Parameters
@@ -377,8 +377,8 @@ Check if poleses is in the plane with given precision returns false if no.
 ") IsLinear;
 		static Standard_Boolean IsLinear(const TColgp_Array1OfPnt2d & thePoles, const Standard_Real theTolerance, Standard_Real &OutValue);
 
-		/****************** SimplifyBSpline2d ******************/
-		/**** md5 signature: 8e3e06d332f62a75557b4ed009c5d49c ****/
+		/****** ShapeCustom_Curve2d::SimplifyBSpline2d ******/
+		/****** md5 signature: 8e3e06d332f62a75557b4ed009c5d49c ******/
 		%feature("compactdefaultargs") SimplifyBSpline2d;
 		%feature("autodoc", "
 Parameters
@@ -411,8 +411,8 @@ Try to remove knots from bspline where local derivatives are the same. remove kn
 %nodefaultctor ShapeCustom_Modification;
 class ShapeCustom_Modification : public BRepTools_Modification {
 	public:
-		/****************** MsgRegistrator ******************/
-		/**** md5 signature: 75371a4ad2792d7881281f65d5c59c1b ****/
+		/****** ShapeCustom_Modification::MsgRegistrator ******/
+		/****** md5 signature: 75371a4ad2792d7881281f65d5c59c1b ******/
 		%feature("compactdefaultargs") MsgRegistrator;
 		%feature("autodoc", "Return
 -------
@@ -424,8 +424,8 @@ Returns message registrator.
 ") MsgRegistrator;
 		opencascade::handle<ShapeExtend_BasicMsgRegistrator> MsgRegistrator();
 
-		/****************** SendMsg ******************/
-		/**** md5 signature: 63af56acccb2dd5832d840956eefee1e ****/
+		/****** ShapeCustom_Modification::SendMsg ******/
+		/****** md5 signature: 63af56acccb2dd5832d840956eefee1e ******/
 		%feature("compactdefaultargs") SendMsg;
 		%feature("autodoc", "
 Parameters
@@ -444,8 +444,8 @@ Sends a message to be attached to the shape. calls corresponding message of mess
 ") SendMsg;
 		void SendMsg(const TopoDS_Shape & shape, const Message_Msg & message, const Message_Gravity gravity = Message_Info);
 
-		/****************** SetMsgRegistrator ******************/
-		/**** md5 signature: 684cc840be09df59bc67d102aa6274f1 ****/
+		/****** ShapeCustom_Modification::SetMsgRegistrator ******/
+		/****** md5 signature: 684cc840be09df59bc67d102aa6274f1 ******/
 		%feature("compactdefaultargs") SetMsgRegistrator;
 		%feature("autodoc", "
 Parameters
@@ -478,8 +478,8 @@ Sets message registrator.
 ******************************************/
 class ShapeCustom_RestrictionParameters : public Standard_Transient {
 	public:
-		/****************** ShapeCustom_RestrictionParameters ******************/
-		/**** md5 signature: 81d84290b002a3665137693606aebe82 ****/
+		/****** ShapeCustom_RestrictionParameters::ShapeCustom_RestrictionParameters ******/
+		/****** md5 signature: 81d84290b002a3665137693606aebe82 ******/
 		%feature("compactdefaultargs") ShapeCustom_RestrictionParameters;
 		%feature("autodoc", "Return
 -------
@@ -715,8 +715,8 @@ Sets default parameters.
 ****************************/
 class ShapeCustom_Surface {
 	public:
-		/****************** ShapeCustom_Surface ******************/
-		/**** md5 signature: cafa05881635f8c20f8b8c619476b912 ****/
+		/****** ShapeCustom_Surface::ShapeCustom_Surface ******/
+		/****** md5 signature: cafa05881635f8c20f8b8c619476b912 ******/
 		%feature("compactdefaultargs") ShapeCustom_Surface;
 		%feature("autodoc", "Return
 -------
@@ -728,8 +728,8 @@ No available documentation.
 ") ShapeCustom_Surface;
 		 ShapeCustom_Surface();
 
-		/****************** ShapeCustom_Surface ******************/
-		/**** md5 signature: da0b965e05134f06574b36da9d88c364 ****/
+		/****** ShapeCustom_Surface::ShapeCustom_Surface ******/
+		/****** md5 signature: da0b965e05134f06574b36da9d88c364 ******/
 		%feature("compactdefaultargs") ShapeCustom_Surface;
 		%feature("autodoc", "
 Parameters
@@ -746,8 +746,8 @@ No available documentation.
 ") ShapeCustom_Surface;
 		 ShapeCustom_Surface(const opencascade::handle<Geom_Surface> & S);
 
-		/****************** ConvertToAnalytical ******************/
-		/**** md5 signature: 4785add508ea07ea86d027be413480ad ****/
+		/****** ShapeCustom_Surface::ConvertToAnalytical ******/
+		/****** md5 signature: 4785add508ea07ea86d027be413480ad ******/
 		%feature("compactdefaultargs") ConvertToAnalytical;
 		%feature("autodoc", "
 Parameters
@@ -765,8 +765,8 @@ Tries to convert the surface to an analytic form returns the result works only i
 ") ConvertToAnalytical;
 		opencascade::handle<Geom_Surface> ConvertToAnalytical(const Standard_Real tol, const Standard_Boolean substitute);
 
-		/****************** ConvertToPeriodic ******************/
-		/**** md5 signature: ba4913a093868274014a528fd5ec61a7 ****/
+		/****** ShapeCustom_Surface::ConvertToPeriodic ******/
+		/****** md5 signature: ba4913a093868274014a528fd5ec61a7 ******/
 		%feature("compactdefaultargs") ConvertToPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -784,8 +784,8 @@ Tries to convert the surface to the periodic form returns the resulting surface 
 ") ConvertToPeriodic;
 		opencascade::handle<Geom_Surface> ConvertToPeriodic(const Standard_Boolean substitute, const Standard_Real preci = -1);
 
-		/****************** Gap ******************/
-		/**** md5 signature: 57884ecbe8d7b5b092e706848a3678db ****/
+		/****** ShapeCustom_Surface::Gap ******/
+		/****** md5 signature: 57884ecbe8d7b5b092e706848a3678db ******/
 		%feature("compactdefaultargs") Gap;
 		%feature("autodoc", "Return
 -------
@@ -797,8 +797,8 @@ Returns maximal deviation of converted surface from the original one computed by
 ") Gap;
 		Standard_Real Gap();
 
-		/****************** Init ******************/
-		/**** md5 signature: ae778074c5c355f705c26cfe08f002f6 ****/
+		/****** ShapeCustom_Surface::Init ******/
+		/****** md5 signature: ae778074c5c355f705c26cfe08f002f6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -829,8 +829,8 @@ No available documentation.
 *************************************/
 class ShapeCustom_TrsfModification : public BRepTools_TrsfModification {
 	public:
-		/****************** ShapeCustom_TrsfModification ******************/
-		/**** md5 signature: 8435dc7227a8890d6a14633721586b34 ****/
+		/****** ShapeCustom_TrsfModification::ShapeCustom_TrsfModification ******/
+		/****** md5 signature: 8435dc7227a8890d6a14633721586b34 ******/
 		%feature("compactdefaultargs") ShapeCustom_TrsfModification;
 		%feature("autodoc", "
 Parameters
@@ -847,8 +847,8 @@ Empty constructor.
 ") ShapeCustom_TrsfModification;
 		 ShapeCustom_TrsfModification(const gp_Trsf & T);
 
-		/****************** NewCurve ******************/
-		/**** md5 signature: fae0c201ae8f07a170a1eb576572768a ****/
+		/****** ShapeCustom_TrsfModification::NewCurve ******/
+		/****** md5 signature: fae0c201ae8f07a170a1eb576572768a ******/
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "
 Parameters
@@ -867,8 +867,8 @@ Calls inherited method. sets <tol> as actual tolerance of <e> multiplied with sc
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
-		/****************** NewCurve2d ******************/
-		/**** md5 signature: ea858177828b71b789a2564d89f64210 ****/
+		/****** ShapeCustom_TrsfModification::NewCurve2d ******/
+		/****** md5 signature: ea858177828b71b789a2564d89f64210 ******/
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -889,8 +889,8 @@ Calls inherited method. sets <tol> as actual tolerance of <e> multiplied with sc
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
-		/****************** NewParameter ******************/
-		/**** md5 signature: e14926b54c8548936ba9a49d140b8da3 ****/
+		/****** ShapeCustom_TrsfModification::NewParameter ******/
+		/****** md5 signature: e14926b54c8548936ba9a49d140b8da3 ******/
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "
 Parameters
@@ -909,8 +909,8 @@ Calls inherited method. sets <tol> as actual tolerance of <v> multiplied with sc
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** NewPoint ******************/
-		/**** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ****/
+		/****** ShapeCustom_TrsfModification::NewPoint ******/
+		/****** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ******/
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "
 Parameters
@@ -928,8 +928,8 @@ Calls inherited method. sets <tol> as actual tolerance of <v> multiplied with sc
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
-		/****************** NewSurface ******************/
-		/**** md5 signature: 001097e1d949f85581f605ce49276ada ****/
+		/****** ShapeCustom_TrsfModification::NewSurface ******/
+		/****** md5 signature: 001097e1d949f85581f605ce49276ada ******/
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "
 Parameters
@@ -969,8 +969,8 @@ Calls inherited method. sets <tol> as actual tolerance of <f> multiplied with sc
 *************************************/
 class ShapeCustom_ConvertToBSpline : public ShapeCustom_Modification {
 	public:
-		/****************** ShapeCustom_ConvertToBSpline ******************/
-		/**** md5 signature: fdc8bdf94d0e8e7c62b646bf97cc5032 ****/
+		/****** ShapeCustom_ConvertToBSpline::ShapeCustom_ConvertToBSpline ******/
+		/****** md5 signature: fdc8bdf94d0e8e7c62b646bf97cc5032 ******/
 		%feature("compactdefaultargs") ShapeCustom_ConvertToBSpline;
 		%feature("autodoc", "Return
 -------
@@ -982,8 +982,8 @@ No available documentation.
 ") ShapeCustom_ConvertToBSpline;
 		 ShapeCustom_ConvertToBSpline();
 
-		/****************** Continuity ******************/
-		/**** md5 signature: a3c3d5a955b90f2e1cefb3c12dc67277 ****/
+		/****** ShapeCustom_ConvertToBSpline::Continuity ******/
+		/****** md5 signature: a3c3d5a955b90f2e1cefb3c12dc67277 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -1005,8 +1005,8 @@ Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the 
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
-		/****************** NewCurve ******************/
-		/**** md5 signature: fae0c201ae8f07a170a1eb576572768a ****/
+		/****** ShapeCustom_ConvertToBSpline::NewCurve ******/
+		/****** md5 signature: fae0c201ae8f07a170a1eb576572768a ******/
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "
 Parameters
@@ -1025,8 +1025,8 @@ Returns standard_true if the edge <e> has been modified. in this case, <c> is th
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
-		/****************** NewCurve2d ******************/
-		/**** md5 signature: ea858177828b71b789a2564d89f64210 ****/
+		/****** ShapeCustom_ConvertToBSpline::NewCurve2d ******/
+		/****** md5 signature: ea858177828b71b789a2564d89f64210 ******/
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -1047,8 +1047,8 @@ Returns standard_true if the edge <e> has a new curve on surface on the face <f>
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
-		/****************** NewParameter ******************/
-		/**** md5 signature: e14926b54c8548936ba9a49d140b8da3 ****/
+		/****** ShapeCustom_ConvertToBSpline::NewParameter ******/
+		/****** md5 signature: e14926b54c8548936ba9a49d140b8da3 ******/
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "
 Parameters
@@ -1067,8 +1067,8 @@ Returns standard_true if the vertex <v> has a new parameter on the edge <e>. in 
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** NewPoint ******************/
-		/**** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ****/
+		/****** ShapeCustom_ConvertToBSpline::NewPoint ******/
+		/****** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ******/
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "
 Parameters
@@ -1086,8 +1086,8 @@ Returns standard_true if the vertex <v> has been modified. in this case, <p> is 
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
-		/****************** NewSurface ******************/
-		/**** md5 signature: 001097e1d949f85581f605ce49276ada ****/
+		/****** ShapeCustom_ConvertToBSpline::NewSurface ******/
+		/****** md5 signature: 001097e1d949f85581f605ce49276ada ******/
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "
 Parameters
@@ -1108,8 +1108,8 @@ Returns standard_true if the face <f> has been modified. in this case, <s> is th
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
-		/****************** SetExtrusionMode ******************/
-		/**** md5 signature: 169e481cbec21216a690aea07c39e8bf ****/
+		/****** ShapeCustom_ConvertToBSpline::SetExtrusionMode ******/
+		/****** md5 signature: 169e481cbec21216a690aea07c39e8bf ******/
 		%feature("compactdefaultargs") SetExtrusionMode;
 		%feature("autodoc", "
 Parameters
@@ -1126,8 +1126,8 @@ Sets mode for conversion of surfaces of linear extrusion.
 ") SetExtrusionMode;
 		void SetExtrusionMode(const Standard_Boolean extrMode);
 
-		/****************** SetOffsetMode ******************/
-		/**** md5 signature: 95ca203f203423b410d33a2b819a45cb ****/
+		/****** ShapeCustom_ConvertToBSpline::SetOffsetMode ******/
+		/****** md5 signature: 95ca203f203423b410d33a2b819a45cb ******/
 		%feature("compactdefaultargs") SetOffsetMode;
 		%feature("autodoc", "
 Parameters
@@ -1144,8 +1144,8 @@ Sets mode for conversion of offset surfaces.
 ") SetOffsetMode;
 		void SetOffsetMode(const Standard_Boolean offsetMode);
 
-		/****************** SetPlaneMode ******************/
-		/**** md5 signature: 76c90747b069acf4539a86c302869898 ****/
+		/****** ShapeCustom_ConvertToBSpline::SetPlaneMode ******/
+		/****** md5 signature: 76c90747b069acf4539a86c302869898 ******/
 		%feature("compactdefaultargs") SetPlaneMode;
 		%feature("autodoc", "
 Parameters
@@ -1162,8 +1162,8 @@ Sets mode for conversion of plane surfaces.
 ") SetPlaneMode;
 		void SetPlaneMode(const Standard_Boolean planeMode);
 
-		/****************** SetRevolutionMode ******************/
-		/**** md5 signature: e7948e94ae621e0951e54d40c4147525 ****/
+		/****** ShapeCustom_ConvertToBSpline::SetRevolutionMode ******/
+		/****** md5 signature: e7948e94ae621e0951e54d40c4147525 ******/
 		%feature("compactdefaultargs") SetRevolutionMode;
 		%feature("autodoc", "
 Parameters
@@ -1199,8 +1199,8 @@ Sets mode for conversion of surfaces of revolution.
 ***************************************/
 class ShapeCustom_DirectModification : public ShapeCustom_Modification {
 	public:
-		/****************** ShapeCustom_DirectModification ******************/
-		/**** md5 signature: de7b24d906fcb0bd12bed4874b392c8a ****/
+		/****** ShapeCustom_DirectModification::ShapeCustom_DirectModification ******/
+		/****** md5 signature: de7b24d906fcb0bd12bed4874b392c8a ******/
 		%feature("compactdefaultargs") ShapeCustom_DirectModification;
 		%feature("autodoc", "Return
 -------
@@ -1212,8 +1212,8 @@ No available documentation.
 ") ShapeCustom_DirectModification;
 		 ShapeCustom_DirectModification();
 
-		/****************** Continuity ******************/
-		/**** md5 signature: a3c3d5a955b90f2e1cefb3c12dc67277 ****/
+		/****** ShapeCustom_DirectModification::Continuity ******/
+		/****** md5 signature: a3c3d5a955b90f2e1cefb3c12dc67277 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -1235,8 +1235,8 @@ Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the 
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
-		/****************** NewCurve ******************/
-		/**** md5 signature: fae0c201ae8f07a170a1eb576572768a ****/
+		/****** ShapeCustom_DirectModification::NewCurve ******/
+		/****** md5 signature: fae0c201ae8f07a170a1eb576572768a ******/
 		%feature("compactdefaultargs") NewCurve;
 		%feature("autodoc", "
 Parameters
@@ -1255,8 +1255,8 @@ Returns standard_true if the edge <e> has been modified. in this case, <c> is th
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
-		/****************** NewCurve2d ******************/
-		/**** md5 signature: ea858177828b71b789a2564d89f64210 ****/
+		/****** ShapeCustom_DirectModification::NewCurve2d ******/
+		/****** md5 signature: ea858177828b71b789a2564d89f64210 ******/
 		%feature("compactdefaultargs") NewCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -1277,8 +1277,8 @@ Returns standard_true if the edge <e> has a new curve on surface on the face <f>
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
-		/****************** NewParameter ******************/
-		/**** md5 signature: e14926b54c8548936ba9a49d140b8da3 ****/
+		/****** ShapeCustom_DirectModification::NewParameter ******/
+		/****** md5 signature: e14926b54c8548936ba9a49d140b8da3 ******/
 		%feature("compactdefaultargs") NewParameter;
 		%feature("autodoc", "
 Parameters
@@ -1297,8 +1297,8 @@ Returns standard_true if the vertex <v> has a new parameter on the edge <e>. in 
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** NewPoint ******************/
-		/**** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ****/
+		/****** ShapeCustom_DirectModification::NewPoint ******/
+		/****** md5 signature: 936cfe13f9c774f9038d7f0e2f3e521b ******/
 		%feature("compactdefaultargs") NewPoint;
 		%feature("autodoc", "
 Parameters
@@ -1316,8 +1316,8 @@ Returns standard_true if the vertex <v> has been modified. in this case, <p> is 
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
-		/****************** NewSurface ******************/
-		/**** md5 signature: 001097e1d949f85581f605ce49276ada ****/
+		/****** ShapeCustom_DirectModification::NewSurface ******/
+		/****** md5 signature: 001097e1d949f85581f605ce49276ada ******/
 		%feature("compactdefaultargs") NewSurface;
 		%feature("autodoc", "
 Parameters

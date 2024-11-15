@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPOPEBREPDOCSTRING
 "TopOpeBRep module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_topopebrep.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topopebrep.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPOPEBREPDOCSTRING) TopOpeBRep
 
@@ -220,8 +220,8 @@ typedef NCollection_Sequence<TopOpeBRep_Point2d> TopOpeBRep_SequenceOfPoint2d;
 %rename(topopebrep) TopOpeBRep;
 class TopOpeBRep {
 	public:
-		/****************** Print ******************/
-		/**** md5 signature: 298bc80cbe2b2fc0f4814ac9efa8edb6 ****/
+		/****** TopOpeBRep::Print ******/
+		/****** md5 signature: 298bc80cbe2b2fc0f4814ac9efa8edb6 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -252,8 +252,8 @@ Prints the name of <tlc> as a string on the stream <s> and returns <s>.
 ***************************/
 class TopOpeBRep_Bipoint {
 	public:
-		/****************** TopOpeBRep_Bipoint ******************/
-		/**** md5 signature: a715cb54d3a52f08c102ca6db0d069b1 ****/
+		/****** TopOpeBRep_Bipoint::TopOpeBRep_Bipoint ******/
+		/****** md5 signature: a715cb54d3a52f08c102ca6db0d069b1 ******/
 		%feature("compactdefaultargs") TopOpeBRep_Bipoint;
 		%feature("autodoc", "Return
 -------
@@ -265,8 +265,8 @@ No available documentation.
 ") TopOpeBRep_Bipoint;
 		 TopOpeBRep_Bipoint();
 
-		/****************** TopOpeBRep_Bipoint ******************/
-		/**** md5 signature: e2d9e3227b46e6169a8387b50c8a73b4 ****/
+		/****** TopOpeBRep_Bipoint::TopOpeBRep_Bipoint ******/
+		/****** md5 signature: e2d9e3227b46e6169a8387b50c8a73b4 ******/
 		%feature("compactdefaultargs") TopOpeBRep_Bipoint;
 		%feature("autodoc", "
 Parameters
@@ -284,8 +284,8 @@ No available documentation.
 ") TopOpeBRep_Bipoint;
 		 TopOpeBRep_Bipoint(const Standard_Integer I1, const Standard_Integer I2);
 
-		/****************** I1 ******************/
-		/**** md5 signature: 74161ab0bbc94c01faf48cb60fb358c7 ****/
+		/****** TopOpeBRep_Bipoint::I1 ******/
+		/****** md5 signature: 74161ab0bbc94c01faf48cb60fb358c7 ******/
 		%feature("compactdefaultargs") I1;
 		%feature("autodoc", "Return
 -------
@@ -297,8 +297,8 @@ No available documentation.
 ") I1;
 		Standard_Integer I1();
 
-		/****************** I2 ******************/
-		/**** md5 signature: eaec9284f7e9882b1d76f4c6582c3504 ****/
+		/****** TopOpeBRep_Bipoint::I2 ******/
+		/****** md5 signature: eaec9284f7e9882b1d76f4c6582c3504 ******/
 		%feature("compactdefaultargs") I2;
 		%feature("autodoc", "Return
 -------
@@ -324,8 +324,8 @@ No available documentation.
 ****************************/
 class TopOpeBRep_DSFiller {
 	public:
-		/****************** TopOpeBRep_DSFiller ******************/
-		/**** md5 signature: 94d1e0669c4d73ab6878efe1b3c3c129 ****/
+		/****** TopOpeBRep_DSFiller::TopOpeBRep_DSFiller ******/
+		/****** md5 signature: 94d1e0669c4d73ab6878efe1b3c3c129 ******/
 		%feature("compactdefaultargs") TopOpeBRep_DSFiller;
 		%feature("autodoc", "Return
 -------
@@ -337,8 +337,8 @@ No available documentation.
 ") TopOpeBRep_DSFiller;
 		 TopOpeBRep_DSFiller();
 
-		/****************** ChangeEdgesFiller ******************/
-		/**** md5 signature: 42f528f137a884825f37c45c5ef2914d ****/
+		/****** TopOpeBRep_DSFiller::ChangeEdgesFiller ******/
+		/****** md5 signature: 42f528f137a884825f37c45c5ef2914d ******/
 		%feature("compactdefaultargs") ChangeEdgesFiller;
 		%feature("autodoc", "Return
 -------
@@ -350,8 +350,8 @@ No available documentation.
 ") ChangeEdgesFiller;
 		TopOpeBRep_EdgesFiller & ChangeEdgesFiller();
 
-		/****************** ChangeFaceEdgeFiller ******************/
-		/**** md5 signature: 7e75719b2c1ecc11d8c6aae1c01c49b5 ****/
+		/****** TopOpeBRep_DSFiller::ChangeFaceEdgeFiller ******/
+		/****** md5 signature: 7e75719b2c1ecc11d8c6aae1c01c49b5 ******/
 		%feature("compactdefaultargs") ChangeFaceEdgeFiller;
 		%feature("autodoc", "Return
 -------
@@ -363,8 +363,8 @@ No available documentation.
 ") ChangeFaceEdgeFiller;
 		TopOpeBRep_FaceEdgeFiller & ChangeFaceEdgeFiller();
 
-		/****************** ChangeFacesFiller ******************/
-		/**** md5 signature: 0eb68d8005f2ae63fdbc569576b1f1fd ****/
+		/****** TopOpeBRep_DSFiller::ChangeFacesFiller ******/
+		/****** md5 signature: 0eb68d8005f2ae63fdbc569576b1f1fd ******/
 		%feature("compactdefaultargs") ChangeFacesFiller;
 		%feature("autodoc", "Return
 -------
@@ -376,8 +376,8 @@ No available documentation.
 ") ChangeFacesFiller;
 		TopOpeBRep_FacesFiller & ChangeFacesFiller();
 
-		/****************** ChangeShapeIntersector ******************/
-		/**** md5 signature: 373fa58a8d6b9fee7bf9640d5ccf9f06 ****/
+		/****** TopOpeBRep_DSFiller::ChangeShapeIntersector ******/
+		/****** md5 signature: 373fa58a8d6b9fee7bf9640d5ccf9f06 ******/
 		%feature("compactdefaultargs") ChangeShapeIntersector;
 		%feature("autodoc", "Return
 -------
@@ -389,8 +389,8 @@ No available documentation.
 ") ChangeShapeIntersector;
 		TopOpeBRep_ShapeIntersector & ChangeShapeIntersector();
 
-		/****************** ChangeShapeIntersector2d ******************/
-		/**** md5 signature: ccba574a2ff15e1350384beb726a2f67 ****/
+		/****** TopOpeBRep_DSFiller::ChangeShapeIntersector2d ******/
+		/****** md5 signature: ccba574a2ff15e1350384beb726a2f67 ******/
 		%feature("compactdefaultargs") ChangeShapeIntersector2d;
 		%feature("autodoc", "Return
 -------
@@ -402,8 +402,8 @@ No available documentation.
 ") ChangeShapeIntersector2d;
 		TopOpeBRep_ShapeIntersector2d & ChangeShapeIntersector2d();
 
-		/****************** Checker ******************/
-		/**** md5 signature: 1b9d5d2546157986ea508477f44d8430 ****/
+		/****** TopOpeBRep_DSFiller::Checker ******/
+		/****** md5 signature: 1b9d5d2546157986ea508477f44d8430 ******/
 		%feature("compactdefaultargs") Checker;
 		%feature("autodoc", "
 Parameters
@@ -420,8 +420,8 @@ No available documentation.
 ") Checker;
 		void Checker(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
-		/****************** Complete ******************/
-		/**** md5 signature: c1cbcbc9cdcd8d6779c56214ece9a089 ****/
+		/****** TopOpeBRep_DSFiller::Complete ******/
+		/****** md5 signature: c1cbcbc9cdcd8d6779c56214ece9a089 ******/
 		%feature("compactdefaultargs") Complete;
 		%feature("autodoc", "
 Parameters
@@ -438,8 +438,8 @@ No available documentation.
 ") Complete;
 		void Complete(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
-		/****************** CompleteDS ******************/
-		/**** md5 signature: 298ea4b1a23c2b2b60dcc61137773361 ****/
+		/****** TopOpeBRep_DSFiller::CompleteDS ******/
+		/****** md5 signature: 298ea4b1a23c2b2b60dcc61137773361 ******/
 		%feature("compactdefaultargs") CompleteDS;
 		%feature("autodoc", "
 Parameters
@@ -456,8 +456,8 @@ Update the data structure with relevant information deduced from the intersectio
 ") CompleteDS;
 		void CompleteDS(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
-		/****************** CompleteDS2d ******************/
-		/**** md5 signature: 610994e807ee28a545e1f5070174df41 ****/
+		/****** TopOpeBRep_DSFiller::CompleteDS2d ******/
+		/****** md5 signature: 610994e807ee28a545e1f5070174df41 ******/
 		%feature("compactdefaultargs") CompleteDS2d;
 		%feature("autodoc", "
 Parameters
@@ -474,8 +474,8 @@ Update the data structure with relevant information deduced from the intersectio
 ") CompleteDS2d;
 		void CompleteDS2d(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
-		/****************** Filter ******************/
-		/**** md5 signature: 766f5d92da74080f37f019c1e892ffe1 ****/
+		/****** TopOpeBRep_DSFiller::Filter ******/
+		/****** md5 signature: 766f5d92da74080f37f019c1e892ffe1 ******/
 		%feature("compactdefaultargs") Filter;
 		%feature("autodoc", "
 Parameters
@@ -492,8 +492,8 @@ No available documentation.
 ") Filter;
 		void Filter(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
-		/****************** GapFiller ******************/
-		/**** md5 signature: bbd4a4842b10fc20392f993b9a6133bc ****/
+		/****** TopOpeBRep_DSFiller::GapFiller ******/
+		/****** md5 signature: bbd4a4842b10fc20392f993b9a6133bc ******/
 		%feature("compactdefaultargs") GapFiller;
 		%feature("autodoc", "
 Parameters
@@ -510,8 +510,8 @@ No available documentation.
 ") GapFiller;
 		void GapFiller(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
-		/****************** Insert ******************/
-		/**** md5 signature: 665de110eeab73fc45dd6a102cd78ae4 ****/
+		/****** TopOpeBRep_DSFiller::Insert ******/
+		/****** md5 signature: 665de110eeab73fc45dd6a102cd78ae4 ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -531,8 +531,8 @@ Stores in <ds> the intersections of <s1> and <s2>. if orientforward = true s for
 ") Insert;
 		void Insert(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const Standard_Boolean orientFORWARD = Standard_True);
 
-		/****************** Insert1d ******************/
-		/**** md5 signature: db5f6ee00fabae6f226597adb9c30b37 ****/
+		/****** TopOpeBRep_DSFiller::Insert1d ******/
+		/****** md5 signature: db5f6ee00fabae6f226597adb9c30b37 ******/
 		%feature("compactdefaultargs") Insert1d;
 		%feature("autodoc", "
 Parameters
@@ -554,8 +554,8 @@ Stores in <ds> the intersections of <s1> and <s2>. s1 and s2 are edges or wires.
 ") Insert1d;
 		void Insert1d(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const TopoDS_Face & F1, const TopoDS_Face & F2, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const Standard_Boolean orientFORWARD = Standard_False);
 
-		/****************** Insert2d ******************/
-		/**** md5 signature: 7bbe73f7028f9501e3aaab2c40aaea66 ****/
+		/****** TopOpeBRep_DSFiller::Insert2d ******/
+		/****** md5 signature: 7bbe73f7028f9501e3aaab2c40aaea66 ******/
 		%feature("compactdefaultargs") Insert2d;
 		%feature("autodoc", "
 Parameters
@@ -574,8 +574,8 @@ Stores in <ds> the intersections of <s1> and <s2>. s1 et s2 contain only samedom
 ") Insert2d;
 		void Insert2d(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
-		/****************** InsertIntersection ******************/
-		/**** md5 signature: ce998609c99cc6ba7bd504759ebc2654 ****/
+		/****** TopOpeBRep_DSFiller::InsertIntersection ******/
+		/****** md5 signature: ce998609c99cc6ba7bd504759ebc2654 ******/
 		%feature("compactdefaultargs") InsertIntersection;
 		%feature("autodoc", "
 Parameters
@@ -595,8 +595,8 @@ Stores in <ds> the intersections of <s1> and <s2>. if orientforward = true s for
 ") InsertIntersection;
 		void InsertIntersection(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const Standard_Boolean orientFORWARD = Standard_True);
 
-		/****************** InsertIntersection2d ******************/
-		/**** md5 signature: 32df11ddce8d9f8436943cc95129dfda ****/
+		/****** TopOpeBRep_DSFiller::InsertIntersection2d ******/
+		/****** md5 signature: 32df11ddce8d9f8436943cc95129dfda ******/
 		%feature("compactdefaultargs") InsertIntersection2d;
 		%feature("autodoc", "
 Parameters
@@ -615,8 +615,8 @@ S1, s2 set of tangent face lance les intersections 2d pour coder correctement le
 ") InsertIntersection2d;
 		void InsertIntersection2d(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
-		/****************** IsContext1d ******************/
-		/**** md5 signature: a224b63bd5e25aef88157d00321c46b6 ****/
+		/****** TopOpeBRep_DSFiller::IsContext1d ******/
+		/****** md5 signature: a224b63bd5e25aef88157d00321c46b6 ******/
 		%feature("compactdefaultargs") IsContext1d;
 		%feature("autodoc", "
 Parameters
@@ -633,8 +633,8 @@ No available documentation.
 ") IsContext1d;
 		Standard_Boolean IsContext1d(const TopoDS_Shape & S);
 
-		/****************** IsMadeOf1d ******************/
-		/**** md5 signature: 07a0ed23f9952008160be5a338e4a363 ****/
+		/****** TopOpeBRep_DSFiller::IsMadeOf1d ******/
+		/****** md5 signature: 07a0ed23f9952008160be5a338e4a363 ******/
 		%feature("compactdefaultargs") IsMadeOf1d;
 		%feature("autodoc", "
 Parameters
@@ -651,8 +651,8 @@ No available documentation.
 ") IsMadeOf1d;
 		Standard_Boolean IsMadeOf1d(const TopoDS_Shape & S);
 
-		/****************** PShapeClassifier ******************/
-		/**** md5 signature: 839210bbffc66c6dadfa1a9483c467a7 ****/
+		/****** TopOpeBRep_DSFiller::PShapeClassifier ******/
+		/****** md5 signature: 839210bbffc66c6dadfa1a9483c467a7 ******/
 		%feature("compactdefaultargs") PShapeClassifier;
 		%feature("autodoc", "Return
 -------
@@ -664,8 +664,8 @@ Return field mypshapeclassifier. set field mypshapeclassifier.
 ") PShapeClassifier;
 		TopOpeBRepTool_PShapeClassifier PShapeClassifier();
 
-		/****************** Reducer ******************/
-		/**** md5 signature: cf786c5031b4295615b5b69524dacaef ****/
+		/****** TopOpeBRep_DSFiller::Reducer ******/
+		/****** md5 signature: cf786c5031b4295615b5b69524dacaef ******/
 		%feature("compactdefaultargs") Reducer;
 		%feature("autodoc", "
 Parameters
@@ -682,8 +682,8 @@ No available documentation.
 ") Reducer;
 		void Reducer(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
-		/****************** RemoveUnsharedGeometry ******************/
-		/**** md5 signature: 3a71e62209739aeac2348609183aade5 ****/
+		/****** TopOpeBRep_DSFiller::RemoveUnsharedGeometry ******/
+		/****** md5 signature: 3a71e62209739aeac2348609183aade5 ******/
 		%feature("compactdefaultargs") RemoveUnsharedGeometry;
 		%feature("autodoc", "
 Parameters
@@ -714,8 +714,8 @@ No available documentation.
 *******************************/
 class TopOpeBRep_EdgesFiller {
 	public:
-		/****************** TopOpeBRep_EdgesFiller ******************/
-		/**** md5 signature: ec896d01f7f06bf02131d38934ea4515 ****/
+		/****** TopOpeBRep_EdgesFiller::TopOpeBRep_EdgesFiller ******/
+		/****** md5 signature: ec896d01f7f06bf02131d38934ea4515 ******/
 		%feature("compactdefaultargs") TopOpeBRep_EdgesFiller;
 		%feature("autodoc", "Return
 -------
@@ -727,8 +727,8 @@ No available documentation.
 ") TopOpeBRep_EdgesFiller;
 		 TopOpeBRep_EdgesFiller();
 
-		/****************** Face ******************/
-		/**** md5 signature: f92ebdacef14b7f450400a186e83473d ****/
+		/****** TopOpeBRep_EdgesFiller::Face ******/
+		/****** md5 signature: f92ebdacef14b7f450400a186e83473d ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "
 Parameters
@@ -746,8 +746,8 @@ No available documentation.
 ") Face;
 		void Face(const Standard_Integer I, const TopoDS_Shape & F);
 
-		/****************** Face ******************/
-		/**** md5 signature: 3ee676861b06f3c0597afbbe4966b236 ****/
+		/****** TopOpeBRep_EdgesFiller::Face ******/
+		/****** md5 signature: 3ee676861b06f3c0597afbbe4966b236 ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "
 Parameters
@@ -764,8 +764,8 @@ No available documentation.
 ") Face;
 		const TopoDS_Shape Face(const Standard_Integer I);
 
-		/****************** Insert ******************/
-		/**** md5 signature: 50b516246815fa264f5aa7c6f66c6e10 ****/
+		/****** TopOpeBRep_EdgesFiller::Insert ******/
+		/****** md5 signature: 50b516246815fa264f5aa7c6f66c6e10 ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -799,8 +799,8 @@ No available documentation.
 ************************************/
 class TopOpeBRep_EdgesIntersector {
 	public:
-		/****************** TopOpeBRep_EdgesIntersector ******************/
-		/**** md5 signature: b420776cd4679d2c673c90c15b89c7dc ****/
+		/****** TopOpeBRep_EdgesIntersector::TopOpeBRep_EdgesIntersector ******/
+		/****** md5 signature: b420776cd4679d2c673c90c15b89c7dc ******/
 		%feature("compactdefaultargs") TopOpeBRep_EdgesIntersector;
 		%feature("autodoc", "Return
 -------
@@ -812,8 +812,8 @@ No available documentation.
 ") TopOpeBRep_EdgesIntersector;
 		 TopOpeBRep_EdgesIntersector();
 
-		/****************** Curve ******************/
-		/**** md5 signature: c197fdb0292db57c51429bfa890763a8 ****/
+		/****** TopOpeBRep_EdgesIntersector::Curve ******/
+		/****** md5 signature: c197fdb0292db57c51429bfa890763a8 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -830,8 +830,8 @@ No available documentation.
 ") Curve;
 		Geom2dAdaptor_Curve Curve(const Standard_Integer Index);
 
-		/****************** Dimension ******************/
-		/**** md5 signature: bffc3d9b070e68685a6f532f4d09951a ****/
+		/****** TopOpeBRep_EdgesIntersector::Dimension ******/
+		/****** md5 signature: bffc3d9b070e68685a6f532f4d09951a ******/
 		%feature("compactdefaultargs") Dimension;
 		%feature("autodoc", "
 Parameters
@@ -848,8 +848,8 @@ No available documentation.
 ") Dimension;
 		void Dimension(const Standard_Integer D);
 
-		/****************** Dimension ******************/
-		/**** md5 signature: e4bdde894007391dd45dcb2fa38eb0af ****/
+		/****** TopOpeBRep_EdgesIntersector::Dimension ******/
+		/****** md5 signature: e4bdde894007391dd45dcb2fa38eb0af ******/
 		%feature("compactdefaultargs") Dimension;
 		%feature("autodoc", "Return
 -------
@@ -861,8 +861,8 @@ Set working space dimension d = 1 for e &|| w, 2 for e in f.
 ") Dimension;
 		Standard_Integer Dimension();
 
-		/****************** Dump ******************/
-		/**** md5 signature: 6dadf2b055ff57119ece31d6e8450595 ****/
+		/****** TopOpeBRep_EdgesIntersector::Dump ******/
+		/****** md5 signature: 6dadf2b055ff57119ece31d6e8450595 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -881,8 +881,8 @@ No available documentation.
 ") Dump;
 		void Dump(TCollection_AsciiString str, const Standard_Integer ie1 = 0, const Standard_Integer ie2 = 0);
 
-		/****************** Edge ******************/
-		/**** md5 signature: 307eac48f15b7575b76de6ac6147f9b1 ****/
+		/****** TopOpeBRep_EdgesIntersector::Edge ******/
+		/****** md5 signature: 307eac48f15b7575b76de6ac6147f9b1 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -899,8 +899,8 @@ No available documentation.
 ") Edge;
 		const TopoDS_Shape Edge(const Standard_Integer Index);
 
-		/****************** Face ******************/
-		/**** md5 signature: 369bad292fcb0f7622cfabd8d11dd8db ****/
+		/****** TopOpeBRep_EdgesIntersector::Face ******/
+		/****** md5 signature: 369bad292fcb0f7622cfabd8d11dd8db ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "
 Parameters
@@ -917,8 +917,8 @@ No available documentation.
 ") Face;
 		const TopoDS_Shape Face(const Standard_Integer Index);
 
-		/****************** FacesSameOriented ******************/
-		/**** md5 signature: 435f628c00049ebc1d70e1ce34bc8025 ****/
+		/****** TopOpeBRep_EdgesIntersector::FacesSameOriented ******/
+		/****** md5 signature: 435f628c00049ebc1d70e1ce34bc8025 ******/
 		%feature("compactdefaultargs") FacesSameOriented;
 		%feature("autodoc", "Return
 -------
@@ -930,8 +930,8 @@ No available documentation.
 ") FacesSameOriented;
 		Standard_Boolean FacesSameOriented();
 
-		/****************** ForceTolerances ******************/
-		/**** md5 signature: 67adf0c8741f8cd5a3ea9d107acd1de6 ****/
+		/****** TopOpeBRep_EdgesIntersector::ForceTolerances ******/
+		/****** md5 signature: 67adf0c8741f8cd5a3ea9d107acd1de6 ******/
 		%feature("compactdefaultargs") ForceTolerances;
 		%feature("autodoc", "
 Parameters
@@ -949,8 +949,8 @@ No available documentation.
 ") ForceTolerances;
 		void ForceTolerances(const Standard_Real Tol1, const Standard_Real Tol2);
 
-		/****************** HasSegment ******************/
-		/**** md5 signature: 1e8e9253796e93e66360229d525d6678 ****/
+		/****** TopOpeBRep_EdgesIntersector::HasSegment ******/
+		/****** md5 signature: 1e8e9253796e93e66360229d525d6678 ******/
 		%feature("compactdefaultargs") HasSegment;
 		%feature("autodoc", "Return
 -------
@@ -962,8 +962,8 @@ True if at least one intersection segment.
 ") HasSegment;
 		Standard_Boolean HasSegment();
 
-		/****************** InitPoint ******************/
-		/**** md5 signature: d3803d80eaa4169b2e84fa10eb0a3519 ****/
+		/****** TopOpeBRep_EdgesIntersector::InitPoint ******/
+		/****** md5 signature: d3803d80eaa4169b2e84fa10eb0a3519 ******/
 		%feature("compactdefaultargs") InitPoint;
 		%feature("autodoc", "
 Parameters
@@ -980,8 +980,8 @@ No available documentation.
 ") InitPoint;
 		void InitPoint(const Standard_Boolean selectkeep = Standard_True);
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: e27f5e4366afc93bf8faeaa27a6a716c ****/
+		/****** TopOpeBRep_EdgesIntersector::IsEmpty ******/
+		/****** md5 signature: e27f5e4366afc93bf8faeaa27a6a716c ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -993,8 +993,8 @@ No available documentation.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** MorePoint ******************/
-		/**** md5 signature: 49b6d3fce0f619d47fb6c22cd6e43311 ****/
+		/****** TopOpeBRep_EdgesIntersector::MorePoint ******/
+		/****** md5 signature: 49b6d3fce0f619d47fb6c22cd6e43311 ******/
 		%feature("compactdefaultargs") MorePoint;
 		%feature("autodoc", "Return
 -------
@@ -1006,8 +1006,8 @@ No available documentation.
 ") MorePoint;
 		Standard_Boolean MorePoint();
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** TopOpeBRep_EdgesIntersector::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -1019,8 +1019,8 @@ No available documentation.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** NbSegments ******************/
-		/**** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ****/
+		/****** TopOpeBRep_EdgesIntersector::NbSegments ******/
+		/****** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -1032,8 +1032,8 @@ No available documentation.
 ") NbSegments;
 		Standard_Integer NbSegments();
 
-		/****************** NextPoint ******************/
-		/**** md5 signature: 405187df0396980d4a156a27c62571e1 ****/
+		/****** TopOpeBRep_EdgesIntersector::NextPoint ******/
+		/****** md5 signature: 405187df0396980d4a156a27c62571e1 ******/
 		%feature("compactdefaultargs") NextPoint;
 		%feature("autodoc", "Return
 -------
@@ -1045,8 +1045,8 @@ No available documentation.
 ") NextPoint;
 		void NextPoint();
 
-		/****************** Perform ******************/
-		/**** md5 signature: e9dbea4006900374342d9db06fb69172 ****/
+		/****** TopOpeBRep_EdgesIntersector::Perform ******/
+		/****** md5 signature: e9dbea4006900374342d9db06fb69172 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1065,8 +1065,8 @@ No available documentation.
 ") Perform;
 		void Perform(const TopoDS_Shape & E1, const TopoDS_Shape & E2, const Standard_Boolean ReduceSegments = Standard_True);
 
-		/****************** Point ******************/
-		/**** md5 signature: ae4590a19e23c5058b49e8da638135ff ****/
+		/****** TopOpeBRep_EdgesIntersector::Point ******/
+		/****** md5 signature: ae4590a19e23c5058b49e8da638135ff ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "Return
 -------
@@ -1078,8 +1078,8 @@ No available documentation.
 ") Point;
 		const TopOpeBRep_Point2d & Point();
 
-		/****************** Point ******************/
-		/**** md5 signature: dd5f5035ef5ee0ddf6bf63ee2f08e025 ****/
+		/****** TopOpeBRep_EdgesIntersector::Point ******/
+		/****** md5 signature: dd5f5035ef5ee0ddf6bf63ee2f08e025 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -1096,8 +1096,8 @@ No available documentation.
 ") Point;
 		const TopOpeBRep_Point2d & Point(const Standard_Integer I);
 
-		/****************** Points ******************/
-		/**** md5 signature: 16de9901bc57813b3c3bcac54da5d818 ****/
+		/****** TopOpeBRep_EdgesIntersector::Points ******/
+		/****** md5 signature: 16de9901bc57813b3c3bcac54da5d818 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "Return
 -------
@@ -1109,8 +1109,8 @@ No available documentation.
 ") Points;
 		const TopOpeBRep_SequenceOfPoint2d & Points();
 
-		/****************** ReduceSegment ******************/
-		/**** md5 signature: c7823a60919234c136cbc013497b5aa7 ****/
+		/****** TopOpeBRep_EdgesIntersector::ReduceSegment ******/
+		/****** md5 signature: c7823a60919234c136cbc013497b5aa7 ******/
 		%feature("compactdefaultargs") ReduceSegment;
 		%feature("autodoc", "
 Parameters
@@ -1129,8 +1129,8 @@ No available documentation.
 ") ReduceSegment;
 		virtual Standard_Boolean ReduceSegment(TopOpeBRep_Point2d & P1, TopOpeBRep_Point2d & P2, TopOpeBRep_Point2d & Pn);
 
-		/****************** SameDomain ******************/
-		/**** md5 signature: ceba397eccbd28c4c6715ac85077480f ****/
+		/****** TopOpeBRep_EdgesIntersector::SameDomain ******/
+		/****** md5 signature: ceba397eccbd28c4c6715ac85077480f ******/
 		%feature("compactdefaultargs") SameDomain;
 		%feature("autodoc", "Return
 -------
@@ -1142,8 +1142,8 @@ Description
 ") SameDomain;
 		Standard_Boolean SameDomain();
 
-		/****************** SetFaces ******************/
-		/**** md5 signature: 7bcb2bdab219cd4f0ceefa5b896735ed ****/
+		/****** TopOpeBRep_EdgesIntersector::SetFaces ******/
+		/****** md5 signature: 7bcb2bdab219cd4f0ceefa5b896735ed ******/
 		%feature("compactdefaultargs") SetFaces;
 		%feature("autodoc", "
 Parameters
@@ -1161,8 +1161,8 @@ No available documentation.
 ") SetFaces;
 		void SetFaces(const TopoDS_Shape & F1, const TopoDS_Shape & F2);
 
-		/****************** SetFaces ******************/
-		/**** md5 signature: 616b9954245a00e0805fe2e8a403c0c0 ****/
+		/****** TopOpeBRep_EdgesIntersector::SetFaces ******/
+		/****** md5 signature: 616b9954245a00e0805fe2e8a403c0c0 ******/
 		%feature("compactdefaultargs") SetFaces;
 		%feature("autodoc", "
 Parameters
@@ -1182,8 +1182,8 @@ No available documentation.
 ") SetFaces;
 		void SetFaces(const TopoDS_Shape & F1, const TopoDS_Shape & F2, const Bnd_Box & B1, const Bnd_Box & B2);
 
-		/****************** Status1 ******************/
-		/**** md5 signature: a482506d6f765463bf27dc481a53ae08 ****/
+		/****** TopOpeBRep_EdgesIntersector::Status1 ******/
+		/****** md5 signature: a482506d6f765463bf27dc481a53ae08 ******/
 		%feature("compactdefaultargs") Status1;
 		%feature("autodoc", "Return
 -------
@@ -1195,8 +1195,8 @@ No available documentation.
 ") Status1;
 		TopOpeBRep_P2Dstatus Status1();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 020f2de4ba0a5346a9d4639bba276e13 ****/
+		/****** TopOpeBRep_EdgesIntersector::Surface ******/
+		/****** md5 signature: 020f2de4ba0a5346a9d4639bba276e13 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -1213,8 +1213,8 @@ No available documentation.
 ") Surface;
 		BRepAdaptor_Surface Surface(const Standard_Integer Index);
 
-		/****************** SurfacesSameOriented ******************/
-		/**** md5 signature: 5a73f090b826c38dcc30efe0cb99df4e ****/
+		/****** TopOpeBRep_EdgesIntersector::SurfacesSameOriented ******/
+		/****** md5 signature: 5a73f090b826c38dcc30efe0cb99df4e ******/
 		%feature("compactdefaultargs") SurfacesSameOriented;
 		%feature("autodoc", "Return
 -------
@@ -1226,8 +1226,8 @@ No available documentation.
 ") SurfacesSameOriented;
 		Standard_Boolean SurfacesSameOriented();
 
-		/****************** ToleranceMax ******************/
-		/**** md5 signature: a6a9621146265549179f54bf3bae3efc ****/
+		/****** TopOpeBRep_EdgesIntersector::ToleranceMax ******/
+		/****** md5 signature: a6a9621146265549179f54bf3bae3efc ******/
 		%feature("compactdefaultargs") ToleranceMax;
 		%feature("autodoc", "Return
 -------
@@ -1239,8 +1239,8 @@ No available documentation.
 ") ToleranceMax;
 		Standard_Real ToleranceMax();
 
-		/****************** Tolerances ******************/
-		/**** md5 signature: 2d749b7f11bf1e85bb59a8023410578d ****/
+		/****** TopOpeBRep_EdgesIntersector::Tolerances ******/
+		/****** md5 signature: 2d749b7f11bf1e85bb59a8023410578d ******/
 		%feature("compactdefaultargs") Tolerances;
 		%feature("autodoc", "
 Parameters
@@ -1275,8 +1275,8 @@ No available documentation.
 ****************************/
 class TopOpeBRep_FFDumper : public Standard_Transient {
 	public:
-		/****************** TopOpeBRep_FFDumper ******************/
-		/**** md5 signature: 5069ea834b5634569d23872685d387c9 ****/
+		/****** TopOpeBRep_FFDumper::TopOpeBRep_FFDumper ******/
+		/****** md5 signature: 5069ea834b5634569d23872685d387c9 ******/
 		%feature("compactdefaultargs") TopOpeBRep_FFDumper;
 		%feature("autodoc", "
 Parameters
@@ -1293,8 +1293,8 @@ No available documentation.
 ") TopOpeBRep_FFDumper;
 		 TopOpeBRep_FFDumper(const TopOpeBRep_PFacesFiller & PFF);
 
-		/****************** DumpDSP ******************/
-		/**** md5 signature: 048812250355507033829dd1cde50af6 ****/
+		/****** TopOpeBRep_FFDumper::DumpDSP ******/
+		/****** md5 signature: 048812250355507033829dd1cde50af6 ******/
 		%feature("compactdefaultargs") DumpDSP;
 		%feature("autodoc", "
 Parameters
@@ -1314,8 +1314,8 @@ No available documentation.
 ") DumpDSP;
 		void DumpDSP(const TopOpeBRep_VPointInter & VP, const TopOpeBRepDS_Kind GK, const Standard_Integer G, const Standard_Boolean newinDS);
 
-		/****************** DumpLine ******************/
-		/**** md5 signature: 93d5b0b42f2b9aa01c9d8fc1b2561d02 ****/
+		/****** TopOpeBRep_FFDumper::DumpLine ******/
+		/****** md5 signature: 93d5b0b42f2b9aa01c9d8fc1b2561d02 ******/
 		%feature("compactdefaultargs") DumpLine;
 		%feature("autodoc", "
 Parameters
@@ -1332,8 +1332,8 @@ No available documentation.
 ") DumpLine;
 		void DumpLine(const Standard_Integer I);
 
-		/****************** DumpLine ******************/
-		/**** md5 signature: 0817cf884e719d75a7c5ab6bf884c3e4 ****/
+		/****** TopOpeBRep_FFDumper::DumpLine ******/
+		/****** md5 signature: 0817cf884e719d75a7c5ab6bf884c3e4 ******/
 		%feature("compactdefaultargs") DumpLine;
 		%feature("autodoc", "
 Parameters
@@ -1350,8 +1350,8 @@ No available documentation.
 ") DumpLine;
 		void DumpLine(const TopOpeBRep_LineInter & L);
 
-		/****************** DumpVP ******************/
-		/**** md5 signature: 7cc0f5e39ed07a6c323a85014bd23b25 ****/
+		/****** TopOpeBRep_FFDumper::DumpVP ******/
+		/****** md5 signature: 7cc0f5e39ed07a6c323a85014bd23b25 ******/
 		%feature("compactdefaultargs") DumpVP;
 		%feature("autodoc", "
 Parameters
@@ -1368,8 +1368,8 @@ No available documentation.
 ") DumpVP;
 		void DumpVP(const TopOpeBRep_VPointInter & VP);
 
-		/****************** DumpVP ******************/
-		/**** md5 signature: 6dd6b95083b914790106d9856c392255 ****/
+		/****** TopOpeBRep_FFDumper::DumpVP ******/
+		/****** md5 signature: 6dd6b95083b914790106d9856c392255 ******/
 		%feature("compactdefaultargs") DumpVP;
 		%feature("autodoc", "
 Parameters
@@ -1387,8 +1387,8 @@ No available documentation.
 ") DumpVP;
 		void DumpVP(const TopOpeBRep_VPointInter & VP, const Standard_Integer ISI);
 
-		/****************** ExploreIndex ******************/
-		/**** md5 signature: 57e25ab370d52f3fac2b745bac045a9a ****/
+		/****** TopOpeBRep_FFDumper::ExploreIndex ******/
+		/****** md5 signature: 57e25ab370d52f3fac2b745bac045a9a ******/
 		%feature("compactdefaultargs") ExploreIndex;
 		%feature("autodoc", "
 Parameters
@@ -1406,8 +1406,8 @@ No available documentation.
 ") ExploreIndex;
 		Standard_Integer ExploreIndex(const TopoDS_Shape & S, const Standard_Integer ISI);
 
-		/****************** Init ******************/
-		/**** md5 signature: 94f7072b958322260086eb97600758e9 ****/
+		/****** TopOpeBRep_FFDumper::Init ******/
+		/****** md5 signature: 94f7072b958322260086eb97600758e9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1424,8 +1424,8 @@ No available documentation.
 ") Init;
 		void Init(const TopOpeBRep_PFacesFiller & PFF);
 
-		/****************** PFacesFillerDummy ******************/
-		/**** md5 signature: e29ebcd883c2de9933d64a64ee1835b0 ****/
+		/****** TopOpeBRep_FFDumper::PFacesFillerDummy ******/
+		/****** md5 signature: e29ebcd883c2de9933d64a64ee1835b0 ******/
 		%feature("compactdefaultargs") PFacesFillerDummy;
 		%feature("autodoc", "Return
 -------
@@ -1453,8 +1453,8 @@ No available documentation.
 ************************************/
 class TopOpeBRep_FFTransitionTool {
 	public:
-		/****************** ProcessEdgeONTransition ******************/
-		/**** md5 signature: 1ac26d2eb27f9d8dc22b1fe8497e64f4 ****/
+		/****** TopOpeBRep_FFTransitionTool::ProcessEdgeONTransition ******/
+		/****** md5 signature: 1ac26d2eb27f9d8dc22b1fe8497e64f4 ******/
 		%feature("compactdefaultargs") ProcessEdgeONTransition;
 		%feature("autodoc", "
 Parameters
@@ -1475,8 +1475,8 @@ Compute transition on 'intpatch_restriction line' edge <r> when crossing edge <e
 ") ProcessEdgeONTransition;
 		static TopOpeBRepDS_Transition ProcessEdgeONTransition(const TopOpeBRep_VPointInter & VP, const Standard_Integer Index, const TopoDS_Shape & R, const TopoDS_Shape & E, const TopoDS_Shape & F);
 
-		/****************** ProcessEdgeTransition ******************/
-		/**** md5 signature: 9d92d843486c011fe37894a0bd496f9a ****/
+		/****** TopOpeBRep_FFTransitionTool::ProcessEdgeTransition ******/
+		/****** md5 signature: 9d92d843486c011fe37894a0bd496f9a ******/
 		%feature("compactdefaultargs") ProcessEdgeTransition;
 		%feature("autodoc", "
 Parameters
@@ -1495,8 +1495,8 @@ No available documentation.
 ") ProcessEdgeTransition;
 		static TopOpeBRepDS_Transition ProcessEdgeTransition(const TopOpeBRep_VPointInter & P, const Standard_Integer Index, const TopAbs_Orientation LineOrientation);
 
-		/****************** ProcessFaceTransition ******************/
-		/**** md5 signature: cacbf344e82d51a5f1e2cf0e90be90df ****/
+		/****** TopOpeBRep_FFTransitionTool::ProcessFaceTransition ******/
+		/****** md5 signature: cacbf344e82d51a5f1e2cf0e90be90df ******/
 		%feature("compactdefaultargs") ProcessFaceTransition;
 		%feature("autodoc", "
 Parameters
@@ -1515,8 +1515,8 @@ No available documentation.
 ") ProcessFaceTransition;
 		static TopOpeBRepDS_Transition ProcessFaceTransition(const TopOpeBRep_LineInter & L, const Standard_Integer Index, const TopAbs_Orientation FaceOrientation);
 
-		/****************** ProcessLineTransition ******************/
-		/**** md5 signature: 1a1b60881796672a7dc540281f6d7373 ****/
+		/****** TopOpeBRep_FFTransitionTool::ProcessLineTransition ******/
+		/****** md5 signature: 1a1b60881796672a7dc540281f6d7373 ******/
 		%feature("compactdefaultargs") ProcessLineTransition;
 		%feature("autodoc", "
 Parameters
@@ -1535,8 +1535,8 @@ No available documentation.
 ") ProcessLineTransition;
 		static TopOpeBRepDS_Transition ProcessLineTransition(const TopOpeBRep_VPointInter & P, const Standard_Integer Index, const TopAbs_Orientation EdgeOrientation);
 
-		/****************** ProcessLineTransition ******************/
-		/**** md5 signature: a4405ed67eccfe492272c9ddb0d3f109 ****/
+		/****** TopOpeBRep_FFTransitionTool::ProcessLineTransition ******/
+		/****** md5 signature: a4405ed67eccfe492272c9ddb0d3f109 ******/
 		%feature("compactdefaultargs") ProcessLineTransition;
 		%feature("autodoc", "
 Parameters
@@ -1568,8 +1568,8 @@ No available documentation.
 **********************************/
 class TopOpeBRep_FaceEdgeFiller {
 	public:
-		/****************** TopOpeBRep_FaceEdgeFiller ******************/
-		/**** md5 signature: 05c921804eac70417f5abaa5fe4fb035 ****/
+		/****** TopOpeBRep_FaceEdgeFiller::TopOpeBRep_FaceEdgeFiller ******/
+		/****** md5 signature: 05c921804eac70417f5abaa5fe4fb035 ******/
 		%feature("compactdefaultargs") TopOpeBRep_FaceEdgeFiller;
 		%feature("autodoc", "Return
 -------
@@ -1581,8 +1581,8 @@ No available documentation.
 ") TopOpeBRep_FaceEdgeFiller;
 		 TopOpeBRep_FaceEdgeFiller();
 
-		/****************** Insert ******************/
-		/**** md5 signature: ea225ff45a154ecb096d760424dded0a ****/
+		/****** TopOpeBRep_FaceEdgeFiller::Insert ******/
+		/****** md5 signature: ea225ff45a154ecb096d760424dded0a ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -1616,8 +1616,8 @@ No available documentation.
 ***************************************/
 class TopOpeBRep_FaceEdgeIntersector {
 	public:
-		/****************** TopOpeBRep_FaceEdgeIntersector ******************/
-		/**** md5 signature: e936a0541dae4fc5be154eb54a1c4949 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::TopOpeBRep_FaceEdgeIntersector ******/
+		/****** md5 signature: e936a0541dae4fc5be154eb54a1c4949 ******/
 		%feature("compactdefaultargs") TopOpeBRep_FaceEdgeIntersector;
 		%feature("autodoc", "Return
 -------
@@ -1629,8 +1629,8 @@ No available documentation.
 ") TopOpeBRep_FaceEdgeIntersector;
 		 TopOpeBRep_FaceEdgeIntersector();
 
-		/****************** ForceTolerance ******************/
-		/**** md5 signature: 2332958e0618d3a987995a3a25f212d8 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::ForceTolerance ******/
+		/****** md5 signature: 2332958e0618d3a987995a3a25f212d8 ******/
 		%feature("compactdefaultargs") ForceTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1647,8 +1647,8 @@ Force the tolerance values used by the next perform(s1,s2) call.
 ") ForceTolerance;
 		void ForceTolerance(const Standard_Real tol);
 
-		/****************** Index ******************/
-		/**** md5 signature: 407d80ef3037d55996765198adea3908 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::Index ******/
+		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -1660,8 +1660,8 @@ Trace only.
 ") Index;
 		Standard_Integer Index();
 
-		/****************** InitPoint ******************/
-		/**** md5 signature: ef05c711044f2a178bf8355ee34118b6 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::InitPoint ******/
+		/****** md5 signature: ef05c711044f2a178bf8355ee34118b6 ******/
 		%feature("compactdefaultargs") InitPoint;
 		%feature("autodoc", "Return
 -------
@@ -1673,8 +1673,8 @@ No available documentation.
 ") InitPoint;
 		void InitPoint();
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: e27f5e4366afc93bf8faeaa27a6a716c ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::IsEmpty ******/
+		/****** md5 signature: e27f5e4366afc93bf8faeaa27a6a716c ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1686,8 +1686,8 @@ No available documentation.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** IsVertex ******************/
-		/**** md5 signature: 6c175ba1f2197d81edaac96b81cd1516 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::IsVertex ******/
+		/****** md5 signature: 6c175ba1f2197d81edaac96b81cd1516 ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "
 Parameters
@@ -1707,8 +1707,8 @@ No available documentation.
 ") IsVertex;
 		Standard_Boolean IsVertex(const TopoDS_Shape & S, const gp_Pnt & P, const Standard_Real Tol, TopoDS_Vertex & V);
 
-		/****************** IsVertex ******************/
-		/**** md5 signature: 878988d0a7f2ca9bf81769584d5dc947 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::IsVertex ******/
+		/****** md5 signature: 878988d0a7f2ca9bf81769584d5dc947 ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "
 Parameters
@@ -1726,8 +1726,8 @@ No available documentation.
 ") IsVertex;
 		Standard_Boolean IsVertex(const Standard_Integer I, TopoDS_Vertex & V);
 
-		/****************** MorePoint ******************/
-		/**** md5 signature: 49b6d3fce0f619d47fb6c22cd6e43311 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::MorePoint ******/
+		/****** md5 signature: 49b6d3fce0f619d47fb6c22cd6e43311 ******/
 		%feature("compactdefaultargs") MorePoint;
 		%feature("autodoc", "Return
 -------
@@ -1739,8 +1739,8 @@ No available documentation.
 ") MorePoint;
 		Standard_Boolean MorePoint();
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -1752,8 +1752,8 @@ No available documentation.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** NextPoint ******************/
-		/**** md5 signature: 405187df0396980d4a156a27c62571e1 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::NextPoint ******/
+		/****** md5 signature: 405187df0396980d4a156a27c62571e1 ******/
 		%feature("compactdefaultargs") NextPoint;
 		%feature("autodoc", "Return
 -------
@@ -1765,8 +1765,8 @@ No available documentation.
 ") NextPoint;
 		void NextPoint();
 
-		/****************** Parameter ******************/
-		/**** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::Parameter ******/
+		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
@@ -1778,8 +1778,8 @@ Parametre de value() sur l'arete.
 ") Parameter;
 		Standard_Real Parameter();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 925c374623a2aa188f1a0a0d3fcdd3c6 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::Perform ******/
+		/****** md5 signature: 925c374623a2aa188f1a0a0d3fcdd3c6 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1797,8 +1797,8 @@ No available documentation.
 ") Perform;
 		void Perform(const TopoDS_Shape & F, const TopoDS_Shape & E);
 
-		/****************** Shape ******************/
-		/**** md5 signature: 9490bf72de2629e156b2f9f7c67be648 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::Shape ******/
+		/****** md5 signature: 9490bf72de2629e156b2f9f7c67be648 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -1815,8 +1815,8 @@ Returns intersected face or edge according to value of <index> = 1 or 2.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer Index);
 
-		/****************** State ******************/
-		/**** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::State ******/
+		/****** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "Return
 -------
@@ -1828,8 +1828,8 @@ In ou on / a la face. les points out ne sont pas retournes.
 ") State;
 		TopAbs_State State();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::Tolerance ******/
+		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -1841,8 +1841,8 @@ Return the tolerance value used in the last perform() call if forcetolerance() h
 ") Tolerance;
 		Standard_Real Tolerance();
 
-		/****************** Transition ******************/
-		/**** md5 signature: 62dd23c2bf48fcf4aab8a097e7a7aec2 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::Transition ******/
+		/****** md5 signature: 62dd23c2bf48fcf4aab8a097e7a7aec2 ******/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "
 Parameters
@@ -1860,8 +1860,8 @@ Index = 1 transition par rapport a la face, en cheminant sur l'arete.
 ") Transition;
 		TopOpeBRepDS_Transition Transition(const Standard_Integer Index, const TopAbs_Orientation FaceOrientation);
 
-		/****************** UVPoint ******************/
-		/**** md5 signature: fe94b12a8a35a715381902f22211fdbd ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::UVPoint ******/
+		/****** md5 signature: fe94b12a8a35a715381902f22211fdbd ******/
 		%feature("compactdefaultargs") UVPoint;
 		%feature("autodoc", "
 Parameters
@@ -1878,8 +1878,8 @@ Parametre de value() sur la face.
 ") UVPoint;
 		void UVPoint(gp_Pnt2d & P);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1d429a229b77b32713aab235505e93c2 ****/
+		/****** TopOpeBRep_FaceEdgeIntersector::Value ******/
+		/****** md5 signature: 1d429a229b77b32713aab235505e93c2 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1905,8 +1905,8 @@ Return the 3d point of the current intersection point.
 *******************************/
 class TopOpeBRep_FacesFiller {
 	public:
-		/****************** TopOpeBRep_FacesFiller ******************/
-		/**** md5 signature: 1b6f7393d6b5e3b9e71f9278ae5e7392 ****/
+		/****** TopOpeBRep_FacesFiller::TopOpeBRep_FacesFiller ******/
+		/****** md5 signature: 1b6f7393d6b5e3b9e71f9278ae5e7392 ******/
 		%feature("compactdefaultargs") TopOpeBRep_FacesFiller;
 		%feature("autodoc", "Return
 -------
@@ -1918,8 +1918,8 @@ No available documentation.
 ") TopOpeBRep_FacesFiller;
 		 TopOpeBRep_FacesFiller();
 
-		/****************** AddShapesLine ******************/
-		/**** md5 signature: 0f9d7f5f220178518550d5446499bb62 ****/
+		/****** TopOpeBRep_FacesFiller::AddShapesLine ******/
+		/****** md5 signature: 0f9d7f5f220178518550d5446499bb62 ******/
 		%feature("compactdefaultargs") AddShapesLine;
 		%feature("autodoc", "Return
 -------
@@ -1931,8 +1931,8 @@ Compute 3d curve, pcurves and face/curve interferences for current ndsc. add the
 ") AddShapesLine;
 		void AddShapesLine();
 
-		/****************** ChangeDataStructure ******************/
-		/**** md5 signature: 9c5ca6f9698b7c15bd242e59302c821d ****/
+		/****** TopOpeBRep_FacesFiller::ChangeDataStructure ******/
+		/****** md5 signature: 9c5ca6f9698b7c15bd242e59302c821d ******/
 		%feature("compactdefaultargs") ChangeDataStructure;
 		%feature("autodoc", "Return
 -------
@@ -1944,8 +1944,8 @@ No available documentation.
 ") ChangeDataStructure;
 		TopOpeBRepDS_DataStructure & ChangeDataStructure();
 
-		/****************** ChangeFacesIntersector ******************/
-		/**** md5 signature: 09c29fa34bf77993f5e46096b4b26b96 ****/
+		/****** TopOpeBRep_FacesFiller::ChangeFacesIntersector ******/
+		/****** md5 signature: 09c29fa34bf77993f5e46096b4b26b96 ******/
 		%feature("compactdefaultargs") ChangeFacesIntersector;
 		%feature("autodoc", "Return
 -------
@@ -1957,8 +1957,8 @@ No available documentation.
 ") ChangeFacesIntersector;
 		TopOpeBRep_FacesIntersector & ChangeFacesIntersector();
 
-		/****************** ChangePointClassifier ******************/
-		/**** md5 signature: 2caf5c2eeb9288d67ac51161e7d46d1a ****/
+		/****** TopOpeBRep_FacesFiller::ChangePointClassifier ******/
+		/****** md5 signature: 2caf5c2eeb9288d67ac51161e7d46d1a ******/
 		%feature("compactdefaultargs") ChangePointClassifier;
 		%feature("autodoc", "Return
 -------
@@ -1970,8 +1970,8 @@ No available documentation.
 ") ChangePointClassifier;
 		TopOpeBRep_PointClassifier & ChangePointClassifier();
 
-		/****************** CheckLine ******************/
-		/**** md5 signature: aae89fff1e7f37947e2ec0e82e718867 ****/
+		/****** TopOpeBRep_FacesFiller::CheckLine ******/
+		/****** md5 signature: aae89fff1e7f37947e2ec0e82e718867 ******/
 		%feature("compactdefaultargs") CheckLine;
 		%feature("autodoc", "
 Parameters
@@ -1988,8 +1988,8 @@ No available documentation.
 ") CheckLine;
 		Standard_Boolean CheckLine(TopOpeBRep_LineInter & L);
 
-		/****************** EqualpPonR ******************/
-		/**** md5 signature: 3e38040d810c0572b9e6555d4c8b92f1 ****/
+		/****** TopOpeBRep_FacesFiller::EqualpPonR ******/
+		/****** md5 signature: 3e38040d810c0572b9e6555d4c8b92f1 ******/
 		%feature("compactdefaultargs") EqualpPonR;
 		%feature("autodoc", "
 Parameters
@@ -2008,8 +2008,8 @@ No available documentation.
 ") EqualpPonR;
 		static Standard_Boolean EqualpPonR(const TopOpeBRep_LineInter & Lrest, const TopOpeBRep_VPointInter & VP1, const TopOpeBRep_VPointInter & VP2);
 
-		/****************** Face ******************/
-		/**** md5 signature: d1eb857c2a65e9d3cb2fc51a7ab45063 ****/
+		/****** TopOpeBRep_FacesFiller::Face ******/
+		/****** md5 signature: d1eb857c2a65e9d3cb2fc51a7ab45063 ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "
 Parameters
@@ -2026,8 +2026,8 @@ No available documentation.
 ") Face;
 		const TopoDS_Face Face(const Standard_Integer I);
 
-		/****************** FaceFaceTransition ******************/
-		/**** md5 signature: 4b53f4d76ab9e6e1af8ea6ab319330dd ****/
+		/****** TopOpeBRep_FacesFiller::FaceFaceTransition ******/
+		/****** md5 signature: 4b53f4d76ab9e6e1af8ea6ab319330dd ******/
 		%feature("compactdefaultargs") FaceFaceTransition;
 		%feature("autodoc", "
 Parameters
@@ -2045,8 +2045,8 @@ No available documentation.
 ") FaceFaceTransition;
 		const TopOpeBRepDS_Transition & FaceFaceTransition(const TopOpeBRep_LineInter & L, const Standard_Integer I);
 
-		/****************** FaceFaceTransition ******************/
-		/**** md5 signature: 83ffefbe5b8ae65ccfae12ac03265cee ****/
+		/****** TopOpeBRep_FacesFiller::FaceFaceTransition ******/
+		/****** md5 signature: 83ffefbe5b8ae65ccfae12ac03265cee ******/
 		%feature("compactdefaultargs") FaceFaceTransition;
 		%feature("autodoc", "
 Parameters
@@ -2063,8 +2063,8 @@ No available documentation.
 ") FaceFaceTransition;
 		const TopOpeBRepDS_Transition & FaceFaceTransition(const Standard_Integer I);
 
-		/****************** FillLine ******************/
-		/**** md5 signature: 3f4fd429b17892c8657870a6ee700552 ****/
+		/****** TopOpeBRep_FacesFiller::FillLine ******/
+		/****** md5 signature: 3f4fd429b17892c8657870a6ee700552 ******/
 		%feature("compactdefaultargs") FillLine;
 		%feature("autodoc", "Return
 -------
@@ -2076,8 +2076,8 @@ No available documentation.
 ") FillLine;
 		void FillLine();
 
-		/****************** FillLineVPonR ******************/
-		/**** md5 signature: 9bc23548d0e04a2f4b9850f70b28329d ****/
+		/****** TopOpeBRep_FacesFiller::FillLineVPonR ******/
+		/****** md5 signature: 9bc23548d0e04a2f4b9850f70b28329d ******/
 		%feature("compactdefaultargs") FillLineVPonR;
 		%feature("autodoc", "Return
 -------
@@ -2089,8 +2089,8 @@ Vp processing for restriction line and line sharing same domain with section edg
 ") FillLineVPonR;
 		void FillLineVPonR();
 
-		/****************** GetESL ******************/
-		/**** md5 signature: 05cb1059d032dbc8639ca3b389a65ddc ****/
+		/****** TopOpeBRep_FacesFiller::GetESL ******/
+		/****** md5 signature: 05cb1059d032dbc8639ca3b389a65ddc ******/
 		%feature("compactdefaultargs") GetESL;
 		%feature("autodoc", "
 Parameters
@@ -2107,8 +2107,8 @@ Get map <mapes > of restriction edges having parts in one of the 2 faces.
 ") GetESL;
 		void GetESL(TopTools_ListOfShape & LES);
 
-		/****************** GetFFGeometry ******************/
-		/**** md5 signature: e5ae8ea42addf73088da89205b8d434b ****/
+		/****** TopOpeBRep_FacesFiller::GetFFGeometry ******/
+		/****** md5 signature: e5ae8ea42addf73088da89205b8d434b ******/
 		%feature("compactdefaultargs") GetFFGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2126,8 +2126,8 @@ Search for g = geometry of point which is identical to <dsp> among the ds points
 ") GetFFGeometry;
 		Standard_Boolean GetFFGeometry(const TopOpeBRepDS_Point & DSP, TopOpeBRepDS_Kind & K, Standard_Integer &OutValue);
 
-		/****************** GetFFGeometry ******************/
-		/**** md5 signature: a2549ea89cd75ad5dfb9c3a9a51ed9c6 ****/
+		/****** TopOpeBRep_FacesFiller::GetFFGeometry ******/
+		/****** md5 signature: a2549ea89cd75ad5dfb9c3a9a51ed9c6 ******/
 		%feature("compactdefaultargs") GetFFGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2145,8 +2145,8 @@ Search for g = geometry of point which is identical to <vp> among the ds points 
 ") GetFFGeometry;
 		Standard_Boolean GetFFGeometry(const TopOpeBRep_VPointInter & VP, TopOpeBRepDS_Kind & K, Standard_Integer &OutValue);
 
-		/****************** GetGeometry ******************/
-		/**** md5 signature: ea08ea8cc09a4de2f0d12bd1814a3436 ****/
+		/****** TopOpeBRep_FacesFiller::GetGeometry ******/
+		/****** md5 signature: ea08ea8cc09a4de2f0d12bd1814a3436 ******/
 		%feature("compactdefaultargs") GetGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2165,8 +2165,8 @@ Get the geometry of a ds point <dsp>. search for it with scaninterflist (previou
 ") GetGeometry;
 		Standard_Boolean GetGeometry(TopOpeBRepDS_ListIteratorOfListOfInterference & IT, const TopOpeBRep_VPointInter & VP, Standard_Integer &OutValue, TopOpeBRepDS_Kind & K);
 
-		/****************** GetTraceIndex ******************/
-		/**** md5 signature: 9515d5e22d4204dd0a3c74673d23b180 ****/
+		/****** TopOpeBRep_FacesFiller::GetTraceIndex ******/
+		/****** md5 signature: 9515d5e22d4204dd0a3c74673d23b180 ******/
 		%feature("compactdefaultargs") GetTraceIndex;
 		%feature("autodoc", "
 Parameters
@@ -2183,8 +2183,8 @@ No available documentation.
 ") GetTraceIndex;
 		void GetTraceIndex(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** HDataStructure ******************/
-		/**** md5 signature: c8d98611444c2e86125ddbdf732dc7ac ****/
+		/****** TopOpeBRep_FacesFiller::HDataStructure ******/
+		/****** md5 signature: c8d98611444c2e86125ddbdf732dc7ac ******/
 		%feature("compactdefaultargs") HDataStructure;
 		%feature("autodoc", "Return
 -------
@@ -2196,8 +2196,8 @@ No available documentation.
 ") HDataStructure;
 		opencascade::handle<TopOpeBRepDS_HDataStructure> HDataStructure();
 
-		/****************** Insert ******************/
-		/**** md5 signature: 6e7ad6ed7342d2f8a533b4ef790303de ****/
+		/****** TopOpeBRep_FacesFiller::Insert ******/
+		/****** md5 signature: 6e7ad6ed7342d2f8a533b4ef790303de ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -2217,8 +2217,8 @@ Stores in <ds> the intersections of <s1> and <s2>.
 ") Insert;
 		void Insert(const TopoDS_Shape & F1, const TopoDS_Shape & F2, TopOpeBRep_FacesIntersector & FACINT, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
-		/****************** IsVPtransLok ******************/
-		/**** md5 signature: 8c7d876f7974edd31c94d147a2e292fe ****/
+		/****** TopOpeBRep_FacesFiller::IsVPtransLok ******/
+		/****** md5 signature: 8c7d876f7974edd31c94d147a2e292fe ******/
 		%feature("compactdefaultargs") IsVPtransLok;
 		%feature("autodoc", "
 Parameters
@@ -2238,8 +2238,8 @@ Computes the transition <t> of the vpoint <ivp> on the edge of <si12>. returns <
 ") IsVPtransLok;
 		static Standard_Boolean IsVPtransLok(const TopOpeBRep_LineInter & L, const Standard_Integer iVP, const Standard_Integer SI12, TopOpeBRepDS_Transition & T);
 
-		/****************** LSameDomainERL ******************/
-		/**** md5 signature: f1218c16715526d12a247c1a2487174e ****/
+		/****** TopOpeBRep_FacesFiller::LSameDomainERL ******/
+		/****** md5 signature: f1218c16715526d12a247c1a2487174e ******/
 		%feature("compactdefaultargs") LSameDomainERL;
 		%feature("autodoc", "
 Parameters
@@ -2257,8 +2257,8 @@ Returns <true> if <l> shares a same geometric domain with at least one of the se
 ") LSameDomainERL;
 		static Standard_Boolean LSameDomainERL(const TopOpeBRep_LineInter & L, const TopTools_ListOfShape & ERL);
 
-		/****************** Lminmax ******************/
-		/**** md5 signature: 9feef7c9d75bcc96c90ba5d847e4d3dc ****/
+		/****** TopOpeBRep_FacesFiller::Lminmax ******/
+		/****** md5 signature: 9feef7c9d75bcc96c90ba5d847e4d3dc ******/
 		%feature("compactdefaultargs") Lminmax;
 		%feature("autodoc", "
 Parameters
@@ -2276,8 +2276,8 @@ Computes <pmin> and <pmax> the upper and lower bounds of <l> enclosing all vpoin
 ") Lminmax;
 		static void Lminmax(const TopOpeBRep_LineInter & L, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** LoadLine ******************/
-		/**** md5 signature: eea790a75362816ecedd96c5ef6cdcd0 ****/
+		/****** TopOpeBRep_FacesFiller::LoadLine ******/
+		/****** md5 signature: eea790a75362816ecedd96c5ef6cdcd0 ******/
 		%feature("compactdefaultargs") LoadLine;
 		%feature("autodoc", "
 Parameters
@@ -2294,8 +2294,8 @@ No available documentation.
 ") LoadLine;
 		void LoadLine(TopOpeBRep_LineInter & L);
 
-		/****************** MakeGeometry ******************/
-		/**** md5 signature: dee7966b35c4f403dec75410d5e39503 ****/
+		/****** TopOpeBRep_FacesFiller::MakeGeometry ******/
+		/****** md5 signature: dee7966b35c4f403dec75410d5e39503 ******/
 		%feature("compactdefaultargs") MakeGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2314,8 +2314,8 @@ No available documentation.
 ") MakeGeometry;
 		Standard_Integer MakeGeometry(const TopOpeBRep_VPointInter & VP, const Standard_Integer ShapeIndex, TopOpeBRepDS_Kind & K);
 
-		/****************** PDataStructureDummy ******************/
-		/**** md5 signature: a50961b93febbb413cbacfb55e6e0326 ****/
+		/****** TopOpeBRep_FacesFiller::PDataStructureDummy ******/
+		/****** md5 signature: a50961b93febbb413cbacfb55e6e0326 ******/
 		%feature("compactdefaultargs") PDataStructureDummy;
 		%feature("autodoc", "Return
 -------
@@ -2327,8 +2327,8 @@ No available documentation.
 ") PDataStructureDummy;
 		TopOpeBRepDS_PDataStructure PDataStructureDummy();
 
-		/****************** PFacesIntersectorDummy ******************/
-		/**** md5 signature: 60c9cb7edbde9c65a0f53236e49d9e32 ****/
+		/****** TopOpeBRep_FacesFiller::PFacesIntersectorDummy ******/
+		/****** md5 signature: 60c9cb7edbde9c65a0f53236e49d9e32 ******/
 		%feature("compactdefaultargs") PFacesIntersectorDummy;
 		%feature("autodoc", "Return
 -------
@@ -2340,8 +2340,8 @@ No available documentation.
 ") PFacesIntersectorDummy;
 		TopOpeBRep_PFacesIntersector PFacesIntersectorDummy();
 
-		/****************** PLineInterDummy ******************/
-		/**** md5 signature: 20d21f153b52d5c38ce7cf68a51ddad1 ****/
+		/****** TopOpeBRep_FacesFiller::PLineInterDummy ******/
+		/****** md5 signature: 20d21f153b52d5c38ce7cf68a51ddad1 ******/
 		%feature("compactdefaultargs") PLineInterDummy;
 		%feature("autodoc", "Return
 -------
@@ -2353,8 +2353,8 @@ No available documentation.
 ") PLineInterDummy;
 		TopOpeBRep_PLineInter PLineInterDummy();
 
-		/****************** PShapeClassifier ******************/
-		/**** md5 signature: 839210bbffc66c6dadfa1a9483c467a7 ****/
+		/****** TopOpeBRep_FacesFiller::PShapeClassifier ******/
+		/****** md5 signature: 839210bbffc66c6dadfa1a9483c467a7 ******/
 		%feature("compactdefaultargs") PShapeClassifier;
 		%feature("autodoc", "Return
 -------
@@ -2366,8 +2366,8 @@ Return field mypshapeclassifier.
 ") PShapeClassifier;
 		TopOpeBRepTool_PShapeClassifier PShapeClassifier();
 
-		/****************** ProcessLine ******************/
-		/**** md5 signature: 3fbc964cc3fd1ea2f783d3e9ccabb255 ****/
+		/****** TopOpeBRep_FacesFiller::ProcessLine ******/
+		/****** md5 signature: 3fbc964cc3fd1ea2f783d3e9ccabb255 ******/
 		%feature("compactdefaultargs") ProcessLine;
 		%feature("autodoc", "Return
 -------
@@ -2379,8 +2379,8 @@ Process current intersection line (set by loadline).
 ") ProcessLine;
 		void ProcessLine();
 
-		/****************** ProcessRLine ******************/
-		/**** md5 signature: 68792d07a6e6485b962014cb805439b1 ****/
+		/****** TopOpeBRep_FacesFiller::ProcessRLine ******/
+		/****** md5 signature: 68792d07a6e6485b962014cb805439b1 ******/
 		%feature("compactdefaultargs") ProcessRLine;
 		%feature("autodoc", "Return
 -------
@@ -2392,8 +2392,8 @@ Process current restriction line, adding restriction edge and computing face/edg
 ") ProcessRLine;
 		void ProcessRLine();
 
-		/****************** ProcessSectionEdges ******************/
-		/**** md5 signature: 56500a0036691121fcecf788e2ff59eb ****/
+		/****** TopOpeBRep_FacesFiller::ProcessSectionEdges ******/
+		/****** md5 signature: 56500a0036691121fcecf788e2ff59eb ******/
 		%feature("compactdefaultargs") ProcessSectionEdges;
 		%feature("autodoc", "Return
 -------
@@ -2405,8 +2405,8 @@ No available documentation.
 ") ProcessSectionEdges;
 		void ProcessSectionEdges();
 
-		/****************** ProcessVPInotonR ******************/
-		/**** md5 signature: f8366746a2b1ab05fab2f26f1647dde8 ****/
+		/****** TopOpeBRep_FacesFiller::ProcessVPInotonR ******/
+		/****** md5 signature: f8366746a2b1ab05fab2f26f1647dde8 ******/
 		%feature("compactdefaultargs") ProcessVPInotonR;
 		%feature("autodoc", "
 Parameters
@@ -2423,8 +2423,8 @@ Processing processvpnotonr for vpi.
 ") ProcessVPInotonR;
 		void ProcessVPInotonR(TopOpeBRep_VPointInterIterator & VPI);
 
-		/****************** ProcessVPIonR ******************/
-		/**** md5 signature: 7b2711e44f83d0ba476600a5ab327ccc ****/
+		/****** TopOpeBRep_FacesFiller::ProcessVPIonR ******/
+		/****** md5 signature: 7b2711e44f83d0ba476600a5ab327ccc ******/
 		%feature("compactdefaultargs") ProcessVPIonR;
 		%feature("autodoc", "
 Parameters
@@ -2444,8 +2444,8 @@ Processing processvponr for vpi.
 ") ProcessVPIonR;
 		void ProcessVPIonR(TopOpeBRep_VPointInterIterator & VPI, const TopOpeBRepDS_Transition & trans1, const TopoDS_Shape & F1, const Standard_Integer ShapeIndex);
 
-		/****************** ProcessVPR ******************/
-		/**** md5 signature: 78c845a2afa36d137735133e5b7c3482 ****/
+		/****** TopOpeBRep_FacesFiller::ProcessVPR ******/
+		/****** md5 signature: 78c845a2afa36d137735133e5b7c3482 ******/
 		%feature("compactdefaultargs") ProcessVPR;
 		%feature("autodoc", "
 Parameters
@@ -2463,8 +2463,8 @@ Calling the following processvpionr and processvponr.
 ") ProcessVPR;
 		void ProcessVPR(TopOpeBRep_FacesFiller & FF, const TopOpeBRep_VPointInter & VP);
 
-		/****************** ProcessVPnotonR ******************/
-		/**** md5 signature: fd4b0946e4dcdeb25ebaf9c54ac58450 ****/
+		/****** TopOpeBRep_FacesFiller::ProcessVPnotonR ******/
+		/****** md5 signature: fd4b0946e4dcdeb25ebaf9c54ac58450 ******/
 		%feature("compactdefaultargs") ProcessVPnotonR;
 		%feature("autodoc", "
 Parameters
@@ -2481,8 +2481,8 @@ Adds <vp>'s geometrical point to the ds (if not stored) and computes curve point
 ") ProcessVPnotonR;
 		void ProcessVPnotonR(const TopOpeBRep_VPointInter & VP);
 
-		/****************** ProcessVPonR ******************/
-		/**** md5 signature: 169572cd2179643dc8d8179740548277 ****/
+		/****** TopOpeBRep_FacesFiller::ProcessVPonR ******/
+		/****** md5 signature: 169572cd2179643dc8d8179740548277 ******/
 		%feature("compactdefaultargs") ProcessVPonR;
 		%feature("autodoc", "
 Parameters
@@ -2502,8 +2502,8 @@ Adds <vp>'s geometric point (if not stored) and computes (curve or edge)/(point 
 ") ProcessVPonR;
 		void ProcessVPonR(const TopOpeBRep_VPointInter & VP, const TopOpeBRepDS_Transition & trans1, const TopoDS_Shape & F1, const Standard_Integer ShapeIndex);
 
-		/****************** ProcessVPonclosingR ******************/
-		/**** md5 signature: 02a558e7420235213db89b5fd3ab05b9 ****/
+		/****** TopOpeBRep_FacesFiller::ProcessVPonclosingR ******/
+		/****** md5 signature: 02a558e7420235213db89b5fd3ab05b9 ******/
 		%feature("compactdefaultargs") ProcessVPonclosingR;
 		%feature("autodoc", "
 Parameters
@@ -2527,8 +2527,8 @@ Vp processing on closing arc.
 ") ProcessVPonclosingR;
 		void ProcessVPonclosingR(const TopOpeBRep_VPointInter & VP, const TopoDS_Shape & F1, const Standard_Integer ShapeIndex, const TopOpeBRepDS_Transition & transEdge, const TopOpeBRepDS_Kind PVKind, const Standard_Integer PVIndex, const Standard_Boolean EPIfound, const opencascade::handle<TopOpeBRepDS_Interference> & IEPI);
 
-		/****************** ProcessVPondgE ******************/
-		/**** md5 signature: f97d3783ba8b73defc2b95d640ac9392 ****/
+		/****** TopOpeBRep_FacesFiller::ProcessVPondgE ******/
+		/****** md5 signature: f97d3783ba8b73defc2b95d640ac9392 ******/
 		%feature("compactdefaultargs") ProcessVPondgE;
 		%feature("autodoc", "
 Parameters
@@ -2551,8 +2551,8 @@ Vp processing on degenerated arc.
 ") ProcessVPondgE;
 		Standard_Boolean ProcessVPondgE(const TopOpeBRep_VPointInter & VP, const Standard_Integer ShapeIndex, TopOpeBRepDS_Kind & PVKind, Standard_Integer &OutValue, Standard_Boolean &OutValue, opencascade::handle<TopOpeBRepDS_Interference> & IEPI, Standard_Boolean &OutValue, opencascade::handle<TopOpeBRepDS_Interference> & ICPI);
 
-		/****************** ResetDSC ******************/
-		/**** md5 signature: ea513f4665d6892ab4f58074b0e25b85 ****/
+		/****** TopOpeBRep_FacesFiller::ResetDSC ******/
+		/****** md5 signature: ea513f4665d6892ab4f58074b0e25b85 ******/
 		%feature("compactdefaultargs") ResetDSC;
 		%feature("autodoc", "Return
 -------
@@ -2564,8 +2564,8 @@ No available documentation.
 ") ResetDSC;
 		void ResetDSC();
 
-		/****************** SetPShapeClassifier ******************/
-		/**** md5 signature: 593f2e1757de04f9a9b3cad368416ae2 ****/
+		/****** TopOpeBRep_FacesFiller::SetPShapeClassifier ******/
+		/****** md5 signature: 593f2e1757de04f9a9b3cad368416ae2 ******/
 		%feature("compactdefaultargs") SetPShapeClassifier;
 		%feature("autodoc", "
 Parameters
@@ -2582,8 +2582,8 @@ Set field mypshapeclassifier.
 ") SetPShapeClassifier;
 		void SetPShapeClassifier(const TopOpeBRepTool_PShapeClassifier & PSC);
 
-		/****************** SetTraceIndex ******************/
-		/**** md5 signature: 13f9cfa37d1910afdfe7a0465a408ca0 ****/
+		/****** TopOpeBRep_FacesFiller::SetTraceIndex ******/
+		/****** md5 signature: 13f9cfa37d1910afdfe7a0465a408ca0 ******/
 		%feature("compactdefaultargs") SetTraceIndex;
 		%feature("autodoc", "
 Parameters
@@ -2601,8 +2601,8 @@ No available documentation.
 ") SetTraceIndex;
 		void SetTraceIndex(const Standard_Integer exF1, const Standard_Integer exF2);
 
-		/****************** StoreCurveInterference ******************/
-		/**** md5 signature: 2f980eafd7d3d5ba80066112e2581773 ****/
+		/****** TopOpeBRep_FacesFiller::StoreCurveInterference ******/
+		/****** md5 signature: 2f980eafd7d3d5ba80066112e2581773 ******/
 		%feature("compactdefaultargs") StoreCurveInterference;
 		%feature("autodoc", "
 Parameters
@@ -2619,8 +2619,8 @@ Add interference <i> to list mydscil. on a given line, at first call, add a new 
 ") StoreCurveInterference;
 		void StoreCurveInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
-		/****************** TransvpOK ******************/
-		/**** md5 signature: 2e65e45984169e900552e4241580bf07 ****/
+		/****** TopOpeBRep_FacesFiller::TransvpOK ******/
+		/****** md5 signature: 2e65e45984169e900552e4241580bf07 ******/
 		%feature("compactdefaultargs") TransvpOK;
 		%feature("autodoc", "
 Parameters
@@ -2640,8 +2640,8 @@ Computes transition on line for vp<ivp> on edge restriction of <si>. if <isinout
 ") TransvpOK;
 		static Standard_Boolean TransvpOK(const TopOpeBRep_LineInter & L, const Standard_Integer iVP, const Standard_Integer SI, const Standard_Boolean isINOUT);
 
-		/****************** VPParamOnER ******************/
-		/**** md5 signature: 9b90bb2ae0078f88f784a276c3407d9b ****/
+		/****** TopOpeBRep_FacesFiller::VPParamOnER ******/
+		/****** md5 signature: 9b90bb2ae0078f88f784a276c3407d9b ******/
 		%feature("compactdefaultargs") VPParamOnER;
 		%feature("autodoc", "
 Parameters
@@ -2659,8 +2659,8 @@ Returns parameter u of vp on the restriction edge.
 ") VPParamOnER;
 		static Standard_Real VPParamOnER(const TopOpeBRep_VPointInter & vp, const TopOpeBRep_LineInter & Lrest);
 
-		/****************** VP_Position ******************/
-		/**** md5 signature: 0161b645f978cf3492855099c4b3bc58 ****/
+		/****** TopOpeBRep_FacesFiller::VP_Position ******/
+		/****** md5 signature: 0161b645f978cf3492855099c4b3bc58 ******/
 		%feature("compactdefaultargs") VP_Position;
 		%feature("autodoc", "
 Parameters
@@ -2677,8 +2677,8 @@ Compute position of vpoints of lines.
 ") VP_Position;
 		void VP_Position(TopOpeBRep_FacesIntersector & FACINT);
 
-		/****************** VP_Position ******************/
-		/**** md5 signature: 911653605333bf0a33a4374161a9e101 ****/
+		/****** TopOpeBRep_FacesFiller::VP_Position ******/
+		/****** md5 signature: 911653605333bf0a33a4374161a9e101 ******/
 		%feature("compactdefaultargs") VP_Position;
 		%feature("autodoc", "
 Parameters
@@ -2695,8 +2695,8 @@ Compute position of vpoints of line l.
 ") VP_Position;
 		void VP_Position(TopOpeBRep_LineInter & L);
 
-		/****************** VP_Position ******************/
-		/**** md5 signature: 1bb505acf40761d4b753ec730a96d166 ****/
+		/****** TopOpeBRep_FacesFiller::VP_Position ******/
+		/****** md5 signature: 1bb505acf40761d4b753ec730a96d166 ******/
 		%feature("compactdefaultargs") VP_Position;
 		%feature("autodoc", "
 Parameters
@@ -2714,8 +2714,8 @@ Compute position of vp with current faces, according to vp.shapeindex() .
 ") VP_Position;
 		void VP_Position(TopOpeBRep_VPointInter & VP, TopOpeBRep_VPointInterClassifier & VPC);
 
-		/****************** VP_PositionOnL ******************/
-		/**** md5 signature: 82f6df9b6ab224e5cd2d64ad6edce4ba ****/
+		/****** TopOpeBRep_FacesFiller::VP_PositionOnL ******/
+		/****** md5 signature: 82f6df9b6ab224e5cd2d64ad6edce4ba ******/
 		%feature("compactdefaultargs") VP_PositionOnL;
 		%feature("autodoc", "
 Parameters
@@ -2732,8 +2732,8 @@ Compute position of vpoints of non-restriction line l.
 ") VP_PositionOnL;
 		void VP_PositionOnL(TopOpeBRep_LineInter & L);
 
-		/****************** VP_PositionOnR ******************/
-		/**** md5 signature: 2938fd67159f968c7fc9fcad9a285012 ****/
+		/****** TopOpeBRep_FacesFiller::VP_PositionOnR ******/
+		/****** md5 signature: 2938fd67159f968c7fc9fcad9a285012 ******/
 		%feature("compactdefaultargs") VP_PositionOnR;
 		%feature("autodoc", "
 Parameters
@@ -2768,8 +2768,8 @@ Compute position of vpoints of restriction line l.
 ************************************/
 class TopOpeBRep_FacesIntersector {
 	public:
-		/****************** TopOpeBRep_FacesIntersector ******************/
-		/**** md5 signature: a1246bcb1ecd4a3f27c3f757eda41e4e ****/
+		/****** TopOpeBRep_FacesIntersector::TopOpeBRep_FacesIntersector ******/
+		/****** md5 signature: a1246bcb1ecd4a3f27c3f757eda41e4e ******/
 		%feature("compactdefaultargs") TopOpeBRep_FacesIntersector;
 		%feature("autodoc", "Return
 -------
@@ -2781,8 +2781,8 @@ No available documentation.
 ") TopOpeBRep_FacesIntersector;
 		 TopOpeBRep_FacesIntersector();
 
-		/****************** ChangeLine ******************/
-		/**** md5 signature: 6db5d320e1ba2a4a70d0ab0dc2a436a1 ****/
+		/****** TopOpeBRep_FacesIntersector::ChangeLine ******/
+		/****** md5 signature: 6db5d320e1ba2a4a70d0ab0dc2a436a1 ******/
 		%feature("compactdefaultargs") ChangeLine;
 		%feature("autodoc", "
 Parameters
@@ -2799,8 +2799,8 @@ No available documentation.
 ") ChangeLine;
 		TopOpeBRep_LineInter & ChangeLine(const Standard_Integer IL);
 
-		/****************** CurrentLine ******************/
-		/**** md5 signature: 22ad0f2ab8e9c56998e748e35926a0d7 ****/
+		/****** TopOpeBRep_FacesIntersector::CurrentLine ******/
+		/****** md5 signature: 22ad0f2ab8e9c56998e748e35926a0d7 ******/
 		%feature("compactdefaultargs") CurrentLine;
 		%feature("autodoc", "Return
 -------
@@ -2812,8 +2812,8 @@ No available documentation.
 ") CurrentLine;
 		TopOpeBRep_LineInter & CurrentLine();
 
-		/****************** CurrentLineIndex ******************/
-		/**** md5 signature: f19bf95df37b0021eb2646adce1e031a ****/
+		/****** TopOpeBRep_FacesIntersector::CurrentLineIndex ******/
+		/****** md5 signature: f19bf95df37b0021eb2646adce1e031a ******/
 		%feature("compactdefaultargs") CurrentLineIndex;
 		%feature("autodoc", "Return
 -------
@@ -2825,8 +2825,8 @@ No available documentation.
 ") CurrentLineIndex;
 		Standard_Integer CurrentLineIndex();
 
-		/****************** Face ******************/
-		/**** md5 signature: 369bad292fcb0f7622cfabd8d11dd8db ****/
+		/****** TopOpeBRep_FacesIntersector::Face ******/
+		/****** md5 signature: 369bad292fcb0f7622cfabd8d11dd8db ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "
 Parameters
@@ -2843,8 +2843,8 @@ Returns first or second intersected face.
 ") Face;
 		const TopoDS_Shape Face(const Standard_Integer Index);
 
-		/****************** ForceTolerances ******************/
-		/**** md5 signature: 2d14f1be2c680c1fee2affa302d3982d ****/
+		/****** TopOpeBRep_FacesIntersector::ForceTolerances ******/
+		/****** md5 signature: 2d14f1be2c680c1fee2affa302d3982d ******/
 		%feature("compactdefaultargs") ForceTolerances;
 		%feature("autodoc", "
 Parameters
@@ -2862,8 +2862,8 @@ Force the tolerance values used by the next perform(s1,s2) call.
 ") ForceTolerances;
 		void ForceTolerances(const Standard_Real tolarc, const Standard_Real toltang);
 
-		/****************** GetTolerances ******************/
-		/**** md5 signature: e3135196754280b460b25245687c0142 ****/
+		/****** TopOpeBRep_FacesIntersector::GetTolerances ******/
+		/****** md5 signature: e3135196754280b460b25245687c0142 ******/
 		%feature("compactdefaultargs") GetTolerances;
 		%feature("autodoc", "
 Parameters
@@ -2880,8 +2880,8 @@ Return the tolerance values used in the last perform() call if forcetolerances()
 ") GetTolerances;
 		void GetTolerances(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** InitLine ******************/
-		/**** md5 signature: f504749d03e20247f91cc71106dd0275 ****/
+		/****** TopOpeBRep_FacesIntersector::InitLine ******/
+		/****** md5 signature: f504749d03e20247f91cc71106dd0275 ******/
 		%feature("compactdefaultargs") InitLine;
 		%feature("autodoc", "Return
 -------
@@ -2893,8 +2893,8 @@ No available documentation.
 ") InitLine;
 		void InitLine();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** TopOpeBRep_FacesIntersector::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2906,8 +2906,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: e27f5e4366afc93bf8faeaa27a6a716c ****/
+		/****** TopOpeBRep_FacesIntersector::IsEmpty ******/
+		/****** md5 signature: e27f5e4366afc93bf8faeaa27a6a716c ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2919,8 +2919,8 @@ No available documentation.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** IsRestriction ******************/
-		/**** md5 signature: 86ca9d4838401ff362874c10a0ee38a7 ****/
+		/****** TopOpeBRep_FacesIntersector::IsRestriction ******/
+		/****** md5 signature: 86ca9d4838401ff362874c10a0ee38a7 ******/
 		%feature("compactdefaultargs") IsRestriction;
 		%feature("autodoc", "
 Parameters
@@ -2937,8 +2937,8 @@ Returns true if edge <e> is found as same as the edge associated with a restrict
 ") IsRestriction;
 		Standard_Boolean IsRestriction(const TopoDS_Shape & E);
 
-		/****************** Lines ******************/
-		/**** md5 signature: 01266e7e7f05b269e092fe7dd26172d3 ****/
+		/****** TopOpeBRep_FacesIntersector::Lines ******/
+		/****** md5 signature: 01266e7e7f05b269e092fe7dd26172d3 ******/
 		%feature("compactdefaultargs") Lines;
 		%feature("autodoc", "Return
 -------
@@ -2950,8 +2950,8 @@ No available documentation.
 ") Lines;
 		opencascade::handle<TopOpeBRep_HArray1OfLineInter> Lines();
 
-		/****************** MoreLine ******************/
-		/**** md5 signature: 0a27b6187736d1f555ac7a8353bb0b67 ****/
+		/****** TopOpeBRep_FacesIntersector::MoreLine ******/
+		/****** md5 signature: 0a27b6187736d1f555ac7a8353bb0b67 ******/
 		%feature("compactdefaultargs") MoreLine;
 		%feature("autodoc", "Return
 -------
@@ -2963,8 +2963,8 @@ No available documentation.
 ") MoreLine;
 		Standard_Boolean MoreLine();
 
-		/****************** NbLines ******************/
-		/**** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ****/
+		/****** TopOpeBRep_FacesIntersector::NbLines ******/
+		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -2976,8 +2976,8 @@ No available documentation.
 ") NbLines;
 		Standard_Integer NbLines();
 
-		/****************** NextLine ******************/
-		/**** md5 signature: b8bc90c0a38dfd7cf995d23f5a22c531 ****/
+		/****** TopOpeBRep_FacesIntersector::NextLine ******/
+		/****** md5 signature: b8bc90c0a38dfd7cf995d23f5a22c531 ******/
 		%feature("compactdefaultargs") NextLine;
 		%feature("autodoc", "Return
 -------
@@ -2989,8 +2989,8 @@ No available documentation.
 ") NextLine;
 		void NextLine();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 53c01bc5ada2f9f4b7461289783e5dd0 ****/
+		/****** TopOpeBRep_FacesIntersector::Perform ******/
+		/****** md5 signature: 53c01bc5ada2f9f4b7461289783e5dd0 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -3008,8 +3008,8 @@ Computes the intersection of faces s1 and s2.
 ") Perform;
 		void Perform(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
-		/****************** Perform ******************/
-		/**** md5 signature: a342eb0cb7b86e306ff5999ed2a07d3a ****/
+		/****** TopOpeBRep_FacesIntersector::Perform ******/
+		/****** md5 signature: a342eb0cb7b86e306ff5999ed2a07d3a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -3029,8 +3029,8 @@ Computes the intersection of faces s1 and s2.
 ") Perform;
 		void Perform(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Bnd_Box & B1, const Bnd_Box & B2);
 
-		/****************** PrepareLines ******************/
-		/**** md5 signature: 9bd4c3ce6c8a89ec456ee13414be072c ****/
+		/****** TopOpeBRep_FacesIntersector::PrepareLines ******/
+		/****** md5 signature: 9bd4c3ce6c8a89ec456ee13414be072c ******/
 		%feature("compactdefaultargs") PrepareLines;
 		%feature("autodoc", "Return
 -------
@@ -3042,8 +3042,8 @@ No available documentation.
 ") PrepareLines;
 		void PrepareLines();
 
-		/****************** Restrictions ******************/
-		/**** md5 signature: f234d515696e6af4ddedecbc4c8a5f42 ****/
+		/****** TopOpeBRep_FacesIntersector::Restrictions ******/
+		/****** md5 signature: f234d515696e6af4ddedecbc4c8a5f42 ******/
 		%feature("compactdefaultargs") Restrictions;
 		%feature("autodoc", "Return
 -------
@@ -3055,8 +3055,8 @@ Returns the map of edges found as topebrepbrep_restriction.
 ") Restrictions;
 		const TopTools_IndexedMapOfShape & Restrictions();
 
-		/****************** SameDomain ******************/
-		/**** md5 signature: ceba397eccbd28c4c6715ac85077480f ****/
+		/****** TopOpeBRep_FacesIntersector::SameDomain ******/
+		/****** md5 signature: ceba397eccbd28c4c6715ac85077480f ******/
 		%feature("compactdefaultargs") SameDomain;
 		%feature("autodoc", "Return
 -------
@@ -3068,8 +3068,8 @@ Returns true if perform() arguments are two faces with the same surface.
 ") SameDomain;
 		Standard_Boolean SameDomain();
 
-		/****************** SurfacesSameOriented ******************/
-		/**** md5 signature: 5a73f090b826c38dcc30efe0cb99df4e ****/
+		/****** TopOpeBRep_FacesIntersector::SurfacesSameOriented ******/
+		/****** md5 signature: 5a73f090b826c38dcc30efe0cb99df4e ******/
 		%feature("compactdefaultargs") SurfacesSameOriented;
 		%feature("autodoc", "Return
 -------
@@ -3095,8 +3095,8 @@ Returns true if perform() arguments are two faces samedomain() and normals on bo
 ****************************/
 class TopOpeBRep_GeomTool {
 	public:
-		/****************** MakeBSpline1fromWALKING2d ******************/
-		/**** md5 signature: bdd02d7356022aa42abdf98db72e263b ****/
+		/****** TopOpeBRep_GeomTool::MakeBSpline1fromWALKING2d ******/
+		/****** md5 signature: bdd02d7356022aa42abdf98db72e263b ******/
 		%feature("compactdefaultargs") MakeBSpline1fromWALKING2d;
 		%feature("autodoc", "
 Parameters
@@ -3114,8 +3114,8 @@ No available documentation.
 ") MakeBSpline1fromWALKING2d;
 		static opencascade::handle<Geom2d_Curve> MakeBSpline1fromWALKING2d(const TopOpeBRep_LineInter & L, const Standard_Integer SI);
 
-		/****************** MakeBSpline1fromWALKING3d ******************/
-		/**** md5 signature: 3593e48ce5e0e3053107098c205052b2 ****/
+		/****** TopOpeBRep_GeomTool::MakeBSpline1fromWALKING3d ******/
+		/****** md5 signature: 3593e48ce5e0e3053107098c205052b2 ******/
 		%feature("compactdefaultargs") MakeBSpline1fromWALKING3d;
 		%feature("autodoc", "
 Parameters
@@ -3132,8 +3132,8 @@ No available documentation.
 ") MakeBSpline1fromWALKING3d;
 		static opencascade::handle<Geom_Curve> MakeBSpline1fromWALKING3d(const TopOpeBRep_LineInter & L);
 
-		/****************** MakeCurve ******************/
-		/**** md5 signature: 4a924a044c9b51a050231444cd72089d ****/
+		/****** TopOpeBRep_GeomTool::MakeCurve ******/
+		/****** md5 signature: 4a924a044c9b51a050231444cd72089d ******/
 		%feature("compactdefaultargs") MakeCurve;
 		%feature("autodoc", "
 Parameters
@@ -3153,8 +3153,8 @@ No available documentation.
 ") MakeCurve;
 		static void MakeCurve(const Standard_Real min, const Standard_Real max, const TopOpeBRep_LineInter & L, opencascade::handle<Geom_Curve> & C);
 
-		/****************** MakeCurves ******************/
-		/**** md5 signature: 7fb07fc5d2ca8d73b03a1d36c2a0be14 ****/
+		/****** TopOpeBRep_GeomTool::MakeCurves ******/
+		/****** md5 signature: 7fb07fc5d2ca8d73b03a1d36c2a0be14 ******/
 		%feature("compactdefaultargs") MakeCurves;
 		%feature("autodoc", "
 Parameters
@@ -3196,8 +3196,8 @@ Make the ds curve <c> and the pcurves <pc1,pc2> from intersection line <l> lying
 ****************************/
 class TopOpeBRep_Hctxee2d : public Standard_Transient {
 	public:
-		/****************** TopOpeBRep_Hctxee2d ******************/
-		/**** md5 signature: cf07b95fc0e8d217a7f947f943209d5f ****/
+		/****** TopOpeBRep_Hctxee2d::TopOpeBRep_Hctxee2d ******/
+		/****** md5 signature: cf07b95fc0e8d217a7f947f943209d5f ******/
 		%feature("compactdefaultargs") TopOpeBRep_Hctxee2d;
 		%feature("autodoc", "Return
 -------
@@ -3209,8 +3209,8 @@ No available documentation.
 ") TopOpeBRep_Hctxee2d;
 		 TopOpeBRep_Hctxee2d();
 
-		/****************** Curve ******************/
-		/**** md5 signature: c1f28875a0a3d2ff71dbd24a39eef5e9 ****/
+		/****** TopOpeBRep_Hctxee2d::Curve ******/
+		/****** md5 signature: c1f28875a0a3d2ff71dbd24a39eef5e9 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -3227,8 +3227,8 @@ No available documentation.
 ") Curve;
 		Geom2dAdaptor_Curve Curve(const Standard_Integer I);
 
-		/****************** Domain ******************/
-		/**** md5 signature: 61e11500fa994362ee7273166a3b2637 ****/
+		/****** TopOpeBRep_Hctxee2d::Domain ******/
+		/****** md5 signature: 61e11500fa994362ee7273166a3b2637 ******/
 		%feature("compactdefaultargs") Domain;
 		%feature("autodoc", "
 Parameters
@@ -3245,8 +3245,8 @@ No available documentation.
 ") Domain;
 		const IntRes2d_Domain & Domain(const Standard_Integer I);
 
-		/****************** Edge ******************/
-		/**** md5 signature: 69a02b36daf6e7cb7791cc5ef6d9ffd2 ****/
+		/****** TopOpeBRep_Hctxee2d::Edge ******/
+		/****** md5 signature: 69a02b36daf6e7cb7791cc5ef6d9ffd2 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -3263,8 +3263,8 @@ No available documentation.
 ") Edge;
 		const TopoDS_Shape Edge(const Standard_Integer I);
 
-		/****************** SetEdges ******************/
-		/**** md5 signature: 5b4a54aa25f38c9fe3d320ab9fa6246e ****/
+		/****** TopOpeBRep_Hctxee2d::SetEdges ******/
+		/****** md5 signature: 5b4a54aa25f38c9fe3d320ab9fa6246e ******/
 		%feature("compactdefaultargs") SetEdges;
 		%feature("autodoc", "
 Parameters
@@ -3300,8 +3300,8 @@ No available documentation.
 ****************************/
 class TopOpeBRep_Hctxff2d : public Standard_Transient {
 	public:
-		/****************** TopOpeBRep_Hctxff2d ******************/
-		/**** md5 signature: c900185e9665ec0fe9e61f90e1821abd ****/
+		/****** TopOpeBRep_Hctxff2d::TopOpeBRep_Hctxff2d ******/
+		/****** md5 signature: c900185e9665ec0fe9e61f90e1821abd ******/
 		%feature("compactdefaultargs") TopOpeBRep_Hctxff2d;
 		%feature("autodoc", "Return
 -------
@@ -3313,8 +3313,8 @@ No available documentation.
 ") TopOpeBRep_Hctxff2d;
 		 TopOpeBRep_Hctxff2d();
 
-		/****************** Face ******************/
-		/**** md5 signature: d1eb857c2a65e9d3cb2fc51a7ab45063 ****/
+		/****** TopOpeBRep_Hctxff2d::Face ******/
+		/****** md5 signature: d1eb857c2a65e9d3cb2fc51a7ab45063 ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "
 Parameters
@@ -3331,8 +3331,8 @@ No available documentation.
 ") Face;
 		const TopoDS_Face Face(const Standard_Integer I);
 
-		/****************** FaceSameOrientedWithRef ******************/
-		/**** md5 signature: eabad6eab07a6570fb8ec3a5ead85287 ****/
+		/****** TopOpeBRep_Hctxff2d::FaceSameOrientedWithRef ******/
+		/****** md5 signature: eabad6eab07a6570fb8ec3a5ead85287 ******/
 		%feature("compactdefaultargs") FaceSameOrientedWithRef;
 		%feature("autodoc", "
 Parameters
@@ -3349,8 +3349,8 @@ No available documentation.
 ") FaceSameOrientedWithRef;
 		Standard_Boolean FaceSameOrientedWithRef(const Standard_Integer I);
 
-		/****************** FacesSameOriented ******************/
-		/**** md5 signature: 435f628c00049ebc1d70e1ce34bc8025 ****/
+		/****** TopOpeBRep_Hctxff2d::FacesSameOriented ******/
+		/****** md5 signature: 435f628c00049ebc1d70e1ce34bc8025 ******/
 		%feature("compactdefaultargs") FacesSameOriented;
 		%feature("autodoc", "Return
 -------
@@ -3362,8 +3362,8 @@ No available documentation.
 ") FacesSameOriented;
 		Standard_Boolean FacesSameOriented();
 
-		/****************** GetMaxTolerance ******************/
-		/**** md5 signature: f77adca7b5ab816088f00a6b2e5855fd ****/
+		/****** TopOpeBRep_Hctxff2d::GetMaxTolerance ******/
+		/****** md5 signature: f77adca7b5ab816088f00a6b2e5855fd ******/
 		%feature("compactdefaultargs") GetMaxTolerance;
 		%feature("autodoc", "Return
 -------
@@ -3375,8 +3375,8 @@ No available documentation.
 ") GetMaxTolerance;
 		Standard_Real GetMaxTolerance();
 
-		/****************** GetTolerances ******************/
-		/**** md5 signature: cd77b1128c4393a929e11a161d176312 ****/
+		/****** TopOpeBRep_Hctxff2d::GetTolerances ******/
+		/****** md5 signature: cd77b1128c4393a929e11a161d176312 ******/
 		%feature("compactdefaultargs") GetTolerances;
 		%feature("autodoc", "
 Parameters
@@ -3393,8 +3393,8 @@ No available documentation.
 ") GetTolerances;
 		void GetTolerances(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** HSurface ******************/
-		/**** md5 signature: a61fd728296f7a0903ddca58e7b9f655 ****/
+		/****** TopOpeBRep_Hctxff2d::HSurface ******/
+		/****** md5 signature: a61fd728296f7a0903ddca58e7b9f655 ******/
 		%feature("compactdefaultargs") HSurface;
 		%feature("autodoc", "
 Parameters
@@ -3411,8 +3411,8 @@ No available documentation.
 ") HSurface;
 		opencascade::handle<BRepAdaptor_Surface> HSurface(const Standard_Integer I);
 
-		/****************** SetFaces ******************/
-		/**** md5 signature: 46dc023c2aed2e35da6777aafef31609 ****/
+		/****** TopOpeBRep_Hctxff2d::SetFaces ******/
+		/****** md5 signature: 46dc023c2aed2e35da6777aafef31609 ******/
 		%feature("compactdefaultargs") SetFaces;
 		%feature("autodoc", "
 Parameters
@@ -3430,8 +3430,8 @@ No available documentation.
 ") SetFaces;
 		void SetFaces(const TopoDS_Face & F1, const TopoDS_Face & F2);
 
-		/****************** SetHSurfaces ******************/
-		/**** md5 signature: e175988e11c8c20afccabc99d977dcec ****/
+		/****** TopOpeBRep_Hctxff2d::SetHSurfaces ******/
+		/****** md5 signature: e175988e11c8c20afccabc99d977dcec ******/
 		%feature("compactdefaultargs") SetHSurfaces;
 		%feature("autodoc", "
 Parameters
@@ -3449,8 +3449,8 @@ No available documentation.
 ") SetHSurfaces;
 		void SetHSurfaces(const opencascade::handle<BRepAdaptor_Surface> & S1, const opencascade::handle<BRepAdaptor_Surface> & S2);
 
-		/****************** SetTolerances ******************/
-		/**** md5 signature: 6873711acb65a77b1d3cb30885ac1fe9 ****/
+		/****** TopOpeBRep_Hctxff2d::SetTolerances ******/
+		/****** md5 signature: 6873711acb65a77b1d3cb30885ac1fe9 ******/
 		%feature("compactdefaultargs") SetTolerances;
 		%feature("autodoc", "
 Parameters
@@ -3468,8 +3468,8 @@ No available documentation.
 ") SetTolerances;
 		void SetTolerances(const Standard_Real Tol1, const Standard_Real Tol2);
 
-		/****************** SurfacesSameOriented ******************/
-		/**** md5 signature: 5a73f090b826c38dcc30efe0cb99df4e ****/
+		/****** TopOpeBRep_Hctxff2d::SurfacesSameOriented ******/
+		/****** md5 signature: 5a73f090b826c38dcc30efe0cb99df4e ******/
 		%feature("compactdefaultargs") SurfacesSameOriented;
 		%feature("autodoc", "Return
 -------
@@ -3497,8 +3497,8 @@ No available documentation.
 *****************************/
 class TopOpeBRep_LineInter {
 	public:
-		/****************** TopOpeBRep_LineInter ******************/
-		/**** md5 signature: feb7593e0f935d571f3784b3f4b91879 ****/
+		/****** TopOpeBRep_LineInter::TopOpeBRep_LineInter ******/
+		/****** md5 signature: feb7593e0f935d571f3784b3f4b91879 ******/
 		%feature("compactdefaultargs") TopOpeBRep_LineInter;
 		%feature("autodoc", "Return
 -------
@@ -3510,8 +3510,8 @@ No available documentation.
 ") TopOpeBRep_LineInter;
 		 TopOpeBRep_LineInter();
 
-		/****************** Arc ******************/
-		/**** md5 signature: a92581f6dce42e6d73dd51bef85c647a ****/
+		/****** TopOpeBRep_LineInter::Arc ******/
+		/****** md5 signature: a92581f6dce42e6d73dd51bef85c647a ******/
 		%feature("compactdefaultargs") Arc;
 		%feature("autodoc", "Return
 -------
@@ -3523,8 +3523,8 @@ Returns the edge of a restriction line (or a null edge).
 ") Arc;
 		const TopoDS_Shape Arc();
 
-		/****************** ArcIsEdge ******************/
-		/**** md5 signature: 3bb4c1b64cbe7447bc7c8619bac1a4b1 ****/
+		/****** TopOpeBRep_LineInter::ArcIsEdge ******/
+		/****** md5 signature: 3bb4c1b64cbe7447bc7c8619bac1a4b1 ******/
 		%feature("compactdefaultargs") ArcIsEdge;
 		%feature("autodoc", "
 Parameters
@@ -3541,8 +3541,8 @@ Returns true if arc() edge (of a restriction line) is an edge of the original fa
 ") ArcIsEdge;
 		Standard_Boolean ArcIsEdge(const Standard_Integer I);
 
-		/****************** Bounds ******************/
-		/**** md5 signature: 4af317f32b83e7cef138da63fad9c2b0 ****/
+		/****** TopOpeBRep_LineInter::Bounds ******/
+		/****** md5 signature: 4af317f32b83e7cef138da63fad9c2b0 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -3559,8 +3559,8 @@ No available documentation.
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ChangeVPoint ******************/
-		/**** md5 signature: 14d4309f2053822cc1a695ae7c54a7ad ****/
+		/****** TopOpeBRep_LineInter::ChangeVPoint ******/
+		/****** md5 signature: 14d4309f2053822cc1a695ae7c54a7ad ******/
 		%feature("compactdefaultargs") ChangeVPoint;
 		%feature("autodoc", "
 Parameters
@@ -3577,8 +3577,8 @@ No available documentation.
 ") ChangeVPoint;
 		TopOpeBRep_VPointInter & ChangeVPoint(const Standard_Integer I);
 
-		/****************** ComputeFaceFaceTransition ******************/
-		/**** md5 signature: 26ed70b18bcf2712b23b8d4def2a445e ****/
+		/****** TopOpeBRep_LineInter::ComputeFaceFaceTransition ******/
+		/****** md5 signature: 26ed70b18bcf2712b23b8d4def2a445e ******/
 		%feature("compactdefaultargs") ComputeFaceFaceTransition;
 		%feature("autodoc", "Return
 -------
@@ -3590,8 +3590,8 @@ No available documentation.
 ") ComputeFaceFaceTransition;
 		void ComputeFaceFaceTransition();
 
-		/****************** Curve ******************/
-		/**** md5 signature: 1f3ec5c59b9daebd9920b1e8b066a7ca ****/
+		/****** TopOpeBRep_LineInter::Curve ******/
+		/****** md5 signature: 1f3ec5c59b9daebd9920b1e8b066a7ca ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -3603,8 +3603,8 @@ No available documentation.
 ") Curve;
 		opencascade::handle<Geom_Curve> Curve();
 
-		/****************** Curve ******************/
-		/**** md5 signature: ea107b775c04ffc9d9d2f73bc7749d01 ****/
+		/****** TopOpeBRep_LineInter::Curve ******/
+		/****** md5 signature: ea107b775c04ffc9d9d2f73bc7749d01 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -3622,8 +3622,8 @@ No available documentation.
 ") Curve;
 		opencascade::handle<Geom_Curve> Curve(const Standard_Real parmin, const Standard_Real parmax);
 
-		/****************** DumpBipoint ******************/
-		/**** md5 signature: 6325b4d4f4e4a71fd5e87f7de2c6ef7d ****/
+		/****** TopOpeBRep_LineInter::DumpBipoint ******/
+		/****** md5 signature: 6325b4d4f4e4a71fd5e87f7de2c6ef7d ******/
 		%feature("compactdefaultargs") DumpBipoint;
 		%feature("autodoc", "
 Parameters
@@ -3642,8 +3642,8 @@ No available documentation.
 ") DumpBipoint;
 		void DumpBipoint(const TopOpeBRep_Bipoint & B, TCollection_AsciiString s1, TCollection_AsciiString s2);
 
-		/****************** DumpLineTransitions ******************/
-		/**** md5 signature: edfe93f308df46bfc812b4b00425d99c ****/
+		/****** TopOpeBRep_LineInter::DumpLineTransitions ******/
+		/****** md5 signature: edfe93f308df46bfc812b4b00425d99c ******/
 		%feature("compactdefaultargs") DumpLineTransitions;
 		%feature("autodoc", "
 Parameters
@@ -3659,8 +3659,8 @@ No available documentation.
 ") DumpLineTransitions;
 		Standard_OStream & DumpLineTransitions(std::ostream &OutValue);
 
-		/****************** DumpType ******************/
-		/**** md5 signature: b34c01a6723403b4978ae19d96842616 ****/
+		/****** TopOpeBRep_LineInter::DumpType ******/
+		/****** md5 signature: b34c01a6723403b4978ae19d96842616 ******/
 		%feature("compactdefaultargs") DumpType;
 		%feature("autodoc", "Return
 -------
@@ -3672,8 +3672,8 @@ No available documentation.
 ") DumpType;
 		void DumpType();
 
-		/****************** DumpVPoint ******************/
-		/**** md5 signature: 6208394255135ad9c5fefef57aaa6b25 ****/
+		/****** TopOpeBRep_LineInter::DumpVPoint ******/
+		/****** md5 signature: 6208394255135ad9c5fefef57aaa6b25 ******/
 		%feature("compactdefaultargs") DumpVPoint;
 		%feature("autodoc", "
 Parameters
@@ -3692,8 +3692,8 @@ No available documentation.
 ") DumpVPoint;
 		void DumpVPoint(const Standard_Integer I, TCollection_AsciiString s1, TCollection_AsciiString s2);
 
-		/****************** FaceFaceTransition ******************/
-		/**** md5 signature: 83ffefbe5b8ae65ccfae12ac03265cee ****/
+		/****** TopOpeBRep_LineInter::FaceFaceTransition ******/
+		/****** md5 signature: 83ffefbe5b8ae65ccfae12ac03265cee ******/
 		%feature("compactdefaultargs") FaceFaceTransition;
 		%feature("autodoc", "
 Parameters
@@ -3710,8 +3710,8 @@ No available documentation.
 ") FaceFaceTransition;
 		const TopOpeBRepDS_Transition & FaceFaceTransition(const Standard_Integer I);
 
-		/****************** GetTraceIndex ******************/
-		/**** md5 signature: 9515d5e22d4204dd0a3c74673d23b180 ****/
+		/****** TopOpeBRep_LineInter::GetTraceIndex ******/
+		/****** md5 signature: 9515d5e22d4204dd0a3c74673d23b180 ******/
 		%feature("compactdefaultargs") GetTraceIndex;
 		%feature("autodoc", "
 Parameters
@@ -3728,8 +3728,8 @@ No available documentation.
 ") GetTraceIndex;
 		void GetTraceIndex(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** HasFirstPoint ******************/
-		/**** md5 signature: 76549d304d78c4a9c8d3c420139524d3 ****/
+		/****** TopOpeBRep_LineInter::HasFirstPoint ******/
+		/****** md5 signature: 76549d304d78c4a9c8d3c420139524d3 ******/
 		%feature("compactdefaultargs") HasFirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -3741,8 +3741,8 @@ No available documentation.
 ") HasFirstPoint;
 		Standard_Boolean HasFirstPoint();
 
-		/****************** HasLastPoint ******************/
-		/**** md5 signature: 66b261e1c2b182701ee59bfbc6bde915 ****/
+		/****** TopOpeBRep_LineInter::HasLastPoint ******/
+		/****** md5 signature: 66b261e1c2b182701ee59bfbc6bde915 ******/
 		%feature("compactdefaultargs") HasLastPoint;
 		%feature("autodoc", "Return
 -------
@@ -3754,8 +3754,8 @@ No available documentation.
 ") HasLastPoint;
 		Standard_Boolean HasLastPoint();
 
-		/****************** HasVInternal ******************/
-		/**** md5 signature: 3bb457040e2d8daf9eef509552071165 ****/
+		/****** TopOpeBRep_LineInter::HasVInternal ******/
+		/****** md5 signature: 3bb457040e2d8daf9eef509552071165 ******/
 		%feature("compactdefaultargs") HasVInternal;
 		%feature("autodoc", "Return
 -------
@@ -3767,8 +3767,8 @@ No available documentation.
 ") HasVInternal;
 		Standard_Boolean HasVInternal();
 
-		/****************** HasVPonR ******************/
-		/**** md5 signature: 310d1ad2c3487ad7ff07a44f1150bfd5 ****/
+		/****** TopOpeBRep_LineInter::HasVPonR ******/
+		/****** md5 signature: 310d1ad2c3487ad7ff07a44f1150bfd5 ******/
 		%feature("compactdefaultargs") HasVPonR;
 		%feature("autodoc", "Return
 -------
@@ -3780,8 +3780,8 @@ No available documentation.
 ") HasVPonR;
 		Standard_Boolean HasVPonR();
 
-		/****************** INL ******************/
-		/**** md5 signature: 89a074055e3292c077fb3179be7b61f3 ****/
+		/****** TopOpeBRep_LineInter::INL ******/
+		/****** md5 signature: 89a074055e3292c077fb3179be7b61f3 ******/
 		%feature("compactdefaultargs") INL;
 		%feature("autodoc", "Return
 -------
@@ -3793,8 +3793,8 @@ No available documentation.
 ") INL;
 		Standard_Boolean INL();
 
-		/****************** Index ******************/
-		/**** md5 signature: 14b6f4590eeca8d2e66a904c0019a95f ****/
+		/****** TopOpeBRep_LineInter::Index ******/
+		/****** md5 signature: 14b6f4590eeca8d2e66a904c0019a95f ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -3811,8 +3811,8 @@ No available documentation.
 ") Index;
 		void Index(const Standard_Integer I);
 
-		/****************** Index ******************/
-		/**** md5 signature: 407d80ef3037d55996765198adea3908 ****/
+		/****** TopOpeBRep_LineInter::Index ******/
+		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -3824,8 +3824,8 @@ No available documentation.
 ") Index;
 		Standard_Integer Index();
 
-		/****************** IsPeriodic ******************/
-		/**** md5 signature: 62d7f554b0b7785e1f3919569dfbc68f ****/
+		/****** TopOpeBRep_LineInter::IsPeriodic ******/
+		/****** md5 signature: 62d7f554b0b7785e1f3919569dfbc68f ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -3837,8 +3837,8 @@ No available documentation.
 ") IsPeriodic;
 		Standard_Boolean IsPeriodic();
 
-		/****************** IsVClosed ******************/
-		/**** md5 signature: 270ac1341783e48f1a0f14434f1599d3 ****/
+		/****** TopOpeBRep_LineInter::IsVClosed ******/
+		/****** md5 signature: 270ac1341783e48f1a0f14434f1599d3 ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -3850,8 +3850,8 @@ No available documentation.
 ") IsVClosed;
 		Standard_Boolean IsVClosed();
 
-		/****************** LineG ******************/
-		/**** md5 signature: 01de5629a31aa00cf28e96dba213041f ****/
+		/****** TopOpeBRep_LineInter::LineG ******/
+		/****** md5 signature: 01de5629a31aa00cf28e96dba213041f ******/
 		%feature("compactdefaultargs") LineG;
 		%feature("autodoc", "Return
 -------
@@ -3863,8 +3863,8 @@ No available documentation.
 ") LineG;
 		const opencascade::handle<IntPatch_GLine> & LineG();
 
-		/****************** LineR ******************/
-		/**** md5 signature: 08be29905e87571f8683725d0177250c ****/
+		/****** TopOpeBRep_LineInter::LineR ******/
+		/****** md5 signature: 08be29905e87571f8683725d0177250c ******/
 		%feature("compactdefaultargs") LineR;
 		%feature("autodoc", "Return
 -------
@@ -3876,8 +3876,8 @@ No available documentation.
 ") LineR;
 		const opencascade::handle<IntPatch_RLine> & LineR();
 
-		/****************** LineW ******************/
-		/**** md5 signature: ddd6c649218181f4d6abebf82cea5563 ****/
+		/****** TopOpeBRep_LineInter::LineW ******/
+		/****** md5 signature: ddd6c649218181f4d6abebf82cea5563 ******/
 		%feature("compactdefaultargs") LineW;
 		%feature("autodoc", "Return
 -------
@@ -3889,8 +3889,8 @@ No available documentation.
 ") LineW;
 		const opencascade::handle<IntPatch_WLine> & LineW();
 
-		/****************** NbVPoint ******************/
-		/**** md5 signature: 2ea09ca7a3e5398df1519c0980229c14 ****/
+		/****** TopOpeBRep_LineInter::NbVPoint ******/
+		/****** md5 signature: 2ea09ca7a3e5398df1519c0980229c14 ******/
 		%feature("compactdefaultargs") NbVPoint;
 		%feature("autodoc", "Return
 -------
@@ -3902,8 +3902,8 @@ No available documentation.
 ") NbVPoint;
 		Standard_Integer NbVPoint();
 
-		/****************** NbWPoint ******************/
-		/**** md5 signature: d84b1d26c3bbf033ef91f4e52100fb03 ****/
+		/****** TopOpeBRep_LineInter::NbWPoint ******/
+		/****** md5 signature: d84b1d26c3bbf033ef91f4e52100fb03 ******/
 		%feature("compactdefaultargs") NbWPoint;
 		%feature("autodoc", "Return
 -------
@@ -3915,8 +3915,8 @@ No available documentation.
 ") NbWPoint;
 		Standard_Integer NbWPoint();
 
-		/****************** OK ******************/
-		/**** md5 signature: 8bc639ad68d0ce206834efca23e02e2d ****/
+		/****** TopOpeBRep_LineInter::OK ******/
+		/****** md5 signature: 8bc639ad68d0ce206834efca23e02e2d ******/
 		%feature("compactdefaultargs") OK;
 		%feature("autodoc", "Return
 -------
@@ -3928,8 +3928,8 @@ No available documentation.
 ") OK;
 		Standard_Boolean OK();
 
-		/****************** Period ******************/
-		/**** md5 signature: 0270204961d3b0052ffe029cbcdbacd9 ****/
+		/****** TopOpeBRep_LineInter::Period ******/
+		/****** md5 signature: 0270204961d3b0052ffe029cbcdbacd9 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
@@ -3941,8 +3941,8 @@ No available documentation.
 ") Period;
 		Standard_Real Period();
 
-		/****************** SetFaces ******************/
-		/**** md5 signature: 46dc023c2aed2e35da6777aafef31609 ****/
+		/****** TopOpeBRep_LineInter::SetFaces ******/
+		/****** md5 signature: 46dc023c2aed2e35da6777aafef31609 ******/
 		%feature("compactdefaultargs") SetFaces;
 		%feature("autodoc", "
 Parameters
@@ -3960,8 +3960,8 @@ No available documentation.
 ") SetFaces;
 		void SetFaces(const TopoDS_Face & F1, const TopoDS_Face & F2);
 
-		/****************** SetHasVPonR ******************/
-		/**** md5 signature: db52cdfdcc899bff6b5002498e13bb03 ****/
+		/****** TopOpeBRep_LineInter::SetHasVPonR ******/
+		/****** md5 signature: db52cdfdcc899bff6b5002498e13bb03 ******/
 		%feature("compactdefaultargs") SetHasVPonR;
 		%feature("autodoc", "Return
 -------
@@ -3973,8 +3973,8 @@ No available documentation.
 ") SetHasVPonR;
 		void SetHasVPonR();
 
-		/****************** SetINL ******************/
-		/**** md5 signature: 1e6337a2c38c435aa474d60eae7fb4e0 ****/
+		/****** TopOpeBRep_LineInter::SetINL ******/
+		/****** md5 signature: 1e6337a2c38c435aa474d60eae7fb4e0 ******/
 		%feature("compactdefaultargs") SetINL;
 		%feature("autodoc", "Return
 -------
@@ -3986,8 +3986,8 @@ No available documentation.
 ") SetINL;
 		void SetINL();
 
-		/****************** SetIsVClosed ******************/
-		/**** md5 signature: 7e0b5519dc46f8dfce21789f2ba43054 ****/
+		/****** TopOpeBRep_LineInter::SetIsVClosed ******/
+		/****** md5 signature: 7e0b5519dc46f8dfce21789f2ba43054 ******/
 		%feature("compactdefaultargs") SetIsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -3999,8 +3999,8 @@ No available documentation.
 ") SetIsVClosed;
 		void SetIsVClosed();
 
-		/****************** SetLine ******************/
-		/**** md5 signature: ffdaea04056ed0f892cad9b6d3ed4ae0 ****/
+		/****** TopOpeBRep_LineInter::SetLine ******/
+		/****** md5 signature: ffdaea04056ed0f892cad9b6d3ed4ae0 ******/
 		%feature("compactdefaultargs") SetLine;
 		%feature("autodoc", "
 Parameters
@@ -4019,8 +4019,8 @@ No available documentation.
 ") SetLine;
 		void SetLine(const opencascade::handle<IntPatch_Line> & L, const BRepAdaptor_Surface & S1, const BRepAdaptor_Surface & S2);
 
-		/****************** SetOK ******************/
-		/**** md5 signature: e2450971393f163d48b7f0293dc3348f ****/
+		/****** TopOpeBRep_LineInter::SetOK ******/
+		/****** md5 signature: e2450971393f163d48b7f0293dc3348f ******/
 		%feature("compactdefaultargs") SetOK;
 		%feature("autodoc", "
 Parameters
@@ -4037,8 +4037,8 @@ No available documentation.
 ") SetOK;
 		void SetOK(const Standard_Boolean B);
 
-		/****************** SetTraceIndex ******************/
-		/**** md5 signature: 13f9cfa37d1910afdfe7a0465a408ca0 ****/
+		/****** TopOpeBRep_LineInter::SetTraceIndex ******/
+		/****** md5 signature: 13f9cfa37d1910afdfe7a0465a408ca0 ******/
 		%feature("compactdefaultargs") SetTraceIndex;
 		%feature("autodoc", "
 Parameters
@@ -4056,8 +4056,8 @@ No available documentation.
 ") SetTraceIndex;
 		void SetTraceIndex(const Standard_Integer exF1, const Standard_Integer exF2);
 
-		/****************** SetVPBounds ******************/
-		/**** md5 signature: 2aa0ef807679effc95727c0e40d084fd ****/
+		/****** TopOpeBRep_LineInter::SetVPBounds ******/
+		/****** md5 signature: 2aa0ef807679effc95727c0e40d084fd ******/
 		%feature("compactdefaultargs") SetVPBounds;
 		%feature("autodoc", "Return
 -------
@@ -4069,8 +4069,8 @@ No available documentation.
 ") SetVPBounds;
 		void SetVPBounds();
 
-		/****************** SituationS1 ******************/
-		/**** md5 signature: af2d2dd713ae3b820482546cf4a82d7b ****/
+		/****** TopOpeBRep_LineInter::SituationS1 ******/
+		/****** md5 signature: af2d2dd713ae3b820482546cf4a82d7b ******/
 		%feature("compactdefaultargs") SituationS1;
 		%feature("autodoc", "Return
 -------
@@ -4082,8 +4082,8 @@ No available documentation.
 ") SituationS1;
 		IntSurf_Situation SituationS1();
 
-		/****************** SituationS2 ******************/
-		/**** md5 signature: da9cc8795913744eb08fbe6bf499827b ****/
+		/****** TopOpeBRep_LineInter::SituationS2 ******/
+		/****** md5 signature: da9cc8795913744eb08fbe6bf499827b ******/
 		%feature("compactdefaultargs") SituationS2;
 		%feature("autodoc", "Return
 -------
@@ -4095,8 +4095,8 @@ No available documentation.
 ") SituationS2;
 		IntSurf_Situation SituationS2();
 
-		/****************** TransitionOnS1 ******************/
-		/**** md5 signature: 9de184f3b47c2902be7de5eb10743898 ****/
+		/****** TopOpeBRep_LineInter::TransitionOnS1 ******/
+		/****** md5 signature: 9de184f3b47c2902be7de5eb10743898 ******/
 		%feature("compactdefaultargs") TransitionOnS1;
 		%feature("autodoc", "Return
 -------
@@ -4108,8 +4108,8 @@ No available documentation.
 ") TransitionOnS1;
 		IntSurf_TypeTrans TransitionOnS1();
 
-		/****************** TransitionOnS2 ******************/
-		/**** md5 signature: aafa064949332278d0d49be3da4c6df2 ****/
+		/****** TopOpeBRep_LineInter::TransitionOnS2 ******/
+		/****** md5 signature: aafa064949332278d0d49be3da4c6df2 ******/
 		%feature("compactdefaultargs") TransitionOnS2;
 		%feature("autodoc", "Return
 -------
@@ -4121,8 +4121,8 @@ No available documentation.
 ") TransitionOnS2;
 		IntSurf_TypeTrans TransitionOnS2();
 
-		/****************** TypeLineCurve ******************/
-		/**** md5 signature: 4355930a797a6f3cb5e2211b13c345bb ****/
+		/****** TopOpeBRep_LineInter::TypeLineCurve ******/
+		/****** md5 signature: 4355930a797a6f3cb5e2211b13c345bb ******/
 		%feature("compactdefaultargs") TypeLineCurve;
 		%feature("autodoc", "Return
 -------
@@ -4134,8 +4134,8 @@ No available documentation.
 ") TypeLineCurve;
 		TopOpeBRep_TypeLineCurve TypeLineCurve();
 
-		/****************** VPBounds ******************/
-		/**** md5 signature: b702d5162ec5f574dd602b9a65d91545 ****/
+		/****** TopOpeBRep_LineInter::VPBounds ******/
+		/****** md5 signature: b702d5162ec5f574dd602b9a65d91545 ******/
 		%feature("compactdefaultargs") VPBounds;
 		%feature("autodoc", "
 Parameters
@@ -4153,8 +4153,8 @@ No available documentation.
 ") VPBounds;
 		void VPBounds(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** VPoint ******************/
-		/**** md5 signature: 1510e3ed35585561758acd47757f2f3e ****/
+		/****** TopOpeBRep_LineInter::VPoint ******/
+		/****** md5 signature: 1510e3ed35585561758acd47757f2f3e ******/
 		%feature("compactdefaultargs") VPoint;
 		%feature("autodoc", "
 Parameters
@@ -4171,8 +4171,8 @@ No available documentation.
 ") VPoint;
 		const TopOpeBRep_VPointInter & VPoint(const Standard_Integer I);
 
-		/****************** WPoint ******************/
-		/**** md5 signature: fb66a29b8bdd784fd0b851b001b22951 ****/
+		/****** TopOpeBRep_LineInter::WPoint ******/
+		/****** md5 signature: fb66a29b8bdd784fd0b851b001b22951 ******/
 		%feature("compactdefaultargs") WPoint;
 		%feature("autodoc", "
 Parameters
@@ -4203,8 +4203,8 @@ No available documentation.
 ***************************/
 class TopOpeBRep_Point2d {
 	public:
-		/****************** TopOpeBRep_Point2d ******************/
-		/**** md5 signature: a4e5464aee16654824387f8abcf81377 ****/
+		/****** TopOpeBRep_Point2d::TopOpeBRep_Point2d ******/
+		/****** md5 signature: a4e5464aee16654824387f8abcf81377 ******/
 		%feature("compactdefaultargs") TopOpeBRep_Point2d;
 		%feature("autodoc", "Return
 -------
@@ -4216,8 +4216,8 @@ No available documentation.
 ") TopOpeBRep_Point2d;
 		 TopOpeBRep_Point2d();
 
-		/****************** ChangeTransition ******************/
-		/**** md5 signature: c3cf99c4d845bce2a15b3a78287ceda1 ****/
+		/****** TopOpeBRep_Point2d::ChangeTransition ******/
+		/****** md5 signature: c3cf99c4d845bce2a15b3a78287ceda1 ******/
 		%feature("compactdefaultargs") ChangeTransition;
 		%feature("autodoc", "
 Parameters
@@ -4234,8 +4234,8 @@ No available documentation.
 ") ChangeTransition;
 		TopOpeBRepDS_Transition & ChangeTransition(const Standard_Integer I);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 48fe6005532e1061cfa557e995f40a8d ****/
+		/****** TopOpeBRep_Point2d::Dump ******/
+		/****** md5 signature: 48fe6005532e1061cfa557e995f40a8d ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -4253,8 +4253,8 @@ No available documentation.
 ") Dump;
 		void Dump(const Standard_Integer ie1 = 0, const Standard_Integer ie2 = 0);
 
-		/****************** EdgesConfig ******************/
-		/**** md5 signature: 17c4c833ec338e68df2a3490937ab9c9 ****/
+		/****** TopOpeBRep_Point2d::EdgesConfig ******/
+		/****** md5 signature: 17c4c833ec338e68df2a3490937ab9c9 ******/
 		%feature("compactdefaultargs") EdgesConfig;
 		%feature("autodoc", "Return
 -------
@@ -4266,8 +4266,8 @@ No available documentation.
 ") EdgesConfig;
 		TopOpeBRepDS_Config EdgesConfig();
 
-		/****************** HasPint ******************/
-		/**** md5 signature: 18a0ea3877f1678f8937dbc9db035589 ****/
+		/****** TopOpeBRep_Point2d::HasPint ******/
+		/****** md5 signature: 18a0ea3877f1678f8937dbc9db035589 ******/
 		%feature("compactdefaultargs") HasPint;
 		%feature("autodoc", "Return
 -------
@@ -4279,8 +4279,8 @@ No available documentation.
 ") HasPint;
 		Standard_Boolean HasPint();
 
-		/****************** Hctxee2d ******************/
-		/**** md5 signature: 2a9387824cce3a91254c1d88d2c14560 ****/
+		/****** TopOpeBRep_Point2d::Hctxee2d ******/
+		/****** md5 signature: 2a9387824cce3a91254c1d88d2c14560 ******/
 		%feature("compactdefaultargs") Hctxee2d;
 		%feature("autodoc", "Return
 -------
@@ -4292,8 +4292,8 @@ No available documentation.
 ") Hctxee2d;
 		opencascade::handle<TopOpeBRep_Hctxee2d> Hctxee2d();
 
-		/****************** Hctxff2d ******************/
-		/**** md5 signature: 633f2a368cfb49bc92e0495cc2657538 ****/
+		/****** TopOpeBRep_Point2d::Hctxff2d ******/
+		/****** md5 signature: 633f2a368cfb49bc92e0495cc2657538 ******/
 		%feature("compactdefaultargs") Hctxff2d;
 		%feature("autodoc", "Return
 -------
@@ -4305,8 +4305,8 @@ No available documentation.
 ") Hctxff2d;
 		opencascade::handle<TopOpeBRep_Hctxff2d> Hctxff2d();
 
-		/****************** Index ******************/
-		/**** md5 signature: 407d80ef3037d55996765198adea3908 ****/
+		/****** TopOpeBRep_Point2d::Index ******/
+		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -4318,8 +4318,8 @@ No available documentation.
 ") Index;
 		Standard_Integer Index();
 
-		/****************** IsPointOfSegment ******************/
-		/**** md5 signature: 6e7cde438083e0131a9a0a61b85d04e4 ****/
+		/****** TopOpeBRep_Point2d::IsPointOfSegment ******/
+		/****** md5 signature: 6e7cde438083e0131a9a0a61b85d04e4 ******/
 		%feature("compactdefaultargs") IsPointOfSegment;
 		%feature("autodoc", "Return
 -------
@@ -4331,8 +4331,8 @@ No available documentation.
 ") IsPointOfSegment;
 		Standard_Boolean IsPointOfSegment();
 
-		/****************** IsVertex ******************/
-		/**** md5 signature: 086fc030883417cdd3233687cd7fbc88 ****/
+		/****** TopOpeBRep_Point2d::IsVertex ******/
+		/****** md5 signature: 086fc030883417cdd3233687cd7fbc88 ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "
 Parameters
@@ -4349,8 +4349,8 @@ No available documentation.
 ") IsVertex;
 		Standard_Boolean IsVertex(const Standard_Integer I);
 
-		/****************** Keep ******************/
-		/**** md5 signature: 49f5fb06c6fb4c03a84c4eb06dd2637f ****/
+		/****** TopOpeBRep_Point2d::Keep ******/
+		/****** md5 signature: 49f5fb06c6fb4c03a84c4eb06dd2637f ******/
 		%feature("compactdefaultargs") Keep;
 		%feature("autodoc", "Return
 -------
@@ -4362,8 +4362,8 @@ No available documentation.
 ") Keep;
 		Standard_Boolean Keep();
 
-		/****************** Parameter ******************/
-		/**** md5 signature: ca856d1dd4727b19b3047127cded267f ****/
+		/****** TopOpeBRep_Point2d::Parameter ******/
+		/****** md5 signature: ca856d1dd4727b19b3047127cded267f ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -4380,8 +4380,8 @@ No available documentation.
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer I);
 
-		/****************** Pint ******************/
-		/**** md5 signature: 72d1656dc63f7ec33684d937246a1ad3 ****/
+		/****** TopOpeBRep_Point2d::Pint ******/
+		/****** md5 signature: 72d1656dc63f7ec33684d937246a1ad3 ******/
 		%feature("compactdefaultargs") Pint;
 		%feature("autodoc", "Return
 -------
@@ -4393,8 +4393,8 @@ No available documentation.
 ") Pint;
 		const IntRes2d_IntersectionPoint & Pint();
 
-		/****************** SegmentAncestors ******************/
-		/**** md5 signature: 807576e7187cb2ee3da46f58c52b06dd ****/
+		/****** TopOpeBRep_Point2d::SegmentAncestors ******/
+		/****** md5 signature: 807576e7187cb2ee3da46f58c52b06dd ******/
 		%feature("compactdefaultargs") SegmentAncestors;
 		%feature("autodoc", "
 Parameters
@@ -4411,8 +4411,8 @@ No available documentation.
 ") SegmentAncestors;
 		Standard_Boolean SegmentAncestors(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SetEdgesConfig ******************/
-		/**** md5 signature: 715d2cfe9bf9319193e7cd80c47ee60c ****/
+		/****** TopOpeBRep_Point2d::SetEdgesConfig ******/
+		/****** md5 signature: 715d2cfe9bf9319193e7cd80c47ee60c ******/
 		%feature("compactdefaultargs") SetEdgesConfig;
 		%feature("autodoc", "
 Parameters
@@ -4429,8 +4429,8 @@ No available documentation.
 ") SetEdgesConfig;
 		void SetEdgesConfig(const TopOpeBRepDS_Config C);
 
-		/****************** SetHctxee2d ******************/
-		/**** md5 signature: 4354bbd1eee37ab87a6c60d7d6384d02 ****/
+		/****** TopOpeBRep_Point2d::SetHctxee2d ******/
+		/****** md5 signature: 4354bbd1eee37ab87a6c60d7d6384d02 ******/
 		%feature("compactdefaultargs") SetHctxee2d;
 		%feature("autodoc", "
 Parameters
@@ -4447,8 +4447,8 @@ No available documentation.
 ") SetHctxee2d;
 		void SetHctxee2d(const opencascade::handle<TopOpeBRep_Hctxee2d> & ee2d);
 
-		/****************** SetHctxff2d ******************/
-		/**** md5 signature: 65897b041e053e60cc80ae5efee30fd2 ****/
+		/****** TopOpeBRep_Point2d::SetHctxff2d ******/
+		/****** md5 signature: 65897b041e053e60cc80ae5efee30fd2 ******/
 		%feature("compactdefaultargs") SetHctxff2d;
 		%feature("autodoc", "
 Parameters
@@ -4465,8 +4465,8 @@ No available documentation.
 ") SetHctxff2d;
 		void SetHctxff2d(const opencascade::handle<TopOpeBRep_Hctxff2d> & ff2d);
 
-		/****************** SetIndex ******************/
-		/**** md5 signature: 866045f938b17bb34e73a6920885e27f ****/
+		/****** TopOpeBRep_Point2d::SetIndex ******/
+		/****** md5 signature: 866045f938b17bb34e73a6920885e27f ******/
 		%feature("compactdefaultargs") SetIndex;
 		%feature("autodoc", "
 Parameters
@@ -4483,8 +4483,8 @@ No available documentation.
 ") SetIndex;
 		void SetIndex(const Standard_Integer X);
 
-		/****************** SetIsPointOfSegment ******************/
-		/**** md5 signature: ec0cc3dca1354854c12eef529d8596bc ****/
+		/****** TopOpeBRep_Point2d::SetIsPointOfSegment ******/
+		/****** md5 signature: ec0cc3dca1354854c12eef529d8596bc ******/
 		%feature("compactdefaultargs") SetIsPointOfSegment;
 		%feature("autodoc", "
 Parameters
@@ -4501,8 +4501,8 @@ No available documentation.
 ") SetIsPointOfSegment;
 		void SetIsPointOfSegment(const Standard_Boolean B);
 
-		/****************** SetIsVertex ******************/
-		/**** md5 signature: 7bdfe12c28908f71a2fc9856d407ee22 ****/
+		/****** TopOpeBRep_Point2d::SetIsVertex ******/
+		/****** md5 signature: 7bdfe12c28908f71a2fc9856d407ee22 ******/
 		%feature("compactdefaultargs") SetIsVertex;
 		%feature("autodoc", "
 Parameters
@@ -4520,8 +4520,8 @@ No available documentation.
 ") SetIsVertex;
 		void SetIsVertex(const Standard_Integer I, const Standard_Boolean B);
 
-		/****************** SetKeep ******************/
-		/**** md5 signature: 1092aa2a984bcd4f4f9f5f5c7e1ac2f4 ****/
+		/****** TopOpeBRep_Point2d::SetKeep ******/
+		/****** md5 signature: 1092aa2a984bcd4f4f9f5f5c7e1ac2f4 ******/
 		%feature("compactdefaultargs") SetKeep;
 		%feature("autodoc", "
 Parameters
@@ -4538,8 +4538,8 @@ No available documentation.
 ") SetKeep;
 		void SetKeep(const Standard_Boolean B);
 
-		/****************** SetParameter ******************/
-		/**** md5 signature: 9ee049156e663e585a2306d90902c7b4 ****/
+		/****** TopOpeBRep_Point2d::SetParameter ******/
+		/****** md5 signature: 9ee049156e663e585a2306d90902c7b4 ******/
 		%feature("compactdefaultargs") SetParameter;
 		%feature("autodoc", "
 Parameters
@@ -4557,8 +4557,8 @@ No available documentation.
 ") SetParameter;
 		void SetParameter(const Standard_Integer I, const Standard_Real P);
 
-		/****************** SetPint ******************/
-		/**** md5 signature: c984cf763fe8e993abc8ec8f71dae9b1 ****/
+		/****** TopOpeBRep_Point2d::SetPint ******/
+		/****** md5 signature: c984cf763fe8e993abc8ec8f71dae9b1 ******/
 		%feature("compactdefaultargs") SetPint;
 		%feature("autodoc", "
 Parameters
@@ -4575,8 +4575,8 @@ No available documentation.
 ") SetPint;
 		void SetPint(const IntRes2d_IntersectionPoint & P);
 
-		/****************** SetSegmentAncestors ******************/
-		/**** md5 signature: 9e1d7c4ffc41f72a7fcfaaa45ac04f8e ****/
+		/****** TopOpeBRep_Point2d::SetSegmentAncestors ******/
+		/****** md5 signature: 9e1d7c4ffc41f72a7fcfaaa45ac04f8e ******/
 		%feature("compactdefaultargs") SetSegmentAncestors;
 		%feature("autodoc", "
 Parameters
@@ -4594,8 +4594,8 @@ No available documentation.
 ") SetSegmentAncestors;
 		void SetSegmentAncestors(const Standard_Integer IP1, const Standard_Integer IP2);
 
-		/****************** SetStatus ******************/
-		/**** md5 signature: 5b48b2875a553440d65a6c6c621956f5 ****/
+		/****** TopOpeBRep_Point2d::SetStatus ******/
+		/****** md5 signature: 5b48b2875a553440d65a6c6c621956f5 ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
@@ -4612,8 +4612,8 @@ No available documentation.
 ") SetStatus;
 		void SetStatus(const TopOpeBRep_P2Dstatus S);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: 62b1f9563bb5ef42f026a44105a51f90 ****/
+		/****** TopOpeBRep_Point2d::SetTolerance ******/
+		/****** md5 signature: 62b1f9563bb5ef42f026a44105a51f90 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -4630,8 +4630,8 @@ No available documentation.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real T);
 
-		/****************** SetTransition ******************/
-		/**** md5 signature: c4b596bee3ee9ff24eced4060c0a76cd ****/
+		/****** TopOpeBRep_Point2d::SetTransition ******/
+		/****** md5 signature: c4b596bee3ee9ff24eced4060c0a76cd ******/
 		%feature("compactdefaultargs") SetTransition;
 		%feature("autodoc", "
 Parameters
@@ -4649,8 +4649,8 @@ No available documentation.
 ") SetTransition;
 		void SetTransition(const Standard_Integer I, const TopOpeBRepDS_Transition & T);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: ba3ffbb2313fcc108d8269b328cdabe1 ****/
+		/****** TopOpeBRep_Point2d::SetValue ******/
+		/****** md5 signature: ba3ffbb2313fcc108d8269b328cdabe1 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -4667,8 +4667,8 @@ No available documentation.
 ") SetValue;
 		void SetValue(const gp_Pnt & P);
 
-		/****************** SetValue2d ******************/
-		/**** md5 signature: 012e75d6be249d28b0543c93d3a951de ****/
+		/****** TopOpeBRep_Point2d::SetValue2d ******/
+		/****** md5 signature: 012e75d6be249d28b0543c93d3a951de ******/
 		%feature("compactdefaultargs") SetValue2d;
 		%feature("autodoc", "
 Parameters
@@ -4685,8 +4685,8 @@ No available documentation.
 ") SetValue2d;
 		void SetValue2d(const gp_Pnt2d & P);
 
-		/****************** SetVertex ******************/
-		/**** md5 signature: 7a11f08a6987d3c3cafc8b7e2d96c5e5 ****/
+		/****** TopOpeBRep_Point2d::SetVertex ******/
+		/****** md5 signature: 7a11f08a6987d3c3cafc8b7e2d96c5e5 ******/
 		%feature("compactdefaultargs") SetVertex;
 		%feature("autodoc", "
 Parameters
@@ -4704,8 +4704,8 @@ No available documentation.
 ") SetVertex;
 		void SetVertex(const Standard_Integer I, const TopoDS_Vertex & V);
 
-		/****************** Status ******************/
-		/**** md5 signature: 46b4c8557b58504912ea2e39d547deda ****/
+		/****** TopOpeBRep_Point2d::Status ******/
+		/****** md5 signature: 46b4c8557b58504912ea2e39d547deda ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "Return
 -------
@@ -4717,8 +4717,8 @@ No available documentation.
 ") Status;
 		TopOpeBRep_P2Dstatus Status();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/****** TopOpeBRep_Point2d::Tolerance ******/
+		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -4730,8 +4730,8 @@ No available documentation.
 ") Tolerance;
 		Standard_Real Tolerance();
 
-		/****************** Transition ******************/
-		/**** md5 signature: 85d653a998e80ca01295d1ede1570169 ****/
+		/****** TopOpeBRep_Point2d::Transition ******/
+		/****** md5 signature: 85d653a998e80ca01295d1ede1570169 ******/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "
 Parameters
@@ -4748,8 +4748,8 @@ No available documentation.
 ") Transition;
 		const TopOpeBRepDS_Transition & Transition(const Standard_Integer I);
 
-		/****************** Value ******************/
-		/**** md5 signature: eddd2908948849b73f6d8aacab318652 ****/
+		/****** TopOpeBRep_Point2d::Value ******/
+		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -4761,8 +4761,8 @@ No available documentation.
 ") Value;
 		const gp_Pnt Value();
 
-		/****************** Value2d ******************/
-		/**** md5 signature: d7f79037e220f7a3b67a03ce99723024 ****/
+		/****** TopOpeBRep_Point2d::Value2d ******/
+		/****** md5 signature: d7f79037e220f7a3b67a03ce99723024 ******/
 		%feature("compactdefaultargs") Value2d;
 		%feature("autodoc", "Return
 -------
@@ -4774,8 +4774,8 @@ No available documentation.
 ") Value2d;
 		const gp_Pnt2d Value2d();
 
-		/****************** Vertex ******************/
-		/**** md5 signature: 1cd4dfe5cbf55dbe74ca8c7dfb89999c ****/
+		/****** TopOpeBRep_Point2d::Vertex ******/
+		/****** md5 signature: 1cd4dfe5cbf55dbe74ca8c7dfb89999c ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -4806,8 +4806,8 @@ No available documentation.
 ***********************************/
 class TopOpeBRep_PointClassifier {
 	public:
-		/****************** TopOpeBRep_PointClassifier ******************/
-		/**** md5 signature: 0ce7a351d05c2825b798d2588ba89cbf ****/
+		/****** TopOpeBRep_PointClassifier::TopOpeBRep_PointClassifier ******/
+		/****** md5 signature: 0ce7a351d05c2825b798d2588ba89cbf ******/
 		%feature("compactdefaultargs") TopOpeBRep_PointClassifier;
 		%feature("autodoc", "Return
 -------
@@ -4819,8 +4819,8 @@ No available documentation.
 ") TopOpeBRep_PointClassifier;
 		 TopOpeBRep_PointClassifier();
 
-		/****************** Classify ******************/
-		/**** md5 signature: 14c5e2a8abedb9ae6844a58bc37ab29e ****/
+		/****** TopOpeBRep_PointClassifier::Classify ******/
+		/****** md5 signature: 14c5e2a8abedb9ae6844a58bc37ab29e ******/
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "
 Parameters
@@ -4839,8 +4839,8 @@ Compute position of point <p> regarding with the face <f>.
 ") Classify;
 		TopAbs_State Classify(const TopoDS_Face & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
-		/****************** Init ******************/
-		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
+		/****** TopOpeBRep_PointClassifier::Init ******/
+		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -4852,8 +4852,8 @@ No available documentation.
 ") Init;
 		void Init();
 
-		/****************** Load ******************/
-		/**** md5 signature: 1d17d2edcb9829efe827b1a9573fcbcc ****/
+		/****** TopOpeBRep_PointClassifier::Load ******/
+		/****** md5 signature: 1d17d2edcb9829efe827b1a9573fcbcc ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -4870,8 +4870,8 @@ No available documentation.
 ") Load;
 		void Load(const TopoDS_Face & F);
 
-		/****************** State ******************/
-		/**** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ****/
+		/****** TopOpeBRep_PointClassifier::State ******/
+		/****** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "Return
 -------
@@ -4897,8 +4897,8 @@ No available documentation.
 *********************************/
 class TopOpeBRep_PointGeomTool {
 	public:
-		/****************** IsEqual ******************/
-		/**** md5 signature: c744b0c8522318aa7d6d0a93f5ac495e ****/
+		/****** TopOpeBRep_PointGeomTool::IsEqual ******/
+		/****** md5 signature: c744b0c8522318aa7d6d0a93f5ac495e ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -4916,8 +4916,8 @@ No available documentation.
 ") IsEqual;
 		static Standard_Boolean IsEqual(const TopOpeBRepDS_Point & DSP1, const TopOpeBRepDS_Point & DSP2);
 
-		/****************** MakePoint ******************/
-		/**** md5 signature: e4964ffd2907637ec47e8e0b0495f31e ****/
+		/****** TopOpeBRep_PointGeomTool::MakePoint ******/
+		/****** md5 signature: e4964ffd2907637ec47e8e0b0495f31e ******/
 		%feature("compactdefaultargs") MakePoint;
 		%feature("autodoc", "
 Parameters
@@ -4934,8 +4934,8 @@ No available documentation.
 ") MakePoint;
 		static TopOpeBRepDS_Point MakePoint(const TopOpeBRep_VPointInter & IP);
 
-		/****************** MakePoint ******************/
-		/**** md5 signature: 64321188c4c4ad217069ababdb8a3796 ****/
+		/****** TopOpeBRep_PointGeomTool::MakePoint ******/
+		/****** md5 signature: 64321188c4c4ad217069ababdb8a3796 ******/
 		%feature("compactdefaultargs") MakePoint;
 		%feature("autodoc", "
 Parameters
@@ -4952,8 +4952,8 @@ No available documentation.
 ") MakePoint;
 		static TopOpeBRepDS_Point MakePoint(const TopOpeBRep_Point2d & P2D);
 
-		/****************** MakePoint ******************/
-		/**** md5 signature: c79e7532e280555f3ff1763f4dead60c ****/
+		/****** TopOpeBRep_PointGeomTool::MakePoint ******/
+		/****** md5 signature: c79e7532e280555f3ff1763f4dead60c ******/
 		%feature("compactdefaultargs") MakePoint;
 		%feature("autodoc", "
 Parameters
@@ -4970,8 +4970,8 @@ No available documentation.
 ") MakePoint;
 		static TopOpeBRepDS_Point MakePoint(const TopOpeBRep_FaceEdgeIntersector & FEI);
 
-		/****************** MakePoint ******************/
-		/**** md5 signature: fd389443079eb0a464dc8e06da4a2303 ****/
+		/****** TopOpeBRep_PointGeomTool::MakePoint ******/
+		/****** md5 signature: fd389443079eb0a464dc8e06da4a2303 ******/
 		%feature("compactdefaultargs") MakePoint;
 		%feature("autodoc", "
 Parameters
@@ -5002,8 +5002,8 @@ No available documentation.
 ************************************/
 class TopOpeBRep_ShapeIntersector {
 	public:
-		/****************** TopOpeBRep_ShapeIntersector ******************/
-		/**** md5 signature: 20f306c0c78524b61a5f16c837ec63d0 ****/
+		/****** TopOpeBRep_ShapeIntersector::TopOpeBRep_ShapeIntersector ******/
+		/****** md5 signature: 20f306c0c78524b61a5f16c837ec63d0 ******/
 		%feature("compactdefaultargs") TopOpeBRep_ShapeIntersector;
 		%feature("autodoc", "Return
 -------
@@ -5015,8 +5015,8 @@ No available documentation.
 ") TopOpeBRep_ShapeIntersector;
 		 TopOpeBRep_ShapeIntersector();
 
-		/****************** ChangeEdgesIntersector ******************/
-		/**** md5 signature: 1235fc3fd7575db65944b280b25330c7 ****/
+		/****** TopOpeBRep_ShapeIntersector::ChangeEdgesIntersector ******/
+		/****** md5 signature: 1235fc3fd7575db65944b280b25330c7 ******/
 		%feature("compactdefaultargs") ChangeEdgesIntersector;
 		%feature("autodoc", "Return
 -------
@@ -5028,8 +5028,8 @@ Return the current intersection of two edges.
 ") ChangeEdgesIntersector;
 		TopOpeBRep_EdgesIntersector & ChangeEdgesIntersector();
 
-		/****************** ChangeFaceEdgeIntersector ******************/
-		/**** md5 signature: 252968b36ec37bf07721105462c97f04 ****/
+		/****** TopOpeBRep_ShapeIntersector::ChangeFaceEdgeIntersector ******/
+		/****** md5 signature: 252968b36ec37bf07721105462c97f04 ******/
 		%feature("compactdefaultargs") ChangeFaceEdgeIntersector;
 		%feature("autodoc", "Return
 -------
@@ -5041,8 +5041,8 @@ Return the current intersection of a face and an edge.
 ") ChangeFaceEdgeIntersector;
 		TopOpeBRep_FaceEdgeIntersector & ChangeFaceEdgeIntersector();
 
-		/****************** ChangeFacesIntersector ******************/
-		/**** md5 signature: 09c29fa34bf77993f5e46096b4b26b96 ****/
+		/****** TopOpeBRep_ShapeIntersector::ChangeFacesIntersector ******/
+		/****** md5 signature: 09c29fa34bf77993f5e46096b4b26b96 ******/
 		%feature("compactdefaultargs") ChangeFacesIntersector;
 		%feature("autodoc", "Return
 -------
@@ -5054,8 +5054,8 @@ Return the current intersection of two faces.
 ") ChangeFacesIntersector;
 		TopOpeBRep_FacesIntersector & ChangeFacesIntersector();
 
-		/****************** CurrentGeomShape ******************/
-		/**** md5 signature: 7481223e571b135509f19048b145ca50 ****/
+		/****** TopOpeBRep_ShapeIntersector::CurrentGeomShape ******/
+		/****** md5 signature: 7481223e571b135509f19048b145ca50 ******/
 		%feature("compactdefaultargs") CurrentGeomShape;
 		%feature("autodoc", "
 Parameters
@@ -5072,8 +5072,8 @@ Return geometric shape <index> ( = 1 or 2 ) of current intersection.
 ") CurrentGeomShape;
 		const TopoDS_Shape CurrentGeomShape(const Standard_Integer Index);
 
-		/****************** DumpCurrent ******************/
-		/**** md5 signature: e02ddf889a96ea3aa8d7e534ecd6a9f3 ****/
+		/****** TopOpeBRep_ShapeIntersector::DumpCurrent ******/
+		/****** md5 signature: e02ddf889a96ea3aa8d7e534ecd6a9f3 ******/
 		%feature("compactdefaultargs") DumpCurrent;
 		%feature("autodoc", "
 Parameters
@@ -5090,8 +5090,8 @@ No available documentation.
 ") DumpCurrent;
 		void DumpCurrent(const Standard_Integer K);
 
-		/****************** GetTolerances ******************/
-		/**** md5 signature: cd77b1128c4393a929e11a161d176312 ****/
+		/****** TopOpeBRep_ShapeIntersector::GetTolerances ******/
+		/****** md5 signature: cd77b1128c4393a929e11a161d176312 ******/
 		%feature("compactdefaultargs") GetTolerances;
 		%feature("autodoc", "
 Parameters
@@ -5108,8 +5108,8 @@ Return max of intersection tolerances with which facesintersector from topopebre
 ") GetTolerances;
 		void GetTolerances(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Index ******************/
-		/**** md5 signature: 47cb6111c2de8549ff3cb854a67d0e7e ****/
+		/****** TopOpeBRep_ShapeIntersector::Index ******/
+		/****** md5 signature: 47cb6111c2de8549ff3cb854a67d0e7e ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -5126,8 +5126,8 @@ No available documentation.
 ") Index;
 		Standard_Integer Index(const Standard_Integer K);
 
-		/****************** InitIntersection ******************/
-		/**** md5 signature: 32572b960992ca40532149c5f4138b9d ****/
+		/****** TopOpeBRep_ShapeIntersector::InitIntersection ******/
+		/****** md5 signature: 32572b960992ca40532149c5f4138b9d ******/
 		%feature("compactdefaultargs") InitIntersection;
 		%feature("autodoc", "
 Parameters
@@ -5145,8 +5145,8 @@ Initialize the intersection of shapes s1,s2.
 ") InitIntersection;
 		void InitIntersection(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
-		/****************** InitIntersection ******************/
-		/**** md5 signature: 71295c2e23706fb131e95931841e2ffb ****/
+		/****** TopOpeBRep_ShapeIntersector::InitIntersection ******/
+		/****** md5 signature: 71295c2e23706fb131e95931841e2ffb ******/
 		%feature("compactdefaultargs") InitIntersection;
 		%feature("autodoc", "
 Parameters
@@ -5166,8 +5166,8 @@ Initialize the intersection of shapes s1,s2.
 ") InitIntersection;
 		void InitIntersection(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const TopoDS_Face & F1, const TopoDS_Face & F2);
 
-		/****************** MoreIntersection ******************/
-		/**** md5 signature: 75450e74c8586d0bba47da742d01e5b8 ****/
+		/****** TopOpeBRep_ShapeIntersector::MoreIntersection ******/
+		/****** md5 signature: 75450e74c8586d0bba47da742d01e5b8 ******/
 		%feature("compactdefaultargs") MoreIntersection;
 		%feature("autodoc", "Return
 -------
@@ -5179,8 +5179,8 @@ Returns true if there are more intersection between two the shapes.
 ") MoreIntersection;
 		Standard_Boolean MoreIntersection();
 
-		/****************** NextIntersection ******************/
-		/**** md5 signature: c7daff0a72de42893f05b8f795c72477 ****/
+		/****** TopOpeBRep_ShapeIntersector::NextIntersection ******/
+		/****** md5 signature: c7daff0a72de42893f05b8f795c72477 ******/
 		%feature("compactdefaultargs") NextIntersection;
 		%feature("autodoc", "Return
 -------
@@ -5192,8 +5192,8 @@ Search for the next intersection between the two shapes.
 ") NextIntersection;
 		void NextIntersection();
 
-		/****************** RejectedFaces ******************/
-		/**** md5 signature: e8b60ca61d88b99674fbf67f7b550edc ****/
+		/****** TopOpeBRep_ShapeIntersector::RejectedFaces ******/
+		/****** md5 signature: e8b60ca61d88b99674fbf67f7b550edc ******/
 		%feature("compactdefaultargs") RejectedFaces;
 		%feature("autodoc", "
 Parameters
@@ -5212,8 +5212,8 @@ No available documentation.
 ") RejectedFaces;
 		void RejectedFaces(const TopoDS_Shape & anObj, const TopoDS_Shape & aReference, TopTools_ListOfShape & aListOfShape);
 
-		/****************** Shape ******************/
-		/**** md5 signature: 9490bf72de2629e156b2f9f7c67be648 ****/
+		/****** TopOpeBRep_ShapeIntersector::Shape ******/
+		/****** md5 signature: 9490bf72de2629e156b2f9f7c67be648 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -5244,8 +5244,8 @@ Return the shape <index> ( = 1 or 2) given to initintersection(). index = 1 will
 **************************************/
 class TopOpeBRep_ShapeIntersector2d {
 	public:
-		/****************** TopOpeBRep_ShapeIntersector2d ******************/
-		/**** md5 signature: bb2704150c5bd49ed4001ce09dc8dc59 ****/
+		/****** TopOpeBRep_ShapeIntersector2d::TopOpeBRep_ShapeIntersector2d ******/
+		/****** md5 signature: bb2704150c5bd49ed4001ce09dc8dc59 ******/
 		%feature("compactdefaultargs") TopOpeBRep_ShapeIntersector2d;
 		%feature("autodoc", "Return
 -------
@@ -5257,8 +5257,8 @@ No available documentation.
 ") TopOpeBRep_ShapeIntersector2d;
 		 TopOpeBRep_ShapeIntersector2d();
 
-		/****************** ChangeEdgesIntersector ******************/
-		/**** md5 signature: 1235fc3fd7575db65944b280b25330c7 ****/
+		/****** TopOpeBRep_ShapeIntersector2d::ChangeEdgesIntersector ******/
+		/****** md5 signature: 1235fc3fd7575db65944b280b25330c7 ******/
 		%feature("compactdefaultargs") ChangeEdgesIntersector;
 		%feature("autodoc", "Return
 -------
@@ -5270,8 +5270,8 @@ Return the current intersection of two edges.
 ") ChangeEdgesIntersector;
 		TopOpeBRep_EdgesIntersector & ChangeEdgesIntersector();
 
-		/****************** CurrentGeomShape ******************/
-		/**** md5 signature: 7481223e571b135509f19048b145ca50 ****/
+		/****** TopOpeBRep_ShapeIntersector2d::CurrentGeomShape ******/
+		/****** md5 signature: 7481223e571b135509f19048b145ca50 ******/
 		%feature("compactdefaultargs") CurrentGeomShape;
 		%feature("autodoc", "
 Parameters
@@ -5288,8 +5288,8 @@ Return geometric shape <index> ( = 1 or 2 ) of current intersection.
 ") CurrentGeomShape;
 		const TopoDS_Shape CurrentGeomShape(const Standard_Integer Index);
 
-		/****************** DumpCurrent ******************/
-		/**** md5 signature: e02ddf889a96ea3aa8d7e534ecd6a9f3 ****/
+		/****** TopOpeBRep_ShapeIntersector2d::DumpCurrent ******/
+		/****** md5 signature: e02ddf889a96ea3aa8d7e534ecd6a9f3 ******/
 		%feature("compactdefaultargs") DumpCurrent;
 		%feature("autodoc", "
 Parameters
@@ -5306,8 +5306,8 @@ No available documentation.
 ") DumpCurrent;
 		void DumpCurrent(const Standard_Integer K);
 
-		/****************** Index ******************/
-		/**** md5 signature: 47cb6111c2de8549ff3cb854a67d0e7e ****/
+		/****** TopOpeBRep_ShapeIntersector2d::Index ******/
+		/****** md5 signature: 47cb6111c2de8549ff3cb854a67d0e7e ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -5324,8 +5324,8 @@ No available documentation.
 ") Index;
 		Standard_Integer Index(const Standard_Integer K);
 
-		/****************** InitIntersection ******************/
-		/**** md5 signature: 32572b960992ca40532149c5f4138b9d ****/
+		/****** TopOpeBRep_ShapeIntersector2d::InitIntersection ******/
+		/****** md5 signature: 32572b960992ca40532149c5f4138b9d ******/
 		%feature("compactdefaultargs") InitIntersection;
 		%feature("autodoc", "
 Parameters
@@ -5343,8 +5343,8 @@ Initialize the intersection of shapes s1,s2.
 ") InitIntersection;
 		void InitIntersection(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
-		/****************** MoreIntersection ******************/
-		/**** md5 signature: 75450e74c8586d0bba47da742d01e5b8 ****/
+		/****** TopOpeBRep_ShapeIntersector2d::MoreIntersection ******/
+		/****** md5 signature: 75450e74c8586d0bba47da742d01e5b8 ******/
 		%feature("compactdefaultargs") MoreIntersection;
 		%feature("autodoc", "Return
 -------
@@ -5356,8 +5356,8 @@ Returns true if there are more intersection between two the shapes.
 ") MoreIntersection;
 		Standard_Boolean MoreIntersection();
 
-		/****************** NextIntersection ******************/
-		/**** md5 signature: c7daff0a72de42893f05b8f795c72477 ****/
+		/****** TopOpeBRep_ShapeIntersector2d::NextIntersection ******/
+		/****** md5 signature: c7daff0a72de42893f05b8f795c72477 ******/
 		%feature("compactdefaultargs") NextIntersection;
 		%feature("autodoc", "Return
 -------
@@ -5369,8 +5369,8 @@ Search for the next intersection between the two shapes.
 ") NextIntersection;
 		void NextIntersection();
 
-		/****************** Shape ******************/
-		/**** md5 signature: 9490bf72de2629e156b2f9f7c67be648 ****/
+		/****** TopOpeBRep_ShapeIntersector2d::Shape ******/
+		/****** md5 signature: 9490bf72de2629e156b2f9f7c67be648 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -5401,8 +5401,8 @@ Return the shape <index> ( = 1 or 2) given to initintersection(). index = 1 will
 ********************************/
 class TopOpeBRep_ShapeScanner {
 	public:
-		/****************** TopOpeBRep_ShapeScanner ******************/
-		/**** md5 signature: 82a9ee75efa2d73032ba6752f6b249d2 ****/
+		/****** TopOpeBRep_ShapeScanner::TopOpeBRep_ShapeScanner ******/
+		/****** md5 signature: 82a9ee75efa2d73032ba6752f6b249d2 ******/
 		%feature("compactdefaultargs") TopOpeBRep_ShapeScanner;
 		%feature("autodoc", "Return
 -------
@@ -5414,8 +5414,8 @@ No available documentation.
 ") TopOpeBRep_ShapeScanner;
 		 TopOpeBRep_ShapeScanner();
 
-		/****************** AddBoxesMakeCOB ******************/
-		/**** md5 signature: a07ac8ca368d90fd9dd48b88e87007c7 ****/
+		/****** TopOpeBRep_ShapeScanner::AddBoxesMakeCOB ******/
+		/****** md5 signature: a07ac8ca368d90fd9dd48b88e87007c7 ******/
 		%feature("compactdefaultargs") AddBoxesMakeCOB;
 		%feature("autodoc", "
 Parameters
@@ -5434,8 +5434,8 @@ No available documentation.
 ") AddBoxesMakeCOB;
 		void AddBoxesMakeCOB(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA = TopAbs_SHAPE);
 
-		/****************** BoxSort ******************/
-		/**** md5 signature: d84fbab6e90b588ace21537275d98770 ****/
+		/****** TopOpeBRep_ShapeScanner::BoxSort ******/
+		/****** md5 signature: d84fbab6e90b588ace21537275d98770 ******/
 		%feature("compactdefaultargs") BoxSort;
 		%feature("autodoc", "Return
 -------
@@ -5447,8 +5447,8 @@ No available documentation.
 ") BoxSort;
 		const TopOpeBRepTool_BoxSort & BoxSort();
 
-		/****************** ChangeBoxSort ******************/
-		/**** md5 signature: 26d224aa25e39745d650f44f9742cf04 ****/
+		/****** TopOpeBRep_ShapeScanner::ChangeBoxSort ******/
+		/****** md5 signature: 26d224aa25e39745d650f44f9742cf04 ******/
 		%feature("compactdefaultargs") ChangeBoxSort;
 		%feature("autodoc", "Return
 -------
@@ -5460,8 +5460,8 @@ No available documentation.
 ") ChangeBoxSort;
 		TopOpeBRepTool_BoxSort & ChangeBoxSort();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TopOpeBRep_ShapeScanner::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -5473,8 +5473,8 @@ No available documentation.
 ") Clear;
 		void Clear();
 
-		/****************** Current ******************/
-		/**** md5 signature: b191bf677bf7b52144f20d0821ea8f06 ****/
+		/****** TopOpeBRep_ShapeScanner::Current ******/
+		/****** md5 signature: b191bf677bf7b52144f20d0821ea8f06 ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return
 -------
@@ -5486,8 +5486,8 @@ No available documentation.
 ") Current;
 		const TopoDS_Shape Current();
 
-		/****************** DumpCurrent ******************/
-		/**** md5 signature: 2cfbfd895f7349c098bf212a528228ac ****/
+		/****** TopOpeBRep_ShapeScanner::DumpCurrent ******/
+		/****** md5 signature: 2cfbfd895f7349c098bf212a528228ac ******/
 		%feature("compactdefaultargs") DumpCurrent;
 		%feature("autodoc", "
 Parameters
@@ -5503,8 +5503,8 @@ No available documentation.
 ") DumpCurrent;
 		Standard_OStream & DumpCurrent(std::ostream &OutValue);
 
-		/****************** Index ******************/
-		/**** md5 signature: 407d80ef3037d55996765198adea3908 ****/
+		/****** TopOpeBRep_ShapeScanner::Index ******/
+		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -5516,8 +5516,8 @@ No available documentation.
 ") Index;
 		Standard_Integer Index();
 
-		/****************** Init ******************/
-		/**** md5 signature: e1998014ab60e76632d3616164d300f4 ****/
+		/****** TopOpeBRep_ShapeScanner::Init ******/
+		/****** md5 signature: e1998014ab60e76632d3616164d300f4 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5534,8 +5534,8 @@ No available documentation.
 ") Init;
 		void Init(const TopoDS_Shape & E);
 
-		/****************** Init ******************/
-		/**** md5 signature: 062e1f6d6462e055b04c4f09f0be64bc ****/
+		/****** TopOpeBRep_ShapeScanner::Init ******/
+		/****** md5 signature: 062e1f6d6462e055b04c4f09f0be64bc ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5552,8 +5552,8 @@ No available documentation.
 ") Init;
 		void Init(TopOpeBRepTool_ShapeExplorer & X);
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** TopOpeBRep_ShapeScanner::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -5565,8 +5565,8 @@ No available documentation.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** TopOpeBRep_ShapeScanner::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -5592,8 +5592,8 @@ No available documentation.
 *******************************/
 class TopOpeBRep_VPointInter {
 	public:
-		/****************** TopOpeBRep_VPointInter ******************/
-		/**** md5 signature: 445147aa2904424fa8d8622b3021c763 ****/
+		/****** TopOpeBRep_VPointInter::TopOpeBRep_VPointInter ******/
+		/****** md5 signature: 445147aa2904424fa8d8622b3021c763 ******/
 		%feature("compactdefaultargs") TopOpeBRep_VPointInter;
 		%feature("autodoc", "Return
 -------
@@ -5605,8 +5605,8 @@ No available documentation.
 ") TopOpeBRep_VPointInter;
 		 TopOpeBRep_VPointInter();
 
-		/****************** ArcOnS1 ******************/
-		/**** md5 signature: edbaad1d35cc20e3c0b6fc1aece17dfb ****/
+		/****** TopOpeBRep_VPointInter::ArcOnS1 ******/
+		/****** md5 signature: edbaad1d35cc20e3c0b6fc1aece17dfb ******/
 		%feature("compactdefaultargs") ArcOnS1;
 		%feature("autodoc", "Return
 -------
@@ -5618,8 +5618,8 @@ No available documentation.
 ") ArcOnS1;
 		const TopoDS_Shape ArcOnS1();
 
-		/****************** ArcOnS2 ******************/
-		/**** md5 signature: 1599b619a36c1eabe74ebf38006b69da ****/
+		/****** TopOpeBRep_VPointInter::ArcOnS2 ******/
+		/****** md5 signature: 1599b619a36c1eabe74ebf38006b69da ******/
 		%feature("compactdefaultargs") ArcOnS2;
 		%feature("autodoc", "Return
 -------
@@ -5631,8 +5631,8 @@ No available documentation.
 ") ArcOnS2;
 		const TopoDS_Shape ArcOnS2();
 
-		/****************** ChangeKeep ******************/
-		/**** md5 signature: 337f27b7255256fd364aefe775ca8761 ****/
+		/****** TopOpeBRep_VPointInter::ChangeKeep ******/
+		/****** md5 signature: 337f27b7255256fd364aefe775ca8761 ******/
 		%feature("compactdefaultargs") ChangeKeep;
 		%feature("autodoc", "
 Parameters
@@ -5649,8 +5649,8 @@ Updates vpointinter flag 'keep' with <keep>.
 ") ChangeKeep;
 		void ChangeKeep(const Standard_Boolean keep);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 5579594f426ee060a7dba148d700be11 ****/
+		/****** TopOpeBRep_VPointInter::Dump ******/
+		/****** md5 signature: 5579594f426ee060a7dba148d700be11 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -5668,8 +5668,8 @@ No available documentation.
 ") Dump;
 		Standard_OStream & Dump(const Standard_Integer I, const TopoDS_Face & F, std::ostream &OutValue);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 1f8e051df2589ec6a071609bf7470fc1 ****/
+		/****** TopOpeBRep_VPointInter::Dump ******/
+		/****** md5 signature: 1f8e051df2589ec6a071609bf7470fc1 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -5687,8 +5687,8 @@ No available documentation.
 ") Dump;
 		Standard_OStream & Dump(const TopoDS_Face & F1, const TopoDS_Face & F2, std::ostream &OutValue);
 
-		/****************** Edge ******************/
-		/**** md5 signature: 69a02b36daf6e7cb7791cc5ef6d9ffd2 ****/
+		/****** TopOpeBRep_VPointInter::Edge ******/
+		/****** md5 signature: 69a02b36daf6e7cb7791cc5ef6d9ffd2 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -5705,8 +5705,8 @@ Get the edge of shape i (1,2) containing the point. returned shape is null if th
 ") Edge;
 		const TopoDS_Shape Edge(const Standard_Integer I);
 
-		/****************** EdgeON ******************/
-		/**** md5 signature: 3801af15513f48fe057bea24f0b4c612 ****/
+		/****** TopOpeBRep_VPointInter::EdgeON ******/
+		/****** md5 signature: 3801af15513f48fe057bea24f0b4c612 ******/
 		%feature("compactdefaultargs") EdgeON;
 		%feature("autodoc", "
 Parameters
@@ -5725,8 +5725,8 @@ Set the shape eon of shape i (1,2) containing the point, and parameter <par> of 
 ") EdgeON;
 		void EdgeON(const TopoDS_Shape & Eon, const Standard_Real Par, const Standard_Integer I);
 
-		/****************** EdgeON ******************/
-		/**** md5 signature: d37dbd316338f91f7a4148fac4a4b700 ****/
+		/****** TopOpeBRep_VPointInter::EdgeON ******/
+		/****** md5 signature: d37dbd316338f91f7a4148fac4a4b700 ******/
 		%feature("compactdefaultargs") EdgeON;
 		%feature("autodoc", "
 Parameters
@@ -5743,8 +5743,8 @@ Get the edge of shape i (1,2) containing the point.
 ") EdgeON;
 		const TopoDS_Shape EdgeON(const Standard_Integer I);
 
-		/****************** EdgeONParameter ******************/
-		/**** md5 signature: 29ed1e5977d9b693f3fdeb7599a5d671 ****/
+		/****** TopOpeBRep_VPointInter::EdgeONParameter ******/
+		/****** md5 signature: 29ed1e5977d9b693f3fdeb7599a5d671 ******/
 		%feature("compactdefaultargs") EdgeONParameter;
 		%feature("autodoc", "
 Parameters
@@ -5761,8 +5761,8 @@ Get the parameter on edge of shape i (1,2) containing the point.
 ") EdgeONParameter;
 		Standard_Real EdgeONParameter(const Standard_Integer I);
 
-		/****************** EdgeParameter ******************/
-		/**** md5 signature: e619f0a93316cfaaf96f2d6714dbd290 ****/
+		/****** TopOpeBRep_VPointInter::EdgeParameter ******/
+		/****** md5 signature: e619f0a93316cfaaf96f2d6714dbd290 ******/
 		%feature("compactdefaultargs") EdgeParameter;
 		%feature("autodoc", "
 Parameters
@@ -5779,8 +5779,8 @@ Get the parameter on edge of shape i (1,2) containing the point.
 ") EdgeParameter;
 		Standard_Real EdgeParameter(const Standard_Integer I);
 
-		/****************** EqualpP ******************/
-		/**** md5 signature: e25e4b6710ace9acfd8ce6670df8cd66 ****/
+		/****** TopOpeBRep_VPointInter::EqualpP ******/
+		/****** md5 signature: e25e4b6710ace9acfd8ce6670df8cd66 ******/
 		%feature("compactdefaultargs") EqualpP;
 		%feature("autodoc", "
 Parameters
@@ -5797,8 +5797,8 @@ Returns <true> if the 3d points and the parameters of the vpoints are same.
 ") EqualpP;
 		Standard_Boolean EqualpP(const TopOpeBRep_VPointInter & VP);
 
-		/****************** GetShapes ******************/
-		/**** md5 signature: f83386b9050594750b3cbd4a9b328f40 ****/
+		/****** TopOpeBRep_VPointInter::GetShapes ******/
+		/****** md5 signature: f83386b9050594750b3cbd4a9b328f40 ******/
 		%feature("compactdefaultargs") GetShapes;
 		%feature("autodoc", "
 Parameters
@@ -5815,8 +5815,8 @@ No available documentation.
 ") GetShapes;
 		void GetShapes(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** Index ******************/
-		/**** md5 signature: 14b6f4590eeca8d2e66a904c0019a95f ****/
+		/****** TopOpeBRep_VPointInter::Index ******/
+		/****** md5 signature: 14b6f4590eeca8d2e66a904c0019a95f ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "
 Parameters
@@ -5833,8 +5833,8 @@ No available documentation.
 ") Index;
 		void Index(const Standard_Integer I);
 
-		/****************** Index ******************/
-		/**** md5 signature: 407d80ef3037d55996765198adea3908 ****/
+		/****** TopOpeBRep_VPointInter::Index ******/
+		/****** md5 signature: 407d80ef3037d55996765198adea3908 ******/
 		%feature("compactdefaultargs") Index;
 		%feature("autodoc", "Return
 -------
@@ -5846,8 +5846,8 @@ No available documentation.
 ") Index;
 		Standard_Integer Index();
 
-		/****************** IsInternal ******************/
-		/**** md5 signature: d02f8c187f927a9ba16cc17de3466e18 ****/
+		/****** TopOpeBRep_VPointInter::IsInternal ******/
+		/****** md5 signature: d02f8c187f927a9ba16cc17de3466e18 ******/
 		%feature("compactdefaultargs") IsInternal;
 		%feature("autodoc", "Return
 -------
@@ -5859,8 +5859,8 @@ No available documentation.
 ") IsInternal;
 		Standard_Boolean IsInternal();
 
-		/****************** IsMultiple ******************/
-		/**** md5 signature: d5ff9ea3f75ee3e6e0efda5814b9e44e ****/
+		/****** TopOpeBRep_VPointInter::IsMultiple ******/
+		/****** md5 signature: d5ff9ea3f75ee3e6e0efda5814b9e44e ******/
 		%feature("compactdefaultargs") IsMultiple;
 		%feature("autodoc", "Return
 -------
@@ -5872,8 +5872,8 @@ Returns true if the point belongs to several intersection lines.
 ") IsMultiple;
 		Standard_Boolean IsMultiple();
 
-		/****************** IsOnDomS1 ******************/
-		/**** md5 signature: 73bb79eb09813ce2f78b4a234c9e417b ****/
+		/****** TopOpeBRep_VPointInter::IsOnDomS1 ******/
+		/****** md5 signature: 73bb79eb09813ce2f78b4a234c9e417b ******/
 		%feature("compactdefaultargs") IsOnDomS1;
 		%feature("autodoc", "Return
 -------
@@ -5885,8 +5885,8 @@ No available documentation.
 ") IsOnDomS1;
 		Standard_Boolean IsOnDomS1();
 
-		/****************** IsOnDomS2 ******************/
-		/**** md5 signature: 93e8adde96351fec102c7bd4f10efa11 ****/
+		/****** TopOpeBRep_VPointInter::IsOnDomS2 ******/
+		/****** md5 signature: 93e8adde96351fec102c7bd4f10efa11 ******/
 		%feature("compactdefaultargs") IsOnDomS2;
 		%feature("autodoc", "Return
 -------
@@ -5898,8 +5898,8 @@ No available documentation.
 ") IsOnDomS2;
 		Standard_Boolean IsOnDomS2();
 
-		/****************** IsVertex ******************/
-		/**** md5 signature: 086fc030883417cdd3233687cd7fbc88 ****/
+		/****** TopOpeBRep_VPointInter::IsVertex ******/
+		/****** md5 signature: 086fc030883417cdd3233687cd7fbc88 ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "
 Parameters
@@ -5916,8 +5916,8 @@ No available documentation.
 ") IsVertex;
 		Standard_Boolean IsVertex(const Standard_Integer I);
 
-		/****************** IsVertexOnS1 ******************/
-		/**** md5 signature: f69812d2258e171cd6e9220af4bdf9a7 ****/
+		/****** TopOpeBRep_VPointInter::IsVertexOnS1 ******/
+		/****** md5 signature: f69812d2258e171cd6e9220af4bdf9a7 ******/
 		%feature("compactdefaultargs") IsVertexOnS1;
 		%feature("autodoc", "Return
 -------
@@ -5929,8 +5929,8 @@ Returns true if the point is a vertex on the initial restriction facet of the fi
 ") IsVertexOnS1;
 		Standard_Boolean IsVertexOnS1();
 
-		/****************** IsVertexOnS2 ******************/
-		/**** md5 signature: 2bca687752d3b31cff59a696d6463475 ****/
+		/****** TopOpeBRep_VPointInter::IsVertexOnS2 ******/
+		/****** md5 signature: 2bca687752d3b31cff59a696d6463475 ******/
 		%feature("compactdefaultargs") IsVertexOnS2;
 		%feature("autodoc", "Return
 -------
@@ -5942,8 +5942,8 @@ Returns true if the point is a vertex on the initial restriction facet of the se
 ") IsVertexOnS2;
 		Standard_Boolean IsVertexOnS2();
 
-		/****************** Keep ******************/
-		/**** md5 signature: 49f5fb06c6fb4c03a84c4eb06dd2637f ****/
+		/****** TopOpeBRep_VPointInter::Keep ******/
+		/****** md5 signature: 49f5fb06c6fb4c03a84c4eb06dd2637f ******/
 		%feature("compactdefaultargs") Keep;
 		%feature("autodoc", "Return
 -------
@@ -5955,8 +5955,8 @@ Returns value of mykeep (does not evaluate states) false at creation of vpoint. 
 ") Keep;
 		Standard_Boolean Keep();
 
-		/****************** PThePointOfIntersectionDummy ******************/
-		/**** md5 signature: ec898b8efc4d8dd671e8f36c3caa6296 ****/
+		/****** TopOpeBRep_VPointInter::PThePointOfIntersectionDummy ******/
+		/****** md5 signature: ec898b8efc4d8dd671e8f36c3caa6296 ******/
 		%feature("compactdefaultargs") PThePointOfIntersectionDummy;
 		%feature("autodoc", "Return
 -------
@@ -5968,8 +5968,8 @@ No available documentation.
 ") PThePointOfIntersectionDummy;
 		TopOpeBRep_PThePointOfIntersection PThePointOfIntersectionDummy();
 
-		/****************** ParameterOnArc1 ******************/
-		/**** md5 signature: fd3d8eb9ed7668171a21e22983def6f0 ****/
+		/****** TopOpeBRep_VPointInter::ParameterOnArc1 ******/
+		/****** md5 signature: fd3d8eb9ed7668171a21e22983def6f0 ******/
 		%feature("compactdefaultargs") ParameterOnArc1;
 		%feature("autodoc", "Return
 -------
@@ -5981,8 +5981,8 @@ No available documentation.
 ") ParameterOnArc1;
 		Standard_Real ParameterOnArc1();
 
-		/****************** ParameterOnArc2 ******************/
-		/**** md5 signature: aa992bbe43a517a3ff131f0c53ce4d8a ****/
+		/****** TopOpeBRep_VPointInter::ParameterOnArc2 ******/
+		/****** md5 signature: aa992bbe43a517a3ff131f0c53ce4d8a ******/
 		%feature("compactdefaultargs") ParameterOnArc2;
 		%feature("autodoc", "Return
 -------
@@ -5994,8 +5994,8 @@ No available documentation.
 ") ParameterOnArc2;
 		Standard_Real ParameterOnArc2();
 
-		/****************** ParameterOnLine ******************/
-		/**** md5 signature: 737a2a57e32e63a1ba587dea488e9583 ****/
+		/****** TopOpeBRep_VPointInter::ParameterOnLine ******/
+		/****** md5 signature: 737a2a57e32e63a1ba587dea488e9583 ******/
 		%feature("compactdefaultargs") ParameterOnLine;
 		%feature("autodoc", "Return
 -------
@@ -6007,8 +6007,8 @@ No available documentation.
 ") ParameterOnLine;
 		Standard_Real ParameterOnLine();
 
-		/****************** ParametersOnS1 ******************/
-		/**** md5 signature: 65a097ef44a5cf9a58ab746f2da6c181 ****/
+		/****** TopOpeBRep_VPointInter::ParametersOnS1 ******/
+		/****** md5 signature: 65a097ef44a5cf9a58ab746f2da6c181 ******/
 		%feature("compactdefaultargs") ParametersOnS1;
 		%feature("autodoc", "
 Parameters
@@ -6025,8 +6025,8 @@ No available documentation.
 ") ParametersOnS1;
 		void ParametersOnS1(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ParametersOnS2 ******************/
-		/**** md5 signature: 77976f8d675bab277c77e4c02c68ee8f ****/
+		/****** TopOpeBRep_VPointInter::ParametersOnS2 ******/
+		/****** md5 signature: 77976f8d675bab277c77e4c02c68ee8f ******/
 		%feature("compactdefaultargs") ParametersOnS2;
 		%feature("autodoc", "
 Parameters
@@ -6043,8 +6043,8 @@ No available documentation.
 ") ParametersOnS2;
 		void ParametersOnS2(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ParonE ******************/
-		/**** md5 signature: ca0f2c28987e504607fe7ed5501d2039 ****/
+		/****** TopOpeBRep_VPointInter::ParonE ******/
+		/****** md5 signature: ca0f2c28987e504607fe7ed5501d2039 ******/
 		%feature("compactdefaultargs") ParonE;
 		%feature("autodoc", "
 Parameters
@@ -6061,8 +6061,8 @@ Returns <false> if the vpoint is not given on arc <e>, else returns <par> parame
 ") ParonE;
 		Standard_Boolean ParonE(const TopoDS_Edge & E, Standard_Real &OutValue);
 
-		/****************** SetPoint ******************/
-		/**** md5 signature: d9b041e9178fde9f6271b55faa9460a0 ****/
+		/****** TopOpeBRep_VPointInter::SetPoint ******/
+		/****** md5 signature: d9b041e9178fde9f6271b55faa9460a0 ******/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "
 Parameters
@@ -6079,8 +6079,8 @@ No available documentation.
 ") SetPoint;
 		void SetPoint(const IntPatch_Point & P);
 
-		/****************** SetShapes ******************/
-		/**** md5 signature: 3595c3b14ebeb78e69fcff771910d717 ****/
+		/****** TopOpeBRep_VPointInter::SetShapes ******/
+		/****** md5 signature: 3595c3b14ebeb78e69fcff771910d717 ******/
 		%feature("compactdefaultargs") SetShapes;
 		%feature("autodoc", "
 Parameters
@@ -6098,8 +6098,8 @@ No available documentation.
 ") SetShapes;
 		void SetShapes(const Standard_Integer I1, const Standard_Integer I2);
 
-		/****************** ShapeIndex ******************/
-		/**** md5 signature: 7d3e7fa2224eb9e0f253d806f40caf9f ****/
+		/****** TopOpeBRep_VPointInter::ShapeIndex ******/
+		/****** md5 signature: 7d3e7fa2224eb9e0f253d806f40caf9f ******/
 		%feature("compactdefaultargs") ShapeIndex;
 		%feature("autodoc", "Return
 -------
@@ -6111,8 +6111,8 @@ Returns value of filed myshapeindex = 0,1,2,3 0 means the vpoint is on no restri
 ") ShapeIndex;
 		Standard_Integer ShapeIndex();
 
-		/****************** ShapeIndex ******************/
-		/**** md5 signature: 0457d2bee32bf98c8438fff50731a362 ****/
+		/****** TopOpeBRep_VPointInter::ShapeIndex ******/
+		/****** md5 signature: 0457d2bee32bf98c8438fff50731a362 ******/
 		%feature("compactdefaultargs") ShapeIndex;
 		%feature("autodoc", "
 Parameters
@@ -6129,8 +6129,8 @@ Set value of shape supporting me (0,1,2,3).
 ") ShapeIndex;
 		void ShapeIndex(const Standard_Integer I);
 
-		/****************** State ******************/
-		/**** md5 signature: 3ef584a4c8697b5b43cfa0be6c8072f7 ****/
+		/****** TopOpeBRep_VPointInter::State ******/
+		/****** md5 signature: 3ef584a4c8697b5b43cfa0be6c8072f7 ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "
 Parameters
@@ -6147,8 +6147,8 @@ Get state of vpoint within the domain of geometric shape domain <i> (= 1 or 2).
 ") State;
 		TopAbs_State State(const Standard_Integer I);
 
-		/****************** State ******************/
-		/**** md5 signature: 07a901fd299418dd38cc890d1b990c41 ****/
+		/****** TopOpeBRep_VPointInter::State ******/
+		/****** md5 signature: 07a901fd299418dd38cc890d1b990c41 ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "
 Parameters
@@ -6166,8 +6166,8 @@ Set the state of vpoint within the domain of the geometric shape <i> (= 1 or 2).
 ") State;
 		void State(const TopAbs_State S, const Standard_Integer I);
 
-		/****************** SurfaceParameters ******************/
-		/**** md5 signature: b2de99c015c12be76b4165b4e0ef8bf9 ****/
+		/****** TopOpeBRep_VPointInter::SurfaceParameters ******/
+		/****** md5 signature: b2de99c015c12be76b4165b4e0ef8bf9 ******/
 		%feature("compactdefaultargs") SurfaceParameters;
 		%feature("autodoc", "
 Parameters
@@ -6184,8 +6184,8 @@ Get the parameter on surface of shape i (1,2) containing the point.
 ") SurfaceParameters;
 		gp_Pnt2d SurfaceParameters(const Standard_Integer I);
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/****** TopOpeBRep_VPointInter::Tolerance ******/
+		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -6197,8 +6197,8 @@ No available documentation.
 ") Tolerance;
 		Standard_Real Tolerance();
 
-		/****************** TransitionLineArc1 ******************/
-		/**** md5 signature: 679806c2617ae45ea0d53c6d48f259d0 ****/
+		/****** TopOpeBRep_VPointInter::TransitionLineArc1 ******/
+		/****** md5 signature: 679806c2617ae45ea0d53c6d48f259d0 ******/
 		%feature("compactdefaultargs") TransitionLineArc1;
 		%feature("autodoc", "Return
 -------
@@ -6210,8 +6210,8 @@ No available documentation.
 ") TransitionLineArc1;
 		IntSurf_Transition TransitionLineArc1();
 
-		/****************** TransitionLineArc2 ******************/
-		/**** md5 signature: bbc3f85a43c04d5fa71a8b70cc7ed587 ****/
+		/****** TopOpeBRep_VPointInter::TransitionLineArc2 ******/
+		/****** md5 signature: bbc3f85a43c04d5fa71a8b70cc7ed587 ******/
 		%feature("compactdefaultargs") TransitionLineArc2;
 		%feature("autodoc", "Return
 -------
@@ -6223,8 +6223,8 @@ No available documentation.
 ") TransitionLineArc2;
 		IntSurf_Transition TransitionLineArc2();
 
-		/****************** TransitionOnS1 ******************/
-		/**** md5 signature: 5245a12c5e2011034b6494ccfe7fc557 ****/
+		/****** TopOpeBRep_VPointInter::TransitionOnS1 ******/
+		/****** md5 signature: 5245a12c5e2011034b6494ccfe7fc557 ******/
 		%feature("compactdefaultargs") TransitionOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6236,8 +6236,8 @@ No available documentation.
 ") TransitionOnS1;
 		IntSurf_Transition TransitionOnS1();
 
-		/****************** TransitionOnS2 ******************/
-		/**** md5 signature: 3e01bdbaced43133b8538ecc2257bd7c ****/
+		/****** TopOpeBRep_VPointInter::TransitionOnS2 ******/
+		/****** md5 signature: 3e01bdbaced43133b8538ecc2257bd7c ******/
 		%feature("compactdefaultargs") TransitionOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6249,8 +6249,8 @@ No available documentation.
 ") TransitionOnS2;
 		IntSurf_Transition TransitionOnS2();
 
-		/****************** UpdateKeep ******************/
-		/**** md5 signature: 5ad9d52824ae89630481b83d4aed1edf ****/
+		/****** TopOpeBRep_VPointInter::UpdateKeep ******/
+		/****** md5 signature: 5ad9d52824ae89630481b83d4aed1edf ******/
 		%feature("compactdefaultargs") UpdateKeep;
 		%feature("autodoc", "Return
 -------
@@ -6262,8 +6262,8 @@ Set mykeep value according to current states.
 ") UpdateKeep;
 		void UpdateKeep();
 
-		/****************** Value ******************/
-		/**** md5 signature: eddd2908948849b73f6d8aacab318652 ****/
+		/****** TopOpeBRep_VPointInter::Value ******/
+		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -6275,8 +6275,8 @@ No available documentation.
 ") Value;
 		const gp_Pnt Value();
 
-		/****************** Vertex ******************/
-		/**** md5 signature: 0c88aa57dfb7be7247a84d38b4f95722 ****/
+		/****** TopOpeBRep_VPointInter::Vertex ******/
+		/****** md5 signature: 0c88aa57dfb7be7247a84d38b4f95722 ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -6293,8 +6293,8 @@ No available documentation.
 ") Vertex;
 		const TopoDS_Shape Vertex(const Standard_Integer I);
 
-		/****************** VertexOnS1 ******************/
-		/**** md5 signature: 6ed918c69b81ad758219c5591cd71597 ****/
+		/****** TopOpeBRep_VPointInter::VertexOnS1 ******/
+		/****** md5 signature: 6ed918c69b81ad758219c5591cd71597 ******/
 		%feature("compactdefaultargs") VertexOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6306,8 +6306,8 @@ Returns the information about the point when it is on the domain of the first pa
 ") VertexOnS1;
 		const TopoDS_Shape VertexOnS1();
 
-		/****************** VertexOnS2 ******************/
-		/**** md5 signature: 85c30fc7a3533bf2b52ba986c5679039 ****/
+		/****** TopOpeBRep_VPointInter::VertexOnS2 ******/
+		/****** md5 signature: 85c30fc7a3533bf2b52ba986c5679039 ******/
 		%feature("compactdefaultargs") VertexOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6333,8 +6333,8 @@ Returns the information about the point when it is on the domain of the second p
 *****************************************/
 class TopOpeBRep_VPointInterClassifier {
 	public:
-		/****************** TopOpeBRep_VPointInterClassifier ******************/
-		/**** md5 signature: a1be3fe40eb0a78f932a4aedb35a10ae ****/
+		/****** TopOpeBRep_VPointInterClassifier::TopOpeBRep_VPointInterClassifier ******/
+		/****** md5 signature: a1be3fe40eb0a78f932a4aedb35a10ae ******/
 		%feature("compactdefaultargs") TopOpeBRep_VPointInterClassifier;
 		%feature("autodoc", "Return
 -------
@@ -6346,8 +6346,8 @@ No available documentation.
 ") TopOpeBRep_VPointInterClassifier;
 		 TopOpeBRep_VPointInterClassifier();
 
-		/****************** Edge ******************/
-		/**** md5 signature: 736edb396456a570eb4c4e39335bdcb0 ****/
+		/****** TopOpeBRep_VPointInterClassifier::Edge ******/
+		/****** md5 signature: 736edb396456a570eb4c4e39335bdcb0 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -6359,8 +6359,8 @@ Returns the edge containing the vpoint <vp> used in the last vpointposition() ca
 ") Edge;
 		const TopoDS_Shape Edge();
 
-		/****************** EdgeParameter ******************/
-		/**** md5 signature: a4ccdc0e9c154705af034e3ac274511c ****/
+		/****** TopOpeBRep_VPointInterClassifier::EdgeParameter ******/
+		/****** md5 signature: a4ccdc0e9c154705af034e3ac274511c ******/
 		%feature("compactdefaultargs") EdgeParameter;
 		%feature("autodoc", "Return
 -------
@@ -6372,8 +6372,8 @@ Returns the parameter of the vpoint <vp> on edge().
 ") EdgeParameter;
 		Standard_Real EdgeParameter();
 
-		/****************** VPointPosition ******************/
-		/**** md5 signature: 55d46de1e39090798de4632ad1c50433 ****/
+		/****** TopOpeBRep_VPointInterClassifier::VPointPosition ******/
+		/****** md5 signature: 55d46de1e39090798de4632ad1c50433 ******/
 		%feature("compactdefaultargs") VPointPosition;
 		%feature("autodoc", "
 Parameters
@@ -6409,8 +6409,8 @@ Compute position of vpoint <vp> regarding with face <f>. <shapeindex> (= 1,2) in
 ***************************************/
 class TopOpeBRep_VPointInterIterator {
 	public:
-		/****************** TopOpeBRep_VPointInterIterator ******************/
-		/**** md5 signature: 4a60080b99d1b377643e02747bdab223 ****/
+		/****** TopOpeBRep_VPointInterIterator::TopOpeBRep_VPointInterIterator ******/
+		/****** md5 signature: 4a60080b99d1b377643e02747bdab223 ******/
 		%feature("compactdefaultargs") TopOpeBRep_VPointInterIterator;
 		%feature("autodoc", "Return
 -------
@@ -6422,8 +6422,8 @@ No available documentation.
 ") TopOpeBRep_VPointInterIterator;
 		 TopOpeBRep_VPointInterIterator();
 
-		/****************** TopOpeBRep_VPointInterIterator ******************/
-		/**** md5 signature: 848023f5f372c815ac79e0dd516e1273 ****/
+		/****** TopOpeBRep_VPointInterIterator::TopOpeBRep_VPointInterIterator ******/
+		/****** md5 signature: 848023f5f372c815ac79e0dd516e1273 ******/
 		%feature("compactdefaultargs") TopOpeBRep_VPointInterIterator;
 		%feature("autodoc", "
 Parameters
@@ -6440,8 +6440,8 @@ No available documentation.
 ") TopOpeBRep_VPointInterIterator;
 		 TopOpeBRep_VPointInterIterator(const TopOpeBRep_LineInter & LI);
 
-		/****************** ChangeCurrentVP ******************/
-		/**** md5 signature: 496148d05b3616d904bc44b4aaa992c9 ****/
+		/****** TopOpeBRep_VPointInterIterator::ChangeCurrentVP ******/
+		/****** md5 signature: 496148d05b3616d904bc44b4aaa992c9 ******/
 		%feature("compactdefaultargs") ChangeCurrentVP;
 		%feature("autodoc", "Return
 -------
@@ -6453,8 +6453,8 @@ No available documentation.
 ") ChangeCurrentVP;
 		TopOpeBRep_VPointInter & ChangeCurrentVP();
 
-		/****************** CurrentVP ******************/
-		/**** md5 signature: 260aa53e61b4d197c4be3891e211d125 ****/
+		/****** TopOpeBRep_VPointInterIterator::CurrentVP ******/
+		/****** md5 signature: 260aa53e61b4d197c4be3891e211d125 ******/
 		%feature("compactdefaultargs") CurrentVP;
 		%feature("autodoc", "Return
 -------
@@ -6466,8 +6466,8 @@ No available documentation.
 ") CurrentVP;
 		const TopOpeBRep_VPointInter & CurrentVP();
 
-		/****************** CurrentVPIndex ******************/
-		/**** md5 signature: 85204fb33ee8549cb9f5dbd465f7d30b ****/
+		/****** TopOpeBRep_VPointInterIterator::CurrentVPIndex ******/
+		/****** md5 signature: 85204fb33ee8549cb9f5dbd465f7d30b ******/
 		%feature("compactdefaultargs") CurrentVPIndex;
 		%feature("autodoc", "Return
 -------
@@ -6479,8 +6479,8 @@ No available documentation.
 ") CurrentVPIndex;
 		Standard_Integer CurrentVPIndex();
 
-		/****************** Init ******************/
-		/**** md5 signature: edc6296d5a1bee29f35c1f07be0565e9 ****/
+		/****** TopOpeBRep_VPointInterIterator::Init ******/
+		/****** md5 signature: edc6296d5a1bee29f35c1f07be0565e9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6498,8 +6498,8 @@ No available documentation.
 ") Init;
 		void Init(const TopOpeBRep_LineInter & LI, const Standard_Boolean checkkeep = Standard_False);
 
-		/****************** Init ******************/
-		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
+		/****** TopOpeBRep_VPointInterIterator::Init ******/
+		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -6511,8 +6511,8 @@ No available documentation.
 ") Init;
 		void Init();
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** TopOpeBRep_VPointInterIterator::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -6524,8 +6524,8 @@ No available documentation.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** TopOpeBRep_VPointInterIterator::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -6537,8 +6537,8 @@ No available documentation.
 ") Next;
 		void Next();
 
-		/****************** PLineInterDummy ******************/
-		/**** md5 signature: 20d21f153b52d5c38ce7cf68a51ddad1 ****/
+		/****** TopOpeBRep_VPointInterIterator::PLineInterDummy ******/
+		/****** md5 signature: 20d21f153b52d5c38ce7cf68a51ddad1 ******/
 		%feature("compactdefaultargs") PLineInterDummy;
 		%feature("autodoc", "Return
 -------
@@ -6564,8 +6564,8 @@ No available documentation.
 *******************************/
 class TopOpeBRep_WPointInter {
 	public:
-		/****************** TopOpeBRep_WPointInter ******************/
-		/**** md5 signature: 07487cc8a014764d8895686694392704 ****/
+		/****** TopOpeBRep_WPointInter::TopOpeBRep_WPointInter ******/
+		/****** md5 signature: 07487cc8a014764d8895686694392704 ******/
 		%feature("compactdefaultargs") TopOpeBRep_WPointInter;
 		%feature("autodoc", "Return
 -------
@@ -6577,8 +6577,8 @@ No available documentation.
 ") TopOpeBRep_WPointInter;
 		 TopOpeBRep_WPointInter();
 
-		/****************** PPntOn2SDummy ******************/
-		/**** md5 signature: b847ccb0b68d1e68f6999218617620ec ****/
+		/****** TopOpeBRep_WPointInter::PPntOn2SDummy ******/
+		/****** md5 signature: b847ccb0b68d1e68f6999218617620ec ******/
 		%feature("compactdefaultargs") PPntOn2SDummy;
 		%feature("autodoc", "Return
 -------
@@ -6590,8 +6590,8 @@ No available documentation.
 ") PPntOn2SDummy;
 		TopOpeBRep_PPntOn2S PPntOn2SDummy();
 
-		/****************** Parameters ******************/
-		/**** md5 signature: 30bdd599088f74dedd5979b152a07fd4 ****/
+		/****** TopOpeBRep_WPointInter::Parameters ******/
+		/****** md5 signature: 30bdd599088f74dedd5979b152a07fd4 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -6610,8 +6610,8 @@ No available documentation.
 ") Parameters;
 		void Parameters(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ParametersOnS1 ******************/
-		/**** md5 signature: 65a097ef44a5cf9a58ab746f2da6c181 ****/
+		/****** TopOpeBRep_WPointInter::ParametersOnS1 ******/
+		/****** md5 signature: 65a097ef44a5cf9a58ab746f2da6c181 ******/
 		%feature("compactdefaultargs") ParametersOnS1;
 		%feature("autodoc", "
 Parameters
@@ -6628,8 +6628,8 @@ No available documentation.
 ") ParametersOnS1;
 		void ParametersOnS1(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ParametersOnS2 ******************/
-		/**** md5 signature: 77976f8d675bab277c77e4c02c68ee8f ****/
+		/****** TopOpeBRep_WPointInter::ParametersOnS2 ******/
+		/****** md5 signature: 77976f8d675bab277c77e4c02c68ee8f ******/
 		%feature("compactdefaultargs") ParametersOnS2;
 		%feature("autodoc", "
 Parameters
@@ -6646,8 +6646,8 @@ No available documentation.
 ") ParametersOnS2;
 		void ParametersOnS2(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Set ******************/
-		/**** md5 signature: 25cd1975551f75abc8554038a5b3e8da ****/
+		/****** TopOpeBRep_WPointInter::Set ******/
+		/****** md5 signature: 25cd1975551f75abc8554038a5b3e8da ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -6664,8 +6664,8 @@ No available documentation.
 ") Set;
 		void Set(const IntSurf_PntOn2S & P);
 
-		/****************** Value ******************/
-		/**** md5 signature: eddd2908948849b73f6d8aacab318652 ****/
+		/****** TopOpeBRep_WPointInter::Value ******/
+		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -6677,8 +6677,8 @@ No available documentation.
 ") Value;
 		const gp_Pnt Value();
 
-		/****************** ValueOnS1 ******************/
-		/**** md5 signature: 50b3ba63c3abb8d8b7b0f75f561ce255 ****/
+		/****** TopOpeBRep_WPointInter::ValueOnS1 ******/
+		/****** md5 signature: 50b3ba63c3abb8d8b7b0f75f561ce255 ******/
 		%feature("compactdefaultargs") ValueOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6690,8 +6690,8 @@ No available documentation.
 ") ValueOnS1;
 		gp_Pnt2d ValueOnS1();
 
-		/****************** ValueOnS2 ******************/
-		/**** md5 signature: 5917a8ca4046cc4f4c1891697e532739 ****/
+		/****** TopOpeBRep_WPointInter::ValueOnS2 ******/
+		/****** md5 signature: 5917a8ca4046cc4f4c1891697e532739 ******/
 		%feature("compactdefaultargs") ValueOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6717,8 +6717,8 @@ No available documentation.
 ***************************************/
 class TopOpeBRep_WPointInterIterator {
 	public:
-		/****************** TopOpeBRep_WPointInterIterator ******************/
-		/**** md5 signature: 0a9a3c237cfb9ac449577a8e46e2431d ****/
+		/****** TopOpeBRep_WPointInterIterator::TopOpeBRep_WPointInterIterator ******/
+		/****** md5 signature: 0a9a3c237cfb9ac449577a8e46e2431d ******/
 		%feature("compactdefaultargs") TopOpeBRep_WPointInterIterator;
 		%feature("autodoc", "Return
 -------
@@ -6730,8 +6730,8 @@ No available documentation.
 ") TopOpeBRep_WPointInterIterator;
 		 TopOpeBRep_WPointInterIterator();
 
-		/****************** TopOpeBRep_WPointInterIterator ******************/
-		/**** md5 signature: feea3dde3a7a950ae69c571df50f89bd ****/
+		/****** TopOpeBRep_WPointInterIterator::TopOpeBRep_WPointInterIterator ******/
+		/****** md5 signature: feea3dde3a7a950ae69c571df50f89bd ******/
 		%feature("compactdefaultargs") TopOpeBRep_WPointInterIterator;
 		%feature("autodoc", "
 Parameters
@@ -6748,8 +6748,8 @@ No available documentation.
 ") TopOpeBRep_WPointInterIterator;
 		 TopOpeBRep_WPointInterIterator(const TopOpeBRep_LineInter & LI);
 
-		/****************** CurrentWP ******************/
-		/**** md5 signature: e2d815e0c2e2b5af7abb4585291aa49f ****/
+		/****** TopOpeBRep_WPointInterIterator::CurrentWP ******/
+		/****** md5 signature: e2d815e0c2e2b5af7abb4585291aa49f ******/
 		%feature("compactdefaultargs") CurrentWP;
 		%feature("autodoc", "Return
 -------
@@ -6761,8 +6761,8 @@ No available documentation.
 ") CurrentWP;
 		const TopOpeBRep_WPointInter & CurrentWP();
 
-		/****************** Init ******************/
-		/**** md5 signature: 2bdd8bb3eee4611ae1fc02a9782b42a5 ****/
+		/****** TopOpeBRep_WPointInterIterator::Init ******/
+		/****** md5 signature: 2bdd8bb3eee4611ae1fc02a9782b42a5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6779,8 +6779,8 @@ No available documentation.
 ") Init;
 		void Init(const TopOpeBRep_LineInter & LI);
 
-		/****************** Init ******************/
-		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
+		/****** TopOpeBRep_WPointInterIterator::Init ******/
+		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -6792,8 +6792,8 @@ No available documentation.
 ") Init;
 		void Init();
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** TopOpeBRep_WPointInterIterator::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -6805,8 +6805,8 @@ No available documentation.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** TopOpeBRep_WPointInterIterator::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -6818,8 +6818,8 @@ No available documentation.
 ") Next;
 		void Next();
 
-		/****************** PLineInterDummy ******************/
-		/**** md5 signature: 20d21f153b52d5c38ce7cf68a51ddad1 ****/
+		/****** TopOpeBRep_WPointInterIterator::PLineInterDummy ******/
+		/****** md5 signature: 20d21f153b52d5c38ce7cf68a51ddad1 ******/
 		%feature("compactdefaultargs") PLineInterDummy;
 		%feature("autodoc", "Return
 -------

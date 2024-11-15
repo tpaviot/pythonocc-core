@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TCOLSTDDOCSTRING
 "TColStd module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tcolstd.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tcolstd.html"
 %enddef
 %module (package="OCC.Core", docstring=TCOLSTDDOCSTRING) TColStd
 
@@ -391,8 +391,8 @@ typedef NCollection_Sequence<opencascade::handle<Standard_Transient>> TColStd_Se
 ************************************/
 class TColStd_HPackedMapOfInteger : public Standard_Transient {
 	public:
-		/****************** TColStd_HPackedMapOfInteger ******************/
-		/**** md5 signature: 7dbfb789a2d13306defa568ad5aebfb5 ****/
+		/****** TColStd_HPackedMapOfInteger::TColStd_HPackedMapOfInteger ******/
+		/****** md5 signature: 7dbfb789a2d13306defa568ad5aebfb5 ******/
 		%feature("compactdefaultargs") TColStd_HPackedMapOfInteger;
 		%feature("autodoc", "
 Parameters
@@ -409,8 +409,8 @@ No available documentation.
 ") TColStd_HPackedMapOfInteger;
 		 TColStd_HPackedMapOfInteger(const Standard_Integer NbBuckets = 1);
 
-		/****************** TColStd_HPackedMapOfInteger ******************/
-		/**** md5 signature: 89e534bef075b502a40c10c743d38652 ****/
+		/****** TColStd_HPackedMapOfInteger::TColStd_HPackedMapOfInteger ******/
+		/****** md5 signature: 89e534bef075b502a40c10c743d38652 ******/
 		%feature("compactdefaultargs") TColStd_HPackedMapOfInteger;
 		%feature("autodoc", "
 Parameters
@@ -427,8 +427,8 @@ No available documentation.
 ") TColStd_HPackedMapOfInteger;
 		 TColStd_HPackedMapOfInteger(const TColStd_PackedMapOfInteger & theOther);
 
-		/****************** ChangeMap ******************/
-		/**** md5 signature: ac7c29d51e6428dd947136d83ae404c5 ****/
+		/****** TColStd_HPackedMapOfInteger::ChangeMap ******/
+		/****** md5 signature: ac7c29d51e6428dd947136d83ae404c5 ******/
 		%feature("compactdefaultargs") ChangeMap;
 		%feature("autodoc", "Return
 -------
@@ -440,8 +440,8 @@ No available documentation.
 ") ChangeMap;
 		TColStd_PackedMapOfInteger & ChangeMap();
 
-		/****************** Map ******************/
-		/**** md5 signature: 9730b67796975602112304ea27686558 ****/
+		/****** TColStd_HPackedMapOfInteger::Map ******/
+		/****** md5 signature: 9730b67796975602112304ea27686558 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
@@ -471,8 +471,8 @@ class TColStd_PackedMapOfInteger {
 	public:
 		class TColStd_intMapNode {};
 		class Iterator {};
-		/****************** TColStd_PackedMapOfInteger ******************/
-		/**** md5 signature: ee60f291faae5f56871e692625f9167d ****/
+		/****** TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger ******/
+		/****** md5 signature: ee60f291faae5f56871e692625f9167d ******/
 		%feature("compactdefaultargs") TColStd_PackedMapOfInteger;
 		%feature("autodoc", "
 Parameters
@@ -489,8 +489,8 @@ Constructor.
 ") TColStd_PackedMapOfInteger;
 		 TColStd_PackedMapOfInteger(const Standard_Integer theNbBuckets = 1);
 
-		/****************** TColStd_PackedMapOfInteger ******************/
-		/**** md5 signature: 2cdd258a707cd6ed3411a3db79e6a60a ****/
+		/****** TColStd_PackedMapOfInteger::TColStd_PackedMapOfInteger ******/
+		/****** md5 signature: 2cdd258a707cd6ed3411a3db79e6a60a ******/
 		%feature("compactdefaultargs") TColStd_PackedMapOfInteger;
 		%feature("autodoc", "
 Parameters
@@ -507,8 +507,8 @@ Copy constructor.
 ") TColStd_PackedMapOfInteger;
 		 TColStd_PackedMapOfInteger(const TColStd_PackedMapOfInteger & theOther);
 
-		/****************** Add ******************/
-		/**** md5 signature: fefd53232cb6b225fee21a01797a4953 ****/
+		/****** TColStd_PackedMapOfInteger::Add ******/
+		/****** md5 signature: fefd53232cb6b225fee21a01797a4953 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -525,8 +525,8 @@ No available documentation.
 ") Add;
 		Standard_Boolean Add(const Standard_Integer aKey);
 
-		/****************** Assign ******************/
-		/**** md5 signature: b123b23cfd6a21df1cc646056934f119 ****/
+		/****** TColStd_PackedMapOfInteger::Assign ******/
+		/****** md5 signature: b123b23cfd6a21df1cc646056934f119 ******/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "
 Parameters
@@ -543,8 +543,8 @@ No available documentation.
 ") Assign;
 		TColStd_PackedMapOfInteger & Assign(const TColStd_PackedMapOfInteger &);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TColStd_PackedMapOfInteger::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -556,8 +556,8 @@ No available documentation.
 ") Clear;
 		void Clear();
 
-		/****************** Contains ******************/
-		/**** md5 signature: 8de2585592fed12a6d282488cd796177 ****/
+		/****** TColStd_PackedMapOfInteger::Contains ******/
+		/****** md5 signature: 8de2585592fed12a6d282488cd796177 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -574,8 +574,8 @@ No available documentation.
 ") Contains;
 		Standard_Boolean Contains(const Standard_Integer aKey);
 
-		/****************** Differ ******************/
-		/**** md5 signature: a33b35e060f7a592a4272060e7dca3b9 ****/
+		/****** TColStd_PackedMapOfInteger::Differ ******/
+		/****** md5 signature: a33b35e060f7a592a4272060e7dca3b9 ******/
 		%feature("compactdefaultargs") Differ;
 		%feature("autodoc", "
 Parameters
@@ -592,8 +592,8 @@ Description
 ") Differ;
 		Standard_Boolean Differ(const TColStd_PackedMapOfInteger &);
 
-		/****************** Difference ******************/
-		/**** md5 signature: 8fbd60922dcd49c1c7cf9132a621a893 ****/
+		/****** TColStd_PackedMapOfInteger::Difference ******/
+		/****** md5 signature: 8fbd60922dcd49c1c7cf9132a621a893 ******/
 		%feature("compactdefaultargs") Difference;
 		%feature("autodoc", "
 Parameters
@@ -611,8 +611,8 @@ Description
 ") Difference;
 		void Difference(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
 
-		/****************** Extent ******************/
-		/**** md5 signature: 19453f219e568f9c5109a0fd06459e95 ****/
+		/****** TColStd_PackedMapOfInteger::Extent ******/
+		/****** md5 signature: 19453f219e568f9c5109a0fd06459e95 ******/
 		%feature("compactdefaultargs") Extent;
 		%feature("autodoc", "Return
 -------
@@ -624,8 +624,8 @@ Returns map extent.
 ") Extent;
 		Standard_Integer Extent();
 
-		/****************** GetMaximalMapped ******************/
-		/**** md5 signature: 004e3c72ef4f9650f1f96fed23a5912b ****/
+		/****** TColStd_PackedMapOfInteger::GetMaximalMapped ******/
+		/****** md5 signature: 004e3c72ef4f9650f1f96fed23a5912b ******/
 		%feature("compactdefaultargs") GetMaximalMapped;
 		%feature("autodoc", "Return
 -------
@@ -637,8 +637,8 @@ Description
 ") GetMaximalMapped;
 		Standard_Integer GetMaximalMapped();
 
-		/****************** GetMinimalMapped ******************/
-		/**** md5 signature: d7c068ee4ed7ed98b9da7452d3e6c9df ****/
+		/****** TColStd_PackedMapOfInteger::GetMinimalMapped ******/
+		/****** md5 signature: d7c068ee4ed7ed98b9da7452d3e6c9df ******/
 		%feature("compactdefaultargs") GetMinimalMapped;
 		%feature("autodoc", "Return
 -------
@@ -650,8 +650,8 @@ Description
 ") GetMinimalMapped;
 		Standard_Integer GetMinimalMapped();
 
-		/****************** HasIntersection ******************/
-		/**** md5 signature: 64fc09010ab8b8e130b1e83e91bb6c58 ****/
+		/****** TColStd_PackedMapOfInteger::HasIntersection ******/
+		/****** md5 signature: 64fc09010ab8b8e130b1e83e91bb6c58 ******/
 		%feature("compactdefaultargs") HasIntersection;
 		%feature("autodoc", "
 Parameters
@@ -668,8 +668,8 @@ Description
 ") HasIntersection;
 		Standard_Boolean HasIntersection(const TColStd_PackedMapOfInteger &);
 
-		/****************** Intersect ******************/
-		/**** md5 signature: 8b232eb91c98828fe7f2311ddbd9531f ****/
+		/****** TColStd_PackedMapOfInteger::Intersect ******/
+		/****** md5 signature: 8b232eb91c98828fe7f2311ddbd9531f ******/
 		%feature("compactdefaultargs") Intersect;
 		%feature("autodoc", "
 Parameters
@@ -686,8 +686,8 @@ Description
 ") Intersect;
 		Standard_Boolean Intersect(const TColStd_PackedMapOfInteger &);
 
-		/****************** Intersection ******************/
-		/**** md5 signature: 2de63b754fe10319368ec017c5241e47 ****/
+		/****** TColStd_PackedMapOfInteger::Intersection ******/
+		/****** md5 signature: 2de63b754fe10319368ec017c5241e47 ******/
 		%feature("compactdefaultargs") Intersection;
 		%feature("autodoc", "
 Parameters
@@ -705,8 +705,8 @@ Description
 ") Intersection;
 		void Intersection(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
+		/****** TColStd_PackedMapOfInteger::IsEmpty ******/
+		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -718,8 +718,8 @@ Returns true if map is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: f7a42088df0b62e4976b7a22e42a3394 ****/
+		/****** TColStd_PackedMapOfInteger::IsEqual ******/
+		/****** md5 signature: f7a42088df0b62e4976b7a22e42a3394 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -736,8 +736,8 @@ Description
 ") IsEqual;
 		Standard_Boolean IsEqual(const TColStd_PackedMapOfInteger &);
 
-		/****************** IsSubset ******************/
-		/**** md5 signature: 6c5891cc01883b0709bbc235795cf9f7 ****/
+		/****** TColStd_PackedMapOfInteger::IsSubset ******/
+		/****** md5 signature: 6c5891cc01883b0709bbc235795cf9f7 ******/
 		%feature("compactdefaultargs") IsSubset;
 		%feature("autodoc", "
 Parameters
@@ -754,8 +754,8 @@ Description
 ") IsSubset;
 		Standard_Boolean IsSubset(const TColStd_PackedMapOfInteger &);
 
-		/****************** NbBuckets ******************/
-		/**** md5 signature: cc8d74943ffa9a9dd7cf4eff0c6c9739 ****/
+		/****** TColStd_PackedMapOfInteger::NbBuckets ******/
+		/****** md5 signature: cc8d74943ffa9a9dd7cf4eff0c6c9739 ******/
 		%feature("compactdefaultargs") NbBuckets;
 		%feature("autodoc", "Return
 -------
@@ -767,8 +767,8 @@ Returns the number of map buckets (not that since integers are packed in this ma
 ") NbBuckets;
 		Standard_Integer NbBuckets();
 
-		/****************** ReSize ******************/
-		/**** md5 signature: 83b3b18bad9fa1d11d0b4c070b80b62a ****/
+		/****** TColStd_PackedMapOfInteger::ReSize ******/
+		/****** md5 signature: 83b3b18bad9fa1d11d0b4c070b80b62a ******/
 		%feature("compactdefaultargs") ReSize;
 		%feature("autodoc", "
 Parameters
@@ -785,8 +785,8 @@ No available documentation.
 ") ReSize;
 		void ReSize(const Standard_Integer NbBuckets);
 
-		/****************** Remove ******************/
-		/**** md5 signature: 92cf6145ca798b68010b8a9250e5f468 ****/
+		/****** TColStd_PackedMapOfInteger::Remove ******/
+		/****** md5 signature: 92cf6145ca798b68010b8a9250e5f468 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -803,8 +803,8 @@ No available documentation.
 ") Remove;
 		Standard_Boolean Remove(const Standard_Integer aKey);
 
-		/****************** Statistics ******************/
-		/**** md5 signature: 1a1dab8d9fff60f7ef456c28f93e75d1 ****/
+		/****** TColStd_PackedMapOfInteger::Statistics ******/
+		/****** md5 signature: 1a1dab8d9fff60f7ef456c28f93e75d1 ******/
 		%feature("compactdefaultargs") Statistics;
 		%feature("autodoc", "
 Parameters
@@ -820,8 +820,8 @@ Prints useful statistics about the map. it can be used to test the quality of th
 ") Statistics;
 		void Statistics(std::ostream &OutValue);
 
-		/****************** Subtract ******************/
-		/**** md5 signature: 190f8077cde18ce8900964ed206c3e98 ****/
+		/****** TColStd_PackedMapOfInteger::Subtract ******/
+		/****** md5 signature: 190f8077cde18ce8900964ed206c3e98 ******/
 		%feature("compactdefaultargs") Subtract;
 		%feature("autodoc", "
 Parameters
@@ -838,8 +838,8 @@ Description
 ") Subtract;
 		Standard_Boolean Subtract(const TColStd_PackedMapOfInteger &);
 
-		/****************** Subtraction ******************/
-		/**** md5 signature: d8b4eb899ecf48824b5e31cb4403d16c ****/
+		/****** TColStd_PackedMapOfInteger::Subtraction ******/
+		/****** md5 signature: d8b4eb899ecf48824b5e31cb4403d16c ******/
 		%feature("compactdefaultargs") Subtraction;
 		%feature("autodoc", "
 Parameters
@@ -857,8 +857,8 @@ Description
 ") Subtraction;
 		void Subtraction(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
 
-		/****************** Union ******************/
-		/**** md5 signature: 63b0f7f4fb443df4653a7795cd699dd0 ****/
+		/****** TColStd_PackedMapOfInteger::Union ******/
+		/****** md5 signature: 63b0f7f4fb443df4653a7795cd699dd0 ******/
 		%feature("compactdefaultargs") Union;
 		%feature("autodoc", "
 Parameters
@@ -876,8 +876,8 @@ Description
 ") Union;
 		void Union(const TColStd_PackedMapOfInteger &, const TColStd_PackedMapOfInteger &);
 
-		/****************** Unite ******************/
-		/**** md5 signature: e8a74d3f43058c4eae7ea1e860c6585c ****/
+		/****** TColStd_PackedMapOfInteger::Unite ******/
+		/****** md5 signature: e8a74d3f43058c4eae7ea1e860c6585c ******/
 		%feature("compactdefaultargs") Unite;
 		%feature("autodoc", "
 Parameters

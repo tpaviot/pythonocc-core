@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PRSDIMDOCSTRING
 "PrsDim module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_prsdim.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_prsdim.html"
 %enddef
 %module (package="OCC.Core", docstring=PRSDIMDOCSTRING) PrsDim
 
@@ -322,8 +322,8 @@ PrsDim_TypeOfDist_Vertical = PrsDim_TypeOfDist.PrsDim_TypeOfDist_Vertical
 %rename(prsdim) PrsDim;
 class PrsDim {
 	public:
-		/****************** ComputeGeomCurve ******************/
-		/**** md5 signature: 6cb69c4ea337cf6a19ea54e6c660e70a ****/
+		/****** PrsDim::ComputeGeomCurve ******/
+		/****** md5 signature: 6cb69c4ea337cf6a19ea54e6c660e70a ******/
 		%feature("compactdefaultargs") ComputeGeomCurve;
 		%feature("autodoc", "
 Parameters
@@ -345,8 +345,8 @@ Checks if acurve belongs to aplane; if not, projects acurve in aplane and return
 ") ComputeGeomCurve;
 		static Standard_Boolean ComputeGeomCurve(opencascade::handle<Geom_Curve> & aCurve, const Standard_Real first1, const Standard_Real last1, gp_Pnt & FirstPnt1, gp_Pnt & LastPnt1, const opencascade::handle<Geom_Plane> & aPlane, Standard_Boolean &OutValue);
 
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: e8a575e5403a4ba0093cb9d2b31b2b98 ****/
+		/****** PrsDim::ComputeGeometry ******/
+		/****** md5 signature: e8a575e5403a4ba0093cb9d2b31b2b98 ******/
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "
 Parameters
@@ -366,8 +366,8 @@ Used by 2d relation only computes the 3d geometry of <anedge> in the current wor
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt);
 
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: efd861838cb718f7744f62f9854ac012 ****/
+		/****** PrsDim::ComputeGeometry ******/
+		/****** md5 signature: efd861838cb718f7744f62f9854ac012 ******/
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "
 Parameters
@@ -387,8 +387,8 @@ Used by dimensions only. computes the 3d geometry of <anedge>. return true if ok
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt, Standard_Boolean &OutValue);
 
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: 8b94e7eacd171a5f348b83aa3344f8e2 ****/
+		/****** PrsDim::ComputeGeometry ******/
+		/****** md5 signature: 8b94e7eacd171a5f348b83aa3344f8e2 ******/
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "
 Parameters
@@ -411,8 +411,8 @@ Used by 2d relation only computes the 3d geometry of <anedge> in the current wor
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt, opencascade::handle<Geom_Curve> & theExtCurve, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<Geom_Plane> & thePlane);
 
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: 8df8e467ff61bbb7f23d9cd9468ecad2 ****/
+		/****** PrsDim::ComputeGeometry ******/
+		/****** md5 signature: 8df8e467ff61bbb7f23d9cd9468ecad2 ******/
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "
 Parameters
@@ -437,8 +437,8 @@ Used by 2d relation only computes the 3d geometry of <anedge> in the current wor
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge, opencascade::handle<Geom_Curve> & theFirstCurve, opencascade::handle<Geom_Curve> & theSecondCurve, gp_Pnt & theFirstPnt1, gp_Pnt & theLastPnt1, gp_Pnt & theFirstPnt2, gp_Pnt & theLastPnt2, const opencascade::handle<Geom_Plane> & thePlane);
 
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: 0df198d142c4b96a61c095fd4bf2b68b ****/
+		/****** PrsDim::ComputeGeometry ******/
+		/****** md5 signature: 0df198d142c4b96a61c095fd4bf2b68b ******/
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "
 Parameters
@@ -463,8 +463,8 @@ Used by dimensions only.computes the 3d geometry of<anedge1> and <anedge2> and c
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge, opencascade::handle<Geom_Curve> & theFirstCurve, opencascade::handle<Geom_Curve> & theSecondCurve, gp_Pnt & theFirstPnt1, gp_Pnt & theLastPnt1, gp_Pnt & theFirstPnt2, gp_Pnt & theLastPnt2, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: b6be325805be1ce5c8ffac49b7ee1d13 ****/
+		/****** PrsDim::ComputeGeometry ******/
+		/****** md5 signature: b6be325805be1ce5c8ffac49b7ee1d13 ******/
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "
 Parameters
@@ -492,8 +492,8 @@ Used by 2d relation only computes the 3d geometry of<anedge1> and <anedge2> in t
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge, Standard_Integer &OutValue, opencascade::handle<Geom_Curve> & theFirstCurve, opencascade::handle<Geom_Curve> & theSecondCurve, gp_Pnt & theFirstPnt1, gp_Pnt & theLastPnt1, gp_Pnt & theFirstPnt2, gp_Pnt & theLastPnt2, opencascade::handle<Geom_Curve> & theExtCurve, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<Geom_Plane> & thePlane);
 
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: 1b2f2da9052ca02b5e26e70990845489 ****/
+		/****** PrsDim::ComputeGeometry ******/
+		/****** md5 signature: 1b2f2da9052ca02b5e26e70990845489 ******/
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "
 Parameters
@@ -512,8 +512,8 @@ No available documentation.
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Vertex & aVertex, gp_Pnt & point, const opencascade::handle<Geom_Plane> & aPlane, Standard_Boolean &OutValue);
 
-		/****************** ComputeProjEdgePresentation ******************/
-		/**** md5 signature: 48580268b98d21f047f2b8907f481c25 ****/
+		/****** PrsDim::ComputeProjEdgePresentation ******/
+		/****** md5 signature: 48580268b98d21f047f2b8907f481c25 ******/
 		%feature("compactdefaultargs") ComputeProjEdgePresentation;
 		%feature("autodoc", "
 Parameters
@@ -539,8 +539,8 @@ No available documentation.
 ") ComputeProjEdgePresentation;
 		static void ComputeProjEdgePresentation(const opencascade::handle<Prs3d_Presentation> & aPres, const opencascade::handle<Prs3d_Drawer> & aDrawer, const TopoDS_Edge & anEdge, const opencascade::handle<Geom_Curve> & ProjCurve, const gp_Pnt & FirstP, const gp_Pnt & LastP, const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE, const Standard_Real aWidth = 2, const Aspect_TypeOfLine aProjTOL = Aspect_TOL_DASH, const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT);
 
-		/****************** ComputeProjVertexPresentation ******************/
-		/**** md5 signature: 6a04d97aa212bbd9e4e92a1cd57df632 ****/
+		/****** PrsDim::ComputeProjVertexPresentation ******/
+		/****** md5 signature: 6a04d97aa212bbd9e4e92a1cd57df632 ******/
 		%feature("compactdefaultargs") ComputeProjVertexPresentation;
 		%feature("autodoc", "
 Parameters
@@ -564,8 +564,8 @@ No available documentation.
 ") ComputeProjVertexPresentation;
 		static void ComputeProjVertexPresentation(const opencascade::handle<Prs3d_Presentation> & aPres, const opencascade::handle<Prs3d_Drawer> & aDrawer, const TopoDS_Vertex & aVertex, const gp_Pnt & ProjPoint, const Quantity_NameOfColor aColor = Quantity_NOC_PURPLE, const Standard_Real aWidth = 2, const Aspect_TypeOfMarker aProjTOM = Aspect_TOM_PLUS, const Aspect_TypeOfLine aCallTOL = Aspect_TOL_DOT);
 
-		/****************** DistanceFromApex ******************/
-		/**** md5 signature: 5ca9397fdee6875e346635084e849102 ****/
+		/****** PrsDim::DistanceFromApex ******/
+		/****** md5 signature: 5ca9397fdee6875e346635084e849102 ******/
 		%feature("compactdefaultargs") DistanceFromApex;
 		%feature("autodoc", "
 Parameters
@@ -584,8 +584,8 @@ Computes length of ellipse arc in parametric units.
 ") DistanceFromApex;
 		static Standard_Real DistanceFromApex(const gp_Elips & elips, const gp_Pnt & Apex, const Standard_Real par);
 
-		/****************** Farest ******************/
-		/**** md5 signature: 4711939cbf61dc61e0a31e90c0ba6574 ****/
+		/****** PrsDim::Farest ******/
+		/****** md5 signature: 4711939cbf61dc61e0a31e90c0ba6574 ******/
 		%feature("compactdefaultargs") Farest;
 		%feature("autodoc", "
 Parameters
@@ -603,8 +603,8 @@ No available documentation.
 ") Farest;
 		static gp_Pnt Farest(const TopoDS_Shape & aShape, const gp_Pnt & aPoint);
 
-		/****************** GetPlaneFromFace ******************/
-		/**** md5 signature: c8a73aacf44d22f63a4f6d51e7f9260b ****/
+		/****** PrsDim::GetPlaneFromFace ******/
+		/****** md5 signature: c8a73aacf44d22f63a4f6d51e7f9260b ******/
 		%feature("compactdefaultargs") GetPlaneFromFace;
 		%feature("autodoc", "
 Parameters
@@ -624,8 +624,8 @@ Tryes to get plane from face. returns surface of face in asurf. returns standard
 ") GetPlaneFromFace;
 		static Standard_Boolean GetPlaneFromFace(const TopoDS_Face & aFace, gp_Pln & aPlane, opencascade::handle<Geom_Surface> & aSurf, PrsDim_KindOfSurface &OutValue, Standard_Real &OutValue);
 
-		/****************** InDomain ******************/
-		/**** md5 signature: e1a93aaf6fc6d1a74b142e3804975f9e ****/
+		/****** PrsDim::InDomain ******/
+		/****** md5 signature: e1a93aaf6fc6d1a74b142e3804975f9e ******/
 		%feature("compactdefaultargs") InDomain;
 		%feature("autodoc", "
 Parameters
@@ -644,8 +644,8 @@ Returns true if point with anattachpar is in domain of arc.
 ") InDomain;
 		static Standard_Boolean InDomain(const Standard_Real aFirstPar, const Standard_Real aLastPar, const Standard_Real anAttachPar);
 
-		/****************** InitAngleBetweenCurvilinearFaces ******************/
-		/**** md5 signature: 6f56d83ae228343607e66c3cf73a4663 ****/
+		/****** PrsDim::InitAngleBetweenCurvilinearFaces ******/
+		/****** md5 signature: 6f56d83ae228343607e66c3cf73a4663 ******/
 		%feature("compactdefaultargs") InitAngleBetweenCurvilinearFaces;
 		%feature("autodoc", "
 Parameters
@@ -669,8 +669,8 @@ Finds three points for the angle dimension between two curvilinear surfaces.
 ") InitAngleBetweenCurvilinearFaces;
 		static Standard_Boolean InitAngleBetweenCurvilinearFaces(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, const PrsDim_KindOfSurface theFirstSurfType, const PrsDim_KindOfSurface theSecondSurfType, gp_Pnt & theCenter, gp_Pnt & theFirstAttach, gp_Pnt & theSecondAttach, const Standard_Boolean theIsFirstPointSet = Standard_False);
 
-		/****************** InitAngleBetweenPlanarFaces ******************/
-		/**** md5 signature: f3f9d6eda2bc4626227a0a6044b9294f ****/
+		/****** PrsDim::InitAngleBetweenPlanarFaces ******/
+		/****** md5 signature: f3f9d6eda2bc4626227a0a6044b9294f ******/
 		%feature("compactdefaultargs") InitAngleBetweenPlanarFaces;
 		%feature("autodoc", "
 Parameters
@@ -692,8 +692,8 @@ Finds three points for the angle dimension between two planes.
 ") InitAngleBetweenPlanarFaces;
 		static Standard_Boolean InitAngleBetweenPlanarFaces(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, gp_Pnt & theCenter, gp_Pnt & theFirstAttach, gp_Pnt & theSecondAttach, const Standard_Boolean theIsFirstPointSet = Standard_False);
 
-		/****************** InitFaceLength ******************/
-		/**** md5 signature: 4c6d797303c03fad5ebd7589763d97f8 ****/
+		/****** PrsDim::InitFaceLength ******/
+		/****** md5 signature: 4c6d797303c03fad5ebd7589763d97f8 ******/
 		%feature("compactdefaultargs") InitFaceLength;
 		%feature("autodoc", "
 Parameters
@@ -713,8 +713,8 @@ No available documentation.
 ") InitFaceLength;
 		static void InitFaceLength(const TopoDS_Face & aFace, gp_Pln & aPlane, opencascade::handle<Geom_Surface> & aSurface, PrsDim_KindOfSurface &OutValue, Standard_Real &OutValue);
 
-		/****************** InitLengthBetweenCurvilinearFaces ******************/
-		/**** md5 signature: a415f028d8574f37e0030484cbbc493a ****/
+		/****** PrsDim::InitLengthBetweenCurvilinearFaces ******/
+		/****** md5 signature: a415f028d8574f37e0030484cbbc493a ******/
 		%feature("compactdefaultargs") InitLengthBetweenCurvilinearFaces;
 		%feature("autodoc", "
 Parameters
@@ -737,8 +737,8 @@ Finds attachment points on two curvilinear faces for length dimension. @param th
 ") InitLengthBetweenCurvilinearFaces;
 		static void InitLengthBetweenCurvilinearFaces(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, opencascade::handle<Geom_Surface> & theFirstSurf, opencascade::handle<Geom_Surface> & theSecondSurf, gp_Pnt & theFirstAttach, gp_Pnt & theSecondAttach, gp_Dir & theDirOnPlane);
 
-		/****************** Nearest ******************/
-		/**** md5 signature: ca941eb9deaee6d9850f4e04eff46172 ****/
+		/****** PrsDim::Nearest ******/
+		/****** md5 signature: ca941eb9deaee6d9850f4e04eff46172 ******/
 		%feature("compactdefaultargs") Nearest;
 		%feature("autodoc", "
 Parameters
@@ -756,8 +756,8 @@ Returns the nearest point in a shape. this is used by several classes in calcula
 ") Nearest;
 		static gp_Pnt Nearest(const TopoDS_Shape & aShape, const gp_Pnt & aPoint);
 
-		/****************** Nearest ******************/
-		/**** md5 signature: ca517f1153f3874290b78263548ad358 ****/
+		/****** PrsDim::Nearest ******/
+		/****** md5 signature: ca517f1153f3874290b78263548ad358 ******/
 		%feature("compactdefaultargs") Nearest;
 		%feature("autodoc", "
 Parameters
@@ -775,8 +775,8 @@ Return the nearest point on the line.
 ") Nearest;
 		static gp_Pnt Nearest(const gp_Lin & theLine, const gp_Pnt & thePoint);
 
-		/****************** Nearest ******************/
-		/**** md5 signature: e025c3fd731e2d20f08a2a452029e645 ****/
+		/****** PrsDim::Nearest ******/
+		/****** md5 signature: e025c3fd731e2d20f08a2a452029e645 ******/
 		%feature("compactdefaultargs") Nearest;
 		%feature("autodoc", "
 Parameters
@@ -797,8 +797,8 @@ For the given point finds nearest point on the curve, return true if found point
 ") Nearest;
 		static Standard_Boolean Nearest(const opencascade::handle<Geom_Curve> & theCurve, const gp_Pnt & thePoint, const gp_Pnt & theFirstPoint, const gp_Pnt & theLastPoint, gp_Pnt & theNearestPoint);
 
-		/****************** NearestApex ******************/
-		/**** md5 signature: 6c271d03667151d1766ac1e2b3ae1ee0 ****/
+		/****** PrsDim::NearestApex ******/
+		/****** md5 signature: 6c271d03667151d1766ac1e2b3ae1ee0 ******/
 		%feature("compactdefaultargs") NearestApex;
 		%feature("autodoc", "
 Parameters
@@ -819,8 +819,8 @@ Computes nearest to ellipse arc apex.
 ") NearestApex;
 		static gp_Pnt NearestApex(const gp_Elips & elips, const gp_Pnt & pApex, const gp_Pnt & nApex, const Standard_Real fpara, const Standard_Real lpara, Standard_Boolean &OutValue);
 
-		/****************** ProjectPointOnLine ******************/
-		/**** md5 signature: ccd13eaf330359cd2d1963858612230a ****/
+		/****** PrsDim::ProjectPointOnLine ******/
+		/****** md5 signature: ccd13eaf330359cd2d1963858612230a ******/
 		%feature("compactdefaultargs") ProjectPointOnLine;
 		%feature("autodoc", "
 Parameters
@@ -838,8 +838,8 @@ No available documentation.
 ") ProjectPointOnLine;
 		static gp_Pnt ProjectPointOnLine(const gp_Pnt & aPoint, const gp_Lin & aLine);
 
-		/****************** ProjectPointOnPlane ******************/
-		/**** md5 signature: bb162bd011a4b418ec144bcaa3106b38 ****/
+		/****** PrsDim::ProjectPointOnPlane ******/
+		/****** md5 signature: bb162bd011a4b418ec144bcaa3106b38 ******/
 		%feature("compactdefaultargs") ProjectPointOnPlane;
 		%feature("autodoc", "
 Parameters
@@ -857,8 +857,8 @@ No available documentation.
 ") ProjectPointOnPlane;
 		static gp_Pnt ProjectPointOnPlane(const gp_Pnt & aPoint, const gp_Pln & aPlane);
 
-		/****************** TranslatePointToBound ******************/
-		/**** md5 signature: 0f51e84cbfc1ab767a85d5ab839116dd ****/
+		/****** PrsDim::TranslatePointToBound ******/
+		/****** md5 signature: 0f51e84cbfc1ab767a85d5ab839116dd ******/
 		%feature("compactdefaultargs") TranslatePointToBound;
 		%feature("autodoc", "
 Parameters
@@ -915,8 +915,8 @@ ComputeMode_Text = ComputeMode.ComputeMode_Text
 };
 /* end python proxy for enums */
 
-		/****************** AcceptDisplayMode ******************/
-		/**** md5 signature: 4c81f1c2cfc05fd196e1c09a383a3455 ****/
+		/****** PrsDim_Dimension::AcceptDisplayMode ******/
+		/****** md5 signature: 4c81f1c2cfc05fd196e1c09a383a3455 ******/
 		%feature("compactdefaultargs") AcceptDisplayMode;
 		%feature("autodoc", "
 Parameters
@@ -933,8 +933,8 @@ Returns true if the class of objects accepts the display mode themode. the inter
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
-		/****************** DimensionAspect ******************/
-		/**** md5 signature: 2f6e42d6c31db01e2bc6cd4dba206808 ****/
+		/****** PrsDim_Dimension::DimensionAspect ******/
+		/****** md5 signature: 2f6e42d6c31db01e2bc6cd4dba206808 ******/
 		%feature("compactdefaultargs") DimensionAspect;
 		%feature("autodoc", "Return
 -------
@@ -946,8 +946,8 @@ Gets the dimension aspect from ais object drawer. dimension aspect contains aspe
 ") DimensionAspect;
 		opencascade::handle<Prs3d_DimensionAspect> DimensionAspect();
 
-		/****************** DisplaySpecialSymbol ******************/
-		/**** md5 signature: 2873c800214f175c63b754232211e821 ****/
+		/****** PrsDim_Dimension::DisplaySpecialSymbol ******/
+		/****** md5 signature: 2873c800214f175c63b754232211e821 ******/
 		%feature("compactdefaultargs") DisplaySpecialSymbol;
 		%feature("autodoc", "Return
 -------
@@ -959,8 +959,8 @@ Return dimension special symbol display options.
 ") DisplaySpecialSymbol;
 		PrsDim_DisplaySpecialSymbol DisplaySpecialSymbol();
 
-		/****************** GetCustomValue ******************/
-		/**** md5 signature: 95e7dac6d1f2c02c95cf021ebebacfed ****/
+		/****** PrsDim_Dimension::GetCustomValue ******/
+		/****** md5 signature: 95e7dac6d1f2c02c95cf021ebebacfed ******/
 		%feature("compactdefaultargs") GetCustomValue;
 		%feature("autodoc", "Return
 -------
@@ -972,8 +972,8 @@ Gets user-defined dimension value. return dimension value string.
 ") GetCustomValue;
 		const TCollection_ExtendedString & GetCustomValue();
 
-		/****************** GetDisplayUnits ******************/
-		/**** md5 signature: ddc04b9c02a93ab070d76d081dd932f4 ****/
+		/****** PrsDim_Dimension::GetDisplayUnits ******/
+		/****** md5 signature: ddc04b9c02a93ab070d76d081dd932f4 ******/
 		%feature("compactdefaultargs") GetDisplayUnits;
 		%feature("autodoc", "Return
 -------
@@ -985,8 +985,8 @@ No available documentation.
 ") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits();
 
-		/****************** GetFlyout ******************/
-		/**** md5 signature: eda99b4bc6964dc635fe0548f0e74f5c ****/
+		/****** PrsDim_Dimension::GetFlyout ******/
+		/****** md5 signature: eda99b4bc6964dc635fe0548f0e74f5c ******/
 		%feature("compactdefaultargs") GetFlyout;
 		%feature("autodoc", "Return
 -------
@@ -998,8 +998,8 @@ Return flyout value for dimension.
 ") GetFlyout;
 		Standard_Real GetFlyout();
 
-		/****************** GetGeometryType ******************/
-		/**** md5 signature: 15c47df8128e11cd2512f3eef50b1555 ****/
+		/****** PrsDim_Dimension::GetGeometryType ******/
+		/****** md5 signature: 15c47df8128e11cd2512f3eef50b1555 ******/
 		%feature("compactdefaultargs") GetGeometryType;
 		%feature("autodoc", "Return
 -------
@@ -1011,8 +1011,8 @@ Geometry type defines type of shapes on which the dimension is to be built. retu
 ") GetGeometryType;
 		Standard_Integer GetGeometryType();
 
-		/****************** GetModelUnits ******************/
-		/**** md5 signature: 930ae9f0d86096fd7617e48776d468ed ****/
+		/****** PrsDim_Dimension::GetModelUnits ******/
+		/****** md5 signature: 930ae9f0d86096fd7617e48776d468ed ******/
 		%feature("compactdefaultargs") GetModelUnits;
 		%feature("autodoc", "Return
 -------
@@ -1024,8 +1024,8 @@ No available documentation.
 ") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits();
 
-		/****************** GetPlane ******************/
-		/**** md5 signature: 0b04ebfc5d72ea55c9ed88dc6d33fea0 ****/
+		/****** PrsDim_Dimension::GetPlane ******/
+		/****** md5 signature: 0b04ebfc5d72ea55c9ed88dc6d33fea0 ******/
 		%feature("compactdefaultargs") GetPlane;
 		%feature("autodoc", "Return
 -------
@@ -1037,8 +1037,8 @@ Get the dimension plane in which the 2d dimension presentation is computed. by d
 ") GetPlane;
 		const gp_Pln GetPlane();
 
-		/****************** GetTextPosition ******************/
-		/**** md5 signature: 6ee8678e0a409f45918e038151dbde94 ****/
+		/****** PrsDim_Dimension::GetTextPosition ******/
+		/****** md5 signature: 6ee8678e0a409f45918e038151dbde94 ******/
 		%feature("compactdefaultargs") GetTextPosition;
 		%feature("autodoc", "Return
 -------
@@ -1050,8 +1050,8 @@ Computes absolute text position from dimension parameters (flyout, plane and tex
 ") GetTextPosition;
 		virtual gp_Pnt GetTextPosition();
 
-		/****************** GetValue ******************/
-		/**** md5 signature: d602b48d41f0ae37152aeb1633e13fb9 ****/
+		/****** PrsDim_Dimension::GetValue ******/
+		/****** md5 signature: d602b48d41f0ae37152aeb1633e13fb9 ******/
 		%feature("compactdefaultargs") GetValue;
 		%feature("autodoc", "Return
 -------
@@ -1063,8 +1063,8 @@ Gets dimension measurement value. if the value to display is not specified by us
 ") GetValue;
 		Standard_Real GetValue();
 
-		/****************** IsTextPositionCustom ******************/
-		/**** md5 signature: cb63adca34669ac6b14993304b5cec35 ****/
+		/****** PrsDim_Dimension::IsTextPositionCustom ******/
+		/****** md5 signature: cb63adca34669ac6b14993304b5cec35 ******/
 		%feature("compactdefaultargs") IsTextPositionCustom;
 		%feature("autodoc", "Return
 -------
@@ -1076,8 +1076,8 @@ Return true if text position is set by user with method settextposition().
 ") IsTextPositionCustom;
 		Standard_Boolean IsTextPositionCustom();
 
-		/****************** IsValid ******************/
-		/**** md5 signature: 13a0f49072e992d80b7990c04d5ad580 ****/
+		/****** PrsDim_Dimension::IsValid ******/
+		/****** md5 signature: 13a0f49072e992d80b7990c04d5ad580 ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Return
 -------
@@ -1089,8 +1089,8 @@ Check that the input geometry for dimension is valid and the presentation can be
 ") IsValid;
 		virtual Standard_Boolean IsValid();
 
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: 7721fa2fb7dfc5fb3635c615f43c1fcd ****/
+		/****** PrsDim_Dimension::KindOfDimension ******/
+		/****** md5 signature: 7721fa2fb7dfc5fb3635c615f43c1fcd ******/
 		%feature("compactdefaultargs") KindOfDimension;
 		%feature("autodoc", "Return
 -------
@@ -1102,8 +1102,8 @@ Return the kind of dimension.
 ") KindOfDimension;
 		PrsDim_KindOfDimension KindOfDimension();
 
-		/****************** SelToleranceForText2d ******************/
-		/**** md5 signature: 5e1f7b036e9e0c1b485c5d8da6b6286a ****/
+		/****** PrsDim_Dimension::SelToleranceForText2d ******/
+		/****** md5 signature: 5e1f7b036e9e0c1b485c5d8da6b6286a ******/
 		%feature("compactdefaultargs") SelToleranceForText2d;
 		%feature("autodoc", "Return
 -------
@@ -1115,8 +1115,8 @@ Returns selection tolerance for text2d: for 2d text selection detection sensitiv
 ") SelToleranceForText2d;
 		Standard_Real SelToleranceForText2d();
 
-		/****************** SetComputedValue ******************/
-		/**** md5 signature: 74883cf4b8a353dfbc969645f6db6362 ****/
+		/****** PrsDim_Dimension::SetComputedValue ******/
+		/****** md5 signature: 74883cf4b8a353dfbc969645f6db6362 ******/
 		%feature("compactdefaultargs") SetComputedValue;
 		%feature("autodoc", "Return
 -------
@@ -1128,8 +1128,8 @@ Sets computed dimension value. resets custom value mode if it was set.
 ") SetComputedValue;
 		void SetComputedValue();
 
-		/****************** SetCustomPlane ******************/
-		/**** md5 signature: a371fba2e87123f75db102d389dc8aeb ****/
+		/****** PrsDim_Dimension::SetCustomPlane ******/
+		/****** md5 signature: a371fba2e87123f75db102d389dc8aeb ******/
 		%feature("compactdefaultargs") SetCustomPlane;
 		%feature("autodoc", "
 Parameters
@@ -1146,8 +1146,8 @@ Sets user-defined plane where the 2d dimension presentation will be placed. chec
 ") SetCustomPlane;
 		virtual void SetCustomPlane(const gp_Pln & thePlane);
 
-		/****************** SetCustomValue ******************/
-		/**** md5 signature: e4767ba55ab2e4ffbdd6196bdb4a2e75 ****/
+		/****** PrsDim_Dimension::SetCustomValue ******/
+		/****** md5 signature: e4767ba55ab2e4ffbdd6196bdb4a2e75 ******/
 		%feature("compactdefaultargs") SetCustomValue;
 		%feature("autodoc", "
 Parameters
@@ -1164,8 +1164,8 @@ Sets user-defined dimension value. the user-defined dimension value is specified
 ") SetCustomValue;
 		void SetCustomValue(const Standard_Real theValue);
 
-		/****************** SetCustomValue ******************/
-		/**** md5 signature: aa638ede9bd0fe424934618474a9c131 ****/
+		/****** PrsDim_Dimension::SetCustomValue ******/
+		/****** md5 signature: aa638ede9bd0fe424934618474a9c131 ******/
 		%feature("compactdefaultargs") SetCustomValue;
 		%feature("autodoc", "
 Parameters
@@ -1182,8 +1182,8 @@ Sets user-defined dimension value. unit conversion during the display is not app
 ") SetCustomValue;
 		void SetCustomValue(TCollection_ExtendedString theValue);
 
-		/****************** SetDimensionAspect ******************/
-		/**** md5 signature: 653cffb5413acf12c0dc78f7606b5fb6 ****/
+		/****** PrsDim_Dimension::SetDimensionAspect ******/
+		/****** md5 signature: 653cffb5413acf12c0dc78f7606b5fb6 ******/
 		%feature("compactdefaultargs") SetDimensionAspect;
 		%feature("autodoc", "
 Parameters
@@ -1200,8 +1200,8 @@ Sets new dimension aspect for the interactive object drawer. the dimension aspec
 ") SetDimensionAspect;
 		void SetDimensionAspect(const opencascade::handle<Prs3d_DimensionAspect> & theDimensionAspect);
 
-		/****************** SetDisplaySpecialSymbol ******************/
-		/**** md5 signature: 0969631dd0d04e693d6eb1858740a67f ****/
+		/****** PrsDim_Dimension::SetDisplaySpecialSymbol ******/
+		/****** md5 signature: 0969631dd0d04e693d6eb1858740a67f ******/
 		%feature("compactdefaultargs") SetDisplaySpecialSymbol;
 		%feature("autodoc", "
 Parameters
@@ -1218,8 +1218,8 @@ Specifies whether to display special symbol or not.
 ") SetDisplaySpecialSymbol;
 		void SetDisplaySpecialSymbol(const PrsDim_DisplaySpecialSymbol theDisplaySpecSymbol);
 
-		/****************** SetDisplayUnits ******************/
-		/**** md5 signature: 7c4ef2629b83770e3b1f5cd4e63cfe14 ****/
+		/****** PrsDim_Dimension::SetDisplayUnits ******/
+		/****** md5 signature: 7c4ef2629b83770e3b1f5cd4e63cfe14 ******/
 		%feature("compactdefaultargs") SetDisplayUnits;
 		%feature("autodoc", "
 Parameters
@@ -1236,8 +1236,8 @@ No available documentation.
 ") SetDisplayUnits;
 		virtual void SetDisplayUnits(const TCollection_AsciiString &);
 
-		/****************** SetFlyout ******************/
-		/**** md5 signature: 4a01b6b05617128166d05bb9d7623eae ****/
+		/****** PrsDim_Dimension::SetFlyout ******/
+		/****** md5 signature: 4a01b6b05617128166d05bb9d7623eae ******/
 		%feature("compactdefaultargs") SetFlyout;
 		%feature("autodoc", "
 Parameters
@@ -1254,8 +1254,8 @@ Sets flyout value for dimension.
 ") SetFlyout;
 		void SetFlyout(const Standard_Real theFlyout);
 
-		/****************** SetModelUnits ******************/
-		/**** md5 signature: ff93ccdd85e84f0afae8a4d40959d10a ****/
+		/****** PrsDim_Dimension::SetModelUnits ******/
+		/****** md5 signature: ff93ccdd85e84f0afae8a4d40959d10a ******/
 		%feature("compactdefaultargs") SetModelUnits;
 		%feature("autodoc", "
 Parameters
@@ -1272,8 +1272,8 @@ No available documentation.
 ") SetModelUnits;
 		virtual void SetModelUnits(const TCollection_AsciiString &);
 
-		/****************** SetSelToleranceForText2d ******************/
-		/**** md5 signature: 537173bd79d28c6fa1429de304305501 ****/
+		/****** PrsDim_Dimension::SetSelToleranceForText2d ******/
+		/****** md5 signature: 537173bd79d28c6fa1429de304305501 ******/
 		%feature("compactdefaultargs") SetSelToleranceForText2d;
 		%feature("autodoc", "
 Parameters
@@ -1290,8 +1290,8 @@ Sets selection tolerance for text2d: for 2d text selection detection sensitive p
 ") SetSelToleranceForText2d;
 		void SetSelToleranceForText2d(const Standard_Real theTol);
 
-		/****************** SetSpecialSymbol ******************/
-		/**** md5 signature: 9f205d745c9301fbbd3129b43fd8deb5 ****/
+		/****** PrsDim_Dimension::SetSpecialSymbol ******/
+		/****** md5 signature: 9f205d745c9301fbbd3129b43fd8deb5 ******/
 		%feature("compactdefaultargs") SetSpecialSymbol;
 		%feature("autodoc", "
 Parameters
@@ -1308,8 +1308,8 @@ Specifies special symbol.
 ") SetSpecialSymbol;
 		void SetSpecialSymbol(const Standard_ExtCharacter theSpecialSymbol);
 
-		/****************** SetTextPosition ******************/
-		/**** md5 signature: a461f493832c6de5dbec73ad9e2da9a0 ****/
+		/****** PrsDim_Dimension::SetTextPosition ******/
+		/****** md5 signature: a461f493832c6de5dbec73ad9e2da9a0 ******/
 		%feature("compactdefaultargs") SetTextPosition;
 		%feature("autodoc", "
 Parameters
@@ -1326,8 +1326,8 @@ Fixes the absolute text position and adjusts flyout, plane and text alignment ac
 ") SetTextPosition;
 		virtual void SetTextPosition(const gp_Pnt &);
 
-		/****************** SpecialSymbol ******************/
-		/**** md5 signature: 29a0ed47fd42ba819648af4ecd1c15a4 ****/
+		/****** PrsDim_Dimension::SpecialSymbol ******/
+		/****** md5 signature: 29a0ed47fd42ba819648af4ecd1c15a4 ******/
 		%feature("compactdefaultargs") SpecialSymbol;
 		%feature("autodoc", "Return
 -------
@@ -1339,8 +1339,8 @@ Return special symbol.
 ") SpecialSymbol;
 		Standard_ExtCharacter SpecialSymbol();
 
-		/****************** Type ******************/
-		/**** md5 signature: bf4aea6b24d0b584b57c781f208134ec ****/
+		/****** PrsDim_Dimension::Type ******/
+		/****** md5 signature: bf4aea6b24d0b584b57c781f208134ec ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Return
 -------
@@ -1352,8 +1352,8 @@ Return the kind of interactive.
 ") Type;
 		virtual AIS_KindOfInteractive Type();
 
-		/****************** UnsetCustomPlane ******************/
-		/**** md5 signature: 0545e29e8f1f4729d3901ed8c8f7965d ****/
+		/****** PrsDim_Dimension::UnsetCustomPlane ******/
+		/****** md5 signature: 0545e29e8f1f4729d3901ed8c8f7965d ******/
 		%feature("compactdefaultargs") UnsetCustomPlane;
 		%feature("autodoc", "Return
 -------
@@ -1365,8 +1365,8 @@ Unsets user-defined plane. therefore the plane for dimension will be computed au
 ") UnsetCustomPlane;
 		void UnsetCustomPlane();
 
-		/****************** UnsetFixedTextPosition ******************/
-		/**** md5 signature: d8406cc4e1101ee7ff26d8abf793d532 ****/
+		/****** PrsDim_Dimension::UnsetFixedTextPosition ******/
+		/****** md5 signature: d8406cc4e1101ee7ff26d8abf793d532 ******/
 		%feature("compactdefaultargs") UnsetFixedTextPosition;
 		%feature("autodoc", "Return
 -------
@@ -1398,8 +1398,8 @@ Unsets user defined text positioning and enables text positioning by other param
 ******************************/
 class PrsDim_DimensionOwner : public SelectMgr_EntityOwner {
 	public:
-		/****************** PrsDim_DimensionOwner ******************/
-		/**** md5 signature: 0f78da7ae2bbeb967e6a5f23b16758b6 ****/
+		/****** PrsDim_DimensionOwner::PrsDim_DimensionOwner ******/
+		/****** md5 signature: 0f78da7ae2bbeb967e6a5f23b16758b6 ******/
 		%feature("compactdefaultargs") PrsDim_DimensionOwner;
 		%feature("autodoc", "
 Parameters
@@ -1418,8 +1418,8 @@ Initializes the dimension owner, theso, and attributes it the priority, theprior
 ") PrsDim_DimensionOwner;
 		 PrsDim_DimensionOwner(const opencascade::handle<SelectMgr_SelectableObject> & theSelObject, const PrsDim_DimensionSelectionMode theSelMode, const Standard_Integer thePriority = 0);
 
-		/****************** HilightWithColor ******************/
-		/**** md5 signature: ff872ded3a30d3b368f40f78eef3d5d8 ****/
+		/****** PrsDim_DimensionOwner::HilightWithColor ******/
+		/****** md5 signature: ff872ded3a30d3b368f40f78eef3d5d8 ******/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "
 Parameters
@@ -1438,8 +1438,8 @@ No available documentation.
 ") HilightWithColor;
 		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
 
-		/****************** IsHilighted ******************/
-		/**** md5 signature: 47cdfcd94ad9e17a52e4b8d49964f328 ****/
+		/****** PrsDim_DimensionOwner::IsHilighted ******/
+		/****** md5 signature: 47cdfcd94ad9e17a52e4b8d49964f328 ******/
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", "
 Parameters
@@ -1457,8 +1457,8 @@ Returns true if an object with the selection mode amode is highlighted in the pr
 ") IsHilighted;
 		virtual Standard_Boolean IsHilighted(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const Standard_Integer theMode = 0);
 
-		/****************** SelectionMode ******************/
-		/**** md5 signature: 030647867bb4f5b297cabad21f1f01b3 ****/
+		/****** PrsDim_DimensionOwner::SelectionMode ******/
+		/****** md5 signature: 030647867bb4f5b297cabad21f1f01b3 ******/
 		%feature("compactdefaultargs") SelectionMode;
 		%feature("autodoc", "Return
 -------
@@ -1470,8 +1470,8 @@ No available documentation.
 ") SelectionMode;
 		PrsDim_DimensionSelectionMode SelectionMode();
 
-		/****************** Unhilight ******************/
-		/**** md5 signature: cbfa3741ba9c5eeac22e43360132f4ee ****/
+		/****** PrsDim_DimensionOwner::Unhilight ******/
+		/****** md5 signature: cbfa3741ba9c5eeac22e43360132f4ee ******/
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "
 Parameters
@@ -1506,8 +1506,8 @@ Removes highlighting from the selected part of dimension.
 %nodefaultctor PrsDim_Relation;
 class PrsDim_Relation : public AIS_InteractiveObject {
 	public:
-		/****************** AcceptDisplayMode ******************/
-		/**** md5 signature: 4c81f1c2cfc05fd196e1c09a383a3455 ****/
+		/****** PrsDim_Relation::AcceptDisplayMode ******/
+		/****** md5 signature: 4c81f1c2cfc05fd196e1c09a383a3455 ******/
 		%feature("compactdefaultargs") AcceptDisplayMode;
 		%feature("autodoc", "
 Parameters
@@ -1524,8 +1524,8 @@ Returns true if the display mode amode is accepted for the interactive objects i
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
-		/****************** ArrowSize ******************/
-		/**** md5 signature: 1c64631a05987281258edff790436577 ****/
+		/****** PrsDim_Relation::ArrowSize ******/
+		/****** md5 signature: 1c64631a05987281258edff790436577 ******/
 		%feature("compactdefaultargs") ArrowSize;
 		%feature("autodoc", "Return
 -------
@@ -1537,8 +1537,8 @@ Returns the value for the size of the arrow identifying the relation between the
 ") ArrowSize;
 		Standard_Real ArrowSize();
 
-		/****************** AutomaticPosition ******************/
-		/**** md5 signature: 4069aa0ccd84519a8254a311ab36e427 ****/
+		/****** PrsDim_Relation::AutomaticPosition ******/
+		/****** md5 signature: 4069aa0ccd84519a8254a311ab36e427 ******/
 		%feature("compactdefaultargs") AutomaticPosition;
 		%feature("autodoc", "Return
 -------
@@ -1550,8 +1550,8 @@ No available documentation.
 ") AutomaticPosition;
 		Standard_Boolean AutomaticPosition();
 
-		/****************** ExtShape ******************/
-		/**** md5 signature: ba3f30014ebd951754e2319eb6678935 ****/
+		/****** PrsDim_Relation::ExtShape ******/
+		/****** md5 signature: ba3f30014ebd951754e2319eb6678935 ******/
 		%feature("compactdefaultargs") ExtShape;
 		%feature("autodoc", "Return
 -------
@@ -1563,8 +1563,8 @@ Returns the status index of the extension shape.
 ") ExtShape;
 		Standard_Integer ExtShape();
 
-		/****************** FirstShape ******************/
-		/**** md5 signature: 0052eba922702f3e525649e52d93f4e7 ****/
+		/****** PrsDim_Relation::FirstShape ******/
+		/****** md5 signature: 0052eba922702f3e525649e52d93f4e7 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
@@ -1576,8 +1576,8 @@ No available documentation.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
-		/****************** IsMovable ******************/
-		/**** md5 signature: ecafaf47b8ef8a68ada41232f33d6a22 ****/
+		/****** PrsDim_Relation::IsMovable ******/
+		/****** md5 signature: ecafaf47b8ef8a68ada41232f33d6a22 ******/
 		%feature("compactdefaultargs") IsMovable;
 		%feature("autodoc", "Return
 -------
@@ -1589,8 +1589,8 @@ Returns true if the interactive object is movable.
 ") IsMovable;
 		virtual Standard_Boolean IsMovable();
 
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: b37803c776d1eca88db8e43e3a5728c2 ****/
+		/****** PrsDim_Relation::KindOfDimension ******/
+		/****** md5 signature: b37803c776d1eca88db8e43e3a5728c2 ******/
 		%feature("compactdefaultargs") KindOfDimension;
 		%feature("autodoc", "Return
 -------
@@ -1602,8 +1602,8 @@ Indicates that the type of dimension is unknown.
 ") KindOfDimension;
 		virtual PrsDim_KindOfDimension KindOfDimension();
 
-		/****************** Plane ******************/
-		/**** md5 signature: 94aa2880e5105df8ee475ace1dfe0bd2 ****/
+		/****** PrsDim_Relation::Plane ******/
+		/****** md5 signature: 94aa2880e5105df8ee475ace1dfe0bd2 ******/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "Return
 -------
@@ -1615,8 +1615,8 @@ Returns the plane.
 ") Plane;
 		const opencascade::handle<Geom_Plane> & Plane();
 
-		/****************** Position ******************/
-		/**** md5 signature: 0ab08d371c89be0cb1eecbddf304bb77 ****/
+		/****** PrsDim_Relation::Position ******/
+		/****** md5 signature: 0ab08d371c89be0cb1eecbddf304bb77 ******/
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "Return
 -------
@@ -1628,8 +1628,8 @@ Returns the position set using setposition.
 ") Position;
 		const gp_Pnt Position();
 
-		/****************** SecondShape ******************/
-		/**** md5 signature: 3c9d5f80bfbcac42f6848475061ecf61 ****/
+		/****** PrsDim_Relation::SecondShape ******/
+		/****** md5 signature: 3c9d5f80bfbcac42f6848475061ecf61 ******/
 		%feature("compactdefaultargs") SecondShape;
 		%feature("autodoc", "Return
 -------
@@ -1641,8 +1641,8 @@ Returns the second shape.
 ") SecondShape;
 		const TopoDS_Shape SecondShape();
 
-		/****************** SetArrowSize ******************/
-		/**** md5 signature: 7f29c9d69ed4995251718b45132ef44a ****/
+		/****** PrsDim_Relation::SetArrowSize ******/
+		/****** md5 signature: 7f29c9d69ed4995251718b45132ef44a ******/
 		%feature("compactdefaultargs") SetArrowSize;
 		%feature("autodoc", "
 Parameters
@@ -1659,8 +1659,8 @@ Allows you to provide settings for the size of the arrow thearrowsize identifyin
 ") SetArrowSize;
 		void SetArrowSize(const Standard_Real theArrowSize);
 
-		/****************** SetAutomaticPosition ******************/
-		/**** md5 signature: eb2707fc0c7ac0140ed8fd4c80f28b34 ****/
+		/****** PrsDim_Relation::SetAutomaticPosition ******/
+		/****** md5 signature: eb2707fc0c7ac0140ed8fd4c80f28b34 ******/
 		%feature("compactdefaultargs") SetAutomaticPosition;
 		%feature("autodoc", "
 Parameters
@@ -1677,8 +1677,8 @@ No available documentation.
 ") SetAutomaticPosition;
 		void SetAutomaticPosition(const Standard_Boolean theStatus);
 
-		/****************** SetBndBox ******************/
-		/**** md5 signature: 7c3556dffd56ab1f14ecdaaf0953820a ****/
+		/****** PrsDim_Relation::SetBndBox ******/
+		/****** md5 signature: 7c3556dffd56ab1f14ecdaaf0953820a ******/
 		%feature("compactdefaultargs") SetBndBox;
 		%feature("autodoc", "
 Parameters
@@ -1700,8 +1700,8 @@ No available documentation.
 ") SetBndBox;
 		void SetBndBox(const Standard_Real theXmin, const Standard_Real theYmin, const Standard_Real theZmin, const Standard_Real theXmax, const Standard_Real theYmax, const Standard_Real theZmax);
 
-		/****************** SetColor ******************/
-		/**** md5 signature: 7e02f3e04e30cfab690f414e5d7614ca ****/
+		/****** PrsDim_Relation::SetColor ******/
+		/****** md5 signature: 7e02f3e04e30cfab690f414e5d7614ca ******/
 		%feature("compactdefaultargs") SetColor;
 		%feature("autodoc", "
 Parameters
@@ -1718,8 +1718,8 @@ Allows you to provide settings for the color thecolor of the lines representing 
 ") SetColor;
 		void SetColor(const Quantity_Color & theColor);
 
-		/****************** SetExtShape ******************/
-		/**** md5 signature: 86fc35735d1c517597a5d532e3f8521a ****/
+		/****** PrsDim_Relation::SetExtShape ******/
+		/****** md5 signature: 86fc35735d1c517597a5d532e3f8521a ******/
 		%feature("compactdefaultargs") SetExtShape;
 		%feature("autodoc", "
 Parameters
@@ -1736,8 +1736,8 @@ Allows you to set the status of the extension shape by the index aindex. the sta
 ") SetExtShape;
 		void SetExtShape(const Standard_Integer theIndex);
 
-		/****************** SetFirstShape ******************/
-		/**** md5 signature: f7c0b3fbbd537f19dc1e43a4c280284b ****/
+		/****** PrsDim_Relation::SetFirstShape ******/
+		/****** md5 signature: f7c0b3fbbd537f19dc1e43a4c280284b ******/
 		%feature("compactdefaultargs") SetFirstShape;
 		%feature("autodoc", "
 Parameters
@@ -1754,8 +1754,8 @@ No available documentation.
 ") SetFirstShape;
 		virtual void SetFirstShape(const TopoDS_Shape & aFShape);
 
-		/****************** SetPlane ******************/
-		/**** md5 signature: 950afcbb12a962d6ac501f5bcd6b2945 ****/
+		/****** PrsDim_Relation::SetPlane ******/
+		/****** md5 signature: 950afcbb12a962d6ac501f5bcd6b2945 ******/
 		%feature("compactdefaultargs") SetPlane;
 		%feature("autodoc", "
 Parameters
@@ -1772,8 +1772,8 @@ Allows you to set the plane theplane. this is used to define relations and dimen
 ") SetPlane;
 		void SetPlane(const opencascade::handle<Geom_Plane> & thePlane);
 
-		/****************** SetPosition ******************/
-		/**** md5 signature: 2f8cb3df196eb538026858474c42a042 ****/
+		/****** PrsDim_Relation::SetPosition ******/
+		/****** md5 signature: 2f8cb3df196eb538026858474c42a042 ******/
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", "
 Parameters
@@ -1790,8 +1790,8 @@ Allows you to provide the objects in the relation with settings for a non-defaul
 ") SetPosition;
 		void SetPosition(const gp_Pnt & thePosition);
 
-		/****************** SetSecondShape ******************/
-		/**** md5 signature: 54157e780f59d54d926c6850c9f86357 ****/
+		/****** PrsDim_Relation::SetSecondShape ******/
+		/****** md5 signature: 54157e780f59d54d926c6850c9f86357 ******/
 		%feature("compactdefaultargs") SetSecondShape;
 		%feature("autodoc", "
 Parameters
@@ -1808,8 +1808,8 @@ Allows you to identify the second shape asshape relative to the first.
 ") SetSecondShape;
 		virtual void SetSecondShape(const TopoDS_Shape & aSShape);
 
-		/****************** SetSymbolPrs ******************/
-		/**** md5 signature: 703c256ba420e65c94dac6b87e3d6047 ****/
+		/****** PrsDim_Relation::SetSymbolPrs ******/
+		/****** md5 signature: 703c256ba420e65c94dac6b87e3d6047 ******/
 		%feature("compactdefaultargs") SetSymbolPrs;
 		%feature("autodoc", "
 Parameters
@@ -1826,8 +1826,8 @@ Allows you to provide settings for the symbol presentation.
 ") SetSymbolPrs;
 		void SetSymbolPrs(const DsgPrs_ArrowSide theSymbolPrs);
 
-		/****************** SetText ******************/
-		/**** md5 signature: b6056cb56568f8909dbeaac438ef83aa ****/
+		/****** PrsDim_Relation::SetText ******/
+		/****** md5 signature: b6056cb56568f8909dbeaac438ef83aa ******/
 		%feature("compactdefaultargs") SetText;
 		%feature("autodoc", "
 Parameters
@@ -1844,8 +1844,8 @@ Allows you to provide the settings thetext for text aspect.
 ") SetText;
 		void SetText(TCollection_ExtendedString theText);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 5be0c2680e760a4f92ac7b7d3ae78786 ****/
+		/****** PrsDim_Relation::SetValue ******/
+		/****** md5 signature: 5be0c2680e760a4f92ac7b7d3ae78786 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1862,8 +1862,8 @@ Allows you to provide settings for the value theval for each object in the relat
 ") SetValue;
 		void SetValue(const Standard_Real theVal);
 
-		/****************** SymbolPrs ******************/
-		/**** md5 signature: 7b81240b7c5c019dedce9d08539b00f1 ****/
+		/****** PrsDim_Relation::SymbolPrs ******/
+		/****** md5 signature: 7b81240b7c5c019dedce9d08539b00f1 ******/
 		%feature("compactdefaultargs") SymbolPrs;
 		%feature("autodoc", "Return
 -------
@@ -1875,8 +1875,8 @@ Returns the value of the symbol presentation. this will be one of: - as_none - n
 ") SymbolPrs;
 		DsgPrs_ArrowSide SymbolPrs();
 
-		/****************** Text ******************/
-		/**** md5 signature: 72bf6306b0638727f5e5c6cb054bb79f ****/
+		/****** PrsDim_Relation::Text ******/
+		/****** md5 signature: 72bf6306b0638727f5e5c6cb054bb79f ******/
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "Return
 -------
@@ -1888,8 +1888,8 @@ Returns settings for text aspect.
 ") Text;
 		const TCollection_ExtendedString & Text();
 
-		/****************** Type ******************/
-		/**** md5 signature: bf4aea6b24d0b584b57c781f208134ec ****/
+		/****** PrsDim_Relation::Type ******/
+		/****** md5 signature: bf4aea6b24d0b584b57c781f208134ec ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Return
 -------
@@ -1901,8 +1901,8 @@ No available documentation.
 ") Type;
 		virtual AIS_KindOfInteractive Type();
 
-		/****************** UnsetBndBox ******************/
-		/**** md5 signature: c3c34a2be55a0808b9eae7a500b23e3b ****/
+		/****** PrsDim_Relation::UnsetBndBox ******/
+		/****** md5 signature: c3c34a2be55a0808b9eae7a500b23e3b ******/
 		%feature("compactdefaultargs") UnsetBndBox;
 		%feature("autodoc", "Return
 -------
@@ -1914,8 +1914,8 @@ No available documentation.
 ") UnsetBndBox;
 		void UnsetBndBox();
 
-		/****************** UnsetColor ******************/
-		/**** md5 signature: 305de4c541ce8067f3ff456f9ec26b55 ****/
+		/****** PrsDim_Relation::UnsetColor ******/
+		/****** md5 signature: 305de4c541ce8067f3ff456f9ec26b55 ******/
 		%feature("compactdefaultargs") UnsetColor;
 		%feature("autodoc", "Return
 -------
@@ -1927,8 +1927,8 @@ Allows you to remove settings for the color of the lines representing the relati
 ") UnsetColor;
 		void UnsetColor();
 
-		/****************** Value ******************/
-		/**** md5 signature: 246826be964a300c707aadb5d0b62468 ****/
+		/****** PrsDim_Relation::Value ******/
+		/****** md5 signature: 246826be964a300c707aadb5d0b62468 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1956,8 +1956,8 @@ Returns the value of each object in the relation.
 ******************************/
 class PrsDim_AngleDimension : public PrsDim_Dimension {
 	public:
-		/****************** PrsDim_AngleDimension ******************/
-		/**** md5 signature: bf03164e7fa61b2419edc5521a74c29a ****/
+		/****** PrsDim_AngleDimension::PrsDim_AngleDimension ******/
+		/****** md5 signature: bf03164e7fa61b2419edc5521a74c29a ******/
 		%feature("compactdefaultargs") PrsDim_AngleDimension;
 		%feature("autodoc", "
 Parameters
@@ -1975,8 +1975,8 @@ Constructs minimum angle dimension between two linear edges (where possible). th
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge);
 
-		/****************** PrsDim_AngleDimension ******************/
-		/**** md5 signature: d124b521b92e8f56d45bee4f27d28998 ****/
+		/****** PrsDim_AngleDimension::PrsDim_AngleDimension ******/
+		/****** md5 signature: d124b521b92e8f56d45bee4f27d28998 ******/
 		%feature("compactdefaultargs") PrsDim_AngleDimension;
 		%feature("autodoc", "
 Parameters
@@ -1995,8 +1995,8 @@ Constructs the angle display object defined by three points. @param thefirstpoin
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pnt & theThirdPoint);
 
-		/****************** PrsDim_AngleDimension ******************/
-		/**** md5 signature: 22cddb7b3a3ff9cf81c69c4f7732968d ****/
+		/****** PrsDim_AngleDimension::PrsDim_AngleDimension ******/
+		/****** md5 signature: 22cddb7b3a3ff9cf81c69c4f7732968d ******/
 		%feature("compactdefaultargs") PrsDim_AngleDimension;
 		%feature("autodoc", "
 Parameters
@@ -2015,8 +2015,8 @@ Constructs the angle display object defined by three vertices. @param thefirstve
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const TopoDS_Vertex & theFirstVertex, const TopoDS_Vertex & theSecondVertex, const TopoDS_Vertex & theThirdVertex);
 
-		/****************** PrsDim_AngleDimension ******************/
-		/**** md5 signature: 8d326d750479ca2e859b83b8ce0591d4 ****/
+		/****** PrsDim_AngleDimension::PrsDim_AngleDimension ******/
+		/****** md5 signature: 8d326d750479ca2e859b83b8ce0591d4 ******/
 		%feature("compactdefaultargs") PrsDim_AngleDimension;
 		%feature("autodoc", "
 Parameters
@@ -2033,8 +2033,8 @@ Constructs angle dimension for the cone face. @param thecone [in] the conical fa
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const TopoDS_Face & theCone);
 
-		/****************** PrsDim_AngleDimension ******************/
-		/**** md5 signature: d8f3a6ca0fc04a0ccadf8c1705db3dfa ****/
+		/****** PrsDim_AngleDimension::PrsDim_AngleDimension ******/
+		/****** md5 signature: d8f3a6ca0fc04a0ccadf8c1705db3dfa ******/
 		%feature("compactdefaultargs") PrsDim_AngleDimension;
 		%feature("autodoc", "
 Parameters
@@ -2052,8 +2052,8 @@ Constructs angle dimension between two planar faces. @param thefirstface [in] th
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
 
-		/****************** PrsDim_AngleDimension ******************/
-		/**** md5 signature: 43724685c047e9a14625bb3a31900efe ****/
+		/****** PrsDim_AngleDimension::PrsDim_AngleDimension ******/
+		/****** md5 signature: 43724685c047e9a14625bb3a31900efe ******/
 		%feature("compactdefaultargs") PrsDim_AngleDimension;
 		%feature("autodoc", "
 Parameters
@@ -2072,8 +2072,8 @@ Constructs angle dimension between two planar faces. @param thefirstface [in] th
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, const gp_Pnt & thePoint);
 
-		/****************** CenterPoint ******************/
-		/**** md5 signature: 376d48ef89b723bce96dea4dcf286eaf ****/
+		/****** PrsDim_AngleDimension::CenterPoint ******/
+		/****** md5 signature: 376d48ef89b723bce96dea4dcf286eaf ******/
 		%feature("compactdefaultargs") CenterPoint;
 		%feature("autodoc", "Return
 -------
@@ -2085,8 +2085,8 @@ Return center point forming the angle.
 ") CenterPoint;
 		const gp_Pnt CenterPoint();
 
-		/****************** FirstPoint ******************/
-		/**** md5 signature: ce6daac63a94ae39a0d0bfa7edc5f3cd ****/
+		/****** PrsDim_AngleDimension::FirstPoint ******/
+		/****** md5 signature: ce6daac63a94ae39a0d0bfa7edc5f3cd ******/
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -2098,8 +2098,8 @@ Return first point forming the angle.
 ") FirstPoint;
 		const gp_Pnt FirstPoint();
 
-		/****************** FirstShape ******************/
-		/**** md5 signature: 0052eba922702f3e525649e52d93f4e7 ****/
+		/****** PrsDim_AngleDimension::FirstShape ******/
+		/****** md5 signature: 0052eba922702f3e525649e52d93f4e7 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
@@ -2111,8 +2111,8 @@ Return first argument shape.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
-		/****************** GetArrowsVisibility ******************/
-		/**** md5 signature: 46cba3cb29a78865c51874e00db3f36b ****/
+		/****** PrsDim_AngleDimension::GetArrowsVisibility ******/
+		/****** md5 signature: 46cba3cb29a78865c51874e00db3f36b ******/
 		%feature("compactdefaultargs") GetArrowsVisibility;
 		%feature("autodoc", "Return
 -------
@@ -2124,8 +2124,8 @@ Return the type of visibility of arrows.
 ") GetArrowsVisibility;
 		PrsDim_TypeOfAngleArrowVisibility GetArrowsVisibility();
 
-		/****************** GetDisplayUnits ******************/
-		/**** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ****/
+		/****** PrsDim_AngleDimension::GetDisplayUnits ******/
+		/****** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ******/
 		%feature("compactdefaultargs") GetDisplayUnits;
 		%feature("autodoc", "Return
 -------
@@ -2137,8 +2137,8 @@ Return the display units string.
 ") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits();
 
-		/****************** GetModelUnits ******************/
-		/**** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ****/
+		/****** PrsDim_AngleDimension::GetModelUnits ******/
+		/****** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ******/
 		%feature("compactdefaultargs") GetModelUnits;
 		%feature("autodoc", "Return
 -------
@@ -2150,8 +2150,8 @@ Return the model units string.
 ") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits();
 
-		/****************** GetTextPosition ******************/
-		/**** md5 signature: 62f290d0c1a25a3579f77b31be4010f2 ****/
+		/****** PrsDim_AngleDimension::GetTextPosition ******/
+		/****** md5 signature: 62f290d0c1a25a3579f77b31be4010f2 ******/
 		%feature("compactdefaultargs") GetTextPosition;
 		%feature("autodoc", "Return
 -------
@@ -2163,8 +2163,8 @@ No available documentation.
 ") GetTextPosition;
 		virtual gp_Pnt GetTextPosition();
 
-		/****************** GetType ******************/
-		/**** md5 signature: 53492e82f74aaeb8eb534503e3b56f99 ****/
+		/****** PrsDim_AngleDimension::GetType ******/
+		/****** md5 signature: 53492e82f74aaeb8eb534503e3b56f99 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -2176,8 +2176,8 @@ Return the current angle type.
 ") GetType;
 		PrsDim_TypeOfAngle GetType();
 
-		/****************** SecondPoint ******************/
-		/**** md5 signature: 66319c8fbdc379c409c2efa67f6e79e2 ****/
+		/****** PrsDim_AngleDimension::SecondPoint ******/
+		/****** md5 signature: 66319c8fbdc379c409c2efa67f6e79e2 ******/
 		%feature("compactdefaultargs") SecondPoint;
 		%feature("autodoc", "Return
 -------
@@ -2189,8 +2189,8 @@ Return second point forming the angle.
 ") SecondPoint;
 		const gp_Pnt SecondPoint();
 
-		/****************** SecondShape ******************/
-		/**** md5 signature: 3c9d5f80bfbcac42f6848475061ecf61 ****/
+		/****** PrsDim_AngleDimension::SecondShape ******/
+		/****** md5 signature: 3c9d5f80bfbcac42f6848475061ecf61 ******/
 		%feature("compactdefaultargs") SecondShape;
 		%feature("autodoc", "Return
 -------
@@ -2202,8 +2202,8 @@ Return second argument shape.
 ") SecondShape;
 		const TopoDS_Shape SecondShape();
 
-		/****************** SetArrowsVisibility ******************/
-		/**** md5 signature: 05364bdc4330c3e39178bd5550429736 ****/
+		/****** PrsDim_AngleDimension::SetArrowsVisibility ******/
+		/****** md5 signature: 05364bdc4330c3e39178bd5550429736 ******/
 		%feature("compactdefaultargs") SetArrowsVisibility;
 		%feature("autodoc", "
 Parameters
@@ -2220,8 +2220,8 @@ Sets visible arrows type @param thetype [in] the type of visibility of arrows.
 ") SetArrowsVisibility;
 		void SetArrowsVisibility(const PrsDim_TypeOfAngleArrowVisibility & theType);
 
-		/****************** SetDisplayUnits ******************/
-		/**** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ****/
+		/****** PrsDim_AngleDimension::SetDisplayUnits ******/
+		/****** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ******/
 		%feature("compactdefaultargs") SetDisplayUnits;
 		%feature("autodoc", "
 Parameters
@@ -2238,8 +2238,8 @@ No available documentation.
 ") SetDisplayUnits;
 		virtual void SetDisplayUnits(TCollection_AsciiString theUnits);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: bd2a1958aebc184ac052f65310544456 ****/
+		/****** PrsDim_AngleDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: bd2a1958aebc184ac052f65310544456 ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2257,8 +2257,8 @@ Measures minimum angle dimension between two linear edges. these two edges shoul
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 8370d49fd8b758a25710cc639a9511cd ****/
+		/****** PrsDim_AngleDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: 8370d49fd8b758a25710cc639a9511cd ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2277,8 +2277,8 @@ Measures angle defined by three points. @param thefirstpoint [in] the first poin
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pnt & theThridPoint);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 250b7a4fbb3059f28c11f7363968850b ****/
+		/****** PrsDim_AngleDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: 250b7a4fbb3059f28c11f7363968850b ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2297,8 +2297,8 @@ Measures angle defined by three vertices. @param thefirstvertex [in] the first v
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Vertex & theFirstVertex, const TopoDS_Vertex & theSecondVertex, const TopoDS_Vertex & theThirdVertex);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 05157dc0a85dc9fbcd1befa60e9f98ee ****/
+		/****** PrsDim_AngleDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: 05157dc0a85dc9fbcd1befa60e9f98ee ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2315,8 +2315,8 @@ Measures angle of conical face. @param thecone [in] the shape to measure.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Face & theCone);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: bfe5f7ff6a46076a22cbf50a395e204f ****/
+		/****** PrsDim_AngleDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: bfe5f7ff6a46076a22cbf50a395e204f ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2334,8 +2334,8 @@ Measures angle between two planar faces. @param thefirstface [in] the first face
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 1ba045d48067d962f09980869f2f63bf ****/
+		/****** PrsDim_AngleDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: 1ba045d48067d962f09980869f2f63bf ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2354,8 +2354,8 @@ Measures angle between two planar faces. @param thefirstface [in] the first face
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, const gp_Pnt & thePoint);
 
-		/****************** SetModelUnits ******************/
-		/**** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ****/
+		/****** PrsDim_AngleDimension::SetModelUnits ******/
+		/****** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ******/
 		%feature("compactdefaultargs") SetModelUnits;
 		%feature("autodoc", "
 Parameters
@@ -2372,8 +2372,8 @@ No available documentation.
 ") SetModelUnits;
 		virtual void SetModelUnits(TCollection_AsciiString theUnits);
 
-		/****************** SetTextPosition ******************/
-		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
+		/****** PrsDim_AngleDimension::SetTextPosition ******/
+		/****** md5 signature: f1658ae61229bf1e77ff3828626b747f ******/
 		%feature("compactdefaultargs") SetTextPosition;
 		%feature("autodoc", "
 Parameters
@@ -2390,8 +2390,8 @@ Principle of horizontal text alignment settings: - divide circle into two halves
 ") SetTextPosition;
 		virtual void SetTextPosition(const gp_Pnt & theTextPos);
 
-		/****************** SetType ******************/
-		/**** md5 signature: 28a8c9d530531365adf7a6cbf39408b9 ****/
+		/****** PrsDim_AngleDimension::SetType ******/
+		/****** md5 signature: 28a8c9d530531365adf7a6cbf39408b9 ******/
 		%feature("compactdefaultargs") SetType;
 		%feature("autodoc", "
 Parameters
@@ -2408,8 +2408,8 @@ Sets angle type. @param thetype [in] the type value.
 ") SetType;
 		void SetType(const PrsDim_TypeOfAngle theType);
 
-		/****************** ThirdShape ******************/
-		/**** md5 signature: bdef6863310cc2c387933980e76c0b33 ****/
+		/****** PrsDim_AngleDimension::ThirdShape ******/
+		/****** md5 signature: bdef6863310cc2c387933980e76c0b33 ******/
 		%feature("compactdefaultargs") ThirdShape;
 		%feature("autodoc", "Return
 -------
@@ -2437,8 +2437,8 @@ Return third argument shape.
 ********************************/
 class PrsDim_Chamf2dDimension : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_Chamf2dDimension ******************/
-		/**** md5 signature: 0712755e6f89ca287a3362bbf4c04e44 ****/
+		/****** PrsDim_Chamf2dDimension::PrsDim_Chamf2dDimension ******/
+		/****** md5 signature: 0712755e6f89ca287a3362bbf4c04e44 ******/
 		%feature("compactdefaultargs") PrsDim_Chamf2dDimension;
 		%feature("autodoc", "
 Parameters
@@ -2458,8 +2458,8 @@ Constructs the display object for 2d chamfers. this object is defined by the fac
 ") PrsDim_Chamf2dDimension;
 		 PrsDim_Chamf2dDimension(const TopoDS_Shape & aFShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Real aVal, TCollection_ExtendedString aText);
 
-		/****************** PrsDim_Chamf2dDimension ******************/
-		/**** md5 signature: 50cb8ca97e253bfa32a7e7efb9b6a289 ****/
+		/****** PrsDim_Chamf2dDimension::PrsDim_Chamf2dDimension ******/
+		/****** md5 signature: 50cb8ca97e253bfa32a7e7efb9b6a289 ******/
 		%feature("compactdefaultargs") PrsDim_Chamf2dDimension;
 		%feature("autodoc", "
 Parameters
@@ -2482,8 +2482,8 @@ Constructs the display object for 2d chamfers. this object is defined by the fac
 ") PrsDim_Chamf2dDimension;
 		 PrsDim_Chamf2dDimension(const TopoDS_Shape & aFShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Real aVal, TCollection_ExtendedString aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
 
-		/****************** IsMovable ******************/
-		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
+		/****** PrsDim_Chamf2dDimension::IsMovable ******/
+		/****** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ******/
 		%feature("compactdefaultargs") IsMovable;
 		%feature("autodoc", "Return
 -------
@@ -2495,8 +2495,8 @@ Returns true if the 2d chamfer dimension is movable.
 ") IsMovable;
 		virtual Standard_Boolean IsMovable();
 
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: d9fe1ab2881bf16089f50e785bf13209 ****/
+		/****** PrsDim_Chamf2dDimension::KindOfDimension ******/
+		/****** md5 signature: d9fe1ab2881bf16089f50e785bf13209 ******/
 		%feature("compactdefaultargs") KindOfDimension;
 		%feature("autodoc", "Return
 -------
@@ -2524,8 +2524,8 @@ Indicates that we are concerned with a 2d length.
 ********************************/
 class PrsDim_Chamf3dDimension : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_Chamf3dDimension ******************/
-		/**** md5 signature: cc0174a5707cf7ecb7a1e19732683825 ****/
+		/****** PrsDim_Chamf3dDimension::PrsDim_Chamf3dDimension ******/
+		/****** md5 signature: cc0174a5707cf7ecb7a1e19732683825 ******/
 		%feature("compactdefaultargs") PrsDim_Chamf3dDimension;
 		%feature("autodoc", "
 Parameters
@@ -2544,8 +2544,8 @@ Constructs a display object for 3d chamfers. this object is defined by the shape
 ") PrsDim_Chamf3dDimension;
 		 PrsDim_Chamf3dDimension(const TopoDS_Shape & aFShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
-		/****************** PrsDim_Chamf3dDimension ******************/
-		/**** md5 signature: 485f32758f4c90220dd128f21c767125 ****/
+		/****** PrsDim_Chamf3dDimension::PrsDim_Chamf3dDimension ******/
+		/****** md5 signature: 485f32758f4c90220dd128f21c767125 ******/
 		%feature("compactdefaultargs") PrsDim_Chamf3dDimension;
 		%feature("autodoc", "
 Parameters
@@ -2567,8 +2567,8 @@ Constructs a display object for 3d chamfers. this object is defined by the shape
 ") PrsDim_Chamf3dDimension;
 		 PrsDim_Chamf3dDimension(const TopoDS_Shape & aFShape, const Standard_Real aVal, TCollection_ExtendedString aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
 
-		/****************** IsMovable ******************/
-		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
+		/****** PrsDim_Chamf3dDimension::IsMovable ******/
+		/****** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ******/
 		%feature("compactdefaultargs") IsMovable;
 		%feature("autodoc", "Return
 -------
@@ -2580,8 +2580,8 @@ Returns true if the 3d chamfer dimension is movable.
 ") IsMovable;
 		virtual Standard_Boolean IsMovable();
 
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: d9fe1ab2881bf16089f50e785bf13209 ****/
+		/****** PrsDim_Chamf3dDimension::KindOfDimension ******/
+		/****** md5 signature: d9fe1ab2881bf16089f50e785bf13209 ******/
 		%feature("compactdefaultargs") KindOfDimension;
 		%feature("autodoc", "Return
 -------
@@ -2609,8 +2609,8 @@ Indicates that we are concerned with a 3d length.
 **********************************/
 class PrsDim_ConcentricRelation : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_ConcentricRelation ******************/
-		/**** md5 signature: 869509701791277168c3b554d85b4bd2 ****/
+		/****** PrsDim_ConcentricRelation::PrsDim_ConcentricRelation ******/
+		/****** md5 signature: 869509701791277168c3b554d85b4bd2 ******/
 		%feature("compactdefaultargs") PrsDim_ConcentricRelation;
 		%feature("autodoc", "
 Parameters
@@ -2645,8 +2645,8 @@ Constructs the display object for concentric relations between shapes. this obje
 *********************************/
 class PrsDim_DiameterDimension : public PrsDim_Dimension {
 	public:
-		/****************** PrsDim_DiameterDimension ******************/
-		/**** md5 signature: 4d6e682d3504d2fa30b05cfdfc9256f9 ****/
+		/****** PrsDim_DiameterDimension::PrsDim_DiameterDimension ******/
+		/****** md5 signature: 4d6e682d3504d2fa30b05cfdfc9256f9 ******/
 		%feature("compactdefaultargs") PrsDim_DiameterDimension;
 		%feature("autodoc", "
 Parameters
@@ -2663,8 +2663,8 @@ Construct diameter dimension for the circle. @param thecircle [in] the circle to
 ") PrsDim_DiameterDimension;
 		 PrsDim_DiameterDimension(const gp_Circ & theCircle);
 
-		/****************** PrsDim_DiameterDimension ******************/
-		/**** md5 signature: 3d81b47b28524dc65c959bcc5c959fd4 ****/
+		/****** PrsDim_DiameterDimension::PrsDim_DiameterDimension ******/
+		/****** md5 signature: 3d81b47b28524dc65c959bcc5c959fd4 ******/
 		%feature("compactdefaultargs") PrsDim_DiameterDimension;
 		%feature("autodoc", "
 Parameters
@@ -2682,8 +2682,8 @@ Construct diameter dimension for the circle and orient it correspondingly to the
 ") PrsDim_DiameterDimension;
 		 PrsDim_DiameterDimension(const gp_Circ & theCircle, const gp_Pln & thePlane);
 
-		/****************** PrsDim_DiameterDimension ******************/
-		/**** md5 signature: 4a1cf23da6b5862081f203f8e54205de ****/
+		/****** PrsDim_DiameterDimension::PrsDim_DiameterDimension ******/
+		/****** md5 signature: 4a1cf23da6b5862081f203f8e54205de ******/
 		%feature("compactdefaultargs") PrsDim_DiameterDimension;
 		%feature("autodoc", "
 Parameters
@@ -2700,8 +2700,8 @@ Construct diameter on the passed shape, if applicable. @param theshape [in] the 
 ") PrsDim_DiameterDimension;
 		 PrsDim_DiameterDimension(const TopoDS_Shape & theShape);
 
-		/****************** PrsDim_DiameterDimension ******************/
-		/**** md5 signature: 1f81cad559daecd01fa67a0c212e25e5 ****/
+		/****** PrsDim_DiameterDimension::PrsDim_DiameterDimension ******/
+		/****** md5 signature: 1f81cad559daecd01fa67a0c212e25e5 ******/
 		%feature("compactdefaultargs") PrsDim_DiameterDimension;
 		%feature("autodoc", "
 Parameters
@@ -2719,8 +2719,8 @@ Construct diameter on the passed shape, if applicable - and define the preferred
 ") PrsDim_DiameterDimension;
 		 PrsDim_DiameterDimension(const TopoDS_Shape & theShape, const gp_Pln & thePlane);
 
-		/****************** AnchorPoint ******************/
-		/**** md5 signature: 92adc8b9baf75c6634009a53820f63a3 ****/
+		/****** PrsDim_DiameterDimension::AnchorPoint ******/
+		/****** md5 signature: 92adc8b9baf75c6634009a53820f63a3 ******/
 		%feature("compactdefaultargs") AnchorPoint;
 		%feature("autodoc", "Return
 -------
@@ -2732,8 +2732,8 @@ Return anchor point on circle for diameter dimension.
 ") AnchorPoint;
 		gp_Pnt AnchorPoint();
 
-		/****************** Circle ******************/
-		/**** md5 signature: 1eaea6bdc97e0fc2fac6cefd24825e1a ****/
+		/****** PrsDim_DiameterDimension::Circle ******/
+		/****** md5 signature: 1eaea6bdc97e0fc2fac6cefd24825e1a ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -2745,8 +2745,8 @@ Return measured geometry circle.
 ") Circle;
 		const gp_Circ Circle();
 
-		/****************** GetDisplayUnits ******************/
-		/**** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ****/
+		/****** PrsDim_DiameterDimension::GetDisplayUnits ******/
+		/****** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ******/
 		%feature("compactdefaultargs") GetDisplayUnits;
 		%feature("autodoc", "Return
 -------
@@ -2758,8 +2758,8 @@ Return the display units string.
 ") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits();
 
-		/****************** GetModelUnits ******************/
-		/**** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ****/
+		/****** PrsDim_DiameterDimension::GetModelUnits ******/
+		/****** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ******/
 		%feature("compactdefaultargs") GetModelUnits;
 		%feature("autodoc", "Return
 -------
@@ -2771,8 +2771,8 @@ Return the model units string.
 ") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits();
 
-		/****************** GetTextPosition ******************/
-		/**** md5 signature: 62f290d0c1a25a3579f77b31be4010f2 ****/
+		/****** PrsDim_DiameterDimension::GetTextPosition ******/
+		/****** md5 signature: 62f290d0c1a25a3579f77b31be4010f2 ******/
 		%feature("compactdefaultargs") GetTextPosition;
 		%feature("autodoc", "Return
 -------
@@ -2784,8 +2784,8 @@ No available documentation.
 ") GetTextPosition;
 		virtual gp_Pnt GetTextPosition();
 
-		/****************** SetDisplayUnits ******************/
-		/**** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ****/
+		/****** PrsDim_DiameterDimension::SetDisplayUnits ******/
+		/****** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ******/
 		%feature("compactdefaultargs") SetDisplayUnits;
 		%feature("autodoc", "
 Parameters
@@ -2802,8 +2802,8 @@ No available documentation.
 ") SetDisplayUnits;
 		virtual void SetDisplayUnits(TCollection_AsciiString theUnits);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: c1b9a4fe27f3e19a1218bcbc41264af8 ****/
+		/****** PrsDim_DiameterDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: c1b9a4fe27f3e19a1218bcbc41264af8 ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2820,8 +2820,8 @@ Measure diameter of the circle. the actual dimension plane is used for determini
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const gp_Circ & theCircle);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 38eeeac1c934d2bc9090d5e208e54b6e ****/
+		/****** PrsDim_DiameterDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: 38eeeac1c934d2bc9090d5e208e54b6e ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -2838,8 +2838,8 @@ Measure diameter on the passed shape, if applicable. the dimension will become i
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Shape & theShape);
 
-		/****************** SetModelUnits ******************/
-		/**** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ****/
+		/****** PrsDim_DiameterDimension::SetModelUnits ******/
+		/****** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ******/
 		%feature("compactdefaultargs") SetModelUnits;
 		%feature("autodoc", "
 Parameters
@@ -2856,8 +2856,8 @@ No available documentation.
 ") SetModelUnits;
 		virtual void SetModelUnits(TCollection_AsciiString theUnits);
 
-		/****************** SetTextPosition ******************/
-		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
+		/****** PrsDim_DiameterDimension::SetTextPosition ******/
+		/****** md5 signature: f1658ae61229bf1e77ff3828626b747f ******/
 		%feature("compactdefaultargs") SetTextPosition;
 		%feature("autodoc", "
 Parameters
@@ -2874,8 +2874,8 @@ No available documentation.
 ") SetTextPosition;
 		virtual void SetTextPosition(const gp_Pnt & theTextPos);
 
-		/****************** Shape ******************/
-		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
+		/****** PrsDim_DiameterDimension::Shape ******/
+		/****** md5 signature: 1058569f5d639354fedf11e73741b7df ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -2904,8 +2904,8 @@ Return the measured shape.
 %nodefaultctor PrsDim_EllipseRadiusDimension;
 class PrsDim_EllipseRadiusDimension : public PrsDim_Relation {
 	public:
-		/****************** ComputeGeometry ******************/
-		/**** md5 signature: 690247bb657a85c155cdc17b6745df6a ****/
+		/****** PrsDim_EllipseRadiusDimension::ComputeGeometry ******/
+		/****** md5 signature: 690247bb657a85c155cdc17b6745df6a ******/
 		%feature("compactdefaultargs") ComputeGeometry;
 		%feature("autodoc", "Return
 -------
@@ -2917,8 +2917,8 @@ No available documentation.
 ") ComputeGeometry;
 		void ComputeGeometry();
 
-		/****************** IsMovable ******************/
-		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
+		/****** PrsDim_EllipseRadiusDimension::IsMovable ******/
+		/****** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ******/
 		%feature("compactdefaultargs") IsMovable;
 		%feature("autodoc", "Return
 -------
@@ -2930,8 +2930,8 @@ No available documentation.
 ") IsMovable;
 		virtual Standard_Boolean IsMovable();
 
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: d9fe1ab2881bf16089f50e785bf13209 ****/
+		/****** PrsDim_EllipseRadiusDimension::KindOfDimension ******/
+		/****** md5 signature: d9fe1ab2881bf16089f50e785bf13209 ******/
 		%feature("compactdefaultargs") KindOfDimension;
 		%feature("autodoc", "Return
 -------
@@ -2959,8 +2959,8 @@ No available documentation.
 *************************************/
 class PrsDim_EqualDistanceRelation : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_EqualDistanceRelation ******************/
-		/**** md5 signature: 177d5bcd8d5434054f860081ea28e08e ****/
+		/****** PrsDim_EqualDistanceRelation::PrsDim_EqualDistanceRelation ******/
+		/****** md5 signature: 177d5bcd8d5434054f860081ea28e08e ******/
 		%feature("compactdefaultargs") PrsDim_EqualDistanceRelation;
 		%feature("autodoc", "
 Parameters
@@ -2981,8 +2981,8 @@ Constructs a framework to display equivalent distances between the shapes ashape
 ") PrsDim_EqualDistanceRelation;
 		 PrsDim_EqualDistanceRelation(const TopoDS_Shape & aShape1, const TopoDS_Shape & aShape2, const TopoDS_Shape & aShape3, const TopoDS_Shape & aShape4, const opencascade::handle<Geom_Plane> & aPlane);
 
-		/****************** ComputeOneEdgeOneVertexLength ******************/
-		/**** md5 signature: c8433bd8e1b8b43c506c26453cfea334 ****/
+		/****** PrsDim_EqualDistanceRelation::ComputeOneEdgeOneVertexLength ******/
+		/****** md5 signature: c8433bd8e1b8b43c506c26453cfea334 ******/
 		%feature("compactdefaultargs") ComputeOneEdgeOneVertexLength;
 		%feature("autodoc", "
 Parameters
@@ -3012,8 +3012,8 @@ Compute the interval location between a vertex and an edge. edge may be a line o
 ") ComputeOneEdgeOneVertexLength;
 		static void ComputeOneEdgeOneVertexLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide &OutValue);
 
-		/****************** ComputeTwoEdgesLength ******************/
-		/**** md5 signature: 8f004ba6dc5773a9742094e3b3f3f885 ****/
+		/****** PrsDim_EqualDistanceRelation::ComputeTwoEdgesLength ******/
+		/****** md5 signature: 8f004ba6dc5773a9742094e3b3f3f885 ******/
 		%feature("compactdefaultargs") ComputeTwoEdgesLength;
 		%feature("autodoc", "
 Parameters
@@ -3043,8 +3043,8 @@ Computes the location of an intreval between between two edges. firstattach , se
 ") ComputeTwoEdgesLength;
 		static void ComputeTwoEdgesLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Edge & FirstEdge, const TopoDS_Edge & SecondEdge, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide &OutValue);
 
-		/****************** ComputeTwoVerticesLength ******************/
-		/**** md5 signature: c2cf26f4f3674622aff9461abba45f4c ****/
+		/****** PrsDim_EqualDistanceRelation::ComputeTwoVerticesLength ******/
+		/****** md5 signature: c2cf26f4f3674622aff9461abba45f4c ******/
 		%feature("compactdefaultargs") ComputeTwoVerticesLength;
 		%feature("autodoc", "
 Parameters
@@ -3075,8 +3075,8 @@ Computes the interval position between two vertexs. firstattach, secondattach ar
 ") ComputeTwoVerticesLength;
 		static void ComputeTwoVerticesLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Vertex & FirstVertex, const TopoDS_Vertex & SecondVertex, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, const PrsDim_TypeOfDist TypeDist, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide &OutValue);
 
-		/****************** SetShape3 ******************/
-		/**** md5 signature: 0a91376bd67771bc8ca45b6e52a2dec0 ****/
+		/****** PrsDim_EqualDistanceRelation::SetShape3 ******/
+		/****** md5 signature: 0a91376bd67771bc8ca45b6e52a2dec0 ******/
 		%feature("compactdefaultargs") SetShape3;
 		%feature("autodoc", "
 Parameters
@@ -3093,8 +3093,8 @@ Sets the shape ashape to be used as the shape ashape3 in the framework created a
 ") SetShape3;
 		void SetShape3(const TopoDS_Shape & aShape);
 
-		/****************** SetShape4 ******************/
-		/**** md5 signature: f543a54216be5af8a263607fd632ceac ****/
+		/****** PrsDim_EqualDistanceRelation::SetShape4 ******/
+		/****** md5 signature: f543a54216be5af8a263607fd632ceac ******/
 		%feature("compactdefaultargs") SetShape4;
 		%feature("autodoc", "
 Parameters
@@ -3111,8 +3111,8 @@ Sets the shape ashape to be used as the shape ashape4 in the framework created a
 ") SetShape4;
 		void SetShape4(const TopoDS_Shape & aShape);
 
-		/****************** Shape3 ******************/
-		/**** md5 signature: ea136b7f794b164fd01f6891c7e8b287 ****/
+		/****** PrsDim_EqualDistanceRelation::Shape3 ******/
+		/****** md5 signature: ea136b7f794b164fd01f6891c7e8b287 ******/
 		%feature("compactdefaultargs") Shape3;
 		%feature("autodoc", "Return
 -------
@@ -3124,8 +3124,8 @@ Returns the shape ashape3 from the framework created at construction time.
 ") Shape3;
 		const TopoDS_Shape Shape3();
 
-		/****************** Shape4 ******************/
-		/**** md5 signature: 1022108095550fde66494c51385f1649 ****/
+		/****** PrsDim_EqualDistanceRelation::Shape4 ******/
+		/****** md5 signature: 1022108095550fde66494c51385f1649 ******/
 		%feature("compactdefaultargs") Shape4;
 		%feature("autodoc", "Return
 -------
@@ -3153,8 +3153,8 @@ Returns the shape ashape4 from the framework created at construction time.
 ***********************************/
 class PrsDim_EqualRadiusRelation : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_EqualRadiusRelation ******************/
-		/**** md5 signature: 4b46dbada063b2999b7ff8e714bab44f ****/
+		/****** PrsDim_EqualRadiusRelation::PrsDim_EqualRadiusRelation ******/
+		/****** md5 signature: 4b46dbada063b2999b7ff8e714bab44f ******/
 		%feature("compactdefaultargs") PrsDim_EqualRadiusRelation;
 		%feature("autodoc", "
 Parameters
@@ -3189,8 +3189,8 @@ Creates equal relation of two arc's radiuses. if one of edges is not in the give
 ***************************/
 class PrsDim_FixRelation : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_FixRelation ******************/
-		/**** md5 signature: 2f1406036f8ae3877ac72ec3ff9b1158 ****/
+		/****** PrsDim_FixRelation::PrsDim_FixRelation ******/
+		/****** md5 signature: 2f1406036f8ae3877ac72ec3ff9b1158 ******/
 		%feature("compactdefaultargs") PrsDim_FixRelation;
 		%feature("autodoc", "
 Parameters
@@ -3209,8 +3209,8 @@ Initializes the vertex ashape, the plane aplane and the wire awire, which connec
 ") PrsDim_FixRelation;
 		 PrsDim_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane, const TopoDS_Wire & aWire);
 
-		/****************** PrsDim_FixRelation ******************/
-		/**** md5 signature: 8119c428e8ad02c160e25cb8f441f83f ****/
+		/****** PrsDim_FixRelation::PrsDim_FixRelation ******/
+		/****** md5 signature: 8119c428e8ad02c160e25cb8f441f83f ******/
 		%feature("compactdefaultargs") PrsDim_FixRelation;
 		%feature("autodoc", "
 Parameters
@@ -3231,8 +3231,8 @@ Initializes the vertex ashape, the plane aplane and the wire awire, the position
 ") PrsDim_FixRelation;
 		 PrsDim_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane, const TopoDS_Wire & aWire, const gp_Pnt & aPosition, const Standard_Real anArrowSize = 0.01);
 
-		/****************** PrsDim_FixRelation ******************/
-		/**** md5 signature: ae700fea0e3dd07875d6262addb682db ****/
+		/****** PrsDim_FixRelation::PrsDim_FixRelation ******/
+		/****** md5 signature: ae700fea0e3dd07875d6262addb682db ******/
 		%feature("compactdefaultargs") PrsDim_FixRelation;
 		%feature("autodoc", "
 Parameters
@@ -3250,8 +3250,8 @@ Initializes the edge ashape and the plane aplane.
 ") PrsDim_FixRelation;
 		 PrsDim_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane);
 
-		/****************** PrsDim_FixRelation ******************/
-		/**** md5 signature: a2cbe852faae05e93fca70a7045165ee ****/
+		/****** PrsDim_FixRelation::PrsDim_FixRelation ******/
+		/****** md5 signature: a2cbe852faae05e93fca70a7045165ee ******/
 		%feature("compactdefaultargs") PrsDim_FixRelation;
 		%feature("autodoc", "
 Parameters
@@ -3271,8 +3271,8 @@ Initializes the edge ashape, the plane aplane, the position aposition and the ar
 ") PrsDim_FixRelation;
 		 PrsDim_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane, const gp_Pnt & aPosition, const Standard_Real anArrowSize = 0.01);
 
-		/****************** IsMovable ******************/
-		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
+		/****** PrsDim_FixRelation::IsMovable ******/
+		/****** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ******/
 		%feature("compactdefaultargs") IsMovable;
 		%feature("autodoc", "Return
 -------
@@ -3284,8 +3284,8 @@ Returns true if the interactive objects in the relation are movable.
 ") IsMovable;
 		virtual Standard_Boolean IsMovable();
 
-		/****************** SetWire ******************/
-		/**** md5 signature: 1e6ab77bc57c7750fc9b90fbf0c4cfc5 ****/
+		/****** PrsDim_FixRelation::SetWire ******/
+		/****** md5 signature: 1e6ab77bc57c7750fc9b90fbf0c4cfc5 ******/
 		%feature("compactdefaultargs") SetWire;
 		%feature("autodoc", "
 Parameters
@@ -3302,8 +3302,8 @@ Constructs the wire awire. this connects vertices which are in a fixed relation.
 ") SetWire;
 		void SetWire(const TopoDS_Wire & aWire);
 
-		/****************** Wire ******************/
-		/**** md5 signature: 305c9a4b8bd30e0b3d180ae1912b1938 ****/
+		/****** PrsDim_FixRelation::Wire ******/
+		/****** md5 signature: 305c9a4b8bd30e0b3d180ae1912b1938 ******/
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "Return
 -------
@@ -3331,8 +3331,8 @@ Returns the wire which connects vertices in a fixed relation.
 *******************************/
 class PrsDim_IdenticRelation : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_IdenticRelation ******************/
-		/**** md5 signature: 608c13eec6054dfc49a137c537516651 ****/
+		/****** PrsDim_IdenticRelation::PrsDim_IdenticRelation ******/
+		/****** md5 signature: 608c13eec6054dfc49a137c537516651 ******/
 		%feature("compactdefaultargs") PrsDim_IdenticRelation;
 		%feature("autodoc", "
 Parameters
@@ -3351,8 +3351,8 @@ Initializes the relation of identity between the two entities, firstshape and se
 ") PrsDim_IdenticRelation;
 		 PrsDim_IdenticRelation(const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & aPlane);
 
-		/****************** AddUser ******************/
-		/**** md5 signature: 96e81e223c191f89f7f54782a86a0e55 ****/
+		/****** PrsDim_IdenticRelation::AddUser ******/
+		/****** md5 signature: 96e81e223c191f89f7f54782a86a0e55 ******/
 		%feature("compactdefaultargs") AddUser;
 		%feature("autodoc", "
 Parameters
@@ -3369,8 +3369,8 @@ No available documentation.
 ") AddUser;
 		void AddUser(const opencascade::handle<Standard_Transient> & theUser);
 
-		/****************** ClearUsers ******************/
-		/**** md5 signature: f911b16400daf995643262aaebb56bf9 ****/
+		/****** PrsDim_IdenticRelation::ClearUsers ******/
+		/****** md5 signature: f911b16400daf995643262aaebb56bf9 ******/
 		%feature("compactdefaultargs") ClearUsers;
 		%feature("autodoc", "Return
 -------
@@ -3382,8 +3382,8 @@ No available documentation.
 ") ClearUsers;
 		void ClearUsers();
 
-		/****************** HasUsers ******************/
-		/**** md5 signature: aedf7f0293a5ad9e45c4f97ca68483fb ****/
+		/****** PrsDim_IdenticRelation::HasUsers ******/
+		/****** md5 signature: aedf7f0293a5ad9e45c4f97ca68483fb ******/
 		%feature("compactdefaultargs") HasUsers;
 		%feature("autodoc", "Return
 -------
@@ -3395,8 +3395,8 @@ No available documentation.
 ") HasUsers;
 		Standard_Boolean HasUsers();
 
-		/****************** IsMovable ******************/
-		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
+		/****** PrsDim_IdenticRelation::IsMovable ******/
+		/****** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ******/
 		%feature("compactdefaultargs") IsMovable;
 		%feature("autodoc", "Return
 -------
@@ -3408,8 +3408,8 @@ Returns true if the interactive object is movable.
 ") IsMovable;
 		virtual Standard_Boolean IsMovable();
 
-		/****************** Users ******************/
-		/**** md5 signature: 65858c69a6e24c72829560eee6991487 ****/
+		/****** PrsDim_IdenticRelation::Users ******/
+		/****** md5 signature: 65858c69a6e24c72829560eee6991487 ******/
 		%feature("compactdefaultargs") Users;
 		%feature("autodoc", "Return
 -------
@@ -3437,8 +3437,8 @@ No available documentation.
 *******************************/
 class PrsDim_LengthDimension : public PrsDim_Dimension {
 	public:
-		/****************** PrsDim_LengthDimension ******************/
-		/**** md5 signature: 76e262900b82f282d533e9d72cd330de ****/
+		/****** PrsDim_LengthDimension::PrsDim_LengthDimension ******/
+		/****** md5 signature: 76e262900b82f282d533e9d72cd330de ******/
 		%feature("compactdefaultargs") PrsDim_LengthDimension;
 		%feature("autodoc", "Return
 -------
@@ -3450,8 +3450,8 @@ Construct an empty length dimension. @sa setmeasuredgeometry(), setmeasuredshape
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension();
 
-		/****************** PrsDim_LengthDimension ******************/
-		/**** md5 signature: b8d2bd968153bc92dd94147ef64017a0 ****/
+		/****** PrsDim_LengthDimension::PrsDim_LengthDimension ******/
+		/****** md5 signature: b8d2bd968153bc92dd94147ef64017a0 ******/
 		%feature("compactdefaultargs") PrsDim_LengthDimension;
 		%feature("autodoc", "
 Parameters
@@ -3469,8 +3469,8 @@ Construct length dimension between face and edge. here dimension can be built wi
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge);
 
-		/****************** PrsDim_LengthDimension ******************/
-		/**** md5 signature: 97c54af5deffc3eb1b9f7af615285832 ****/
+		/****** PrsDim_LengthDimension::PrsDim_LengthDimension ******/
+		/****** md5 signature: 97c54af5deffc3eb1b9f7af615285832 ******/
 		%feature("compactdefaultargs") PrsDim_LengthDimension;
 		%feature("autodoc", "
 Parameters
@@ -3488,8 +3488,8 @@ Construct length dimension between two faces. @param thefirstface [in] the first
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
 
-		/****************** PrsDim_LengthDimension ******************/
-		/**** md5 signature: 8e4e73b42a947e7324da17452cfb1d99 ****/
+		/****** PrsDim_LengthDimension::PrsDim_LengthDimension ******/
+		/****** md5 signature: 8e4e73b42a947e7324da17452cfb1d99 ******/
 		%feature("compactdefaultargs") PrsDim_LengthDimension;
 		%feature("autodoc", "
 Parameters
@@ -3508,8 +3508,8 @@ Construct length dimension between two points in the specified plane. @param the
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pln & thePlane);
 
-		/****************** PrsDim_LengthDimension ******************/
-		/**** md5 signature: 5a8e9abcc01c6c25a54bee8294ae78cb ****/
+		/****** PrsDim_LengthDimension::PrsDim_LengthDimension ******/
+		/****** md5 signature: 5a8e9abcc01c6c25a54bee8294ae78cb ******/
 		%feature("compactdefaultargs") PrsDim_LengthDimension;
 		%feature("autodoc", "
 Parameters
@@ -3528,8 +3528,8 @@ Construct length dimension between two arbitrary shapes in the specified plane. 
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension(const TopoDS_Shape & theFirstShape, const TopoDS_Shape & theSecondShape, const gp_Pln & thePlane);
 
-		/****************** PrsDim_LengthDimension ******************/
-		/**** md5 signature: c07a85297e79d8b1c20f3250308c66df ****/
+		/****** PrsDim_LengthDimension::PrsDim_LengthDimension ******/
+		/****** md5 signature: c07a85297e79d8b1c20f3250308c66df ******/
 		%feature("compactdefaultargs") PrsDim_LengthDimension;
 		%feature("autodoc", "
 Parameters
@@ -3547,8 +3547,8 @@ Construct length dimension of linear edge. @param theedge [in] the edge to measu
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension(const TopoDS_Edge & theEdge, const gp_Pln & thePlane);
 
-		/****************** FirstPoint ******************/
-		/**** md5 signature: ce6daac63a94ae39a0d0bfa7edc5f3cd ****/
+		/****** PrsDim_LengthDimension::FirstPoint ******/
+		/****** md5 signature: ce6daac63a94ae39a0d0bfa7edc5f3cd ******/
 		%feature("compactdefaultargs") FirstPoint;
 		%feature("autodoc", "Return
 -------
@@ -3560,8 +3560,8 @@ Return first attachment point.
 ") FirstPoint;
 		const gp_Pnt FirstPoint();
 
-		/****************** FirstShape ******************/
-		/**** md5 signature: 0052eba922702f3e525649e52d93f4e7 ****/
+		/****** PrsDim_LengthDimension::FirstShape ******/
+		/****** md5 signature: 0052eba922702f3e525649e52d93f4e7 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
@@ -3573,8 +3573,8 @@ Return first attachment shape.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
-		/****************** GetDisplayUnits ******************/
-		/**** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ****/
+		/****** PrsDim_LengthDimension::GetDisplayUnits ******/
+		/****** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ******/
 		%feature("compactdefaultargs") GetDisplayUnits;
 		%feature("autodoc", "Return
 -------
@@ -3586,8 +3586,8 @@ Return the display units string.
 ") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits();
 
-		/****************** GetModelUnits ******************/
-		/**** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ****/
+		/****** PrsDim_LengthDimension::GetModelUnits ******/
+		/****** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ******/
 		%feature("compactdefaultargs") GetModelUnits;
 		%feature("autodoc", "Return
 -------
@@ -3599,8 +3599,8 @@ Return the model units string.
 ") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits();
 
-		/****************** GetTextPosition ******************/
-		/**** md5 signature: 62f290d0c1a25a3579f77b31be4010f2 ****/
+		/****** PrsDim_LengthDimension::GetTextPosition ******/
+		/****** md5 signature: 62f290d0c1a25a3579f77b31be4010f2 ******/
 		%feature("compactdefaultargs") GetTextPosition;
 		%feature("autodoc", "Return
 -------
@@ -3612,8 +3612,8 @@ No available documentation.
 ") GetTextPosition;
 		virtual gp_Pnt GetTextPosition();
 
-		/****************** SecondPoint ******************/
-		/**** md5 signature: 66319c8fbdc379c409c2efa67f6e79e2 ****/
+		/****** PrsDim_LengthDimension::SecondPoint ******/
+		/****** md5 signature: 66319c8fbdc379c409c2efa67f6e79e2 ******/
 		%feature("compactdefaultargs") SecondPoint;
 		%feature("autodoc", "Return
 -------
@@ -3625,8 +3625,8 @@ Return second attachment point.
 ") SecondPoint;
 		const gp_Pnt SecondPoint();
 
-		/****************** SecondShape ******************/
-		/**** md5 signature: 3c9d5f80bfbcac42f6848475061ecf61 ****/
+		/****** PrsDim_LengthDimension::SecondShape ******/
+		/****** md5 signature: 3c9d5f80bfbcac42f6848475061ecf61 ******/
 		%feature("compactdefaultargs") SecondShape;
 		%feature("autodoc", "Return
 -------
@@ -3638,8 +3638,8 @@ Return second attachment shape.
 ") SecondShape;
 		const TopoDS_Shape SecondShape();
 
-		/****************** SetDirection ******************/
-		/**** md5 signature: fdd4b1217edc47b9493c5cf7f462b2e9 ****/
+		/****** PrsDim_LengthDimension::SetDirection ******/
+		/****** md5 signature: fdd4b1217edc47b9493c5cf7f462b2e9 ******/
 		%feature("compactdefaultargs") SetDirection;
 		%feature("autodoc", "
 Parameters
@@ -3657,8 +3657,8 @@ Set custom direction for dimension. if it is not set, the direction is obtained 
 ") SetDirection;
 		void SetDirection(const gp_Dir & theDirection, const Standard_Boolean theUseDirection = Standard_True);
 
-		/****************** SetDisplayUnits ******************/
-		/**** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ****/
+		/****** PrsDim_LengthDimension::SetDisplayUnits ******/
+		/****** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ******/
 		%feature("compactdefaultargs") SetDisplayUnits;
 		%feature("autodoc", "
 Parameters
@@ -3675,8 +3675,8 @@ No available documentation.
 ") SetDisplayUnits;
 		virtual void SetDisplayUnits(TCollection_AsciiString theUnits);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: cef07b2afa7411d338e4348d1fb09cb3 ****/
+		/****** PrsDim_LengthDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: cef07b2afa7411d338e4348d1fb09cb3 ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -3695,8 +3695,8 @@ Measure distance between two points. the dimension will become invalid if the ne
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pln & thePlane);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: ab814d79ff07f7269fe3cb037f48b9a8 ****/
+		/****** PrsDim_LengthDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: ab814d79ff07f7269fe3cb037f48b9a8 ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -3714,8 +3714,8 @@ Measure length of edge. the dimension will become invalid if the new length of e
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Edge & theEdge, const gp_Pln & thePlane);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: bfe5f7ff6a46076a22cbf50a395e204f ****/
+		/****** PrsDim_LengthDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: bfe5f7ff6a46076a22cbf50a395e204f ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -3733,8 +3733,8 @@ Measure distance between two faces. the dimension will become invalid if the dis
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 7c671ce46d9bfe5c6d511144762d0662 ****/
+		/****** PrsDim_LengthDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: 7c671ce46d9bfe5c6d511144762d0662 ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -3752,8 +3752,8 @@ Measure distance between face and edge. the dimension will become invalid if the
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge);
 
-		/****************** SetMeasuredShapes ******************/
-		/**** md5 signature: 27e960b24f38031999030c9d7d2242ae ****/
+		/****** PrsDim_LengthDimension::SetMeasuredShapes ******/
+		/****** md5 signature: 27e960b24f38031999030c9d7d2242ae ******/
 		%feature("compactdefaultargs") SetMeasuredShapes;
 		%feature("autodoc", "
 Parameters
@@ -3771,8 +3771,8 @@ Measure distance between generic pair of shapes (edges, vertices, length), where
 ") SetMeasuredShapes;
 		void SetMeasuredShapes(const TopoDS_Shape & theFirstShape, const TopoDS_Shape & theSecondShape);
 
-		/****************** SetModelUnits ******************/
-		/**** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ****/
+		/****** PrsDim_LengthDimension::SetModelUnits ******/
+		/****** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ******/
 		%feature("compactdefaultargs") SetModelUnits;
 		%feature("autodoc", "
 Parameters
@@ -3789,8 +3789,8 @@ No available documentation.
 ") SetModelUnits;
 		virtual void SetModelUnits(TCollection_AsciiString theUnits);
 
-		/****************** SetTextPosition ******************/
-		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
+		/****** PrsDim_LengthDimension::SetTextPosition ******/
+		/****** md5 signature: f1658ae61229bf1e77ff3828626b747f ******/
 		%feature("compactdefaultargs") SetTextPosition;
 		%feature("autodoc", "
 Parameters
@@ -3823,8 +3823,8 @@ No available documentation.
 ********************************/
 class PrsDim_MidPointRelation : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_MidPointRelation ******************/
-		/**** md5 signature: 122b11133f44e6cc04b101a5ae52dbbd ****/
+		/****** PrsDim_MidPointRelation::PrsDim_MidPointRelation ******/
+		/****** md5 signature: 122b11133f44e6cc04b101a5ae52dbbd ******/
 		%feature("compactdefaultargs") PrsDim_MidPointRelation;
 		%feature("autodoc", "
 Parameters
@@ -3844,8 +3844,8 @@ No available documentation.
 ") PrsDim_MidPointRelation;
 		 PrsDim_MidPointRelation(const TopoDS_Shape & aSymmTool, const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & aPlane);
 
-		/****************** GetTool ******************/
-		/**** md5 signature: ec6944b3d25bda4f64b24ac26b67c01b ****/
+		/****** PrsDim_MidPointRelation::GetTool ******/
+		/****** md5 signature: ec6944b3d25bda4f64b24ac26b67c01b ******/
 		%feature("compactdefaultargs") GetTool;
 		%feature("autodoc", "Return
 -------
@@ -3857,8 +3857,8 @@ No available documentation.
 ") GetTool;
 		const TopoDS_Shape GetTool();
 
-		/****************** IsMovable ******************/
-		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
+		/****** PrsDim_MidPointRelation::IsMovable ******/
+		/****** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ******/
 		%feature("compactdefaultargs") IsMovable;
 		%feature("autodoc", "Return
 -------
@@ -3870,8 +3870,8 @@ No available documentation.
 ") IsMovable;
 		virtual Standard_Boolean IsMovable();
 
-		/****************** SetTool ******************/
-		/**** md5 signature: dc00fdc2d218f714ef699466eca37a6d ****/
+		/****** PrsDim_MidPointRelation::SetTool ******/
+		/****** md5 signature: dc00fdc2d218f714ef699466eca37a6d ******/
 		%feature("compactdefaultargs") SetTool;
 		%feature("autodoc", "
 Parameters
@@ -3904,8 +3904,8 @@ No available documentation.
 *******************************/
 class PrsDim_OffsetDimension : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_OffsetDimension ******************/
-		/**** md5 signature: fdb908efcbf3f34cfd3053ec5267a22d ****/
+		/****** PrsDim_OffsetDimension::PrsDim_OffsetDimension ******/
+		/****** md5 signature: fdb908efcbf3f34cfd3053ec5267a22d ******/
 		%feature("compactdefaultargs") PrsDim_OffsetDimension;
 		%feature("autodoc", "
 Parameters
@@ -3925,8 +3925,8 @@ Constructs the offset display object defined by the first shape afshape, the sec
 ") PrsDim_OffsetDimension;
 		 PrsDim_OffsetDimension(const TopoDS_Shape & FistShape, const TopoDS_Shape & SecondShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
-		/****************** IsMovable ******************/
-		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
+		/****** PrsDim_OffsetDimension::IsMovable ******/
+		/****** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ******/
 		%feature("compactdefaultargs") IsMovable;
 		%feature("autodoc", "Return
 -------
@@ -3938,8 +3938,8 @@ Returns true if the offset datum is movable.
 ") IsMovable;
 		virtual Standard_Boolean IsMovable();
 
-		/****************** KindOfDimension ******************/
-		/**** md5 signature: d9fe1ab2881bf16089f50e785bf13209 ****/
+		/****** PrsDim_OffsetDimension::KindOfDimension ******/
+		/****** md5 signature: d9fe1ab2881bf16089f50e785bf13209 ******/
 		%feature("compactdefaultargs") KindOfDimension;
 		%feature("autodoc", "Return
 -------
@@ -3951,8 +3951,8 @@ Indicates that the dimension we are concerned with is an offset.
 ") KindOfDimension;
 		virtual PrsDim_KindOfDimension KindOfDimension();
 
-		/****************** SetRelativePos ******************/
-		/**** md5 signature: 058adecd19d5d119b92c090176de5f20 ****/
+		/****** PrsDim_OffsetDimension::SetRelativePos ******/
+		/****** md5 signature: 058adecd19d5d119b92c090176de5f20 ******/
 		%feature("compactdefaultargs") SetRelativePos;
 		%feature("autodoc", "
 Parameters
@@ -3985,8 +3985,8 @@ Sets a transformation atrsf for presentation and selection to a relative positio
 ********************************/
 class PrsDim_ParallelRelation : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_ParallelRelation ******************/
-		/**** md5 signature: 2e942a41c243c6dd642ebdcd5b41d5b6 ****/
+		/****** PrsDim_ParallelRelation::PrsDim_ParallelRelation ******/
+		/****** md5 signature: 2e942a41c243c6dd642ebdcd5b41d5b6 ******/
 		%feature("compactdefaultargs") PrsDim_ParallelRelation;
 		%feature("autodoc", "
 Parameters
@@ -4005,8 +4005,8 @@ Constructs an object to display parallel constraints. this object is defined by 
 ") PrsDim_ParallelRelation;
 		 PrsDim_ParallelRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane);
 
-		/****************** PrsDim_ParallelRelation ******************/
-		/**** md5 signature: fc9d4db97f2cca719f37b1180eb0d365 ****/
+		/****** PrsDim_ParallelRelation::PrsDim_ParallelRelation ******/
+		/****** md5 signature: fc9d4db97f2cca719f37b1180eb0d365 ******/
 		%feature("compactdefaultargs") PrsDim_ParallelRelation;
 		%feature("autodoc", "
 Parameters
@@ -4028,8 +4028,8 @@ Constructs an object to display parallel constraints. this object is defined by 
 ") PrsDim_ParallelRelation;
 		 PrsDim_ParallelRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.01);
 
-		/****************** IsMovable ******************/
-		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
+		/****** PrsDim_ParallelRelation::IsMovable ******/
+		/****** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ******/
 		%feature("compactdefaultargs") IsMovable;
 		%feature("autodoc", "Return
 -------
@@ -4057,8 +4057,8 @@ Returns true if the parallelism is movable.
 *************************************/
 class PrsDim_PerpendicularRelation : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_PerpendicularRelation ******************/
-		/**** md5 signature: 7cc3eb79f6af7eebc9cb1b6a784b6400 ****/
+		/****** PrsDim_PerpendicularRelation::PrsDim_PerpendicularRelation ******/
+		/****** md5 signature: 7cc3eb79f6af7eebc9cb1b6a784b6400 ******/
 		%feature("compactdefaultargs") PrsDim_PerpendicularRelation;
 		%feature("autodoc", "
 Parameters
@@ -4077,8 +4077,8 @@ Constructs an object to display constraints of perpendicularity on shapes. this 
 ") PrsDim_PerpendicularRelation;
 		 PrsDim_PerpendicularRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane);
 
-		/****************** PrsDim_PerpendicularRelation ******************/
-		/**** md5 signature: 640c64c4d5e70c0bccc2af2dc39448d2 ****/
+		/****** PrsDim_PerpendicularRelation::PrsDim_PerpendicularRelation ******/
+		/****** md5 signature: 640c64c4d5e70c0bccc2af2dc39448d2 ******/
 		%feature("compactdefaultargs") PrsDim_PerpendicularRelation;
 		%feature("autodoc", "
 Parameters
@@ -4112,8 +4112,8 @@ Constructs an object to display constraints of perpendicularity on shapes. this 
 *******************************/
 class PrsDim_RadiusDimension : public PrsDim_Dimension {
 	public:
-		/****************** PrsDim_RadiusDimension ******************/
-		/**** md5 signature: cfea829146713be1d9e4130e7ad678ff ****/
+		/****** PrsDim_RadiusDimension::PrsDim_RadiusDimension ******/
+		/****** md5 signature: cfea829146713be1d9e4130e7ad678ff ******/
 		%feature("compactdefaultargs") PrsDim_RadiusDimension;
 		%feature("autodoc", "
 Parameters
@@ -4130,8 +4130,8 @@ Create radius dimension for the circle geometry. @param thecircle [in] the circl
 ") PrsDim_RadiusDimension;
 		 PrsDim_RadiusDimension(const gp_Circ & theCircle);
 
-		/****************** PrsDim_RadiusDimension ******************/
-		/**** md5 signature: 8805a0ae2122e5acc11bd9490e47039c ****/
+		/****** PrsDim_RadiusDimension::PrsDim_RadiusDimension ******/
+		/****** md5 signature: 8805a0ae2122e5acc11bd9490e47039c ******/
 		%feature("compactdefaultargs") PrsDim_RadiusDimension;
 		%feature("autodoc", "
 Parameters
@@ -4149,8 +4149,8 @@ Create radius dimension for the circle geometry and define its orientation by lo
 ") PrsDim_RadiusDimension;
 		 PrsDim_RadiusDimension(const gp_Circ & theCircle, const gp_Pnt & theAnchorPoint);
 
-		/****************** PrsDim_RadiusDimension ******************/
-		/**** md5 signature: 9ec6cb0a403ac2a19ad90c538c3a5e36 ****/
+		/****** PrsDim_RadiusDimension::PrsDim_RadiusDimension ******/
+		/****** md5 signature: 9ec6cb0a403ac2a19ad90c538c3a5e36 ******/
 		%feature("compactdefaultargs") PrsDim_RadiusDimension;
 		%feature("autodoc", "
 Parameters
@@ -4167,8 +4167,8 @@ Create radius dimension for the arbitrary shape (if possible). @param theshape [
 ") PrsDim_RadiusDimension;
 		 PrsDim_RadiusDimension(const TopoDS_Shape & theShape);
 
-		/****************** AnchorPoint ******************/
-		/**** md5 signature: e00b76aa30ec48768c82c1a07e620981 ****/
+		/****** PrsDim_RadiusDimension::AnchorPoint ******/
+		/****** md5 signature: e00b76aa30ec48768c82c1a07e620981 ******/
 		%feature("compactdefaultargs") AnchorPoint;
 		%feature("autodoc", "Return
 -------
@@ -4180,8 +4180,8 @@ Return anchor point on circle for radius dimension.
 ") AnchorPoint;
 		const gp_Pnt AnchorPoint();
 
-		/****************** Circle ******************/
-		/**** md5 signature: 1eaea6bdc97e0fc2fac6cefd24825e1a ****/
+		/****** PrsDim_RadiusDimension::Circle ******/
+		/****** md5 signature: 1eaea6bdc97e0fc2fac6cefd24825e1a ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -4193,8 +4193,8 @@ Return measured geometry circle.
 ") Circle;
 		const gp_Circ Circle();
 
-		/****************** GetDisplayUnits ******************/
-		/**** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ****/
+		/****** PrsDim_RadiusDimension::GetDisplayUnits ******/
+		/****** md5 signature: 6fbf70f12ad85e7a1835a85781f8abb8 ******/
 		%feature("compactdefaultargs") GetDisplayUnits;
 		%feature("autodoc", "Return
 -------
@@ -4206,8 +4206,8 @@ Return the display units string.
 ") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits();
 
-		/****************** GetModelUnits ******************/
-		/**** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ****/
+		/****** PrsDim_RadiusDimension::GetModelUnits ******/
+		/****** md5 signature: 27dbe0cf13d3ca82bbb0bf570025f3a8 ******/
 		%feature("compactdefaultargs") GetModelUnits;
 		%feature("autodoc", "Return
 -------
@@ -4219,8 +4219,8 @@ Return the model units string.
 ") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits();
 
-		/****************** GetTextPosition ******************/
-		/**** md5 signature: 62f290d0c1a25a3579f77b31be4010f2 ****/
+		/****** PrsDim_RadiusDimension::GetTextPosition ******/
+		/****** md5 signature: 62f290d0c1a25a3579f77b31be4010f2 ******/
 		%feature("compactdefaultargs") GetTextPosition;
 		%feature("autodoc", "Return
 -------
@@ -4232,8 +4232,8 @@ No available documentation.
 ") GetTextPosition;
 		virtual gp_Pnt GetTextPosition();
 
-		/****************** SetDisplayUnits ******************/
-		/**** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ****/
+		/****** PrsDim_RadiusDimension::SetDisplayUnits ******/
+		/****** md5 signature: afe69b618dcd1bcf849c7c525bd3f1db ******/
 		%feature("compactdefaultargs") SetDisplayUnits;
 		%feature("autodoc", "
 Parameters
@@ -4250,8 +4250,8 @@ No available documentation.
 ") SetDisplayUnits;
 		virtual void SetDisplayUnits(TCollection_AsciiString theUnits);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 20f5d2af27af2754cd354025e857b6b0 ****/
+		/****** PrsDim_RadiusDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: 20f5d2af27af2754cd354025e857b6b0 ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -4268,8 +4268,8 @@ Measure radius of the circle. the dimension will become invalid if the radius of
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const gp_Circ & theCircle);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: c108135e71c04f939442708481e8be34 ****/
+		/****** PrsDim_RadiusDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: c108135e71c04f939442708481e8be34 ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -4288,8 +4288,8 @@ Measure radius of the circle and orient the dimension so the dimension lines att
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const gp_Circ & theCircle, const gp_Pnt & theAnchorPoint, const Standard_Boolean theHasAnchor = Standard_True);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: ad36f6541ba8fd4bb2abf0ec1ff6c97e ****/
+		/****** PrsDim_RadiusDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: ad36f6541ba8fd4bb2abf0ec1ff6c97e ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -4306,8 +4306,8 @@ Measure radius on the passed shape, if applicable. the dimension will become inv
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Shape & theShape);
 
-		/****************** SetMeasuredGeometry ******************/
-		/**** md5 signature: 47558a720aeeb8c5e6f999e8e591bac0 ****/
+		/****** PrsDim_RadiusDimension::SetMeasuredGeometry ******/
+		/****** md5 signature: 47558a720aeeb8c5e6f999e8e591bac0 ******/
 		%feature("compactdefaultargs") SetMeasuredGeometry;
 		%feature("autodoc", "
 Parameters
@@ -4326,8 +4326,8 @@ Measure radius on the passed shape, if applicable. the dimension will become inv
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Shape & theShape, const gp_Pnt & theAnchorPoint, const Standard_Boolean theHasAnchor = Standard_True);
 
-		/****************** SetModelUnits ******************/
-		/**** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ****/
+		/****** PrsDim_RadiusDimension::SetModelUnits ******/
+		/****** md5 signature: bac7da9c21ed70bf629179ea24a5af0c ******/
 		%feature("compactdefaultargs") SetModelUnits;
 		%feature("autodoc", "
 Parameters
@@ -4344,8 +4344,8 @@ No available documentation.
 ") SetModelUnits;
 		virtual void SetModelUnits(TCollection_AsciiString theUnits);
 
-		/****************** SetTextPosition ******************/
-		/**** md5 signature: f1658ae61229bf1e77ff3828626b747f ****/
+		/****** PrsDim_RadiusDimension::SetTextPosition ******/
+		/****** md5 signature: f1658ae61229bf1e77ff3828626b747f ******/
 		%feature("compactdefaultargs") SetTextPosition;
 		%feature("autodoc", "
 Parameters
@@ -4362,8 +4362,8 @@ No available documentation.
 ") SetTextPosition;
 		virtual void SetTextPosition(const gp_Pnt & theTextPos);
 
-		/****************** Shape ******************/
-		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
+		/****** PrsDim_RadiusDimension::Shape ******/
+		/****** md5 signature: 1058569f5d639354fedf11e73741b7df ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -4391,8 +4391,8 @@ Return the measured shape.
 *********************************/
 class PrsDim_SymmetricRelation : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_SymmetricRelation ******************/
-		/**** md5 signature: 645a643bff4a9e0e8fd2ade4864624ad ****/
+		/****** PrsDim_SymmetricRelation::PrsDim_SymmetricRelation ******/
+		/****** md5 signature: 645a643bff4a9e0e8fd2ade4864624ad ******/
 		%feature("compactdefaultargs") PrsDim_SymmetricRelation;
 		%feature("autodoc", "
 Parameters
@@ -4412,8 +4412,8 @@ Constructs an object to display constraints of symmetricity. this object is defi
 ") PrsDim_SymmetricRelation;
 		 PrsDim_SymmetricRelation(const TopoDS_Shape & aSymmTool, const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & aPlane);
 
-		/****************** GetTool ******************/
-		/**** md5 signature: ec6944b3d25bda4f64b24ac26b67c01b ****/
+		/****** PrsDim_SymmetricRelation::GetTool ******/
+		/****** md5 signature: ec6944b3d25bda4f64b24ac26b67c01b ******/
 		%feature("compactdefaultargs") GetTool;
 		%feature("autodoc", "Return
 -------
@@ -4425,8 +4425,8 @@ Returns the tool composed of a first shape, a second shape, and a plane. this to
 ") GetTool;
 		const TopoDS_Shape GetTool();
 
-		/****************** IsMovable ******************/
-		/**** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ****/
+		/****** PrsDim_SymmetricRelation::IsMovable ******/
+		/****** md5 signature: f6ba7e60b1b3f70d71d7fe5631d123a5 ******/
 		%feature("compactdefaultargs") IsMovable;
 		%feature("autodoc", "Return
 -------
@@ -4438,8 +4438,8 @@ Returns true if the symmetric constraint display is movable.
 ") IsMovable;
 		virtual Standard_Boolean IsMovable();
 
-		/****************** SetTool ******************/
-		/**** md5 signature: 816479e3edeb279cf3b82a00c0d00a2d ****/
+		/****** PrsDim_SymmetricRelation::SetTool ******/
+		/****** md5 signature: 816479e3edeb279cf3b82a00c0d00a2d ******/
 		%feature("compactdefaultargs") SetTool;
 		%feature("autodoc", "
 Parameters
@@ -4472,8 +4472,8 @@ Sets the tool asymmetrictool composed of a first shape, a second shape, and a pl
 *******************************/
 class PrsDim_TangentRelation : public PrsDim_Relation {
 	public:
-		/****************** PrsDim_TangentRelation ******************/
-		/**** md5 signature: d032a6f245c872be074dcae3bd0608db ****/
+		/****** PrsDim_TangentRelation::PrsDim_TangentRelation ******/
+		/****** md5 signature: d032a6f245c872be074dcae3bd0608db ******/
 		%feature("compactdefaultargs") PrsDim_TangentRelation;
 		%feature("autodoc", "
 Parameters
@@ -4493,8 +4493,8 @@ Twofacestangent or twoedgestangent relation constructs an object to display tang
 ") PrsDim_TangentRelation;
 		 PrsDim_TangentRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Integer anExternRef = 0);
 
-		/****************** ExternRef ******************/
-		/**** md5 signature: 76cf8e64b0c656db756364b81297da17 ****/
+		/****** PrsDim_TangentRelation::ExternRef ******/
+		/****** md5 signature: 76cf8e64b0c656db756364b81297da17 ******/
 		%feature("compactdefaultargs") ExternRef;
 		%feature("autodoc", "Return
 -------
@@ -4506,8 +4506,8 @@ Returns the external reference for tangency. the values are as follows: - 0 - th
 ") ExternRef;
 		Standard_Integer ExternRef();
 
-		/****************** SetExternRef ******************/
-		/**** md5 signature: 586a4a6230d10739270f4e5a188d9bfa ****/
+		/****** PrsDim_TangentRelation::SetExternRef ******/
+		/****** md5 signature: 586a4a6230d10739270f4e5a188d9bfa ******/
 		%feature("compactdefaultargs") SetExternRef;
 		%feature("autodoc", "
 Parameters
@@ -4540,8 +4540,8 @@ Sets the external reference for tangency, aref. the values are as follows: - 0 -
 **********************************/
 class PrsDim_MaxRadiusDimension : public PrsDim_EllipseRadiusDimension {
 	public:
-		/****************** PrsDim_MaxRadiusDimension ******************/
-		/**** md5 signature: d980757c5468e00e0bf9166d80e0ffdc ****/
+		/****** PrsDim_MaxRadiusDimension::PrsDim_MaxRadiusDimension ******/
+		/****** md5 signature: d980757c5468e00e0bf9166d80e0ffdc ******/
 		%feature("compactdefaultargs") PrsDim_MaxRadiusDimension;
 		%feature("autodoc", "
 Parameters
@@ -4560,8 +4560,8 @@ Max ellipse radius dimension shape can be edge , planar face or cylindrical face
 ") PrsDim_MaxRadiusDimension;
 		 PrsDim_MaxRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
-		/****************** PrsDim_MaxRadiusDimension ******************/
-		/**** md5 signature: e7d293361b5fa36a3871cea6bba086cf ****/
+		/****** PrsDim_MaxRadiusDimension::PrsDim_MaxRadiusDimension ******/
+		/****** md5 signature: e7d293361b5fa36a3871cea6bba086cf ******/
 		%feature("compactdefaultargs") PrsDim_MaxRadiusDimension;
 		%feature("autodoc", "
 Parameters
@@ -4599,8 +4599,8 @@ Max ellipse radius dimension with position shape can be edge , planar face or cy
 **********************************/
 class PrsDim_MinRadiusDimension : public PrsDim_EllipseRadiusDimension {
 	public:
-		/****************** PrsDim_MinRadiusDimension ******************/
-		/**** md5 signature: 167835a1410022f28c578bd8e77eaae2 ****/
+		/****** PrsDim_MinRadiusDimension::PrsDim_MinRadiusDimension ******/
+		/****** md5 signature: 167835a1410022f28c578bd8e77eaae2 ******/
 		%feature("compactdefaultargs") PrsDim_MinRadiusDimension;
 		%feature("autodoc", "
 Parameters
@@ -4619,8 +4619,8 @@ Max ellipse radius dimension shape can be edge , planar face or cylindrical face
 ") PrsDim_MinRadiusDimension;
 		 PrsDim_MinRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
-		/****************** PrsDim_MinRadiusDimension ******************/
-		/**** md5 signature: 141213159afe170ab0fead5219510652 ****/
+		/****** PrsDim_MinRadiusDimension::PrsDim_MinRadiusDimension ******/
+		/****** md5 signature: 141213159afe170ab0fead5219510652 ******/
 		%feature("compactdefaultargs") PrsDim_MinRadiusDimension;
 		%feature("autodoc", "
 Parameters

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLMDOCSTDDOCSTRING
 "XmlMDocStd module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_xmlmdocstd.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xmlmdocstd.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLMDOCSTDDOCSTRING) XmlMDocStd
 
@@ -90,8 +90,8 @@ from OCC.Core.Exception import *
 %rename(xmlmdocstd) XmlMDocStd;
 class XmlMDocStd {
 	public:
-		/****************** AddDrivers ******************/
-		/**** md5 signature: a036f2e24a6710bf8e540cdbbab785d0 ****/
+		/****** XmlMDocStd::AddDrivers ******/
+		/****** md5 signature: a036f2e24a6710bf8e540cdbbab785d0 ******/
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "
 Parameters
@@ -123,8 +123,8 @@ Adds the attribute drivers to <adrivertable>.
 *******************************/
 class XmlMDocStd_XLinkDriver : public XmlMDF_ADriver {
 	public:
-		/****************** XmlMDocStd_XLinkDriver ******************/
-		/**** md5 signature: 3b002c49904579fe30462df9b4202f0f ****/
+		/****** XmlMDocStd_XLinkDriver::XmlMDocStd_XLinkDriver ******/
+		/****** md5 signature: 3b002c49904579fe30462df9b4202f0f ******/
 		%feature("compactdefaultargs") XmlMDocStd_XLinkDriver;
 		%feature("autodoc", "
 Parameters
@@ -141,8 +141,8 @@ No available documentation.
 ") XmlMDocStd_XLinkDriver;
 		 XmlMDocStd_XLinkDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
+		/****** XmlMDocStd_XLinkDriver::NewEmpty ******/
+		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -154,8 +154,8 @@ No available documentation.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ****/
+		/****** XmlMDocStd_XLinkDriver::Paste ******/
+		/****** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -174,8 +174,8 @@ No available documentation.
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
-		/****************** Paste ******************/
-		/**** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ****/
+		/****** XmlMDocStd_XLinkDriver::Paste ******/
+		/****** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters

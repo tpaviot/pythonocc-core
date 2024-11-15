@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define IGESCONTROLDOCSTRING
 "IGESControl module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_igescontrol.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_igescontrol.html"
 %enddef
 %module (package="OCC.Core", docstring=IGESCONTROLDOCSTRING) IGESControl
 
@@ -116,8 +116,8 @@ from OCC.Core.Exception import *
 *******************************/
 class IGESControl_ActorWrite : public Transfer_ActorOfFinderProcess {
 	public:
-		/****************** IGESControl_ActorWrite ******************/
-		/**** md5 signature: 0cf731ec0f97366f33459d5e21c8a07e ****/
+		/****** IGESControl_ActorWrite::IGESControl_ActorWrite ******/
+		/****** md5 signature: 0cf731ec0f97366f33459d5e21c8a07e ******/
 		%feature("compactdefaultargs") IGESControl_ActorWrite;
 		%feature("autodoc", "Return
 -------
@@ -129,8 +129,8 @@ No available documentation.
 ") IGESControl_ActorWrite;
 		 IGESControl_ActorWrite();
 
-		/****************** Recognize ******************/
-		/**** md5 signature: c8970d8be01e43b4712b350a7b483668 ****/
+		/****** IGESControl_ActorWrite::Recognize ******/
+		/****** md5 signature: c8970d8be01e43b4712b350a7b483668 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -147,8 +147,8 @@ Recognizes a shapemapper.
 ") Recognize;
 		virtual Standard_Boolean Recognize(const opencascade::handle<Transfer_Finder> & start);
 
-		/****************** Transfer ******************/
-		/**** md5 signature: de55557a60f11851f77e2ae7fac24dbd ****/
+		/****** IGESControl_ActorWrite::Transfer ******/
+		/****** md5 signature: de55557a60f11851f77e2ae7fac24dbd ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -183,8 +183,8 @@ Transfers shape to iges entities //! modetrans may be: 0 -> groups of faces or 1
 **********************************/
 class IGESControl_AlgoContainer : public IGESToBRep_AlgoContainer {
 	public:
-		/****************** IGESControl_AlgoContainer ******************/
-		/**** md5 signature: a19594f586b5eefe727ad4421b16b871 ****/
+		/****** IGESControl_AlgoContainer::IGESControl_AlgoContainer ******/
+		/****** md5 signature: a19594f586b5eefe727ad4421b16b871 ******/
 		%feature("compactdefaultargs") IGESControl_AlgoContainer;
 		%feature("autodoc", "Return
 -------
@@ -212,8 +212,8 @@ Empty constructor.
 *******************************/
 class IGESControl_Controller : public XSControl_Controller {
 	public:
-		/****************** IGESControl_Controller ******************/
-		/**** md5 signature: 4a2d7445c85f2ad3ec03a228df892823 ****/
+		/****** IGESControl_Controller::IGESControl_Controller ******/
+		/****** md5 signature: 4a2d7445c85f2ad3ec03a228df892823 ******/
 		%feature("compactdefaultargs") IGESControl_Controller;
 		%feature("autodoc", "
 Parameters
@@ -230,8 +230,8 @@ Initializes the use of iges norm (the first time) and returns a controller for i
 ") IGESControl_Controller;
 		 IGESControl_Controller(const Standard_Boolean modefnes = Standard_False);
 
-		/****************** ActorRead ******************/
-		/**** md5 signature: abfcbea3d65b6d0c8061255c5c664b82 ****/
+		/****** IGESControl_Controller::ActorRead ******/
+		/****** md5 signature: abfcbea3d65b6d0c8061255c5c664b82 ******/
 		%feature("compactdefaultargs") ActorRead;
 		%feature("autodoc", "
 Parameters
@@ -248,8 +248,8 @@ Returns the actor for read attached to the pair (norm,appli) it is an actor from
 ") ActorRead;
 		opencascade::handle<Transfer_ActorOfTransientProcess> ActorRead(const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** Customise ******************/
-		/**** md5 signature: 0ba1e38a71954b942c677f3a42125b9f ****/
+		/****** IGESControl_Controller::Customise ******/
+		/****** md5 signature: 0ba1e38a71954b942c677f3a42125b9f ******/
 		%feature("compactdefaultargs") Customise;
 		%feature("autodoc", "
 Parameters
@@ -266,8 +266,8 @@ No available documentation.
 ") Customise;
 		virtual void Customise(opencascade::handle<XSControl_WorkSession> & WS);
 
-		/****************** Init ******************/
-		/**** md5 signature: 7a4f426a7cdbf379be5e43123bb3383c ****/
+		/****** IGESControl_Controller::Init ******/
+		/****** md5 signature: 7a4f426a7cdbf379be5e43123bb3383c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -279,8 +279,8 @@ Standard initialisation. it creates a controller for iges and records it to vari
 ") Init;
 		static Standard_Boolean Init();
 
-		/****************** NewModel ******************/
-		/**** md5 signature: 91513f9ebe9e7d52eca2b6b58f6b9b0a ****/
+		/****** IGESControl_Controller::NewModel ******/
+		/****** md5 signature: 91513f9ebe9e7d52eca2b6b58f6b9b0a ******/
 		%feature("compactdefaultargs") NewModel;
 		%feature("autodoc", "Return
 -------
@@ -292,8 +292,8 @@ Creates a new empty model ready to receive data of the norm. it is taken from ig
 ") NewModel;
 		opencascade::handle<Interface_InterfaceModel> NewModel();
 
-		/****************** TransferWriteShape ******************/
-		/**** md5 signature: 51f54ac90a57b06cb5da980be6c88b27 ****/
+		/****** IGESControl_Controller::TransferWriteShape ******/
+		/****** md5 signature: 51f54ac90a57b06cb5da980be6c88b27 ******/
 		%feature("compactdefaultargs") TransferWriteShape;
 		%feature("autodoc", "
 Parameters
@@ -330,8 +330,8 @@ Takes one shape and transfers it to the interfacemodel (already created by newmo
 *********************************/
 class IGESControl_IGESBoundary : public IGESToBRep_IGESBoundary {
 	public:
-		/****************** IGESControl_IGESBoundary ******************/
-		/**** md5 signature: 6a8249df5e09395b3cfefb271474b8a2 ****/
+		/****** IGESControl_IGESBoundary::IGESControl_IGESBoundary ******/
+		/****** md5 signature: 6a8249df5e09395b3cfefb271474b8a2 ******/
 		%feature("compactdefaultargs") IGESControl_IGESBoundary;
 		%feature("autodoc", "Return
 -------
@@ -343,8 +343,8 @@ Creates an object and calls inherited constructor.
 ") IGESControl_IGESBoundary;
 		 IGESControl_IGESBoundary();
 
-		/****************** IGESControl_IGESBoundary ******************/
-		/**** md5 signature: 855ac0be51cd07090af44a3efc88b8fa ****/
+		/****** IGESControl_IGESBoundary::IGESControl_IGESBoundary ******/
+		/****** md5 signature: 855ac0be51cd07090af44a3efc88b8fa ******/
 		%feature("compactdefaultargs") IGESControl_IGESBoundary;
 		%feature("autodoc", "
 Parameters
@@ -361,8 +361,8 @@ Creates an object and calls inherited constructor.
 ") IGESControl_IGESBoundary;
 		 IGESControl_IGESBoundary(const IGESToBRep_CurveAndSurface & CS);
 
-		/****************** Check ******************/
-		/**** md5 signature: 63a886f794f138106bbc9f56c90a2734 ****/
+		/****** IGESControl_IGESBoundary::Check ******/
+		/****** md5 signature: 63a886f794f138106bbc9f56c90a2734 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -398,8 +398,8 @@ Checks result of translation of iges boundary entities (types 141, 142 or 508). 
 ***************************/
 class IGESControl_Reader : public XSControl_Reader {
 	public:
-		/****************** IGESControl_Reader ******************/
-		/**** md5 signature: 1cdc344049166cb1943ced758e97ea88 ****/
+		/****** IGESControl_Reader::IGESControl_Reader ******/
+		/****** md5 signature: 1cdc344049166cb1943ced758e97ea88 ******/
 		%feature("compactdefaultargs") IGESControl_Reader;
 		%feature("autodoc", "Return
 -------
@@ -411,8 +411,8 @@ Creates a reader from scratch.
 ") IGESControl_Reader;
 		 IGESControl_Reader();
 
-		/****************** IGESControl_Reader ******************/
-		/**** md5 signature: 3d03711556fe1f87e36966544be93cec ****/
+		/****** IGESControl_Reader::IGESControl_Reader ******/
+		/****** md5 signature: 3d03711556fe1f87e36966544be93cec ******/
 		%feature("compactdefaultargs") IGESControl_Reader;
 		%feature("autodoc", "
 Parameters
@@ -430,8 +430,8 @@ Creates a reader from an already existing session.
 ") IGESControl_Reader;
 		 IGESControl_Reader(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
 
-		/****************** GetReadVisible ******************/
-		/**** md5 signature: b0d62c02cb2830074d12f477e2ee93dc ****/
+		/****** IGESControl_Reader::GetReadVisible ******/
+		/****** md5 signature: b0d62c02cb2830074d12f477e2ee93dc ******/
 		%feature("compactdefaultargs") GetReadVisible;
 		%feature("autodoc", "Return
 -------
@@ -443,8 +443,8 @@ No available documentation.
 ") GetReadVisible;
 		Standard_Boolean GetReadVisible();
 
-		/****************** IGESModel ******************/
-		/**** md5 signature: e167708dd2dd1824578c9ddd453217ac ****/
+		/****** IGESControl_Reader::IGESModel ******/
+		/****** md5 signature: e167708dd2dd1824578c9ddd453217ac ******/
 		%feature("compactdefaultargs") IGESModel;
 		%feature("autodoc", "Return
 -------
@@ -456,8 +456,8 @@ Returns the model as a igesmodel. it can then be consulted (header, product).
 ") IGESModel;
 		opencascade::handle<IGESData_IGESModel> IGESModel();
 
-		/****************** NbRootsForTransfer ******************/
-		/**** md5 signature: f207d70f9daf416ec0cdd237b676b8bd ****/
+		/****** IGESControl_Reader::NbRootsForTransfer ******/
+		/****** md5 signature: f207d70f9daf416ec0cdd237b676b8bd ******/
 		%feature("compactdefaultargs") NbRootsForTransfer;
 		%feature("autodoc", "Return
 -------
@@ -469,8 +469,8 @@ Determines the list of root entities from model which are candidate for a transf
 ") NbRootsForTransfer;
 		virtual Standard_Integer NbRootsForTransfer();
 
-		/****************** PrintTransferInfo ******************/
-		/**** md5 signature: 91f0c0b4b2f5f3a830e0906bea79f1e1 ****/
+		/****** IGESControl_Reader::PrintTransferInfo ******/
+		/****** md5 signature: 91f0c0b4b2f5f3a830e0906bea79f1e1 ******/
 		%feature("compactdefaultargs") PrintTransferInfo;
 		%feature("autodoc", "
 Parameters
@@ -488,8 +488,8 @@ Prints statistics and check list for transfer.
 ") PrintTransferInfo;
 		void PrintTransferInfo(const IFSelect_PrintFail failwarn, const IFSelect_PrintCount mode);
 
-		/****************** SetReadVisible ******************/
-		/**** md5 signature: 6e2c353582827b19c2fc725abf3f500d ****/
+		/****** IGESControl_Reader::SetReadVisible ******/
+		/****** md5 signature: 6e2c353582827b19c2fc725abf3f500d ******/
 		%feature("compactdefaultargs") SetReadVisible;
 		%feature("autodoc", "
 Parameters
@@ -520,8 +520,8 @@ Set the transion of all roots (if thereadonlyvisible is false) or of visible roo
 **********************************/
 class IGESControl_ToolContainer : public IGESToBRep_ToolContainer {
 	public:
-		/****************** IGESControl_ToolContainer ******************/
-		/**** md5 signature: 4fb598f4d26b8bd0dec642f171afc646 ****/
+		/****** IGESControl_ToolContainer::IGESControl_ToolContainer ******/
+		/****** md5 signature: 4fb598f4d26b8bd0dec642f171afc646 ******/
 		%feature("compactdefaultargs") IGESControl_ToolContainer;
 		%feature("autodoc", "Return
 -------
@@ -533,8 +533,8 @@ Empty constructor.
 ") IGESControl_ToolContainer;
 		 IGESControl_ToolContainer();
 
-		/****************** IGESBoundary ******************/
-		/**** md5 signature: 9caa84936e4dc6d27a8bbc4e7788560e ****/
+		/****** IGESControl_ToolContainer::IGESBoundary ******/
+		/****** md5 signature: 9caa84936e4dc6d27a8bbc4e7788560e ******/
 		%feature("compactdefaultargs") IGESBoundary;
 		%feature("autodoc", "Return
 -------
@@ -562,8 +562,8 @@ Returns igescontrol_igesboundary.
 ***************************/
 class IGESControl_Writer {
 	public:
-		/****************** IGESControl_Writer ******************/
-		/**** md5 signature: a2845cfdf1c5ecc1cb681cab1d387a0d ****/
+		/****** IGESControl_Writer::IGESControl_Writer ******/
+		/****** md5 signature: a2845cfdf1c5ecc1cb681cab1d387a0d ******/
 		%feature("compactdefaultargs") IGESControl_Writer;
 		%feature("autodoc", "Return
 -------
@@ -575,8 +575,8 @@ Creates a writer object with the default unit (millimeters) and write mode (face
 ") IGESControl_Writer;
 		 IGESControl_Writer();
 
-		/****************** IGESControl_Writer ******************/
-		/**** md5 signature: 9fb7f7c13d4272d18e26f2e196f81beb ****/
+		/****** IGESControl_Writer::IGESControl_Writer ******/
+		/****** md5 signature: 9fb7f7c13d4272d18e26f2e196f81beb ******/
 		%feature("compactdefaultargs") IGESControl_Writer;
 		%feature("autodoc", "
 Parameters
@@ -594,8 +594,8 @@ Creates a writer with given values for units and for write mode. unit may be any
 ") IGESControl_Writer;
 		 IGESControl_Writer(Standard_CString unit, const Standard_Integer modecr = 0);
 
-		/****************** IGESControl_Writer ******************/
-		/**** md5 signature: bc2e7ace544327e8a9958f3297e3d618 ****/
+		/****** IGESControl_Writer::IGESControl_Writer ******/
+		/****** md5 signature: bc2e7ace544327e8a9958f3297e3d618 ******/
 		%feature("compactdefaultargs") IGESControl_Writer;
 		%feature("autodoc", "
 Parameters
@@ -613,8 +613,8 @@ Creates a writer object with the prepared iges model model in write mode. modecr
 ") IGESControl_Writer;
 		 IGESControl_Writer(const opencascade::handle<IGESData_IGESModel> & model, const Standard_Integer modecr = 0);
 
-		/****************** AddEntity ******************/
-		/**** md5 signature: 96b302aaab45677671929668ae473ebb ****/
+		/****** IGESControl_Writer::AddEntity ******/
+		/****** md5 signature: 96b302aaab45677671929668ae473ebb ******/
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "
 Parameters
@@ -631,8 +631,8 @@ Adds an iges entity (and the ones it references) to the model.
 ") AddEntity;
 		Standard_Boolean AddEntity(const opencascade::handle<IGESData_IGESEntity> & ent);
 
-		/****************** AddGeom ******************/
-		/**** md5 signature: d60779c1b769b5baa3aea9da9b401686 ****/
+		/****** IGESControl_Writer::AddGeom ******/
+		/****** md5 signature: d60779c1b769b5baa3aea9da9b401686 ******/
 		%feature("compactdefaultargs") AddGeom;
 		%feature("autodoc", "
 Parameters
@@ -649,8 +649,8 @@ Translates a geometry (surface or curve) to iges entities and adds them to the m
 ") AddGeom;
 		Standard_Boolean AddGeom(const opencascade::handle<Standard_Transient> & geom);
 
-		/****************** AddShape ******************/
-		/**** md5 signature: f585f65132ef5381fe2eec5704c1d251 ****/
+		/****** IGESControl_Writer::AddShape ******/
+		/****** md5 signature: f585f65132ef5381fe2eec5704c1d251 ******/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "
 Parameters
@@ -668,8 +668,8 @@ Translates a shape to iges entities and adds them to the model returns true if d
 ") AddShape;
 		Standard_Boolean AddShape(const TopoDS_Shape & sh, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** ComputeModel ******************/
-		/**** md5 signature: f42632b9add7bbc91ef59b252ab06a6f ****/
+		/****** IGESControl_Writer::ComputeModel ******/
+		/****** md5 signature: f42632b9add7bbc91ef59b252ab06a6f ******/
 		%feature("compactdefaultargs") ComputeModel;
 		%feature("autodoc", "Return
 -------
@@ -681,8 +681,8 @@ Computes the entities found in the model, which is ready to be written. this con
 ") ComputeModel;
 		void ComputeModel();
 
-		/****************** Model ******************/
-		/**** md5 signature: 54e64da25794d18e634c0083272d2677 ****/
+		/****** IGESControl_Writer::Model ******/
+		/****** md5 signature: 54e64da25794d18e634c0083272d2677 ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -694,8 +694,8 @@ Returns the iges model to be written in output.
 ") Model;
 		const opencascade::handle<IGESData_IGESModel> & Model();
 
-		/****************** SetTransferProcess ******************/
-		/**** md5 signature: 394e6897916330e96d19d5eee777e7a1 ****/
+		/****** IGESControl_Writer::SetTransferProcess ******/
+		/****** md5 signature: 394e6897916330e96d19d5eee777e7a1 ******/
 		%feature("compactdefaultargs") SetTransferProcess;
 		%feature("autodoc", "
 Parameters
@@ -712,8 +712,8 @@ Returns/sets the transferprocess: it contains final results and if some, check m
 ") SetTransferProcess;
 		void SetTransferProcess(const opencascade::handle<Transfer_FinderProcess> & TP);
 
-		/****************** TransferProcess ******************/
-		/**** md5 signature: 933b99b287d77d9fd268e59ac93d2a13 ****/
+		/****** IGESControl_Writer::TransferProcess ******/
+		/****** md5 signature: 933b99b287d77d9fd268e59ac93d2a13 ******/
 		%feature("compactdefaultargs") TransferProcess;
 		%feature("autodoc", "Return
 -------
@@ -725,8 +725,8 @@ No available documentation.
 ") TransferProcess;
 		const opencascade::handle<Transfer_FinderProcess> & TransferProcess();
 
-		/****************** Write ******************/
-		/**** md5 signature: 641c31af3cf254e70aab3e12c5732d18 ****/
+		/****** IGESControl_Writer::Write ******/
+		/****** md5 signature: 641c31af3cf254e70aab3e12c5732d18 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -743,8 +743,8 @@ Computes then writes the model to an ostream returns true when done, false in ca
 ") Write;
 		Standard_Boolean Write(std::ostream &OutValue, const Standard_Boolean fnes = Standard_False);
 
-		/****************** Write ******************/
-		/**** md5 signature: 336d0511a9ae227341af6444cb65363f ****/
+		/****** IGESControl_Writer::Write ******/
+		/****** md5 signature: 336d0511a9ae227341af6444cb65363f ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters

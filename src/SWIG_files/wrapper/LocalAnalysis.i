@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define LOCALANALYSISDOCSTRING
 "LocalAnalysis module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_localanalysis.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_localanalysis.html"
 %enddef
 %module (package="OCC.Core", docstring=LOCALANALYSISDOCSTRING) LocalAnalysis
 
@@ -109,8 +109,8 @@ LocalAnalysis_CurvatureNotDefined = LocalAnalysis_StatusErrorType.LocalAnalysis_
 %rename(localanalysis) LocalAnalysis;
 class LocalAnalysis {
 	public:
-		/****************** Dump ******************/
-		/**** md5 signature: 0c461d717d7298d3576332c66a4c9d44 ****/
+		/****** LocalAnalysis::Dump ******/
+		/****** md5 signature: 0c461d717d7298d3576332c66a4c9d44 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -127,8 +127,8 @@ This class compute s and gives tools to check the local continuity between two p
 ") Dump;
 		static void Dump(const LocalAnalysis_SurfaceContinuity & surfconti, std::ostream &OutValue);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 74ee8e149b67cec4713e41bac235b420 ****/
+		/****** LocalAnalysis::Dump ******/
+		/****** md5 signature: 74ee8e149b67cec4713e41bac235b420 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -159,8 +159,8 @@ This function gives information about a variable surfacecontinuity.
 **************************************/
 class LocalAnalysis_CurveContinuity {
 	public:
-		/****************** LocalAnalysis_CurveContinuity ******************/
-		/**** md5 signature: 94a1acbbd7b45e6042dc7a2a5794ad5a ****/
+		/****** LocalAnalysis_CurveContinuity::LocalAnalysis_CurveContinuity ******/
+		/****** md5 signature: 94a1acbbd7b45e6042dc7a2a5794ad5a ******/
 		%feature("compactdefaultargs") LocalAnalysis_CurveContinuity;
 		%feature("autodoc", "
 Parameters
@@ -189,8 +189,8 @@ Description
 ") LocalAnalysis_CurveContinuity;
 		 LocalAnalysis_CurveContinuity(const opencascade::handle<Geom_Curve> & Curv1, const Standard_Real u1, const opencascade::handle<Geom_Curve> & Curv2, const Standard_Real u2, const GeomAbs_Shape Order, const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real EpsG2 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
 
-		/****************** C0Value ******************/
-		/**** md5 signature: 46447dbacb11e1eb2dbe14115e00dee1 ****/
+		/****** LocalAnalysis_CurveContinuity::C0Value ******/
+		/****** md5 signature: 46447dbacb11e1eb2dbe14115e00dee1 ******/
 		%feature("compactdefaultargs") C0Value;
 		%feature("autodoc", "Return
 -------
@@ -202,8 +202,8 @@ No available documentation.
 ") C0Value;
 		Standard_Real C0Value();
 
-		/****************** C1Angle ******************/
-		/**** md5 signature: 40564d624b1f758cd6e1b181645ae4c0 ****/
+		/****** LocalAnalysis_CurveContinuity::C1Angle ******/
+		/****** md5 signature: 40564d624b1f758cd6e1b181645ae4c0 ******/
 		%feature("compactdefaultargs") C1Angle;
 		%feature("autodoc", "Return
 -------
@@ -215,8 +215,8 @@ No available documentation.
 ") C1Angle;
 		Standard_Real C1Angle();
 
-		/****************** C1Ratio ******************/
-		/**** md5 signature: d87197e8d7bf80d1904b9e96ba8658fb ****/
+		/****** LocalAnalysis_CurveContinuity::C1Ratio ******/
+		/****** md5 signature: d87197e8d7bf80d1904b9e96ba8658fb ******/
 		%feature("compactdefaultargs") C1Ratio;
 		%feature("autodoc", "Return
 -------
@@ -228,8 +228,8 @@ No available documentation.
 ") C1Ratio;
 		Standard_Real C1Ratio();
 
-		/****************** C2Angle ******************/
-		/**** md5 signature: a4cee893bfc8c0ae29db68b50409b230 ****/
+		/****** LocalAnalysis_CurveContinuity::C2Angle ******/
+		/****** md5 signature: a4cee893bfc8c0ae29db68b50409b230 ******/
 		%feature("compactdefaultargs") C2Angle;
 		%feature("autodoc", "Return
 -------
@@ -241,8 +241,8 @@ No available documentation.
 ") C2Angle;
 		Standard_Real C2Angle();
 
-		/****************** C2Ratio ******************/
-		/**** md5 signature: bc0cc90e608ffcf8d9891d54a721db42 ****/
+		/****** LocalAnalysis_CurveContinuity::C2Ratio ******/
+		/****** md5 signature: bc0cc90e608ffcf8d9891d54a721db42 ******/
 		%feature("compactdefaultargs") C2Ratio;
 		%feature("autodoc", "Return
 -------
@@ -254,8 +254,8 @@ No available documentation.
 ") C2Ratio;
 		Standard_Real C2Ratio();
 
-		/****************** ContinuityStatus ******************/
-		/**** md5 signature: 87127ab6a1cd70cf71645c07c6c3ce3f ****/
+		/****** LocalAnalysis_CurveContinuity::ContinuityStatus ******/
+		/****** md5 signature: 87127ab6a1cd70cf71645c07c6c3ce3f ******/
 		%feature("compactdefaultargs") ContinuityStatus;
 		%feature("autodoc", "Return
 -------
@@ -267,8 +267,8 @@ No available documentation.
 ") ContinuityStatus;
 		GeomAbs_Shape ContinuityStatus();
 
-		/****************** G1Angle ******************/
-		/**** md5 signature: 514dc4ec8755ec550d58f20afe0d65e5 ****/
+		/****** LocalAnalysis_CurveContinuity::G1Angle ******/
+		/****** md5 signature: 514dc4ec8755ec550d58f20afe0d65e5 ******/
 		%feature("compactdefaultargs") G1Angle;
 		%feature("autodoc", "Return
 -------
@@ -280,8 +280,8 @@ No available documentation.
 ") G1Angle;
 		Standard_Real G1Angle();
 
-		/****************** G2Angle ******************/
-		/**** md5 signature: a85bad56a8be3086a5f87082351ff295 ****/
+		/****** LocalAnalysis_CurveContinuity::G2Angle ******/
+		/****** md5 signature: a85bad56a8be3086a5f87082351ff295 ******/
 		%feature("compactdefaultargs") G2Angle;
 		%feature("autodoc", "Return
 -------
@@ -293,8 +293,8 @@ No available documentation.
 ") G2Angle;
 		Standard_Real G2Angle();
 
-		/****************** G2CurvatureVariation ******************/
-		/**** md5 signature: 8191070609891353562e3b0e881cf333 ****/
+		/****** LocalAnalysis_CurveContinuity::G2CurvatureVariation ******/
+		/****** md5 signature: 8191070609891353562e3b0e881cf333 ******/
 		%feature("compactdefaultargs") G2CurvatureVariation;
 		%feature("autodoc", "Return
 -------
@@ -306,8 +306,8 @@ No available documentation.
 ") G2CurvatureVariation;
 		Standard_Real G2CurvatureVariation();
 
-		/****************** IsC0 ******************/
-		/**** md5 signature: a9c219b35c36d3fb15474a89d33aafef ****/
+		/****** LocalAnalysis_CurveContinuity::IsC0 ******/
+		/****** md5 signature: a9c219b35c36d3fb15474a89d33aafef ******/
 		%feature("compactdefaultargs") IsC0;
 		%feature("autodoc", "Return
 -------
@@ -319,8 +319,8 @@ No available documentation.
 ") IsC0;
 		Standard_Boolean IsC0();
 
-		/****************** IsC1 ******************/
-		/**** md5 signature: 6d355c55580dd93d6f235af07494f438 ****/
+		/****** LocalAnalysis_CurveContinuity::IsC1 ******/
+		/****** md5 signature: 6d355c55580dd93d6f235af07494f438 ******/
 		%feature("compactdefaultargs") IsC1;
 		%feature("autodoc", "Return
 -------
@@ -332,8 +332,8 @@ No available documentation.
 ") IsC1;
 		Standard_Boolean IsC1();
 
-		/****************** IsC2 ******************/
-		/**** md5 signature: a9641a88634e370fe83efb9e59bc30c3 ****/
+		/****** LocalAnalysis_CurveContinuity::IsC2 ******/
+		/****** md5 signature: a9641a88634e370fe83efb9e59bc30c3 ******/
 		%feature("compactdefaultargs") IsC2;
 		%feature("autodoc", "Return
 -------
@@ -345,8 +345,8 @@ No available documentation.
 ") IsC2;
 		Standard_Boolean IsC2();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** LocalAnalysis_CurveContinuity::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -358,8 +358,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsG1 ******************/
-		/**** md5 signature: 0f4f13bd2815462bc6621308cc24269a ****/
+		/****** LocalAnalysis_CurveContinuity::IsG1 ******/
+		/****** md5 signature: 0f4f13bd2815462bc6621308cc24269a ******/
 		%feature("compactdefaultargs") IsG1;
 		%feature("autodoc", "Return
 -------
@@ -371,8 +371,8 @@ No available documentation.
 ") IsG1;
 		Standard_Boolean IsG1();
 
-		/****************** IsG2 ******************/
-		/**** md5 signature: 33a6bccf73c4fe3201add1f3a9e64150 ****/
+		/****** LocalAnalysis_CurveContinuity::IsG2 ******/
+		/****** md5 signature: 33a6bccf73c4fe3201add1f3a9e64150 ******/
 		%feature("compactdefaultargs") IsG2;
 		%feature("autodoc", "Return
 -------
@@ -384,8 +384,8 @@ No available documentation.
 ") IsG2;
 		Standard_Boolean IsG2();
 
-		/****************** StatusError ******************/
-		/**** md5 signature: 9c303188071e5e401702a37606a9e25b ****/
+		/****** LocalAnalysis_CurveContinuity::StatusError ******/
+		/****** md5 signature: 9c303188071e5e401702a37606a9e25b ******/
 		%feature("compactdefaultargs") StatusError;
 		%feature("autodoc", "Return
 -------
@@ -411,8 +411,8 @@ No available documentation.
 ****************************************/
 class LocalAnalysis_SurfaceContinuity {
 	public:
-		/****************** LocalAnalysis_SurfaceContinuity ******************/
-		/**** md5 signature: 27edcb9c05548dad6ce4c6a6b1ef9ac6 ****/
+		/****** LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity ******/
+		/****** md5 signature: 27edcb9c05548dad6ce4c6a6b1ef9ac6 ******/
 		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
 		%feature("autodoc", "
 Parameters
@@ -442,8 +442,8 @@ Description
 ") LocalAnalysis_SurfaceContinuity;
 		 LocalAnalysis_SurfaceContinuity(const opencascade::handle<Geom_Surface> & Surf1, const Standard_Real u1, const Standard_Real v1, const opencascade::handle<Geom_Surface> & Surf2, const Standard_Real u2, const Standard_Real v2, const GeomAbs_Shape Order, const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
 
-		/****************** LocalAnalysis_SurfaceContinuity ******************/
-		/**** md5 signature: 4aac4a7a370c01d5659bcf6c3ddc6ad6 ****/
+		/****** LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity ******/
+		/****** md5 signature: 4aac4a7a370c01d5659bcf6c3ddc6ad6 ******/
 		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
 		%feature("autodoc", "
 Parameters
@@ -472,8 +472,8 @@ No available documentation.
 ") LocalAnalysis_SurfaceContinuity;
 		 LocalAnalysis_SurfaceContinuity(const opencascade::handle<Geom2d_Curve> & curv1, const opencascade::handle<Geom2d_Curve> & curv2, const Standard_Real U, const opencascade::handle<Geom_Surface> & Surf1, const opencascade::handle<Geom_Surface> & Surf2, const GeomAbs_Shape Order, const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
 
-		/****************** LocalAnalysis_SurfaceContinuity ******************/
-		/**** md5 signature: d678aa4faa824046fd87d3b8cd502a34 ****/
+		/****** LocalAnalysis_SurfaceContinuity::LocalAnalysis_SurfaceContinuity ******/
+		/****** md5 signature: d678aa4faa824046fd87d3b8cd502a34 ******/
 		%feature("compactdefaultargs") LocalAnalysis_SurfaceContinuity;
 		%feature("autodoc", "
 Parameters
@@ -496,8 +496,8 @@ This constructor is used when we want to compute many analysis. after we use the
 ") LocalAnalysis_SurfaceContinuity;
 		 LocalAnalysis_SurfaceContinuity(const Standard_Real EpsNul = 0.001, const Standard_Real EpsC0 = 0.001, const Standard_Real EpsC1 = 0.001, const Standard_Real EpsC2 = 0.001, const Standard_Real EpsG1 = 0.001, const Standard_Real Percent = 0.01, const Standard_Real Maxlen = 10000);
 
-		/****************** C0Value ******************/
-		/**** md5 signature: 46447dbacb11e1eb2dbe14115e00dee1 ****/
+		/****** LocalAnalysis_SurfaceContinuity::C0Value ******/
+		/****** md5 signature: 46447dbacb11e1eb2dbe14115e00dee1 ******/
 		%feature("compactdefaultargs") C0Value;
 		%feature("autodoc", "Return
 -------
@@ -509,8 +509,8 @@ No available documentation.
 ") C0Value;
 		Standard_Real C0Value();
 
-		/****************** C1UAngle ******************/
-		/**** md5 signature: 54e9b7ee8ad7fca54bedd8ddf82fb87b ****/
+		/****** LocalAnalysis_SurfaceContinuity::C1UAngle ******/
+		/****** md5 signature: 54e9b7ee8ad7fca54bedd8ddf82fb87b ******/
 		%feature("compactdefaultargs") C1UAngle;
 		%feature("autodoc", "Return
 -------
@@ -522,8 +522,8 @@ No available documentation.
 ") C1UAngle;
 		Standard_Real C1UAngle();
 
-		/****************** C1URatio ******************/
-		/**** md5 signature: 9ffee9bff23c9c429f98dc1af9e97f4d ****/
+		/****** LocalAnalysis_SurfaceContinuity::C1URatio ******/
+		/****** md5 signature: 9ffee9bff23c9c429f98dc1af9e97f4d ******/
 		%feature("compactdefaultargs") C1URatio;
 		%feature("autodoc", "Return
 -------
@@ -535,8 +535,8 @@ No available documentation.
 ") C1URatio;
 		Standard_Real C1URatio();
 
-		/****************** C1VAngle ******************/
-		/**** md5 signature: c074021ecfd172eb36ebcd7fac61c2bf ****/
+		/****** LocalAnalysis_SurfaceContinuity::C1VAngle ******/
+		/****** md5 signature: c074021ecfd172eb36ebcd7fac61c2bf ******/
 		%feature("compactdefaultargs") C1VAngle;
 		%feature("autodoc", "Return
 -------
@@ -548,8 +548,8 @@ No available documentation.
 ") C1VAngle;
 		Standard_Real C1VAngle();
 
-		/****************** C1VRatio ******************/
-		/**** md5 signature: 47cb60056b58cdf09b782bce283bbf3b ****/
+		/****** LocalAnalysis_SurfaceContinuity::C1VRatio ******/
+		/****** md5 signature: 47cb60056b58cdf09b782bce283bbf3b ******/
 		%feature("compactdefaultargs") C1VRatio;
 		%feature("autodoc", "Return
 -------
@@ -561,8 +561,8 @@ No available documentation.
 ") C1VRatio;
 		Standard_Real C1VRatio();
 
-		/****************** C2UAngle ******************/
-		/**** md5 signature: 7fda7be0d183500c933dd5d9e9fa60e0 ****/
+		/****** LocalAnalysis_SurfaceContinuity::C2UAngle ******/
+		/****** md5 signature: 7fda7be0d183500c933dd5d9e9fa60e0 ******/
 		%feature("compactdefaultargs") C2UAngle;
 		%feature("autodoc", "Return
 -------
@@ -574,8 +574,8 @@ No available documentation.
 ") C2UAngle;
 		Standard_Real C2UAngle();
 
-		/****************** C2URatio ******************/
-		/**** md5 signature: 010c23977fcd204576f994d7b6f35d9d ****/
+		/****** LocalAnalysis_SurfaceContinuity::C2URatio ******/
+		/****** md5 signature: 010c23977fcd204576f994d7b6f35d9d ******/
 		%feature("compactdefaultargs") C2URatio;
 		%feature("autodoc", "Return
 -------
@@ -587,8 +587,8 @@ No available documentation.
 ") C2URatio;
 		Standard_Real C2URatio();
 
-		/****************** C2VAngle ******************/
-		/**** md5 signature: ee92f8d19e56a43577961190f81581ff ****/
+		/****** LocalAnalysis_SurfaceContinuity::C2VAngle ******/
+		/****** md5 signature: ee92f8d19e56a43577961190f81581ff ******/
 		%feature("compactdefaultargs") C2VAngle;
 		%feature("autodoc", "Return
 -------
@@ -600,8 +600,8 @@ No available documentation.
 ") C2VAngle;
 		Standard_Real C2VAngle();
 
-		/****************** C2VRatio ******************/
-		/**** md5 signature: 7f423d130b80a176ecb31400f6f4170d ****/
+		/****** LocalAnalysis_SurfaceContinuity::C2VRatio ******/
+		/****** md5 signature: 7f423d130b80a176ecb31400f6f4170d ******/
 		%feature("compactdefaultargs") C2VRatio;
 		%feature("autodoc", "Return
 -------
@@ -613,8 +613,8 @@ No available documentation.
 ") C2VRatio;
 		Standard_Real C2VRatio();
 
-		/****************** ComputeAnalysis ******************/
-		/**** md5 signature: fd43bd9b6cbc4e7f06a8e4825cc0c692 ****/
+		/****** LocalAnalysis_SurfaceContinuity::ComputeAnalysis ******/
+		/****** md5 signature: fd43bd9b6cbc4e7f06a8e4825cc0c692 ******/
 		%feature("compactdefaultargs") ComputeAnalysis;
 		%feature("autodoc", "
 Parameters
@@ -633,8 +633,8 @@ No available documentation.
 ") ComputeAnalysis;
 		void ComputeAnalysis(GeomLProp_SLProps & Surf1, GeomLProp_SLProps & Surf2, const GeomAbs_Shape Order);
 
-		/****************** ContinuityStatus ******************/
-		/**** md5 signature: 87127ab6a1cd70cf71645c07c6c3ce3f ****/
+		/****** LocalAnalysis_SurfaceContinuity::ContinuityStatus ******/
+		/****** md5 signature: 87127ab6a1cd70cf71645c07c6c3ce3f ******/
 		%feature("compactdefaultargs") ContinuityStatus;
 		%feature("autodoc", "Return
 -------
@@ -646,8 +646,8 @@ No available documentation.
 ") ContinuityStatus;
 		GeomAbs_Shape ContinuityStatus();
 
-		/****************** G1Angle ******************/
-		/**** md5 signature: 514dc4ec8755ec550d58f20afe0d65e5 ****/
+		/****** LocalAnalysis_SurfaceContinuity::G1Angle ******/
+		/****** md5 signature: 514dc4ec8755ec550d58f20afe0d65e5 ******/
 		%feature("compactdefaultargs") G1Angle;
 		%feature("autodoc", "Return
 -------
@@ -659,8 +659,8 @@ No available documentation.
 ") G1Angle;
 		Standard_Real G1Angle();
 
-		/****************** G2CurvatureGap ******************/
-		/**** md5 signature: 27133eacf2483170ca61aeea54260460 ****/
+		/****** LocalAnalysis_SurfaceContinuity::G2CurvatureGap ******/
+		/****** md5 signature: 27133eacf2483170ca61aeea54260460 ******/
 		%feature("compactdefaultargs") G2CurvatureGap;
 		%feature("autodoc", "Return
 -------
@@ -672,8 +672,8 @@ No available documentation.
 ") G2CurvatureGap;
 		Standard_Real G2CurvatureGap();
 
-		/****************** IsC0 ******************/
-		/**** md5 signature: a9c219b35c36d3fb15474a89d33aafef ****/
+		/****** LocalAnalysis_SurfaceContinuity::IsC0 ******/
+		/****** md5 signature: a9c219b35c36d3fb15474a89d33aafef ******/
 		%feature("compactdefaultargs") IsC0;
 		%feature("autodoc", "Return
 -------
@@ -685,8 +685,8 @@ No available documentation.
 ") IsC0;
 		Standard_Boolean IsC0();
 
-		/****************** IsC1 ******************/
-		/**** md5 signature: 6d355c55580dd93d6f235af07494f438 ****/
+		/****** LocalAnalysis_SurfaceContinuity::IsC1 ******/
+		/****** md5 signature: 6d355c55580dd93d6f235af07494f438 ******/
 		%feature("compactdefaultargs") IsC1;
 		%feature("autodoc", "Return
 -------
@@ -698,8 +698,8 @@ No available documentation.
 ") IsC1;
 		Standard_Boolean IsC1();
 
-		/****************** IsC2 ******************/
-		/**** md5 signature: a9641a88634e370fe83efb9e59bc30c3 ****/
+		/****** LocalAnalysis_SurfaceContinuity::IsC2 ******/
+		/****** md5 signature: a9641a88634e370fe83efb9e59bc30c3 ******/
 		%feature("compactdefaultargs") IsC2;
 		%feature("autodoc", "Return
 -------
@@ -711,8 +711,8 @@ No available documentation.
 ") IsC2;
 		Standard_Boolean IsC2();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** LocalAnalysis_SurfaceContinuity::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -724,8 +724,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsG1 ******************/
-		/**** md5 signature: 0f4f13bd2815462bc6621308cc24269a ****/
+		/****** LocalAnalysis_SurfaceContinuity::IsG1 ******/
+		/****** md5 signature: 0f4f13bd2815462bc6621308cc24269a ******/
 		%feature("compactdefaultargs") IsG1;
 		%feature("autodoc", "Return
 -------
@@ -737,8 +737,8 @@ No available documentation.
 ") IsG1;
 		Standard_Boolean IsG1();
 
-		/****************** IsG2 ******************/
-		/**** md5 signature: 33a6bccf73c4fe3201add1f3a9e64150 ****/
+		/****** LocalAnalysis_SurfaceContinuity::IsG2 ******/
+		/****** md5 signature: 33a6bccf73c4fe3201add1f3a9e64150 ******/
 		%feature("compactdefaultargs") IsG2;
 		%feature("autodoc", "Return
 -------
@@ -750,8 +750,8 @@ No available documentation.
 ") IsG2;
 		Standard_Boolean IsG2();
 
-		/****************** StatusError ******************/
-		/**** md5 signature: 9c303188071e5e401702a37606a9e25b ****/
+		/****** LocalAnalysis_SurfaceContinuity::StatusError ******/
+		/****** md5 signature: 9c303188071e5e401702a37606a9e25b ******/
 		%feature("compactdefaultargs") StatusError;
 		%feature("autodoc", "Return
 -------

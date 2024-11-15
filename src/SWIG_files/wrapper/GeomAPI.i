@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMAPIDOCSTRING
 "GeomAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geomapi.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geomapi.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMAPIDOCSTRING) GeomAPI
 
@@ -101,8 +101,8 @@ from OCC.Core.Exception import *
 %rename(geomapi) GeomAPI;
 class GeomAPI {
 	public:
-		/****************** To2d ******************/
-		/**** md5 signature: 46767ba0b9de8c155b0c1451dc4d31a0 ****/
+		/****** GeomAPI::To2d ******/
+		/****** md5 signature: 46767ba0b9de8c155b0c1451dc4d31a0 ******/
 		%feature("compactdefaultargs") To2d;
 		%feature("autodoc", "
 Parameters
@@ -120,8 +120,8 @@ This function builds (in the parametric space of the plane p) a 2d curve equival
 ") To2d;
 		static opencascade::handle<Geom2d_Curve> To2d(const opencascade::handle<Geom_Curve> & C, const gp_Pln & P);
 
-		/****************** To3d ******************/
-		/**** md5 signature: c6040ccc3dbcd8e3934502306b71f14f ****/
+		/****** GeomAPI::To3d ******/
+		/****** md5 signature: c6040ccc3dbcd8e3934502306b71f14f ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -153,8 +153,8 @@ Builds a 3d curve equivalent to the 2d curve c described in the parametric space
 **********************************/
 class GeomAPI_ExtremaCurveCurve {
 	public:
-		/****************** GeomAPI_ExtremaCurveCurve ******************/
-		/**** md5 signature: a3010c7573b0359accbee1e737d0c0c9 ****/
+		/****** GeomAPI_ExtremaCurveCurve::GeomAPI_ExtremaCurveCurve ******/
+		/****** md5 signature: a3010c7573b0359accbee1e737d0c0c9 ******/
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveCurve;
 		%feature("autodoc", "Return
 -------
@@ -166,8 +166,8 @@ Constructs an empty algorithm for computing extrema between two curves. use an i
 ") GeomAPI_ExtremaCurveCurve;
 		 GeomAPI_ExtremaCurveCurve();
 
-		/****************** GeomAPI_ExtremaCurveCurve ******************/
-		/**** md5 signature: 0c7a7ec6c28252d008d2320948a498fe ****/
+		/****** GeomAPI_ExtremaCurveCurve::GeomAPI_ExtremaCurveCurve ******/
+		/****** md5 signature: 0c7a7ec6c28252d008d2320948a498fe ******/
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveCurve;
 		%feature("autodoc", "
 Parameters
@@ -185,8 +185,8 @@ Computes the extrema between the curves c1 and c2.
 ") GeomAPI_ExtremaCurveCurve;
 		 GeomAPI_ExtremaCurveCurve(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2);
 
-		/****************** GeomAPI_ExtremaCurveCurve ******************/
-		/**** md5 signature: cf67c0a625d592607f391fe9ed6bd689 ****/
+		/****** GeomAPI_ExtremaCurveCurve::GeomAPI_ExtremaCurveCurve ******/
+		/****** md5 signature: cf67c0a625d592607f391fe9ed6bd689 ******/
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveCurve;
 		%feature("autodoc", "
 Parameters
@@ -208,8 +208,8 @@ Computes the portion of the curve c1 limited by the two points of parameter (u1m
 ") GeomAPI_ExtremaCurveCurve;
 		 GeomAPI_ExtremaCurveCurve(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real U2min, const Standard_Real U2max);
 
-		/****************** Distance ******************/
-		/**** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ****/
+		/****** GeomAPI_ExtremaCurveCurve::Distance ******/
+		/****** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -226,8 +226,8 @@ Computes the distance between the end points of the extremum of index index comp
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
-		/****************** Extrema ******************/
-		/**** md5 signature: d20597ca5df7eb3eb3c7b2cc10a25ce9 ****/
+		/****** GeomAPI_ExtremaCurveCurve::Extrema ******/
+		/****** md5 signature: d20597ca5df7eb3eb3c7b2cc10a25ce9 ******/
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "Return
 -------
@@ -239,8 +239,8 @@ Return the algorithmic object from extrema.
 ") Extrema;
 		const Extrema_ExtCC & Extrema();
 
-		/****************** Init ******************/
-		/**** md5 signature: 921fb84113845f665798bcd7f0f3d2e1 ****/
+		/****** GeomAPI_ExtremaCurveCurve::Init ******/
+		/****** md5 signature: 921fb84113845f665798bcd7f0f3d2e1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -258,8 +258,8 @@ Initializes this algorithm with the given arguments and computes the extrema bet
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2);
 
-		/****************** Init ******************/
-		/**** md5 signature: ec9500c526586804614827847658370a ****/
+		/****** GeomAPI_ExtremaCurveCurve::Init ******/
+		/****** md5 signature: ec9500c526586804614827847658370a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -281,8 +281,8 @@ Initializes this algorithm with the given arguments and computes the extrema bet
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real U2min, const Standard_Real U2max);
 
-		/****************** IsParallel ******************/
-		/**** md5 signature: 1a61f067818333b9699057e51665b906 ****/
+		/****** GeomAPI_ExtremaCurveCurve::IsParallel ******/
+		/****** md5 signature: 1a61f067818333b9699057e51665b906 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -294,8 +294,8 @@ Returns true if the two curves are parallel.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
-		/****************** LowerDistance ******************/
-		/**** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ****/
+		/****** GeomAPI_ExtremaCurveCurve::LowerDistance ******/
+		/****** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ******/
 		%feature("compactdefaultargs") LowerDistance;
 		%feature("autodoc", "Return
 -------
@@ -307,8 +307,8 @@ Computes the distance between the end points of the shortest extremum computed b
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
-		/****************** LowerDistanceParameters ******************/
-		/**** md5 signature: 8692eb96773a2ce4edf4599b17864e52 ****/
+		/****** GeomAPI_ExtremaCurveCurve::LowerDistanceParameters ******/
+		/****** md5 signature: 8692eb96773a2ce4edf4599b17864e52 ******/
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "
 Parameters
@@ -325,8 +325,8 @@ Returns the parameters u1 of the point on the first curve and u2 of the point on
 ") LowerDistanceParameters;
 		void LowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** NbExtrema ******************/
-		/**** md5 signature: 29e39c32fb361964ef3fb09e088c11d8 ****/
+		/****** GeomAPI_ExtremaCurveCurve::NbExtrema ******/
+		/****** md5 signature: 29e39c32fb361964ef3fb09e088c11d8 ******/
 		%feature("compactdefaultargs") NbExtrema;
 		%feature("autodoc", "Return
 -------
@@ -338,8 +338,8 @@ Returns the number of extrema computed by this algorithm. note: if this algorith
 ") NbExtrema;
 		Standard_Integer NbExtrema();
 
-		/****************** NearestPoints ******************/
-		/**** md5 signature: 4930be161c652c11e7ff1600e5a2e89e ****/
+		/****** GeomAPI_ExtremaCurveCurve::NearestPoints ******/
+		/****** md5 signature: 4930be161c652c11e7ff1600e5a2e89e ******/
 		%feature("compactdefaultargs") NearestPoints;
 		%feature("autodoc", "
 Parameters
@@ -357,8 +357,8 @@ Returns the points p1 on the first curve and p2 on the second curve, which are t
 ") NearestPoints;
 		void NearestPoints(gp_Pnt & P1, gp_Pnt & P2);
 
-		/****************** Parameters ******************/
-		/**** md5 signature: f35f3eb64c1cede9adcbe1fc2f680bb0 ****/
+		/****** GeomAPI_ExtremaCurveCurve::Parameters ******/
+		/****** md5 signature: f35f3eb64c1cede9adcbe1fc2f680bb0 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -376,8 +376,8 @@ Returns the parameters u1 of the point on the first curve and u2 of the point on
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Points ******************/
-		/**** md5 signature: 79cc8f2ceb24f7ce334d72d7116d374c ****/
+		/****** GeomAPI_ExtremaCurveCurve::Points ******/
+		/****** md5 signature: 79cc8f2ceb24f7ce334d72d7116d374c ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -396,8 +396,8 @@ Returns the points p1 on the first curve and p2 on the second curve, which are t
 ") Points;
 		void Points(const Standard_Integer Index, gp_Pnt & P1, gp_Pnt & P2);
 
-		/****************** TotalLowerDistance ******************/
-		/**** md5 signature: bbe3edab05724b99eb1d289189b59dc9 ****/
+		/****** GeomAPI_ExtremaCurveCurve::TotalLowerDistance ******/
+		/****** md5 signature: bbe3edab05724b99eb1d289189b59dc9 ******/
 		%feature("compactdefaultargs") TotalLowerDistance;
 		%feature("autodoc", "Return
 -------
@@ -409,8 +409,8 @@ Return the distance of the total nearest couple solution point. if <myextcc> is 
 ") TotalLowerDistance;
 		Standard_Real TotalLowerDistance();
 
-		/****************** TotalLowerDistanceParameters ******************/
-		/**** md5 signature: 918e628c38cab528b8e9ffd40e74ec9f ****/
+		/****** GeomAPI_ExtremaCurveCurve::TotalLowerDistanceParameters ******/
+		/****** md5 signature: 918e628c38cab528b8e9ffd40e74ec9f ******/
 		%feature("compactdefaultargs") TotalLowerDistanceParameters;
 		%feature("autodoc", "
 Parameters
@@ -427,8 +427,8 @@ Set in <u1> and <u2> the parameters of the couple solution points which represen
 ") TotalLowerDistanceParameters;
 		Standard_Boolean TotalLowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** TotalNearestPoints ******************/
-		/**** md5 signature: 5b96fd4d2868012457d21f38c05df9a4 ****/
+		/****** GeomAPI_ExtremaCurveCurve::TotalNearestPoints ******/
+		/****** md5 signature: 5b96fd4d2868012457d21f38c05df9a4 ******/
 		%feature("compactdefaultargs") TotalNearestPoints;
 		%feature("autodoc", "
 Parameters
@@ -460,8 +460,8 @@ Set in <p1> and <p2> the couple solution points such a the distance [p1,p2] is t
 ************************************/
 class GeomAPI_ExtremaCurveSurface {
 	public:
-		/****************** GeomAPI_ExtremaCurveSurface ******************/
-		/**** md5 signature: ad5451d66f7a0b9e46e9db373fe46faa ****/
+		/****** GeomAPI_ExtremaCurveSurface::GeomAPI_ExtremaCurveSurface ******/
+		/****** md5 signature: ad5451d66f7a0b9e46e9db373fe46faa ******/
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveSurface;
 		%feature("autodoc", "Return
 -------
@@ -473,8 +473,8 @@ Constructs an empty algorithm for computing extrema between a curve and a surfac
 ") GeomAPI_ExtremaCurveSurface;
 		 GeomAPI_ExtremaCurveSurface();
 
-		/****************** GeomAPI_ExtremaCurveSurface ******************/
-		/**** md5 signature: cef525ab700b90764fd82ec76526a951 ****/
+		/****** GeomAPI_ExtremaCurveSurface::GeomAPI_ExtremaCurveSurface ******/
+		/****** md5 signature: cef525ab700b90764fd82ec76526a951 ******/
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveSurface;
 		%feature("autodoc", "
 Parameters
@@ -492,8 +492,8 @@ Computes the extrema distances between the curve <c> and the surface <s>.
 ") GeomAPI_ExtremaCurveSurface;
 		 GeomAPI_ExtremaCurveSurface(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Surface> & Surface);
 
-		/****************** GeomAPI_ExtremaCurveSurface ******************/
-		/**** md5 signature: a2215f2a78469c1af4760a32475d3683 ****/
+		/****** GeomAPI_ExtremaCurveSurface::GeomAPI_ExtremaCurveSurface ******/
+		/****** md5 signature: a2215f2a78469c1af4760a32475d3683 ******/
 		%feature("compactdefaultargs") GeomAPI_ExtremaCurveSurface;
 		%feature("autodoc", "
 Parameters
@@ -517,8 +517,8 @@ Computes the extrema distances between the curve <c> and the surface <s>. the so
 ") GeomAPI_ExtremaCurveSurface;
 		 GeomAPI_ExtremaCurveSurface(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Wmin, const Standard_Real Wmax, const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax);
 
-		/****************** Distance ******************/
-		/**** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ****/
+		/****** GeomAPI_ExtremaCurveSurface::Distance ******/
+		/****** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -535,8 +535,8 @@ Computes the distance between the end points of the extremum of index index comp
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
-		/****************** Extrema ******************/
-		/**** md5 signature: adcf7d7d93c740fa26f7543ee94e20ec ****/
+		/****** GeomAPI_ExtremaCurveSurface::Extrema ******/
+		/****** md5 signature: adcf7d7d93c740fa26f7543ee94e20ec ******/
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "Return
 -------
@@ -548,8 +548,8 @@ Returns the algorithmic object from extrema.
 ") Extrema;
 		const Extrema_ExtCS & Extrema();
 
-		/****************** Init ******************/
-		/**** md5 signature: dd5e8dfd1899f88b374f7f1be823f2b1 ****/
+		/****** GeomAPI_ExtremaCurveSurface::Init ******/
+		/****** md5 signature: dd5e8dfd1899f88b374f7f1be823f2b1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -567,8 +567,8 @@ Computes the extrema distances between the curve <c> and the surface <s>.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Surface> & Surface);
 
-		/****************** Init ******************/
-		/**** md5 signature: d6404c0680afce59f0009686b12fb9f9 ****/
+		/****** GeomAPI_ExtremaCurveSurface::Init ******/
+		/****** md5 signature: d6404c0680afce59f0009686b12fb9f9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -592,8 +592,8 @@ Computes the extrema distances between the curve <c> and the surface <s>. the so
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Wmin, const Standard_Real Wmax, const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax);
 
-		/****************** IsParallel ******************/
-		/**** md5 signature: 1a61f067818333b9699057e51665b906 ****/
+		/****** GeomAPI_ExtremaCurveSurface::IsParallel ******/
+		/****** md5 signature: 1a61f067818333b9699057e51665b906 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -605,8 +605,8 @@ Returns true if the curve is on a parallel surface.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
-		/****************** LowerDistance ******************/
-		/**** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ****/
+		/****** GeomAPI_ExtremaCurveSurface::LowerDistance ******/
+		/****** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ******/
 		%feature("compactdefaultargs") LowerDistance;
 		%feature("autodoc", "Return
 -------
@@ -618,8 +618,8 @@ Computes the distance between the end points of the shortest extremum computed b
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
-		/****************** LowerDistanceParameters ******************/
-		/**** md5 signature: 1d8b0b18b6eaeec3dd1d68420af77b77 ****/
+		/****** GeomAPI_ExtremaCurveSurface::LowerDistanceParameters ******/
+		/****** md5 signature: 1d8b0b18b6eaeec3dd1d68420af77b77 ******/
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "
 Parameters
@@ -637,8 +637,8 @@ Returns the parameters w of the point on the curve and (u,v) of the point on the
 ") LowerDistanceParameters;
 		void LowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** NbExtrema ******************/
-		/**** md5 signature: 29e39c32fb361964ef3fb09e088c11d8 ****/
+		/****** GeomAPI_ExtremaCurveSurface::NbExtrema ******/
+		/****** md5 signature: 29e39c32fb361964ef3fb09e088c11d8 ******/
 		%feature("compactdefaultargs") NbExtrema;
 		%feature("autodoc", "Return
 -------
@@ -650,8 +650,8 @@ Returns the number of extrema computed by this algorithm. note: if this algorith
 ") NbExtrema;
 		Standard_Integer NbExtrema();
 
-		/****************** NearestPoints ******************/
-		/**** md5 signature: 5cdc647c1b5fc9f834b7700fd001104f ****/
+		/****** GeomAPI_ExtremaCurveSurface::NearestPoints ******/
+		/****** md5 signature: 5cdc647c1b5fc9f834b7700fd001104f ******/
 		%feature("compactdefaultargs") NearestPoints;
 		%feature("autodoc", "
 Parameters
@@ -669,8 +669,8 @@ Returns the points pc on the curve and ps on the surface, which are the ends of 
 ") NearestPoints;
 		void NearestPoints(gp_Pnt & PC, gp_Pnt & PS);
 
-		/****************** Parameters ******************/
-		/**** md5 signature: e6e64993bdd5467abdf3f059c86d56b5 ****/
+		/****** GeomAPI_ExtremaCurveSurface::Parameters ******/
+		/****** md5 signature: e6e64993bdd5467abdf3f059c86d56b5 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -689,8 +689,8 @@ Returns the parameters w of the point on the curve, and (u,v) of the point on th
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Points ******************/
-		/**** md5 signature: 79cc8f2ceb24f7ce334d72d7116d374c ****/
+		/****** GeomAPI_ExtremaCurveSurface::Points ******/
+		/****** md5 signature: 79cc8f2ceb24f7ce334d72d7116d374c ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -723,8 +723,8 @@ Returns the points p1 on the curve and p2 on the surface, which are the ends of 
 **************************************/
 class GeomAPI_ExtremaSurfaceSurface {
 	public:
-		/****************** GeomAPI_ExtremaSurfaceSurface ******************/
-		/**** md5 signature: 6c3848e0fca2ded28728d3f6d8b44686 ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::GeomAPI_ExtremaSurfaceSurface ******/
+		/****** md5 signature: 6c3848e0fca2ded28728d3f6d8b44686 ******/
 		%feature("compactdefaultargs") GeomAPI_ExtremaSurfaceSurface;
 		%feature("autodoc", "Return
 -------
@@ -736,8 +736,8 @@ Constructs an empty algorithm for computing extrema between two surfaces. use an
 ") GeomAPI_ExtremaSurfaceSurface;
 		 GeomAPI_ExtremaSurfaceSurface();
 
-		/****************** GeomAPI_ExtremaSurfaceSurface ******************/
-		/**** md5 signature: 28b59a021ad63b73a4dc0533e0a6f0ef ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::GeomAPI_ExtremaSurfaceSurface ******/
+		/****** md5 signature: 28b59a021ad63b73a4dc0533e0a6f0ef ******/
 		%feature("compactdefaultargs") GeomAPI_ExtremaSurfaceSurface;
 		%feature("autodoc", "
 Parameters
@@ -755,8 +755,8 @@ Computes the extrema distances between the surfaces <s1> and <s2>.
 ") GeomAPI_ExtremaSurfaceSurface;
 		 GeomAPI_ExtremaSurfaceSurface(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2);
 
-		/****************** GeomAPI_ExtremaSurfaceSurface ******************/
-		/**** md5 signature: 2059d74f0171f73f6daa37633f501200 ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::GeomAPI_ExtremaSurfaceSurface ******/
+		/****** md5 signature: 2059d74f0171f73f6daa37633f501200 ******/
 		%feature("compactdefaultargs") GeomAPI_ExtremaSurfaceSurface;
 		%feature("autodoc", "
 Parameters
@@ -782,8 +782,8 @@ Computes the extrema distances between the portion of the surface s1 limited by 
 ") GeomAPI_ExtremaSurfaceSurface;
 		 GeomAPI_ExtremaSurfaceSurface(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real V1min, const Standard_Real V1max, const Standard_Real U2min, const Standard_Real U2max, const Standard_Real V2min, const Standard_Real V2max);
 
-		/****************** Distance ******************/
-		/**** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::Distance ******/
+		/****** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -800,8 +800,8 @@ Computes the distance between the end points of the extremum of index index comp
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
-		/****************** Extrema ******************/
-		/**** md5 signature: 4e9266c25801d466046033a02435b14c ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::Extrema ******/
+		/****** md5 signature: 4e9266c25801d466046033a02435b14c ******/
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "Return
 -------
@@ -813,8 +813,8 @@ Return the algorithmic object from extrema.
 ") Extrema;
 		const Extrema_ExtSS & Extrema();
 
-		/****************** Init ******************/
-		/**** md5 signature: 65c310fb65763eea9a805df773c030e8 ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::Init ******/
+		/****** md5 signature: 65c310fb65763eea9a805df773c030e8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -832,8 +832,8 @@ Initializes this algorithm with the given arguments and computes the extrema dis
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2);
 
-		/****************** Init ******************/
-		/**** md5 signature: 81d2a4fd09309402d7e36c6fb1d3e40d ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::Init ******/
+		/****** md5 signature: 81d2a4fd09309402d7e36c6fb1d3e40d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -859,8 +859,8 @@ Initializes this algorithm with the given arguments and computes the extrema dis
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real V1min, const Standard_Real V1max, const Standard_Real U2min, const Standard_Real U2max, const Standard_Real V2min, const Standard_Real V2max);
 
-		/****************** IsParallel ******************/
-		/**** md5 signature: 1a61f067818333b9699057e51665b906 ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::IsParallel ******/
+		/****** md5 signature: 1a61f067818333b9699057e51665b906 ******/
 		%feature("compactdefaultargs") IsParallel;
 		%feature("autodoc", "Return
 -------
@@ -872,8 +872,8 @@ Returns true if the surfaces are parallel.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
-		/****************** LowerDistance ******************/
-		/**** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::LowerDistance ******/
+		/****** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ******/
 		%feature("compactdefaultargs") LowerDistance;
 		%feature("autodoc", "Return
 -------
@@ -885,8 +885,8 @@ Computes the distance between the end points of the shortest extremum computed b
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
-		/****************** LowerDistanceParameters ******************/
-		/**** md5 signature: ec805ec8c6e320fe6a04db9189b1cfa5 ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::LowerDistanceParameters ******/
+		/****** md5 signature: ec805ec8c6e320fe6a04db9189b1cfa5 ******/
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "
 Parameters
@@ -905,8 +905,8 @@ Returns the parameters (u1,v1) of the point on the first surface and (u2,v2) of 
 ") LowerDistanceParameters;
 		void LowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** NbExtrema ******************/
-		/**** md5 signature: 29e39c32fb361964ef3fb09e088c11d8 ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::NbExtrema ******/
+		/****** md5 signature: 29e39c32fb361964ef3fb09e088c11d8 ******/
 		%feature("compactdefaultargs") NbExtrema;
 		%feature("autodoc", "Return
 -------
@@ -918,8 +918,8 @@ Returns the number of extrema computed by this algorithm. note: if this algorith
 ") NbExtrema;
 		Standard_Integer NbExtrema();
 
-		/****************** NearestPoints ******************/
-		/**** md5 signature: 4930be161c652c11e7ff1600e5a2e89e ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::NearestPoints ******/
+		/****** md5 signature: 4930be161c652c11e7ff1600e5a2e89e ******/
 		%feature("compactdefaultargs") NearestPoints;
 		%feature("autodoc", "
 Parameters
@@ -937,8 +937,8 @@ Returns the points p1 on the first surface and p2 on the second surface, which a
 ") NearestPoints;
 		void NearestPoints(gp_Pnt & P1, gp_Pnt & P2);
 
-		/****************** Parameters ******************/
-		/**** md5 signature: 6f89f63d1628a1a0a52449e028c59bf0 ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::Parameters ******/
+		/****** md5 signature: 6f89f63d1628a1a0a52449e028c59bf0 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -958,8 +958,8 @@ Returns the parameters (u1,v1) of the point on the first surface, and (u2,v2) of
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Points ******************/
-		/**** md5 signature: 79cc8f2ceb24f7ce334d72d7116d374c ****/
+		/****** GeomAPI_ExtremaSurfaceSurface::Points ******/
+		/****** md5 signature: 79cc8f2ceb24f7ce334d72d7116d374c ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -992,8 +992,8 @@ Returns the points p1 on the first surface and p2 on the second surface, which a
 **********************/
 class GeomAPI_IntCS {
 	public:
-		/****************** GeomAPI_IntCS ******************/
-		/**** md5 signature: 0791811afd31ee46ff9fd55c0cc30352 ****/
+		/****** GeomAPI_IntCS::GeomAPI_IntCS ******/
+		/****** md5 signature: 0791811afd31ee46ff9fd55c0cc30352 ******/
 		%feature("compactdefaultargs") GeomAPI_IntCS;
 		%feature("autodoc", "Return
 -------
@@ -1005,8 +1005,8 @@ Creates an empty object. use the function perform for further initialization of 
 ") GeomAPI_IntCS;
 		 GeomAPI_IntCS();
 
-		/****************** GeomAPI_IntCS ******************/
-		/**** md5 signature: b5e98b376c9b3d0e4b5a614f0cd99b35 ****/
+		/****** GeomAPI_IntCS::GeomAPI_IntCS ******/
+		/****** md5 signature: b5e98b376c9b3d0e4b5a614f0cd99b35 ******/
 		%feature("compactdefaultargs") GeomAPI_IntCS;
 		%feature("autodoc", "
 Parameters
@@ -1024,8 +1024,8 @@ Computes the intersections between the curve c and the surface s. warning use fu
 ") GeomAPI_IntCS;
 		 GeomAPI_IntCS(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomAPI_IntCS::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1037,8 +1037,8 @@ Returns true if the intersections are successfully computed.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** GeomAPI_IntCS::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -1050,8 +1050,8 @@ Returns the number of intersection points if isdone returns true. else notdone i
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** NbSegments ******************/
-		/**** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ****/
+		/****** GeomAPI_IntCS::NbSegments ******/
+		/****** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -1063,8 +1063,8 @@ Returns the number of computed intersection segments in case of tangential inter
 ") NbSegments;
 		Standard_Integer NbSegments();
 
-		/****************** Parameters ******************/
-		/**** md5 signature: 36177eb42eb48aa94ff536cea1ae7c13 ****/
+		/****** GeomAPI_IntCS::Parameters ******/
+		/****** md5 signature: 36177eb42eb48aa94ff536cea1ae7c13 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1083,8 +1083,8 @@ Returns parameter w on the curve and (parameters u,v) on the surface of the comp
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Parameters ******************/
-		/**** md5 signature: 6f89f63d1628a1a0a52449e028c59bf0 ****/
+		/****** GeomAPI_IntCS::Parameters ******/
+		/****** md5 signature: 6f89f63d1628a1a0a52449e028c59bf0 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1104,8 +1104,8 @@ Returns the parameters of the first (u1,v1) and the last (u2,v2) points of curve
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 99d3460d4845c1186bfbed85af97b966 ****/
+		/****** GeomAPI_IntCS::Perform ******/
+		/****** md5 signature: 99d3460d4845c1186bfbed85af97b966 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1123,8 +1123,8 @@ This function initializes an algorithm with the curve c and the surface s and co
 ") Perform;
 		void Perform(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
-		/****************** Point ******************/
-		/**** md5 signature: ee1d88fa34d027a5da9aa36f1333c940 ****/
+		/****** GeomAPI_IntCS::Point ******/
+		/****** md5 signature: ee1d88fa34d027a5da9aa36f1333c940 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -1141,8 +1141,8 @@ Returns the intersection point of range <index>in case of cross intersection. ra
 ") Point;
 		const gp_Pnt Point(const Standard_Integer Index);
 
-		/****************** Segment ******************/
-		/**** md5 signature: a5a3725890b7c5a68d73d1fc8ad30c69 ****/
+		/****** GeomAPI_IntCS::Segment ******/
+		/****** md5 signature: a5a3725890b7c5a68d73d1fc8ad30c69 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
@@ -1173,8 +1173,8 @@ Returns the computed intersection segment of index index in case of tangential i
 **********************/
 class GeomAPI_IntSS {
 	public:
-		/****************** GeomAPI_IntSS ******************/
-		/**** md5 signature: 16b596a87a9a3dfbb4308a0fe15c86ea ****/
+		/****** GeomAPI_IntSS::GeomAPI_IntSS ******/
+		/****** md5 signature: 16b596a87a9a3dfbb4308a0fe15c86ea ******/
 		%feature("compactdefaultargs") GeomAPI_IntSS;
 		%feature("autodoc", "Return
 -------
@@ -1186,8 +1186,8 @@ Constructs an empty object. use the function perform for further initialization 
 ") GeomAPI_IntSS;
 		 GeomAPI_IntSS();
 
-		/****************** GeomAPI_IntSS ******************/
-		/**** md5 signature: 03033b28bd581f32a8ce9a9e2796ba8c ****/
+		/****** GeomAPI_IntSS::GeomAPI_IntSS ******/
+		/****** md5 signature: 03033b28bd581f32a8ce9a9e2796ba8c ******/
 		%feature("compactdefaultargs") GeomAPI_IntSS;
 		%feature("autodoc", "
 Parameters
@@ -1206,8 +1206,8 @@ Computes the intersection curves between the two surfaces s1 and s2. parameter t
 ") GeomAPI_IntSS;
 		 GeomAPI_IntSS(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real Tol);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomAPI_IntSS::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1219,8 +1219,8 @@ Returns true if the intersection was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Line ******************/
-		/**** md5 signature: 2500cd198cb3b23b6a306899bd784df3 ****/
+		/****** GeomAPI_IntSS::Line ******/
+		/****** md5 signature: 2500cd198cb3b23b6a306899bd784df3 ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "
 Parameters
@@ -1237,8 +1237,8 @@ Returns the computed intersection curve of index index. exceptions stdfail_notdo
 ") Line;
 		const opencascade::handle<Geom_Curve> & Line(const Standard_Integer Index);
 
-		/****************** NbLines ******************/
-		/**** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ****/
+		/****** GeomAPI_IntSS::NbLines ******/
+		/****** md5 signature: 4f8001fdc02f82f8f981f090a37ac7d4 ******/
 		%feature("compactdefaultargs") NbLines;
 		%feature("autodoc", "Return
 -------
@@ -1250,8 +1250,8 @@ Returns the number of computed intersection curves. exceptions stdfail_notdone i
 ") NbLines;
 		Standard_Integer NbLines();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 7d516f7f691f1d7f4f72ff6e7908b4f6 ****/
+		/****** GeomAPI_IntSS::Perform ******/
+		/****** md5 signature: 7d516f7f691f1d7f4f72ff6e7908b4f6 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1284,8 +1284,8 @@ Initializes an algorithm with the given arguments and computes the intersection 
 ****************************/
 class GeomAPI_Interpolate {
 	public:
-		/****************** GeomAPI_Interpolate ******************/
-		/**** md5 signature: 7bcbe68f50c152239bbd9f150f3ba779 ****/
+		/****** GeomAPI_Interpolate::GeomAPI_Interpolate ******/
+		/****** md5 signature: 7bcbe68f50c152239bbd9f150f3ba779 ******/
 		%feature("compactdefaultargs") GeomAPI_Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -1304,8 +1304,8 @@ Initializes an algorithm for constructing a constrained bspline curve passing th
 ") GeomAPI_Interpolate;
 		 GeomAPI_Interpolate(const opencascade::handle<TColgp_HArray1OfPnt> & Points, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
 
-		/****************** GeomAPI_Interpolate ******************/
-		/**** md5 signature: 68963c383e6700975a895834802b30d2 ****/
+		/****** GeomAPI_Interpolate::GeomAPI_Interpolate ******/
+		/****** md5 signature: 68963c383e6700975a895834802b30d2 ******/
 		%feature("compactdefaultargs") GeomAPI_Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -1325,8 +1325,8 @@ Initializes an algorithm for constructing a constrained bspline curve passing th
 ") GeomAPI_Interpolate;
 		 GeomAPI_Interpolate(const opencascade::handle<TColgp_HArray1OfPnt> & Points, const opencascade::handle<TColStd_HArray1OfReal> & Parameters, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
 
-		/****************** Curve ******************/
-		/**** md5 signature: c38eea3d03f43cd4ac9ae236a908e33c ****/
+		/****** GeomAPI_Interpolate::Curve ******/
+		/****** md5 signature: c38eea3d03f43cd4ac9ae236a908e33c ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -1338,8 +1338,8 @@ Returns the computed bspline curve. raises stdfail_notdone if the interpolation 
 ") Curve;
 		const opencascade::handle<Geom_BSplineCurve> & Curve();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomAPI_Interpolate::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1351,8 +1351,8 @@ Returns true if the constrained bspline curve is successfully constructed. note:
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Load ******************/
-		/**** md5 signature: 5d6d63d49911c50b81c3c2693d0463f3 ****/
+		/****** GeomAPI_Interpolate::Load ******/
+		/****** md5 signature: 5d6d63d49911c50b81c3c2693d0463f3 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -1371,8 +1371,8 @@ Assigns this constrained bspline curve to be tangential to vectors initialtangen
 ") Load;
 		void Load(const gp_Vec & InitialTangent, const gp_Vec & FinalTangent, const Standard_Boolean Scale = Standard_True);
 
-		/****************** Load ******************/
-		/**** md5 signature: 6e958e722c5b850819cfe62e39373686 ****/
+		/****** GeomAPI_Interpolate::Load ******/
+		/****** md5 signature: 6e958e722c5b850819cfe62e39373686 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -1391,8 +1391,8 @@ Assigns this constrained bspline curve to be tangential to vectors defined in th
 ") Load;
 		void Load(const TColgp_Array1OfVec & Tangents, const opencascade::handle<TColStd_HArray1OfBoolean> & TangentFlags, const Standard_Boolean Scale = Standard_True);
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** GeomAPI_Interpolate::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -1422,8 +1422,8 @@ Computes the constrained bspline curve. use the function isdone to verify that t
 ********************************/
 class GeomAPI_PointsToBSpline {
 	public:
-		/****************** GeomAPI_PointsToBSpline ******************/
-		/**** md5 signature: 3661034a8629c1e55ec2861e146bbee3 ****/
+		/****** GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline ******/
+		/****** md5 signature: 3661034a8629c1e55ec2861e146bbee3 ******/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSpline;
 		%feature("autodoc", "Return
 -------
@@ -1435,8 +1435,8 @@ Constructs an empty approximation algorithm. use an init function to define and 
 ") GeomAPI_PointsToBSpline;
 		 GeomAPI_PointsToBSpline();
 
-		/****************** GeomAPI_PointsToBSpline ******************/
-		/**** md5 signature: b8a5ae54f1e67503747f6b2d860b47e6 ****/
+		/****** GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline ******/
+		/****** md5 signature: b8a5ae54f1e67503747f6b2d860b47e6 ******/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -1457,8 +1457,8 @@ Approximate a bspline curve passing through an array of point. the resulting bsp
 ") GeomAPI_PointsToBSpline;
 		 GeomAPI_PointsToBSpline(const TColgp_Array1OfPnt & Points, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** GeomAPI_PointsToBSpline ******************/
-		/**** md5 signature: 7da5462d395829eab8cd8ed6f4046a35 ****/
+		/****** GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline ******/
+		/****** md5 signature: 7da5462d395829eab8cd8ed6f4046a35 ******/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -1480,8 +1480,8 @@ Approximate a bspline curve passing through an array of point. the resulting bsp
 ") GeomAPI_PointsToBSpline;
 		 GeomAPI_PointsToBSpline(const TColgp_Array1OfPnt & Points, const Approx_ParametrizationType ParType, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** GeomAPI_PointsToBSpline ******************/
-		/**** md5 signature: 7d01ef338620c57fb1891b75778cc30b ****/
+		/****** GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline ******/
+		/****** md5 signature: 7d01ef338620c57fb1891b75778cc30b ******/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -1503,8 +1503,8 @@ Approximate a bspline curve passing through an array of point, which parameters 
 ") GeomAPI_PointsToBSpline;
 		 GeomAPI_PointsToBSpline(const TColgp_Array1OfPnt & Points, const TColStd_Array1OfReal & Parameters, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** GeomAPI_PointsToBSpline ******************/
-		/**** md5 signature: 34963b1b863337c3d1e3741c4854bc6d ****/
+		/****** GeomAPI_PointsToBSpline::GeomAPI_PointsToBSpline ******/
+		/****** md5 signature: 34963b1b863337c3d1e3741c4854bc6d ******/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -1527,8 +1527,8 @@ Approximate a bspline curve passing through an array of point using variational 
 ") GeomAPI_PointsToBSpline;
 		 GeomAPI_PointsToBSpline(const TColgp_Array1OfPnt & Points, const Standard_Real Weight1, const Standard_Real Weight2, const Standard_Real Weight3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** Curve ******************/
-		/**** md5 signature: c38eea3d03f43cd4ac9ae236a908e33c ****/
+		/****** GeomAPI_PointsToBSpline::Curve ******/
+		/****** md5 signature: c38eea3d03f43cd4ac9ae236a908e33c ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -1540,8 +1540,8 @@ Returns the computed bspline curve. raises stdfail_notdone if the curve is not b
 ") Curve;
 		const opencascade::handle<Geom_BSplineCurve> & Curve();
 
-		/****************** Init ******************/
-		/**** md5 signature: 0cd0d010b8424c636f034852b958d965 ****/
+		/****** GeomAPI_PointsToBSpline::Init ******/
+		/****** md5 signature: 0cd0d010b8424c636f034852b958d965 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1562,8 +1562,8 @@ Approximate a bspline curve passing through an array of point. the resulting bsp
 ") Init;
 		void Init(const TColgp_Array1OfPnt & Points, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** Init ******************/
-		/**** md5 signature: df0a75860e09f776ab7b4929f1db91bd ****/
+		/****** GeomAPI_PointsToBSpline::Init ******/
+		/****** md5 signature: df0a75860e09f776ab7b4929f1db91bd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1585,8 +1585,8 @@ Approximate a bspline curve passing through an array of point. the resulting bsp
 ") Init;
 		void Init(const TColgp_Array1OfPnt & Points, const Approx_ParametrizationType ParType, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** Init ******************/
-		/**** md5 signature: b8b6478b2ccc511f9acaa21e6f643069 ****/
+		/****** GeomAPI_PointsToBSpline::Init ******/
+		/****** md5 signature: b8b6478b2ccc511f9acaa21e6f643069 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1608,8 +1608,8 @@ Approximate a bspline curve passing through an array of point, which parameters 
 ") Init;
 		void Init(const TColgp_Array1OfPnt & Points, const TColStd_Array1OfReal & Parameters, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** Init ******************/
-		/**** md5 signature: f1539dc955f00777d335dbbd5c371c15 ****/
+		/****** GeomAPI_PointsToBSpline::Init ******/
+		/****** md5 signature: f1539dc955f00777d335dbbd5c371c15 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1632,8 +1632,8 @@ Approximate a bspline curve passing through an array of point using variational 
 ") Init;
 		void Init(const TColgp_Array1OfPnt & Points, const Standard_Real Weight1, const Standard_Real Weight2, const Standard_Real Weight3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomAPI_PointsToBSpline::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1659,8 +1659,8 @@ No available documentation.
 ***************************************/
 class GeomAPI_PointsToBSplineSurface {
 	public:
-		/****************** GeomAPI_PointsToBSplineSurface ******************/
-		/**** md5 signature: 5e47f6c049e83fdf88c926c7208fb3ae ****/
+		/****** GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface ******/
+		/****** md5 signature: 5e47f6c049e83fdf88c926c7208fb3ae ******/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -1672,8 +1672,8 @@ Constructs an empty algorithm for approximation or interpolation of a surface. u
 ") GeomAPI_PointsToBSplineSurface;
 		 GeomAPI_PointsToBSplineSurface();
 
-		/****************** GeomAPI_PointsToBSplineSurface ******************/
-		/**** md5 signature: 89e4fef7b36ea0cc4809845df2ec0702 ****/
+		/****** GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface ******/
+		/****** md5 signature: 89e4fef7b36ea0cc4809845df2ec0702 ******/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -1694,8 +1694,8 @@ No available documentation.
 ") GeomAPI_PointsToBSplineSurface;
 		 GeomAPI_PointsToBSplineSurface(const TColgp_Array2OfPnt & Points, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** GeomAPI_PointsToBSplineSurface ******************/
-		/**** md5 signature: b06632372e631834dec233be4c6062b7 ****/
+		/****** GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface ******/
+		/****** md5 signature: b06632372e631834dec233be4c6062b7 ******/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -1717,8 +1717,8 @@ No available documentation.
 ") GeomAPI_PointsToBSplineSurface;
 		 GeomAPI_PointsToBSplineSurface(const TColgp_Array2OfPnt & Points, const Approx_ParametrizationType ParType, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** GeomAPI_PointsToBSplineSurface ******************/
-		/**** md5 signature: 0f92d967ca91e638ce16cb1de728d40e ****/
+		/****** GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface ******/
+		/****** md5 signature: 0f92d967ca91e638ce16cb1de728d40e ******/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -1741,8 +1741,8 @@ No available documentation.
 ") GeomAPI_PointsToBSplineSurface;
 		 GeomAPI_PointsToBSplineSurface(const TColgp_Array2OfPnt & Points, const Standard_Real Weight1, const Standard_Real Weight2, const Standard_Real Weight3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** GeomAPI_PointsToBSplineSurface ******************/
-		/**** md5 signature: 18c9dc77b1398b22b7b96c2894279ca8 ****/
+		/****** GeomAPI_PointsToBSplineSurface::GeomAPI_PointsToBSplineSurface ******/
+		/****** md5 signature: 18c9dc77b1398b22b7b96c2894279ca8 ******/
 		%feature("compactdefaultargs") GeomAPI_PointsToBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -1767,8 +1767,8 @@ No available documentation.
 ") GeomAPI_PointsToBSplineSurface;
 		 GeomAPI_PointsToBSplineSurface(const TColStd_Array2OfReal & ZPoints, const Standard_Real X0, const Standard_Real dX, const Standard_Real Y0, const Standard_Real dY, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** Init ******************/
-		/**** md5 signature: d1fe1adbe74945ffd2f0b0828c24cbba ****/
+		/****** GeomAPI_PointsToBSplineSurface::Init ******/
+		/****** md5 signature: d1fe1adbe74945ffd2f0b0828c24cbba ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1789,8 +1789,8 @@ No available documentation.
 ") Init;
 		void Init(const TColgp_Array2OfPnt & Points, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** Init ******************/
-		/**** md5 signature: 1f71893fa018098b5de546e2782bf809 ****/
+		/****** GeomAPI_PointsToBSplineSurface::Init ******/
+		/****** md5 signature: 1f71893fa018098b5de546e2782bf809 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1815,8 +1815,8 @@ No available documentation.
 ") Init;
 		void Init(const TColStd_Array2OfReal & ZPoints, const Standard_Real X0, const Standard_Real dX, const Standard_Real Y0, const Standard_Real dY, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** Init ******************/
-		/**** md5 signature: cbcc6dc6d8d95c3356809760518dbbe5 ****/
+		/****** GeomAPI_PointsToBSplineSurface::Init ******/
+		/****** md5 signature: cbcc6dc6d8d95c3356809760518dbbe5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1839,8 +1839,8 @@ No available documentation.
 ") Init;
 		void Init(const TColgp_Array2OfPnt & Points, const Approx_ParametrizationType ParType, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3, const Standard_Boolean thePeriodic = Standard_False);
 
-		/****************** Init ******************/
-		/**** md5 signature: b8b27b2e999215a80edec006fc879478 ****/
+		/****** GeomAPI_PointsToBSplineSurface::Init ******/
+		/****** md5 signature: b8b27b2e999215a80edec006fc879478 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1863,8 +1863,8 @@ No available documentation.
 ") Init;
 		void Init(const TColgp_Array2OfPnt & Points, const Standard_Real Weight1, const Standard_Real Weight2, const Standard_Real Weight3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** Interpolate ******************/
-		/**** md5 signature: 39a2fafd0536bd02290befa9647199e4 ****/
+		/****** GeomAPI_PointsToBSplineSurface::Interpolate ******/
+		/****** md5 signature: 39a2fafd0536bd02290befa9647199e4 ******/
 		%feature("compactdefaultargs") Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -1882,8 +1882,8 @@ No available documentation.
 ") Interpolate;
 		void Interpolate(const TColgp_Array2OfPnt & Points, const Standard_Boolean thePeriodic = Standard_False);
 
-		/****************** Interpolate ******************/
-		/**** md5 signature: bc163deb29fcb86c6c064c33384a7741 ****/
+		/****** GeomAPI_PointsToBSplineSurface::Interpolate ******/
+		/****** md5 signature: bc163deb29fcb86c6c064c33384a7741 ******/
 		%feature("compactdefaultargs") Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -1902,8 +1902,8 @@ No available documentation.
 ") Interpolate;
 		void Interpolate(const TColgp_Array2OfPnt & Points, const Approx_ParametrizationType ParType, const Standard_Boolean thePeriodic = Standard_False);
 
-		/****************** Interpolate ******************/
-		/**** md5 signature: 90cbcca9c810e9398c32dca0c12c513c ****/
+		/****** GeomAPI_PointsToBSplineSurface::Interpolate ******/
+		/****** md5 signature: 90cbcca9c810e9398c32dca0c12c513c ******/
 		%feature("compactdefaultargs") Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -1924,8 +1924,8 @@ No available documentation.
 ") Interpolate;
 		void Interpolate(const TColStd_Array2OfReal & ZPoints, const Standard_Real X0, const Standard_Real dX, const Standard_Real Y0, const Standard_Real dY);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomAPI_PointsToBSplineSurface::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1937,8 +1937,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 671a5de971e9a6baf08b4e111daa768f ****/
+		/****** GeomAPI_PointsToBSplineSurface::Surface ******/
+		/****** md5 signature: 671a5de971e9a6baf08b4e111daa768f ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -1964,8 +1964,8 @@ Returns the approximate bspline surface.
 ************************************/
 class GeomAPI_ProjectPointOnCurve {
 	public:
-		/****************** GeomAPI_ProjectPointOnCurve ******************/
-		/**** md5 signature: 69d2ff1a2c2a276bcd4ac63b780f962d ****/
+		/****** GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve ******/
+		/****** md5 signature: 69d2ff1a2c2a276bcd4ac63b780f962d ******/
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnCurve;
 		%feature("autodoc", "Return
 -------
@@ -1977,8 +1977,8 @@ Creates an empty object. use an init function for further initialization.
 ") GeomAPI_ProjectPointOnCurve;
 		 GeomAPI_ProjectPointOnCurve();
 
-		/****************** GeomAPI_ProjectPointOnCurve ******************/
-		/**** md5 signature: 98d2970e0388654e7771e359678049bb ****/
+		/****** GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve ******/
+		/****** md5 signature: 98d2970e0388654e7771e359678049bb ******/
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnCurve;
 		%feature("autodoc", "
 Parameters
@@ -1996,8 +1996,8 @@ Create the projection of a point <p> on a curve <curve>.
 ") GeomAPI_ProjectPointOnCurve;
 		 GeomAPI_ProjectPointOnCurve(const gp_Pnt & P, const opencascade::handle<Geom_Curve> & Curve);
 
-		/****************** GeomAPI_ProjectPointOnCurve ******************/
-		/**** md5 signature: 0cf3465d2e1ac87e9f07440abc59b2c4 ****/
+		/****** GeomAPI_ProjectPointOnCurve::GeomAPI_ProjectPointOnCurve ******/
+		/****** md5 signature: 0cf3465d2e1ac87e9f07440abc59b2c4 ******/
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnCurve;
 		%feature("autodoc", "
 Parameters
@@ -2017,8 +2017,8 @@ Create the projection of a point <p> on a curve <curve> limited by the two point
 ") GeomAPI_ProjectPointOnCurve;
 		 GeomAPI_ProjectPointOnCurve(const gp_Pnt & P, const opencascade::handle<Geom_Curve> & Curve, const Standard_Real Umin, const Standard_Real Usup);
 
-		/****************** Distance ******************/
-		/**** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ****/
+		/****** GeomAPI_ProjectPointOnCurve::Distance ******/
+		/****** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -2035,8 +2035,8 @@ Computes the distance between the point and its orthogonal projection on the cur
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
-		/****************** Extrema ******************/
-		/**** md5 signature: 2a2c7c9268b8bc0a62547ade486fcb4b ****/
+		/****** GeomAPI_ProjectPointOnCurve::Extrema ******/
+		/****** md5 signature: 2a2c7c9268b8bc0a62547ade486fcb4b ******/
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "Return
 -------
@@ -2048,8 +2048,8 @@ Return the algorithmic object from extrema.
 ") Extrema;
 		const Extrema_ExtPC & Extrema();
 
-		/****************** Init ******************/
-		/**** md5 signature: 584a6ccc485f9268fa6ad5924e296d14 ****/
+		/****** GeomAPI_ProjectPointOnCurve::Init ******/
+		/****** md5 signature: 584a6ccc485f9268fa6ad5924e296d14 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2067,8 +2067,8 @@ Init the projection of a point <p> on a curve <curve>.
 ") Init;
 		void Init(const gp_Pnt & P, const opencascade::handle<Geom_Curve> & Curve);
 
-		/****************** Init ******************/
-		/**** md5 signature: b368274eeebfa09906ebc42b43b184d7 ****/
+		/****** GeomAPI_ProjectPointOnCurve::Init ******/
+		/****** md5 signature: b368274eeebfa09906ebc42b43b184d7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2088,8 +2088,8 @@ Init the projection of a point <p> on a curve <curve> limited by the two points 
 ") Init;
 		void Init(const gp_Pnt & P, const opencascade::handle<Geom_Curve> & Curve, const Standard_Real Umin, const Standard_Real Usup);
 
-		/****************** Init ******************/
-		/**** md5 signature: 52a239c872679af14487eef439a0dfed ****/
+		/****** GeomAPI_ProjectPointOnCurve::Init ******/
+		/****** md5 signature: 52a239c872679af14487eef439a0dfed ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2108,8 +2108,8 @@ Init the projection of a point <p> on a curve <curve> limited by the two points 
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Curve, const Standard_Real Umin, const Standard_Real Usup);
 
-		/****************** LowerDistance ******************/
-		/**** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ****/
+		/****** GeomAPI_ProjectPointOnCurve::LowerDistance ******/
+		/****** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ******/
 		%feature("compactdefaultargs") LowerDistance;
 		%feature("autodoc", "Return
 -------
@@ -2121,8 +2121,8 @@ Computes the distance between the point and its nearest orthogonal projection on
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
-		/****************** LowerDistanceParameter ******************/
-		/**** md5 signature: d92357b64b8dcbaeedf932cd195aa800 ****/
+		/****** GeomAPI_ProjectPointOnCurve::LowerDistanceParameter ******/
+		/****** md5 signature: d92357b64b8dcbaeedf932cd195aa800 ******/
 		%feature("compactdefaultargs") LowerDistanceParameter;
 		%feature("autodoc", "Return
 -------
@@ -2134,8 +2134,8 @@ Returns the parameter on the curve of the nearest orthogonal projection of the p
 ") LowerDistanceParameter;
 		Standard_Real LowerDistanceParameter();
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** GeomAPI_ProjectPointOnCurve::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -2147,8 +2147,8 @@ Returns the number of computed orthogonal projection points. note: if this algor
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** NearestPoint ******************/
-		/**** md5 signature: 483270796058353f575fc5981b06215a ****/
+		/****** GeomAPI_ProjectPointOnCurve::NearestPoint ******/
+		/****** md5 signature: 483270796058353f575fc5981b06215a ******/
 		%feature("compactdefaultargs") NearestPoint;
 		%feature("autodoc", "Return
 -------
@@ -2160,8 +2160,8 @@ Returns the nearest orthogonal projection of the point on the curve. exceptions:
 ") NearestPoint;
 		gp_Pnt NearestPoint();
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 82ceab80f2b18ab921fa91f907001d9f ****/
+		/****** GeomAPI_ProjectPointOnCurve::Parameter ******/
+		/****** md5 signature: 82ceab80f2b18ab921fa91f907001d9f ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2178,8 +2178,8 @@ Returns the parameter on the curve of the point, which is the orthogonal project
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer Index);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 27513c7a9d44f786990664b216249792 ****/
+		/****** GeomAPI_ProjectPointOnCurve::Parameter ******/
+		/****** md5 signature: 27513c7a9d44f786990664b216249792 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2196,8 +2196,8 @@ Returns the parameter on the curve of the point, which is the orthogonal project
 ") Parameter;
 		void Parameter(const Standard_Integer Index, Standard_Real &OutValue);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ****/
+		/****** GeomAPI_ProjectPointOnCurve::Perform ******/
+		/****** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2214,8 +2214,8 @@ Performs the projection of a point on the current curve.
 ") Perform;
 		void Perform(const gp_Pnt & P);
 
-		/****************** Point ******************/
-		/**** md5 signature: 0851cb2dfd0f7363e8a8a289d2384c32 ****/
+		/****** GeomAPI_ProjectPointOnCurve::Point ******/
+		/****** md5 signature: 0851cb2dfd0f7363e8a8a289d2384c32 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -2246,8 +2246,8 @@ Returns the orthogonal projection on the curve. index is a number of a computed 
 ***********************************/
 class GeomAPI_ProjectPointOnSurf {
 	public:
-		/****************** GeomAPI_ProjectPointOnSurf ******************/
-		/**** md5 signature: fae07e2100bfda9b7082817f1e3bdc9e ****/
+		/****** GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf ******/
+		/****** md5 signature: fae07e2100bfda9b7082817f1e3bdc9e ******/
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnSurf;
 		%feature("autodoc", "Return
 -------
@@ -2259,8 +2259,8 @@ Creates an empty object. use the init function for further initialization.
 ") GeomAPI_ProjectPointOnSurf;
 		 GeomAPI_ProjectPointOnSurf();
 
-		/****************** GeomAPI_ProjectPointOnSurf ******************/
-		/**** md5 signature: 091b2414733bc45759b0163e7de1668a ****/
+		/****** GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf ******/
+		/****** md5 signature: 091b2414733bc45759b0163e7de1668a ******/
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnSurf;
 		%feature("autodoc", "
 Parameters
@@ -2279,8 +2279,8 @@ Create the projection of a point <p> on a surface <surface>.
 ") GeomAPI_ProjectPointOnSurf;
 		 GeomAPI_ProjectPointOnSurf(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
-		/****************** GeomAPI_ProjectPointOnSurf ******************/
-		/**** md5 signature: 6e639d1176f8d6c4cc9bfb034078690a ****/
+		/****** GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf ******/
+		/****** md5 signature: 6e639d1176f8d6c4cc9bfb034078690a ******/
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnSurf;
 		%feature("autodoc", "
 Parameters
@@ -2300,8 +2300,8 @@ Create the projection of a point <p> on a surface <surface> create the projectio
 ") GeomAPI_ProjectPointOnSurf;
 		 GeomAPI_ProjectPointOnSurf(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
-		/****************** GeomAPI_ProjectPointOnSurf ******************/
-		/**** md5 signature: 3500d152d98f28bb9d87698e6e6e033a ****/
+		/****** GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf ******/
+		/****** md5 signature: 3500d152d98f28bb9d87698e6e6e033a ******/
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnSurf;
 		%feature("autodoc", "
 Parameters
@@ -2325,8 +2325,8 @@ No available documentation.
 ") GeomAPI_ProjectPointOnSurf;
 		 GeomAPI_ProjectPointOnSurf(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
-		/****************** GeomAPI_ProjectPointOnSurf ******************/
-		/**** md5 signature: 1fbc9836447ce9275912797e7e0d6742 ****/
+		/****** GeomAPI_ProjectPointOnSurf::GeomAPI_ProjectPointOnSurf ******/
+		/****** md5 signature: 1fbc9836447ce9275912797e7e0d6742 ******/
 		%feature("compactdefaultargs") GeomAPI_ProjectPointOnSurf;
 		%feature("autodoc", "
 Parameters
@@ -2349,8 +2349,8 @@ Init the projection of a point <p> on a surface <surface>.
 ") GeomAPI_ProjectPointOnSurf;
 		 GeomAPI_ProjectPointOnSurf(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
-		/****************** Distance ******************/
-		/**** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ****/
+		/****** GeomAPI_ProjectPointOnSurf::Distance ******/
+		/****** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -2367,8 +2367,8 @@ Computes the distance between the point and its orthogonal projection on the sur
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
-		/****************** Extrema ******************/
-		/**** md5 signature: 5d88f4e1c84a05757ee93d4ab14118bb ****/
+		/****** GeomAPI_ProjectPointOnSurf::Extrema ******/
+		/****** md5 signature: 5d88f4e1c84a05757ee93d4ab14118bb ******/
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "Return
 -------
@@ -2380,8 +2380,8 @@ Return the algorithmic object from extrema.
 ") Extrema;
 		const Extrema_ExtPS & Extrema();
 
-		/****************** Init ******************/
-		/**** md5 signature: dcd62304e8a43273745da92105df5cb5 ****/
+		/****** GeomAPI_ProjectPointOnSurf::Init ******/
+		/****** md5 signature: dcd62304e8a43273745da92105df5cb5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2401,8 +2401,8 @@ No available documentation.
 ") Init;
 		void Init(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
-		/****************** Init ******************/
-		/**** md5 signature: da40c40255ca65231b6acdc32da0236d ****/
+		/****** GeomAPI_ProjectPointOnSurf::Init ******/
+		/****** md5 signature: da40c40255ca65231b6acdc32da0236d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2421,8 +2421,8 @@ Init the projection of a point <p> on a surface <surface>. the solution are comp
 ") Init;
 		void Init(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
-		/****************** Init ******************/
-		/**** md5 signature: 4ea17db8b6282bc904c5166687a5aa54 ****/
+		/****** GeomAPI_ProjectPointOnSurf::Init ******/
+		/****** md5 signature: 4ea17db8b6282bc904c5166687a5aa54 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2446,8 +2446,8 @@ No available documentation.
 ") Init;
 		void Init(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
-		/****************** Init ******************/
-		/**** md5 signature: bc9b77dc832b2ca0d6dc2423c06b1d9e ****/
+		/****** GeomAPI_ProjectPointOnSurf::Init ******/
+		/****** md5 signature: bc9b77dc832b2ca0d6dc2423c06b1d9e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2470,8 +2470,8 @@ Init the projection for many points on a surface <surface>. the solutions will b
 ") Init;
 		void Init(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
-		/****************** Init ******************/
-		/**** md5 signature: e929c11afc1134afecf9eff3467e4167 ****/
+		/****** GeomAPI_ProjectPointOnSurf::Init ******/
+		/****** md5 signature: e929c11afc1134afecf9eff3467e4167 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2494,8 +2494,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
-		/****************** Init ******************/
-		/**** md5 signature: c017d628907d680cc5e0a8343510d739 ****/
+		/****** GeomAPI_ProjectPointOnSurf::Init ******/
+		/****** md5 signature: c017d628907d680cc5e0a8343510d739 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2517,8 +2517,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomAPI_ProjectPointOnSurf::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2530,8 +2530,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** LowerDistance ******************/
-		/**** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ****/
+		/****** GeomAPI_ProjectPointOnSurf::LowerDistance ******/
+		/****** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ******/
 		%feature("compactdefaultargs") LowerDistance;
 		%feature("autodoc", "Return
 -------
@@ -2543,8 +2543,8 @@ Computes the distance between the point and its nearest orthogonal projection on
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
-		/****************** LowerDistanceParameters ******************/
-		/**** md5 signature: 170a67f317186c155b5ea34d87c8b23c ****/
+		/****** GeomAPI_ProjectPointOnSurf::LowerDistanceParameters ******/
+		/****** md5 signature: 170a67f317186c155b5ea34d87c8b23c ******/
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "
 Parameters
@@ -2561,8 +2561,8 @@ Returns the parameters (u,v) on the surface of the nearest computed orthogonal p
 ") LowerDistanceParameters;
 		void LowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** GeomAPI_ProjectPointOnSurf::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -2574,8 +2574,8 @@ Returns the number of computed orthogonal projection points. note: if projection
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** NearestPoint ******************/
-		/**** md5 signature: 483270796058353f575fc5981b06215a ****/
+		/****** GeomAPI_ProjectPointOnSurf::NearestPoint ******/
+		/****** md5 signature: 483270796058353f575fc5981b06215a ******/
 		%feature("compactdefaultargs") NearestPoint;
 		%feature("autodoc", "Return
 -------
@@ -2587,8 +2587,8 @@ Returns the nearest orthogonal projection of the point on the surface. exception
 ") NearestPoint;
 		gp_Pnt NearestPoint();
 
-		/****************** Parameters ******************/
-		/**** md5 signature: e9cd1a857a99bf64aba6fcfeffe41477 ****/
+		/****** GeomAPI_ProjectPointOnSurf::Parameters ******/
+		/****** md5 signature: e9cd1a857a99bf64aba6fcfeffe41477 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -2606,8 +2606,8 @@ Returns the parameters (u,v) on the surface of the orthogonal projection. index 
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ****/
+		/****** GeomAPI_ProjectPointOnSurf::Perform ******/
+		/****** md5 signature: 5f5e57fd55ba2b5f8e2b2be09861a3f9 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2624,8 +2624,8 @@ Performs the projection of a point on the current surface.
 ") Perform;
 		void Perform(const gp_Pnt & P);
 
-		/****************** Point ******************/
-		/**** md5 signature: 0851cb2dfd0f7363e8a8a289d2384c32 ****/
+		/****** GeomAPI_ProjectPointOnSurf::Point ******/
+		/****** md5 signature: 0851cb2dfd0f7363e8a8a289d2384c32 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -2642,8 +2642,8 @@ Returns the orthogonal projection on the surface. index is a number of a compute
 ") Point;
 		gp_Pnt Point(const Standard_Integer Index);
 
-		/****************** SetExtremaAlgo ******************/
-		/**** md5 signature: 271740dfa1218f60cc3b4e8b5cc1d298 ****/
+		/****** GeomAPI_ProjectPointOnSurf::SetExtremaAlgo ******/
+		/****** md5 signature: 271740dfa1218f60cc3b4e8b5cc1d298 ******/
 		%feature("compactdefaultargs") SetExtremaAlgo;
 		%feature("autodoc", "
 Parameters
@@ -2660,8 +2660,8 @@ Sets the extrema search algorithm - grad or tree. by default the extrema is init
 ") SetExtremaAlgo;
 		void SetExtremaAlgo(const Extrema_ExtAlgo theAlgo);
 
-		/****************** SetExtremaFlag ******************/
-		/**** md5 signature: 399fd1734b5c259e95e5285524e15a9e ****/
+		/****** GeomAPI_ProjectPointOnSurf::SetExtremaFlag ******/
+		/****** md5 signature: 399fd1734b5c259e95e5285524e15a9e ******/
 		%feature("compactdefaultargs") SetExtremaFlag;
 		%feature("autodoc", "
 Parameters

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TCOLLECTIONDOCSTRING
 "TCollection module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tcollection.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tcollection.html"
 %enddef
 %module (package="OCC.Core", docstring=TCOLLECTIONDOCSTRING) TCollection
 
@@ -82,8 +82,8 @@ from OCC.Core.Exception import *
 %rename(tcollection) TCollection;
 class TCollection {
 	public:
-		/****************** NextPrimeForMap ******************/
-		/**** md5 signature: 0dfc681e40254d86f9cdc0ca18fc6465 ****/
+		/****** TCollection::NextPrimeForMap ******/
+		/****** md5 signature: 0dfc681e40254d86f9cdc0ca18fc6465 ******/
 		%feature("compactdefaultargs") NextPrimeForMap;
 		%feature("autodoc", "
 Parameters
@@ -114,8 +114,8 @@ Returns a prime number greater than <i> suitable to dimension a map. when <i> be
 ********************************/
 class TCollection_AsciiString {
 	public:
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 7c1a066ad1f15d1f9e4970d0cc9d6e4a ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: 7c1a066ad1f15d1f9e4970d0cc9d6e4a ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "Return
 -------
@@ -127,8 +127,8 @@ Initializes a asciistring to an empty asciistring.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString();
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 135d18ae23acb187a270b5bebb114495 ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: 135d18ae23acb187a270b5bebb114495 ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -145,8 +145,8 @@ Initializes a asciistring with a cstring.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(Standard_CString message);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 0b4a61cbc31c5148ac8c8884319000a8 ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: 0b4a61cbc31c5148ac8c8884319000a8 ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -164,8 +164,8 @@ Initializes a asciistring with a cstring.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(Standard_CString message, const Standard_Integer aLen);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: c76f9a4d7837e8df9d9d777686c286ad ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: c76f9a4d7837e8df9d9d777686c286ad ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -182,8 +182,8 @@ Initializes a asciistring with a single character.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(const Standard_Character aChar);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: ac8ac9c34e424f0a9f52452a771d440e ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: ac8ac9c34e424f0a9f52452a771d440e ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -201,8 +201,8 @@ Initializes an asciistring with <length> space allocated. and filled with <fille
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(const Standard_Integer length, const Standard_Character filler);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 6ea42193d68d64c66ff9595865d41fa2 ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: 6ea42193d68d64c66ff9595865d41fa2 ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -219,8 +219,8 @@ Initializes an asciistring with an integer value.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(const Standard_Integer value);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 40bc8a32fcab9e618bc7d2797312c5fb ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: 40bc8a32fcab9e618bc7d2797312c5fb ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -237,8 +237,8 @@ Initializes an asciistring with a real value.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(const Standard_Real value);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: d439edb5fae7d01519169243251c80e0 ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: d439edb5fae7d01519169243251c80e0 ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -255,8 +255,8 @@ Initializes a asciistring with another asciistring.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_AsciiString astring);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 867cfae82c6e1128bdc8e781dba235d1 ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: 867cfae82c6e1128bdc8e781dba235d1 ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -273,8 +273,8 @@ Move constructor.
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_AsciiString & theOther);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 3701982dde49508c3c592490ddafa417 ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: 3701982dde49508c3c592490ddafa417 ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -292,8 +292,8 @@ Initializes a asciistring with copy of another asciistring concatenated with the
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_AsciiString astring, const Standard_Character message);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 44c9f121d97b6fb21cd7dad01b6b7a8c ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: 44c9f121d97b6fb21cd7dad01b6b7a8c ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -311,8 +311,8 @@ Initializes a asciistring with copy of another asciistring concatenated with the
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_AsciiString astring, Standard_CString message);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: bb44c125f566bd0a6db18f2d65d50b07 ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: bb44c125f566bd0a6db18f2d65d50b07 ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -330,8 +330,8 @@ Initializes a asciistring with copy of another asciistring concatenated with the
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_AsciiString astring, TCollection_AsciiString message);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 31b9469f567d9991529cd4b23f00ac83 ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: 31b9469f567d9991529cd4b23f00ac83 ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -349,8 +349,8 @@ Creation by converting an extended string to an ascii string. if replacenonascii
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(TCollection_ExtendedString astring, const Standard_Character replaceNonAscii = 0);
 
-		/****************** TCollection_AsciiString ******************/
-		/**** md5 signature: 46a263c7e61324a58d93619d06999b79 ****/
+		/****** TCollection_AsciiString::TCollection_AsciiString ******/
+		/****** md5 signature: 46a263c7e61324a58d93619d06999b79 ******/
 		%feature("compactdefaultargs") TCollection_AsciiString;
 		%feature("autodoc", "
 Parameters
@@ -367,8 +367,8 @@ Initialize utf-8 unicode string from wide-char string considering it as unicode 
 ") TCollection_AsciiString;
 		 TCollection_AsciiString(const Standard_WideChar * theStringUtf);
 
-		/****************** AssignCat ******************/
-		/**** md5 signature: 032704fd5f4807295e4f5499561766ac ****/
+		/****** TCollection_AsciiString::AssignCat ******/
+		/****** md5 signature: 032704fd5f4807295e4f5499561766ac ******/
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "
 Parameters
@@ -385,8 +385,8 @@ Appends <other> to me. this is an unary operator.
 ") AssignCat;
 		void AssignCat(const Standard_Character other);
 
-		/****************** AssignCat ******************/
-		/**** md5 signature: 82098ca4ee607bf2ba1a3db82e13f9c3 ****/
+		/****** TCollection_AsciiString::AssignCat ******/
+		/****** md5 signature: 82098ca4ee607bf2ba1a3db82e13f9c3 ******/
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "
 Parameters
@@ -403,8 +403,8 @@ Appends <other> to me. this is an unary operator.
 ") AssignCat;
 		void AssignCat(const Standard_Integer other);
 
-		/****************** AssignCat ******************/
-		/**** md5 signature: 1d503770d54fae31f79d0c21698426d6 ****/
+		/****** TCollection_AsciiString::AssignCat ******/
+		/****** md5 signature: 1d503770d54fae31f79d0c21698426d6 ******/
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "
 Parameters
@@ -421,8 +421,8 @@ Appends <other> to me. this is an unary operator.
 ") AssignCat;
 		void AssignCat(const Standard_Real other);
 
-		/****************** AssignCat ******************/
-		/**** md5 signature: 9849afa3e69d6647b6944a08249da1bc ****/
+		/****** TCollection_AsciiString::AssignCat ******/
+		/****** md5 signature: 9849afa3e69d6647b6944a08249da1bc ******/
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "
 Parameters
@@ -439,8 +439,8 @@ Appends <other> to me. this is an unary operator. ex: astring += 'dummy' to cate
 ") AssignCat;
 		void AssignCat(Standard_CString other);
 
-		/****************** AssignCat ******************/
-		/**** md5 signature: 12a811c23be8ca554c4c1787ef331f49 ****/
+		/****** TCollection_AsciiString::AssignCat ******/
+		/****** md5 signature: 12a811c23be8ca554c4c1787ef331f49 ******/
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "
 Parameters
@@ -457,8 +457,8 @@ Appends <other> to me. this is an unary operator. example: astring += anotherstr
 ") AssignCat;
 		void AssignCat(TCollection_AsciiString other);
 
-		/****************** Capitalize ******************/
-		/**** md5 signature: dbcb7ca2711d8c69ac14d5c2510a8e32 ****/
+		/****** TCollection_AsciiString::Capitalize ******/
+		/****** md5 signature: dbcb7ca2711d8c69ac14d5c2510a8e32 ******/
 		%feature("compactdefaultargs") Capitalize;
 		%feature("autodoc", "Return
 -------
@@ -470,8 +470,8 @@ Converts the first character into its corresponding upper-case character and the
 ") Capitalize;
 		void Capitalize();
 
-		/****************** Cat ******************/
-		/**** md5 signature: 720ec12f6f886119f42cb37656023d33 ****/
+		/****** TCollection_AsciiString::Cat ******/
+		/****** md5 signature: 720ec12f6f886119f42cb37656023d33 ******/
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "
 Parameters
@@ -488,8 +488,8 @@ Appends <other> to me. syntax: astring = astring + 'dummy' example: astring cont
 ") Cat;
 		TCollection_AsciiString Cat(const Standard_Character other);
 
-		/****************** Cat ******************/
-		/**** md5 signature: 2cedbc07ffcc6a63b8c2c336ba864cda ****/
+		/****** TCollection_AsciiString::Cat ******/
+		/****** md5 signature: 2cedbc07ffcc6a63b8c2c336ba864cda ******/
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "
 Parameters
@@ -506,8 +506,8 @@ Appends <other> to me. syntax: astring = astring + 15; example: astring contains
 ") Cat;
 		TCollection_AsciiString Cat(const Standard_Integer other);
 
-		/****************** Cat ******************/
-		/**** md5 signature: b2f7915688c3403f36496c45b92a99fd ****/
+		/****** TCollection_AsciiString::Cat ******/
+		/****** md5 signature: b2f7915688c3403f36496c45b92a99fd ******/
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "
 Parameters
@@ -524,8 +524,8 @@ Appends <other> to me. syntax: astring = astring + 15.15; example: astring conta
 ") Cat;
 		TCollection_AsciiString Cat(const Standard_Real other);
 
-		/****************** Cat ******************/
-		/**** md5 signature: b73eafb48dc022960f3538e3e917ac4d ****/
+		/****** TCollection_AsciiString::Cat ******/
+		/****** md5 signature: b73eafb48dc022960f3538e3e917ac4d ******/
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "
 Parameters
@@ -542,8 +542,8 @@ Appends <other> to me. syntax: astring = astring + 'dummy' example: astring cont
 ") Cat;
 		TCollection_AsciiString Cat(Standard_CString other);
 
-		/****************** Cat ******************/
-		/**** md5 signature: d1cb84236f8c7dbaf11738768fd665c5 ****/
+		/****** TCollection_AsciiString::Cat ******/
+		/****** md5 signature: d1cb84236f8c7dbaf11738768fd665c5 ******/
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "
 Parameters
@@ -560,8 +560,8 @@ Appends <other> to me. example: astring = astring + anotherstring.
 ") Cat;
 		TCollection_AsciiString Cat(TCollection_AsciiString other);
 
-		/****************** Center ******************/
-		/**** md5 signature: 2b5029e050de2f7db9db4538a961c189 ****/
+		/****** TCollection_AsciiString::Center ******/
+		/****** md5 signature: 2b5029e050de2f7db9db4538a961c189 ******/
 		%feature("compactdefaultargs") Center;
 		%feature("autodoc", "
 Parameters
@@ -579,8 +579,8 @@ Modifies this ascii string so that its length becomes equal to width and the new
 ") Center;
 		void Center(const Standard_Integer Width, const Standard_Character Filler);
 
-		/****************** ChangeAll ******************/
-		/**** md5 signature: 2a8248c4e2acd40c1b84a1410fcc9575 ****/
+		/****** TCollection_AsciiString::ChangeAll ******/
+		/****** md5 signature: 2a8248c4e2acd40c1b84a1410fcc9575 ******/
 		%feature("compactdefaultargs") ChangeAll;
 		%feature("autodoc", "
 Parameters
@@ -599,8 +599,8 @@ Substitutes all the characters equal to achar by newchar in the asciistring <sel
 ") ChangeAll;
 		void ChangeAll(const Standard_Character aChar, const Standard_Character NewChar, const Standard_Boolean CaseSensitive = Standard_True);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TCollection_AsciiString::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -612,8 +612,8 @@ Removes all characters contained in <self>. this produces an empty asciistring.
 ") Clear;
 		void Clear();
 
-		/****************** Copy ******************/
-		/**** md5 signature: 076c372aeb5fe373284a21ffc9742cac ****/
+		/****** TCollection_AsciiString::Copy ******/
+		/****** md5 signature: 076c372aeb5fe373284a21ffc9742cac ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -630,8 +630,8 @@ Copy <fromwhere> to <self>. used as operator = example: astring = anothercstring
 ") Copy;
 		void Copy(Standard_CString fromwhere);
 
-		/****************** Copy ******************/
-		/**** md5 signature: f86e884387420e2c343398e6f0d1e0e6 ****/
+		/****** TCollection_AsciiString::Copy ******/
+		/****** md5 signature: f86e884387420e2c343398e6f0d1e0e6 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -648,8 +648,8 @@ Copy <fromwhere> to <self>. used as operator = example: astring = anotherstring;
 ") Copy;
 		void Copy(TCollection_AsciiString fromwhere);
 
-		/****************** EndsWith ******************/
-		/**** md5 signature: 14b6bb9d2f7c65ed6e9fb15a44705817 ****/
+		/****** TCollection_AsciiString::EndsWith ******/
+		/****** md5 signature: 14b6bb9d2f7c65ed6e9fb15a44705817 ******/
 		%feature("compactdefaultargs") EndsWith;
 		%feature("autodoc", "
 Parameters
@@ -666,8 +666,8 @@ Determines whether the end of this string instance matches the specified string.
 ") EndsWith;
 		Standard_Boolean EndsWith(TCollection_AsciiString theEndString);
 
-		/****************** FirstLocationInSet ******************/
-		/**** md5 signature: 95e8a699938630e9f642f2b7637f974c ****/
+		/****** TCollection_AsciiString::FirstLocationInSet ******/
+		/****** md5 signature: 95e8a699938630e9f642f2b7637f974c ******/
 		%feature("compactdefaultargs") FirstLocationInSet;
 		%feature("autodoc", "
 Parameters
@@ -686,8 +686,8 @@ Returns the index of the first character of <self> that is present in <set>. the
 ") FirstLocationInSet;
 		Standard_Integer FirstLocationInSet(TCollection_AsciiString Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
-		/****************** FirstLocationNotInSet ******************/
-		/**** md5 signature: cd3e9292963c2e9cbccef2a16bba30d8 ****/
+		/****** TCollection_AsciiString::FirstLocationNotInSet ******/
+		/****** md5 signature: cd3e9292963c2e9cbccef2a16bba30d8 ******/
 		%feature("compactdefaultargs") FirstLocationNotInSet;
 		%feature("autodoc", "
 Parameters
@@ -706,8 +706,8 @@ Returns the index of the first character of <self> that is not present in the se
 ") FirstLocationNotInSet;
 		Standard_Integer FirstLocationNotInSet(TCollection_AsciiString Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
-		/****************** HashCode ******************/
-		/**** md5 signature: 06b666a7ce1ccd2c4e4b4282e54344e0 ****/
+		/****** TCollection_AsciiString::HashCode ******/
+		/****** md5 signature: 06b666a7ce1ccd2c4e4b4282e54344e0 ******/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Return
 -------
@@ -719,8 +719,8 @@ Computes a hash code for the given ascii string returns the same integer value a
 ") HashCode;
 		size_t HashCode();
 
-		/****************** Insert ******************/
-		/**** md5 signature: 7904375fda1b58849d10a2c96c86615b ****/
+		/****** TCollection_AsciiString::Insert ******/
+		/****** md5 signature: 7904375fda1b58849d10a2c96c86615b ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -738,8 +738,8 @@ Inserts a character at position <where>. example: astring contains 'hy not ?' as
 ") Insert;
 		void Insert(const Standard_Integer where, const Standard_Character what);
 
-		/****************** Insert ******************/
-		/**** md5 signature: 975088e505e1c924bd1ef576e9371efb ****/
+		/****** TCollection_AsciiString::Insert ******/
+		/****** md5 signature: 975088e505e1c924bd1ef576e9371efb ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -757,8 +757,8 @@ Inserts a cstring at position <where>. example: astring contains 'o more' astrin
 ") Insert;
 		void Insert(const Standard_Integer where, Standard_CString what);
 
-		/****************** Insert ******************/
-		/**** md5 signature: 594a8d885f4dcbedf56a6f6f1a4b4fb3 ****/
+		/****** TCollection_AsciiString::Insert ******/
+		/****** md5 signature: 594a8d885f4dcbedf56a6f6f1a4b4fb3 ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -776,8 +776,8 @@ Inserts a asciistring at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, TCollection_AsciiString what);
 
-		/****************** InsertAfter ******************/
-		/**** md5 signature: 54235567163d784600660f2242e1209d ****/
+		/****** TCollection_AsciiString::InsertAfter ******/
+		/****** md5 signature: 54235567163d784600660f2242e1209d ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
@@ -795,8 +795,8 @@ Pushing a string after a specific index in the string <self>. raises an exceptio
 ") InsertAfter;
 		void InsertAfter(const Standard_Integer Index, TCollection_AsciiString other);
 
-		/****************** InsertBefore ******************/
-		/**** md5 signature: 5a9fdac4a173310f1deb7c408e2944be ****/
+		/****** TCollection_AsciiString::InsertBefore ******/
+		/****** md5 signature: 5a9fdac4a173310f1deb7c408e2944be ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -814,8 +814,8 @@ Pushing a string before a specific index in the string <self>. raises an excepti
 ") InsertBefore;
 		void InsertBefore(const Standard_Integer Index, TCollection_AsciiString other);
 
-		/****************** IntegerValue ******************/
-		/**** md5 signature: a75e1a4c2632a55658f0262c4c2f22c2 ****/
+		/****** TCollection_AsciiString::IntegerValue ******/
+		/****** md5 signature: a75e1a4c2632a55658f0262c4c2f22c2 ******/
 		%feature("compactdefaultargs") IntegerValue;
 		%feature("autodoc", "Return
 -------
@@ -827,8 +827,8 @@ Converts a asciistring containing a numeric expression to an integer. example: '
 ") IntegerValue;
 		Standard_Integer IntegerValue();
 
-		/****************** IsAscii ******************/
-		/**** md5 signature: 6f7276b908dd6009ce0fd19db811821c ****/
+		/****** TCollection_AsciiString::IsAscii ******/
+		/****** md5 signature: 6f7276b908dd6009ce0fd19db811821c ******/
 		%feature("compactdefaultargs") IsAscii;
 		%feature("autodoc", "Return
 -------
@@ -840,8 +840,8 @@ Returns true if the asciistring contains only ascii characters between ' ' and '
 ") IsAscii;
 		Standard_Boolean IsAscii();
 
-		/****************** IsDifferent ******************/
-		/**** md5 signature: 4b726ecf99ce8463de5be1dcc91c7b28 ****/
+		/****** TCollection_AsciiString::IsDifferent ******/
+		/****** md5 signature: 4b726ecf99ce8463de5be1dcc91c7b28 ******/
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "
 Parameters
@@ -858,8 +858,8 @@ Returns true if there are differences between the characters in this ascii strin
 ") IsDifferent;
 		Standard_Boolean IsDifferent(Standard_CString other);
 
-		/****************** IsDifferent ******************/
-		/**** md5 signature: 468bebc984675a3b3d0a634f51ab1605 ****/
+		/****** TCollection_AsciiString::IsDifferent ******/
+		/****** md5 signature: 468bebc984675a3b3d0a634f51ab1605 ******/
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "
 Parameters
@@ -876,8 +876,8 @@ Returns true if there are differences between the characters in this ascii strin
 ") IsDifferent;
 		Standard_Boolean IsDifferent(TCollection_AsciiString other);
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
+		/****** TCollection_AsciiString::IsEmpty ******/
+		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -889,8 +889,8 @@ Returns true if the string <self> contains zero character.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: cd22ecfb81d5c0c734149099758d0061 ****/
+		/****** TCollection_AsciiString::IsEqual ******/
+		/****** md5 signature: cd22ecfb81d5c0c734149099758d0061 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -907,8 +907,8 @@ Returns true if the characters in this ascii string are identical to the charact
 ") IsEqual;
 		Standard_Boolean IsEqual(Standard_CString other);
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: 193e634776bafa3e4f441e6722a21399 ****/
+		/****** TCollection_AsciiString::IsEqual ******/
+		/****** md5 signature: 193e634776bafa3e4f441e6722a21399 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -925,8 +925,8 @@ Returns true if the characters in this ascii string are identical to the charact
 ") IsEqual;
 		Standard_Boolean IsEqual(TCollection_AsciiString other);
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: 5a9ec37f0ad7ada730b5d2dffb3c24c7 ****/
+		/****** TCollection_AsciiString::IsEqual ******/
+		/****** md5 signature: 5a9ec37f0ad7ada730b5d2dffb3c24c7 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -944,8 +944,8 @@ Returns true when the two strings are the same. (just for hashcode for asciistri
 ") IsEqual;
 		static Standard_Boolean IsEqual(TCollection_AsciiString string1, TCollection_AsciiString string2);
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: 7c609f6832978b47418a4e8af7502c2f ****/
+		/****** TCollection_AsciiString::IsEqual ******/
+		/****** md5 signature: 7c609f6832978b47418a4e8af7502c2f ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -963,8 +963,8 @@ Returns true when the two strings are the same. (just for hashcode for asciistri
 ") IsEqual;
 		static Standard_Boolean IsEqual(TCollection_AsciiString string1, Standard_CString string2);
 
-		/****************** IsGreater ******************/
-		/**** md5 signature: d66794d426c77c31bfa16e28bf61d9a1 ****/
+		/****** TCollection_AsciiString::IsGreater ******/
+		/****** md5 signature: d66794d426c77c31bfa16e28bf61d9a1 ******/
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "
 Parameters
@@ -981,8 +981,8 @@ Returns true if <self> is 'ascii' greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(Standard_CString other);
 
-		/****************** IsGreater ******************/
-		/**** md5 signature: c1f84b8c3d802188b31dd64562f94b92 ****/
+		/****** TCollection_AsciiString::IsGreater ******/
+		/****** md5 signature: c1f84b8c3d802188b31dd64562f94b92 ******/
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "
 Parameters
@@ -999,8 +999,8 @@ Returns true if <self> is 'ascii' greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(TCollection_AsciiString other);
 
-		/****************** IsIntegerValue ******************/
-		/**** md5 signature: 621b664205e9bc7af1bfe940b363e7dc ****/
+		/****** TCollection_AsciiString::IsIntegerValue ******/
+		/****** md5 signature: 621b664205e9bc7af1bfe940b363e7dc ******/
 		%feature("compactdefaultargs") IsIntegerValue;
 		%feature("autodoc", "Return
 -------
@@ -1012,8 +1012,8 @@ Returns true if the asciistring contains an integer value. note: an integer valu
 ") IsIntegerValue;
 		Standard_Boolean IsIntegerValue();
 
-		/****************** IsLess ******************/
-		/**** md5 signature: 20e867e0a6038fba535050dcfb211004 ****/
+		/****** TCollection_AsciiString::IsLess ******/
+		/****** md5 signature: 20e867e0a6038fba535050dcfb211004 ******/
 		%feature("compactdefaultargs") IsLess;
 		%feature("autodoc", "
 Parameters
@@ -1030,8 +1030,8 @@ Returns true if <self> is 'ascii' less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(Standard_CString other);
 
-		/****************** IsLess ******************/
-		/**** md5 signature: 8f3421d6aef0b4f85432c3254bb3b2b8 ****/
+		/****** TCollection_AsciiString::IsLess ******/
+		/****** md5 signature: 8f3421d6aef0b4f85432c3254bb3b2b8 ******/
 		%feature("compactdefaultargs") IsLess;
 		%feature("autodoc", "
 Parameters
@@ -1048,8 +1048,8 @@ Returns true if <self> is 'ascii' less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(TCollection_AsciiString other);
 
-		/****************** IsRealValue ******************/
-		/**** md5 signature: 3455e68cf132006275afbfe41b3e332b ****/
+		/****** TCollection_AsciiString::IsRealValue ******/
+		/****** md5 signature: 3455e68cf132006275afbfe41b3e332b ******/
 		%feature("compactdefaultargs") IsRealValue;
 		%feature("autodoc", "
 Parameters
@@ -1066,8 +1066,8 @@ Returns true if the asciistring starts with some characters that can be interpre
 ") IsRealValue;
 		Standard_Boolean IsRealValue(Standard_Boolean theToCheckFull = Standard_False);
 
-		/****************** IsSameString ******************/
-		/**** md5 signature: c1d604c9c70a25aef5035beb6698a7da ****/
+		/****** TCollection_AsciiString::IsSameString ******/
+		/****** md5 signature: c1d604c9c70a25aef5035beb6698a7da ******/
 		%feature("compactdefaultargs") IsSameString;
 		%feature("autodoc", "
 Parameters
@@ -1086,8 +1086,8 @@ Returns true if the strings contain same characters.
 ") IsSameString;
 		static Standard_Boolean IsSameString(TCollection_AsciiString theString1, TCollection_AsciiString theString2, const Standard_Boolean theIsCaseSensitive);
 
-		/****************** LeftAdjust ******************/
-		/**** md5 signature: 2d194519f25a34b81a2aaed2f3fcf7eb ****/
+		/****** TCollection_AsciiString::LeftAdjust ******/
+		/****** md5 signature: 2d194519f25a34b81a2aaed2f3fcf7eb ******/
 		%feature("compactdefaultargs") LeftAdjust;
 		%feature("autodoc", "Return
 -------
@@ -1099,8 +1099,8 @@ Removes all space characters in the beginning of the string.
 ") LeftAdjust;
 		void LeftAdjust();
 
-		/****************** LeftJustify ******************/
-		/**** md5 signature: f4c95778466eb547829fbab21c8a7823 ****/
+		/****** TCollection_AsciiString::LeftJustify ******/
+		/****** md5 signature: f4c95778466eb547829fbab21c8a7823 ******/
 		%feature("compactdefaultargs") LeftJustify;
 		%feature("autodoc", "
 Parameters
@@ -1118,8 +1118,8 @@ Left justify length becomes equal to width and the new characters are equal to f
 ") LeftJustify;
 		void LeftJustify(const Standard_Integer Width, const Standard_Character Filler);
 
-		/****************** Length ******************/
-		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
+		/****** TCollection_AsciiString::Length ******/
+		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -1131,8 +1131,8 @@ Returns number of characters in <self>. this is the same functionality as 'strle
 ") Length;
 		Standard_Integer Length();
 
-		/****************** Location ******************/
-		/**** md5 signature: b7df9b412181c7ea45c2f5f147569013 ****/
+		/****** TCollection_AsciiString::Location ******/
+		/****** md5 signature: b7df9b412181c7ea45c2f5f147569013 ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
@@ -1151,8 +1151,8 @@ Returns an index in the string <self> of the first occurrence of the string s in
 ") Location;
 		Standard_Integer Location(TCollection_AsciiString other, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
-		/****************** Location ******************/
-		/**** md5 signature: 6bebd5959426436339306c497d79377d ****/
+		/****** TCollection_AsciiString::Location ******/
+		/****** md5 signature: 6bebd5959426436339306c497d79377d ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
@@ -1172,8 +1172,8 @@ Returns the index of the nth occurrence of the character c in the string <self> 
 ") Location;
 		Standard_Integer Location(const Standard_Integer N, const Standard_Character C, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
-		/****************** LowerCase ******************/
-		/**** md5 signature: 3a5c616bcb477647273ba31ea4d4dd76 ****/
+		/****** TCollection_AsciiString::LowerCase ******/
+		/****** md5 signature: 3a5c616bcb477647273ba31ea4d4dd76 ******/
 		%feature("compactdefaultargs") LowerCase;
 		%feature("autodoc", "Return
 -------
@@ -1185,8 +1185,8 @@ Converts <self> to its lower-case equivalent. example tcollection_asciistring my
 ") LowerCase;
 		void LowerCase();
 
-		/****************** Prepend ******************/
-		/**** md5 signature: 1a5269fcdee6cb93b42318d718147b72 ****/
+		/****** TCollection_AsciiString::Prepend ******/
+		/****** md5 signature: 1a5269fcdee6cb93b42318d718147b72 ******/
 		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "
 Parameters
@@ -1203,8 +1203,8 @@ Inserts the string other at the beginning of this ascii string. example tcollect
 ") Prepend;
 		void Prepend(TCollection_AsciiString other);
 
-		/****************** Print ******************/
-		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		/****** TCollection_AsciiString::Print ******/
+		/****** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -1220,8 +1220,8 @@ Displays <self> on a stream.
 ") Print;
 		void Print(std::ostream &OutValue);
 
-		/****************** Read ******************/
-		/**** md5 signature: e0872b647041ae5015cfaa77802dd596 ****/
+		/****** TCollection_AsciiString::Read ******/
+		/****** md5 signature: e0872b647041ae5015cfaa77802dd596 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -1238,8 +1238,8 @@ Read <self> from a stream.
 ") Read;
 		void Read(std::istream & astream);
 
-		/****************** RealValue ******************/
-		/**** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ****/
+		/****** TCollection_AsciiString::RealValue ******/
+		/****** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ******/
 		%feature("compactdefaultargs") RealValue;
 		%feature("autodoc", "Return
 -------
@@ -1251,8 +1251,8 @@ Converts an asciistring containing a numeric expression. to a real. example: ex:
 ") RealValue;
 		Standard_Real RealValue();
 
-		/****************** Remove ******************/
-		/**** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ****/
+		/****** TCollection_AsciiString::Remove ******/
+		/****** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -1270,8 +1270,8 @@ Erases <ahowmany> characters from position <where>, <where> included. example: a
 ") Remove;
 		void Remove(const Standard_Integer where, const Standard_Integer ahowmany = 1);
 
-		/****************** RemoveAll ******************/
-		/**** md5 signature: 17e901953b8ffee8fc2a18f2cc4c7ebe ****/
+		/****** TCollection_AsciiString::RemoveAll ******/
+		/****** md5 signature: 17e901953b8ffee8fc2a18f2cc4c7ebe ******/
 		%feature("compactdefaultargs") RemoveAll;
 		%feature("autodoc", "
 Parameters
@@ -1289,8 +1289,8 @@ Remove all the occurrences of the character c in the string. example: before me 
 ") RemoveAll;
 		void RemoveAll(const Standard_Character C, const Standard_Boolean CaseSensitive);
 
-		/****************** RemoveAll ******************/
-		/**** md5 signature: e42d8d7a2a77ebc16d192f0c2bf85d1b ****/
+		/****** TCollection_AsciiString::RemoveAll ******/
+		/****** md5 signature: e42d8d7a2a77ebc16d192f0c2bf85d1b ******/
 		%feature("compactdefaultargs") RemoveAll;
 		%feature("autodoc", "
 Parameters
@@ -1307,8 +1307,8 @@ Removes every <what> characters from <self>.
 ") RemoveAll;
 		void RemoveAll(const Standard_Character what);
 
-		/****************** RightAdjust ******************/
-		/**** md5 signature: 4ad2bf7860ba51d9ab208488c573dee8 ****/
+		/****** TCollection_AsciiString::RightAdjust ******/
+		/****** md5 signature: 4ad2bf7860ba51d9ab208488c573dee8 ******/
 		%feature("compactdefaultargs") RightAdjust;
 		%feature("autodoc", "Return
 -------
@@ -1320,8 +1320,8 @@ Removes all space characters at the end of the string.
 ") RightAdjust;
 		void RightAdjust();
 
-		/****************** RightJustify ******************/
-		/**** md5 signature: a19b8ecc125efa5d7ffd1fc7614c4325 ****/
+		/****** TCollection_AsciiString::RightJustify ******/
+		/****** md5 signature: a19b8ecc125efa5d7ffd1fc7614c4325 ******/
 		%feature("compactdefaultargs") RightJustify;
 		%feature("autodoc", "
 Parameters
@@ -1339,8 +1339,8 @@ Right justify. length becomes equal to width and the new characters are equal to
 ") RightJustify;
 		void RightJustify(const Standard_Integer Width, const Standard_Character Filler);
 
-		/****************** Search ******************/
-		/**** md5 signature: ac4c7603fbad57da665e9bcec3af7cc7 ****/
+		/****** TCollection_AsciiString::Search ******/
+		/****** md5 signature: ac4c7603fbad57da665e9bcec3af7cc7 ******/
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "
 Parameters
@@ -1357,8 +1357,8 @@ Searches a cstring in <self> from the beginning and returns position of first it
 ") Search;
 		Standard_Integer Search(Standard_CString what);
 
-		/****************** Search ******************/
-		/**** md5 signature: 77f3592dabaaab77a5508c4516e7237d ****/
+		/****** TCollection_AsciiString::Search ******/
+		/****** md5 signature: 77f3592dabaaab77a5508c4516e7237d ******/
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "
 Parameters
@@ -1375,8 +1375,8 @@ Searches an asciistring in <self> from the beginning and returns position of fir
 ") Search;
 		Standard_Integer Search(TCollection_AsciiString what);
 
-		/****************** SearchFromEnd ******************/
-		/**** md5 signature: 001f750966fbbafd950bf1f5cadf23d9 ****/
+		/****** TCollection_AsciiString::SearchFromEnd ******/
+		/****** md5 signature: 001f750966fbbafd950bf1f5cadf23d9 ******/
 		%feature("compactdefaultargs") SearchFromEnd;
 		%feature("autodoc", "
 Parameters
@@ -1393,8 +1393,8 @@ Searches a cstring in a asciistring from the end and returns position of first i
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(Standard_CString what);
 
-		/****************** SearchFromEnd ******************/
-		/**** md5 signature: 9cad9172f6139d357df95e50cc4809e0 ****/
+		/****** TCollection_AsciiString::SearchFromEnd ******/
+		/****** md5 signature: 9cad9172f6139d357df95e50cc4809e0 ******/
 		%feature("compactdefaultargs") SearchFromEnd;
 		%feature("autodoc", "
 Parameters
@@ -1411,8 +1411,8 @@ Searches a asciistring in another asciistring from the end and returns position 
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(TCollection_AsciiString what);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: b8dea7704af78fd9353092eed090171d ****/
+		/****** TCollection_AsciiString::SetValue ******/
+		/****** md5 signature: b8dea7704af78fd9353092eed090171d ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1430,8 +1430,8 @@ Replaces one character in the asciistring at position <where>. if <where> is les
 ") SetValue;
 		void SetValue(const Standard_Integer where, const Standard_Character what);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 17403469ab86c4473d18ce1ccd74cffd ****/
+		/****** TCollection_AsciiString::SetValue ******/
+		/****** md5 signature: 17403469ab86c4473d18ce1ccd74cffd ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1449,8 +1449,8 @@ Replaces a part of <self> by a cstring. if <where> is less than zero or greater 
 ") SetValue;
 		void SetValue(const Standard_Integer where, Standard_CString what);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: e6cb739e16de0638799cbe91a77da04f ****/
+		/****** TCollection_AsciiString::SetValue ******/
+		/****** md5 signature: e6cb739e16de0638799cbe91a77da04f ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1468,8 +1468,8 @@ Replaces a part of <self> by another asciistring.
 ") SetValue;
 		void SetValue(const Standard_Integer where, TCollection_AsciiString what);
 
-		/****************** Split ******************/
-		/**** md5 signature: 678d31683435e0d43e651b472354ee3f ****/
+		/****** TCollection_AsciiString::Split ******/
+		/****** md5 signature: 678d31683435e0d43e651b472354ee3f ******/
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "
 Parameters
@@ -1486,8 +1486,8 @@ Splits a asciistring into two sub-strings. example: astring contains 'abcdefg' a
 ") Split;
 		TCollection_AsciiString Split(const Standard_Integer where);
 
-		/****************** StartsWith ******************/
-		/**** md5 signature: 7e4c28c090d6d26b1440e13b4e0900c2 ****/
+		/****** TCollection_AsciiString::StartsWith ******/
+		/****** md5 signature: 7e4c28c090d6d26b1440e13b4e0900c2 ******/
 		%feature("compactdefaultargs") StartsWith;
 		%feature("autodoc", "
 Parameters
@@ -1504,8 +1504,8 @@ Determines whether the beginning of this string instance matches the specified s
 ") StartsWith;
 		Standard_Boolean StartsWith(TCollection_AsciiString theStartString);
 
-		/****************** SubString ******************/
-		/**** md5 signature: df1c60951852a984d8317f5b29c25f99 ****/
+		/****** TCollection_AsciiString::SubString ******/
+		/****** md5 signature: df1c60951852a984d8317f5b29c25f99 ******/
 		%feature("compactdefaultargs") SubString;
 		%feature("autodoc", "
 Parameters
@@ -1523,8 +1523,8 @@ Creation of a sub-string of the string <self>. the sub-string starts to the inde
 ") SubString;
 		TCollection_AsciiString SubString(const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
-		/****************** Swap ******************/
-		/**** md5 signature: e92a9a780cb33042e23ff904bd0b1f47 ****/
+		/****** TCollection_AsciiString::Swap ******/
+		/****** md5 signature: e92a9a780cb33042e23ff904bd0b1f47 ******/
 		%feature("compactdefaultargs") Swap;
 		%feature("autodoc", "
 Parameters
@@ -1541,8 +1541,8 @@ Exchange the data of two strings (without reallocating memory).
 ") Swap;
 		void Swap(TCollection_AsciiString & theOther);
 
-		/****************** ToCString ******************/
-		/**** md5 signature: a0d55961c9252eb810c558f8e4ab10b4 ****/
+		/****** TCollection_AsciiString::ToCString ******/
+		/****** md5 signature: a0d55961c9252eb810c558f8e4ab10b4 ******/
 		%feature("compactdefaultargs") ToCString;
 		%feature("autodoc", "Return
 -------
@@ -1554,8 +1554,8 @@ Returns pointer to asciistring (char *). this is useful for some casual manipula
 ") ToCString;
 		Standard_CString ToCString();
 
-		/****************** Token ******************/
-		/**** md5 signature: 5c85538c5fc09bfcc1992f1c8c5c9d18 ****/
+		/****** TCollection_AsciiString::Token ******/
+		/****** md5 signature: 5c85538c5fc09bfcc1992f1c8c5c9d18 ******/
 		%feature("compactdefaultargs") Token;
 		%feature("autodoc", "
 Parameters
@@ -1573,8 +1573,8 @@ Extracts <whichone> token from <self>. by default, the <separators> is set to sp
 ") Token;
 		TCollection_AsciiString Token(Standard_CString separators = "\t", const Standard_Integer whichone = 1);
 
-		/****************** Trunc ******************/
-		/**** md5 signature: 7302e52dab6a6849b10a3ed0dd6dc62f ****/
+		/****** TCollection_AsciiString::Trunc ******/
+		/****** md5 signature: 7302e52dab6a6849b10a3ed0dd6dc62f ******/
 		%feature("compactdefaultargs") Trunc;
 		%feature("autodoc", "
 Parameters
@@ -1591,8 +1591,8 @@ Truncates <self> to <ahowmany> characters. example: me = 'hello dolly' -> trunc(
 ") Trunc;
 		void Trunc(const Standard_Integer ahowmany);
 
-		/****************** UpperCase ******************/
-		/**** md5 signature: 3f9f21fd1f92b5d0ecce6f762f7738a1 ****/
+		/****** TCollection_AsciiString::UpperCase ******/
+		/****** md5 signature: 3f9f21fd1f92b5d0ecce6f762f7738a1 ******/
 		%feature("compactdefaultargs") UpperCase;
 		%feature("autodoc", "Return
 -------
@@ -1604,8 +1604,8 @@ Converts <self> to its upper-case equivalent.
 ") UpperCase;
 		void UpperCase();
 
-		/****************** UsefullLength ******************/
-		/**** md5 signature: 2e944cc63721a567e24c1ac662acad02 ****/
+		/****** TCollection_AsciiString::UsefullLength ******/
+		/****** md5 signature: 2e944cc63721a567e24c1ac662acad02 ******/
 		%feature("compactdefaultargs") UsefullLength;
 		%feature("autodoc", "Return
 -------
@@ -1617,8 +1617,8 @@ Length of the string ignoring all spaces (' ') and the control character at the 
 ") UsefullLength;
 		Standard_Integer UsefullLength();
 
-		/****************** Value ******************/
-		/**** md5 signature: b790c256d0e62b0d42a4819aca4e63bb ****/
+		/****** TCollection_AsciiString::Value ******/
+		/****** md5 signature: b790c256d0e62b0d42a4819aca4e63bb ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1663,8 +1663,8 @@ def __ne__(self, right):
     except:
         return True
 }
-		/****************** operator + ******************/
-		/**** md5 signature: d5bb55766727226dfadc22de4706ab2a ****/
+		/****** TCollection_AsciiString::operator + ******/
+		/****** md5 signature: d5bb55766727226dfadc22de4706ab2a ******/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "
 Parameters
@@ -1681,8 +1681,8 @@ No available documentation.
 ") operator +;
 		TCollection_AsciiString operator +(const Standard_Character other);
 
-		/****************** operator + ******************/
-		/**** md5 signature: ce587a3765bf01a8a5fb2cf57f472a22 ****/
+		/****** TCollection_AsciiString::operator + ******/
+		/****** md5 signature: ce587a3765bf01a8a5fb2cf57f472a22 ******/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "
 Parameters
@@ -1699,8 +1699,8 @@ No available documentation.
 ") operator +;
 		TCollection_AsciiString operator +(const Standard_Integer other);
 
-		/****************** operator + ******************/
-		/**** md5 signature: 3c8c13ccafb8668627344ec87cd5b479 ****/
+		/****** TCollection_AsciiString::operator + ******/
+		/****** md5 signature: 3c8c13ccafb8668627344ec87cd5b479 ******/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "
 Parameters
@@ -1717,8 +1717,8 @@ No available documentation.
 ") operator +;
 		TCollection_AsciiString operator +(const Standard_Real other);
 
-		/****************** operator + ******************/
-		/**** md5 signature: 790b5fbf345a3e3b433d884b2db4419b ****/
+		/****** TCollection_AsciiString::operator + ******/
+		/****** md5 signature: 790b5fbf345a3e3b433d884b2db4419b ******/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "
 Parameters
@@ -1735,8 +1735,8 @@ No available documentation.
 ") operator +;
 		TCollection_AsciiString operator +(Standard_CString other);
 
-		/****************** operator + ******************/
-		/**** md5 signature: d6838314a8c2c0a320cde4fcaee86022 ****/
+		/****** TCollection_AsciiString::operator + ******/
+		/****** md5 signature: d6838314a8c2c0a320cde4fcaee86022 ******/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "
 Parameters
@@ -1854,8 +1854,8 @@ def __eq__(self, right):
 ***********************************/
 class TCollection_ExtendedString {
 	public:
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 27102535163506884d25905a079f37f1 ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: 27102535163506884d25905a079f37f1 ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "Return
 -------
@@ -1867,8 +1867,8 @@ Initializes a extendedstring to an empty extendedstring.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString();
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: bd5a30053ae1dbb206e1f145f51b3c92 ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: bd5a30053ae1dbb206e1f145f51b3c92 ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -1886,8 +1886,8 @@ Creation by converting a cstring to an extended string. if <ismultibyte> is true
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(Standard_CString astring, const Standard_Boolean isMultiByte = Standard_False);
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 32794e06c591ca0c74dea31f9c707296 ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: 32794e06c591ca0c74dea31f9c707296 ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -1904,8 +1904,8 @@ Creation by converting an extstring to an extended string.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_ExtString astring);
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 7f6b85e67c819db3a403bc17c88ad949 ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: 7f6b85e67c819db3a403bc17c88ad949 ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -1922,8 +1922,8 @@ Initialize from wide-char string considering it as unicode string (the size of w
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_WideChar * theStringUtf);
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: cc2b0c05298704aee786df35f7261b14 ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: cc2b0c05298704aee786df35f7261b14 ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -1940,8 +1940,8 @@ Initializes a asciistring with a single character.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_Character aChar);
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 68e5cee6b4d106d05772773b1168d89e ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: 68e5cee6b4d106d05772773b1168d89e ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -1958,8 +1958,8 @@ Initializes a extendedstring with a single character.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_ExtCharacter aChar);
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 6c2cc4cdc61a1ef1008d283b6ba53866 ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: 6c2cc4cdc61a1ef1008d283b6ba53866 ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -1977,8 +1977,8 @@ Initializes a extendedstring with <length> space allocated. and filled with <fil
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_Integer length, const Standard_ExtCharacter filler);
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 6c0d043a8729c73f242cc59cd1d63afb ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: 6c0d043a8729c73f242cc59cd1d63afb ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -1995,8 +1995,8 @@ Initializes an extendedstring with an integer value.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_Integer value);
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 43bfa72a1bf715d78f22a5f919221f12 ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: 43bfa72a1bf715d78f22a5f919221f12 ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -2013,8 +2013,8 @@ Initializes an extendedstring with a real value.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(const Standard_Real value);
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 1208eb30d755fd6ea0110b6d3fd2b183 ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: 1208eb30d755fd6ea0110b6d3fd2b183 ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -2031,8 +2031,8 @@ Initializes a extendedstring with another extendedstring.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(TCollection_ExtendedString astring);
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 696d0585a11ad0b287ebc6ba57bac634 ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: 696d0585a11ad0b287ebc6ba57bac634 ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -2049,8 +2049,8 @@ Move constructor.
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(TCollection_ExtendedString & theOther);
 
-		/****************** TCollection_ExtendedString ******************/
-		/**** md5 signature: 65128c52391eef873746fec9d8584835 ****/
+		/****** TCollection_ExtendedString::TCollection_ExtendedString ******/
+		/****** md5 signature: 65128c52391eef873746fec9d8584835 ******/
 		%feature("compactdefaultargs") TCollection_ExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -2068,8 +2068,8 @@ Creation by converting an ascii string to an extended string. the string is trea
 ") TCollection_ExtendedString;
 		 TCollection_ExtendedString(TCollection_AsciiString astring, const Standard_Boolean isMultiByte = Standard_True);
 
-		/****************** AssignCat ******************/
-		/**** md5 signature: 290473b12be80aeece2f43cf57b4b8c9 ****/
+		/****** TCollection_ExtendedString::AssignCat ******/
+		/****** md5 signature: 290473b12be80aeece2f43cf57b4b8c9 ******/
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "
 Parameters
@@ -2086,8 +2086,8 @@ Appends the other extended string to this extended string. note that this method
 ") AssignCat;
 		void AssignCat(TCollection_ExtendedString other);
 
-		/****************** AssignCat ******************/
-		/**** md5 signature: af9511f20ca65b8d1031666c6ec91c33 ****/
+		/****** TCollection_ExtendedString::AssignCat ******/
+		/****** md5 signature: af9511f20ca65b8d1031666c6ec91c33 ******/
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "
 Parameters
@@ -2104,8 +2104,8 @@ Appends the utf16 char to this extended string.
 ") AssignCat;
 		void AssignCat(const Standard_Utf16Char theChar);
 
-		/****************** Cat ******************/
-		/**** md5 signature: ef439e4a817d99d3aad10416eb41fa81 ****/
+		/****** TCollection_ExtendedString::Cat ******/
+		/****** md5 signature: ef439e4a817d99d3aad10416eb41fa81 ******/
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "
 Parameters
@@ -2122,8 +2122,8 @@ Appends <other> to me.
 ") Cat;
 		TCollection_ExtendedString Cat(TCollection_ExtendedString other);
 
-		/****************** ChangeAll ******************/
-		/**** md5 signature: 172cbf77fdcbc202d23ddaed833764da ****/
+		/****** TCollection_ExtendedString::ChangeAll ******/
+		/****** md5 signature: 172cbf77fdcbc202d23ddaed833764da ******/
 		%feature("compactdefaultargs") ChangeAll;
 		%feature("autodoc", "
 Parameters
@@ -2141,8 +2141,8 @@ Substitutes all the characters equal to achar by newchar in the extendedstring <
 ") ChangeAll;
 		void ChangeAll(const Standard_ExtCharacter aChar, const Standard_ExtCharacter NewChar);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TCollection_ExtendedString::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -2154,8 +2154,8 @@ Removes all characters contained in <self>. this produces an empty extendedstrin
 ") Clear;
 		void Clear();
 
-		/****************** Copy ******************/
-		/**** md5 signature: 8773a536f9febb95c2bccfdbe6e610ae ****/
+		/****** TCollection_ExtendedString::Copy ******/
+		/****** md5 signature: 8773a536f9febb95c2bccfdbe6e610ae ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -2172,8 +2172,8 @@ Copy <fromwhere> to <self>. used as operator =.
 ") Copy;
 		void Copy(TCollection_ExtendedString fromwhere);
 
-		/****************** EndsWith ******************/
-		/**** md5 signature: 9634325ac41bffcbae04aa4d3f34465a ****/
+		/****** TCollection_ExtendedString::EndsWith ******/
+		/****** md5 signature: 9634325ac41bffcbae04aa4d3f34465a ******/
 		%feature("compactdefaultargs") EndsWith;
 		%feature("autodoc", "
 Parameters
@@ -2190,8 +2190,8 @@ Determines whether the end of this string instance matches the specified string.
 ") EndsWith;
 		Standard_Boolean EndsWith(TCollection_ExtendedString theEndString);
 
-		/****************** HashCode ******************/
-		/**** md5 signature: 9c314e4c582b8527413f7ff4f2563524 ****/
+		/****** TCollection_ExtendedString::HashCode ******/
+		/****** md5 signature: 9c314e4c582b8527413f7ff4f2563524 ******/
 		%feature("compactdefaultargs") HashCode;
 		%feature("autodoc", "Return
 -------
@@ -2203,8 +2203,8 @@ Returns a hashed value for the extended string. note: if string is ascii, the co
 ") HashCode;
 		size_t HashCode();
 
-		/****************** Insert ******************/
-		/**** md5 signature: 0697ac1ff05f55e6371b2412e6df94e9 ****/
+		/****** TCollection_ExtendedString::Insert ******/
+		/****** md5 signature: 0697ac1ff05f55e6371b2412e6df94e9 ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -2222,8 +2222,8 @@ Insert a character at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, const Standard_ExtCharacter what);
 
-		/****************** Insert ******************/
-		/**** md5 signature: 18ac3037701ab2ccec185b0b11df82af ****/
+		/****** TCollection_ExtendedString::Insert ******/
+		/****** md5 signature: 18ac3037701ab2ccec185b0b11df82af ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -2241,8 +2241,8 @@ Insert a extendedstring at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, TCollection_ExtendedString what);
 
-		/****************** IsAscii ******************/
-		/**** md5 signature: 6f7276b908dd6009ce0fd19db811821c ****/
+		/****** TCollection_ExtendedString::IsAscii ******/
+		/****** md5 signature: 6f7276b908dd6009ce0fd19db811821c ******/
 		%feature("compactdefaultargs") IsAscii;
 		%feature("autodoc", "Return
 -------
@@ -2254,8 +2254,8 @@ Returns true if the extendedstring contains only 'ascii range' characters .
 ") IsAscii;
 		Standard_Boolean IsAscii();
 
-		/****************** IsDifferent ******************/
-		/**** md5 signature: 85820fc5baf078b8dcd01fc694db8b77 ****/
+		/****** TCollection_ExtendedString::IsDifferent ******/
+		/****** md5 signature: 85820fc5baf078b8dcd01fc694db8b77 ******/
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "
 Parameters
@@ -2272,8 +2272,8 @@ Returns true if there are differences between the characters in this extended st
 ") IsDifferent;
 		Standard_Boolean IsDifferent(const Standard_ExtString other);
 
-		/****************** IsDifferent ******************/
-		/**** md5 signature: 55bde9d27641e44b784f8d27abefd706 ****/
+		/****** TCollection_ExtendedString::IsDifferent ******/
+		/****** md5 signature: 55bde9d27641e44b784f8d27abefd706 ******/
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "
 Parameters
@@ -2290,8 +2290,8 @@ Returns true if there are differences between the characters in this extended st
 ") IsDifferent;
 		Standard_Boolean IsDifferent(TCollection_ExtendedString other);
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
+		/****** TCollection_ExtendedString::IsEmpty ******/
+		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2303,8 +2303,8 @@ Returns true if this string contains no characters.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: 0948071158d76df9b23db2fee8d75cc1 ****/
+		/****** TCollection_ExtendedString::IsEqual ******/
+		/****** md5 signature: 0948071158d76df9b23db2fee8d75cc1 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -2321,8 +2321,8 @@ Returns true if the characters in this extended string are identical to the char
 ") IsEqual;
 		Standard_Boolean IsEqual(const Standard_ExtString other);
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: e74fc8048162da7ae830426f88d4674a ****/
+		/****** TCollection_ExtendedString::IsEqual ******/
+		/****** md5 signature: e74fc8048162da7ae830426f88d4674a ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -2339,8 +2339,8 @@ Returns true if the characters in this extended string are identical to the char
 ") IsEqual;
 		Standard_Boolean IsEqual(TCollection_ExtendedString other);
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: 129ad9f997bed3d3858413785264e2f1 ****/
+		/****** TCollection_ExtendedString::IsEqual ******/
+		/****** md5 signature: 129ad9f997bed3d3858413785264e2f1 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -2358,8 +2358,8 @@ Returns true if the characters in this extended string are identical to the char
 ") IsEqual;
 		static Standard_Boolean IsEqual(TCollection_ExtendedString theString1, TCollection_ExtendedString theString2);
 
-		/****************** IsGreater ******************/
-		/**** md5 signature: 5cf9ca773a20caca0e06fa958481d2e9 ****/
+		/****** TCollection_ExtendedString::IsGreater ******/
+		/****** md5 signature: 5cf9ca773a20caca0e06fa958481d2e9 ******/
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "
 Parameters
@@ -2376,8 +2376,8 @@ Returns true if <self> is greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(const Standard_ExtString other);
 
-		/****************** IsGreater ******************/
-		/**** md5 signature: c99a8ff1d9d77dc4570bd04b0bea2dbd ****/
+		/****** TCollection_ExtendedString::IsGreater ******/
+		/****** md5 signature: c99a8ff1d9d77dc4570bd04b0bea2dbd ******/
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "
 Parameters
@@ -2394,8 +2394,8 @@ Returns true if <self> is greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(TCollection_ExtendedString other);
 
-		/****************** IsLess ******************/
-		/**** md5 signature: c2cee3699b5b2477e673c526cc7fc7c3 ****/
+		/****** TCollection_ExtendedString::IsLess ******/
+		/****** md5 signature: c2cee3699b5b2477e673c526cc7fc7c3 ******/
 		%feature("compactdefaultargs") IsLess;
 		%feature("autodoc", "
 Parameters
@@ -2412,8 +2412,8 @@ Returns true if <self> is less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(const Standard_ExtString other);
 
-		/****************** IsLess ******************/
-		/**** md5 signature: 491f62fe2776ecedc0b150364f213844 ****/
+		/****** TCollection_ExtendedString::IsLess ******/
+		/****** md5 signature: 491f62fe2776ecedc0b150364f213844 ******/
 		%feature("compactdefaultargs") IsLess;
 		%feature("autodoc", "
 Parameters
@@ -2430,8 +2430,8 @@ Returns true if <self> is less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(TCollection_ExtendedString other);
 
-		/****************** Length ******************/
-		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
+		/****** TCollection_ExtendedString::Length ******/
+		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -2443,8 +2443,8 @@ Returns the number of 16-bit code units (might be greater than number of unicode
 ") Length;
 		Standard_Integer Length();
 
-		/****************** LengthOfCString ******************/
-		/**** md5 signature: 75029f9cff091c3704fc23603e5a8747 ****/
+		/****** TCollection_ExtendedString::LengthOfCString ******/
+		/****** md5 signature: 75029f9cff091c3704fc23603e5a8747 ******/
 		%feature("compactdefaultargs") LengthOfCString;
 		%feature("autodoc", "Return
 -------
@@ -2456,8 +2456,8 @@ Returns expected cstring length in utf8 coding. it can be used for memory calcul
 ") LengthOfCString;
 		Standard_Integer LengthOfCString();
 
-		/****************** Print ******************/
-		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		/****** TCollection_ExtendedString::Print ******/
+		/****** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -2473,8 +2473,8 @@ Displays <self> .
 ") Print;
 		void Print(std::ostream &OutValue);
 
-		/****************** Remove ******************/
-		/**** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ****/
+		/****** TCollection_ExtendedString::Remove ******/
+		/****** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -2492,8 +2492,8 @@ Erases <ahowmany> characters from position <where>,<where> included.
 ") Remove;
 		void Remove(const Standard_Integer where, const Standard_Integer ahowmany = 1);
 
-		/****************** RemoveAll ******************/
-		/**** md5 signature: 5cc33317c91574b4016e3809c2016af5 ****/
+		/****** TCollection_ExtendedString::RemoveAll ******/
+		/****** md5 signature: 5cc33317c91574b4016e3809c2016af5 ******/
 		%feature("compactdefaultargs") RemoveAll;
 		%feature("autodoc", "
 Parameters
@@ -2510,8 +2510,8 @@ Removes every <what> characters from <self>.
 ") RemoveAll;
 		void RemoveAll(const Standard_ExtCharacter what);
 
-		/****************** Search ******************/
-		/**** md5 signature: d150c7899dddb9851aae66427055ccb1 ****/
+		/****** TCollection_ExtendedString::Search ******/
+		/****** md5 signature: d150c7899dddb9851aae66427055ccb1 ******/
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "
 Parameters
@@ -2528,8 +2528,8 @@ Searches a extendedstring in <self> from the beginning and returns position of f
 ") Search;
 		Standard_Integer Search(TCollection_ExtendedString what);
 
-		/****************** SearchFromEnd ******************/
-		/**** md5 signature: b2afedfb1f65543f0e0888d888f00218 ****/
+		/****** TCollection_ExtendedString::SearchFromEnd ******/
+		/****** md5 signature: b2afedfb1f65543f0e0888d888f00218 ******/
 		%feature("compactdefaultargs") SearchFromEnd;
 		%feature("autodoc", "
 Parameters
@@ -2546,8 +2546,8 @@ Searches a extendedstring in another extendedstring from the end and returns pos
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(TCollection_ExtendedString what);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 294924c31fc292e1cf9eb136f9d9d649 ****/
+		/****** TCollection_ExtendedString::SetValue ******/
+		/****** md5 signature: 294924c31fc292e1cf9eb136f9d9d649 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -2565,8 +2565,8 @@ Replaces one character in the extendedstring at position <where>. if <where> is 
 ") SetValue;
 		void SetValue(const Standard_Integer where, const Standard_ExtCharacter what);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: c23c311484c9786eb0014421a03f2613 ****/
+		/****** TCollection_ExtendedString::SetValue ******/
+		/****** md5 signature: c23c311484c9786eb0014421a03f2613 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -2584,8 +2584,8 @@ Replaces a part of <self> by another extendedstring see above.
 ") SetValue;
 		void SetValue(const Standard_Integer where, TCollection_ExtendedString what);
 
-		/****************** Split ******************/
-		/**** md5 signature: 8268b04610407501d58f674f1e5d1fef ****/
+		/****** TCollection_ExtendedString::Split ******/
+		/****** md5 signature: 8268b04610407501d58f674f1e5d1fef ******/
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "
 Parameters
@@ -2602,8 +2602,8 @@ Splits this extended string into two sub-strings at position where. - the second
 ") Split;
 		TCollection_ExtendedString Split(const Standard_Integer where);
 
-		/****************** StartsWith ******************/
-		/**** md5 signature: 88523a02c5928156555a2a31a298bd45 ****/
+		/****** TCollection_ExtendedString::StartsWith ******/
+		/****** md5 signature: 88523a02c5928156555a2a31a298bd45 ******/
 		%feature("compactdefaultargs") StartsWith;
 		%feature("autodoc", "
 Parameters
@@ -2620,8 +2620,8 @@ Determines whether the beginning of this string instance matches the specified s
 ") StartsWith;
 		Standard_Boolean StartsWith(TCollection_ExtendedString theStartString);
 
-		/****************** Swap ******************/
-		/**** md5 signature: 64355d86a311821e9f828b1de3bbea86 ****/
+		/****** TCollection_ExtendedString::Swap ******/
+		/****** md5 signature: 64355d86a311821e9f828b1de3bbea86 ******/
 		%feature("compactdefaultargs") Swap;
 		%feature("autodoc", "
 Parameters
@@ -2638,8 +2638,8 @@ Exchange the data of two strings (without reallocating memory).
 ") Swap;
 		void Swap(TCollection_ExtendedString & theOther);
 
-		/****************** ToExtString ******************/
-		/**** md5 signature: 3e9c425364178122dc4b3879f484e9f4 ****/
+		/****** TCollection_ExtendedString::ToExtString ******/
+		/****** md5 signature: 3e9c425364178122dc4b3879f484e9f4 ******/
 		%feature("compactdefaultargs") ToExtString;
 		%feature("autodoc", "Return
 -------
@@ -2651,8 +2651,8 @@ Returns pointer to extstring.
 ") ToExtString;
 		Standard_ExtString ToExtString();
 
-		/****************** ToUTF8CString ******************/
-		/**** md5 signature: 0eb66f1d867ef44952405f1e528bf885 ****/
+		/****** TCollection_ExtendedString::ToUTF8CString ******/
+		/****** md5 signature: 0eb66f1d867ef44952405f1e528bf885 ******/
 		%feature("compactdefaultargs") ToUTF8CString;
 		%feature("autodoc", "
 Parameters
@@ -2669,8 +2669,8 @@ Converts the internal <mystring> to utf8 coding and returns length of the out cs
 ") ToUTF8CString;
 		Standard_Integer ToUTF8CString(Standard_PCharacter & theCString);
 
-		/****************** Token ******************/
-		/**** md5 signature: d07bb65947d1f126db0ef4323c24fe8d ****/
+		/****** TCollection_ExtendedString::Token ******/
+		/****** md5 signature: d07bb65947d1f126db0ef4323c24fe8d ******/
 		%feature("compactdefaultargs") Token;
 		%feature("autodoc", "
 Parameters
@@ -2688,8 +2688,8 @@ Extracts <whichone> token from <self>. by default, the <separators> is set to sp
 ") Token;
 		TCollection_ExtendedString Token(const Standard_ExtString separators, const Standard_Integer whichone = 1);
 
-		/****************** Trunc ******************/
-		/**** md5 signature: 7302e52dab6a6849b10a3ed0dd6dc62f ****/
+		/****** TCollection_ExtendedString::Trunc ******/
+		/****** md5 signature: 7302e52dab6a6849b10a3ed0dd6dc62f ******/
 		%feature("compactdefaultargs") Trunc;
 		%feature("autodoc", "
 Parameters
@@ -2706,8 +2706,8 @@ Truncates <self> to <ahowmany> characters. example: me = 'hello dolly' -> trunc(
 ") Trunc;
 		void Trunc(const Standard_Integer ahowmany);
 
-		/****************** Value ******************/
-		/**** md5 signature: 84bd4561d49bb9835b6ef809ad6dbc29 ****/
+		/****** TCollection_ExtendedString::Value ******/
+		/****** md5 signature: 84bd4561d49bb9835b6ef809ad6dbc29 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2752,8 +2752,8 @@ def __ne__(self, right):
     except:
         return True
 }
-		/****************** operator + ******************/
-		/**** md5 signature: bc40c1386a156b1db27b30eaa95a0f95 ****/
+		/****** TCollection_ExtendedString::operator + ******/
+		/****** md5 signature: bc40c1386a156b1db27b30eaa95a0f95 ******/
 		%feature("compactdefaultargs") operator +;
 		%feature("autodoc", "
 Parameters
@@ -2831,8 +2831,8 @@ def __eq__(self, right):
 *********************************/
 class TCollection_HAsciiString : public Standard_Transient {
 	public:
-		/****************** TCollection_HAsciiString ******************/
-		/**** md5 signature: 1078a0d0e3b700abf3d93bf0c910aa95 ****/
+		/****** TCollection_HAsciiString::TCollection_HAsciiString ******/
+		/****** md5 signature: 1078a0d0e3b700abf3d93bf0c910aa95 ******/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
 		%feature("autodoc", "Return
 -------
@@ -2844,8 +2844,8 @@ Initializes a hasciistring to an empty asciistring.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString();
 
-		/****************** TCollection_HAsciiString ******************/
-		/**** md5 signature: 5c051822068be398edd1f9fc8c62076b ****/
+		/****** TCollection_HAsciiString::TCollection_HAsciiString ******/
+		/****** md5 signature: 5c051822068be398edd1f9fc8c62076b ******/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
 		%feature("autodoc", "
 Parameters
@@ -2862,8 +2862,8 @@ Initializes a hasciistring with a cstring.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(Standard_CString message);
 
-		/****************** TCollection_HAsciiString ******************/
-		/**** md5 signature: 42a7090e4a24c83fdcfa907627bbb5ed ****/
+		/****** TCollection_HAsciiString::TCollection_HAsciiString ******/
+		/****** md5 signature: 42a7090e4a24c83fdcfa907627bbb5ed ******/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
 		%feature("autodoc", "
 Parameters
@@ -2880,8 +2880,8 @@ Initializes a hasciistring with a single character.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const Standard_Character aChar);
 
-		/****************** TCollection_HAsciiString ******************/
-		/**** md5 signature: 419f459f843ebb6ff828fa694e5714af ****/
+		/****** TCollection_HAsciiString::TCollection_HAsciiString ******/
+		/****** md5 signature: 419f459f843ebb6ff828fa694e5714af ******/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
 		%feature("autodoc", "
 Parameters
@@ -2899,8 +2899,8 @@ Initializes a hasciistring with <length> space allocated. and filled with <fille
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const Standard_Integer length, const Standard_Character filler);
 
-		/****************** TCollection_HAsciiString ******************/
-		/**** md5 signature: 046267dac0cd24016563517459b0dfe1 ****/
+		/****** TCollection_HAsciiString::TCollection_HAsciiString ******/
+		/****** md5 signature: 046267dac0cd24016563517459b0dfe1 ******/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
 		%feature("autodoc", "
 Parameters
@@ -2917,8 +2917,8 @@ Initializes a hasciistring with an integer value.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const Standard_Integer value);
 
-		/****************** TCollection_HAsciiString ******************/
-		/**** md5 signature: 71aa4ea7cf1fef0bd71cbeb603b0d4ea ****/
+		/****** TCollection_HAsciiString::TCollection_HAsciiString ******/
+		/****** md5 signature: 71aa4ea7cf1fef0bd71cbeb603b0d4ea ******/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
 		%feature("autodoc", "
 Parameters
@@ -2935,8 +2935,8 @@ Initializes a hasciistring with a real value.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const Standard_Real value);
 
-		/****************** TCollection_HAsciiString ******************/
-		/**** md5 signature: 4c34b45baf33ce6936cb87edb50c3fad ****/
+		/****** TCollection_HAsciiString::TCollection_HAsciiString ******/
+		/****** md5 signature: 4c34b45baf33ce6936cb87edb50c3fad ******/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
 		%feature("autodoc", "
 Parameters
@@ -2953,8 +2953,8 @@ Initializes a hasciistring with a asciistring.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(TCollection_AsciiString aString);
 
-		/****************** TCollection_HAsciiString ******************/
-		/**** md5 signature: e40da8f0650af2c2ce01fec510892658 ****/
+		/****** TCollection_HAsciiString::TCollection_HAsciiString ******/
+		/****** md5 signature: e40da8f0650af2c2ce01fec510892658 ******/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
 		%feature("autodoc", "
 Parameters
@@ -2971,8 +2971,8 @@ Initializes a hasciistring with a asciistring.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(TCollection_AsciiString & theString);
 
-		/****************** TCollection_HAsciiString ******************/
-		/**** md5 signature: 84b0260612dd7af944e9b7fbb8cd5693 ****/
+		/****** TCollection_HAsciiString::TCollection_HAsciiString ******/
+		/****** md5 signature: 84b0260612dd7af944e9b7fbb8cd5693 ******/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
 		%feature("autodoc", "
 Parameters
@@ -2989,8 +2989,8 @@ Initializes a hasciistring with a hasciistring.
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const opencascade::handle<TCollection_HAsciiString> & aString);
 
-		/****************** TCollection_HAsciiString ******************/
-		/**** md5 signature: 2d2c9cf505fe6268a2d3ca5bb9f0df5c ****/
+		/****** TCollection_HAsciiString::TCollection_HAsciiString ******/
+		/****** md5 signature: 2d2c9cf505fe6268a2d3ca5bb9f0df5c ******/
 		%feature("compactdefaultargs") TCollection_HAsciiString;
 		%feature("autodoc", "
 Parameters
@@ -3008,8 +3008,8 @@ Initializes a hasciistring with a hextendedstring. if replacenonascii is non-nul
 ") TCollection_HAsciiString;
 		 TCollection_HAsciiString(const opencascade::handle<TCollection_HExtendedString> & aString, const Standard_Character replaceNonAscii);
 
-		/****************** AssignCat ******************/
-		/**** md5 signature: 9849afa3e69d6647b6944a08249da1bc ****/
+		/****** TCollection_HAsciiString::AssignCat ******/
+		/****** md5 signature: 9849afa3e69d6647b6944a08249da1bc ******/
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "
 Parameters
@@ -3026,8 +3026,8 @@ Appends <other> to me.
 ") AssignCat;
 		void AssignCat(Standard_CString other);
 
-		/****************** AssignCat ******************/
-		/**** md5 signature: 9a1804a3730fe6c158f51e3b1a62e311 ****/
+		/****** TCollection_HAsciiString::AssignCat ******/
+		/****** md5 signature: 9a1804a3730fe6c158f51e3b1a62e311 ******/
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "
 Parameters
@@ -3044,8 +3044,8 @@ Appends <other> to me. example: astring = astring + anotherstring.
 ") AssignCat;
 		void AssignCat(const opencascade::handle<TCollection_HAsciiString> & other);
 
-		/****************** Capitalize ******************/
-		/**** md5 signature: dbcb7ca2711d8c69ac14d5c2510a8e32 ****/
+		/****** TCollection_HAsciiString::Capitalize ******/
+		/****** md5 signature: dbcb7ca2711d8c69ac14d5c2510a8e32 ******/
 		%feature("compactdefaultargs") Capitalize;
 		%feature("autodoc", "Return
 -------
@@ -3057,8 +3057,8 @@ Converts the first character into its corresponding upper-case character and the
 ") Capitalize;
 		void Capitalize();
 
-		/****************** Cat ******************/
-		/**** md5 signature: 1a32e5ecba107c7d2923cf6aeb77d8e7 ****/
+		/****** TCollection_HAsciiString::Cat ******/
+		/****** md5 signature: 1a32e5ecba107c7d2923cf6aeb77d8e7 ******/
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "
 Parameters
@@ -3075,8 +3075,8 @@ Creates a new string by concatenation of this ascii string and the other ascii s
 ") Cat;
 		opencascade::handle<TCollection_HAsciiString> Cat(Standard_CString other);
 
-		/****************** Cat ******************/
-		/**** md5 signature: dd2183ed02563b08fc5f255cea059ce5 ****/
+		/****** TCollection_HAsciiString::Cat ******/
+		/****** md5 signature: dd2183ed02563b08fc5f255cea059ce5 ******/
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "
 Parameters
@@ -3093,8 +3093,8 @@ Creates a new string by concatenation of this ascii string and the other ascii s
 ") Cat;
 		opencascade::handle<TCollection_HAsciiString> Cat(const opencascade::handle<TCollection_HAsciiString> & other);
 
-		/****************** Center ******************/
-		/**** md5 signature: 2b5029e050de2f7db9db4538a961c189 ****/
+		/****** TCollection_HAsciiString::Center ******/
+		/****** md5 signature: 2b5029e050de2f7db9db4538a961c189 ******/
 		%feature("compactdefaultargs") Center;
 		%feature("autodoc", "
 Parameters
@@ -3112,8 +3112,8 @@ Modifies this ascii string so that its length becomes equal to width and the new
 ") Center;
 		void Center(const Standard_Integer Width, const Standard_Character Filler);
 
-		/****************** ChangeAll ******************/
-		/**** md5 signature: 2a8248c4e2acd40c1b84a1410fcc9575 ****/
+		/****** TCollection_HAsciiString::ChangeAll ******/
+		/****** md5 signature: 2a8248c4e2acd40c1b84a1410fcc9575 ******/
 		%feature("compactdefaultargs") ChangeAll;
 		%feature("autodoc", "
 Parameters
@@ -3132,8 +3132,8 @@ Replaces all characters equal to achar by newchar in this ascii string. the subs
 ") ChangeAll;
 		void ChangeAll(const Standard_Character aChar, const Standard_Character NewChar, const Standard_Boolean CaseSensitive = Standard_True);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TCollection_HAsciiString::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -3145,8 +3145,8 @@ Removes all characters contained in <self>. this produces an empty hasciistring.
 ") Clear;
 		void Clear();
 
-		/****************** FirstLocationInSet ******************/
-		/**** md5 signature: c02512a97e6b5263176ba2ccfa8ed105 ****/
+		/****** TCollection_HAsciiString::FirstLocationInSet ******/
+		/****** md5 signature: c02512a97e6b5263176ba2ccfa8ed105 ******/
 		%feature("compactdefaultargs") FirstLocationInSet;
 		%feature("autodoc", "
 Parameters
@@ -3165,8 +3165,8 @@ Returns the index of the first character of <self> that is present in <set>. the
 ") FirstLocationInSet;
 		Standard_Integer FirstLocationInSet(const opencascade::handle<TCollection_HAsciiString> & Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
-		/****************** FirstLocationNotInSet ******************/
-		/**** md5 signature: 1d236c8f681402c58697cd92d97cec88 ****/
+		/****** TCollection_HAsciiString::FirstLocationNotInSet ******/
+		/****** md5 signature: 1d236c8f681402c58697cd92d97cec88 ******/
 		%feature("compactdefaultargs") FirstLocationNotInSet;
 		%feature("autodoc", "
 Parameters
@@ -3185,8 +3185,8 @@ Returns the index of the first character of <self> that is not present in the se
 ") FirstLocationNotInSet;
 		Standard_Integer FirstLocationNotInSet(const opencascade::handle<TCollection_HAsciiString> & Set, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
-		/****************** Insert ******************/
-		/**** md5 signature: 7904375fda1b58849d10a2c96c86615b ****/
+		/****** TCollection_HAsciiString::Insert ******/
+		/****** md5 signature: 7904375fda1b58849d10a2c96c86615b ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -3204,8 +3204,8 @@ Insert a character at position <where>. example: astring contains 'hy not ?' ast
 ") Insert;
 		void Insert(const Standard_Integer where, const Standard_Character what);
 
-		/****************** Insert ******************/
-		/**** md5 signature: 975088e505e1c924bd1ef576e9371efb ****/
+		/****** TCollection_HAsciiString::Insert ******/
+		/****** md5 signature: 975088e505e1c924bd1ef576e9371efb ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -3223,8 +3223,8 @@ Insert a hasciistring at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, Standard_CString what);
 
-		/****************** Insert ******************/
-		/**** md5 signature: 00bce82236f786524084c18458d05a52 ****/
+		/****** TCollection_HAsciiString::Insert ******/
+		/****** md5 signature: 00bce82236f786524084c18458d05a52 ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -3242,8 +3242,8 @@ Insert a hasciistring at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, const opencascade::handle<TCollection_HAsciiString> & what);
 
-		/****************** InsertAfter ******************/
-		/**** md5 signature: aea8d1d7782af5dc2ffad7d3e4877597 ****/
+		/****** TCollection_HAsciiString::InsertAfter ******/
+		/****** md5 signature: aea8d1d7782af5dc2ffad7d3e4877597 ******/
 		%feature("compactdefaultargs") InsertAfter;
 		%feature("autodoc", "
 Parameters
@@ -3261,8 +3261,8 @@ Inserts the other ascii string a after a specific index in the string <self> exa
 ") InsertAfter;
 		void InsertAfter(const Standard_Integer Index, const opencascade::handle<TCollection_HAsciiString> & other);
 
-		/****************** InsertBefore ******************/
-		/**** md5 signature: 0f11aa0b72d04726b6caba4ebdae9573 ****/
+		/****** TCollection_HAsciiString::InsertBefore ******/
+		/****** md5 signature: 0f11aa0b72d04726b6caba4ebdae9573 ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -3280,8 +3280,8 @@ Inserts the other ascii string a before a specific index in the string <self> ra
 ") InsertBefore;
 		void InsertBefore(const Standard_Integer Index, const opencascade::handle<TCollection_HAsciiString> & other);
 
-		/****************** IntegerValue ******************/
-		/**** md5 signature: a75e1a4c2632a55658f0262c4c2f22c2 ****/
+		/****** TCollection_HAsciiString::IntegerValue ******/
+		/****** md5 signature: a75e1a4c2632a55658f0262c4c2f22c2 ******/
 		%feature("compactdefaultargs") IntegerValue;
 		%feature("autodoc", "Return
 -------
@@ -3293,8 +3293,8 @@ Converts a hasciistring containing a numeric expression to an integer. example: 
 ") IntegerValue;
 		Standard_Integer IntegerValue();
 
-		/****************** IsAscii ******************/
-		/**** md5 signature: 6f7276b908dd6009ce0fd19db811821c ****/
+		/****** TCollection_HAsciiString::IsAscii ******/
+		/****** md5 signature: 6f7276b908dd6009ce0fd19db811821c ******/
 		%feature("compactdefaultargs") IsAscii;
 		%feature("autodoc", "Return
 -------
@@ -3306,8 +3306,8 @@ Returns true if the string contains only ascii characters between ' ' and '~'. t
 ") IsAscii;
 		Standard_Boolean IsAscii();
 
-		/****************** IsDifferent ******************/
-		/**** md5 signature: bdd599f7df06fe89322d4df55fc97f48 ****/
+		/****** TCollection_HAsciiString::IsDifferent ******/
+		/****** md5 signature: bdd599f7df06fe89322d4df55fc97f48 ******/
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "
 Parameters
@@ -3324,8 +3324,8 @@ Returns true if the string s not contains same characters than the string <self>
 ") IsDifferent;
 		Standard_Boolean IsDifferent(const opencascade::handle<TCollection_HAsciiString> & S);
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
+		/****** TCollection_HAsciiString::IsEmpty ******/
+		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3337,8 +3337,8 @@ Returns true if the string <self> contains zero character.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** IsGreater ******************/
-		/**** md5 signature: c802c1ef92d5d1701deb1b2bb76c0333 ****/
+		/****** TCollection_HAsciiString::IsGreater ******/
+		/****** md5 signature: c802c1ef92d5d1701deb1b2bb76c0333 ******/
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "
 Parameters
@@ -3355,8 +3355,8 @@ Returns true if <self> is 'ascii' greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(const opencascade::handle<TCollection_HAsciiString> & other);
 
-		/****************** IsIntegerValue ******************/
-		/**** md5 signature: 621b664205e9bc7af1bfe940b363e7dc ****/
+		/****** TCollection_HAsciiString::IsIntegerValue ******/
+		/****** md5 signature: 621b664205e9bc7af1bfe940b363e7dc ******/
 		%feature("compactdefaultargs") IsIntegerValue;
 		%feature("autodoc", "Return
 -------
@@ -3368,8 +3368,8 @@ Returns true if the string contains an integer value.
 ") IsIntegerValue;
 		Standard_Boolean IsIntegerValue();
 
-		/****************** IsLess ******************/
-		/**** md5 signature: a0f0427c44af86d5d93e5b00594e059f ****/
+		/****** TCollection_HAsciiString::IsLess ******/
+		/****** md5 signature: a0f0427c44af86d5d93e5b00594e059f ******/
 		%feature("compactdefaultargs") IsLess;
 		%feature("autodoc", "
 Parameters
@@ -3386,8 +3386,8 @@ Returns true if <self> is 'ascii' less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(const opencascade::handle<TCollection_HAsciiString> & other);
 
-		/****************** IsRealValue ******************/
-		/**** md5 signature: 37730896bf853986942d4303fcf722e6 ****/
+		/****** TCollection_HAsciiString::IsRealValue ******/
+		/****** md5 signature: 37730896bf853986942d4303fcf722e6 ******/
 		%feature("compactdefaultargs") IsRealValue;
 		%feature("autodoc", "Return
 -------
@@ -3399,8 +3399,8 @@ Returns true if the string contains a real value.
 ") IsRealValue;
 		Standard_Boolean IsRealValue();
 
-		/****************** IsSameState ******************/
-		/**** md5 signature: 8d2d9199bf4b65dbd08ac3a28565efa2 ****/
+		/****** TCollection_HAsciiString::IsSameState ******/
+		/****** md5 signature: 8d2d9199bf4b65dbd08ac3a28565efa2 ******/
 		%feature("compactdefaultargs") IsSameState;
 		%feature("autodoc", "
 Parameters
@@ -3417,8 +3417,8 @@ No available documentation.
 ") IsSameState;
 		Standard_Boolean IsSameState(const opencascade::handle<TCollection_HAsciiString> & other);
 
-		/****************** IsSameString ******************/
-		/**** md5 signature: 31e0f4aa2fde5b3568bba91f4d19c228 ****/
+		/****** TCollection_HAsciiString::IsSameString ******/
+		/****** md5 signature: 31e0f4aa2fde5b3568bba91f4d19c228 ******/
 		%feature("compactdefaultargs") IsSameString;
 		%feature("autodoc", "
 Parameters
@@ -3435,8 +3435,8 @@ Returns true if the string s contains same characters than the string <self>.
 ") IsSameString;
 		Standard_Boolean IsSameString(const opencascade::handle<TCollection_HAsciiString> & S);
 
-		/****************** IsSameString ******************/
-		/**** md5 signature: cde47ee814606ec044bae1596146a012 ****/
+		/****** TCollection_HAsciiString::IsSameString ******/
+		/****** md5 signature: cde47ee814606ec044bae1596146a012 ******/
 		%feature("compactdefaultargs") IsSameString;
 		%feature("autodoc", "
 Parameters
@@ -3454,8 +3454,8 @@ Returns true if the string s contains same characters than the string <self>.
 ") IsSameString;
 		Standard_Boolean IsSameString(const opencascade::handle<TCollection_HAsciiString> & S, const Standard_Boolean CaseSensitive);
 
-		/****************** LeftAdjust ******************/
-		/**** md5 signature: 2d194519f25a34b81a2aaed2f3fcf7eb ****/
+		/****** TCollection_HAsciiString::LeftAdjust ******/
+		/****** md5 signature: 2d194519f25a34b81a2aaed2f3fcf7eb ******/
 		%feature("compactdefaultargs") LeftAdjust;
 		%feature("autodoc", "Return
 -------
@@ -3467,8 +3467,8 @@ Removes all space characters in the beginning of the string.
 ") LeftAdjust;
 		void LeftAdjust();
 
-		/****************** LeftJustify ******************/
-		/**** md5 signature: f4c95778466eb547829fbab21c8a7823 ****/
+		/****** TCollection_HAsciiString::LeftJustify ******/
+		/****** md5 signature: f4c95778466eb547829fbab21c8a7823 ******/
 		%feature("compactdefaultargs") LeftJustify;
 		%feature("autodoc", "
 Parameters
@@ -3486,8 +3486,8 @@ Left justify. length becomes equal to width and the new characters are equal to 
 ") LeftJustify;
 		void LeftJustify(const Standard_Integer Width, const Standard_Character Filler);
 
-		/****************** Length ******************/
-		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
+		/****** TCollection_HAsciiString::Length ******/
+		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -3499,8 +3499,8 @@ Returns number of characters in <self>. this is the same functionality as 'strle
 ") Length;
 		Standard_Integer Length();
 
-		/****************** Location ******************/
-		/**** md5 signature: 557d6cdb6bdb38582292298f38e087e8 ****/
+		/****** TCollection_HAsciiString::Location ******/
+		/****** md5 signature: 557d6cdb6bdb38582292298f38e087e8 ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
@@ -3519,8 +3519,8 @@ Returns an index in the string <self> of the first occurrence of the string s in
 ") Location;
 		Standard_Integer Location(const opencascade::handle<TCollection_HAsciiString> & other, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
-		/****************** Location ******************/
-		/**** md5 signature: 6bebd5959426436339306c497d79377d ****/
+		/****** TCollection_HAsciiString::Location ******/
+		/****** md5 signature: 6bebd5959426436339306c497d79377d ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
@@ -3540,8 +3540,8 @@ Returns the index of the nth occurrence of the character c in the string <self> 
 ") Location;
 		Standard_Integer Location(const Standard_Integer N, const Standard_Character C, const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
-		/****************** LowerCase ******************/
-		/**** md5 signature: 3a5c616bcb477647273ba31ea4d4dd76 ****/
+		/****** TCollection_HAsciiString::LowerCase ******/
+		/****** md5 signature: 3a5c616bcb477647273ba31ea4d4dd76 ******/
 		%feature("compactdefaultargs") LowerCase;
 		%feature("autodoc", "Return
 -------
@@ -3553,8 +3553,8 @@ Converts <self> to its lower-case equivalent.
 ") LowerCase;
 		void LowerCase();
 
-		/****************** Prepend ******************/
-		/**** md5 signature: 71edcb8a4aaf67dd7f8a4065c9e6ab32 ****/
+		/****** TCollection_HAsciiString::Prepend ******/
+		/****** md5 signature: 71edcb8a4aaf67dd7f8a4065c9e6ab32 ******/
 		%feature("compactdefaultargs") Prepend;
 		%feature("autodoc", "
 Parameters
@@ -3571,8 +3571,8 @@ Inserts the other string at the beginning of the string <self> example: before m
 ") Prepend;
 		void Prepend(const opencascade::handle<TCollection_HAsciiString> & other);
 
-		/****************** Print ******************/
-		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		/****** TCollection_HAsciiString::Print ******/
+		/****** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -3588,8 +3588,8 @@ Prints this string on the stream <astream>.
 ") Print;
 		void Print(std::ostream &OutValue);
 
-		/****************** RealValue ******************/
-		/**** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ****/
+		/****** TCollection_HAsciiString::RealValue ******/
+		/****** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ******/
 		%feature("compactdefaultargs") RealValue;
 		%feature("autodoc", "Return
 -------
@@ -3601,8 +3601,8 @@ Converts a string containing a numeric expression to a real. example: '215' retu
 ") RealValue;
 		Standard_Real RealValue();
 
-		/****************** Remove ******************/
-		/**** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ****/
+		/****** TCollection_HAsciiString::Remove ******/
+		/****** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -3620,8 +3620,8 @@ Erases <ahowmany> characters from position <where>, <where> included. example: a
 ") Remove;
 		void Remove(const Standard_Integer where, const Standard_Integer ahowmany = 1);
 
-		/****************** RemoveAll ******************/
-		/**** md5 signature: 17e901953b8ffee8fc2a18f2cc4c7ebe ****/
+		/****** TCollection_HAsciiString::RemoveAll ******/
+		/****** md5 signature: 17e901953b8ffee8fc2a18f2cc4c7ebe ******/
 		%feature("compactdefaultargs") RemoveAll;
 		%feature("autodoc", "
 Parameters
@@ -3639,8 +3639,8 @@ Remove all the occurrences of the character c in the string example: before me =
 ") RemoveAll;
 		void RemoveAll(const Standard_Character C, const Standard_Boolean CaseSensitive);
 
-		/****************** RemoveAll ******************/
-		/**** md5 signature: e42d8d7a2a77ebc16d192f0c2bf85d1b ****/
+		/****** TCollection_HAsciiString::RemoveAll ******/
+		/****** md5 signature: e42d8d7a2a77ebc16d192f0c2bf85d1b ******/
 		%feature("compactdefaultargs") RemoveAll;
 		%feature("autodoc", "
 Parameters
@@ -3657,8 +3657,8 @@ Removes every <what> characters from <self>.
 ") RemoveAll;
 		void RemoveAll(const Standard_Character what);
 
-		/****************** RightAdjust ******************/
-		/**** md5 signature: 4ad2bf7860ba51d9ab208488c573dee8 ****/
+		/****** TCollection_HAsciiString::RightAdjust ******/
+		/****** md5 signature: 4ad2bf7860ba51d9ab208488c573dee8 ******/
 		%feature("compactdefaultargs") RightAdjust;
 		%feature("autodoc", "Return
 -------
@@ -3670,8 +3670,8 @@ Removes all space characters at the end of the string.
 ") RightAdjust;
 		void RightAdjust();
 
-		/****************** RightJustify ******************/
-		/**** md5 signature: a19b8ecc125efa5d7ffd1fc7614c4325 ****/
+		/****** TCollection_HAsciiString::RightJustify ******/
+		/****** md5 signature: a19b8ecc125efa5d7ffd1fc7614c4325 ******/
 		%feature("compactdefaultargs") RightJustify;
 		%feature("autodoc", "
 Parameters
@@ -3689,8 +3689,8 @@ Right justify. length becomes equal to width and the new characters are equal to
 ") RightJustify;
 		void RightJustify(const Standard_Integer Width, const Standard_Character Filler);
 
-		/****************** Search ******************/
-		/**** md5 signature: ac4c7603fbad57da665e9bcec3af7cc7 ****/
+		/****** TCollection_HAsciiString::Search ******/
+		/****** md5 signature: ac4c7603fbad57da665e9bcec3af7cc7 ******/
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "
 Parameters
@@ -3707,8 +3707,8 @@ Searches a cstring in <self> from the beginning and returns position of first it
 ") Search;
 		Standard_Integer Search(Standard_CString what);
 
-		/****************** Search ******************/
-		/**** md5 signature: b859c53f977f80fe95a3c9f5dd92d975 ****/
+		/****** TCollection_HAsciiString::Search ******/
+		/****** md5 signature: b859c53f977f80fe95a3c9f5dd92d975 ******/
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "
 Parameters
@@ -3725,8 +3725,8 @@ Searches a string in <self> from the beginning and returns position of first ite
 ") Search;
 		Standard_Integer Search(const opencascade::handle<TCollection_HAsciiString> & what);
 
-		/****************** SearchFromEnd ******************/
-		/**** md5 signature: 001f750966fbbafd950bf1f5cadf23d9 ****/
+		/****** TCollection_HAsciiString::SearchFromEnd ******/
+		/****** md5 signature: 001f750966fbbafd950bf1f5cadf23d9 ******/
 		%feature("compactdefaultargs") SearchFromEnd;
 		%feature("autodoc", "
 Parameters
@@ -3743,8 +3743,8 @@ Searches a cstring in a string from the end and returns position of first item <
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(Standard_CString what);
 
-		/****************** SearchFromEnd ******************/
-		/**** md5 signature: 26ef5632859c306517edacf175ffeb25 ****/
+		/****** TCollection_HAsciiString::SearchFromEnd ******/
+		/****** md5 signature: 26ef5632859c306517edacf175ffeb25 ******/
 		%feature("compactdefaultargs") SearchFromEnd;
 		%feature("autodoc", "
 Parameters
@@ -3761,8 +3761,8 @@ Searches a hasciistring in another hasciistring from the end and returns positio
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(const opencascade::handle<TCollection_HAsciiString> & what);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: b8dea7704af78fd9353092eed090171d ****/
+		/****** TCollection_HAsciiString::SetValue ******/
+		/****** md5 signature: b8dea7704af78fd9353092eed090171d ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -3780,8 +3780,8 @@ Replaces one character in the string at position <where>. if <where> is less tha
 ") SetValue;
 		void SetValue(const Standard_Integer where, const Standard_Character what);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 17403469ab86c4473d18ce1ccd74cffd ****/
+		/****** TCollection_HAsciiString::SetValue ******/
+		/****** md5 signature: 17403469ab86c4473d18ce1ccd74cffd ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -3799,8 +3799,8 @@ Replaces a part of <self> in the string at position <where>. if <where> is less 
 ") SetValue;
 		void SetValue(const Standard_Integer where, Standard_CString what);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 93f546312ca5b5eebe8fa91a70ccccf5 ****/
+		/****** TCollection_HAsciiString::SetValue ******/
+		/****** md5 signature: 93f546312ca5b5eebe8fa91a70ccccf5 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -3818,8 +3818,8 @@ Replaces a part of <self> by another string.
 ") SetValue;
 		void SetValue(const Standard_Integer where, const opencascade::handle<TCollection_HAsciiString> & what);
 
-		/****************** Split ******************/
-		/**** md5 signature: 246f2100beead6e322fa3e01d01f3249 ****/
+		/****** TCollection_HAsciiString::Split ******/
+		/****** md5 signature: 246f2100beead6e322fa3e01d01f3249 ******/
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "
 Parameters
@@ -3836,8 +3836,8 @@ Splits a hasciistring into two sub-strings. example: astring contains 'abcdefg' 
 ") Split;
 		opencascade::handle<TCollection_HAsciiString> Split(const Standard_Integer where);
 
-		/****************** String ******************/
-		/**** md5 signature: 3d3a11f081a90fcd0e6ea30e33b34432 ****/
+		/****** TCollection_HAsciiString::String ******/
+		/****** md5 signature: 3d3a11f081a90fcd0e6ea30e33b34432 ******/
 		%feature("compactdefaultargs") String;
 		%feature("autodoc", "Return
 -------
@@ -3849,8 +3849,8 @@ Returns the field mystring.
 ") String;
 		const TCollection_AsciiString & String();
 
-		/****************** SubString ******************/
-		/**** md5 signature: dfea99c46584cf4a3f0555ff87ebb4c5 ****/
+		/****** TCollection_HAsciiString::SubString ******/
+		/****** md5 signature: dfea99c46584cf4a3f0555ff87ebb4c5 ******/
 		%feature("compactdefaultargs") SubString;
 		%feature("autodoc", "
 Parameters
@@ -3868,8 +3868,8 @@ Creation of a sub-string of the string <self>. the sub-string starts to the inde
 ") SubString;
 		opencascade::handle<TCollection_HAsciiString> SubString(const Standard_Integer FromIndex, const Standard_Integer ToIndex);
 
-		/****************** ToCString ******************/
-		/**** md5 signature: a0d55961c9252eb810c558f8e4ab10b4 ****/
+		/****** TCollection_HAsciiString::ToCString ******/
+		/****** md5 signature: a0d55961c9252eb810c558f8e4ab10b4 ******/
 		%feature("compactdefaultargs") ToCString;
 		%feature("autodoc", "Return
 -------
@@ -3881,8 +3881,8 @@ Returns pointer to string (char *) this is useful for some casual manipulations 
 ") ToCString;
 		Standard_CString ToCString();
 
-		/****************** Token ******************/
-		/**** md5 signature: 550b5c901eb3be27661f560e4facc9c6 ****/
+		/****** TCollection_HAsciiString::Token ******/
+		/****** md5 signature: 550b5c901eb3be27661f560e4facc9c6 ******/
 		%feature("compactdefaultargs") Token;
 		%feature("autodoc", "
 Parameters
@@ -3900,8 +3900,8 @@ Extracts <whichone> token from <self>. by default, the <separators> is set to sp
 ") Token;
 		opencascade::handle<TCollection_HAsciiString> Token(Standard_CString separators = "\t", const Standard_Integer whichone = 1);
 
-		/****************** Trunc ******************/
-		/**** md5 signature: 7302e52dab6a6849b10a3ed0dd6dc62f ****/
+		/****** TCollection_HAsciiString::Trunc ******/
+		/****** md5 signature: 7302e52dab6a6849b10a3ed0dd6dc62f ******/
 		%feature("compactdefaultargs") Trunc;
 		%feature("autodoc", "
 Parameters
@@ -3918,8 +3918,8 @@ Truncates <self> to <ahowmany> characters. example: me = 'hello dolly' -> trunc(
 ") Trunc;
 		void Trunc(const Standard_Integer ahowmany);
 
-		/****************** UpperCase ******************/
-		/**** md5 signature: 3f9f21fd1f92b5d0ecce6f762f7738a1 ****/
+		/****** TCollection_HAsciiString::UpperCase ******/
+		/****** md5 signature: 3f9f21fd1f92b5d0ecce6f762f7738a1 ******/
 		%feature("compactdefaultargs") UpperCase;
 		%feature("autodoc", "Return
 -------
@@ -3931,8 +3931,8 @@ Converts <self> to its upper-case equivalent.
 ") UpperCase;
 		void UpperCase();
 
-		/****************** UsefullLength ******************/
-		/**** md5 signature: 2e944cc63721a567e24c1ac662acad02 ****/
+		/****** TCollection_HAsciiString::UsefullLength ******/
+		/****** md5 signature: 2e944cc63721a567e24c1ac662acad02 ******/
 		%feature("compactdefaultargs") UsefullLength;
 		%feature("autodoc", "Return
 -------
@@ -3944,8 +3944,8 @@ Length of the string ignoring all spaces (' ') and the control character at the 
 ") UsefullLength;
 		Standard_Integer UsefullLength();
 
-		/****************** Value ******************/
-		/**** md5 signature: b790c256d0e62b0d42a4819aca4e63bb ****/
+		/****** TCollection_HAsciiString::Value ******/
+		/****** md5 signature: b790c256d0e62b0d42a4819aca4e63bb ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3978,8 +3978,8 @@ Returns character at position <where> in <self>. if <where> is less than zero or
 ************************************/
 class TCollection_HExtendedString : public Standard_Transient {
 	public:
-		/****************** TCollection_HExtendedString ******************/
-		/**** md5 signature: aa1cd4e7de4b4288f611cd133e7fcb84 ****/
+		/****** TCollection_HExtendedString::TCollection_HExtendedString ******/
+		/****** md5 signature: aa1cd4e7de4b4288f611cd133e7fcb84 ******/
 		%feature("compactdefaultargs") TCollection_HExtendedString;
 		%feature("autodoc", "Return
 -------
@@ -3991,8 +3991,8 @@ Initializes a hextendedstring to an empty extendedstring.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString();
 
-		/****************** TCollection_HExtendedString ******************/
-		/**** md5 signature: 8228eca5bb51d9cd2f9683d75a3a9574 ****/
+		/****** TCollection_HExtendedString::TCollection_HExtendedString ******/
+		/****** md5 signature: 8228eca5bb51d9cd2f9683d75a3a9574 ******/
 		%feature("compactdefaultargs") TCollection_HExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -4009,8 +4009,8 @@ Initializes a hextendedstring with a cstring.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(Standard_CString message);
 
-		/****************** TCollection_HExtendedString ******************/
-		/**** md5 signature: de855a681a7f55677c0fc072b8c7b2cb ****/
+		/****** TCollection_HExtendedString::TCollection_HExtendedString ******/
+		/****** md5 signature: de855a681a7f55677c0fc072b8c7b2cb ******/
 		%feature("compactdefaultargs") TCollection_HExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -4027,8 +4027,8 @@ Initializes a hextendedstring with an extstring.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(const Standard_ExtString message);
 
-		/****************** TCollection_HExtendedString ******************/
-		/**** md5 signature: acdb106688ab40fd7e0ba67b1d61076e ****/
+		/****** TCollection_HExtendedString::TCollection_HExtendedString ******/
+		/****** md5 signature: acdb106688ab40fd7e0ba67b1d61076e ******/
 		%feature("compactdefaultargs") TCollection_HExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -4045,8 +4045,8 @@ Initializes a hextendedstring with a single character.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(const Standard_ExtCharacter aChar);
 
-		/****************** TCollection_HExtendedString ******************/
-		/**** md5 signature: 2296e03682630049aa1941ff334aa49d ****/
+		/****** TCollection_HExtendedString::TCollection_HExtendedString ******/
+		/****** md5 signature: 2296e03682630049aa1941ff334aa49d ******/
 		%feature("compactdefaultargs") TCollection_HExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -4064,8 +4064,8 @@ Initializes a hextendedstring with <length> space allocated. and filled with <fi
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(const Standard_Integer length, const Standard_ExtCharacter filler);
 
-		/****************** TCollection_HExtendedString ******************/
-		/**** md5 signature: da8ba001c8df8c7dbb818c52dbf8e2c7 ****/
+		/****** TCollection_HExtendedString::TCollection_HExtendedString ******/
+		/****** md5 signature: da8ba001c8df8c7dbb818c52dbf8e2c7 ******/
 		%feature("compactdefaultargs") TCollection_HExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -4082,8 +4082,8 @@ Initializes a hextendedstring with a extendedstring.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(TCollection_ExtendedString aString);
 
-		/****************** TCollection_HExtendedString ******************/
-		/**** md5 signature: ab1073128cdb22935e69377eec67a8cb ****/
+		/****** TCollection_HExtendedString::TCollection_HExtendedString ******/
+		/****** md5 signature: ab1073128cdb22935e69377eec67a8cb ******/
 		%feature("compactdefaultargs") TCollection_HExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -4100,8 +4100,8 @@ Initializes a hextendedstring with a extendedstring.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(TCollection_ExtendedString & theString);
 
-		/****************** TCollection_HExtendedString ******************/
-		/**** md5 signature: af4627abe66bf228b7e542a0d52004e1 ****/
+		/****** TCollection_HExtendedString::TCollection_HExtendedString ******/
+		/****** md5 signature: af4627abe66bf228b7e542a0d52004e1 ******/
 		%feature("compactdefaultargs") TCollection_HExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -4118,8 +4118,8 @@ Initializes a hextendedstring with an hasciistring.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(const opencascade::handle<TCollection_HAsciiString> & aString);
 
-		/****************** TCollection_HExtendedString ******************/
-		/**** md5 signature: 0d71b66bd8b2c8d5cad87ba3ee0bc564 ****/
+		/****** TCollection_HExtendedString::TCollection_HExtendedString ******/
+		/****** md5 signature: 0d71b66bd8b2c8d5cad87ba3ee0bc564 ******/
 		%feature("compactdefaultargs") TCollection_HExtendedString;
 		%feature("autodoc", "
 Parameters
@@ -4136,8 +4136,8 @@ Initializes a hextendedstring with a hextendedstring.
 ") TCollection_HExtendedString;
 		 TCollection_HExtendedString(const opencascade::handle<TCollection_HExtendedString> & aString);
 
-		/****************** AssignCat ******************/
-		/**** md5 signature: 5637c8b94e0cc150f0bd192ceda3312f ****/
+		/****** TCollection_HExtendedString::AssignCat ******/
+		/****** md5 signature: 5637c8b94e0cc150f0bd192ceda3312f ******/
 		%feature("compactdefaultargs") AssignCat;
 		%feature("autodoc", "
 Parameters
@@ -4154,8 +4154,8 @@ Appends <other> to me.
 ") AssignCat;
 		void AssignCat(const opencascade::handle<TCollection_HExtendedString> & other);
 
-		/****************** Cat ******************/
-		/**** md5 signature: 05ff8d0d693749110edd373b865203e0 ****/
+		/****** TCollection_HExtendedString::Cat ******/
+		/****** md5 signature: 05ff8d0d693749110edd373b865203e0 ******/
 		%feature("compactdefaultargs") Cat;
 		%feature("autodoc", "
 Parameters
@@ -4172,8 +4172,8 @@ Returns a string appending <other> to me.
 ") Cat;
 		opencascade::handle<TCollection_HExtendedString> Cat(const opencascade::handle<TCollection_HExtendedString> & other);
 
-		/****************** ChangeAll ******************/
-		/**** md5 signature: 172cbf77fdcbc202d23ddaed833764da ****/
+		/****** TCollection_HExtendedString::ChangeAll ******/
+		/****** md5 signature: 172cbf77fdcbc202d23ddaed833764da ******/
 		%feature("compactdefaultargs") ChangeAll;
 		%feature("autodoc", "
 Parameters
@@ -4191,8 +4191,8 @@ Substitutes all the characters equal to achar by newchar in the string <self>.
 ") ChangeAll;
 		void ChangeAll(const Standard_ExtCharacter aChar, const Standard_ExtCharacter NewChar);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TCollection_HExtendedString::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -4204,8 +4204,8 @@ Removes all characters contained in <self>. this produces an empty extendedstrin
 ") Clear;
 		void Clear();
 
-		/****************** Insert ******************/
-		/**** md5 signature: 0697ac1ff05f55e6371b2412e6df94e9 ****/
+		/****** TCollection_HExtendedString::Insert ******/
+		/****** md5 signature: 0697ac1ff05f55e6371b2412e6df94e9 ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -4223,8 +4223,8 @@ Insert a extcharacter at position <where>. example: astring contains 'hy not ?' 
 ") Insert;
 		void Insert(const Standard_Integer where, const Standard_ExtCharacter what);
 
-		/****************** Insert ******************/
-		/**** md5 signature: e5e5bb8552e3c2a75f6cd9e142c25e50 ****/
+		/****** TCollection_HExtendedString::Insert ******/
+		/****** md5 signature: e5e5bb8552e3c2a75f6cd9e142c25e50 ******/
 		%feature("compactdefaultargs") Insert;
 		%feature("autodoc", "
 Parameters
@@ -4242,8 +4242,8 @@ Insert a hextendedstring at position <where>.
 ") Insert;
 		void Insert(const Standard_Integer where, const opencascade::handle<TCollection_HExtendedString> & what);
 
-		/****************** IsAscii ******************/
-		/**** md5 signature: 6f7276b908dd6009ce0fd19db811821c ****/
+		/****** TCollection_HExtendedString::IsAscii ******/
+		/****** md5 signature: 6f7276b908dd6009ce0fd19db811821c ******/
 		%feature("compactdefaultargs") IsAscii;
 		%feature("autodoc", "Return
 -------
@@ -4255,8 +4255,8 @@ Returns true if the string contains only 'ascii range' characters.
 ") IsAscii;
 		Standard_Boolean IsAscii();
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
+		/****** TCollection_HExtendedString::IsEmpty ******/
+		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -4268,8 +4268,8 @@ Returns true if the string <self> contains zero character.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** IsGreater ******************/
-		/**** md5 signature: cc3e8af8c1c5a7017ee1ebce259a4360 ****/
+		/****** TCollection_HExtendedString::IsGreater ******/
+		/****** md5 signature: cc3e8af8c1c5a7017ee1ebce259a4360 ******/
 		%feature("compactdefaultargs") IsGreater;
 		%feature("autodoc", "
 Parameters
@@ -4286,8 +4286,8 @@ Returns true if <self> is greater than <other>.
 ") IsGreater;
 		Standard_Boolean IsGreater(const opencascade::handle<TCollection_HExtendedString> & other);
 
-		/****************** IsLess ******************/
-		/**** md5 signature: bd54ace886c9b9310105f354ea4429cb ****/
+		/****** TCollection_HExtendedString::IsLess ******/
+		/****** md5 signature: bd54ace886c9b9310105f354ea4429cb ******/
 		%feature("compactdefaultargs") IsLess;
 		%feature("autodoc", "
 Parameters
@@ -4304,8 +4304,8 @@ Returns true if <self> is less than <other>.
 ") IsLess;
 		Standard_Boolean IsLess(const opencascade::handle<TCollection_HExtendedString> & other);
 
-		/****************** IsSameState ******************/
-		/**** md5 signature: 307ce673960649f0ee8c22eeed19ce9a ****/
+		/****** TCollection_HExtendedString::IsSameState ******/
+		/****** md5 signature: 307ce673960649f0ee8c22eeed19ce9a ******/
 		%feature("compactdefaultargs") IsSameState;
 		%feature("autodoc", "
 Parameters
@@ -4322,8 +4322,8 @@ No available documentation.
 ") IsSameState;
 		Standard_Boolean IsSameState(const opencascade::handle<TCollection_HExtendedString> & other);
 
-		/****************** Length ******************/
-		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
+		/****** TCollection_HExtendedString::Length ******/
+		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -4335,8 +4335,8 @@ Returns number of characters in <self>. this is the same functionality as 'strle
 ") Length;
 		Standard_Integer Length();
 
-		/****************** Print ******************/
-		/**** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ****/
+		/****** TCollection_HExtendedString::Print ******/
+		/****** md5 signature: 0edf3bdce48a694eb17a295e551bde0f ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -4352,8 +4352,8 @@ Displays <self> .
 ") Print;
 		void Print(std::ostream &OutValue);
 
-		/****************** Remove ******************/
-		/**** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ****/
+		/****** TCollection_HExtendedString::Remove ******/
+		/****** md5 signature: f18035a636fe6904f989e7a0f0dd31b8 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -4371,8 +4371,8 @@ Erases <ahowmany> characters from position <where>, <where> included. example: a
 ") Remove;
 		void Remove(const Standard_Integer where, const Standard_Integer ahowmany = 1);
 
-		/****************** RemoveAll ******************/
-		/**** md5 signature: 5cc33317c91574b4016e3809c2016af5 ****/
+		/****** TCollection_HExtendedString::RemoveAll ******/
+		/****** md5 signature: 5cc33317c91574b4016e3809c2016af5 ******/
 		%feature("compactdefaultargs") RemoveAll;
 		%feature("autodoc", "
 Parameters
@@ -4389,8 +4389,8 @@ Removes every <what> characters from <self>.
 ") RemoveAll;
 		void RemoveAll(const Standard_ExtCharacter what);
 
-		/****************** Search ******************/
-		/**** md5 signature: 6d6eaf0de6de28075a3fdc30b6617dc1 ****/
+		/****** TCollection_HExtendedString::Search ******/
+		/****** md5 signature: 6d6eaf0de6de28075a3fdc30b6617dc1 ******/
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "
 Parameters
@@ -4407,8 +4407,8 @@ Searches a string in <self> from the beginning and returns position of first ite
 ") Search;
 		Standard_Integer Search(const opencascade::handle<TCollection_HExtendedString> & what);
 
-		/****************** SearchFromEnd ******************/
-		/**** md5 signature: 380fc28610d0074f694a37d7a03affdf ****/
+		/****** TCollection_HExtendedString::SearchFromEnd ******/
+		/****** md5 signature: 380fc28610d0074f694a37d7a03affdf ******/
 		%feature("compactdefaultargs") SearchFromEnd;
 		%feature("autodoc", "
 Parameters
@@ -4425,8 +4425,8 @@ Searches a extendedstring in another extendedstring from the end and returns pos
 ") SearchFromEnd;
 		Standard_Integer SearchFromEnd(const opencascade::handle<TCollection_HExtendedString> & what);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 294924c31fc292e1cf9eb136f9d9d649 ****/
+		/****** TCollection_HExtendedString::SetValue ******/
+		/****** md5 signature: 294924c31fc292e1cf9eb136f9d9d649 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -4444,8 +4444,8 @@ Replaces one character in the string at position <where>. if <where> is less tha
 ") SetValue;
 		void SetValue(const Standard_Integer where, const Standard_ExtCharacter what);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 122ca5e6bbf641bb81f1e42c9e12f7ba ****/
+		/****** TCollection_HExtendedString::SetValue ******/
+		/****** md5 signature: 122ca5e6bbf641bb81f1e42c9e12f7ba ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -4463,8 +4463,8 @@ Replaces a part of <self> by another string.
 ") SetValue;
 		void SetValue(const Standard_Integer where, const opencascade::handle<TCollection_HExtendedString> & what);
 
-		/****************** Split ******************/
-		/**** md5 signature: af66277d70b09ff10c6a90612af2be25 ****/
+		/****** TCollection_HExtendedString::Split ******/
+		/****** md5 signature: af66277d70b09ff10c6a90612af2be25 ******/
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "
 Parameters
@@ -4481,8 +4481,8 @@ Splits a extendedstring into two sub-strings. example: astring contains 'abcdefg
 ") Split;
 		opencascade::handle<TCollection_HExtendedString> Split(const Standard_Integer where);
 
-		/****************** String ******************/
-		/**** md5 signature: 6292e02513881910490f8602aa6e4a72 ****/
+		/****** TCollection_HExtendedString::String ******/
+		/****** md5 signature: 6292e02513881910490f8602aa6e4a72 ******/
 		%feature("compactdefaultargs") String;
 		%feature("autodoc", "Return
 -------
@@ -4494,8 +4494,8 @@ Returns the field mystring.
 ") String;
 		const TCollection_ExtendedString & String();
 
-		/****************** ToExtString ******************/
-		/**** md5 signature: 0e6e2c1294a386d82229f4b675a40150 ****/
+		/****** TCollection_HExtendedString::ToExtString ******/
+		/****** md5 signature: 0e6e2c1294a386d82229f4b675a40150 ******/
 		%feature("compactdefaultargs") ToExtString;
 		%feature("autodoc", "Return
 -------
@@ -4507,8 +4507,8 @@ Returns pointer to extstring.
 ") ToExtString;
 		Standard_ExtString ToExtString();
 
-		/****************** Token ******************/
-		/**** md5 signature: 0e847f59efee1d1840c0206a334f3d1e ****/
+		/****** TCollection_HExtendedString::Token ******/
+		/****** md5 signature: 0e847f59efee1d1840c0206a334f3d1e ******/
 		%feature("compactdefaultargs") Token;
 		%feature("autodoc", "
 Parameters
@@ -4526,8 +4526,8 @@ Extracts <whichone> token from <self>. by default, the <separators> is set to sp
 ") Token;
 		opencascade::handle<TCollection_HExtendedString> Token(const Standard_ExtString separators, const Standard_Integer whichone = 1);
 
-		/****************** Trunc ******************/
-		/**** md5 signature: 7302e52dab6a6849b10a3ed0dd6dc62f ****/
+		/****** TCollection_HExtendedString::Trunc ******/
+		/****** md5 signature: 7302e52dab6a6849b10a3ed0dd6dc62f ******/
 		%feature("compactdefaultargs") Trunc;
 		%feature("autodoc", "
 Parameters
@@ -4544,8 +4544,8 @@ Truncates <self> to <ahowmany> characters. example: me = 'hello dolly' -> trunc(
 ") Trunc;
 		void Trunc(const Standard_Integer ahowmany);
 
-		/****************** Value ******************/
-		/**** md5 signature: 84bd4561d49bb9835b6ef809ad6dbc29 ****/
+		/****** TCollection_HExtendedString::Value ******/
+		/****** md5 signature: 84bd4561d49bb9835b6ef809ad6dbc29 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters

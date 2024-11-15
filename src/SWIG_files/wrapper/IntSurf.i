@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTSURFDOCSTRING
 "IntSurf module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_intsurf.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intsurf.html"
 %enddef
 %module (package="OCC.Core", docstring=INTSURFDOCSTRING) IntSurf
 
@@ -171,8 +171,8 @@ typedef NCollection_Sequence<IntSurf_PntOn2S> IntSurf_SequenceOfPntOn2S;
 %rename(intsurf) IntSurf;
 class IntSurf {
 	public:
-		/****************** MakeTransition ******************/
-		/**** md5 signature: e95492976a37147a3755de5278b25f3e ****/
+		/****** IntSurf::MakeTransition ******/
+		/****** md5 signature: e95492976a37147a3755de5278b25f3e ******/
 		%feature("compactdefaultargs") MakeTransition;
 		%feature("autodoc", "
 Parameters
@@ -193,8 +193,8 @@ Computes the transition of the intersection point between the two lines. tgfirst
 ") MakeTransition;
 		static void MakeTransition(const gp_Vec & TgFirst, const gp_Vec & TgSecond, const gp_Dir & Normal, IntSurf_Transition & TFirst, IntSurf_Transition & TSecond);
 
-		/****************** SetPeriod ******************/
-		/**** md5 signature: 486891f66d1363af6895d7c681cba2a3 ****/
+		/****** IntSurf::SetPeriod ******/
+		/****** md5 signature: 486891f66d1363af6895d7c681cba2a3 ******/
 		%feature("compactdefaultargs") SetPeriod;
 		%feature("autodoc", "
 Parameters
@@ -227,8 +227,8 @@ Fills thearrofperiod array by the period values of thefirstsurf and thesecondsur
 ***********************/
 class IntSurf_Couple {
 	public:
-		/****************** IntSurf_Couple ******************/
-		/**** md5 signature: ea23add00836d7c02bebc1a9ff4e92ac ****/
+		/****** IntSurf_Couple::IntSurf_Couple ******/
+		/****** md5 signature: ea23add00836d7c02bebc1a9ff4e92ac ******/
 		%feature("compactdefaultargs") IntSurf_Couple;
 		%feature("autodoc", "Return
 -------
@@ -240,8 +240,8 @@ No available documentation.
 ") IntSurf_Couple;
 		 IntSurf_Couple();
 
-		/****************** IntSurf_Couple ******************/
-		/**** md5 signature: 1fcbb7aa82d36794f54eb374b8a87f3f ****/
+		/****** IntSurf_Couple::IntSurf_Couple ******/
+		/****** md5 signature: 1fcbb7aa82d36794f54eb374b8a87f3f ******/
 		%feature("compactdefaultargs") IntSurf_Couple;
 		%feature("autodoc", "
 Parameters
@@ -259,8 +259,8 @@ No available documentation.
 ") IntSurf_Couple;
 		 IntSurf_Couple(const Standard_Integer Index1, const Standard_Integer Index2);
 
-		/****************** First ******************/
-		/**** md5 signature: e9b9b55d0f95896826fc1a7c7b3fdf28 ****/
+		/****** IntSurf_Couple::First ******/
+		/****** md5 signature: e9b9b55d0f95896826fc1a7c7b3fdf28 ******/
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "Return
 -------
@@ -272,8 +272,8 @@ Returns the first element.
 ") First;
 		Standard_Integer First();
 
-		/****************** Second ******************/
-		/**** md5 signature: c8636c2280cbf925df1986b0518c04aa ****/
+		/****** IntSurf_Couple::Second ******/
+		/****** md5 signature: c8636c2280cbf925df1986b0518c04aa ******/
 		%feature("compactdefaultargs") Second;
 		%feature("autodoc", "Return
 -------
@@ -299,8 +299,8 @@ Returns the second element.
 ******************************/
 class IntSurf_InteriorPoint {
 	public:
-		/****************** IntSurf_InteriorPoint ******************/
-		/**** md5 signature: 9be54db4be2c38cfb1b6e31ec8aa37f9 ****/
+		/****** IntSurf_InteriorPoint::IntSurf_InteriorPoint ******/
+		/****** md5 signature: 9be54db4be2c38cfb1b6e31ec8aa37f9 ******/
 		%feature("compactdefaultargs") IntSurf_InteriorPoint;
 		%feature("autodoc", "Return
 -------
@@ -312,8 +312,8 @@ No available documentation.
 ") IntSurf_InteriorPoint;
 		 IntSurf_InteriorPoint();
 
-		/****************** IntSurf_InteriorPoint ******************/
-		/**** md5 signature: d4f2c3329bde0497c3a826ab8fa154b4 ****/
+		/****** IntSurf_InteriorPoint::IntSurf_InteriorPoint ******/
+		/****** md5 signature: d4f2c3329bde0497c3a826ab8fa154b4 ******/
 		%feature("compactdefaultargs") IntSurf_InteriorPoint;
 		%feature("autodoc", "
 Parameters
@@ -334,8 +334,8 @@ No available documentation.
 ") IntSurf_InteriorPoint;
 		 IntSurf_InteriorPoint(const gp_Pnt & P, const Standard_Real U, const Standard_Real V, const gp_Vec & Direc, const gp_Vec2d & Direc2d);
 
-		/****************** Direction ******************/
-		/**** md5 signature: 14d68b48e3c0452be33c63cfd10f248f ****/
+		/****** IntSurf_InteriorPoint::Direction ******/
+		/****** md5 signature: 14d68b48e3c0452be33c63cfd10f248f ******/
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", "Return
 -------
@@ -347,8 +347,8 @@ Returns the tangent at the intersection in 3d space associated to the interior p
 ") Direction;
 		const gp_Vec Direction();
 
-		/****************** Direction2d ******************/
-		/**** md5 signature: d22e536b120fb38c3e40ebd2590dce82 ****/
+		/****** IntSurf_InteriorPoint::Direction2d ******/
+		/****** md5 signature: d22e536b120fb38c3e40ebd2590dce82 ******/
 		%feature("compactdefaultargs") Direction2d;
 		%feature("autodoc", "Return
 -------
@@ -360,8 +360,8 @@ Returns the tangent at the intersection in the parametric space of the parametri
 ") Direction2d;
 		const gp_Vec2d Direction2d();
 
-		/****************** Parameters ******************/
-		/**** md5 signature: 24a2c71191423d4e30ed72f58cb5de87 ****/
+		/****** IntSurf_InteriorPoint::Parameters ******/
+		/****** md5 signature: 24a2c71191423d4e30ed72f58cb5de87 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -378,8 +378,8 @@ Returns the parameters of the interior point on the parametric surface.
 ") Parameters;
 		void Parameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 0276b9ec05425d8996dbc1333a32d0b3 ****/
+		/****** IntSurf_InteriorPoint::SetValue ******/
+		/****** md5 signature: 0276b9ec05425d8996dbc1333a32d0b3 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -400,8 +400,8 @@ No available documentation.
 ") SetValue;
 		void SetValue(const gp_Pnt & P, const Standard_Real U, const Standard_Real V, const gp_Vec & Direc, const gp_Vec2d & Direc2d);
 
-		/****************** UParameter ******************/
-		/**** md5 signature: 5a3c6fef4fc1a6f599cc725a940f8581 ****/
+		/****** IntSurf_InteriorPoint::UParameter ******/
+		/****** md5 signature: 5a3c6fef4fc1a6f599cc725a940f8581 ******/
 		%feature("compactdefaultargs") UParameter;
 		%feature("autodoc", "Return
 -------
@@ -413,8 +413,8 @@ Returns the first parameter of the interior point on the parametric surface.
 ") UParameter;
 		Standard_Real UParameter();
 
-		/****************** VParameter ******************/
-		/**** md5 signature: 5b56cd11dcb65aaedb7fac8351dbfbc8 ****/
+		/****** IntSurf_InteriorPoint::VParameter ******/
+		/****** md5 signature: 5b56cd11dcb65aaedb7fac8351dbfbc8 ******/
 		%feature("compactdefaultargs") VParameter;
 		%feature("autodoc", "Return
 -------
@@ -426,8 +426,8 @@ Returns the second parameter of the interior point on the parametric surface.
 ") VParameter;
 		Standard_Real VParameter();
 
-		/****************** Value ******************/
-		/**** md5 signature: eddd2908948849b73f6d8aacab318652 ****/
+		/****** IntSurf_InteriorPoint::Value ******/
+		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -453,8 +453,8 @@ Returns the 3d coordinates of the interior point.
 **********************************/
 class IntSurf_InteriorPointTool {
 	public:
-		/****************** Direction2d ******************/
-		/**** md5 signature: a4118c67e53e1fba8a4c33171843104e ****/
+		/****** IntSurf_InteriorPointTool::Direction2d ******/
+		/****** md5 signature: a4118c67e53e1fba8a4c33171843104e ******/
 		%feature("compactdefaultargs") Direction2d;
 		%feature("autodoc", "
 Parameters
@@ -471,8 +471,8 @@ Returns the tangent at the intersectin in the parametric space of the parametriz
 ") Direction2d;
 		static gp_Dir2d Direction2d(const IntSurf_InteriorPoint & PStart);
 
-		/****************** Direction3d ******************/
-		/**** md5 signature: 638aece9ee10f7279a0f6a68ad6ffc3c ****/
+		/****** IntSurf_InteriorPointTool::Direction3d ******/
+		/****** md5 signature: 638aece9ee10f7279a0f6a68ad6ffc3c ******/
 		%feature("compactdefaultargs") Direction3d;
 		%feature("autodoc", "
 Parameters
@@ -489,8 +489,8 @@ Returns the tangent at the intersectin in 3d space associated to <p>.
 ") Direction3d;
 		static gp_Vec Direction3d(const IntSurf_InteriorPoint & PStart);
 
-		/****************** Value2d ******************/
-		/**** md5 signature: 270cf5176c898c99bae6ed28a2f136ba ****/
+		/****** IntSurf_InteriorPointTool::Value2d ******/
+		/****** md5 signature: 270cf5176c898c99bae6ed28a2f136ba ******/
 		%feature("compactdefaultargs") Value2d;
 		%feature("autodoc", "
 Parameters
@@ -508,8 +508,8 @@ Returns the <u,v> parameters which are associated with <p> it's the parameters w
 ") Value2d;
 		static void Value2d(const IntSurf_InteriorPoint & PStart, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Value3d ******************/
-		/**** md5 signature: 7ab77cefdf161f62c8c2bcdf90633a44 ****/
+		/****** IntSurf_InteriorPointTool::Value3d ******/
+		/****** md5 signature: 7ab77cefdf161f62c8c2bcdf90633a44 ******/
 		%feature("compactdefaultargs") Value3d;
 		%feature("autodoc", "
 Parameters
@@ -540,8 +540,8 @@ Returns the 3d coordinates of the starting point.
 *************************/
 class IntSurf_LineOn2S : public Standard_Transient {
 	public:
-		/****************** IntSurf_LineOn2S ******************/
-		/**** md5 signature: cdd9642f213bfad8fcfaf09cd388b17d ****/
+		/****** IntSurf_LineOn2S::IntSurf_LineOn2S ******/
+		/****** md5 signature: cdd9642f213bfad8fcfaf09cd388b17d ******/
 		%feature("compactdefaultargs") IntSurf_LineOn2S;
 		%feature("autodoc", "
 Parameters
@@ -558,8 +558,8 @@ No available documentation.
 ") IntSurf_LineOn2S;
 		 IntSurf_LineOn2S(const IntSurf_Allocator & theAllocator = 0);
 
-		/****************** Add ******************/
-		/**** md5 signature: 01be3efa9c74c4d8432a102f97f9361d ****/
+		/****** IntSurf_LineOn2S::Add ******/
+		/****** md5 signature: 01be3efa9c74c4d8432a102f97f9361d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -576,8 +576,8 @@ Adds a point in the line.
 ") Add;
 		void Add(const IntSurf_PntOn2S & P);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** IntSurf_LineOn2S::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -589,8 +589,8 @@ No available documentation.
 ") Clear;
 		void Clear();
 
-		/****************** InsertBefore ******************/
-		/**** md5 signature: effddb142287d626dad63116f0eb2376 ****/
+		/****** IntSurf_LineOn2S::InsertBefore ******/
+		/****** md5 signature: effddb142287d626dad63116f0eb2376 ******/
 		%feature("compactdefaultargs") InsertBefore;
 		%feature("autodoc", "
 Parameters
@@ -608,8 +608,8 @@ No available documentation.
 ") InsertBefore;
 		void InsertBefore(const Standard_Integer I, const IntSurf_PntOn2S & P);
 
-		/****************** IsOutBox ******************/
-		/**** md5 signature: b24ebc49a90678cd3e7783ebeab08fdd ****/
+		/****** IntSurf_LineOn2S::IsOutBox ******/
+		/****** md5 signature: b24ebc49a90678cd3e7783ebeab08fdd ******/
 		%feature("compactdefaultargs") IsOutBox;
 		%feature("autodoc", "
 Parameters
@@ -626,8 +626,8 @@ Returns true if thep is out of the box built from 3d-points.
 ") IsOutBox;
 		Standard_Boolean IsOutBox(const gp_Pnt & theP);
 
-		/****************** IsOutSurf1Box ******************/
-		/**** md5 signature: 035c0dd5684f2bc277113baba0a7ca30 ****/
+		/****** IntSurf_LineOn2S::IsOutSurf1Box ******/
+		/****** md5 signature: 035c0dd5684f2bc277113baba0a7ca30 ******/
 		%feature("compactdefaultargs") IsOutSurf1Box;
 		%feature("autodoc", "
 Parameters
@@ -644,8 +644,8 @@ Returns true if thep is out of the box built from the points on 1st surface.
 ") IsOutSurf1Box;
 		Standard_Boolean IsOutSurf1Box(const gp_Pnt2d & theP);
 
-		/****************** IsOutSurf2Box ******************/
-		/**** md5 signature: 3fa30fdbec43874787ebf09979847639 ****/
+		/****** IntSurf_LineOn2S::IsOutSurf2Box ******/
+		/****** md5 signature: 3fa30fdbec43874787ebf09979847639 ******/
 		%feature("compactdefaultargs") IsOutSurf2Box;
 		%feature("autodoc", "
 Parameters
@@ -662,8 +662,8 @@ Returns true if thep is out of the box built from the points on 2nd surface.
 ") IsOutSurf2Box;
 		Standard_Boolean IsOutSurf2Box(const gp_Pnt2d & theP);
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** IntSurf_LineOn2S::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -675,8 +675,8 @@ Returns the number of points in the line.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** RemovePoint ******************/
-		/**** md5 signature: c7bf0e4af319953519a4144b346ae43d ****/
+		/****** IntSurf_LineOn2S::RemovePoint ******/
+		/****** md5 signature: c7bf0e4af319953519a4144b346ae43d ******/
 		%feature("compactdefaultargs") RemovePoint;
 		%feature("autodoc", "
 Parameters
@@ -693,8 +693,8 @@ No available documentation.
 ") RemovePoint;
 		void RemovePoint(const Standard_Integer I);
 
-		/****************** Reverse ******************/
-		/**** md5 signature: b751d6874fc026e19a7a6cb37e9ac1b4 ****/
+		/****** IntSurf_LineOn2S::Reverse ******/
+		/****** md5 signature: b751d6874fc026e19a7a6cb37e9ac1b4 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "Return
 -------
@@ -706,8 +706,8 @@ Reverses the order of points of the line.
 ") Reverse;
 		void Reverse();
 
-		/****************** SetPoint ******************/
-		/**** md5 signature: 3f014f983e4959a8adc3802bc6e127de ****/
+		/****** IntSurf_LineOn2S::SetPoint ******/
+		/****** md5 signature: 3f014f983e4959a8adc3802bc6e127de ******/
 		%feature("compactdefaultargs") SetPoint;
 		%feature("autodoc", "
 Parameters
@@ -725,8 +725,8 @@ Sets the 3d point of the index-th pnton2s.
 ") SetPoint;
 		void SetPoint(const Standard_Integer Index, const gp_Pnt & thePnt);
 
-		/****************** SetUV ******************/
-		/**** md5 signature: ace9005a01cb7b993999ab66ef8c0659 ****/
+		/****** IntSurf_LineOn2S::SetUV ******/
+		/****** md5 signature: ace9005a01cb7b993999ab66ef8c0659 ******/
 		%feature("compactdefaultargs") SetUV;
 		%feature("autodoc", "
 Parameters
@@ -746,8 +746,8 @@ Sets the parametric coordinates on one of the surfaces of the point of range ind
 ") SetUV;
 		void SetUV(const Standard_Integer Index, const Standard_Boolean OnFirst, const Standard_Real U, const Standard_Real V);
 
-		/****************** Split ******************/
-		/**** md5 signature: e386e59312767dd5099cad44c29dd524 ****/
+		/****** IntSurf_LineOn2S::Split ******/
+		/****** md5 signature: e386e59312767dd5099cad44c29dd524 ******/
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "
 Parameters
@@ -764,8 +764,8 @@ Keeps in <self> the points 1 to index-1, and returns the items index to the end.
 ") Split;
 		opencascade::handle<IntSurf_LineOn2S> Split(const Standard_Integer Index);
 
-		/****************** Value ******************/
-		/**** md5 signature: 8dd9e41f579d9d6e26d29bbd4f60e2b9 ****/
+		/****** IntSurf_LineOn2S::Value ******/
+		/****** md5 signature: 8dd9e41f579d9d6e26d29bbd4f60e2b9 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -782,8 +782,8 @@ Returns the point of range index in the line.
 ") Value;
 		const IntSurf_PntOn2S & Value(const Standard_Integer Index);
 
-		/****************** Value ******************/
-		/**** md5 signature: 77cc0e9a473d154fdd211bbf2887bdce ****/
+		/****** IntSurf_LineOn2S::Value ******/
+		/****** md5 signature: 77cc0e9a473d154fdd211bbf2887bdce ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -817,8 +817,8 @@ Replaces the point of range index in the line.
 **************************/
 class IntSurf_PathPoint {
 	public:
-		/****************** IntSurf_PathPoint ******************/
-		/**** md5 signature: e87ef668e2e110a2a14d003a026b551f ****/
+		/****** IntSurf_PathPoint::IntSurf_PathPoint ******/
+		/****** md5 signature: e87ef668e2e110a2a14d003a026b551f ******/
 		%feature("compactdefaultargs") IntSurf_PathPoint;
 		%feature("autodoc", "Return
 -------
@@ -830,8 +830,8 @@ No available documentation.
 ") IntSurf_PathPoint;
 		 IntSurf_PathPoint();
 
-		/****************** IntSurf_PathPoint ******************/
-		/**** md5 signature: 1f36d1a91564a744627b33e53759eadd ****/
+		/****** IntSurf_PathPoint::IntSurf_PathPoint ******/
+		/****** md5 signature: 1f36d1a91564a744627b33e53759eadd ******/
 		%feature("compactdefaultargs") IntSurf_PathPoint;
 		%feature("autodoc", "
 Parameters
@@ -850,8 +850,8 @@ No available documentation.
 ") IntSurf_PathPoint;
 		 IntSurf_PathPoint(const gp_Pnt & P, const Standard_Real U, const Standard_Real V);
 
-		/****************** AddUV ******************/
-		/**** md5 signature: 5afbd6bdf7099dccb0b01803288a4f26 ****/
+		/****** IntSurf_PathPoint::AddUV ******/
+		/****** md5 signature: 5afbd6bdf7099dccb0b01803288a4f26 ******/
 		%feature("compactdefaultargs") AddUV;
 		%feature("autodoc", "
 Parameters
@@ -869,8 +869,8 @@ No available documentation.
 ") AddUV;
 		void AddUV(const Standard_Real U, const Standard_Real V);
 
-		/****************** Direction2d ******************/
-		/**** md5 signature: 7aae5ff2f37e31eadd39774422c0aab4 ****/
+		/****** IntSurf_PathPoint::Direction2d ******/
+		/****** md5 signature: 7aae5ff2f37e31eadd39774422c0aab4 ******/
 		%feature("compactdefaultargs") Direction2d;
 		%feature("autodoc", "Return
 -------
@@ -882,8 +882,8 @@ No available documentation.
 ") Direction2d;
 		const gp_Dir2d Direction2d();
 
-		/****************** Direction3d ******************/
-		/**** md5 signature: f385f807d122e2e9ed8491a658ff12e0 ****/
+		/****** IntSurf_PathPoint::Direction3d ******/
+		/****** md5 signature: f385f807d122e2e9ed8491a658ff12e0 ******/
 		%feature("compactdefaultargs") Direction3d;
 		%feature("autodoc", "Return
 -------
@@ -895,8 +895,8 @@ No available documentation.
 ") Direction3d;
 		const gp_Vec Direction3d();
 
-		/****************** IsPassingPnt ******************/
-		/**** md5 signature: 78834dea556ad36c560313343e4d367d ****/
+		/****** IntSurf_PathPoint::IsPassingPnt ******/
+		/****** md5 signature: 78834dea556ad36c560313343e4d367d ******/
 		%feature("compactdefaultargs") IsPassingPnt;
 		%feature("autodoc", "Return
 -------
@@ -908,8 +908,8 @@ No available documentation.
 ") IsPassingPnt;
 		Standard_Boolean IsPassingPnt();
 
-		/****************** IsTangent ******************/
-		/**** md5 signature: 16a7964bb24e34f80fabc93e5a65aedc ****/
+		/****** IntSurf_PathPoint::IsTangent ******/
+		/****** md5 signature: 16a7964bb24e34f80fabc93e5a65aedc ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "Return
 -------
@@ -921,8 +921,8 @@ No available documentation.
 ") IsTangent;
 		Standard_Boolean IsTangent();
 
-		/****************** Multiplicity ******************/
-		/**** md5 signature: fd18c919ee9c5917e8cf38138b1aed7a ****/
+		/****** IntSurf_PathPoint::Multiplicity ******/
+		/****** md5 signature: fd18c919ee9c5917e8cf38138b1aed7a ******/
 		%feature("compactdefaultargs") Multiplicity;
 		%feature("autodoc", "Return
 -------
@@ -934,8 +934,8 @@ No available documentation.
 ") Multiplicity;
 		Standard_Integer Multiplicity();
 
-		/****************** Parameters ******************/
-		/**** md5 signature: e9cd1a857a99bf64aba6fcfeffe41477 ****/
+		/****** IntSurf_PathPoint::Parameters ******/
+		/****** md5 signature: e9cd1a857a99bf64aba6fcfeffe41477 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -953,8 +953,8 @@ No available documentation.
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SetDirections ******************/
-		/**** md5 signature: a8037b6fa0ec7521b164ff5c1a8b49f9 ****/
+		/****** IntSurf_PathPoint::SetDirections ******/
+		/****** md5 signature: a8037b6fa0ec7521b164ff5c1a8b49f9 ******/
 		%feature("compactdefaultargs") SetDirections;
 		%feature("autodoc", "
 Parameters
@@ -972,8 +972,8 @@ No available documentation.
 ") SetDirections;
 		void SetDirections(const gp_Vec & V, const gp_Dir2d & D);
 
-		/****************** SetPassing ******************/
-		/**** md5 signature: d787def5875ee889a2b3e3fb778fe111 ****/
+		/****** IntSurf_PathPoint::SetPassing ******/
+		/****** md5 signature: d787def5875ee889a2b3e3fb778fe111 ******/
 		%feature("compactdefaultargs") SetPassing;
 		%feature("autodoc", "
 Parameters
@@ -990,8 +990,8 @@ No available documentation.
 ") SetPassing;
 		void SetPassing(const Standard_Boolean Pass);
 
-		/****************** SetTangency ******************/
-		/**** md5 signature: 5a99c919dfb1f6464f235b5fa0685fc1 ****/
+		/****** IntSurf_PathPoint::SetTangency ******/
+		/****** md5 signature: 5a99c919dfb1f6464f235b5fa0685fc1 ******/
 		%feature("compactdefaultargs") SetTangency;
 		%feature("autodoc", "
 Parameters
@@ -1008,8 +1008,8 @@ No available documentation.
 ") SetTangency;
 		void SetTangency(const Standard_Boolean Tang);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: f3a20967231d8be807407d6f74d3b449 ****/
+		/****** IntSurf_PathPoint::SetValue ******/
+		/****** md5 signature: f3a20967231d8be807407d6f74d3b449 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1028,8 +1028,8 @@ No available documentation.
 ") SetValue;
 		void SetValue(const gp_Pnt & P, const Standard_Real U, const Standard_Real V);
 
-		/****************** Value ******************/
-		/**** md5 signature: eddd2908948849b73f6d8aacab318652 ****/
+		/****** IntSurf_PathPoint::Value ******/
+		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1041,8 +1041,8 @@ No available documentation.
 ") Value;
 		const gp_Pnt Value();
 
-		/****************** Value2d ******************/
-		/**** md5 signature: 0978c71a88cbaef21e300d448937efae ****/
+		/****** IntSurf_PathPoint::Value2d ******/
+		/****** md5 signature: 0978c71a88cbaef21e300d448937efae ******/
 		%feature("compactdefaultargs") Value2d;
 		%feature("autodoc", "
 Parameters
@@ -1073,8 +1073,8 @@ No available documentation.
 ******************************/
 class IntSurf_PathPointTool {
 	public:
-		/****************** Direction2d ******************/
-		/**** md5 signature: 0e2f23b79bd6f39aa13af1ebd0b3991c ****/
+		/****** IntSurf_PathPointTool::Direction2d ******/
+		/****** md5 signature: 0e2f23b79bd6f39aa13af1ebd0b3991c ******/
 		%feature("compactdefaultargs") Direction2d;
 		%feature("autodoc", "
 Parameters
@@ -1091,8 +1091,8 @@ Returns the tangent at the intersection in the parametric space of the parametri
 ") Direction2d;
 		static gp_Dir2d Direction2d(const IntSurf_PathPoint & PStart);
 
-		/****************** Direction3d ******************/
-		/**** md5 signature: a3d511b1261ebf2f14773af16514eb08 ****/
+		/****** IntSurf_PathPointTool::Direction3d ******/
+		/****** md5 signature: a3d511b1261ebf2f14773af16514eb08 ******/
 		%feature("compactdefaultargs") Direction3d;
 		%feature("autodoc", "
 Parameters
@@ -1109,8 +1109,8 @@ Returns the tangent at the intersection in 3d space associated to <p> an excepti
 ") Direction3d;
 		static gp_Vec Direction3d(const IntSurf_PathPoint & PStart);
 
-		/****************** IsPassingPnt ******************/
-		/**** md5 signature: fdb1f4f98bd59e0d5db8d65441b38390 ****/
+		/****** IntSurf_PathPointTool::IsPassingPnt ******/
+		/****** md5 signature: fdb1f4f98bd59e0d5db8d65441b38390 ******/
 		%feature("compactdefaultargs") IsPassingPnt;
 		%feature("autodoc", "
 Parameters
@@ -1127,8 +1127,8 @@ Returns true if the point is a point on a non-oriented arc, which means that the
 ") IsPassingPnt;
 		static Standard_Boolean IsPassingPnt(const IntSurf_PathPoint & PStart);
 
-		/****************** IsTangent ******************/
-		/**** md5 signature: f0ec6f9500ff78bb0ea17a6ec4ff5935 ****/
+		/****** IntSurf_PathPointTool::IsTangent ******/
+		/****** md5 signature: f0ec6f9500ff78bb0ea17a6ec4ff5935 ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "
 Parameters
@@ -1145,8 +1145,8 @@ Returns true if the surfaces are tangent at this point. istangent can be true wh
 ") IsTangent;
 		static Standard_Boolean IsTangent(const IntSurf_PathPoint & PStart);
 
-		/****************** Multiplicity ******************/
-		/**** md5 signature: 2c1afac074aae61f8fb0f0d052558a1a ****/
+		/****** IntSurf_PathPointTool::Multiplicity ******/
+		/****** md5 signature: 2c1afac074aae61f8fb0f0d052558a1a ******/
 		%feature("compactdefaultargs") Multiplicity;
 		%feature("autodoc", "
 Parameters
@@ -1163,8 +1163,8 @@ Returns the multiplicity of the point i-e the number of auxillar parameters asso
 ") Multiplicity;
 		static Standard_Integer Multiplicity(const IntSurf_PathPoint & PStart);
 
-		/****************** Parameters ******************/
-		/**** md5 signature: fefec2e8407d490d511418bc37476824 ****/
+		/****** IntSurf_PathPointTool::Parameters ******/
+		/****** md5 signature: fefec2e8407d490d511418bc37476824 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1183,8 +1183,8 @@ Parametric coordinates associated to the multiplicity. an exception is raised if
 ") Parameters;
 		static void Parameters(const IntSurf_PathPoint & PStart, const Standard_Integer Mult, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Value2d ******************/
-		/**** md5 signature: a7118be60c8b667fbaa8632fa17448da ****/
+		/****** IntSurf_PathPointTool::Value2d ******/
+		/****** md5 signature: a7118be60c8b667fbaa8632fa17448da ******/
 		%feature("compactdefaultargs") Value2d;
 		%feature("autodoc", "
 Parameters
@@ -1202,8 +1202,8 @@ Returns the <u, v> parameters which are associated with <p> it's the parameters 
 ") Value2d;
 		static void Value2d(const IntSurf_PathPoint & PStart, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Value3d ******************/
-		/**** md5 signature: 1583deb55b7e1f6f4cb96c510b54519d ****/
+		/****** IntSurf_PathPointTool::Value3d ******/
+		/****** md5 signature: 1583deb55b7e1f6f4cb96c510b54519d ******/
 		%feature("compactdefaultargs") Value3d;
 		%feature("autodoc", "
 Parameters
@@ -1234,8 +1234,8 @@ Returns the 3d coordinates of the starting point.
 ************************/
 class IntSurf_PntOn2S {
 	public:
-		/****************** IntSurf_PntOn2S ******************/
-		/**** md5 signature: 9bc38ce40269e7182252925930872b02 ****/
+		/****** IntSurf_PntOn2S::IntSurf_PntOn2S ******/
+		/****** md5 signature: 9bc38ce40269e7182252925930872b02 ******/
 		%feature("compactdefaultargs") IntSurf_PntOn2S;
 		%feature("autodoc", "Return
 -------
@@ -1247,8 +1247,8 @@ Empty constructor.
 ") IntSurf_PntOn2S;
 		 IntSurf_PntOn2S();
 
-		/****************** IsSame ******************/
-		/**** md5 signature: aa8cd55cea9a16a16909901ebd6abc45 ****/
+		/****** IntSurf_PntOn2S::IsSame ******/
+		/****** md5 signature: aa8cd55cea9a16a16909901ebd6abc45 ******/
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", "
 Parameters
@@ -1267,8 +1267,8 @@ Returns true if 2d- and 3d-coordinates of theoterpoint are equal to correspondin
 ") IsSame;
 		Standard_Boolean IsSame(const IntSurf_PntOn2S & theOtherPoint, const Standard_Real theTol3D = 0.0, const Standard_Real theTol2D = -1.0);
 
-		/****************** Parameters ******************/
-		/**** md5 signature: 30bdd599088f74dedd5979b152a07fd4 ****/
+		/****** IntSurf_PntOn2S::Parameters ******/
+		/****** md5 signature: 30bdd599088f74dedd5979b152a07fd4 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1287,8 +1287,8 @@ Returns the parameters of the point on both surfaces.
 ") Parameters;
 		void Parameters(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ParametersOnS1 ******************/
-		/**** md5 signature: 64f6fb4c23b753a8ae110d855799d804 ****/
+		/****** IntSurf_PntOn2S::ParametersOnS1 ******/
+		/****** md5 signature: 64f6fb4c23b753a8ae110d855799d804 ******/
 		%feature("compactdefaultargs") ParametersOnS1;
 		%feature("autodoc", "
 Parameters
@@ -1305,8 +1305,8 @@ Returns the parameters of the point on the first surface.
 ") ParametersOnS1;
 		void ParametersOnS1(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ParametersOnS2 ******************/
-		/**** md5 signature: a037f950d5c09fdf632c55b7efba040b ****/
+		/****** IntSurf_PntOn2S::ParametersOnS2 ******/
+		/****** md5 signature: a037f950d5c09fdf632c55b7efba040b ******/
 		%feature("compactdefaultargs") ParametersOnS2;
 		%feature("autodoc", "
 Parameters
@@ -1323,8 +1323,8 @@ Returns the parameters of the point on the second surface.
 ") ParametersOnS2;
 		void ParametersOnS2(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ParametersOnSurface ******************/
-		/**** md5 signature: abefe2ce382f127f8fe8c5d1bd0971cd ****/
+		/****** IntSurf_PntOn2S::ParametersOnSurface ******/
+		/****** md5 signature: abefe2ce382f127f8fe8c5d1bd0971cd ******/
 		%feature("compactdefaultargs") ParametersOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1342,8 +1342,8 @@ Returns the parameters of the point in the parametric space of one of the surfac
 ") ParametersOnSurface;
 		void ParametersOnSurface(const Standard_Boolean OnFirst, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 030ac1eb59faa7b90801ff6c52fc9800 ****/
+		/****** IntSurf_PntOn2S::SetValue ******/
+		/****** md5 signature: 030ac1eb59faa7b90801ff6c52fc9800 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1360,8 +1360,8 @@ Sets the value of the point in 3d space.
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 808312724ee6d7f7429ed945cc18e16a ****/
+		/****** IntSurf_PntOn2S::SetValue ******/
+		/****** md5 signature: 808312724ee6d7f7429ed945cc18e16a ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1381,8 +1381,8 @@ Sets the values of the point in 3d space, and in the parametric space of one of 
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt, const Standard_Boolean OnFirst, const Standard_Real U, const Standard_Real V);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: df04f76e4f9af1926a2ae7a2c7b1e580 ****/
+		/****** IntSurf_PntOn2S::SetValue ******/
+		/****** md5 signature: df04f76e4f9af1926a2ae7a2c7b1e580 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1403,8 +1403,8 @@ Sets the values of the point in 3d space, and in the parametric space of each su
 ") SetValue;
 		void SetValue(const gp_Pnt & Pt, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 659ca05a4ffe0fa78e9950e04b65ad52 ****/
+		/****** IntSurf_PntOn2S::SetValue ******/
+		/****** md5 signature: 659ca05a4ffe0fa78e9950e04b65ad52 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1423,8 +1423,8 @@ Set the values of the point in the parametric space of one of the surface.
 ") SetValue;
 		void SetValue(const Standard_Boolean OnFirst, const Standard_Real U, const Standard_Real V);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: b0dba33634cfd5f960958e140df57e83 ****/
+		/****** IntSurf_PntOn2S::SetValue ******/
+		/****** md5 signature: b0dba33634cfd5f960958e140df57e83 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1444,8 +1444,8 @@ Set the values of the point in the parametric space of one of the surface.
 ") SetValue;
 		void SetValue(const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2);
 
-		/****************** Value ******************/
-		/**** md5 signature: eddd2908948849b73f6d8aacab318652 ****/
+		/****** IntSurf_PntOn2S::Value ******/
+		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1457,8 +1457,8 @@ Returns the point in 3d space.
 ") Value;
 		const gp_Pnt Value();
 
-		/****************** ValueOnSurface ******************/
-		/**** md5 signature: 7ee65588a5f8d776a208788975827c2c ****/
+		/****** IntSurf_PntOn2S::ValueOnSurface ******/
+		/****** md5 signature: 7ee65588a5f8d776a208788975827c2c ******/
 		%feature("compactdefaultargs") ValueOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1489,8 +1489,8 @@ Returns the point in 2d space of one of the surfaces.
 ************************/
 class IntSurf_Quadric {
 	public:
-		/****************** IntSurf_Quadric ******************/
-		/**** md5 signature: bcc1e6d2d7f2a66ca151f232014b127c ****/
+		/****** IntSurf_Quadric::IntSurf_Quadric ******/
+		/****** md5 signature: bcc1e6d2d7f2a66ca151f232014b127c ******/
 		%feature("compactdefaultargs") IntSurf_Quadric;
 		%feature("autodoc", "Return
 -------
@@ -1502,8 +1502,8 @@ No available documentation.
 ") IntSurf_Quadric;
 		 IntSurf_Quadric();
 
-		/****************** IntSurf_Quadric ******************/
-		/**** md5 signature: b26451d2363572fb30a1be301e5d1d81 ****/
+		/****** IntSurf_Quadric::IntSurf_Quadric ******/
+		/****** md5 signature: b26451d2363572fb30a1be301e5d1d81 ******/
 		%feature("compactdefaultargs") IntSurf_Quadric;
 		%feature("autodoc", "
 Parameters
@@ -1520,8 +1520,8 @@ No available documentation.
 ") IntSurf_Quadric;
 		 IntSurf_Quadric(const gp_Pln & P);
 
-		/****************** IntSurf_Quadric ******************/
-		/**** md5 signature: d42d588fe24687638acf9573ef502fe5 ****/
+		/****** IntSurf_Quadric::IntSurf_Quadric ******/
+		/****** md5 signature: d42d588fe24687638acf9573ef502fe5 ******/
 		%feature("compactdefaultargs") IntSurf_Quadric;
 		%feature("autodoc", "
 Parameters
@@ -1538,8 +1538,8 @@ No available documentation.
 ") IntSurf_Quadric;
 		 IntSurf_Quadric(const gp_Cylinder & C);
 
-		/****************** IntSurf_Quadric ******************/
-		/**** md5 signature: 70a630d70c6befdf753547586f305de3 ****/
+		/****** IntSurf_Quadric::IntSurf_Quadric ******/
+		/****** md5 signature: 70a630d70c6befdf753547586f305de3 ******/
 		%feature("compactdefaultargs") IntSurf_Quadric;
 		%feature("autodoc", "
 Parameters
@@ -1556,8 +1556,8 @@ No available documentation.
 ") IntSurf_Quadric;
 		 IntSurf_Quadric(const gp_Sphere & S);
 
-		/****************** IntSurf_Quadric ******************/
-		/**** md5 signature: 55bfe8c5c11c107dcd7d37d4c170bd55 ****/
+		/****** IntSurf_Quadric::IntSurf_Quadric ******/
+		/****** md5 signature: 55bfe8c5c11c107dcd7d37d4c170bd55 ******/
 		%feature("compactdefaultargs") IntSurf_Quadric;
 		%feature("autodoc", "
 Parameters
@@ -1574,8 +1574,8 @@ No available documentation.
 ") IntSurf_Quadric;
 		 IntSurf_Quadric(const gp_Cone & C);
 
-		/****************** IntSurf_Quadric ******************/
-		/**** md5 signature: a4552543f673ee745a2a293b84acf4a7 ****/
+		/****** IntSurf_Quadric::IntSurf_Quadric ******/
+		/****** md5 signature: a4552543f673ee745a2a293b84acf4a7 ******/
 		%feature("compactdefaultargs") IntSurf_Quadric;
 		%feature("autodoc", "
 Parameters
@@ -1592,8 +1592,8 @@ No available documentation.
 ") IntSurf_Quadric;
 		 IntSurf_Quadric(const gp_Torus & T);
 
-		/****************** Cone ******************/
-		/**** md5 signature: 433ba8697232d6bc7b71708b08d190e5 ****/
+		/****** IntSurf_Quadric::Cone ******/
+		/****** md5 signature: 433ba8697232d6bc7b71708b08d190e5 ******/
 		%feature("compactdefaultargs") Cone;
 		%feature("autodoc", "Return
 -------
@@ -1605,8 +1605,8 @@ No available documentation.
 ") Cone;
 		gp_Cone Cone();
 
-		/****************** Cylinder ******************/
-		/**** md5 signature: 60a8831694e0858ad1a30449c1edb3c9 ****/
+		/****** IntSurf_Quadric::Cylinder ******/
+		/****** md5 signature: 60a8831694e0858ad1a30449c1edb3c9 ******/
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "Return
 -------
@@ -1618,8 +1618,8 @@ No available documentation.
 ") Cylinder;
 		gp_Cylinder Cylinder();
 
-		/****************** D1 ******************/
-		/**** md5 signature: 9e70ed4843af0bc8bcd7afd9285b482c ****/
+		/****** IntSurf_Quadric::D1 ******/
+		/****** md5 signature: 9e70ed4843af0bc8bcd7afd9285b482c ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1640,8 +1640,8 @@ No available documentation.
 ") D1;
 		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
-		/****************** DN ******************/
-		/**** md5 signature: 02c249fcb50eab490fed64db9f653acc ****/
+		/****** IntSurf_Quadric::DN ******/
+		/****** md5 signature: 02c249fcb50eab490fed64db9f653acc ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -1661,8 +1661,8 @@ No available documentation.
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
-		/****************** Distance ******************/
-		/**** md5 signature: d9ba17ce87a8f8e1c8805850d4d732ba ****/
+		/****** IntSurf_Quadric::Distance ******/
+		/****** md5 signature: d9ba17ce87a8f8e1c8805850d4d732ba ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -1679,8 +1679,8 @@ No available documentation.
 ") Distance;
 		Standard_Real Distance(const gp_Pnt & P);
 
-		/****************** Gradient ******************/
-		/**** md5 signature: 1b4f28024feaa1e1d7062a57d1e2cee5 ****/
+		/****** IntSurf_Quadric::Gradient ******/
+		/****** md5 signature: 1b4f28024feaa1e1d7062a57d1e2cee5 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -1697,8 +1697,8 @@ No available documentation.
 ") Gradient;
 		gp_Vec Gradient(const gp_Pnt & P);
 
-		/****************** Normale ******************/
-		/**** md5 signature: e93b2278bb4f872fd8e274bff7654999 ****/
+		/****** IntSurf_Quadric::Normale ******/
+		/****** md5 signature: e93b2278bb4f872fd8e274bff7654999 ******/
 		%feature("compactdefaultargs") Normale;
 		%feature("autodoc", "
 Parameters
@@ -1716,8 +1716,8 @@ No available documentation.
 ") Normale;
 		gp_Vec Normale(const Standard_Real U, const Standard_Real V);
 
-		/****************** Normale ******************/
-		/**** md5 signature: 67a8bda6406ee3cc1945baff398a2378 ****/
+		/****** IntSurf_Quadric::Normale ******/
+		/****** md5 signature: 67a8bda6406ee3cc1945baff398a2378 ******/
 		%feature("compactdefaultargs") Normale;
 		%feature("autodoc", "
 Parameters
@@ -1734,8 +1734,8 @@ No available documentation.
 ") Normale;
 		gp_Vec Normale(const gp_Pnt & P);
 
-		/****************** Parameters ******************/
-		/**** md5 signature: d08654902fd64aedbe40aa3454fd0d70 ****/
+		/****** IntSurf_Quadric::Parameters ******/
+		/****** md5 signature: d08654902fd64aedbe40aa3454fd0d70 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1753,8 +1753,8 @@ No available documentation.
 ") Parameters;
 		void Parameters(const gp_Pnt & P, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Plane ******************/
-		/**** md5 signature: 722ec8a1cda087d25cc539584e9de6e6 ****/
+		/****** IntSurf_Quadric::Plane ******/
+		/****** md5 signature: 722ec8a1cda087d25cc539584e9de6e6 ******/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "Return
 -------
@@ -1766,8 +1766,8 @@ No available documentation.
 ") Plane;
 		gp_Pln Plane();
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 3b0f4850ebf6ccbb6df1c2c1a32c2c6e ****/
+		/****** IntSurf_Quadric::SetValue ******/
+		/****** md5 signature: 3b0f4850ebf6ccbb6df1c2c1a32c2c6e ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1784,8 +1784,8 @@ No available documentation.
 ") SetValue;
 		void SetValue(const gp_Pln & P);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 847ad4b394b55539e88e78e666c70082 ****/
+		/****** IntSurf_Quadric::SetValue ******/
+		/****** md5 signature: 847ad4b394b55539e88e78e666c70082 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1802,8 +1802,8 @@ No available documentation.
 ") SetValue;
 		void SetValue(const gp_Cylinder & C);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 8036d4b3e82383d9a92f9dd4ecb36057 ****/
+		/****** IntSurf_Quadric::SetValue ******/
+		/****** md5 signature: 8036d4b3e82383d9a92f9dd4ecb36057 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1820,8 +1820,8 @@ No available documentation.
 ") SetValue;
 		void SetValue(const gp_Sphere & S);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: c3dc19ae6034dc5d0e44df090bcc9af7 ****/
+		/****** IntSurf_Quadric::SetValue ******/
+		/****** md5 signature: c3dc19ae6034dc5d0e44df090bcc9af7 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1838,8 +1838,8 @@ No available documentation.
 ") SetValue;
 		void SetValue(const gp_Cone & C);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 6c9cb7f465cd6e67dd4365e6609d9a36 ****/
+		/****** IntSurf_Quadric::SetValue ******/
+		/****** md5 signature: 6c9cb7f465cd6e67dd4365e6609d9a36 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -1856,8 +1856,8 @@ No available documentation.
 ") SetValue;
 		void SetValue(const gp_Torus & T);
 
-		/****************** Sphere ******************/
-		/**** md5 signature: e02f27c8c733f0b938d13039e1e73f8c ****/
+		/****** IntSurf_Quadric::Sphere ******/
+		/****** md5 signature: e02f27c8c733f0b938d13039e1e73f8c ******/
 		%feature("compactdefaultargs") Sphere;
 		%feature("autodoc", "Return
 -------
@@ -1869,8 +1869,8 @@ No available documentation.
 ") Sphere;
 		gp_Sphere Sphere();
 
-		/****************** Torus ******************/
-		/**** md5 signature: 9bb22d5b92ef11cba62e467d89f58c66 ****/
+		/****** IntSurf_Quadric::Torus ******/
+		/****** md5 signature: 9bb22d5b92ef11cba62e467d89f58c66 ******/
 		%feature("compactdefaultargs") Torus;
 		%feature("autodoc", "Return
 -------
@@ -1882,8 +1882,8 @@ No available documentation.
 ") Torus;
 		gp_Torus Torus();
 
-		/****************** TypeQuadric ******************/
-		/**** md5 signature: e6d9fc5adcd9d5bf3c73e5fd6797dca3 ****/
+		/****** IntSurf_Quadric::TypeQuadric ******/
+		/****** md5 signature: e6d9fc5adcd9d5bf3c73e5fd6797dca3 ******/
 		%feature("compactdefaultargs") TypeQuadric;
 		%feature("autodoc", "Return
 -------
@@ -1895,8 +1895,8 @@ No available documentation.
 ") TypeQuadric;
 		GeomAbs_SurfaceType TypeQuadric();
 
-		/****************** ValAndGrad ******************/
-		/**** md5 signature: 788803e196dc9d3b7efe528594f539a6 ****/
+		/****** IntSurf_Quadric::ValAndGrad ******/
+		/****** md5 signature: 788803e196dc9d3b7efe528594f539a6 ******/
 		%feature("compactdefaultargs") ValAndGrad;
 		%feature("autodoc", "
 Parameters
@@ -1914,8 +1914,8 @@ No available documentation.
 ") ValAndGrad;
 		void ValAndGrad(const gp_Pnt & P, Standard_Real &OutValue, gp_Vec & Grad);
 
-		/****************** Value ******************/
-		/**** md5 signature: 42959897db65d301eb66b5528ed15f16 ****/
+		/****** IntSurf_Quadric::Value ******/
+		/****** md5 signature: 42959897db65d301eb66b5528ed15f16 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1947,8 +1947,8 @@ No available documentation.
 ****************************/
 class IntSurf_QuadricTool {
 	public:
-		/****************** Gradient ******************/
-		/**** md5 signature: 67f30792fc0abc5df39ecabc22695a85 ****/
+		/****** IntSurf_QuadricTool::Gradient ******/
+		/****** md5 signature: 67f30792fc0abc5df39ecabc22695a85 ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -1969,8 +1969,8 @@ Returns the gradient of the function.
 ") Gradient;
 		static void Gradient(const IntSurf_Quadric & Quad, const Standard_Real X, const Standard_Real Y, const Standard_Real Z, gp_Vec & V);
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 71006b4e399d2dd853e8202886a30034 ****/
+		/****** IntSurf_QuadricTool::Tolerance ******/
+		/****** md5 signature: 71006b4e399d2dd853e8202886a30034 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -1987,8 +1987,8 @@ Returns the tolerance of the zero of the implicit function.
 ") Tolerance;
 		static Standard_Real Tolerance(const IntSurf_Quadric & Quad);
 
-		/****************** Value ******************/
-		/**** md5 signature: cb055aed0635a23cf3670cafec8be8da ****/
+		/****** IntSurf_QuadricTool::Value ******/
+		/****** md5 signature: cb055aed0635a23cf3670cafec8be8da ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2008,8 +2008,8 @@ Returns the value of the function.
 ") Value;
 		static Standard_Real Value(const IntSurf_Quadric & Quad, const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
 
-		/****************** ValueAndGradient ******************/
-		/**** md5 signature: 0ed1171daf6860af1930c61944c58a0a ****/
+		/****** IntSurf_QuadricTool::ValueAndGradient ******/
+		/****** md5 signature: 0ed1171daf6860af1930c61944c58a0a ******/
 		%feature("compactdefaultargs") ValueAndGradient;
 		%feature("autodoc", "
 Parameters
@@ -2044,8 +2044,8 @@ Returns the value and the gradient.
 ***************************/
 class IntSurf_Transition {
 	public:
-		/****************** IntSurf_Transition ******************/
-		/**** md5 signature: 43d98c3a1b88c2c9b3e98184df8df621 ****/
+		/****** IntSurf_Transition::IntSurf_Transition ******/
+		/****** md5 signature: 43d98c3a1b88c2c9b3e98184df8df621 ******/
 		%feature("compactdefaultargs") IntSurf_Transition;
 		%feature("autodoc", "Return
 -------
@@ -2057,8 +2057,8 @@ Empty constructor. creates an undecided transition.
 ") IntSurf_Transition;
 		 IntSurf_Transition();
 
-		/****************** IntSurf_Transition ******************/
-		/**** md5 signature: 0cf6241bb678fc95cadd1139dae6449b ****/
+		/****** IntSurf_Transition::IntSurf_Transition ******/
+		/****** md5 signature: 0cf6241bb678fc95cadd1139dae6449b ******/
 		%feature("compactdefaultargs") IntSurf_Transition;
 		%feature("autodoc", "
 Parameters
@@ -2076,8 +2076,8 @@ Create a in or out transition.
 ") IntSurf_Transition;
 		 IntSurf_Transition(const Standard_Boolean Tangent, const IntSurf_TypeTrans Type);
 
-		/****************** IntSurf_Transition ******************/
-		/**** md5 signature: f50beef73f541d362ae7cadd36dfeca5 ****/
+		/****** IntSurf_Transition::IntSurf_Transition ******/
+		/****** md5 signature: f50beef73f541d362ae7cadd36dfeca5 ******/
 		%feature("compactdefaultargs") IntSurf_Transition;
 		%feature("autodoc", "
 Parameters
@@ -2096,8 +2096,8 @@ Create a touch transition.
 ") IntSurf_Transition;
 		 IntSurf_Transition(const Standard_Boolean Tangent, const IntSurf_Situation Situ, const Standard_Boolean Oppos);
 
-		/****************** IsOpposite ******************/
-		/**** md5 signature: 393aca3277062552b7a8ec8cd414f82d ****/
+		/****** IntSurf_Transition::IsOpposite ******/
+		/****** md5 signature: 393aca3277062552b7a8ec8cd414f82d ******/
 		%feature("compactdefaultargs") IsOpposite;
 		%feature("autodoc", "Return
 -------
@@ -2109,8 +2109,8 @@ Returns a significant value if transitiontype returns touch. in this case, the f
 ") IsOpposite;
 		Standard_Boolean IsOpposite();
 
-		/****************** IsTangent ******************/
-		/**** md5 signature: 16a7964bb24e34f80fabc93e5a65aedc ****/
+		/****** IntSurf_Transition::IsTangent ******/
+		/****** md5 signature: 16a7964bb24e34f80fabc93e5a65aedc ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "Return
 -------
@@ -2122,8 +2122,8 @@ Returns true if the point is tangent to the arc given by value. an exception is 
 ") IsTangent;
 		Standard_Boolean IsTangent();
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 480a85fbe5c9655129aa9fea0ee77cc9 ****/
+		/****** IntSurf_Transition::SetValue ******/
+		/****** md5 signature: 480a85fbe5c9655129aa9fea0ee77cc9 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -2141,8 +2141,8 @@ Set the values of an in or out transition.
 ") SetValue;
 		void SetValue(const Standard_Boolean Tangent, const IntSurf_TypeTrans Type);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 23785efc5a23a4c4a0d956dc57ac0a5e ****/
+		/****** IntSurf_Transition::SetValue ******/
+		/****** md5 signature: 23785efc5a23a4c4a0d956dc57ac0a5e ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -2161,8 +2161,8 @@ Set the values of a touch transition.
 ") SetValue;
 		void SetValue(const Standard_Boolean Tangent, const IntSurf_Situation Situ, const Standard_Boolean Oppos);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 8e6ddcc525f3b0b127452029d0eaab09 ****/
+		/****** IntSurf_Transition::SetValue ******/
+		/****** md5 signature: 8e6ddcc525f3b0b127452029d0eaab09 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "Return
 -------
@@ -2174,8 +2174,8 @@ Set the values of an undecided transition.
 ") SetValue;
 		void SetValue();
 
-		/****************** Situation ******************/
-		/**** md5 signature: a6322eec5c49e75e440e204dfe600fbd ****/
+		/****** IntSurf_Transition::Situation ******/
+		/****** md5 signature: a6322eec5c49e75e440e204dfe600fbd ******/
 		%feature("compactdefaultargs") Situation;
 		%feature("autodoc", "Return
 -------
@@ -2187,8 +2187,8 @@ Returns a significant value if transitiontype returns touch. in this case, the f
 ") Situation;
 		IntSurf_Situation Situation();
 
-		/****************** TransitionType ******************/
-		/**** md5 signature: 51d0ad127452bfb2a082c82034278ee5 ****/
+		/****** IntSurf_Transition::TransitionType ******/
+		/****** md5 signature: 51d0ad127452bfb2a082c82034278ee5 ******/
 		%feature("compactdefaultargs") TransitionType;
 		%feature("autodoc", "Return
 -------

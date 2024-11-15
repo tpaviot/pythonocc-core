@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TDFDOCSTRING
 "TDF module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tdf.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tdf.html"
 %enddef
 %module (package="OCC.Core", docstring=TDFDOCSTRING) TDF
 
@@ -219,8 +219,8 @@ typedef NCollection_Map<TDF_Label>::Iterator TDF_MapIteratorOfLabelMap;
 %rename(tdf) TDF;
 class TDF {
 	public:
-		/****************** AddLinkGUIDToProgID ******************/
-		/**** md5 signature: 0272b20d2cd451fe5526231462daa07c ****/
+		/****** TDF::AddLinkGUIDToProgID ******/
+		/****** md5 signature: 0272b20d2cd451fe5526231462daa07c ******/
 		%feature("compactdefaultargs") AddLinkGUIDToProgID;
 		%feature("autodoc", "
 Parameters
@@ -238,8 +238,8 @@ Sets link between guid and progid in hidden datamap.
 ") AddLinkGUIDToProgID;
 		static void AddLinkGUIDToProgID(const Standard_GUID & ID, TCollection_ExtendedString ProgID);
 
-		/****************** GUIDFromProgID ******************/
-		/**** md5 signature: 1569c70b0eaddf0abaa25d243a344b0b ****/
+		/****** TDF::GUIDFromProgID ******/
+		/****** md5 signature: 1569c70b0eaddf0abaa25d243a344b0b ******/
 		%feature("compactdefaultargs") GUIDFromProgID;
 		%feature("autodoc", "
 Parameters
@@ -257,8 +257,8 @@ Returns true if there is guid for given <progid> then guid is returned in <id>.
 ") GUIDFromProgID;
 		static Standard_Boolean GUIDFromProgID(TCollection_ExtendedString ProgID, Standard_GUID & ID);
 
-		/****************** LowestID ******************/
-		/**** md5 signature: 5ffb42eb955c726f6468aa77a30aa62f ****/
+		/****** TDF::LowestID ******/
+		/****** md5 signature: 5ffb42eb955c726f6468aa77a30aa62f ******/
 		%feature("compactdefaultargs") LowestID;
 		%feature("autodoc", "Return
 -------
@@ -270,8 +270,8 @@ Returns id '00000000-0000-0000-0000-000000000000', sometimes used as null id.
 ") LowestID;
 		static const Standard_GUID & LowestID();
 
-		/****************** ProgIDFromGUID ******************/
-		/**** md5 signature: 7cbf0ed675ca10e717c4cdfc44e28f61 ****/
+		/****** TDF::ProgIDFromGUID ******/
+		/****** md5 signature: 7cbf0ed675ca10e717c4cdfc44e28f61 ******/
 		%feature("compactdefaultargs") ProgIDFromGUID;
 		%feature("autodoc", "
 Parameters
@@ -289,8 +289,8 @@ Returns true if there is progid for given <id> then progid is returned in <progi
 ") ProgIDFromGUID;
 		static Standard_Boolean ProgIDFromGUID(const Standard_GUID & ID, TCollection_ExtendedString & ProgID);
 
-		/****************** UppestID ******************/
-		/**** md5 signature: 04cc991fc12e7ed257b962b971383d4f ****/
+		/****** TDF::UppestID ******/
+		/****** md5 signature: 04cc991fc12e7ed257b962b971383d4f ******/
 		%feature("compactdefaultargs") UppestID;
 		%feature("autodoc", "Return
 -------
@@ -317,8 +317,8 @@ Returns id 'ffffffff-ffff-ffff-ffff-ffffffffffff'.
 %nodefaultctor TDF_Attribute;
 class TDF_Attribute : public Standard_Transient {
 	public:
-		/****************** AddAttribute ******************/
-		/**** md5 signature: 1fdc6ab8a5101cf8823a8d9a5f4e7c5b ****/
+		/****** TDF_Attribute::AddAttribute ******/
+		/****** md5 signature: 1fdc6ab8a5101cf8823a8d9a5f4e7c5b ******/
 		%feature("compactdefaultargs") AddAttribute;
 		%feature("autodoc", "
 Parameters
@@ -335,8 +335,8 @@ Adds an attribute <other> to the label of <self>.raises if there is already one 
 ") AddAttribute;
 		void AddAttribute(const opencascade::handle<TDF_Attribute> & other);
 
-		/****************** AfterAddition ******************/
-		/**** md5 signature: 1645aac89ec94a8d059955cc4815f0f5 ****/
+		/****** TDF_Attribute::AfterAddition ******/
+		/****** md5 signature: 1645aac89ec94a8d059955cc4815f0f5 ******/
 		%feature("compactdefaultargs") AfterAddition;
 		%feature("autodoc", "Return
 -------
@@ -348,8 +348,8 @@ Something to do after adding an attribute to a label.
 ") AfterAddition;
 		virtual void AfterAddition();
 
-		/****************** AfterResume ******************/
-		/**** md5 signature: f00ae5bce42a3fa5263b6007e46f5052 ****/
+		/****** TDF_Attribute::AfterResume ******/
+		/****** md5 signature: f00ae5bce42a3fa5263b6007e46f5052 ******/
 		%feature("compactdefaultargs") AfterResume;
 		%feature("autodoc", "Return
 -------
@@ -361,8 +361,8 @@ Something to do after resuming an attribute from a label.
 ") AfterResume;
 		virtual void AfterResume();
 
-		/****************** AfterRetrieval ******************/
-		/**** md5 signature: 4debcf9082f6b48fd06bcc4dab666f70 ****/
+		/****** TDF_Attribute::AfterRetrieval ******/
+		/****** md5 signature: 4debcf9082f6b48fd06bcc4dab666f70 ******/
 		%feature("compactdefaultargs") AfterRetrieval;
 		%feature("autodoc", "
 Parameters
@@ -379,8 +379,8 @@ Something to do after creation of an attribute by persistent-transient translati
 ") AfterRetrieval;
 		virtual Standard_Boolean AfterRetrieval(const Standard_Boolean forceIt = Standard_False);
 
-		/****************** AfterUndo ******************/
-		/**** md5 signature: c8d35957430b5f1e2958a59b03021b1b ****/
+		/****** TDF_Attribute::AfterUndo ******/
+		/****** md5 signature: c8d35957430b5f1e2958a59b03021b1b ******/
 		%feature("compactdefaultargs") AfterUndo;
 		%feature("autodoc", "
 Parameters
@@ -398,8 +398,8 @@ Something to do after applying <anattdelta>. the returned status says if afterun
 ") AfterUndo;
 		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
-		/****************** Backup ******************/
-		/**** md5 signature: 736c62c33bb523385e9d1ec148b89b66 ****/
+		/****** TDF_Attribute::Backup ******/
+		/****** md5 signature: 736c62c33bb523385e9d1ec148b89b66 ******/
 		%feature("compactdefaultargs") Backup;
 		%feature("autodoc", "Return
 -------
@@ -411,8 +411,8 @@ Backups the attribute. the backuped attribute is flagged 'backuped' and not 'val
 ") Backup;
 		void Backup();
 
-		/****************** BackupCopy ******************/
-		/**** md5 signature: a825434844622adc42ebf4f3748fb2f9 ****/
+		/****** TDF_Attribute::BackupCopy ******/
+		/****** md5 signature: a825434844622adc42ebf4f3748fb2f9 ******/
 		%feature("compactdefaultargs") BackupCopy;
 		%feature("autodoc", "Return
 -------
@@ -424,8 +424,8 @@ Copies the attribute contents into a new other attribute. it is used by backup()
 ") BackupCopy;
 		virtual opencascade::handle<TDF_Attribute> BackupCopy();
 
-		/****************** BeforeCommitTransaction ******************/
-		/**** md5 signature: 8c53cd571a56f101acdb4f2ca48dde3f ****/
+		/****** TDF_Attribute::BeforeCommitTransaction ******/
+		/****** md5 signature: 8c53cd571a56f101acdb4f2ca48dde3f ******/
 		%feature("compactdefaultargs") BeforeCommitTransaction;
 		%feature("autodoc", "Return
 -------
@@ -437,8 +437,8 @@ A callback. by default does nothing. it is called by tdf_data::committransaction
 ") BeforeCommitTransaction;
 		virtual void BeforeCommitTransaction();
 
-		/****************** BeforeForget ******************/
-		/**** md5 signature: 5a56b9b29072adf41610c87453870f25 ****/
+		/****** TDF_Attribute::BeforeForget ******/
+		/****** md5 signature: 5a56b9b29072adf41610c87453870f25 ******/
 		%feature("compactdefaultargs") BeforeForget;
 		%feature("autodoc", "Return
 -------
@@ -450,8 +450,8 @@ Something to do before forgetting an attribute to a label.
 ") BeforeForget;
 		virtual void BeforeForget();
 
-		/****************** BeforeRemoval ******************/
-		/**** md5 signature: de0b344315ad5f67d73191a6700380a8 ****/
+		/****** TDF_Attribute::BeforeRemoval ******/
+		/****** md5 signature: de0b344315ad5f67d73191a6700380a8 ******/
 		%feature("compactdefaultargs") BeforeRemoval;
 		%feature("autodoc", "Return
 -------
@@ -463,8 +463,8 @@ Something to do before removing an attribute from a label.
 ") BeforeRemoval;
 		virtual void BeforeRemoval();
 
-		/****************** BeforeUndo ******************/
-		/**** md5 signature: df655d5e3c897f61d7e3b6efa962017f ****/
+		/****** TDF_Attribute::BeforeUndo ******/
+		/****** md5 signature: df655d5e3c897f61d7e3b6efa962017f ******/
 		%feature("compactdefaultargs") BeforeUndo;
 		%feature("autodoc", "
 Parameters
@@ -482,8 +482,8 @@ Something to do before applying <anattdelta>. the returned status says if afteru
 ") BeforeUndo;
 		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
-		/****************** DeltaOnAddition ******************/
-		/**** md5 signature: 8c975b212ebc48f37a9efe28370bd0fb ****/
+		/****** TDF_Attribute::DeltaOnAddition ******/
+		/****** md5 signature: 8c975b212ebc48f37a9efe28370bd0fb ******/
 		%feature("compactdefaultargs") DeltaOnAddition;
 		%feature("autodoc", "Return
 -------
@@ -495,8 +495,8 @@ Makes an attributedelta because <self> appeared. the only known use of a redefin
 ") DeltaOnAddition;
 		virtual opencascade::handle<TDF_DeltaOnAddition> DeltaOnAddition();
 
-		/****************** DeltaOnForget ******************/
-		/**** md5 signature: d96dd3ee6835e5170c35c537480a2be3 ****/
+		/****** TDF_Attribute::DeltaOnForget ******/
+		/****** md5 signature: d96dd3ee6835e5170c35c537480a2be3 ******/
 		%feature("compactdefaultargs") DeltaOnForget;
 		%feature("autodoc", "Return
 -------
@@ -508,8 +508,8 @@ Makes an attributedelta because <self> has been forgotten.
 ") DeltaOnForget;
 		virtual opencascade::handle<TDF_DeltaOnForget> DeltaOnForget();
 
-		/****************** DeltaOnModification ******************/
-		/**** md5 signature: 905cd7ad9413bd95c77621bc5fede4a5 ****/
+		/****** TDF_Attribute::DeltaOnModification ******/
+		/****** md5 signature: 905cd7ad9413bd95c77621bc5fede4a5 ******/
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -526,8 +526,8 @@ Makes a deltaonmodification between <self> and <anoldattribute.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
-		/****************** DeltaOnModification ******************/
-		/**** md5 signature: f83d91fb563526db971678d8ae190037 ****/
+		/****** TDF_Attribute::DeltaOnModification ******/
+		/****** md5 signature: f83d91fb563526db971678d8ae190037 ******/
 		%feature("compactdefaultargs") DeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -544,8 +544,8 @@ Applies a deltaonmodification to <self>.
 ") DeltaOnModification;
 		virtual void DeltaOnModification(const opencascade::handle<TDF_DeltaOnModification> & aDelta);
 
-		/****************** DeltaOnRemoval ******************/
-		/**** md5 signature: 4ae44c5d4a825e10d125eb7f75a9bb28 ****/
+		/****** TDF_Attribute::DeltaOnRemoval ******/
+		/****** md5 signature: 4ae44c5d4a825e10d125eb7f75a9bb28 ******/
 		%feature("compactdefaultargs") DeltaOnRemoval;
 		%feature("autodoc", "Return
 -------
@@ -557,8 +557,8 @@ Makes a deltaonremoval on <self> because <self> has disappeared from the ds.
 ") DeltaOnRemoval;
 		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
 
-		/****************** DeltaOnResume ******************/
-		/**** md5 signature: bc74ada443cb09bb7350a3e27b5cd98b ****/
+		/****** TDF_Attribute::DeltaOnResume ******/
+		/****** md5 signature: bc74ada443cb09bb7350a3e27b5cd98b ******/
 		%feature("compactdefaultargs") DeltaOnResume;
 		%feature("autodoc", "Return
 -------
@@ -570,8 +570,8 @@ Makes an attributedelta because <self> has been resumed.
 ") DeltaOnResume;
 		virtual opencascade::handle<TDF_DeltaOnResume> DeltaOnResume();
 
-		/****************** Dump ******************/
-		/**** md5 signature: 87047991ca121f6cb65c2957eca41f1b ****/
+		/****** TDF_Attribute::Dump ******/
+		/****** md5 signature: 87047991ca121f6cb65c2957eca41f1b ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -608,8 +608,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** ExtendedDump ******************/
-		/**** md5 signature: 2d076f5290434752ed1effb636fb5839 ****/
+		/****** TDF_Attribute::ExtendedDump ******/
+		/****** md5 signature: 2d076f5290434752ed1effb636fb5839 ******/
 		%feature("compactdefaultargs") ExtendedDump;
 		%feature("autodoc", "
 Parameters
@@ -627,8 +627,8 @@ Dumps the attribute content on <astream>, using <amap> like this: if an attribut
 ") ExtendedDump;
 		virtual void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, TDF_AttributeIndexedMap & aMap);
 
-		/****************** FindAttribute ******************/
-		/**** md5 signature: 5f4fd12b74a27c4216127d1ce8d3b78a ****/
+		/****** TDF_Attribute::FindAttribute ******/
+		/****** md5 signature: 5f4fd12b74a27c4216127d1ce8d3b78a ******/
 		%feature("compactdefaultargs") FindAttribute;
 		%feature("autodoc", "
 Parameters
@@ -646,8 +646,8 @@ Finds an associated attribute of <self>, according to <anid>. the returned <anat
 ") FindAttribute;
 		Standard_Boolean FindAttribute(const Standard_GUID & anID, opencascade::handle<TDF_Attribute> & anAttribute);
 
-		/****************** Forget ******************/
-		/**** md5 signature: 4cd1ae10a7466d24f596008f797ce204 ****/
+		/****** TDF_Attribute::Forget ******/
+		/****** md5 signature: 4cd1ae10a7466d24f596008f797ce204 ******/
 		%feature("compactdefaultargs") Forget;
 		%feature("autodoc", "
 Parameters
@@ -664,8 +664,8 @@ Forgets the attribute. <atransaction> is the current transaction in which the fo
 ") Forget;
 		void Forget(const Standard_Integer aTransaction);
 
-		/****************** ForgetAllAttributes ******************/
-		/**** md5 signature: f0492f70679f693e73f3cd351b602cd9 ****/
+		/****** TDF_Attribute::ForgetAllAttributes ******/
+		/****** md5 signature: f0492f70679f693e73f3cd351b602cd9 ******/
 		%feature("compactdefaultargs") ForgetAllAttributes;
 		%feature("autodoc", "
 Parameters
@@ -682,8 +682,8 @@ Forgets all the attributes attached to the label of <self>. does it on the sub-l
 ") ForgetAllAttributes;
 		void ForgetAllAttributes(const Standard_Boolean clearChildren = Standard_True);
 
-		/****************** ForgetAttribute ******************/
-		/**** md5 signature: 52de4f1eac4c1d719dc2240e16600cdd ****/
+		/****** TDF_Attribute::ForgetAttribute ******/
+		/****** md5 signature: 52de4f1eac4c1d719dc2240e16600cdd ******/
 		%feature("compactdefaultargs") ForgetAttribute;
 		%feature("autodoc", "
 Parameters
@@ -700,8 +700,8 @@ Forgets the attribute of guid <aguid> associated to the label of <self>. be care
 ") ForgetAttribute;
 		Standard_Boolean ForgetAttribute(const Standard_GUID & aguid);
 
-		/****************** ID ******************/
-		/**** md5 signature: e94b659c9e9f7b7f43797fc28e2b97f9 ****/
+		/****** TDF_Attribute::ID ******/
+		/****** md5 signature: e94b659c9e9f7b7f43797fc28e2b97f9 ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -713,8 +713,8 @@ Returns the id of the attribute.
 ") ID;
 		virtual const Standard_GUID & ID();
 
-		/****************** IsAttribute ******************/
-		/**** md5 signature: d4c3cd3354e07d22381503542a5e16aa ****/
+		/****** TDF_Attribute::IsAttribute ******/
+		/****** md5 signature: d4c3cd3354e07d22381503542a5e16aa ******/
 		%feature("compactdefaultargs") IsAttribute;
 		%feature("autodoc", "
 Parameters
@@ -731,8 +731,8 @@ Returns true if it exists an associated attribute of <self> with <anid> as id.
 ") IsAttribute;
 		Standard_Boolean IsAttribute(const Standard_GUID & anID);
 
-		/****************** IsBackuped ******************/
-		/**** md5 signature: 6520047807c75e85fd4e66863b743e07 ****/
+		/****** TDF_Attribute::IsBackuped ******/
+		/****** md5 signature: 6520047807c75e85fd4e66863b743e07 ******/
 		%feature("compactdefaultargs") IsBackuped;
 		%feature("autodoc", "Return
 -------
@@ -744,8 +744,8 @@ Returns true if the attribute backup status is set. this status is set/unset by 
 ") IsBackuped;
 		Standard_Boolean IsBackuped();
 
-		/****************** IsForgotten ******************/
-		/**** md5 signature: a5b3d005a1cc88a7413291be6b3657cc ****/
+		/****** TDF_Attribute::IsForgotten ******/
+		/****** md5 signature: a5b3d005a1cc88a7413291be6b3657cc ******/
 		%feature("compactdefaultargs") IsForgotten;
 		%feature("autodoc", "Return
 -------
@@ -757,8 +757,8 @@ Returns true if the attribute forgotten status is set. //! shortcut methods conc
 ") IsForgotten;
 		Standard_Boolean IsForgotten();
 
-		/****************** IsNew ******************/
-		/**** md5 signature: 3a3a8bc6ebd2fc2c25f224ff9e99af70 ****/
+		/****** TDF_Attribute::IsNew ******/
+		/****** md5 signature: 3a3a8bc6ebd2fc2c25f224ff9e99af70 ******/
 		%feature("compactdefaultargs") IsNew;
 		%feature("autodoc", "Return
 -------
@@ -770,8 +770,8 @@ Returns true if the attribute has no backup.
 ") IsNew;
 		Standard_Boolean IsNew();
 
-		/****************** IsValid ******************/
-		/**** md5 signature: 2809e700423e4fe6ecd395953f3a2406 ****/
+		/****** TDF_Attribute::IsValid ******/
+		/****** md5 signature: 2809e700423e4fe6ecd395953f3a2406 ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Return
 -------
@@ -783,8 +783,8 @@ Returns true if the attribute is valid; i.e. not a backuped or removed one.
 ") IsValid;
 		Standard_Boolean IsValid();
 
-		/****************** Label ******************/
-		/**** md5 signature: 9d94a52a35e852ea5e053d340a2888ee ****/
+		/****** TDF_Attribute::Label ******/
+		/****** md5 signature: 9d94a52a35e852ea5e053d340a2888ee ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -796,8 +796,8 @@ Returns the label to which the attribute is attached. if the label is not includ
 ") Label;
 		const TDF_Label Label();
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: 537251aec6cd2736ac1f1abe6868dc70 ****/
+		/****** TDF_Attribute::NewEmpty ******/
+		/****** md5 signature: 537251aec6cd2736ac1f1abe6868dc70 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -809,8 +809,8 @@ Returns an new empty attribute from the good end type. it is used by the copy al
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 45ecccc1eb738661a41ddb54d6956178 ****/
+		/****** TDF_Attribute::Paste ******/
+		/****** md5 signature: 45ecccc1eb738661a41ddb54d6956178 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -828,8 +828,8 @@ This method is different from the 'copy' one, because it is used when copying an
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
-		/****************** References ******************/
-		/**** md5 signature: 386560cda18cda911ef8050b14958516 ****/
+		/****** TDF_Attribute::References ******/
+		/****** md5 signature: 386560cda18cda911ef8050b14958516 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -846,8 +846,8 @@ Adds the first level referenced attributes and labels to <adataset>. //! for thi
 ") References;
 		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
-		/****************** Restore ******************/
-		/**** md5 signature: 58d5068efa194f15ff1b2e100f124c41 ****/
+		/****** TDF_Attribute::Restore ******/
+		/****** md5 signature: 58d5068efa194f15ff1b2e100f124c41 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -864,8 +864,8 @@ Restores the backuped contents from <anattribute> into this one. it is used when
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
 
-		/****************** SetID ******************/
-		/**** md5 signature: 594a60d8e3b42dea05c147562d345bea ****/
+		/****** TDF_Attribute::SetID ******/
+		/****** md5 signature: 594a60d8e3b42dea05c147562d345bea ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "
 Parameters
@@ -882,8 +882,8 @@ Sets specific id of the attribute (supports several attributes of one type at th
 ") SetID;
 		virtual void SetID(const Standard_GUID &);
 
-		/****************** SetID ******************/
-		/**** md5 signature: 224ff062320948dfb4cd5bb6dbf4293d ****/
+		/****** TDF_Attribute::SetID ******/
+		/****** md5 signature: 224ff062320948dfb4cd5bb6dbf4293d ******/
 		%feature("compactdefaultargs") SetID;
 		%feature("autodoc", "Return
 -------
@@ -895,8 +895,8 @@ Sets default id defined in nested class (to be used for attributes having user i
 ") SetID;
 		virtual void SetID();
 
-		/****************** Transaction ******************/
-		/**** md5 signature: 00c48137a99575bfa5cfadde8fb37954 ****/
+		/****** TDF_Attribute::Transaction ******/
+		/****** md5 signature: 00c48137a99575bfa5cfadde8fb37954 ******/
 		%feature("compactdefaultargs") Transaction;
 		%feature("autodoc", "Return
 -------
@@ -908,8 +908,8 @@ Returns the transaction index in which the attribute has been created or modifie
 ") Transaction;
 		Standard_Integer Transaction();
 
-		/****************** UntilTransaction ******************/
-		/**** md5 signature: becf1aef4465f8bbf7873246c2baea63 ****/
+		/****** TDF_Attribute::UntilTransaction ******/
+		/****** md5 signature: becf1aef4465f8bbf7873246c2baea63 ******/
 		%feature("compactdefaultargs") UntilTransaction;
 		%feature("autodoc", "Return
 -------
@@ -938,8 +938,8 @@ Returns the upper transaction index until which the attribute is/was valid. this
 %nodefaultctor TDF_AttributeDelta;
 class TDF_AttributeDelta : public Standard_Transient {
 	public:
-		/****************** Apply ******************/
-		/**** md5 signature: d55ef3070f583d4342be2dd36c78d554 ****/
+		/****** TDF_AttributeDelta::Apply ******/
+		/****** md5 signature: d55ef3070f583d4342be2dd36c78d554 ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -951,8 +951,8 @@ Applies the delta to the attribute.
 ") Apply;
 		virtual void Apply();
 
-		/****************** Attribute ******************/
-		/**** md5 signature: 64fbf96fd4c12b41da848f349815872c ****/
+		/****** TDF_AttributeDelta::Attribute ******/
+		/****** md5 signature: 64fbf96fd4c12b41da848f349815872c ******/
 		%feature("compactdefaultargs") Attribute;
 		%feature("autodoc", "Return
 -------
@@ -964,8 +964,8 @@ Returns the reference attribute.
 ") Attribute;
 		opencascade::handle<TDF_Attribute> Attribute();
 
-		/****************** Dump ******************/
-		/**** md5 signature: 99b366a47dee674026948ac42a91f968 ****/
+		/****** TDF_AttributeDelta::Dump ******/
+		/****** md5 signature: 99b366a47dee674026948ac42a91f968 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1002,8 +1002,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** ID ******************/
-		/**** md5 signature: 7f73a4e9cd65afc41a55b9f071f2e10d ****/
+		/****** TDF_AttributeDelta::ID ******/
+		/****** md5 signature: 7f73a4e9cd65afc41a55b9f071f2e10d ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -1015,8 +1015,8 @@ Returns the id of the attribute concerned by <self>.
 ") ID;
 		Standard_GUID ID();
 
-		/****************** Label ******************/
-		/**** md5 signature: 45446fb6d4e5a656e74b10a5eb4cd845 ****/
+		/****** TDF_AttributeDelta::Label ******/
+		/****** md5 signature: 45446fb6d4e5a656e74b10a5eb4cd845 ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -1044,8 +1044,8 @@ Returns the label concerned by <self>.
 ******************************/
 class TDF_AttributeIterator {
 	public:
-		/****************** TDF_AttributeIterator ******************/
-		/**** md5 signature: 585ceece4705e74816ff37825854b411 ****/
+		/****** TDF_AttributeIterator::TDF_AttributeIterator ******/
+		/****** md5 signature: 585ceece4705e74816ff37825854b411 ******/
 		%feature("compactdefaultargs") TDF_AttributeIterator;
 		%feature("autodoc", "Return
 -------
@@ -1057,8 +1057,8 @@ No available documentation.
 ") TDF_AttributeIterator;
 		 TDF_AttributeIterator();
 
-		/****************** TDF_AttributeIterator ******************/
-		/**** md5 signature: d710a54c90205cb251ebe8593dd87141 ****/
+		/****** TDF_AttributeIterator::TDF_AttributeIterator ******/
+		/****** md5 signature: d710a54c90205cb251ebe8593dd87141 ******/
 		%feature("compactdefaultargs") TDF_AttributeIterator;
 		%feature("autodoc", "
 Parameters
@@ -1076,8 +1076,8 @@ No available documentation.
 ") TDF_AttributeIterator;
 		 TDF_AttributeIterator(const TDF_Label & aLabel, const Standard_Boolean withoutForgotten = Standard_True);
 
-		/****************** TDF_AttributeIterator ******************/
-		/**** md5 signature: fd9aa70338e8d898944e21e5794c6ac5 ****/
+		/****** TDF_AttributeIterator::TDF_AttributeIterator ******/
+		/****** md5 signature: fd9aa70338e8d898944e21e5794c6ac5 ******/
 		%feature("compactdefaultargs") TDF_AttributeIterator;
 		%feature("autodoc", "
 Parameters
@@ -1095,8 +1095,8 @@ No available documentation.
 ") TDF_AttributeIterator;
 		 TDF_AttributeIterator(const TDF_LabelNodePtr aLabelNode, const Standard_Boolean withoutForgotten = Standard_True);
 
-		/****************** Initialize ******************/
-		/**** md5 signature: 572738611648339acbf475d0a9583c46 ****/
+		/****** TDF_AttributeIterator::Initialize ******/
+		/****** md5 signature: 572738611648339acbf475d0a9583c46 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -1114,8 +1114,8 @@ No available documentation.
 ") Initialize;
 		void Initialize(const TDF_Label & aLabel, const Standard_Boolean withoutForgotten = Standard_True);
 
-		/****************** More ******************/
-		/**** md5 signature: d71d36638272620679aae1f635153dca ****/
+		/****** TDF_AttributeIterator::More ******/
+		/****** md5 signature: d71d36638272620679aae1f635153dca ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1127,8 +1127,8 @@ No available documentation.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** TDF_AttributeIterator::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -1140,8 +1140,8 @@ No available documentation.
 ") Next;
 		void Next();
 
-		/****************** PtrValue ******************/
-		/**** md5 signature: 58a90bcec8f9fb96b5106cadf930b4d8 ****/
+		/****** TDF_AttributeIterator::PtrValue ******/
+		/****** md5 signature: 58a90bcec8f9fb96b5106cadf930b4d8 ******/
 		%feature("compactdefaultargs") PtrValue;
 		%feature("autodoc", "Return
 -------
@@ -1153,8 +1153,8 @@ Provides an access to the internal pointer of the current attribute. the method 
 ") PtrValue;
 		const TDF_Attribute * PtrValue();
 
-		/****************** Value ******************/
-		/**** md5 signature: 84b1efb55f8dba80e554db1af53924bf ****/
+		/****** TDF_AttributeIterator::Value ******/
+		/****** md5 signature: 84b1efb55f8dba80e554db1af53924bf ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1180,8 +1180,8 @@ No available documentation.
 ****************************/
 class TDF_ChildIDIterator {
 	public:
-		/****************** TDF_ChildIDIterator ******************/
-		/**** md5 signature: e42756213d8fd1136d55c3a43d8c9c21 ****/
+		/****** TDF_ChildIDIterator::TDF_ChildIDIterator ******/
+		/****** md5 signature: e42756213d8fd1136d55c3a43d8c9c21 ******/
 		%feature("compactdefaultargs") TDF_ChildIDIterator;
 		%feature("autodoc", "Return
 -------
@@ -1193,8 +1193,8 @@ Creates an empty iterator.
 ") TDF_ChildIDIterator;
 		 TDF_ChildIDIterator();
 
-		/****************** TDF_ChildIDIterator ******************/
-		/**** md5 signature: f07ccda3088ed57f2cbde947bb2212ea ****/
+		/****** TDF_ChildIDIterator::TDF_ChildIDIterator ******/
+		/****** md5 signature: f07ccda3088ed57f2cbde947bb2212ea ******/
 		%feature("compactdefaultargs") TDF_ChildIDIterator;
 		%feature("autodoc", "
 Parameters
@@ -1213,8 +1213,8 @@ Iterates on the children of the given label. if <alllevels> option is set to tru
 ") TDF_ChildIDIterator;
 		 TDF_ChildIDIterator(const TDF_Label & aLabel, const Standard_GUID & anID, const Standard_Boolean allLevels = Standard_False);
 
-		/****************** Initialize ******************/
-		/**** md5 signature: d06665652717063a271e60c94853d055 ****/
+		/****** TDF_ChildIDIterator::Initialize ******/
+		/****** md5 signature: d06665652717063a271e60c94853d055 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -1233,8 +1233,8 @@ Initializes the iteration on the children of the given label. if <alllevels> opt
 ") Initialize;
 		void Initialize(const TDF_Label & aLabel, const Standard_GUID & anID, const Standard_Boolean allLevels = Standard_False);
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** TDF_ChildIDIterator::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1246,8 +1246,8 @@ Returns true if there is a current item in the iteration.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** TDF_ChildIDIterator::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -1259,8 +1259,8 @@ Move to the next item.
 ") Next;
 		void Next();
 
-		/****************** NextBrother ******************/
-		/**** md5 signature: 5986fa6a611b7b5fcfac587700960b73 ****/
+		/****** TDF_ChildIDIterator::NextBrother ******/
+		/****** md5 signature: 5986fa6a611b7b5fcfac587700960b73 ******/
 		%feature("compactdefaultargs") NextBrother;
 		%feature("autodoc", "Return
 -------
@@ -1272,8 +1272,8 @@ Move to the next brother. if there is none, go up etc. this method is interestin
 ") NextBrother;
 		void NextBrother();
 
-		/****************** Value ******************/
-		/**** md5 signature: 9ad8943098bbee0d3aa073bd1d7d6d92 ****/
+		/****** TDF_ChildIDIterator::Value ******/
+		/****** md5 signature: 9ad8943098bbee0d3aa073bd1d7d6d92 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1299,8 +1299,8 @@ Returns the current item; a null handle if there is none.
 **************************/
 class TDF_ChildIterator {
 	public:
-		/****************** TDF_ChildIterator ******************/
-		/**** md5 signature: 94cafe961c6a9e194e20e43bbdc18d2d ****/
+		/****** TDF_ChildIterator::TDF_ChildIterator ******/
+		/****** md5 signature: 94cafe961c6a9e194e20e43bbdc18d2d ******/
 		%feature("compactdefaultargs") TDF_ChildIterator;
 		%feature("autodoc", "Return
 -------
@@ -1312,8 +1312,8 @@ Creates an empty iterator object to explore the children of a label.
 ") TDF_ChildIterator;
 		 TDF_ChildIterator();
 
-		/****************** TDF_ChildIterator ******************/
-		/**** md5 signature: acb79b424ebe77264841b3feb5423e51 ****/
+		/****** TDF_ChildIterator::TDF_ChildIterator ******/
+		/****** md5 signature: acb79b424ebe77264841b3feb5423e51 ******/
 		%feature("compactdefaultargs") TDF_ChildIterator;
 		%feature("autodoc", "
 Parameters
@@ -1331,8 +1331,8 @@ Constructs the iterator object defined by the label alabel. iterates on the chil
 ") TDF_ChildIterator;
 		 TDF_ChildIterator(const TDF_Label & aLabel, const Standard_Boolean allLevels = Standard_False);
 
-		/****************** Initialize ******************/
-		/**** md5 signature: b3942e3ee5d048a2a0d607e21cbecc7a ****/
+		/****** TDF_ChildIterator::Initialize ******/
+		/****** md5 signature: b3942e3ee5d048a2a0d607e21cbecc7a ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -1350,8 +1350,8 @@ Initializes the iteration on the children of the given label. if <alllevels> opt
 ") Initialize;
 		void Initialize(const TDF_Label & aLabel, const Standard_Boolean allLevels = Standard_False);
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** TDF_ChildIterator::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1363,8 +1363,8 @@ Returns true if a current label is found in the iteration process.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** TDF_ChildIterator::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -1376,8 +1376,8 @@ Move the current iteration to the next item.
 ") Next;
 		void Next();
 
-		/****************** NextBrother ******************/
-		/**** md5 signature: 5986fa6a611b7b5fcfac587700960b73 ****/
+		/****** TDF_ChildIterator::NextBrother ******/
+		/****** md5 signature: 5986fa6a611b7b5fcfac587700960b73 ******/
 		%feature("compactdefaultargs") NextBrother;
 		%feature("autodoc", "Return
 -------
@@ -1389,8 +1389,8 @@ Moves this iteration to the next brother label. a brother label is one with the 
 ") NextBrother;
 		void NextBrother();
 
-		/****************** Value ******************/
-		/**** md5 signature: 06b32d6a07bbf18ac1eb5a51d95d98cd ****/
+		/****** TDF_ChildIterator::Value ******/
+		/****** md5 signature: 06b32d6a07bbf18ac1eb5a51d95d98cd ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1416,8 +1416,8 @@ Returns the current label; or, if there is none, a null label.
 ************************/
 class TDF_ClosureMode {
 	public:
-		/****************** TDF_ClosureMode ******************/
-		/**** md5 signature: d0067cf39e729d207d68714afd10e10e ****/
+		/****** TDF_ClosureMode::TDF_ClosureMode ******/
+		/****** md5 signature: d0067cf39e729d207d68714afd10e10e ******/
 		%feature("compactdefaultargs") TDF_ClosureMode;
 		%feature("autodoc", "
 Parameters
@@ -1434,8 +1434,8 @@ Creates an object with all modes set to <amode>.
 ") TDF_ClosureMode;
 		 TDF_ClosureMode(const Standard_Boolean aMode = Standard_True);
 
-		/****************** Descendants ******************/
-		/**** md5 signature: a2e2f79553e77366fa7544bdfc242a1e ****/
+		/****** TDF_ClosureMode::Descendants ******/
+		/****** md5 signature: a2e2f79553e77366fa7544bdfc242a1e ******/
 		%feature("compactdefaultargs") Descendants;
 		%feature("autodoc", "
 Parameters
@@ -1452,8 +1452,8 @@ Sets the mode 'descendants' to <astatus>. //! 'descendants' mode means we add to
 ") Descendants;
 		void Descendants(const Standard_Boolean aStatus);
 
-		/****************** Descendants ******************/
-		/**** md5 signature: 826bd7150e755194db5d40e39b74c7ff ****/
+		/****** TDF_ClosureMode::Descendants ******/
+		/****** md5 signature: 826bd7150e755194db5d40e39b74c7ff ******/
 		%feature("compactdefaultargs") Descendants;
 		%feature("autodoc", "Return
 -------
@@ -1465,8 +1465,8 @@ Returns true if the mode 'descendants' is set.
 ") Descendants;
 		Standard_Boolean Descendants();
 
-		/****************** References ******************/
-		/**** md5 signature: 04dadbf275888077d87d5f847d1316f6 ****/
+		/****** TDF_ClosureMode::References ******/
+		/****** md5 signature: 04dadbf275888077d87d5f847d1316f6 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -1483,8 +1483,8 @@ Sets the mode 'references' to <astatus>. //! 'references' mode means we add to t
 ") References;
 		void References(const Standard_Boolean aStatus);
 
-		/****************** References ******************/
-		/**** md5 signature: e3acfac1a95f17388b349c8df0832ef9 ****/
+		/****** TDF_ClosureMode::References ******/
+		/****** md5 signature: e3acfac1a95f17388b349c8df0832ef9 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "Return
 -------
@@ -1510,8 +1510,8 @@ Returns true if the mode 'references' is set.
 ************************/
 class TDF_ClosureTool {
 	public:
-		/****************** Closure ******************/
-		/**** md5 signature: 137ba63aeb67f91b2a78d852939e2cb5 ****/
+		/****** TDF_ClosureTool::Closure ******/
+		/****** md5 signature: 137ba63aeb67f91b2a78d852939e2cb5 ******/
 		%feature("compactdefaultargs") Closure;
 		%feature("autodoc", "
 Parameters
@@ -1528,8 +1528,8 @@ Builds the transitive closure of label and attribute sets into <adataset>.
 ") Closure;
 		static void Closure(const opencascade::handle<TDF_DataSet> & aDataSet);
 
-		/****************** Closure ******************/
-		/**** md5 signature: d28d9168a2c73ddb283363e4b4426183 ****/
+		/****** TDF_ClosureTool::Closure ******/
+		/****** md5 signature: d28d9168a2c73ddb283363e4b4426183 ******/
 		%feature("compactdefaultargs") Closure;
 		%feature("autodoc", "
 Parameters
@@ -1548,8 +1548,8 @@ Builds the transitive closure of label and attribute sets into <adataset>. uses 
 ") Closure;
 		static void Closure(const opencascade::handle<TDF_DataSet> & aDataSet, const TDF_IDFilter & aFilter, const TDF_ClosureMode & aMode);
 
-		/****************** Closure ******************/
-		/**** md5 signature: 70e894c4a44be9fe1e618e830285afd3 ****/
+		/****** TDF_ClosureTool::Closure ******/
+		/****** md5 signature: 70e894c4a44be9fe1e618e830285afd3 ******/
 		%feature("compactdefaultargs") Closure;
 		%feature("autodoc", "
 Parameters
@@ -1584,8 +1584,8 @@ Builds the transitive closure of <alabel>.
 ***************************/
 class TDF_ComparisonTool {
 	public:
-		/****************** Compare ******************/
-		/**** md5 signature: fa2e0f4c630692eb4f8c4562c3aa0b06 ****/
+		/****** TDF_ComparisonTool::Compare ******/
+		/****** md5 signature: fa2e0f4c630692eb4f8c4562c3aa0b06 ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
@@ -1605,8 +1605,8 @@ Compares <asourcedataset> with <atargetdataset>, updating <arelocationtable> wit
 ") Compare;
 		static void Compare(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_DataSet> & aTargetDataSet, const TDF_IDFilter & aFilter, const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
-		/****************** Cut ******************/
-		/**** md5 signature: eafbfe914d8ffda969355273a231f112 ****/
+		/****** TDF_ComparisonTool::Cut ******/
+		/****** md5 signature: eafbfe914d8ffda969355273a231f112 ******/
 		%feature("compactdefaultargs") Cut;
 		%feature("autodoc", "
 Parameters
@@ -1623,8 +1623,8 @@ Removes attributes from <adataset>.
 ") Cut;
 		static void Cut(const opencascade::handle<TDF_DataSet> & aDataSet);
 
-		/****************** IsSelfContained ******************/
-		/**** md5 signature: f1f3a19ce83f1d52e1c34ef553b4aabd ****/
+		/****** TDF_ComparisonTool::IsSelfContained ******/
+		/****** md5 signature: f1f3a19ce83f1d52e1c34ef553b4aabd ******/
 		%feature("compactdefaultargs") IsSelfContained;
 		%feature("autodoc", "
 Parameters
@@ -1642,8 +1642,8 @@ Returns true if all the labels of <adataset> are descendant of <alabel>.
 ") IsSelfContained;
 		static Standard_Boolean IsSelfContained(const TDF_Label & aLabel, const opencascade::handle<TDF_DataSet> & aDataSet);
 
-		/****************** SourceUnbound ******************/
-		/**** md5 signature: d519b241fc1f0ed64c04ba6192ba3b70 ****/
+		/****** TDF_ComparisonTool::SourceUnbound ******/
+		/****** md5 signature: d519b241fc1f0ed64c04ba6192ba3b70 ******/
 		%feature("compactdefaultargs") SourceUnbound;
 		%feature("autodoc", "
 Parameters
@@ -1664,8 +1664,8 @@ Finds from <arefdataset> all the keys not bound into <arelocationtable> and put 
 ") SourceUnbound;
 		static Standard_Boolean SourceUnbound(const opencascade::handle<TDF_DataSet> & aRefDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable, const TDF_IDFilter & aFilter, const opencascade::handle<TDF_DataSet> & aDiffDataSet, const Standard_Integer anOption = 2);
 
-		/****************** TargetUnbound ******************/
-		/**** md5 signature: f1bef1c25fe7f83a1cd97a71260b7087 ****/
+		/****** TDF_ComparisonTool::TargetUnbound ******/
+		/****** md5 signature: f1bef1c25fe7f83a1cd97a71260b7087 ******/
 		%feature("compactdefaultargs") TargetUnbound;
 		%feature("autodoc", "
 Parameters
@@ -1700,8 +1700,8 @@ Substracts from <arefdataset> all the items bound into <arelocationtable>. the r
 **********************/
 class TDF_CopyLabel {
 	public:
-		/****************** TDF_CopyLabel ******************/
-		/**** md5 signature: 45df1a3aa5e656373d0435e2f931a89e ****/
+		/****** TDF_CopyLabel::TDF_CopyLabel ******/
+		/****** md5 signature: 45df1a3aa5e656373d0435e2f931a89e ******/
 		%feature("compactdefaultargs") TDF_CopyLabel;
 		%feature("autodoc", "Return
 -------
@@ -1713,8 +1713,8 @@ Empty constructor.
 ") TDF_CopyLabel;
 		 TDF_CopyLabel();
 
-		/****************** TDF_CopyLabel ******************/
-		/**** md5 signature: 25c850253cbcae0cd5d2932242809c66 ****/
+		/****** TDF_CopyLabel::TDF_CopyLabel ******/
+		/****** md5 signature: 25c850253cbcae0cd5d2932242809c66 ******/
 		%feature("compactdefaultargs") TDF_CopyLabel;
 		%feature("autodoc", "
 Parameters
@@ -1732,8 +1732,8 @@ Copytool.
 ") TDF_CopyLabel;
 		 TDF_CopyLabel(const TDF_Label & aSource, const TDF_Label & aTarget);
 
-		/****************** ExternalReferences ******************/
-		/**** md5 signature: 43d7cd21830d7d64f4aeff0c25fe8ac3 ****/
+		/****** TDF_CopyLabel::ExternalReferences ******/
+		/****** md5 signature: 43d7cd21830d7d64f4aeff0c25fe8ac3 ******/
 		%feature("compactdefaultargs") ExternalReferences;
 		%feature("autodoc", "
 Parameters
@@ -1752,8 +1752,8 @@ Check external references and if exist fills the aexternals map.
 ") ExternalReferences;
 		static Standard_Boolean ExternalReferences(const TDF_Label & Lab, TDF_AttributeMap & aExternals, const TDF_IDFilter & aFilter);
 
-		/****************** ExternalReferences ******************/
-		/**** md5 signature: 3856812b6615819534ef22781ae0f96c ****/
+		/****** TDF_CopyLabel::ExternalReferences ******/
+		/****** md5 signature: 3856812b6615819534ef22781ae0f96c ******/
 		%feature("compactdefaultargs") ExternalReferences;
 		%feature("autodoc", "
 Parameters
@@ -1774,8 +1774,8 @@ Check external references and if exist fills the aexternals map.
 ") ExternalReferences;
 		static void ExternalReferences(const TDF_Label & aRefLab, const TDF_Label & Lab, TDF_AttributeMap & aExternals, const TDF_IDFilter & aFilter, opencascade::handle<TDF_DataSet> & aDataSet);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** TDF_CopyLabel::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1787,8 +1787,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Load ******************/
-		/**** md5 signature: ed6ed42a43a283fb587c69e5a20c2bc8 ****/
+		/****** TDF_CopyLabel::Load ******/
+		/****** md5 signature: ed6ed42a43a283fb587c69e5a20c2bc8 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -1806,8 +1806,8 @@ Loads src and tgt labels.
 ") Load;
 		void Load(const TDF_Label & aSource, const TDF_Label & aTarget);
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** TDF_CopyLabel::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -1819,8 +1819,8 @@ Performs algorithm of selfcontained copy.
 ") Perform;
 		void Perform();
 
-		/****************** RelocationTable ******************/
-		/**** md5 signature: 8ae337ea16a575c9cbe8babfdef86d2a ****/
+		/****** TDF_CopyLabel::RelocationTable ******/
+		/****** md5 signature: 8ae337ea16a575c9cbe8babfdef86d2a ******/
 		%feature("compactdefaultargs") RelocationTable;
 		%feature("autodoc", "Return
 -------
@@ -1832,8 +1832,8 @@ Returns relocation table.
 ") RelocationTable;
 		const opencascade::handle<TDF_RelocationTable> & RelocationTable();
 
-		/****************** UseFilter ******************/
-		/**** md5 signature: 81ab0a7df550941c4582f6b215663e0a ****/
+		/****** TDF_CopyLabel::UseFilter ******/
+		/****** md5 signature: 81ab0a7df550941c4582f6b215663e0a ******/
 		%feature("compactdefaultargs") UseFilter;
 		%feature("autodoc", "
 Parameters
@@ -1864,8 +1864,8 @@ Sets filter.
 *********************/
 class TDF_CopyTool {
 	public:
-		/****************** Copy ******************/
-		/**** md5 signature: 2ad919cddc9b7241da9696a78c954561 ****/
+		/****** TDF_CopyTool::Copy ******/
+		/****** md5 signature: 2ad919cddc9b7241da9696a78c954561 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -1883,8 +1883,8 @@ Copy <asourcedataset> with using and updating <arelocationtable>. this method ig
 ") Copy;
 		static void Copy(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 768e1b62d141161509e52761bbe287a3 ****/
+		/****** TDF_CopyTool::Copy ******/
+		/****** md5 signature: 768e1b62d141161509e52761bbe287a3 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -1903,8 +1903,8 @@ Copy <asourcedataset> using and updating <arelocationtable>. use <aprivilegefilt
 ") Copy;
 		static void Copy(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable, const TDF_IDFilter & aPrivilegeFilter);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 86b536dc896d9901389518ae854cc0d8 ****/
+		/****** TDF_CopyTool::Copy ******/
+		/****** md5 signature: 86b536dc896d9901389518ae854cc0d8 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -1939,8 +1939,8 @@ Copy <asourcedataset> using and updating <arelocationtable>. use <aprivilegefilt
 *****************/
 class TDF_Data : public Standard_Transient {
 	public:
-		/****************** TDF_Data ******************/
-		/**** md5 signature: 9fc63e5d9ac61de6ac00d5ea0bdb733a ****/
+		/****** TDF_Data::TDF_Data ******/
+		/****** md5 signature: 9fc63e5d9ac61de6ac00d5ea0bdb733a ******/
 		%feature("compactdefaultargs") TDF_Data;
 		%feature("autodoc", "Return
 -------
@@ -1952,8 +1952,8 @@ A new and empty data structure.
 ") TDF_Data;
 		 TDF_Data();
 
-		/****************** AllowModification ******************/
-		/**** md5 signature: 3629f95e767d9884a68821b6c664883c ****/
+		/****** TDF_Data::AllowModification ******/
+		/****** md5 signature: 3629f95e767d9884a68821b6c664883c ******/
 		%feature("compactdefaultargs") AllowModification;
 		%feature("autodoc", "
 Parameters
@@ -1970,8 +1970,8 @@ Sets modification mode.
 ") AllowModification;
 		void AllowModification(const Standard_Boolean isAllowed);
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
+		/****** TDF_Data::Destroy ******/
+		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "Return
 -------
@@ -1983,8 +1983,8 @@ No available documentation.
 ") Destroy;
 		void Destroy();
 
-		/****************** Dump ******************/
-		/**** md5 signature: cfe815398c9c4191063c65e53f786693 ****/
+		/****** TDF_Data::Dump ******/
+		/****** md5 signature: cfe815398c9c4191063c65e53f786693 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2021,8 +2021,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** GetLabel ******************/
-		/**** md5 signature: 6acb21919b35dccd58a6c624736c7a64 ****/
+		/****** TDF_Data::GetLabel ******/
+		/****** md5 signature: 6acb21919b35dccd58a6c624736c7a64 ******/
 		%feature("compactdefaultargs") GetLabel;
 		%feature("autodoc", "
 Parameters
@@ -2040,8 +2040,8 @@ Returns a label by an entry. returns standard_false, if such a label doesn't exi
 ") GetLabel;
 		Standard_Boolean GetLabel(TCollection_AsciiString anEntry, TDF_Label & aLabel);
 
-		/****************** IsAccessByEntries ******************/
-		/**** md5 signature: e9c87e292dba49522735bc8b2f6391f2 ****/
+		/****** TDF_Data::IsAccessByEntries ******/
+		/****** md5 signature: e9c87e292dba49522735bc8b2f6391f2 ******/
 		%feature("compactdefaultargs") IsAccessByEntries;
 		%feature("autodoc", "Return
 -------
@@ -2053,8 +2053,8 @@ Returns a status of mechanism for fast access to the labels via entries.
 ") IsAccessByEntries;
 		Standard_Boolean IsAccessByEntries();
 
-		/****************** IsApplicable ******************/
-		/**** md5 signature: 3bce195eeb54500772a8ae9747fed4f1 ****/
+		/****** TDF_Data::IsApplicable ******/
+		/****** md5 signature: 3bce195eeb54500772a8ae9747fed4f1 ******/
 		%feature("compactdefaultargs") IsApplicable;
 		%feature("autodoc", "
 Parameters
@@ -2071,8 +2071,8 @@ Returns true if <adelta> is applicable here and now.
 ") IsApplicable;
 		Standard_Boolean IsApplicable(const opencascade::handle<TDF_Delta> & aDelta);
 
-		/****************** IsModificationAllowed ******************/
-		/**** md5 signature: 2024d7829729e942aa313777d0c41fd3 ****/
+		/****** TDF_Data::IsModificationAllowed ******/
+		/****** md5 signature: 2024d7829729e942aa313777d0c41fd3 ******/
 		%feature("compactdefaultargs") IsModificationAllowed;
 		%feature("autodoc", "Return
 -------
@@ -2084,8 +2084,8 @@ Returns modification mode.
 ") IsModificationAllowed;
 		Standard_Boolean IsModificationAllowed();
 
-		/****************** LabelNodeAllocator ******************/
-		/**** md5 signature: 51616b0b91fcc4a24241ddee1ed9e63f ****/
+		/****** TDF_Data::LabelNodeAllocator ******/
+		/****** md5 signature: 51616b0b91fcc4a24241ddee1ed9e63f ******/
 		%feature("compactdefaultargs") LabelNodeAllocator;
 		%feature("autodoc", "Return
 -------
@@ -2097,8 +2097,8 @@ Returns tdf_hallocator, which is an incremental allocator used by tdf_labelnode.
 ") LabelNodeAllocator;
 		const TDF_HAllocator & LabelNodeAllocator();
 
-		/****************** NotUndoMode ******************/
-		/**** md5 signature: abeb3f9854eb45a2b17d3745f22b5e53 ****/
+		/****** TDF_Data::NotUndoMode ******/
+		/****** md5 signature: abeb3f9854eb45a2b17d3745f22b5e53 ******/
 		%feature("compactdefaultargs") NotUndoMode;
 		%feature("autodoc", "Return
 -------
@@ -2110,8 +2110,8 @@ Returns the undo mode status.
 ") NotUndoMode;
 		Standard_Boolean NotUndoMode();
 
-		/****************** RegisterLabel ******************/
-		/**** md5 signature: 338d96516dcaa839075496537c99690a ****/
+		/****** TDF_Data::RegisterLabel ******/
+		/****** md5 signature: 338d96516dcaa839075496537c99690a ******/
 		%feature("compactdefaultargs") RegisterLabel;
 		%feature("autodoc", "
 Parameters
@@ -2128,8 +2128,8 @@ An internal method. it is used internally on creation of new labels. it adds a n
 ") RegisterLabel;
 		void RegisterLabel(const TDF_Label & aLabel);
 
-		/****************** Root ******************/
-		/**** md5 signature: 8d91e6b3e48b0dcd1ed6725e1e277a57 ****/
+		/****** TDF_Data::Root ******/
+		/****** md5 signature: 8d91e6b3e48b0dcd1ed6725e1e277a57 ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
@@ -2141,8 +2141,8 @@ Returns the root label of the data structure.
 ") Root;
 		const TDF_Label Root();
 
-		/****************** SetAccessByEntries ******************/
-		/**** md5 signature: 7db07372e18eb363da4daa94e4ebb296 ****/
+		/****** TDF_Data::SetAccessByEntries ******/
+		/****** md5 signature: 7db07372e18eb363da4daa94e4ebb296 ******/
 		%feature("compactdefaultargs") SetAccessByEntries;
 		%feature("autodoc", "
 Parameters
@@ -2159,8 +2159,8 @@ Initializes a mechanism for fast access to the labels by their entries. the fast
 ") SetAccessByEntries;
 		void SetAccessByEntries(const Standard_Boolean aSet);
 
-		/****************** Time ******************/
-		/**** md5 signature: 29e54f38b67d119a1dd7d985afb308c4 ****/
+		/****** TDF_Data::Time ******/
+		/****** md5 signature: 29e54f38b67d119a1dd7d985afb308c4 ******/
 		%feature("compactdefaultargs") Time;
 		%feature("autodoc", "Return
 -------
@@ -2172,8 +2172,8 @@ Returns the current tick. it is incremented each commit.
 ") Time;
 		Standard_Integer Time();
 
-		/****************** Transaction ******************/
-		/**** md5 signature: 00c48137a99575bfa5cfadde8fb37954 ****/
+		/****** TDF_Data::Transaction ******/
+		/****** md5 signature: 00c48137a99575bfa5cfadde8fb37954 ******/
 		%feature("compactdefaultargs") Transaction;
 		%feature("autodoc", "Return
 -------
@@ -2185,8 +2185,8 @@ Returns the current transaction number.
 ") Transaction;
 		Standard_Integer Transaction();
 
-		/****************** Undo ******************/
-		/**** md5 signature: e381e2729d2baa6e06b5553ecb90f6be ****/
+		/****** TDF_Data::Undo ******/
+		/****** md5 signature: e381e2729d2baa6e06b5553ecb90f6be ******/
 		%feature("compactdefaultargs") Undo;
 		%feature("autodoc", "
 Parameters
@@ -2220,8 +2220,8 @@ Apply <adelta> to undo a set of attribute modifications. //! optional <withdelta
 ********************/
 class TDF_DataSet : public Standard_Transient {
 	public:
-		/****************** TDF_DataSet ******************/
-		/**** md5 signature: 38b87a8b1743078c8ca1b762ca848a5b ****/
+		/****** TDF_DataSet::TDF_DataSet ******/
+		/****** md5 signature: 38b87a8b1743078c8ca1b762ca848a5b ******/
 		%feature("compactdefaultargs") TDF_DataSet;
 		%feature("autodoc", "Return
 -------
@@ -2233,8 +2233,8 @@ Creates an empty dataset object.
 ") TDF_DataSet;
 		 TDF_DataSet();
 
-		/****************** AddAttribute ******************/
-		/**** md5 signature: f3d67ca0190efaa72217965efe5fa3f3 ****/
+		/****** TDF_DataSet::AddAttribute ******/
+		/****** md5 signature: f3d67ca0190efaa72217965efe5fa3f3 ******/
 		%feature("compactdefaultargs") AddAttribute;
 		%feature("autodoc", "
 Parameters
@@ -2251,8 +2251,8 @@ Adds <anattribute> into the current data set.
 ") AddAttribute;
 		void AddAttribute(const opencascade::handle<TDF_Attribute> & anAttribute);
 
-		/****************** AddLabel ******************/
-		/**** md5 signature: 7fbcb1070afe949ef0df7c94c85a6d05 ****/
+		/****** TDF_DataSet::AddLabel ******/
+		/****** md5 signature: 7fbcb1070afe949ef0df7c94c85a6d05 ******/
 		%feature("compactdefaultargs") AddLabel;
 		%feature("autodoc", "
 Parameters
@@ -2269,8 +2269,8 @@ Adds <alabel> in the current data set.
 ") AddLabel;
 		void AddLabel(const TDF_Label & aLabel);
 
-		/****************** AddRoot ******************/
-		/**** md5 signature: 7f361ae371dd39d3acb9e85caacc6ae9 ****/
+		/****** TDF_DataSet::AddRoot ******/
+		/****** md5 signature: 7f361ae371dd39d3acb9e85caacc6ae9 ******/
 		%feature("compactdefaultargs") AddRoot;
 		%feature("autodoc", "
 Parameters
@@ -2287,8 +2287,8 @@ Adds a root label to <myrootlabels>.
 ") AddRoot;
 		void AddRoot(const TDF_Label & aLabel);
 
-		/****************** Attributes ******************/
-		/**** md5 signature: 67153ada94d44acfe76da77081ef336b ****/
+		/****** TDF_DataSet::Attributes ******/
+		/****** md5 signature: 67153ada94d44acfe76da77081ef336b ******/
 		%feature("compactdefaultargs") Attributes;
 		%feature("autodoc", "Return
 -------
@@ -2300,8 +2300,8 @@ Returns the map of attributes in the current data set. this map can be used dire
 ") Attributes;
 		TDF_AttributeMap & Attributes();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TDF_DataSet::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -2313,8 +2313,8 @@ Clears all information.
 ") Clear;
 		void Clear();
 
-		/****************** ContainsAttribute ******************/
-		/**** md5 signature: f5cfecdfca3855c7c473be249d687485 ****/
+		/****** TDF_DataSet::ContainsAttribute ******/
+		/****** md5 signature: f5cfecdfca3855c7c473be249d687485 ******/
 		%feature("compactdefaultargs") ContainsAttribute;
 		%feature("autodoc", "
 Parameters
@@ -2331,8 +2331,8 @@ Returns true if <anattribute> is in the data set.
 ") ContainsAttribute;
 		Standard_Boolean ContainsAttribute(const opencascade::handle<TDF_Attribute> & anAttribute);
 
-		/****************** ContainsLabel ******************/
-		/**** md5 signature: f95464b8fc5a41d2c99d023622240899 ****/
+		/****** TDF_DataSet::ContainsLabel ******/
+		/****** md5 signature: f95464b8fc5a41d2c99d023622240899 ******/
 		%feature("compactdefaultargs") ContainsLabel;
 		%feature("autodoc", "
 Parameters
@@ -2349,8 +2349,8 @@ Returns true if the label <alabel> is in the data set.
 ") ContainsLabel;
 		Standard_Boolean ContainsLabel(const TDF_Label & aLabel);
 
-		/****************** Dump ******************/
-		/**** md5 signature: cfe815398c9c4191063c65e53f786693 ****/
+		/****** TDF_DataSet::Dump ******/
+		/****** md5 signature: cfe815398c9c4191063c65e53f786693 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2366,8 +2366,8 @@ Dumps the minimum information about <self> on <astream>.
 ") Dump;
 		Standard_OStream & Dump(std::ostream &OutValue);
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
+		/****** TDF_DataSet::IsEmpty ******/
+		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2379,8 +2379,8 @@ Returns true if there is at least one label or one attribute.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** Labels ******************/
-		/**** md5 signature: ea1fec9a82297e5e75aa304f7e196b4d ****/
+		/****** TDF_DataSet::Labels ******/
+		/****** md5 signature: ea1fec9a82297e5e75aa304f7e196b4d ******/
 		%feature("compactdefaultargs") Labels;
 		%feature("autodoc", "Return
 -------
@@ -2392,8 +2392,8 @@ Returns the map of labels in this data set. this map can be used directly, or up
 ") Labels;
 		TDF_LabelMap & Labels();
 
-		/****************** Roots ******************/
-		/**** md5 signature: f326664333bfba9316463d303f238419 ****/
+		/****** TDF_DataSet::Roots ******/
+		/****** md5 signature: f326664333bfba9316463d303f238419 ******/
 		%feature("compactdefaultargs") Roots;
 		%feature("autodoc", "Return
 -------
@@ -2421,8 +2421,8 @@ Returns <myrootlabels> to be used or updated.
 ******************/
 class TDF_Delta : public Standard_Transient {
 	public:
-		/****************** TDF_Delta ******************/
-		/**** md5 signature: c25ba13e80b876ae81fda885bcb8f719 ****/
+		/****** TDF_Delta::TDF_Delta ******/
+		/****** md5 signature: c25ba13e80b876ae81fda885bcb8f719 ******/
 		%feature("compactdefaultargs") TDF_Delta;
 		%feature("autodoc", "Return
 -------
@@ -2434,8 +2434,8 @@ Creates a delta.
 ") TDF_Delta;
 		 TDF_Delta();
 
-		/****************** AttributeDeltas ******************/
-		/**** md5 signature: a01630877acf73e0fe223f8de99987dc ****/
+		/****** TDF_Delta::AttributeDeltas ******/
+		/****** md5 signature: a01630877acf73e0fe223f8de99987dc ******/
 		%feature("compactdefaultargs") AttributeDeltas;
 		%feature("autodoc", "Return
 -------
@@ -2447,8 +2447,8 @@ Returns the field <myattdeltalist>.
 ") AttributeDeltas;
 		const TDF_AttributeDeltaList & AttributeDeltas();
 
-		/****************** BeginTime ******************/
-		/**** md5 signature: bbc7dc7595a2b0017ba4e997281b3b9d ****/
+		/****** TDF_Delta::BeginTime ******/
+		/****** md5 signature: bbc7dc7595a2b0017ba4e997281b3b9d ******/
 		%feature("compactdefaultargs") BeginTime;
 		%feature("autodoc", "Return
 -------
@@ -2460,8 +2460,8 @@ Returns the field <mybegintime>.
 ") BeginTime;
 		Standard_Integer BeginTime();
 
-		/****************** Dump ******************/
-		/**** md5 signature: e60d722f65a7811be636699da7600e78 ****/
+		/****** TDF_Delta::Dump ******/
+		/****** md5 signature: e60d722f65a7811be636699da7600e78 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2498,8 +2498,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** EndTime ******************/
-		/**** md5 signature: ebfc0a5623f28f348163522aac1f9970 ****/
+		/****** TDF_Delta::EndTime ******/
+		/****** md5 signature: ebfc0a5623f28f348163522aac1f9970 ******/
 		%feature("compactdefaultargs") EndTime;
 		%feature("autodoc", "Return
 -------
@@ -2511,8 +2511,8 @@ Returns the field <myendtime>.
 ") EndTime;
 		Standard_Integer EndTime();
 
-		/****************** IsApplicable ******************/
-		/**** md5 signature: 69fca5e8fc8433a54befd18a7a29c75e ****/
+		/****** TDF_Delta::IsApplicable ******/
+		/****** md5 signature: 69fca5e8fc8433a54befd18a7a29c75e ******/
 		%feature("compactdefaultargs") IsApplicable;
 		%feature("autodoc", "
 Parameters
@@ -2529,8 +2529,8 @@ Returns true if the undo action of <self> is applicable at <acurrenttime>.
 ") IsApplicable;
 		Standard_Boolean IsApplicable(const Standard_Integer aCurrentTime);
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
+		/****** TDF_Delta::IsEmpty ******/
+		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2542,8 +2542,8 @@ Returns true if there is nothing to undo.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** Labels ******************/
-		/**** md5 signature: 3221e83f835ac762589f5da76c6d2476 ****/
+		/****** TDF_Delta::Labels ******/
+		/****** md5 signature: 3221e83f835ac762589f5da76c6d2476 ******/
 		%feature("compactdefaultargs") Labels;
 		%feature("autodoc", "
 Parameters
@@ -2560,8 +2560,8 @@ Adds in <alabellist> the labels of the attribute deltas. caution: <alabellist> i
 ") Labels;
 		void Labels(TDF_LabelList & aLabelList);
 
-		/****************** Name ******************/
-		/**** md5 signature: a9e55299a1405b3a2863469f1a67f9cd ****/
+		/****** TDF_Delta::Name ******/
+		/****** md5 signature: a9e55299a1405b3a2863469f1a67f9cd ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -2573,8 +2573,8 @@ Returns a name associated with this delta.
 ") Name;
 		TCollection_ExtendedString Name();
 
-		/****************** SetName ******************/
-		/**** md5 signature: 37faf29196bae8c9862db277eec2dc6c ****/
+		/****** TDF_Delta::SetName ******/
+		/****** md5 signature: 37faf29196bae8c9862db277eec2dc6c ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
@@ -2610,8 +2610,8 @@ Associates a name <thename> with this delta.
 *********************/
 class TDF_IDFilter {
 	public:
-		/****************** TDF_IDFilter ******************/
-		/**** md5 signature: 58987a5c5f723e0f2e6217e5f5a27ef6 ****/
+		/****** TDF_IDFilter::TDF_IDFilter ******/
+		/****** md5 signature: 58987a5c5f723e0f2e6217e5f5a27ef6 ******/
 		%feature("compactdefaultargs") TDF_IDFilter;
 		%feature("autodoc", "
 Parameters
@@ -2628,8 +2628,8 @@ Creates an id/attribute filter based on an id list. the default mode is 'ignore 
 ") TDF_IDFilter;
 		 TDF_IDFilter(const Standard_Boolean ignoreMode = Standard_True);
 
-		/****************** Assign ******************/
-		/**** md5 signature: f12375baab885781bf8dbb6d3a9bc5be ****/
+		/****** TDF_IDFilter::Assign ******/
+		/****** md5 signature: f12375baab885781bf8dbb6d3a9bc5be ******/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "
 Parameters
@@ -2646,8 +2646,8 @@ Assignment.
 ") Assign;
 		void Assign(const TDF_IDFilter & theFilter);
 
-		/****************** Copy ******************/
-		/**** md5 signature: cba1c4d44a1e2ba6eeeb86e5e53cc5e3 ****/
+		/****** TDF_IDFilter::Copy ******/
+		/****** md5 signature: cba1c4d44a1e2ba6eeeb86e5e53cc5e3 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -2664,8 +2664,8 @@ Copies into <self> the contents of <fromfilter>. <self> is cleared before copy.
 ") Copy;
 		void Copy(const TDF_IDFilter & fromFilter);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 43df1fb908adbf242957532375689066 ****/
+		/****** TDF_IDFilter::Dump ******/
+		/****** md5 signature: 43df1fb908adbf242957532375689066 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2681,8 +2681,8 @@ Writes the contents of <self> to <os>.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
-		/****************** IDList ******************/
-		/**** md5 signature: 51f584875347d58754d482e26d1410b6 ****/
+		/****** TDF_IDFilter::IDList ******/
+		/****** md5 signature: 51f584875347d58754d482e26d1410b6 ******/
 		%feature("compactdefaultargs") IDList;
 		%feature("autodoc", "
 Parameters
@@ -2699,8 +2699,8 @@ Copies the list of id to be kept or ignored in <anidlist>. <anidlist> is cleared
 ") IDList;
 		void IDList(TDF_IDList & anIDList);
 
-		/****************** Ignore ******************/
-		/**** md5 signature: ef193e95aeab177af35fe8cb04756e08 ****/
+		/****** TDF_IDFilter::Ignore ******/
+		/****** md5 signature: ef193e95aeab177af35fe8cb04756e08 ******/
 		%feature("compactdefaultargs") Ignore;
 		%feature("autodoc", "
 Parameters
@@ -2717,8 +2717,8 @@ An attribute with <anid> as id is to be ignored and the filter will answer false
 ") Ignore;
 		void Ignore(const Standard_GUID & anID);
 
-		/****************** Ignore ******************/
-		/**** md5 signature: 3b86bb6fc9fec9a8002469571237228e ****/
+		/****** TDF_IDFilter::Ignore ******/
+		/****** md5 signature: 3b86bb6fc9fec9a8002469571237228e ******/
 		%feature("compactdefaultargs") Ignore;
 		%feature("autodoc", "
 Parameters
@@ -2735,8 +2735,8 @@ Attributes with id owned by <anidlist> are to be ignored and the filter will ans
 ") Ignore;
 		void Ignore(const TDF_IDList & anIDList);
 
-		/****************** IgnoreAll ******************/
-		/**** md5 signature: efc50b8e6d73cc9f9ccc417f512fca20 ****/
+		/****** TDF_IDFilter::IgnoreAll ******/
+		/****** md5 signature: efc50b8e6d73cc9f9ccc417f512fca20 ******/
 		%feature("compactdefaultargs") IgnoreAll;
 		%feature("autodoc", "
 Parameters
@@ -2753,8 +2753,8 @@ The list of id is cleared and the filter mode is set to ignore mode if <keep> is
 ") IgnoreAll;
 		void IgnoreAll(const Standard_Boolean ignore);
 
-		/****************** IgnoreAll ******************/
-		/**** md5 signature: 0f8fc4125eb61399d6834b6d0ca04a16 ****/
+		/****** TDF_IDFilter::IgnoreAll ******/
+		/****** md5 signature: 0f8fc4125eb61399d6834b6d0ca04a16 ******/
 		%feature("compactdefaultargs") IgnoreAll;
 		%feature("autodoc", "Return
 -------
@@ -2766,8 +2766,8 @@ Returns true is the mode is set to 'ignore all but...'.
 ") IgnoreAll;
 		Standard_Boolean IgnoreAll();
 
-		/****************** IsIgnored ******************/
-		/**** md5 signature: d981ce364d388866cbe2605fb6b255bc ****/
+		/****** TDF_IDFilter::IsIgnored ******/
+		/****** md5 signature: d981ce364d388866cbe2605fb6b255bc ******/
 		%feature("compactdefaultargs") IsIgnored;
 		%feature("autodoc", "
 Parameters
@@ -2784,8 +2784,8 @@ Returns true if the id is to be ignored.
 ") IsIgnored;
 		Standard_Boolean IsIgnored(const Standard_GUID & anID);
 
-		/****************** IsIgnored ******************/
-		/**** md5 signature: c04e34ba0398a9d432af6e2ebc5ef72f ****/
+		/****** TDF_IDFilter::IsIgnored ******/
+		/****** md5 signature: c04e34ba0398a9d432af6e2ebc5ef72f ******/
 		%feature("compactdefaultargs") IsIgnored;
 		%feature("autodoc", "
 Parameters
@@ -2802,8 +2802,8 @@ Returns true if the attribute is to be ignored.
 ") IsIgnored;
 		Standard_Boolean IsIgnored(const opencascade::handle<TDF_Attribute> & anAtt);
 
-		/****************** IsKept ******************/
-		/**** md5 signature: c74df13be2964aac3c844c5c22f6dbbc ****/
+		/****** TDF_IDFilter::IsKept ******/
+		/****** md5 signature: c74df13be2964aac3c844c5c22f6dbbc ******/
 		%feature("compactdefaultargs") IsKept;
 		%feature("autodoc", "
 Parameters
@@ -2820,8 +2820,8 @@ Returns true if the id is to be kept.
 ") IsKept;
 		Standard_Boolean IsKept(const Standard_GUID & anID);
 
-		/****************** IsKept ******************/
-		/**** md5 signature: e9ee54cee186f5a5c5fbe8f5206bbbb0 ****/
+		/****** TDF_IDFilter::IsKept ******/
+		/****** md5 signature: e9ee54cee186f5a5c5fbe8f5206bbbb0 ******/
 		%feature("compactdefaultargs") IsKept;
 		%feature("autodoc", "
 Parameters
@@ -2838,8 +2838,8 @@ Returns true if the attribute is to be kept.
 ") IsKept;
 		Standard_Boolean IsKept(const opencascade::handle<TDF_Attribute> & anAtt);
 
-		/****************** Keep ******************/
-		/**** md5 signature: 44117785f35284179a4db2ed450a031b ****/
+		/****** TDF_IDFilter::Keep ******/
+		/****** md5 signature: 44117785f35284179a4db2ed450a031b ******/
 		%feature("compactdefaultargs") Keep;
 		%feature("autodoc", "
 Parameters
@@ -2856,8 +2856,8 @@ An attribute with <anid> as id is to be kept and the filter will answer true to 
 ") Keep;
 		void Keep(const Standard_GUID & anID);
 
-		/****************** Keep ******************/
-		/**** md5 signature: d00a54cbc2ef1dc529ade6c39e222865 ****/
+		/****** TDF_IDFilter::Keep ******/
+		/****** md5 signature: d00a54cbc2ef1dc529ade6c39e222865 ******/
 		%feature("compactdefaultargs") Keep;
 		%feature("autodoc", "
 Parameters
@@ -2889,8 +2889,8 @@ Attributes with id owned by <anidlist> are to be kept and the filter will answer
 class TDF_Label {
 	public:
 		friend struct std::hash ;
-		/****************** TDF_Label ******************/
-		/**** md5 signature: 1a8e59ba046467c4e163db826620fcdb ****/
+		/****** TDF_Label::TDF_Label ******/
+		/****** md5 signature: 1a8e59ba046467c4e163db826620fcdb ******/
 		%feature("compactdefaultargs") TDF_Label;
 		%feature("autodoc", "Return
 -------
@@ -2902,8 +2902,8 @@ Constructs an empty label object.
 ") TDF_Label;
 		 TDF_Label();
 
-		/****************** AddAttribute ******************/
-		/**** md5 signature: 6b2e59e881e33fcbfe2d87e62e7a38c4 ****/
+		/****** TDF_Label::AddAttribute ******/
+		/****** md5 signature: 6b2e59e881e33fcbfe2d87e62e7a38c4 ******/
 		%feature("compactdefaultargs") AddAttribute;
 		%feature("autodoc", "
 Parameters
@@ -2921,8 +2921,8 @@ Adds an attribute to the current label. raises if there is already one.
 ") AddAttribute;
 		void AddAttribute(const opencascade::handle<TDF_Attribute> & anAttribute, const Standard_Boolean append = Standard_True);
 
-		/****************** AttributesModified ******************/
-		/**** md5 signature: 2900274105f9122a0f7c89c8d5bdc04c ****/
+		/****** TDF_Label::AttributesModified ******/
+		/****** md5 signature: 2900274105f9122a0f7c89c8d5bdc04c ******/
 		%feature("compactdefaultargs") AttributesModified;
 		%feature("autodoc", "Return
 -------
@@ -2934,8 +2934,8 @@ Returns true if <self> owns attributes not yet available in transaction 0. it me
 ") AttributesModified;
 		Standard_Boolean AttributesModified();
 
-		/****************** Data ******************/
-		/**** md5 signature: 04ec1a781153c5a50d2756cf01f47e1c ****/
+		/****** TDF_Label::Data ******/
+		/****** md5 signature: 04ec1a781153c5a50d2756cf01f47e1c ******/
 		%feature("compactdefaultargs") Data;
 		%feature("autodoc", "Return
 -------
@@ -2947,8 +2947,8 @@ Returns the data owning <self>.
 ") Data;
 		opencascade::handle<TDF_Data> Data();
 
-		/****************** Depth ******************/
-		/**** md5 signature: b6eaa771d2fe709741b9c1e8ce5ec68f ****/
+		/****** TDF_Label::Depth ******/
+		/****** md5 signature: b6eaa771d2fe709741b9c1e8ce5ec68f ******/
 		%feature("compactdefaultargs") Depth;
 		%feature("autodoc", "Return
 -------
@@ -2960,8 +2960,8 @@ Returns the depth of the label in the data framework. this corresponds to the nu
 ") Depth;
 		Standard_Integer Depth();
 
-		/****************** Dump ******************/
-		/**** md5 signature: cfe815398c9c4191063c65e53f786693 ****/
+		/****** TDF_Label::Dump ******/
+		/****** md5 signature: cfe815398c9c4191063c65e53f786693 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2977,8 +2977,8 @@ Dumps the minimum information about <self> on <astream>.
 ") Dump;
 		Standard_OStream & Dump(std::ostream &OutValue);
 
-		/****************** EntryDump ******************/
-		/**** md5 signature: b1831f922bafdab54839dc202c26f4f7 ****/
+		/****** TDF_Label::EntryDump ******/
+		/****** md5 signature: b1831f922bafdab54839dc202c26f4f7 ******/
 		%feature("compactdefaultargs") EntryDump;
 		%feature("autodoc", "
 Parameters
@@ -2994,8 +2994,8 @@ Dumps the label entry.
 ") EntryDump;
 		void EntryDump(std::ostream &OutValue);
 
-		/****************** ExtendedDump ******************/
-		/**** md5 signature: af33a4abcb3b7b5ccf7bc889f69d60fb ****/
+		/****** TDF_Label::ExtendedDump ******/
+		/****** md5 signature: af33a4abcb3b7b5ccf7bc889f69d60fb ******/
 		%feature("compactdefaultargs") ExtendedDump;
 		%feature("autodoc", "
 Parameters
@@ -3013,8 +3013,8 @@ Dumps the label on <astream> and its attributes rank in <amap> if their ids are 
 ") ExtendedDump;
 		void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, TDF_AttributeIndexedMap & aMap);
 
-		/****************** Father ******************/
-		/**** md5 signature: a0f1cf18875c9b067fe3f49cfc73a13d ****/
+		/****** TDF_Label::Father ******/
+		/****** md5 signature: a0f1cf18875c9b067fe3f49cfc73a13d ******/
 		%feature("compactdefaultargs") Father;
 		%feature("autodoc", "Return
 -------
@@ -3026,8 +3026,8 @@ Returns the label father. this label may be null if the label is root.
 ") Father;
 		const TDF_Label Father();
 
-		/****************** FindAttribute ******************/
-		/**** md5 signature: 5f4fd12b74a27c4216127d1ce8d3b78a ****/
+		/****** TDF_Label::FindAttribute ******/
+		/****** md5 signature: 5f4fd12b74a27c4216127d1ce8d3b78a ******/
 		%feature("compactdefaultargs") FindAttribute;
 		%feature("autodoc", "
 Parameters
@@ -3045,8 +3045,8 @@ Finds an attribute of the current label, according to <anid>. if anattribute is 
 ") FindAttribute;
 		Standard_Boolean FindAttribute(const Standard_GUID & anID, opencascade::handle<TDF_Attribute> & anAttribute);
 
-		/****************** FindAttribute ******************/
-		/**** md5 signature: 7c7c7cdcc2d92b5e36db059c8747501d ****/
+		/****** TDF_Label::FindAttribute ******/
+		/****** md5 signature: 7c7c7cdcc2d92b5e36db059c8747501d ******/
 		%feature("compactdefaultargs") FindAttribute;
 		%feature("autodoc", "
 Parameters
@@ -3065,8 +3065,8 @@ Finds an attribute of the current label, according to <anid> and <atransaction>.
 ") FindAttribute;
 		Standard_Boolean FindAttribute(const Standard_GUID & anID, const Standard_Integer aTransaction, opencascade::handle<TDF_Attribute> & anAttribute);
 
-		/****************** FindChild ******************/
-		/**** md5 signature: a60e65fcd27d44e6f003161f38441bca ****/
+		/****** TDF_Label::FindChild ******/
+		/****** md5 signature: a60e65fcd27d44e6f003161f38441bca ******/
 		%feature("compactdefaultargs") FindChild;
 		%feature("autodoc", "
 Parameters
@@ -3084,8 +3084,8 @@ Finds a child label having <atag> as tag. creates the tag atag identifies the la
 ") FindChild;
 		TDF_Label FindChild(const Standard_Integer aTag, const Standard_Boolean create = Standard_True);
 
-		/****************** ForgetAllAttributes ******************/
-		/**** md5 signature: f0492f70679f693e73f3cd351b602cd9 ****/
+		/****** TDF_Label::ForgetAllAttributes ******/
+		/****** md5 signature: f0492f70679f693e73f3cd351b602cd9 ******/
 		%feature("compactdefaultargs") ForgetAllAttributes;
 		%feature("autodoc", "
 Parameters
@@ -3102,8 +3102,8 @@ Forgets all the attributes. does it on also on the sub-labels if <clearchildren>
 ") ForgetAllAttributes;
 		void ForgetAllAttributes(const Standard_Boolean clearChildren = Standard_True);
 
-		/****************** ForgetAttribute ******************/
-		/**** md5 signature: e72ba5b0453e41eca721688844ba10a0 ****/
+		/****** TDF_Label::ForgetAttribute ******/
+		/****** md5 signature: e72ba5b0453e41eca721688844ba10a0 ******/
 		%feature("compactdefaultargs") ForgetAttribute;
 		%feature("autodoc", "
 Parameters
@@ -3120,8 +3120,8 @@ Forgets an attribute from the current label, setting its forgotten status true a
 ") ForgetAttribute;
 		void ForgetAttribute(const opencascade::handle<TDF_Attribute> & anAttribute);
 
-		/****************** ForgetAttribute ******************/
-		/**** md5 signature: 52de4f1eac4c1d719dc2240e16600cdd ****/
+		/****** TDF_Label::ForgetAttribute ******/
+		/****** md5 signature: 52de4f1eac4c1d719dc2240e16600cdd ******/
 		%feature("compactdefaultargs") ForgetAttribute;
 		%feature("autodoc", "
 Parameters
@@ -3138,8 +3138,8 @@ Forgets the attribute of guid <aguid> from the current label . if the attribute 
 ") ForgetAttribute;
 		Standard_Boolean ForgetAttribute(const Standard_GUID & aguid);
 
-		/****************** HasAttribute ******************/
-		/**** md5 signature: c83a3a57dd33408208dae228eee63622 ****/
+		/****** TDF_Label::HasAttribute ******/
+		/****** md5 signature: c83a3a57dd33408208dae228eee63622 ******/
 		%feature("compactdefaultargs") HasAttribute;
 		%feature("autodoc", "Return
 -------
@@ -3151,8 +3151,8 @@ Returns true if this label has at least one attribute.
 ") HasAttribute;
 		Standard_Boolean HasAttribute();
 
-		/****************** HasChild ******************/
-		/**** md5 signature: a154ee7ab861537ddf2ce2de1cdad10c ****/
+		/****** TDF_Label::HasChild ******/
+		/****** md5 signature: a154ee7ab861537ddf2ce2de1cdad10c ******/
 		%feature("compactdefaultargs") HasChild;
 		%feature("autodoc", "Return
 -------
@@ -3164,8 +3164,8 @@ Returns true if this label has at least one child.
 ") HasChild;
 		Standard_Boolean HasChild();
 
-		/****************** HasGreaterNode ******************/
-		/**** md5 signature: 1b115e58390ef40597d4a570dc9420ff ****/
+		/****** TDF_Label::HasGreaterNode ******/
+		/****** md5 signature: 1b115e58390ef40597d4a570dc9420ff ******/
 		%feature("compactdefaultargs") HasGreaterNode;
 		%feature("autodoc", "
 Parameters
@@ -3182,8 +3182,8 @@ Returns true if node address of <self> is greater than <otherlabel> one. used to
 ") HasGreaterNode;
 		Standard_Boolean HasGreaterNode(const TDF_Label & otherLabel);
 
-		/****************** HasLowerNode ******************/
-		/**** md5 signature: 1929eebd8759cc1a4390e4dd4b079b88 ****/
+		/****** TDF_Label::HasLowerNode ******/
+		/****** md5 signature: 1929eebd8759cc1a4390e4dd4b079b88 ******/
 		%feature("compactdefaultargs") HasLowerNode;
 		%feature("autodoc", "
 Parameters
@@ -3200,8 +3200,8 @@ Returns true if node address of <self> is lower than <otherlabel> one. used to q
 ") HasLowerNode;
 		Standard_Boolean HasLowerNode(const TDF_Label & otherLabel);
 
-		/****************** Imported ******************/
-		/**** md5 signature: e00dc1ebd8c5a21a287230a63b0d04c4 ****/
+		/****** TDF_Label::Imported ******/
+		/****** md5 signature: e00dc1ebd8c5a21a287230a63b0d04c4 ******/
 		%feature("compactdefaultargs") Imported;
 		%feature("autodoc", "
 Parameters
@@ -3218,8 +3218,8 @@ Sets or unsets <self> and all its descendants as imported label, according to <a
 ") Imported;
 		void Imported(const Standard_Boolean aStatus);
 
-		/****************** IsAttribute ******************/
-		/**** md5 signature: d4c3cd3354e07d22381503542a5e16aa ****/
+		/****** TDF_Label::IsAttribute ******/
+		/****** md5 signature: d4c3cd3354e07d22381503542a5e16aa ******/
 		%feature("compactdefaultargs") IsAttribute;
 		%feature("autodoc", "
 Parameters
@@ -3236,8 +3236,8 @@ Returns true if <self> owns an attribute with <anid> as id.
 ") IsAttribute;
 		Standard_Boolean IsAttribute(const Standard_GUID & anID);
 
-		/****************** IsDescendant ******************/
-		/**** md5 signature: c4072a23dbe117ddbc6d1257b53382e4 ****/
+		/****** TDF_Label::IsDescendant ******/
+		/****** md5 signature: c4072a23dbe117ddbc6d1257b53382e4 ******/
 		%feature("compactdefaultargs") IsDescendant;
 		%feature("autodoc", "
 Parameters
@@ -3254,8 +3254,8 @@ Returns true if <self> is a descendant of <alabel>. attention: every label is it
 ") IsDescendant;
 		Standard_Boolean IsDescendant(const TDF_Label & aLabel);
 
-		/****************** IsDifferent ******************/
-		/**** md5 signature: 06534e200fafc26109ed216afd68537f ****/
+		/****** TDF_Label::IsDifferent ******/
+		/****** md5 signature: 06534e200fafc26109ed216afd68537f ******/
 		%feature("compactdefaultargs") IsDifferent;
 		%feature("autodoc", "
 Parameters
@@ -3272,8 +3272,8 @@ No available documentation.
 ") IsDifferent;
 		Standard_Boolean IsDifferent(const TDF_Label & aLabel);
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: 70468734b4ece003f2edac176a08a757 ****/
+		/****** TDF_Label::IsEqual ******/
+		/****** md5 signature: 70468734b4ece003f2edac176a08a757 ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -3290,8 +3290,8 @@ Returns true if the <alabel> is equal to me (same labelnode*).
 ") IsEqual;
 		Standard_Boolean IsEqual(const TDF_Label & aLabel);
 
-		/****************** IsImported ******************/
-		/**** md5 signature: fb7a79457fc419ced96fb68afd83327e ****/
+		/****** TDF_Label::IsImported ******/
+		/****** md5 signature: fb7a79457fc419ced96fb68afd83327e ******/
 		%feature("compactdefaultargs") IsImported;
 		%feature("autodoc", "Return
 -------
@@ -3303,8 +3303,8 @@ Returns true if the <alabel> is imported.
 ") IsImported;
 		Standard_Boolean IsImported();
 
-		/****************** IsNull ******************/
-		/**** md5 signature: eab2964eabd2f0636e5f767661fb72a9 ****/
+		/****** TDF_Label::IsNull ******/
+		/****** md5 signature: eab2964eabd2f0636e5f767661fb72a9 ******/
 		%feature("compactdefaultargs") IsNull;
 		%feature("autodoc", "Return
 -------
@@ -3316,8 +3316,8 @@ Returns true if the <alabel> is null, i.e. it has not been included in the data 
 ") IsNull;
 		Standard_Boolean IsNull();
 
-		/****************** IsRoot ******************/
-		/**** md5 signature: 9d981f423106a71cbae38fc5c56749f7 ****/
+		/****** TDF_Label::IsRoot ******/
+		/****** md5 signature: 9d981f423106a71cbae38fc5c56749f7 ******/
 		%feature("compactdefaultargs") IsRoot;
 		%feature("autodoc", "Return
 -------
@@ -3329,8 +3329,8 @@ No available documentation.
 ") IsRoot;
 		Standard_Boolean IsRoot();
 
-		/****************** MayBeModified ******************/
-		/**** md5 signature: f0df85b4481bf058c26aca9399b8068b ****/
+		/****** TDF_Label::MayBeModified ******/
+		/****** md5 signature: f0df85b4481bf058c26aca9399b8068b ******/
 		%feature("compactdefaultargs") MayBeModified;
 		%feature("autodoc", "Return
 -------
@@ -3342,8 +3342,8 @@ Returns true if <self> or a descendant of <self> owns attributes not yet availab
 ") MayBeModified;
 		Standard_Boolean MayBeModified();
 
-		/****************** NbAttributes ******************/
-		/**** md5 signature: 030fc1ab36c5ed65e9d9eafc56462331 ****/
+		/****** TDF_Label::NbAttributes ******/
+		/****** md5 signature: 030fc1ab36c5ed65e9d9eafc56462331 ******/
 		%feature("compactdefaultargs") NbAttributes;
 		%feature("autodoc", "Return
 -------
@@ -3355,8 +3355,8 @@ Returns the number of attributes.
 ") NbAttributes;
 		Standard_Integer NbAttributes();
 
-		/****************** NbChildren ******************/
-		/**** md5 signature: 4cd749dbf8e93e1f47a795e922eb497f ****/
+		/****** TDF_Label::NbChildren ******/
+		/****** md5 signature: 4cd749dbf8e93e1f47a795e922eb497f ******/
 		%feature("compactdefaultargs") NbChildren;
 		%feature("autodoc", "Return
 -------
@@ -3368,8 +3368,8 @@ Returns the number of children.
 ") NbChildren;
 		Standard_Integer NbChildren();
 
-		/****************** NewChild ******************/
-		/**** md5 signature: f3a9f914d60ad0eee36e9c24bab2ecef ****/
+		/****** TDF_Label::NewChild ******/
+		/****** md5 signature: f3a9f914d60ad0eee36e9c24bab2ecef ******/
 		%feature("compactdefaultargs") NewChild;
 		%feature("autodoc", "Return
 -------
@@ -3381,8 +3381,8 @@ Create a new child label of me using autoamtic delivery tags provided by tagsour
 ") NewChild;
 		TDF_Label NewChild();
 
-		/****************** Nullify ******************/
-		/**** md5 signature: 1915d5159e87738b7b9af9d5accf4c6e ****/
+		/****** TDF_Label::Nullify ******/
+		/****** md5 signature: 1915d5159e87738b7b9af9d5accf4c6e ******/
 		%feature("compactdefaultargs") Nullify;
 		%feature("autodoc", "Return
 -------
@@ -3394,8 +3394,8 @@ Nullifies the label.
 ") Nullify;
 		void Nullify();
 
-		/****************** ResumeAttribute ******************/
-		/**** md5 signature: e493b22327bc19ec2b05a27c84f03e3b ****/
+		/****** TDF_Label::ResumeAttribute ******/
+		/****** md5 signature: e493b22327bc19ec2b05a27c84f03e3b ******/
 		%feature("compactdefaultargs") ResumeAttribute;
 		%feature("autodoc", "
 Parameters
@@ -3412,8 +3412,8 @@ Undo forget action, setting its forgotten status false and its valid status true
 ") ResumeAttribute;
 		void ResumeAttribute(const opencascade::handle<TDF_Attribute> & anAttribute);
 
-		/****************** Root ******************/
-		/**** md5 signature: 8d91e6b3e48b0dcd1ed6725e1e277a57 ****/
+		/****** TDF_Label::Root ******/
+		/****** md5 signature: 8d91e6b3e48b0dcd1ed6725e1e277a57 ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
@@ -3425,8 +3425,8 @@ Returns the root label root of the data structure. this has a depth of 0. except
 ") Root;
 		const TDF_Label Root();
 
-		/****************** Tag ******************/
-		/**** md5 signature: 791177513adcbc21ede495c094d89fd2 ****/
+		/****** TDF_Label::Tag ******/
+		/****** md5 signature: 791177513adcbc21ede495c094d89fd2 ******/
 		%feature("compactdefaultargs") Tag;
 		%feature("autodoc", "Return
 -------
@@ -3438,8 +3438,8 @@ Returns the tag of the label. this is the integer assigned randomly to a label i
 ") Tag;
 		Standard_Integer Tag();
 
-		/****************** Transaction ******************/
-		/**** md5 signature: 00c48137a99575bfa5cfadde8fb37954 ****/
+		/****** TDF_Label::Transaction ******/
+		/****** md5 signature: 00c48137a99575bfa5cfadde8fb37954 ******/
 		%feature("compactdefaultargs") Transaction;
 		%feature("autodoc", "Return
 -------
@@ -3509,8 +3509,8 @@ def __eq__(self, right):
 ****************************/
 class TDF_RelocationTable : public Standard_Transient {
 	public:
-		/****************** TDF_RelocationTable ******************/
-		/**** md5 signature: 38f2ff8293692722818bcc491eb48985 ****/
+		/****** TDF_RelocationTable::TDF_RelocationTable ******/
+		/****** md5 signature: 38f2ff8293692722818bcc491eb48985 ******/
 		%feature("compactdefaultargs") TDF_RelocationTable;
 		%feature("autodoc", "
 Parameters
@@ -3527,8 +3527,8 @@ Creates an relocation table. <selfrelocate> says if a value without explicit rel
 ") TDF_RelocationTable;
 		 TDF_RelocationTable(const Standard_Boolean selfRelocate = Standard_False);
 
-		/****************** AfterRelocate ******************/
-		/**** md5 signature: d84076339c941ed8b0d1754325781c2a ****/
+		/****** TDF_RelocationTable::AfterRelocate ******/
+		/****** md5 signature: d84076339c941ed8b0d1754325781c2a ******/
 		%feature("compactdefaultargs") AfterRelocate;
 		%feature("autodoc", "
 Parameters
@@ -3545,8 +3545,8 @@ No available documentation.
 ") AfterRelocate;
 		void AfterRelocate(const Standard_Boolean afterRelocate);
 
-		/****************** AfterRelocate ******************/
-		/**** md5 signature: 697253380b685d8b61b28d4397896f5e ****/
+		/****** TDF_RelocationTable::AfterRelocate ******/
+		/****** md5 signature: 697253380b685d8b61b28d4397896f5e ******/
 		%feature("compactdefaultargs") AfterRelocate;
 		%feature("autodoc", "Return
 -------
@@ -3558,8 +3558,8 @@ Returns <myafterrelocate>.
 ") AfterRelocate;
 		Standard_Boolean AfterRelocate();
 
-		/****************** AttributeTable ******************/
-		/**** md5 signature: 1273cc558ecffa17c66d96aae42a6744 ****/
+		/****** TDF_RelocationTable::AttributeTable ******/
+		/****** md5 signature: 1273cc558ecffa17c66d96aae42a6744 ******/
 		%feature("compactdefaultargs") AttributeTable;
 		%feature("autodoc", "Return
 -------
@@ -3571,8 +3571,8 @@ Returns <myattributetable> to be used or updated.
 ") AttributeTable;
 		TDF_AttributeDataMap & AttributeTable();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TDF_RelocationTable::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -3584,8 +3584,8 @@ Clears the relocation dictionary, but lets the self relocation flag to its curre
 ") Clear;
 		void Clear();
 
-		/****************** Dump ******************/
-		/**** md5 signature: 2a7064c79887abf6a938c73a57576fd9 ****/
+		/****** TDF_RelocationTable::Dump ******/
+		/****** md5 signature: 2a7064c79887abf6a938c73a57576fd9 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -3604,8 +3604,8 @@ Dumps the relocation table.
 ") Dump;
 		Standard_OStream & Dump(const Standard_Boolean dumpLabels, const Standard_Boolean dumpAttributes, const Standard_Boolean dumpTransients, std::ostream &OutValue);
 
-		/****************** HasRelocation ******************/
-		/**** md5 signature: a28d159840ab7cb08cc986078d0af75d ****/
+		/****** TDF_RelocationTable::HasRelocation ******/
+		/****** md5 signature: a28d159840ab7cb08cc986078d0af75d ******/
 		%feature("compactdefaultargs") HasRelocation;
 		%feature("autodoc", "
 Parameters
@@ -3623,8 +3623,8 @@ Finds the relocation value of <asourcelabel> and returns it into <atargetlabel>.
 ") HasRelocation;
 		Standard_Boolean HasRelocation(const TDF_Label & aSourceLabel, TDF_Label & aTargetLabel);
 
-		/****************** HasRelocation ******************/
-		/**** md5 signature: 5f5b89c3575ed75c19cb9e22bf8759f6 ****/
+		/****** TDF_RelocationTable::HasRelocation ******/
+		/****** md5 signature: 5f5b89c3575ed75c19cb9e22bf8759f6 ******/
 		%feature("compactdefaultargs") HasRelocation;
 		%feature("autodoc", "
 Parameters
@@ -3642,8 +3642,8 @@ Finds the relocation value of <asourceattribute> and returns it into <atargetatt
 ") HasRelocation;
 		Standard_Boolean HasRelocation(const opencascade::handle<TDF_Attribute> & aSourceAttribute, opencascade::handle<TDF_Attribute> & aTargetAttribute);
 
-		/****************** HasTransientRelocation ******************/
-		/**** md5 signature: 3adbba699110e4d44816ab54d56a1b5d ****/
+		/****** TDF_RelocationTable::HasTransientRelocation ******/
+		/****** md5 signature: 3adbba699110e4d44816ab54d56a1b5d ******/
 		%feature("compactdefaultargs") HasTransientRelocation;
 		%feature("autodoc", "
 Parameters
@@ -3661,8 +3661,8 @@ Finds the relocation value of <asourcetransient> and returns it into <atargettra
 ") HasTransientRelocation;
 		Standard_Boolean HasTransientRelocation(const opencascade::handle<Standard_Transient> & aSourceTransient, opencascade::handle<Standard_Transient> & aTargetTransient);
 
-		/****************** LabelTable ******************/
-		/**** md5 signature: 485da555ceb4d57157014e91d8c611ce ****/
+		/****** TDF_RelocationTable::LabelTable ******/
+		/****** md5 signature: 485da555ceb4d57157014e91d8c611ce ******/
 		%feature("compactdefaultargs") LabelTable;
 		%feature("autodoc", "Return
 -------
@@ -3674,8 +3674,8 @@ Returns <mylabeltable> to be used or updated.
 ") LabelTable;
 		TDF_LabelDataMap & LabelTable();
 
-		/****************** SelfRelocate ******************/
-		/**** md5 signature: c384422c13e6298f25b8fd25d61a98f6 ****/
+		/****** TDF_RelocationTable::SelfRelocate ******/
+		/****** md5 signature: c384422c13e6298f25b8fd25d61a98f6 ******/
 		%feature("compactdefaultargs") SelfRelocate;
 		%feature("autodoc", "
 Parameters
@@ -3692,8 +3692,8 @@ Sets <myselfrelocate> to <selfrelocate>. //! this flag affects the hasrelocation
 ") SelfRelocate;
 		void SelfRelocate(const Standard_Boolean selfRelocate);
 
-		/****************** SelfRelocate ******************/
-		/**** md5 signature: fa3257a03fc9877898b39ac53bcaa7c5 ****/
+		/****** TDF_RelocationTable::SelfRelocate ******/
+		/****** md5 signature: fa3257a03fc9877898b39ac53bcaa7c5 ******/
 		%feature("compactdefaultargs") SelfRelocate;
 		%feature("autodoc", "Return
 -------
@@ -3705,8 +3705,8 @@ Returns <myselfrelocate>.
 ") SelfRelocate;
 		Standard_Boolean SelfRelocate();
 
-		/****************** SetRelocation ******************/
-		/**** md5 signature: cf4c390ae41b6368257eab2f8d175ae0 ****/
+		/****** TDF_RelocationTable::SetRelocation ******/
+		/****** md5 signature: cf4c390ae41b6368257eab2f8d175ae0 ******/
 		%feature("compactdefaultargs") SetRelocation;
 		%feature("autodoc", "
 Parameters
@@ -3724,8 +3724,8 @@ Sets the relocation value of <asourcelabel> to <atargetlabel>.
 ") SetRelocation;
 		void SetRelocation(const TDF_Label & aSourceLabel, const TDF_Label & aTargetLabel);
 
-		/****************** SetRelocation ******************/
-		/**** md5 signature: 5c896d8b5adfe05284f457ac0be56fa0 ****/
+		/****** TDF_RelocationTable::SetRelocation ******/
+		/****** md5 signature: 5c896d8b5adfe05284f457ac0be56fa0 ******/
 		%feature("compactdefaultargs") SetRelocation;
 		%feature("autodoc", "
 Parameters
@@ -3743,8 +3743,8 @@ Sets the relocation value of <asourceattribute> to <atargetattribute>.
 ") SetRelocation;
 		void SetRelocation(const opencascade::handle<TDF_Attribute> & aSourceAttribute, const opencascade::handle<TDF_Attribute> & aTargetAttribute);
 
-		/****************** SetTransientRelocation ******************/
-		/**** md5 signature: 1428ba1b8d2b28e81dec5e977988a35a ****/
+		/****** TDF_RelocationTable::SetTransientRelocation ******/
+		/****** md5 signature: 1428ba1b8d2b28e81dec5e977988a35a ******/
 		%feature("compactdefaultargs") SetTransientRelocation;
 		%feature("autodoc", "
 Parameters
@@ -3762,8 +3762,8 @@ Sets the relocation value of <asourcetransient> to <atargettransient>.
 ") SetTransientRelocation;
 		void SetTransientRelocation(const opencascade::handle<Standard_Transient> & aSourceTransient, const opencascade::handle<Standard_Transient> & aTargetTransient);
 
-		/****************** TargetAttributeMap ******************/
-		/**** md5 signature: 26293a13506fac54e0b8cded12cb61f8 ****/
+		/****** TDF_RelocationTable::TargetAttributeMap ******/
+		/****** md5 signature: 26293a13506fac54e0b8cded12cb61f8 ******/
 		%feature("compactdefaultargs") TargetAttributeMap;
 		%feature("autodoc", "
 Parameters
@@ -3780,8 +3780,8 @@ Fills <anattributemap> with target relocation attributes. <anattributemap> is no
 ") TargetAttributeMap;
 		void TargetAttributeMap(TDF_AttributeMap & anAttributeMap);
 
-		/****************** TargetLabelMap ******************/
-		/**** md5 signature: 083517199b8634cdfc3a5eba3e4e7d70 ****/
+		/****** TDF_RelocationTable::TargetLabelMap ******/
+		/****** md5 signature: 083517199b8634cdfc3a5eba3e4e7d70 ******/
 		%feature("compactdefaultargs") TargetLabelMap;
 		%feature("autodoc", "
 Parameters
@@ -3798,8 +3798,8 @@ Fills <alabelmap> with target relocation labels. <alabelmap> is not cleared befo
 ") TargetLabelMap;
 		void TargetLabelMap(TDF_LabelMap & aLabelMap);
 
-		/****************** TransientTable ******************/
-		/**** md5 signature: 18c6e034e4269a22870ec5ff65bea9d9 ****/
+		/****** TDF_RelocationTable::TransientTable ******/
+		/****** md5 signature: 18c6e034e4269a22870ec5ff65bea9d9 ******/
 		%feature("compactdefaultargs") TransientTable;
 		%feature("autodoc", "Return
 -------
@@ -3827,8 +3827,8 @@ Returns <mytransienttable> to be used or updated.
 *****************/
 class TDF_Tool {
 	public:
-		/****************** CountLabels ******************/
-		/**** md5 signature: 357345a4d8f0de55201bd2a93ce4fd20 ****/
+		/****** TDF_Tool::CountLabels ******/
+		/****** md5 signature: 357345a4d8f0de55201bd2a93ce4fd20 ******/
 		%feature("compactdefaultargs") CountLabels;
 		%feature("autodoc", "
 Parameters
@@ -3846,8 +3846,8 @@ Adds the labels of <alabellist> to <alabelmap> if they are unbound, or increases
 ") CountLabels;
 		static void CountLabels(TDF_LabelList & aLabelList, TDF_LabelIntegerMap & aLabelMap);
 
-		/****************** DeductLabels ******************/
-		/**** md5 signature: 89cbe0c451df6ab6d247cfe46a32b570 ****/
+		/****** TDF_Tool::DeductLabels ******/
+		/****** md5 signature: 89cbe0c451df6ab6d247cfe46a32b570 ******/
 		%feature("compactdefaultargs") DeductLabels;
 		%feature("autodoc", "
 Parameters
@@ -3865,8 +3865,8 @@ Decreases the reference counters of the labels of <alabellist> to <alabelmap>, a
 ") DeductLabels;
 		static void DeductLabels(TDF_LabelList & aLabelList, TDF_LabelIntegerMap & aLabelMap);
 
-		/****************** DeepDump ******************/
-		/**** md5 signature: 0865990b45a67afdb1d24c85517acea1 ****/
+		/****** TDF_Tool::DeepDump ******/
+		/****** md5 signature: 0865990b45a67afdb1d24c85517acea1 ******/
 		%feature("compactdefaultargs") DeepDump;
 		%feature("autodoc", "
 Parameters
@@ -3883,8 +3883,8 @@ Dumps <adf> and its labels and their attributes.
 ") DeepDump;
 		static void DeepDump(std::ostream &OutValue, const opencascade::handle<TDF_Data> & aDF);
 
-		/****************** DeepDump ******************/
-		/**** md5 signature: e4b5cb2df81a0376aea19a2db84fdb98 ****/
+		/****** TDF_Tool::DeepDump ******/
+		/****** md5 signature: e4b5cb2df81a0376aea19a2db84fdb98 ******/
 		%feature("compactdefaultargs") DeepDump;
 		%feature("autodoc", "
 Parameters
@@ -3901,8 +3901,8 @@ Dumps <alabel>, its children and their attributes.
 ") DeepDump;
 		static void DeepDump(std::ostream &OutValue, const TDF_Label & aLabel);
 
-		/****************** Entry ******************/
-		/**** md5 signature: 5846182a2901126a6abbd7b994d69204 ****/
+		/****** TDF_Tool::Entry ******/
+		/****** md5 signature: 5846182a2901126a6abbd7b994d69204 ******/
 		%feature("compactdefaultargs") Entry;
 		%feature("autodoc", "
 Parameters
@@ -3920,8 +3920,8 @@ Returns the entry for the label alabel in the form of the ascii character string
 ") Entry;
 		static void Entry(const TDF_Label & aLabel, TCollection_AsciiString & anEntry);
 
-		/****************** ExtendedDeepDump ******************/
-		/**** md5 signature: 0090a78df835b64f97d365e375094233 ****/
+		/****** TDF_Tool::ExtendedDeepDump ******/
+		/****** md5 signature: 0090a78df835b64f97d365e375094233 ******/
 		%feature("compactdefaultargs") ExtendedDeepDump;
 		%feature("autodoc", "
 Parameters
@@ -3939,8 +3939,8 @@ Dumps <adf> and its labels and their attributes, if their ids are kept by <afilt
 ") ExtendedDeepDump;
 		static void ExtendedDeepDump(std::ostream &OutValue, const opencascade::handle<TDF_Data> & aDF, const TDF_IDFilter & aFilter);
 
-		/****************** ExtendedDeepDump ******************/
-		/**** md5 signature: ad0131438f9321268f1740e7da980209 ****/
+		/****** TDF_Tool::ExtendedDeepDump ******/
+		/****** md5 signature: ad0131438f9321268f1740e7da980209 ******/
 		%feature("compactdefaultargs") ExtendedDeepDump;
 		%feature("autodoc", "
 Parameters
@@ -3958,8 +3958,8 @@ Dumps <alabel>, its children and their attributes, if their ids are kept by <afi
 ") ExtendedDeepDump;
 		static void ExtendedDeepDump(std::ostream &OutValue, const TDF_Label & aLabel, const TDF_IDFilter & aFilter);
 
-		/****************** IsSelfContained ******************/
-		/**** md5 signature: 022b907b8de1841e61e891cd408215cc ****/
+		/****** TDF_Tool::IsSelfContained ******/
+		/****** md5 signature: 022b907b8de1841e61e891cd408215cc ******/
 		%feature("compactdefaultargs") IsSelfContained;
 		%feature("autodoc", "
 Parameters
@@ -3976,8 +3976,8 @@ Returns true if <alabel> and its descendants reference only attributes or labels
 ") IsSelfContained;
 		static Standard_Boolean IsSelfContained(const TDF_Label & aLabel);
 
-		/****************** IsSelfContained ******************/
-		/**** md5 signature: e8c306fe67c7f2dbdab50a397da507fa ****/
+		/****** TDF_Tool::IsSelfContained ******/
+		/****** md5 signature: e8c306fe67c7f2dbdab50a397da507fa ******/
 		%feature("compactdefaultargs") IsSelfContained;
 		%feature("autodoc", "
 Parameters
@@ -3995,8 +3995,8 @@ Returns true if <alabel> and its descendants reference only attributes or labels
 ") IsSelfContained;
 		static Standard_Boolean IsSelfContained(const TDF_Label & aLabel, const TDF_IDFilter & aFilter);
 
-		/****************** Label ******************/
-		/**** md5 signature: a0b6165d731202c705d534ce73a4b9e4 ****/
+		/****** TDF_Tool::Label ******/
+		/****** md5 signature: a0b6165d731202c705d534ce73a4b9e4 ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "
 Parameters
@@ -4016,8 +4016,8 @@ Returns the label expressed by <anentry>; creates the label if it does not exist
 ") Label;
 		static void Label(const opencascade::handle<TDF_Data> & aDF, TCollection_AsciiString anEntry, TDF_Label & aLabel, const Standard_Boolean create = Standard_False);
 
-		/****************** Label ******************/
-		/**** md5 signature: 06e6f21799eb9ca00a6456b866227df2 ****/
+		/****** TDF_Tool::Label ******/
+		/****** md5 signature: 06e6f21799eb9ca00a6456b866227df2 ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "
 Parameters
@@ -4037,8 +4037,8 @@ Returns the label expressed by <anentry>; creates the label if it does not exist
 ") Label;
 		static void Label(const opencascade::handle<TDF_Data> & aDF, Standard_CString anEntry, TDF_Label & aLabel, const Standard_Boolean create = Standard_False);
 
-		/****************** Label ******************/
-		/**** md5 signature: 86d4f246c23ebec41b9cd05f0e7f6a0a ****/
+		/****** TDF_Tool::Label ******/
+		/****** md5 signature: 86d4f246c23ebec41b9cd05f0e7f6a0a ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "
 Parameters
@@ -4058,8 +4058,8 @@ Returns the label expressed by <anentry>; creates the label if it does not exist
 ") Label;
 		static void Label(const opencascade::handle<TDF_Data> & aDF, const TColStd_ListOfInteger & aTagList, TDF_Label & aLabel, const Standard_Boolean create = Standard_False);
 
-		/****************** NbAttributes ******************/
-		/**** md5 signature: 0efcc2b4739048c06cdd577bafe92933 ****/
+		/****** TDF_Tool::NbAttributes ******/
+		/****** md5 signature: 0efcc2b4739048c06cdd577bafe92933 ******/
 		%feature("compactdefaultargs") NbAttributes;
 		%feature("autodoc", "
 Parameters
@@ -4076,8 +4076,8 @@ Returns the total number of attributes attached to the labels dependent on the l
 ") NbAttributes;
 		static Standard_Integer NbAttributes(const TDF_Label & aLabel);
 
-		/****************** NbAttributes ******************/
-		/**** md5 signature: bd5e4de86e2608e1e8cdc01d33796723 ****/
+		/****** TDF_Tool::NbAttributes ******/
+		/****** md5 signature: bd5e4de86e2608e1e8cdc01d33796723 ******/
 		%feature("compactdefaultargs") NbAttributes;
 		%feature("autodoc", "
 Parameters
@@ -4095,8 +4095,8 @@ Returns the number of attributes of the tree, selected by a<filter>, including t
 ") NbAttributes;
 		static Standard_Integer NbAttributes(const TDF_Label & aLabel, const TDF_IDFilter & aFilter);
 
-		/****************** NbLabels ******************/
-		/**** md5 signature: e5e31f60b09a76eb273e83856a43787d ****/
+		/****** TDF_Tool::NbLabels ******/
+		/****** md5 signature: e5e31f60b09a76eb273e83856a43787d ******/
 		%feature("compactdefaultargs") NbLabels;
 		%feature("autodoc", "
 Parameters
@@ -4113,8 +4113,8 @@ Returns the number of labels of the tree, including <alabel>. alabel is also inc
 ") NbLabels;
 		static Standard_Integer NbLabels(const TDF_Label & aLabel);
 
-		/****************** OutReferences ******************/
-		/**** md5 signature: 79be4b27ee58ab3a25c2b0bf6c158456 ****/
+		/****** TDF_Tool::OutReferences ******/
+		/****** md5 signature: 79be4b27ee58ab3a25c2b0bf6c158456 ******/
 		%feature("compactdefaultargs") OutReferences;
 		%feature("autodoc", "
 Parameters
@@ -4132,8 +4132,8 @@ Returns in <atts> the referenced attributes. caution: <atts> is not cleared befo
 ") OutReferences;
 		static void OutReferences(const TDF_Label & aLabel, TDF_AttributeMap & atts);
 
-		/****************** OutReferences ******************/
-		/**** md5 signature: 16f5367a11932dbebdc9488dc199de94 ****/
+		/****** TDF_Tool::OutReferences ******/
+		/****** md5 signature: 16f5367a11932dbebdc9488dc199de94 ******/
 		%feature("compactdefaultargs") OutReferences;
 		%feature("autodoc", "
 Parameters
@@ -4153,8 +4153,8 @@ Returns in <atts> the referenced attributes and kept by <afilterforreferences>. 
 ") OutReferences;
 		static void OutReferences(const TDF_Label & aLabel, const TDF_IDFilter & aFilterForReferers, const TDF_IDFilter & aFilterForReferences, TDF_AttributeMap & atts);
 
-		/****************** OutReferers ******************/
-		/**** md5 signature: 309feefb269cc909617dd0540f46f416 ****/
+		/****** TDF_Tool::OutReferers ******/
+		/****** md5 signature: 309feefb269cc909617dd0540f46f416 ******/
 		%feature("compactdefaultargs") OutReferers;
 		%feature("autodoc", "
 Parameters
@@ -4172,8 +4172,8 @@ Returns in <theatts> the attributes having out references. //! caution: <theatts
 ") OutReferers;
 		static void OutReferers(const TDF_Label & theLabel, TDF_AttributeMap & theAtts);
 
-		/****************** OutReferers ******************/
-		/**** md5 signature: 219fec7089c087ee380bfd07f6ed1f30 ****/
+		/****** TDF_Tool::OutReferers ******/
+		/****** md5 signature: 219fec7089c087ee380bfd07f6ed1f30 ******/
 		%feature("compactdefaultargs") OutReferers;
 		%feature("autodoc", "
 Parameters
@@ -4193,8 +4193,8 @@ Returns in <atts> the attributes having out references and kept by <afilterforre
 ") OutReferers;
 		static void OutReferers(const TDF_Label & aLabel, const TDF_IDFilter & aFilterForReferers, const TDF_IDFilter & aFilterForReferences, TDF_AttributeMap & atts);
 
-		/****************** RelocateLabel ******************/
-		/**** md5 signature: a790ebba517221dfa8200224bae0d105 ****/
+		/****** TDF_Tool::RelocateLabel ******/
+		/****** md5 signature: a790ebba517221dfa8200224bae0d105 ******/
 		%feature("compactdefaultargs") RelocateLabel;
 		%feature("autodoc", "
 Parameters
@@ -4215,8 +4215,8 @@ Returns the label having the same sub-entry as <alabel> but located as descendan
 ") RelocateLabel;
 		static void RelocateLabel(const TDF_Label & aSourceLabel, const TDF_Label & fromRoot, const TDF_Label & toRoot, TDF_Label & aTargetLabel, const Standard_Boolean create = Standard_False);
 
-		/****************** TagList ******************/
-		/**** md5 signature: ae6c070a2430d04009301015bfb0ae16 ****/
+		/****** TDF_Tool::TagList ******/
+		/****** md5 signature: ae6c070a2430d04009301015bfb0ae16 ******/
 		%feature("compactdefaultargs") TagList;
 		%feature("autodoc", "
 Parameters
@@ -4234,8 +4234,8 @@ Returns the entry of <alabel> as list of integers in <ataglist>.
 ") TagList;
 		static void TagList(const TDF_Label & aLabel, TColStd_ListOfInteger & aTagList);
 
-		/****************** TagList ******************/
-		/**** md5 signature: 7093f47c7c5cb37c8352971aa776e927 ****/
+		/****** TDF_Tool::TagList ******/
+		/****** md5 signature: 7093f47c7c5cb37c8352971aa776e927 ******/
 		%feature("compactdefaultargs") TagList;
 		%feature("autodoc", "
 Parameters
@@ -4267,8 +4267,8 @@ Returns the entry expressed by <anentry> as list of integers in <ataglist>.
 ************************/
 class TDF_Transaction {
 	public:
-		/****************** TDF_Transaction ******************/
-		/**** md5 signature: 25679619d6b41673c52ce6c41bcd1f82 ****/
+		/****** TDF_Transaction::TDF_Transaction ******/
+		/****** md5 signature: 25679619d6b41673c52ce6c41bcd1f82 ******/
 		%feature("compactdefaultargs") TDF_Transaction;
 		%feature("autodoc", "
 Parameters
@@ -4285,8 +4285,8 @@ Creates an empty transaction context, unable to be opened.
 ") TDF_Transaction;
 		 TDF_Transaction(TCollection_AsciiString aName = "");
 
-		/****************** TDF_Transaction ******************/
-		/**** md5 signature: 19cf46609d259426ac1948baa7d6a59d ****/
+		/****** TDF_Transaction::TDF_Transaction ******/
+		/****** md5 signature: 19cf46609d259426ac1948baa7d6a59d ******/
 		%feature("compactdefaultargs") TDF_Transaction;
 		%feature("autodoc", "
 Parameters
@@ -4304,8 +4304,8 @@ Creates a transaction context on <adf>, ready to be opened.
 ") TDF_Transaction;
 		 TDF_Transaction(const opencascade::handle<TDF_Data> & aDF, TCollection_AsciiString aName = "");
 
-		/****************** Abort ******************/
-		/**** md5 signature: 1fff85d2b99366704df7b68c63810e9a ****/
+		/****** TDF_Transaction::Abort ******/
+		/****** md5 signature: 1fff85d2b99366704df7b68c63810e9a ******/
 		%feature("compactdefaultargs") Abort;
 		%feature("autodoc", "Return
 -------
@@ -4317,8 +4317,8 @@ Aborts the transactions until and including the current opened one.
 ") Abort;
 		void Abort();
 
-		/****************** Commit ******************/
-		/**** md5 signature: 06a824bb56931167b77b19d90c6fc733 ****/
+		/****** TDF_Transaction::Commit ******/
+		/****** md5 signature: 06a824bb56931167b77b19d90c6fc733 ******/
 		%feature("compactdefaultargs") Commit;
 		%feature("autodoc", "
 Parameters
@@ -4335,8 +4335,8 @@ Commits the transactions until and including the current opened one.
 ") Commit;
 		opencascade::handle<TDF_Delta> Commit(const Standard_Boolean withDelta = Standard_False);
 
-		/****************** Data ******************/
-		/**** md5 signature: 04ec1a781153c5a50d2756cf01f47e1c ****/
+		/****** TDF_Transaction::Data ******/
+		/****** md5 signature: 04ec1a781153c5a50d2756cf01f47e1c ******/
 		%feature("compactdefaultargs") Data;
 		%feature("autodoc", "Return
 -------
@@ -4369,8 +4369,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** Initialize ******************/
-		/**** md5 signature: 6f0c86dc4ece77377bc8538f444250f5 ****/
+		/****** TDF_Transaction::Initialize ******/
+		/****** md5 signature: 6f0c86dc4ece77377bc8538f444250f5 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -4387,8 +4387,8 @@ Aborts all the transactions on <mydf> and sets <adf> to build a transaction cont
 ") Initialize;
 		void Initialize(const opencascade::handle<TDF_Data> & aDF);
 
-		/****************** IsOpen ******************/
-		/**** md5 signature: bdd2e1a97b3f8d14fccdfc3ccf008748 ****/
+		/****** TDF_Transaction::IsOpen ******/
+		/****** md5 signature: bdd2e1a97b3f8d14fccdfc3ccf008748 ******/
 		%feature("compactdefaultargs") IsOpen;
 		%feature("autodoc", "Return
 -------
@@ -4400,8 +4400,8 @@ Returns true if the transaction is open.
 ") IsOpen;
 		Standard_Boolean IsOpen();
 
-		/****************** Name ******************/
-		/**** md5 signature: 8e64a3d42cb69d5f0c279aca58e35ec7 ****/
+		/****** TDF_Transaction::Name ******/
+		/****** md5 signature: 8e64a3d42cb69d5f0c279aca58e35ec7 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -4413,8 +4413,8 @@ Returns the transaction name.
 ") Name;
 		const TCollection_AsciiString & Name();
 
-		/****************** Open ******************/
-		/**** md5 signature: bd3c8ff39ee6d8b3e3af652b118bf3d7 ****/
+		/****** TDF_Transaction::Open ******/
+		/****** md5 signature: bd3c8ff39ee6d8b3e3af652b118bf3d7 ******/
 		%feature("compactdefaultargs") Open;
 		%feature("autodoc", "Return
 -------
@@ -4426,8 +4426,8 @@ If not yet done, opens a new transaction on <mydf>. returns the index of the jus
 ") Open;
 		Standard_Integer Open();
 
-		/****************** Transaction ******************/
-		/**** md5 signature: 00c48137a99575bfa5cfadde8fb37954 ****/
+		/****** TDF_Transaction::Transaction ******/
+		/****** md5 signature: 00c48137a99575bfa5cfadde8fb37954 ******/
 		%feature("compactdefaultargs") Transaction;
 		%feature("autodoc", "Return
 -------
@@ -4453,8 +4453,8 @@ Returns the number of the transaction opened by <self>.
 ****************************/
 class TDF_DeltaOnAddition : public TDF_AttributeDelta {
 	public:
-		/****************** TDF_DeltaOnAddition ******************/
-		/**** md5 signature: ed3da941e5f1deaad2db5d3a5727382f ****/
+		/****** TDF_DeltaOnAddition::TDF_DeltaOnAddition ******/
+		/****** md5 signature: ed3da941e5f1deaad2db5d3a5727382f ******/
 		%feature("compactdefaultargs") TDF_DeltaOnAddition;
 		%feature("autodoc", "
 Parameters
@@ -4471,8 +4471,8 @@ Creates a tdf_deltaonaddition.
 ") TDF_DeltaOnAddition;
 		 TDF_DeltaOnAddition(const opencascade::handle<TDF_Attribute> & anAtt);
 
-		/****************** Apply ******************/
-		/**** md5 signature: c4ff9d381df7974c268b00280582cc3d ****/
+		/****** TDF_DeltaOnAddition::Apply ******/
+		/****** md5 signature: c4ff9d381df7974c268b00280582cc3d ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -4500,8 +4500,8 @@ Applies the delta to the attribute.
 **************************/
 class TDF_DeltaOnForget : public TDF_AttributeDelta {
 	public:
-		/****************** TDF_DeltaOnForget ******************/
-		/**** md5 signature: 10a024c61102a87e31a2cdebe20ea666 ****/
+		/****** TDF_DeltaOnForget::TDF_DeltaOnForget ******/
+		/****** md5 signature: 10a024c61102a87e31a2cdebe20ea666 ******/
 		%feature("compactdefaultargs") TDF_DeltaOnForget;
 		%feature("autodoc", "
 Parameters
@@ -4518,8 +4518,8 @@ Creates a tdf_deltaonforget.
 ") TDF_DeltaOnForget;
 		 TDF_DeltaOnForget(const opencascade::handle<TDF_Attribute> & anAtt);
 
-		/****************** Apply ******************/
-		/**** md5 signature: c4ff9d381df7974c268b00280582cc3d ****/
+		/****** TDF_DeltaOnForget::Apply ******/
+		/****** md5 signature: c4ff9d381df7974c268b00280582cc3d ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -4548,8 +4548,8 @@ Applies the delta to the attribute.
 %nodefaultctor TDF_DeltaOnModification;
 class TDF_DeltaOnModification : public TDF_AttributeDelta {
 	public:
-		/****************** Apply ******************/
-		/**** md5 signature: ddf5e396da23832dcae51d48e78a347f ****/
+		/****** TDF_DeltaOnModification::Apply ******/
+		/****** md5 signature: ddf5e396da23832dcae51d48e78a347f ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -4594,8 +4594,8 @@ class TDF_DeltaOnRemoval : public TDF_AttributeDelta {
 **************************/
 class TDF_DeltaOnResume : public TDF_AttributeDelta {
 	public:
-		/****************** TDF_DeltaOnResume ******************/
-		/**** md5 signature: f7315e98137f041699fc7f9813315d83 ****/
+		/****** TDF_DeltaOnResume::TDF_DeltaOnResume ******/
+		/****** md5 signature: f7315e98137f041699fc7f9813315d83 ******/
 		%feature("compactdefaultargs") TDF_DeltaOnResume;
 		%feature("autodoc", "
 Parameters
@@ -4612,8 +4612,8 @@ Creates a tdf_deltaonresume.
 ") TDF_DeltaOnResume;
 		 TDF_DeltaOnResume(const opencascade::handle<TDF_Attribute> & anAtt);
 
-		/****************** Apply ******************/
-		/**** md5 signature: c4ff9d381df7974c268b00280582cc3d ****/
+		/****** TDF_DeltaOnResume::Apply ******/
+		/****** md5 signature: c4ff9d381df7974c268b00280582cc3d ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -4662,8 +4662,8 @@ Dump the object to JSON string.
 **********************/
 class TDF_Reference : public TDF_Attribute {
 	public:
-		/****************** TDF_Reference ******************/
-		/**** md5 signature: f2ea02a93b4178fa1b70e2b58c4029a4 ****/
+		/****** TDF_Reference::TDF_Reference ******/
+		/****** md5 signature: f2ea02a93b4178fa1b70e2b58c4029a4 ******/
 		%feature("compactdefaultargs") TDF_Reference;
 		%feature("autodoc", "Return
 -------
@@ -4675,8 +4675,8 @@ No available documentation.
 ") TDF_Reference;
 		 TDF_Reference();
 
-		/****************** Dump ******************/
-		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		/****** TDF_Reference::Dump ******/
+		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -4713,8 +4713,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** Get ******************/
-		/**** md5 signature: 66afada8fc328e55fd3c204c359e42b2 ****/
+		/****** TDF_Reference::Get ******/
+		/****** md5 signature: 66afada8fc328e55fd3c204c359e42b2 ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "Return
 -------
@@ -4726,8 +4726,8 @@ No available documentation.
 ") Get;
 		TDF_Label Get();
 
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		/****** TDF_Reference::GetID ******/
+		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "Return
 -------
@@ -4739,8 +4739,8 @@ No available documentation.
 ") GetID;
 		static const Standard_GUID & GetID();
 
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		/****** TDF_Reference::ID ******/
+		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -4752,8 +4752,8 @@ No available documentation.
 ") ID;
 		const Standard_GUID & ID();
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
+		/****** TDF_Reference::NewEmpty ******/
+		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -4765,8 +4765,8 @@ No available documentation.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
+		/****** TDF_Reference::Paste ******/
+		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -4784,8 +4784,8 @@ No available documentation.
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
-		/****************** References ******************/
-		/**** md5 signature: f171ce811dbfb205236d26e3cbf15450 ****/
+		/****** TDF_Reference::References ******/
+		/****** md5 signature: f171ce811dbfb205236d26e3cbf15450 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -4802,8 +4802,8 @@ No available documentation.
 ") References;
 		virtual void References(const opencascade::handle<TDF_DataSet> & DS);
 
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
+		/****** TDF_Reference::Restore ******/
+		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -4820,8 +4820,8 @@ No available documentation.
 ") Restore;
 		void Restore(const opencascade::handle<TDF_Attribute> & With);
 
-		/****************** Set ******************/
-		/**** md5 signature: 3fd2cceb5586794d661dcbd7ea65fd0c ****/
+		/****** TDF_Reference::Set ******/
+		/****** md5 signature: 3fd2cceb5586794d661dcbd7ea65fd0c ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4839,8 +4839,8 @@ No available documentation.
 ") Set;
 		static opencascade::handle<TDF_Reference> Set(const TDF_Label & I, const TDF_Label & Origin);
 
-		/****************** Set ******************/
-		/**** md5 signature: adf0fe6d83d2160bac99ccd871d44289 ****/
+		/****** TDF_Reference::Set ******/
+		/****** md5 signature: adf0fe6d83d2160bac99ccd871d44289 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4873,8 +4873,8 @@ No available documentation.
 **********************/
 class TDF_TagSource : public TDF_Attribute {
 	public:
-		/****************** TDF_TagSource ******************/
-		/**** md5 signature: 4671bac7141bd20608dd9aa1837a3ee5 ****/
+		/****** TDF_TagSource::TDF_TagSource ******/
+		/****** md5 signature: 4671bac7141bd20608dd9aa1837a3ee5 ******/
 		%feature("compactdefaultargs") TDF_TagSource;
 		%feature("autodoc", "Return
 -------
@@ -4907,8 +4907,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** Get ******************/
-		/**** md5 signature: ace457d697a3a35733c5ac95429cad31 ****/
+		/****** TDF_TagSource::Get ******/
+		/****** md5 signature: ace457d697a3a35733c5ac95429cad31 ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "Return
 -------
@@ -4920,8 +4920,8 @@ No available documentation.
 ") Get;
 		Standard_Integer Get();
 
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		/****** TDF_TagSource::GetID ******/
+		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "Return
 -------
@@ -4933,8 +4933,8 @@ Class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		/****** TDF_TagSource::ID ******/
+		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -4946,8 +4946,8 @@ No available documentation.
 ") ID;
 		const Standard_GUID & ID();
 
-		/****************** NewChild ******************/
-		/**** md5 signature: d122646bf4b49eeeeafcc33503696e8b ****/
+		/****** TDF_TagSource::NewChild ******/
+		/****** md5 signature: d122646bf4b49eeeeafcc33503696e8b ******/
 		%feature("compactdefaultargs") NewChild;
 		%feature("autodoc", "
 Parameters
@@ -4964,8 +4964,8 @@ Find (or create) a tagsource attribute located at <l> and make a new child label
 ") NewChild;
 		static TDF_Label NewChild(const TDF_Label & L);
 
-		/****************** NewChild ******************/
-		/**** md5 signature: 9a3266175cf9e46eeaa91114b72614e8 ****/
+		/****** TDF_TagSource::NewChild ******/
+		/****** md5 signature: 9a3266175cf9e46eeaa91114b72614e8 ******/
 		%feature("compactdefaultargs") NewChild;
 		%feature("autodoc", "Return
 -------
@@ -4977,8 +4977,8 @@ No available documentation.
 ") NewChild;
 		TDF_Label NewChild();
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
+		/****** TDF_TagSource::NewEmpty ******/
+		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -4990,8 +4990,8 @@ No available documentation.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** NewTag ******************/
-		/**** md5 signature: d8f8843e8761eb919b6b2894481280d3 ****/
+		/****** TDF_TagSource::NewTag ******/
+		/****** md5 signature: d8f8843e8761eb919b6b2894481280d3 ******/
 		%feature("compactdefaultargs") NewTag;
 		%feature("autodoc", "Return
 -------
@@ -5003,8 +5003,8 @@ No available documentation.
 ") NewTag;
 		Standard_Integer NewTag();
 
-		/****************** Paste ******************/
-		/**** md5 signature: a6ff306a759c68a191c0262635db980f ****/
+		/****** TDF_TagSource::Paste ******/
+		/****** md5 signature: a6ff306a759c68a191c0262635db980f ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -5022,8 +5022,8 @@ No available documentation.
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Into, const opencascade::handle<TDF_RelocationTable> & RT);
 
-		/****************** Restore ******************/
-		/**** md5 signature: ddeae219d389a1d89eecb3e23c73522a ****/
+		/****** TDF_TagSource::Restore ******/
+		/****** md5 signature: ddeae219d389a1d89eecb3e23c73522a ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -5040,8 +5040,8 @@ No available documentation.
 ") Restore;
 		void Restore(const opencascade::handle<TDF_Attribute> & with);
 
-		/****************** Set ******************/
-		/**** md5 signature: 4a22c1159f9e7fb5d847d5e3a74771b3 ****/
+		/****** TDF_TagSource::Set ******/
+		/****** md5 signature: 4a22c1159f9e7fb5d847d5e3a74771b3 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -5058,8 +5058,8 @@ Find, or create, a tagsource attribute. the tagsource attribute is returned.
 ") Set;
 		static opencascade::handle<TDF_TagSource> Set(const TDF_Label & label);
 
-		/****************** Set ******************/
-		/**** md5 signature: af44522e43780b1b24ce7e4ac49d204f ****/
+		/****** TDF_TagSource::Set ******/
+		/****** md5 signature: af44522e43780b1b24ce7e4ac49d204f ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -5092,8 +5092,8 @@ Tdf_attribute methods =====================.
 ***************************************/
 class TDF_DefaultDeltaOnModification : public TDF_DeltaOnModification {
 	public:
-		/****************** TDF_DefaultDeltaOnModification ******************/
-		/**** md5 signature: d3877c39eb02e828d91f16605ef8e6ef ****/
+		/****** TDF_DefaultDeltaOnModification::TDF_DefaultDeltaOnModification ******/
+		/****** md5 signature: d3877c39eb02e828d91f16605ef8e6ef ******/
 		%feature("compactdefaultargs") TDF_DefaultDeltaOnModification;
 		%feature("autodoc", "
 Parameters
@@ -5110,8 +5110,8 @@ Creates a tdf_defaultdeltaonmodification. <anattribute> must be the backup copy.
 ") TDF_DefaultDeltaOnModification;
 		 TDF_DefaultDeltaOnModification(const opencascade::handle<TDF_Attribute> & anAttribute);
 
-		/****************** Apply ******************/
-		/**** md5 signature: ddf5e396da23832dcae51d48e78a347f ****/
+		/****** TDF_DefaultDeltaOnModification::Apply ******/
+		/****** md5 signature: ddf5e396da23832dcae51d48e78a347f ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------
@@ -5139,8 +5139,8 @@ Applies the delta to the attribute.
 **********************************/
 class TDF_DefaultDeltaOnRemoval : public TDF_DeltaOnRemoval {
 	public:
-		/****************** TDF_DefaultDeltaOnRemoval ******************/
-		/**** md5 signature: 7f65748b1a1d984527107b28b6df55a4 ****/
+		/****** TDF_DefaultDeltaOnRemoval::TDF_DefaultDeltaOnRemoval ******/
+		/****** md5 signature: 7f65748b1a1d984527107b28b6df55a4 ******/
 		%feature("compactdefaultargs") TDF_DefaultDeltaOnRemoval;
 		%feature("autodoc", "
 Parameters
@@ -5157,8 +5157,8 @@ Creates a tdf_defaultdeltaonremoval.
 ") TDF_DefaultDeltaOnRemoval;
 		 TDF_DefaultDeltaOnRemoval(const opencascade::handle<TDF_Attribute> & anAttribute);
 
-		/****************** Apply ******************/
-		/**** md5 signature: ddf5e396da23832dcae51d48e78a347f ****/
+		/****** TDF_DefaultDeltaOnRemoval::Apply ******/
+		/****** md5 signature: ddf5e396da23832dcae51d48e78a347f ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "Return
 -------

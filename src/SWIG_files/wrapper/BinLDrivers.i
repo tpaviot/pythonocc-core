@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BINLDRIVERSDOCSTRING
 "BinLDrivers module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_binldrivers.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_binldrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=BINLDRIVERSDOCSTRING) BinLDrivers
 
@@ -112,8 +112,8 @@ typedef NCollection_Vector<BinLDrivers_DocumentSection> BinLDrivers_VectorOfDocu
 %rename(binldrivers) BinLDrivers;
 class BinLDrivers {
 	public:
-		/****************** AttributeDrivers ******************/
-		/**** md5 signature: a3052842141074dac4fa7742d5b7f7f0 ****/
+		/****** BinLDrivers::AttributeDrivers ******/
+		/****** md5 signature: a3052842141074dac4fa7742d5b7f7f0 ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -130,8 +130,8 @@ Creates a table of the supported drivers' types.
 ") AttributeDrivers;
 		static opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & MsgDrv);
 
-		/****************** DefineFormat ******************/
-		/**** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ****/
+		/****** BinLDrivers::DefineFormat ******/
+		/****** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ******/
 		%feature("compactdefaultargs") DefineFormat;
 		%feature("autodoc", "
 Parameters
@@ -148,8 +148,8 @@ Defines format 'binlocaf' and registers its read and write drivers in the specif
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
-		/****************** Factory ******************/
-		/**** md5 signature: 9e70ed3bca71e988f9b9e86628ed8ed4 ****/
+		/****** BinLDrivers::Factory ******/
+		/****** md5 signature: 9e70ed3bca71e988f9b9e86628ed8ed4 ******/
 		%feature("compactdefaultargs") Factory;
 		%feature("autodoc", "
 Parameters
@@ -180,8 +180,8 @@ No available documentation.
 ********************************************/
 class BinLDrivers_DocumentRetrievalDriver : public PCDM_RetrievalDriver {
 	public:
-		/****************** BinLDrivers_DocumentRetrievalDriver ******************/
-		/**** md5 signature: 6e9f45f3c968879f6eba97c7d8d3db55 ****/
+		/****** BinLDrivers_DocumentRetrievalDriver::BinLDrivers_DocumentRetrievalDriver ******/
+		/****** md5 signature: 6e9f45f3c968879f6eba97c7d8d3db55 ******/
 		%feature("compactdefaultargs") BinLDrivers_DocumentRetrievalDriver;
 		%feature("autodoc", "Return
 -------
@@ -193,8 +193,8 @@ Constructor.
 ") BinLDrivers_DocumentRetrievalDriver;
 		 BinLDrivers_DocumentRetrievalDriver();
 
-		/****************** AttributeDrivers ******************/
-		/**** md5 signature: f05b53d6e03fc4c0b1a43a8f6b8dcd60 ****/
+		/****** BinLDrivers_DocumentRetrievalDriver::AttributeDrivers ******/
+		/****** md5 signature: f05b53d6e03fc4c0b1a43a8f6b8dcd60 ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -211,8 +211,8 @@ No available documentation.
 ") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** Read ******************/
-		/**** md5 signature: f7b8bb13afb113e0cba89338b8e12a06 ****/
+		/****** BinLDrivers_DocumentRetrievalDriver::Read ******/
+		/****** md5 signature: f7b8bb13afb113e0cba89338b8e12a06 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -233,8 +233,8 @@ Retrieves the content of the file into a new document.
 ") Read;
 		virtual void Read(TCollection_ExtendedString theFileName, const opencascade::handle<CDM_Document> & theNewDocument, const opencascade::handle<CDM_Application> & theApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Read ******************/
-		/**** md5 signature: 771be11c877b12fef9f44e77dfdf48ba ****/
+		/****** BinLDrivers_DocumentRetrievalDriver::Read ******/
+		/****** md5 signature: 771be11c877b12fef9f44e77dfdf48ba ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -272,8 +272,8 @@ No available documentation.
 ************************************/
 class BinLDrivers_DocumentSection {
 	public:
-		/****************** BinLDrivers_DocumentSection ******************/
-		/**** md5 signature: 4df81d4eb430d1816f9561d46f3e2c09 ****/
+		/****** BinLDrivers_DocumentSection::BinLDrivers_DocumentSection ******/
+		/****** md5 signature: 4df81d4eb430d1816f9561d46f3e2c09 ******/
 		%feature("compactdefaultargs") BinLDrivers_DocumentSection;
 		%feature("autodoc", "Return
 -------
@@ -285,8 +285,8 @@ Empty constructor.
 ") BinLDrivers_DocumentSection;
 		 BinLDrivers_DocumentSection();
 
-		/****************** BinLDrivers_DocumentSection ******************/
-		/**** md5 signature: 5df5ec4768b7b05db6c9bd02b54b7460 ****/
+		/****** BinLDrivers_DocumentSection::BinLDrivers_DocumentSection ******/
+		/****** md5 signature: 5df5ec4768b7b05db6c9bd02b54b7460 ******/
 		%feature("compactdefaultargs") BinLDrivers_DocumentSection;
 		%feature("autodoc", "
 Parameters
@@ -304,8 +304,8 @@ Constructor.
 ") BinLDrivers_DocumentSection;
 		 BinLDrivers_DocumentSection(TCollection_AsciiString theName, const Standard_Boolean isPostRead);
 
-		/****************** IsPostRead ******************/
-		/**** md5 signature: f46b74fd06908e5a3c055dc46ad8d664 ****/
+		/****** BinLDrivers_DocumentSection::IsPostRead ******/
+		/****** md5 signature: f46b74fd06908e5a3c055dc46ad8d664 ******/
 		%feature("compactdefaultargs") IsPostRead;
 		%feature("autodoc", "Return
 -------
@@ -317,8 +317,8 @@ Query the status: if the section should be read after ocaf; false means that the
 ") IsPostRead;
 		Standard_Boolean IsPostRead();
 
-		/****************** Length ******************/
-		/**** md5 signature: a276bfb2e4981ebb39eafe742d6a95f4 ****/
+		/****** BinLDrivers_DocumentSection::Length ******/
+		/****** md5 signature: a276bfb2e4981ebb39eafe742d6a95f4 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -330,8 +330,8 @@ Query the length of the section in the persistent file.
 ") Length;
 		uint64_t Length();
 
-		/****************** Name ******************/
-		/**** md5 signature: 8e64a3d42cb69d5f0c279aca58e35ec7 ****/
+		/****** BinLDrivers_DocumentSection::Name ******/
+		/****** md5 signature: 8e64a3d42cb69d5f0c279aca58e35ec7 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -343,8 +343,8 @@ Query the name of the section.
 ") Name;
 		const TCollection_AsciiString & Name();
 
-		/****************** Offset ******************/
-		/**** md5 signature: bf9bc651dd4a129b761429957eb0a0a6 ****/
+		/****** BinLDrivers_DocumentSection::Offset ******/
+		/****** md5 signature: bf9bc651dd4a129b761429957eb0a0a6 ******/
 		%feature("compactdefaultargs") Offset;
 		%feature("autodoc", "Return
 -------
@@ -356,8 +356,8 @@ Query the offset of the section in the persistent file.
 ") Offset;
 		uint64_t Offset();
 
-		/****************** ReadTOC ******************/
-		/**** md5 signature: 6d892ade1242a16e99246162955f59d3 ****/
+		/****** BinLDrivers_DocumentSection::ReadTOC ******/
+		/****** md5 signature: 6d892ade1242a16e99246162955f59d3 ******/
 		%feature("compactdefaultargs") ReadTOC;
 		%feature("autodoc", "
 Parameters
@@ -376,8 +376,8 @@ Fill a documentsection instance from the data that are read from toc. returns fa
 ") ReadTOC;
 		static Standard_Boolean ReadTOC(BinLDrivers_DocumentSection & theSection, std::istream & theIS, const TDocStd_FormatVersion theDocFormatVersion);
 
-		/****************** SetLength ******************/
-		/**** md5 signature: 9c89e70c52c75c8f071a4a8b0807f508 ****/
+		/****** BinLDrivers_DocumentSection::SetLength ******/
+		/****** md5 signature: 9c89e70c52c75c8f071a4a8b0807f508 ******/
 		%feature("compactdefaultargs") SetLength;
 		%feature("autodoc", "
 Parameters
@@ -394,8 +394,8 @@ Set the length of the section in the persistent file.
 ") SetLength;
 		void SetLength(const uint64_t theLength);
 
-		/****************** SetOffset ******************/
-		/**** md5 signature: 611eebeca4349b02d49fcf9ef5e8b099 ****/
+		/****** BinLDrivers_DocumentSection::SetOffset ******/
+		/****** md5 signature: 611eebeca4349b02d49fcf9ef5e8b099 ******/
 		%feature("compactdefaultargs") SetOffset;
 		%feature("autodoc", "
 Parameters
@@ -412,8 +412,8 @@ Set the offset of the section in the persistent file.
 ") SetOffset;
 		void SetOffset(const uint64_t theOffset);
 
-		/****************** Write ******************/
-		/**** md5 signature: f8a305892a9630863531b16bb0e8d748 ****/
+		/****** BinLDrivers_DocumentSection::Write ******/
+		/****** md5 signature: f8a305892a9630863531b16bb0e8d748 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -431,8 +431,8 @@ Save offset and length data into the section entry in the document toc (list of 
 ") Write;
 		void Write(std::ostream &OutValue, const uint64_t theOffset, const TDocStd_FormatVersion theDocFormatVersion);
 
-		/****************** WriteTOC ******************/
-		/**** md5 signature: 1286c7467df97ba170437cf09bae7984 ****/
+		/****** BinLDrivers_DocumentSection::WriteTOC ******/
+		/****** md5 signature: 1286c7467df97ba170437cf09bae7984 ******/
 		%feature("compactdefaultargs") WriteTOC;
 		%feature("autodoc", "
 Parameters
@@ -463,8 +463,8 @@ Create a section entry in the document toc (list of sections).
 ******************************************/
 class BinLDrivers_DocumentStorageDriver : public PCDM_StorageDriver {
 	public:
-		/****************** BinLDrivers_DocumentStorageDriver ******************/
-		/**** md5 signature: adfab2843bd0d5f2537c778fb6521d51 ****/
+		/****** BinLDrivers_DocumentStorageDriver::BinLDrivers_DocumentStorageDriver ******/
+		/****** md5 signature: adfab2843bd0d5f2537c778fb6521d51 ******/
 		%feature("compactdefaultargs") BinLDrivers_DocumentStorageDriver;
 		%feature("autodoc", "Return
 -------
@@ -476,8 +476,8 @@ Constructor.
 ") BinLDrivers_DocumentStorageDriver;
 		 BinLDrivers_DocumentStorageDriver();
 
-		/****************** AddSection ******************/
-		/**** md5 signature: e2d4b6520ba2b320f1fcf33087c443c7 ****/
+		/****** BinLDrivers_DocumentStorageDriver::AddSection ******/
+		/****** md5 signature: e2d4b6520ba2b320f1fcf33087c443c7 ******/
 		%feature("compactdefaultargs") AddSection;
 		%feature("autodoc", "
 Parameters
@@ -495,8 +495,8 @@ Create a section that should be written after the ocaf data.
 ") AddSection;
 		void AddSection(TCollection_AsciiString theName, const Standard_Boolean isPostRead = Standard_True);
 
-		/****************** AttributeDrivers ******************/
-		/**** md5 signature: f05b53d6e03fc4c0b1a43a8f6b8dcd60 ****/
+		/****** BinLDrivers_DocumentStorageDriver::AttributeDrivers ******/
+		/****** md5 signature: f05b53d6e03fc4c0b1a43a8f6b8dcd60 ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -513,8 +513,8 @@ No available documentation.
 ") AttributeDrivers;
 		virtual opencascade::handle<BinMDF_ADriverTable> AttributeDrivers(const opencascade::handle<Message_Messenger> & theMsgDriver);
 
-		/****************** IsQuickPart ******************/
-		/**** md5 signature: 6353ee4c7a025e5e9aa62fb9950e7e78 ****/
+		/****** BinLDrivers_DocumentStorageDriver::IsQuickPart ******/
+		/****** md5 signature: 6353ee4c7a025e5e9aa62fb9950e7e78 ******/
 		%feature("compactdefaultargs") IsQuickPart;
 		%feature("autodoc", "
 Parameters
@@ -531,8 +531,8 @@ Return true if document should be stored in quick mode for partial reading.
 ") IsQuickPart;
 		Standard_Boolean IsQuickPart(const Standard_Integer theVersion);
 
-		/****************** Write ******************/
-		/**** md5 signature: 3ba5a4920118cfb01ca7cb6e94265c60 ****/
+		/****** BinLDrivers_DocumentStorageDriver::Write ******/
+		/****** md5 signature: 3ba5a4920118cfb01ca7cb6e94265c60 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -551,8 +551,8 @@ Write <thedocument> to the binary file <thefilename>.
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, TCollection_ExtendedString theFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 1593005190d18463c833b2c78ffb13a5 ****/
+		/****** BinLDrivers_DocumentStorageDriver::Write ******/
+		/****** md5 signature: 1593005190d18463c833b2c78ffb13a5 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters

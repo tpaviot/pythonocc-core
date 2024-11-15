@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMCONVERTDOCSTRING
 "GeomConvert module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geomconvert.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geomconvert.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMCONVERTDOCSTRING) GeomConvert
 
@@ -118,8 +118,8 @@ GeomConvert_MinGap = GeomConvert_ConvType.GeomConvert_MinGap
 %rename(geomconvert) GeomConvert;
 class GeomConvert {
 	public:
-		/****************** C0BSplineToArrayOfC1BSplineCurve ******************/
-		/**** md5 signature: 41169b66757e4cfa5f15edbf27ab0bbd ****/
+		/****** GeomConvert::C0BSplineToArrayOfC1BSplineCurve ******/
+		/****** md5 signature: 41169b66757e4cfa5f15edbf27ab0bbd ******/
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -138,8 +138,8 @@ This method reduces as far as it is possible the multiplicities of the knots of 
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & tabBS, const Standard_Real tolerance);
 
-		/****************** C0BSplineToArrayOfC1BSplineCurve ******************/
-		/**** md5 signature: 642848ca313fd2ca0214d071305bb2e0 ****/
+		/****** GeomConvert::C0BSplineToArrayOfC1BSplineCurve ******/
+		/****** md5 signature: 642848ca313fd2ca0214d071305bb2e0 ******/
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -159,8 +159,8 @@ This method reduces as far as it is possible the multiplicities of the knots of 
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom_BSplineCurve> & BS, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & tabBS, const Standard_Real AngularTolerance, const Standard_Real tolerance);
 
-		/****************** C0BSplineToC1BSplineCurve ******************/
-		/**** md5 signature: ef882946a5c095f1fb37b97f8bd44ee6 ****/
+		/****** GeomConvert::C0BSplineToC1BSplineCurve ******/
+		/****** md5 signature: ef882946a5c095f1fb37b97f8bd44ee6 ******/
 		%feature("compactdefaultargs") C0BSplineToC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -179,8 +179,8 @@ This method reduces as far as it is possible the multiplicities of the knots of 
 ") C0BSplineToC1BSplineCurve;
 		static void C0BSplineToC1BSplineCurve(opencascade::handle<Geom_BSplineCurve> & BS, const Standard_Real tolerance, const Standard_Real AngularTolerance = 1.0e-7);
 
-		/****************** ConcatC1 ******************/
-		/**** md5 signature: 5d5e2e87942027f106ce8a17ab78a60f ****/
+		/****** GeomConvert::ConcatC1 ******/
+		/****** md5 signature: 5d5e2e87942027f106ce8a17ab78a60f ******/
 		%feature("compactdefaultargs") ConcatC1;
 		%feature("autodoc", "
 Parameters
@@ -201,8 +201,8 @@ This method concatenates c1 the arrayofcurves as far as it is possible. arrayofc
 ") ConcatC1;
 		static void ConcatC1(TColGeom_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance);
 
-		/****************** ConcatC1 ******************/
-		/**** md5 signature: 1d7403130766ba9faef1b3ec1f50931f ****/
+		/****** GeomConvert::ConcatC1 ******/
+		/****** md5 signature: 1d7403130766ba9faef1b3ec1f50931f ******/
 		%feature("compactdefaultargs") ConcatC1;
 		%feature("autodoc", "
 Parameters
@@ -224,8 +224,8 @@ This method concatenates c1 the arrayofcurves as far as it is possible. arrayofc
 ") ConcatC1;
 		static void ConcatC1(TColGeom_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance, const Standard_Real AngularTolerance);
 
-		/****************** ConcatG1 ******************/
-		/**** md5 signature: a560c18a6b8d480c03a201b4d9829dc3 ****/
+		/****** GeomConvert::ConcatG1 ******/
+		/****** md5 signature: a560c18a6b8d480c03a201b4d9829dc3 ******/
 		%feature("compactdefaultargs") ConcatG1;
 		%feature("autodoc", "
 Parameters
@@ -245,8 +245,8 @@ This method concatenates g1 the arrayofcurves as far as it is possible. arrayofc
 ") ConcatG1;
 		static void ConcatG1(TColGeom_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColGeom_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance);
 
-		/****************** CurveToBSplineCurve ******************/
-		/**** md5 signature: 3e5139193c14a02aa43c1594a7f95e33 ****/
+		/****** GeomConvert::CurveToBSplineCurve ******/
+		/****** md5 signature: 3e5139193c14a02aa43c1594a7f95e33 ******/
 		%feature("compactdefaultargs") CurveToBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -264,8 +264,8 @@ This function converts a non infinite curve from geom into a b-spline curve. c m
 ") CurveToBSplineCurve;
 		static opencascade::handle<Geom_BSplineCurve> CurveToBSplineCurve(const opencascade::handle<Geom_Curve> & C, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
-		/****************** SplitBSplineCurve ******************/
-		/**** md5 signature: 7d474a7726cb1a7f866678edbe4872d6 ****/
+		/****** GeomConvert::SplitBSplineCurve ******/
+		/****** md5 signature: 7d474a7726cb1a7f866678edbe4872d6 ******/
 		%feature("compactdefaultargs") SplitBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -285,8 +285,8 @@ Convert a curve from geom by an approximation method //! this method computes th
 ") SplitBSplineCurve;
 		static opencascade::handle<Geom_BSplineCurve> SplitBSplineCurve(const opencascade::handle<Geom_BSplineCurve> & C, const Standard_Integer FromK1, const Standard_Integer ToK2, const Standard_Boolean SameOrientation = Standard_True);
 
-		/****************** SplitBSplineCurve ******************/
-		/**** md5 signature: 2adc95e91201b6735cd34c28f58db352 ****/
+		/****** GeomConvert::SplitBSplineCurve ******/
+		/****** md5 signature: 2adc95e91201b6735cd34c28f58db352 ******/
 		%feature("compactdefaultargs") SplitBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -307,8 +307,8 @@ This function computes the segment of b-spline curve between the parametric valu
 ") SplitBSplineCurve;
 		static opencascade::handle<Geom_BSplineCurve> SplitBSplineCurve(const opencascade::handle<Geom_BSplineCurve> & C, const Standard_Real FromU1, const Standard_Real ToU2, const Standard_Real ParametricTolerance, const Standard_Boolean SameOrientation = Standard_True);
 
-		/****************** SplitBSplineSurface ******************/
-		/**** md5 signature: 0153ae151f4a629c855fafb7b085968c ****/
+		/****** GeomConvert::SplitBSplineSurface ******/
+		/****** md5 signature: 0153ae151f4a629c855fafb7b085968c ******/
 		%feature("compactdefaultargs") SplitBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -331,8 +331,8 @@ Computes the b-spline surface patche between the knots values fromuk1, touk2, fr
 ") SplitBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> SplitBSplineSurface(const opencascade::handle<Geom_BSplineSurface> & S, const Standard_Integer FromUK1, const Standard_Integer ToUK2, const Standard_Integer FromVK1, const Standard_Integer ToVK2, const Standard_Boolean SameUOrientation = Standard_True, const Standard_Boolean SameVOrientation = Standard_True);
 
-		/****************** SplitBSplineSurface ******************/
-		/**** md5 signature: cfec6fffb32edadb3a13e059445aaa86 ****/
+		/****** GeomConvert::SplitBSplineSurface ******/
+		/****** md5 signature: cfec6fffb32edadb3a13e059445aaa86 ******/
 		%feature("compactdefaultargs") SplitBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -353,8 +353,8 @@ This method splits a b-spline surface patche between the knots values fromk1, to
 ") SplitBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> SplitBSplineSurface(const opencascade::handle<Geom_BSplineSurface> & S, const Standard_Integer FromK1, const Standard_Integer ToK2, const Standard_Boolean USplit, const Standard_Boolean SameOrientation = Standard_True);
 
-		/****************** SplitBSplineSurface ******************/
-		/**** md5 signature: f1e357d5052b4bf97bf93e496a913147 ****/
+		/****** GeomConvert::SplitBSplineSurface ******/
+		/****** md5 signature: f1e357d5052b4bf97bf93e496a913147 ******/
 		%feature("compactdefaultargs") SplitBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -378,8 +378,8 @@ This method computes the b-spline surface patche between the parametric values f
 ") SplitBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> SplitBSplineSurface(const opencascade::handle<Geom_BSplineSurface> & S, const Standard_Real FromU1, const Standard_Real ToU2, const Standard_Real FromV1, const Standard_Real ToV2, const Standard_Real ParametricTolerance, const Standard_Boolean SameUOrientation = Standard_True, const Standard_Boolean SameVOrientation = Standard_True);
 
-		/****************** SplitBSplineSurface ******************/
-		/**** md5 signature: 6f9b9adbfd5c02b1dfe09346c297f805 ****/
+		/****** GeomConvert::SplitBSplineSurface ******/
+		/****** md5 signature: 6f9b9adbfd5c02b1dfe09346c297f805 ******/
 		%feature("compactdefaultargs") SplitBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -401,8 +401,8 @@ This method splits the b-spline surface s in one direction between the parametri
 ") SplitBSplineSurface;
 		static opencascade::handle<Geom_BSplineSurface> SplitBSplineSurface(const opencascade::handle<Geom_BSplineSurface> & S, const Standard_Real FromParam1, const Standard_Real ToParam2, const Standard_Boolean USplit, const Standard_Real ParametricTolerance, const Standard_Boolean SameOrientation = Standard_True);
 
-		/****************** SurfaceToBSplineSurface ******************/
-		/**** md5 signature: 3108125370fbb69736fb4c9452599391 ****/
+		/****** GeomConvert::SurfaceToBSplineSurface ******/
+		/****** md5 signature: 3108125370fbb69736fb4c9452599391 ******/
 		%feature("compactdefaultargs") SurfaceToBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -433,8 +433,8 @@ This algorithm converts a non infinite surface from geom into a b-spline surface
 ********************************/
 class GeomConvert_ApproxCurve {
 	public:
-		/****************** GeomConvert_ApproxCurve ******************/
-		/**** md5 signature: 4a6711b694deda6cc7bbaf24ce219e32 ****/
+		/****** GeomConvert_ApproxCurve::GeomConvert_ApproxCurve ******/
+		/****** md5 signature: 4a6711b694deda6cc7bbaf24ce219e32 ******/
 		%feature("compactdefaultargs") GeomConvert_ApproxCurve;
 		%feature("autodoc", "
 Parameters
@@ -455,8 +455,8 @@ Constructs a curve approximation framework defined by - - the conic curve, - the
 ") GeomConvert_ApproxCurve;
 		 GeomConvert_ApproxCurve(const opencascade::handle<Geom_Curve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
-		/****************** GeomConvert_ApproxCurve ******************/
-		/**** md5 signature: 07ff5ce50e6da2c21caae83805537027 ****/
+		/****** GeomConvert_ApproxCurve::GeomConvert_ApproxCurve ******/
+		/****** md5 signature: 07ff5ce50e6da2c21caae83805537027 ******/
 		%feature("compactdefaultargs") GeomConvert_ApproxCurve;
 		%feature("autodoc", "
 Parameters
@@ -477,8 +477,8 @@ Constructs a curve approximation framework defined by - - the curve, - the toler
 ") GeomConvert_ApproxCurve;
 		 GeomConvert_ApproxCurve(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
-		/****************** Curve ******************/
-		/**** md5 signature: 8f61eb8bebb31bbd1fd75a7da450accd ****/
+		/****** GeomConvert_ApproxCurve::Curve ******/
+		/****** md5 signature: 8f61eb8bebb31bbd1fd75a7da450accd ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -490,8 +490,8 @@ Returns the bspline curve resulting from the approximation algorithm.
 ") Curve;
 		opencascade::handle<Geom_BSplineCurve> Curve();
 
-		/****************** Dump ******************/
-		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		/****** GeomConvert_ApproxCurve::Dump ******/
+		/****** md5 signature: d37b43e0b2386dc096d5d707876db157 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -507,8 +507,8 @@ Print on the stream o information about the object.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** GeomConvert_ApproxCurve::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -520,8 +520,8 @@ Returns standard_true if the approximation did come out with a result that is no
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomConvert_ApproxCurve::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -533,8 +533,8 @@ Returns standard_true if the approximation has been done within required toleran
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** MaxError ******************/
-		/**** md5 signature: 90f2419f0b1537a77da84305579339a2 ****/
+		/****** GeomConvert_ApproxCurve::MaxError ******/
+		/****** md5 signature: 90f2419f0b1537a77da84305579339a2 ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "Return
 -------
@@ -560,8 +560,8 @@ Returns the greatest distance between a point on the source conic and the bsplin
 **********************************/
 class GeomConvert_ApproxSurface {
 	public:
-		/****************** GeomConvert_ApproxSurface ******************/
-		/**** md5 signature: ec8c2f80fedc48543f7557ba90584058 ****/
+		/****** GeomConvert_ApproxSurface::GeomConvert_ApproxSurface ******/
+		/****** md5 signature: ec8c2f80fedc48543f7557ba90584058 ******/
 		%feature("compactdefaultargs") GeomConvert_ApproxSurface;
 		%feature("autodoc", "
 Parameters
@@ -585,8 +585,8 @@ Constructs a surface approximation framework defined by - the conic surf - the t
 ") GeomConvert_ApproxSurface;
 		 GeomConvert_ApproxSurface(const opencascade::handle<Geom_Surface> & Surf, const Standard_Real Tol3d, const GeomAbs_Shape UContinuity, const GeomAbs_Shape VContinuity, const Standard_Integer MaxDegU, const Standard_Integer MaxDegV, const Standard_Integer MaxSegments, const Standard_Integer PrecisCode);
 
-		/****************** GeomConvert_ApproxSurface ******************/
-		/**** md5 signature: d94294b366a492bb4f771c6129ee0101 ****/
+		/****** GeomConvert_ApproxSurface::GeomConvert_ApproxSurface ******/
+		/****** md5 signature: d94294b366a492bb4f771c6129ee0101 ******/
 		%feature("compactdefaultargs") GeomConvert_ApproxSurface;
 		%feature("autodoc", "
 Parameters
@@ -610,8 +610,8 @@ Constructs a surface approximation framework defined by - the surf - the toleran
 ") GeomConvert_ApproxSurface;
 		 GeomConvert_ApproxSurface(const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real Tol3d, const GeomAbs_Shape UContinuity, const GeomAbs_Shape VContinuity, const Standard_Integer MaxDegU, const Standard_Integer MaxDegV, const Standard_Integer MaxSegments, const Standard_Integer PrecisCode);
 
-		/****************** Dump ******************/
-		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		/****** GeomConvert_ApproxSurface::Dump ******/
+		/****** md5 signature: d37b43e0b2386dc096d5d707876db157 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -627,8 +627,8 @@ Prints on the stream o information on the current state of the object.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** GeomConvert_ApproxSurface::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -640,8 +640,8 @@ Returns true if the approximation did come out with a result that is not necessa
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomConvert_ApproxSurface::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -653,8 +653,8 @@ Returns standard_true if the approximation has be done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** MaxError ******************/
-		/**** md5 signature: 90f2419f0b1537a77da84305579339a2 ****/
+		/****** GeomConvert_ApproxSurface::MaxError ******/
+		/****** md5 signature: 90f2419f0b1537a77da84305579339a2 ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "Return
 -------
@@ -666,8 +666,8 @@ Returns the greatest distance between a point on the source conic surface and th
 ") MaxError;
 		Standard_Real MaxError();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 2f50ef783efd4092d3a11c39580e031f ****/
+		/****** GeomConvert_ApproxSurface::Surface ******/
+		/****** md5 signature: 2f50ef783efd4092d3a11c39580e031f ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -693,8 +693,8 @@ Returns the bspline surface resulting from the approximation algorithm.
 **********************************************/
 class GeomConvert_BSplineCurveKnotSplitting {
 	public:
-		/****************** GeomConvert_BSplineCurveKnotSplitting ******************/
-		/**** md5 signature: 7a577457113d6d98bc191e491add8706 ****/
+		/****** GeomConvert_BSplineCurveKnotSplitting::GeomConvert_BSplineCurveKnotSplitting ******/
+		/****** md5 signature: 7a577457113d6d98bc191e491add8706 ******/
 		%feature("compactdefaultargs") GeomConvert_BSplineCurveKnotSplitting;
 		%feature("autodoc", "
 Parameters
@@ -712,8 +712,8 @@ Determines points at which the bspline curve basiscurve should be split in order
 ") GeomConvert_BSplineCurveKnotSplitting;
 		 GeomConvert_BSplineCurveKnotSplitting(const opencascade::handle<Geom_BSplineCurve> & BasisCurve, const Standard_Integer ContinuityRange);
 
-		/****************** NbSplits ******************/
-		/**** md5 signature: 4531d20d48cc2f1c4ba8fba36f455258 ****/
+		/****** GeomConvert_BSplineCurveKnotSplitting::NbSplits ******/
+		/****** md5 signature: 4531d20d48cc2f1c4ba8fba36f455258 ******/
 		%feature("compactdefaultargs") NbSplits;
 		%feature("autodoc", "Return
 -------
@@ -725,8 +725,8 @@ Returns the number of points at which the analyzed bspline curve should be split
 ") NbSplits;
 		Standard_Integer NbSplits();
 
-		/****************** SplitValue ******************/
-		/**** md5 signature: 721f3b88e9b98541767484bae1df7e27 ****/
+		/****** GeomConvert_BSplineCurveKnotSplitting::SplitValue ******/
+		/****** md5 signature: 721f3b88e9b98541767484bae1df7e27 ******/
 		%feature("compactdefaultargs") SplitValue;
 		%feature("autodoc", "
 Parameters
@@ -743,8 +743,8 @@ Returns the split knot of index index to the split knots table computed in this 
 ") SplitValue;
 		Standard_Integer SplitValue(const Standard_Integer Index);
 
-		/****************** Splitting ******************/
-		/**** md5 signature: 735443fa5e885793b9df881715b055c2 ****/
+		/****** GeomConvert_BSplineCurveKnotSplitting::Splitting ******/
+		/****** md5 signature: 735443fa5e885793b9df881715b055c2 ******/
 		%feature("compactdefaultargs") Splitting;
 		%feature("autodoc", "
 Parameters
@@ -775,8 +775,8 @@ Loads the splitvalues table with the split knots values computed in this framewo
 **********************************************/
 class GeomConvert_BSplineCurveToBezierCurve {
 	public:
-		/****************** GeomConvert_BSplineCurveToBezierCurve ******************/
-		/**** md5 signature: 02d7a7510002481ab96243add745d673 ****/
+		/****** GeomConvert_BSplineCurveToBezierCurve::GeomConvert_BSplineCurveToBezierCurve ******/
+		/****** md5 signature: 02d7a7510002481ab96243add745d673 ******/
 		%feature("compactdefaultargs") GeomConvert_BSplineCurveToBezierCurve;
 		%feature("autodoc", "
 Parameters
@@ -793,8 +793,8 @@ Computes all the data needed to convert the bspline curve basiscurve into a seri
 ") GeomConvert_BSplineCurveToBezierCurve;
 		 GeomConvert_BSplineCurveToBezierCurve(const opencascade::handle<Geom_BSplineCurve> & BasisCurve);
 
-		/****************** GeomConvert_BSplineCurveToBezierCurve ******************/
-		/**** md5 signature: dcc3b5187228ccadbb5f087b5a9ab184 ****/
+		/****** GeomConvert_BSplineCurveToBezierCurve::GeomConvert_BSplineCurveToBezierCurve ******/
+		/****** md5 signature: dcc3b5187228ccadbb5f087b5a9ab184 ******/
 		%feature("compactdefaultargs") GeomConvert_BSplineCurveToBezierCurve;
 		%feature("autodoc", "
 Parameters
@@ -814,8 +814,8 @@ Computes all the data needed to convert the portion of the bspline curve basiscu
 ") GeomConvert_BSplineCurveToBezierCurve;
 		 GeomConvert_BSplineCurveToBezierCurve(const opencascade::handle<Geom_BSplineCurve> & BasisCurve, const Standard_Real U1, const Standard_Real U2, const Standard_Real ParametricTolerance);
 
-		/****************** Arc ******************/
-		/**** md5 signature: 95759e24d4243410fb6f5ba187be6019 ****/
+		/****** GeomConvert_BSplineCurveToBezierCurve::Arc ******/
+		/****** md5 signature: 95759e24d4243410fb6f5ba187be6019 ******/
 		%feature("compactdefaultargs") Arc;
 		%feature("autodoc", "
 Parameters
@@ -832,8 +832,8 @@ Constructs and returns the bezier curve of index index to the table of adjacent 
 ") Arc;
 		opencascade::handle<Geom_BezierCurve> Arc(const Standard_Integer Index);
 
-		/****************** Arcs ******************/
-		/**** md5 signature: a5f791af1537635bcd5a0666a4d6f74a ****/
+		/****** GeomConvert_BSplineCurveToBezierCurve::Arcs ******/
+		/****** md5 signature: a5f791af1537635bcd5a0666a4d6f74a ******/
 		%feature("compactdefaultargs") Arcs;
 		%feature("autodoc", "
 Parameters
@@ -850,8 +850,8 @@ Constructs all the bezier curves whose data is computed by this algorithm and lo
 ") Arcs;
 		void Arcs(TColGeom_Array1OfBezierCurve & Curves);
 
-		/****************** Knots ******************/
-		/**** md5 signature: 4ce44c7a3fc1e54d65161ad10947be07 ****/
+		/****** GeomConvert_BSplineCurveToBezierCurve::Knots ******/
+		/****** md5 signature: 4ce44c7a3fc1e54d65161ad10947be07 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -868,8 +868,8 @@ This methode returns the bspline's knots associated to the converted arcs raised
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** NbArcs ******************/
-		/**** md5 signature: 5ed9ffd03d9f325b6e3f5ea37278c31f ****/
+		/****** GeomConvert_BSplineCurveToBezierCurve::NbArcs ******/
+		/****** md5 signature: 5ed9ffd03d9f325b6e3f5ea37278c31f ******/
 		%feature("compactdefaultargs") NbArcs;
 		%feature("autodoc", "Return
 -------
@@ -895,8 +895,8 @@ Returns the number of beziercurve arcs. if at the creation time you have decompo
 ************************************************/
 class GeomConvert_BSplineSurfaceKnotSplitting {
 	public:
-		/****************** GeomConvert_BSplineSurfaceKnotSplitting ******************/
-		/**** md5 signature: 4f7bf866b0b663536743786ab6c49a35 ****/
+		/****** GeomConvert_BSplineSurfaceKnotSplitting::GeomConvert_BSplineSurfaceKnotSplitting ******/
+		/****** md5 signature: 4f7bf866b0b663536743786ab6c49a35 ******/
 		%feature("compactdefaultargs") GeomConvert_BSplineSurfaceKnotSplitting;
 		%feature("autodoc", "
 Parameters
@@ -915,8 +915,8 @@ Determines the u- and v-isoparametric curves along which the bspline surface bas
 ") GeomConvert_BSplineSurfaceKnotSplitting;
 		 GeomConvert_BSplineSurfaceKnotSplitting(const opencascade::handle<Geom_BSplineSurface> & BasisSurface, const Standard_Integer UContinuityRange, const Standard_Integer VContinuityRange);
 
-		/****************** NbUSplits ******************/
-		/**** md5 signature: f38f51a3829bd17423f80563dd69fc89 ****/
+		/****** GeomConvert_BSplineSurfaceKnotSplitting::NbUSplits ******/
+		/****** md5 signature: f38f51a3829bd17423f80563dd69fc89 ******/
 		%feature("compactdefaultargs") NbUSplits;
 		%feature("autodoc", "Return
 -------
@@ -928,8 +928,8 @@ Returns the number of u-isoparametric curves along which the analysed bspline su
 ") NbUSplits;
 		Standard_Integer NbUSplits();
 
-		/****************** NbVSplits ******************/
-		/**** md5 signature: dec024b23940401d121c0104e585c1c2 ****/
+		/****** GeomConvert_BSplineSurfaceKnotSplitting::NbVSplits ******/
+		/****** md5 signature: dec024b23940401d121c0104e585c1c2 ******/
 		%feature("compactdefaultargs") NbVSplits;
 		%feature("autodoc", "Return
 -------
@@ -941,8 +941,8 @@ Returns the number of v-isoparametric curves along which the analysed bspline su
 ") NbVSplits;
 		Standard_Integer NbVSplits();
 
-		/****************** Splitting ******************/
-		/**** md5 signature: dc3f95db858c5376c9dc451aed4bd8fb ****/
+		/****** GeomConvert_BSplineSurfaceKnotSplitting::Splitting ******/
+		/****** md5 signature: dc3f95db858c5376c9dc451aed4bd8fb ******/
 		%feature("compactdefaultargs") Splitting;
 		%feature("autodoc", "
 Parameters
@@ -960,8 +960,8 @@ Loads the usplit and vsplit tables with the split knots values computed in this 
 ") Splitting;
 		void Splitting(TColStd_Array1OfInteger & USplit, TColStd_Array1OfInteger & VSplit);
 
-		/****************** USplitValue ******************/
-		/**** md5 signature: 17cc2a94fd1c12d63fe91fb3ee2162e2 ****/
+		/****** GeomConvert_BSplineSurfaceKnotSplitting::USplitValue ******/
+		/****** md5 signature: 17cc2a94fd1c12d63fe91fb3ee2162e2 ******/
 		%feature("compactdefaultargs") USplitValue;
 		%feature("autodoc", "
 Parameters
@@ -978,8 +978,8 @@ Returns the split knot of index uindex to the split knots table for the u parame
 ") USplitValue;
 		Standard_Integer USplitValue(const Standard_Integer UIndex);
 
-		/****************** VSplitValue ******************/
-		/**** md5 signature: f659a94c69e2fc5ded0fb9374d02b0a6 ****/
+		/****** GeomConvert_BSplineSurfaceKnotSplitting::VSplitValue ******/
+		/****** md5 signature: f659a94c69e2fc5ded0fb9374d02b0a6 ******/
 		%feature("compactdefaultargs") VSplitValue;
 		%feature("autodoc", "
 Parameters
@@ -1010,8 +1010,8 @@ Returns the split knot of index vindex to the split knots table for the v parame
 **************************************************/
 class GeomConvert_BSplineSurfaceToBezierSurface {
 	public:
-		/****************** GeomConvert_BSplineSurfaceToBezierSurface ******************/
-		/**** md5 signature: 1183db9a4452c7fc68809ed7924171c9 ****/
+		/****** GeomConvert_BSplineSurfaceToBezierSurface::GeomConvert_BSplineSurfaceToBezierSurface ******/
+		/****** md5 signature: 1183db9a4452c7fc68809ed7924171c9 ******/
 		%feature("compactdefaultargs") GeomConvert_BSplineSurfaceToBezierSurface;
 		%feature("autodoc", "
 Parameters
@@ -1028,8 +1028,8 @@ Computes all the data needed to convert - the bspline surface basissurface into 
 ") GeomConvert_BSplineSurfaceToBezierSurface;
 		 GeomConvert_BSplineSurfaceToBezierSurface(const opencascade::handle<Geom_BSplineSurface> & BasisSurface);
 
-		/****************** GeomConvert_BSplineSurfaceToBezierSurface ******************/
-		/**** md5 signature: 6c70a4683a2a0dbdb1df7d8f55283cae ****/
+		/****** GeomConvert_BSplineSurfaceToBezierSurface::GeomConvert_BSplineSurfaceToBezierSurface ******/
+		/****** md5 signature: 6c70a4683a2a0dbdb1df7d8f55283cae ******/
 		%feature("compactdefaultargs") GeomConvert_BSplineSurfaceToBezierSurface;
 		%feature("autodoc", "
 Parameters
@@ -1051,8 +1051,8 @@ Computes all the data needed to convert the patch of the bspline surface basissu
 ") GeomConvert_BSplineSurfaceToBezierSurface;
 		 GeomConvert_BSplineSurfaceToBezierSurface(const opencascade::handle<Geom_BSplineSurface> & BasisSurface, const Standard_Real U1, const Standard_Real U2, const Standard_Real V1, const Standard_Real V2, const Standard_Real ParametricTolerance);
 
-		/****************** NbUPatches ******************/
-		/**** md5 signature: 6b0ad1d8cd917ddafd65ec74fe6e89da ****/
+		/****** GeomConvert_BSplineSurfaceToBezierSurface::NbUPatches ******/
+		/****** md5 signature: 6b0ad1d8cd917ddafd65ec74fe6e89da ******/
 		%feature("compactdefaultargs") NbUPatches;
 		%feature("autodoc", "Return
 -------
@@ -1064,8 +1064,8 @@ Returns the number of bezier surfaces in the u direction. if at the creation tim
 ") NbUPatches;
 		Standard_Integer NbUPatches();
 
-		/****************** NbVPatches ******************/
-		/**** md5 signature: 90a9eb7fe715a81477e403cf8ccff1b9 ****/
+		/****** GeomConvert_BSplineSurfaceToBezierSurface::NbVPatches ******/
+		/****** md5 signature: 90a9eb7fe715a81477e403cf8ccff1b9 ******/
 		%feature("compactdefaultargs") NbVPatches;
 		%feature("autodoc", "Return
 -------
@@ -1077,8 +1077,8 @@ Returns the number of bezier surfaces in the v direction. if at the creation tim
 ") NbVPatches;
 		Standard_Integer NbVPatches();
 
-		/****************** Patch ******************/
-		/**** md5 signature: 9a3b705348fea48bacf1c9a8e270b260 ****/
+		/****** GeomConvert_BSplineSurfaceToBezierSurface::Patch ******/
+		/****** md5 signature: 9a3b705348fea48bacf1c9a8e270b260 ******/
 		%feature("compactdefaultargs") Patch;
 		%feature("autodoc", "
 Parameters
@@ -1096,8 +1096,8 @@ Constructs and returns the bezier surface of indices (uindex, vindex) to the pat
 ") Patch;
 		opencascade::handle<Geom_BezierSurface> Patch(const Standard_Integer UIndex, const Standard_Integer VIndex);
 
-		/****************** Patches ******************/
-		/**** md5 signature: 908402b15b885f6ee3f80d400a6e9b14 ****/
+		/****** GeomConvert_BSplineSurfaceToBezierSurface::Patches ******/
+		/****** md5 signature: 908402b15b885f6ee3f80d400a6e9b14 ******/
 		%feature("compactdefaultargs") Patches;
 		%feature("autodoc", "
 Parameters
@@ -1114,8 +1114,8 @@ Constructs all the bezier surfaces whose data is computed by this algorithm, and
 ") Patches;
 		void Patches(TColGeom_Array2OfBezierSurface & Surfaces);
 
-		/****************** UKnots ******************/
-		/**** md5 signature: a1b7c3a34769a964c3e6f254c8352af4 ****/
+		/****** GeomConvert_BSplineSurfaceToBezierSurface::UKnots ******/
+		/****** md5 signature: a1b7c3a34769a964c3e6f254c8352af4 ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "
 Parameters
@@ -1132,8 +1132,8 @@ This methode returns the bspline's u-knots associated to the converted patches r
 ") UKnots;
 		void UKnots(TColStd_Array1OfReal & TKnots);
 
-		/****************** VKnots ******************/
-		/**** md5 signature: 8977b325b44f44fd45a8ff69d707de23 ****/
+		/****** GeomConvert_BSplineSurfaceToBezierSurface::VKnots ******/
+		/****** md5 signature: 8977b325b44f44fd45a8ff69d707de23 ******/
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "
 Parameters
@@ -1164,8 +1164,8 @@ This methode returns the bspline's v-knots associated to the converted patches r
 *******************************************************/
 class GeomConvert_CompBezierSurfacesToBSplineSurface {
 	public:
-		/****************** GeomConvert_CompBezierSurfacesToBSplineSurface ******************/
-		/**** md5 signature: d7d868206c90d8ef14dd941018c8d112 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface ******/
+		/****** md5 signature: d7d868206c90d8ef14dd941018c8d112 ******/
 		%feature("compactdefaultargs") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -1182,8 +1182,8 @@ Computes all the data needed to build a 'c0' continuous bspline surface equivale
 ") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		 GeomConvert_CompBezierSurfacesToBSplineSurface(const TColGeom_Array2OfBezierSurface & Beziers);
 
-		/****************** GeomConvert_CompBezierSurfacesToBSplineSurface ******************/
-		/**** md5 signature: e7dce0cc47287d475aec5981c18bd406 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface ******/
+		/****** md5 signature: e7dce0cc47287d475aec5981c18bd406 ******/
 		%feature("compactdefaultargs") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -1202,8 +1202,8 @@ Build an ci uniform (rational) bspline surface the highest continuity ci is impo
 ") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		 GeomConvert_CompBezierSurfacesToBSplineSurface(const TColGeom_Array2OfBezierSurface & Beziers, const Standard_Real Tolerance, const Standard_Boolean RemoveKnots = Standard_True);
 
-		/****************** GeomConvert_CompBezierSurfacesToBSplineSurface ******************/
-		/**** md5 signature: 9023f479b9dd7990ab8b434e132ab54b ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::GeomConvert_CompBezierSurfacesToBSplineSurface ******/
+		/****** md5 signature: 9023f479b9dd7990ab8b434e132ab54b ******/
 		%feature("compactdefaultargs") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -1225,8 +1225,8 @@ Computes all the data needed to construct a bspline surface equivalent to the ad
 ") GeomConvert_CompBezierSurfacesToBSplineSurface;
 		 GeomConvert_CompBezierSurfacesToBSplineSurface(const TColGeom_Array2OfBezierSurface & Beziers, const TColStd_Array1OfReal & UKnots, const TColStd_Array1OfReal & VKnots, const GeomAbs_Shape UContinuity = GeomAbs_C0, const GeomAbs_Shape VContinuity = GeomAbs_C0, const Standard_Real Tolerance = 1.0e-4);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1238,8 +1238,8 @@ Returns true if the conversion was successful. unless an exception was raised at
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbUKnots ******************/
-		/**** md5 signature: dad62b27d386c8d79ed8a3faddece815 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::NbUKnots ******/
+		/****** md5 signature: dad62b27d386c8d79ed8a3faddece815 ******/
 		%feature("compactdefaultargs") NbUKnots;
 		%feature("autodoc", "Return
 -------
@@ -1251,8 +1251,8 @@ Returns the number of knots in the u direction of the bspline surface whose data
 ") NbUKnots;
 		Standard_Integer NbUKnots();
 
-		/****************** NbUPoles ******************/
-		/**** md5 signature: fb7c625af5aeee8be8cffdd28f1b08d5 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::NbUPoles ******/
+		/****** md5 signature: fb7c625af5aeee8be8cffdd28f1b08d5 ******/
 		%feature("compactdefaultargs") NbUPoles;
 		%feature("autodoc", "Return
 -------
@@ -1264,8 +1264,8 @@ Returns number of poles in the u direction of the bspline surface whose data is 
 ") NbUPoles;
 		Standard_Integer NbUPoles();
 
-		/****************** NbVKnots ******************/
-		/**** md5 signature: c5483500ef062c3949009d9a2ec75b29 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::NbVKnots ******/
+		/****** md5 signature: c5483500ef062c3949009d9a2ec75b29 ******/
 		%feature("compactdefaultargs") NbVKnots;
 		%feature("autodoc", "Return
 -------
@@ -1277,8 +1277,8 @@ Returns the number of knots in the v direction of the bspline surface whose data
 ") NbVKnots;
 		Standard_Integer NbVKnots();
 
-		/****************** NbVPoles ******************/
-		/**** md5 signature: 098754ae7893287e442d0a3c48b39cf0 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::NbVPoles ******/
+		/****** md5 signature: 098754ae7893287e442d0a3c48b39cf0 ******/
 		%feature("compactdefaultargs") NbVPoles;
 		%feature("autodoc", "Return
 -------
@@ -1290,8 +1290,8 @@ Returns the number of poles in the v direction of the bspline surface whose data
 ") NbVPoles;
 		Standard_Integer NbVPoles();
 
-		/****************** Poles ******************/
-		/**** md5 signature: 4e616536627e10a4a11def3d5743d611 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::Poles ******/
+		/****** md5 signature: 4e616536627e10a4a11def3d5743d611 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "Return
 -------
@@ -1303,8 +1303,8 @@ Returns the table of poles of the bspline surface whose data is computed in this
 ") Poles;
 		const opencascade::handle<TColgp_HArray2OfPnt> & Poles();
 
-		/****************** UDegree ******************/
-		/**** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::UDegree ******/
+		/****** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -1316,8 +1316,8 @@ Returns the degree for the u parametric direction of the bspline surface whose d
 ") UDegree;
 		Standard_Integer UDegree();
 
-		/****************** UKnots ******************/
-		/**** md5 signature: e4c765c1a34f73676b6a0f23e63a42f7 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::UKnots ******/
+		/****** md5 signature: e4c765c1a34f73676b6a0f23e63a42f7 ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
@@ -1329,8 +1329,8 @@ Returns the knots table for the u parametric direction of the bspline surface wh
 ") UKnots;
 		const opencascade::handle<TColStd_HArray1OfReal> & UKnots();
 
-		/****************** UMultiplicities ******************/
-		/**** md5 signature: dd6df83c242f8c2d61f6fb2cc00d6d9a ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::UMultiplicities ******/
+		/****** md5 signature: dd6df83c242f8c2d61f6fb2cc00d6d9a ******/
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -1342,8 +1342,8 @@ Returns the multiplicities table for the u parametric direction of the knots of 
 ") UMultiplicities;
 		const opencascade::handle<TColStd_HArray1OfInteger> & UMultiplicities();
 
-		/****************** VDegree ******************/
-		/**** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::VDegree ******/
+		/****** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -1355,8 +1355,8 @@ Returns the degree for the v parametric direction of the bspline surface whose d
 ") VDegree;
 		Standard_Integer VDegree();
 
-		/****************** VKnots ******************/
-		/**** md5 signature: 56d691f001e3cbff620cca50aeeea333 ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::VKnots ******/
+		/****** md5 signature: 56d691f001e3cbff620cca50aeeea333 ******/
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
@@ -1368,8 +1368,8 @@ Returns the knots table for the v parametric direction of the bspline surface wh
 ") VKnots;
 		const opencascade::handle<TColStd_HArray1OfReal> & VKnots();
 
-		/****************** VMultiplicities ******************/
-		/**** md5 signature: 36fc4847dd11076b629833ec28b74b5a ****/
+		/****** GeomConvert_CompBezierSurfacesToBSplineSurface::VMultiplicities ******/
+		/****** md5 signature: 36fc4847dd11076b629833ec28b74b5a ******/
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -1395,8 +1395,8 @@ Description
 ********************************************/
 class GeomConvert_CompCurveToBSplineCurve {
 	public:
-		/****************** GeomConvert_CompCurveToBSplineCurve ******************/
-		/**** md5 signature: a96791634acde1f55395d6866064395e ****/
+		/****** GeomConvert_CompCurveToBSplineCurve::GeomConvert_CompCurveToBSplineCurve ******/
+		/****** md5 signature: a96791634acde1f55395d6866064395e ******/
 		%feature("compactdefaultargs") GeomConvert_CompCurveToBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -1413,8 +1413,8 @@ Initialize the algorithme - parameterisation is used to convert.
 ") GeomConvert_CompCurveToBSplineCurve;
 		 GeomConvert_CompCurveToBSplineCurve(const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
-		/****************** GeomConvert_CompCurveToBSplineCurve ******************/
-		/**** md5 signature: 3aeb1eb8d2522e7e127a7c770b7a8f81 ****/
+		/****** GeomConvert_CompCurveToBSplineCurve::GeomConvert_CompCurveToBSplineCurve ******/
+		/****** md5 signature: 3aeb1eb8d2522e7e127a7c770b7a8f81 ******/
 		%feature("compactdefaultargs") GeomConvert_CompCurveToBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -1432,8 +1432,8 @@ Initialize the algorithme with one curve - parameterisation is used to convert.
 ") GeomConvert_CompCurveToBSplineCurve;
 		 GeomConvert_CompCurveToBSplineCurve(const opencascade::handle<Geom_BoundedCurve> & BasisCurve, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
-		/****************** Add ******************/
-		/**** md5 signature: bc61762bbfef9f8aa367bbd6d1a81d53 ****/
+		/****** GeomConvert_CompCurveToBSplineCurve::Add ******/
+		/****** md5 signature: bc61762bbfef9f8aa367bbd6d1a81d53 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1454,8 +1454,8 @@ Append a curve in the bspline return false if the curve is not g0 with the bspli
 ") Add;
 		Standard_Boolean Add(const opencascade::handle<Geom_BoundedCurve> & NewCurve, const Standard_Real Tolerance, const Standard_Boolean After = Standard_False, const Standard_Boolean WithRatio = Standard_True, const Standard_Integer MinM = 0);
 
-		/****************** BSplineCurve ******************/
-		/**** md5 signature: f990dacdae77505b5b71a450dd20ad64 ****/
+		/****** GeomConvert_CompCurveToBSplineCurve::BSplineCurve ******/
+		/****** md5 signature: f990dacdae77505b5b71a450dd20ad64 ******/
 		%feature("compactdefaultargs") BSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -1485,8 +1485,8 @@ No available documentation.
 ************************************/
 class GeomConvert_CurveToAnaCurve {
 	public:
-		/****************** GeomConvert_CurveToAnaCurve ******************/
-		/**** md5 signature: ec961824468293cd902f1969c652e26c ****/
+		/****** GeomConvert_CurveToAnaCurve::GeomConvert_CurveToAnaCurve ******/
+		/****** md5 signature: ec961824468293cd902f1969c652e26c ******/
 		%feature("compactdefaultargs") GeomConvert_CurveToAnaCurve;
 		%feature("autodoc", "Return
 -------
@@ -1498,8 +1498,8 @@ No available documentation.
 ") GeomConvert_CurveToAnaCurve;
 		 GeomConvert_CurveToAnaCurve();
 
-		/****************** GeomConvert_CurveToAnaCurve ******************/
-		/**** md5 signature: b1ece9c96194a4a80262bfa8a26ee2ab ****/
+		/****** GeomConvert_CurveToAnaCurve::GeomConvert_CurveToAnaCurve ******/
+		/****** md5 signature: b1ece9c96194a4a80262bfa8a26ee2ab ******/
 		%feature("compactdefaultargs") GeomConvert_CurveToAnaCurve;
 		%feature("autodoc", "
 Parameters
@@ -1516,8 +1516,8 @@ No available documentation.
 ") GeomConvert_CurveToAnaCurve;
 		 GeomConvert_CurveToAnaCurve(const opencascade::handle<Geom_Curve> & C);
 
-		/****************** ComputeCircle ******************/
-		/**** md5 signature: ea256c1493cd79f11cc19a93be84040a ****/
+		/****** GeomConvert_CurveToAnaCurve::ComputeCircle ******/
+		/****** md5 signature: ea256c1493cd79f11cc19a93be84040a ******/
 		%feature("compactdefaultargs") ComputeCircle;
 		%feature("autodoc", "
 Parameters
@@ -1539,8 +1539,8 @@ Tries to convert the given curve to circle with given tolerance. returns null cu
 ") ComputeCircle;
 		static opencascade::handle<Geom_Curve> ComputeCircle(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ComputeCurve ******************/
-		/**** md5 signature: c66a84ff606c6ec09706eec6eb45f9d8 ****/
+		/****** GeomConvert_CurveToAnaCurve::ComputeCurve ******/
+		/****** md5 signature: c66a84ff606c6ec09706eec6eb45f9d8 ******/
 		%feature("compactdefaultargs") ComputeCurve;
 		%feature("autodoc", "
 Parameters
@@ -1564,8 +1564,8 @@ No available documentation.
 ") ComputeCurve;
 		static opencascade::handle<Geom_Curve> ComputeCurve(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const GeomConvert_ConvType theCurvType = GeomConvert_MinGap, const GeomAbs_CurveType theTarget = GeomAbs_Line);
 
-		/****************** ComputeEllipse ******************/
-		/**** md5 signature: e0bb1bde95947083b93efaccf7353272 ****/
+		/****** GeomConvert_CurveToAnaCurve::ComputeEllipse ******/
+		/****** md5 signature: e0bb1bde95947083b93efaccf7353272 ******/
 		%feature("compactdefaultargs") ComputeEllipse;
 		%feature("autodoc", "
 Parameters
@@ -1587,8 +1587,8 @@ Tries to convert the given curve to ellipse with given tolerance. returns null c
 ") ComputeEllipse;
 		static opencascade::handle<Geom_Curve> ComputeEllipse(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ComputeLine ******************/
-		/**** md5 signature: bc5142fb7fe1aa589de179e14ba11de0 ****/
+		/****** GeomConvert_CurveToAnaCurve::ComputeLine ******/
+		/****** md5 signature: bc5142fb7fe1aa589de179e14ba11de0 ******/
 		%feature("compactdefaultargs") ComputeLine;
 		%feature("autodoc", "
 Parameters
@@ -1610,8 +1610,8 @@ Tries to convert the given curve to line with given tolerance. returns null curv
 ") ComputeLine;
 		static opencascade::handle<Geom_Line> ComputeLine(const opencascade::handle<Geom_Curve> & curve, const Standard_Real tolerance, const Standard_Real c1, const Standard_Real c2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ConvertToAnalytical ******************/
-		/**** md5 signature: 549770939dd4922960c2746330467b86 ****/
+		/****** GeomConvert_CurveToAnaCurve::ConvertToAnalytical ******/
+		/****** md5 signature: 549770939dd4922960c2746330467b86 ******/
 		%feature("compactdefaultargs") ConvertToAnalytical;
 		%feature("autodoc", "
 Parameters
@@ -1632,8 +1632,8 @@ Converts me to analytical if possible with given tolerance. the new first and la
 ") ConvertToAnalytical;
 		Standard_Boolean ConvertToAnalytical(const Standard_Real theTol, opencascade::handle<Geom_Curve> & theResultCurve, const Standard_Real F, const Standard_Real L, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Gap ******************/
-		/**** md5 signature: ff26c000138f3c6675ca82e0935201b1 ****/
+		/****** GeomConvert_CurveToAnaCurve::Gap ******/
+		/****** md5 signature: ff26c000138f3c6675ca82e0935201b1 ******/
 		%feature("compactdefaultargs") Gap;
 		%feature("autodoc", "Return
 -------
@@ -1645,8 +1645,8 @@ Returns maximal deviation of converted surface from the original one computed by
 ") Gap;
 		Standard_Real Gap();
 
-		/****************** GetCircle ******************/
-		/**** md5 signature: 54fff07540fbc3c56e68304652c6011a ****/
+		/****** GeomConvert_CurveToAnaCurve::GetCircle ******/
+		/****** md5 signature: 54fff07540fbc3c56e68304652c6011a ******/
 		%feature("compactdefaultargs") GetCircle;
 		%feature("autodoc", "
 Parameters
@@ -1666,8 +1666,8 @@ Creates circle on points. returns true if ok.
 ") GetCircle;
 		static Standard_Boolean GetCircle(gp_Circ & Circ, const gp_Pnt & P0, const gp_Pnt & P1, const gp_Pnt & P2);
 
-		/****************** GetConvType ******************/
-		/**** md5 signature: 3380d79ecc2a38ee84684af221c8db7d ****/
+		/****** GeomConvert_CurveToAnaCurve::GetConvType ******/
+		/****** md5 signature: 3380d79ecc2a38ee84684af221c8db7d ******/
 		%feature("compactdefaultargs") GetConvType;
 		%feature("autodoc", "Return
 -------
@@ -1679,8 +1679,8 @@ Returns conversion type .
 ") GetConvType;
 		GeomConvert_ConvType GetConvType();
 
-		/****************** GetLine ******************/
-		/**** md5 signature: f5adcee8a16048ac03ea0dd1162c6076 ****/
+		/****** GeomConvert_CurveToAnaCurve::GetLine ******/
+		/****** md5 signature: f5adcee8a16048ac03ea0dd1162c6076 ******/
 		%feature("compactdefaultargs") GetLine;
 		%feature("autodoc", "
 Parameters
@@ -1699,8 +1699,8 @@ Creates line on two points. resulting parameters returned.
 ") GetLine;
 		static gp_Lin GetLine(const gp_Pnt & P1, const gp_Pnt & P2, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetTarget ******************/
-		/**** md5 signature: 5c2574892803a79756a17ac0020a223f ****/
+		/****** GeomConvert_CurveToAnaCurve::GetTarget ******/
+		/****** md5 signature: 5c2574892803a79756a17ac0020a223f ******/
 		%feature("compactdefaultargs") GetTarget;
 		%feature("autodoc", "Return
 -------
@@ -1712,8 +1712,8 @@ Returns target curve type .
 ") GetTarget;
 		GeomAbs_CurveType GetTarget();
 
-		/****************** Init ******************/
-		/**** md5 signature: 3a7fb0adde1a97c68f435539513bba2c ****/
+		/****** GeomConvert_CurveToAnaCurve::Init ******/
+		/****** md5 signature: 3a7fb0adde1a97c68f435539513bba2c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1730,8 +1730,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & C);
 
-		/****************** IsLinear ******************/
-		/**** md5 signature: 3fffa92876acf756eec0fb545af7bee0 ****/
+		/****** GeomConvert_CurveToAnaCurve::IsLinear ******/
+		/****** md5 signature: 3fffa92876acf756eec0fb545af7bee0 ******/
 		%feature("compactdefaultargs") IsLinear;
 		%feature("autodoc", "
 Parameters
@@ -1749,8 +1749,8 @@ Returns true if the set of points is linear with given tolerance.
 ") IsLinear;
 		static Standard_Boolean IsLinear(const TColgp_Array1OfPnt & aPoints, const Standard_Real tolerance, Standard_Real &OutValue);
 
-		/****************** SetConvType ******************/
-		/**** md5 signature: dc5b7fda06c157912253fd5c8fdcffe7 ****/
+		/****** GeomConvert_CurveToAnaCurve::SetConvType ******/
+		/****** md5 signature: dc5b7fda06c157912253fd5c8fdcffe7 ******/
 		%feature("compactdefaultargs") SetConvType;
 		%feature("autodoc", "
 Parameters
@@ -1767,8 +1767,8 @@ Sets type of convertion.
 ") SetConvType;
 		void SetConvType(const GeomConvert_ConvType theConvType);
 
-		/****************** SetTarget ******************/
-		/**** md5 signature: ea3732f46794fadef2b53622915d7a0a ****/
+		/****** GeomConvert_CurveToAnaCurve::SetTarget ******/
+		/****** md5 signature: ea3732f46794fadef2b53622915d7a0a ******/
 		%feature("compactdefaultargs") SetTarget;
 		%feature("autodoc", "
 Parameters
@@ -1799,8 +1799,8 @@ Sets target curve type.
 ***********************************/
 class GeomConvert_FuncConeLSDist : public math_MultipleVarFunction {
 	public:
-		/****************** GeomConvert_FuncConeLSDist ******************/
-		/**** md5 signature: c18fa0e2e30905df7fa7d871ba339b12 ****/
+		/****** GeomConvert_FuncConeLSDist::GeomConvert_FuncConeLSDist ******/
+		/****** md5 signature: c18fa0e2e30905df7fa7d871ba339b12 ******/
 		%feature("compactdefaultargs") GeomConvert_FuncConeLSDist;
 		%feature("autodoc", "Return
 -------
@@ -1812,8 +1812,8 @@ Constructor.
 ") GeomConvert_FuncConeLSDist;
 		 GeomConvert_FuncConeLSDist();
 
-		/****************** GeomConvert_FuncConeLSDist ******************/
-		/**** md5 signature: 92c3b44800588b998b0bdcce35d8c57d ****/
+		/****** GeomConvert_FuncConeLSDist::GeomConvert_FuncConeLSDist ******/
+		/****** md5 signature: 92c3b44800588b998b0bdcce35d8c57d ******/
 		%feature("compactdefaultargs") GeomConvert_FuncConeLSDist;
 		%feature("autodoc", "
 Parameters
@@ -1831,8 +1831,8 @@ No available documentation.
 ") GeomConvert_FuncConeLSDist;
 		 GeomConvert_FuncConeLSDist(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints, const gp_Dir & theDir);
 
-		/****************** NbVariables ******************/
-		/**** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ****/
+		/****** GeomConvert_FuncConeLSDist::NbVariables ******/
+		/****** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -1844,8 +1844,8 @@ Number of variables.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
-		/****************** SetDir ******************/
-		/**** md5 signature: 1d0b77c139a977d9a07e3e8f20d2c562 ****/
+		/****** GeomConvert_FuncConeLSDist::SetDir ******/
+		/****** md5 signature: 1d0b77c139a977d9a07e3e8f20d2c562 ******/
 		%feature("compactdefaultargs") SetDir;
 		%feature("autodoc", "
 Parameters
@@ -1862,8 +1862,8 @@ No available documentation.
 ") SetDir;
 		void SetDir(const gp_Dir & theDir);
 
-		/****************** SetPoints ******************/
-		/**** md5 signature: 4eab7dc5fdb6ba550172fa84344d274b ****/
+		/****** GeomConvert_FuncConeLSDist::SetPoints ******/
+		/****** md5 signature: 4eab7dc5fdb6ba550172fa84344d274b ******/
 		%feature("compactdefaultargs") SetPoints;
 		%feature("autodoc", "
 Parameters
@@ -1880,8 +1880,8 @@ No available documentation.
 ") SetPoints;
 		void SetPoints(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
 
-		/****************** Value ******************/
-		/**** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ****/
+		/****** GeomConvert_FuncConeLSDist::Value ******/
+		/****** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1912,8 +1912,8 @@ Value.
 ***************************************/
 class GeomConvert_FuncCylinderLSDist : public math_MultipleVarFunctionWithGradient {
 	public:
-		/****************** GeomConvert_FuncCylinderLSDist ******************/
-		/**** md5 signature: 9294d6c0e3d8b33feb6b8f55c7f9a765 ****/
+		/****** GeomConvert_FuncCylinderLSDist::GeomConvert_FuncCylinderLSDist ******/
+		/****** md5 signature: 9294d6c0e3d8b33feb6b8f55c7f9a765 ******/
 		%feature("compactdefaultargs") GeomConvert_FuncCylinderLSDist;
 		%feature("autodoc", "Return
 -------
@@ -1925,8 +1925,8 @@ Constructor.
 ") GeomConvert_FuncCylinderLSDist;
 		 GeomConvert_FuncCylinderLSDist();
 
-		/****************** GeomConvert_FuncCylinderLSDist ******************/
-		/**** md5 signature: c28ebf082656d19dd5bbcd73e94e4d3c ****/
+		/****** GeomConvert_FuncCylinderLSDist::GeomConvert_FuncCylinderLSDist ******/
+		/****** md5 signature: c28ebf082656d19dd5bbcd73e94e4d3c ******/
 		%feature("compactdefaultargs") GeomConvert_FuncCylinderLSDist;
 		%feature("autodoc", "
 Parameters
@@ -1944,8 +1944,8 @@ No available documentation.
 ") GeomConvert_FuncCylinderLSDist;
 		 GeomConvert_FuncCylinderLSDist(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints, const gp_Dir & theDir);
 
-		/****************** Gradient ******************/
-		/**** md5 signature: 3c2c6e3dc1adb80c90a5b990a7bd765e ****/
+		/****** GeomConvert_FuncCylinderLSDist::Gradient ******/
+		/****** md5 signature: 3c2c6e3dc1adb80c90a5b990a7bd765e ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -1963,8 +1963,8 @@ Gradient.
 ") Gradient;
 		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
 
-		/****************** NbVariables ******************/
-		/**** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ****/
+		/****** GeomConvert_FuncCylinderLSDist::NbVariables ******/
+		/****** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -1976,8 +1976,8 @@ Number of variables.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
-		/****************** SetDir ******************/
-		/**** md5 signature: 1d0b77c139a977d9a07e3e8f20d2c562 ****/
+		/****** GeomConvert_FuncCylinderLSDist::SetDir ******/
+		/****** md5 signature: 1d0b77c139a977d9a07e3e8f20d2c562 ******/
 		%feature("compactdefaultargs") SetDir;
 		%feature("autodoc", "
 Parameters
@@ -1994,8 +1994,8 @@ No available documentation.
 ") SetDir;
 		void SetDir(const gp_Dir & theDir);
 
-		/****************** SetPoints ******************/
-		/**** md5 signature: 4eab7dc5fdb6ba550172fa84344d274b ****/
+		/****** GeomConvert_FuncCylinderLSDist::SetPoints ******/
+		/****** md5 signature: 4eab7dc5fdb6ba550172fa84344d274b ******/
 		%feature("compactdefaultargs") SetPoints;
 		%feature("autodoc", "
 Parameters
@@ -2012,8 +2012,8 @@ No available documentation.
 ") SetPoints;
 		void SetPoints(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
 
-		/****************** Value ******************/
-		/**** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ****/
+		/****** GeomConvert_FuncCylinderLSDist::Value ******/
+		/****** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2030,8 +2030,8 @@ Value.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
-		/****************** Values ******************/
-		/**** md5 signature: f0f16d7b5e9269bb29d01310f0af0e74 ****/
+		/****** GeomConvert_FuncCylinderLSDist::Values ******/
+		/****** md5 signature: f0f16d7b5e9269bb29d01310f0af0e74 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -2063,8 +2063,8 @@ Value and gradient.
 *************************************/
 class GeomConvert_FuncSphereLSDist : public math_MultipleVarFunctionWithGradient {
 	public:
-		/****************** GeomConvert_FuncSphereLSDist ******************/
-		/**** md5 signature: ecd22e69071f4a915806374c28120477 ****/
+		/****** GeomConvert_FuncSphereLSDist::GeomConvert_FuncSphereLSDist ******/
+		/****** md5 signature: ecd22e69071f4a915806374c28120477 ******/
 		%feature("compactdefaultargs") GeomConvert_FuncSphereLSDist;
 		%feature("autodoc", "Return
 -------
@@ -2076,8 +2076,8 @@ Constructor.
 ") GeomConvert_FuncSphereLSDist;
 		 GeomConvert_FuncSphereLSDist();
 
-		/****************** GeomConvert_FuncSphereLSDist ******************/
-		/**** md5 signature: fda9d28bcb623805c42baa638f23890c ****/
+		/****** GeomConvert_FuncSphereLSDist::GeomConvert_FuncSphereLSDist ******/
+		/****** md5 signature: fda9d28bcb623805c42baa638f23890c ******/
 		%feature("compactdefaultargs") GeomConvert_FuncSphereLSDist;
 		%feature("autodoc", "
 Parameters
@@ -2094,8 +2094,8 @@ No available documentation.
 ") GeomConvert_FuncSphereLSDist;
 		 GeomConvert_FuncSphereLSDist(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
 
-		/****************** Gradient ******************/
-		/**** md5 signature: 3c2c6e3dc1adb80c90a5b990a7bd765e ****/
+		/****** GeomConvert_FuncSphereLSDist::Gradient ******/
+		/****** md5 signature: 3c2c6e3dc1adb80c90a5b990a7bd765e ******/
 		%feature("compactdefaultargs") Gradient;
 		%feature("autodoc", "
 Parameters
@@ -2113,8 +2113,8 @@ Gradient.
 ") Gradient;
 		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
 
-		/****************** NbVariables ******************/
-		/**** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ****/
+		/****** GeomConvert_FuncSphereLSDist::NbVariables ******/
+		/****** md5 signature: c99b0d96b9b2c7c3fd7890618502162b ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -2126,8 +2126,8 @@ Number of variables.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
-		/****************** SetPoints ******************/
-		/**** md5 signature: 4eab7dc5fdb6ba550172fa84344d274b ****/
+		/****** GeomConvert_FuncSphereLSDist::SetPoints ******/
+		/****** md5 signature: 4eab7dc5fdb6ba550172fa84344d274b ******/
 		%feature("compactdefaultargs") SetPoints;
 		%feature("autodoc", "
 Parameters
@@ -2144,8 +2144,8 @@ No available documentation.
 ") SetPoints;
 		void SetPoints(const opencascade::handle<TColgp_HArray1OfXYZ> & thePoints);
 
-		/****************** Value ******************/
-		/**** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ****/
+		/****** GeomConvert_FuncSphereLSDist::Value ******/
+		/****** md5 signature: 785b7201af1c2abaa75ddcb4aefd5f9e ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2162,8 +2162,8 @@ Value.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
-		/****************** Values ******************/
-		/**** md5 signature: f0f16d7b5e9269bb29d01310f0af0e74 ****/
+		/****** GeomConvert_FuncSphereLSDist::Values ******/
+		/****** md5 signature: f0f16d7b5e9269bb29d01310f0af0e74 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -2195,8 +2195,8 @@ Value and gradient.
 **********************************/
 class GeomConvert_SurfToAnaSurf {
 	public:
-		/****************** GeomConvert_SurfToAnaSurf ******************/
-		/**** md5 signature: bdd7948b4c741cf42bf7406c87cb003b ****/
+		/****** GeomConvert_SurfToAnaSurf::GeomConvert_SurfToAnaSurf ******/
+		/****** md5 signature: bdd7948b4c741cf42bf7406c87cb003b ******/
 		%feature("compactdefaultargs") GeomConvert_SurfToAnaSurf;
 		%feature("autodoc", "Return
 -------
@@ -2208,8 +2208,8 @@ No available documentation.
 ") GeomConvert_SurfToAnaSurf;
 		 GeomConvert_SurfToAnaSurf();
 
-		/****************** GeomConvert_SurfToAnaSurf ******************/
-		/**** md5 signature: a26e73f3d11a0e1e50ab31901a426539 ****/
+		/****** GeomConvert_SurfToAnaSurf::GeomConvert_SurfToAnaSurf ******/
+		/****** md5 signature: a26e73f3d11a0e1e50ab31901a426539 ******/
 		%feature("compactdefaultargs") GeomConvert_SurfToAnaSurf;
 		%feature("autodoc", "
 Parameters
@@ -2226,8 +2226,8 @@ No available documentation.
 ") GeomConvert_SurfToAnaSurf;
 		 GeomConvert_SurfToAnaSurf(const opencascade::handle<Geom_Surface> & S);
 
-		/****************** ConvertToAnalytical ******************/
-		/**** md5 signature: e57ac2326fa470e5e6cce2c0710d834d ****/
+		/****** GeomConvert_SurfToAnaSurf::ConvertToAnalytical ******/
+		/****** md5 signature: e57ac2326fa470e5e6cce2c0710d834d ******/
 		%feature("compactdefaultargs") ConvertToAnalytical;
 		%feature("autodoc", "
 Parameters
@@ -2244,8 +2244,8 @@ Tries to convert the surface to an analytic form returns the result in case of f
 ") ConvertToAnalytical;
 		opencascade::handle<Geom_Surface> ConvertToAnalytical(const Standard_Real InitialToler);
 
-		/****************** ConvertToAnalytical ******************/
-		/**** md5 signature: 33b00422234d22dc8293f4611ee298de ****/
+		/****** GeomConvert_SurfToAnaSurf::ConvertToAnalytical ******/
+		/****** md5 signature: 33b00422234d22dc8293f4611ee298de ******/
 		%feature("compactdefaultargs") ConvertToAnalytical;
 		%feature("autodoc", "
 Parameters
@@ -2266,8 +2266,8 @@ No available documentation.
 ") ConvertToAnalytical;
 		opencascade::handle<Geom_Surface> ConvertToAnalytical(const Standard_Real InitialToler, const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax);
 
-		/****************** Gap ******************/
-		/**** md5 signature: ff26c000138f3c6675ca82e0935201b1 ****/
+		/****** GeomConvert_SurfToAnaSurf::Gap ******/
+		/****** md5 signature: ff26c000138f3c6675ca82e0935201b1 ******/
 		%feature("compactdefaultargs") Gap;
 		%feature("autodoc", "Return
 -------
@@ -2279,8 +2279,8 @@ Returns maximal deviation of converted surface from the original one computed by
 ") Gap;
 		Standard_Real Gap();
 
-		/****************** Init ******************/
-		/**** md5 signature: ae778074c5c355f705c26cfe08f002f6 ****/
+		/****** GeomConvert_SurfToAnaSurf::Init ******/
+		/****** md5 signature: ae778074c5c355f705c26cfe08f002f6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2297,8 +2297,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S);
 
-		/****************** IsCanonical ******************/
-		/**** md5 signature: 65430f5df436025e37dd842c4efa5212 ****/
+		/****** GeomConvert_SurfToAnaSurf::IsCanonical ******/
+		/****** md5 signature: 65430f5df436025e37dd842c4efa5212 ******/
 		%feature("compactdefaultargs") IsCanonical;
 		%feature("autodoc", "
 Parameters
@@ -2315,8 +2315,8 @@ Returns true, if surface is canonical.
 ") IsCanonical;
 		static Standard_Boolean IsCanonical(const opencascade::handle<Geom_Surface> & S);
 
-		/****************** IsSame ******************/
-		/**** md5 signature: 349e0ba479554f88945ea67ac1ab3569 ****/
+		/****** GeomConvert_SurfToAnaSurf::IsSame ******/
+		/****** md5 signature: 349e0ba479554f88945ea67ac1ab3569 ******/
 		%feature("compactdefaultargs") IsSame;
 		%feature("autodoc", "
 Parameters
@@ -2335,8 +2335,8 @@ Returns true if surfaces is same with the given tolerance.
 ") IsSame;
 		static Standard_Boolean IsSame(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real tol);
 
-		/****************** SetConvType ******************/
-		/**** md5 signature: 03bbc5678dadf68c699f6a038fd4fd40 ****/
+		/****** GeomConvert_SurfToAnaSurf::SetConvType ******/
+		/****** md5 signature: 03bbc5678dadf68c699f6a038fd4fd40 ******/
 		%feature("compactdefaultargs") SetConvType;
 		%feature("autodoc", "
 Parameters
@@ -2353,8 +2353,8 @@ No available documentation.
 ") SetConvType;
 		void SetConvType(const GeomConvert_ConvType theConvType = GeomConvert_Simplest);
 
-		/****************** SetTarget ******************/
-		/**** md5 signature: 78977fc6a03db0963d60bdba17618653 ****/
+		/****** GeomConvert_SurfToAnaSurf::SetTarget ******/
+		/****** md5 signature: 78977fc6a03db0963d60bdba17618653 ******/
 		%feature("compactdefaultargs") SetTarget;
 		%feature("autodoc", "
 Parameters
@@ -2385,8 +2385,8 @@ No available documentation.
 **************************/
 class GeomConvert_Units {
 	public:
-		/****************** DegreeToRadian ******************/
-		/**** md5 signature: 69ed7e606bb67cc6d9c8165770462427 ****/
+		/****** GeomConvert_Units::DegreeToRadian ******/
+		/****** md5 signature: 69ed7e606bb67cc6d9c8165770462427 ******/
 		%feature("compactdefaultargs") DegreeToRadian;
 		%feature("autodoc", "
 Parameters
@@ -2406,8 +2406,8 @@ Convert 2d curve for change angle unit from degree to radian.
 ") DegreeToRadian;
 		static opencascade::handle<Geom2d_Curve> DegreeToRadian(const opencascade::handle<Geom2d_Curve> & theCurve, const opencascade::handle<Geom_Surface> & theSurface, const Standard_Real theLengthFactor, const Standard_Real theFactorRadianDegree);
 
-		/****************** MirrorPCurve ******************/
-		/**** md5 signature: 96315e1e393b6c68ef42cbc8bec665c6 ****/
+		/****** GeomConvert_Units::MirrorPCurve ******/
+		/****** md5 signature: 96315e1e393b6c68ef42cbc8bec665c6 ******/
 		%feature("compactdefaultargs") MirrorPCurve;
 		%feature("autodoc", "
 Parameters
@@ -2424,8 +2424,8 @@ Return 2d curve as 'mirror' for given.
 ") MirrorPCurve;
 		static opencascade::handle<Geom2d_Curve> MirrorPCurve(const opencascade::handle<Geom2d_Curve> & theCurve);
 
-		/****************** RadianToDegree ******************/
-		/**** md5 signature: 97864706bc2811ff080d2cdd739d339c ****/
+		/****** GeomConvert_Units::RadianToDegree ******/
+		/****** md5 signature: 97864706bc2811ff080d2cdd739d339c ******/
 		%feature("compactdefaultargs") RadianToDegree;
 		%feature("autodoc", "
 Parameters

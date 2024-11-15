@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPEPROCESSAPIDOCSTRING
 "ShapeProcessAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_shapeprocessapi.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeprocessapi.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPEPROCESSAPIDOCSTRING) ShapeProcessAPI
 
@@ -103,8 +103,8 @@ from OCC.Core.Exception import *
 **************************************/
 class ShapeProcessAPI_ApplySequence {
 	public:
-		/****************** ShapeProcessAPI_ApplySequence ******************/
-		/**** md5 signature: f5377d66263c9513eab7d2e2af5df61a ****/
+		/****** ShapeProcessAPI_ApplySequence::ShapeProcessAPI_ApplySequence ******/
+		/****** md5 signature: f5377d66263c9513eab7d2e2af5df61a ******/
 		%feature("compactdefaultargs") ShapeProcessAPI_ApplySequence;
 		%feature("autodoc", "
 Parameters
@@ -122,8 +122,8 @@ Creates an object and loads resource file and sequence of operators given by the
 ") ShapeProcessAPI_ApplySequence;
 		 ShapeProcessAPI_ApplySequence(Standard_CString rscName, Standard_CString seqName = "");
 
-		/****************** ClearMap ******************/
-		/**** md5 signature: 9356b49e3e18c060604ef62eda302963 ****/
+		/****** ShapeProcessAPI_ApplySequence::ClearMap ******/
+		/****** md5 signature: 9356b49e3e18c060604ef62eda302963 ******/
 		%feature("compactdefaultargs") ClearMap;
 		%feature("autodoc", "Return
 -------
@@ -135,8 +135,8 @@ Clears mymap with accumulated history.
 ") ClearMap;
 		void ClearMap();
 
-		/****************** Context ******************/
-		/**** md5 signature: b0b09a3cdce6c6dc8869f38cc643ed97 ****/
+		/****** ShapeProcessAPI_ApplySequence::Context ******/
+		/****** md5 signature: b0b09a3cdce6c6dc8869f38cc643ed97 ******/
 		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "Return
 -------
@@ -148,8 +148,8 @@ Returns object for managing resource file and sequence of operators.
 ") Context;
 		opencascade::handle<ShapeProcess_ShapeContext> & Context();
 
-		/****************** Map ******************/
-		/**** md5 signature: f3544fddbdbe445b92ed0b96e5dc0e82 ****/
+		/****** ShapeProcessAPI_ApplySequence::Map ******/
+		/****** md5 signature: f3544fddbdbe445b92ed0b96e5dc0e82 ******/
 		%feature("compactdefaultargs") Map;
 		%feature("autodoc", "Return
 -------
@@ -161,8 +161,8 @@ Returns mymap with accumulated history.
 ") Map;
 		const TopTools_DataMapOfShapeShape & Map();
 
-		/****************** PrepareShape ******************/
-		/**** md5 signature: 27d62345063f43da2206e8a57a3eb6ef ****/
+		/****** ShapeProcessAPI_ApplySequence::PrepareShape ******/
+		/****** md5 signature: 27d62345063f43da2206e8a57a3eb6ef ******/
 		%feature("compactdefaultargs") PrepareShape;
 		%feature("autodoc", "
 Parameters
@@ -182,8 +182,8 @@ Performs sequence of operators stored in myrsc. if <fillmap> is true adds histor
 ") PrepareShape;
 		TopoDS_Shape PrepareShape(const TopoDS_Shape & shape, const Standard_Boolean fillmap = Standard_False, const TopAbs_ShapeEnum until = TopAbs_SHAPE, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** PrintPreparationResult ******************/
-		/**** md5 signature: 9f69281710e5ed4ccee63017708a3d97 ****/
+		/****** ShapeProcessAPI_ApplySequence::PrintPreparationResult ******/
+		/****** md5 signature: 9f69281710e5ed4ccee63017708a3d97 ******/
 		%feature("compactdefaultargs") PrintPreparationResult;
 		%feature("autodoc", "Return
 -------

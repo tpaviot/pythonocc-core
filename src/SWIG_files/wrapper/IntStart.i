@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTSTARTDOCSTRING
 "IntStart module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_intstart.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intstart.html"
 %enddef
 %module (package="OCC.Core", docstring=INTSTARTDOCSTRING) IntStart
 
@@ -85,8 +85,8 @@ from OCC.Core.Exception import *
 %nodefaultctor IntStart_SITopolTool;
 class IntStart_SITopolTool : public Standard_Transient {
 	public:
-		/****************** Classify ******************/
-		/**** md5 signature: 57cb8b2ba77b23acfa05dd678fe20285 ****/
+		/****** IntStart_SITopolTool::Classify ******/
+		/****** md5 signature: 57cb8b2ba77b23acfa05dd678fe20285 ******/
 		%feature("compactdefaultargs") Classify;
 		%feature("autodoc", "
 Parameters

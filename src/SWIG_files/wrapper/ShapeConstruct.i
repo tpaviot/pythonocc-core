@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define SHAPECONSTRUCTDOCSTRING
 "ShapeConstruct module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_shapeconstruct.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_shapeconstruct.html"
 %enddef
 %module (package="OCC.Core", docstring=SHAPECONSTRUCTDOCSTRING) ShapeConstruct
 
@@ -124,8 +124,8 @@ from OCC.Core.Exception import *
 %rename(shapeconstruct) ShapeConstruct;
 class ShapeConstruct {
 	public:
-		/****************** ConvertCurveToBSpline ******************/
-		/**** md5 signature: e96a2bc2620f51a54c516074790b0c2a ****/
+		/****** ShapeConstruct::ConvertCurveToBSpline ******/
+		/****** md5 signature: e96a2bc2620f51a54c516074790b0c2a ******/
 		%feature("compactdefaultargs") ConvertCurveToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -148,8 +148,8 @@ Tool for wire triangulation.
 ") ConvertCurveToBSpline;
 		static opencascade::handle<Geom_BSplineCurve> ConvertCurveToBSpline(const opencascade::handle<Geom_Curve> & C3D, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol3d, const GeomAbs_Shape Continuity, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
-		/****************** ConvertCurveToBSpline ******************/
-		/**** md5 signature: 6affa3a8972ff115e6414cc34e8d7653 ****/
+		/****** ShapeConstruct::ConvertCurveToBSpline ******/
+		/****** md5 signature: 6affa3a8972ff115e6414cc34e8d7653 ******/
 		%feature("compactdefaultargs") ConvertCurveToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -172,8 +172,8 @@ No available documentation.
 ") ConvertCurveToBSpline;
 		static opencascade::handle<Geom2d_BSplineCurve> ConvertCurveToBSpline(const opencascade::handle<Geom2d_Curve> & C2D, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol2d, const GeomAbs_Shape Continuity, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
-		/****************** ConvertSurfaceToBSpline ******************/
-		/**** md5 signature: 56c3fbc2fcbd52cf0207750979158da5 ****/
+		/****** ShapeConstruct::ConvertSurfaceToBSpline ******/
+		/****** md5 signature: 56c3fbc2fcbd52cf0207750979158da5 ******/
 		%feature("compactdefaultargs") ConvertSurfaceToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -198,8 +198,8 @@ No available documentation.
 ") ConvertSurfaceToBSpline;
 		static opencascade::handle<Geom_BSplineSurface> ConvertSurfaceToBSpline(const opencascade::handle<Geom_Surface> & surf, const Standard_Real UF, const Standard_Real UL, const Standard_Real VF, const Standard_Real VL, const Standard_Real Tol3d, const GeomAbs_Shape Continuity, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
-		/****************** JoinCurves ******************/
-		/**** md5 signature: 42f6c6d994f5046d227e89efea81a64e ****/
+		/****** ShapeConstruct::JoinCurves ******/
+		/****** md5 signature: 42f6c6d994f5046d227e89efea81a64e ******/
 		%feature("compactdefaultargs") JoinCurves;
 		%feature("autodoc", "
 Parameters
@@ -225,8 +225,8 @@ Method for joininig curves 3d. parameters: c3d1,ac3d2 - initial curves orient1, 
 ") JoinCurves;
 		static Standard_Boolean JoinCurves(const opencascade::handle<Geom_Curve> & c3d1, const opencascade::handle<Geom_Curve> & ac3d2, const TopAbs_Orientation Orient1, const TopAbs_Orientation Orient2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, opencascade::handle<Geom_Curve> & c3dOut, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
-		/****************** JoinCurves ******************/
-		/**** md5 signature: b94c3f264bbba3ef8c7cb35ad5f19df9 ****/
+		/****** ShapeConstruct::JoinCurves ******/
+		/****** md5 signature: b94c3f264bbba3ef8c7cb35ad5f19df9 ******/
 		%feature("compactdefaultargs") JoinCurves;
 		%feature("autodoc", "
 Parameters
@@ -253,8 +253,8 @@ Method for joininig curves 3d. parameters: c3d1,ac3d2 - initial curves orient1, 
 ") JoinCurves;
 		static Standard_Boolean JoinCurves(const opencascade::handle<Geom2d_Curve> & c2d1, const opencascade::handle<Geom2d_Curve> & ac2d2, const TopAbs_Orientation Orient1, const TopAbs_Orientation Orient2, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, opencascade::handle<Geom2d_Curve> & c2dOut, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const Standard_Boolean isError = Standard_False);
 
-		/****************** JoinPCurves ******************/
-		/**** md5 signature: e9caa72c09cd9d39fbc1b7c2c547c6cd ****/
+		/****** ShapeConstruct::JoinPCurves ******/
+		/****** md5 signature: e9caa72c09cd9d39fbc1b7c2c547c6cd ******/
 		%feature("compactdefaultargs") JoinPCurves;
 		%feature("autodoc", "
 Parameters
@@ -287,8 +287,8 @@ Join pcurves of the <theedge> on the <theface> try to use pcurves from originas 
 *****************************/
 class ShapeConstruct_Curve {
 	public:
-		/****************** AdjustCurve ******************/
-		/**** md5 signature: 1f7d7c10e6b8249c15e41e423ec5f10e ****/
+		/****** ShapeConstruct_Curve::AdjustCurve ******/
+		/****** md5 signature: 1f7d7c10e6b8249c15e41e423ec5f10e ******/
 		%feature("compactdefaultargs") AdjustCurve;
 		%feature("autodoc", "
 Parameters
@@ -309,8 +309,8 @@ Modifies a curve in order to make its bounds confused with given points. works o
 ") AdjustCurve;
 		Standard_Boolean AdjustCurve(const opencascade::handle<Geom_Curve> & C3D, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Boolean take1 = Standard_True, const Standard_Boolean take2 = Standard_True);
 
-		/****************** AdjustCurve2d ******************/
-		/**** md5 signature: 0ed4029b1e71b0f5f025a693259e9542 ****/
+		/****** ShapeConstruct_Curve::AdjustCurve2d ******/
+		/****** md5 signature: 0ed4029b1e71b0f5f025a693259e9542 ******/
 		%feature("compactdefaultargs") AdjustCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -331,8 +331,8 @@ Modifies a curve in order to make its bounds confused with given points. works o
 ") AdjustCurve2d;
 		Standard_Boolean AdjustCurve2d(const opencascade::handle<Geom2d_Curve> & C2D, const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Boolean take1 = Standard_True, const Standard_Boolean take2 = Standard_True);
 
-		/****************** AdjustCurveSegment ******************/
-		/**** md5 signature: 55a46b78ba47eac061ad1db867f897d3 ****/
+		/****** ShapeConstruct_Curve::AdjustCurveSegment ******/
+		/****** md5 signature: 55a46b78ba47eac061ad1db867f897d3 ******/
 		%feature("compactdefaultargs") AdjustCurveSegment;
 		%feature("autodoc", "
 Parameters
@@ -353,8 +353,8 @@ Modifies a curve in order to make its bounds confused with given points. works o
 ") AdjustCurveSegment;
 		Standard_Boolean AdjustCurveSegment(const opencascade::handle<Geom_Curve> & C3D, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Real U1, const Standard_Real U2);
 
-		/****************** ConvertToBSpline ******************/
-		/**** md5 signature: 19376ff893525dcd6cf5e373ee85abb9 ****/
+		/****** ShapeConstruct_Curve::ConvertToBSpline ******/
+		/****** md5 signature: 19376ff893525dcd6cf5e373ee85abb9 ******/
 		%feature("compactdefaultargs") ConvertToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -374,8 +374,8 @@ Converts a curve of any type (only part from first to last) to bspline. the meth
 ") ConvertToBSpline;
 		opencascade::handle<Geom_BSplineCurve> ConvertToBSpline(const opencascade::handle<Geom_Curve> & C, const Standard_Real first, const Standard_Real last, const Standard_Real prec);
 
-		/****************** ConvertToBSpline ******************/
-		/**** md5 signature: 67e22df5c9b6aa1af20547791bd07c17 ****/
+		/****** ShapeConstruct_Curve::ConvertToBSpline ******/
+		/****** md5 signature: 67e22df5c9b6aa1af20547791bd07c17 ******/
 		%feature("compactdefaultargs") ConvertToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -395,8 +395,8 @@ Converts a curve of any type (only part from first to last) to bspline. the meth
 ") ConvertToBSpline;
 		opencascade::handle<Geom2d_BSplineCurve> ConvertToBSpline(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real first, const Standard_Real last, const Standard_Real prec);
 
-		/****************** FixKnots ******************/
-		/**** md5 signature: 2d6b81e7c20061f8b14bd4eab45dd379 ****/
+		/****** ShapeConstruct_Curve::FixKnots ******/
+		/****** md5 signature: 2d6b81e7c20061f8b14bd4eab45dd379 ******/
 		%feature("compactdefaultargs") FixKnots;
 		%feature("autodoc", "
 Parameters
@@ -413,8 +413,8 @@ No available documentation.
 ") FixKnots;
 		static Standard_Boolean FixKnots(opencascade::handle<TColStd_HArray1OfReal> & knots);
 
-		/****************** FixKnots ******************/
-		/**** md5 signature: b95e53e8ec1c41f8c3c30eaff8ebc9e3 ****/
+		/****** ShapeConstruct_Curve::FixKnots ******/
+		/****** md5 signature: b95e53e8ec1c41f8c3c30eaff8ebc9e3 ******/
 		%feature("compactdefaultargs") FixKnots;
 		%feature("autodoc", "
 Parameters
@@ -445,8 +445,8 @@ Fix bspline knots to ensure that there is enough gap between neighbouring values
 *****************************************/
 class ShapeConstruct_MakeTriangulation : public BRepBuilderAPI_MakeShape {
 	public:
-		/****************** ShapeConstruct_MakeTriangulation ******************/
-		/**** md5 signature: a1d799816fdb6a068fe983d47396aaee ****/
+		/****** ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation ******/
+		/****** md5 signature: a1d799816fdb6a068fe983d47396aaee ******/
 		%feature("compactdefaultargs") ShapeConstruct_MakeTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -464,8 +464,8 @@ No available documentation.
 ") ShapeConstruct_MakeTriangulation;
 		 ShapeConstruct_MakeTriangulation(const TColgp_Array1OfPnt & pnts, const Standard_Real prec = 0.0);
 
-		/****************** ShapeConstruct_MakeTriangulation ******************/
-		/**** md5 signature: 268d8bbbc20b03fa4d66d26585d7d055 ****/
+		/****** ShapeConstruct_MakeTriangulation::ShapeConstruct_MakeTriangulation ******/
+		/****** md5 signature: 268d8bbbc20b03fa4d66d26585d7d055 ******/
 		%feature("compactdefaultargs") ShapeConstruct_MakeTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -483,8 +483,8 @@ No available documentation.
 ") ShapeConstruct_MakeTriangulation;
 		 ShapeConstruct_MakeTriangulation(const TopoDS_Wire & wire, const Standard_Real prec = 0.0);
 
-		/****************** Build ******************/
-		/**** md5 signature: 58900897d55d51e349b2e40a091ec26f ****/
+		/****** ShapeConstruct_MakeTriangulation::Build ******/
+		/****** md5 signature: 58900897d55d51e349b2e40a091ec26f ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -501,8 +501,8 @@ No available documentation.
 ") Build;
 		virtual void Build(const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** IsDone ******************/
-		/**** md5 signature: e2af43c18fdd9d21f5f5de9eae7fc9de ****/
+		/****** ShapeConstruct_MakeTriangulation::IsDone ******/
+		/****** md5 signature: e2af43c18fdd9d21f5f5de9eae7fc9de ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -528,8 +528,8 @@ No available documentation.
 *********************************************/
 class ShapeConstruct_ProjectCurveOnSurface : public Standard_Transient {
 	public:
-		/****************** ShapeConstruct_ProjectCurveOnSurface ******************/
-		/**** md5 signature: 4cb4d694dc4ad9b3f95b8440d3b8b9bc ****/
+		/****** ShapeConstruct_ProjectCurveOnSurface::ShapeConstruct_ProjectCurveOnSurface ******/
+		/****** md5 signature: 4cb4d694dc4ad9b3f95b8440d3b8b9bc ******/
 		%feature("compactdefaultargs") ShapeConstruct_ProjectCurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -567,8 +567,8 @@ Empty constructor.
             $self->BuildCurveMode()=value;
             }
         };
-		/****************** Init ******************/
-		/**** md5 signature: 1f582cc2d24023b4359dab08f603d2dd ****/
+		/****** ShapeConstruct_ProjectCurveOnSurface::Init ******/
+		/****** md5 signature: 1f582cc2d24023b4359dab08f603d2dd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -586,8 +586,8 @@ Initializes the object with all necessary parameters, i.e. surface and precision
 ") Init;
 		virtual void Init(const opencascade::handle<Geom_Surface> & surf, const Standard_Real preci);
 
-		/****************** Init ******************/
-		/**** md5 signature: bf33f56618306090b1bb182cce883fc5 ****/
+		/****** ShapeConstruct_ProjectCurveOnSurface::Init ******/
+		/****** md5 signature: bf33f56618306090b1bb182cce883fc5 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -605,8 +605,8 @@ Initializes the object with all necessary parameters, i.e. surface and precision
 ") Init;
 		virtual void Init(const opencascade::handle<ShapeAnalysis_Surface> & surf, const Standard_Real preci);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 9d4fd560cded5434d94dcb5871e6e101 ****/
+		/****** ShapeConstruct_ProjectCurveOnSurface::Perform ******/
+		/****** md5 signature: 9d4fd560cded5434d94dcb5871e6e101 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -628,8 +628,8 @@ Computes the projection of 3d curve onto a surface using the specialized algorit
 ") Perform;
 		virtual Standard_Boolean Perform(opencascade::handle<Geom_Curve> & c3d, const Standard_Real First, const Standard_Real Last, opencascade::handle<Geom2d_Curve> & c2d, const Standard_Real TolFirst = -1, const Standard_Real TolLast = -1);
 
-		/****************** PerformByProjLib ******************/
-		/**** md5 signature: 90451a772b63955977e470cddd05bd72 ****/
+		/****** ShapeConstruct_ProjectCurveOnSurface::PerformByProjLib ******/
+		/****** md5 signature: 90451a772b63955977e470cddd05bd72 ******/
 		%feature("compactdefaultargs") PerformByProjLib;
 		%feature("autodoc", "
 Parameters
@@ -652,8 +652,8 @@ Computes the projection of 3d curve onto a surface using the standard algorithm 
 ") PerformByProjLib;
 		Standard_Boolean PerformByProjLib(opencascade::handle<Geom_Curve> & c3d, const Standard_Real First, const Standard_Real Last, opencascade::handle<Geom2d_Curve> & c2d, const GeomAbs_Shape continuity = GeomAbs_C1, const Standard_Integer maxdeg = 12, const Standard_Integer nbinterval = -1);
 
-		/****************** SetPrecision ******************/
-		/**** md5 signature: a601cf881702916ad1a5bcd1fec314c4 ****/
+		/****** ShapeConstruct_ProjectCurveOnSurface::SetPrecision ******/
+		/****** md5 signature: a601cf881702916ad1a5bcd1fec314c4 ******/
 		%feature("compactdefaultargs") SetPrecision;
 		%feature("autodoc", "
 Parameters
@@ -670,8 +670,8 @@ Sets value for current precision.
 ") SetPrecision;
 		void SetPrecision(const Standard_Real preci);
 
-		/****************** SetSurface ******************/
-		/**** md5 signature: ef3c30882af3f3cdd5459f6b9a1a3525 ****/
+		/****** ShapeConstruct_ProjectCurveOnSurface::SetSurface ******/
+		/****** md5 signature: ef3c30882af3f3cdd5459f6b9a1a3525 ******/
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "
 Parameters
@@ -688,8 +688,8 @@ Loads a surface (in the form of geom_surface) to project on.
 ") SetSurface;
 		void SetSurface(const opencascade::handle<Geom_Surface> & surf);
 
-		/****************** SetSurface ******************/
-		/**** md5 signature: a6a6097a9a1f4fb18a1495928444e79b ****/
+		/****** ShapeConstruct_ProjectCurveOnSurface::SetSurface ******/
+		/****** md5 signature: a6a6097a9a1f4fb18a1495928444e79b ******/
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "
 Parameters
@@ -706,8 +706,8 @@ Loads a surface (in the form of shapeanalysis_surface) to project on.
 ") SetSurface;
 		void SetSurface(const opencascade::handle<ShapeAnalysis_Surface> & surf);
 
-		/****************** Status ******************/
-		/**** md5 signature: 03f2df8a606eef2de1cd56a4ae73f0f0 ****/
+		/****** ShapeConstruct_ProjectCurveOnSurface::Status ******/
+		/****** md5 signature: 03f2df8a606eef2de1cd56a4ae73f0f0 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters

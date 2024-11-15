@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HEADERSECTIONDOCSTRING
 "HeaderSection module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_headersection.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_headersection.html"
 %enddef
 %module (package="OCC.Core", docstring=HEADERSECTIONDOCSTRING) HeaderSection
 
@@ -94,8 +94,8 @@ from OCC.Core.Exception import *
 %rename(headersection) HeaderSection;
 class HeaderSection {
 	public:
-		/****************** Protocol ******************/
-		/**** md5 signature: 11a7387c78917caf0804d82e3b531bd3 ****/
+		/****** HeaderSection::Protocol ******/
+		/****** md5 signature: 11a7387c78917caf0804d82e3b531bd3 ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -121,8 +121,8 @@ Creates a protocol.
 **************************************/
 class HeaderSection_FileDescription : public Standard_Transient {
 	public:
-		/****************** HeaderSection_FileDescription ******************/
-		/**** md5 signature: b91e3e417aa1b27a136cf9eca2c87441 ****/
+		/****** HeaderSection_FileDescription::HeaderSection_FileDescription ******/
+		/****** md5 signature: b91e3e417aa1b27a136cf9eca2c87441 ******/
 		%feature("compactdefaultargs") HeaderSection_FileDescription;
 		%feature("autodoc", "Return
 -------
@@ -134,8 +134,8 @@ Returns a filedescription.
 ") HeaderSection_FileDescription;
 		 HeaderSection_FileDescription();
 
-		/****************** Description ******************/
-		/**** md5 signature: 9b909686a25b7d6265affec4e3820e98 ****/
+		/****** HeaderSection_FileDescription::Description ******/
+		/****** md5 signature: 9b909686a25b7d6265affec4e3820e98 ******/
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "Return
 -------
@@ -147,8 +147,8 @@ No available documentation.
 ") Description;
 		opencascade::handle<Interface_HArray1OfHAsciiString> Description();
 
-		/****************** DescriptionValue ******************/
-		/**** md5 signature: c5b8ce5eb4616a323970d217aa88af81 ****/
+		/****** HeaderSection_FileDescription::DescriptionValue ******/
+		/****** md5 signature: c5b8ce5eb4616a323970d217aa88af81 ******/
 		%feature("compactdefaultargs") DescriptionValue;
 		%feature("autodoc", "
 Parameters
@@ -165,8 +165,8 @@ No available documentation.
 ") DescriptionValue;
 		opencascade::handle<TCollection_HAsciiString> DescriptionValue(const Standard_Integer num);
 
-		/****************** ImplementationLevel ******************/
-		/**** md5 signature: b09f681ece8c976e12d39e35c7caa9fe ****/
+		/****** HeaderSection_FileDescription::ImplementationLevel ******/
+		/****** md5 signature: b09f681ece8c976e12d39e35c7caa9fe ******/
 		%feature("compactdefaultargs") ImplementationLevel;
 		%feature("autodoc", "Return
 -------
@@ -178,8 +178,8 @@ No available documentation.
 ") ImplementationLevel;
 		opencascade::handle<TCollection_HAsciiString> ImplementationLevel();
 
-		/****************** Init ******************/
-		/**** md5 signature: 7128d17c37edef86aec4a1be30c00b0d ****/
+		/****** HeaderSection_FileDescription::Init ******/
+		/****** md5 signature: 7128d17c37edef86aec4a1be30c00b0d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -197,8 +197,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Interface_HArray1OfHAsciiString> & aDescription, const opencascade::handle<TCollection_HAsciiString> & aImplementationLevel);
 
-		/****************** NbDescription ******************/
-		/**** md5 signature: 38d1fdc13e41b3ac019bdb2d4ba64b1e ****/
+		/****** HeaderSection_FileDescription::NbDescription ******/
+		/****** md5 signature: 38d1fdc13e41b3ac019bdb2d4ba64b1e ******/
 		%feature("compactdefaultargs") NbDescription;
 		%feature("autodoc", "Return
 -------
@@ -210,8 +210,8 @@ No available documentation.
 ") NbDescription;
 		Standard_Integer NbDescription();
 
-		/****************** SetDescription ******************/
-		/**** md5 signature: 1e04b25950c14571044a08d553341bd0 ****/
+		/****** HeaderSection_FileDescription::SetDescription ******/
+		/****** md5 signature: 1e04b25950c14571044a08d553341bd0 ******/
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "
 Parameters
@@ -228,8 +228,8 @@ No available documentation.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<Interface_HArray1OfHAsciiString> & aDescription);
 
-		/****************** SetImplementationLevel ******************/
-		/**** md5 signature: 456c2b949d32712489902f181c0fdd2e ****/
+		/****** HeaderSection_FileDescription::SetImplementationLevel ******/
+		/****** md5 signature: 456c2b949d32712489902f181c0fdd2e ******/
 		%feature("compactdefaultargs") SetImplementationLevel;
 		%feature("autodoc", "
 Parameters
@@ -262,8 +262,8 @@ No available documentation.
 *******************************/
 class HeaderSection_FileName : public Standard_Transient {
 	public:
-		/****************** HeaderSection_FileName ******************/
-		/**** md5 signature: 12e19d1be269ce81b5532582031cfc87 ****/
+		/****** HeaderSection_FileName::HeaderSection_FileName ******/
+		/****** md5 signature: 12e19d1be269ce81b5532582031cfc87 ******/
 		%feature("compactdefaultargs") HeaderSection_FileName;
 		%feature("autodoc", "Return
 -------
@@ -275,8 +275,8 @@ Returns a filename.
 ") HeaderSection_FileName;
 		 HeaderSection_FileName();
 
-		/****************** Author ******************/
-		/**** md5 signature: 23de40daf6aa0108289fcab1cc10b710 ****/
+		/****** HeaderSection_FileName::Author ******/
+		/****** md5 signature: 23de40daf6aa0108289fcab1cc10b710 ******/
 		%feature("compactdefaultargs") Author;
 		%feature("autodoc", "Return
 -------
@@ -288,8 +288,8 @@ No available documentation.
 ") Author;
 		opencascade::handle<Interface_HArray1OfHAsciiString> Author();
 
-		/****************** AuthorValue ******************/
-		/**** md5 signature: 053bae3a6f3b50b0b3cbcc10f1448e71 ****/
+		/****** HeaderSection_FileName::AuthorValue ******/
+		/****** md5 signature: 053bae3a6f3b50b0b3cbcc10f1448e71 ******/
 		%feature("compactdefaultargs") AuthorValue;
 		%feature("autodoc", "
 Parameters
@@ -306,8 +306,8 @@ No available documentation.
 ") AuthorValue;
 		opencascade::handle<TCollection_HAsciiString> AuthorValue(const Standard_Integer num);
 
-		/****************** Authorisation ******************/
-		/**** md5 signature: 74cf5a9ad29d5b5b00394896d05f442b ****/
+		/****** HeaderSection_FileName::Authorisation ******/
+		/****** md5 signature: 74cf5a9ad29d5b5b00394896d05f442b ******/
 		%feature("compactdefaultargs") Authorisation;
 		%feature("autodoc", "Return
 -------
@@ -319,8 +319,8 @@ No available documentation.
 ") Authorisation;
 		opencascade::handle<TCollection_HAsciiString> Authorisation();
 
-		/****************** Init ******************/
-		/**** md5 signature: 44503452022fad3cefe24809ca1b4012 ****/
+		/****** HeaderSection_FileName::Init ******/
+		/****** md5 signature: 44503452022fad3cefe24809ca1b4012 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -343,8 +343,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TCollection_HAsciiString> & aTimeStamp, const opencascade::handle<Interface_HArray1OfHAsciiString> & aAuthor, const opencascade::handle<Interface_HArray1OfHAsciiString> & aOrganization, const opencascade::handle<TCollection_HAsciiString> & aPreprocessorVersion, const opencascade::handle<TCollection_HAsciiString> & aOriginatingSystem, const opencascade::handle<TCollection_HAsciiString> & aAuthorisation);
 
-		/****************** Name ******************/
-		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
+		/****** HeaderSection_FileName::Name ******/
+		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -356,8 +356,8 @@ No available documentation.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
-		/****************** NbAuthor ******************/
-		/**** md5 signature: 6ca174c13a42409600e9909ad554980b ****/
+		/****** HeaderSection_FileName::NbAuthor ******/
+		/****** md5 signature: 6ca174c13a42409600e9909ad554980b ******/
 		%feature("compactdefaultargs") NbAuthor;
 		%feature("autodoc", "Return
 -------
@@ -369,8 +369,8 @@ No available documentation.
 ") NbAuthor;
 		Standard_Integer NbAuthor();
 
-		/****************** NbOrganization ******************/
-		/**** md5 signature: 60ebd0ae36d49c04683d7f95b2a097f9 ****/
+		/****** HeaderSection_FileName::NbOrganization ******/
+		/****** md5 signature: 60ebd0ae36d49c04683d7f95b2a097f9 ******/
 		%feature("compactdefaultargs") NbOrganization;
 		%feature("autodoc", "Return
 -------
@@ -382,8 +382,8 @@ No available documentation.
 ") NbOrganization;
 		Standard_Integer NbOrganization();
 
-		/****************** Organization ******************/
-		/**** md5 signature: 454248c33742fc33d8c2d44c0e083d34 ****/
+		/****** HeaderSection_FileName::Organization ******/
+		/****** md5 signature: 454248c33742fc33d8c2d44c0e083d34 ******/
 		%feature("compactdefaultargs") Organization;
 		%feature("autodoc", "Return
 -------
@@ -395,8 +395,8 @@ No available documentation.
 ") Organization;
 		opencascade::handle<Interface_HArray1OfHAsciiString> Organization();
 
-		/****************** OrganizationValue ******************/
-		/**** md5 signature: 3caa7e153a3d6decf2c39d267a41eb95 ****/
+		/****** HeaderSection_FileName::OrganizationValue ******/
+		/****** md5 signature: 3caa7e153a3d6decf2c39d267a41eb95 ******/
 		%feature("compactdefaultargs") OrganizationValue;
 		%feature("autodoc", "
 Parameters
@@ -413,8 +413,8 @@ No available documentation.
 ") OrganizationValue;
 		opencascade::handle<TCollection_HAsciiString> OrganizationValue(const Standard_Integer num);
 
-		/****************** OriginatingSystem ******************/
-		/**** md5 signature: 543b855a9c992957f432135cf086f1e1 ****/
+		/****** HeaderSection_FileName::OriginatingSystem ******/
+		/****** md5 signature: 543b855a9c992957f432135cf086f1e1 ******/
 		%feature("compactdefaultargs") OriginatingSystem;
 		%feature("autodoc", "Return
 -------
@@ -426,8 +426,8 @@ No available documentation.
 ") OriginatingSystem;
 		opencascade::handle<TCollection_HAsciiString> OriginatingSystem();
 
-		/****************** PreprocessorVersion ******************/
-		/**** md5 signature: 2cdc579887f56c912417c5ff0ccd068c ****/
+		/****** HeaderSection_FileName::PreprocessorVersion ******/
+		/****** md5 signature: 2cdc579887f56c912417c5ff0ccd068c ******/
 		%feature("compactdefaultargs") PreprocessorVersion;
 		%feature("autodoc", "Return
 -------
@@ -439,8 +439,8 @@ No available documentation.
 ") PreprocessorVersion;
 		opencascade::handle<TCollection_HAsciiString> PreprocessorVersion();
 
-		/****************** SetAuthor ******************/
-		/**** md5 signature: c479de6bbe2aeb24d60e92667b68a0af ****/
+		/****** HeaderSection_FileName::SetAuthor ******/
+		/****** md5 signature: c479de6bbe2aeb24d60e92667b68a0af ******/
 		%feature("compactdefaultargs") SetAuthor;
 		%feature("autodoc", "
 Parameters
@@ -457,8 +457,8 @@ No available documentation.
 ") SetAuthor;
 		void SetAuthor(const opencascade::handle<Interface_HArray1OfHAsciiString> & aAuthor);
 
-		/****************** SetAuthorisation ******************/
-		/**** md5 signature: dabbd55c5d2fdde44a103b7c5629df5c ****/
+		/****** HeaderSection_FileName::SetAuthorisation ******/
+		/****** md5 signature: dabbd55c5d2fdde44a103b7c5629df5c ******/
 		%feature("compactdefaultargs") SetAuthorisation;
 		%feature("autodoc", "
 Parameters
@@ -475,8 +475,8 @@ No available documentation.
 ") SetAuthorisation;
 		void SetAuthorisation(const opencascade::handle<TCollection_HAsciiString> & aAuthorisation);
 
-		/****************** SetName ******************/
-		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
+		/****** HeaderSection_FileName::SetName ******/
+		/****** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
@@ -493,8 +493,8 @@ No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
-		/****************** SetOrganization ******************/
-		/**** md5 signature: 898ebb6b0632041f91e1f21a8a1ca169 ****/
+		/****** HeaderSection_FileName::SetOrganization ******/
+		/****** md5 signature: 898ebb6b0632041f91e1f21a8a1ca169 ******/
 		%feature("compactdefaultargs") SetOrganization;
 		%feature("autodoc", "
 Parameters
@@ -511,8 +511,8 @@ No available documentation.
 ") SetOrganization;
 		void SetOrganization(const opencascade::handle<Interface_HArray1OfHAsciiString> & aOrganization);
 
-		/****************** SetOriginatingSystem ******************/
-		/**** md5 signature: df50b03f270ab4067d00a9b263849945 ****/
+		/****** HeaderSection_FileName::SetOriginatingSystem ******/
+		/****** md5 signature: df50b03f270ab4067d00a9b263849945 ******/
 		%feature("compactdefaultargs") SetOriginatingSystem;
 		%feature("autodoc", "
 Parameters
@@ -529,8 +529,8 @@ No available documentation.
 ") SetOriginatingSystem;
 		void SetOriginatingSystem(const opencascade::handle<TCollection_HAsciiString> & aOriginatingSystem);
 
-		/****************** SetPreprocessorVersion ******************/
-		/**** md5 signature: cf1be8e1fadf8f579cf193da0139a1b2 ****/
+		/****** HeaderSection_FileName::SetPreprocessorVersion ******/
+		/****** md5 signature: cf1be8e1fadf8f579cf193da0139a1b2 ******/
 		%feature("compactdefaultargs") SetPreprocessorVersion;
 		%feature("autodoc", "
 Parameters
@@ -547,8 +547,8 @@ No available documentation.
 ") SetPreprocessorVersion;
 		void SetPreprocessorVersion(const opencascade::handle<TCollection_HAsciiString> & aPreprocessorVersion);
 
-		/****************** SetTimeStamp ******************/
-		/**** md5 signature: 38e2ba6d611ac3c71ddded5966b2c9a2 ****/
+		/****** HeaderSection_FileName::SetTimeStamp ******/
+		/****** md5 signature: 38e2ba6d611ac3c71ddded5966b2c9a2 ******/
 		%feature("compactdefaultargs") SetTimeStamp;
 		%feature("autodoc", "
 Parameters
@@ -565,8 +565,8 @@ No available documentation.
 ") SetTimeStamp;
 		void SetTimeStamp(const opencascade::handle<TCollection_HAsciiString> & aTimeStamp);
 
-		/****************** TimeStamp ******************/
-		/**** md5 signature: b66adf354c77d407fbbc52d9a834d10f ****/
+		/****** HeaderSection_FileName::TimeStamp ******/
+		/****** md5 signature: b66adf354c77d407fbbc52d9a834d10f ******/
 		%feature("compactdefaultargs") TimeStamp;
 		%feature("autodoc", "Return
 -------
@@ -594,8 +594,8 @@ No available documentation.
 *********************************/
 class HeaderSection_FileSchema : public Standard_Transient {
 	public:
-		/****************** HeaderSection_FileSchema ******************/
-		/**** md5 signature: 6be678d553e746cbb78cbd48eda0bf45 ****/
+		/****** HeaderSection_FileSchema::HeaderSection_FileSchema ******/
+		/****** md5 signature: 6be678d553e746cbb78cbd48eda0bf45 ******/
 		%feature("compactdefaultargs") HeaderSection_FileSchema;
 		%feature("autodoc", "Return
 -------
@@ -607,8 +607,8 @@ Returns a fileschema.
 ") HeaderSection_FileSchema;
 		 HeaderSection_FileSchema();
 
-		/****************** Init ******************/
-		/**** md5 signature: 81dabf26ee55142bf1caba66e8ddb2cc ****/
+		/****** HeaderSection_FileSchema::Init ******/
+		/****** md5 signature: 81dabf26ee55142bf1caba66e8ddb2cc ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -625,8 +625,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Interface_HArray1OfHAsciiString> & aSchemaIdentifiers);
 
-		/****************** NbSchemaIdentifiers ******************/
-		/**** md5 signature: 260454647efe5048cae47a1a4cd460a4 ****/
+		/****** HeaderSection_FileSchema::NbSchemaIdentifiers ******/
+		/****** md5 signature: 260454647efe5048cae47a1a4cd460a4 ******/
 		%feature("compactdefaultargs") NbSchemaIdentifiers;
 		%feature("autodoc", "Return
 -------
@@ -638,8 +638,8 @@ No available documentation.
 ") NbSchemaIdentifiers;
 		Standard_Integer NbSchemaIdentifiers();
 
-		/****************** SchemaIdentifiers ******************/
-		/**** md5 signature: 404b25dfbdf2c6acd6d96aec78411851 ****/
+		/****** HeaderSection_FileSchema::SchemaIdentifiers ******/
+		/****** md5 signature: 404b25dfbdf2c6acd6d96aec78411851 ******/
 		%feature("compactdefaultargs") SchemaIdentifiers;
 		%feature("autodoc", "Return
 -------
@@ -651,8 +651,8 @@ No available documentation.
 ") SchemaIdentifiers;
 		opencascade::handle<Interface_HArray1OfHAsciiString> SchemaIdentifiers();
 
-		/****************** SchemaIdentifiersValue ******************/
-		/**** md5 signature: ba505a8bd6bc4c707e90011f1b54457f ****/
+		/****** HeaderSection_FileSchema::SchemaIdentifiersValue ******/
+		/****** md5 signature: ba505a8bd6bc4c707e90011f1b54457f ******/
 		%feature("compactdefaultargs") SchemaIdentifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -669,8 +669,8 @@ No available documentation.
 ") SchemaIdentifiersValue;
 		opencascade::handle<TCollection_HAsciiString> SchemaIdentifiersValue(const Standard_Integer num);
 
-		/****************** SetSchemaIdentifiers ******************/
-		/**** md5 signature: 37a42703d2ec981a51e918549381152b ****/
+		/****** HeaderSection_FileSchema::SetSchemaIdentifiers ******/
+		/****** md5 signature: 37a42703d2ec981a51e918549381152b ******/
 		%feature("compactdefaultargs") SetSchemaIdentifiers;
 		%feature("autodoc", "
 Parameters
@@ -703,8 +703,8 @@ No available documentation.
 *******************************/
 class HeaderSection_Protocol : public StepData_Protocol {
 	public:
-		/****************** HeaderSection_Protocol ******************/
-		/**** md5 signature: 07a8203fc52521eee7fa163ebe14ebab ****/
+		/****** HeaderSection_Protocol::HeaderSection_Protocol ******/
+		/****** md5 signature: 07a8203fc52521eee7fa163ebe14ebab ******/
 		%feature("compactdefaultargs") HeaderSection_Protocol;
 		%feature("autodoc", "Return
 -------
@@ -716,8 +716,8 @@ No available documentation.
 ") HeaderSection_Protocol;
 		 HeaderSection_Protocol();
 
-		/****************** SchemaName ******************/
-		/**** md5 signature: 27a898737676170f03381527c0752a7e ****/
+		/****** HeaderSection_Protocol::SchemaName ******/
+		/****** md5 signature: 27a898737676170f03381527c0752a7e ******/
 		%feature("compactdefaultargs") SchemaName;
 		%feature("autodoc", "Return
 -------
@@ -729,8 +729,8 @@ No available documentation.
 ") SchemaName;
 		virtual Standard_CString SchemaName();
 
-		/****************** TypeNumber ******************/
-		/**** md5 signature: f4ed4f2e12d80f3bd752f6dd34ed84b4 ****/
+		/****** HeaderSection_Protocol::TypeNumber ******/
+		/****** md5 signature: f4ed4f2e12d80f3bd752f6dd34ed84b4 ******/
 		%feature("compactdefaultargs") TypeNumber;
 		%feature("autodoc", "
 Parameters

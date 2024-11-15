@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWSTEPAP203DOCSTRING
 "RWStepAP203 module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_rwstepap203.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwstepap203.html"
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPAP203DOCSTRING) RWStepAP203
 
@@ -94,8 +94,8 @@ from OCC.Core.Exception import *
 ***************************************/
 class RWStepAP203_RWCcDesignApproval {
 	public:
-		/****************** RWStepAP203_RWCcDesignApproval ******************/
-		/**** md5 signature: 067b69cc22b66f187096aec242a8e386 ****/
+		/****** RWStepAP203_RWCcDesignApproval::RWStepAP203_RWCcDesignApproval ******/
+		/****** md5 signature: 067b69cc22b66f187096aec242a8e386 ******/
 		%feature("compactdefaultargs") RWStepAP203_RWCcDesignApproval;
 		%feature("autodoc", "Return
 -------
@@ -107,8 +107,8 @@ Empty constructor.
 ") RWStepAP203_RWCcDesignApproval;
 		 RWStepAP203_RWCcDesignApproval();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 5b2905d15b036ed876c2d3de5edcd3e5 ****/
+		/****** RWStepAP203_RWCcDesignApproval::ReadStep ******/
+		/****** md5 signature: 5b2905d15b036ed876c2d3de5edcd3e5 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -128,8 +128,8 @@ Reads ccdesignapproval.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_CcDesignApproval> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: cb18fd25316d9d48119a1c3083304763 ****/
+		/****** RWStepAP203_RWCcDesignApproval::Share ******/
+		/****** md5 signature: cb18fd25316d9d48119a1c3083304763 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -147,8 +147,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_CcDesignApproval> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: c87261abfce6cd7456bfcdfa6da32b77 ****/
+		/****** RWStepAP203_RWCcDesignApproval::WriteStep ******/
+		/****** md5 signature: c87261abfce6cd7456bfcdfa6da32b77 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -180,8 +180,8 @@ Writes ccdesignapproval.
 ********************************************/
 class RWStepAP203_RWCcDesignCertification {
 	public:
-		/****************** RWStepAP203_RWCcDesignCertification ******************/
-		/**** md5 signature: e1601f76d256aa06289f561b2e903407 ****/
+		/****** RWStepAP203_RWCcDesignCertification::RWStepAP203_RWCcDesignCertification ******/
+		/****** md5 signature: e1601f76d256aa06289f561b2e903407 ******/
 		%feature("compactdefaultargs") RWStepAP203_RWCcDesignCertification;
 		%feature("autodoc", "Return
 -------
@@ -193,8 +193,8 @@ Empty constructor.
 ") RWStepAP203_RWCcDesignCertification;
 		 RWStepAP203_RWCcDesignCertification();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 8b9f31e85a74bb00e382cddfb4916f0d ****/
+		/****** RWStepAP203_RWCcDesignCertification::ReadStep ******/
+		/****** md5 signature: 8b9f31e85a74bb00e382cddfb4916f0d ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -214,8 +214,8 @@ Reads ccdesigncertification.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_CcDesignCertification> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ac04b065be04eb135daed63af2c0deaa ****/
+		/****** RWStepAP203_RWCcDesignCertification::Share ******/
+		/****** md5 signature: ac04b065be04eb135daed63af2c0deaa ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -233,8 +233,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_CcDesignCertification> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: dcbcd1baa079f94291043eda9415e50a ****/
+		/****** RWStepAP203_RWCcDesignCertification::WriteStep ******/
+		/****** md5 signature: dcbcd1baa079f94291043eda9415e50a ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -266,8 +266,8 @@ Writes ccdesigncertification.
 ***************************************/
 class RWStepAP203_RWCcDesignContract {
 	public:
-		/****************** RWStepAP203_RWCcDesignContract ******************/
-		/**** md5 signature: 7cdca610084b7588fc2dc24ba8874352 ****/
+		/****** RWStepAP203_RWCcDesignContract::RWStepAP203_RWCcDesignContract ******/
+		/****** md5 signature: 7cdca610084b7588fc2dc24ba8874352 ******/
 		%feature("compactdefaultargs") RWStepAP203_RWCcDesignContract;
 		%feature("autodoc", "Return
 -------
@@ -279,8 +279,8 @@ Empty constructor.
 ") RWStepAP203_RWCcDesignContract;
 		 RWStepAP203_RWCcDesignContract();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: cc82f6a35d9039759a9e42ef8581cc21 ****/
+		/****** RWStepAP203_RWCcDesignContract::ReadStep ******/
+		/****** md5 signature: cc82f6a35d9039759a9e42ef8581cc21 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -300,8 +300,8 @@ Reads ccdesigncontract.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_CcDesignContract> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: bf610a5db6735eb12f1e004edf11186a ****/
+		/****** RWStepAP203_RWCcDesignContract::Share ******/
+		/****** md5 signature: bf610a5db6735eb12f1e004edf11186a ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -319,8 +319,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_CcDesignContract> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 5e5aeec6b8cac21dd71843456260be3c ****/
+		/****** RWStepAP203_RWCcDesignContract::WriteStep ******/
+		/****** md5 signature: 5e5aeec6b8cac21dd71843456260be3c ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -352,8 +352,8 @@ Writes ccdesigncontract.
 ****************************************************/
 class RWStepAP203_RWCcDesignDateAndTimeAssignment {
 	public:
-		/****************** RWStepAP203_RWCcDesignDateAndTimeAssignment ******************/
-		/**** md5 signature: 10b9481270007bed54b39d0354414a33 ****/
+		/****** RWStepAP203_RWCcDesignDateAndTimeAssignment::RWStepAP203_RWCcDesignDateAndTimeAssignment ******/
+		/****** md5 signature: 10b9481270007bed54b39d0354414a33 ******/
 		%feature("compactdefaultargs") RWStepAP203_RWCcDesignDateAndTimeAssignment;
 		%feature("autodoc", "Return
 -------
@@ -365,8 +365,8 @@ Empty constructor.
 ") RWStepAP203_RWCcDesignDateAndTimeAssignment;
 		 RWStepAP203_RWCcDesignDateAndTimeAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 03c99d7106c4b49825b05e3f330f6f23 ****/
+		/****** RWStepAP203_RWCcDesignDateAndTimeAssignment::ReadStep ******/
+		/****** md5 signature: 03c99d7106c4b49825b05e3f330f6f23 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -386,8 +386,8 @@ Reads ccdesigndateandtimeassignment.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_CcDesignDateAndTimeAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 4d81f3c9193b976c1281d81b557a78a0 ****/
+		/****** RWStepAP203_RWCcDesignDateAndTimeAssignment::Share ******/
+		/****** md5 signature: 4d81f3c9193b976c1281d81b557a78a0 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -405,8 +405,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_CcDesignDateAndTimeAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: e7f63ca0252ecc621cf75ca7cf0c8ace ****/
+		/****** RWStepAP203_RWCcDesignDateAndTimeAssignment::WriteStep ******/
+		/****** md5 signature: e7f63ca0252ecc621cf75ca7cf0c8ace ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -438,8 +438,8 @@ Writes ccdesigndateandtimeassignment.
 **************************************************************/
 class RWStepAP203_RWCcDesignPersonAndOrganizationAssignment {
 	public:
-		/****************** RWStepAP203_RWCcDesignPersonAndOrganizationAssignment ******************/
-		/**** md5 signature: 4b0929e98679174cf4bc580b8fb42bac ****/
+		/****** RWStepAP203_RWCcDesignPersonAndOrganizationAssignment::RWStepAP203_RWCcDesignPersonAndOrganizationAssignment ******/
+		/****** md5 signature: 4b0929e98679174cf4bc580b8fb42bac ******/
 		%feature("compactdefaultargs") RWStepAP203_RWCcDesignPersonAndOrganizationAssignment;
 		%feature("autodoc", "Return
 -------
@@ -451,8 +451,8 @@ Empty constructor.
 ") RWStepAP203_RWCcDesignPersonAndOrganizationAssignment;
 		 RWStepAP203_RWCcDesignPersonAndOrganizationAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 83b1b161c1d2ca42c6bf61be6669cfcc ****/
+		/****** RWStepAP203_RWCcDesignPersonAndOrganizationAssignment::ReadStep ******/
+		/****** md5 signature: 83b1b161c1d2ca42c6bf61be6669cfcc ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -472,8 +472,8 @@ Reads ccdesignpersonandorganizationassignment.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_CcDesignPersonAndOrganizationAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 0255267ba7f57b556ad4a889e9107814 ****/
+		/****** RWStepAP203_RWCcDesignPersonAndOrganizationAssignment::Share ******/
+		/****** md5 signature: 0255267ba7f57b556ad4a889e9107814 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -491,8 +491,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_CcDesignPersonAndOrganizationAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 98b6e0a52369b075572aafcac58c98fb ****/
+		/****** RWStepAP203_RWCcDesignPersonAndOrganizationAssignment::WriteStep ******/
+		/****** md5 signature: 98b6e0a52369b075572aafcac58c98fb ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -524,8 +524,8 @@ Writes ccdesignpersonandorganizationassignment.
 *****************************************************/
 class RWStepAP203_RWCcDesignSecurityClassification {
 	public:
-		/****************** RWStepAP203_RWCcDesignSecurityClassification ******************/
-		/**** md5 signature: 35fc176a244f3bd53730c6316dfefbe9 ****/
+		/****** RWStepAP203_RWCcDesignSecurityClassification::RWStepAP203_RWCcDesignSecurityClassification ******/
+		/****** md5 signature: 35fc176a244f3bd53730c6316dfefbe9 ******/
 		%feature("compactdefaultargs") RWStepAP203_RWCcDesignSecurityClassification;
 		%feature("autodoc", "Return
 -------
@@ -537,8 +537,8 @@ Empty constructor.
 ") RWStepAP203_RWCcDesignSecurityClassification;
 		 RWStepAP203_RWCcDesignSecurityClassification();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 3de45d9ecfe5c24c7ee0364fe5e3a90d ****/
+		/****** RWStepAP203_RWCcDesignSecurityClassification::ReadStep ******/
+		/****** md5 signature: 3de45d9ecfe5c24c7ee0364fe5e3a90d ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -558,8 +558,8 @@ Reads ccdesignsecurityclassification.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_CcDesignSecurityClassification> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: c398dfb2661cc6caaf9881d2605208ba ****/
+		/****** RWStepAP203_RWCcDesignSecurityClassification::Share ******/
+		/****** md5 signature: c398dfb2661cc6caaf9881d2605208ba ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -577,8 +577,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_CcDesignSecurityClassification> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: b5e29b20744e2613573e5db6fad2b417 ****/
+		/****** RWStepAP203_RWCcDesignSecurityClassification::WriteStep ******/
+		/****** md5 signature: b5e29b20744e2613573e5db6fad2b417 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -610,8 +610,8 @@ Writes ccdesignsecurityclassification.
 *****************************************************/
 class RWStepAP203_RWCcDesignSpecificationReference {
 	public:
-		/****************** RWStepAP203_RWCcDesignSpecificationReference ******************/
-		/**** md5 signature: 5106b405a115167148468dfb44b58073 ****/
+		/****** RWStepAP203_RWCcDesignSpecificationReference::RWStepAP203_RWCcDesignSpecificationReference ******/
+		/****** md5 signature: 5106b405a115167148468dfb44b58073 ******/
 		%feature("compactdefaultargs") RWStepAP203_RWCcDesignSpecificationReference;
 		%feature("autodoc", "Return
 -------
@@ -623,8 +623,8 @@ Empty constructor.
 ") RWStepAP203_RWCcDesignSpecificationReference;
 		 RWStepAP203_RWCcDesignSpecificationReference();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 17b82d12693866f7955ba7a2f562b62a ****/
+		/****** RWStepAP203_RWCcDesignSpecificationReference::ReadStep ******/
+		/****** md5 signature: 17b82d12693866f7955ba7a2f562b62a ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -644,8 +644,8 @@ Reads ccdesignspecificationreference.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_CcDesignSpecificationReference> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ef971d475ae91f57495913ab6cc61142 ****/
+		/****** RWStepAP203_RWCcDesignSpecificationReference::Share ******/
+		/****** md5 signature: ef971d475ae91f57495913ab6cc61142 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -663,8 +663,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_CcDesignSpecificationReference> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: e6184ae1a22486d4fdad0b7b34269f4f ****/
+		/****** RWStepAP203_RWCcDesignSpecificationReference::WriteStep ******/
+		/****** md5 signature: e6184ae1a22486d4fdad0b7b34269f4f ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -696,8 +696,8 @@ Writes ccdesignspecificationreference.
 *****************************/
 class RWStepAP203_RWChange {
 	public:
-		/****************** RWStepAP203_RWChange ******************/
-		/**** md5 signature: 0b392e4ed0f24296ad08d26c4d1add07 ****/
+		/****** RWStepAP203_RWChange::RWStepAP203_RWChange ******/
+		/****** md5 signature: 0b392e4ed0f24296ad08d26c4d1add07 ******/
 		%feature("compactdefaultargs") RWStepAP203_RWChange;
 		%feature("autodoc", "Return
 -------
@@ -709,8 +709,8 @@ Empty constructor.
 ") RWStepAP203_RWChange;
 		 RWStepAP203_RWChange();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: a3d4c484e920b5c49cfaff5f304fc30e ****/
+		/****** RWStepAP203_RWChange::ReadStep ******/
+		/****** md5 signature: a3d4c484e920b5c49cfaff5f304fc30e ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -730,8 +730,8 @@ Reads change.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_Change> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 8d80f68aba0ee8966e74aac3948dd045 ****/
+		/****** RWStepAP203_RWChange::Share ******/
+		/****** md5 signature: 8d80f68aba0ee8966e74aac3948dd045 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -749,8 +749,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_Change> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: d65e3dae44d5a7a0e5ab8bd69d288c12 ****/
+		/****** RWStepAP203_RWChange::WriteStep ******/
+		/****** md5 signature: d65e3dae44d5a7a0e5ab8bd69d288c12 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -782,8 +782,8 @@ Writes change.
 ************************************/
 class RWStepAP203_RWChangeRequest {
 	public:
-		/****************** RWStepAP203_RWChangeRequest ******************/
-		/**** md5 signature: 5b0571dce26e4e0d727e0b6f603f1e8b ****/
+		/****** RWStepAP203_RWChangeRequest::RWStepAP203_RWChangeRequest ******/
+		/****** md5 signature: 5b0571dce26e4e0d727e0b6f603f1e8b ******/
 		%feature("compactdefaultargs") RWStepAP203_RWChangeRequest;
 		%feature("autodoc", "Return
 -------
@@ -795,8 +795,8 @@ Empty constructor.
 ") RWStepAP203_RWChangeRequest;
 		 RWStepAP203_RWChangeRequest();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 82fc03458a9ea6fd0e23d14b8b1cd06a ****/
+		/****** RWStepAP203_RWChangeRequest::ReadStep ******/
+		/****** md5 signature: 82fc03458a9ea6fd0e23d14b8b1cd06a ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -816,8 +816,8 @@ Reads changerequest.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_ChangeRequest> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: dff7f9861d2c1a8bdf845fb16b238b85 ****/
+		/****** RWStepAP203_RWChangeRequest::Share ******/
+		/****** md5 signature: dff7f9861d2c1a8bdf845fb16b238b85 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -835,8 +835,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_ChangeRequest> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 3bdac712d08292fbf1e8596f31c4ef5d ****/
+		/****** RWStepAP203_RWChangeRequest::WriteStep ******/
+		/****** md5 signature: 3bdac712d08292fbf1e8596f31c4ef5d ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -868,8 +868,8 @@ Writes changerequest.
 ***********************************/
 class RWStepAP203_RWStartRequest {
 	public:
-		/****************** RWStepAP203_RWStartRequest ******************/
-		/**** md5 signature: b70a4756c6c4428232410ae55a0d95a9 ****/
+		/****** RWStepAP203_RWStartRequest::RWStepAP203_RWStartRequest ******/
+		/****** md5 signature: b70a4756c6c4428232410ae55a0d95a9 ******/
 		%feature("compactdefaultargs") RWStepAP203_RWStartRequest;
 		%feature("autodoc", "Return
 -------
@@ -881,8 +881,8 @@ Empty constructor.
 ") RWStepAP203_RWStartRequest;
 		 RWStepAP203_RWStartRequest();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 8e72f702b11dc7dc60fe24d39973f0c4 ****/
+		/****** RWStepAP203_RWStartRequest::ReadStep ******/
+		/****** md5 signature: 8e72f702b11dc7dc60fe24d39973f0c4 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -902,8 +902,8 @@ Reads startrequest.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_StartRequest> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 620a06d8807ed2cf604bb57d62ea8007 ****/
+		/****** RWStepAP203_RWStartRequest::Share ******/
+		/****** md5 signature: 620a06d8807ed2cf604bb57d62ea8007 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -921,8 +921,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_StartRequest> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 708083d7cf533895925708d03d695383 ****/
+		/****** RWStepAP203_RWStartRequest::WriteStep ******/
+		/****** md5 signature: 708083d7cf533895925708d03d695383 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -954,8 +954,8 @@ Writes startrequest.
 ********************************/
 class RWStepAP203_RWStartWork {
 	public:
-		/****************** RWStepAP203_RWStartWork ******************/
-		/**** md5 signature: 2360de80c72e905866993252d3854187 ****/
+		/****** RWStepAP203_RWStartWork::RWStepAP203_RWStartWork ******/
+		/****** md5 signature: 2360de80c72e905866993252d3854187 ******/
 		%feature("compactdefaultargs") RWStepAP203_RWStartWork;
 		%feature("autodoc", "Return
 -------
@@ -967,8 +967,8 @@ Empty constructor.
 ") RWStepAP203_RWStartWork;
 		 RWStepAP203_RWStartWork();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 52c8f540abf1c3204ce6551776d83710 ****/
+		/****** RWStepAP203_RWStartWork::ReadStep ******/
+		/****** md5 signature: 52c8f540abf1c3204ce6551776d83710 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -988,8 +988,8 @@ Reads startwork.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP203_StartWork> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 0ea64323bf1db8c6bfe7911bc9d03d43 ****/
+		/****** RWStepAP203_RWStartWork::Share ******/
+		/****** md5 signature: 0ea64323bf1db8c6bfe7911bc9d03d43 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1007,8 +1007,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP203_StartWork> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: df852a6f0ad2a028affd92cd6f739cc9 ****/
+		/****** RWStepAP203_RWStartWork::WriteStep ******/
+		/****** md5 signature: df852a6f0ad2a028affd92cd6f739cc9 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters

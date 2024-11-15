@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLMNAMINGDOCSTRING
 "XmlMNaming module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_xmlmnaming.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xmlmnaming.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLMNAMINGDOCSTRING) XmlMNaming
 
@@ -103,8 +103,8 @@ from OCC.Core.Exception import *
 %rename(xmlmnaming) XmlMNaming;
 class XmlMNaming {
 	public:
-		/****************** AddDrivers ******************/
-		/**** md5 signature: e8cbd68e09b8e62468cffcea900d0dd2 ****/
+		/****** XmlMNaming::AddDrivers ******/
+		/****** md5 signature: e8cbd68e09b8e62468cffcea900d0dd2 ******/
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "
 Parameters
@@ -136,8 +136,8 @@ Adds the attribute drivers to <adrivertable>.
 ************************************/
 class XmlMNaming_NamedShapeDriver : public XmlMDF_ADriver {
 	public:
-		/****************** XmlMNaming_NamedShapeDriver ******************/
-		/**** md5 signature: eb360ba0141d9e6480529612664e3297 ****/
+		/****** XmlMNaming_NamedShapeDriver::XmlMNaming_NamedShapeDriver ******/
+		/****** md5 signature: eb360ba0141d9e6480529612664e3297 ******/
 		%feature("compactdefaultargs") XmlMNaming_NamedShapeDriver;
 		%feature("autodoc", "
 Parameters
@@ -154,8 +154,8 @@ No available documentation.
 ") XmlMNaming_NamedShapeDriver;
 		 XmlMNaming_NamedShapeDriver(const opencascade::handle<Message_Messenger> & aMessageDriver);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** XmlMNaming_NamedShapeDriver::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -167,8 +167,8 @@ Clear myshapeset.
 ") Clear;
 		void Clear();
 
-		/****************** GetShapesLocations ******************/
-		/**** md5 signature: 822d6ca7fbf300e31ea29679fc02745e ****/
+		/****** XmlMNaming_NamedShapeDriver::GetShapesLocations ******/
+		/****** md5 signature: 822d6ca7fbf300e31ea29679fc02745e ******/
 		%feature("compactdefaultargs") GetShapesLocations;
 		%feature("autodoc", "Return
 -------
@@ -180,8 +180,8 @@ Get the format of topology.
 ") GetShapesLocations;
 		TopTools_LocationSet & GetShapesLocations();
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
+		/****** XmlMNaming_NamedShapeDriver::NewEmpty ******/
+		/****** md5 signature: 8be17a4d2a4deeee198571712e76805e ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -193,8 +193,8 @@ No available documentation.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 175da9d64d03984ff0a1e9404e96e330 ****/
+		/****** XmlMNaming_NamedShapeDriver::Paste ******/
+		/****** md5 signature: 175da9d64d03984ff0a1e9404e96e330 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -213,8 +213,8 @@ No available documentation.
 ") Paste;
 		virtual Standard_Boolean Paste(const XmlObjMgt_Persistent & theSource, const opencascade::handle<TDF_Attribute> & theTarget, XmlObjMgt_RRelocationTable & theRelocTable);
 
-		/****************** Paste ******************/
-		/**** md5 signature: 9c9a6281aaafe1c72d86f4bb8a4e351c ****/
+		/****** XmlMNaming_NamedShapeDriver::Paste ******/
+		/****** md5 signature: 9c9a6281aaafe1c72d86f4bb8a4e351c ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -233,8 +233,8 @@ No available documentation.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & theSource, XmlObjMgt_Persistent & theTarget, XmlObjMgt_SRelocationTable & theRelocTable);
 
-		/****************** ReadShapeSection ******************/
-		/**** md5 signature: f35e8994871ba1e3b692ee0dcaad48d2 ****/
+		/****** XmlMNaming_NamedShapeDriver::ReadShapeSection ******/
+		/****** md5 signature: f35e8994871ba1e3b692ee0dcaad48d2 ******/
 		%feature("compactdefaultargs") ReadShapeSection;
 		%feature("autodoc", "
 Parameters
@@ -252,8 +252,8 @@ Input the shapes from dom element.
 ") ReadShapeSection;
 		void ReadShapeSection(const XmlObjMgt_Element & anElement, const Message_ProgressRange & theRange = Message_ProgressRange());
 
-		/****************** WriteShapeSection ******************/
-		/**** md5 signature: 69a365d33444b456e6642133619c034f ****/
+		/****** XmlMNaming_NamedShapeDriver::WriteShapeSection ******/
+		/****** md5 signature: 69a365d33444b456e6642133619c034f ******/
 		%feature("compactdefaultargs") WriteShapeSection;
 		%feature("autodoc", "
 Parameters
@@ -288,8 +288,8 @@ Output the shapes into dom element.
 ********************************/
 class XmlMNaming_NamingDriver : public XmlMDF_ADriver {
 	public:
-		/****************** XmlMNaming_NamingDriver ******************/
-		/**** md5 signature: 1795c8a38adf3a7a18e075fe33dc960c ****/
+		/****** XmlMNaming_NamingDriver::XmlMNaming_NamingDriver ******/
+		/****** md5 signature: 1795c8a38adf3a7a18e075fe33dc960c ******/
 		%feature("compactdefaultargs") XmlMNaming_NamingDriver;
 		%feature("autodoc", "
 Parameters
@@ -306,8 +306,8 @@ No available documentation.
 ") XmlMNaming_NamingDriver;
 		 XmlMNaming_NamingDriver(const opencascade::handle<Message_Messenger> & aMessageDriver);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
+		/****** XmlMNaming_NamingDriver::NewEmpty ******/
+		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -319,8 +319,8 @@ No available documentation.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 031c6cb06a428765ac4d078be7d14cf9 ****/
+		/****** XmlMNaming_NamingDriver::Paste ******/
+		/****** md5 signature: 031c6cb06a428765ac4d078be7d14cf9 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -339,8 +339,8 @@ No available documentation.
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & theSource, const opencascade::handle<TDF_Attribute> & theTarget, XmlObjMgt_RRelocationTable & theRelocTable);
 
-		/****************** Paste ******************/
-		/**** md5 signature: f2623a6490ed13129844514bdeadf8d1 ****/
+		/****** XmlMNaming_NamingDriver::Paste ******/
+		/****** md5 signature: f2623a6490ed13129844514bdeadf8d1 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -375,8 +375,8 @@ No available documentation.
 **************************/
 class XmlMNaming_Shape1 {
 	public:
-		/****************** XmlMNaming_Shape1 ******************/
-		/**** md5 signature: a65cd736b18e5ede9dfb57d185742e54 ****/
+		/****** XmlMNaming_Shape1::XmlMNaming_Shape1 ******/
+		/****** md5 signature: a65cd736b18e5ede9dfb57d185742e54 ******/
 		%feature("compactdefaultargs") XmlMNaming_Shape1;
 		%feature("autodoc", "
 Parameters
@@ -393,8 +393,8 @@ No available documentation.
 ") XmlMNaming_Shape1;
 		 XmlMNaming_Shape1(XmlObjMgt_Document & Doc);
 
-		/****************** XmlMNaming_Shape1 ******************/
-		/**** md5 signature: 3e71a1e34dcdefa49528b808f520b575 ****/
+		/****** XmlMNaming_Shape1::XmlMNaming_Shape1 ******/
+		/****** md5 signature: 3e71a1e34dcdefa49528b808f520b575 ******/
 		%feature("compactdefaultargs") XmlMNaming_Shape1;
 		%feature("autodoc", "
 Parameters
@@ -411,8 +411,8 @@ No available documentation.
 ") XmlMNaming_Shape1;
 		 XmlMNaming_Shape1(const XmlObjMgt_Element & E);
 
-		/****************** Element ******************/
-		/**** md5 signature: b048e740461d546184db9889ca335c27 ****/
+		/****** XmlMNaming_Shape1::Element ******/
+		/****** md5 signature: b048e740461d546184db9889ca335c27 ******/
 		%feature("compactdefaultargs") Element;
 		%feature("autodoc", "Return
 -------
@@ -424,8 +424,8 @@ Return myelement.
 ") Element;
 		const XmlObjMgt_Element & Element();
 
-		/****************** Element ******************/
-		/**** md5 signature: cda4b976f272db0cf7f309190b0cde07 ****/
+		/****** XmlMNaming_Shape1::Element ******/
+		/****** md5 signature: cda4b976f272db0cf7f309190b0cde07 ******/
 		%feature("compactdefaultargs") Element;
 		%feature("autodoc", "Return
 -------
@@ -437,8 +437,8 @@ Return myelement.
 ") Element;
 		XmlObjMgt_Element & Element();
 
-		/****************** LocId ******************/
-		/**** md5 signature: 53e3e499ef70d321e21aedbf55e51520 ****/
+		/****** XmlMNaming_Shape1::LocId ******/
+		/****** md5 signature: 53e3e499ef70d321e21aedbf55e51520 ******/
 		%feature("compactdefaultargs") LocId;
 		%feature("autodoc", "Return
 -------
@@ -450,8 +450,8 @@ No available documentation.
 ") LocId;
 		Standard_Integer LocId();
 
-		/****************** Orientation ******************/
-		/**** md5 signature: 328242fe19b1f80489d8169681ebc029 ****/
+		/****** XmlMNaming_Shape1::Orientation ******/
+		/****** md5 signature: 328242fe19b1f80489d8169681ebc029 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -463,8 +463,8 @@ No available documentation.
 ") Orientation;
 		TopAbs_Orientation Orientation();
 
-		/****************** SetShape ******************/
-		/**** md5 signature: 56b77bc4968b59430da809fe1b3fd0eb ****/
+		/****** XmlMNaming_Shape1::SetShape ******/
+		/****** md5 signature: 56b77bc4968b59430da809fe1b3fd0eb ******/
 		%feature("compactdefaultargs") SetShape;
 		%feature("autodoc", "
 Parameters
@@ -483,8 +483,8 @@ No available documentation.
 ") SetShape;
 		void SetShape(const Standard_Integer ID, const Standard_Integer LocID, const TopAbs_Orientation Orient);
 
-		/****************** SetVertex ******************/
-		/**** md5 signature: 2a04083159eea9de2121be2b885c7c20 ****/
+		/****** XmlMNaming_Shape1::SetVertex ******/
+		/****** md5 signature: 2a04083159eea9de2121be2b885c7c20 ******/
 		%feature("compactdefaultargs") SetVertex;
 		%feature("autodoc", "
 Parameters
@@ -501,8 +501,8 @@ No available documentation.
 ") SetVertex;
 		void SetVertex(const TopoDS_Shape & theVertex);
 
-		/****************** TShapeId ******************/
-		/**** md5 signature: ebfc1170e9714dfa7b02dd5c04120318 ****/
+		/****** XmlMNaming_Shape1::TShapeId ******/
+		/****** md5 signature: ebfc1170e9714dfa7b02dd5c04120318 ******/
 		%feature("compactdefaultargs") TShapeId;
 		%feature("autodoc", "Return
 -------

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STDSELECTDOCSTRING
 "StdSelect module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_stdselect.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stdselect.html"
 %enddef
 %module (package="OCC.Core", docstring=STDSELECTDOCSTRING) StdSelect
 
@@ -195,8 +195,8 @@ StdSelect_TypeOfSelectionImage_SurfaceNormal = StdSelect_TypeOfSelectionImage.St
 %rename(stdselect) StdSelect;
 class StdSelect {
 	public:
-		/****************** SetDrawerForBRepOwner ******************/
-		/**** md5 signature: 28622687f408d38c4fc3d96636f33dc6 ****/
+		/****** StdSelect::SetDrawerForBRepOwner ******/
+		/****** md5 signature: 28622687f408d38c4fc3d96636f33dc6 ******/
 		%feature("compactdefaultargs") SetDrawerForBRepOwner;
 		%feature("autodoc", "
 Parameters
@@ -228,8 +228,8 @@ Puts the same drawer in every brepowner of sensitiveprimitive used only for hili
 ****************************/
 class StdSelect_BRepOwner : public SelectMgr_EntityOwner {
 	public:
-		/****************** StdSelect_BRepOwner ******************/
-		/**** md5 signature: 8773fa00a4c8a623aa2ca3b6dfcf84c7 ****/
+		/****** StdSelect_BRepOwner::StdSelect_BRepOwner ******/
+		/****** md5 signature: 8773fa00a4c8a623aa2ca3b6dfcf84c7 ******/
 		%feature("compactdefaultargs") StdSelect_BRepOwner;
 		%feature("autodoc", "
 Parameters
@@ -246,8 +246,8 @@ Constructs an owner specification framework defined by the priority apriority.
 ") StdSelect_BRepOwner;
 		 StdSelect_BRepOwner(const Standard_Integer aPriority);
 
-		/****************** StdSelect_BRepOwner ******************/
-		/**** md5 signature: 91bc847f9d2053dee291e35c09dd4779 ****/
+		/****** StdSelect_BRepOwner::StdSelect_BRepOwner ******/
+		/****** md5 signature: 91bc847f9d2053dee291e35c09dd4779 ******/
 		%feature("compactdefaultargs") StdSelect_BRepOwner;
 		%feature("autodoc", "
 Parameters
@@ -266,8 +266,8 @@ Constructs an owner specification framework defined by the shape ashape and the 
 ") StdSelect_BRepOwner;
 		 StdSelect_BRepOwner(const TopoDS_Shape & aShape, const Standard_Integer aPriority = 0, const Standard_Boolean ComesFromDecomposition = Standard_False);
 
-		/****************** StdSelect_BRepOwner ******************/
-		/**** md5 signature: 29703b0feb28228ed28f51236ea3f6ec ****/
+		/****** StdSelect_BRepOwner::StdSelect_BRepOwner ******/
+		/****** md5 signature: 29703b0feb28228ed28f51236ea3f6ec ******/
 		%feature("compactdefaultargs") StdSelect_BRepOwner;
 		%feature("autodoc", "
 Parameters
@@ -287,8 +287,8 @@ Constructs an owner specification framework defined by the shape ashape, the sel
 ") StdSelect_BRepOwner;
 		 StdSelect_BRepOwner(const TopoDS_Shape & aShape, const opencascade::handle<SelectMgr_SelectableObject> & theOrigin, const Standard_Integer aPriority = 0, const Standard_Boolean FromDecomposition = Standard_False);
 
-		/****************** Clear ******************/
-		/**** md5 signature: c601f9124e5aa6653d81cfc353a6cbdf ****/
+		/****** StdSelect_BRepOwner::Clear ******/
+		/****** md5 signature: c601f9124e5aa6653d81cfc353a6cbdf ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "
 Parameters
@@ -327,8 +327,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** HasHilightMode ******************/
-		/**** md5 signature: 35c4cc36b9d1287cbb8be9209c167aef ****/
+		/****** StdSelect_BRepOwner::HasHilightMode ******/
+		/****** md5 signature: 35c4cc36b9d1287cbb8be9209c167aef ******/
 		%feature("compactdefaultargs") HasHilightMode;
 		%feature("autodoc", "Return
 -------
@@ -340,8 +340,8 @@ Returns true if this framework has a highlight mode defined for it.
 ") HasHilightMode;
 		Standard_Boolean HasHilightMode();
 
-		/****************** HasShape ******************/
-		/**** md5 signature: fd039c2e20d8353da74f37a8ffea2aaf ****/
+		/****** StdSelect_BRepOwner::HasShape ******/
+		/****** md5 signature: fd039c2e20d8353da74f37a8ffea2aaf ******/
 		%feature("compactdefaultargs") HasShape;
 		%feature("autodoc", "Return
 -------
@@ -353,8 +353,8 @@ Returns false if no shape was set.
 ") HasShape;
 		Standard_Boolean HasShape();
 
-		/****************** HilightMode ******************/
-		/**** md5 signature: 65e4b0407fae3cd6d737aa6b7e74bfa0 ****/
+		/****** StdSelect_BRepOwner::HilightMode ******/
+		/****** md5 signature: 65e4b0407fae3cd6d737aa6b7e74bfa0 ******/
 		%feature("compactdefaultargs") HilightMode;
 		%feature("autodoc", "Return
 -------
@@ -366,8 +366,8 @@ Returns the highlight mode for this framework. this defines the type of display 
 ") HilightMode;
 		Standard_Integer HilightMode();
 
-		/****************** HilightWithColor ******************/
-		/**** md5 signature: ff872ded3a30d3b368f40f78eef3d5d8 ****/
+		/****** StdSelect_BRepOwner::HilightWithColor ******/
+		/****** md5 signature: ff872ded3a30d3b368f40f78eef3d5d8 ******/
 		%feature("compactdefaultargs") HilightWithColor;
 		%feature("autodoc", "
 Parameters
@@ -386,8 +386,8 @@ No available documentation.
 ") HilightWithColor;
 		virtual void HilightWithColor(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const opencascade::handle<Prs3d_Drawer> & theStyle, const Standard_Integer theMode);
 
-		/****************** IsHilighted ******************/
-		/**** md5 signature: 19f129c3adba382b625d88256f1470cb ****/
+		/****** StdSelect_BRepOwner::IsHilighted ******/
+		/****** md5 signature: 19f129c3adba382b625d88256f1470cb ******/
 		%feature("compactdefaultargs") IsHilighted;
 		%feature("autodoc", "
 Parameters
@@ -405,8 +405,8 @@ Returns true if an object with the selection mode amode is highlighted in the pr
 ") IsHilighted;
 		virtual Standard_Boolean IsHilighted(const opencascade::handle<PrsMgr_PresentationManager> & aPM, const Standard_Integer aMode = 0);
 
-		/****************** ResetHilightMode ******************/
-		/**** md5 signature: dc7107c584de9b0874ed480d1bc34a60 ****/
+		/****** StdSelect_BRepOwner::ResetHilightMode ******/
+		/****** md5 signature: dc7107c584de9b0874ed480d1bc34a60 ******/
 		%feature("compactdefaultargs") ResetHilightMode;
 		%feature("autodoc", "Return
 -------
@@ -418,8 +418,8 @@ Resets the higlight mode for this framework. this defines the type of display us
 ") ResetHilightMode;
 		void ResetHilightMode();
 
-		/****************** SetHilightMode ******************/
-		/**** md5 signature: e2eeb5d16bea7d1c9cb04b72dce3668c ****/
+		/****** StdSelect_BRepOwner::SetHilightMode ******/
+		/****** md5 signature: e2eeb5d16bea7d1c9cb04b72dce3668c ******/
 		%feature("compactdefaultargs") SetHilightMode;
 		%feature("autodoc", "
 Parameters
@@ -436,8 +436,8 @@ Sets the highlight mode for this framework. this defines the type of display use
 ") SetHilightMode;
 		void SetHilightMode(const Standard_Integer theMode);
 
-		/****************** SetLocation ******************/
-		/**** md5 signature: d7a193afcb3b08815e792796d7dcb913 ****/
+		/****** StdSelect_BRepOwner::SetLocation ******/
+		/****** md5 signature: d7a193afcb3b08815e792796d7dcb913 ******/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "
 Parameters
@@ -454,8 +454,8 @@ No available documentation.
 ") SetLocation;
 		virtual void SetLocation(const TopLoc_Location & aLoc);
 
-		/****************** Shape ******************/
-		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
+		/****** StdSelect_BRepOwner::Shape ******/
+		/****** md5 signature: 1058569f5d639354fedf11e73741b7df ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -467,8 +467,8 @@ Returns the shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
-		/****************** Unhilight ******************/
-		/**** md5 signature: a1b62fcc891d4ccc3641ae435e157664 ****/
+		/****** StdSelect_BRepOwner::Unhilight ******/
+		/****** md5 signature: a1b62fcc891d4ccc3641ae435e157664 ******/
 		%feature("compactdefaultargs") Unhilight;
 		%feature("autodoc", "
 Parameters
@@ -486,8 +486,8 @@ Removes highlighting from the type of shape identified the selection mode amode 
 ") Unhilight;
 		virtual void Unhilight(const opencascade::handle<PrsMgr_PresentationManager> & aPM, const Standard_Integer aMode = 0);
 
-		/****************** UpdateHighlightTrsf ******************/
-		/**** md5 signature: 5cda4347f3f81c378d7a079e96459f5e ****/
+		/****** StdSelect_BRepOwner::UpdateHighlightTrsf ******/
+		/****** md5 signature: 5cda4347f3f81c378d7a079e96459f5e ******/
 		%feature("compactdefaultargs") UpdateHighlightTrsf;
 		%feature("autodoc", "
 Parameters
@@ -522,8 +522,8 @@ Implements immediate application of location transformation of parent object to 
 ************************************/
 class StdSelect_BRepSelectionTool {
 	public:
-		/****************** ComputeSensitive ******************/
-		/**** md5 signature: 80156af8bd1629db930e94f1fa305511 ****/
+		/****** StdSelect_BRepSelectionTool::ComputeSensitive ******/
+		/****** md5 signature: 80156af8bd1629db930e94f1fa305511 ******/
 		%feature("compactdefaultargs") ComputeSensitive;
 		%feature("autodoc", "
 Parameters
@@ -547,8 +547,8 @@ Computes the sensitive primitives, stores them in the selectmgr_selection object
 ") ComputeSensitive;
 		static void ComputeSensitive(const TopoDS_Shape & theShape, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Real theDeflection, const Standard_Real theDeflAngle, const Standard_Integer theNbPOnEdge, const Standard_Real theMaxiParam, const Standard_Boolean theAutoTriang = Standard_True);
 
-		/****************** GetEdgeSensitive ******************/
-		/**** md5 signature: 60efc4b0470e1680eb7febd4c2b6e11a ****/
+		/****** StdSelect_BRepSelectionTool::GetEdgeSensitive ******/
+		/****** md5 signature: 60efc4b0470e1680eb7febd4c2b6e11a ******/
 		%feature("compactdefaultargs") GetEdgeSensitive;
 		%feature("autodoc", "
 Parameters
@@ -572,8 +572,8 @@ Create a sensitive edge or sensitive wire. @param[in] theshape either topods_edg
 ") GetEdgeSensitive;
 		static void GetEdgeSensitive(const TopoDS_Shape & theShape, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection, const Standard_Real theDeflection, const Standard_Real theDeviationAngle, const Standard_Integer theNbPOnEdge, const Standard_Real theMaxiParam, opencascade::handle<Select3D_SensitiveEntity> & theSensitive);
 
-		/****************** GetSensitiveForCylinder ******************/
-		/**** md5 signature: eac39b3b0583dbd2fd17b15718b9faca ****/
+		/****** StdSelect_BRepSelectionTool::GetSensitiveForCylinder ******/
+		/****** md5 signature: eac39b3b0583dbd2fd17b15718b9faca ******/
 		%feature("compactdefaultargs") GetSensitiveForCylinder;
 		%feature("autodoc", "
 Parameters
@@ -592,8 +592,8 @@ Creates a sensitive cylinder. @param[in] thesubfacesmap map of cylinder faces @p
 ") GetSensitiveForCylinder;
 		static Standard_Boolean GetSensitiveForCylinder(const TopTools_IndexedMapOfShape & theSubfacesMap, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, const opencascade::handle<SelectMgr_Selection> & theSelection);
 
-		/****************** GetSensitiveForFace ******************/
-		/**** md5 signature: 2642b35a3a997e099ba05a1cdd42764e ****/
+		/****** StdSelect_BRepSelectionTool::GetSensitiveForFace ******/
+		/****** md5 signature: 2642b35a3a997e099ba05a1cdd42764e ******/
 		%feature("compactdefaultargs") GetSensitiveForFace;
 		%feature("autodoc", "
 Parameters
@@ -616,8 +616,8 @@ Creates the 3d sensitive entities for face selection. @param[in] theface face to
 ") GetSensitiveForFace;
 		static Standard_Boolean GetSensitiveForFace(const TopoDS_Face & theFace, const opencascade::handle<SelectMgr_EntityOwner> & theOwner, Select3D_EntitySequence & theOutList, const Standard_Boolean theAutoTriang = Standard_True, const Standard_Integer theNbPOnEdge = 9, const Standard_Real theMaxiParam = 500, const Standard_Boolean theInteriorFlag = Standard_True);
 
-		/****************** GetStandardPriority ******************/
-		/**** md5 signature: 77ab177df5825b7d3b523657ebdeff33 ****/
+		/****** StdSelect_BRepSelectionTool::GetStandardPriority ******/
+		/****** md5 signature: 77ab177df5825b7d3b523657ebdeff33 ******/
 		%feature("compactdefaultargs") GetStandardPriority;
 		%feature("autodoc", "
 Parameters
@@ -635,8 +635,8 @@ Returns the standard priority of the shape ashap having the type atype. this pri
 ") GetStandardPriority;
 		static Standard_Integer GetStandardPriority(const TopoDS_Shape & theShape, const TopAbs_ShapeEnum theType);
 
-		/****************** Load ******************/
-		/**** md5 signature: 8477e5de75530f0506e55281cd6bdad4 ****/
+		/****** StdSelect_BRepSelectionTool::Load ******/
+		/****** md5 signature: 8477e5de75530f0506e55281cd6bdad4 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -661,8 +661,8 @@ Decomposition of <ashape> into sensitive entities following a mode of decomposit
 ") Load;
 		static void Load(const opencascade::handle<SelectMgr_Selection> & aSelection, const TopoDS_Shape & aShape, const TopAbs_ShapeEnum aType, const Standard_Real theDeflection, const Standard_Real theDeviationAngle, const Standard_Boolean AutoTriangulation = Standard_True, const Standard_Integer aPriority = -1, const Standard_Integer NbPOnEdge = 9, const Standard_Real MaximalParameter = 500);
 
-		/****************** Load ******************/
-		/**** md5 signature: 00cf72412f1de1b90a4446a128411b90 ****/
+		/****** StdSelect_BRepSelectionTool::Load ******/
+		/****** md5 signature: 00cf72412f1de1b90a4446a128411b90 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -688,8 +688,8 @@ Same functionalities ; the only difference is that the selectable object from wh
 ") Load;
 		static void Load(const opencascade::handle<SelectMgr_Selection> & aSelection, const opencascade::handle<SelectMgr_SelectableObject> & Origin, const TopoDS_Shape & aShape, const TopAbs_ShapeEnum aType, const Standard_Real theDeflection, const Standard_Real theDeviationAngle, const Standard_Boolean AutoTriangulation = Standard_True, const Standard_Integer aPriority = -1, const Standard_Integer NbPOnEdge = 9, const Standard_Real MaximalParameter = 500);
 
-		/****************** PreBuildBVH ******************/
-		/**** md5 signature: ecf8f08d53cd37c0f9916bd367b2cda3 ****/
+		/****** StdSelect_BRepSelectionTool::PreBuildBVH ******/
+		/****** md5 signature: ecf8f08d53cd37c0f9916bd367b2cda3 ******/
 		%feature("compactdefaultargs") PreBuildBVH;
 		%feature("autodoc", "
 Parameters
@@ -720,8 +720,8 @@ Traverses the selection given and pre-builds bvh trees for heavyweight sensitive
 *****************************/
 class StdSelect_EdgeFilter : public SelectMgr_Filter {
 	public:
-		/****************** StdSelect_EdgeFilter ******************/
-		/**** md5 signature: e4775650662884361932e4cff149e05f ****/
+		/****** StdSelect_EdgeFilter::StdSelect_EdgeFilter ******/
+		/****** md5 signature: e4775650662884361932e4cff149e05f ******/
 		%feature("compactdefaultargs") StdSelect_EdgeFilter;
 		%feature("autodoc", "
 Parameters
@@ -738,8 +738,8 @@ Constructs an edge filter object defined by the type of edge edge.
 ") StdSelect_EdgeFilter;
 		 StdSelect_EdgeFilter(const StdSelect_TypeOfEdge Edge);
 
-		/****************** ActsOn ******************/
-		/**** md5 signature: 82ed0e718f9bead84301083a624d455d ****/
+		/****** StdSelect_EdgeFilter::ActsOn ******/
+		/****** md5 signature: 82ed0e718f9bead84301083a624d455d ******/
 		%feature("compactdefaultargs") ActsOn;
 		%feature("autodoc", "
 Parameters
@@ -756,8 +756,8 @@ No available documentation.
 ") ActsOn;
 		virtual Standard_Boolean ActsOn(const TopAbs_ShapeEnum aStandardMode);
 
-		/****************** IsOk ******************/
-		/**** md5 signature: 30e74b6ea22a70db5324b6f796325694 ****/
+		/****** StdSelect_EdgeFilter::IsOk ******/
+		/****** md5 signature: 30e74b6ea22a70db5324b6f796325694 ******/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "
 Parameters
@@ -774,8 +774,8 @@ No available documentation.
 ") IsOk;
 		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
-		/****************** SetType ******************/
-		/**** md5 signature: 9ff2a941f7efaa209126e59324fff4c9 ****/
+		/****** StdSelect_EdgeFilter::SetType ******/
+		/****** md5 signature: 9ff2a941f7efaa209126e59324fff4c9 ******/
 		%feature("compactdefaultargs") SetType;
 		%feature("autodoc", "
 Parameters
@@ -792,8 +792,8 @@ Sets the type of edge anewtype. anewtype is to be highlighted in selection.
 ") SetType;
 		void SetType(const StdSelect_TypeOfEdge aNewType);
 
-		/****************** Type ******************/
-		/**** md5 signature: b9a5a542407499eb6b150b9bb210baed ****/
+		/****** StdSelect_EdgeFilter::Type ******/
+		/****** md5 signature: b9a5a542407499eb6b150b9bb210baed ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Return
 -------
@@ -821,8 +821,8 @@ Returns the type of edge to be highlighted in selection.
 *****************************/
 class StdSelect_FaceFilter : public SelectMgr_Filter {
 	public:
-		/****************** StdSelect_FaceFilter ******************/
-		/**** md5 signature: a55d0450cb948e17b839168d8263b890 ****/
+		/****** StdSelect_FaceFilter::StdSelect_FaceFilter ******/
+		/****** md5 signature: a55d0450cb948e17b839168d8263b890 ******/
 		%feature("compactdefaultargs") StdSelect_FaceFilter;
 		%feature("autodoc", "
 Parameters
@@ -839,8 +839,8 @@ Constructs a face filter object defined by the type of face atypeofface.
 ") StdSelect_FaceFilter;
 		 StdSelect_FaceFilter(const StdSelect_TypeOfFace aTypeOfFace);
 
-		/****************** ActsOn ******************/
-		/**** md5 signature: 82ed0e718f9bead84301083a624d455d ****/
+		/****** StdSelect_FaceFilter::ActsOn ******/
+		/****** md5 signature: 82ed0e718f9bead84301083a624d455d ******/
 		%feature("compactdefaultargs") ActsOn;
 		%feature("autodoc", "
 Parameters
@@ -857,8 +857,8 @@ No available documentation.
 ") ActsOn;
 		virtual Standard_Boolean ActsOn(const TopAbs_ShapeEnum aStandardMode);
 
-		/****************** IsOk ******************/
-		/**** md5 signature: 30e74b6ea22a70db5324b6f796325694 ****/
+		/****** StdSelect_FaceFilter::IsOk ******/
+		/****** md5 signature: 30e74b6ea22a70db5324b6f796325694 ******/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "
 Parameters
@@ -875,8 +875,8 @@ No available documentation.
 ") IsOk;
 		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
-		/****************** SetType ******************/
-		/**** md5 signature: 0638cd0595471b313b288aafac7032f8 ****/
+		/****** StdSelect_FaceFilter::SetType ******/
+		/****** md5 signature: 0638cd0595471b313b288aafac7032f8 ******/
 		%feature("compactdefaultargs") SetType;
 		%feature("autodoc", "
 Parameters
@@ -893,8 +893,8 @@ Sets the type of face anewtype. anewtype is to be highlighted in selection.
 ") SetType;
 		void SetType(const StdSelect_TypeOfFace aNewType);
 
-		/****************** Type ******************/
-		/**** md5 signature: 21e7cb1011c5e28655fe4b3b4d8f4eb2 ****/
+		/****** StdSelect_FaceFilter::Type ******/
+		/****** md5 signature: 21e7cb1011c5e28655fe4b3b4d8f4eb2 ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Return
 -------
@@ -922,8 +922,8 @@ Returns the type of face to be highlighted in selection.
 ************************/
 class StdSelect_Shape : public PrsMgr_PresentableObject {
 	public:
-		/****************** StdSelect_Shape ******************/
-		/**** md5 signature: 46d5e430d7e4e7bc60ad9ed7b590adb7 ****/
+		/****** StdSelect_Shape::StdSelect_Shape ******/
+		/****** md5 signature: 46d5e430d7e4e7bc60ad9ed7b590adb7 ******/
 		%feature("compactdefaultargs") StdSelect_Shape;
 		%feature("autodoc", "
 Parameters
@@ -941,8 +941,8 @@ No available documentation.
 ") StdSelect_Shape;
 		 StdSelect_Shape(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer = opencascade::handle<Prs3d_Drawer>());
 
-		/****************** Compute ******************/
-		/**** md5 signature: f53f89fd95d4c315c88ee451ac3f4363 ****/
+		/****** StdSelect_Shape::Compute ******/
+		/****** md5 signature: f53f89fd95d4c315c88ee451ac3f4363 ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -982,8 +982,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** Shape ******************/
-		/**** md5 signature: 1058569f5d639354fedf11e73741b7df ****/
+		/****** StdSelect_Shape::Shape ******/
+		/****** md5 signature: 1058569f5d639354fedf11e73741b7df ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -995,8 +995,8 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape();
 
-		/****************** Shape ******************/
-		/**** md5 signature: b6ccc379d64a40fe383a503374c25219 ****/
+		/****** StdSelect_Shape::Shape ******/
+		/****** md5 signature: b6ccc379d64a40fe383a503374c25219 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -1029,8 +1029,8 @@ No available documentation.
 **********************************/
 class StdSelect_ShapeTypeFilter : public SelectMgr_Filter {
 	public:
-		/****************** StdSelect_ShapeTypeFilter ******************/
-		/**** md5 signature: 930631b428d28a84d447b9b9fae5babd ****/
+		/****** StdSelect_ShapeTypeFilter::StdSelect_ShapeTypeFilter ******/
+		/****** md5 signature: 930631b428d28a84d447b9b9fae5babd ******/
 		%feature("compactdefaultargs") StdSelect_ShapeTypeFilter;
 		%feature("autodoc", "
 Parameters
@@ -1047,8 +1047,8 @@ Constructs a filter object defined by the shape type atype.
 ") StdSelect_ShapeTypeFilter;
 		 StdSelect_ShapeTypeFilter(const TopAbs_ShapeEnum aType);
 
-		/****************** ActsOn ******************/
-		/**** md5 signature: 82ed0e718f9bead84301083a624d455d ****/
+		/****** StdSelect_ShapeTypeFilter::ActsOn ******/
+		/****** md5 signature: 82ed0e718f9bead84301083a624d455d ******/
 		%feature("compactdefaultargs") ActsOn;
 		%feature("autodoc", "
 Parameters
@@ -1065,8 +1065,8 @@ No available documentation.
 ") ActsOn;
 		virtual Standard_Boolean ActsOn(const TopAbs_ShapeEnum aStandardMode);
 
-		/****************** IsOk ******************/
-		/**** md5 signature: 30e74b6ea22a70db5324b6f796325694 ****/
+		/****** StdSelect_ShapeTypeFilter::IsOk ******/
+		/****** md5 signature: 30e74b6ea22a70db5324b6f796325694 ******/
 		%feature("compactdefaultargs") IsOk;
 		%feature("autodoc", "
 Parameters
@@ -1083,8 +1083,8 @@ No available documentation.
 ") IsOk;
 		virtual Standard_Boolean IsOk(const opencascade::handle<SelectMgr_EntityOwner> & anobj);
 
-		/****************** Type ******************/
-		/**** md5 signature: 9abae9197ed7edaf140269b2fe59aeea ****/
+		/****** StdSelect_ShapeTypeFilter::Type ******/
+		/****** md5 signature: 9abae9197ed7edaf140269b2fe59aeea ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Return
 -------

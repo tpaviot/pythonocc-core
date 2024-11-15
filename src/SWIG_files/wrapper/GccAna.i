@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GCCANADOCSTRING
 "GccAna module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_gccana.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_gccana.html"
 %enddef
 %module (package="OCC.Core", docstring=GCCANADOCSTRING) GccAna
 
@@ -85,8 +85,8 @@ from OCC.Core.Exception import *
 ****************************/
 class GccAna_Circ2d2TanOn {
 	public:
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: 2bb407b705201ca59ce4bd554ff86388 ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: 2bb407b705201ca59ce4bd554ff86388 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -106,8 +106,8 @@ This method implements the algorithms used to create 2d circles tangent to two 2
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: 5def6677f4aec59bad70d0df9457da51 ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: 5def6677f4aec59bad70d0df9457da51 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -127,8 +127,8 @@ This method implements the algorithms used to create 2d circles tangent to a 2d 
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: 9a62877d73b4b4e5824de0187aeef2d4 ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: 9a62877d73b4b4e5824de0187aeef2d4 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -148,8 +148,8 @@ This method implements the algorithms used to create 2d circles tangent to two 2
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedLin & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: acf69d81e985b79442aeda8f2ff23e8d ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: acf69d81e985b79442aeda8f2ff23e8d ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -169,8 +169,8 @@ This method implements the algorithms used to create 2d circles tangent to a 2d 
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & Point2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: 8cf98517f5e62cf59d7cb2c2723556ea ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: 8cf98517f5e62cf59d7cb2c2723556ea ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -190,8 +190,8 @@ This method implements the algorithms used to create 2d circles tangent to a 2d 
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedLin & Qualified1, const gp_Pnt2d & Point2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: 105e7c8b0cb49ccab4e2dbde93a93250 ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: 105e7c8b0cb49ccab4e2dbde93a93250 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -211,8 +211,8 @@ This method implements the algorithms used to create 2d circles tangent to two p
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2, const gp_Lin2d & OnLine, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: 0e3b23d9de8043707121d2a6930d4233 ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: 0e3b23d9de8043707121d2a6930d4233 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -232,8 +232,8 @@ This method implements the algorithms used to create 2d circles tangent to two 2
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: d27b643265e960dd8e3a70d8d6c334e2 ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: d27b643265e960dd8e3a70d8d6c334e2 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -253,8 +253,8 @@ This method implements the algorithms used to create 2d circles tangent to a cir
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: 5fa57362f351ae9e64f160872655649c ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: 5fa57362f351ae9e64f160872655649c ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -274,8 +274,8 @@ This method implements the algorithms used to create 2d circles tangent to a cir
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & Point2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: 0c4b413c8c48272452690f99eab7398e ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: 0c4b413c8c48272452690f99eab7398e ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -295,8 +295,8 @@ This method implements the algorithms used to create 2d circles tangent to two 2
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedLin & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: ced21bdfc5e50bcf8fd5c14ab7dad344 ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: ced21bdfc5e50bcf8fd5c14ab7dad344 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -316,8 +316,8 @@ This method implements the algorithms used to create 2d circles tangent to a lin
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const GccEnt_QualifiedLin & Qualified1, const gp_Pnt2d & Point2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanOn ******************/
-		/**** md5 signature: 6ff7022cad2a36a011fcb377367c18ff ****/
+		/****** GccAna_Circ2d2TanOn::GccAna_Circ2d2TanOn ******/
+		/****** md5 signature: 6ff7022cad2a36a011fcb377367c18ff ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanOn;
 		%feature("autodoc", "
 Parameters
@@ -337,8 +337,8 @@ This method implements the algorithms used to create 2d circles tangent to two p
 ") GccAna_Circ2d2TanOn;
 		 GccAna_Circ2d2TanOn(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2, const gp_Circ2d & OnCirc, const Standard_Real Tolerance);
 
-		/****************** CenterOn3 ******************/
-		/**** md5 signature: b84288e9132f5c4ac31073a7171b086e ****/
+		/****** GccAna_Circ2d2TanOn::CenterOn3 ******/
+		/****** md5 signature: b84288e9132f5c4ac31073a7171b086e ******/
 		%feature("compactdefaultargs") CenterOn3;
 		%feature("autodoc", "
 Parameters
@@ -356,8 +356,8 @@ Returns the information about the center (on the curv) of the result number inde
 ") CenterOn3;
 		void CenterOn3(const Standard_Integer Index, Standard_Real &OutValue, gp_Pnt2d & PntArg);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Circ2d2TanOn::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -369,8 +369,8 @@ Returns true if the construction algorithm does not fail (even if it finds no so
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsTheSame1 ******************/
-		/**** md5 signature: a8b1c8a0e7512c619b1f66f2bb9e39a6 ****/
+		/****** GccAna_Circ2d2TanOn::IsTheSame1 ******/
+		/****** md5 signature: a8b1c8a0e7512c619b1f66f2bb9e39a6 ******/
 		%feature("compactdefaultargs") IsTheSame1;
 		%feature("autodoc", "
 Parameters
@@ -387,8 +387,8 @@ True if the solution and the first argument are the same (2 circles). if r1 is t
 ") IsTheSame1;
 		Standard_Boolean IsTheSame1(const Standard_Integer Index);
 
-		/****************** IsTheSame2 ******************/
-		/**** md5 signature: a9dd3589d0d4332d52c7b28a62c5e764 ****/
+		/****** GccAna_Circ2d2TanOn::IsTheSame2 ******/
+		/****** md5 signature: a9dd3589d0d4332d52c7b28a62c5e764 ******/
 		%feature("compactdefaultargs") IsTheSame2;
 		%feature("autodoc", "
 Parameters
@@ -405,8 +405,8 @@ True if the solution and the second argument are the same (2 circles). if r2 is 
 ") IsTheSame2;
 		Standard_Boolean IsTheSame2(const Standard_Integer Index);
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Circ2d2TanOn::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -418,8 +418,8 @@ Returns the number of circles, representing solutions computed by this algorithm
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** Tangency1 ******************/
-		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
+		/****** GccAna_Circ2d2TanOn::Tangency1 ******/
+		/****** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ******/
 		%feature("compactdefaultargs") Tangency1;
 		%feature("autodoc", "
 Parameters
@@ -438,8 +438,8 @@ Returns the information about the tangency point between the result number index
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** Tangency2 ******************/
-		/**** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ****/
+		/****** GccAna_Circ2d2TanOn::Tangency2 ******/
+		/****** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ******/
 		%feature("compactdefaultargs") Tangency2;
 		%feature("autodoc", "
 Parameters
@@ -458,8 +458,8 @@ Returns the information about the tangency point between the result number index
 ") Tangency2;
 		void Tangency2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ****/
+		/****** GccAna_Circ2d2TanOn::ThisSolution ******/
+		/****** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -476,8 +476,8 @@ Returns the solution number index and raises outofrange exception if index is gr
 ") ThisSolution;
 		gp_Circ2d ThisSolution(const Standard_Integer Index);
 
-		/****************** WhichQualifier ******************/
-		/**** md5 signature: 6aa541a02c7988b37a04a532d9174284 ****/
+		/****** GccAna_Circ2d2TanOn::WhichQualifier ******/
+		/****** md5 signature: 6aa541a02c7988b37a04a532d9174284 ******/
 		%feature("compactdefaultargs") WhichQualifier;
 		%feature("autodoc", "
 Parameters
@@ -510,8 +510,8 @@ Returns the qualifiers qualif1 and qualif2 of the tangency arguments for the sol
 *****************************/
 class GccAna_Circ2d2TanRad {
 	public:
-		/****************** GccAna_Circ2d2TanRad ******************/
-		/**** md5 signature: 03077fcb00dbd29830a11717606ebbc9 ****/
+		/****** GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad ******/
+		/****** md5 signature: 03077fcb00dbd29830a11717606ebbc9 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "
 Parameters
@@ -531,8 +531,8 @@ This method implements the algorithms used to create 2d circles tangent to two 2
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanRad ******************/
-		/**** md5 signature: defd8a0e3d243ea2573630102c9f56c6 ****/
+		/****** GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad ******/
+		/****** md5 signature: defd8a0e3d243ea2573630102c9f56c6 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "
 Parameters
@@ -552,8 +552,8 @@ This method implements the algorithms used to create 2d circles tangent to a 2d 
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedLin & Qualified2, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanRad ******************/
-		/**** md5 signature: 995f0517daea11068d2d34ac400c40c9 ****/
+		/****** GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad ******/
+		/****** md5 signature: 995f0517daea11068d2d34ac400c40c9 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "
 Parameters
@@ -573,8 +573,8 @@ This method implements the algorithms used to create 2d circles tangent to a 2d 
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & Point2, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanRad ******************/
-		/**** md5 signature: 084258399311d7af760c1a0ca8ee3acd ****/
+		/****** GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad ******/
+		/****** md5 signature: 084258399311d7af760c1a0ca8ee3acd ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "
 Parameters
@@ -594,8 +594,8 @@ This method implements the algorithms used to create 2d circles tangent to a 2d 
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const GccEnt_QualifiedLin & Qualified1, const gp_Pnt2d & Point2, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanRad ******************/
-		/**** md5 signature: 4eb59f8709f9fe2bced34d1847a99932 ****/
+		/****** GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad ******/
+		/****** md5 signature: 4eb59f8709f9fe2bced34d1847a99932 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "
 Parameters
@@ -615,8 +615,8 @@ This method implements the algorithms used to create 2d circles tangent to two 2
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const GccEnt_QualifiedLin & Qualified1, const GccEnt_QualifiedLin & Qualified2, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d2TanRad ******************/
-		/**** md5 signature: 204510de7d84946246be3ee05fc5cfc9 ****/
+		/****** GccAna_Circ2d2TanRad::GccAna_Circ2d2TanRad ******/
+		/****** md5 signature: 204510de7d84946246be3ee05fc5cfc9 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d2TanRad;
 		%feature("autodoc", "
 Parameters
@@ -636,8 +636,8 @@ This method implements the algorithms used to create 2d circles passing through 
 ") GccAna_Circ2d2TanRad;
 		 GccAna_Circ2d2TanRad(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Circ2d2TanRad::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -649,8 +649,8 @@ This method returns true if the algorithm succeeded. note: isdone protects again
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsTheSame1 ******************/
-		/**** md5 signature: a8b1c8a0e7512c619b1f66f2bb9e39a6 ****/
+		/****** GccAna_Circ2d2TanRad::IsTheSame1 ******/
+		/****** md5 signature: a8b1c8a0e7512c619b1f66f2bb9e39a6 ******/
 		%feature("compactdefaultargs") IsTheSame1;
 		%feature("autodoc", "
 Parameters
@@ -667,8 +667,8 @@ Returns true if the solution number index is equal to the first argument. raises
 ") IsTheSame1;
 		Standard_Boolean IsTheSame1(const Standard_Integer Index);
 
-		/****************** IsTheSame2 ******************/
-		/**** md5 signature: a9dd3589d0d4332d52c7b28a62c5e764 ****/
+		/****** GccAna_Circ2d2TanRad::IsTheSame2 ******/
+		/****** md5 signature: a9dd3589d0d4332d52c7b28a62c5e764 ******/
 		%feature("compactdefaultargs") IsTheSame2;
 		%feature("autodoc", "
 Parameters
@@ -685,8 +685,8 @@ Returns true if the solution number index is equal to the second argument. raise
 ") IsTheSame2;
 		Standard_Boolean IsTheSame2(const Standard_Integer Index);
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Circ2d2TanRad::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -698,8 +698,8 @@ This method returns the number of circles, representing solutions computed by th
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** Tangency1 ******************/
-		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
+		/****** GccAna_Circ2d2TanRad::Tangency1 ******/
+		/****** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ******/
 		%feature("compactdefaultargs") Tangency1;
 		%feature("autodoc", "
 Parameters
@@ -718,8 +718,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** Tangency2 ******************/
-		/**** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ****/
+		/****** GccAna_Circ2d2TanRad::Tangency2 ******/
+		/****** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ******/
 		%feature("compactdefaultargs") Tangency2;
 		%feature("autodoc", "
 Parameters
@@ -738,8 +738,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency2;
 		void Tangency2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ****/
+		/****** GccAna_Circ2d2TanRad::ThisSolution ******/
+		/****** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -756,8 +756,8 @@ Returns the solution number index. be careful: the index is only a way to get al
 ") ThisSolution;
 		gp_Circ2d ThisSolution(const Standard_Integer Index);
 
-		/****************** WhichQualifier ******************/
-		/**** md5 signature: 6aa541a02c7988b37a04a532d9174284 ****/
+		/****** GccAna_Circ2d2TanRad::WhichQualifier ******/
+		/****** md5 signature: 6aa541a02c7988b37a04a532d9174284 ******/
 		%feature("compactdefaultargs") WhichQualifier;
 		%feature("autodoc", "
 Parameters
@@ -790,8 +790,8 @@ Returns the information about the qualifiers of the tangency arguments concernin
 **************************/
 class GccAna_Circ2d3Tan {
 	public:
-		/****************** GccAna_Circ2d3Tan ******************/
-		/**** md5 signature: f8f964b76b262dd3502e96072de8f300 ****/
+		/****** GccAna_Circ2d3Tan::GccAna_Circ2d3Tan ******/
+		/****** md5 signature: f8f964b76b262dd3502e96072de8f300 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "
 Parameters
@@ -811,8 +811,8 @@ This method implements the algorithms used to create 2d circles tangent to 3 cir
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const GccEnt_QualifiedCirc & Qualified3, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d3Tan ******************/
-		/**** md5 signature: b47db5ce4e480ee56f0abf606eb1c531 ****/
+		/****** GccAna_Circ2d3Tan::GccAna_Circ2d3Tan ******/
+		/****** md5 signature: b47db5ce4e480ee56f0abf606eb1c531 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "
 Parameters
@@ -832,8 +832,8 @@ This method implements the algorithms used to create 2d circles tangent to 2 cir
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const GccEnt_QualifiedLin & Qualified3, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d3Tan ******************/
-		/**** md5 signature: b857ac02330208f7df1f0570716465e0 ****/
+		/****** GccAna_Circ2d3Tan::GccAna_Circ2d3Tan ******/
+		/****** md5 signature: b857ac02330208f7df1f0570716465e0 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "
 Parameters
@@ -853,8 +853,8 @@ This method implements the algorithms used to create 2d circles tangent to 1 cir
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedLin & Qualified2, const GccEnt_QualifiedLin & Qualified3, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d3Tan ******************/
-		/**** md5 signature: 1769efb935d0c72a05740f6fd5eca73e ****/
+		/****** GccAna_Circ2d3Tan::GccAna_Circ2d3Tan ******/
+		/****** md5 signature: 1769efb935d0c72a05740f6fd5eca73e ******/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "
 Parameters
@@ -874,8 +874,8 @@ This method implements the algorithms used to create 2d circles tangent to 3 lin
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedLin & Qualified1, const GccEnt_QualifiedLin & Qualified2, const GccEnt_QualifiedLin & Qualified3, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d3Tan ******************/
-		/**** md5 signature: dc951ea641df0a66e216323a4f8d01d5 ****/
+		/****** GccAna_Circ2d3Tan::GccAna_Circ2d3Tan ******/
+		/****** md5 signature: dc951ea641df0a66e216323a4f8d01d5 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "
 Parameters
@@ -895,8 +895,8 @@ This method implements the algorithms used to create 2d circles tangent to 2 cir
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d3Tan ******************/
-		/**** md5 signature: 75533fa6c57a0d7ed4bd8e199bda37d7 ****/
+		/****** GccAna_Circ2d3Tan::GccAna_Circ2d3Tan ******/
+		/****** md5 signature: 75533fa6c57a0d7ed4bd8e199bda37d7 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "
 Parameters
@@ -916,8 +916,8 @@ This method implements the algorithms used to create 2d circles tangent to a cir
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d3Tan ******************/
-		/**** md5 signature: dbf10928c370bfa25ce4019474bb8f53 ****/
+		/****** GccAna_Circ2d3Tan::GccAna_Circ2d3Tan ******/
+		/****** md5 signature: dbf10928c370bfa25ce4019474bb8f53 ******/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "
 Parameters
@@ -937,8 +937,8 @@ This method implements the algorithms used to create 2d circles tangent to 2 lin
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedLin & Qualified1, const GccEnt_QualifiedLin & Qualified2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d3Tan ******************/
-		/**** md5 signature: ccacbacc59448541d378a070840f3b7a ****/
+		/****** GccAna_Circ2d3Tan::GccAna_Circ2d3Tan ******/
+		/****** md5 signature: ccacbacc59448541d378a070840f3b7a ******/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "
 Parameters
@@ -958,8 +958,8 @@ This method implements the algorithms used to create 2d circles tangent to a cir
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & Point2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d3Tan ******************/
-		/**** md5 signature: c4207c6b3d25b5c4cb5841f1daf562df ****/
+		/****** GccAna_Circ2d3Tan::GccAna_Circ2d3Tan ******/
+		/****** md5 signature: c4207c6b3d25b5c4cb5841f1daf562df ******/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "
 Parameters
@@ -979,8 +979,8 @@ This method implements the algorithms used to create 2d circles tangent to a lin
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const GccEnt_QualifiedLin & Qualified1, const gp_Pnt2d & Point2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2d3Tan ******************/
-		/**** md5 signature: 4ae692732419aa36f01019d6400237da ****/
+		/****** GccAna_Circ2d3Tan::GccAna_Circ2d3Tan ******/
+		/****** md5 signature: 4ae692732419aa36f01019d6400237da ******/
 		%feature("compactdefaultargs") GccAna_Circ2d3Tan;
 		%feature("autodoc", "
 Parameters
@@ -1000,8 +1000,8 @@ This method implements the algorithms used to create 2d circles passing through 
 ") GccAna_Circ2d3Tan;
 		 GccAna_Circ2d3Tan(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2, const gp_Pnt2d & Point3, const Standard_Real Tolerance);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Circ2d3Tan::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1013,8 +1013,8 @@ This method returns true if the construction algorithm succeeded. note: isdone p
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsTheSame1 ******************/
-		/**** md5 signature: a8b1c8a0e7512c619b1f66f2bb9e39a6 ****/
+		/****** GccAna_Circ2d3Tan::IsTheSame1 ******/
+		/****** md5 signature: a8b1c8a0e7512c619b1f66f2bb9e39a6 ******/
 		%feature("compactdefaultargs") IsTheSame1;
 		%feature("autodoc", "
 Parameters
@@ -1031,8 +1031,8 @@ Returns true if the solution number index is equal to the first argument. raises
 ") IsTheSame1;
 		Standard_Boolean IsTheSame1(const Standard_Integer Index);
 
-		/****************** IsTheSame2 ******************/
-		/**** md5 signature: a9dd3589d0d4332d52c7b28a62c5e764 ****/
+		/****** GccAna_Circ2d3Tan::IsTheSame2 ******/
+		/****** md5 signature: a9dd3589d0d4332d52c7b28a62c5e764 ******/
 		%feature("compactdefaultargs") IsTheSame2;
 		%feature("autodoc", "
 Parameters
@@ -1049,8 +1049,8 @@ Returns true if the solution number index is equal to the second argument. raise
 ") IsTheSame2;
 		Standard_Boolean IsTheSame2(const Standard_Integer Index);
 
-		/****************** IsTheSame3 ******************/
-		/**** md5 signature: a1a8ddd14236690538e70195d30d31e9 ****/
+		/****** GccAna_Circ2d3Tan::IsTheSame3 ******/
+		/****** md5 signature: a1a8ddd14236690538e70195d30d31e9 ******/
 		%feature("compactdefaultargs") IsTheSame3;
 		%feature("autodoc", "
 Parameters
@@ -1067,8 +1067,8 @@ Returns true if the solution number index is equal to the third argument. raises
 ") IsTheSame3;
 		Standard_Boolean IsTheSame3(const Standard_Integer Index);
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Circ2d3Tan::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -1080,8 +1080,8 @@ This method returns the number of solutions. raises notdone if the construction 
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** Tangency1 ******************/
-		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
+		/****** GccAna_Circ2d3Tan::Tangency1 ******/
+		/****** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ******/
 		%feature("compactdefaultargs") Tangency1;
 		%feature("autodoc", "
 Parameters
@@ -1100,8 +1100,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** Tangency2 ******************/
-		/**** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ****/
+		/****** GccAna_Circ2d3Tan::Tangency2 ******/
+		/****** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ******/
 		%feature("compactdefaultargs") Tangency2;
 		%feature("autodoc", "
 Parameters
@@ -1120,8 +1120,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency2;
 		void Tangency2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** Tangency3 ******************/
-		/**** md5 signature: 0aa5ec0c7341ae28374df63d96d61594 ****/
+		/****** GccAna_Circ2d3Tan::Tangency3 ******/
+		/****** md5 signature: 0aa5ec0c7341ae28374df63d96d61594 ******/
 		%feature("compactdefaultargs") Tangency3;
 		%feature("autodoc", "
 Parameters
@@ -1140,8 +1140,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency3;
 		void Tangency3(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ****/
+		/****** GccAna_Circ2d3Tan::ThisSolution ******/
+		/****** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -1158,8 +1158,8 @@ Returns the solution number index and raises outofrange exception if index is gr
 ") ThisSolution;
 		gp_Circ2d ThisSolution(const Standard_Integer Index);
 
-		/****************** WhichQualifier ******************/
-		/**** md5 signature: a7c8640b1f68ed172a2307977dbf7e77 ****/
+		/****** GccAna_Circ2d3Tan::WhichQualifier ******/
+		/****** md5 signature: a7c8640b1f68ed172a2307977dbf7e77 ******/
 		%feature("compactdefaultargs") WhichQualifier;
 		%feature("autodoc", "
 Parameters
@@ -1193,8 +1193,8 @@ Returns the information about the qualifiers of the tangency arguments concernin
 ***************************/
 class GccAna_Circ2dBisec {
 	public:
-		/****************** GccAna_Circ2dBisec ******************/
-		/**** md5 signature: 96b7e55cbf3b08bc7fa908eca5dd03db ****/
+		/****** GccAna_Circ2dBisec::GccAna_Circ2dBisec ******/
+		/****** md5 signature: 96b7e55cbf3b08bc7fa908eca5dd03db ******/
 		%feature("compactdefaultargs") GccAna_Circ2dBisec;
 		%feature("autodoc", "
 Parameters
@@ -1212,8 +1212,8 @@ Constructs bisecting curves between the two circles circ1 and circ2.
 ") GccAna_Circ2dBisec;
 		 GccAna_Circ2dBisec(const gp_Circ2d & Circ1, const gp_Circ2d & Circ2);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Circ2dBisec::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1225,8 +1225,8 @@ This method returns true if the construction algorithm succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Circ2dBisec::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -1238,8 +1238,8 @@ This method returns the number of solutions. raises notdone if the construction 
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 6df4cf8ad902f791256b807b0a0d0bd3 ****/
+		/****** GccAna_Circ2dBisec::ThisSolution ******/
+		/****** md5 signature: 6df4cf8ad902f791256b807b0a0d0bd3 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -1270,8 +1270,8 @@ Returns the solution number index raises outofrange exception if index is greate
 ****************************/
 class GccAna_Circ2dTanCen {
 	public:
-		/****************** GccAna_Circ2dTanCen ******************/
-		/**** md5 signature: 03c76e41d4f72341c199827d05a5de1f ****/
+		/****** GccAna_Circ2dTanCen::GccAna_Circ2dTanCen ******/
+		/****** md5 signature: 03c76e41d4f72341c199827d05a5de1f ******/
 		%feature("compactdefaultargs") GccAna_Circ2dTanCen;
 		%feature("autodoc", "
 Parameters
@@ -1290,8 +1290,8 @@ This method implements the algorithms used to create 2d circles tangent to a cir
 ") GccAna_Circ2dTanCen;
 		 GccAna_Circ2dTanCen(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & Pcenter, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2dTanCen ******************/
-		/**** md5 signature: 6c304bbd46bdd120f2ef6d03897dacbf ****/
+		/****** GccAna_Circ2dTanCen::GccAna_Circ2dTanCen ******/
+		/****** md5 signature: 6c304bbd46bdd120f2ef6d03897dacbf ******/
 		%feature("compactdefaultargs") GccAna_Circ2dTanCen;
 		%feature("autodoc", "
 Parameters
@@ -1309,8 +1309,8 @@ This method implements the algorithms used to create 2d circles tangent to a lin
 ") GccAna_Circ2dTanCen;
 		 GccAna_Circ2dTanCen(const gp_Lin2d & Linetan, const gp_Pnt2d & Pcenter);
 
-		/****************** GccAna_Circ2dTanCen ******************/
-		/**** md5 signature: e4011363fd322219f6eccfea846244d4 ****/
+		/****** GccAna_Circ2dTanCen::GccAna_Circ2dTanCen ******/
+		/****** md5 signature: e4011363fd322219f6eccfea846244d4 ******/
 		%feature("compactdefaultargs") GccAna_Circ2dTanCen;
 		%feature("autodoc", "
 Parameters
@@ -1328,8 +1328,8 @@ This method implements the algorithms used to create 2d circles passing through 
 ") GccAna_Circ2dTanCen;
 		 GccAna_Circ2dTanCen(const gp_Pnt2d & Point1, const gp_Pnt2d & Pcenter);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Circ2dTanCen::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1341,8 +1341,8 @@ This method returns true if the construction algorithm succeeded. note: isdone p
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsTheSame1 ******************/
-		/**** md5 signature: a8b1c8a0e7512c619b1f66f2bb9e39a6 ****/
+		/****** GccAna_Circ2dTanCen::IsTheSame1 ******/
+		/****** md5 signature: a8b1c8a0e7512c619b1f66f2bb9e39a6 ******/
 		%feature("compactdefaultargs") IsTheSame1;
 		%feature("autodoc", "
 Parameters
@@ -1359,8 +1359,8 @@ Returns true if the solution number index is equal to the first argument. it rai
 ") IsTheSame1;
 		Standard_Boolean IsTheSame1(const Standard_Integer Index);
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Circ2dTanCen::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -1372,8 +1372,8 @@ Returns the number of circles, representing solutions computed by this algorithm
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** Tangency1 ******************/
-		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
+		/****** GccAna_Circ2dTanCen::Tangency1 ******/
+		/****** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ******/
 		%feature("compactdefaultargs") Tangency1;
 		%feature("autodoc", "
 Parameters
@@ -1392,8 +1392,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ****/
+		/****** GccAna_Circ2dTanCen::ThisSolution ******/
+		/****** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -1410,8 +1410,8 @@ Returns the circle, representing the solution number index and raises outofrange
 ") ThisSolution;
 		gp_Circ2d ThisSolution(const Standard_Integer Index);
 
-		/****************** WhichQualifier ******************/
-		/**** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ****/
+		/****** GccAna_Circ2dTanCen::WhichQualifier ******/
+		/****** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ******/
 		%feature("compactdefaultargs") WhichQualifier;
 		%feature("autodoc", "
 Parameters
@@ -1443,8 +1443,8 @@ Returns the qualifier qualif1 of the tangency argument for the solution of index
 ******************************/
 class GccAna_Circ2dTanOnRad {
 	public:
-		/****************** GccAna_Circ2dTanOnRad ******************/
-		/**** md5 signature: 4882ea5baf21191b2ba2e703d01cf447 ****/
+		/****** GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad ******/
+		/****** md5 signature: 4882ea5baf21191b2ba2e703d01cf447 ******/
 		%feature("compactdefaultargs") GccAna_Circ2dTanOnRad;
 		%feature("autodoc", "
 Parameters
@@ -1464,8 +1464,8 @@ This methods implements the algorithms used to create 2d circles tangent to a ci
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const GccEnt_QualifiedCirc & Qualified1, const gp_Lin2d & OnLine, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2dTanOnRad ******************/
-		/**** md5 signature: ed4bc844f130aac757078b640cf23b1b ****/
+		/****** GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad ******/
+		/****** md5 signature: ed4bc844f130aac757078b640cf23b1b ******/
 		%feature("compactdefaultargs") GccAna_Circ2dTanOnRad;
 		%feature("autodoc", "
 Parameters
@@ -1485,8 +1485,8 @@ This methods implements the algorithms used to create 2d circles tangent to a 2d
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const GccEnt_QualifiedLin & Qualified1, const gp_Lin2d & OnLine, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2dTanOnRad ******************/
-		/**** md5 signature: 5b31fba2332b509ab5d356b81ce6ad80 ****/
+		/****** GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad ******/
+		/****** md5 signature: 5b31fba2332b509ab5d356b81ce6ad80 ******/
 		%feature("compactdefaultargs") GccAna_Circ2dTanOnRad;
 		%feature("autodoc", "
 Parameters
@@ -1506,8 +1506,8 @@ This methods implements the algorithms used to create 2d circles passing through
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const gp_Pnt2d & Point1, const gp_Lin2d & OnLine, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2dTanOnRad ******************/
-		/**** md5 signature: e8d7337627d1ad5d1958c99be3fa1864 ****/
+		/****** GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad ******/
+		/****** md5 signature: e8d7337627d1ad5d1958c99be3fa1864 ******/
 		%feature("compactdefaultargs") GccAna_Circ2dTanOnRad;
 		%feature("autodoc", "
 Parameters
@@ -1527,8 +1527,8 @@ This methods implements the algorithms used to create 2d circles tangent to a ci
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const GccEnt_QualifiedCirc & Qualified1, const gp_Circ2d & OnCirc, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2dTanOnRad ******************/
-		/**** md5 signature: 4543d38f3dfd1c21786ad3aa4124e44d ****/
+		/****** GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad ******/
+		/****** md5 signature: 4543d38f3dfd1c21786ad3aa4124e44d ******/
 		%feature("compactdefaultargs") GccAna_Circ2dTanOnRad;
 		%feature("autodoc", "
 Parameters
@@ -1548,8 +1548,8 @@ This methods implements the algorithms used to create 2d circles tangent to a 2d
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const GccEnt_QualifiedLin & Qualified1, const gp_Circ2d & OnCirc, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** GccAna_Circ2dTanOnRad ******************/
-		/**** md5 signature: cca05e8ffec318c54b70c2428c935206 ****/
+		/****** GccAna_Circ2dTanOnRad::GccAna_Circ2dTanOnRad ******/
+		/****** md5 signature: cca05e8ffec318c54b70c2428c935206 ******/
 		%feature("compactdefaultargs") GccAna_Circ2dTanOnRad;
 		%feature("autodoc", "
 Parameters
@@ -1569,8 +1569,8 @@ This methods implements the algorithms used to create 2d circles passing through
 ") GccAna_Circ2dTanOnRad;
 		 GccAna_Circ2dTanOnRad(const gp_Pnt2d & Point1, const gp_Circ2d & OnCirc, const Standard_Real Radius, const Standard_Real Tolerance);
 
-		/****************** CenterOn3 ******************/
-		/**** md5 signature: 713cefd806df05d39f2ba710d8a8d081 ****/
+		/****** GccAna_Circ2dTanOnRad::CenterOn3 ******/
+		/****** md5 signature: 713cefd806df05d39f2ba710d8a8d081 ******/
 		%feature("compactdefaultargs") CenterOn3;
 		%feature("autodoc", "
 Parameters
@@ -1588,8 +1588,8 @@ Returns information about the center (on the curv) of the result. pararg is the 
 ") CenterOn3;
 		void CenterOn3(const Standard_Integer Index, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Circ2dTanOnRad::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1601,8 +1601,8 @@ Returns true if the construction algorithm does not fail (even if it finds no so
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsTheSame1 ******************/
-		/**** md5 signature: a8b1c8a0e7512c619b1f66f2bb9e39a6 ****/
+		/****** GccAna_Circ2dTanOnRad::IsTheSame1 ******/
+		/****** md5 signature: a8b1c8a0e7512c619b1f66f2bb9e39a6 ******/
 		%feature("compactdefaultargs") IsTheSame1;
 		%feature("autodoc", "
 Parameters
@@ -1619,8 +1619,8 @@ Returns true if the solution number index is equal to the first argument and fal
 ") IsTheSame1;
 		Standard_Boolean IsTheSame1(const Standard_Integer Index);
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Circ2dTanOnRad::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -1632,8 +1632,8 @@ This method returns the number of circles, representing solutions. raises notdon
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** Tangency1 ******************/
-		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
+		/****** GccAna_Circ2dTanOnRad::Tangency1 ******/
+		/****** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ******/
 		%feature("compactdefaultargs") Tangency1;
 		%feature("autodoc", "
 Parameters
@@ -1652,8 +1652,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ****/
+		/****** GccAna_Circ2dTanOnRad::ThisSolution ******/
+		/****** md5 signature: 6411fa8d68e628aba08bd186d18a6e49 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -1670,8 +1670,8 @@ Returns the solution number index and raises outofrange exception if index is gr
 ") ThisSolution;
 		gp_Circ2d ThisSolution(const Standard_Integer Index);
 
-		/****************** WhichQualifier ******************/
-		/**** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ****/
+		/****** GccAna_Circ2dTanOnRad::WhichQualifier ******/
+		/****** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ******/
 		%feature("compactdefaultargs") WhichQualifier;
 		%feature("autodoc", "
 Parameters
@@ -1703,8 +1703,8 @@ Returns the qualifier qualif1 of the tangency argument for the solution of index
 ******************************/
 class GccAna_CircLin2dBisec {
 	public:
-		/****************** GccAna_CircLin2dBisec ******************/
-		/**** md5 signature: b67f5059aeaf823e002bf5c3d9cbc6fb ****/
+		/****** GccAna_CircLin2dBisec::GccAna_CircLin2dBisec ******/
+		/****** md5 signature: b67f5059aeaf823e002bf5c3d9cbc6fb ******/
 		%feature("compactdefaultargs") GccAna_CircLin2dBisec;
 		%feature("autodoc", "
 Parameters
@@ -1722,8 +1722,8 @@ Constructs bisecting curves between the circle circle and the line line.
 ") GccAna_CircLin2dBisec;
 		 GccAna_CircLin2dBisec(const gp_Circ2d & Circle, const gp_Lin2d & Line);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_CircLin2dBisec::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1735,8 +1735,8 @@ Returns true (this construction algorithm never fails).
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_CircLin2dBisec::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -1748,8 +1748,8 @@ Returns the number of curves, representing solutions computed by this algorithm.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 6df4cf8ad902f791256b807b0a0d0bd3 ****/
+		/****** GccAna_CircLin2dBisec::ThisSolution ******/
+		/****** md5 signature: 6df4cf8ad902f791256b807b0a0d0bd3 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -1780,8 +1780,8 @@ Returns the solution number index and raises outofrange exception if index is gr
 ******************************/
 class GccAna_CircPnt2dBisec {
 	public:
-		/****************** GccAna_CircPnt2dBisec ******************/
-		/**** md5 signature: b15af1e7a4aa95b21ea9f592a088b788 ****/
+		/****** GccAna_CircPnt2dBisec::GccAna_CircPnt2dBisec ******/
+		/****** md5 signature: b15af1e7a4aa95b21ea9f592a088b788 ******/
 		%feature("compactdefaultargs") GccAna_CircPnt2dBisec;
 		%feature("autodoc", "
 Parameters
@@ -1799,8 +1799,8 @@ Constructs bisecting curves between the circle circle1 and the point point2.
 ") GccAna_CircPnt2dBisec;
 		 GccAna_CircPnt2dBisec(const gp_Circ2d & Circle1, const gp_Pnt2d & Point2);
 
-		/****************** GccAna_CircPnt2dBisec ******************/
-		/**** md5 signature: 9b11df42db407bd8004cdfb8fd5173ef ****/
+		/****** GccAna_CircPnt2dBisec::GccAna_CircPnt2dBisec ******/
+		/****** md5 signature: 9b11df42db407bd8004cdfb8fd5173ef ******/
 		%feature("compactdefaultargs") GccAna_CircPnt2dBisec;
 		%feature("autodoc", "
 Parameters
@@ -1819,8 +1819,8 @@ Constructs bisecting curves between the circle circle1 and the point point2. tol
 ") GccAna_CircPnt2dBisec;
 		 GccAna_CircPnt2dBisec(const gp_Circ2d & Circle1, const gp_Pnt2d & Point2, const Standard_Real Tolerance);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_CircPnt2dBisec::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1832,8 +1832,8 @@ Returns true (this construction algorithm never fails).
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_CircPnt2dBisec::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -1845,8 +1845,8 @@ Returns the number of curves, representing solutions computed by this algorithm.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 6df4cf8ad902f791256b807b0a0d0bd3 ****/
+		/****** GccAna_CircPnt2dBisec::ThisSolution ******/
+		/****** md5 signature: 6df4cf8ad902f791256b807b0a0d0bd3 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -1877,8 +1877,8 @@ Returns the solution number index and raises outofrange exception if index is gr
 *************************/
 class GccAna_Lin2d2Tan {
 	public:
-		/****************** GccAna_Lin2d2Tan ******************/
-		/**** md5 signature: d217055dd19c4ad537b6670197044029 ****/
+		/****** GccAna_Lin2d2Tan::GccAna_Lin2d2Tan ******/
+		/****** md5 signature: d217055dd19c4ad537b6670197044029 ******/
 		%feature("compactdefaultargs") GccAna_Lin2d2Tan;
 		%feature("autodoc", "
 Parameters
@@ -1897,8 +1897,8 @@ This methods implements the algorithms used to create 2d lines passing through 2
 ") GccAna_Lin2d2Tan;
 		 GccAna_Lin2d2Tan(const gp_Pnt2d & ThePoint1, const gp_Pnt2d & ThePoint2, const Standard_Real Tolerance);
 
-		/****************** GccAna_Lin2d2Tan ******************/
-		/**** md5 signature: bdc59b7aa8cd6b8f75211b5ebd7a8b08 ****/
+		/****** GccAna_Lin2d2Tan::GccAna_Lin2d2Tan ******/
+		/****** md5 signature: bdc59b7aa8cd6b8f75211b5ebd7a8b08 ******/
 		%feature("compactdefaultargs") GccAna_Lin2d2Tan;
 		%feature("autodoc", "
 Parameters
@@ -1917,8 +1917,8 @@ This methods implements the algorithms used to create 2d lines tangent to one ci
 ") GccAna_Lin2d2Tan;
 		 GccAna_Lin2d2Tan(const GccEnt_QualifiedCirc & Qualified1, const gp_Pnt2d & ThePoint, const Standard_Real Tolerance);
 
-		/****************** GccAna_Lin2d2Tan ******************/
-		/**** md5 signature: 8ac973a5ba56fea5ba95c5ad802a7d7d ****/
+		/****** GccAna_Lin2d2Tan::GccAna_Lin2d2Tan ******/
+		/****** md5 signature: 8ac973a5ba56fea5ba95c5ad802a7d7d ******/
 		%feature("compactdefaultargs") GccAna_Lin2d2Tan;
 		%feature("autodoc", "
 Parameters
@@ -1937,8 +1937,8 @@ This methods implements the algorithms used to create 2d lines tangent to 2 circ
 ") GccAna_Lin2d2Tan;
 		 GccAna_Lin2d2Tan(const GccEnt_QualifiedCirc & Qualified1, const GccEnt_QualifiedCirc & Qualified2, const Standard_Real Tolerance);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Lin2d2Tan::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1950,8 +1950,8 @@ This method returns true when there is a solution and false in the other cases.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Lin2d2Tan::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -1963,8 +1963,8 @@ This method returns the number of solutions. raises notdone if the construction 
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** Tangency1 ******************/
-		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
+		/****** GccAna_Lin2d2Tan::Tangency1 ******/
+		/****** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ******/
 		%feature("compactdefaultargs") Tangency1;
 		%feature("autodoc", "
 Parameters
@@ -1983,8 +1983,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** Tangency2 ******************/
-		/**** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ****/
+		/****** GccAna_Lin2d2Tan::Tangency2 ******/
+		/****** md5 signature: aa2c229192467eeb8e5b8843ab43ae52 ******/
 		%feature("compactdefaultargs") Tangency2;
 		%feature("autodoc", "
 Parameters
@@ -2003,8 +2003,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency2;
 		void Tangency2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ****/
+		/****** GccAna_Lin2d2Tan::ThisSolution ******/
+		/****** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -2021,8 +2021,8 @@ Returns the solution number index and raises outofrange exception if index is gr
 ") ThisSolution;
 		gp_Lin2d ThisSolution(const Standard_Integer Index);
 
-		/****************** WhichQualifier ******************/
-		/**** md5 signature: 6aa541a02c7988b37a04a532d9174284 ****/
+		/****** GccAna_Lin2d2Tan::WhichQualifier ******/
+		/****** md5 signature: 6aa541a02c7988b37a04a532d9174284 ******/
 		%feature("compactdefaultargs") WhichQualifier;
 		%feature("autodoc", "
 Parameters
@@ -2055,8 +2055,8 @@ Returns the qualifiers qualif1 and qualif2 of the tangency arguments for the sol
 **************************/
 class GccAna_Lin2dBisec {
 	public:
-		/****************** GccAna_Lin2dBisec ******************/
-		/**** md5 signature: 27748dfa51dc753aa7d97ccfd97888cc ****/
+		/****** GccAna_Lin2dBisec::GccAna_Lin2dBisec ******/
+		/****** md5 signature: 27748dfa51dc753aa7d97ccfd97888cc ******/
 		%feature("compactdefaultargs") GccAna_Lin2dBisec;
 		%feature("autodoc", "
 Parameters
@@ -2074,8 +2074,8 @@ Constructs bisecting lines between the two lines lin1 and lin2.
 ") GccAna_Lin2dBisec;
 		 GccAna_Lin2dBisec(const gp_Lin2d & Lin1, const gp_Lin2d & Lin2);
 
-		/****************** Intersection1 ******************/
-		/**** md5 signature: 77db5554380ec88a636c5d923715b5a3 ****/
+		/****** GccAna_Lin2dBisec::Intersection1 ******/
+		/****** md5 signature: 77db5554380ec88a636c5d923715b5a3 ******/
 		%feature("compactdefaultargs") Intersection1;
 		%feature("autodoc", "
 Parameters
@@ -2094,8 +2094,8 @@ Returns information about the intersection point between the result number index
 ") Intersection1;
 		void Intersection1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** Intersection2 ******************/
-		/**** md5 signature: 3a8002e96f3bc12ac0919f98e024e3f2 ****/
+		/****** GccAna_Lin2dBisec::Intersection2 ******/
+		/****** md5 signature: 3a8002e96f3bc12ac0919f98e024e3f2 ******/
 		%feature("compactdefaultargs") Intersection2;
 		%feature("autodoc", "
 Parameters
@@ -2114,8 +2114,8 @@ Returns information about the intersection point between the result number index
 ") Intersection2;
 		void Intersection2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Lin2dBisec::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2127,8 +2127,8 @@ Returns true when the algorithm succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Lin2dBisec::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -2140,8 +2140,8 @@ Returns the number of solutions and raise notdone if the constructor wasn't call
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ****/
+		/****** GccAna_Lin2dBisec::ThisSolution ******/
+		/****** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -2172,8 +2172,8 @@ Returns the solution number index . the first solution is the inside one and the
 ***************************/
 class GccAna_Lin2dTanObl {
 	public:
-		/****************** GccAna_Lin2dTanObl ******************/
-		/**** md5 signature: 7eb2845925f436aa37476ec0a3500de7 ****/
+		/****** GccAna_Lin2dTanObl::GccAna_Lin2dTanObl ******/
+		/****** md5 signature: 7eb2845925f436aa37476ec0a3500de7 ******/
 		%feature("compactdefaultargs") GccAna_Lin2dTanObl;
 		%feature("autodoc", "
 Parameters
@@ -2192,8 +2192,8 @@ This class implements the algorithms used to create 2d line passing through a po
 ") GccAna_Lin2dTanObl;
 		 GccAna_Lin2dTanObl(const gp_Pnt2d & ThePoint, const gp_Lin2d & TheLine, const Standard_Real TheAngle);
 
-		/****************** GccAna_Lin2dTanObl ******************/
-		/**** md5 signature: f43e6e3fb85ca36e1c44a55e5df13fb3 ****/
+		/****** GccAna_Lin2dTanObl::GccAna_Lin2dTanObl ******/
+		/****** md5 signature: f43e6e3fb85ca36e1c44a55e5df13fb3 ******/
 		%feature("compactdefaultargs") GccAna_Lin2dTanObl;
 		%feature("autodoc", "
 Parameters
@@ -2212,8 +2212,8 @@ This class implements the algorithms used to create 2d line tangent to a circle 
 ") GccAna_Lin2dTanObl;
 		 GccAna_Lin2dTanObl(const GccEnt_QualifiedCirc & Qualified1, const gp_Lin2d & TheLine, const Standard_Real TheAngle);
 
-		/****************** Intersection2 ******************/
-		/**** md5 signature: 3a8002e96f3bc12ac0919f98e024e3f2 ****/
+		/****** GccAna_Lin2dTanObl::Intersection2 ******/
+		/****** md5 signature: 3a8002e96f3bc12ac0919f98e024e3f2 ******/
 		%feature("compactdefaultargs") Intersection2;
 		%feature("autodoc", "
 Parameters
@@ -2232,8 +2232,8 @@ Returns information about the intersection between the result number index and t
 ") Intersection2;
 		void Intersection2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Lin2dTanObl::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2245,8 +2245,8 @@ Returns true if the algorithm succeeded. note: isdone protects against a failure
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Lin2dTanObl::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -2258,8 +2258,8 @@ Returns the number of of lines, representing solutions computed by this algorith
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** Tangency1 ******************/
-		/**** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ****/
+		/****** GccAna_Lin2dTanObl::Tangency1 ******/
+		/****** md5 signature: 2560a863e327c3fcf6bbfde26d55fd79 ******/
 		%feature("compactdefaultargs") Tangency1;
 		%feature("autodoc", "
 Parameters
@@ -2278,8 +2278,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ****/
+		/****** GccAna_Lin2dTanObl::ThisSolution ******/
+		/****** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -2296,8 +2296,8 @@ Returns the solution number index. be careful: the index is only a way to get al
 ") ThisSolution;
 		gp_Lin2d ThisSolution(const Standard_Integer Index);
 
-		/****************** WhichQualifier ******************/
-		/**** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ****/
+		/****** GccAna_Lin2dTanObl::WhichQualifier ******/
+		/****** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ******/
 		%feature("compactdefaultargs") WhichQualifier;
 		%feature("autodoc", "
 Parameters
@@ -2329,8 +2329,8 @@ Returns the qualifier qualif1 of the tangency argument for the solution of index
 ***************************/
 class GccAna_Lin2dTanPar {
 	public:
-		/****************** GccAna_Lin2dTanPar ******************/
-		/**** md5 signature: c881afbdd634f9df839fddb1eeb9ac71 ****/
+		/****** GccAna_Lin2dTanPar::GccAna_Lin2dTanPar ******/
+		/****** md5 signature: c881afbdd634f9df839fddb1eeb9ac71 ******/
 		%feature("compactdefaultargs") GccAna_Lin2dTanPar;
 		%feature("autodoc", "
 Parameters
@@ -2348,8 +2348,8 @@ This method implements the algorithms used to create a 2d line passing through a
 ") GccAna_Lin2dTanPar;
 		 GccAna_Lin2dTanPar(const gp_Pnt2d & ThePoint, const gp_Lin2d & Lin1);
 
-		/****************** GccAna_Lin2dTanPar ******************/
-		/**** md5 signature: 89c33b03f29a6a0f5a40629902b88bea ****/
+		/****** GccAna_Lin2dTanPar::GccAna_Lin2dTanPar ******/
+		/****** md5 signature: 89c33b03f29a6a0f5a40629902b88bea ******/
 		%feature("compactdefaultargs") GccAna_Lin2dTanPar;
 		%feature("autodoc", "
 Parameters
@@ -2367,8 +2367,8 @@ This method implements the algorithms used to create a 2d line tangent to a circ
 ") GccAna_Lin2dTanPar;
 		 GccAna_Lin2dTanPar(const GccEnt_QualifiedCirc & Qualified1, const gp_Lin2d & Lin1);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Lin2dTanPar::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2380,8 +2380,8 @@ Returns true if the algorithm succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Lin2dTanPar::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -2393,8 +2393,8 @@ Returns the number of solutions. raises notdone if the construction algorithm di
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** Tangency1 ******************/
-		/**** md5 signature: ac6b428c3f88d193815480de09ccbe56 ****/
+		/****** GccAna_Lin2dTanPar::Tangency1 ******/
+		/****** md5 signature: ac6b428c3f88d193815480de09ccbe56 ******/
 		%feature("compactdefaultargs") Tangency1;
 		%feature("autodoc", "
 Parameters
@@ -2413,8 +2413,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & Pnt);
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ****/
+		/****** GccAna_Lin2dTanPar::ThisSolution ******/
+		/****** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -2431,8 +2431,8 @@ Returns the solution number index and raises outofrange exception if index is gr
 ") ThisSolution;
 		gp_Lin2d ThisSolution(const Standard_Integer Index);
 
-		/****************** WhichQualifier ******************/
-		/**** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ****/
+		/****** GccAna_Lin2dTanPar::WhichQualifier ******/
+		/****** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ******/
 		%feature("compactdefaultargs") WhichQualifier;
 		%feature("autodoc", "
 Parameters
@@ -2464,8 +2464,8 @@ Returns the information about the qualifiers of the tangency arguments concernin
 ***************************/
 class GccAna_Lin2dTanPer {
 	public:
-		/****************** GccAna_Lin2dTanPer ******************/
-		/**** md5 signature: f6bf9d44d3e72f4cec3042dce7defa9a ****/
+		/****** GccAna_Lin2dTanPer::GccAna_Lin2dTanPer ******/
+		/****** md5 signature: f6bf9d44d3e72f4cec3042dce7defa9a ******/
 		%feature("compactdefaultargs") GccAna_Lin2dTanPer;
 		%feature("autodoc", "
 Parameters
@@ -2483,8 +2483,8 @@ This method implements the algorithms used to create 2d lines passing through a 
 ") GccAna_Lin2dTanPer;
 		 GccAna_Lin2dTanPer(const gp_Pnt2d & ThePnt, const gp_Lin2d & TheLin);
 
-		/****************** GccAna_Lin2dTanPer ******************/
-		/**** md5 signature: 374b2546dad202788116acf69bed120f ****/
+		/****** GccAna_Lin2dTanPer::GccAna_Lin2dTanPer ******/
+		/****** md5 signature: 374b2546dad202788116acf69bed120f ******/
 		%feature("compactdefaultargs") GccAna_Lin2dTanPer;
 		%feature("autodoc", "
 Parameters
@@ -2502,8 +2502,8 @@ This method implements the algorithms used to create 2d lines passing through a 
 ") GccAna_Lin2dTanPer;
 		 GccAna_Lin2dTanPer(const gp_Pnt2d & ThePnt, const gp_Circ2d & TheCircle);
 
-		/****************** GccAna_Lin2dTanPer ******************/
-		/**** md5 signature: 79faa2fb57bccb81e97ae06a99138b62 ****/
+		/****** GccAna_Lin2dTanPer::GccAna_Lin2dTanPer ******/
+		/****** md5 signature: 79faa2fb57bccb81e97ae06a99138b62 ******/
 		%feature("compactdefaultargs") GccAna_Lin2dTanPer;
 		%feature("autodoc", "
 Parameters
@@ -2521,8 +2521,8 @@ This method implements the algorithms used to create 2d lines tangent to a circl
 ") GccAna_Lin2dTanPer;
 		 GccAna_Lin2dTanPer(const GccEnt_QualifiedCirc & Qualified1, const gp_Lin2d & TheLin);
 
-		/****************** GccAna_Lin2dTanPer ******************/
-		/**** md5 signature: 6f6ba382cc8ec2155da6b36128c79d63 ****/
+		/****** GccAna_Lin2dTanPer::GccAna_Lin2dTanPer ******/
+		/****** md5 signature: 6f6ba382cc8ec2155da6b36128c79d63 ******/
 		%feature("compactdefaultargs") GccAna_Lin2dTanPer;
 		%feature("autodoc", "
 Parameters
@@ -2540,8 +2540,8 @@ This method implements the algorithms used to create 2d lines tangent to a circl
 ") GccAna_Lin2dTanPer;
 		 GccAna_Lin2dTanPer(const GccEnt_QualifiedCirc & Qualified1, const gp_Circ2d & TheCircle);
 
-		/****************** Intersection2 ******************/
-		/**** md5 signature: 3a8002e96f3bc12ac0919f98e024e3f2 ****/
+		/****** GccAna_Lin2dTanPer::Intersection2 ******/
+		/****** md5 signature: 3a8002e96f3bc12ac0919f98e024e3f2 ******/
 		%feature("compactdefaultargs") Intersection2;
 		%feature("autodoc", "
 Parameters
@@ -2560,8 +2560,8 @@ Returns information about the intersection between the solution number index and
 ") Intersection2;
 		void Intersection2(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & PntSol);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Lin2dTanPer::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2573,8 +2573,8 @@ Returns true if the algorithm succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbSolutions ******************/
-		/**** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ****/
+		/****** GccAna_Lin2dTanPer::NbSolutions ******/
+		/****** md5 signature: 02fdbddb1f7eff080419f602203d8f8b ******/
 		%feature("compactdefaultargs") NbSolutions;
 		%feature("autodoc", "Return
 -------
@@ -2586,8 +2586,8 @@ Returns the number of solutions. raises notdone if the construction algorithm di
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
-		/****************** Tangency1 ******************/
-		/**** md5 signature: ac6b428c3f88d193815480de09ccbe56 ****/
+		/****** GccAna_Lin2dTanPer::Tangency1 ******/
+		/****** md5 signature: ac6b428c3f88d193815480de09ccbe56 ******/
 		%feature("compactdefaultargs") Tangency1;
 		%feature("autodoc", "
 Parameters
@@ -2606,8 +2606,8 @@ Returns information about the tangency point between the result number index and
 ") Tangency1;
 		void Tangency1(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & Pnt);
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ****/
+		/****** GccAna_Lin2dTanPer::ThisSolution ******/
+		/****** md5 signature: 96dd6b3b788fc0b155d75bed87794c74 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "
 Parameters
@@ -2624,8 +2624,8 @@ Returns the solution number index and raises outofrange exception if index is gr
 ") ThisSolution;
 		gp_Lin2d ThisSolution(const Standard_Integer Index);
 
-		/****************** WhichQualifier ******************/
-		/**** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ****/
+		/****** GccAna_Lin2dTanPer::WhichQualifier ******/
+		/****** md5 signature: 0ea2282c206094fba20eed9ca0e0787e ******/
 		%feature("compactdefaultargs") WhichQualifier;
 		%feature("autodoc", "
 Parameters
@@ -2657,8 +2657,8 @@ Returns the qualifier qualif1 of the tangency argument for the solution of index
 *****************************/
 class GccAna_LinPnt2dBisec {
 	public:
-		/****************** GccAna_LinPnt2dBisec ******************/
-		/**** md5 signature: 9b8fb736653b04a51d78e905419cfbb4 ****/
+		/****** GccAna_LinPnt2dBisec::GccAna_LinPnt2dBisec ******/
+		/****** md5 signature: 9b8fb736653b04a51d78e905419cfbb4 ******/
 		%feature("compactdefaultargs") GccAna_LinPnt2dBisec;
 		%feature("autodoc", "
 Parameters
@@ -2676,8 +2676,8 @@ Constructs a bisecting curve between the line line1 and the point point2.
 ") GccAna_LinPnt2dBisec;
 		 GccAna_LinPnt2dBisec(const gp_Lin2d & Line1, const gp_Pnt2d & Point2);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_LinPnt2dBisec::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2689,8 +2689,8 @@ Returns true if the algorithm succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 638689030e006ab6b93f0c543a450e90 ****/
+		/****** GccAna_LinPnt2dBisec::ThisSolution ******/
+		/****** md5 signature: 638689030e006ab6b93f0c543a450e90 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "Return
 -------
@@ -2716,8 +2716,8 @@ Returns the number of solutions. it raises notdone if the construction algorithm
 **************************/
 class GccAna_Pnt2dBisec {
 	public:
-		/****************** GccAna_Pnt2dBisec ******************/
-		/**** md5 signature: eb68fafde6440a59d787a34fe2c63f6b ****/
+		/****** GccAna_Pnt2dBisec::GccAna_Pnt2dBisec ******/
+		/****** md5 signature: eb68fafde6440a59d787a34fe2c63f6b ******/
 		%feature("compactdefaultargs") GccAna_Pnt2dBisec;
 		%feature("autodoc", "
 Parameters
@@ -2735,8 +2735,8 @@ Constructs a bisecting line between the points point1 and point2.
 ") GccAna_Pnt2dBisec;
 		 GccAna_Pnt2dBisec(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2);
 
-		/****************** HasSolution ******************/
-		/**** md5 signature: f9ff4e6e008069e4ae618904bd89decf ****/
+		/****** GccAna_Pnt2dBisec::HasSolution ******/
+		/****** md5 signature: f9ff4e6e008069e4ae618904bd89decf ******/
 		%feature("compactdefaultargs") HasSolution;
 		%feature("autodoc", "Return
 -------
@@ -2748,8 +2748,8 @@ Returns true if this algorithm has a solution, i.e. if the two points are not co
 ") HasSolution;
 		Standard_Boolean HasSolution();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GccAna_Pnt2dBisec::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2761,8 +2761,8 @@ Returns true (this construction algorithm never fails).
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** ThisSolution ******************/
-		/**** md5 signature: 4236a79f3dec284a3f8c2579f4fda830 ****/
+		/****** GccAna_Pnt2dBisec::ThisSolution ******/
+		/****** md5 signature: 4236a79f3dec284a3f8c2579f4fda830 ******/
 		%feature("compactdefaultargs") ThisSolution;
 		%feature("autodoc", "Return
 -------

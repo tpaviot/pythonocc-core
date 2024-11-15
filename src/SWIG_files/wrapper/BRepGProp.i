@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPGPROPDOCSTRING
 "BRepGProp module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepgprop.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepgprop.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPGPROPDOCSTRING) BRepGProp
 
@@ -106,8 +106,8 @@ from OCC.Core.Exception import *
 %rename(brepgprop) BRepGProp;
 class BRepGProp {
 	public:
-		/****************** LinearProperties ******************/
-		/**** md5 signature: a063d5e771c7cceda8fc1f79fdc01d30 ****/
+		/****** BRepGProp::LinearProperties ******/
+		/****** md5 signature: a063d5e771c7cceda8fc1f79fdc01d30 ******/
 		%feature("compactdefaultargs") LinearProperties;
 		%feature("autodoc", "
 Parameters
@@ -127,8 +127,8 @@ Computes the linear global properties of the shape s, i.e. the global properties
 ") LinearProperties;
 		static void LinearProperties(const TopoDS_Shape & S, GProp_GProps & LProps, const Standard_Boolean SkipShared = Standard_False, const Standard_Boolean UseTriangulation = Standard_False);
 
-		/****************** SurfaceProperties ******************/
-		/**** md5 signature: de09a2b35153022287aa2a8431deaef5 ****/
+		/****** BRepGProp::SurfaceProperties ******/
+		/****** md5 signature: de09a2b35153022287aa2a8431deaef5 ******/
 		%feature("compactdefaultargs") SurfaceProperties;
 		%feature("autodoc", "
 Parameters
@@ -148,8 +148,8 @@ Computes the surface global properties of the shape s, i.e. the global propertie
 ") SurfaceProperties;
 		static void SurfaceProperties(const TopoDS_Shape & S, GProp_GProps & SProps, const Standard_Boolean SkipShared = Standard_False, const Standard_Boolean UseTriangulation = Standard_False);
 
-		/****************** SurfaceProperties ******************/
-		/**** md5 signature: 98c472661263186b1d30e4379dd9db78 ****/
+		/****** BRepGProp::SurfaceProperties ******/
+		/****** md5 signature: 98c472661263186b1d30e4379dd9db78 ******/
 		%feature("compactdefaultargs") SurfaceProperties;
 		%feature("autodoc", "
 Parameters
@@ -169,8 +169,8 @@ Updates <sprops> with the shape <s>, that contains its principal properties. the
 ") SurfaceProperties;
 		static Standard_Real SurfaceProperties(const TopoDS_Shape & S, GProp_GProps & SProps, const Standard_Real Eps, const Standard_Boolean SkipShared = Standard_False);
 
-		/****************** VolumeProperties ******************/
-		/**** md5 signature: 33909e093cf59347d7db0b4d010a93f5 ****/
+		/****** BRepGProp::VolumeProperties ******/
+		/****** md5 signature: 33909e093cf59347d7db0b4d010a93f5 ******/
 		%feature("compactdefaultargs") VolumeProperties;
 		%feature("autodoc", "
 Parameters
@@ -191,8 +191,8 @@ Description
 ") VolumeProperties;
 		static void VolumeProperties(const TopoDS_Shape & S, GProp_GProps & VProps, const Standard_Boolean OnlyClosed = Standard_False, const Standard_Boolean SkipShared = Standard_False, const Standard_Boolean UseTriangulation = Standard_False);
 
-		/****************** VolumeProperties ******************/
-		/**** md5 signature: 04af0768aae13f233016a52d30fcfdbb ****/
+		/****** BRepGProp::VolumeProperties ******/
+		/****** md5 signature: 04af0768aae13f233016a52d30fcfdbb ******/
 		%feature("compactdefaultargs") VolumeProperties;
 		%feature("autodoc", "
 Parameters
@@ -213,8 +213,8 @@ Updates <vprops> with the shape <s>, that contains its principal properties. the
 ") VolumeProperties;
 		static Standard_Real VolumeProperties(const TopoDS_Shape & S, GProp_GProps & VProps, const Standard_Real Eps, const Standard_Boolean OnlyClosed = Standard_False, const Standard_Boolean SkipShared = Standard_False);
 
-		/****************** VolumePropertiesGK ******************/
-		/**** md5 signature: 350eb5f7ad614101e55a9b0c0afcdb22 ****/
+		/****** BRepGProp::VolumePropertiesGK ******/
+		/****** md5 signature: 350eb5f7ad614101e55a9b0c0afcdb22 ******/
 		%feature("compactdefaultargs") VolumePropertiesGK;
 		%feature("autodoc", "
 Parameters
@@ -238,8 +238,8 @@ Updates <vprops> with the shape <s>, that contains its principal properties. the
 ") VolumePropertiesGK;
 		static Standard_Real VolumePropertiesGK(const TopoDS_Shape & S, GProp_GProps & VProps, const Standard_Real Eps = 0.001, const Standard_Boolean OnlyClosed = Standard_False, const Standard_Boolean IsUseSpan = Standard_False, const Standard_Boolean CGFlag = Standard_False, const Standard_Boolean IFlag = Standard_False, const Standard_Boolean SkipShared = Standard_False);
 
-		/****************** VolumePropertiesGK ******************/
-		/**** md5 signature: 79b57301830c4c31a5b43904d7943185 ****/
+		/****** BRepGProp::VolumePropertiesGK ******/
+		/****** md5 signature: 79b57301830c4c31a5b43904d7943185 ******/
 		%feature("compactdefaultargs") VolumePropertiesGK;
 		%feature("autodoc", "
 Parameters
@@ -278,8 +278,8 @@ No available documentation.
 *************************/
 class BRepGProp_Cinert : public GProp_GProps {
 	public:
-		/****************** BRepGProp_Cinert ******************/
-		/**** md5 signature: ad62a1230096650569eb6d35241343b0 ****/
+		/****** BRepGProp_Cinert::BRepGProp_Cinert ******/
+		/****** md5 signature: ad62a1230096650569eb6d35241343b0 ******/
 		%feature("compactdefaultargs") BRepGProp_Cinert;
 		%feature("autodoc", "Return
 -------
@@ -291,8 +291,8 @@ No available documentation.
 ") BRepGProp_Cinert;
 		 BRepGProp_Cinert();
 
-		/****************** BRepGProp_Cinert ******************/
-		/**** md5 signature: 40e8a04c04175d96e9078dec540e1699 ****/
+		/****** BRepGProp_Cinert::BRepGProp_Cinert ******/
+		/****** md5 signature: 40e8a04c04175d96e9078dec540e1699 ******/
 		%feature("compactdefaultargs") BRepGProp_Cinert;
 		%feature("autodoc", "
 Parameters
@@ -310,8 +310,8 @@ No available documentation.
 ") BRepGProp_Cinert;
 		 BRepGProp_Cinert(const BRepAdaptor_Curve & C, const gp_Pnt & CLocation);
 
-		/****************** Perform ******************/
-		/**** md5 signature: b1a2ad101c61982e2656809aff72ca36 ****/
+		/****** BRepGProp_Cinert::Perform ******/
+		/****** md5 signature: b1a2ad101c61982e2656809aff72ca36 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -328,8 +328,8 @@ No available documentation.
 ") Perform;
 		void Perform(const BRepAdaptor_Curve & C);
 
-		/****************** SetLocation ******************/
-		/**** md5 signature: 5ed92b27e15802cdea187cf4e43b346a ****/
+		/****** BRepGProp_Cinert::SetLocation ******/
+		/****** md5 signature: 5ed92b27e15802cdea187cf4e43b346a ******/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "
 Parameters
@@ -360,8 +360,8 @@ No available documentation.
 *************************/
 class BRepGProp_Domain {
 	public:
-		/****************** BRepGProp_Domain ******************/
-		/**** md5 signature: 7986cd2cf79fcfafe2e1c074b6ca854d ****/
+		/****** BRepGProp_Domain::BRepGProp_Domain ******/
+		/****** md5 signature: 7986cd2cf79fcfafe2e1c074b6ca854d ******/
 		%feature("compactdefaultargs") BRepGProp_Domain;
 		%feature("autodoc", "Return
 -------
@@ -373,8 +373,8 @@ Empty constructor.
 ") BRepGProp_Domain;
 		 BRepGProp_Domain();
 
-		/****************** BRepGProp_Domain ******************/
-		/**** md5 signature: 3c6bdfefe3d3a9f2a2d3d47449b74a3b ****/
+		/****** BRepGProp_Domain::BRepGProp_Domain ******/
+		/****** md5 signature: 3c6bdfefe3d3a9f2a2d3d47449b74a3b ******/
 		%feature("compactdefaultargs") BRepGProp_Domain;
 		%feature("autodoc", "
 Parameters
@@ -391,8 +391,8 @@ Constructor. initializes the domain with the face.
 ") BRepGProp_Domain;
 		 BRepGProp_Domain(const TopoDS_Face & F);
 
-		/****************** Init ******************/
-		/**** md5 signature: a8dfaa68079e743e08190fe58d950a9a ****/
+		/****** BRepGProp_Domain::Init ******/
+		/****** md5 signature: a8dfaa68079e743e08190fe58d950a9a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -409,8 +409,8 @@ Initializes the domain with the face.
 ") Init;
 		void Init(const TopoDS_Face & F);
 
-		/****************** Init ******************/
-		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
+		/****** BRepGProp_Domain::Init ******/
+		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -422,8 +422,8 @@ Initializes the exploration with the face already set.
 ") Init;
 		void Init();
 
-		/****************** More ******************/
-		/**** md5 signature: f2144011648ae849666b28430a27a0ea ****/
+		/****** BRepGProp_Domain::More ******/
+		/****** md5 signature: f2144011648ae849666b28430a27a0ea ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -435,8 +435,8 @@ Returns true if there is another arc of curve in the list.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** BRepGProp_Domain::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -448,8 +448,8 @@ Sets the index of the arc iterator to the next arc of curve.
 ") Next;
 		void Next();
 
-		/****************** Value ******************/
-		/**** md5 signature: 908df29e834e8aebb610870c9cea1651 ****/
+		/****** BRepGProp_Domain::Value ******/
+		/****** md5 signature: 908df29e834e8aebb610870c9cea1651 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -475,8 +475,8 @@ Returns the current edge.
 ***************************/
 class BRepGProp_EdgeTool {
 	public:
-		/****************** D1 ******************/
-		/**** md5 signature: 5556be7cd9882922dfddd95e3b9c9ecf ****/
+		/****** BRepGProp_EdgeTool::D1 ******/
+		/****** md5 signature: 5556be7cd9882922dfddd95e3b9c9ecf ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -496,8 +496,8 @@ Returns the point of parameter u and the first derivative at this point.
 ") D1;
 		static void D1(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** FirstParameter ******************/
-		/**** md5 signature: 1757779ac38cb6ed7a7fc48dc2248f69 ****/
+		/****** BRepGProp_EdgeTool::FirstParameter ******/
+		/****** md5 signature: 1757779ac38cb6ed7a7fc48dc2248f69 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -514,8 +514,8 @@ Returns the parametric value of the start point of the curve. the curve is orien
 ") FirstParameter;
 		static Standard_Real FirstParameter(const BRepAdaptor_Curve & C);
 
-		/****************** IntegrationOrder ******************/
-		/**** md5 signature: 7daceb790afa0c813f14f4153aca3dd9 ****/
+		/****** BRepGProp_EdgeTool::IntegrationOrder ******/
+		/****** md5 signature: 7daceb790afa0c813f14f4153aca3dd9 ******/
 		%feature("compactdefaultargs") IntegrationOrder;
 		%feature("autodoc", "
 Parameters
@@ -532,8 +532,8 @@ Returns the number of gauss points required to do the integration with a good ac
 ") IntegrationOrder;
 		static Standard_Integer IntegrationOrder(const BRepAdaptor_Curve & C);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: f429463d75cd548af36c429f480bc438 ****/
+		/****** BRepGProp_EdgeTool::Intervals ******/
+		/****** md5 signature: f429463d75cd548af36c429f480bc438 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -552,8 +552,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		static void Intervals(const BRepAdaptor_Curve & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** LastParameter ******************/
-		/**** md5 signature: e697bafb03d659fa87fd20dbec7f562b ****/
+		/****** BRepGProp_EdgeTool::LastParameter ******/
+		/****** md5 signature: e697bafb03d659fa87fd20dbec7f562b ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -570,8 +570,8 @@ Returns the parametric value of the end point of the curve. the curve is oriente
 ") LastParameter;
 		static Standard_Real LastParameter(const BRepAdaptor_Curve & C);
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: c4391d4034556532fdf723807037192a ****/
+		/****** BRepGProp_EdgeTool::NbIntervals ******/
+		/****** md5 signature: c4391d4034556532fdf723807037192a ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -589,8 +589,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const BRepAdaptor_Curve & C, const GeomAbs_Shape S);
 
-		/****************** Value ******************/
-		/**** md5 signature: 23b56266cc1e7b195b61ae726893d32f ****/
+		/****** BRepGProp_EdgeTool::Value ******/
+		/****** md5 signature: 23b56266cc1e7b195b61ae726893d32f ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -622,8 +622,8 @@ Returns the point of parameter u on the loaded curve.
 ***********************/
 class BRepGProp_Face {
 	public:
-		/****************** BRepGProp_Face ******************/
-		/**** md5 signature: bc73a426a381f81aa03dcc1823778dd2 ****/
+		/****** BRepGProp_Face::BRepGProp_Face ******/
+		/****** md5 signature: bc73a426a381f81aa03dcc1823778dd2 ******/
 		%feature("compactdefaultargs") BRepGProp_Face;
 		%feature("autodoc", "
 Parameters
@@ -640,8 +640,8 @@ Constructor. initializes the object with a flag isusespan that says if it is nec
 ") BRepGProp_Face;
 		 BRepGProp_Face(const Standard_Boolean IsUseSpan = Standard_False);
 
-		/****************** BRepGProp_Face ******************/
-		/**** md5 signature: 85e85a5b8783b4d37ef3421a4493b8bf ****/
+		/****** BRepGProp_Face::BRepGProp_Face ******/
+		/****** md5 signature: 85e85a5b8783b4d37ef3421a4493b8bf ******/
 		%feature("compactdefaultargs") BRepGProp_Face;
 		%feature("autodoc", "
 Parameters
@@ -659,8 +659,8 @@ Constructor. initializes the object with the face and the flag isusespan that sa
 ") BRepGProp_Face;
 		 BRepGProp_Face(const TopoDS_Face & F, const Standard_Boolean IsUseSpan = Standard_False);
 
-		/****************** Bounds ******************/
-		/**** md5 signature: f30c35e741e636532fbff37cccb741f7 ****/
+		/****** BRepGProp_Face::Bounds ******/
+		/****** md5 signature: f30c35e741e636532fbff37cccb741f7 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -679,8 +679,8 @@ Returns the parametric bounds of the face.
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** D12d ******************/
-		/**** md5 signature: 93778e4127f5c48e81f47d36c5a6f892 ****/
+		/****** BRepGProp_Face::D12d ******/
+		/****** md5 signature: 93778e4127f5c48e81f47d36c5a6f892 ******/
 		%feature("compactdefaultargs") D12d;
 		%feature("autodoc", "
 Parameters
@@ -699,8 +699,8 @@ Returns the point of parameter u and the first derivative at this point of a bou
 ") D12d;
 		void D12d(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** FirstParameter ******************/
-		/**** md5 signature: 4ccedbaad83be904f510b4760c75f69c ****/
+		/****** BRepGProp_Face::FirstParameter ******/
+		/****** md5 signature: 4ccedbaad83be904f510b4760c75f69c ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
@@ -712,8 +712,8 @@ Returns the parametric value of the start point of the current arc of curve.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
-		/****************** GetFace ******************/
-		/**** md5 signature: 24f8605987955c9a8fdd14219215e9a9 ****/
+		/****** BRepGProp_Face::GetFace ******/
+		/****** md5 signature: 24f8605987955c9a8fdd14219215e9a9 ******/
 		%feature("compactdefaultargs") GetFace;
 		%feature("autodoc", "Return
 -------
@@ -725,8 +725,8 @@ Returns the topods face.
 ") GetFace;
 		const TopoDS_Face GetFace();
 
-		/****************** GetTKnots ******************/
-		/**** md5 signature: 4b2a2cee8551d61043503150f4f516ad ****/
+		/****** BRepGProp_Face::GetTKnots ******/
+		/****** md5 signature: 4b2a2cee8551d61043503150f4f516ad ******/
 		%feature("compactdefaultargs") GetTKnots;
 		%feature("autodoc", "
 Parameters
@@ -745,8 +745,8 @@ Returns an array of combination of t knots of the arc and v knots of the face. t
 ") GetTKnots;
 		void GetTKnots(const Standard_Real theTMin, const Standard_Real theTMax, opencascade::handle<TColStd_HArray1OfReal> & theTKnots);
 
-		/****************** GetUKnots ******************/
-		/**** md5 signature: 2b537a9010295a9da0b784859dd3d427 ****/
+		/****** BRepGProp_Face::GetUKnots ******/
+		/****** md5 signature: 2b537a9010295a9da0b784859dd3d427 ******/
 		%feature("compactdefaultargs") GetUKnots;
 		%feature("autodoc", "
 Parameters
@@ -765,8 +765,8 @@ Returns an array of u knots of the face. the first and last elements of the arra
 ") GetUKnots;
 		void GetUKnots(const Standard_Real theUMin, const Standard_Real theUMax, opencascade::handle<TColStd_HArray1OfReal> & theUKnots);
 
-		/****************** IntegrationOrder ******************/
-		/**** md5 signature: 9d941348f9e90be3833675d84fa7e21c ****/
+		/****** BRepGProp_Face::IntegrationOrder ******/
+		/****** md5 signature: 9d941348f9e90be3833675d84fa7e21c ******/
 		%feature("compactdefaultargs") IntegrationOrder;
 		%feature("autodoc", "Return
 -------
@@ -778,8 +778,8 @@ Returns the number of points required to do the integration along the parameter 
 ") IntegrationOrder;
 		Standard_Integer IntegrationOrder();
 
-		/****************** LIntOrder ******************/
-		/**** md5 signature: 582e14b0c3c2657678510ec5664dbbb0 ****/
+		/****** BRepGProp_Face::LIntOrder ******/
+		/****** md5 signature: 582e14b0c3c2657678510ec5664dbbb0 ******/
 		%feature("compactdefaultargs") LIntOrder;
 		%feature("autodoc", "
 Parameters
@@ -796,8 +796,8 @@ No available documentation.
 ") LIntOrder;
 		Standard_Integer LIntOrder(const Standard_Real Eps);
 
-		/****************** LIntSubs ******************/
-		/**** md5 signature: 16c426ad00e717ef57398a45ebfc358f ****/
+		/****** BRepGProp_Face::LIntSubs ******/
+		/****** md5 signature: 16c426ad00e717ef57398a45ebfc358f ******/
 		%feature("compactdefaultargs") LIntSubs;
 		%feature("autodoc", "Return
 -------
@@ -809,8 +809,8 @@ No available documentation.
 ") LIntSubs;
 		Standard_Integer LIntSubs();
 
-		/****************** LKnots ******************/
-		/**** md5 signature: 07b04b3724b0b2fbe94f59381afd67f8 ****/
+		/****** BRepGProp_Face::LKnots ******/
+		/****** md5 signature: 07b04b3724b0b2fbe94f59381afd67f8 ******/
 		%feature("compactdefaultargs") LKnots;
 		%feature("autodoc", "
 Parameters
@@ -827,8 +827,8 @@ No available documentation.
 ") LKnots;
 		void LKnots(TColStd_Array1OfReal & Knots);
 
-		/****************** LastParameter ******************/
-		/**** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ****/
+		/****** BRepGProp_Face::LastParameter ******/
+		/****** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
@@ -840,8 +840,8 @@ Returns the parametric value of the end point of the current arc of curve.
 ") LastParameter;
 		Standard_Real LastParameter();
 
-		/****************** Load ******************/
-		/**** md5 signature: 1d17d2edcb9829efe827b1a9573fcbcc ****/
+		/****** BRepGProp_Face::Load ******/
+		/****** md5 signature: 1d17d2edcb9829efe827b1a9573fcbcc ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -858,8 +858,8 @@ No available documentation.
 ") Load;
 		void Load(const TopoDS_Face & F);
 
-		/****************** Load ******************/
-		/**** md5 signature: a134b46b97307c985b809bb67244f2bb ****/
+		/****** BRepGProp_Face::Load ******/
+		/****** md5 signature: a134b46b97307c985b809bb67244f2bb ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -876,8 +876,8 @@ Loading the boundary arc. returns false if edge has no p-curve.
 ") Load;
 		bool Load(const TopoDS_Edge & E);
 
-		/****************** Load ******************/
-		/**** md5 signature: ffd6e58ac396ac9b7d7e4df3c0deaa4f ****/
+		/****** BRepGProp_Face::Load ******/
+		/****** md5 signature: ffd6e58ac396ac9b7d7e4df3c0deaa4f ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -895,8 +895,8 @@ Loading the boundary arc. this arc is either a top, bottom, left or right bound 
 ") Load;
 		void Load(const Standard_Boolean IsFirstParam, const GeomAbs_IsoType theIsoType);
 
-		/****************** NaturalRestriction ******************/
-		/**** md5 signature: 6d92e56f229bd8624f08e276baf74517 ****/
+		/****** BRepGProp_Face::NaturalRestriction ******/
+		/****** md5 signature: 6d92e56f229bd8624f08e276baf74517 ******/
 		%feature("compactdefaultargs") NaturalRestriction;
 		%feature("autodoc", "Return
 -------
@@ -908,8 +908,8 @@ Returns standard_true if the face is not trimmed.
 ") NaturalRestriction;
 		Standard_Boolean NaturalRestriction();
 
-		/****************** Normal ******************/
-		/**** md5 signature: 9745e642c531c846aa947dd9b97ad423 ****/
+		/****** BRepGProp_Face::Normal ******/
+		/****** md5 signature: 9745e642c531c846aa947dd9b97ad423 ******/
 		%feature("compactdefaultargs") Normal;
 		%feature("autodoc", "
 Parameters
@@ -929,8 +929,8 @@ Computes the point of parameter u, v on the face <s> and the normal to the face 
 ") Normal;
 		void Normal(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & VNor);
 
-		/****************** SIntOrder ******************/
-		/**** md5 signature: 36292a47be4c367eb9dd3ca5f7273d94 ****/
+		/****** BRepGProp_Face::SIntOrder ******/
+		/****** md5 signature: 36292a47be4c367eb9dd3ca5f7273d94 ******/
 		%feature("compactdefaultargs") SIntOrder;
 		%feature("autodoc", "
 Parameters
@@ -947,8 +947,8 @@ No available documentation.
 ") SIntOrder;
 		Standard_Integer SIntOrder(const Standard_Real Eps);
 
-		/****************** SUIntSubs ******************/
-		/**** md5 signature: bc04bb78232627d9fab2105fd2ec9a4e ****/
+		/****** BRepGProp_Face::SUIntSubs ******/
+		/****** md5 signature: bc04bb78232627d9fab2105fd2ec9a4e ******/
 		%feature("compactdefaultargs") SUIntSubs;
 		%feature("autodoc", "Return
 -------
@@ -960,8 +960,8 @@ No available documentation.
 ") SUIntSubs;
 		Standard_Integer SUIntSubs();
 
-		/****************** SVIntSubs ******************/
-		/**** md5 signature: f41bbeaf2802182d7d4f7ed8d1b07918 ****/
+		/****** BRepGProp_Face::SVIntSubs ******/
+		/****** md5 signature: f41bbeaf2802182d7d4f7ed8d1b07918 ******/
 		%feature("compactdefaultargs") SVIntSubs;
 		%feature("autodoc", "Return
 -------
@@ -973,8 +973,8 @@ No available documentation.
 ") SVIntSubs;
 		Standard_Integer SVIntSubs();
 
-		/****************** UIntegrationOrder ******************/
-		/**** md5 signature: 4cad12b0505b12eb0d45277d3a20b18a ****/
+		/****** BRepGProp_Face::UIntegrationOrder ******/
+		/****** md5 signature: 4cad12b0505b12eb0d45277d3a20b18a ******/
 		%feature("compactdefaultargs") UIntegrationOrder;
 		%feature("autodoc", "Return
 -------
@@ -986,8 +986,8 @@ Returns the number of points required to do the integration in the u parametric 
 ") UIntegrationOrder;
 		Standard_Integer UIntegrationOrder();
 
-		/****************** UKnots ******************/
-		/**** md5 signature: 7bdd1f4e1d034b241c5401d5734966da ****/
+		/****** BRepGProp_Face::UKnots ******/
+		/****** md5 signature: 7bdd1f4e1d034b241c5401d5734966da ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "
 Parameters
@@ -1004,8 +1004,8 @@ No available documentation.
 ") UKnots;
 		void UKnots(TColStd_Array1OfReal & Knots);
 
-		/****************** VIntegrationOrder ******************/
-		/**** md5 signature: 66cfa3ec86dcabc0824b4974d0d2ad4b ****/
+		/****** BRepGProp_Face::VIntegrationOrder ******/
+		/****** md5 signature: 66cfa3ec86dcabc0824b4974d0d2ad4b ******/
 		%feature("compactdefaultargs") VIntegrationOrder;
 		%feature("autodoc", "Return
 -------
@@ -1017,8 +1017,8 @@ No available documentation.
 ") VIntegrationOrder;
 		Standard_Integer VIntegrationOrder();
 
-		/****************** VKnots ******************/
-		/**** md5 signature: 10545876365ec66fe3480d5137c1d815 ****/
+		/****** BRepGProp_Face::VKnots ******/
+		/****** md5 signature: 10545876365ec66fe3480d5137c1d815 ******/
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "
 Parameters
@@ -1035,8 +1035,8 @@ No available documentation.
 ") VKnots;
 		void VKnots(TColStd_Array1OfReal & Knots);
 
-		/****************** Value2d ******************/
-		/**** md5 signature: 1a87b688d0ec3774db81418d79b79935 ****/
+		/****** BRepGProp_Face::Value2d ******/
+		/****** md5 signature: 1a87b688d0ec3774db81418d79b79935 ******/
 		%feature("compactdefaultargs") Value2d;
 		%feature("autodoc", "
 Parameters
@@ -1087,8 +1087,8 @@ Sinert = BRepGProp_GaussType.Sinert
 };
 /* end python proxy for enums */
 
-		/****************** BRepGProp_Gauss ******************/
-		/**** md5 signature: 4283597bc19e7ea4dfb5f08dc8fe2240 ****/
+		/****** BRepGProp_Gauss::BRepGProp_Gauss ******/
+		/****** md5 signature: 4283597bc19e7ea4dfb5f08dc8fe2240 ******/
 		%feature("compactdefaultargs") BRepGProp_Gauss;
 		%feature("autodoc", "
 Parameters
@@ -1123,8 +1123,8 @@ Constructor.
 *****************************/
 class BRepGProp_MeshCinert : public GProp_GProps {
 	public:
-		/****************** BRepGProp_MeshCinert ******************/
-		/**** md5 signature: 4168f86123ec390b74beda6034b261f9 ****/
+		/****** BRepGProp_MeshCinert::BRepGProp_MeshCinert ******/
+		/****** md5 signature: 4168f86123ec390b74beda6034b261f9 ******/
 		%feature("compactdefaultargs") BRepGProp_MeshCinert;
 		%feature("autodoc", "Return
 -------
@@ -1136,8 +1136,8 @@ No available documentation.
 ") BRepGProp_MeshCinert;
 		 BRepGProp_MeshCinert();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 46c6f3603ea512468eace177c45e5d6b ****/
+		/****** BRepGProp_MeshCinert::Perform ******/
+		/****** md5 signature: 46c6f3603ea512468eace177c45e5d6b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1154,8 +1154,8 @@ Computes the global properties of of polylines represented by set of points.
 ") Perform;
 		void Perform(const TColgp_Array1OfPnt & theNodes);
 
-		/****************** PreparePolygon ******************/
-		/**** md5 signature: 192567ee3ab19fdaa0db914f60c7fde9 ****/
+		/****** BRepGProp_MeshCinert::PreparePolygon ******/
+		/****** md5 signature: 192567ee3ab19fdaa0db914f60c7fde9 ******/
 		%feature("compactdefaultargs") PreparePolygon;
 		%feature("autodoc", "
 Parameters
@@ -1173,8 +1173,8 @@ Prepare set of 3d points on base of any available edge polygons: 3d polygon, pol
 ") PreparePolygon;
 		static void PreparePolygon(const TopoDS_Edge & theE, opencascade::handle<TColgp_HArray1OfPnt> & thePolyg);
 
-		/****************** SetLocation ******************/
-		/**** md5 signature: 5ed92b27e15802cdea187cf4e43b346a ****/
+		/****** BRepGProp_MeshCinert::SetLocation ******/
+		/****** md5 signature: 5ed92b27e15802cdea187cf4e43b346a ******/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "
 Parameters
@@ -1208,8 +1208,8 @@ No available documentation.
 *************************/
 class BRepGProp_Sinert : public GProp_GProps {
 	public:
-		/****************** BRepGProp_Sinert ******************/
-		/**** md5 signature: 30a453e8dacad302931072d4b523dd24 ****/
+		/****** BRepGProp_Sinert::BRepGProp_Sinert ******/
+		/****** md5 signature: 30a453e8dacad302931072d4b523dd24 ******/
 		%feature("compactdefaultargs") BRepGProp_Sinert;
 		%feature("autodoc", "Return
 -------
@@ -1221,8 +1221,8 @@ No available documentation.
 ") BRepGProp_Sinert;
 		 BRepGProp_Sinert();
 
-		/****************** BRepGProp_Sinert ******************/
-		/**** md5 signature: b82fc330e2f8068a37939fb7a1d44b4e ****/
+		/****** BRepGProp_Sinert::BRepGProp_Sinert ******/
+		/****** md5 signature: b82fc330e2f8068a37939fb7a1d44b4e ******/
 		%feature("compactdefaultargs") BRepGProp_Sinert;
 		%feature("autodoc", "
 Parameters
@@ -1240,8 +1240,8 @@ No available documentation.
 ") BRepGProp_Sinert;
 		 BRepGProp_Sinert(const BRepGProp_Face & S, const gp_Pnt & SLocation);
 
-		/****************** BRepGProp_Sinert ******************/
-		/**** md5 signature: 10b645adb9e1d14109d3264defc257f1 ****/
+		/****** BRepGProp_Sinert::BRepGProp_Sinert ******/
+		/****** md5 signature: 10b645adb9e1d14109d3264defc257f1 ******/
 		%feature("compactdefaultargs") BRepGProp_Sinert;
 		%feature("autodoc", "
 Parameters
@@ -1260,8 +1260,8 @@ Builds a sinert to evaluate the global properties of the face <s>. if isnaturalr
 ") BRepGProp_Sinert;
 		 BRepGProp_Sinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & SLocation);
 
-		/****************** BRepGProp_Sinert ******************/
-		/**** md5 signature: 74ce3ffece3e8a1edd918b0dd45da546 ****/
+		/****** BRepGProp_Sinert::BRepGProp_Sinert ******/
+		/****** md5 signature: 74ce3ffece3e8a1edd918b0dd45da546 ******/
 		%feature("compactdefaultargs") BRepGProp_Sinert;
 		%feature("autodoc", "
 Parameters
@@ -1280,8 +1280,8 @@ No available documentation.
 ") BRepGProp_Sinert;
 		 BRepGProp_Sinert(BRepGProp_Face & S, const gp_Pnt & SLocation, const Standard_Real Eps);
 
-		/****************** BRepGProp_Sinert ******************/
-		/**** md5 signature: a08ec0516fd40a598790191badfd6a24 ****/
+		/****** BRepGProp_Sinert::BRepGProp_Sinert ******/
+		/****** md5 signature: a08ec0516fd40a598790191badfd6a24 ******/
 		%feature("compactdefaultargs") BRepGProp_Sinert;
 		%feature("autodoc", "
 Parameters
@@ -1301,8 +1301,8 @@ No available documentation.
 ") BRepGProp_Sinert;
 		 BRepGProp_Sinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & SLocation, const Standard_Real Eps);
 
-		/****************** GetEpsilon ******************/
-		/**** md5 signature: 70053d03d9c27b2171a20b75ca67dc00 ****/
+		/****** BRepGProp_Sinert::GetEpsilon ******/
+		/****** md5 signature: 70053d03d9c27b2171a20b75ca67dc00 ******/
 		%feature("compactdefaultargs") GetEpsilon;
 		%feature("autodoc", "Return
 -------
@@ -1314,8 +1314,8 @@ If previously used method contained eps parameter get actual relative error of t
 ") GetEpsilon;
 		Standard_Real GetEpsilon();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 287766d0387e8a92bd6fd7efea57304a ****/
+		/****** BRepGProp_Sinert::Perform ******/
+		/****** md5 signature: 287766d0387e8a92bd6fd7efea57304a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1332,8 +1332,8 @@ No available documentation.
 ") Perform;
 		void Perform(const BRepGProp_Face & S);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 2a40161e06229ca1640ab336b74b37cd ****/
+		/****** BRepGProp_Sinert::Perform ******/
+		/****** md5 signature: 2a40161e06229ca1640ab336b74b37cd ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1351,8 +1351,8 @@ No available documentation.
 ") Perform;
 		void Perform(BRepGProp_Face & S, BRepGProp_Domain & D);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 9f27bb8deb5f9df42810f2abd51c6026 ****/
+		/****** BRepGProp_Sinert::Perform ******/
+		/****** md5 signature: 9f27bb8deb5f9df42810f2abd51c6026 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1370,8 +1370,8 @@ No available documentation.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & S, const Standard_Real Eps);
 
-		/****************** Perform ******************/
-		/**** md5 signature: a7c77e80349f9dd440598643ec9aae4a ****/
+		/****** BRepGProp_Sinert::Perform ******/
+		/****** md5 signature: a7c77e80349f9dd440598643ec9aae4a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1390,8 +1390,8 @@ No available documentation.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & S, BRepGProp_Domain & D, const Standard_Real Eps);
 
-		/****************** SetLocation ******************/
-		/**** md5 signature: 21f84731f7ae4a935b732f676863a0d9 ****/
+		/****** BRepGProp_Sinert::SetLocation ******/
+		/****** md5 signature: 21f84731f7ae4a935b732f676863a0d9 ******/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "
 Parameters
@@ -1422,8 +1422,8 @@ No available documentation.
 ****************************/
 class BRepGProp_TFunction : public math_Function {
 	public:
-		/****************** BRepGProp_TFunction ******************/
-		/**** md5 signature: 660069516fa3db7a124db5fda3b09b0e ****/
+		/****** BRepGProp_TFunction::BRepGProp_TFunction ******/
+		/****** md5 signature: 660069516fa3db7a124db5fda3b09b0e ******/
 		%feature("compactdefaultargs") BRepGProp_TFunction;
 		%feature("autodoc", "
 Parameters
@@ -1445,8 +1445,8 @@ Constructor. initializes the function with the face, the location point, the fla
 ") BRepGProp_TFunction;
 		 BRepGProp_TFunction(const BRepGProp_Face & theSurface, const gp_Pnt & theVertex, const Standard_Boolean IsByPoint, const Standard_Real * theCoeffs, const Standard_Real theUMin, const Standard_Real theTolerance);
 
-		/****************** AbsolutError ******************/
-		/**** md5 signature: 12eadedd827c6f2cfdee466e4014e7d9 ****/
+		/****** BRepGProp_TFunction::AbsolutError ******/
+		/****** md5 signature: 12eadedd827c6f2cfdee466e4014e7d9 ******/
 		%feature("compactdefaultargs") AbsolutError;
 		%feature("autodoc", "Return
 -------
@@ -1458,8 +1458,8 @@ Returns the absolut reached error of all values computation since the last call 
 ") AbsolutError;
 		Standard_Real AbsolutError();
 
-		/****************** ErrorReached ******************/
-		/**** md5 signature: a07cf8273fa0f4cf4aae707ac80776ec ****/
+		/****** BRepGProp_TFunction::ErrorReached ******/
+		/****** md5 signature: a07cf8273fa0f4cf4aae707ac80776ec ******/
 		%feature("compactdefaultargs") ErrorReached;
 		%feature("autodoc", "Return
 -------
@@ -1471,8 +1471,8 @@ Returns the relative reached error of all values computation since the last call
 ") ErrorReached;
 		Standard_Real ErrorReached();
 
-		/****************** GetStateNumber ******************/
-		/**** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ****/
+		/****** BRepGProp_TFunction::GetStateNumber ******/
+		/****** md5 signature: 49c44bd66dd4ec2381671c72ebd88158 ******/
 		%feature("compactdefaultargs") GetStateNumber;
 		%feature("autodoc", "Return
 -------
@@ -1484,8 +1484,8 @@ Redefined method. remembers the error reached during computation of integral val
 ") GetStateNumber;
 		virtual Standard_Integer GetStateNumber();
 
-		/****************** Init ******************/
-		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
+		/****** BRepGProp_TFunction::Init ******/
+		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -1497,8 +1497,8 @@ No available documentation.
 ") Init;
 		void Init();
 
-		/****************** SetNbKronrodPoints ******************/
-		/**** md5 signature: 2388e1a76b29ff88e9dd10198003e6b8 ****/
+		/****** BRepGProp_TFunction::SetNbKronrodPoints ******/
+		/****** md5 signature: 2388e1a76b29ff88e9dd10198003e6b8 ******/
 		%feature("compactdefaultargs") SetNbKronrodPoints;
 		%feature("autodoc", "
 Parameters
@@ -1515,8 +1515,8 @@ Setting the expected number of kronrod points for the outer integral computation
 ") SetNbKronrodPoints;
 		void SetNbKronrodPoints(const Standard_Integer theNbPoints);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: cbe94a7292bcea72785e79a4eafde5ea ****/
+		/****** BRepGProp_TFunction::SetTolerance ******/
+		/****** md5 signature: cbe94a7292bcea72785e79a4eafde5ea ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1533,8 +1533,8 @@ Setting the tolerance for inner integration.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real aTol);
 
-		/****************** SetValueType ******************/
-		/**** md5 signature: e50d5f7e32a617f0c0c33c6617861546 ****/
+		/****** BRepGProp_TFunction::SetValueType ******/
+		/****** md5 signature: e50d5f7e32a617f0c0c33c6617861546 ******/
 		%feature("compactdefaultargs") SetValueType;
 		%feature("autodoc", "
 Parameters
@@ -1551,8 +1551,8 @@ Setting the type of the value to be returned. this parameter is directly passed 
 ") SetValueType;
 		void SetValueType(const GProp_ValueType aType);
 
-		/****************** Value ******************/
-		/**** md5 signature: 15617dca721c4472bfb7ee7933f04bce ****/
+		/****** BRepGProp_TFunction::Value ******/
+		/****** md5 signature: 15617dca721c4472bfb7ee7933f04bce ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1583,8 +1583,8 @@ Returns a value of the function. the value represents an integral of ufunction. 
 ****************************/
 class BRepGProp_UFunction : public math_Function {
 	public:
-		/****************** BRepGProp_UFunction ******************/
-		/**** md5 signature: f53c91a3d00c6205c8aeda4203c886d7 ****/
+		/****** BRepGProp_UFunction::BRepGProp_UFunction ******/
+		/****** md5 signature: f53c91a3d00c6205c8aeda4203c886d7 ******/
 		%feature("compactdefaultargs") BRepGProp_UFunction;
 		%feature("autodoc", "
 Parameters
@@ -1604,8 +1604,8 @@ Constructor. initializes the function with the face, the location point, the fla
 ") BRepGProp_UFunction;
 		 BRepGProp_UFunction(const BRepGProp_Face & theSurface, const gp_Pnt & theVertex, const Standard_Boolean IsByPoint, const Standard_Real * theCoeffs);
 
-		/****************** SetVParam ******************/
-		/**** md5 signature: 65557cc70db507c03b9e102c112375ed ****/
+		/****** BRepGProp_UFunction::SetVParam ******/
+		/****** md5 signature: 65557cc70db507c03b9e102c112375ed ******/
 		%feature("compactdefaultargs") SetVParam;
 		%feature("autodoc", "
 Parameters
@@ -1622,8 +1622,8 @@ Setting the v parameter that is constant during the integral computation.
 ") SetVParam;
 		void SetVParam(const Standard_Real theVParam);
 
-		/****************** SetValueType ******************/
-		/**** md5 signature: f560b8c5b982b75a196f946bfdc77fcb ****/
+		/****** BRepGProp_UFunction::SetValueType ******/
+		/****** md5 signature: f560b8c5b982b75a196f946bfdc77fcb ******/
 		%feature("compactdefaultargs") SetValueType;
 		%feature("autodoc", "
 Parameters
@@ -1640,8 +1640,8 @@ Setting the type of the value to be returned.
 ") SetValueType;
 		void SetValueType(const GProp_ValueType theType);
 
-		/****************** Value ******************/
-		/**** md5 signature: 15617dca721c4472bfb7ee7933f04bce ****/
+		/****** BRepGProp_UFunction::Value ******/
+		/****** md5 signature: 15617dca721c4472bfb7ee7933f04bce ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1672,8 +1672,8 @@ Returns a value of the function.
 *************************/
 class BRepGProp_Vinert : public GProp_GProps {
 	public:
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: 4d03c85dfc1aa38496efd1cd67dfb041 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: 4d03c85dfc1aa38496efd1cd67dfb041 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "Return
 -------
@@ -1685,8 +1685,8 @@ No available documentation.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert();
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: 1414a74187b929e713ff870c0e037149 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: 1414a74187b929e713ff870c0e037149 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1704,8 +1704,8 @@ Computes the global properties of a region of 3d space delimited with the surfac
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(const BRepGProp_Face & S, const gp_Pnt & VLocation);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: 13a616469cff283670358262ff91dcf9 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: 13a616469cff283670358262ff91dcf9 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1724,8 +1724,8 @@ Computes the global properties of a region of 3d space delimited with the surfac
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, const gp_Pnt & VLocation, const Standard_Real Eps);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: 5c8c9fce1d68c04b255a76edd33c2c5d ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: 5c8c9fce1d68c04b255a76edd33c2c5d ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1744,8 +1744,8 @@ Computes the global properties of the region of 3d space delimited with the surf
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(const BRepGProp_Face & S, const gp_Pnt & O, const gp_Pnt & VLocation);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: df85730af0638f29c218a6be2ab7aecc ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: df85730af0638f29c218a6be2ab7aecc ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1765,8 +1765,8 @@ Computes the global properties of the region of 3d space delimited with the surf
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, const gp_Pnt & O, const gp_Pnt & VLocation, const Standard_Real Eps);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: 7f48df0c9e63f4ccad77f35c8ead2e18 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: 7f48df0c9e63f4ccad77f35c8ead2e18 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1785,8 +1785,8 @@ Computes the global properties of the region of 3d space delimited with the surf
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(const BRepGProp_Face & S, const gp_Pln & Pl, const gp_Pnt & VLocation);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: c7ffc413b9031d515f8311697c9bc6b3 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: c7ffc413b9031d515f8311697c9bc6b3 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1806,8 +1806,8 @@ Computes the global properties of the region of 3d space delimited with the surf
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, const gp_Pln & Pl, const gp_Pnt & VLocation, const Standard_Real Eps);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: bd59787cdd3504146a2e59074662acc7 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: bd59787cdd3504146a2e59074662acc7 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1826,8 +1826,8 @@ Computes the global properties of a region of 3d space delimited with the surfac
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & VLocation);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: d280d056ab61286ffa7e329635e8adc4 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: d280d056ab61286ffa7e329635e8adc4 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1847,8 +1847,8 @@ Computes the global properties of a region of 3d space delimited with the surfac
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & VLocation, const Standard_Real Eps);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: f3a262fb64cb9de88ea729596d32dfa8 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: f3a262fb64cb9de88ea729596d32dfa8 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1868,8 +1868,8 @@ Computes the global properties of the region of 3d space delimited with the surf
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & O, const gp_Pnt & VLocation);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: 0fb97e514eb1305a85cb6f202d0ca710 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: 0fb97e514eb1305a85cb6f202d0ca710 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1890,8 +1890,8 @@ Computes the global properties of the region of 3d space delimited with the surf
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & O, const gp_Pnt & VLocation, const Standard_Real Eps);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: 4d4d2889b5f4db0e01ce23afa5532b52 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: 4d4d2889b5f4db0e01ce23afa5532b52 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1911,8 +1911,8 @@ Computes the global properties of the region of 3d space delimited with the surf
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pln & Pl, const gp_Pnt & VLocation);
 
-		/****************** BRepGProp_Vinert ******************/
-		/**** md5 signature: f45f2cd07c17c648e1699a791da66461 ****/
+		/****** BRepGProp_Vinert::BRepGProp_Vinert ******/
+		/****** md5 signature: f45f2cd07c17c648e1699a791da66461 ******/
 		%feature("compactdefaultargs") BRepGProp_Vinert;
 		%feature("autodoc", "
 Parameters
@@ -1933,8 +1933,8 @@ Computes the global properties of the region of 3d space delimited with the surf
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pln & Pl, const gp_Pnt & VLocation, const Standard_Real Eps);
 
-		/****************** GetEpsilon ******************/
-		/**** md5 signature: 70053d03d9c27b2171a20b75ca67dc00 ****/
+		/****** BRepGProp_Vinert::GetEpsilon ******/
+		/****** md5 signature: 70053d03d9c27b2171a20b75ca67dc00 ******/
 		%feature("compactdefaultargs") GetEpsilon;
 		%feature("autodoc", "Return
 -------
@@ -1946,8 +1946,8 @@ If previously used methods containe eps parameter gets actual relative error of 
 ") GetEpsilon;
 		Standard_Real GetEpsilon();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 287766d0387e8a92bd6fd7efea57304a ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: 287766d0387e8a92bd6fd7efea57304a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1964,8 +1964,8 @@ No available documentation.
 ") Perform;
 		void Perform(const BRepGProp_Face & S);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 9f27bb8deb5f9df42810f2abd51c6026 ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: 9f27bb8deb5f9df42810f2abd51c6026 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1983,8 +1983,8 @@ No available documentation.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & S, const Standard_Real Eps);
 
-		/****************** Perform ******************/
-		/**** md5 signature: e894591640d6f840f3181c73a396ac73 ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: e894591640d6f840f3181c73a396ac73 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2002,8 +2002,8 @@ No available documentation.
 ") Perform;
 		void Perform(const BRepGProp_Face & S, const gp_Pnt & O);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 3557a52fecea80979634ca485366f4ce ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: 3557a52fecea80979634ca485366f4ce ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2022,8 +2022,8 @@ No available documentation.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & S, const gp_Pnt & O, const Standard_Real Eps);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 00372c2d834eb3c1d978ec6bfb1f027f ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: 00372c2d834eb3c1d978ec6bfb1f027f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2041,8 +2041,8 @@ No available documentation.
 ") Perform;
 		void Perform(const BRepGProp_Face & S, const gp_Pln & Pl);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 648e9947f4302031d12bd0a17b5fbe0f ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: 648e9947f4302031d12bd0a17b5fbe0f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2061,8 +2061,8 @@ No available documentation.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & S, const gp_Pln & Pl, const Standard_Real Eps);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 2a40161e06229ca1640ab336b74b37cd ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: 2a40161e06229ca1640ab336b74b37cd ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2080,8 +2080,8 @@ No available documentation.
 ") Perform;
 		void Perform(BRepGProp_Face & S, BRepGProp_Domain & D);
 
-		/****************** Perform ******************/
-		/**** md5 signature: a7c77e80349f9dd440598643ec9aae4a ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: a7c77e80349f9dd440598643ec9aae4a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2100,8 +2100,8 @@ No available documentation.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & S, BRepGProp_Domain & D, const Standard_Real Eps);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 51bda88f4b6e7d3e15825d1a104b74c9 ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: 51bda88f4b6e7d3e15825d1a104b74c9 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2120,8 +2120,8 @@ No available documentation.
 ") Perform;
 		void Perform(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & O);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 933e01d497a5ae64a162e32137b481fb ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: 933e01d497a5ae64a162e32137b481fb ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2141,8 +2141,8 @@ No available documentation.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & O, const Standard_Real Eps);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 751b530e05960276e54a63742e074cc1 ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: 751b530e05960276e54a63742e074cc1 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2161,8 +2161,8 @@ No available documentation.
 ") Perform;
 		void Perform(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pln & Pl);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 1acf8519ff5d34431bd836b7af497b0a ****/
+		/****** BRepGProp_Vinert::Perform ******/
+		/****** md5 signature: 1acf8519ff5d34431bd836b7af497b0a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2182,8 +2182,8 @@ No available documentation.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pln & Pl, const Standard_Real Eps);
 
-		/****************** SetLocation ******************/
-		/**** md5 signature: 13648852ef1c389d29559ab743f5f9e2 ****/
+		/****** BRepGProp_Vinert::SetLocation ******/
+		/****** md5 signature: 13648852ef1c389d29559ab743f5f9e2 ******/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "
 Parameters
@@ -2214,8 +2214,8 @@ No available documentation.
 ***************************/
 class BRepGProp_VinertGK : public GProp_GProps {
 	public:
-		/****************** BRepGProp_VinertGK ******************/
-		/**** md5 signature: 2b4ec0003b8c134168e48daf41971b72 ****/
+		/****** BRepGProp_VinertGK::BRepGProp_VinertGK ******/
+		/****** md5 signature: 2b4ec0003b8c134168e48daf41971b72 ******/
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
 		%feature("autodoc", "Return
 -------
@@ -2227,8 +2227,8 @@ Empty constructor.
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK();
 
-		/****************** BRepGProp_VinertGK ******************/
-		/**** md5 signature: 8c95cbab67ec10c708d18427bfedfaaa ****/
+		/****** BRepGProp_VinertGK::BRepGProp_VinertGK ******/
+		/****** md5 signature: 8c95cbab67ec10c708d18427bfedfaaa ******/
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
 		%feature("autodoc", "
 Parameters
@@ -2249,8 +2249,8 @@ Constructor. computes the global properties of a region of 3d space delimited wi
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** BRepGProp_VinertGK ******************/
-		/**** md5 signature: 8d65b075f239d772811f6e7cd57131e1 ****/
+		/****** BRepGProp_VinertGK::BRepGProp_VinertGK ******/
+		/****** md5 signature: 8d65b075f239d772811f6e7cd57131e1 ******/
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
 		%feature("autodoc", "
 Parameters
@@ -2272,8 +2272,8 @@ Constructor. computes the global properties of a region of 3d space delimited wi
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, const gp_Pnt & thePoint, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** BRepGProp_VinertGK ******************/
-		/**** md5 signature: 92192b1666bb702876fdd35bd985cf10 ****/
+		/****** BRepGProp_VinertGK::BRepGProp_VinertGK ******/
+		/****** md5 signature: 92192b1666bb702876fdd35bd985cf10 ******/
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
 		%feature("autodoc", "
 Parameters
@@ -2295,8 +2295,8 @@ Constructor. computes the global properties of a region of 3d space delimited wi
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** BRepGProp_VinertGK ******************/
-		/**** md5 signature: e075379e488804335fc45904b5e86b1d ****/
+		/****** BRepGProp_VinertGK::BRepGProp_VinertGK ******/
+		/****** md5 signature: e075379e488804335fc45904b5e86b1d ******/
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
 		%feature("autodoc", "
 Parameters
@@ -2319,8 +2319,8 @@ Constructor. computes the global properties of a region of 3d space delimited wi
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const gp_Pnt & thePoint, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** BRepGProp_VinertGK ******************/
-		/**** md5 signature: 6867b4fa1afaa445bfbfbaf96b8446eb ****/
+		/****** BRepGProp_VinertGK::BRepGProp_VinertGK ******/
+		/****** md5 signature: 6867b4fa1afaa445bfbfbaf96b8446eb ******/
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
 		%feature("autodoc", "
 Parameters
@@ -2342,8 +2342,8 @@ Constructor. computes the global properties of a region of 3d space delimited wi
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, const gp_Pln & thePlane, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** BRepGProp_VinertGK ******************/
-		/**** md5 signature: 648a50ab357462085f5dfb351879b539 ****/
+		/****** BRepGProp_VinertGK::BRepGProp_VinertGK ******/
+		/****** md5 signature: 648a50ab357462085f5dfb351879b539 ******/
 		%feature("compactdefaultargs") BRepGProp_VinertGK;
 		%feature("autodoc", "
 Parameters
@@ -2366,8 +2366,8 @@ Constructor. computes the global properties of a region of 3d space delimited wi
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const gp_Pln & thePlane, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** GetErrorReached ******************/
-		/**** md5 signature: 41776af72d3d1a9138d3f5f33aa13fdd ****/
+		/****** BRepGProp_VinertGK::GetErrorReached ******/
+		/****** md5 signature: 41776af72d3d1a9138d3f5f33aa13fdd ******/
 		%feature("compactdefaultargs") GetErrorReached;
 		%feature("autodoc", "Return
 -------
@@ -2379,8 +2379,8 @@ Returns the relative reached computation error.
 ") GetErrorReached;
 		Standard_Real GetErrorReached();
 
-		/****************** Perform ******************/
-		/**** md5 signature: d570fe8ddab01258ba30702a3483ec6f ****/
+		/****** BRepGProp_VinertGK::Perform ******/
+		/****** md5 signature: d570fe8ddab01258ba30702a3483ec6f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2400,8 +2400,8 @@ Computes the global properties of a region of 3d space delimited with the natura
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** Perform ******************/
-		/**** md5 signature: b4af8c130cc28d347e5136c66efe2e2b ****/
+		/****** BRepGProp_VinertGK::Perform ******/
+		/****** md5 signature: b4af8c130cc28d347e5136c66efe2e2b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2422,8 +2422,8 @@ Computes the global properties of a region of 3d space delimited with the natura
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, const gp_Pnt & thePoint, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** Perform ******************/
-		/**** md5 signature: b40034b46e1dbb701f4a74e5c0f074dc ****/
+		/****** BRepGProp_VinertGK::Perform ******/
+		/****** md5 signature: b40034b46e1dbb701f4a74e5c0f074dc ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2444,8 +2444,8 @@ Computes the global properties of a region of 3d space delimited with the surfac
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** Perform ******************/
-		/**** md5 signature: e2709a20d48918e9084b81ceae2afbce ****/
+		/****** BRepGProp_VinertGK::Perform ******/
+		/****** md5 signature: e2709a20d48918e9084b81ceae2afbce ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2467,8 +2467,8 @@ Computes the global properties of a region of 3d space delimited with the surfac
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const gp_Pnt & thePoint, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** Perform ******************/
-		/**** md5 signature: c7217d0c046ee96a7a7100e2a76bbce3 ****/
+		/****** BRepGProp_VinertGK::Perform ******/
+		/****** md5 signature: c7217d0c046ee96a7a7100e2a76bbce3 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2489,8 +2489,8 @@ Computes the global properties of a region of 3d space delimited with the natura
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, const gp_Pln & thePlane, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 59e16d24d1aae57294bc90cb8d6007e5 ****/
+		/****** BRepGProp_VinertGK::Perform ******/
+		/****** md5 signature: 59e16d24d1aae57294bc90cb8d6007e5 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2512,8 +2512,8 @@ Computes the global properties of a region of 3d space delimited with the surfac
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const gp_Pln & thePlane, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
-		/****************** SetLocation ******************/
-		/**** md5 signature: 49b73879adebd078faa244b518af4276 ****/
+		/****** BRepGProp_VinertGK::SetLocation ******/
+		/****** md5 signature: 49b73879adebd078faa244b518af4276 ******/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "
 Parameters

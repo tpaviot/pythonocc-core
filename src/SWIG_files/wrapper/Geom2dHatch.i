@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DHATCHDOCSTRING
 "Geom2dHatch module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geom2dhatch.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geom2dhatch.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DHATCHDOCSTRING) Geom2dHatch
 
@@ -132,8 +132,8 @@ typedef NCollection_DataMap<Standard_Integer, Geom2dHatch_Element> Geom2dHatch_M
 *******************************/
 class Geom2dHatch_Classifier {
 	public:
-		/****************** Geom2dHatch_Classifier ******************/
-		/**** md5 signature: 890cc459e67944b97d32307aa60ca1df ****/
+		/****** Geom2dHatch_Classifier::Geom2dHatch_Classifier ******/
+		/****** md5 signature: 890cc459e67944b97d32307aa60ca1df ******/
 		%feature("compactdefaultargs") Geom2dHatch_Classifier;
 		%feature("autodoc", "Return
 -------
@@ -145,8 +145,8 @@ Empty constructor, undefined algorithm.
 ") Geom2dHatch_Classifier;
 		 Geom2dHatch_Classifier();
 
-		/****************** Geom2dHatch_Classifier ******************/
-		/**** md5 signature: 63d13333c2e6e4bcb47bb73a28635103 ****/
+		/****** Geom2dHatch_Classifier::Geom2dHatch_Classifier ******/
+		/****** md5 signature: 63d13333c2e6e4bcb47bb73a28635103 ******/
 		%feature("compactdefaultargs") Geom2dHatch_Classifier;
 		%feature("autodoc", "
 Parameters
@@ -165,8 +165,8 @@ Creates an algorithm to classify the point p with tolerance <t> on the face desc
 ") Geom2dHatch_Classifier;
 		 Geom2dHatch_Classifier(Geom2dHatch_Elements & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
-		/****************** Edge ******************/
-		/**** md5 signature: 4ef596a40082b0b9b1d8e5366c52ac1b ****/
+		/****** Geom2dHatch_Classifier::Edge ******/
+		/****** md5 signature: 4ef596a40082b0b9b1d8e5366c52ac1b ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -178,8 +178,8 @@ Returns the edge used to determine the classification. when the state is on this
 ") Edge;
 		Geom2dAdaptor_Curve Edge();
 
-		/****************** EdgeParameter ******************/
-		/**** md5 signature: a4ccdc0e9c154705af034e3ac274511c ****/
+		/****** Geom2dHatch_Classifier::EdgeParameter ******/
+		/****** md5 signature: a4ccdc0e9c154705af034e3ac274511c ******/
 		%feature("compactdefaultargs") EdgeParameter;
 		%feature("autodoc", "Return
 -------
@@ -191,8 +191,8 @@ Returns the parameter on edge() used to determine the classification.
 ") EdgeParameter;
 		Standard_Real EdgeParameter();
 
-		/****************** NoWires ******************/
-		/**** md5 signature: 990679762274e4aefbb7c462574e4bcd ****/
+		/****** Geom2dHatch_Classifier::NoWires ******/
+		/****** md5 signature: 990679762274e4aefbb7c462574e4bcd ******/
 		%feature("compactdefaultargs") NoWires;
 		%feature("autodoc", "Return
 -------
@@ -204,8 +204,8 @@ Returns true if the face contains no wire. the state is in.
 ") NoWires;
 		Standard_Boolean NoWires();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 6763c7244137184be57781cdb8a509c2 ****/
+		/****** Geom2dHatch_Classifier::Perform ******/
+		/****** md5 signature: 6763c7244137184be57781cdb8a509c2 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -224,8 +224,8 @@ Classify the point p with tolerance <t> on the face described by <f>.
 ") Perform;
 		void Perform(Geom2dHatch_Elements & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
-		/****************** Position ******************/
-		/**** md5 signature: 675457384dc44fc07e204a19b6850fe8 ****/
+		/****** Geom2dHatch_Classifier::Position ******/
+		/****** md5 signature: 675457384dc44fc07e204a19b6850fe8 ******/
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "Return
 -------
@@ -237,8 +237,8 @@ Returns the position of the point on the edge returned by edge.
 ") Position;
 		IntRes2d_Position Position();
 
-		/****************** Rejected ******************/
-		/**** md5 signature: 56d604911041dd9f442bde612c88e4cd ****/
+		/****** Geom2dHatch_Classifier::Rejected ******/
+		/****** md5 signature: 56d604911041dd9f442bde612c88e4cd ******/
 		%feature("compactdefaultargs") Rejected;
 		%feature("autodoc", "Return
 -------
@@ -250,8 +250,8 @@ Returns true when the state was computed by a rejection. the state is out.
 ") Rejected;
 		Standard_Boolean Rejected();
 
-		/****************** State ******************/
-		/**** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ****/
+		/****** Geom2dHatch_Classifier::State ******/
+		/****** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "Return
 -------
@@ -277,8 +277,8 @@ Returns the result of the classification.
 ****************************/
 class Geom2dHatch_Element {
 	public:
-		/****************** Geom2dHatch_Element ******************/
-		/**** md5 signature: 19b7f864164cc189cb47648c17f7066b ****/
+		/****** Geom2dHatch_Element::Geom2dHatch_Element ******/
+		/****** md5 signature: 19b7f864164cc189cb47648c17f7066b ******/
 		%feature("compactdefaultargs") Geom2dHatch_Element;
 		%feature("autodoc", "Return
 -------
@@ -290,8 +290,8 @@ No available documentation.
 ") Geom2dHatch_Element;
 		 Geom2dHatch_Element();
 
-		/****************** Geom2dHatch_Element ******************/
-		/**** md5 signature: db7543fb06b4f62b6f2d9dd9372100b3 ****/
+		/****** Geom2dHatch_Element::Geom2dHatch_Element ******/
+		/****** md5 signature: db7543fb06b4f62b6f2d9dd9372100b3 ******/
 		%feature("compactdefaultargs") Geom2dHatch_Element;
 		%feature("autodoc", "
 Parameters
@@ -309,8 +309,8 @@ Creates an element.
 ") Geom2dHatch_Element;
 		 Geom2dHatch_Element(const Geom2dAdaptor_Curve & Curve, const TopAbs_Orientation Orientation = TopAbs_FORWARD);
 
-		/****************** ChangeCurve ******************/
-		/**** md5 signature: fe0ef69eab3edfb44b3acc292d7c73be ****/
+		/****** Geom2dHatch_Element::ChangeCurve ******/
+		/****** md5 signature: fe0ef69eab3edfb44b3acc292d7c73be ******/
 		%feature("compactdefaultargs") ChangeCurve;
 		%feature("autodoc", "Return
 -------
@@ -322,8 +322,8 @@ Returns the curve associated to the element.
 ") ChangeCurve;
 		Geom2dAdaptor_Curve & ChangeCurve();
 
-		/****************** Curve ******************/
-		/**** md5 signature: e12bcd64b0a466dce7601de6fe68db77 ****/
+		/****** Geom2dHatch_Element::Curve ******/
+		/****** md5 signature: e12bcd64b0a466dce7601de6fe68db77 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -335,8 +335,8 @@ Returns the curve associated to the element.
 ") Curve;
 		Geom2dAdaptor_Curve Curve();
 
-		/****************** Orientation ******************/
-		/**** md5 signature: 854e5a15aa2f2078927a5c9e7d88dcf5 ****/
+		/****** Geom2dHatch_Element::Orientation ******/
+		/****** md5 signature: 854e5a15aa2f2078927a5c9e7d88dcf5 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "
 Parameters
@@ -353,8 +353,8 @@ Sets the orientation of the element.
 ") Orientation;
 		void Orientation(const TopAbs_Orientation Orientation);
 
-		/****************** Orientation ******************/
-		/**** md5 signature: 328242fe19b1f80489d8169681ebc029 ****/
+		/****** Geom2dHatch_Element::Orientation ******/
+		/****** md5 signature: 328242fe19b1f80489d8169681ebc029 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -380,8 +380,8 @@ Returns the orientation of the element.
 *****************************/
 class Geom2dHatch_Elements {
 	public:
-		/****************** Geom2dHatch_Elements ******************/
-		/**** md5 signature: 1db61b20f9f6bb0dfc5227f3c196ffbc ****/
+		/****** Geom2dHatch_Elements::Geom2dHatch_Elements ******/
+		/****** md5 signature: 1db61b20f9f6bb0dfc5227f3c196ffbc ******/
 		%feature("compactdefaultargs") Geom2dHatch_Elements;
 		%feature("autodoc", "Return
 -------
@@ -393,8 +393,8 @@ No available documentation.
 ") Geom2dHatch_Elements;
 		 Geom2dHatch_Elements();
 
-		/****************** Geom2dHatch_Elements ******************/
-		/**** md5 signature: 96a4878bf071792827f0bd8b8a008ab5 ****/
+		/****** Geom2dHatch_Elements::Geom2dHatch_Elements ******/
+		/****** md5 signature: 96a4878bf071792827f0bd8b8a008ab5 ******/
 		%feature("compactdefaultargs") Geom2dHatch_Elements;
 		%feature("autodoc", "
 Parameters
@@ -411,8 +411,8 @@ No available documentation.
 ") Geom2dHatch_Elements;
 		 Geom2dHatch_Elements(const Geom2dHatch_Elements & Other);
 
-		/****************** Bind ******************/
-		/**** md5 signature: 0a4e84986672f2d5640236cbce2f453e ****/
+		/****** Geom2dHatch_Elements::Bind ******/
+		/****** md5 signature: 0a4e84986672f2d5640236cbce2f453e ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -430,8 +430,8 @@ No available documentation.
 ") Bind;
 		Standard_Boolean Bind(const Standard_Integer K, const Geom2dHatch_Element & I);
 
-		/****************** ChangeFind ******************/
-		/**** md5 signature: 9f4af5c3ceac8973547b5aa2bf163311 ****/
+		/****** Geom2dHatch_Elements::ChangeFind ******/
+		/****** md5 signature: 9f4af5c3ceac8973547b5aa2bf163311 ******/
 		%feature("compactdefaultargs") ChangeFind;
 		%feature("autodoc", "
 Parameters
@@ -448,8 +448,8 @@ No available documentation.
 ") ChangeFind;
 		Geom2dHatch_Element & ChangeFind(const Standard_Integer K);
 
-		/****************** CheckPoint ******************/
-		/**** md5 signature: 30b6651418d3d6bd1f89ce3e43a0c300 ****/
+		/****** Geom2dHatch_Elements::CheckPoint ******/
+		/****** md5 signature: 30b6651418d3d6bd1f89ce3e43a0c300 ******/
 		%feature("compactdefaultargs") CheckPoint;
 		%feature("autodoc", "
 Parameters
@@ -466,8 +466,8 @@ No available documentation.
 ") CheckPoint;
 		Standard_Boolean CheckPoint(gp_Pnt2d & P);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Geom2dHatch_Elements::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -479,8 +479,8 @@ No available documentation.
 ") Clear;
 		void Clear();
 
-		/****************** CurrentEdge ******************/
-		/**** md5 signature: aefaf443b65e7c54bdbb44af89cd5be8 ****/
+		/****** Geom2dHatch_Elements::CurrentEdge ******/
+		/****** md5 signature: aefaf443b65e7c54bdbb44af89cd5be8 ******/
 		%feature("compactdefaultargs") CurrentEdge;
 		%feature("autodoc", "
 Parameters
@@ -497,8 +497,8 @@ No available documentation.
 ") CurrentEdge;
 		void CurrentEdge(Geom2dAdaptor_Curve & E, TopAbs_Orientation &OutValue);
 
-		/****************** Find ******************/
-		/**** md5 signature: 09042a6b22fc21ef573ed77bf386c9b9 ****/
+		/****** Geom2dHatch_Elements::Find ******/
+		/****** md5 signature: 09042a6b22fc21ef573ed77bf386c9b9 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -515,8 +515,8 @@ No available documentation.
 ") Find;
 		const Geom2dHatch_Element & Find(const Standard_Integer K);
 
-		/****************** InitEdges ******************/
-		/**** md5 signature: 91bbc4c29d3c5c1c40b8c41a10bba4ae ****/
+		/****** Geom2dHatch_Elements::InitEdges ******/
+		/****** md5 signature: 91bbc4c29d3c5c1c40b8c41a10bba4ae ******/
 		%feature("compactdefaultargs") InitEdges;
 		%feature("autodoc", "Return
 -------
@@ -528,8 +528,8 @@ No available documentation.
 ") InitEdges;
 		void InitEdges();
 
-		/****************** InitWires ******************/
-		/**** md5 signature: ebff8f083b93df212af42dee4111419b ****/
+		/****** Geom2dHatch_Elements::InitWires ******/
+		/****** md5 signature: ebff8f083b93df212af42dee4111419b ******/
 		%feature("compactdefaultargs") InitWires;
 		%feature("autodoc", "Return
 -------
@@ -541,8 +541,8 @@ No available documentation.
 ") InitWires;
 		void InitWires();
 
-		/****************** IsBound ******************/
-		/**** md5 signature: 83c42346d336d27c4f96db87f36ec3b3 ****/
+		/****** Geom2dHatch_Elements::IsBound ******/
+		/****** md5 signature: 83c42346d336d27c4f96db87f36ec3b3 ******/
 		%feature("compactdefaultargs") IsBound;
 		%feature("autodoc", "
 Parameters
@@ -559,8 +559,8 @@ No available documentation.
 ") IsBound;
 		Standard_Boolean IsBound(const Standard_Integer K);
 
-		/****************** MoreEdges ******************/
-		/**** md5 signature: ae9c44c48922d7def77564a0d6f2c592 ****/
+		/****** Geom2dHatch_Elements::MoreEdges ******/
+		/****** md5 signature: ae9c44c48922d7def77564a0d6f2c592 ******/
 		%feature("compactdefaultargs") MoreEdges;
 		%feature("autodoc", "Return
 -------
@@ -572,8 +572,8 @@ No available documentation.
 ") MoreEdges;
 		Standard_Boolean MoreEdges();
 
-		/****************** MoreWires ******************/
-		/**** md5 signature: b99e6f15aacc2cac79d7fb8f92595589 ****/
+		/****** Geom2dHatch_Elements::MoreWires ******/
+		/****** md5 signature: b99e6f15aacc2cac79d7fb8f92595589 ******/
 		%feature("compactdefaultargs") MoreWires;
 		%feature("autodoc", "Return
 -------
@@ -585,8 +585,8 @@ No available documentation.
 ") MoreWires;
 		Standard_Boolean MoreWires();
 
-		/****************** NextEdge ******************/
-		/**** md5 signature: 8103c946a7f7c0a3d885514a8a740502 ****/
+		/****** Geom2dHatch_Elements::NextEdge ******/
+		/****** md5 signature: 8103c946a7f7c0a3d885514a8a740502 ******/
 		%feature("compactdefaultargs") NextEdge;
 		%feature("autodoc", "Return
 -------
@@ -598,8 +598,8 @@ No available documentation.
 ") NextEdge;
 		void NextEdge();
 
-		/****************** NextWire ******************/
-		/**** md5 signature: 11b92f2dcc830f98b32d40bd651c0b28 ****/
+		/****** Geom2dHatch_Elements::NextWire ******/
+		/****** md5 signature: 11b92f2dcc830f98b32d40bd651c0b28 ******/
 		%feature("compactdefaultargs") NextWire;
 		%feature("autodoc", "Return
 -------
@@ -611,8 +611,8 @@ No available documentation.
 ") NextWire;
 		void NextWire();
 
-		/****************** OtherSegment ******************/
-		/**** md5 signature: 27490dca9d2d53354d092dd2a3334ce2 ****/
+		/****** Geom2dHatch_Elements::OtherSegment ******/
+		/****** md5 signature: 27490dca9d2d53354d092dd2a3334ce2 ******/
 		%feature("compactdefaultargs") OtherSegment;
 		%feature("autodoc", "
 Parameters
@@ -630,8 +630,8 @@ No available documentation.
 ") OtherSegment;
 		Standard_Boolean OtherSegment(const gp_Pnt2d & P, gp_Lin2d & L, Standard_Real &OutValue);
 
-		/****************** Reject ******************/
-		/**** md5 signature: a145789dcdf45149993e111ed41174ea ****/
+		/****** Geom2dHatch_Elements::Reject ******/
+		/****** md5 signature: a145789dcdf45149993e111ed41174ea ******/
 		%feature("compactdefaultargs") Reject;
 		%feature("autodoc", "
 Parameters
@@ -648,8 +648,8 @@ No available documentation.
 ") Reject;
 		Standard_Boolean Reject(const gp_Pnt2d & P);
 
-		/****************** RejectEdge ******************/
-		/**** md5 signature: ac46be93532b1dfcf60e7e385f949d17 ****/
+		/****** Geom2dHatch_Elements::RejectEdge ******/
+		/****** md5 signature: ac46be93532b1dfcf60e7e385f949d17 ******/
 		%feature("compactdefaultargs") RejectEdge;
 		%feature("autodoc", "
 Parameters
@@ -667,8 +667,8 @@ No available documentation.
 ") RejectEdge;
 		Standard_Boolean RejectEdge(const gp_Lin2d & L, const Standard_Real Par);
 
-		/****************** RejectWire ******************/
-		/**** md5 signature: a3caa1d04bab721ad3228acbea576ecb ****/
+		/****** Geom2dHatch_Elements::RejectWire ******/
+		/****** md5 signature: a3caa1d04bab721ad3228acbea576ecb ******/
 		%feature("compactdefaultargs") RejectWire;
 		%feature("autodoc", "
 Parameters
@@ -686,8 +686,8 @@ No available documentation.
 ") RejectWire;
 		Standard_Boolean RejectWire(const gp_Lin2d & L, const Standard_Real Par);
 
-		/****************** Segment ******************/
-		/**** md5 signature: 5eb3735a7b24946e69be33f96fb9d7b5 ****/
+		/****** Geom2dHatch_Elements::Segment ******/
+		/****** md5 signature: 5eb3735a7b24946e69be33f96fb9d7b5 ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
@@ -705,8 +705,8 @@ No available documentation.
 ") Segment;
 		Standard_Boolean Segment(const gp_Pnt2d & P, gp_Lin2d & L, Standard_Real &OutValue);
 
-		/****************** UnBind ******************/
-		/**** md5 signature: beff00ad6ead6cd8e48016f872c0f7c7 ****/
+		/****** Geom2dHatch_Elements::UnBind ******/
+		/****** md5 signature: beff00ad6ead6cd8e48016f872c0f7c7 ******/
 		%feature("compactdefaultargs") UnBind;
 		%feature("autodoc", "
 Parameters
@@ -737,8 +737,8 @@ No available documentation.
 *****************************************/
 class Geom2dHatch_FClass2dOfClassifier {
 	public:
-		/****************** Geom2dHatch_FClass2dOfClassifier ******************/
-		/**** md5 signature: 46403459555e0636347ccfb376dd1cb2 ****/
+		/****** Geom2dHatch_FClass2dOfClassifier::Geom2dHatch_FClass2dOfClassifier ******/
+		/****** md5 signature: 46403459555e0636347ccfb376dd1cb2 ******/
 		%feature("compactdefaultargs") Geom2dHatch_FClass2dOfClassifier;
 		%feature("autodoc", "Return
 -------
@@ -750,8 +750,8 @@ Creates an undefined classifier.
 ") Geom2dHatch_FClass2dOfClassifier;
 		 Geom2dHatch_FClass2dOfClassifier();
 
-		/****************** ClosestIntersection ******************/
-		/**** md5 signature: 025d23acf1aa6c435dba31dbf4248fd0 ****/
+		/****** Geom2dHatch_FClass2dOfClassifier::ClosestIntersection ******/
+		/****** md5 signature: 025d23acf1aa6c435dba31dbf4248fd0 ******/
 		%feature("compactdefaultargs") ClosestIntersection;
 		%feature("autodoc", "Return
 -------
@@ -763,8 +763,8 @@ Returns 0 if the last compared edge had no relevant intersection. else returns t
 ") ClosestIntersection;
 		Standard_Integer ClosestIntersection();
 
-		/****************** Compare ******************/
-		/**** md5 signature: 8847c5ed00295e2cbe677ffdcccdc312 ****/
+		/****** Geom2dHatch_FClass2dOfClassifier::Compare ******/
+		/****** md5 signature: 8847c5ed00295e2cbe677ffdcccdc312 ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
@@ -782,8 +782,8 @@ Updates the classification process with the edge <e> from the boundary.
 ") Compare;
 		void Compare(const Geom2dAdaptor_Curve & E, const TopAbs_Orientation Or);
 
-		/****************** Intersector ******************/
-		/**** md5 signature: 1dd65a31c65d3ed0cb2ef570bb23e710 ****/
+		/****** Geom2dHatch_FClass2dOfClassifier::Intersector ******/
+		/****** md5 signature: 1dd65a31c65d3ed0cb2ef570bb23e710 ******/
 		%feature("compactdefaultargs") Intersector;
 		%feature("autodoc", "Return
 -------
@@ -795,8 +795,8 @@ Returns the intersecting algorithm.
 ") Intersector;
 		Geom2dHatch_Intersector & Intersector();
 
-		/****************** IsHeadOrEnd ******************/
-		/**** md5 signature: bb302ba418a265161aeac4ed94262010 ****/
+		/****** Geom2dHatch_FClass2dOfClassifier::IsHeadOrEnd ******/
+		/****** md5 signature: bb302ba418a265161aeac4ed94262010 ******/
 		%feature("compactdefaultargs") IsHeadOrEnd;
 		%feature("autodoc", "Return
 -------
@@ -808,8 +808,8 @@ Returns the standard_true if the closest intersection point represents head or e
 ") IsHeadOrEnd;
 		Standard_Boolean IsHeadOrEnd();
 
-		/****************** Parameter ******************/
-		/**** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ****/
+		/****** Geom2dHatch_FClass2dOfClassifier::Parameter ******/
+		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
@@ -821,8 +821,8 @@ Returns the current value of the parameter.
 ") Parameter;
 		Standard_Real Parameter();
 
-		/****************** Reset ******************/
-		/**** md5 signature: a8c5889582c62cd16da1026d9b738b50 ****/
+		/****** Geom2dHatch_FClass2dOfClassifier::Reset ******/
+		/****** md5 signature: a8c5889582c62cd16da1026d9b738b50 ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "
 Parameters
@@ -841,8 +841,8 @@ Starts a classification process. the point to classify is the origin of the line
 ") Reset;
 		void Reset(const gp_Lin2d & L, const Standard_Real P, const Standard_Real Tol);
 
-		/****************** State ******************/
-		/**** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ****/
+		/****** Geom2dHatch_FClass2dOfClassifier::State ******/
+		/****** md5 signature: 927c83b1efdec797adb47eb058eddaa0 ******/
 		%feature("compactdefaultargs") State;
 		%feature("autodoc", "Return
 -------
@@ -868,8 +868,8 @@ Returns the current state of the point.
 ****************************/
 class Geom2dHatch_Hatcher {
 	public:
-		/****************** Geom2dHatch_Hatcher ******************/
-		/**** md5 signature: 187b4dcb3ab1500dccf3be0f421e2aa5 ****/
+		/****** Geom2dHatch_Hatcher::Geom2dHatch_Hatcher ******/
+		/****** md5 signature: 187b4dcb3ab1500dccf3be0f421e2aa5 ******/
 		%feature("compactdefaultargs") Geom2dHatch_Hatcher;
 		%feature("autodoc", "
 Parameters
@@ -890,8 +890,8 @@ Returns an empty hatcher.
 ") Geom2dHatch_Hatcher;
 		 Geom2dHatch_Hatcher(const Geom2dHatch_Intersector & Intersector, const Standard_Real Confusion2d, const Standard_Real Confusion3d, const Standard_Boolean KeepPnt = Standard_False, const Standard_Boolean KeepSeg = Standard_False);
 
-		/****************** AddElement ******************/
-		/**** md5 signature: 1795e334b38d7b7b840911f4d7afab35 ****/
+		/****** Geom2dHatch_Hatcher::AddElement ******/
+		/****** md5 signature: 1795e334b38d7b7b840911f4d7afab35 ******/
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", "
 Parameters
@@ -909,8 +909,8 @@ Adds an element to the hatcher and returns its index.
 ") AddElement;
 		Standard_Integer AddElement(const Geom2dAdaptor_Curve & Curve, const TopAbs_Orientation Orientation = TopAbs_FORWARD);
 
-		/****************** AddElement ******************/
-		/**** md5 signature: 1f114769a432a77d228adb9e8d05239d ****/
+		/****** Geom2dHatch_Hatcher::AddElement ******/
+		/****** md5 signature: 1f114769a432a77d228adb9e8d05239d ******/
 		%feature("compactdefaultargs") AddElement;
 		%feature("autodoc", "
 Parameters
@@ -928,8 +928,8 @@ Adds an element to the hatcher and returns its index.
 ") AddElement;
 		Standard_Integer AddElement(const opencascade::handle<Geom2d_Curve> & Curve, const TopAbs_Orientation Orientation = TopAbs_FORWARD);
 
-		/****************** AddHatching ******************/
-		/**** md5 signature: c5a53d2a733f5a8b1881e7499c52e61e ****/
+		/****** Geom2dHatch_Hatcher::AddHatching ******/
+		/****** md5 signature: c5a53d2a733f5a8b1881e7499c52e61e ******/
 		%feature("compactdefaultargs") AddHatching;
 		%feature("autodoc", "
 Parameters
@@ -946,8 +946,8 @@ Adds a hatching to the hatcher and returns its index.
 ") AddHatching;
 		Standard_Integer AddHatching(const Geom2dAdaptor_Curve & Curve);
 
-		/****************** ChangeIntersector ******************/
-		/**** md5 signature: 1ee41f0166a88d5c0b6b493b6da60d02 ****/
+		/****** Geom2dHatch_Hatcher::ChangeIntersector ******/
+		/****** md5 signature: 1ee41f0166a88d5c0b6b493b6da60d02 ******/
 		%feature("compactdefaultargs") ChangeIntersector;
 		%feature("autodoc", "Return
 -------
@@ -959,8 +959,8 @@ Returns the associated intersector.
 ") ChangeIntersector;
 		Geom2dHatch_Intersector & ChangeIntersector();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Geom2dHatch_Hatcher::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -972,8 +972,8 @@ Removes all the hatchings and all the elements.
 ") Clear;
 		void Clear();
 
-		/****************** ClrElements ******************/
-		/**** md5 signature: f3ef546889a6370ed2e0c706890f4a15 ****/
+		/****** Geom2dHatch_Hatcher::ClrElements ******/
+		/****** md5 signature: f3ef546889a6370ed2e0c706890f4a15 ******/
 		%feature("compactdefaultargs") ClrElements;
 		%feature("autodoc", "Return
 -------
@@ -985,8 +985,8 @@ Removes all the elements from the hatcher.
 ") ClrElements;
 		void ClrElements();
 
-		/****************** ClrHatchings ******************/
-		/**** md5 signature: f7850978ed1a1f8a1e54a87d5568ad99 ****/
+		/****** Geom2dHatch_Hatcher::ClrHatchings ******/
+		/****** md5 signature: f7850978ed1a1f8a1e54a87d5568ad99 ******/
 		%feature("compactdefaultargs") ClrHatchings;
 		%feature("autodoc", "Return
 -------
@@ -998,8 +998,8 @@ Removes all the hatchings from the hatcher.
 ") ClrHatchings;
 		void ClrHatchings();
 
-		/****************** ComputeDomains ******************/
-		/**** md5 signature: c85a4118552e35af32b2d36511b6bf5e ****/
+		/****** Geom2dHatch_Hatcher::ComputeDomains ******/
+		/****** md5 signature: c85a4118552e35af32b2d36511b6bf5e ******/
 		%feature("compactdefaultargs") ComputeDomains;
 		%feature("autodoc", "Return
 -------
@@ -1011,8 +1011,8 @@ Computes the domains of all the hatchings.
 ") ComputeDomains;
 		void ComputeDomains();
 
-		/****************** ComputeDomains ******************/
-		/**** md5 signature: b7e820a44e2a6bc312d42a71e29c5121 ****/
+		/****** Geom2dHatch_Hatcher::ComputeDomains ******/
+		/****** md5 signature: b7e820a44e2a6bc312d42a71e29c5121 ******/
 		%feature("compactdefaultargs") ComputeDomains;
 		%feature("autodoc", "
 Parameters
@@ -1029,8 +1029,8 @@ Computes the domains of the indh-th hatching.
 ") ComputeDomains;
 		void ComputeDomains(const Standard_Integer IndH);
 
-		/****************** Confusion2d ******************/
-		/**** md5 signature: 627c715c323135f6eff3a40837fae3a6 ****/
+		/****** Geom2dHatch_Hatcher::Confusion2d ******/
+		/****** md5 signature: 627c715c323135f6eff3a40837fae3a6 ******/
 		%feature("compactdefaultargs") Confusion2d;
 		%feature("autodoc", "
 Parameters
@@ -1047,8 +1047,8 @@ Sets the confusion tolerance.
 ") Confusion2d;
 		void Confusion2d(const Standard_Real Confusion);
 
-		/****************** Confusion2d ******************/
-		/**** md5 signature: 05d7bf6f3e8fb541be61933e883a4241 ****/
+		/****** Geom2dHatch_Hatcher::Confusion2d ******/
+		/****** md5 signature: 05d7bf6f3e8fb541be61933e883a4241 ******/
 		%feature("compactdefaultargs") Confusion2d;
 		%feature("autodoc", "Return
 -------
@@ -1060,8 +1060,8 @@ Returns the 2d confusion tolerance, i.e. the value under which two points are co
 ") Confusion2d;
 		Standard_Real Confusion2d();
 
-		/****************** Confusion3d ******************/
-		/**** md5 signature: d3548d5270cfbc65c491dfa71a0474e0 ****/
+		/****** Geom2dHatch_Hatcher::Confusion3d ******/
+		/****** md5 signature: d3548d5270cfbc65c491dfa71a0474e0 ******/
 		%feature("compactdefaultargs") Confusion3d;
 		%feature("autodoc", "
 Parameters
@@ -1078,8 +1078,8 @@ Sets the confusion tolerance.
 ") Confusion3d;
 		void Confusion3d(const Standard_Real Confusion);
 
-		/****************** Confusion3d ******************/
-		/**** md5 signature: d01bb76166a4bbcfea896dac72b5f667 ****/
+		/****** Geom2dHatch_Hatcher::Confusion3d ******/
+		/****** md5 signature: d01bb76166a4bbcfea896dac72b5f667 ******/
 		%feature("compactdefaultargs") Confusion3d;
 		%feature("autodoc", "Return
 -------
@@ -1091,8 +1091,8 @@ Returns the 3d confusion tolerance, i.e. the value under which two points are co
 ") Confusion3d;
 		Standard_Real Confusion3d();
 
-		/****************** Domain ******************/
-		/**** md5 signature: 6032d5398ada3cf66e558ed75fe21bea ****/
+		/****** Geom2dHatch_Hatcher::Domain ******/
+		/****** md5 signature: 6032d5398ada3cf66e558ed75fe21bea ******/
 		%feature("compactdefaultargs") Domain;
 		%feature("autodoc", "
 Parameters
@@ -1110,8 +1110,8 @@ Returns the idom-th domain of the indh-th hatching.
 ") Domain;
 		const HatchGen_Domain & Domain(const Standard_Integer IndH, const Standard_Integer IDom);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 15b4b2e195645aebb43170ff7f15952a ****/
+		/****** Geom2dHatch_Hatcher::Dump ******/
+		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "Return
 -------
@@ -1123,8 +1123,8 @@ Dump the hatcher.
 ") Dump;
 		void Dump();
 
-		/****************** ElementCurve ******************/
-		/**** md5 signature: 7b82bcd07d993461dce6bf3b3b98fcbd ****/
+		/****** Geom2dHatch_Hatcher::ElementCurve ******/
+		/****** md5 signature: 7b82bcd07d993461dce6bf3b3b98fcbd ******/
 		%feature("compactdefaultargs") ElementCurve;
 		%feature("autodoc", "
 Parameters
@@ -1141,8 +1141,8 @@ Returns the curve associated to the inde-th element.
 ") ElementCurve;
 		Geom2dAdaptor_Curve ElementCurve(const Standard_Integer IndE);
 
-		/****************** HatchingCurve ******************/
-		/**** md5 signature: b1fa8a098ff9f80a6f4e6d2a784c6793 ****/
+		/****** Geom2dHatch_Hatcher::HatchingCurve ******/
+		/****** md5 signature: b1fa8a098ff9f80a6f4e6d2a784c6793 ******/
 		%feature("compactdefaultargs") HatchingCurve;
 		%feature("autodoc", "
 Parameters
@@ -1159,8 +1159,8 @@ Returns the curve associated to the indh-th hatching.
 ") HatchingCurve;
 		Geom2dAdaptor_Curve HatchingCurve(const Standard_Integer IndH);
 
-		/****************** Intersector ******************/
-		/**** md5 signature: d4ab1df6bb73c74fdc4de0978582e354 ****/
+		/****** Geom2dHatch_Hatcher::Intersector ******/
+		/****** md5 signature: d4ab1df6bb73c74fdc4de0978582e354 ******/
 		%feature("compactdefaultargs") Intersector;
 		%feature("autodoc", "
 Parameters
@@ -1177,8 +1177,8 @@ Sets the associated intersector.
 ") Intersector;
 		void Intersector(const Geom2dHatch_Intersector & Intersector);
 
-		/****************** Intersector ******************/
-		/**** md5 signature: 697d6c432ae510993f9234013244b045 ****/
+		/****** Geom2dHatch_Hatcher::Intersector ******/
+		/****** md5 signature: 697d6c432ae510993f9234013244b045 ******/
 		%feature("compactdefaultargs") Intersector;
 		%feature("autodoc", "Return
 -------
@@ -1190,8 +1190,8 @@ Returns the associated intersector.
 ") Intersector;
 		const Geom2dHatch_Intersector & Intersector();
 
-		/****************** KeepPoints ******************/
-		/**** md5 signature: 027651edb5748a4f9dcd520314dbd93a ****/
+		/****** Geom2dHatch_Hatcher::KeepPoints ******/
+		/****** md5 signature: 027651edb5748a4f9dcd520314dbd93a ******/
 		%feature("compactdefaultargs") KeepPoints;
 		%feature("autodoc", "
 Parameters
@@ -1208,8 +1208,8 @@ Sets the above flag.
 ") KeepPoints;
 		void KeepPoints(const Standard_Boolean Keep);
 
-		/****************** KeepPoints ******************/
-		/**** md5 signature: 8ada9044d41ff216e29e7377b2793980 ****/
+		/****** Geom2dHatch_Hatcher::KeepPoints ******/
+		/****** md5 signature: 8ada9044d41ff216e29e7377b2793980 ******/
 		%feature("compactdefaultargs") KeepPoints;
 		%feature("autodoc", "Return
 -------
@@ -1221,8 +1221,8 @@ Returns the flag about the points consideration.
 ") KeepPoints;
 		Standard_Boolean KeepPoints();
 
-		/****************** KeepSegments ******************/
-		/**** md5 signature: d3ed6d7cf52ae62cad0e06281b198d31 ****/
+		/****** Geom2dHatch_Hatcher::KeepSegments ******/
+		/****** md5 signature: d3ed6d7cf52ae62cad0e06281b198d31 ******/
 		%feature("compactdefaultargs") KeepSegments;
 		%feature("autodoc", "
 Parameters
@@ -1239,8 +1239,8 @@ Sets the above flag.
 ") KeepSegments;
 		void KeepSegments(const Standard_Boolean Keep);
 
-		/****************** KeepSegments ******************/
-		/**** md5 signature: 7d1a74e2496ac2b5cc2da55e862a4747 ****/
+		/****** Geom2dHatch_Hatcher::KeepSegments ******/
+		/****** md5 signature: 7d1a74e2496ac2b5cc2da55e862a4747 ******/
 		%feature("compactdefaultargs") KeepSegments;
 		%feature("autodoc", "Return
 -------
@@ -1252,8 +1252,8 @@ Returns the flag about the segments consideration.
 ") KeepSegments;
 		Standard_Boolean KeepSegments();
 
-		/****************** NbDomains ******************/
-		/**** md5 signature: d48395d7e40b2e4422ef860c44d28ee9 ****/
+		/****** Geom2dHatch_Hatcher::NbDomains ******/
+		/****** md5 signature: d48395d7e40b2e4422ef860c44d28ee9 ******/
 		%feature("compactdefaultargs") NbDomains;
 		%feature("autodoc", "
 Parameters
@@ -1270,8 +1270,8 @@ Returns the number of domains of the indh-th hatching. only one 'infinite' domai
 ") NbDomains;
 		Standard_Integer NbDomains(const Standard_Integer IndH);
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: c809871526b75b966177fc20bdcc65a5 ****/
+		/****** Geom2dHatch_Hatcher::NbPoints ******/
+		/****** md5 signature: c809871526b75b966177fc20bdcc65a5 ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "
 Parameters
@@ -1288,8 +1288,8 @@ Returns the number of intersection points of the indh-th hatching.
 ") NbPoints;
 		Standard_Integer NbPoints(const Standard_Integer IndH);
 
-		/****************** Point ******************/
-		/**** md5 signature: 406dd4973b782e4acc78e842b4000820 ****/
+		/****** Geom2dHatch_Hatcher::Point ******/
+		/****** md5 signature: 406dd4973b782e4acc78e842b4000820 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -1307,8 +1307,8 @@ Returns the indp-th intersection point of the indh-th hatching.
 ") Point;
 		const HatchGen_PointOnHatching & Point(const Standard_Integer IndH, const Standard_Integer IndP);
 
-		/****************** RemElement ******************/
-		/**** md5 signature: 3d9f4dc777513f61512183f442d2c1b2 ****/
+		/****** Geom2dHatch_Hatcher::RemElement ******/
+		/****** md5 signature: 3d9f4dc777513f61512183f442d2c1b2 ******/
 		%feature("compactdefaultargs") RemElement;
 		%feature("autodoc", "
 Parameters
@@ -1325,8 +1325,8 @@ Removes the inde-th element from the hatcher.
 ") RemElement;
 		void RemElement(const Standard_Integer IndE);
 
-		/****************** RemHatching ******************/
-		/**** md5 signature: 890abff5548474a792e109dec3568ba1 ****/
+		/****** Geom2dHatch_Hatcher::RemHatching ******/
+		/****** md5 signature: 890abff5548474a792e109dec3568ba1 ******/
 		%feature("compactdefaultargs") RemHatching;
 		%feature("autodoc", "
 Parameters
@@ -1343,8 +1343,8 @@ Removes the indh-th hatching from the hatcher.
 ") RemHatching;
 		void RemHatching(const Standard_Integer IndH);
 
-		/****************** Status ******************/
-		/**** md5 signature: 528338a7f66ec9b9d06ff74af6ea1b34 ****/
+		/****** Geom2dHatch_Hatcher::Status ******/
+		/****** md5 signature: 528338a7f66ec9b9d06ff74af6ea1b34 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -1361,8 +1361,8 @@ Returns the status about the indh-th hatching.
 ") Status;
 		HatchGen_ErrorStatus Status(const Standard_Integer IndH);
 
-		/****************** Trim ******************/
-		/**** md5 signature: f2db9e8c741c03532ffc3979cda30640 ****/
+		/****** Geom2dHatch_Hatcher::Trim ******/
+		/****** md5 signature: f2db9e8c741c03532ffc3979cda30640 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "Return
 -------
@@ -1374,8 +1374,8 @@ Trims all the hatchings of the hatcher by all the elements of the hatcher.
 ") Trim;
 		void Trim();
 
-		/****************** Trim ******************/
-		/**** md5 signature: 8ede1b0e1bc16299ed7e530304c71aa6 ****/
+		/****** Geom2dHatch_Hatcher::Trim ******/
+		/****** md5 signature: 8ede1b0e1bc16299ed7e530304c71aa6 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
@@ -1392,8 +1392,8 @@ Adds a hatching to the hatcher and trims it by the elements already given and re
 ") Trim;
 		Standard_Integer Trim(const Geom2dAdaptor_Curve & Curve);
 
-		/****************** Trim ******************/
-		/**** md5 signature: feeee1e44f575b2a531349e0279c673a ****/
+		/****** Geom2dHatch_Hatcher::Trim ******/
+		/****** md5 signature: feeee1e44f575b2a531349e0279c673a ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
@@ -1410,8 +1410,8 @@ Trims the indh-th hatching by the elements already given.
 ") Trim;
 		void Trim(const Standard_Integer IndH);
 
-		/****************** TrimDone ******************/
-		/**** md5 signature: 8bd5bf94a182ef475c4c3267e1a188c7 ****/
+		/****** Geom2dHatch_Hatcher::TrimDone ******/
+		/****** md5 signature: 8bd5bf94a182ef475c4c3267e1a188c7 ******/
 		%feature("compactdefaultargs") TrimDone;
 		%feature("autodoc", "
 Parameters
@@ -1428,8 +1428,8 @@ Returns the fact that the intersections were computed for the indh-th hatching.
 ") TrimDone;
 		Standard_Boolean TrimDone(const Standard_Integer IndH);
 
-		/****************** TrimFailed ******************/
-		/**** md5 signature: b6f1c1f3c2d6e9c97215966124430f71 ****/
+		/****** Geom2dHatch_Hatcher::TrimFailed ******/
+		/****** md5 signature: b6f1c1f3c2d6e9c97215966124430f71 ******/
 		%feature("compactdefaultargs") TrimFailed;
 		%feature("autodoc", "
 Parameters
@@ -1464,8 +1464,8 @@ Returns the fact that the intersections failed for the indh-th hatching.
 *****************************/
 class Geom2dHatch_Hatching {
 	public:
-		/****************** Geom2dHatch_Hatching ******************/
-		/**** md5 signature: 2062046bf5b1c714e46f8a4687c70549 ****/
+		/****** Geom2dHatch_Hatching::Geom2dHatch_Hatching ******/
+		/****** md5 signature: 2062046bf5b1c714e46f8a4687c70549 ******/
 		%feature("compactdefaultargs") Geom2dHatch_Hatching;
 		%feature("autodoc", "Return
 -------
@@ -1477,8 +1477,8 @@ No available documentation.
 ") Geom2dHatch_Hatching;
 		 Geom2dHatch_Hatching();
 
-		/****************** Geom2dHatch_Hatching ******************/
-		/**** md5 signature: ccf226b872b3ecf832b2d589a6dc49d0 ****/
+		/****** Geom2dHatch_Hatching::Geom2dHatch_Hatching ******/
+		/****** md5 signature: ccf226b872b3ecf832b2d589a6dc49d0 ******/
 		%feature("compactdefaultargs") Geom2dHatch_Hatching;
 		%feature("autodoc", "
 Parameters
@@ -1495,8 +1495,8 @@ Creates a hatching.
 ") Geom2dHatch_Hatching;
 		 Geom2dHatch_Hatching(const Geom2dAdaptor_Curve & Curve);
 
-		/****************** AddDomain ******************/
-		/**** md5 signature: ba9481eec256629b6fe9381a3088e6da ****/
+		/****** Geom2dHatch_Hatching::AddDomain ******/
+		/****** md5 signature: ba9481eec256629b6fe9381a3088e6da ******/
 		%feature("compactdefaultargs") AddDomain;
 		%feature("autodoc", "
 Parameters
@@ -1513,8 +1513,8 @@ Adds a domain to the hatching.
 ") AddDomain;
 		void AddDomain(const HatchGen_Domain & Domain);
 
-		/****************** AddPoint ******************/
-		/**** md5 signature: dbba22fac9cf431f5cd0498363256d72 ****/
+		/****** Geom2dHatch_Hatching::AddPoint ******/
+		/****** md5 signature: dbba22fac9cf431f5cd0498363256d72 ******/
 		%feature("compactdefaultargs") AddPoint;
 		%feature("autodoc", "
 Parameters
@@ -1532,8 +1532,8 @@ Adds an intersection point to the hatching.
 ") AddPoint;
 		void AddPoint(const HatchGen_PointOnHatching & Point, const Standard_Real Confusion);
 
-		/****************** ChangeCurve ******************/
-		/**** md5 signature: fe0ef69eab3edfb44b3acc292d7c73be ****/
+		/****** Geom2dHatch_Hatching::ChangeCurve ******/
+		/****** md5 signature: fe0ef69eab3edfb44b3acc292d7c73be ******/
 		%feature("compactdefaultargs") ChangeCurve;
 		%feature("autodoc", "Return
 -------
@@ -1545,8 +1545,8 @@ Returns the curve associated to the hatching.
 ") ChangeCurve;
 		Geom2dAdaptor_Curve & ChangeCurve();
 
-		/****************** ChangePoint ******************/
-		/**** md5 signature: ed257bfbad147d866f4e6d64b57cae2c ****/
+		/****** Geom2dHatch_Hatching::ChangePoint ******/
+		/****** md5 signature: ed257bfbad147d866f4e6d64b57cae2c ******/
 		%feature("compactdefaultargs") ChangePoint;
 		%feature("autodoc", "
 Parameters
@@ -1563,8 +1563,8 @@ Returns the index-th intersection point of the hatching. the exception outofrang
 ") ChangePoint;
 		HatchGen_PointOnHatching & ChangePoint(const Standard_Integer Index);
 
-		/****************** ClassificationPoint ******************/
-		/**** md5 signature: 3cb51d9b6c6a01e7e016aeec532a9266 ****/
+		/****** Geom2dHatch_Hatching::ClassificationPoint ******/
+		/****** md5 signature: 3cb51d9b6c6a01e7e016aeec532a9266 ******/
 		%feature("compactdefaultargs") ClassificationPoint;
 		%feature("autodoc", "Return
 -------
@@ -1576,8 +1576,8 @@ Returns a point on the curve. this point will be used for the classification.
 ") ClassificationPoint;
 		gp_Pnt2d ClassificationPoint();
 
-		/****************** ClrDomains ******************/
-		/**** md5 signature: b3871988cee79159b996f0c8b2e2fb30 ****/
+		/****** Geom2dHatch_Hatching::ClrDomains ******/
+		/****** md5 signature: b3871988cee79159b996f0c8b2e2fb30 ******/
 		%feature("compactdefaultargs") ClrDomains;
 		%feature("autodoc", "Return
 -------
@@ -1589,8 +1589,8 @@ Removes all the domains of the hatching.
 ") ClrDomains;
 		void ClrDomains();
 
-		/****************** ClrPoints ******************/
-		/**** md5 signature: e99750252922662025bcc4d5f2030893 ****/
+		/****** Geom2dHatch_Hatching::ClrPoints ******/
+		/****** md5 signature: e99750252922662025bcc4d5f2030893 ******/
 		%feature("compactdefaultargs") ClrPoints;
 		%feature("autodoc", "Return
 -------
@@ -1602,8 +1602,8 @@ Removes all the intersection points of the hatching.
 ") ClrPoints;
 		void ClrPoints();
 
-		/****************** Curve ******************/
-		/**** md5 signature: e12bcd64b0a466dce7601de6fe68db77 ****/
+		/****** Geom2dHatch_Hatching::Curve ******/
+		/****** md5 signature: e12bcd64b0a466dce7601de6fe68db77 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -1615,8 +1615,8 @@ Returns the curve associated to the hatching.
 ") Curve;
 		Geom2dAdaptor_Curve Curve();
 
-		/****************** Domain ******************/
-		/**** md5 signature: f3c8220f5a10c7deff66f6c669170c4f ****/
+		/****** Geom2dHatch_Hatching::Domain ******/
+		/****** md5 signature: f3c8220f5a10c7deff66f6c669170c4f ******/
 		%feature("compactdefaultargs") Domain;
 		%feature("autodoc", "
 Parameters
@@ -1633,8 +1633,8 @@ Returns the index-th domain of the hatching. the exception outofrange is raised 
 ") Domain;
 		const HatchGen_Domain & Domain(const Standard_Integer Index);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: c5ee0df671d976d747baf3c96c1e3e0a ****/
+		/****** Geom2dHatch_Hatching::IsDone ******/
+		/****** md5 signature: c5ee0df671d976d747baf3c96c1e3e0a ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "
 Parameters
@@ -1651,8 +1651,8 @@ Sets the flag about the domains computation to the given value.
 ") IsDone;
 		void IsDone(const Standard_Boolean Flag);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Geom2dHatch_Hatching::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1664,8 +1664,8 @@ Returns the flag about the domains computation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbDomains ******************/
-		/**** md5 signature: 88f695e65a56f270d89ba3c02d0a11e0 ****/
+		/****** Geom2dHatch_Hatching::NbDomains ******/
+		/****** md5 signature: 88f695e65a56f270d89ba3c02d0a11e0 ******/
 		%feature("compactdefaultargs") NbDomains;
 		%feature("autodoc", "Return
 -------
@@ -1677,8 +1677,8 @@ Returns the number of domains of the hatching.
 ") NbDomains;
 		Standard_Integer NbDomains();
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** Geom2dHatch_Hatching::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -1690,8 +1690,8 @@ Returns the number of intersection points of the hatching.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** Point ******************/
-		/**** md5 signature: eda4bbd7f8aa7bfe072b5cf54ac61ec8 ****/
+		/****** Geom2dHatch_Hatching::Point ******/
+		/****** md5 signature: eda4bbd7f8aa7bfe072b5cf54ac61ec8 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -1708,8 +1708,8 @@ Returns the index-th intersection point of the hatching. the exception outofrang
 ") Point;
 		const HatchGen_PointOnHatching & Point(const Standard_Integer Index);
 
-		/****************** RemDomain ******************/
-		/**** md5 signature: ac1a9d30bab474f2fd3be2fcd38b3a59 ****/
+		/****** Geom2dHatch_Hatching::RemDomain ******/
+		/****** md5 signature: ac1a9d30bab474f2fd3be2fcd38b3a59 ******/
 		%feature("compactdefaultargs") RemDomain;
 		%feature("autodoc", "
 Parameters
@@ -1726,8 +1726,8 @@ Removes the index-th domain of the hatching. the exception outofrange is raised 
 ") RemDomain;
 		void RemDomain(const Standard_Integer Index);
 
-		/****************** RemPoint ******************/
-		/**** md5 signature: 4fd025fee44e20642cf1dc77eaa95334 ****/
+		/****** Geom2dHatch_Hatching::RemPoint ******/
+		/****** md5 signature: 4fd025fee44e20642cf1dc77eaa95334 ******/
 		%feature("compactdefaultargs") RemPoint;
 		%feature("autodoc", "
 Parameters
@@ -1744,8 +1744,8 @@ Removes the index-th intersection point of the hatching. the exception outofrang
 ") RemPoint;
 		void RemPoint(const Standard_Integer Index);
 
-		/****************** Status ******************/
-		/**** md5 signature: 81c4e8f2ad9b32fcff84b60598915bb5 ****/
+		/****** Geom2dHatch_Hatching::Status ******/
+		/****** md5 signature: 81c4e8f2ad9b32fcff84b60598915bb5 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -1762,8 +1762,8 @@ Sets the error status.
 ") Status;
 		void Status(const HatchGen_ErrorStatus theStatus);
 
-		/****************** Status ******************/
-		/**** md5 signature: 1c05122e5a611d2704c6ce8428cd3fda ****/
+		/****** Geom2dHatch_Hatching::Status ******/
+		/****** md5 signature: 1c05122e5a611d2704c6ce8428cd3fda ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "Return
 -------
@@ -1775,8 +1775,8 @@ Returns the error status.
 ") Status;
 		HatchGen_ErrorStatus Status();
 
-		/****************** TrimDone ******************/
-		/**** md5 signature: 85dd69850d8c5318d2171bd9dbe8c677 ****/
+		/****** Geom2dHatch_Hatching::TrimDone ******/
+		/****** md5 signature: 85dd69850d8c5318d2171bd9dbe8c677 ******/
 		%feature("compactdefaultargs") TrimDone;
 		%feature("autodoc", "
 Parameters
@@ -1793,8 +1793,8 @@ Sets the flag about the trimming computations to the given value.
 ") TrimDone;
 		void TrimDone(const Standard_Boolean Flag);
 
-		/****************** TrimDone ******************/
-		/**** md5 signature: a90282f07c7070914885c7cdce67dbad ****/
+		/****** Geom2dHatch_Hatching::TrimDone ******/
+		/****** md5 signature: a90282f07c7070914885c7cdce67dbad ******/
 		%feature("compactdefaultargs") TrimDone;
 		%feature("autodoc", "Return
 -------
@@ -1806,8 +1806,8 @@ Returns the flag about the trimming computations.
 ") TrimDone;
 		Standard_Boolean TrimDone();
 
-		/****************** TrimFailed ******************/
-		/**** md5 signature: 0285f5ea6875e7092a42e0f67932cd6d ****/
+		/****** Geom2dHatch_Hatching::TrimFailed ******/
+		/****** md5 signature: 0285f5ea6875e7092a42e0f67932cd6d ******/
 		%feature("compactdefaultargs") TrimFailed;
 		%feature("autodoc", "
 Parameters
@@ -1824,8 +1824,8 @@ Sets the flag about the trimming failure to the given value.
 ") TrimFailed;
 		void TrimFailed(const Standard_Boolean Flag);
 
-		/****************** TrimFailed ******************/
-		/**** md5 signature: a80e96591b7c028bf8e6a9f4968fcca7 ****/
+		/****** Geom2dHatch_Hatching::TrimFailed ******/
+		/****** md5 signature: a80e96591b7c028bf8e6a9f4968fcca7 ******/
 		%feature("compactdefaultargs") TrimFailed;
 		%feature("autodoc", "Return
 -------
@@ -1851,8 +1851,8 @@ Returns the flag about the trimming failure.
 ********************************/
 class Geom2dHatch_Intersector : public Geom2dInt_GInter {
 	public:
-		/****************** Geom2dHatch_Intersector ******************/
-		/**** md5 signature: 9486d58b881107b1a6ec26b97fd475f8 ****/
+		/****** Geom2dHatch_Intersector::Geom2dHatch_Intersector ******/
+		/****** md5 signature: 9486d58b881107b1a6ec26b97fd475f8 ******/
 		%feature("compactdefaultargs") Geom2dHatch_Intersector;
 		%feature("autodoc", "
 Parameters
@@ -1870,8 +1870,8 @@ Creates an intersector.
 ") Geom2dHatch_Intersector;
 		 Geom2dHatch_Intersector(const Standard_Real Confusion, const Standard_Real Tangency);
 
-		/****************** Geom2dHatch_Intersector ******************/
-		/**** md5 signature: 418f7110f267139f168df9ee1f11e3d8 ****/
+		/****** Geom2dHatch_Intersector::Geom2dHatch_Intersector ******/
+		/****** md5 signature: 418f7110f267139f168df9ee1f11e3d8 ******/
 		%feature("compactdefaultargs") Geom2dHatch_Intersector;
 		%feature("autodoc", "Return
 -------
@@ -1883,8 +1883,8 @@ No available documentation.
 ") Geom2dHatch_Intersector;
 		 Geom2dHatch_Intersector();
 
-		/****************** ConfusionTolerance ******************/
-		/**** md5 signature: 5d8ed07ec143cde8876ff216d95d6417 ****/
+		/****** Geom2dHatch_Intersector::ConfusionTolerance ******/
+		/****** md5 signature: 5d8ed07ec143cde8876ff216d95d6417 ******/
 		%feature("compactdefaultargs") ConfusionTolerance;
 		%feature("autodoc", "Return
 -------
@@ -1896,8 +1896,8 @@ Returns the confusion tolerance of the intersector.
 ") ConfusionTolerance;
 		Standard_Real ConfusionTolerance();
 
-		/****************** Intersect ******************/
-		/**** md5 signature: ed6de426a99bea19436b81b6be37110e ****/
+		/****** Geom2dHatch_Intersector::Intersect ******/
+		/****** md5 signature: ed6de426a99bea19436b81b6be37110e ******/
 		%feature("compactdefaultargs") Intersect;
 		%feature("autodoc", "
 Parameters
@@ -1915,8 +1915,8 @@ Intersects the curves c1 and c2. the results are retrieved by the usual methods 
 ") Intersect;
 		void Intersect(const Geom2dAdaptor_Curve & C1, const Geom2dAdaptor_Curve & C2);
 
-		/****************** LocalGeometry ******************/
-		/**** md5 signature: 6143ed35952d1f3e9b10f961ea5cdb07 ****/
+		/****** Geom2dHatch_Intersector::LocalGeometry ******/
+		/****** md5 signature: 6143ed35952d1f3e9b10f961ea5cdb07 ******/
 		%feature("compactdefaultargs") LocalGeometry;
 		%feature("autodoc", "
 Parameters
@@ -1936,8 +1936,8 @@ Returns in <t>, <n> and <c> the tangent, normal and curvature of the edge <e> at
 ") LocalGeometry;
 		void LocalGeometry(const Geom2dAdaptor_Curve & E, const Standard_Real U, gp_Dir2d & T, gp_Dir2d & N, Standard_Real &OutValue);
 
-		/****************** Perform ******************/
-		/**** md5 signature: b636c75bbc716ecf3af70fb9dc9625dd ****/
+		/****** Geom2dHatch_Intersector::Perform ******/
+		/****** md5 signature: b636c75bbc716ecf3af70fb9dc9625dd ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1957,8 +1957,8 @@ Performs the intersection between the 2d line segment (<l>, <p>) and the curve <
 ") Perform;
 		void Perform(const gp_Lin2d & L, const Standard_Real P, const Standard_Real Tol, const Geom2dAdaptor_Curve & E);
 
-		/****************** SetConfusionTolerance ******************/
-		/**** md5 signature: f38b1a3647fa12a69e11d7bb1f1675d9 ****/
+		/****** Geom2dHatch_Intersector::SetConfusionTolerance ******/
+		/****** md5 signature: f38b1a3647fa12a69e11d7bb1f1675d9 ******/
 		%feature("compactdefaultargs") SetConfusionTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1975,8 +1975,8 @@ Sets the confusion tolerance of the intersector.
 ") SetConfusionTolerance;
 		void SetConfusionTolerance(const Standard_Real Confusion);
 
-		/****************** SetTangencyTolerance ******************/
-		/**** md5 signature: 7977322a03a23c6d1893fcd54da58aa9 ****/
+		/****** Geom2dHatch_Intersector::SetTangencyTolerance ******/
+		/****** md5 signature: 7977322a03a23c6d1893fcd54da58aa9 ******/
 		%feature("compactdefaultargs") SetTangencyTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1993,8 +1993,8 @@ Sets the tangency tolerance of the intersector.
 ") SetTangencyTolerance;
 		void SetTangencyTolerance(const Standard_Real Tangency);
 
-		/****************** TangencyTolerance ******************/
-		/**** md5 signature: d3276b86847c4d68f8409fb4fa2e0af6 ****/
+		/****** Geom2dHatch_Intersector::TangencyTolerance ******/
+		/****** md5 signature: d3276b86847c4d68f8409fb4fa2e0af6 ******/
 		%feature("compactdefaultargs") TangencyTolerance;
 		%feature("autodoc", "Return
 -------

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define LOCOPEDOCSTRING
 "LocOpe module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_locope.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_locope.html"
 %enddef
 %module (package="OCC.Core", docstring=LOCOPEDOCSTRING) LocOpe
 
@@ -156,8 +156,8 @@ typedef NCollection_Sequence<LocOpe_PntFace> LocOpe_SequenceOfPntFace;
 %rename(locope) LocOpe;
 class LocOpe {
 	public:
-		/****************** Closed ******************/
-		/**** md5 signature: fbb157484e330feceec7d488110ae1e4 ****/
+		/****** LocOpe::Closed ******/
+		/****** md5 signature: fbb157484e330feceec7d488110ae1e4 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -175,8 +175,8 @@ Returns standard_true when the wire <w> is closed on the face <onf>.
 ") Closed;
 		static Standard_Boolean Closed(const TopoDS_Wire & W, const TopoDS_Face & OnF);
 
-		/****************** Closed ******************/
-		/**** md5 signature: 2669c9687e0732c0038f16d1daf4d6a2 ****/
+		/****** LocOpe::Closed ******/
+		/****** md5 signature: 2669c9687e0732c0038f16d1daf4d6a2 ******/
 		%feature("compactdefaultargs") Closed;
 		%feature("autodoc", "
 Parameters
@@ -194,8 +194,8 @@ Returns standard_true when the edge <e> is closed on the face <onf>.
 ") Closed;
 		static Standard_Boolean Closed(const TopoDS_Edge & E, const TopoDS_Face & OnF);
 
-		/****************** SampleEdges ******************/
-		/**** md5 signature: f1154ae22c369e9497c31a5a83612489 ****/
+		/****** LocOpe::SampleEdges ******/
+		/****** md5 signature: f1154ae22c369e9497c31a5a83612489 ******/
 		%feature("compactdefaultargs") SampleEdges;
 		%feature("autodoc", "
 Parameters
@@ -213,8 +213,8 @@ No available documentation.
 ") SampleEdges;
 		static void SampleEdges(const TopoDS_Shape & S, TColgp_SequenceOfPnt & Pt);
 
-		/****************** TgtFaces ******************/
-		/**** md5 signature: c906e89846aea6959f05edaa2974e4bd ****/
+		/****** LocOpe::TgtFaces ******/
+		/****** md5 signature: c906e89846aea6959f05edaa2974e4bd ******/
 		%feature("compactdefaultargs") TgtFaces;
 		%feature("autodoc", "
 Parameters
@@ -247,8 +247,8 @@ Returns standard_true when the faces are tangent.
 **************************/
 class LocOpe_BuildShape {
 	public:
-		/****************** LocOpe_BuildShape ******************/
-		/**** md5 signature: 8dd41df5d2d189082377958dc7871414 ****/
+		/****** LocOpe_BuildShape::LocOpe_BuildShape ******/
+		/****** md5 signature: 8dd41df5d2d189082377958dc7871414 ******/
 		%feature("compactdefaultargs") LocOpe_BuildShape;
 		%feature("autodoc", "Return
 -------
@@ -260,8 +260,8 @@ No available documentation.
 ") LocOpe_BuildShape;
 		 LocOpe_BuildShape();
 
-		/****************** LocOpe_BuildShape ******************/
-		/**** md5 signature: 292d904c875e5cb94eb3da4e102f5625 ****/
+		/****** LocOpe_BuildShape::LocOpe_BuildShape ******/
+		/****** md5 signature: 292d904c875e5cb94eb3da4e102f5625 ******/
 		%feature("compactdefaultargs") LocOpe_BuildShape;
 		%feature("autodoc", "
 Parameters
@@ -278,8 +278,8 @@ Builds shape(s) from the list <l>. uses only the faces of <l>.
 ") LocOpe_BuildShape;
 		 LocOpe_BuildShape(const TopTools_ListOfShape & L);
 
-		/****************** Perform ******************/
-		/**** md5 signature: aef5bdb5986ea65197c9e51e771dc9fa ****/
+		/****** LocOpe_BuildShape::Perform ******/
+		/****** md5 signature: aef5bdb5986ea65197c9e51e771dc9fa ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -296,8 +296,8 @@ Builds shape(s) from the list <l>. uses only the faces of <l>.
 ") Perform;
 		void Perform(const TopTools_ListOfShape & L);
 
-		/****************** Shape ******************/
-		/**** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ****/
+		/****** LocOpe_BuildShape::Shape ******/
+		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -323,8 +323,8 @@ No available documentation.
 **************************/
 class LocOpe_BuildWires {
 	public:
-		/****************** LocOpe_BuildWires ******************/
-		/**** md5 signature: 9812afc6b98a2ea5f11fc59245706b54 ****/
+		/****** LocOpe_BuildWires::LocOpe_BuildWires ******/
+		/****** md5 signature: 9812afc6b98a2ea5f11fc59245706b54 ******/
 		%feature("compactdefaultargs") LocOpe_BuildWires;
 		%feature("autodoc", "Return
 -------
@@ -336,8 +336,8 @@ No available documentation.
 ") LocOpe_BuildWires;
 		 LocOpe_BuildWires();
 
-		/****************** LocOpe_BuildWires ******************/
-		/**** md5 signature: c84cb440017a86449afe8570398493c3 ****/
+		/****** LocOpe_BuildWires::LocOpe_BuildWires ******/
+		/****** md5 signature: c84cb440017a86449afe8570398493c3 ******/
 		%feature("compactdefaultargs") LocOpe_BuildWires;
 		%feature("autodoc", "
 Parameters
@@ -355,8 +355,8 @@ No available documentation.
 ") LocOpe_BuildWires;
 		 LocOpe_BuildWires(const TopTools_ListOfShape & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** LocOpe_BuildWires::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -368,8 +368,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 614ea950b6600d6429bebd9def612a4e ****/
+		/****** LocOpe_BuildWires::Perform ******/
+		/****** md5 signature: 614ea950b6600d6429bebd9def612a4e ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -387,8 +387,8 @@ No available documentation.
 ") Perform;
 		void Perform(const TopTools_ListOfShape & Ledges, const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
-		/****************** Result ******************/
-		/**** md5 signature: 681704f874a846c02474e624abdd199e ****/
+		/****** LocOpe_BuildWires::Result ******/
+		/****** md5 signature: 681704f874a846c02474e624abdd199e ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
@@ -414,8 +414,8 @@ No available documentation.
 *****************************/
 class LocOpe_CSIntersector {
 	public:
-		/****************** LocOpe_CSIntersector ******************/
-		/**** md5 signature: b42d043d62be9605a2626066ea0010ac ****/
+		/****** LocOpe_CSIntersector::LocOpe_CSIntersector ******/
+		/****** md5 signature: b42d043d62be9605a2626066ea0010ac ******/
 		%feature("compactdefaultargs") LocOpe_CSIntersector;
 		%feature("autodoc", "Return
 -------
@@ -427,8 +427,8 @@ Empty constructor.
 ") LocOpe_CSIntersector;
 		 LocOpe_CSIntersector();
 
-		/****************** LocOpe_CSIntersector ******************/
-		/**** md5 signature: 528908f4d87c8037893eb5fddfa6d9b6 ****/
+		/****** LocOpe_CSIntersector::LocOpe_CSIntersector ******/
+		/****** md5 signature: 528908f4d87c8037893eb5fddfa6d9b6 ******/
 		%feature("compactdefaultargs") LocOpe_CSIntersector;
 		%feature("autodoc", "
 Parameters
@@ -445,8 +445,8 @@ Creates and performs the intersection betwwen <ax1> and <s>.
 ") LocOpe_CSIntersector;
 		 LocOpe_CSIntersector(const TopoDS_Shape & S);
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
+		/****** LocOpe_CSIntersector::Destroy ******/
+		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "Return
 -------
@@ -458,8 +458,8 @@ No available documentation.
 ") Destroy;
 		void Destroy();
 
-		/****************** Init ******************/
-		/**** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ****/
+		/****** LocOpe_CSIntersector::Init ******/
+		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -476,8 +476,8 @@ Performs the intersection between <ax1 and <s>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** LocOpe_CSIntersector::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -489,8 +489,8 @@ Returns <standard_true> if the intersection has been done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** LocalizeAfter ******************/
-		/**** md5 signature: 0c047f3521a889ad3beace61675cb16c ****/
+		/****** LocOpe_CSIntersector::LocalizeAfter ******/
+		/****** md5 signature: 0c047f3521a889ad3beace61675cb16c ******/
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "
 Parameters
@@ -511,8 +511,8 @@ On the element of range <i>, searches the first intersection point located after
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** LocalizeAfter ******************/
-		/**** md5 signature: d56de202f543156481760d3d927eea66 ****/
+		/****** LocOpe_CSIntersector::LocalizeAfter ******/
+		/****** md5 signature: d56de202f543156481760d3d927eea66 ******/
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "
 Parameters
@@ -533,8 +533,8 @@ On the element of range <i>, searches the first intersection point located after
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** LocalizeBefore ******************/
-		/**** md5 signature: 5b2b6de66ba5a81aeee8506f68cfc270 ****/
+		/****** LocOpe_CSIntersector::LocalizeBefore ******/
+		/****** md5 signature: 5b2b6de66ba5a81aeee8506f68cfc270 ******/
 		%feature("compactdefaultargs") LocalizeBefore;
 		%feature("autodoc", "
 Parameters
@@ -555,8 +555,8 @@ On the element of range <i>, searches the first intersection point located befor
 ") LocalizeBefore;
 		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Real From, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** LocalizeBefore ******************/
-		/**** md5 signature: 89f05e176ad1cd9828188d9a6ada9149 ****/
+		/****** LocOpe_CSIntersector::LocalizeBefore ******/
+		/****** md5 signature: 89f05e176ad1cd9828188d9a6ada9149 ******/
 		%feature("compactdefaultargs") LocalizeBefore;
 		%feature("autodoc", "
 Parameters
@@ -577,8 +577,8 @@ On the element of range <i>, searches the first intersection point located befor
 ") LocalizeBefore;
 		Standard_Boolean LocalizeBefore(const Standard_Integer I, const Standard_Integer FromInd, const Standard_Real Tol, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 8d71e01fa7b21bd925ab1ef4bd70145e ****/
+		/****** LocOpe_CSIntersector::NbPoints ******/
+		/****** md5 signature: 8d71e01fa7b21bd925ab1ef4bd70145e ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "
 Parameters
@@ -595,8 +595,8 @@ Returns the number of intersection point on the element of range <i>.
 ") NbPoints;
 		Standard_Integer NbPoints(const Standard_Integer I);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 54d68fc86781272bd4fc9950f77e7f8f ****/
+		/****** LocOpe_CSIntersector::Perform ******/
+		/****** md5 signature: 54d68fc86781272bd4fc9950f77e7f8f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -613,8 +613,8 @@ No available documentation.
 ") Perform;
 		void Perform(const LocOpe_SequenceOfLin & Slin);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 1e965e9e0424adbdc49d9f0eb8d86799 ****/
+		/****** LocOpe_CSIntersector::Perform ******/
+		/****** md5 signature: 1e965e9e0424adbdc49d9f0eb8d86799 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -631,8 +631,8 @@ No available documentation.
 ") Perform;
 		void Perform(const LocOpe_SequenceOfCirc & Scir);
 
-		/****************** Perform ******************/
-		/**** md5 signature: bcd495517b0442eb41ba4df47bb16c1e ****/
+		/****** LocOpe_CSIntersector::Perform ******/
+		/****** md5 signature: bcd495517b0442eb41ba4df47bb16c1e ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -649,8 +649,8 @@ No available documentation.
 ") Perform;
 		void Perform(const TColGeom_SequenceOfCurve & Scur);
 
-		/****************** Point ******************/
-		/**** md5 signature: be9b7393a058f951546484423e8f5511 ****/
+		/****** LocOpe_CSIntersector::Point ******/
+		/****** md5 signature: be9b7393a058f951546484423e8f5511 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -682,8 +682,8 @@ Returns the intersection point of range <index> on element of range <i>. the poi
 *************************************/
 class LocOpe_CurveShapeIntersector {
 	public:
-		/****************** LocOpe_CurveShapeIntersector ******************/
-		/**** md5 signature: 79716c9553c555c74b58e68e1e02e261 ****/
+		/****** LocOpe_CurveShapeIntersector::LocOpe_CurveShapeIntersector ******/
+		/****** md5 signature: 79716c9553c555c74b58e68e1e02e261 ******/
 		%feature("compactdefaultargs") LocOpe_CurveShapeIntersector;
 		%feature("autodoc", "Return
 -------
@@ -695,8 +695,8 @@ Empty constructor.
 ") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector();
 
-		/****************** LocOpe_CurveShapeIntersector ******************/
-		/**** md5 signature: f0bbac54a186320b9d69477b598785d3 ****/
+		/****** LocOpe_CurveShapeIntersector::LocOpe_CurveShapeIntersector ******/
+		/****** md5 signature: f0bbac54a186320b9d69477b598785d3 ******/
 		%feature("compactdefaultargs") LocOpe_CurveShapeIntersector;
 		%feature("autodoc", "
 Parameters
@@ -714,8 +714,8 @@ Creates and performs the intersection betwwen <ax1> and <s>.
 ") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector(const gp_Ax1 & Axis, const TopoDS_Shape & S);
 
-		/****************** LocOpe_CurveShapeIntersector ******************/
-		/**** md5 signature: 0f01941a5b28c6315842dbc1b736ac7d ****/
+		/****** LocOpe_CurveShapeIntersector::LocOpe_CurveShapeIntersector ******/
+		/****** md5 signature: 0f01941a5b28c6315842dbc1b736ac7d ******/
 		%feature("compactdefaultargs") LocOpe_CurveShapeIntersector;
 		%feature("autodoc", "
 Parameters
@@ -733,8 +733,8 @@ Creates and performs yte intersection betwwen <c> and <s>.
 ") LocOpe_CurveShapeIntersector;
 		 LocOpe_CurveShapeIntersector(const gp_Circ & C, const TopoDS_Shape & S);
 
-		/****************** Init ******************/
-		/**** md5 signature: fa661d710d2a3307cee68a20ae303ad7 ****/
+		/****** LocOpe_CurveShapeIntersector::Init ******/
+		/****** md5 signature: fa661d710d2a3307cee68a20ae303ad7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -752,8 +752,8 @@ Performs the intersection between <ax1 and <s>.
 ") Init;
 		void Init(const gp_Ax1 & Axis, const TopoDS_Shape & S);
 
-		/****************** Init ******************/
-		/**** md5 signature: 7526852bc0774e00733050f764740799 ****/
+		/****** LocOpe_CurveShapeIntersector::Init ******/
+		/****** md5 signature: 7526852bc0774e00733050f764740799 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -771,8 +771,8 @@ Performs the intersection between <ax1 and <s>.
 ") Init;
 		void Init(const gp_Circ & C, const TopoDS_Shape & S);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** LocOpe_CurveShapeIntersector::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -784,8 +784,8 @@ Returns <standard_true> if the intersection has been done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** LocalizeAfter ******************/
-		/**** md5 signature: db4c67a77f192de37c747de6a6aed7d3 ****/
+		/****** LocOpe_CurveShapeIntersector::LocalizeAfter ******/
+		/****** md5 signature: db4c67a77f192de37c747de6a6aed7d3 ******/
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "
 Parameters
@@ -804,8 +804,8 @@ Searches the first intersection point located after the parameter <from>, which 
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter(const Standard_Real From, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** LocalizeAfter ******************/
-		/**** md5 signature: dc5b7987079415874eaa183c6149c405 ****/
+		/****** LocOpe_CurveShapeIntersector::LocalizeAfter ******/
+		/****** md5 signature: dc5b7987079415874eaa183c6149c405 ******/
 		%feature("compactdefaultargs") LocalizeAfter;
 		%feature("autodoc", "
 Parameters
@@ -824,8 +824,8 @@ Searches the first intersection point located after the index <fromind> ( >= fro
 ") LocalizeAfter;
 		Standard_Boolean LocalizeAfter(const Standard_Integer FromInd, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** LocalizeBefore ******************/
-		/**** md5 signature: fbf6caaf11561e5474c6e8bcbfa6392a ****/
+		/****** LocOpe_CurveShapeIntersector::LocalizeBefore ******/
+		/****** md5 signature: fbf6caaf11561e5474c6e8bcbfa6392a ******/
 		%feature("compactdefaultargs") LocalizeBefore;
 		%feature("autodoc", "
 Parameters
@@ -844,8 +844,8 @@ Searches the first intersection point located before the parameter <from>, which
 ") LocalizeBefore;
 		Standard_Boolean LocalizeBefore(const Standard_Real From, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** LocalizeBefore ******************/
-		/**** md5 signature: 977b8e8fd7ae8fde8152e2d971922b09 ****/
+		/****** LocOpe_CurveShapeIntersector::LocalizeBefore ******/
+		/****** md5 signature: 977b8e8fd7ae8fde8152e2d971922b09 ******/
 		%feature("compactdefaultargs") LocalizeBefore;
 		%feature("autodoc", "
 Parameters
@@ -864,8 +864,8 @@ Searches the first intersection point located before the index <fromind> ( <= fr
 ") LocalizeBefore;
 		Standard_Boolean LocalizeBefore(const Standard_Integer FromInd, TopAbs_Orientation & Or, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** LocOpe_CurveShapeIntersector::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -877,8 +877,8 @@ Returns the number of intersection point.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** Point ******************/
-		/**** md5 signature: 18d4bf115bf073ea4a2498ffabdab770 ****/
+		/****** LocOpe_CurveShapeIntersector::Point ******/
+		/****** md5 signature: 18d4bf115bf073ea4a2498ffabdab770 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -909,8 +909,8 @@ Returns the intersection point of range <index>. the points are sorted in increa
 **********************/
 class LocOpe_DPrism {
 	public:
-		/****************** LocOpe_DPrism ******************/
-		/**** md5 signature: 58c05f5bb67aae28e1d395cddb81eb58 ****/
+		/****** LocOpe_DPrism::LocOpe_DPrism ******/
+		/****** md5 signature: 58c05f5bb67aae28e1d395cddb81eb58 ******/
 		%feature("compactdefaultargs") LocOpe_DPrism;
 		%feature("autodoc", "
 Parameters
@@ -930,8 +930,8 @@ No available documentation.
 ") LocOpe_DPrism;
 		 LocOpe_DPrism(const TopoDS_Face & Spine, const Standard_Real Height1, const Standard_Real Height2, const Standard_Real Angle);
 
-		/****************** LocOpe_DPrism ******************/
-		/**** md5 signature: 94b73c39f3776b4d086b62f127b6771e ****/
+		/****** LocOpe_DPrism::LocOpe_DPrism ******/
+		/****** md5 signature: 94b73c39f3776b4d086b62f127b6771e ******/
 		%feature("compactdefaultargs") LocOpe_DPrism;
 		%feature("autodoc", "
 Parameters
@@ -950,8 +950,8 @@ No available documentation.
 ") LocOpe_DPrism;
 		 LocOpe_DPrism(const TopoDS_Face & Spine, const Standard_Real Height, const Standard_Real Angle);
 
-		/****************** BarycCurve ******************/
-		/**** md5 signature: 84f06532e4d5bbe2363bba52b4d91200 ****/
+		/****** LocOpe_DPrism::BarycCurve ******/
+		/****** md5 signature: 84f06532e4d5bbe2363bba52b4d91200 ******/
 		%feature("compactdefaultargs") BarycCurve;
 		%feature("autodoc", "Return
 -------
@@ -963,8 +963,8 @@ No available documentation.
 ") BarycCurve;
 		opencascade::handle<Geom_Curve> BarycCurve();
 
-		/****************** Curves ******************/
-		/**** md5 signature: 3cd8ae8d636ea132b7feab04844c473e ****/
+		/****** LocOpe_DPrism::Curves ******/
+		/****** md5 signature: 3cd8ae8d636ea132b7feab04844c473e ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
@@ -981,8 +981,8 @@ No available documentation.
 ") Curves;
 		void Curves(TColGeom_SequenceOfCurve & SCurves);
 
-		/****************** FirstShape ******************/
-		/**** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ****/
+		/****** LocOpe_DPrism::FirstShape ******/
+		/****** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
@@ -994,8 +994,8 @@ No available documentation.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** LocOpe_DPrism::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1007,8 +1007,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** LastShape ******************/
-		/**** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ****/
+		/****** LocOpe_DPrism::LastShape ******/
+		/****** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ******/
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "Return
 -------
@@ -1020,8 +1020,8 @@ No available documentation.
 ") LastShape;
 		const TopoDS_Shape LastShape();
 
-		/****************** Profile ******************/
-		/**** md5 signature: 79a7d86b74870c796d2c753c300c851a ****/
+		/****** LocOpe_DPrism::Profile ******/
+		/****** md5 signature: 79a7d86b74870c796d2c753c300c851a ******/
 		%feature("compactdefaultargs") Profile;
 		%feature("autodoc", "Return
 -------
@@ -1033,8 +1033,8 @@ No available documentation.
 ") Profile;
 		const TopoDS_Shape Profile();
 
-		/****************** Shape ******************/
-		/**** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ****/
+		/****** LocOpe_DPrism::Shape ******/
+		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -1046,8 +1046,8 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape();
 
-		/****************** Shapes ******************/
-		/**** md5 signature: e20f60f3e506bce7024d0d1d17884dc7 ****/
+		/****** LocOpe_DPrism::Shapes ******/
+		/****** md5 signature: e20f60f3e506bce7024d0d1d17884dc7 ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
@@ -1064,8 +1064,8 @@ No available documentation.
 ") Shapes;
 		const TopTools_ListOfShape & Shapes(const TopoDS_Shape & S);
 
-		/****************** Spine ******************/
-		/**** md5 signature: f6ea6e7c5910a000caa86ed2eb47e3d7 ****/
+		/****** LocOpe_DPrism::Spine ******/
+		/****** md5 signature: f6ea6e7c5910a000caa86ed2eb47e3d7 ******/
 		%feature("compactdefaultargs") Spine;
 		%feature("autodoc", "Return
 -------
@@ -1091,8 +1091,8 @@ No available documentation.
 *************************/
 class LocOpe_FindEdges {
 	public:
-		/****************** LocOpe_FindEdges ******************/
-		/**** md5 signature: 2aabbf199c65a9c397778a66d5c9a9ed ****/
+		/****** LocOpe_FindEdges::LocOpe_FindEdges ******/
+		/****** md5 signature: 2aabbf199c65a9c397778a66d5c9a9ed ******/
 		%feature("compactdefaultargs") LocOpe_FindEdges;
 		%feature("autodoc", "Return
 -------
@@ -1104,8 +1104,8 @@ No available documentation.
 ") LocOpe_FindEdges;
 		 LocOpe_FindEdges();
 
-		/****************** LocOpe_FindEdges ******************/
-		/**** md5 signature: 926297f5f09fdac32f43dd8c93f04a66 ****/
+		/****** LocOpe_FindEdges::LocOpe_FindEdges ******/
+		/****** md5 signature: 926297f5f09fdac32f43dd8c93f04a66 ******/
 		%feature("compactdefaultargs") LocOpe_FindEdges;
 		%feature("autodoc", "
 Parameters
@@ -1123,8 +1123,8 @@ No available documentation.
 ") LocOpe_FindEdges;
 		 LocOpe_FindEdges(const TopoDS_Shape & FFrom, const TopoDS_Shape & FTo);
 
-		/****************** EdgeFrom ******************/
-		/**** md5 signature: d67fb24f8f01d4f4943b8189789b8869 ****/
+		/****** LocOpe_FindEdges::EdgeFrom ******/
+		/****** md5 signature: d67fb24f8f01d4f4943b8189789b8869 ******/
 		%feature("compactdefaultargs") EdgeFrom;
 		%feature("autodoc", "Return
 -------
@@ -1136,8 +1136,8 @@ No available documentation.
 ") EdgeFrom;
 		const TopoDS_Edge EdgeFrom();
 
-		/****************** EdgeTo ******************/
-		/**** md5 signature: 82b67b5e3be114aa1489723da8cf608c ****/
+		/****** LocOpe_FindEdges::EdgeTo ******/
+		/****** md5 signature: 82b67b5e3be114aa1489723da8cf608c ******/
 		%feature("compactdefaultargs") EdgeTo;
 		%feature("autodoc", "Return
 -------
@@ -1149,8 +1149,8 @@ No available documentation.
 ") EdgeTo;
 		const TopoDS_Edge EdgeTo();
 
-		/****************** InitIterator ******************/
-		/**** md5 signature: 5552a2067807727af1920ceee666514b ****/
+		/****** LocOpe_FindEdges::InitIterator ******/
+		/****** md5 signature: 5552a2067807727af1920ceee666514b ******/
 		%feature("compactdefaultargs") InitIterator;
 		%feature("autodoc", "Return
 -------
@@ -1162,8 +1162,8 @@ No available documentation.
 ") InitIterator;
 		void InitIterator();
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** LocOpe_FindEdges::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1175,8 +1175,8 @@ No available documentation.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** LocOpe_FindEdges::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -1188,8 +1188,8 @@ No available documentation.
 ") Next;
 		void Next();
 
-		/****************** Set ******************/
-		/**** md5 signature: 06445e9f8663fe183c61def934056826 ****/
+		/****** LocOpe_FindEdges::Set ******/
+		/****** md5 signature: 06445e9f8663fe183c61def934056826 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1221,8 +1221,8 @@ No available documentation.
 *******************************/
 class LocOpe_FindEdgesInFace {
 	public:
-		/****************** LocOpe_FindEdgesInFace ******************/
-		/**** md5 signature: fc261ecc2b140d01256f9ee6e03dac78 ****/
+		/****** LocOpe_FindEdgesInFace::LocOpe_FindEdgesInFace ******/
+		/****** md5 signature: fc261ecc2b140d01256f9ee6e03dac78 ******/
 		%feature("compactdefaultargs") LocOpe_FindEdgesInFace;
 		%feature("autodoc", "Return
 -------
@@ -1234,8 +1234,8 @@ No available documentation.
 ") LocOpe_FindEdgesInFace;
 		 LocOpe_FindEdgesInFace();
 
-		/****************** LocOpe_FindEdgesInFace ******************/
-		/**** md5 signature: 69c50a173fa5d37fb3c95f1ae6c3830f ****/
+		/****** LocOpe_FindEdgesInFace::LocOpe_FindEdgesInFace ******/
+		/****** md5 signature: 69c50a173fa5d37fb3c95f1ae6c3830f ******/
 		%feature("compactdefaultargs") LocOpe_FindEdgesInFace;
 		%feature("autodoc", "
 Parameters
@@ -1253,8 +1253,8 @@ No available documentation.
 ") LocOpe_FindEdgesInFace;
 		 LocOpe_FindEdgesInFace(const TopoDS_Shape & S, const TopoDS_Face & F);
 
-		/****************** Edge ******************/
-		/**** md5 signature: be590cff987799d8b7c28083399d0e9f ****/
+		/****** LocOpe_FindEdgesInFace::Edge ******/
+		/****** md5 signature: be590cff987799d8b7c28083399d0e9f ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -1266,8 +1266,8 @@ No available documentation.
 ") Edge;
 		const TopoDS_Edge Edge();
 
-		/****************** Init ******************/
-		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
+		/****** LocOpe_FindEdgesInFace::Init ******/
+		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -1279,8 +1279,8 @@ No available documentation.
 ") Init;
 		void Init();
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** LocOpe_FindEdgesInFace::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1292,8 +1292,8 @@ No available documentation.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** LocOpe_FindEdgesInFace::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -1305,8 +1305,8 @@ No available documentation.
 ") Next;
 		void Next();
 
-		/****************** Set ******************/
-		/**** md5 signature: e65bb5dffb39ffb1d29dff808d2177ab ****/
+		/****** LocOpe_FindEdgesInFace::Set ******/
+		/****** md5 signature: e65bb5dffb39ffb1d29dff808d2177ab ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1339,8 +1339,8 @@ No available documentation.
 %nodefaultctor LocOpe_GeneratedShape;
 class LocOpe_GeneratedShape : public Standard_Transient {
 	public:
-		/****************** Generated ******************/
-		/**** md5 signature: 499008311e503e8516f37a26ae20c6c4 ****/
+		/****** LocOpe_GeneratedShape::Generated ******/
+		/****** md5 signature: 499008311e503e8516f37a26ae20c6c4 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -1357,8 +1357,8 @@ Returns the edge created by the vertex <v>. if none, must return a null shape.
 ") Generated;
 		virtual TopoDS_Edge Generated(const TopoDS_Vertex & V);
 
-		/****************** Generated ******************/
-		/**** md5 signature: 30ecec4c451f58e7e0a04f78911dab04 ****/
+		/****** LocOpe_GeneratedShape::Generated ******/
+		/****** md5 signature: 30ecec4c451f58e7e0a04f78911dab04 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -1375,8 +1375,8 @@ Returns the face created by the edge <e>. if none, must return a null shape.
 ") Generated;
 		virtual TopoDS_Face Generated(const TopoDS_Edge & E);
 
-		/****************** GeneratingEdges ******************/
-		/**** md5 signature: 86d79bf42e19a8928d504fa3eb0518fb ****/
+		/****** LocOpe_GeneratedShape::GeneratingEdges ******/
+		/****** md5 signature: 86d79bf42e19a8928d504fa3eb0518fb ******/
 		%feature("compactdefaultargs") GeneratingEdges;
 		%feature("autodoc", "Return
 -------
@@ -1388,8 +1388,8 @@ No available documentation.
 ") GeneratingEdges;
 		virtual const TopTools_ListOfShape & GeneratingEdges();
 
-		/****************** OrientedFaces ******************/
-		/**** md5 signature: 4ac50ba921eaec682bb022c4c72c3f73 ****/
+		/****** LocOpe_GeneratedShape::OrientedFaces ******/
+		/****** md5 signature: 4ac50ba921eaec682bb022c4c72c3f73 ******/
 		%feature("compactdefaultargs") OrientedFaces;
 		%feature("autodoc", "Return
 -------
@@ -1417,8 +1417,8 @@ Returns the list of correctly oriented generated faces.
 *************************/
 class LocOpe_Generator {
 	public:
-		/****************** LocOpe_Generator ******************/
-		/**** md5 signature: 948058747d455e5f0c5b2e0628c56a2d ****/
+		/****** LocOpe_Generator::LocOpe_Generator ******/
+		/****** md5 signature: 948058747d455e5f0c5b2e0628c56a2d ******/
 		%feature("compactdefaultargs") LocOpe_Generator;
 		%feature("autodoc", "Return
 -------
@@ -1430,8 +1430,8 @@ Empty constructor.
 ") LocOpe_Generator;
 		 LocOpe_Generator();
 
-		/****************** LocOpe_Generator ******************/
-		/**** md5 signature: aa41bd692fb2610b5eda9bca247a2030 ****/
+		/****** LocOpe_Generator::LocOpe_Generator ******/
+		/****** md5 signature: aa41bd692fb2610b5eda9bca247a2030 ******/
 		%feature("compactdefaultargs") LocOpe_Generator;
 		%feature("autodoc", "
 Parameters
@@ -1448,8 +1448,8 @@ Creates the algorithm on the shape <s>.
 ") LocOpe_Generator;
 		 LocOpe_Generator(const TopoDS_Shape & S);
 
-		/****************** DescendantFace ******************/
-		/**** md5 signature: 30ca8cffd4d1287532f4a07b95211e9e ****/
+		/****** LocOpe_Generator::DescendantFace ******/
+		/****** md5 signature: 30ca8cffd4d1287532f4a07b95211e9e ******/
 		%feature("compactdefaultargs") DescendantFace;
 		%feature("autodoc", "
 Parameters
@@ -1466,8 +1466,8 @@ Returns the descendant face of <f>. <f> may belong to the original shape or to t
 ") DescendantFace;
 		const TopTools_ListOfShape & DescendantFace(const TopoDS_Face & F);
 
-		/****************** Init ******************/
-		/**** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ****/
+		/****** LocOpe_Generator::Init ******/
+		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1484,8 +1484,8 @@ Initializes the algorithm on the shape <s>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** LocOpe_Generator::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1497,8 +1497,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Perform ******************/
-		/**** md5 signature: fcb599904c10f6cd1e4c4ba45080c4f5 ****/
+		/****** LocOpe_Generator::Perform ******/
+		/****** md5 signature: fcb599904c10f6cd1e4c4ba45080c4f5 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1515,8 +1515,8 @@ No available documentation.
 ") Perform;
 		void Perform(const opencascade::handle<LocOpe_GeneratedShape> & G);
 
-		/****************** ResultingShape ******************/
-		/**** md5 signature: d353819ad888f0057399e1c340ff17c9 ****/
+		/****** LocOpe_Generator::ResultingShape ******/
+		/****** md5 signature: d353819ad888f0057399e1c340ff17c9 ******/
 		%feature("compactdefaultargs") ResultingShape;
 		%feature("autodoc", "Return
 -------
@@ -1528,8 +1528,8 @@ Returns the new shape.
 ") ResultingShape;
 		const TopoDS_Shape ResultingShape();
 
-		/****************** Shape ******************/
-		/**** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ****/
+		/****** LocOpe_Generator::Shape ******/
+		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -1555,8 +1555,8 @@ Returns the initial shape.
 *********************/
 class LocOpe_Gluer {
 	public:
-		/****************** LocOpe_Gluer ******************/
-		/**** md5 signature: 8d004d184b4ac56fa133912528743e6b ****/
+		/****** LocOpe_Gluer::LocOpe_Gluer ******/
+		/****** md5 signature: 8d004d184b4ac56fa133912528743e6b ******/
 		%feature("compactdefaultargs") LocOpe_Gluer;
 		%feature("autodoc", "Return
 -------
@@ -1568,8 +1568,8 @@ No available documentation.
 ") LocOpe_Gluer;
 		 LocOpe_Gluer();
 
-		/****************** LocOpe_Gluer ******************/
-		/**** md5 signature: b7ad7b234e8182c2dec192f5af1f475b ****/
+		/****** LocOpe_Gluer::LocOpe_Gluer ******/
+		/****** md5 signature: b7ad7b234e8182c2dec192f5af1f475b ******/
 		%feature("compactdefaultargs") LocOpe_Gluer;
 		%feature("autodoc", "
 Parameters
@@ -1587,8 +1587,8 @@ No available documentation.
 ") LocOpe_Gluer;
 		 LocOpe_Gluer(const TopoDS_Shape & Sbase, const TopoDS_Shape & Snew);
 
-		/****************** BasisShape ******************/
-		/**** md5 signature: 21cd65d6b80cb61a9e13e787117a65b0 ****/
+		/****** LocOpe_Gluer::BasisShape ******/
+		/****** md5 signature: 21cd65d6b80cb61a9e13e787117a65b0 ******/
 		%feature("compactdefaultargs") BasisShape;
 		%feature("autodoc", "Return
 -------
@@ -1600,8 +1600,8 @@ No available documentation.
 ") BasisShape;
 		const TopoDS_Shape BasisShape();
 
-		/****************** Bind ******************/
-		/**** md5 signature: 00651bec56a12d0418e54d774f302230 ****/
+		/****** LocOpe_Gluer::Bind ******/
+		/****** md5 signature: 00651bec56a12d0418e54d774f302230 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -1619,8 +1619,8 @@ No available documentation.
 ") Bind;
 		void Bind(const TopoDS_Face & Fnew, const TopoDS_Face & Fbase);
 
-		/****************** Bind ******************/
-		/**** md5 signature: 3016e09a55c1e17b8452fe31e36138db ****/
+		/****** LocOpe_Gluer::Bind ******/
+		/****** md5 signature: 3016e09a55c1e17b8452fe31e36138db ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -1638,8 +1638,8 @@ No available documentation.
 ") Bind;
 		void Bind(const TopoDS_Edge & Enew, const TopoDS_Edge & Ebase);
 
-		/****************** DescendantFaces ******************/
-		/**** md5 signature: c46a5914c3b94b6137edf6b04681854b ****/
+		/****** LocOpe_Gluer::DescendantFaces ******/
+		/****** md5 signature: c46a5914c3b94b6137edf6b04681854b ******/
 		%feature("compactdefaultargs") DescendantFaces;
 		%feature("autodoc", "
 Parameters
@@ -1656,8 +1656,8 @@ No available documentation.
 ") DescendantFaces;
 		const TopTools_ListOfShape & DescendantFaces(const TopoDS_Face & F);
 
-		/****************** Edges ******************/
-		/**** md5 signature: 12cb468babe503b836d4bfcfd0341963 ****/
+		/****** LocOpe_Gluer::Edges ******/
+		/****** md5 signature: 12cb468babe503b836d4bfcfd0341963 ******/
 		%feature("compactdefaultargs") Edges;
 		%feature("autodoc", "Return
 -------
@@ -1669,8 +1669,8 @@ No available documentation.
 ") Edges;
 		const TopTools_ListOfShape & Edges();
 
-		/****************** GluedShape ******************/
-		/**** md5 signature: cc05062c19ffec36edea50e2f74757fb ****/
+		/****** LocOpe_Gluer::GluedShape ******/
+		/****** md5 signature: cc05062c19ffec36edea50e2f74757fb ******/
 		%feature("compactdefaultargs") GluedShape;
 		%feature("autodoc", "Return
 -------
@@ -1682,8 +1682,8 @@ No available documentation.
 ") GluedShape;
 		const TopoDS_Shape GluedShape();
 
-		/****************** Init ******************/
-		/**** md5 signature: 72f1171950e222f265d5fc22bf237f99 ****/
+		/****** LocOpe_Gluer::Init ******/
+		/****** md5 signature: 72f1171950e222f265d5fc22bf237f99 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1701,8 +1701,8 @@ No available documentation.
 ") Init;
 		void Init(const TopoDS_Shape & Sbase, const TopoDS_Shape & Snew);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** LocOpe_Gluer::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1714,8 +1714,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** OpeType ******************/
-		/**** md5 signature: 6301740c99fde6f602c33a48a205b637 ****/
+		/****** LocOpe_Gluer::OpeType ******/
+		/****** md5 signature: 6301740c99fde6f602c33a48a205b637 ******/
 		%feature("compactdefaultargs") OpeType;
 		%feature("autodoc", "Return
 -------
@@ -1727,8 +1727,8 @@ No available documentation.
 ") OpeType;
 		LocOpe_Operation OpeType();
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** LocOpe_Gluer::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -1740,8 +1740,8 @@ No available documentation.
 ") Perform;
 		void Perform();
 
-		/****************** ResultingShape ******************/
-		/**** md5 signature: d353819ad888f0057399e1c340ff17c9 ****/
+		/****** LocOpe_Gluer::ResultingShape ******/
+		/****** md5 signature: d353819ad888f0057399e1c340ff17c9 ******/
 		%feature("compactdefaultargs") ResultingShape;
 		%feature("autodoc", "Return
 -------
@@ -1753,8 +1753,8 @@ No available documentation.
 ") ResultingShape;
 		const TopoDS_Shape ResultingShape();
 
-		/****************** TgtEdges ******************/
-		/**** md5 signature: 2c3d33bfb9d502b29d86c6dafd2350e0 ****/
+		/****** LocOpe_Gluer::TgtEdges ******/
+		/****** md5 signature: 2c3d33bfb9d502b29d86c6dafd2350e0 ******/
 		%feature("compactdefaultargs") TgtEdges;
 		%feature("autodoc", "Return
 -------
@@ -1780,8 +1780,8 @@ No available documentation.
 **************************/
 class LocOpe_LinearForm {
 	public:
-		/****************** LocOpe_LinearForm ******************/
-		/**** md5 signature: 84355a6c132af777b54b38335d4d0d37 ****/
+		/****** LocOpe_LinearForm::LocOpe_LinearForm ******/
+		/****** md5 signature: 84355a6c132af777b54b38335d4d0d37 ******/
 		%feature("compactdefaultargs") LocOpe_LinearForm;
 		%feature("autodoc", "Return
 -------
@@ -1793,8 +1793,8 @@ No available documentation.
 ") LocOpe_LinearForm;
 		 LocOpe_LinearForm();
 
-		/****************** LocOpe_LinearForm ******************/
-		/**** md5 signature: 0cc2b502e1ca94867393f9b11cb1665f ****/
+		/****** LocOpe_LinearForm::LocOpe_LinearForm ******/
+		/****** md5 signature: 0cc2b502e1ca94867393f9b11cb1665f ******/
 		%feature("compactdefaultargs") LocOpe_LinearForm;
 		%feature("autodoc", "
 Parameters
@@ -1814,8 +1814,8 @@ No available documentation.
 ") LocOpe_LinearForm;
 		 LocOpe_LinearForm(const TopoDS_Shape & Base, const gp_Vec & V, const gp_Pnt & Pnt1, const gp_Pnt & Pnt2);
 
-		/****************** LocOpe_LinearForm ******************/
-		/**** md5 signature: f648af9b5cabdac90e62be23c609968b ****/
+		/****** LocOpe_LinearForm::LocOpe_LinearForm ******/
+		/****** md5 signature: f648af9b5cabdac90e62be23c609968b ******/
 		%feature("compactdefaultargs") LocOpe_LinearForm;
 		%feature("autodoc", "
 Parameters
@@ -1836,8 +1836,8 @@ No available documentation.
 ") LocOpe_LinearForm;
 		 LocOpe_LinearForm(const TopoDS_Shape & Base, const gp_Vec & V, const gp_Vec & Vectra, const gp_Pnt & Pnt1, const gp_Pnt & Pnt2);
 
-		/****************** FirstShape ******************/
-		/**** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ****/
+		/****** LocOpe_LinearForm::FirstShape ******/
+		/****** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
@@ -1849,8 +1849,8 @@ No available documentation.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
-		/****************** LastShape ******************/
-		/**** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ****/
+		/****** LocOpe_LinearForm::LastShape ******/
+		/****** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ******/
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "Return
 -------
@@ -1862,8 +1862,8 @@ No available documentation.
 ") LastShape;
 		const TopoDS_Shape LastShape();
 
-		/****************** Perform ******************/
-		/**** md5 signature: b20133613d92cb4f26a0a5a9de52faf6 ****/
+		/****** LocOpe_LinearForm::Perform ******/
+		/****** md5 signature: b20133613d92cb4f26a0a5a9de52faf6 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1883,8 +1883,8 @@ No available documentation.
 ") Perform;
 		void Perform(const TopoDS_Shape & Base, const gp_Vec & V, const gp_Pnt & Pnt1, const gp_Pnt & Pnt2);
 
-		/****************** Perform ******************/
-		/**** md5 signature: e22108117c43d85d2e9af3b412510f28 ****/
+		/****** LocOpe_LinearForm::Perform ******/
+		/****** md5 signature: e22108117c43d85d2e9af3b412510f28 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1905,8 +1905,8 @@ No available documentation.
 ") Perform;
 		void Perform(const TopoDS_Shape & Base, const gp_Vec & V, const gp_Vec & Vectra, const gp_Pnt & Pnt1, const gp_Pnt & Pnt2);
 
-		/****************** Shape ******************/
-		/**** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ****/
+		/****** LocOpe_LinearForm::Shape ******/
+		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -1918,8 +1918,8 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape();
 
-		/****************** Shapes ******************/
-		/**** md5 signature: e20f60f3e506bce7024d0d1d17884dc7 ****/
+		/****** LocOpe_LinearForm::Shapes ******/
+		/****** md5 signature: e20f60f3e506bce7024d0d1d17884dc7 ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
@@ -1950,8 +1950,8 @@ No available documentation.
 ********************/
 class LocOpe_Pipe {
 	public:
-		/****************** LocOpe_Pipe ******************/
-		/**** md5 signature: 887fa4a5bc369f1b6ad85686839f090f ****/
+		/****** LocOpe_Pipe::LocOpe_Pipe ******/
+		/****** md5 signature: 887fa4a5bc369f1b6ad85686839f090f ******/
 		%feature("compactdefaultargs") LocOpe_Pipe;
 		%feature("autodoc", "
 Parameters
@@ -1969,8 +1969,8 @@ No available documentation.
 ") LocOpe_Pipe;
 		 LocOpe_Pipe(const TopoDS_Wire & Spine, const TopoDS_Shape & Profile);
 
-		/****************** BarycCurve ******************/
-		/**** md5 signature: 66d2a457dbd580b676149c11f86ad8b1 ****/
+		/****** LocOpe_Pipe::BarycCurve ******/
+		/****** md5 signature: 66d2a457dbd580b676149c11f86ad8b1 ******/
 		%feature("compactdefaultargs") BarycCurve;
 		%feature("autodoc", "Return
 -------
@@ -1982,8 +1982,8 @@ No available documentation.
 ") BarycCurve;
 		opencascade::handle<Geom_Curve> BarycCurve();
 
-		/****************** Curves ******************/
-		/**** md5 signature: 1257c66269c3591394f3b4e0a9f964c4 ****/
+		/****** LocOpe_Pipe::Curves ******/
+		/****** md5 signature: 1257c66269c3591394f3b4e0a9f964c4 ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
@@ -2000,8 +2000,8 @@ No available documentation.
 ") Curves;
 		TColGeom_SequenceOfCurve Curves(const TColgp_SequenceOfPnt & Spt);
 
-		/****************** FirstShape ******************/
-		/**** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ****/
+		/****** LocOpe_Pipe::FirstShape ******/
+		/****** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
@@ -2013,8 +2013,8 @@ No available documentation.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
-		/****************** LastShape ******************/
-		/**** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ****/
+		/****** LocOpe_Pipe::LastShape ******/
+		/****** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ******/
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "Return
 -------
@@ -2026,8 +2026,8 @@ No available documentation.
 ") LastShape;
 		const TopoDS_Shape LastShape();
 
-		/****************** Profile ******************/
-		/**** md5 signature: 79a7d86b74870c796d2c753c300c851a ****/
+		/****** LocOpe_Pipe::Profile ******/
+		/****** md5 signature: 79a7d86b74870c796d2c753c300c851a ******/
 		%feature("compactdefaultargs") Profile;
 		%feature("autodoc", "Return
 -------
@@ -2039,8 +2039,8 @@ No available documentation.
 ") Profile;
 		const TopoDS_Shape Profile();
 
-		/****************** Shape ******************/
-		/**** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ****/
+		/****** LocOpe_Pipe::Shape ******/
+		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -2052,8 +2052,8 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape();
 
-		/****************** Shapes ******************/
-		/**** md5 signature: 78f7811a365f84338b71e3baefa770bd ****/
+		/****** LocOpe_Pipe::Shapes ******/
+		/****** md5 signature: 78f7811a365f84338b71e3baefa770bd ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
@@ -2070,8 +2070,8 @@ No available documentation.
 ") Shapes;
 		const TopTools_ListOfShape & Shapes(const TopoDS_Shape & S);
 
-		/****************** Spine ******************/
-		/**** md5 signature: f6ea6e7c5910a000caa86ed2eb47e3d7 ****/
+		/****** LocOpe_Pipe::Spine ******/
+		/****** md5 signature: f6ea6e7c5910a000caa86ed2eb47e3d7 ******/
 		%feature("compactdefaultargs") Spine;
 		%feature("autodoc", "Return
 -------
@@ -2097,8 +2097,8 @@ No available documentation.
 ***********************/
 class LocOpe_PntFace {
 	public:
-		/****************** LocOpe_PntFace ******************/
-		/**** md5 signature: c684a8bde8adce128427067674a86331 ****/
+		/****** LocOpe_PntFace::LocOpe_PntFace ******/
+		/****** md5 signature: c684a8bde8adce128427067674a86331 ******/
 		%feature("compactdefaultargs") LocOpe_PntFace;
 		%feature("autodoc", "Return
 -------
@@ -2110,8 +2110,8 @@ Empty constructor. useful only for the list.
 ") LocOpe_PntFace;
 		 LocOpe_PntFace();
 
-		/****************** LocOpe_PntFace ******************/
-		/**** md5 signature: ea86175f30e9af52a111a51286aaae17 ****/
+		/****** LocOpe_PntFace::LocOpe_PntFace ******/
+		/****** md5 signature: ea86175f30e9af52a111a51286aaae17 ******/
 		%feature("compactdefaultargs") LocOpe_PntFace;
 		%feature("autodoc", "
 Parameters
@@ -2133,8 +2133,8 @@ No available documentation.
 ") LocOpe_PntFace;
 		 LocOpe_PntFace(const gp_Pnt & P, const TopoDS_Face & F, const TopAbs_Orientation Or, const Standard_Real Param, const Standard_Real UPar, const Standard_Real VPar);
 
-		/****************** ChangeOrientation ******************/
-		/**** md5 signature: 395518e4d56710f4afb539b195cfdc3c ****/
+		/****** LocOpe_PntFace::ChangeOrientation ******/
+		/****** md5 signature: 395518e4d56710f4afb539b195cfdc3c ******/
 		%feature("compactdefaultargs") ChangeOrientation;
 		%feature("autodoc", "Return
 -------
@@ -2146,8 +2146,8 @@ No available documentation.
 ") ChangeOrientation;
 		TopAbs_Orientation & ChangeOrientation();
 
-		/****************** Face ******************/
-		/**** md5 signature: 95406b8d0d556c0537e0768c48713f21 ****/
+		/****** LocOpe_PntFace::Face ******/
+		/****** md5 signature: 95406b8d0d556c0537e0768c48713f21 ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "Return
 -------
@@ -2159,8 +2159,8 @@ No available documentation.
 ") Face;
 		const TopoDS_Face Face();
 
-		/****************** Orientation ******************/
-		/**** md5 signature: 03010048da537511bfd11160d3c898dc ****/
+		/****** LocOpe_PntFace::Orientation ******/
+		/****** md5 signature: 03010048da537511bfd11160d3c898dc ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -2172,8 +2172,8 @@ No available documentation.
 ") Orientation;
 		TopAbs_Orientation Orientation();
 
-		/****************** Parameter ******************/
-		/**** md5 signature: a1c30d1196ee452cd8e422f1e25a0fbc ****/
+		/****** LocOpe_PntFace::Parameter ******/
+		/****** md5 signature: a1c30d1196ee452cd8e422f1e25a0fbc ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
@@ -2185,8 +2185,8 @@ No available documentation.
 ") Parameter;
 		Standard_Real Parameter();
 
-		/****************** Pnt ******************/
-		/**** md5 signature: cb508877c7fa83c676a7983e5eeb1a5e ****/
+		/****** LocOpe_PntFace::Pnt ******/
+		/****** md5 signature: cb508877c7fa83c676a7983e5eeb1a5e ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "Return
 -------
@@ -2198,8 +2198,8 @@ No available documentation.
 ") Pnt;
 		const gp_Pnt Pnt();
 
-		/****************** UParameter ******************/
-		/**** md5 signature: 2cfa7266169b92bb41b1ad8de865ac2d ****/
+		/****** LocOpe_PntFace::UParameter ******/
+		/****** md5 signature: 2cfa7266169b92bb41b1ad8de865ac2d ******/
 		%feature("compactdefaultargs") UParameter;
 		%feature("autodoc", "Return
 -------
@@ -2211,8 +2211,8 @@ No available documentation.
 ") UParameter;
 		Standard_Real UParameter();
 
-		/****************** VParameter ******************/
-		/**** md5 signature: 67c421cab90e3dfea268bc11f638dc72 ****/
+		/****** LocOpe_PntFace::VParameter ******/
+		/****** md5 signature: 67c421cab90e3dfea268bc11f638dc72 ******/
 		%feature("compactdefaultargs") VParameter;
 		%feature("autodoc", "Return
 -------
@@ -2238,8 +2238,8 @@ No available documentation.
 *********************/
 class LocOpe_Prism {
 	public:
-		/****************** LocOpe_Prism ******************/
-		/**** md5 signature: 3bcd2249739c6dc14064bb1b62a023f6 ****/
+		/****** LocOpe_Prism::LocOpe_Prism ******/
+		/****** md5 signature: 3bcd2249739c6dc14064bb1b62a023f6 ******/
 		%feature("compactdefaultargs") LocOpe_Prism;
 		%feature("autodoc", "Return
 -------
@@ -2251,8 +2251,8 @@ No available documentation.
 ") LocOpe_Prism;
 		 LocOpe_Prism();
 
-		/****************** LocOpe_Prism ******************/
-		/**** md5 signature: e088e36fa8d0883a214fc221ddbe2de9 ****/
+		/****** LocOpe_Prism::LocOpe_Prism ******/
+		/****** md5 signature: e088e36fa8d0883a214fc221ddbe2de9 ******/
 		%feature("compactdefaultargs") LocOpe_Prism;
 		%feature("autodoc", "
 Parameters
@@ -2270,8 +2270,8 @@ No available documentation.
 ") LocOpe_Prism;
 		 LocOpe_Prism(const TopoDS_Shape & Base, const gp_Vec & V);
 
-		/****************** LocOpe_Prism ******************/
-		/**** md5 signature: 0dbcb11e8cca8b8bed826edc59571630 ****/
+		/****** LocOpe_Prism::LocOpe_Prism ******/
+		/****** md5 signature: 0dbcb11e8cca8b8bed826edc59571630 ******/
 		%feature("compactdefaultargs") LocOpe_Prism;
 		%feature("autodoc", "
 Parameters
@@ -2290,8 +2290,8 @@ No available documentation.
 ") LocOpe_Prism;
 		 LocOpe_Prism(const TopoDS_Shape & Base, const gp_Vec & V, const gp_Vec & Vectra);
 
-		/****************** BarycCurve ******************/
-		/**** md5 signature: 84f06532e4d5bbe2363bba52b4d91200 ****/
+		/****** LocOpe_Prism::BarycCurve ******/
+		/****** md5 signature: 84f06532e4d5bbe2363bba52b4d91200 ******/
 		%feature("compactdefaultargs") BarycCurve;
 		%feature("autodoc", "Return
 -------
@@ -2303,8 +2303,8 @@ No available documentation.
 ") BarycCurve;
 		opencascade::handle<Geom_Curve> BarycCurve();
 
-		/****************** Curves ******************/
-		/**** md5 signature: 3cd8ae8d636ea132b7feab04844c473e ****/
+		/****** LocOpe_Prism::Curves ******/
+		/****** md5 signature: 3cd8ae8d636ea132b7feab04844c473e ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "
 Parameters
@@ -2321,8 +2321,8 @@ No available documentation.
 ") Curves;
 		void Curves(TColGeom_SequenceOfCurve & SCurves);
 
-		/****************** FirstShape ******************/
-		/**** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ****/
+		/****** LocOpe_Prism::FirstShape ******/
+		/****** md5 signature: 7feb91b88f8f76be63dd0e52049cfbe6 ******/
 		%feature("compactdefaultargs") FirstShape;
 		%feature("autodoc", "Return
 -------
@@ -2334,8 +2334,8 @@ No available documentation.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
-		/****************** LastShape ******************/
-		/**** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ****/
+		/****** LocOpe_Prism::LastShape ******/
+		/****** md5 signature: e1c69c3678b816cb0e3d73096b528c5f ******/
 		%feature("compactdefaultargs") LastShape;
 		%feature("autodoc", "Return
 -------
@@ -2347,8 +2347,8 @@ No available documentation.
 ") LastShape;
 		const TopoDS_Shape LastShape();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 73df62c2a421a7786212748e22f19d32 ****/
+		/****** LocOpe_Prism::Perform ******/
+		/****** md5 signature: 73df62c2a421a7786212748e22f19d32 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2366,8 +2366,8 @@ No available documentation.
 ") Perform;
 		void Perform(const TopoDS_Shape & Base, const gp_Vec & V);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 0f8aac93e43970f9e58cac57ca386d55 ****/
+		/****** LocOpe_Prism::Perform ******/
+		/****** md5 signature: 0f8aac93e43970f9e58cac57ca386d55 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2386,8 +2386,8 @@ No available documentation.
 ") Perform;
 		void Perform(const TopoDS_Shape & Base, const gp_Vec & V, const gp_Vec & Vtra);
 
-		/****************** Shape ******************/
-		/**** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ****/
+		/****** LocOpe_Prism::Shape ******/
+		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -2399,8 +2399,8 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape();
 
-		/****************** Shapes ******************/
-		/**** md5 signature: e20f60f3e506bce7024d0d1d17884dc7 ****/
+		/****** LocOpe_Prism::Shapes ******/
+		/****** md5 signature: e20f60f3e506bce7024d0d1d17884dc7 ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
@@ -2437,8 +2437,8 @@ No available documentation.
 ***************************/
 class LocOpe_SplitDrafts {
 	public:
-		/****************** LocOpe_SplitDrafts ******************/
-		/**** md5 signature: 2ee8be10ba301fc967707fa630016f82 ****/
+		/****** LocOpe_SplitDrafts::LocOpe_SplitDrafts ******/
+		/****** md5 signature: 2ee8be10ba301fc967707fa630016f82 ******/
 		%feature("compactdefaultargs") LocOpe_SplitDrafts;
 		%feature("autodoc", "Return
 -------
@@ -2450,8 +2450,8 @@ Empty constructor.
 ") LocOpe_SplitDrafts;
 		 LocOpe_SplitDrafts();
 
-		/****************** LocOpe_SplitDrafts ******************/
-		/**** md5 signature: e2701639f1b17ae18c73bfdf74b775be ****/
+		/****** LocOpe_SplitDrafts::LocOpe_SplitDrafts ******/
+		/****** md5 signature: e2701639f1b17ae18c73bfdf74b775be ******/
 		%feature("compactdefaultargs") LocOpe_SplitDrafts;
 		%feature("autodoc", "
 Parameters
@@ -2468,8 +2468,8 @@ Creates the algorithm on the shape <s>.
 ") LocOpe_SplitDrafts;
 		 LocOpe_SplitDrafts(const TopoDS_Shape & S);
 
-		/****************** Init ******************/
-		/**** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ****/
+		/****** LocOpe_SplitDrafts::Init ******/
+		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2486,8 +2486,8 @@ Initializes the algorithm with the shape <s>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
+		/****** LocOpe_SplitDrafts::IsDone ******/
+		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2499,8 +2499,8 @@ Returns <standard_true> if the modification has been successfully performed.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** OriginalShape ******************/
-		/**** md5 signature: 0c1425ae3411e433ee33975a98ab8edc ****/
+		/****** LocOpe_SplitDrafts::OriginalShape ******/
+		/****** md5 signature: 0c1425ae3411e433ee33975a98ab8edc ******/
 		%feature("compactdefaultargs") OriginalShape;
 		%feature("autodoc", "Return
 -------
@@ -2512,8 +2512,8 @@ No available documentation.
 ") OriginalShape;
 		const TopoDS_Shape OriginalShape();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 06049251e5058c5d93cb1e4c850648e3 ****/
+		/****** LocOpe_SplitDrafts::Perform ******/
+		/****** md5 signature: 06049251e5058c5d93cb1e4c850648e3 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2539,8 +2539,8 @@ Splits the face <f> of the former given shape with the wire <w>. the wire is ass
 ") Perform;
 		void Perform(const TopoDS_Face & F, const TopoDS_Wire & W, const gp_Dir & Extractg, const gp_Pln & NPlg, const Standard_Real Angleg, const gp_Dir & Extractd, const gp_Pln & NPld, const Standard_Real Angled, const Standard_Boolean ModifyLeft = Standard_True, const Standard_Boolean ModifyRight = Standard_True);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 33119ee8fef1a08344058cd4112ff127 ****/
+		/****** LocOpe_SplitDrafts::Perform ******/
+		/****** md5 signature: 33119ee8fef1a08344058cd4112ff127 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2561,8 +2561,8 @@ Splits the face <f> of the former given shape with the wire <w>. the wire is ass
 ") Perform;
 		void Perform(const TopoDS_Face & F, const TopoDS_Wire & W, const gp_Dir & Extract, const gp_Pln & NPl, const Standard_Real Angle);
 
-		/****************** Shape ******************/
-		/**** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ****/
+		/****** LocOpe_SplitDrafts::Shape ******/
+		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -2574,8 +2574,8 @@ Returns the modified shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
-		/****************** ShapesFromShape ******************/
-		/**** md5 signature: 9b19997d48fe09caab448d7d2a15b8e6 ****/
+		/****** LocOpe_SplitDrafts::ShapesFromShape ******/
+		/****** md5 signature: 9b19997d48fe09caab448d7d2a15b8e6 ******/
 		%feature("compactdefaultargs") ShapesFromShape;
 		%feature("autodoc", "
 Parameters
@@ -2606,8 +2606,8 @@ Manages the descendant shapes.
 **************************/
 class LocOpe_SplitShape {
 	public:
-		/****************** LocOpe_SplitShape ******************/
-		/**** md5 signature: 35b01b43000dd405f998f499e4073bea ****/
+		/****** LocOpe_SplitShape::LocOpe_SplitShape ******/
+		/****** md5 signature: 35b01b43000dd405f998f499e4073bea ******/
 		%feature("compactdefaultargs") LocOpe_SplitShape;
 		%feature("autodoc", "Return
 -------
@@ -2619,8 +2619,8 @@ Empty constructor.
 ") LocOpe_SplitShape;
 		 LocOpe_SplitShape();
 
-		/****************** LocOpe_SplitShape ******************/
-		/**** md5 signature: 30c3ad05a3b430b95f83235181d90a75 ****/
+		/****** LocOpe_SplitShape::LocOpe_SplitShape ******/
+		/****** md5 signature: 30c3ad05a3b430b95f83235181d90a75 ******/
 		%feature("compactdefaultargs") LocOpe_SplitShape;
 		%feature("autodoc", "
 Parameters
@@ -2637,8 +2637,8 @@ Creates the process with the shape <s>.
 ") LocOpe_SplitShape;
 		 LocOpe_SplitShape(const TopoDS_Shape & S);
 
-		/****************** Add ******************/
-		/**** md5 signature: f83a740d583d75ef073857245678fcf7 ****/
+		/****** LocOpe_SplitShape::Add ******/
+		/****** md5 signature: f83a740d583d75ef073857245678fcf7 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2657,8 +2657,8 @@ Adds the vertex <v> on the edge <e>, at parameter <p>.
 ") Add;
 		void Add(const TopoDS_Vertex & V, const Standard_Real P, const TopoDS_Edge & E);
 
-		/****************** Add ******************/
-		/**** md5 signature: a033629ccbdbc371707d5c76ce6135fb ****/
+		/****** LocOpe_SplitShape::Add ******/
+		/****** md5 signature: a033629ccbdbc371707d5c76ce6135fb ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2676,8 +2676,8 @@ Adds the wire <w> on the face <f>.
 ") Add;
 		Standard_Boolean Add(const TopoDS_Wire & W, const TopoDS_Face & F);
 
-		/****************** Add ******************/
-		/**** md5 signature: 53f90a2127879e94c7efb239b955201f ****/
+		/****** LocOpe_SplitShape::Add ******/
+		/****** md5 signature: 53f90a2127879e94c7efb239b955201f ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2695,8 +2695,8 @@ Adds the list of wires <lwires> on the face <f>.
 ") Add;
 		Standard_Boolean Add(const TopTools_ListOfShape & Lwires, const TopoDS_Face & F);
 
-		/****************** CanSplit ******************/
-		/**** md5 signature: 4e905e4aa3dc0a3d213d1c78ecb29068 ****/
+		/****** LocOpe_SplitShape::CanSplit ******/
+		/****** md5 signature: 4e905e4aa3dc0a3d213d1c78ecb29068 ******/
 		%feature("compactdefaultargs") CanSplit;
 		%feature("autodoc", "
 Parameters
@@ -2713,8 +2713,8 @@ Tests if it is possible to split the edge <e>.
 ") CanSplit;
 		Standard_Boolean CanSplit(const TopoDS_Edge & E);
 
-		/****************** DescendantShapes ******************/
-		/**** md5 signature: b55237191d8494fe72efd8032d9163b8 ****/
+		/****** LocOpe_SplitShape::DescendantShapes ******/
+		/****** md5 signature: b55237191d8494fe72efd8032d9163b8 ******/
 		%feature("compactdefaultargs") DescendantShapes;
 		%feature("autodoc", "
 Parameters
@@ -2731,8 +2731,8 @@ Returns the list of descendant shapes of <s>.
 ") DescendantShapes;
 		const TopTools_ListOfShape & DescendantShapes(const TopoDS_Shape & S);
 
-		/****************** Init ******************/
-		/**** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ****/
+		/****** LocOpe_SplitShape::Init ******/
+		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2749,8 +2749,8 @@ Initializes the process on the shape <s>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
-		/****************** LeftOf ******************/
-		/**** md5 signature: b7631372eb087b6699b45ed9bbbe5ca6 ****/
+		/****** LocOpe_SplitShape::LeftOf ******/
+		/****** md5 signature: b7631372eb087b6699b45ed9bbbe5ca6 ******/
 		%feature("compactdefaultargs") LeftOf;
 		%feature("autodoc", "
 Parameters
@@ -2768,8 +2768,8 @@ Returns the 'left' part defined by the wire <w> on the face <f>. the returned li
 ") LeftOf;
 		const TopTools_ListOfShape & LeftOf(const TopoDS_Wire & W, const TopoDS_Face & F);
 
-		/****************** Shape ******************/
-		/**** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ****/
+		/****** LocOpe_SplitShape::Shape ******/
+		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -2795,8 +2795,8 @@ Returns the 'original' shape.
 ***********************/
 class LocOpe_Spliter {
 	public:
-		/****************** LocOpe_Spliter ******************/
-		/**** md5 signature: 8cf5ce859db05a3d705a995c8f4c99f1 ****/
+		/****** LocOpe_Spliter::LocOpe_Spliter ******/
+		/****** md5 signature: 8cf5ce859db05a3d705a995c8f4c99f1 ******/
 		%feature("compactdefaultargs") LocOpe_Spliter;
 		%feature("autodoc", "Return
 -------
@@ -2808,8 +2808,8 @@ Empty constructor.
 ") LocOpe_Spliter;
 		 LocOpe_Spliter();
 
-		/****************** LocOpe_Spliter ******************/
-		/**** md5 signature: 0346ab3981532042dc46d5d22befb541 ****/
+		/****** LocOpe_Spliter::LocOpe_Spliter ******/
+		/****** md5 signature: 0346ab3981532042dc46d5d22befb541 ******/
 		%feature("compactdefaultargs") LocOpe_Spliter;
 		%feature("autodoc", "
 Parameters
@@ -2826,8 +2826,8 @@ Creates the algorithm on the shape <s>.
 ") LocOpe_Spliter;
 		 LocOpe_Spliter(const TopoDS_Shape & S);
 
-		/****************** DescendantShapes ******************/
-		/**** md5 signature: b55237191d8494fe72efd8032d9163b8 ****/
+		/****** LocOpe_Spliter::DescendantShapes ******/
+		/****** md5 signature: b55237191d8494fe72efd8032d9163b8 ******/
 		%feature("compactdefaultargs") DescendantShapes;
 		%feature("autodoc", "
 Parameters
@@ -2844,8 +2844,8 @@ Returns the list of descendant shapes of <s>.
 ") DescendantShapes;
 		const TopTools_ListOfShape & DescendantShapes(const TopoDS_Shape & S);
 
-		/****************** DirectLeft ******************/
-		/**** md5 signature: 3439933aeda7f1a1ec21dfaafbe0ab1a ****/
+		/****** LocOpe_Spliter::DirectLeft ******/
+		/****** md5 signature: 3439933aeda7f1a1ec21dfaafbe0ab1a ******/
 		%feature("compactdefaultargs") DirectLeft;
 		%feature("autodoc", "Return
 -------
@@ -2857,8 +2857,8 @@ Returns the faces which are the left of the projected wires and which are.
 ") DirectLeft;
 		const TopTools_ListOfShape & DirectLeft();
 
-		/****************** Init ******************/
-		/**** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ****/
+		/****** LocOpe_Spliter::Init ******/
+		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2875,8 +2875,8 @@ Initializes the algorithm on the shape <s>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** LocOpe_Spliter::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2888,8 +2888,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Left ******************/
-		/**** md5 signature: 70ee7865256185190dd6eecfb1fc40f8 ****/
+		/****** LocOpe_Spliter::Left ******/
+		/****** md5 signature: 70ee7865256185190dd6eecfb1fc40f8 ******/
 		%feature("compactdefaultargs") Left;
 		%feature("autodoc", "Return
 -------
@@ -2901,8 +2901,8 @@ Returns the faces of the 'left' part on the shape. (it is build from directleft,
 ") Left;
 		const TopTools_ListOfShape & Left();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 81f184fa3b695b3f713141fe6156b7b1 ****/
+		/****** LocOpe_Spliter::Perform ******/
+		/****** md5 signature: 81f184fa3b695b3f713141fe6156b7b1 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2919,8 +2919,8 @@ No available documentation.
 ") Perform;
 		void Perform(const opencascade::handle<LocOpe_WiresOnShape> & PW);
 
-		/****************** ResultingShape ******************/
-		/**** md5 signature: d353819ad888f0057399e1c340ff17c9 ****/
+		/****** LocOpe_Spliter::ResultingShape ******/
+		/****** md5 signature: d353819ad888f0057399e1c340ff17c9 ******/
 		%feature("compactdefaultargs") ResultingShape;
 		%feature("autodoc", "Return
 -------
@@ -2932,8 +2932,8 @@ Returns the new shape.
 ") ResultingShape;
 		const TopoDS_Shape ResultingShape();
 
-		/****************** Shape ******************/
-		/**** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ****/
+		/****** LocOpe_Spliter::Shape ******/
+		/****** md5 signature: e2e979bbf0e2f5cedfc0e482bf183e08 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -2959,8 +2959,8 @@ Returns the initial shape.
 ****************************/
 class LocOpe_WiresOnShape : public Standard_Transient {
 	public:
-		/****************** LocOpe_WiresOnShape ******************/
-		/**** md5 signature: 09ac373b07724e32dd0fa06274b01b27 ****/
+		/****** LocOpe_WiresOnShape::LocOpe_WiresOnShape ******/
+		/****** md5 signature: 09ac373b07724e32dd0fa06274b01b27 ******/
 		%feature("compactdefaultargs") LocOpe_WiresOnShape;
 		%feature("autodoc", "
 Parameters
@@ -2977,8 +2977,8 @@ No available documentation.
 ") LocOpe_WiresOnShape;
 		 LocOpe_WiresOnShape(const TopoDS_Shape & S);
 
-		/****************** Add ******************/
-		/**** md5 signature: a2f8855eb9d20716f921d30ba939fd6a ****/
+		/****** LocOpe_WiresOnShape::Add ******/
+		/****** md5 signature: a2f8855eb9d20716f921d30ba939fd6a ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2995,8 +2995,8 @@ Add splitting edges or wires for whole initial shape without additional specific
 ") Add;
 		Standard_Boolean Add(const TopTools_SequenceOfShape & theEdges);
 
-		/****************** Bind ******************/
-		/**** md5 signature: 4b8d37767a759e53f1ff5474f2d75938 ****/
+		/****** LocOpe_WiresOnShape::Bind ******/
+		/****** md5 signature: 4b8d37767a759e53f1ff5474f2d75938 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -3014,8 +3014,8 @@ No available documentation.
 ") Bind;
 		void Bind(const TopoDS_Wire & W, const TopoDS_Face & F);
 
-		/****************** Bind ******************/
-		/**** md5 signature: 00e02bd2b6d7fb5ecab8b6a06bcf0404 ****/
+		/****** LocOpe_WiresOnShape::Bind ******/
+		/****** md5 signature: 00e02bd2b6d7fb5ecab8b6a06bcf0404 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -3033,8 +3033,8 @@ No available documentation.
 ") Bind;
 		void Bind(const TopoDS_Compound & Comp, const TopoDS_Face & F);
 
-		/****************** Bind ******************/
-		/**** md5 signature: a26a4a4b0f2806f01ffb5421e1847703 ****/
+		/****** LocOpe_WiresOnShape::Bind ******/
+		/****** md5 signature: a26a4a4b0f2806f01ffb5421e1847703 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -3052,8 +3052,8 @@ No available documentation.
 ") Bind;
 		void Bind(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** Bind ******************/
-		/**** md5 signature: 207c01ec90c87c143bfc25038aabb965 ****/
+		/****** LocOpe_WiresOnShape::Bind ******/
+		/****** md5 signature: 207c01ec90c87c143bfc25038aabb965 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -3071,8 +3071,8 @@ No available documentation.
 ") Bind;
 		void Bind(const TopoDS_Edge & EfromW, const TopoDS_Edge & EonFace);
 
-		/****************** BindAll ******************/
-		/**** md5 signature: 2ecc085aa904d51ca25040bdea9d8415 ****/
+		/****** LocOpe_WiresOnShape::BindAll ******/
+		/****** md5 signature: 2ecc085aa904d51ca25040bdea9d8415 ******/
 		%feature("compactdefaultargs") BindAll;
 		%feature("autodoc", "Return
 -------
@@ -3084,8 +3084,8 @@ No available documentation.
 ") BindAll;
 		void BindAll();
 
-		/****************** Edge ******************/
-		/**** md5 signature: 6daa50e42e357ab838ace460a01de4f9 ****/
+		/****** LocOpe_WiresOnShape::Edge ******/
+		/****** md5 signature: 6daa50e42e357ab838ace460a01de4f9 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -3097,8 +3097,8 @@ No available documentation.
 ") Edge;
 		TopoDS_Edge Edge();
 
-		/****************** Init ******************/
-		/**** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ****/
+		/****** LocOpe_WiresOnShape::Init ******/
+		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3115,8 +3115,8 @@ No available documentation.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
-		/****************** InitEdgeIterator ******************/
-		/**** md5 signature: 33903e2afb34dc5222bb42326d13a964 ****/
+		/****** LocOpe_WiresOnShape::InitEdgeIterator ******/
+		/****** md5 signature: 33903e2afb34dc5222bb42326d13a964 ******/
 		%feature("compactdefaultargs") InitEdgeIterator;
 		%feature("autodoc", "Return
 -------
@@ -3128,8 +3128,8 @@ No available documentation.
 ") InitEdgeIterator;
 		void InitEdgeIterator();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** LocOpe_WiresOnShape::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -3141,8 +3141,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsFaceWithSection ******************/
-		/**** md5 signature: 453c46f0c0bbd0df89a249832f09337b ****/
+		/****** LocOpe_WiresOnShape::IsFaceWithSection ******/
+		/****** md5 signature: 453c46f0c0bbd0df89a249832f09337b ******/
 		%feature("compactdefaultargs") IsFaceWithSection;
 		%feature("autodoc", "
 Parameters
@@ -3159,8 +3159,8 @@ Tells is the face to be split by section or not.
 ") IsFaceWithSection;
 		Standard_Boolean IsFaceWithSection(const TopoDS_Shape & aFace);
 
-		/****************** MoreEdge ******************/
-		/**** md5 signature: 809deb2c8c3dfedac2033850fc8cfdca ****/
+		/****** LocOpe_WiresOnShape::MoreEdge ******/
+		/****** md5 signature: 809deb2c8c3dfedac2033850fc8cfdca ******/
 		%feature("compactdefaultargs") MoreEdge;
 		%feature("autodoc", "Return
 -------
@@ -3172,8 +3172,8 @@ No available documentation.
 ") MoreEdge;
 		Standard_Boolean MoreEdge();
 
-		/****************** NextEdge ******************/
-		/**** md5 signature: 8103c946a7f7c0a3d885514a8a740502 ****/
+		/****** LocOpe_WiresOnShape::NextEdge ******/
+		/****** md5 signature: 8103c946a7f7c0a3d885514a8a740502 ******/
 		%feature("compactdefaultargs") NextEdge;
 		%feature("autodoc", "Return
 -------
@@ -3185,8 +3185,8 @@ No available documentation.
 ") NextEdge;
 		void NextEdge();
 
-		/****************** OnEdge ******************/
-		/**** md5 signature: 29ad464e46d837d9fbaf500a7bbcf85f ****/
+		/****** LocOpe_WiresOnShape::OnEdge ******/
+		/****** md5 signature: 29ad464e46d837d9fbaf500a7bbcf85f ******/
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "
 Parameters
@@ -3203,8 +3203,8 @@ If the current edge is projected on an edge, returns <standard_true> and sets th
 ") OnEdge;
 		Standard_Boolean OnEdge(TopoDS_Edge & E);
 
-		/****************** OnEdge ******************/
-		/**** md5 signature: 658640c00451cfa43ebdf8cb65627a29 ****/
+		/****** LocOpe_WiresOnShape::OnEdge ******/
+		/****** md5 signature: 658640c00451cfa43ebdf8cb65627a29 ******/
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "
 Parameters
@@ -3222,8 +3222,8 @@ If the vertex <v> lies on an edge of the original shape, returns <standard_true>
 ") OnEdge;
 		Standard_Boolean OnEdge(const TopoDS_Vertex & V, TopoDS_Edge & E, Standard_Real &OutValue);
 
-		/****************** OnEdge ******************/
-		/**** md5 signature: 1c14a6039267b7829c86af26279784a8 ****/
+		/****** LocOpe_WiresOnShape::OnEdge ******/
+		/****** md5 signature: 1c14a6039267b7829c86af26279784a8 ******/
 		%feature("compactdefaultargs") OnEdge;
 		%feature("autodoc", "
 Parameters
@@ -3242,8 +3242,8 @@ If the vertex <v> lies on an edge of the original shape, returns <standard_true>
 ") OnEdge;
 		Standard_Boolean OnEdge(const TopoDS_Vertex & V, const TopoDS_Edge & EdgeFrom, TopoDS_Edge & E, Standard_Real &OutValue);
 
-		/****************** OnFace ******************/
-		/**** md5 signature: a04a7e8fa6834141c5c1e4ec7a86b633 ****/
+		/****** LocOpe_WiresOnShape::OnFace ******/
+		/****** md5 signature: a04a7e8fa6834141c5c1e4ec7a86b633 ******/
 		%feature("compactdefaultargs") OnFace;
 		%feature("autodoc", "Return
 -------
@@ -3255,8 +3255,8 @@ Returns the face of the shape on which the current edge is projected.
 ") OnFace;
 		TopoDS_Face OnFace();
 
-		/****************** OnVertex ******************/
-		/**** md5 signature: 741d3a6ecd746d31c15e3efe97ef4827 ****/
+		/****** LocOpe_WiresOnShape::OnVertex ******/
+		/****** md5 signature: 741d3a6ecd746d31c15e3efe97ef4827 ******/
 		%feature("compactdefaultargs") OnVertex;
 		%feature("autodoc", "
 Parameters
@@ -3274,8 +3274,8 @@ No available documentation.
 ") OnVertex;
 		Standard_Boolean OnVertex(const TopoDS_Vertex & Vwire, TopoDS_Vertex & Vshape);
 
-		/****************** SetCheckInterior ******************/
-		/**** md5 signature: 2d00b58c59d6af210c84a7fdd261d94b ****/
+		/****** LocOpe_WiresOnShape::SetCheckInterior ******/
+		/****** md5 signature: 2d00b58c59d6af210c84a7fdd261d94b ******/
 		%feature("compactdefaultargs") SetCheckInterior;
 		%feature("autodoc", "
 Parameters
@@ -3308,8 +3308,8 @@ Set the flag of check internal intersections default value is true (to check).
 **************************/
 class LocOpe_GluedShape : public LocOpe_GeneratedShape {
 	public:
-		/****************** LocOpe_GluedShape ******************/
-		/**** md5 signature: ec8a904dad761a10866084f604542a5e ****/
+		/****** LocOpe_GluedShape::LocOpe_GluedShape ******/
+		/****** md5 signature: ec8a904dad761a10866084f604542a5e ******/
 		%feature("compactdefaultargs") LocOpe_GluedShape;
 		%feature("autodoc", "Return
 -------
@@ -3321,8 +3321,8 @@ No available documentation.
 ") LocOpe_GluedShape;
 		 LocOpe_GluedShape();
 
-		/****************** LocOpe_GluedShape ******************/
-		/**** md5 signature: 2cfdad7c23a155b9200ff852da3646d8 ****/
+		/****** LocOpe_GluedShape::LocOpe_GluedShape ******/
+		/****** md5 signature: 2cfdad7c23a155b9200ff852da3646d8 ******/
 		%feature("compactdefaultargs") LocOpe_GluedShape;
 		%feature("autodoc", "
 Parameters
@@ -3339,8 +3339,8 @@ No available documentation.
 ") LocOpe_GluedShape;
 		 LocOpe_GluedShape(const TopoDS_Shape & S);
 
-		/****************** Generated ******************/
-		/**** md5 signature: 12fac5c9686aa58e81abe0e0278b5975 ****/
+		/****** LocOpe_GluedShape::Generated ******/
+		/****** md5 signature: 12fac5c9686aa58e81abe0e0278b5975 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -3357,8 +3357,8 @@ Returns the edge created by the vertex <v>. if none, must return a null shape.
 ") Generated;
 		TopoDS_Edge Generated(const TopoDS_Vertex & V);
 
-		/****************** Generated ******************/
-		/**** md5 signature: 2f36cb95a1e983d92e93c5a30cf1e5f4 ****/
+		/****** LocOpe_GluedShape::Generated ******/
+		/****** md5 signature: 2f36cb95a1e983d92e93c5a30cf1e5f4 ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -3375,8 +3375,8 @@ Returns the face created by the edge <e>. if none, must return a null shape.
 ") Generated;
 		TopoDS_Face Generated(const TopoDS_Edge & E);
 
-		/****************** GeneratingEdges ******************/
-		/**** md5 signature: ee249c46969f861d6e0e4bc29ae4bfeb ****/
+		/****** LocOpe_GluedShape::GeneratingEdges ******/
+		/****** md5 signature: ee249c46969f861d6e0e4bc29ae4bfeb ******/
 		%feature("compactdefaultargs") GeneratingEdges;
 		%feature("autodoc", "Return
 -------
@@ -3388,8 +3388,8 @@ No available documentation.
 ") GeneratingEdges;
 		const TopTools_ListOfShape & GeneratingEdges();
 
-		/****************** GlueOnFace ******************/
-		/**** md5 signature: a4642afc420a44d60619fbf28fad5c55 ****/
+		/****** LocOpe_GluedShape::GlueOnFace ******/
+		/****** md5 signature: a4642afc420a44d60619fbf28fad5c55 ******/
 		%feature("compactdefaultargs") GlueOnFace;
 		%feature("autodoc", "
 Parameters
@@ -3406,8 +3406,8 @@ No available documentation.
 ") GlueOnFace;
 		void GlueOnFace(const TopoDS_Face & F);
 
-		/****************** Init ******************/
-		/**** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ****/
+		/****** LocOpe_GluedShape::Init ******/
+		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3424,8 +3424,8 @@ No available documentation.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
-		/****************** OrientedFaces ******************/
-		/**** md5 signature: daf89b2afb0d5ac79505728faeed1fe1 ****/
+		/****** LocOpe_GluedShape::OrientedFaces ******/
+		/****** md5 signature: daf89b2afb0d5ac79505728faeed1fe1 ******/
 		%feature("compactdefaultargs") OrientedFaces;
 		%feature("autodoc", "Return
 -------

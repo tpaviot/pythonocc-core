@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BSPLCLIBDOCSTRING
 "BSplCLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_bsplclib.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_bsplclib.html"
 %enddef
 %module (package="OCC.Core", docstring=BSPLCLIBDOCSTRING) BSplCLib
 
@@ -117,8 +117,8 @@ BSplCLib_QuasiConstant = BSplCLib_MultDistribution.BSplCLib_QuasiConstant
 %rename(bsplclib) BSplCLib;
 class BSplCLib {
 	public:
-		/****************** AntiBoorScheme ******************/
-		/**** md5 signature: f2a15c1ab9b1fa3f3839f413b77c4060 ****/
+		/****** BSplCLib::AntiBoorScheme ******/
+		/****** md5 signature: f2a15c1ab9b1fa3f3839f413b77c4060 ******/
 		%feature("compactdefaultargs") AntiBoorScheme;
 		%feature("autodoc", "
 Parameters
@@ -141,8 +141,8 @@ Compute the content of pole before the boorscheme. this method is used to remove
 ") AntiBoorScheme;
 		static Standard_Boolean AntiBoorScheme(const Standard_Real U, const Standard_Integer Degree, Standard_Real &OutValue, const Standard_Integer Dimension, Standard_Real &OutValue, const Standard_Integer Depth, const Standard_Integer Length, const Standard_Real Tolerance);
 
-		/****************** Bohm ******************/
-		/**** md5 signature: 84b7e6290b2939358c0b5fd95367ff2c ****/
+		/****** BSplCLib::Bohm ******/
+		/****** md5 signature: 84b7e6290b2939358c0b5fd95367ff2c ******/
 		%feature("compactdefaultargs") Bohm;
 		%feature("autodoc", "
 Parameters
@@ -163,8 +163,8 @@ Performs the bohm algorithm at parameter <u>. this algorithm computes the value 
 ") Bohm;
 		static void Bohm(const Standard_Real U, const Standard_Integer Degree, const Standard_Integer N, Standard_Real &OutValue, const Standard_Integer Dimension, Standard_Real &OutValue);
 
-		/****************** BoorIndex ******************/
-		/**** md5 signature: fe6c98ba2e3115fab44859a66dddd7d5 ****/
+		/****** BSplCLib::BoorIndex ******/
+		/****** md5 signature: fe6c98ba2e3115fab44859a66dddd7d5 ******/
 		%feature("compactdefaultargs") BoorIndex;
 		%feature("autodoc", "
 Parameters
@@ -183,8 +183,8 @@ Returns the index in the boor result array of the poles <index>. if the boor alg
 ") BoorIndex;
 		static Standard_Integer BoorIndex(const Standard_Integer Index, const Standard_Integer Length, const Standard_Integer Depth);
 
-		/****************** BoorScheme ******************/
-		/**** md5 signature: eefddfccb28bb41dfcee6873cbf310be ****/
+		/****** BSplCLib::BoorScheme ******/
+		/****** md5 signature: eefddfccb28bb41dfcee6873cbf310be ******/
 		%feature("compactdefaultargs") BoorScheme;
 		%feature("autodoc", "
 Parameters
@@ -206,8 +206,8 @@ Performs the boor algorithm at parameter <u> with the given <degree> and the arr
 ") BoorScheme;
 		static void BoorScheme(const Standard_Real U, const Standard_Integer Degree, Standard_Real &OutValue, const Standard_Integer Dimension, Standard_Real &OutValue, const Standard_Integer Depth, const Standard_Integer Length);
 
-		/****************** BuildBSpMatrix ******************/
-		/**** md5 signature: 4fca6c948c6dad78f4e6206c4ebe72d7 ****/
+		/****** BSplCLib::BuildBSpMatrix ******/
+		/****** md5 signature: 4fca6c948c6dad78f4e6206c4ebe72d7 ******/
 		%feature("compactdefaultargs") BuildBSpMatrix;
 		%feature("autodoc", "
 Parameters
@@ -229,8 +229,8 @@ This builds a fully blown matrix of (ni) bi (tj) //! with i and j within 1..orde
 ") BuildBSpMatrix;
 		static Standard_Integer BuildBSpMatrix(const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & OrderArray, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer Degree, math_Matrix & Matrix, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** BuildBoor ******************/
-		/**** md5 signature: f16cfb2a5992087302948523a5f30919 ****/
+		/****** BSplCLib::BuildBoor ******/
+		/****** md5 signature: f16cfb2a5992087302948523a5f30919 ******/
 		%feature("compactdefaultargs") BuildBoor;
 		%feature("autodoc", "
 Parameters
@@ -250,8 +250,8 @@ Copy in <lp> poles for <dimension> boor scheme. starting from <index> * <dimensi
 ") BuildBoor;
 		static void BuildBoor(const Standard_Integer Index, const Standard_Integer Length, const Standard_Integer Dimension, const TColStd_Array1OfReal & Poles, Standard_Real &OutValue);
 
-		/****************** BuildCache ******************/
-		/**** md5 signature: 88f6db741b7bf40f8789b15b366aa19e ****/
+		/****** BSplCLib::BuildCache ******/
+		/****** md5 signature: 88f6db741b7bf40f8789b15b366aa19e ******/
 		%feature("compactdefaultargs") BuildCache;
 		%feature("autodoc", "
 Parameters
@@ -276,8 +276,8 @@ Perform the evaluation of the taylor expansion of the bspline normalized between
 ") BuildCache;
 		static void BuildCache(const Standard_Real U, const Standard_Real InverseOfSpanDomain, const Standard_Boolean PeriodicFlag, const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
-		/****************** BuildCache ******************/
-		/**** md5 signature: 45f22d8002fc8790ce5072ab4d067a4f ****/
+		/****** BSplCLib::BuildCache ******/
+		/****** md5 signature: 45f22d8002fc8790ce5072ab4d067a4f ******/
 		%feature("compactdefaultargs") BuildCache;
 		%feature("autodoc", "
 Parameters
@@ -302,8 +302,8 @@ Perform the evaluation of the taylor expansion of the bspline normalized between
 ") BuildCache;
 		static void BuildCache(const Standard_Real U, const Standard_Real InverseOfSpanDomain, const Standard_Boolean PeriodicFlag, const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt2d & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
-		/****************** BuildCache ******************/
-		/**** md5 signature: c515147b2f76ee70ec1b53736b32b6a3 ****/
+		/****** BSplCLib::BuildCache ******/
+		/****** md5 signature: c515147b2f76ee70ec1b53736b32b6a3 ******/
 		%feature("compactdefaultargs") BuildCache;
 		%feature("autodoc", "
 Parameters
@@ -328,8 +328,8 @@ Perform the evaluation of the taylor expansion of the bspline normalized between
 ") BuildCache;
 		static void BuildCache(const Standard_Real theParameter, const Standard_Real theSpanDomain, const Standard_Boolean thePeriodicFlag, const Standard_Integer theDegree, const Standard_Integer theSpanIndex, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt & thePoles, const TColStd_Array1OfReal * theWeights, TColStd_Array2OfReal & theCacheArray);
 
-		/****************** BuildCache ******************/
-		/**** md5 signature: aa87bffa2b4787d68598fd1c4a7827a6 ****/
+		/****** BSplCLib::BuildCache ******/
+		/****** md5 signature: aa87bffa2b4787d68598fd1c4a7827a6 ******/
 		%feature("compactdefaultargs") BuildCache;
 		%feature("autodoc", "
 Parameters
@@ -354,8 +354,8 @@ Perform the evaluation of the taylor expansion of the bspline normalized between
 ") BuildCache;
 		static void BuildCache(const Standard_Real theParameter, const Standard_Real theSpanDomain, const Standard_Boolean thePeriodicFlag, const Standard_Integer theDegree, const Standard_Integer theSpanIndex, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt2d & thePoles, const TColStd_Array1OfReal * theWeights, TColStd_Array2OfReal & theCacheArray);
 
-		/****************** BuildEval ******************/
-		/**** md5 signature: f5bf26a19e3916875f66db135251f90e ****/
+		/****** BSplCLib::BuildEval ******/
+		/****** md5 signature: f5bf26a19e3916875f66db135251f90e ******/
 		%feature("compactdefaultargs") BuildEval;
 		%feature("autodoc", "
 Parameters
@@ -375,8 +375,8 @@ No available documentation.
 ") BuildEval;
 		static void BuildEval(const Standard_Integer Degree, const Standard_Integer Index, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal * Weights, Standard_Real &OutValue);
 
-		/****************** BuildEval ******************/
-		/**** md5 signature: 9494908cfef81ef91e3c3165373b276a ****/
+		/****** BSplCLib::BuildEval ******/
+		/****** md5 signature: 9494908cfef81ef91e3c3165373b276a ******/
 		%feature("compactdefaultargs") BuildEval;
 		%feature("autodoc", "
 Parameters
@@ -396,8 +396,8 @@ No available documentation.
 ") BuildEval;
 		static void BuildEval(const Standard_Integer Degree, const Standard_Integer Index, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, Standard_Real &OutValue);
 
-		/****************** BuildEval ******************/
-		/**** md5 signature: e7548b1cb6a5b267a1cdaa850de8e117 ****/
+		/****** BSplCLib::BuildEval ******/
+		/****** md5 signature: e7548b1cb6a5b267a1cdaa850de8e117 ******/
 		%feature("compactdefaultargs") BuildEval;
 		%feature("autodoc", "
 Parameters
@@ -417,8 +417,8 @@ Copy in <lp> the poles and weights for the eval scheme. starting from poles(pole
 ") BuildEval;
 		static void BuildEval(const Standard_Integer Degree, const Standard_Integer Index, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, Standard_Real &OutValue);
 
-		/****************** BuildKnots ******************/
-		/**** md5 signature: 5b526b765c0171416b4d6dfd6b2cfaf1 ****/
+		/****** BSplCLib::BuildKnots ******/
+		/****** md5 signature: 5b526b765c0171416b4d6dfd6b2cfaf1 ******/
 		%feature("compactdefaultargs") BuildKnots;
 		%feature("autodoc", "
 Parameters
@@ -439,8 +439,8 @@ Stores in lk the useful knots for the boorschem on the span knots(index) - knots
 ") BuildKnots;
 		static void BuildKnots(const Standard_Integer Degree, const Standard_Integer Index, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, Standard_Real &OutValue);
 
-		/****************** BuildSchoenbergPoints ******************/
-		/**** md5 signature: 7c7c6b34199d47b94798e9eaa18466de ****/
+		/****** BSplCLib::BuildSchoenbergPoints ******/
+		/****** md5 signature: 7c7c6b34199d47b94798e9eaa18466de ******/
 		%feature("compactdefaultargs") BuildSchoenbergPoints;
 		%feature("autodoc", "
 Parameters
@@ -459,8 +459,8 @@ Builds the schoenberg points from the flat knot used to interpolate a bspline si
 ") BuildSchoenbergPoints;
 		static void BuildSchoenbergPoints(const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, TColStd_Array1OfReal & Parameters);
 
-		/****************** CacheD0 ******************/
-		/**** md5 signature: 4b87a5084bd23695ffc6f5eb2dc1e975 ****/
+		/****** BSplCLib::CacheD0 ******/
+		/****** md5 signature: 4b87a5084bd23695ffc6f5eb2dc1e975 ******/
 		%feature("compactdefaultargs") CacheD0;
 		%feature("autodoc", "
 Parameters
@@ -483,8 +483,8 @@ Perform the evaluation of the of the cache the parameter must be normalized betw
 ") CacheD0;
 		static void CacheD0(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point);
 
-		/****************** CacheD0 ******************/
-		/**** md5 signature: e4f1a75a966531ff935a46ebf7e7f834 ****/
+		/****** BSplCLib::CacheD0 ******/
+		/****** md5 signature: e4f1a75a966531ff935a46ebf7e7f834 ******/
 		%feature("compactdefaultargs") CacheD0;
 		%feature("autodoc", "
 Parameters
@@ -507,8 +507,8 @@ Perform the evaluation of the bspline basis and then multiplies by the weights t
 ") CacheD0;
 		static void CacheD0(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point);
 
-		/****************** CacheD1 ******************/
-		/**** md5 signature: ae504111826c0a9503f1e1e3c5414581 ****/
+		/****** BSplCLib::CacheD1 ******/
+		/****** md5 signature: ae504111826c0a9503f1e1e3c5414581 ******/
 		%feature("compactdefaultargs") CacheD1;
 		%feature("autodoc", "
 Parameters
@@ -532,8 +532,8 @@ Perform the evaluation of the of the cache the parameter must be normalized betw
 ") CacheD1;
 		static void CacheD1(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec);
 
-		/****************** CacheD1 ******************/
-		/**** md5 signature: bd3f1e91dd444c350b31810eec8e7216 ****/
+		/****** BSplCLib::CacheD1 ******/
+		/****** md5 signature: bd3f1e91dd444c350b31810eec8e7216 ******/
 		%feature("compactdefaultargs") CacheD1;
 		%feature("autodoc", "
 Parameters
@@ -557,8 +557,8 @@ Perform the evaluation of the bspline basis and then multiplies by the weights t
 ") CacheD1;
 		static void CacheD1(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec);
 
-		/****************** CacheD2 ******************/
-		/**** md5 signature: 9f31e63202d02d8f93edddb5d118458f ****/
+		/****** BSplCLib::CacheD2 ******/
+		/****** md5 signature: 9f31e63202d02d8f93edddb5d118458f ******/
 		%feature("compactdefaultargs") CacheD2;
 		%feature("autodoc", "
 Parameters
@@ -583,8 +583,8 @@ Perform the evaluation of the of the cache the parameter must be normalized betw
 ") CacheD2;
 		static void CacheD2(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2);
 
-		/****************** CacheD2 ******************/
-		/**** md5 signature: ef6db7863626261e8a1f32874d2ed3bd ****/
+		/****** BSplCLib::CacheD2 ******/
+		/****** md5 signature: ef6db7863626261e8a1f32874d2ed3bd ******/
 		%feature("compactdefaultargs") CacheD2;
 		%feature("autodoc", "
 Parameters
@@ -609,8 +609,8 @@ Perform the evaluation of the bspline basis and then multiplies by the weights t
 ") CacheD2;
 		static void CacheD2(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2);
 
-		/****************** CacheD3 ******************/
-		/**** md5 signature: 0a3f8637dbdbd34edf1705c597e300f0 ****/
+		/****** BSplCLib::CacheD3 ******/
+		/****** md5 signature: 0a3f8637dbdbd34edf1705c597e300f0 ******/
 		%feature("compactdefaultargs") CacheD3;
 		%feature("autodoc", "
 Parameters
@@ -636,8 +636,8 @@ Perform the evaluation of the of the cache the parameter must be normalized betw
 ") CacheD3;
 		static void CacheD3(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2, gp_Vec & Vec3);
 
-		/****************** CacheD3 ******************/
-		/**** md5 signature: e5d96d09eb78ae6b9e6eddab8ceeacd5 ****/
+		/****** BSplCLib::CacheD3 ******/
+		/****** md5 signature: e5d96d09eb78ae6b9e6eddab8ceeacd5 ******/
 		%feature("compactdefaultargs") CacheD3;
 		%feature("autodoc", "
 Parameters
@@ -663,8 +663,8 @@ Perform the evaluation of the bspline basis and then multiplies by the weights t
 ") CacheD3;
 		static void CacheD3(const Standard_Real U, const Standard_Integer Degree, const Standard_Real CacheParameter, const Standard_Real SpanLenght, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2, gp_Vec2d & Vec3);
 
-		/****************** CoefsD0 ******************/
-		/**** md5 signature: 18bf8e212b82477c8304e717ea65ad39 ****/
+		/****** BSplCLib::CoefsD0 ******/
+		/****** md5 signature: 18bf8e212b82477c8304e717ea65ad39 ******/
 		%feature("compactdefaultargs") CoefsD0;
 		%feature("autodoc", "
 Parameters
@@ -684,8 +684,8 @@ Calls cached0 for bezier curves arrays computed with the method polescoefficient
 ") CoefsD0;
 		static void CoefsD0(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point);
 
-		/****************** CoefsD0 ******************/
-		/**** md5 signature: 39bdd7ed41460b8569726669dbd4e7bb ****/
+		/****** BSplCLib::CoefsD0 ******/
+		/****** md5 signature: 39bdd7ed41460b8569726669dbd4e7bb ******/
 		%feature("compactdefaultargs") CoefsD0;
 		%feature("autodoc", "
 Parameters
@@ -705,8 +705,8 @@ Calls cached0 for bezier curves arrays computed with the method polescoefficient
 ") CoefsD0;
 		static void CoefsD0(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point);
 
-		/****************** CoefsD1 ******************/
-		/**** md5 signature: 3242be6bc01e487f3d616e7a4fc09f58 ****/
+		/****** BSplCLib::CoefsD1 ******/
+		/****** md5 signature: 3242be6bc01e487f3d616e7a4fc09f58 ******/
 		%feature("compactdefaultargs") CoefsD1;
 		%feature("autodoc", "
 Parameters
@@ -727,8 +727,8 @@ Calls cached1 for bezier curves arrays computed with the method polescoefficient
 ") CoefsD1;
 		static void CoefsD1(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec);
 
-		/****************** CoefsD1 ******************/
-		/**** md5 signature: 003fec260a51b66354e299192f1a2acb ****/
+		/****** BSplCLib::CoefsD1 ******/
+		/****** md5 signature: 003fec260a51b66354e299192f1a2acb ******/
 		%feature("compactdefaultargs") CoefsD1;
 		%feature("autodoc", "
 Parameters
@@ -749,8 +749,8 @@ Calls cached1 for bezier curves arrays computed with the method polescoefficient
 ") CoefsD1;
 		static void CoefsD1(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec);
 
-		/****************** CoefsD2 ******************/
-		/**** md5 signature: a760925979becb0846798bef7d4517a1 ****/
+		/****** BSplCLib::CoefsD2 ******/
+		/****** md5 signature: a760925979becb0846798bef7d4517a1 ******/
 		%feature("compactdefaultargs") CoefsD2;
 		%feature("autodoc", "
 Parameters
@@ -772,8 +772,8 @@ Calls cached1 for bezier curves arrays computed with the method polescoefficient
 ") CoefsD2;
 		static void CoefsD2(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2);
 
-		/****************** CoefsD2 ******************/
-		/**** md5 signature: 457c4121231654d520b6b729f5ded246 ****/
+		/****** BSplCLib::CoefsD2 ******/
+		/****** md5 signature: 457c4121231654d520b6b729f5ded246 ******/
 		%feature("compactdefaultargs") CoefsD2;
 		%feature("autodoc", "
 Parameters
@@ -795,8 +795,8 @@ Calls cached1 for bezier curves arrays computed with the method polescoefficient
 ") CoefsD2;
 		static void CoefsD2(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2);
 
-		/****************** CoefsD3 ******************/
-		/**** md5 signature: c6ad727e15781fe3ca510ef85b7cfc4c ****/
+		/****** BSplCLib::CoefsD3 ******/
+		/****** md5 signature: c6ad727e15781fe3ca510ef85b7cfc4c ******/
 		%feature("compactdefaultargs") CoefsD3;
 		%feature("autodoc", "
 Parameters
@@ -819,8 +819,8 @@ Calls cached1 for bezier curves arrays computed with the method polescoefficient
 ") CoefsD3;
 		static void CoefsD3(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & Point, gp_Vec & Vec1, gp_Vec & Vec2, gp_Vec & Vec3);
 
-		/****************** CoefsD3 ******************/
-		/**** md5 signature: 6f91ff262a63e5b085eae5793d90d147 ****/
+		/****** BSplCLib::CoefsD3 ******/
+		/****** md5 signature: 6f91ff262a63e5b085eae5793d90d147 ******/
 		%feature("compactdefaultargs") CoefsD3;
 		%feature("autodoc", "
 Parameters
@@ -843,8 +843,8 @@ Calls cached1 for bezier curves arrays computed with the method polescoefficient
 ") CoefsD3;
 		static void CoefsD3(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & Point, gp_Vec2d & Vec1, gp_Vec2d & Vec2, gp_Vec2d & Vec3);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 7561aecd85a8c1fd870660e7b2329d8c ****/
+		/****** BSplCLib::D0 ******/
+		/****** md5 signature: 7561aecd85a8c1fd870660e7b2329d8c ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -868,8 +868,8 @@ No available documentation.
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, Standard_Real &OutValue);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 5a86ac63b280d12dc49149ab86701593 ****/
+		/****** BSplCLib::D0 ******/
+		/****** md5 signature: 5a86ac63b280d12dc49149ab86701593 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -894,8 +894,8 @@ No available documentation.
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 732828ed2bf7b4c8007607b33b5017e6 ****/
+		/****** BSplCLib::D0 ******/
+		/****** md5 signature: 732828ed2bf7b4c8007607b33b5017e6 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -920,8 +920,8 @@ No available documentation.
 ") D0;
 		static void D0(const Standard_Real U, const Standard_Integer UIndex, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 33d3e7f80011e8d41cfdf3310bf2746b ****/
+		/****** BSplCLib::D0 ******/
+		/****** md5 signature: 33d3e7f80011e8d41cfdf3310bf2746b ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -941,8 +941,8 @@ No available documentation.
 ") D0;
 		static void D0(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 1ec2056c99d3c27e743528d574bd1b08 ****/
+		/****** BSplCLib::D0 ******/
+		/****** md5 signature: 1ec2056c99d3c27e743528d574bd1b08 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -962,8 +962,8 @@ No available documentation.
 ") D0;
 		static void D0(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P);
 
-		/****************** D1 ******************/
-		/**** md5 signature: c5d4a5a42567bcbaa42a3a45f7913898 ****/
+		/****** BSplCLib::D1 ******/
+		/****** md5 signature: c5d4a5a42567bcbaa42a3a45f7913898 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -988,8 +988,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 8a5113bc308ff33804f33bdc1ed608ba ****/
+		/****** BSplCLib::D1 ******/
+		/****** md5 signature: 8a5113bc308ff33804f33bdc1ed608ba ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1015,8 +1015,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P, gp_Vec & V);
 
-		/****************** D1 ******************/
-		/**** md5 signature: fd089236138b75127a4ad6b78bc6e10c ****/
+		/****** BSplCLib::D1 ******/
+		/****** md5 signature: fd089236138b75127a4ad6b78bc6e10c ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1042,8 +1042,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const Standard_Integer UIndex, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P, gp_Vec2d & V);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 87bba8d0c8b6927eb3568c326fc6fb48 ****/
+		/****** BSplCLib::D1 ******/
+		/****** md5 signature: 87bba8d0c8b6927eb3568c326fc6fb48 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1064,8 +1064,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P, gp_Vec & V);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 3b7b11ae9a40e85d080202fc6a53897a ****/
+		/****** BSplCLib::D1 ******/
+		/****** md5 signature: 3b7b11ae9a40e85d080202fc6a53897a ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1086,8 +1086,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P, gp_Vec2d & V);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 687cea2fb0236f24716895fa76c91fd2 ****/
+		/****** BSplCLib::D2 ******/
+		/****** md5 signature: 687cea2fb0236f24716895fa76c91fd2 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -1113,8 +1113,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** D2 ******************/
-		/**** md5 signature: b73abb803e141f8dc4ec09df17e4c50e ****/
+		/****** BSplCLib::D2 ******/
+		/****** md5 signature: b73abb803e141f8dc4ec09df17e4c50e ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -1141,8 +1141,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 6058645d1d031db231dada3d3a54b986 ****/
+		/****** BSplCLib::D2 ******/
+		/****** md5 signature: 6058645d1d031db231dada3d3a54b986 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -1169,8 +1169,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const Standard_Integer UIndex, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 63365348497a5b480b7839c0964e9d2e ****/
+		/****** BSplCLib::D2 ******/
+		/****** md5 signature: 63365348497a5b480b7839c0964e9d2e ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -1192,8 +1192,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 8f777be84c1d31a5bc0c3ddef76c70c5 ****/
+		/****** BSplCLib::D2 ******/
+		/****** md5 signature: 8f777be84c1d31a5bc0c3ddef76c70c5 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -1215,8 +1215,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 8e56e662476d83277aff218518c2783b ****/
+		/****** BSplCLib::D3 ******/
+		/****** md5 signature: 8e56e662476d83277aff218518c2783b ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -1243,8 +1243,8 @@ No available documentation.
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 7c47b7eb8d5b8d180c4d45228f81647c ****/
+		/****** BSplCLib::D3 ******/
+		/****** md5 signature: 7c47b7eb8d5b8d180c4d45228f81647c ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -1272,8 +1272,8 @@ No available documentation.
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Integer Index, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 81bfef3adc8c0544d61a9b166341c5c9 ****/
+		/****** BSplCLib::D3 ******/
+		/****** md5 signature: 81bfef3adc8c0544d61a9b166341c5c9 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -1301,8 +1301,8 @@ No available documentation.
 ") D3;
 		static void D3(const Standard_Real U, const Standard_Integer UIndex, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
-		/****************** D3 ******************/
-		/**** md5 signature: f0a77f2c8079c2632af45d55df4473cb ****/
+		/****** BSplCLib::D3 ******/
+		/****** md5 signature: f0a77f2c8079c2632af45d55df4473cb ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -1325,8 +1325,8 @@ No available documentation.
 ") D3;
 		static void D3(const Standard_Real U, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 3d0d0bbd88ac150dc6372f46c6dabd3e ****/
+		/****** BSplCLib::D3 ******/
+		/****** md5 signature: 3d0d0bbd88ac150dc6372f46c6dabd3e ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -1349,8 +1349,8 @@ No available documentation.
 ") D3;
 		static void D3(const Standard_Real U, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
-		/****************** Derivative ******************/
-		/**** md5 signature: 3e05b06fef7b008a06c0d9da82c6a38b ****/
+		/****** BSplCLib::Derivative ******/
+		/****** md5 signature: 3e05b06fef7b008a06c0d9da82c6a38b ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
@@ -1371,8 +1371,8 @@ Computes the poles of the bspline giving the derivatives of order <order>. //! t
 ") Derivative;
 		static void Derivative(const Standard_Integer Degree, Standard_Real &OutValue, const Standard_Integer Dimension, const Standard_Integer Length, const Standard_Integer Order, Standard_Real &OutValue);
 
-		/****************** Eval ******************/
-		/**** md5 signature: 306d3d56ab8e2e7587db79730d72385e ****/
+		/****** BSplCLib::Eval ******/
+		/****** md5 signature: 306d3d56ab8e2e7587db79730d72385e ******/
 		%feature("compactdefaultargs") Eval;
 		%feature("autodoc", "
 Parameters
@@ -1392,8 +1392,8 @@ Perform the boor algorithm to evaluate a point at parameter <u>, with <degree> a
 ") Eval;
 		static void Eval(const Standard_Real U, const Standard_Integer Degree, Standard_Real &OutValue, const Standard_Integer Dimension, Standard_Real &OutValue);
 
-		/****************** Eval ******************/
-		/**** md5 signature: 2650b9a2ce8101d2c64b1aa2dc7230ed ****/
+		/****** BSplCLib::Eval ******/
+		/****** md5 signature: 2650b9a2ce8101d2c64b1aa2dc7230ed ******/
 		%feature("compactdefaultargs") Eval;
 		%feature("autodoc", "
 Parameters
@@ -1417,8 +1417,8 @@ Perform the de boor algorithm to evaluate a point at parameter <u>, with <degree
 ") Eval;
 		static void Eval(const Standard_Real U, const Standard_Boolean PeriodicFlag, const Standard_Integer DerivativeRequest, Standard_Integer &OutValue, const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Eval ******************/
-		/**** md5 signature: f042995c54d6c67df7af737079f079ff ****/
+		/****** BSplCLib::Eval ******/
+		/****** md5 signature: f042995c54d6c67df7af737079f079ff ******/
 		%feature("compactdefaultargs") Eval;
 		%feature("autodoc", "
 Parameters
@@ -1444,8 +1444,8 @@ Perform the de boor algorithm to evaluate a point at parameter <u>, with <degree
 ") Eval;
 		static void Eval(const Standard_Real U, const Standard_Boolean PeriodicFlag, const Standard_Integer DerivativeRequest, Standard_Integer &OutValue, const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Eval ******************/
-		/**** md5 signature: a0af3768f3f3d4eaf53ad9e5d73e72ef ****/
+		/****** BSplCLib::Eval ******/
+		/****** md5 signature: a0af3768f3f3d4eaf53ad9e5d73e72ef ******/
 		%feature("compactdefaultargs") Eval;
 		%feature("autodoc", "
 Parameters
@@ -1470,8 +1470,8 @@ Perform the evaluation of the bspline basis and then multiplies by the weights t
 ") Eval;
 		static void Eval(const Standard_Real U, const Standard_Boolean PeriodicFlag, const Standard_Boolean HomogeneousFlag, Standard_Integer &OutValue, const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & Weights, gp_Pnt & Point, Standard_Real &OutValue);
 
-		/****************** Eval ******************/
-		/**** md5 signature: c2a3f21e913c7b4f811014d264cd4acd ****/
+		/****** BSplCLib::Eval ******/
+		/****** md5 signature: c2a3f21e913c7b4f811014d264cd4acd ******/
 		%feature("compactdefaultargs") Eval;
 		%feature("autodoc", "
 Parameters
@@ -1496,8 +1496,8 @@ Perform the evaluation of the bspline basis and then multiplies by the weights t
 ") Eval;
 		static void Eval(const Standard_Real U, const Standard_Boolean PeriodicFlag, const Standard_Boolean HomogeneousFlag, Standard_Integer &OutValue, const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & Weights, gp_Pnt2d & Point, Standard_Real &OutValue);
 
-		/****************** EvalBsplineBasis ******************/
-		/**** md5 signature: 5ffbb07031177e5863ba3c71b6dfceec ****/
+		/****** BSplCLib::EvalBsplineBasis ******/
+		/****** md5 signature: 5ffbb07031177e5863ba3c71b6dfceec ******/
 		%feature("compactdefaultargs") EvalBsplineBasis;
 		%feature("autodoc", "
 Parameters
@@ -1519,8 +1519,8 @@ This evaluates the bspline basis at a given parameter parameter up to the reques
 ") EvalBsplineBasis;
 		static Standard_Integer EvalBsplineBasis(const Standard_Integer DerivativeOrder, const Standard_Integer Order, const TColStd_Array1OfReal & FlatKnots, const Standard_Real Parameter, Standard_Integer &OutValue, math_Matrix & BsplineBasis, const Standard_Boolean isPeriodic = Standard_False);
 
-		/****************** FactorBandedMatrix ******************/
-		/**** md5 signature: b32ee44a28437467b4b6bb1b6f9ef4d0 ****/
+		/****** BSplCLib::FactorBandedMatrix ******/
+		/****** md5 signature: b32ee44a28437467b4b6bb1b6f9ef4d0 ******/
 		%feature("compactdefaultargs") FactorBandedMatrix;
 		%feature("autodoc", "
 Parameters
@@ -1539,8 +1539,8 @@ This factors the banded matrix in the lu form with a banded storage of component
 ") FactorBandedMatrix;
 		static Standard_Integer FactorBandedMatrix(math_Matrix & Matrix, const Standard_Integer UpperBandWidth, const Standard_Integer LowerBandWidth, Standard_Integer &OutValue);
 
-		/****************** FirstUKnotIndex ******************/
-		/**** md5 signature: 4eeb8b33949edada004187702b6be02a ****/
+		/****** BSplCLib::FirstUKnotIndex ******/
+		/****** md5 signature: 4eeb8b33949edada004187702b6be02a ******/
 		%feature("compactdefaultargs") FirstUKnotIndex;
 		%feature("autodoc", "
 Parameters
@@ -1558,8 +1558,8 @@ Computes the index of the knots value which gives the start point of the curve.
 ") FirstUKnotIndex;
 		static Standard_Integer FirstUKnotIndex(const Standard_Integer Degree, const TColStd_Array1OfInteger & Mults);
 
-		/****************** FlatBezierKnots ******************/
-		/**** md5 signature: 7b813d4199ab162a9445b273d2d7855c ****/
+		/****** BSplCLib::FlatBezierKnots ******/
+		/****** md5 signature: 7b813d4199ab162a9445b273d2d7855c ******/
 		%feature("compactdefaultargs") FlatBezierKnots;
 		%feature("autodoc", "
 Parameters
@@ -1576,8 +1576,8 @@ Returns pointer to statically allocated array representing flat knots for bezier
 ") FlatBezierKnots;
 		static const Standard_Real & FlatBezierKnots(const Standard_Integer Degree);
 
-		/****************** FlatIndex ******************/
-		/**** md5 signature: 04b9aa70b2a79e8eac7af6620d71a81c ****/
+		/****** BSplCLib::FlatIndex ******/
+		/****** md5 signature: 04b9aa70b2a79e8eac7af6620d71a81c ******/
 		%feature("compactdefaultargs") FlatIndex;
 		%feature("autodoc", "
 Parameters
@@ -1597,8 +1597,8 @@ Computes the index of the flats knots sequence corresponding to <index> in the k
 ") FlatIndex;
 		static Standard_Integer FlatIndex(const Standard_Integer Degree, const Standard_Integer Index, const TColStd_Array1OfInteger & Mults, const Standard_Boolean Periodic);
 
-		/****************** FunctionMultiply ******************/
-		/**** md5 signature: d11350ab30e3e1a830d351b4bb9b3c45 ****/
+		/****** BSplCLib::FunctionMultiply ******/
+		/****** md5 signature: d11350ab30e3e1a830d351b4bb9b3c45 ******/
 		%feature("compactdefaultargs") FunctionMultiply;
 		%feature("autodoc", "
 Parameters
@@ -1622,8 +1622,8 @@ This will multiply a given vectorial bspline f(t) defined by its bsplinedegree a
 ") FunctionMultiply;
 		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const Standard_Integer BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const Standard_Integer PolesDimension, Standard_Real &OutValue, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer NewDegree, Standard_Real &OutValue, Standard_Integer &OutValue);
 
-		/****************** FunctionMultiply ******************/
-		/**** md5 signature: b75e7664cfee0abd3a4bb0f96527f5f0 ****/
+		/****** BSplCLib::FunctionMultiply ******/
+		/****** md5 signature: b75e7664cfee0abd3a4bb0f96527f5f0 ******/
 		%feature("compactdefaultargs") FunctionMultiply;
 		%feature("autodoc", "
 Parameters
@@ -1646,8 +1646,8 @@ This will multiply a given vectorial bspline f(t) defined by its bsplinedegree a
 ") FunctionMultiply;
 		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const Standard_Integer BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer NewDegree, TColStd_Array1OfReal & NewPoles, Standard_Integer &OutValue);
 
-		/****************** FunctionMultiply ******************/
-		/**** md5 signature: 304af15d568488c4302864bfd1fe935b ****/
+		/****** BSplCLib::FunctionMultiply ******/
+		/****** md5 signature: 304af15d568488c4302864bfd1fe935b ******/
 		%feature("compactdefaultargs") FunctionMultiply;
 		%feature("autodoc", "
 Parameters
@@ -1670,8 +1670,8 @@ This will multiply a given vectorial bspline f(t) defined by its bsplinedegree a
 ") FunctionMultiply;
 		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const Standard_Integer BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer NewDegree, TColgp_Array1OfPnt2d & NewPoles, Standard_Integer &OutValue);
 
-		/****************** FunctionMultiply ******************/
-		/**** md5 signature: 2d5b01a1995bf4a63b4ac71a00fa384d ****/
+		/****** BSplCLib::FunctionMultiply ******/
+		/****** md5 signature: 2d5b01a1995bf4a63b4ac71a00fa384d ******/
 		%feature("compactdefaultargs") FunctionMultiply;
 		%feature("autodoc", "
 Parameters
@@ -1694,8 +1694,8 @@ This will multiply a given vectorial bspline f(t) defined by its bsplinedegree a
 ") FunctionMultiply;
 		static void FunctionMultiply(const BSplCLib_EvaluatorFunction & Function, const Standard_Integer BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer NewDegree, TColgp_Array1OfPnt & NewPoles, Standard_Integer &OutValue);
 
-		/****************** FunctionReparameterise ******************/
-		/**** md5 signature: 276c4138358cfb806cbc5e4946b652e7 ****/
+		/****** BSplCLib::FunctionReparameterise ******/
+		/****** md5 signature: 276c4138358cfb806cbc5e4946b652e7 ******/
 		%feature("compactdefaultargs") FunctionReparameterise;
 		%feature("autodoc", "
 Parameters
@@ -1719,8 +1719,8 @@ This function will compose a given vectorial bspline f(t) defined by its bspline
 ") FunctionReparameterise;
 		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const Standard_Integer BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const Standard_Integer PolesDimension, Standard_Real &OutValue, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer NewDegree, Standard_Real &OutValue, Standard_Integer &OutValue);
 
-		/****************** FunctionReparameterise ******************/
-		/**** md5 signature: fff0db2cdbcf124496ae30f263735931 ****/
+		/****** BSplCLib::FunctionReparameterise ******/
+		/****** md5 signature: fff0db2cdbcf124496ae30f263735931 ******/
 		%feature("compactdefaultargs") FunctionReparameterise;
 		%feature("autodoc", "
 Parameters
@@ -1743,8 +1743,8 @@ This function will compose a given vectorial bspline f(t) defined by its bspline
 ") FunctionReparameterise;
 		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const Standard_Integer BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer NewDegree, TColStd_Array1OfReal & NewPoles, Standard_Integer &OutValue);
 
-		/****************** FunctionReparameterise ******************/
-		/**** md5 signature: 8482a00dea0cf23f29af3cb5e99182ea ****/
+		/****** BSplCLib::FunctionReparameterise ******/
+		/****** md5 signature: 8482a00dea0cf23f29af3cb5e99182ea ******/
 		%feature("compactdefaultargs") FunctionReparameterise;
 		%feature("autodoc", "
 Parameters
@@ -1767,8 +1767,8 @@ This will compose a given vectorial bspline f(t) defined by its bsplinedegree an
 ") FunctionReparameterise;
 		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const Standard_Integer BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer NewDegree, TColgp_Array1OfPnt & NewPoles, Standard_Integer &OutValue);
 
-		/****************** FunctionReparameterise ******************/
-		/**** md5 signature: 0681500ae08b1b57f6b23f3500cf8eb6 ****/
+		/****** BSplCLib::FunctionReparameterise ******/
+		/****** md5 signature: 0681500ae08b1b57f6b23f3500cf8eb6 ******/
 		%feature("compactdefaultargs") FunctionReparameterise;
 		%feature("autodoc", "
 Parameters
@@ -1791,8 +1791,8 @@ This will compose a given vectorial bspline f(t) defined by its bsplinedegree an
 ") FunctionReparameterise;
 		static void FunctionReparameterise(const BSplCLib_EvaluatorFunction & Function, const Standard_Integer BSplineDegree, const TColStd_Array1OfReal & BSplineFlatKnots, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer NewDegree, TColgp_Array1OfPnt2d & NewPoles, Standard_Integer &OutValue);
 
-		/****************** GetPole ******************/
-		/**** md5 signature: 801683e94bd4376a7e09453b2ffdb655 ****/
+		/****** BSplCLib::GetPole ******/
+		/****** md5 signature: 801683e94bd4376a7e09453b2ffdb655 ******/
 		%feature("compactdefaultargs") GetPole;
 		%feature("autodoc", "
 Parameters
@@ -1814,8 +1814,8 @@ Copy the pole at position <index> in the boor scheme of dimension <dimension> to
 ") GetPole;
 		static void GetPole(const Standard_Integer Index, const Standard_Integer Length, const Standard_Integer Depth, const Standard_Integer Dimension, Standard_Real &OutValue, Standard_Integer &OutValue, TColStd_Array1OfReal & Pole);
 
-		/****************** Hunt ******************/
-		/**** md5 signature: 4314b3314e47859975535fbccf40e912 ****/
+		/****** BSplCLib::Hunt ******/
+		/****** md5 signature: 4314b3314e47859975535fbccf40e912 ******/
 		%feature("compactdefaultargs") Hunt;
 		%feature("autodoc", "
 Parameters
@@ -1833,8 +1833,8 @@ This routine searches the position of the real value thex in the monotonically i
 ") Hunt;
 		static void Hunt(const TColStd_Array1OfReal & theArray, const Standard_Real theX, Standard_Integer &OutValue);
 
-		/****************** IncreaseDegree ******************/
-		/**** md5 signature: 3cdd7098cdf1c731c23a659a3dafafad ****/
+		/****** BSplCLib::IncreaseDegree ******/
+		/****** md5 signature: 3cdd7098cdf1c731c23a659a3dafafad ******/
 		%feature("compactdefaultargs") IncreaseDegree;
 		%feature("autodoc", "
 Parameters
@@ -1860,8 +1860,8 @@ No available documentation.
 ") IncreaseDegree;
 		static void IncreaseDegree(const Standard_Integer Degree, const Standard_Integer NewDegree, const Standard_Boolean Periodic, const Standard_Integer Dimension, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColStd_Array1OfReal & NewPoles, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults);
 
-		/****************** IncreaseDegree ******************/
-		/**** md5 signature: 9e287ffd60ca2b64f0c80bf8e906f987 ****/
+		/****** BSplCLib::IncreaseDegree ******/
+		/****** md5 signature: 9e287ffd60ca2b64f0c80bf8e906f987 ******/
 		%feature("compactdefaultargs") IncreaseDegree;
 		%feature("autodoc", "
 Parameters
@@ -1888,8 +1888,8 @@ No available documentation.
 ") IncreaseDegree;
 		static void IncreaseDegree(const Standard_Integer Degree, const Standard_Integer NewDegree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults);
 
-		/****************** IncreaseDegree ******************/
-		/**** md5 signature: de3d7e2f464ecd91afcc95a62f774187 ****/
+		/****** BSplCLib::IncreaseDegree ******/
+		/****** md5 signature: de3d7e2f464ecd91afcc95a62f774187 ******/
 		%feature("compactdefaultargs") IncreaseDegree;
 		%feature("autodoc", "
 Parameters
@@ -1916,8 +1916,8 @@ No available documentation.
 ") IncreaseDegree;
 		static void IncreaseDegree(const Standard_Integer Degree, const Standard_Integer NewDegree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults);
 
-		/****************** IncreaseDegree ******************/
-		/**** md5 signature: 102e348aaf60f52be4a7ee5086788702 ****/
+		/****** BSplCLib::IncreaseDegree ******/
+		/****** md5 signature: 102e348aaf60f52be4a7ee5086788702 ******/
 		%feature("compactdefaultargs") IncreaseDegree;
 		%feature("autodoc", "
 Parameters
@@ -1938,8 +1938,8 @@ No available documentation.
 ") IncreaseDegree;
 		static void IncreaseDegree(const Standard_Integer NewDegree, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
-		/****************** IncreaseDegree ******************/
-		/**** md5 signature: 55f08fe0b94875d193f674df9e8d1f57 ****/
+		/****** BSplCLib::IncreaseDegree ******/
+		/****** md5 signature: 55f08fe0b94875d193f674df9e8d1f57 ******/
 		%feature("compactdefaultargs") IncreaseDegree;
 		%feature("autodoc", "
 Parameters
@@ -1960,8 +1960,8 @@ Increase the degree of a bspline (or bezier) curve of dimension thedimension for
 ") IncreaseDegree;
 		static void IncreaseDegree(const Standard_Integer theNewDegree, const TColgp_Array1OfPnt2d & thePoles, const TColStd_Array1OfReal * theWeights, TColgp_Array1OfPnt2d & theNewPoles, TColStd_Array1OfReal * theNewWeights);
 
-		/****************** IncreaseDegreeCountKnots ******************/
-		/**** md5 signature: 2806348fce0f853dcd1a4c2e39086690 ****/
+		/****** BSplCLib::IncreaseDegreeCountKnots ******/
+		/****** md5 signature: 2806348fce0f853dcd1a4c2e39086690 ******/
 		%feature("compactdefaultargs") IncreaseDegreeCountKnots;
 		%feature("autodoc", "
 Parameters
@@ -1981,8 +1981,8 @@ Returns the number of knots of a curve with multiplicities <mults> after elevati
 ") IncreaseDegreeCountKnots;
 		static Standard_Integer IncreaseDegreeCountKnots(const Standard_Integer Degree, const Standard_Integer NewDegree, const Standard_Boolean Periodic, const TColStd_Array1OfInteger & Mults);
 
-		/****************** InsertKnot ******************/
-		/**** md5 signature: b308d7bc26fadeb0415b09f7df66deed ****/
+		/****** BSplCLib::InsertKnot ******/
+		/****** md5 signature: b308d7bc26fadeb0415b09f7df66deed ******/
 		%feature("compactdefaultargs") InsertKnot;
 		%feature("autodoc", "
 Parameters
@@ -2009,8 +2009,8 @@ No available documentation.
 ") InsertKnot;
 		static void InsertKnot(const Standard_Integer UIndex, const Standard_Real U, const Standard_Integer UMult, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
-		/****************** InsertKnot ******************/
-		/**** md5 signature: b3ed0ff475a71d3360f7c4c61b840029 ****/
+		/****** BSplCLib::InsertKnot ******/
+		/****** md5 signature: b3ed0ff475a71d3360f7c4c61b840029 ******/
 		%feature("compactdefaultargs") InsertKnot;
 		%feature("autodoc", "
 Parameters
@@ -2037,8 +2037,8 @@ Insert a new knot u of multiplicity umult in the knot sequence. //! the location
 ") InsertKnot;
 		static void InsertKnot(const Standard_Integer UIndex, const Standard_Real U, const Standard_Integer UMult, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
-		/****************** InsertKnots ******************/
-		/**** md5 signature: 013fe81e359b48ad63b87e4971860cb9 ****/
+		/****** BSplCLib::InsertKnots ******/
+		/****** md5 signature: 013fe81e359b48ad63b87e4971860cb9 ******/
 		%feature("compactdefaultargs") InsertKnots;
 		%feature("autodoc", "
 Parameters
@@ -2067,8 +2067,8 @@ No available documentation.
 ") InsertKnots;
 		static void InsertKnots(const Standard_Integer Degree, const Standard_Boolean Periodic, const Standard_Integer Dimension, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, TColStd_Array1OfReal & NewPoles, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const Standard_Real Epsilon, const Standard_Boolean Add = Standard_True);
 
-		/****************** InsertKnots ******************/
-		/**** md5 signature: 44e9b7452e759b97d179e5c2523ae6e6 ****/
+		/****** BSplCLib::InsertKnots ******/
+		/****** md5 signature: 44e9b7452e759b97d179e5c2523ae6e6 ******/
 		%feature("compactdefaultargs") InsertKnots;
 		%feature("autodoc", "
 Parameters
@@ -2098,8 +2098,8 @@ No available documentation.
 ") InsertKnots;
 		static void InsertKnots(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const Standard_Real Epsilon, const Standard_Boolean Add = Standard_True);
 
-		/****************** InsertKnots ******************/
-		/**** md5 signature: be67416d5cb4ecf2afefb17210b615c4 ****/
+		/****** BSplCLib::InsertKnots ******/
+		/****** md5 signature: be67416d5cb4ecf2afefb17210b615c4 ******/
 		%feature("compactdefaultargs") InsertKnots;
 		%feature("autodoc", "
 Parameters
@@ -2129,8 +2129,8 @@ Insert a sequence of knots <addknots> with multiplicities <addmults>. <addknots>
 ") InsertKnots;
 		static void InsertKnots(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const Standard_Real Epsilon, const Standard_Boolean Add = Standard_True);
 
-		/****************** Interpolate ******************/
-		/**** md5 signature: e2fa20a66c129381e33f3cb4e6ce9d21 ****/
+		/****** BSplCLib::Interpolate ******/
+		/****** md5 signature: e2fa20a66c129381e33f3cb4e6ce9d21 ******/
 		%feature("compactdefaultargs") Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -2151,8 +2151,8 @@ Performs the interpolation of the data given in the poles array according to the
 ") Interpolate;
 		static void Interpolate(const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, TColgp_Array1OfPnt & Poles, Standard_Integer &OutValue);
 
-		/****************** Interpolate ******************/
-		/**** md5 signature: fd5aeac99513f881ae37161394ea9685 ****/
+		/****** BSplCLib::Interpolate ******/
+		/****** md5 signature: fd5aeac99513f881ae37161394ea9685 ******/
 		%feature("compactdefaultargs") Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -2173,8 +2173,8 @@ Performs the interpolation of the data given in the poles array according to the
 ") Interpolate;
 		static void Interpolate(const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, TColgp_Array1OfPnt2d & Poles, Standard_Integer &OutValue);
 
-		/****************** Interpolate ******************/
-		/**** md5 signature: 2212219c7508d74418481956ee1ddf0e ****/
+		/****** BSplCLib::Interpolate ******/
+		/****** md5 signature: 2212219c7508d74418481956ee1ddf0e ******/
 		%feature("compactdefaultargs") Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -2196,8 +2196,8 @@ Performs the interpolation of the data given in the poles array according to the
 ") Interpolate;
 		static void Interpolate(const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weights, Standard_Integer &OutValue);
 
-		/****************** Interpolate ******************/
-		/**** md5 signature: 0cdd4d771c634dfeec3e69ce9529d617 ****/
+		/****** BSplCLib::Interpolate ******/
+		/****** md5 signature: 0cdd4d771c634dfeec3e69ce9529d617 ******/
 		%feature("compactdefaultargs") Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -2219,8 +2219,8 @@ Performs the interpolation of the data given in the poles array according to the
 ") Interpolate;
 		static void Interpolate(const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, TColgp_Array1OfPnt2d & Poles, TColStd_Array1OfReal & Weights, Standard_Integer &OutValue);
 
-		/****************** Interpolate ******************/
-		/**** md5 signature: b5cf60eb426c89a7bf0dd27c83c89e23 ****/
+		/****** BSplCLib::Interpolate ******/
+		/****** md5 signature: b5cf60eb426c89a7bf0dd27c83c89e23 ******/
 		%feature("compactdefaultargs") Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -2242,8 +2242,8 @@ Performs the interpolation of the data given in the poles array according to the
 ") Interpolate;
 		static void Interpolate(const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, const Standard_Integer ArrayDimension, Standard_Real &OutValue, Standard_Integer &OutValue);
 
-		/****************** Interpolate ******************/
-		/**** md5 signature: 4ae05d20a7d577aff2db78e9c82a018c ****/
+		/****** BSplCLib::Interpolate ******/
+		/****** md5 signature: 4ae05d20a7d577aff2db78e9c82a018c ******/
 		%feature("compactdefaultargs") Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -2266,8 +2266,8 @@ No available documentation.
 ") Interpolate;
 		static void Interpolate(const Standard_Integer Degree, const TColStd_Array1OfReal & FlatKnots, const TColStd_Array1OfReal & Parameters, const TColStd_Array1OfInteger & ContactOrderArray, const Standard_Integer ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Integer &OutValue);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 6005dd7b642eb153ae7f9293cf41ffb5 ****/
+		/****** BSplCLib::Intervals ******/
+		/****** md5 signature: 6005dd7b642eb153ae7f9293cf41ffb5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -2292,8 +2292,8 @@ Splits the given range to bspline intervals of given continuity @param[in] thekn
 ") Intervals;
 		static Standard_Integer Intervals(const TColStd_Array1OfReal & theKnots, const TColStd_Array1OfInteger & theMults, Standard_Integer theDegree, Standard_Boolean isPeriodic, Standard_Integer theContinuity, Standard_Real theFirst, Standard_Real theLast, Standard_Real theTolerance, TColStd_Array1OfReal * theIntervals);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 5ee1bb4d64e0a78acc3cb994f1afcefa ****/
+		/****** BSplCLib::IsRational ******/
+		/****** md5 signature: 5ee1bb4d64e0a78acc3cb994f1afcefa ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "
 Parameters
@@ -2313,8 +2313,8 @@ Returns false if all the weights of the array <weights> between i1 an i2 are ide
 ") IsRational;
 		static Standard_Boolean IsRational(const TColStd_Array1OfReal & Weights, const Standard_Integer I1, const Standard_Integer I2, const Standard_Real Epsilon = 0.0);
 
-		/****************** KnotAnalysis ******************/
-		/**** md5 signature: a6e80a652c2aafa8024e7fdc8544d77c ****/
+		/****** BSplCLib::KnotAnalysis ******/
+		/****** md5 signature: a6e80a652c2aafa8024e7fdc8544d77c ******/
 		%feature("compactdefaultargs") KnotAnalysis;
 		%feature("autodoc", "
 Parameters
@@ -2335,8 +2335,8 @@ Analyzes the array of knots. returns the form and the maximum knot multiplicity.
 ") KnotAnalysis;
 		static void KnotAnalysis(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & CKnots, const TColStd_Array1OfInteger & CMults, GeomAbs_BSplKnotDistribution & KnotForm, Standard_Integer &OutValue);
 
-		/****************** KnotForm ******************/
-		/**** md5 signature: 0097f63f98647952ea3a1e8664501689 ****/
+		/****** BSplCLib::KnotForm ******/
+		/****** md5 signature: 0097f63f98647952ea3a1e8664501689 ******/
 		%feature("compactdefaultargs") KnotForm;
 		%feature("autodoc", "
 Parameters
@@ -2355,8 +2355,8 @@ Analyses if the knots distribution is 'uniform' or 'nonuniform' between the knot
 ") KnotForm;
 		static BSplCLib_KnotDistribution KnotForm(const TColStd_Array1OfReal & Knots, const Standard_Integer FromK1, const Standard_Integer ToK2);
 
-		/****************** KnotSequence ******************/
-		/**** md5 signature: afb0a094a5f9cb7ee5196da7628bb20b ****/
+		/****** BSplCLib::KnotSequence ******/
+		/****** md5 signature: afb0a094a5f9cb7ee5196da7628bb20b ******/
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "
 Parameters
@@ -2376,8 +2376,8 @@ No available documentation.
 ") KnotSequence;
 		static void KnotSequence(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColStd_Array1OfReal & KnotSeq, const Standard_Boolean Periodic = Standard_False);
 
-		/****************** KnotSequence ******************/
-		/**** md5 signature: 935f3e64125f13f8b157c325e706c6c5 ****/
+		/****** BSplCLib::KnotSequence ******/
+		/****** md5 signature: 935f3e64125f13f8b157c325e706c6c5 ******/
 		%feature("compactdefaultargs") KnotSequence;
 		%feature("autodoc", "
 Parameters
@@ -2398,8 +2398,8 @@ Computes the sequence of knots knotseq with repetition of the knots of multiplic
 ") KnotSequence;
 		static void KnotSequence(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer Degree, const Standard_Boolean Periodic, TColStd_Array1OfReal & KnotSeq);
 
-		/****************** KnotSequenceLength ******************/
-		/**** md5 signature: 0b0bae3397b7a20bdbf0907b980aa22a ****/
+		/****** BSplCLib::KnotSequenceLength ******/
+		/****** md5 signature: 0b0bae3397b7a20bdbf0907b980aa22a ******/
 		%feature("compactdefaultargs") KnotSequenceLength;
 		%feature("autodoc", "
 Parameters
@@ -2418,8 +2418,8 @@ Returns the length of the sequence of knots with repetition. //! periodic: //! s
 ") KnotSequenceLength;
 		static Standard_Integer KnotSequenceLength(const TColStd_Array1OfInteger & Mults, const Standard_Integer Degree, const Standard_Boolean Periodic);
 
-		/****************** Knots ******************/
-		/**** md5 signature: 70efd22fb93da2362599b5a577c6459d ****/
+		/****** BSplCLib::Knots ******/
+		/****** md5 signature: 70efd22fb93da2362599b5a577c6459d ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -2439,8 +2439,8 @@ Computes the sequence of knots knots without repetition of the knots of multipli
 ") Knots;
 		static void Knots(const TColStd_Array1OfReal & KnotSeq, TColStd_Array1OfReal & Knots, TColStd_Array1OfInteger & Mults, const Standard_Boolean Periodic = Standard_False);
 
-		/****************** KnotsLength ******************/
-		/**** md5 signature: f94187e02e0f1196d3a33404dd4beb1c ****/
+		/****** BSplCLib::KnotsLength ******/
+		/****** md5 signature: f94187e02e0f1196d3a33404dd4beb1c ******/
 		%feature("compactdefaultargs") KnotsLength;
 		%feature("autodoc", "
 Parameters
@@ -2458,8 +2458,8 @@ Returns the length of the sequence of knots (and mults) without repetition.
 ") KnotsLength;
 		static Standard_Integer KnotsLength(const TColStd_Array1OfReal & KnotSeq, const Standard_Boolean Periodic = Standard_False);
 
-		/****************** LastUKnotIndex ******************/
-		/**** md5 signature: 91f9e1c94b860add3183ecd59eb8096a ****/
+		/****** BSplCLib::LastUKnotIndex ******/
+		/****** md5 signature: 91f9e1c94b860add3183ecd59eb8096a ******/
 		%feature("compactdefaultargs") LastUKnotIndex;
 		%feature("autodoc", "
 Parameters
@@ -2477,8 +2477,8 @@ Computes the index of the knots value which gives the end point of the curve.
 ") LastUKnotIndex;
 		static Standard_Integer LastUKnotIndex(const Standard_Integer Degree, const TColStd_Array1OfInteger & Mults);
 
-		/****************** LocateParameter ******************/
-		/**** md5 signature: 24762308cb330e46f1844ce565eeb2b9 ****/
+		/****** BSplCLib::LocateParameter ******/
+		/****** md5 signature: 24762308cb330e46f1844ce565eeb2b9 ******/
 		%feature("compactdefaultargs") LocateParameter;
 		%feature("autodoc", "
 Parameters
@@ -2502,8 +2502,8 @@ Locates the parametric value u in the knots sequence between the knot k1 and the
 ") LocateParameter;
 		static void LocateParameter(const Standard_Integer Degree, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Real U, const Standard_Boolean IsPeriodic, const Standard_Integer FromK1, const Standard_Integer ToK2, Standard_Integer &OutValue, Standard_Real &OutValue);
 
-		/****************** LocateParameter ******************/
-		/**** md5 signature: 84a2a9eb0a9f97bd685828ae0b21bc6e ****/
+		/****** BSplCLib::LocateParameter ******/
+		/****** md5 signature: 84a2a9eb0a9f97bd685828ae0b21bc6e ******/
 		%feature("compactdefaultargs") LocateParameter;
 		%feature("autodoc", "
 Parameters
@@ -2526,8 +2526,8 @@ Locates the parametric value u in the knots sequence between the knot k1 and the
 ") LocateParameter;
 		static void LocateParameter(const Standard_Integer Degree, const TColStd_Array1OfReal & Knots, const Standard_Real U, const Standard_Boolean IsPeriodic, const Standard_Integer FromK1, const Standard_Integer ToK2, Standard_Integer &OutValue, Standard_Real &OutValue);
 
-		/****************** LocateParameter ******************/
-		/**** md5 signature: 7a22649239d0309e62561b711af4bd66 ****/
+		/****** BSplCLib::LocateParameter ******/
+		/****** md5 signature: 7a22649239d0309e62561b711af4bd66 ******/
 		%feature("compactdefaultargs") LocateParameter;
 		%feature("autodoc", "
 Parameters
@@ -2549,8 +2549,8 @@ No available documentation.
 ") LocateParameter;
 		static void LocateParameter(const Standard_Integer Degree, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger * Mults, const Standard_Real U, const Standard_Boolean Periodic, Standard_Integer &OutValue, Standard_Real &OutValue);
 
-		/****************** MaxDegree ******************/
-		/**** md5 signature: 985314a0ed62b597a9bdf0f555b97bed ****/
+		/****** BSplCLib::MaxDegree ******/
+		/****** md5 signature: 985314a0ed62b597a9bdf0f555b97bed ******/
 		%feature("compactdefaultargs") MaxDegree;
 		%feature("autodoc", "Return
 -------
@@ -2562,8 +2562,8 @@ Returns the degree maxima for a bsplinecurve.
 ") MaxDegree;
 		static Standard_Integer MaxDegree();
 
-		/****************** MaxKnotMult ******************/
-		/**** md5 signature: ac65dfe55c0073e75792f284e56cd7aa ****/
+		/****** BSplCLib::MaxKnotMult ******/
+		/****** md5 signature: ac65dfe55c0073e75792f284e56cd7aa ******/
 		%feature("compactdefaultargs") MaxKnotMult;
 		%feature("autodoc", "
 Parameters
@@ -2582,8 +2582,8 @@ Finds the greatest multiplicity in a set of knots between k1 and k2. mults is th
 ") MaxKnotMult;
 		static Standard_Integer MaxKnotMult(const TColStd_Array1OfInteger & Mults, const Standard_Integer K1, const Standard_Integer K2);
 
-		/****************** MergeBSplineKnots ******************/
-		/**** md5 signature: effe499663badb4d232069dd652236c2 ****/
+		/****** BSplCLib::MergeBSplineKnots ******/
+		/****** md5 signature: effe499663badb4d232069dd652236c2 ******/
 		%feature("compactdefaultargs") MergeBSplineKnots;
 		%feature("autodoc", "
 Parameters
@@ -2610,8 +2610,8 @@ Merges two knot vector by setting the starting and ending values to startvalue a
 ") MergeBSplineKnots;
 		static void MergeBSplineKnots(const Standard_Real Tolerance, const Standard_Real StartValue, const Standard_Real EndValue, const Standard_Integer Degree1, const TColStd_Array1OfReal & Knots1, const TColStd_Array1OfInteger & Mults1, const Standard_Integer Degree2, const TColStd_Array1OfReal & Knots2, const TColStd_Array1OfInteger & Mults2, Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfReal> & NewKnots, opencascade::handle<TColStd_HArray1OfInteger> & NewMults);
 
-		/****************** MinKnotMult ******************/
-		/**** md5 signature: 1a548fdbf5671589224d148d3a3a6b0d ****/
+		/****** BSplCLib::MinKnotMult ******/
+		/****** md5 signature: 1a548fdbf5671589224d148d3a3a6b0d ******/
 		%feature("compactdefaultargs") MinKnotMult;
 		%feature("autodoc", "
 Parameters
@@ -2630,8 +2630,8 @@ Finds the lowest multiplicity in a set of knots between k1 and k2. mults is the 
 ") MinKnotMult;
 		static Standard_Integer MinKnotMult(const TColStd_Array1OfInteger & Mults, const Standard_Integer K1, const Standard_Integer K2);
 
-		/****************** MovePoint ******************/
-		/**** md5 signature: 258c43adb74db6c2cd76d84b353a498f ****/
+		/****** BSplCLib::MovePoint ******/
+		/****** md5 signature: 258c43adb74db6c2cd76d84b353a498f ******/
 		%feature("compactdefaultargs") MovePoint;
 		%feature("autodoc", "
 Parameters
@@ -2657,8 +2657,8 @@ Find the new poles which allows an old point (with a given u as parameter) to re
 ") MovePoint;
 		static void MovePoint(const Standard_Real U, const gp_Vec2d & Displ, const Standard_Integer Index1, const Standard_Integer Index2, const Standard_Integer Degree, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, Standard_Integer &OutValue, Standard_Integer &OutValue, TColgp_Array1OfPnt2d & NewPoles);
 
-		/****************** MovePoint ******************/
-		/**** md5 signature: c86875bcabde81f6d6d9eb1c7e44e5de ****/
+		/****** BSplCLib::MovePoint ******/
+		/****** md5 signature: c86875bcabde81f6d6d9eb1c7e44e5de ******/
 		%feature("compactdefaultargs") MovePoint;
 		%feature("autodoc", "
 Parameters
@@ -2684,8 +2684,8 @@ Find the new poles which allows an old point (with a given u as parameter) to re
 ") MovePoint;
 		static void MovePoint(const Standard_Real U, const gp_Vec & Displ, const Standard_Integer Index1, const Standard_Integer Index2, const Standard_Integer Degree, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, Standard_Integer &OutValue, Standard_Integer &OutValue, TColgp_Array1OfPnt & NewPoles);
 
-		/****************** MovePointAndTangent ******************/
-		/**** md5 signature: f3528b941ebae064eb869dac3838fd8b ****/
+		/****** BSplCLib::MovePointAndTangent ******/
+		/****** md5 signature: f3528b941ebae064eb869dac3838fd8b ******/
 		%feature("compactdefaultargs") MovePointAndTangent;
 		%feature("autodoc", "
 Parameters
@@ -2713,8 +2713,8 @@ This is the dimension free version of the utility u is the parameter must be wit
 ") MovePointAndTangent;
 		static void MovePointAndTangent(const Standard_Real U, const Standard_Integer ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real Tolerance, const Standard_Integer Degree, const Standard_Integer StartingCondition, const Standard_Integer EndingCondition, Standard_Real &OutValue, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, Standard_Real &OutValue, Standard_Integer &OutValue);
 
-		/****************** MovePointAndTangent ******************/
-		/**** md5 signature: 84d0d45564e777fb1d986a7bc7085bd3 ****/
+		/****** BSplCLib::MovePointAndTangent ******/
+		/****** md5 signature: 84d0d45564e777fb1d986a7bc7085bd3 ******/
 		%feature("compactdefaultargs") MovePointAndTangent;
 		%feature("autodoc", "
 Parameters
@@ -2741,8 +2741,8 @@ This is the dimension free version of the utility u is the parameter must be wit
 ") MovePointAndTangent;
 		static void MovePointAndTangent(const Standard_Real U, const gp_Vec & Delta, const gp_Vec & DeltaDerivative, const Standard_Real Tolerance, const Standard_Integer Degree, const Standard_Integer StartingCondition, const Standard_Integer EndingCondition, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, TColgp_Array1OfPnt & NewPoles, Standard_Integer &OutValue);
 
-		/****************** MovePointAndTangent ******************/
-		/**** md5 signature: 4281391111a23f8a2fbca803f5519e35 ****/
+		/****** BSplCLib::MovePointAndTangent ******/
+		/****** md5 signature: 4281391111a23f8a2fbca803f5519e35 ******/
 		%feature("compactdefaultargs") MovePointAndTangent;
 		%feature("autodoc", "
 Parameters
@@ -2769,8 +2769,8 @@ This is the dimension free version of the utility u is the parameter must be wit
 ") MovePointAndTangent;
 		static void MovePointAndTangent(const Standard_Real U, const gp_Vec2d & Delta, const gp_Vec2d & DeltaDerivative, const Standard_Real Tolerance, const Standard_Integer Degree, const Standard_Integer StartingCondition, const Standard_Integer EndingCondition, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, TColgp_Array1OfPnt2d & NewPoles, Standard_Integer &OutValue);
 
-		/****************** MultForm ******************/
-		/**** md5 signature: 85cc5e3d06d09a736fc529142891b46b ****/
+		/****** BSplCLib::MultForm ******/
+		/****** md5 signature: 85cc5e3d06d09a736fc529142891b46b ******/
 		%feature("compactdefaultargs") MultForm;
 		%feature("autodoc", "
 Parameters
@@ -2789,8 +2789,8 @@ Analyses the distribution of multiplicities between the knot fromk1 and the knot
 ") MultForm;
 		static BSplCLib_MultDistribution MultForm(const TColStd_Array1OfInteger & Mults, const Standard_Integer FromK1, const Standard_Integer ToK2);
 
-		/****************** NbPoles ******************/
-		/**** md5 signature: c6d4161c26923bab1e3ce4d84d387cfe ****/
+		/****** BSplCLib::NbPoles ******/
+		/****** md5 signature: c6d4161c26923bab1e3ce4d84d387cfe ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "
 Parameters
@@ -2809,8 +2809,8 @@ Returns the number of poles of the curve. returns 0 if one of the multiplicities
 ") NbPoles;
 		static Standard_Integer NbPoles(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfInteger & Mults);
 
-		/****************** NoMults ******************/
-		/**** md5 signature: 25ebd1add10620b7395bfd564aafb5c4 ****/
+		/****** BSplCLib::NoMults ******/
+		/****** md5 signature: 25ebd1add10620b7395bfd564aafb5c4 ******/
 		%feature("compactdefaultargs") NoMults;
 		%feature("autodoc", "Return
 -------
@@ -2822,8 +2822,8 @@ Used as argument for a flatknots evaluation.
 ") NoMults;
 		static TColStd_Array1OfInteger * NoMults();
 
-		/****************** NoWeights ******************/
-		/**** md5 signature: bcccc7afe5a4725a5649ba0988d8696b ****/
+		/****** BSplCLib::NoWeights ******/
+		/****** md5 signature: bcccc7afe5a4725a5649ba0988d8696b ******/
 		%feature("compactdefaultargs") NoWeights;
 		%feature("autodoc", "Return
 -------
@@ -2835,8 +2835,8 @@ Used as argument for a non rational curve.
 ") NoWeights;
 		static TColStd_Array1OfReal * NoWeights();
 
-		/****************** PoleIndex ******************/
-		/**** md5 signature: 1ac0cbf47e8a95057f9b7585fb439d64 ****/
+		/****** BSplCLib::PoleIndex ******/
+		/****** md5 signature: 1ac0cbf47e8a95057f9b7585fb439d64 ******/
 		%feature("compactdefaultargs") PoleIndex;
 		%feature("autodoc", "
 Parameters
@@ -2856,8 +2856,8 @@ Return the index of the first pole to use on the span mults(index) - mults(index
 ") PoleIndex;
 		static Standard_Integer PoleIndex(const Standard_Integer Degree, const Standard_Integer Index, const Standard_Boolean Periodic, const TColStd_Array1OfInteger & Mults);
 
-		/****************** PolesCoefficients ******************/
-		/**** md5 signature: 511519c534e22ba40280528d5d1ef87e ****/
+		/****** BSplCLib::PolesCoefficients ******/
+		/****** md5 signature: 511519c534e22ba40280528d5d1ef87e ******/
 		%feature("compactdefaultargs") PolesCoefficients;
 		%feature("autodoc", "
 Parameters
@@ -2875,8 +2875,8 @@ No available documentation.
 ") PolesCoefficients;
 		static void PolesCoefficients(const TColgp_Array1OfPnt2d & Poles, TColgp_Array1OfPnt2d & CachePoles);
 
-		/****************** PolesCoefficients ******************/
-		/**** md5 signature: 405a5ce1920546314bea6ba5a6a3f98b ****/
+		/****** BSplCLib::PolesCoefficients ******/
+		/****** md5 signature: 405a5ce1920546314bea6ba5a6a3f98b ******/
 		%feature("compactdefaultargs") PolesCoefficients;
 		%feature("autodoc", "
 Parameters
@@ -2896,8 +2896,8 @@ No available documentation.
 ") PolesCoefficients;
 		static void PolesCoefficients(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt2d & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
-		/****************** PolesCoefficients ******************/
-		/**** md5 signature: ee906c090873ca3443d5f58dda312bc9 ****/
+		/****** BSplCLib::PolesCoefficients ******/
+		/****** md5 signature: ee906c090873ca3443d5f58dda312bc9 ******/
 		%feature("compactdefaultargs") PolesCoefficients;
 		%feature("autodoc", "
 Parameters
@@ -2915,8 +2915,8 @@ No available documentation.
 ") PolesCoefficients;
 		static void PolesCoefficients(const TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt & CachePoles);
 
-		/****************** PolesCoefficients ******************/
-		/**** md5 signature: eb7334dc15bb52330ce561fc1f10d66d ****/
+		/****** BSplCLib::PolesCoefficients ******/
+		/****** md5 signature: eb7334dc15bb52330ce561fc1f10d66d ******/
 		%feature("compactdefaultargs") PolesCoefficients;
 		%feature("autodoc", "
 Parameters
@@ -2936,8 +2936,8 @@ Encapsulation of buildcache to perform the evaluation of the taylor expansion fo
 ") PolesCoefficients;
 		static void PolesCoefficients(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColgp_Array1OfPnt & CachePoles, TColStd_Array1OfReal * CacheWeights);
 
-		/****************** PrepareInsertKnots ******************/
-		/**** md5 signature: a44fd015e2f0b30470efd81b373c7ea8 ****/
+		/****** BSplCLib::PrepareInsertKnots ******/
+		/****** md5 signature: a44fd015e2f0b30470efd81b373c7ea8 ******/
 		%feature("compactdefaultargs") PrepareInsertKnots;
 		%feature("autodoc", "
 Parameters
@@ -2962,8 +2962,8 @@ Returns in <nbpoles, nbknots> the new number of poles and knots if the sequence 
 ") PrepareInsertKnots;
 		static Standard_Boolean PrepareInsertKnots(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & AddKnots, const TColStd_Array1OfInteger * AddMults, Standard_Integer &OutValue, Standard_Integer &OutValue, const Standard_Real Epsilon, const Standard_Boolean Add = Standard_True);
 
-		/****************** PrepareTrimming ******************/
-		/**** md5 signature: 86f0fb4e064014ba01b07670c1d98634 ****/
+		/****** BSplCLib::PrepareTrimming ******/
+		/****** md5 signature: 86f0fb4e064014ba01b07670c1d98634 ******/
 		%feature("compactdefaultargs") PrepareTrimming;
 		%feature("autodoc", "
 Parameters
@@ -2986,8 +2986,8 @@ Set in <nbknots> and <nbpoles> the number of knots and poles of the curve result
 ") PrepareTrimming;
 		static void PrepareTrimming(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Real U1, const Standard_Real U2, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** PrepareUnperiodize ******************/
-		/**** md5 signature: 836730920827f9f48a170c9a6982c170 ****/
+		/****** BSplCLib::PrepareUnperiodize ******/
+		/****** md5 signature: 836730920827f9f48a170c9a6982c170 ******/
 		%feature("compactdefaultargs") PrepareUnperiodize;
 		%feature("autodoc", "
 Parameters
@@ -3006,8 +3006,8 @@ Set in <nbknots> and <nbpolestoadd> the number of knots and poles of the notperi
 ") PrepareUnperiodize;
 		static void PrepareUnperiodize(const Standard_Integer Degree, const TColStd_Array1OfInteger & Mults, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** RaiseMultiplicity ******************/
-		/**** md5 signature: 1946ad36bcb97331dfe37ade25ab9172 ****/
+		/****** BSplCLib::RaiseMultiplicity ******/
+		/****** md5 signature: 1946ad36bcb97331dfe37ade25ab9172 ******/
 		%feature("compactdefaultargs") RaiseMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -3033,8 +3033,8 @@ No available documentation.
 ") RaiseMultiplicity;
 		static void RaiseMultiplicity(const Standard_Integer KnotIndex, const Standard_Integer Mult, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
-		/****************** RaiseMultiplicity ******************/
-		/**** md5 signature: 7b68620f8f079008bff0083627e99357 ****/
+		/****** BSplCLib::RaiseMultiplicity ******/
+		/****** md5 signature: 7b68620f8f079008bff0083627e99357 ******/
 		%feature("compactdefaultargs") RaiseMultiplicity;
 		%feature("autodoc", "
 Parameters
@@ -3060,8 +3060,8 @@ Raise the multiplicity of knot to <umult>. //! the new control points are return
 ") RaiseMultiplicity;
 		static void RaiseMultiplicity(const Standard_Integer KnotIndex, const Standard_Integer Mult, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
-		/****************** RemoveKnot ******************/
-		/**** md5 signature: f160cdfd0c6e8cbbd50655f8a175def1 ****/
+		/****** BSplCLib::RemoveKnot ******/
+		/****** md5 signature: f160cdfd0c6e8cbbd50655f8a175def1 ******/
 		%feature("compactdefaultargs") RemoveKnot;
 		%feature("autodoc", "
 Parameters
@@ -3089,8 +3089,8 @@ No available documentation.
 ") RemoveKnot;
 		static Standard_Boolean RemoveKnot(const Standard_Integer Index, const Standard_Integer Mult, const Standard_Integer Degree, const Standard_Boolean Periodic, const Standard_Integer Dimension, const TColStd_Array1OfReal & Poles, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColStd_Array1OfReal & NewPoles, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const Standard_Real Tolerance);
 
-		/****************** RemoveKnot ******************/
-		/**** md5 signature: 34bd46c8df0be561677c850a078d12f8 ****/
+		/****** BSplCLib::RemoveKnot ******/
+		/****** md5 signature: 34bd46c8df0be561677c850a078d12f8 ******/
 		%feature("compactdefaultargs") RemoveKnot;
 		%feature("autodoc", "
 Parameters
@@ -3119,8 +3119,8 @@ No available documentation.
 ") RemoveKnot;
 		static Standard_Boolean RemoveKnot(const Standard_Integer Index, const Standard_Integer Mult, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const Standard_Real Tolerance);
 
-		/****************** RemoveKnot ******************/
-		/**** md5 signature: e71867ea0e8715093b5a4551f8fb6194 ****/
+		/****** BSplCLib::RemoveKnot ******/
+		/****** md5 signature: e71867ea0e8715093b5a4551f8fb6194 ******/
 		%feature("compactdefaultargs") RemoveKnot;
 		%feature("autodoc", "
 Parameters
@@ -3149,8 +3149,8 @@ Decrement the multiplicity of <knots(index)> to <mult>. if <mult> is null the kn
 ") RemoveKnot;
 		static Standard_Boolean RemoveKnot(const Standard_Integer Index, const Standard_Integer Mult, const Standard_Integer Degree, const Standard_Boolean Periodic, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, const Standard_Real Tolerance);
 
-		/****************** Reparametrize ******************/
-		/**** md5 signature: bbbfa1d8d52d7c2e9f0e7340e008bb30 ****/
+		/****** BSplCLib::Reparametrize ******/
+		/****** md5 signature: bbbfa1d8d52d7c2e9f0e7340e008bb30 ******/
 		%feature("compactdefaultargs") Reparametrize;
 		%feature("autodoc", "
 Parameters
@@ -3169,8 +3169,8 @@ Reparametrizes a b-spline curve to [u1, u2]. the knot values are recomputed such
 ") Reparametrize;
 		static void Reparametrize(const Standard_Real U1, const Standard_Real U2, TColStd_Array1OfReal & Knots);
 
-		/****************** Resolution ******************/
-		/**** md5 signature: de69ea6ca10e0ce95eff768774f1d362 ****/
+		/****** BSplCLib::Resolution ******/
+		/****** md5 signature: de69ea6ca10e0ce95eff768774f1d362 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -3193,8 +3193,8 @@ Given a tolerance in 3d space returns a tolerance in u parameter space such that
 ") Resolution;
 		static void Resolution(Standard_Real &OutValue, const Standard_Integer ArrayDimension, const Standard_Integer NumPoles, const TColStd_Array1OfReal * Weights, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer Degree, const Standard_Real Tolerance3D, Standard_Real &OutValue);
 
-		/****************** Resolution ******************/
-		/**** md5 signature: fd89dc61e5eb0f58d4d83427f246b2e2 ****/
+		/****** BSplCLib::Resolution ******/
+		/****** md5 signature: fd89dc61e5eb0f58d4d83427f246b2e2 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -3216,8 +3216,8 @@ Given a tolerance in 3d space returns a tolerance in u parameter space such that
 ") Resolution;
 		static void Resolution(const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const Standard_Integer NumPoles, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer Degree, const Standard_Real Tolerance3D, Standard_Real &OutValue);
 
-		/****************** Resolution ******************/
-		/**** md5 signature: 0c2d8874908243eb1c48ec7d26f9316f ****/
+		/****** BSplCLib::Resolution ******/
+		/****** md5 signature: 0c2d8874908243eb1c48ec7d26f9316f ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -3239,8 +3239,8 @@ Given a tolerance in 3d space returns a tolerance in u parameter space such that
 ") Resolution;
 		static void Resolution(const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const Standard_Integer NumPoles, const TColStd_Array1OfReal & FlatKnots, const Standard_Integer Degree, const Standard_Real Tolerance3D, Standard_Real &OutValue);
 
-		/****************** Reverse ******************/
-		/**** md5 signature: a57ac0e6f5478fd607e57b2d503d32c8 ****/
+		/****** BSplCLib::Reverse ******/
+		/****** md5 signature: a57ac0e6f5478fd607e57b2d503d32c8 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "
 Parameters
@@ -3257,8 +3257,8 @@ Reverses the array knots to become the knots sequence of the reversed curve.
 ") Reverse;
 		static void Reverse(TColStd_Array1OfReal & Knots);
 
-		/****************** Reverse ******************/
-		/**** md5 signature: c2e64bc5830d7c8e0576d2e63c1563a5 ****/
+		/****** BSplCLib::Reverse ******/
+		/****** md5 signature: c2e64bc5830d7c8e0576d2e63c1563a5 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "
 Parameters
@@ -3275,8 +3275,8 @@ Reverses the array of multiplicities.
 ") Reverse;
 		static void Reverse(TColStd_Array1OfInteger & Mults);
 
-		/****************** Reverse ******************/
-		/**** md5 signature: 69e198037b66038a66f7df106e5282f2 ****/
+		/****** BSplCLib::Reverse ******/
+		/****** md5 signature: 69e198037b66038a66f7df106e5282f2 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "
 Parameters
@@ -3294,8 +3294,8 @@ Reverses the array of poles. last is the index of the new first pole. on a non p
 ") Reverse;
 		static void Reverse(TColgp_Array1OfPnt & Poles, const Standard_Integer Last);
 
-		/****************** Reverse ******************/
-		/**** md5 signature: beac5e4762c742fc3695999616889a86 ****/
+		/****** BSplCLib::Reverse ******/
+		/****** md5 signature: beac5e4762c742fc3695999616889a86 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "
 Parameters
@@ -3313,8 +3313,8 @@ Reverses the array of poles.
 ") Reverse;
 		static void Reverse(TColgp_Array1OfPnt2d & Poles, const Standard_Integer Last);
 
-		/****************** Reverse ******************/
-		/**** md5 signature: fd8b3bb4d9426a07eb99e7597647bc3c ****/
+		/****** BSplCLib::Reverse ******/
+		/****** md5 signature: fd8b3bb4d9426a07eb99e7597647bc3c ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "
 Parameters
@@ -3332,8 +3332,8 @@ Reverses the array of poles.
 ") Reverse;
 		static void Reverse(TColStd_Array1OfReal & Weights, const Standard_Integer Last);
 
-		/****************** SolveBandedSystem ******************/
-		/**** md5 signature: 435953bec122c49c9cda2b95930416f9 ****/
+		/****** BSplCLib::SolveBandedSystem ******/
+		/****** md5 signature: 435953bec122c49c9cda2b95930416f9 ******/
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "
 Parameters
@@ -3353,8 +3353,8 @@ This solves the system matrix.x = b with when matrix is factored in lu form the 
 ") SolveBandedSystem;
 		static Standard_Integer SolveBandedSystem(const math_Matrix & Matrix, const Standard_Integer UpperBandWidth, const Standard_Integer LowerBandWidth, const Standard_Integer ArrayDimension, Standard_Real &OutValue);
 
-		/****************** SolveBandedSystem ******************/
-		/**** md5 signature: 55bf803527f642f5424d89c2b6d60155 ****/
+		/****** BSplCLib::SolveBandedSystem ******/
+		/****** md5 signature: 55bf803527f642f5424d89c2b6d60155 ******/
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "
 Parameters
@@ -3374,8 +3374,8 @@ This solves the system matrix.x = b with when matrix is factored in lu form the 
 ") SolveBandedSystem;
 		static Standard_Integer SolveBandedSystem(const math_Matrix & Matrix, const Standard_Integer UpperBandWidth, const Standard_Integer LowerBandWidth, TColgp_Array1OfPnt2d & Array);
 
-		/****************** SolveBandedSystem ******************/
-		/**** md5 signature: cedb120aa0a87996dc1fe431f2a79558 ****/
+		/****** BSplCLib::SolveBandedSystem ******/
+		/****** md5 signature: cedb120aa0a87996dc1fe431f2a79558 ******/
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "
 Parameters
@@ -3395,8 +3395,8 @@ This solves the system matrix.x = b with when matrix is factored in lu form the 
 ") SolveBandedSystem;
 		static Standard_Integer SolveBandedSystem(const math_Matrix & Matrix, const Standard_Integer UpperBandWidth, const Standard_Integer LowerBandWidth, TColgp_Array1OfPnt & Array);
 
-		/****************** SolveBandedSystem ******************/
-		/**** md5 signature: 5571a92dbcd003f3cd215893f9c76410 ****/
+		/****** BSplCLib::SolveBandedSystem ******/
+		/****** md5 signature: 5571a92dbcd003f3cd215893f9c76410 ******/
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "
 Parameters
@@ -3418,8 +3418,8 @@ No available documentation.
 ") SolveBandedSystem;
 		static Standard_Integer SolveBandedSystem(const math_Matrix & Matrix, const Standard_Integer UpperBandWidth, const Standard_Integer LowerBandWidth, const Standard_Boolean HomogenousFlag, const Standard_Integer ArrayDimension, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SolveBandedSystem ******************/
-		/**** md5 signature: c3b54f9241e23af58a316990c4c05c84 ****/
+		/****** BSplCLib::SolveBandedSystem ******/
+		/****** md5 signature: c3b54f9241e23af58a316990c4c05c84 ******/
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "
 Parameters
@@ -3441,8 +3441,8 @@ This solves the system matrix.x = b with when matrix is factored in lu form the 
 ") SolveBandedSystem;
 		static Standard_Integer SolveBandedSystem(const math_Matrix & Matrix, const Standard_Integer UpperBandWidth, const Standard_Integer LowerBandWidth, const Standard_Boolean HomogenousFlag, TColgp_Array1OfPnt2d & Array, TColStd_Array1OfReal & Weights);
 
-		/****************** SolveBandedSystem ******************/
-		/**** md5 signature: bf46510a32c49fb829ee5209d1191b72 ****/
+		/****** BSplCLib::SolveBandedSystem ******/
+		/****** md5 signature: bf46510a32c49fb829ee5209d1191b72 ******/
 		%feature("compactdefaultargs") SolveBandedSystem;
 		%feature("autodoc", "
 Parameters
@@ -3464,8 +3464,8 @@ This solves the system matrix.x = b with when matrix is factored in lu form the 
 ") SolveBandedSystem;
 		static Standard_Integer SolveBandedSystem(const math_Matrix & Matrix, const Standard_Integer UpperBandWidth, const Standard_Integer LowerBandWidth, const Standard_Boolean HomogeneousFlag, TColgp_Array1OfPnt & Array, TColStd_Array1OfReal & Weights);
 
-		/****************** TangExtendToConstraint ******************/
-		/**** md5 signature: b7146095fa28ab3e0edbfadc067c542f ****/
+		/****** BSplCLib::TangExtendToConstraint ******/
+		/****** md5 signature: b7146095fa28ab3e0edbfadc067c542f ******/
 		%feature("compactdefaultargs") TangExtendToConstraint;
 		%feature("autodoc", "
 Parameters
@@ -3493,8 +3493,8 @@ Extend a bspline nd using the tangency map <c1coefficient> is the coefficient of
 ") TangExtendToConstraint;
 		static void TangExtendToConstraint(const TColStd_Array1OfReal & FlatKnots, const Standard_Real C1Coefficient, const Standard_Integer NumPoles, Standard_Real &OutValue, const Standard_Integer Dimension, const Standard_Integer Degree, const TColStd_Array1OfReal & ConstraintPoint, const Standard_Integer Continuity, const Standard_Boolean After, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Trimming ******************/
-		/**** md5 signature: f2180a9ffc628aafc10d57997f0ab25d ****/
+		/****** BSplCLib::Trimming ******/
+		/****** md5 signature: f2180a9ffc628aafc10d57997f0ab25d ******/
 		%feature("compactdefaultargs") Trimming;
 		%feature("autodoc", "
 Parameters
@@ -3521,8 +3521,8 @@ No available documentation.
 ") Trimming;
 		static void Trimming(const Standard_Integer Degree, const Standard_Boolean Periodic, const Standard_Integer Dimension, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Poles, const Standard_Real U1, const Standard_Real U2, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewPoles);
 
-		/****************** Trimming ******************/
-		/**** md5 signature: 9fe28b7ad9be71c6a1af6e80c38e8036 ****/
+		/****** BSplCLib::Trimming ******/
+		/****** md5 signature: 9fe28b7ad9be71c6a1af6e80c38e8036 ******/
 		%feature("compactdefaultargs") Trimming;
 		%feature("autodoc", "
 Parameters
@@ -3550,8 +3550,8 @@ No available documentation.
 ") Trimming;
 		static void Trimming(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, const Standard_Real U1, const Standard_Real U2, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
-		/****************** Trimming ******************/
-		/**** md5 signature: 81cf27d83e373b0ace7635f2fcda30fb ****/
+		/****** BSplCLib::Trimming ******/
+		/****** md5 signature: 81cf27d83e373b0ace7635f2fcda30fb ******/
 		%feature("compactdefaultargs") Trimming;
 		%feature("autodoc", "
 Parameters
@@ -3579,8 +3579,8 @@ No available documentation.
 ") Trimming;
 		static void Trimming(const Standard_Integer Degree, const Standard_Boolean Periodic, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const TColgp_Array1OfPnt2d & Poles, const TColStd_Array1OfReal * Weights, const Standard_Real U1, const Standard_Real U2, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfInteger & NewMults, TColgp_Array1OfPnt2d & NewPoles, TColStd_Array1OfReal * NewWeights);
 
-		/****************** Unperiodize ******************/
-		/**** md5 signature: abc1100a37dd462dd6a37ec73c9525d8 ****/
+		/****** BSplCLib::Unperiodize ******/
+		/****** md5 signature: abc1100a37dd462dd6a37ec73c9525d8 ******/
 		%feature("compactdefaultargs") Unperiodize;
 		%feature("autodoc", "
 Parameters
@@ -3604,8 +3604,8 @@ No available documentation.
 ") Unperiodize;
 		static void Unperiodize(const Standard_Integer Degree, const Standard_Integer Dimension, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfReal & Poles, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewKnots, TColStd_Array1OfReal & NewPoles);
 
-		/****************** Unperiodize ******************/
-		/**** md5 signature: d1992345708ea61d4ff0e42760ddfbc4 ****/
+		/****** BSplCLib::Unperiodize ******/
+		/****** md5 signature: d1992345708ea61d4ff0e42760ddfbc4 ******/
 		%feature("compactdefaultargs") Unperiodize;
 		%feature("autodoc", "
 Parameters
@@ -3630,8 +3630,8 @@ No available documentation.
 ") Unperiodize;
 		static void Unperiodize(const Standard_Integer Degree, const TColStd_Array1OfInteger & Mults, const TColStd_Array1OfReal & Knots, const TColgp_Array1OfPnt & Poles, const TColStd_Array1OfReal * Weights, TColStd_Array1OfInteger & NewMults, TColStd_Array1OfReal & NewKnots, TColgp_Array1OfPnt & NewPoles, TColStd_Array1OfReal * NewWeights);
 
-		/****************** Unperiodize ******************/
-		/**** md5 signature: abc855f8a13aa28d61372d2f6e249d88 ****/
+		/****** BSplCLib::Unperiodize ******/
+		/****** md5 signature: abc855f8a13aa28d61372d2f6e249d88 ******/
 		%feature("compactdefaultargs") Unperiodize;
 		%feature("autodoc", "
 Parameters
@@ -3674,8 +3674,8 @@ No available documentation.
 ***********************/
 class BSplCLib_Cache : public Standard_Transient {
 	public:
-		/****************** BSplCLib_Cache ******************/
-		/**** md5 signature: 1ec50ce3ef0f91a1b9421df2d746932f ****/
+		/****** BSplCLib_Cache::BSplCLib_Cache ******/
+		/****** md5 signature: 1ec50ce3ef0f91a1b9421df2d746932f ******/
 		%feature("compactdefaultargs") BSplCLib_Cache;
 		%feature("autodoc", "
 Parameters
@@ -3696,8 +3696,8 @@ Constructor, prepares data structures for caching values on a 2d curve. \param t
 ") BSplCLib_Cache;
 		 BSplCLib_Cache(const Standard_Integer & theDegree, const Standard_Boolean & thePeriodic, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt2d & thePoles2d, const TColStd_Array1OfReal * theWeights = NULL);
 
-		/****************** BSplCLib_Cache ******************/
-		/**** md5 signature: 112e58d863cf27a409215f9f9a35ff27 ****/
+		/****** BSplCLib_Cache::BSplCLib_Cache ******/
+		/****** md5 signature: 112e58d863cf27a409215f9f9a35ff27 ******/
 		%feature("compactdefaultargs") BSplCLib_Cache;
 		%feature("autodoc", "
 Parameters
@@ -3718,8 +3718,8 @@ Constructor, prepares data structures for caching values on a 3d curve. \param t
 ") BSplCLib_Cache;
 		 BSplCLib_Cache(const Standard_Integer & theDegree, const Standard_Boolean & thePeriodic, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt & thePoles, const TColStd_Array1OfReal * theWeights = NULL);
 
-		/****************** BuildCache ******************/
-		/**** md5 signature: 004becef4793ac2147bbccc9f21ed48e ****/
+		/****** BSplCLib_Cache::BuildCache ******/
+		/****** md5 signature: 004becef4793ac2147bbccc9f21ed48e ******/
 		%feature("compactdefaultargs") BuildCache;
 		%feature("autodoc", "
 Parameters
@@ -3739,8 +3739,8 @@ Recomputes the cache data for 2d curves. does not verify validity of the cache \
 ") BuildCache;
 		void BuildCache(const Standard_Real & theParameter, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt2d & thePoles2d, const TColStd_Array1OfReal * theWeights);
 
-		/****************** BuildCache ******************/
-		/**** md5 signature: 708c8206d06c2954f982bc24a07bbc07 ****/
+		/****** BSplCLib_Cache::BuildCache ******/
+		/****** md5 signature: 708c8206d06c2954f982bc24a07bbc07 ******/
 		%feature("compactdefaultargs") BuildCache;
 		%feature("autodoc", "
 Parameters
@@ -3760,8 +3760,8 @@ Recomputes the cache data for 3d curves. does not verify validity of the cache \
 ") BuildCache;
 		void BuildCache(const Standard_Real & theParameter, const TColStd_Array1OfReal & theFlatKnots, const TColgp_Array1OfPnt & thePoles, const TColStd_Array1OfReal * theWeights = NULL);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 821844347e34610caaa0b5bbfa0cf4d7 ****/
+		/****** BSplCLib_Cache::D0 ******/
+		/****** md5 signature: 821844347e34610caaa0b5bbfa0cf4d7 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -3779,8 +3779,8 @@ Calculates the point on the curve in the specified parameter \param[in] theparam
 ") D0;
 		void D0(const Standard_Real & theParameter, gp_Pnt2d & thePoint);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 4aeb2d0857a7db45a96aa1fec77d5445 ****/
+		/****** BSplCLib_Cache::D0 ******/
+		/****** md5 signature: 4aeb2d0857a7db45a96aa1fec77d5445 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -3798,8 +3798,8 @@ No available documentation.
 ") D0;
 		void D0(const Standard_Real & theParameter, gp_Pnt & thePoint);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 1c2fb9815cecbaddf6ab913e1725d597 ****/
+		/****** BSplCLib_Cache::D1 ******/
+		/****** md5 signature: 1c2fb9815cecbaddf6ab913e1725d597 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -3818,8 +3818,8 @@ Calculates the point on the curve and its first derivative in the specified para
 ") D1;
 		void D1(const Standard_Real & theParameter, gp_Pnt2d & thePoint, gp_Vec2d & theTangent);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 9162e0f68e80a2c7ce80aafd532c64cb ****/
+		/****** BSplCLib_Cache::D1 ******/
+		/****** md5 signature: 9162e0f68e80a2c7ce80aafd532c64cb ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -3838,8 +3838,8 @@ No available documentation.
 ") D1;
 		void D1(const Standard_Real & theParameter, gp_Pnt & thePoint, gp_Vec & theTangent);
 
-		/****************** D2 ******************/
-		/**** md5 signature: cde9b4ade9c2395288cb140e226b4245 ****/
+		/****** BSplCLib_Cache::D2 ******/
+		/****** md5 signature: cde9b4ade9c2395288cb140e226b4245 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -3859,8 +3859,8 @@ Calculates the point on the curve and two derivatives in the specified parameter
 ") D2;
 		void D2(const Standard_Real & theParameter, gp_Pnt2d & thePoint, gp_Vec2d & theTangent, gp_Vec2d & theCurvature);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 096890fee85d22526ec280b33e9b01d0 ****/
+		/****** BSplCLib_Cache::D2 ******/
+		/****** md5 signature: 096890fee85d22526ec280b33e9b01d0 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -3880,8 +3880,8 @@ No available documentation.
 ") D2;
 		void D2(const Standard_Real & theParameter, gp_Pnt & thePoint, gp_Vec & theTangent, gp_Vec & theCurvature);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 2966e3bc0512076dd282c4c044fbb4ce ****/
+		/****** BSplCLib_Cache::D3 ******/
+		/****** md5 signature: 2966e3bc0512076dd282c4c044fbb4ce ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -3902,8 +3902,8 @@ Calculates the point on the curve and three derivatives in the specified paramet
 ") D3;
 		void D3(const Standard_Real & theParameter, gp_Pnt2d & thePoint, gp_Vec2d & theTangent, gp_Vec2d & theCurvature, gp_Vec2d & theTorsion);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 7d9b71e69ccb4be4fe8edf3517a87d48 ****/
+		/****** BSplCLib_Cache::D3 ******/
+		/****** md5 signature: 7d9b71e69ccb4be4fe8edf3517a87d48 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -3924,8 +3924,8 @@ No available documentation.
 ") D3;
 		void D3(const Standard_Real & theParameter, gp_Pnt & thePoint, gp_Vec & theTangent, gp_Vec & theCurvature, gp_Vec & theTorsion);
 
-		/****************** IsCacheValid ******************/
-		/**** md5 signature: 210fe9378d91587e36bde7d36f9a15e1 ****/
+		/****** BSplCLib_Cache::IsCacheValid ******/
+		/****** md5 signature: 210fe9378d91587e36bde7d36f9a15e1 ******/
 		%feature("compactdefaultargs") IsCacheValid;
 		%feature("autodoc", "
 Parameters
@@ -3961,8 +3961,8 @@ class BSplCLib_CacheParams {
 		float SpanStart;
 		float SpanLength;
 		int SpanIndex;
-		/****************** BSplCLib_CacheParams ******************/
-		/**** md5 signature: 9dc6d39f5a0f6a64d0c5f2ef90fb4329 ****/
+		/****** BSplCLib_CacheParams::BSplCLib_CacheParams ******/
+		/****** md5 signature: 9dc6d39f5a0f6a64d0c5f2ef90fb4329 ******/
 		%feature("compactdefaultargs") BSplCLib_CacheParams;
 		%feature("autodoc", "
 Parameters
@@ -3981,8 +3981,8 @@ Constructor, prepares data structures for caching. \param thedegree degree of th
 ") BSplCLib_CacheParams;
 		 BSplCLib_CacheParams(Standard_Integer theDegree, Standard_Boolean thePeriodic, const TColStd_Array1OfReal & theFlatKnots);
 
-		/****************** IsCacheValid ******************/
-		/**** md5 signature: 2640e4ed5e0bdb2780fab01a6614a67a ****/
+		/****** BSplCLib_CacheParams::IsCacheValid ******/
+		/****** md5 signature: 2640e4ed5e0bdb2780fab01a6614a67a ******/
 		%feature("compactdefaultargs") IsCacheValid;
 		%feature("autodoc", "
 Parameters
@@ -3999,8 +3999,8 @@ Verifies validity of the cache using flat parameter of the point \param theparam
 ") IsCacheValid;
 		Standard_Boolean IsCacheValid(Standard_Real theParameter);
 
-		/****************** LocateParameter ******************/
-		/**** md5 signature: 9d0335be5e67d75027256e3751327542 ****/
+		/****** BSplCLib_CacheParams::LocateParameter ******/
+		/****** md5 signature: 9d0335be5e67d75027256e3751327542 ******/
 		%feature("compactdefaultargs") LocateParameter;
 		%feature("autodoc", "
 Parameters
@@ -4017,8 +4017,8 @@ Computes span for the specified parameter \param theparameter parameter of the p
 ") LocateParameter;
 		void LocateParameter(Standard_Real &OutValue, const TColStd_Array1OfReal & theFlatKnots);
 
-		/****************** PeriodicNormalization ******************/
-		/**** md5 signature: f0c31ac0ad331d040f83cb12652abaed ****/
+		/****** BSplCLib_CacheParams::PeriodicNormalization ******/
+		/****** md5 signature: f0c31ac0ad331d040f83cb12652abaed ******/
 		%feature("compactdefaultargs") PeriodicNormalization;
 		%feature("autodoc", "
 Parameters
@@ -4050,8 +4050,8 @@ Normalizes the parameter for periodic b-splines \param theparameter the value to
 %nodefaultctor BSplCLib_EvaluatorFunction;
 class BSplCLib_EvaluatorFunction {
 	public:
-		/****************** Evaluate ******************/
-		/**** md5 signature: 6d18f8c62d991decc4c1a3aca376d7bf ****/
+		/****** BSplCLib_EvaluatorFunction::Evaluate ******/
+		/****** md5 signature: 6d18f8c62d991decc4c1a3aca376d7bf ******/
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "
 Parameters

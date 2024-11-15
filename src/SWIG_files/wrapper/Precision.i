@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define PRECISIONDOCSTRING
 "Precision module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_precision.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_precision.html"
 %enddef
 %module (package="OCC.Core", docstring=PRECISIONDOCSTRING) Precision
 
@@ -80,8 +80,8 @@ from OCC.Core.Exception import *
 %rename(precision) Precision;
 class Precision {
 	public:
-		/****************** Angular ******************/
-		/**** md5 signature: d66ae915268c0c56c42cc1b75a460288 ****/
+		/****** Precision::Angular ******/
+		/****** md5 signature: d66ae915268c0c56c42cc1b75a460288 ******/
 		%feature("compactdefaultargs") Angular;
 		%feature("autodoc", "Return
 -------
@@ -93,8 +93,8 @@ Returns the recommended precision value when checking the equality of two angles
 ") Angular;
 		static Standard_Real Angular();
 
-		/****************** Approximation ******************/
-		/**** md5 signature: fcad0107c9d9c3e9b902fd1d2a9348f6 ****/
+		/****** Precision::Approximation ******/
+		/****** md5 signature: fcad0107c9d9c3e9b902fd1d2a9348f6 ******/
 		%feature("compactdefaultargs") Approximation;
 		%feature("autodoc", "Return
 -------
@@ -106,8 +106,8 @@ Returns the precision value in real space, frequently used by approximation algo
 ") Approximation;
 		static Standard_Real Approximation();
 
-		/****************** Confusion ******************/
-		/**** md5 signature: 261a8fd013e8755ec73cdd7715310200 ****/
+		/****** Precision::Confusion ******/
+		/****** md5 signature: 261a8fd013e8755ec73cdd7715310200 ******/
 		%feature("compactdefaultargs") Confusion;
 		%feature("autodoc", "Return
 -------
@@ -119,8 +119,8 @@ Returns the recommended precision value when checking coincidence of two points 
 ") Confusion;
 		static Standard_Real Confusion();
 
-		/****************** Infinite ******************/
-		/**** md5 signature: 7829afc28234ba2385655766212272d3 ****/
+		/****** Precision::Infinite ******/
+		/****** md5 signature: 7829afc28234ba2385655766212272d3 ******/
 		%feature("compactdefaultargs") Infinite;
 		%feature("autodoc", "Return
 -------
@@ -132,8 +132,8 @@ Returns a big number that can be considered as infinite. use -infinite() for a n
 ") Infinite;
 		static Standard_Real Infinite();
 
-		/****************** Intersection ******************/
-		/**** md5 signature: a196c72a45a4e1ecee20d3639271fa21 ****/
+		/****** Precision::Intersection ******/
+		/****** md5 signature: a196c72a45a4e1ecee20d3639271fa21 ******/
 		%feature("compactdefaultargs") Intersection;
 		%feature("autodoc", "Return
 -------
@@ -145,8 +145,8 @@ Returns the precision value in real space, frequently used by intersection algor
 ") Intersection;
 		static Standard_Real Intersection();
 
-		/****************** IsInfinite ******************/
-		/**** md5 signature: a267874bd879efbcfadf471951140661 ****/
+		/****** Precision::IsInfinite ******/
+		/****** md5 signature: a267874bd879efbcfadf471951140661 ******/
 		%feature("compactdefaultargs") IsInfinite;
 		%feature("autodoc", "
 Parameters
@@ -163,8 +163,8 @@ Returns true if r may be considered as an infinite number. currently abs(r) > 1e
 ") IsInfinite;
 		static Standard_Boolean IsInfinite(const Standard_Real R);
 
-		/****************** IsNegativeInfinite ******************/
-		/**** md5 signature: 13693b548c2fa3e2236848404623f679 ****/
+		/****** Precision::IsNegativeInfinite ******/
+		/****** md5 signature: 13693b548c2fa3e2236848404623f679 ******/
 		%feature("compactdefaultargs") IsNegativeInfinite;
 		%feature("autodoc", "
 Parameters
@@ -181,8 +181,8 @@ Returns true if r may be considered as a negative infinite number. currently r <
 ") IsNegativeInfinite;
 		static Standard_Boolean IsNegativeInfinite(const Standard_Real R);
 
-		/****************** IsPositiveInfinite ******************/
-		/**** md5 signature: 5862ab4c33a8bfeca39b8149f8119f1c ****/
+		/****** Precision::IsPositiveInfinite ******/
+		/****** md5 signature: 5862ab4c33a8bfeca39b8149f8119f1c ******/
 		%feature("compactdefaultargs") IsPositiveInfinite;
 		%feature("autodoc", "
 Parameters
@@ -199,8 +199,8 @@ Returns true if r may be considered as a positive infinite number. currently r >
 ") IsPositiveInfinite;
 		static Standard_Boolean IsPositiveInfinite(const Standard_Real R);
 
-		/****************** PApproximation ******************/
-		/**** md5 signature: 84696f0dcfbab897a31b069e2dc59034 ****/
+		/****** Precision::PApproximation ******/
+		/****** md5 signature: 84696f0dcfbab897a31b069e2dc59034 ******/
 		%feature("compactdefaultargs") PApproximation;
 		%feature("autodoc", "
 Parameters
@@ -217,8 +217,8 @@ Returns a precision value in parametric space, which may be used by approximatio
 ") PApproximation;
 		static Standard_Real PApproximation(const Standard_Real T);
 
-		/****************** PApproximation ******************/
-		/**** md5 signature: d360d120192e7adb3ad528e7b69e6be6 ****/
+		/****** Precision::PApproximation ******/
+		/****** md5 signature: d360d120192e7adb3ad528e7b69e6be6 ******/
 		%feature("compactdefaultargs") PApproximation;
 		%feature("autodoc", "Return
 -------
@@ -230,8 +230,8 @@ Used for approximations in parametric space on a default curve. //! this is prec
 ") PApproximation;
 		static Standard_Real PApproximation();
 
-		/****************** PConfusion ******************/
-		/**** md5 signature: 238f64b4102880bc279d12eee169a243 ****/
+		/****** Precision::PConfusion ******/
+		/****** md5 signature: 238f64b4102880bc279d12eee169a243 ******/
 		%feature("compactdefaultargs") PConfusion;
 		%feature("autodoc", "
 Parameters
@@ -248,8 +248,8 @@ Returns a precision value in parametric space, which may be used: - to test the 
 ") PConfusion;
 		static Standard_Real PConfusion(const Standard_Real T);
 
-		/****************** PConfusion ******************/
-		/**** md5 signature: 73c63807f474a2814b625a3a6a41fd1d ****/
+		/****** Precision::PConfusion ******/
+		/****** md5 signature: 73c63807f474a2814b625a3a6a41fd1d ******/
 		%feature("compactdefaultargs") PConfusion;
 		%feature("autodoc", "Return
 -------
@@ -261,8 +261,8 @@ Used to test distances in parametric space on a default curve. //! this is preci
 ") PConfusion;
 		static Standard_Real PConfusion();
 
-		/****************** PIntersection ******************/
-		/**** md5 signature: 100c6ef8c6b93420156b38ca0013086f ****/
+		/****** Precision::PIntersection ******/
+		/****** md5 signature: 100c6ef8c6b93420156b38ca0013086f ******/
 		%feature("compactdefaultargs") PIntersection;
 		%feature("autodoc", "
 Parameters
@@ -279,8 +279,8 @@ Returns a precision value in parametric space, which may be used by intersection
 ") PIntersection;
 		static Standard_Real PIntersection(const Standard_Real T);
 
-		/****************** PIntersection ******************/
-		/**** md5 signature: 1e0aa721aff9c326ee4197e45512012f ****/
+		/****** Precision::PIntersection ******/
+		/****** md5 signature: 1e0aa721aff9c326ee4197e45512012f ******/
 		%feature("compactdefaultargs") PIntersection;
 		%feature("autodoc", "Return
 -------
@@ -292,8 +292,8 @@ Used for intersections in parametric space on a default curve. //! this is preci
 ") PIntersection;
 		static Standard_Real PIntersection();
 
-		/****************** Parametric ******************/
-		/**** md5 signature: b80b01f2f61cf57fc4e32991dcd1077d ****/
+		/****** Precision::Parametric ******/
+		/****** md5 signature: b80b01f2f61cf57fc4e32991dcd1077d ******/
 		%feature("compactdefaultargs") Parametric;
 		%feature("autodoc", "
 Parameters
@@ -311,8 +311,8 @@ Convert a real space precision to a parametric space precision. <t> is the mean 
 ") Parametric;
 		static Standard_Real Parametric(const Standard_Real P, const Standard_Real T);
 
-		/****************** Parametric ******************/
-		/**** md5 signature: 05bee4f172b1b6527bb3ad73a6f4e087 ****/
+		/****** Precision::Parametric ******/
+		/****** md5 signature: 05bee4f172b1b6527bb3ad73a6f4e087 ******/
 		%feature("compactdefaultargs") Parametric;
 		%feature("autodoc", "
 Parameters
@@ -329,8 +329,8 @@ Convert a real space precision to a parametric space precision on a default curv
 ") Parametric;
 		static Standard_Real Parametric(const Standard_Real P);
 
-		/****************** SquareConfusion ******************/
-		/**** md5 signature: be71c3860953c143014efe32d05c10a0 ****/
+		/****** Precision::SquareConfusion ******/
+		/****** md5 signature: be71c3860953c143014efe32d05c10a0 ******/
 		%feature("compactdefaultargs") SquareConfusion;
 		%feature("autodoc", "Return
 -------
@@ -342,8 +342,8 @@ Returns square of confusion. created for speed and convenience.
 ") SquareConfusion;
 		static Standard_Real SquareConfusion();
 
-		/****************** SquarePConfusion ******************/
-		/**** md5 signature: 9640285578dd141b1cb17c0ad9dfc828 ****/
+		/****** Precision::SquarePConfusion ******/
+		/****** md5 signature: 9640285578dd141b1cb17c0ad9dfc828 ******/
 		%feature("compactdefaultargs") SquarePConfusion;
 		%feature("autodoc", "Return
 -------

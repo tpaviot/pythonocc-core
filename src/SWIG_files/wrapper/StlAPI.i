@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STLAPIDOCSTRING
 "StlAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_stlapi.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stlapi.html"
 %enddef
 %module (package="OCC.Core", docstring=STLAPIDOCSTRING) StlAPI
 
@@ -86,8 +86,8 @@ from OCC.Core.Exception import *
 %rename(stlapi) StlAPI;
 class StlAPI {
 	public:
-		/****************** Read ******************/
-		/**** md5 signature: 04193a3dd7bc184e35d71f6296bb4160 ****/
+		/****** StlAPI::Read ******/
+		/****** md5 signature: 04193a3dd7bc184e35d71f6296bb4160 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -105,8 +105,8 @@ Legacy interface. read stl file and create a shape composed of triangular faces,
 ") Read;
 		static Standard_Boolean Read(TopoDS_Shape & theShape, Standard_CString aFile);
 
-		/****************** Write ******************/
-		/**** md5 signature: 6440898486e448da078517629383a97a ****/
+		/****** StlAPI::Write ******/
+		/****** md5 signature: 6440898486e448da078517629383a97a ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -139,8 +139,8 @@ Convert and write shape to stl format. file is written in binary if aasciimode i
 **********************/
 class StlAPI_Reader {
 	public:
-		/****************** Read ******************/
-		/**** md5 signature: 7175fc9409b969fddd6af571d4af05e4 ****/
+		/****** StlAPI_Reader::Read ******/
+		/****** md5 signature: 7175fc9409b969fddd6af571d4af05e4 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -172,8 +172,8 @@ Reads stl file to the topods_shape (each triangle is converted to the face). ret
 **********************/
 class StlAPI_Writer {
 	public:
-		/****************** StlAPI_Writer ******************/
-		/**** md5 signature: bb0903a29083f9fab3c6442a6e38972c ****/
+		/****** StlAPI_Writer::StlAPI_Writer ******/
+		/****** md5 signature: bb0903a29083f9fab3c6442a6e38972c ******/
 		%feature("compactdefaultargs") StlAPI_Writer;
 		%feature("autodoc", "Return
 -------
@@ -198,8 +198,8 @@ Creates a writer object with default parameters: asciimode.
             $self->ASCIIMode()=value;
             }
         };
-		/****************** Write ******************/
-		/**** md5 signature: 2af1d9f86c5642907de91a1eb03fe67f ****/
+		/****** StlAPI_Writer::Write ******/
+		/****** md5 signature: 2af1d9f86c5642907de91a1eb03fe67f ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define LPROP3DDOCSTRING
 "LProp3d module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_lprop3d.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_lprop3d.html"
 %enddef
 %module (package="OCC.Core", docstring=LPROP3DDOCSTRING) LProp3d
 
@@ -87,8 +87,8 @@ from OCC.Core.Exception import *
 ************************/
 class LProp3d_CLProps {
 	public:
-		/****************** LProp3d_CLProps ******************/
-		/**** md5 signature: 55346d22164284569aa322c86d4ed2e9 ****/
+		/****** LProp3d_CLProps::LProp3d_CLProps ******/
+		/****** md5 signature: 55346d22164284569aa322c86d4ed2e9 ******/
 		%feature("compactdefaultargs") LProp3d_CLProps;
 		%feature("autodoc", "
 Parameters
@@ -107,8 +107,8 @@ Initializes the local properties of the curve <c> the current point and the deri
 ") LProp3d_CLProps;
 		 LProp3d_CLProps(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Integer N, const Standard_Real Resolution);
 
-		/****************** LProp3d_CLProps ******************/
-		/**** md5 signature: 0322c52bac5bb9e9cc7b748c91d91215 ****/
+		/****** LProp3d_CLProps::LProp3d_CLProps ******/
+		/****** md5 signature: 0322c52bac5bb9e9cc7b748c91d91215 ******/
 		%feature("compactdefaultargs") LProp3d_CLProps;
 		%feature("autodoc", "
 Parameters
@@ -128,8 +128,8 @@ Same as previous constructor but here the parameter is set to the value <u>. all
 ") LProp3d_CLProps;
 		 LProp3d_CLProps(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, const Standard_Integer N, const Standard_Real Resolution);
 
-		/****************** LProp3d_CLProps ******************/
-		/**** md5 signature: 7f3ee4ee884748be05d5efbac5962e75 ****/
+		/****** LProp3d_CLProps::LProp3d_CLProps ******/
+		/****** md5 signature: 7f3ee4ee884748be05d5efbac5962e75 ******/
 		%feature("compactdefaultargs") LProp3d_CLProps;
 		%feature("autodoc", "
 Parameters
@@ -147,8 +147,8 @@ Same as previous constructor but here the parameter is set to the value <u> and 
 ") LProp3d_CLProps;
 		 LProp3d_CLProps(const Standard_Integer N, const Standard_Real Resolution);
 
-		/****************** CentreOfCurvature ******************/
-		/**** md5 signature: 62d176ce7c370b0aaf979899c5c8c8ed ****/
+		/****** LProp3d_CLProps::CentreOfCurvature ******/
+		/****** md5 signature: 62d176ce7c370b0aaf979899c5c8c8ed ******/
 		%feature("compactdefaultargs") CentreOfCurvature;
 		%feature("autodoc", "
 Parameters
@@ -165,8 +165,8 @@ Returns the centre of curvature <p>.
 ") CentreOfCurvature;
 		void CentreOfCurvature(gp_Pnt & P);
 
-		/****************** Curvature ******************/
-		/**** md5 signature: 4886f38d109c8344d719e9973cfea7e1 ****/
+		/****** LProp3d_CLProps::Curvature ******/
+		/****** md5 signature: 4886f38d109c8344d719e9973cfea7e1 ******/
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "Return
 -------
@@ -178,8 +178,8 @@ Returns the curvature.
 ") Curvature;
 		Standard_Real Curvature();
 
-		/****************** D1 ******************/
-		/**** md5 signature: 0b334102acda4d3b92a2badfa14b3be9 ****/
+		/****** LProp3d_CLProps::D1 ******/
+		/****** md5 signature: 0b334102acda4d3b92a2badfa14b3be9 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "Return
 -------
@@ -191,8 +191,8 @@ Returns the first derivative. the derivative is computed if it has not been yet.
 ") D1;
 		const gp_Vec D1();
 
-		/****************** D2 ******************/
-		/**** md5 signature: 46fd60fbfe8cc806f27ca68c1234907f ****/
+		/****** LProp3d_CLProps::D2 ******/
+		/****** md5 signature: 46fd60fbfe8cc806f27ca68c1234907f ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "Return
 -------
@@ -204,8 +204,8 @@ Returns the second derivative. the derivative is computed if it has not been yet
 ") D2;
 		const gp_Vec D2();
 
-		/****************** D3 ******************/
-		/**** md5 signature: 941f449454d8f26edc70e5f1f599e44c ****/
+		/****** LProp3d_CLProps::D3 ******/
+		/****** md5 signature: 941f449454d8f26edc70e5f1f599e44c ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "Return
 -------
@@ -217,8 +217,8 @@ Returns the third derivative. the derivative is computed if it has not been yet.
 ") D3;
 		const gp_Vec D3();
 
-		/****************** IsTangentDefined ******************/
-		/**** md5 signature: 96b1d1e7ead0e227ec7d76f9ad798ae8 ****/
+		/****** LProp3d_CLProps::IsTangentDefined ******/
+		/****** md5 signature: 96b1d1e7ead0e227ec7d76f9ad798ae8 ******/
 		%feature("compactdefaultargs") IsTangentDefined;
 		%feature("autodoc", "Return
 -------
@@ -230,8 +230,8 @@ Returns true if the tangent is defined. for example, the tangent is not defined 
 ") IsTangentDefined;
 		Standard_Boolean IsTangentDefined();
 
-		/****************** Normal ******************/
-		/**** md5 signature: 03cb2acf0c09b71a9b7b3d5cbd0efe88 ****/
+		/****** LProp3d_CLProps::Normal ******/
+		/****** md5 signature: 03cb2acf0c09b71a9b7b3d5cbd0efe88 ******/
 		%feature("compactdefaultargs") Normal;
 		%feature("autodoc", "
 Parameters
@@ -248,8 +248,8 @@ Returns the normal direction <n>.
 ") Normal;
 		void Normal(gp_Dir & N);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: c10d16ef149061e06174e6a21df7d6fd ****/
+		/****** LProp3d_CLProps::SetCurve ******/
+		/****** md5 signature: c10d16ef149061e06174e6a21df7d6fd ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -266,8 +266,8 @@ Initializes the local properties of the curve for the new curve.
 ") SetCurve;
 		void SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** SetParameter ******************/
-		/**** md5 signature: 6d7d0a8f07175b76bb327cfdc33d2266 ****/
+		/****** LProp3d_CLProps::SetParameter ******/
+		/****** md5 signature: 6d7d0a8f07175b76bb327cfdc33d2266 ******/
 		%feature("compactdefaultargs") SetParameter;
 		%feature("autodoc", "
 Parameters
@@ -284,8 +284,8 @@ Initializes the local properties of the curve for the parameter value <u>.
 ") SetParameter;
 		void SetParameter(const Standard_Real U);
 
-		/****************** Tangent ******************/
-		/**** md5 signature: 0e5f1db5e09f49610a019ac45223943c ****/
+		/****** LProp3d_CLProps::Tangent ******/
+		/****** md5 signature: 0e5f1db5e09f49610a019ac45223943c ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -302,8 +302,8 @@ Output the tangent direction <d>.
 ") Tangent;
 		void Tangent(gp_Dir & D);
 
-		/****************** Value ******************/
-		/**** md5 signature: eddd2908948849b73f6d8aacab318652 ****/
+		/****** LProp3d_CLProps::Value ******/
+		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -329,8 +329,8 @@ Returns the point.
 **************************/
 class LProp3d_CurveTool {
 	public:
-		/****************** Continuity ******************/
-		/**** md5 signature: 67ad52ef2db0c9cf038f39663725f559 ****/
+		/****** LProp3d_CurveTool::Continuity ******/
+		/****** md5 signature: 67ad52ef2db0c9cf038f39663725f559 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -347,8 +347,8 @@ Returns the order of continuity of the hcurve <c>. returns 1: first derivative o
 ") Continuity;
 		static Standard_Integer Continuity(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 64701d22c465e4adc06f3de193348692 ****/
+		/****** LProp3d_CurveTool::D1 ******/
+		/****** md5 signature: 64701d22c465e4adc06f3de193348692 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -368,8 +368,8 @@ Computes the point <p> and first derivative <v1> of parameter <u> on the hcurve 
 ") D1;
 		static void D1(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** D2 ******************/
-		/**** md5 signature: a03fec54dc9fb384b49128be1eeb6ab5 ****/
+		/****** LProp3d_CurveTool::D2 ******/
+		/****** md5 signature: a03fec54dc9fb384b49128be1eeb6ab5 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -390,8 +390,8 @@ Computes the point <p>, the first derivative <v1> and second derivative <v2> of 
 ") D2;
 		static void D2(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: daf7fd27ce53952002a95005add4c7db ****/
+		/****** LProp3d_CurveTool::D3 ******/
+		/****** md5 signature: daf7fd27ce53952002a95005add4c7db ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -413,8 +413,8 @@ Computes the point <p>, the first derivative <v1>, the second derivative <v2> an
 ") D3;
 		static void D3(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** FirstParameter ******************/
-		/**** md5 signature: 25c42492a02c6ff0b57c4cf91fb40f86 ****/
+		/****** LProp3d_CurveTool::FirstParameter ******/
+		/****** md5 signature: 25c42492a02c6ff0b57c4cf91fb40f86 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -431,8 +431,8 @@ Returns the first parameter bound of the hcurve.
 ") FirstParameter;
 		static Standard_Real FirstParameter(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** LastParameter ******************/
-		/**** md5 signature: c00409255c9efae31d007ea0f35327b6 ****/
+		/****** LProp3d_CurveTool::LastParameter ******/
+		/****** md5 signature: c00409255c9efae31d007ea0f35327b6 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -449,8 +449,8 @@ Returns the last parameter bound of the hcurve. firstparameter must be less than
 ") LastParameter;
 		static Standard_Real LastParameter(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** Value ******************/
-		/**** md5 signature: c9166e787eb6dba49df04f09341196b6 ****/
+		/****** LProp3d_CurveTool::Value ******/
+		/****** md5 signature: c9166e787eb6dba49df04f09341196b6 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -483,8 +483,8 @@ Computes the point <p> of parameter <u> on the hcurve <c>.
 ************************/
 class LProp3d_SLProps {
 	public:
-		/****************** LProp3d_SLProps ******************/
-		/**** md5 signature: 8e26364dfa92e188c2d1b9bdfa61d9d0 ****/
+		/****** LProp3d_SLProps::LProp3d_SLProps ******/
+		/****** md5 signature: 8e26364dfa92e188c2d1b9bdfa61d9d0 ******/
 		%feature("compactdefaultargs") LProp3d_SLProps;
 		%feature("autodoc", "
 Parameters
@@ -505,8 +505,8 @@ Initializes the local properties of the surface <s> for the parameter values (<u
 ") LProp3d_SLProps;
 		 LProp3d_SLProps(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, const Standard_Integer N, const Standard_Real Resolution);
 
-		/****************** LProp3d_SLProps ******************/
-		/**** md5 signature: 551b173d5b0f247fb20f33862006b68e ****/
+		/****** LProp3d_SLProps::LProp3d_SLProps ******/
+		/****** md5 signature: 551b173d5b0f247fb20f33862006b68e ******/
 		%feature("compactdefaultargs") LProp3d_SLProps;
 		%feature("autodoc", "
 Parameters
@@ -525,8 +525,8 @@ Idem as previous constructor but without setting the value of parameters <u> and
 ") LProp3d_SLProps;
 		 LProp3d_SLProps(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Integer N, const Standard_Real Resolution);
 
-		/****************** LProp3d_SLProps ******************/
-		/**** md5 signature: 4665210bb798bfd8a1be71399d0323f0 ****/
+		/****** LProp3d_SLProps::LProp3d_SLProps ******/
+		/****** md5 signature: 4665210bb798bfd8a1be71399d0323f0 ******/
 		%feature("compactdefaultargs") LProp3d_SLProps;
 		%feature("autodoc", "
 Parameters
@@ -544,8 +544,8 @@ Idem as previous constructor but without setting the value of parameters <u> and
 ") LProp3d_SLProps;
 		 LProp3d_SLProps(const Standard_Integer N, const Standard_Real Resolution);
 
-		/****************** CurvatureDirections ******************/
-		/**** md5 signature: dce4de0944d73f0923cc57f1cae010ce ****/
+		/****** LProp3d_SLProps::CurvatureDirections ******/
+		/****** md5 signature: dce4de0944d73f0923cc57f1cae010ce ******/
 		%feature("compactdefaultargs") CurvatureDirections;
 		%feature("autodoc", "
 Parameters
@@ -563,8 +563,8 @@ Returns the direction of the maximum and minimum curvature <maxd> and <mind>.
 ") CurvatureDirections;
 		void CurvatureDirections(gp_Dir & MaxD, gp_Dir & MinD);
 
-		/****************** D1U ******************/
-		/**** md5 signature: 7fcd61e774b6033eceefa61e3338377a ****/
+		/****** LProp3d_SLProps::D1U ******/
+		/****** md5 signature: 7fcd61e774b6033eceefa61e3338377a ******/
 		%feature("compactdefaultargs") D1U;
 		%feature("autodoc", "Return
 -------
@@ -576,8 +576,8 @@ Returns the first u derivative. the derivative is computed if it has not been ye
 ") D1U;
 		const gp_Vec D1U();
 
-		/****************** D1V ******************/
-		/**** md5 signature: ad864d52b93c95482f9a3644c7fe473c ****/
+		/****** LProp3d_SLProps::D1V ******/
+		/****** md5 signature: ad864d52b93c95482f9a3644c7fe473c ******/
 		%feature("compactdefaultargs") D1V;
 		%feature("autodoc", "Return
 -------
@@ -589,8 +589,8 @@ Returns the first v derivative. the derivative is computed if it has not been ye
 ") D1V;
 		const gp_Vec D1V();
 
-		/****************** D2U ******************/
-		/**** md5 signature: 0472ef4d94574816aeb47829a66bdbae ****/
+		/****** LProp3d_SLProps::D2U ******/
+		/****** md5 signature: 0472ef4d94574816aeb47829a66bdbae ******/
 		%feature("compactdefaultargs") D2U;
 		%feature("autodoc", "Return
 -------
@@ -602,8 +602,8 @@ Returns the second u derivatives the derivative is computed if it has not been y
 ") D2U;
 		const gp_Vec D2U();
 
-		/****************** D2V ******************/
-		/**** md5 signature: c70c5cc9b31ef0a3470d3c29498b5305 ****/
+		/****** LProp3d_SLProps::D2V ******/
+		/****** md5 signature: c70c5cc9b31ef0a3470d3c29498b5305 ******/
 		%feature("compactdefaultargs") D2V;
 		%feature("autodoc", "Return
 -------
@@ -615,8 +615,8 @@ Returns the second v derivative. the derivative is computed if it has not been y
 ") D2V;
 		const gp_Vec D2V();
 
-		/****************** DUV ******************/
-		/**** md5 signature: 93a293abda31f525f2bff5034aabc11a ****/
+		/****** LProp3d_SLProps::DUV ******/
+		/****** md5 signature: 93a293abda31f525f2bff5034aabc11a ******/
 		%feature("compactdefaultargs") DUV;
 		%feature("autodoc", "Return
 -------
@@ -628,8 +628,8 @@ Returns the second uv cross-derivative. the derivative is computed if it has not
 ") DUV;
 		const gp_Vec DUV();
 
-		/****************** GaussianCurvature ******************/
-		/**** md5 signature: 6f1ed6a8aa49074ec45c7600ff9ed9ad ****/
+		/****** LProp3d_SLProps::GaussianCurvature ******/
+		/****** md5 signature: 6f1ed6a8aa49074ec45c7600ff9ed9ad ******/
 		%feature("compactdefaultargs") GaussianCurvature;
 		%feature("autodoc", "Return
 -------
@@ -641,8 +641,8 @@ Returns the gaussian curvature.
 ") GaussianCurvature;
 		Standard_Real GaussianCurvature();
 
-		/****************** IsCurvatureDefined ******************/
-		/**** md5 signature: 24d1c4dc0bb5e5b3cd3acab3d6b3723c ****/
+		/****** LProp3d_SLProps::IsCurvatureDefined ******/
+		/****** md5 signature: 24d1c4dc0bb5e5b3cd3acab3d6b3723c ******/
 		%feature("compactdefaultargs") IsCurvatureDefined;
 		%feature("autodoc", "Return
 -------
@@ -654,8 +654,8 @@ Returns true if the curvature is defined.
 ") IsCurvatureDefined;
 		Standard_Boolean IsCurvatureDefined();
 
-		/****************** IsNormalDefined ******************/
-		/**** md5 signature: b4faa90626237a62ab1311b7cb7ad450 ****/
+		/****** LProp3d_SLProps::IsNormalDefined ******/
+		/****** md5 signature: b4faa90626237a62ab1311b7cb7ad450 ******/
 		%feature("compactdefaultargs") IsNormalDefined;
 		%feature("autodoc", "Return
 -------
@@ -667,8 +667,8 @@ Tells if the normal is defined.
 ") IsNormalDefined;
 		Standard_Boolean IsNormalDefined();
 
-		/****************** IsTangentUDefined ******************/
-		/**** md5 signature: 92ed6ca4fade225cd5464af6490033b3 ****/
+		/****** LProp3d_SLProps::IsTangentUDefined ******/
+		/****** md5 signature: 92ed6ca4fade225cd5464af6490033b3 ******/
 		%feature("compactdefaultargs") IsTangentUDefined;
 		%feature("autodoc", "Return
 -------
@@ -680,8 +680,8 @@ Returns true if the u tangent is defined. for example, the tangent is not define
 ") IsTangentUDefined;
 		Standard_Boolean IsTangentUDefined();
 
-		/****************** IsTangentVDefined ******************/
-		/**** md5 signature: 53c94c0bb0d39a933984467e0683397e ****/
+		/****** LProp3d_SLProps::IsTangentVDefined ******/
+		/****** md5 signature: 53c94c0bb0d39a933984467e0683397e ******/
 		%feature("compactdefaultargs") IsTangentVDefined;
 		%feature("autodoc", "Return
 -------
@@ -693,8 +693,8 @@ Returns if the v tangent is defined. for example, the tangent is not defined if 
 ") IsTangentVDefined;
 		Standard_Boolean IsTangentVDefined();
 
-		/****************** IsUmbilic ******************/
-		/**** md5 signature: a045467d1ec2cad50bd2dfbeab29b8fd ****/
+		/****** LProp3d_SLProps::IsUmbilic ******/
+		/****** md5 signature: a045467d1ec2cad50bd2dfbeab29b8fd ******/
 		%feature("compactdefaultargs") IsUmbilic;
 		%feature("autodoc", "Return
 -------
@@ -706,8 +706,8 @@ Returns true if the point is umbilic (i.e. if the curvature is constant).
 ") IsUmbilic;
 		Standard_Boolean IsUmbilic();
 
-		/****************** MaxCurvature ******************/
-		/**** md5 signature: 42c5b0c05da3040d5856fffc987ed742 ****/
+		/****** LProp3d_SLProps::MaxCurvature ******/
+		/****** md5 signature: 42c5b0c05da3040d5856fffc987ed742 ******/
 		%feature("compactdefaultargs") MaxCurvature;
 		%feature("autodoc", "Return
 -------
@@ -719,8 +719,8 @@ Returns the maximum curvature.
 ") MaxCurvature;
 		Standard_Real MaxCurvature();
 
-		/****************** MeanCurvature ******************/
-		/**** md5 signature: 5c7a78b552e4ca890e50b485026f52f3 ****/
+		/****** LProp3d_SLProps::MeanCurvature ******/
+		/****** md5 signature: 5c7a78b552e4ca890e50b485026f52f3 ******/
 		%feature("compactdefaultargs") MeanCurvature;
 		%feature("autodoc", "Return
 -------
@@ -732,8 +732,8 @@ Returns the mean curvature.
 ") MeanCurvature;
 		Standard_Real MeanCurvature();
 
-		/****************** MinCurvature ******************/
-		/**** md5 signature: 9c5c8915c2ccf5b49a49ab2765ec946f ****/
+		/****** LProp3d_SLProps::MinCurvature ******/
+		/****** md5 signature: 9c5c8915c2ccf5b49a49ab2765ec946f ******/
 		%feature("compactdefaultargs") MinCurvature;
 		%feature("autodoc", "Return
 -------
@@ -745,8 +745,8 @@ Returns the minimum curvature.
 ") MinCurvature;
 		Standard_Real MinCurvature();
 
-		/****************** Normal ******************/
-		/**** md5 signature: 24a2507aa20216689971a0ec1fd83f76 ****/
+		/****** LProp3d_SLProps::Normal ******/
+		/****** md5 signature: 24a2507aa20216689971a0ec1fd83f76 ******/
 		%feature("compactdefaultargs") Normal;
 		%feature("autodoc", "Return
 -------
@@ -758,8 +758,8 @@ Returns the normal direction.
 ") Normal;
 		const gp_Dir Normal();
 
-		/****************** SetParameters ******************/
-		/**** md5 signature: 766228d61435cf9eaba866b58733ed73 ****/
+		/****** LProp3d_SLProps::SetParameters ******/
+		/****** md5 signature: 766228d61435cf9eaba866b58733ed73 ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
@@ -777,8 +777,8 @@ Initializes the local properties of the surface s for the new parameter values (
 ") SetParameters;
 		void SetParameters(const Standard_Real U, const Standard_Real V);
 
-		/****************** SetSurface ******************/
-		/**** md5 signature: 31b5f8e96962760e8ffab10ebcefd535 ****/
+		/****** LProp3d_SLProps::SetSurface ******/
+		/****** md5 signature: 31b5f8e96962760e8ffab10ebcefd535 ******/
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "
 Parameters
@@ -795,8 +795,8 @@ Initializes the local properties of the surface s for the new surface.
 ") SetSurface;
 		void SetSurface(const opencascade::handle<Adaptor3d_Surface> & S);
 
-		/****************** TangentU ******************/
-		/**** md5 signature: ff20f7d1d23e153974b932d55fa30a7f ****/
+		/****** LProp3d_SLProps::TangentU ******/
+		/****** md5 signature: ff20f7d1d23e153974b932d55fa30a7f ******/
 		%feature("compactdefaultargs") TangentU;
 		%feature("autodoc", "
 Parameters
@@ -813,8 +813,8 @@ Returns the tangent direction <d> on the iso-v.
 ") TangentU;
 		void TangentU(gp_Dir & D);
 
-		/****************** TangentV ******************/
-		/**** md5 signature: 8241dc858e42533746e4d61351ceccd4 ****/
+		/****** LProp3d_SLProps::TangentV ******/
+		/****** md5 signature: 8241dc858e42533746e4d61351ceccd4 ******/
 		%feature("compactdefaultargs") TangentV;
 		%feature("autodoc", "
 Parameters
@@ -831,8 +831,8 @@ Returns the tangent direction <d> on the iso-v.
 ") TangentV;
 		void TangentV(gp_Dir & D);
 
-		/****************** Value ******************/
-		/**** md5 signature: eddd2908948849b73f6d8aacab318652 ****/
+		/****** LProp3d_SLProps::Value ******/
+		/****** md5 signature: eddd2908948849b73f6d8aacab318652 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -858,8 +858,8 @@ Returns the point.
 ****************************/
 class LProp3d_SurfaceTool {
 	public:
-		/****************** Bounds ******************/
-		/**** md5 signature: 2f47c789bea86a8d768de90521a99be5 ****/
+		/****** LProp3d_SurfaceTool::Bounds ******/
+		/****** md5 signature: 2f47c789bea86a8d768de90521a99be5 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -879,8 +879,8 @@ Returns the bounds of the hsurface.
 ") Bounds;
 		static void Bounds(const opencascade::handle<Adaptor3d_Surface> & S, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 0fa75bd197e4456fe4ae2b28cfedb774 ****/
+		/****** LProp3d_SurfaceTool::Continuity ******/
+		/****** md5 signature: 0fa75bd197e4456fe4ae2b28cfedb774 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -897,8 +897,8 @@ Returns the order of continuity of the hsurface <s>. returns 1: first derivative
 ") Continuity;
 		static Standard_Integer Continuity(const opencascade::handle<Adaptor3d_Surface> & S);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 0ed65c587f44222a126bf3c8a594165d ****/
+		/****** LProp3d_SurfaceTool::D1 ******/
+		/****** md5 signature: 0ed65c587f44222a126bf3c8a594165d ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -920,8 +920,8 @@ Computes the point <p> and first derivative <d1*> of parameter <u> and <v> on th
 ") D1;
 		static void D1(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
-		/****************** D2 ******************/
-		/**** md5 signature: a2a0e00ba5339b2afc6c2cca9361278c ****/
+		/****** LProp3d_SurfaceTool::D2 ******/
+		/****** md5 signature: a2a0e00ba5339b2afc6c2cca9361278c ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -946,8 +946,8 @@ Computes the point <p>, the first derivative <d1*> and second derivative <d2*> o
 ") D2;
 		static void D2(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & DUV);
 
-		/****************** DN ******************/
-		/**** md5 signature: bcc30853ace75615fb49f72515a4abb1 ****/
+		/****** LProp3d_SurfaceTool::DN ******/
+		/****** md5 signature: bcc30853ace75615fb49f72515a4abb1 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -968,8 +968,8 @@ No available documentation.
 ") DN;
 		static gp_Vec DN(const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real U, const Standard_Real V, const Standard_Integer IU, const Standard_Integer IV);
 
-		/****************** Value ******************/
-		/**** md5 signature: 8c6567385008e24d9a3e3cf268ab3933 ****/
+		/****** LProp3d_SurfaceTool::Value ******/
+		/****** md5 signature: 8c6567385008e24d9a3e3cf268ab3933 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters

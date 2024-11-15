@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CSLIBDOCSTRING
 "CSLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_cslib.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_cslib.html"
 %enddef
 %module (package="OCC.Core", docstring=CSLIBDOCSTRING) CSLib
 
@@ -147,8 +147,8 @@ CSLib_D1NuIsParallelD1Nv = CSLib_NormalStatus.CSLib_D1NuIsParallelD1Nv
 %rename(cslib) CSLib;
 class CSLib {
 	public:
-		/****************** DNNUV ******************/
-		/**** md5 signature: f674d5bb3da7d5c8ec8964019c53fd6f ****/
+		/****** CSLib::DNNUV ******/
+		/****** md5 signature: f674d5bb3da7d5c8ec8964019c53fd6f ******/
 		%feature("compactdefaultargs") DNNUV;
 		%feature("autodoc", "
 Parameters
@@ -167,8 +167,8 @@ Description
 ") DNNUV;
 		static gp_Vec DNNUV(const Standard_Integer Nu, const Standard_Integer Nv, const TColgp_Array2OfVec & DerSurf);
 
-		/****************** DNNUV ******************/
-		/**** md5 signature: b9480cb99392e18e493b1734f5a8bb7a ****/
+		/****** CSLib::DNNUV ******/
+		/****** md5 signature: b9480cb99392e18e493b1734f5a8bb7a ******/
 		%feature("compactdefaultargs") DNNUV;
 		%feature("autodoc", "
 Parameters
@@ -188,8 +188,8 @@ Computes the derivatives of order nu in the direction nu and nv in the direction
 ") DNNUV;
 		static gp_Vec DNNUV(const Standard_Integer Nu, const Standard_Integer Nv, const TColgp_Array2OfVec & DerSurf1, const TColgp_Array2OfVec & DerSurf2);
 
-		/****************** DNNormal ******************/
-		/**** md5 signature: 69065aef058eb5e08acc436add152f29 ****/
+		/****** CSLib::DNNormal ******/
+		/****** md5 signature: 69065aef058eb5e08acc436add152f29 ******/
 		%feature("compactdefaultargs") DNNormal;
 		%feature("autodoc", "
 Parameters
@@ -210,8 +210,8 @@ Description
 ") DNNormal;
 		static gp_Vec DNNormal(const Standard_Integer Nu, const Standard_Integer Nv, const TColgp_Array2OfVec & DerNUV, const Standard_Integer Iduref = 0, const Standard_Integer Idvref = 0);
 
-		/****************** Normal ******************/
-		/**** md5 signature: 981b761b520114039d71ca5786f4799c ****/
+		/****** CSLib::Normal ******/
+		/****** md5 signature: 981b761b520114039d71ca5786f4799c ******/
 		%feature("compactdefaultargs") Normal;
 		%feature("autodoc", "
 Parameters
@@ -231,8 +231,8 @@ The following functions computes the normal to a surface inherits functionwithde
 ") Normal;
 		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const Standard_Real SinTol, CSLib_DerivativeStatus &OutValue, gp_Dir & Normal);
 
-		/****************** Normal ******************/
-		/**** md5 signature: c6f714a72df04467bcde57a861427ba8 ****/
+		/****** CSLib::Normal ******/
+		/****** md5 signature: c6f714a72df04467bcde57a861427ba8 ******/
 		%feature("compactdefaultargs") Normal;
 		%feature("autodoc", "
 Parameters
@@ -256,8 +256,8 @@ If there is a singularity on the surface the previous method cannot compute the 
 ") Normal;
 		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const gp_Vec & D2U, const gp_Vec & D2V, const gp_Vec & D2UV, const Standard_Real SinTol, Standard_Boolean &OutValue, CSLib_NormalStatus &OutValue, gp_Dir & Normal);
 
-		/****************** Normal ******************/
-		/**** md5 signature: c279b71fb514c274c1c831d9fc8fe04b ****/
+		/****** CSLib::Normal ******/
+		/****** md5 signature: c279b71fb514c274c1c831d9fc8fe04b ******/
 		%feature("compactdefaultargs") Normal;
 		%feature("autodoc", "
 Parameters
@@ -277,8 +277,8 @@ Computes the normal direction of a surface as the cross product between d1u and 
 ") Normal;
 		static void Normal(const gp_Vec & D1U, const gp_Vec & D1V, const Standard_Real MagTol, CSLib_NormalStatus &OutValue, gp_Dir & Normal);
 
-		/****************** Normal ******************/
-		/**** md5 signature: 88a6c5086247b570883b6e6a97c94c26 ****/
+		/****** CSLib::Normal ******/
+		/****** md5 signature: 88a6c5086247b570883b6e6a97c94c26 ******/
 		%feature("compactdefaultargs") Normal;
 		%feature("autodoc", "
 Parameters
@@ -320,8 +320,8 @@ Find the first order k0 of deriviative of nuv where: foreach order < k0 all the 
 **********************/
 class CSLib_Class2d {
 	public:
-		/****************** CSLib_Class2d ******************/
-		/**** md5 signature: 58ef837df944717c9a99b4d352cbc9e8 ****/
+		/****** CSLib_Class2d::CSLib_Class2d ******/
+		/****** md5 signature: 58ef837df944717c9a99b4d352cbc9e8 ******/
 		%feature("compactdefaultargs") CSLib_Class2d;
 		%feature("autodoc", "
 Parameters
@@ -344,8 +344,8 @@ Constructs the 2d-polygon. thepnts2d is the set of the vertices (closed polygon 
 ") CSLib_Class2d;
 		 CSLib_Class2d(const TColgp_Array1OfPnt2d & thePnts2d, const Standard_Real theTolU, const Standard_Real theTolV, const Standard_Real theUMin, const Standard_Real theVMin, const Standard_Real theUMax, const Standard_Real theVMax);
 
-		/****************** CSLib_Class2d ******************/
-		/**** md5 signature: 5f71d219685ae532f521ddc75d2d90b2 ****/
+		/****** CSLib_Class2d::CSLib_Class2d ******/
+		/****** md5 signature: 5f71d219685ae532f521ddc75d2d90b2 ******/
 		%feature("compactdefaultargs") CSLib_Class2d;
 		%feature("autodoc", "
 Parameters
@@ -368,8 +368,8 @@ Constructs the 2d-polygon. thepnts2d is the set of the vertices (closed polygon 
 ") CSLib_Class2d;
 		 CSLib_Class2d(const TColgp_SequenceOfPnt2d & thePnts2d, const Standard_Real theTolU, const Standard_Real theTolV, const Standard_Real theUMin, const Standard_Real theVMin, const Standard_Real theUMax, const Standard_Real theVMax);
 
-		/****************** InternalSiDans ******************/
-		/**** md5 signature: 6857130ec6a90b704692bb0184af3b71 ****/
+		/****** CSLib_Class2d::InternalSiDans ******/
+		/****** md5 signature: 6857130ec6a90b704692bb0184af3b71 ******/
 		%feature("compactdefaultargs") InternalSiDans;
 		%feature("autodoc", "
 Parameters
@@ -387,8 +387,8 @@ No available documentation.
 ") InternalSiDans;
 		Standard_Integer InternalSiDans(const Standard_Real X, const Standard_Real Y);
 
-		/****************** InternalSiDansOuOn ******************/
-		/**** md5 signature: f60153c16f80cdf69aaea130d49abd02 ****/
+		/****** CSLib_Class2d::InternalSiDansOuOn ******/
+		/****** md5 signature: f60153c16f80cdf69aaea130d49abd02 ******/
 		%feature("compactdefaultargs") InternalSiDansOuOn;
 		%feature("autodoc", "
 Parameters
@@ -406,8 +406,8 @@ No available documentation.
 ") InternalSiDansOuOn;
 		Standard_Integer InternalSiDansOuOn(const Standard_Real X, const Standard_Real Y);
 
-		/****************** SiDans ******************/
-		/**** md5 signature: 9b220e8bf6a2497107b0da19cdf5412c ****/
+		/****** CSLib_Class2d::SiDans ******/
+		/****** md5 signature: 9b220e8bf6a2497107b0da19cdf5412c ******/
 		%feature("compactdefaultargs") SiDans;
 		%feature("autodoc", "
 Parameters
@@ -424,8 +424,8 @@ No available documentation.
 ") SiDans;
 		Standard_Integer SiDans(const gp_Pnt2d & P);
 
-		/****************** SiDans_OnMode ******************/
-		/**** md5 signature: e555cb83d2160f5058edabf2250efcbf ****/
+		/****** CSLib_Class2d::SiDans_OnMode ******/
+		/****** md5 signature: e555cb83d2160f5058edabf2250efcbf ******/
 		%feature("compactdefaultargs") SiDans_OnMode;
 		%feature("autodoc", "
 Parameters
@@ -457,8 +457,8 @@ No available documentation.
 ****************************/
 class CSLib_NormalPolyDef : public math_FunctionWithDerivative {
 	public:
-		/****************** CSLib_NormalPolyDef ******************/
-		/**** md5 signature: 7c0615f71d5d9d2b2644fff475bf64ce ****/
+		/****** CSLib_NormalPolyDef::CSLib_NormalPolyDef ******/
+		/****** md5 signature: 7c0615f71d5d9d2b2644fff475bf64ce ******/
 		%feature("compactdefaultargs") CSLib_NormalPolyDef;
 		%feature("autodoc", "
 Parameters
@@ -476,8 +476,8 @@ No available documentation.
 ") CSLib_NormalPolyDef;
 		 CSLib_NormalPolyDef(const Standard_Integer k0, const TColStd_Array1OfReal & li);
 
-		/****************** Derivative ******************/
-		/**** md5 signature: 95e91729f1fb548d9a62f690b302c323 ****/
+		/****** CSLib_NormalPolyDef::Derivative ******/
+		/****** md5 signature: 95e91729f1fb548d9a62f690b302c323 ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
@@ -494,8 +494,8 @@ Computes the derivative <d> of the function for the variable <x>. returns true i
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
-		/****************** Value ******************/
-		/**** md5 signature: 860bcc3da162e9f9f232f07518550196 ****/
+		/****** CSLib_NormalPolyDef::Value ******/
+		/****** md5 signature: 860bcc3da162e9f9f232f07518550196 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -512,8 +512,8 @@ Computes the value <f>of the function for the variable <x>. returns true if the 
 ") Value;
 		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
-		/****************** Values ******************/
-		/**** md5 signature: fd71eb9a1a2bd16185bbb032c3d29afc ****/
+		/****** CSLib_NormalPolyDef::Values ******/
+		/****** md5 signature: fd71eb9a1a2bd16185bbb032c3d29afc ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters

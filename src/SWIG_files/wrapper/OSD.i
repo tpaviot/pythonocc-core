@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define OSDDOCSTRING
 "OSD module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_osd.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_osd.html"
 %enddef
 %module (package="OCC.Core", docstring=OSDDOCSTRING) OSD
 

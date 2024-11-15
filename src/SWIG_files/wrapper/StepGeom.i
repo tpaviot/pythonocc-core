@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPGEOMDOCSTRING
 "StepGeom module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_stepgeom.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepgeom.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPGEOMDOCSTRING) StepGeom
 
@@ -344,8 +344,8 @@ typedef NCollection_Array2<opencascade::handle<StepGeom_SurfacePatch>> StepGeom_
 ********************************/
 class StepGeom_Axis2Placement : public StepData_SelectType {
 	public:
-		/****************** StepGeom_Axis2Placement ******************/
-		/**** md5 signature: 872eba1255b28b4efb26fda855939b32 ****/
+		/****** StepGeom_Axis2Placement::StepGeom_Axis2Placement ******/
+		/****** md5 signature: 872eba1255b28b4efb26fda855939b32 ******/
 		%feature("compactdefaultargs") StepGeom_Axis2Placement;
 		%feature("autodoc", "Return
 -------
@@ -357,8 +357,8 @@ Returns a axis2placement selecttype.
 ") StepGeom_Axis2Placement;
 		 StepGeom_Axis2Placement();
 
-		/****************** Axis2Placement2d ******************/
-		/**** md5 signature: 1e2117f9f44693cfba5d5bdae861e60f ****/
+		/****** StepGeom_Axis2Placement::Axis2Placement2d ******/
+		/****** md5 signature: 1e2117f9f44693cfba5d5bdae861e60f ******/
 		%feature("compactdefaultargs") Axis2Placement2d;
 		%feature("autodoc", "Return
 -------
@@ -370,8 +370,8 @@ Returns value as a axis2placement2d (null if another type).
 ") Axis2Placement2d;
 		opencascade::handle<StepGeom_Axis2Placement2d> Axis2Placement2d();
 
-		/****************** Axis2Placement3d ******************/
-		/**** md5 signature: c9e96f5e4c0b7eb079fbe3bc135a46fe ****/
+		/****** StepGeom_Axis2Placement::Axis2Placement3d ******/
+		/****** md5 signature: c9e96f5e4c0b7eb079fbe3bc135a46fe ******/
 		%feature("compactdefaultargs") Axis2Placement3d;
 		%feature("autodoc", "Return
 -------
@@ -383,8 +383,8 @@ Returns value as a axis2placement3d (null if another type).
 ") Axis2Placement3d;
 		opencascade::handle<StepGeom_Axis2Placement3d> Axis2Placement3d();
 
-		/****************** CaseNum ******************/
-		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
+		/****** StepGeom_Axis2Placement::CaseNum ******/
+		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -415,8 +415,8 @@ Recognizes a axis2placement kind entity that is: 1 -> axis2placement2d 2 -> axis
 ***************************************/
 class StepGeom_CompositeCurveSegment : public Standard_Transient {
 	public:
-		/****************** StepGeom_CompositeCurveSegment ******************/
-		/**** md5 signature: e842f4c7bd06b992b99e0d6204ca456e ****/
+		/****** StepGeom_CompositeCurveSegment::StepGeom_CompositeCurveSegment ******/
+		/****** md5 signature: e842f4c7bd06b992b99e0d6204ca456e ******/
 		%feature("compactdefaultargs") StepGeom_CompositeCurveSegment;
 		%feature("autodoc", "Return
 -------
@@ -428,8 +428,8 @@ Returns a compositecurvesegment.
 ") StepGeom_CompositeCurveSegment;
 		 StepGeom_CompositeCurveSegment();
 
-		/****************** Init ******************/
-		/**** md5 signature: 2e8b8cc4b976c35b0ee57d8a38cb922b ****/
+		/****** StepGeom_CompositeCurveSegment::Init ******/
+		/****** md5 signature: 2e8b8cc4b976c35b0ee57d8a38cb922b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -448,8 +448,8 @@ No available documentation.
 ") Init;
 		void Init(const StepGeom_TransitionCode aTransition, const Standard_Boolean aSameSense, const opencascade::handle<StepGeom_Curve> & aParentCurve);
 
-		/****************** ParentCurve ******************/
-		/**** md5 signature: 97e621a56f129c95047d611625edb505 ****/
+		/****** StepGeom_CompositeCurveSegment::ParentCurve ******/
+		/****** md5 signature: 97e621a56f129c95047d611625edb505 ******/
 		%feature("compactdefaultargs") ParentCurve;
 		%feature("autodoc", "Return
 -------
@@ -461,8 +461,8 @@ No available documentation.
 ") ParentCurve;
 		opencascade::handle<StepGeom_Curve> ParentCurve();
 
-		/****************** SameSense ******************/
-		/**** md5 signature: 738a5547658f3a15a3a7e5e372f16add ****/
+		/****** StepGeom_CompositeCurveSegment::SameSense ******/
+		/****** md5 signature: 738a5547658f3a15a3a7e5e372f16add ******/
 		%feature("compactdefaultargs") SameSense;
 		%feature("autodoc", "Return
 -------
@@ -474,8 +474,8 @@ No available documentation.
 ") SameSense;
 		Standard_Boolean SameSense();
 
-		/****************** SetParentCurve ******************/
-		/**** md5 signature: b904f7ff5ac3c9406128ef65e64ce749 ****/
+		/****** StepGeom_CompositeCurveSegment::SetParentCurve ******/
+		/****** md5 signature: b904f7ff5ac3c9406128ef65e64ce749 ******/
 		%feature("compactdefaultargs") SetParentCurve;
 		%feature("autodoc", "
 Parameters
@@ -492,8 +492,8 @@ No available documentation.
 ") SetParentCurve;
 		void SetParentCurve(const opencascade::handle<StepGeom_Curve> & aParentCurve);
 
-		/****************** SetSameSense ******************/
-		/**** md5 signature: 2608ebad93831004ef1c8f76b311e415 ****/
+		/****** StepGeom_CompositeCurveSegment::SetSameSense ******/
+		/****** md5 signature: 2608ebad93831004ef1c8f76b311e415 ******/
 		%feature("compactdefaultargs") SetSameSense;
 		%feature("autodoc", "
 Parameters
@@ -510,8 +510,8 @@ No available documentation.
 ") SetSameSense;
 		void SetSameSense(const Standard_Boolean aSameSense);
 
-		/****************** SetTransition ******************/
-		/**** md5 signature: e531316a04afa685ba989d138235b465 ****/
+		/****** StepGeom_CompositeCurveSegment::SetTransition ******/
+		/****** md5 signature: e531316a04afa685ba989d138235b465 ******/
 		%feature("compactdefaultargs") SetTransition;
 		%feature("autodoc", "
 Parameters
@@ -528,8 +528,8 @@ No available documentation.
 ") SetTransition;
 		void SetTransition(const StepGeom_TransitionCode aTransition);
 
-		/****************** Transition ******************/
-		/**** md5 signature: 4d4955355f5ae5f2d325011ff79e70f2 ****/
+		/****** StepGeom_CompositeCurveSegment::Transition ******/
+		/****** md5 signature: 4d4955355f5ae5f2d325011ff79e70f2 ******/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "Return
 -------
@@ -557,8 +557,8 @@ No available documentation.
 ********************************/
 class StepGeom_CurveOnSurface : public StepData_SelectType {
 	public:
-		/****************** StepGeom_CurveOnSurface ******************/
-		/**** md5 signature: 15bfbfffa8612b6a179cc6ebef6b3fd0 ****/
+		/****** StepGeom_CurveOnSurface::StepGeom_CurveOnSurface ******/
+		/****** md5 signature: 15bfbfffa8612b6a179cc6ebef6b3fd0 ******/
 		%feature("compactdefaultargs") StepGeom_CurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -570,8 +570,8 @@ Returns a curveonsurface selecttype.
 ") StepGeom_CurveOnSurface;
 		 StepGeom_CurveOnSurface();
 
-		/****************** CaseNum ******************/
-		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
+		/****** StepGeom_CurveOnSurface::CaseNum ******/
+		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -588,8 +588,8 @@ Recognizes a curveonsurface kind entity that is: 1 -> pcurve 2 -> surfacecurve 3
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** CompositeCurveOnSurface ******************/
-		/**** md5 signature: 3d75e9d8480b471e96307b226ca9e42c ****/
+		/****** StepGeom_CurveOnSurface::CompositeCurveOnSurface ******/
+		/****** md5 signature: 3d75e9d8480b471e96307b226ca9e42c ******/
 		%feature("compactdefaultargs") CompositeCurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -601,8 +601,8 @@ Returns value as a compositecurveonsurface (null if another type).
 ") CompositeCurveOnSurface;
 		opencascade::handle<StepGeom_CompositeCurveOnSurface> CompositeCurveOnSurface();
 
-		/****************** Pcurve ******************/
-		/**** md5 signature: 8d49697f35a3e68e7c4c25db189ca294 ****/
+		/****** StepGeom_CurveOnSurface::Pcurve ******/
+		/****** md5 signature: 8d49697f35a3e68e7c4c25db189ca294 ******/
 		%feature("compactdefaultargs") Pcurve;
 		%feature("autodoc", "Return
 -------
@@ -614,8 +614,8 @@ Returns value as a pcurve (null if another type).
 ") Pcurve;
 		opencascade::handle<StepGeom_Pcurve> Pcurve();
 
-		/****************** SurfaceCurve ******************/
-		/**** md5 signature: 912a183bfc42f9cf5308fd23c8e16134 ****/
+		/****** StepGeom_CurveOnSurface::SurfaceCurve ******/
+		/****** md5 signature: 912a183bfc42f9cf5308fd23c8e16134 ******/
 		%feature("compactdefaultargs") SurfaceCurve;
 		%feature("autodoc", "Return
 -------
@@ -641,8 +641,8 @@ Returns value as a surfacecurve (null if another type).
 *************************************************************************/
 class StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx : public StepRepr_RepresentationContext {
 	public:
-		/****************** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx ******************/
-		/**** md5 signature: 2316119de1e82580b646e263a06c34ad ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx ******/
+		/****** md5 signature: 2316119de1e82580b646e263a06c34ad ******/
 		%feature("compactdefaultargs") StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
 		%feature("autodoc", "Return
 -------
@@ -654,8 +654,8 @@ No available documentation.
 ") StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
 		 StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx();
 
-		/****************** CoordinateSpaceDimension ******************/
-		/**** md5 signature: 2c90c467d92e9483470dbcba22eedaaf ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::CoordinateSpaceDimension ******/
+		/****** md5 signature: 2c90c467d92e9483470dbcba22eedaaf ******/
 		%feature("compactdefaultargs") CoordinateSpaceDimension;
 		%feature("autodoc", "Return
 -------
@@ -667,8 +667,8 @@ No available documentation.
 ") CoordinateSpaceDimension;
 		Standard_Integer CoordinateSpaceDimension();
 
-		/****************** GeometricRepresentationContext ******************/
-		/**** md5 signature: 8f45e045f983d7fe963d17f1962c1f51 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::GeometricRepresentationContext ******/
+		/****** md5 signature: 8f45e045f983d7fe963d17f1962c1f51 ******/
 		%feature("compactdefaultargs") GeometricRepresentationContext;
 		%feature("autodoc", "Return
 -------
@@ -680,8 +680,8 @@ No available documentation.
 ") GeometricRepresentationContext;
 		opencascade::handle<StepGeom_GeometricRepresentationContext> GeometricRepresentationContext();
 
-		/****************** GlobalUncertaintyAssignedContext ******************/
-		/**** md5 signature: 73f2ff8d54aac92b968d603ebaa6af3c ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::GlobalUncertaintyAssignedContext ******/
+		/****** md5 signature: 73f2ff8d54aac92b968d603ebaa6af3c ******/
 		%feature("compactdefaultargs") GlobalUncertaintyAssignedContext;
 		%feature("autodoc", "Return
 -------
@@ -693,8 +693,8 @@ No available documentation.
 ") GlobalUncertaintyAssignedContext;
 		opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> GlobalUncertaintyAssignedContext();
 
-		/****************** GlobalUnitAssignedContext ******************/
-		/**** md5 signature: 22bcab26751a6c90dd2abf1d9af07a69 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::GlobalUnitAssignedContext ******/
+		/****** md5 signature: 22bcab26751a6c90dd2abf1d9af07a69 ******/
 		%feature("compactdefaultargs") GlobalUnitAssignedContext;
 		%feature("autodoc", "Return
 -------
@@ -706,8 +706,8 @@ No available documentation.
 ") GlobalUnitAssignedContext;
 		opencascade::handle<StepRepr_GlobalUnitAssignedContext> GlobalUnitAssignedContext();
 
-		/****************** Init ******************/
-		/**** md5 signature: e788a4837e744bcf74c671839190b683 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Init ******/
+		/****** md5 signature: e788a4837e744bcf74c671839190b683 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -728,8 +728,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationCtx, const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aGlobalUnitAssignedCtx, const opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> & aGlobalUncertaintyAssignedCtx);
 
-		/****************** Init ******************/
-		/**** md5 signature: 3766761dd90b669b99478c7756ba0885 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Init ******/
+		/****** md5 signature: 3766761dd90b669b99478c7756ba0885 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -750,8 +750,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const Standard_Integer aCoordinateSpaceDimension, const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits, const opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> & anUncertainty);
 
-		/****************** NbUncertainty ******************/
-		/**** md5 signature: bc672cddfac018558323036dccc4f0ec ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::NbUncertainty ******/
+		/****** md5 signature: bc672cddfac018558323036dccc4f0ec ******/
 		%feature("compactdefaultargs") NbUncertainty;
 		%feature("autodoc", "Return
 -------
@@ -763,8 +763,8 @@ No available documentation.
 ") NbUncertainty;
 		Standard_Integer NbUncertainty();
 
-		/****************** NbUnits ******************/
-		/**** md5 signature: 86bc891f14ee45cd28b37a18bf9c55a5 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::NbUnits ******/
+		/****** md5 signature: 86bc891f14ee45cd28b37a18bf9c55a5 ******/
 		%feature("compactdefaultargs") NbUnits;
 		%feature("autodoc", "Return
 -------
@@ -776,8 +776,8 @@ No available documentation.
 ") NbUnits;
 		Standard_Integer NbUnits();
 
-		/****************** SetCoordinateSpaceDimension ******************/
-		/**** md5 signature: 62b1bf4b87e6e782589eb6a66b96a21b ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetCoordinateSpaceDimension ******/
+		/****** md5 signature: 62b1bf4b87e6e782589eb6a66b96a21b ******/
 		%feature("compactdefaultargs") SetCoordinateSpaceDimension;
 		%feature("autodoc", "
 Parameters
@@ -794,8 +794,8 @@ No available documentation.
 ") SetCoordinateSpaceDimension;
 		void SetCoordinateSpaceDimension(const Standard_Integer aCoordinateSpaceDimension);
 
-		/****************** SetGeometricRepresentationContext ******************/
-		/**** md5 signature: 8913b4b6bbec9dde7331e171e32f0626 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetGeometricRepresentationContext ******/
+		/****** md5 signature: 8913b4b6bbec9dde7331e171e32f0626 ******/
 		%feature("compactdefaultargs") SetGeometricRepresentationContext;
 		%feature("autodoc", "
 Parameters
@@ -812,8 +812,8 @@ No available documentation.
 ") SetGeometricRepresentationContext;
 		void SetGeometricRepresentationContext(const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationContext);
 
-		/****************** SetGlobalUncertaintyAssignedContext ******************/
-		/**** md5 signature: d2ddec02f390743bc99e8919607a6328 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetGlobalUncertaintyAssignedContext ******/
+		/****** md5 signature: d2ddec02f390743bc99e8919607a6328 ******/
 		%feature("compactdefaultargs") SetGlobalUncertaintyAssignedContext;
 		%feature("autodoc", "
 Parameters
@@ -830,8 +830,8 @@ No available documentation.
 ") SetGlobalUncertaintyAssignedContext;
 		void SetGlobalUncertaintyAssignedContext(const opencascade::handle<StepRepr_GlobalUncertaintyAssignedContext> & aGlobalUncertaintyAssignedCtx);
 
-		/****************** SetGlobalUnitAssignedContext ******************/
-		/**** md5 signature: aeb1410b60cfa4646cfd9b6425a1b25d ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetGlobalUnitAssignedContext ******/
+		/****** md5 signature: aeb1410b60cfa4646cfd9b6425a1b25d ******/
 		%feature("compactdefaultargs") SetGlobalUnitAssignedContext;
 		%feature("autodoc", "
 Parameters
@@ -848,8 +848,8 @@ No available documentation.
 ") SetGlobalUnitAssignedContext;
 		void SetGlobalUnitAssignedContext(const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aGlobalUnitAssignedContext);
 
-		/****************** SetUncertainty ******************/
-		/**** md5 signature: c054224ac25dbcf2b6152ad1aba77e7c ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetUncertainty ******/
+		/****** md5 signature: c054224ac25dbcf2b6152ad1aba77e7c ******/
 		%feature("compactdefaultargs") SetUncertainty;
 		%feature("autodoc", "
 Parameters
@@ -866,8 +866,8 @@ No available documentation.
 ") SetUncertainty;
 		void SetUncertainty(const opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> & aUncertainty);
 
-		/****************** SetUnits ******************/
-		/**** md5 signature: eea45ef11a002984efb57090be89b405 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::SetUnits ******/
+		/****** md5 signature: eea45ef11a002984efb57090be89b405 ******/
 		%feature("compactdefaultargs") SetUnits;
 		%feature("autodoc", "
 Parameters
@@ -884,8 +884,8 @@ No available documentation.
 ") SetUnits;
 		void SetUnits(const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits);
 
-		/****************** Uncertainty ******************/
-		/**** md5 signature: 8ec020c7303861237c2895d6f2505dfe ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Uncertainty ******/
+		/****** md5 signature: 8ec020c7303861237c2895d6f2505dfe ******/
 		%feature("compactdefaultargs") Uncertainty;
 		%feature("autodoc", "Return
 -------
@@ -897,8 +897,8 @@ No available documentation.
 ") Uncertainty;
 		opencascade::handle<StepBasic_HArray1OfUncertaintyMeasureWithUnit> Uncertainty();
 
-		/****************** UncertaintyValue ******************/
-		/**** md5 signature: ae72ac2820c2cd31e09d467cfe44ffc7 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::UncertaintyValue ******/
+		/****** md5 signature: ae72ac2820c2cd31e09d467cfe44ffc7 ******/
 		%feature("compactdefaultargs") UncertaintyValue;
 		%feature("autodoc", "
 Parameters
@@ -915,8 +915,8 @@ No available documentation.
 ") UncertaintyValue;
 		opencascade::handle<StepBasic_UncertaintyMeasureWithUnit> UncertaintyValue(const Standard_Integer num);
 
-		/****************** Units ******************/
-		/**** md5 signature: ab46f8b94daa775f5aae38fe2b8f85c4 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Units ******/
+		/****** md5 signature: ab46f8b94daa775f5aae38fe2b8f85c4 ******/
 		%feature("compactdefaultargs") Units;
 		%feature("autodoc", "Return
 -------
@@ -928,8 +928,8 @@ No available documentation.
 ") Units;
 		opencascade::handle<StepBasic_HArray1OfNamedUnit> Units();
 
-		/****************** UnitsValue ******************/
-		/**** md5 signature: ae296669577f5a6856f8993a7c027227 ****/
+		/****** StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::UnitsValue ******/
+		/****** md5 signature: ae296669577f5a6856f8993a7c027227 ******/
 		%feature("compactdefaultargs") UnitsValue;
 		%feature("autodoc", "
 Parameters
@@ -962,8 +962,8 @@ No available documentation.
 ************************************************/
 class StepGeom_GeometricRepresentationContext : public StepRepr_RepresentationContext {
 	public:
-		/****************** StepGeom_GeometricRepresentationContext ******************/
-		/**** md5 signature: 5a783708e18e12b5ba194dd39a587df1 ****/
+		/****** StepGeom_GeometricRepresentationContext::StepGeom_GeometricRepresentationContext ******/
+		/****** md5 signature: 5a783708e18e12b5ba194dd39a587df1 ******/
 		%feature("compactdefaultargs") StepGeom_GeometricRepresentationContext;
 		%feature("autodoc", "Return
 -------
@@ -975,8 +975,8 @@ Returns a geometricrepresentationcontext.
 ") StepGeom_GeometricRepresentationContext;
 		 StepGeom_GeometricRepresentationContext();
 
-		/****************** CoordinateSpaceDimension ******************/
-		/**** md5 signature: 2c90c467d92e9483470dbcba22eedaaf ****/
+		/****** StepGeom_GeometricRepresentationContext::CoordinateSpaceDimension ******/
+		/****** md5 signature: 2c90c467d92e9483470dbcba22eedaaf ******/
 		%feature("compactdefaultargs") CoordinateSpaceDimension;
 		%feature("autodoc", "Return
 -------
@@ -988,8 +988,8 @@ No available documentation.
 ") CoordinateSpaceDimension;
 		Standard_Integer CoordinateSpaceDimension();
 
-		/****************** Init ******************/
-		/**** md5 signature: 4e202c87f49f05279f1b17cc80929f5c ****/
+		/****** StepGeom_GeometricRepresentationContext::Init ******/
+		/****** md5 signature: 4e202c87f49f05279f1b17cc80929f5c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1008,8 +1008,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const Standard_Integer aCoordinateSpaceDimension);
 
-		/****************** SetCoordinateSpaceDimension ******************/
-		/**** md5 signature: 62b1bf4b87e6e782589eb6a66b96a21b ****/
+		/****** StepGeom_GeometricRepresentationContext::SetCoordinateSpaceDimension ******/
+		/****** md5 signature: 62b1bf4b87e6e782589eb6a66b96a21b ******/
 		%feature("compactdefaultargs") SetCoordinateSpaceDimension;
 		%feature("autodoc", "
 Parameters
@@ -1042,8 +1042,8 @@ No available documentation.
 ****************************************************************************/
 class StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext : public StepRepr_RepresentationContext {
 	public:
-		/****************** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext ******************/
-		/**** md5 signature: 570ab92a1ca82d08371ec616e8a44a66 ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext ******/
+		/****** md5 signature: 570ab92a1ca82d08371ec616e8a44a66 ******/
 		%feature("compactdefaultargs") StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
 		%feature("autodoc", "Return
 -------
@@ -1055,8 +1055,8 @@ Returns a geometricrepresentationcontextandglobalunitassignedcontext.
 ") StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
 		 StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext();
 
-		/****************** CoordinateSpaceDimension ******************/
-		/**** md5 signature: 2c90c467d92e9483470dbcba22eedaaf ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::CoordinateSpaceDimension ******/
+		/****** md5 signature: 2c90c467d92e9483470dbcba22eedaaf ******/
 		%feature("compactdefaultargs") CoordinateSpaceDimension;
 		%feature("autodoc", "Return
 -------
@@ -1068,8 +1068,8 @@ No available documentation.
 ") CoordinateSpaceDimension;
 		Standard_Integer CoordinateSpaceDimension();
 
-		/****************** GeometricRepresentationContext ******************/
-		/**** md5 signature: 8f45e045f983d7fe963d17f1962c1f51 ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::GeometricRepresentationContext ******/
+		/****** md5 signature: 8f45e045f983d7fe963d17f1962c1f51 ******/
 		%feature("compactdefaultargs") GeometricRepresentationContext;
 		%feature("autodoc", "Return
 -------
@@ -1081,8 +1081,8 @@ No available documentation.
 ") GeometricRepresentationContext;
 		opencascade::handle<StepGeom_GeometricRepresentationContext> GeometricRepresentationContext();
 
-		/****************** GlobalUnitAssignedContext ******************/
-		/**** md5 signature: 22bcab26751a6c90dd2abf1d9af07a69 ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::GlobalUnitAssignedContext ******/
+		/****** md5 signature: 22bcab26751a6c90dd2abf1d9af07a69 ******/
 		%feature("compactdefaultargs") GlobalUnitAssignedContext;
 		%feature("autodoc", "Return
 -------
@@ -1094,8 +1094,8 @@ No available documentation.
 ") GlobalUnitAssignedContext;
 		opencascade::handle<StepRepr_GlobalUnitAssignedContext> GlobalUnitAssignedContext();
 
-		/****************** Init ******************/
-		/**** md5 signature: 11a5cae1c2e61eab652ea95df5655864 ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::Init ******/
+		/****** md5 signature: 11a5cae1c2e61eab652ea95df5655864 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1115,8 +1115,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationContext, const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aGlobalUnitAssignedContext);
 
-		/****************** Init ******************/
-		/**** md5 signature: 34cb520c30de66475e6128cb51d694ff ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::Init ******/
+		/****** md5 signature: 34cb520c30de66475e6128cb51d694ff ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1136,8 +1136,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const Standard_Integer aCoordinateSpaceDimension, const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits);
 
-		/****************** NbUnits ******************/
-		/**** md5 signature: 86bc891f14ee45cd28b37a18bf9c55a5 ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::NbUnits ******/
+		/****** md5 signature: 86bc891f14ee45cd28b37a18bf9c55a5 ******/
 		%feature("compactdefaultargs") NbUnits;
 		%feature("autodoc", "Return
 -------
@@ -1149,8 +1149,8 @@ No available documentation.
 ") NbUnits;
 		Standard_Integer NbUnits();
 
-		/****************** SetCoordinateSpaceDimension ******************/
-		/**** md5 signature: 62b1bf4b87e6e782589eb6a66b96a21b ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::SetCoordinateSpaceDimension ******/
+		/****** md5 signature: 62b1bf4b87e6e782589eb6a66b96a21b ******/
 		%feature("compactdefaultargs") SetCoordinateSpaceDimension;
 		%feature("autodoc", "
 Parameters
@@ -1167,8 +1167,8 @@ No available documentation.
 ") SetCoordinateSpaceDimension;
 		void SetCoordinateSpaceDimension(const Standard_Integer aCoordinateSpaceDimension);
 
-		/****************** SetGeometricRepresentationContext ******************/
-		/**** md5 signature: 8913b4b6bbec9dde7331e171e32f0626 ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::SetGeometricRepresentationContext ******/
+		/****** md5 signature: 8913b4b6bbec9dde7331e171e32f0626 ******/
 		%feature("compactdefaultargs") SetGeometricRepresentationContext;
 		%feature("autodoc", "
 Parameters
@@ -1185,8 +1185,8 @@ No available documentation.
 ") SetGeometricRepresentationContext;
 		void SetGeometricRepresentationContext(const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationContext);
 
-		/****************** SetGlobalUnitAssignedContext ******************/
-		/**** md5 signature: aeb1410b60cfa4646cfd9b6425a1b25d ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::SetGlobalUnitAssignedContext ******/
+		/****** md5 signature: aeb1410b60cfa4646cfd9b6425a1b25d ******/
 		%feature("compactdefaultargs") SetGlobalUnitAssignedContext;
 		%feature("autodoc", "
 Parameters
@@ -1203,8 +1203,8 @@ No available documentation.
 ") SetGlobalUnitAssignedContext;
 		void SetGlobalUnitAssignedContext(const opencascade::handle<StepRepr_GlobalUnitAssignedContext> & aGlobalUnitAssignedContext);
 
-		/****************** SetUnits ******************/
-		/**** md5 signature: eea45ef11a002984efb57090be89b405 ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::SetUnits ******/
+		/****** md5 signature: eea45ef11a002984efb57090be89b405 ******/
 		%feature("compactdefaultargs") SetUnits;
 		%feature("autodoc", "
 Parameters
@@ -1221,8 +1221,8 @@ No available documentation.
 ") SetUnits;
 		void SetUnits(const opencascade::handle<StepBasic_HArray1OfNamedUnit> & aUnits);
 
-		/****************** Units ******************/
-		/**** md5 signature: ab46f8b94daa775f5aae38fe2b8f85c4 ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::Units ******/
+		/****** md5 signature: ab46f8b94daa775f5aae38fe2b8f85c4 ******/
 		%feature("compactdefaultargs") Units;
 		%feature("autodoc", "Return
 -------
@@ -1234,8 +1234,8 @@ No available documentation.
 ") Units;
 		opencascade::handle<StepBasic_HArray1OfNamedUnit> Units();
 
-		/****************** UnitsValue ******************/
-		/**** md5 signature: ae296669577f5a6856f8993a7c027227 ****/
+		/****** StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext::UnitsValue ******/
+		/****** md5 signature: ae296669577f5a6856f8993a7c027227 ******/
 		%feature("compactdefaultargs") UnitsValue;
 		%feature("autodoc", "
 Parameters
@@ -1268,8 +1268,8 @@ No available documentation.
 **********************************************************************************/
 class StepGeom_GeometricRepresentationContextAndParametricRepresentationContext : public StepRepr_RepresentationContext {
 	public:
-		/****************** StepGeom_GeometricRepresentationContextAndParametricRepresentationContext ******************/
-		/**** md5 signature: 34bde20c34b7676b8cdff3a9c3e85c56 ****/
+		/****** StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::StepGeom_GeometricRepresentationContextAndParametricRepresentationContext ******/
+		/****** md5 signature: 34bde20c34b7676b8cdff3a9c3e85c56 ******/
 		%feature("compactdefaultargs") StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
 		%feature("autodoc", "Return
 -------
@@ -1281,8 +1281,8 @@ Empty constructor.
 ") StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
 		 StepGeom_GeometricRepresentationContextAndParametricRepresentationContext();
 
-		/****************** CoordinateSpaceDimension ******************/
-		/**** md5 signature: 2c90c467d92e9483470dbcba22eedaaf ****/
+		/****** StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::CoordinateSpaceDimension ******/
+		/****** md5 signature: 2c90c467d92e9483470dbcba22eedaaf ******/
 		%feature("compactdefaultargs") CoordinateSpaceDimension;
 		%feature("autodoc", "Return
 -------
@@ -1294,8 +1294,8 @@ No available documentation.
 ") CoordinateSpaceDimension;
 		Standard_Integer CoordinateSpaceDimension();
 
-		/****************** GeometricRepresentationContext ******************/
-		/**** md5 signature: 8f45e045f983d7fe963d17f1962c1f51 ****/
+		/****** StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::GeometricRepresentationContext ******/
+		/****** md5 signature: 8f45e045f983d7fe963d17f1962c1f51 ******/
 		%feature("compactdefaultargs") GeometricRepresentationContext;
 		%feature("autodoc", "Return
 -------
@@ -1307,8 +1307,8 @@ No available documentation.
 ") GeometricRepresentationContext;
 		opencascade::handle<StepGeom_GeometricRepresentationContext> GeometricRepresentationContext();
 
-		/****************** Init ******************/
-		/**** md5 signature: 30dfa78175ea47e2dea552c0a5581fcc ****/
+		/****** StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::Init ******/
+		/****** md5 signature: 30dfa78175ea47e2dea552c0a5581fcc ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1328,8 +1328,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationContext, const opencascade::handle<StepRepr_ParametricRepresentationContext> & aParametricRepresentationContext);
 
-		/****************** Init ******************/
-		/**** md5 signature: 4e202c87f49f05279f1b17cc80929f5c ****/
+		/****** StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::Init ******/
+		/****** md5 signature: 4e202c87f49f05279f1b17cc80929f5c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1348,8 +1348,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aContextIdentifier, const opencascade::handle<TCollection_HAsciiString> & aContextType, const Standard_Integer aCoordinateSpaceDimension);
 
-		/****************** ParametricRepresentationContext ******************/
-		/**** md5 signature: d5f1d4451d7030c6b1e2cb2f714d0038 ****/
+		/****** StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::ParametricRepresentationContext ******/
+		/****** md5 signature: d5f1d4451d7030c6b1e2cb2f714d0038 ******/
 		%feature("compactdefaultargs") ParametricRepresentationContext;
 		%feature("autodoc", "Return
 -------
@@ -1361,8 +1361,8 @@ No available documentation.
 ") ParametricRepresentationContext;
 		opencascade::handle<StepRepr_ParametricRepresentationContext> ParametricRepresentationContext();
 
-		/****************** SetCoordinateSpaceDimension ******************/
-		/**** md5 signature: 62b1bf4b87e6e782589eb6a66b96a21b ****/
+		/****** StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::SetCoordinateSpaceDimension ******/
+		/****** md5 signature: 62b1bf4b87e6e782589eb6a66b96a21b ******/
 		%feature("compactdefaultargs") SetCoordinateSpaceDimension;
 		%feature("autodoc", "
 Parameters
@@ -1379,8 +1379,8 @@ No available documentation.
 ") SetCoordinateSpaceDimension;
 		void SetCoordinateSpaceDimension(const Standard_Integer aCoordinateSpaceDimension);
 
-		/****************** SetGeometricRepresentationContext ******************/
-		/**** md5 signature: 8913b4b6bbec9dde7331e171e32f0626 ****/
+		/****** StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::SetGeometricRepresentationContext ******/
+		/****** md5 signature: 8913b4b6bbec9dde7331e171e32f0626 ******/
 		%feature("compactdefaultargs") SetGeometricRepresentationContext;
 		%feature("autodoc", "
 Parameters
@@ -1397,8 +1397,8 @@ No available documentation.
 ") SetGeometricRepresentationContext;
 		void SetGeometricRepresentationContext(const opencascade::handle<StepGeom_GeometricRepresentationContext> & aGeometricRepresentationContext);
 
-		/****************** SetParametricRepresentationContext ******************/
-		/**** md5 signature: d56242b1624b5c3c72ad0b58e03d142e ****/
+		/****** StepGeom_GeometricRepresentationContextAndParametricRepresentationContext::SetParametricRepresentationContext ******/
+		/****** md5 signature: d56242b1624b5c3c72ad0b58e03d142e ******/
 		%feature("compactdefaultargs") SetParametricRepresentationContext;
 		%feature("autodoc", "
 Parameters
@@ -1431,8 +1431,8 @@ No available documentation.
 *********************************************/
 class StepGeom_GeometricRepresentationItem : public StepRepr_RepresentationItem {
 	public:
-		/****************** StepGeom_GeometricRepresentationItem ******************/
-		/**** md5 signature: 30c17483dc3ed0daf2563e8d43a9a23e ****/
+		/****** StepGeom_GeometricRepresentationItem::StepGeom_GeometricRepresentationItem ******/
+		/****** md5 signature: 30c17483dc3ed0daf2563e8d43a9a23e ******/
 		%feature("compactdefaultargs") StepGeom_GeometricRepresentationItem;
 		%feature("autodoc", "Return
 -------
@@ -1460,8 +1460,8 @@ Returns a geometricrepresentationitem.
 *********************************/
 class StepGeom_PcurveOrSurface : public StepData_SelectType {
 	public:
-		/****************** StepGeom_PcurveOrSurface ******************/
-		/**** md5 signature: fbbfd95880743ab7d44c39912f254023 ****/
+		/****** StepGeom_PcurveOrSurface::StepGeom_PcurveOrSurface ******/
+		/****** md5 signature: fbbfd95880743ab7d44c39912f254023 ******/
 		%feature("compactdefaultargs") StepGeom_PcurveOrSurface;
 		%feature("autodoc", "Return
 -------
@@ -1473,8 +1473,8 @@ Returns a pcurveorsurface selecttype.
 ") StepGeom_PcurveOrSurface;
 		 StepGeom_PcurveOrSurface();
 
-		/****************** CaseNum ******************/
-		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
+		/****** StepGeom_PcurveOrSurface::CaseNum ******/
+		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1491,8 +1491,8 @@ Recognizes a pcurveorsurface kind entity that is: 1 -> pcurve 2 -> surface 0 els
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Pcurve ******************/
-		/**** md5 signature: 8d49697f35a3e68e7c4c25db189ca294 ****/
+		/****** StepGeom_PcurveOrSurface::Pcurve ******/
+		/****** md5 signature: 8d49697f35a3e68e7c4c25db189ca294 ******/
 		%feature("compactdefaultargs") Pcurve;
 		%feature("autodoc", "Return
 -------
@@ -1504,8 +1504,8 @@ Returns value as a pcurve (null if another type).
 ") Pcurve;
 		opencascade::handle<StepGeom_Pcurve> Pcurve();
 
-		/****************** Surface ******************/
-		/**** md5 signature: c2398e6bbff81fe9609620c081466496 ****/
+		/****** StepGeom_PcurveOrSurface::Surface ******/
+		/****** md5 signature: c2398e6bbff81fe9609620c081466496 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -1531,8 +1531,8 @@ Returns value as a surface (null if another type).
 *********************************/
 class StepGeom_SurfaceBoundary : public StepData_SelectType {
 	public:
-		/****************** StepGeom_SurfaceBoundary ******************/
-		/**** md5 signature: ea30763904967b0296fde6300f8914fc ****/
+		/****** StepGeom_SurfaceBoundary::StepGeom_SurfaceBoundary ******/
+		/****** md5 signature: ea30763904967b0296fde6300f8914fc ******/
 		%feature("compactdefaultargs") StepGeom_SurfaceBoundary;
 		%feature("autodoc", "Return
 -------
@@ -1544,8 +1544,8 @@ Empty constructor.
 ") StepGeom_SurfaceBoundary;
 		 StepGeom_SurfaceBoundary();
 
-		/****************** BoundaryCurve ******************/
-		/**** md5 signature: fa719026bf342c3a3584bff1f3d91dc4 ****/
+		/****** StepGeom_SurfaceBoundary::BoundaryCurve ******/
+		/****** md5 signature: fa719026bf342c3a3584bff1f3d91dc4 ******/
 		%feature("compactdefaultargs") BoundaryCurve;
 		%feature("autodoc", "Return
 -------
@@ -1557,8 +1557,8 @@ Returns value as boundarycurve (or null if another type).
 ") BoundaryCurve;
 		opencascade::handle<StepGeom_BoundaryCurve> BoundaryCurve();
 
-		/****************** CaseNum ******************/
-		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
+		/****** StepGeom_SurfaceBoundary::CaseNum ******/
+		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1575,8 +1575,8 @@ Recognizes a kind of surfaceboundary select type 1 -> boundarycurve from stepgeo
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** DegeneratePcurve ******************/
-		/**** md5 signature: de27d6a2678bf95cf7b687aa08705467 ****/
+		/****** StepGeom_SurfaceBoundary::DegeneratePcurve ******/
+		/****** md5 signature: de27d6a2678bf95cf7b687aa08705467 ******/
 		%feature("compactdefaultargs") DegeneratePcurve;
 		%feature("autodoc", "Return
 -------
@@ -1602,8 +1602,8 @@ Returns value as degeneratepcurve (or null if another type).
 ******************************/
 class StepGeom_SurfacePatch : public Standard_Transient {
 	public:
-		/****************** StepGeom_SurfacePatch ******************/
-		/**** md5 signature: e1128eb21d9d25e563cf0a74ebfb0c78 ****/
+		/****** StepGeom_SurfacePatch::StepGeom_SurfacePatch ******/
+		/****** md5 signature: e1128eb21d9d25e563cf0a74ebfb0c78 ******/
 		%feature("compactdefaultargs") StepGeom_SurfacePatch;
 		%feature("autodoc", "Return
 -------
@@ -1615,8 +1615,8 @@ Returns a surfacepatch.
 ") StepGeom_SurfacePatch;
 		 StepGeom_SurfacePatch();
 
-		/****************** Init ******************/
-		/**** md5 signature: 9b87ee6c7a97daa36acb04b4b1806892 ****/
+		/****** StepGeom_SurfacePatch::Init ******/
+		/****** md5 signature: 9b87ee6c7a97daa36acb04b4b1806892 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1637,8 +1637,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<StepGeom_BoundedSurface> & aParentSurface, const StepGeom_TransitionCode aUTransition, const StepGeom_TransitionCode aVTransition, const Standard_Boolean aUSense, const Standard_Boolean aVSense);
 
-		/****************** ParentSurface ******************/
-		/**** md5 signature: 4b343a59445d2e3014e939a6745b87a0 ****/
+		/****** StepGeom_SurfacePatch::ParentSurface ******/
+		/****** md5 signature: 4b343a59445d2e3014e939a6745b87a0 ******/
 		%feature("compactdefaultargs") ParentSurface;
 		%feature("autodoc", "Return
 -------
@@ -1650,8 +1650,8 @@ No available documentation.
 ") ParentSurface;
 		opencascade::handle<StepGeom_BoundedSurface> ParentSurface();
 
-		/****************** SetParentSurface ******************/
-		/**** md5 signature: 11e589d981465ad69d922e9734663a3a ****/
+		/****** StepGeom_SurfacePatch::SetParentSurface ******/
+		/****** md5 signature: 11e589d981465ad69d922e9734663a3a ******/
 		%feature("compactdefaultargs") SetParentSurface;
 		%feature("autodoc", "
 Parameters
@@ -1668,8 +1668,8 @@ No available documentation.
 ") SetParentSurface;
 		void SetParentSurface(const opencascade::handle<StepGeom_BoundedSurface> & aParentSurface);
 
-		/****************** SetUSense ******************/
-		/**** md5 signature: 5098b64e087094be5bea5aa2286eeb48 ****/
+		/****** StepGeom_SurfacePatch::SetUSense ******/
+		/****** md5 signature: 5098b64e087094be5bea5aa2286eeb48 ******/
 		%feature("compactdefaultargs") SetUSense;
 		%feature("autodoc", "
 Parameters
@@ -1686,8 +1686,8 @@ No available documentation.
 ") SetUSense;
 		void SetUSense(const Standard_Boolean aUSense);
 
-		/****************** SetUTransition ******************/
-		/**** md5 signature: 6f926464c8f69e042c86dd83df27aa7a ****/
+		/****** StepGeom_SurfacePatch::SetUTransition ******/
+		/****** md5 signature: 6f926464c8f69e042c86dd83df27aa7a ******/
 		%feature("compactdefaultargs") SetUTransition;
 		%feature("autodoc", "
 Parameters
@@ -1704,8 +1704,8 @@ No available documentation.
 ") SetUTransition;
 		void SetUTransition(const StepGeom_TransitionCode aUTransition);
 
-		/****************** SetVSense ******************/
-		/**** md5 signature: f2adeb93a37f4f6daac049d55a199395 ****/
+		/****** StepGeom_SurfacePatch::SetVSense ******/
+		/****** md5 signature: f2adeb93a37f4f6daac049d55a199395 ******/
 		%feature("compactdefaultargs") SetVSense;
 		%feature("autodoc", "
 Parameters
@@ -1722,8 +1722,8 @@ No available documentation.
 ") SetVSense;
 		void SetVSense(const Standard_Boolean aVSense);
 
-		/****************** SetVTransition ******************/
-		/**** md5 signature: 82e67ef17320f97e4bba1a3ef10216b3 ****/
+		/****** StepGeom_SurfacePatch::SetVTransition ******/
+		/****** md5 signature: 82e67ef17320f97e4bba1a3ef10216b3 ******/
 		%feature("compactdefaultargs") SetVTransition;
 		%feature("autodoc", "
 Parameters
@@ -1740,8 +1740,8 @@ No available documentation.
 ") SetVTransition;
 		void SetVTransition(const StepGeom_TransitionCode aVTransition);
 
-		/****************** USense ******************/
-		/**** md5 signature: 194c5636cedeb6b4bbb9d702fc26c358 ****/
+		/****** StepGeom_SurfacePatch::USense ******/
+		/****** md5 signature: 194c5636cedeb6b4bbb9d702fc26c358 ******/
 		%feature("compactdefaultargs") USense;
 		%feature("autodoc", "Return
 -------
@@ -1753,8 +1753,8 @@ No available documentation.
 ") USense;
 		Standard_Boolean USense();
 
-		/****************** UTransition ******************/
-		/**** md5 signature: fb2b9da0bfbb6177f11f010f24a51c35 ****/
+		/****** StepGeom_SurfacePatch::UTransition ******/
+		/****** md5 signature: fb2b9da0bfbb6177f11f010f24a51c35 ******/
 		%feature("compactdefaultargs") UTransition;
 		%feature("autodoc", "Return
 -------
@@ -1766,8 +1766,8 @@ No available documentation.
 ") UTransition;
 		StepGeom_TransitionCode UTransition();
 
-		/****************** VSense ******************/
-		/**** md5 signature: 1e614e54b77d23978bef6c8dbd698d4f ****/
+		/****** StepGeom_SurfacePatch::VSense ******/
+		/****** md5 signature: 1e614e54b77d23978bef6c8dbd698d4f ******/
 		%feature("compactdefaultargs") VSense;
 		%feature("autodoc", "Return
 -------
@@ -1779,8 +1779,8 @@ No available documentation.
 ") VSense;
 		Standard_Boolean VSense();
 
-		/****************** VTransition ******************/
-		/**** md5 signature: db75e588d9f14c887d2d62ef09e4f8aa ****/
+		/****** StepGeom_SurfacePatch::VTransition ******/
+		/****** md5 signature: db75e588d9f14c887d2d62ef09e4f8aa ******/
 		%feature("compactdefaultargs") VTransition;
 		%feature("autodoc", "Return
 -------
@@ -1808,8 +1808,8 @@ No available documentation.
 ********************************/
 class StepGeom_TrimmingMember : public StepData_SelectReal {
 	public:
-		/****************** StepGeom_TrimmingMember ******************/
-		/**** md5 signature: fd519a7b43e8d64ea8f8f850aa8daacc ****/
+		/****** StepGeom_TrimmingMember::StepGeom_TrimmingMember ******/
+		/****** md5 signature: fd519a7b43e8d64ea8f8f850aa8daacc ******/
 		%feature("compactdefaultargs") StepGeom_TrimmingMember;
 		%feature("autodoc", "Return
 -------
@@ -1821,8 +1821,8 @@ No available documentation.
 ") StepGeom_TrimmingMember;
 		 StepGeom_TrimmingMember();
 
-		/****************** HasName ******************/
-		/**** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ****/
+		/****** StepGeom_TrimmingMember::HasName ******/
+		/****** md5 signature: c4b2dbd737f3c98314fdb7955ce91c2a ******/
 		%feature("compactdefaultargs") HasName;
 		%feature("autodoc", "Return
 -------
@@ -1834,8 +1834,8 @@ No available documentation.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
-		/****************** Name ******************/
-		/**** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ****/
+		/****** StepGeom_TrimmingMember::Name ******/
+		/****** md5 signature: d654a4ee9a75d24a9c3f33853f908999 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -1847,8 +1847,8 @@ No available documentation.
 ") Name;
 		virtual Standard_CString Name();
 
-		/****************** SetName ******************/
-		/**** md5 signature: cb088c8a5caf9447945830483c3112e7 ****/
+		/****** StepGeom_TrimmingMember::SetName ******/
+		/****** md5 signature: cb088c8a5caf9447945830483c3112e7 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
@@ -1881,8 +1881,8 @@ No available documentation.
 ********************************/
 class StepGeom_TrimmingSelect : public StepData_SelectType {
 	public:
-		/****************** StepGeom_TrimmingSelect ******************/
-		/**** md5 signature: 5e6dacc475c039b8d3c97a0f952343d5 ****/
+		/****** StepGeom_TrimmingSelect::StepGeom_TrimmingSelect ******/
+		/****** md5 signature: 5e6dacc475c039b8d3c97a0f952343d5 ******/
 		%feature("compactdefaultargs") StepGeom_TrimmingSelect;
 		%feature("autodoc", "Return
 -------
@@ -1894,8 +1894,8 @@ Returns a trimmingselect selecttype.
 ") StepGeom_TrimmingSelect;
 		 StepGeom_TrimmingSelect();
 
-		/****************** CartesianPoint ******************/
-		/**** md5 signature: 0e61ca9bfc68a52515fc03161ae4e778 ****/
+		/****** StepGeom_TrimmingSelect::CartesianPoint ******/
+		/****** md5 signature: 0e61ca9bfc68a52515fc03161ae4e778 ******/
 		%feature("compactdefaultargs") CartesianPoint;
 		%feature("autodoc", "Return
 -------
@@ -1907,8 +1907,8 @@ Returns value as a cartesianpoint (null if another type).
 ") CartesianPoint;
 		opencascade::handle<StepGeom_CartesianPoint> CartesianPoint();
 
-		/****************** CaseMem ******************/
-		/**** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ****/
+		/****** StepGeom_TrimmingSelect::CaseMem ******/
+		/****** md5 signature: 26af6570a62efb94f2e4c31f1b319112 ******/
 		%feature("compactdefaultargs") CaseMem;
 		%feature("autodoc", "
 Parameters
@@ -1925,8 +1925,8 @@ Recognizes a selectmember as real, named as parameter_value 1 -> parametervalue 
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
-		/****************** CaseNum ******************/
-		/**** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ****/
+		/****** StepGeom_TrimmingSelect::CaseNum ******/
+		/****** md5 signature: b9dbcdb5b972500c66bc8bc08f651d0a ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -1943,8 +1943,8 @@ Recognizes a trimmingselect kind entity that is: 1 -> cartesianpoint 0 else (i.e
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** NewMember ******************/
-		/**** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ****/
+		/****** StepGeom_TrimmingSelect::NewMember ******/
+		/****** md5 signature: ae7a49ea52744ae449d83e823e9a6da7 ******/
 		%feature("compactdefaultargs") NewMember;
 		%feature("autodoc", "Return
 -------
@@ -1956,8 +1956,8 @@ Returns a trimmingmember (for parameter_value) as preferred.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
-		/****************** ParameterValue ******************/
-		/**** md5 signature: c7324f109f157c8e4c4c642f24941a3b ****/
+		/****** StepGeom_TrimmingSelect::ParameterValue ******/
+		/****** md5 signature: c7324f109f157c8e4c4c642f24941a3b ******/
 		%feature("compactdefaultargs") ParameterValue;
 		%feature("autodoc", "Return
 -------
@@ -1969,8 +1969,8 @@ Returns value as a real (0.0 if not a real).
 ") ParameterValue;
 		Standard_Real ParameterValue();
 
-		/****************** SetParameterValue ******************/
-		/**** md5 signature: 3cc20e23db3915d27101170cbd59a78f ****/
+		/****** StepGeom_TrimmingSelect::SetParameterValue ******/
+		/****** md5 signature: 3cc20e23db3915d27101170cbd59a78f ******/
 		%feature("compactdefaultargs") SetParameterValue;
 		%feature("autodoc", "
 Parameters
@@ -2001,8 +2001,8 @@ Sets the parametervalue as real.
 ***********************************/
 class StepGeom_VectorOrDirection : public StepData_SelectType {
 	public:
-		/****************** StepGeom_VectorOrDirection ******************/
-		/**** md5 signature: 5d3eb8aa2b0bfdc075d8421e046af45e ****/
+		/****** StepGeom_VectorOrDirection::StepGeom_VectorOrDirection ******/
+		/****** md5 signature: 5d3eb8aa2b0bfdc075d8421e046af45e ******/
 		%feature("compactdefaultargs") StepGeom_VectorOrDirection;
 		%feature("autodoc", "Return
 -------
@@ -2014,8 +2014,8 @@ Returns a vectorordirection selecttype.
 ") StepGeom_VectorOrDirection;
 		 StepGeom_VectorOrDirection();
 
-		/****************** CaseNum ******************/
-		/**** md5 signature: f0e39118a9846e44ccd59de148215261 ****/
+		/****** StepGeom_VectorOrDirection::CaseNum ******/
+		/****** md5 signature: f0e39118a9846e44ccd59de148215261 ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -2032,8 +2032,8 @@ Recognizes a vectorordirection kind entity that is: 1 -> vector 2 -> direction 0
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Direction ******************/
-		/**** md5 signature: f7fac584409a4b82fe25091ddc0f1be8 ****/
+		/****** StepGeom_VectorOrDirection::Direction ******/
+		/****** md5 signature: f7fac584409a4b82fe25091ddc0f1be8 ******/
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", "Return
 -------
@@ -2045,8 +2045,8 @@ Returns value as a direction (null if another type).
 ") Direction;
 		opencascade::handle<StepGeom_Direction> Direction();
 
-		/****************** Vector ******************/
-		/**** md5 signature: 34658442cbdc74a9b64066cac9e98fde ****/
+		/****** StepGeom_VectorOrDirection::Vector ******/
+		/****** md5 signature: 34658442cbdc74a9b64066cac9e98fde ******/
 		%feature("compactdefaultargs") Vector;
 		%feature("autodoc", "Return
 -------
@@ -2072,8 +2072,8 @@ Returns value as a vector (null if another type).
 *************************************************/
 class StepGeom_CartesianTransformationOperator : public StepGeom_GeometricRepresentationItem {
 	public:
-		/****************** StepGeom_CartesianTransformationOperator ******************/
-		/**** md5 signature: e04003343bba4cebc1c79b441c0b8b31 ****/
+		/****** StepGeom_CartesianTransformationOperator::StepGeom_CartesianTransformationOperator ******/
+		/****** md5 signature: e04003343bba4cebc1c79b441c0b8b31 ******/
 		%feature("compactdefaultargs") StepGeom_CartesianTransformationOperator;
 		%feature("autodoc", "Return
 -------
@@ -2085,8 +2085,8 @@ Returns a cartesiantransformationoperator.
 ") StepGeom_CartesianTransformationOperator;
 		 StepGeom_CartesianTransformationOperator();
 
-		/****************** Axis1 ******************/
-		/**** md5 signature: f64c70ac0245d3adad88dd5cace2c271 ****/
+		/****** StepGeom_CartesianTransformationOperator::Axis1 ******/
+		/****** md5 signature: f64c70ac0245d3adad88dd5cace2c271 ******/
 		%feature("compactdefaultargs") Axis1;
 		%feature("autodoc", "Return
 -------
@@ -2098,8 +2098,8 @@ No available documentation.
 ") Axis1;
 		opencascade::handle<StepGeom_Direction> Axis1();
 
-		/****************** Axis2 ******************/
-		/**** md5 signature: 2642f1021a064ce2b75241e5e31681ca ****/
+		/****** StepGeom_CartesianTransformationOperator::Axis2 ******/
+		/****** md5 signature: 2642f1021a064ce2b75241e5e31681ca ******/
 		%feature("compactdefaultargs") Axis2;
 		%feature("autodoc", "Return
 -------
@@ -2111,8 +2111,8 @@ No available documentation.
 ") Axis2;
 		opencascade::handle<StepGeom_Direction> Axis2();
 
-		/****************** HasAxis1 ******************/
-		/**** md5 signature: 75a8edf674885bc27417b374e6bf056b ****/
+		/****** StepGeom_CartesianTransformationOperator::HasAxis1 ******/
+		/****** md5 signature: 75a8edf674885bc27417b374e6bf056b ******/
 		%feature("compactdefaultargs") HasAxis1;
 		%feature("autodoc", "Return
 -------
@@ -2124,8 +2124,8 @@ No available documentation.
 ") HasAxis1;
 		Standard_Boolean HasAxis1();
 
-		/****************** HasAxis2 ******************/
-		/**** md5 signature: a457c888a31da08af54967ac90a97409 ****/
+		/****** StepGeom_CartesianTransformationOperator::HasAxis2 ******/
+		/****** md5 signature: a457c888a31da08af54967ac90a97409 ******/
 		%feature("compactdefaultargs") HasAxis2;
 		%feature("autodoc", "Return
 -------
@@ -2137,8 +2137,8 @@ No available documentation.
 ") HasAxis2;
 		Standard_Boolean HasAxis2();
 
-		/****************** HasScale ******************/
-		/**** md5 signature: ff4dcd5e88b25f75a24a355bcfc137d4 ****/
+		/****** StepGeom_CartesianTransformationOperator::HasScale ******/
+		/****** md5 signature: ff4dcd5e88b25f75a24a355bcfc137d4 ******/
 		%feature("compactdefaultargs") HasScale;
 		%feature("autodoc", "Return
 -------
@@ -2150,8 +2150,8 @@ No available documentation.
 ") HasScale;
 		Standard_Boolean HasScale();
 
-		/****************** Init ******************/
-		/**** md5 signature: 0442cee9500d6f145cf3b313cdcf9d56 ****/
+		/****** StepGeom_CartesianTransformationOperator::Init ******/
+		/****** md5 signature: 0442cee9500d6f145cf3b313cdcf9d56 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2175,8 +2175,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasAaxis1, const opencascade::handle<StepGeom_Direction> & aAxis1, const Standard_Boolean hasAaxis2, const opencascade::handle<StepGeom_Direction> & aAxis2, const opencascade::handle<StepGeom_CartesianPoint> & aLocalOrigin, const Standard_Boolean hasAscale, const Standard_Real aScale);
 
-		/****************** LocalOrigin ******************/
-		/**** md5 signature: fac6559749c0473f9505794e64c39da8 ****/
+		/****** StepGeom_CartesianTransformationOperator::LocalOrigin ******/
+		/****** md5 signature: fac6559749c0473f9505794e64c39da8 ******/
 		%feature("compactdefaultargs") LocalOrigin;
 		%feature("autodoc", "Return
 -------
@@ -2188,8 +2188,8 @@ No available documentation.
 ") LocalOrigin;
 		opencascade::handle<StepGeom_CartesianPoint> LocalOrigin();
 
-		/****************** Scale ******************/
-		/**** md5 signature: 4c0fd48707c01e5a42b2a639ca08da30 ****/
+		/****** StepGeom_CartesianTransformationOperator::Scale ******/
+		/****** md5 signature: 4c0fd48707c01e5a42b2a639ca08da30 ******/
 		%feature("compactdefaultargs") Scale;
 		%feature("autodoc", "Return
 -------
@@ -2201,8 +2201,8 @@ No available documentation.
 ") Scale;
 		Standard_Real Scale();
 
-		/****************** SetAxis1 ******************/
-		/**** md5 signature: 322bab6cfb77cc372aabf134a3af95e9 ****/
+		/****** StepGeom_CartesianTransformationOperator::SetAxis1 ******/
+		/****** md5 signature: 322bab6cfb77cc372aabf134a3af95e9 ******/
 		%feature("compactdefaultargs") SetAxis1;
 		%feature("autodoc", "
 Parameters
@@ -2219,8 +2219,8 @@ No available documentation.
 ") SetAxis1;
 		void SetAxis1(const opencascade::handle<StepGeom_Direction> & aAxis1);
 
-		/****************** SetAxis2 ******************/
-		/**** md5 signature: 8095a2d3e9b9ebc968c1918fd66ab4a4 ****/
+		/****** StepGeom_CartesianTransformationOperator::SetAxis2 ******/
+		/****** md5 signature: 8095a2d3e9b9ebc968c1918fd66ab4a4 ******/
 		%feature("compactdefaultargs") SetAxis2;
 		%feature("autodoc", "
 Parameters
@@ -2237,8 +2237,8 @@ No available documentation.
 ") SetAxis2;
 		void SetAxis2(const opencascade::handle<StepGeom_Direction> & aAxis2);
 
-		/****************** SetLocalOrigin ******************/
-		/**** md5 signature: df97279c33cdab0d08cc6802b6e8f998 ****/
+		/****** StepGeom_CartesianTransformationOperator::SetLocalOrigin ******/
+		/****** md5 signature: df97279c33cdab0d08cc6802b6e8f998 ******/
 		%feature("compactdefaultargs") SetLocalOrigin;
 		%feature("autodoc", "
 Parameters
@@ -2255,8 +2255,8 @@ No available documentation.
 ") SetLocalOrigin;
 		void SetLocalOrigin(const opencascade::handle<StepGeom_CartesianPoint> & aLocalOrigin);
 
-		/****************** SetScale ******************/
-		/**** md5 signature: 9dbf3c9ea617c330eb7488752443e863 ****/
+		/****** StepGeom_CartesianTransformationOperator::SetScale ******/
+		/****** md5 signature: 9dbf3c9ea617c330eb7488752443e863 ******/
 		%feature("compactdefaultargs") SetScale;
 		%feature("autodoc", "
 Parameters
@@ -2273,8 +2273,8 @@ No available documentation.
 ") SetScale;
 		void SetScale(const Standard_Real aScale);
 
-		/****************** UnSetAxis1 ******************/
-		/**** md5 signature: 1f333833ce1c98081f56e28254051546 ****/
+		/****** StepGeom_CartesianTransformationOperator::UnSetAxis1 ******/
+		/****** md5 signature: 1f333833ce1c98081f56e28254051546 ******/
 		%feature("compactdefaultargs") UnSetAxis1;
 		%feature("autodoc", "Return
 -------
@@ -2286,8 +2286,8 @@ No available documentation.
 ") UnSetAxis1;
 		void UnSetAxis1();
 
-		/****************** UnSetAxis2 ******************/
-		/**** md5 signature: ffb1f470547b8aa89313b2bca8792c7c ****/
+		/****** StepGeom_CartesianTransformationOperator::UnSetAxis2 ******/
+		/****** md5 signature: ffb1f470547b8aa89313b2bca8792c7c ******/
 		%feature("compactdefaultargs") UnSetAxis2;
 		%feature("autodoc", "Return
 -------
@@ -2299,8 +2299,8 @@ No available documentation.
 ") UnSetAxis2;
 		void UnSetAxis2();
 
-		/****************** UnSetScale ******************/
-		/**** md5 signature: a02065e6c52dd82ecd9ed83a28c07075 ****/
+		/****** StepGeom_CartesianTransformationOperator::UnSetScale ******/
+		/****** md5 signature: a02065e6c52dd82ecd9ed83a28c07075 ******/
 		%feature("compactdefaultargs") UnSetScale;
 		%feature("autodoc", "Return
 -------
@@ -2328,8 +2328,8 @@ No available documentation.
 ***********************/
 class StepGeom_Curve : public StepGeom_GeometricRepresentationItem {
 	public:
-		/****************** StepGeom_Curve ******************/
-		/**** md5 signature: fe66fbef8786129fa474e8bd9aab3ccf ****/
+		/****** StepGeom_Curve::StepGeom_Curve ******/
+		/****** md5 signature: fe66fbef8786129fa474e8bd9aab3ccf ******/
 		%feature("compactdefaultargs") StepGeom_Curve;
 		%feature("autodoc", "Return
 -------
@@ -2357,8 +2357,8 @@ Returns a curve.
 ***************************/
 class StepGeom_Direction : public StepGeom_GeometricRepresentationItem {
 	public:
-		/****************** StepGeom_Direction ******************/
-		/**** md5 signature: c832d9097185635d434990446227b79e ****/
+		/****** StepGeom_Direction::StepGeom_Direction ******/
+		/****** md5 signature: c832d9097185635d434990446227b79e ******/
 		%feature("compactdefaultargs") StepGeom_Direction;
 		%feature("autodoc", "Return
 -------
@@ -2370,8 +2370,8 @@ Returns a direction.
 ") StepGeom_Direction;
 		 StepGeom_Direction();
 
-		/****************** DirectionRatios ******************/
-		/**** md5 signature: 0b998972ced9f6728b0916998911fec6 ****/
+		/****** StepGeom_Direction::DirectionRatios ******/
+		/****** md5 signature: 0b998972ced9f6728b0916998911fec6 ******/
 		%feature("compactdefaultargs") DirectionRatios;
 		%feature("autodoc", "Return
 -------
@@ -2383,8 +2383,8 @@ No available documentation.
 ") DirectionRatios;
 		opencascade::handle<TColStd_HArray1OfReal> DirectionRatios();
 
-		/****************** DirectionRatiosValue ******************/
-		/**** md5 signature: 93bd04626bdc5240850d587c21d483fe ****/
+		/****** StepGeom_Direction::DirectionRatiosValue ******/
+		/****** md5 signature: 93bd04626bdc5240850d587c21d483fe ******/
 		%feature("compactdefaultargs") DirectionRatiosValue;
 		%feature("autodoc", "
 Parameters
@@ -2401,8 +2401,8 @@ No available documentation.
 ") DirectionRatiosValue;
 		Standard_Real DirectionRatiosValue(const Standard_Integer num);
 
-		/****************** Init ******************/
-		/**** md5 signature: 1138ac048e21cb35bbea7040e177e2cf ****/
+		/****** StepGeom_Direction::Init ******/
+		/****** md5 signature: 1138ac048e21cb35bbea7040e177e2cf ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2420,8 +2420,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TColStd_HArray1OfReal> & aDirectionRatios);
 
-		/****************** NbDirectionRatios ******************/
-		/**** md5 signature: 5a785798a49b3f4a9a6f6d738dfc0382 ****/
+		/****** StepGeom_Direction::NbDirectionRatios ******/
+		/****** md5 signature: 5a785798a49b3f4a9a6f6d738dfc0382 ******/
 		%feature("compactdefaultargs") NbDirectionRatios;
 		%feature("autodoc", "Return
 -------
@@ -2433,8 +2433,8 @@ No available documentation.
 ") NbDirectionRatios;
 		Standard_Integer NbDirectionRatios();
 
-		/****************** SetDirectionRatios ******************/
-		/**** md5 signature: 67346ffbe06307326d5296374571df20 ****/
+		/****** StepGeom_Direction::SetDirectionRatios ******/
+		/****** md5 signature: 67346ffbe06307326d5296374571df20 ******/
 		%feature("compactdefaultargs") SetDirectionRatios;
 		%feature("autodoc", "
 Parameters
@@ -2467,8 +2467,8 @@ No available documentation.
 ***************************/
 class StepGeom_Placement : public StepGeom_GeometricRepresentationItem {
 	public:
-		/****************** StepGeom_Placement ******************/
-		/**** md5 signature: 59673391f2ccda4e92dd3aa9d802819a ****/
+		/****** StepGeom_Placement::StepGeom_Placement ******/
+		/****** md5 signature: 59673391f2ccda4e92dd3aa9d802819a ******/
 		%feature("compactdefaultargs") StepGeom_Placement;
 		%feature("autodoc", "Return
 -------
@@ -2480,8 +2480,8 @@ Returns a placement.
 ") StepGeom_Placement;
 		 StepGeom_Placement();
 
-		/****************** Init ******************/
-		/**** md5 signature: 2efbbedb659efd84fbed9e5509f3bf0c ****/
+		/****** StepGeom_Placement::Init ******/
+		/****** md5 signature: 2efbbedb659efd84fbed9e5509f3bf0c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2499,8 +2499,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_CartesianPoint> & aLocation);
 
-		/****************** Location ******************/
-		/**** md5 signature: 6004a7b0bee22dd7dc9747bf5d00875b ****/
+		/****** StepGeom_Placement::Location ******/
+		/****** md5 signature: 6004a7b0bee22dd7dc9747bf5d00875b ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "Return
 -------
@@ -2512,8 +2512,8 @@ No available documentation.
 ") Location;
 		opencascade::handle<StepGeom_CartesianPoint> Location();
 
-		/****************** SetLocation ******************/
-		/**** md5 signature: 6a966f18402e676ff696121568dd62b9 ****/
+		/****** StepGeom_Placement::SetLocation ******/
+		/****** md5 signature: 6a966f18402e676ff696121568dd62b9 ******/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "
 Parameters
@@ -2546,8 +2546,8 @@ No available documentation.
 ***********************/
 class StepGeom_Point : public StepGeom_GeometricRepresentationItem {
 	public:
-		/****************** StepGeom_Point ******************/
-		/**** md5 signature: 7d214be0b7a1c617c0b9760233f22ab0 ****/
+		/****** StepGeom_Point::StepGeom_Point ******/
+		/****** md5 signature: 7d214be0b7a1c617c0b9760233f22ab0 ******/
 		%feature("compactdefaultargs") StepGeom_Point;
 		%feature("autodoc", "Return
 -------
@@ -2575,8 +2575,8 @@ Returns a point.
 *****************************************************/
 class StepGeom_ReparametrisedCompositeCurveSegment : public StepGeom_CompositeCurveSegment {
 	public:
-		/****************** StepGeom_ReparametrisedCompositeCurveSegment ******************/
-		/**** md5 signature: 39c1baf8e78d94bcdf5336df5dedb70a ****/
+		/****** StepGeom_ReparametrisedCompositeCurveSegment::StepGeom_ReparametrisedCompositeCurveSegment ******/
+		/****** md5 signature: 39c1baf8e78d94bcdf5336df5dedb70a ******/
 		%feature("compactdefaultargs") StepGeom_ReparametrisedCompositeCurveSegment;
 		%feature("autodoc", "Return
 -------
@@ -2588,8 +2588,8 @@ Returns a reparametrisedcompositecurvesegment.
 ") StepGeom_ReparametrisedCompositeCurveSegment;
 		 StepGeom_ReparametrisedCompositeCurveSegment();
 
-		/****************** Init ******************/
-		/**** md5 signature: 559616a2acfa8f29553d2100c0729f3d ****/
+		/****** StepGeom_ReparametrisedCompositeCurveSegment::Init ******/
+		/****** md5 signature: 559616a2acfa8f29553d2100c0729f3d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2609,8 +2609,8 @@ No available documentation.
 ") Init;
 		void Init(const StepGeom_TransitionCode aTransition, const Standard_Boolean aSameSense, const opencascade::handle<StepGeom_Curve> & aParentCurve, const Standard_Real aParamLength);
 
-		/****************** ParamLength ******************/
-		/**** md5 signature: e9ef155db5ccc98ac2c2d19cf5b55cc8 ****/
+		/****** StepGeom_ReparametrisedCompositeCurveSegment::ParamLength ******/
+		/****** md5 signature: e9ef155db5ccc98ac2c2d19cf5b55cc8 ******/
 		%feature("compactdefaultargs") ParamLength;
 		%feature("autodoc", "Return
 -------
@@ -2622,8 +2622,8 @@ No available documentation.
 ") ParamLength;
 		Standard_Real ParamLength();
 
-		/****************** SetParamLength ******************/
-		/**** md5 signature: 26c7b3d008e76b49d4dc2899748e7fe4 ****/
+		/****** StepGeom_ReparametrisedCompositeCurveSegment::SetParamLength ******/
+		/****** md5 signature: 26c7b3d008e76b49d4dc2899748e7fe4 ******/
 		%feature("compactdefaultargs") SetParamLength;
 		%feature("autodoc", "
 Parameters
@@ -2656,8 +2656,8 @@ No available documentation.
 ******************************/
 class StepGeom_SuParameters : public StepGeom_GeometricRepresentationItem {
 	public:
-		/****************** StepGeom_SuParameters ******************/
-		/**** md5 signature: 85a569687f8fad7c39c37d9d4f26571a ****/
+		/****** StepGeom_SuParameters::StepGeom_SuParameters ******/
+		/****** md5 signature: 85a569687f8fad7c39c37d9d4f26571a ******/
 		%feature("compactdefaultargs") StepGeom_SuParameters;
 		%feature("autodoc", "Return
 -------
@@ -2669,8 +2669,8 @@ Default constructor.
 ") StepGeom_SuParameters;
 		 StepGeom_SuParameters();
 
-		/****************** A ******************/
-		/**** md5 signature: 4e126ab674129c10fe472f1cd454dbe1 ****/
+		/****** StepGeom_SuParameters::A ******/
+		/****** md5 signature: 4e126ab674129c10fe472f1cd454dbe1 ******/
 		%feature("compactdefaultargs") A;
 		%feature("autodoc", "Return
 -------
@@ -2682,8 +2682,8 @@ Returns field a.
 ") A;
 		Standard_Real A();
 
-		/****************** Alpha ******************/
-		/**** md5 signature: d0eb4ad726a40bcb69a07e035d8af277 ****/
+		/****** StepGeom_SuParameters::Alpha ******/
+		/****** md5 signature: d0eb4ad726a40bcb69a07e035d8af277 ******/
 		%feature("compactdefaultargs") Alpha;
 		%feature("autodoc", "Return
 -------
@@ -2695,8 +2695,8 @@ Returns field alpha.
 ") Alpha;
 		Standard_Real Alpha();
 
-		/****************** B ******************/
-		/**** md5 signature: 4885a25669ae505f058aa5976f09cd40 ****/
+		/****** StepGeom_SuParameters::B ******/
+		/****** md5 signature: 4885a25669ae505f058aa5976f09cd40 ******/
 		%feature("compactdefaultargs") B;
 		%feature("autodoc", "Return
 -------
@@ -2708,8 +2708,8 @@ Returns field b.
 ") B;
 		Standard_Real B();
 
-		/****************** Beta ******************/
-		/**** md5 signature: 9611cbc17e65fd7d9fe28a9eec917c98 ****/
+		/****** StepGeom_SuParameters::Beta ******/
+		/****** md5 signature: 9611cbc17e65fd7d9fe28a9eec917c98 ******/
 		%feature("compactdefaultargs") Beta;
 		%feature("autodoc", "Return
 -------
@@ -2721,8 +2721,8 @@ Returns field beta.
 ") Beta;
 		Standard_Real Beta();
 
-		/****************** C ******************/
-		/**** md5 signature: 11ad00e12cf6f94e3fa3c08335c5a704 ****/
+		/****** StepGeom_SuParameters::C ******/
+		/****** md5 signature: 11ad00e12cf6f94e3fa3c08335c5a704 ******/
 		%feature("compactdefaultargs") C;
 		%feature("autodoc", "Return
 -------
@@ -2734,8 +2734,8 @@ Returns field c.
 ") C;
 		Standard_Real C();
 
-		/****************** Gamma ******************/
-		/**** md5 signature: ed66dd0e2860030f93e03ba97486a1c2 ****/
+		/****** StepGeom_SuParameters::Gamma ******/
+		/****** md5 signature: ed66dd0e2860030f93e03ba97486a1c2 ******/
 		%feature("compactdefaultargs") Gamma;
 		%feature("autodoc", "Return
 -------
@@ -2747,8 +2747,8 @@ Returns field gamma.
 ") Gamma;
 		Standard_Real Gamma();
 
-		/****************** Init ******************/
-		/**** md5 signature: 8d4447275f2973777519acbfeba91772 ****/
+		/****** StepGeom_SuParameters::Init ******/
+		/****** md5 signature: 8d4447275f2973777519acbfeba91772 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2771,8 +2771,8 @@ Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theRepresentationItem_Name, const Standard_Real theA, const Standard_Real theAlpha, const Standard_Real theB, const Standard_Real theBeta, const Standard_Real theC, const Standard_Real theGamma);
 
-		/****************** SetA ******************/
-		/**** md5 signature: 1e0ecd7ff33ffeee933a5e368addd9fd ****/
+		/****** StepGeom_SuParameters::SetA ******/
+		/****** md5 signature: 1e0ecd7ff33ffeee933a5e368addd9fd ******/
 		%feature("compactdefaultargs") SetA;
 		%feature("autodoc", "
 Parameters
@@ -2789,8 +2789,8 @@ Sets field a.
 ") SetA;
 		void SetA(const Standard_Real theA);
 
-		/****************** SetAlpha ******************/
-		/**** md5 signature: 837be9743542dceb22ff479a64ecba65 ****/
+		/****** StepGeom_SuParameters::SetAlpha ******/
+		/****** md5 signature: 837be9743542dceb22ff479a64ecba65 ******/
 		%feature("compactdefaultargs") SetAlpha;
 		%feature("autodoc", "
 Parameters
@@ -2807,8 +2807,8 @@ Sets field alpha.
 ") SetAlpha;
 		void SetAlpha(const Standard_Real theAlpha);
 
-		/****************** SetB ******************/
-		/**** md5 signature: b4d6027747eb0316b2f2b6e762e13f55 ****/
+		/****** StepGeom_SuParameters::SetB ******/
+		/****** md5 signature: b4d6027747eb0316b2f2b6e762e13f55 ******/
 		%feature("compactdefaultargs") SetB;
 		%feature("autodoc", "
 Parameters
@@ -2825,8 +2825,8 @@ Sets field b.
 ") SetB;
 		void SetB(const Standard_Real theB);
 
-		/****************** SetBeta ******************/
-		/**** md5 signature: 51a666586cca65bf67a6110dfff10935 ****/
+		/****** StepGeom_SuParameters::SetBeta ******/
+		/****** md5 signature: 51a666586cca65bf67a6110dfff10935 ******/
 		%feature("compactdefaultargs") SetBeta;
 		%feature("autodoc", "
 Parameters
@@ -2843,8 +2843,8 @@ Sets field beta.
 ") SetBeta;
 		void SetBeta(const Standard_Real theBeta);
 
-		/****************** SetC ******************/
-		/**** md5 signature: 01189ddb9fccb4ae72b663727cb3a54b ****/
+		/****** StepGeom_SuParameters::SetC ******/
+		/****** md5 signature: 01189ddb9fccb4ae72b663727cb3a54b ******/
 		%feature("compactdefaultargs") SetC;
 		%feature("autodoc", "
 Parameters
@@ -2861,8 +2861,8 @@ Sets field c.
 ") SetC;
 		void SetC(const Standard_Real theC);
 
-		/****************** SetGamma ******************/
-		/**** md5 signature: 9c84dca979d1f7c1b2a794e39f4f7598 ****/
+		/****** StepGeom_SuParameters::SetGamma ******/
+		/****** md5 signature: 9c84dca979d1f7c1b2a794e39f4f7598 ******/
 		%feature("compactdefaultargs") SetGamma;
 		%feature("autodoc", "
 Parameters
@@ -2895,8 +2895,8 @@ Sets field gamma.
 *************************/
 class StepGeom_Surface : public StepGeom_GeometricRepresentationItem {
 	public:
-		/****************** StepGeom_Surface ******************/
-		/**** md5 signature: 71cc7a330f1935b52e9e47f7024e5d30 ****/
+		/****** StepGeom_Surface::StepGeom_Surface ******/
+		/****** md5 signature: 71cc7a330f1935b52e9e47f7024e5d30 ******/
 		%feature("compactdefaultargs") StepGeom_Surface;
 		%feature("autodoc", "Return
 -------
@@ -2924,8 +2924,8 @@ Returns a surface.
 ************************/
 class StepGeom_Vector : public StepGeom_GeometricRepresentationItem {
 	public:
-		/****************** StepGeom_Vector ******************/
-		/**** md5 signature: 3afc45f2e5e7c325b10bb5bb4bf06f65 ****/
+		/****** StepGeom_Vector::StepGeom_Vector ******/
+		/****** md5 signature: 3afc45f2e5e7c325b10bb5bb4bf06f65 ******/
 		%feature("compactdefaultargs") StepGeom_Vector;
 		%feature("autodoc", "Return
 -------
@@ -2937,8 +2937,8 @@ Returns a vector.
 ") StepGeom_Vector;
 		 StepGeom_Vector();
 
-		/****************** Init ******************/
-		/**** md5 signature: c1c3e5e95f9ea483dac2f008cd977bd9 ****/
+		/****** StepGeom_Vector::Init ******/
+		/****** md5 signature: c1c3e5e95f9ea483dac2f008cd977bd9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2957,8 +2957,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Direction> & aOrientation, const Standard_Real aMagnitude);
 
-		/****************** Magnitude ******************/
-		/**** md5 signature: 226b68b23c63a4cea2ecf63c5b3ac5b6 ****/
+		/****** StepGeom_Vector::Magnitude ******/
+		/****** md5 signature: 226b68b23c63a4cea2ecf63c5b3ac5b6 ******/
 		%feature("compactdefaultargs") Magnitude;
 		%feature("autodoc", "Return
 -------
@@ -2970,8 +2970,8 @@ No available documentation.
 ") Magnitude;
 		Standard_Real Magnitude();
 
-		/****************** Orientation ******************/
-		/**** md5 signature: c15d8334f768a61c925ef032b15fafce ****/
+		/****** StepGeom_Vector::Orientation ******/
+		/****** md5 signature: c15d8334f768a61c925ef032b15fafce ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -2983,8 +2983,8 @@ No available documentation.
 ") Orientation;
 		opencascade::handle<StepGeom_Direction> Orientation();
 
-		/****************** SetMagnitude ******************/
-		/**** md5 signature: 42ae387e27139ab22e5feb2c72d86cd0 ****/
+		/****** StepGeom_Vector::SetMagnitude ******/
+		/****** md5 signature: 42ae387e27139ab22e5feb2c72d86cd0 ******/
 		%feature("compactdefaultargs") SetMagnitude;
 		%feature("autodoc", "
 Parameters
@@ -3001,8 +3001,8 @@ No available documentation.
 ") SetMagnitude;
 		void SetMagnitude(const Standard_Real aMagnitude);
 
-		/****************** SetOrientation ******************/
-		/**** md5 signature: 1251f06eb699f1fa1f9c8e48498c1402 ****/
+		/****** StepGeom_Vector::SetOrientation ******/
+		/****** md5 signature: 1251f06eb699f1fa1f9c8e48498c1402 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -3035,8 +3035,8 @@ No available documentation.
 ********************************/
 class StepGeom_Axis1Placement : public StepGeom_Placement {
 	public:
-		/****************** StepGeom_Axis1Placement ******************/
-		/**** md5 signature: e7a1179279d6452afcbb4b6bedca5623 ****/
+		/****** StepGeom_Axis1Placement::StepGeom_Axis1Placement ******/
+		/****** md5 signature: e7a1179279d6452afcbb4b6bedca5623 ******/
 		%feature("compactdefaultargs") StepGeom_Axis1Placement;
 		%feature("autodoc", "Return
 -------
@@ -3048,8 +3048,8 @@ Returns a axis1placement.
 ") StepGeom_Axis1Placement;
 		 StepGeom_Axis1Placement();
 
-		/****************** Axis ******************/
-		/**** md5 signature: 5fe9473d0bf736090272dc4b9ced7d02 ****/
+		/****** StepGeom_Axis1Placement::Axis ******/
+		/****** md5 signature: 5fe9473d0bf736090272dc4b9ced7d02 ******/
 		%feature("compactdefaultargs") Axis;
 		%feature("autodoc", "Return
 -------
@@ -3061,8 +3061,8 @@ No available documentation.
 ") Axis;
 		opencascade::handle<StepGeom_Direction> Axis();
 
-		/****************** HasAxis ******************/
-		/**** md5 signature: 4b18911068f4a18ff4ad5450250ccfda ****/
+		/****** StepGeom_Axis1Placement::HasAxis ******/
+		/****** md5 signature: 4b18911068f4a18ff4ad5450250ccfda ******/
 		%feature("compactdefaultargs") HasAxis;
 		%feature("autodoc", "Return
 -------
@@ -3074,8 +3074,8 @@ No available documentation.
 ") HasAxis;
 		Standard_Boolean HasAxis();
 
-		/****************** Init ******************/
-		/**** md5 signature: efac90bbba94beae957141af6b84b8a9 ****/
+		/****** StepGeom_Axis1Placement::Init ******/
+		/****** md5 signature: efac90bbba94beae957141af6b84b8a9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3095,8 +3095,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_CartesianPoint> & aLocation, const Standard_Boolean hasAaxis, const opencascade::handle<StepGeom_Direction> & aAxis);
 
-		/****************** SetAxis ******************/
-		/**** md5 signature: b203badf598a130517d33f618a74395b ****/
+		/****** StepGeom_Axis1Placement::SetAxis ******/
+		/****** md5 signature: b203badf598a130517d33f618a74395b ******/
 		%feature("compactdefaultargs") SetAxis;
 		%feature("autodoc", "
 Parameters
@@ -3113,8 +3113,8 @@ No available documentation.
 ") SetAxis;
 		void SetAxis(const opencascade::handle<StepGeom_Direction> & aAxis);
 
-		/****************** UnSetAxis ******************/
-		/**** md5 signature: 3e85231b1e4817402cba2d4edbde039b ****/
+		/****** StepGeom_Axis1Placement::UnSetAxis ******/
+		/****** md5 signature: 3e85231b1e4817402cba2d4edbde039b ******/
 		%feature("compactdefaultargs") UnSetAxis;
 		%feature("autodoc", "Return
 -------
@@ -3142,8 +3142,8 @@ No available documentation.
 **********************************/
 class StepGeom_Axis2Placement2d : public StepGeom_Placement {
 	public:
-		/****************** StepGeom_Axis2Placement2d ******************/
-		/**** md5 signature: ab271bb32321b923c4945e25abc83cb3 ****/
+		/****** StepGeom_Axis2Placement2d::StepGeom_Axis2Placement2d ******/
+		/****** md5 signature: ab271bb32321b923c4945e25abc83cb3 ******/
 		%feature("compactdefaultargs") StepGeom_Axis2Placement2d;
 		%feature("autodoc", "Return
 -------
@@ -3155,8 +3155,8 @@ Returns a axis2placement2d.
 ") StepGeom_Axis2Placement2d;
 		 StepGeom_Axis2Placement2d();
 
-		/****************** HasRefDirection ******************/
-		/**** md5 signature: cb17a4a99f32fee60ce0b77a2fcfca34 ****/
+		/****** StepGeom_Axis2Placement2d::HasRefDirection ******/
+		/****** md5 signature: cb17a4a99f32fee60ce0b77a2fcfca34 ******/
 		%feature("compactdefaultargs") HasRefDirection;
 		%feature("autodoc", "Return
 -------
@@ -3168,8 +3168,8 @@ No available documentation.
 ") HasRefDirection;
 		Standard_Boolean HasRefDirection();
 
-		/****************** Init ******************/
-		/**** md5 signature: fb5df1765afe60591ed1562e49fb8687 ****/
+		/****** StepGeom_Axis2Placement2d::Init ******/
+		/****** md5 signature: fb5df1765afe60591ed1562e49fb8687 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3189,8 +3189,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_CartesianPoint> & aLocation, const Standard_Boolean hasArefDirection, const opencascade::handle<StepGeom_Direction> & aRefDirection);
 
-		/****************** RefDirection ******************/
-		/**** md5 signature: cf3492d32b69d1497c22dff2b698fb1a ****/
+		/****** StepGeom_Axis2Placement2d::RefDirection ******/
+		/****** md5 signature: cf3492d32b69d1497c22dff2b698fb1a ******/
 		%feature("compactdefaultargs") RefDirection;
 		%feature("autodoc", "Return
 -------
@@ -3202,8 +3202,8 @@ No available documentation.
 ") RefDirection;
 		opencascade::handle<StepGeom_Direction> RefDirection();
 
-		/****************** SetRefDirection ******************/
-		/**** md5 signature: 74cd03c91235077de4b1b3c16956f0ff ****/
+		/****** StepGeom_Axis2Placement2d::SetRefDirection ******/
+		/****** md5 signature: 74cd03c91235077de4b1b3c16956f0ff ******/
 		%feature("compactdefaultargs") SetRefDirection;
 		%feature("autodoc", "
 Parameters
@@ -3220,8 +3220,8 @@ No available documentation.
 ") SetRefDirection;
 		void SetRefDirection(const opencascade::handle<StepGeom_Direction> & aRefDirection);
 
-		/****************** UnSetRefDirection ******************/
-		/**** md5 signature: 386d78e52cf200cf8dab56dc8a8e5d45 ****/
+		/****** StepGeom_Axis2Placement2d::UnSetRefDirection ******/
+		/****** md5 signature: 386d78e52cf200cf8dab56dc8a8e5d45 ******/
 		%feature("compactdefaultargs") UnSetRefDirection;
 		%feature("autodoc", "Return
 -------
@@ -3249,8 +3249,8 @@ No available documentation.
 **********************************/
 class StepGeom_Axis2Placement3d : public StepGeom_Placement {
 	public:
-		/****************** StepGeom_Axis2Placement3d ******************/
-		/**** md5 signature: 72359058a32015b2b3676fd338aaac34 ****/
+		/****** StepGeom_Axis2Placement3d::StepGeom_Axis2Placement3d ******/
+		/****** md5 signature: 72359058a32015b2b3676fd338aaac34 ******/
 		%feature("compactdefaultargs") StepGeom_Axis2Placement3d;
 		%feature("autodoc", "Return
 -------
@@ -3262,8 +3262,8 @@ Returns a axis2placement3d.
 ") StepGeom_Axis2Placement3d;
 		 StepGeom_Axis2Placement3d();
 
-		/****************** Axis ******************/
-		/**** md5 signature: 5fe9473d0bf736090272dc4b9ced7d02 ****/
+		/****** StepGeom_Axis2Placement3d::Axis ******/
+		/****** md5 signature: 5fe9473d0bf736090272dc4b9ced7d02 ******/
 		%feature("compactdefaultargs") Axis;
 		%feature("autodoc", "Return
 -------
@@ -3275,8 +3275,8 @@ No available documentation.
 ") Axis;
 		opencascade::handle<StepGeom_Direction> Axis();
 
-		/****************** HasAxis ******************/
-		/**** md5 signature: 4b18911068f4a18ff4ad5450250ccfda ****/
+		/****** StepGeom_Axis2Placement3d::HasAxis ******/
+		/****** md5 signature: 4b18911068f4a18ff4ad5450250ccfda ******/
 		%feature("compactdefaultargs") HasAxis;
 		%feature("autodoc", "Return
 -------
@@ -3288,8 +3288,8 @@ No available documentation.
 ") HasAxis;
 		Standard_Boolean HasAxis();
 
-		/****************** HasRefDirection ******************/
-		/**** md5 signature: cb17a4a99f32fee60ce0b77a2fcfca34 ****/
+		/****** StepGeom_Axis2Placement3d::HasRefDirection ******/
+		/****** md5 signature: cb17a4a99f32fee60ce0b77a2fcfca34 ******/
 		%feature("compactdefaultargs") HasRefDirection;
 		%feature("autodoc", "Return
 -------
@@ -3301,8 +3301,8 @@ No available documentation.
 ") HasRefDirection;
 		Standard_Boolean HasRefDirection();
 
-		/****************** Init ******************/
-		/**** md5 signature: b9ee6fbd8b56e62cba902c9cd5dc4d8a ****/
+		/****** StepGeom_Axis2Placement3d::Init ******/
+		/****** md5 signature: b9ee6fbd8b56e62cba902c9cd5dc4d8a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3324,8 +3324,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_CartesianPoint> & aLocation, const Standard_Boolean hasAaxis, const opencascade::handle<StepGeom_Direction> & aAxis, const Standard_Boolean hasArefDirection, const opencascade::handle<StepGeom_Direction> & aRefDirection);
 
-		/****************** RefDirection ******************/
-		/**** md5 signature: cf3492d32b69d1497c22dff2b698fb1a ****/
+		/****** StepGeom_Axis2Placement3d::RefDirection ******/
+		/****** md5 signature: cf3492d32b69d1497c22dff2b698fb1a ******/
 		%feature("compactdefaultargs") RefDirection;
 		%feature("autodoc", "Return
 -------
@@ -3337,8 +3337,8 @@ No available documentation.
 ") RefDirection;
 		opencascade::handle<StepGeom_Direction> RefDirection();
 
-		/****************** SetAxis ******************/
-		/**** md5 signature: b203badf598a130517d33f618a74395b ****/
+		/****** StepGeom_Axis2Placement3d::SetAxis ******/
+		/****** md5 signature: b203badf598a130517d33f618a74395b ******/
 		%feature("compactdefaultargs") SetAxis;
 		%feature("autodoc", "
 Parameters
@@ -3355,8 +3355,8 @@ No available documentation.
 ") SetAxis;
 		void SetAxis(const opencascade::handle<StepGeom_Direction> & aAxis);
 
-		/****************** SetRefDirection ******************/
-		/**** md5 signature: 74cd03c91235077de4b1b3c16956f0ff ****/
+		/****** StepGeom_Axis2Placement3d::SetRefDirection ******/
+		/****** md5 signature: 74cd03c91235077de4b1b3c16956f0ff ******/
 		%feature("compactdefaultargs") SetRefDirection;
 		%feature("autodoc", "
 Parameters
@@ -3373,8 +3373,8 @@ No available documentation.
 ") SetRefDirection;
 		void SetRefDirection(const opencascade::handle<StepGeom_Direction> & aRefDirection);
 
-		/****************** UnSetAxis ******************/
-		/**** md5 signature: 3e85231b1e4817402cba2d4edbde039b ****/
+		/****** StepGeom_Axis2Placement3d::UnSetAxis ******/
+		/****** md5 signature: 3e85231b1e4817402cba2d4edbde039b ******/
 		%feature("compactdefaultargs") UnSetAxis;
 		%feature("autodoc", "Return
 -------
@@ -3386,8 +3386,8 @@ No available documentation.
 ") UnSetAxis;
 		void UnSetAxis();
 
-		/****************** UnSetRefDirection ******************/
-		/**** md5 signature: 386d78e52cf200cf8dab56dc8a8e5d45 ****/
+		/****** StepGeom_Axis2Placement3d::UnSetRefDirection ******/
+		/****** md5 signature: 386d78e52cf200cf8dab56dc8a8e5d45 ******/
 		%feature("compactdefaultargs") UnSetRefDirection;
 		%feature("autodoc", "Return
 -------
@@ -3415,8 +3415,8 @@ No available documentation.
 ******************************/
 class StepGeom_BoundedCurve : public StepGeom_Curve {
 	public:
-		/****************** StepGeom_BoundedCurve ******************/
-		/**** md5 signature: 634cc5804d611437e8ba76f2b3ac2b54 ****/
+		/****** StepGeom_BoundedCurve::StepGeom_BoundedCurve ******/
+		/****** md5 signature: 634cc5804d611437e8ba76f2b3ac2b54 ******/
 		%feature("compactdefaultargs") StepGeom_BoundedCurve;
 		%feature("autodoc", "Return
 -------
@@ -3444,8 +3444,8 @@ Returns a boundedcurve.
 ********************************/
 class StepGeom_BoundedSurface : public StepGeom_Surface {
 	public:
-		/****************** StepGeom_BoundedSurface ******************/
-		/**** md5 signature: 44486220688d4320445df347d6a3312a ****/
+		/****** StepGeom_BoundedSurface::StepGeom_BoundedSurface ******/
+		/****** md5 signature: 44486220688d4320445df347d6a3312a ******/
 		%feature("compactdefaultargs") StepGeom_BoundedSurface;
 		%feature("autodoc", "Return
 -------
@@ -3473,8 +3473,8 @@ Returns a boundedsurface.
 ********************************/
 class StepGeom_CartesianPoint : public StepGeom_Point {
 	public:
-		/****************** StepGeom_CartesianPoint ******************/
-		/**** md5 signature: 1d071599fd3352016036dc0ff1abed68 ****/
+		/****** StepGeom_CartesianPoint::StepGeom_CartesianPoint ******/
+		/****** md5 signature: 1d071599fd3352016036dc0ff1abed68 ******/
 		%feature("compactdefaultargs") StepGeom_CartesianPoint;
 		%feature("autodoc", "Return
 -------
@@ -3486,8 +3486,8 @@ Returns a cartesianpoint.
 ") StepGeom_CartesianPoint;
 		 StepGeom_CartesianPoint();
 
-		/****************** Coordinates ******************/
-		/**** md5 signature: 44a2ea0d78b9f0cc257a20935c1d21b3 ****/
+		/****** StepGeom_CartesianPoint::Coordinates ******/
+		/****** md5 signature: 44a2ea0d78b9f0cc257a20935c1d21b3 ******/
 		%feature("compactdefaultargs") Coordinates;
 		%feature("autodoc", "Return
 -------
@@ -3499,8 +3499,8 @@ No available documentation.
 ") Coordinates;
 		opencascade::handle<TColStd_HArray1OfReal> Coordinates();
 
-		/****************** CoordinatesValue ******************/
-		/**** md5 signature: 6b406b8d403b10f388cad793597dd3b3 ****/
+		/****** StepGeom_CartesianPoint::CoordinatesValue ******/
+		/****** md5 signature: 6b406b8d403b10f388cad793597dd3b3 ******/
 		%feature("compactdefaultargs") CoordinatesValue;
 		%feature("autodoc", "
 Parameters
@@ -3517,8 +3517,8 @@ No available documentation.
 ") CoordinatesValue;
 		Standard_Real CoordinatesValue(const Standard_Integer num);
 
-		/****************** Init ******************/
-		/**** md5 signature: d9ceb699c7d62bc97dc1d1e9d1855228 ****/
+		/****** StepGeom_CartesianPoint::Init ******/
+		/****** md5 signature: d9ceb699c7d62bc97dc1d1e9d1855228 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3536,8 +3536,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<TColStd_HArray1OfReal> & aCoordinates);
 
-		/****************** Init2D ******************/
-		/**** md5 signature: b33555ff0922d1061e151e4a949a5c05 ****/
+		/****** StepGeom_CartesianPoint::Init2D ******/
+		/****** md5 signature: b33555ff0922d1061e151e4a949a5c05 ******/
 		%feature("compactdefaultargs") Init2D;
 		%feature("autodoc", "
 Parameters
@@ -3556,8 +3556,8 @@ No available documentation.
 ") Init2D;
 		void Init2D(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Real X, const Standard_Real Y);
 
-		/****************** Init3D ******************/
-		/**** md5 signature: 4109eba5ffa91128c74697bad04bcb81 ****/
+		/****** StepGeom_CartesianPoint::Init3D ******/
+		/****** md5 signature: 4109eba5ffa91128c74697bad04bcb81 ******/
 		%feature("compactdefaultargs") Init3D;
 		%feature("autodoc", "
 Parameters
@@ -3577,8 +3577,8 @@ No available documentation.
 ") Init3D;
 		void Init3D(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
 
-		/****************** NbCoordinates ******************/
-		/**** md5 signature: a0c6e8aa0b78ac8ea63622debeb3f181 ****/
+		/****** StepGeom_CartesianPoint::NbCoordinates ******/
+		/****** md5 signature: a0c6e8aa0b78ac8ea63622debeb3f181 ******/
 		%feature("compactdefaultargs") NbCoordinates;
 		%feature("autodoc", "Return
 -------
@@ -3590,8 +3590,8 @@ No available documentation.
 ") NbCoordinates;
 		Standard_Integer NbCoordinates();
 
-		/****************** SetCoordinates ******************/
-		/**** md5 signature: a0ba7b7f950f79d780c42be7dd3b1f28 ****/
+		/****** StepGeom_CartesianPoint::SetCoordinates ******/
+		/****** md5 signature: a0ba7b7f950f79d780c42be7dd3b1f28 ******/
 		%feature("compactdefaultargs") SetCoordinates;
 		%feature("autodoc", "
 Parameters
@@ -3624,8 +3624,8 @@ No available documentation.
 ***************************************************/
 class StepGeom_CartesianTransformationOperator2d : public StepGeom_CartesianTransformationOperator {
 	public:
-		/****************** StepGeom_CartesianTransformationOperator2d ******************/
-		/**** md5 signature: 8ae0156a8bf74ab408dc059a73c3c213 ****/
+		/****** StepGeom_CartesianTransformationOperator2d::StepGeom_CartesianTransformationOperator2d ******/
+		/****** md5 signature: 8ae0156a8bf74ab408dc059a73c3c213 ******/
 		%feature("compactdefaultargs") StepGeom_CartesianTransformationOperator2d;
 		%feature("autodoc", "Return
 -------
@@ -3653,8 +3653,8 @@ No available documentation.
 ***************************************************/
 class StepGeom_CartesianTransformationOperator3d : public StepGeom_CartesianTransformationOperator {
 	public:
-		/****************** StepGeom_CartesianTransformationOperator3d ******************/
-		/**** md5 signature: 840e46b0bf9534e0802bdd6ab1fc76fa ****/
+		/****** StepGeom_CartesianTransformationOperator3d::StepGeom_CartesianTransformationOperator3d ******/
+		/****** md5 signature: 840e46b0bf9534e0802bdd6ab1fc76fa ******/
 		%feature("compactdefaultargs") StepGeom_CartesianTransformationOperator3d;
 		%feature("autodoc", "Return
 -------
@@ -3666,8 +3666,8 @@ Returns a cartesiantransformationoperator3d.
 ") StepGeom_CartesianTransformationOperator3d;
 		 StepGeom_CartesianTransformationOperator3d();
 
-		/****************** Axis3 ******************/
-		/**** md5 signature: 7a911d84db042868d0066c5134d7fba1 ****/
+		/****** StepGeom_CartesianTransformationOperator3d::Axis3 ******/
+		/****** md5 signature: 7a911d84db042868d0066c5134d7fba1 ******/
 		%feature("compactdefaultargs") Axis3;
 		%feature("autodoc", "Return
 -------
@@ -3679,8 +3679,8 @@ No available documentation.
 ") Axis3;
 		opencascade::handle<StepGeom_Direction> Axis3();
 
-		/****************** HasAxis3 ******************/
-		/**** md5 signature: 1621a67cdc5513fae10ed29c8ddba7b0 ****/
+		/****** StepGeom_CartesianTransformationOperator3d::HasAxis3 ******/
+		/****** md5 signature: 1621a67cdc5513fae10ed29c8ddba7b0 ******/
 		%feature("compactdefaultargs") HasAxis3;
 		%feature("autodoc", "Return
 -------
@@ -3692,8 +3692,8 @@ No available documentation.
 ") HasAxis3;
 		Standard_Boolean HasAxis3();
 
-		/****************** Init ******************/
-		/**** md5 signature: 8839328e3aa1ebe74a838881833e54f3 ****/
+		/****** StepGeom_CartesianTransformationOperator3d::Init ******/
+		/****** md5 signature: 8839328e3aa1ebe74a838881833e54f3 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3719,8 +3719,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Boolean hasAaxis1, const opencascade::handle<StepGeom_Direction> & aAxis1, const Standard_Boolean hasAaxis2, const opencascade::handle<StepGeom_Direction> & aAxis2, const opencascade::handle<StepGeom_CartesianPoint> & aLocalOrigin, const Standard_Boolean hasAscale, const Standard_Real aScale, const Standard_Boolean hasAaxis3, const opencascade::handle<StepGeom_Direction> & aAxis3);
 
-		/****************** SetAxis3 ******************/
-		/**** md5 signature: 7754c8e683bdeff2b46a8aaa3ba3058e ****/
+		/****** StepGeom_CartesianTransformationOperator3d::SetAxis3 ******/
+		/****** md5 signature: 7754c8e683bdeff2b46a8aaa3ba3058e ******/
 		%feature("compactdefaultargs") SetAxis3;
 		%feature("autodoc", "
 Parameters
@@ -3737,8 +3737,8 @@ No available documentation.
 ") SetAxis3;
 		void SetAxis3(const opencascade::handle<StepGeom_Direction> & aAxis3);
 
-		/****************** UnSetAxis3 ******************/
-		/**** md5 signature: 3f5e0e00d5427ca07534c900ee6cf2d9 ****/
+		/****** StepGeom_CartesianTransformationOperator3d::UnSetAxis3 ******/
+		/****** md5 signature: 3f5e0e00d5427ca07534c900ee6cf2d9 ******/
 		%feature("compactdefaultargs") UnSetAxis3;
 		%feature("autodoc", "Return
 -------
@@ -3766,8 +3766,8 @@ No available documentation.
 ***********************/
 class StepGeom_Conic : public StepGeom_Curve {
 	public:
-		/****************** StepGeom_Conic ******************/
-		/**** md5 signature: 2c222d87af7bd6ccc3399fa58c63496a ****/
+		/****** StepGeom_Conic::StepGeom_Conic ******/
+		/****** md5 signature: 2c222d87af7bd6ccc3399fa58c63496a ******/
 		%feature("compactdefaultargs") StepGeom_Conic;
 		%feature("autodoc", "Return
 -------
@@ -3779,8 +3779,8 @@ Returns a conic.
 ") StepGeom_Conic;
 		 StepGeom_Conic();
 
-		/****************** Init ******************/
-		/**** md5 signature: 3c46020798d5c4589978ffa5fb8e5d41 ****/
+		/****** StepGeom_Conic::Init ******/
+		/****** md5 signature: 3c46020798d5c4589978ffa5fb8e5d41 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3798,8 +3798,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const StepGeom_Axis2Placement & aPosition);
 
-		/****************** Position ******************/
-		/**** md5 signature: 43685ad5c084f12525dfed7d6af868e9 ****/
+		/****** StepGeom_Conic::Position ******/
+		/****** md5 signature: 43685ad5c084f12525dfed7d6af868e9 ******/
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "Return
 -------
@@ -3811,8 +3811,8 @@ No available documentation.
 ") Position;
 		StepGeom_Axis2Placement Position();
 
-		/****************** SetPosition ******************/
-		/**** md5 signature: 81a872a42b8006c7cbc33ff3f7cc1658 ****/
+		/****** StepGeom_Conic::SetPosition ******/
+		/****** md5 signature: 81a872a42b8006c7cbc33ff3f7cc1658 ******/
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", "
 Parameters
@@ -3845,8 +3845,8 @@ No available documentation.
 ******************************/
 class StepGeom_CurveReplica : public StepGeom_Curve {
 	public:
-		/****************** StepGeom_CurveReplica ******************/
-		/**** md5 signature: ff2253e37f9b80c675ac588b5e520890 ****/
+		/****** StepGeom_CurveReplica::StepGeom_CurveReplica ******/
+		/****** md5 signature: ff2253e37f9b80c675ac588b5e520890 ******/
 		%feature("compactdefaultargs") StepGeom_CurveReplica;
 		%feature("autodoc", "Return
 -------
@@ -3858,8 +3858,8 @@ Returns a curvereplica.
 ") StepGeom_CurveReplica;
 		 StepGeom_CurveReplica();
 
-		/****************** Init ******************/
-		/**** md5 signature: 39cb73b1f0285f3ec9a4b33109f9bc6c ****/
+		/****** StepGeom_CurveReplica::Init ******/
+		/****** md5 signature: 39cb73b1f0285f3ec9a4b33109f9bc6c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3878,8 +3878,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aParentCurve, const opencascade::handle<StepGeom_CartesianTransformationOperator> & aTransformation);
 
-		/****************** ParentCurve ******************/
-		/**** md5 signature: 97e621a56f129c95047d611625edb505 ****/
+		/****** StepGeom_CurveReplica::ParentCurve ******/
+		/****** md5 signature: 97e621a56f129c95047d611625edb505 ******/
 		%feature("compactdefaultargs") ParentCurve;
 		%feature("autodoc", "Return
 -------
@@ -3891,8 +3891,8 @@ No available documentation.
 ") ParentCurve;
 		opencascade::handle<StepGeom_Curve> ParentCurve();
 
-		/****************** SetParentCurve ******************/
-		/**** md5 signature: b904f7ff5ac3c9406128ef65e64ce749 ****/
+		/****** StepGeom_CurveReplica::SetParentCurve ******/
+		/****** md5 signature: b904f7ff5ac3c9406128ef65e64ce749 ******/
 		%feature("compactdefaultargs") SetParentCurve;
 		%feature("autodoc", "
 Parameters
@@ -3909,8 +3909,8 @@ No available documentation.
 ") SetParentCurve;
 		void SetParentCurve(const opencascade::handle<StepGeom_Curve> & aParentCurve);
 
-		/****************** SetTransformation ******************/
-		/**** md5 signature: 946c853cb4eb65356d6b9a7b4c103850 ****/
+		/****** StepGeom_CurveReplica::SetTransformation ******/
+		/****** md5 signature: 946c853cb4eb65356d6b9a7b4c103850 ******/
 		%feature("compactdefaultargs") SetTransformation;
 		%feature("autodoc", "
 Parameters
@@ -3927,8 +3927,8 @@ No available documentation.
 ") SetTransformation;
 		void SetTransformation(const opencascade::handle<StepGeom_CartesianTransformationOperator> & aTransformation);
 
-		/****************** Transformation ******************/
-		/**** md5 signature: c6ce361373c7ceb825e97dfaa58e1ce8 ****/
+		/****** StepGeom_CurveReplica::Transformation ******/
+		/****** md5 signature: c6ce361373c7ceb825e97dfaa58e1ce8 ******/
 		%feature("compactdefaultargs") Transformation;
 		%feature("autodoc", "Return
 -------
@@ -3956,8 +3956,8 @@ No available documentation.
 **********************************/
 class StepGeom_DegeneratePcurve : public StepGeom_Point {
 	public:
-		/****************** StepGeom_DegeneratePcurve ******************/
-		/**** md5 signature: bfc741ea18395e1db298506307ce7627 ****/
+		/****** StepGeom_DegeneratePcurve::StepGeom_DegeneratePcurve ******/
+		/****** md5 signature: bfc741ea18395e1db298506307ce7627 ******/
 		%feature("compactdefaultargs") StepGeom_DegeneratePcurve;
 		%feature("autodoc", "Return
 -------
@@ -3969,8 +3969,8 @@ Returns a degeneratepcurve.
 ") StepGeom_DegeneratePcurve;
 		 StepGeom_DegeneratePcurve();
 
-		/****************** BasisSurface ******************/
-		/**** md5 signature: a392dc35d63547e75f8c22616a036c5d ****/
+		/****** StepGeom_DegeneratePcurve::BasisSurface ******/
+		/****** md5 signature: a392dc35d63547e75f8c22616a036c5d ******/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "Return
 -------
@@ -3982,8 +3982,8 @@ No available documentation.
 ") BasisSurface;
 		opencascade::handle<StepGeom_Surface> BasisSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: 0eb3186fe50c5201ad6c39e0b1b53d07 ****/
+		/****** StepGeom_DegeneratePcurve::Init ******/
+		/****** md5 signature: 0eb3186fe50c5201ad6c39e0b1b53d07 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4002,8 +4002,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aBasisSurface, const opencascade::handle<StepRepr_DefinitionalRepresentation> & aReferenceToCurve);
 
-		/****************** ReferenceToCurve ******************/
-		/**** md5 signature: a13b194e9ab1903cb35fc15226833648 ****/
+		/****** StepGeom_DegeneratePcurve::ReferenceToCurve ******/
+		/****** md5 signature: a13b194e9ab1903cb35fc15226833648 ******/
 		%feature("compactdefaultargs") ReferenceToCurve;
 		%feature("autodoc", "Return
 -------
@@ -4015,8 +4015,8 @@ No available documentation.
 ") ReferenceToCurve;
 		opencascade::handle<StepRepr_DefinitionalRepresentation> ReferenceToCurve();
 
-		/****************** SetBasisSurface ******************/
-		/**** md5 signature: ee1a95d90ec4e9798673d554f8d52949 ****/
+		/****** StepGeom_DegeneratePcurve::SetBasisSurface ******/
+		/****** md5 signature: ee1a95d90ec4e9798673d554f8d52949 ******/
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "
 Parameters
@@ -4033,8 +4033,8 @@ No available documentation.
 ") SetBasisSurface;
 		void SetBasisSurface(const opencascade::handle<StepGeom_Surface> & aBasisSurface);
 
-		/****************** SetReferenceToCurve ******************/
-		/**** md5 signature: bd1906a86e8c5a30ab80bf0f4a8a1f13 ****/
+		/****** StepGeom_DegeneratePcurve::SetReferenceToCurve ******/
+		/****** md5 signature: bd1906a86e8c5a30ab80bf0f4a8a1f13 ******/
 		%feature("compactdefaultargs") SetReferenceToCurve;
 		%feature("autodoc", "
 Parameters
@@ -4067,8 +4067,8 @@ No available documentation.
 ***********************************/
 class StepGeom_ElementarySurface : public StepGeom_Surface {
 	public:
-		/****************** StepGeom_ElementarySurface ******************/
-		/**** md5 signature: d79b66a5c9a93e4809c7d93ab2d0c955 ****/
+		/****** StepGeom_ElementarySurface::StepGeom_ElementarySurface ******/
+		/****** md5 signature: d79b66a5c9a93e4809c7d93ab2d0c955 ******/
 		%feature("compactdefaultargs") StepGeom_ElementarySurface;
 		%feature("autodoc", "Return
 -------
@@ -4080,8 +4080,8 @@ Returns a elementarysurface.
 ") StepGeom_ElementarySurface;
 		 StepGeom_ElementarySurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: b693999618f862eb0b476bca863b0036 ****/
+		/****** StepGeom_ElementarySurface::Init ******/
+		/****** md5 signature: b693999618f862eb0b476bca863b0036 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4099,8 +4099,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition);
 
-		/****************** Position ******************/
-		/**** md5 signature: 713393f125742d29dd4ad15bf921e26c ****/
+		/****** StepGeom_ElementarySurface::Position ******/
+		/****** md5 signature: 713393f125742d29dd4ad15bf921e26c ******/
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "Return
 -------
@@ -4112,8 +4112,8 @@ No available documentation.
 ") Position;
 		opencascade::handle<StepGeom_Axis2Placement3d> Position();
 
-		/****************** SetPosition ******************/
-		/**** md5 signature: cdf6c501d6290f351d285af3749a1167 ****/
+		/****** StepGeom_ElementarySurface::SetPosition ******/
+		/****** md5 signature: cdf6c501d6290f351d285af3749a1167 ******/
 		%feature("compactdefaultargs") SetPosition;
 		%feature("autodoc", "
 Parameters
@@ -4146,8 +4146,8 @@ No available documentation.
 **********************/
 class StepGeom_Line : public StepGeom_Curve {
 	public:
-		/****************** StepGeom_Line ******************/
-		/**** md5 signature: d7e46a31ddd5c0d8456bacc84791901b ****/
+		/****** StepGeom_Line::StepGeom_Line ******/
+		/****** md5 signature: d7e46a31ddd5c0d8456bacc84791901b ******/
 		%feature("compactdefaultargs") StepGeom_Line;
 		%feature("autodoc", "Return
 -------
@@ -4159,8 +4159,8 @@ Returns a line.
 ") StepGeom_Line;
 		 StepGeom_Line();
 
-		/****************** Dir ******************/
-		/**** md5 signature: 489f8fa75e5fa369df8e31ed8f64d8a7 ****/
+		/****** StepGeom_Line::Dir ******/
+		/****** md5 signature: 489f8fa75e5fa369df8e31ed8f64d8a7 ******/
 		%feature("compactdefaultargs") Dir;
 		%feature("autodoc", "Return
 -------
@@ -4172,8 +4172,8 @@ No available documentation.
 ") Dir;
 		opencascade::handle<StepGeom_Vector> Dir();
 
-		/****************** Init ******************/
-		/**** md5 signature: badbe9c5791d6edb6a93ccb25eca9fcd ****/
+		/****** StepGeom_Line::Init ******/
+		/****** md5 signature: badbe9c5791d6edb6a93ccb25eca9fcd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4192,8 +4192,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_CartesianPoint> & aPnt, const opencascade::handle<StepGeom_Vector> & aDir);
 
-		/****************** Pnt ******************/
-		/**** md5 signature: cc4767725abf3bbf4d4522f567b7fbc1 ****/
+		/****** StepGeom_Line::Pnt ******/
+		/****** md5 signature: cc4767725abf3bbf4d4522f567b7fbc1 ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "Return
 -------
@@ -4205,8 +4205,8 @@ No available documentation.
 ") Pnt;
 		opencascade::handle<StepGeom_CartesianPoint> Pnt();
 
-		/****************** SetDir ******************/
-		/**** md5 signature: 97d11eb4dc8a539d9357822ab1fd180e ****/
+		/****** StepGeom_Line::SetDir ******/
+		/****** md5 signature: 97d11eb4dc8a539d9357822ab1fd180e ******/
 		%feature("compactdefaultargs") SetDir;
 		%feature("autodoc", "
 Parameters
@@ -4223,8 +4223,8 @@ No available documentation.
 ") SetDir;
 		void SetDir(const opencascade::handle<StepGeom_Vector> & aDir);
 
-		/****************** SetPnt ******************/
-		/**** md5 signature: 880c9b0a37d841ea28c8e4d2fb4b1137 ****/
+		/****** StepGeom_Line::SetPnt ******/
+		/****** md5 signature: 880c9b0a37d841ea28c8e4d2fb4b1137 ******/
 		%feature("compactdefaultargs") SetPnt;
 		%feature("autodoc", "
 Parameters
@@ -4257,8 +4257,8 @@ No available documentation.
 *******************************/
 class StepGeom_OffsetCurve3d : public StepGeom_Curve {
 	public:
-		/****************** StepGeom_OffsetCurve3d ******************/
-		/**** md5 signature: 068f0173db37f20b7bba2ddaf0aa396f ****/
+		/****** StepGeom_OffsetCurve3d::StepGeom_OffsetCurve3d ******/
+		/****** md5 signature: 068f0173db37f20b7bba2ddaf0aa396f ******/
 		%feature("compactdefaultargs") StepGeom_OffsetCurve3d;
 		%feature("autodoc", "Return
 -------
@@ -4270,8 +4270,8 @@ Returns a offsetcurve3d.
 ") StepGeom_OffsetCurve3d;
 		 StepGeom_OffsetCurve3d();
 
-		/****************** BasisCurve ******************/
-		/**** md5 signature: 0be9af8ae440c49202c050d8d0c44b0a ****/
+		/****** StepGeom_OffsetCurve3d::BasisCurve ******/
+		/****** md5 signature: 0be9af8ae440c49202c050d8d0c44b0a ******/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "Return
 -------
@@ -4283,8 +4283,8 @@ No available documentation.
 ") BasisCurve;
 		opencascade::handle<StepGeom_Curve> BasisCurve();
 
-		/****************** Distance ******************/
-		/**** md5 signature: c054352e1b604c83d759bc4ccf6c526d ****/
+		/****** StepGeom_OffsetCurve3d::Distance ******/
+		/****** md5 signature: c054352e1b604c83d759bc4ccf6c526d ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "Return
 -------
@@ -4296,8 +4296,8 @@ No available documentation.
 ") Distance;
 		Standard_Real Distance();
 
-		/****************** Init ******************/
-		/**** md5 signature: 89b74d246fc480641eca29305e560dbd ****/
+		/****** StepGeom_OffsetCurve3d::Init ******/
+		/****** md5 signature: 89b74d246fc480641eca29305e560dbd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4318,8 +4318,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aBasisCurve, const Standard_Real aDistance, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_Direction> & aRefDirection);
 
-		/****************** RefDirection ******************/
-		/**** md5 signature: cf3492d32b69d1497c22dff2b698fb1a ****/
+		/****** StepGeom_OffsetCurve3d::RefDirection ******/
+		/****** md5 signature: cf3492d32b69d1497c22dff2b698fb1a ******/
 		%feature("compactdefaultargs") RefDirection;
 		%feature("autodoc", "Return
 -------
@@ -4331,8 +4331,8 @@ No available documentation.
 ") RefDirection;
 		opencascade::handle<StepGeom_Direction> RefDirection();
 
-		/****************** SelfIntersect ******************/
-		/**** md5 signature: 3b962cc0483950ab6ae2ff15b08ec9fd ****/
+		/****** StepGeom_OffsetCurve3d::SelfIntersect ******/
+		/****** md5 signature: 3b962cc0483950ab6ae2ff15b08ec9fd ******/
 		%feature("compactdefaultargs") SelfIntersect;
 		%feature("autodoc", "Return
 -------
@@ -4344,8 +4344,8 @@ No available documentation.
 ") SelfIntersect;
 		StepData_Logical SelfIntersect();
 
-		/****************** SetBasisCurve ******************/
-		/**** md5 signature: 28fd1fe3129f0ded7387f3b2f2a4686a ****/
+		/****** StepGeom_OffsetCurve3d::SetBasisCurve ******/
+		/****** md5 signature: 28fd1fe3129f0ded7387f3b2f2a4686a ******/
 		%feature("compactdefaultargs") SetBasisCurve;
 		%feature("autodoc", "
 Parameters
@@ -4362,8 +4362,8 @@ No available documentation.
 ") SetBasisCurve;
 		void SetBasisCurve(const opencascade::handle<StepGeom_Curve> & aBasisCurve);
 
-		/****************** SetDistance ******************/
-		/**** md5 signature: b6888974f3687840a149e206a30cb719 ****/
+		/****** StepGeom_OffsetCurve3d::SetDistance ******/
+		/****** md5 signature: b6888974f3687840a149e206a30cb719 ******/
 		%feature("compactdefaultargs") SetDistance;
 		%feature("autodoc", "
 Parameters
@@ -4380,8 +4380,8 @@ No available documentation.
 ") SetDistance;
 		void SetDistance(const Standard_Real aDistance);
 
-		/****************** SetRefDirection ******************/
-		/**** md5 signature: 74cd03c91235077de4b1b3c16956f0ff ****/
+		/****** StepGeom_OffsetCurve3d::SetRefDirection ******/
+		/****** md5 signature: 74cd03c91235077de4b1b3c16956f0ff ******/
 		%feature("compactdefaultargs") SetRefDirection;
 		%feature("autodoc", "
 Parameters
@@ -4398,8 +4398,8 @@ No available documentation.
 ") SetRefDirection;
 		void SetRefDirection(const opencascade::handle<StepGeom_Direction> & aRefDirection);
 
-		/****************** SetSelfIntersect ******************/
-		/**** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ****/
+		/****** StepGeom_OffsetCurve3d::SetSelfIntersect ******/
+		/****** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ******/
 		%feature("compactdefaultargs") SetSelfIntersect;
 		%feature("autodoc", "
 Parameters
@@ -4432,8 +4432,8 @@ No available documentation.
 *******************************/
 class StepGeom_OffsetSurface : public StepGeom_Surface {
 	public:
-		/****************** StepGeom_OffsetSurface ******************/
-		/**** md5 signature: 51858129f84c0a79049b49ca83803230 ****/
+		/****** StepGeom_OffsetSurface::StepGeom_OffsetSurface ******/
+		/****** md5 signature: 51858129f84c0a79049b49ca83803230 ******/
 		%feature("compactdefaultargs") StepGeom_OffsetSurface;
 		%feature("autodoc", "Return
 -------
@@ -4445,8 +4445,8 @@ Returns a offsetsurface.
 ") StepGeom_OffsetSurface;
 		 StepGeom_OffsetSurface();
 
-		/****************** BasisSurface ******************/
-		/**** md5 signature: a392dc35d63547e75f8c22616a036c5d ****/
+		/****** StepGeom_OffsetSurface::BasisSurface ******/
+		/****** md5 signature: a392dc35d63547e75f8c22616a036c5d ******/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "Return
 -------
@@ -4458,8 +4458,8 @@ No available documentation.
 ") BasisSurface;
 		opencascade::handle<StepGeom_Surface> BasisSurface();
 
-		/****************** Distance ******************/
-		/**** md5 signature: c054352e1b604c83d759bc4ccf6c526d ****/
+		/****** StepGeom_OffsetSurface::Distance ******/
+		/****** md5 signature: c054352e1b604c83d759bc4ccf6c526d ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "Return
 -------
@@ -4471,8 +4471,8 @@ No available documentation.
 ") Distance;
 		Standard_Real Distance();
 
-		/****************** Init ******************/
-		/**** md5 signature: da8b734310380881dd5c8a61a417e488 ****/
+		/****** StepGeom_OffsetSurface::Init ******/
+		/****** md5 signature: da8b734310380881dd5c8a61a417e488 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4492,8 +4492,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aBasisSurface, const Standard_Real aDistance, const StepData_Logical aSelfIntersect);
 
-		/****************** SelfIntersect ******************/
-		/**** md5 signature: 3b962cc0483950ab6ae2ff15b08ec9fd ****/
+		/****** StepGeom_OffsetSurface::SelfIntersect ******/
+		/****** md5 signature: 3b962cc0483950ab6ae2ff15b08ec9fd ******/
 		%feature("compactdefaultargs") SelfIntersect;
 		%feature("autodoc", "Return
 -------
@@ -4505,8 +4505,8 @@ No available documentation.
 ") SelfIntersect;
 		StepData_Logical SelfIntersect();
 
-		/****************** SetBasisSurface ******************/
-		/**** md5 signature: ee1a95d90ec4e9798673d554f8d52949 ****/
+		/****** StepGeom_OffsetSurface::SetBasisSurface ******/
+		/****** md5 signature: ee1a95d90ec4e9798673d554f8d52949 ******/
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "
 Parameters
@@ -4523,8 +4523,8 @@ No available documentation.
 ") SetBasisSurface;
 		void SetBasisSurface(const opencascade::handle<StepGeom_Surface> & aBasisSurface);
 
-		/****************** SetDistance ******************/
-		/**** md5 signature: b6888974f3687840a149e206a30cb719 ****/
+		/****** StepGeom_OffsetSurface::SetDistance ******/
+		/****** md5 signature: b6888974f3687840a149e206a30cb719 ******/
 		%feature("compactdefaultargs") SetDistance;
 		%feature("autodoc", "
 Parameters
@@ -4541,8 +4541,8 @@ No available documentation.
 ") SetDistance;
 		void SetDistance(const Standard_Real aDistance);
 
-		/****************** SetSelfIntersect ******************/
-		/**** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ****/
+		/****** StepGeom_OffsetSurface::SetSelfIntersect ******/
+		/****** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ******/
 		%feature("compactdefaultargs") SetSelfIntersect;
 		%feature("autodoc", "
 Parameters
@@ -4575,8 +4575,8 @@ No available documentation.
 *********************************/
 class StepGeom_OrientedSurface : public StepGeom_Surface {
 	public:
-		/****************** StepGeom_OrientedSurface ******************/
-		/**** md5 signature: f2c5027bfc00a0498f7336e9e62f248a ****/
+		/****** StepGeom_OrientedSurface::StepGeom_OrientedSurface ******/
+		/****** md5 signature: f2c5027bfc00a0498f7336e9e62f248a ******/
 		%feature("compactdefaultargs") StepGeom_OrientedSurface;
 		%feature("autodoc", "Return
 -------
@@ -4588,8 +4588,8 @@ Empty constructor.
 ") StepGeom_OrientedSurface;
 		 StepGeom_OrientedSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: a47da9571f3a6c4191d1e824797e55f9 ****/
+		/****** StepGeom_OrientedSurface::Init ******/
+		/****** md5 signature: a47da9571f3a6c4191d1e824797e55f9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4607,8 +4607,8 @@ Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const Standard_Boolean aOrientation);
 
-		/****************** Orientation ******************/
-		/**** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ****/
+		/****** StepGeom_OrientedSurface::Orientation ******/
+		/****** md5 signature: 52870aef84fd5af1a31fb4fa930c7f18 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -4620,8 +4620,8 @@ Returns field orientation.
 ") Orientation;
 		Standard_Boolean Orientation();
 
-		/****************** SetOrientation ******************/
-		/**** md5 signature: bc672b31490cfba1c14239322df933b4 ****/
+		/****** StepGeom_OrientedSurface::SetOrientation ******/
+		/****** md5 signature: bc672b31490cfba1c14239322df933b4 ******/
 		%feature("compactdefaultargs") SetOrientation;
 		%feature("autodoc", "
 Parameters
@@ -4654,8 +4654,8 @@ Set field orientation.
 ************************/
 class StepGeom_Pcurve : public StepGeom_Curve {
 	public:
-		/****************** StepGeom_Pcurve ******************/
-		/**** md5 signature: 6367ade8df3088c2f934b07baf7b4817 ****/
+		/****** StepGeom_Pcurve::StepGeom_Pcurve ******/
+		/****** md5 signature: 6367ade8df3088c2f934b07baf7b4817 ******/
 		%feature("compactdefaultargs") StepGeom_Pcurve;
 		%feature("autodoc", "Return
 -------
@@ -4667,8 +4667,8 @@ Returns a pcurve.
 ") StepGeom_Pcurve;
 		 StepGeom_Pcurve();
 
-		/****************** BasisSurface ******************/
-		/**** md5 signature: a392dc35d63547e75f8c22616a036c5d ****/
+		/****** StepGeom_Pcurve::BasisSurface ******/
+		/****** md5 signature: a392dc35d63547e75f8c22616a036c5d ******/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "Return
 -------
@@ -4680,8 +4680,8 @@ No available documentation.
 ") BasisSurface;
 		opencascade::handle<StepGeom_Surface> BasisSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: 0eb3186fe50c5201ad6c39e0b1b53d07 ****/
+		/****** StepGeom_Pcurve::Init ******/
+		/****** md5 signature: 0eb3186fe50c5201ad6c39e0b1b53d07 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4700,8 +4700,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aBasisSurface, const opencascade::handle<StepRepr_DefinitionalRepresentation> & aReferenceToCurve);
 
-		/****************** ReferenceToCurve ******************/
-		/**** md5 signature: a13b194e9ab1903cb35fc15226833648 ****/
+		/****** StepGeom_Pcurve::ReferenceToCurve ******/
+		/****** md5 signature: a13b194e9ab1903cb35fc15226833648 ******/
 		%feature("compactdefaultargs") ReferenceToCurve;
 		%feature("autodoc", "Return
 -------
@@ -4713,8 +4713,8 @@ No available documentation.
 ") ReferenceToCurve;
 		opencascade::handle<StepRepr_DefinitionalRepresentation> ReferenceToCurve();
 
-		/****************** SetBasisSurface ******************/
-		/**** md5 signature: ee1a95d90ec4e9798673d554f8d52949 ****/
+		/****** StepGeom_Pcurve::SetBasisSurface ******/
+		/****** md5 signature: ee1a95d90ec4e9798673d554f8d52949 ******/
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "
 Parameters
@@ -4731,8 +4731,8 @@ No available documentation.
 ") SetBasisSurface;
 		void SetBasisSurface(const opencascade::handle<StepGeom_Surface> & aBasisSurface);
 
-		/****************** SetReferenceToCurve ******************/
-		/**** md5 signature: bd1906a86e8c5a30ab80bf0f4a8a1f13 ****/
+		/****** StepGeom_Pcurve::SetReferenceToCurve ******/
+		/****** md5 signature: bd1906a86e8c5a30ab80bf0f4a8a1f13 ******/
 		%feature("compactdefaultargs") SetReferenceToCurve;
 		%feature("autodoc", "
 Parameters
@@ -4765,8 +4765,8 @@ No available documentation.
 ******************************/
 class StepGeom_PointOnCurve : public StepGeom_Point {
 	public:
-		/****************** StepGeom_PointOnCurve ******************/
-		/**** md5 signature: a00f07167d9e15abef6505c686b8a352 ****/
+		/****** StepGeom_PointOnCurve::StepGeom_PointOnCurve ******/
+		/****** md5 signature: a00f07167d9e15abef6505c686b8a352 ******/
 		%feature("compactdefaultargs") StepGeom_PointOnCurve;
 		%feature("autodoc", "Return
 -------
@@ -4778,8 +4778,8 @@ Returns a pointoncurve.
 ") StepGeom_PointOnCurve;
 		 StepGeom_PointOnCurve();
 
-		/****************** BasisCurve ******************/
-		/**** md5 signature: 0be9af8ae440c49202c050d8d0c44b0a ****/
+		/****** StepGeom_PointOnCurve::BasisCurve ******/
+		/****** md5 signature: 0be9af8ae440c49202c050d8d0c44b0a ******/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "Return
 -------
@@ -4791,8 +4791,8 @@ No available documentation.
 ") BasisCurve;
 		opencascade::handle<StepGeom_Curve> BasisCurve();
 
-		/****************** Init ******************/
-		/**** md5 signature: b1e43d893f6b7e906bd4aade0cab0d78 ****/
+		/****** StepGeom_PointOnCurve::Init ******/
+		/****** md5 signature: b1e43d893f6b7e906bd4aade0cab0d78 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4811,8 +4811,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aBasisCurve, const Standard_Real aPointParameter);
 
-		/****************** PointParameter ******************/
-		/**** md5 signature: b757dca967ab848e489858a199db8e61 ****/
+		/****** StepGeom_PointOnCurve::PointParameter ******/
+		/****** md5 signature: b757dca967ab848e489858a199db8e61 ******/
 		%feature("compactdefaultargs") PointParameter;
 		%feature("autodoc", "Return
 -------
@@ -4824,8 +4824,8 @@ No available documentation.
 ") PointParameter;
 		Standard_Real PointParameter();
 
-		/****************** SetBasisCurve ******************/
-		/**** md5 signature: 28fd1fe3129f0ded7387f3b2f2a4686a ****/
+		/****** StepGeom_PointOnCurve::SetBasisCurve ******/
+		/****** md5 signature: 28fd1fe3129f0ded7387f3b2f2a4686a ******/
 		%feature("compactdefaultargs") SetBasisCurve;
 		%feature("autodoc", "
 Parameters
@@ -4842,8 +4842,8 @@ No available documentation.
 ") SetBasisCurve;
 		void SetBasisCurve(const opencascade::handle<StepGeom_Curve> & aBasisCurve);
 
-		/****************** SetPointParameter ******************/
-		/**** md5 signature: 350b005a48bae2f03c9fd4e08c9fe63e ****/
+		/****** StepGeom_PointOnCurve::SetPointParameter ******/
+		/****** md5 signature: 350b005a48bae2f03c9fd4e08c9fe63e ******/
 		%feature("compactdefaultargs") SetPointParameter;
 		%feature("autodoc", "
 Parameters
@@ -4876,8 +4876,8 @@ No available documentation.
 ********************************/
 class StepGeom_PointOnSurface : public StepGeom_Point {
 	public:
-		/****************** StepGeom_PointOnSurface ******************/
-		/**** md5 signature: d52aed5d96c73f1d64372eb90dd6da10 ****/
+		/****** StepGeom_PointOnSurface::StepGeom_PointOnSurface ******/
+		/****** md5 signature: d52aed5d96c73f1d64372eb90dd6da10 ******/
 		%feature("compactdefaultargs") StepGeom_PointOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -4889,8 +4889,8 @@ Returns a pointonsurface.
 ") StepGeom_PointOnSurface;
 		 StepGeom_PointOnSurface();
 
-		/****************** BasisSurface ******************/
-		/**** md5 signature: a392dc35d63547e75f8c22616a036c5d ****/
+		/****** StepGeom_PointOnSurface::BasisSurface ******/
+		/****** md5 signature: a392dc35d63547e75f8c22616a036c5d ******/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "Return
 -------
@@ -4902,8 +4902,8 @@ No available documentation.
 ") BasisSurface;
 		opencascade::handle<StepGeom_Surface> BasisSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: b543080428b73fa006888ebc1807aeac ****/
+		/****** StepGeom_PointOnSurface::Init ******/
+		/****** md5 signature: b543080428b73fa006888ebc1807aeac ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4923,8 +4923,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aBasisSurface, const Standard_Real aPointParameterU, const Standard_Real aPointParameterV);
 
-		/****************** PointParameterU ******************/
-		/**** md5 signature: cd15f641ee9e8fe64520239eda83aa19 ****/
+		/****** StepGeom_PointOnSurface::PointParameterU ******/
+		/****** md5 signature: cd15f641ee9e8fe64520239eda83aa19 ******/
 		%feature("compactdefaultargs") PointParameterU;
 		%feature("autodoc", "Return
 -------
@@ -4936,8 +4936,8 @@ No available documentation.
 ") PointParameterU;
 		Standard_Real PointParameterU();
 
-		/****************** PointParameterV ******************/
-		/**** md5 signature: aff65ceae0f71084eeae5b5bde2b94b6 ****/
+		/****** StepGeom_PointOnSurface::PointParameterV ******/
+		/****** md5 signature: aff65ceae0f71084eeae5b5bde2b94b6 ******/
 		%feature("compactdefaultargs") PointParameterV;
 		%feature("autodoc", "Return
 -------
@@ -4949,8 +4949,8 @@ No available documentation.
 ") PointParameterV;
 		Standard_Real PointParameterV();
 
-		/****************** SetBasisSurface ******************/
-		/**** md5 signature: ee1a95d90ec4e9798673d554f8d52949 ****/
+		/****** StepGeom_PointOnSurface::SetBasisSurface ******/
+		/****** md5 signature: ee1a95d90ec4e9798673d554f8d52949 ******/
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "
 Parameters
@@ -4967,8 +4967,8 @@ No available documentation.
 ") SetBasisSurface;
 		void SetBasisSurface(const opencascade::handle<StepGeom_Surface> & aBasisSurface);
 
-		/****************** SetPointParameterU ******************/
-		/**** md5 signature: 8fe76dc9316239a223a561817506f76d ****/
+		/****** StepGeom_PointOnSurface::SetPointParameterU ******/
+		/****** md5 signature: 8fe76dc9316239a223a561817506f76d ******/
 		%feature("compactdefaultargs") SetPointParameterU;
 		%feature("autodoc", "
 Parameters
@@ -4985,8 +4985,8 @@ No available documentation.
 ") SetPointParameterU;
 		void SetPointParameterU(const Standard_Real aPointParameterU);
 
-		/****************** SetPointParameterV ******************/
-		/**** md5 signature: 2b6b54df540a99d769609c9869fa6923 ****/
+		/****** StepGeom_PointOnSurface::SetPointParameterV ******/
+		/****** md5 signature: 2b6b54df540a99d769609c9869fa6923 ******/
 		%feature("compactdefaultargs") SetPointParameterV;
 		%feature("autodoc", "
 Parameters
@@ -5019,8 +5019,8 @@ No available documentation.
 ******************************/
 class StepGeom_PointReplica : public StepGeom_Point {
 	public:
-		/****************** StepGeom_PointReplica ******************/
-		/**** md5 signature: 8a5ff7732d6bc90bf74dd4a71fa23573 ****/
+		/****** StepGeom_PointReplica::StepGeom_PointReplica ******/
+		/****** md5 signature: 8a5ff7732d6bc90bf74dd4a71fa23573 ******/
 		%feature("compactdefaultargs") StepGeom_PointReplica;
 		%feature("autodoc", "Return
 -------
@@ -5032,8 +5032,8 @@ Returns a pointreplica.
 ") StepGeom_PointReplica;
 		 StepGeom_PointReplica();
 
-		/****************** Init ******************/
-		/**** md5 signature: 98434371977b492a9002b3ad48760670 ****/
+		/****** StepGeom_PointReplica::Init ******/
+		/****** md5 signature: 98434371977b492a9002b3ad48760670 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5052,8 +5052,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Point> & aParentPt, const opencascade::handle<StepGeom_CartesianTransformationOperator> & aTransformation);
 
-		/****************** ParentPt ******************/
-		/**** md5 signature: b9136a71de8b53fac8740cc2e6e300a1 ****/
+		/****** StepGeom_PointReplica::ParentPt ******/
+		/****** md5 signature: b9136a71de8b53fac8740cc2e6e300a1 ******/
 		%feature("compactdefaultargs") ParentPt;
 		%feature("autodoc", "Return
 -------
@@ -5065,8 +5065,8 @@ No available documentation.
 ") ParentPt;
 		opencascade::handle<StepGeom_Point> ParentPt();
 
-		/****************** SetParentPt ******************/
-		/**** md5 signature: 2cc8fbbb356fab6bc0c14a6f58ce5abc ****/
+		/****** StepGeom_PointReplica::SetParentPt ******/
+		/****** md5 signature: 2cc8fbbb356fab6bc0c14a6f58ce5abc ******/
 		%feature("compactdefaultargs") SetParentPt;
 		%feature("autodoc", "
 Parameters
@@ -5083,8 +5083,8 @@ No available documentation.
 ") SetParentPt;
 		void SetParentPt(const opencascade::handle<StepGeom_Point> & aParentPt);
 
-		/****************** SetTransformation ******************/
-		/**** md5 signature: 946c853cb4eb65356d6b9a7b4c103850 ****/
+		/****** StepGeom_PointReplica::SetTransformation ******/
+		/****** md5 signature: 946c853cb4eb65356d6b9a7b4c103850 ******/
 		%feature("compactdefaultargs") SetTransformation;
 		%feature("autodoc", "
 Parameters
@@ -5101,8 +5101,8 @@ No available documentation.
 ") SetTransformation;
 		void SetTransformation(const opencascade::handle<StepGeom_CartesianTransformationOperator> & aTransformation);
 
-		/****************** Transformation ******************/
-		/**** md5 signature: c6ce361373c7ceb825e97dfaa58e1ce8 ****/
+		/****** StepGeom_PointReplica::Transformation ******/
+		/****** md5 signature: c6ce361373c7ceb825e97dfaa58e1ce8 ******/
 		%feature("compactdefaultargs") Transformation;
 		%feature("autodoc", "Return
 -------
@@ -5130,8 +5130,8 @@ No available documentation.
 ******************************/
 class StepGeom_SurfaceCurve : public StepGeom_Curve {
 	public:
-		/****************** StepGeom_SurfaceCurve ******************/
-		/**** md5 signature: faab81132ddf5512051dac42e6d62e70 ****/
+		/****** StepGeom_SurfaceCurve::StepGeom_SurfaceCurve ******/
+		/****** md5 signature: faab81132ddf5512051dac42e6d62e70 ******/
 		%feature("compactdefaultargs") StepGeom_SurfaceCurve;
 		%feature("autodoc", "Return
 -------
@@ -5143,8 +5143,8 @@ Returns a surfacecurve.
 ") StepGeom_SurfaceCurve;
 		 StepGeom_SurfaceCurve();
 
-		/****************** AssociatedGeometry ******************/
-		/**** md5 signature: 98c67442613992b06ce878954f3ff9e3 ****/
+		/****** StepGeom_SurfaceCurve::AssociatedGeometry ******/
+		/****** md5 signature: 98c67442613992b06ce878954f3ff9e3 ******/
 		%feature("compactdefaultargs") AssociatedGeometry;
 		%feature("autodoc", "Return
 -------
@@ -5156,8 +5156,8 @@ No available documentation.
 ") AssociatedGeometry;
 		opencascade::handle<StepGeom_HArray1OfPcurveOrSurface> AssociatedGeometry();
 
-		/****************** AssociatedGeometryValue ******************/
-		/**** md5 signature: 1ce516e0bf22e8c92fe8b1867e4426e7 ****/
+		/****** StepGeom_SurfaceCurve::AssociatedGeometryValue ******/
+		/****** md5 signature: 1ce516e0bf22e8c92fe8b1867e4426e7 ******/
 		%feature("compactdefaultargs") AssociatedGeometryValue;
 		%feature("autodoc", "
 Parameters
@@ -5174,8 +5174,8 @@ No available documentation.
 ") AssociatedGeometryValue;
 		StepGeom_PcurveOrSurface AssociatedGeometryValue(const Standard_Integer num);
 
-		/****************** Curve3d ******************/
-		/**** md5 signature: b58fe32e49d99e4a03b958f45706fdfb ****/
+		/****** StepGeom_SurfaceCurve::Curve3d ******/
+		/****** md5 signature: b58fe32e49d99e4a03b958f45706fdfb ******/
 		%feature("compactdefaultargs") Curve3d;
 		%feature("autodoc", "Return
 -------
@@ -5187,8 +5187,8 @@ No available documentation.
 ") Curve3d;
 		opencascade::handle<StepGeom_Curve> Curve3d();
 
-		/****************** Init ******************/
-		/**** md5 signature: e44dc1832106f977b3d50b072f27ed02 ****/
+		/****** StepGeom_SurfaceCurve::Init ******/
+		/****** md5 signature: e44dc1832106f977b3d50b072f27ed02 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5208,8 +5208,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aCurve3d, const opencascade::handle<StepGeom_HArray1OfPcurveOrSurface> & aAssociatedGeometry, const StepGeom_PreferredSurfaceCurveRepresentation aMasterRepresentation);
 
-		/****************** MasterRepresentation ******************/
-		/**** md5 signature: 5cf67b3c4f8ba5db5f6b1f5604cbff86 ****/
+		/****** StepGeom_SurfaceCurve::MasterRepresentation ******/
+		/****** md5 signature: 5cf67b3c4f8ba5db5f6b1f5604cbff86 ******/
 		%feature("compactdefaultargs") MasterRepresentation;
 		%feature("autodoc", "Return
 -------
@@ -5221,8 +5221,8 @@ No available documentation.
 ") MasterRepresentation;
 		StepGeom_PreferredSurfaceCurveRepresentation MasterRepresentation();
 
-		/****************** NbAssociatedGeometry ******************/
-		/**** md5 signature: 881db67d84f4b354481b452035229e44 ****/
+		/****** StepGeom_SurfaceCurve::NbAssociatedGeometry ******/
+		/****** md5 signature: 881db67d84f4b354481b452035229e44 ******/
 		%feature("compactdefaultargs") NbAssociatedGeometry;
 		%feature("autodoc", "Return
 -------
@@ -5234,8 +5234,8 @@ No available documentation.
 ") NbAssociatedGeometry;
 		Standard_Integer NbAssociatedGeometry();
 
-		/****************** SetAssociatedGeometry ******************/
-		/**** md5 signature: 5a2d01d60af66833eb01bd1b47f76bf0 ****/
+		/****** StepGeom_SurfaceCurve::SetAssociatedGeometry ******/
+		/****** md5 signature: 5a2d01d60af66833eb01bd1b47f76bf0 ******/
 		%feature("compactdefaultargs") SetAssociatedGeometry;
 		%feature("autodoc", "
 Parameters
@@ -5252,8 +5252,8 @@ No available documentation.
 ") SetAssociatedGeometry;
 		void SetAssociatedGeometry(const opencascade::handle<StepGeom_HArray1OfPcurveOrSurface> & aAssociatedGeometry);
 
-		/****************** SetCurve3d ******************/
-		/**** md5 signature: 2cbfc24e206b09964d3b73796bd40770 ****/
+		/****** StepGeom_SurfaceCurve::SetCurve3d ******/
+		/****** md5 signature: 2cbfc24e206b09964d3b73796bd40770 ******/
 		%feature("compactdefaultargs") SetCurve3d;
 		%feature("autodoc", "
 Parameters
@@ -5270,8 +5270,8 @@ No available documentation.
 ") SetCurve3d;
 		void SetCurve3d(const opencascade::handle<StepGeom_Curve> & aCurve3d);
 
-		/****************** SetMasterRepresentation ******************/
-		/**** md5 signature: 30d1ac685536dbd7475f798b551c9b40 ****/
+		/****** StepGeom_SurfaceCurve::SetMasterRepresentation ******/
+		/****** md5 signature: 30d1ac685536dbd7475f798b551c9b40 ******/
 		%feature("compactdefaultargs") SetMasterRepresentation;
 		%feature("autodoc", "
 Parameters
@@ -5304,8 +5304,8 @@ No available documentation.
 ********************************/
 class StepGeom_SurfaceReplica : public StepGeom_Surface {
 	public:
-		/****************** StepGeom_SurfaceReplica ******************/
-		/**** md5 signature: ee12ac2fbb25efc56e332ec6550ad2c2 ****/
+		/****** StepGeom_SurfaceReplica::StepGeom_SurfaceReplica ******/
+		/****** md5 signature: ee12ac2fbb25efc56e332ec6550ad2c2 ******/
 		%feature("compactdefaultargs") StepGeom_SurfaceReplica;
 		%feature("autodoc", "Return
 -------
@@ -5317,8 +5317,8 @@ Returns a surfacereplica.
 ") StepGeom_SurfaceReplica;
 		 StepGeom_SurfaceReplica();
 
-		/****************** Init ******************/
-		/**** md5 signature: 194930c317ab1d105a115a0598906d37 ****/
+		/****** StepGeom_SurfaceReplica::Init ******/
+		/****** md5 signature: 194930c317ab1d105a115a0598906d37 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5337,8 +5337,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aParentSurface, const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & aTransformation);
 
-		/****************** ParentSurface ******************/
-		/**** md5 signature: 9b1df3ccf4dd7cd41bab7b894295e2db ****/
+		/****** StepGeom_SurfaceReplica::ParentSurface ******/
+		/****** md5 signature: 9b1df3ccf4dd7cd41bab7b894295e2db ******/
 		%feature("compactdefaultargs") ParentSurface;
 		%feature("autodoc", "Return
 -------
@@ -5350,8 +5350,8 @@ No available documentation.
 ") ParentSurface;
 		opencascade::handle<StepGeom_Surface> ParentSurface();
 
-		/****************** SetParentSurface ******************/
-		/**** md5 signature: d2880808787caf9b9185a801f04e175d ****/
+		/****** StepGeom_SurfaceReplica::SetParentSurface ******/
+		/****** md5 signature: d2880808787caf9b9185a801f04e175d ******/
 		%feature("compactdefaultargs") SetParentSurface;
 		%feature("autodoc", "
 Parameters
@@ -5368,8 +5368,8 @@ No available documentation.
 ") SetParentSurface;
 		void SetParentSurface(const opencascade::handle<StepGeom_Surface> & aParentSurface);
 
-		/****************** SetTransformation ******************/
-		/**** md5 signature: 43b9583a6f9680b7ec648567817072eb ****/
+		/****** StepGeom_SurfaceReplica::SetTransformation ******/
+		/****** md5 signature: 43b9583a6f9680b7ec648567817072eb ******/
 		%feature("compactdefaultargs") SetTransformation;
 		%feature("autodoc", "
 Parameters
@@ -5386,8 +5386,8 @@ No available documentation.
 ") SetTransformation;
 		void SetTransformation(const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & aTransformation);
 
-		/****************** Transformation ******************/
-		/**** md5 signature: 7299aa422e83c646b54dcb0065f3d3a3 ****/
+		/****** StepGeom_SurfaceReplica::Transformation ******/
+		/****** md5 signature: 7299aa422e83c646b54dcb0065f3d3a3 ******/
 		%feature("compactdefaultargs") Transformation;
 		%feature("autodoc", "Return
 -------
@@ -5415,8 +5415,8 @@ No available documentation.
 ******************************/
 class StepGeom_SweptSurface : public StepGeom_Surface {
 	public:
-		/****************** StepGeom_SweptSurface ******************/
-		/**** md5 signature: 0b872d482a5b3fadb8720b6c40ec4b05 ****/
+		/****** StepGeom_SweptSurface::StepGeom_SweptSurface ******/
+		/****** md5 signature: 0b872d482a5b3fadb8720b6c40ec4b05 ******/
 		%feature("compactdefaultargs") StepGeom_SweptSurface;
 		%feature("autodoc", "Return
 -------
@@ -5428,8 +5428,8 @@ Returns a sweptsurface.
 ") StepGeom_SweptSurface;
 		 StepGeom_SweptSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: cd693e1c19a6ca796145028b11576860 ****/
+		/****** StepGeom_SweptSurface::Init ******/
+		/****** md5 signature: cd693e1c19a6ca796145028b11576860 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5447,8 +5447,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aSweptCurve);
 
-		/****************** SetSweptCurve ******************/
-		/**** md5 signature: ed7d89d55df100e458b4458e5dd8d404 ****/
+		/****** StepGeom_SweptSurface::SetSweptCurve ******/
+		/****** md5 signature: ed7d89d55df100e458b4458e5dd8d404 ******/
 		%feature("compactdefaultargs") SetSweptCurve;
 		%feature("autodoc", "
 Parameters
@@ -5465,8 +5465,8 @@ No available documentation.
 ") SetSweptCurve;
 		void SetSweptCurve(const opencascade::handle<StepGeom_Curve> & aSweptCurve);
 
-		/****************** SweptCurve ******************/
-		/**** md5 signature: c9b807425006f74d322f19f2abc68419 ****/
+		/****** StepGeom_SweptSurface::SweptCurve ******/
+		/****** md5 signature: c9b807425006f74d322f19f2abc68419 ******/
 		%feature("compactdefaultargs") SweptCurve;
 		%feature("autodoc", "Return
 -------
@@ -5494,8 +5494,8 @@ No available documentation.
 ******************************/
 class StepGeom_BSplineCurve : public StepGeom_BoundedCurve {
 	public:
-		/****************** StepGeom_BSplineCurve ******************/
-		/**** md5 signature: a1aec762aaf624d8c0237139c0783d65 ****/
+		/****** StepGeom_BSplineCurve::StepGeom_BSplineCurve ******/
+		/****** md5 signature: a1aec762aaf624d8c0237139c0783d65 ******/
 		%feature("compactdefaultargs") StepGeom_BSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -5507,8 +5507,8 @@ Returns a bsplinecurve.
 ") StepGeom_BSplineCurve;
 		 StepGeom_BSplineCurve();
 
-		/****************** ClosedCurve ******************/
-		/**** md5 signature: 286da34cc55dc20deb2b2a7609c727bd ****/
+		/****** StepGeom_BSplineCurve::ClosedCurve ******/
+		/****** md5 signature: 286da34cc55dc20deb2b2a7609c727bd ******/
 		%feature("compactdefaultargs") ClosedCurve;
 		%feature("autodoc", "Return
 -------
@@ -5520,8 +5520,8 @@ No available documentation.
 ") ClosedCurve;
 		StepData_Logical ClosedCurve();
 
-		/****************** ControlPointsList ******************/
-		/**** md5 signature: e2abad366b884eb3cf83bc860ef7c2d8 ****/
+		/****** StepGeom_BSplineCurve::ControlPointsList ******/
+		/****** md5 signature: e2abad366b884eb3cf83bc860ef7c2d8 ******/
 		%feature("compactdefaultargs") ControlPointsList;
 		%feature("autodoc", "Return
 -------
@@ -5533,8 +5533,8 @@ No available documentation.
 ") ControlPointsList;
 		opencascade::handle<StepGeom_HArray1OfCartesianPoint> ControlPointsList();
 
-		/****************** ControlPointsListValue ******************/
-		/**** md5 signature: 558fcf3c64ee61482301ad60fa159940 ****/
+		/****** StepGeom_BSplineCurve::ControlPointsListValue ******/
+		/****** md5 signature: 558fcf3c64ee61482301ad60fa159940 ******/
 		%feature("compactdefaultargs") ControlPointsListValue;
 		%feature("autodoc", "
 Parameters
@@ -5551,8 +5551,8 @@ No available documentation.
 ") ControlPointsListValue;
 		opencascade::handle<StepGeom_CartesianPoint> ControlPointsListValue(const Standard_Integer num);
 
-		/****************** CurveForm ******************/
-		/**** md5 signature: c247d23ced37b005c9e58d704a55dc96 ****/
+		/****** StepGeom_BSplineCurve::CurveForm ******/
+		/****** md5 signature: c247d23ced37b005c9e58d704a55dc96 ******/
 		%feature("compactdefaultargs") CurveForm;
 		%feature("autodoc", "Return
 -------
@@ -5564,8 +5564,8 @@ No available documentation.
 ") CurveForm;
 		StepGeom_BSplineCurveForm CurveForm();
 
-		/****************** Degree ******************/
-		/**** md5 signature: e3276df1ce733e2c8e940db548a26d03 ****/
+		/****** StepGeom_BSplineCurve::Degree ******/
+		/****** md5 signature: e3276df1ce733e2c8e940db548a26d03 ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -5577,8 +5577,8 @@ No available documentation.
 ") Degree;
 		Standard_Integer Degree();
 
-		/****************** Init ******************/
-		/**** md5 signature: dfec4c1c760ab92f28f63ce857cc34d2 ****/
+		/****** StepGeom_BSplineCurve::Init ******/
+		/****** md5 signature: dfec4c1c760ab92f28f63ce857cc34d2 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5600,8 +5600,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect);
 
-		/****************** NbControlPointsList ******************/
-		/**** md5 signature: d60f108e948f99ab69811b8c3c0b3bea ****/
+		/****** StepGeom_BSplineCurve::NbControlPointsList ******/
+		/****** md5 signature: d60f108e948f99ab69811b8c3c0b3bea ******/
 		%feature("compactdefaultargs") NbControlPointsList;
 		%feature("autodoc", "Return
 -------
@@ -5613,8 +5613,8 @@ No available documentation.
 ") NbControlPointsList;
 		Standard_Integer NbControlPointsList();
 
-		/****************** SelfIntersect ******************/
-		/**** md5 signature: 3b962cc0483950ab6ae2ff15b08ec9fd ****/
+		/****** StepGeom_BSplineCurve::SelfIntersect ******/
+		/****** md5 signature: 3b962cc0483950ab6ae2ff15b08ec9fd ******/
 		%feature("compactdefaultargs") SelfIntersect;
 		%feature("autodoc", "Return
 -------
@@ -5626,8 +5626,8 @@ No available documentation.
 ") SelfIntersect;
 		StepData_Logical SelfIntersect();
 
-		/****************** SetClosedCurve ******************/
-		/**** md5 signature: e6e81a8b2e27fd5f7e2424b13e742a67 ****/
+		/****** StepGeom_BSplineCurve::SetClosedCurve ******/
+		/****** md5 signature: e6e81a8b2e27fd5f7e2424b13e742a67 ******/
 		%feature("compactdefaultargs") SetClosedCurve;
 		%feature("autodoc", "
 Parameters
@@ -5644,8 +5644,8 @@ No available documentation.
 ") SetClosedCurve;
 		void SetClosedCurve(const StepData_Logical aClosedCurve);
 
-		/****************** SetControlPointsList ******************/
-		/**** md5 signature: e9ebdd5f17802f24e506faa73cf58a85 ****/
+		/****** StepGeom_BSplineCurve::SetControlPointsList ******/
+		/****** md5 signature: e9ebdd5f17802f24e506faa73cf58a85 ******/
 		%feature("compactdefaultargs") SetControlPointsList;
 		%feature("autodoc", "
 Parameters
@@ -5662,8 +5662,8 @@ No available documentation.
 ") SetControlPointsList;
 		void SetControlPointsList(const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList);
 
-		/****************** SetCurveForm ******************/
-		/**** md5 signature: 88dd47042daf39f14f698879e5f61b3d ****/
+		/****** StepGeom_BSplineCurve::SetCurveForm ******/
+		/****** md5 signature: 88dd47042daf39f14f698879e5f61b3d ******/
 		%feature("compactdefaultargs") SetCurveForm;
 		%feature("autodoc", "
 Parameters
@@ -5680,8 +5680,8 @@ No available documentation.
 ") SetCurveForm;
 		void SetCurveForm(const StepGeom_BSplineCurveForm aCurveForm);
 
-		/****************** SetDegree ******************/
-		/**** md5 signature: d5c220057c35d88899235156c457bb50 ****/
+		/****** StepGeom_BSplineCurve::SetDegree ******/
+		/****** md5 signature: d5c220057c35d88899235156c457bb50 ******/
 		%feature("compactdefaultargs") SetDegree;
 		%feature("autodoc", "
 Parameters
@@ -5698,8 +5698,8 @@ No available documentation.
 ") SetDegree;
 		void SetDegree(const Standard_Integer aDegree);
 
-		/****************** SetSelfIntersect ******************/
-		/**** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ****/
+		/****** StepGeom_BSplineCurve::SetSelfIntersect ******/
+		/****** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ******/
 		%feature("compactdefaultargs") SetSelfIntersect;
 		%feature("autodoc", "
 Parameters
@@ -5732,8 +5732,8 @@ No available documentation.
 ********************************/
 class StepGeom_BSplineSurface : public StepGeom_BoundedSurface {
 	public:
-		/****************** StepGeom_BSplineSurface ******************/
-		/**** md5 signature: 1ab6c0ca4d803cfd6f9272147f6003ed ****/
+		/****** StepGeom_BSplineSurface::StepGeom_BSplineSurface ******/
+		/****** md5 signature: 1ab6c0ca4d803cfd6f9272147f6003ed ******/
 		%feature("compactdefaultargs") StepGeom_BSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -5745,8 +5745,8 @@ Returns a bsplinesurface.
 ") StepGeom_BSplineSurface;
 		 StepGeom_BSplineSurface();
 
-		/****************** ControlPointsList ******************/
-		/**** md5 signature: cbfb588b5ba269186ff1d96b64c939e0 ****/
+		/****** StepGeom_BSplineSurface::ControlPointsList ******/
+		/****** md5 signature: cbfb588b5ba269186ff1d96b64c939e0 ******/
 		%feature("compactdefaultargs") ControlPointsList;
 		%feature("autodoc", "Return
 -------
@@ -5758,8 +5758,8 @@ No available documentation.
 ") ControlPointsList;
 		opencascade::handle<StepGeom_HArray2OfCartesianPoint> ControlPointsList();
 
-		/****************** ControlPointsListValue ******************/
-		/**** md5 signature: 95d43c3a991012f4c6e80f9b0ca91b89 ****/
+		/****** StepGeom_BSplineSurface::ControlPointsListValue ******/
+		/****** md5 signature: 95d43c3a991012f4c6e80f9b0ca91b89 ******/
 		%feature("compactdefaultargs") ControlPointsListValue;
 		%feature("autodoc", "
 Parameters
@@ -5777,8 +5777,8 @@ No available documentation.
 ") ControlPointsListValue;
 		opencascade::handle<StepGeom_CartesianPoint> ControlPointsListValue(const Standard_Integer num1, const Standard_Integer num2);
 
-		/****************** Init ******************/
-		/**** md5 signature: 335b912c6d18acbb5e987a05139c206a ****/
+		/****** StepGeom_BSplineSurface::Init ******/
+		/****** md5 signature: 335b912c6d18acbb5e987a05139c206a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5802,8 +5802,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect);
 
-		/****************** NbControlPointsListI ******************/
-		/**** md5 signature: 8edc2349e43ef6508566399b5f1fc228 ****/
+		/****** StepGeom_BSplineSurface::NbControlPointsListI ******/
+		/****** md5 signature: 8edc2349e43ef6508566399b5f1fc228 ******/
 		%feature("compactdefaultargs") NbControlPointsListI;
 		%feature("autodoc", "Return
 -------
@@ -5815,8 +5815,8 @@ No available documentation.
 ") NbControlPointsListI;
 		Standard_Integer NbControlPointsListI();
 
-		/****************** NbControlPointsListJ ******************/
-		/**** md5 signature: ddac09d8cd21365a26c56f8e238358ac ****/
+		/****** StepGeom_BSplineSurface::NbControlPointsListJ ******/
+		/****** md5 signature: ddac09d8cd21365a26c56f8e238358ac ******/
 		%feature("compactdefaultargs") NbControlPointsListJ;
 		%feature("autodoc", "Return
 -------
@@ -5828,8 +5828,8 @@ No available documentation.
 ") NbControlPointsListJ;
 		Standard_Integer NbControlPointsListJ();
 
-		/****************** SelfIntersect ******************/
-		/**** md5 signature: 3b962cc0483950ab6ae2ff15b08ec9fd ****/
+		/****** StepGeom_BSplineSurface::SelfIntersect ******/
+		/****** md5 signature: 3b962cc0483950ab6ae2ff15b08ec9fd ******/
 		%feature("compactdefaultargs") SelfIntersect;
 		%feature("autodoc", "Return
 -------
@@ -5841,8 +5841,8 @@ No available documentation.
 ") SelfIntersect;
 		StepData_Logical SelfIntersect();
 
-		/****************** SetControlPointsList ******************/
-		/**** md5 signature: 1d2f1142628672733a3bf6cfdcb6de66 ****/
+		/****** StepGeom_BSplineSurface::SetControlPointsList ******/
+		/****** md5 signature: 1d2f1142628672733a3bf6cfdcb6de66 ******/
 		%feature("compactdefaultargs") SetControlPointsList;
 		%feature("autodoc", "
 Parameters
@@ -5859,8 +5859,8 @@ No available documentation.
 ") SetControlPointsList;
 		void SetControlPointsList(const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList);
 
-		/****************** SetSelfIntersect ******************/
-		/**** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ****/
+		/****** StepGeom_BSplineSurface::SetSelfIntersect ******/
+		/****** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ******/
 		%feature("compactdefaultargs") SetSelfIntersect;
 		%feature("autodoc", "
 Parameters
@@ -5877,8 +5877,8 @@ No available documentation.
 ") SetSelfIntersect;
 		void SetSelfIntersect(const StepData_Logical aSelfIntersect);
 
-		/****************** SetSurfaceForm ******************/
-		/**** md5 signature: 97914b1acd4b07ffb9303f0833a363f9 ****/
+		/****** StepGeom_BSplineSurface::SetSurfaceForm ******/
+		/****** md5 signature: 97914b1acd4b07ffb9303f0833a363f9 ******/
 		%feature("compactdefaultargs") SetSurfaceForm;
 		%feature("autodoc", "
 Parameters
@@ -5895,8 +5895,8 @@ No available documentation.
 ") SetSurfaceForm;
 		void SetSurfaceForm(const StepGeom_BSplineSurfaceForm aSurfaceForm);
 
-		/****************** SetUClosed ******************/
-		/**** md5 signature: 05ae810f4fa8d7e62f09e6530eb9f9c9 ****/
+		/****** StepGeom_BSplineSurface::SetUClosed ******/
+		/****** md5 signature: 05ae810f4fa8d7e62f09e6530eb9f9c9 ******/
 		%feature("compactdefaultargs") SetUClosed;
 		%feature("autodoc", "
 Parameters
@@ -5913,8 +5913,8 @@ No available documentation.
 ") SetUClosed;
 		void SetUClosed(const StepData_Logical aUClosed);
 
-		/****************** SetUDegree ******************/
-		/**** md5 signature: 12774e9e528517b63a718f5dab11dfc9 ****/
+		/****** StepGeom_BSplineSurface::SetUDegree ******/
+		/****** md5 signature: 12774e9e528517b63a718f5dab11dfc9 ******/
 		%feature("compactdefaultargs") SetUDegree;
 		%feature("autodoc", "
 Parameters
@@ -5931,8 +5931,8 @@ No available documentation.
 ") SetUDegree;
 		void SetUDegree(const Standard_Integer aUDegree);
 
-		/****************** SetVClosed ******************/
-		/**** md5 signature: 1e2d9038fcf40e96c2b625186d7a98c7 ****/
+		/****** StepGeom_BSplineSurface::SetVClosed ******/
+		/****** md5 signature: 1e2d9038fcf40e96c2b625186d7a98c7 ******/
 		%feature("compactdefaultargs") SetVClosed;
 		%feature("autodoc", "
 Parameters
@@ -5949,8 +5949,8 @@ No available documentation.
 ") SetVClosed;
 		void SetVClosed(const StepData_Logical aVClosed);
 
-		/****************** SetVDegree ******************/
-		/**** md5 signature: d12ce02785e55ed814b791c68e46e57e ****/
+		/****** StepGeom_BSplineSurface::SetVDegree ******/
+		/****** md5 signature: d12ce02785e55ed814b791c68e46e57e ******/
 		%feature("compactdefaultargs") SetVDegree;
 		%feature("autodoc", "
 Parameters
@@ -5967,8 +5967,8 @@ No available documentation.
 ") SetVDegree;
 		void SetVDegree(const Standard_Integer aVDegree);
 
-		/****************** SurfaceForm ******************/
-		/**** md5 signature: 7c0d434a0b523ef5b9f97a700c195e25 ****/
+		/****** StepGeom_BSplineSurface::SurfaceForm ******/
+		/****** md5 signature: 7c0d434a0b523ef5b9f97a700c195e25 ******/
 		%feature("compactdefaultargs") SurfaceForm;
 		%feature("autodoc", "Return
 -------
@@ -5980,8 +5980,8 @@ No available documentation.
 ") SurfaceForm;
 		StepGeom_BSplineSurfaceForm SurfaceForm();
 
-		/****************** UClosed ******************/
-		/**** md5 signature: b1b7a3a49665c008436df4e1ae6b3837 ****/
+		/****** StepGeom_BSplineSurface::UClosed ******/
+		/****** md5 signature: b1b7a3a49665c008436df4e1ae6b3837 ******/
 		%feature("compactdefaultargs") UClosed;
 		%feature("autodoc", "Return
 -------
@@ -5993,8 +5993,8 @@ No available documentation.
 ") UClosed;
 		StepData_Logical UClosed();
 
-		/****************** UDegree ******************/
-		/**** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ****/
+		/****** StepGeom_BSplineSurface::UDegree ******/
+		/****** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -6006,8 +6006,8 @@ No available documentation.
 ") UDegree;
 		Standard_Integer UDegree();
 
-		/****************** VClosed ******************/
-		/**** md5 signature: cc2a3d1395b1809743300f1cca9c8a36 ****/
+		/****** StepGeom_BSplineSurface::VClosed ******/
+		/****** md5 signature: cc2a3d1395b1809743300f1cca9c8a36 ******/
 		%feature("compactdefaultargs") VClosed;
 		%feature("autodoc", "Return
 -------
@@ -6019,8 +6019,8 @@ No available documentation.
 ") VClosed;
 		StepData_Logical VClosed();
 
-		/****************** VDegree ******************/
-		/**** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ****/
+		/****** StepGeom_BSplineSurface::VDegree ******/
+		/****** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -6048,8 +6048,8 @@ No available documentation.
 ************************/
 class StepGeom_Circle : public StepGeom_Conic {
 	public:
-		/****************** StepGeom_Circle ******************/
-		/**** md5 signature: 51fffa7e7862e63914427036a9e9b840 ****/
+		/****** StepGeom_Circle::StepGeom_Circle ******/
+		/****** md5 signature: 51fffa7e7862e63914427036a9e9b840 ******/
 		%feature("compactdefaultargs") StepGeom_Circle;
 		%feature("autodoc", "Return
 -------
@@ -6061,8 +6061,8 @@ Returns a circle.
 ") StepGeom_Circle;
 		 StepGeom_Circle();
 
-		/****************** Init ******************/
-		/**** md5 signature: 986c73320ba28f5cdccabbcce44ccaa3 ****/
+		/****** StepGeom_Circle::Init ******/
+		/****** md5 signature: 986c73320ba28f5cdccabbcce44ccaa3 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6081,8 +6081,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const StepGeom_Axis2Placement & aPosition, const Standard_Real aRadius);
 
-		/****************** Radius ******************/
-		/**** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ****/
+		/****** StepGeom_Circle::Radius ******/
+		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
@@ -6094,8 +6094,8 @@ No available documentation.
 ") Radius;
 		Standard_Real Radius();
 
-		/****************** SetRadius ******************/
-		/**** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ****/
+		/****** StepGeom_Circle::SetRadius ******/
+		/****** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
@@ -6128,8 +6128,8 @@ No available documentation.
 ********************************/
 class StepGeom_CompositeCurve : public StepGeom_BoundedCurve {
 	public:
-		/****************** StepGeom_CompositeCurve ******************/
-		/**** md5 signature: 79bfbb20d82ae92a9e3580a0e2ced368 ****/
+		/****** StepGeom_CompositeCurve::StepGeom_CompositeCurve ******/
+		/****** md5 signature: 79bfbb20d82ae92a9e3580a0e2ced368 ******/
 		%feature("compactdefaultargs") StepGeom_CompositeCurve;
 		%feature("autodoc", "Return
 -------
@@ -6141,8 +6141,8 @@ Returns a compositecurve.
 ") StepGeom_CompositeCurve;
 		 StepGeom_CompositeCurve();
 
-		/****************** Init ******************/
-		/**** md5 signature: a345d71e206eb69801a0da3fe7ea39be ****/
+		/****** StepGeom_CompositeCurve::Init ******/
+		/****** md5 signature: a345d71e206eb69801a0da3fe7ea39be ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6161,8 +6161,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_HArray1OfCompositeCurveSegment> & aSegments, const StepData_Logical aSelfIntersect);
 
-		/****************** NbSegments ******************/
-		/**** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ****/
+		/****** StepGeom_CompositeCurve::NbSegments ******/
+		/****** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -6174,8 +6174,8 @@ No available documentation.
 ") NbSegments;
 		Standard_Integer NbSegments();
 
-		/****************** Segments ******************/
-		/**** md5 signature: feb21a05127431348cb60303e5253d8d ****/
+		/****** StepGeom_CompositeCurve::Segments ******/
+		/****** md5 signature: feb21a05127431348cb60303e5253d8d ******/
 		%feature("compactdefaultargs") Segments;
 		%feature("autodoc", "Return
 -------
@@ -6187,8 +6187,8 @@ No available documentation.
 ") Segments;
 		opencascade::handle<StepGeom_HArray1OfCompositeCurveSegment> Segments();
 
-		/****************** SegmentsValue ******************/
-		/**** md5 signature: 4b5c8b0239b53099bb9d90f63d0453a4 ****/
+		/****** StepGeom_CompositeCurve::SegmentsValue ******/
+		/****** md5 signature: 4b5c8b0239b53099bb9d90f63d0453a4 ******/
 		%feature("compactdefaultargs") SegmentsValue;
 		%feature("autodoc", "
 Parameters
@@ -6205,8 +6205,8 @@ No available documentation.
 ") SegmentsValue;
 		opencascade::handle<StepGeom_CompositeCurveSegment> SegmentsValue(const Standard_Integer num);
 
-		/****************** SelfIntersect ******************/
-		/**** md5 signature: 3b962cc0483950ab6ae2ff15b08ec9fd ****/
+		/****** StepGeom_CompositeCurve::SelfIntersect ******/
+		/****** md5 signature: 3b962cc0483950ab6ae2ff15b08ec9fd ******/
 		%feature("compactdefaultargs") SelfIntersect;
 		%feature("autodoc", "Return
 -------
@@ -6218,8 +6218,8 @@ No available documentation.
 ") SelfIntersect;
 		StepData_Logical SelfIntersect();
 
-		/****************** SetSegments ******************/
-		/**** md5 signature: 2cd559e860cdea2f3465f083e85c586a ****/
+		/****** StepGeom_CompositeCurve::SetSegments ******/
+		/****** md5 signature: 2cd559e860cdea2f3465f083e85c586a ******/
 		%feature("compactdefaultargs") SetSegments;
 		%feature("autodoc", "
 Parameters
@@ -6236,8 +6236,8 @@ No available documentation.
 ") SetSegments;
 		void SetSegments(const opencascade::handle<StepGeom_HArray1OfCompositeCurveSegment> & aSegments);
 
-		/****************** SetSelfIntersect ******************/
-		/**** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ****/
+		/****** StepGeom_CompositeCurve::SetSelfIntersect ******/
+		/****** md5 signature: 2d7a8417a0b46872a2716425b91b62e7 ******/
 		%feature("compactdefaultargs") SetSelfIntersect;
 		%feature("autodoc", "
 Parameters
@@ -6270,8 +6270,8 @@ No available documentation.
 ********************************/
 class StepGeom_ConicalSurface : public StepGeom_ElementarySurface {
 	public:
-		/****************** StepGeom_ConicalSurface ******************/
-		/**** md5 signature: ad06c556425a7d3727b7bf6037bd4440 ****/
+		/****** StepGeom_ConicalSurface::StepGeom_ConicalSurface ******/
+		/****** md5 signature: ad06c556425a7d3727b7bf6037bd4440 ******/
 		%feature("compactdefaultargs") StepGeom_ConicalSurface;
 		%feature("autodoc", "Return
 -------
@@ -6283,8 +6283,8 @@ Returns a conicalsurface.
 ") StepGeom_ConicalSurface;
 		 StepGeom_ConicalSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: 4aeb0dbb8bd57606724574684fff220b ****/
+		/****** StepGeom_ConicalSurface::Init ******/
+		/****** md5 signature: 4aeb0dbb8bd57606724574684fff220b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6304,8 +6304,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition, const Standard_Real aRadius, const Standard_Real aSemiAngle);
 
-		/****************** Radius ******************/
-		/**** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ****/
+		/****** StepGeom_ConicalSurface::Radius ******/
+		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
@@ -6317,8 +6317,8 @@ No available documentation.
 ") Radius;
 		Standard_Real Radius();
 
-		/****************** SemiAngle ******************/
-		/**** md5 signature: a49ed9cc6318be7aa50219450c80bb02 ****/
+		/****** StepGeom_ConicalSurface::SemiAngle ******/
+		/****** md5 signature: a49ed9cc6318be7aa50219450c80bb02 ******/
 		%feature("compactdefaultargs") SemiAngle;
 		%feature("autodoc", "Return
 -------
@@ -6330,8 +6330,8 @@ No available documentation.
 ") SemiAngle;
 		Standard_Real SemiAngle();
 
-		/****************** SetRadius ******************/
-		/**** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ****/
+		/****** StepGeom_ConicalSurface::SetRadius ******/
+		/****** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
@@ -6348,8 +6348,8 @@ No available documentation.
 ") SetRadius;
 		void SetRadius(const Standard_Real aRadius);
 
-		/****************** SetSemiAngle ******************/
-		/**** md5 signature: 4cae67aa8c3d2c284909ca56f055ccb0 ****/
+		/****** StepGeom_ConicalSurface::SetSemiAngle ******/
+		/****** md5 signature: 4cae67aa8c3d2c284909ca56f055ccb0 ******/
 		%feature("compactdefaultargs") SetSemiAngle;
 		%feature("autodoc", "
 Parameters
@@ -6382,8 +6382,8 @@ No available documentation.
 *************************************/
 class StepGeom_CurveBoundedSurface : public StepGeom_BoundedSurface {
 	public:
-		/****************** StepGeom_CurveBoundedSurface ******************/
-		/**** md5 signature: 5e11891a380f453e28b76be41c97c5b5 ****/
+		/****** StepGeom_CurveBoundedSurface::StepGeom_CurveBoundedSurface ******/
+		/****** md5 signature: 5e11891a380f453e28b76be41c97c5b5 ******/
 		%feature("compactdefaultargs") StepGeom_CurveBoundedSurface;
 		%feature("autodoc", "Return
 -------
@@ -6395,8 +6395,8 @@ Empty constructor.
 ") StepGeom_CurveBoundedSurface;
 		 StepGeom_CurveBoundedSurface();
 
-		/****************** BasisSurface ******************/
-		/**** md5 signature: a392dc35d63547e75f8c22616a036c5d ****/
+		/****** StepGeom_CurveBoundedSurface::BasisSurface ******/
+		/****** md5 signature: a392dc35d63547e75f8c22616a036c5d ******/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "Return
 -------
@@ -6408,8 +6408,8 @@ Returns field basissurface.
 ") BasisSurface;
 		opencascade::handle<StepGeom_Surface> BasisSurface();
 
-		/****************** Boundaries ******************/
-		/**** md5 signature: a37ab1cbba2fe54c5137072357fcd4ae ****/
+		/****** StepGeom_CurveBoundedSurface::Boundaries ******/
+		/****** md5 signature: a37ab1cbba2fe54c5137072357fcd4ae ******/
 		%feature("compactdefaultargs") Boundaries;
 		%feature("autodoc", "Return
 -------
@@ -6421,8 +6421,8 @@ Returns field boundaries.
 ") Boundaries;
 		opencascade::handle<StepGeom_HArray1OfSurfaceBoundary> Boundaries();
 
-		/****************** ImplicitOuter ******************/
-		/**** md5 signature: d2c2ed6f137cdc30088f3e5a7214a5fc ****/
+		/****** StepGeom_CurveBoundedSurface::ImplicitOuter ******/
+		/****** md5 signature: d2c2ed6f137cdc30088f3e5a7214a5fc ******/
 		%feature("compactdefaultargs") ImplicitOuter;
 		%feature("autodoc", "Return
 -------
@@ -6434,8 +6434,8 @@ Returns field implicitouter.
 ") ImplicitOuter;
 		Standard_Boolean ImplicitOuter();
 
-		/****************** Init ******************/
-		/**** md5 signature: fda38cb337b42ce99f4692ca07097c03 ****/
+		/****** StepGeom_CurveBoundedSurface::Init ******/
+		/****** md5 signature: fda38cb337b42ce99f4692ca07097c03 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6455,8 +6455,8 @@ Initialize all fields (own and inherited).
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aRepresentationItem_Name, const opencascade::handle<StepGeom_Surface> & aBasisSurface, const opencascade::handle<StepGeom_HArray1OfSurfaceBoundary> & aBoundaries, const Standard_Boolean aImplicitOuter);
 
-		/****************** SetBasisSurface ******************/
-		/**** md5 signature: 358648de36142756d5347fdc5c2c8d85 ****/
+		/****** StepGeom_CurveBoundedSurface::SetBasisSurface ******/
+		/****** md5 signature: 358648de36142756d5347fdc5c2c8d85 ******/
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "
 Parameters
@@ -6473,8 +6473,8 @@ Set field basissurface.
 ") SetBasisSurface;
 		void SetBasisSurface(const opencascade::handle<StepGeom_Surface> & BasisSurface);
 
-		/****************** SetBoundaries ******************/
-		/**** md5 signature: 437fa765aa0ac408835e6192b0c5f0ff ****/
+		/****** StepGeom_CurveBoundedSurface::SetBoundaries ******/
+		/****** md5 signature: 437fa765aa0ac408835e6192b0c5f0ff ******/
 		%feature("compactdefaultargs") SetBoundaries;
 		%feature("autodoc", "
 Parameters
@@ -6491,8 +6491,8 @@ Set field boundaries.
 ") SetBoundaries;
 		void SetBoundaries(const opencascade::handle<StepGeom_HArray1OfSurfaceBoundary> & Boundaries);
 
-		/****************** SetImplicitOuter ******************/
-		/**** md5 signature: 4fbc0b06885c6ec571c1f5e5cdba2830 ****/
+		/****** StepGeom_CurveBoundedSurface::SetImplicitOuter ******/
+		/****** md5 signature: 4fbc0b06885c6ec571c1f5e5cdba2830 ******/
 		%feature("compactdefaultargs") SetImplicitOuter;
 		%feature("autodoc", "
 Parameters
@@ -6525,8 +6525,8 @@ Set field implicitouter.
 ************************************/
 class StepGeom_CylindricalSurface : public StepGeom_ElementarySurface {
 	public:
-		/****************** StepGeom_CylindricalSurface ******************/
-		/**** md5 signature: 89a30508ff45f0854fd29540c90d4564 ****/
+		/****** StepGeom_CylindricalSurface::StepGeom_CylindricalSurface ******/
+		/****** md5 signature: 89a30508ff45f0854fd29540c90d4564 ******/
 		%feature("compactdefaultargs") StepGeom_CylindricalSurface;
 		%feature("autodoc", "Return
 -------
@@ -6538,8 +6538,8 @@ Returns a cylindricalsurface.
 ") StepGeom_CylindricalSurface;
 		 StepGeom_CylindricalSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: 7a875d4ea4fc134a49dc35ef6aa3b96c ****/
+		/****** StepGeom_CylindricalSurface::Init ******/
+		/****** md5 signature: 7a875d4ea4fc134a49dc35ef6aa3b96c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6558,8 +6558,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition, const Standard_Real aRadius);
 
-		/****************** Radius ******************/
-		/**** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ****/
+		/****** StepGeom_CylindricalSurface::Radius ******/
+		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
@@ -6571,8 +6571,8 @@ No available documentation.
 ") Radius;
 		Standard_Real Radius();
 
-		/****************** SetRadius ******************/
-		/**** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ****/
+		/****** StepGeom_CylindricalSurface::SetRadius ******/
+		/****** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
@@ -6605,8 +6605,8 @@ No available documentation.
 *************************/
 class StepGeom_Ellipse : public StepGeom_Conic {
 	public:
-		/****************** StepGeom_Ellipse ******************/
-		/**** md5 signature: 129d6f2a292d63ae4c965549edd235e8 ****/
+		/****** StepGeom_Ellipse::StepGeom_Ellipse ******/
+		/****** md5 signature: 129d6f2a292d63ae4c965549edd235e8 ******/
 		%feature("compactdefaultargs") StepGeom_Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -6618,8 +6618,8 @@ Returns a ellipse.
 ") StepGeom_Ellipse;
 		 StepGeom_Ellipse();
 
-		/****************** Init ******************/
-		/**** md5 signature: 5a2cf383b46c0a7e5d3d9889fa95e66f ****/
+		/****** StepGeom_Ellipse::Init ******/
+		/****** md5 signature: 5a2cf383b46c0a7e5d3d9889fa95e66f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6639,8 +6639,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const StepGeom_Axis2Placement & aPosition, const Standard_Real aSemiAxis1, const Standard_Real aSemiAxis2);
 
-		/****************** SemiAxis1 ******************/
-		/**** md5 signature: 0566eaad0dfe6ae5caa082f3f3f86e6e ****/
+		/****** StepGeom_Ellipse::SemiAxis1 ******/
+		/****** md5 signature: 0566eaad0dfe6ae5caa082f3f3f86e6e ******/
 		%feature("compactdefaultargs") SemiAxis1;
 		%feature("autodoc", "Return
 -------
@@ -6652,8 +6652,8 @@ No available documentation.
 ") SemiAxis1;
 		Standard_Real SemiAxis1();
 
-		/****************** SemiAxis2 ******************/
-		/**** md5 signature: de7c4fc18e70397434f0b4c911482445 ****/
+		/****** StepGeom_Ellipse::SemiAxis2 ******/
+		/****** md5 signature: de7c4fc18e70397434f0b4c911482445 ******/
 		%feature("compactdefaultargs") SemiAxis2;
 		%feature("autodoc", "Return
 -------
@@ -6665,8 +6665,8 @@ No available documentation.
 ") SemiAxis2;
 		Standard_Real SemiAxis2();
 
-		/****************** SetSemiAxis1 ******************/
-		/**** md5 signature: f4d6d47fd9815e433e4aff1d358bda57 ****/
+		/****** StepGeom_Ellipse::SetSemiAxis1 ******/
+		/****** md5 signature: f4d6d47fd9815e433e4aff1d358bda57 ******/
 		%feature("compactdefaultargs") SetSemiAxis1;
 		%feature("autodoc", "
 Parameters
@@ -6683,8 +6683,8 @@ No available documentation.
 ") SetSemiAxis1;
 		void SetSemiAxis1(const Standard_Real aSemiAxis1);
 
-		/****************** SetSemiAxis2 ******************/
-		/**** md5 signature: c3af118936b2a572813dbbca52954fbc ****/
+		/****** StepGeom_Ellipse::SetSemiAxis2 ******/
+		/****** md5 signature: c3af118936b2a572813dbbca52954fbc ******/
 		%feature("compactdefaultargs") SetSemiAxis2;
 		%feature("autodoc", "
 Parameters
@@ -6717,8 +6717,8 @@ No available documentation.
 *******************************************/
 class StepGeom_EvaluatedDegeneratePcurve : public StepGeom_DegeneratePcurve {
 	public:
-		/****************** StepGeom_EvaluatedDegeneratePcurve ******************/
-		/**** md5 signature: 40d47bc0da840ee2ee7acddd3c2e666f ****/
+		/****** StepGeom_EvaluatedDegeneratePcurve::StepGeom_EvaluatedDegeneratePcurve ******/
+		/****** md5 signature: 40d47bc0da840ee2ee7acddd3c2e666f ******/
 		%feature("compactdefaultargs") StepGeom_EvaluatedDegeneratePcurve;
 		%feature("autodoc", "Return
 -------
@@ -6730,8 +6730,8 @@ Returns a evaluateddegeneratepcurve.
 ") StepGeom_EvaluatedDegeneratePcurve;
 		 StepGeom_EvaluatedDegeneratePcurve();
 
-		/****************** EquivalentPoint ******************/
-		/**** md5 signature: 0bc5d16040aeae6527efa856bb5d73e4 ****/
+		/****** StepGeom_EvaluatedDegeneratePcurve::EquivalentPoint ******/
+		/****** md5 signature: 0bc5d16040aeae6527efa856bb5d73e4 ******/
 		%feature("compactdefaultargs") EquivalentPoint;
 		%feature("autodoc", "Return
 -------
@@ -6743,8 +6743,8 @@ No available documentation.
 ") EquivalentPoint;
 		opencascade::handle<StepGeom_CartesianPoint> EquivalentPoint();
 
-		/****************** Init ******************/
-		/**** md5 signature: 806da51bd18e75ca8d2170221467e68d ****/
+		/****** StepGeom_EvaluatedDegeneratePcurve::Init ******/
+		/****** md5 signature: 806da51bd18e75ca8d2170221467e68d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6764,8 +6764,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aBasisSurface, const opencascade::handle<StepRepr_DefinitionalRepresentation> & aReferenceToCurve, const opencascade::handle<StepGeom_CartesianPoint> & aEquivalentPoint);
 
-		/****************** SetEquivalentPoint ******************/
-		/**** md5 signature: 51735c4a6fd9feded40d4c1bc4536b96 ****/
+		/****** StepGeom_EvaluatedDegeneratePcurve::SetEquivalentPoint ******/
+		/****** md5 signature: 51735c4a6fd9feded40d4c1bc4536b96 ******/
 		%feature("compactdefaultargs") SetEquivalentPoint;
 		%feature("autodoc", "
 Parameters
@@ -6798,8 +6798,8 @@ No available documentation.
 ***************************/
 class StepGeom_Hyperbola : public StepGeom_Conic {
 	public:
-		/****************** StepGeom_Hyperbola ******************/
-		/**** md5 signature: e5fa63bf5d0d2f020b4c0d548683ed0a ****/
+		/****** StepGeom_Hyperbola::StepGeom_Hyperbola ******/
+		/****** md5 signature: e5fa63bf5d0d2f020b4c0d548683ed0a ******/
 		%feature("compactdefaultargs") StepGeom_Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -6811,8 +6811,8 @@ Returns a hyperbola.
 ") StepGeom_Hyperbola;
 		 StepGeom_Hyperbola();
 
-		/****************** Init ******************/
-		/**** md5 signature: 5c5ad0705cbc5dfa825037292db998ff ****/
+		/****** StepGeom_Hyperbola::Init ******/
+		/****** md5 signature: 5c5ad0705cbc5dfa825037292db998ff ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6832,8 +6832,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const StepGeom_Axis2Placement & aPosition, const Standard_Real aSemiAxis, const Standard_Real aSemiImagAxis);
 
-		/****************** SemiAxis ******************/
-		/**** md5 signature: 432cfdb1acc9bfe1b52d44140e92beca ****/
+		/****** StepGeom_Hyperbola::SemiAxis ******/
+		/****** md5 signature: 432cfdb1acc9bfe1b52d44140e92beca ******/
 		%feature("compactdefaultargs") SemiAxis;
 		%feature("autodoc", "Return
 -------
@@ -6845,8 +6845,8 @@ No available documentation.
 ") SemiAxis;
 		Standard_Real SemiAxis();
 
-		/****************** SemiImagAxis ******************/
-		/**** md5 signature: b6f712ae6cebcd94c81d9d664e1a8dde ****/
+		/****** StepGeom_Hyperbola::SemiImagAxis ******/
+		/****** md5 signature: b6f712ae6cebcd94c81d9d664e1a8dde ******/
 		%feature("compactdefaultargs") SemiImagAxis;
 		%feature("autodoc", "Return
 -------
@@ -6858,8 +6858,8 @@ No available documentation.
 ") SemiImagAxis;
 		Standard_Real SemiImagAxis();
 
-		/****************** SetSemiAxis ******************/
-		/**** md5 signature: 99e395dc833660c42304cdec053e0752 ****/
+		/****** StepGeom_Hyperbola::SetSemiAxis ******/
+		/****** md5 signature: 99e395dc833660c42304cdec053e0752 ******/
 		%feature("compactdefaultargs") SetSemiAxis;
 		%feature("autodoc", "
 Parameters
@@ -6876,8 +6876,8 @@ No available documentation.
 ") SetSemiAxis;
 		void SetSemiAxis(const Standard_Real aSemiAxis);
 
-		/****************** SetSemiImagAxis ******************/
-		/**** md5 signature: 4b2350597d10fc8b1ff0bc31fbf0e1c2 ****/
+		/****** StepGeom_Hyperbola::SetSemiImagAxis ******/
+		/****** md5 signature: 4b2350597d10fc8b1ff0bc31fbf0e1c2 ******/
 		%feature("compactdefaultargs") SetSemiImagAxis;
 		%feature("autodoc", "
 Parameters
@@ -6910,8 +6910,8 @@ No available documentation.
 ***********************************/
 class StepGeom_IntersectionCurve : public StepGeom_SurfaceCurve {
 	public:
-		/****************** StepGeom_IntersectionCurve ******************/
-		/**** md5 signature: a15cad64cc1693bc27f1f48a0e006a01 ****/
+		/****** StepGeom_IntersectionCurve::StepGeom_IntersectionCurve ******/
+		/****** md5 signature: a15cad64cc1693bc27f1f48a0e006a01 ******/
 		%feature("compactdefaultargs") StepGeom_IntersectionCurve;
 		%feature("autodoc", "Return
 -------
@@ -6939,8 +6939,8 @@ Returns a intersectioncurve.
 **************************/
 class StepGeom_Parabola : public StepGeom_Conic {
 	public:
-		/****************** StepGeom_Parabola ******************/
-		/**** md5 signature: 2f3b4f99ce72eeddf1c747b7676d60e9 ****/
+		/****** StepGeom_Parabola::StepGeom_Parabola ******/
+		/****** md5 signature: 2f3b4f99ce72eeddf1c747b7676d60e9 ******/
 		%feature("compactdefaultargs") StepGeom_Parabola;
 		%feature("autodoc", "Return
 -------
@@ -6952,8 +6952,8 @@ Returns a parabola.
 ") StepGeom_Parabola;
 		 StepGeom_Parabola();
 
-		/****************** FocalDist ******************/
-		/**** md5 signature: f0a2e5bf8313b1be5cbcba0cba54e7ab ****/
+		/****** StepGeom_Parabola::FocalDist ******/
+		/****** md5 signature: f0a2e5bf8313b1be5cbcba0cba54e7ab ******/
 		%feature("compactdefaultargs") FocalDist;
 		%feature("autodoc", "Return
 -------
@@ -6965,8 +6965,8 @@ No available documentation.
 ") FocalDist;
 		Standard_Real FocalDist();
 
-		/****************** Init ******************/
-		/**** md5 signature: a0db2cd389e4773cd6cb11240cb027cf ****/
+		/****** StepGeom_Parabola::Init ******/
+		/****** md5 signature: a0db2cd389e4773cd6cb11240cb027cf ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6985,8 +6985,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const StepGeom_Axis2Placement & aPosition, const Standard_Real aFocalDist);
 
-		/****************** SetFocalDist ******************/
-		/**** md5 signature: 50aa7cc76d18437bdda6e328bfbad36c ****/
+		/****** StepGeom_Parabola::SetFocalDist ******/
+		/****** md5 signature: 50aa7cc76d18437bdda6e328bfbad36c ******/
 		%feature("compactdefaultargs") SetFocalDist;
 		%feature("autodoc", "
 Parameters
@@ -7019,8 +7019,8 @@ No available documentation.
 ***********************/
 class StepGeom_Plane : public StepGeom_ElementarySurface {
 	public:
-		/****************** StepGeom_Plane ******************/
-		/**** md5 signature: 667aebda7ce84bd383ebd298435becfa ****/
+		/****** StepGeom_Plane::StepGeom_Plane ******/
+		/****** md5 signature: 667aebda7ce84bd383ebd298435becfa ******/
 		%feature("compactdefaultargs") StepGeom_Plane;
 		%feature("autodoc", "Return
 -------
@@ -7048,8 +7048,8 @@ Returns a plane.
 **************************/
 class StepGeom_Polyline : public StepGeom_BoundedCurve {
 	public:
-		/****************** StepGeom_Polyline ******************/
-		/**** md5 signature: 2f5f3c05808cc3851d2b7c7f3fe98bf0 ****/
+		/****** StepGeom_Polyline::StepGeom_Polyline ******/
+		/****** md5 signature: 2f5f3c05808cc3851d2b7c7f3fe98bf0 ******/
 		%feature("compactdefaultargs") StepGeom_Polyline;
 		%feature("autodoc", "Return
 -------
@@ -7061,8 +7061,8 @@ Returns a polyline.
 ") StepGeom_Polyline;
 		 StepGeom_Polyline();
 
-		/****************** Init ******************/
-		/**** md5 signature: 07c58c48cde3c30425a35720dacc3939 ****/
+		/****** StepGeom_Polyline::Init ******/
+		/****** md5 signature: 07c58c48cde3c30425a35720dacc3939 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7080,8 +7080,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aPoints);
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** StepGeom_Polyline::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -7093,8 +7093,8 @@ No available documentation.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** Points ******************/
-		/**** md5 signature: bca1c7326813da5723352460ca7b8bfb ****/
+		/****** StepGeom_Polyline::Points ******/
+		/****** md5 signature: bca1c7326813da5723352460ca7b8bfb ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "Return
 -------
@@ -7106,8 +7106,8 @@ No available documentation.
 ") Points;
 		opencascade::handle<StepGeom_HArray1OfCartesianPoint> Points();
 
-		/****************** PointsValue ******************/
-		/**** md5 signature: e5d785b165d7b72d6478f7e5568fcf25 ****/
+		/****** StepGeom_Polyline::PointsValue ******/
+		/****** md5 signature: e5d785b165d7b72d6478f7e5568fcf25 ******/
 		%feature("compactdefaultargs") PointsValue;
 		%feature("autodoc", "
 Parameters
@@ -7124,8 +7124,8 @@ No available documentation.
 ") PointsValue;
 		opencascade::handle<StepGeom_CartesianPoint> PointsValue(const Standard_Integer num);
 
-		/****************** SetPoints ******************/
-		/**** md5 signature: 53e6f17540d59f65b67949c1e2131631 ****/
+		/****** StepGeom_Polyline::SetPoints ******/
+		/****** md5 signature: 53e6f17540d59f65b67949c1e2131631 ******/
 		%feature("compactdefaultargs") SetPoints;
 		%feature("autodoc", "
 Parameters
@@ -7158,8 +7158,8 @@ No available documentation.
 *********************************************/
 class StepGeom_RectangularCompositeSurface : public StepGeom_BoundedSurface {
 	public:
-		/****************** StepGeom_RectangularCompositeSurface ******************/
-		/**** md5 signature: 48aeb5c079d9dac31f26eeb526849e6d ****/
+		/****** StepGeom_RectangularCompositeSurface::StepGeom_RectangularCompositeSurface ******/
+		/****** md5 signature: 48aeb5c079d9dac31f26eeb526849e6d ******/
 		%feature("compactdefaultargs") StepGeom_RectangularCompositeSurface;
 		%feature("autodoc", "Return
 -------
@@ -7171,8 +7171,8 @@ Returns a rectangularcompositesurface.
 ") StepGeom_RectangularCompositeSurface;
 		 StepGeom_RectangularCompositeSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: 1e8ec591d7effe77e2847a1830007815 ****/
+		/****** StepGeom_RectangularCompositeSurface::Init ******/
+		/****** md5 signature: 1e8ec591d7effe77e2847a1830007815 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7190,8 +7190,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_HArray2OfSurfacePatch> & aSegments);
 
-		/****************** NbSegmentsI ******************/
-		/**** md5 signature: d0c88c11439219f153e3c8ced5ea8c61 ****/
+		/****** StepGeom_RectangularCompositeSurface::NbSegmentsI ******/
+		/****** md5 signature: d0c88c11439219f153e3c8ced5ea8c61 ******/
 		%feature("compactdefaultargs") NbSegmentsI;
 		%feature("autodoc", "Return
 -------
@@ -7203,8 +7203,8 @@ No available documentation.
 ") NbSegmentsI;
 		Standard_Integer NbSegmentsI();
 
-		/****************** NbSegmentsJ ******************/
-		/**** md5 signature: 96ad9887505807e4a1fd57aa6b96115a ****/
+		/****** StepGeom_RectangularCompositeSurface::NbSegmentsJ ******/
+		/****** md5 signature: 96ad9887505807e4a1fd57aa6b96115a ******/
 		%feature("compactdefaultargs") NbSegmentsJ;
 		%feature("autodoc", "Return
 -------
@@ -7216,8 +7216,8 @@ No available documentation.
 ") NbSegmentsJ;
 		Standard_Integer NbSegmentsJ();
 
-		/****************** Segments ******************/
-		/**** md5 signature: a108aab99f80458ddde941c8538cfd0c ****/
+		/****** StepGeom_RectangularCompositeSurface::Segments ******/
+		/****** md5 signature: a108aab99f80458ddde941c8538cfd0c ******/
 		%feature("compactdefaultargs") Segments;
 		%feature("autodoc", "Return
 -------
@@ -7229,8 +7229,8 @@ No available documentation.
 ") Segments;
 		opencascade::handle<StepGeom_HArray2OfSurfacePatch> Segments();
 
-		/****************** SegmentsValue ******************/
-		/**** md5 signature: ce44a3b84b164c23d7af2ddb52aeed15 ****/
+		/****** StepGeom_RectangularCompositeSurface::SegmentsValue ******/
+		/****** md5 signature: ce44a3b84b164c23d7af2ddb52aeed15 ******/
 		%feature("compactdefaultargs") SegmentsValue;
 		%feature("autodoc", "
 Parameters
@@ -7248,8 +7248,8 @@ No available documentation.
 ") SegmentsValue;
 		opencascade::handle<StepGeom_SurfacePatch> SegmentsValue(const Standard_Integer num1, const Standard_Integer num2);
 
-		/****************** SetSegments ******************/
-		/**** md5 signature: ad83ef7bad93671c17c9bf222622e3f1 ****/
+		/****** StepGeom_RectangularCompositeSurface::SetSegments ******/
+		/****** md5 signature: ad83ef7bad93671c17c9bf222622e3f1 ******/
 		%feature("compactdefaultargs") SetSegments;
 		%feature("autodoc", "
 Parameters
@@ -7282,8 +7282,8 @@ No available documentation.
 *******************************************/
 class StepGeom_RectangularTrimmedSurface : public StepGeom_BoundedSurface {
 	public:
-		/****************** StepGeom_RectangularTrimmedSurface ******************/
-		/**** md5 signature: fc7c6bf1faed9ee8334dcc9c52784b0c ****/
+		/****** StepGeom_RectangularTrimmedSurface::StepGeom_RectangularTrimmedSurface ******/
+		/****** md5 signature: fc7c6bf1faed9ee8334dcc9c52784b0c ******/
 		%feature("compactdefaultargs") StepGeom_RectangularTrimmedSurface;
 		%feature("autodoc", "Return
 -------
@@ -7295,8 +7295,8 @@ Returns a rectangulartrimmedsurface.
 ") StepGeom_RectangularTrimmedSurface;
 		 StepGeom_RectangularTrimmedSurface();
 
-		/****************** BasisSurface ******************/
-		/**** md5 signature: a392dc35d63547e75f8c22616a036c5d ****/
+		/****** StepGeom_RectangularTrimmedSurface::BasisSurface ******/
+		/****** md5 signature: a392dc35d63547e75f8c22616a036c5d ******/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "Return
 -------
@@ -7308,8 +7308,8 @@ No available documentation.
 ") BasisSurface;
 		opencascade::handle<StepGeom_Surface> BasisSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: e2fbffe91f2149180c7967f55fe8739f ****/
+		/****** StepGeom_RectangularTrimmedSurface::Init ******/
+		/****** md5 signature: e2fbffe91f2149180c7967f55fe8739f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7333,8 +7333,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Surface> & aBasisSurface, const Standard_Real aU1, const Standard_Real aU2, const Standard_Real aV1, const Standard_Real aV2, const Standard_Boolean aUsense, const Standard_Boolean aVsense);
 
-		/****************** SetBasisSurface ******************/
-		/**** md5 signature: ee1a95d90ec4e9798673d554f8d52949 ****/
+		/****** StepGeom_RectangularTrimmedSurface::SetBasisSurface ******/
+		/****** md5 signature: ee1a95d90ec4e9798673d554f8d52949 ******/
 		%feature("compactdefaultargs") SetBasisSurface;
 		%feature("autodoc", "
 Parameters
@@ -7351,8 +7351,8 @@ No available documentation.
 ") SetBasisSurface;
 		void SetBasisSurface(const opencascade::handle<StepGeom_Surface> & aBasisSurface);
 
-		/****************** SetU1 ******************/
-		/**** md5 signature: 029000fd67c7d55476f98a950d82a452 ****/
+		/****** StepGeom_RectangularTrimmedSurface::SetU1 ******/
+		/****** md5 signature: 029000fd67c7d55476f98a950d82a452 ******/
 		%feature("compactdefaultargs") SetU1;
 		%feature("autodoc", "
 Parameters
@@ -7369,8 +7369,8 @@ No available documentation.
 ") SetU1;
 		void SetU1(const Standard_Real aU1);
 
-		/****************** SetU2 ******************/
-		/**** md5 signature: 94d343996551cb3abe48ebca2838f391 ****/
+		/****** StepGeom_RectangularTrimmedSurface::SetU2 ******/
+		/****** md5 signature: 94d343996551cb3abe48ebca2838f391 ******/
 		%feature("compactdefaultargs") SetU2;
 		%feature("autodoc", "
 Parameters
@@ -7387,8 +7387,8 @@ No available documentation.
 ") SetU2;
 		void SetU2(const Standard_Real aU2);
 
-		/****************** SetUsense ******************/
-		/**** md5 signature: 5098b64e087094be5bea5aa2286eeb48 ****/
+		/****** StepGeom_RectangularTrimmedSurface::SetUsense ******/
+		/****** md5 signature: 5098b64e087094be5bea5aa2286eeb48 ******/
 		%feature("compactdefaultargs") SetUsense;
 		%feature("autodoc", "
 Parameters
@@ -7405,8 +7405,8 @@ No available documentation.
 ") SetUsense;
 		void SetUsense(const Standard_Boolean aUsense);
 
-		/****************** SetV1 ******************/
-		/**** md5 signature: 5e30beb6fed5e88ee74880fea3423179 ****/
+		/****** StepGeom_RectangularTrimmedSurface::SetV1 ******/
+		/****** md5 signature: 5e30beb6fed5e88ee74880fea3423179 ******/
 		%feature("compactdefaultargs") SetV1;
 		%feature("autodoc", "
 Parameters
@@ -7423,8 +7423,8 @@ No available documentation.
 ") SetV1;
 		void SetV1(const Standard_Real aV1);
 
-		/****************** SetV2 ******************/
-		/**** md5 signature: 6f08d94efefa608d73108e1098657b7e ****/
+		/****** StepGeom_RectangularTrimmedSurface::SetV2 ******/
+		/****** md5 signature: 6f08d94efefa608d73108e1098657b7e ******/
 		%feature("compactdefaultargs") SetV2;
 		%feature("autodoc", "
 Parameters
@@ -7441,8 +7441,8 @@ No available documentation.
 ") SetV2;
 		void SetV2(const Standard_Real aV2);
 
-		/****************** SetVsense ******************/
-		/**** md5 signature: f2adeb93a37f4f6daac049d55a199395 ****/
+		/****** StepGeom_RectangularTrimmedSurface::SetVsense ******/
+		/****** md5 signature: f2adeb93a37f4f6daac049d55a199395 ******/
 		%feature("compactdefaultargs") SetVsense;
 		%feature("autodoc", "
 Parameters
@@ -7459,8 +7459,8 @@ No available documentation.
 ") SetVsense;
 		void SetVsense(const Standard_Boolean aVsense);
 
-		/****************** U1 ******************/
-		/**** md5 signature: dc11e0157513dfb2ced295d3b3c19ebf ****/
+		/****** StepGeom_RectangularTrimmedSurface::U1 ******/
+		/****** md5 signature: dc11e0157513dfb2ced295d3b3c19ebf ******/
 		%feature("compactdefaultargs") U1;
 		%feature("autodoc", "Return
 -------
@@ -7472,8 +7472,8 @@ No available documentation.
 ") U1;
 		Standard_Real U1();
 
-		/****************** U2 ******************/
-		/**** md5 signature: 4730f1ce213775f0185223b0deaa41a3 ****/
+		/****** StepGeom_RectangularTrimmedSurface::U2 ******/
+		/****** md5 signature: 4730f1ce213775f0185223b0deaa41a3 ******/
 		%feature("compactdefaultargs") U2;
 		%feature("autodoc", "Return
 -------
@@ -7485,8 +7485,8 @@ No available documentation.
 ") U2;
 		Standard_Real U2();
 
-		/****************** Usense ******************/
-		/**** md5 signature: 194c5636cedeb6b4bbb9d702fc26c358 ****/
+		/****** StepGeom_RectangularTrimmedSurface::Usense ******/
+		/****** md5 signature: 194c5636cedeb6b4bbb9d702fc26c358 ******/
 		%feature("compactdefaultargs") Usense;
 		%feature("autodoc", "Return
 -------
@@ -7498,8 +7498,8 @@ No available documentation.
 ") Usense;
 		Standard_Boolean Usense();
 
-		/****************** V1 ******************/
-		/**** md5 signature: 4690fe5b6fc46d61802a6f0d508c99e5 ****/
+		/****** StepGeom_RectangularTrimmedSurface::V1 ******/
+		/****** md5 signature: 4690fe5b6fc46d61802a6f0d508c99e5 ******/
 		%feature("compactdefaultargs") V1;
 		%feature("autodoc", "Return
 -------
@@ -7511,8 +7511,8 @@ No available documentation.
 ") V1;
 		Standard_Real V1();
 
-		/****************** V2 ******************/
-		/**** md5 signature: 17961d7c3a50f3016cdb7368fdec1877 ****/
+		/****** StepGeom_RectangularTrimmedSurface::V2 ******/
+		/****** md5 signature: 17961d7c3a50f3016cdb7368fdec1877 ******/
 		%feature("compactdefaultargs") V2;
 		%feature("autodoc", "Return
 -------
@@ -7524,8 +7524,8 @@ No available documentation.
 ") V2;
 		Standard_Real V2();
 
-		/****************** Vsense ******************/
-		/**** md5 signature: 1e614e54b77d23978bef6c8dbd698d4f ****/
+		/****** StepGeom_RectangularTrimmedSurface::Vsense ******/
+		/****** md5 signature: 1e614e54b77d23978bef6c8dbd698d4f ******/
 		%feature("compactdefaultargs") Vsense;
 		%feature("autodoc", "Return
 -------
@@ -7553,8 +7553,8 @@ No available documentation.
 ***************************/
 class StepGeom_SeamCurve : public StepGeom_SurfaceCurve {
 	public:
-		/****************** StepGeom_SeamCurve ******************/
-		/**** md5 signature: d9df9742ff56eea9294c84393ec922c9 ****/
+		/****** StepGeom_SeamCurve::StepGeom_SeamCurve ******/
+		/****** md5 signature: d9df9742ff56eea9294c84393ec922c9 ******/
 		%feature("compactdefaultargs") StepGeom_SeamCurve;
 		%feature("autodoc", "Return
 -------
@@ -7582,8 +7582,8 @@ Returns a seamcurve.
 **********************************/
 class StepGeom_SphericalSurface : public StepGeom_ElementarySurface {
 	public:
-		/****************** StepGeom_SphericalSurface ******************/
-		/**** md5 signature: 77ef512c30c21bae823c47e24e08ed62 ****/
+		/****** StepGeom_SphericalSurface::StepGeom_SphericalSurface ******/
+		/****** md5 signature: 77ef512c30c21bae823c47e24e08ed62 ******/
 		%feature("compactdefaultargs") StepGeom_SphericalSurface;
 		%feature("autodoc", "Return
 -------
@@ -7595,8 +7595,8 @@ Returns a sphericalsurface.
 ") StepGeom_SphericalSurface;
 		 StepGeom_SphericalSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: 7a875d4ea4fc134a49dc35ef6aa3b96c ****/
+		/****** StepGeom_SphericalSurface::Init ******/
+		/****** md5 signature: 7a875d4ea4fc134a49dc35ef6aa3b96c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7615,8 +7615,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition, const Standard_Real aRadius);
 
-		/****************** Radius ******************/
-		/**** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ****/
+		/****** StepGeom_SphericalSurface::Radius ******/
+		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
@@ -7628,8 +7628,8 @@ No available documentation.
 ") Radius;
 		Standard_Real Radius();
 
-		/****************** SetRadius ******************/
-		/**** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ****/
+		/****** StepGeom_SphericalSurface::SetRadius ******/
+		/****** md5 signature: 75bdaaca53fe512f9758601eef8521b0 ******/
 		%feature("compactdefaultargs") SetRadius;
 		%feature("autodoc", "
 Parameters
@@ -7662,8 +7662,8 @@ No available documentation.
 *********************************************/
 class StepGeom_SurfaceCurveAndBoundedCurve : public StepGeom_SurfaceCurve {
 	public:
-		/****************** StepGeom_SurfaceCurveAndBoundedCurve ******************/
-		/**** md5 signature: 329218d1f5afa6fe56aa171348004286 ****/
+		/****** StepGeom_SurfaceCurveAndBoundedCurve::StepGeom_SurfaceCurveAndBoundedCurve ******/
+		/****** md5 signature: 329218d1f5afa6fe56aa171348004286 ******/
 		%feature("compactdefaultargs") StepGeom_SurfaceCurveAndBoundedCurve;
 		%feature("autodoc", "Return
 -------
@@ -7675,8 +7675,8 @@ Creates empty object.
 ") StepGeom_SurfaceCurveAndBoundedCurve;
 		 StepGeom_SurfaceCurveAndBoundedCurve();
 
-		/****************** BoundedCurve ******************/
-		/**** md5 signature: 3cba715f66208bb905df234219795264 ****/
+		/****** StepGeom_SurfaceCurveAndBoundedCurve::BoundedCurve ******/
+		/****** md5 signature: 3cba715f66208bb905df234219795264 ******/
 		%feature("compactdefaultargs") BoundedCurve;
 		%feature("autodoc", "Return
 -------
@@ -7704,8 +7704,8 @@ Returns field boundedcurve.
 ******************************************/
 class StepGeom_SurfaceOfLinearExtrusion : public StepGeom_SweptSurface {
 	public:
-		/****************** StepGeom_SurfaceOfLinearExtrusion ******************/
-		/**** md5 signature: d11b738129052067f1a7331d707991f0 ****/
+		/****** StepGeom_SurfaceOfLinearExtrusion::StepGeom_SurfaceOfLinearExtrusion ******/
+		/****** md5 signature: d11b738129052067f1a7331d707991f0 ******/
 		%feature("compactdefaultargs") StepGeom_SurfaceOfLinearExtrusion;
 		%feature("autodoc", "Return
 -------
@@ -7717,8 +7717,8 @@ Returns a surfaceoflinearextrusion.
 ") StepGeom_SurfaceOfLinearExtrusion;
 		 StepGeom_SurfaceOfLinearExtrusion();
 
-		/****************** ExtrusionAxis ******************/
-		/**** md5 signature: 3711493e919a154bb6334de537b711eb ****/
+		/****** StepGeom_SurfaceOfLinearExtrusion::ExtrusionAxis ******/
+		/****** md5 signature: 3711493e919a154bb6334de537b711eb ******/
 		%feature("compactdefaultargs") ExtrusionAxis;
 		%feature("autodoc", "Return
 -------
@@ -7730,8 +7730,8 @@ No available documentation.
 ") ExtrusionAxis;
 		opencascade::handle<StepGeom_Vector> ExtrusionAxis();
 
-		/****************** Init ******************/
-		/**** md5 signature: eb1cd85523c92b63df3c8c98dd6d55bb ****/
+		/****** StepGeom_SurfaceOfLinearExtrusion::Init ******/
+		/****** md5 signature: eb1cd85523c92b63df3c8c98dd6d55bb ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7750,8 +7750,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aSweptCurve, const opencascade::handle<StepGeom_Vector> & aExtrusionAxis);
 
-		/****************** SetExtrusionAxis ******************/
-		/**** md5 signature: ad594a7fd6091d16a61615a0c8a87f50 ****/
+		/****** StepGeom_SurfaceOfLinearExtrusion::SetExtrusionAxis ******/
+		/****** md5 signature: ad594a7fd6091d16a61615a0c8a87f50 ******/
 		%feature("compactdefaultargs") SetExtrusionAxis;
 		%feature("autodoc", "
 Parameters
@@ -7784,8 +7784,8 @@ No available documentation.
 *************************************/
 class StepGeom_SurfaceOfRevolution : public StepGeom_SweptSurface {
 	public:
-		/****************** StepGeom_SurfaceOfRevolution ******************/
-		/**** md5 signature: 3ab4520f3bc296a8f659aec7b67932fa ****/
+		/****** StepGeom_SurfaceOfRevolution::StepGeom_SurfaceOfRevolution ******/
+		/****** md5 signature: 3ab4520f3bc296a8f659aec7b67932fa ******/
 		%feature("compactdefaultargs") StepGeom_SurfaceOfRevolution;
 		%feature("autodoc", "Return
 -------
@@ -7797,8 +7797,8 @@ Returns a surfaceofrevolution.
 ") StepGeom_SurfaceOfRevolution;
 		 StepGeom_SurfaceOfRevolution();
 
-		/****************** AxisPosition ******************/
-		/**** md5 signature: 496b2887998e0357e3984ff7b47646d7 ****/
+		/****** StepGeom_SurfaceOfRevolution::AxisPosition ******/
+		/****** md5 signature: 496b2887998e0357e3984ff7b47646d7 ******/
 		%feature("compactdefaultargs") AxisPosition;
 		%feature("autodoc", "Return
 -------
@@ -7810,8 +7810,8 @@ No available documentation.
 ") AxisPosition;
 		opencascade::handle<StepGeom_Axis1Placement> AxisPosition();
 
-		/****************** Init ******************/
-		/**** md5 signature: 5000ca7edbf00b33e40f08513d0c88ef ****/
+		/****** StepGeom_SurfaceOfRevolution::Init ******/
+		/****** md5 signature: 5000ca7edbf00b33e40f08513d0c88ef ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7830,8 +7830,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aSweptCurve, const opencascade::handle<StepGeom_Axis1Placement> & aAxisPosition);
 
-		/****************** SetAxisPosition ******************/
-		/**** md5 signature: 3e8d7870783fe9ba2dbcbdf5fe200ae2 ****/
+		/****** StepGeom_SurfaceOfRevolution::SetAxisPosition ******/
+		/****** md5 signature: 3e8d7870783fe9ba2dbcbdf5fe200ae2 ******/
 		%feature("compactdefaultargs") SetAxisPosition;
 		%feature("autodoc", "
 Parameters
@@ -7864,8 +7864,8 @@ No available documentation.
 *********************************/
 class StepGeom_ToroidalSurface : public StepGeom_ElementarySurface {
 	public:
-		/****************** StepGeom_ToroidalSurface ******************/
-		/**** md5 signature: 43def1f2f2862b188a58a40ab7fce547 ****/
+		/****** StepGeom_ToroidalSurface::StepGeom_ToroidalSurface ******/
+		/****** md5 signature: 43def1f2f2862b188a58a40ab7fce547 ******/
 		%feature("compactdefaultargs") StepGeom_ToroidalSurface;
 		%feature("autodoc", "Return
 -------
@@ -7877,8 +7877,8 @@ Returns a toroidalsurface.
 ") StepGeom_ToroidalSurface;
 		 StepGeom_ToroidalSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: a37a1596718069253a0c75d7373620d0 ****/
+		/****** StepGeom_ToroidalSurface::Init ******/
+		/****** md5 signature: a37a1596718069253a0c75d7373620d0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7898,8 +7898,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition, const Standard_Real aMajorRadius, const Standard_Real aMinorRadius);
 
-		/****************** MajorRadius ******************/
-		/**** md5 signature: e961bb81456f4d0a6154d0e9401e1ce8 ****/
+		/****** StepGeom_ToroidalSurface::MajorRadius ******/
+		/****** md5 signature: e961bb81456f4d0a6154d0e9401e1ce8 ******/
 		%feature("compactdefaultargs") MajorRadius;
 		%feature("autodoc", "Return
 -------
@@ -7911,8 +7911,8 @@ No available documentation.
 ") MajorRadius;
 		Standard_Real MajorRadius();
 
-		/****************** MinorRadius ******************/
-		/**** md5 signature: e1383e2287a25901af1e2b42cc95af4d ****/
+		/****** StepGeom_ToroidalSurface::MinorRadius ******/
+		/****** md5 signature: e1383e2287a25901af1e2b42cc95af4d ******/
 		%feature("compactdefaultargs") MinorRadius;
 		%feature("autodoc", "Return
 -------
@@ -7924,8 +7924,8 @@ No available documentation.
 ") MinorRadius;
 		Standard_Real MinorRadius();
 
-		/****************** SetMajorRadius ******************/
-		/**** md5 signature: 19063cd2e5c489f1f2f903c09d028591 ****/
+		/****** StepGeom_ToroidalSurface::SetMajorRadius ******/
+		/****** md5 signature: 19063cd2e5c489f1f2f903c09d028591 ******/
 		%feature("compactdefaultargs") SetMajorRadius;
 		%feature("autodoc", "
 Parameters
@@ -7942,8 +7942,8 @@ No available documentation.
 ") SetMajorRadius;
 		void SetMajorRadius(const Standard_Real aMajorRadius);
 
-		/****************** SetMinorRadius ******************/
-		/**** md5 signature: 0929ce2e2ad5f01b2a0006efb5c74779 ****/
+		/****** StepGeom_ToroidalSurface::SetMinorRadius ******/
+		/****** md5 signature: 0929ce2e2ad5f01b2a0006efb5c74779 ******/
 		%feature("compactdefaultargs") SetMinorRadius;
 		%feature("autodoc", "
 Parameters
@@ -7976,8 +7976,8 @@ No available documentation.
 ******************************/
 class StepGeom_TrimmedCurve : public StepGeom_BoundedCurve {
 	public:
-		/****************** StepGeom_TrimmedCurve ******************/
-		/**** md5 signature: c0e9be1dd32d6c15208f0fe8666b18f8 ****/
+		/****** StepGeom_TrimmedCurve::StepGeom_TrimmedCurve ******/
+		/****** md5 signature: c0e9be1dd32d6c15208f0fe8666b18f8 ******/
 		%feature("compactdefaultargs") StepGeom_TrimmedCurve;
 		%feature("autodoc", "Return
 -------
@@ -7989,8 +7989,8 @@ Returns a trimmedcurve.
 ") StepGeom_TrimmedCurve;
 		 StepGeom_TrimmedCurve();
 
-		/****************** BasisCurve ******************/
-		/**** md5 signature: 0be9af8ae440c49202c050d8d0c44b0a ****/
+		/****** StepGeom_TrimmedCurve::BasisCurve ******/
+		/****** md5 signature: 0be9af8ae440c49202c050d8d0c44b0a ******/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "Return
 -------
@@ -8002,8 +8002,8 @@ No available documentation.
 ") BasisCurve;
 		opencascade::handle<StepGeom_Curve> BasisCurve();
 
-		/****************** Init ******************/
-		/**** md5 signature: 8794aee6de2c51ce7f0d4e930ae71a9b ****/
+		/****** StepGeom_TrimmedCurve::Init ******/
+		/****** md5 signature: 8794aee6de2c51ce7f0d4e930ae71a9b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8025,8 +8025,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Curve> & aBasisCurve, const opencascade::handle<StepGeom_HArray1OfTrimmingSelect> & aTrim1, const opencascade::handle<StepGeom_HArray1OfTrimmingSelect> & aTrim2, const Standard_Boolean aSenseAgreement, const StepGeom_TrimmingPreference aMasterRepresentation);
 
-		/****************** MasterRepresentation ******************/
-		/**** md5 signature: 8b49366d1ad10b27765ce5eeb6cfad30 ****/
+		/****** StepGeom_TrimmedCurve::MasterRepresentation ******/
+		/****** md5 signature: 8b49366d1ad10b27765ce5eeb6cfad30 ******/
 		%feature("compactdefaultargs") MasterRepresentation;
 		%feature("autodoc", "Return
 -------
@@ -8038,8 +8038,8 @@ No available documentation.
 ") MasterRepresentation;
 		StepGeom_TrimmingPreference MasterRepresentation();
 
-		/****************** NbTrim1 ******************/
-		/**** md5 signature: 3cbfac294ebd793876281ea6aac9e66a ****/
+		/****** StepGeom_TrimmedCurve::NbTrim1 ******/
+		/****** md5 signature: 3cbfac294ebd793876281ea6aac9e66a ******/
 		%feature("compactdefaultargs") NbTrim1;
 		%feature("autodoc", "Return
 -------
@@ -8051,8 +8051,8 @@ No available documentation.
 ") NbTrim1;
 		Standard_Integer NbTrim1();
 
-		/****************** NbTrim2 ******************/
-		/**** md5 signature: 8816769a291d3bb77b37f173397f244e ****/
+		/****** StepGeom_TrimmedCurve::NbTrim2 ******/
+		/****** md5 signature: 8816769a291d3bb77b37f173397f244e ******/
 		%feature("compactdefaultargs") NbTrim2;
 		%feature("autodoc", "Return
 -------
@@ -8064,8 +8064,8 @@ No available documentation.
 ") NbTrim2;
 		Standard_Integer NbTrim2();
 
-		/****************** SenseAgreement ******************/
-		/**** md5 signature: 2d6df0cafcc152af47aa7ba62e511f9b ****/
+		/****** StepGeom_TrimmedCurve::SenseAgreement ******/
+		/****** md5 signature: 2d6df0cafcc152af47aa7ba62e511f9b ******/
 		%feature("compactdefaultargs") SenseAgreement;
 		%feature("autodoc", "Return
 -------
@@ -8077,8 +8077,8 @@ No available documentation.
 ") SenseAgreement;
 		Standard_Boolean SenseAgreement();
 
-		/****************** SetBasisCurve ******************/
-		/**** md5 signature: 28fd1fe3129f0ded7387f3b2f2a4686a ****/
+		/****** StepGeom_TrimmedCurve::SetBasisCurve ******/
+		/****** md5 signature: 28fd1fe3129f0ded7387f3b2f2a4686a ******/
 		%feature("compactdefaultargs") SetBasisCurve;
 		%feature("autodoc", "
 Parameters
@@ -8095,8 +8095,8 @@ No available documentation.
 ") SetBasisCurve;
 		void SetBasisCurve(const opencascade::handle<StepGeom_Curve> & aBasisCurve);
 
-		/****************** SetMasterRepresentation ******************/
-		/**** md5 signature: de9e6f016688e4bcc1587a4092e90a32 ****/
+		/****** StepGeom_TrimmedCurve::SetMasterRepresentation ******/
+		/****** md5 signature: de9e6f016688e4bcc1587a4092e90a32 ******/
 		%feature("compactdefaultargs") SetMasterRepresentation;
 		%feature("autodoc", "
 Parameters
@@ -8113,8 +8113,8 @@ No available documentation.
 ") SetMasterRepresentation;
 		void SetMasterRepresentation(const StepGeom_TrimmingPreference aMasterRepresentation);
 
-		/****************** SetSenseAgreement ******************/
-		/**** md5 signature: 8f6c77aa92f5ef020a6c764c5ff19cf5 ****/
+		/****** StepGeom_TrimmedCurve::SetSenseAgreement ******/
+		/****** md5 signature: 8f6c77aa92f5ef020a6c764c5ff19cf5 ******/
 		%feature("compactdefaultargs") SetSenseAgreement;
 		%feature("autodoc", "
 Parameters
@@ -8131,8 +8131,8 @@ No available documentation.
 ") SetSenseAgreement;
 		void SetSenseAgreement(const Standard_Boolean aSenseAgreement);
 
-		/****************** SetTrim1 ******************/
-		/**** md5 signature: 8f4a97da89472e2843f56704ff14d818 ****/
+		/****** StepGeom_TrimmedCurve::SetTrim1 ******/
+		/****** md5 signature: 8f4a97da89472e2843f56704ff14d818 ******/
 		%feature("compactdefaultargs") SetTrim1;
 		%feature("autodoc", "
 Parameters
@@ -8149,8 +8149,8 @@ No available documentation.
 ") SetTrim1;
 		void SetTrim1(const opencascade::handle<StepGeom_HArray1OfTrimmingSelect> & aTrim1);
 
-		/****************** SetTrim2 ******************/
-		/**** md5 signature: d3520c8c36f47e3cafb2aa3deb05be0e ****/
+		/****** StepGeom_TrimmedCurve::SetTrim2 ******/
+		/****** md5 signature: d3520c8c36f47e3cafb2aa3deb05be0e ******/
 		%feature("compactdefaultargs") SetTrim2;
 		%feature("autodoc", "
 Parameters
@@ -8167,8 +8167,8 @@ No available documentation.
 ") SetTrim2;
 		void SetTrim2(const opencascade::handle<StepGeom_HArray1OfTrimmingSelect> & aTrim2);
 
-		/****************** Trim1 ******************/
-		/**** md5 signature: df45e3a7c8a3ddd341191c9eb9e695f1 ****/
+		/****** StepGeom_TrimmedCurve::Trim1 ******/
+		/****** md5 signature: df45e3a7c8a3ddd341191c9eb9e695f1 ******/
 		%feature("compactdefaultargs") Trim1;
 		%feature("autodoc", "Return
 -------
@@ -8180,8 +8180,8 @@ No available documentation.
 ") Trim1;
 		opencascade::handle<StepGeom_HArray1OfTrimmingSelect> Trim1();
 
-		/****************** Trim1Value ******************/
-		/**** md5 signature: 9f9d195cdcd66866fb86f9303c557101 ****/
+		/****** StepGeom_TrimmedCurve::Trim1Value ******/
+		/****** md5 signature: 9f9d195cdcd66866fb86f9303c557101 ******/
 		%feature("compactdefaultargs") Trim1Value;
 		%feature("autodoc", "
 Parameters
@@ -8198,8 +8198,8 @@ No available documentation.
 ") Trim1Value;
 		StepGeom_TrimmingSelect Trim1Value(const Standard_Integer num);
 
-		/****************** Trim2 ******************/
-		/**** md5 signature: 25db697bc7e7cba0dec11699c2f4ce82 ****/
+		/****** StepGeom_TrimmedCurve::Trim2 ******/
+		/****** md5 signature: 25db697bc7e7cba0dec11699c2f4ce82 ******/
 		%feature("compactdefaultargs") Trim2;
 		%feature("autodoc", "Return
 -------
@@ -8211,8 +8211,8 @@ No available documentation.
 ") Trim2;
 		opencascade::handle<StepGeom_HArray1OfTrimmingSelect> Trim2();
 
-		/****************** Trim2Value ******************/
-		/**** md5 signature: 0e3b230e1d10e48c78bd3bae39b6fe53 ****/
+		/****** StepGeom_TrimmedCurve::Trim2Value ******/
+		/****** md5 signature: 0e3b230e1d10e48c78bd3bae39b6fe53 ******/
 		%feature("compactdefaultargs") Trim2Value;
 		%feature("autodoc", "
 Parameters
@@ -8245,8 +8245,8 @@ No available documentation.
 ***************************************/
 class StepGeom_BSplineCurveWithKnots : public StepGeom_BSplineCurve {
 	public:
-		/****************** StepGeom_BSplineCurveWithKnots ******************/
-		/**** md5 signature: 4f7540a35291462ca6fc84d8ed70a94c ****/
+		/****** StepGeom_BSplineCurveWithKnots::StepGeom_BSplineCurveWithKnots ******/
+		/****** md5 signature: 4f7540a35291462ca6fc84d8ed70a94c ******/
 		%feature("compactdefaultargs") StepGeom_BSplineCurveWithKnots;
 		%feature("autodoc", "Return
 -------
@@ -8258,8 +8258,8 @@ Returns a bsplinecurvewithknots.
 ") StepGeom_BSplineCurveWithKnots;
 		 StepGeom_BSplineCurveWithKnots();
 
-		/****************** Init ******************/
-		/**** md5 signature: 5b0157d86f8b92c28fb610885f2e680c ****/
+		/****** StepGeom_BSplineCurveWithKnots::Init ******/
+		/****** md5 signature: 5b0157d86f8b92c28fb610885f2e680c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8284,8 +8284,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities, const opencascade::handle<TColStd_HArray1OfReal> & aKnots, const StepGeom_KnotType aKnotSpec);
 
-		/****************** KnotMultiplicities ******************/
-		/**** md5 signature: a628cfbef208de16ffb22afa945f1a33 ****/
+		/****** StepGeom_BSplineCurveWithKnots::KnotMultiplicities ******/
+		/****** md5 signature: a628cfbef208de16ffb22afa945f1a33 ******/
 		%feature("compactdefaultargs") KnotMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -8297,8 +8297,8 @@ No available documentation.
 ") KnotMultiplicities;
 		opencascade::handle<TColStd_HArray1OfInteger> KnotMultiplicities();
 
-		/****************** KnotMultiplicitiesValue ******************/
-		/**** md5 signature: 41e7fbcb13b8fc10350e2cb05e4048a7 ****/
+		/****** StepGeom_BSplineCurveWithKnots::KnotMultiplicitiesValue ******/
+		/****** md5 signature: 41e7fbcb13b8fc10350e2cb05e4048a7 ******/
 		%feature("compactdefaultargs") KnotMultiplicitiesValue;
 		%feature("autodoc", "
 Parameters
@@ -8315,8 +8315,8 @@ No available documentation.
 ") KnotMultiplicitiesValue;
 		Standard_Integer KnotMultiplicitiesValue(const Standard_Integer num);
 
-		/****************** KnotSpec ******************/
-		/**** md5 signature: 71bb53c109d69b64cffe7a898f8df609 ****/
+		/****** StepGeom_BSplineCurveWithKnots::KnotSpec ******/
+		/****** md5 signature: 71bb53c109d69b64cffe7a898f8df609 ******/
 		%feature("compactdefaultargs") KnotSpec;
 		%feature("autodoc", "Return
 -------
@@ -8328,8 +8328,8 @@ No available documentation.
 ") KnotSpec;
 		StepGeom_KnotType KnotSpec();
 
-		/****************** Knots ******************/
-		/**** md5 signature: e3036b1d0b355a749bda4aabdce1e25e ****/
+		/****** StepGeom_BSplineCurveWithKnots::Knots ******/
+		/****** md5 signature: e3036b1d0b355a749bda4aabdce1e25e ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
@@ -8341,8 +8341,8 @@ No available documentation.
 ") Knots;
 		opencascade::handle<TColStd_HArray1OfReal> Knots();
 
-		/****************** KnotsValue ******************/
-		/**** md5 signature: eb93b5b9688e64eac0138989b3b1d41c ****/
+		/****** StepGeom_BSplineCurveWithKnots::KnotsValue ******/
+		/****** md5 signature: eb93b5b9688e64eac0138989b3b1d41c ******/
 		%feature("compactdefaultargs") KnotsValue;
 		%feature("autodoc", "
 Parameters
@@ -8359,8 +8359,8 @@ No available documentation.
 ") KnotsValue;
 		Standard_Real KnotsValue(const Standard_Integer num);
 
-		/****************** NbKnotMultiplicities ******************/
-		/**** md5 signature: b43d6a38236c190ff3364051131317c2 ****/
+		/****** StepGeom_BSplineCurveWithKnots::NbKnotMultiplicities ******/
+		/****** md5 signature: b43d6a38236c190ff3364051131317c2 ******/
 		%feature("compactdefaultargs") NbKnotMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -8372,8 +8372,8 @@ No available documentation.
 ") NbKnotMultiplicities;
 		Standard_Integer NbKnotMultiplicities();
 
-		/****************** NbKnots ******************/
-		/**** md5 signature: ccda669299f8eba1ba0d3387af4c950e ****/
+		/****** StepGeom_BSplineCurveWithKnots::NbKnots ******/
+		/****** md5 signature: ccda669299f8eba1ba0d3387af4c950e ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -8385,8 +8385,8 @@ No available documentation.
 ") NbKnots;
 		Standard_Integer NbKnots();
 
-		/****************** SetKnotMultiplicities ******************/
-		/**** md5 signature: 0a7a5523d9ad29463e75938844c15a7b ****/
+		/****** StepGeom_BSplineCurveWithKnots::SetKnotMultiplicities ******/
+		/****** md5 signature: 0a7a5523d9ad29463e75938844c15a7b ******/
 		%feature("compactdefaultargs") SetKnotMultiplicities;
 		%feature("autodoc", "
 Parameters
@@ -8403,8 +8403,8 @@ No available documentation.
 ") SetKnotMultiplicities;
 		void SetKnotMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities);
 
-		/****************** SetKnotSpec ******************/
-		/**** md5 signature: dac52a82fb3cbd778049ab7a7d0effe9 ****/
+		/****** StepGeom_BSplineCurveWithKnots::SetKnotSpec ******/
+		/****** md5 signature: dac52a82fb3cbd778049ab7a7d0effe9 ******/
 		%feature("compactdefaultargs") SetKnotSpec;
 		%feature("autodoc", "
 Parameters
@@ -8421,8 +8421,8 @@ No available documentation.
 ") SetKnotSpec;
 		void SetKnotSpec(const StepGeom_KnotType aKnotSpec);
 
-		/****************** SetKnots ******************/
-		/**** md5 signature: 32c0bf113e51e5ea1f9d4d3841806862 ****/
+		/****** StepGeom_BSplineCurveWithKnots::SetKnots ******/
+		/****** md5 signature: 32c0bf113e51e5ea1f9d4d3841806862 ******/
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "
 Parameters
@@ -8455,8 +8455,8 @@ No available documentation.
 **************************************************************/
 class StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
-		/****************** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve ******************/
-		/**** md5 signature: 5ad54e7d95ae6effefe6913419701570 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve ******/
+		/****** md5 signature: 5ad54e7d95ae6effefe6913419701570 ******/
 		%feature("compactdefaultargs") StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -8468,8 +8468,8 @@ Returns a bsplinecurvewithknotsandrationalbsplinecurve.
 ") StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
 		 StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve();
 
-		/****************** BSplineCurveWithKnots ******************/
-		/**** md5 signature: 87759d99392f628de83144de5e6e6fed ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::BSplineCurveWithKnots ******/
+		/****** md5 signature: 87759d99392f628de83144de5e6e6fed ******/
 		%feature("compactdefaultargs") BSplineCurveWithKnots;
 		%feature("autodoc", "Return
 -------
@@ -8481,8 +8481,8 @@ No available documentation.
 ") BSplineCurveWithKnots;
 		opencascade::handle<StepGeom_BSplineCurveWithKnots> BSplineCurveWithKnots();
 
-		/****************** Init ******************/
-		/**** md5 signature: 2f256caaf664433e959b8d2be55cda08 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::Init ******/
+		/****** md5 signature: 2f256caaf664433e959b8d2be55cda08 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8506,8 +8506,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BSplineCurveWithKnots> & aBSplineCurveWithKnots, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
-		/****************** Init ******************/
-		/**** md5 signature: 4dff96faa4eec1189cf2f97405cc395b ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::Init ******/
+		/****** md5 signature: 4dff96faa4eec1189cf2f97405cc395b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8533,8 +8533,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities, const opencascade::handle<TColStd_HArray1OfReal> & aKnots, const StepGeom_KnotType aKnotSpec, const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
-		/****************** KnotMultiplicities ******************/
-		/**** md5 signature: a628cfbef208de16ffb22afa945f1a33 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::KnotMultiplicities ******/
+		/****** md5 signature: a628cfbef208de16ffb22afa945f1a33 ******/
 		%feature("compactdefaultargs") KnotMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -8546,8 +8546,8 @@ No available documentation.
 ") KnotMultiplicities;
 		opencascade::handle<TColStd_HArray1OfInteger> KnotMultiplicities();
 
-		/****************** KnotMultiplicitiesValue ******************/
-		/**** md5 signature: 41e7fbcb13b8fc10350e2cb05e4048a7 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::KnotMultiplicitiesValue ******/
+		/****** md5 signature: 41e7fbcb13b8fc10350e2cb05e4048a7 ******/
 		%feature("compactdefaultargs") KnotMultiplicitiesValue;
 		%feature("autodoc", "
 Parameters
@@ -8564,8 +8564,8 @@ No available documentation.
 ") KnotMultiplicitiesValue;
 		Standard_Integer KnotMultiplicitiesValue(const Standard_Integer num);
 
-		/****************** KnotSpec ******************/
-		/**** md5 signature: 71bb53c109d69b64cffe7a898f8df609 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::KnotSpec ******/
+		/****** md5 signature: 71bb53c109d69b64cffe7a898f8df609 ******/
 		%feature("compactdefaultargs") KnotSpec;
 		%feature("autodoc", "Return
 -------
@@ -8577,8 +8577,8 @@ No available documentation.
 ") KnotSpec;
 		StepGeom_KnotType KnotSpec();
 
-		/****************** Knots ******************/
-		/**** md5 signature: e3036b1d0b355a749bda4aabdce1e25e ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::Knots ******/
+		/****** md5 signature: e3036b1d0b355a749bda4aabdce1e25e ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "Return
 -------
@@ -8590,8 +8590,8 @@ No available documentation.
 ") Knots;
 		opencascade::handle<TColStd_HArray1OfReal> Knots();
 
-		/****************** KnotsValue ******************/
-		/**** md5 signature: eb93b5b9688e64eac0138989b3b1d41c ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::KnotsValue ******/
+		/****** md5 signature: eb93b5b9688e64eac0138989b3b1d41c ******/
 		%feature("compactdefaultargs") KnotsValue;
 		%feature("autodoc", "
 Parameters
@@ -8608,8 +8608,8 @@ No available documentation.
 ") KnotsValue;
 		Standard_Real KnotsValue(const Standard_Integer num);
 
-		/****************** NbKnotMultiplicities ******************/
-		/**** md5 signature: b43d6a38236c190ff3364051131317c2 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::NbKnotMultiplicities ******/
+		/****** md5 signature: b43d6a38236c190ff3364051131317c2 ******/
 		%feature("compactdefaultargs") NbKnotMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -8621,8 +8621,8 @@ No available documentation.
 ") NbKnotMultiplicities;
 		Standard_Integer NbKnotMultiplicities();
 
-		/****************** NbKnots ******************/
-		/**** md5 signature: ccda669299f8eba1ba0d3387af4c950e ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::NbKnots ******/
+		/****** md5 signature: ccda669299f8eba1ba0d3387af4c950e ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -8634,8 +8634,8 @@ No available documentation.
 ") NbKnots;
 		Standard_Integer NbKnots();
 
-		/****************** NbWeightsData ******************/
-		/**** md5 signature: 1c6e41f45decb6e4792a1b881fd6027f ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::NbWeightsData ******/
+		/****** md5 signature: 1c6e41f45decb6e4792a1b881fd6027f ******/
 		%feature("compactdefaultargs") NbWeightsData;
 		%feature("autodoc", "Return
 -------
@@ -8647,8 +8647,8 @@ No available documentation.
 ") NbWeightsData;
 		Standard_Integer NbWeightsData();
 
-		/****************** RationalBSplineCurve ******************/
-		/**** md5 signature: f041a695724f356a7a0a2b32dcf75081 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::RationalBSplineCurve ******/
+		/****** md5 signature: f041a695724f356a7a0a2b32dcf75081 ******/
 		%feature("compactdefaultargs") RationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -8660,8 +8660,8 @@ No available documentation.
 ") RationalBSplineCurve;
 		opencascade::handle<StepGeom_RationalBSplineCurve> RationalBSplineCurve();
 
-		/****************** SetBSplineCurveWithKnots ******************/
-		/**** md5 signature: b0fe3663605944a2d15d360f5d7f233b ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::SetBSplineCurveWithKnots ******/
+		/****** md5 signature: b0fe3663605944a2d15d360f5d7f233b ******/
 		%feature("compactdefaultargs") SetBSplineCurveWithKnots;
 		%feature("autodoc", "
 Parameters
@@ -8678,8 +8678,8 @@ No available documentation.
 ") SetBSplineCurveWithKnots;
 		void SetBSplineCurveWithKnots(const opencascade::handle<StepGeom_BSplineCurveWithKnots> & aBSplineCurveWithKnots);
 
-		/****************** SetKnotMultiplicities ******************/
-		/**** md5 signature: 0a7a5523d9ad29463e75938844c15a7b ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::SetKnotMultiplicities ******/
+		/****** md5 signature: 0a7a5523d9ad29463e75938844c15a7b ******/
 		%feature("compactdefaultargs") SetKnotMultiplicities;
 		%feature("autodoc", "
 Parameters
@@ -8696,8 +8696,8 @@ No available documentation.
 ") SetKnotMultiplicities;
 		void SetKnotMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aKnotMultiplicities);
 
-		/****************** SetKnotSpec ******************/
-		/**** md5 signature: dac52a82fb3cbd778049ab7a7d0effe9 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::SetKnotSpec ******/
+		/****** md5 signature: dac52a82fb3cbd778049ab7a7d0effe9 ******/
 		%feature("compactdefaultargs") SetKnotSpec;
 		%feature("autodoc", "
 Parameters
@@ -8714,8 +8714,8 @@ No available documentation.
 ") SetKnotSpec;
 		void SetKnotSpec(const StepGeom_KnotType aKnotSpec);
 
-		/****************** SetKnots ******************/
-		/**** md5 signature: 32c0bf113e51e5ea1f9d4d3841806862 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::SetKnots ******/
+		/****** md5 signature: 32c0bf113e51e5ea1f9d4d3841806862 ******/
 		%feature("compactdefaultargs") SetKnots;
 		%feature("autodoc", "
 Parameters
@@ -8732,8 +8732,8 @@ No available documentation.
 ") SetKnots;
 		void SetKnots(const opencascade::handle<TColStd_HArray1OfReal> & aKnots);
 
-		/****************** SetRationalBSplineCurve ******************/
-		/**** md5 signature: 7386d58f0cbe5865f642e210d2870602 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::SetRationalBSplineCurve ******/
+		/****** md5 signature: 7386d58f0cbe5865f642e210d2870602 ******/
 		%feature("compactdefaultargs") SetRationalBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -8750,8 +8750,8 @@ No available documentation.
 ") SetRationalBSplineCurve;
 		void SetRationalBSplineCurve(const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
-		/****************** SetWeightsData ******************/
-		/**** md5 signature: 5bb45f1c535199932059d9e35686a4b9 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::SetWeightsData ******/
+		/****** md5 signature: 5bb45f1c535199932059d9e35686a4b9 ******/
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "
 Parameters
@@ -8768,8 +8768,8 @@ No available documentation.
 ") SetWeightsData;
 		void SetWeightsData(const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
-		/****************** WeightsData ******************/
-		/**** md5 signature: 512206208b4988e8e9735a052bb217a1 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::WeightsData ******/
+		/****** md5 signature: 512206208b4988e8e9735a052bb217a1 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
@@ -8781,8 +8781,8 @@ No available documentation.
 ") WeightsData;
 		opencascade::handle<TColStd_HArray1OfReal> WeightsData();
 
-		/****************** WeightsDataValue ******************/
-		/**** md5 signature: 6150bdb7e545af73683a560ee1ea1973 ****/
+		/****** StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve::WeightsDataValue ******/
+		/****** md5 signature: 6150bdb7e545af73683a560ee1ea1973 ******/
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "
 Parameters
@@ -8815,8 +8815,8 @@ No available documentation.
 *****************************************/
 class StepGeom_BSplineSurfaceWithKnots : public StepGeom_BSplineSurface {
 	public:
-		/****************** StepGeom_BSplineSurfaceWithKnots ******************/
-		/**** md5 signature: af06d9d2be26dd72d76782acc7a7cba0 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::StepGeom_BSplineSurfaceWithKnots ******/
+		/****** md5 signature: af06d9d2be26dd72d76782acc7a7cba0 ******/
 		%feature("compactdefaultargs") StepGeom_BSplineSurfaceWithKnots;
 		%feature("autodoc", "Return
 -------
@@ -8828,8 +8828,8 @@ Returns a bsplinesurfacewithknots.
 ") StepGeom_BSplineSurfaceWithKnots;
 		 StepGeom_BSplineSurfaceWithKnots();
 
-		/****************** Init ******************/
-		/**** md5 signature: cfbcb690f5d23ddb7e3c6343fe05e448 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::Init ******/
+		/****** md5 signature: cfbcb690f5d23ddb7e3c6343fe05e448 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8858,8 +8858,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities, const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities, const opencascade::handle<TColStd_HArray1OfReal> & aUKnots, const opencascade::handle<TColStd_HArray1OfReal> & aVKnots, const StepGeom_KnotType aKnotSpec);
 
-		/****************** KnotSpec ******************/
-		/**** md5 signature: 71bb53c109d69b64cffe7a898f8df609 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::KnotSpec ******/
+		/****** md5 signature: 71bb53c109d69b64cffe7a898f8df609 ******/
 		%feature("compactdefaultargs") KnotSpec;
 		%feature("autodoc", "Return
 -------
@@ -8871,8 +8871,8 @@ No available documentation.
 ") KnotSpec;
 		StepGeom_KnotType KnotSpec();
 
-		/****************** NbUKnots ******************/
-		/**** md5 signature: dad62b27d386c8d79ed8a3faddece815 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::NbUKnots ******/
+		/****** md5 signature: dad62b27d386c8d79ed8a3faddece815 ******/
 		%feature("compactdefaultargs") NbUKnots;
 		%feature("autodoc", "Return
 -------
@@ -8884,8 +8884,8 @@ No available documentation.
 ") NbUKnots;
 		Standard_Integer NbUKnots();
 
-		/****************** NbUMultiplicities ******************/
-		/**** md5 signature: c5a3f5c4926d087701ff5e41b10b8ab9 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::NbUMultiplicities ******/
+		/****** md5 signature: c5a3f5c4926d087701ff5e41b10b8ab9 ******/
 		%feature("compactdefaultargs") NbUMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -8897,8 +8897,8 @@ No available documentation.
 ") NbUMultiplicities;
 		Standard_Integer NbUMultiplicities();
 
-		/****************** NbVKnots ******************/
-		/**** md5 signature: c5483500ef062c3949009d9a2ec75b29 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::NbVKnots ******/
+		/****** md5 signature: c5483500ef062c3949009d9a2ec75b29 ******/
 		%feature("compactdefaultargs") NbVKnots;
 		%feature("autodoc", "Return
 -------
@@ -8910,8 +8910,8 @@ No available documentation.
 ") NbVKnots;
 		Standard_Integer NbVKnots();
 
-		/****************** NbVMultiplicities ******************/
-		/**** md5 signature: 824ed55903a037f2912ac494151b674d ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::NbVMultiplicities ******/
+		/****** md5 signature: 824ed55903a037f2912ac494151b674d ******/
 		%feature("compactdefaultargs") NbVMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -8923,8 +8923,8 @@ No available documentation.
 ") NbVMultiplicities;
 		Standard_Integer NbVMultiplicities();
 
-		/****************** SetKnotSpec ******************/
-		/**** md5 signature: dac52a82fb3cbd778049ab7a7d0effe9 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::SetKnotSpec ******/
+		/****** md5 signature: dac52a82fb3cbd778049ab7a7d0effe9 ******/
 		%feature("compactdefaultargs") SetKnotSpec;
 		%feature("autodoc", "
 Parameters
@@ -8941,8 +8941,8 @@ No available documentation.
 ") SetKnotSpec;
 		void SetKnotSpec(const StepGeom_KnotType aKnotSpec);
 
-		/****************** SetUKnots ******************/
-		/**** md5 signature: b605ee09b2967a314cfddaa82ab5e8f6 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::SetUKnots ******/
+		/****** md5 signature: b605ee09b2967a314cfddaa82ab5e8f6 ******/
 		%feature("compactdefaultargs") SetUKnots;
 		%feature("autodoc", "
 Parameters
@@ -8959,8 +8959,8 @@ No available documentation.
 ") SetUKnots;
 		void SetUKnots(const opencascade::handle<TColStd_HArray1OfReal> & aUKnots);
 
-		/****************** SetUMultiplicities ******************/
-		/**** md5 signature: 2ca01ede235face3b0f0b2dc99bf4192 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::SetUMultiplicities ******/
+		/****** md5 signature: 2ca01ede235face3b0f0b2dc99bf4192 ******/
 		%feature("compactdefaultargs") SetUMultiplicities;
 		%feature("autodoc", "
 Parameters
@@ -8977,8 +8977,8 @@ No available documentation.
 ") SetUMultiplicities;
 		void SetUMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities);
 
-		/****************** SetVKnots ******************/
-		/**** md5 signature: eff63f981e1a72fd6e5c4a4a96cc53e2 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::SetVKnots ******/
+		/****** md5 signature: eff63f981e1a72fd6e5c4a4a96cc53e2 ******/
 		%feature("compactdefaultargs") SetVKnots;
 		%feature("autodoc", "
 Parameters
@@ -8995,8 +8995,8 @@ No available documentation.
 ") SetVKnots;
 		void SetVKnots(const opencascade::handle<TColStd_HArray1OfReal> & aVKnots);
 
-		/****************** SetVMultiplicities ******************/
-		/**** md5 signature: b5b2b6abf5c0f8c756f916e04ab70b33 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::SetVMultiplicities ******/
+		/****** md5 signature: b5b2b6abf5c0f8c756f916e04ab70b33 ******/
 		%feature("compactdefaultargs") SetVMultiplicities;
 		%feature("autodoc", "
 Parameters
@@ -9013,8 +9013,8 @@ No available documentation.
 ") SetVMultiplicities;
 		void SetVMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities);
 
-		/****************** UKnots ******************/
-		/**** md5 signature: 464120c250295baac7adc11e38ecfa58 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::UKnots ******/
+		/****** md5 signature: 464120c250295baac7adc11e38ecfa58 ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
@@ -9026,8 +9026,8 @@ No available documentation.
 ") UKnots;
 		opencascade::handle<TColStd_HArray1OfReal> UKnots();
 
-		/****************** UKnotsValue ******************/
-		/**** md5 signature: 57e5bff376d9a0fdd54bd8f6cada8b82 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::UKnotsValue ******/
+		/****** md5 signature: 57e5bff376d9a0fdd54bd8f6cada8b82 ******/
 		%feature("compactdefaultargs") UKnotsValue;
 		%feature("autodoc", "
 Parameters
@@ -9044,8 +9044,8 @@ No available documentation.
 ") UKnotsValue;
 		Standard_Real UKnotsValue(const Standard_Integer num);
 
-		/****************** UMultiplicities ******************/
-		/**** md5 signature: 45e87774c5faa8ff979ada7e9322993d ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::UMultiplicities ******/
+		/****** md5 signature: 45e87774c5faa8ff979ada7e9322993d ******/
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -9057,8 +9057,8 @@ No available documentation.
 ") UMultiplicities;
 		opencascade::handle<TColStd_HArray1OfInteger> UMultiplicities();
 
-		/****************** UMultiplicitiesValue ******************/
-		/**** md5 signature: de5eb6ba379b37b2bc4520fb32942768 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::UMultiplicitiesValue ******/
+		/****** md5 signature: de5eb6ba379b37b2bc4520fb32942768 ******/
 		%feature("compactdefaultargs") UMultiplicitiesValue;
 		%feature("autodoc", "
 Parameters
@@ -9075,8 +9075,8 @@ No available documentation.
 ") UMultiplicitiesValue;
 		Standard_Integer UMultiplicitiesValue(const Standard_Integer num);
 
-		/****************** VKnots ******************/
-		/**** md5 signature: b52c536fc4edfad0c8b177c049c24113 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::VKnots ******/
+		/****** md5 signature: b52c536fc4edfad0c8b177c049c24113 ******/
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
@@ -9088,8 +9088,8 @@ No available documentation.
 ") VKnots;
 		opencascade::handle<TColStd_HArray1OfReal> VKnots();
 
-		/****************** VKnotsValue ******************/
-		/**** md5 signature: f30eb526c0cd6bdb51d54fc229632029 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::VKnotsValue ******/
+		/****** md5 signature: f30eb526c0cd6bdb51d54fc229632029 ******/
 		%feature("compactdefaultargs") VKnotsValue;
 		%feature("autodoc", "
 Parameters
@@ -9106,8 +9106,8 @@ No available documentation.
 ") VKnotsValue;
 		Standard_Real VKnotsValue(const Standard_Integer num);
 
-		/****************** VMultiplicities ******************/
-		/**** md5 signature: c82fd844359b9a8903163834155efbf5 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::VMultiplicities ******/
+		/****** md5 signature: c82fd844359b9a8903163834155efbf5 ******/
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -9119,8 +9119,8 @@ No available documentation.
 ") VMultiplicities;
 		opencascade::handle<TColStd_HArray1OfInteger> VMultiplicities();
 
-		/****************** VMultiplicitiesValue ******************/
-		/**** md5 signature: c7d827a0df402ef5a54c0f125c9ed2b7 ****/
+		/****** StepGeom_BSplineSurfaceWithKnots::VMultiplicitiesValue ******/
+		/****** md5 signature: c7d827a0df402ef5a54c0f125c9ed2b7 ******/
 		%feature("compactdefaultargs") VMultiplicitiesValue;
 		%feature("autodoc", "
 Parameters
@@ -9153,8 +9153,8 @@ No available documentation.
 ******************************************************************/
 class StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
-		/****************** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface ******************/
-		/**** md5 signature: 8160e4c0d281e5b2b806db0da5ca7ef9 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface ******/
+		/****** md5 signature: 8160e4c0d281e5b2b806db0da5ca7ef9 ******/
 		%feature("compactdefaultargs") StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -9166,8 +9166,8 @@ Returns a bsplinesurfacewithknotsandrationalbsplinesurface.
 ") StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
 		 StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface();
 
-		/****************** BSplineSurfaceWithKnots ******************/
-		/**** md5 signature: d8b15f908d74f8ae55b7868f1997ba24 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::BSplineSurfaceWithKnots ******/
+		/****** md5 signature: d8b15f908d74f8ae55b7868f1997ba24 ******/
 		%feature("compactdefaultargs") BSplineSurfaceWithKnots;
 		%feature("autodoc", "Return
 -------
@@ -9179,8 +9179,8 @@ No available documentation.
 ") BSplineSurfaceWithKnots;
 		opencascade::handle<StepGeom_BSplineSurfaceWithKnots> BSplineSurfaceWithKnots();
 
-		/****************** Init ******************/
-		/**** md5 signature: 728aca1ac702cae4dee036fb137f54f6 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::Init ******/
+		/****** md5 signature: 728aca1ac702cae4dee036fb137f54f6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9206,8 +9206,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & aBSplineSurfaceWithKnots, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
-		/****************** Init ******************/
-		/**** md5 signature: 63c148ef45129ca50e4ecf6c2063d241 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::Init ******/
+		/****** md5 signature: 63c148ef45129ca50e4ecf6c2063d241 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9237,8 +9237,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities, const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities, const opencascade::handle<TColStd_HArray1OfReal> & aUKnots, const opencascade::handle<TColStd_HArray1OfReal> & aVKnots, const StepGeom_KnotType aKnotSpec, const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
-		/****************** KnotSpec ******************/
-		/**** md5 signature: 71bb53c109d69b64cffe7a898f8df609 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::KnotSpec ******/
+		/****** md5 signature: 71bb53c109d69b64cffe7a898f8df609 ******/
 		%feature("compactdefaultargs") KnotSpec;
 		%feature("autodoc", "Return
 -------
@@ -9250,8 +9250,8 @@ No available documentation.
 ") KnotSpec;
 		StepGeom_KnotType KnotSpec();
 
-		/****************** NbUKnots ******************/
-		/**** md5 signature: dad62b27d386c8d79ed8a3faddece815 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::NbUKnots ******/
+		/****** md5 signature: dad62b27d386c8d79ed8a3faddece815 ******/
 		%feature("compactdefaultargs") NbUKnots;
 		%feature("autodoc", "Return
 -------
@@ -9263,8 +9263,8 @@ No available documentation.
 ") NbUKnots;
 		Standard_Integer NbUKnots();
 
-		/****************** NbUMultiplicities ******************/
-		/**** md5 signature: c5a3f5c4926d087701ff5e41b10b8ab9 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::NbUMultiplicities ******/
+		/****** md5 signature: c5a3f5c4926d087701ff5e41b10b8ab9 ******/
 		%feature("compactdefaultargs") NbUMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -9276,8 +9276,8 @@ No available documentation.
 ") NbUMultiplicities;
 		Standard_Integer NbUMultiplicities();
 
-		/****************** NbVKnots ******************/
-		/**** md5 signature: c5483500ef062c3949009d9a2ec75b29 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::NbVKnots ******/
+		/****** md5 signature: c5483500ef062c3949009d9a2ec75b29 ******/
 		%feature("compactdefaultargs") NbVKnots;
 		%feature("autodoc", "Return
 -------
@@ -9289,8 +9289,8 @@ No available documentation.
 ") NbVKnots;
 		Standard_Integer NbVKnots();
 
-		/****************** NbVMultiplicities ******************/
-		/**** md5 signature: 824ed55903a037f2912ac494151b674d ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::NbVMultiplicities ******/
+		/****** md5 signature: 824ed55903a037f2912ac494151b674d ******/
 		%feature("compactdefaultargs") NbVMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -9302,8 +9302,8 @@ No available documentation.
 ") NbVMultiplicities;
 		Standard_Integer NbVMultiplicities();
 
-		/****************** NbWeightsDataI ******************/
-		/**** md5 signature: a27a849cd930ab9a9c71e3f96ba88f14 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::NbWeightsDataI ******/
+		/****** md5 signature: a27a849cd930ab9a9c71e3f96ba88f14 ******/
 		%feature("compactdefaultargs") NbWeightsDataI;
 		%feature("autodoc", "Return
 -------
@@ -9315,8 +9315,8 @@ No available documentation.
 ") NbWeightsDataI;
 		Standard_Integer NbWeightsDataI();
 
-		/****************** NbWeightsDataJ ******************/
-		/**** md5 signature: 389c42dcdadbab7d34a20ea9b5038b75 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::NbWeightsDataJ ******/
+		/****** md5 signature: 389c42dcdadbab7d34a20ea9b5038b75 ******/
 		%feature("compactdefaultargs") NbWeightsDataJ;
 		%feature("autodoc", "Return
 -------
@@ -9328,8 +9328,8 @@ No available documentation.
 ") NbWeightsDataJ;
 		Standard_Integer NbWeightsDataJ();
 
-		/****************** RationalBSplineSurface ******************/
-		/**** md5 signature: 344649d2541c2455c061eda995cb3b63 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::RationalBSplineSurface ******/
+		/****** md5 signature: 344649d2541c2455c061eda995cb3b63 ******/
 		%feature("compactdefaultargs") RationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -9341,8 +9341,8 @@ No available documentation.
 ") RationalBSplineSurface;
 		opencascade::handle<StepGeom_RationalBSplineSurface> RationalBSplineSurface();
 
-		/****************** SetBSplineSurfaceWithKnots ******************/
-		/**** md5 signature: 16e9b736f36cd5283618d1978d872d9b ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetBSplineSurfaceWithKnots ******/
+		/****** md5 signature: 16e9b736f36cd5283618d1978d872d9b ******/
 		%feature("compactdefaultargs") SetBSplineSurfaceWithKnots;
 		%feature("autodoc", "
 Parameters
@@ -9359,8 +9359,8 @@ No available documentation.
 ") SetBSplineSurfaceWithKnots;
 		void SetBSplineSurfaceWithKnots(const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & aBSplineSurfaceWithKnots);
 
-		/****************** SetKnotSpec ******************/
-		/**** md5 signature: dac52a82fb3cbd778049ab7a7d0effe9 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetKnotSpec ******/
+		/****** md5 signature: dac52a82fb3cbd778049ab7a7d0effe9 ******/
 		%feature("compactdefaultargs") SetKnotSpec;
 		%feature("autodoc", "
 Parameters
@@ -9377,8 +9377,8 @@ No available documentation.
 ") SetKnotSpec;
 		void SetKnotSpec(const StepGeom_KnotType aKnotSpec);
 
-		/****************** SetRationalBSplineSurface ******************/
-		/**** md5 signature: 14980d7e5c0ab36b876696928378bc68 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetRationalBSplineSurface ******/
+		/****** md5 signature: 14980d7e5c0ab36b876696928378bc68 ******/
 		%feature("compactdefaultargs") SetRationalBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -9395,8 +9395,8 @@ No available documentation.
 ") SetRationalBSplineSurface;
 		void SetRationalBSplineSurface(const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
-		/****************** SetUKnots ******************/
-		/**** md5 signature: b605ee09b2967a314cfddaa82ab5e8f6 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetUKnots ******/
+		/****** md5 signature: b605ee09b2967a314cfddaa82ab5e8f6 ******/
 		%feature("compactdefaultargs") SetUKnots;
 		%feature("autodoc", "
 Parameters
@@ -9413,8 +9413,8 @@ No available documentation.
 ") SetUKnots;
 		void SetUKnots(const opencascade::handle<TColStd_HArray1OfReal> & aUKnots);
 
-		/****************** SetUMultiplicities ******************/
-		/**** md5 signature: 2ca01ede235face3b0f0b2dc99bf4192 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetUMultiplicities ******/
+		/****** md5 signature: 2ca01ede235face3b0f0b2dc99bf4192 ******/
 		%feature("compactdefaultargs") SetUMultiplicities;
 		%feature("autodoc", "
 Parameters
@@ -9431,8 +9431,8 @@ No available documentation.
 ") SetUMultiplicities;
 		void SetUMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aUMultiplicities);
 
-		/****************** SetVKnots ******************/
-		/**** md5 signature: eff63f981e1a72fd6e5c4a4a96cc53e2 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetVKnots ******/
+		/****** md5 signature: eff63f981e1a72fd6e5c4a4a96cc53e2 ******/
 		%feature("compactdefaultargs") SetVKnots;
 		%feature("autodoc", "
 Parameters
@@ -9449,8 +9449,8 @@ No available documentation.
 ") SetVKnots;
 		void SetVKnots(const opencascade::handle<TColStd_HArray1OfReal> & aVKnots);
 
-		/****************** SetVMultiplicities ******************/
-		/**** md5 signature: b5b2b6abf5c0f8c756f916e04ab70b33 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetVMultiplicities ******/
+		/****** md5 signature: b5b2b6abf5c0f8c756f916e04ab70b33 ******/
 		%feature("compactdefaultargs") SetVMultiplicities;
 		%feature("autodoc", "
 Parameters
@@ -9467,8 +9467,8 @@ No available documentation.
 ") SetVMultiplicities;
 		void SetVMultiplicities(const opencascade::handle<TColStd_HArray1OfInteger> & aVMultiplicities);
 
-		/****************** SetWeightsData ******************/
-		/**** md5 signature: 0077aa0f6cdc4037b1639feddfe290fd ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::SetWeightsData ******/
+		/****** md5 signature: 0077aa0f6cdc4037b1639feddfe290fd ******/
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "
 Parameters
@@ -9485,8 +9485,8 @@ No available documentation.
 ") SetWeightsData;
 		void SetWeightsData(const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
-		/****************** UKnots ******************/
-		/**** md5 signature: 464120c250295baac7adc11e38ecfa58 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::UKnots ******/
+		/****** md5 signature: 464120c250295baac7adc11e38ecfa58 ******/
 		%feature("compactdefaultargs") UKnots;
 		%feature("autodoc", "Return
 -------
@@ -9498,8 +9498,8 @@ No available documentation.
 ") UKnots;
 		opencascade::handle<TColStd_HArray1OfReal> UKnots();
 
-		/****************** UKnotsValue ******************/
-		/**** md5 signature: 57e5bff376d9a0fdd54bd8f6cada8b82 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::UKnotsValue ******/
+		/****** md5 signature: 57e5bff376d9a0fdd54bd8f6cada8b82 ******/
 		%feature("compactdefaultargs") UKnotsValue;
 		%feature("autodoc", "
 Parameters
@@ -9516,8 +9516,8 @@ No available documentation.
 ") UKnotsValue;
 		Standard_Real UKnotsValue(const Standard_Integer num);
 
-		/****************** UMultiplicities ******************/
-		/**** md5 signature: 45e87774c5faa8ff979ada7e9322993d ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::UMultiplicities ******/
+		/****** md5 signature: 45e87774c5faa8ff979ada7e9322993d ******/
 		%feature("compactdefaultargs") UMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -9529,8 +9529,8 @@ No available documentation.
 ") UMultiplicities;
 		opencascade::handle<TColStd_HArray1OfInteger> UMultiplicities();
 
-		/****************** UMultiplicitiesValue ******************/
-		/**** md5 signature: de5eb6ba379b37b2bc4520fb32942768 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::UMultiplicitiesValue ******/
+		/****** md5 signature: de5eb6ba379b37b2bc4520fb32942768 ******/
 		%feature("compactdefaultargs") UMultiplicitiesValue;
 		%feature("autodoc", "
 Parameters
@@ -9547,8 +9547,8 @@ No available documentation.
 ") UMultiplicitiesValue;
 		Standard_Integer UMultiplicitiesValue(const Standard_Integer num);
 
-		/****************** VKnots ******************/
-		/**** md5 signature: b52c536fc4edfad0c8b177c049c24113 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::VKnots ******/
+		/****** md5 signature: b52c536fc4edfad0c8b177c049c24113 ******/
 		%feature("compactdefaultargs") VKnots;
 		%feature("autodoc", "Return
 -------
@@ -9560,8 +9560,8 @@ No available documentation.
 ") VKnots;
 		opencascade::handle<TColStd_HArray1OfReal> VKnots();
 
-		/****************** VKnotsValue ******************/
-		/**** md5 signature: f30eb526c0cd6bdb51d54fc229632029 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::VKnotsValue ******/
+		/****** md5 signature: f30eb526c0cd6bdb51d54fc229632029 ******/
 		%feature("compactdefaultargs") VKnotsValue;
 		%feature("autodoc", "
 Parameters
@@ -9578,8 +9578,8 @@ No available documentation.
 ") VKnotsValue;
 		Standard_Real VKnotsValue(const Standard_Integer num);
 
-		/****************** VMultiplicities ******************/
-		/**** md5 signature: c82fd844359b9a8903163834155efbf5 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::VMultiplicities ******/
+		/****** md5 signature: c82fd844359b9a8903163834155efbf5 ******/
 		%feature("compactdefaultargs") VMultiplicities;
 		%feature("autodoc", "Return
 -------
@@ -9591,8 +9591,8 @@ No available documentation.
 ") VMultiplicities;
 		opencascade::handle<TColStd_HArray1OfInteger> VMultiplicities();
 
-		/****************** VMultiplicitiesValue ******************/
-		/**** md5 signature: c7d827a0df402ef5a54c0f125c9ed2b7 ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::VMultiplicitiesValue ******/
+		/****** md5 signature: c7d827a0df402ef5a54c0f125c9ed2b7 ******/
 		%feature("compactdefaultargs") VMultiplicitiesValue;
 		%feature("autodoc", "
 Parameters
@@ -9609,8 +9609,8 @@ No available documentation.
 ") VMultiplicitiesValue;
 		Standard_Integer VMultiplicitiesValue(const Standard_Integer num);
 
-		/****************** WeightsData ******************/
-		/**** md5 signature: 2a82db2d5cdd1b50943bfa6201b0e25e ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::WeightsData ******/
+		/****** md5 signature: 2a82db2d5cdd1b50943bfa6201b0e25e ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
@@ -9622,8 +9622,8 @@ No available documentation.
 ") WeightsData;
 		opencascade::handle<TColStd_HArray2OfReal> WeightsData();
 
-		/****************** WeightsDataValue ******************/
-		/**** md5 signature: 9628efbc9641252463cb9bfa3316eb4c ****/
+		/****** StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface::WeightsDataValue ******/
+		/****** md5 signature: 9628efbc9641252463cb9bfa3316eb4c ******/
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "
 Parameters
@@ -9657,8 +9657,8 @@ No available documentation.
 *****************************/
 class StepGeom_BezierCurve : public StepGeom_BSplineCurve {
 	public:
-		/****************** StepGeom_BezierCurve ******************/
-		/**** md5 signature: 69560cfc2d4d53eb6f77c6bcda8ebce8 ****/
+		/****** StepGeom_BezierCurve::StepGeom_BezierCurve ******/
+		/****** md5 signature: 69560cfc2d4d53eb6f77c6bcda8ebce8 ******/
 		%feature("compactdefaultargs") StepGeom_BezierCurve;
 		%feature("autodoc", "Return
 -------
@@ -9686,8 +9686,8 @@ Returns a beziercurve.
 ****************************************************/
 class StepGeom_BezierCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
-		/****************** StepGeom_BezierCurveAndRationalBSplineCurve ******************/
-		/**** md5 signature: b8b9f894b4c1c4cf393c10e1ba37472f ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::StepGeom_BezierCurveAndRationalBSplineCurve ******/
+		/****** md5 signature: b8b9f894b4c1c4cf393c10e1ba37472f ******/
 		%feature("compactdefaultargs") StepGeom_BezierCurveAndRationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -9699,8 +9699,8 @@ Returns a beziercurveandrationalbsplinecurve.
 ") StepGeom_BezierCurveAndRationalBSplineCurve;
 		 StepGeom_BezierCurveAndRationalBSplineCurve();
 
-		/****************** BezierCurve ******************/
-		/**** md5 signature: 654e92dc3badce23022952c65ab57ecb ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::BezierCurve ******/
+		/****** md5 signature: 654e92dc3badce23022952c65ab57ecb ******/
 		%feature("compactdefaultargs") BezierCurve;
 		%feature("autodoc", "Return
 -------
@@ -9712,8 +9712,8 @@ No available documentation.
 ") BezierCurve;
 		opencascade::handle<StepGeom_BezierCurve> BezierCurve();
 
-		/****************** Init ******************/
-		/**** md5 signature: 189b07ddf58afcdfe8378f117c31241c ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::Init ******/
+		/****** md5 signature: 189b07ddf58afcdfe8378f117c31241c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9737,8 +9737,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BezierCurve> & aBezierCurve, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
-		/****************** Init ******************/
-		/**** md5 signature: f0499c1b3f0836c488e29a7244f15a28 ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::Init ******/
+		/****** md5 signature: f0499c1b3f0836c488e29a7244f15a28 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9761,8 +9761,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
-		/****************** NbWeightsData ******************/
-		/**** md5 signature: 1c6e41f45decb6e4792a1b881fd6027f ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::NbWeightsData ******/
+		/****** md5 signature: 1c6e41f45decb6e4792a1b881fd6027f ******/
 		%feature("compactdefaultargs") NbWeightsData;
 		%feature("autodoc", "Return
 -------
@@ -9774,8 +9774,8 @@ No available documentation.
 ") NbWeightsData;
 		Standard_Integer NbWeightsData();
 
-		/****************** RationalBSplineCurve ******************/
-		/**** md5 signature: f041a695724f356a7a0a2b32dcf75081 ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::RationalBSplineCurve ******/
+		/****** md5 signature: f041a695724f356a7a0a2b32dcf75081 ******/
 		%feature("compactdefaultargs") RationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -9787,8 +9787,8 @@ No available documentation.
 ") RationalBSplineCurve;
 		opencascade::handle<StepGeom_RationalBSplineCurve> RationalBSplineCurve();
 
-		/****************** SetBezierCurve ******************/
-		/**** md5 signature: 132a3f42f3a2be68abe573b9bdab30b7 ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::SetBezierCurve ******/
+		/****** md5 signature: 132a3f42f3a2be68abe573b9bdab30b7 ******/
 		%feature("compactdefaultargs") SetBezierCurve;
 		%feature("autodoc", "
 Parameters
@@ -9805,8 +9805,8 @@ No available documentation.
 ") SetBezierCurve;
 		void SetBezierCurve(const opencascade::handle<StepGeom_BezierCurve> & aBezierCurve);
 
-		/****************** SetRationalBSplineCurve ******************/
-		/**** md5 signature: 7386d58f0cbe5865f642e210d2870602 ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::SetRationalBSplineCurve ******/
+		/****** md5 signature: 7386d58f0cbe5865f642e210d2870602 ******/
 		%feature("compactdefaultargs") SetRationalBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -9823,8 +9823,8 @@ No available documentation.
 ") SetRationalBSplineCurve;
 		void SetRationalBSplineCurve(const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
-		/****************** SetWeightsData ******************/
-		/**** md5 signature: 5bb45f1c535199932059d9e35686a4b9 ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::SetWeightsData ******/
+		/****** md5 signature: 5bb45f1c535199932059d9e35686a4b9 ******/
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "
 Parameters
@@ -9841,8 +9841,8 @@ No available documentation.
 ") SetWeightsData;
 		void SetWeightsData(const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
-		/****************** WeightsData ******************/
-		/**** md5 signature: 512206208b4988e8e9735a052bb217a1 ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::WeightsData ******/
+		/****** md5 signature: 512206208b4988e8e9735a052bb217a1 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
@@ -9854,8 +9854,8 @@ No available documentation.
 ") WeightsData;
 		opencascade::handle<TColStd_HArray1OfReal> WeightsData();
 
-		/****************** WeightsDataValue ******************/
-		/**** md5 signature: 6150bdb7e545af73683a560ee1ea1973 ****/
+		/****** StepGeom_BezierCurveAndRationalBSplineCurve::WeightsDataValue ******/
+		/****** md5 signature: 6150bdb7e545af73683a560ee1ea1973 ******/
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "
 Parameters
@@ -9888,8 +9888,8 @@ No available documentation.
 *******************************/
 class StepGeom_BezierSurface : public StepGeom_BSplineSurface {
 	public:
-		/****************** StepGeom_BezierSurface ******************/
-		/**** md5 signature: 1fea3030ed0b7aae1e9df5be37bcf598 ****/
+		/****** StepGeom_BezierSurface::StepGeom_BezierSurface ******/
+		/****** md5 signature: 1fea3030ed0b7aae1e9df5be37bcf598 ******/
 		%feature("compactdefaultargs") StepGeom_BezierSurface;
 		%feature("autodoc", "Return
 -------
@@ -9917,8 +9917,8 @@ Returns a beziersurface.
 ********************************************************/
 class StepGeom_BezierSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
-		/****************** StepGeom_BezierSurfaceAndRationalBSplineSurface ******************/
-		/**** md5 signature: 4d6e73543ab0d6ebefcbac27a4e4010b ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::StepGeom_BezierSurfaceAndRationalBSplineSurface ******/
+		/****** md5 signature: 4d6e73543ab0d6ebefcbac27a4e4010b ******/
 		%feature("compactdefaultargs") StepGeom_BezierSurfaceAndRationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -9930,8 +9930,8 @@ Returns a beziersurfaceandrationalbsplinesurface.
 ") StepGeom_BezierSurfaceAndRationalBSplineSurface;
 		 StepGeom_BezierSurfaceAndRationalBSplineSurface();
 
-		/****************** BezierSurface ******************/
-		/**** md5 signature: 626435a293e3ec9a8c5ead9ab6ea7f93 ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::BezierSurface ******/
+		/****** md5 signature: 626435a293e3ec9a8c5ead9ab6ea7f93 ******/
 		%feature("compactdefaultargs") BezierSurface;
 		%feature("autodoc", "Return
 -------
@@ -9943,8 +9943,8 @@ No available documentation.
 ") BezierSurface;
 		opencascade::handle<StepGeom_BezierSurface> BezierSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: 48fa275837c85c74eeaa7a9ba087da28 ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::Init ******/
+		/****** md5 signature: 48fa275837c85c74eeaa7a9ba087da28 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9970,8 +9970,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_BezierSurface> & aBezierSurface, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
-		/****************** Init ******************/
-		/**** md5 signature: 2b25ea4ef286bc63477f2163c65139b0 ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::Init ******/
+		/****** md5 signature: 2b25ea4ef286bc63477f2163c65139b0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -9996,8 +9996,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
-		/****************** NbWeightsDataI ******************/
-		/**** md5 signature: a27a849cd930ab9a9c71e3f96ba88f14 ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::NbWeightsDataI ******/
+		/****** md5 signature: a27a849cd930ab9a9c71e3f96ba88f14 ******/
 		%feature("compactdefaultargs") NbWeightsDataI;
 		%feature("autodoc", "Return
 -------
@@ -10009,8 +10009,8 @@ No available documentation.
 ") NbWeightsDataI;
 		Standard_Integer NbWeightsDataI();
 
-		/****************** NbWeightsDataJ ******************/
-		/**** md5 signature: 389c42dcdadbab7d34a20ea9b5038b75 ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::NbWeightsDataJ ******/
+		/****** md5 signature: 389c42dcdadbab7d34a20ea9b5038b75 ******/
 		%feature("compactdefaultargs") NbWeightsDataJ;
 		%feature("autodoc", "Return
 -------
@@ -10022,8 +10022,8 @@ No available documentation.
 ") NbWeightsDataJ;
 		Standard_Integer NbWeightsDataJ();
 
-		/****************** RationalBSplineSurface ******************/
-		/**** md5 signature: 344649d2541c2455c061eda995cb3b63 ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::RationalBSplineSurface ******/
+		/****** md5 signature: 344649d2541c2455c061eda995cb3b63 ******/
 		%feature("compactdefaultargs") RationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -10035,8 +10035,8 @@ No available documentation.
 ") RationalBSplineSurface;
 		opencascade::handle<StepGeom_RationalBSplineSurface> RationalBSplineSurface();
 
-		/****************** SetBezierSurface ******************/
-		/**** md5 signature: d8daab33bef866efe8b86007be6b70ee ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::SetBezierSurface ******/
+		/****** md5 signature: d8daab33bef866efe8b86007be6b70ee ******/
 		%feature("compactdefaultargs") SetBezierSurface;
 		%feature("autodoc", "
 Parameters
@@ -10053,8 +10053,8 @@ No available documentation.
 ") SetBezierSurface;
 		void SetBezierSurface(const opencascade::handle<StepGeom_BezierSurface> & aBezierSurface);
 
-		/****************** SetRationalBSplineSurface ******************/
-		/**** md5 signature: 14980d7e5c0ab36b876696928378bc68 ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::SetRationalBSplineSurface ******/
+		/****** md5 signature: 14980d7e5c0ab36b876696928378bc68 ******/
 		%feature("compactdefaultargs") SetRationalBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -10071,8 +10071,8 @@ No available documentation.
 ") SetRationalBSplineSurface;
 		void SetRationalBSplineSurface(const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
-		/****************** SetWeightsData ******************/
-		/**** md5 signature: 0077aa0f6cdc4037b1639feddfe290fd ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::SetWeightsData ******/
+		/****** md5 signature: 0077aa0f6cdc4037b1639feddfe290fd ******/
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "
 Parameters
@@ -10089,8 +10089,8 @@ No available documentation.
 ") SetWeightsData;
 		void SetWeightsData(const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
-		/****************** WeightsData ******************/
-		/**** md5 signature: 2a82db2d5cdd1b50943bfa6201b0e25e ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::WeightsData ******/
+		/****** md5 signature: 2a82db2d5cdd1b50943bfa6201b0e25e ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
@@ -10102,8 +10102,8 @@ No available documentation.
 ") WeightsData;
 		opencascade::handle<TColStd_HArray2OfReal> WeightsData();
 
-		/****************** WeightsDataValue ******************/
-		/**** md5 signature: 9628efbc9641252463cb9bfa3316eb4c ****/
+		/****** StepGeom_BezierSurfaceAndRationalBSplineSurface::WeightsDataValue ******/
+		/****** md5 signature: 9628efbc9641252463cb9bfa3316eb4c ******/
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "
 Parameters
@@ -10137,8 +10137,8 @@ No available documentation.
 *****************************************/
 class StepGeom_CompositeCurveOnSurface : public StepGeom_CompositeCurve {
 	public:
-		/****************** StepGeom_CompositeCurveOnSurface ******************/
-		/**** md5 signature: fe6d3fc87b42589f6b356ef0b92f7c02 ****/
+		/****** StepGeom_CompositeCurveOnSurface::StepGeom_CompositeCurveOnSurface ******/
+		/****** md5 signature: fe6d3fc87b42589f6b356ef0b92f7c02 ******/
 		%feature("compactdefaultargs") StepGeom_CompositeCurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -10166,8 +10166,8 @@ Returns a compositecurveonsurface.
 *******************************************/
 class StepGeom_DegenerateToroidalSurface : public StepGeom_ToroidalSurface {
 	public:
-		/****************** StepGeom_DegenerateToroidalSurface ******************/
-		/**** md5 signature: 1647c89acd5c72201cf3044adeb6e2fc ****/
+		/****** StepGeom_DegenerateToroidalSurface::StepGeom_DegenerateToroidalSurface ******/
+		/****** md5 signature: 1647c89acd5c72201cf3044adeb6e2fc ******/
 		%feature("compactdefaultargs") StepGeom_DegenerateToroidalSurface;
 		%feature("autodoc", "Return
 -------
@@ -10179,8 +10179,8 @@ Returns a degeneratetoroidalsurface.
 ") StepGeom_DegenerateToroidalSurface;
 		 StepGeom_DegenerateToroidalSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: d1c24b634599f84b870ef9b93eaf4177 ****/
+		/****** StepGeom_DegenerateToroidalSurface::Init ******/
+		/****** md5 signature: d1c24b634599f84b870ef9b93eaf4177 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10201,8 +10201,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const opencascade::handle<StepGeom_Axis2Placement3d> & aPosition, const Standard_Real aMajorRadius, const Standard_Real aMinorRadius, const Standard_Boolean aSelectOuter);
 
-		/****************** SelectOuter ******************/
-		/**** md5 signature: 973872971aeaa505413ec2d4f9c10246 ****/
+		/****** StepGeom_DegenerateToroidalSurface::SelectOuter ******/
+		/****** md5 signature: 973872971aeaa505413ec2d4f9c10246 ******/
 		%feature("compactdefaultargs") SelectOuter;
 		%feature("autodoc", "Return
 -------
@@ -10214,8 +10214,8 @@ No available documentation.
 ") SelectOuter;
 		Standard_Boolean SelectOuter();
 
-		/****************** SetSelectOuter ******************/
-		/**** md5 signature: 43d039c41351517eb3294e726100ccdb ****/
+		/****** StepGeom_DegenerateToroidalSurface::SetSelectOuter ******/
+		/****** md5 signature: 43d039c41351517eb3294e726100ccdb ******/
 		%feature("compactdefaultargs") SetSelectOuter;
 		%feature("autodoc", "
 Parameters
@@ -10248,8 +10248,8 @@ No available documentation.
 ***********************************/
 class StepGeom_QuasiUniformCurve : public StepGeom_BSplineCurve {
 	public:
-		/****************** StepGeom_QuasiUniformCurve ******************/
-		/**** md5 signature: 89f8b9962994b6ef5120afef9c0c3ac7 ****/
+		/****** StepGeom_QuasiUniformCurve::StepGeom_QuasiUniformCurve ******/
+		/****** md5 signature: 89f8b9962994b6ef5120afef9c0c3ac7 ******/
 		%feature("compactdefaultargs") StepGeom_QuasiUniformCurve;
 		%feature("autodoc", "Return
 -------
@@ -10277,8 +10277,8 @@ Returns a quasiuniformcurve.
 **********************************************************/
 class StepGeom_QuasiUniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
-		/****************** StepGeom_QuasiUniformCurveAndRationalBSplineCurve ******************/
-		/**** md5 signature: 50eceab440f48c75cb20b984a4db8d9f ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::StepGeom_QuasiUniformCurveAndRationalBSplineCurve ******/
+		/****** md5 signature: 50eceab440f48c75cb20b984a4db8d9f ******/
 		%feature("compactdefaultargs") StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -10290,8 +10290,8 @@ Returns a quasiuniformcurveandrationalbsplinecurve.
 ") StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
 		 StepGeom_QuasiUniformCurveAndRationalBSplineCurve();
 
-		/****************** Init ******************/
-		/**** md5 signature: 629ea13de7d3f3d88e1a00deaa2b58a7 ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::Init ******/
+		/****** md5 signature: 629ea13de7d3f3d88e1a00deaa2b58a7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10315,8 +10315,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_QuasiUniformCurve> & aQuasiUniformCurve, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
-		/****************** Init ******************/
-		/**** md5 signature: f0499c1b3f0836c488e29a7244f15a28 ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::Init ******/
+		/****** md5 signature: f0499c1b3f0836c488e29a7244f15a28 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10339,8 +10339,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
-		/****************** NbWeightsData ******************/
-		/**** md5 signature: 1c6e41f45decb6e4792a1b881fd6027f ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::NbWeightsData ******/
+		/****** md5 signature: 1c6e41f45decb6e4792a1b881fd6027f ******/
 		%feature("compactdefaultargs") NbWeightsData;
 		%feature("autodoc", "Return
 -------
@@ -10352,8 +10352,8 @@ No available documentation.
 ") NbWeightsData;
 		Standard_Integer NbWeightsData();
 
-		/****************** QuasiUniformCurve ******************/
-		/**** md5 signature: e3af0413096ad88fce93835249c0f2b4 ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::QuasiUniformCurve ******/
+		/****** md5 signature: e3af0413096ad88fce93835249c0f2b4 ******/
 		%feature("compactdefaultargs") QuasiUniformCurve;
 		%feature("autodoc", "Return
 -------
@@ -10365,8 +10365,8 @@ No available documentation.
 ") QuasiUniformCurve;
 		opencascade::handle<StepGeom_QuasiUniformCurve> QuasiUniformCurve();
 
-		/****************** RationalBSplineCurve ******************/
-		/**** md5 signature: f041a695724f356a7a0a2b32dcf75081 ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::RationalBSplineCurve ******/
+		/****** md5 signature: f041a695724f356a7a0a2b32dcf75081 ******/
 		%feature("compactdefaultargs") RationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -10378,8 +10378,8 @@ No available documentation.
 ") RationalBSplineCurve;
 		opencascade::handle<StepGeom_RationalBSplineCurve> RationalBSplineCurve();
 
-		/****************** SetQuasiUniformCurve ******************/
-		/**** md5 signature: a1c9379745e8e950767efeb068ee4525 ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::SetQuasiUniformCurve ******/
+		/****** md5 signature: a1c9379745e8e950767efeb068ee4525 ******/
 		%feature("compactdefaultargs") SetQuasiUniformCurve;
 		%feature("autodoc", "
 Parameters
@@ -10396,8 +10396,8 @@ No available documentation.
 ") SetQuasiUniformCurve;
 		void SetQuasiUniformCurve(const opencascade::handle<StepGeom_QuasiUniformCurve> & aQuasiUniformCurve);
 
-		/****************** SetRationalBSplineCurve ******************/
-		/**** md5 signature: 7386d58f0cbe5865f642e210d2870602 ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::SetRationalBSplineCurve ******/
+		/****** md5 signature: 7386d58f0cbe5865f642e210d2870602 ******/
 		%feature("compactdefaultargs") SetRationalBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -10414,8 +10414,8 @@ No available documentation.
 ") SetRationalBSplineCurve;
 		void SetRationalBSplineCurve(const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
-		/****************** SetWeightsData ******************/
-		/**** md5 signature: 5bb45f1c535199932059d9e35686a4b9 ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::SetWeightsData ******/
+		/****** md5 signature: 5bb45f1c535199932059d9e35686a4b9 ******/
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "
 Parameters
@@ -10432,8 +10432,8 @@ No available documentation.
 ") SetWeightsData;
 		void SetWeightsData(const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
-		/****************** WeightsData ******************/
-		/**** md5 signature: 512206208b4988e8e9735a052bb217a1 ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::WeightsData ******/
+		/****** md5 signature: 512206208b4988e8e9735a052bb217a1 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
@@ -10445,8 +10445,8 @@ No available documentation.
 ") WeightsData;
 		opencascade::handle<TColStd_HArray1OfReal> WeightsData();
 
-		/****************** WeightsDataValue ******************/
-		/**** md5 signature: 6150bdb7e545af73683a560ee1ea1973 ****/
+		/****** StepGeom_QuasiUniformCurveAndRationalBSplineCurve::WeightsDataValue ******/
+		/****** md5 signature: 6150bdb7e545af73683a560ee1ea1973 ******/
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "
 Parameters
@@ -10479,8 +10479,8 @@ No available documentation.
 *************************************/
 class StepGeom_QuasiUniformSurface : public StepGeom_BSplineSurface {
 	public:
-		/****************** StepGeom_QuasiUniformSurface ******************/
-		/**** md5 signature: 59226917fd30efdc7a4cad574a2c0005 ****/
+		/****** StepGeom_QuasiUniformSurface::StepGeom_QuasiUniformSurface ******/
+		/****** md5 signature: 59226917fd30efdc7a4cad574a2c0005 ******/
 		%feature("compactdefaultargs") StepGeom_QuasiUniformSurface;
 		%feature("autodoc", "Return
 -------
@@ -10508,8 +10508,8 @@ Returns a quasiuniformsurface.
 **************************************************************/
 class StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
-		/****************** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface ******************/
-		/**** md5 signature: b3470bab706aacb0b688105d66533e19 ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface ******/
+		/****** md5 signature: b3470bab706aacb0b688105d66533e19 ******/
 		%feature("compactdefaultargs") StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -10521,8 +10521,8 @@ Returns a quasiuniformsurfaceandrationalbsplinesurface.
 ") StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
 		 StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: ad8d7c57631dfd804522aab3e69740eb ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::Init ******/
+		/****** md5 signature: ad8d7c57631dfd804522aab3e69740eb ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10548,8 +10548,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_QuasiUniformSurface> & aQuasiUniformSurface, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
-		/****************** Init ******************/
-		/**** md5 signature: 2b25ea4ef286bc63477f2163c65139b0 ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::Init ******/
+		/****** md5 signature: 2b25ea4ef286bc63477f2163c65139b0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10574,8 +10574,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
-		/****************** NbWeightsDataI ******************/
-		/**** md5 signature: a27a849cd930ab9a9c71e3f96ba88f14 ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::NbWeightsDataI ******/
+		/****** md5 signature: a27a849cd930ab9a9c71e3f96ba88f14 ******/
 		%feature("compactdefaultargs") NbWeightsDataI;
 		%feature("autodoc", "Return
 -------
@@ -10587,8 +10587,8 @@ No available documentation.
 ") NbWeightsDataI;
 		Standard_Integer NbWeightsDataI();
 
-		/****************** NbWeightsDataJ ******************/
-		/**** md5 signature: 389c42dcdadbab7d34a20ea9b5038b75 ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::NbWeightsDataJ ******/
+		/****** md5 signature: 389c42dcdadbab7d34a20ea9b5038b75 ******/
 		%feature("compactdefaultargs") NbWeightsDataJ;
 		%feature("autodoc", "Return
 -------
@@ -10600,8 +10600,8 @@ No available documentation.
 ") NbWeightsDataJ;
 		Standard_Integer NbWeightsDataJ();
 
-		/****************** QuasiUniformSurface ******************/
-		/**** md5 signature: 8a29bd8630e6f293f768db1ec56eb6c6 ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::QuasiUniformSurface ******/
+		/****** md5 signature: 8a29bd8630e6f293f768db1ec56eb6c6 ******/
 		%feature("compactdefaultargs") QuasiUniformSurface;
 		%feature("autodoc", "Return
 -------
@@ -10613,8 +10613,8 @@ No available documentation.
 ") QuasiUniformSurface;
 		opencascade::handle<StepGeom_QuasiUniformSurface> QuasiUniformSurface();
 
-		/****************** RationalBSplineSurface ******************/
-		/**** md5 signature: 344649d2541c2455c061eda995cb3b63 ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::RationalBSplineSurface ******/
+		/****** md5 signature: 344649d2541c2455c061eda995cb3b63 ******/
 		%feature("compactdefaultargs") RationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -10626,8 +10626,8 @@ No available documentation.
 ") RationalBSplineSurface;
 		opencascade::handle<StepGeom_RationalBSplineSurface> RationalBSplineSurface();
 
-		/****************** SetQuasiUniformSurface ******************/
-		/**** md5 signature: a11ffc7c7ad06b53cb969fc7f24c908b ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::SetQuasiUniformSurface ******/
+		/****** md5 signature: a11ffc7c7ad06b53cb969fc7f24c908b ******/
 		%feature("compactdefaultargs") SetQuasiUniformSurface;
 		%feature("autodoc", "
 Parameters
@@ -10644,8 +10644,8 @@ No available documentation.
 ") SetQuasiUniformSurface;
 		void SetQuasiUniformSurface(const opencascade::handle<StepGeom_QuasiUniformSurface> & aQuasiUniformSurface);
 
-		/****************** SetRationalBSplineSurface ******************/
-		/**** md5 signature: 14980d7e5c0ab36b876696928378bc68 ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::SetRationalBSplineSurface ******/
+		/****** md5 signature: 14980d7e5c0ab36b876696928378bc68 ******/
 		%feature("compactdefaultargs") SetRationalBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -10662,8 +10662,8 @@ No available documentation.
 ") SetRationalBSplineSurface;
 		void SetRationalBSplineSurface(const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
-		/****************** SetWeightsData ******************/
-		/**** md5 signature: 0077aa0f6cdc4037b1639feddfe290fd ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::SetWeightsData ******/
+		/****** md5 signature: 0077aa0f6cdc4037b1639feddfe290fd ******/
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "
 Parameters
@@ -10680,8 +10680,8 @@ No available documentation.
 ") SetWeightsData;
 		void SetWeightsData(const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
-		/****************** WeightsData ******************/
-		/**** md5 signature: 2a82db2d5cdd1b50943bfa6201b0e25e ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::WeightsData ******/
+		/****** md5 signature: 2a82db2d5cdd1b50943bfa6201b0e25e ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
@@ -10693,8 +10693,8 @@ No available documentation.
 ") WeightsData;
 		opencascade::handle<TColStd_HArray2OfReal> WeightsData();
 
-		/****************** WeightsDataValue ******************/
-		/**** md5 signature: 9628efbc9641252463cb9bfa3316eb4c ****/
+		/****** StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface::WeightsDataValue ******/
+		/****** md5 signature: 9628efbc9641252463cb9bfa3316eb4c ******/
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "
 Parameters
@@ -10728,8 +10728,8 @@ No available documentation.
 **************************************/
 class StepGeom_RationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
-		/****************** StepGeom_RationalBSplineCurve ******************/
-		/**** md5 signature: e95665fa42d712d2bd911e627ae80aac ****/
+		/****** StepGeom_RationalBSplineCurve::StepGeom_RationalBSplineCurve ******/
+		/****** md5 signature: e95665fa42d712d2bd911e627ae80aac ******/
 		%feature("compactdefaultargs") StepGeom_RationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -10741,8 +10741,8 @@ Returns a rationalbsplinecurve.
 ") StepGeom_RationalBSplineCurve;
 		 StepGeom_RationalBSplineCurve();
 
-		/****************** Init ******************/
-		/**** md5 signature: f0499c1b3f0836c488e29a7244f15a28 ****/
+		/****** StepGeom_RationalBSplineCurve::Init ******/
+		/****** md5 signature: f0499c1b3f0836c488e29a7244f15a28 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10765,8 +10765,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
-		/****************** NbWeightsData ******************/
-		/**** md5 signature: 1c6e41f45decb6e4792a1b881fd6027f ****/
+		/****** StepGeom_RationalBSplineCurve::NbWeightsData ******/
+		/****** md5 signature: 1c6e41f45decb6e4792a1b881fd6027f ******/
 		%feature("compactdefaultargs") NbWeightsData;
 		%feature("autodoc", "Return
 -------
@@ -10778,8 +10778,8 @@ No available documentation.
 ") NbWeightsData;
 		Standard_Integer NbWeightsData();
 
-		/****************** SetWeightsData ******************/
-		/**** md5 signature: 5bb45f1c535199932059d9e35686a4b9 ****/
+		/****** StepGeom_RationalBSplineCurve::SetWeightsData ******/
+		/****** md5 signature: 5bb45f1c535199932059d9e35686a4b9 ******/
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "
 Parameters
@@ -10796,8 +10796,8 @@ No available documentation.
 ") SetWeightsData;
 		void SetWeightsData(const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
-		/****************** WeightsData ******************/
-		/**** md5 signature: 512206208b4988e8e9735a052bb217a1 ****/
+		/****** StepGeom_RationalBSplineCurve::WeightsData ******/
+		/****** md5 signature: 512206208b4988e8e9735a052bb217a1 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
@@ -10809,8 +10809,8 @@ No available documentation.
 ") WeightsData;
 		opencascade::handle<TColStd_HArray1OfReal> WeightsData();
 
-		/****************** WeightsDataValue ******************/
-		/**** md5 signature: 6150bdb7e545af73683a560ee1ea1973 ****/
+		/****** StepGeom_RationalBSplineCurve::WeightsDataValue ******/
+		/****** md5 signature: 6150bdb7e545af73683a560ee1ea1973 ******/
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "
 Parameters
@@ -10843,8 +10843,8 @@ No available documentation.
 ****************************************/
 class StepGeom_RationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
-		/****************** StepGeom_RationalBSplineSurface ******************/
-		/**** md5 signature: ea6eb35afd9499829b6a0411cfa93760 ****/
+		/****** StepGeom_RationalBSplineSurface::StepGeom_RationalBSplineSurface ******/
+		/****** md5 signature: ea6eb35afd9499829b6a0411cfa93760 ******/
 		%feature("compactdefaultargs") StepGeom_RationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -10856,8 +10856,8 @@ Returns a rationalbsplinesurface.
 ") StepGeom_RationalBSplineSurface;
 		 StepGeom_RationalBSplineSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: 2b25ea4ef286bc63477f2163c65139b0 ****/
+		/****** StepGeom_RationalBSplineSurface::Init ******/
+		/****** md5 signature: 2b25ea4ef286bc63477f2163c65139b0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -10882,8 +10882,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
-		/****************** NbWeightsDataI ******************/
-		/**** md5 signature: a27a849cd930ab9a9c71e3f96ba88f14 ****/
+		/****** StepGeom_RationalBSplineSurface::NbWeightsDataI ******/
+		/****** md5 signature: a27a849cd930ab9a9c71e3f96ba88f14 ******/
 		%feature("compactdefaultargs") NbWeightsDataI;
 		%feature("autodoc", "Return
 -------
@@ -10895,8 +10895,8 @@ No available documentation.
 ") NbWeightsDataI;
 		Standard_Integer NbWeightsDataI();
 
-		/****************** NbWeightsDataJ ******************/
-		/**** md5 signature: 389c42dcdadbab7d34a20ea9b5038b75 ****/
+		/****** StepGeom_RationalBSplineSurface::NbWeightsDataJ ******/
+		/****** md5 signature: 389c42dcdadbab7d34a20ea9b5038b75 ******/
 		%feature("compactdefaultargs") NbWeightsDataJ;
 		%feature("autodoc", "Return
 -------
@@ -10908,8 +10908,8 @@ No available documentation.
 ") NbWeightsDataJ;
 		Standard_Integer NbWeightsDataJ();
 
-		/****************** SetWeightsData ******************/
-		/**** md5 signature: 0077aa0f6cdc4037b1639feddfe290fd ****/
+		/****** StepGeom_RationalBSplineSurface::SetWeightsData ******/
+		/****** md5 signature: 0077aa0f6cdc4037b1639feddfe290fd ******/
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "
 Parameters
@@ -10926,8 +10926,8 @@ No available documentation.
 ") SetWeightsData;
 		void SetWeightsData(const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
-		/****************** WeightsData ******************/
-		/**** md5 signature: 2a82db2d5cdd1b50943bfa6201b0e25e ****/
+		/****** StepGeom_RationalBSplineSurface::WeightsData ******/
+		/****** md5 signature: 2a82db2d5cdd1b50943bfa6201b0e25e ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
@@ -10939,8 +10939,8 @@ No available documentation.
 ") WeightsData;
 		opencascade::handle<TColStd_HArray2OfReal> WeightsData();
 
-		/****************** WeightsDataValue ******************/
-		/**** md5 signature: 9628efbc9641252463cb9bfa3316eb4c ****/
+		/****** StepGeom_RationalBSplineSurface::WeightsDataValue ******/
+		/****** md5 signature: 9628efbc9641252463cb9bfa3316eb4c ******/
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "
 Parameters
@@ -10974,8 +10974,8 @@ No available documentation.
 ******************************/
 class StepGeom_UniformCurve : public StepGeom_BSplineCurve {
 	public:
-		/****************** StepGeom_UniformCurve ******************/
-		/**** md5 signature: c3903ee557e4c7a7a9b77be4d9b598c9 ****/
+		/****** StepGeom_UniformCurve::StepGeom_UniformCurve ******/
+		/****** md5 signature: c3903ee557e4c7a7a9b77be4d9b598c9 ******/
 		%feature("compactdefaultargs") StepGeom_UniformCurve;
 		%feature("autodoc", "Return
 -------
@@ -11003,8 +11003,8 @@ Returns a uniformcurve.
 *****************************************************/
 class StepGeom_UniformCurveAndRationalBSplineCurve : public StepGeom_BSplineCurve {
 	public:
-		/****************** StepGeom_UniformCurveAndRationalBSplineCurve ******************/
-		/**** md5 signature: eb4a66d5fd702d32dc2e1c6b2f598720 ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::StepGeom_UniformCurveAndRationalBSplineCurve ******/
+		/****** md5 signature: eb4a66d5fd702d32dc2e1c6b2f598720 ******/
 		%feature("compactdefaultargs") StepGeom_UniformCurveAndRationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -11016,8 +11016,8 @@ Returns a uniformcurveandrationalbsplinecurve.
 ") StepGeom_UniformCurveAndRationalBSplineCurve;
 		 StepGeom_UniformCurveAndRationalBSplineCurve();
 
-		/****************** Init ******************/
-		/**** md5 signature: 2f82ee7d2791a130fb4964a78c2441aa ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::Init ******/
+		/****** md5 signature: 2f82ee7d2791a130fb4964a78c2441aa ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11041,8 +11041,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_UniformCurve> & aUniformCurve, const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
-		/****************** Init ******************/
-		/**** md5 signature: f0499c1b3f0836c488e29a7244f15a28 ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::Init ******/
+		/****** md5 signature: f0499c1b3f0836c488e29a7244f15a28 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11065,8 +11065,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aDegree, const opencascade::handle<StepGeom_HArray1OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineCurveForm aCurveForm, const StepData_Logical aClosedCurve, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
-		/****************** NbWeightsData ******************/
-		/**** md5 signature: 1c6e41f45decb6e4792a1b881fd6027f ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::NbWeightsData ******/
+		/****** md5 signature: 1c6e41f45decb6e4792a1b881fd6027f ******/
 		%feature("compactdefaultargs") NbWeightsData;
 		%feature("autodoc", "Return
 -------
@@ -11078,8 +11078,8 @@ No available documentation.
 ") NbWeightsData;
 		Standard_Integer NbWeightsData();
 
-		/****************** RationalBSplineCurve ******************/
-		/**** md5 signature: f041a695724f356a7a0a2b32dcf75081 ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::RationalBSplineCurve ******/
+		/****** md5 signature: f041a695724f356a7a0a2b32dcf75081 ******/
 		%feature("compactdefaultargs") RationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -11091,8 +11091,8 @@ No available documentation.
 ") RationalBSplineCurve;
 		opencascade::handle<StepGeom_RationalBSplineCurve> RationalBSplineCurve();
 
-		/****************** SetRationalBSplineCurve ******************/
-		/**** md5 signature: 7386d58f0cbe5865f642e210d2870602 ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::SetRationalBSplineCurve ******/
+		/****** md5 signature: 7386d58f0cbe5865f642e210d2870602 ******/
 		%feature("compactdefaultargs") SetRationalBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -11109,8 +11109,8 @@ No available documentation.
 ") SetRationalBSplineCurve;
 		void SetRationalBSplineCurve(const opencascade::handle<StepGeom_RationalBSplineCurve> & aRationalBSplineCurve);
 
-		/****************** SetUniformCurve ******************/
-		/**** md5 signature: af4779bfe2a8d240af314833cb6725ef ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::SetUniformCurve ******/
+		/****** md5 signature: af4779bfe2a8d240af314833cb6725ef ******/
 		%feature("compactdefaultargs") SetUniformCurve;
 		%feature("autodoc", "
 Parameters
@@ -11127,8 +11127,8 @@ No available documentation.
 ") SetUniformCurve;
 		void SetUniformCurve(const opencascade::handle<StepGeom_UniformCurve> & aUniformCurve);
 
-		/****************** SetWeightsData ******************/
-		/**** md5 signature: 5bb45f1c535199932059d9e35686a4b9 ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::SetWeightsData ******/
+		/****** md5 signature: 5bb45f1c535199932059d9e35686a4b9 ******/
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "
 Parameters
@@ -11145,8 +11145,8 @@ No available documentation.
 ") SetWeightsData;
 		void SetWeightsData(const opencascade::handle<TColStd_HArray1OfReal> & aWeightsData);
 
-		/****************** UniformCurve ******************/
-		/**** md5 signature: 120a4690f6bfa64251ecd22f777964c5 ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::UniformCurve ******/
+		/****** md5 signature: 120a4690f6bfa64251ecd22f777964c5 ******/
 		%feature("compactdefaultargs") UniformCurve;
 		%feature("autodoc", "Return
 -------
@@ -11158,8 +11158,8 @@ No available documentation.
 ") UniformCurve;
 		opencascade::handle<StepGeom_UniformCurve> UniformCurve();
 
-		/****************** WeightsData ******************/
-		/**** md5 signature: 512206208b4988e8e9735a052bb217a1 ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::WeightsData ******/
+		/****** md5 signature: 512206208b4988e8e9735a052bb217a1 ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
@@ -11171,8 +11171,8 @@ No available documentation.
 ") WeightsData;
 		opencascade::handle<TColStd_HArray1OfReal> WeightsData();
 
-		/****************** WeightsDataValue ******************/
-		/**** md5 signature: 6150bdb7e545af73683a560ee1ea1973 ****/
+		/****** StepGeom_UniformCurveAndRationalBSplineCurve::WeightsDataValue ******/
+		/****** md5 signature: 6150bdb7e545af73683a560ee1ea1973 ******/
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "
 Parameters
@@ -11205,8 +11205,8 @@ No available documentation.
 ********************************/
 class StepGeom_UniformSurface : public StepGeom_BSplineSurface {
 	public:
-		/****************** StepGeom_UniformSurface ******************/
-		/**** md5 signature: 6df4e57e50d9e3f0f360928de2c30337 ****/
+		/****** StepGeom_UniformSurface::StepGeom_UniformSurface ******/
+		/****** md5 signature: 6df4e57e50d9e3f0f360928de2c30337 ******/
 		%feature("compactdefaultargs") StepGeom_UniformSurface;
 		%feature("autodoc", "Return
 -------
@@ -11234,8 +11234,8 @@ Returns a uniformsurface.
 *********************************************************/
 class StepGeom_UniformSurfaceAndRationalBSplineSurface : public StepGeom_BSplineSurface {
 	public:
-		/****************** StepGeom_UniformSurfaceAndRationalBSplineSurface ******************/
-		/**** md5 signature: dc81b5ccf64a27246f5d135fa4784f77 ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::StepGeom_UniformSurfaceAndRationalBSplineSurface ******/
+		/****** md5 signature: dc81b5ccf64a27246f5d135fa4784f77 ******/
 		%feature("compactdefaultargs") StepGeom_UniformSurfaceAndRationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -11247,8 +11247,8 @@ Returns a uniformsurfaceandrationalbsplinesurface.
 ") StepGeom_UniformSurfaceAndRationalBSplineSurface;
 		 StepGeom_UniformSurfaceAndRationalBSplineSurface();
 
-		/****************** Init ******************/
-		/**** md5 signature: 5f23c1c3dffa58866b4a0cd32e613fb4 ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::Init ******/
+		/****** md5 signature: 5f23c1c3dffa58866b4a0cd32e613fb4 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11274,8 +11274,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<StepGeom_UniformSurface> & aUniformSurface, const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
-		/****************** Init ******************/
-		/**** md5 signature: 2b25ea4ef286bc63477f2163c65139b0 ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::Init ******/
+		/****** md5 signature: 2b25ea4ef286bc63477f2163c65139b0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11300,8 +11300,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & aName, const Standard_Integer aUDegree, const Standard_Integer aVDegree, const opencascade::handle<StepGeom_HArray2OfCartesianPoint> & aControlPointsList, const StepGeom_BSplineSurfaceForm aSurfaceForm, const StepData_Logical aUClosed, const StepData_Logical aVClosed, const StepData_Logical aSelfIntersect, const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
-		/****************** NbWeightsDataI ******************/
-		/**** md5 signature: a27a849cd930ab9a9c71e3f96ba88f14 ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::NbWeightsDataI ******/
+		/****** md5 signature: a27a849cd930ab9a9c71e3f96ba88f14 ******/
 		%feature("compactdefaultargs") NbWeightsDataI;
 		%feature("autodoc", "Return
 -------
@@ -11313,8 +11313,8 @@ No available documentation.
 ") NbWeightsDataI;
 		Standard_Integer NbWeightsDataI();
 
-		/****************** NbWeightsDataJ ******************/
-		/**** md5 signature: 389c42dcdadbab7d34a20ea9b5038b75 ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::NbWeightsDataJ ******/
+		/****** md5 signature: 389c42dcdadbab7d34a20ea9b5038b75 ******/
 		%feature("compactdefaultargs") NbWeightsDataJ;
 		%feature("autodoc", "Return
 -------
@@ -11326,8 +11326,8 @@ No available documentation.
 ") NbWeightsDataJ;
 		Standard_Integer NbWeightsDataJ();
 
-		/****************** RationalBSplineSurface ******************/
-		/**** md5 signature: 344649d2541c2455c061eda995cb3b63 ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::RationalBSplineSurface ******/
+		/****** md5 signature: 344649d2541c2455c061eda995cb3b63 ******/
 		%feature("compactdefaultargs") RationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -11339,8 +11339,8 @@ No available documentation.
 ") RationalBSplineSurface;
 		opencascade::handle<StepGeom_RationalBSplineSurface> RationalBSplineSurface();
 
-		/****************** SetRationalBSplineSurface ******************/
-		/**** md5 signature: 14980d7e5c0ab36b876696928378bc68 ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::SetRationalBSplineSurface ******/
+		/****** md5 signature: 14980d7e5c0ab36b876696928378bc68 ******/
 		%feature("compactdefaultargs") SetRationalBSplineSurface;
 		%feature("autodoc", "
 Parameters
@@ -11357,8 +11357,8 @@ No available documentation.
 ") SetRationalBSplineSurface;
 		void SetRationalBSplineSurface(const opencascade::handle<StepGeom_RationalBSplineSurface> & aRationalBSplineSurface);
 
-		/****************** SetUniformSurface ******************/
-		/**** md5 signature: a5fbc133d133fc9a4c18150a1220981a ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::SetUniformSurface ******/
+		/****** md5 signature: a5fbc133d133fc9a4c18150a1220981a ******/
 		%feature("compactdefaultargs") SetUniformSurface;
 		%feature("autodoc", "
 Parameters
@@ -11375,8 +11375,8 @@ No available documentation.
 ") SetUniformSurface;
 		void SetUniformSurface(const opencascade::handle<StepGeom_UniformSurface> & aUniformSurface);
 
-		/****************** SetWeightsData ******************/
-		/**** md5 signature: 0077aa0f6cdc4037b1639feddfe290fd ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::SetWeightsData ******/
+		/****** md5 signature: 0077aa0f6cdc4037b1639feddfe290fd ******/
 		%feature("compactdefaultargs") SetWeightsData;
 		%feature("autodoc", "
 Parameters
@@ -11393,8 +11393,8 @@ No available documentation.
 ") SetWeightsData;
 		void SetWeightsData(const opencascade::handle<TColStd_HArray2OfReal> & aWeightsData);
 
-		/****************** UniformSurface ******************/
-		/**** md5 signature: 42ce278e5be0190060e4e0ad9f5057bb ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::UniformSurface ******/
+		/****** md5 signature: 42ce278e5be0190060e4e0ad9f5057bb ******/
 		%feature("compactdefaultargs") UniformSurface;
 		%feature("autodoc", "Return
 -------
@@ -11406,8 +11406,8 @@ No available documentation.
 ") UniformSurface;
 		opencascade::handle<StepGeom_UniformSurface> UniformSurface();
 
-		/****************** WeightsData ******************/
-		/**** md5 signature: 2a82db2d5cdd1b50943bfa6201b0e25e ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::WeightsData ******/
+		/****** md5 signature: 2a82db2d5cdd1b50943bfa6201b0e25e ******/
 		%feature("compactdefaultargs") WeightsData;
 		%feature("autodoc", "Return
 -------
@@ -11419,8 +11419,8 @@ No available documentation.
 ") WeightsData;
 		opencascade::handle<TColStd_HArray2OfReal> WeightsData();
 
-		/****************** WeightsDataValue ******************/
-		/**** md5 signature: 9628efbc9641252463cb9bfa3316eb4c ****/
+		/****** StepGeom_UniformSurfaceAndRationalBSplineSurface::WeightsDataValue ******/
+		/****** md5 signature: 9628efbc9641252463cb9bfa3316eb4c ******/
 		%feature("compactdefaultargs") WeightsDataValue;
 		%feature("autodoc", "
 Parameters
@@ -11454,8 +11454,8 @@ No available documentation.
 *******************************/
 class StepGeom_BoundaryCurve : public StepGeom_CompositeCurveOnSurface {
 	public:
-		/****************** StepGeom_BoundaryCurve ******************/
-		/**** md5 signature: 92857d1607d4a8b36891df82432c6c48 ****/
+		/****** StepGeom_BoundaryCurve::StepGeom_BoundaryCurve ******/
+		/****** md5 signature: 92857d1607d4a8b36891df82432c6c48 ******/
 		%feature("compactdefaultargs") StepGeom_BoundaryCurve;
 		%feature("autodoc", "Return
 -------
@@ -11483,8 +11483,8 @@ Returns a boundarycurve.
 ************************************/
 class StepGeom_OuterBoundaryCurve : public StepGeom_BoundaryCurve {
 	public:
-		/****************** StepGeom_OuterBoundaryCurve ******************/
-		/**** md5 signature: 6816a9297295cb1e91a09a07ecd3a343 ****/
+		/****** StepGeom_OuterBoundaryCurve::StepGeom_OuterBoundaryCurve ******/
+		/****** md5 signature: 6816a9297295cb1e91a09a07ecd3a343 ******/
 		%feature("compactdefaultargs") StepGeom_OuterBoundaryCurve;
 		%feature("autodoc", "Return
 -------

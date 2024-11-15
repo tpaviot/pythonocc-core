@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWSTLDOCSTRING
 "RWStl module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_rwstl.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwstl.html"
 %enddef
 %module (package="OCC.Core", docstring=RWSTLDOCSTRING) RWStl
 
@@ -110,8 +110,8 @@ from OCC.Core.Exception import *
 %rename(rwstl) RWStl;
 class RWStl {
 	public:
-		/****************** ReadAscii ******************/
-		/**** md5 signature: a4082bfc34c1229bc435c44951da6960 ****/
+		/****** RWStl::ReadAscii ******/
+		/****** md5 signature: a4082bfc34c1229bc435c44951da6960 ******/
 		%feature("compactdefaultargs") ReadAscii;
 		%feature("autodoc", "
 Parameters
@@ -129,8 +129,8 @@ Read triangulation from an ascii stl file in case of error, returns null handle.
 ") ReadAscii;
 		static opencascade::handle<Poly_Triangulation> ReadAscii(const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** ReadBinary ******************/
-		/**** md5 signature: 715829aa852a6829b2792b5ff41018e6 ****/
+		/****** RWStl::ReadBinary ******/
+		/****** md5 signature: 715829aa852a6829b2792b5ff41018e6 ******/
 		%feature("compactdefaultargs") ReadBinary;
 		%feature("autodoc", "
 Parameters
@@ -148,8 +148,8 @@ Read triangulation from a binary stl file in case of error, returns null handle.
 ") ReadBinary;
 		static opencascade::handle<Poly_Triangulation> ReadBinary(const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** ReadFile ******************/
-		/**** md5 signature: 64c7a7ea1e7b324b70672cedadb30bca ****/
+		/****** RWStl::ReadFile ******/
+		/****** md5 signature: 64c7a7ea1e7b324b70672cedadb30bca ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
@@ -167,8 +167,8 @@ Read specified stl file and returns its content as triangulation. in case of err
 ") ReadFile;
 		static opencascade::handle<Poly_Triangulation> ReadFile(const OSD_Path & theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** ReadFile ******************/
-		/**** md5 signature: 742addde06afd9d8130198556696e689 ****/
+		/****** RWStl::ReadFile ******/
+		/****** md5 signature: 742addde06afd9d8130198556696e689 ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
@@ -186,8 +186,8 @@ Read specified stl file and returns its content as triangulation. in case of err
 ") ReadFile;
 		static opencascade::handle<Poly_Triangulation> ReadFile(Standard_CString theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** ReadFile ******************/
-		/**** md5 signature: 752aa6341824937d3d7f5d58f0ca70e0 ****/
+		/****** RWStl::ReadFile ******/
+		/****** md5 signature: 752aa6341824937d3d7f5d58f0ca70e0 ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
@@ -206,8 +206,8 @@ Read specified stl file and returns its content as triangulation. @param[in] the
 ") ReadFile;
 		static opencascade::handle<Poly_Triangulation> ReadFile(Standard_CString theFile, const Standard_Real theMergeAngle, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** ReadFile ******************/
-		/**** md5 signature: c6a3a71adb575f87eef05ec5d74e495a ****/
+		/****** RWStl::ReadFile ******/
+		/****** md5 signature: c6a3a71adb575f87eef05ec5d74e495a ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
@@ -227,8 +227,8 @@ Read specified stl file and fills triangulation list for multi-domain case. @par
 ") ReadFile;
 		static void ReadFile(Standard_CString theFile, const Standard_Real theMergeAngle, NCollection_Sequence<opencascade::handle<Poly_Triangulation> > & theTriangList, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** WriteAscii ******************/
-		/**** md5 signature: 8cb39ba5b5c9e3b27f4e1ec1bd12de9c ****/
+		/****** RWStl::WriteAscii ******/
+		/****** md5 signature: 8cb39ba5b5c9e3b27f4e1ec1bd12de9c ******/
 		%feature("compactdefaultargs") WriteAscii;
 		%feature("autodoc", "
 Parameters
@@ -247,8 +247,8 @@ Write the meshing in a file following the ascii format of an stl file. returns f
 ") WriteAscii;
 		static Standard_Boolean WriteAscii(const opencascade::handle<Poly_Triangulation> & theMesh, const OSD_Path & thePath, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** WriteBinary ******************/
-		/**** md5 signature: 3a7e5b47e0a20ed5065a6f3593a90ac4 ****/
+		/****** RWStl::WriteBinary ******/
+		/****** md5 signature: 3a7e5b47e0a20ed5065a6f3593a90ac4 ******/
 		%feature("compactdefaultargs") WriteBinary;
 		%feature("autodoc", "
 Parameters
@@ -283,8 +283,8 @@ class RWStl_ConfigurationNode : public DE_ConfigurationNode {
 	public:
 		class RWStl_InternalSection {};
 		RWStl_InternalSection InternalParameters;
-		/****************** RWStl_ConfigurationNode ******************/
-		/**** md5 signature: d26af6e8353fcb13772912acf02ff7f2 ****/
+		/****** RWStl_ConfigurationNode::RWStl_ConfigurationNode ******/
+		/****** md5 signature: d26af6e8353fcb13772912acf02ff7f2 ******/
 		%feature("compactdefaultargs") RWStl_ConfigurationNode;
 		%feature("autodoc", "Return
 -------
@@ -296,8 +296,8 @@ Initializes all field by default.
 ") RWStl_ConfigurationNode;
 		 RWStl_ConfigurationNode();
 
-		/****************** RWStl_ConfigurationNode ******************/
-		/**** md5 signature: 6922c706819602fe0b180cba8a90d054 ****/
+		/****** RWStl_ConfigurationNode::RWStl_ConfigurationNode ******/
+		/****** md5 signature: 6922c706819602fe0b180cba8a90d054 ******/
 		%feature("compactdefaultargs") RWStl_ConfigurationNode;
 		%feature("autodoc", "
 Parameters
@@ -314,8 +314,8 @@ Copies values of all fields @param[in] thenode object to copy.
 ") RWStl_ConfigurationNode;
 		 RWStl_ConfigurationNode(const opencascade::handle<RWStl_ConfigurationNode> & theNode);
 
-		/****************** BuildProvider ******************/
-		/**** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ****/
+		/****** RWStl_ConfigurationNode::BuildProvider ******/
+		/****** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ******/
 		%feature("compactdefaultargs") BuildProvider;
 		%feature("autodoc", "Return
 -------
@@ -327,8 +327,8 @@ Creates new provider for the own format return new created provider.
 ") BuildProvider;
 		virtual opencascade::handle<DE_Provider> BuildProvider();
 
-		/****************** CheckContent ******************/
-		/**** md5 signature: 2a770b41fb754bfe0ef0260c549f4919 ****/
+		/****** RWStl_ConfigurationNode::CheckContent ******/
+		/****** md5 signature: 2a770b41fb754bfe0ef0260c549f4919 ******/
 		%feature("compactdefaultargs") CheckContent;
 		%feature("autodoc", "
 Parameters
@@ -345,8 +345,8 @@ Checks the file content to verify a format @param[in] thebuffer read stream buff
 ") CheckContent;
 		virtual bool CheckContent(const opencascade::handle<NCollection_Buffer> & theBuffer);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 4559608ebdab2961e97de40732291656 ****/
+		/****** RWStl_ConfigurationNode::Copy ******/
+		/****** md5 signature: 4559608ebdab2961e97de40732291656 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -358,8 +358,8 @@ Copies values of all fields return new object with the same field values.
 ") Copy;
 		virtual opencascade::handle<DE_ConfigurationNode> Copy();
 
-		/****************** GetExtensions ******************/
-		/**** md5 signature: a58fd9c22a501a38d695eed6406f94bb ****/
+		/****** RWStl_ConfigurationNode::GetExtensions ******/
+		/****** md5 signature: a58fd9c22a501a38d695eed6406f94bb ******/
 		%feature("compactdefaultargs") GetExtensions;
 		%feature("autodoc", "Return
 -------
@@ -371,8 +371,8 @@ Gets list of supported file extensions return list of extensions.
 ") GetExtensions;
 		virtual TColStd_ListOfAsciiString GetExtensions();
 
-		/****************** GetFormat ******************/
-		/**** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ****/
+		/****** RWStl_ConfigurationNode::GetFormat ******/
+		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "Return
 -------
@@ -384,8 +384,8 @@ Gets cad format name of associated provider return provider cad format.
 ") GetFormat;
 		virtual TCollection_AsciiString GetFormat();
 
-		/****************** GetVendor ******************/
-		/**** md5 signature: dec3ae3842639c0f3f7b51f11891135d ****/
+		/****** RWStl_ConfigurationNode::GetVendor ******/
+		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
 		%feature("compactdefaultargs") GetVendor;
 		%feature("autodoc", "Return
 -------
@@ -397,8 +397,8 @@ Gets provider's vendor name of associated provider return provider's vendor name
 ") GetVendor;
 		virtual TCollection_AsciiString GetVendor();
 
-		/****************** IsExportSupported ******************/
-		/**** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ****/
+		/****** RWStl_ConfigurationNode::IsExportSupported ******/
+		/****** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ******/
 		%feature("compactdefaultargs") IsExportSupported;
 		%feature("autodoc", "Return
 -------
@@ -410,8 +410,8 @@ Checks the export supporting return true if export is supported.
 ") IsExportSupported;
 		virtual bool IsExportSupported();
 
-		/****************** IsImportSupported ******************/
-		/**** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ****/
+		/****** RWStl_ConfigurationNode::IsImportSupported ******/
+		/****** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ******/
 		%feature("compactdefaultargs") IsImportSupported;
 		%feature("autodoc", "Return
 -------
@@ -423,8 +423,8 @@ Checks the import supporting return true if import is supported.
 ") IsImportSupported;
 		virtual bool IsImportSupported();
 
-		/****************** Load ******************/
-		/**** md5 signature: 994009254510d81a5f0f9a326a356850 ****/
+		/****** RWStl_ConfigurationNode::Load ******/
+		/****** md5 signature: 994009254510d81a5f0f9a326a356850 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -441,8 +441,8 @@ Updates values according the resource @param[in] theresource input resource to u
 ") Load;
 		virtual bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
 
-		/****************** Save ******************/
-		/**** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ****/
+		/****** RWStl_ConfigurationNode::Save ******/
+		/****** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ******/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "Return
 -------
@@ -468,8 +468,8 @@ Writes configuration to the string return result resource string.
 ***********************/
 class RWStl_Provider : public DE_Provider {
 	public:
-		/****************** RWStl_Provider ******************/
-		/**** md5 signature: 20621107f2f8b09b43296b222bf5c8bf ****/
+		/****** RWStl_Provider::RWStl_Provider ******/
+		/****** md5 signature: 20621107f2f8b09b43296b222bf5c8bf ******/
 		%feature("compactdefaultargs") RWStl_Provider;
 		%feature("autodoc", "Return
 -------
@@ -481,8 +481,8 @@ Default constructor configure translation process with global configuration.
 ") RWStl_Provider;
 		 RWStl_Provider();
 
-		/****************** RWStl_Provider ******************/
-		/**** md5 signature: d142e250a518828dbec2e4ea13799236 ****/
+		/****** RWStl_Provider::RWStl_Provider ******/
+		/****** md5 signature: d142e250a518828dbec2e4ea13799236 ******/
 		%feature("compactdefaultargs") RWStl_Provider;
 		%feature("autodoc", "
 Parameters
@@ -499,8 +499,8 @@ Configure translation process @param[in] thenode object to copy.
 ") RWStl_Provider;
 		 RWStl_Provider(const opencascade::handle<DE_ConfigurationNode> & theNode);
 
-		/****************** GetFormat ******************/
-		/**** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ****/
+		/****** RWStl_Provider::GetFormat ******/
+		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "Return
 -------
@@ -512,8 +512,8 @@ Gets cad format name of associated provider return provider cad format.
 ") GetFormat;
 		virtual TCollection_AsciiString GetFormat();
 
-		/****************** GetVendor ******************/
-		/**** md5 signature: dec3ae3842639c0f3f7b51f11891135d ****/
+		/****** RWStl_Provider::GetVendor ******/
+		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
 		%feature("compactdefaultargs") GetVendor;
 		%feature("autodoc", "Return
 -------
@@ -525,8 +525,8 @@ Gets provider's vendor name of associated provider return provider's vendor name
 ") GetVendor;
 		virtual TCollection_AsciiString GetVendor();
 
-		/****************** Read ******************/
-		/**** md5 signature: 16f3a93c0e43348246bb95e8cba55754 ****/
+		/****** RWStl_Provider::Read ******/
+		/****** md5 signature: 16f3a93c0e43348246bb95e8cba55754 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -546,8 +546,8 @@ Reads a cad file, according internal configuration @param[in] thepath path to th
 ") Read;
 		virtual Standard_Boolean Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Read ******************/
-		/**** md5 signature: 80a7afaed992615710ff04f2244e58af ****/
+		/****** RWStl_Provider::Read ******/
+		/****** md5 signature: 80a7afaed992615710ff04f2244e58af ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -566,8 +566,8 @@ Reads a cad file, according internal configuration @param[in] thepath path to th
 ") Read;
 		virtual Standard_Boolean Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Read ******************/
-		/**** md5 signature: 160b9f8794c7839a593c81d8887e0933 ****/
+		/****** RWStl_Provider::Read ******/
+		/****** md5 signature: 160b9f8794c7839a593c81d8887e0933 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -587,8 +587,8 @@ Reads a cad file, according internal configuration @param[in] thepath path to th
 ") Read;
 		virtual Standard_Boolean Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Read ******************/
-		/**** md5 signature: 3008ec75ea1c7dea0f617472523275db ****/
+		/****** RWStl_Provider::Read ******/
+		/****** md5 signature: 3008ec75ea1c7dea0f617472523275db ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -607,8 +607,8 @@ Reads a cad file, according internal configuration @param[in] thepath path to th
 ") Read;
 		virtual Standard_Boolean Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 93e394221df3c4afc5c4770a04336d3a ****/
+		/****** RWStl_Provider::Write ******/
+		/****** md5 signature: 93e394221df3c4afc5c4770a04336d3a ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -628,8 +628,8 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 ") Write;
 		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: f2990aef87163af009a5f37c83657fdd ****/
+		/****** RWStl_Provider::Write ******/
+		/****** md5 signature: f2990aef87163af009a5f37c83657fdd ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -648,8 +648,8 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 ") Write;
 		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 6079000f342ac160d056ffb0a9360302 ****/
+		/****** RWStl_Provider::Write ******/
+		/****** md5 signature: 6079000f342ac160d056ffb0a9360302 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -669,8 +669,8 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 ") Write;
 		virtual Standard_Boolean Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 3b6e60d4eb25fa5818fa82e89a4fc295 ****/
+		/****** RWStl_Provider::Write ******/
+		/****** md5 signature: 3b6e60d4eb25fa5818fa82e89a4fc295 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMPROJLIBDOCSTRING
 "GeomProjLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geomprojlib.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geomprojlib.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMPROJLIBDOCSTRING) GeomProjLib
 
@@ -86,8 +86,8 @@ from OCC.Core.Exception import *
 %rename(geomprojlib) GeomProjLib;
 class GeomProjLib {
 	public:
-		/****************** Curve2d ******************/
-		/**** md5 signature: 623659a558b10587135187bd163c99ea ****/
+		/****** GeomProjLib::Curve2d ******/
+		/****** md5 signature: 623659a558b10587135187bd163c99ea ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -111,8 +111,8 @@ Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projected
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const Standard_Real First, const Standard_Real Last, const opencascade::handle<Geom_Surface> & S, const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real VFirst, const Standard_Real VLast, Standard_Real &OutValue);
 
-		/****************** Curve2d ******************/
-		/**** md5 signature: 16445a6ccd20cb82384bac47f959e21e ****/
+		/****** GeomProjLib::Curve2d ******/
+		/****** md5 signature: 16445a6ccd20cb82384bac47f959e21e ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -132,8 +132,8 @@ Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projected
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const Standard_Real First, const Standard_Real Last, const opencascade::handle<Geom_Surface> & S, Standard_Real &OutValue);
 
-		/****************** Curve2d ******************/
-		/**** md5 signature: 778b5e374ce3577a9c2c331162cd49e7 ****/
+		/****** GeomProjLib::Curve2d ******/
+		/****** md5 signature: 778b5e374ce3577a9c2c331162cd49e7 ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -153,8 +153,8 @@ Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projected
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const Standard_Real First, const Standard_Real Last, const opencascade::handle<Geom_Surface> & S);
 
-		/****************** Curve2d ******************/
-		/**** md5 signature: e2922f393a23ef1a26996de727da93cd ****/
+		/****** GeomProjLib::Curve2d ******/
+		/****** md5 signature: e2922f393a23ef1a26996de727da93cd ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -172,8 +172,8 @@ Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projected
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
-		/****************** Curve2d ******************/
-		/**** md5 signature: 6b78aae098ed555c42d1ed97a8778340 ****/
+		/****** GeomProjLib::Curve2d ******/
+		/****** md5 signature: 6b78aae098ed555c42d1ed97a8778340 ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -195,8 +195,8 @@ Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projected
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S, const Standard_Real UDeb, const Standard_Real UFin, const Standard_Real VDeb, const Standard_Real VFin);
 
-		/****************** Curve2d ******************/
-		/**** md5 signature: 3b75a4d608950f79c7ba3f66720b604f ****/
+		/****** GeomProjLib::Curve2d ******/
+		/****** md5 signature: 3b75a4d608950f79c7ba3f66720b604f ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -218,8 +218,8 @@ Gives the 2d-curve of a 3d-curve lying on a surface ( uses geomprojlib_projected
 ") Curve2d;
 		static opencascade::handle<Geom2d_Curve> Curve2d(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S, const Standard_Real UDeb, const Standard_Real UFin, const Standard_Real VDeb, const Standard_Real VFin, Standard_Real &OutValue);
 
-		/****************** Project ******************/
-		/**** md5 signature: 6bc2a63694c3bb1ffb84bc5bd6bfc7cc ****/
+		/****** GeomProjLib::Project ******/
+		/****** md5 signature: 6bc2a63694c3bb1ffb84bc5bd6bfc7cc ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -237,8 +237,8 @@ Constructs the 3d-curve from the normal projection of the curve <c> on the surfa
 ") Project;
 		static opencascade::handle<Geom_Curve> Project(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
-		/****************** ProjectOnPlane ******************/
-		/**** md5 signature: cbb13e670d730f1fffc13379697518e5 ****/
+		/****** GeomProjLib::ProjectOnPlane ******/
+		/****** md5 signature: cbb13e670d730f1fffc13379697518e5 ******/
 		%feature("compactdefaultargs") ProjectOnPlane;
 		%feature("autodoc", "
 Parameters

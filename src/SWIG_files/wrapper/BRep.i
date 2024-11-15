@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPDOCSTRING
 "BRep module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brep.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brep.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPDOCSTRING) BRep
 
@@ -139,8 +139,8 @@ typedef NCollection_List<opencascade::handle<BRep_PointRepresentation>> BRep_Lis
 *********************/
 class BRep_Builder : public TopoDS_Builder {
 	public:
-		/****************** Continuity ******************/
-		/**** md5 signature: ad510666139039f52608a143ce53cdd7 ****/
+		/****** BRep_Builder::Continuity ******/
+		/****** md5 signature: ad510666139039f52608a143ce53cdd7 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -160,8 +160,8 @@ Sets the geometric continuity on the edge.
 ") Continuity;
 		void Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const GeomAbs_Shape C);
 
-		/****************** Continuity ******************/
-		/**** md5 signature: feff2af26f83833fcfbdc2257209ef12 ****/
+		/****** BRep_Builder::Continuity ******/
+		/****** md5 signature: feff2af26f83833fcfbdc2257209ef12 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -183,8 +183,8 @@ Sets the geometric continuity on the edge.
 ") Continuity;
 		void Continuity(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2, const GeomAbs_Shape C);
 
-		/****************** Degenerated ******************/
-		/**** md5 signature: 85fb0e4fff22a970366aebab9413a0a0 ****/
+		/****** BRep_Builder::Degenerated ******/
+		/****** md5 signature: 85fb0e4fff22a970366aebab9413a0a0 ******/
 		%feature("compactdefaultargs") Degenerated;
 		%feature("autodoc", "
 Parameters
@@ -202,8 +202,8 @@ Sets the degenerated flag for the edge <e>.
 ") Degenerated;
 		void Degenerated(const TopoDS_Edge & E, const Standard_Boolean D);
 
-		/****************** MakeEdge ******************/
-		/**** md5 signature: b674f239b626d44dda9dada9ca8f29f4 ****/
+		/****** BRep_Builder::MakeEdge ******/
+		/****** md5 signature: b674f239b626d44dda9dada9ca8f29f4 ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -220,8 +220,8 @@ Makes an undefined edge (no geometry).
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E);
 
-		/****************** MakeEdge ******************/
-		/**** md5 signature: f0f2d5e71e37e4d20e9feffc9c1d3b2d ****/
+		/****** BRep_Builder::MakeEdge ******/
+		/****** md5 signature: f0f2d5e71e37e4d20e9feffc9c1d3b2d ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -240,8 +240,8 @@ Makes an edge with a curve.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const opencascade::handle<Geom_Curve> & C, const Standard_Real Tol);
 
-		/****************** MakeEdge ******************/
-		/**** md5 signature: eadfa705523a213a6ec77659a57a54ff ****/
+		/****** BRep_Builder::MakeEdge ******/
+		/****** md5 signature: eadfa705523a213a6ec77659a57a54ff ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -261,8 +261,8 @@ Makes an edge with a curve and a location.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const opencascade::handle<Geom_Curve> & C, const TopLoc_Location & L, const Standard_Real Tol);
 
-		/****************** MakeEdge ******************/
-		/**** md5 signature: 1d75b5022ed1df63600c7bc1fc939182 ****/
+		/****** BRep_Builder::MakeEdge ******/
+		/****** md5 signature: 1d75b5022ed1df63600c7bc1fc939182 ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -280,8 +280,8 @@ Makes an edge with a polygon 3d.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const opencascade::handle<Poly_Polygon3D> & P);
 
-		/****************** MakeEdge ******************/
-		/**** md5 signature: ff614951ea63361125c2261b4c2628c2 ****/
+		/****** BRep_Builder::MakeEdge ******/
+		/****** md5 signature: ff614951ea63361125c2261b4c2628c2 ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -300,8 +300,8 @@ Makes an edge polygon on triangulation.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N, const opencascade::handle<Poly_Triangulation> & T);
 
-		/****************** MakeEdge ******************/
-		/**** md5 signature: f33683631bfbf43b74881c51e3c77a67 ****/
+		/****** BRep_Builder::MakeEdge ******/
+		/****** md5 signature: f33683631bfbf43b74881c51e3c77a67 ******/
 		%feature("compactdefaultargs") MakeEdge;
 		%feature("autodoc", "
 Parameters
@@ -321,8 +321,8 @@ Makes an edge polygon on triangulation.
 ") MakeEdge;
 		void MakeEdge(TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
-		/****************** MakeFace ******************/
-		/**** md5 signature: c71240caa9bb39e7508c010ada76421f ****/
+		/****** BRep_Builder::MakeFace ******/
+		/****** md5 signature: c71240caa9bb39e7508c010ada76421f ******/
 		%feature("compactdefaultargs") MakeFace;
 		%feature("autodoc", "
 Parameters
@@ -339,8 +339,8 @@ Makes an undefined face.
 ") MakeFace;
 		void MakeFace(TopoDS_Face & F);
 
-		/****************** MakeFace ******************/
-		/**** md5 signature: 21344df19ec72586cd876f667d9215d4 ****/
+		/****** BRep_Builder::MakeFace ******/
+		/****** md5 signature: 21344df19ec72586cd876f667d9215d4 ******/
 		%feature("compactdefaultargs") MakeFace;
 		%feature("autodoc", "
 Parameters
@@ -359,8 +359,8 @@ Makes a face with a surface.
 ") MakeFace;
 		void MakeFace(TopoDS_Face & F, const opencascade::handle<Geom_Surface> & S, const Standard_Real Tol);
 
-		/****************** MakeFace ******************/
-		/**** md5 signature: 4cc7cf2c0bdd48e757b5571ce63016a9 ****/
+		/****** BRep_Builder::MakeFace ******/
+		/****** md5 signature: 4cc7cf2c0bdd48e757b5571ce63016a9 ******/
 		%feature("compactdefaultargs") MakeFace;
 		%feature("autodoc", "
 Parameters
@@ -380,8 +380,8 @@ Makes a face with a surface and a location.
 ") MakeFace;
 		void MakeFace(TopoDS_Face & F, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
-		/****************** MakeFace ******************/
-		/**** md5 signature: 82f593bb6499b901c0087602e0a5b4bc ****/
+		/****** BRep_Builder::MakeFace ******/
+		/****** md5 signature: 82f593bb6499b901c0087602e0a5b4bc ******/
 		%feature("compactdefaultargs") MakeFace;
 		%feature("autodoc", "
 Parameters
@@ -399,8 +399,8 @@ Makes a theface with a single triangulation. the triangulation is in the same re
 ") MakeFace;
 		void MakeFace(TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
-		/****************** MakeFace ******************/
-		/**** md5 signature: ca97f699b84f43b2b5cae440dbda0a60 ****/
+		/****** BRep_Builder::MakeFace ******/
+		/****** md5 signature: ca97f699b84f43b2b5cae440dbda0a60 ******/
 		%feature("compactdefaultargs") MakeFace;
 		%feature("autodoc", "
 Parameters
@@ -419,8 +419,8 @@ Makes a face with a list of triangulations and active one. use null active trian
 ") MakeFace;
 		void MakeFace(TopoDS_Face & theFace, const Poly_ListOfTriangulation & theTriangulations, const opencascade::handle<Poly_Triangulation> & theActiveTriangulation = opencascade::handle<Poly_Triangulation>());
 
-		/****************** MakeVertex ******************/
-		/**** md5 signature: 31d0795e1ce56b9f1ec86c08a180b99b ****/
+		/****** BRep_Builder::MakeVertex ******/
+		/****** md5 signature: 31d0795e1ce56b9f1ec86c08a180b99b ******/
 		%feature("compactdefaultargs") MakeVertex;
 		%feature("autodoc", "
 Parameters
@@ -437,8 +437,8 @@ Makes an udefined vertex without geometry.
 ") MakeVertex;
 		void MakeVertex(TopoDS_Vertex & V);
 
-		/****************** MakeVertex ******************/
-		/**** md5 signature: 29bb0db6ab919b38d8ce3d1198ea2b37 ****/
+		/****** BRep_Builder::MakeVertex ******/
+		/****** md5 signature: 29bb0db6ab919b38d8ce3d1198ea2b37 ******/
 		%feature("compactdefaultargs") MakeVertex;
 		%feature("autodoc", "
 Parameters
@@ -457,8 +457,8 @@ Makes a vertex from a 3d point.
 ") MakeVertex;
 		void MakeVertex(TopoDS_Vertex & V, const gp_Pnt & P, const Standard_Real Tol);
 
-		/****************** NaturalRestriction ******************/
-		/**** md5 signature: 9318ef19df3d36cddca0d86181d9235e ****/
+		/****** BRep_Builder::NaturalRestriction ******/
+		/****** md5 signature: 9318ef19df3d36cddca0d86181d9235e ******/
 		%feature("compactdefaultargs") NaturalRestriction;
 		%feature("autodoc", "
 Parameters
@@ -476,8 +476,8 @@ Sets the naturalrestriction flag of the face.
 ") NaturalRestriction;
 		void NaturalRestriction(const TopoDS_Face & F, const Standard_Boolean N);
 
-		/****************** Range ******************/
-		/**** md5 signature: 4e181430c6418a692d54b7f2eb20b471 ****/
+		/****** BRep_Builder::Range ******/
+		/****** md5 signature: 4e181430c6418a692d54b7f2eb20b471 ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -497,8 +497,8 @@ Sets the range of the 3d curve if only3d=true, otherwise sets the range to all t
 ") Range;
 		void Range(const TopoDS_Edge & E, const Standard_Real First, const Standard_Real Last, const Standard_Boolean Only3d = Standard_False);
 
-		/****************** Range ******************/
-		/**** md5 signature: 8f140227716f210489934adf729eb0ac ****/
+		/****** BRep_Builder::Range ******/
+		/****** md5 signature: 8f140227716f210489934adf729eb0ac ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -519,8 +519,8 @@ Sets the range of the edge on the pcurve on the surface.
 ") Range;
 		void Range(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real First, const Standard_Real Last);
 
-		/****************** Range ******************/
-		/**** md5 signature: de1a40468c91090d0ec62f6a5752ec87 ****/
+		/****** BRep_Builder::Range ******/
+		/****** md5 signature: de1a40468c91090d0ec62f6a5752ec87 ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -540,8 +540,8 @@ Sets the range of the edge on the pcurve on the face.
 ") Range;
 		void Range(const TopoDS_Edge & E, const TopoDS_Face & F, const Standard_Real First, const Standard_Real Last);
 
-		/****************** SameParameter ******************/
-		/**** md5 signature: 637dd7757cdbbc36944a71eb51f0c647 ****/
+		/****** BRep_Builder::SameParameter ******/
+		/****** md5 signature: 637dd7757cdbbc36944a71eb51f0c647 ******/
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "
 Parameters
@@ -559,8 +559,8 @@ Sets the same parameter flag for the edge <e>.
 ") SameParameter;
 		void SameParameter(const TopoDS_Edge & E, const Standard_Boolean S);
 
-		/****************** SameRange ******************/
-		/**** md5 signature: e83a6e0df8791ada8869fddc2738519b ****/
+		/****** BRep_Builder::SameRange ******/
+		/****** md5 signature: e83a6e0df8791ada8869fddc2738519b ******/
 		%feature("compactdefaultargs") SameRange;
 		%feature("autodoc", "
 Parameters
@@ -578,8 +578,8 @@ Sets the same range flag for the edge <e>.
 ") SameRange;
 		void SameRange(const TopoDS_Edge & E, const Standard_Boolean S);
 
-		/****************** Transfert ******************/
-		/**** md5 signature: b171f0753a7014dc7505df77b53c2539 ****/
+		/****** BRep_Builder::Transfert ******/
+		/****** md5 signature: b171f0753a7014dc7505df77b53c2539 ******/
 		%feature("compactdefaultargs") Transfert;
 		%feature("autodoc", "
 Parameters
@@ -597,8 +597,8 @@ Add to <eout> the geometric representations of <ein>.
 ") Transfert;
 		void Transfert(const TopoDS_Edge & Ein, const TopoDS_Edge & Eout);
 
-		/****************** Transfert ******************/
-		/**** md5 signature: 6d7e283a0289d8207e491ceb01681950 ****/
+		/****** BRep_Builder::Transfert ******/
+		/****** md5 signature: 6d7e283a0289d8207e491ceb01681950 ******/
 		%feature("compactdefaultargs") Transfert;
 		%feature("autodoc", "
 Parameters
@@ -618,8 +618,8 @@ Transfert the parameters of vin on ein as the parameter of vout on eout.
 ") Transfert;
 		void Transfert(const TopoDS_Edge & Ein, const TopoDS_Edge & Eout, const TopoDS_Vertex & Vin, const TopoDS_Vertex & Vout);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 461de5bb3bcace2fe64ffd833ab805f0 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 461de5bb3bcace2fe64ffd833ab805f0 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -638,8 +638,8 @@ Sets a 3d curve for the edge. if <c> is a null handle, remove any existing 3d cu
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom_Curve> & C, const Standard_Real Tol);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 8cfdbb2d500a89a88a4a76a7386f8aa9 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 8cfdbb2d500a89a88a4a76a7386f8aa9 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -659,8 +659,8 @@ Sets a 3d curve for the edge. if <c> is a null handle, remove any existing 3d cu
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom_Curve> & C, const TopLoc_Location & L, const Standard_Real Tol);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 3bfa8179919e96725c4915bd3d329649 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 3bfa8179919e96725c4915bd3d329649 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -680,8 +680,8 @@ Sets a pcurve for the edge on the face. if <c> is a null handle, remove any exis
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C, const TopoDS_Face & F, const Standard_Real Tol);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 7d528612c919b79d92fd249803e88c61 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 7d528612c919b79d92fd249803e88c61 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -702,8 +702,8 @@ Sets pcurves for the edge on the closed face. if <c1> or <c2> is a null handle, 
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const TopoDS_Face & F, const Standard_Real Tol);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 6cb83f897044ec0b34ebd0ae7baacd44 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 6cb83f897044ec0b34ebd0ae7baacd44 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -724,8 +724,8 @@ Sets a pcurve for the edge on the face. if <c> is a null handle, remove any exis
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: c3858584a511426e079bc628910ddb2e ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: c3858584a511426e079bc628910ddb2e ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -748,8 +748,8 @@ Sets a pcurve for the edge on the face. if <c> is a null handle, remove any exis
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol, const gp_Pnt2d & Pf, const gp_Pnt2d & Pl);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 414706636faf49609b66c5859100856d ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 414706636faf49609b66c5859100856d ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -771,8 +771,8 @@ Sets pcurves for the edge on the closed surface. <c1> or <c2> is a null handle, 
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: ecbe3e2c2db95e8527d500b1933fc18a ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: ecbe3e2c2db95e8527d500b1933fc18a ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -796,8 +796,8 @@ Sets pcurves for the edge on the closed surface. <c1> or <c2> is a null handle, 
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol, const gp_Pnt2d & Pf, const gp_Pnt2d & Pl);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 0fafa05abb68b0aedaead3c83b8ef0fe ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 0fafa05abb68b0aedaead3c83b8ef0fe ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -815,8 +815,8 @@ Changes an edge 3d polygon. a null polygon removes the 3d polygon.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon3D> & P);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 18cdfe39bc36e28a79112a208855f95e ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 18cdfe39bc36e28a79112a208855f95e ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -835,8 +835,8 @@ Changes an edge 3d polygon. a null polygon removes the 3d polygon.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon3D> & P, const TopLoc_Location & L);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: d270f40afd5ef59a6c3fdca0b12bf491 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: d270f40afd5ef59a6c3fdca0b12bf491 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -855,8 +855,8 @@ Changes an edge polygon on triangulation.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N, const opencascade::handle<Poly_Triangulation> & T);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 33c1fd32e831b203fa0d899281a253af ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 33c1fd32e831b203fa0d899281a253af ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -876,8 +876,8 @@ Changes an edge polygon on triangulation.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 164a2998d0b4e92982ecc230cd19f259 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 164a2998d0b4e92982ecc230cd19f259 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -897,8 +897,8 @@ Changes an edge polygon on triangulation.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N1, const opencascade::handle<Poly_PolygonOnTriangulation> & N2, const opencascade::handle<Poly_Triangulation> & T);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: c4fc0bba87beaabc83a7a01212438010 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: c4fc0bba87beaabc83a7a01212438010 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -919,8 +919,8 @@ Changes an edge polygon on triangulation.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_PolygonOnTriangulation> & N1, const opencascade::handle<Poly_PolygonOnTriangulation> & N2, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: c23ab2e3d4ab82a884c4a4e5e435a01c ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: c23ab2e3d4ab82a884c4a4e5e435a01c ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -939,8 +939,8 @@ Changes edge polygon on a face.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon2D> & P, const TopoDS_Face & S);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 07b9e715d7ba688ac49e475242e13358 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 07b9e715d7ba688ac49e475242e13358 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -960,8 +960,8 @@ Changes edge polygon on a face.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon2D> & P, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & T);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 29e9574f15e8cd550ab1232427457506 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 29e9574f15e8cd550ab1232427457506 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -981,8 +981,8 @@ Changes edge polygons on a face. //! a null polygon removes the 2d polygon.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon2D> & P1, const opencascade::handle<Poly_Polygon2D> & P2, const TopoDS_Face & S);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 7cfe9fc63da93eb8832d2459ca6eadde ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 7cfe9fc63da93eb8832d2459ca6eadde ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -1003,8 +1003,8 @@ Changes edge polygons on a face. //! a null polygon removes the 2d polygon.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const opencascade::handle<Poly_Polygon2D> & P1, const opencascade::handle<Poly_Polygon2D> & P2, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** UpdateEdge ******************/
-		/**** md5 signature: 4ddfe00e32907cf6333c0e22b0b43935 ****/
+		/****** BRep_Builder::UpdateEdge ******/
+		/****** md5 signature: 4ddfe00e32907cf6333c0e22b0b43935 ******/
 		%feature("compactdefaultargs") UpdateEdge;
 		%feature("autodoc", "
 Parameters
@@ -1022,8 +1022,8 @@ Updates the edge tolerance.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Edge & E, const Standard_Real Tol);
 
-		/****************** UpdateFace ******************/
-		/**** md5 signature: 6fe40548ebb7a146acb2655ee1db5cd8 ****/
+		/****** BRep_Builder::UpdateFace ******/
+		/****** md5 signature: 6fe40548ebb7a146acb2655ee1db5cd8 ******/
 		%feature("compactdefaultargs") UpdateFace;
 		%feature("autodoc", "
 Parameters
@@ -1043,8 +1043,8 @@ Updates the face f using the tolerance value tol, surface s and location locatio
 ") UpdateFace;
 		void UpdateFace(const TopoDS_Face & F, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
-		/****************** UpdateFace ******************/
-		/**** md5 signature: 46068466603e30f2f620c3de44d08407 ****/
+		/****** BRep_Builder::UpdateFace ******/
+		/****** md5 signature: 46068466603e30f2f620c3de44d08407 ******/
 		%feature("compactdefaultargs") UpdateFace;
 		%feature("autodoc", "
 Parameters
@@ -1063,8 +1063,8 @@ Changes a face triangulation. a null thetriangulation removes face triangulation
 ") UpdateFace;
 		void UpdateFace(const TopoDS_Face & theFace, const opencascade::handle<Poly_Triangulation> & theTriangulation, const Standard_Boolean theToReset = true);
 
-		/****************** UpdateFace ******************/
-		/**** md5 signature: cfff4752b2b664eb9ba94b81dbc0aea1 ****/
+		/****** BRep_Builder::UpdateFace ******/
+		/****** md5 signature: cfff4752b2b664eb9ba94b81dbc0aea1 ******/
 		%feature("compactdefaultargs") UpdateFace;
 		%feature("autodoc", "
 Parameters
@@ -1082,8 +1082,8 @@ Updates the face tolerance.
 ") UpdateFace;
 		void UpdateFace(const TopoDS_Face & F, const Standard_Real Tol);
 
-		/****************** UpdateVertex ******************/
-		/**** md5 signature: 6ed16c5d2b630479bdda164fcceffbab ****/
+		/****** BRep_Builder::UpdateVertex ******/
+		/****** md5 signature: 6ed16c5d2b630479bdda164fcceffbab ******/
 		%feature("compactdefaultargs") UpdateVertex;
 		%feature("autodoc", "
 Parameters
@@ -1102,8 +1102,8 @@ Sets a 3d point on the vertex.
 ") UpdateVertex;
 		void UpdateVertex(const TopoDS_Vertex & V, const gp_Pnt & P, const Standard_Real Tol);
 
-		/****************** UpdateVertex ******************/
-		/**** md5 signature: b52feaaa4502df1d7f3cae6d3e9d7801 ****/
+		/****** BRep_Builder::UpdateVertex ******/
+		/****** md5 signature: b52feaaa4502df1d7f3cae6d3e9d7801 ******/
 		%feature("compactdefaultargs") UpdateVertex;
 		%feature("autodoc", "
 Parameters
@@ -1123,8 +1123,8 @@ Sets the parameter for the vertex on the edge curves.
 ") UpdateVertex;
 		void UpdateVertex(const TopoDS_Vertex & V, const Standard_Real P, const TopoDS_Edge & E, const Standard_Real Tol);
 
-		/****************** UpdateVertex ******************/
-		/**** md5 signature: 5ad0bcf5af45a22a108943f1afb114c0 ****/
+		/****** BRep_Builder::UpdateVertex ******/
+		/****** md5 signature: 5ad0bcf5af45a22a108943f1afb114c0 ******/
 		%feature("compactdefaultargs") UpdateVertex;
 		%feature("autodoc", "
 Parameters
@@ -1145,8 +1145,8 @@ Sets the parameter for the vertex on the edge pcurve on the face.
 ") UpdateVertex;
 		void UpdateVertex(const TopoDS_Vertex & V, const Standard_Real P, const TopoDS_Edge & E, const TopoDS_Face & F, const Standard_Real Tol);
 
-		/****************** UpdateVertex ******************/
-		/**** md5 signature: 47f9ee35ce872e21e298db1be568b800 ****/
+		/****** BRep_Builder::UpdateVertex ******/
+		/****** md5 signature: 47f9ee35ce872e21e298db1be568b800 ******/
 		%feature("compactdefaultargs") UpdateVertex;
 		%feature("autodoc", "
 Parameters
@@ -1168,8 +1168,8 @@ Sets the parameter for the vertex on the edge pcurve on the surface.
 ") UpdateVertex;
 		void UpdateVertex(const TopoDS_Vertex & V, const Standard_Real P, const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const Standard_Real Tol);
 
-		/****************** UpdateVertex ******************/
-		/**** md5 signature: a4b2ad0dca279b29c6bdaf4e40d9c7ab ****/
+		/****** BRep_Builder::UpdateVertex ******/
+		/****** md5 signature: a4b2ad0dca279b29c6bdaf4e40d9c7ab ******/
 		%feature("compactdefaultargs") UpdateVertex;
 		%feature("autodoc", "
 Parameters
@@ -1190,8 +1190,8 @@ Sets the parameters for the vertex on the face.
 ") UpdateVertex;
 		void UpdateVertex(const TopoDS_Vertex & Ve, const Standard_Real U, const Standard_Real V, const TopoDS_Face & F, const Standard_Real Tol);
 
-		/****************** UpdateVertex ******************/
-		/**** md5 signature: cb6a93aeb2b020c8e41bd38b5d870c6d ****/
+		/****** BRep_Builder::UpdateVertex ******/
+		/****** md5 signature: cb6a93aeb2b020c8e41bd38b5d870c6d ******/
 		%feature("compactdefaultargs") UpdateVertex;
 		%feature("autodoc", "
 Parameters
@@ -1224,8 +1224,8 @@ Updates the vertex tolerance.
 %nodefaultctor BRep_CurveRepresentation;
 class BRep_CurveRepresentation : public Standard_Transient {
 	public:
-		/****************** Continuity ******************/
-		/**** md5 signature: 1ba066d280ca3c071eb1064dd6b783fc ****/
+		/****** BRep_CurveRepresentation::Continuity ******/
+		/****** md5 signature: 1ba066d280ca3c071eb1064dd6b783fc ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -1237,8 +1237,8 @@ No available documentation.
 ") Continuity;
 		virtual const GeomAbs_Shape & Continuity();
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 78d8ca8e106bd2f55e42d4dc5945fc32 ****/
+		/****** BRep_CurveRepresentation::Continuity ******/
+		/****** md5 signature: 78d8ca8e106bd2f55e42d4dc5945fc32 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -1255,8 +1255,8 @@ No available documentation.
 ") Continuity;
 		virtual void Continuity(const GeomAbs_Shape C);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 2b4cb601b45011a74ab9e5426b2deaa9 ****/
+		/****** BRep_CurveRepresentation::Copy ******/
+		/****** md5 signature: 2b4cb601b45011a74ab9e5426b2deaa9 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -1268,8 +1268,8 @@ Return a copy of this representation.
 ") Copy;
 		virtual opencascade::handle<BRep_CurveRepresentation> Copy();
 
-		/****************** Curve3D ******************/
-		/**** md5 signature: d279ed7bfc4c5a1c9d25cce3ea782276 ****/
+		/****** BRep_CurveRepresentation::Curve3D ******/
+		/****** md5 signature: d279ed7bfc4c5a1c9d25cce3ea782276 ******/
 		%feature("compactdefaultargs") Curve3D;
 		%feature("autodoc", "Return
 -------
@@ -1281,8 +1281,8 @@ No available documentation.
 ") Curve3D;
 		virtual const opencascade::handle<Geom_Curve> & Curve3D();
 
-		/****************** Curve3D ******************/
-		/**** md5 signature: d87953b26144d002be0a7e64301c0a6a ****/
+		/****** BRep_CurveRepresentation::Curve3D ******/
+		/****** md5 signature: d87953b26144d002be0a7e64301c0a6a ******/
 		%feature("compactdefaultargs") Curve3D;
 		%feature("autodoc", "
 Parameters
@@ -1320,8 +1320,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsCurve3D ******************/
-		/**** md5 signature: 3eb9a6a272d02b06294d6182a9677766 ****/
+		/****** BRep_CurveRepresentation::IsCurve3D ******/
+		/****** md5 signature: 3eb9a6a272d02b06294d6182a9677766 ******/
 		%feature("compactdefaultargs") IsCurve3D;
 		%feature("autodoc", "Return
 -------
@@ -1333,8 +1333,8 @@ A 3d curve representation.
 ") IsCurve3D;
 		virtual Standard_Boolean IsCurve3D();
 
-		/****************** IsCurveOnClosedSurface ******************/
-		/**** md5 signature: 72c88b632fff4ad75d6d297a2a2f7f9b ****/
+		/****** BRep_CurveRepresentation::IsCurveOnClosedSurface ******/
+		/****** md5 signature: 72c88b632fff4ad75d6d297a2a2f7f9b ******/
 		%feature("compactdefaultargs") IsCurveOnClosedSurface;
 		%feature("autodoc", "Return
 -------
@@ -1346,8 +1346,8 @@ A curve with two parametric curves on the same surface.
 ") IsCurveOnClosedSurface;
 		virtual Standard_Boolean IsCurveOnClosedSurface();
 
-		/****************** IsCurveOnSurface ******************/
-		/**** md5 signature: 99c67b3aceff7d9bd0bedc4586bbdb9c ****/
+		/****** BRep_CurveRepresentation::IsCurveOnSurface ******/
+		/****** md5 signature: 99c67b3aceff7d9bd0bedc4586bbdb9c ******/
 		%feature("compactdefaultargs") IsCurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -1359,8 +1359,8 @@ A curve in the parametric space of a surface.
 ") IsCurveOnSurface;
 		virtual Standard_Boolean IsCurveOnSurface();
 
-		/****************** IsCurveOnSurface ******************/
-		/**** md5 signature: c2f5aa58d459c2124c584d9822dbcfa8 ****/
+		/****** BRep_CurveRepresentation::IsCurveOnSurface ******/
+		/****** md5 signature: c2f5aa58d459c2124c584d9822dbcfa8 ******/
 		%feature("compactdefaultargs") IsCurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1378,8 +1378,8 @@ Is it a curve in the parametric space of <s> with location <l>.
 ") IsCurveOnSurface;
 		virtual Standard_Boolean IsCurveOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** IsPolygon3D ******************/
-		/**** md5 signature: c82064ea4b47db0a2fc9f12440050f5f ****/
+		/****** BRep_CurveRepresentation::IsPolygon3D ******/
+		/****** md5 signature: c82064ea4b47db0a2fc9f12440050f5f ******/
 		%feature("compactdefaultargs") IsPolygon3D;
 		%feature("autodoc", "Return
 -------
@@ -1391,8 +1391,8 @@ A 3d polygon representation.
 ") IsPolygon3D;
 		virtual Standard_Boolean IsPolygon3D();
 
-		/****************** IsPolygonOnClosedSurface ******************/
-		/**** md5 signature: 08d24e672be6cac52e1cb77c8b36c07a ****/
+		/****** BRep_CurveRepresentation::IsPolygonOnClosedSurface ******/
+		/****** md5 signature: 08d24e672be6cac52e1cb77c8b36c07a ******/
 		%feature("compactdefaultargs") IsPolygonOnClosedSurface;
 		%feature("autodoc", "Return
 -------
@@ -1404,8 +1404,8 @@ Two 2d polygon representations in the parametric space of a surface.
 ") IsPolygonOnClosedSurface;
 		virtual Standard_Boolean IsPolygonOnClosedSurface();
 
-		/****************** IsPolygonOnClosedTriangulation ******************/
-		/**** md5 signature: b2c0e94e579bb49cddc711ef17a8417e ****/
+		/****** BRep_CurveRepresentation::IsPolygonOnClosedTriangulation ******/
+		/****** md5 signature: b2c0e94e579bb49cddc711ef17a8417e ******/
 		%feature("compactdefaultargs") IsPolygonOnClosedTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -1417,8 +1417,8 @@ A representation by two arrays of nodes on a triangulation.
 ") IsPolygonOnClosedTriangulation;
 		virtual Standard_Boolean IsPolygonOnClosedTriangulation();
 
-		/****************** IsPolygonOnSurface ******************/
-		/**** md5 signature: 9e125f1682674ed70fec0c3b43b556e2 ****/
+		/****** BRep_CurveRepresentation::IsPolygonOnSurface ******/
+		/****** md5 signature: 9e125f1682674ed70fec0c3b43b556e2 ******/
 		%feature("compactdefaultargs") IsPolygonOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -1430,8 +1430,8 @@ A polygon in the parametric space of a surface.
 ") IsPolygonOnSurface;
 		virtual Standard_Boolean IsPolygonOnSurface();
 
-		/****************** IsPolygonOnSurface ******************/
-		/**** md5 signature: 1c1f7b90498b125990ff9382d42d93c7 ****/
+		/****** BRep_CurveRepresentation::IsPolygonOnSurface ******/
+		/****** md5 signature: 1c1f7b90498b125990ff9382d42d93c7 ******/
 		%feature("compactdefaultargs") IsPolygonOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1449,8 +1449,8 @@ Is it a polygon in the parametric space of <s> with location <l>.
 ") IsPolygonOnSurface;
 		virtual Standard_Boolean IsPolygonOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** IsPolygonOnTriangulation ******************/
-		/**** md5 signature: f046a82ed644d4b2694291b4a32158de ****/
+		/****** BRep_CurveRepresentation::IsPolygonOnTriangulation ******/
+		/****** md5 signature: f046a82ed644d4b2694291b4a32158de ******/
 		%feature("compactdefaultargs") IsPolygonOnTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -1462,8 +1462,8 @@ A representation by an array of nodes on a triangulation.
 ") IsPolygonOnTriangulation;
 		virtual Standard_Boolean IsPolygonOnTriangulation();
 
-		/****************** IsPolygonOnTriangulation ******************/
-		/**** md5 signature: 97eed3382962bceb72e11a7487b53ae0 ****/
+		/****** BRep_CurveRepresentation::IsPolygonOnTriangulation ******/
+		/****** md5 signature: 97eed3382962bceb72e11a7487b53ae0 ******/
 		%feature("compactdefaultargs") IsPolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -1481,8 +1481,8 @@ Is it a polygon in the definition of <t> with location <l>.
 ") IsPolygonOnTriangulation;
 		virtual Standard_Boolean IsPolygonOnTriangulation(const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
-		/****************** IsRegularity ******************/
-		/**** md5 signature: b3ade1c3f35fca3622ae410d91171b9b ****/
+		/****** BRep_CurveRepresentation::IsRegularity ******/
+		/****** md5 signature: b3ade1c3f35fca3622ae410d91171b9b ******/
 		%feature("compactdefaultargs") IsRegularity;
 		%feature("autodoc", "Return
 -------
@@ -1494,8 +1494,8 @@ A continuity between two surfaces.
 ") IsRegularity;
 		virtual Standard_Boolean IsRegularity();
 
-		/****************** IsRegularity ******************/
-		/**** md5 signature: 76619362955f541a58be5b044aa8bfcd ****/
+		/****** BRep_CurveRepresentation::IsRegularity ******/
+		/****** md5 signature: 76619362955f541a58be5b044aa8bfcd ******/
 		%feature("compactdefaultargs") IsRegularity;
 		%feature("autodoc", "
 Parameters
@@ -1515,8 +1515,8 @@ Is it a regularity between <s1> and <s2> with location <l1> and <l2>.
 ") IsRegularity;
 		virtual Standard_Boolean IsRegularity(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2);
 
-		/****************** Location ******************/
-		/**** md5 signature: 1006fdd3bdd7eb59ebf6a6359a702a4f ****/
+		/****** BRep_CurveRepresentation::Location ******/
+		/****** md5 signature: 1006fdd3bdd7eb59ebf6a6359a702a4f ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "Return
 -------
@@ -1528,8 +1528,8 @@ No available documentation.
 ") Location;
 		const TopLoc_Location & Location();
 
-		/****************** Location ******************/
-		/**** md5 signature: a2c9495044664128886ca4ae6644e853 ****/
+		/****** BRep_CurveRepresentation::Location ******/
+		/****** md5 signature: a2c9495044664128886ca4ae6644e853 ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
@@ -1546,8 +1546,8 @@ No available documentation.
 ") Location;
 		void Location(const TopLoc_Location & L);
 
-		/****************** Location2 ******************/
-		/**** md5 signature: a1ad6449a6ecb57b13b1f729a62f966c ****/
+		/****** BRep_CurveRepresentation::Location2 ******/
+		/****** md5 signature: a1ad6449a6ecb57b13b1f729a62f966c ******/
 		%feature("compactdefaultargs") Location2;
 		%feature("autodoc", "Return
 -------
@@ -1559,8 +1559,8 @@ No available documentation.
 ") Location2;
 		virtual const TopLoc_Location & Location2();
 
-		/****************** PCurve ******************/
-		/**** md5 signature: 43048aaabc4361e78597bb73f5eacb84 ****/
+		/****** BRep_CurveRepresentation::PCurve ******/
+		/****** md5 signature: 43048aaabc4361e78597bb73f5eacb84 ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "Return
 -------
@@ -1572,8 +1572,8 @@ No available documentation.
 ") PCurve;
 		virtual const opencascade::handle<Geom2d_Curve> & PCurve();
 
-		/****************** PCurve ******************/
-		/**** md5 signature: 4167f86bc8643b2c1f384c75757d828a ****/
+		/****** BRep_CurveRepresentation::PCurve ******/
+		/****** md5 signature: 4167f86bc8643b2c1f384c75757d828a ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "
 Parameters
@@ -1590,8 +1590,8 @@ No available documentation.
 ") PCurve;
 		virtual void PCurve(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** PCurve2 ******************/
-		/**** md5 signature: 1ec87e5e62d4cf52996d939d5f6c998c ****/
+		/****** BRep_CurveRepresentation::PCurve2 ******/
+		/****** md5 signature: 1ec87e5e62d4cf52996d939d5f6c998c ******/
 		%feature("compactdefaultargs") PCurve2;
 		%feature("autodoc", "Return
 -------
@@ -1603,8 +1603,8 @@ No available documentation.
 ") PCurve2;
 		virtual const opencascade::handle<Geom2d_Curve> & PCurve2();
 
-		/****************** PCurve2 ******************/
-		/**** md5 signature: d62e9c14e6c8bb4586bc7d40c0050500 ****/
+		/****** BRep_CurveRepresentation::PCurve2 ******/
+		/****** md5 signature: d62e9c14e6c8bb4586bc7d40c0050500 ******/
 		%feature("compactdefaultargs") PCurve2;
 		%feature("autodoc", "
 Parameters
@@ -1621,8 +1621,8 @@ No available documentation.
 ") PCurve2;
 		virtual void PCurve2(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** Polygon ******************/
-		/**** md5 signature: 7c83b4d9dd60de23db90d02f4823b0b7 ****/
+		/****** BRep_CurveRepresentation::Polygon ******/
+		/****** md5 signature: 7c83b4d9dd60de23db90d02f4823b0b7 ******/
 		%feature("compactdefaultargs") Polygon;
 		%feature("autodoc", "Return
 -------
@@ -1634,8 +1634,8 @@ No available documentation.
 ") Polygon;
 		virtual const opencascade::handle<Poly_Polygon2D> & Polygon();
 
-		/****************** Polygon ******************/
-		/**** md5 signature: 5a10418dc1d6401316bf3351b1ece99b ****/
+		/****** BRep_CurveRepresentation::Polygon ******/
+		/****** md5 signature: 5a10418dc1d6401316bf3351b1ece99b ******/
 		%feature("compactdefaultargs") Polygon;
 		%feature("autodoc", "
 Parameters
@@ -1652,8 +1652,8 @@ No available documentation.
 ") Polygon;
 		virtual void Polygon(const opencascade::handle<Poly_Polygon2D> & P);
 
-		/****************** Polygon2 ******************/
-		/**** md5 signature: 7e67f4343ce0293f3c0d87fba7d3ad77 ****/
+		/****** BRep_CurveRepresentation::Polygon2 ******/
+		/****** md5 signature: 7e67f4343ce0293f3c0d87fba7d3ad77 ******/
 		%feature("compactdefaultargs") Polygon2;
 		%feature("autodoc", "Return
 -------
@@ -1665,8 +1665,8 @@ No available documentation.
 ") Polygon2;
 		virtual const opencascade::handle<Poly_Polygon2D> & Polygon2();
 
-		/****************** Polygon2 ******************/
-		/**** md5 signature: 94e0a95d8b52abc29812d43e1fdcb012 ****/
+		/****** BRep_CurveRepresentation::Polygon2 ******/
+		/****** md5 signature: 94e0a95d8b52abc29812d43e1fdcb012 ******/
 		%feature("compactdefaultargs") Polygon2;
 		%feature("autodoc", "
 Parameters
@@ -1683,8 +1683,8 @@ No available documentation.
 ") Polygon2;
 		virtual void Polygon2(const opencascade::handle<Poly_Polygon2D> & P);
 
-		/****************** Polygon3D ******************/
-		/**** md5 signature: c03b6e6dd649921e41357d84e4afa929 ****/
+		/****** BRep_CurveRepresentation::Polygon3D ******/
+		/****** md5 signature: c03b6e6dd649921e41357d84e4afa929 ******/
 		%feature("compactdefaultargs") Polygon3D;
 		%feature("autodoc", "Return
 -------
@@ -1696,8 +1696,8 @@ No available documentation.
 ") Polygon3D;
 		virtual const opencascade::handle<Poly_Polygon3D> & Polygon3D();
 
-		/****************** Polygon3D ******************/
-		/**** md5 signature: d69b9ed42bdfdbbfea3e22f152a9af2f ****/
+		/****** BRep_CurveRepresentation::Polygon3D ******/
+		/****** md5 signature: d69b9ed42bdfdbbfea3e22f152a9af2f ******/
 		%feature("compactdefaultargs") Polygon3D;
 		%feature("autodoc", "
 Parameters
@@ -1714,8 +1714,8 @@ No available documentation.
 ") Polygon3D;
 		virtual void Polygon3D(const opencascade::handle<Poly_Polygon3D> & P);
 
-		/****************** PolygonOnTriangulation ******************/
-		/**** md5 signature: 3513ff8f648f9dff9767d9bb2ff49a30 ****/
+		/****** BRep_CurveRepresentation::PolygonOnTriangulation ******/
+		/****** md5 signature: 3513ff8f648f9dff9767d9bb2ff49a30 ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -1727,8 +1727,8 @@ No available documentation.
 ") PolygonOnTriangulation;
 		virtual const opencascade::handle<Poly_PolygonOnTriangulation> & PolygonOnTriangulation();
 
-		/****************** PolygonOnTriangulation ******************/
-		/**** md5 signature: 50379d303554a02ec54f999e1d2c6e8c ****/
+		/****** BRep_CurveRepresentation::PolygonOnTriangulation ******/
+		/****** md5 signature: 50379d303554a02ec54f999e1d2c6e8c ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -1745,8 +1745,8 @@ No available documentation.
 ") PolygonOnTriangulation;
 		virtual void PolygonOnTriangulation(const opencascade::handle<Poly_PolygonOnTriangulation> & P);
 
-		/****************** PolygonOnTriangulation2 ******************/
-		/**** md5 signature: bacac44468a1a9ac9b9bc4e0db96fc56 ****/
+		/****** BRep_CurveRepresentation::PolygonOnTriangulation2 ******/
+		/****** md5 signature: bacac44468a1a9ac9b9bc4e0db96fc56 ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation2;
 		%feature("autodoc", "Return
 -------
@@ -1758,8 +1758,8 @@ No available documentation.
 ") PolygonOnTriangulation2;
 		virtual const opencascade::handle<Poly_PolygonOnTriangulation> & PolygonOnTriangulation2();
 
-		/****************** PolygonOnTriangulation2 ******************/
-		/**** md5 signature: ba9816f8223ae3766e6abe18498c8f50 ****/
+		/****** BRep_CurveRepresentation::PolygonOnTriangulation2 ******/
+		/****** md5 signature: ba9816f8223ae3766e6abe18498c8f50 ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation2;
 		%feature("autodoc", "
 Parameters
@@ -1776,8 +1776,8 @@ No available documentation.
 ") PolygonOnTriangulation2;
 		virtual void PolygonOnTriangulation2(const opencascade::handle<Poly_PolygonOnTriangulation> & P2);
 
-		/****************** Surface ******************/
-		/**** md5 signature: caeaacb2504e4ba5658f6438ad005605 ****/
+		/****** BRep_CurveRepresentation::Surface ******/
+		/****** md5 signature: caeaacb2504e4ba5658f6438ad005605 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -1789,8 +1789,8 @@ No available documentation.
 ") Surface;
 		virtual const opencascade::handle<Geom_Surface> & Surface();
 
-		/****************** Surface2 ******************/
-		/**** md5 signature: 469feb6c8dcb44ee50dfdedab0d8c3b9 ****/
+		/****** BRep_CurveRepresentation::Surface2 ******/
+		/****** md5 signature: 469feb6c8dcb44ee50dfdedab0d8c3b9 ******/
 		%feature("compactdefaultargs") Surface2;
 		%feature("autodoc", "Return
 -------
@@ -1802,8 +1802,8 @@ No available documentation.
 ") Surface2;
 		virtual const opencascade::handle<Geom_Surface> & Surface2();
 
-		/****************** Triangulation ******************/
-		/**** md5 signature: 9c932a243ba3dce74eece1156590ffa4 ****/
+		/****** BRep_CurveRepresentation::Triangulation ******/
+		/****** md5 signature: 9c932a243ba3dce74eece1156590ffa4 ******/
 		%feature("compactdefaultargs") Triangulation;
 		%feature("autodoc", "Return
 -------
@@ -1832,8 +1832,8 @@ No available documentation.
 %nodefaultctor BRep_PointRepresentation;
 class BRep_PointRepresentation : public Standard_Transient {
 	public:
-		/****************** Curve ******************/
-		/**** md5 signature: 0b527860f975af99bae0f38157e0b434 ****/
+		/****** BRep_PointRepresentation::Curve ******/
+		/****** md5 signature: 0b527860f975af99bae0f38157e0b434 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -1845,8 +1845,8 @@ No available documentation.
 ") Curve;
 		virtual const opencascade::handle<Geom_Curve> & Curve();
 
-		/****************** Curve ******************/
-		/**** md5 signature: e7a526b0c2503e9af23a4b0971e6b198 ****/
+		/****** BRep_PointRepresentation::Curve ******/
+		/****** md5 signature: e7a526b0c2503e9af23a4b0971e6b198 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -1884,8 +1884,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsPointOnCurve ******************/
-		/**** md5 signature: 7c324f51cb2ffeabf00df42f8c95d4fa ****/
+		/****** BRep_PointRepresentation::IsPointOnCurve ******/
+		/****** md5 signature: 7c324f51cb2ffeabf00df42f8c95d4fa ******/
 		%feature("compactdefaultargs") IsPointOnCurve;
 		%feature("autodoc", "Return
 -------
@@ -1897,8 +1897,8 @@ A point on a 3d curve.
 ") IsPointOnCurve;
 		virtual Standard_Boolean IsPointOnCurve();
 
-		/****************** IsPointOnCurve ******************/
-		/**** md5 signature: df3f830e1372e8a85aa278368212b7a0 ****/
+		/****** BRep_PointRepresentation::IsPointOnCurve ******/
+		/****** md5 signature: df3f830e1372e8a85aa278368212b7a0 ******/
 		%feature("compactdefaultargs") IsPointOnCurve;
 		%feature("autodoc", "
 Parameters
@@ -1916,8 +1916,8 @@ A point on the curve <c>.
 ") IsPointOnCurve;
 		virtual Standard_Boolean IsPointOnCurve(const opencascade::handle<Geom_Curve> & C, const TopLoc_Location & L);
 
-		/****************** IsPointOnCurveOnSurface ******************/
-		/**** md5 signature: 10495de40839fdd3337c523f5cd30d3f ****/
+		/****** BRep_PointRepresentation::IsPointOnCurveOnSurface ******/
+		/****** md5 signature: 10495de40839fdd3337c523f5cd30d3f ******/
 		%feature("compactdefaultargs") IsPointOnCurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -1929,8 +1929,8 @@ A point on a 2d curve on a surface.
 ") IsPointOnCurveOnSurface;
 		virtual Standard_Boolean IsPointOnCurveOnSurface();
 
-		/****************** IsPointOnCurveOnSurface ******************/
-		/**** md5 signature: 80624704f58b4028b17e9c7e2ade123c ****/
+		/****** BRep_PointRepresentation::IsPointOnCurveOnSurface ******/
+		/****** md5 signature: 80624704f58b4028b17e9c7e2ade123c ******/
 		%feature("compactdefaultargs") IsPointOnCurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1949,8 +1949,8 @@ A point on the 2d curve <pc> on the surface <s>.
 ") IsPointOnCurveOnSurface;
 		virtual Standard_Boolean IsPointOnCurveOnSurface(const opencascade::handle<Geom2d_Curve> & PC, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** IsPointOnSurface ******************/
-		/**** md5 signature: 9f06ea5cc25d99745a00c53dd1c6ad46 ****/
+		/****** BRep_PointRepresentation::IsPointOnSurface ******/
+		/****** md5 signature: 9f06ea5cc25d99745a00c53dd1c6ad46 ******/
 		%feature("compactdefaultargs") IsPointOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -1962,8 +1962,8 @@ A point on a surface.
 ") IsPointOnSurface;
 		virtual Standard_Boolean IsPointOnSurface();
 
-		/****************** IsPointOnSurface ******************/
-		/**** md5 signature: 0cda33b49cc335d68473d388862051a2 ****/
+		/****** BRep_PointRepresentation::IsPointOnSurface ******/
+		/****** md5 signature: 0cda33b49cc335d68473d388862051a2 ******/
 		%feature("compactdefaultargs") IsPointOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -1981,8 +1981,8 @@ A point on the surface <s>.
 ") IsPointOnSurface;
 		virtual Standard_Boolean IsPointOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** Location ******************/
-		/**** md5 signature: 1006fdd3bdd7eb59ebf6a6359a702a4f ****/
+		/****** BRep_PointRepresentation::Location ******/
+		/****** md5 signature: 1006fdd3bdd7eb59ebf6a6359a702a4f ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "Return
 -------
@@ -1994,8 +1994,8 @@ No available documentation.
 ") Location;
 		const TopLoc_Location & Location();
 
-		/****************** Location ******************/
-		/**** md5 signature: a2c9495044664128886ca4ae6644e853 ****/
+		/****** BRep_PointRepresentation::Location ******/
+		/****** md5 signature: a2c9495044664128886ca4ae6644e853 ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
@@ -2012,8 +2012,8 @@ No available documentation.
 ") Location;
 		void Location(const TopLoc_Location & L);
 
-		/****************** PCurve ******************/
-		/**** md5 signature: 43048aaabc4361e78597bb73f5eacb84 ****/
+		/****** BRep_PointRepresentation::PCurve ******/
+		/****** md5 signature: 43048aaabc4361e78597bb73f5eacb84 ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "Return
 -------
@@ -2025,8 +2025,8 @@ No available documentation.
 ") PCurve;
 		virtual const opencascade::handle<Geom2d_Curve> & PCurve();
 
-		/****************** PCurve ******************/
-		/**** md5 signature: 4167f86bc8643b2c1f384c75757d828a ****/
+		/****** BRep_PointRepresentation::PCurve ******/
+		/****** md5 signature: 4167f86bc8643b2c1f384c75757d828a ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "
 Parameters
@@ -2043,8 +2043,8 @@ No available documentation.
 ") PCurve;
 		virtual void PCurve(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ****/
+		/****** BRep_PointRepresentation::Parameter ******/
+		/****** md5 signature: ecccdeaeaa0deed24f47e61ad75d24f1 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
@@ -2056,8 +2056,8 @@ No available documentation.
 ") Parameter;
 		Standard_Real Parameter();
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 26acaf0b4677a7a04af978de63424b8a ****/
+		/****** BRep_PointRepresentation::Parameter ******/
+		/****** md5 signature: 26acaf0b4677a7a04af978de63424b8a ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2074,8 +2074,8 @@ No available documentation.
 ") Parameter;
 		void Parameter(const Standard_Real P);
 
-		/****************** Parameter2 ******************/
-		/**** md5 signature: ebec675141eed0afeab9cec9239b82fd ****/
+		/****** BRep_PointRepresentation::Parameter2 ******/
+		/****** md5 signature: ebec675141eed0afeab9cec9239b82fd ******/
 		%feature("compactdefaultargs") Parameter2;
 		%feature("autodoc", "Return
 -------
@@ -2087,8 +2087,8 @@ No available documentation.
 ") Parameter2;
 		virtual Standard_Real Parameter2();
 
-		/****************** Parameter2 ******************/
-		/**** md5 signature: ba1ce084d93aa3fbbf8109406ec28c85 ****/
+		/****** BRep_PointRepresentation::Parameter2 ******/
+		/****** md5 signature: ba1ce084d93aa3fbbf8109406ec28c85 ******/
 		%feature("compactdefaultargs") Parameter2;
 		%feature("autodoc", "
 Parameters
@@ -2105,8 +2105,8 @@ No available documentation.
 ") Parameter2;
 		virtual void Parameter2(const Standard_Real P);
 
-		/****************** Surface ******************/
-		/**** md5 signature: caeaacb2504e4ba5658f6438ad005605 ****/
+		/****** BRep_PointRepresentation::Surface ******/
+		/****** md5 signature: caeaacb2504e4ba5658f6438ad005605 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -2118,8 +2118,8 @@ No available documentation.
 ") Surface;
 		virtual const opencascade::handle<Geom_Surface> & Surface();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 2d28bc979e4349a8444df575f31f8c69 ****/
+		/****** BRep_PointRepresentation::Surface ******/
+		/****** md5 signature: 2d28bc979e4349a8444df575f31f8c69 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -2152,8 +2152,8 @@ No available documentation.
 *******************/
 class BRep_TEdge : public TopoDS_TEdge {
 	public:
-		/****************** BRep_TEdge ******************/
-		/**** md5 signature: dc5e73bb712d71a9e89a159289621391 ****/
+		/****** BRep_TEdge::BRep_TEdge ******/
+		/****** md5 signature: dc5e73bb712d71a9e89a159289621391 ******/
 		%feature("compactdefaultargs") BRep_TEdge;
 		%feature("autodoc", "Return
 -------
@@ -2165,8 +2165,8 @@ Creates an empty tedge.
 ") BRep_TEdge;
 		 BRep_TEdge();
 
-		/****************** ChangeCurves ******************/
-		/**** md5 signature: c7093778d271363c43221185b70772c2 ****/
+		/****** BRep_TEdge::ChangeCurves ******/
+		/****** md5 signature: c7093778d271363c43221185b70772c2 ******/
 		%feature("compactdefaultargs") ChangeCurves;
 		%feature("autodoc", "Return
 -------
@@ -2178,8 +2178,8 @@ No available documentation.
 ") ChangeCurves;
 		BRep_ListOfCurveRepresentation & ChangeCurves();
 
-		/****************** Curves ******************/
-		/**** md5 signature: 380c29c54228acfb467d87ab2aa82789 ****/
+		/****** BRep_TEdge::Curves ******/
+		/****** md5 signature: 380c29c54228acfb467d87ab2aa82789 ******/
 		%feature("compactdefaultargs") Curves;
 		%feature("autodoc", "Return
 -------
@@ -2191,8 +2191,8 @@ No available documentation.
 ") Curves;
 		BRep_ListOfCurveRepresentation Curves();
 
-		/****************** Degenerated ******************/
-		/**** md5 signature: ecd3f4abf547c73285489df59f09d893 ****/
+		/****** BRep_TEdge::Degenerated ******/
+		/****** md5 signature: ecd3f4abf547c73285489df59f09d893 ******/
 		%feature("compactdefaultargs") Degenerated;
 		%feature("autodoc", "Return
 -------
@@ -2204,8 +2204,8 @@ No available documentation.
 ") Degenerated;
 		Standard_Boolean Degenerated();
 
-		/****************** Degenerated ******************/
-		/**** md5 signature: 060f5e58625d202b0cc508497a97f999 ****/
+		/****** BRep_TEdge::Degenerated ******/
+		/****** md5 signature: 060f5e58625d202b0cc508497a97f999 ******/
 		%feature("compactdefaultargs") Degenerated;
 		%feature("autodoc", "
 Parameters
@@ -2243,8 +2243,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** EmptyCopy ******************/
-		/**** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ****/
+		/****** BRep_TEdge::EmptyCopy ******/
+		/****** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ******/
 		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "Return
 -------
@@ -2256,8 +2256,8 @@ Returns a copy of the tshape with no sub-shapes.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
-		/****************** SameParameter ******************/
-		/**** md5 signature: f4740c56ff2fddf1fa0cf5af61044630 ****/
+		/****** BRep_TEdge::SameParameter ******/
+		/****** md5 signature: f4740c56ff2fddf1fa0cf5af61044630 ******/
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "Return
 -------
@@ -2269,8 +2269,8 @@ No available documentation.
 ") SameParameter;
 		Standard_Boolean SameParameter();
 
-		/****************** SameParameter ******************/
-		/**** md5 signature: 971f1e388de91e0974c1ea559734a641 ****/
+		/****** BRep_TEdge::SameParameter ******/
+		/****** md5 signature: 971f1e388de91e0974c1ea559734a641 ******/
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "
 Parameters
@@ -2287,8 +2287,8 @@ No available documentation.
 ") SameParameter;
 		void SameParameter(const Standard_Boolean S);
 
-		/****************** SameRange ******************/
-		/**** md5 signature: f0165c4a9606e03adad27f73c14db766 ****/
+		/****** BRep_TEdge::SameRange ******/
+		/****** md5 signature: f0165c4a9606e03adad27f73c14db766 ******/
 		%feature("compactdefaultargs") SameRange;
 		%feature("autodoc", "Return
 -------
@@ -2300,8 +2300,8 @@ No available documentation.
 ") SameRange;
 		Standard_Boolean SameRange();
 
-		/****************** SameRange ******************/
-		/**** md5 signature: 776576a6b34833f7e7ff608a4ed6cb28 ****/
+		/****** BRep_TEdge::SameRange ******/
+		/****** md5 signature: 776576a6b34833f7e7ff608a4ed6cb28 ******/
 		%feature("compactdefaultargs") SameRange;
 		%feature("autodoc", "
 Parameters
@@ -2318,8 +2318,8 @@ No available documentation.
 ") SameRange;
 		void SameRange(const Standard_Boolean S);
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/****** BRep_TEdge::Tolerance ******/
+		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -2331,8 +2331,8 @@ No available documentation.
 ") Tolerance;
 		Standard_Real Tolerance();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 36bec8dcfdb7e7f4f4edb2eeca6bf06a ****/
+		/****** BRep_TEdge::Tolerance ******/
+		/****** md5 signature: 36bec8dcfdb7e7f4f4edb2eeca6bf06a ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -2349,8 +2349,8 @@ No available documentation.
 ") Tolerance;
 		void Tolerance(const Standard_Real T);
 
-		/****************** UpdateTolerance ******************/
-		/**** md5 signature: d815779cec8f7136f7f9e7c3e47cab9e ****/
+		/****** BRep_TEdge::UpdateTolerance ******/
+		/****** md5 signature: d815779cec8f7136f7f9e7c3e47cab9e ******/
 		%feature("compactdefaultargs") UpdateTolerance;
 		%feature("autodoc", "
 Parameters
@@ -2383,8 +2383,8 @@ Sets the tolerance to the max of <t> and the current tolerance.
 *******************/
 class BRep_TFace : public TopoDS_TFace {
 	public:
-		/****************** BRep_TFace ******************/
-		/**** md5 signature: 48097eeafa59b1363f7b8916a9b44f72 ****/
+		/****** BRep_TFace::BRep_TFace ******/
+		/****** md5 signature: 48097eeafa59b1363f7b8916a9b44f72 ******/
 		%feature("compactdefaultargs") BRep_TFace;
 		%feature("autodoc", "Return
 -------
@@ -2396,8 +2396,8 @@ Creates an empty tface.
 ") BRep_TFace;
 		 BRep_TFace();
 
-		/****************** ActiveTriangulation ******************/
-		/**** md5 signature: 700e23716c69d5b67f3f27b14bf22b4f ****/
+		/****** BRep_TFace::ActiveTriangulation ******/
+		/****** md5 signature: 700e23716c69d5b67f3f27b14bf22b4f ******/
 		%feature("compactdefaultargs") ActiveTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -2430,8 +2430,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** EmptyCopy ******************/
-		/**** md5 signature: 3d9756f12a98e8eef17d86b0c132771f ****/
+		/****** BRep_TFace::EmptyCopy ******/
+		/****** md5 signature: 3d9756f12a98e8eef17d86b0c132771f ******/
 		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "Return
 -------
@@ -2443,8 +2443,8 @@ Returns a copy of the tshape with no sub-shapes. the new face has no triangulati
 ") EmptyCopy;
 		virtual opencascade::handle<TopoDS_TShape> EmptyCopy();
 
-		/****************** Location ******************/
-		/**** md5 signature: 57e4db9c8a7a08cffc827dc50be227c9 ****/
+		/****** BRep_TFace::Location ******/
+		/****** md5 signature: 57e4db9c8a7a08cffc827dc50be227c9 ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "Return
 -------
@@ -2456,8 +2456,8 @@ Returns the face location.
 ") Location;
 		const TopLoc_Location & Location();
 
-		/****************** Location ******************/
-		/**** md5 signature: bb857ae8889d5b33371c407b0c54d0cb ****/
+		/****** BRep_TFace::Location ******/
+		/****** md5 signature: bb857ae8889d5b33371c407b0c54d0cb ******/
 		%feature("compactdefaultargs") Location;
 		%feature("autodoc", "
 Parameters
@@ -2474,8 +2474,8 @@ Sets the location for this face.
 ") Location;
 		void Location(const TopLoc_Location & theLocation);
 
-		/****************** NaturalRestriction ******************/
-		/**** md5 signature: 73f4cd683852501cbdb851a873e3006e ****/
+		/****** BRep_TFace::NaturalRestriction ******/
+		/****** md5 signature: 73f4cd683852501cbdb851a873e3006e ******/
 		%feature("compactdefaultargs") NaturalRestriction;
 		%feature("autodoc", "Return
 -------
@@ -2487,8 +2487,8 @@ Returns true if the boundary of this face is known to be the parametric space (u
 ") NaturalRestriction;
 		Standard_Boolean NaturalRestriction();
 
-		/****************** NaturalRestriction ******************/
-		/**** md5 signature: 3dc8b4a5fc00fb6b99650b6f24e2c30a ****/
+		/****** BRep_TFace::NaturalRestriction ******/
+		/****** md5 signature: 3dc8b4a5fc00fb6b99650b6f24e2c30a ******/
 		%feature("compactdefaultargs") NaturalRestriction;
 		%feature("autodoc", "
 Parameters
@@ -2505,8 +2505,8 @@ Sets the flag that is true if the boundary of this face is known to be the param
 ") NaturalRestriction;
 		void NaturalRestriction(const Standard_Boolean theRestriction);
 
-		/****************** NbTriangulations ******************/
-		/**** md5 signature: 19c79cd06fe3039a67f78fa6226f6d24 ****/
+		/****** BRep_TFace::NbTriangulations ******/
+		/****** md5 signature: 19c79cd06fe3039a67f78fa6226f6d24 ******/
 		%feature("compactdefaultargs") NbTriangulations;
 		%feature("autodoc", "Return
 -------
@@ -2518,8 +2518,8 @@ Returns number of available face triangulations.
 ") NbTriangulations;
 		Standard_Integer NbTriangulations();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 3aa31a6d63da8a25f018cf96599c0928 ****/
+		/****** BRep_TFace::Surface ******/
+		/****** md5 signature: 3aa31a6d63da8a25f018cf96599c0928 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -2531,8 +2531,8 @@ Returns face surface.
 ") Surface;
 		const opencascade::handle<Geom_Surface> & Surface();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 277744bd75ecf30c3537bd170d0e688b ****/
+		/****** BRep_TFace::Surface ******/
+		/****** md5 signature: 277744bd75ecf30c3537bd170d0e688b ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -2549,8 +2549,8 @@ Sets surface for this face.
 ") Surface;
 		void Surface(const opencascade::handle<Geom_Surface> & theSurface);
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ****/
+		/****** BRep_TFace::Tolerance ******/
+		/****** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -2562,8 +2562,8 @@ Returns the face tolerance.
 ") Tolerance;
 		Standard_Real Tolerance();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 87220829eafedab2b5ef265dd6be1ecf ****/
+		/****** BRep_TFace::Tolerance ******/
+		/****** md5 signature: 87220829eafedab2b5ef265dd6be1ecf ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -2580,8 +2580,8 @@ Sets the tolerance for this face.
 ") Tolerance;
 		void Tolerance(const Standard_Real theTolerance);
 
-		/****************** Triangulation ******************/
-		/**** md5 signature: 031b83aac32b0db8569fa3861a62e31f ****/
+		/****** BRep_TFace::Triangulation ******/
+		/****** md5 signature: 031b83aac32b0db8569fa3861a62e31f ******/
 		%feature("compactdefaultargs") Triangulation;
 		%feature("autodoc", "
 Parameters
@@ -2598,8 +2598,8 @@ Returns the triangulation of this face according to the mesh purpose. @param[in]
 ") Triangulation;
 		const opencascade::handle<Poly_Triangulation> & Triangulation(const Poly_MeshPurpose thePurpose = Poly_MeshPurpose_NONE);
 
-		/****************** Triangulation ******************/
-		/**** md5 signature: ec7f735385ed0e818ad3a3ad3c13b876 ****/
+		/****** BRep_TFace::Triangulation ******/
+		/****** md5 signature: ec7f735385ed0e818ad3a3ad3c13b876 ******/
 		%feature("compactdefaultargs") Triangulation;
 		%feature("autodoc", "
 Parameters
@@ -2617,8 +2617,8 @@ Sets input triangulation for this face. @param thetriangulation [in] triangulati
 ") Triangulation;
 		void Triangulation(const opencascade::handle<Poly_Triangulation> & theTriangulation, const Standard_Boolean theToReset = true);
 
-		/****************** Triangulations ******************/
-		/**** md5 signature: ff9482874654ec6c8f82dbd05f8b62aa ****/
+		/****** BRep_TFace::Triangulations ******/
+		/****** md5 signature: ff9482874654ec6c8f82dbd05f8b62aa ******/
 		%feature("compactdefaultargs") Triangulations;
 		%feature("autodoc", "Return
 -------
@@ -2630,8 +2630,8 @@ Returns the list of available face triangulations.
 ") Triangulations;
 		const Poly_ListOfTriangulation & Triangulations();
 
-		/****************** Triangulations ******************/
-		/**** md5 signature: 9aea5c4c84dd41a6b79e5dc9a6ea0806 ****/
+		/****** BRep_TFace::Triangulations ******/
+		/****** md5 signature: 9aea5c4c84dd41a6b79e5dc9a6ea0806 ******/
 		%feature("compactdefaultargs") Triangulations;
 		%feature("autodoc", "
 Parameters
@@ -2665,8 +2665,8 @@ Sets input list of triangulations and currently active triangulation for this fa
 *********************/
 class BRep_TVertex : public TopoDS_TVertex {
 	public:
-		/****************** BRep_TVertex ******************/
-		/**** md5 signature: 3922795a238613ee8bf7ad992e0d7900 ****/
+		/****** BRep_TVertex::BRep_TVertex ******/
+		/****** md5 signature: 3922795a238613ee8bf7ad992e0d7900 ******/
 		%feature("compactdefaultargs") BRep_TVertex;
 		%feature("autodoc", "Return
 -------
@@ -2678,8 +2678,8 @@ No available documentation.
 ") BRep_TVertex;
 		 BRep_TVertex();
 
-		/****************** ChangePoints ******************/
-		/**** md5 signature: 9c8aaec6ac35930ce290f4893d0d1dad ****/
+		/****** BRep_TVertex::ChangePoints ******/
+		/****** md5 signature: 9c8aaec6ac35930ce290f4893d0d1dad ******/
 		%feature("compactdefaultargs") ChangePoints;
 		%feature("autodoc", "Return
 -------
@@ -2712,8 +2712,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** EmptyCopy ******************/
-		/**** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ****/
+		/****** BRep_TVertex::EmptyCopy ******/
+		/****** md5 signature: 8ab9f2aeb90e3da510c24152dd199206 ******/
 		%feature("compactdefaultargs") EmptyCopy;
 		%feature("autodoc", "Return
 -------
@@ -2725,8 +2725,8 @@ Returns a copy of the tshape with no sub-shapes.
 ") EmptyCopy;
 		opencascade::handle<TopoDS_TShape> EmptyCopy();
 
-		/****************** Pnt ******************/
-		/**** md5 signature: c0bafeed50f4eebb5964e2bf8520bf90 ****/
+		/****** BRep_TVertex::Pnt ******/
+		/****** md5 signature: c0bafeed50f4eebb5964e2bf8520bf90 ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "Return
 -------
@@ -2738,8 +2738,8 @@ No available documentation.
 ") Pnt;
 		const gp_Pnt Pnt();
 
-		/****************** Pnt ******************/
-		/**** md5 signature: 5c63e7382eafc56383cc46ade985ccff ****/
+		/****** BRep_TVertex::Pnt ******/
+		/****** md5 signature: 5c63e7382eafc56383cc46ade985ccff ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "
 Parameters
@@ -2756,8 +2756,8 @@ No available documentation.
 ") Pnt;
 		void Pnt(const gp_Pnt & P);
 
-		/****************** Points ******************/
-		/**** md5 signature: 94f0b490436a51d49c7e2367d3c7bbb0 ****/
+		/****** BRep_TVertex::Points ******/
+		/****** md5 signature: 94f0b490436a51d49c7e2367d3c7bbb0 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "Return
 -------
@@ -2769,8 +2769,8 @@ No available documentation.
 ") Points;
 		const BRep_ListOfPointRepresentation & Points();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/****** BRep_TVertex::Tolerance ******/
+		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -2782,8 +2782,8 @@ No available documentation.
 ") Tolerance;
 		Standard_Real Tolerance();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 36bec8dcfdb7e7f4f4edb2eeca6bf06a ****/
+		/****** BRep_TVertex::Tolerance ******/
+		/****** md5 signature: 36bec8dcfdb7e7f4f4edb2eeca6bf06a ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -2800,8 +2800,8 @@ No available documentation.
 ") Tolerance;
 		void Tolerance(const Standard_Real T);
 
-		/****************** UpdateTolerance ******************/
-		/**** md5 signature: d815779cec8f7136f7f9e7c3e47cab9e ****/
+		/****** BRep_TVertex::UpdateTolerance ******/
+		/****** md5 signature: d815779cec8f7136f7f9e7c3e47cab9e ******/
 		%feature("compactdefaultargs") UpdateTolerance;
 		%feature("autodoc", "
 Parameters
@@ -2834,8 +2834,8 @@ Sets the tolerance to the max of <t> and the current tolerance.
 ******************/
 class BRep_Tool {
 	public:
-		/****************** Continuity ******************/
-		/**** md5 signature: db1e3396b84a7e307be8da87ce7551cd ****/
+		/****** BRep_Tool::Continuity ******/
+		/****** md5 signature: db1e3396b84a7e307be8da87ce7551cd ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -2854,8 +2854,8 @@ Returns the continuity.
 ") Continuity;
 		static GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2);
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 05bc8a9a3f4893b42026ee0c78170ca1 ****/
+		/****** BRep_Tool::Continuity ******/
+		/****** md5 signature: 05bc8a9a3f4893b42026ee0c78170ca1 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -2876,8 +2876,8 @@ Returns the continuity.
 ") Continuity;
 		static GeomAbs_Shape Continuity(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2);
 
-		/****************** Curve ******************/
-		/**** md5 signature: 41bbd3916c9a4b8e71d76a77fd142236 ****/
+		/****** BRep_Tool::Curve ******/
+		/****** md5 signature: 41bbd3916c9a4b8e71d76a77fd142236 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -2896,8 +2896,8 @@ Returns the 3d curve of the edge. may be a null handle. returns in <l> the locat
 ") Curve;
 		static const opencascade::handle<Geom_Curve> & Curve(const TopoDS_Edge & E, TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Curve ******************/
-		/**** md5 signature: 25054d3585c70f9581241c1f399ea5e7 ****/
+		/****** BRep_Tool::Curve ******/
+		/****** md5 signature: 25054d3585c70f9581241c1f399ea5e7 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -2915,8 +2915,8 @@ Returns the 3d curve of the edge. may be a null handle. in <first> and <last> th
 ") Curve;
 		static opencascade::handle<Geom_Curve> Curve(const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** CurveOnPlane ******************/
-		/**** md5 signature: f92505101b8372fadb2e63ec301d6980 ****/
+		/****** BRep_Tool::CurveOnPlane ******/
+		/****** md5 signature: f92505101b8372fadb2e63ec301d6980 ******/
 		%feature("compactdefaultargs") CurveOnPlane;
 		%feature("autodoc", "
 Parameters
@@ -2936,8 +2936,8 @@ For the planar surface builds the 2d curve for the edge by projection of the edg
 ") CurveOnPlane;
 		static opencascade::handle<Geom2d_Curve> CurveOnPlane(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** CurveOnSurface ******************/
-		/**** md5 signature: 1490e00c62d6d2093296a244d8baa466 ****/
+		/****** BRep_Tool::CurveOnSurface ******/
+		/****** md5 signature: 1490e00c62d6d2093296a244d8baa466 ******/
 		%feature("compactdefaultargs") CurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -2957,8 +2957,8 @@ Returns the curve associated to the edge in the parametric space of the face. re
 ") CurveOnSurface;
 		static opencascade::handle<Geom2d_Curve> CurveOnSurface(const TopoDS_Edge & E, const TopoDS_Face & F, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Boolean * theIsStored = NULL);
 
-		/****************** CurveOnSurface ******************/
-		/**** md5 signature: 3a442b1530d9c81bbff3fadea605743e ****/
+		/****** BRep_Tool::CurveOnSurface ******/
+		/****** md5 signature: 3a442b1530d9c81bbff3fadea605743e ******/
 		%feature("compactdefaultargs") CurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -2979,8 +2979,8 @@ Returns the curve associated to the edge in the parametric space of the surface.
 ") CurveOnSurface;
 		static opencascade::handle<Geom2d_Curve> CurveOnSurface(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Boolean * theIsStored = NULL);
 
-		/****************** CurveOnSurface ******************/
-		/**** md5 signature: fb9b1fbc5f5e3312c1bd64ab586fa88f ****/
+		/****** BRep_Tool::CurveOnSurface ******/
+		/****** md5 signature: fb9b1fbc5f5e3312c1bd64ab586fa88f ******/
 		%feature("compactdefaultargs") CurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -3001,8 +3001,8 @@ Returns in <c>, <s>, <l> a 2d curve, a surface and a location for the edge <e>. 
 ") CurveOnSurface;
 		static void CurveOnSurface(const TopoDS_Edge & E, opencascade::handle<Geom2d_Curve> & C, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** CurveOnSurface ******************/
-		/**** md5 signature: 6f4f3f522500fc969face4c6451b085e ****/
+		/****** BRep_Tool::CurveOnSurface ******/
+		/****** md5 signature: 6f4f3f522500fc969face4c6451b085e ******/
 		%feature("compactdefaultargs") CurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -3024,8 +3024,8 @@ Returns in <c>, <s>, <l> the 2d curve, the surface and the location for the edge
 ") CurveOnSurface;
 		static void CurveOnSurface(const TopoDS_Edge & E, opencascade::handle<Geom2d_Curve> & C, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Integer Index);
 
-		/****************** Degenerated ******************/
-		/**** md5 signature: 065e91ab65eebb04f4157f99dfb61a5f ****/
+		/****** BRep_Tool::Degenerated ******/
+		/****** md5 signature: 065e91ab65eebb04f4157f99dfb61a5f ******/
 		%feature("compactdefaultargs") Degenerated;
 		%feature("autodoc", "
 Parameters
@@ -3042,8 +3042,8 @@ Returns true if the edge is degenerated.
 ") Degenerated;
 		static Standard_Boolean Degenerated(const TopoDS_Edge & E);
 
-		/****************** HasContinuity ******************/
-		/**** md5 signature: 28de7d368e6753102bc97f842c0bbc34 ****/
+		/****** BRep_Tool::HasContinuity ******/
+		/****** md5 signature: 28de7d368e6753102bc97f842c0bbc34 ******/
 		%feature("compactdefaultargs") HasContinuity;
 		%feature("autodoc", "
 Parameters
@@ -3062,8 +3062,8 @@ Returns true if the edge is on the surfaces of the two faces.
 ") HasContinuity;
 		static Standard_Boolean HasContinuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2);
 
-		/****************** HasContinuity ******************/
-		/**** md5 signature: 4e914e4f0ffad7c5e4ad1bbcbb49f9db ****/
+		/****** BRep_Tool::HasContinuity ******/
+		/****** md5 signature: 4e914e4f0ffad7c5e4ad1bbcbb49f9db ******/
 		%feature("compactdefaultargs") HasContinuity;
 		%feature("autodoc", "
 Parameters
@@ -3084,8 +3084,8 @@ Returns true if the edge is on the surfaces.
 ") HasContinuity;
 		static Standard_Boolean HasContinuity(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2);
 
-		/****************** HasContinuity ******************/
-		/**** md5 signature: 590c0c5ffdf73c7bc74af7efff8daacc ****/
+		/****** BRep_Tool::HasContinuity ******/
+		/****** md5 signature: 590c0c5ffdf73c7bc74af7efff8daacc ******/
 		%feature("compactdefaultargs") HasContinuity;
 		%feature("autodoc", "
 Parameters
@@ -3102,8 +3102,8 @@ Returns true if the edge has regularity on some two surfaces.
 ") HasContinuity;
 		static Standard_Boolean HasContinuity(const TopoDS_Edge & E);
 
-		/****************** IsClosed ******************/
-		/**** md5 signature: f8e1bed2f4c39eb2e90687cebc873cc7 ****/
+		/****** BRep_Tool::IsClosed ******/
+		/****** md5 signature: f8e1bed2f4c39eb2e90687cebc873cc7 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -3120,8 +3120,8 @@ If s is shell, returns true if it has no free boundaries (edges). if s is wire, 
 ") IsClosed;
 		static Standard_Boolean IsClosed(const TopoDS_Shape & S);
 
-		/****************** IsClosed ******************/
-		/**** md5 signature: fe1173e15d5c0fa9a4dc0e4bdc10019d ****/
+		/****** BRep_Tool::IsClosed ******/
+		/****** md5 signature: fe1173e15d5c0fa9a4dc0e4bdc10019d ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -3139,8 +3139,8 @@ Returns true if <e> has two pcurves in the parametric space of <f>. i.e. <f> is 
 ") IsClosed;
 		static Standard_Boolean IsClosed(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** IsClosed ******************/
-		/**** md5 signature: 5d71976e343bf12f49f22891aaedbbd4 ****/
+		/****** BRep_Tool::IsClosed ******/
+		/****** md5 signature: 5d71976e343bf12f49f22891aaedbbd4 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -3159,8 +3159,8 @@ Returns true if <e> has two pcurves in the parametric space of <s>. i.e. <s> is 
 ") IsClosed;
 		static Standard_Boolean IsClosed(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** IsClosed ******************/
-		/**** md5 signature: 0fb623443621ae6a98b532d96fdea052 ****/
+		/****** BRep_Tool::IsClosed ******/
+		/****** md5 signature: 0fb623443621ae6a98b532d96fdea052 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -3179,8 +3179,8 @@ Returns true if <e> has two arrays of indices in the triangulation <t>.
 ") IsClosed;
 		static Standard_Boolean IsClosed(const TopoDS_Edge & E, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
-		/****************** IsGeometric ******************/
-		/**** md5 signature: a3ffa305b3ca35ee4bb109dae046e742 ****/
+		/****** BRep_Tool::IsGeometric ******/
+		/****** md5 signature: a3ffa305b3ca35ee4bb109dae046e742 ******/
 		%feature("compactdefaultargs") IsGeometric;
 		%feature("autodoc", "
 Parameters
@@ -3197,8 +3197,8 @@ Returns true if <f> has a surface, false otherwise.
 ") IsGeometric;
 		static Standard_Boolean IsGeometric(const TopoDS_Face & F);
 
-		/****************** IsGeometric ******************/
-		/**** md5 signature: a117bc77f4eeb666df610e8aa8cf72d3 ****/
+		/****** BRep_Tool::IsGeometric ******/
+		/****** md5 signature: a117bc77f4eeb666df610e8aa8cf72d3 ******/
 		%feature("compactdefaultargs") IsGeometric;
 		%feature("autodoc", "
 Parameters
@@ -3215,8 +3215,8 @@ Returns true if <e> is a 3d curve or a curve on surface.
 ") IsGeometric;
 		static Standard_Boolean IsGeometric(const TopoDS_Edge & E);
 
-		/****************** MaxContinuity ******************/
-		/**** md5 signature: 43a8d131c797f0a5a3836d8b844dd91d ****/
+		/****** BRep_Tool::MaxContinuity ******/
+		/****** md5 signature: 43a8d131c797f0a5a3836d8b844dd91d ******/
 		%feature("compactdefaultargs") MaxContinuity;
 		%feature("autodoc", "
 Parameters
@@ -3233,8 +3233,8 @@ Returns the max continuity of edge between some surfaces or geomabs_c0 if there 
 ") MaxContinuity;
 		static GeomAbs_Shape MaxContinuity(const TopoDS_Edge & theEdge);
 
-		/****************** MaxTolerance ******************/
-		/**** md5 signature: 2e9b716a612aac14e6a93a8b379ae457 ****/
+		/****** BRep_Tool::MaxTolerance ******/
+		/****** md5 signature: 2e9b716a612aac14e6a93a8b379ae457 ******/
 		%feature("compactdefaultargs") MaxTolerance;
 		%feature("autodoc", "
 Parameters
@@ -3252,8 +3252,8 @@ Returns the maximum tolerance of input shape subshapes.
 ") MaxTolerance;
 		static Standard_Real MaxTolerance(const TopoDS_Shape & theShape, const TopAbs_ShapeEnum theSubShape);
 
-		/****************** NaturalRestriction ******************/
-		/**** md5 signature: 45722e9079a6a7d1eaf45dd458585b4b ****/
+		/****** BRep_Tool::NaturalRestriction ******/
+		/****** md5 signature: 45722e9079a6a7d1eaf45dd458585b4b ******/
 		%feature("compactdefaultargs") NaturalRestriction;
 		%feature("autodoc", "
 Parameters
@@ -3270,8 +3270,8 @@ Returns the naturalrestriction flag of the face.
 ") NaturalRestriction;
 		static Standard_Boolean NaturalRestriction(const TopoDS_Face & F);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: c56b7997627b41e5c85381896332b42c ****/
+		/****** BRep_Tool::Parameter ******/
+		/****** md5 signature: c56b7997627b41e5c85381896332b42c ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -3289,8 +3289,8 @@ Finds the parameter of <thev> on <thee>. @param thev [in] input vertex @param th
 ") Parameter;
 		static Standard_Boolean Parameter(const TopoDS_Vertex & theV, const TopoDS_Edge & theE, Standard_Real &OutValue);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: acf610e0d04db95f94cbf8cee69452ec ****/
+		/****** BRep_Tool::Parameter ******/
+		/****** md5 signature: acf610e0d04db95f94cbf8cee69452ec ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -3308,8 +3308,8 @@ Returns the parameter of <v> on <e>. throws standard_nosuchobject if no paramete
 ") Parameter;
 		static Standard_Real Parameter(const TopoDS_Vertex & V, const TopoDS_Edge & E);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 4ab7069dc8aa92aba4d9bc115fe6539e ****/
+		/****** BRep_Tool::Parameter ******/
+		/****** md5 signature: 4ab7069dc8aa92aba4d9bc115fe6539e ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -3328,8 +3328,8 @@ Returns the parameters of the vertex on the pcurve of the edge on the face.
 ") Parameter;
 		static Standard_Real Parameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 9607ea6c17746b94862cf9a0fd3d4098 ****/
+		/****** BRep_Tool::Parameter ******/
+		/****** md5 signature: 9607ea6c17746b94862cf9a0fd3d4098 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -3349,8 +3349,8 @@ Returns the parameters of the vertex on the pcurve of the edge on the surface.
 ") Parameter;
 		static Standard_Real Parameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** Parameters ******************/
-		/**** md5 signature: 2dc7c67673575d16337453d698ba351f ****/
+		/****** BRep_Tool::Parameters ******/
+		/****** md5 signature: 2dc7c67673575d16337453d698ba351f ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -3368,8 +3368,8 @@ Returns the parameters of the vertex on the face.
 ") Parameters;
 		static gp_Pnt2d Parameters(const TopoDS_Vertex & V, const TopoDS_Face & F);
 
-		/****************** Pnt ******************/
-		/**** md5 signature: b95aeb40cfca21ad6dd9a569b19bd30a ****/
+		/****** BRep_Tool::Pnt ******/
+		/****** md5 signature: b95aeb40cfca21ad6dd9a569b19bd30a ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "
 Parameters
@@ -3386,8 +3386,8 @@ Returns the 3d point.
 ") Pnt;
 		static gp_Pnt Pnt(const TopoDS_Vertex & V);
 
-		/****************** Polygon3D ******************/
-		/**** md5 signature: a86c387c6a4ceee0e0a5a44087861c1f ****/
+		/****** BRep_Tool::Polygon3D ******/
+		/****** md5 signature: a86c387c6a4ceee0e0a5a44087861c1f ******/
 		%feature("compactdefaultargs") Polygon3D;
 		%feature("autodoc", "
 Parameters
@@ -3405,8 +3405,8 @@ Returns the 3d polygon of the edge. may be a null handle. returns in <l> the loc
 ") Polygon3D;
 		static const opencascade::handle<Poly_Polygon3D> & Polygon3D(const TopoDS_Edge & E, TopLoc_Location & L);
 
-		/****************** PolygonOnSurface ******************/
-		/**** md5 signature: 0df44917fdba720095985a99c6679ef1 ****/
+		/****** BRep_Tool::PolygonOnSurface ******/
+		/****** md5 signature: 0df44917fdba720095985a99c6679ef1 ******/
 		%feature("compactdefaultargs") PolygonOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -3424,8 +3424,8 @@ Returns the polygon associated to the edge in the parametric space of the face. 
 ") PolygonOnSurface;
 		static opencascade::handle<Poly_Polygon2D> PolygonOnSurface(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** PolygonOnSurface ******************/
-		/**** md5 signature: 425f4961b1c3163ca433c2718b7f10a1 ****/
+		/****** BRep_Tool::PolygonOnSurface ******/
+		/****** md5 signature: 425f4961b1c3163ca433c2718b7f10a1 ******/
 		%feature("compactdefaultargs") PolygonOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -3444,8 +3444,8 @@ Returns the polygon associated to the edge in the parametric space of the surfac
 ") PolygonOnSurface;
 		static opencascade::handle<Poly_Polygon2D> PolygonOnSurface(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** PolygonOnSurface ******************/
-		/**** md5 signature: 6b8c2f4b25acb070680e0688d6abbb4c ****/
+		/****** BRep_Tool::PolygonOnSurface ******/
+		/****** md5 signature: 6b8c2f4b25acb070680e0688d6abbb4c ******/
 		%feature("compactdefaultargs") PolygonOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -3465,8 +3465,8 @@ Returns in <c>, <s>, <l> a 2d curve, a surface and a location for the edge <e>. 
 ") PolygonOnSurface;
 		static void PolygonOnSurface(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon2D> & C, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L);
 
-		/****************** PolygonOnSurface ******************/
-		/**** md5 signature: 4df2c84b232daf9288ee42d27cadc4ed ****/
+		/****** BRep_Tool::PolygonOnSurface ******/
+		/****** md5 signature: 4df2c84b232daf9288ee42d27cadc4ed ******/
 		%feature("compactdefaultargs") PolygonOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -3487,8 +3487,8 @@ Returns in <c>, <s>, <l> the 2d curve, the surface and the location for the edge
 ") PolygonOnSurface;
 		static void PolygonOnSurface(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon2D> & C, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, const Standard_Integer Index);
 
-		/****************** PolygonOnTriangulation ******************/
-		/**** md5 signature: 1f26c2d3f60238b6104180cbdf9d62fc ****/
+		/****** BRep_Tool::PolygonOnTriangulation ******/
+		/****** md5 signature: 1f26c2d3f60238b6104180cbdf9d62fc ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3507,8 +3507,8 @@ Returns the polygon associated to the edge in the parametric space of the face. 
 ") PolygonOnTriangulation;
 		static const opencascade::handle<Poly_PolygonOnTriangulation> & PolygonOnTriangulation(const TopoDS_Edge & E, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
-		/****************** PolygonOnTriangulation ******************/
-		/**** md5 signature: f1dccc0f56c6f5715c5a85be9e491eab ****/
+		/****** BRep_Tool::PolygonOnTriangulation ******/
+		/****** md5 signature: f1dccc0f56c6f5715c5a85be9e491eab ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3528,8 +3528,8 @@ Returns in <p>, <t>, <l> a polygon on triangulation, a triangulation and a locat
 ") PolygonOnTriangulation;
 		static void PolygonOnTriangulation(const TopoDS_Edge & E, opencascade::handle<Poly_PolygonOnTriangulation> & P, opencascade::handle<Poly_Triangulation> & T, TopLoc_Location & L);
 
-		/****************** PolygonOnTriangulation ******************/
-		/**** md5 signature: 8444cc17c9207c4de0356c44279d980f ****/
+		/****** BRep_Tool::PolygonOnTriangulation ******/
+		/****** md5 signature: 8444cc17c9207c4de0356c44279d980f ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -3550,8 +3550,8 @@ Returns in <p>, <t>, <l> a polygon on triangulation, a triangulation and a locat
 ") PolygonOnTriangulation;
 		static void PolygonOnTriangulation(const TopoDS_Edge & E, opencascade::handle<Poly_PolygonOnTriangulation> & P, opencascade::handle<Poly_Triangulation> & T, TopLoc_Location & L, const Standard_Integer Index);
 
-		/****************** Range ******************/
-		/**** md5 signature: 452dcf373fd2428c9869849dc564036a ****/
+		/****** BRep_Tool::Range ******/
+		/****** md5 signature: 452dcf373fd2428c9869849dc564036a ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -3569,8 +3569,8 @@ Gets the range of the 3d curve.
 ") Range;
 		static void Range(const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Range ******************/
-		/**** md5 signature: 771b7c184556dfadb4f144600e6dcd6b ****/
+		/****** BRep_Tool::Range ******/
+		/****** md5 signature: 771b7c184556dfadb4f144600e6dcd6b ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -3590,8 +3590,8 @@ Gets the range of the edge on the pcurve on the surface.
 ") Range;
 		static void Range(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Range ******************/
-		/**** md5 signature: 884c3290ec68254a8384b7c25b18df19 ****/
+		/****** BRep_Tool::Range ******/
+		/****** md5 signature: 884c3290ec68254a8384b7c25b18df19 ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -3610,8 +3610,8 @@ Gets the range of the edge on the pcurve on the face.
 ") Range;
 		static void Range(const TopoDS_Edge & E, const TopoDS_Face & F, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SameParameter ******************/
-		/**** md5 signature: 98c3f7693a7b54bd16cfa7b435716dd7 ****/
+		/****** BRep_Tool::SameParameter ******/
+		/****** md5 signature: 98c3f7693a7b54bd16cfa7b435716dd7 ******/
 		%feature("compactdefaultargs") SameParameter;
 		%feature("autodoc", "
 Parameters
@@ -3628,8 +3628,8 @@ Returns the sameparameter flag for the edge.
 ") SameParameter;
 		static Standard_Boolean SameParameter(const TopoDS_Edge & E);
 
-		/****************** SameRange ******************/
-		/**** md5 signature: e3ec20a22b9a7152ad26ab214fe505a1 ****/
+		/****** BRep_Tool::SameRange ******/
+		/****** md5 signature: e3ec20a22b9a7152ad26ab214fe505a1 ******/
 		%feature("compactdefaultargs") SameRange;
 		%feature("autodoc", "
 Parameters
@@ -3646,8 +3646,8 @@ Returns the samerange flag for the edge.
 ") SameRange;
 		static Standard_Boolean SameRange(const TopoDS_Edge & E);
 
-		/****************** SetUVPoints ******************/
-		/**** md5 signature: 673580e1d187fc89706cf9183100d91c ****/
+		/****** BRep_Tool::SetUVPoints ******/
+		/****** md5 signature: 673580e1d187fc89706cf9183100d91c ******/
 		%feature("compactdefaultargs") SetUVPoints;
 		%feature("autodoc", "
 Parameters
@@ -3668,8 +3668,8 @@ Sets the uv locations of the extremities of the edge.
 ") SetUVPoints;
 		static void SetUVPoints(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const gp_Pnt2d & PFirst, const gp_Pnt2d & PLast);
 
-		/****************** SetUVPoints ******************/
-		/**** md5 signature: 2c4224463481424caa511d48bb2bb170 ****/
+		/****** BRep_Tool::SetUVPoints ******/
+		/****** md5 signature: 2c4224463481424caa511d48bb2bb170 ******/
 		%feature("compactdefaultargs") SetUVPoints;
 		%feature("autodoc", "
 Parameters
@@ -3689,8 +3689,8 @@ Sets the uv locations of the extremities of the edge.
 ") SetUVPoints;
 		static void SetUVPoints(const TopoDS_Edge & E, const TopoDS_Face & F, const gp_Pnt2d & PFirst, const gp_Pnt2d & PLast);
 
-		/****************** Surface ******************/
-		/**** md5 signature: df6db1093e3aea92a533703bc33e1bf1 ****/
+		/****** BRep_Tool::Surface ******/
+		/****** md5 signature: df6db1093e3aea92a533703bc33e1bf1 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -3708,8 +3708,8 @@ Returns the geometric surface of the face. returns in <l> the location for the s
 ") Surface;
 		static const opencascade::handle<Geom_Surface> & Surface(const TopoDS_Face & F, TopLoc_Location & L);
 
-		/****************** Surface ******************/
-		/**** md5 signature: 124bc3370b2c6ae0e621bca8b5f8d5ae ****/
+		/****** BRep_Tool::Surface ******/
+		/****** md5 signature: 124bc3370b2c6ae0e621bca8b5f8d5ae ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -3726,8 +3726,8 @@ Returns the geometric surface of the face. it can be a copy if there is a locati
 ") Surface;
 		static opencascade::handle<Geom_Surface> Surface(const TopoDS_Face & F);
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 856ae390a9a6947e76374ae65840fa78 ****/
+		/****** BRep_Tool::Tolerance ******/
+		/****** md5 signature: 856ae390a9a6947e76374ae65840fa78 ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -3744,8 +3744,8 @@ Returns the tolerance of the face.
 ") Tolerance;
 		static Standard_Real Tolerance(const TopoDS_Face & F);
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: fd914160aaa2a77dd68f63b0d2a1ac5e ****/
+		/****** BRep_Tool::Tolerance ******/
+		/****** md5 signature: fd914160aaa2a77dd68f63b0d2a1ac5e ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -3762,8 +3762,8 @@ Returns the tolerance for <e>.
 ") Tolerance;
 		static Standard_Real Tolerance(const TopoDS_Edge & E);
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: dfdd613eb3da93aeb47e457dcbb5de3d ****/
+		/****** BRep_Tool::Tolerance ******/
+		/****** md5 signature: dfdd613eb3da93aeb47e457dcbb5de3d ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "
 Parameters
@@ -3780,8 +3780,8 @@ Returns the tolerance.
 ") Tolerance;
 		static Standard_Real Tolerance(const TopoDS_Vertex & V);
 
-		/****************** Triangulation ******************/
-		/**** md5 signature: d68c07d5a1ca2d4b4e577d7fa4cf54e1 ****/
+		/****** BRep_Tool::Triangulation ******/
+		/****** md5 signature: d68c07d5a1ca2d4b4e577d7fa4cf54e1 ******/
 		%feature("compactdefaultargs") Triangulation;
 		%feature("autodoc", "
 Parameters
@@ -3800,8 +3800,8 @@ Returns the triangulation of the face according to the mesh purpose. @param thef
 ") Triangulation;
 		static const opencascade::handle<Poly_Triangulation> & Triangulation(const TopoDS_Face & theFace, TopLoc_Location & theLocation, const Poly_MeshPurpose theMeshPurpose = Poly_MeshPurpose_NONE);
 
-		/****************** Triangulations ******************/
-		/**** md5 signature: ac6d632b25937da86177ac5f5087cf51 ****/
+		/****** BRep_Tool::Triangulations ******/
+		/****** md5 signature: ac6d632b25937da86177ac5f5087cf51 ******/
 		%feature("compactdefaultargs") Triangulations;
 		%feature("autodoc", "
 Parameters
@@ -3819,8 +3819,8 @@ Returns all triangulations of the face. @param theface [in] the input face. @par
 ") Triangulations;
 		static const Poly_ListOfTriangulation & Triangulations(const TopoDS_Face & theFace, TopLoc_Location & theLocation);
 
-		/****************** UVPoints ******************/
-		/**** md5 signature: 739ea64a3ca04f61d1659b66cfc128ff ****/
+		/****** BRep_Tool::UVPoints ******/
+		/****** md5 signature: 739ea64a3ca04f61d1659b66cfc128ff ******/
 		%feature("compactdefaultargs") UVPoints;
 		%feature("autodoc", "
 Parameters
@@ -3841,8 +3841,8 @@ Gets the uv locations of the extremities of the edge.
 ") UVPoints;
 		static void UVPoints(const TopoDS_Edge & E, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, gp_Pnt2d & PFirst, gp_Pnt2d & PLast);
 
-		/****************** UVPoints ******************/
-		/**** md5 signature: 65131528005ae1e7ebb2aaf4488fe3b1 ****/
+		/****** BRep_Tool::UVPoints ******/
+		/****** md5 signature: 65131528005ae1e7ebb2aaf4488fe3b1 ******/
 		%feature("compactdefaultargs") UVPoints;
 		%feature("autodoc", "
 Parameters
@@ -3876,8 +3876,8 @@ Gets the uv locations of the extremities of the edge.
 ******************************/
 class BRep_CurveOn2Surfaces : public BRep_CurveRepresentation {
 	public:
-		/****************** BRep_CurveOn2Surfaces ******************/
-		/**** md5 signature: 1b89b178cf238eb747d177b75dc964eb ****/
+		/****** BRep_CurveOn2Surfaces::BRep_CurveOn2Surfaces ******/
+		/****** md5 signature: 1b89b178cf238eb747d177b75dc964eb ******/
 		%feature("compactdefaultargs") BRep_CurveOn2Surfaces;
 		%feature("autodoc", "
 Parameters
@@ -3898,8 +3898,8 @@ No available documentation.
 ") BRep_CurveOn2Surfaces;
 		 BRep_CurveOn2Surfaces(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2, const GeomAbs_Shape C);
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 67f71f7e1008e6ff605877f145944f2b ****/
+		/****** BRep_CurveOn2Surfaces::Continuity ******/
+		/****** md5 signature: 67f71f7e1008e6ff605877f145944f2b ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -3911,8 +3911,8 @@ No available documentation.
 ") Continuity;
 		virtual const GeomAbs_Shape & Continuity();
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 7efede569c5d15316e14f5232ee3a296 ****/
+		/****** BRep_CurveOn2Surfaces::Continuity ******/
+		/****** md5 signature: 7efede569c5d15316e14f5232ee3a296 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -3929,8 +3929,8 @@ No available documentation.
 ") Continuity;
 		virtual void Continuity(const GeomAbs_Shape C);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 5ae8a834b37d0441b91b744e5b050c6d ****/
+		/****** BRep_CurveOn2Surfaces::Copy ******/
+		/****** md5 signature: 5ae8a834b37d0441b91b744e5b050c6d ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -3942,8 +3942,8 @@ Return a copy of this representation.
 ") Copy;
 		opencascade::handle<BRep_CurveRepresentation> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: c5111ce8ff4abb74b6c4ba34040c62bb ****/
+		/****** BRep_CurveOn2Surfaces::D0 ******/
+		/****** md5 signature: c5111ce8ff4abb74b6c4ba34040c62bb ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -3982,8 +3982,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsRegularity ******************/
-		/**** md5 signature: fc2d0c9ac93b7bd44a0b1730043df993 ****/
+		/****** BRep_CurveOn2Surfaces::IsRegularity ******/
+		/****** md5 signature: fc2d0c9ac93b7bd44a0b1730043df993 ******/
 		%feature("compactdefaultargs") IsRegularity;
 		%feature("autodoc", "Return
 -------
@@ -3995,8 +3995,8 @@ Returns true.
 ") IsRegularity;
 		virtual Standard_Boolean IsRegularity();
 
-		/****************** IsRegularity ******************/
-		/**** md5 signature: d342137f91cebeb239140ef772bbae74 ****/
+		/****** BRep_CurveOn2Surfaces::IsRegularity ******/
+		/****** md5 signature: d342137f91cebeb239140ef772bbae74 ******/
 		%feature("compactdefaultargs") IsRegularity;
 		%feature("autodoc", "
 Parameters
@@ -4016,8 +4016,8 @@ A curve on two surfaces (continuity).
 ") IsRegularity;
 		virtual Standard_Boolean IsRegularity(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2);
 
-		/****************** Location2 ******************/
-		/**** md5 signature: 35a20609403ba9e885d7f5ec0a54a126 ****/
+		/****** BRep_CurveOn2Surfaces::Location2 ******/
+		/****** md5 signature: 35a20609403ba9e885d7f5ec0a54a126 ******/
 		%feature("compactdefaultargs") Location2;
 		%feature("autodoc", "Return
 -------
@@ -4029,8 +4029,8 @@ No available documentation.
 ") Location2;
 		virtual const TopLoc_Location & Location2();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 15e9ea02ca588f3610ae3d0618d607d8 ****/
+		/****** BRep_CurveOn2Surfaces::Surface ******/
+		/****** md5 signature: 15e9ea02ca588f3610ae3d0618d607d8 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -4042,8 +4042,8 @@ No available documentation.
 ") Surface;
 		virtual const opencascade::handle<Geom_Surface> & Surface();
 
-		/****************** Surface2 ******************/
-		/**** md5 signature: 839f1c1ff057d92a50c65c26a6c27dd5 ****/
+		/****** BRep_CurveOn2Surfaces::Surface2 ******/
+		/****** md5 signature: 839f1c1ff057d92a50c65c26a6c27dd5 ******/
 		%feature("compactdefaultargs") Surface2;
 		%feature("autodoc", "Return
 -------
@@ -4072,8 +4072,8 @@ No available documentation.
 %nodefaultctor BRep_GCurve;
 class BRep_GCurve : public BRep_CurveRepresentation {
 	public:
-		/****************** D0 ******************/
-		/**** md5 signature: 3375707864bca566a2f8c23866c10a67 ****/
+		/****** BRep_GCurve::D0 ******/
+		/****** md5 signature: 3375707864bca566a2f8c23866c10a67 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -4112,8 +4112,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** First ******************/
-		/**** md5 signature: 009dd98af15e46b2da286731f40e1839 ****/
+		/****** BRep_GCurve::First ******/
+		/****** md5 signature: 009dd98af15e46b2da286731f40e1839 ******/
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "Return
 -------
@@ -4125,8 +4125,8 @@ No available documentation.
 ") First;
 		Standard_Real First();
 
-		/****************** First ******************/
-		/**** md5 signature: 058d922daacc28980343d7871c7a22e5 ****/
+		/****** BRep_GCurve::First ******/
+		/****** md5 signature: 058d922daacc28980343d7871c7a22e5 ******/
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "
 Parameters
@@ -4143,8 +4143,8 @@ No available documentation.
 ") First;
 		void First(const Standard_Real F);
 
-		/****************** Last ******************/
-		/**** md5 signature: 4c8063c237a4f73018a7949da8aef9fb ****/
+		/****** BRep_GCurve::Last ******/
+		/****** md5 signature: 4c8063c237a4f73018a7949da8aef9fb ******/
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "Return
 -------
@@ -4156,8 +4156,8 @@ No available documentation.
 ") Last;
 		Standard_Real Last();
 
-		/****************** Last ******************/
-		/**** md5 signature: c3340e5e5f9f21c952d6c5f41e315294 ****/
+		/****** BRep_GCurve::Last ******/
+		/****** md5 signature: c3340e5e5f9f21c952d6c5f41e315294 ******/
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "
 Parameters
@@ -4174,8 +4174,8 @@ No available documentation.
 ") Last;
 		void Last(const Standard_Real L);
 
-		/****************** Range ******************/
-		/**** md5 signature: 7a1384b2dd1c0480bcaa08b2116f0e9a ****/
+		/****** BRep_GCurve::Range ******/
+		/****** md5 signature: 7a1384b2dd1c0480bcaa08b2116f0e9a ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -4192,8 +4192,8 @@ No available documentation.
 ") Range;
 		void Range(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SetRange ******************/
-		/**** md5 signature: 4a19c7b6bd2369f897cb3fd2e6cdf6dd ****/
+		/****** BRep_GCurve::SetRange ******/
+		/****** md5 signature: 4a19c7b6bd2369f897cb3fd2e6cdf6dd ******/
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", "
 Parameters
@@ -4211,8 +4211,8 @@ No available documentation.
 ") SetRange;
 		void SetRange(const Standard_Real First, const Standard_Real Last);
 
-		/****************** Update ******************/
-		/**** md5 signature: 39b31f53ec35285afdd1d13bf1b04e26 ****/
+		/****** BRep_GCurve::Update ******/
+		/****** md5 signature: 39b31f53ec35285afdd1d13bf1b04e26 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "Return
 -------
@@ -4240,8 +4240,8 @@ Recomputes any derived data after a modification. this is called when the range 
 **************************/
 class BRep_PointOnCurve : public BRep_PointRepresentation {
 	public:
-		/****************** BRep_PointOnCurve ******************/
-		/**** md5 signature: e833506021dac13fc08babefacd0adc1 ****/
+		/****** BRep_PointOnCurve::BRep_PointOnCurve ******/
+		/****** md5 signature: e833506021dac13fc08babefacd0adc1 ******/
 		%feature("compactdefaultargs") BRep_PointOnCurve;
 		%feature("autodoc", "
 Parameters
@@ -4260,8 +4260,8 @@ No available documentation.
 ") BRep_PointOnCurve;
 		 BRep_PointOnCurve(const Standard_Real P, const opencascade::handle<Geom_Curve> & C, const TopLoc_Location & L);
 
-		/****************** Curve ******************/
-		/**** md5 signature: 7564dfeb906ea842191d6c8e9aa21fb2 ****/
+		/****** BRep_PointOnCurve::Curve ******/
+		/****** md5 signature: 7564dfeb906ea842191d6c8e9aa21fb2 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -4273,8 +4273,8 @@ No available documentation.
 ") Curve;
 		virtual const opencascade::handle<Geom_Curve> & Curve();
 
-		/****************** Curve ******************/
-		/**** md5 signature: 7935cf5261f3f51e5d7edaf832f76e01 ****/
+		/****** BRep_PointOnCurve::Curve ******/
+		/****** md5 signature: 7935cf5261f3f51e5d7edaf832f76e01 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -4312,8 +4312,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsPointOnCurve ******************/
-		/**** md5 signature: afd14cc038cef12d5da511ac1ad22904 ****/
+		/****** BRep_PointOnCurve::IsPointOnCurve ******/
+		/****** md5 signature: afd14cc038cef12d5da511ac1ad22904 ******/
 		%feature("compactdefaultargs") IsPointOnCurve;
 		%feature("autodoc", "Return
 -------
@@ -4325,8 +4325,8 @@ Returns true.
 ") IsPointOnCurve;
 		virtual Standard_Boolean IsPointOnCurve();
 
-		/****************** IsPointOnCurve ******************/
-		/**** md5 signature: 0a0e9cdfd37665e4d43b20820fd84e9b ****/
+		/****** BRep_PointOnCurve::IsPointOnCurve ******/
+		/****** md5 signature: 0a0e9cdfd37665e4d43b20820fd84e9b ******/
 		%feature("compactdefaultargs") IsPointOnCurve;
 		%feature("autodoc", "
 Parameters
@@ -4382,8 +4382,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** Surface ******************/
-		/**** md5 signature: 15e9ea02ca588f3610ae3d0618d607d8 ****/
+		/****** BRep_PointsOnSurface::Surface ******/
+		/****** md5 signature: 15e9ea02ca588f3610ae3d0618d607d8 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -4395,8 +4395,8 @@ No available documentation.
 ") Surface;
 		virtual const opencascade::handle<Geom_Surface> & Surface();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 0ec0e10c27c82394399de7b386032405 ****/
+		/****** BRep_PointsOnSurface::Surface ******/
+		/****** md5 signature: 0ec0e10c27c82394399de7b386032405 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -4429,8 +4429,8 @@ No available documentation.
 ***********************/
 class BRep_Polygon3D : public BRep_CurveRepresentation {
 	public:
-		/****************** BRep_Polygon3D ******************/
-		/**** md5 signature: 13da97d656a6270590ac3f77034b0519 ****/
+		/****** BRep_Polygon3D::BRep_Polygon3D ******/
+		/****** md5 signature: 13da97d656a6270590ac3f77034b0519 ******/
 		%feature("compactdefaultargs") BRep_Polygon3D;
 		%feature("autodoc", "
 Parameters
@@ -4448,8 +4448,8 @@ No available documentation.
 ") BRep_Polygon3D;
 		 BRep_Polygon3D(const opencascade::handle<Poly_Polygon3D> & P, const TopLoc_Location & L);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 5ae8a834b37d0441b91b744e5b050c6d ****/
+		/****** BRep_Polygon3D::Copy ******/
+		/****** md5 signature: 5ae8a834b37d0441b91b744e5b050c6d ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -4482,8 +4482,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsPolygon3D ******************/
-		/**** md5 signature: 9c97e39fb1a5808feb35966ed93c6297 ****/
+		/****** BRep_Polygon3D::IsPolygon3D ******/
+		/****** md5 signature: 9c97e39fb1a5808feb35966ed93c6297 ******/
 		%feature("compactdefaultargs") IsPolygon3D;
 		%feature("autodoc", "Return
 -------
@@ -4495,8 +4495,8 @@ Returns true.
 ") IsPolygon3D;
 		virtual Standard_Boolean IsPolygon3D();
 
-		/****************** Polygon3D ******************/
-		/**** md5 signature: 1090ff267a4843b01559975989b64a28 ****/
+		/****** BRep_Polygon3D::Polygon3D ******/
+		/****** md5 signature: 1090ff267a4843b01559975989b64a28 ******/
 		%feature("compactdefaultargs") Polygon3D;
 		%feature("autodoc", "Return
 -------
@@ -4508,8 +4508,8 @@ No available documentation.
 ") Polygon3D;
 		virtual const opencascade::handle<Poly_Polygon3D> & Polygon3D();
 
-		/****************** Polygon3D ******************/
-		/**** md5 signature: 031241be9d7be389029c88d7a07457da ****/
+		/****** BRep_Polygon3D::Polygon3D ******/
+		/****** md5 signature: 031241be9d7be389029c88d7a07457da ******/
 		%feature("compactdefaultargs") Polygon3D;
 		%feature("autodoc", "
 Parameters
@@ -4542,8 +4542,8 @@ No available documentation.
 ******************************/
 class BRep_PolygonOnSurface : public BRep_CurveRepresentation {
 	public:
-		/****************** BRep_PolygonOnSurface ******************/
-		/**** md5 signature: c1b50f5f4d521e9aa7829b5e90a0286b ****/
+		/****** BRep_PolygonOnSurface::BRep_PolygonOnSurface ******/
+		/****** md5 signature: c1b50f5f4d521e9aa7829b5e90a0286b ******/
 		%feature("compactdefaultargs") BRep_PolygonOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -4562,8 +4562,8 @@ No available documentation.
 ") BRep_PolygonOnSurface;
 		 BRep_PolygonOnSurface(const opencascade::handle<Poly_Polygon2D> & P, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ****/
+		/****** BRep_PolygonOnSurface::Copy ******/
+		/****** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -4596,8 +4596,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsPolygonOnSurface ******************/
-		/**** md5 signature: 395f6d0696758a9ea0fc539532c7bf1c ****/
+		/****** BRep_PolygonOnSurface::IsPolygonOnSurface ******/
+		/****** md5 signature: 395f6d0696758a9ea0fc539532c7bf1c ******/
 		%feature("compactdefaultargs") IsPolygonOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -4609,8 +4609,8 @@ A 2d polygon representation in the parametric space of a surface.
 ") IsPolygonOnSurface;
 		virtual Standard_Boolean IsPolygonOnSurface();
 
-		/****************** IsPolygonOnSurface ******************/
-		/**** md5 signature: c9250f078741a571290c03ae2f08a8fa ****/
+		/****** BRep_PolygonOnSurface::IsPolygonOnSurface ******/
+		/****** md5 signature: c9250f078741a571290c03ae2f08a8fa ******/
 		%feature("compactdefaultargs") IsPolygonOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -4628,8 +4628,8 @@ A 2d polygon representation in the parametric space of a surface.
 ") IsPolygonOnSurface;
 		virtual Standard_Boolean IsPolygonOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** Polygon ******************/
-		/**** md5 signature: 4f46d9d28803083bcdcdd10bba734397 ****/
+		/****** BRep_PolygonOnSurface::Polygon ******/
+		/****** md5 signature: 4f46d9d28803083bcdcdd10bba734397 ******/
 		%feature("compactdefaultargs") Polygon;
 		%feature("autodoc", "Return
 -------
@@ -4641,8 +4641,8 @@ No available documentation.
 ") Polygon;
 		virtual const opencascade::handle<Poly_Polygon2D> & Polygon();
 
-		/****************** Polygon ******************/
-		/**** md5 signature: 14cb08b6625770c2b2a4cecc383369e7 ****/
+		/****** BRep_PolygonOnSurface::Polygon ******/
+		/****** md5 signature: 14cb08b6625770c2b2a4cecc383369e7 ******/
 		%feature("compactdefaultargs") Polygon;
 		%feature("autodoc", "
 Parameters
@@ -4659,8 +4659,8 @@ No available documentation.
 ") Polygon;
 		virtual void Polygon(const opencascade::handle<Poly_Polygon2D> & P);
 
-		/****************** Surface ******************/
-		/**** md5 signature: 15e9ea02ca588f3610ae3d0618d607d8 ****/
+		/****** BRep_PolygonOnSurface::Surface ******/
+		/****** md5 signature: 15e9ea02ca588f3610ae3d0618d607d8 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -4688,8 +4688,8 @@ No available documentation.
 ************************************/
 class BRep_PolygonOnTriangulation : public BRep_CurveRepresentation {
 	public:
-		/****************** BRep_PolygonOnTriangulation ******************/
-		/**** md5 signature: 483b70ddea0cb2c06f36d731647487b2 ****/
+		/****** BRep_PolygonOnTriangulation::BRep_PolygonOnTriangulation ******/
+		/****** md5 signature: 483b70ddea0cb2c06f36d731647487b2 ******/
 		%feature("compactdefaultargs") BRep_PolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -4708,8 +4708,8 @@ No available documentation.
 ") BRep_PolygonOnTriangulation;
 		 BRep_PolygonOnTriangulation(const opencascade::handle<Poly_PolygonOnTriangulation> & P, const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ****/
+		/****** BRep_PolygonOnTriangulation::Copy ******/
+		/****** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -4742,8 +4742,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsPolygonOnTriangulation ******************/
-		/**** md5 signature: bc0acafa3cf68973589be66217bfe604 ****/
+		/****** BRep_PolygonOnTriangulation::IsPolygonOnTriangulation ******/
+		/****** md5 signature: bc0acafa3cf68973589be66217bfe604 ******/
 		%feature("compactdefaultargs") IsPolygonOnTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -4755,8 +4755,8 @@ Returns true.
 ") IsPolygonOnTriangulation;
 		virtual Standard_Boolean IsPolygonOnTriangulation();
 
-		/****************** IsPolygonOnTriangulation ******************/
-		/**** md5 signature: e6cb71a9982f4593b1d939a57798d3be ****/
+		/****** BRep_PolygonOnTriangulation::IsPolygonOnTriangulation ******/
+		/****** md5 signature: e6cb71a9982f4593b1d939a57798d3be ******/
 		%feature("compactdefaultargs") IsPolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -4774,8 +4774,8 @@ Is it a polygon in the definition of <t> with location <l>.
 ") IsPolygonOnTriangulation;
 		virtual Standard_Boolean IsPolygonOnTriangulation(const opencascade::handle<Poly_Triangulation> & T, const TopLoc_Location & L);
 
-		/****************** PolygonOnTriangulation ******************/
-		/**** md5 signature: aeb65ee54d25f07c5b13b545be27eb94 ****/
+		/****** BRep_PolygonOnTriangulation::PolygonOnTriangulation ******/
+		/****** md5 signature: aeb65ee54d25f07c5b13b545be27eb94 ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -4792,8 +4792,8 @@ Returns true.
 ") PolygonOnTriangulation;
 		virtual void PolygonOnTriangulation(const opencascade::handle<Poly_PolygonOnTriangulation> & P);
 
-		/****************** PolygonOnTriangulation ******************/
-		/**** md5 signature: cb14d47541b37689658847e4d993e5b5 ****/
+		/****** BRep_PolygonOnTriangulation::PolygonOnTriangulation ******/
+		/****** md5 signature: cb14d47541b37689658847e4d993e5b5 ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -4805,8 +4805,8 @@ No available documentation.
 ") PolygonOnTriangulation;
 		virtual const opencascade::handle<Poly_PolygonOnTriangulation> & PolygonOnTriangulation();
 
-		/****************** Triangulation ******************/
-		/**** md5 signature: 8f80953fc5ab6ffc304eb150b661d5c2 ****/
+		/****** BRep_PolygonOnTriangulation::Triangulation ******/
+		/****** md5 signature: 8f80953fc5ab6ffc304eb150b661d5c2 ******/
 		%feature("compactdefaultargs") Triangulation;
 		%feature("autodoc", "Return
 -------
@@ -4834,8 +4834,8 @@ No available documentation.
 *********************/
 class BRep_Curve3D : public BRep_GCurve {
 	public:
-		/****************** BRep_Curve3D ******************/
-		/**** md5 signature: 6f4db40c99a104c8d4ad18496b868b9e ****/
+		/****** BRep_Curve3D::BRep_Curve3D ******/
+		/****** md5 signature: 6f4db40c99a104c8d4ad18496b868b9e ******/
 		%feature("compactdefaultargs") BRep_Curve3D;
 		%feature("autodoc", "
 Parameters
@@ -4853,8 +4853,8 @@ No available documentation.
 ") BRep_Curve3D;
 		 BRep_Curve3D(const opencascade::handle<Geom_Curve> & C, const TopLoc_Location & L);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 5ae8a834b37d0441b91b744e5b050c6d ****/
+		/****** BRep_Curve3D::Copy ******/
+		/****** md5 signature: 5ae8a834b37d0441b91b744e5b050c6d ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -4866,8 +4866,8 @@ Return a copy of this representation.
 ") Copy;
 		opencascade::handle<BRep_CurveRepresentation> Copy();
 
-		/****************** Curve3D ******************/
-		/**** md5 signature: 4ad19464b6e2a334416af7923e8c568c ****/
+		/****** BRep_Curve3D::Curve3D ******/
+		/****** md5 signature: 4ad19464b6e2a334416af7923e8c568c ******/
 		%feature("compactdefaultargs") Curve3D;
 		%feature("autodoc", "Return
 -------
@@ -4879,8 +4879,8 @@ No available documentation.
 ") Curve3D;
 		virtual const opencascade::handle<Geom_Curve> & Curve3D();
 
-		/****************** Curve3D ******************/
-		/**** md5 signature: 9fa24c50aeac5346e9a2f04499dfce3d ****/
+		/****** BRep_Curve3D::Curve3D ******/
+		/****** md5 signature: 9fa24c50aeac5346e9a2f04499dfce3d ******/
 		%feature("compactdefaultargs") Curve3D;
 		%feature("autodoc", "
 Parameters
@@ -4897,8 +4897,8 @@ No available documentation.
 ") Curve3D;
 		virtual void Curve3D(const opencascade::handle<Geom_Curve> & C);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ****/
+		/****** BRep_Curve3D::D0 ******/
+		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -4937,8 +4937,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsCurve3D ******************/
-		/**** md5 signature: 6f953c114af47442e681e23b67fa28ca ****/
+		/****** BRep_Curve3D::IsCurve3D ******/
+		/****** md5 signature: 6f953c114af47442e681e23b67fa28ca ******/
 		%feature("compactdefaultargs") IsCurve3D;
 		%feature("autodoc", "Return
 -------
@@ -4966,8 +4966,8 @@ Returns true.
 ****************************/
 class BRep_CurveOnSurface : public BRep_GCurve {
 	public:
-		/****************** BRep_CurveOnSurface ******************/
-		/**** md5 signature: 59273eae1970ce9ffdcf78e73cc3d381 ****/
+		/****** BRep_CurveOnSurface::BRep_CurveOnSurface ******/
+		/****** md5 signature: 59273eae1970ce9ffdcf78e73cc3d381 ******/
 		%feature("compactdefaultargs") BRep_CurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -4986,8 +4986,8 @@ No available documentation.
 ") BRep_CurveOnSurface;
 		 BRep_CurveOnSurface(const opencascade::handle<Geom2d_Curve> & PC, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ****/
+		/****** BRep_CurveOnSurface::Copy ******/
+		/****** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -4999,8 +4999,8 @@ Return a copy of this representation.
 ") Copy;
 		virtual opencascade::handle<BRep_CurveRepresentation> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ****/
+		/****** BRep_CurveOnSurface::D0 ******/
+		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -5039,8 +5039,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsCurveOnSurface ******************/
-		/**** md5 signature: 210e38c8bb961e7c47fbbde36d037c35 ****/
+		/****** BRep_CurveOnSurface::IsCurveOnSurface ******/
+		/****** md5 signature: 210e38c8bb961e7c47fbbde36d037c35 ******/
 		%feature("compactdefaultargs") IsCurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -5052,8 +5052,8 @@ Returns true.
 ") IsCurveOnSurface;
 		virtual Standard_Boolean IsCurveOnSurface();
 
-		/****************** IsCurveOnSurface ******************/
-		/**** md5 signature: c4de9cee4f5ff1a1acbfc71cdf8caad2 ****/
+		/****** BRep_CurveOnSurface::IsCurveOnSurface ******/
+		/****** md5 signature: c4de9cee4f5ff1a1acbfc71cdf8caad2 ******/
 		%feature("compactdefaultargs") IsCurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -5071,8 +5071,8 @@ A curve in the parametric space of a surface.
 ") IsCurveOnSurface;
 		virtual Standard_Boolean IsCurveOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** PCurve ******************/
-		/**** md5 signature: 9eebae17493f49c309610142e6619ca8 ****/
+		/****** BRep_CurveOnSurface::PCurve ******/
+		/****** md5 signature: 9eebae17493f49c309610142e6619ca8 ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "Return
 -------
@@ -5084,8 +5084,8 @@ No available documentation.
 ") PCurve;
 		virtual const opencascade::handle<Geom2d_Curve> & PCurve();
 
-		/****************** PCurve ******************/
-		/**** md5 signature: c4807c5709eff8d53531d97e5607b176 ****/
+		/****** BRep_CurveOnSurface::PCurve ******/
+		/****** md5 signature: c4807c5709eff8d53531d97e5607b176 ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "
 Parameters
@@ -5102,8 +5102,8 @@ No available documentation.
 ") PCurve;
 		virtual void PCurve(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** SetUVPoints ******************/
-		/**** md5 signature: 104bbdba35a986d957cf4a721e9b5cc6 ****/
+		/****** BRep_CurveOnSurface::SetUVPoints ******/
+		/****** md5 signature: 104bbdba35a986d957cf4a721e9b5cc6 ******/
 		%feature("compactdefaultargs") SetUVPoints;
 		%feature("autodoc", "
 Parameters
@@ -5121,8 +5121,8 @@ No available documentation.
 ") SetUVPoints;
 		void SetUVPoints(const gp_Pnt2d & P1, const gp_Pnt2d & P2);
 
-		/****************** Surface ******************/
-		/**** md5 signature: 15e9ea02ca588f3610ae3d0618d607d8 ****/
+		/****** BRep_CurveOnSurface::Surface ******/
+		/****** md5 signature: 15e9ea02ca588f3610ae3d0618d607d8 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -5134,8 +5134,8 @@ No available documentation.
 ") Surface;
 		virtual const opencascade::handle<Geom_Surface> & Surface();
 
-		/****************** UVPoints ******************/
-		/**** md5 signature: cd877f540e3e3c3a8721175d218d5d8b ****/
+		/****** BRep_CurveOnSurface::UVPoints ******/
+		/****** md5 signature: cd877f540e3e3c3a8721175d218d5d8b ******/
 		%feature("compactdefaultargs") UVPoints;
 		%feature("autodoc", "
 Parameters
@@ -5153,8 +5153,8 @@ No available documentation.
 ") UVPoints;
 		void UVPoints(gp_Pnt2d & P1, gp_Pnt2d & P2);
 
-		/****************** Update ******************/
-		/**** md5 signature: ee9219b845487d888d5a30df8b526357 ****/
+		/****** BRep_CurveOnSurface::Update ******/
+		/****** md5 signature: ee9219b845487d888d5a30df8b526357 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "Return
 -------
@@ -5182,8 +5182,8 @@ Recomputes any derived data after a modification. this is called when the range 
 ***********************************/
 class BRep_PointOnCurveOnSurface : public BRep_PointsOnSurface {
 	public:
-		/****************** BRep_PointOnCurveOnSurface ******************/
-		/**** md5 signature: e93dfc821caf33fd5ca4ee23cbe7e57d ****/
+		/****** BRep_PointOnCurveOnSurface::BRep_PointOnCurveOnSurface ******/
+		/****** md5 signature: e93dfc821caf33fd5ca4ee23cbe7e57d ******/
 		%feature("compactdefaultargs") BRep_PointOnCurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -5224,8 +5224,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsPointOnCurveOnSurface ******************/
-		/**** md5 signature: 092d698478e6d62f4961b5532d2a7e6a ****/
+		/****** BRep_PointOnCurveOnSurface::IsPointOnCurveOnSurface ******/
+		/****** md5 signature: 092d698478e6d62f4961b5532d2a7e6a ******/
 		%feature("compactdefaultargs") IsPointOnCurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -5237,8 +5237,8 @@ Returns true.
 ") IsPointOnCurveOnSurface;
 		virtual Standard_Boolean IsPointOnCurveOnSurface();
 
-		/****************** IsPointOnCurveOnSurface ******************/
-		/**** md5 signature: 55b5bb312fb131280144e3b9026be1c1 ****/
+		/****** BRep_PointOnCurveOnSurface::IsPointOnCurveOnSurface ******/
+		/****** md5 signature: 55b5bb312fb131280144e3b9026be1c1 ******/
 		%feature("compactdefaultargs") IsPointOnCurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -5257,8 +5257,8 @@ No available documentation.
 ") IsPointOnCurveOnSurface;
 		virtual Standard_Boolean IsPointOnCurveOnSurface(const opencascade::handle<Geom2d_Curve> & PC, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** PCurve ******************/
-		/**** md5 signature: 9eebae17493f49c309610142e6619ca8 ****/
+		/****** BRep_PointOnCurveOnSurface::PCurve ******/
+		/****** md5 signature: 9eebae17493f49c309610142e6619ca8 ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "Return
 -------
@@ -5270,8 +5270,8 @@ No available documentation.
 ") PCurve;
 		virtual const opencascade::handle<Geom2d_Curve> & PCurve();
 
-		/****************** PCurve ******************/
-		/**** md5 signature: c4807c5709eff8d53531d97e5607b176 ****/
+		/****** BRep_PointOnCurveOnSurface::PCurve ******/
+		/****** md5 signature: c4807c5709eff8d53531d97e5607b176 ******/
 		%feature("compactdefaultargs") PCurve;
 		%feature("autodoc", "
 Parameters
@@ -5304,8 +5304,8 @@ No available documentation.
 ****************************/
 class BRep_PointOnSurface : public BRep_PointsOnSurface {
 	public:
-		/****************** BRep_PointOnSurface ******************/
-		/**** md5 signature: 60272da688749be0222b20d59cb0ac08 ****/
+		/****** BRep_PointOnSurface::BRep_PointOnSurface ******/
+		/****** md5 signature: 60272da688749be0222b20d59cb0ac08 ******/
 		%feature("compactdefaultargs") BRep_PointOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -5325,8 +5325,8 @@ No available documentation.
 ") BRep_PointOnSurface;
 		 BRep_PointOnSurface(const Standard_Real P1, const Standard_Real P2, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** IsPointOnSurface ******************/
-		/**** md5 signature: 44c0910cf7013a21d92b11818dc5b8a3 ****/
+		/****** BRep_PointOnSurface::IsPointOnSurface ******/
+		/****** md5 signature: 44c0910cf7013a21d92b11818dc5b8a3 ******/
 		%feature("compactdefaultargs") IsPointOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -5338,8 +5338,8 @@ No available documentation.
 ") IsPointOnSurface;
 		virtual Standard_Boolean IsPointOnSurface();
 
-		/****************** IsPointOnSurface ******************/
-		/**** md5 signature: f3ce16cf5210f544c5b5896a8ea5a83a ****/
+		/****** BRep_PointOnSurface::IsPointOnSurface ******/
+		/****** md5 signature: f3ce16cf5210f544c5b5896a8ea5a83a ******/
 		%feature("compactdefaultargs") IsPointOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -5357,8 +5357,8 @@ No available documentation.
 ") IsPointOnSurface;
 		virtual Standard_Boolean IsPointOnSurface(const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** Parameter2 ******************/
-		/**** md5 signature: 4f32a1edb12e9ae972dce28ff068e1f9 ****/
+		/****** BRep_PointOnSurface::Parameter2 ******/
+		/****** md5 signature: 4f32a1edb12e9ae972dce28ff068e1f9 ******/
 		%feature("compactdefaultargs") Parameter2;
 		%feature("autodoc", "Return
 -------
@@ -5370,8 +5370,8 @@ No available documentation.
 ") Parameter2;
 		virtual Standard_Real Parameter2();
 
-		/****************** Parameter2 ******************/
-		/**** md5 signature: b708a4a4c1d3b711f897a056c2332b20 ****/
+		/****** BRep_PointOnSurface::Parameter2 ******/
+		/****** md5 signature: b708a4a4c1d3b711f897a056c2332b20 ******/
 		%feature("compactdefaultargs") Parameter2;
 		%feature("autodoc", "
 Parameters
@@ -5404,8 +5404,8 @@ No available documentation.
 ************************************/
 class BRep_PolygonOnClosedSurface : public BRep_PolygonOnSurface {
 	public:
-		/****************** BRep_PolygonOnClosedSurface ******************/
-		/**** md5 signature: e9ddffbb8250345ed95293e459416abf ****/
+		/****** BRep_PolygonOnClosedSurface::BRep_PolygonOnClosedSurface ******/
+		/****** md5 signature: e9ddffbb8250345ed95293e459416abf ******/
 		%feature("compactdefaultargs") BRep_PolygonOnClosedSurface;
 		%feature("autodoc", "
 Parameters
@@ -5425,8 +5425,8 @@ No available documentation.
 ") BRep_PolygonOnClosedSurface;
 		 BRep_PolygonOnClosedSurface(const opencascade::handle<Poly_Polygon2D> & P1, const opencascade::handle<Poly_Polygon2D> & P2, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ****/
+		/****** BRep_PolygonOnClosedSurface::Copy ******/
+		/****** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -5459,8 +5459,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsPolygonOnClosedSurface ******************/
-		/**** md5 signature: 411040a5cb708182d4445a5125b84a85 ****/
+		/****** BRep_PolygonOnClosedSurface::IsPolygonOnClosedSurface ******/
+		/****** md5 signature: 411040a5cb708182d4445a5125b84a85 ******/
 		%feature("compactdefaultargs") IsPolygonOnClosedSurface;
 		%feature("autodoc", "Return
 -------
@@ -5472,8 +5472,8 @@ Returns true.
 ") IsPolygonOnClosedSurface;
 		virtual Standard_Boolean IsPolygonOnClosedSurface();
 
-		/****************** Polygon2 ******************/
-		/**** md5 signature: c307e8ebb624c2764bfb13d6f321c03f ****/
+		/****** BRep_PolygonOnClosedSurface::Polygon2 ******/
+		/****** md5 signature: c307e8ebb624c2764bfb13d6f321c03f ******/
 		%feature("compactdefaultargs") Polygon2;
 		%feature("autodoc", "Return
 -------
@@ -5485,8 +5485,8 @@ No available documentation.
 ") Polygon2;
 		virtual const opencascade::handle<Poly_Polygon2D> & Polygon2();
 
-		/****************** Polygon2 ******************/
-		/**** md5 signature: aa9cd6dbf402bfda961114b161fa8333 ****/
+		/****** BRep_PolygonOnClosedSurface::Polygon2 ******/
+		/****** md5 signature: aa9cd6dbf402bfda961114b161fa8333 ******/
 		%feature("compactdefaultargs") Polygon2;
 		%feature("autodoc", "
 Parameters
@@ -5519,8 +5519,8 @@ No available documentation.
 ******************************************/
 class BRep_PolygonOnClosedTriangulation : public BRep_PolygonOnTriangulation {
 	public:
-		/****************** BRep_PolygonOnClosedTriangulation ******************/
-		/**** md5 signature: 9f8d780a4647186d27acb4c47dd6b93e ****/
+		/****** BRep_PolygonOnClosedTriangulation::BRep_PolygonOnClosedTriangulation ******/
+		/****** md5 signature: 9f8d780a4647186d27acb4c47dd6b93e ******/
 		%feature("compactdefaultargs") BRep_PolygonOnClosedTriangulation;
 		%feature("autodoc", "
 Parameters
@@ -5540,8 +5540,8 @@ No available documentation.
 ") BRep_PolygonOnClosedTriangulation;
 		 BRep_PolygonOnClosedTriangulation(const opencascade::handle<Poly_PolygonOnTriangulation> & P1, const opencascade::handle<Poly_PolygonOnTriangulation> & P2, const opencascade::handle<Poly_Triangulation> & Tr, const TopLoc_Location & L);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ****/
+		/****** BRep_PolygonOnClosedTriangulation::Copy ******/
+		/****** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -5574,8 +5574,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsPolygonOnClosedTriangulation ******************/
-		/**** md5 signature: 7402c9a74e47f727da04da14988b5819 ****/
+		/****** BRep_PolygonOnClosedTriangulation::IsPolygonOnClosedTriangulation ******/
+		/****** md5 signature: 7402c9a74e47f727da04da14988b5819 ******/
 		%feature("compactdefaultargs") IsPolygonOnClosedTriangulation;
 		%feature("autodoc", "Return
 -------
@@ -5587,8 +5587,8 @@ Returns true.
 ") IsPolygonOnClosedTriangulation;
 		virtual Standard_Boolean IsPolygonOnClosedTriangulation();
 
-		/****************** PolygonOnTriangulation2 ******************/
-		/**** md5 signature: f6eda594ab3c0f7d7e1508fe7826f971 ****/
+		/****** BRep_PolygonOnClosedTriangulation::PolygonOnTriangulation2 ******/
+		/****** md5 signature: f6eda594ab3c0f7d7e1508fe7826f971 ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation2;
 		%feature("autodoc", "
 Parameters
@@ -5605,8 +5605,8 @@ No available documentation.
 ") PolygonOnTriangulation2;
 		virtual void PolygonOnTriangulation2(const opencascade::handle<Poly_PolygonOnTriangulation> & P2);
 
-		/****************** PolygonOnTriangulation2 ******************/
-		/**** md5 signature: 1a6454953aa9e78b14e72ba9aebf1711 ****/
+		/****** BRep_PolygonOnClosedTriangulation::PolygonOnTriangulation2 ******/
+		/****** md5 signature: 1a6454953aa9e78b14e72ba9aebf1711 ******/
 		%feature("compactdefaultargs") PolygonOnTriangulation2;
 		%feature("autodoc", "Return
 -------
@@ -5634,8 +5634,8 @@ No available documentation.
 **********************************/
 class BRep_CurveOnClosedSurface : public BRep_CurveOnSurface {
 	public:
-		/****************** BRep_CurveOnClosedSurface ******************/
-		/**** md5 signature: bd39ef3bd765f2ef4d84c061706a0fa1 ****/
+		/****** BRep_CurveOnClosedSurface::BRep_CurveOnClosedSurface ******/
+		/****** md5 signature: bd39ef3bd765f2ef4d84c061706a0fa1 ******/
 		%feature("compactdefaultargs") BRep_CurveOnClosedSurface;
 		%feature("autodoc", "
 Parameters
@@ -5656,8 +5656,8 @@ No available documentation.
 ") BRep_CurveOnClosedSurface;
 		 BRep_CurveOnClosedSurface(const opencascade::handle<Geom2d_Curve> & PC1, const opencascade::handle<Geom2d_Curve> & PC2, const opencascade::handle<Geom_Surface> & S, const TopLoc_Location & L, const GeomAbs_Shape C);
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 67f71f7e1008e6ff605877f145944f2b ****/
+		/****** BRep_CurveOnClosedSurface::Continuity ******/
+		/****** md5 signature: 67f71f7e1008e6ff605877f145944f2b ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -5669,8 +5669,8 @@ No available documentation.
 ") Continuity;
 		virtual const GeomAbs_Shape & Continuity();
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 7efede569c5d15316e14f5232ee3a296 ****/
+		/****** BRep_CurveOnClosedSurface::Continuity ******/
+		/****** md5 signature: 7efede569c5d15316e14f5232ee3a296 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -5687,8 +5687,8 @@ No available documentation.
 ") Continuity;
 		virtual void Continuity(const GeomAbs_Shape C);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ****/
+		/****** BRep_CurveOnClosedSurface::Copy ******/
+		/****** md5 signature: 51f97eb612b00599d2d5b762223f64b3 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -5721,8 +5721,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** IsCurveOnClosedSurface ******************/
-		/**** md5 signature: bec88248a793536f6c3cf9265d01178c ****/
+		/****** BRep_CurveOnClosedSurface::IsCurveOnClosedSurface ******/
+		/****** md5 signature: bec88248a793536f6c3cf9265d01178c ******/
 		%feature("compactdefaultargs") IsCurveOnClosedSurface;
 		%feature("autodoc", "Return
 -------
@@ -5734,8 +5734,8 @@ Returns true.
 ") IsCurveOnClosedSurface;
 		virtual Standard_Boolean IsCurveOnClosedSurface();
 
-		/****************** IsRegularity ******************/
-		/**** md5 signature: fc2d0c9ac93b7bd44a0b1730043df993 ****/
+		/****** BRep_CurveOnClosedSurface::IsRegularity ******/
+		/****** md5 signature: fc2d0c9ac93b7bd44a0b1730043df993 ******/
 		%feature("compactdefaultargs") IsRegularity;
 		%feature("autodoc", "Return
 -------
@@ -5747,8 +5747,8 @@ Returns true.
 ") IsRegularity;
 		virtual Standard_Boolean IsRegularity();
 
-		/****************** IsRegularity ******************/
-		/**** md5 signature: d342137f91cebeb239140ef772bbae74 ****/
+		/****** BRep_CurveOnClosedSurface::IsRegularity ******/
+		/****** md5 signature: d342137f91cebeb239140ef772bbae74 ******/
 		%feature("compactdefaultargs") IsRegularity;
 		%feature("autodoc", "
 Parameters
@@ -5768,8 +5768,8 @@ A curve on two surfaces (continuity).
 ") IsRegularity;
 		virtual Standard_Boolean IsRegularity(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const TopLoc_Location & L1, const TopLoc_Location & L2);
 
-		/****************** Location2 ******************/
-		/**** md5 signature: 35a20609403ba9e885d7f5ec0a54a126 ****/
+		/****** BRep_CurveOnClosedSurface::Location2 ******/
+		/****** md5 signature: 35a20609403ba9e885d7f5ec0a54a126 ******/
 		%feature("compactdefaultargs") Location2;
 		%feature("autodoc", "Return
 -------
@@ -5781,8 +5781,8 @@ Returns location().
 ") Location2;
 		virtual const TopLoc_Location & Location2();
 
-		/****************** PCurve2 ******************/
-		/**** md5 signature: 48968d988acdaee69dcf1ac4f2402272 ****/
+		/****** BRep_CurveOnClosedSurface::PCurve2 ******/
+		/****** md5 signature: 48968d988acdaee69dcf1ac4f2402272 ******/
 		%feature("compactdefaultargs") PCurve2;
 		%feature("autodoc", "Return
 -------
@@ -5794,8 +5794,8 @@ No available documentation.
 ") PCurve2;
 		virtual const opencascade::handle<Geom2d_Curve> & PCurve2();
 
-		/****************** PCurve2 ******************/
-		/**** md5 signature: 303604ea4f669013435b6e0712793764 ****/
+		/****** BRep_CurveOnClosedSurface::PCurve2 ******/
+		/****** md5 signature: 303604ea4f669013435b6e0712793764 ******/
 		%feature("compactdefaultargs") PCurve2;
 		%feature("autodoc", "
 Parameters
@@ -5812,8 +5812,8 @@ No available documentation.
 ") PCurve2;
 		virtual void PCurve2(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** SetUVPoints2 ******************/
-		/**** md5 signature: 07669b38a7f71653c011c2f5b054db10 ****/
+		/****** BRep_CurveOnClosedSurface::SetUVPoints2 ******/
+		/****** md5 signature: 07669b38a7f71653c011c2f5b054db10 ******/
 		%feature("compactdefaultargs") SetUVPoints2;
 		%feature("autodoc", "
 Parameters
@@ -5831,8 +5831,8 @@ No available documentation.
 ") SetUVPoints2;
 		void SetUVPoints2(const gp_Pnt2d & P1, const gp_Pnt2d & P2);
 
-		/****************** Surface2 ******************/
-		/**** md5 signature: 839f1c1ff057d92a50c65c26a6c27dd5 ****/
+		/****** BRep_CurveOnClosedSurface::Surface2 ******/
+		/****** md5 signature: 839f1c1ff057d92a50c65c26a6c27dd5 ******/
 		%feature("compactdefaultargs") Surface2;
 		%feature("autodoc", "Return
 -------
@@ -5844,8 +5844,8 @@ Returns surface().
 ") Surface2;
 		virtual const opencascade::handle<Geom_Surface> & Surface2();
 
-		/****************** UVPoints2 ******************/
-		/**** md5 signature: 3ec595626a689f480a664aa42f0f31ba ****/
+		/****** BRep_CurveOnClosedSurface::UVPoints2 ******/
+		/****** md5 signature: 3ec595626a689f480a664aa42f0f31ba ******/
 		%feature("compactdefaultargs") UVPoints2;
 		%feature("autodoc", "
 Parameters
@@ -5863,8 +5863,8 @@ No available documentation.
 ") UVPoints2;
 		void UVPoints2(gp_Pnt2d & P1, gp_Pnt2d & P2);
 
-		/****************** Update ******************/
-		/**** md5 signature: ee9219b845487d888d5a30df8b526357 ****/
+		/****** BRep_CurveOnClosedSurface::Update ******/
+		/****** md5 signature: ee9219b845487d888d5a30df8b526357 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "Return
 -------

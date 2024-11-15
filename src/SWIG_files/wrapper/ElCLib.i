@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define ELCLIBDOCSTRING
 "ElCLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_elclib.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_elclib.html"
 %enddef
 %module (package="OCC.Core", docstring=ELCLIBDOCSTRING) ElCLib
 
@@ -82,8 +82,8 @@ from OCC.Core.Exception import *
 %rename(elclib) ElCLib;
 class ElCLib {
 	public:
-		/****************** AdjustPeriodic ******************/
-		/**** md5 signature: 7e4e736e11484939c8dff18f732b6618 ****/
+		/****** ElCLib::AdjustPeriodic ******/
+		/****** md5 signature: 7e4e736e11484939c8dff18f732b6618 ******/
 		%feature("compactdefaultargs") AdjustPeriodic;
 		%feature("autodoc", "
 Parameters
@@ -103,8 +103,8 @@ Adjust u1 and u2 in the parametric range ufirst ulast of a periodic curve, where
 ") AdjustPeriodic;
 		static void AdjustPeriodic(const Standard_Real UFirst, const Standard_Real ULast, const Standard_Real Precision, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** CircleD1 ******************/
-		/**** md5 signature: 1732223aff472369d5a24b4ce7e8c1b2 ****/
+		/****** ElCLib::CircleD1 ******/
+		/****** md5 signature: 1732223aff472369d5a24b4ce7e8c1b2 ******/
 		%feature("compactdefaultargs") CircleD1;
 		%feature("autodoc", "
 Parameters
@@ -125,8 +125,8 @@ No available documentation.
 ") CircleD1;
 		static void CircleD1(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** CircleD1 ******************/
-		/**** md5 signature: 6044b15cc56f7cdb76cf5e9f3221b800 ****/
+		/****** ElCLib::CircleD1 ******/
+		/****** md5 signature: 6044b15cc56f7cdb76cf5e9f3221b800 ******/
 		%feature("compactdefaultargs") CircleD1;
 		%feature("autodoc", "
 Parameters
@@ -147,8 +147,8 @@ No available documentation.
 ") CircleD1;
 		static void CircleD1(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Radius, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** CircleD2 ******************/
-		/**** md5 signature: 061f949b4f38b316133e8a7030c1979a ****/
+		/****** ElCLib::CircleD2 ******/
+		/****** md5 signature: 061f949b4f38b316133e8a7030c1979a ******/
 		%feature("compactdefaultargs") CircleD2;
 		%feature("autodoc", "
 Parameters
@@ -170,8 +170,8 @@ No available documentation.
 ") CircleD2;
 		static void CircleD2(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** CircleD2 ******************/
-		/**** md5 signature: 94490ed36a73babf84f582d37201ac87 ****/
+		/****** ElCLib::CircleD2 ******/
+		/****** md5 signature: 94490ed36a73babf84f582d37201ac87 ******/
 		%feature("compactdefaultargs") CircleD2;
 		%feature("autodoc", "
 Parameters
@@ -193,8 +193,8 @@ No available documentation.
 ") CircleD2;
 		static void CircleD2(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Radius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** CircleD3 ******************/
-		/**** md5 signature: 6e27ee9ae6fd48002ff421549b3557ae ****/
+		/****** ElCLib::CircleD3 ******/
+		/****** md5 signature: 6e27ee9ae6fd48002ff421549b3557ae ******/
 		%feature("compactdefaultargs") CircleD3;
 		%feature("autodoc", "
 Parameters
@@ -217,8 +217,8 @@ No available documentation.
 ") CircleD3;
 		static void CircleD3(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Radius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** CircleD3 ******************/
-		/**** md5 signature: abdeacc35ed48e6fde962dc0dceb8902 ****/
+		/****** ElCLib::CircleD3 ******/
+		/****** md5 signature: abdeacc35ed48e6fde962dc0dceb8902 ******/
 		%feature("compactdefaultargs") CircleD3;
 		%feature("autodoc", "
 Parameters
@@ -241,8 +241,8 @@ No available documentation.
 ") CircleD3;
 		static void CircleD3(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Radius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
-		/****************** CircleDN ******************/
-		/**** md5 signature: 5c8adfb9e6b9466f039573c51d124f27 ****/
+		/****** ElCLib::CircleDN ******/
+		/****** md5 signature: 5c8adfb9e6b9466f039573c51d124f27 ******/
 		%feature("compactdefaultargs") CircleDN;
 		%feature("autodoc", "
 Parameters
@@ -262,8 +262,8 @@ No available documentation.
 ") CircleDN;
 		static gp_Vec CircleDN(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Radius, const Standard_Integer N);
 
-		/****************** CircleDN ******************/
-		/**** md5 signature: 7d799cf3237462c7e93916f300ba5a96 ****/
+		/****** ElCLib::CircleDN ******/
+		/****** md5 signature: 7d799cf3237462c7e93916f300ba5a96 ******/
 		%feature("compactdefaultargs") CircleDN;
 		%feature("autodoc", "
 Parameters
@@ -283,8 +283,8 @@ No available documentation.
 ") CircleDN;
 		static gp_Vec2d CircleDN(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Radius, const Standard_Integer N);
 
-		/****************** CircleParameter ******************/
-		/**** md5 signature: 26a6c62dffefcf8a3d41e5df4c618fb4 ****/
+		/****** ElCLib::CircleParameter ******/
+		/****** md5 signature: 26a6c62dffefcf8a3d41e5df4c618fb4 ******/
 		%feature("compactdefaultargs") CircleParameter;
 		%feature("autodoc", "
 Parameters
@@ -302,8 +302,8 @@ No available documentation.
 ") CircleParameter;
 		static Standard_Real CircleParameter(const gp_Ax2 & Pos, const gp_Pnt & P);
 
-		/****************** CircleParameter ******************/
-		/**** md5 signature: ba68b13a794fae7ac895861855220d57 ****/
+		/****** ElCLib::CircleParameter ******/
+		/****** md5 signature: ba68b13a794fae7ac895861855220d57 ******/
 		%feature("compactdefaultargs") CircleParameter;
 		%feature("autodoc", "
 Parameters
@@ -321,8 +321,8 @@ Pos is the axis of the circle parametrization in the local coordinate system of 
 ") CircleParameter;
 		static Standard_Real CircleParameter(const gp_Ax22d & Pos, const gp_Pnt2d & P);
 
-		/****************** CircleValue ******************/
-		/**** md5 signature: f1c4f3dd63490877f61a734b1473fd15 ****/
+		/****** ElCLib::CircleValue ******/
+		/****** md5 signature: f1c4f3dd63490877f61a734b1473fd15 ******/
 		%feature("compactdefaultargs") CircleValue;
 		%feature("autodoc", "
 Parameters
@@ -341,8 +341,8 @@ No available documentation.
 ") CircleValue;
 		static gp_Pnt CircleValue(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Radius);
 
-		/****************** CircleValue ******************/
-		/**** md5 signature: a254ad35f2d5ff777499e60061cecbf0 ****/
+		/****** ElCLib::CircleValue ******/
+		/****** md5 signature: a254ad35f2d5ff777499e60061cecbf0 ******/
 		%feature("compactdefaultargs") CircleValue;
 		%feature("autodoc", "
 Parameters
@@ -361,8 +361,8 @@ No available documentation.
 ") CircleValue;
 		static gp_Pnt2d CircleValue(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Radius);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 2348e372c613ae0b91de8a60ff4c1d96 ****/
+		/****** ElCLib::D1 ******/
+		/****** md5 signature: 2348e372c613ae0b91de8a60ff4c1d96 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -382,8 +382,8 @@ For elementary curves (lines, circles and conics) from the gp package, computes:
 ") D1;
 		static void D1(const Standard_Real U, const gp_Lin & L, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 5764c3935590a35e746844167678c383 ****/
+		/****** ElCLib::D1 ******/
+		/****** md5 signature: 5764c3935590a35e746844167678c383 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -403,8 +403,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const gp_Circ & C, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 5aa41c2b42fa990f167d06b62da72a60 ****/
+		/****** ElCLib::D1 ******/
+		/****** md5 signature: 5aa41c2b42fa990f167d06b62da72a60 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -424,8 +424,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const gp_Elips & E, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** D1 ******************/
-		/**** md5 signature: f33366e613106b45ca1fa0b63ec1a193 ****/
+		/****** ElCLib::D1 ******/
+		/****** md5 signature: f33366e613106b45ca1fa0b63ec1a193 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -445,8 +445,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const gp_Hypr & H, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** D1 ******************/
-		/**** md5 signature: bcd87a30e4fb1b4185175041d43b84b4 ****/
+		/****** ElCLib::D1 ******/
+		/****** md5 signature: bcd87a30e4fb1b4185175041d43b84b4 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -466,8 +466,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const gp_Parab & Prb, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 5e08453e4d72f76c239039b9fcf805af ****/
+		/****** ElCLib::D1 ******/
+		/****** md5 signature: 5e08453e4d72f76c239039b9fcf805af ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -487,8 +487,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const gp_Lin2d & L, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** D1 ******************/
-		/**** md5 signature: cb123a1582eec6ad30ae203aa5b3dd5b ****/
+		/****** ElCLib::D1 ******/
+		/****** md5 signature: cb123a1582eec6ad30ae203aa5b3dd5b ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -508,8 +508,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const gp_Circ2d & C, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 50be3a7f16ec4ee1e8cb046024b4e091 ****/
+		/****** ElCLib::D1 ******/
+		/****** md5 signature: 50be3a7f16ec4ee1e8cb046024b4e091 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -529,8 +529,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const gp_Elips2d & E, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 2c1cb396fe733147144fdabd58e5b9b8 ****/
+		/****** ElCLib::D1 ******/
+		/****** md5 signature: 2c1cb396fe733147144fdabd58e5b9b8 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -550,8 +550,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const gp_Hypr2d & H, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** D1 ******************/
-		/**** md5 signature: e3323af4d4584a4719fee23df6a2cfd1 ****/
+		/****** ElCLib::D1 ******/
+		/****** md5 signature: e3323af4d4584a4719fee23df6a2cfd1 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -571,8 +571,8 @@ No available documentation.
 ") D1;
 		static void D1(const Standard_Real U, const gp_Parab2d & Prb, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** D2 ******************/
-		/**** md5 signature: f220a759c5390f272acbdf7473bf89c5 ****/
+		/****** ElCLib::D2 ******/
+		/****** md5 signature: f220a759c5390f272acbdf7473bf89c5 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -593,8 +593,8 @@ For elementary curves (circles and conics) from the gp package, computes: - the 
 ") D2;
 		static void D2(const Standard_Real U, const gp_Circ & C, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 9f99502ea2bb4230feece4e7519388eb ****/
+		/****** ElCLib::D2 ******/
+		/****** md5 signature: 9f99502ea2bb4230feece4e7519388eb ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -615,8 +615,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const gp_Elips & E, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** D2 ******************/
-		/**** md5 signature: ae81bfd7063ec89ba29dedd16adfa97c ****/
+		/****** ElCLib::D2 ******/
+		/****** md5 signature: ae81bfd7063ec89ba29dedd16adfa97c ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -637,8 +637,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const gp_Hypr & H, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** D2 ******************/
-		/**** md5 signature: af24c765387cb94b2673a43c40a395f3 ****/
+		/****** ElCLib::D2 ******/
+		/****** md5 signature: af24c765387cb94b2673a43c40a395f3 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -659,8 +659,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const gp_Parab & Prb, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** D2 ******************/
-		/**** md5 signature: b71866e4b68be26ce3861d909a3db5ab ****/
+		/****** ElCLib::D2 ******/
+		/****** md5 signature: b71866e4b68be26ce3861d909a3db5ab ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -681,8 +681,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const gp_Circ2d & C, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** D2 ******************/
-		/**** md5 signature: ef9a85e18324dde449ab962fe75d0de0 ****/
+		/****** ElCLib::D2 ******/
+		/****** md5 signature: ef9a85e18324dde449ab962fe75d0de0 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -703,8 +703,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const gp_Elips2d & E, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 7e73a41bf37e135bd7dcd253f7c005f5 ****/
+		/****** ElCLib::D2 ******/
+		/****** md5 signature: 7e73a41bf37e135bd7dcd253f7c005f5 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -725,8 +725,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const gp_Hypr2d & H, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** D2 ******************/
-		/**** md5 signature: c574c1139e0e7d2678634d07213fd831 ****/
+		/****** ElCLib::D2 ******/
+		/****** md5 signature: c574c1139e0e7d2678634d07213fd831 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -747,8 +747,8 @@ No available documentation.
 ") D2;
 		static void D2(const Standard_Real U, const gp_Parab2d & Prb, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 88a0f31d8d88acd9379427f8056f536e ****/
+		/****** ElCLib::D3 ******/
+		/****** md5 signature: 88a0f31d8d88acd9379427f8056f536e ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -770,8 +770,8 @@ For elementary curves (circles, ellipses and hyperbolae) from the gp package, co
 ") D3;
 		static void D3(const Standard_Real U, const gp_Circ & C, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 3f664f004eb6420555d34db3336d8ffc ****/
+		/****** ElCLib::D3 ******/
+		/****** md5 signature: 3f664f004eb6420555d34db3336d8ffc ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -793,8 +793,8 @@ No available documentation.
 ") D3;
 		static void D3(const Standard_Real U, const gp_Elips & E, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** D3 ******************/
-		/**** md5 signature: bf8de95ac722e89f12108e313766c3ca ****/
+		/****** ElCLib::D3 ******/
+		/****** md5 signature: bf8de95ac722e89f12108e313766c3ca ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -816,8 +816,8 @@ No available documentation.
 ") D3;
 		static void D3(const Standard_Real U, const gp_Hypr & H, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 1ed246904267606ef73603a752190250 ****/
+		/****** ElCLib::D3 ******/
+		/****** md5 signature: 1ed246904267606ef73603a752190250 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -839,8 +839,8 @@ No available documentation.
 ") D3;
 		static void D3(const Standard_Real U, const gp_Circ2d & C, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
-		/****************** D3 ******************/
-		/**** md5 signature: f364e91b0c7b85480d4dc2f59acb2ef4 ****/
+		/****** ElCLib::D3 ******/
+		/****** md5 signature: f364e91b0c7b85480d4dc2f59acb2ef4 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -862,8 +862,8 @@ No available documentation.
 ") D3;
 		static void D3(const Standard_Real U, const gp_Elips2d & E, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 6f375725aae2577b37e04467cea54a5c ****/
+		/****** ElCLib::D3 ******/
+		/****** md5 signature: 6f375725aae2577b37e04467cea54a5c ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -885,8 +885,8 @@ In the following functions n is the order of derivation and should be greater th
 ") D3;
 		static void D3(const Standard_Real U, const gp_Hypr2d & H, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
-		/****************** DN ******************/
-		/**** md5 signature: 906dd97634ae8e18db20f8c3ba953acb ****/
+		/****** ElCLib::DN ******/
+		/****** md5 signature: 906dd97634ae8e18db20f8c3ba953acb ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -905,8 +905,8 @@ For elementary curves (lines, circles and conics) from the gp package, computes 
 ") DN;
 		static gp_Vec DN(const Standard_Real U, const gp_Lin & L, const Standard_Integer N);
 
-		/****************** DN ******************/
-		/**** md5 signature: 47f8242822c8cea0c08c698c6bbcdfe3 ****/
+		/****** ElCLib::DN ******/
+		/****** md5 signature: 47f8242822c8cea0c08c698c6bbcdfe3 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -925,8 +925,8 @@ No available documentation.
 ") DN;
 		static gp_Vec DN(const Standard_Real U, const gp_Circ & C, const Standard_Integer N);
 
-		/****************** DN ******************/
-		/**** md5 signature: 5a6acea0b3373b42b9c4e893f6261cba ****/
+		/****** ElCLib::DN ******/
+		/****** md5 signature: 5a6acea0b3373b42b9c4e893f6261cba ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -945,8 +945,8 @@ No available documentation.
 ") DN;
 		static gp_Vec DN(const Standard_Real U, const gp_Elips & E, const Standard_Integer N);
 
-		/****************** DN ******************/
-		/**** md5 signature: 49583a74ba80488d4c4ad2e6926b78df ****/
+		/****** ElCLib::DN ******/
+		/****** md5 signature: 49583a74ba80488d4c4ad2e6926b78df ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -965,8 +965,8 @@ No available documentation.
 ") DN;
 		static gp_Vec DN(const Standard_Real U, const gp_Hypr & H, const Standard_Integer N);
 
-		/****************** DN ******************/
-		/**** md5 signature: 903db7d628a4fcb02e293930cab55cbd ****/
+		/****** ElCLib::DN ******/
+		/****** md5 signature: 903db7d628a4fcb02e293930cab55cbd ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -985,8 +985,8 @@ No available documentation.
 ") DN;
 		static gp_Vec DN(const Standard_Real U, const gp_Parab & Prb, const Standard_Integer N);
 
-		/****************** DN ******************/
-		/**** md5 signature: 17e6278397b957ffc39900585a83f3d3 ****/
+		/****** ElCLib::DN ******/
+		/****** md5 signature: 17e6278397b957ffc39900585a83f3d3 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -1005,8 +1005,8 @@ No available documentation.
 ") DN;
 		static gp_Vec2d DN(const Standard_Real U, const gp_Lin2d & L, const Standard_Integer N);
 
-		/****************** DN ******************/
-		/**** md5 signature: 1a4ae9e4518239fc3f7b2739e72360c5 ****/
+		/****** ElCLib::DN ******/
+		/****** md5 signature: 1a4ae9e4518239fc3f7b2739e72360c5 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -1025,8 +1025,8 @@ No available documentation.
 ") DN;
 		static gp_Vec2d DN(const Standard_Real U, const gp_Circ2d & C, const Standard_Integer N);
 
-		/****************** DN ******************/
-		/**** md5 signature: 8112c6ea5074c210244d783558f657af ****/
+		/****** ElCLib::DN ******/
+		/****** md5 signature: 8112c6ea5074c210244d783558f657af ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -1045,8 +1045,8 @@ No available documentation.
 ") DN;
 		static gp_Vec2d DN(const Standard_Real U, const gp_Elips2d & E, const Standard_Integer N);
 
-		/****************** DN ******************/
-		/**** md5 signature: 0f4adb9b37809fe774928577eacfadd4 ****/
+		/****** ElCLib::DN ******/
+		/****** md5 signature: 0f4adb9b37809fe774928577eacfadd4 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -1065,8 +1065,8 @@ No available documentation.
 ") DN;
 		static gp_Vec2d DN(const Standard_Real U, const gp_Hypr2d & H, const Standard_Integer N);
 
-		/****************** DN ******************/
-		/**** md5 signature: e67031172b84f3a3b132c1cfa1e007a5 ****/
+		/****** ElCLib::DN ******/
+		/****** md5 signature: e67031172b84f3a3b132c1cfa1e007a5 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -1085,8 +1085,8 @@ No available documentation.
 ") DN;
 		static gp_Vec2d DN(const Standard_Real U, const gp_Parab2d & Prb, const Standard_Integer N);
 
-		/****************** EllipseD1 ******************/
-		/**** md5 signature: 6593b6832008eb1e08ba875629ec6f2d ****/
+		/****** ElCLib::EllipseD1 ******/
+		/****** md5 signature: 6593b6832008eb1e08ba875629ec6f2d ******/
 		%feature("compactdefaultargs") EllipseD1;
 		%feature("autodoc", "
 Parameters
@@ -1108,8 +1108,8 @@ No available documentation.
 ") EllipseD1;
 		static void EllipseD1(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** EllipseD1 ******************/
-		/**** md5 signature: 093400b65d5ddd2d995df1f71658bd2f ****/
+		/****** ElCLib::EllipseD1 ******/
+		/****** md5 signature: 093400b65d5ddd2d995df1f71658bd2f ******/
 		%feature("compactdefaultargs") EllipseD1;
 		%feature("autodoc", "
 Parameters
@@ -1131,8 +1131,8 @@ No available documentation.
 ") EllipseD1;
 		static void EllipseD1(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** EllipseD2 ******************/
-		/**** md5 signature: 94e6352d82f5a718596085ae6192b0f4 ****/
+		/****** ElCLib::EllipseD2 ******/
+		/****** md5 signature: 94e6352d82f5a718596085ae6192b0f4 ******/
 		%feature("compactdefaultargs") EllipseD2;
 		%feature("autodoc", "
 Parameters
@@ -1155,8 +1155,8 @@ No available documentation.
 ") EllipseD2;
 		static void EllipseD2(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** EllipseD2 ******************/
-		/**** md5 signature: f1ac8bac2488b01be483ca73b4d96525 ****/
+		/****** ElCLib::EllipseD2 ******/
+		/****** md5 signature: f1ac8bac2488b01be483ca73b4d96525 ******/
 		%feature("compactdefaultargs") EllipseD2;
 		%feature("autodoc", "
 Parameters
@@ -1179,8 +1179,8 @@ No available documentation.
 ") EllipseD2;
 		static void EllipseD2(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** EllipseD3 ******************/
-		/**** md5 signature: a8d0a37bfdd61c8132ad02bcd42abf97 ****/
+		/****** ElCLib::EllipseD3 ******/
+		/****** md5 signature: a8d0a37bfdd61c8132ad02bcd42abf97 ******/
 		%feature("compactdefaultargs") EllipseD3;
 		%feature("autodoc", "
 Parameters
@@ -1204,8 +1204,8 @@ No available documentation.
 ") EllipseD3;
 		static void EllipseD3(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** EllipseD3 ******************/
-		/**** md5 signature: bdd32b73f0c9829834faf35dd0229e32 ****/
+		/****** ElCLib::EllipseD3 ******/
+		/****** md5 signature: bdd32b73f0c9829834faf35dd0229e32 ******/
 		%feature("compactdefaultargs") EllipseD3;
 		%feature("autodoc", "
 Parameters
@@ -1229,8 +1229,8 @@ No available documentation.
 ") EllipseD3;
 		static void EllipseD3(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
-		/****************** EllipseDN ******************/
-		/**** md5 signature: f8970908a0d6bbf296e004aee7c8dd5f ****/
+		/****** ElCLib::EllipseDN ******/
+		/****** md5 signature: f8970908a0d6bbf296e004aee7c8dd5f ******/
 		%feature("compactdefaultargs") EllipseDN;
 		%feature("autodoc", "
 Parameters
@@ -1251,8 +1251,8 @@ No available documentation.
 ") EllipseDN;
 		static gp_Vec EllipseDN(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Integer N);
 
-		/****************** EllipseDN ******************/
-		/**** md5 signature: fa95cba3bb71049e0dbda3c5897cf3f7 ****/
+		/****** ElCLib::EllipseDN ******/
+		/****** md5 signature: fa95cba3bb71049e0dbda3c5897cf3f7 ******/
 		%feature("compactdefaultargs") EllipseDN;
 		%feature("autodoc", "
 Parameters
@@ -1273,8 +1273,8 @@ No available documentation.
 ") EllipseDN;
 		static gp_Vec2d EllipseDN(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Integer N);
 
-		/****************** EllipseParameter ******************/
-		/**** md5 signature: 7ea0af8a159007b224c805cd6b2750fb ****/
+		/****** ElCLib::EllipseParameter ******/
+		/****** md5 signature: 7ea0af8a159007b224c805cd6b2750fb ******/
 		%feature("compactdefaultargs") EllipseParameter;
 		%feature("autodoc", "
 Parameters
@@ -1294,8 +1294,8 @@ No available documentation.
 ") EllipseParameter;
 		static Standard_Real EllipseParameter(const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const gp_Pnt & P);
 
-		/****************** EllipseParameter ******************/
-		/**** md5 signature: 9adc5af57d198107ea118e0a5118ff8b ****/
+		/****** ElCLib::EllipseParameter ******/
+		/****** md5 signature: 9adc5af57d198107ea118e0a5118ff8b ******/
 		%feature("compactdefaultargs") EllipseParameter;
 		%feature("autodoc", "
 Parameters
@@ -1315,8 +1315,8 @@ Pos is the axis of the ellipse parametrization in the local coordinate system of
 ") EllipseParameter;
 		static Standard_Real EllipseParameter(const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const gp_Pnt2d & P);
 
-		/****************** EllipseValue ******************/
-		/**** md5 signature: d54582fecc06252f293f1a1e61001a89 ****/
+		/****** ElCLib::EllipseValue ******/
+		/****** md5 signature: d54582fecc06252f293f1a1e61001a89 ******/
 		%feature("compactdefaultargs") EllipseValue;
 		%feature("autodoc", "
 Parameters
@@ -1336,8 +1336,8 @@ No available documentation.
 ") EllipseValue;
 		static gp_Pnt EllipseValue(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
 
-		/****************** EllipseValue ******************/
-		/**** md5 signature: fa1d15069b68a59764b437be76d05088 ****/
+		/****** ElCLib::EllipseValue ******/
+		/****** md5 signature: fa1d15069b68a59764b437be76d05088 ******/
 		%feature("compactdefaultargs") EllipseValue;
 		%feature("autodoc", "
 Parameters
@@ -1357,8 +1357,8 @@ No available documentation.
 ") EllipseValue;
 		static gp_Pnt2d EllipseValue(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
 
-		/****************** HyperbolaD1 ******************/
-		/**** md5 signature: 033ede559cba6ac21a9fef26462ef8f3 ****/
+		/****** ElCLib::HyperbolaD1 ******/
+		/****** md5 signature: 033ede559cba6ac21a9fef26462ef8f3 ******/
 		%feature("compactdefaultargs") HyperbolaD1;
 		%feature("autodoc", "
 Parameters
@@ -1380,8 +1380,8 @@ No available documentation.
 ") HyperbolaD1;
 		static void HyperbolaD1(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** HyperbolaD1 ******************/
-		/**** md5 signature: 3a363cda94c2cd01407e26d1c78ade9f ****/
+		/****** ElCLib::HyperbolaD1 ******/
+		/****** md5 signature: 3a363cda94c2cd01407e26d1c78ade9f ******/
 		%feature("compactdefaultargs") HyperbolaD1;
 		%feature("autodoc", "
 Parameters
@@ -1403,8 +1403,8 @@ No available documentation.
 ") HyperbolaD1;
 		static void HyperbolaD1(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** HyperbolaD2 ******************/
-		/**** md5 signature: 03a91b782355142e9ddd64b2e17c1677 ****/
+		/****** ElCLib::HyperbolaD2 ******/
+		/****** md5 signature: 03a91b782355142e9ddd64b2e17c1677 ******/
 		%feature("compactdefaultargs") HyperbolaD2;
 		%feature("autodoc", "
 Parameters
@@ -1427,8 +1427,8 @@ No available documentation.
 ") HyperbolaD2;
 		static void HyperbolaD2(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** HyperbolaD2 ******************/
-		/**** md5 signature: b2e405bb7c4b37e6d87915716f83a4e8 ****/
+		/****** ElCLib::HyperbolaD2 ******/
+		/****** md5 signature: b2e405bb7c4b37e6d87915716f83a4e8 ******/
 		%feature("compactdefaultargs") HyperbolaD2;
 		%feature("autodoc", "
 Parameters
@@ -1451,8 +1451,8 @@ No available documentation.
 ") HyperbolaD2;
 		static void HyperbolaD2(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** HyperbolaD3 ******************/
-		/**** md5 signature: 238469a3dbbc424fea9a1937c9e00668 ****/
+		/****** ElCLib::HyperbolaD3 ******/
+		/****** md5 signature: 238469a3dbbc424fea9a1937c9e00668 ******/
 		%feature("compactdefaultargs") HyperbolaD3;
 		%feature("autodoc", "
 Parameters
@@ -1476,8 +1476,8 @@ No available documentation.
 ") HyperbolaD3;
 		static void HyperbolaD3(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** HyperbolaD3 ******************/
-		/**** md5 signature: b906249598c170d7267f6ac98714d87f ****/
+		/****** ElCLib::HyperbolaD3 ******/
+		/****** md5 signature: b906249598c170d7267f6ac98714d87f ******/
 		%feature("compactdefaultargs") HyperbolaD3;
 		%feature("autodoc", "
 Parameters
@@ -1501,8 +1501,8 @@ In the following functions n is the order of derivation and should be greater th
 ") HyperbolaD3;
 		static void HyperbolaD3(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
-		/****************** HyperbolaDN ******************/
-		/**** md5 signature: 64606ed51d58295ebd5231b094c367fe ****/
+		/****** ElCLib::HyperbolaDN ******/
+		/****** md5 signature: 64606ed51d58295ebd5231b094c367fe ******/
 		%feature("compactdefaultargs") HyperbolaDN;
 		%feature("autodoc", "
 Parameters
@@ -1523,8 +1523,8 @@ No available documentation.
 ") HyperbolaDN;
 		static gp_Vec HyperbolaDN(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Integer N);
 
-		/****************** HyperbolaDN ******************/
-		/**** md5 signature: 3abfa8458baef677bbe28fcc2d8aa4f9 ****/
+		/****** ElCLib::HyperbolaDN ******/
+		/****** md5 signature: 3abfa8458baef677bbe28fcc2d8aa4f9 ******/
 		%feature("compactdefaultargs") HyperbolaDN;
 		%feature("autodoc", "
 Parameters
@@ -1545,8 +1545,8 @@ No available documentation.
 ") HyperbolaDN;
 		static gp_Vec2d HyperbolaDN(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Integer N);
 
-		/****************** HyperbolaParameter ******************/
-		/**** md5 signature: 1ac7c151e92a90a9c54f6feecb124b3a ****/
+		/****** ElCLib::HyperbolaParameter ******/
+		/****** md5 signature: 1ac7c151e92a90a9c54f6feecb124b3a ******/
 		%feature("compactdefaultargs") HyperbolaParameter;
 		%feature("autodoc", "
 Parameters
@@ -1566,8 +1566,8 @@ No available documentation.
 ") HyperbolaParameter;
 		static Standard_Real HyperbolaParameter(const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const gp_Pnt & P);
 
-		/****************** HyperbolaParameter ******************/
-		/**** md5 signature: 6f3595272e2a586d186798eb561dd223 ****/
+		/****** ElCLib::HyperbolaParameter ******/
+		/****** md5 signature: 6f3595272e2a586d186798eb561dd223 ******/
 		%feature("compactdefaultargs") HyperbolaParameter;
 		%feature("autodoc", "
 Parameters
@@ -1587,8 +1587,8 @@ Pos is the axis of the hyperbola parametrization in the local coordinate system 
 ") HyperbolaParameter;
 		static Standard_Real HyperbolaParameter(const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const gp_Pnt2d & P);
 
-		/****************** HyperbolaValue ******************/
-		/**** md5 signature: b83b776e2657cd56ddc82e5ef6298410 ****/
+		/****** ElCLib::HyperbolaValue ******/
+		/****** md5 signature: b83b776e2657cd56ddc82e5ef6298410 ******/
 		%feature("compactdefaultargs") HyperbolaValue;
 		%feature("autodoc", "
 Parameters
@@ -1608,8 +1608,8 @@ No available documentation.
 ") HyperbolaValue;
 		static gp_Pnt HyperbolaValue(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
 
-		/****************** HyperbolaValue ******************/
-		/**** md5 signature: c40c27b385ce364d0b3257da8e1ec87a ****/
+		/****** ElCLib::HyperbolaValue ******/
+		/****** md5 signature: c40c27b385ce364d0b3257da8e1ec87a ******/
 		%feature("compactdefaultargs") HyperbolaValue;
 		%feature("autodoc", "
 Parameters
@@ -1629,8 +1629,8 @@ No available documentation.
 ") HyperbolaValue;
 		static gp_Pnt2d HyperbolaValue(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
 
-		/****************** InPeriod ******************/
-		/**** md5 signature: 883a590c13e6d39257033db941d4e702 ****/
+		/****** ElCLib::InPeriod ******/
+		/****** md5 signature: 883a590c13e6d39257033db941d4e702 ******/
 		%feature("compactdefaultargs") InPeriod;
 		%feature("autodoc", "
 Parameters
@@ -1649,8 +1649,8 @@ Return a value in the range <ufirst, ulast> by adding or removing the period <ul
 ") InPeriod;
 		static Standard_Real InPeriod(const Standard_Real U, const Standard_Real UFirst, const Standard_Real ULast);
 
-		/****************** LineD1 ******************/
-		/**** md5 signature: fc625c5a3779023dffcf4cd338619ad5 ****/
+		/****** ElCLib::LineD1 ******/
+		/****** md5 signature: fc625c5a3779023dffcf4cd338619ad5 ******/
 		%feature("compactdefaultargs") LineD1;
 		%feature("autodoc", "
 Parameters
@@ -1670,8 +1670,8 @@ No available documentation.
 ") LineD1;
 		static void LineD1(const Standard_Real U, const gp_Ax1 & Pos, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** LineD1 ******************/
-		/**** md5 signature: 7b3ff7d2b0a92631a2175fb61f85c547 ****/
+		/****** ElCLib::LineD1 ******/
+		/****** md5 signature: 7b3ff7d2b0a92631a2175fb61f85c547 ******/
 		%feature("compactdefaultargs") LineD1;
 		%feature("autodoc", "
 Parameters
@@ -1691,8 +1691,8 @@ No available documentation.
 ") LineD1;
 		static void LineD1(const Standard_Real U, const gp_Ax2d & Pos, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** LineDN ******************/
-		/**** md5 signature: 37bccade86b2de011c381d69ff01cba7 ****/
+		/****** ElCLib::LineDN ******/
+		/****** md5 signature: 37bccade86b2de011c381d69ff01cba7 ******/
 		%feature("compactdefaultargs") LineDN;
 		%feature("autodoc", "
 Parameters
@@ -1711,8 +1711,8 @@ In the following functions n is the order of derivation and should be greater th
 ") LineDN;
 		static gp_Vec LineDN(const Standard_Real U, const gp_Ax1 & Pos, const Standard_Integer N);
 
-		/****************** LineDN ******************/
-		/**** md5 signature: 04ba70295ad6b3d76adf99aacf99b805 ****/
+		/****** ElCLib::LineDN ******/
+		/****** md5 signature: 04ba70295ad6b3d76adf99aacf99b805 ******/
 		%feature("compactdefaultargs") LineDN;
 		%feature("autodoc", "
 Parameters
@@ -1731,8 +1731,8 @@ No available documentation.
 ") LineDN;
 		static gp_Vec2d LineDN(const Standard_Real U, const gp_Ax2d & Pos, const Standard_Integer N);
 
-		/****************** LineParameter ******************/
-		/**** md5 signature: 3003b02b9d9b461587a6d0764b1f0102 ****/
+		/****** ElCLib::LineParameter ******/
+		/****** md5 signature: 3003b02b9d9b461587a6d0764b1f0102 ******/
 		%feature("compactdefaultargs") LineParameter;
 		%feature("autodoc", "
 Parameters
@@ -1750,8 +1750,8 @@ No available documentation.
 ") LineParameter;
 		static Standard_Real LineParameter(const gp_Ax1 & Pos, const gp_Pnt & P);
 
-		/****************** LineParameter ******************/
-		/**** md5 signature: ca1ba1d96b0875085e4ace212cd2d361 ****/
+		/****** ElCLib::LineParameter ******/
+		/****** md5 signature: ca1ba1d96b0875085e4ace212cd2d361 ******/
 		%feature("compactdefaultargs") LineParameter;
 		%feature("autodoc", "
 Parameters
@@ -1769,8 +1769,8 @@ Parametrization p (u) = l.location() + u * l.direction().
 ") LineParameter;
 		static Standard_Real LineParameter(const gp_Ax2d & Pos, const gp_Pnt2d & P);
 
-		/****************** LineValue ******************/
-		/**** md5 signature: 8c9d4a1bc40f1a7a796def7654c380b7 ****/
+		/****** ElCLib::LineValue ******/
+		/****** md5 signature: 8c9d4a1bc40f1a7a796def7654c380b7 ******/
 		%feature("compactdefaultargs") LineValue;
 		%feature("autodoc", "
 Parameters
@@ -1788,8 +1788,8 @@ Curve evaluation the following basis functions compute the derivatives on elemen
 ") LineValue;
 		static gp_Pnt LineValue(const Standard_Real U, const gp_Ax1 & Pos);
 
-		/****************** LineValue ******************/
-		/**** md5 signature: 1c0049b64e6c51ac6742eeba33f38305 ****/
+		/****** ElCLib::LineValue ******/
+		/****** md5 signature: 1c0049b64e6c51ac6742eeba33f38305 ******/
 		%feature("compactdefaultargs") LineValue;
 		%feature("autodoc", "
 Parameters
@@ -1807,8 +1807,8 @@ No available documentation.
 ") LineValue;
 		static gp_Pnt2d LineValue(const Standard_Real U, const gp_Ax2d & Pos);
 
-		/****************** ParabolaD1 ******************/
-		/**** md5 signature: 718d51678e2e5ee75203f96e49c438d5 ****/
+		/****** ElCLib::ParabolaD1 ******/
+		/****** md5 signature: 718d51678e2e5ee75203f96e49c438d5 ******/
 		%feature("compactdefaultargs") ParabolaD1;
 		%feature("autodoc", "
 Parameters
@@ -1829,8 +1829,8 @@ No available documentation.
 ") ParabolaD1;
 		static void ParabolaD1(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Focal, gp_Pnt & P, gp_Vec & V1);
 
-		/****************** ParabolaD1 ******************/
-		/**** md5 signature: 4e1990f537afd932bc1ce130c0434488 ****/
+		/****** ElCLib::ParabolaD1 ******/
+		/****** md5 signature: 4e1990f537afd932bc1ce130c0434488 ******/
 		%feature("compactdefaultargs") ParabolaD1;
 		%feature("autodoc", "
 Parameters
@@ -1851,8 +1851,8 @@ No available documentation.
 ") ParabolaD1;
 		static void ParabolaD1(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Focal, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** ParabolaD2 ******************/
-		/**** md5 signature: 008f7fe7e97288063480d401ac72d77b ****/
+		/****** ElCLib::ParabolaD2 ******/
+		/****** md5 signature: 008f7fe7e97288063480d401ac72d77b ******/
 		%feature("compactdefaultargs") ParabolaD2;
 		%feature("autodoc", "
 Parameters
@@ -1874,8 +1874,8 @@ No available documentation.
 ") ParabolaD2;
 		static void ParabolaD2(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Focal, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** ParabolaD2 ******************/
-		/**** md5 signature: 343cbde8116c778c0b005be3bd8e560d ****/
+		/****** ElCLib::ParabolaD2 ******/
+		/****** md5 signature: 343cbde8116c778c0b005be3bd8e560d ******/
 		%feature("compactdefaultargs") ParabolaD2;
 		%feature("autodoc", "
 Parameters
@@ -1897,8 +1897,8 @@ No available documentation.
 ") ParabolaD2;
 		static void ParabolaD2(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Focal, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** ParabolaDN ******************/
-		/**** md5 signature: 98a7dc7df6cab966d8f5341e7a669ba6 ****/
+		/****** ElCLib::ParabolaDN ******/
+		/****** md5 signature: 98a7dc7df6cab966d8f5341e7a669ba6 ******/
 		%feature("compactdefaultargs") ParabolaDN;
 		%feature("autodoc", "
 Parameters
@@ -1918,8 +1918,8 @@ No available documentation.
 ") ParabolaDN;
 		static gp_Vec ParabolaDN(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Focal, const Standard_Integer N);
 
-		/****************** ParabolaDN ******************/
-		/**** md5 signature: 9000962510b0d389d586207e890fa5c7 ****/
+		/****** ElCLib::ParabolaDN ******/
+		/****** md5 signature: 9000962510b0d389d586207e890fa5c7 ******/
 		%feature("compactdefaultargs") ParabolaDN;
 		%feature("autodoc", "
 Parameters
@@ -1939,8 +1939,8 @@ The following functions compute the parametric value corresponding to a given po
 ") ParabolaDN;
 		static gp_Vec2d ParabolaDN(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Focal, const Standard_Integer N);
 
-		/****************** ParabolaParameter ******************/
-		/**** md5 signature: be6a94c70eda2cca123aeff7e9c873f8 ****/
+		/****** ElCLib::ParabolaParameter ******/
+		/****** md5 signature: be6a94c70eda2cca123aeff7e9c873f8 ******/
 		%feature("compactdefaultargs") ParabolaParameter;
 		%feature("autodoc", "
 Parameters
@@ -1958,8 +1958,8 @@ No available documentation.
 ") ParabolaParameter;
 		static Standard_Real ParabolaParameter(const gp_Ax2 & Pos, const gp_Pnt & P);
 
-		/****************** ParabolaParameter ******************/
-		/**** md5 signature: ac4ea60923b1662c5bc0e00811830d7c ****/
+		/****** ElCLib::ParabolaParameter ******/
+		/****** md5 signature: ac4ea60923b1662c5bc0e00811830d7c ******/
 		%feature("compactdefaultargs") ParabolaParameter;
 		%feature("autodoc", "
 Parameters
@@ -1977,8 +1977,8 @@ Pos is the mirror axis of the parabola parametrization in the local coordinate s
 ") ParabolaParameter;
 		static Standard_Real ParabolaParameter(const gp_Ax22d & Pos, const gp_Pnt2d & P);
 
-		/****************** ParabolaValue ******************/
-		/**** md5 signature: 79c5c33d9dcae654ec135813f37c9103 ****/
+		/****** ElCLib::ParabolaValue ******/
+		/****** md5 signature: 79c5c33d9dcae654ec135813f37c9103 ******/
 		%feature("compactdefaultargs") ParabolaValue;
 		%feature("autodoc", "
 Parameters
@@ -1997,8 +1997,8 @@ No available documentation.
 ") ParabolaValue;
 		static gp_Pnt ParabolaValue(const Standard_Real U, const gp_Ax2 & Pos, const Standard_Real Focal);
 
-		/****************** ParabolaValue ******************/
-		/**** md5 signature: 44322c024bb31a8ed2cbdb18b7d8cc63 ****/
+		/****** ElCLib::ParabolaValue ******/
+		/****** md5 signature: 44322c024bb31a8ed2cbdb18b7d8cc63 ******/
 		%feature("compactdefaultargs") ParabolaValue;
 		%feature("autodoc", "
 Parameters
@@ -2017,8 +2017,8 @@ No available documentation.
 ") ParabolaValue;
 		static gp_Pnt2d ParabolaValue(const Standard_Real U, const gp_Ax22d & Pos, const Standard_Real Focal);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: fdffb0a483b99135c55258f3f69dfd77 ****/
+		/****** ElCLib::Parameter ******/
+		/****** md5 signature: fdffb0a483b99135c55258f3f69dfd77 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2036,8 +2036,8 @@ Computes the parameter value of the point p on the given curve. note: in its loc
 ") Parameter;
 		static Standard_Real Parameter(const gp_Lin & L, const gp_Pnt & P);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 5c19b9d7339e4287f032225279193aac ****/
+		/****** ElCLib::Parameter ******/
+		/****** md5 signature: 5c19b9d7339e4287f032225279193aac ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2055,8 +2055,8 @@ Parametrization p (u) = l.location() + u * l.direction().
 ") Parameter;
 		static Standard_Real Parameter(const gp_Lin2d & L, const gp_Pnt2d & P);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: c0de9d224cc41db001d89345bb1cc0df ****/
+		/****** ElCLib::Parameter ******/
+		/****** md5 signature: c0de9d224cc41db001d89345bb1cc0df ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2074,8 +2074,8 @@ No available documentation.
 ") Parameter;
 		static Standard_Real Parameter(const gp_Circ & C, const gp_Pnt & P);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: fc1445dfdc288aa7468073f96390f76e ****/
+		/****** ElCLib::Parameter ******/
+		/****** md5 signature: fc1445dfdc288aa7468073f96390f76e ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2093,8 +2093,8 @@ Parametrization in the local coordinate system of the circle x (u) = radius * co
 ") Parameter;
 		static Standard_Real Parameter(const gp_Circ2d & C, const gp_Pnt2d & P);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 7be9925318277a51229e05227e49261d ****/
+		/****** ElCLib::Parameter ******/
+		/****** md5 signature: 7be9925318277a51229e05227e49261d ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2112,8 +2112,8 @@ No available documentation.
 ") Parameter;
 		static Standard_Real Parameter(const gp_Elips & E, const gp_Pnt & P);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: f94bcbce615e9d9dc64babd9d7146c29 ****/
+		/****** ElCLib::Parameter ******/
+		/****** md5 signature: f94bcbce615e9d9dc64babd9d7146c29 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2131,8 +2131,8 @@ Parametrization in the local coordinate system of the ellipse x (u) = majorradiu
 ") Parameter;
 		static Standard_Real Parameter(const gp_Elips2d & E, const gp_Pnt2d & P);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 9513c9d32e783629b14c8de9e6bd8a60 ****/
+		/****** ElCLib::Parameter ******/
+		/****** md5 signature: 9513c9d32e783629b14c8de9e6bd8a60 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2150,8 +2150,8 @@ No available documentation.
 ") Parameter;
 		static Standard_Real Parameter(const gp_Hypr & H, const gp_Pnt & P);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 746f4ae2f34e8c146289569ee8698e24 ****/
+		/****** ElCLib::Parameter ******/
+		/****** md5 signature: 746f4ae2f34e8c146289569ee8698e24 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2169,8 +2169,8 @@ Parametrization in the local coordinate system of the hyperbola x (u) = majorrad
 ") Parameter;
 		static Standard_Real Parameter(const gp_Hypr2d & H, const gp_Pnt2d & P);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 3bebf670839393a24ae1609893fd794b ****/
+		/****** ElCLib::Parameter ******/
+		/****** md5 signature: 3bebf670839393a24ae1609893fd794b ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2188,8 +2188,8 @@ No available documentation.
 ") Parameter;
 		static Standard_Real Parameter(const gp_Parab & Prb, const gp_Pnt & P);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: b160c415b3cecd54564c3899672650ac ****/
+		/****** ElCLib::Parameter ******/
+		/****** md5 signature: b160c415b3cecd54564c3899672650ac ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -2207,8 +2207,8 @@ Parametrization in the local coordinate system of the parabola y**2 = (2*p) * x 
 ") Parameter;
 		static Standard_Real Parameter(const gp_Parab2d & Prb, const gp_Pnt2d & P);
 
-		/****************** To3d ******************/
-		/**** md5 signature: d6eb46a2a80e30e827b5ec0546580b9d ****/
+		/****** ElCLib::To3d ******/
+		/****** md5 signature: d6eb46a2a80e30e827b5ec0546580b9d ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -2226,8 +2226,8 @@ No available documentation.
 ") To3d;
 		static gp_Pnt To3d(const gp_Ax2 & Pos, const gp_Pnt2d & P);
 
-		/****************** To3d ******************/
-		/**** md5 signature: 15e5d44014978eea4b234ce5f508823f ****/
+		/****** ElCLib::To3d ******/
+		/****** md5 signature: 15e5d44014978eea4b234ce5f508823f ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -2245,8 +2245,8 @@ No available documentation.
 ") To3d;
 		static gp_Vec To3d(const gp_Ax2 & Pos, const gp_Vec2d & V);
 
-		/****************** To3d ******************/
-		/**** md5 signature: 46ba1c4acbf8e7dab865489fa639e50a ****/
+		/****** ElCLib::To3d ******/
+		/****** md5 signature: 46ba1c4acbf8e7dab865489fa639e50a ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -2264,8 +2264,8 @@ No available documentation.
 ") To3d;
 		static gp_Dir To3d(const gp_Ax2 & Pos, const gp_Dir2d & V);
 
-		/****************** To3d ******************/
-		/**** md5 signature: 00a2ff51c078ee9ef43b0bea27dbb9e0 ****/
+		/****** ElCLib::To3d ******/
+		/****** md5 signature: 00a2ff51c078ee9ef43b0bea27dbb9e0 ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -2283,8 +2283,8 @@ No available documentation.
 ") To3d;
 		static gp_Ax1 To3d(const gp_Ax2 & Pos, const gp_Ax2d & A);
 
-		/****************** To3d ******************/
-		/**** md5 signature: 7fedb205d65f8314e451664c8d4353ea ****/
+		/****** ElCLib::To3d ******/
+		/****** md5 signature: 7fedb205d65f8314e451664c8d4353ea ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -2302,8 +2302,8 @@ No available documentation.
 ") To3d;
 		static gp_Ax2 To3d(const gp_Ax2 & Pos, const gp_Ax22d & A);
 
-		/****************** To3d ******************/
-		/**** md5 signature: fe55e92c77173bf56a6e8c7d320e8aab ****/
+		/****** ElCLib::To3d ******/
+		/****** md5 signature: fe55e92c77173bf56a6e8c7d320e8aab ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -2321,8 +2321,8 @@ No available documentation.
 ") To3d;
 		static gp_Lin To3d(const gp_Ax2 & Pos, const gp_Lin2d & L);
 
-		/****************** To3d ******************/
-		/**** md5 signature: 02449a387fb4d966c889415557e3be6a ****/
+		/****** ElCLib::To3d ******/
+		/****** md5 signature: 02449a387fb4d966c889415557e3be6a ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -2340,8 +2340,8 @@ No available documentation.
 ") To3d;
 		static gp_Circ To3d(const gp_Ax2 & Pos, const gp_Circ2d & C);
 
-		/****************** To3d ******************/
-		/**** md5 signature: 892dcd694df22cd9b12c922cbdc0d21f ****/
+		/****** ElCLib::To3d ******/
+		/****** md5 signature: 892dcd694df22cd9b12c922cbdc0d21f ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -2359,8 +2359,8 @@ No available documentation.
 ") To3d;
 		static gp_Elips To3d(const gp_Ax2 & Pos, const gp_Elips2d & E);
 
-		/****************** To3d ******************/
-		/**** md5 signature: fc277359cfba379ecc2feaeef51e1347 ****/
+		/****** ElCLib::To3d ******/
+		/****** md5 signature: fc277359cfba379ecc2feaeef51e1347 ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -2378,8 +2378,8 @@ No available documentation.
 ") To3d;
 		static gp_Hypr To3d(const gp_Ax2 & Pos, const gp_Hypr2d & H);
 
-		/****************** To3d ******************/
-		/**** md5 signature: e01e1c5ea59a879b1c0401f677c2ef81 ****/
+		/****** ElCLib::To3d ******/
+		/****** md5 signature: e01e1c5ea59a879b1c0401f677c2ef81 ******/
 		%feature("compactdefaultargs") To3d;
 		%feature("autodoc", "
 Parameters
@@ -2397,8 +2397,8 @@ These functions build a 3d geometric entity from a 2d geometric entity. the 'x a
 ") To3d;
 		static gp_Parab To3d(const gp_Ax2 & Pos, const gp_Parab2d & Prb);
 
-		/****************** Value ******************/
-		/**** md5 signature: dcf0031761dcf8de0f57e41c946a0a5f ****/
+		/****** ElCLib::Value ******/
+		/****** md5 signature: dcf0031761dcf8de0f57e41c946a0a5f ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2416,8 +2416,8 @@ For elementary curves (lines, circles and conics) from the gp package, computes 
 ") Value;
 		static gp_Pnt Value(const Standard_Real U, const gp_Lin & L);
 
-		/****************** Value ******************/
-		/**** md5 signature: 06d8da1b31def39d978e12c20d64cef4 ****/
+		/****** ElCLib::Value ******/
+		/****** md5 signature: 06d8da1b31def39d978e12c20d64cef4 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2435,8 +2435,8 @@ No available documentation.
 ") Value;
 		static gp_Pnt Value(const Standard_Real U, const gp_Circ & C);
 
-		/****************** Value ******************/
-		/**** md5 signature: 7272c18d7bcfe733c7e239ca90ac9955 ****/
+		/****** ElCLib::Value ******/
+		/****** md5 signature: 7272c18d7bcfe733c7e239ca90ac9955 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2454,8 +2454,8 @@ No available documentation.
 ") Value;
 		static gp_Pnt Value(const Standard_Real U, const gp_Elips & E);
 
-		/****************** Value ******************/
-		/**** md5 signature: d8fb8620979138dd40196a5de32ada52 ****/
+		/****** ElCLib::Value ******/
+		/****** md5 signature: d8fb8620979138dd40196a5de32ada52 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2473,8 +2473,8 @@ No available documentation.
 ") Value;
 		static gp_Pnt Value(const Standard_Real U, const gp_Hypr & H);
 
-		/****************** Value ******************/
-		/**** md5 signature: 3f0f5bf4def209401dc2e57b7d0239be ****/
+		/****** ElCLib::Value ******/
+		/****** md5 signature: 3f0f5bf4def209401dc2e57b7d0239be ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2492,8 +2492,8 @@ No available documentation.
 ") Value;
 		static gp_Pnt Value(const Standard_Real U, const gp_Parab & Prb);
 
-		/****************** Value ******************/
-		/**** md5 signature: 199f386ede52debecf14f2ce0102af65 ****/
+		/****** ElCLib::Value ******/
+		/****** md5 signature: 199f386ede52debecf14f2ce0102af65 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2511,8 +2511,8 @@ No available documentation.
 ") Value;
 		static gp_Pnt2d Value(const Standard_Real U, const gp_Lin2d & L);
 
-		/****************** Value ******************/
-		/**** md5 signature: 7f145b21fc7cd102603b54537f61d4e6 ****/
+		/****** ElCLib::Value ******/
+		/****** md5 signature: 7f145b21fc7cd102603b54537f61d4e6 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2530,8 +2530,8 @@ No available documentation.
 ") Value;
 		static gp_Pnt2d Value(const Standard_Real U, const gp_Circ2d & C);
 
-		/****************** Value ******************/
-		/**** md5 signature: 57bd1d0011f8440b0ceebcd59c246f6f ****/
+		/****** ElCLib::Value ******/
+		/****** md5 signature: 57bd1d0011f8440b0ceebcd59c246f6f ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2549,8 +2549,8 @@ No available documentation.
 ") Value;
 		static gp_Pnt2d Value(const Standard_Real U, const gp_Elips2d & E);
 
-		/****************** Value ******************/
-		/**** md5 signature: 05c2c0e307e223938751475ab1931ddb ****/
+		/****** ElCLib::Value ******/
+		/****** md5 signature: 05c2c0e307e223938751475ab1931ddb ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2568,8 +2568,8 @@ No available documentation.
 ") Value;
 		static gp_Pnt2d Value(const Standard_Real U, const gp_Hypr2d & H);
 
-		/****************** Value ******************/
-		/**** md5 signature: 9c529c16c32a6c9cd0dd5cf18db9c33f ****/
+		/****** ElCLib::Value ******/
+		/****** md5 signature: 9c529c16c32a6c9cd0dd5cf18db9c33f ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters

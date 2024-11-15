@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define CHFIKPARTDOCSTRING
 "ChFiKPart module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_chfikpart.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_chfikpart.html"
 %enddef
 %module (package="OCC.Core", docstring=CHFIKPARTDOCSTRING) ChFiKPart
 
@@ -132,8 +132,8 @@ typedef NCollection_DataMap<Standard_Integer, opencascade::handle<Adaptor2d_Curv
 ******************************/
 class ChFiKPart_ComputeData {
 	public:
-		/****************** Compute ******************/
-		/**** md5 signature: a0c5d37c66ecc69b80c9407be109abee ****/
+		/****** ChFiKPart_ComputeData::Compute ******/
+		/****** md5 signature: a0c5d37c66ecc69b80c9407be109abee ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -157,8 +157,8 @@ Computes a simple fillet in several particular cases.
 ") Compute;
 		static Standard_Boolean Compute(TopOpeBRepDS_DataStructure & DStr, opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const opencascade::handle<ChFiDS_Spine> & Sp, const Standard_Integer Iedge);
 
-		/****************** ComputeCorner ******************/
-		/**** md5 signature: 865640977aad8d495cda6b0205404703 ****/
+		/****** ChFiKPart_ComputeData::ComputeCorner ******/
+		/****** md5 signature: 865640977aad8d495cda6b0205404703 ******/
 		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "
 Parameters
@@ -188,8 +188,8 @@ Computes a toric or spheric corner fillet.
 ") ComputeCorner;
 		static Standard_Boolean ComputeCorner(TopOpeBRepDS_DataStructure & DStr, const opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const TopAbs_Orientation OrFace1, const TopAbs_Orientation OrFace2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const Standard_Real minRad, const Standard_Real majRad, const gp_Pnt2d & P1S1, const gp_Pnt2d & P2S1, const gp_Pnt2d & P1S2, const gp_Pnt2d & P2S2);
 
-		/****************** ComputeCorner ******************/
-		/**** md5 signature: 85d29cbe50ebb6a374a60f8829eb98a3 ****/
+		/****** ChFiKPart_ComputeData::ComputeCorner ******/
+		/****** md5 signature: 85d29cbe50ebb6a374a60f8829eb98a3 ******/
 		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "
 Parameters
@@ -217,8 +217,8 @@ Computes spheric corner fillet with non iso pcurve on s2.
 ") ComputeCorner;
 		static Standard_Boolean ComputeCorner(TopOpeBRepDS_DataStructure & DStr, const opencascade::handle<ChFiDS_SurfData> & Data, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const TopAbs_Orientation OrFace1, const TopAbs_Orientation OrFace2, const TopAbs_Orientation Or1, const TopAbs_Orientation Or2, const Standard_Real Rad, const gp_Pnt2d & PS1, const gp_Pnt2d & P1S2, const gp_Pnt2d & P2S2);
 
-		/****************** ComputeCorner ******************/
-		/**** md5 signature: bafab55c65e7ea7e93485d2309ea19e0 ****/
+		/****** ChFiKPart_ComputeData::ComputeCorner ******/
+		/****** md5 signature: bafab55c65e7ea7e93485d2309ea19e0 ******/
 		%feature("compactdefaultargs") ComputeCorner;
 		%feature("autodoc", "
 Parameters

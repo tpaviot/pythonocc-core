@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APIHEADERSECTIONDOCSTRING
 "APIHeaderSection module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_apiheadersection.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_apiheadersection.html"
 %enddef
 %module (package="OCC.Core", docstring=APIHEADERSECTIONDOCSTRING) APIHeaderSection
 
@@ -94,8 +94,8 @@ from OCC.Core.Exception import *
 ************************************/
 class APIHeaderSection_EditHeader : public IFSelect_Editor {
 	public:
-		/****************** APIHeaderSection_EditHeader ******************/
-		/**** md5 signature: 2bf08a1315df936c9484c98a1d1baf5a ****/
+		/****** APIHeaderSection_EditHeader::APIHeaderSection_EditHeader ******/
+		/****** md5 signature: 2bf08a1315df936c9484c98a1d1baf5a ******/
 		%feature("compactdefaultargs") APIHeaderSection_EditHeader;
 		%feature("autodoc", "Return
 -------
@@ -107,8 +107,8 @@ No available documentation.
 ") APIHeaderSection_EditHeader;
 		 APIHeaderSection_EditHeader();
 
-		/****************** Apply ******************/
-		/**** md5 signature: 7128480b7f4b1ff6fd959731640e27fc ****/
+		/****** APIHeaderSection_EditHeader::Apply ******/
+		/****** md5 signature: 7128480b7f4b1ff6fd959731640e27fc ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "
 Parameters
@@ -127,8 +127,8 @@ No available documentation.
 ") Apply;
 		Standard_Boolean Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** Label ******************/
-		/**** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ****/
+		/****** APIHeaderSection_EditHeader::Label ******/
+		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -140,8 +140,8 @@ No available documentation.
 ") Label;
 		TCollection_AsciiString Label();
 
-		/****************** Load ******************/
-		/**** md5 signature: fbb84192d1ec7737c4c84905239a2df8 ****/
+		/****** APIHeaderSection_EditHeader::Load ******/
+		/****** md5 signature: fbb84192d1ec7737c4c84905239a2df8 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -160,8 +160,8 @@ No available documentation.
 ") Load;
 		Standard_Boolean Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** Recognize ******************/
-		/**** md5 signature: 745b42e0c753cb6baed4d66bbf94e5b8 ****/
+		/****** APIHeaderSection_EditHeader::Recognize ******/
+		/****** md5 signature: 745b42e0c753cb6baed4d66bbf94e5b8 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -178,8 +178,8 @@ No available documentation.
 ") Recognize;
 		Standard_Boolean Recognize(const opencascade::handle<IFSelect_EditForm> & form);
 
-		/****************** StringValue ******************/
-		/**** md5 signature: 4371620dd4c31b906a08f6f8ee98f04a ****/
+		/****** APIHeaderSection_EditHeader::StringValue ******/
+		/****** md5 signature: 4371620dd4c31b906a08f6f8ee98f04a ******/
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", "
 Parameters
@@ -213,8 +213,8 @@ No available documentation.
 ************************************/
 class APIHeaderSection_MakeHeader {
 	public:
-		/****************** APIHeaderSection_MakeHeader ******************/
-		/**** md5 signature: 231ae7cfabfb8525a17a55b5e8098f01 ****/
+		/****** APIHeaderSection_MakeHeader::APIHeaderSection_MakeHeader ******/
+		/****** md5 signature: 231ae7cfabfb8525a17a55b5e8098f01 ******/
 		%feature("compactdefaultargs") APIHeaderSection_MakeHeader;
 		%feature("autodoc", "
 Parameters
@@ -231,8 +231,8 @@ Prepares a new makeheader from scratch.
 ") APIHeaderSection_MakeHeader;
 		 APIHeaderSection_MakeHeader(const Standard_Integer shapetype = 0);
 
-		/****************** APIHeaderSection_MakeHeader ******************/
-		/**** md5 signature: 3bf1a3faeeaf6e2623b6097489a9d879 ****/
+		/****** APIHeaderSection_MakeHeader::APIHeaderSection_MakeHeader ******/
+		/****** md5 signature: 3bf1a3faeeaf6e2623b6097489a9d879 ******/
 		%feature("compactdefaultargs") APIHeaderSection_MakeHeader;
 		%feature("autodoc", "
 Parameters
@@ -249,8 +249,8 @@ Prepares a makeheader from the content of a stepmodel see isdone to know if the 
 ") APIHeaderSection_MakeHeader;
 		 APIHeaderSection_MakeHeader(const opencascade::handle<StepData_StepModel> & model);
 
-		/****************** AddSchemaIdentifier ******************/
-		/**** md5 signature: fb971c31ef622fe2699e9896a61d0b7c ****/
+		/****** APIHeaderSection_MakeHeader::AddSchemaIdentifier ******/
+		/****** md5 signature: fb971c31ef622fe2699e9896a61d0b7c ******/
 		%feature("compactdefaultargs") AddSchemaIdentifier;
 		%feature("autodoc", "
 Parameters
@@ -267,8 +267,8 @@ Add a subname of schema (if not yet in the list).
 ") AddSchemaIdentifier;
 		void AddSchemaIdentifier(const opencascade::handle<TCollection_HAsciiString> & aSchemaIdentifier);
 
-		/****************** Apply ******************/
-		/**** md5 signature: 7a18b7c9dc5aace0d13d1301acc1073f ****/
+		/****** APIHeaderSection_MakeHeader::Apply ******/
+		/****** md5 signature: 7a18b7c9dc5aace0d13d1301acc1073f ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "
 Parameters
@@ -285,8 +285,8 @@ Creates an empty header for a new step model and allows the header fields to be 
 ") Apply;
 		void Apply(const opencascade::handle<StepData_StepModel> & model);
 
-		/****************** Author ******************/
-		/**** md5 signature: 23de40daf6aa0108289fcab1cc10b710 ****/
+		/****** APIHeaderSection_MakeHeader::Author ******/
+		/****** md5 signature: 23de40daf6aa0108289fcab1cc10b710 ******/
 		%feature("compactdefaultargs") Author;
 		%feature("autodoc", "Return
 -------
@@ -298,8 +298,8 @@ No available documentation.
 ") Author;
 		opencascade::handle<Interface_HArray1OfHAsciiString> Author();
 
-		/****************** AuthorValue ******************/
-		/**** md5 signature: 053bae3a6f3b50b0b3cbcc10f1448e71 ****/
+		/****** APIHeaderSection_MakeHeader::AuthorValue ******/
+		/****** md5 signature: 053bae3a6f3b50b0b3cbcc10f1448e71 ******/
 		%feature("compactdefaultargs") AuthorValue;
 		%feature("autodoc", "
 Parameters
@@ -316,8 +316,8 @@ Returns the value of the name attribute for the file_name entity.
 ") AuthorValue;
 		opencascade::handle<TCollection_HAsciiString> AuthorValue(const Standard_Integer num);
 
-		/****************** Authorisation ******************/
-		/**** md5 signature: 74cf5a9ad29d5b5b00394896d05f442b ****/
+		/****** APIHeaderSection_MakeHeader::Authorisation ******/
+		/****** md5 signature: 74cf5a9ad29d5b5b00394896d05f442b ******/
 		%feature("compactdefaultargs") Authorisation;
 		%feature("autodoc", "Return
 -------
@@ -329,8 +329,8 @@ Returns the value of the authorization attribute for the file_name entity.
 ") Authorisation;
 		opencascade::handle<TCollection_HAsciiString> Authorisation();
 
-		/****************** Description ******************/
-		/**** md5 signature: 9b909686a25b7d6265affec4e3820e98 ****/
+		/****** APIHeaderSection_MakeHeader::Description ******/
+		/****** md5 signature: 9b909686a25b7d6265affec4e3820e98 ******/
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "Return
 -------
@@ -342,8 +342,8 @@ No available documentation.
 ") Description;
 		opencascade::handle<Interface_HArray1OfHAsciiString> Description();
 
-		/****************** DescriptionValue ******************/
-		/**** md5 signature: c5b8ce5eb4616a323970d217aa88af81 ****/
+		/****** APIHeaderSection_MakeHeader::DescriptionValue ******/
+		/****** md5 signature: c5b8ce5eb4616a323970d217aa88af81 ******/
 		%feature("compactdefaultargs") DescriptionValue;
 		%feature("autodoc", "
 Parameters
@@ -360,8 +360,8 @@ Returns the value of the description attribute for the file_description entity.
 ") DescriptionValue;
 		opencascade::handle<TCollection_HAsciiString> DescriptionValue(const Standard_Integer num);
 
-		/****************** FdValue ******************/
-		/**** md5 signature: 399c35af474cdbfb7c29fa336d37d16b ****/
+		/****** APIHeaderSection_MakeHeader::FdValue ******/
+		/****** md5 signature: 399c35af474cdbfb7c29fa336d37d16b ******/
 		%feature("compactdefaultargs") FdValue;
 		%feature("autodoc", "Return
 -------
@@ -373,8 +373,8 @@ Returns the file_description entity. returns an empty entity if the file_descrip
 ") FdValue;
 		opencascade::handle<HeaderSection_FileDescription> FdValue();
 
-		/****************** FnValue ******************/
-		/**** md5 signature: 1fce139b98d1ddb3cc6f35b294bb9be7 ****/
+		/****** APIHeaderSection_MakeHeader::FnValue ******/
+		/****** md5 signature: 1fce139b98d1ddb3cc6f35b294bb9be7 ******/
 		%feature("compactdefaultargs") FnValue;
 		%feature("autodoc", "Return
 -------
@@ -386,8 +386,8 @@ Returns the file_name entity. returns an empty entity if the file_name entity is
 ") FnValue;
 		opencascade::handle<HeaderSection_FileName> FnValue();
 
-		/****************** FsValue ******************/
-		/**** md5 signature: c8a4cff4875f3713ab08524574c21b3d ****/
+		/****** APIHeaderSection_MakeHeader::FsValue ******/
+		/****** md5 signature: c8a4cff4875f3713ab08524574c21b3d ******/
 		%feature("compactdefaultargs") FsValue;
 		%feature("autodoc", "Return
 -------
@@ -399,8 +399,8 @@ Returns the file_schema entity. returns an empty entity if the file_schema entit
 ") FsValue;
 		opencascade::handle<HeaderSection_FileSchema> FsValue();
 
-		/****************** HasFd ******************/
-		/**** md5 signature: 3e3e6b526b3805f902bd9b9718341d83 ****/
+		/****** APIHeaderSection_MakeHeader::HasFd ******/
+		/****** md5 signature: 3e3e6b526b3805f902bd9b9718341d83 ******/
 		%feature("compactdefaultargs") HasFd;
 		%feature("autodoc", "Return
 -------
@@ -412,8 +412,8 @@ Checks whether there is a file_description entity. returns true if there is one.
 ") HasFd;
 		Standard_Boolean HasFd();
 
-		/****************** HasFn ******************/
-		/**** md5 signature: 22abe5d4b1e7cc9f85b888c01240ca09 ****/
+		/****** APIHeaderSection_MakeHeader::HasFn ******/
+		/****** md5 signature: 22abe5d4b1e7cc9f85b888c01240ca09 ******/
 		%feature("compactdefaultargs") HasFn;
 		%feature("autodoc", "Return
 -------
@@ -425,8 +425,8 @@ Checks whether there is a file_name entity. returns true if there is one.
 ") HasFn;
 		Standard_Boolean HasFn();
 
-		/****************** HasFs ******************/
-		/**** md5 signature: 89a6bd5da2c2843e66a711cfaa6d599b ****/
+		/****** APIHeaderSection_MakeHeader::HasFs ******/
+		/****** md5 signature: 89a6bd5da2c2843e66a711cfaa6d599b ******/
 		%feature("compactdefaultargs") HasFs;
 		%feature("autodoc", "Return
 -------
@@ -438,8 +438,8 @@ Checks whether there is a file_schema entity. returns true if there is one.
 ") HasFs;
 		Standard_Boolean HasFs();
 
-		/****************** ImplementationLevel ******************/
-		/**** md5 signature: b09f681ece8c976e12d39e35c7caa9fe ****/
+		/****** APIHeaderSection_MakeHeader::ImplementationLevel ******/
+		/****** md5 signature: b09f681ece8c976e12d39e35c7caa9fe ******/
 		%feature("compactdefaultargs") ImplementationLevel;
 		%feature("autodoc", "Return
 -------
@@ -451,8 +451,8 @@ Returns the value of the implementation_level attribute for the file_description
 ") ImplementationLevel;
 		opencascade::handle<TCollection_HAsciiString> ImplementationLevel();
 
-		/****************** Init ******************/
-		/**** md5 signature: 95810cfe4820451da1da0554cb350c5c ****/
+		/****** APIHeaderSection_MakeHeader::Init ******/
+		/****** md5 signature: 95810cfe4820451da1da0554cb350c5c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -469,8 +469,8 @@ Cancels the former definition and gives a filename to be used when a model has n
 ") Init;
 		void Init(Standard_CString nameval);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** APIHeaderSection_MakeHeader::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -482,8 +482,8 @@ Returns true if all data have been defined (see also hasfn, hasfs, hasfd).
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Name ******************/
-		/**** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ****/
+		/****** APIHeaderSection_MakeHeader::Name ******/
+		/****** md5 signature: 6bcb97f17b57cae0750fd29eac20499c ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -495,8 +495,8 @@ Returns the name attribute for the file_name entity.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
-		/****************** NbAuthor ******************/
-		/**** md5 signature: 6ca174c13a42409600e9909ad554980b ****/
+		/****** APIHeaderSection_MakeHeader::NbAuthor ******/
+		/****** md5 signature: 6ca174c13a42409600e9909ad554980b ******/
 		%feature("compactdefaultargs") NbAuthor;
 		%feature("autodoc", "Return
 -------
@@ -508,8 +508,8 @@ Returns the number of values for the author attribute in the file_name entity.
 ") NbAuthor;
 		Standard_Integer NbAuthor();
 
-		/****************** NbDescription ******************/
-		/**** md5 signature: 38d1fdc13e41b3ac019bdb2d4ba64b1e ****/
+		/****** APIHeaderSection_MakeHeader::NbDescription ******/
+		/****** md5 signature: 38d1fdc13e41b3ac019bdb2d4ba64b1e ******/
 		%feature("compactdefaultargs") NbDescription;
 		%feature("autodoc", "Return
 -------
@@ -521,8 +521,8 @@ Returns the number of values for the file_description entity in the step file he
 ") NbDescription;
 		Standard_Integer NbDescription();
 
-		/****************** NbOrganization ******************/
-		/**** md5 signature: 60ebd0ae36d49c04683d7f95b2a097f9 ****/
+		/****** APIHeaderSection_MakeHeader::NbOrganization ******/
+		/****** md5 signature: 60ebd0ae36d49c04683d7f95b2a097f9 ******/
 		%feature("compactdefaultargs") NbOrganization;
 		%feature("autodoc", "Return
 -------
@@ -534,8 +534,8 @@ Returns the number of values for the organization attribute in the file_name ent
 ") NbOrganization;
 		Standard_Integer NbOrganization();
 
-		/****************** NbSchemaIdentifiers ******************/
-		/**** md5 signature: 260454647efe5048cae47a1a4cd460a4 ****/
+		/****** APIHeaderSection_MakeHeader::NbSchemaIdentifiers ******/
+		/****** md5 signature: 260454647efe5048cae47a1a4cd460a4 ******/
 		%feature("compactdefaultargs") NbSchemaIdentifiers;
 		%feature("autodoc", "Return
 -------
@@ -547,8 +547,8 @@ Returns the number of values for the schema_identifier attribute in the file_sch
 ") NbSchemaIdentifiers;
 		Standard_Integer NbSchemaIdentifiers();
 
-		/****************** NewModel ******************/
-		/**** md5 signature: 35ddc5a32982d5512b348f225233e219 ****/
+		/****** APIHeaderSection_MakeHeader::NewModel ******/
+		/****** md5 signature: 35ddc5a32982d5512b348f225233e219 ******/
 		%feature("compactdefaultargs") NewModel;
 		%feature("autodoc", "
 Parameters
@@ -565,8 +565,8 @@ Builds a header, creates a new stepmodel, then applies the header to the stepmod
 ") NewModel;
 		opencascade::handle<StepData_StepModel> NewModel(const opencascade::handle<Interface_Protocol> & protocol);
 
-		/****************** Organization ******************/
-		/**** md5 signature: 454248c33742fc33d8c2d44c0e083d34 ****/
+		/****** APIHeaderSection_MakeHeader::Organization ******/
+		/****** md5 signature: 454248c33742fc33d8c2d44c0e083d34 ******/
 		%feature("compactdefaultargs") Organization;
 		%feature("autodoc", "Return
 -------
@@ -578,8 +578,8 @@ No available documentation.
 ") Organization;
 		opencascade::handle<Interface_HArray1OfHAsciiString> Organization();
 
-		/****************** OrganizationValue ******************/
-		/**** md5 signature: 3caa7e153a3d6decf2c39d267a41eb95 ****/
+		/****** APIHeaderSection_MakeHeader::OrganizationValue ******/
+		/****** md5 signature: 3caa7e153a3d6decf2c39d267a41eb95 ******/
 		%feature("compactdefaultargs") OrganizationValue;
 		%feature("autodoc", "
 Parameters
@@ -596,8 +596,8 @@ Returns the value of attribute organization for the file_name entity.
 ") OrganizationValue;
 		opencascade::handle<TCollection_HAsciiString> OrganizationValue(const Standard_Integer num);
 
-		/****************** OriginatingSystem ******************/
-		/**** md5 signature: 543b855a9c992957f432135cf086f1e1 ****/
+		/****** APIHeaderSection_MakeHeader::OriginatingSystem ******/
+		/****** md5 signature: 543b855a9c992957f432135cf086f1e1 ******/
 		%feature("compactdefaultargs") OriginatingSystem;
 		%feature("autodoc", "Return
 -------
@@ -609,8 +609,8 @@ No available documentation.
 ") OriginatingSystem;
 		opencascade::handle<TCollection_HAsciiString> OriginatingSystem();
 
-		/****************** PreprocessorVersion ******************/
-		/**** md5 signature: 2cdc579887f56c912417c5ff0ccd068c ****/
+		/****** APIHeaderSection_MakeHeader::PreprocessorVersion ******/
+		/****** md5 signature: 2cdc579887f56c912417c5ff0ccd068c ******/
 		%feature("compactdefaultargs") PreprocessorVersion;
 		%feature("autodoc", "Return
 -------
@@ -622,8 +622,8 @@ Returns the name of the preprocessor_version for the file_name entity.
 ") PreprocessorVersion;
 		opencascade::handle<TCollection_HAsciiString> PreprocessorVersion();
 
-		/****************** SchemaIdentifiers ******************/
-		/**** md5 signature: 404b25dfbdf2c6acd6d96aec78411851 ****/
+		/****** APIHeaderSection_MakeHeader::SchemaIdentifiers ******/
+		/****** md5 signature: 404b25dfbdf2c6acd6d96aec78411851 ******/
 		%feature("compactdefaultargs") SchemaIdentifiers;
 		%feature("autodoc", "Return
 -------
@@ -635,8 +635,8 @@ No available documentation.
 ") SchemaIdentifiers;
 		opencascade::handle<Interface_HArray1OfHAsciiString> SchemaIdentifiers();
 
-		/****************** SchemaIdentifiersValue ******************/
-		/**** md5 signature: ba505a8bd6bc4c707e90011f1b54457f ****/
+		/****** APIHeaderSection_MakeHeader::SchemaIdentifiersValue ******/
+		/****** md5 signature: ba505a8bd6bc4c707e90011f1b54457f ******/
 		%feature("compactdefaultargs") SchemaIdentifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -653,8 +653,8 @@ Returns the value of the schema_identifier attribute for the file_schema entity.
 ") SchemaIdentifiersValue;
 		opencascade::handle<TCollection_HAsciiString> SchemaIdentifiersValue(const Standard_Integer num);
 
-		/****************** SetAuthor ******************/
-		/**** md5 signature: c479de6bbe2aeb24d60e92667b68a0af ****/
+		/****** APIHeaderSection_MakeHeader::SetAuthor ******/
+		/****** md5 signature: c479de6bbe2aeb24d60e92667b68a0af ******/
 		%feature("compactdefaultargs") SetAuthor;
 		%feature("autodoc", "
 Parameters
@@ -671,8 +671,8 @@ No available documentation.
 ") SetAuthor;
 		void SetAuthor(const opencascade::handle<Interface_HArray1OfHAsciiString> & aAuthor);
 
-		/****************** SetAuthorValue ******************/
-		/**** md5 signature: cc33232c8663abd7f2ca48f6203f9736 ****/
+		/****** APIHeaderSection_MakeHeader::SetAuthorValue ******/
+		/****** md5 signature: cc33232c8663abd7f2ca48f6203f9736 ******/
 		%feature("compactdefaultargs") SetAuthorValue;
 		%feature("autodoc", "
 Parameters
@@ -690,8 +690,8 @@ No available documentation.
 ") SetAuthorValue;
 		void SetAuthorValue(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & aAuthor);
 
-		/****************** SetAuthorisation ******************/
-		/**** md5 signature: dabbd55c5d2fdde44a103b7c5629df5c ****/
+		/****** APIHeaderSection_MakeHeader::SetAuthorisation ******/
+		/****** md5 signature: dabbd55c5d2fdde44a103b7c5629df5c ******/
 		%feature("compactdefaultargs") SetAuthorisation;
 		%feature("autodoc", "
 Parameters
@@ -708,8 +708,8 @@ No available documentation.
 ") SetAuthorisation;
 		void SetAuthorisation(const opencascade::handle<TCollection_HAsciiString> & aAuthorisation);
 
-		/****************** SetDescription ******************/
-		/**** md5 signature: 1e04b25950c14571044a08d553341bd0 ****/
+		/****** APIHeaderSection_MakeHeader::SetDescription ******/
+		/****** md5 signature: 1e04b25950c14571044a08d553341bd0 ******/
 		%feature("compactdefaultargs") SetDescription;
 		%feature("autodoc", "
 Parameters
@@ -726,8 +726,8 @@ No available documentation.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<Interface_HArray1OfHAsciiString> & aDescription);
 
-		/****************** SetDescriptionValue ******************/
-		/**** md5 signature: a8f2c66c20e21c2385f52a8fd239e40f ****/
+		/****** APIHeaderSection_MakeHeader::SetDescriptionValue ******/
+		/****** md5 signature: a8f2c66c20e21c2385f52a8fd239e40f ******/
 		%feature("compactdefaultargs") SetDescriptionValue;
 		%feature("autodoc", "
 Parameters
@@ -745,8 +745,8 @@ No available documentation.
 ") SetDescriptionValue;
 		void SetDescriptionValue(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & aDescription);
 
-		/****************** SetImplementationLevel ******************/
-		/**** md5 signature: 456c2b949d32712489902f181c0fdd2e ****/
+		/****** APIHeaderSection_MakeHeader::SetImplementationLevel ******/
+		/****** md5 signature: 456c2b949d32712489902f181c0fdd2e ******/
 		%feature("compactdefaultargs") SetImplementationLevel;
 		%feature("autodoc", "
 Parameters
@@ -763,8 +763,8 @@ No available documentation.
 ") SetImplementationLevel;
 		void SetImplementationLevel(const opencascade::handle<TCollection_HAsciiString> & aImplementationLevel);
 
-		/****************** SetName ******************/
-		/**** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ****/
+		/****** APIHeaderSection_MakeHeader::SetName ******/
+		/****** md5 signature: 1e0b00d9eb163c8a0cdbb986e2ee24f6 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
@@ -781,8 +781,8 @@ No available documentation.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & aName);
 
-		/****************** SetOrganization ******************/
-		/**** md5 signature: 898ebb6b0632041f91e1f21a8a1ca169 ****/
+		/****** APIHeaderSection_MakeHeader::SetOrganization ******/
+		/****** md5 signature: 898ebb6b0632041f91e1f21a8a1ca169 ******/
 		%feature("compactdefaultargs") SetOrganization;
 		%feature("autodoc", "
 Parameters
@@ -799,8 +799,8 @@ No available documentation.
 ") SetOrganization;
 		void SetOrganization(const opencascade::handle<Interface_HArray1OfHAsciiString> & aOrganization);
 
-		/****************** SetOrganizationValue ******************/
-		/**** md5 signature: fe8a80aaa470fd8e2239e6f20b14ee57 ****/
+		/****** APIHeaderSection_MakeHeader::SetOrganizationValue ******/
+		/****** md5 signature: fe8a80aaa470fd8e2239e6f20b14ee57 ******/
 		%feature("compactdefaultargs") SetOrganizationValue;
 		%feature("autodoc", "
 Parameters
@@ -818,8 +818,8 @@ No available documentation.
 ") SetOrganizationValue;
 		void SetOrganizationValue(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & aOrganization);
 
-		/****************** SetOriginatingSystem ******************/
-		/**** md5 signature: df50b03f270ab4067d00a9b263849945 ****/
+		/****** APIHeaderSection_MakeHeader::SetOriginatingSystem ******/
+		/****** md5 signature: df50b03f270ab4067d00a9b263849945 ******/
 		%feature("compactdefaultargs") SetOriginatingSystem;
 		%feature("autodoc", "
 Parameters
@@ -836,8 +836,8 @@ No available documentation.
 ") SetOriginatingSystem;
 		void SetOriginatingSystem(const opencascade::handle<TCollection_HAsciiString> & aOriginatingSystem);
 
-		/****************** SetPreprocessorVersion ******************/
-		/**** md5 signature: cf1be8e1fadf8f579cf193da0139a1b2 ****/
+		/****** APIHeaderSection_MakeHeader::SetPreprocessorVersion ******/
+		/****** md5 signature: cf1be8e1fadf8f579cf193da0139a1b2 ******/
 		%feature("compactdefaultargs") SetPreprocessorVersion;
 		%feature("autodoc", "
 Parameters
@@ -854,8 +854,8 @@ No available documentation.
 ") SetPreprocessorVersion;
 		void SetPreprocessorVersion(const opencascade::handle<TCollection_HAsciiString> & aPreprocessorVersion);
 
-		/****************** SetSchemaIdentifiers ******************/
-		/**** md5 signature: 37a42703d2ec981a51e918549381152b ****/
+		/****** APIHeaderSection_MakeHeader::SetSchemaIdentifiers ******/
+		/****** md5 signature: 37a42703d2ec981a51e918549381152b ******/
 		%feature("compactdefaultargs") SetSchemaIdentifiers;
 		%feature("autodoc", "
 Parameters
@@ -872,8 +872,8 @@ No available documentation.
 ") SetSchemaIdentifiers;
 		void SetSchemaIdentifiers(const opencascade::handle<Interface_HArray1OfHAsciiString> & aSchemaIdentifiers);
 
-		/****************** SetSchemaIdentifiersValue ******************/
-		/**** md5 signature: 0af7d48de5cd14a190015f37164e5d73 ****/
+		/****** APIHeaderSection_MakeHeader::SetSchemaIdentifiersValue ******/
+		/****** md5 signature: 0af7d48de5cd14a190015f37164e5d73 ******/
 		%feature("compactdefaultargs") SetSchemaIdentifiersValue;
 		%feature("autodoc", "
 Parameters
@@ -891,8 +891,8 @@ No available documentation.
 ") SetSchemaIdentifiersValue;
 		void SetSchemaIdentifiersValue(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & aSchemaIdentifier);
 
-		/****************** SetTimeStamp ******************/
-		/**** md5 signature: 38e2ba6d611ac3c71ddded5966b2c9a2 ****/
+		/****** APIHeaderSection_MakeHeader::SetTimeStamp ******/
+		/****** md5 signature: 38e2ba6d611ac3c71ddded5966b2c9a2 ******/
 		%feature("compactdefaultargs") SetTimeStamp;
 		%feature("autodoc", "
 Parameters
@@ -909,8 +909,8 @@ No available documentation.
 ") SetTimeStamp;
 		void SetTimeStamp(const opencascade::handle<TCollection_HAsciiString> & aTimeStamp);
 
-		/****************** TimeStamp ******************/
-		/**** md5 signature: b66adf354c77d407fbbc52d9a834d10f ****/
+		/****** APIHeaderSection_MakeHeader::TimeStamp ******/
+		/****** md5 signature: b66adf354c77d407fbbc52d9a834d10f ******/
 		%feature("compactdefaultargs") TimeStamp;
 		%feature("autodoc", "Return
 -------

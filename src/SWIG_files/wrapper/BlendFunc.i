@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BLENDFUNCDOCSTRING
 "BlendFunc module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_blendfunc.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_blendfunc.html"
 %enddef
 %module (package="OCC.Core", docstring=BLENDFUNCDOCSTRING) BlendFunc
 
@@ -120,8 +120,8 @@ BlendFunc_Linear = BlendFunc_SectionShape.BlendFunc_Linear
 %rename(blendfunc) BlendFunc;
 class BlendFunc {
 	public:
-		/****************** ComputeDNormal ******************/
-		/**** md5 signature: cde71b23cab8a2f1227199266c8cb896 ****/
+		/****** BlendFunc::ComputeDNormal ******/
+		/****** md5 signature: cde71b23cab8a2f1227199266c8cb896 ******/
 		%feature("compactdefaultargs") ComputeDNormal;
 		%feature("autodoc", "
 Parameters
@@ -142,8 +142,8 @@ No available documentation.
 ") ComputeDNormal;
 		static Standard_Boolean ComputeDNormal(const opencascade::handle<Adaptor3d_Surface> & Surf, const gp_Pnt2d & p2d, gp_Vec & Normal, gp_Vec & DNu, gp_Vec & DNv);
 
-		/****************** ComputeNormal ******************/
-		/**** md5 signature: b82124d6f2c9c1dff1a9cca5be99986f ****/
+		/****** BlendFunc::ComputeNormal ******/
+		/****** md5 signature: b82124d6f2c9c1dff1a9cca5be99986f ******/
 		%feature("compactdefaultargs") ComputeNormal;
 		%feature("autodoc", "
 Parameters
@@ -162,8 +162,8 @@ No available documentation.
 ") ComputeNormal;
 		static Standard_Boolean ComputeNormal(const opencascade::handle<Adaptor3d_Surface> & Surf, const gp_Pnt2d & p2d, gp_Vec & Normal);
 
-		/****************** GetMinimalWeights ******************/
-		/**** md5 signature: 309c1f7f13e6d4dfd26fbb05a6dc9e40 ****/
+		/****** BlendFunc::GetMinimalWeights ******/
+		/****** md5 signature: 309c1f7f13e6d4dfd26fbb05a6dc9e40 ******/
 		%feature("compactdefaultargs") GetMinimalWeights;
 		%feature("autodoc", "
 Parameters
@@ -184,8 +184,8 @@ No available documentation.
 ") GetMinimalWeights;
 		static void GetMinimalWeights(const BlendFunc_SectionShape SectShape, const Convert_ParameterisationType TConv, const Standard_Real AngleMin, const Standard_Real AngleMax, TColStd_Array1OfReal & Weigths);
 
-		/****************** GetShape ******************/
-		/**** md5 signature: ca49e9ca7d2f8c164b0ef798b93782a3 ****/
+		/****** BlendFunc::GetShape ******/
+		/****** md5 signature: ca49e9ca7d2f8c164b0ef798b93782a3 ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
@@ -206,8 +206,8 @@ No available documentation.
 ") GetShape;
 		static void GetShape(const BlendFunc_SectionShape SectShape, const Standard_Real MaxAng, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Convert_ParameterisationType & TypeConv);
 
-		/****************** NextShape ******************/
-		/**** md5 signature: 5efba1f9776f24ad69a107a235287f2c ****/
+		/****** BlendFunc::NextShape ******/
+		/****** md5 signature: 5efba1f9776f24ad69a107a235287f2c ******/
 		%feature("compactdefaultargs") NextShape;
 		%feature("autodoc", "
 Parameters
@@ -246,8 +246,8 @@ Used to obtain the next level of continuity.
 *****************************/
 class BlendFunc_CSCircular : public Blend_CSFunction {
 	public:
-		/****************** BlendFunc_CSCircular ******************/
-		/**** md5 signature: d43560f235cf7a01ad5e6452468104a7 ****/
+		/****** BlendFunc_CSCircular::BlendFunc_CSCircular ******/
+		/****** md5 signature: d43560f235cf7a01ad5e6452468104a7 ******/
 		%feature("compactdefaultargs") BlendFunc_CSCircular;
 		%feature("autodoc", "
 Parameters
@@ -267,8 +267,8 @@ Creates a function for a circular blending between a curve <c> and a surface <s>
 ") BlendFunc_CSCircular;
 		 BlendFunc_CSCircular(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Curve> & CGuide, const opencascade::handle<Law_Function> & L);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_CSCircular::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -286,8 +286,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_CSCircular::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -305,8 +305,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ****/
+		/****** BlendFunc_CSCircular::GetMinimalWeight ******/
+		/****** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -323,8 +323,8 @@ Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
 		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetSection ******************/
-		/**** md5 signature: 9f1c0c6229c95cd8346662c4ae052028 ****/
+		/****** BlendFunc_CSCircular::GetSection ******/
+		/****** md5 signature: 9f1c0c6229c95cd8346662c4ae052028 ******/
 		%feature("compactdefaultargs") GetSection;
 		%feature("autodoc", "
 Parameters
@@ -346,8 +346,8 @@ No available documentation.
 ") GetSection;
 		Standard_Boolean GetSection(const Standard_Real Param, const Standard_Real U, const Standard_Real V, const Standard_Real W, TColgp_Array1OfPnt & tabP, TColgp_Array1OfVec & tabV);
 
-		/****************** GetSectionSize ******************/
-		/**** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ****/
+		/****** BlendFunc_CSCircular::GetSectionSize ******/
+		/****** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ******/
 		%feature("compactdefaultargs") GetSectionSize;
 		%feature("autodoc", "Return
 -------
@@ -359,8 +359,8 @@ Returns the length of the maximum section.
 ") GetSectionSize;
 		Standard_Real GetSectionSize();
 
-		/****************** GetShape ******************/
-		/**** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ****/
+		/****** BlendFunc_CSCircular::GetShape ******/
+		/****** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
@@ -379,8 +379,8 @@ No available documentation.
 ") GetShape;
 		void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_CSCircular::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -398,8 +398,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ****/
+		/****** BlendFunc_CSCircular::GetTolerance ******/
+		/****** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -420,8 +420,8 @@ Returns the tolerance to reach in approximation to respecte boundtol error at th
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
+		/****** BlendFunc_CSCircular::Intervals ******/
+		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -439,8 +439,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 82ca56fad113156125f40128b25c0d8e ****/
+		/****** BlendFunc_CSCircular::IsRational ******/
+		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -452,8 +452,8 @@ Returns if the section is rationnal.
 ") IsRational;
 		Standard_Boolean IsRational();
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_CSCircular::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -471,8 +471,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** IsTangencyPoint ******************/
-		/**** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ****/
+		/****** BlendFunc_CSCircular::IsTangencyPoint ******/
+		/****** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -484,8 +484,8 @@ No available documentation.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
-		/****************** Knots ******************/
-		/**** md5 signature: a226854cd9eac08cbe4282feaa46c20d ****/
+		/****** BlendFunc_CSCircular::Knots ******/
+		/****** md5 signature: a226854cd9eac08cbe4282feaa46c20d ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -502,8 +502,8 @@ No available documentation.
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** Mults ******************/
-		/**** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ****/
+		/****** BlendFunc_CSCircular::Mults ******/
+		/****** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -520,8 +520,8 @@ No available documentation.
 ") Mults;
 		void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_CSCircular::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -533,8 +533,8 @@ Returns the number of equations of the function (3).
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
+		/****** BlendFunc_CSCircular::NbIntervals ******/
+		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -551,8 +551,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** NbVariables ******************/
-		/**** md5 signature: 28ab91d0183585502101892aac2c5b98 ****/
+		/****** BlendFunc_CSCircular::NbVariables ******/
+		/****** md5 signature: 28ab91d0183585502101892aac2c5b98 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -564,8 +564,8 @@ No available documentation.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
-		/****************** ParameterOnC ******************/
-		/**** md5 signature: 931c449549243312ddad1092e529a0b4 ****/
+		/****** BlendFunc_CSCircular::ParameterOnC ******/
+		/****** md5 signature: 931c449549243312ddad1092e529a0b4 ******/
 		%feature("compactdefaultargs") ParameterOnC;
 		%feature("autodoc", "Return
 -------
@@ -577,8 +577,8 @@ Returns parameter of the point on the curve.
 ") ParameterOnC;
 		Standard_Real ParameterOnC();
 
-		/****************** Pnt2d ******************/
-		/**** md5 signature: c0e2424281e3df0600c85feafc85476b ****/
+		/****** BlendFunc_CSCircular::Pnt2d ******/
+		/****** md5 signature: c0e2424281e3df0600c85feafc85476b ******/
 		%feature("compactdefaultargs") Pnt2d;
 		%feature("autodoc", "Return
 -------
@@ -590,8 +590,8 @@ Returns u,v coordinates of the point on the surface.
 ") Pnt2d;
 		const gp_Pnt2d Pnt2d();
 
-		/****************** PointOnC ******************/
-		/**** md5 signature: 6b0ebe8887a8345ce46800bc01420baf ****/
+		/****** BlendFunc_CSCircular::PointOnC ******/
+		/****** md5 signature: 6b0ebe8887a8345ce46800bc01420baf ******/
 		%feature("compactdefaultargs") PointOnC;
 		%feature("autodoc", "Return
 -------
@@ -603,8 +603,8 @@ No available documentation.
 ") PointOnC;
 		const gp_Pnt PointOnC();
 
-		/****************** PointOnS ******************/
-		/**** md5 signature: d0ce1246a72267935632a60d95848390 ****/
+		/****** BlendFunc_CSCircular::PointOnS ******/
+		/****** md5 signature: d0ce1246a72267935632a60d95848390 ******/
 		%feature("compactdefaultargs") PointOnS;
 		%feature("autodoc", "Return
 -------
@@ -616,8 +616,8 @@ No available documentation.
 ") PointOnS;
 		const gp_Pnt PointOnS();
 
-		/****************** Resolution ******************/
-		/**** md5 signature: 1f885646df74c72ec13d37a113377aaa ****/
+		/****** BlendFunc_CSCircular::Resolution ******/
+		/****** md5 signature: 1f885646df74c72ec13d37a113377aaa ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -636,8 +636,8 @@ No available documentation.
 ") Resolution;
 		void Resolution(const Standard_Integer IC2d, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Section ******************/
-		/**** md5 signature: c6f45fdc6c5dce2cea7b90328e5e99d9 ****/
+		/****** BlendFunc_CSCircular::Section ******/
+		/****** md5 signature: c6f45fdc6c5dce2cea7b90328e5e99d9 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -659,8 +659,8 @@ No available documentation.
 ") Section;
 		void Section(const Standard_Real Param, const Standard_Real U, const Standard_Real V, const Standard_Real W, Standard_Real &OutValue, Standard_Real &OutValue, gp_Circ & C);
 
-		/****************** Section ******************/
-		/**** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ****/
+		/****** BlendFunc_CSCircular::Section ******/
+		/****** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -686,8 +686,8 @@ Used for the first and last section the method returns standard_true if the deri
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 906e6a4bef3056546e496b945ff8d788 ****/
+		/****** BlendFunc_CSCircular::Section ******/
+		/****** md5 signature: 906e6a4bef3056546e496b945ff8d788 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -710,8 +710,8 @@ Used for the first and last section.
 ") Section;
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ****/
+		/****** BlendFunc_CSCircular::Section ******/
+		/****** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -731,8 +731,8 @@ No available documentation.
 ") Section;
 		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** Set ******************/
-		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
+		/****** BlendFunc_CSCircular::Set ******/
+		/****** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -749,8 +749,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Param);
 
-		/****************** Set ******************/
-		/**** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ****/
+		/****** BlendFunc_CSCircular::Set ******/
+		/****** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -768,8 +768,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
-		/****************** Set ******************/
-		/**** md5 signature: 99fe75aea7947575eb6b646d1797f9da ****/
+		/****** BlendFunc_CSCircular::Set ******/
+		/****** md5 signature: 99fe75aea7947575eb6b646d1797f9da ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -787,8 +787,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Radius, const Standard_Integer Choix);
 
-		/****************** Set ******************/
-		/**** md5 signature: 94cfe331c662a2ba190837b24fee3b95 ****/
+		/****** BlendFunc_CSCircular::Set ******/
+		/****** md5 signature: 94cfe331c662a2ba190837b24fee3b95 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -805,8 +805,8 @@ Sets the type of section generation for the approximations.
 ") Set;
 		void Set(const BlendFunc_SectionShape TypeSection);
 
-		/****************** Tangent ******************/
-		/**** md5 signature: 8b5f8faeab6ac0129ce32e99e844f22e ****/
+		/****** BlendFunc_CSCircular::Tangent ******/
+		/****** md5 signature: 8b5f8faeab6ac0129ce32e99e844f22e ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -826,8 +826,8 @@ Returns the tangent vector at the section, at the beginning and the end of the s
 ") Tangent;
 		void Tangent(const Standard_Real U, const Standard_Real V, gp_Vec & TgS, gp_Vec & NormS);
 
-		/****************** Tangent2d ******************/
-		/**** md5 signature: 0fe985b779a02d58ed5caae77019a3ea ****/
+		/****** BlendFunc_CSCircular::Tangent2d ******/
+		/****** md5 signature: 0fe985b779a02d58ed5caae77019a3ea ******/
 		%feature("compactdefaultargs") Tangent2d;
 		%feature("autodoc", "Return
 -------
@@ -839,8 +839,8 @@ No available documentation.
 ") Tangent2d;
 		const gp_Vec2d Tangent2d();
 
-		/****************** TangentOnC ******************/
-		/**** md5 signature: 9c5e999959c217a8456055e42ec88461 ****/
+		/****** BlendFunc_CSCircular::TangentOnC ******/
+		/****** md5 signature: 9c5e999959c217a8456055e42ec88461 ******/
 		%feature("compactdefaultargs") TangentOnC;
 		%feature("autodoc", "Return
 -------
@@ -852,8 +852,8 @@ No available documentation.
 ") TangentOnC;
 		const gp_Vec TangentOnC();
 
-		/****************** TangentOnS ******************/
-		/**** md5 signature: 48a27063e2cf1be2b2c56ad8f774bd84 ****/
+		/****** BlendFunc_CSCircular::TangentOnS ******/
+		/****** md5 signature: 48a27063e2cf1be2b2c56ad8f774bd84 ******/
 		%feature("compactdefaultargs") TangentOnS;
 		%feature("autodoc", "Return
 -------
@@ -865,8 +865,8 @@ No available documentation.
 ") TangentOnS;
 		const gp_Vec TangentOnS();
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_CSCircular::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -884,8 +884,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_CSCircular::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -918,8 +918,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 *****************************/
 class BlendFunc_CSConstRad : public Blend_CSFunction {
 	public:
-		/****************** BlendFunc_CSConstRad ******************/
-		/**** md5 signature: 168f276159a046c8f0cdc04c4ef368b0 ****/
+		/****** BlendFunc_CSConstRad::BlendFunc_CSConstRad ******/
+		/****** md5 signature: 168f276159a046c8f0cdc04c4ef368b0 ******/
 		%feature("compactdefaultargs") BlendFunc_CSConstRad;
 		%feature("autodoc", "
 Parameters
@@ -938,8 +938,8 @@ No available documentation.
 ") BlendFunc_CSConstRad;
 		 BlendFunc_CSConstRad(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Adaptor3d_Curve> & CGuide);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_CSConstRad::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -957,8 +957,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_CSConstRad::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -976,8 +976,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ****/
+		/****** BlendFunc_CSConstRad::GetMinimalWeight ******/
+		/****** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -994,8 +994,8 @@ Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
 		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetSection ******************/
-		/**** md5 signature: 9f1c0c6229c95cd8346662c4ae052028 ****/
+		/****** BlendFunc_CSConstRad::GetSection ******/
+		/****** md5 signature: 9f1c0c6229c95cd8346662c4ae052028 ******/
 		%feature("compactdefaultargs") GetSection;
 		%feature("autodoc", "
 Parameters
@@ -1017,8 +1017,8 @@ No available documentation.
 ") GetSection;
 		Standard_Boolean GetSection(const Standard_Real Param, const Standard_Real U, const Standard_Real V, const Standard_Real W, TColgp_Array1OfPnt & tabP, TColgp_Array1OfVec & tabV);
 
-		/****************** GetSectionSize ******************/
-		/**** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ****/
+		/****** BlendFunc_CSConstRad::GetSectionSize ******/
+		/****** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ******/
 		%feature("compactdefaultargs") GetSectionSize;
 		%feature("autodoc", "Return
 -------
@@ -1030,8 +1030,8 @@ Returns the length of the maximum section.
 ") GetSectionSize;
 		Standard_Real GetSectionSize();
 
-		/****************** GetShape ******************/
-		/**** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ****/
+		/****** BlendFunc_CSConstRad::GetShape ******/
+		/****** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
@@ -1050,8 +1050,8 @@ No available documentation.
 ") GetShape;
 		void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_CSConstRad::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1069,8 +1069,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ****/
+		/****** BlendFunc_CSConstRad::GetTolerance ******/
+		/****** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1091,8 +1091,8 @@ Returns the tolerance to reach in approximation to respecte boundtol error at th
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
+		/****** BlendFunc_CSConstRad::Intervals ******/
+		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -1110,8 +1110,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. the array
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 82ca56fad113156125f40128b25c0d8e ****/
+		/****** BlendFunc_CSConstRad::IsRational ******/
+		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -1123,8 +1123,8 @@ Returns if the section is rationnal.
 ") IsRational;
 		Standard_Boolean IsRational();
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_CSConstRad::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -1142,8 +1142,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** IsTangencyPoint ******************/
-		/**** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ****/
+		/****** BlendFunc_CSConstRad::IsTangencyPoint ******/
+		/****** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -1155,8 +1155,8 @@ No available documentation.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
-		/****************** Knots ******************/
-		/**** md5 signature: a226854cd9eac08cbe4282feaa46c20d ****/
+		/****** BlendFunc_CSConstRad::Knots ******/
+		/****** md5 signature: a226854cd9eac08cbe4282feaa46c20d ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -1173,8 +1173,8 @@ No available documentation.
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** Mults ******************/
-		/**** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ****/
+		/****** BlendFunc_CSConstRad::Mults ******/
+		/****** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -1191,8 +1191,8 @@ No available documentation.
 ") Mults;
 		void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_CSConstRad::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -1204,8 +1204,8 @@ Returns the number of equations of the function (3).
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
+		/****** BlendFunc_CSConstRad::NbIntervals ******/
+		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1222,8 +1222,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** ParameterOnC ******************/
-		/**** md5 signature: 931c449549243312ddad1092e529a0b4 ****/
+		/****** BlendFunc_CSConstRad::ParameterOnC ******/
+		/****** md5 signature: 931c449549243312ddad1092e529a0b4 ******/
 		%feature("compactdefaultargs") ParameterOnC;
 		%feature("autodoc", "Return
 -------
@@ -1235,8 +1235,8 @@ Returns parameter of the point on the curve.
 ") ParameterOnC;
 		Standard_Real ParameterOnC();
 
-		/****************** Pnt2d ******************/
-		/**** md5 signature: c0e2424281e3df0600c85feafc85476b ****/
+		/****** BlendFunc_CSConstRad::Pnt2d ******/
+		/****** md5 signature: c0e2424281e3df0600c85feafc85476b ******/
 		%feature("compactdefaultargs") Pnt2d;
 		%feature("autodoc", "Return
 -------
@@ -1248,8 +1248,8 @@ Returns u,v coordinates of the point on the surface.
 ") Pnt2d;
 		const gp_Pnt2d Pnt2d();
 
-		/****************** PointOnC ******************/
-		/**** md5 signature: 6b0ebe8887a8345ce46800bc01420baf ****/
+		/****** BlendFunc_CSConstRad::PointOnC ******/
+		/****** md5 signature: 6b0ebe8887a8345ce46800bc01420baf ******/
 		%feature("compactdefaultargs") PointOnC;
 		%feature("autodoc", "Return
 -------
@@ -1261,8 +1261,8 @@ No available documentation.
 ") PointOnC;
 		const gp_Pnt PointOnC();
 
-		/****************** PointOnS ******************/
-		/**** md5 signature: d0ce1246a72267935632a60d95848390 ****/
+		/****** BlendFunc_CSConstRad::PointOnS ******/
+		/****** md5 signature: d0ce1246a72267935632a60d95848390 ******/
 		%feature("compactdefaultargs") PointOnS;
 		%feature("autodoc", "Return
 -------
@@ -1274,8 +1274,8 @@ No available documentation.
 ") PointOnS;
 		const gp_Pnt PointOnS();
 
-		/****************** Resolution ******************/
-		/**** md5 signature: 1f885646df74c72ec13d37a113377aaa ****/
+		/****** BlendFunc_CSConstRad::Resolution ******/
+		/****** md5 signature: 1f885646df74c72ec13d37a113377aaa ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -1294,8 +1294,8 @@ No available documentation.
 ") Resolution;
 		void Resolution(const Standard_Integer IC2d, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Section ******************/
-		/**** md5 signature: c6f45fdc6c5dce2cea7b90328e5e99d9 ****/
+		/****** BlendFunc_CSConstRad::Section ******/
+		/****** md5 signature: c6f45fdc6c5dce2cea7b90328e5e99d9 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -1317,8 +1317,8 @@ No available documentation.
 ") Section;
 		void Section(const Standard_Real Param, const Standard_Real U, const Standard_Real V, const Standard_Real W, Standard_Real &OutValue, Standard_Real &OutValue, gp_Circ & C);
 
-		/****************** Section ******************/
-		/**** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ****/
+		/****** BlendFunc_CSConstRad::Section ******/
+		/****** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -1344,8 +1344,8 @@ Used for the first and last section the method returns standard_true if the deri
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 906e6a4bef3056546e496b945ff8d788 ****/
+		/****** BlendFunc_CSConstRad::Section ******/
+		/****** md5 signature: 906e6a4bef3056546e496b945ff8d788 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -1368,8 +1368,8 @@ Used for the first and last section.
 ") Section;
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ****/
+		/****** BlendFunc_CSConstRad::Section ******/
+		/****** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -1389,8 +1389,8 @@ No available documentation.
 ") Section;
 		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** Set ******************/
-		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
+		/****** BlendFunc_CSConstRad::Set ******/
+		/****** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1407,8 +1407,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Param);
 
-		/****************** Set ******************/
-		/**** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ****/
+		/****** BlendFunc_CSConstRad::Set ******/
+		/****** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1426,8 +1426,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
-		/****************** Set ******************/
-		/**** md5 signature: 99fe75aea7947575eb6b646d1797f9da ****/
+		/****** BlendFunc_CSConstRad::Set ******/
+		/****** md5 signature: 99fe75aea7947575eb6b646d1797f9da ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1445,8 +1445,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Radius, const Standard_Integer Choix);
 
-		/****************** Set ******************/
-		/**** md5 signature: 94cfe331c662a2ba190837b24fee3b95 ****/
+		/****** BlendFunc_CSConstRad::Set ******/
+		/****** md5 signature: 94cfe331c662a2ba190837b24fee3b95 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1463,8 +1463,8 @@ Sets the type of section generation for the approximations.
 ") Set;
 		void Set(const BlendFunc_SectionShape TypeSection);
 
-		/****************** Tangent ******************/
-		/**** md5 signature: 8b5f8faeab6ac0129ce32e99e844f22e ****/
+		/****** BlendFunc_CSConstRad::Tangent ******/
+		/****** md5 signature: 8b5f8faeab6ac0129ce32e99e844f22e ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -1484,8 +1484,8 @@ Returns the tangent vector at the section, at the beginning and the end of the s
 ") Tangent;
 		void Tangent(const Standard_Real U, const Standard_Real V, gp_Vec & TgS, gp_Vec & NormS);
 
-		/****************** Tangent2d ******************/
-		/**** md5 signature: 0fe985b779a02d58ed5caae77019a3ea ****/
+		/****** BlendFunc_CSConstRad::Tangent2d ******/
+		/****** md5 signature: 0fe985b779a02d58ed5caae77019a3ea ******/
 		%feature("compactdefaultargs") Tangent2d;
 		%feature("autodoc", "Return
 -------
@@ -1497,8 +1497,8 @@ No available documentation.
 ") Tangent2d;
 		const gp_Vec2d Tangent2d();
 
-		/****************** TangentOnC ******************/
-		/**** md5 signature: 9c5e999959c217a8456055e42ec88461 ****/
+		/****** BlendFunc_CSConstRad::TangentOnC ******/
+		/****** md5 signature: 9c5e999959c217a8456055e42ec88461 ******/
 		%feature("compactdefaultargs") TangentOnC;
 		%feature("autodoc", "Return
 -------
@@ -1510,8 +1510,8 @@ No available documentation.
 ") TangentOnC;
 		const gp_Vec TangentOnC();
 
-		/****************** TangentOnS ******************/
-		/**** md5 signature: 48a27063e2cf1be2b2c56ad8f774bd84 ****/
+		/****** BlendFunc_CSConstRad::TangentOnS ******/
+		/****** md5 signature: 48a27063e2cf1be2b2c56ad8f774bd84 ******/
 		%feature("compactdefaultargs") TangentOnS;
 		%feature("autodoc", "Return
 -------
@@ -1523,8 +1523,8 @@ No available documentation.
 ") TangentOnS;
 		const gp_Vec TangentOnS();
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_CSConstRad::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1542,8 +1542,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_CSConstRad::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -1576,8 +1576,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 *************************/
 class BlendFunc_ChAsym : public Blend_Function {
 	public:
-		/****************** BlendFunc_ChAsym ******************/
-		/**** md5 signature: b229d2c8a2fc1a7aa0dd5e5a3c42e55f ****/
+		/****** BlendFunc_ChAsym::BlendFunc_ChAsym ******/
+		/****** md5 signature: b229d2c8a2fc1a7aa0dd5e5a3c42e55f ******/
 		%feature("compactdefaultargs") BlendFunc_ChAsym;
 		%feature("autodoc", "
 Parameters
@@ -1596,8 +1596,8 @@ No available documentation.
 ") BlendFunc_ChAsym;
 		 BlendFunc_ChAsym(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** ComputeValues ******************/
-		/**** md5 signature: 204816d5dcb99a46213f8c407defdb50 ****/
+		/****** BlendFunc_ChAsym::ComputeValues ******/
+		/****** md5 signature: 204816d5dcb99a46213f8c407defdb50 ******/
 		%feature("compactdefaultargs") ComputeValues;
 		%feature("autodoc", "
 Parameters
@@ -1616,8 +1616,8 @@ Computes the values <f> of the derivatives for the variable <x> between degf and
 ") ComputeValues;
 		Standard_Boolean ComputeValues(const math_Vector & X, const Standard_Integer DegF, const Standard_Integer DegL);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_ChAsym::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -1635,8 +1635,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_ChAsym::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -1654,8 +1654,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetMinimalDistance ******************/
-		/**** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ****/
+		/****** BlendFunc_ChAsym::GetMinimalDistance ******/
+		/****** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ******/
 		%feature("compactdefaultargs") GetMinimalDistance;
 		%feature("autodoc", "Return
 -------
@@ -1667,8 +1667,8 @@ Returns the minimal distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ****/
+		/****** BlendFunc_ChAsym::GetMinimalWeight ******/
+		/****** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -1685,8 +1685,8 @@ Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
 		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetSectionSize ******************/
-		/**** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ****/
+		/****** BlendFunc_ChAsym::GetSectionSize ******/
+		/****** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ******/
 		%feature("compactdefaultargs") GetSectionSize;
 		%feature("autodoc", "Return
 -------
@@ -1698,8 +1698,8 @@ Returns the length of the maximum section.
 ") GetSectionSize;
 		Standard_Real GetSectionSize();
 
-		/****************** GetShape ******************/
-		/**** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ****/
+		/****** BlendFunc_ChAsym::GetShape ******/
+		/****** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
@@ -1718,8 +1718,8 @@ No available documentation.
 ") GetShape;
 		void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_ChAsym::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1737,8 +1737,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ****/
+		/****** BlendFunc_ChAsym::GetTolerance ******/
+		/****** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1759,8 +1759,8 @@ Returns the tolerance to reach in approximation to respecte boundtol error at th
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
+		/****** BlendFunc_ChAsym::Intervals ******/
+		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -1778,8 +1778,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 82ca56fad113156125f40128b25c0d8e ****/
+		/****** BlendFunc_ChAsym::IsRational ******/
+		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -1791,8 +1791,8 @@ Returns if the section is rationnal.
 ") IsRational;
 		Standard_Boolean IsRational();
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_ChAsym::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -1810,8 +1810,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** IsTangencyPoint ******************/
-		/**** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ****/
+		/****** BlendFunc_ChAsym::IsTangencyPoint ******/
+		/****** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -1823,8 +1823,8 @@ No available documentation.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
-		/****************** Knots ******************/
-		/**** md5 signature: a226854cd9eac08cbe4282feaa46c20d ****/
+		/****** BlendFunc_ChAsym::Knots ******/
+		/****** md5 signature: a226854cd9eac08cbe4282feaa46c20d ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -1841,8 +1841,8 @@ No available documentation.
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** Mults ******************/
-		/**** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ****/
+		/****** BlendFunc_ChAsym::Mults ******/
+		/****** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -1859,8 +1859,8 @@ No available documentation.
 ") Mults;
 		void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_ChAsym::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -1872,8 +1872,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
+		/****** BlendFunc_ChAsym::NbIntervals ******/
+		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1890,8 +1890,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** PointOnS1 ******************/
-		/**** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ****/
+		/****** BlendFunc_ChAsym::PointOnS1 ******/
+		/****** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ******/
 		%feature("compactdefaultargs") PointOnS1;
 		%feature("autodoc", "Return
 -------
@@ -1903,8 +1903,8 @@ No available documentation.
 ") PointOnS1;
 		const gp_Pnt PointOnS1();
 
-		/****************** PointOnS2 ******************/
-		/**** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ****/
+		/****** BlendFunc_ChAsym::PointOnS2 ******/
+		/****** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ******/
 		%feature("compactdefaultargs") PointOnS2;
 		%feature("autodoc", "Return
 -------
@@ -1916,8 +1916,8 @@ No available documentation.
 ") PointOnS2;
 		const gp_Pnt PointOnS2();
 
-		/****************** Resolution ******************/
-		/**** md5 signature: 1f885646df74c72ec13d37a113377aaa ****/
+		/****** BlendFunc_ChAsym::Resolution ******/
+		/****** md5 signature: 1f885646df74c72ec13d37a113377aaa ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -1936,8 +1936,8 @@ No available documentation.
 ") Resolution;
 		void Resolution(const Standard_Integer IC2d, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Section ******************/
-		/**** md5 signature: 08613591ef85c2aabd1650c70190523f ****/
+		/****** BlendFunc_ChAsym::Section ******/
+		/****** md5 signature: 08613591ef85c2aabd1650c70190523f ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -1960,8 +1960,8 @@ Utile pour une visu rapide et approximative de la surface.
 ") Section;
 		void Section(const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, Standard_Real &OutValue, Standard_Real &OutValue, gp_Lin & C);
 
-		/****************** Section ******************/
-		/**** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ****/
+		/****** BlendFunc_ChAsym::Section ******/
+		/****** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -1981,8 +1981,8 @@ No available documentation.
 ") Section;
 		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: cab230a655fc4e6bce41754b18837678 ****/
+		/****** BlendFunc_ChAsym::Section ******/
+		/****** md5 signature: cab230a655fc4e6bce41754b18837678 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -2005,8 +2005,8 @@ Used for the first and last section.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ****/
+		/****** BlendFunc_ChAsym::Section ******/
+		/****** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -2032,8 +2032,8 @@ Used for the first and last section.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** Set ******************/
-		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
+		/****** BlendFunc_ChAsym::Set ******/
+		/****** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2050,8 +2050,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Param);
 
-		/****************** Set ******************/
-		/**** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ****/
+		/****** BlendFunc_ChAsym::Set ******/
+		/****** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2069,8 +2069,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
-		/****************** Set ******************/
-		/**** md5 signature: 3d2665ead473e36c7266c389a87d886a ****/
+		/****** BlendFunc_ChAsym::Set ******/
+		/****** md5 signature: 3d2665ead473e36c7266c389a87d886a ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2089,8 +2089,8 @@ Sets the distances and the angle.
 ") Set;
 		void Set(const Standard_Real Dist1, const Standard_Real Angle, const Standard_Integer Choix);
 
-		/****************** Tangent ******************/
-		/**** md5 signature: 13397954dafd053b9875c1007b2501b6 ****/
+		/****** BlendFunc_ChAsym::Tangent ******/
+		/****** md5 signature: 13397954dafd053b9875c1007b2501b6 ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -2114,8 +2114,8 @@ Returns the tangent vector at the section, at the beginning and the end of the s
 ") Tangent;
 		void Tangent(const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, gp_Vec & TgFirst, gp_Vec & TgLast, gp_Vec & NormFirst, gp_Vec & NormLast);
 
-		/****************** Tangent2dOnS1 ******************/
-		/**** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ****/
+		/****** BlendFunc_ChAsym::Tangent2dOnS1 ******/
+		/****** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ******/
 		%feature("compactdefaultargs") Tangent2dOnS1;
 		%feature("autodoc", "Return
 -------
@@ -2127,8 +2127,8 @@ No available documentation.
 ") Tangent2dOnS1;
 		const gp_Vec2d Tangent2dOnS1();
 
-		/****************** Tangent2dOnS2 ******************/
-		/**** md5 signature: f57294e3963627cbeb43134bc6c1d88a ****/
+		/****** BlendFunc_ChAsym::Tangent2dOnS2 ******/
+		/****** md5 signature: f57294e3963627cbeb43134bc6c1d88a ******/
 		%feature("compactdefaultargs") Tangent2dOnS2;
 		%feature("autodoc", "Return
 -------
@@ -2140,8 +2140,8 @@ No available documentation.
 ") Tangent2dOnS2;
 		const gp_Vec2d Tangent2dOnS2();
 
-		/****************** TangentOnS1 ******************/
-		/**** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ****/
+		/****** BlendFunc_ChAsym::TangentOnS1 ******/
+		/****** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ******/
 		%feature("compactdefaultargs") TangentOnS1;
 		%feature("autodoc", "Return
 -------
@@ -2153,8 +2153,8 @@ No available documentation.
 ") TangentOnS1;
 		const gp_Vec TangentOnS1();
 
-		/****************** TangentOnS2 ******************/
-		/**** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ****/
+		/****** BlendFunc_ChAsym::TangentOnS2 ******/
+		/****** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ******/
 		%feature("compactdefaultargs") TangentOnS2;
 		%feature("autodoc", "Return
 -------
@@ -2166,8 +2166,8 @@ No available documentation.
 ") TangentOnS2;
 		const gp_Vec TangentOnS2();
 
-		/****************** TwistOnS1 ******************/
-		/**** md5 signature: bcab8c931932008ff46a37653f1cc038 ****/
+		/****** BlendFunc_ChAsym::TwistOnS1 ******/
+		/****** md5 signature: bcab8c931932008ff46a37653f1cc038 ******/
 		%feature("compactdefaultargs") TwistOnS1;
 		%feature("autodoc", "Return
 -------
@@ -2179,8 +2179,8 @@ No available documentation.
 ") TwistOnS1;
 		virtual Standard_Boolean TwistOnS1();
 
-		/****************** TwistOnS2 ******************/
-		/**** md5 signature: 2e0e0e8d012a93b95309a3593de0d937 ****/
+		/****** BlendFunc_ChAsym::TwistOnS2 ******/
+		/****** md5 signature: 2e0e0e8d012a93b95309a3593de0d937 ******/
 		%feature("compactdefaultargs") TwistOnS2;
 		%feature("autodoc", "Return
 -------
@@ -2192,8 +2192,8 @@ No available documentation.
 ") TwistOnS2;
 		virtual Standard_Boolean TwistOnS2();
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_ChAsym::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2211,8 +2211,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_ChAsym::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -2245,8 +2245,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 ****************************/
 class BlendFunc_ChAsymInv : public Blend_FuncInv {
 	public:
-		/****************** BlendFunc_ChAsymInv ******************/
-		/**** md5 signature: 57d9c726e0f3e32ebb79dc260d6ff4e1 ****/
+		/****** BlendFunc_ChAsymInv::BlendFunc_ChAsymInv ******/
+		/****** md5 signature: 57d9c726e0f3e32ebb79dc260d6ff4e1 ******/
 		%feature("compactdefaultargs") BlendFunc_ChAsymInv;
 		%feature("autodoc", "
 Parameters
@@ -2265,8 +2265,8 @@ No available documentation.
 ") BlendFunc_ChAsymInv;
 		 BlendFunc_ChAsymInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** ComputeValues ******************/
-		/**** md5 signature: 204816d5dcb99a46213f8c407defdb50 ****/
+		/****** BlendFunc_ChAsymInv::ComputeValues ******/
+		/****** md5 signature: 204816d5dcb99a46213f8c407defdb50 ******/
 		%feature("compactdefaultargs") ComputeValues;
 		%feature("autodoc", "
 Parameters
@@ -2285,8 +2285,8 @@ Computes the values <f> of the derivatives for the variable <x> between degf and
 ") ComputeValues;
 		Standard_Boolean ComputeValues(const math_Vector & X, const Standard_Integer DegF, const Standard_Integer DegL);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_ChAsymInv::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -2304,8 +2304,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_ChAsymInv::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -2323,8 +2323,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_ChAsymInv::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -2342,8 +2342,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_ChAsymInv::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -2361,8 +2361,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_ChAsymInv::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -2374,8 +2374,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** Set ******************/
-		/**** md5 signature: 229bdaddea2d80c843d774149f42a9d3 ****/
+		/****** BlendFunc_ChAsymInv::Set ******/
+		/****** md5 signature: 229bdaddea2d80c843d774149f42a9d3 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2393,8 +2393,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
-		/****************** Set ******************/
-		/**** md5 signature: 3d2665ead473e36c7266c389a87d886a ****/
+		/****** BlendFunc_ChAsymInv::Set ******/
+		/****** md5 signature: 3d2665ead473e36c7266c389a87d886a ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2413,8 +2413,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Dist1, const Standard_Real Angle, const Standard_Integer Choix);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_ChAsymInv::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2432,8 +2432,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_ChAsymInv::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -2466,8 +2466,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 ***************************/
 class BlendFunc_ConstRad : public Blend_Function {
 	public:
-		/****************** BlendFunc_ConstRad ******************/
-		/**** md5 signature: ec463286ed779585c6f6c64e454c4923 ****/
+		/****** BlendFunc_ConstRad::BlendFunc_ConstRad ******/
+		/****** md5 signature: ec463286ed779585c6f6c64e454c4923 ******/
 		%feature("compactdefaultargs") BlendFunc_ConstRad;
 		%feature("autodoc", "
 Parameters
@@ -2486,8 +2486,8 @@ No available documentation.
 ") BlendFunc_ConstRad;
 		 BlendFunc_ConstRad(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** AxeRot ******************/
-		/**** md5 signature: 0c9178d91224ee5e9d339eb0f66536ab ****/
+		/****** BlendFunc_ConstRad::AxeRot ******/
+		/****** md5 signature: 0c9178d91224ee5e9d339eb0f66536ab ******/
 		%feature("compactdefaultargs") AxeRot;
 		%feature("autodoc", "
 Parameters
@@ -2504,8 +2504,8 @@ No available documentation.
 ") AxeRot;
 		gp_Ax1 AxeRot(const Standard_Real Prm);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_ConstRad::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -2523,8 +2523,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_ConstRad::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -2542,8 +2542,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetMinimalDistance ******************/
-		/**** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ****/
+		/****** BlendFunc_ConstRad::GetMinimalDistance ******/
+		/****** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ******/
 		%feature("compactdefaultargs") GetMinimalDistance;
 		%feature("autodoc", "Return
 -------
@@ -2555,8 +2555,8 @@ Returns the minimal distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ****/
+		/****** BlendFunc_ConstRad::GetMinimalWeight ******/
+		/****** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -2573,8 +2573,8 @@ Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
 		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetSectionSize ******************/
-		/**** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ****/
+		/****** BlendFunc_ConstRad::GetSectionSize ******/
+		/****** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ******/
 		%feature("compactdefaultargs") GetSectionSize;
 		%feature("autodoc", "Return
 -------
@@ -2586,8 +2586,8 @@ Returns the length of the maximum section.
 ") GetSectionSize;
 		Standard_Real GetSectionSize();
 
-		/****************** GetShape ******************/
-		/**** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ****/
+		/****** BlendFunc_ConstRad::GetShape ******/
+		/****** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
@@ -2606,8 +2606,8 @@ No available documentation.
 ") GetShape;
 		void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_ConstRad::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -2625,8 +2625,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ****/
+		/****** BlendFunc_ConstRad::GetTolerance ******/
+		/****** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -2647,8 +2647,8 @@ Returns the tolerance to reach in approximation to respecte boundtol error at th
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
+		/****** BlendFunc_ConstRad::Intervals ******/
+		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -2666,8 +2666,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 82ca56fad113156125f40128b25c0d8e ****/
+		/****** BlendFunc_ConstRad::IsRational ******/
+		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -2679,8 +2679,8 @@ Returns if the section is rationnal.
 ") IsRational;
 		Standard_Boolean IsRational();
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_ConstRad::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -2698,8 +2698,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** IsTangencyPoint ******************/
-		/**** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ****/
+		/****** BlendFunc_ConstRad::IsTangencyPoint ******/
+		/****** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -2711,8 +2711,8 @@ No available documentation.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
-		/****************** Knots ******************/
-		/**** md5 signature: a226854cd9eac08cbe4282feaa46c20d ****/
+		/****** BlendFunc_ConstRad::Knots ******/
+		/****** md5 signature: a226854cd9eac08cbe4282feaa46c20d ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -2729,8 +2729,8 @@ No available documentation.
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** Mults ******************/
-		/**** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ****/
+		/****** BlendFunc_ConstRad::Mults ******/
+		/****** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -2747,8 +2747,8 @@ No available documentation.
 ") Mults;
 		void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_ConstRad::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -2760,8 +2760,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
+		/****** BlendFunc_ConstRad::NbIntervals ******/
+		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -2778,8 +2778,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** PointOnS1 ******************/
-		/**** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ****/
+		/****** BlendFunc_ConstRad::PointOnS1 ******/
+		/****** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ******/
 		%feature("compactdefaultargs") PointOnS1;
 		%feature("autodoc", "Return
 -------
@@ -2791,8 +2791,8 @@ No available documentation.
 ") PointOnS1;
 		const gp_Pnt PointOnS1();
 
-		/****************** PointOnS2 ******************/
-		/**** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ****/
+		/****** BlendFunc_ConstRad::PointOnS2 ******/
+		/****** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ******/
 		%feature("compactdefaultargs") PointOnS2;
 		%feature("autodoc", "Return
 -------
@@ -2804,8 +2804,8 @@ No available documentation.
 ") PointOnS2;
 		const gp_Pnt PointOnS2();
 
-		/****************** Resolution ******************/
-		/**** md5 signature: 1f885646df74c72ec13d37a113377aaa ****/
+		/****** BlendFunc_ConstRad::Resolution ******/
+		/****** md5 signature: 1f885646df74c72ec13d37a113377aaa ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -2824,8 +2824,8 @@ No available documentation.
 ") Resolution;
 		void Resolution(const Standard_Integer IC2d, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Section ******************/
-		/**** md5 signature: 1ac8474fa2de24fef2821831782ec53a ****/
+		/****** BlendFunc_ConstRad::Section ******/
+		/****** md5 signature: 1ac8474fa2de24fef2821831782ec53a ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -2848,8 +2848,8 @@ Utile pour une visu rapide et approximative de la surface.
 ") Section;
 		void Section(const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, Standard_Real &OutValue, Standard_Real &OutValue, gp_Circ & C);
 
-		/****************** Section ******************/
-		/**** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ****/
+		/****** BlendFunc_ConstRad::Section ******/
+		/****** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -2875,8 +2875,8 @@ Used for the first and last section.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: cab230a655fc4e6bce41754b18837678 ****/
+		/****** BlendFunc_ConstRad::Section ******/
+		/****** md5 signature: cab230a655fc4e6bce41754b18837678 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -2899,8 +2899,8 @@ Used for the first and last section.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ****/
+		/****** BlendFunc_ConstRad::Section ******/
+		/****** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -2920,8 +2920,8 @@ No available documentation.
 ") Section;
 		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** Set ******************/
-		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
+		/****** BlendFunc_ConstRad::Set ******/
+		/****** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2938,8 +2938,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Param);
 
-		/****************** Set ******************/
-		/**** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ****/
+		/****** BlendFunc_ConstRad::Set ******/
+		/****** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2957,8 +2957,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
-		/****************** Set ******************/
-		/**** md5 signature: 99fe75aea7947575eb6b646d1797f9da ****/
+		/****** BlendFunc_ConstRad::Set ******/
+		/****** md5 signature: 99fe75aea7947575eb6b646d1797f9da ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2976,8 +2976,8 @@ Inits the value of radius, and the 'quadrant'.
 ") Set;
 		void Set(const Standard_Real Radius, const Standard_Integer Choix);
 
-		/****************** Set ******************/
-		/**** md5 signature: 94cfe331c662a2ba190837b24fee3b95 ****/
+		/****** BlendFunc_ConstRad::Set ******/
+		/****** md5 signature: 94cfe331c662a2ba190837b24fee3b95 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2994,8 +2994,8 @@ Sets the type of section generation for the approximations.
 ") Set;
 		void Set(const BlendFunc_SectionShape TypeSection);
 
-		/****************** Tangent ******************/
-		/**** md5 signature: 13397954dafd053b9875c1007b2501b6 ****/
+		/****** BlendFunc_ConstRad::Tangent ******/
+		/****** md5 signature: 13397954dafd053b9875c1007b2501b6 ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -3019,8 +3019,8 @@ Returns the tangent vector at the section, at the beginning and the end of the s
 ") Tangent;
 		void Tangent(const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, gp_Vec & TgFirst, gp_Vec & TgLast, gp_Vec & NormFirst, gp_Vec & NormLast);
 
-		/****************** Tangent2dOnS1 ******************/
-		/**** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ****/
+		/****** BlendFunc_ConstRad::Tangent2dOnS1 ******/
+		/****** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ******/
 		%feature("compactdefaultargs") Tangent2dOnS1;
 		%feature("autodoc", "Return
 -------
@@ -3032,8 +3032,8 @@ No available documentation.
 ") Tangent2dOnS1;
 		const gp_Vec2d Tangent2dOnS1();
 
-		/****************** Tangent2dOnS2 ******************/
-		/**** md5 signature: f57294e3963627cbeb43134bc6c1d88a ****/
+		/****** BlendFunc_ConstRad::Tangent2dOnS2 ******/
+		/****** md5 signature: f57294e3963627cbeb43134bc6c1d88a ******/
 		%feature("compactdefaultargs") Tangent2dOnS2;
 		%feature("autodoc", "Return
 -------
@@ -3045,8 +3045,8 @@ No available documentation.
 ") Tangent2dOnS2;
 		const gp_Vec2d Tangent2dOnS2();
 
-		/****************** TangentOnS1 ******************/
-		/**** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ****/
+		/****** BlendFunc_ConstRad::TangentOnS1 ******/
+		/****** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ******/
 		%feature("compactdefaultargs") TangentOnS1;
 		%feature("autodoc", "Return
 -------
@@ -3058,8 +3058,8 @@ No available documentation.
 ") TangentOnS1;
 		const gp_Vec TangentOnS1();
 
-		/****************** TangentOnS2 ******************/
-		/**** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ****/
+		/****** BlendFunc_ConstRad::TangentOnS2 ******/
+		/****** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ******/
 		%feature("compactdefaultargs") TangentOnS2;
 		%feature("autodoc", "Return
 -------
@@ -3071,8 +3071,8 @@ No available documentation.
 ") TangentOnS2;
 		const gp_Vec TangentOnS2();
 
-		/****************** TwistOnS1 ******************/
-		/**** md5 signature: bcab8c931932008ff46a37653f1cc038 ****/
+		/****** BlendFunc_ConstRad::TwistOnS1 ******/
+		/****** md5 signature: bcab8c931932008ff46a37653f1cc038 ******/
 		%feature("compactdefaultargs") TwistOnS1;
 		%feature("autodoc", "Return
 -------
@@ -3084,8 +3084,8 @@ No available documentation.
 ") TwistOnS1;
 		virtual Standard_Boolean TwistOnS1();
 
-		/****************** TwistOnS2 ******************/
-		/**** md5 signature: 2e0e0e8d012a93b95309a3593de0d937 ****/
+		/****** BlendFunc_ConstRad::TwistOnS2 ******/
+		/****** md5 signature: 2e0e0e8d012a93b95309a3593de0d937 ******/
 		%feature("compactdefaultargs") TwistOnS2;
 		%feature("autodoc", "Return
 -------
@@ -3097,8 +3097,8 @@ No available documentation.
 ") TwistOnS2;
 		virtual Standard_Boolean TwistOnS2();
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_ConstRad::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3116,8 +3116,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_ConstRad::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -3150,8 +3150,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 ******************************/
 class BlendFunc_ConstRadInv : public Blend_FuncInv {
 	public:
-		/****************** BlendFunc_ConstRadInv ******************/
-		/**** md5 signature: c8f32f0129f68758453c9740132fe619 ****/
+		/****** BlendFunc_ConstRadInv::BlendFunc_ConstRadInv ******/
+		/****** md5 signature: c8f32f0129f68758453c9740132fe619 ******/
 		%feature("compactdefaultargs") BlendFunc_ConstRadInv;
 		%feature("autodoc", "
 Parameters
@@ -3170,8 +3170,8 @@ No available documentation.
 ") BlendFunc_ConstRadInv;
 		 BlendFunc_ConstRadInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_ConstRadInv::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -3189,8 +3189,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_ConstRadInv::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -3208,8 +3208,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_ConstRadInv::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -3227,8 +3227,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_ConstRadInv::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -3246,8 +3246,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_ConstRadInv::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -3259,8 +3259,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** Set ******************/
-		/**** md5 signature: 229bdaddea2d80c843d774149f42a9d3 ****/
+		/****** BlendFunc_ConstRadInv::Set ******/
+		/****** md5 signature: 229bdaddea2d80c843d774149f42a9d3 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -3278,8 +3278,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
-		/****************** Set ******************/
-		/**** md5 signature: 941166ee1a941569b8be371b05e6b601 ****/
+		/****** BlendFunc_ConstRadInv::Set ******/
+		/****** md5 signature: 941166ee1a941569b8be371b05e6b601 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -3297,8 +3297,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real R, const Standard_Integer Choix);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_ConstRadInv::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3316,8 +3316,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_ConstRadInv::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -3350,8 +3350,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 ************************/
 class BlendFunc_Corde {
 	public:
-		/****************** BlendFunc_Corde ******************/
-		/**** md5 signature: 09c11190c26094da844f7a5a6a6617c4 ****/
+		/****** BlendFunc_Corde::BlendFunc_Corde ******/
+		/****** md5 signature: 09c11190c26094da844f7a5a6a6617c4 ******/
 		%feature("compactdefaultargs") BlendFunc_Corde;
 		%feature("autodoc", "
 Parameters
@@ -3369,8 +3369,8 @@ No available documentation.
 ") BlendFunc_Corde;
 		 BlendFunc_Corde(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & CGuide);
 
-		/****************** DerFguide ******************/
-		/**** md5 signature: 23a9f18e67908903d4dd5177d48fb2af ****/
+		/****** BlendFunc_Corde::DerFguide ******/
+		/****** md5 signature: 23a9f18e67908903d4dd5177d48fb2af ******/
 		%feature("compactdefaultargs") DerFguide;
 		%feature("autodoc", "
 Parameters
@@ -3388,8 +3388,8 @@ Derived of the function compared to the parameter of the guideline.
 ") DerFguide;
 		void DerFguide(const math_Vector & Sol, gp_Vec2d & DerF);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 80ee5f16e62731c095910ad60228848b ****/
+		/****** BlendFunc_Corde::Derivatives ******/
+		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -3407,8 +3407,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 0884df902635922234b529dc88a260b5 ****/
+		/****** BlendFunc_Corde::IsSolution ******/
+		/****** md5 signature: 0884df902635922234b529dc88a260b5 ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -3426,8 +3426,8 @@ Returns false if sol is not solution else returns true and updates the fields tg
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** IsTangencyPoint ******************/
-		/**** md5 signature: a9c9faea523a7d80ff8416e04b887e70 ****/
+		/****** BlendFunc_Corde::IsTangencyPoint ******/
+		/****** md5 signature: a9c9faea523a7d80ff8416e04b887e70 ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -3439,8 +3439,8 @@ Returns true when it is not possible to compute the tangent vectors at pointons.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
-		/****************** NPlan ******************/
-		/**** md5 signature: 1752f4f55cfe405bd67775b7f8e77006 ****/
+		/****** BlendFunc_Corde::NPlan ******/
+		/****** md5 signature: 1752f4f55cfe405bd67775b7f8e77006 ******/
 		%feature("compactdefaultargs") NPlan;
 		%feature("autodoc", "Return
 -------
@@ -3452,8 +3452,8 @@ Returns the normal to cguide at ptgui.
 ") NPlan;
 		const gp_Vec NPlan();
 
-		/****************** PointOnGuide ******************/
-		/**** md5 signature: e87472d23145a96f1fa3e3141ac7c2dd ****/
+		/****** BlendFunc_Corde::PointOnGuide ******/
+		/****** md5 signature: e87472d23145a96f1fa3e3141ac7c2dd ******/
 		%feature("compactdefaultargs") PointOnGuide;
 		%feature("autodoc", "Return
 -------
@@ -3465,8 +3465,8 @@ Returns the point of parameter <param> on cguide.
 ") PointOnGuide;
 		const gp_Pnt PointOnGuide();
 
-		/****************** PointOnS ******************/
-		/**** md5 signature: 7701a4dd49c389b38b1770bec82a60cd ****/
+		/****** BlendFunc_Corde::PointOnS ******/
+		/****** md5 signature: 7701a4dd49c389b38b1770bec82a60cd ******/
 		%feature("compactdefaultargs") PointOnS;
 		%feature("autodoc", "Return
 -------
@@ -3478,8 +3478,8 @@ No available documentation.
 ") PointOnS;
 		const gp_Pnt PointOnS();
 
-		/****************** SetDist ******************/
-		/**** md5 signature: a0f41880e1eb0af062b3350ce3ca3532 ****/
+		/****** BlendFunc_Corde::SetDist ******/
+		/****** md5 signature: a0f41880e1eb0af062b3350ce3ca3532 ******/
 		%feature("compactdefaultargs") SetDist;
 		%feature("autodoc", "
 Parameters
@@ -3496,8 +3496,8 @@ No available documentation.
 ") SetDist;
 		void SetDist(const Standard_Real Dist);
 
-		/****************** SetParam ******************/
-		/**** md5 signature: afbb70d3463dbd3dc51af6c494b8ebef ****/
+		/****** BlendFunc_Corde::SetParam ******/
+		/****** md5 signature: afbb70d3463dbd3dc51af6c494b8ebef ******/
 		%feature("compactdefaultargs") SetParam;
 		%feature("autodoc", "
 Parameters
@@ -3514,8 +3514,8 @@ No available documentation.
 ") SetParam;
 		void SetParam(const Standard_Real Param);
 
-		/****************** Tangent2dOnS ******************/
-		/**** md5 signature: 277e1459ed99bd7331c01c470b757dad ****/
+		/****** BlendFunc_Corde::Tangent2dOnS ******/
+		/****** md5 signature: 277e1459ed99bd7331c01c470b757dad ******/
 		%feature("compactdefaultargs") Tangent2dOnS;
 		%feature("autodoc", "Return
 -------
@@ -3527,8 +3527,8 @@ Returns the tangent vector at pointons, in the parametric space of the first sur
 ") Tangent2dOnS;
 		const gp_Vec2d Tangent2dOnS();
 
-		/****************** TangentOnS ******************/
-		/**** md5 signature: 6a76df7a0ec21039226ae1d5b4797449 ****/
+		/****** BlendFunc_Corde::TangentOnS ******/
+		/****** md5 signature: 6a76df7a0ec21039226ae1d5b4797449 ******/
 		%feature("compactdefaultargs") TangentOnS;
 		%feature("autodoc", "Return
 -------
@@ -3540,8 +3540,8 @@ Returns the tangent vector at pointons, in 3d space.
 ") TangentOnS;
 		const gp_Vec TangentOnS();
 
-		/****************** Value ******************/
-		/**** md5 signature: 31f6ba581b8fae503400d98976418349 ****/
+		/****** BlendFunc_Corde::Value ******/
+		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3573,8 +3573,8 @@ Computes the values <f> of the function for the variable <x>. returns true if th
 **************************/
 class BlendFunc_EvolRad : public Blend_Function {
 	public:
-		/****************** BlendFunc_EvolRad ******************/
-		/**** md5 signature: 0d3aa13d1183ca5db26a2b0aa1b7ba32 ****/
+		/****** BlendFunc_EvolRad::BlendFunc_EvolRad ******/
+		/****** md5 signature: 0d3aa13d1183ca5db26a2b0aa1b7ba32 ******/
 		%feature("compactdefaultargs") BlendFunc_EvolRad;
 		%feature("autodoc", "
 Parameters
@@ -3594,8 +3594,8 @@ No available documentation.
 ") BlendFunc_EvolRad;
 		 BlendFunc_EvolRad(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Law_Function> & Law);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_EvolRad::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -3613,8 +3613,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_EvolRad::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -3632,8 +3632,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetMinimalDistance ******************/
-		/**** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ****/
+		/****** BlendFunc_EvolRad::GetMinimalDistance ******/
+		/****** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ******/
 		%feature("compactdefaultargs") GetMinimalDistance;
 		%feature("autodoc", "Return
 -------
@@ -3645,8 +3645,8 @@ Returns the minimal distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ****/
+		/****** BlendFunc_EvolRad::GetMinimalWeight ******/
+		/****** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -3663,8 +3663,8 @@ Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
 		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetSectionSize ******************/
-		/**** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ****/
+		/****** BlendFunc_EvolRad::GetSectionSize ******/
+		/****** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ******/
 		%feature("compactdefaultargs") GetSectionSize;
 		%feature("autodoc", "Return
 -------
@@ -3676,8 +3676,8 @@ Returns the length of the maximum section.
 ") GetSectionSize;
 		Standard_Real GetSectionSize();
 
-		/****************** GetShape ******************/
-		/**** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ****/
+		/****** BlendFunc_EvolRad::GetShape ******/
+		/****** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
@@ -3696,8 +3696,8 @@ No available documentation.
 ") GetShape;
 		void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_EvolRad::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -3715,8 +3715,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ****/
+		/****** BlendFunc_EvolRad::GetTolerance ******/
+		/****** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -3737,8 +3737,8 @@ Returns the tolerance to reach in approximation to respecte boundtol error at th
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
+		/****** BlendFunc_EvolRad::Intervals ******/
+		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -3756,8 +3756,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 82ca56fad113156125f40128b25c0d8e ****/
+		/****** BlendFunc_EvolRad::IsRational ******/
+		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -3769,8 +3769,8 @@ Returns if the section is rationnal.
 ") IsRational;
 		Standard_Boolean IsRational();
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_EvolRad::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -3788,8 +3788,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** IsTangencyPoint ******************/
-		/**** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ****/
+		/****** BlendFunc_EvolRad::IsTangencyPoint ******/
+		/****** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -3801,8 +3801,8 @@ No available documentation.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
-		/****************** Knots ******************/
-		/**** md5 signature: a226854cd9eac08cbe4282feaa46c20d ****/
+		/****** BlendFunc_EvolRad::Knots ******/
+		/****** md5 signature: a226854cd9eac08cbe4282feaa46c20d ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -3819,8 +3819,8 @@ No available documentation.
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** Mults ******************/
-		/**** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ****/
+		/****** BlendFunc_EvolRad::Mults ******/
+		/****** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -3837,8 +3837,8 @@ No available documentation.
 ") Mults;
 		void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_EvolRad::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -3850,8 +3850,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
+		/****** BlendFunc_EvolRad::NbIntervals ******/
+		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -3868,8 +3868,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** PointOnS1 ******************/
-		/**** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ****/
+		/****** BlendFunc_EvolRad::PointOnS1 ******/
+		/****** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ******/
 		%feature("compactdefaultargs") PointOnS1;
 		%feature("autodoc", "Return
 -------
@@ -3881,8 +3881,8 @@ No available documentation.
 ") PointOnS1;
 		const gp_Pnt PointOnS1();
 
-		/****************** PointOnS2 ******************/
-		/**** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ****/
+		/****** BlendFunc_EvolRad::PointOnS2 ******/
+		/****** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ******/
 		%feature("compactdefaultargs") PointOnS2;
 		%feature("autodoc", "Return
 -------
@@ -3894,8 +3894,8 @@ No available documentation.
 ") PointOnS2;
 		const gp_Pnt PointOnS2();
 
-		/****************** Resolution ******************/
-		/**** md5 signature: 1f885646df74c72ec13d37a113377aaa ****/
+		/****** BlendFunc_EvolRad::Resolution ******/
+		/****** md5 signature: 1f885646df74c72ec13d37a113377aaa ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -3914,8 +3914,8 @@ No available documentation.
 ") Resolution;
 		void Resolution(const Standard_Integer IC2d, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Section ******************/
-		/**** md5 signature: 1ac8474fa2de24fef2821831782ec53a ****/
+		/****** BlendFunc_EvolRad::Section ******/
+		/****** md5 signature: 1ac8474fa2de24fef2821831782ec53a ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -3938,8 +3938,8 @@ Method for graphic traces.
 ") Section;
 		void Section(const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, Standard_Real &OutValue, Standard_Real &OutValue, gp_Circ & C);
 
-		/****************** Section ******************/
-		/**** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ****/
+		/****** BlendFunc_EvolRad::Section ******/
+		/****** md5 signature: 97c961ad7d056aef4f3b86eb96e2c45f ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -3965,8 +3965,8 @@ Used for the first and last section.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: cab230a655fc4e6bce41754b18837678 ****/
+		/****** BlendFunc_EvolRad::Section ******/
+		/****** md5 signature: cab230a655fc4e6bce41754b18837678 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -3989,8 +3989,8 @@ Used for the first and last section.
 ") Section;
 		virtual Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ****/
+		/****** BlendFunc_EvolRad::Section ******/
+		/****** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -4010,8 +4010,8 @@ No available documentation.
 ") Section;
 		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** Set ******************/
-		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
+		/****** BlendFunc_EvolRad::Set ******/
+		/****** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4028,8 +4028,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Param);
 
-		/****************** Set ******************/
-		/**** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ****/
+		/****** BlendFunc_EvolRad::Set ******/
+		/****** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4047,8 +4047,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
-		/****************** Set ******************/
-		/**** md5 signature: d73c9c4058c0955fc8cd59888660f750 ****/
+		/****** BlendFunc_EvolRad::Set ******/
+		/****** md5 signature: d73c9c4058c0955fc8cd59888660f750 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4065,8 +4065,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Integer Choix);
 
-		/****************** Set ******************/
-		/**** md5 signature: 94cfe331c662a2ba190837b24fee3b95 ****/
+		/****** BlendFunc_EvolRad::Set ******/
+		/****** md5 signature: 94cfe331c662a2ba190837b24fee3b95 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4083,8 +4083,8 @@ Sets the type of section generation for the approximations.
 ") Set;
 		void Set(const BlendFunc_SectionShape TypeSection);
 
-		/****************** Tangent ******************/
-		/**** md5 signature: 13397954dafd053b9875c1007b2501b6 ****/
+		/****** BlendFunc_EvolRad::Tangent ******/
+		/****** md5 signature: 13397954dafd053b9875c1007b2501b6 ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -4108,8 +4108,8 @@ Returns the tangent vector at the section, at the beginning and the end of the s
 ") Tangent;
 		void Tangent(const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, gp_Vec & TgFirst, gp_Vec & TgLast, gp_Vec & NormFirst, gp_Vec & NormLast);
 
-		/****************** Tangent2dOnS1 ******************/
-		/**** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ****/
+		/****** BlendFunc_EvolRad::Tangent2dOnS1 ******/
+		/****** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ******/
 		%feature("compactdefaultargs") Tangent2dOnS1;
 		%feature("autodoc", "Return
 -------
@@ -4121,8 +4121,8 @@ No available documentation.
 ") Tangent2dOnS1;
 		const gp_Vec2d Tangent2dOnS1();
 
-		/****************** Tangent2dOnS2 ******************/
-		/**** md5 signature: f57294e3963627cbeb43134bc6c1d88a ****/
+		/****** BlendFunc_EvolRad::Tangent2dOnS2 ******/
+		/****** md5 signature: f57294e3963627cbeb43134bc6c1d88a ******/
 		%feature("compactdefaultargs") Tangent2dOnS2;
 		%feature("autodoc", "Return
 -------
@@ -4134,8 +4134,8 @@ No available documentation.
 ") Tangent2dOnS2;
 		const gp_Vec2d Tangent2dOnS2();
 
-		/****************** TangentOnS1 ******************/
-		/**** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ****/
+		/****** BlendFunc_EvolRad::TangentOnS1 ******/
+		/****** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ******/
 		%feature("compactdefaultargs") TangentOnS1;
 		%feature("autodoc", "Return
 -------
@@ -4147,8 +4147,8 @@ No available documentation.
 ") TangentOnS1;
 		const gp_Vec TangentOnS1();
 
-		/****************** TangentOnS2 ******************/
-		/**** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ****/
+		/****** BlendFunc_EvolRad::TangentOnS2 ******/
+		/****** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ******/
 		%feature("compactdefaultargs") TangentOnS2;
 		%feature("autodoc", "Return
 -------
@@ -4160,8 +4160,8 @@ No available documentation.
 ") TangentOnS2;
 		const gp_Vec TangentOnS2();
 
-		/****************** TwistOnS1 ******************/
-		/**** md5 signature: bcab8c931932008ff46a37653f1cc038 ****/
+		/****** BlendFunc_EvolRad::TwistOnS1 ******/
+		/****** md5 signature: bcab8c931932008ff46a37653f1cc038 ******/
 		%feature("compactdefaultargs") TwistOnS1;
 		%feature("autodoc", "Return
 -------
@@ -4173,8 +4173,8 @@ No available documentation.
 ") TwistOnS1;
 		virtual Standard_Boolean TwistOnS1();
 
-		/****************** TwistOnS2 ******************/
-		/**** md5 signature: 2e0e0e8d012a93b95309a3593de0d937 ****/
+		/****** BlendFunc_EvolRad::TwistOnS2 ******/
+		/****** md5 signature: 2e0e0e8d012a93b95309a3593de0d937 ******/
 		%feature("compactdefaultargs") TwistOnS2;
 		%feature("autodoc", "Return
 -------
@@ -4186,8 +4186,8 @@ No available documentation.
 ") TwistOnS2;
 		virtual Standard_Boolean TwistOnS2();
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_EvolRad::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -4205,8 +4205,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_EvolRad::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -4239,8 +4239,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 *****************************/
 class BlendFunc_EvolRadInv : public Blend_FuncInv {
 	public:
-		/****************** BlendFunc_EvolRadInv ******************/
-		/**** md5 signature: d0bf0a36455b752e44c89151c15747c3 ****/
+		/****** BlendFunc_EvolRadInv::BlendFunc_EvolRadInv ******/
+		/****** md5 signature: d0bf0a36455b752e44c89151c15747c3 ******/
 		%feature("compactdefaultargs") BlendFunc_EvolRadInv;
 		%feature("autodoc", "
 Parameters
@@ -4260,8 +4260,8 @@ No available documentation.
 ") BlendFunc_EvolRadInv;
 		 BlendFunc_EvolRadInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C, const opencascade::handle<Law_Function> & Law);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 80ee5f16e62731c095910ad60228848b ****/
+		/****** BlendFunc_EvolRadInv::Derivatives ******/
+		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -4279,8 +4279,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: 73d101c74e718085b2fc8de28383bce3 ****/
+		/****** BlendFunc_EvolRadInv::GetBounds ******/
+		/****** md5 signature: 73d101c74e718085b2fc8de28383bce3 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -4298,8 +4298,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: 463e2084f8f6e4a4f87c36de6e9fd9c6 ****/
+		/****** BlendFunc_EvolRadInv::GetTolerance ******/
+		/****** md5 signature: 463e2084f8f6e4a4f87c36de6e9fd9c6 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -4317,8 +4317,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 0884df902635922234b529dc88a260b5 ****/
+		/****** BlendFunc_EvolRadInv::IsSolution ******/
+		/****** md5 signature: 0884df902635922234b529dc88a260b5 ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -4336,8 +4336,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 42be0dc2e32c8e563393e8490171707e ****/
+		/****** BlendFunc_EvolRadInv::NbEquations ******/
+		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -4349,8 +4349,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** Set ******************/
-		/**** md5 signature: cdc53548b1d92196db3a77124e819099 ****/
+		/****** BlendFunc_EvolRadInv::Set ******/
+		/****** md5 signature: cdc53548b1d92196db3a77124e819099 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4368,8 +4368,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
-		/****************** Set ******************/
-		/**** md5 signature: d73c9c4058c0955fc8cd59888660f750 ****/
+		/****** BlendFunc_EvolRadInv::Set ******/
+		/****** md5 signature: d73c9c4058c0955fc8cd59888660f750 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4386,8 +4386,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Integer Choix);
 
-		/****************** Value ******************/
-		/**** md5 signature: 31f6ba581b8fae503400d98976418349 ****/
+		/****** BlendFunc_EvolRadInv::Value ******/
+		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -4405,8 +4405,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ****/
+		/****** BlendFunc_EvolRadInv::Values ******/
+		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -4440,8 +4440,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 %nodefaultctor BlendFunc_GenChamfInv;
 class BlendFunc_GenChamfInv : public Blend_FuncInv {
 	public:
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_GenChamfInv::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -4459,8 +4459,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_GenChamfInv::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -4478,8 +4478,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_GenChamfInv::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -4491,8 +4491,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** Set ******************/
-		/**** md5 signature: 4eba17c1fe83cac47590d6f96738fedb ****/
+		/****** BlendFunc_GenChamfInv::Set ******/
+		/****** md5 signature: 4eba17c1fe83cac47590d6f96738fedb ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4510,8 +4510,8 @@ No available documentation.
 ") Set;
 		virtual void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
-		/****************** Set ******************/
-		/**** md5 signature: ee1b691ca844b8dd605892e1ef6591ed ****/
+		/****** BlendFunc_GenChamfInv::Set ******/
+		/****** md5 signature: ee1b691ca844b8dd605892e1ef6591ed ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4530,8 +4530,8 @@ No available documentation.
 ") Set;
 		virtual void Set(const Standard_Real Dist1, const Standard_Real Dist2, const Standard_Integer Choix);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_GenChamfInv::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -4565,8 +4565,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 %nodefaultctor BlendFunc_GenChamfer;
 class BlendFunc_GenChamfer : public Blend_Function {
 	public:
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_GenChamfer::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -4584,8 +4584,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetMinimalDistance ******************/
-		/**** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ****/
+		/****** BlendFunc_GenChamfer::GetMinimalDistance ******/
+		/****** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ******/
 		%feature("compactdefaultargs") GetMinimalDistance;
 		%feature("autodoc", "Return
 -------
@@ -4597,8 +4597,8 @@ Returns the minimal distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ****/
+		/****** BlendFunc_GenChamfer::GetMinimalWeight ******/
+		/****** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -4615,8 +4615,8 @@ Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
 		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetShape ******************/
-		/**** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ****/
+		/****** BlendFunc_GenChamfer::GetShape ******/
+		/****** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
@@ -4635,8 +4635,8 @@ No available documentation.
 ") GetShape;
 		void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_GenChamfer::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -4654,8 +4654,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ****/
+		/****** BlendFunc_GenChamfer::GetTolerance ******/
+		/****** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -4676,8 +4676,8 @@ Returns the tolerance to reach in approximation to respecte boundtol error at th
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
+		/****** BlendFunc_GenChamfer::Intervals ******/
+		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -4695,8 +4695,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 82ca56fad113156125f40128b25c0d8e ****/
+		/****** BlendFunc_GenChamfer::IsRational ******/
+		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -4708,8 +4708,8 @@ Returns false.
 ") IsRational;
 		Standard_Boolean IsRational();
 
-		/****************** Knots ******************/
-		/**** md5 signature: a226854cd9eac08cbe4282feaa46c20d ****/
+		/****** BlendFunc_GenChamfer::Knots ******/
+		/****** md5 signature: a226854cd9eac08cbe4282feaa46c20d ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -4726,8 +4726,8 @@ No available documentation.
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** Mults ******************/
-		/**** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ****/
+		/****** BlendFunc_GenChamfer::Mults ******/
+		/****** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -4744,8 +4744,8 @@ No available documentation.
 ") Mults;
 		void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_GenChamfer::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -4757,8 +4757,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
+		/****** BlendFunc_GenChamfer::NbIntervals ******/
+		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -4775,8 +4775,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** Resolution ******************/
-		/**** md5 signature: 1f885646df74c72ec13d37a113377aaa ****/
+		/****** BlendFunc_GenChamfer::Resolution ******/
+		/****** md5 signature: 1f885646df74c72ec13d37a113377aaa ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -4795,8 +4795,8 @@ No available documentation.
 ") Resolution;
 		void Resolution(const Standard_Integer IC2d, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Section ******************/
-		/**** md5 signature: 08613591ef85c2aabd1650c70190523f ****/
+		/****** BlendFunc_GenChamfer::Section ******/
+		/****** md5 signature: 08613591ef85c2aabd1650c70190523f ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -4819,8 +4819,8 @@ Obsolete method.
 ") Section;
 		void Section(const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, Standard_Real &OutValue, Standard_Real &OutValue, gp_Lin & C);
 
-		/****************** Section ******************/
-		/**** md5 signature: b6f1107f21a9bc6524bdd8152abaed5f ****/
+		/****** BlendFunc_GenChamfer::Section ******/
+		/****** md5 signature: b6f1107f21a9bc6524bdd8152abaed5f ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -4846,8 +4846,8 @@ Used for the first and last section.
 ") Section;
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 906e6a4bef3056546e496b945ff8d788 ****/
+		/****** BlendFunc_GenChamfer::Section ******/
+		/****** md5 signature: 906e6a4bef3056546e496b945ff8d788 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -4870,8 +4870,8 @@ Used for the first and last section.
 ") Section;
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ****/
+		/****** BlendFunc_GenChamfer::Section ******/
+		/****** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -4891,8 +4891,8 @@ No available documentation.
 ") Section;
 		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** Set ******************/
-		/**** md5 signature: ade0965988faf3dc4bb7b4c53f18e212 ****/
+		/****** BlendFunc_GenChamfer::Set ******/
+		/****** md5 signature: ade0965988faf3dc4bb7b4c53f18e212 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4909,8 +4909,8 @@ Sets the value of the parameter along the guide line. this determines the plane 
 ") Set;
 		void Set(const Standard_Real Param);
 
-		/****************** Set ******************/
-		/**** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ****/
+		/****** BlendFunc_GenChamfer::Set ******/
+		/****** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4928,8 +4928,8 @@ Sets the bounds of the parametric interval on the guide line. this determines th
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
-		/****************** Set ******************/
-		/**** md5 signature: ee1b691ca844b8dd605892e1ef6591ed ****/
+		/****** BlendFunc_GenChamfer::Set ******/
+		/****** md5 signature: ee1b691ca844b8dd605892e1ef6591ed ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -4948,8 +4948,8 @@ Sets the distances and the 'quadrant'.
 ") Set;
 		virtual void Set(const Standard_Real Dist1, const Standard_Real Dist2, const Standard_Integer Choix);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_GenChamfer::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -4982,8 +4982,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 ************************/
 class BlendFunc_Ruled : public Blend_Function {
 	public:
-		/****************** BlendFunc_Ruled ******************/
-		/**** md5 signature: e253035d359b127a63cfdd5fd602f572 ****/
+		/****** BlendFunc_Ruled::BlendFunc_Ruled ******/
+		/****** md5 signature: e253035d359b127a63cfdd5fd602f572 ******/
 		%feature("compactdefaultargs") BlendFunc_Ruled;
 		%feature("autodoc", "
 Parameters
@@ -5002,8 +5002,8 @@ No available documentation.
 ") BlendFunc_Ruled;
 		 BlendFunc_Ruled(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** AxeRot ******************/
-		/**** md5 signature: 0c9178d91224ee5e9d339eb0f66536ab ****/
+		/****** BlendFunc_Ruled::AxeRot ******/
+		/****** md5 signature: 0c9178d91224ee5e9d339eb0f66536ab ******/
 		%feature("compactdefaultargs") AxeRot;
 		%feature("autodoc", "
 Parameters
@@ -5020,8 +5020,8 @@ No available documentation.
 ") AxeRot;
 		gp_Ax1 AxeRot(const Standard_Real Prm);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_Ruled::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -5039,8 +5039,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_Ruled::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -5058,8 +5058,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetMinimalDistance ******************/
-		/**** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ****/
+		/****** BlendFunc_Ruled::GetMinimalDistance ******/
+		/****** md5 signature: 5c7d510e1dc489ba8fc7ea0c2c8156a3 ******/
 		%feature("compactdefaultargs") GetMinimalDistance;
 		%feature("autodoc", "Return
 -------
@@ -5071,8 +5071,8 @@ Returns the minimal distance between two extremities of calculated sections.
 ") GetMinimalDistance;
 		Standard_Real GetMinimalDistance();
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ****/
+		/****** BlendFunc_Ruled::GetMinimalWeight ******/
+		/****** md5 signature: f84aaf80601cfa818dfe6e9dd3bec152 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -5089,8 +5089,8 @@ Compute the minimal value of weight for each poles of all sections.
 ") GetMinimalWeight;
 		void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetSection ******************/
-		/**** md5 signature: 3b1a617ddcc473f31a5d805861a150b8 ****/
+		/****** BlendFunc_Ruled::GetSection ******/
+		/****** md5 signature: 3b1a617ddcc473f31a5d805861a150b8 ******/
 		%feature("compactdefaultargs") GetSection;
 		%feature("autodoc", "
 Parameters
@@ -5113,8 +5113,8 @@ No available documentation.
 ") GetSection;
 		Standard_Boolean GetSection(const Standard_Real Param, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, TColgp_Array1OfPnt & tabP, TColgp_Array1OfVec & tabV);
 
-		/****************** GetSectionSize ******************/
-		/**** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ****/
+		/****** BlendFunc_Ruled::GetSectionSize ******/
+		/****** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ******/
 		%feature("compactdefaultargs") GetSectionSize;
 		%feature("autodoc", "Return
 -------
@@ -5126,8 +5126,8 @@ Returns the length of the maximum section.
 ") GetSectionSize;
 		Standard_Real GetSectionSize();
 
-		/****************** GetShape ******************/
-		/**** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ****/
+		/****** BlendFunc_Ruled::GetShape ******/
+		/****** md5 signature: 6b9d3e113e9e6721b2abf4c094cdd226 ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
@@ -5146,8 +5146,8 @@ No available documentation.
 ") GetShape;
 		void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_Ruled::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -5165,8 +5165,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ****/
+		/****** BlendFunc_Ruled::GetTolerance ******/
+		/****** md5 signature: be5e2f2cb95c7dbdff402ed78245d7d7 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -5187,8 +5187,8 @@ Returns the tolerance to reach in approximation to respecte boundtol error at th
 ") GetTolerance;
 		void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, math_Vector & Tol3d, math_Vector & Tol1D);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
+		/****** BlendFunc_Ruled::Intervals ******/
+		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -5206,8 +5206,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 82ca56fad113156125f40128b25c0d8e ****/
+		/****** BlendFunc_Ruled::IsRational ******/
+		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -5219,8 +5219,8 @@ Returns false.
 ") IsRational;
 		Standard_Boolean IsRational();
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_Ruled::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -5238,8 +5238,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** IsTangencyPoint ******************/
-		/**** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ****/
+		/****** BlendFunc_Ruled::IsTangencyPoint ******/
+		/****** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -5251,8 +5251,8 @@ No available documentation.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
-		/****************** Knots ******************/
-		/**** md5 signature: a226854cd9eac08cbe4282feaa46c20d ****/
+		/****** BlendFunc_Ruled::Knots ******/
+		/****** md5 signature: a226854cd9eac08cbe4282feaa46c20d ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -5269,8 +5269,8 @@ No available documentation.
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** Mults ******************/
-		/**** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ****/
+		/****** BlendFunc_Ruled::Mults ******/
+		/****** md5 signature: 36c77711e4160fb27b24b90b8fa7c6de ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -5287,8 +5287,8 @@ No available documentation.
 ") Mults;
 		void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_Ruled::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -5300,8 +5300,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
+		/****** BlendFunc_Ruled::NbIntervals ******/
+		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -5318,8 +5318,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** PointOnS1 ******************/
-		/**** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ****/
+		/****** BlendFunc_Ruled::PointOnS1 ******/
+		/****** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ******/
 		%feature("compactdefaultargs") PointOnS1;
 		%feature("autodoc", "Return
 -------
@@ -5331,8 +5331,8 @@ No available documentation.
 ") PointOnS1;
 		const gp_Pnt PointOnS1();
 
-		/****************** PointOnS2 ******************/
-		/**** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ****/
+		/****** BlendFunc_Ruled::PointOnS2 ******/
+		/****** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ******/
 		%feature("compactdefaultargs") PointOnS2;
 		%feature("autodoc", "Return
 -------
@@ -5344,8 +5344,8 @@ No available documentation.
 ") PointOnS2;
 		const gp_Pnt PointOnS2();
 
-		/****************** Resolution ******************/
-		/**** md5 signature: 1f885646df74c72ec13d37a113377aaa ****/
+		/****** BlendFunc_Ruled::Resolution ******/
+		/****** md5 signature: 1f885646df74c72ec13d37a113377aaa ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -5364,8 +5364,8 @@ No available documentation.
 ") Resolution;
 		void Resolution(const Standard_Integer IC2d, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Section ******************/
-		/**** md5 signature: b6f1107f21a9bc6524bdd8152abaed5f ****/
+		/****** BlendFunc_Ruled::Section ******/
+		/****** md5 signature: b6f1107f21a9bc6524bdd8152abaed5f ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -5391,8 +5391,8 @@ Used for the first and last section.
 ") Section;
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 906e6a4bef3056546e496b945ff8d788 ****/
+		/****** BlendFunc_Ruled::Section ******/
+		/****** md5 signature: 906e6a4bef3056546e496b945ff8d788 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -5415,8 +5415,8 @@ Used for the first and last section.
 ") Section;
 		Standard_Boolean Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ****/
+		/****** BlendFunc_Ruled::Section ******/
+		/****** md5 signature: 50af689ba5abf11bb271a06ac70b2d69 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -5436,8 +5436,8 @@ No available documentation.
 ") Section;
 		void Section(const Blend_Point & P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** Set ******************/
-		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
+		/****** BlendFunc_Ruled::Set ******/
+		/****** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -5454,8 +5454,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Param);
 
-		/****************** Set ******************/
-		/**** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ****/
+		/****** BlendFunc_Ruled::Set ******/
+		/****** md5 signature: 7d0982b9e2ba9cb3c696f620150f4f9c ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -5473,8 +5473,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real First, const Standard_Real Last);
 
-		/****************** Tangent ******************/
-		/**** md5 signature: 13397954dafd053b9875c1007b2501b6 ****/
+		/****** BlendFunc_Ruled::Tangent ******/
+		/****** md5 signature: 13397954dafd053b9875c1007b2501b6 ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -5498,8 +5498,8 @@ Returns the tangent vector at the section, at the beginning and the end of the s
 ") Tangent;
 		void Tangent(const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, gp_Vec & TgFirst, gp_Vec & TgLast, gp_Vec & NormFirst, gp_Vec & NormLast);
 
-		/****************** Tangent2dOnS1 ******************/
-		/**** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ****/
+		/****** BlendFunc_Ruled::Tangent2dOnS1 ******/
+		/****** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ******/
 		%feature("compactdefaultargs") Tangent2dOnS1;
 		%feature("autodoc", "Return
 -------
@@ -5511,8 +5511,8 @@ No available documentation.
 ") Tangent2dOnS1;
 		const gp_Vec2d Tangent2dOnS1();
 
-		/****************** Tangent2dOnS2 ******************/
-		/**** md5 signature: f57294e3963627cbeb43134bc6c1d88a ****/
+		/****** BlendFunc_Ruled::Tangent2dOnS2 ******/
+		/****** md5 signature: f57294e3963627cbeb43134bc6c1d88a ******/
 		%feature("compactdefaultargs") Tangent2dOnS2;
 		%feature("autodoc", "Return
 -------
@@ -5524,8 +5524,8 @@ No available documentation.
 ") Tangent2dOnS2;
 		const gp_Vec2d Tangent2dOnS2();
 
-		/****************** TangentOnS1 ******************/
-		/**** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ****/
+		/****** BlendFunc_Ruled::TangentOnS1 ******/
+		/****** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ******/
 		%feature("compactdefaultargs") TangentOnS1;
 		%feature("autodoc", "Return
 -------
@@ -5537,8 +5537,8 @@ No available documentation.
 ") TangentOnS1;
 		const gp_Vec TangentOnS1();
 
-		/****************** TangentOnS2 ******************/
-		/**** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ****/
+		/****** BlendFunc_Ruled::TangentOnS2 ******/
+		/****** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ******/
 		%feature("compactdefaultargs") TangentOnS2;
 		%feature("autodoc", "Return
 -------
@@ -5550,8 +5550,8 @@ No available documentation.
 ") TangentOnS2;
 		const gp_Vec TangentOnS2();
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_Ruled::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5569,8 +5569,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_Ruled::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -5603,8 +5603,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 ***************************/
 class BlendFunc_RuledInv : public Blend_FuncInv {
 	public:
-		/****************** BlendFunc_RuledInv ******************/
-		/**** md5 signature: f15fc82b59c0b2a87d88c3189053e8a5 ****/
+		/****** BlendFunc_RuledInv::BlendFunc_RuledInv ******/
+		/****** md5 signature: f15fc82b59c0b2a87d88c3189053e8a5 ******/
 		%feature("compactdefaultargs") BlendFunc_RuledInv;
 		%feature("autodoc", "
 Parameters
@@ -5623,8 +5623,8 @@ No available documentation.
 ") BlendFunc_RuledInv;
 		 BlendFunc_RuledInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_RuledInv::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -5642,8 +5642,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: 7f39b43072461a3f70a63d3178e97743 ****/
+		/****** BlendFunc_RuledInv::GetBounds ******/
+		/****** md5 signature: 7f39b43072461a3f70a63d3178e97743 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -5661,8 +5661,8 @@ No available documentation.
 ") GetBounds;
 		void GetBounds(math_Vector & InfBound, math_Vector & SupBound);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: db57a1b1119c0b1280472660909013c2 ****/
+		/****** BlendFunc_RuledInv::GetTolerance ******/
+		/****** md5 signature: db57a1b1119c0b1280472660909013c2 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -5680,8 +5680,8 @@ No available documentation.
 ") GetTolerance;
 		void GetTolerance(math_Vector & Tolerance, const Standard_Real Tol);
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_RuledInv::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -5699,8 +5699,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ****/
+		/****** BlendFunc_RuledInv::NbEquations ******/
+		/****** md5 signature: 23bde6b2e3d1ee771730481f97ff7ae2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -5712,8 +5712,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** Set ******************/
-		/**** md5 signature: 229bdaddea2d80c843d774149f42a9d3 ****/
+		/****** BlendFunc_RuledInv::Set ******/
+		/****** md5 signature: 229bdaddea2d80c843d774149f42a9d3 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -5731,8 +5731,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Boolean OnFirst, const opencascade::handle<Adaptor2d_Curve2d> & COnSurf);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_RuledInv::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5750,8 +5750,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: cb66193525cc0a7235a2cde2a228308b ****/
+		/****** BlendFunc_RuledInv::Values ******/
+		/****** md5 signature: cb66193525cc0a7235a2cde2a228308b ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -5784,8 +5784,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 *************************/
 class BlendFunc_Tensor {
 	public:
-		/****************** BlendFunc_Tensor ******************/
-		/**** md5 signature: da51a6a7a08009ec08b575ec302d3494 ****/
+		/****** BlendFunc_Tensor::BlendFunc_Tensor ******/
+		/****** md5 signature: da51a6a7a08009ec08b575ec302d3494 ******/
 		%feature("compactdefaultargs") BlendFunc_Tensor;
 		%feature("autodoc", "
 Parameters
@@ -5817,8 +5817,8 @@ No available documentation.
             $self->ChangeValue(Row,Col,Mat)=value;
             }
         };
-		/****************** Init ******************/
-		/**** md5 signature: 6aef026ef1fcb18a844e723ac935cd4b ****/
+		/****** BlendFunc_Tensor::Init ******/
+		/****** md5 signature: 6aef026ef1fcb18a844e723ac935cd4b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -5835,8 +5835,8 @@ Initialize all the elements of a tensor to initialvalue.
 ") Init;
 		void Init(const Standard_Real InitialValue);
 
-		/****************** Multiply ******************/
-		/**** md5 signature: 1744e84f6795d21ff935088da038d2e5 ****/
+		/****** BlendFunc_Tensor::Multiply ******/
+		/****** md5 signature: 1744e84f6795d21ff935088da038d2e5 ******/
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "
 Parameters
@@ -5854,8 +5854,8 @@ No available documentation.
 ") Multiply;
 		void Multiply(const math_Vector & Right, math_Matrix & Product);
 
-		/****************** Value ******************/
-		/**** md5 signature: fd791f445ff1b5b7d6ca99e04d3b9805 ****/
+		/****** BlendFunc_Tensor::Value ******/
+		/****** md5 signature: fd791f445ff1b5b7d6ca99e04d3b9805 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5888,8 +5888,8 @@ Accesses (in read or write mode) the value of index <row>, <col> and <mat> of a 
 ***************************/
 class BlendFunc_ChamfInv : public BlendFunc_GenChamfInv {
 	public:
-		/****************** BlendFunc_ChamfInv ******************/
-		/**** md5 signature: 03770f1d2075d29aa171bd8362874cff ****/
+		/****** BlendFunc_ChamfInv::BlendFunc_ChamfInv ******/
+		/****** md5 signature: 03770f1d2075d29aa171bd8362874cff ******/
 		%feature("compactdefaultargs") BlendFunc_ChamfInv;
 		%feature("autodoc", "
 Parameters
@@ -5908,8 +5908,8 @@ No available documentation.
 ") BlendFunc_ChamfInv;
 		 BlendFunc_ChamfInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_ChamfInv::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -5927,8 +5927,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_ChamfInv::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -5946,8 +5946,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** Set ******************/
-		/**** md5 signature: e496fd995a5894c8dcf67747e2a803cb ****/
+		/****** BlendFunc_ChamfInv::Set ******/
+		/****** md5 signature: e496fd995a5894c8dcf67747e2a803cb ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -5966,8 +5966,8 @@ No available documentation.
 ") Set;
 		virtual void Set(const Standard_Real Dist1, const Standard_Real Dist2, const Standard_Integer Choix);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_ChamfInv::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -5999,8 +5999,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 **************************/
 class BlendFunc_Chamfer : public BlendFunc_GenChamfer {
 	public:
-		/****************** BlendFunc_Chamfer ******************/
-		/**** md5 signature: 95f7dc1cb02ec7d245aeb0d13e68126f ****/
+		/****** BlendFunc_Chamfer::BlendFunc_Chamfer ******/
+		/****** md5 signature: 95f7dc1cb02ec7d245aeb0d13e68126f ******/
 		%feature("compactdefaultargs") BlendFunc_Chamfer;
 		%feature("autodoc", "
 Parameters
@@ -6019,8 +6019,8 @@ No available documentation.
 ") BlendFunc_Chamfer;
 		 BlendFunc_Chamfer(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & CG);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_Chamfer::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -6038,8 +6038,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetSectionSize ******************/
-		/**** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ****/
+		/****** BlendFunc_Chamfer::GetSectionSize ******/
+		/****** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ******/
 		%feature("compactdefaultargs") GetSectionSize;
 		%feature("autodoc", "Return
 -------
@@ -6051,8 +6051,8 @@ Returns the length of the maximum section.
 ") GetSectionSize;
 		Standard_Real GetSectionSize();
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_Chamfer::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -6070,8 +6070,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** IsTangencyPoint ******************/
-		/**** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ****/
+		/****** BlendFunc_Chamfer::IsTangencyPoint ******/
+		/****** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -6083,8 +6083,8 @@ No available documentation.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
-		/****************** PointOnS1 ******************/
-		/**** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ****/
+		/****** BlendFunc_Chamfer::PointOnS1 ******/
+		/****** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ******/
 		%feature("compactdefaultargs") PointOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6096,8 +6096,8 @@ No available documentation.
 ") PointOnS1;
 		const gp_Pnt PointOnS1();
 
-		/****************** PointOnS2 ******************/
-		/**** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ****/
+		/****** BlendFunc_Chamfer::PointOnS2 ******/
+		/****** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ******/
 		%feature("compactdefaultargs") PointOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6109,8 +6109,8 @@ No available documentation.
 ") PointOnS2;
 		const gp_Pnt PointOnS2();
 
-		/****************** Set ******************/
-		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
+		/****** BlendFunc_Chamfer::Set ******/
+		/****** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -6127,8 +6127,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Param);
 
-		/****************** Set ******************/
-		/**** md5 signature: 78f9e2c80c7864a7b03452bb77fff0ef ****/
+		/****** BlendFunc_Chamfer::Set ******/
+		/****** md5 signature: 78f9e2c80c7864a7b03452bb77fff0ef ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -6147,8 +6147,8 @@ Sets the distances and the 'quadrant'.
 ") Set;
 		void Set(const Standard_Real Dist1, const Standard_Real Dist2, const Standard_Integer Choix);
 
-		/****************** Tangent ******************/
-		/**** md5 signature: 13397954dafd053b9875c1007b2501b6 ****/
+		/****** BlendFunc_Chamfer::Tangent ******/
+		/****** md5 signature: 13397954dafd053b9875c1007b2501b6 ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -6172,8 +6172,8 @@ Returns the tangent vector at the section, at the beginning and the end of the s
 ") Tangent;
 		void Tangent(const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, gp_Vec & TgFirst, gp_Vec & TgLast, gp_Vec & NormFirst, gp_Vec & NormLast);
 
-		/****************** Tangent2dOnS1 ******************/
-		/**** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ****/
+		/****** BlendFunc_Chamfer::Tangent2dOnS1 ******/
+		/****** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ******/
 		%feature("compactdefaultargs") Tangent2dOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6185,8 +6185,8 @@ No available documentation.
 ") Tangent2dOnS1;
 		const gp_Vec2d Tangent2dOnS1();
 
-		/****************** Tangent2dOnS2 ******************/
-		/**** md5 signature: f57294e3963627cbeb43134bc6c1d88a ****/
+		/****** BlendFunc_Chamfer::Tangent2dOnS2 ******/
+		/****** md5 signature: f57294e3963627cbeb43134bc6c1d88a ******/
 		%feature("compactdefaultargs") Tangent2dOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6198,8 +6198,8 @@ No available documentation.
 ") Tangent2dOnS2;
 		const gp_Vec2d Tangent2dOnS2();
 
-		/****************** TangentOnS1 ******************/
-		/**** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ****/
+		/****** BlendFunc_Chamfer::TangentOnS1 ******/
+		/****** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ******/
 		%feature("compactdefaultargs") TangentOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6211,8 +6211,8 @@ No available documentation.
 ") TangentOnS1;
 		const gp_Vec TangentOnS1();
 
-		/****************** TangentOnS2 ******************/
-		/**** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ****/
+		/****** BlendFunc_Chamfer::TangentOnS2 ******/
+		/****** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ******/
 		%feature("compactdefaultargs") TangentOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6224,8 +6224,8 @@ No available documentation.
 ") TangentOnS2;
 		const gp_Vec TangentOnS2();
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_Chamfer::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -6257,8 +6257,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ******************************/
 class BlendFunc_ConstThroat : public BlendFunc_GenChamfer {
 	public:
-		/****************** BlendFunc_ConstThroat ******************/
-		/**** md5 signature: cbea5b84841b251171871eebe4d6cd9e ****/
+		/****** BlendFunc_ConstThroat::BlendFunc_ConstThroat ******/
+		/****** md5 signature: cbea5b84841b251171871eebe4d6cd9e ******/
 		%feature("compactdefaultargs") BlendFunc_ConstThroat;
 		%feature("autodoc", "
 Parameters
@@ -6277,8 +6277,8 @@ No available documentation.
 ") BlendFunc_ConstThroat;
 		 BlendFunc_ConstThroat(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_ConstThroat::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -6296,8 +6296,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetSectionSize ******************/
-		/**** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ****/
+		/****** BlendFunc_ConstThroat::GetSectionSize ******/
+		/****** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ******/
 		%feature("compactdefaultargs") GetSectionSize;
 		%feature("autodoc", "Return
 -------
@@ -6309,8 +6309,8 @@ Returns the length of the maximum section.
 ") GetSectionSize;
 		Standard_Real GetSectionSize();
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_ConstThroat::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -6328,8 +6328,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** IsTangencyPoint ******************/
-		/**** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ****/
+		/****** BlendFunc_ConstThroat::IsTangencyPoint ******/
+		/****** md5 signature: 6f3e518ba9796f381f39631e22124ef0 ******/
 		%feature("compactdefaultargs") IsTangencyPoint;
 		%feature("autodoc", "Return
 -------
@@ -6341,8 +6341,8 @@ No available documentation.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
-		/****************** PointOnS1 ******************/
-		/**** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ****/
+		/****** BlendFunc_ConstThroat::PointOnS1 ******/
+		/****** md5 signature: 31ba0cad339bf2eee3eaa6f297b2933d ******/
 		%feature("compactdefaultargs") PointOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6354,8 +6354,8 @@ No available documentation.
 ") PointOnS1;
 		const gp_Pnt PointOnS1();
 
-		/****************** PointOnS2 ******************/
-		/**** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ****/
+		/****** BlendFunc_ConstThroat::PointOnS2 ******/
+		/****** md5 signature: 92a9e4c03669ab0b0f57f90257aae861 ******/
 		%feature("compactdefaultargs") PointOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6367,8 +6367,8 @@ No available documentation.
 ") PointOnS2;
 		const gp_Pnt PointOnS2();
 
-		/****************** Set ******************/
-		/**** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ****/
+		/****** BlendFunc_ConstThroat::Set ******/
+		/****** md5 signature: a955f35e9076d1c844b9a2aa89b226bf ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -6385,8 +6385,8 @@ No available documentation.
 ") Set;
 		void Set(const Standard_Real Param);
 
-		/****************** Set ******************/
-		/**** md5 signature: 1bdd5799d0a739d4dad4e3ec0319d08f ****/
+		/****** BlendFunc_ConstThroat::Set ******/
+		/****** md5 signature: 1bdd5799d0a739d4dad4e3ec0319d08f ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -6405,8 +6405,8 @@ Sets the throat and the 'quadrant'.
 ") Set;
 		void Set(const Standard_Real aThroat, const Standard_Real, const Standard_Integer Choix);
 
-		/****************** Tangent ******************/
-		/**** md5 signature: 13397954dafd053b9875c1007b2501b6 ****/
+		/****** BlendFunc_ConstThroat::Tangent ******/
+		/****** md5 signature: 13397954dafd053b9875c1007b2501b6 ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -6430,8 +6430,8 @@ Returns the tangent vector at the section, at the beginning and the end of the s
 ") Tangent;
 		void Tangent(const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, gp_Vec & TgFirst, gp_Vec & TgLast, gp_Vec & NormFirst, gp_Vec & NormLast);
 
-		/****************** Tangent2dOnS1 ******************/
-		/**** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ****/
+		/****** BlendFunc_ConstThroat::Tangent2dOnS1 ******/
+		/****** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ******/
 		%feature("compactdefaultargs") Tangent2dOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6443,8 +6443,8 @@ No available documentation.
 ") Tangent2dOnS1;
 		const gp_Vec2d Tangent2dOnS1();
 
-		/****************** Tangent2dOnS2 ******************/
-		/**** md5 signature: f57294e3963627cbeb43134bc6c1d88a ****/
+		/****** BlendFunc_ConstThroat::Tangent2dOnS2 ******/
+		/****** md5 signature: f57294e3963627cbeb43134bc6c1d88a ******/
 		%feature("compactdefaultargs") Tangent2dOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6456,8 +6456,8 @@ No available documentation.
 ") Tangent2dOnS2;
 		const gp_Vec2d Tangent2dOnS2();
 
-		/****************** TangentOnS1 ******************/
-		/**** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ****/
+		/****** BlendFunc_ConstThroat::TangentOnS1 ******/
+		/****** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ******/
 		%feature("compactdefaultargs") TangentOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6469,8 +6469,8 @@ No available documentation.
 ") TangentOnS1;
 		const gp_Vec TangentOnS1();
 
-		/****************** TangentOnS2 ******************/
-		/**** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ****/
+		/****** BlendFunc_ConstThroat::TangentOnS2 ******/
+		/****** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ******/
 		%feature("compactdefaultargs") TangentOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6482,8 +6482,8 @@ No available documentation.
 ") TangentOnS2;
 		const gp_Vec TangentOnS2();
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_ConstThroat::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -6515,8 +6515,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 *********************************/
 class BlendFunc_ConstThroatInv : public BlendFunc_GenChamfInv {
 	public:
-		/****************** BlendFunc_ConstThroatInv ******************/
-		/**** md5 signature: 95409ba97313f153bfd0f5ac1ebb3f61 ****/
+		/****** BlendFunc_ConstThroatInv::BlendFunc_ConstThroatInv ******/
+		/****** md5 signature: 95409ba97313f153bfd0f5ac1ebb3f61 ******/
 		%feature("compactdefaultargs") BlendFunc_ConstThroatInv;
 		%feature("autodoc", "
 Parameters
@@ -6535,8 +6535,8 @@ No available documentation.
 ") BlendFunc_ConstThroatInv;
 		 BlendFunc_ConstThroatInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_ConstThroatInv::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -6554,8 +6554,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_ConstThroatInv::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -6573,8 +6573,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** Set ******************/
-		/**** md5 signature: ed48a688c0043088f72c032534118aef ****/
+		/****** BlendFunc_ConstThroatInv::Set ******/
+		/****** md5 signature: ed48a688c0043088f72c032534118aef ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -6593,8 +6593,8 @@ No available documentation.
 ") Set;
 		virtual void Set(const Standard_Real theThroat, const Standard_Real, const Standard_Integer Choix);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_ConstThroatInv::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -6626,8 +6626,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 *********************************************/
 class BlendFunc_ConstThroatWithPenetration : public BlendFunc_ConstThroat {
 	public:
-		/****************** BlendFunc_ConstThroatWithPenetration ******************/
-		/**** md5 signature: ea57eb46c007f8b6b82e5faf10c5067c ****/
+		/****** BlendFunc_ConstThroatWithPenetration::BlendFunc_ConstThroatWithPenetration ******/
+		/****** md5 signature: ea57eb46c007f8b6b82e5faf10c5067c ******/
 		%feature("compactdefaultargs") BlendFunc_ConstThroatWithPenetration;
 		%feature("autodoc", "
 Parameters
@@ -6646,8 +6646,8 @@ No available documentation.
 ") BlendFunc_ConstThroatWithPenetration;
 		 BlendFunc_ConstThroatWithPenetration(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_ConstThroatWithPenetration::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -6665,8 +6665,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** GetSectionSize ******************/
-		/**** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ****/
+		/****** BlendFunc_ConstThroatWithPenetration::GetSectionSize ******/
+		/****** md5 signature: bf1917f305e490b557c33ddc30e16dc7 ******/
 		%feature("compactdefaultargs") GetSectionSize;
 		%feature("autodoc", "Return
 -------
@@ -6678,8 +6678,8 @@ Returns the length of the maximum section.
 ") GetSectionSize;
 		Standard_Real GetSectionSize();
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_ConstThroatWithPenetration::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -6697,8 +6697,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** Tangent2dOnS1 ******************/
-		/**** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ****/
+		/****** BlendFunc_ConstThroatWithPenetration::Tangent2dOnS1 ******/
+		/****** md5 signature: ed3fe23c28d6ac4c0a074084d164d41d ******/
 		%feature("compactdefaultargs") Tangent2dOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6710,8 +6710,8 @@ No available documentation.
 ") Tangent2dOnS1;
 		const gp_Vec2d Tangent2dOnS1();
 
-		/****************** Tangent2dOnS2 ******************/
-		/**** md5 signature: f57294e3963627cbeb43134bc6c1d88a ****/
+		/****** BlendFunc_ConstThroatWithPenetration::Tangent2dOnS2 ******/
+		/****** md5 signature: f57294e3963627cbeb43134bc6c1d88a ******/
 		%feature("compactdefaultargs") Tangent2dOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6723,8 +6723,8 @@ No available documentation.
 ") Tangent2dOnS2;
 		const gp_Vec2d Tangent2dOnS2();
 
-		/****************** TangentOnS1 ******************/
-		/**** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ****/
+		/****** BlendFunc_ConstThroatWithPenetration::TangentOnS1 ******/
+		/****** md5 signature: b20f2a50fc3bd003b5bb0d17d261f9e7 ******/
 		%feature("compactdefaultargs") TangentOnS1;
 		%feature("autodoc", "Return
 -------
@@ -6736,8 +6736,8 @@ No available documentation.
 ") TangentOnS1;
 		const gp_Vec TangentOnS1();
 
-		/****************** TangentOnS2 ******************/
-		/**** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ****/
+		/****** BlendFunc_ConstThroatWithPenetration::TangentOnS2 ******/
+		/****** md5 signature: 5ee1080b2d5e8e29046ca62a01e3f639 ******/
 		%feature("compactdefaultargs") TangentOnS2;
 		%feature("autodoc", "Return
 -------
@@ -6749,8 +6749,8 @@ No available documentation.
 ") TangentOnS2;
 		const gp_Vec TangentOnS2();
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_ConstThroatWithPenetration::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -6782,8 +6782,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ************************************************/
 class BlendFunc_ConstThroatWithPenetrationInv : public BlendFunc_ConstThroatInv {
 	public:
-		/****************** BlendFunc_ConstThroatWithPenetrationInv ******************/
-		/**** md5 signature: 4f8493ab3f5eb8a9ea5778e7a093e544 ****/
+		/****** BlendFunc_ConstThroatWithPenetrationInv::BlendFunc_ConstThroatWithPenetrationInv ******/
+		/****** md5 signature: 4f8493ab3f5eb8a9ea5778e7a093e544 ******/
 		%feature("compactdefaultargs") BlendFunc_ConstThroatWithPenetrationInv;
 		%feature("autodoc", "
 Parameters
@@ -6802,8 +6802,8 @@ No available documentation.
 ") BlendFunc_ConstThroatWithPenetrationInv;
 		 BlendFunc_ConstThroatWithPenetrationInv(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 940fde1549012c9025c437a16f7d8c18 ****/
+		/****** BlendFunc_ConstThroatWithPenetrationInv::Derivatives ******/
+		/****** md5 signature: 940fde1549012c9025c437a16f7d8c18 ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -6821,8 +6821,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** IsSolution ******************/
-		/**** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ****/
+		/****** BlendFunc_ConstThroatWithPenetrationInv::IsSolution ******/
+		/****** md5 signature: 89ff6b5b0ad96a1e505d615e14235bad ******/
 		%feature("compactdefaultargs") IsSolution;
 		%feature("autodoc", "
 Parameters
@@ -6840,8 +6840,8 @@ No available documentation.
 ") IsSolution;
 		Standard_Boolean IsSolution(const math_Vector & Sol, const Standard_Real Tol);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1b689850305d8b13f289849027f0887b ****/
+		/****** BlendFunc_ConstThroatWithPenetrationInv::Value ******/
+		/****** md5 signature: 1b689850305d8b13f289849027f0887b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters

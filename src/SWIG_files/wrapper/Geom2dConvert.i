@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DCONVERTDOCSTRING
 "Geom2dConvert module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geom2dconvert.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geom2dconvert.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DCONVERTDOCSTRING) Geom2dConvert
 
@@ -104,8 +104,8 @@ typedef NCollection_Sequence<Geom2dConvert_PPoint> Geom2dConvert_SequenceOfPPoin
 %rename(geom2dconvert) Geom2dConvert;
 class Geom2dConvert {
 	public:
-		/****************** C0BSplineToArrayOfC1BSplineCurve ******************/
-		/**** md5 signature: 418e41b3f000190b9bb893d6a0f6f5d0 ****/
+		/****** Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve ******/
+		/****** md5 signature: 418e41b3f000190b9bb893d6a0f6f5d0 ******/
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -124,8 +124,8 @@ This method reduces as far as it is possible the multiplicities of the knots of 
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & tabBS, const Standard_Real Tolerance);
 
-		/****************** C0BSplineToArrayOfC1BSplineCurve ******************/
-		/**** md5 signature: 06271ef4a995d870a72c4ea333fb49db ****/
+		/****** Geom2dConvert::C0BSplineToArrayOfC1BSplineCurve ******/
+		/****** md5 signature: 06271ef4a995d870a72c4ea333fb49db ******/
 		%feature("compactdefaultargs") C0BSplineToArrayOfC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -145,8 +145,8 @@ This method reduces as far as it is possible the multiplicities of the knots of 
 ") C0BSplineToArrayOfC1BSplineCurve;
 		static void C0BSplineToArrayOfC1BSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & BS, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & tabBS, const Standard_Real AngularTolerance, const Standard_Real Tolerance);
 
-		/****************** C0BSplineToC1BSplineCurve ******************/
-		/**** md5 signature: 43d98081fc6289414094aef8a5a8373c ****/
+		/****** Geom2dConvert::C0BSplineToC1BSplineCurve ******/
+		/****** md5 signature: 43d98081fc6289414094aef8a5a8373c ******/
 		%feature("compactdefaultargs") C0BSplineToC1BSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -164,8 +164,8 @@ This method reduces as far as it is possible the multiplicities of the knots of 
 ") C0BSplineToC1BSplineCurve;
 		static void C0BSplineToC1BSplineCurve(opencascade::handle<Geom2d_BSplineCurve> & BS, const Standard_Real Tolerance);
 
-		/****************** ConcatC1 ******************/
-		/**** md5 signature: a14010dff7bc07ad8e245f6a53f4fc55 ****/
+		/****** Geom2dConvert::ConcatC1 ******/
+		/****** md5 signature: a14010dff7bc07ad8e245f6a53f4fc55 ******/
 		%feature("compactdefaultargs") ConcatC1;
 		%feature("autodoc", "
 Parameters
@@ -186,8 +186,8 @@ This method concatenates c1 the arrayofcurves as far as it is possible. arrayofc
 ") ConcatC1;
 		static void ConcatC1(TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance);
 
-		/****************** ConcatC1 ******************/
-		/**** md5 signature: 5a277b57b6adb52b8e6f919b7bd0fe59 ****/
+		/****** Geom2dConvert::ConcatC1 ******/
+		/****** md5 signature: 5a277b57b6adb52b8e6f919b7bd0fe59 ******/
 		%feature("compactdefaultargs") ConcatC1;
 		%feature("autodoc", "
 Parameters
@@ -209,8 +209,8 @@ This method concatenates c1 the arrayofcurves as far as it is possible. arrayofc
 ") ConcatC1;
 		static void ConcatC1(TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColStd_HArray1OfInteger> & ArrayOfIndices, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance, const Standard_Real AngularTolerance);
 
-		/****************** ConcatG1 ******************/
-		/**** md5 signature: d7fe6a64c566dd941ed17b92c56628e5 ****/
+		/****** Geom2dConvert::ConcatG1 ******/
+		/****** md5 signature: d7fe6a64c566dd941ed17b92c56628e5 ******/
 		%feature("compactdefaultargs") ConcatG1;
 		%feature("autodoc", "
 Parameters
@@ -230,8 +230,8 @@ This method concatenates g1 the arrayofcurves as far as it is possible. arrayofc
 ") ConcatG1;
 		static void ConcatG1(TColGeom2d_Array1OfBSplineCurve & ArrayOfCurves, const TColStd_Array1OfReal & ArrayOfToler, opencascade::handle<TColGeom2d_HArray1OfBSplineCurve> & ArrayOfConcatenated, Standard_Boolean &OutValue, const Standard_Real ClosedTolerance);
 
-		/****************** CurveToBSplineCurve ******************/
-		/**** md5 signature: 2605e8125c6f357bc9c5d1ed97296078 ****/
+		/****** Geom2dConvert::CurveToBSplineCurve ******/
+		/****** md5 signature: 2605e8125c6f357bc9c5d1ed97296078 ******/
 		%feature("compactdefaultargs") CurveToBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -249,8 +249,8 @@ This function converts a non infinite curve from geom into a b-spline curve. c m
 ") CurveToBSplineCurve;
 		static opencascade::handle<Geom2d_BSplineCurve> CurveToBSplineCurve(const opencascade::handle<Geom2d_Curve> & C, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
-		/****************** SplitBSplineCurve ******************/
-		/**** md5 signature: 186212ac73a42e139a7d4feef3f60081 ****/
+		/****** Geom2dConvert::SplitBSplineCurve ******/
+		/****** md5 signature: 186212ac73a42e139a7d4feef3f60081 ******/
 		%feature("compactdefaultargs") SplitBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -270,8 +270,8 @@ Description
 ") SplitBSplineCurve;
 		static opencascade::handle<Geom2d_BSplineCurve> SplitBSplineCurve(const opencascade::handle<Geom2d_BSplineCurve> & C, const Standard_Integer FromK1, const Standard_Integer ToK2, const Standard_Boolean SameOrientation = Standard_True);
 
-		/****************** SplitBSplineCurve ******************/
-		/**** md5 signature: 5aaeb3c50208c1ec4ec35beb2023e517 ****/
+		/****** Geom2dConvert::SplitBSplineCurve ******/
+		/****** md5 signature: 5aaeb3c50208c1ec4ec35beb2023e517 ******/
 		%feature("compactdefaultargs") SplitBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -328,8 +328,8 @@ StatusError = Status.StatusError
 };
 /* end python proxy for enums */
 
-		/****************** Geom2dConvert_ApproxArcsSegments ******************/
-		/**** md5 signature: 9436d6631fd8b7c74d966e3a9a65ee33 ****/
+		/****** Geom2dConvert_ApproxArcsSegments::Geom2dConvert_ApproxArcsSegments ******/
+		/****** md5 signature: 9436d6631fd8b7c74d966e3a9a65ee33 ******/
 		%feature("compactdefaultargs") Geom2dConvert_ApproxArcsSegments;
 		%feature("autodoc", "
 Parameters
@@ -348,8 +348,8 @@ Constructor.
 ") Geom2dConvert_ApproxArcsSegments;
 		 Geom2dConvert_ApproxArcsSegments(const Adaptor2d_Curve2d & theCurve, const Standard_Real theTolerance, const Standard_Real theAngleTol);
 
-		/****************** GetResult ******************/
-		/**** md5 signature: a34db03551bc2315f5a46e5144fc58f3 ****/
+		/****** Geom2dConvert_ApproxArcsSegments::GetResult ******/
+		/****** md5 signature: a34db03551bc2315f5a46e5144fc58f3 ******/
 		%feature("compactdefaultargs") GetResult;
 		%feature("autodoc", "Return
 -------
@@ -375,8 +375,8 @@ Get the result curve after approximation.
 **********************************/
 class Geom2dConvert_ApproxCurve {
 	public:
-		/****************** Geom2dConvert_ApproxCurve ******************/
-		/**** md5 signature: 865981d184c394b2356db9c527a84266 ****/
+		/****** Geom2dConvert_ApproxCurve::Geom2dConvert_ApproxCurve ******/
+		/****** md5 signature: 865981d184c394b2356db9c527a84266 ******/
 		%feature("compactdefaultargs") Geom2dConvert_ApproxCurve;
 		%feature("autodoc", "
 Parameters
@@ -397,8 +397,8 @@ Constructs an approximation framework defined by - the 2d conic curve - the tole
 ") Geom2dConvert_ApproxCurve;
 		 Geom2dConvert_ApproxCurve(const opencascade::handle<Geom2d_Curve> & Curve, const Standard_Real Tol2d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
-		/****************** Geom2dConvert_ApproxCurve ******************/
-		/**** md5 signature: fef67c6afa73a6f1c88612fc7cbae9d5 ****/
+		/****** Geom2dConvert_ApproxCurve::Geom2dConvert_ApproxCurve ******/
+		/****** md5 signature: fef67c6afa73a6f1c88612fc7cbae9d5 ******/
 		%feature("compactdefaultargs") Geom2dConvert_ApproxCurve;
 		%feature("autodoc", "
 Parameters
@@ -419,8 +419,8 @@ Constructs an approximation framework defined by - the 2d conic curve - the tole
 ") Geom2dConvert_ApproxCurve;
 		 Geom2dConvert_ApproxCurve(const opencascade::handle<Adaptor2d_Curve2d> & Curve, const Standard_Real Tol2d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
-		/****************** Curve ******************/
-		/**** md5 signature: 1960069de54819d72fccc75ab85806ec ****/
+		/****** Geom2dConvert_ApproxCurve::Curve ******/
+		/****** md5 signature: 1960069de54819d72fccc75ab85806ec ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -432,8 +432,8 @@ Returns the 2d bspline curve resulting from the approximation algorithm.
 ") Curve;
 		opencascade::handle<Geom2d_BSplineCurve> Curve();
 
-		/****************** Dump ******************/
-		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		/****** Geom2dConvert_ApproxCurve::Dump ******/
+		/****** md5 signature: d37b43e0b2386dc096d5d707876db157 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -449,8 +449,8 @@ Print on the stream o information about the object.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** Geom2dConvert_ApproxCurve::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -462,8 +462,8 @@ Returns standard_true if the approximation did come out with a result that is no
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Geom2dConvert_ApproxCurve::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -475,8 +475,8 @@ Returns standard_true if the approximation has been done with within required to
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** MaxError ******************/
-		/**** md5 signature: 90f2419f0b1537a77da84305579339a2 ****/
+		/****** Geom2dConvert_ApproxCurve::MaxError ******/
+		/****** md5 signature: 90f2419f0b1537a77da84305579339a2 ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "Return
 -------
@@ -502,8 +502,8 @@ Returns the greatest distance between a point on the source conic and the bsplin
 ************************************************/
 class Geom2dConvert_BSplineCurveKnotSplitting {
 	public:
-		/****************** Geom2dConvert_BSplineCurveKnotSplitting ******************/
-		/**** md5 signature: 82665f58283791971d3c2678a64b7a4a ****/
+		/****** Geom2dConvert_BSplineCurveKnotSplitting::Geom2dConvert_BSplineCurveKnotSplitting ******/
+		/****** md5 signature: 82665f58283791971d3c2678a64b7a4a ******/
 		%feature("compactdefaultargs") Geom2dConvert_BSplineCurveKnotSplitting;
 		%feature("autodoc", "
 Parameters
@@ -521,8 +521,8 @@ Determines points at which the bspline curve basiscurve should be split in order
 ") Geom2dConvert_BSplineCurveKnotSplitting;
 		 Geom2dConvert_BSplineCurveKnotSplitting(const opencascade::handle<Geom2d_BSplineCurve> & BasisCurve, const Standard_Integer ContinuityRange);
 
-		/****************** NbSplits ******************/
-		/**** md5 signature: 4531d20d48cc2f1c4ba8fba36f455258 ****/
+		/****** Geom2dConvert_BSplineCurveKnotSplitting::NbSplits ******/
+		/****** md5 signature: 4531d20d48cc2f1c4ba8fba36f455258 ******/
 		%feature("compactdefaultargs") NbSplits;
 		%feature("autodoc", "Return
 -------
@@ -534,8 +534,8 @@ Returns the number of points at which the analysed bspline curve should be split
 ") NbSplits;
 		Standard_Integer NbSplits();
 
-		/****************** SplitValue ******************/
-		/**** md5 signature: 721f3b88e9b98541767484bae1df7e27 ****/
+		/****** Geom2dConvert_BSplineCurveKnotSplitting::SplitValue ******/
+		/****** md5 signature: 721f3b88e9b98541767484bae1df7e27 ******/
 		%feature("compactdefaultargs") SplitValue;
 		%feature("autodoc", "
 Parameters
@@ -552,8 +552,8 @@ Returns the split knot of index index to the split knots table computed in this 
 ") SplitValue;
 		Standard_Integer SplitValue(const Standard_Integer Index);
 
-		/****************** Splitting ******************/
-		/**** md5 signature: 735443fa5e885793b9df881715b055c2 ****/
+		/****** Geom2dConvert_BSplineCurveKnotSplitting::Splitting ******/
+		/****** md5 signature: 735443fa5e885793b9df881715b055c2 ******/
 		%feature("compactdefaultargs") Splitting;
 		%feature("autodoc", "
 Parameters
@@ -584,8 +584,8 @@ Loads the splitvalues table with the split knots values computed in this framewo
 ************************************************/
 class Geom2dConvert_BSplineCurveToBezierCurve {
 	public:
-		/****************** Geom2dConvert_BSplineCurveToBezierCurve ******************/
-		/**** md5 signature: 94785403141ad27f99b95da499f2604e ****/
+		/****** Geom2dConvert_BSplineCurveToBezierCurve::Geom2dConvert_BSplineCurveToBezierCurve ******/
+		/****** md5 signature: 94785403141ad27f99b95da499f2604e ******/
 		%feature("compactdefaultargs") Geom2dConvert_BSplineCurveToBezierCurve;
 		%feature("autodoc", "
 Parameters
@@ -602,8 +602,8 @@ Computes all the data needed to convert - the bspline curve basiscurve, into a s
 ") Geom2dConvert_BSplineCurveToBezierCurve;
 		 Geom2dConvert_BSplineCurveToBezierCurve(const opencascade::handle<Geom2d_BSplineCurve> & BasisCurve);
 
-		/****************** Geom2dConvert_BSplineCurveToBezierCurve ******************/
-		/**** md5 signature: 35135a63b65b320cd2cdd5ef8bc3a232 ****/
+		/****** Geom2dConvert_BSplineCurveToBezierCurve::Geom2dConvert_BSplineCurveToBezierCurve ******/
+		/****** md5 signature: 35135a63b65b320cd2cdd5ef8bc3a232 ******/
 		%feature("compactdefaultargs") Geom2dConvert_BSplineCurveToBezierCurve;
 		%feature("autodoc", "
 Parameters
@@ -623,8 +623,8 @@ Computes all the data needed to convert the portion of the bspline curve basiscu
 ") Geom2dConvert_BSplineCurveToBezierCurve;
 		 Geom2dConvert_BSplineCurveToBezierCurve(const opencascade::handle<Geom2d_BSplineCurve> & BasisCurve, const Standard_Real U1, const Standard_Real U2, const Standard_Real ParametricTolerance);
 
-		/****************** Arc ******************/
-		/**** md5 signature: 6f8eca87e681791bf36b1028ac6c6130 ****/
+		/****** Geom2dConvert_BSplineCurveToBezierCurve::Arc ******/
+		/****** md5 signature: 6f8eca87e681791bf36b1028ac6c6130 ******/
 		%feature("compactdefaultargs") Arc;
 		%feature("autodoc", "
 Parameters
@@ -641,8 +641,8 @@ Constructs and returns the bezier curve of index index to the table of adjacent 
 ") Arc;
 		opencascade::handle<Geom2d_BezierCurve> Arc(const Standard_Integer Index);
 
-		/****************** Arcs ******************/
-		/**** md5 signature: 51fd19b32fea76dfb44e9f64d6a96191 ****/
+		/****** Geom2dConvert_BSplineCurveToBezierCurve::Arcs ******/
+		/****** md5 signature: 51fd19b32fea76dfb44e9f64d6a96191 ******/
 		%feature("compactdefaultargs") Arcs;
 		%feature("autodoc", "
 Parameters
@@ -659,8 +659,8 @@ Constructs all the bezier curves whose data is computed by this algorithm and lo
 ") Arcs;
 		void Arcs(TColGeom2d_Array1OfBezierCurve & Curves);
 
-		/****************** Knots ******************/
-		/**** md5 signature: 4ce44c7a3fc1e54d65161ad10947be07 ****/
+		/****** Geom2dConvert_BSplineCurveToBezierCurve::Knots ******/
+		/****** md5 signature: 4ce44c7a3fc1e54d65161ad10947be07 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -677,8 +677,8 @@ This methode returns the bspline's knots associated to the converted arcs raises
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** NbArcs ******************/
-		/**** md5 signature: 5ed9ffd03d9f325b6e3f5ea37278c31f ****/
+		/****** Geom2dConvert_BSplineCurveToBezierCurve::NbArcs ******/
+		/****** md5 signature: 5ed9ffd03d9f325b6e3f5ea37278c31f ******/
 		%feature("compactdefaultargs") NbArcs;
 		%feature("autodoc", "Return
 -------
@@ -704,8 +704,8 @@ Returns the number of beziercurve arcs. if at the creation time you have decompo
 **********************************************/
 class Geom2dConvert_CompCurveToBSplineCurve {
 	public:
-		/****************** Geom2dConvert_CompCurveToBSplineCurve ******************/
-		/**** md5 signature: e25e84ddfd150ca07da5ea068bcdb97a ****/
+		/****** Geom2dConvert_CompCurveToBSplineCurve::Geom2dConvert_CompCurveToBSplineCurve ******/
+		/****** md5 signature: e25e84ddfd150ca07da5ea068bcdb97a ******/
 		%feature("compactdefaultargs") Geom2dConvert_CompCurveToBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -722,8 +722,8 @@ Initialize the algorithme - parameterisation is used to convert.
 ") Geom2dConvert_CompCurveToBSplineCurve;
 		 Geom2dConvert_CompCurveToBSplineCurve(const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
-		/****************** Geom2dConvert_CompCurveToBSplineCurve ******************/
-		/**** md5 signature: 703cf5ab91dccabeaa3de22a9dd90aaa ****/
+		/****** Geom2dConvert_CompCurveToBSplineCurve::Geom2dConvert_CompCurveToBSplineCurve ******/
+		/****** md5 signature: 703cf5ab91dccabeaa3de22a9dd90aaa ******/
 		%feature("compactdefaultargs") Geom2dConvert_CompCurveToBSplineCurve;
 		%feature("autodoc", "
 Parameters
@@ -741,8 +741,8 @@ Initialize the algorithme with one curve - parameterisation is used to convert.
 ") Geom2dConvert_CompCurveToBSplineCurve;
 		 Geom2dConvert_CompCurveToBSplineCurve(const opencascade::handle<Geom2d_BoundedCurve> & BasisCurve, const Convert_ParameterisationType Parameterisation = Convert_TgtThetaOver2);
 
-		/****************** Add ******************/
-		/**** md5 signature: 98a5e3fa8e5a538111199b5b805f80b1 ****/
+		/****** Geom2dConvert_CompCurveToBSplineCurve::Add ******/
+		/****** md5 signature: 98a5e3fa8e5a538111199b5b805f80b1 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -761,8 +761,8 @@ Append a curve in the bspline return false if the curve is not g0 with the bspli
 ") Add;
 		Standard_Boolean Add(const opencascade::handle<Geom2d_BoundedCurve> & NewCurve, const Standard_Real Tolerance, const Standard_Boolean After = Standard_False);
 
-		/****************** BSplineCurve ******************/
-		/**** md5 signature: 2fb696f4c732267032b216f38baea435 ****/
+		/****** Geom2dConvert_CompCurveToBSplineCurve::BSplineCurve ******/
+		/****** md5 signature: 2fb696f4c732267032b216f38baea435 ******/
 		%feature("compactdefaultargs") BSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -774,8 +774,8 @@ No available documentation.
 ") BSplineCurve;
 		opencascade::handle<Geom2d_BSplineCurve> BSplineCurve();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Geom2dConvert_CompCurveToBSplineCurve::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -801,8 +801,8 @@ Clear result curve.
 *****************************/
 class Geom2dConvert_PPoint {
 	public:
-		/****************** Geom2dConvert_PPoint ******************/
-		/**** md5 signature: 9f97d79e0015cb789a1360bfe27a3d23 ****/
+		/****** Geom2dConvert_PPoint::Geom2dConvert_PPoint ******/
+		/****** md5 signature: 9f97d79e0015cb789a1360bfe27a3d23 ******/
 		%feature("compactdefaultargs") Geom2dConvert_PPoint;
 		%feature("autodoc", "Return
 -------
@@ -814,8 +814,8 @@ Empty constructor.
 ") Geom2dConvert_PPoint;
 		 Geom2dConvert_PPoint();
 
-		/****************** Geom2dConvert_PPoint ******************/
-		/**** md5 signature: 83fab53d710c50a2f43ab7d934212a29 ****/
+		/****** Geom2dConvert_PPoint::Geom2dConvert_PPoint ******/
+		/****** md5 signature: 83fab53d710c50a2f43ab7d934212a29 ******/
 		%feature("compactdefaultargs") Geom2dConvert_PPoint;
 		%feature("autodoc", "
 Parameters
@@ -834,8 +834,8 @@ Constructor.
 ") Geom2dConvert_PPoint;
 		 Geom2dConvert_PPoint(const Standard_Real theParameter, const gp_XY & thePoint, const gp_XY & theD1);
 
-		/****************** Geom2dConvert_PPoint ******************/
-		/**** md5 signature: 8ca77da2aff18500051b72ae40ec0e35 ****/
+		/****** Geom2dConvert_PPoint::Geom2dConvert_PPoint ******/
+		/****** md5 signature: 8ca77da2aff18500051b72ae40ec0e35 ******/
 		%feature("compactdefaultargs") Geom2dConvert_PPoint;
 		%feature("autodoc", "
 Parameters
@@ -853,8 +853,8 @@ Constructor.
 ") Geom2dConvert_PPoint;
 		 Geom2dConvert_PPoint(const Standard_Real theParameter, const Adaptor2d_Curve2d & theAdaptor);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 363c5218bb91ef153804430b7f543e9a ****/
+		/****** Geom2dConvert_PPoint::D1 ******/
+		/****** md5 signature: 363c5218bb91ef153804430b7f543e9a ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "Return
 -------
@@ -866,8 +866,8 @@ Query the first derivatives.
 ") D1;
 		const gp_XY D1();
 
-		/****************** Dist ******************/
-		/**** md5 signature: fbe08e9f862a6f276bcef10b706a490f ****/
+		/****** Geom2dConvert_PPoint::Dist ******/
+		/****** md5 signature: fbe08e9f862a6f276bcef10b706a490f ******/
 		%feature("compactdefaultargs") Dist;
 		%feature("autodoc", "
 Parameters
@@ -884,8 +884,8 @@ Compute the distance betwwen two 2d points.
 ") Dist;
 		Standard_Real Dist(const Geom2dConvert_PPoint & theOth);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 5d3812215998dd4ad07d1ceb370aa6b8 ****/
+		/****** Geom2dConvert_PPoint::Parameter ******/
+		/****** md5 signature: 5d3812215998dd4ad07d1ceb370aa6b8 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "Return
 -------
@@ -897,8 +897,8 @@ Query the parmeter value.
 ") Parameter;
 		Standard_Real Parameter();
 
-		/****************** Point ******************/
-		/**** md5 signature: 0d3e0ab14ec3cab7ff6e03fe3e9807fc ****/
+		/****** Geom2dConvert_PPoint::Point ******/
+		/****** md5 signature: 0d3e0ab14ec3cab7ff6e03fe3e9807fc ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "Return
 -------
@@ -910,8 +910,8 @@ Query the point location.
 ") Point;
 		const gp_XY Point();
 
-		/****************** SetD1 ******************/
-		/**** md5 signature: 5a5de6ec69bb60e69527c94d00e3b4b8 ****/
+		/****** Geom2dConvert_PPoint::SetD1 ******/
+		/****** md5 signature: 5a5de6ec69bb60e69527c94d00e3b4b8 ******/
 		%feature("compactdefaultargs") SetD1;
 		%feature("autodoc", "
 Parameters

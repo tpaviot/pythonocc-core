@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BVHDOCSTRING
 "BVH module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_bvh.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_bvh.html"
 %enddef
 %module (package="OCC.Core", docstring=BVHDOCSTRING) BVH
 
@@ -120,8 +120,8 @@ typedef BVH::VectorType<Standard_Integer, 4>::Type BVH_Vec4i;
 class BVH_AxisSelector<T,2> {
 	public:
 typedef typename BVH ::VectorType<T , 2>::Type BVH_VecNt;
-		/****************** MainAxis ******************/
-		/**** md5 signature: 3eeb73485373349ee6e5770c410c7405 ****/
+		/****** BVH_AxisSelector<T,2>::MainAxis ******/
+		/****** md5 signature: 3eeb73485373349ee6e5770c410c7405 ******/
 		%feature("compactdefaultargs") MainAxis;
 		%feature("autodoc", "
 Parameters
@@ -155,8 +155,8 @@ No available documentation.
 *********************************/
 class BVH_BaseBox<T,3,BVH_Box> {
 	public:
-		/****************** Transform ******************/
-		/**** md5 signature: f52fb52638bf0b2d8089837b32d1b6fb ****/
+		/****** BVH_BaseBox<T,3,BVH_Box>::Transform ******/
+		/****** md5 signature: f52fb52638bf0b2d8089837b32d1b6fb ******/
 		%feature("compactdefaultargs") Transform;
 		%feature("autodoc", "
 Parameters
@@ -173,8 +173,8 @@ Transforms this box with given transformation.
 ") Transform;
 		void Transform(const NCollection_Mat4<T> & theTransform);
 
-		/****************** Transformed ******************/
-		/**** md5 signature: 4f3a0339459a68755a160d7708c81f4e ****/
+		/****** BVH_BaseBox<T,3,BVH_Box>::Transformed ******/
+		/****** md5 signature: 4f3a0339459a68755a160d7708c81f4e ******/
 		%feature("compactdefaultargs") Transformed;
 		%feature("autodoc", "
 Parameters
@@ -413,8 +413,8 @@ Returns a box which is the result of applying the given transformation to this b
 class BVH_Tree<T,N,BVH_BinaryTree> : public BVH_TreeBase<T,N> {
 	public:
 typedef typename BVH_TreeBase<T , N>::BVH_VecNt BVH_VecNt;
-		/****************** BVH_Tree ******************/
-		/**** md5 signature: 2d74225b1905a21a5e97d806c3b50923 ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::BVH_Tree ******/
+		/****** md5 signature: 2d74225b1905a21a5e97d806c3b50923 ******/
 		%feature("compactdefaultargs") BVH_Tree;
 		%feature("autodoc", "Return
 -------
@@ -426,8 +426,8 @@ Creates new empty bvh tree.
 ") BVH_Tree;
 		 BVH_Tree();
 
-		/****************** AddInnerNode ******************/
-		/**** md5 signature: f58328730bdea31b9795074762e2ff33 ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddInnerNode ******/
+		/****** md5 signature: f58328730bdea31b9795074762e2ff33 ******/
 		%feature("compactdefaultargs") AddInnerNode;
 		%feature("autodoc", "
 Parameters
@@ -447,8 +447,8 @@ Adds new inner node to the bvh.
 ") AddInnerNode;
 		int AddInnerNode(const BVH_VecNt & theMinPoint, const BVH_VecNt & theMaxPoint, const int theLftChild, const int theRghChild);
 
-		/****************** AddInnerNode ******************/
-		/**** md5 signature: 5f6cb26dae5b038c2e68cab73611154e ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddInnerNode ******/
+		/****** md5 signature: 5f6cb26dae5b038c2e68cab73611154e ******/
 		%feature("compactdefaultargs") AddInnerNode;
 		%feature("autodoc", "
 Parameters
@@ -467,8 +467,8 @@ Adds new inner node to the bvh.
 ") AddInnerNode;
 		int AddInnerNode(const BVH_Box<T, N> & theAABB, const int theLftChild, const int theRghChild);
 
-		/****************** AddInnerNode ******************/
-		/**** md5 signature: 7349e9c4c6e6de36606d9ec9f409a423 ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddInnerNode ******/
+		/****** md5 signature: 7349e9c4c6e6de36606d9ec9f409a423 ******/
 		%feature("compactdefaultargs") AddInnerNode;
 		%feature("autodoc", "
 Parameters
@@ -486,8 +486,8 @@ Adds new inner node to the bvh with uninitialized bounds.
 ") AddInnerNode;
 		int AddInnerNode(const int theLftChild, const int theRghChild);
 
-		/****************** AddLeafNode ******************/
-		/**** md5 signature: 0cd89637e7eea803e0a24110ae682988 ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddLeafNode ******/
+		/****** md5 signature: 0cd89637e7eea803e0a24110ae682988 ******/
 		%feature("compactdefaultargs") AddLeafNode;
 		%feature("autodoc", "
 Parameters
@@ -507,8 +507,8 @@ Adds new leaf node to the bvh.
 ") AddLeafNode;
 		int AddLeafNode(const BVH_VecNt & theMinPoint, const BVH_VecNt & theMaxPoint, const int theBegElem, const int theEndElem);
 
-		/****************** AddLeafNode ******************/
-		/**** md5 signature: 5fe9f2fb528719ca7bfb42a304e784f8 ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddLeafNode ******/
+		/****** md5 signature: 5fe9f2fb528719ca7bfb42a304e784f8 ******/
 		%feature("compactdefaultargs") AddLeafNode;
 		%feature("autodoc", "
 Parameters
@@ -527,8 +527,8 @@ Adds new leaf node to the bvh.
 ") AddLeafNode;
 		int AddLeafNode(const BVH_Box<T, N> & theAABB, const int theBegElem, const int theEndElem);
 
-		/****************** AddLeafNode ******************/
-		/**** md5 signature: 0b15c5077d62fd3e3e631a06cb249fdb ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::AddLeafNode ******/
+		/****** md5 signature: 0b15c5077d62fd3e3e631a06cb249fdb ******/
 		%feature("compactdefaultargs") AddLeafNode;
 		%feature("autodoc", "
 Parameters
@@ -546,8 +546,8 @@ Adds new leaf node to the bvh with uninitialized bounds.
 ") AddLeafNode;
 		int AddLeafNode(const int theBegElem, const int theEndElem);
 
-		/****************** Clear ******************/
-		/**** md5 signature: 75abd67f132413fc11c19201aabf1126 ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::Clear ******/
+		/****** md5 signature: 75abd67f132413fc11c19201aabf1126 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -559,8 +559,8 @@ Removes all nodes from the tree.
 ") Clear;
 		void Clear();
 
-		/****************** CollapseToQuadTree ******************/
-		/**** md5 signature: 26af2d95ff6621c0dd1347a8eddea988 ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::CollapseToQuadTree ******/
+		/****** md5 signature: 26af2d95ff6621c0dd1347a8eddea988 ******/
 		%feature("compactdefaultargs") CollapseToQuadTree;
 		%feature("autodoc", "Return
 -------
@@ -572,8 +572,8 @@ Collapses the tree into qbvh an returns it. as a result, each 2-nd level of curr
 ") CollapseToQuadTree;
 		BVH_Tree<T, N, BVH_QuadTree> * CollapseToQuadTree();
 
-		/****************** EstimateSAH ******************/
-		/**** md5 signature: 3b150e7f34a26485a48f784b21aaf6ef ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::EstimateSAH ******/
+		/****** md5 signature: 3b150e7f34a26485a48f784b21aaf6ef ******/
 		%feature("compactdefaultargs") EstimateSAH;
 		%feature("autodoc", "Return
 -------
@@ -585,8 +585,8 @@ Returns value of sah (surface area heuristic). allows to compare the quality of 
 ") EstimateSAH;
 		T EstimateSAH();
 
-		/****************** Reserve ******************/
-		/**** md5 signature: 19d96c51c8d28b94e8cf4c818e3f894e ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::Reserve ******/
+		/****** md5 signature: 19d96c51c8d28b94e8cf4c818e3f894e ******/
 		%feature("compactdefaultargs") Reserve;
 		%feature("autodoc", "
 Parameters
@@ -603,8 +603,8 @@ Reserves internal bvh storage, so that it can contain the given number of bvh no
 ") Reserve;
 		void Reserve(const int theNbNodes);
 
-		/****************** SetInner ******************/
-		/**** md5 signature: e211f149b4289ac87e5ce7758471a95a ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::SetInner ******/
+		/****** md5 signature: e211f149b4289ac87e5ce7758471a95a ******/
 		%feature("compactdefaultargs") SetInner;
 		%feature("autodoc", "
 Parameters
@@ -621,8 +621,8 @@ Sets node type to 'inner'.
 ") SetInner;
 		void SetInner(const int theNodeIndex);
 
-		/****************** SetOuter ******************/
-		/**** md5 signature: 17ac31f632333f17c9c7c88deadd549f ****/
+		/****** BVH_Tree<T,N,BVH_BinaryTree>::SetOuter ******/
+		/****** md5 signature: 17ac31f632333f17c9c7c88deadd549f ******/
 		%feature("compactdefaultargs") SetOuter;
 		%feature("autodoc", "
 Parameters
@@ -653,8 +653,8 @@ Sets node type to 'outer'.
 ***********************************/
 class BVH_Tree<T,N,BVH_QuadTree> : public BVH_TreeBase<T,N> {
 	public:
-		/****************** BVH_Tree ******************/
-		/**** md5 signature: 2d74225b1905a21a5e97d806c3b50923 ****/
+		/****** BVH_Tree<T,N,BVH_QuadTree>::BVH_Tree ******/
+		/****** md5 signature: 2d74225b1905a21a5e97d806c3b50923 ******/
 		%feature("compactdefaultargs") BVH_Tree;
 		%feature("autodoc", "Return
 -------

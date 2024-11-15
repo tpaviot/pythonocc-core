@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define APPROXDOCSTRING
 "Approx module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_approx.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_approx.html"
 %enddef
 %module (package="OCC.Core", docstring=APPROXDOCSTRING) Approx
 
@@ -151,8 +151,8 @@ typedef NCollection_Sequence<opencascade::handle<TColStd_HArray1OfReal>> Approx_
 ***********************/
 class Approx_Curve2d {
 	public:
-		/****************** Approx_Curve2d ******************/
-		/**** md5 signature: 1cf9afd9ee459ec2a81ee32abee6de50 ****/
+		/****** Approx_Curve2d::Approx_Curve2d ******/
+		/****** md5 signature: 1cf9afd9ee459ec2a81ee32abee6de50 ******/
 		%feature("compactdefaultargs") Approx_Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -176,8 +176,8 @@ No available documentation.
 ") Approx_Curve2d;
 		 Approx_Curve2d(const opencascade::handle<Adaptor2d_Curve2d> & C2D, const Standard_Real First, const Standard_Real Last, const Standard_Real TolU, const Standard_Real TolV, const GeomAbs_Shape Continuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
-		/****************** Curve ******************/
-		/**** md5 signature: 1960069de54819d72fccc75ab85806ec ****/
+		/****** Approx_Curve2d::Curve ******/
+		/****** md5 signature: 1960069de54819d72fccc75ab85806ec ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -189,8 +189,8 @@ No available documentation.
 ") Curve;
 		opencascade::handle<Geom2d_BSplineCurve> Curve();
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** Approx_Curve2d::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -202,8 +202,8 @@ No available documentation.
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Approx_Curve2d::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -215,8 +215,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** MaxError2dU ******************/
-		/**** md5 signature: 847075004569102dbcc931f742530c0e ****/
+		/****** Approx_Curve2d::MaxError2dU ******/
+		/****** md5 signature: 847075004569102dbcc931f742530c0e ******/
 		%feature("compactdefaultargs") MaxError2dU;
 		%feature("autodoc", "Return
 -------
@@ -228,8 +228,8 @@ No available documentation.
 ") MaxError2dU;
 		Standard_Real MaxError2dU();
 
-		/****************** MaxError2dV ******************/
-		/**** md5 signature: 641a3fe3b7d3b163d6a32b23f94b6eec ****/
+		/****** Approx_Curve2d::MaxError2dV ******/
+		/****** md5 signature: 641a3fe3b7d3b163d6a32b23f94b6eec ******/
 		%feature("compactdefaultargs") MaxError2dV;
 		%feature("autodoc", "Return
 -------
@@ -255,8 +255,8 @@ No available documentation.
 ***********************/
 class Approx_Curve3d {
 	public:
-		/****************** Approx_Curve3d ******************/
-		/**** md5 signature: 4662771ab9a9bb958e880ba73bec8340 ****/
+		/****** Approx_Curve3d::Approx_Curve3d ******/
+		/****** md5 signature: 4662771ab9a9bb958e880ba73bec8340 ******/
 		%feature("compactdefaultargs") Approx_Curve3d;
 		%feature("autodoc", "
 Parameters
@@ -277,8 +277,8 @@ Approximation of a curve with respect of the required tolerance tol3d.
 ") Approx_Curve3d;
 		 Approx_Curve3d(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Real Tol3d, const GeomAbs_Shape Order, const Standard_Integer MaxSegments, const Standard_Integer MaxDegree);
 
-		/****************** Curve ******************/
-		/**** md5 signature: 8f61eb8bebb31bbd1fd75a7da450accd ****/
+		/****** Approx_Curve3d::Curve ******/
+		/****** md5 signature: 8f61eb8bebb31bbd1fd75a7da450accd ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -290,8 +290,8 @@ No available documentation.
 ") Curve;
 		opencascade::handle<Geom_BSplineCurve> Curve();
 
-		/****************** Dump ******************/
-		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		/****** Approx_Curve3d::Dump ******/
+		/****** md5 signature: d37b43e0b2386dc096d5d707876db157 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -307,8 +307,8 @@ Print on the stream o information about the object.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** Approx_Curve3d::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -320,8 +320,8 @@ Returns standard_true if the approximation did come out with a result that is no
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Approx_Curve3d::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -333,8 +333,8 @@ Returns standard_true if the approximation has been done within required toleran
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** MaxError ******************/
-		/**** md5 signature: 90f2419f0b1537a77da84305579339a2 ****/
+		/****** Approx_Curve3d::MaxError ******/
+		/****** md5 signature: 90f2419f0b1537a77da84305579339a2 ******/
 		%feature("compactdefaultargs") MaxError;
 		%feature("autodoc", "Return
 -------
@@ -360,8 +360,8 @@ Returns the maximum error (>0 when an approximation has been done, 0 if no appro
 ******************************/
 class Approx_CurveOnSurface {
 	public:
-		/****************** Approx_CurveOnSurface ******************/
-		/**** md5 signature: 8924b9935f0fc05dc273ee96b9ecd51b ****/
+		/****** Approx_CurveOnSurface::Approx_CurveOnSurface ******/
+		/****** md5 signature: 8924b9935f0fc05dc273ee96b9ecd51b ******/
 		%feature("compactdefaultargs") Approx_CurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -387,8 +387,8 @@ This constructor calls perform method. this constructor is deprecated.
 ") Approx_CurveOnSurface;
 		 Approx_CurveOnSurface(const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol, const GeomAbs_Shape Continuity, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments, const Standard_Boolean Only3d = Standard_False, const Standard_Boolean Only2d = Standard_False);
 
-		/****************** Approx_CurveOnSurface ******************/
-		/**** md5 signature: 6bf6e1de687ad8553d00cd8a3f1f8344 ****/
+		/****** Approx_CurveOnSurface::Approx_CurveOnSurface ******/
+		/****** md5 signature: 6bf6e1de687ad8553d00cd8a3f1f8344 ******/
 		%feature("compactdefaultargs") Approx_CurveOnSurface;
 		%feature("autodoc", "
 Parameters
@@ -409,8 +409,8 @@ This constructor does not call perform method. @param thec2d 2d curve to be appr
 ") Approx_CurveOnSurface;
 		 Approx_CurveOnSurface(const opencascade::handle<Adaptor2d_Curve2d> & theC2D, const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTol);
 
-		/****************** Curve2d ******************/
-		/**** md5 signature: a68a2dac2ad11e4da3864dc2433ead7f ****/
+		/****** Approx_CurveOnSurface::Curve2d ******/
+		/****** md5 signature: a68a2dac2ad11e4da3864dc2433ead7f ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "Return
 -------
@@ -422,8 +422,8 @@ No available documentation.
 ") Curve2d;
 		opencascade::handle<Geom2d_BSplineCurve> Curve2d();
 
-		/****************** Curve3d ******************/
-		/**** md5 signature: 40af7069a21d4ba6c9b73d59c7d6dc50 ****/
+		/****** Approx_CurveOnSurface::Curve3d ******/
+		/****** md5 signature: 40af7069a21d4ba6c9b73d59c7d6dc50 ******/
 		%feature("compactdefaultargs") Curve3d;
 		%feature("autodoc", "Return
 -------
@@ -435,8 +435,8 @@ No available documentation.
 ") Curve3d;
 		opencascade::handle<Geom_BSplineCurve> Curve3d();
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** Approx_CurveOnSurface::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -448,8 +448,8 @@ No available documentation.
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Approx_CurveOnSurface::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -461,8 +461,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** MaxError2dU ******************/
-		/**** md5 signature: 847075004569102dbcc931f742530c0e ****/
+		/****** Approx_CurveOnSurface::MaxError2dU ******/
+		/****** md5 signature: 847075004569102dbcc931f742530c0e ******/
 		%feature("compactdefaultargs") MaxError2dU;
 		%feature("autodoc", "Return
 -------
@@ -474,8 +474,8 @@ No available documentation.
 ") MaxError2dU;
 		Standard_Real MaxError2dU();
 
-		/****************** MaxError2dV ******************/
-		/**** md5 signature: 641a3fe3b7d3b163d6a32b23f94b6eec ****/
+		/****** Approx_CurveOnSurface::MaxError2dV ******/
+		/****** md5 signature: 641a3fe3b7d3b163d6a32b23f94b6eec ******/
 		%feature("compactdefaultargs") MaxError2dV;
 		%feature("autodoc", "Return
 -------
@@ -487,8 +487,8 @@ Returns the maximum errors relatively to the u component or the v component of t
 ") MaxError2dV;
 		Standard_Real MaxError2dV();
 
-		/****************** MaxError3d ******************/
-		/**** md5 signature: c6ba463cdf4a0e426329b589363186b7 ****/
+		/****** Approx_CurveOnSurface::MaxError3d ******/
+		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
@@ -500,8 +500,8 @@ No available documentation.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
-		/****************** Perform ******************/
-		/**** md5 signature: fe8b2a86aab3827740ea72c22a54e926 ****/
+		/****** Approx_CurveOnSurface::Perform ******/
+		/****** md5 signature: fe8b2a86aab3827740ea72c22a54e926 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -536,8 +536,8 @@ Constructs the 3d curve. input parameters are ignored when the input curve is u-
 ************************************/
 class Approx_CurvilinearParameter {
 	public:
-		/****************** Approx_CurvilinearParameter ******************/
-		/**** md5 signature: 8d18e8dfacd0a079eb20447b49586c35 ****/
+		/****** Approx_CurvilinearParameter::Approx_CurvilinearParameter ******/
+		/****** md5 signature: 8d18e8dfacd0a079eb20447b49586c35 ******/
 		%feature("compactdefaultargs") Approx_CurvilinearParameter;
 		%feature("autodoc", "
 Parameters
@@ -558,8 +558,8 @@ Case of a free 3d curve.
 ") Approx_CurvilinearParameter;
 		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor3d_Curve> & C3D, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
-		/****************** Approx_CurvilinearParameter ******************/
-		/**** md5 signature: 55fdfdb6b236c7342a9df38b0c499ba5 ****/
+		/****** Approx_CurvilinearParameter::Approx_CurvilinearParameter ******/
+		/****** md5 signature: 55fdfdb6b236c7342a9df38b0c499ba5 ******/
 		%feature("compactdefaultargs") Approx_CurvilinearParameter;
 		%feature("autodoc", "
 Parameters
@@ -581,8 +581,8 @@ Case of a curve on one surface.
 ") Approx_CurvilinearParameter;
 		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & Surf, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
-		/****************** Approx_CurvilinearParameter ******************/
-		/**** md5 signature: c239a7061007faa74c11bd361d60ce57 ****/
+		/****** Approx_CurvilinearParameter::Approx_CurvilinearParameter ******/
+		/****** md5 signature: c239a7061007faa74c11bd361d60ce57 ******/
 		%feature("compactdefaultargs") Approx_CurvilinearParameter;
 		%feature("autodoc", "
 Parameters
@@ -606,8 +606,8 @@ Case of a curve on two surfaces.
 ") Approx_CurvilinearParameter;
 		 Approx_CurvilinearParameter(const opencascade::handle<Adaptor2d_Curve2d> & C2D1, const opencascade::handle<Adaptor3d_Surface> & Surf1, const opencascade::handle<Adaptor2d_Curve2d> & C2D2, const opencascade::handle<Adaptor3d_Surface> & Surf2, const Standard_Real Tol, const GeomAbs_Shape Order, const Standard_Integer MaxDegree, const Standard_Integer MaxSegments);
 
-		/****************** Curve2d1 ******************/
-		/**** md5 signature: 320386716849305473262b1fbe175d01 ****/
+		/****** Approx_CurvilinearParameter::Curve2d1 ******/
+		/****** md5 signature: 320386716849305473262b1fbe175d01 ******/
 		%feature("compactdefaultargs") Curve2d1;
 		%feature("autodoc", "Return
 -------
@@ -619,8 +619,8 @@ Returns the bsplinecurve representing the reparametrized 2d curve on the first s
 ") Curve2d1;
 		opencascade::handle<Geom2d_BSplineCurve> Curve2d1();
 
-		/****************** Curve2d2 ******************/
-		/**** md5 signature: c454b48582ae4e125bffbd0a7c1ecb65 ****/
+		/****** Approx_CurvilinearParameter::Curve2d2 ******/
+		/****** md5 signature: c454b48582ae4e125bffbd0a7c1ecb65 ******/
 		%feature("compactdefaultargs") Curve2d2;
 		%feature("autodoc", "Return
 -------
@@ -632,8 +632,8 @@ Returns the bsplinecurve representing the reparametrized 2d curve on the second 
 ") Curve2d2;
 		opencascade::handle<Geom2d_BSplineCurve> Curve2d2();
 
-		/****************** Curve3d ******************/
-		/**** md5 signature: 40af7069a21d4ba6c9b73d59c7d6dc50 ****/
+		/****** Approx_CurvilinearParameter::Curve3d ******/
+		/****** md5 signature: 40af7069a21d4ba6c9b73d59c7d6dc50 ******/
 		%feature("compactdefaultargs") Curve3d;
 		%feature("autodoc", "Return
 -------
@@ -645,8 +645,8 @@ Returns the bspline curve corresponding to the reparametrized 3d curve.
 ") Curve3d;
 		opencascade::handle<Geom_BSplineCurve> Curve3d();
 
-		/****************** Dump ******************/
-		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		/****** Approx_CurvilinearParameter::Dump ******/
+		/****** md5 signature: d37b43e0b2386dc096d5d707876db157 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -662,8 +662,8 @@ Print the maximum errors(s).
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** Approx_CurvilinearParameter::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -675,8 +675,8 @@ No available documentation.
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Approx_CurvilinearParameter::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -688,8 +688,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** MaxError2d1 ******************/
-		/**** md5 signature: 455a6dc1101b77daa7669b3852e634a6 ****/
+		/****** Approx_CurvilinearParameter::MaxError2d1 ******/
+		/****** md5 signature: 455a6dc1101b77daa7669b3852e634a6 ******/
 		%feature("compactdefaultargs") MaxError2d1;
 		%feature("autodoc", "Return
 -------
@@ -701,8 +701,8 @@ Returns the maximum error on the first reparametrized 2d curve.
 ") MaxError2d1;
 		Standard_Real MaxError2d1();
 
-		/****************** MaxError2d2 ******************/
-		/**** md5 signature: 415b1db6afd0a77c250335998bc39142 ****/
+		/****** Approx_CurvilinearParameter::MaxError2d2 ******/
+		/****** md5 signature: 415b1db6afd0a77c250335998bc39142 ******/
 		%feature("compactdefaultargs") MaxError2d2;
 		%feature("autodoc", "Return
 -------
@@ -714,8 +714,8 @@ Returns the maximum error on the second reparametrized 2d curve.
 ") MaxError2d2;
 		Standard_Real MaxError2d2();
 
-		/****************** MaxError3d ******************/
-		/**** md5 signature: c6ba463cdf4a0e426329b589363186b7 ****/
+		/****** Approx_CurvilinearParameter::MaxError3d ******/
+		/****** md5 signature: c6ba463cdf4a0e426329b589363186b7 ******/
 		%feature("compactdefaultargs") MaxError3d;
 		%feature("autodoc", "Return
 -------
@@ -741,8 +741,8 @@ Returns the maximum error on the reparametrized 3d curve.
 ***************************/
 class Approx_CurvlinFunc : public Standard_Transient {
 	public:
-		/****************** Approx_CurvlinFunc ******************/
-		/**** md5 signature: c91fd83aabe931a1e52d13473ccfd009 ****/
+		/****** Approx_CurvlinFunc::Approx_CurvlinFunc ******/
+		/****** md5 signature: c91fd83aabe931a1e52d13473ccfd009 ******/
 		%feature("compactdefaultargs") Approx_CurvlinFunc;
 		%feature("autodoc", "
 Parameters
@@ -760,8 +760,8 @@ No available documentation.
 ") Approx_CurvlinFunc;
 		 Approx_CurvlinFunc(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Tol);
 
-		/****************** Approx_CurvlinFunc ******************/
-		/**** md5 signature: c69a4fe4cbfe7c5d7648f238e2e8b84a ****/
+		/****** Approx_CurvlinFunc::Approx_CurvlinFunc ******/
+		/****** md5 signature: c69a4fe4cbfe7c5d7648f238e2e8b84a ******/
 		%feature("compactdefaultargs") Approx_CurvlinFunc;
 		%feature("autodoc", "
 Parameters
@@ -780,8 +780,8 @@ No available documentation.
 ") Approx_CurvlinFunc;
 		 Approx_CurvlinFunc(const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
-		/****************** Approx_CurvlinFunc ******************/
-		/**** md5 signature: d04cb6fd18225e82ef40a4e61e7e3bdf ****/
+		/****** Approx_CurvlinFunc::Approx_CurvlinFunc ******/
+		/****** md5 signature: d04cb6fd18225e82ef40a4e61e7e3bdf ******/
 		%feature("compactdefaultargs") Approx_CurvlinFunc;
 		%feature("autodoc", "
 Parameters
@@ -802,8 +802,8 @@ No available documentation.
 ") Approx_CurvlinFunc;
 		 Approx_CurvlinFunc(const opencascade::handle<Adaptor2d_Curve2d> & C2D1, const opencascade::handle<Adaptor2d_Curve2d> & C2D2, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real Tol);
 
-		/****************** EvalCase1 ******************/
-		/**** md5 signature: d6f977aec2ba6ef7261ad448995f2a1d ****/
+		/****** Approx_CurvlinFunc::EvalCase1 ******/
+		/****** md5 signature: d6f977aec2ba6ef7261ad448995f2a1d ******/
 		%feature("compactdefaultargs") EvalCase1;
 		%feature("autodoc", "
 Parameters
@@ -822,8 +822,8 @@ If mycase != 1.
 ") EvalCase1;
 		Standard_Boolean EvalCase1(const Standard_Real S, const Standard_Integer Order, TColStd_Array1OfReal & Result);
 
-		/****************** EvalCase2 ******************/
-		/**** md5 signature: af7190c5733447d4dcb3107db703f25d ****/
+		/****** Approx_CurvlinFunc::EvalCase2 ******/
+		/****** md5 signature: af7190c5733447d4dcb3107db703f25d ******/
 		%feature("compactdefaultargs") EvalCase2;
 		%feature("autodoc", "
 Parameters
@@ -842,8 +842,8 @@ If mycase != 2.
 ") EvalCase2;
 		Standard_Boolean EvalCase2(const Standard_Real S, const Standard_Integer Order, TColStd_Array1OfReal & Result);
 
-		/****************** EvalCase3 ******************/
-		/**** md5 signature: 6ecbd89f3323d6c9fcd40c282e079d3c ****/
+		/****** Approx_CurvlinFunc::EvalCase3 ******/
+		/****** md5 signature: 6ecbd89f3323d6c9fcd40c282e079d3c ******/
 		%feature("compactdefaultargs") EvalCase3;
 		%feature("autodoc", "
 Parameters
@@ -862,8 +862,8 @@ If mycase != 3.
 ") EvalCase3;
 		Standard_Boolean EvalCase3(const Standard_Real S, const Standard_Integer Order, TColStd_Array1OfReal & Result);
 
-		/****************** FirstParameter ******************/
-		/**** md5 signature: 4ccedbaad83be904f510b4760c75f69c ****/
+		/****** Approx_CurvlinFunc::FirstParameter ******/
+		/****** md5 signature: 4ccedbaad83be904f510b4760c75f69c ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
@@ -875,8 +875,8 @@ No available documentation.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
-		/****************** GetLength ******************/
-		/**** md5 signature: 9390a920d888683f8b474026b2d95a49 ****/
+		/****** Approx_CurvlinFunc::GetLength ******/
+		/****** md5 signature: 9390a920d888683f8b474026b2d95a49 ******/
 		%feature("compactdefaultargs") GetLength;
 		%feature("autodoc", "Return
 -------
@@ -888,8 +888,8 @@ No available documentation.
 ") GetLength;
 		Standard_Real GetLength();
 
-		/****************** GetSParameter ******************/
-		/**** md5 signature: de8883031fb26c06bc41920f0af259b5 ****/
+		/****** Approx_CurvlinFunc::GetSParameter ******/
+		/****** md5 signature: de8883031fb26c06bc41920f0af259b5 ******/
 		%feature("compactdefaultargs") GetSParameter;
 		%feature("autodoc", "
 Parameters
@@ -906,8 +906,8 @@ Returns original parameter corresponding s.
 ") GetSParameter;
 		Standard_Real GetSParameter(const Standard_Real U);
 
-		/****************** GetUParameter ******************/
-		/**** md5 signature: a288323291b5a7c86e97e5e379347550 ****/
+		/****** Approx_CurvlinFunc::GetUParameter ******/
+		/****** md5 signature: a288323291b5a7c86e97e5e379347550 ******/
 		%feature("compactdefaultargs") GetUParameter;
 		%feature("autodoc", "
 Parameters
@@ -926,8 +926,8 @@ Returns original parameter corresponding s. if case == 1 computation is performe
 ") GetUParameter;
 		Standard_Real GetUParameter(Adaptor3d_Curve & C, const Standard_Real S, const Standard_Integer NumberOfCurve);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: c7a2f17df7514293a67a56baae0afb68 ****/
+		/****** Approx_CurvlinFunc::Intervals ******/
+		/****** md5 signature: c7a2f17df7514293a67a56baae0afb68 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -945,8 +945,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** LastParameter ******************/
-		/**** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ****/
+		/****** Approx_CurvlinFunc::LastParameter ******/
+		/****** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
@@ -958,8 +958,8 @@ No available documentation.
 ") LastParameter;
 		Standard_Real LastParameter();
 
-		/****************** Length ******************/
-		/**** md5 signature: 389864b782ecf5fea5b568ea6b4ee166 ****/
+		/****** Approx_CurvlinFunc::Length ******/
+		/****** md5 signature: 389864b782ecf5fea5b568ea6b4ee166 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -971,8 +971,8 @@ Computes length of the curve.
 ") Length;
 		void Length();
 
-		/****************** Length ******************/
-		/**** md5 signature: a36b32537f2aaeb51d308d784a8bcd1e ****/
+		/****** Approx_CurvlinFunc::Length ******/
+		/****** md5 signature: a36b32537f2aaeb51d308d784a8bcd1e ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
@@ -991,8 +991,8 @@ Computes length of the curve segment.
 ") Length;
 		Standard_Real Length(Adaptor3d_Curve & C, const Standard_Real FirstU, const Standard_Real LasrU);
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: a9cec7e4e6cb5b355a27e6de1f3fc9d9 ****/
+		/****** Approx_CurvlinFunc::NbIntervals ******/
+		/****** md5 signature: a9cec7e4e6cb5b355a27e6de1f3fc9d9 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1009,8 +1009,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SetTol ******************/
-		/**** md5 signature: 807eaaa5cf0c0afd4dc54d9743374704 ****/
+		/****** Approx_CurvlinFunc::SetTol ******/
+		/****** md5 signature: 807eaaa5cf0c0afd4dc54d9743374704 ******/
 		%feature("compactdefaultargs") SetTol;
 		%feature("autodoc", "
 Parameters
@@ -1027,8 +1027,8 @@ Description
 ") SetTol;
 		void SetTol(const Standard_Real Tol);
 
-		/****************** Trim ******************/
-		/**** md5 signature: e4c090d64e46a6e2ad68afd1ac49d0f1 ****/
+		/****** Approx_CurvlinFunc::Trim ******/
+		/****** md5 signature: e4c090d64e46a6e2ad68afd1ac49d0f1 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
@@ -1063,8 +1063,8 @@ If first < 0 or last > 1.
 ****************************/
 class Approx_FitAndDivide {
 	public:
-		/****************** Approx_FitAndDivide ******************/
-		/**** md5 signature: ea3ebc13b87efed4a03fe4693299cd01 ****/
+		/****** Approx_FitAndDivide::Approx_FitAndDivide ******/
+		/****** md5 signature: ea3ebc13b87efed4a03fe4693299cd01 ******/
 		%feature("compactdefaultargs") Approx_FitAndDivide;
 		%feature("autodoc", "
 Parameters
@@ -1088,8 +1088,8 @@ The multiline <line> will be approximated until tolerances will be reached. the 
 ") Approx_FitAndDivide;
 		 Approx_FitAndDivide(const AppCont_Function & Line, const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-5, const Standard_Real Tolerance2d = 1.0e-5, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
 
-		/****************** Approx_FitAndDivide ******************/
-		/**** md5 signature: c98a0117adc1bef392f7f6b0763498fd ****/
+		/****** Approx_FitAndDivide::Approx_FitAndDivide ******/
+		/****** md5 signature: c98a0117adc1bef392f7f6b0763498fd ******/
 		%feature("compactdefaultargs") Approx_FitAndDivide;
 		%feature("autodoc", "
 Parameters
@@ -1112,8 +1112,8 @@ Initializes the fields of the algorithm.
 ") Approx_FitAndDivide;
 		 Approx_FitAndDivide(const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-05, const Standard_Real Tolerance2d = 1.0e-05, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
 
-		/****************** Error ******************/
-		/**** md5 signature: 6a8061230005ba951097d8b73e7dbec6 ****/
+		/****** Approx_FitAndDivide::Error ******/
+		/****** md5 signature: 6a8061230005ba951097d8b73e7dbec6 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -1131,8 +1131,8 @@ Returns the tolerances 2d and 3d of the <index> multicurve.
 ") Error;
 		void Error(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** IsAllApproximated ******************/
-		/**** md5 signature: bf42a9f9ee3a867655d96a0c1fdcd853 ****/
+		/****** Approx_FitAndDivide::IsAllApproximated ******/
+		/****** md5 signature: bf42a9f9ee3a867655d96a0c1fdcd853 ******/
 		%feature("compactdefaultargs") IsAllApproximated;
 		%feature("autodoc", "Return
 -------
@@ -1144,8 +1144,8 @@ Returns false if at a moment of the approximation, the status noapproximation ha
 ") IsAllApproximated;
 		Standard_Boolean IsAllApproximated();
 
-		/****************** IsToleranceReached ******************/
-		/**** md5 signature: cbd7380250e74c96655b10c8025eb873 ****/
+		/****** Approx_FitAndDivide::IsToleranceReached ******/
+		/****** md5 signature: cbd7380250e74c96655b10c8025eb873 ******/
 		%feature("compactdefaultargs") IsToleranceReached;
 		%feature("autodoc", "Return
 -------
@@ -1157,8 +1157,8 @@ Returns false if the status nopointsadded has been sent.
 ") IsToleranceReached;
 		Standard_Boolean IsToleranceReached();
 
-		/****************** NbMultiCurves ******************/
-		/**** md5 signature: 944d4af40d93d46a8a3a888df2d8b388 ****/
+		/****** Approx_FitAndDivide::NbMultiCurves ******/
+		/****** md5 signature: 944d4af40d93d46a8a3a888df2d8b388 ******/
 		%feature("compactdefaultargs") NbMultiCurves;
 		%feature("autodoc", "Return
 -------
@@ -1170,8 +1170,8 @@ Returns the number of multicurve doing the approximation of the multiline.
 ") NbMultiCurves;
 		Standard_Integer NbMultiCurves();
 
-		/****************** Parameters ******************/
-		/**** md5 signature: da3dbf6a597566992bf85427f2de867b ****/
+		/****** Approx_FitAndDivide::Parameters ******/
+		/****** md5 signature: da3dbf6a597566992bf85427f2de867b ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1189,8 +1189,8 @@ No available documentation.
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Perform ******************/
-		/**** md5 signature: caf6a1aea817b16df8ee08ce9b993f4f ****/
+		/****** Approx_FitAndDivide::Perform ******/
+		/****** md5 signature: caf6a1aea817b16df8ee08ce9b993f4f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1207,8 +1207,8 @@ Runs the algorithm after having initialized the fields.
 ") Perform;
 		void Perform(const AppCont_Function & Line);
 
-		/****************** SetConstraints ******************/
-		/**** md5 signature: 99b92dc193142adf44568f800cd394dc ****/
+		/****** Approx_FitAndDivide::SetConstraints ******/
+		/****** md5 signature: 99b92dc193142adf44568f800cd394dc ******/
 		%feature("compactdefaultargs") SetConstraints;
 		%feature("autodoc", "
 Parameters
@@ -1226,8 +1226,8 @@ Changes the constraints of the approximation.
 ") SetConstraints;
 		void SetConstraints(const AppParCurves_Constraint FirstC, const AppParCurves_Constraint LastC);
 
-		/****************** SetDegrees ******************/
-		/**** md5 signature: 545fdd7d739fa58cc970e73d0413f8ef ****/
+		/****** Approx_FitAndDivide::SetDegrees ******/
+		/****** md5 signature: 545fdd7d739fa58cc970e73d0413f8ef ******/
 		%feature("compactdefaultargs") SetDegrees;
 		%feature("autodoc", "
 Parameters
@@ -1245,8 +1245,8 @@ Changes the degrees of the approximation.
 ") SetDegrees;
 		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
 
-		/****************** SetHangChecking ******************/
-		/**** md5 signature: 082382da7c6c3da9061b500893941826 ****/
+		/****** Approx_FitAndDivide::SetHangChecking ******/
+		/****** md5 signature: 082382da7c6c3da9061b500893941826 ******/
 		%feature("compactdefaultargs") SetHangChecking;
 		%feature("autodoc", "
 Parameters
@@ -1263,8 +1263,8 @@ Set value of hang checking flag if this flag = true, possible hang of algorithm 
 ") SetHangChecking;
 		void SetHangChecking(const Standard_Boolean theHangChecking);
 
-		/****************** SetInvOrder ******************/
-		/**** md5 signature: 50bac5968816111fd573c6f1be407215 ****/
+		/****** Approx_FitAndDivide::SetInvOrder ******/
+		/****** md5 signature: 50bac5968816111fd573c6f1be407215 ******/
 		%feature("compactdefaultargs") SetInvOrder;
 		%feature("autodoc", "
 Parameters
@@ -1281,8 +1281,8 @@ Set inverse order of degree selection: if theinvordr = true, current degree is c
 ") SetInvOrder;
 		void SetInvOrder(const Standard_Boolean theInvOrder);
 
-		/****************** SetMaxSegments ******************/
-		/**** md5 signature: 649dded305ab339e1c7f2a819b32eedd ****/
+		/****** Approx_FitAndDivide::SetMaxSegments ******/
+		/****** md5 signature: 649dded305ab339e1c7f2a819b32eedd ******/
 		%feature("compactdefaultargs") SetMaxSegments;
 		%feature("autodoc", "
 Parameters
@@ -1299,8 +1299,8 @@ Changes the max number of segments, which is allowed for cutting.
 ") SetMaxSegments;
 		void SetMaxSegments(const Standard_Integer theMaxSegments);
 
-		/****************** SetTolerances ******************/
-		/**** md5 signature: ce7879738ace848f7a3a27c56467be10 ****/
+		/****** Approx_FitAndDivide::SetTolerances ******/
+		/****** md5 signature: ce7879738ace848f7a3a27c56467be10 ******/
 		%feature("compactdefaultargs") SetTolerances;
 		%feature("autodoc", "
 Parameters
@@ -1318,8 +1318,8 @@ Changes the tolerances of the approximation.
 ") SetTolerances;
 		void SetTolerances(const Standard_Real Tolerance3d, const Standard_Real Tolerance2d);
 
-		/****************** Value ******************/
-		/**** md5 signature: 89790f3ff3d6d18a45f409a34e79bd67 ****/
+		/****** Approx_FitAndDivide::Value ******/
+		/****** md5 signature: 89790f3ff3d6d18a45f409a34e79bd67 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1350,8 +1350,8 @@ Returns the approximation multicurve of range <index>.
 ******************************/
 class Approx_FitAndDivide2d {
 	public:
-		/****************** Approx_FitAndDivide2d ******************/
-		/**** md5 signature: 661477a957a15a70835b41b5c2bb9698 ****/
+		/****** Approx_FitAndDivide2d::Approx_FitAndDivide2d ******/
+		/****** md5 signature: 661477a957a15a70835b41b5c2bb9698 ******/
 		%feature("compactdefaultargs") Approx_FitAndDivide2d;
 		%feature("autodoc", "
 Parameters
@@ -1375,8 +1375,8 @@ The multiline <line> will be approximated until tolerances will be reached. the 
 ") Approx_FitAndDivide2d;
 		 Approx_FitAndDivide2d(const AppCont_Function & Line, const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-5, const Standard_Real Tolerance2d = 1.0e-5, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
 
-		/****************** Approx_FitAndDivide2d ******************/
-		/**** md5 signature: bca52594fb84bdf1c9b46ce4d487e8cb ****/
+		/****** Approx_FitAndDivide2d::Approx_FitAndDivide2d ******/
+		/****** md5 signature: bca52594fb84bdf1c9b46ce4d487e8cb ******/
 		%feature("compactdefaultargs") Approx_FitAndDivide2d;
 		%feature("autodoc", "
 Parameters
@@ -1399,8 +1399,8 @@ Initializes the fields of the algorithm.
 ") Approx_FitAndDivide2d;
 		 Approx_FitAndDivide2d(const Standard_Integer degreemin = 3, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-05, const Standard_Real Tolerance2d = 1.0e-05, const Standard_Boolean cutting = Standard_False, const AppParCurves_Constraint FirstC = AppParCurves_TangencyPoint, const AppParCurves_Constraint LastC = AppParCurves_TangencyPoint);
 
-		/****************** Error ******************/
-		/**** md5 signature: 6a8061230005ba951097d8b73e7dbec6 ****/
+		/****** Approx_FitAndDivide2d::Error ******/
+		/****** md5 signature: 6a8061230005ba951097d8b73e7dbec6 ******/
 		%feature("compactdefaultargs") Error;
 		%feature("autodoc", "
 Parameters
@@ -1418,8 +1418,8 @@ Returns the tolerances 2d and 3d of the <index> multicurve.
 ") Error;
 		void Error(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** IsAllApproximated ******************/
-		/**** md5 signature: bf42a9f9ee3a867655d96a0c1fdcd853 ****/
+		/****** Approx_FitAndDivide2d::IsAllApproximated ******/
+		/****** md5 signature: bf42a9f9ee3a867655d96a0c1fdcd853 ******/
 		%feature("compactdefaultargs") IsAllApproximated;
 		%feature("autodoc", "Return
 -------
@@ -1431,8 +1431,8 @@ Returns false if at a moment of the approximation, the status noapproximation ha
 ") IsAllApproximated;
 		Standard_Boolean IsAllApproximated();
 
-		/****************** IsToleranceReached ******************/
-		/**** md5 signature: cbd7380250e74c96655b10c8025eb873 ****/
+		/****** Approx_FitAndDivide2d::IsToleranceReached ******/
+		/****** md5 signature: cbd7380250e74c96655b10c8025eb873 ******/
 		%feature("compactdefaultargs") IsToleranceReached;
 		%feature("autodoc", "Return
 -------
@@ -1444,8 +1444,8 @@ Returns false if the status nopointsadded has been sent.
 ") IsToleranceReached;
 		Standard_Boolean IsToleranceReached();
 
-		/****************** NbMultiCurves ******************/
-		/**** md5 signature: 944d4af40d93d46a8a3a888df2d8b388 ****/
+		/****** Approx_FitAndDivide2d::NbMultiCurves ******/
+		/****** md5 signature: 944d4af40d93d46a8a3a888df2d8b388 ******/
 		%feature("compactdefaultargs") NbMultiCurves;
 		%feature("autodoc", "Return
 -------
@@ -1457,8 +1457,8 @@ Returns the number of multicurve doing the approximation of the multiline.
 ") NbMultiCurves;
 		Standard_Integer NbMultiCurves();
 
-		/****************** Parameters ******************/
-		/**** md5 signature: da3dbf6a597566992bf85427f2de867b ****/
+		/****** Approx_FitAndDivide2d::Parameters ******/
+		/****** md5 signature: da3dbf6a597566992bf85427f2de867b ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -1476,8 +1476,8 @@ No available documentation.
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Perform ******************/
-		/**** md5 signature: caf6a1aea817b16df8ee08ce9b993f4f ****/
+		/****** Approx_FitAndDivide2d::Perform ******/
+		/****** md5 signature: caf6a1aea817b16df8ee08ce9b993f4f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1494,8 +1494,8 @@ Runs the algorithm after having initialized the fields.
 ") Perform;
 		void Perform(const AppCont_Function & Line);
 
-		/****************** SetConstraints ******************/
-		/**** md5 signature: 99b92dc193142adf44568f800cd394dc ****/
+		/****** Approx_FitAndDivide2d::SetConstraints ******/
+		/****** md5 signature: 99b92dc193142adf44568f800cd394dc ******/
 		%feature("compactdefaultargs") SetConstraints;
 		%feature("autodoc", "
 Parameters
@@ -1513,8 +1513,8 @@ Changes the constraints of the approximation.
 ") SetConstraints;
 		void SetConstraints(const AppParCurves_Constraint FirstC, const AppParCurves_Constraint LastC);
 
-		/****************** SetDegrees ******************/
-		/**** md5 signature: 545fdd7d739fa58cc970e73d0413f8ef ****/
+		/****** Approx_FitAndDivide2d::SetDegrees ******/
+		/****** md5 signature: 545fdd7d739fa58cc970e73d0413f8ef ******/
 		%feature("compactdefaultargs") SetDegrees;
 		%feature("autodoc", "
 Parameters
@@ -1532,8 +1532,8 @@ Changes the degrees of the approximation.
 ") SetDegrees;
 		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
 
-		/****************** SetHangChecking ******************/
-		/**** md5 signature: 082382da7c6c3da9061b500893941826 ****/
+		/****** Approx_FitAndDivide2d::SetHangChecking ******/
+		/****** md5 signature: 082382da7c6c3da9061b500893941826 ******/
 		%feature("compactdefaultargs") SetHangChecking;
 		%feature("autodoc", "
 Parameters
@@ -1550,8 +1550,8 @@ Set value of hang checking flag if this flag = true, possible hang of algorithm 
 ") SetHangChecking;
 		void SetHangChecking(const Standard_Boolean theHangChecking);
 
-		/****************** SetInvOrder ******************/
-		/**** md5 signature: 50bac5968816111fd573c6f1be407215 ****/
+		/****** Approx_FitAndDivide2d::SetInvOrder ******/
+		/****** md5 signature: 50bac5968816111fd573c6f1be407215 ******/
 		%feature("compactdefaultargs") SetInvOrder;
 		%feature("autodoc", "
 Parameters
@@ -1568,8 +1568,8 @@ Set inverse order of degree selection: if theinvordr = true, current degree is c
 ") SetInvOrder;
 		void SetInvOrder(const Standard_Boolean theInvOrder);
 
-		/****************** SetMaxSegments ******************/
-		/**** md5 signature: 649dded305ab339e1c7f2a819b32eedd ****/
+		/****** Approx_FitAndDivide2d::SetMaxSegments ******/
+		/****** md5 signature: 649dded305ab339e1c7f2a819b32eedd ******/
 		%feature("compactdefaultargs") SetMaxSegments;
 		%feature("autodoc", "
 Parameters
@@ -1586,8 +1586,8 @@ Changes the max number of segments, which is allowed for cutting.
 ") SetMaxSegments;
 		void SetMaxSegments(const Standard_Integer theMaxSegments);
 
-		/****************** SetTolerances ******************/
-		/**** md5 signature: ce7879738ace848f7a3a27c56467be10 ****/
+		/****** Approx_FitAndDivide2d::SetTolerances ******/
+		/****** md5 signature: ce7879738ace848f7a3a27c56467be10 ******/
 		%feature("compactdefaultargs") SetTolerances;
 		%feature("autodoc", "
 Parameters
@@ -1605,8 +1605,8 @@ Changes the tolerances of the approximation.
 ") SetTolerances;
 		void SetTolerances(const Standard_Real Tolerance3d, const Standard_Real Tolerance2d);
 
-		/****************** Value ******************/
-		/**** md5 signature: 89790f3ff3d6d18a45f409a34e79bd67 ****/
+		/****** Approx_FitAndDivide2d::Value ******/
+		/****** md5 signature: 89790f3ff3d6d18a45f409a34e79bd67 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1637,8 +1637,8 @@ Returns the approximation multicurve of range <index>.
 *********************************/
 class Approx_MCurvesToBSpCurve {
 	public:
-		/****************** Approx_MCurvesToBSpCurve ******************/
-		/**** md5 signature: f2ce6c1a8e6e0de7a78187ebdf09738b ****/
+		/****** Approx_MCurvesToBSpCurve::Approx_MCurvesToBSpCurve ******/
+		/****** md5 signature: f2ce6c1a8e6e0de7a78187ebdf09738b ******/
 		%feature("compactdefaultargs") Approx_MCurvesToBSpCurve;
 		%feature("autodoc", "Return
 -------
@@ -1650,8 +1650,8 @@ No available documentation.
 ") Approx_MCurvesToBSpCurve;
 		 Approx_MCurvesToBSpCurve();
 
-		/****************** Append ******************/
-		/**** md5 signature: ffc631c7b8994b3171041a1a53a9ce0c ****/
+		/****** Approx_MCurvesToBSpCurve::Append ******/
+		/****** md5 signature: ffc631c7b8994b3171041a1a53a9ce0c ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -1668,8 +1668,8 @@ No available documentation.
 ") Append;
 		void Append(const AppParCurves_MultiCurve & MC);
 
-		/****************** ChangeValue ******************/
-		/**** md5 signature: 2275e53c2101f0a946b62e87720ec0a1 ****/
+		/****** Approx_MCurvesToBSpCurve::ChangeValue ******/
+		/****** md5 signature: 2275e53c2101f0a946b62e87720ec0a1 ******/
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "Return
 -------
@@ -1681,8 +1681,8 @@ Return the composite multicurves as a multibspcurve.
 ") ChangeValue;
 		AppParCurves_MultiBSpCurve ChangeValue();
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** Approx_MCurvesToBSpCurve::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -1694,8 +1694,8 @@ No available documentation.
 ") Perform;
 		void Perform();
 
-		/****************** Perform ******************/
-		/**** md5 signature: ecc994138ac3982c8ac29315eac11580 ****/
+		/****** Approx_MCurvesToBSpCurve::Perform ******/
+		/****** md5 signature: ecc994138ac3982c8ac29315eac11580 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1712,8 +1712,8 @@ No available documentation.
 ") Perform;
 		void Perform(const AppParCurves_SequenceOfMultiCurve & TheSeq);
 
-		/****************** Reset ******************/
-		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
+		/****** Approx_MCurvesToBSpCurve::Reset ******/
+		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "Return
 -------
@@ -1725,8 +1725,8 @@ No available documentation.
 ") Reset;
 		void Reset();
 
-		/****************** Value ******************/
-		/**** md5 signature: c818c96a9a832640b6267a997c4dbd3b ****/
+		/****** Approx_MCurvesToBSpCurve::Value ******/
+		/****** md5 signature: c818c96a9a832640b6267a997c4dbd3b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1753,8 +1753,8 @@ Return the composite multicurves as a multibspcurve.
 class Approx_SameParameter {
 	public:
 		class Approx_SameParameter_Data {};
-		/****************** Approx_SameParameter ******************/
-		/**** md5 signature: 2930666ec596179e1ab77039278ff0c2 ****/
+		/****** Approx_SameParameter::Approx_SameParameter ******/
+		/****** md5 signature: 2930666ec596179e1ab77039278ff0c2 ******/
 		%feature("compactdefaultargs") Approx_SameParameter;
 		%feature("autodoc", "
 Parameters
@@ -1774,8 +1774,8 @@ Warning: the c3d and c2d must have the same parametric domain.
 ") Approx_SameParameter;
 		 Approx_SameParameter(const opencascade::handle<Geom_Curve> & C3D, const opencascade::handle<Geom2d_Curve> & C2D, const opencascade::handle<Geom_Surface> & S, const Standard_Real Tol);
 
-		/****************** Approx_SameParameter ******************/
-		/**** md5 signature: c5ca4b0fa91714a7d8dbbb7f74166b6e ****/
+		/****** Approx_SameParameter::Approx_SameParameter ******/
+		/****** md5 signature: c5ca4b0fa91714a7d8dbbb7f74166b6e ******/
 		%feature("compactdefaultargs") Approx_SameParameter;
 		%feature("autodoc", "
 Parameters
@@ -1795,8 +1795,8 @@ Warning: the c3d and c2d must have the same parametric domain.
 ") Approx_SameParameter;
 		 Approx_SameParameter(const opencascade::handle<Adaptor3d_Curve> & C3D, const opencascade::handle<Geom2d_Curve> & C2D, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
-		/****************** Approx_SameParameter ******************/
-		/**** md5 signature: fd528457c519a0cdcaefab6e6d47b26f ****/
+		/****** Approx_SameParameter::Approx_SameParameter ******/
+		/****** md5 signature: fd528457c519a0cdcaefab6e6d47b26f ******/
 		%feature("compactdefaultargs") Approx_SameParameter;
 		%feature("autodoc", "
 Parameters
@@ -1816,8 +1816,8 @@ Warning: the c3d and c2d must have the same parametric domain.
 ") Approx_SameParameter;
 		 Approx_SameParameter(const opencascade::handle<Adaptor3d_Curve> & C3D, const opencascade::handle<Adaptor2d_Curve2d> & C2D, const opencascade::handle<Adaptor3d_Surface> & S, const Standard_Real Tol);
 
-		/****************** Curve2d ******************/
-		/**** md5 signature: 5fab5e35541cfe36f16f0294e27855ba ****/
+		/****** Approx_SameParameter::Curve2d ******/
+		/****** md5 signature: 5fab5e35541cfe36f16f0294e27855ba ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "Return
 -------
@@ -1829,8 +1829,8 @@ Returns the 2d curve that has the same parameter as the 3d curve once evaluated 
 ") Curve2d;
 		opencascade::handle<Geom2d_Curve> Curve2d();
 
-		/****************** Curve3d ******************/
-		/**** md5 signature: bf4d235dc27cc25572185a2b068878b7 ****/
+		/****** Approx_SameParameter::Curve3d ******/
+		/****** md5 signature: bf4d235dc27cc25572185a2b068878b7 ******/
 		%feature("compactdefaultargs") Curve3d;
 		%feature("autodoc", "Return
 -------
@@ -1842,8 +1842,8 @@ Returns the 3d curve that has the same parameter as the 3d curve once evaluated 
 ") Curve3d;
 		opencascade::handle<Adaptor3d_Curve> Curve3d();
 
-		/****************** CurveOnSurface ******************/
-		/**** md5 signature: 4576c068b1d09f135c33c1fb035c3e4f ****/
+		/****** Approx_SameParameter::CurveOnSurface ******/
+		/****** md5 signature: 4576c068b1d09f135c33c1fb035c3e4f ******/
 		%feature("compactdefaultargs") CurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -1855,8 +1855,8 @@ Returns the 3d curve on surface that has the same parameter as the 3d curve up t
 ") CurveOnSurface;
 		opencascade::handle<Adaptor3d_CurveOnSurface> CurveOnSurface();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
+		/****** Approx_SameParameter::IsDone ******/
+		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1868,8 +1868,8 @@ Description
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsSameParameter ******************/
-		/**** md5 signature: cc3eb7385472632cf8547c37090fb098 ****/
+		/****** Approx_SameParameter::IsSameParameter ******/
+		/****** md5 signature: cc3eb7385472632cf8547c37090fb098 ******/
 		%feature("compactdefaultargs") IsSameParameter;
 		%feature("autodoc", "Return
 -------
@@ -1881,8 +1881,8 @@ Tells whether the original data had already the same parameter up to the toleran
 ") IsSameParameter;
 		Standard_Boolean IsSameParameter();
 
-		/****************** TolReached ******************/
-		/**** md5 signature: 1f37a98b0772d31c830ed1321616b6c5 ****/
+		/****** Approx_SameParameter::TolReached ******/
+		/****** md5 signature: 1f37a98b0772d31c830ed1321616b6c5 ******/
 		%feature("compactdefaultargs") TolReached;
 		%feature("autodoc", "Return
 -------
@@ -1908,8 +1908,8 @@ Description
 **********************************/
 class Approx_SweepApproximation {
 	public:
-		/****************** Approx_SweepApproximation ******************/
-		/**** md5 signature: 1e58ff1dd49473e8ec1efa55877921aa ****/
+		/****** Approx_SweepApproximation::Approx_SweepApproximation ******/
+		/****** md5 signature: 1e58ff1dd49473e8ec1efa55877921aa ******/
 		%feature("compactdefaultargs") Approx_SweepApproximation;
 		%feature("autodoc", "
 Parameters
@@ -1926,8 +1926,8 @@ No available documentation.
 ") Approx_SweepApproximation;
 		 Approx_SweepApproximation(const opencascade::handle<Approx_SweepFunction> & Func);
 
-		/****************** Average2dError ******************/
-		/**** md5 signature: 8ed28c3aca266ff5de26936a7d153ffb ****/
+		/****** Approx_SweepApproximation::Average2dError ******/
+		/****** md5 signature: 8ed28c3aca266ff5de26936a7d153ffb ******/
 		%feature("compactdefaultargs") Average2dError;
 		%feature("autodoc", "
 Parameters
@@ -1944,8 +1944,8 @@ Returns the average error of the <index> 2d curve approximation.
 ") Average2dError;
 		Standard_Real Average2dError(const Standard_Integer Index);
 
-		/****************** AverageErrorOnSurf ******************/
-		/**** md5 signature: bac8be79201b06f130f6dd21a4817d03 ****/
+		/****** Approx_SweepApproximation::AverageErrorOnSurf ******/
+		/****** md5 signature: bac8be79201b06f130f6dd21a4817d03 ******/
 		%feature("compactdefaultargs") AverageErrorOnSurf;
 		%feature("autodoc", "Return
 -------
@@ -1957,8 +1957,8 @@ Returns the average error in the surface approximation.
 ") AverageErrorOnSurf;
 		Standard_Real AverageErrorOnSurf();
 
-		/****************** Curve2d ******************/
-		/**** md5 signature: 45f5fb41b7daba7a20d1fb56ead05f0f ****/
+		/****** Approx_SweepApproximation::Curve2d ******/
+		/****** md5 signature: 45f5fb41b7daba7a20d1fb56ead05f0f ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -1978,8 +1978,8 @@ No available documentation.
 ") Curve2d;
 		void Curve2d(const Standard_Integer Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
-		/****************** Curve2dPoles ******************/
-		/**** md5 signature: 8df321abd16a4651f96229eab1c5f048 ****/
+		/****** Approx_SweepApproximation::Curve2dPoles ******/
+		/****** md5 signature: 8df321abd16a4651f96229eab1c5f048 ******/
 		%feature("compactdefaultargs") Curve2dPoles;
 		%feature("autodoc", "
 Parameters
@@ -1996,8 +1996,8 @@ No available documentation.
 ") Curve2dPoles;
 		const TColgp_Array1OfPnt2d & Curve2dPoles(const Standard_Integer Index);
 
-		/****************** Curves2dDegree ******************/
-		/**** md5 signature: 85ba31033da623d05ad75c9b051842b3 ****/
+		/****** Approx_SweepApproximation::Curves2dDegree ******/
+		/****** md5 signature: 85ba31033da623d05ad75c9b051842b3 ******/
 		%feature("compactdefaultargs") Curves2dDegree;
 		%feature("autodoc", "Return
 -------
@@ -2009,8 +2009,8 @@ No available documentation.
 ") Curves2dDegree;
 		Standard_Integer Curves2dDegree();
 
-		/****************** Curves2dKnots ******************/
-		/**** md5 signature: cd12725d88c425f3fe1ebccf9467256f ****/
+		/****** Approx_SweepApproximation::Curves2dKnots ******/
+		/****** md5 signature: cd12725d88c425f3fe1ebccf9467256f ******/
 		%feature("compactdefaultargs") Curves2dKnots;
 		%feature("autodoc", "Return
 -------
@@ -2022,8 +2022,8 @@ No available documentation.
 ") Curves2dKnots;
 		const TColStd_Array1OfReal & Curves2dKnots();
 
-		/****************** Curves2dMults ******************/
-		/**** md5 signature: d4f1ca5a39a589bb289460010c5bbf39 ****/
+		/****** Approx_SweepApproximation::Curves2dMults ******/
+		/****** md5 signature: d4f1ca5a39a589bb289460010c5bbf39 ******/
 		%feature("compactdefaultargs") Curves2dMults;
 		%feature("autodoc", "Return
 -------
@@ -2035,8 +2035,8 @@ No available documentation.
 ") Curves2dMults;
 		const TColStd_Array1OfInteger & Curves2dMults();
 
-		/****************** Curves2dShape ******************/
-		/**** md5 signature: 28bf2faa4b8e811f12223cb99d1721ea ****/
+		/****** Approx_SweepApproximation::Curves2dShape ******/
+		/****** md5 signature: 28bf2faa4b8e811f12223cb99d1721ea ******/
 		%feature("compactdefaultargs") Curves2dShape;
 		%feature("autodoc", "
 Parameters
@@ -2054,8 +2054,8 @@ No available documentation.
 ") Curves2dShape;
 		void Curves2dShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** Dump ******************/
-		/**** md5 signature: d37b43e0b2386dc096d5d707876db157 ****/
+		/****** Approx_SweepApproximation::Dump ******/
+		/****** md5 signature: d37b43e0b2386dc096d5d707876db157 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2071,8 +2071,8 @@ Display information on approximation.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
-		/****************** Eval ******************/
-		/**** md5 signature: 71e7f11e45548ac47de3b270019a0b2d ****/
+		/****** Approx_SweepApproximation::Eval ******/
+		/****** md5 signature: 71e7f11e45548ac47de3b270019a0b2d ******/
 		%feature("compactdefaultargs") Eval;
 		%feature("autodoc", "
 Parameters
@@ -2092,8 +2092,8 @@ The evaluatorfunction from advapprox;.
 ") Eval;
 		Standard_Integer Eval(const Standard_Real Parameter, const Standard_Integer DerivativeRequest, const Standard_Real First, const Standard_Real Last, Standard_Real &OutValue);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Approx_SweepApproximation::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2105,8 +2105,8 @@ Returns if we have an result.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Max2dError ******************/
-		/**** md5 signature: bb3f56b4b55e0d91b8620b3ad4fad758 ****/
+		/****** Approx_SweepApproximation::Max2dError ******/
+		/****** md5 signature: bb3f56b4b55e0d91b8620b3ad4fad758 ******/
 		%feature("compactdefaultargs") Max2dError;
 		%feature("autodoc", "
 Parameters
@@ -2123,8 +2123,8 @@ Returns the maximum error of the <index> 2d curve approximation.
 ") Max2dError;
 		Standard_Real Max2dError(const Standard_Integer Index);
 
-		/****************** MaxErrorOnSurf ******************/
-		/**** md5 signature: e42290da593c42adaac24f68c51ecbda ****/
+		/****** Approx_SweepApproximation::MaxErrorOnSurf ******/
+		/****** md5 signature: e42290da593c42adaac24f68c51ecbda ******/
 		%feature("compactdefaultargs") MaxErrorOnSurf;
 		%feature("autodoc", "Return
 -------
@@ -2136,8 +2136,8 @@ Returns the maximum error in the surface approximation.
 ") MaxErrorOnSurf;
 		Standard_Real MaxErrorOnSurf();
 
-		/****************** NbCurves2d ******************/
-		/**** md5 signature: 91ae967daa54efe7d38afad4a5698e5b ****/
+		/****** Approx_SweepApproximation::NbCurves2d ******/
+		/****** md5 signature: 91ae967daa54efe7d38afad4a5698e5b ******/
 		%feature("compactdefaultargs") NbCurves2d;
 		%feature("autodoc", "Return
 -------
@@ -2149,8 +2149,8 @@ No available documentation.
 ") NbCurves2d;
 		Standard_Integer NbCurves2d();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 306f26941735cb759216a105543fe10a ****/
+		/****** Approx_SweepApproximation::Perform ******/
+		/****** md5 signature: 306f26941735cb759216a105543fe10a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2175,8 +2175,8 @@ Perform the approximation [first, last]: approx_sweepapproximation.cdl tol3d: to
 ") Perform;
 		void Perform(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol3d, const Standard_Real BoundTol, const Standard_Real Tol2d, const Standard_Real TolAngular, const GeomAbs_Shape Continuity = GeomAbs_C0, const Standard_Integer Degmax = 11, const Standard_Integer Segmax = 50);
 
-		/****************** SurfPoles ******************/
-		/**** md5 signature: 33be5d08621b237fcd73b5b9accd2338 ****/
+		/****** Approx_SweepApproximation::SurfPoles ******/
+		/****** md5 signature: 33be5d08621b237fcd73b5b9accd2338 ******/
 		%feature("compactdefaultargs") SurfPoles;
 		%feature("autodoc", "Return
 -------
@@ -2188,8 +2188,8 @@ No available documentation.
 ") SurfPoles;
 		const TColgp_Array2OfPnt & SurfPoles();
 
-		/****************** SurfShape ******************/
-		/**** md5 signature: 6dbc9c018a92aabb9f9d1988ac20cb43 ****/
+		/****** Approx_SweepApproximation::SurfShape ******/
+		/****** md5 signature: 6dbc9c018a92aabb9f9d1988ac20cb43 ******/
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", "
 Parameters
@@ -2210,8 +2210,8 @@ No available documentation.
 ") SurfShape;
 		void SurfShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SurfUKnots ******************/
-		/**** md5 signature: 30cf4dd9deaf04a1c77052e14ae7392b ****/
+		/****** Approx_SweepApproximation::SurfUKnots ******/
+		/****** md5 signature: 30cf4dd9deaf04a1c77052e14ae7392b ******/
 		%feature("compactdefaultargs") SurfUKnots;
 		%feature("autodoc", "Return
 -------
@@ -2223,8 +2223,8 @@ No available documentation.
 ") SurfUKnots;
 		const TColStd_Array1OfReal & SurfUKnots();
 
-		/****************** SurfUMults ******************/
-		/**** md5 signature: ef046447df8e4b2931da90e1475e731f ****/
+		/****** Approx_SweepApproximation::SurfUMults ******/
+		/****** md5 signature: ef046447df8e4b2931da90e1475e731f ******/
 		%feature("compactdefaultargs") SurfUMults;
 		%feature("autodoc", "Return
 -------
@@ -2236,8 +2236,8 @@ No available documentation.
 ") SurfUMults;
 		const TColStd_Array1OfInteger & SurfUMults();
 
-		/****************** SurfVKnots ******************/
-		/**** md5 signature: 52c9dafc43c5e3713c77d7aa4381da5c ****/
+		/****** Approx_SweepApproximation::SurfVKnots ******/
+		/****** md5 signature: 52c9dafc43c5e3713c77d7aa4381da5c ******/
 		%feature("compactdefaultargs") SurfVKnots;
 		%feature("autodoc", "Return
 -------
@@ -2249,8 +2249,8 @@ No available documentation.
 ") SurfVKnots;
 		const TColStd_Array1OfReal & SurfVKnots();
 
-		/****************** SurfVMults ******************/
-		/**** md5 signature: 589e6536c77c512e7a37f99faf0fa21c ****/
+		/****** Approx_SweepApproximation::SurfVMults ******/
+		/****** md5 signature: 589e6536c77c512e7a37f99faf0fa21c ******/
 		%feature("compactdefaultargs") SurfVMults;
 		%feature("autodoc", "Return
 -------
@@ -2262,8 +2262,8 @@ No available documentation.
 ") SurfVMults;
 		const TColStd_Array1OfInteger & SurfVMults();
 
-		/****************** SurfWeights ******************/
-		/**** md5 signature: 894d2a3f2c33f7d641aef9c7f9e3fa57 ****/
+		/****** Approx_SweepApproximation::SurfWeights ******/
+		/****** md5 signature: 894d2a3f2c33f7d641aef9c7f9e3fa57 ******/
 		%feature("compactdefaultargs") SurfWeights;
 		%feature("autodoc", "Return
 -------
@@ -2275,8 +2275,8 @@ No available documentation.
 ") SurfWeights;
 		const TColStd_Array2OfReal & SurfWeights();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 49bb9dd6da49966f0010e14dd0ffef04 ****/
+		/****** Approx_SweepApproximation::Surface ******/
+		/****** md5 signature: 49bb9dd6da49966f0010e14dd0ffef04 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -2298,8 +2298,8 @@ No available documentation.
 ") Surface;
 		void Surface(TColgp_Array2OfPnt & TPoles, TColStd_Array2OfReal & TWeights, TColStd_Array1OfReal & TUKnots, TColStd_Array1OfReal & TVKnots, TColStd_Array1OfInteger & TUMults, TColStd_Array1OfInteger & TVMults);
 
-		/****************** TolCurveOnSurf ******************/
-		/**** md5 signature: f21f0f877b35cf67581fa59260f72857 ****/
+		/****** Approx_SweepApproximation::TolCurveOnSurf ******/
+		/****** md5 signature: f21f0f877b35cf67581fa59260f72857 ******/
 		%feature("compactdefaultargs") TolCurveOnSurf;
 		%feature("autodoc", "
 Parameters
@@ -2316,8 +2316,8 @@ Returns the maximum 3d error of the <index> 2d curve approximation on the surfac
 ") TolCurveOnSurf;
 		Standard_Real TolCurveOnSurf(const Standard_Integer Index);
 
-		/****************** UDegree ******************/
-		/**** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ****/
+		/****** Approx_SweepApproximation::UDegree ******/
+		/****** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -2329,8 +2329,8 @@ No available documentation.
 ") UDegree;
 		Standard_Integer UDegree();
 
-		/****************** VDegree ******************/
-		/**** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ****/
+		/****** Approx_SweepApproximation::VDegree ******/
+		/****** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -2357,8 +2357,8 @@ No available documentation.
 %nodefaultctor Approx_SweepFunction;
 class Approx_SweepFunction : public Standard_Transient {
 	public:
-		/****************** BarycentreOfSurf ******************/
-		/**** md5 signature: cbc6eaf5619edbfc0f2839466f8de856 ****/
+		/****** Approx_SweepFunction::BarycentreOfSurf ******/
+		/****** md5 signature: cbc6eaf5619edbfc0f2839466f8de856 ******/
 		%feature("compactdefaultargs") BarycentreOfSurf;
 		%feature("autodoc", "Return
 -------
@@ -2370,8 +2370,8 @@ Get the barycentre of surface. an very poor estimation is sufficient. this infor
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 59d4398da857a954d97c3c261c2f0d6a ****/
+		/****** Approx_SweepFunction::D0 ******/
+		/****** md5 signature: 59d4398da857a954d97c3c261c2f0d6a ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -2393,8 +2393,8 @@ Compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 509d473b60471c40fb84a525daccf7b2 ****/
+		/****** Approx_SweepFunction::D1 ******/
+		/****** md5 signature: 509d473b60471c40fb84a525daccf7b2 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -2419,8 +2419,8 @@ Compute the first derivative in v direction of the section for v = param warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 9688db55fcb73e40afa5da6bce93a93e ****/
+		/****** Approx_SweepFunction::D2 ******/
+		/****** md5 signature: 9688db55fcb73e40afa5da6bce93a93e ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -2448,8 +2448,8 @@ Compute the second derivative in v direction of the section for v = param warnin
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: 6fdd12d5da1669c5217b9449c91c0d9e ****/
+		/****** Approx_SweepFunction::GetMinimalWeight ******/
+		/****** md5 signature: 6fdd12d5da1669c5217b9449c91c0d9e ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -2466,8 +2466,8 @@ Compute the minimal value of weight for each poles in all sections. this informa
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: 1096196f89d9fc10f33e62e0d43284fe ****/
+		/****** Approx_SweepFunction::GetTolerance ******/
+		/****** md5 signature: 1096196f89d9fc10f33e62e0d43284fe ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -2487,8 +2487,8 @@ Returns the tolerance to reach in approximation to satisfy. boundtol error at th
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
+		/****** Approx_SweepFunction::Intervals ******/
+		/****** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -2506,8 +2506,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: e2d546fe827c13e22032dacc2ce90819 ****/
+		/****** Approx_SweepFunction::IsRational ******/
+		/****** md5 signature: e2d546fe827c13e22032dacc2ce90819 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -2519,8 +2519,8 @@ Returns if the sections are rationnal or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
-		/****************** Knots ******************/
-		/**** md5 signature: 7e71a376fdfa4fc27638b1b7f6f203bb ****/
+		/****** Approx_SweepFunction::Knots ******/
+		/****** md5 signature: 7e71a376fdfa4fc27638b1b7f6f203bb ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -2537,8 +2537,8 @@ Get the knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** MaximalSection ******************/
-		/**** md5 signature: d9acdf10cc3735a15f259a425c017f62 ****/
+		/****** Approx_SweepFunction::MaximalSection ******/
+		/****** md5 signature: d9acdf10cc3735a15f259a425c017f62 ******/
 		%feature("compactdefaultargs") MaximalSection;
 		%feature("autodoc", "Return
 -------
@@ -2550,8 +2550,8 @@ Returns the length of the greater section. thisinformation is useful to g1's con
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
-		/****************** Mults ******************/
-		/**** md5 signature: d5fb3b1381d15914585fd7e6e0eafecb ****/
+		/****** Approx_SweepFunction::Mults ******/
+		/****** md5 signature: d5fb3b1381d15914585fd7e6e0eafecb ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -2568,8 +2568,8 @@ Get the multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** Nb2dCurves ******************/
-		/**** md5 signature: 1badd0e2d38d18f16705a0a708ba7c67 ****/
+		/****** Approx_SweepFunction::Nb2dCurves ******/
+		/****** md5 signature: 1badd0e2d38d18f16705a0a708ba7c67 ******/
 		%feature("compactdefaultargs") Nb2dCurves;
 		%feature("autodoc", "Return
 -------
@@ -2581,8 +2581,8 @@ Get the number of 2d curves to approximate.
 ") Nb2dCurves;
 		virtual Standard_Integer Nb2dCurves();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ****/
+		/****** Approx_SweepFunction::NbIntervals ******/
+		/****** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -2599,8 +2599,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** Resolution ******************/
-		/**** md5 signature: 70b0f0265ef5802a650e7ab2f0220a7e ****/
+		/****** Approx_SweepFunction::Resolution ******/
+		/****** md5 signature: 70b0f0265ef5802a650e7ab2f0220a7e ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -2619,8 +2619,8 @@ Returns the resolutions in the sub-space 2d <index> this information is usfull t
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SectionShape ******************/
-		/**** md5 signature: 2709d0545e048eec44ae3de66392188f ****/
+		/****** Approx_SweepFunction::SectionShape ******/
+		/****** md5 signature: 2709d0545e048eec44ae3de66392188f ******/
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "
 Parameters
@@ -2638,8 +2638,8 @@ Get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 0547f3a9c04c5f6c0363c26295b2e795 ****/
+		/****** Approx_SweepFunction::SetInterval ******/
+		/****** md5 signature: 0547f3a9c04c5f6c0363c26295b2e795 ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -2657,8 +2657,8 @@ Sets the bounds of the parametric interval on the fonction this determines the d
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: 93e9274684dae026e60334d9dec71409 ****/
+		/****** Approx_SweepFunction::SetTolerance ******/
+		/****** md5 signature: 93e9274684dae026e60334d9dec71409 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters

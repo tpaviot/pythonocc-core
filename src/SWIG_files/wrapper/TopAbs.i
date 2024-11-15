@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPABSDOCSTRING
 "TopAbs module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_topabs.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topabs.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPABSDOCSTRING) TopAbs
 
@@ -146,8 +146,8 @@ TopAbs_UNKNOWN = TopAbs_State.TopAbs_UNKNOWN
 %rename(topabs) TopAbs;
 class TopAbs {
 	public:
-		/****************** Complement ******************/
-		/**** md5 signature: d36735cb2b4d8defcd8da7a47d45737d ****/
+		/****** TopAbs::Complement ******/
+		/****** md5 signature: d36735cb2b4d8defcd8da7a47d45737d ******/
 		%feature("compactdefaultargs") Complement;
 		%feature("autodoc", "
 Parameters
@@ -164,8 +164,8 @@ Reverses the interior/exterior status of each side of the object. so, to take th
 ") Complement;
 		static TopAbs_Orientation Complement(const TopAbs_Orientation Or);
 
-		/****************** Compose ******************/
-		/**** md5 signature: 6d609448eff18789b8606e52047834a9 ****/
+		/****** TopAbs::Compose ******/
+		/****** md5 signature: 6d609448eff18789b8606e52047834a9 ******/
 		%feature("compactdefaultargs") Compose;
 		%feature("autodoc", "
 Parameters
@@ -183,8 +183,8 @@ Compose the orientation <or1> and <or2>. this composition is not symmetric (if y
 ") Compose;
 		static TopAbs_Orientation Compose(const TopAbs_Orientation Or1, const TopAbs_Orientation Or2);
 
-		/****************** Print ******************/
-		/**** md5 signature: f2bc915db789eecaddaf7f8a542302b9 ****/
+		/****** TopAbs::Print ******/
+		/****** md5 signature: f2bc915db789eecaddaf7f8a542302b9 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -201,8 +201,8 @@ Prints the name of shape type as a string on the stream.
 ") Print;
 		static Standard_OStream & Print(const TopAbs_ShapeEnum theShapeType, std::ostream &OutValue);
 
-		/****************** Print ******************/
-		/**** md5 signature: 6ad8c3d2eaff28edc070aae5129544a1 ****/
+		/****** TopAbs::Print ******/
+		/****** md5 signature: 6ad8c3d2eaff28edc070aae5129544a1 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -219,8 +219,8 @@ Prints the name of the orientation as a string on the stream.
 ") Print;
 		static Standard_OStream & Print(const TopAbs_Orientation theOrientation, std::ostream &OutValue);
 
-		/****************** Print ******************/
-		/**** md5 signature: 9a9b3768d9e4f7b3106175734ca85d5b ****/
+		/****** TopAbs::Print ******/
+		/****** md5 signature: 9a9b3768d9e4f7b3106175734ca85d5b ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -237,8 +237,8 @@ Prints the name of the state <st> as a string on the stream <s> and returns <s>.
 ") Print;
 		static Standard_OStream & Print(const TopAbs_State St, std::ostream &OutValue);
 
-		/****************** Reverse ******************/
-		/**** md5 signature: 24070ddabf8011f0d7eb29a4dc573a82 ****/
+		/****** TopAbs::Reverse ******/
+		/****** md5 signature: 24070ddabf8011f0d7eb29a4dc573a82 ******/
 		%feature("compactdefaultargs") Reverse;
 		%feature("autodoc", "
 Parameters
@@ -255,8 +255,8 @@ Xchanges the interior/exterior status of the two sides. this is what happens whe
 ") Reverse;
 		static TopAbs_Orientation Reverse(const TopAbs_Orientation Or);
 
-		/****************** ShapeOrientationFromString ******************/
-		/**** md5 signature: d56c822166135ec6bcf030a0a5131e19 ****/
+		/****** TopAbs::ShapeOrientationFromString ******/
+		/****** md5 signature: d56c822166135ec6bcf030a0a5131e19 ******/
 		%feature("compactdefaultargs") ShapeOrientationFromString;
 		%feature("autodoc", "
 Parameters
@@ -273,8 +273,8 @@ Returns the shape orientation from the given string identifier (using case-insen
 ") ShapeOrientationFromString;
 		static TopAbs_Orientation ShapeOrientationFromString(Standard_CString theOrientationString);
 
-		/****************** ShapeOrientationFromString ******************/
-		/**** md5 signature: 4bd3a8b6506d611c099d1cd778dd9fa2 ****/
+		/****** TopAbs::ShapeOrientationFromString ******/
+		/****** md5 signature: 4bd3a8b6506d611c099d1cd778dd9fa2 ******/
 		%feature("compactdefaultargs") ShapeOrientationFromString;
 		%feature("autodoc", "
 Parameters
@@ -291,8 +291,8 @@ Determines the shape orientation from the given string identifier (using case-in
 ") ShapeOrientationFromString;
 		static Standard_Boolean ShapeOrientationFromString(Standard_CString theOrientationString, TopAbs_Orientation &OutValue);
 
-		/****************** ShapeOrientationToString ******************/
-		/**** md5 signature: 08fa460365bf4bd2ca48f9d91582fbaa ****/
+		/****** TopAbs::ShapeOrientationToString ******/
+		/****** md5 signature: 08fa460365bf4bd2ca48f9d91582fbaa ******/
 		%feature("compactdefaultargs") ShapeOrientationToString;
 		%feature("autodoc", "
 Parameters
@@ -309,8 +309,8 @@ Returns the string name for a given shape orientation. @param theorientation sha
 ") ShapeOrientationToString;
 		static Standard_CString ShapeOrientationToString(TopAbs_Orientation theOrientation);
 
-		/****************** ShapeTypeFromString ******************/
-		/**** md5 signature: ae0bd90ac4739a50df48b85c8da99f5d ****/
+		/****** TopAbs::ShapeTypeFromString ******/
+		/****** md5 signature: ae0bd90ac4739a50df48b85c8da99f5d ******/
 		%feature("compactdefaultargs") ShapeTypeFromString;
 		%feature("autodoc", "
 Parameters
@@ -327,8 +327,8 @@ Returns the shape type from the given string identifier (using case-insensitive 
 ") ShapeTypeFromString;
 		static TopAbs_ShapeEnum ShapeTypeFromString(Standard_CString theTypeString);
 
-		/****************** ShapeTypeFromString ******************/
-		/**** md5 signature: d787d966b2bad997712c62065f94654d ****/
+		/****** TopAbs::ShapeTypeFromString ******/
+		/****** md5 signature: d787d966b2bad997712c62065f94654d ******/
 		%feature("compactdefaultargs") ShapeTypeFromString;
 		%feature("autodoc", "
 Parameters
@@ -345,8 +345,8 @@ Determines the shape type from the given string identifier (using case-insensiti
 ") ShapeTypeFromString;
 		static Standard_Boolean ShapeTypeFromString(Standard_CString theTypeString, TopAbs_ShapeEnum &OutValue);
 
-		/****************** ShapeTypeToString ******************/
-		/**** md5 signature: 47d69b9834372b84634fd7993fa38cf6 ****/
+		/****** TopAbs::ShapeTypeToString ******/
+		/****** md5 signature: 47d69b9834372b84634fd7993fa38cf6 ******/
 		%feature("compactdefaultargs") ShapeTypeToString;
 		%feature("autodoc", "
 Parameters

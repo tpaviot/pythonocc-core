@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TRANSFERBREPDOCSTRING
 "TransferBRep module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_transferbrep.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_transferbrep.html"
 %enddef
 %module (package="OCC.Core", docstring=TRANSFERBREPDOCSTRING) TransferBRep
 
@@ -111,8 +111,8 @@ typedef NCollection_Sequence<opencascade::handle<TransferBRep_TransferResultInfo
 %rename(transferbrep) TransferBRep;
 class TransferBRep {
 	public:
-		/****************** CheckObject ******************/
-		/**** md5 signature: c02b98d5297a356378bb3f680a1d32cc ****/
+		/****** TransferBRep::CheckObject ******/
+		/****** md5 signature: c02b98d5297a356378bb3f680a1d32cc ******/
 		%feature("compactdefaultargs") CheckObject;
 		%feature("autodoc", "
 Parameters
@@ -130,8 +130,8 @@ Returns the check-list bound to a given object, generally none (if ok) or one ch
 ") CheckObject;
 		static Interface_CheckIterator CheckObject(const Interface_CheckIterator & chl, const opencascade::handle<Standard_Transient> & obj);
 
-		/****************** Checked ******************/
-		/**** md5 signature: 11c1388c4c4067c53fe8aa3d82893878 ****/
+		/****** TransferBRep::Checked ******/
+		/****** md5 signature: 11c1388c4c4067c53fe8aa3d82893878 ******/
 		%feature("compactdefaultargs") Checked;
 		%feature("autodoc", "
 Parameters
@@ -149,8 +149,8 @@ Returns the list of objects to which a non-empty check is bound in a check-list.
 ") Checked;
 		static opencascade::handle<TColStd_HSequenceOfTransient> Checked(const Interface_CheckIterator & chl, const Standard_Boolean alsoshapes = Standard_False);
 
-		/****************** CheckedShapes ******************/
-		/**** md5 signature: 8d10365a883cad7d4c4020ff84899f9f ****/
+		/****** TransferBRep::CheckedShapes ******/
+		/****** md5 signature: 8d10365a883cad7d4c4020ff84899f9f ******/
 		%feature("compactdefaultargs") CheckedShapes;
 		%feature("autodoc", "
 Parameters
@@ -167,8 +167,8 @@ Returns the list of shapes to which a non-empty check is bound in a check-list.
 ") CheckedShapes;
 		static opencascade::handle<TopTools_HSequenceOfShape> CheckedShapes(const Interface_CheckIterator & chl);
 
-		/****************** PrintResultInfo ******************/
-		/**** md5 signature: 70d322420eec79e1a0fa615f977961de ****/
+		/****** TransferBRep::PrintResultInfo ******/
+		/****** md5 signature: 70d322420eec79e1a0fa615f977961de ******/
 		%feature("compactdefaultargs") PrintResultInfo;
 		%feature("autodoc", "
 Parameters
@@ -188,8 +188,8 @@ Prints the results of transfer to given priner with given header.
 ") PrintResultInfo;
 		static void PrintResultInfo(const opencascade::handle<Message_Printer> & Printer, const Message_Msg & Header, const opencascade::handle<TransferBRep_TransferResultInfo> & ResultInfo, const Standard_Boolean printEmpty = Standard_True);
 
-		/****************** ResultCheckList ******************/
-		/**** md5 signature: 37e46c9522e4067fe15baae592593088 ****/
+		/****** TransferBRep::ResultCheckList ******/
+		/****** md5 signature: 37e46c9522e4067fe15baae592593088 ******/
 		%feature("compactdefaultargs") ResultCheckList;
 		%feature("autodoc", "
 Parameters
@@ -208,8 +208,8 @@ Takes a starting checkiterator which brings checks bound with starting objects (
 ") ResultCheckList;
 		static Interface_CheckIterator ResultCheckList(const Interface_CheckIterator & chl, const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** ResultFromShape ******************/
-		/**** md5 signature: 61291e9ced9a75f743abb463d4e79840 ****/
+		/****** TransferBRep::ResultFromShape ******/
+		/****** md5 signature: 61291e9ced9a75f743abb463d4e79840 ******/
 		%feature("compactdefaultargs") ResultFromShape;
 		%feature("autodoc", "
 Parameters
@@ -227,8 +227,8 @@ Returns the result (as a binder) attached to a given shape null if none.
 ") ResultFromShape;
 		static opencascade::handle<Transfer_Binder> ResultFromShape(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape);
 
-		/****************** SetShapeResult ******************/
-		/**** md5 signature: 76ac9cb698250eada9e6a6c290c35850 ****/
+		/****** TransferBRep::SetShapeResult ******/
+		/****** md5 signature: 76ac9cb698250eada9e6a6c290c35850 ******/
 		%feature("compactdefaultargs") SetShapeResult;
 		%feature("autodoc", "
 Parameters
@@ -247,8 +247,8 @@ Sets a shape as a result for a starting entity <ent> (reverse of shaperesult) it
 ") SetShapeResult;
 		static void SetShapeResult(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<Standard_Transient> & ent, const TopoDS_Shape & result);
 
-		/****************** SetTransientFromShape ******************/
-		/**** md5 signature: dee0650dd6340fc5e3e83429530791bf ****/
+		/****** TransferBRep::SetTransientFromShape ******/
+		/****** md5 signature: dee0650dd6340fc5e3e83429530791bf ******/
 		%feature("compactdefaultargs") SetTransientFromShape;
 		%feature("autodoc", "
 Parameters
@@ -267,8 +267,8 @@ Binds a transient result to a shape in a finderprocess (as first result if multi
 ") SetTransientFromShape;
 		static void SetTransientFromShape(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape, const opencascade::handle<Standard_Transient> & result);
 
-		/****************** ShapeMapper ******************/
-		/**** md5 signature: 4fd026f629492842396269b05b4a1fdb ****/
+		/****** TransferBRep::ShapeMapper ******/
+		/****** md5 signature: 4fd026f629492842396269b05b4a1fdb ******/
 		%feature("compactdefaultargs") ShapeMapper;
 		%feature("autodoc", "
 Parameters
@@ -286,8 +286,8 @@ Returns a shapemapper for a given shape (location included) either <shape> is al
 ") ShapeMapper;
 		static opencascade::handle<TransferBRep_ShapeMapper> ShapeMapper(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape);
 
-		/****************** ShapeResult ******************/
-		/**** md5 signature: a0504e67c5abdcde2c87e808c901fce0 ****/
+		/****** TransferBRep::ShapeResult ******/
+		/****** md5 signature: a0504e67c5abdcde2c87e808c901fce0 ******/
 		%feature("compactdefaultargs") ShapeResult;
 		%feature("autodoc", "
 Parameters
@@ -304,8 +304,8 @@ Get the shape recorded in a binder if the binder brings a multiple result, searc
 ") ShapeResult;
 		static TopoDS_Shape ShapeResult(const opencascade::handle<Transfer_Binder> & binder);
 
-		/****************** ShapeResult ******************/
-		/**** md5 signature: 4020440d399de535815869f5144d80c8 ****/
+		/****** TransferBRep::ShapeResult ******/
+		/****** md5 signature: 4020440d399de535815869f5144d80c8 ******/
 		%feature("compactdefaultargs") ShapeResult;
 		%feature("autodoc", "
 Parameters
@@ -323,8 +323,8 @@ Get the shape recorded in a transientprocess as result of the transfer of an ent
 ") ShapeResult;
 		static TopoDS_Shape ShapeResult(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** ShapeState ******************/
-		/**** md5 signature: 7f75b3753823e021780769d84b8dba9b ****/
+		/****** TransferBRep::ShapeState ******/
+		/****** md5 signature: 7f75b3753823e021780769d84b8dba9b ******/
 		%feature("compactdefaultargs") ShapeState;
 		%feature("autodoc", "
 Parameters
@@ -342,8 +342,8 @@ Returns a status regarding a shape in a finderprocess - forward means bound with
 ") ShapeState;
 		static TopAbs_Orientation ShapeState(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & shape);
 
-		/****************** Shapes ******************/
-		/**** md5 signature: 5cb69fb0fd505614728cd43a56a8c3cb ****/
+		/****** TransferBRep::Shapes ******/
+		/****** md5 signature: 5cb69fb0fd505614728cd43a56a8c3cb ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
@@ -361,8 +361,8 @@ Gets the shapes recorded in a transientprocess as result of a transfer, consider
 ") Shapes;
 		static opencascade::handle<TopTools_HSequenceOfShape> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const Standard_Boolean rootsonly = Standard_True);
 
-		/****************** Shapes ******************/
-		/**** md5 signature: a53000cb23554ab000bc5b84b079d910 ****/
+		/****** TransferBRep::Shapes ******/
+		/****** md5 signature: a53000cb23554ab000bc5b84b079d910 ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "
 Parameters
@@ -380,8 +380,8 @@ Gets the shapes recorded in a transientprocess as result of a transfer, for a gi
 ") Shapes;
 		static opencascade::handle<TopTools_HSequenceOfShape> Shapes(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
-		/****************** TransferResultInfo ******************/
-		/**** md5 signature: 534e95ac62c75feb3ba7977bd718b832 ****/
+		/****** TransferBRep::TransferResultInfo ******/
+		/****** md5 signature: 534e95ac62c75feb3ba7977bd718b832 ******/
 		%feature("compactdefaultargs") TransferResultInfo;
 		%feature("autodoc", "
 Parameters
@@ -400,8 +400,8 @@ Fills sequence of transferresultinfo for each type of entity given in the entity
 ") TransferResultInfo;
 		static void TransferResultInfo(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<TColStd_HSequenceOfTransient> & EntityTypes, opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> & InfoSeq);
 
-		/****************** TransferResultInfo ******************/
-		/**** md5 signature: 2bd2c7e3962729a4433aaf4ea583df8d ****/
+		/****** TransferBRep::TransferResultInfo ******/
+		/****** md5 signature: 2bd2c7e3962729a4433aaf4ea583df8d ******/
 		%feature("compactdefaultargs") TransferResultInfo;
 		%feature("autodoc", "
 Parameters
@@ -420,8 +420,8 @@ Fills sequence of transferresultinfo for each type of shape given in the shapety
 ") TransferResultInfo;
 		static void TransferResultInfo(const opencascade::handle<Transfer_FinderProcess> & FP, const opencascade::handle<TColStd_HSequenceOfInteger> & ShapeTypes, opencascade::handle<TransferBRep_HSequenceOfTransferResultInfo> & InfoSeq);
 
-		/****************** TransientFromShape ******************/
-		/**** md5 signature: ac27ec8ebd551812170c1783235621b5 ****/
+		/****** TransferBRep::TransientFromShape ******/
+		/****** md5 signature: ac27ec8ebd551812170c1783235621b5 ******/
 		%feature("compactdefaultargs") TransientFromShape;
 		%feature("autodoc", "
 Parameters
@@ -457,8 +457,8 @@ Returns the result as pure transient attached to a shape first one if multiple r
 ***********************************/
 class TransferBRep_BinderOfShape : public Transfer_Binder {
 	public:
-		/****************** TransferBRep_BinderOfShape ******************/
-		/**** md5 signature: 0e24b6a0d05d6367cba79758e65a3ba6 ****/
+		/****** TransferBRep_BinderOfShape::TransferBRep_BinderOfShape ******/
+		/****** md5 signature: 0e24b6a0d05d6367cba79758e65a3ba6 ******/
 		%feature("compactdefaultargs") TransferBRep_BinderOfShape;
 		%feature("autodoc", "Return
 -------
@@ -470,8 +470,8 @@ Normal standard constructor, creates an empty binderofshape.
 ") TransferBRep_BinderOfShape;
 		 TransferBRep_BinderOfShape();
 
-		/****************** TransferBRep_BinderOfShape ******************/
-		/**** md5 signature: 5bbec8d38c7e9144c260dddea617f54e ****/
+		/****** TransferBRep_BinderOfShape::TransferBRep_BinderOfShape ******/
+		/****** md5 signature: 5bbec8d38c7e9144c260dddea617f54e ******/
 		%feature("compactdefaultargs") TransferBRep_BinderOfShape;
 		%feature("autodoc", "
 Parameters
@@ -488,8 +488,8 @@ Constructor which in the same time defines the result returns true if a starting
 ") TransferBRep_BinderOfShape;
 		 TransferBRep_BinderOfShape(const TopoDS_Shape & res);
 
-		/****************** CResult ******************/
-		/**** md5 signature: 53f029a1cda5ba243bdce0cbc426b382 ****/
+		/****** TransferBRep_BinderOfShape::CResult ******/
+		/****** md5 signature: 53f029a1cda5ba243bdce0cbc426b382 ******/
 		%feature("compactdefaultargs") CResult;
 		%feature("autodoc", "Return
 -------
@@ -501,8 +501,8 @@ Returns the defined result, if there is one, and allows to change it (avoids res
 ") CResult;
 		TopoDS_Shape CResult();
 
-		/****************** Result ******************/
-		/**** md5 signature: 64e8e20a963b00a422945949bd4e1549 ****/
+		/****** TransferBRep_BinderOfShape::Result ******/
+		/****** md5 signature: 64e8e20a963b00a422945949bd4e1549 ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
@@ -514,8 +514,8 @@ Returns the defined result, if there is one.
 ") Result;
 		const TopoDS_Shape Result();
 
-		/****************** ResultType ******************/
-		/**** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ****/
+		/****** TransferBRep_BinderOfShape::ResultType ******/
+		/****** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ******/
 		%feature("compactdefaultargs") ResultType;
 		%feature("autodoc", "Return
 -------
@@ -527,8 +527,8 @@ Returns the type permitted for the result, i.e. the type of the parameter class 
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
-		/****************** ResultTypeName ******************/
-		/**** md5 signature: 7c976254948a22ef88ad8fdce635402f ****/
+		/****** TransferBRep_BinderOfShape::ResultTypeName ******/
+		/****** md5 signature: 7c976254948a22ef88ad8fdce635402f ******/
 		%feature("compactdefaultargs") ResultTypeName;
 		%feature("autodoc", "Return
 -------
@@ -540,8 +540,8 @@ Returns the type name computed for the result (dynamic).
 ") ResultTypeName;
 		Standard_CString ResultTypeName();
 
-		/****************** SetResult ******************/
-		/**** md5 signature: b581a5ff3d4839af932b887a85802930 ****/
+		/****** TransferBRep_BinderOfShape::SetResult ******/
+		/****** md5 signature: b581a5ff3d4839af932b887a85802930 ******/
 		%feature("compactdefaultargs") SetResult;
 		%feature("autodoc", "
 Parameters
@@ -574,8 +574,8 @@ Defines the result.
 ****************************/
 class TransferBRep_Reader {
 	public:
-		/****************** TransferBRep_Reader ******************/
-		/**** md5 signature: 89b0c1d65ba0c3b72390a67124ed8e2f ****/
+		/****** TransferBRep_Reader::TransferBRep_Reader ******/
+		/****** md5 signature: 89b0c1d65ba0c3b72390a67124ed8e2f ******/
 		%feature("compactdefaultargs") TransferBRep_Reader;
 		%feature("autodoc", "Return
 -------
@@ -587,8 +587,8 @@ Initializes a non-specialised reader. typically, for each norm or protocol, is w
 ") TransferBRep_Reader;
 		 TransferBRep_Reader();
 
-		/****************** Actor ******************/
-		/**** md5 signature: 46a9a8cd830c8bb4239c308f6a760b1a ****/
+		/****** TransferBRep_Reader::Actor ******/
+		/****** md5 signature: 46a9a8cd830c8bb4239c308f6a760b1a ******/
 		%feature("compactdefaultargs") Actor;
 		%feature("autodoc", "Return
 -------
@@ -600,8 +600,8 @@ Returns the recorded actor.
 ") Actor;
 		virtual opencascade::handle<Transfer_ActorOfTransientProcess> Actor();
 
-		/****************** BeginTransfer ******************/
-		/**** md5 signature: 45b9be9b944a95886bf096a49eb0bf8e ****/
+		/****** TransferBRep_Reader::BeginTransfer ******/
+		/****** md5 signature: 45b9be9b944a95886bf096a49eb0bf8e ******/
 		%feature("compactdefaultargs") BeginTransfer;
 		%feature("autodoc", "Return
 -------
@@ -613,8 +613,8 @@ Initializes the reader for a transfer (one,roots, or list) also calls preparetra
 ") BeginTransfer;
 		Standard_Boolean BeginTransfer();
 
-		/****************** CheckListModel ******************/
-		/**** md5 signature: 24d00665e95599b309f8e96a1b949c12 ****/
+		/****** TransferBRep_Reader::CheckListModel ******/
+		/****** md5 signature: 24d00665e95599b309f8e96a1b949c12 ******/
 		%feature("compactdefaultargs") CheckListModel;
 		%feature("autodoc", "Return
 -------
@@ -626,8 +626,8 @@ Checks the model (complete: syntax + semantic) and returns the produced check li
 ") CheckListModel;
 		Interface_CheckIterator CheckListModel();
 
-		/****************** CheckListResult ******************/
-		/**** md5 signature: 735cbc3fc13291439d3a0828abcd3f6a ****/
+		/****** TransferBRep_Reader::CheckListResult ******/
+		/****** md5 signature: 735cbc3fc13291439d3a0828abcd3f6a ******/
 		%feature("compactdefaultargs") CheckListResult;
 		%feature("autodoc", "Return
 -------
@@ -639,8 +639,8 @@ Checks the result of last transfer (individual or roots, no cumulation on severa
 ") CheckListResult;
 		Interface_CheckIterator CheckListResult();
 
-		/****************** CheckStatusModel ******************/
-		/**** md5 signature: 870c8266590633214733e675fb7f8dfa ****/
+		/****** TransferBRep_Reader::CheckStatusModel ******/
+		/****** md5 signature: 870c8266590633214733e675fb7f8dfa ******/
 		%feature("compactdefaultargs") CheckStatusModel;
 		%feature("autodoc", "
 Parameters
@@ -657,8 +657,8 @@ Checks the model. returns true if there is no fail at all (regardless warnings) 
 ") CheckStatusModel;
 		Standard_Boolean CheckStatusModel(const Standard_Boolean withprint);
 
-		/****************** CheckStatusResult ******************/
-		/**** md5 signature: 331854297e3a398f63c12a5f55682ab2 ****/
+		/****** TransferBRep_Reader::CheckStatusResult ******/
+		/****** md5 signature: 331854297e3a398f63c12a5f55682ab2 ******/
 		%feature("compactdefaultargs") CheckStatusResult;
 		%feature("autodoc", "
 Parameters
@@ -675,8 +675,8 @@ Checks the result of last transfer (individual or roots, no cumulation on severa
 ") CheckStatusResult;
 		Standard_Boolean CheckStatusResult(const Standard_Boolean withprints);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TransferBRep_Reader::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -688,8 +688,8 @@ Clears the result and done status. but not the model.
 ") Clear;
 		void Clear();
 
-		/****************** EndTransfer ******************/
-		/**** md5 signature: 743e3133a27f1051b31de826812cac18 ****/
+		/****** TransferBRep_Reader::EndTransfer ******/
+		/****** md5 signature: 743e3133a27f1051b31de826812cac18 ******/
 		%feature("compactdefaultargs") EndTransfer;
 		%feature("autodoc", "Return
 -------
@@ -701,8 +701,8 @@ Ebds a transfer (one, roots or list) by recording its result.
 ") EndTransfer;
 		void EndTransfer();
 
-		/****************** FileNotFound ******************/
-		/**** md5 signature: 86b2480c0f386323f5deab3669dec3a3 ****/
+		/****** TransferBRep_Reader::FileNotFound ******/
+		/****** md5 signature: 86b2480c0f386323f5deab3669dec3a3 ******/
 		%feature("compactdefaultargs") FileNotFound;
 		%feature("autodoc", "Return
 -------
@@ -714,8 +714,8 @@ Returns true if filestatus is for filenotfound.
 ") FileNotFound;
 		Standard_Boolean FileNotFound();
 
-		/****************** FileStatus ******************/
-		/**** md5 signature: 6a634e5454e1bf22f52b13e24d6e2c9c ****/
+		/****** TransferBRep_Reader::FileStatus ******/
+		/****** md5 signature: 6a634e5454e1bf22f52b13e24d6e2c9c ******/
 		%feature("compactdefaultargs") FileStatus;
 		%feature("autodoc", "Return
 -------
@@ -727,8 +727,8 @@ Returns the file status.
 ") FileStatus;
 		Standard_Integer FileStatus();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** TransferBRep_Reader::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -753,8 +753,8 @@ Returns true if the last transfer/transferroots was a success.
             $self->ModeNewTransfer()=value;
             }
         };
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** TransferBRep_Reader::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -766,8 +766,8 @@ Returns the model to be worked on.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** NbShapes ******************/
-		/**** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ****/
+		/****** TransferBRep_Reader::NbShapes ******/
+		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -779,8 +779,8 @@ Returns the count of produced shapes (roots).
 ") NbShapes;
 		Standard_Integer NbShapes();
 
-		/****************** NbTransients ******************/
-		/**** md5 signature: 9436b9a550cdb03fdd33d4f80aca7526 ****/
+		/****** TransferBRep_Reader::NbTransients ******/
+		/****** md5 signature: 9436b9a550cdb03fdd33d4f80aca7526 ******/
 		%feature("compactdefaultargs") NbTransients;
 		%feature("autodoc", "Return
 -------
@@ -792,8 +792,8 @@ Returns the count of produced transient results (roots).
 ") NbTransients;
 		Standard_Integer NbTransients();
 
-		/****************** OneShape ******************/
-		/**** md5 signature: 1fc1610db08b4eec83d275771d406ea5 ****/
+		/****** TransferBRep_Reader::OneShape ******/
+		/****** md5 signature: 1fc1610db08b4eec83d275771d406ea5 ******/
 		%feature("compactdefaultargs") OneShape;
 		%feature("autodoc", "Return
 -------
@@ -805,8 +805,8 @@ Returns a unique shape for the result: - a void shape (type = shape) if result i
 ") OneShape;
 		TopoDS_Shape OneShape();
 
-		/****************** PrepareTransfer ******************/
-		/**** md5 signature: ce6478f9210f4516f371381d8d9e7659 ****/
+		/****** TransferBRep_Reader::PrepareTransfer ******/
+		/****** md5 signature: ce6478f9210f4516f371381d8d9e7659 ******/
 		%feature("compactdefaultargs") PrepareTransfer;
 		%feature("autodoc", "Return
 -------
@@ -818,8 +818,8 @@ Prepares the transfer. also can act on the actor or change the transientprocess 
 ") PrepareTransfer;
 		virtual void PrepareTransfer();
 
-		/****************** Protocol ******************/
-		/**** md5 signature: 2dce80af32cedc07d353d312ab7e2c73 ****/
+		/****** TransferBRep_Reader::Protocol ******/
+		/****** md5 signature: 2dce80af32cedc07d353d312ab7e2c73 ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -831,8 +831,8 @@ Returns the recorded protocol.
 ") Protocol;
 		virtual opencascade::handle<Interface_Protocol> Protocol();
 
-		/****************** SetActor ******************/
-		/**** md5 signature: 8596f1237d29d2baaa927fcdaa1a0f89 ****/
+		/****** TransferBRep_Reader::SetActor ******/
+		/****** md5 signature: 8596f1237d29d2baaa927fcdaa1a0f89 ******/
 		%feature("compactdefaultargs") SetActor;
 		%feature("autodoc", "
 Parameters
@@ -849,8 +849,8 @@ Records the actor to be used for transfers.
 ") SetActor;
 		void SetActor(const opencascade::handle<Transfer_ActorOfTransientProcess> & actor);
 
-		/****************** SetFileStatus ******************/
-		/**** md5 signature: 74a715d4bf31def1e0a74262f5c53207 ****/
+		/****** TransferBRep_Reader::SetFileStatus ******/
+		/****** md5 signature: 74a715d4bf31def1e0a74262f5c53207 ******/
 		%feature("compactdefaultargs") SetFileStatus;
 		%feature("autodoc", "
 Parameters
@@ -867,8 +867,8 @@ Sets file status to be interpreted as follows: = 0 ok < 0 file not found > 0 rea
 ") SetFileStatus;
 		void SetFileStatus(const Standard_Integer status);
 
-		/****************** SetModel ******************/
-		/**** md5 signature: 70328a97cec44e457500ce3b002efc49 ****/
+		/****** TransferBRep_Reader::SetModel ******/
+		/****** md5 signature: 70328a97cec44e457500ce3b002efc49 ******/
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "
 Parameters
@@ -885,8 +885,8 @@ Specifies a model to work on also clears the result and done status.
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** SetProtocol ******************/
-		/**** md5 signature: 032ba93c3a9bfe80213c23be9d305675 ****/
+		/****** TransferBRep_Reader::SetProtocol ******/
+		/****** md5 signature: 032ba93c3a9bfe80213c23be9d305675 ******/
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "
 Parameters
@@ -903,8 +903,8 @@ Records the protocol to be used for read and transfer roots.
 ") SetProtocol;
 		void SetProtocol(const opencascade::handle<Interface_Protocol> & protocol);
 
-		/****************** Shape ******************/
-		/**** md5 signature: 1e795d69b15f05ab57c59b0afbc57ddf ****/
+		/****** TransferBRep_Reader::Shape ******/
+		/****** md5 signature: 1e795d69b15f05ab57c59b0afbc57ddf ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -921,8 +921,8 @@ Returns a shape given its rank, by default the first one.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer num = 1);
 
-		/****************** ShapeResult ******************/
-		/**** md5 signature: 01e36bf3f5ba5a6d1aefe4e9aed8c7f6 ****/
+		/****** TransferBRep_Reader::ShapeResult ******/
+		/****** md5 signature: 01e36bf3f5ba5a6d1aefe4e9aed8c7f6 ******/
 		%feature("compactdefaultargs") ShapeResult;
 		%feature("autodoc", "
 Parameters
@@ -939,8 +939,8 @@ Returns a shape produced from a given entity (if it was individually transferred
 ") ShapeResult;
 		TopoDS_Shape ShapeResult(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Shapes ******************/
-		/**** md5 signature: fbd983721ce2925a93d47fdb2eb2a61d ****/
+		/****** TransferBRep_Reader::Shapes ******/
+		/****** md5 signature: fbd983721ce2925a93d47fdb2eb2a61d ******/
 		%feature("compactdefaultargs") Shapes;
 		%feature("autodoc", "Return
 -------
@@ -952,8 +952,8 @@ Returns the complete list of produced shapes.
 ") Shapes;
 		opencascade::handle<TopTools_HSequenceOfShape> Shapes();
 
-		/****************** SyntaxError ******************/
-		/**** md5 signature: fa9da864765cf509ba7abf0725188a11 ****/
+		/****** TransferBRep_Reader::SyntaxError ******/
+		/****** md5 signature: fa9da864765cf509ba7abf0725188a11 ******/
 		%feature("compactdefaultargs") SyntaxError;
 		%feature("autodoc", "Return
 -------
@@ -965,8 +965,8 @@ Returns true if filestatus is for error during read (major error; for local erro
 ") SyntaxError;
 		Standard_Boolean SyntaxError();
 
-		/****************** Transfer ******************/
-		/**** md5 signature: b7b93a89ea541f8901206078d3c8ab0f ****/
+		/****** TransferBRep_Reader::Transfer ******/
+		/****** md5 signature: b7b93a89ea541f8901206078d3c8ab0f ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -984,8 +984,8 @@ Transfers an entity given its rank in the model (root or not) returns true if it
 ") Transfer;
 		virtual Standard_Boolean Transfer(const Standard_Integer num, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransferList ******************/
-		/**** md5 signature: 9e2922f2658d44facb646c364ffbbc83 ****/
+		/****** TransferBRep_Reader::TransferList ******/
+		/****** md5 signature: 9e2922f2658d44facb646c364ffbbc83 ******/
 		%feature("compactdefaultargs") TransferList;
 		%feature("autodoc", "
 Parameters
@@ -1003,8 +1003,8 @@ Transfers a list of entities (only the ones also in the model) remark: former re
 ") TransferList;
 		virtual void TransferList(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransferRoots ******************/
-		/**** md5 signature: b19043600acd2d46b55f29ea05e21678 ****/
+		/****** TransferBRep_Reader::TransferRoots ******/
+		/****** md5 signature: b19043600acd2d46b55f29ea05e21678 ******/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "
 Parameters
@@ -1021,8 +1021,8 @@ Transfers all root entities which are recognized as geom-topol the result will b
 ") TransferRoots;
 		virtual void TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Transient ******************/
-		/**** md5 signature: f74282777e87422dedb9fd96d2ddb7db ****/
+		/****** TransferBRep_Reader::Transient ******/
+		/****** md5 signature: f74282777e87422dedb9fd96d2ddb7db ******/
 		%feature("compactdefaultargs") Transient;
 		%feature("autodoc", "
 Parameters
@@ -1039,8 +1039,8 @@ Returns a transient root result, given its rank (by default the first one).
 ") Transient;
 		opencascade::handle<Standard_Transient> Transient(const Standard_Integer num = 1);
 
-		/****************** TransientProcess ******************/
-		/**** md5 signature: cda5aa33365159e82c6213003de44419 ****/
+		/****** TransferBRep_Reader::TransientProcess ******/
+		/****** md5 signature: cda5aa33365159e82c6213003de44419 ******/
 		%feature("compactdefaultargs") TransientProcess;
 		%feature("autodoc", "Return
 -------
@@ -1052,8 +1052,8 @@ Returns the transientprocess. it records information about the very last transfe
 ") TransientProcess;
 		opencascade::handle<Transfer_TransientProcess> TransientProcess();
 
-		/****************** Transients ******************/
-		/**** md5 signature: 6b153a63c3c643b1b8e66b074c9eb931 ****/
+		/****** TransferBRep_Reader::Transients ******/
+		/****** md5 signature: 6b153a63c3c643b1b8e66b074c9eb931 ******/
 		%feature("compactdefaultargs") Transients;
 		%feature("autodoc", "Return
 -------
@@ -1079,8 +1079,8 @@ Returns the complete list of produced transient results.
 *******************************/
 class TransferBRep_ShapeInfo {
 	public:
-		/****************** Type ******************/
-		/**** md5 signature: 91a19cb485904b6668adaf1ff44c9776 ****/
+		/****** TransferBRep_ShapeInfo::Type ******/
+		/****** md5 signature: 91a19cb485904b6668adaf1ff44c9776 ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "
 Parameters
@@ -1097,8 +1097,8 @@ Returns the type attached to an object here, tshape (shape has no dynamic type).
 ") Type;
 		static opencascade::handle<Standard_Type> Type(const TopoDS_Shape & ent);
 
-		/****************** TypeName ******************/
-		/**** md5 signature: 9e3258fdb4a63ed1b39e111643bdaf36 ****/
+		/****** TransferBRep_ShapeInfo::TypeName ******/
+		/****** md5 signature: 9e3258fdb4a63ed1b39e111643bdaf36 ******/
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "
 Parameters
@@ -1129,8 +1129,8 @@ Returns type name (string) here, the true name of the type of a shape.
 *************************************/
 class TransferBRep_ShapeListBinder : public Transfer_Binder {
 	public:
-		/****************** TransferBRep_ShapeListBinder ******************/
-		/**** md5 signature: c3dd8723ad1305f04db0647f85cc094a ****/
+		/****** TransferBRep_ShapeListBinder::TransferBRep_ShapeListBinder ******/
+		/****** md5 signature: c3dd8723ad1305f04db0647f85cc094a ******/
 		%feature("compactdefaultargs") TransferBRep_ShapeListBinder;
 		%feature("autodoc", "Return
 -------
@@ -1142,8 +1142,8 @@ No available documentation.
 ") TransferBRep_ShapeListBinder;
 		 TransferBRep_ShapeListBinder();
 
-		/****************** TransferBRep_ShapeListBinder ******************/
-		/**** md5 signature: b18999de218159d56d773f7587711b9b ****/
+		/****** TransferBRep_ShapeListBinder::TransferBRep_ShapeListBinder ******/
+		/****** md5 signature: b18999de218159d56d773f7587711b9b ******/
 		%feature("compactdefaultargs") TransferBRep_ShapeListBinder;
 		%feature("autodoc", "
 Parameters
@@ -1160,8 +1160,8 @@ No available documentation.
 ") TransferBRep_ShapeListBinder;
 		 TransferBRep_ShapeListBinder(const opencascade::handle<TopTools_HSequenceOfShape> & list);
 
-		/****************** AddResult ******************/
-		/**** md5 signature: 307f4fac54065cc112d1d37fa0ba84d6 ****/
+		/****** TransferBRep_ShapeListBinder::AddResult ******/
+		/****** md5 signature: 307f4fac54065cc112d1d37fa0ba84d6 ******/
 		%feature("compactdefaultargs") AddResult;
 		%feature("autodoc", "
 Parameters
@@ -1178,8 +1178,8 @@ Adds an item to the result list.
 ") AddResult;
 		void AddResult(const TopoDS_Shape & res);
 
-		/****************** CompSolid ******************/
-		/**** md5 signature: 85f821a9b9b0553edcd2a0c068013325 ****/
+		/****** TransferBRep_ShapeListBinder::CompSolid ******/
+		/****** md5 signature: 85f821a9b9b0553edcd2a0c068013325 ******/
 		%feature("compactdefaultargs") CompSolid;
 		%feature("autodoc", "
 Parameters
@@ -1196,8 +1196,8 @@ No available documentation.
 ") CompSolid;
 		TopoDS_CompSolid CompSolid(const Standard_Integer num);
 
-		/****************** Compound ******************/
-		/**** md5 signature: ffc423e6583d2e74cfed179181df389f ****/
+		/****** TransferBRep_ShapeListBinder::Compound ******/
+		/****** md5 signature: ffc423e6583d2e74cfed179181df389f ******/
 		%feature("compactdefaultargs") Compound;
 		%feature("autodoc", "
 Parameters
@@ -1214,8 +1214,8 @@ No available documentation.
 ") Compound;
 		TopoDS_Compound Compound(const Standard_Integer num);
 
-		/****************** Edge ******************/
-		/**** md5 signature: 825841bc4e9a24f9987724fcade8ecd7 ****/
+		/****** TransferBRep_ShapeListBinder::Edge ******/
+		/****** md5 signature: 825841bc4e9a24f9987724fcade8ecd7 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -1232,8 +1232,8 @@ No available documentation.
 ") Edge;
 		TopoDS_Edge Edge(const Standard_Integer num);
 
-		/****************** Face ******************/
-		/**** md5 signature: 67e12ab0b51b730d66350be5ffa1f96e ****/
+		/****** TransferBRep_ShapeListBinder::Face ******/
+		/****** md5 signature: 67e12ab0b51b730d66350be5ffa1f96e ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "
 Parameters
@@ -1250,8 +1250,8 @@ No available documentation.
 ") Face;
 		TopoDS_Face Face(const Standard_Integer num);
 
-		/****************** IsMultiple ******************/
-		/**** md5 signature: 17145d71daab4028b6c7195d5ff772ce ****/
+		/****** TransferBRep_ShapeListBinder::IsMultiple ******/
+		/****** md5 signature: 17145d71daab4028b6c7195d5ff772ce ******/
 		%feature("compactdefaultargs") IsMultiple;
 		%feature("autodoc", "Return
 -------
@@ -1263,8 +1263,8 @@ No available documentation.
 ") IsMultiple;
 		virtual Standard_Boolean IsMultiple();
 
-		/****************** NbShapes ******************/
-		/**** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ****/
+		/****** TransferBRep_ShapeListBinder::NbShapes ******/
+		/****** md5 signature: ea90d1514db96ad18becf0e04a33abf6 ******/
 		%feature("compactdefaultargs") NbShapes;
 		%feature("autodoc", "Return
 -------
@@ -1276,8 +1276,8 @@ No available documentation.
 ") NbShapes;
 		Standard_Integer NbShapes();
 
-		/****************** Result ******************/
-		/**** md5 signature: c4dc32098a28d0345ee9f33c9098c832 ****/
+		/****** TransferBRep_ShapeListBinder::Result ******/
+		/****** md5 signature: c4dc32098a28d0345ee9f33c9098c832 ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
@@ -1289,8 +1289,8 @@ No available documentation.
 ") Result;
 		opencascade::handle<TopTools_HSequenceOfShape> Result();
 
-		/****************** ResultType ******************/
-		/**** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ****/
+		/****** TransferBRep_ShapeListBinder::ResultType ******/
+		/****** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ******/
 		%feature("compactdefaultargs") ResultType;
 		%feature("autodoc", "Return
 -------
@@ -1302,8 +1302,8 @@ No available documentation.
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
-		/****************** ResultTypeName ******************/
-		/**** md5 signature: 7c976254948a22ef88ad8fdce635402f ****/
+		/****** TransferBRep_ShapeListBinder::ResultTypeName ******/
+		/****** md5 signature: 7c976254948a22ef88ad8fdce635402f ******/
 		%feature("compactdefaultargs") ResultTypeName;
 		%feature("autodoc", "Return
 -------
@@ -1315,8 +1315,8 @@ No available documentation.
 ") ResultTypeName;
 		Standard_CString ResultTypeName();
 
-		/****************** SetResult ******************/
-		/**** md5 signature: ce058a0f2fb955a00dd16b642d73ddf3 ****/
+		/****** TransferBRep_ShapeListBinder::SetResult ******/
+		/****** md5 signature: ce058a0f2fb955a00dd16b642d73ddf3 ******/
 		%feature("compactdefaultargs") SetResult;
 		%feature("autodoc", "
 Parameters
@@ -1334,8 +1334,8 @@ Changes an already defined sub-result.
 ") SetResult;
 		void SetResult(const Standard_Integer num, const TopoDS_Shape & res);
 
-		/****************** Shape ******************/
-		/**** md5 signature: 57dfd33e11a02b943ed7391444b46691 ****/
+		/****** TransferBRep_ShapeListBinder::Shape ******/
+		/****** md5 signature: 57dfd33e11a02b943ed7391444b46691 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -1352,8 +1352,8 @@ No available documentation.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer num);
 
-		/****************** ShapeType ******************/
-		/**** md5 signature: 8f05332249aefadde782b65391e51fe2 ****/
+		/****** TransferBRep_ShapeListBinder::ShapeType ******/
+		/****** md5 signature: 8f05332249aefadde782b65391e51fe2 ******/
 		%feature("compactdefaultargs") ShapeType;
 		%feature("autodoc", "
 Parameters
@@ -1370,8 +1370,8 @@ No available documentation.
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType(const Standard_Integer num);
 
-		/****************** Shell ******************/
-		/**** md5 signature: f705fa0e2e8d1270514f2e407eafc945 ****/
+		/****** TransferBRep_ShapeListBinder::Shell ******/
+		/****** md5 signature: f705fa0e2e8d1270514f2e407eafc945 ******/
 		%feature("compactdefaultargs") Shell;
 		%feature("autodoc", "
 Parameters
@@ -1388,8 +1388,8 @@ No available documentation.
 ") Shell;
 		TopoDS_Shell Shell(const Standard_Integer num);
 
-		/****************** Solid ******************/
-		/**** md5 signature: eaaa658fc5bdc6be52c2ddaf73d8d00d ****/
+		/****** TransferBRep_ShapeListBinder::Solid ******/
+		/****** md5 signature: eaaa658fc5bdc6be52c2ddaf73d8d00d ******/
 		%feature("compactdefaultargs") Solid;
 		%feature("autodoc", "
 Parameters
@@ -1406,8 +1406,8 @@ No available documentation.
 ") Solid;
 		TopoDS_Solid Solid(const Standard_Integer num);
 
-		/****************** Vertex ******************/
-		/**** md5 signature: f53b5dfd31ebea2646e668d6f9b14e1d ****/
+		/****** TransferBRep_ShapeListBinder::Vertex ******/
+		/****** md5 signature: f53b5dfd31ebea2646e668d6f9b14e1d ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "
 Parameters
@@ -1424,8 +1424,8 @@ No available documentation.
 ") Vertex;
 		TopoDS_Vertex Vertex(const Standard_Integer num);
 
-		/****************** Wire ******************/
-		/**** md5 signature: ea366fc3cbbdc5a77a2dfe378186f7fc ****/
+		/****** TransferBRep_ShapeListBinder::Wire ******/
+		/****** md5 signature: ea366fc3cbbdc5a77a2dfe378186f7fc ******/
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "
 Parameters
@@ -1458,8 +1458,8 @@ No available documentation.
 *********************************/
 class TransferBRep_ShapeMapper : public Transfer_Finder {
 	public:
-		/****************** TransferBRep_ShapeMapper ******************/
-		/**** md5 signature: c3571f808924632b111649c121419b7c ****/
+		/****** TransferBRep_ShapeMapper::TransferBRep_ShapeMapper ******/
+		/****** md5 signature: c3571f808924632b111649c121419b7c ******/
 		%feature("compactdefaultargs") TransferBRep_ShapeMapper;
 		%feature("autodoc", "
 Parameters
@@ -1476,8 +1476,8 @@ Creates a mapper with a value. this value can then not be changed. it is used by
 ") TransferBRep_ShapeMapper;
 		 TransferBRep_ShapeMapper(const TopoDS_Shape & akey);
 
-		/****************** Equates ******************/
-		/**** md5 signature: 2bde7773554342cacb5dfc4ee8d4c0f3 ****/
+		/****** TransferBRep_ShapeMapper::Equates ******/
+		/****** md5 signature: 2bde7773554342cacb5dfc4ee8d4c0f3 ******/
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "
 Parameters
@@ -1494,8 +1494,8 @@ Specific testof equality: defined as false if <other> has not the same true type
 ") Equates;
 		Standard_Boolean Equates(const opencascade::handle<Transfer_Finder> & other);
 
-		/****************** Value ******************/
-		/**** md5 signature: 9e28ce63f808ff9cca4234cb4dd1cbd0 ****/
+		/****** TransferBRep_ShapeMapper::Value ******/
+		/****** md5 signature: 9e28ce63f808ff9cca4234cb4dd1cbd0 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1507,8 +1507,8 @@ Returns the contained value.
 ") Value;
 		const TopoDS_Shape Value();
 
-		/****************** ValueType ******************/
-		/**** md5 signature: 40aa6e907b5cbe34817c19e20e6dde6e ****/
+		/****** TransferBRep_ShapeMapper::ValueType ******/
+		/****** md5 signature: 40aa6e907b5cbe34817c19e20e6dde6e ******/
 		%feature("compactdefaultargs") ValueType;
 		%feature("autodoc", "Return
 -------
@@ -1520,8 +1520,8 @@ Returns the type of the value. by default, returns the dynamictype of <self>, bu
 ") ValueType;
 		virtual opencascade::handle<Standard_Type> ValueType();
 
-		/****************** ValueTypeName ******************/
-		/**** md5 signature: d49d824d6a98cbb182d37bee73d4be07 ****/
+		/****** TransferBRep_ShapeMapper::ValueTypeName ******/
+		/****** md5 signature: d49d824d6a98cbb182d37bee73d4be07 ******/
 		%feature("compactdefaultargs") ValueTypeName;
 		%feature("autodoc", "Return
 -------
@@ -1549,8 +1549,8 @@ Returns the name of the type of the value. default is name of valuetype, unless 
 ****************************************/
 class TransferBRep_TransferResultInfo : public Standard_Transient {
 	public:
-		/****************** TransferBRep_TransferResultInfo ******************/
-		/**** md5 signature: 5bd1437d5d446d705e7e47ecef5d002a ****/
+		/****** TransferBRep_TransferResultInfo::TransferBRep_TransferResultInfo ******/
+		/****** md5 signature: 5bd1437d5d446d705e7e47ecef5d002a ******/
 		%feature("compactdefaultargs") TransferBRep_TransferResultInfo;
 		%feature("autodoc", "Return
 -------
@@ -1562,8 +1562,8 @@ Creates object with all fields nullified.
 ") TransferBRep_TransferResultInfo;
 		 TransferBRep_TransferResultInfo();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TransferBRep_TransferResultInfo::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1695,8 +1695,8 @@ Resets all the fields.
 *********************************/
 class TransferBRep_ShapeBinder : public TransferBRep_BinderOfShape {
 	public:
-		/****************** TransferBRep_ShapeBinder ******************/
-		/**** md5 signature: f2a1ad7d416d197c0c7feca62a391246 ****/
+		/****** TransferBRep_ShapeBinder::TransferBRep_ShapeBinder ******/
+		/****** md5 signature: f2a1ad7d416d197c0c7feca62a391246 ******/
 		%feature("compactdefaultargs") TransferBRep_ShapeBinder;
 		%feature("autodoc", "Return
 -------
@@ -1708,8 +1708,8 @@ Creates an empty shapebinder.
 ") TransferBRep_ShapeBinder;
 		 TransferBRep_ShapeBinder();
 
-		/****************** TransferBRep_ShapeBinder ******************/
-		/**** md5 signature: 866088ebdf7b5fb1a5d84caf583fd813 ****/
+		/****** TransferBRep_ShapeBinder::TransferBRep_ShapeBinder ******/
+		/****** md5 signature: 866088ebdf7b5fb1a5d84caf583fd813 ******/
 		%feature("compactdefaultargs") TransferBRep_ShapeBinder;
 		%feature("autodoc", "
 Parameters
@@ -1726,8 +1726,8 @@ Creates a shapebinder with a result.
 ") TransferBRep_ShapeBinder;
 		 TransferBRep_ShapeBinder(const TopoDS_Shape & res);
 
-		/****************** CompSolid ******************/
-		/**** md5 signature: 2f1538abf8b930e68dc945fc6b8e5827 ****/
+		/****** TransferBRep_ShapeBinder::CompSolid ******/
+		/****** md5 signature: 2f1538abf8b930e68dc945fc6b8e5827 ******/
 		%feature("compactdefaultargs") CompSolid;
 		%feature("autodoc", "Return
 -------
@@ -1739,8 +1739,8 @@ No available documentation.
 ") CompSolid;
 		TopoDS_CompSolid CompSolid();
 
-		/****************** Compound ******************/
-		/**** md5 signature: 874212d5c1b1bb5c4c6e5c365d29670c ****/
+		/****** TransferBRep_ShapeBinder::Compound ******/
+		/****** md5 signature: 874212d5c1b1bb5c4c6e5c365d29670c ******/
 		%feature("compactdefaultargs") Compound;
 		%feature("autodoc", "Return
 -------
@@ -1752,8 +1752,8 @@ No available documentation.
 ") Compound;
 		TopoDS_Compound Compound();
 
-		/****************** Edge ******************/
-		/**** md5 signature: 5fb4bdbeb7451241dd04cd0c90c043ff ****/
+		/****** TransferBRep_ShapeBinder::Edge ******/
+		/****** md5 signature: 5fb4bdbeb7451241dd04cd0c90c043ff ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -1765,8 +1765,8 @@ No available documentation.
 ") Edge;
 		TopoDS_Edge Edge();
 
-		/****************** Face ******************/
-		/**** md5 signature: 64c75db1e9c1285068e9dd474618f74f ****/
+		/****** TransferBRep_ShapeBinder::Face ******/
+		/****** md5 signature: 64c75db1e9c1285068e9dd474618f74f ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "Return
 -------
@@ -1778,8 +1778,8 @@ No available documentation.
 ") Face;
 		TopoDS_Face Face();
 
-		/****************** ShapeType ******************/
-		/**** md5 signature: fdb6bbab82f138b7eb96684b837c482d ****/
+		/****** TransferBRep_ShapeBinder::ShapeType ******/
+		/****** md5 signature: fdb6bbab82f138b7eb96684b837c482d ******/
 		%feature("compactdefaultargs") ShapeType;
 		%feature("autodoc", "Return
 -------
@@ -1791,8 +1791,8 @@ Returns the type of the shape result (under topabs form).
 ") ShapeType;
 		TopAbs_ShapeEnum ShapeType();
 
-		/****************** Shell ******************/
-		/**** md5 signature: 3ea4686086a18491532865f1cfbce9ad ****/
+		/****** TransferBRep_ShapeBinder::Shell ******/
+		/****** md5 signature: 3ea4686086a18491532865f1cfbce9ad ******/
 		%feature("compactdefaultargs") Shell;
 		%feature("autodoc", "Return
 -------
@@ -1804,8 +1804,8 @@ No available documentation.
 ") Shell;
 		TopoDS_Shell Shell();
 
-		/****************** Solid ******************/
-		/**** md5 signature: d3b8301796e7f37ff3cd00563df75b66 ****/
+		/****** TransferBRep_ShapeBinder::Solid ******/
+		/****** md5 signature: d3b8301796e7f37ff3cd00563df75b66 ******/
 		%feature("compactdefaultargs") Solid;
 		%feature("autodoc", "Return
 -------
@@ -1817,8 +1817,8 @@ No available documentation.
 ") Solid;
 		TopoDS_Solid Solid();
 
-		/****************** Vertex ******************/
-		/**** md5 signature: f00980db3d22a7e6d7f5f1300940ccaa ****/
+		/****** TransferBRep_ShapeBinder::Vertex ******/
+		/****** md5 signature: f00980db3d22a7e6d7f5f1300940ccaa ******/
 		%feature("compactdefaultargs") Vertex;
 		%feature("autodoc", "Return
 -------
@@ -1830,8 +1830,8 @@ No available documentation.
 ") Vertex;
 		TopoDS_Vertex Vertex();
 
-		/****************** Wire ******************/
-		/**** md5 signature: 2fe6e5f402158cff91e9020fddff92e6 ****/
+		/****** TransferBRep_ShapeBinder::Wire ******/
+		/****** md5 signature: 2fe6e5f402158cff91e9020fddff92e6 ******/
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "Return
 -------

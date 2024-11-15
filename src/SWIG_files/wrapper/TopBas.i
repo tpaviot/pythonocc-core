@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TOPBASDOCSTRING
 "TopBas module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_topbas.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topbas.html"
 %enddef
 %module (package="OCC.Core", docstring=TOPBASDOCSTRING) TopBas
 
@@ -93,8 +93,8 @@ typedef NCollection_List<TopBas_TestInterference> TopBas_ListOfTestInterference;
 ********************************/
 class TopBas_TestInterference {
 	public:
-		/****************** TopBas_TestInterference ******************/
-		/**** md5 signature: f64fbfc4cc1078a992596a2f293c8e91 ****/
+		/****** TopBas_TestInterference::TopBas_TestInterference ******/
+		/****** md5 signature: f64fbfc4cc1078a992596a2f293c8e91 ******/
 		%feature("compactdefaultargs") TopBas_TestInterference;
 		%feature("autodoc", "Return
 -------
@@ -106,8 +106,8 @@ No available documentation.
 ") TopBas_TestInterference;
 		 TopBas_TestInterference();
 
-		/****************** TopBas_TestInterference ******************/
-		/**** md5 signature: 061045265274175b5f63816b64c27bda ****/
+		/****** TopBas_TestInterference::TopBas_TestInterference ******/
+		/****** md5 signature: 061045265274175b5f63816b64c27bda ******/
 		%feature("compactdefaultargs") TopBas_TestInterference;
 		%feature("autodoc", "
 Parameters
@@ -128,8 +128,8 @@ No available documentation.
 ") TopBas_TestInterference;
 		 TopBas_TestInterference(const Standard_Real & Inters, const Standard_Integer & Bound, const TopAbs_Orientation Orient, const TopAbs_Orientation Trans, const TopAbs_Orientation BTrans);
 
-		/****************** Boundary ******************/
-		/**** md5 signature: ecae0f95113748e5b795787ee692f4c0 ****/
+		/****** TopBas_TestInterference::Boundary ******/
+		/****** md5 signature: ecae0f95113748e5b795787ee692f4c0 ******/
 		%feature("compactdefaultargs") Boundary;
 		%feature("autodoc", "
 Parameters
@@ -146,8 +146,8 @@ No available documentation.
 ") Boundary;
 		void Boundary(const Standard_Integer & B);
 
-		/****************** Boundary ******************/
-		/**** md5 signature: acc72cfdb7b0883700c27aa7017b6785 ****/
+		/****** TopBas_TestInterference::Boundary ******/
+		/****** md5 signature: acc72cfdb7b0883700c27aa7017b6785 ******/
 		%feature("compactdefaultargs") Boundary;
 		%feature("autodoc", "Return
 -------
@@ -159,8 +159,8 @@ No available documentation.
 ") Boundary;
 		const Standard_Integer & Boundary();
 
-		/****************** BoundaryTransition ******************/
-		/**** md5 signature: 91679118cf407fa213ebb9eb07832014 ****/
+		/****** TopBas_TestInterference::BoundaryTransition ******/
+		/****** md5 signature: 91679118cf407fa213ebb9eb07832014 ******/
 		%feature("compactdefaultargs") BoundaryTransition;
 		%feature("autodoc", "
 Parameters
@@ -177,8 +177,8 @@ No available documentation.
 ") BoundaryTransition;
 		void BoundaryTransition(const TopAbs_Orientation BTr);
 
-		/****************** BoundaryTransition ******************/
-		/**** md5 signature: 74f690bd95102dfac559cd0dc3a25347 ****/
+		/****** TopBas_TestInterference::BoundaryTransition ******/
+		/****** md5 signature: 74f690bd95102dfac559cd0dc3a25347 ******/
 		%feature("compactdefaultargs") BoundaryTransition;
 		%feature("autodoc", "Return
 -------
@@ -216,8 +216,8 @@ No available documentation.
             $self->ChangeIntersection()=value;
             }
         };
-		/****************** Intersection ******************/
-		/**** md5 signature: c3dbdbf5d97cf229d568555db8710cff ****/
+		/****** TopBas_TestInterference::Intersection ******/
+		/****** md5 signature: c3dbdbf5d97cf229d568555db8710cff ******/
 		%feature("compactdefaultargs") Intersection;
 		%feature("autodoc", "
 Parameters
@@ -234,8 +234,8 @@ No available documentation.
 ") Intersection;
 		void Intersection(const Standard_Real & I);
 
-		/****************** Intersection ******************/
-		/**** md5 signature: 7c98d12ea59d47ac6c13b08665a38692 ****/
+		/****** TopBas_TestInterference::Intersection ******/
+		/****** md5 signature: 7c98d12ea59d47ac6c13b08665a38692 ******/
 		%feature("compactdefaultargs") Intersection;
 		%feature("autodoc", "Return
 -------
@@ -247,8 +247,8 @@ No available documentation.
 ") Intersection;
 		const Standard_Real & Intersection();
 
-		/****************** Orientation ******************/
-		/**** md5 signature: 21772d27fe13757c215d17da49a64c59 ****/
+		/****** TopBas_TestInterference::Orientation ******/
+		/****** md5 signature: 21772d27fe13757c215d17da49a64c59 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "
 Parameters
@@ -265,8 +265,8 @@ No available documentation.
 ") Orientation;
 		void Orientation(const TopAbs_Orientation O);
 
-		/****************** Orientation ******************/
-		/**** md5 signature: 328242fe19b1f80489d8169681ebc029 ****/
+		/****** TopBas_TestInterference::Orientation ******/
+		/****** md5 signature: 328242fe19b1f80489d8169681ebc029 ******/
 		%feature("compactdefaultargs") Orientation;
 		%feature("autodoc", "Return
 -------
@@ -278,8 +278,8 @@ No available documentation.
 ") Orientation;
 		TopAbs_Orientation Orientation();
 
-		/****************** Transition ******************/
-		/**** md5 signature: bd64fa200b58d8f275e2f343a85da4ac ****/
+		/****** TopBas_TestInterference::Transition ******/
+		/****** md5 signature: bd64fa200b58d8f275e2f343a85da4ac ******/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "
 Parameters
@@ -296,8 +296,8 @@ No available documentation.
 ") Transition;
 		void Transition(const TopAbs_Orientation Tr);
 
-		/****************** Transition ******************/
-		/**** md5 signature: 054591dc4fd0ee1810f89fdf4fe89b33 ****/
+		/****** TopBas_TestInterference::Transition ******/
+		/****** md5 signature: 054591dc4fd0ee1810f89fdf4fe89b33 ******/
 		%feature("compactdefaultargs") Transition;
 		%feature("autodoc", "Return
 -------

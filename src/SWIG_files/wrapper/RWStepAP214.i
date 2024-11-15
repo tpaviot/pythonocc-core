@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWSTEPAP214DOCSTRING
 "RWStepAP214 module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_rwstepap214.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwstepap214.html"
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPAP214DOCSTRING) RWStepAP214
 
@@ -101,8 +101,8 @@ from OCC.Core.Exception import *
 %rename(rwstepap214) RWStepAP214;
 class RWStepAP214 {
 	public:
-		/****************** Init ******************/
-		/**** md5 signature: 342fdccc4643f67c269591c4b6447108 ****/
+		/****** RWStepAP214::Init ******/
+		/****** md5 signature: 342fdccc4643f67c269591c4b6447108 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -128,8 +128,8 @@ Enforced the initialisation of the libraries.
 **********************************/
 class RWStepAP214_GeneralModule : public StepData_GeneralModule {
 	public:
-		/****************** RWStepAP214_GeneralModule ******************/
-		/**** md5 signature: be30e7778bb7ef6c99f58c2328cc6c76 ****/
+		/****** RWStepAP214_GeneralModule::RWStepAP214_GeneralModule ******/
+		/****** md5 signature: be30e7778bb7ef6c99f58c2328cc6c76 ******/
 		%feature("compactdefaultargs") RWStepAP214_GeneralModule;
 		%feature("autodoc", "Return
 -------
@@ -141,8 +141,8 @@ Creates a generalmodule.
 ") RWStepAP214_GeneralModule;
 		 RWStepAP214_GeneralModule();
 
-		/****************** CategoryNumber ******************/
-		/**** md5 signature: d812efe400e2084fa824301d3c147806 ****/
+		/****** RWStepAP214_GeneralModule::CategoryNumber ******/
+		/****** md5 signature: d812efe400e2084fa824301d3c147806 ******/
 		%feature("compactdefaultargs") CategoryNumber;
 		%feature("autodoc", "
 Parameters
@@ -161,8 +161,8 @@ No available documentation.
 ") CategoryNumber;
 		virtual Standard_Integer CategoryNumber(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares);
 
-		/****************** CheckCase ******************/
-		/**** md5 signature: d232fb3d35ada68a901b85a0af289c46 ****/
+		/****** RWStepAP214_GeneralModule::CheckCase ******/
+		/****** md5 signature: d232fb3d35ada68a901b85a0af289c46 ******/
 		%feature("compactdefaultargs") CheckCase;
 		%feature("autodoc", "
 Parameters
@@ -182,8 +182,8 @@ Specific checking of an entity <ent>.
 ") CheckCase;
 		void CheckCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** CopyCase ******************/
-		/**** md5 signature: 13c34a46cee20a3c1fc929ba0a39372a ****/
+		/****** RWStepAP214_GeneralModule::CopyCase ******/
+		/****** md5 signature: 13c34a46cee20a3c1fc929ba0a39372a ******/
 		%feature("compactdefaultargs") CopyCase;
 		%feature("autodoc", "
 Parameters
@@ -203,8 +203,8 @@ Specific copy ('deep') from <entfrom> to <entto> (same type) by using a copytool
 ") CopyCase;
 		void CopyCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
-		/****************** FillSharedCase ******************/
-		/**** md5 signature: 7bbac4d621ea60d6990c803dbf4b2897 ****/
+		/****** RWStepAP214_GeneralModule::FillSharedCase ******/
+		/****** md5 signature: 7bbac4d621ea60d6990c803dbf4b2897 ******/
 		%feature("compactdefaultargs") FillSharedCase;
 		%feature("autodoc", "
 Parameters
@@ -223,8 +223,8 @@ Specific filling of the list of entities shared by an entity <ent>, according to
 ") FillSharedCase;
 		void FillSharedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
-		/****************** Name ******************/
-		/**** md5 signature: ac91548e6672c7a25f89869ddd43f80a ****/
+		/****** RWStepAP214_GeneralModule::Name ******/
+		/****** md5 signature: ac91548e6672c7a25f89869ddd43f80a ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
@@ -243,8 +243,8 @@ Returns the name of a step entity according to its type.
 ") Name;
 		virtual opencascade::handle<TCollection_HAsciiString> Name(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares);
 
-		/****************** NewVoid ******************/
-		/**** md5 signature: 4fde8c90ab404df0bdf27545a8f246ee ****/
+		/****** RWStepAP214_GeneralModule::NewVoid ******/
+		/****** md5 signature: 4fde8c90ab404df0bdf27545a8f246ee ******/
 		%feature("compactdefaultargs") NewVoid;
 		%feature("autodoc", "
 Parameters
@@ -278,8 +278,8 @@ No available documentation.
 ************************************************/
 class RWStepAP214_RWAppliedApprovalAssignment {
 	public:
-		/****************** RWStepAP214_RWAppliedApprovalAssignment ******************/
-		/**** md5 signature: dfa23c9609cc0970b6a6c7415d56cb87 ****/
+		/****** RWStepAP214_RWAppliedApprovalAssignment::RWStepAP214_RWAppliedApprovalAssignment ******/
+		/****** md5 signature: dfa23c9609cc0970b6a6c7415d56cb87 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAppliedApprovalAssignment;
 		%feature("autodoc", "Return
 -------
@@ -291,8 +291,8 @@ No available documentation.
 ") RWStepAP214_RWAppliedApprovalAssignment;
 		 RWStepAP214_RWAppliedApprovalAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 05173eda933c80b8ae37c4b25e7fde2e ****/
+		/****** RWStepAP214_RWAppliedApprovalAssignment::ReadStep ******/
+		/****** md5 signature: 05173eda933c80b8ae37c4b25e7fde2e ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -312,8 +312,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AppliedApprovalAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 179c1ac3f19560d70821e9e4c549fb03 ****/
+		/****** RWStepAP214_RWAppliedApprovalAssignment::Share ******/
+		/****** md5 signature: 179c1ac3f19560d70821e9e4c549fb03 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -331,8 +331,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AppliedApprovalAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 69eada9b7680170c4353e3c7c8c807f0 ****/
+		/****** RWStepAP214_RWAppliedApprovalAssignment::WriteStep ******/
+		/****** md5 signature: 69eada9b7680170c4353e3c7c8c807f0 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -364,8 +364,8 @@ No available documentation.
 ***************************************************/
 class RWStepAP214_RWAppliedDateAndTimeAssignment {
 	public:
-		/****************** RWStepAP214_RWAppliedDateAndTimeAssignment ******************/
-		/**** md5 signature: 6cf75f5ba64a89e180f3315bdbb5232f ****/
+		/****** RWStepAP214_RWAppliedDateAndTimeAssignment::RWStepAP214_RWAppliedDateAndTimeAssignment ******/
+		/****** md5 signature: 6cf75f5ba64a89e180f3315bdbb5232f ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAppliedDateAndTimeAssignment;
 		%feature("autodoc", "Return
 -------
@@ -377,8 +377,8 @@ No available documentation.
 ") RWStepAP214_RWAppliedDateAndTimeAssignment;
 		 RWStepAP214_RWAppliedDateAndTimeAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: cda692f905298123caf692f3986caece ****/
+		/****** RWStepAP214_RWAppliedDateAndTimeAssignment::ReadStep ******/
+		/****** md5 signature: cda692f905298123caf692f3986caece ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -398,8 +398,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AppliedDateAndTimeAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 6edf563eb2fa5d23a2d199c56d54d632 ****/
+		/****** RWStepAP214_RWAppliedDateAndTimeAssignment::Share ******/
+		/****** md5 signature: 6edf563eb2fa5d23a2d199c56d54d632 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -417,8 +417,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AppliedDateAndTimeAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 3b24e8c81bfd58750e8eda0b4407ca26 ****/
+		/****** RWStepAP214_RWAppliedDateAndTimeAssignment::WriteStep ******/
+		/****** md5 signature: 3b24e8c81bfd58750e8eda0b4407ca26 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -450,8 +450,8 @@ No available documentation.
 ********************************************/
 class RWStepAP214_RWAppliedDateAssignment {
 	public:
-		/****************** RWStepAP214_RWAppliedDateAssignment ******************/
-		/**** md5 signature: c1f38822b866384beaf7dc664e361561 ****/
+		/****** RWStepAP214_RWAppliedDateAssignment::RWStepAP214_RWAppliedDateAssignment ******/
+		/****** md5 signature: c1f38822b866384beaf7dc664e361561 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAppliedDateAssignment;
 		%feature("autodoc", "Return
 -------
@@ -463,8 +463,8 @@ No available documentation.
 ") RWStepAP214_RWAppliedDateAssignment;
 		 RWStepAP214_RWAppliedDateAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 622c7063035231e0146d208cc194a15a ****/
+		/****** RWStepAP214_RWAppliedDateAssignment::ReadStep ******/
+		/****** md5 signature: 622c7063035231e0146d208cc194a15a ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -484,8 +484,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AppliedDateAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 3762bc848971de6eb18cd1115b2569c5 ****/
+		/****** RWStepAP214_RWAppliedDateAssignment::Share ******/
+		/****** md5 signature: 3762bc848971de6eb18cd1115b2569c5 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -503,8 +503,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AppliedDateAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: a4f54fab52653a435676f6a94224505f ****/
+		/****** RWStepAP214_RWAppliedDateAssignment::WriteStep ******/
+		/****** md5 signature: a4f54fab52653a435676f6a94224505f ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -536,8 +536,8 @@ No available documentation.
 ***********************************************/
 class RWStepAP214_RWAppliedDocumentReference {
 	public:
-		/****************** RWStepAP214_RWAppliedDocumentReference ******************/
-		/**** md5 signature: 01e49f04b481e8691475b7bbc9c74abb ****/
+		/****** RWStepAP214_RWAppliedDocumentReference::RWStepAP214_RWAppliedDocumentReference ******/
+		/****** md5 signature: 01e49f04b481e8691475b7bbc9c74abb ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAppliedDocumentReference;
 		%feature("autodoc", "Return
 -------
@@ -549,8 +549,8 @@ No available documentation.
 ") RWStepAP214_RWAppliedDocumentReference;
 		 RWStepAP214_RWAppliedDocumentReference();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 3d64f49b295e54fd325badee1d4621ce ****/
+		/****** RWStepAP214_RWAppliedDocumentReference::ReadStep ******/
+		/****** md5 signature: 3d64f49b295e54fd325badee1d4621ce ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -570,8 +570,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AppliedDocumentReference> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: c71c8738728584d79ba0e0220cec2751 ****/
+		/****** RWStepAP214_RWAppliedDocumentReference::Share ******/
+		/****** md5 signature: c71c8738728584d79ba0e0220cec2751 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -589,8 +589,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AppliedDocumentReference> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 560f8b4a96bc7f61b96bb23f89e1be47 ****/
+		/****** RWStepAP214_RWAppliedDocumentReference::WriteStep ******/
+		/****** md5 signature: 560f8b4a96bc7f61b96bb23f89e1be47 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -622,8 +622,8 @@ No available documentation.
 **************************************************************/
 class RWStepAP214_RWAppliedExternalIdentificationAssignment {
 	public:
-		/****************** RWStepAP214_RWAppliedExternalIdentificationAssignment ******************/
-		/**** md5 signature: c1974c6c1501e9ce6010f4eadde2d847 ****/
+		/****** RWStepAP214_RWAppliedExternalIdentificationAssignment::RWStepAP214_RWAppliedExternalIdentificationAssignment ******/
+		/****** md5 signature: c1974c6c1501e9ce6010f4eadde2d847 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAppliedExternalIdentificationAssignment;
 		%feature("autodoc", "Return
 -------
@@ -635,8 +635,8 @@ Empty constructor.
 ") RWStepAP214_RWAppliedExternalIdentificationAssignment;
 		 RWStepAP214_RWAppliedExternalIdentificationAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 89ba78d23090a63278906b1bb4ee9019 ****/
+		/****** RWStepAP214_RWAppliedExternalIdentificationAssignment::ReadStep ******/
+		/****** md5 signature: 89ba78d23090a63278906b1bb4ee9019 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -656,8 +656,8 @@ Reads appliedexternalidentificationassignment.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AppliedExternalIdentificationAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 2b46bbb661ac7409b1e7d948ca0131d0 ****/
+		/****** RWStepAP214_RWAppliedExternalIdentificationAssignment::Share ******/
+		/****** md5 signature: 2b46bbb661ac7409b1e7d948ca0131d0 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -675,8 +675,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AppliedExternalIdentificationAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 946bc1fb25d2e884a26509daae39e2a3 ****/
+		/****** RWStepAP214_RWAppliedExternalIdentificationAssignment::WriteStep ******/
+		/****** md5 signature: 946bc1fb25d2e884a26509daae39e2a3 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -708,8 +708,8 @@ Writes appliedexternalidentificationassignment.
 *********************************************/
 class RWStepAP214_RWAppliedGroupAssignment {
 	public:
-		/****************** RWStepAP214_RWAppliedGroupAssignment ******************/
-		/**** md5 signature: dd69e245701198124d38cd8716e5be3e ****/
+		/****** RWStepAP214_RWAppliedGroupAssignment::RWStepAP214_RWAppliedGroupAssignment ******/
+		/****** md5 signature: dd69e245701198124d38cd8716e5be3e ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAppliedGroupAssignment;
 		%feature("autodoc", "Return
 -------
@@ -721,8 +721,8 @@ Empty constructor.
 ") RWStepAP214_RWAppliedGroupAssignment;
 		 RWStepAP214_RWAppliedGroupAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 019a2af0a3680cc671436ab25b986d63 ****/
+		/****** RWStepAP214_RWAppliedGroupAssignment::ReadStep ******/
+		/****** md5 signature: 019a2af0a3680cc671436ab25b986d63 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -742,8 +742,8 @@ Reads appliedgroupassignment.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AppliedGroupAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ffe517b91088ad2cf83065ce13a9ab9e ****/
+		/****** RWStepAP214_RWAppliedGroupAssignment::Share ******/
+		/****** md5 signature: ffe517b91088ad2cf83065ce13a9ab9e ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -761,8 +761,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AppliedGroupAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 1c9107b75eabc73d3e5f8e64b167962e ****/
+		/****** RWStepAP214_RWAppliedGroupAssignment::WriteStep ******/
+		/****** md5 signature: 1c9107b75eabc73d3e5f8e64b167962e ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -794,8 +794,8 @@ Writes appliedgroupassignment.
 ****************************************************/
 class RWStepAP214_RWAppliedOrganizationAssignment {
 	public:
-		/****************** RWStepAP214_RWAppliedOrganizationAssignment ******************/
-		/**** md5 signature: f120be5c9720a886d5ad2d6d19044b8d ****/
+		/****** RWStepAP214_RWAppliedOrganizationAssignment::RWStepAP214_RWAppliedOrganizationAssignment ******/
+		/****** md5 signature: f120be5c9720a886d5ad2d6d19044b8d ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAppliedOrganizationAssignment;
 		%feature("autodoc", "Return
 -------
@@ -807,8 +807,8 @@ No available documentation.
 ") RWStepAP214_RWAppliedOrganizationAssignment;
 		 RWStepAP214_RWAppliedOrganizationAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 1a09976f1e9ddaebeeb645d12087a710 ****/
+		/****** RWStepAP214_RWAppliedOrganizationAssignment::ReadStep ******/
+		/****** md5 signature: 1a09976f1e9ddaebeeb645d12087a710 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -828,8 +828,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AppliedOrganizationAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 811c93276e4e8580efbe930b30e2593b ****/
+		/****** RWStepAP214_RWAppliedOrganizationAssignment::Share ******/
+		/****** md5 signature: 811c93276e4e8580efbe930b30e2593b ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -847,8 +847,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AppliedOrganizationAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 7904dceaea6ff8046d17fb86a5195348 ****/
+		/****** RWStepAP214_RWAppliedOrganizationAssignment::WriteStep ******/
+		/****** md5 signature: 7904dceaea6ff8046d17fb86a5195348 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -880,8 +880,8 @@ No available documentation.
 *************************************************************/
 class RWStepAP214_RWAppliedPersonAndOrganizationAssignment {
 	public:
-		/****************** RWStepAP214_RWAppliedPersonAndOrganizationAssignment ******************/
-		/**** md5 signature: 844c1b746514c4ed807824faf909e792 ****/
+		/****** RWStepAP214_RWAppliedPersonAndOrganizationAssignment::RWStepAP214_RWAppliedPersonAndOrganizationAssignment ******/
+		/****** md5 signature: 844c1b746514c4ed807824faf909e792 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAppliedPersonAndOrganizationAssignment;
 		%feature("autodoc", "Return
 -------
@@ -893,8 +893,8 @@ No available documentation.
 ") RWStepAP214_RWAppliedPersonAndOrganizationAssignment;
 		 RWStepAP214_RWAppliedPersonAndOrganizationAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 14828d74090bf94cd96ffff585db7bda ****/
+		/****** RWStepAP214_RWAppliedPersonAndOrganizationAssignment::ReadStep ******/
+		/****** md5 signature: 14828d74090bf94cd96ffff585db7bda ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -914,8 +914,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 62be5b1662483847377a5f9260b43549 ****/
+		/****** RWStepAP214_RWAppliedPersonAndOrganizationAssignment::Share ******/
+		/****** md5 signature: 62be5b1662483847377a5f9260b43549 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -933,8 +933,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: dcdc6e37dc4305340f39ec1831ae2110 ****/
+		/****** RWStepAP214_RWAppliedPersonAndOrganizationAssignment::WriteStep ******/
+		/****** md5 signature: dcdc6e37dc4305340f39ec1831ae2110 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -966,8 +966,8 @@ No available documentation.
 *******************************************/
 class RWStepAP214_RWAppliedPresentedItem {
 	public:
-		/****************** RWStepAP214_RWAppliedPresentedItem ******************/
-		/**** md5 signature: be9ff732c153a073c0d421108dcc05b4 ****/
+		/****** RWStepAP214_RWAppliedPresentedItem::RWStepAP214_RWAppliedPresentedItem ******/
+		/****** md5 signature: be9ff732c153a073c0d421108dcc05b4 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAppliedPresentedItem;
 		%feature("autodoc", "Return
 -------
@@ -979,8 +979,8 @@ No available documentation.
 ") RWStepAP214_RWAppliedPresentedItem;
 		 RWStepAP214_RWAppliedPresentedItem();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: d1d78e7f31871c7af9b2a3344b476d49 ****/
+		/****** RWStepAP214_RWAppliedPresentedItem::ReadStep ******/
+		/****** md5 signature: d1d78e7f31871c7af9b2a3344b476d49 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1000,8 +1000,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AppliedPresentedItem> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 1c76f922f7394ce7bad625159dfce202 ****/
+		/****** RWStepAP214_RWAppliedPresentedItem::Share ******/
+		/****** md5 signature: 1c76f922f7394ce7bad625159dfce202 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1019,8 +1019,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AppliedPresentedItem> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: dc352f6acedabd62080275e3d2c65b01 ****/
+		/****** RWStepAP214_RWAppliedPresentedItem::WriteStep ******/
+		/****** md5 signature: dc352f6acedabd62080275e3d2c65b01 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1052,8 +1052,8 @@ No available documentation.
 **************************************************************/
 class RWStepAP214_RWAppliedSecurityClassificationAssignment {
 	public:
-		/****************** RWStepAP214_RWAppliedSecurityClassificationAssignment ******************/
-		/**** md5 signature: f08ae198a50d92dcac33a997e19a284e ****/
+		/****** RWStepAP214_RWAppliedSecurityClassificationAssignment::RWStepAP214_RWAppliedSecurityClassificationAssignment ******/
+		/****** md5 signature: f08ae198a50d92dcac33a997e19a284e ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAppliedSecurityClassificationAssignment;
 		%feature("autodoc", "Return
 -------
@@ -1065,8 +1065,8 @@ No available documentation.
 ") RWStepAP214_RWAppliedSecurityClassificationAssignment;
 		 RWStepAP214_RWAppliedSecurityClassificationAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 5d81dd4ae1138144c73c6e3cc58ae896 ****/
+		/****** RWStepAP214_RWAppliedSecurityClassificationAssignment::ReadStep ******/
+		/****** md5 signature: 5d81dd4ae1138144c73c6e3cc58ae896 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1086,8 +1086,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 119fbb0981355b64bc740be6359a7a77 ****/
+		/****** RWStepAP214_RWAppliedSecurityClassificationAssignment::Share ******/
+		/****** md5 signature: 119fbb0981355b64bc740be6359a7a77 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1105,8 +1105,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: cee1a81852195c544741fc5dd1caaeca ****/
+		/****** RWStepAP214_RWAppliedSecurityClassificationAssignment::WriteStep ******/
+		/****** md5 signature: cee1a81852195c544741fc5dd1caaeca ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1138,8 +1138,8 @@ No available documentation.
 ************************************************************/
 class RWStepAP214_RWAutoDesignActualDateAndTimeAssignment {
 	public:
-		/****************** RWStepAP214_RWAutoDesignActualDateAndTimeAssignment ******************/
-		/**** md5 signature: 57f5e900e1c368dfc774b22bcd06b8b2 ****/
+		/****** RWStepAP214_RWAutoDesignActualDateAndTimeAssignment::RWStepAP214_RWAutoDesignActualDateAndTimeAssignment ******/
+		/****** md5 signature: 57f5e900e1c368dfc774b22bcd06b8b2 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignActualDateAndTimeAssignment;
 		%feature("autodoc", "Return
 -------
@@ -1151,8 +1151,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignActualDateAndTimeAssignment;
 		 RWStepAP214_RWAutoDesignActualDateAndTimeAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 592fb47e475f3190077c4f182ef9c179 ****/
+		/****** RWStepAP214_RWAutoDesignActualDateAndTimeAssignment::ReadStep ******/
+		/****** md5 signature: 592fb47e475f3190077c4f182ef9c179 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1172,8 +1172,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignActualDateAndTimeAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: e827bcc295e557dd6500b35da8ecb223 ****/
+		/****** RWStepAP214_RWAutoDesignActualDateAndTimeAssignment::Share ******/
+		/****** md5 signature: e827bcc295e557dd6500b35da8ecb223 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1191,8 +1191,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignActualDateAndTimeAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: e8d410892a55097db5054f3144d76385 ****/
+		/****** RWStepAP214_RWAutoDesignActualDateAndTimeAssignment::WriteStep ******/
+		/****** md5 signature: e8d410892a55097db5054f3144d76385 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1224,8 +1224,8 @@ No available documentation.
 *****************************************************/
 class RWStepAP214_RWAutoDesignActualDateAssignment {
 	public:
-		/****************** RWStepAP214_RWAutoDesignActualDateAssignment ******************/
-		/**** md5 signature: ea58130dadad70abed4b3c63838cd901 ****/
+		/****** RWStepAP214_RWAutoDesignActualDateAssignment::RWStepAP214_RWAutoDesignActualDateAssignment ******/
+		/****** md5 signature: ea58130dadad70abed4b3c63838cd901 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignActualDateAssignment;
 		%feature("autodoc", "Return
 -------
@@ -1237,8 +1237,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignActualDateAssignment;
 		 RWStepAP214_RWAutoDesignActualDateAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 97c9967ed64a1e3c5247782163298554 ****/
+		/****** RWStepAP214_RWAutoDesignActualDateAssignment::ReadStep ******/
+		/****** md5 signature: 97c9967ed64a1e3c5247782163298554 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1258,8 +1258,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignActualDateAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 2060caa3755c2d3198b6d581c3916bfd ****/
+		/****** RWStepAP214_RWAutoDesignActualDateAssignment::Share ******/
+		/****** md5 signature: 2060caa3755c2d3198b6d581c3916bfd ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1277,8 +1277,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignActualDateAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 5e531c9b64a451c4fed17cad24cc8e09 ****/
+		/****** RWStepAP214_RWAutoDesignActualDateAssignment::WriteStep ******/
+		/****** md5 signature: 5e531c9b64a451c4fed17cad24cc8e09 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1310,8 +1310,8 @@ No available documentation.
 ***************************************************/
 class RWStepAP214_RWAutoDesignApprovalAssignment {
 	public:
-		/****************** RWStepAP214_RWAutoDesignApprovalAssignment ******************/
-		/**** md5 signature: 09956cb3b9ebc0cffc92ca1db85fc9d4 ****/
+		/****** RWStepAP214_RWAutoDesignApprovalAssignment::RWStepAP214_RWAutoDesignApprovalAssignment ******/
+		/****** md5 signature: 09956cb3b9ebc0cffc92ca1db85fc9d4 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignApprovalAssignment;
 		%feature("autodoc", "Return
 -------
@@ -1323,8 +1323,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignApprovalAssignment;
 		 RWStepAP214_RWAutoDesignApprovalAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: bee103db1b4a12ef5c5bbf32dfa2159e ****/
+		/****** RWStepAP214_RWAutoDesignApprovalAssignment::ReadStep ******/
+		/****** md5 signature: bee103db1b4a12ef5c5bbf32dfa2159e ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1344,8 +1344,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignApprovalAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 84681901c3ecb0955c5ff0d584cabf46 ****/
+		/****** RWStepAP214_RWAutoDesignApprovalAssignment::Share ******/
+		/****** md5 signature: 84681901c3ecb0955c5ff0d584cabf46 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1363,8 +1363,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignApprovalAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 72959b971adbe2135fbedade72787867 ****/
+		/****** RWStepAP214_RWAutoDesignApprovalAssignment::WriteStep ******/
+		/****** md5 signature: 72959b971adbe2135fbedade72787867 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1396,8 +1396,8 @@ No available documentation.
 ********************************************************/
 class RWStepAP214_RWAutoDesignDateAndPersonAssignment {
 	public:
-		/****************** RWStepAP214_RWAutoDesignDateAndPersonAssignment ******************/
-		/**** md5 signature: 4c6217d953dbd726c511b8949f2aa68b ****/
+		/****** RWStepAP214_RWAutoDesignDateAndPersonAssignment::RWStepAP214_RWAutoDesignDateAndPersonAssignment ******/
+		/****** md5 signature: 4c6217d953dbd726c511b8949f2aa68b ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignDateAndPersonAssignment;
 		%feature("autodoc", "Return
 -------
@@ -1409,8 +1409,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignDateAndPersonAssignment;
 		 RWStepAP214_RWAutoDesignDateAndPersonAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 9beb60f4d8a41bb391f8846d49df3998 ****/
+		/****** RWStepAP214_RWAutoDesignDateAndPersonAssignment::ReadStep ******/
+		/****** md5 signature: 9beb60f4d8a41bb391f8846d49df3998 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1430,8 +1430,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 7f03c06eaf054ca64030315802b6ef76 ****/
+		/****** RWStepAP214_RWAutoDesignDateAndPersonAssignment::Share ******/
+		/****** md5 signature: 7f03c06eaf054ca64030315802b6ef76 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1449,8 +1449,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: debf4d3e092e953f77c4e1a808ade598 ****/
+		/****** RWStepAP214_RWAutoDesignDateAndPersonAssignment::WriteStep ******/
+		/****** md5 signature: debf4d3e092e953f77c4e1a808ade598 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1482,8 +1482,8 @@ No available documentation.
 **************************************************/
 class RWStepAP214_RWAutoDesignDocumentReference {
 	public:
-		/****************** RWStepAP214_RWAutoDesignDocumentReference ******************/
-		/**** md5 signature: 5e8fbae47ab0982f63b2c1ea8619da80 ****/
+		/****** RWStepAP214_RWAutoDesignDocumentReference::RWStepAP214_RWAutoDesignDocumentReference ******/
+		/****** md5 signature: 5e8fbae47ab0982f63b2c1ea8619da80 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignDocumentReference;
 		%feature("autodoc", "Return
 -------
@@ -1495,8 +1495,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignDocumentReference;
 		 RWStepAP214_RWAutoDesignDocumentReference();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 18014342dd5535e7f4124ae70ef4dc49 ****/
+		/****** RWStepAP214_RWAutoDesignDocumentReference::ReadStep ******/
+		/****** md5 signature: 18014342dd5535e7f4124ae70ef4dc49 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1516,8 +1516,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignDocumentReference> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 7e71b1e490c72acd42e484a1e330f042 ****/
+		/****** RWStepAP214_RWAutoDesignDocumentReference::Share ******/
+		/****** md5 signature: 7e71b1e490c72acd42e484a1e330f042 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1535,8 +1535,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignDocumentReference> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: d327223c563329c8feeb9b17d2189a17 ****/
+		/****** RWStepAP214_RWAutoDesignDocumentReference::WriteStep ******/
+		/****** md5 signature: d327223c563329c8feeb9b17d2189a17 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1568,8 +1568,8 @@ No available documentation.
 ************************************************/
 class RWStepAP214_RWAutoDesignGroupAssignment {
 	public:
-		/****************** RWStepAP214_RWAutoDesignGroupAssignment ******************/
-		/**** md5 signature: 8c889f606a86022ac51577ca7e473a8c ****/
+		/****** RWStepAP214_RWAutoDesignGroupAssignment::RWStepAP214_RWAutoDesignGroupAssignment ******/
+		/****** md5 signature: 8c889f606a86022ac51577ca7e473a8c ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignGroupAssignment;
 		%feature("autodoc", "Return
 -------
@@ -1581,8 +1581,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignGroupAssignment;
 		 RWStepAP214_RWAutoDesignGroupAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 9bbc994b4edba2e8b17e67aa6adcdac2 ****/
+		/****** RWStepAP214_RWAutoDesignGroupAssignment::ReadStep ******/
+		/****** md5 signature: 9bbc994b4edba2e8b17e67aa6adcdac2 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1602,8 +1602,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignGroupAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 3e15f6d5760f9dba5c2ccf6e8e0ed5ca ****/
+		/****** RWStepAP214_RWAutoDesignGroupAssignment::Share ******/
+		/****** md5 signature: 3e15f6d5760f9dba5c2ccf6e8e0ed5ca ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1621,8 +1621,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignGroupAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 3d8b71cd253c3fbe0454dcc70299629b ****/
+		/****** RWStepAP214_RWAutoDesignGroupAssignment::WriteStep ******/
+		/****** md5 signature: 3d8b71cd253c3fbe0454dcc70299629b ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1654,8 +1654,8 @@ No available documentation.
 *************************************************************/
 class RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment {
 	public:
-		/****************** RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment ******************/
-		/**** md5 signature: 315541ec4a4395051329c2925f8995d6 ****/
+		/****** RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment::RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment ******/
+		/****** md5 signature: 315541ec4a4395051329c2925f8995d6 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment;
 		%feature("autodoc", "Return
 -------
@@ -1667,8 +1667,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment;
 		 RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 28cb1e20d385f4b501e0fb8705668377 ****/
+		/****** RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment::ReadStep ******/
+		/****** md5 signature: 28cb1e20d385f4b501e0fb8705668377 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1688,8 +1688,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignNominalDateAndTimeAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 6423495bd50fddbcb07c4697862332a7 ****/
+		/****** RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment::Share ******/
+		/****** md5 signature: 6423495bd50fddbcb07c4697862332a7 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1707,8 +1707,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignNominalDateAndTimeAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 296019e0987122f08fa63af1f36f9f62 ****/
+		/****** RWStepAP214_RWAutoDesignNominalDateAndTimeAssignment::WriteStep ******/
+		/****** md5 signature: 296019e0987122f08fa63af1f36f9f62 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1740,8 +1740,8 @@ No available documentation.
 ******************************************************/
 class RWStepAP214_RWAutoDesignNominalDateAssignment {
 	public:
-		/****************** RWStepAP214_RWAutoDesignNominalDateAssignment ******************/
-		/**** md5 signature: 2e256cae77f75a751d6ea3139e139c44 ****/
+		/****** RWStepAP214_RWAutoDesignNominalDateAssignment::RWStepAP214_RWAutoDesignNominalDateAssignment ******/
+		/****** md5 signature: 2e256cae77f75a751d6ea3139e139c44 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignNominalDateAssignment;
 		%feature("autodoc", "Return
 -------
@@ -1753,8 +1753,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignNominalDateAssignment;
 		 RWStepAP214_RWAutoDesignNominalDateAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 80d3bb59e99f94f6d54224b71b20c7e0 ****/
+		/****** RWStepAP214_RWAutoDesignNominalDateAssignment::ReadStep ******/
+		/****** md5 signature: 80d3bb59e99f94f6d54224b71b20c7e0 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1774,8 +1774,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignNominalDateAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ea1aa6b14b910067972be177bbace1c9 ****/
+		/****** RWStepAP214_RWAutoDesignNominalDateAssignment::Share ******/
+		/****** md5 signature: ea1aa6b14b910067972be177bbace1c9 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1793,8 +1793,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignNominalDateAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 245f305559c4300e6c1d1770913585b0 ****/
+		/****** RWStepAP214_RWAutoDesignNominalDateAssignment::WriteStep ******/
+		/****** md5 signature: 245f305559c4300e6c1d1770913585b0 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1826,8 +1826,8 @@ No available documentation.
 *******************************************************/
 class RWStepAP214_RWAutoDesignOrganizationAssignment {
 	public:
-		/****************** RWStepAP214_RWAutoDesignOrganizationAssignment ******************/
-		/**** md5 signature: 5b47dac8609ee4367cbce2aaffe7947c ****/
+		/****** RWStepAP214_RWAutoDesignOrganizationAssignment::RWStepAP214_RWAutoDesignOrganizationAssignment ******/
+		/****** md5 signature: 5b47dac8609ee4367cbce2aaffe7947c ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignOrganizationAssignment;
 		%feature("autodoc", "Return
 -------
@@ -1839,8 +1839,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignOrganizationAssignment;
 		 RWStepAP214_RWAutoDesignOrganizationAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 6e5438421c3f0856265b133aba78466e ****/
+		/****** RWStepAP214_RWAutoDesignOrganizationAssignment::ReadStep ******/
+		/****** md5 signature: 6e5438421c3f0856265b133aba78466e ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1860,8 +1860,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignOrganizationAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 3e9e52823d60cc287eec01afec1a49bd ****/
+		/****** RWStepAP214_RWAutoDesignOrganizationAssignment::Share ******/
+		/****** md5 signature: 3e9e52823d60cc287eec01afec1a49bd ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1879,8 +1879,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignOrganizationAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 15e3084aa17646626bea30be546a22ac ****/
+		/****** RWStepAP214_RWAutoDesignOrganizationAssignment::WriteStep ******/
+		/****** md5 signature: 15e3084aa17646626bea30be546a22ac ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1912,8 +1912,8 @@ No available documentation.
 ****************************************************************/
 class RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment {
 	public:
-		/****************** RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment ******************/
-		/**** md5 signature: ae6e000b0cbaa3ac6e17af62849a2147 ****/
+		/****** RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment::RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment ******/
+		/****** md5 signature: ae6e000b0cbaa3ac6e17af62849a2147 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment;
 		%feature("autodoc", "Return
 -------
@@ -1925,8 +1925,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment;
 		 RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 181af8a2801a74d8352103b9f4f34612 ****/
+		/****** RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment::ReadStep ******/
+		/****** md5 signature: 181af8a2801a74d8352103b9f4f34612 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1946,8 +1946,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignPersonAndOrganizationAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 15b42bd6dfdf6acc032d4e7e27f8e575 ****/
+		/****** RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment::Share ******/
+		/****** md5 signature: 15b42bd6dfdf6acc032d4e7e27f8e575 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1965,8 +1965,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignPersonAndOrganizationAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 721392b0faf5bc915952736a47db8c8c ****/
+		/****** RWStepAP214_RWAutoDesignPersonAndOrganizationAssignment::WriteStep ******/
+		/****** md5 signature: 721392b0faf5bc915952736a47db8c8c ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1998,8 +1998,8 @@ No available documentation.
 **********************************************/
 class RWStepAP214_RWAutoDesignPresentedItem {
 	public:
-		/****************** RWStepAP214_RWAutoDesignPresentedItem ******************/
-		/**** md5 signature: daab09d198832bf9fa08f0df68568d8d ****/
+		/****** RWStepAP214_RWAutoDesignPresentedItem::RWStepAP214_RWAutoDesignPresentedItem ******/
+		/****** md5 signature: daab09d198832bf9fa08f0df68568d8d ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignPresentedItem;
 		%feature("autodoc", "Return
 -------
@@ -2011,8 +2011,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignPresentedItem;
 		 RWStepAP214_RWAutoDesignPresentedItem();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 8dd106f37cf86fe49e48c4cf3bb35ab0 ****/
+		/****** RWStepAP214_RWAutoDesignPresentedItem::ReadStep ******/
+		/****** md5 signature: 8dd106f37cf86fe49e48c4cf3bb35ab0 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2032,8 +2032,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignPresentedItem> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 1154e3327186cca78a8bfc5c179876ef ****/
+		/****** RWStepAP214_RWAutoDesignPresentedItem::Share ******/
+		/****** md5 signature: 1154e3327186cca78a8bfc5c179876ef ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2051,8 +2051,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignPresentedItem> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: d92f70f7dd813683c69c0e5a3fa9c1af ****/
+		/****** RWStepAP214_RWAutoDesignPresentedItem::WriteStep ******/
+		/****** md5 signature: d92f70f7dd813683c69c0e5a3fa9c1af ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2084,8 +2084,8 @@ No available documentation.
 *****************************************************************/
 class RWStepAP214_RWAutoDesignSecurityClassificationAssignment {
 	public:
-		/****************** RWStepAP214_RWAutoDesignSecurityClassificationAssignment ******************/
-		/**** md5 signature: 83fe397cf338c95be4d2a5de9b5e0a8f ****/
+		/****** RWStepAP214_RWAutoDesignSecurityClassificationAssignment::RWStepAP214_RWAutoDesignSecurityClassificationAssignment ******/
+		/****** md5 signature: 83fe397cf338c95be4d2a5de9b5e0a8f ******/
 		%feature("compactdefaultargs") RWStepAP214_RWAutoDesignSecurityClassificationAssignment;
 		%feature("autodoc", "Return
 -------
@@ -2097,8 +2097,8 @@ No available documentation.
 ") RWStepAP214_RWAutoDesignSecurityClassificationAssignment;
 		 RWStepAP214_RWAutoDesignSecurityClassificationAssignment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 719c44dd31fc5806a0ccd54d110cd3d8 ****/
+		/****** RWStepAP214_RWAutoDesignSecurityClassificationAssignment::ReadStep ******/
+		/****** md5 signature: 719c44dd31fc5806a0ccd54d110cd3d8 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2118,8 +2118,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_AutoDesignSecurityClassificationAssignment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 1fa37d0d1d8541da99be437f3ea2e125 ****/
+		/****** RWStepAP214_RWAutoDesignSecurityClassificationAssignment::Share ******/
+		/****** md5 signature: 1fa37d0d1d8541da99be437f3ea2e125 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2137,8 +2137,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepAP214_AutoDesignSecurityClassificationAssignment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: c18e65de81b7895c7ac61ef92b2e5711 ****/
+		/****** RWStepAP214_RWAutoDesignSecurityClassificationAssignment::WriteStep ******/
+		/****** md5 signature: c18e65de81b7895c7ac61ef92b2e5711 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2170,8 +2170,8 @@ No available documentation.
 ****************************/
 class RWStepAP214_RWClass {
 	public:
-		/****************** RWStepAP214_RWClass ******************/
-		/**** md5 signature: 4404459f082d0613dcc1a3ad2a96e964 ****/
+		/****** RWStepAP214_RWClass::RWStepAP214_RWClass ******/
+		/****** md5 signature: 4404459f082d0613dcc1a3ad2a96e964 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWClass;
 		%feature("autodoc", "Return
 -------
@@ -2183,8 +2183,8 @@ Empty constructor.
 ") RWStepAP214_RWClass;
 		 RWStepAP214_RWClass();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 2b9b6cd89dbb476927cd0b335632bf40 ****/
+		/****** RWStepAP214_RWClass::ReadStep ******/
+		/****** md5 signature: 2b9b6cd89dbb476927cd0b335632bf40 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2204,8 +2204,8 @@ Reads class.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_Class> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: b4442d0b6c9cc1d08b4aabe3ea571f12 ****/
+		/****** RWStepAP214_RWClass::Share ******/
+		/****** md5 signature: b4442d0b6c9cc1d08b4aabe3ea571f12 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2223,8 +2223,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP214_Class> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: ae9a0cd3f76f45d0a15a8f583a40b425 ****/
+		/****** RWStepAP214_RWClass::WriteStep ******/
+		/****** md5 signature: ae9a0cd3f76f45d0a15a8f583a40b425 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2256,8 +2256,8 @@ Writes class.
 *********************************************/
 class RWStepAP214_RWExternallyDefinedClass {
 	public:
-		/****************** RWStepAP214_RWExternallyDefinedClass ******************/
-		/**** md5 signature: 87b5688c03f70ea6e298171c68b02776 ****/
+		/****** RWStepAP214_RWExternallyDefinedClass::RWStepAP214_RWExternallyDefinedClass ******/
+		/****** md5 signature: 87b5688c03f70ea6e298171c68b02776 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWExternallyDefinedClass;
 		%feature("autodoc", "Return
 -------
@@ -2269,8 +2269,8 @@ Empty constructor.
 ") RWStepAP214_RWExternallyDefinedClass;
 		 RWStepAP214_RWExternallyDefinedClass();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 134ff8067aab5c29c502d2c93143fc3e ****/
+		/****** RWStepAP214_RWExternallyDefinedClass::ReadStep ******/
+		/****** md5 signature: 134ff8067aab5c29c502d2c93143fc3e ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2290,8 +2290,8 @@ Reads externallydefinedclass.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_ExternallyDefinedClass> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 2f37e136695aa9a15e58c60467da276f ****/
+		/****** RWStepAP214_RWExternallyDefinedClass::Share ******/
+		/****** md5 signature: 2f37e136695aa9a15e58c60467da276f ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2309,8 +2309,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP214_ExternallyDefinedClass> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 9570fee20245e0bfe0f5648b710ca277 ****/
+		/****** RWStepAP214_RWExternallyDefinedClass::WriteStep ******/
+		/****** md5 signature: 9570fee20245e0bfe0f5648b710ca277 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2342,8 +2342,8 @@ Writes externallydefinedclass.
 *******************************************************/
 class RWStepAP214_RWExternallyDefinedGeneralProperty {
 	public:
-		/****************** RWStepAP214_RWExternallyDefinedGeneralProperty ******************/
-		/**** md5 signature: c25feb2869784a2939bfade9555d1c18 ****/
+		/****** RWStepAP214_RWExternallyDefinedGeneralProperty::RWStepAP214_RWExternallyDefinedGeneralProperty ******/
+		/****** md5 signature: c25feb2869784a2939bfade9555d1c18 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWExternallyDefinedGeneralProperty;
 		%feature("autodoc", "Return
 -------
@@ -2355,8 +2355,8 @@ Empty constructor.
 ") RWStepAP214_RWExternallyDefinedGeneralProperty;
 		 RWStepAP214_RWExternallyDefinedGeneralProperty();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 580835f76ffd0ffc66e53eb062805918 ****/
+		/****** RWStepAP214_RWExternallyDefinedGeneralProperty::ReadStep ******/
+		/****** md5 signature: 580835f76ffd0ffc66e53eb062805918 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2376,8 +2376,8 @@ Reads externallydefinedgeneralproperty.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_ExternallyDefinedGeneralProperty> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 638a7c3913c763ddaf2472802aa241af ****/
+		/****** RWStepAP214_RWExternallyDefinedGeneralProperty::Share ******/
+		/****** md5 signature: 638a7c3913c763ddaf2472802aa241af ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2395,8 +2395,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP214_ExternallyDefinedGeneralProperty> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: c045cc99e76f1137beff90f2826b966d ****/
+		/****** RWStepAP214_RWExternallyDefinedGeneralProperty::WriteStep ******/
+		/****** md5 signature: c045cc99e76f1137beff90f2826b966d ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2428,8 +2428,8 @@ Writes externallydefinedgeneralproperty.
 ***********************************/
 class RWStepAP214_RWRepItemGroup {
 	public:
-		/****************** RWStepAP214_RWRepItemGroup ******************/
-		/**** md5 signature: c8bf9400be62c507b48f9befadabf1f6 ****/
+		/****** RWStepAP214_RWRepItemGroup::RWStepAP214_RWRepItemGroup ******/
+		/****** md5 signature: c8bf9400be62c507b48f9befadabf1f6 ******/
 		%feature("compactdefaultargs") RWStepAP214_RWRepItemGroup;
 		%feature("autodoc", "Return
 -------
@@ -2441,8 +2441,8 @@ Empty constructor.
 ") RWStepAP214_RWRepItemGroup;
 		 RWStepAP214_RWRepItemGroup();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: dcd2d64c3865baeca0ec51efe7c57051 ****/
+		/****** RWStepAP214_RWRepItemGroup::ReadStep ******/
+		/****** md5 signature: dcd2d64c3865baeca0ec51efe7c57051 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2462,8 +2462,8 @@ Reads repitemgroup.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepAP214_RepItemGroup> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: dc589fa27a80e74fccf1847314d62725 ****/
+		/****** RWStepAP214_RWRepItemGroup::Share ******/
+		/****** md5 signature: dc589fa27a80e74fccf1847314d62725 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2481,8 +2481,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepAP214_RepItemGroup> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: da465357f5a825d21212b652674e70d4 ****/
+		/****** RWStepAP214_RWRepItemGroup::WriteStep ******/
+		/****** md5 signature: da465357f5a825d21212b652674e70d4 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2514,8 +2514,8 @@ Writes repitemgroup.
 ************************************/
 class RWStepAP214_ReadWriteModule : public StepData_ReadWriteModule {
 	public:
-		/****************** RWStepAP214_ReadWriteModule ******************/
-		/**** md5 signature: 6c718183867166d2302ee9e2e7825b18 ****/
+		/****** RWStepAP214_ReadWriteModule::RWStepAP214_ReadWriteModule ******/
+		/****** md5 signature: 6c718183867166d2302ee9e2e7825b18 ******/
 		%feature("compactdefaultargs") RWStepAP214_ReadWriteModule;
 		%feature("autodoc", "Return
 -------
@@ -2527,8 +2527,8 @@ No available documentation.
 ") RWStepAP214_ReadWriteModule;
 		 RWStepAP214_ReadWriteModule();
 
-		/****************** CaseStep ******************/
-		/**** md5 signature: 2cca48c277ff54a418bb5762c7cc5d5f ****/
+		/****** RWStepAP214_ReadWriteModule::CaseStep ******/
+		/****** md5 signature: 2cca48c277ff54a418bb5762c7cc5d5f ******/
 		%feature("compactdefaultargs") CaseStep;
 		%feature("autodoc", "
 Parameters
@@ -2545,8 +2545,8 @@ Associates a positive case number to each type of stepap214 entity, given as a s
 ") CaseStep;
 		Standard_Integer CaseStep(TCollection_AsciiString atype);
 
-		/****************** CaseStep ******************/
-		/**** md5 signature: 440149e7ecd34289be9e6811f7462a4e ****/
+		/****** RWStepAP214_ReadWriteModule::CaseStep ******/
+		/****** md5 signature: 440149e7ecd34289be9e6811f7462a4e ******/
 		%feature("compactdefaultargs") CaseStep;
 		%feature("autodoc", "
 Parameters
@@ -2563,8 +2563,8 @@ Associates a positive case number to each type of stepap214 complex entity, give
 ") CaseStep;
 		virtual Standard_Integer CaseStep(const TColStd_SequenceOfAsciiString & types);
 
-		/****************** ComplexType ******************/
-		/**** md5 signature: 5ba2b93856433bde631a4ccda465b733 ****/
+		/****** RWStepAP214_ReadWriteModule::ComplexType ******/
+		/****** md5 signature: 5ba2b93856433bde631a4ccda465b733 ******/
 		%feature("compactdefaultargs") ComplexType;
 		%feature("autodoc", "
 Parameters
@@ -2582,8 +2582,8 @@ No available documentation.
 ") ComplexType;
 		virtual Standard_Boolean ComplexType(const Standard_Integer CN, TColStd_SequenceOfAsciiString & types);
 
-		/****************** IsComplex ******************/
-		/**** md5 signature: dd0bb2c37bc5d3007282207d4a702414 ****/
+		/****** RWStepAP214_ReadWriteModule::IsComplex ******/
+		/****** md5 signature: dd0bb2c37bc5d3007282207d4a702414 ******/
 		%feature("compactdefaultargs") IsComplex;
 		%feature("autodoc", "
 Parameters
@@ -2600,8 +2600,8 @@ Returns true if the case number corresponds to a complex type.
 ") IsComplex;
 		virtual Standard_Boolean IsComplex(const Standard_Integer CN);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 17295e7bfa85126c873c41a911b14793 ****/
+		/****** RWStepAP214_ReadWriteModule::ReadStep ******/
+		/****** md5 signature: 17295e7bfa85126c873c41a911b14793 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2622,8 +2622,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const Standard_Integer CN, const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** StepType ******************/
-		/**** md5 signature: 6b290c84399e25c2a64848396c483fc8 ****/
+		/****** RWStepAP214_ReadWriteModule::StepType ******/
+		/****** md5 signature: 6b290c84399e25c2a64848396c483fc8 ******/
 		%feature("compactdefaultargs") StepType;
 		%feature("autodoc", "
 Parameters
@@ -2640,8 +2640,8 @@ Returns a steptype (defined in express form which belongs to a type of entity, i
 ") StepType;
 		const TCollection_AsciiString & StepType(const Standard_Integer CN);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: a2c3b5b5327d581382bef5e4442c834e ****/
+		/****** RWStepAP214_ReadWriteModule::WriteStep ******/
+		/****** md5 signature: a2c3b5b5327d581382bef5e4442c834e ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters

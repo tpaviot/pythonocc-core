@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TFUNCTIONDOCSTRING
 "TFunction module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tfunction.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tfunction.html"
 %enddef
 %module (package="OCC.Core", docstring=TFUNCTIONDOCSTRING) TFunction
 
@@ -121,8 +121,8 @@ typedef NCollection_DoubleMap<Standard_Integer, TDF_Label> TFunction_DoubleMapOf
 %nodefaultctor TFunction_Driver;
 class TFunction_Driver : public Standard_Transient {
 	public:
-		/****************** Arguments ******************/
-		/**** md5 signature: 4bba17ca81de91c4df690b3c81768a5b ****/
+		/****** TFunction_Driver::Arguments ******/
+		/****** md5 signature: 4bba17ca81de91c4df690b3c81768a5b ******/
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "
 Parameters
@@ -139,8 +139,8 @@ The method fills-in the list by labels, where the arguments of the function are 
 ") Arguments;
 		virtual void Arguments(TDF_LabelList & args);
 
-		/****************** Execute ******************/
-		/**** md5 signature: 8f1f158cb1e50b9ad9cbeb810402dbb9 ****/
+		/****** TFunction_Driver::Execute ******/
+		/****** md5 signature: 8f1f158cb1e50b9ad9cbeb810402dbb9 ******/
 		%feature("compactdefaultargs") Execute;
 		%feature("autodoc", "
 Parameters
@@ -157,8 +157,8 @@ Executes the function in this function driver and puts the impacted labels in th
 ") Execute;
 		virtual Standard_Integer Execute(opencascade::handle<TFunction_Logbook> & log);
 
-		/****************** Init ******************/
-		/**** md5 signature: 04d8cbbfa106ea91a8e8ec8518b2d168 ****/
+		/****** TFunction_Driver::Init ******/
+		/****** md5 signature: 04d8cbbfa106ea91a8e8ec8518b2d168 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -175,8 +175,8 @@ Initializes the label l for this function prior to its execution.
 ") Init;
 		void Init(const TDF_Label & L);
 
-		/****************** Label ******************/
-		/**** md5 signature: 45446fb6d4e5a656e74b10a5eb4cd845 ****/
+		/****** TFunction_Driver::Label ******/
+		/****** md5 signature: 45446fb6d4e5a656e74b10a5eb4cd845 ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -188,8 +188,8 @@ Returns the label of the driver for this function.
 ") Label;
 		TDF_Label Label();
 
-		/****************** MustExecute ******************/
-		/**** md5 signature: ed847147c57bdc6a486bd9096417dbbd ****/
+		/****** TFunction_Driver::MustExecute ******/
+		/****** md5 signature: ed847147c57bdc6a486bd9096417dbbd ******/
 		%feature("compactdefaultargs") MustExecute;
 		%feature("autodoc", "
 Parameters
@@ -206,8 +206,8 @@ Analyzes the labels in the logbook log. returns true if attributes have been mod
 ") MustExecute;
 		virtual Standard_Boolean MustExecute(const opencascade::handle<TFunction_Logbook> & log);
 
-		/****************** Results ******************/
-		/**** md5 signature: 1def5504257d3183313d6e32adc3f82c ****/
+		/****** TFunction_Driver::Results ******/
+		/****** md5 signature: 1def5504257d3183313d6e32adc3f82c ******/
 		%feature("compactdefaultargs") Results;
 		%feature("autodoc", "
 Parameters
@@ -224,8 +224,8 @@ The method fills-in the list by labels, where the results of the function are lo
 ") Results;
 		virtual void Results(TDF_LabelList & res);
 
-		/****************** Validate ******************/
-		/**** md5 signature: 69c28722fabc21dce096f9430b8d8dd2 ****/
+		/****** TFunction_Driver::Validate ******/
+		/****** md5 signature: 69c28722fabc21dce096f9430b8d8dd2 ******/
 		%feature("compactdefaultargs") Validate;
 		%feature("autodoc", "
 Parameters
@@ -258,8 +258,8 @@ Validates labels of a function in <log>. this function is the one initialized in
 ******************************/
 class TFunction_DriverTable : public Standard_Transient {
 	public:
-		/****************** TFunction_DriverTable ******************/
-		/**** md5 signature: 1e2dc65f0349a608d8b1892add60c315 ****/
+		/****** TFunction_DriverTable::TFunction_DriverTable ******/
+		/****** md5 signature: 1e2dc65f0349a608d8b1892add60c315 ******/
 		%feature("compactdefaultargs") TFunction_DriverTable;
 		%feature("autodoc", "Return
 -------
@@ -271,8 +271,8 @@ Default constructor.
 ") TFunction_DriverTable;
 		 TFunction_DriverTable();
 
-		/****************** AddDriver ******************/
-		/**** md5 signature: 990c0ed5bd237c30c73356fef2a2a75e ****/
+		/****** TFunction_DriverTable::AddDriver ******/
+		/****** md5 signature: 990c0ed5bd237c30c73356fef2a2a75e ******/
 		%feature("compactdefaultargs") AddDriver;
 		%feature("autodoc", "
 Parameters
@@ -291,8 +291,8 @@ Returns true if the driver has been added successfully to the driver table.
 ") AddDriver;
 		Standard_Boolean AddDriver(const Standard_GUID & guid, const opencascade::handle<TFunction_Driver> & driver, const Standard_Integer thread = 0);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TFunction_DriverTable::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -304,8 +304,8 @@ Removes all drivers. returns true if the driver has been removed successfully.
 ") Clear;
 		void Clear();
 
-		/****************** Dump ******************/
-		/**** md5 signature: cfe815398c9c4191063c65e53f786693 ****/
+		/****** TFunction_DriverTable::Dump ******/
+		/****** md5 signature: cfe815398c9c4191063c65e53f786693 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -321,8 +321,8 @@ No available documentation.
 ") Dump;
 		Standard_OStream & Dump(std::ostream &OutValue);
 
-		/****************** FindDriver ******************/
-		/**** md5 signature: 40071a232ea53c66f7cc98d78279429a ****/
+		/****** TFunction_DriverTable::FindDriver ******/
+		/****** md5 signature: 40071a232ea53c66f7cc98d78279429a ******/
 		%feature("compactdefaultargs") FindDriver;
 		%feature("autodoc", "
 Parameters
@@ -341,8 +341,8 @@ Returns true if the driver was found.
 ") FindDriver;
 		Standard_Boolean FindDriver(const Standard_GUID & guid, opencascade::handle<TFunction_Driver> & driver, const Standard_Integer thread = 0);
 
-		/****************** Get ******************/
-		/**** md5 signature: 99832888c5ad61808b6c3a1d6f9f47ab ****/
+		/****** TFunction_DriverTable::Get ******/
+		/****** md5 signature: 99832888c5ad61808b6c3a1d6f9f47ab ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "Return
 -------
@@ -354,8 +354,8 @@ Returns the driver table. if a driver does not exist, creates it.
 ") Get;
 		static opencascade::handle<TFunction_DriverTable> Get();
 
-		/****************** HasDriver ******************/
-		/**** md5 signature: a13dcf522146bf63d5f903a907eb9bec ****/
+		/****** TFunction_DriverTable::HasDriver ******/
+		/****** md5 signature: a13dcf522146bf63d5f903a907eb9bec ******/
 		%feature("compactdefaultargs") HasDriver;
 		%feature("autodoc", "
 Parameters
@@ -373,8 +373,8 @@ Returns true if the driver exists in the driver table.
 ") HasDriver;
 		Standard_Boolean HasDriver(const Standard_GUID & guid, const Standard_Integer thread = 0);
 
-		/****************** RemoveDriver ******************/
-		/**** md5 signature: 0487b3b5549030bd89cc5ba37eb1e15d ****/
+		/****** TFunction_DriverTable::RemoveDriver ******/
+		/****** md5 signature: 0487b3b5549030bd89cc5ba37eb1e15d ******/
 		%feature("compactdefaultargs") RemoveDriver;
 		%feature("autodoc", "
 Parameters
@@ -408,8 +408,8 @@ Removes a driver with the given guid. returns true if the driver has been remove
 ***************************/
 class TFunction_Function : public TDF_Attribute {
 	public:
-		/****************** TFunction_Function ******************/
-		/**** md5 signature: b9c7048d524663afffe8366d1791feb5 ****/
+		/****** TFunction_Function::TFunction_Function ******/
+		/****** md5 signature: b9c7048d524663afffe8366d1791feb5 ******/
 		%feature("compactdefaultargs") TFunction_Function;
 		%feature("autodoc", "Return
 -------
@@ -421,8 +421,8 @@ No available documentation.
 ") TFunction_Function;
 		 TFunction_Function();
 
-		/****************** Dump ******************/
-		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		/****** TFunction_Function::Dump ******/
+		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -459,8 +459,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** Failed ******************/
-		/**** md5 signature: c3da447468b921d93e6422cc08e3d1e7 ****/
+		/****** TFunction_Function::Failed ******/
+		/****** md5 signature: c3da447468b921d93e6422cc08e3d1e7 ******/
 		%feature("compactdefaultargs") Failed;
 		%feature("autodoc", "Return
 -------
@@ -472,8 +472,8 @@ Returns true if the execution failed.
 ") Failed;
 		Standard_Boolean Failed();
 
-		/****************** GetDriverGUID ******************/
-		/**** md5 signature: 0e0689f6b2e27ee70a70496d12a69015 ****/
+		/****** TFunction_Function::GetDriverGUID ******/
+		/****** md5 signature: 0e0689f6b2e27ee70a70496d12a69015 ******/
 		%feature("compactdefaultargs") GetDriverGUID;
 		%feature("autodoc", "Return
 -------
@@ -485,8 +485,8 @@ Returns the guid for this function's driver.
 ") GetDriverGUID;
 		const Standard_GUID & GetDriverGUID();
 
-		/****************** GetFailure ******************/
-		/**** md5 signature: ab0d027da81cfa3770c0c0a8ed26e021 ****/
+		/****** TFunction_Function::GetFailure ******/
+		/****** md5 signature: ab0d027da81cfa3770c0c0a8ed26e021 ******/
 		%feature("compactdefaultargs") GetFailure;
 		%feature("autodoc", "Return
 -------
@@ -498,8 +498,8 @@ Returns an index of failure if the execution of this function failed. if this in
 ") GetFailure;
 		Standard_Integer GetFailure();
 
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		/****** TFunction_Function::GetID ******/
+		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "Return
 -------
@@ -511,8 +511,8 @@ Returns the guid for functions. returns a function found on the label. instance 
 ") GetID;
 		static const Standard_GUID & GetID();
 
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		/****** TFunction_Function::ID ******/
+		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -524,8 +524,8 @@ No available documentation.
 ") ID;
 		const Standard_GUID & ID();
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
+		/****** TFunction_Function::NewEmpty ******/
+		/****** md5 signature: 8be17a4d2a4deeee198571712e76805e ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -537,8 +537,8 @@ No available documentation.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ****/
+		/****** TFunction_Function::Paste ******/
+		/****** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -556,8 +556,8 @@ No available documentation.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
-		/****************** References ******************/
-		/**** md5 signature: 3f614360a69c957f8600d26b49bc71b2 ****/
+		/****** TFunction_Function::References ******/
+		/****** md5 signature: 3f614360a69c957f8600d26b49bc71b2 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -574,8 +574,8 @@ No available documentation.
 ") References;
 		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
-		/****************** Restore ******************/
-		/**** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ****/
+		/****** TFunction_Function::Restore ******/
+		/****** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -592,8 +592,8 @@ No available documentation.
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & with);
 
-		/****************** Set ******************/
-		/**** md5 signature: aca554bf54cbef266ab789ddb6086714 ****/
+		/****** TFunction_Function::Set ******/
+		/****** md5 signature: aca554bf54cbef266ab789ddb6086714 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -610,8 +610,8 @@ Static methods: ============== finds or creates a function attribute on the labe
 ") Set;
 		static opencascade::handle<TFunction_Function> Set(const TDF_Label & L);
 
-		/****************** Set ******************/
-		/**** md5 signature: b0b73840ed28fd912c95afec06fd8ac6 ****/
+		/****** TFunction_Function::Set ******/
+		/****** md5 signature: b0b73840ed28fd912c95afec06fd8ac6 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -629,8 +629,8 @@ Finds or creates a function attribute on the label <l>. sets a driver id to the 
 ") Set;
 		static opencascade::handle<TFunction_Function> Set(const TDF_Label & L, const Standard_GUID & DriverID);
 
-		/****************** SetDriverGUID ******************/
-		/**** md5 signature: 07186d86451e9b1ad5ad4848dd63f1dc ****/
+		/****** TFunction_Function::SetDriverGUID ******/
+		/****** md5 signature: 07186d86451e9b1ad5ad4848dd63f1dc ******/
 		%feature("compactdefaultargs") SetDriverGUID;
 		%feature("autodoc", "
 Parameters
@@ -647,8 +647,8 @@ Sets the driver for this function as that identified by the guid guid.
 ") SetDriverGUID;
 		void SetDriverGUID(const Standard_GUID & guid);
 
-		/****************** SetFailure ******************/
-		/**** md5 signature: 7de1e35f0beb0ac9d20d5fb500b27540 ****/
+		/****** TFunction_Function::SetFailure ******/
+		/****** md5 signature: 7de1e35f0beb0ac9d20d5fb500b27540 ******/
 		%feature("compactdefaultargs") SetFailure;
 		%feature("autodoc", "
 Parameters
@@ -681,8 +681,8 @@ Sets the failed index.
 ****************************/
 class TFunction_GraphNode : public TDF_Attribute {
 	public:
-		/****************** TFunction_GraphNode ******************/
-		/**** md5 signature: 840026a0804abadd928349149b54de96 ****/
+		/****** TFunction_GraphNode::TFunction_GraphNode ******/
+		/****** md5 signature: 840026a0804abadd928349149b54de96 ******/
 		%feature("compactdefaultargs") TFunction_GraphNode;
 		%feature("autodoc", "Return
 -------
@@ -694,8 +694,8 @@ No available documentation.
 ") TFunction_GraphNode;
 		 TFunction_GraphNode();
 
-		/****************** AddNext ******************/
-		/**** md5 signature: 46f1368888ac2f27323ecb83c4e2780e ****/
+		/****** TFunction_GraphNode::AddNext ******/
+		/****** md5 signature: 46f1368888ac2f27323ecb83c4e2780e ******/
 		%feature("compactdefaultargs") AddNext;
 		%feature("autodoc", "
 Parameters
@@ -712,8 +712,8 @@ Defines a reference to the function as a next one.
 ") AddNext;
 		Standard_Boolean AddNext(const Standard_Integer funcID);
 
-		/****************** AddNext ******************/
-		/**** md5 signature: 30d1fa6ecff42d69a4ecb4324e40b9bf ****/
+		/****** TFunction_GraphNode::AddNext ******/
+		/****** md5 signature: 30d1fa6ecff42d69a4ecb4324e40b9bf ******/
 		%feature("compactdefaultargs") AddNext;
 		%feature("autodoc", "
 Parameters
@@ -730,8 +730,8 @@ Defines a reference to the function as a next one.
 ") AddNext;
 		Standard_Boolean AddNext(const TDF_Label & func);
 
-		/****************** AddPrevious ******************/
-		/**** md5 signature: fcbc15f22d1d20f10c6e462339e8b99c ****/
+		/****** TFunction_GraphNode::AddPrevious ******/
+		/****** md5 signature: fcbc15f22d1d20f10c6e462339e8b99c ******/
 		%feature("compactdefaultargs") AddPrevious;
 		%feature("autodoc", "
 Parameters
@@ -748,8 +748,8 @@ Defines a reference to the function as a previous one.
 ") AddPrevious;
 		Standard_Boolean AddPrevious(const Standard_Integer funcID);
 
-		/****************** AddPrevious ******************/
-		/**** md5 signature: 817018c3f68fee1004e6f7635bbf057a ****/
+		/****** TFunction_GraphNode::AddPrevious ******/
+		/****** md5 signature: 817018c3f68fee1004e6f7635bbf057a ******/
 		%feature("compactdefaultargs") AddPrevious;
 		%feature("autodoc", "
 Parameters
@@ -766,8 +766,8 @@ Defines a reference to the function as a previous one.
 ") AddPrevious;
 		Standard_Boolean AddPrevious(const TDF_Label & func);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		/****** TFunction_GraphNode::Dump ******/
+		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -783,8 +783,8 @@ No available documentation.
 ") Dump;
 		virtual Standard_OStream & Dump(std::ostream &OutValue);
 
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		/****** TFunction_GraphNode::GetID ******/
+		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "Return
 -------
@@ -796,8 +796,8 @@ Returns the guid for graphnode attribute. instant methods =============== constr
 ") GetID;
 		static const Standard_GUID & GetID();
 
-		/****************** GetNext ******************/
-		/**** md5 signature: 2c92b7840c40f1d4060b8645cdd7203e ****/
+		/****** TFunction_GraphNode::GetNext ******/
+		/****** md5 signature: 2c92b7840c40f1d4060b8645cdd7203e ******/
 		%feature("compactdefaultargs") GetNext;
 		%feature("autodoc", "Return
 -------
@@ -809,8 +809,8 @@ Returns a map of next functions.
 ") GetNext;
 		const TColStd_MapOfInteger & GetNext();
 
-		/****************** GetPrevious ******************/
-		/**** md5 signature: 0c76468cefb57cc5ca0c158597c978c5 ****/
+		/****** TFunction_GraphNode::GetPrevious ******/
+		/****** md5 signature: 0c76468cefb57cc5ca0c158597c978c5 ******/
 		%feature("compactdefaultargs") GetPrevious;
 		%feature("autodoc", "Return
 -------
@@ -822,8 +822,8 @@ Returns a map of previous functions.
 ") GetPrevious;
 		const TColStd_MapOfInteger & GetPrevious();
 
-		/****************** GetStatus ******************/
-		/**** md5 signature: d22ac7893e97d480932227129700806c ****/
+		/****** TFunction_GraphNode::GetStatus ******/
+		/****** md5 signature: d22ac7893e97d480932227129700806c ******/
 		%feature("compactdefaultargs") GetStatus;
 		%feature("autodoc", "Return
 -------
@@ -835,8 +835,8 @@ Returns the execution status of the function.
 ") GetStatus;
 		TFunction_ExecutionStatus GetStatus();
 
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		/****** TFunction_GraphNode::ID ******/
+		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -848,8 +848,8 @@ No available documentation.
 ") ID;
 		const Standard_GUID & ID();
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
+		/****** TFunction_GraphNode::NewEmpty ******/
+		/****** md5 signature: 8be17a4d2a4deeee198571712e76805e ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -861,8 +861,8 @@ No available documentation.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ****/
+		/****** TFunction_GraphNode::Paste ******/
+		/****** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -880,8 +880,8 @@ No available documentation.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
-		/****************** References ******************/
-		/**** md5 signature: 3f614360a69c957f8600d26b49bc71b2 ****/
+		/****** TFunction_GraphNode::References ******/
+		/****** md5 signature: 3f614360a69c957f8600d26b49bc71b2 ******/
 		%feature("compactdefaultargs") References;
 		%feature("autodoc", "
 Parameters
@@ -898,8 +898,8 @@ No available documentation.
 ") References;
 		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
-		/****************** RemoveAllNext ******************/
-		/**** md5 signature: 0cd87a83ea50ca309bc065a771225586 ****/
+		/****** TFunction_GraphNode::RemoveAllNext ******/
+		/****** md5 signature: 0cd87a83ea50ca309bc065a771225586 ******/
 		%feature("compactdefaultargs") RemoveAllNext;
 		%feature("autodoc", "Return
 -------
@@ -911,8 +911,8 @@ Clears a map of next functions.
 ") RemoveAllNext;
 		void RemoveAllNext();
 
-		/****************** RemoveAllPrevious ******************/
-		/**** md5 signature: 6fa7fdc92df1cf59d5c5e281367883c4 ****/
+		/****** TFunction_GraphNode::RemoveAllPrevious ******/
+		/****** md5 signature: 6fa7fdc92df1cf59d5c5e281367883c4 ******/
 		%feature("compactdefaultargs") RemoveAllPrevious;
 		%feature("autodoc", "Return
 -------
@@ -924,8 +924,8 @@ Clears a map of previous functions.
 ") RemoveAllPrevious;
 		void RemoveAllPrevious();
 
-		/****************** RemoveNext ******************/
-		/**** md5 signature: d64243f774cea972663b505ad15afa03 ****/
+		/****** TFunction_GraphNode::RemoveNext ******/
+		/****** md5 signature: d64243f774cea972663b505ad15afa03 ******/
 		%feature("compactdefaultargs") RemoveNext;
 		%feature("autodoc", "
 Parameters
@@ -942,8 +942,8 @@ Removes a reference to the function as a next one.
 ") RemoveNext;
 		Standard_Boolean RemoveNext(const Standard_Integer funcID);
 
-		/****************** RemoveNext ******************/
-		/**** md5 signature: 749269e72d7fc21a359cc7533a289ccc ****/
+		/****** TFunction_GraphNode::RemoveNext ******/
+		/****** md5 signature: 749269e72d7fc21a359cc7533a289ccc ******/
 		%feature("compactdefaultargs") RemoveNext;
 		%feature("autodoc", "
 Parameters
@@ -960,8 +960,8 @@ Removes a reference to the function as a next one.
 ") RemoveNext;
 		Standard_Boolean RemoveNext(const TDF_Label & func);
 
-		/****************** RemovePrevious ******************/
-		/**** md5 signature: 334ea5a1f0fe47a269ff5d99a5ddbdbe ****/
+		/****** TFunction_GraphNode::RemovePrevious ******/
+		/****** md5 signature: 334ea5a1f0fe47a269ff5d99a5ddbdbe ******/
 		%feature("compactdefaultargs") RemovePrevious;
 		%feature("autodoc", "
 Parameters
@@ -978,8 +978,8 @@ Removes a reference to the function as a previous one.
 ") RemovePrevious;
 		Standard_Boolean RemovePrevious(const Standard_Integer funcID);
 
-		/****************** RemovePrevious ******************/
-		/**** md5 signature: 690308575b8794f75585531b28bb8bd2 ****/
+		/****** TFunction_GraphNode::RemovePrevious ******/
+		/****** md5 signature: 690308575b8794f75585531b28bb8bd2 ******/
 		%feature("compactdefaultargs") RemovePrevious;
 		%feature("autodoc", "
 Parameters
@@ -996,8 +996,8 @@ Removes a reference to the function as a previous one.
 ") RemovePrevious;
 		Standard_Boolean RemovePrevious(const TDF_Label & func);
 
-		/****************** Restore ******************/
-		/**** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ****/
+		/****** TFunction_GraphNode::Restore ******/
+		/****** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -1014,8 +1014,8 @@ No available documentation.
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & with);
 
-		/****************** Set ******************/
-		/**** md5 signature: 094ce1b4803fd44779764fb4b5bbc278 ****/
+		/****** TFunction_GraphNode::Set ******/
+		/****** md5 signature: 094ce1b4803fd44779764fb4b5bbc278 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1032,8 +1032,8 @@ Static methods ============== finds or creates a graph node attribute at the lab
 ") Set;
 		static opencascade::handle<TFunction_GraphNode> Set(const TDF_Label & L);
 
-		/****************** SetStatus ******************/
-		/**** md5 signature: d65ad3bd62bda10bd543de7f03931f36 ****/
+		/****** TFunction_GraphNode::SetStatus ******/
+		/****** md5 signature: d65ad3bd62bda10bd543de7f03931f36 ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
@@ -1066,8 +1066,8 @@ Defines an execution status for a function. implementation of attribute methods 
 ****************************/
 class TFunction_IFunction {
 	public:
-		/****************** TFunction_IFunction ******************/
-		/**** md5 signature: 8d63105f8a6ad4acb652c7c6ec381e72 ****/
+		/****** TFunction_IFunction::TFunction_IFunction ******/
+		/****** md5 signature: 8d63105f8a6ad4acb652c7c6ec381e72 ******/
 		%feature("compactdefaultargs") TFunction_IFunction;
 		%feature("autodoc", "Return
 -------
@@ -1079,8 +1079,8 @@ No available documentation.
 ") TFunction_IFunction;
 		 TFunction_IFunction();
 
-		/****************** TFunction_IFunction ******************/
-		/**** md5 signature: 3096b6694485edb079cd64a06ab874e6 ****/
+		/****** TFunction_IFunction::TFunction_IFunction ******/
+		/****** md5 signature: 3096b6694485edb079cd64a06ab874e6 ******/
 		%feature("compactdefaultargs") TFunction_IFunction;
 		%feature("autodoc", "
 Parameters
@@ -1097,8 +1097,8 @@ A constructor. initializes the interface by the label of function.
 ") TFunction_IFunction;
 		 TFunction_IFunction(const TDF_Label & L);
 
-		/****************** Arguments ******************/
-		/**** md5 signature: 36ff9641bb166dfb0eeac7454f7615db ****/
+		/****** TFunction_IFunction::Arguments ******/
+		/****** md5 signature: 36ff9641bb166dfb0eeac7454f7615db ******/
 		%feature("compactdefaultargs") Arguments;
 		%feature("autodoc", "
 Parameters
@@ -1115,8 +1115,8 @@ The method fills-in the list by labels, where the arguments of the function are 
 ") Arguments;
 		void Arguments(TDF_LabelList & args);
 
-		/****************** DeleteFunction ******************/
-		/**** md5 signature: a370b1b834afd69c6f938d6aa2863f44 ****/
+		/****** TFunction_IFunction::DeleteFunction ******/
+		/****** md5 signature: a370b1b834afd69c6f938d6aa2863f44 ******/
 		%feature("compactdefaultargs") DeleteFunction;
 		%feature("autodoc", "
 Parameters
@@ -1133,8 +1133,8 @@ Deletes a function attached to a label <l>. it deletes a tfunction_function attr
 ") DeleteFunction;
 		static Standard_Boolean DeleteFunction(const TDF_Label & L);
 
-		/****************** GetAllFunctions ******************/
-		/**** md5 signature: c18f441033a9c6525f76df221447f7f3 ****/
+		/****** TFunction_IFunction::GetAllFunctions ******/
+		/****** md5 signature: c18f441033a9c6525f76df221447f7f3 ******/
 		%feature("compactdefaultargs") GetAllFunctions;
 		%feature("autodoc", "Return
 -------
@@ -1146,8 +1146,8 @@ Returns the scope of all functions.
 ") GetAllFunctions;
 		const TFunction_DoubleMapOfIntegerLabel & GetAllFunctions();
 
-		/****************** GetDriver ******************/
-		/**** md5 signature: ec861a28b99b970cedc10dcc1154472c ****/
+		/****** TFunction_IFunction::GetDriver ******/
+		/****** md5 signature: ec861a28b99b970cedc10dcc1154472c ******/
 		%feature("compactdefaultargs") GetDriver;
 		%feature("autodoc", "
 Parameters
@@ -1164,8 +1164,8 @@ Returns a driver of the function.
 ") GetDriver;
 		opencascade::handle<TFunction_Driver> GetDriver(const Standard_Integer thread = 0);
 
-		/****************** GetGraphNode ******************/
-		/**** md5 signature: ce954ac825727c0f4041e07053e3755c ****/
+		/****** TFunction_IFunction::GetGraphNode ******/
+		/****** md5 signature: ce954ac825727c0f4041e07053e3755c ******/
 		%feature("compactdefaultargs") GetGraphNode;
 		%feature("autodoc", "Return
 -------
@@ -1177,8 +1177,8 @@ Returns a graph node of the function.
 ") GetGraphNode;
 		opencascade::handle<TFunction_GraphNode> GetGraphNode();
 
-		/****************** GetLogbook ******************/
-		/**** md5 signature: 413c9b5e90f1e3a8ba4fe0ac434c95a4 ****/
+		/****** TFunction_IFunction::GetLogbook ******/
+		/****** md5 signature: 413c9b5e90f1e3a8ba4fe0ac434c95a4 ******/
 		%feature("compactdefaultargs") GetLogbook;
 		%feature("autodoc", "Return
 -------
@@ -1190,8 +1190,8 @@ Returns the logbook - keeper of modifications.
 ") GetLogbook;
 		opencascade::handle<TFunction_Logbook> GetLogbook();
 
-		/****************** GetNext ******************/
-		/**** md5 signature: c4b14e72dbd7f482bd7cee741c39adf3 ****/
+		/****** TFunction_IFunction::GetNext ******/
+		/****** md5 signature: c4b14e72dbd7f482bd7cee741c39adf3 ******/
 		%feature("compactdefaultargs") GetNext;
 		%feature("autodoc", "
 Parameters
@@ -1208,8 +1208,8 @@ Returns a list of next functions.
 ") GetNext;
 		void GetNext(TDF_LabelList & prev);
 
-		/****************** GetPrevious ******************/
-		/**** md5 signature: c0fa38784a0524350c9ab9cd20330f37 ****/
+		/****** TFunction_IFunction::GetPrevious ******/
+		/****** md5 signature: c0fa38784a0524350c9ab9cd20330f37 ******/
 		%feature("compactdefaultargs") GetPrevious;
 		%feature("autodoc", "
 Parameters
@@ -1226,8 +1226,8 @@ Returns a list of previous functions.
 ") GetPrevious;
 		void GetPrevious(TDF_LabelList & prev);
 
-		/****************** GetStatus ******************/
-		/**** md5 signature: d22ac7893e97d480932227129700806c ****/
+		/****** TFunction_IFunction::GetStatus ******/
+		/****** md5 signature: d22ac7893e97d480932227129700806c ******/
 		%feature("compactdefaultargs") GetStatus;
 		%feature("autodoc", "Return
 -------
@@ -1239,8 +1239,8 @@ Returns the execution status of the function.
 ") GetStatus;
 		TFunction_ExecutionStatus GetStatus();
 
-		/****************** Init ******************/
-		/**** md5 signature: 04d8cbbfa106ea91a8e8ec8518b2d168 ****/
+		/****** TFunction_IFunction::Init ******/
+		/****** md5 signature: 04d8cbbfa106ea91a8e8ec8518b2d168 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1257,8 +1257,8 @@ Initializes the interface by the label of function.
 ") Init;
 		void Init(const TDF_Label & L);
 
-		/****************** Label ******************/
-		/**** md5 signature: eb9fb194262b05b6572e359c88345eec ****/
+		/****** TFunction_IFunction::Label ******/
+		/****** md5 signature: eb9fb194262b05b6572e359c88345eec ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -1270,8 +1270,8 @@ Returns a label of the function.
 ") Label;
 		const TDF_Label & Label();
 
-		/****************** NewFunction ******************/
-		/**** md5 signature: 4a3d2cc128414a9727a2214b0198518d ****/
+		/****** TFunction_IFunction::NewFunction ******/
+		/****** md5 signature: 4a3d2cc128414a9727a2214b0198518d ******/
 		%feature("compactdefaultargs") NewFunction;
 		%feature("autodoc", "
 Parameters
@@ -1289,8 +1289,8 @@ Sets a new function attached to a label <l> with <id>. it creates a new tfunctio
 ") NewFunction;
 		static Standard_Boolean NewFunction(const TDF_Label & L, const Standard_GUID & ID);
 
-		/****************** Results ******************/
-		/**** md5 signature: f6b4be89e631b6b8d2780fb882fb2a15 ****/
+		/****** TFunction_IFunction::Results ******/
+		/****** md5 signature: f6b4be89e631b6b8d2780fb882fb2a15 ******/
 		%feature("compactdefaultargs") Results;
 		%feature("autodoc", "
 Parameters
@@ -1307,8 +1307,8 @@ The method fills-in the list by labels, where the results of the function are lo
 ") Results;
 		void Results(TDF_LabelList & res);
 
-		/****************** SetStatus ******************/
-		/**** md5 signature: 6b13bf361b6b05641737bfa869b959e5 ****/
+		/****** TFunction_IFunction::SetStatus ******/
+		/****** md5 signature: 6b13bf361b6b05641737bfa869b959e5 ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
@@ -1325,8 +1325,8 @@ Defines an execution status for a function.
 ") SetStatus;
 		void SetStatus(const TFunction_ExecutionStatus status);
 
-		/****************** UpdateDependencies ******************/
-		/**** md5 signature: d7e6b01ec20ceb9895fad8f3582979f9 ****/
+		/****** TFunction_IFunction::UpdateDependencies ******/
+		/****** md5 signature: d7e6b01ec20ceb9895fad8f3582979f9 ******/
 		%feature("compactdefaultargs") UpdateDependencies;
 		%feature("autodoc", "
 Parameters
@@ -1343,8 +1343,8 @@ Updates dependencies for all functions of the scope. it returns false in case of
 ") UpdateDependencies;
 		static Standard_Boolean UpdateDependencies(const TDF_Label & Access);
 
-		/****************** UpdateDependencies ******************/
-		/**** md5 signature: fce181c709b9f09a0e899fd8020a65c7 ****/
+		/****** TFunction_IFunction::UpdateDependencies ******/
+		/****** md5 signature: fce181c709b9f09a0e899fd8020a65c7 ******/
 		%feature("compactdefaultargs") UpdateDependencies;
 		%feature("autodoc", "Return
 -------
@@ -1370,8 +1370,8 @@ Updates the dependencies of this function only.
 ***************************/
 class TFunction_Iterator {
 	public:
-		/****************** TFunction_Iterator ******************/
-		/**** md5 signature: 69237d8a90b10d6fa7daaabc8a87aa4e ****/
+		/****** TFunction_Iterator::TFunction_Iterator ******/
+		/****** md5 signature: 69237d8a90b10d6fa7daaabc8a87aa4e ******/
 		%feature("compactdefaultargs") TFunction_Iterator;
 		%feature("autodoc", "Return
 -------
@@ -1383,8 +1383,8 @@ An empty constructor.
 ") TFunction_Iterator;
 		 TFunction_Iterator();
 
-		/****************** TFunction_Iterator ******************/
-		/**** md5 signature: 5f2fe40104172dec3efd03730ffcbb47 ****/
+		/****** TFunction_Iterator::TFunction_Iterator ******/
+		/****** md5 signature: 5f2fe40104172dec3efd03730ffcbb47 ******/
 		%feature("compactdefaultargs") TFunction_Iterator;
 		%feature("autodoc", "
 Parameters
@@ -1401,8 +1401,8 @@ A constructor. initializes the iterator.
 ") TFunction_Iterator;
 		 TFunction_Iterator(const TDF_Label & Access);
 
-		/****************** Current ******************/
-		/**** md5 signature: b881dd90596d55e68898d23d0c7ddfe0 ****/
+		/****** TFunction_Iterator::Current ******/
+		/****** md5 signature: b881dd90596d55e68898d23d0c7ddfe0 ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return
 -------
@@ -1414,8 +1414,8 @@ Returns the current list of functions. if the iterator uses the execution status
 ") Current;
 		virtual const TDF_LabelList & Current();
 
-		/****************** Dump ******************/
-		/**** md5 signature: ee51cac270c7787d1809a1cb8cf01d91 ****/
+		/****** TFunction_Iterator::Dump ******/
+		/****** md5 signature: ee51cac270c7787d1809a1cb8cf01d91 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1431,8 +1431,8 @@ No available documentation.
 ") Dump;
 		Standard_OStream & Dump(std::ostream &OutValue);
 
-		/****************** GetMaxNbThreads ******************/
-		/**** md5 signature: f69c96860a70a701f350c27debbc0ecf ****/
+		/****** TFunction_Iterator::GetMaxNbThreads ******/
+		/****** md5 signature: f69c96860a70a701f350c27debbc0ecf ******/
 		%feature("compactdefaultargs") GetMaxNbThreads;
 		%feature("autodoc", "Return
 -------
@@ -1444,8 +1444,8 @@ Analyses the graph of dependencies and returns maximum number of threads may be 
 ") GetMaxNbThreads;
 		virtual Standard_Integer GetMaxNbThreads();
 
-		/****************** GetStatus ******************/
-		/**** md5 signature: 17944549fb14f65fbdca6984a11026a6 ****/
+		/****** TFunction_Iterator::GetStatus ******/
+		/****** md5 signature: 17944549fb14f65fbdca6984a11026a6 ******/
 		%feature("compactdefaultargs") GetStatus;
 		%feature("autodoc", "
 Parameters
@@ -1462,8 +1462,8 @@ A help-function aimed to help the user to check the status of retrurned function
 ") GetStatus;
 		TFunction_ExecutionStatus GetStatus(const TDF_Label & func);
 
-		/****************** GetUsageOfExecutionStatus ******************/
-		/**** md5 signature: 745de2f63107d82ffde6cff47fc0d45b ****/
+		/****** TFunction_Iterator::GetUsageOfExecutionStatus ******/
+		/****** md5 signature: 745de2f63107d82ffde6cff47fc0d45b ******/
 		%feature("compactdefaultargs") GetUsageOfExecutionStatus;
 		%feature("autodoc", "Return
 -------
@@ -1475,8 +1475,8 @@ Returns usage of execution status by the iterator.
 ") GetUsageOfExecutionStatus;
 		Standard_Boolean GetUsageOfExecutionStatus();
 
-		/****************** Init ******************/
-		/**** md5 signature: 345b41bbe6fa1deeffdcc8b21e78dde7 ****/
+		/****** TFunction_Iterator::Init ******/
+		/****** md5 signature: 345b41bbe6fa1deeffdcc8b21e78dde7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1493,8 +1493,8 @@ Initializes the iterator.
 ") Init;
 		virtual void Init(const TDF_Label & Access);
 
-		/****************** More ******************/
-		/**** md5 signature: 4bb6f1f5e9d1b93bf6d038f6bdd34088 ****/
+		/****** TFunction_Iterator::More ******/
+		/****** md5 signature: 4bb6f1f5e9d1b93bf6d038f6bdd34088 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1506,8 +1506,8 @@ Returns false if the graph of functions is fully iterated.
 ") More;
 		virtual Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: 73141d627b33e5b89ace1d498cedfc52 ****/
+		/****** TFunction_Iterator::Next ******/
+		/****** md5 signature: 73141d627b33e5b89ace1d498cedfc52 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -1519,8 +1519,8 @@ Switches the iterator to the next list of current functions.
 ") Next;
 		virtual void Next();
 
-		/****************** SetStatus ******************/
-		/**** md5 signature: fc0439d96141332bb14647a9247c17bb ****/
+		/****** TFunction_Iterator::SetStatus ******/
+		/****** md5 signature: fc0439d96141332bb14647a9247c17bb ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
@@ -1538,8 +1538,8 @@ A help-function aimed to help the user to change the execution status of a funct
 ") SetStatus;
 		void SetStatus(const TDF_Label & func, const TFunction_ExecutionStatus status);
 
-		/****************** SetUsageOfExecutionStatus ******************/
-		/**** md5 signature: 1ccd07e65af420d2e0064c145d930ff5 ****/
+		/****** TFunction_Iterator::SetUsageOfExecutionStatus ******/
+		/****** md5 signature: 1ccd07e65af420d2e0064c145d930ff5 ******/
 		%feature("compactdefaultargs") SetUsageOfExecutionStatus;
 		%feature("autodoc", "
 Parameters
@@ -1570,8 +1570,8 @@ Defines the mode of iteration - usage or not of the execution status. if the ite
 **************************/
 class TFunction_Logbook : public TDF_Attribute {
 	public:
-		/****************** TFunction_Logbook ******************/
-		/**** md5 signature: 7f6e366f5622e0cb7923ed223f2950b3 ****/
+		/****** TFunction_Logbook::TFunction_Logbook ******/
+		/****** md5 signature: 7f6e366f5622e0cb7923ed223f2950b3 ******/
 		%feature("compactdefaultargs") TFunction_Logbook;
 		%feature("autodoc", "Return
 -------
@@ -1583,8 +1583,8 @@ Constructor (empty).
 ") TFunction_Logbook;
 		 TFunction_Logbook();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** TFunction_Logbook::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1596,8 +1596,8 @@ Clears this logbook to its default, empty state.
 ") Clear;
 		void Clear();
 
-		/****************** Done ******************/
-		/**** md5 signature: c5a6cedd71cacbb094b0e21e84839b80 ****/
+		/****** TFunction_Logbook::Done ******/
+		/****** md5 signature: c5a6cedd71cacbb094b0e21e84839b80 ******/
 		%feature("compactdefaultargs") Done;
 		%feature("autodoc", "
 Parameters
@@ -1614,8 +1614,8 @@ Sets status of execution.
 ") Done;
 		void Done(const Standard_Boolean status);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		/****** TFunction_Logbook::Dump ******/
+		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1631,8 +1631,8 @@ Prints th data of the attributes (touched, impacted and valid labels).
 ") Dump;
 		virtual Standard_OStream & Dump(std::ostream &OutValue);
 
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		/****** TFunction_Logbook::GetID ******/
+		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "Return
 -------
@@ -1644,8 +1644,8 @@ Returns the guid for logbook attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
-		/****************** GetImpacted ******************/
-		/**** md5 signature: 576a1cfb4d06b1f257db388ff1c0e2ed ****/
+		/****** TFunction_Logbook::GetImpacted ******/
+		/****** md5 signature: 576a1cfb4d06b1f257db388ff1c0e2ed ******/
 		%feature("compactdefaultargs") GetImpacted;
 		%feature("autodoc", "Return
 -------
@@ -1657,8 +1657,8 @@ Returns the map of impacted labels contained in this logbook.
 ") GetImpacted;
 		const TDF_LabelMap & GetImpacted();
 
-		/****************** GetTouched ******************/
-		/**** md5 signature: 53c5bf228c255d7a060952628ae1a46c ****/
+		/****** TFunction_Logbook::GetTouched ******/
+		/****** md5 signature: 53c5bf228c255d7a060952628ae1a46c ******/
 		%feature("compactdefaultargs") GetTouched;
 		%feature("autodoc", "Return
 -------
@@ -1670,8 +1670,8 @@ Returns the map of touched labels in this logbook. a touched label is the one mo
 ") GetTouched;
 		const TDF_LabelMap & GetTouched();
 
-		/****************** GetValid ******************/
-		/**** md5 signature: c371157b895ee66ea6eea74aede1c22d ****/
+		/****** TFunction_Logbook::GetValid ******/
+		/****** md5 signature: c371157b895ee66ea6eea74aede1c22d ******/
 		%feature("compactdefaultargs") GetValid;
 		%feature("autodoc", "Return
 -------
@@ -1683,8 +1683,8 @@ Returns the map of valid labels in this logbook.
 ") GetValid;
 		const TDF_LabelMap & GetValid();
 
-		/****************** GetValid ******************/
-		/**** md5 signature: 6b7cdd40d3f35242487d2c50906e4ad3 ****/
+		/****** TFunction_Logbook::GetValid ******/
+		/****** md5 signature: 6b7cdd40d3f35242487d2c50906e4ad3 ******/
 		%feature("compactdefaultargs") GetValid;
 		%feature("autodoc", "
 Parameters
@@ -1701,8 +1701,8 @@ No available documentation.
 ") GetValid;
 		void GetValid(TDF_LabelMap & Ls);
 
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		/****** TFunction_Logbook::ID ******/
+		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -1714,8 +1714,8 @@ Returns the id of the attribute.
 ") ID;
 		const Standard_GUID & ID();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** TFunction_Logbook::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1727,8 +1727,8 @@ Returns status of execution.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
+		/****** TFunction_Logbook::IsEmpty ******/
+		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1740,8 +1740,8 @@ No available documentation.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** IsModified ******************/
-		/**** md5 signature: dde8156280d736d3666aed8619938e79 ****/
+		/****** TFunction_Logbook::IsModified ******/
+		/****** md5 signature: dde8156280d736d3666aed8619938e79 ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "
 Parameters
@@ -1759,8 +1759,8 @@ Returns true if the label l is touched or impacted. this method is called by <tf
 ") IsModified;
 		Standard_Boolean IsModified(const TDF_Label & L, const Standard_Boolean WithChildren = Standard_False);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
+		/****** TFunction_Logbook::NewEmpty ******/
+		/****** md5 signature: 8be17a4d2a4deeee198571712e76805e ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -1772,8 +1772,8 @@ Returns a new empty instance of the attribute.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ****/
+		/****** TFunction_Logbook::Paste ******/
+		/****** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -1791,8 +1791,8 @@ Pastes the attribute to another label.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
-		/****************** Restore ******************/
-		/**** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ****/
+		/****** TFunction_Logbook::Restore ******/
+		/****** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -1809,8 +1809,8 @@ Undos (and redos) the attribute.
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & with);
 
-		/****************** Set ******************/
-		/**** md5 signature: da8c497eb15c2b0854ab324832db3bdd ****/
+		/****** TFunction_Logbook::Set ******/
+		/****** md5 signature: da8c497eb15c2b0854ab324832db3bdd ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -1827,8 +1827,8 @@ Finds or creates a tfunction_logbook attribute at the root label accessed by <ac
 ") Set;
 		static opencascade::handle<TFunction_Logbook> Set(const TDF_Label & Access);
 
-		/****************** SetImpacted ******************/
-		/**** md5 signature: 3582237b711c5897b84ba82741b6ee29 ****/
+		/****** TFunction_Logbook::SetImpacted ******/
+		/****** md5 signature: 3582237b711c5897b84ba82741b6ee29 ******/
 		%feature("compactdefaultargs") SetImpacted;
 		%feature("autodoc", "
 Parameters
@@ -1846,8 +1846,8 @@ Sets the label l as an impacted label in this logbook. this method is called by 
 ") SetImpacted;
 		void SetImpacted(const TDF_Label & L, const Standard_Boolean WithChildren = Standard_False);
 
-		/****************** SetTouched ******************/
-		/**** md5 signature: ceda765442b14a3d1f9b806250dac6f0 ****/
+		/****** TFunction_Logbook::SetTouched ******/
+		/****** md5 signature: ceda765442b14a3d1f9b806250dac6f0 ******/
 		%feature("compactdefaultargs") SetTouched;
 		%feature("autodoc", "
 Parameters
@@ -1864,8 +1864,8 @@ Sets the label l as a touched label in this logbook. in other words, l is unders
 ") SetTouched;
 		void SetTouched(const TDF_Label & L);
 
-		/****************** SetValid ******************/
-		/**** md5 signature: b1d61fdb8a3a99162f18a38a51e5b463 ****/
+		/****** TFunction_Logbook::SetValid ******/
+		/****** md5 signature: b1d61fdb8a3a99162f18a38a51e5b463 ******/
 		%feature("compactdefaultargs") SetValid;
 		%feature("autodoc", "
 Parameters
@@ -1883,8 +1883,8 @@ Sets the label l as a valid label in this logbook.
 ") SetValid;
 		void SetValid(const TDF_Label & L, const Standard_Boolean WithChildren = Standard_False);
 
-		/****************** SetValid ******************/
-		/**** md5 signature: c9a582502dc92dc4c7869630fd34c08c ****/
+		/****** TFunction_Logbook::SetValid ******/
+		/****** md5 signature: c9a582502dc92dc4c7869630fd34c08c ******/
 		%feature("compactdefaultargs") SetValid;
 		%feature("autodoc", "
 Parameters
@@ -1917,8 +1917,8 @@ No available documentation.
 ************************/
 class TFunction_Scope : public TDF_Attribute {
 	public:
-		/****************** TFunction_Scope ******************/
-		/**** md5 signature: 2a3d20c34a691f5bce9328340cecc4d6 ****/
+		/****** TFunction_Scope::TFunction_Scope ******/
+		/****** md5 signature: 2a3d20c34a691f5bce9328340cecc4d6 ******/
 		%feature("compactdefaultargs") TFunction_Scope;
 		%feature("autodoc", "Return
 -------
@@ -1930,8 +1930,8 @@ No available documentation.
 ") TFunction_Scope;
 		 TFunction_Scope();
 
-		/****************** AddFunction ******************/
-		/**** md5 signature: 37b220f272e7943ba34d29bf3b163d59 ****/
+		/****** TFunction_Scope::AddFunction ******/
+		/****** md5 signature: 37b220f272e7943ba34d29bf3b163d59 ******/
 		%feature("compactdefaultargs") AddFunction;
 		%feature("autodoc", "
 Parameters
@@ -1948,8 +1948,8 @@ Adds a function to the scope of functions.
 ") AddFunction;
 		Standard_Boolean AddFunction(const TDF_Label & L);
 
-		/****************** ChangeFunctions ******************/
-		/**** md5 signature: ef1f7dd06977445ecb5382170702b5c3 ****/
+		/****** TFunction_Scope::ChangeFunctions ******/
+		/****** md5 signature: ef1f7dd06977445ecb5382170702b5c3 ******/
 		%feature("compactdefaultargs") ChangeFunctions;
 		%feature("autodoc", "Return
 -------
@@ -1961,8 +1961,8 @@ Returns the scope of functions for modification. warning: don't use this method 
 ") ChangeFunctions;
 		TFunction_DoubleMapOfIntegerLabel & ChangeFunctions();
 
-		/****************** Dump ******************/
-		/**** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ****/
+		/****** TFunction_Scope::Dump ******/
+		/****** md5 signature: 3398f1042b24f9ae49f7e8da6125f793 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -1978,8 +1978,8 @@ No available documentation.
 ") Dump;
 		virtual Standard_OStream & Dump(std::ostream &OutValue);
 
-		/****************** GetFreeID ******************/
-		/**** md5 signature: 34e64d8664d6cf8b1d7cb4b452f9928a ****/
+		/****** TFunction_Scope::GetFreeID ******/
+		/****** md5 signature: 34e64d8664d6cf8b1d7cb4b452f9928a ******/
 		%feature("compactdefaultargs") GetFreeID;
 		%feature("autodoc", "Return
 -------
@@ -1991,8 +1991,8 @@ No available documentation.
 ") GetFreeID;
 		Standard_Integer GetFreeID();
 
-		/****************** GetFunction ******************/
-		/**** md5 signature: ab240b61c30829fda3ef82df9f0ff977 ****/
+		/****** TFunction_Scope::GetFunction ******/
+		/****** md5 signature: ab240b61c30829fda3ef82df9f0ff977 ******/
 		%feature("compactdefaultargs") GetFunction;
 		%feature("autodoc", "
 Parameters
@@ -2009,8 +2009,8 @@ Returns an id of the function.
 ") GetFunction;
 		Standard_Integer GetFunction(const TDF_Label & L);
 
-		/****************** GetFunction ******************/
-		/**** md5 signature: 8e5945ee76dad41e8663060b9d376836 ****/
+		/****** TFunction_Scope::GetFunction ******/
+		/****** md5 signature: 8e5945ee76dad41e8663060b9d376836 ******/
 		%feature("compactdefaultargs") GetFunction;
 		%feature("autodoc", "
 Parameters
@@ -2027,8 +2027,8 @@ Returns the label of the function with this id.
 ") GetFunction;
 		const TDF_Label & GetFunction(const Standard_Integer ID);
 
-		/****************** GetFunctions ******************/
-		/**** md5 signature: 5ccfa051f05b966233870286f13ddb26 ****/
+		/****** TFunction_Scope::GetFunctions ******/
+		/****** md5 signature: 5ccfa051f05b966233870286f13ddb26 ******/
 		%feature("compactdefaultargs") GetFunctions;
 		%feature("autodoc", "Return
 -------
@@ -2040,8 +2040,8 @@ Returns the scope of functions.
 ") GetFunctions;
 		const TFunction_DoubleMapOfIntegerLabel & GetFunctions();
 
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		/****** TFunction_Scope::GetID ******/
+		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "Return
 -------
@@ -2053,8 +2053,8 @@ Returns the guid for scope attribute. instant methods =============== constructo
 ") GetID;
 		static const Standard_GUID & GetID();
 
-		/****************** GetLogbook ******************/
-		/**** md5 signature: 413c9b5e90f1e3a8ba4fe0ac434c95a4 ****/
+		/****** TFunction_Scope::GetLogbook ******/
+		/****** md5 signature: 413c9b5e90f1e3a8ba4fe0ac434c95a4 ******/
 		%feature("compactdefaultargs") GetLogbook;
 		%feature("autodoc", "Return
 -------
@@ -2066,8 +2066,8 @@ Returns the logbook used in tfunction_driver methods. implementation of attribut
 ") GetLogbook;
 		opencascade::handle<TFunction_Logbook> GetLogbook();
 
-		/****************** HasFunction ******************/
-		/**** md5 signature: f94fb1a6238a09ba5d0395d1843e9269 ****/
+		/****** TFunction_Scope::HasFunction ******/
+		/****** md5 signature: f94fb1a6238a09ba5d0395d1843e9269 ******/
 		%feature("compactdefaultargs") HasFunction;
 		%feature("autodoc", "
 Parameters
@@ -2084,8 +2084,8 @@ Returns true if the function exists with such an id.
 ") HasFunction;
 		Standard_Boolean HasFunction(const Standard_Integer ID);
 
-		/****************** HasFunction ******************/
-		/**** md5 signature: 5680fbeb4adab29afcbd0451803740ce ****/
+		/****** TFunction_Scope::HasFunction ******/
+		/****** md5 signature: 5680fbeb4adab29afcbd0451803740ce ******/
 		%feature("compactdefaultargs") HasFunction;
 		%feature("autodoc", "
 Parameters
@@ -2102,8 +2102,8 @@ Returns true if the label contains a function of this scope.
 ") HasFunction;
 		Standard_Boolean HasFunction(const TDF_Label & L);
 
-		/****************** ID ******************/
-		/**** md5 signature: 4697ce8a095fa6dcef0217708d19718f ****/
+		/****** TFunction_Scope::ID ******/
+		/****** md5 signature: 4697ce8a095fa6dcef0217708d19718f ******/
 		%feature("compactdefaultargs") ID;
 		%feature("autodoc", "Return
 -------
@@ -2115,8 +2115,8 @@ No available documentation.
 ") ID;
 		const Standard_GUID & ID();
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: 8be17a4d2a4deeee198571712e76805e ****/
+		/****** TFunction_Scope::NewEmpty ******/
+		/****** md5 signature: 8be17a4d2a4deeee198571712e76805e ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -2128,8 +2128,8 @@ No available documentation.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ****/
+		/****** TFunction_Scope::Paste ******/
+		/****** md5 signature: 05e5f8f16a08ca8388ac65d3be603584 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -2147,8 +2147,8 @@ No available documentation.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & into, const opencascade::handle<TDF_RelocationTable> & RT);
 
-		/****************** RemoveAllFunctions ******************/
-		/**** md5 signature: 5ae16be68a364bbe960c9844c0b04f14 ****/
+		/****** TFunction_Scope::RemoveAllFunctions ******/
+		/****** md5 signature: 5ae16be68a364bbe960c9844c0b04f14 ******/
 		%feature("compactdefaultargs") RemoveAllFunctions;
 		%feature("autodoc", "Return
 -------
@@ -2160,8 +2160,8 @@ Removes all functions from the scope of functions.
 ") RemoveAllFunctions;
 		void RemoveAllFunctions();
 
-		/****************** RemoveFunction ******************/
-		/**** md5 signature: ca9467e990e495e45a89e96b8951f5fc ****/
+		/****** TFunction_Scope::RemoveFunction ******/
+		/****** md5 signature: ca9467e990e495e45a89e96b8951f5fc ******/
 		%feature("compactdefaultargs") RemoveFunction;
 		%feature("autodoc", "
 Parameters
@@ -2178,8 +2178,8 @@ Removes a function from the scope of functions.
 ") RemoveFunction;
 		Standard_Boolean RemoveFunction(const TDF_Label & L);
 
-		/****************** RemoveFunction ******************/
-		/**** md5 signature: ba9a32cc375c7861589a52671876fd4a ****/
+		/****** TFunction_Scope::RemoveFunction ******/
+		/****** md5 signature: ba9a32cc375c7861589a52671876fd4a ******/
 		%feature("compactdefaultargs") RemoveFunction;
 		%feature("autodoc", "
 Parameters
@@ -2196,8 +2196,8 @@ Removes a function from the scope of functions.
 ") RemoveFunction;
 		Standard_Boolean RemoveFunction(const Standard_Integer ID);
 
-		/****************** Restore ******************/
-		/**** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ****/
+		/****** TFunction_Scope::Restore ******/
+		/****** md5 signature: 317305acc3f3ea9c2fd983a7ed00e566 ******/
 		%feature("compactdefaultargs") Restore;
 		%feature("autodoc", "
 Parameters
@@ -2214,8 +2214,8 @@ No available documentation.
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & with);
 
-		/****************** Set ******************/
-		/**** md5 signature: a322379ca65220ce15bff86f94c55132 ****/
+		/****** TFunction_Scope::Set ******/
+		/****** md5 signature: a322379ca65220ce15bff86f94c55132 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2232,8 +2232,8 @@ Static methods ============== finds or creates a tfunction_scope attribute at th
 ") Set;
 		static opencascade::handle<TFunction_Scope> Set(const TDF_Label & Access);
 
-		/****************** SetFreeID ******************/
-		/**** md5 signature: 6e979e75ad977ad04fe0333367a5e5b4 ****/
+		/****** TFunction_Scope::SetFreeID ******/
+		/****** md5 signature: 6e979e75ad977ad04fe0333367a5e5b4 ******/
 		%feature("compactdefaultargs") SetFreeID;
 		%feature("autodoc", "
 Parameters

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define STEPEDITDOCSTRING
 "STEPEdit module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_stepedit.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepedit.html"
 %enddef
 %module (package="OCC.Core", docstring=STEPEDITDOCSTRING) STEPEdit
 
@@ -97,8 +97,8 @@ from OCC.Core.Exception import *
 %rename(stepedit) STEPEdit;
 class STEPEdit {
 	public:
-		/****************** NewModel ******************/
-		/**** md5 signature: 5d046f8a896b3925176ec22e8b9b5c68 ****/
+		/****** STEPEdit::NewModel ******/
+		/****** md5 signature: 5d046f8a896b3925176ec22e8b9b5c68 ******/
 		%feature("compactdefaultargs") NewModel;
 		%feature("autodoc", "Return
 -------
@@ -110,8 +110,8 @@ Returns a new empty stepmodel fit for step i.e. with its header determined from 
 ") NewModel;
 		static opencascade::handle<StepData_StepModel> NewModel();
 
-		/****************** NewSelectPlacedItem ******************/
-		/**** md5 signature: 2d905a578b7702668578d94356db642f ****/
+		/****** STEPEdit::NewSelectPlacedItem ******/
+		/****** md5 signature: 2d905a578b7702668578d94356db642f ******/
 		%feature("compactdefaultargs") NewSelectPlacedItem;
 		%feature("autodoc", "Return
 -------
@@ -123,8 +123,8 @@ Creates a selection for placed items, i.e. mappeditem or contextdependentshapere
 ") NewSelectPlacedItem;
 		static opencascade::handle<IFSelect_SelectSignature> NewSelectPlacedItem();
 
-		/****************** NewSelectSDR ******************/
-		/**** md5 signature: 37e258563c0ffa07a2c764f11d79dba9 ****/
+		/****** STEPEdit::NewSelectSDR ******/
+		/****** md5 signature: 37e258563c0ffa07a2c764f11d79dba9 ******/
 		%feature("compactdefaultargs") NewSelectSDR;
 		%feature("autodoc", "Return
 -------
@@ -136,8 +136,8 @@ Creates a selection for shapedefinitionrepresentation by default searches among 
 ") NewSelectSDR;
 		static opencascade::handle<IFSelect_SelectSignature> NewSelectSDR();
 
-		/****************** NewSelectShapeRepr ******************/
-		/**** md5 signature: c0c5219f2d5d67e4325e19633e361b20 ****/
+		/****** STEPEdit::NewSelectShapeRepr ******/
+		/****** md5 signature: c0c5219f2d5d67e4325e19633e361b20 ******/
 		%feature("compactdefaultargs") NewSelectShapeRepr;
 		%feature("autodoc", "Return
 -------
@@ -149,8 +149,8 @@ Creates a selection for shaperepresentation and its sub-types, plus contextdepen
 ") NewSelectShapeRepr;
 		static opencascade::handle<IFSelect_SelectSignature> NewSelectShapeRepr();
 
-		/****************** Protocol ******************/
-		/**** md5 signature: 31c7a149229dc468e03e81924e053035 ****/
+		/****** STEPEdit::Protocol ******/
+		/****** md5 signature: 31c7a149229dc468e03e81924e053035 ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -162,8 +162,8 @@ Returns a protocol fit for step (creates the first time).
 ") Protocol;
 		static opencascade::handle<Interface_Protocol> Protocol();
 
-		/****************** SignType ******************/
-		/**** md5 signature: aad20d8fbf414a763e6c94610b3ba1c6 ****/
+		/****** STEPEdit::SignType ******/
+		/****** md5 signature: aad20d8fbf414a763e6c94610b3ba1c6 ******/
 		%feature("compactdefaultargs") SignType;
 		%feature("autodoc", "Return
 -------
@@ -189,8 +189,8 @@ Returns a signtype fit for step (creates the first time).
 *****************************/
 class STEPEdit_EditContext : public IFSelect_Editor {
 	public:
-		/****************** STEPEdit_EditContext ******************/
-		/**** md5 signature: 44343bfbe79ab3c4766525e283e3bbcb ****/
+		/****** STEPEdit_EditContext::STEPEdit_EditContext ******/
+		/****** md5 signature: 44343bfbe79ab3c4766525e283e3bbcb ******/
 		%feature("compactdefaultargs") STEPEdit_EditContext;
 		%feature("autodoc", "Return
 -------
@@ -202,8 +202,8 @@ No available documentation.
 ") STEPEdit_EditContext;
 		 STEPEdit_EditContext();
 
-		/****************** Apply ******************/
-		/**** md5 signature: 7128480b7f4b1ff6fd959731640e27fc ****/
+		/****** STEPEdit_EditContext::Apply ******/
+		/****** md5 signature: 7128480b7f4b1ff6fd959731640e27fc ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "
 Parameters
@@ -222,8 +222,8 @@ No available documentation.
 ") Apply;
 		Standard_Boolean Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** Label ******************/
-		/**** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ****/
+		/****** STEPEdit_EditContext::Label ******/
+		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -235,8 +235,8 @@ No available documentation.
 ") Label;
 		TCollection_AsciiString Label();
 
-		/****************** Load ******************/
-		/**** md5 signature: fbb84192d1ec7737c4c84905239a2df8 ****/
+		/****** STEPEdit_EditContext::Load ******/
+		/****** md5 signature: fbb84192d1ec7737c4c84905239a2df8 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -255,8 +255,8 @@ No available documentation.
 ") Load;
 		Standard_Boolean Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** Recognize ******************/
-		/**** md5 signature: 745b42e0c753cb6baed4d66bbf94e5b8 ****/
+		/****** STEPEdit_EditContext::Recognize ******/
+		/****** md5 signature: 745b42e0c753cb6baed4d66bbf94e5b8 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -273,8 +273,8 @@ No available documentation.
 ") Recognize;
 		Standard_Boolean Recognize(const opencascade::handle<IFSelect_EditForm> & form);
 
-		/****************** StringValue ******************/
-		/**** md5 signature: 4371620dd4c31b906a08f6f8ee98f04a ****/
+		/****** STEPEdit_EditContext::StringValue ******/
+		/****** md5 signature: 4371620dd4c31b906a08f6f8ee98f04a ******/
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", "
 Parameters
@@ -308,8 +308,8 @@ No available documentation.
 *************************/
 class STEPEdit_EditSDR : public IFSelect_Editor {
 	public:
-		/****************** STEPEdit_EditSDR ******************/
-		/**** md5 signature: 484d29719e65840d392397ba8b0fdc1e ****/
+		/****** STEPEdit_EditSDR::STEPEdit_EditSDR ******/
+		/****** md5 signature: 484d29719e65840d392397ba8b0fdc1e ******/
 		%feature("compactdefaultargs") STEPEdit_EditSDR;
 		%feature("autodoc", "Return
 -------
@@ -321,8 +321,8 @@ No available documentation.
 ") STEPEdit_EditSDR;
 		 STEPEdit_EditSDR();
 
-		/****************** Apply ******************/
-		/**** md5 signature: 7128480b7f4b1ff6fd959731640e27fc ****/
+		/****** STEPEdit_EditSDR::Apply ******/
+		/****** md5 signature: 7128480b7f4b1ff6fd959731640e27fc ******/
 		%feature("compactdefaultargs") Apply;
 		%feature("autodoc", "
 Parameters
@@ -341,8 +341,8 @@ No available documentation.
 ") Apply;
 		Standard_Boolean Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** Label ******************/
-		/**** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ****/
+		/****** STEPEdit_EditSDR::Label ******/
+		/****** md5 signature: e2fbf0e262882b3e9ec00c539ad3471b ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -354,8 +354,8 @@ No available documentation.
 ") Label;
 		TCollection_AsciiString Label();
 
-		/****************** Load ******************/
-		/**** md5 signature: fbb84192d1ec7737c4c84905239a2df8 ****/
+		/****** STEPEdit_EditSDR::Load ******/
+		/****** md5 signature: fbb84192d1ec7737c4c84905239a2df8 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -374,8 +374,8 @@ No available documentation.
 ") Load;
 		Standard_Boolean Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** Recognize ******************/
-		/**** md5 signature: 745b42e0c753cb6baed4d66bbf94e5b8 ****/
+		/****** STEPEdit_EditSDR::Recognize ******/
+		/****** md5 signature: 745b42e0c753cb6baed4d66bbf94e5b8 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -392,8 +392,8 @@ No available documentation.
 ") Recognize;
 		Standard_Boolean Recognize(const opencascade::handle<IFSelect_EditForm> & form);
 
-		/****************** StringValue ******************/
-		/**** md5 signature: 4371620dd4c31b906a08f6f8ee98f04a ****/
+		/****** STEPEdit_EditSDR::StringValue ******/
+		/****** md5 signature: 4371620dd4c31b906a08f6f8ee98f04a ******/
 		%feature("compactdefaultargs") StringValue;
 		%feature("autodoc", "
 Parameters

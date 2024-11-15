@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RESOURCEDOCSTRING
 "Resource module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_resource.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_resource.html"
 %enddef
 %module (package="OCC.Core", docstring=RESOURCEDOCSTRING) Resource
 
@@ -189,8 +189,8 @@ typedef NCollection_DataMap<TCollection_AsciiString, TCollection_ExtendedString>
 ********************************/
 class Resource_LexicalCompare {
 	public:
-		/****************** Resource_LexicalCompare ******************/
-		/**** md5 signature: 43d39cb1a0a098b9254c491f2ca1c67a ****/
+		/****** Resource_LexicalCompare::Resource_LexicalCompare ******/
+		/****** md5 signature: 43d39cb1a0a098b9254c491f2ca1c67a ******/
 		%feature("compactdefaultargs") Resource_LexicalCompare;
 		%feature("autodoc", "Return
 -------
@@ -202,8 +202,8 @@ No available documentation.
 ") Resource_LexicalCompare;
 		 Resource_LexicalCompare();
 
-		/****************** IsLower ******************/
-		/**** md5 signature: 18ef6ebb123c53ca5a6b5e0e6e18c888 ****/
+		/****** Resource_LexicalCompare::IsLower ******/
+		/****** md5 signature: 18ef6ebb123c53ca5a6b5e0e6e18c888 ******/
 		%feature("compactdefaultargs") IsLower;
 		%feature("autodoc", "
 Parameters
@@ -235,8 +235,8 @@ Returns true if <left> is lower than <right>.
 *************************/
 class Resource_Manager : public Standard_Transient {
 	public:
-		/****************** Resource_Manager ******************/
-		/**** md5 signature: 2c3dc4ee36f9982ef8c27d548accdc18 ****/
+		/****** Resource_Manager::Resource_Manager ******/
+		/****** md5 signature: 2c3dc4ee36f9982ef8c27d548accdc18 ******/
 		%feature("compactdefaultargs") Resource_Manager;
 		%feature("autodoc", "
 Parameters
@@ -254,8 +254,8 @@ Create a resource manager. attempts to find the two following files: $csf_`aname
 ") Resource_Manager;
 		 Resource_Manager(Standard_CString aName, const Standard_Boolean Verbose = Standard_False);
 
-		/****************** Resource_Manager ******************/
-		/**** md5 signature: 94a9bf1e751906a5d5dd7b470590375c ****/
+		/****** Resource_Manager::Resource_Manager ******/
+		/****** md5 signature: 94a9bf1e751906a5d5dd7b470590375c ******/
 		%feature("compactdefaultargs") Resource_Manager;
 		%feature("autodoc", "Return
 -------
@@ -267,8 +267,8 @@ Create an empty resource manager.
 ") Resource_Manager;
 		 Resource_Manager();
 
-		/****************** Resource_Manager ******************/
-		/**** md5 signature: 1f6d540d565637ee2761b199541d8d4f ****/
+		/****** Resource_Manager::Resource_Manager ******/
+		/****** md5 signature: 1f6d540d565637ee2761b199541d8d4f ******/
 		%feature("compactdefaultargs") Resource_Manager;
 		%feature("autodoc", "
 Parameters
@@ -288,8 +288,8 @@ Create a resource manager. @param thename [in] description file name @param thed
 ") Resource_Manager;
 		 Resource_Manager(TCollection_AsciiString theName, TCollection_AsciiString theDefaultsDirectory, TCollection_AsciiString theUserDefaultsDirectory, const Standard_Boolean theIsVerbose = Standard_False);
 
-		/****************** ExtValue ******************/
-		/**** md5 signature: eacb0ae55d7f76df617e14be66e1f1b0 ****/
+		/****** Resource_Manager::ExtValue ******/
+		/****** md5 signature: eacb0ae55d7f76df617e14be66e1f1b0 ******/
 		%feature("compactdefaultargs") ExtValue;
 		%feature("autodoc", "
 Parameters
@@ -306,8 +306,8 @@ Gets the value of an extstring resource according to its instance and its type.
 ") ExtValue;
 		virtual Standard_ExtString ExtValue(Standard_CString aResourceName);
 
-		/****************** Find ******************/
-		/**** md5 signature: ad646ce41630b595ea3f002fe0683f59 ****/
+		/****** Resource_Manager::Find ******/
+		/****** md5 signature: ad646ce41630b595ea3f002fe0683f59 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -324,8 +324,8 @@ Returns true if the resource does exist.
 ") Find;
 		Standard_Boolean Find(Standard_CString aResource);
 
-		/****************** Find ******************/
-		/**** md5 signature: 294981535cdceb04223d5675a243c4c7 ****/
+		/****** Resource_Manager::Find ******/
+		/****** md5 signature: 294981535cdceb04223d5675a243c4c7 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -343,8 +343,8 @@ Returns true if the resource does exist.
 ") Find;
 		Standard_Boolean Find(TCollection_AsciiString theResource, TCollection_AsciiString & theValue);
 
-		/****************** GetMap ******************/
-		/**** md5 signature: 0a184cd99b151391a734472d41136b3b ****/
+		/****** Resource_Manager::GetMap ******/
+		/****** md5 signature: 0a184cd99b151391a734472d41136b3b ******/
 		%feature("compactdefaultargs") GetMap;
 		%feature("autodoc", "
 Parameters
@@ -361,8 +361,8 @@ Returns internal ref or user map with parameters .
 ") GetMap;
 		Resource_DataMapOfAsciiStringAsciiString & GetMap(Standard_Boolean theRefMap = Standard_True);
 
-		/****************** GetResourcePath ******************/
-		/**** md5 signature: e37f4ebfe1a5c28a696f168d5c81f4e2 ****/
+		/****** Resource_Manager::GetResourcePath ******/
+		/****** md5 signature: e37f4ebfe1a5c28a696f168d5c81f4e2 ******/
 		%feature("compactdefaultargs") GetResourcePath;
 		%feature("autodoc", "
 Parameters
@@ -381,8 +381,8 @@ Gets the resource file full path by its name. if corresponding environment varia
 ") GetResourcePath;
 		static void GetResourcePath(TCollection_AsciiString & aPath, Standard_CString aName, const Standard_Boolean isUserDefaults);
 
-		/****************** Integer ******************/
-		/**** md5 signature: 459f06c743be8fcf9fa4e5326394951e ****/
+		/****** Resource_Manager::Integer ******/
+		/****** md5 signature: 459f06c743be8fcf9fa4e5326394951e ******/
 		%feature("compactdefaultargs") Integer;
 		%feature("autodoc", "
 Parameters
@@ -399,8 +399,8 @@ Gets the value of an integer resource according to its instance and its type.
 ") Integer;
 		virtual Standard_Integer Integer(Standard_CString aResourceName);
 
-		/****************** Real ******************/
-		/**** md5 signature: b6af1db9d303b345bf398c6e044f1093 ****/
+		/****** Resource_Manager::Real ******/
+		/****** md5 signature: b6af1db9d303b345bf398c6e044f1093 ******/
 		%feature("compactdefaultargs") Real;
 		%feature("autodoc", "
 Parameters
@@ -417,8 +417,8 @@ Gets the value of a real resource according to its instance and its type.
 ") Real;
 		virtual Standard_Real Real(Standard_CString aResourceName);
 
-		/****************** Save ******************/
-		/**** md5 signature: c46b0608963cc711253d0dc474525a23 ****/
+		/****** Resource_Manager::Save ******/
+		/****** md5 signature: c46b0608963cc711253d0dc474525a23 ******/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "Return
 -------
@@ -430,8 +430,8 @@ Save the user resource structure in the specified file. creates the file if it d
 ") Save;
 		Standard_Boolean Save();
 
-		/****************** SetResource ******************/
-		/**** md5 signature: 5cee39e81388e9738fbd5ea60762445e ****/
+		/****** Resource_Manager::SetResource ******/
+		/****** md5 signature: 5cee39e81388e9738fbd5ea60762445e ******/
 		%feature("compactdefaultargs") SetResource;
 		%feature("autodoc", "
 Parameters
@@ -449,8 +449,8 @@ Sets the new value of an integer resource. if the resource does not exist, it is
 ") SetResource;
 		virtual void SetResource(Standard_CString aResourceName, const Standard_Integer aValue);
 
-		/****************** SetResource ******************/
-		/**** md5 signature: 5adf64f7de0821b4e2982633edbf9ea2 ****/
+		/****** Resource_Manager::SetResource ******/
+		/****** md5 signature: 5adf64f7de0821b4e2982633edbf9ea2 ******/
 		%feature("compactdefaultargs") SetResource;
 		%feature("autodoc", "
 Parameters
@@ -468,8 +468,8 @@ Sets the new value of a real resource. if the resource does not exist, it is cre
 ") SetResource;
 		virtual void SetResource(Standard_CString aResourceName, const Standard_Real aValue);
 
-		/****************** SetResource ******************/
-		/**** md5 signature: 8beffa88923a65f02524a44eab47c796 ****/
+		/****** Resource_Manager::SetResource ******/
+		/****** md5 signature: 8beffa88923a65f02524a44eab47c796 ******/
 		%feature("compactdefaultargs") SetResource;
 		%feature("autodoc", "
 Parameters
@@ -487,8 +487,8 @@ Sets the new value of an cstring resource. if the resource does not exist, it is
 ") SetResource;
 		virtual void SetResource(Standard_CString aResourceName, Standard_CString aValue);
 
-		/****************** SetResource ******************/
-		/**** md5 signature: c3adf5010bcf4e1022068e87a43da2c6 ****/
+		/****** Resource_Manager::SetResource ******/
+		/****** md5 signature: c3adf5010bcf4e1022068e87a43da2c6 ******/
 		%feature("compactdefaultargs") SetResource;
 		%feature("autodoc", "
 Parameters
@@ -506,8 +506,8 @@ Sets the new value of an extstring resource. if the resource does not exist, it 
 ") SetResource;
 		virtual void SetResource(Standard_CString aResourceName, const Standard_ExtString aValue);
 
-		/****************** Value ******************/
-		/**** md5 signature: 704eea869ed3ea373c063217f10964ef ****/
+		/****** Resource_Manager::Value ******/
+		/****** md5 signature: 704eea869ed3ea373c063217f10964ef ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -540,8 +540,8 @@ Gets the value of a cstring resource according to its instance and its type.
 *************************/
 class Resource_Unicode {
 	public:
-		/****************** ConvertBig5ToUnicode ******************/
-		/**** md5 signature: 4168524e0213960fd803d4807ed33f90 ****/
+		/****** Resource_Unicode::ConvertBig5ToUnicode ******/
+		/****** md5 signature: 4168524e0213960fd803d4807ed33f90 ******/
 		%feature("compactdefaultargs") ConvertBig5ToUnicode;
 		%feature("autodoc", "
 Parameters
@@ -559,8 +559,8 @@ Converts non-ascii cstring <fromstr> in big5 format to unicode extendedstring <t
 ") ConvertBig5ToUnicode;
 		static Standard_Boolean ConvertBig5ToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
-		/****************** ConvertEUCToUnicode ******************/
-		/**** md5 signature: a47f65202dbb4ad94609e631aefd3e71 ****/
+		/****** Resource_Unicode::ConvertEUCToUnicode ******/
+		/****** md5 signature: a47f65202dbb4ad94609e631aefd3e71 ******/
 		%feature("compactdefaultargs") ConvertEUCToUnicode;
 		%feature("autodoc", "
 Parameters
@@ -578,8 +578,8 @@ Converts non-ascii cstring <fromstr> in euc format to unicode extendedstring <to
 ") ConvertEUCToUnicode;
 		static void ConvertEUCToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
-		/****************** ConvertFormatToUnicode ******************/
-		/**** md5 signature: 092af2a29361b36b8f1d60b684d8e660 ****/
+		/****** Resource_Unicode::ConvertFormatToUnicode ******/
+		/****** md5 signature: 092af2a29361b36b8f1d60b684d8e660 ******/
 		%feature("compactdefaultargs") ConvertFormatToUnicode;
 		%feature("autodoc", "
 Parameters
@@ -597,8 +597,8 @@ Converts the non-ascii c string (as specified by getformat()) to the unicode str
 ") ConvertFormatToUnicode;
 		static void ConvertFormatToUnicode(Standard_CString theFromStr, TCollection_ExtendedString & theToStr);
 
-		/****************** ConvertFormatToUnicode ******************/
-		/**** md5 signature: 1a39a61476a07a6c419d95aa2f936c87 ****/
+		/****** Resource_Unicode::ConvertFormatToUnicode ******/
+		/****** md5 signature: 1a39a61476a07a6c419d95aa2f936c87 ******/
 		%feature("compactdefaultargs") ConvertFormatToUnicode;
 		%feature("autodoc", "
 Parameters
@@ -617,8 +617,8 @@ Converts the non-ascii c string in specified format to the unicode string of ext
 ") ConvertFormatToUnicode;
 		static void ConvertFormatToUnicode(const Resource_FormatType theFormat, Standard_CString theFromStr, TCollection_ExtendedString & theToStr);
 
-		/****************** ConvertGBKToUnicode ******************/
-		/**** md5 signature: 55ed525176f6d874f96d41764a2499d6 ****/
+		/****** Resource_Unicode::ConvertGBKToUnicode ******/
+		/****** md5 signature: 55ed525176f6d874f96d41764a2499d6 ******/
 		%feature("compactdefaultargs") ConvertGBKToUnicode;
 		%feature("autodoc", "
 Parameters
@@ -636,8 +636,8 @@ Converts non-ascii cstring <fromstr> in gbk format to unicode extendedstring <to
 ") ConvertGBKToUnicode;
 		static Standard_Boolean ConvertGBKToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
-		/****************** ConvertGBToUnicode ******************/
-		/**** md5 signature: a22cad6ea4c1a1e6cd398d067edaa57c ****/
+		/****** Resource_Unicode::ConvertGBToUnicode ******/
+		/****** md5 signature: a22cad6ea4c1a1e6cd398d067edaa57c ******/
 		%feature("compactdefaultargs") ConvertGBToUnicode;
 		%feature("autodoc", "
 Parameters
@@ -655,8 +655,8 @@ Converts non-ascii cstring <fromstr> in gb format to unicode extendedstring <tos
 ") ConvertGBToUnicode;
 		static void ConvertGBToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
-		/****************** ConvertSJISToUnicode ******************/
-		/**** md5 signature: 3e6f135c27c0b105b7e7e224b4376205 ****/
+		/****** Resource_Unicode::ConvertSJISToUnicode ******/
+		/****** md5 signature: 3e6f135c27c0b105b7e7e224b4376205 ******/
 		%feature("compactdefaultargs") ConvertSJISToUnicode;
 		%feature("autodoc", "
 Parameters
@@ -674,8 +674,8 @@ Converts non-ascii cstring <fromstr> in sjis format to unicode extendedstring <t
 ") ConvertSJISToUnicode;
 		static void ConvertSJISToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
-		/****************** ConvertUnicodeToANSI ******************/
-		/**** md5 signature: becd4b24e1324dac8a09502a0f3b35e3 ****/
+		/****** Resource_Unicode::ConvertUnicodeToANSI ******/
+		/****** md5 signature: becd4b24e1324dac8a09502a0f3b35e3 ******/
 		%feature("compactdefaultargs") ConvertUnicodeToANSI;
 		%feature("autodoc", "
 Parameters
@@ -694,8 +694,8 @@ Converts unicode extendedstring <fromstr> to non-ascii cstring <tostr> in ansi f
 ") ConvertUnicodeToANSI;
 		static Standard_Boolean ConvertUnicodeToANSI(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
-		/****************** ConvertUnicodeToEUC ******************/
-		/**** md5 signature: 3de0636677422237545faabc4b82044a ****/
+		/****** Resource_Unicode::ConvertUnicodeToEUC ******/
+		/****** md5 signature: 3de0636677422237545faabc4b82044a ******/
 		%feature("compactdefaultargs") ConvertUnicodeToEUC;
 		%feature("autodoc", "
 Parameters
@@ -714,8 +714,8 @@ Converts unicode extendedstring <fromstr> to non-ascii cstring <tostr> in euc fo
 ") ConvertUnicodeToEUC;
 		static Standard_Boolean ConvertUnicodeToEUC(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
-		/****************** ConvertUnicodeToFormat ******************/
-		/**** md5 signature: 8743e70c9c2a155ce180b78c36c04a71 ****/
+		/****** Resource_Unicode::ConvertUnicodeToFormat ******/
+		/****** md5 signature: 8743e70c9c2a155ce180b78c36c04a71 ******/
 		%feature("compactdefaultargs") ConvertUnicodeToFormat;
 		%feature("autodoc", "
 Parameters
@@ -735,8 +735,8 @@ Converts the unicode string of extended characters to the non-ascii string accor
 ") ConvertUnicodeToFormat;
 		static Standard_Boolean ConvertUnicodeToFormat(const Resource_FormatType theFormat, TCollection_ExtendedString theFromStr, Standard_PCharacter & theToStr, const Standard_Integer theMaxSize);
 
-		/****************** ConvertUnicodeToFormat ******************/
-		/**** md5 signature: 3a0226ee9a6304b9f55b4674dccd26dc ****/
+		/****** Resource_Unicode::ConvertUnicodeToFormat ******/
+		/****** md5 signature: 3a0226ee9a6304b9f55b4674dccd26dc ******/
 		%feature("compactdefaultargs") ConvertUnicodeToFormat;
 		%feature("autodoc", "
 Parameters
@@ -755,8 +755,8 @@ Converts the unicode string of extended characters to the non-ascii string accor
 ") ConvertUnicodeToFormat;
 		static Standard_Boolean ConvertUnicodeToFormat(TCollection_ExtendedString theFromStr, Standard_PCharacter & theToStr, const Standard_Integer theMaxSize);
 
-		/****************** ConvertUnicodeToGB ******************/
-		/**** md5 signature: e92423028aa69f039e50fc871d72daf2 ****/
+		/****** Resource_Unicode::ConvertUnicodeToGB ******/
+		/****** md5 signature: e92423028aa69f039e50fc871d72daf2 ******/
 		%feature("compactdefaultargs") ConvertUnicodeToGB;
 		%feature("autodoc", "
 Parameters
@@ -775,8 +775,8 @@ Converts unicode extendedstring <fromstr> to non-ascii cstring <tostr> in gb for
 ") ConvertUnicodeToGB;
 		static Standard_Boolean ConvertUnicodeToGB(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
-		/****************** ConvertUnicodeToSJIS ******************/
-		/**** md5 signature: 405eb61d326bd40b62e69514a5638a62 ****/
+		/****** Resource_Unicode::ConvertUnicodeToSJIS ******/
+		/****** md5 signature: 405eb61d326bd40b62e69514a5638a62 ******/
 		%feature("compactdefaultargs") ConvertUnicodeToSJIS;
 		%feature("autodoc", "
 Parameters
@@ -795,8 +795,8 @@ Converts unicode extendedstring <fromstr> to non-ascii cstring <tostr> in sjis f
 ") ConvertUnicodeToSJIS;
 		static Standard_Boolean ConvertUnicodeToSJIS(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
-		/****************** GetFormat ******************/
-		/**** md5 signature: b7f0b16e429d16aced2ecaaf3804dc38 ****/
+		/****** Resource_Unicode::GetFormat ******/
+		/****** md5 signature: b7f0b16e429d16aced2ecaaf3804dc38 ******/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "Return
 -------
@@ -808,8 +808,8 @@ Returns the current conversion format (either ansi, euc, gb or sjis). the curren
 ") GetFormat;
 		static Resource_FormatType GetFormat();
 
-		/****************** ReadFormat ******************/
-		/**** md5 signature: 9707c87226e3d6fd6486b6673c5e6357 ****/
+		/****** Resource_Unicode::ReadFormat ******/
+		/****** md5 signature: 9707c87226e3d6fd6486b6673c5e6357 ******/
 		%feature("compactdefaultargs") ReadFormat;
 		%feature("autodoc", "Return
 -------
@@ -821,8 +821,8 @@ Reads converting format from resource 'formattype' in resource manager 'charset'
 ") ReadFormat;
 		static void ReadFormat();
 
-		/****************** SetFormat ******************/
-		/**** md5 signature: 2724b939d7616dbac969aeef0cc09e56 ****/
+		/****** Resource_Unicode::SetFormat ******/
+		/****** md5 signature: 2724b939d7616dbac969aeef0cc09e56 ******/
 		%feature("compactdefaultargs") SetFormat;
 		%feature("autodoc", "
 Parameters

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define UNITSAPIDOCSTRING
 "UnitsAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_unitsapi.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_unitsapi.html"
 %enddef
 %module (package="OCC.Core", docstring=UNITSAPIDOCSTRING) UnitsAPI
 
@@ -96,8 +96,8 @@ UnitsAPI_MDTV = UnitsAPI_SystemUnits.UnitsAPI_MDTV
 %rename(unitsapi) UnitsAPI;
 class UnitsAPI {
 	public:
-		/****************** AnyFromLS ******************/
-		/**** md5 signature: 56e084e6a1e979f242ce3261471a2e19 ****/
+		/****** UnitsAPI::AnyFromLS ******/
+		/****** md5 signature: 56e084e6a1e979f242ce3261471a2e19 ******/
 		%feature("compactdefaultargs") AnyFromLS;
 		%feature("autodoc", "
 Parameters
@@ -115,8 +115,8 @@ Converts the local system units value to the local unit value. example: anyfroml
 ") AnyFromLS;
 		static Standard_Real AnyFromLS(const Standard_Real aData, Standard_CString aUnit);
 
-		/****************** AnyFromSI ******************/
-		/**** md5 signature: 51d298a84e57287a88c41611637a9aa9 ****/
+		/****** UnitsAPI::AnyFromSI ******/
+		/****** md5 signature: 51d298a84e57287a88c41611637a9aa9 ******/
 		%feature("compactdefaultargs") AnyFromSI;
 		%feature("autodoc", "
 Parameters
@@ -134,8 +134,8 @@ Converts the si system units value to the local unit value. example: anyfromsi(0
 ") AnyFromSI;
 		static Standard_Real AnyFromSI(const Standard_Real aData, Standard_CString aUnit);
 
-		/****************** AnyToAny ******************/
-		/**** md5 signature: a34e13f8062d74576011237fdc11241b ****/
+		/****** UnitsAPI::AnyToAny ******/
+		/****** md5 signature: a34e13f8062d74576011237fdc11241b ******/
 		%feature("compactdefaultargs") AnyToAny;
 		%feature("autodoc", "
 Parameters
@@ -154,8 +154,8 @@ Converts the local unit value to another local unit value. example: anytoany(0.0
 ") AnyToAny;
 		static Standard_Real AnyToAny(const Standard_Real aData, Standard_CString aUnit1, Standard_CString aUnit2);
 
-		/****************** AnyToLS ******************/
-		/**** md5 signature: be97d95d076c1f8b0986e8919aa752ea ****/
+		/****** UnitsAPI::AnyToLS ******/
+		/****** md5 signature: be97d95d076c1f8b0986e8919aa752ea ******/
 		%feature("compactdefaultargs") AnyToLS;
 		%feature("autodoc", "
 Parameters
@@ -173,8 +173,8 @@ Converts the local unit value to the local system units value. example: anytols(
 ") AnyToLS;
 		static Standard_Real AnyToLS(const Standard_Real aData, Standard_CString aUnit);
 
-		/****************** AnyToLS ******************/
-		/**** md5 signature: 46cdace99266b9ed9c51e1fdd1e1382a ****/
+		/****** UnitsAPI::AnyToLS ******/
+		/****** md5 signature: 46cdace99266b9ed9c51e1fdd1e1382a ******/
 		%feature("compactdefaultargs") AnyToLS;
 		%feature("autodoc", "
 Parameters
@@ -193,8 +193,8 @@ Converts the local unit value to the local system units value. and gives the ass
 ") AnyToLS;
 		static Standard_Real AnyToLS(const Standard_Real aData, Standard_CString aUnit, opencascade::handle<Units_Dimensions> & aDim);
 
-		/****************** AnyToSI ******************/
-		/**** md5 signature: 2322f8d6fc98e87d4c97235741f5c4c0 ****/
+		/****** UnitsAPI::AnyToSI ******/
+		/****** md5 signature: 2322f8d6fc98e87d4c97235741f5c4c0 ******/
 		%feature("compactdefaultargs") AnyToSI;
 		%feature("autodoc", "
 Parameters
@@ -212,8 +212,8 @@ Converts the local unit value to the si system units value. example: anytosi(1.,
 ") AnyToSI;
 		static Standard_Real AnyToSI(const Standard_Real aData, Standard_CString aUnit);
 
-		/****************** AnyToSI ******************/
-		/**** md5 signature: 3984bca4e7e6b466dd4cc37343372bd4 ****/
+		/****** UnitsAPI::AnyToSI ******/
+		/****** md5 signature: 3984bca4e7e6b466dd4cc37343372bd4 ******/
 		%feature("compactdefaultargs") AnyToSI;
 		%feature("autodoc", "
 Parameters
@@ -232,8 +232,8 @@ Converts the local unit value to the si system units value. and gives the associ
 ") AnyToSI;
 		static Standard_Real AnyToSI(const Standard_Real aData, Standard_CString aUnit, opencascade::handle<Units_Dimensions> & aDim);
 
-		/****************** Check ******************/
-		/**** md5 signature: 8fd354cea0b43ea55552afe1a0c9a172 ****/
+		/****** UnitsAPI::Check ******/
+		/****** md5 signature: 8fd354cea0b43ea55552afe1a0c9a172 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -251,8 +251,8 @@ Checks the coherence between the quantity <aquantity> and the unit <aunits> in t
 ") Check;
 		static Standard_Boolean Check(Standard_CString aQuantity, Standard_CString aUnit);
 
-		/****************** CurrentFromAny ******************/
-		/**** md5 signature: e481372ea449ecc215486204b576346a ****/
+		/****** UnitsAPI::CurrentFromAny ******/
+		/****** md5 signature: e481372ea449ecc215486204b576346a ******/
 		%feature("compactdefaultargs") CurrentFromAny;
 		%feature("autodoc", "
 Parameters
@@ -271,8 +271,8 @@ Converts the adata value expressed in the unit aunit, into the current unit for 
 ") CurrentFromAny;
 		static Standard_Real CurrentFromAny(const Standard_Real aData, Standard_CString aQuantity, Standard_CString aUnit);
 
-		/****************** CurrentFromLS ******************/
-		/**** md5 signature: baf46d9b2387f58a6af6f0df8c113850 ****/
+		/****** UnitsAPI::CurrentFromLS ******/
+		/****** md5 signature: baf46d9b2387f58a6af6f0df8c113850 ******/
 		%feature("compactdefaultargs") CurrentFromLS;
 		%feature("autodoc", "
 Parameters
@@ -290,8 +290,8 @@ Converts the local system units value to the current unit value. example: curren
 ") CurrentFromLS;
 		static Standard_Real CurrentFromLS(const Standard_Real aData, Standard_CString aQuantity);
 
-		/****************** CurrentFromSI ******************/
-		/**** md5 signature: b4cb9aa8765d61361f181d61763312f3 ****/
+		/****** UnitsAPI::CurrentFromSI ******/
+		/****** md5 signature: b4cb9aa8765d61361f181d61763312f3 ******/
 		%feature("compactdefaultargs") CurrentFromSI;
 		%feature("autodoc", "
 Parameters
@@ -309,8 +309,8 @@ Converts the si system units value to the current unit value. example: currentfr
 ") CurrentFromSI;
 		static Standard_Real CurrentFromSI(const Standard_Real aData, Standard_CString aQuantity);
 
-		/****************** CurrentToAny ******************/
-		/**** md5 signature: 626c139702fb138665d6dd8afd9482ae ****/
+		/****** UnitsAPI::CurrentToAny ******/
+		/****** md5 signature: 626c139702fb138665d6dd8afd9482ae ******/
 		%feature("compactdefaultargs") CurrentToAny;
 		%feature("autodoc", "
 Parameters
@@ -329,8 +329,8 @@ Converts the adata value expressed in the current unit for the working environme
 ") CurrentToAny;
 		static Standard_Real CurrentToAny(const Standard_Real aData, Standard_CString aQuantity, Standard_CString aUnit);
 
-		/****************** CurrentToLS ******************/
-		/**** md5 signature: 6a36e9c67f2ece9a3e15958a515e9454 ****/
+		/****** UnitsAPI::CurrentToLS ******/
+		/****** md5 signature: 6a36e9c67f2ece9a3e15958a515e9454 ******/
 		%feature("compactdefaultargs") CurrentToLS;
 		%feature("autodoc", "
 Parameters
@@ -348,8 +348,8 @@ Converts the current unit value to the local system units value. example: curren
 ") CurrentToLS;
 		static Standard_Real CurrentToLS(const Standard_Real aData, Standard_CString aQuantity);
 
-		/****************** CurrentToSI ******************/
-		/**** md5 signature: 9286242f061106c9da565bb7a13df149 ****/
+		/****** UnitsAPI::CurrentToSI ******/
+		/****** md5 signature: 9286242f061106c9da565bb7a13df149 ******/
 		%feature("compactdefaultargs") CurrentToSI;
 		%feature("autodoc", "
 Parameters
@@ -367,8 +367,8 @@ Converts the current unit value to the si system units value. example: currentto
 ") CurrentToSI;
 		static Standard_Real CurrentToSI(const Standard_Real aData, Standard_CString aQuantity);
 
-		/****************** CurrentUnit ******************/
-		/**** md5 signature: f01f00f078d1eec0021f4a2418a15c1f ****/
+		/****** UnitsAPI::CurrentUnit ******/
+		/****** md5 signature: f01f00f078d1eec0021f4a2418a15c1f ******/
 		%feature("compactdefaultargs") CurrentUnit;
 		%feature("autodoc", "
 Parameters
@@ -385,8 +385,8 @@ Returns the current unit dimension <aunit> from the unit quantity <aquantity>.
 ") CurrentUnit;
 		static Standard_CString CurrentUnit(Standard_CString aQuantity);
 
-		/****************** DimensionAmountOfSubstance ******************/
-		/**** md5 signature: 6438adbeca1586be140df666112d9ed8 ****/
+		/****** UnitsAPI::DimensionAmountOfSubstance ******/
+		/****** md5 signature: 6438adbeca1586be140df666112d9ed8 ******/
 		%feature("compactdefaultargs") DimensionAmountOfSubstance;
 		%feature("autodoc", "Return
 -------
@@ -398,8 +398,8 @@ No available documentation.
 ") DimensionAmountOfSubstance;
 		static opencascade::handle<Units_Dimensions> DimensionAmountOfSubstance();
 
-		/****************** DimensionElectricCurrent ******************/
-		/**** md5 signature: 21bd133915dadd609b39c5ec7d5e7629 ****/
+		/****** UnitsAPI::DimensionElectricCurrent ******/
+		/****** md5 signature: 21bd133915dadd609b39c5ec7d5e7629 ******/
 		%feature("compactdefaultargs") DimensionElectricCurrent;
 		%feature("autodoc", "Return
 -------
@@ -411,8 +411,8 @@ No available documentation.
 ") DimensionElectricCurrent;
 		static opencascade::handle<Units_Dimensions> DimensionElectricCurrent();
 
-		/****************** DimensionLength ******************/
-		/**** md5 signature: 3673e991eafb1da7b843427cad536a4e ****/
+		/****** UnitsAPI::DimensionLength ******/
+		/****** md5 signature: 3673e991eafb1da7b843427cad536a4e ******/
 		%feature("compactdefaultargs") DimensionLength;
 		%feature("autodoc", "Return
 -------
@@ -424,8 +424,8 @@ No available documentation.
 ") DimensionLength;
 		static opencascade::handle<Units_Dimensions> DimensionLength();
 
-		/****************** DimensionLess ******************/
-		/**** md5 signature: 00b540e353e845d7ec73923b765c2c02 ****/
+		/****** UnitsAPI::DimensionLess ******/
+		/****** md5 signature: 00b540e353e845d7ec73923b765c2c02 ******/
 		%feature("compactdefaultargs") DimensionLess;
 		%feature("autodoc", "Return
 -------
@@ -437,8 +437,8 @@ No available documentation.
 ") DimensionLess;
 		static opencascade::handle<Units_Dimensions> DimensionLess();
 
-		/****************** DimensionLuminousIntensity ******************/
-		/**** md5 signature: d170b93d2ba83b38edd5fb174d5101ba ****/
+		/****** UnitsAPI::DimensionLuminousIntensity ******/
+		/****** md5 signature: d170b93d2ba83b38edd5fb174d5101ba ******/
 		%feature("compactdefaultargs") DimensionLuminousIntensity;
 		%feature("autodoc", "Return
 -------
@@ -450,8 +450,8 @@ No available documentation.
 ") DimensionLuminousIntensity;
 		static opencascade::handle<Units_Dimensions> DimensionLuminousIntensity();
 
-		/****************** DimensionMass ******************/
-		/**** md5 signature: 5f28815039c64689a0d1ee9a899be783 ****/
+		/****** UnitsAPI::DimensionMass ******/
+		/****** md5 signature: 5f28815039c64689a0d1ee9a899be783 ******/
 		%feature("compactdefaultargs") DimensionMass;
 		%feature("autodoc", "Return
 -------
@@ -463,8 +463,8 @@ No available documentation.
 ") DimensionMass;
 		static opencascade::handle<Units_Dimensions> DimensionMass();
 
-		/****************** DimensionPlaneAngle ******************/
-		/**** md5 signature: eafc1b650a4fe5a1e64bbc72ae1d78da ****/
+		/****** UnitsAPI::DimensionPlaneAngle ******/
+		/****** md5 signature: eafc1b650a4fe5a1e64bbc72ae1d78da ******/
 		%feature("compactdefaultargs") DimensionPlaneAngle;
 		%feature("autodoc", "Return
 -------
@@ -476,8 +476,8 @@ No available documentation.
 ") DimensionPlaneAngle;
 		static opencascade::handle<Units_Dimensions> DimensionPlaneAngle();
 
-		/****************** DimensionSolidAngle ******************/
-		/**** md5 signature: 9fc6af7c5044ea7c920307831d9e3649 ****/
+		/****** UnitsAPI::DimensionSolidAngle ******/
+		/****** md5 signature: 9fc6af7c5044ea7c920307831d9e3649 ******/
 		%feature("compactdefaultargs") DimensionSolidAngle;
 		%feature("autodoc", "Return
 -------
@@ -489,8 +489,8 @@ Returns the basic dimensions.
 ") DimensionSolidAngle;
 		static opencascade::handle<Units_Dimensions> DimensionSolidAngle();
 
-		/****************** DimensionThermodynamicTemperature ******************/
-		/**** md5 signature: cc757ceec05d862614f1bd3e3981281e ****/
+		/****** UnitsAPI::DimensionThermodynamicTemperature ******/
+		/****** md5 signature: cc757ceec05d862614f1bd3e3981281e ******/
 		%feature("compactdefaultargs") DimensionThermodynamicTemperature;
 		%feature("autodoc", "Return
 -------
@@ -502,8 +502,8 @@ No available documentation.
 ") DimensionThermodynamicTemperature;
 		static opencascade::handle<Units_Dimensions> DimensionThermodynamicTemperature();
 
-		/****************** DimensionTime ******************/
-		/**** md5 signature: 8e5cc932b54c44ede7e6c6bcb709c213 ****/
+		/****** UnitsAPI::DimensionTime ******/
+		/****** md5 signature: 8e5cc932b54c44ede7e6c6bcb709c213 ******/
 		%feature("compactdefaultargs") DimensionTime;
 		%feature("autodoc", "Return
 -------
@@ -515,8 +515,8 @@ No available documentation.
 ") DimensionTime;
 		static opencascade::handle<Units_Dimensions> DimensionTime();
 
-		/****************** Dimensions ******************/
-		/**** md5 signature: b774aec0d4cbdadea27cddf0f2f2cc6c ****/
+		/****** UnitsAPI::Dimensions ******/
+		/****** md5 signature: b774aec0d4cbdadea27cddf0f2f2cc6c ******/
 		%feature("compactdefaultargs") Dimensions;
 		%feature("autodoc", "
 Parameters
@@ -533,8 +533,8 @@ Return the dimension associated to the quantity.
 ") Dimensions;
 		static opencascade::handle<Units_Dimensions> Dimensions(Standard_CString aQuantity);
 
-		/****************** LSToSI ******************/
-		/**** md5 signature: b7335812925a563eeda3a379ecb8050c ****/
+		/****** UnitsAPI::LSToSI ******/
+		/****** md5 signature: b7335812925a563eeda3a379ecb8050c ******/
 		%feature("compactdefaultargs") LSToSI;
 		%feature("autodoc", "
 Parameters
@@ -552,8 +552,8 @@ Converts the local system units value to the si system unit value. example: lsto
 ") LSToSI;
 		static Standard_Real LSToSI(const Standard_Real aData, Standard_CString aQuantity);
 
-		/****************** LocalSystem ******************/
-		/**** md5 signature: 61dd63b9b169d3619a3b18bc847f81b2 ****/
+		/****** UnitsAPI::LocalSystem ******/
+		/****** md5 signature: 61dd63b9b169d3619a3b18bc847f81b2 ******/
 		%feature("compactdefaultargs") LocalSystem;
 		%feature("autodoc", "Return
 -------
@@ -565,8 +565,8 @@ Returns the current local system units.
 ") LocalSystem;
 		static UnitsAPI_SystemUnits LocalSystem();
 
-		/****************** Reload ******************/
-		/**** md5 signature: 1fe01e0ae07372f9d155702586441d4d ****/
+		/****** UnitsAPI::Reload ******/
+		/****** md5 signature: 1fe01e0ae07372f9d155702586441d4d ******/
 		%feature("compactdefaultargs") Reload;
 		%feature("autodoc", "Return
 -------
@@ -578,8 +578,8 @@ No available documentation.
 ") Reload;
 		static void Reload();
 
-		/****************** SIToLS ******************/
-		/**** md5 signature: 3c3f219672fa4407919e8a63ea7f2683 ****/
+		/****** UnitsAPI::SIToLS ******/
+		/****** md5 signature: 3c3f219672fa4407919e8a63ea7f2683 ******/
 		%feature("compactdefaultargs") SIToLS;
 		%feature("autodoc", "
 Parameters
@@ -597,8 +597,8 @@ Converts the si system unit value to the local system units value. example: sito
 ") SIToLS;
 		static Standard_Real SIToLS(const Standard_Real aData, Standard_CString aQuantity);
 
-		/****************** Save ******************/
-		/**** md5 signature: 5415c3e3c77906824a66d1620fd32f67 ****/
+		/****** UnitsAPI::Save ******/
+		/****** md5 signature: 5415c3e3c77906824a66d1620fd32f67 ******/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "Return
 -------
@@ -610,8 +610,8 @@ Saves the units in the file .currentunits of the directory pointed by the csf_cu
 ") Save;
 		static void Save();
 
-		/****************** SetCurrentUnit ******************/
-		/**** md5 signature: 86203ba633b8d33e2ad9e71b2468ee6b ****/
+		/****** UnitsAPI::SetCurrentUnit ******/
+		/****** md5 signature: 86203ba633b8d33e2ad9e71b2468ee6b ******/
 		%feature("compactdefaultargs") SetCurrentUnit;
 		%feature("autodoc", "
 Parameters
@@ -629,8 +629,8 @@ Sets the current unit dimension <aunit> to the unit quantity <aquantity>. exampl
 ") SetCurrentUnit;
 		static void SetCurrentUnit(Standard_CString aQuantity, Standard_CString aUnit);
 
-		/****************** SetLocalSystem ******************/
-		/**** md5 signature: ee27f19c32ea8b52c56dd6af5e661b4b ****/
+		/****** UnitsAPI::SetLocalSystem ******/
+		/****** md5 signature: ee27f19c32ea8b52c56dd6af5e661b4b ******/
 		%feature("compactdefaultargs") SetLocalSystem;
 		%feature("autodoc", "
 Parameters

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XMLTOBJDRIVERSDOCSTRING
 "XmlTObjDrivers module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_xmltobjdrivers.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xmltobjdrivers.html"
 %enddef
 %module (package="OCC.Core", docstring=XMLTOBJDRIVERSDOCSTRING) XmlTObjDrivers
 
@@ -104,8 +104,8 @@ from OCC.Core.Exception import *
 %rename(xmltobjdrivers) XmlTObjDrivers;
 class XmlTObjDrivers {
 	public:
-		/****************** AddDrivers ******************/
-		/**** md5 signature: 831746c79de4e4f242f5fd72f43b291b ****/
+		/****** XmlTObjDrivers::AddDrivers ******/
+		/****** md5 signature: 831746c79de4e4f242f5fd72f43b291b ******/
 		%feature("compactdefaultargs") AddDrivers;
 		%feature("autodoc", "
 Parameters
@@ -123,8 +123,8 @@ No available documentation.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & anMsgDrv);
 
-		/****************** DefineFormat ******************/
-		/**** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ****/
+		/****** XmlTObjDrivers::DefineFormat ******/
+		/****** md5 signature: 2ae4ef4b935d04445595a5553ed3615b ******/
 		%feature("compactdefaultargs") DefineFormat;
 		%feature("autodoc", "
 Parameters
@@ -141,8 +141,8 @@ Defines format 'tobjxml' and registers its read and write drivers in the specifi
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 
-		/****************** Factory ******************/
-		/**** md5 signature: 3da280e6bb218a5037c98dc98a4e3815 ****/
+		/****** XmlTObjDrivers::Factory ******/
+		/****** md5 signature: 3da280e6bb218a5037c98dc98a4e3815 ******/
 		%feature("compactdefaultargs") Factory;
 		%feature("autodoc", "
 Parameters
@@ -173,8 +173,8 @@ Returns a driver corresponding to <aguid>. used for plugin.
 ***********************************************/
 class XmlTObjDrivers_DocumentRetrievalDriver : public XmlLDrivers_DocumentRetrievalDriver {
 	public:
-		/****************** XmlTObjDrivers_DocumentRetrievalDriver ******************/
-		/**** md5 signature: 4cc3cc7048f3c6736a45f944ec96cbc2 ****/
+		/****** XmlTObjDrivers_DocumentRetrievalDriver::XmlTObjDrivers_DocumentRetrievalDriver ******/
+		/****** md5 signature: 4cc3cc7048f3c6736a45f944ec96cbc2 ******/
 		%feature("compactdefaultargs") XmlTObjDrivers_DocumentRetrievalDriver;
 		%feature("autodoc", "Return
 -------
@@ -186,8 +186,8 @@ No available documentation.
 ") XmlTObjDrivers_DocumentRetrievalDriver;
 		 XmlTObjDrivers_DocumentRetrievalDriver();
 
-		/****************** AttributeDrivers ******************/
-		/**** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ****/
+		/****** XmlTObjDrivers_DocumentRetrievalDriver::AttributeDrivers ******/
+		/****** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -220,8 +220,8 @@ No available documentation.
 *********************************************/
 class XmlTObjDrivers_DocumentStorageDriver : public XmlLDrivers_DocumentStorageDriver {
 	public:
-		/****************** XmlTObjDrivers_DocumentStorageDriver ******************/
-		/**** md5 signature: d8ca387403924c8c88a96bece3464537 ****/
+		/****** XmlTObjDrivers_DocumentStorageDriver::XmlTObjDrivers_DocumentStorageDriver ******/
+		/****** md5 signature: d8ca387403924c8c88a96bece3464537 ******/
 		%feature("compactdefaultargs") XmlTObjDrivers_DocumentStorageDriver;
 		%feature("autodoc", "
 Parameters
@@ -238,8 +238,8 @@ No available documentation.
 ") XmlTObjDrivers_DocumentStorageDriver;
 		 XmlTObjDrivers_DocumentStorageDriver(TCollection_ExtendedString theCopyright);
 
-		/****************** AttributeDrivers ******************/
-		/**** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ****/
+		/****** XmlTObjDrivers_DocumentStorageDriver::AttributeDrivers ******/
+		/****** md5 signature: 8f96c34c95c7e9b565e8874b99e9133c ******/
 		%feature("compactdefaultargs") AttributeDrivers;
 		%feature("autodoc", "
 Parameters
@@ -272,8 +272,8 @@ No available documentation.
 ********************************************/
 class XmlTObjDrivers_IntSparseArrayDriver : public XmlMDF_ADriver {
 	public:
-		/****************** XmlTObjDrivers_IntSparseArrayDriver ******************/
-		/**** md5 signature: 1a0c59f26ec5ccb25c4dd3c25e5facdc ****/
+		/****** XmlTObjDrivers_IntSparseArrayDriver::XmlTObjDrivers_IntSparseArrayDriver ******/
+		/****** md5 signature: 1a0c59f26ec5ccb25c4dd3c25e5facdc ******/
 		%feature("compactdefaultargs") XmlTObjDrivers_IntSparseArrayDriver;
 		%feature("autodoc", "
 Parameters
@@ -290,8 +290,8 @@ No available documentation.
 ") XmlTObjDrivers_IntSparseArrayDriver;
 		 XmlTObjDrivers_IntSparseArrayDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
+		/****** XmlTObjDrivers_IntSparseArrayDriver::NewEmpty ******/
+		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -303,8 +303,8 @@ No available documentation.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 031c6cb06a428765ac4d078be7d14cf9 ****/
+		/****** XmlTObjDrivers_IntSparseArrayDriver::Paste ******/
+		/****** md5 signature: 031c6cb06a428765ac4d078be7d14cf9 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -323,8 +323,8 @@ No available documentation.
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & theSource, const opencascade::handle<TDF_Attribute> & theTarget, XmlObjMgt_RRelocationTable & theRelocTable);
 
-		/****************** Paste ******************/
-		/**** md5 signature: f2623a6490ed13129844514bdeadf8d1 ****/
+		/****** XmlTObjDrivers_IntSparseArrayDriver::Paste ******/
+		/****** md5 signature: f2623a6490ed13129844514bdeadf8d1 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -359,8 +359,8 @@ No available documentation.
 ***********************************/
 class XmlTObjDrivers_ModelDriver : public XmlMDF_ADriver {
 	public:
-		/****************** XmlTObjDrivers_ModelDriver ******************/
-		/**** md5 signature: 082846bc7db4fcd0440659d00adb9a1d ****/
+		/****** XmlTObjDrivers_ModelDriver::XmlTObjDrivers_ModelDriver ******/
+		/****** md5 signature: 082846bc7db4fcd0440659d00adb9a1d ******/
 		%feature("compactdefaultargs") XmlTObjDrivers_ModelDriver;
 		%feature("autodoc", "
 Parameters
@@ -377,8 +377,8 @@ No available documentation.
 ") XmlTObjDrivers_ModelDriver;
 		 XmlTObjDrivers_ModelDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
+		/****** XmlTObjDrivers_ModelDriver::NewEmpty ******/
+		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -390,8 +390,8 @@ No available documentation.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ****/
+		/****** XmlTObjDrivers_ModelDriver::Paste ******/
+		/****** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -410,8 +410,8 @@ No available documentation.
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
-		/****************** Paste ******************/
-		/**** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ****/
+		/****** XmlTObjDrivers_ModelDriver::Paste ******/
+		/****** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -446,8 +446,8 @@ No available documentation.
 ************************************/
 class XmlTObjDrivers_ObjectDriver : public XmlMDF_ADriver {
 	public:
-		/****************** XmlTObjDrivers_ObjectDriver ******************/
-		/**** md5 signature: 5832825f7645f44418ab8cdbecf2d0c4 ****/
+		/****** XmlTObjDrivers_ObjectDriver::XmlTObjDrivers_ObjectDriver ******/
+		/****** md5 signature: 5832825f7645f44418ab8cdbecf2d0c4 ******/
 		%feature("compactdefaultargs") XmlTObjDrivers_ObjectDriver;
 		%feature("autodoc", "
 Parameters
@@ -464,8 +464,8 @@ No available documentation.
 ") XmlTObjDrivers_ObjectDriver;
 		 XmlTObjDrivers_ObjectDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
+		/****** XmlTObjDrivers_ObjectDriver::NewEmpty ******/
+		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -477,8 +477,8 @@ No available documentation.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ****/
+		/****** XmlTObjDrivers_ObjectDriver::Paste ******/
+		/****** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -497,8 +497,8 @@ No available documentation.
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
-		/****************** Paste ******************/
-		/**** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ****/
+		/****** XmlTObjDrivers_ObjectDriver::Paste ******/
+		/****** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -533,8 +533,8 @@ No available documentation.
 ***************************************/
 class XmlTObjDrivers_ReferenceDriver : public XmlMDF_ADriver {
 	public:
-		/****************** XmlTObjDrivers_ReferenceDriver ******************/
-		/**** md5 signature: b4b2b7fcb744d30a5358207694bee8b3 ****/
+		/****** XmlTObjDrivers_ReferenceDriver::XmlTObjDrivers_ReferenceDriver ******/
+		/****** md5 signature: b4b2b7fcb744d30a5358207694bee8b3 ******/
 		%feature("compactdefaultargs") XmlTObjDrivers_ReferenceDriver;
 		%feature("autodoc", "
 Parameters
@@ -551,8 +551,8 @@ No available documentation.
 ") XmlTObjDrivers_ReferenceDriver;
 		 XmlTObjDrivers_ReferenceDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
+		/****** XmlTObjDrivers_ReferenceDriver::NewEmpty ******/
+		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -564,8 +564,8 @@ No available documentation.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ****/
+		/****** XmlTObjDrivers_ReferenceDriver::Paste ******/
+		/****** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -584,8 +584,8 @@ No available documentation.
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
-		/****************** Paste ******************/
-		/**** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ****/
+		/****** XmlTObjDrivers_ReferenceDriver::Paste ******/
+		/****** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -620,8 +620,8 @@ No available documentation.
 *********************************/
 class XmlTObjDrivers_XYZDriver : public XmlMDF_ADriver {
 	public:
-		/****************** XmlTObjDrivers_XYZDriver ******************/
-		/**** md5 signature: 3e6d6346e2283fb10c6db7ed61738274 ****/
+		/****** XmlTObjDrivers_XYZDriver::XmlTObjDrivers_XYZDriver ******/
+		/****** md5 signature: 3e6d6346e2283fb10c6db7ed61738274 ******/
 		%feature("compactdefaultargs") XmlTObjDrivers_XYZDriver;
 		%feature("autodoc", "
 Parameters
@@ -638,8 +638,8 @@ No available documentation.
 ") XmlTObjDrivers_XYZDriver;
 		 XmlTObjDrivers_XYZDriver(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
-		/****************** NewEmpty ******************/
-		/**** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ****/
+		/****** XmlTObjDrivers_XYZDriver::NewEmpty ******/
+		/****** md5 signature: c6d13c9ecc64c6c803b6e119e8216934 ******/
 		%feature("compactdefaultargs") NewEmpty;
 		%feature("autodoc", "Return
 -------
@@ -651,8 +651,8 @@ No available documentation.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
-		/****************** Paste ******************/
-		/**** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ****/
+		/****** XmlTObjDrivers_XYZDriver::Paste ******/
+		/****** md5 signature: 3dd41285e4a0d4dafa2b2b321d4fcc26 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters
@@ -671,8 +671,8 @@ No available documentation.
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
-		/****************** Paste ******************/
-		/**** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ****/
+		/****** XmlTObjDrivers_XYZDriver::Paste ******/
+		/****** md5 signature: bfb59b0a8136ec850943b5ad7848f316 ******/
 		%feature("compactdefaultargs") Paste;
 		%feature("autodoc", "
 Parameters

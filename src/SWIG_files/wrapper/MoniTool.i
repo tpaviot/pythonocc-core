@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define MONITOOLDOCSTRING
 "MoniTool module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_monitool.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_monitool.html"
 %enddef
 %module (package="OCC.Core", docstring=MONITOOLDOCSTRING) MoniTool
 
@@ -157,8 +157,8 @@ typedef NCollection_Sequence<opencascade::handle<MoniTool_Element>> MoniTool_Seq
 **************************/
 class MoniTool_AttrList {
 	public:
-		/****************** MoniTool_AttrList ******************/
-		/**** md5 signature: f7316938355278c0258f18df32d45c4b ****/
+		/****** MoniTool_AttrList::MoniTool_AttrList ******/
+		/****** md5 signature: f7316938355278c0258f18df32d45c4b ******/
 		%feature("compactdefaultargs") MoniTool_AttrList;
 		%feature("autodoc", "Return
 -------
@@ -170,8 +170,8 @@ Creates an attrlist, empty.
 ") MoniTool_AttrList;
 		 MoniTool_AttrList();
 
-		/****************** MoniTool_AttrList ******************/
-		/**** md5 signature: 1f622e0139ab42ddb11cef0b29c0e0bc ****/
+		/****** MoniTool_AttrList::MoniTool_AttrList ******/
+		/****** md5 signature: 1f622e0139ab42ddb11cef0b29c0e0bc ******/
 		%feature("compactdefaultargs") MoniTool_AttrList;
 		%feature("autodoc", "
 Parameters
@@ -188,8 +188,8 @@ Creates an attrlist from another one, definitions are shared (calls sameattribut
 ") MoniTool_AttrList;
 		 MoniTool_AttrList(const MoniTool_AttrList & other);
 
-		/****************** AttrList ******************/
-		/**** md5 signature: 7e1fb43f6aa6b3324760286668f16a94 ****/
+		/****** MoniTool_AttrList::AttrList ******/
+		/****** md5 signature: 7e1fb43f6aa6b3324760286668f16a94 ******/
 		%feature("compactdefaultargs") AttrList;
 		%feature("autodoc", "Return
 -------
@@ -201,8 +201,8 @@ Returns the exhaustive list of attributes.
 ") AttrList;
 		const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> & AttrList();
 
-		/****************** Attribute ******************/
-		/**** md5 signature: e5ad5be0e92752a0fdb049be9d57b2a2 ****/
+		/****** MoniTool_AttrList::Attribute ******/
+		/****** md5 signature: e5ad5be0e92752a0fdb049be9d57b2a2 ******/
 		%feature("compactdefaultargs") Attribute;
 		%feature("autodoc", "
 Parameters
@@ -219,8 +219,8 @@ Returns an attribute from its name. null handle if not recorded (whatever transi
 ") Attribute;
 		opencascade::handle<Standard_Transient> Attribute(Standard_CString name);
 
-		/****************** AttributeType ******************/
-		/**** md5 signature: 9014240ef88a98ed31e2ac659ed330bb ****/
+		/****** MoniTool_AttrList::AttributeType ******/
+		/****** md5 signature: 9014240ef88a98ed31e2ac659ed330bb ******/
 		%feature("compactdefaultargs") AttributeType;
 		%feature("autodoc", "
 Parameters
@@ -237,8 +237,8 @@ Returns the type of an attribute: valueint , valuereal , valuetext (string) , va
 ") AttributeType;
 		MoniTool_ValueType AttributeType(Standard_CString name);
 
-		/****************** GetAttribute ******************/
-		/**** md5 signature: 2af91cadcf009781db910ca0a130a005 ****/
+		/****** MoniTool_AttrList::GetAttribute ******/
+		/****** md5 signature: 2af91cadcf009781db910ca0a130a005 ******/
 		%feature("compactdefaultargs") GetAttribute;
 		%feature("autodoc", "
 Parameters
@@ -257,8 +257,8 @@ Returns an attribute from its name, filtered by a type if no attribute has this 
 ") GetAttribute;
 		Standard_Boolean GetAttribute(Standard_CString name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & val);
 
-		/****************** GetAttributes ******************/
-		/**** md5 signature: 1fc563dcdd495504eda158a1799a2a7d ****/
+		/****** MoniTool_AttrList::GetAttributes ******/
+		/****** md5 signature: 1fc563dcdd495504eda158a1799a2a7d ******/
 		%feature("compactdefaultargs") GetAttributes;
 		%feature("autodoc", "
 Parameters
@@ -277,8 +277,8 @@ Gets the list of attributes from <other>, by copying it by default, considers al
 ") GetAttributes;
 		void GetAttributes(const MoniTool_AttrList & other, Standard_CString fromname = "", const Standard_Boolean copied = Standard_True);
 
-		/****************** GetIntegerAttribute ******************/
-		/**** md5 signature: ea2fdae17b02c2aa020d84d6b452688b ****/
+		/****** MoniTool_AttrList::GetIntegerAttribute ******/
+		/****** md5 signature: ea2fdae17b02c2aa020d84d6b452688b ******/
 		%feature("compactdefaultargs") GetIntegerAttribute;
 		%feature("autodoc", "
 Parameters
@@ -295,8 +295,8 @@ Returns an attribute from its name, as integer if no attribute has this name, or
 ") GetIntegerAttribute;
 		Standard_Boolean GetIntegerAttribute(Standard_CString name, Standard_Integer &OutValue);
 
-		/****************** GetRealAttribute ******************/
-		/**** md5 signature: 5f2c96db8b329d634687ce67f5e59b4b ****/
+		/****** MoniTool_AttrList::GetRealAttribute ******/
+		/****** md5 signature: 5f2c96db8b329d634687ce67f5e59b4b ******/
 		%feature("compactdefaultargs") GetRealAttribute;
 		%feature("autodoc", "
 Parameters
@@ -313,8 +313,8 @@ Returns an attribute from its name, as real if no attribute has this name, or no
 ") GetRealAttribute;
 		Standard_Boolean GetRealAttribute(Standard_CString name, Standard_Real &OutValue);
 
-		/****************** GetStringAttribute ******************/
-		/**** md5 signature: 318a12b6d26483dacbc14b18a716e743 ****/
+		/****** MoniTool_AttrList::GetStringAttribute ******/
+		/****** md5 signature: 318a12b6d26483dacbc14b18a716e743 ******/
 		%feature("compactdefaultargs") GetStringAttribute;
 		%feature("autodoc", "
 Parameters
@@ -332,8 +332,8 @@ Returns an attribute from its name, as string if no attribute has this name, or 
 ") GetStringAttribute;
 		Standard_Boolean GetStringAttribute(Standard_CString name, Standard_CString val);
 
-		/****************** IntegerAttribute ******************/
-		/**** md5 signature: 93d9fbf5febe449e6af99311c8d8ce44 ****/
+		/****** MoniTool_AttrList::IntegerAttribute ******/
+		/****** md5 signature: 93d9fbf5febe449e6af99311c8d8ce44 ******/
 		%feature("compactdefaultargs") IntegerAttribute;
 		%feature("autodoc", "
 Parameters
@@ -350,8 +350,8 @@ Returns an integer attribute from its name. 0 if not recorded.
 ") IntegerAttribute;
 		Standard_Integer IntegerAttribute(Standard_CString name);
 
-		/****************** RealAttribute ******************/
-		/**** md5 signature: 58a4e4d83ca92f4eca73ac61ee1fe729 ****/
+		/****** MoniTool_AttrList::RealAttribute ******/
+		/****** md5 signature: 58a4e4d83ca92f4eca73ac61ee1fe729 ******/
 		%feature("compactdefaultargs") RealAttribute;
 		%feature("autodoc", "
 Parameters
@@ -368,8 +368,8 @@ Returns a real attribute from its name. 0.0 if not recorded.
 ") RealAttribute;
 		Standard_Real RealAttribute(Standard_CString name);
 
-		/****************** RemoveAttribute ******************/
-		/**** md5 signature: 57071515bfbcf1a2ae1f11ad7d448049 ****/
+		/****** MoniTool_AttrList::RemoveAttribute ******/
+		/****** md5 signature: 57071515bfbcf1a2ae1f11ad7d448049 ******/
 		%feature("compactdefaultargs") RemoveAttribute;
 		%feature("autodoc", "
 Parameters
@@ -386,8 +386,8 @@ Removes an attribute returns true when done, false if this attribute did not exi
 ") RemoveAttribute;
 		Standard_Boolean RemoveAttribute(Standard_CString name);
 
-		/****************** SameAttributes ******************/
-		/**** md5 signature: 547f034f219ce85d3fb7576a461a7e64 ****/
+		/****** MoniTool_AttrList::SameAttributes ******/
+		/****** md5 signature: 547f034f219ce85d3fb7576a461a7e64 ******/
 		%feature("compactdefaultargs") SameAttributes;
 		%feature("autodoc", "
 Parameters
@@ -404,8 +404,8 @@ Gets the list of attributes from <other>, as such, i.e. not copied: attributes a
 ") SameAttributes;
 		void SameAttributes(const MoniTool_AttrList & other);
 
-		/****************** SetAttribute ******************/
-		/**** md5 signature: ca59af36cb49e274007a7374b826f6d3 ****/
+		/****** MoniTool_AttrList::SetAttribute ******/
+		/****** md5 signature: ca59af36cb49e274007a7374b826f6d3 ******/
 		%feature("compactdefaultargs") SetAttribute;
 		%feature("autodoc", "
 Parameters
@@ -423,8 +423,8 @@ Adds an attribute with a given name (replaces the former one with the same name 
 ") SetAttribute;
 		void SetAttribute(Standard_CString name, const opencascade::handle<Standard_Transient> & val);
 
-		/****************** SetIntegerAttribute ******************/
-		/**** md5 signature: 91bcd8c22467c6503d3124ea1bc29193 ****/
+		/****** MoniTool_AttrList::SetIntegerAttribute ******/
+		/****** md5 signature: 91bcd8c22467c6503d3124ea1bc29193 ******/
 		%feature("compactdefaultargs") SetIntegerAttribute;
 		%feature("autodoc", "
 Parameters
@@ -442,8 +442,8 @@ Adds an integer value for an attribute.
 ") SetIntegerAttribute;
 		void SetIntegerAttribute(Standard_CString name, const Standard_Integer val);
 
-		/****************** SetRealAttribute ******************/
-		/**** md5 signature: 6336cf08a7edf9acb99611e6933d3024 ****/
+		/****** MoniTool_AttrList::SetRealAttribute ******/
+		/****** md5 signature: 6336cf08a7edf9acb99611e6933d3024 ******/
 		%feature("compactdefaultargs") SetRealAttribute;
 		%feature("autodoc", "
 Parameters
@@ -461,8 +461,8 @@ Adds a real value for an attribute.
 ") SetRealAttribute;
 		void SetRealAttribute(Standard_CString name, const Standard_Real val);
 
-		/****************** SetStringAttribute ******************/
-		/**** md5 signature: c4470714ba0031d975841ff9a21690ca ****/
+		/****** MoniTool_AttrList::SetStringAttribute ******/
+		/****** md5 signature: c4470714ba0031d975841ff9a21690ca ******/
 		%feature("compactdefaultargs") SetStringAttribute;
 		%feature("autodoc", "
 Parameters
@@ -480,8 +480,8 @@ Adds a string value for an attribute.
 ") SetStringAttribute;
 		void SetStringAttribute(Standard_CString name, Standard_CString val);
 
-		/****************** StringAttribute ******************/
-		/**** md5 signature: c2ee3863f53a113455cc1e4716e85015 ****/
+		/****** MoniTool_AttrList::StringAttribute ******/
+		/****** md5 signature: c2ee3863f53a113455cc1e4716e85015 ******/
 		%feature("compactdefaultargs") StringAttribute;
 		%feature("autodoc", "
 Parameters
@@ -512,8 +512,8 @@ Returns a string attribute from its name. '' if not recorded.
 **************************/
 class MoniTool_CaseData : public Standard_Transient {
 	public:
-		/****************** MoniTool_CaseData ******************/
-		/**** md5 signature: 20f6f5cfd624da13c011641b453aa448 ****/
+		/****** MoniTool_CaseData::MoniTool_CaseData ******/
+		/****** md5 signature: 20f6f5cfd624da13c011641b453aa448 ******/
 		%feature("compactdefaultargs") MoniTool_CaseData;
 		%feature("autodoc", "
 Parameters
@@ -531,8 +531,8 @@ Creates a casedata with a caseid and a name (by default not defined).
 ") MoniTool_CaseData;
 		 MoniTool_CaseData(Standard_CString caseid = "", Standard_CString name = "");
 
-		/****************** AddAny ******************/
-		/**** md5 signature: 709a2fd6303bcca56f76fc49d1c53165 ****/
+		/****** MoniTool_CaseData::AddAny ******/
+		/****** md5 signature: 709a2fd6303bcca56f76fc49d1c53165 ******/
 		%feature("compactdefaultargs") AddAny;
 		%feature("autodoc", "
 Parameters
@@ -550,8 +550,8 @@ Adds a transient, with no more meaning.
 ") AddAny;
 		void AddAny(const opencascade::handle<Standard_Transient> & val, Standard_CString name = "");
 
-		/****************** AddCPU ******************/
-		/**** md5 signature: 0b9a5de720b389c1022fbd88ca2aa134 ****/
+		/****** MoniTool_CaseData::AddCPU ******/
+		/****** md5 signature: 0b9a5de720b389c1022fbd88ca2aa134 ******/
 		%feature("compactdefaultargs") AddCPU;
 		%feature("autodoc", "
 Parameters
@@ -570,8 +570,8 @@ Adds the cpu time between lastcpu and now if <curcpu> is given, the cpu amount i
 ") AddCPU;
 		void AddCPU(const Standard_Real lastCPU, const Standard_Real curCPU = 0, Standard_CString name = "");
 
-		/****************** AddData ******************/
-		/**** md5 signature: e189fc454edeaa2eda99c8d1942c5eaf ****/
+		/****** MoniTool_CaseData::AddData ******/
+		/****** md5 signature: e189fc454edeaa2eda99c8d1942c5eaf ******/
 		%feature("compactdefaultargs") AddData;
 		%feature("autodoc", "
 Parameters
@@ -590,8 +590,8 @@ Unitary adding a data; rather internal.
 ") AddData;
 		void AddData(const opencascade::handle<Standard_Transient> & val, const Standard_Integer kind, Standard_CString name = "");
 
-		/****************** AddEntity ******************/
-		/**** md5 signature: ef1423904a64872bedc94dbaa33024cd ****/
+		/****** MoniTool_CaseData::AddEntity ******/
+		/****** md5 signature: ef1423904a64872bedc94dbaa33024cd ******/
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "
 Parameters
@@ -609,8 +609,8 @@ Adds a transient, as an entity from an interfacemodel for instance: it will then
 ") AddEntity;
 		void AddEntity(const opencascade::handle<Standard_Transient> & ent, Standard_CString name = "");
 
-		/****************** AddGeom ******************/
-		/**** md5 signature: 395ed39ca7e9dbcb0d96192c9b9b5133 ****/
+		/****** MoniTool_CaseData::AddGeom ******/
+		/****** md5 signature: 395ed39ca7e9dbcb0d96192c9b9b5133 ******/
 		%feature("compactdefaultargs") AddGeom;
 		%feature("autodoc", "
 Parameters
@@ -628,8 +628,8 @@ Adds a geometric as a transient (curve, surface ...).
 ") AddGeom;
 		void AddGeom(const opencascade::handle<Standard_Transient> & geom, Standard_CString name = "");
 
-		/****************** AddInteger ******************/
-		/**** md5 signature: 4ed9fedcaa74eccb711a8d608ab755f4 ****/
+		/****** MoniTool_CaseData::AddInteger ******/
+		/****** md5 signature: 4ed9fedcaa74eccb711a8d608ab755f4 ******/
 		%feature("compactdefaultargs") AddInteger;
 		%feature("autodoc", "
 Parameters
@@ -647,8 +647,8 @@ Adds an integer.
 ") AddInteger;
 		void AddInteger(const Standard_Integer val, Standard_CString name = "");
 
-		/****************** AddRaised ******************/
-		/**** md5 signature: 19b75a9ad3f3f5b77c60473ad6eff707 ****/
+		/****** MoniTool_CaseData::AddRaised ******/
+		/****** md5 signature: 19b75a9ad3f3f5b77c60473ad6eff707 ******/
 		%feature("compactdefaultargs") AddRaised;
 		%feature("autodoc", "
 Parameters
@@ -666,8 +666,8 @@ Adds the currently caught exception.
 ") AddRaised;
 		void AddRaised(const opencascade::handle<Standard_Failure> & theException, Standard_CString name = "");
 
-		/****************** AddReal ******************/
-		/**** md5 signature: 780a7a087ce809d081144c47cf3b4f39 ****/
+		/****** MoniTool_CaseData::AddReal ******/
+		/****** md5 signature: 780a7a087ce809d081144c47cf3b4f39 ******/
 		%feature("compactdefaultargs") AddReal;
 		%feature("autodoc", "
 Parameters
@@ -685,8 +685,8 @@ Adds a real.
 ") AddReal;
 		void AddReal(const Standard_Real val, Standard_CString name = "");
 
-		/****************** AddReals ******************/
-		/**** md5 signature: 9c0acc336ad0a492fbfa5f1fe5fd1687 ****/
+		/****** MoniTool_CaseData::AddReals ******/
+		/****** md5 signature: 9c0acc336ad0a492fbfa5f1fe5fd1687 ******/
 		%feature("compactdefaultargs") AddReals;
 		%feature("autodoc", "
 Parameters
@@ -705,8 +705,8 @@ Adds two reals (for instance, two parameters).
 ") AddReals;
 		void AddReals(const Standard_Real v1, const Standard_Real v2, Standard_CString name = "");
 
-		/****************** AddShape ******************/
-		/**** md5 signature: 7e2f031b8d272c8a0b3fa7e20cb62eb5 ****/
+		/****** MoniTool_CaseData::AddShape ******/
+		/****** md5 signature: 7e2f031b8d272c8a0b3fa7e20cb62eb5 ******/
 		%feature("compactdefaultargs") AddShape;
 		%feature("autodoc", "
 Parameters
@@ -724,8 +724,8 @@ Adds a shape (recorded as a hshape).
 ") AddShape;
 		void AddShape(const TopoDS_Shape & sh, Standard_CString name = "");
 
-		/****************** AddText ******************/
-		/**** md5 signature: a4eaadd4ba4352f6b55cb9c7d2514620 ****/
+		/****** MoniTool_CaseData::AddText ******/
+		/****** md5 signature: a4eaadd4ba4352f6b55cb9c7d2514620 ******/
 		%feature("compactdefaultargs") AddText;
 		%feature("autodoc", "
 Parameters
@@ -743,8 +743,8 @@ Adds a text (as hasciistring).
 ") AddText;
 		void AddText(Standard_CString text, Standard_CString name = "");
 
-		/****************** AddXY ******************/
-		/**** md5 signature: b4c2f9d1d8072378fc2125fb0795e979 ****/
+		/****** MoniTool_CaseData::AddXY ******/
+		/****** md5 signature: b4c2f9d1d8072378fc2125fb0795e979 ******/
 		%feature("compactdefaultargs") AddXY;
 		%feature("autodoc", "
 Parameters
@@ -762,8 +762,8 @@ Adds a xy.
 ") AddXY;
 		void AddXY(const gp_XY & aXY, Standard_CString name = "");
 
-		/****************** AddXYZ ******************/
-		/**** md5 signature: 812ae7a37099d4e0579eb148e74e815d ****/
+		/****** MoniTool_CaseData::AddXYZ ******/
+		/****** md5 signature: 812ae7a37099d4e0579eb148e74e815d ******/
 		%feature("compactdefaultargs") AddXYZ;
 		%feature("autodoc", "
 Parameters
@@ -781,8 +781,8 @@ Adds a xyz.
 ") AddXYZ;
 		void AddXYZ(const gp_XYZ & aXYZ, Standard_CString name = "");
 
-		/****************** CaseId ******************/
-		/**** md5 signature: 00273d8277e031d07a637ab90697c910 ****/
+		/****** MoniTool_CaseData::CaseId ******/
+		/****** md5 signature: 00273d8277e031d07a637ab90697c910 ******/
 		%feature("compactdefaultargs") CaseId;
 		%feature("autodoc", "Return
 -------
@@ -794,8 +794,8 @@ Returns the caseid.
 ") CaseId;
 		Standard_CString CaseId();
 
-		/****************** Data ******************/
-		/**** md5 signature: f80568a434a1353b089e99d0a8827cee ****/
+		/****** MoniTool_CaseData::Data ******/
+		/****** md5 signature: f80568a434a1353b089e99d0a8827cee ******/
 		%feature("compactdefaultargs") Data;
 		%feature("autodoc", "
 Parameters
@@ -812,8 +812,8 @@ Returns a data item (n0 <nd> in the set <num>).
 ") Data;
 		opencascade::handle<Standard_Transient> Data(const Standard_Integer nd);
 
-		/****************** DefCheck ******************/
-		/**** md5 signature: eb4da30abf4fe917c43513e8562de6f1 ****/
+		/****** MoniTool_CaseData::DefCheck ******/
+		/****** md5 signature: eb4da30abf4fe917c43513e8562de6f1 ******/
 		%feature("compactdefaultargs") DefCheck;
 		%feature("autodoc", "
 Parameters
@@ -830,8 +830,8 @@ Returns check status for a code: 0 non/info (default), 1 warning, 2 fail //! rem
 ") DefCheck;
 		static Standard_Integer DefCheck(Standard_CString acode);
 
-		/****************** DefMsg ******************/
-		/**** md5 signature: f3fdd9962e01566774984d3cbbc8b441 ****/
+		/****** MoniTool_CaseData::DefMsg ******/
+		/****** md5 signature: f3fdd9962e01566774984d3cbbc8b441 ******/
 		%feature("compactdefaultargs") DefMsg;
 		%feature("autodoc", "
 Parameters
@@ -848,8 +848,8 @@ Returns the message definition for a case code empty if no message attached.
 ") DefMsg;
 		static Standard_CString DefMsg(Standard_CString casecode);
 
-		/****************** GetCPU ******************/
-		/**** md5 signature: 00bbde2fe3bee9e2c2e91eb52554c939 ****/
+		/****** MoniTool_CaseData::GetCPU ******/
+		/****** md5 signature: 00bbde2fe3bee9e2c2e91eb52554c939 ******/
 		%feature("compactdefaultargs") GetCPU;
 		%feature("autodoc", "Return
 -------
@@ -861,8 +861,8 @@ Returns the current amount of cpu this allows to laterly test and record cpu amo
 ") GetCPU;
 		Standard_Real GetCPU();
 
-		/****************** GetData ******************/
-		/**** md5 signature: bb9d0e00d5fb999da4e5420db20a8c13 ****/
+		/****** MoniTool_CaseData::GetData ******/
+		/****** md5 signature: bb9d0e00d5fb999da4e5420db20a8c13 ******/
 		%feature("compactdefaultargs") GetData;
 		%feature("autodoc", "
 Parameters
@@ -881,8 +881,8 @@ Returns a data item, under control of a type if the data item is kind of this ty
 ") GetData;
 		Standard_Boolean GetData(const Standard_Integer nd, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & val);
 
-		/****************** Integer ******************/
-		/**** md5 signature: d8b799534891244055a897cb27c52560 ****/
+		/****** MoniTool_CaseData::Integer ******/
+		/****** md5 signature: d8b799534891244055a897cb27c52560 ******/
 		%feature("compactdefaultargs") Integer;
 		%feature("autodoc", "
 Parameters
@@ -899,8 +899,8 @@ Returns an integer.
 ") Integer;
 		Standard_Boolean Integer(const Standard_Integer nd, Standard_Integer &OutValue);
 
-		/****************** IsCheck ******************/
-		/**** md5 signature: 30349f70e09cdfa743fc34bc26c2fb2b ****/
+		/****** MoniTool_CaseData::IsCheck ******/
+		/****** md5 signature: 30349f70e09cdfa743fc34bc26c2fb2b ******/
 		%feature("compactdefaultargs") IsCheck;
 		%feature("autodoc", "Return
 -------
@@ -912,8 +912,8 @@ Tells if <self> is check (warning or fail), else it is info.
 ") IsCheck;
 		Standard_Boolean IsCheck();
 
-		/****************** IsFail ******************/
-		/**** md5 signature: 524d8ab308e46f0a1f95eddd8baf23a1 ****/
+		/****** MoniTool_CaseData::IsFail ******/
+		/****** md5 signature: 524d8ab308e46f0a1f95eddd8baf23a1 ******/
 		%feature("compactdefaultargs") IsFail;
 		%feature("autodoc", "Return
 -------
@@ -925,8 +925,8 @@ Tells if <self> is fail.
 ") IsFail;
 		Standard_Boolean IsFail();
 
-		/****************** IsWarning ******************/
-		/**** md5 signature: e5e018b76f604f721ac7f5a4f0da1bee ****/
+		/****** MoniTool_CaseData::IsWarning ******/
+		/****** md5 signature: e5e018b76f604f721ac7f5a4f0da1bee ******/
 		%feature("compactdefaultargs") IsWarning;
 		%feature("autodoc", "Return
 -------
@@ -938,8 +938,8 @@ Tells if <self> is warning.
 ") IsWarning;
 		Standard_Boolean IsWarning();
 
-		/****************** Kind ******************/
-		/**** md5 signature: 240ee38bbdcd2cdfc62382e178aee32c ****/
+		/****** MoniTool_CaseData::Kind ******/
+		/****** md5 signature: 240ee38bbdcd2cdfc62382e178aee32c ******/
 		%feature("compactdefaultargs") Kind;
 		%feature("autodoc", "
 Parameters
@@ -956,8 +956,8 @@ Returns the kind of a data: kind type meaning 0 any any (not one of the followin
 ") Kind;
 		Standard_Integer Kind(const Standard_Integer nd);
 
-		/****************** LargeCPU ******************/
-		/**** md5 signature: 71dadf235aade01bedc90b6cdb2897ce ****/
+		/****** MoniTool_CaseData::LargeCPU ******/
+		/****** md5 signature: 71dadf235aade01bedc90b6cdb2897ce ******/
 		%feature("compactdefaultargs") LargeCPU;
 		%feature("autodoc", "
 Parameters
@@ -976,8 +976,8 @@ Tells if a cpu time amount is large <maxcpu> gives the amount over which an amou
 ") LargeCPU;
 		Standard_Boolean LargeCPU(const Standard_Real maxCPU, const Standard_Real lastCPU, const Standard_Real curCPU = 0);
 
-		/****************** Msg ******************/
-		/**** md5 signature: 9a65aef83214ce6d33b185aed38c1f0a ****/
+		/****** MoniTool_CaseData::Msg ******/
+		/****** md5 signature: 9a65aef83214ce6d33b185aed38c1f0a ******/
 		%feature("compactdefaultargs") Msg;
 		%feature("autodoc", "Return
 -------
@@ -989,8 +989,8 @@ Returns a msg from a casedata: it is build from defmsg, which gives the message 
 ") Msg;
 		Message_Msg Msg();
 
-		/****************** Name ******************/
-		/**** md5 signature: 2e8cb64f99d00deafae9c92f20b187a2 ****/
+		/****** MoniTool_CaseData::Name ******/
+		/****** md5 signature: 2e8cb64f99d00deafae9c92f20b187a2 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -1002,8 +1002,8 @@ Returns the name.
 ") Name;
 		Standard_CString Name();
 
-		/****************** Name ******************/
-		/**** md5 signature: daa685c923900f80fa41f50d5eeb7f76 ****/
+		/****** MoniTool_CaseData::Name ******/
+		/****** md5 signature: daa685c923900f80fa41f50d5eeb7f76 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
@@ -1020,8 +1020,8 @@ Returns the name of a data. if it has no name, the string is empty (length = 0).
 ") Name;
 		const TCollection_AsciiString & Name(const Standard_Integer nd);
 
-		/****************** NameNum ******************/
-		/**** md5 signature: 1d3a907e11739d5a6bd945884af12849 ****/
+		/****** MoniTool_CaseData::NameNum ******/
+		/****** md5 signature: 1d3a907e11739d5a6bd945884af12849 ******/
 		%feature("compactdefaultargs") NameNum;
 		%feature("autodoc", "
 Parameters
@@ -1038,8 +1038,8 @@ Returns the first suitable data rank for a given name exact matching (exact case
 ") NameNum;
 		Standard_Integer NameNum(Standard_CString name);
 
-		/****************** NbData ******************/
-		/**** md5 signature: 65dffaaee72ce13df8f72ba4f254de29 ****/
+		/****** MoniTool_CaseData::NbData ******/
+		/****** md5 signature: 65dffaaee72ce13df8f72ba4f254de29 ******/
 		%feature("compactdefaultargs") NbData;
 		%feature("autodoc", "Return
 -------
@@ -1051,8 +1051,8 @@ Returns the count of data recorded to a set.
 ") NbData;
 		Standard_Integer NbData();
 
-		/****************** Real ******************/
-		/**** md5 signature: fb3ec93e6fea8b68ac5fb104ba9991ec ****/
+		/****** MoniTool_CaseData::Real ******/
+		/****** md5 signature: fb3ec93e6fea8b68ac5fb104ba9991ec ******/
 		%feature("compactdefaultargs") Real;
 		%feature("autodoc", "
 Parameters
@@ -1069,8 +1069,8 @@ Returns a real or cpu amount (stored in geom2d_cartesianpoint) (allows an intege
 ") Real;
 		Standard_Boolean Real(const Standard_Integer nd, Standard_Real &OutValue);
 
-		/****************** Reals ******************/
-		/**** md5 signature: 6ca87920cf3a61113f864e225ed735c3 ****/
+		/****** MoniTool_CaseData::Reals ******/
+		/****** md5 signature: 6ca87920cf3a61113f864e225ed735c3 ******/
 		%feature("compactdefaultargs") Reals;
 		%feature("autodoc", "
 Parameters
@@ -1088,8 +1088,8 @@ Returns a couple of reals (stored in geom2d_cartesianpoint).
 ") Reals;
 		Standard_Boolean Reals(const Standard_Integer nd, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** RemoveData ******************/
-		/**** md5 signature: 87f33cf90143f205f9e74295f235a95f ****/
+		/****** MoniTool_CaseData::RemoveData ******/
+		/****** md5 signature: 87f33cf90143f205f9e74295f235a95f ******/
 		%feature("compactdefaultargs") RemoveData;
 		%feature("autodoc", "
 Parameters
@@ -1106,8 +1106,8 @@ Removes a data from its rank. does nothing if out of range.
 ") RemoveData;
 		void RemoveData(const Standard_Integer num);
 
-		/****************** ResetCheck ******************/
-		/**** md5 signature: 994db56670d518106b28f0eb1c3ddbaf ****/
+		/****** MoniTool_CaseData::ResetCheck ******/
+		/****** md5 signature: 994db56670d518106b28f0eb1c3ddbaf ******/
 		%feature("compactdefaultargs") ResetCheck;
 		%feature("autodoc", "Return
 -------
@@ -1119,8 +1119,8 @@ Resets check status, i.e. sets <self> as info.
 ") ResetCheck;
 		void ResetCheck();
 
-		/****************** SetCaseId ******************/
-		/**** md5 signature: 269d9f4f53a76a32a3150406d8f94389 ****/
+		/****** MoniTool_CaseData::SetCaseId ******/
+		/****** md5 signature: 269d9f4f53a76a32a3150406d8f94389 ******/
 		%feature("compactdefaultargs") SetCaseId;
 		%feature("autodoc", "
 Parameters
@@ -1137,8 +1137,8 @@ Sets a caseid.
 ") SetCaseId;
 		void SetCaseId(Standard_CString caseid);
 
-		/****************** SetChange ******************/
-		/**** md5 signature: 35020ffdf661ae424b32ec90844aa543 ****/
+		/****** MoniTool_CaseData::SetChange ******/
+		/****** md5 signature: 35020ffdf661ae424b32ec90844aa543 ******/
 		%feature("compactdefaultargs") SetChange;
 		%feature("autodoc", "Return
 -------
@@ -1150,8 +1150,8 @@ Sets the next add... not to add but to change the data item designated by its na
 ") SetChange;
 		void SetChange();
 
-		/****************** SetDefFail ******************/
-		/**** md5 signature: c1ff28d91d209519b87fb8d9d0a096c4 ****/
+		/****** MoniTool_CaseData::SetDefFail ******/
+		/****** md5 signature: c1ff28d91d209519b87fb8d9d0a096c4 ******/
 		%feature("compactdefaultargs") SetDefFail;
 		%feature("autodoc", "
 Parameters
@@ -1168,8 +1168,8 @@ Sets a code to give a fail.
 ") SetDefFail;
 		static void SetDefFail(Standard_CString acode);
 
-		/****************** SetDefMsg ******************/
-		/**** md5 signature: 129902a2108aea4a762b8e75e5fd239d ****/
+		/****** MoniTool_CaseData::SetDefMsg ******/
+		/****** md5 signature: 129902a2108aea4a762b8e75e5fd239d ******/
 		%feature("compactdefaultargs") SetDefMsg;
 		%feature("autodoc", "
 Parameters
@@ -1187,8 +1187,8 @@ Attaches a message definition to a case code this definition includes the messag
 ") SetDefMsg;
 		static void SetDefMsg(Standard_CString casecode, Standard_CString mesdef);
 
-		/****************** SetDefWarning ******************/
-		/**** md5 signature: fc48374ca5a180ca723d24adab781749 ****/
+		/****** MoniTool_CaseData::SetDefWarning ******/
+		/****** md5 signature: fc48374ca5a180ca723d24adab781749 ******/
 		%feature("compactdefaultargs") SetDefWarning;
 		%feature("autodoc", "
 Parameters
@@ -1205,8 +1205,8 @@ Sets a code to give a warning.
 ") SetDefWarning;
 		static void SetDefWarning(Standard_CString acode);
 
-		/****************** SetFail ******************/
-		/**** md5 signature: 31938ccd35b6a5850873a21884c12ffc ****/
+		/****** MoniTool_CaseData::SetFail ******/
+		/****** md5 signature: 31938ccd35b6a5850873a21884c12ffc ******/
 		%feature("compactdefaultargs") SetFail;
 		%feature("autodoc", "Return
 -------
@@ -1218,8 +1218,8 @@ Sets <self> as fail.
 ") SetFail;
 		void SetFail();
 
-		/****************** SetName ******************/
-		/**** md5 signature: 208d3e507b11ad1eb22d3afd35f96209 ****/
+		/****** MoniTool_CaseData::SetName ******/
+		/****** md5 signature: 208d3e507b11ad1eb22d3afd35f96209 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
@@ -1236,8 +1236,8 @@ Sets a name.
 ") SetName;
 		void SetName(Standard_CString name);
 
-		/****************** SetReplace ******************/
-		/**** md5 signature: d05913aa2cce37b4b1cb745952a24764 ****/
+		/****** MoniTool_CaseData::SetReplace ******/
+		/****** md5 signature: d05913aa2cce37b4b1cb745952a24764 ******/
 		%feature("compactdefaultargs") SetReplace;
 		%feature("autodoc", "
 Parameters
@@ -1254,8 +1254,8 @@ Sets the next add... not to add but to replace the data item <num>, if <num> is 
 ") SetReplace;
 		void SetReplace(const Standard_Integer num);
 
-		/****************** SetWarning ******************/
-		/**** md5 signature: 58fb56cb90f7ed086699b1ee96d438c0 ****/
+		/****** MoniTool_CaseData::SetWarning ******/
+		/****** md5 signature: 58fb56cb90f7ed086699b1ee96d438c0 ******/
 		%feature("compactdefaultargs") SetWarning;
 		%feature("autodoc", "Return
 -------
@@ -1267,8 +1267,8 @@ Sets <self> as warning.
 ") SetWarning;
 		void SetWarning();
 
-		/****************** Shape ******************/
-		/**** md5 signature: 3e8a6ae743356dd38a2628e8b75a6b9f ****/
+		/****** MoniTool_CaseData::Shape ******/
+		/****** md5 signature: 3e8a6ae743356dd38a2628e8b75a6b9f ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "
 Parameters
@@ -1285,8 +1285,8 @@ Returns a data as a shape, null if not a shape.
 ") Shape;
 		TopoDS_Shape Shape(const Standard_Integer nd);
 
-		/****************** Text ******************/
-		/**** md5 signature: f1bb927b5da5ede3cefcbeed1efa5328 ****/
+		/****** MoniTool_CaseData::Text ******/
+		/****** md5 signature: f1bb927b5da5ede3cefcbeed1efa5328 ******/
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "
 Parameters
@@ -1304,8 +1304,8 @@ Returns a text (stored in tcollection_hasciistring).
 ") Text;
 		Standard_Boolean Text(const Standard_Integer nd, Standard_CString text);
 
-		/****************** XY ******************/
-		/**** md5 signature: 6265946dc936f94b9ea104fac9e33a84 ****/
+		/****** MoniTool_CaseData::XY ******/
+		/****** md5 signature: 6265946dc936f94b9ea104fac9e33a84 ******/
 		%feature("compactdefaultargs") XY;
 		%feature("autodoc", "
 Parameters
@@ -1323,8 +1323,8 @@ Returns a data as a xy (i.e. geom2d_cartesianpoint) returns false if not the goo
 ") XY;
 		Standard_Boolean XY(const Standard_Integer nd, gp_XY & val);
 
-		/****************** XYZ ******************/
-		/**** md5 signature: dcfe8b60a571ed54747716041cc1158b ****/
+		/****** MoniTool_CaseData::XYZ ******/
+		/****** md5 signature: dcfe8b60a571ed54747716041cc1158b ******/
 		%feature("compactdefaultargs") XYZ;
 		%feature("autodoc", "
 Parameters
@@ -1358,8 +1358,8 @@ Returns a data as a xyz (i.e. geom_cartesianpoint) returns false if not the good
 **************************/
 class MoniTool_DataInfo {
 	public:
-		/****************** Type ******************/
-		/**** md5 signature: 192a28917d102787dc4550e6e61c97a0 ****/
+		/****** MoniTool_DataInfo::Type ******/
+		/****** md5 signature: 192a28917d102787dc4550e6e61c97a0 ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "
 Parameters
@@ -1376,8 +1376,8 @@ Returns the type attached to an object here, the dynamic type of a transient. nu
 ") Type;
 		static opencascade::handle<Standard_Type> Type(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** TypeName ******************/
-		/**** md5 signature: 2ed9999dd09e4008de6273d943a36227 ****/
+		/****** MoniTool_DataInfo::TypeName ******/
+		/****** md5 signature: 2ed9999dd09e4008de6273d943a36227 ******/
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "
 Parameters
@@ -1409,8 +1409,8 @@ Returns type name (string) allows to name type of non-handled objects.
 %nodefaultctor MoniTool_Element;
 class MoniTool_Element : public Standard_Transient {
 	public:
-		/****************** ChangeAttr ******************/
-		/**** md5 signature: 37f068e8d5573c47945d4a10825eef1d ****/
+		/****** MoniTool_Element::ChangeAttr ******/
+		/****** md5 signature: 37f068e8d5573c47945d4a10825eef1d ******/
 		%feature("compactdefaultargs") ChangeAttr;
 		%feature("autodoc", "Return
 -------
@@ -1422,8 +1422,8 @@ Returns (modifiable) the attribute list.
 ") ChangeAttr;
 		MoniTool_AttrList & ChangeAttr();
 
-		/****************** Equates ******************/
-		/**** md5 signature: 1e903a4f175e33c1a9f161e9ea07b5f3 ****/
+		/****** MoniTool_Element::Equates ******/
+		/****** md5 signature: 1e903a4f175e33c1a9f161e9ea07b5f3 ******/
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "
 Parameters
@@ -1440,8 +1440,8 @@ Specific testof equality: to be defined by each sub-class, must be false if elem
 ") Equates;
 		virtual Standard_Boolean Equates(const opencascade::handle<MoniTool_Element> & other);
 
-		/****************** GetHashCode ******************/
-		/**** md5 signature: 7287addabc58f18bcef75f2c632e90c4 ****/
+		/****** MoniTool_Element::GetHashCode ******/
+		/****** md5 signature: 7287addabc58f18bcef75f2c632e90c4 ******/
 		%feature("compactdefaultargs") GetHashCode;
 		%feature("autodoc", "Return
 -------
@@ -1453,8 +1453,8 @@ Returns the hashcode which has been stored by sethashcode (remark that hashcode 
 ") GetHashCode;
 		size_t GetHashCode();
 
-		/****************** ListAttr ******************/
-		/**** md5 signature: 89db2371bd1b9507aadc1fc2ccd6a47b ****/
+		/****** MoniTool_Element::ListAttr ******/
+		/****** md5 signature: 89db2371bd1b9507aadc1fc2ccd6a47b ******/
 		%feature("compactdefaultargs") ListAttr;
 		%feature("autodoc", "Return
 -------
@@ -1466,8 +1466,8 @@ Returns (readonly) the attribute list.
 ") ListAttr;
 		const MoniTool_AttrList & ListAttr();
 
-		/****************** ValueType ******************/
-		/**** md5 signature: 7bf10d093b4c83528695e983de0b203f ****/
+		/****** MoniTool_Element::ValueType ******/
+		/****** md5 signature: 7bf10d093b4c83528695e983de0b203f ******/
 		%feature("compactdefaultargs") ValueType;
 		%feature("autodoc", "Return
 -------
@@ -1479,8 +1479,8 @@ Returns the type of the value. by default, returns the dynamictype of <self>, bu
 ") ValueType;
 		virtual opencascade::handle<Standard_Type> ValueType();
 
-		/****************** ValueTypeName ******************/
-		/**** md5 signature: 9c551b5e8bde5c3427d2235f8cb0d374 ****/
+		/****** MoniTool_Element::ValueTypeName ******/
+		/****** md5 signature: 9c551b5e8bde5c3427d2235f8cb0d374 ******/
 		%feature("compactdefaultargs") ValueTypeName;
 		%feature("autodoc", "Return
 -------
@@ -1508,8 +1508,8 @@ Returns the name of the type of the value. default is name of valuetype, unless 
 ************************/
 class MoniTool_IntVal : public Standard_Transient {
 	public:
-		/****************** MoniTool_IntVal ******************/
-		/**** md5 signature: 54b1ae511a36927c8a949693d00e10f5 ****/
+		/****** MoniTool_IntVal::MoniTool_IntVal ******/
+		/****** md5 signature: 54b1ae511a36927c8a949693d00e10f5 ******/
 		%feature("compactdefaultargs") MoniTool_IntVal;
 		%feature("autodoc", "
 Parameters
@@ -1539,8 +1539,8 @@ No available documentation.
             $self->CValue()=value;
             }
         };
-		/****************** Value ******************/
-		/**** md5 signature: c6d99989077b92200f0377d8b792ba0b ****/
+		/****** MoniTool_IntVal::Value ******/
+		/****** md5 signature: c6d99989077b92200f0377d8b792ba0b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1568,8 +1568,8 @@ No available documentation.
 *************************/
 class MoniTool_RealVal : public Standard_Transient {
 	public:
-		/****************** MoniTool_RealVal ******************/
-		/**** md5 signature: 7c169d55add39db3049450bc8d4f35b8 ****/
+		/****** MoniTool_RealVal::MoniTool_RealVal ******/
+		/****** md5 signature: 7c169d55add39db3049450bc8d4f35b8 ******/
 		%feature("compactdefaultargs") MoniTool_RealVal;
 		%feature("autodoc", "
 Parameters
@@ -1599,8 +1599,8 @@ No available documentation.
             $self->CValue()=value;
             }
         };
-		/****************** Value ******************/
-		/**** md5 signature: 52655a2fb6642856b2c68a9331826787 ****/
+		/****** MoniTool_RealVal::Value ******/
+		/****** md5 signature: 52655a2fb6642856b2c68a9331826787 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1629,8 +1629,8 @@ No available documentation.
 %nodefaultctor MoniTool_SignText;
 class MoniTool_SignText : public Standard_Transient {
 	public:
-		/****************** Name ******************/
-		/**** md5 signature: b2b3faaae1ea976a5c6814bfba5805a2 ****/
+		/****** MoniTool_SignText::Name ******/
+		/****** md5 signature: b2b3faaae1ea976a5c6814bfba5805a2 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -1642,8 +1642,8 @@ Returns an identification of the signature (a word), given at initialization tim
 ") Name;
 		virtual Standard_CString Name();
 
-		/****************** Text ******************/
-		/**** md5 signature: 8d6fbb08669c0a43c9d336ccc51c4fbd ****/
+		/****** MoniTool_SignText::Text ******/
+		/****** md5 signature: 8d6fbb08669c0a43c9d336ccc51c4fbd ******/
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "
 Parameters
@@ -1661,8 +1661,8 @@ Gives a text as a signature for a transient object in a context if the context i
 ") Text;
 		virtual TCollection_AsciiString Text(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & context);
 
-		/****************** TextAlone ******************/
-		/**** md5 signature: aed71ef19ce188a0cfee174f5a0a9194 ****/
+		/****** MoniTool_SignText::TextAlone ******/
+		/****** md5 signature: aed71ef19ce188a0cfee174f5a0a9194 ******/
 		%feature("compactdefaultargs") TextAlone;
 		%feature("autodoc", "
 Parameters
@@ -1695,8 +1695,8 @@ Gives a text as a signature for a transient object alone, i.e. without defined c
 **********************/
 class MoniTool_Stat {
 	public:
-		/****************** MoniTool_Stat ******************/
-		/**** md5 signature: e65040f7ebf5fe26b424de8f71d41722 ****/
+		/****** MoniTool_Stat::MoniTool_Stat ******/
+		/****** md5 signature: e65040f7ebf5fe26b424de8f71d41722 ******/
 		%feature("compactdefaultargs") MoniTool_Stat;
 		%feature("autodoc", "
 Parameters
@@ -1713,8 +1713,8 @@ Creates a stat form. at start, one default phase is defined, with one default st
 ") MoniTool_Stat;
 		 MoniTool_Stat(Standard_CString title = "");
 
-		/****************** MoniTool_Stat ******************/
-		/**** md5 signature: 68a05e88f487eadb51ec526eeea9410c ****/
+		/****** MoniTool_Stat::MoniTool_Stat ******/
+		/****** md5 signature: 68a05e88f487eadb51ec526eeea9410c ******/
 		%feature("compactdefaultargs") MoniTool_Stat;
 		%feature("autodoc", "
 Parameters
@@ -1731,8 +1731,8 @@ Used when starting.
 ") MoniTool_Stat;
 		 MoniTool_Stat(const MoniTool_Stat & other);
 
-		/****************** Add ******************/
-		/**** md5 signature: f3fab2c5142a08a50b9a3023611b3ad1 ****/
+		/****** MoniTool_Stat::Add ******/
+		/****** md5 signature: f3fab2c5142a08a50b9a3023611b3ad1 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1749,8 +1749,8 @@ Directly adds items.
 ") Add;
 		void Add(const Standard_Integer nb = 1);
 
-		/****************** AddEnd ******************/
-		/**** md5 signature: 370897480301b628c04a6bd14f86ae0e ****/
+		/****** MoniTool_Stat::AddEnd ******/
+		/****** md5 signature: 370897480301b628c04a6bd14f86ae0e ******/
 		%feature("compactdefaultargs") AddEnd;
 		%feature("autodoc", "Return
 -------
@@ -1762,8 +1762,8 @@ Ends the addsub and cumulates the sub-count to current level.
 ") AddEnd;
 		void AddEnd();
 
-		/****************** AddSub ******************/
-		/**** md5 signature: 6c1da3fd60aca6c3db02b8499ea9f372 ****/
+		/****** MoniTool_Stat::AddSub ******/
+		/****** md5 signature: 6c1da3fd60aca6c3db02b8499ea9f372 ******/
 		%feature("compactdefaultargs") AddSub;
 		%feature("autodoc", "
 Parameters
@@ -1780,8 +1780,8 @@ Declares a count of items to be added later. if a sub-counter is opened, its per
 ") AddSub;
 		void AddSub(const Standard_Integer nb = 1);
 
-		/****************** Close ******************/
-		/**** md5 signature: 45b7e0c851ec50c4814c2077322ec35a ****/
+		/****** MoniTool_Stat::Close ******/
+		/****** md5 signature: 45b7e0c851ec50c4814c2077322ec35a ******/
 		%feature("compactdefaultargs") Close;
 		%feature("autodoc", "
 Parameters
@@ -1798,8 +1798,8 @@ No available documentation.
 ") Close;
 		void Close(const Standard_Integer id);
 
-		/****************** Current ******************/
-		/**** md5 signature: ebcdfafb894465b5f81e125d5c4b5637 ****/
+		/****** MoniTool_Stat::Current ******/
+		/****** md5 signature: ebcdfafb894465b5f81e125d5c4b5637 ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return
 -------
@@ -1811,8 +1811,8 @@ No available documentation.
 ") Current;
 		static MoniTool_Stat & Current();
 
-		/****************** Level ******************/
-		/**** md5 signature: 06f7279e938b54c0bc4a49915192a536 ****/
+		/****** MoniTool_Stat::Level ******/
+		/****** md5 signature: 06f7279e938b54c0bc4a49915192a536 ******/
 		%feature("compactdefaultargs") Level;
 		%feature("autodoc", "Return
 -------
@@ -1824,8 +1824,8 @@ No available documentation.
 ") Level;
 		Standard_Integer Level();
 
-		/****************** Open ******************/
-		/**** md5 signature: 075d35239e71af92e8dc106f04de7b47 ****/
+		/****** MoniTool_Stat::Open ******/
+		/****** md5 signature: 075d35239e71af92e8dc106f04de7b47 ******/
 		%feature("compactdefaultargs") Open;
 		%feature("autodoc", "
 Parameters
@@ -1842,8 +1842,8 @@ Opens a new counter with a starting count of items.
 ") Open;
 		Standard_Integer Open(const Standard_Integer nb = 100);
 
-		/****************** OpenMore ******************/
-		/**** md5 signature: fe91d805ae92eca04888425aaa630b89 ****/
+		/****** MoniTool_Stat::OpenMore ******/
+		/****** md5 signature: fe91d805ae92eca04888425aaa630b89 ******/
 		%feature("compactdefaultargs") OpenMore;
 		%feature("autodoc", "
 Parameters
@@ -1861,8 +1861,8 @@ Adds more items to be counted by add... on current level.
 ") OpenMore;
 		void OpenMore(const Standard_Integer id, const Standard_Integer nb);
 
-		/****************** Percent ******************/
-		/**** md5 signature: 46bae145f78bddca0f22277606688606 ****/
+		/****** MoniTool_Stat::Percent ******/
+		/****** md5 signature: 46bae145f78bddca0f22277606688606 ******/
 		%feature("compactdefaultargs") Percent;
 		%feature("autodoc", "
 Parameters
@@ -1893,8 +1893,8 @@ No available documentation.
 ***********************/
 class MoniTool_Timer : public Standard_Transient {
 	public:
-		/****************** MoniTool_Timer ******************/
-		/**** md5 signature: 7da08ee764ade7eb8e612ac9e8eacc68 ****/
+		/****** MoniTool_Timer::MoniTool_Timer ******/
+		/****** md5 signature: 7da08ee764ade7eb8e612ac9e8eacc68 ******/
 		%feature("compactdefaultargs") MoniTool_Timer;
 		%feature("autodoc", "Return
 -------
@@ -1906,8 +1906,8 @@ Create timer in empty state.
 ") MoniTool_Timer;
 		 MoniTool_Timer();
 
-		/****************** Amend ******************/
-		/**** md5 signature: d9cb93339d1e645446e111d326e3bc45 ****/
+		/****** MoniTool_Timer::Amend ******/
+		/****** md5 signature: d9cb93339d1e645446e111d326e3bc45 ******/
 		%feature("compactdefaultargs") Amend;
 		%feature("autodoc", "Return
 -------
@@ -1919,8 +1919,8 @@ Return value of accumulated amendment on cpu time.
 ") Amend;
 		Standard_Real Amend();
 
-		/****************** CPU ******************/
-		/**** md5 signature: 521db0d485b8797a691f912f6b878d86 ****/
+		/****** MoniTool_Timer::CPU ******/
+		/****** md5 signature: 521db0d485b8797a691f912f6b878d86 ******/
 		%feature("compactdefaultargs") CPU;
 		%feature("autodoc", "Return
 -------
@@ -1932,8 +1932,8 @@ Return value of cpu time minus accumulated amendment.
 ") CPU;
 		Standard_Real CPU();
 
-		/****************** ClearTimers ******************/
-		/**** md5 signature: 7fa02c7296fcabbcc3d9ae592e2da041 ****/
+		/****** MoniTool_Timer::ClearTimers ******/
+		/****** md5 signature: 7fa02c7296fcabbcc3d9ae592e2da041 ******/
 		%feature("compactdefaultargs") ClearTimers;
 		%feature("autodoc", "Return
 -------
@@ -1945,8 +1945,8 @@ Clears map of timers.
 ") ClearTimers;
 		static void ClearTimers();
 
-		/****************** ComputeAmendments ******************/
-		/**** md5 signature: d712d0303d6ce344bca5d1358ce67cdb ****/
+		/****** MoniTool_Timer::ComputeAmendments ******/
+		/****** md5 signature: d712d0303d6ce344bca5d1358ce67cdb ******/
 		%feature("compactdefaultargs") ComputeAmendments;
 		%feature("autodoc", "Return
 -------
@@ -1958,8 +1958,8 @@ Computes and remembers amendments for times to access, start, and stop of timer,
 ") ComputeAmendments;
 		static void ComputeAmendments();
 
-		/****************** Count ******************/
-		/**** md5 signature: 991c7b8ad8fee748c77481e1ff97e534 ****/
+		/****** MoniTool_Timer::Count ******/
+		/****** md5 signature: 991c7b8ad8fee748c77481e1ff97e534 ******/
 		%feature("compactdefaultargs") Count;
 		%feature("autodoc", "Return
 -------
@@ -1971,8 +1971,8 @@ Return value of hits counter (count of start/stop pairs).
 ") Count;
 		Standard_Integer Count();
 
-		/****************** Dictionary ******************/
-		/**** md5 signature: 3dd9e448982a7f8f1ae68a5ba35de172 ****/
+		/****** MoniTool_Timer::Dictionary ******/
+		/****** md5 signature: 3dd9e448982a7f8f1ae68a5ba35de172 ******/
 		%feature("compactdefaultargs") Dictionary;
 		%feature("autodoc", "Return
 -------
@@ -1984,8 +1984,8 @@ Returns map of timers.
 ") Dictionary;
 		static MoniTool_DataMapOfTimer & Dictionary();
 
-		/****************** Dump ******************/
-		/**** md5 signature: ba17251f1205c984d981679cb87ee281 ****/
+		/****** MoniTool_Timer::Dump ******/
+		/****** md5 signature: ba17251f1205c984d981679cb87ee281 ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "
 Parameters
@@ -2001,8 +2001,8 @@ Dumps current state of a timer shortly (one-line output).
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
-		/****************** DumpTimers ******************/
-		/**** md5 signature: a163d6e3a2170cc59ce7e312bac33510 ****/
+		/****** MoniTool_Timer::DumpTimers ******/
+		/****** md5 signature: a163d6e3a2170cc59ce7e312bac33510 ******/
 		%feature("compactdefaultargs") DumpTimers;
 		%feature("autodoc", "
 Parameters
@@ -2018,8 +2018,8 @@ Dumps contents of the whole dictionary.
 ") DumpTimers;
 		static void DumpTimers(std::ostream &OutValue);
 
-		/****************** GetAmendments ******************/
-		/**** md5 signature: c2be8078ab69a477345c7d01bfe03646 ****/
+		/****** MoniTool_Timer::GetAmendments ******/
+		/****** md5 signature: c2be8078ab69a477345c7d01bfe03646 ******/
 		%feature("compactdefaultargs") GetAmendments;
 		%feature("autodoc", "
 Parameters
@@ -2038,8 +2038,8 @@ The computed amendmens are returned (for information only).
 ") GetAmendments;
 		static void GetAmendments(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** IsRunning ******************/
-		/**** md5 signature: d7c315f198eeb1f77f7fa766917cac35 ****/
+		/****** MoniTool_Timer::IsRunning ******/
+		/****** md5 signature: d7c315f198eeb1f77f7fa766917cac35 ******/
 		%feature("compactdefaultargs") IsRunning;
 		%feature("autodoc", "Return
 -------
@@ -2051,8 +2051,8 @@ Returns value of nesting counter.
 ") IsRunning;
 		Standard_Integer IsRunning();
 
-		/****************** Reset ******************/
-		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
+		/****** MoniTool_Timer::Reset ******/
+		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "Return
 -------
@@ -2064,8 +2064,8 @@ Start, stop and reset the timer in addition to doing that to embedded osd_timer,
 ") Reset;
 		void Reset();
 
-		/****************** Start ******************/
-		/**** md5 signature: f8a4dbf1e6f2cec0927301856b440be5 ****/
+		/****** MoniTool_Timer::Start ******/
+		/****** md5 signature: f8a4dbf1e6f2cec0927301856b440be5 ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "Return
 -------
@@ -2077,8 +2077,8 @@ No available documentation.
 ") Start;
 		void Start();
 
-		/****************** Start ******************/
-		/**** md5 signature: b833d14b6b19bc40531ad996f753cfaf ****/
+		/****** MoniTool_Timer::Start ******/
+		/****** md5 signature: b833d14b6b19bc40531ad996f753cfaf ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "
 Parameters
@@ -2095,8 +2095,8 @@ No available documentation.
 ") Start;
 		static void Start(Standard_CString name);
 
-		/****************** Stop ******************/
-		/**** md5 signature: 702270b81e0a152f42e95b594cbf6271 ****/
+		/****** MoniTool_Timer::Stop ******/
+		/****** md5 signature: 702270b81e0a152f42e95b594cbf6271 ******/
 		%feature("compactdefaultargs") Stop;
 		%feature("autodoc", "Return
 -------
@@ -2108,8 +2108,8 @@ No available documentation.
 ") Stop;
 		void Stop();
 
-		/****************** Stop ******************/
-		/**** md5 signature: a7e1fcb4a05664a7681ec0b7099dcb2b ****/
+		/****** MoniTool_Timer::Stop ******/
+		/****** md5 signature: a7e1fcb4a05664a7681ec0b7099dcb2b ******/
 		%feature("compactdefaultargs") Stop;
 		%feature("autodoc", "
 Parameters
@@ -2126,8 +2126,8 @@ Inline methods to conveniently start/stop timer by name shortcut to timer(name)-
 ") Stop;
 		static void Stop(Standard_CString name);
 
-		/****************** Timer ******************/
-		/**** md5 signature: bcb4e9e61cdff233394f8b155f896468 ****/
+		/****** MoniTool_Timer::Timer ******/
+		/****** md5 signature: bcb4e9e61cdff233394f8b155f896468 ******/
 		%feature("compactdefaultargs") Timer;
 		%feature("autodoc", "Return
 -------
@@ -2139,8 +2139,8 @@ No available documentation.
 ") Timer;
 		const OSD_Timer & Timer();
 
-		/****************** Timer ******************/
-		/**** md5 signature: 26bc13b983ab9fb82126f8517bcdd477 ****/
+		/****** MoniTool_Timer::Timer ******/
+		/****** md5 signature: 26bc13b983ab9fb82126f8517bcdd477 ******/
 		%feature("compactdefaultargs") Timer;
 		%feature("autodoc", "Return
 -------
@@ -2152,8 +2152,8 @@ Return reference to embedded osd_timer.
 ") Timer;
 		OSD_Timer & Timer();
 
-		/****************** Timer ******************/
-		/**** md5 signature: 9237b83a5e4ff7ccc33dbe1781fb7e12 ****/
+		/****** MoniTool_Timer::Timer ******/
+		/****** md5 signature: 9237b83a5e4ff7ccc33dbe1781fb7e12 ******/
 		%feature("compactdefaultargs") Timer;
 		%feature("autodoc", "
 Parameters
@@ -2186,8 +2186,8 @@ Returns a timer from a dictionary by its name if timer not existed, creates a ne
 *****************************/
 class MoniTool_TimerSentry {
 	public:
-		/****************** MoniTool_TimerSentry ******************/
-		/**** md5 signature: 29c99cdb9c92a94de51617e05465c45f ****/
+		/****** MoniTool_TimerSentry::MoniTool_TimerSentry ******/
+		/****** md5 signature: 29c99cdb9c92a94de51617e05465c45f ******/
 		%feature("compactdefaultargs") MoniTool_TimerSentry;
 		%feature("autodoc", "
 Parameters
@@ -2204,8 +2204,8 @@ Constructor creates an instance and runs the corresponding timer.
 ") MoniTool_TimerSentry;
 		 MoniTool_TimerSentry(Standard_CString cname);
 
-		/****************** MoniTool_TimerSentry ******************/
-		/**** md5 signature: f8ad07fc64ca3f7f856174a2c43628b8 ****/
+		/****** MoniTool_TimerSentry::MoniTool_TimerSentry ******/
+		/****** md5 signature: f8ad07fc64ca3f7f856174a2c43628b8 ******/
 		%feature("compactdefaultargs") MoniTool_TimerSentry;
 		%feature("autodoc", "
 Parameters
@@ -2222,8 +2222,8 @@ Constructor creates an instance and runs the corresponding timer.
 ") MoniTool_TimerSentry;
 		 MoniTool_TimerSentry(const opencascade::handle<MoniTool_Timer> & timer);
 
-		/****************** Stop ******************/
-		/**** md5 signature: 702270b81e0a152f42e95b594cbf6271 ****/
+		/****** MoniTool_TimerSentry::Stop ******/
+		/****** md5 signature: 702270b81e0a152f42e95b594cbf6271 ******/
 		%feature("compactdefaultargs") Stop;
 		%feature("autodoc", "Return
 -------
@@ -2235,8 +2235,8 @@ Manually stops the timer.
 ") Stop;
 		void Stop();
 
-		/****************** Timer ******************/
-		/**** md5 signature: 85c5aa27e020bbb36f74c4d61646d1d4 ****/
+		/****** MoniTool_TimerSentry::Timer ******/
+		/****** md5 signature: 85c5aa27e020bbb36f74c4d61646d1d4 ******/
 		%feature("compactdefaultargs") Timer;
 		%feature("autodoc", "Return
 -------
@@ -2262,8 +2262,8 @@ No available documentation.
 ****************************/
 class MoniTool_TypedValue : public Standard_Transient {
 	public:
-		/****************** MoniTool_TypedValue ******************/
-		/**** md5 signature: 96d7c03f50b98cd157c360176d941966 ****/
+		/****** MoniTool_TypedValue::MoniTool_TypedValue ******/
+		/****** md5 signature: 96d7c03f50b98cd157c360176d941966 ******/
 		%feature("compactdefaultargs") MoniTool_TypedValue;
 		%feature("autodoc", "
 Parameters
@@ -2282,8 +2282,8 @@ Creates a typedvalue, with a name //! type gives the type of the parameter, defa
 ") MoniTool_TypedValue;
 		 MoniTool_TypedValue(Standard_CString name, const MoniTool_ValueType type = MoniTool_ValueText, Standard_CString init = "");
 
-		/****************** MoniTool_TypedValue ******************/
-		/**** md5 signature: 2b88b6976dfa2d96905a887c992d595a ****/
+		/****** MoniTool_TypedValue::MoniTool_TypedValue ******/
+		/****** md5 signature: 2b88b6976dfa2d96905a887c992d595a ******/
 		%feature("compactdefaultargs") MoniTool_TypedValue;
 		%feature("autodoc", "
 Parameters
@@ -2300,8 +2300,8 @@ Creates a typedvalue from another one, by duplication.
 ") MoniTool_TypedValue;
 		 MoniTool_TypedValue(const opencascade::handle<MoniTool_TypedValue> & other);
 
-		/****************** AddDef ******************/
-		/**** md5 signature: 270379383287ef65ab016bd598c4af1f ****/
+		/****** MoniTool_TypedValue::AddDef ******/
+		/****** md5 signature: 270379383287ef65ab016bd598c4af1f ******/
 		%feature("compactdefaultargs") AddDef;
 		%feature("autodoc", "
 Parameters
@@ -2318,8 +2318,8 @@ Completes the definition of a typedvalue by command <initext>, once created with
 ") AddDef;
 		Standard_Boolean AddDef(Standard_CString initext);
 
-		/****************** AddEnum ******************/
-		/**** md5 signature: e6ae955f31fb3a2e2ceeb01f3e9686bd ****/
+		/****** MoniTool_TypedValue::AddEnum ******/
+		/****** md5 signature: e6ae955f31fb3a2e2ceeb01f3e9686bd ******/
 		%feature("compactdefaultargs") AddEnum;
 		%feature("autodoc", "
 Parameters
@@ -2345,8 +2345,8 @@ Adds enumerative definitions. for more than 10, several calls.
 ") AddEnum;
 		void AddEnum(Standard_CString v1 = "", Standard_CString v2 = "", Standard_CString v3 = "", Standard_CString v4 = "", Standard_CString v5 = "", Standard_CString v6 = "", Standard_CString v7 = "", Standard_CString v8 = "", Standard_CString v9 = "", Standard_CString v10 = "");
 
-		/****************** AddEnumValue ******************/
-		/**** md5 signature: dd36fba0a6d141a7dfbf4646a6317bd6 ****/
+		/****** MoniTool_TypedValue::AddEnumValue ******/
+		/****** md5 signature: dd36fba0a6d141a7dfbf4646a6317bd6 ******/
 		%feature("compactdefaultargs") AddEnumValue;
 		%feature("autodoc", "
 Parameters
@@ -2364,8 +2364,8 @@ Adds an enumeration definition, by its string and numeric values. if it is the f
 ") AddEnumValue;
 		void AddEnumValue(Standard_CString val, const Standard_Integer num);
 
-		/****************** AddLib ******************/
-		/**** md5 signature: c61cc150ba0ebcce137a721917e17662 ****/
+		/****** MoniTool_TypedValue::AddLib ******/
+		/****** md5 signature: c61cc150ba0ebcce137a721917e17662 ******/
 		%feature("compactdefaultargs") AddLib;
 		%feature("autodoc", "
 Parameters
@@ -2383,8 +2383,8 @@ Adds a typedvalue in the library. it is recorded then will be accessed by its na
 ") AddLib;
 		static Standard_Boolean AddLib(const opencascade::handle<MoniTool_TypedValue> & tv, Standard_CString def = "");
 
-		/****************** CStringValue ******************/
-		/**** md5 signature: e29eae6e0076125e72074e4bd0c76b3a ****/
+		/****** MoniTool_TypedValue::CStringValue ******/
+		/****** md5 signature: e29eae6e0076125e72074e4bd0c76b3a ******/
 		%feature("compactdefaultargs") CStringValue;
 		%feature("autodoc", "Return
 -------
@@ -2396,8 +2396,8 @@ Returns the value, as a cstring. empty if not set.
 ") CStringValue;
 		Standard_CString CStringValue();
 
-		/****************** ClearValue ******************/
-		/**** md5 signature: 70260fa193dc762fb315c6297127fb7c ****/
+		/****** MoniTool_TypedValue::ClearValue ******/
+		/****** md5 signature: 70260fa193dc762fb315c6297127fb7c ******/
 		%feature("compactdefaultargs") ClearValue;
 		%feature("autodoc", "Return
 -------
@@ -2409,8 +2409,8 @@ Clears the recorded value: it is now unset.
 ") ClearValue;
 		void ClearValue();
 
-		/****************** Definition ******************/
-		/**** md5 signature: ccdcae49759d4b73dcb504b2936ba137 ****/
+		/****** MoniTool_TypedValue::Definition ******/
+		/****** md5 signature: ccdcae49759d4b73dcb504b2936ba137 ******/
 		%feature("compactdefaultargs") Definition;
 		%feature("autodoc", "Return
 -------
@@ -2422,8 +2422,8 @@ Returns the definition by priority, the enforced one, else an automatic one, com
 ") Definition;
 		TCollection_AsciiString Definition();
 
-		/****************** EnumCase ******************/
-		/**** md5 signature: 62406df61445d184caa1d6ed239fe6a3 ****/
+		/****** MoniTool_TypedValue::EnumCase ******/
+		/****** md5 signature: 62406df61445d184caa1d6ed239fe6a3 ******/
 		%feature("compactdefaultargs") EnumCase;
 		%feature("autodoc", "
 Parameters
@@ -2440,8 +2440,8 @@ Returns the case number which corresponds to a string value works with main and 
 ") EnumCase;
 		Standard_Integer EnumCase(Standard_CString val);
 
-		/****************** EnumDef ******************/
-		/**** md5 signature: 980792930a6ea3fdf361dc3b1c7d441d ****/
+		/****** MoniTool_TypedValue::EnumDef ******/
+		/****** md5 signature: 980792930a6ea3fdf361dc3b1c7d441d ******/
 		%feature("compactdefaultargs") EnumDef;
 		%feature("autodoc", "
 Parameters
@@ -2459,8 +2459,8 @@ Gives the enum definitions: start value, end value, match status. returns true f
 ") EnumDef;
 		Standard_Boolean EnumDef(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Boolean &OutValue);
 
-		/****************** EnumVal ******************/
-		/**** md5 signature: 354eb473aa3cf0e0681ce7fc2799fa01 ****/
+		/****** MoniTool_TypedValue::EnumVal ******/
+		/****** md5 signature: 354eb473aa3cf0e0681ce7fc2799fa01 ******/
 		%feature("compactdefaultargs") EnumVal;
 		%feature("autodoc", "
 Parameters
@@ -2477,8 +2477,8 @@ Returns the value of an enumerative definition, from its rank empty string if ou
 ") EnumVal;
 		Standard_CString EnumVal(const Standard_Integer num);
 
-		/****************** FromLib ******************/
-		/**** md5 signature: fa43a04fa4b4ae98ce69c9be25395f2a ****/
+		/****** MoniTool_TypedValue::FromLib ******/
+		/****** md5 signature: fa43a04fa4b4ae98ce69c9be25395f2a ******/
 		%feature("compactdefaultargs") FromLib;
 		%feature("autodoc", "
 Parameters
@@ -2495,8 +2495,8 @@ Returns a copy of the typedvalue bound with a given name null handle if none rec
 ") FromLib;
 		static opencascade::handle<MoniTool_TypedValue> FromLib(Standard_CString def);
 
-		/****************** GetObjectValue ******************/
-		/**** md5 signature: 23272bc4133e0775830a35a37d96d179 ****/
+		/****** MoniTool_TypedValue::GetObjectValue ******/
+		/****** md5 signature: 23272bc4133e0775830a35a37d96d179 ******/
 		%feature("compactdefaultargs") GetObjectValue;
 		%feature("autodoc", "
 Parameters
@@ -2513,8 +2513,8 @@ Same as objectvalue, but avoids downcast: the receiving variable is directly loa
 ") GetObjectValue;
 		void GetObjectValue(opencascade::handle<Standard_Transient> & val);
 
-		/****************** HStringValue ******************/
-		/**** md5 signature: c0daaacdffeb9186dd6b6121d18328e9 ****/
+		/****** MoniTool_TypedValue::HStringValue ******/
+		/****** md5 signature: c0daaacdffeb9186dd6b6121d18328e9 ******/
 		%feature("compactdefaultargs") HStringValue;
 		%feature("autodoc", "Return
 -------
@@ -2526,8 +2526,8 @@ Returns the value, as a handle (can then be shared) null if not defined.
 ") HStringValue;
 		opencascade::handle<TCollection_HAsciiString> HStringValue();
 
-		/****************** HasInterpret ******************/
-		/**** md5 signature: 6f629b352f0708b49269300b1a9f380d ****/
+		/****** MoniTool_TypedValue::HasInterpret ******/
+		/****** md5 signature: 6f629b352f0708b49269300b1a9f380d ******/
 		%feature("compactdefaultargs") HasInterpret;
 		%feature("autodoc", "Return
 -------
@@ -2539,8 +2539,8 @@ Tells if a typedvalue has an interpret.
 ") HasInterpret;
 		virtual Standard_Boolean HasInterpret();
 
-		/****************** IntegerLimit ******************/
-		/**** md5 signature: 92d178c29627fe6bb9dd5904f4dda9a8 ****/
+		/****** MoniTool_TypedValue::IntegerLimit ******/
+		/****** md5 signature: 92d178c29627fe6bb9dd5904f4dda9a8 ******/
 		%feature("compactdefaultargs") IntegerLimit;
 		%feature("autodoc", "
 Parameters
@@ -2557,8 +2557,8 @@ Gives an integer limit (upper if <max> true, lower if <max> false). returns true
 ") IntegerLimit;
 		Standard_Boolean IntegerLimit(const Standard_Boolean max, Standard_Integer &OutValue);
 
-		/****************** IntegerValue ******************/
-		/**** md5 signature: a75e1a4c2632a55658f0262c4c2f22c2 ****/
+		/****** MoniTool_TypedValue::IntegerValue ******/
+		/****** md5 signature: a75e1a4c2632a55658f0262c4c2f22c2 ******/
 		%feature("compactdefaultargs") IntegerValue;
 		%feature("autodoc", "Return
 -------
@@ -2570,8 +2570,8 @@ Returns the value as integer, i.e.: for type = integer, the integer itself; 0 if
 ") IntegerValue;
 		Standard_Integer IntegerValue();
 
-		/****************** Internals ******************/
-		/**** md5 signature: 531d20a03e534a771a01b2421460e428 ****/
+		/****** MoniTool_TypedValue::Internals ******/
+		/****** md5 signature: 531d20a03e534a771a01b2421460e428 ******/
 		%feature("compactdefaultargs") Internals;
 		%feature("autodoc", "
 Parameters
@@ -2591,8 +2591,8 @@ Access to internal data which have no other access.
 ") Internals;
 		void Internals(MoniTool_ValueInterpret & interp, MoniTool_ValueSatisfies & satisf, Standard_CString satisname, NCollection_DataMap<TCollection_AsciiString, Standard_Integer> & enums);
 
-		/****************** Interpret ******************/
-		/**** md5 signature: 9c6153888caed409cc74bdcaede46f12 ****/
+		/****** MoniTool_TypedValue::Interpret ******/
+		/****** md5 signature: 9c6153888caed409cc74bdcaede46f12 ******/
 		%feature("compactdefaultargs") Interpret;
 		%feature("autodoc", "
 Parameters
@@ -2610,8 +2610,8 @@ Interprets a value. <native> true: returns a native value <native> false: return
 ") Interpret;
 		virtual opencascade::handle<TCollection_HAsciiString> Interpret(const opencascade::handle<TCollection_HAsciiString> & hval, const Standard_Boolean native);
 
-		/****************** IsSetValue ******************/
-		/**** md5 signature: b7211cd65ed84bfd998fea019061883d ****/
+		/****** MoniTool_TypedValue::IsSetValue ******/
+		/****** md5 signature: b7211cd65ed84bfd998fea019061883d ******/
 		%feature("compactdefaultargs") IsSetValue;
 		%feature("autodoc", "Return
 -------
@@ -2623,8 +2623,8 @@ Returns true if the value is set (not empty/not null object).
 ") IsSetValue;
 		Standard_Boolean IsSetValue();
 
-		/****************** Label ******************/
-		/**** md5 signature: a2cdaa2c189e4a121892e76566961d64 ****/
+		/****** MoniTool_TypedValue::Label ******/
+		/****** md5 signature: a2cdaa2c189e4a121892e76566961d64 ******/
 		%feature("compactdefaultargs") Label;
 		%feature("autodoc", "Return
 -------
@@ -2636,8 +2636,8 @@ Returns the label, if set; else returns an empty string.
 ") Label;
 		Standard_CString Label();
 
-		/****************** Lib ******************/
-		/**** md5 signature: a5d90c5d20ec2688667bfa72e7671bb5 ****/
+		/****** MoniTool_TypedValue::Lib ******/
+		/****** md5 signature: a5d90c5d20ec2688667bfa72e7671bb5 ******/
 		%feature("compactdefaultargs") Lib;
 		%feature("autodoc", "
 Parameters
@@ -2654,8 +2654,8 @@ Returns the typedvalue bound with a given name null handle if none recorded warn
 ") Lib;
 		static opencascade::handle<MoniTool_TypedValue> Lib(Standard_CString def);
 
-		/****************** LibList ******************/
-		/**** md5 signature: 0d836a3a9b5bd600e3f329f3412de2d0 ****/
+		/****** MoniTool_TypedValue::LibList ******/
+		/****** md5 signature: 0d836a3a9b5bd600e3f329f3412de2d0 ******/
 		%feature("compactdefaultargs") LibList;
 		%feature("autodoc", "Return
 -------
@@ -2667,8 +2667,8 @@ Returns the list of names of items of the library of types -- library of typedva
 ") LibList;
 		static opencascade::handle<TColStd_HSequenceOfAsciiString> LibList();
 
-		/****************** MaxLength ******************/
-		/**** md5 signature: 81402d983184c310a40be9c5c0534e33 ****/
+		/****** MoniTool_TypedValue::MaxLength ******/
+		/****** md5 signature: 81402d983184c310a40be9c5c0534e33 ******/
 		%feature("compactdefaultargs") MaxLength;
 		%feature("autodoc", "Return
 -------
@@ -2680,8 +2680,8 @@ Returns the maximum length, 0 if not set.
 ") MaxLength;
 		Standard_Integer MaxLength();
 
-		/****************** Name ******************/
-		/**** md5 signature: 2e8cb64f99d00deafae9c92f20b187a2 ****/
+		/****** MoniTool_TypedValue::Name ******/
+		/****** md5 signature: 2e8cb64f99d00deafae9c92f20b187a2 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -2693,8 +2693,8 @@ Returns the name.
 ") Name;
 		Standard_CString Name();
 
-		/****************** ObjectType ******************/
-		/**** md5 signature: 6320624908ef64342bea6f08a015e066 ****/
+		/****** MoniTool_TypedValue::ObjectType ******/
+		/****** md5 signature: 6320624908ef64342bea6f08a015e066 ******/
 		%feature("compactdefaultargs") ObjectType;
 		%feature("autodoc", "Return
 -------
@@ -2706,8 +2706,8 @@ Returns the type of which an object typedvalue must be kind of default is standa
 ") ObjectType;
 		opencascade::handle<Standard_Type> ObjectType();
 
-		/****************** ObjectTypeName ******************/
-		/**** md5 signature: 117bb5ca131230a9a7bb5829d6593e5b ****/
+		/****** MoniTool_TypedValue::ObjectTypeName ******/
+		/****** md5 signature: 117bb5ca131230a9a7bb5829d6593e5b ******/
 		%feature("compactdefaultargs") ObjectTypeName;
 		%feature("autodoc", "Return
 -------
@@ -2719,8 +2719,8 @@ Returns the type name of the objectvalue, or an empty string if not set.
 ") ObjectTypeName;
 		Standard_CString ObjectTypeName();
 
-		/****************** ObjectValue ******************/
-		/**** md5 signature: bd801152e11f117b295705342aad54e1 ****/
+		/****** MoniTool_TypedValue::ObjectValue ******/
+		/****** md5 signature: bd801152e11f117b295705342aad54e1 ******/
 		%feature("compactdefaultargs") ObjectValue;
 		%feature("autodoc", "Return
 -------
@@ -2732,8 +2732,8 @@ Returns the value as transient object, only for object/entity remark that the 'h
 ") ObjectValue;
 		opencascade::handle<Standard_Transient> ObjectValue();
 
-		/****************** Print ******************/
-		/**** md5 signature: d481ea44f76183e17a04f4e32b90f550 ****/
+		/****** MoniTool_TypedValue::Print ******/
+		/****** md5 signature: d481ea44f76183e17a04f4e32b90f550 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -2749,8 +2749,8 @@ Prints definition, specification, and actual status and value.
 ") Print;
 		virtual void Print(std::ostream &OutValue);
 
-		/****************** PrintValue ******************/
-		/**** md5 signature: a5c0ed204815d55a64ad2d065f7106ab ****/
+		/****** MoniTool_TypedValue::PrintValue ******/
+		/****** md5 signature: a5c0ed204815d55a64ad2d065f7106ab ******/
 		%feature("compactdefaultargs") PrintValue;
 		%feature("autodoc", "
 Parameters
@@ -2766,8 +2766,8 @@ Prints only the value.
 ") PrintValue;
 		void PrintValue(std::ostream &OutValue);
 
-		/****************** RealLimit ******************/
-		/**** md5 signature: 89c72e2e3893a95f4283fcadf76436b4 ****/
+		/****** MoniTool_TypedValue::RealLimit ******/
+		/****** md5 signature: 89c72e2e3893a95f4283fcadf76436b4 ******/
 		%feature("compactdefaultargs") RealLimit;
 		%feature("autodoc", "
 Parameters
@@ -2784,8 +2784,8 @@ Gives an real limit (upper if <max> true, lower if <max> false). returns true if
 ") RealLimit;
 		Standard_Boolean RealLimit(const Standard_Boolean max, Standard_Real &OutValue);
 
-		/****************** RealValue ******************/
-		/**** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ****/
+		/****** MoniTool_TypedValue::RealValue ******/
+		/****** md5 signature: 8a0c7a2ab7b53f6fb68a06ec0dbc6aa7 ******/
 		%feature("compactdefaultargs") RealValue;
 		%feature("autodoc", "Return
 -------
@@ -2797,8 +2797,8 @@ Returns the value as real, for a real type typedvalue else, returns 0.
 ") RealValue;
 		Standard_Real RealValue();
 
-		/****************** Satisfies ******************/
-		/**** md5 signature: 2c6f554b64a4a7ef444a4ba67da8e1ad ****/
+		/****** MoniTool_TypedValue::Satisfies ******/
+		/****** md5 signature: 2c6f554b64a4a7ef444a4ba67da8e1ad ******/
 		%feature("compactdefaultargs") Satisfies;
 		%feature("autodoc", "
 Parameters
@@ -2815,8 +2815,8 @@ Returns true if a value statifies the specification (remark: does not apply to e
 ") Satisfies;
 		virtual Standard_Boolean Satisfies(const opencascade::handle<TCollection_HAsciiString> & hval);
 
-		/****************** SatisfiesName ******************/
-		/**** md5 signature: 4e18cf6cac58b1fda6a5a8dca1a18323 ****/
+		/****** MoniTool_TypedValue::SatisfiesName ******/
+		/****** md5 signature: 4e18cf6cac58b1fda6a5a8dca1a18323 ******/
 		%feature("compactdefaultargs") SatisfiesName;
 		%feature("autodoc", "Return
 -------
@@ -2828,8 +2828,8 @@ Returns name of specific satisfy, empty string if none.
 ") SatisfiesName;
 		Standard_CString SatisfiesName();
 
-		/****************** SetCStringValue ******************/
-		/**** md5 signature: effa6c9216f0b492b4c2e518069e1a90 ****/
+		/****** MoniTool_TypedValue::SetCStringValue ******/
+		/****** md5 signature: effa6c9216f0b492b4c2e518069e1a90 ******/
 		%feature("compactdefaultargs") SetCStringValue;
 		%feature("autodoc", "
 Parameters
@@ -2846,8 +2846,8 @@ Changes the value. the new one must satisfy the specification returns false (and
 ") SetCStringValue;
 		virtual Standard_Boolean SetCStringValue(Standard_CString val);
 
-		/****************** SetDefinition ******************/
-		/**** md5 signature: d99e23b341c7f1e3f198dd0f04a36d84 ****/
+		/****** MoniTool_TypedValue::SetDefinition ******/
+		/****** md5 signature: d99e23b341c7f1e3f198dd0f04a36d84 ******/
 		%feature("compactdefaultargs") SetDefinition;
 		%feature("autodoc", "
 Parameters
@@ -2864,8 +2864,8 @@ Enforces a definition.
 ") SetDefinition;
 		void SetDefinition(Standard_CString deftext);
 
-		/****************** SetHStringValue ******************/
-		/**** md5 signature: de7c62babaa97912ec98c71879a0d8a9 ****/
+		/****** MoniTool_TypedValue::SetHStringValue ******/
+		/****** md5 signature: de7c62babaa97912ec98c71879a0d8a9 ******/
 		%feature("compactdefaultargs") SetHStringValue;
 		%feature("autodoc", "
 Parameters
@@ -2882,8 +2882,8 @@ Forces a new handle for the value it can be empty, else (if type is not free tex
 ") SetHStringValue;
 		virtual Standard_Boolean SetHStringValue(const opencascade::handle<TCollection_HAsciiString> & hval);
 
-		/****************** SetIntegerLimit ******************/
-		/**** md5 signature: c2135aef222b83c75b2ed3cef848b174 ****/
+		/****** MoniTool_TypedValue::SetIntegerLimit ******/
+		/****** md5 signature: c2135aef222b83c75b2ed3cef848b174 ******/
 		%feature("compactdefaultargs") SetIntegerLimit;
 		%feature("autodoc", "
 Parameters
@@ -2901,8 +2901,8 @@ Sets an integer limit (included) to <val>, the upper limit if <max> is true, the
 ") SetIntegerLimit;
 		void SetIntegerLimit(const Standard_Boolean max, const Standard_Integer val);
 
-		/****************** SetIntegerValue ******************/
-		/**** md5 signature: a4e5fb94cb4abcf21a5f124e8a222979 ****/
+		/****** MoniTool_TypedValue::SetIntegerValue ******/
+		/****** md5 signature: a4e5fb94cb4abcf21a5f124e8a222979 ******/
 		%feature("compactdefaultargs") SetIntegerValue;
 		%feature("autodoc", "
 Parameters
@@ -2919,8 +2919,8 @@ Changes the value as an integer, only for integer or enum.
 ") SetIntegerValue;
 		virtual Standard_Boolean SetIntegerValue(const Standard_Integer ival);
 
-		/****************** SetInterpret ******************/
-		/**** md5 signature: dad8a9fad1cc341287c733bfc633d813 ****/
+		/****** MoniTool_TypedValue::SetInterpret ******/
+		/****** md5 signature: dad8a9fad1cc341287c733bfc633d813 ******/
 		%feature("compactdefaultargs") SetInterpret;
 		%feature("autodoc", "
 Parameters
@@ -2937,8 +2937,8 @@ Sets a specific interpret function.
 ") SetInterpret;
 		void SetInterpret(const MoniTool_ValueInterpret func);
 
-		/****************** SetLabel ******************/
-		/**** md5 signature: 22a615cc38955b7431d4e25423d6e156 ****/
+		/****** MoniTool_TypedValue::SetLabel ******/
+		/****** md5 signature: 22a615cc38955b7431d4e25423d6e156 ******/
 		%feature("compactdefaultargs") SetLabel;
 		%feature("autodoc", "
 Parameters
@@ -2955,8 +2955,8 @@ Sets a label, which can then be displayed.
 ") SetLabel;
 		void SetLabel(Standard_CString label);
 
-		/****************** SetMaxLength ******************/
-		/**** md5 signature: 056e107e4772026e4004710b692c8026 ****/
+		/****** MoniTool_TypedValue::SetMaxLength ******/
+		/****** md5 signature: 056e107e4772026e4004710b692c8026 ******/
 		%feature("compactdefaultargs") SetMaxLength;
 		%feature("autodoc", "
 Parameters
@@ -2973,8 +2973,8 @@ Sets a maximum length for a text (active only for a free text).
 ") SetMaxLength;
 		void SetMaxLength(const Standard_Integer max);
 
-		/****************** SetObjectType ******************/
-		/**** md5 signature: d1f10681f04445c832c7a32bc0d6356d ****/
+		/****** MoniTool_TypedValue::SetObjectType ******/
+		/****** md5 signature: d1f10681f04445c832c7a32bc0d6356d ******/
 		%feature("compactdefaultargs") SetObjectType;
 		%feature("autodoc", "
 Parameters
@@ -2991,8 +2991,8 @@ Sets type of which an object typedvalue must be kind of error for a typedvalue n
 ") SetObjectType;
 		void SetObjectType(const opencascade::handle<Standard_Type> & typ);
 
-		/****************** SetObjectValue ******************/
-		/**** md5 signature: ce0b84345af23fb6eaecb39ca8367f29 ****/
+		/****** MoniTool_TypedValue::SetObjectValue ******/
+		/****** md5 signature: ce0b84345af23fb6eaecb39ca8367f29 ******/
 		%feature("compactdefaultargs") SetObjectValue;
 		%feature("autodoc", "
 Parameters
@@ -3009,8 +3009,8 @@ Changes the value as transient object, only for object/entity returns false if d
 ") SetObjectValue;
 		virtual Standard_Boolean SetObjectValue(const opencascade::handle<Standard_Transient> & obj);
 
-		/****************** SetRealLimit ******************/
-		/**** md5 signature: 2c07a42f1fdf96a4266d8c2e6b12deaa ****/
+		/****** MoniTool_TypedValue::SetRealLimit ******/
+		/****** md5 signature: 2c07a42f1fdf96a4266d8c2e6b12deaa ******/
 		%feature("compactdefaultargs") SetRealLimit;
 		%feature("autodoc", "
 Parameters
@@ -3028,8 +3028,8 @@ Sets a real limit (included) to <val>, the upper limit if <max> is true, the low
 ") SetRealLimit;
 		void SetRealLimit(const Standard_Boolean max, const Standard_Real val);
 
-		/****************** SetRealValue ******************/
-		/**** md5 signature: 52ebdd0f8213ad1ba5a5b91643f643ec ****/
+		/****** MoniTool_TypedValue::SetRealValue ******/
+		/****** md5 signature: 52ebdd0f8213ad1ba5a5b91643f643ec ******/
 		%feature("compactdefaultargs") SetRealValue;
 		%feature("autodoc", "
 Parameters
@@ -3046,8 +3046,8 @@ Changes the value as a real, only for real.
 ") SetRealValue;
 		virtual Standard_Boolean SetRealValue(const Standard_Real rval);
 
-		/****************** SetSatisfies ******************/
-		/**** md5 signature: 10cbef7ca241ca4eed214bb6602da3f0 ****/
+		/****** MoniTool_TypedValue::SetSatisfies ******/
+		/****** md5 signature: 10cbef7ca241ca4eed214bb6602da3f0 ******/
 		%feature("compactdefaultargs") SetSatisfies;
 		%feature("autodoc", "
 Parameters
@@ -3065,8 +3065,8 @@ Sets a specific satisfies function: it is added to the already defined criteria 
 ") SetSatisfies;
 		void SetSatisfies(const MoniTool_ValueSatisfies func, Standard_CString name);
 
-		/****************** SetUnitDef ******************/
-		/**** md5 signature: 30b7503e4ee844870c530c56053721a7 ****/
+		/****** MoniTool_TypedValue::SetUnitDef ******/
+		/****** md5 signature: 30b7503e4ee844870c530c56053721a7 ******/
 		%feature("compactdefaultargs") SetUnitDef;
 		%feature("autodoc", "
 Parameters
@@ -3083,8 +3083,8 @@ Sets (clears if <def> empty) a unit definition, as an equation of dimensions. ty
 ") SetUnitDef;
 		void SetUnitDef(Standard_CString def);
 
-		/****************** StartEnum ******************/
-		/**** md5 signature: 0ae13a6123edbd6996b53e248a55a112 ****/
+		/****** MoniTool_TypedValue::StartEnum ******/
+		/****** md5 signature: 0ae13a6123edbd6996b53e248a55a112 ******/
 		%feature("compactdefaultargs") StartEnum;
 		%feature("autodoc", "
 Parameters
@@ -3102,8 +3102,8 @@ For an enumeration, precises the starting value (default 0) and the match condit
 ") StartEnum;
 		void StartEnum(const Standard_Integer start = 0, const Standard_Boolean match = Standard_True);
 
-		/****************** StaticValue ******************/
-		/**** md5 signature: bf5bcf8a5edc5bdc063e75ea7956dd93 ****/
+		/****** MoniTool_TypedValue::StaticValue ******/
+		/****** md5 signature: bf5bcf8a5edc5bdc063e75ea7956dd93 ******/
 		%feature("compactdefaultargs") StaticValue;
 		%feature("autodoc", "
 Parameters
@@ -3120,8 +3120,8 @@ Returns a static value from its name, null if unknown.
 ") StaticValue;
 		static opencascade::handle<MoniTool_TypedValue> StaticValue(Standard_CString name);
 
-		/****************** UnitDef ******************/
-		/**** md5 signature: 61b7bdf19530e233fa3664a070cf6b90 ****/
+		/****** MoniTool_TypedValue::UnitDef ******/
+		/****** md5 signature: 61b7bdf19530e233fa3664a070cf6b90 ******/
 		%feature("compactdefaultargs") UnitDef;
 		%feature("autodoc", "Return
 -------
@@ -3133,8 +3133,8 @@ Returns the recorded unit definition, empty if not set.
 ") UnitDef;
 		Standard_CString UnitDef();
 
-		/****************** ValueType ******************/
-		/**** md5 signature: a2b700590fb8f925c50c498db15aa421 ****/
+		/****** MoniTool_TypedValue::ValueType ******/
+		/****** md5 signature: a2b700590fb8f925c50c498db15aa421 ******/
 		%feature("compactdefaultargs") ValueType;
 		%feature("autodoc", "Return
 -------
@@ -3162,8 +3162,8 @@ Returns the type of the value.
 ***************************/
 class MoniTool_SignShape : public MoniTool_SignText {
 	public:
-		/****************** MoniTool_SignShape ******************/
-		/**** md5 signature: 92586a12e018f443c7cbb07692c130a0 ****/
+		/****** MoniTool_SignShape::MoniTool_SignShape ******/
+		/****** md5 signature: 92586a12e018f443c7cbb07692c130a0 ******/
 		%feature("compactdefaultargs") MoniTool_SignShape;
 		%feature("autodoc", "Return
 -------
@@ -3175,8 +3175,8 @@ No available documentation.
 ") MoniTool_SignShape;
 		 MoniTool_SignShape();
 
-		/****************** Name ******************/
-		/**** md5 signature: f35e373630f40191cc40cd61094fa98a ****/
+		/****** MoniTool_SignShape::Name ******/
+		/****** md5 signature: f35e373630f40191cc40cd61094fa98a ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -3188,8 +3188,8 @@ Returns 'shape'.
 ") Name;
 		Standard_CString Name();
 
-		/****************** Text ******************/
-		/**** md5 signature: 44c44c56f0e9da4d892db26a3852e369 ****/
+		/****** MoniTool_SignShape::Text ******/
+		/****** md5 signature: 44c44c56f0e9da4d892db26a3852e369 ******/
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "
 Parameters
@@ -3223,8 +3223,8 @@ Returns for a hshape, the string of its shapeenum the model is absolutely useles
 *******************************/
 class MoniTool_TransientElem : public MoniTool_Element {
 	public:
-		/****************** MoniTool_TransientElem ******************/
-		/**** md5 signature: 209dc6e58c11d349eee7b18ee202941d ****/
+		/****** MoniTool_TransientElem::MoniTool_TransientElem ******/
+		/****** md5 signature: 209dc6e58c11d349eee7b18ee202941d ******/
 		%feature("compactdefaultargs") MoniTool_TransientElem;
 		%feature("autodoc", "
 Parameters
@@ -3241,8 +3241,8 @@ Creates a transientelem with a value. this value can then not be changed. it is 
 ") MoniTool_TransientElem;
 		 MoniTool_TransientElem(const opencascade::handle<Standard_Transient> & akey);
 
-		/****************** Equates ******************/
-		/**** md5 signature: 37e72bdf003bc234f02a6795d9820def ****/
+		/****** MoniTool_TransientElem::Equates ******/
+		/****** md5 signature: 37e72bdf003bc234f02a6795d9820def ******/
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "
 Parameters
@@ -3259,8 +3259,8 @@ Specific testof equality: defined as false if <other> has not the same true type
 ") Equates;
 		Standard_Boolean Equates(const opencascade::handle<MoniTool_Element> & other);
 
-		/****************** Value ******************/
-		/**** md5 signature: b1443f8da90189a74241bf586c57fc63 ****/
+		/****** MoniTool_TransientElem::Value ******/
+		/****** md5 signature: b1443f8da90189a74241bf586c57fc63 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -3272,8 +3272,8 @@ Returns the contained value.
 ") Value;
 		const opencascade::handle<Standard_Transient> & Value();
 
-		/****************** ValueType ******************/
-		/**** md5 signature: 40aa6e907b5cbe34817c19e20e6dde6e ****/
+		/****** MoniTool_TransientElem::ValueType ******/
+		/****** md5 signature: 40aa6e907b5cbe34817c19e20e6dde6e ******/
 		%feature("compactdefaultargs") ValueType;
 		%feature("autodoc", "Return
 -------
@@ -3285,8 +3285,8 @@ Returns the type of the value. by default, returns the dynamictype of <self>, bu
 ") ValueType;
 		virtual opencascade::handle<Standard_Type> ValueType();
 
-		/****************** ValueTypeName ******************/
-		/**** md5 signature: d49d824d6a98cbb182d37bee73d4be07 ****/
+		/****** MoniTool_TransientElem::ValueTypeName ******/
+		/****** md5 signature: d49d824d6a98cbb182d37bee73d4be07 ******/
 		%feature("compactdefaultargs") ValueTypeName;
 		%feature("autodoc", "Return
 -------

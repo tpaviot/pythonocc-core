@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GCDOCSTRING
 "GC module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_gc.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_gc.html"
 %enddef
 %module (package="OCC.Core", docstring=GCDOCSTRING) GC
 
@@ -85,8 +85,8 @@ from OCC.Core.Exception import *
 **********************/
 class GC_MakeMirror {
 	public:
-		/****************** GC_MakeMirror ******************/
-		/**** md5 signature: 4311459e0214c0a7b53c35f9337a2309 ****/
+		/****** GC_MakeMirror::GC_MakeMirror ******/
+		/****** md5 signature: 4311459e0214c0a7b53c35f9337a2309 ******/
 		%feature("compactdefaultargs") GC_MakeMirror;
 		%feature("autodoc", "
 Parameters
@@ -103,8 +103,8 @@ No available documentation.
 ") GC_MakeMirror;
 		 GC_MakeMirror(const gp_Pnt & Point);
 
-		/****************** GC_MakeMirror ******************/
-		/**** md5 signature: da6c4c63d585c2342d618c33b07a24b5 ****/
+		/****** GC_MakeMirror::GC_MakeMirror ******/
+		/****** md5 signature: da6c4c63d585c2342d618c33b07a24b5 ******/
 		%feature("compactdefaultargs") GC_MakeMirror;
 		%feature("autodoc", "
 Parameters
@@ -121,8 +121,8 @@ No available documentation.
 ") GC_MakeMirror;
 		 GC_MakeMirror(const gp_Ax1 & Axis);
 
-		/****************** GC_MakeMirror ******************/
-		/**** md5 signature: e4b11ea90cbc9c91d8a1311be35fe6c9 ****/
+		/****** GC_MakeMirror::GC_MakeMirror ******/
+		/****** md5 signature: e4b11ea90cbc9c91d8a1311be35fe6c9 ******/
 		%feature("compactdefaultargs") GC_MakeMirror;
 		%feature("autodoc", "
 Parameters
@@ -139,8 +139,8 @@ No available documentation.
 ") GC_MakeMirror;
 		 GC_MakeMirror(const gp_Lin & Line);
 
-		/****************** GC_MakeMirror ******************/
-		/**** md5 signature: 82477fa581c9380b0d7767eaecc42a9e ****/
+		/****** GC_MakeMirror::GC_MakeMirror ******/
+		/****** md5 signature: 82477fa581c9380b0d7767eaecc42a9e ******/
 		%feature("compactdefaultargs") GC_MakeMirror;
 		%feature("autodoc", "
 Parameters
@@ -158,8 +158,8 @@ Make a symmetry transformation af axis defined by <point> and <direc>.
 ") GC_MakeMirror;
 		 GC_MakeMirror(const gp_Pnt & Point, const gp_Dir & Direc);
 
-		/****************** GC_MakeMirror ******************/
-		/**** md5 signature: 9c37a175b190c4d1aab7333ace288f71 ****/
+		/****** GC_MakeMirror::GC_MakeMirror ******/
+		/****** md5 signature: 9c37a175b190c4d1aab7333ace288f71 ******/
 		%feature("compactdefaultargs") GC_MakeMirror;
 		%feature("autodoc", "
 Parameters
@@ -176,8 +176,8 @@ Make a symmetry transformation of plane <plane>.
 ") GC_MakeMirror;
 		 GC_MakeMirror(const gp_Pln & Plane);
 
-		/****************** GC_MakeMirror ******************/
-		/**** md5 signature: 766d8b90ffc81811b7dc77c2db8faa2a ****/
+		/****** GC_MakeMirror::GC_MakeMirror ******/
+		/****** md5 signature: 766d8b90ffc81811b7dc77c2db8faa2a ******/
 		%feature("compactdefaultargs") GC_MakeMirror;
 		%feature("autodoc", "
 Parameters
@@ -194,8 +194,8 @@ Make a symmetry transformation of plane <plane>.
 ") GC_MakeMirror;
 		 GC_MakeMirror(const gp_Ax2 & Plane);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1a83265d766adbc039817098a76cd59b ****/
+		/****** GC_MakeMirror::Value ******/
+		/****** md5 signature: 1a83265d766adbc039817098a76cd59b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -221,8 +221,8 @@ Returns the constructed transformation.
 ************************/
 class GC_MakeRotation {
 	public:
-		/****************** GC_MakeRotation ******************/
-		/**** md5 signature: 1765104abd0cdd0afa27aafed65a0dfc ****/
+		/****** GC_MakeRotation::GC_MakeRotation ******/
+		/****** md5 signature: 1765104abd0cdd0afa27aafed65a0dfc ******/
 		%feature("compactdefaultargs") GC_MakeRotation;
 		%feature("autodoc", "
 Parameters
@@ -240,8 +240,8 @@ Constructs a rotation through angle angle about the axis defined by the line lin
 ") GC_MakeRotation;
 		 GC_MakeRotation(const gp_Lin & Line, const Standard_Real Angle);
 
-		/****************** GC_MakeRotation ******************/
-		/**** md5 signature: 7c0f63046d3b37a345929b4b6b54b691 ****/
+		/****** GC_MakeRotation::GC_MakeRotation ******/
+		/****** md5 signature: 7c0f63046d3b37a345929b4b6b54b691 ******/
 		%feature("compactdefaultargs") GC_MakeRotation;
 		%feature("autodoc", "
 Parameters
@@ -259,8 +259,8 @@ Constructs a rotation through angle angle about the axis defined by the axis axi
 ") GC_MakeRotation;
 		 GC_MakeRotation(const gp_Ax1 & Axis, const Standard_Real Angle);
 
-		/****************** GC_MakeRotation ******************/
-		/**** md5 signature: 3668684ecffcd705e86f1f5c5d8c1a53 ****/
+		/****** GC_MakeRotation::GC_MakeRotation ******/
+		/****** md5 signature: 3668684ecffcd705e86f1f5c5d8c1a53 ******/
 		%feature("compactdefaultargs") GC_MakeRotation;
 		%feature("autodoc", "
 Parameters
@@ -279,8 +279,8 @@ Constructs a rotation through angle angle about the axis defined by the point po
 ") GC_MakeRotation;
 		 GC_MakeRotation(const gp_Pnt & Point, const gp_Dir & Direc, const Standard_Real Angle);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1a83265d766adbc039817098a76cd59b ****/
+		/****** GC_MakeRotation::Value ******/
+		/****** md5 signature: 1a83265d766adbc039817098a76cd59b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -306,8 +306,8 @@ Returns the constructed transformation.
 *********************/
 class GC_MakeScale {
 	public:
-		/****************** GC_MakeScale ******************/
-		/**** md5 signature: b4a315c5bb69b1cddb4e9375300fc81f ****/
+		/****** GC_MakeScale::GC_MakeScale ******/
+		/****** md5 signature: b4a315c5bb69b1cddb4e9375300fc81f ******/
 		%feature("compactdefaultargs") GC_MakeScale;
 		%feature("autodoc", "
 Parameters
@@ -325,8 +325,8 @@ Constructs a scaling transformation with - point as the center of the transforma
 ") GC_MakeScale;
 		 GC_MakeScale(const gp_Pnt & Point, const Standard_Real Scale);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1a83265d766adbc039817098a76cd59b ****/
+		/****** GC_MakeScale::Value ******/
+		/****** md5 signature: 1a83265d766adbc039817098a76cd59b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -352,8 +352,8 @@ Returns the constructed transformation.
 ***************************/
 class GC_MakeTranslation {
 	public:
-		/****************** GC_MakeTranslation ******************/
-		/**** md5 signature: 2ecafa69e0feb6eb9807638e7ae093e5 ****/
+		/****** GC_MakeTranslation::GC_MakeTranslation ******/
+		/****** md5 signature: 2ecafa69e0feb6eb9807638e7ae093e5 ******/
 		%feature("compactdefaultargs") GC_MakeTranslation;
 		%feature("autodoc", "
 Parameters
@@ -370,8 +370,8 @@ Constructs a translation along the vector ' vect '.
 ") GC_MakeTranslation;
 		 GC_MakeTranslation(const gp_Vec & Vect);
 
-		/****************** GC_MakeTranslation ******************/
-		/**** md5 signature: cf623b294dad005de8d58dc719b5e33a ****/
+		/****** GC_MakeTranslation::GC_MakeTranslation ******/
+		/****** md5 signature: cf623b294dad005de8d58dc719b5e33a ******/
 		%feature("compactdefaultargs") GC_MakeTranslation;
 		%feature("autodoc", "
 Parameters
@@ -389,8 +389,8 @@ Constructs a translation along the vector (point1,point2) defined from the point
 ") GC_MakeTranslation;
 		 GC_MakeTranslation(const gp_Pnt & Point1, const gp_Pnt & Point2);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1a83265d766adbc039817098a76cd59b ****/
+		/****** GC_MakeTranslation::Value ******/
+		/****** md5 signature: 1a83265d766adbc039817098a76cd59b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -416,8 +416,8 @@ Returns the constructed transformation.
 ****************/
 class GC_Root {
 	public:
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GC_Root::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -429,8 +429,8 @@ Returns true if the construction is successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Status ******************/
-		/**** md5 signature: 40beeec4d25ee1f3f94752c410640458 ****/
+		/****** GC_Root::Status ******/
+		/****** md5 signature: 40beeec4d25ee1f3f94752c410640458 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "Return
 -------
@@ -456,8 +456,8 @@ Returns the status of the construction: - gce_done, if the construction is succe
 ***************************/
 class GC_MakeArcOfCircle : public GC_Root {
 	public:
-		/****************** GC_MakeArcOfCircle ******************/
-		/**** md5 signature: 30e8a9ca82703ba5154ffd7bf27cee70 ****/
+		/****** GC_MakeArcOfCircle::GC_MakeArcOfCircle ******/
+		/****** md5 signature: 30e8a9ca82703ba5154ffd7bf27cee70 ******/
 		%feature("compactdefaultargs") GC_MakeArcOfCircle;
 		%feature("autodoc", "
 Parameters
@@ -477,8 +477,8 @@ Make an arc of circle (trimmedcurve from geom) from a circle between two angles 
 ") GC_MakeArcOfCircle;
 		 GC_MakeArcOfCircle(const gp_Circ & Circ, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Boolean Sense);
 
-		/****************** GC_MakeArcOfCircle ******************/
-		/**** md5 signature: e6312b97d8ad17e1f4e9acd1c11f7c06 ****/
+		/****** GC_MakeArcOfCircle::GC_MakeArcOfCircle ******/
+		/****** md5 signature: e6312b97d8ad17e1f4e9acd1c11f7c06 ******/
 		%feature("compactdefaultargs") GC_MakeArcOfCircle;
 		%feature("autodoc", "
 Parameters
@@ -498,8 +498,8 @@ Make an arc of circle (trimmedcurve from geom) from a circle between point <p> a
 ") GC_MakeArcOfCircle;
 		 GC_MakeArcOfCircle(const gp_Circ & Circ, const gp_Pnt & P, const Standard_Real Alpha, const Standard_Boolean Sense);
 
-		/****************** GC_MakeArcOfCircle ******************/
-		/**** md5 signature: ba4088e1b0aa2e46be5e35d94effcfe4 ****/
+		/****** GC_MakeArcOfCircle::GC_MakeArcOfCircle ******/
+		/****** md5 signature: ba4088e1b0aa2e46be5e35d94effcfe4 ******/
 		%feature("compactdefaultargs") GC_MakeArcOfCircle;
 		%feature("autodoc", "
 Parameters
@@ -519,8 +519,8 @@ Make an arc of circle (trimmedcurve from geom) from a circle between two points 
 ") GC_MakeArcOfCircle;
 		 GC_MakeArcOfCircle(const gp_Circ & Circ, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Boolean Sense);
 
-		/****************** GC_MakeArcOfCircle ******************/
-		/**** md5 signature: 574e8d8f067835a7e74a7f96dc77747f ****/
+		/****** GC_MakeArcOfCircle::GC_MakeArcOfCircle ******/
+		/****** md5 signature: 574e8d8f067835a7e74a7f96dc77747f ******/
 		%feature("compactdefaultargs") GC_MakeArcOfCircle;
 		%feature("autodoc", "
 Parameters
@@ -539,8 +539,8 @@ Make an arc of circle (trimmedcurve from geom) from three points p1,p2,p3 betwee
 ") GC_MakeArcOfCircle;
 		 GC_MakeArcOfCircle(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3);
 
-		/****************** GC_MakeArcOfCircle ******************/
-		/**** md5 signature: 8245008bc55947236ffc2c9ef009f69d ****/
+		/****** GC_MakeArcOfCircle::GC_MakeArcOfCircle ******/
+		/****** md5 signature: 8245008bc55947236ffc2c9ef009f69d ******/
 		%feature("compactdefaultargs") GC_MakeArcOfCircle;
 		%feature("autodoc", "
 Parameters
@@ -559,8 +559,8 @@ Make an arc of circle (trimmedcurve from geom) from two points p1,p2 and the tan
 ") GC_MakeArcOfCircle;
 		 GC_MakeArcOfCircle(const gp_Pnt & P1, const gp_Vec & V, const gp_Pnt & P2);
 
-		/****************** Value ******************/
-		/**** md5 signature: d45b23dd256c842f7b4edfb35b6253b1 ****/
+		/****** GC_MakeArcOfCircle::Value ******/
+		/****** md5 signature: d45b23dd256c842f7b4edfb35b6253b1 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -586,8 +586,8 @@ Returns the constructed arc of circle. exceptions stdfail_notdone if no arc of c
 ****************************/
 class GC_MakeArcOfEllipse : public GC_Root {
 	public:
-		/****************** GC_MakeArcOfEllipse ******************/
-		/**** md5 signature: bc818a82cbde6e9b174a657b1c67ecd5 ****/
+		/****** GC_MakeArcOfEllipse::GC_MakeArcOfEllipse ******/
+		/****** md5 signature: bc818a82cbde6e9b174a657b1c67ecd5 ******/
 		%feature("compactdefaultargs") GC_MakeArcOfEllipse;
 		%feature("autodoc", "
 Parameters
@@ -607,8 +607,8 @@ Constructs an arc of ellipse (trimmedcurve from geom) from a ellipse between two
 ") GC_MakeArcOfEllipse;
 		 GC_MakeArcOfEllipse(const gp_Elips & Elips, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Boolean Sense);
 
-		/****************** GC_MakeArcOfEllipse ******************/
-		/**** md5 signature: 4b511d828d8843fe955c104fe9db98b7 ****/
+		/****** GC_MakeArcOfEllipse::GC_MakeArcOfEllipse ******/
+		/****** md5 signature: 4b511d828d8843fe955c104fe9db98b7 ******/
 		%feature("compactdefaultargs") GC_MakeArcOfEllipse;
 		%feature("autodoc", "
 Parameters
@@ -628,8 +628,8 @@ Constructs an arc of ellipse (trimmedcurve from geom) from a ellipse between poi
 ") GC_MakeArcOfEllipse;
 		 GC_MakeArcOfEllipse(const gp_Elips & Elips, const gp_Pnt & P, const Standard_Real Alpha, const Standard_Boolean Sense);
 
-		/****************** GC_MakeArcOfEllipse ******************/
-		/**** md5 signature: a50ac9698484354ba153b97e864a0d8b ****/
+		/****** GC_MakeArcOfEllipse::GC_MakeArcOfEllipse ******/
+		/****** md5 signature: a50ac9698484354ba153b97e864a0d8b ******/
 		%feature("compactdefaultargs") GC_MakeArcOfEllipse;
 		%feature("autodoc", "
 Parameters
@@ -649,8 +649,8 @@ Constructs an arc of ellipse (trimmedcurve from geom) from a ellipse between two
 ") GC_MakeArcOfEllipse;
 		 GC_MakeArcOfEllipse(const gp_Elips & Elips, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Boolean Sense);
 
-		/****************** Value ******************/
-		/**** md5 signature: d45b23dd256c842f7b4edfb35b6253b1 ****/
+		/****** GC_MakeArcOfEllipse::Value ******/
+		/****** md5 signature: d45b23dd256c842f7b4edfb35b6253b1 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -676,8 +676,8 @@ Returns the constructed arc of ellipse.
 ******************************/
 class GC_MakeArcOfHyperbola : public GC_Root {
 	public:
-		/****************** GC_MakeArcOfHyperbola ******************/
-		/**** md5 signature: 3e0efa2a82bd4f5bf226f1afb70fb36d ****/
+		/****** GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola ******/
+		/****** md5 signature: 3e0efa2a82bd4f5bf226f1afb70fb36d ******/
 		%feature("compactdefaultargs") GC_MakeArcOfHyperbola;
 		%feature("autodoc", "
 Parameters
@@ -697,8 +697,8 @@ Creates an arc of hyperbola (trimmedcurve from geom) from a hyperbola between tw
 ") GC_MakeArcOfHyperbola;
 		 GC_MakeArcOfHyperbola(const gp_Hypr & Hypr, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Boolean Sense);
 
-		/****************** GC_MakeArcOfHyperbola ******************/
-		/**** md5 signature: a451983b0e51ea5828e265132a233542 ****/
+		/****** GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola ******/
+		/****** md5 signature: a451983b0e51ea5828e265132a233542 ******/
 		%feature("compactdefaultargs") GC_MakeArcOfHyperbola;
 		%feature("autodoc", "
 Parameters
@@ -718,8 +718,8 @@ Creates an arc of hyperbola (trimmedcurve from geom) from a hyperbola between po
 ") GC_MakeArcOfHyperbola;
 		 GC_MakeArcOfHyperbola(const gp_Hypr & Hypr, const gp_Pnt & P, const Standard_Real Alpha, const Standard_Boolean Sense);
 
-		/****************** GC_MakeArcOfHyperbola ******************/
-		/**** md5 signature: 87149aba63ae1ff0790f39bd6fac5ae7 ****/
+		/****** GC_MakeArcOfHyperbola::GC_MakeArcOfHyperbola ******/
+		/****** md5 signature: 87149aba63ae1ff0790f39bd6fac5ae7 ******/
 		%feature("compactdefaultargs") GC_MakeArcOfHyperbola;
 		%feature("autodoc", "
 Parameters
@@ -739,8 +739,8 @@ Creates an arc of hyperbola (trimmedcurve from geom) from a hyperbola between tw
 ") GC_MakeArcOfHyperbola;
 		 GC_MakeArcOfHyperbola(const gp_Hypr & Hypr, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Boolean Sense);
 
-		/****************** Value ******************/
-		/**** md5 signature: d45b23dd256c842f7b4edfb35b6253b1 ****/
+		/****** GC_MakeArcOfHyperbola::Value ******/
+		/****** md5 signature: d45b23dd256c842f7b4edfb35b6253b1 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -766,8 +766,8 @@ Returns the constructed arc of hyperbola.
 *****************************/
 class GC_MakeArcOfParabola : public GC_Root {
 	public:
-		/****************** GC_MakeArcOfParabola ******************/
-		/**** md5 signature: 66fdb4d30102127cd02ffcff5bcca44c ****/
+		/****** GC_MakeArcOfParabola::GC_MakeArcOfParabola ******/
+		/****** md5 signature: 66fdb4d30102127cd02ffcff5bcca44c ******/
 		%feature("compactdefaultargs") GC_MakeArcOfParabola;
 		%feature("autodoc", "
 Parameters
@@ -787,8 +787,8 @@ Creates an arc of parabola (trimmedcurve from geom) from a parabola between two 
 ") GC_MakeArcOfParabola;
 		 GC_MakeArcOfParabola(const gp_Parab & Parab, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Boolean Sense);
 
-		/****************** GC_MakeArcOfParabola ******************/
-		/**** md5 signature: 287fa288d9f59b7da052bfc850bb72de ****/
+		/****** GC_MakeArcOfParabola::GC_MakeArcOfParabola ******/
+		/****** md5 signature: 287fa288d9f59b7da052bfc850bb72de ******/
 		%feature("compactdefaultargs") GC_MakeArcOfParabola;
 		%feature("autodoc", "
 Parameters
@@ -808,8 +808,8 @@ Creates an arc of parabola (trimmedcurve from geom) from a parabola between poin
 ") GC_MakeArcOfParabola;
 		 GC_MakeArcOfParabola(const gp_Parab & Parab, const gp_Pnt & P, const Standard_Real Alpha, const Standard_Boolean Sense);
 
-		/****************** GC_MakeArcOfParabola ******************/
-		/**** md5 signature: e72defc0c6d3d7bafcc006bd2ca1003f ****/
+		/****** GC_MakeArcOfParabola::GC_MakeArcOfParabola ******/
+		/****** md5 signature: e72defc0c6d3d7bafcc006bd2ca1003f ******/
 		%feature("compactdefaultargs") GC_MakeArcOfParabola;
 		%feature("autodoc", "
 Parameters
@@ -829,8 +829,8 @@ Creates an arc of parabola (trimmedcurve from geom) from a parabola between two 
 ") GC_MakeArcOfParabola;
 		 GC_MakeArcOfParabola(const gp_Parab & Parab, const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Boolean Sense);
 
-		/****************** Value ******************/
-		/**** md5 signature: d45b23dd256c842f7b4edfb35b6253b1 ****/
+		/****** GC_MakeArcOfParabola::Value ******/
+		/****** md5 signature: d45b23dd256c842f7b4edfb35b6253b1 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -856,8 +856,8 @@ Returns the constructed arc of parabola.
 **********************/
 class GC_MakeCircle : public GC_Root {
 	public:
-		/****************** GC_MakeCircle ******************/
-		/**** md5 signature: bf1d9b54e186c9b8b436e33de033e771 ****/
+		/****** GC_MakeCircle::GC_MakeCircle ******/
+		/****** md5 signature: bf1d9b54e186c9b8b436e33de033e771 ******/
 		%feature("compactdefaultargs") GC_MakeCircle;
 		%feature("autodoc", "
 Parameters
@@ -874,8 +874,8 @@ Creates a circle from a non persistent circle c by its conversion.
 ") GC_MakeCircle;
 		 GC_MakeCircle(const gp_Circ & C);
 
-		/****************** GC_MakeCircle ******************/
-		/**** md5 signature: 9c55b4ab7f72a76ac6e9254ced8b490d ****/
+		/****** GC_MakeCircle::GC_MakeCircle ******/
+		/****** md5 signature: 9c55b4ab7f72a76ac6e9254ced8b490d ******/
 		%feature("compactdefaultargs") GC_MakeCircle;
 		%feature("autodoc", "
 Parameters
@@ -893,8 +893,8 @@ A2 is the local coordinates system of the circle. it is not forbidden to create 
 ") GC_MakeCircle;
 		 GC_MakeCircle(const gp_Ax2 & A2, const Standard_Real Radius);
 
-		/****************** GC_MakeCircle ******************/
-		/**** md5 signature: 21e84db06da749ac9abd5d8fad8435bb ****/
+		/****** GC_MakeCircle::GC_MakeCircle ******/
+		/****** md5 signature: 21e84db06da749ac9abd5d8fad8435bb ******/
 		%feature("compactdefaultargs") GC_MakeCircle;
 		%feature("autodoc", "
 Parameters
@@ -912,8 +912,8 @@ Make a circle from geom <thecirc> parallel to another circ <circ> with a distanc
 ") GC_MakeCircle;
 		 GC_MakeCircle(const gp_Circ & Circ, const Standard_Real Dist);
 
-		/****************** GC_MakeCircle ******************/
-		/**** md5 signature: 2ff08626b4fe5d90a6c735fe8e4f4979 ****/
+		/****** GC_MakeCircle::GC_MakeCircle ******/
+		/****** md5 signature: 2ff08626b4fe5d90a6c735fe8e4f4979 ******/
 		%feature("compactdefaultargs") GC_MakeCircle;
 		%feature("autodoc", "
 Parameters
@@ -931,8 +931,8 @@ Make a circle from geom <thecirc> parallel to another circ <circ> and passing th
 ") GC_MakeCircle;
 		 GC_MakeCircle(const gp_Circ & Circ, const gp_Pnt & Point);
 
-		/****************** GC_MakeCircle ******************/
-		/**** md5 signature: 8f5645e1e1c74cef187d3abe3d016533 ****/
+		/****** GC_MakeCircle::GC_MakeCircle ******/
+		/****** md5 signature: 8f5645e1e1c74cef187d3abe3d016533 ******/
 		%feature("compactdefaultargs") GC_MakeCircle;
 		%feature("autodoc", "
 Parameters
@@ -951,8 +951,8 @@ Make a circ from gp <thecirc> passing through 3 pnt2d <p1>,<p2>,<p3>.
 ") GC_MakeCircle;
 		 GC_MakeCircle(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3);
 
-		/****************** GC_MakeCircle ******************/
-		/**** md5 signature: 030732eacfec23e3a7bb821045dee1b5 ****/
+		/****** GC_MakeCircle::GC_MakeCircle ******/
+		/****** md5 signature: 030732eacfec23e3a7bb821045dee1b5 ******/
 		%feature("compactdefaultargs") GC_MakeCircle;
 		%feature("autodoc", "
 Parameters
@@ -971,8 +971,8 @@ Make a circle from geom <thecirc> with its center <center> and the normal of its
 ") GC_MakeCircle;
 		 GC_MakeCircle(const gp_Pnt & Center, const gp_Dir & Norm, const Standard_Real Radius);
 
-		/****************** GC_MakeCircle ******************/
-		/**** md5 signature: 1f91d718891e58d456fd714ae6aee2b9 ****/
+		/****** GC_MakeCircle::GC_MakeCircle ******/
+		/****** md5 signature: 1f91d718891e58d456fd714ae6aee2b9 ******/
 		%feature("compactdefaultargs") GC_MakeCircle;
 		%feature("autodoc", "
 Parameters
@@ -991,8 +991,8 @@ Make a circle from geom <thecirc> with its center <center> and the normal of its
 ") GC_MakeCircle;
 		 GC_MakeCircle(const gp_Pnt & Center, const gp_Pnt & PtAxis, const Standard_Real Radius);
 
-		/****************** GC_MakeCircle ******************/
-		/**** md5 signature: a828fca3b2a6e5cfef246c0b7a642706 ****/
+		/****** GC_MakeCircle::GC_MakeCircle ******/
+		/****** md5 signature: a828fca3b2a6e5cfef246c0b7a642706 ******/
 		%feature("compactdefaultargs") GC_MakeCircle;
 		%feature("autodoc", "
 Parameters
@@ -1010,8 +1010,8 @@ Make a circle from geom <thecirc> with its center <center> and its radius <radiu
 ") GC_MakeCircle;
 		 GC_MakeCircle(const gp_Ax1 & Axis, const Standard_Real Radius);
 
-		/****************** Value ******************/
-		/**** md5 signature: 77b780fd65868a33ad4a6d8ee9ea9e45 ****/
+		/****** GC_MakeCircle::Value ******/
+		/****** md5 signature: 77b780fd65868a33ad4a6d8ee9ea9e45 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1037,8 +1037,8 @@ Returns the constructed circle. exceptions stdfail_notdone if no circle is const
 ******************************/
 class GC_MakeConicalSurface : public GC_Root {
 	public:
-		/****************** GC_MakeConicalSurface ******************/
-		/**** md5 signature: cfb9674f81e2288d7b44b7d4eae667ee ****/
+		/****** GC_MakeConicalSurface::GC_MakeConicalSurface ******/
+		/****** md5 signature: cfb9674f81e2288d7b44b7d4eae667ee ******/
 		%feature("compactdefaultargs") GC_MakeConicalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1057,8 +1057,8 @@ A2 defines the local coordinate system of the conical surface. ang is the conica
 ") GC_MakeConicalSurface;
 		 GC_MakeConicalSurface(const gp_Ax2 & A2, const Standard_Real Ang, const Standard_Real Radius);
 
-		/****************** GC_MakeConicalSurface ******************/
-		/**** md5 signature: 63f26b85de46e7fd7463b2976b75566a ****/
+		/****** GC_MakeConicalSurface::GC_MakeConicalSurface ******/
+		/****** md5 signature: 63f26b85de46e7fd7463b2976b75566a ******/
 		%feature("compactdefaultargs") GC_MakeConicalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1075,8 +1075,8 @@ Creates a conicalsurface from a non persistent cone from package gp.
 ") GC_MakeConicalSurface;
 		 GC_MakeConicalSurface(const gp_Cone & C);
 
-		/****************** GC_MakeConicalSurface ******************/
-		/**** md5 signature: c00bebc8a821a4bc8009bae5d4e76b24 ****/
+		/****** GC_MakeConicalSurface::GC_MakeConicalSurface ******/
+		/****** md5 signature: c00bebc8a821a4bc8009bae5d4e76b24 ******/
 		%feature("compactdefaultargs") GC_MakeConicalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1096,8 +1096,8 @@ Make a conicalsurface from geom <thecone> passing through 3 pnt <p1>,<p2>,<p3>. 
 ") GC_MakeConicalSurface;
 		 GC_MakeConicalSurface(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, const gp_Pnt & P4);
 
-		/****************** GC_MakeConicalSurface ******************/
-		/**** md5 signature: 95accac2de950972779691b2d0f9b0a0 ****/
+		/****** GC_MakeConicalSurface::GC_MakeConicalSurface ******/
+		/****** md5 signature: 95accac2de950972779691b2d0f9b0a0 ******/
 		%feature("compactdefaultargs") GC_MakeConicalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1117,8 +1117,8 @@ Make a conicalsurface with two points and two radius. the axis of the solution i
 ") GC_MakeConicalSurface;
 		 GC_MakeConicalSurface(const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Real R1, const Standard_Real R2);
 
-		/****************** Value ******************/
-		/**** md5 signature: f76b9d8ce2fb13effc98c77c09194361 ****/
+		/****** GC_MakeConicalSurface::Value ******/
+		/****** md5 signature: f76b9d8ce2fb13effc98c77c09194361 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1144,8 +1144,8 @@ Returns the constructed cone. exceptions stdfail_notdone if no cone is construct
 **********************************/
 class GC_MakeCylindricalSurface : public GC_Root {
 	public:
-		/****************** GC_MakeCylindricalSurface ******************/
-		/**** md5 signature: 9d6564a69da63d5aad643855b3a14cb5 ****/
+		/****** GC_MakeCylindricalSurface::GC_MakeCylindricalSurface ******/
+		/****** md5 signature: 9d6564a69da63d5aad643855b3a14cb5 ******/
 		%feature("compactdefaultargs") GC_MakeCylindricalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1163,8 +1163,8 @@ A2 defines the local coordinate system of the cylindrical surface. the 'zdirecti
 ") GC_MakeCylindricalSurface;
 		 GC_MakeCylindricalSurface(const gp_Ax2 & A2, const Standard_Real Radius);
 
-		/****************** GC_MakeCylindricalSurface ******************/
-		/**** md5 signature: c3a3ce94b3937ca6164e66579c13560f ****/
+		/****** GC_MakeCylindricalSurface::GC_MakeCylindricalSurface ******/
+		/****** md5 signature: c3a3ce94b3937ca6164e66579c13560f ******/
 		%feature("compactdefaultargs") GC_MakeCylindricalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1181,8 +1181,8 @@ Creates a cylindricalsurface from a non persistent cylinder from package gp.
 ") GC_MakeCylindricalSurface;
 		 GC_MakeCylindricalSurface(const gp_Cylinder & C);
 
-		/****************** GC_MakeCylindricalSurface ******************/
-		/**** md5 signature: 032b9f0c7a3695d93dba75f2475721cb ****/
+		/****** GC_MakeCylindricalSurface::GC_MakeCylindricalSurface ******/
+		/****** md5 signature: 032b9f0c7a3695d93dba75f2475721cb ******/
 		%feature("compactdefaultargs") GC_MakeCylindricalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1200,8 +1200,8 @@ Make a cylindricalsurface from geom <thecylinder> parallel to another cylindrica
 ") GC_MakeCylindricalSurface;
 		 GC_MakeCylindricalSurface(const gp_Cylinder & Cyl, const gp_Pnt & Point);
 
-		/****************** GC_MakeCylindricalSurface ******************/
-		/**** md5 signature: 7c05efbce55a2940aafb508e1e8bdfb2 ****/
+		/****** GC_MakeCylindricalSurface::GC_MakeCylindricalSurface ******/
+		/****** md5 signature: 7c05efbce55a2940aafb508e1e8bdfb2 ******/
 		%feature("compactdefaultargs") GC_MakeCylindricalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1219,8 +1219,8 @@ Make a cylindricalsurface from geom <thecylinder> parallel to another cylindrica
 ") GC_MakeCylindricalSurface;
 		 GC_MakeCylindricalSurface(const gp_Cylinder & Cyl, const Standard_Real Dist);
 
-		/****************** GC_MakeCylindricalSurface ******************/
-		/**** md5 signature: cc01067acc2874528a6fde4ebf7f24bd ****/
+		/****** GC_MakeCylindricalSurface::GC_MakeCylindricalSurface ******/
+		/****** md5 signature: cc01067acc2874528a6fde4ebf7f24bd ******/
 		%feature("compactdefaultargs") GC_MakeCylindricalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1239,8 +1239,8 @@ Make a cylindricalsurface from geom <thecylinder> passing through 3 pnt <p1>,<p2
 ") GC_MakeCylindricalSurface;
 		 GC_MakeCylindricalSurface(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3);
 
-		/****************** GC_MakeCylindricalSurface ******************/
-		/**** md5 signature: cb7506cb7b97b13f417dc69f32d2281e ****/
+		/****** GC_MakeCylindricalSurface::GC_MakeCylindricalSurface ******/
+		/****** md5 signature: cb7506cb7b97b13f417dc69f32d2281e ******/
 		%feature("compactdefaultargs") GC_MakeCylindricalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1258,8 +1258,8 @@ Make a cylindricalsurface by its axis <axis> and radius <radius>.
 ") GC_MakeCylindricalSurface;
 		 GC_MakeCylindricalSurface(const gp_Ax1 & Axis, const Standard_Real Radius);
 
-		/****************** GC_MakeCylindricalSurface ******************/
-		/**** md5 signature: 419948e40d3ee771cbcd4acea450f00f ****/
+		/****** GC_MakeCylindricalSurface::GC_MakeCylindricalSurface ******/
+		/****** md5 signature: 419948e40d3ee771cbcd4acea450f00f ******/
 		%feature("compactdefaultargs") GC_MakeCylindricalSurface;
 		%feature("autodoc", "
 Parameters
@@ -1276,8 +1276,8 @@ Make a cylindricalsurface by its circular base.
 ") GC_MakeCylindricalSurface;
 		 GC_MakeCylindricalSurface(const gp_Circ & Circ);
 
-		/****************** Value ******************/
-		/**** md5 signature: 30dd9d137690c70664962cf877a84f99 ****/
+		/****** GC_MakeCylindricalSurface::Value ******/
+		/****** md5 signature: 30dd9d137690c70664962cf877a84f99 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1303,8 +1303,8 @@ Returns the constructed cylinder. exceptions stdfail_notdone if no cylinder is c
 ***********************/
 class GC_MakeEllipse : public GC_Root {
 	public:
-		/****************** GC_MakeEllipse ******************/
-		/**** md5 signature: 672721cf4b0b74836f8f38bc560d4bc4 ****/
+		/****** GC_MakeEllipse::GC_MakeEllipse ******/
+		/****** md5 signature: 672721cf4b0b74836f8f38bc560d4bc4 ******/
 		%feature("compactdefaultargs") GC_MakeEllipse;
 		%feature("autodoc", "
 Parameters
@@ -1321,8 +1321,8 @@ Creates an ellipse from a non persistent ellipse e from package gp by its conver
 ") GC_MakeEllipse;
 		 GC_MakeEllipse(const gp_Elips & E);
 
-		/****************** GC_MakeEllipse ******************/
-		/**** md5 signature: 23e9e1b201d3ff1f63c11bceaf464a35 ****/
+		/****** GC_MakeEllipse::GC_MakeEllipse ******/
+		/****** md5 signature: 23e9e1b201d3ff1f63c11bceaf464a35 ******/
 		%feature("compactdefaultargs") GC_MakeEllipse;
 		%feature("autodoc", "
 Parameters
@@ -1341,8 +1341,8 @@ Constructs an ellipse with major and minor radii majorradius and minorradius, an
 ") GC_MakeEllipse;
 		 GC_MakeEllipse(const gp_Ax2 & A2, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
 
-		/****************** GC_MakeEllipse ******************/
-		/**** md5 signature: cbf116c8e2d3fd951305a96b4b370863 ****/
+		/****** GC_MakeEllipse::GC_MakeEllipse ******/
+		/****** md5 signature: cbf116c8e2d3fd951305a96b4b370863 ******/
 		%feature("compactdefaultargs") GC_MakeEllipse;
 		%feature("autodoc", "
 Parameters
@@ -1361,8 +1361,8 @@ Constructs an ellipse centered on the point center, where - the plane of the ell
 ") GC_MakeEllipse;
 		 GC_MakeEllipse(const gp_Pnt & S1, const gp_Pnt & S2, const gp_Pnt & Center);
 
-		/****************** Value ******************/
-		/**** md5 signature: fe3b3117138e75351b7c9f5b2c0c513e ****/
+		/****** GC_MakeEllipse::Value ******/
+		/****** md5 signature: fe3b3117138e75351b7c9f5b2c0c513e ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1388,8 +1388,8 @@ Returns the constructed ellipse. exceptions stdfail_notdone if no ellipse is con
 *************************/
 class GC_MakeHyperbola : public GC_Root {
 	public:
-		/****************** GC_MakeHyperbola ******************/
-		/**** md5 signature: 37b62891883cf3372ff78a36b8ddec46 ****/
+		/****** GC_MakeHyperbola::GC_MakeHyperbola ******/
+		/****** md5 signature: 37b62891883cf3372ff78a36b8ddec46 ******/
 		%feature("compactdefaultargs") GC_MakeHyperbola;
 		%feature("autodoc", "
 Parameters
@@ -1406,8 +1406,8 @@ Creates an hyperbola from a non persistent hyperbola from package gp by conversi
 ") GC_MakeHyperbola;
 		 GC_MakeHyperbola(const gp_Hypr & H);
 
-		/****************** GC_MakeHyperbola ******************/
-		/**** md5 signature: 0b321cdf4f8f9dd49e42da4298b504b0 ****/
+		/****** GC_MakeHyperbola::GC_MakeHyperbola ******/
+		/****** md5 signature: 0b321cdf4f8f9dd49e42da4298b504b0 ******/
 		%feature("compactdefaultargs") GC_MakeHyperbola;
 		%feature("autodoc", "
 Parameters
@@ -1426,8 +1426,8 @@ Constructs a hyperbola centered on the origin of the coordinate system a2, with 
 ") GC_MakeHyperbola;
 		 GC_MakeHyperbola(const gp_Ax2 & A2, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
 
-		/****************** GC_MakeHyperbola ******************/
-		/**** md5 signature: 0c8177d10f741371b63960948615b7f9 ****/
+		/****** GC_MakeHyperbola::GC_MakeHyperbola ******/
+		/****** md5 signature: 0c8177d10f741371b63960948615b7f9 ******/
 		%feature("compactdefaultargs") GC_MakeHyperbola;
 		%feature("autodoc", "
 Parameters
@@ -1446,8 +1446,8 @@ Constructs a hyperbola centered on the point center, where - the plane of the hy
 ") GC_MakeHyperbola;
 		 GC_MakeHyperbola(const gp_Pnt & S1, const gp_Pnt & S2, const gp_Pnt & Center);
 
-		/****************** Value ******************/
-		/**** md5 signature: 7d3e15d3ad54c1125b9d13b5ee20322c ****/
+		/****** GC_MakeHyperbola::Value ******/
+		/****** md5 signature: 7d3e15d3ad54c1125b9d13b5ee20322c ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1473,8 +1473,8 @@ Returns the constructed hyperbola. exceptions stdfail_notdone if no hyperbola is
 ********************/
 class GC_MakeLine : public GC_Root {
 	public:
-		/****************** GC_MakeLine ******************/
-		/**** md5 signature: 229d3736e310eb22ccb2a4eda71492ef ****/
+		/****** GC_MakeLine::GC_MakeLine ******/
+		/****** md5 signature: 229d3736e310eb22ccb2a4eda71492ef ******/
 		%feature("compactdefaultargs") GC_MakeLine;
 		%feature("autodoc", "
 Parameters
@@ -1491,8 +1491,8 @@ Creates a line located in 3d space with the axis placement a1. the location of a
 ") GC_MakeLine;
 		 GC_MakeLine(const gp_Ax1 & A1);
 
-		/****************** GC_MakeLine ******************/
-		/**** md5 signature: c62480762270d5c69ffb0534a5b6fce5 ****/
+		/****** GC_MakeLine::GC_MakeLine ******/
+		/****** md5 signature: c62480762270d5c69ffb0534a5b6fce5 ******/
 		%feature("compactdefaultargs") GC_MakeLine;
 		%feature("autodoc", "
 Parameters
@@ -1509,8 +1509,8 @@ Creates a line from a non persistent line from package gp.
 ") GC_MakeLine;
 		 GC_MakeLine(const gp_Lin & L);
 
-		/****************** GC_MakeLine ******************/
-		/**** md5 signature: 9555b5e9e4e29e1e6f3718a6632ee21f ****/
+		/****** GC_MakeLine::GC_MakeLine ******/
+		/****** md5 signature: 9555b5e9e4e29e1e6f3718a6632ee21f ******/
 		%feature("compactdefaultargs") GC_MakeLine;
 		%feature("autodoc", "
 Parameters
@@ -1528,8 +1528,8 @@ P is the origin and v is the direction of the line.
 ") GC_MakeLine;
 		 GC_MakeLine(const gp_Pnt & P, const gp_Dir & V);
 
-		/****************** GC_MakeLine ******************/
-		/**** md5 signature: 52b54a0bcb566d2e6ab1ffe6a82acad0 ****/
+		/****** GC_MakeLine::GC_MakeLine ******/
+		/****** md5 signature: 52b54a0bcb566d2e6ab1ffe6a82acad0 ******/
 		%feature("compactdefaultargs") GC_MakeLine;
 		%feature("autodoc", "
 Parameters
@@ -1547,8 +1547,8 @@ Make a line from geom <thelin> parallel to another lin <lin> and passing through
 ") GC_MakeLine;
 		 GC_MakeLine(const gp_Lin & Lin, const gp_Pnt & Point);
 
-		/****************** GC_MakeLine ******************/
-		/**** md5 signature: 6802d12afd883cd3d264cfc3e6ccdfb6 ****/
+		/****** GC_MakeLine::GC_MakeLine ******/
+		/****** md5 signature: 6802d12afd883cd3d264cfc3e6ccdfb6 ******/
 		%feature("compactdefaultargs") GC_MakeLine;
 		%feature("autodoc", "
 Parameters
@@ -1566,8 +1566,8 @@ Make a line from geom <thelin> passing through 2 pnt <p1>,<p2>. it returns false
 ") GC_MakeLine;
 		 GC_MakeLine(const gp_Pnt & P1, const gp_Pnt & P2);
 
-		/****************** Value ******************/
-		/**** md5 signature: 5995492bfc97e37ea24602cdfa25a85a ****/
+		/****** GC_MakeLine::Value ******/
+		/****** md5 signature: 5995492bfc97e37ea24602cdfa25a85a ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1593,8 +1593,8 @@ Returns the constructed line. exceptions stdfail_notdone if no line is construct
 *********************/
 class GC_MakePlane : public GC_Root {
 	public:
-		/****************** GC_MakePlane ******************/
-		/**** md5 signature: 4844e6a6d04660e270d526c482e052ac ****/
+		/****** GC_MakePlane::GC_MakePlane ******/
+		/****** md5 signature: 4844e6a6d04660e270d526c482e052ac ******/
 		%feature("compactdefaultargs") GC_MakePlane;
 		%feature("autodoc", "
 Parameters
@@ -1611,8 +1611,8 @@ Creates a plane from a non persistent plane from package gp.
 ") GC_MakePlane;
 		 GC_MakePlane(const gp_Pln & Pl);
 
-		/****************** GC_MakePlane ******************/
-		/**** md5 signature: ab9fdf2640e0dd0889170a94c3414c8f ****/
+		/****** GC_MakePlane::GC_MakePlane ******/
+		/****** md5 signature: ab9fdf2640e0dd0889170a94c3414c8f ******/
 		%feature("compactdefaultargs") GC_MakePlane;
 		%feature("autodoc", "
 Parameters
@@ -1630,8 +1630,8 @@ P is the 'location' point or origin of the plane. v is the direction normal to t
 ") GC_MakePlane;
 		 GC_MakePlane(const gp_Pnt & P, const gp_Dir & V);
 
-		/****************** GC_MakePlane ******************/
-		/**** md5 signature: 193d69ec1e6408c28a5024023be7c83c ****/
+		/****** GC_MakePlane::GC_MakePlane ******/
+		/****** md5 signature: 193d69ec1e6408c28a5024023be7c83c ******/
 		%feature("compactdefaultargs") GC_MakePlane;
 		%feature("autodoc", "
 Parameters
@@ -1651,8 +1651,8 @@ Creates a plane from its cartesian equation: ax + by + cz + d = 0.0 status is 'b
 ") GC_MakePlane;
 		 GC_MakePlane(const Standard_Real A, const Standard_Real B, const Standard_Real C, const Standard_Real D);
 
-		/****************** GC_MakePlane ******************/
-		/**** md5 signature: f12935a136028087a678092a96ca9532 ****/
+		/****** GC_MakePlane::GC_MakePlane ******/
+		/****** md5 signature: f12935a136028087a678092a96ca9532 ******/
 		%feature("compactdefaultargs") GC_MakePlane;
 		%feature("autodoc", "
 Parameters
@@ -1670,8 +1670,8 @@ Make a plane from geom <theplane> parallel to another pln <pln> and passing thro
 ") GC_MakePlane;
 		 GC_MakePlane(const gp_Pln & Pln, const gp_Pnt & Point);
 
-		/****************** GC_MakePlane ******************/
-		/**** md5 signature: c2a22654c060500d6d24ceefed764443 ****/
+		/****** GC_MakePlane::GC_MakePlane ******/
+		/****** md5 signature: c2a22654c060500d6d24ceefed764443 ******/
 		%feature("compactdefaultargs") GC_MakePlane;
 		%feature("autodoc", "
 Parameters
@@ -1689,8 +1689,8 @@ Make a plane from geom <theplane> parallel to another pln <pln> at the distance 
 ") GC_MakePlane;
 		 GC_MakePlane(const gp_Pln & Pln, const Standard_Real Dist);
 
-		/****************** GC_MakePlane ******************/
-		/**** md5 signature: f818b56489b3255c4acbea51511cb4ec ****/
+		/****** GC_MakePlane::GC_MakePlane ******/
+		/****** md5 signature: f818b56489b3255c4acbea51511cb4ec ******/
 		%feature("compactdefaultargs") GC_MakePlane;
 		%feature("autodoc", "
 Parameters
@@ -1709,8 +1709,8 @@ Make a plane from geom <theplane> passing through 3 pnt <p1>,<p2>,<p3>. it retur
 ") GC_MakePlane;
 		 GC_MakePlane(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3);
 
-		/****************** GC_MakePlane ******************/
-		/**** md5 signature: 0f00eef9a9169412fc8912ab7ab6491e ****/
+		/****** GC_MakePlane::GC_MakePlane ******/
+		/****** md5 signature: 0f00eef9a9169412fc8912ab7ab6491e ******/
 		%feature("compactdefaultargs") GC_MakePlane;
 		%feature("autodoc", "
 Parameters
@@ -1727,8 +1727,8 @@ Make a plane passing through the location of <axis>and normal to the direction o
 ") GC_MakePlane;
 		 GC_MakePlane(const gp_Ax1 & Axis);
 
-		/****************** Value ******************/
-		/**** md5 signature: 2bfa538a32a02e39c814ddb436054f45 ****/
+		/****** GC_MakePlane::Value ******/
+		/****** md5 signature: 2bfa538a32a02e39c814ddb436054f45 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1754,8 +1754,8 @@ Returns the constructed plane. exceptions stdfail_notdone if no plane is constru
 ***********************/
 class GC_MakeSegment : public GC_Root {
 	public:
-		/****************** GC_MakeSegment ******************/
-		/**** md5 signature: 9b395bcb8545fc82062801355a3e8819 ****/
+		/****** GC_MakeSegment::GC_MakeSegment ******/
+		/****** md5 signature: 9b395bcb8545fc82062801355a3e8819 ******/
 		%feature("compactdefaultargs") GC_MakeSegment;
 		%feature("autodoc", "
 Parameters
@@ -1773,8 +1773,8 @@ Make a segment of line from the 2 points <p1> and <p2>. it returns nullobject if
 ") GC_MakeSegment;
 		 GC_MakeSegment(const gp_Pnt & P1, const gp_Pnt & P2);
 
-		/****************** GC_MakeSegment ******************/
-		/**** md5 signature: 76b02f066e95296cf20f26752b97184d ****/
+		/****** GC_MakeSegment::GC_MakeSegment ******/
+		/****** md5 signature: 76b02f066e95296cf20f26752b97184d ******/
 		%feature("compactdefaultargs") GC_MakeSegment;
 		%feature("autodoc", "
 Parameters
@@ -1793,8 +1793,8 @@ Make a segment of line from the line <line1> between the two parameters u1 and u
 ") GC_MakeSegment;
 		 GC_MakeSegment(const gp_Lin & Line, const Standard_Real U1, const Standard_Real U2);
 
-		/****************** GC_MakeSegment ******************/
-		/**** md5 signature: 829552b203d5956d86936fcc4dbf875d ****/
+		/****** GC_MakeSegment::GC_MakeSegment ******/
+		/****** md5 signature: 829552b203d5956d86936fcc4dbf875d ******/
 		%feature("compactdefaultargs") GC_MakeSegment;
 		%feature("autodoc", "
 Parameters
@@ -1813,8 +1813,8 @@ Make a segment of line from the line <line1> between the point <point> and the p
 ") GC_MakeSegment;
 		 GC_MakeSegment(const gp_Lin & Line, const gp_Pnt & Point, const Standard_Real Ulast);
 
-		/****************** GC_MakeSegment ******************/
-		/**** md5 signature: 0aed52f842514f4c8c02d52e88e79195 ****/
+		/****** GC_MakeSegment::GC_MakeSegment ******/
+		/****** md5 signature: 0aed52f842514f4c8c02d52e88e79195 ******/
 		%feature("compactdefaultargs") GC_MakeSegment;
 		%feature("autodoc", "
 Parameters
@@ -1833,8 +1833,8 @@ Make a segment of line from the line <line1> between the two points <p1> and <p2
 ") GC_MakeSegment;
 		 GC_MakeSegment(const gp_Lin & Line, const gp_Pnt & P1, const gp_Pnt & P2);
 
-		/****************** Value ******************/
-		/**** md5 signature: d45b23dd256c842f7b4edfb35b6253b1 ****/
+		/****** GC_MakeSegment::Value ******/
+		/****** md5 signature: d45b23dd256c842f7b4edfb35b6253b1 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1860,8 +1860,8 @@ Returns the constructed line segment.
 ***************************/
 class GC_MakeTrimmedCone : public GC_Root {
 	public:
-		/****************** GC_MakeTrimmedCone ******************/
-		/**** md5 signature: 2fe57e5995bd5d4e8300a1fb92843a49 ****/
+		/****** GC_MakeTrimmedCone::GC_MakeTrimmedCone ******/
+		/****** md5 signature: 2fe57e5995bd5d4e8300a1fb92843a49 ******/
 		%feature("compactdefaultargs") GC_MakeTrimmedCone;
 		%feature("autodoc", "
 Parameters
@@ -1881,8 +1881,8 @@ Make a rectangulartrimmedsurface <thecone> from geom it is trimmed by p3 and p4.
 ") GC_MakeTrimmedCone;
 		 GC_MakeTrimmedCone(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3, const gp_Pnt & P4);
 
-		/****************** GC_MakeTrimmedCone ******************/
-		/**** md5 signature: a8a3c8b25092c4c82c44472bf8d190e4 ****/
+		/****** GC_MakeTrimmedCone::GC_MakeTrimmedCone ******/
+		/****** md5 signature: a8a3c8b25092c4c82c44472bf8d190e4 ******/
 		%feature("compactdefaultargs") GC_MakeTrimmedCone;
 		%feature("autodoc", "
 Parameters
@@ -1902,8 +1902,8 @@ Make a rectangulartrimmedsurface from geom <thecone> from a cone and trimmed by 
 ") GC_MakeTrimmedCone;
 		 GC_MakeTrimmedCone(const gp_Pnt & P1, const gp_Pnt & P2, const Standard_Real R1, const Standard_Real R2);
 
-		/****************** Value ******************/
-		/**** md5 signature: f107db51d7a8f6cc0f22e8dcf1ab2f34 ****/
+		/****** GC_MakeTrimmedCone::Value ******/
+		/****** md5 signature: f107db51d7a8f6cc0f22e8dcf1ab2f34 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -1929,8 +1929,8 @@ Returns the constructed trimmed cone. stdfail_notdone if no trimmed cone is cons
 *******************************/
 class GC_MakeTrimmedCylinder : public GC_Root {
 	public:
-		/****************** GC_MakeTrimmedCylinder ******************/
-		/**** md5 signature: 4a35a8293ea23e9fd492e2bbf18ea8e6 ****/
+		/****** GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder ******/
+		/****** md5 signature: 4a35a8293ea23e9fd492e2bbf18ea8e6 ******/
 		%feature("compactdefaultargs") GC_MakeTrimmedCylinder;
 		%feature("autodoc", "
 Parameters
@@ -1949,8 +1949,8 @@ Make a cylindricalsurface <cyl> from geom its axis is <p1p2> and its radius is t
 ") GC_MakeTrimmedCylinder;
 		 GC_MakeTrimmedCylinder(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Pnt & P3);
 
-		/****************** GC_MakeTrimmedCylinder ******************/
-		/**** md5 signature: 141c9a4e19ce270deff340295d2976db ****/
+		/****** GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder ******/
+		/****** md5 signature: 141c9a4e19ce270deff340295d2976db ******/
 		%feature("compactdefaultargs") GC_MakeTrimmedCylinder;
 		%feature("autodoc", "
 Parameters
@@ -1968,8 +1968,8 @@ Make a cylindricalsurface <cyl> from gp by its base <circ>. its axis is the norm
 ") GC_MakeTrimmedCylinder;
 		 GC_MakeTrimmedCylinder(const gp_Circ & Circ, const Standard_Real Height);
 
-		/****************** GC_MakeTrimmedCylinder ******************/
-		/**** md5 signature: fb55ef061aaa9ab5bafd04308d80bfbb ****/
+		/****** GC_MakeTrimmedCylinder::GC_MakeTrimmedCylinder ******/
+		/****** md5 signature: fb55ef061aaa9ab5bafd04308d80bfbb ******/
 		%feature("compactdefaultargs") GC_MakeTrimmedCylinder;
 		%feature("autodoc", "
 Parameters
@@ -1988,8 +1988,8 @@ Make a cylindricalsurface <cyl> from gp by its axis <a1> and its radius <radius>
 ") GC_MakeTrimmedCylinder;
 		 GC_MakeTrimmedCylinder(const gp_Ax1 & A1, const Standard_Real Radius, const Standard_Real Height);
 
-		/****************** Value ******************/
-		/**** md5 signature: f107db51d7a8f6cc0f22e8dcf1ab2f34 ****/
+		/****** GC_MakeTrimmedCylinder::Value ******/
+		/****** md5 signature: f107db51d7a8f6cc0f22e8dcf1ab2f34 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------

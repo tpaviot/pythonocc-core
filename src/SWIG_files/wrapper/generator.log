@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 6514450
+git revision : 7640dd3
 
 operating system : Linux 64bit 6.8.0-48-generic
 
 occt version targeted : 7.8.1
 
-date : 2024-11-15 05:14:26.954816
+date : 2024-11-15 17:51:03.025902
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -9558,7 +9558,7 @@ date : 2024-11-15 05:14:26.954816
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 33.27s
+SWIG interface file generation completed in 18.02s
 #################################################
 
 [INFO ]  Number of classes: 4747

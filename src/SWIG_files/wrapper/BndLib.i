@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BNDLIBDOCSTRING
 "BndLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_bndlib.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_bndlib.html"
 %enddef
 %module (package="OCC.Core", docstring=BNDLIBDOCSTRING) BndLib
 
@@ -92,8 +92,8 @@ from OCC.Core.Exception import *
 %rename(bndlib) BndLib;
 class BndLib {
 	public:
-		/****************** Add ******************/
-		/**** md5 signature: 9e863879ef8ae6ec63335c0c92f20f7b ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 9e863879ef8ae6ec63335c0c92f20f7b ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -114,8 +114,8 @@ Bounding box for a surface trimmed or not adds the segment of the line l limited
 ") Add;
 		static void Add(const gp_Lin & L, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 23242c6543bab1a14b6154ff3697b979 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 23242c6543bab1a14b6154ff3697b979 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -136,8 +136,8 @@ No available documentation.
 ") Add;
 		static void Add(const gp_Lin2d & L, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 753571845c48cb9251f86d609d2a89ca ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 753571845c48cb9251f86d609d2a89ca ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -156,8 +156,8 @@ No available documentation.
 ") Add;
 		static void Add(const gp_Circ & C, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 1efdca2670db70fa6a2871b88bab74b4 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 1efdca2670db70fa6a2871b88bab74b4 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -178,8 +178,8 @@ P2-p1 can be in [0,2*pi].
 ") Add;
 		static void Add(const gp_Circ & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 8837ea6283b5c8754ea403c115415767 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 8837ea6283b5c8754ea403c115415767 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -198,8 +198,8 @@ No available documentation.
 ") Add;
 		static void Add(const gp_Circ2d & C, const Standard_Real Tol, Bnd_Box2d & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 6db3619ed210691eb9ab660e55d2db14 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 6db3619ed210691eb9ab660e55d2db14 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -220,8 +220,8 @@ Adds the circle c, or the arc of the circle c limited by the two parameter value
 ") Add;
 		static void Add(const gp_Circ2d & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: cb7aaeb4b7002b79e968d392d8e00c7d ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: cb7aaeb4b7002b79e968d392d8e00c7d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -240,8 +240,8 @@ No available documentation.
 ") Add;
 		static void Add(const gp_Elips & C, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: bc333447be55ac79ebc2a052fb825ec5 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: bc333447be55ac79ebc2a052fb825ec5 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -262,8 +262,8 @@ P2-p1 can be in [0,2*pi].
 ") Add;
 		static void Add(const gp_Elips & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: d6fcbe939ee0e34ebf1192f8621954bf ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: d6fcbe939ee0e34ebf1192f8621954bf ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -282,8 +282,8 @@ No available documentation.
 ") Add;
 		static void Add(const gp_Elips2d & C, const Standard_Real Tol, Bnd_Box2d & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: f804f0a213c11c017f412d35ab696701 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: f804f0a213c11c017f412d35ab696701 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -304,8 +304,8 @@ Adds the ellipse e, or the arc of the ellipse e limited by the two parameter val
 ") Add;
 		static void Add(const gp_Elips2d & C, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: c9a99ceb4a019c07e9c40c77ed28e6c0 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: c9a99ceb4a019c07e9c40c77ed28e6c0 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -326,8 +326,8 @@ No available documentation.
 ") Add;
 		static void Add(const gp_Parab & P, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 3cce29a85482026eb4c7eeea20837f22 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 3cce29a85482026eb4c7eeea20837f22 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -348,8 +348,8 @@ Adds the arc of the parabola p limited by the two parameter values p1 and p2, to
 ") Add;
 		static void Add(const gp_Parab2d & P, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: b684391ac023124c9da0c3e41193c63d ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: b684391ac023124c9da0c3e41193c63d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -370,8 +370,8 @@ No available documentation.
 ") Add;
 		static void Add(const gp_Hypr & H, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: ec0e75237003f2d23d26e6b7e90d83dc ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: ec0e75237003f2d23d26e6b7e90d83dc ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -392,8 +392,8 @@ Adds the arc of the branch of hyperbola h limited by the two parameter values p1
 ") Add;
 		static void Add(const gp_Hypr2d & H, const Standard_Real P1, const Standard_Real P2, const Standard_Real Tol, Bnd_Box2d & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: e0a1ce63019468c2b8490dabeb0bad71 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: e0a1ce63019468c2b8490dabeb0bad71 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -416,8 +416,8 @@ Umax -umin can be in [0,2*pi].
 ") Add;
 		static void Add(const gp_Cylinder & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: aab8c9916d1ceda6b0efb646a4117ebd ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: aab8c9916d1ceda6b0efb646a4117ebd ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -438,8 +438,8 @@ Adds to the bounding box b, the patch of the cylinder s limited - in the v param
 ") Add;
 		static void Add(const gp_Cylinder & S, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 52017d305dc6b6b7d30a7d1995a06376 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 52017d305dc6b6b7d30a7d1995a06376 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -462,8 +462,8 @@ Umax-umin can be in [0,2*pi].
 ") Add;
 		static void Add(const gp_Cone & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: e2e2228fc1fdd5275af97416214161a9 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: e2e2228fc1fdd5275af97416214161a9 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -484,8 +484,8 @@ Adds to the bounding box b, the patch of the cone s limited - in the v parametri
 ") Add;
 		static void Add(const gp_Cone & S, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 0a24fd63fa0454b7f2f51a783d6507be ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 0a24fd63fa0454b7f2f51a783d6507be ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -504,8 +504,8 @@ No available documentation.
 ") Add;
 		static void Add(const gp_Sphere & S, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 2fb2aa38bcd30008a28df565d3d4d05c ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 2fb2aa38bcd30008a28df565d3d4d05c ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -528,8 +528,8 @@ Adds to the bounding box b the sphere s, or - the patch of the sphere s, limited
 ") Add;
 		static void Add(const gp_Sphere & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 6fff0fb723f01427006c4572caa954e0 ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: 6fff0fb723f01427006c4572caa954e0 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -548,8 +548,8 @@ No available documentation.
 ") Add;
 		static void Add(const gp_Torus & P, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: b9c657fe7b6d0e95c04873218635802b ****/
+		/****** BndLib::Add ******/
+		/****** md5 signature: b9c657fe7b6d0e95c04873218635802b ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -586,8 +586,8 @@ Adds to the bounding box b - the torus s, or - the patch of the torus s, limited
 **************************/
 class BndLib_Add2dCurve {
 	public:
-		/****************** Add ******************/
-		/**** md5 signature: 24ba478f5e879db98be904c511fd4dd5 ****/
+		/****** BndLib_Add2dCurve::Add ******/
+		/****** md5 signature: 24ba478f5e879db98be904c511fd4dd5 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -606,8 +606,8 @@ Adds to the bounding box b the curve c b is then enlarged by the tolerance value
 ") Add;
 		static void Add(const Adaptor2d_Curve2d & C, const Standard_Real Tol, Bnd_Box2d & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 7534a60c213292f46585ce5a36173676 ****/
+		/****** BndLib_Add2dCurve::Add ******/
+		/****** md5 signature: 7534a60c213292f46585ce5a36173676 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -628,8 +628,8 @@ Adds to the bounding box bthe arc of the curve c limited by the two parameter va
 ") Add;
 		static void Add(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box2d & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 50b9721fa8ed9d9c41295d649bdd32af ****/
+		/****** BndLib_Add2dCurve::Add ******/
+		/****** md5 signature: 50b9721fa8ed9d9c41295d649bdd32af ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -648,8 +648,8 @@ Adds to the bounding box b the curve c b is then enlarged by the tolerance value
 ") Add;
 		static void Add(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real Tol, Bnd_Box2d & Box);
 
-		/****************** Add ******************/
-		/**** md5 signature: eedfe68de0380d5f37d16bc918c0d037 ****/
+		/****** BndLib_Add2dCurve::Add ******/
+		/****** md5 signature: eedfe68de0380d5f37d16bc918c0d037 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -670,8 +670,8 @@ Adds to the bounding box b the part of curve c b is then enlarged by the toleran
 ") Add;
 		static void Add(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box2d & B);
 
-		/****************** AddOptimal ******************/
-		/**** md5 signature: bd6bfafd3a4edaae34079bdd6693208f ****/
+		/****** BndLib_Add2dCurve::AddOptimal ******/
+		/****** md5 signature: bd6bfafd3a4edaae34079bdd6693208f ******/
 		%feature("compactdefaultargs") AddOptimal;
 		%feature("autodoc", "
 Parameters
@@ -706,8 +706,8 @@ Adds to the bounding box b the part of curve c b is then enlarged by the toleran
 **************************/
 class BndLib_Add3dCurve {
 	public:
-		/****************** Add ******************/
-		/**** md5 signature: feeae1972ee1704fc60fe0fe7da1239b ****/
+		/****** BndLib_Add3dCurve::Add ******/
+		/****** md5 signature: feeae1972ee1704fc60fe0fe7da1239b ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -726,8 +726,8 @@ Adds to the bounding box b the curve c b is then enlarged by the tolerance value
 ") Add;
 		static void Add(const Adaptor3d_Curve & C, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 47adc866a9340ea705f29d3eda6a5159 ****/
+		/****** BndLib_Add3dCurve::Add ******/
+		/****** md5 signature: 47adc866a9340ea705f29d3eda6a5159 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -748,8 +748,8 @@ Adds to the bounding box b the curve c the arc of the curve c limited by the two
 ") Add;
 		static void Add(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** AddGenCurv ******************/
-		/**** md5 signature: 8eff7d11e8817d862d3149011310b4d0 ****/
+		/****** BndLib_Add3dCurve::AddGenCurv ******/
+		/****** md5 signature: 8eff7d11e8817d862d3149011310b4d0 ******/
 		%feature("compactdefaultargs") AddGenCurv;
 		%feature("autodoc", "
 Parameters
@@ -770,8 +770,8 @@ Adds to the bounding box b the curve c using numerical minimization algorithms t
 ") AddGenCurv;
 		static void AddGenCurv(const Adaptor3d_Curve & C, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** AddOptimal ******************/
-		/**** md5 signature: eb89dbca3787f6245593b68962baf91d ****/
+		/****** BndLib_Add3dCurve::AddOptimal ******/
+		/****** md5 signature: eb89dbca3787f6245593b68962baf91d ******/
 		%feature("compactdefaultargs") AddOptimal;
 		%feature("autodoc", "
 Parameters
@@ -790,8 +790,8 @@ Adds to the bounding box b the curve c these methods use more precise algorithms
 ") AddOptimal;
 		static void AddOptimal(const Adaptor3d_Curve & C, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** AddOptimal ******************/
-		/**** md5 signature: 0140fcda0ee2d13032232592e46f42c8 ****/
+		/****** BndLib_Add3dCurve::AddOptimal ******/
+		/****** md5 signature: 0140fcda0ee2d13032232592e46f42c8 ******/
 		%feature("compactdefaultargs") AddOptimal;
 		%feature("autodoc", "
 Parameters
@@ -826,8 +826,8 @@ No available documentation.
 **************************/
 class BndLib_AddSurface {
 	public:
-		/****************** Add ******************/
-		/**** md5 signature: 57d43d60c64d1900d9b7cf8d3c4c9d65 ****/
+		/****** BndLib_AddSurface::Add ******/
+		/****** md5 signature: 57d43d60c64d1900d9b7cf8d3c4c9d65 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -846,8 +846,8 @@ Adds to the bounding box b the surface s b is then enlarged by the tolerance val
 ") Add;
 		static void Add(const Adaptor3d_Surface & S, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** Add ******************/
-		/**** md5 signature: 6eeef39d1ef98304142d45b0bdfeebb3 ****/
+		/****** BndLib_AddSurface::Add ******/
+		/****** md5 signature: 6eeef39d1ef98304142d45b0bdfeebb3 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -870,8 +870,8 @@ Adds to the bounding box b the surface s the patch of the surface s limited in t
 ") Add;
 		static void Add(const Adaptor3d_Surface & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** AddGenSurf ******************/
-		/**** md5 signature: b14f5e9ed365aa271c910dd838bef5ec ****/
+		/****** BndLib_AddSurface::AddGenSurf ******/
+		/****** md5 signature: b14f5e9ed365aa271c910dd838bef5ec ******/
 		%feature("compactdefaultargs") AddGenSurf;
 		%feature("autodoc", "
 Parameters
@@ -894,8 +894,8 @@ Adds to the bounding box b the surface s using numerical minimization algorithms
 ") AddGenSurf;
 		static void AddGenSurf(const Adaptor3d_Surface & S, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** AddOptimal ******************/
-		/**** md5 signature: 8a4f780b04453b509615616b28d119e2 ****/
+		/****** BndLib_AddSurface::AddOptimal ******/
+		/****** md5 signature: 8a4f780b04453b509615616b28d119e2 ******/
 		%feature("compactdefaultargs") AddOptimal;
 		%feature("autodoc", "
 Parameters
@@ -914,8 +914,8 @@ No available documentation.
 ") AddOptimal;
 		static void AddOptimal(const Adaptor3d_Surface & S, const Standard_Real Tol, Bnd_Box & B);
 
-		/****************** AddOptimal ******************/
-		/**** md5 signature: e93fe299fd887a5aea45a80df9482141 ****/
+		/****** BndLib_AddSurface::AddOptimal ******/
+		/****** md5 signature: e93fe299fd887a5aea45a80df9482141 ******/
 		%feature("compactdefaultargs") AddOptimal;
 		%feature("autodoc", "
 Parameters

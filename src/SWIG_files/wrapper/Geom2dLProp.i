@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DLPROPDOCSTRING
 "Geom2dLProp module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geom2dlprop.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geom2dlprop.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DLPROPDOCSTRING) Geom2dLProp
 
@@ -88,8 +88,8 @@ from OCC.Core.Exception import *
 ******************************/
 class Geom2dLProp_CLProps2d {
 	public:
-		/****************** Geom2dLProp_CLProps2d ******************/
-		/**** md5 signature: 60237b4a6658b74a6cd64ded0755c301 ****/
+		/****** Geom2dLProp_CLProps2d::Geom2dLProp_CLProps2d ******/
+		/****** md5 signature: 60237b4a6658b74a6cd64ded0755c301 ******/
 		%feature("compactdefaultargs") Geom2dLProp_CLProps2d;
 		%feature("autodoc", "
 Parameters
@@ -108,8 +108,8 @@ Initializes the local properties of the curve <c> the current point and the deri
 ") Geom2dLProp_CLProps2d;
 		 Geom2dLProp_CLProps2d(const opencascade::handle<Geom2d_Curve> & C, const Standard_Integer N, const Standard_Real Resolution);
 
-		/****************** Geom2dLProp_CLProps2d ******************/
-		/**** md5 signature: a07184f40b0441741408668abcbc5e3f ****/
+		/****** Geom2dLProp_CLProps2d::Geom2dLProp_CLProps2d ******/
+		/****** md5 signature: a07184f40b0441741408668abcbc5e3f ******/
 		%feature("compactdefaultargs") Geom2dLProp_CLProps2d;
 		%feature("autodoc", "
 Parameters
@@ -129,8 +129,8 @@ Same as previous constructor but here the parameter is set to the value <u>. all
 ") Geom2dLProp_CLProps2d;
 		 Geom2dLProp_CLProps2d(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, const Standard_Integer N, const Standard_Real Resolution);
 
-		/****************** Geom2dLProp_CLProps2d ******************/
-		/**** md5 signature: 1b95bdbf8ac383857a198aa644940fa0 ****/
+		/****** Geom2dLProp_CLProps2d::Geom2dLProp_CLProps2d ******/
+		/****** md5 signature: 1b95bdbf8ac383857a198aa644940fa0 ******/
 		%feature("compactdefaultargs") Geom2dLProp_CLProps2d;
 		%feature("autodoc", "
 Parameters
@@ -148,8 +148,8 @@ Same as previous constructor but here the parameter is set to the value <u> and 
 ") Geom2dLProp_CLProps2d;
 		 Geom2dLProp_CLProps2d(const Standard_Integer N, const Standard_Real Resolution);
 
-		/****************** CentreOfCurvature ******************/
-		/**** md5 signature: 626d695d5de587ba5c831f0811118d8d ****/
+		/****** Geom2dLProp_CLProps2d::CentreOfCurvature ******/
+		/****** md5 signature: 626d695d5de587ba5c831f0811118d8d ******/
 		%feature("compactdefaultargs") CentreOfCurvature;
 		%feature("autodoc", "
 Parameters
@@ -166,8 +166,8 @@ Returns the centre of curvature <p>.
 ") CentreOfCurvature;
 		void CentreOfCurvature(gp_Pnt2d & P);
 
-		/****************** Curvature ******************/
-		/**** md5 signature: 4886f38d109c8344d719e9973cfea7e1 ****/
+		/****** Geom2dLProp_CLProps2d::Curvature ******/
+		/****** md5 signature: 4886f38d109c8344d719e9973cfea7e1 ******/
 		%feature("compactdefaultargs") Curvature;
 		%feature("autodoc", "Return
 -------
@@ -179,8 +179,8 @@ Returns the curvature.
 ") Curvature;
 		Standard_Real Curvature();
 
-		/****************** D1 ******************/
-		/**** md5 signature: 400251dec252a18ea516927809341fa7 ****/
+		/****** Geom2dLProp_CLProps2d::D1 ******/
+		/****** md5 signature: 400251dec252a18ea516927809341fa7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "Return
 -------
@@ -192,8 +192,8 @@ Returns the first derivative. the derivative is computed if it has not been yet.
 ") D1;
 		const gp_Vec2d D1();
 
-		/****************** D2 ******************/
-		/**** md5 signature: 14a212b020ed6e6189286e37088e41e7 ****/
+		/****** Geom2dLProp_CLProps2d::D2 ******/
+		/****** md5 signature: 14a212b020ed6e6189286e37088e41e7 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "Return
 -------
@@ -205,8 +205,8 @@ Returns the second derivative. the derivative is computed if it has not been yet
 ") D2;
 		const gp_Vec2d D2();
 
-		/****************** D3 ******************/
-		/**** md5 signature: a13380eb2e77ee845c4ad05a4d86bd7b ****/
+		/****** Geom2dLProp_CLProps2d::D3 ******/
+		/****** md5 signature: a13380eb2e77ee845c4ad05a4d86bd7b ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "Return
 -------
@@ -218,8 +218,8 @@ Returns the third derivative. the derivative is computed if it has not been yet.
 ") D3;
 		const gp_Vec2d D3();
 
-		/****************** IsTangentDefined ******************/
-		/**** md5 signature: 96b1d1e7ead0e227ec7d76f9ad798ae8 ****/
+		/****** Geom2dLProp_CLProps2d::IsTangentDefined ******/
+		/****** md5 signature: 96b1d1e7ead0e227ec7d76f9ad798ae8 ******/
 		%feature("compactdefaultargs") IsTangentDefined;
 		%feature("autodoc", "Return
 -------
@@ -231,8 +231,8 @@ Returns true if the tangent is defined. for example, the tangent is not defined 
 ") IsTangentDefined;
 		Standard_Boolean IsTangentDefined();
 
-		/****************** Normal ******************/
-		/**** md5 signature: 4d525a8e066324f482e1de5d65bdd7c5 ****/
+		/****** Geom2dLProp_CLProps2d::Normal ******/
+		/****** md5 signature: 4d525a8e066324f482e1de5d65bdd7c5 ******/
 		%feature("compactdefaultargs") Normal;
 		%feature("autodoc", "
 Parameters
@@ -249,8 +249,8 @@ Returns the normal direction <n>.
 ") Normal;
 		void Normal(gp_Dir2d & N);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: 742ee8e4dc5f19c05a80fb958d6fead8 ****/
+		/****** Geom2dLProp_CLProps2d::SetCurve ******/
+		/****** md5 signature: 742ee8e4dc5f19c05a80fb958d6fead8 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -267,8 +267,8 @@ Initializes the local properties of the curve for the new curve.
 ") SetCurve;
 		void SetCurve(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** SetParameter ******************/
-		/**** md5 signature: 6d7d0a8f07175b76bb327cfdc33d2266 ****/
+		/****** Geom2dLProp_CLProps2d::SetParameter ******/
+		/****** md5 signature: 6d7d0a8f07175b76bb327cfdc33d2266 ******/
 		%feature("compactdefaultargs") SetParameter;
 		%feature("autodoc", "
 Parameters
@@ -285,8 +285,8 @@ Initializes the local properties of the curve for the parameter value <u>.
 ") SetParameter;
 		void SetParameter(const Standard_Real U);
 
-		/****************** Tangent ******************/
-		/**** md5 signature: 2adaff97f5d84c22114b84a6e5def58d ****/
+		/****** Geom2dLProp_CLProps2d::Tangent ******/
+		/****** md5 signature: 2adaff97f5d84c22114b84a6e5def58d ******/
 		%feature("compactdefaultargs") Tangent;
 		%feature("autodoc", "
 Parameters
@@ -303,8 +303,8 @@ Output the tangent direction <d>.
 ") Tangent;
 		void Tangent(gp_Dir2d & D);
 
-		/****************** Value ******************/
-		/**** md5 signature: 01b97600ad700e4edb97bc6008ad0c9b ****/
+		/****** Geom2dLProp_CLProps2d::Value ******/
+		/****** md5 signature: 01b97600ad700e4edb97bc6008ad0c9b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -330,8 +330,8 @@ Returns the point.
 ********************************/
 class Geom2dLProp_CurAndInf2d : public LProp_CurAndInf {
 	public:
-		/****************** Geom2dLProp_CurAndInf2d ******************/
-		/**** md5 signature: 1d2411829f94361db69a471e7487752d ****/
+		/****** Geom2dLProp_CurAndInf2d::Geom2dLProp_CurAndInf2d ******/
+		/****** md5 signature: 1d2411829f94361db69a471e7487752d ******/
 		%feature("compactdefaultargs") Geom2dLProp_CurAndInf2d;
 		%feature("autodoc", "Return
 -------
@@ -343,8 +343,8 @@ Initializes the framework. note: the curve on which the local properties are com
 ") Geom2dLProp_CurAndInf2d;
 		 Geom2dLProp_CurAndInf2d();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Geom2dLProp_CurAndInf2d::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -356,8 +356,8 @@ True if the solutions are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 73c4da745f6865598366f5736e497c1a ****/
+		/****** Geom2dLProp_CurAndInf2d::Perform ******/
+		/****** md5 signature: 73c4da745f6865598366f5736e497c1a ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -374,8 +374,8 @@ For the curve c, computes both the inflection points and the maximum and minimum
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** PerformCurExt ******************/
-		/**** md5 signature: 0581e10445ee1f46584d14d92dfd7071 ****/
+		/****** Geom2dLProp_CurAndInf2d::PerformCurExt ******/
+		/****** md5 signature: 0581e10445ee1f46584d14d92dfd7071 ******/
 		%feature("compactdefaultargs") PerformCurExt;
 		%feature("autodoc", "
 Parameters
@@ -392,8 +392,8 @@ For the curve c, computes the locals extremas of curvature.
 ") PerformCurExt;
 		void PerformCurExt(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** PerformInf ******************/
-		/**** md5 signature: eed298f24ef1721b5df8387520329d0e ****/
+		/****** Geom2dLProp_CurAndInf2d::PerformInf ******/
+		/****** md5 signature: eed298f24ef1721b5df8387520329d0e ******/
 		%feature("compactdefaultargs") PerformInf;
 		%feature("autodoc", "
 Parameters
@@ -424,8 +424,8 @@ For the curve c, computes the inflections. after computation, the following func
 ********************************/
 class Geom2dLProp_Curve2dTool {
 	public:
-		/****************** Continuity ******************/
-		/**** md5 signature: 397f3c91efac72538943ef299594983d ****/
+		/****** Geom2dLProp_Curve2dTool::Continuity ******/
+		/****** md5 signature: 397f3c91efac72538943ef299594983d ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "
 Parameters
@@ -442,8 +442,8 @@ Returns the order of continuity of the curve <c>. returns 1: first derivative on
 ") Continuity;
 		static Standard_Integer Continuity(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 59fd3af50a9979f7693ac93b81c08d9d ****/
+		/****** Geom2dLProp_Curve2dTool::D1 ******/
+		/****** md5 signature: 59fd3af50a9979f7693ac93b81c08d9d ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -463,8 +463,8 @@ Computes the point <p> and first derivative <v1> of parameter <u> on the curve <
 ") D1;
 		static void D1(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1);
 
-		/****************** D2 ******************/
-		/**** md5 signature: d63205a4754794f1b9d9e8ef7cdc1232 ****/
+		/****** Geom2dLProp_Curve2dTool::D2 ******/
+		/****** md5 signature: d63205a4754794f1b9d9e8ef7cdc1232 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -485,8 +485,8 @@ Computes the point <p>, the first derivative <v1> and second derivative <v2> of 
 ") D2;
 		static void D2(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: eb6753dea2cbc1e513e0dae67597ec96 ****/
+		/****** Geom2dLProp_Curve2dTool::D3 ******/
+		/****** md5 signature: eb6753dea2cbc1e513e0dae67597ec96 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -508,8 +508,8 @@ Computes the point <p>, the first derivative <v1>, the second derivative <v2> an
 ") D3;
 		static void D3(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
-		/****************** FirstParameter ******************/
-		/**** md5 signature: 4e34d0fb98f1d854c0e5caa004bcf5a6 ****/
+		/****** Geom2dLProp_Curve2dTool::FirstParameter ******/
+		/****** md5 signature: 4e34d0fb98f1d854c0e5caa004bcf5a6 ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "
 Parameters
@@ -526,8 +526,8 @@ Returns the first parameter bound of the curve.
 ") FirstParameter;
 		static Standard_Real FirstParameter(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** LastParameter ******************/
-		/**** md5 signature: 2df990ab4c653a046b7a3e5f65e015a1 ****/
+		/****** Geom2dLProp_Curve2dTool::LastParameter ******/
+		/****** md5 signature: 2df990ab4c653a046b7a3e5f65e015a1 ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "
 Parameters
@@ -544,8 +544,8 @@ Returns the last parameter bound of the curve. firstparameter must be less than 
 ") LastParameter;
 		static Standard_Real LastParameter(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** Value ******************/
-		/**** md5 signature: 08ee3d411ce1ba322e19d237e64191cf ****/
+		/****** Geom2dLProp_Curve2dTool::Value ******/
+		/****** md5 signature: 08ee3d411ce1ba322e19d237e64191cf ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -578,8 +578,8 @@ Computes the point <p> of parameter <u> on the curve <c>.
 *******************************/
 class Geom2dLProp_FuncCurExt : public math_FunctionWithDerivative {
 	public:
-		/****************** Geom2dLProp_FuncCurExt ******************/
-		/**** md5 signature: 2fe94539d010aa6f04163472509fb07c ****/
+		/****** Geom2dLProp_FuncCurExt::Geom2dLProp_FuncCurExt ******/
+		/****** md5 signature: 2fe94539d010aa6f04163472509fb07c ******/
 		%feature("compactdefaultargs") Geom2dLProp_FuncCurExt;
 		%feature("autodoc", "
 Parameters
@@ -597,8 +597,8 @@ No available documentation.
 ") Geom2dLProp_FuncCurExt;
 		 Geom2dLProp_FuncCurExt(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real Tol);
 
-		/****************** Derivative ******************/
-		/**** md5 signature: 95e91729f1fb548d9a62f690b302c323 ****/
+		/****** Geom2dLProp_FuncCurExt::Derivative ******/
+		/****** md5 signature: 95e91729f1fb548d9a62f690b302c323 ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
@@ -615,8 +615,8 @@ Returns the derivative for the variable <x>.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
-		/****************** IsMinKC ******************/
-		/**** md5 signature: bc0d23d880fb1dbf78df8669a901eb80 ****/
+		/****** Geom2dLProp_FuncCurExt::IsMinKC ******/
+		/****** md5 signature: bc0d23d880fb1dbf78df8669a901eb80 ******/
 		%feature("compactdefaultargs") IsMinKC;
 		%feature("autodoc", "
 Parameters
@@ -633,8 +633,8 @@ True if param corresponds to a minus of the radius of curvature.
 ") IsMinKC;
 		Standard_Boolean IsMinKC(const Standard_Real Param);
 
-		/****************** Value ******************/
-		/**** md5 signature: 860bcc3da162e9f9f232f07518550196 ****/
+		/****** Geom2dLProp_FuncCurExt::Value ******/
+		/****** md5 signature: 860bcc3da162e9f9f232f07518550196 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -651,8 +651,8 @@ Returns the value for the variable <x>.
 ") Value;
 		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
-		/****************** Values ******************/
-		/**** md5 signature: fd71eb9a1a2bd16185bbb032c3d29afc ****/
+		/****** Geom2dLProp_FuncCurExt::Values ******/
+		/****** md5 signature: fd71eb9a1a2bd16185bbb032c3d29afc ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -684,8 +684,8 @@ Returns the value of the function and the derivative for the variable <x>.
 *******************************/
 class Geom2dLProp_FuncCurNul : public math_FunctionWithDerivative {
 	public:
-		/****************** Geom2dLProp_FuncCurNul ******************/
-		/**** md5 signature: 691dcd387ac9aaa1287f251129a890d7 ****/
+		/****** Geom2dLProp_FuncCurNul::Geom2dLProp_FuncCurNul ******/
+		/****** md5 signature: 691dcd387ac9aaa1287f251129a890d7 ******/
 		%feature("compactdefaultargs") Geom2dLProp_FuncCurNul;
 		%feature("autodoc", "
 Parameters
@@ -702,8 +702,8 @@ No available documentation.
 ") Geom2dLProp_FuncCurNul;
 		 Geom2dLProp_FuncCurNul(const opencascade::handle<Geom2d_Curve> & C);
 
-		/****************** Derivative ******************/
-		/**** md5 signature: 95e91729f1fb548d9a62f690b302c323 ****/
+		/****** Geom2dLProp_FuncCurNul::Derivative ******/
+		/****** md5 signature: 95e91729f1fb548d9a62f690b302c323 ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
@@ -720,8 +720,8 @@ Returns the derivative for the variable <x>.
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
-		/****************** Value ******************/
-		/**** md5 signature: 860bcc3da162e9f9f232f07518550196 ****/
+		/****** Geom2dLProp_FuncCurNul::Value ******/
+		/****** md5 signature: 860bcc3da162e9f9f232f07518550196 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -738,8 +738,8 @@ Returns the value for the variable <x>.
 ") Value;
 		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
-		/****************** Values ******************/
-		/**** md5 signature: fd71eb9a1a2bd16185bbb032c3d29afc ****/
+		/****** Geom2dLProp_FuncCurNul::Values ******/
+		/****** md5 signature: fd71eb9a1a2bd16185bbb032c3d29afc ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -771,8 +771,8 @@ Returns the value of the function and the derivative for the variable <x>.
 ************************************/
 class Geom2dLProp_NumericCurInf2d {
 	public:
-		/****************** Geom2dLProp_NumericCurInf2d ******************/
-		/**** md5 signature: aee6174eab6dd715ed1732694e61bacb ****/
+		/****** Geom2dLProp_NumericCurInf2d::Geom2dLProp_NumericCurInf2d ******/
+		/****** md5 signature: aee6174eab6dd715ed1732694e61bacb ******/
 		%feature("compactdefaultargs") Geom2dLProp_NumericCurInf2d;
 		%feature("autodoc", "Return
 -------
@@ -784,8 +784,8 @@ No available documentation.
 ") Geom2dLProp_NumericCurInf2d;
 		 Geom2dLProp_NumericCurInf2d();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Geom2dLProp_NumericCurInf2d::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -797,8 +797,8 @@ True if the solutions are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** PerformCurExt ******************/
-		/**** md5 signature: cff7de6bb45828bfc0a45db246b9dfcc ****/
+		/****** Geom2dLProp_NumericCurInf2d::PerformCurExt ******/
+		/****** md5 signature: cff7de6bb45828bfc0a45db246b9dfcc ******/
 		%feature("compactdefaultargs") PerformCurExt;
 		%feature("autodoc", "
 Parameters
@@ -816,8 +816,8 @@ Computes the locals extremas of curvature.
 ") PerformCurExt;
 		void PerformCurExt(const opencascade::handle<Geom2d_Curve> & C, LProp_CurAndInf & Result);
 
-		/****************** PerformCurExt ******************/
-		/**** md5 signature: 8d4a271f7ea31764c51bc7d5d6517548 ****/
+		/****** Geom2dLProp_NumericCurInf2d::PerformCurExt ******/
+		/****** md5 signature: 8d4a271f7ea31764c51bc7d5d6517548 ******/
 		%feature("compactdefaultargs") PerformCurExt;
 		%feature("autodoc", "
 Parameters
@@ -837,8 +837,8 @@ Computes the locals extremas of curvature. in the interval of parameters [umin,u
 ") PerformCurExt;
 		void PerformCurExt(const opencascade::handle<Geom2d_Curve> & C, const Standard_Real UMin, const Standard_Real UMax, LProp_CurAndInf & Result);
 
-		/****************** PerformInf ******************/
-		/**** md5 signature: fb2a22e3f2253813d31cb1a8fd636e72 ****/
+		/****** Geom2dLProp_NumericCurInf2d::PerformInf ******/
+		/****** md5 signature: fb2a22e3f2253813d31cb1a8fd636e72 ******/
 		%feature("compactdefaultargs") PerformInf;
 		%feature("autodoc", "
 Parameters
@@ -856,8 +856,8 @@ Computes the inflections.
 ") PerformInf;
 		void PerformInf(const opencascade::handle<Geom2d_Curve> & C, LProp_CurAndInf & Result);
 
-		/****************** PerformInf ******************/
-		/**** md5 signature: 4ccd98235aecb6f55130f7303d06d7cd ****/
+		/****** Geom2dLProp_NumericCurInf2d::PerformInf ******/
+		/****** md5 signature: 4ccd98235aecb6f55130f7303d06d7cd ******/
 		%feature("compactdefaultargs") PerformInf;
 		%feature("autodoc", "
 Parameters

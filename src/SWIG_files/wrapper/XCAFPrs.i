@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XCAFPRSDOCSTRING
 "XCAFPrs module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_xcafprs.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xcafprs.html"
 %enddef
 %module (package="OCC.Core", docstring=XCAFPRSDOCSTRING) XCAFPrs
 
@@ -154,8 +154,8 @@ typedef NCollection_IndexedDataMap<TopoDS_Shape, XCAFPrs_Style, TopTools_ShapeMa
 %rename(xcafprs) XCAFPrs;
 class XCAFPrs {
 	public:
-		/****************** CollectStyleSettings ******************/
-		/**** md5 signature: 7a262a4756e5937c27328da5edc3fabd ****/
+		/****** XCAFPrs::CollectStyleSettings ******/
+		/****** md5 signature: 7a262a4756e5937c27328da5edc3fabd ******/
 		%feature("compactdefaultargs") CollectStyleSettings;
 		%feature("autodoc", "
 Parameters
@@ -175,8 +175,8 @@ Collect styles defined for shape on label l and its components and subshapes and
 ") CollectStyleSettings;
 		static void CollectStyleSettings(const TDF_Label & L, const TopLoc_Location & loc, XCAFPrs_IndexedDataMapOfShapeStyle & settings, const Quantity_ColorRGBA & theLayerColor = Quantity_ColorRGBA(Quantity_NOC_WHITE));
 
-		/****************** GetViewNameMode ******************/
-		/**** md5 signature: 00babb1f013f86f66ee15ee01531e437 ****/
+		/****** XCAFPrs::GetViewNameMode ******/
+		/****** md5 signature: 00babb1f013f86f66ee15ee01531e437 ******/
 		%feature("compactdefaultargs") GetViewNameMode;
 		%feature("autodoc", "Return
 -------
@@ -188,8 +188,8 @@ No available documentation.
 ") GetViewNameMode;
 		static Standard_Boolean GetViewNameMode();
 
-		/****************** SetViewNameMode ******************/
-		/**** md5 signature: 42d2caa5815110f47af30e5cb5a0c0d6 ****/
+		/****** XCAFPrs::SetViewNameMode ******/
+		/****** md5 signature: 42d2caa5815110f47af30e5cb5a0c0d6 ******/
 		%feature("compactdefaultargs") SetViewNameMode;
 		%feature("autodoc", "
 Parameters
@@ -220,8 +220,8 @@ Set viewnamemode for indicate display names or not.
 **************************/
 class XCAFPrs_AISObject : public AIS_ColoredShape {
 	public:
-		/****************** XCAFPrs_AISObject ******************/
-		/**** md5 signature: f0e55528fe8ff1d29919bf9ea5fa6e58 ****/
+		/****** XCAFPrs_AISObject::XCAFPrs_AISObject ******/
+		/****** md5 signature: f0e55528fe8ff1d29919bf9ea5fa6e58 ******/
 		%feature("compactdefaultargs") XCAFPrs_AISObject;
 		%feature("autodoc", "
 Parameters
@@ -238,8 +238,8 @@ Creates an object to visualise the shape label.
 ") XCAFPrs_AISObject;
 		 XCAFPrs_AISObject(const TDF_Label & theLabel);
 
-		/****************** DispatchStyles ******************/
-		/**** md5 signature: 94e0ed354143041186c38dc4735f7b0d ****/
+		/****** XCAFPrs_AISObject::DispatchStyles ******/
+		/****** md5 signature: 94e0ed354143041186c38dc4735f7b0d ******/
 		%feature("compactdefaultargs") DispatchStyles;
 		%feature("autodoc", "
 Parameters
@@ -256,8 +256,8 @@ Fetch the shape from associated label and fill the map of sub-shapes styles. by 
 ") DispatchStyles;
 		virtual void DispatchStyles(const Standard_Boolean theToSyncStyles = Standard_False);
 
-		/****************** GetLabel ******************/
-		/**** md5 signature: cc78125194d6893ebcb2c586f4ec4787 ****/
+		/****** XCAFPrs_AISObject::GetLabel ******/
+		/****** md5 signature: cc78125194d6893ebcb2c586f4ec4787 ******/
 		%feature("compactdefaultargs") GetLabel;
 		%feature("autodoc", "Return
 -------
@@ -269,8 +269,8 @@ Returns the label which was visualised by this presentation.
 ") GetLabel;
 		const TDF_Label & GetLabel();
 
-		/****************** SetLabel ******************/
-		/**** md5 signature: cc470d5ce9738c8709b266c2b6c1b90a ****/
+		/****** XCAFPrs_AISObject::SetLabel ******/
+		/****** md5 signature: cc470d5ce9738c8709b266c2b6c1b90a ******/
 		%feature("compactdefaultargs") SetLabel;
 		%feature("autodoc", "
 Parameters
@@ -287,8 +287,8 @@ Assign the label to this presentation (but does not mark it outdated with settou
 ") SetLabel;
 		void SetLabel(const TDF_Label & theLabel);
 
-		/****************** SetMaterial ******************/
-		/**** md5 signature: 1fdce10ca979b439818a2f4eb876e6cc ****/
+		/****** XCAFPrs_AISObject::SetMaterial ******/
+		/****** md5 signature: 1fdce10ca979b439818a2f4eb876e6cc ******/
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "
 Parameters
@@ -321,8 +321,8 @@ Sets the material aspect. this method assigns the new default material without o
 *********************************/
 class XCAFPrs_DocumentExplorer {
 	public:
-		/****************** XCAFPrs_DocumentExplorer ******************/
-		/**** md5 signature: aa276310e32f5cd8603391addf99321a ****/
+		/****** XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer ******/
+		/****** md5 signature: aa276310e32f5cd8603391addf99321a ******/
 		%feature("compactdefaultargs") XCAFPrs_DocumentExplorer;
 		%feature("autodoc", "Return
 -------
@@ -334,8 +334,8 @@ Empty constructor.
 ") XCAFPrs_DocumentExplorer;
 		 XCAFPrs_DocumentExplorer();
 
-		/****************** XCAFPrs_DocumentExplorer ******************/
-		/**** md5 signature: 5c8b0df27ab7c88c0f701f14704a7726 ****/
+		/****** XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer ******/
+		/****** md5 signature: 5c8b0df27ab7c88c0f701f14704a7726 ******/
 		%feature("compactdefaultargs") XCAFPrs_DocumentExplorer;
 		%feature("autodoc", "
 Parameters
@@ -354,8 +354,8 @@ Constructor for exploring the whole document. @param thedocument document to exp
 ") XCAFPrs_DocumentExplorer;
 		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
-		/****************** XCAFPrs_DocumentExplorer ******************/
-		/**** md5 signature: 3a7cecc626d3723ed3253f4ffca51442 ****/
+		/****** XCAFPrs_DocumentExplorer::XCAFPrs_DocumentExplorer ******/
+		/****** md5 signature: 3a7cecc626d3723ed3253f4ffca51442 ******/
 		%feature("compactdefaultargs") XCAFPrs_DocumentExplorer;
 		%feature("autodoc", "
 Parameters
@@ -375,8 +375,8 @@ Constructor for exploring specified list of root shapes in the document. @param 
 ") XCAFPrs_DocumentExplorer;
 		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
-		/****************** ChangeCurrent ******************/
-		/**** md5 signature: d8575b117c3ddc102a80c8f34d2d5ff3 ****/
+		/****** XCAFPrs_DocumentExplorer::ChangeCurrent ******/
+		/****** md5 signature: d8575b117c3ddc102a80c8f34d2d5ff3 ******/
 		%feature("compactdefaultargs") ChangeCurrent;
 		%feature("autodoc", "Return
 -------
@@ -388,8 +388,8 @@ Return current position.
 ") ChangeCurrent;
 		XCAFPrs_DocumentNode & ChangeCurrent();
 
-		/****************** ColorTool ******************/
-		/**** md5 signature: 03b560befa7fe76ec9d38f36c9ee23bd ****/
+		/****** XCAFPrs_DocumentExplorer::ColorTool ******/
+		/****** md5 signature: 03b560befa7fe76ec9d38f36c9ee23bd ******/
 		%feature("compactdefaultargs") ColorTool;
 		%feature("autodoc", "Return
 -------
@@ -401,8 +401,8 @@ Return color tool.
 ") ColorTool;
 		const opencascade::handle<XCAFDoc_ColorTool> & ColorTool();
 
-		/****************** Current ******************/
-		/**** md5 signature: 222ab8031f0a08f42b668a2b614cea4d ****/
+		/****** XCAFPrs_DocumentExplorer::Current ******/
+		/****** md5 signature: 222ab8031f0a08f42b668a2b614cea4d ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return
 -------
@@ -414,8 +414,8 @@ Return current position.
 ") Current;
 		const XCAFPrs_DocumentNode & Current();
 
-		/****************** Current ******************/
-		/**** md5 signature: efe0137b5d9a49ad6fe44f6c87e91380 ****/
+		/****** XCAFPrs_DocumentExplorer::Current ******/
+		/****** md5 signature: efe0137b5d9a49ad6fe44f6c87e91380 ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "
 Parameters
@@ -432,8 +432,8 @@ Return current position within specified assembly depth.
 ") Current;
 		const XCAFPrs_DocumentNode & Current(Standard_Integer theDepth);
 
-		/****************** CurrentDepth ******************/
-		/**** md5 signature: ec69b73ad734be8bbe2b41903c6bfb39 ****/
+		/****** XCAFPrs_DocumentExplorer::CurrentDepth ******/
+		/****** md5 signature: ec69b73ad734be8bbe2b41903c6bfb39 ******/
 		%feature("compactdefaultargs") CurrentDepth;
 		%feature("autodoc", "Return
 -------
@@ -445,8 +445,8 @@ Return depth of the current node in hierarchy, starting from 0. zero means root 
 ") CurrentDepth;
 		Standard_Integer CurrentDepth();
 
-		/****************** DefineChildId ******************/
-		/**** md5 signature: 408d6adf19c4d2c6d062f1bce2dab794 ****/
+		/****** XCAFPrs_DocumentExplorer::DefineChildId ******/
+		/****** md5 signature: 408d6adf19c4d2c6d062f1bce2dab794 ******/
 		%feature("compactdefaultargs") DefineChildId;
 		%feature("autodoc", "
 Parameters
@@ -464,8 +464,8 @@ Construct a unique string identifier for the given label. the identifier is a co
 ") DefineChildId;
 		static TCollection_AsciiString DefineChildId(const TDF_Label & theLabel, TCollection_AsciiString theParentId);
 
-		/****************** FindLabelFromPathId ******************/
-		/**** md5 signature: 36bd799783495ac64d75996cfdfc41d5 ****/
+		/****** XCAFPrs_DocumentExplorer::FindLabelFromPathId ******/
+		/****** md5 signature: 36bd799783495ac64d75996cfdfc41d5 ******/
 		%feature("compactdefaultargs") FindLabelFromPathId;
 		%feature("autodoc", "
 Parameters
@@ -485,8 +485,8 @@ Find a shape entity based on a text identifier constructed from ocaf labels defi
 ") FindLabelFromPathId;
 		static TDF_Label FindLabelFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, TCollection_AsciiString theId, TopLoc_Location & theParentLocation, TopLoc_Location & theLocation);
 
-		/****************** FindLabelFromPathId ******************/
-		/**** md5 signature: c5c736078028775b674842dc6f73fef0 ****/
+		/****** XCAFPrs_DocumentExplorer::FindLabelFromPathId ******/
+		/****** md5 signature: c5c736078028775b674842dc6f73fef0 ******/
 		%feature("compactdefaultargs") FindLabelFromPathId;
 		%feature("autodoc", "
 Parameters
@@ -505,8 +505,8 @@ Find a shape entity based on a text identifier constructed from ocaf labels defi
 ") FindLabelFromPathId;
 		static TDF_Label FindLabelFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, TCollection_AsciiString theId, TopLoc_Location & theLocation);
 
-		/****************** FindShapeFromPathId ******************/
-		/**** md5 signature: fd58ff02219632fc8856de9d76e8dfa9 ****/
+		/****** XCAFPrs_DocumentExplorer::FindShapeFromPathId ******/
+		/****** md5 signature: fd58ff02219632fc8856de9d76e8dfa9 ******/
 		%feature("compactdefaultargs") FindShapeFromPathId;
 		%feature("autodoc", "
 Parameters
@@ -524,8 +524,8 @@ Find a shape entity based on a text identifier constructed from ocaf labels defi
 ") FindShapeFromPathId;
 		static TopoDS_Shape FindShapeFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, TCollection_AsciiString theId);
 
-		/****************** Init ******************/
-		/**** md5 signature: eec1c7e6d6c080cb010b849abf99e398 ****/
+		/****** XCAFPrs_DocumentExplorer::Init ******/
+		/****** md5 signature: eec1c7e6d6c080cb010b849abf99e398 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -545,8 +545,8 @@ Initialize the iterator from a single root shape in the document. @param thedocu
 ") Init;
 		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_Label & theRoot, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
-		/****************** Init ******************/
-		/**** md5 signature: 98f0800ab577cc74a88fca7a42e9982f ****/
+		/****** XCAFPrs_DocumentExplorer::Init ******/
+		/****** md5 signature: 98f0800ab577cc74a88fca7a42e9982f ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -566,8 +566,8 @@ Initialize the iterator from the list of root shapes in the document. @param the
 ") Init;
 		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
-		/****************** More ******************/
-		/**** md5 signature: cff271d3b32940da94bada40648f9096 ****/
+		/****** XCAFPrs_DocumentExplorer::More ******/
+		/****** md5 signature: cff271d3b32940da94bada40648f9096 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -579,8 +579,8 @@ Return true if iterator points to the valid node.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** XCAFPrs_DocumentExplorer::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -592,8 +592,8 @@ Go to the next node.
 ") Next;
 		void Next();
 
-		/****************** VisMaterialTool ******************/
-		/**** md5 signature: c13692c145aabd5f8daebdbee8d72374 ****/
+		/****** XCAFPrs_DocumentExplorer::VisMaterialTool ******/
+		/****** md5 signature: c13692c145aabd5f8daebdbee8d72374 ******/
 		%feature("compactdefaultargs") VisMaterialTool;
 		%feature("autodoc", "Return
 -------
@@ -619,8 +619,8 @@ Return material tool.
 ***********************************/
 class XCAFPrs_DocumentIdIterator {
 	public:
-		/****************** XCAFPrs_DocumentIdIterator ******************/
-		/**** md5 signature: 6eadeae34139dcef0fb7e3b2667aa2e8 ****/
+		/****** XCAFPrs_DocumentIdIterator::XCAFPrs_DocumentIdIterator ******/
+		/****** md5 signature: 6eadeae34139dcef0fb7e3b2667aa2e8 ******/
 		%feature("compactdefaultargs") XCAFPrs_DocumentIdIterator;
 		%feature("autodoc", "
 Parameters
@@ -637,8 +637,8 @@ Main constructor.
 ") XCAFPrs_DocumentIdIterator;
 		 XCAFPrs_DocumentIdIterator(TCollection_AsciiString thePath);
 
-		/****************** More ******************/
-		/**** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ****/
+		/****** XCAFPrs_DocumentIdIterator::More ******/
+		/****** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -650,8 +650,8 @@ Return true if iterator points to a value.
 ") More;
 		bool More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** XCAFPrs_DocumentIdIterator::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -663,8 +663,8 @@ Find the next value.
 ") Next;
 		void Next();
 
-		/****************** Value ******************/
-		/**** md5 signature: 984f9d59b062e7ebff353351a4b04ca9 ****/
+		/****** XCAFPrs_DocumentIdIterator::Value ******/
+		/****** md5 signature: 984f9d59b062e7ebff353351a4b04ca9 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -698,8 +698,8 @@ class XCAFPrs_DocumentNode {
 		TopLoc_Location LocalTrsf;
 		TDF_ChildIterator ChildIter;
 		bool IsAssembly;
-		/****************** XCAFPrs_DocumentNode ******************/
-		/**** md5 signature: 2d49950cf26abc8cee5d537bc0321564 ****/
+		/****** XCAFPrs_DocumentNode::XCAFPrs_DocumentNode ******/
+		/****** md5 signature: 2d49950cf26abc8cee5d537bc0321564 ******/
 		%feature("compactdefaultargs") XCAFPrs_DocumentNode;
 		%feature("autodoc", "Return
 -------
@@ -739,8 +739,8 @@ def __eq__(self, right):
 ***********************/
 class XCAFPrs_Driver : public TPrsStd_Driver {
 	public:
-		/****************** GetID ******************/
-		/**** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ****/
+		/****** XCAFPrs_Driver::GetID ******/
+		/****** md5 signature: afe6002d90f641ca3ea8c9ae9f8fe97c ******/
 		%feature("compactdefaultargs") GetID;
 		%feature("autodoc", "Return
 -------
@@ -752,8 +752,8 @@ Returns guid of the driver.
 ") GetID;
 		static const Standard_GUID & GetID();
 
-		/****************** Update ******************/
-		/**** md5 signature: ec78618f91177554d26e45cdddd4ea50 ****/
+		/****** XCAFPrs_Driver::Update ******/
+		/****** md5 signature: ec78618f91177554d26e45cdddd4ea50 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -788,8 +788,8 @@ No available documentation.
 class XCAFPrs_Style {
 	public:
 		friend struct std::hash ;
-		/****************** XCAFPrs_Style ******************/
-		/**** md5 signature: 9543f66d0ab16adfbffa6f1ff76c2dd5 ****/
+		/****** XCAFPrs_Style::XCAFPrs_Style ******/
+		/****** md5 signature: 9543f66d0ab16adfbffa6f1ff76c2dd5 ******/
 		%feature("compactdefaultargs") XCAFPrs_Style;
 		%feature("autodoc", "Return
 -------
@@ -801,8 +801,8 @@ Empty constructor - colors are unset, visibility is true.
 ") XCAFPrs_Style;
 		 XCAFPrs_Style();
 
-		/****************** BaseColorTexture ******************/
-		/**** md5 signature: 5593aadcb24e7c7c552097db0852e354 ****/
+		/****** XCAFPrs_Style::BaseColorTexture ******/
+		/****** md5 signature: 5593aadcb24e7c7c552097db0852e354 ******/
 		%feature("compactdefaultargs") BaseColorTexture;
 		%feature("autodoc", "Return
 -------
@@ -835,8 +835,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** GetColorCurv ******************/
-		/**** md5 signature: 94dac84988e85c1a6c1fff8156adc1a0 ****/
+		/****** XCAFPrs_Style::GetColorCurv ******/
+		/****** md5 signature: 94dac84988e85c1a6c1fff8156adc1a0 ******/
 		%feature("compactdefaultargs") GetColorCurv;
 		%feature("autodoc", "Return
 -------
@@ -848,8 +848,8 @@ Return curve color.
 ") GetColorCurv;
 		const Quantity_Color & GetColorCurv();
 
-		/****************** GetColorSurf ******************/
-		/**** md5 signature: a374a5c5f178aeaf928cc98a510eb507 ****/
+		/****** XCAFPrs_Style::GetColorSurf ******/
+		/****** md5 signature: a374a5c5f178aeaf928cc98a510eb507 ******/
 		%feature("compactdefaultargs") GetColorSurf;
 		%feature("autodoc", "Return
 -------
@@ -861,8 +861,8 @@ Return surface color.
 ") GetColorSurf;
 		const Quantity_Color & GetColorSurf();
 
-		/****************** GetColorSurfRGBA ******************/
-		/**** md5 signature: 3160a42dbee284647420257ee6038479 ****/
+		/****** XCAFPrs_Style::GetColorSurfRGBA ******/
+		/****** md5 signature: 3160a42dbee284647420257ee6038479 ******/
 		%feature("compactdefaultargs") GetColorSurfRGBA;
 		%feature("autodoc", "Return
 -------
@@ -874,8 +874,8 @@ Return surface color.
 ") GetColorSurfRGBA;
 		const Quantity_ColorRGBA & GetColorSurfRGBA();
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
+		/****** XCAFPrs_Style::IsEmpty ******/
+		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -887,8 +887,8 @@ Return true if style is empty - does not override any properties.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: bc0bb14527a436f5e61f4f2840f337dd ****/
+		/****** XCAFPrs_Style::IsEqual ******/
+		/****** md5 signature: bc0bb14527a436f5e61f4f2840f337dd ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -905,8 +905,8 @@ Returns true if styles are the same methods for using style as key in maps.
 ") IsEqual;
 		Standard_Boolean IsEqual(const XCAFPrs_Style & theOther);
 
-		/****************** IsSetColorCurv ******************/
-		/**** md5 signature: 64313982bf697dffdbaa22ea5a964e21 ****/
+		/****** XCAFPrs_Style::IsSetColorCurv ******/
+		/****** md5 signature: 64313982bf697dffdbaa22ea5a964e21 ******/
 		%feature("compactdefaultargs") IsSetColorCurv;
 		%feature("autodoc", "Return
 -------
@@ -918,8 +918,8 @@ Return true if curve color has been defined.
 ") IsSetColorCurv;
 		Standard_Boolean IsSetColorCurv();
 
-		/****************** IsSetColorSurf ******************/
-		/**** md5 signature: d9778230338d66c28842ee9deaba02eb ****/
+		/****** XCAFPrs_Style::IsSetColorSurf ******/
+		/****** md5 signature: d9778230338d66c28842ee9deaba02eb ******/
 		%feature("compactdefaultargs") IsSetColorSurf;
 		%feature("autodoc", "Return
 -------
@@ -931,8 +931,8 @@ Return true if surface color has been defined.
 ") IsSetColorSurf;
 		Standard_Boolean IsSetColorSurf();
 
-		/****************** IsVisible ******************/
-		/**** md5 signature: d2de178c6bd2985a6f06b17107c0b3e4 ****/
+		/****** XCAFPrs_Style::IsVisible ******/
+		/****** md5 signature: d2de178c6bd2985a6f06b17107c0b3e4 ******/
 		%feature("compactdefaultargs") IsVisible;
 		%feature("autodoc", "Return
 -------
@@ -944,8 +944,8 @@ Manage visibility.
 ") IsVisible;
 		Standard_Boolean IsVisible();
 
-		/****************** Material ******************/
-		/**** md5 signature: 88a9882f137bb7b5c54ec36089272083 ****/
+		/****** XCAFPrs_Style::Material ******/
+		/****** md5 signature: 88a9882f137bb7b5c54ec36089272083 ******/
 		%feature("compactdefaultargs") Material;
 		%feature("autodoc", "Return
 -------
@@ -957,8 +957,8 @@ Return material.
 ") Material;
 		const opencascade::handle<XCAFDoc_VisMaterial> & Material();
 
-		/****************** SetColorCurv ******************/
-		/**** md5 signature: 2e698f922d193bf6b1a67515dc2ebc31 ****/
+		/****** XCAFPrs_Style::SetColorCurv ******/
+		/****** md5 signature: 2e698f922d193bf6b1a67515dc2ebc31 ******/
 		%feature("compactdefaultargs") SetColorCurv;
 		%feature("autodoc", "
 Parameters
@@ -975,8 +975,8 @@ Set curve color.
 ") SetColorCurv;
 		void SetColorCurv(const Quantity_Color & col);
 
-		/****************** SetColorSurf ******************/
-		/**** md5 signature: e9eab2473a29158ea5b9c596748c7881 ****/
+		/****** XCAFPrs_Style::SetColorSurf ******/
+		/****** md5 signature: e9eab2473a29158ea5b9c596748c7881 ******/
 		%feature("compactdefaultargs") SetColorSurf;
 		%feature("autodoc", "
 Parameters
@@ -993,8 +993,8 @@ Set surface color.
 ") SetColorSurf;
 		void SetColorSurf(const Quantity_Color & theColor);
 
-		/****************** SetColorSurf ******************/
-		/**** md5 signature: 9a15c6ee293d6149e1a723c4eb5768eb ****/
+		/****** XCAFPrs_Style::SetColorSurf ******/
+		/****** md5 signature: 9a15c6ee293d6149e1a723c4eb5768eb ******/
 		%feature("compactdefaultargs") SetColorSurf;
 		%feature("autodoc", "
 Parameters
@@ -1011,8 +1011,8 @@ Set surface color.
 ") SetColorSurf;
 		void SetColorSurf(const Quantity_ColorRGBA & theColor);
 
-		/****************** SetMaterial ******************/
-		/**** md5 signature: 1f981215aea2218b6425fee7eadb5e93 ****/
+		/****** XCAFPrs_Style::SetMaterial ******/
+		/****** md5 signature: 1f981215aea2218b6425fee7eadb5e93 ******/
 		%feature("compactdefaultargs") SetMaterial;
 		%feature("autodoc", "
 Parameters
@@ -1029,8 +1029,8 @@ Set material.
 ") SetMaterial;
 		void SetMaterial(const opencascade::handle<XCAFDoc_VisMaterial> & theMaterial);
 
-		/****************** SetVisibility ******************/
-		/**** md5 signature: 71f6f1775dc0a92e7f83855c46ebf1b8 ****/
+		/****** XCAFPrs_Style::SetVisibility ******/
+		/****** md5 signature: 71f6f1775dc0a92e7f83855c46ebf1b8 ******/
 		%feature("compactdefaultargs") SetVisibility;
 		%feature("autodoc", "
 Parameters
@@ -1047,8 +1047,8 @@ Assign visibility.
 ") SetVisibility;
 		void SetVisibility(const Standard_Boolean theVisibility);
 
-		/****************** UnSetColorCurv ******************/
-		/**** md5 signature: 9be030dda02ca97eff5127a9e3cee728 ****/
+		/****** XCAFPrs_Style::UnSetColorCurv ******/
+		/****** md5 signature: 9be030dda02ca97eff5127a9e3cee728 ******/
 		%feature("compactdefaultargs") UnSetColorCurv;
 		%feature("autodoc", "Return
 -------
@@ -1060,8 +1060,8 @@ Manage curve color setting.
 ") UnSetColorCurv;
 		void UnSetColorCurv();
 
-		/****************** UnSetColorSurf ******************/
-		/**** md5 signature: 0529b14576d6cd5e89114f6c947f96ce ****/
+		/****** XCAFPrs_Style::UnSetColorSurf ******/
+		/****** md5 signature: 0529b14576d6cd5e89114f6c947f96ce ******/
 		%feature("compactdefaultargs") UnSetColorSurf;
 		%feature("autodoc", "Return
 -------
@@ -1101,8 +1101,8 @@ def __eq__(self, right):
 ************************/
 class XCAFPrs_Texture : public Graphic3d_Texture2D {
 	public:
-		/****************** XCAFPrs_Texture ******************/
-		/**** md5 signature: 000bd876aad38ca74535015d5e9463d7 ****/
+		/****** XCAFPrs_Texture::XCAFPrs_Texture ******/
+		/****** md5 signature: 000bd876aad38ca74535015d5e9463d7 ******/
 		%feature("compactdefaultargs") XCAFPrs_Texture;
 		%feature("autodoc", "
 Parameters
@@ -1120,8 +1120,8 @@ Constructor.
 ") XCAFPrs_Texture;
 		 XCAFPrs_Texture(const opencascade::handle<Image_Texture> & theImageSource, const Graphic3d_TextureUnit theUnit);
 
-		/****************** GetCompressedImage ******************/
-		/**** md5 signature: bad0c95151f5a884e9dbc72217977538 ****/
+		/****** XCAFPrs_Texture::GetCompressedImage ******/
+		/****** md5 signature: bad0c95151f5a884e9dbc72217977538 ******/
 		%feature("compactdefaultargs") GetCompressedImage;
 		%feature("autodoc", "
 Parameters
@@ -1138,8 +1138,8 @@ Image reader.
 ") GetCompressedImage;
 		virtual opencascade::handle<Image_CompressedPixMap> GetCompressedImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
-		/****************** GetImage ******************/
-		/**** md5 signature: 98e90e03819b0bd5f7f8f4733cc9ed0c ****/
+		/****** XCAFPrs_Texture::GetImage ******/
+		/****** md5 signature: 98e90e03819b0bd5f7f8f4733cc9ed0c ******/
 		%feature("compactdefaultargs") GetImage;
 		%feature("autodoc", "
 Parameters
@@ -1156,8 +1156,8 @@ Image reader.
 ") GetImage;
 		virtual opencascade::handle<Image_PixMap> GetImage(const opencascade::handle<Image_SupportedFormats> & theSupported);
 
-		/****************** GetImageSource ******************/
-		/**** md5 signature: c24f99a1f3e5bf7521b240aa232d6d28 ****/
+		/****** XCAFPrs_Texture::GetImageSource ******/
+		/****** md5 signature: c24f99a1f3e5bf7521b240aa232d6d28 ******/
 		%feature("compactdefaultargs") GetImageSource;
 		%feature("autodoc", "Return
 -------

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BNDDOCSTRING
 "Bnd module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_bnd.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_bnd.html"
 %enddef
 %module (package="OCC.Core", docstring=BNDDOCSTRING) Bnd
 
@@ -102,8 +102,8 @@ typedef NCollection_Array1<Bnd_Sphere> Bnd_Array1OfSphere;
 ****************/
 class Bnd_B2d {
 	public:
-		/****************** Bnd_B2d ******************/
-		/**** md5 signature: 05a153cc9a0364ca513b5e6967e6a5da ****/
+		/****** Bnd_B2d::Bnd_B2d ******/
+		/****** md5 signature: 05a153cc9a0364ca513b5e6967e6a5da ******/
 		%feature("compactdefaultargs") Bnd_B2d;
 		%feature("autodoc", "Return
 -------
@@ -115,8 +115,8 @@ Empty constructor.
 ") Bnd_B2d;
 		 Bnd_B2d();
 
-		/****************** Bnd_B2d ******************/
-		/**** md5 signature: 17c0f6ccddd56941af01972030df2ef0 ****/
+		/****** Bnd_B2d::Bnd_B2d ******/
+		/****** md5 signature: 17c0f6ccddd56941af01972030df2ef0 ******/
 		%feature("compactdefaultargs") Bnd_B2d;
 		%feature("autodoc", "
 Parameters
@@ -134,8 +134,8 @@ Constructor.
 ") Bnd_B2d;
 		 Bnd_B2d(const gp_XY & theCenter, const gp_XY & theHSize);
 
-		/****************** Add ******************/
-		/**** md5 signature: 5a41b83e8ddc3a1a1cd39a55664162f1 ****/
+		/****** Bnd_B2d::Add ******/
+		/****** md5 signature: 5a41b83e8ddc3a1a1cd39a55664162f1 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -152,8 +152,8 @@ Update the box by a point.
 ") Add;
 		void Add(const gp_XY & thePnt);
 
-		/****************** Add ******************/
-		/**** md5 signature: fb47cc9ae52067b7096ec0cb90c2918b ****/
+		/****** Bnd_B2d::Add ******/
+		/****** md5 signature: fb47cc9ae52067b7096ec0cb90c2918b ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -170,8 +170,8 @@ Update the box by a point.
 ") Add;
 		void Add(const gp_Pnt2d & thePnt);
 
-		/****************** Add ******************/
-		/**** md5 signature: e289c685a30a7d3b0627615ece9fc885 ****/
+		/****** Bnd_B2d::Add ******/
+		/****** md5 signature: e289c685a30a7d3b0627615ece9fc885 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -188,8 +188,8 @@ Update the box by another box.
 ") Add;
 		void Add(const Bnd_B2d & theBox);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Bnd_B2d::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -201,8 +201,8 @@ Reset the box data.
 ") Clear;
 		void Clear();
 
-		/****************** CornerMax ******************/
-		/**** md5 signature: 1784dd584e8cfc31d3728e09a86439e2 ****/
+		/****** Bnd_B2d::CornerMax ******/
+		/****** md5 signature: 1784dd584e8cfc31d3728e09a86439e2 ******/
 		%feature("compactdefaultargs") CornerMax;
 		%feature("autodoc", "Return
 -------
@@ -214,8 +214,8 @@ Query a box corner: (center + hsize). you must make sure that the box is not voi
 ") CornerMax;
 		gp_XY CornerMax();
 
-		/****************** CornerMin ******************/
-		/**** md5 signature: 8b095240ce7231f536a8f6e8d516be6d ****/
+		/****** Bnd_B2d::CornerMin ******/
+		/****** md5 signature: 8b095240ce7231f536a8f6e8d516be6d ******/
 		%feature("compactdefaultargs") CornerMin;
 		%feature("autodoc", "Return
 -------
@@ -227,8 +227,8 @@ Query a box corner: (center - hsize). you must make sure that the box is not voi
 ") CornerMin;
 		gp_XY CornerMin();
 
-		/****************** Enlarge ******************/
-		/**** md5 signature: 321829e5514bc3ec051eaf36066b1620 ****/
+		/****** Bnd_B2d::Enlarge ******/
+		/****** md5 signature: 321829e5514bc3ec051eaf36066b1620 ******/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "
 Parameters
@@ -245,8 +245,8 @@ Extend the box by the absolute value of thediff.
 ") Enlarge;
 		void Enlarge(const Standard_Real theDiff);
 
-		/****************** IsIn ******************/
-		/**** md5 signature: c091f390e40f1292d67eceb838cf06c3 ****/
+		/****** Bnd_B2d::IsIn ******/
+		/****** md5 signature: c091f390e40f1292d67eceb838cf06c3 ******/
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "
 Parameters
@@ -263,8 +263,8 @@ Check that the box 'this' is inside the given box 'thebox'. returns true if 'thi
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B2d & theBox);
 
-		/****************** IsIn ******************/
-		/**** md5 signature: 3117362dd5da71da488979e19940f735 ****/
+		/****** Bnd_B2d::IsIn ******/
+		/****** md5 signature: 3117362dd5da71da488979e19940f735 ******/
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "
 Parameters
@@ -282,8 +282,8 @@ Check that the box 'this' is inside the given box 'thebox' transformed by 'thetr
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B2d & theBox, const gp_Trsf2d & theTrsf);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 48b93dd797eeb546fd3a80a4a2ca84e0 ****/
+		/****** Bnd_B2d::IsOut ******/
+		/****** md5 signature: 48b93dd797eeb546fd3a80a4a2ca84e0 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -300,8 +300,8 @@ Check the given point for the inclusion in the box. returns true if the point is
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & thePnt);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 7e5b89128cba75308e659a6defc8371a ****/
+		/****** Bnd_B2d::IsOut ******/
+		/****** md5 signature: 7e5b89128cba75308e659a6defc8371a ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -320,8 +320,8 @@ Check a circle for the intersection with the current box. returns true if there 
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & theCenter, const Standard_Real theRadius, const Standard_Boolean isCircleHollow = Standard_False);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 3efb653c8dc72246420846203eea1273 ****/
+		/****** Bnd_B2d::IsOut ******/
+		/****** md5 signature: 3efb653c8dc72246420846203eea1273 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -338,8 +338,8 @@ Check the given box for the intersection with the current box. returns true if t
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B2d & theOtherBox);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 17a8b8e51727f4ca60578072d43469ce ****/
+		/****** Bnd_B2d::IsOut ******/
+		/****** md5 signature: 17a8b8e51727f4ca60578072d43469ce ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -357,8 +357,8 @@ Check the given box oriented by the given transformation for the intersection wi
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B2d & theOtherBox, const gp_Trsf2d & theTrsf);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: c77260c57f172e19b7fad4eb2644fd1b ****/
+		/****** Bnd_B2d::IsOut ******/
+		/****** md5 signature: c77260c57f172e19b7fad4eb2644fd1b ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -375,8 +375,8 @@ Check the given line for the intersection with the current box. returns true if 
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax2d & theLine);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: ada8aa32f1aad828e603480ce3ff6843 ****/
+		/****** Bnd_B2d::IsOut ******/
+		/****** md5 signature: ada8aa32f1aad828e603480ce3ff6843 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -394,8 +394,8 @@ Check the segment defined by the couple of input points for the intersection wit
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & theP0, const gp_XY & theP1);
 
-		/****************** IsVoid ******************/
-		/**** md5 signature: 471af316c61141ba4fc7aec86f38760a ****/
+		/****** Bnd_B2d::IsVoid ******/
+		/****** md5 signature: 471af316c61141ba4fc7aec86f38760a ******/
 		%feature("compactdefaultargs") IsVoid;
 		%feature("autodoc", "Return
 -------
@@ -407,8 +407,8 @@ Returns true if the box is void (non-initialized).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
-		/****************** Limit ******************/
-		/**** md5 signature: 26119e1da9381e96c05dac51ecd1771d ****/
+		/****** Bnd_B2d::Limit ******/
+		/****** md5 signature: 26119e1da9381e96c05dac51ecd1771d ******/
 		%feature("compactdefaultargs") Limit;
 		%feature("autodoc", "
 Parameters
@@ -425,8 +425,8 @@ Limit the box by the internals of theotherbox. returns true if the limitation ta
 ") Limit;
 		Standard_Boolean Limit(const Bnd_B2d & theOtherBox);
 
-		/****************** SetCenter ******************/
-		/**** md5 signature: 41a8b8fdf5b972f76105a79658b692fb ****/
+		/****** Bnd_B2d::SetCenter ******/
+		/****** md5 signature: 41a8b8fdf5b972f76105a79658b692fb ******/
 		%feature("compactdefaultargs") SetCenter;
 		%feature("autodoc", "
 Parameters
@@ -443,8 +443,8 @@ Set the center coordinates.
 ") SetCenter;
 		void SetCenter(const gp_XY & theCenter);
 
-		/****************** SetHSize ******************/
-		/**** md5 signature: 846be3e6c71e2aec529678889adc7fa9 ****/
+		/****** Bnd_B2d::SetHSize ******/
+		/****** md5 signature: 846be3e6c71e2aec529678889adc7fa9 ******/
 		%feature("compactdefaultargs") SetHSize;
 		%feature("autodoc", "
 Parameters
@@ -461,8 +461,8 @@ Set the hsize (half-diagonal) coordinates. all components of thehsize must be no
 ") SetHSize;
 		void SetHSize(const gp_XY & theHSize);
 
-		/****************** SquareExtent ******************/
-		/**** md5 signature: f26f4f9c0289ab73c82a48183db937a6 ****/
+		/****** Bnd_B2d::SquareExtent ******/
+		/****** md5 signature: f26f4f9c0289ab73c82a48183db937a6 ******/
 		%feature("compactdefaultargs") SquareExtent;
 		%feature("autodoc", "Return
 -------
@@ -474,8 +474,8 @@ Query the square diagonal. if the box is void (see method isvoid()) then a very 
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
-		/****************** Transformed ******************/
-		/**** md5 signature: d5a8b9e4551432e6f8ecaa019e4a6d02 ****/
+		/****** Bnd_B2d::Transformed ******/
+		/****** md5 signature: d5a8b9e4551432e6f8ecaa019e4a6d02 ******/
 		%feature("compactdefaultargs") Transformed;
 		%feature("autodoc", "
 Parameters
@@ -506,8 +506,8 @@ Transform the bounding box with the given transformation. the resulting box will
 ****************/
 class Bnd_B2f {
 	public:
-		/****************** Bnd_B2f ******************/
-		/**** md5 signature: a12513a02a694b42fe55f996d7ec05b4 ****/
+		/****** Bnd_B2f::Bnd_B2f ******/
+		/****** md5 signature: a12513a02a694b42fe55f996d7ec05b4 ******/
 		%feature("compactdefaultargs") Bnd_B2f;
 		%feature("autodoc", "Return
 -------
@@ -519,8 +519,8 @@ Empty constructor.
 ") Bnd_B2f;
 		 Bnd_B2f();
 
-		/****************** Bnd_B2f ******************/
-		/**** md5 signature: 28163395c311e95645f15de688091b62 ****/
+		/****** Bnd_B2f::Bnd_B2f ******/
+		/****** md5 signature: 28163395c311e95645f15de688091b62 ******/
 		%feature("compactdefaultargs") Bnd_B2f;
 		%feature("autodoc", "
 Parameters
@@ -538,8 +538,8 @@ Constructor.
 ") Bnd_B2f;
 		 Bnd_B2f(const gp_XY & theCenter, const gp_XY & theHSize);
 
-		/****************** Add ******************/
-		/**** md5 signature: 5a41b83e8ddc3a1a1cd39a55664162f1 ****/
+		/****** Bnd_B2f::Add ******/
+		/****** md5 signature: 5a41b83e8ddc3a1a1cd39a55664162f1 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -556,8 +556,8 @@ Update the box by a point.
 ") Add;
 		void Add(const gp_XY & thePnt);
 
-		/****************** Add ******************/
-		/**** md5 signature: fb47cc9ae52067b7096ec0cb90c2918b ****/
+		/****** Bnd_B2f::Add ******/
+		/****** md5 signature: fb47cc9ae52067b7096ec0cb90c2918b ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -574,8 +574,8 @@ Update the box by a point.
 ") Add;
 		void Add(const gp_Pnt2d & thePnt);
 
-		/****************** Add ******************/
-		/**** md5 signature: 0e6f8cf7d7789e610f8bcd27bbe067ff ****/
+		/****** Bnd_B2f::Add ******/
+		/****** md5 signature: 0e6f8cf7d7789e610f8bcd27bbe067ff ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -592,8 +592,8 @@ Update the box by another box.
 ") Add;
 		void Add(const Bnd_B2f & theBox);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Bnd_B2f::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -605,8 +605,8 @@ Reset the box data.
 ") Clear;
 		void Clear();
 
-		/****************** CornerMax ******************/
-		/**** md5 signature: 1784dd584e8cfc31d3728e09a86439e2 ****/
+		/****** Bnd_B2f::CornerMax ******/
+		/****** md5 signature: 1784dd584e8cfc31d3728e09a86439e2 ******/
 		%feature("compactdefaultargs") CornerMax;
 		%feature("autodoc", "Return
 -------
@@ -618,8 +618,8 @@ Query a box corner: (center + hsize). you must make sure that the box is not voi
 ") CornerMax;
 		gp_XY CornerMax();
 
-		/****************** CornerMin ******************/
-		/**** md5 signature: 8b095240ce7231f536a8f6e8d516be6d ****/
+		/****** Bnd_B2f::CornerMin ******/
+		/****** md5 signature: 8b095240ce7231f536a8f6e8d516be6d ******/
 		%feature("compactdefaultargs") CornerMin;
 		%feature("autodoc", "Return
 -------
@@ -631,8 +631,8 @@ Query a box corner: (center - hsize). you must make sure that the box is not voi
 ") CornerMin;
 		gp_XY CornerMin();
 
-		/****************** Enlarge ******************/
-		/**** md5 signature: 321829e5514bc3ec051eaf36066b1620 ****/
+		/****** Bnd_B2f::Enlarge ******/
+		/****** md5 signature: 321829e5514bc3ec051eaf36066b1620 ******/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "
 Parameters
@@ -649,8 +649,8 @@ Extend the box by the absolute value of thediff.
 ") Enlarge;
 		void Enlarge(const Standard_Real theDiff);
 
-		/****************** IsIn ******************/
-		/**** md5 signature: 80f43a0cf5df9126a456ea7cfaeb1e12 ****/
+		/****** Bnd_B2f::IsIn ******/
+		/****** md5 signature: 80f43a0cf5df9126a456ea7cfaeb1e12 ******/
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "
 Parameters
@@ -667,8 +667,8 @@ Check that the box 'this' is inside the given box 'thebox'. returns true if 'thi
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B2f & theBox);
 
-		/****************** IsIn ******************/
-		/**** md5 signature: c776c579366bf15500e8c2b58f87cc1c ****/
+		/****** Bnd_B2f::IsIn ******/
+		/****** md5 signature: c776c579366bf15500e8c2b58f87cc1c ******/
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "
 Parameters
@@ -686,8 +686,8 @@ Check that the box 'this' is inside the given box 'thebox' transformed by 'thetr
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B2f & theBox, const gp_Trsf2d & theTrsf);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 48b93dd797eeb546fd3a80a4a2ca84e0 ****/
+		/****** Bnd_B2f::IsOut ******/
+		/****** md5 signature: 48b93dd797eeb546fd3a80a4a2ca84e0 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -704,8 +704,8 @@ Check the given point for the inclusion in the box. returns true if the point is
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & thePnt);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 7e5b89128cba75308e659a6defc8371a ****/
+		/****** Bnd_B2f::IsOut ******/
+		/****** md5 signature: 7e5b89128cba75308e659a6defc8371a ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -724,8 +724,8 @@ Check a circle for the intersection with the current box. returns true if there 
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & theCenter, const Standard_Real theRadius, const Standard_Boolean isCircleHollow = Standard_False);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 9fc7759f5aec28ee60f32f1d24857da1 ****/
+		/****** Bnd_B2f::IsOut ******/
+		/****** md5 signature: 9fc7759f5aec28ee60f32f1d24857da1 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -742,8 +742,8 @@ Check the given box for the intersection with the current box. returns true if t
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B2f & theOtherBox);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 554b1f02376c7f46b6dd15c72ede7567 ****/
+		/****** Bnd_B2f::IsOut ******/
+		/****** md5 signature: 554b1f02376c7f46b6dd15c72ede7567 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -761,8 +761,8 @@ Check the given box oriented by the given transformation for the intersection wi
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B2f & theOtherBox, const gp_Trsf2d & theTrsf);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: c77260c57f172e19b7fad4eb2644fd1b ****/
+		/****** Bnd_B2f::IsOut ******/
+		/****** md5 signature: c77260c57f172e19b7fad4eb2644fd1b ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -779,8 +779,8 @@ Check the given line for the intersection with the current box. returns true if 
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax2d & theLine);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: ada8aa32f1aad828e603480ce3ff6843 ****/
+		/****** Bnd_B2f::IsOut ******/
+		/****** md5 signature: ada8aa32f1aad828e603480ce3ff6843 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -798,8 +798,8 @@ Check the segment defined by the couple of input points for the intersection wit
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & theP0, const gp_XY & theP1);
 
-		/****************** IsVoid ******************/
-		/**** md5 signature: 471af316c61141ba4fc7aec86f38760a ****/
+		/****** Bnd_B2f::IsVoid ******/
+		/****** md5 signature: 471af316c61141ba4fc7aec86f38760a ******/
 		%feature("compactdefaultargs") IsVoid;
 		%feature("autodoc", "Return
 -------
@@ -811,8 +811,8 @@ Returns true if the box is void (non-initialized).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
-		/****************** Limit ******************/
-		/**** md5 signature: 2e96cb9f9c5946fd77091ed749cba3e4 ****/
+		/****** Bnd_B2f::Limit ******/
+		/****** md5 signature: 2e96cb9f9c5946fd77091ed749cba3e4 ******/
 		%feature("compactdefaultargs") Limit;
 		%feature("autodoc", "
 Parameters
@@ -829,8 +829,8 @@ Limit the box by the internals of theotherbox. returns true if the limitation ta
 ") Limit;
 		Standard_Boolean Limit(const Bnd_B2f & theOtherBox);
 
-		/****************** SetCenter ******************/
-		/**** md5 signature: 41a8b8fdf5b972f76105a79658b692fb ****/
+		/****** Bnd_B2f::SetCenter ******/
+		/****** md5 signature: 41a8b8fdf5b972f76105a79658b692fb ******/
 		%feature("compactdefaultargs") SetCenter;
 		%feature("autodoc", "
 Parameters
@@ -847,8 +847,8 @@ Set the center coordinates.
 ") SetCenter;
 		void SetCenter(const gp_XY & theCenter);
 
-		/****************** SetHSize ******************/
-		/**** md5 signature: 846be3e6c71e2aec529678889adc7fa9 ****/
+		/****** Bnd_B2f::SetHSize ******/
+		/****** md5 signature: 846be3e6c71e2aec529678889adc7fa9 ******/
 		%feature("compactdefaultargs") SetHSize;
 		%feature("autodoc", "
 Parameters
@@ -865,8 +865,8 @@ Set the hsize (half-diagonal) coordinates. all components of thehsize must be no
 ") SetHSize;
 		void SetHSize(const gp_XY & theHSize);
 
-		/****************** SquareExtent ******************/
-		/**** md5 signature: f26f4f9c0289ab73c82a48183db937a6 ****/
+		/****** Bnd_B2f::SquareExtent ******/
+		/****** md5 signature: f26f4f9c0289ab73c82a48183db937a6 ******/
 		%feature("compactdefaultargs") SquareExtent;
 		%feature("autodoc", "Return
 -------
@@ -878,8 +878,8 @@ Query the square diagonal. if the box is void (see method isvoid()) then a very 
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
-		/****************** Transformed ******************/
-		/**** md5 signature: 5f9413beb7d8b1fce20f0c331d05fa3f ****/
+		/****** Bnd_B2f::Transformed ******/
+		/****** md5 signature: 5f9413beb7d8b1fce20f0c331d05fa3f ******/
 		%feature("compactdefaultargs") Transformed;
 		%feature("autodoc", "
 Parameters
@@ -910,8 +910,8 @@ Transform the bounding box with the given transformation. the resulting box will
 ****************/
 class Bnd_B3d {
 	public:
-		/****************** Bnd_B3d ******************/
-		/**** md5 signature: c716f51e2a145210c8940ea886dd7c16 ****/
+		/****** Bnd_B3d::Bnd_B3d ******/
+		/****** md5 signature: c716f51e2a145210c8940ea886dd7c16 ******/
 		%feature("compactdefaultargs") Bnd_B3d;
 		%feature("autodoc", "Return
 -------
@@ -923,8 +923,8 @@ Empty constructor.
 ") Bnd_B3d;
 		 Bnd_B3d();
 
-		/****************** Bnd_B3d ******************/
-		/**** md5 signature: e2040c30570b4b2cb5d8085510e9c95e ****/
+		/****** Bnd_B3d::Bnd_B3d ******/
+		/****** md5 signature: e2040c30570b4b2cb5d8085510e9c95e ******/
 		%feature("compactdefaultargs") Bnd_B3d;
 		%feature("autodoc", "
 Parameters
@@ -942,8 +942,8 @@ Constructor.
 ") Bnd_B3d;
 		 Bnd_B3d(const gp_XYZ & theCenter, const gp_XYZ & theHSize);
 
-		/****************** Add ******************/
-		/**** md5 signature: 4bb564ba66db61afbaab5d2355c0458e ****/
+		/****** Bnd_B3d::Add ******/
+		/****** md5 signature: 4bb564ba66db61afbaab5d2355c0458e ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -960,8 +960,8 @@ Update the box by a point.
 ") Add;
 		void Add(const gp_XYZ & thePnt);
 
-		/****************** Add ******************/
-		/**** md5 signature: a6a1f5636f85eb3cb786a035cac1298a ****/
+		/****** Bnd_B3d::Add ******/
+		/****** md5 signature: a6a1f5636f85eb3cb786a035cac1298a ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -978,8 +978,8 @@ Update the box by a point.
 ") Add;
 		void Add(const gp_Pnt & thePnt);
 
-		/****************** Add ******************/
-		/**** md5 signature: 331ca3351a2a0134eb1a5e205e7112ba ****/
+		/****** Bnd_B3d::Add ******/
+		/****** md5 signature: 331ca3351a2a0134eb1a5e205e7112ba ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -996,8 +996,8 @@ Update the box by another box.
 ") Add;
 		void Add(const Bnd_B3d & theBox);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Bnd_B3d::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1009,8 +1009,8 @@ Reset the box data.
 ") Clear;
 		void Clear();
 
-		/****************** CornerMax ******************/
-		/**** md5 signature: b53a8ce9727bd17e67a3d7ca6c71bf27 ****/
+		/****** Bnd_B3d::CornerMax ******/
+		/****** md5 signature: b53a8ce9727bd17e67a3d7ca6c71bf27 ******/
 		%feature("compactdefaultargs") CornerMax;
 		%feature("autodoc", "Return
 -------
@@ -1022,8 +1022,8 @@ Query the upper corner: (center + hsize). you must make sure that the box is not
 ") CornerMax;
 		gp_XYZ CornerMax();
 
-		/****************** CornerMin ******************/
-		/**** md5 signature: 50fe116283d2afe62e829147d21c8f48 ****/
+		/****** Bnd_B3d::CornerMin ******/
+		/****** md5 signature: 50fe116283d2afe62e829147d21c8f48 ******/
 		%feature("compactdefaultargs") CornerMin;
 		%feature("autodoc", "Return
 -------
@@ -1035,8 +1035,8 @@ Query the lower corner: (center - hsize). you must make sure that the box is not
 ") CornerMin;
 		gp_XYZ CornerMin();
 
-		/****************** Enlarge ******************/
-		/**** md5 signature: 321829e5514bc3ec051eaf36066b1620 ****/
+		/****** Bnd_B3d::Enlarge ******/
+		/****** md5 signature: 321829e5514bc3ec051eaf36066b1620 ******/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "
 Parameters
@@ -1053,8 +1053,8 @@ Extend the box by the absolute value of thediff.
 ") Enlarge;
 		void Enlarge(const Standard_Real theDiff);
 
-		/****************** IsIn ******************/
-		/**** md5 signature: ad082b8aa93a8141ea08b5fd81cd4942 ****/
+		/****** Bnd_B3d::IsIn ******/
+		/****** md5 signature: ad082b8aa93a8141ea08b5fd81cd4942 ******/
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "
 Parameters
@@ -1071,8 +1071,8 @@ Check that the box 'this' is inside the given box 'thebox'. returns true if 'thi
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B3d & theBox);
 
-		/****************** IsIn ******************/
-		/**** md5 signature: d163a00066ab25259fdcded548ff9487 ****/
+		/****** Bnd_B3d::IsIn ******/
+		/****** md5 signature: d163a00066ab25259fdcded548ff9487 ******/
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "
 Parameters
@@ -1090,8 +1090,8 @@ Check that the box 'this' is inside the given box 'thebox' transformed by 'thetr
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B3d & theBox, const gp_Trsf & theTrsf);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 77f148dd0ff43ac75607650d2b2ca5c6 ****/
+		/****** Bnd_B3d::IsOut ******/
+		/****** md5 signature: 77f148dd0ff43ac75607650d2b2ca5c6 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1108,8 +1108,8 @@ Check the given point for the inclusion in the box. returns true if the point is
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XYZ & thePnt);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 991259fb20604eb8484572991f5f852f ****/
+		/****** Bnd_B3d::IsOut ******/
+		/****** md5 signature: 991259fb20604eb8484572991f5f852f ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1128,8 +1128,8 @@ Check a sphere for the intersection with the current box. returns true if there 
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XYZ & theCenter, const Standard_Real theRadius, const Standard_Boolean isSphereHollow = Standard_False);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 36608ede356d85c57a7d843ab5185fd9 ****/
+		/****** Bnd_B3d::IsOut ******/
+		/****** md5 signature: 36608ede356d85c57a7d843ab5185fd9 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1146,8 +1146,8 @@ Check the given box for the intersection with the current box. returns true if t
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B3d & theOtherBox);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 124c734a96e8ecfd7bef2a61831976f2 ****/
+		/****** Bnd_B3d::IsOut ******/
+		/****** md5 signature: 124c734a96e8ecfd7bef2a61831976f2 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1165,8 +1165,8 @@ Check the given box oriented by the given transformation for the intersection wi
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B3d & theOtherBox, const gp_Trsf & theTrsf);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: d91c6eb2ee4af9f9c10c98c2980cae87 ****/
+		/****** Bnd_B3d::IsOut ******/
+		/****** md5 signature: d91c6eb2ee4af9f9c10c98c2980cae87 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1185,8 +1185,8 @@ Check the given line for the intersection with the current box. returns true if 
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax1 & theLine, const Standard_Boolean isRay = Standard_False, const Standard_Real theOverthickness = 0.0);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: e213dc75cd4024056d6783fd970900a8 ****/
+		/****** Bnd_B3d::IsOut ******/
+		/****** md5 signature: e213dc75cd4024056d6783fd970900a8 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1203,8 +1203,8 @@ Check the given plane for the intersection with the current box. returns true if
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax3 & thePlane);
 
-		/****************** IsVoid ******************/
-		/**** md5 signature: 471af316c61141ba4fc7aec86f38760a ****/
+		/****** Bnd_B3d::IsVoid ******/
+		/****** md5 signature: 471af316c61141ba4fc7aec86f38760a ******/
 		%feature("compactdefaultargs") IsVoid;
 		%feature("autodoc", "Return
 -------
@@ -1216,8 +1216,8 @@ Returns true if the box is void (non-initialized).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
-		/****************** Limit ******************/
-		/**** md5 signature: ae29e5f8ea98d06b64aca1e41ff98057 ****/
+		/****** Bnd_B3d::Limit ******/
+		/****** md5 signature: ae29e5f8ea98d06b64aca1e41ff98057 ******/
 		%feature("compactdefaultargs") Limit;
 		%feature("autodoc", "
 Parameters
@@ -1234,8 +1234,8 @@ Limit the box by the internals of theotherbox. returns true if the limitation ta
 ") Limit;
 		Standard_Boolean Limit(const Bnd_B3d & theOtherBox);
 
-		/****************** SetCenter ******************/
-		/**** md5 signature: 4480b29433441c49607a67067923d325 ****/
+		/****** Bnd_B3d::SetCenter ******/
+		/****** md5 signature: 4480b29433441c49607a67067923d325 ******/
 		%feature("compactdefaultargs") SetCenter;
 		%feature("autodoc", "
 Parameters
@@ -1252,8 +1252,8 @@ Set the center coordinates.
 ") SetCenter;
 		void SetCenter(const gp_XYZ & theCenter);
 
-		/****************** SetHSize ******************/
-		/**** md5 signature: 031cb1273b6bb49a7e7a82266bdf1e6b ****/
+		/****** Bnd_B3d::SetHSize ******/
+		/****** md5 signature: 031cb1273b6bb49a7e7a82266bdf1e6b ******/
 		%feature("compactdefaultargs") SetHSize;
 		%feature("autodoc", "
 Parameters
@@ -1270,8 +1270,8 @@ Set the hsize (half-diagonal) coordinates. all components of thehsize must be no
 ") SetHSize;
 		void SetHSize(const gp_XYZ & theHSize);
 
-		/****************** SquareExtent ******************/
-		/**** md5 signature: f26f4f9c0289ab73c82a48183db937a6 ****/
+		/****** Bnd_B3d::SquareExtent ******/
+		/****** md5 signature: f26f4f9c0289ab73c82a48183db937a6 ******/
 		%feature("compactdefaultargs") SquareExtent;
 		%feature("autodoc", "Return
 -------
@@ -1283,8 +1283,8 @@ Query the square diagonal. if the box is void (see method isvoid()) then a very 
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
-		/****************** Transformed ******************/
-		/**** md5 signature: b78cd089e43b13810f743901534ce5d0 ****/
+		/****** Bnd_B3d::Transformed ******/
+		/****** md5 signature: b78cd089e43b13810f743901534ce5d0 ******/
 		%feature("compactdefaultargs") Transformed;
 		%feature("autodoc", "
 Parameters
@@ -1315,8 +1315,8 @@ Transform the bounding box with the given transformation. the resulting box will
 ****************/
 class Bnd_B3f {
 	public:
-		/****************** Bnd_B3f ******************/
-		/**** md5 signature: 7ac75dcf75b83316efb3587b52c61985 ****/
+		/****** Bnd_B3f::Bnd_B3f ******/
+		/****** md5 signature: 7ac75dcf75b83316efb3587b52c61985 ******/
 		%feature("compactdefaultargs") Bnd_B3f;
 		%feature("autodoc", "Return
 -------
@@ -1328,8 +1328,8 @@ Empty constructor.
 ") Bnd_B3f;
 		 Bnd_B3f();
 
-		/****************** Bnd_B3f ******************/
-		/**** md5 signature: 413abb4d0731c8cb93381c3a6969033b ****/
+		/****** Bnd_B3f::Bnd_B3f ******/
+		/****** md5 signature: 413abb4d0731c8cb93381c3a6969033b ******/
 		%feature("compactdefaultargs") Bnd_B3f;
 		%feature("autodoc", "
 Parameters
@@ -1347,8 +1347,8 @@ Constructor.
 ") Bnd_B3f;
 		 Bnd_B3f(const gp_XYZ & theCenter, const gp_XYZ & theHSize);
 
-		/****************** Add ******************/
-		/**** md5 signature: 4bb564ba66db61afbaab5d2355c0458e ****/
+		/****** Bnd_B3f::Add ******/
+		/****** md5 signature: 4bb564ba66db61afbaab5d2355c0458e ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1365,8 +1365,8 @@ Update the box by a point.
 ") Add;
 		void Add(const gp_XYZ & thePnt);
 
-		/****************** Add ******************/
-		/**** md5 signature: a6a1f5636f85eb3cb786a035cac1298a ****/
+		/****** Bnd_B3f::Add ******/
+		/****** md5 signature: a6a1f5636f85eb3cb786a035cac1298a ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1383,8 +1383,8 @@ Update the box by a point.
 ") Add;
 		void Add(const gp_Pnt & thePnt);
 
-		/****************** Add ******************/
-		/**** md5 signature: fae70ede421e32eafed983497dd86c44 ****/
+		/****** Bnd_B3f::Add ******/
+		/****** md5 signature: fae70ede421e32eafed983497dd86c44 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1401,8 +1401,8 @@ Update the box by another box.
 ") Add;
 		void Add(const Bnd_B3f & theBox);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Bnd_B3f::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1414,8 +1414,8 @@ Reset the box data.
 ") Clear;
 		void Clear();
 
-		/****************** CornerMax ******************/
-		/**** md5 signature: b53a8ce9727bd17e67a3d7ca6c71bf27 ****/
+		/****** Bnd_B3f::CornerMax ******/
+		/****** md5 signature: b53a8ce9727bd17e67a3d7ca6c71bf27 ******/
 		%feature("compactdefaultargs") CornerMax;
 		%feature("autodoc", "Return
 -------
@@ -1427,8 +1427,8 @@ Query the upper corner: (center + hsize). you must make sure that the box is not
 ") CornerMax;
 		gp_XYZ CornerMax();
 
-		/****************** CornerMin ******************/
-		/**** md5 signature: 50fe116283d2afe62e829147d21c8f48 ****/
+		/****** Bnd_B3f::CornerMin ******/
+		/****** md5 signature: 50fe116283d2afe62e829147d21c8f48 ******/
 		%feature("compactdefaultargs") CornerMin;
 		%feature("autodoc", "Return
 -------
@@ -1440,8 +1440,8 @@ Query the lower corner: (center - hsize). you must make sure that the box is not
 ") CornerMin;
 		gp_XYZ CornerMin();
 
-		/****************** Enlarge ******************/
-		/**** md5 signature: 321829e5514bc3ec051eaf36066b1620 ****/
+		/****** Bnd_B3f::Enlarge ******/
+		/****** md5 signature: 321829e5514bc3ec051eaf36066b1620 ******/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "
 Parameters
@@ -1458,8 +1458,8 @@ Extend the box by the absolute value of thediff.
 ") Enlarge;
 		void Enlarge(const Standard_Real theDiff);
 
-		/****************** IsIn ******************/
-		/**** md5 signature: e026c88f1974400424c832426bf5ec41 ****/
+		/****** Bnd_B3f::IsIn ******/
+		/****** md5 signature: e026c88f1974400424c832426bf5ec41 ******/
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "
 Parameters
@@ -1476,8 +1476,8 @@ Check that the box 'this' is inside the given box 'thebox'. returns true if 'thi
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B3f & theBox);
 
-		/****************** IsIn ******************/
-		/**** md5 signature: bac81427b018657e242568d3bd11311a ****/
+		/****** Bnd_B3f::IsIn ******/
+		/****** md5 signature: bac81427b018657e242568d3bd11311a ******/
 		%feature("compactdefaultargs") IsIn;
 		%feature("autodoc", "
 Parameters
@@ -1495,8 +1495,8 @@ Check that the box 'this' is inside the given box 'thebox' transformed by 'thetr
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B3f & theBox, const gp_Trsf & theTrsf);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 77f148dd0ff43ac75607650d2b2ca5c6 ****/
+		/****** Bnd_B3f::IsOut ******/
+		/****** md5 signature: 77f148dd0ff43ac75607650d2b2ca5c6 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1513,8 +1513,8 @@ Check the given point for the inclusion in the box. returns true if the point is
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XYZ & thePnt);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 991259fb20604eb8484572991f5f852f ****/
+		/****** Bnd_B3f::IsOut ******/
+		/****** md5 signature: 991259fb20604eb8484572991f5f852f ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1533,8 +1533,8 @@ Check a sphere for the intersection with the current box. returns true if there 
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XYZ & theCenter, const Standard_Real theRadius, const Standard_Boolean isSphereHollow = Standard_False);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: ec21879a0e85422b918e364aee4e7ed1 ****/
+		/****** Bnd_B3f::IsOut ******/
+		/****** md5 signature: ec21879a0e85422b918e364aee4e7ed1 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1551,8 +1551,8 @@ Check the given box for the intersection with the current box. returns true if t
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B3f & theOtherBox);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 4e6289bb03e357679bc6b1d1146a96be ****/
+		/****** Bnd_B3f::IsOut ******/
+		/****** md5 signature: 4e6289bb03e357679bc6b1d1146a96be ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1570,8 +1570,8 @@ Check the given box oriented by the given transformation for the intersection wi
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B3f & theOtherBox, const gp_Trsf & theTrsf);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: d91c6eb2ee4af9f9c10c98c2980cae87 ****/
+		/****** Bnd_B3f::IsOut ******/
+		/****** md5 signature: d91c6eb2ee4af9f9c10c98c2980cae87 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1590,8 +1590,8 @@ Check the given line for the intersection with the current box. returns true if 
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax1 & theLine, const Standard_Boolean isRay = Standard_False, const Standard_Real theOverthickness = 0.0);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: e213dc75cd4024056d6783fd970900a8 ****/
+		/****** Bnd_B3f::IsOut ******/
+		/****** md5 signature: e213dc75cd4024056d6783fd970900a8 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -1608,8 +1608,8 @@ Check the given plane for the intersection with the current box. returns true if
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax3 & thePlane);
 
-		/****************** IsVoid ******************/
-		/**** md5 signature: 471af316c61141ba4fc7aec86f38760a ****/
+		/****** Bnd_B3f::IsVoid ******/
+		/****** md5 signature: 471af316c61141ba4fc7aec86f38760a ******/
 		%feature("compactdefaultargs") IsVoid;
 		%feature("autodoc", "Return
 -------
@@ -1621,8 +1621,8 @@ Returns true if the box is void (non-initialized).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
-		/****************** Limit ******************/
-		/**** md5 signature: 492a5258cedbfa5b5587d22bf1bdbf97 ****/
+		/****** Bnd_B3f::Limit ******/
+		/****** md5 signature: 492a5258cedbfa5b5587d22bf1bdbf97 ******/
 		%feature("compactdefaultargs") Limit;
 		%feature("autodoc", "
 Parameters
@@ -1639,8 +1639,8 @@ Limit the box by the internals of theotherbox. returns true if the limitation ta
 ") Limit;
 		Standard_Boolean Limit(const Bnd_B3f & theOtherBox);
 
-		/****************** SetCenter ******************/
-		/**** md5 signature: 4480b29433441c49607a67067923d325 ****/
+		/****** Bnd_B3f::SetCenter ******/
+		/****** md5 signature: 4480b29433441c49607a67067923d325 ******/
 		%feature("compactdefaultargs") SetCenter;
 		%feature("autodoc", "
 Parameters
@@ -1657,8 +1657,8 @@ Set the center coordinates.
 ") SetCenter;
 		void SetCenter(const gp_XYZ & theCenter);
 
-		/****************** SetHSize ******************/
-		/**** md5 signature: 031cb1273b6bb49a7e7a82266bdf1e6b ****/
+		/****** Bnd_B3f::SetHSize ******/
+		/****** md5 signature: 031cb1273b6bb49a7e7a82266bdf1e6b ******/
 		%feature("compactdefaultargs") SetHSize;
 		%feature("autodoc", "
 Parameters
@@ -1675,8 +1675,8 @@ Set the hsize (half-diagonal) coordinates. all components of thehsize must be no
 ") SetHSize;
 		void SetHSize(const gp_XYZ & theHSize);
 
-		/****************** SquareExtent ******************/
-		/**** md5 signature: f26f4f9c0289ab73c82a48183db937a6 ****/
+		/****** Bnd_B3f::SquareExtent ******/
+		/****** md5 signature: f26f4f9c0289ab73c82a48183db937a6 ******/
 		%feature("compactdefaultargs") SquareExtent;
 		%feature("autodoc", "Return
 -------
@@ -1688,8 +1688,8 @@ Query the square diagonal. if the box is void (see method isvoid()) then a very 
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
-		/****************** Transformed ******************/
-		/**** md5 signature: 9b00f2708ad3e2a9b03868d6f3a16ca5 ****/
+		/****** Bnd_B3f::Transformed ******/
+		/****** md5 signature: 9b00f2708ad3e2a9b03868d6f3a16ca5 ******/
 		%feature("compactdefaultargs") Transformed;
 		%feature("autodoc", "
 Parameters
@@ -1720,8 +1720,8 @@ Transform the bounding box with the given transformation. the resulting box will
 *************************/
 class Bnd_BoundSortBox {
 	public:
-		/****************** Bnd_BoundSortBox ******************/
-		/**** md5 signature: 432937775309e427743273a6bdbe335c ****/
+		/****** Bnd_BoundSortBox::Bnd_BoundSortBox ******/
+		/****** md5 signature: 432937775309e427743273a6bdbe335c ******/
 		%feature("compactdefaultargs") Bnd_BoundSortBox;
 		%feature("autodoc", "Return
 -------
@@ -1733,8 +1733,8 @@ Constructs an empty comparison algorithm for bounding boxes. the bounding boxes 
 ") Bnd_BoundSortBox;
 		 Bnd_BoundSortBox();
 
-		/****************** Add ******************/
-		/**** md5 signature: c11cd3957b9f1b070bd4a139bc72cc6d ****/
+		/****** Bnd_BoundSortBox::Add ******/
+		/****** md5 signature: c11cd3957b9f1b070bd4a139bc72cc6d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1752,8 +1752,8 @@ Adds the bounding box thebox at position boxindex in the array of boxes to be so
 ") Add;
 		void Add(const Bnd_Box & theBox, const Standard_Integer boxIndex);
 
-		/****************** Compare ******************/
-		/**** md5 signature: 69a2f5d307cbc61a4ae04451922de8ea ****/
+		/****** Bnd_BoundSortBox::Compare ******/
+		/****** md5 signature: 69a2f5d307cbc61a4ae04451922de8ea ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
@@ -1770,8 +1770,8 @@ Compares the bounding box thebox, with the set of bounding boxes to be sorted by
 ") Compare;
 		const TColStd_ListOfInteger & Compare(const Bnd_Box & theBox);
 
-		/****************** Compare ******************/
-		/**** md5 signature: bc068b36bfc32657d5d4d471cd5172bd ****/
+		/****** Bnd_BoundSortBox::Compare ******/
+		/****** md5 signature: bc068b36bfc32657d5d4d471cd5172bd ******/
 		%feature("compactdefaultargs") Compare;
 		%feature("autodoc", "
 Parameters
@@ -1788,8 +1788,8 @@ Compares the plane p with the set of bounding boxes to be sorted by this compari
 ") Compare;
 		const TColStd_ListOfInteger & Compare(const gp_Pln & P);
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
+		/****** Bnd_BoundSortBox::Destroy ******/
+		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "Return
 -------
@@ -1801,8 +1801,8 @@ No available documentation.
 ") Destroy;
 		void Destroy();
 
-		/****************** Dump ******************/
-		/**** md5 signature: 15b4b2e195645aebb43170ff7f15952a ****/
+		/****** Bnd_BoundSortBox::Dump ******/
+		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "Return
 -------
@@ -1814,8 +1814,8 @@ No available documentation.
 ") Dump;
 		void Dump();
 
-		/****************** Initialize ******************/
-		/**** md5 signature: dbb5dab5abfd063e114422a2e03ca032 ****/
+		/****** Bnd_BoundSortBox::Initialize ******/
+		/****** md5 signature: dbb5dab5abfd063e114422a2e03ca032 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -1833,8 +1833,8 @@ Initializes this comparison algorithm with - the set of bounding boxes setofbox.
 ") Initialize;
 		void Initialize(const Bnd_Box & CompleteBox, const opencascade::handle<Bnd_HArray1OfBox> & SetOfBox);
 
-		/****************** Initialize ******************/
-		/**** md5 signature: d9688715260aa4c9c4aebee632738183 ****/
+		/****** Bnd_BoundSortBox::Initialize ******/
+		/****** md5 signature: d9688715260aa4c9c4aebee632738183 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -1851,8 +1851,8 @@ Initializes this comparison algorithm with - the set of bounding boxes setofbox,
 ") Initialize;
 		void Initialize(const opencascade::handle<Bnd_HArray1OfBox> & SetOfBox);
 
-		/****************** Initialize ******************/
-		/**** md5 signature: 7b0c87c850b9c7ae88cab54c565bb25d ****/
+		/****** Bnd_BoundSortBox::Initialize ******/
+		/****** md5 signature: 7b0c87c850b9c7ae88cab54c565bb25d ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -1884,8 +1884,8 @@ Initializes this comparison algorithm, giving it only - the maximum number nbcom
 ****************/
 class Bnd_Box {
 	public:
-		/****************** Bnd_Box ******************/
-		/**** md5 signature: 1329baa12aa709d3897638f91bd6d327 ****/
+		/****** Bnd_Box::Bnd_Box ******/
+		/****** md5 signature: 1329baa12aa709d3897638f91bd6d327 ******/
 		%feature("compactdefaultargs") Bnd_Box;
 		%feature("autodoc", "Return
 -------
@@ -1897,8 +1897,8 @@ Creates an empty box. the constructed box is qualified void. its gap is null.
 ") Bnd_Box;
 		 Bnd_Box();
 
-		/****************** Bnd_Box ******************/
-		/**** md5 signature: e97cf06d6d1b2ccd51edf64dd6ab76e2 ****/
+		/****** Bnd_Box::Bnd_Box ******/
+		/****** md5 signature: e97cf06d6d1b2ccd51edf64dd6ab76e2 ******/
 		%feature("compactdefaultargs") Bnd_Box;
 		%feature("autodoc", "
 Parameters
@@ -1916,8 +1916,8 @@ Creates a bounding box, it contains: - minimum/maximum point of bounding box, th
 ") Bnd_Box;
 		 Bnd_Box(const gp_Pnt & theMin, const gp_Pnt & theMax);
 
-		/****************** Add ******************/
-		/**** md5 signature: f26c3b18c425c9af5e181dcf97365f7d ****/
+		/****** Bnd_Box::Add ******/
+		/****** md5 signature: f26c3b18c425c9af5e181dcf97365f7d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1934,8 +1934,8 @@ Adds the box <other> to <self>.
 ") Add;
 		void Add(const Bnd_Box & Other);
 
-		/****************** Add ******************/
-		/**** md5 signature: b714bfb888eecda75b87221b873365bd ****/
+		/****** Bnd_Box::Add ******/
+		/****** md5 signature: b714bfb888eecda75b87221b873365bd ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1952,8 +1952,8 @@ Adds a pnt to the box.
 ") Add;
 		void Add(const gp_Pnt & P);
 
-		/****************** Add ******************/
-		/**** md5 signature: 7e55d9c284ce09cd4dd63f85011cde45 ****/
+		/****** Bnd_Box::Add ******/
+		/****** md5 signature: 7e55d9c284ce09cd4dd63f85011cde45 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1971,8 +1971,8 @@ Extends <self> from the pnt <p> in the direction <d>.
 ") Add;
 		void Add(const gp_Pnt & P, const gp_Dir & D);
 
-		/****************** Add ******************/
-		/**** md5 signature: f5e67a29cde6a6d52768287ab5d77897 ****/
+		/****** Bnd_Box::Add ******/
+		/****** md5 signature: f5e67a29cde6a6d52768287ab5d77897 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1989,8 +1989,8 @@ Extends the box in the given direction, i.e. adds an half-line. the box may beco
 ") Add;
 		void Add(const gp_Dir & D);
 
-		/****************** CornerMax ******************/
-		/**** md5 signature: ba66cc3b9f07809e242d6acf3b7b399a ****/
+		/****** Bnd_Box::CornerMax ******/
+		/****** md5 signature: ba66cc3b9f07809e242d6acf3b7b399a ******/
 		%feature("compactdefaultargs") CornerMax;
 		%feature("autodoc", "Return
 -------
@@ -2002,8 +2002,8 @@ Returns the upper corner of this bounding box. the gap is included. if this boun
 ") CornerMax;
 		gp_Pnt CornerMax();
 
-		/****************** CornerMin ******************/
-		/**** md5 signature: 986487b80ef67f31dfd8ba819cb4b46e ****/
+		/****** Bnd_Box::CornerMin ******/
+		/****** md5 signature: 986487b80ef67f31dfd8ba819cb4b46e ******/
 		%feature("compactdefaultargs") CornerMin;
 		%feature("autodoc", "Return
 -------
@@ -2015,8 +2015,8 @@ Returns the lower corner of this bounding box. the gap is included. if this boun
 ") CornerMin;
 		gp_Pnt CornerMin();
 
-		/****************** Distance ******************/
-		/**** md5 signature: 1a425f6da349f7a4118ac35c1d8396bd ****/
+		/****** Bnd_Box::Distance ******/
+		/****** md5 signature: 1a425f6da349f7a4118ac35c1d8396bd ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -2033,8 +2033,8 @@ Computes the minimum distance between two boxes.
 ") Distance;
 		Standard_Real Distance(const Bnd_Box & Other);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 15b4b2e195645aebb43170ff7f15952a ****/
+		/****** Bnd_Box::Dump ******/
+		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "Return
 -------
@@ -2067,8 +2067,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** Enlarge ******************/
-		/**** md5 signature: b5dbc37ffece9eaee81e33bf3b715eef ****/
+		/****** Bnd_Box::Enlarge ******/
+		/****** md5 signature: b5dbc37ffece9eaee81e33bf3b715eef ******/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "
 Parameters
@@ -2085,8 +2085,8 @@ Enlarges the box with a tolerance value. (minvalues-abs(<tol>) and maxvalues+abs
 ") Enlarge;
 		void Enlarge(const Standard_Real Tol);
 
-		/****************** FinitePart ******************/
-		/**** md5 signature: b23462d45984e16bcf876321f08f3673 ****/
+		/****** Bnd_Box::FinitePart ******/
+		/****** md5 signature: b23462d45984e16bcf876321f08f3673 ******/
 		%feature("compactdefaultargs") FinitePart;
 		%feature("autodoc", "Return
 -------
@@ -2098,8 +2098,8 @@ Returns a finite part of an infinite bounding box (returns self if this is alrea
 ") FinitePart;
 		Bnd_Box FinitePart();
 
-		/****************** Get ******************/
-		/**** md5 signature: fdcfde34f207fdeac6d324f55d7a58eb ****/
+		/****** Bnd_Box::Get ******/
+		/****** md5 signature: fdcfde34f207fdeac6d324f55d7a58eb ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "
 Parameters
@@ -2120,8 +2120,8 @@ Returns the bounds of this bounding box. the gap is included. if this bounding b
 ") Get;
 		void Get(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetGap ******************/
-		/**** md5 signature: d6c52fd6b86efef444629668df8883f2 ****/
+		/****** Bnd_Box::GetGap ******/
+		/****** md5 signature: d6c52fd6b86efef444629668df8883f2 ******/
 		%feature("compactdefaultargs") GetGap;
 		%feature("autodoc", "Return
 -------
@@ -2133,8 +2133,8 @@ Returns the gap of this bounding box.
 ") GetGap;
 		Standard_Real GetGap();
 
-		/****************** HasFinitePart ******************/
-		/**** md5 signature: 6ad99adddd3d87ef1c65c750f8e0d220 ****/
+		/****** Bnd_Box::HasFinitePart ******/
+		/****** md5 signature: 6ad99adddd3d87ef1c65c750f8e0d220 ******/
 		%feature("compactdefaultargs") HasFinitePart;
 		%feature("autodoc", "Return
 -------
@@ -2167,8 +2167,8 @@ Init the object from a JSON string.
             Standard_Integer pos=2;
             return self->InitFromJson(s, pos);}
         };
-		/****************** IsOpen ******************/
-		/**** md5 signature: 49b225479601710d1c8888cb2f18ffcf ****/
+		/****** Bnd_Box::IsOpen ******/
+		/****** md5 signature: 49b225479601710d1c8888cb2f18ffcf ******/
 		%feature("compactdefaultargs") IsOpen;
 		%feature("autodoc", "Return
 -------
@@ -2180,8 +2180,8 @@ Returns true if this bounding box has at least one open direction.
 ") IsOpen;
 		Standard_Boolean IsOpen();
 
-		/****************** IsOpenXmax ******************/
-		/**** md5 signature: 5eb2255a5bab3f2bc582219e0faf64da ****/
+		/****** Bnd_Box::IsOpenXmax ******/
+		/****** md5 signature: 5eb2255a5bab3f2bc582219e0faf64da ******/
 		%feature("compactdefaultargs") IsOpenXmax;
 		%feature("autodoc", "Return
 -------
@@ -2193,8 +2193,8 @@ Returns true if this bounding box is open in the xmax direction.
 ") IsOpenXmax;
 		Standard_Boolean IsOpenXmax();
 
-		/****************** IsOpenXmin ******************/
-		/**** md5 signature: 4a3ade2dd87cecd20ab6184f8ecaf60f ****/
+		/****** Bnd_Box::IsOpenXmin ******/
+		/****** md5 signature: 4a3ade2dd87cecd20ab6184f8ecaf60f ******/
 		%feature("compactdefaultargs") IsOpenXmin;
 		%feature("autodoc", "Return
 -------
@@ -2206,8 +2206,8 @@ Returns true if this bounding box is open in the xmin direction.
 ") IsOpenXmin;
 		Standard_Boolean IsOpenXmin();
 
-		/****************** IsOpenYmax ******************/
-		/**** md5 signature: 8d1ec673e6124a1b526a06e1d5a0cfcb ****/
+		/****** Bnd_Box::IsOpenYmax ******/
+		/****** md5 signature: 8d1ec673e6124a1b526a06e1d5a0cfcb ******/
 		%feature("compactdefaultargs") IsOpenYmax;
 		%feature("autodoc", "Return
 -------
@@ -2219,8 +2219,8 @@ Returns true if this bounding box is open in the ymax direction.
 ") IsOpenYmax;
 		Standard_Boolean IsOpenYmax();
 
-		/****************** IsOpenYmin ******************/
-		/**** md5 signature: 127e30414ce069b633717ba26051232c ****/
+		/****** Bnd_Box::IsOpenYmin ******/
+		/****** md5 signature: 127e30414ce069b633717ba26051232c ******/
 		%feature("compactdefaultargs") IsOpenYmin;
 		%feature("autodoc", "Return
 -------
@@ -2232,8 +2232,8 @@ Returns true if this bounding box is open in the ymix direction.
 ") IsOpenYmin;
 		Standard_Boolean IsOpenYmin();
 
-		/****************** IsOpenZmax ******************/
-		/**** md5 signature: 0aeb25bdfc6d9155a40cd6f7296cd574 ****/
+		/****** Bnd_Box::IsOpenZmax ******/
+		/****** md5 signature: 0aeb25bdfc6d9155a40cd6f7296cd574 ******/
 		%feature("compactdefaultargs") IsOpenZmax;
 		%feature("autodoc", "Return
 -------
@@ -2245,8 +2245,8 @@ Returns true if this bounding box is open in the zmax direction.
 ") IsOpenZmax;
 		Standard_Boolean IsOpenZmax();
 
-		/****************** IsOpenZmin ******************/
-		/**** md5 signature: 5f71eec5d0881e37cb676487995acd94 ****/
+		/****** Bnd_Box::IsOpenZmin ******/
+		/****** md5 signature: 5f71eec5d0881e37cb676487995acd94 ******/
 		%feature("compactdefaultargs") IsOpenZmin;
 		%feature("autodoc", "Return
 -------
@@ -2258,8 +2258,8 @@ Returns true if this bounding box is open in the zmin direction.
 ") IsOpenZmin;
 		Standard_Boolean IsOpenZmin();
 
-		/****************** IsOut ******************/
-		/**** md5 signature: f348a24dbf7e40c755152f8a70e3187a ****/
+		/****** Bnd_Box::IsOut ******/
+		/****** md5 signature: f348a24dbf7e40c755152f8a70e3187a ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -2276,8 +2276,8 @@ Returns true if the pnt is out the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pnt & P);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 17652ecbd2ac3703da0006c5128dc63a ****/
+		/****** Bnd_Box::IsOut ******/
+		/****** md5 signature: 17652ecbd2ac3703da0006c5128dc63a ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -2294,8 +2294,8 @@ Returns false if the line intersects the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Lin & L);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 90ccbbde205392ec532b3171f3e59f37 ****/
+		/****** Bnd_Box::IsOut ******/
+		/****** md5 signature: 90ccbbde205392ec532b3171f3e59f37 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -2312,8 +2312,8 @@ Returns false if the plane intersects the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pln & P);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 80b9d1a0a52f6e56a8774d1bdf0ade38 ****/
+		/****** Bnd_Box::IsOut ******/
+		/****** md5 signature: 80b9d1a0a52f6e56a8774d1bdf0ade38 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -2330,8 +2330,8 @@ Returns false if the <box> intersects or is inside <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Box & Other);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 178d03e597d92d4cb58b27b941435df1 ****/
+		/****** Bnd_Box::IsOut ******/
+		/****** md5 signature: 178d03e597d92d4cb58b27b941435df1 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -2349,8 +2349,8 @@ Returns false if the transformed <box> intersects or is inside <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Box & Other, const gp_Trsf & T);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: bc2c0188a7939d0ab743d2dd96d12728 ****/
+		/****** Bnd_Box::IsOut ******/
+		/****** md5 signature: bc2c0188a7939d0ab743d2dd96d12728 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -2369,8 +2369,8 @@ Returns false if the transformed <box> intersects or is inside the transformed b
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Trsf & T1, const Bnd_Box & Other, const gp_Trsf & T2);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: d6a1e498867d5cdc9886a23004f4fd8c ****/
+		/****** Bnd_Box::IsOut ******/
+		/****** md5 signature: d6a1e498867d5cdc9886a23004f4fd8c ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -2389,8 +2389,8 @@ Returns false if the flat band lying between two parallel lines represented by t
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Dir & D);
 
-		/****************** IsThin ******************/
-		/**** md5 signature: 0254e00c3c2058c3088e4a3e19a6cd91 ****/
+		/****** Bnd_Box::IsThin ******/
+		/****** md5 signature: 0254e00c3c2058c3088e4a3e19a6cd91 ******/
 		%feature("compactdefaultargs") IsThin;
 		%feature("autodoc", "
 Parameters
@@ -2407,8 +2407,8 @@ Returns true if isxthin, isythin and iszthin are all true, i.e. if the box is th
 ") IsThin;
 		Standard_Boolean IsThin(const Standard_Real tol);
 
-		/****************** IsVoid ******************/
-		/**** md5 signature: 9aa2fb0e94327ea2b13fa6dbf2b30845 ****/
+		/****** Bnd_Box::IsVoid ******/
+		/****** md5 signature: 9aa2fb0e94327ea2b13fa6dbf2b30845 ******/
 		%feature("compactdefaultargs") IsVoid;
 		%feature("autodoc", "Return
 -------
@@ -2420,8 +2420,8 @@ Returns true if this bounding box is empty (void flag).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
-		/****************** IsWhole ******************/
-		/**** md5 signature: 0a8318ed765ec359e07b16b26f838d8e ****/
+		/****** Bnd_Box::IsWhole ******/
+		/****** md5 signature: 0a8318ed765ec359e07b16b26f838d8e ******/
 		%feature("compactdefaultargs") IsWhole;
 		%feature("autodoc", "Return
 -------
@@ -2433,8 +2433,8 @@ Returns true if this bounding box is infinite in all 6 directions (wholespace fl
 ") IsWhole;
 		Standard_Boolean IsWhole();
 
-		/****************** IsXThin ******************/
-		/**** md5 signature: dad1e5627442e4703d7b7ad8e0c74cdb ****/
+		/****** Bnd_Box::IsXThin ******/
+		/****** md5 signature: dad1e5627442e4703d7b7ad8e0c74cdb ******/
 		%feature("compactdefaultargs") IsXThin;
 		%feature("autodoc", "
 Parameters
@@ -2451,8 +2451,8 @@ True if xmax-xmin < tol.
 ") IsXThin;
 		Standard_Boolean IsXThin(const Standard_Real tol);
 
-		/****************** IsYThin ******************/
-		/**** md5 signature: 76bbc838755a83a7cd3d118ceea8aa53 ****/
+		/****** Bnd_Box::IsYThin ******/
+		/****** md5 signature: 76bbc838755a83a7cd3d118ceea8aa53 ******/
 		%feature("compactdefaultargs") IsYThin;
 		%feature("autodoc", "
 Parameters
@@ -2469,8 +2469,8 @@ True if ymax-ymin < tol.
 ") IsYThin;
 		Standard_Boolean IsYThin(const Standard_Real tol);
 
-		/****************** IsZThin ******************/
-		/**** md5 signature: c4fcc02c36e9759b78c1ceb3680d1b99 ****/
+		/****** Bnd_Box::IsZThin ******/
+		/****** md5 signature: c4fcc02c36e9759b78c1ceb3680d1b99 ******/
 		%feature("compactdefaultargs") IsZThin;
 		%feature("autodoc", "
 Parameters
@@ -2487,8 +2487,8 @@ True if zmax-zmin < tol.
 ") IsZThin;
 		Standard_Boolean IsZThin(const Standard_Real tol);
 
-		/****************** OpenXmax ******************/
-		/**** md5 signature: 011b84ef137ac1ffb641f2c1a9ac63e2 ****/
+		/****** Bnd_Box::OpenXmax ******/
+		/****** md5 signature: 011b84ef137ac1ffb641f2c1a9ac63e2 ******/
 		%feature("compactdefaultargs") OpenXmax;
 		%feature("autodoc", "Return
 -------
@@ -2500,8 +2500,8 @@ The box will be infinitely long in the xmax direction.
 ") OpenXmax;
 		void OpenXmax();
 
-		/****************** OpenXmin ******************/
-		/**** md5 signature: 0cb5023d1c04bb9f8d3afb0c66dc3550 ****/
+		/****** Bnd_Box::OpenXmin ******/
+		/****** md5 signature: 0cb5023d1c04bb9f8d3afb0c66dc3550 ******/
 		%feature("compactdefaultargs") OpenXmin;
 		%feature("autodoc", "Return
 -------
@@ -2513,8 +2513,8 @@ The box will be infinitely long in the xmin direction.
 ") OpenXmin;
 		void OpenXmin();
 
-		/****************** OpenYmax ******************/
-		/**** md5 signature: c73a2152a30be1e92daf823e7bff7593 ****/
+		/****** Bnd_Box::OpenYmax ******/
+		/****** md5 signature: c73a2152a30be1e92daf823e7bff7593 ******/
 		%feature("compactdefaultargs") OpenYmax;
 		%feature("autodoc", "Return
 -------
@@ -2526,8 +2526,8 @@ The box will be infinitely long in the ymax direction.
 ") OpenYmax;
 		void OpenYmax();
 
-		/****************** OpenYmin ******************/
-		/**** md5 signature: 4bcf368c4cb64b3755b7b035d5243c28 ****/
+		/****** Bnd_Box::OpenYmin ******/
+		/****** md5 signature: 4bcf368c4cb64b3755b7b035d5243c28 ******/
 		%feature("compactdefaultargs") OpenYmin;
 		%feature("autodoc", "Return
 -------
@@ -2539,8 +2539,8 @@ The box will be infinitely long in the ymin direction.
 ") OpenYmin;
 		void OpenYmin();
 
-		/****************** OpenZmax ******************/
-		/**** md5 signature: d434332e53f7c60ae595a0a8a5d503ef ****/
+		/****** Bnd_Box::OpenZmax ******/
+		/****** md5 signature: d434332e53f7c60ae595a0a8a5d503ef ******/
 		%feature("compactdefaultargs") OpenZmax;
 		%feature("autodoc", "Return
 -------
@@ -2552,8 +2552,8 @@ The box will be infinitely long in the zmax direction.
 ") OpenZmax;
 		void OpenZmax();
 
-		/****************** OpenZmin ******************/
-		/**** md5 signature: 91a795a7b168cc777c5c18df8e8b6cba ****/
+		/****** Bnd_Box::OpenZmin ******/
+		/****** md5 signature: 91a795a7b168cc777c5c18df8e8b6cba ******/
 		%feature("compactdefaultargs") OpenZmin;
 		%feature("autodoc", "Return
 -------
@@ -2565,8 +2565,8 @@ The box will be infinitely long in the zmin direction.
 ") OpenZmin;
 		void OpenZmin();
 
-		/****************** Set ******************/
-		/**** md5 signature: db883cf63ff497749765a1588d5f0509 ****/
+		/****** Bnd_Box::Set ******/
+		/****** md5 signature: db883cf63ff497749765a1588d5f0509 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2583,8 +2583,8 @@ Sets this bounding box so that it bounds - the point p. this involves first sett
 ") Set;
 		void Set(const gp_Pnt & P);
 
-		/****************** Set ******************/
-		/**** md5 signature: 945d824f108c7dfcd3451b159d172d3a ****/
+		/****** Bnd_Box::Set ******/
+		/****** md5 signature: 945d824f108c7dfcd3451b159d172d3a ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -2602,8 +2602,8 @@ Sets this bounding box so that it bounds the half-line defined by point p and di
 ") Set;
 		void Set(const gp_Pnt & P, const gp_Dir & D);
 
-		/****************** SetGap ******************/
-		/**** md5 signature: 76801688da89431c55a524bd10939352 ****/
+		/****** Bnd_Box::SetGap ******/
+		/****** md5 signature: 76801688da89431c55a524bd10939352 ******/
 		%feature("compactdefaultargs") SetGap;
 		%feature("autodoc", "
 Parameters
@@ -2620,8 +2620,8 @@ Set the gap of this bounding box to abs(tol).
 ") SetGap;
 		void SetGap(const Standard_Real Tol);
 
-		/****************** SetVoid ******************/
-		/**** md5 signature: 4e44fd52f6a76368c77b381fe1482a21 ****/
+		/****** Bnd_Box::SetVoid ******/
+		/****** md5 signature: 4e44fd52f6a76368c77b381fe1482a21 ******/
 		%feature("compactdefaultargs") SetVoid;
 		%feature("autodoc", "Return
 -------
@@ -2633,8 +2633,8 @@ Sets this bounding box so that it is empty. all points are outside a void box.
 ") SetVoid;
 		void SetVoid();
 
-		/****************** SetWhole ******************/
-		/**** md5 signature: a40c374c51cbe4a88447c330252451e9 ****/
+		/****** Bnd_Box::SetWhole ******/
+		/****** md5 signature: a40c374c51cbe4a88447c330252451e9 ******/
 		%feature("compactdefaultargs") SetWhole;
 		%feature("autodoc", "Return
 -------
@@ -2646,8 +2646,8 @@ Sets this bounding box so that it covers the whole of 3d space. it is infinitely
 ") SetWhole;
 		void SetWhole();
 
-		/****************** SquareExtent ******************/
-		/**** md5 signature: 25897f4ea5ade71bb993b0f1c6520c54 ****/
+		/****** Bnd_Box::SquareExtent ******/
+		/****** md5 signature: 25897f4ea5ade71bb993b0f1c6520c54 ******/
 		%feature("compactdefaultargs") SquareExtent;
 		%feature("autodoc", "Return
 -------
@@ -2659,8 +2659,8 @@ Computes the squared diagonal of me.
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
-		/****************** Transformed ******************/
-		/**** md5 signature: f8f0492ba8a9ca40222a08025b8b8169 ****/
+		/****** Bnd_Box::Transformed ******/
+		/****** md5 signature: f8f0492ba8a9ca40222a08025b8b8169 ******/
 		%feature("compactdefaultargs") Transformed;
 		%feature("autodoc", "
 Parameters
@@ -2677,8 +2677,8 @@ Returns a bounding box which is the result of applying the transformation t to t
 ") Transformed;
 		Bnd_Box Transformed(const gp_Trsf & T);
 
-		/****************** Update ******************/
-		/**** md5 signature: c3930f0ed60b103221ac4d75e154bf2d ****/
+		/****** Bnd_Box::Update ******/
+		/****** md5 signature: c3930f0ed60b103221ac4d75e154bf2d ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -2700,8 +2700,8 @@ Enlarges this bounding box, if required, so that it contains at least: - interva
 ") Update;
 		void Update(const Standard_Real aXmin, const Standard_Real aYmin, const Standard_Real aZmin, const Standard_Real aXmax, const Standard_Real aYmax, const Standard_Real aZmax);
 
-		/****************** Update ******************/
-		/**** md5 signature: e8dbda4a342ab03c84b2e5bee720848f ****/
+		/****** Bnd_Box::Update ******/
+		/****** md5 signature: e8dbda4a342ab03c84b2e5bee720848f ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -2752,8 +2752,8 @@ Adds a point of coordinates (x,y,z) to this bounding box.
 ******************/
 class Bnd_Box2d {
 	public:
-		/****************** Bnd_Box2d ******************/
-		/**** md5 signature: 18bdb98247d9982c9bb8ed597d8523b6 ****/
+		/****** Bnd_Box2d::Bnd_Box2d ******/
+		/****** md5 signature: 18bdb98247d9982c9bb8ed597d8523b6 ******/
 		%feature("compactdefaultargs") Bnd_Box2d;
 		%feature("autodoc", "Return
 -------
@@ -2765,8 +2765,8 @@ Creates an empty 2d bounding box. the constructed box is qualified void. its gap
 ") Bnd_Box2d;
 		 Bnd_Box2d();
 
-		/****************** Add ******************/
-		/**** md5 signature: 6f044365f28f5f8cfea2a8ef87b5d3d8 ****/
+		/****** Bnd_Box2d::Add ******/
+		/****** md5 signature: 6f044365f28f5f8cfea2a8ef87b5d3d8 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2783,8 +2783,8 @@ Adds the 2d box <other> to <self>.
 ") Add;
 		void Add(const Bnd_Box2d & Other);
 
-		/****************** Add ******************/
-		/**** md5 signature: 3345fd755af32d4addfbfcf462343566 ****/
+		/****** Bnd_Box2d::Add ******/
+		/****** md5 signature: 3345fd755af32d4addfbfcf462343566 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2801,8 +2801,8 @@ Adds the 2d point.
 ") Add;
 		void Add(const gp_Pnt2d & thePnt);
 
-		/****************** Add ******************/
-		/**** md5 signature: 766d7f8bedbbfef7f57fba624ff81449 ****/
+		/****** Bnd_Box2d::Add ******/
+		/****** md5 signature: 766d7f8bedbbfef7f57fba624ff81449 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2820,8 +2820,8 @@ Extends bounding box from thepnt in the direction thedir.
 ") Add;
 		void Add(const gp_Pnt2d & thePnt, const gp_Dir2d & theDir);
 
-		/****************** Add ******************/
-		/**** md5 signature: 17bccdca6c22026d7b33e0b35baadcc7 ****/
+		/****** Bnd_Box2d::Add ******/
+		/****** md5 signature: 17bccdca6c22026d7b33e0b35baadcc7 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -2838,8 +2838,8 @@ Extends the box in the given direction, i.e. adds a half-line. the box may becom
 ") Add;
 		void Add(const gp_Dir2d & D);
 
-		/****************** Dump ******************/
-		/**** md5 signature: 15b4b2e195645aebb43170ff7f15952a ****/
+		/****** Bnd_Box2d::Dump ******/
+		/****** md5 signature: 15b4b2e195645aebb43170ff7f15952a ******/
 		%feature("compactdefaultargs") Dump;
 		%feature("autodoc", "Return
 -------
@@ -2851,8 +2851,8 @@ No available documentation.
 ") Dump;
 		void Dump();
 
-		/****************** Enlarge ******************/
-		/**** md5 signature: d42b828f55c3eec07d633e1786debcb8 ****/
+		/****** Bnd_Box2d::Enlarge ******/
+		/****** md5 signature: d42b828f55c3eec07d633e1786debcb8 ******/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "
 Parameters
@@ -2869,8 +2869,8 @@ Enlarges the box with a tolerance value. this means that the minimum values of i
 ") Enlarge;
 		void Enlarge(const Standard_Real theTol);
 
-		/****************** Get ******************/
-		/**** md5 signature: 4f65ca439016927ed6232461d417c140 ****/
+		/****** Bnd_Box2d::Get ******/
+		/****** md5 signature: 4f65ca439016927ed6232461d417c140 ******/
 		%feature("compactdefaultargs") Get;
 		%feature("autodoc", "
 Parameters
@@ -2889,8 +2889,8 @@ Returns the bounds of this 2d bounding box. the gap is included. if this boundin
 ") Get;
 		void Get(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetGap ******************/
-		/**** md5 signature: 6750af4846e7c73d2306166a820dd5a3 ****/
+		/****** Bnd_Box2d::GetGap ******/
+		/****** md5 signature: 6750af4846e7c73d2306166a820dd5a3 ******/
 		%feature("compactdefaultargs") GetGap;
 		%feature("autodoc", "Return
 -------
@@ -2902,8 +2902,8 @@ Returns the gap of this 2d bounding box.
 ") GetGap;
 		Standard_Real GetGap();
 
-		/****************** IsOpenXmax ******************/
-		/**** md5 signature: 5eb2255a5bab3f2bc582219e0faf64da ****/
+		/****** Bnd_Box2d::IsOpenXmax ******/
+		/****** md5 signature: 5eb2255a5bab3f2bc582219e0faf64da ******/
 		%feature("compactdefaultargs") IsOpenXmax;
 		%feature("autodoc", "Return
 -------
@@ -2915,8 +2915,8 @@ Returns true if this bounding box is open in the xmax direction.
 ") IsOpenXmax;
 		Standard_Boolean IsOpenXmax();
 
-		/****************** IsOpenXmin ******************/
-		/**** md5 signature: 4a3ade2dd87cecd20ab6184f8ecaf60f ****/
+		/****** Bnd_Box2d::IsOpenXmin ******/
+		/****** md5 signature: 4a3ade2dd87cecd20ab6184f8ecaf60f ******/
 		%feature("compactdefaultargs") IsOpenXmin;
 		%feature("autodoc", "Return
 -------
@@ -2928,8 +2928,8 @@ Returns true if this bounding box is open in the xmin direction.
 ") IsOpenXmin;
 		Standard_Boolean IsOpenXmin();
 
-		/****************** IsOpenYmax ******************/
-		/**** md5 signature: 8d1ec673e6124a1b526a06e1d5a0cfcb ****/
+		/****** Bnd_Box2d::IsOpenYmax ******/
+		/****** md5 signature: 8d1ec673e6124a1b526a06e1d5a0cfcb ******/
 		%feature("compactdefaultargs") IsOpenYmax;
 		%feature("autodoc", "Return
 -------
@@ -2941,8 +2941,8 @@ Returns true if this bounding box is open in the ymax direction.
 ") IsOpenYmax;
 		Standard_Boolean IsOpenYmax();
 
-		/****************** IsOpenYmin ******************/
-		/**** md5 signature: 127e30414ce069b633717ba26051232c ****/
+		/****** Bnd_Box2d::IsOpenYmin ******/
+		/****** md5 signature: 127e30414ce069b633717ba26051232c ******/
 		%feature("compactdefaultargs") IsOpenYmin;
 		%feature("autodoc", "Return
 -------
@@ -2954,8 +2954,8 @@ Returns true if this bounding box is open in the ymin direction.
 ") IsOpenYmin;
 		Standard_Boolean IsOpenYmin();
 
-		/****************** IsOut ******************/
-		/**** md5 signature: d03cb9c8d7fe01e19de4b31ec8638b96 ****/
+		/****** Bnd_Box2d::IsOut ******/
+		/****** md5 signature: d03cb9c8d7fe01e19de4b31ec8638b96 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -2972,8 +2972,8 @@ Returns true if the 2d pnt <p> is out <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pnt2d & P);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: b38b06569c00369b03abed2049a1c3e3 ****/
+		/****** Bnd_Box2d::IsOut ******/
+		/****** md5 signature: b38b06569c00369b03abed2049a1c3e3 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -2990,8 +2990,8 @@ Returns true if the line doesn't intersect the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Lin2d & theL);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: a23d5456f0cccf334434731d2ce66f73 ****/
+		/****** Bnd_Box2d::IsOut ******/
+		/****** md5 signature: a23d5456f0cccf334434731d2ce66f73 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -3009,8 +3009,8 @@ Returns true if the segment doesn't intersect the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pnt2d & theP0, const gp_Pnt2d & theP1);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 76ce93721d21d2f47dd476b923763317 ****/
+		/****** Bnd_Box2d::IsOut ******/
+		/****** md5 signature: 76ce93721d21d2f47dd476b923763317 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -3027,8 +3027,8 @@ Returns true if <box2d> is out <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Box2d & Other);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 242bdc5eb7d739c8e58bf1ccf125794e ****/
+		/****** Bnd_Box2d::IsOut ******/
+		/****** md5 signature: 242bdc5eb7d739c8e58bf1ccf125794e ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -3046,8 +3046,8 @@ Returns true if transformed <box2d> is out <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Box2d & theOther, const gp_Trsf2d & theTrsf);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 1de5bddfb807ee17935c8101289b1b30 ****/
+		/****** Bnd_Box2d::IsOut ******/
+		/****** md5 signature: 1de5bddfb807ee17935c8101289b1b30 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -3066,8 +3066,8 @@ Compares a transformed bounding with a transformed bounding. the default impleme
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Trsf2d & T1, const Bnd_Box2d & Other, const gp_Trsf2d & T2);
 
-		/****************** IsVoid ******************/
-		/**** md5 signature: 9aa2fb0e94327ea2b13fa6dbf2b30845 ****/
+		/****** Bnd_Box2d::IsVoid ******/
+		/****** md5 signature: 9aa2fb0e94327ea2b13fa6dbf2b30845 ******/
 		%feature("compactdefaultargs") IsVoid;
 		%feature("autodoc", "Return
 -------
@@ -3079,8 +3079,8 @@ Returns true if this 2d bounding box is empty (void flag).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
-		/****************** IsWhole ******************/
-		/**** md5 signature: 0a8318ed765ec359e07b16b26f838d8e ****/
+		/****** Bnd_Box2d::IsWhole ******/
+		/****** md5 signature: 0a8318ed765ec359e07b16b26f838d8e ******/
 		%feature("compactdefaultargs") IsWhole;
 		%feature("autodoc", "Return
 -------
@@ -3092,8 +3092,8 @@ Returns true if this bounding box is infinite in all 4 directions (whole space f
 ") IsWhole;
 		Standard_Boolean IsWhole();
 
-		/****************** OpenXmax ******************/
-		/**** md5 signature: 011b84ef137ac1ffb641f2c1a9ac63e2 ****/
+		/****** Bnd_Box2d::OpenXmax ******/
+		/****** md5 signature: 011b84ef137ac1ffb641f2c1a9ac63e2 ******/
 		%feature("compactdefaultargs") OpenXmax;
 		%feature("autodoc", "Return
 -------
@@ -3105,8 +3105,8 @@ The box will be infinitely long in the xmax direction.
 ") OpenXmax;
 		void OpenXmax();
 
-		/****************** OpenXmin ******************/
-		/**** md5 signature: 0cb5023d1c04bb9f8d3afb0c66dc3550 ****/
+		/****** Bnd_Box2d::OpenXmin ******/
+		/****** md5 signature: 0cb5023d1c04bb9f8d3afb0c66dc3550 ******/
 		%feature("compactdefaultargs") OpenXmin;
 		%feature("autodoc", "Return
 -------
@@ -3118,8 +3118,8 @@ The box will be infinitely long in the xmin direction.
 ") OpenXmin;
 		void OpenXmin();
 
-		/****************** OpenYmax ******************/
-		/**** md5 signature: c73a2152a30be1e92daf823e7bff7593 ****/
+		/****** Bnd_Box2d::OpenYmax ******/
+		/****** md5 signature: c73a2152a30be1e92daf823e7bff7593 ******/
 		%feature("compactdefaultargs") OpenYmax;
 		%feature("autodoc", "Return
 -------
@@ -3131,8 +3131,8 @@ The box will be infinitely long in the ymax direction.
 ") OpenYmax;
 		void OpenYmax();
 
-		/****************** OpenYmin ******************/
-		/**** md5 signature: 4bcf368c4cb64b3755b7b035d5243c28 ****/
+		/****** Bnd_Box2d::OpenYmin ******/
+		/****** md5 signature: 4bcf368c4cb64b3755b7b035d5243c28 ******/
 		%feature("compactdefaultargs") OpenYmin;
 		%feature("autodoc", "Return
 -------
@@ -3144,8 +3144,8 @@ The box will be infinitely long in the ymin direction.
 ") OpenYmin;
 		void OpenYmin();
 
-		/****************** Set ******************/
-		/**** md5 signature: 20e194d14a202c4fee73c68b1bd68f73 ****/
+		/****** Bnd_Box2d::Set ******/
+		/****** md5 signature: 20e194d14a202c4fee73c68b1bd68f73 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -3162,8 +3162,8 @@ Sets this 2d bounding box so that it bounds the point p. this involves first set
 ") Set;
 		void Set(const gp_Pnt2d & thePnt);
 
-		/****************** Set ******************/
-		/**** md5 signature: 3c944f7f0f286da9b8af1532b3c8f1d6 ****/
+		/****** Bnd_Box2d::Set ******/
+		/****** md5 signature: 3c944f7f0f286da9b8af1532b3c8f1d6 ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -3181,8 +3181,8 @@ Sets this 2d bounding box so that it bounds the half-line defined by point p and
 ") Set;
 		void Set(const gp_Pnt2d & thePnt, const gp_Dir2d & theDir);
 
-		/****************** SetGap ******************/
-		/**** md5 signature: fd1e2e1d937f82e7bd6e34746a51db57 ****/
+		/****** Bnd_Box2d::SetGap ******/
+		/****** md5 signature: fd1e2e1d937f82e7bd6e34746a51db57 ******/
 		%feature("compactdefaultargs") SetGap;
 		%feature("autodoc", "
 Parameters
@@ -3199,8 +3199,8 @@ Set the gap of this 2d bounding box to abs(tol).
 ") SetGap;
 		void SetGap(const Standard_Real Tol);
 
-		/****************** SetVoid ******************/
-		/**** md5 signature: 4e44fd52f6a76368c77b381fe1482a21 ****/
+		/****** Bnd_Box2d::SetVoid ******/
+		/****** md5 signature: 4e44fd52f6a76368c77b381fe1482a21 ******/
 		%feature("compactdefaultargs") SetVoid;
 		%feature("autodoc", "Return
 -------
@@ -3212,8 +3212,8 @@ Sets this 2d bounding box so that it is empty. all points are outside a void box
 ") SetVoid;
 		void SetVoid();
 
-		/****************** SetWhole ******************/
-		/**** md5 signature: a40c374c51cbe4a88447c330252451e9 ****/
+		/****** Bnd_Box2d::SetWhole ******/
+		/****** md5 signature: a40c374c51cbe4a88447c330252451e9 ******/
 		%feature("compactdefaultargs") SetWhole;
 		%feature("autodoc", "Return
 -------
@@ -3225,8 +3225,8 @@ Sets this bounding box so that it covers the whole 2d space, i.e. it is infinite
 ") SetWhole;
 		void SetWhole();
 
-		/****************** SquareExtent ******************/
-		/**** md5 signature: 25897f4ea5ade71bb993b0f1c6520c54 ****/
+		/****** Bnd_Box2d::SquareExtent ******/
+		/****** md5 signature: 25897f4ea5ade71bb993b0f1c6520c54 ******/
 		%feature("compactdefaultargs") SquareExtent;
 		%feature("autodoc", "Return
 -------
@@ -3238,8 +3238,8 @@ Computes the squared diagonal of me.
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
-		/****************** Transformed ******************/
-		/**** md5 signature: 9f68554d14860db57f14fcdad98487d8 ****/
+		/****** Bnd_Box2d::Transformed ******/
+		/****** md5 signature: 9f68554d14860db57f14fcdad98487d8 ******/
 		%feature("compactdefaultargs") Transformed;
 		%feature("autodoc", "
 Parameters
@@ -3256,8 +3256,8 @@ Returns a bounding box which is the result of applying the transformation t to t
 ") Transformed;
 		Bnd_Box2d Transformed(const gp_Trsf2d & T);
 
-		/****************** Update ******************/
-		/**** md5 signature: cbab599f6b79a58e1c4829eb37ff50ae ****/
+		/****** Bnd_Box2d::Update ******/
+		/****** md5 signature: cbab599f6b79a58e1c4829eb37ff50ae ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -3277,8 +3277,8 @@ Enlarges this 2d bounding box, if required, so that it contains at least: - inte
 ") Update;
 		void Update(const Standard_Real aXmin, const Standard_Real aYmin, const Standard_Real aXmax, const Standard_Real aYmax);
 
-		/****************** Update ******************/
-		/**** md5 signature: 755b71c46d0e1aef441564ce8d7b156a ****/
+		/****** Bnd_Box2d::Update ******/
+		/****** md5 signature: 755b71c46d0e1aef441564ce8d7b156a ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -3328,8 +3328,8 @@ Adds a point of coordinates (x,y) to this bounding box.
 ****************/
 class Bnd_OBB {
 	public:
-		/****************** Bnd_OBB ******************/
-		/**** md5 signature: 89e871e268e0b019a1a62d73fd55eb19 ****/
+		/****** Bnd_OBB::Bnd_OBB ******/
+		/****** md5 signature: 89e871e268e0b019a1a62d73fd55eb19 ******/
 		%feature("compactdefaultargs") Bnd_OBB;
 		%feature("autodoc", "Return
 -------
@@ -3341,8 +3341,8 @@ Empty constructor.
 ") Bnd_OBB;
 		 Bnd_OBB();
 
-		/****************** Bnd_OBB ******************/
-		/**** md5 signature: 9217a828a0fc36ef6ace41d448b130b0 ****/
+		/****** Bnd_OBB::Bnd_OBB ******/
+		/****** md5 signature: 9217a828a0fc36ef6ace41d448b130b0 ******/
 		%feature("compactdefaultargs") Bnd_OBB;
 		%feature("autodoc", "
 Parameters
@@ -3365,8 +3365,8 @@ Constructor taking all defining parameters.
 ") Bnd_OBB;
 		 Bnd_OBB(const gp_Pnt & theCenter, const gp_Dir & theXDirection, const gp_Dir & theYDirection, const gp_Dir & theZDirection, const Standard_Real theHXSize, const Standard_Real theHYSize, const Standard_Real theHZSize);
 
-		/****************** Bnd_OBB ******************/
-		/**** md5 signature: 5c80c49300d6c6d28ac3791ffa9f9dfb ****/
+		/****** Bnd_OBB::Bnd_OBB ******/
+		/****** md5 signature: 5c80c49300d6c6d28ac3791ffa9f9dfb ******/
 		%feature("compactdefaultargs") Bnd_OBB;
 		%feature("autodoc", "
 Parameters
@@ -3383,8 +3383,8 @@ Constructor to create obb from aabb.
 ") Bnd_OBB;
 		 Bnd_OBB(const Bnd_Box & theBox);
 
-		/****************** Add ******************/
-		/**** md5 signature: 1f61a26817c8d333e27dfcdd5e33f7c7 ****/
+		/****** Bnd_OBB::Add ******/
+		/****** md5 signature: 1f61a26817c8d333e27dfcdd5e33f7c7 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -3401,8 +3401,8 @@ Rebuilds this in order to include all previous objects (which it was created fro
 ") Add;
 		void Add(const Bnd_OBB & theOther);
 
-		/****************** Add ******************/
-		/**** md5 signature: 67fb36a9dbd11d4528c03db6f935bcb9 ****/
+		/****** Bnd_OBB::Add ******/
+		/****** md5 signature: 67fb36a9dbd11d4528c03db6f935bcb9 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -3419,8 +3419,8 @@ Rebuilds this in order to include all previous objects (which it was created fro
 ") Add;
 		void Add(const gp_Pnt & theP);
 
-		/****************** Center ******************/
-		/**** md5 signature: 46cca58f8b29223ae05354ea8a3e5417 ****/
+		/****** Bnd_OBB::Center ******/
+		/****** md5 signature: 46cca58f8b29223ae05354ea8a3e5417 ******/
 		%feature("compactdefaultargs") Center;
 		%feature("autodoc", "Return
 -------
@@ -3453,8 +3453,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** Enlarge ******************/
-		/**** md5 signature: d759fcc6f239218e61510f561f9d7a30 ****/
+		/****** Bnd_OBB::Enlarge ******/
+		/****** md5 signature: d759fcc6f239218e61510f561f9d7a30 ******/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "
 Parameters
@@ -3471,8 +3471,8 @@ Enlarges the box with the given value.
 ") Enlarge;
 		void Enlarge(const Standard_Real theGapAdd);
 
-		/****************** GetVertex ******************/
-		/**** md5 signature: dd70008164910fd933486ee1e89b66ea ****/
+		/****** Bnd_OBB::GetVertex ******/
+		/****** md5 signature: dd70008164910fd933486ee1e89b66ea ******/
 		%feature("compactdefaultargs") GetVertex;
 		%feature("autodoc", "
 Parameters
@@ -3489,8 +3489,8 @@ Returns the array of vertices in <this>. the local coordinate of the vertex depe
 ") GetVertex;
 		Standard_Boolean GetVertex(gp_Pnt theP[8]);
 
-		/****************** IsAABox ******************/
-		/**** md5 signature: 7148a9fa3dfaccda890cea457298eb25 ****/
+		/****** Bnd_OBB::IsAABox ******/
+		/****** md5 signature: 7148a9fa3dfaccda890cea457298eb25 ******/
 		%feature("compactdefaultargs") IsAABox;
 		%feature("autodoc", "Return
 -------
@@ -3502,8 +3502,8 @@ Returns true if the box is axes aligned.
 ") IsAABox;
 		Standard_Boolean IsAABox();
 
-		/****************** IsCompletelyInside ******************/
-		/**** md5 signature: 148285a41cd36b32b1b047410e1cb231 ****/
+		/****** Bnd_OBB::IsCompletelyInside ******/
+		/****** md5 signature: 148285a41cd36b32b1b047410e1cb231 ******/
 		%feature("compactdefaultargs") IsCompletelyInside;
 		%feature("autodoc", "
 Parameters
@@ -3520,8 +3520,8 @@ Check if the theother is completely inside *this.
 ") IsCompletelyInside;
 		Standard_Boolean IsCompletelyInside(const Bnd_OBB & theOther);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 3095c5adc40292ad8ea01e1ff6f5e59c ****/
+		/****** Bnd_OBB::IsOut ******/
+		/****** md5 signature: 3095c5adc40292ad8ea01e1ff6f5e59c ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -3538,8 +3538,8 @@ Check if the box do not interfere the other box.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_OBB & theOther);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 228da6a39bbd69e9e6af11076e8f64ec ****/
+		/****** Bnd_OBB::IsOut ******/
+		/****** md5 signature: 228da6a39bbd69e9e6af11076e8f64ec ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -3556,8 +3556,8 @@ Check if the point is inside of <this>.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pnt & theP);
 
-		/****************** IsVoid ******************/
-		/**** md5 signature: 9aa2fb0e94327ea2b13fa6dbf2b30845 ****/
+		/****** Bnd_OBB::IsVoid ******/
+		/****** md5 signature: 9aa2fb0e94327ea2b13fa6dbf2b30845 ******/
 		%feature("compactdefaultargs") IsVoid;
 		%feature("autodoc", "Return
 -------
@@ -3569,8 +3569,8 @@ Checks if the box is empty.
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
-		/****************** Position ******************/
-		/**** md5 signature: abac85ad2868eb73ea9b953e87e8f5a6 ****/
+		/****** Bnd_OBB::Position ******/
+		/****** md5 signature: abac85ad2868eb73ea9b953e87e8f5a6 ******/
 		%feature("compactdefaultargs") Position;
 		%feature("autodoc", "Return
 -------
@@ -3582,8 +3582,8 @@ Returns the local coordinates system of this oriented box. so that applying it t
 ") Position;
 		gp_Ax3 Position();
 
-		/****************** ReBuild ******************/
-		/**** md5 signature: acf5bcc5aed4bfb9e587af3a3f44a66c ****/
+		/****** Bnd_OBB::ReBuild ******/
+		/****** md5 signature: acf5bcc5aed4bfb9e587af3a3f44a66c ******/
 		%feature("compactdefaultargs") ReBuild;
 		%feature("autodoc", "
 Parameters
@@ -3602,8 +3602,8 @@ Creates new obb covering every point in thelistofpoints. tolerance of every such
 ") ReBuild;
 		void ReBuild(const TColgp_Array1OfPnt & theListOfPoints, const TColStd_Array1OfReal * theListOfTolerances = 0, const Standard_Boolean theIsOptimal = Standard_False);
 
-		/****************** SetAABox ******************/
-		/**** md5 signature: 5682f586345a83106e4cd6132b55253e ****/
+		/****** Bnd_OBB::SetAABox ******/
+		/****** md5 signature: 5682f586345a83106e4cd6132b55253e ******/
 		%feature("compactdefaultargs") SetAABox;
 		%feature("autodoc", "
 Parameters
@@ -3620,8 +3620,8 @@ Sets the flag for axes aligned box.
 ") SetAABox;
 		void SetAABox(const Standard_Boolean & theFlag);
 
-		/****************** SetCenter ******************/
-		/**** md5 signature: ecf3b6f0e545b80cc6040218013c7da9 ****/
+		/****** Bnd_OBB::SetCenter ******/
+		/****** md5 signature: ecf3b6f0e545b80cc6040218013c7da9 ******/
 		%feature("compactdefaultargs") SetCenter;
 		%feature("autodoc", "
 Parameters
@@ -3638,8 +3638,8 @@ Sets the center of obb.
 ") SetCenter;
 		void SetCenter(const gp_Pnt & theCenter);
 
-		/****************** SetVoid ******************/
-		/**** md5 signature: 4e44fd52f6a76368c77b381fe1482a21 ****/
+		/****** Bnd_OBB::SetVoid ******/
+		/****** md5 signature: 4e44fd52f6a76368c77b381fe1482a21 ******/
 		%feature("compactdefaultargs") SetVoid;
 		%feature("autodoc", "Return
 -------
@@ -3651,8 +3651,8 @@ Clears this box.
 ") SetVoid;
 		void SetVoid();
 
-		/****************** SetXComponent ******************/
-		/**** md5 signature: 3fd434ed4f088b8cf0c305d42d7f8a32 ****/
+		/****** Bnd_OBB::SetXComponent ******/
+		/****** md5 signature: 3fd434ed4f088b8cf0c305d42d7f8a32 ******/
 		%feature("compactdefaultargs") SetXComponent;
 		%feature("autodoc", "
 Parameters
@@ -3670,8 +3670,8 @@ Sets the x component of obb - direction and size.
 ") SetXComponent;
 		void SetXComponent(const gp_Dir & theXDirection, const Standard_Real theHXSize);
 
-		/****************** SetYComponent ******************/
-		/**** md5 signature: 1d3f648489c5c7522cfa155c34eb06c8 ****/
+		/****** Bnd_OBB::SetYComponent ******/
+		/****** md5 signature: 1d3f648489c5c7522cfa155c34eb06c8 ******/
 		%feature("compactdefaultargs") SetYComponent;
 		%feature("autodoc", "
 Parameters
@@ -3689,8 +3689,8 @@ Sets the y component of obb - direction and size.
 ") SetYComponent;
 		void SetYComponent(const gp_Dir & theYDirection, const Standard_Real theHYSize);
 
-		/****************** SetZComponent ******************/
-		/**** md5 signature: 066b299320bec5e6edce21a4bec1a6dd ****/
+		/****** Bnd_OBB::SetZComponent ******/
+		/****** md5 signature: 066b299320bec5e6edce21a4bec1a6dd ******/
 		%feature("compactdefaultargs") SetZComponent;
 		%feature("autodoc", "
 Parameters
@@ -3708,8 +3708,8 @@ Sets the z component of obb - direction and size.
 ") SetZComponent;
 		void SetZComponent(const gp_Dir & theZDirection, const Standard_Real theHZSize);
 
-		/****************** SquareExtent ******************/
-		/**** md5 signature: 25897f4ea5ade71bb993b0f1c6520c54 ****/
+		/****** Bnd_OBB::SquareExtent ******/
+		/****** md5 signature: 25897f4ea5ade71bb993b0f1c6520c54 ******/
 		%feature("compactdefaultargs") SquareExtent;
 		%feature("autodoc", "Return
 -------
@@ -3721,8 +3721,8 @@ Returns square diagonal of this box.
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
-		/****************** XDirection ******************/
-		/**** md5 signature: 0a83cc2971cb7167c60ad6b3d7dca376 ****/
+		/****** Bnd_OBB::XDirection ******/
+		/****** md5 signature: 0a83cc2971cb7167c60ad6b3d7dca376 ******/
 		%feature("compactdefaultargs") XDirection;
 		%feature("autodoc", "Return
 -------
@@ -3734,8 +3734,8 @@ Returns the x direction of obb.
 ") XDirection;
 		const gp_XYZ XDirection();
 
-		/****************** XHSize ******************/
-		/**** md5 signature: 526802efb4402c85f127c7018b567c47 ****/
+		/****** Bnd_OBB::XHSize ******/
+		/****** md5 signature: 526802efb4402c85f127c7018b567c47 ******/
 		%feature("compactdefaultargs") XHSize;
 		%feature("autodoc", "Return
 -------
@@ -3747,8 +3747,8 @@ Returns the x dimension of obb.
 ") XHSize;
 		Standard_Real XHSize();
 
-		/****************** YDirection ******************/
-		/**** md5 signature: 744e806c5058127dad2ce76fc00590ec ****/
+		/****** Bnd_OBB::YDirection ******/
+		/****** md5 signature: 744e806c5058127dad2ce76fc00590ec ******/
 		%feature("compactdefaultargs") YDirection;
 		%feature("autodoc", "Return
 -------
@@ -3760,8 +3760,8 @@ Returns the y direction of obb.
 ") YDirection;
 		const gp_XYZ YDirection();
 
-		/****************** YHSize ******************/
-		/**** md5 signature: 6d522f889ae8adf72911e2195e043099 ****/
+		/****** Bnd_OBB::YHSize ******/
+		/****** md5 signature: 6d522f889ae8adf72911e2195e043099 ******/
 		%feature("compactdefaultargs") YHSize;
 		%feature("autodoc", "Return
 -------
@@ -3773,8 +3773,8 @@ Returns the y dimension of obb.
 ") YHSize;
 		Standard_Real YHSize();
 
-		/****************** ZDirection ******************/
-		/**** md5 signature: 27b712f9ed3424a7a71c33e6948ec3cc ****/
+		/****** Bnd_OBB::ZDirection ******/
+		/****** md5 signature: 27b712f9ed3424a7a71c33e6948ec3cc ******/
 		%feature("compactdefaultargs") ZDirection;
 		%feature("autodoc", "Return
 -------
@@ -3786,8 +3786,8 @@ Returns the z direction of obb.
 ") ZDirection;
 		const gp_XYZ ZDirection();
 
-		/****************** ZHSize ******************/
-		/**** md5 signature: 5638a8c206b8e411b11abbef19373825 ****/
+		/****** Bnd_OBB::ZHSize ******/
+		/****** md5 signature: 5638a8c206b8e411b11abbef19373825 ******/
 		%feature("compactdefaultargs") ZHSize;
 		%feature("autodoc", "Return
 -------
@@ -3831,8 +3831,8 @@ Returns the z dimension of obb.
 ******************/
 class Bnd_Range {
 	public:
-		/****************** Bnd_Range ******************/
-		/**** md5 signature: c4e1ef542ad0477e9971285d75047d7d ****/
+		/****** Bnd_Range::Bnd_Range ******/
+		/****** md5 signature: c4e1ef542ad0477e9971285d75047d7d ******/
 		%feature("compactdefaultargs") Bnd_Range;
 		%feature("autodoc", "Return
 -------
@@ -3844,8 +3844,8 @@ Default constructor. creates void range.
 ") Bnd_Range;
 		 Bnd_Range();
 
-		/****************** Bnd_Range ******************/
-		/**** md5 signature: 39d4d1bfbab659fc681a5eaf9d4bcdd7 ****/
+		/****** Bnd_Range::Bnd_Range ******/
+		/****** md5 signature: 39d4d1bfbab659fc681a5eaf9d4bcdd7 ******/
 		%feature("compactdefaultargs") Bnd_Range;
 		%feature("autodoc", "
 Parameters
@@ -3863,8 +3863,8 @@ Constructor. never creates void range.
 ") Bnd_Range;
 		 Bnd_Range(const Standard_Real theMin, const Standard_Real theMax);
 
-		/****************** Add ******************/
-		/**** md5 signature: b9e6176b78191d36c23b46360c711cd9 ****/
+		/****** Bnd_Range::Add ******/
+		/****** md5 signature: b9e6176b78191d36c23b46360c711cd9 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -3881,8 +3881,8 @@ Extends <this> to include theparameter.
 ") Add;
 		void Add(const Standard_Real theParameter);
 
-		/****************** Add ******************/
-		/**** md5 signature: 49550d5c240c310670e3adabff0f2431 ****/
+		/****** Bnd_Range::Add ******/
+		/****** md5 signature: 49550d5c240c310670e3adabff0f2431 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -3899,8 +3899,8 @@ Extends this range to include both ranges. @sa use method ::union() to check if 
 ") Add;
 		void Add(const Bnd_Range & theRange);
 
-		/****************** Common ******************/
-		/**** md5 signature: 9f5a37a4e8b0025ffc11bc0d0f8c7cd1 ****/
+		/****** Bnd_Range::Common ******/
+		/****** md5 signature: 9f5a37a4e8b0025ffc11bc0d0f8c7cd1 ******/
 		%feature("compactdefaultargs") Common;
 		%feature("autodoc", "
 Parameters
@@ -3917,8 +3917,8 @@ Replaces <this> with common-part of <this> and theother.
 ") Common;
 		void Common(const Bnd_Range & theOther);
 
-		/****************** Delta ******************/
-		/**** md5 signature: e52c84a425b733662cba593f9fa45ed5 ****/
+		/****** Bnd_Range::Delta ******/
+		/****** md5 signature: e52c84a425b733662cba593f9fa45ed5 ******/
 		%feature("compactdefaultargs") Delta;
 		%feature("autodoc", "Return
 -------
@@ -3951,8 +3951,8 @@ Dump the object to JSON string.
             self->DumpJson(s, depth);
             return "{" + s.str() + "}" ;}
         };
-		/****************** Enlarge ******************/
-		/**** md5 signature: 2c37569c59dcd99db9a5ddf54944897c ****/
+		/****** Bnd_Range::Enlarge ******/
+		/****** md5 signature: 2c37569c59dcd99db9a5ddf54944897c ******/
 		%feature("compactdefaultargs") Enlarge;
 		%feature("autodoc", "
 Parameters
@@ -3969,8 +3969,8 @@ Extends this to the given value (in both side).
 ") Enlarge;
 		void Enlarge(const Standard_Real theDelta);
 
-		/****************** GetBounds ******************/
-		/**** md5 signature: aa339ecf3a64a71836ac94404be96f14 ****/
+		/****** Bnd_Range::GetBounds ******/
+		/****** md5 signature: aa339ecf3a64a71836ac94404be96f14 ******/
 		%feature("compactdefaultargs") GetBounds;
 		%feature("autodoc", "
 Parameters
@@ -3987,8 +3987,8 @@ Obtain first and last boundary of <this>. if <this> is void the method returns f
 ") GetBounds;
 		Standard_Boolean GetBounds(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetIntermediatePoint ******************/
-		/**** md5 signature: c6225a019c036447a5a4ba58a34915ea ****/
+		/****** Bnd_Range::GetIntermediatePoint ******/
+		/****** md5 signature: c6225a019c036447a5a4ba58a34915ea ******/
 		%feature("compactdefaultargs") GetIntermediatePoint;
 		%feature("autodoc", "
 Parameters
@@ -4005,8 +4005,8 @@ Obtain theparameter satisfied to the equation (theparameter-min)/(max-min) == th
 ") GetIntermediatePoint;
 		Standard_Boolean GetIntermediatePoint(const Standard_Real theLambda, Standard_Real &OutValue);
 
-		/****************** GetMax ******************/
-		/**** md5 signature: 5d8b155ad152e8e5b0e41b224ac467a0 ****/
+		/****** Bnd_Range::GetMax ******/
+		/****** md5 signature: 5d8b155ad152e8e5b0e41b224ac467a0 ******/
 		%feature("compactdefaultargs") GetMax;
 		%feature("autodoc", "
 Parameters
@@ -4022,8 +4022,8 @@ Obtain max boundary of <this>. if <this> is void the method returns false.
 ") GetMax;
 		Standard_Boolean GetMax(Standard_Real &OutValue);
 
-		/****************** GetMin ******************/
-		/**** md5 signature: 074bd660b5e6316ea49fb8983bf41670 ****/
+		/****** Bnd_Range::GetMin ******/
+		/****** md5 signature: 074bd660b5e6316ea49fb8983bf41670 ******/
 		%feature("compactdefaultargs") GetMin;
 		%feature("autodoc", "
 Parameters
@@ -4039,8 +4039,8 @@ Obtain min boundary of <this>. if <this> is void the method returns false.
 ") GetMin;
 		Standard_Boolean GetMin(Standard_Real &OutValue);
 
-		/****************** IsIntersected ******************/
-		/**** md5 signature: 123db05445d1a166445329a30c97e68b ****/
+		/****** Bnd_Range::IsIntersected ******/
+		/****** md5 signature: 123db05445d1a166445329a30c97e68b ******/
 		%feature("compactdefaultargs") IsIntersected;
 		%feature("autodoc", "
 Parameters
@@ -4058,8 +4058,8 @@ Checks if <this> intersects values like theval+k*theperiod, where k is an intege
 ") IsIntersected;
 		Standard_Integer IsIntersected(const Standard_Real theVal, const Standard_Real thePeriod = 0.0);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 92f904495367c13bf088bf6ede0d150a ****/
+		/****** Bnd_Range::IsOut ******/
+		/****** md5 signature: 92f904495367c13bf088bf6ede0d150a ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -4076,8 +4076,8 @@ Returns true if the value is out of this range.
 ") IsOut;
 		Standard_Boolean IsOut(Standard_Real theValue);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: a06de79ff8a89a245c86f2e37b66f2ce ****/
+		/****** Bnd_Range::IsOut ******/
+		/****** md5 signature: a06de79ff8a89a245c86f2e37b66f2ce ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -4094,8 +4094,8 @@ Returns true if the given range is out of this range.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Range & theRange);
 
-		/****************** IsVoid ******************/
-		/**** md5 signature: 9aa2fb0e94327ea2b13fa6dbf2b30845 ****/
+		/****** Bnd_Range::IsVoid ******/
+		/****** md5 signature: 9aa2fb0e94327ea2b13fa6dbf2b30845 ******/
 		%feature("compactdefaultargs") IsVoid;
 		%feature("autodoc", "Return
 -------
@@ -4107,8 +4107,8 @@ Is <this> initialized.
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
-		/****************** SetVoid ******************/
-		/**** md5 signature: 4e44fd52f6a76368c77b381fe1482a21 ****/
+		/****** Bnd_Range::SetVoid ******/
+		/****** md5 signature: 4e44fd52f6a76368c77b381fe1482a21 ******/
 		%feature("compactdefaultargs") SetVoid;
 		%feature("autodoc", "Return
 -------
@@ -4120,8 +4120,8 @@ Initializes <this> by default parameters. makes <this> void.
 ") SetVoid;
 		void SetVoid();
 
-		/****************** Shift ******************/
-		/**** md5 signature: ed2755c188238cd9b289703de65e61c2 ****/
+		/****** Bnd_Range::Shift ******/
+		/****** md5 signature: ed2755c188238cd9b289703de65e61c2 ******/
 		%feature("compactdefaultargs") Shift;
 		%feature("autodoc", "
 Parameters
@@ -4138,8 +4138,8 @@ Shifts <*this> by theval.
 ") Shift;
 		void Shift(const Standard_Real theVal);
 
-		/****************** Shifted ******************/
-		/**** md5 signature: ec2717e15f9fbc7fbbdfc0a45ff5d722 ****/
+		/****** Bnd_Range::Shifted ******/
+		/****** md5 signature: ec2717e15f9fbc7fbbdfc0a45ff5d722 ******/
 		%feature("compactdefaultargs") Shifted;
 		%feature("autodoc", "
 Parameters
@@ -4156,8 +4156,8 @@ Returns the copy of <*this> shifted by theval.
 ") Shifted;
 		Bnd_Range Shifted(const Standard_Real theVal);
 
-		/****************** Split ******************/
-		/**** md5 signature: 0590e3e907e57ad90c413cd74383099a ****/
+		/****** Bnd_Range::Split ******/
+		/****** md5 signature: 0590e3e907e57ad90c413cd74383099a ******/
 		%feature("compactdefaultargs") Split;
 		%feature("autodoc", "
 Parameters
@@ -4176,8 +4176,8 @@ Splits <this> to several sub-ranges by theval value (e.g. range [3, 15] will be 
 ") Split;
 		void Split(const Standard_Real theVal, NCollection_List<Bnd_Range> & theList, const Standard_Real thePeriod = 0.0);
 
-		/****************** TrimFrom ******************/
-		/**** md5 signature: 5c6dae4ea6e830ab5b0c80e8f5a7f485 ****/
+		/****** Bnd_Range::TrimFrom ******/
+		/****** md5 signature: 5c6dae4ea6e830ab5b0c80e8f5a7f485 ******/
 		%feature("compactdefaultargs") TrimFrom;
 		%feature("autodoc", "
 Parameters
@@ -4194,8 +4194,8 @@ Trims the first value in range by the given lower limit. marks range as void if 
 ") TrimFrom;
 		void TrimFrom(const Standard_Real theValLower);
 
-		/****************** TrimTo ******************/
-		/**** md5 signature: aa2a091d624f5f01b4647b1374ab8df0 ****/
+		/****** Bnd_Range::TrimTo ******/
+		/****** md5 signature: aa2a091d624f5f01b4647b1374ab8df0 ******/
 		%feature("compactdefaultargs") TrimTo;
 		%feature("autodoc", "
 Parameters
@@ -4212,8 +4212,8 @@ Trim the last value in range by the given upper limit. marks range as void if th
 ") TrimTo;
 		void TrimTo(const Standard_Real theValUpper);
 
-		/****************** Union ******************/
-		/**** md5 signature: a12c3e67aa639d72862c6a3a201b7784 ****/
+		/****** Bnd_Range::Union ******/
+		/****** md5 signature: a12c3e67aa639d72862c6a3a201b7784 ******/
 		%feature("compactdefaultargs") Union;
 		%feature("autodoc", "
 Parameters
@@ -4276,8 +4276,8 @@ def __eq__(self, right):
 *******************/
 class Bnd_Sphere {
 	public:
-		/****************** Bnd_Sphere ******************/
-		/**** md5 signature: c7419981813f88f5869f6cf8e039de21 ****/
+		/****** Bnd_Sphere::Bnd_Sphere ******/
+		/****** md5 signature: c7419981813f88f5869f6cf8e039de21 ******/
 		%feature("compactdefaultargs") Bnd_Sphere;
 		%feature("autodoc", "Return
 -------
@@ -4289,8 +4289,8 @@ Empty constructor.
 ") Bnd_Sphere;
 		 Bnd_Sphere();
 
-		/****************** Bnd_Sphere ******************/
-		/**** md5 signature: c3f8a006c1c390e8f88e5d3c045ceb48 ****/
+		/****** Bnd_Sphere::Bnd_Sphere ******/
+		/****** md5 signature: c3f8a006c1c390e8f88e5d3c045ceb48 ******/
 		%feature("compactdefaultargs") Bnd_Sphere;
 		%feature("autodoc", "
 Parameters
@@ -4310,8 +4310,8 @@ Constructor of a definite sphere.
 ") Bnd_Sphere;
 		 Bnd_Sphere(const gp_XYZ & theCntr, const Standard_Real theRad, const Standard_Integer theU, const Standard_Integer theV);
 
-		/****************** Add ******************/
-		/**** md5 signature: e63556631cbf2ba437d3318f36771c8b ****/
+		/****** Bnd_Sphere::Add ******/
+		/****** md5 signature: e63556631cbf2ba437d3318f36771c8b ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -4328,8 +4328,8 @@ No available documentation.
 ") Add;
 		void Add(const Bnd_Sphere & theOther);
 
-		/****************** Center ******************/
-		/**** md5 signature: c0f204842bb3fee8d6fd43ddb0e66ea1 ****/
+		/****** Bnd_Sphere::Center ******/
+		/****** md5 signature: c0f204842bb3fee8d6fd43ddb0e66ea1 ******/
 		%feature("compactdefaultargs") Center;
 		%feature("autodoc", "Return
 -------
@@ -4341,8 +4341,8 @@ Returns center of sphere object.
 ") Center;
 		const gp_XYZ Center();
 
-		/****************** Distance ******************/
-		/**** md5 signature: a56aeb5272160f8dff3400c26d338428 ****/
+		/****** Bnd_Sphere::Distance ******/
+		/****** md5 signature: a56aeb5272160f8dff3400c26d338428 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -4359,8 +4359,8 @@ No available documentation.
 ") Distance;
 		Standard_Real Distance(const gp_XYZ & theNode);
 
-		/****************** Distances ******************/
-		/**** md5 signature: 50de2161c1d914223675c67632adce8e ****/
+		/****** Bnd_Sphere::Distances ******/
+		/****** md5 signature: 50de2161c1d914223675c67632adce8e ******/
 		%feature("compactdefaultargs") Distances;
 		%feature("autodoc", "
 Parameters
@@ -4378,8 +4378,8 @@ Calculate and return minimal and maximal distance to sphere. note: this function
 ") Distances;
 		void Distances(const gp_XYZ & theXYZ, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 58212268d92d4726dde0412ccb4e0901 ****/
+		/****** Bnd_Sphere::IsOut ******/
+		/****** md5 signature: 58212268d92d4726dde0412ccb4e0901 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -4396,8 +4396,8 @@ No available documentation.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Sphere & theOther);
 
-		/****************** IsOut ******************/
-		/**** md5 signature: 0960ab8022e734d37aad310b0486e970 ****/
+		/****** Bnd_Sphere::IsOut ******/
+		/****** md5 signature: 0960ab8022e734d37aad310b0486e970 ******/
 		%feature("compactdefaultargs") IsOut;
 		%feature("autodoc", "
 Parameters
@@ -4414,8 +4414,8 @@ No available documentation.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XYZ & thePnt, Standard_Real &OutValue);
 
-		/****************** IsValid ******************/
-		/**** md5 signature: 2809e700423e4fe6ecd395953f3a2406 ****/
+		/****** Bnd_Sphere::IsValid ******/
+		/****** md5 signature: 2809e700423e4fe6ecd395953f3a2406 ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Return
 -------
@@ -4427,8 +4427,8 @@ Returns validity status, indicating that this sphere corresponds to a real entit
 ") IsValid;
 		Standard_Boolean IsValid();
 
-		/****************** Project ******************/
-		/**** md5 signature: afce8f38342e2faa636831f45756a1f8 ****/
+		/****** Bnd_Sphere::Project ******/
+		/****** md5 signature: afce8f38342e2faa636831f45756a1f8 ******/
 		%feature("compactdefaultargs") Project;
 		%feature("autodoc", "
 Parameters
@@ -4447,8 +4447,8 @@ Projects a point on entity. returns true if success.
 ") Project;
 		Standard_Boolean Project(const gp_XYZ & theNode, gp_XYZ & theProjNode, Standard_Real &OutValue, Standard_Boolean &OutValue);
 
-		/****************** Radius ******************/
-		/**** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ****/
+		/****** Bnd_Sphere::Radius ******/
+		/****** md5 signature: 506a8dc1140a54bd4146c24bb5357fbf ******/
 		%feature("compactdefaultargs") Radius;
 		%feature("autodoc", "Return
 -------
@@ -4460,8 +4460,8 @@ Returns the radius value.
 ") Radius;
 		Standard_Real Radius();
 
-		/****************** SetValid ******************/
-		/**** md5 signature: 027a3b33b6159b61ed6210ad45f0f977 ****/
+		/****** Bnd_Sphere::SetValid ******/
+		/****** md5 signature: 027a3b33b6159b61ed6210ad45f0f977 ******/
 		%feature("compactdefaultargs") SetValid;
 		%feature("autodoc", "
 Parameters
@@ -4478,8 +4478,8 @@ No available documentation.
 ") SetValid;
 		void SetValid(const Standard_Boolean isValid);
 
-		/****************** SquareDistance ******************/
-		/**** md5 signature: 44a8f70b9596aee83a101854ca831bdd ****/
+		/****** Bnd_Sphere::SquareDistance ******/
+		/****** md5 signature: 44a8f70b9596aee83a101854ca831bdd ******/
 		%feature("compactdefaultargs") SquareDistance;
 		%feature("autodoc", "
 Parameters
@@ -4496,8 +4496,8 @@ No available documentation.
 ") SquareDistance;
 		Standard_Real SquareDistance(const gp_XYZ & theNode);
 
-		/****************** SquareDistances ******************/
-		/**** md5 signature: 0115354ec7c961d10a14dc6ca650e8d9 ****/
+		/****** Bnd_Sphere::SquareDistances ******/
+		/****** md5 signature: 0115354ec7c961d10a14dc6ca650e8d9 ******/
 		%feature("compactdefaultargs") SquareDistances;
 		%feature("autodoc", "
 Parameters
@@ -4515,8 +4515,8 @@ Calculate and return minimal and maximal distance to sphere. note: this function
 ") SquareDistances;
 		void SquareDistances(const gp_XYZ & theXYZ, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SquareExtent ******************/
-		/**** md5 signature: f26f4f9c0289ab73c82a48183db937a6 ****/
+		/****** Bnd_Sphere::SquareExtent ******/
+		/****** md5 signature: f26f4f9c0289ab73c82a48183db937a6 ******/
 		%feature("compactdefaultargs") SquareExtent;
 		%feature("autodoc", "Return
 -------
@@ -4528,8 +4528,8 @@ No available documentation.
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
-		/****************** U ******************/
-		/**** md5 signature: 4386b8f210f0e77f0b54d3c67203a6aa ****/
+		/****** Bnd_Sphere::U ******/
+		/****** md5 signature: 4386b8f210f0e77f0b54d3c67203a6aa ******/
 		%feature("compactdefaultargs") U;
 		%feature("autodoc", "Return
 -------
@@ -4541,8 +4541,8 @@ Returns the u parameter on shape.
 ") U;
 		Standard_Integer U();
 
-		/****************** V ******************/
-		/**** md5 signature: ec40bf56ed7e6d7231afb79a2fb7ca46 ****/
+		/****** Bnd_Sphere::V ******/
+		/****** md5 signature: ec40bf56ed7e6d7231afb79a2fb7ca46 ******/
 		%feature("compactdefaultargs") V;
 		%feature("autodoc", "Return
 -------
@@ -4586,8 +4586,8 @@ Returns the v parameter on shape.
 ******************/
 class Bnd_Tools {
 	public:
-		/****************** Bnd2BVH ******************/
-		/**** md5 signature: cb874faf532c5f417d96e7f24657756b ****/
+		/****** Bnd_Tools::Bnd2BVH ******/
+		/****** md5 signature: cb874faf532c5f417d96e7f24657756b ******/
 		%feature("compactdefaultargs") Bnd2BVH;
 		%feature("autodoc", "
 Parameters
@@ -4604,8 +4604,8 @@ Converts the given bnd_box2d to bvh_box.
 ") Bnd2BVH;
 		static BVH_Box<Standard_Real, 2 > Bnd2BVH(const Bnd_Box2d & theBox);
 
-		/****************** Bnd2BVH ******************/
-		/**** md5 signature: 91eae1d8889c489de53fa29abb792a4c ****/
+		/****** Bnd_Tools::Bnd2BVH ******/
+		/****** md5 signature: 91eae1d8889c489de53fa29abb792a4c ******/
 		%feature("compactdefaultargs") Bnd2BVH;
 		%feature("autodoc", "
 Parameters

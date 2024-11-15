@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWSTEPGEOMDOCSTRING
 "RWStepGeom module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_rwstepgeom.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwstepgeom.html"
 %enddef
 %module (package="OCC.Core", docstring=RWSTEPGEOMDOCSTRING) RWStepGeom
 
@@ -94,8 +94,8 @@ from OCC.Core.Exception import *
 ************************************/
 class RWStepGeom_RWAxis1Placement {
 	public:
-		/****************** RWStepGeom_RWAxis1Placement ******************/
-		/**** md5 signature: 7d4b9ea5eb9173ec432c3d62341ea964 ****/
+		/****** RWStepGeom_RWAxis1Placement::RWStepGeom_RWAxis1Placement ******/
+		/****** md5 signature: 7d4b9ea5eb9173ec432c3d62341ea964 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWAxis1Placement;
 		%feature("autodoc", "Return
 -------
@@ -107,8 +107,8 @@ No available documentation.
 ") RWStepGeom_RWAxis1Placement;
 		 RWStepGeom_RWAxis1Placement();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 37ff6fba46036689b63b092586546d4c ****/
+		/****** RWStepGeom_RWAxis1Placement::ReadStep ******/
+		/****** md5 signature: 37ff6fba46036689b63b092586546d4c ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -128,8 +128,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Axis1Placement> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ac2da0a82abe6cefffc05f0cc195aeaf ****/
+		/****** RWStepGeom_RWAxis1Placement::Share ******/
+		/****** md5 signature: ac2da0a82abe6cefffc05f0cc195aeaf ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -147,8 +147,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Axis1Placement> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 47ccd9be27b4b6bd86adf23299858bd3 ****/
+		/****** RWStepGeom_RWAxis1Placement::WriteStep ******/
+		/****** md5 signature: 47ccd9be27b4b6bd86adf23299858bd3 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -180,8 +180,8 @@ No available documentation.
 **************************************/
 class RWStepGeom_RWAxis2Placement2d {
 	public:
-		/****************** RWStepGeom_RWAxis2Placement2d ******************/
-		/**** md5 signature: 9b8bcc4fc25f7ed1789e5c2160ff4e8f ****/
+		/****** RWStepGeom_RWAxis2Placement2d::RWStepGeom_RWAxis2Placement2d ******/
+		/****** md5 signature: 9b8bcc4fc25f7ed1789e5c2160ff4e8f ******/
 		%feature("compactdefaultargs") RWStepGeom_RWAxis2Placement2d;
 		%feature("autodoc", "Return
 -------
@@ -193,8 +193,8 @@ No available documentation.
 ") RWStepGeom_RWAxis2Placement2d;
 		 RWStepGeom_RWAxis2Placement2d();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 4f68d50f72a55a25c12e7deb36d5ec2a ****/
+		/****** RWStepGeom_RWAxis2Placement2d::ReadStep ******/
+		/****** md5 signature: 4f68d50f72a55a25c12e7deb36d5ec2a ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -214,8 +214,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Axis2Placement2d> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 6f6373b5a3901b5bf0c4bcae386bbe33 ****/
+		/****** RWStepGeom_RWAxis2Placement2d::Share ******/
+		/****** md5 signature: 6f6373b5a3901b5bf0c4bcae386bbe33 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -233,8 +233,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Axis2Placement2d> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: edbdfb0142e604b74b6ebe4ad8bf9a39 ****/
+		/****** RWStepGeom_RWAxis2Placement2d::WriteStep ******/
+		/****** md5 signature: edbdfb0142e604b74b6ebe4ad8bf9a39 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -266,8 +266,8 @@ No available documentation.
 **************************************/
 class RWStepGeom_RWAxis2Placement3d {
 	public:
-		/****************** RWStepGeom_RWAxis2Placement3d ******************/
-		/**** md5 signature: 8086ab84889f85327998b167e510d3ca ****/
+		/****** RWStepGeom_RWAxis2Placement3d::RWStepGeom_RWAxis2Placement3d ******/
+		/****** md5 signature: 8086ab84889f85327998b167e510d3ca ******/
 		%feature("compactdefaultargs") RWStepGeom_RWAxis2Placement3d;
 		%feature("autodoc", "Return
 -------
@@ -279,8 +279,8 @@ No available documentation.
 ") RWStepGeom_RWAxis2Placement3d;
 		 RWStepGeom_RWAxis2Placement3d();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 03f13cde30c1a78033774cd1f9acb2f6 ****/
+		/****** RWStepGeom_RWAxis2Placement3d::ReadStep ******/
+		/****** md5 signature: 03f13cde30c1a78033774cd1f9acb2f6 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -300,8 +300,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Axis2Placement3d> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 6d91656225cc2bd709a0f58e876a47bf ****/
+		/****** RWStepGeom_RWAxis2Placement3d::Share ******/
+		/****** md5 signature: 6d91656225cc2bd709a0f58e876a47bf ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -319,8 +319,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Axis2Placement3d> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 64fc360e37dcc0050fe9ada546bb21c7 ****/
+		/****** RWStepGeom_RWAxis2Placement3d::WriteStep ******/
+		/****** md5 signature: 64fc360e37dcc0050fe9ada546bb21c7 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -352,8 +352,8 @@ No available documentation.
 **********************************/
 class RWStepGeom_RWBSplineCurve {
 	public:
-		/****************** RWStepGeom_RWBSplineCurve ******************/
-		/**** md5 signature: f6fd29c4b3fd84cb71637a23ae157aee ****/
+		/****** RWStepGeom_RWBSplineCurve::RWStepGeom_RWBSplineCurve ******/
+		/****** md5 signature: f6fd29c4b3fd84cb71637a23ae157aee ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -365,8 +365,8 @@ No available documentation.
 ") RWStepGeom_RWBSplineCurve;
 		 RWStepGeom_RWBSplineCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 4808a791963c7dda8f860296b13ed036 ****/
+		/****** RWStepGeom_RWBSplineCurve::ReadStep ******/
+		/****** md5 signature: 4808a791963c7dda8f860296b13ed036 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -386,8 +386,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BSplineCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: cf0d69907f6ba898ac7cade7ec1d455a ****/
+		/****** RWStepGeom_RWBSplineCurve::Share ******/
+		/****** md5 signature: cf0d69907f6ba898ac7cade7ec1d455a ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -405,8 +405,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BSplineCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 55802db3dabbca7aca587c0b13aa17fe ****/
+		/****** RWStepGeom_RWBSplineCurve::WriteStep ******/
+		/****** md5 signature: 55802db3dabbca7aca587c0b13aa17fe ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -438,8 +438,8 @@ No available documentation.
 *******************************************/
 class RWStepGeom_RWBSplineCurveWithKnots {
 	public:
-		/****************** RWStepGeom_RWBSplineCurveWithKnots ******************/
-		/**** md5 signature: f512effaf4519c82cd62aedb2c23457f ****/
+		/****** RWStepGeom_RWBSplineCurveWithKnots::RWStepGeom_RWBSplineCurveWithKnots ******/
+		/****** md5 signature: f512effaf4519c82cd62aedb2c23457f ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBSplineCurveWithKnots;
 		%feature("autodoc", "Return
 -------
@@ -451,8 +451,8 @@ No available documentation.
 ") RWStepGeom_RWBSplineCurveWithKnots;
 		 RWStepGeom_RWBSplineCurveWithKnots();
 
-		/****************** Check ******************/
-		/**** md5 signature: 187fbf75e8abb639240358f5368a9154 ****/
+		/****** RWStepGeom_RWBSplineCurveWithKnots::Check ******/
+		/****** md5 signature: 187fbf75e8abb639240358f5368a9154 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -471,8 +471,8 @@ No available documentation.
 ") Check;
 		void Check(const opencascade::handle<StepGeom_BSplineCurveWithKnots> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 6310e9d1b1c5652558af31c39f42baf6 ****/
+		/****** RWStepGeom_RWBSplineCurveWithKnots::ReadStep ******/
+		/****** md5 signature: 6310e9d1b1c5652558af31c39f42baf6 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -492,8 +492,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BSplineCurveWithKnots> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: bbb136386346caf740c44c1315d3fcda ****/
+		/****** RWStepGeom_RWBSplineCurveWithKnots::Share ******/
+		/****** md5 signature: bbb136386346caf740c44c1315d3fcda ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -511,8 +511,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BSplineCurveWithKnots> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: cc1025e0dd10768dc5348b65fc4b4747 ****/
+		/****** RWStepGeom_RWBSplineCurveWithKnots::WriteStep ******/
+		/****** md5 signature: cc1025e0dd10768dc5348b65fc4b4747 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -544,8 +544,8 @@ No available documentation.
 ******************************************************************/
 class RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve {
 	public:
-		/****************** RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve ******************/
-		/**** md5 signature: 36344859ba60b7e884b524c6a044652b ****/
+		/****** RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve::RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve ******/
+		/****** md5 signature: 36344859ba60b7e884b524c6a044652b ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -557,8 +557,8 @@ No available documentation.
 ") RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve;
 		 RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve();
 
-		/****************** Check ******************/
-		/**** md5 signature: 90fb7858d03c16bfd9ebdfead45a3ae0 ****/
+		/****** RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve::Check ******/
+		/****** md5 signature: 90fb7858d03c16bfd9ebdfead45a3ae0 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -577,8 +577,8 @@ No available documentation.
 ") Check;
 		void Check(const opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 0b4b25de46b1ab9251daee965d9ad6d0 ****/
+		/****** RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve::ReadStep ******/
+		/****** md5 signature: 0b4b25de46b1ab9251daee965d9ad6d0 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -598,8 +598,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 57100b2d9e58d8d201c4d3cef04fa6eb ****/
+		/****** RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve::Share ******/
+		/****** md5 signature: 57100b2d9e58d8d201c4d3cef04fa6eb ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -617,8 +617,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: a3ace3b906f0481927fe8d2c835b7fa3 ****/
+		/****** RWStepGeom_RWBSplineCurveWithKnotsAndRationalBSplineCurve::WriteStep ******/
+		/****** md5 signature: a3ace3b906f0481927fe8d2c835b7fa3 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -650,8 +650,8 @@ No available documentation.
 ************************************/
 class RWStepGeom_RWBSplineSurface {
 	public:
-		/****************** RWStepGeom_RWBSplineSurface ******************/
-		/**** md5 signature: 13e6dfb6bd3d7f82a2890c3e4e6825c8 ****/
+		/****** RWStepGeom_RWBSplineSurface::RWStepGeom_RWBSplineSurface ******/
+		/****** md5 signature: 13e6dfb6bd3d7f82a2890c3e4e6825c8 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -663,8 +663,8 @@ No available documentation.
 ") RWStepGeom_RWBSplineSurface;
 		 RWStepGeom_RWBSplineSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 89df478557f7cbbc57f996422c6907d7 ****/
+		/****** RWStepGeom_RWBSplineSurface::ReadStep ******/
+		/****** md5 signature: 89df478557f7cbbc57f996422c6907d7 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -684,8 +684,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BSplineSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 637a90735d575ed631cf3df4337dacbc ****/
+		/****** RWStepGeom_RWBSplineSurface::Share ******/
+		/****** md5 signature: 637a90735d575ed631cf3df4337dacbc ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -703,8 +703,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BSplineSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 1d88aa1da36e97063cc86bf44e7b9a04 ****/
+		/****** RWStepGeom_RWBSplineSurface::WriteStep ******/
+		/****** md5 signature: 1d88aa1da36e97063cc86bf44e7b9a04 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -736,8 +736,8 @@ No available documentation.
 *********************************************/
 class RWStepGeom_RWBSplineSurfaceWithKnots {
 	public:
-		/****************** RWStepGeom_RWBSplineSurfaceWithKnots ******************/
-		/**** md5 signature: c8fc6a702c9a9bdc71b3599c9a6b0617 ****/
+		/****** RWStepGeom_RWBSplineSurfaceWithKnots::RWStepGeom_RWBSplineSurfaceWithKnots ******/
+		/****** md5 signature: c8fc6a702c9a9bdc71b3599c9a6b0617 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBSplineSurfaceWithKnots;
 		%feature("autodoc", "Return
 -------
@@ -749,8 +749,8 @@ No available documentation.
 ") RWStepGeom_RWBSplineSurfaceWithKnots;
 		 RWStepGeom_RWBSplineSurfaceWithKnots();
 
-		/****************** Check ******************/
-		/**** md5 signature: 3e8602a1a1df72c774f4e611449c2a6a ****/
+		/****** RWStepGeom_RWBSplineSurfaceWithKnots::Check ******/
+		/****** md5 signature: 3e8602a1a1df72c774f4e611449c2a6a ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -769,8 +769,8 @@ No available documentation.
 ") Check;
 		void Check(const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 056e6480822babbbf99eda3028e67432 ****/
+		/****** RWStepGeom_RWBSplineSurfaceWithKnots::ReadStep ******/
+		/****** md5 signature: 056e6480822babbbf99eda3028e67432 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -790,8 +790,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 1af8c07e6c8ef7f7ee60f22e7564d43e ****/
+		/****** RWStepGeom_RWBSplineSurfaceWithKnots::Share ******/
+		/****** md5 signature: 1af8c07e6c8ef7f7ee60f22e7564d43e ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -809,8 +809,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BSplineSurfaceWithKnots> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 2fa59cec5bc4664e0b8b31688731c879 ****/
+		/****** RWStepGeom_RWBSplineSurfaceWithKnots::WriteStep ******/
+		/****** md5 signature: 2fa59cec5bc4664e0b8b31688731c879 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -842,8 +842,8 @@ No available documentation.
 **********************************************************************/
 class RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface {
 	public:
-		/****************** RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface ******************/
-		/**** md5 signature: ef76adac172b14e6a8b93fc8b7ad79e4 ****/
+		/****** RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface::RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface ******/
+		/****** md5 signature: ef76adac172b14e6a8b93fc8b7ad79e4 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -855,8 +855,8 @@ No available documentation.
 ") RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface;
 		 RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface();
 
-		/****************** Check ******************/
-		/**** md5 signature: 70783b7ee9775d9ed689e4bba4eb0f41 ****/
+		/****** RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface::Check ******/
+		/****** md5 signature: 70783b7ee9775d9ed689e4bba4eb0f41 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -875,8 +875,8 @@ No available documentation.
 ") Check;
 		void Check(const opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 3b9d2dbd80f16e0c2d0823e19bc0a5d4 ****/
+		/****** RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface::ReadStep ******/
+		/****** md5 signature: 3b9d2dbd80f16e0c2d0823e19bc0a5d4 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -896,8 +896,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 5bb08a31c3c8561f5da355994a011d5d ****/
+		/****** RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface::Share ******/
+		/****** md5 signature: 5bb08a31c3c8561f5da355994a011d5d ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -915,8 +915,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 7db97ed3b9811a6c15957f8a03f3d29c ****/
+		/****** RWStepGeom_RWBSplineSurfaceWithKnotsAndRationalBSplineSurface::WriteStep ******/
+		/****** md5 signature: 7db97ed3b9811a6c15957f8a03f3d29c ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -948,8 +948,8 @@ No available documentation.
 *********************************/
 class RWStepGeom_RWBezierCurve {
 	public:
-		/****************** RWStepGeom_RWBezierCurve ******************/
-		/**** md5 signature: ee0389dbc05d58ddea4864ad35aac046 ****/
+		/****** RWStepGeom_RWBezierCurve::RWStepGeom_RWBezierCurve ******/
+		/****** md5 signature: ee0389dbc05d58ddea4864ad35aac046 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBezierCurve;
 		%feature("autodoc", "Return
 -------
@@ -961,8 +961,8 @@ No available documentation.
 ") RWStepGeom_RWBezierCurve;
 		 RWStepGeom_RWBezierCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 2dda0214e0516dd8d915d607d05f40b1 ****/
+		/****** RWStepGeom_RWBezierCurve::ReadStep ******/
+		/****** md5 signature: 2dda0214e0516dd8d915d607d05f40b1 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -982,8 +982,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BezierCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: d7dd92bf669f5a6edf117656ba97b964 ****/
+		/****** RWStepGeom_RWBezierCurve::Share ******/
+		/****** md5 signature: d7dd92bf669f5a6edf117656ba97b964 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1001,8 +1001,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BezierCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 5383e2b8e5338a832a9351511a74a347 ****/
+		/****** RWStepGeom_RWBezierCurve::WriteStep ******/
+		/****** md5 signature: 5383e2b8e5338a832a9351511a74a347 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1034,8 +1034,8 @@ No available documentation.
 ********************************************************/
 class RWStepGeom_RWBezierCurveAndRationalBSplineCurve {
 	public:
-		/****************** RWStepGeom_RWBezierCurveAndRationalBSplineCurve ******************/
-		/**** md5 signature: b9224654b0ee61fa797f2d1f11c079e5 ****/
+		/****** RWStepGeom_RWBezierCurveAndRationalBSplineCurve::RWStepGeom_RWBezierCurveAndRationalBSplineCurve ******/
+		/****** md5 signature: b9224654b0ee61fa797f2d1f11c079e5 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBezierCurveAndRationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -1047,8 +1047,8 @@ No available documentation.
 ") RWStepGeom_RWBezierCurveAndRationalBSplineCurve;
 		 RWStepGeom_RWBezierCurveAndRationalBSplineCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: b97ce471ea72e7a14e4fee4fcf3b2da0 ****/
+		/****** RWStepGeom_RWBezierCurveAndRationalBSplineCurve::ReadStep ******/
+		/****** md5 signature: b97ce471ea72e7a14e4fee4fcf3b2da0 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1068,8 +1068,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BezierCurveAndRationalBSplineCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 68296c039abf8840cf272071c73a3ca1 ****/
+		/****** RWStepGeom_RWBezierCurveAndRationalBSplineCurve::Share ******/
+		/****** md5 signature: 68296c039abf8840cf272071c73a3ca1 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1087,8 +1087,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BezierCurveAndRationalBSplineCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 8e386946b01489fd506b6d93abe0c69a ****/
+		/****** RWStepGeom_RWBezierCurveAndRationalBSplineCurve::WriteStep ******/
+		/****** md5 signature: 8e386946b01489fd506b6d93abe0c69a ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1120,8 +1120,8 @@ No available documentation.
 ***********************************/
 class RWStepGeom_RWBezierSurface {
 	public:
-		/****************** RWStepGeom_RWBezierSurface ******************/
-		/**** md5 signature: 21eacf9a1a66e01d70d7eb66a41f4b15 ****/
+		/****** RWStepGeom_RWBezierSurface::RWStepGeom_RWBezierSurface ******/
+		/****** md5 signature: 21eacf9a1a66e01d70d7eb66a41f4b15 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBezierSurface;
 		%feature("autodoc", "Return
 -------
@@ -1133,8 +1133,8 @@ No available documentation.
 ") RWStepGeom_RWBezierSurface;
 		 RWStepGeom_RWBezierSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 71446d317a76341a4d4a1309755159e9 ****/
+		/****** RWStepGeom_RWBezierSurface::ReadStep ******/
+		/****** md5 signature: 71446d317a76341a4d4a1309755159e9 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1154,8 +1154,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BezierSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 984771d6d0bfe577b74e782ab66b0b64 ****/
+		/****** RWStepGeom_RWBezierSurface::Share ******/
+		/****** md5 signature: 984771d6d0bfe577b74e782ab66b0b64 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1173,8 +1173,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BezierSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 658b0703a2df7caefd6450d5422e5275 ****/
+		/****** RWStepGeom_RWBezierSurface::WriteStep ******/
+		/****** md5 signature: 658b0703a2df7caefd6450d5422e5275 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1206,8 +1206,8 @@ No available documentation.
 ************************************************************/
 class RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface {
 	public:
-		/****************** RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface ******************/
-		/**** md5 signature: 8d08fa4d3d1045157899a3bcb8d055ab ****/
+		/****** RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface::RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface ******/
+		/****** md5 signature: 8d08fa4d3d1045157899a3bcb8d055ab ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -1219,8 +1219,8 @@ No available documentation.
 ") RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface;
 		 RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 1a368cc12a782c99a6bd499a9644ffe8 ****/
+		/****** RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface::ReadStep ******/
+		/****** md5 signature: 1a368cc12a782c99a6bd499a9644ffe8 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1240,8 +1240,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BezierSurfaceAndRationalBSplineSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 5af71746d7dad23277c5895c22c9975d ****/
+		/****** RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface::Share ******/
+		/****** md5 signature: 5af71746d7dad23277c5895c22c9975d ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1259,8 +1259,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BezierSurfaceAndRationalBSplineSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 3c1090a05993ed6f5b3bde856439e9b1 ****/
+		/****** RWStepGeom_RWBezierSurfaceAndRationalBSplineSurface::WriteStep ******/
+		/****** md5 signature: 3c1090a05993ed6f5b3bde856439e9b1 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1292,8 +1292,8 @@ No available documentation.
 ***********************************/
 class RWStepGeom_RWBoundaryCurve {
 	public:
-		/****************** RWStepGeom_RWBoundaryCurve ******************/
-		/**** md5 signature: 72dcf7328235eaa17482283b4adb27a6 ****/
+		/****** RWStepGeom_RWBoundaryCurve::RWStepGeom_RWBoundaryCurve ******/
+		/****** md5 signature: 72dcf7328235eaa17482283b4adb27a6 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBoundaryCurve;
 		%feature("autodoc", "Return
 -------
@@ -1305,8 +1305,8 @@ No available documentation.
 ") RWStepGeom_RWBoundaryCurve;
 		 RWStepGeom_RWBoundaryCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: d4c1de5cfc177301f99a53ab2cbc1d9c ****/
+		/****** RWStepGeom_RWBoundaryCurve::ReadStep ******/
+		/****** md5 signature: d4c1de5cfc177301f99a53ab2cbc1d9c ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1326,8 +1326,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BoundaryCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: cfb98ecce42137dc1a9767bcb25fe9bf ****/
+		/****** RWStepGeom_RWBoundaryCurve::Share ******/
+		/****** md5 signature: cfb98ecce42137dc1a9767bcb25fe9bf ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1345,8 +1345,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_BoundaryCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 648c7ecdafa6310388625d47d998fa55 ****/
+		/****** RWStepGeom_RWBoundaryCurve::WriteStep ******/
+		/****** md5 signature: 648c7ecdafa6310388625d47d998fa55 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1378,8 +1378,8 @@ No available documentation.
 **********************************/
 class RWStepGeom_RWBoundedCurve {
 	public:
-		/****************** RWStepGeom_RWBoundedCurve ******************/
-		/**** md5 signature: f16197708f6b64b1408fd5c0564271e7 ****/
+		/****** RWStepGeom_RWBoundedCurve::RWStepGeom_RWBoundedCurve ******/
+		/****** md5 signature: f16197708f6b64b1408fd5c0564271e7 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBoundedCurve;
 		%feature("autodoc", "Return
 -------
@@ -1391,8 +1391,8 @@ No available documentation.
 ") RWStepGeom_RWBoundedCurve;
 		 RWStepGeom_RWBoundedCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: a594d723d26f3e8d3ef97978474c55ce ****/
+		/****** RWStepGeom_RWBoundedCurve::ReadStep ******/
+		/****** md5 signature: a594d723d26f3e8d3ef97978474c55ce ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1412,8 +1412,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BoundedCurve> & ent);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: ebbe95e2f52916b1d12f588ec719bf64 ****/
+		/****** RWStepGeom_RWBoundedCurve::WriteStep ******/
+		/****** md5 signature: ebbe95e2f52916b1d12f588ec719bf64 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1445,8 +1445,8 @@ No available documentation.
 ************************************/
 class RWStepGeom_RWBoundedSurface {
 	public:
-		/****************** RWStepGeom_RWBoundedSurface ******************/
-		/**** md5 signature: 8999c3dca2db9895e749b199001c809a ****/
+		/****** RWStepGeom_RWBoundedSurface::RWStepGeom_RWBoundedSurface ******/
+		/****** md5 signature: 8999c3dca2db9895e749b199001c809a ******/
 		%feature("compactdefaultargs") RWStepGeom_RWBoundedSurface;
 		%feature("autodoc", "Return
 -------
@@ -1458,8 +1458,8 @@ No available documentation.
 ") RWStepGeom_RWBoundedSurface;
 		 RWStepGeom_RWBoundedSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 47ff8f8a603caf5b7f3dc4b40e0275e5 ****/
+		/****** RWStepGeom_RWBoundedSurface::ReadStep ******/
+		/****** md5 signature: 47ff8f8a603caf5b7f3dc4b40e0275e5 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1479,8 +1479,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_BoundedSurface> & ent);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 19ba553787eed0c5b0fea914643ee56c ****/
+		/****** RWStepGeom_RWBoundedSurface::WriteStep ******/
+		/****** md5 signature: 19ba553787eed0c5b0fea914643ee56c ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1512,8 +1512,8 @@ No available documentation.
 ************************************/
 class RWStepGeom_RWCartesianPoint {
 	public:
-		/****************** RWStepGeom_RWCartesianPoint ******************/
-		/**** md5 signature: de7375d957c4b5e37eb83070cb323d2a ****/
+		/****** RWStepGeom_RWCartesianPoint::RWStepGeom_RWCartesianPoint ******/
+		/****** md5 signature: de7375d957c4b5e37eb83070cb323d2a ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCartesianPoint;
 		%feature("autodoc", "Return
 -------
@@ -1525,8 +1525,8 @@ No available documentation.
 ") RWStepGeom_RWCartesianPoint;
 		 RWStepGeom_RWCartesianPoint();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 73d1b9c6ccc4efc8e357af127bb9067b ****/
+		/****** RWStepGeom_RWCartesianPoint::ReadStep ******/
+		/****** md5 signature: 73d1b9c6ccc4efc8e357af127bb9067b ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1546,8 +1546,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_CartesianPoint> & ent);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 29107e912c53e050b5f06bba353b764a ****/
+		/****** RWStepGeom_RWCartesianPoint::WriteStep ******/
+		/****** md5 signature: 29107e912c53e050b5f06bba353b764a ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1579,8 +1579,8 @@ No available documentation.
 *****************************************************/
 class RWStepGeom_RWCartesianTransformationOperator {
 	public:
-		/****************** RWStepGeom_RWCartesianTransformationOperator ******************/
-		/**** md5 signature: d312e7a41bf344e32108a629a861f04c ****/
+		/****** RWStepGeom_RWCartesianTransformationOperator::RWStepGeom_RWCartesianTransformationOperator ******/
+		/****** md5 signature: d312e7a41bf344e32108a629a861f04c ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCartesianTransformationOperator;
 		%feature("autodoc", "Return
 -------
@@ -1592,8 +1592,8 @@ No available documentation.
 ") RWStepGeom_RWCartesianTransformationOperator;
 		 RWStepGeom_RWCartesianTransformationOperator();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 12bb6007e0e4608a701a5dc9780c6973 ****/
+		/****** RWStepGeom_RWCartesianTransformationOperator::ReadStep ******/
+		/****** md5 signature: 12bb6007e0e4608a701a5dc9780c6973 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1613,8 +1613,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_CartesianTransformationOperator> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: faae25a3652b8c6ac6d35fa4ebca9f46 ****/
+		/****** RWStepGeom_RWCartesianTransformationOperator::Share ******/
+		/****** md5 signature: faae25a3652b8c6ac6d35fa4ebca9f46 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1632,8 +1632,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_CartesianTransformationOperator> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: a163466733ad0557c5b4e6c7099d4e62 ****/
+		/****** RWStepGeom_RWCartesianTransformationOperator::WriteStep ******/
+		/****** md5 signature: a163466733ad0557c5b4e6c7099d4e62 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1665,8 +1665,8 @@ No available documentation.
 *******************************************************/
 class RWStepGeom_RWCartesianTransformationOperator3d {
 	public:
-		/****************** RWStepGeom_RWCartesianTransformationOperator3d ******************/
-		/**** md5 signature: 45dbfdff425174ba0164dfa71318e728 ****/
+		/****** RWStepGeom_RWCartesianTransformationOperator3d::RWStepGeom_RWCartesianTransformationOperator3d ******/
+		/****** md5 signature: 45dbfdff425174ba0164dfa71318e728 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCartesianTransformationOperator3d;
 		%feature("autodoc", "Return
 -------
@@ -1678,8 +1678,8 @@ No available documentation.
 ") RWStepGeom_RWCartesianTransformationOperator3d;
 		 RWStepGeom_RWCartesianTransformationOperator3d();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: bf6b9ce5cdf7739303e1878d2761ae0c ****/
+		/****** RWStepGeom_RWCartesianTransformationOperator3d::ReadStep ******/
+		/****** md5 signature: bf6b9ce5cdf7739303e1878d2761ae0c ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1699,8 +1699,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 33c3e35889a18a73119e17c582521f9b ****/
+		/****** RWStepGeom_RWCartesianTransformationOperator3d::Share ******/
+		/****** md5 signature: 33c3e35889a18a73119e17c582521f9b ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1718,8 +1718,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_CartesianTransformationOperator3d> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 87b5827381423469affc12efb588c998 ****/
+		/****** RWStepGeom_RWCartesianTransformationOperator3d::WriteStep ******/
+		/****** md5 signature: 87b5827381423469affc12efb588c998 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1751,8 +1751,8 @@ No available documentation.
 ****************************/
 class RWStepGeom_RWCircle {
 	public:
-		/****************** RWStepGeom_RWCircle ******************/
-		/**** md5 signature: e8949437b5536dd358f4fe93d3d00cca ****/
+		/****** RWStepGeom_RWCircle::RWStepGeom_RWCircle ******/
+		/****** md5 signature: e8949437b5536dd358f4fe93d3d00cca ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCircle;
 		%feature("autodoc", "Return
 -------
@@ -1764,8 +1764,8 @@ No available documentation.
 ") RWStepGeom_RWCircle;
 		 RWStepGeom_RWCircle();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 3cdb944ec294a873ad9190b8b59d9ffa ****/
+		/****** RWStepGeom_RWCircle::ReadStep ******/
+		/****** md5 signature: 3cdb944ec294a873ad9190b8b59d9ffa ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1785,8 +1785,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Circle> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 14cdaf787f7ee74fecc0217f937bb6e3 ****/
+		/****** RWStepGeom_RWCircle::Share ******/
+		/****** md5 signature: 14cdaf787f7ee74fecc0217f937bb6e3 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1804,8 +1804,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Circle> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 1b114a97e27672c3b73af9df91151db5 ****/
+		/****** RWStepGeom_RWCircle::WriteStep ******/
+		/****** md5 signature: 1b114a97e27672c3b73af9df91151db5 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1837,8 +1837,8 @@ No available documentation.
 ************************************/
 class RWStepGeom_RWCompositeCurve {
 	public:
-		/****************** RWStepGeom_RWCompositeCurve ******************/
-		/**** md5 signature: 5a13133f61c2662bb539bd1a8a97c1b7 ****/
+		/****** RWStepGeom_RWCompositeCurve::RWStepGeom_RWCompositeCurve ******/
+		/****** md5 signature: 5a13133f61c2662bb539bd1a8a97c1b7 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCompositeCurve;
 		%feature("autodoc", "Return
 -------
@@ -1850,8 +1850,8 @@ No available documentation.
 ") RWStepGeom_RWCompositeCurve;
 		 RWStepGeom_RWCompositeCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 0957c3743b007b455d31ed5348c15ca4 ****/
+		/****** RWStepGeom_RWCompositeCurve::ReadStep ******/
+		/****** md5 signature: 0957c3743b007b455d31ed5348c15ca4 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1871,8 +1871,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_CompositeCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 121a9abafad962ad55de6f1e7511b58d ****/
+		/****** RWStepGeom_RWCompositeCurve::Share ******/
+		/****** md5 signature: 121a9abafad962ad55de6f1e7511b58d ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1890,8 +1890,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_CompositeCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: ae94706f02555fadceabbcbadff8e09d ****/
+		/****** RWStepGeom_RWCompositeCurve::WriteStep ******/
+		/****** md5 signature: ae94706f02555fadceabbcbadff8e09d ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -1923,8 +1923,8 @@ No available documentation.
 *********************************************/
 class RWStepGeom_RWCompositeCurveOnSurface {
 	public:
-		/****************** RWStepGeom_RWCompositeCurveOnSurface ******************/
-		/**** md5 signature: a18eaf7d941598486204a52bee49be59 ****/
+		/****** RWStepGeom_RWCompositeCurveOnSurface::RWStepGeom_RWCompositeCurveOnSurface ******/
+		/****** md5 signature: a18eaf7d941598486204a52bee49be59 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCompositeCurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -1936,8 +1936,8 @@ No available documentation.
 ") RWStepGeom_RWCompositeCurveOnSurface;
 		 RWStepGeom_RWCompositeCurveOnSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 71133eca3c5d544caa70ed8707ab593b ****/
+		/****** RWStepGeom_RWCompositeCurveOnSurface::ReadStep ******/
+		/****** md5 signature: 71133eca3c5d544caa70ed8707ab593b ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -1957,8 +1957,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_CompositeCurveOnSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 83098f0b96d39fd5304c2f16aef47053 ****/
+		/****** RWStepGeom_RWCompositeCurveOnSurface::Share ******/
+		/****** md5 signature: 83098f0b96d39fd5304c2f16aef47053 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -1976,8 +1976,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_CompositeCurveOnSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: c0cf2722183eedcbcea4ade5c01ea934 ****/
+		/****** RWStepGeom_RWCompositeCurveOnSurface::WriteStep ******/
+		/****** md5 signature: c0cf2722183eedcbcea4ade5c01ea934 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2009,8 +2009,8 @@ No available documentation.
 *******************************************/
 class RWStepGeom_RWCompositeCurveSegment {
 	public:
-		/****************** RWStepGeom_RWCompositeCurveSegment ******************/
-		/**** md5 signature: c8d5956aec79d31bd302047e18ce570b ****/
+		/****** RWStepGeom_RWCompositeCurveSegment::RWStepGeom_RWCompositeCurveSegment ******/
+		/****** md5 signature: c8d5956aec79d31bd302047e18ce570b ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCompositeCurveSegment;
 		%feature("autodoc", "Return
 -------
@@ -2022,8 +2022,8 @@ No available documentation.
 ") RWStepGeom_RWCompositeCurveSegment;
 		 RWStepGeom_RWCompositeCurveSegment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 8369a8ea2f1e9dc84f83903a04b394a0 ****/
+		/****** RWStepGeom_RWCompositeCurveSegment::ReadStep ******/
+		/****** md5 signature: 8369a8ea2f1e9dc84f83903a04b394a0 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2043,8 +2043,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_CompositeCurveSegment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ebbe5e40ca944d91e43da66322f66b99 ****/
+		/****** RWStepGeom_RWCompositeCurveSegment::Share ******/
+		/****** md5 signature: ebbe5e40ca944d91e43da66322f66b99 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2062,8 +2062,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_CompositeCurveSegment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: eb4bb65d2442fe6e2e0d74b4a72b146e ****/
+		/****** RWStepGeom_RWCompositeCurveSegment::WriteStep ******/
+		/****** md5 signature: eb4bb65d2442fe6e2e0d74b4a72b146e ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2095,8 +2095,8 @@ No available documentation.
 ***************************/
 class RWStepGeom_RWConic {
 	public:
-		/****************** RWStepGeom_RWConic ******************/
-		/**** md5 signature: 7fa46345f111694403753987e5e54c91 ****/
+		/****** RWStepGeom_RWConic::RWStepGeom_RWConic ******/
+		/****** md5 signature: 7fa46345f111694403753987e5e54c91 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWConic;
 		%feature("autodoc", "Return
 -------
@@ -2108,8 +2108,8 @@ No available documentation.
 ") RWStepGeom_RWConic;
 		 RWStepGeom_RWConic();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 3dbabc62d93b54ecd07ab06a74b30d59 ****/
+		/****** RWStepGeom_RWConic::ReadStep ******/
+		/****** md5 signature: 3dbabc62d93b54ecd07ab06a74b30d59 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2129,8 +2129,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Conic> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: c05d84428dfa436bcdac3c0cacb6e6a0 ****/
+		/****** RWStepGeom_RWConic::Share ******/
+		/****** md5 signature: c05d84428dfa436bcdac3c0cacb6e6a0 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2148,8 +2148,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Conic> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 0b868c8010b1bed653adeadb1fe68b19 ****/
+		/****** RWStepGeom_RWConic::WriteStep ******/
+		/****** md5 signature: 0b868c8010b1bed653adeadb1fe68b19 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2181,8 +2181,8 @@ No available documentation.
 ************************************/
 class RWStepGeom_RWConicalSurface {
 	public:
-		/****************** RWStepGeom_RWConicalSurface ******************/
-		/**** md5 signature: 502e63d997881352df807c9661aedee9 ****/
+		/****** RWStepGeom_RWConicalSurface::RWStepGeom_RWConicalSurface ******/
+		/****** md5 signature: 502e63d997881352df807c9661aedee9 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWConicalSurface;
 		%feature("autodoc", "Return
 -------
@@ -2194,8 +2194,8 @@ No available documentation.
 ") RWStepGeom_RWConicalSurface;
 		 RWStepGeom_RWConicalSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 99b35c5ff5a853ea73489814047eeec3 ****/
+		/****** RWStepGeom_RWConicalSurface::ReadStep ******/
+		/****** md5 signature: 99b35c5ff5a853ea73489814047eeec3 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2215,8 +2215,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_ConicalSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: f886410e40361f2c863f9a08dff9807e ****/
+		/****** RWStepGeom_RWConicalSurface::Share ******/
+		/****** md5 signature: f886410e40361f2c863f9a08dff9807e ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2234,8 +2234,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_ConicalSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 2976cac801e1a07b5482892c75890720 ****/
+		/****** RWStepGeom_RWConicalSurface::WriteStep ******/
+		/****** md5 signature: 2976cac801e1a07b5482892c75890720 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2267,8 +2267,8 @@ No available documentation.
 ***************************/
 class RWStepGeom_RWCurve {
 	public:
-		/****************** RWStepGeom_RWCurve ******************/
-		/**** md5 signature: 552a0a05453539e5609cc6e1014ed72d ****/
+		/****** RWStepGeom_RWCurve::RWStepGeom_RWCurve ******/
+		/****** md5 signature: 552a0a05453539e5609cc6e1014ed72d ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCurve;
 		%feature("autodoc", "Return
 -------
@@ -2280,8 +2280,8 @@ No available documentation.
 ") RWStepGeom_RWCurve;
 		 RWStepGeom_RWCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: cda2c2b624c864a4a4802eca208552de ****/
+		/****** RWStepGeom_RWCurve::ReadStep ******/
+		/****** md5 signature: cda2c2b624c864a4a4802eca208552de ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2301,8 +2301,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Curve> & ent);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 51468748049a4c54575a170670578915 ****/
+		/****** RWStepGeom_RWCurve::WriteStep ******/
+		/****** md5 signature: 51468748049a4c54575a170670578915 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2334,8 +2334,8 @@ No available documentation.
 *****************************************/
 class RWStepGeom_RWCurveBoundedSurface {
 	public:
-		/****************** RWStepGeom_RWCurveBoundedSurface ******************/
-		/**** md5 signature: 56e856d96ab6294564e63dcc606f3ff9 ****/
+		/****** RWStepGeom_RWCurveBoundedSurface::RWStepGeom_RWCurveBoundedSurface ******/
+		/****** md5 signature: 56e856d96ab6294564e63dcc606f3ff9 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCurveBoundedSurface;
 		%feature("autodoc", "Return
 -------
@@ -2347,8 +2347,8 @@ Empty constructor.
 ") RWStepGeom_RWCurveBoundedSurface;
 		 RWStepGeom_RWCurveBoundedSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 2d1adc41178c24048804c004800c45a0 ****/
+		/****** RWStepGeom_RWCurveBoundedSurface::ReadStep ******/
+		/****** md5 signature: 2d1adc41178c24048804c004800c45a0 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2368,8 +2368,8 @@ Reads curveboundedsurface.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_CurveBoundedSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 423b874f8447af9058e3ce078a38b35c ****/
+		/****** RWStepGeom_RWCurveBoundedSurface::Share ******/
+		/****** md5 signature: 423b874f8447af9058e3ce078a38b35c ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2387,8 +2387,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepGeom_CurveBoundedSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 722b2bf929de328cbdfc78af3b2fc8d7 ****/
+		/****** RWStepGeom_RWCurveBoundedSurface::WriteStep ******/
+		/****** md5 signature: 722b2bf929de328cbdfc78af3b2fc8d7 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2420,8 +2420,8 @@ Writes curveboundedsurface.
 **********************************/
 class RWStepGeom_RWCurveReplica {
 	public:
-		/****************** RWStepGeom_RWCurveReplica ******************/
-		/**** md5 signature: 4889e2af9e706f785818b2349d73d857 ****/
+		/****** RWStepGeom_RWCurveReplica::RWStepGeom_RWCurveReplica ******/
+		/****** md5 signature: 4889e2af9e706f785818b2349d73d857 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCurveReplica;
 		%feature("autodoc", "Return
 -------
@@ -2433,8 +2433,8 @@ No available documentation.
 ") RWStepGeom_RWCurveReplica;
 		 RWStepGeom_RWCurveReplica();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 8cf80c168bd83f8932c19974b7391f34 ****/
+		/****** RWStepGeom_RWCurveReplica::ReadStep ******/
+		/****** md5 signature: 8cf80c168bd83f8932c19974b7391f34 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2454,8 +2454,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_CurveReplica> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 4e985ac7e9f0d8afca7bfb5a303c195d ****/
+		/****** RWStepGeom_RWCurveReplica::Share ******/
+		/****** md5 signature: 4e985ac7e9f0d8afca7bfb5a303c195d ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2473,8 +2473,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_CurveReplica> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: fd398494b6f53e2cafcd76a28b0d6f93 ****/
+		/****** RWStepGeom_RWCurveReplica::WriteStep ******/
+		/****** md5 signature: fd398494b6f53e2cafcd76a28b0d6f93 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2506,8 +2506,8 @@ No available documentation.
 ****************************************/
 class RWStepGeom_RWCylindricalSurface {
 	public:
-		/****************** RWStepGeom_RWCylindricalSurface ******************/
-		/**** md5 signature: 286bf9c2b077c5e41461180c50f62421 ****/
+		/****** RWStepGeom_RWCylindricalSurface::RWStepGeom_RWCylindricalSurface ******/
+		/****** md5 signature: 286bf9c2b077c5e41461180c50f62421 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWCylindricalSurface;
 		%feature("autodoc", "Return
 -------
@@ -2519,8 +2519,8 @@ No available documentation.
 ") RWStepGeom_RWCylindricalSurface;
 		 RWStepGeom_RWCylindricalSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 2b221051c396a912d61edf5d6a6cb8f0 ****/
+		/****** RWStepGeom_RWCylindricalSurface::ReadStep ******/
+		/****** md5 signature: 2b221051c396a912d61edf5d6a6cb8f0 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2540,8 +2540,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_CylindricalSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: c4dbb85846b7a43fb3c4b4707f4874ac ****/
+		/****** RWStepGeom_RWCylindricalSurface::Share ******/
+		/****** md5 signature: c4dbb85846b7a43fb3c4b4707f4874ac ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2559,8 +2559,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_CylindricalSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 4f88bad8d8c06160f5ad730915f2439c ****/
+		/****** RWStepGeom_RWCylindricalSurface::WriteStep ******/
+		/****** md5 signature: 4f88bad8d8c06160f5ad730915f2439c ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2592,8 +2592,8 @@ No available documentation.
 **************************************/
 class RWStepGeom_RWDegeneratePcurve {
 	public:
-		/****************** RWStepGeom_RWDegeneratePcurve ******************/
-		/**** md5 signature: a7ff5cb866f1de3690e5648c02a1942f ****/
+		/****** RWStepGeom_RWDegeneratePcurve::RWStepGeom_RWDegeneratePcurve ******/
+		/****** md5 signature: a7ff5cb866f1de3690e5648c02a1942f ******/
 		%feature("compactdefaultargs") RWStepGeom_RWDegeneratePcurve;
 		%feature("autodoc", "Return
 -------
@@ -2605,8 +2605,8 @@ No available documentation.
 ") RWStepGeom_RWDegeneratePcurve;
 		 RWStepGeom_RWDegeneratePcurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: e7a754a41572448638c50e711717ce1b ****/
+		/****** RWStepGeom_RWDegeneratePcurve::ReadStep ******/
+		/****** md5 signature: e7a754a41572448638c50e711717ce1b ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2626,8 +2626,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_DegeneratePcurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 9eae7a6a4b24b550ec10b6527b400c0f ****/
+		/****** RWStepGeom_RWDegeneratePcurve::Share ******/
+		/****** md5 signature: 9eae7a6a4b24b550ec10b6527b400c0f ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2645,8 +2645,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_DegeneratePcurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: b9a750f98acd98f94b06ec9b94e15fe0 ****/
+		/****** RWStepGeom_RWDegeneratePcurve::WriteStep ******/
+		/****** md5 signature: b9a750f98acd98f94b06ec9b94e15fe0 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2678,8 +2678,8 @@ No available documentation.
 ***********************************************/
 class RWStepGeom_RWDegenerateToroidalSurface {
 	public:
-		/****************** RWStepGeom_RWDegenerateToroidalSurface ******************/
-		/**** md5 signature: e81698d39aa3b9a72663bf7d6ba292c9 ****/
+		/****** RWStepGeom_RWDegenerateToroidalSurface::RWStepGeom_RWDegenerateToroidalSurface ******/
+		/****** md5 signature: e81698d39aa3b9a72663bf7d6ba292c9 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWDegenerateToroidalSurface;
 		%feature("autodoc", "Return
 -------
@@ -2691,8 +2691,8 @@ No available documentation.
 ") RWStepGeom_RWDegenerateToroidalSurface;
 		 RWStepGeom_RWDegenerateToroidalSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 9a90649c3ec27bc3633ba5396382541a ****/
+		/****** RWStepGeom_RWDegenerateToroidalSurface::ReadStep ******/
+		/****** md5 signature: 9a90649c3ec27bc3633ba5396382541a ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2712,8 +2712,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_DegenerateToroidalSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ca17921479ca8eb4217810d4a59a6972 ****/
+		/****** RWStepGeom_RWDegenerateToroidalSurface::Share ******/
+		/****** md5 signature: ca17921479ca8eb4217810d4a59a6972 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2731,8 +2731,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_DegenerateToroidalSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 8a8eee86f647c8d6674dae2b4c73ae15 ****/
+		/****** RWStepGeom_RWDegenerateToroidalSurface::WriteStep ******/
+		/****** md5 signature: 8a8eee86f647c8d6674dae2b4c73ae15 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2764,8 +2764,8 @@ No available documentation.
 *******************************/
 class RWStepGeom_RWDirection {
 	public:
-		/****************** RWStepGeom_RWDirection ******************/
-		/**** md5 signature: c79ffb9f74109585dda59b45b9b5b9bc ****/
+		/****** RWStepGeom_RWDirection::RWStepGeom_RWDirection ******/
+		/****** md5 signature: c79ffb9f74109585dda59b45b9b5b9bc ******/
 		%feature("compactdefaultargs") RWStepGeom_RWDirection;
 		%feature("autodoc", "Return
 -------
@@ -2777,8 +2777,8 @@ No available documentation.
 ") RWStepGeom_RWDirection;
 		 RWStepGeom_RWDirection();
 
-		/****************** Check ******************/
-		/**** md5 signature: a788a0733a4079069d15c715ba03f6cd ****/
+		/****** RWStepGeom_RWDirection::Check ******/
+		/****** md5 signature: a788a0733a4079069d15c715ba03f6cd ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -2797,8 +2797,8 @@ No available documentation.
 ") Check;
 		void Check(const opencascade::handle<StepGeom_Direction> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: a90a7e7ca3de4207e1e5449f650ec6d6 ****/
+		/****** RWStepGeom_RWDirection::ReadStep ******/
+		/****** md5 signature: a90a7e7ca3de4207e1e5449f650ec6d6 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2818,8 +2818,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Direction> & ent);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 070175d94e2aabd132939503b24b9a46 ****/
+		/****** RWStepGeom_RWDirection::WriteStep ******/
+		/****** md5 signature: 070175d94e2aabd132939503b24b9a46 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2851,8 +2851,8 @@ No available documentation.
 ***************************************/
 class RWStepGeom_RWElementarySurface {
 	public:
-		/****************** RWStepGeom_RWElementarySurface ******************/
-		/**** md5 signature: da16fcfede1fbedefcadf1c6f3b32f1b ****/
+		/****** RWStepGeom_RWElementarySurface::RWStepGeom_RWElementarySurface ******/
+		/****** md5 signature: da16fcfede1fbedefcadf1c6f3b32f1b ******/
 		%feature("compactdefaultargs") RWStepGeom_RWElementarySurface;
 		%feature("autodoc", "Return
 -------
@@ -2864,8 +2864,8 @@ No available documentation.
 ") RWStepGeom_RWElementarySurface;
 		 RWStepGeom_RWElementarySurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 2d87b8ec35f90906d54d2b51ae3abe3a ****/
+		/****** RWStepGeom_RWElementarySurface::ReadStep ******/
+		/****** md5 signature: 2d87b8ec35f90906d54d2b51ae3abe3a ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2885,8 +2885,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_ElementarySurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 624bafc27498ac1311a6b8ba54959cb3 ****/
+		/****** RWStepGeom_RWElementarySurface::Share ******/
+		/****** md5 signature: 624bafc27498ac1311a6b8ba54959cb3 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -2904,8 +2904,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_ElementarySurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 02a1bdb0e100adcd1b9c9532721eef61 ****/
+		/****** RWStepGeom_RWElementarySurface::WriteStep ******/
+		/****** md5 signature: 02a1bdb0e100adcd1b9c9532721eef61 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -2937,8 +2937,8 @@ No available documentation.
 *****************************/
 class RWStepGeom_RWEllipse {
 	public:
-		/****************** RWStepGeom_RWEllipse ******************/
-		/**** md5 signature: 7d7e8ce308951d7291ba4985062a3718 ****/
+		/****** RWStepGeom_RWEllipse::RWStepGeom_RWEllipse ******/
+		/****** md5 signature: 7d7e8ce308951d7291ba4985062a3718 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWEllipse;
 		%feature("autodoc", "Return
 -------
@@ -2950,8 +2950,8 @@ No available documentation.
 ") RWStepGeom_RWEllipse;
 		 RWStepGeom_RWEllipse();
 
-		/****************** Check ******************/
-		/**** md5 signature: 7c047e94383cf38f0ffea9692111e0f1 ****/
+		/****** RWStepGeom_RWEllipse::Check ******/
+		/****** md5 signature: 7c047e94383cf38f0ffea9692111e0f1 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -2970,8 +2970,8 @@ No available documentation.
 ") Check;
 		void Check(const opencascade::handle<StepGeom_Ellipse> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 400d3abd51d4f7a106772e9645bab985 ****/
+		/****** RWStepGeom_RWEllipse::ReadStep ******/
+		/****** md5 signature: 400d3abd51d4f7a106772e9645bab985 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -2991,8 +2991,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Ellipse> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 70e6731c96f6be40d3ccdc5b47896084 ****/
+		/****** RWStepGeom_RWEllipse::Share ******/
+		/****** md5 signature: 70e6731c96f6be40d3ccdc5b47896084 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -3010,8 +3010,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Ellipse> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: f737f384f80ae5452349eefa8855879c ****/
+		/****** RWStepGeom_RWEllipse::WriteStep ******/
+		/****** md5 signature: f737f384f80ae5452349eefa8855879c ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3043,8 +3043,8 @@ No available documentation.
 ***********************************************/
 class RWStepGeom_RWEvaluatedDegeneratePcurve {
 	public:
-		/****************** RWStepGeom_RWEvaluatedDegeneratePcurve ******************/
-		/**** md5 signature: e5a036e2253513339e18cc73b893eca2 ****/
+		/****** RWStepGeom_RWEvaluatedDegeneratePcurve::RWStepGeom_RWEvaluatedDegeneratePcurve ******/
+		/****** md5 signature: e5a036e2253513339e18cc73b893eca2 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWEvaluatedDegeneratePcurve;
 		%feature("autodoc", "Return
 -------
@@ -3056,8 +3056,8 @@ No available documentation.
 ") RWStepGeom_RWEvaluatedDegeneratePcurve;
 		 RWStepGeom_RWEvaluatedDegeneratePcurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 9a3e50571c8667f33dba1c5a3f905598 ****/
+		/****** RWStepGeom_RWEvaluatedDegeneratePcurve::ReadStep ******/
+		/****** md5 signature: 9a3e50571c8667f33dba1c5a3f905598 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3077,8 +3077,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_EvaluatedDegeneratePcurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 4c6ebfb749fc52321efb00824dfb7d75 ****/
+		/****** RWStepGeom_RWEvaluatedDegeneratePcurve::Share ******/
+		/****** md5 signature: 4c6ebfb749fc52321efb00824dfb7d75 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -3096,8 +3096,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_EvaluatedDegeneratePcurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: a745371d6b34084e36166ca838b4c057 ****/
+		/****** RWStepGeom_RWEvaluatedDegeneratePcurve::WriteStep ******/
+		/****** md5 signature: a745371d6b34084e36166ca838b4c057 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3129,8 +3129,8 @@ No available documentation.
 *****************************************************************************/
 class RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx {
 	public:
-		/****************** RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx ******************/
-		/**** md5 signature: 9e5acf84efbbf54ac3def4e891dc2809 ****/
+		/****** RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx ******/
+		/****** md5 signature: 9e5acf84efbbf54ac3def4e891dc2809 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
 		%feature("autodoc", "Return
 -------
@@ -3142,8 +3142,8 @@ No available documentation.
 ") RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx;
 		 RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 17896afc12c5c5dc82e3cba971022c74 ****/
+		/****** RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::ReadStep ******/
+		/****** md5 signature: 17896afc12c5c5dc82e3cba971022c74 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3163,8 +3163,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 660a7d7d0a2bd3c3f39f85d75e4b885f ****/
+		/****** RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::Share ******/
+		/****** md5 signature: 660a7d7d0a2bd3c3f39f85d75e4b885f ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -3182,8 +3182,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_GeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: b44e5f1c080cf94e979c3ea1c661bac0 ****/
+		/****** RWStepGeom_RWGeomRepContextAndGlobUnitAssCtxAndGlobUncertaintyAssCtx::WriteStep ******/
+		/****** md5 signature: b44e5f1c080cf94e979c3ea1c661bac0 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3215,8 +3215,8 @@ No available documentation.
 ****************************************************/
 class RWStepGeom_RWGeometricRepresentationContext {
 	public:
-		/****************** RWStepGeom_RWGeometricRepresentationContext ******************/
-		/**** md5 signature: 02909e3e182d7c02ae4c98a4f03d9a38 ****/
+		/****** RWStepGeom_RWGeometricRepresentationContext::RWStepGeom_RWGeometricRepresentationContext ******/
+		/****** md5 signature: 02909e3e182d7c02ae4c98a4f03d9a38 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWGeometricRepresentationContext;
 		%feature("autodoc", "Return
 -------
@@ -3228,8 +3228,8 @@ No available documentation.
 ") RWStepGeom_RWGeometricRepresentationContext;
 		 RWStepGeom_RWGeometricRepresentationContext();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 469b32563208a1c5e71983d9e94bcb04 ****/
+		/****** RWStepGeom_RWGeometricRepresentationContext::ReadStep ******/
+		/****** md5 signature: 469b32563208a1c5e71983d9e94bcb04 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3249,8 +3249,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_GeometricRepresentationContext> & ent);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: a4342837b753eaa802481db3a0b883d1 ****/
+		/****** RWStepGeom_RWGeometricRepresentationContext::WriteStep ******/
+		/****** md5 signature: a4342837b753eaa802481db3a0b883d1 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3282,8 +3282,8 @@ No available documentation.
 ********************************************************************************/
 class RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext {
 	public:
-		/****************** RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext ******************/
-		/**** md5 signature: b6985cdea62cf149b533c5208774b228 ****/
+		/****** RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext::RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext ******/
+		/****** md5 signature: b6985cdea62cf149b533c5208774b228 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext;
 		%feature("autodoc", "Return
 -------
@@ -3295,8 +3295,8 @@ No available documentation.
 ") RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext;
 		 RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 70ab6b52c267fb6814ff49d996f2b44e ****/
+		/****** RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext::ReadStep ******/
+		/****** md5 signature: 70ab6b52c267fb6814ff49d996f2b44e ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3316,8 +3316,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 19806ef6682ec5548a5b1f6943748325 ****/
+		/****** RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext::Share ******/
+		/****** md5 signature: 19806ef6682ec5548a5b1f6943748325 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -3335,8 +3335,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: ae9d63b4db6fb9a6d93ad43263e22725 ****/
+		/****** RWStepGeom_RWGeometricRepresentationContextAndGlobalUnitAssignedContext::WriteStep ******/
+		/****** md5 signature: ae9d63b4db6fb9a6d93ad43263e22725 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3368,8 +3368,8 @@ No available documentation.
 **************************************************************************************/
 class RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext {
 	public:
-		/****************** RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext ******************/
-		/**** md5 signature: 170d02d17ae5ae7ef9be3a16bf5a7747 ****/
+		/****** RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext::RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext ******/
+		/****** md5 signature: 170d02d17ae5ae7ef9be3a16bf5a7747 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext;
 		%feature("autodoc", "Return
 -------
@@ -3381,8 +3381,8 @@ No available documentation.
 ") RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext;
 		 RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 0dbe8fcd7d557dbb6d7af96e69e70834 ****/
+		/****** RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext::ReadStep ******/
+		/****** md5 signature: 0dbe8fcd7d557dbb6d7af96e69e70834 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3402,8 +3402,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_GeometricRepresentationContextAndParametricRepresentationContext> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 5e491c6201c0a880352c8a361fc1d173 ****/
+		/****** RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext::Share ******/
+		/****** md5 signature: 5e491c6201c0a880352c8a361fc1d173 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -3421,8 +3421,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_GeometricRepresentationContextAndParametricRepresentationContext> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 684203954e3c1da0ab1a887071c1d977 ****/
+		/****** RWStepGeom_RWGeometricRepresentationContextAndParametricRepresentationContext::WriteStep ******/
+		/****** md5 signature: 684203954e3c1da0ab1a887071c1d977 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3454,8 +3454,8 @@ No available documentation.
 *************************************************/
 class RWStepGeom_RWGeometricRepresentationItem {
 	public:
-		/****************** RWStepGeom_RWGeometricRepresentationItem ******************/
-		/**** md5 signature: 32bc321f358b4f25ab353b658662b3ec ****/
+		/****** RWStepGeom_RWGeometricRepresentationItem::RWStepGeom_RWGeometricRepresentationItem ******/
+		/****** md5 signature: 32bc321f358b4f25ab353b658662b3ec ******/
 		%feature("compactdefaultargs") RWStepGeom_RWGeometricRepresentationItem;
 		%feature("autodoc", "Return
 -------
@@ -3467,8 +3467,8 @@ No available documentation.
 ") RWStepGeom_RWGeometricRepresentationItem;
 		 RWStepGeom_RWGeometricRepresentationItem();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 83d765962e97d6e0bd8c6227a013309c ****/
+		/****** RWStepGeom_RWGeometricRepresentationItem::ReadStep ******/
+		/****** md5 signature: 83d765962e97d6e0bd8c6227a013309c ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3488,8 +3488,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_GeometricRepresentationItem> & ent);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 965fdf0d56dcb268c297224b12749ea5 ****/
+		/****** RWStepGeom_RWGeometricRepresentationItem::WriteStep ******/
+		/****** md5 signature: 965fdf0d56dcb268c297224b12749ea5 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3521,8 +3521,8 @@ No available documentation.
 *******************************/
 class RWStepGeom_RWHyperbola {
 	public:
-		/****************** RWStepGeom_RWHyperbola ******************/
-		/**** md5 signature: 8d742cf57bd26be48f884f152b4d99a9 ****/
+		/****** RWStepGeom_RWHyperbola::RWStepGeom_RWHyperbola ******/
+		/****** md5 signature: 8d742cf57bd26be48f884f152b4d99a9 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWHyperbola;
 		%feature("autodoc", "Return
 -------
@@ -3534,8 +3534,8 @@ No available documentation.
 ") RWStepGeom_RWHyperbola;
 		 RWStepGeom_RWHyperbola();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 0efa305c5097526715e61c9056e6e394 ****/
+		/****** RWStepGeom_RWHyperbola::ReadStep ******/
+		/****** md5 signature: 0efa305c5097526715e61c9056e6e394 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3555,8 +3555,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Hyperbola> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 4339ce7e5bf24e237982e85da3ac10a7 ****/
+		/****** RWStepGeom_RWHyperbola::Share ******/
+		/****** md5 signature: 4339ce7e5bf24e237982e85da3ac10a7 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -3574,8 +3574,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Hyperbola> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 6c83c1a75dd991ba888042945861806e ****/
+		/****** RWStepGeom_RWHyperbola::WriteStep ******/
+		/****** md5 signature: 6c83c1a75dd991ba888042945861806e ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3607,8 +3607,8 @@ No available documentation.
 ***************************************/
 class RWStepGeom_RWIntersectionCurve {
 	public:
-		/****************** RWStepGeom_RWIntersectionCurve ******************/
-		/**** md5 signature: d3d198233d4ba691a771e87abe94e429 ****/
+		/****** RWStepGeom_RWIntersectionCurve::RWStepGeom_RWIntersectionCurve ******/
+		/****** md5 signature: d3d198233d4ba691a771e87abe94e429 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWIntersectionCurve;
 		%feature("autodoc", "Return
 -------
@@ -3620,8 +3620,8 @@ No available documentation.
 ") RWStepGeom_RWIntersectionCurve;
 		 RWStepGeom_RWIntersectionCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: debe323d4a4be855b3954361f8a1a079 ****/
+		/****** RWStepGeom_RWIntersectionCurve::ReadStep ******/
+		/****** md5 signature: debe323d4a4be855b3954361f8a1a079 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3641,8 +3641,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_IntersectionCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: c9c00e4f0e28fc70b0c7788af44bad3d ****/
+		/****** RWStepGeom_RWIntersectionCurve::Share ******/
+		/****** md5 signature: c9c00e4f0e28fc70b0c7788af44bad3d ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -3660,8 +3660,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_IntersectionCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 84bc8a7ab038f3a97b704f07bbd44876 ****/
+		/****** RWStepGeom_RWIntersectionCurve::WriteStep ******/
+		/****** md5 signature: 84bc8a7ab038f3a97b704f07bbd44876 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3693,8 +3693,8 @@ No available documentation.
 **************************/
 class RWStepGeom_RWLine {
 	public:
-		/****************** RWStepGeom_RWLine ******************/
-		/**** md5 signature: 6ceb8dd154a6d2fb3a259cfdb9278683 ****/
+		/****** RWStepGeom_RWLine::RWStepGeom_RWLine ******/
+		/****** md5 signature: 6ceb8dd154a6d2fb3a259cfdb9278683 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWLine;
 		%feature("autodoc", "Return
 -------
@@ -3706,8 +3706,8 @@ No available documentation.
 ") RWStepGeom_RWLine;
 		 RWStepGeom_RWLine();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: cdeb3ba605377b634974b66e9ea13b1d ****/
+		/****** RWStepGeom_RWLine::ReadStep ******/
+		/****** md5 signature: cdeb3ba605377b634974b66e9ea13b1d ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3727,8 +3727,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Line> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 862a97733f088cab4e25ec931de0a029 ****/
+		/****** RWStepGeom_RWLine::Share ******/
+		/****** md5 signature: 862a97733f088cab4e25ec931de0a029 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -3746,8 +3746,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Line> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 747f1330370c9e370a860448ee1885b9 ****/
+		/****** RWStepGeom_RWLine::WriteStep ******/
+		/****** md5 signature: 747f1330370c9e370a860448ee1885b9 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3779,8 +3779,8 @@ No available documentation.
 ***********************************/
 class RWStepGeom_RWOffsetCurve3d {
 	public:
-		/****************** RWStepGeom_RWOffsetCurve3d ******************/
-		/**** md5 signature: df035e73f6440eaafafc55170fdb56a8 ****/
+		/****** RWStepGeom_RWOffsetCurve3d::RWStepGeom_RWOffsetCurve3d ******/
+		/****** md5 signature: df035e73f6440eaafafc55170fdb56a8 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWOffsetCurve3d;
 		%feature("autodoc", "Return
 -------
@@ -3792,8 +3792,8 @@ No available documentation.
 ") RWStepGeom_RWOffsetCurve3d;
 		 RWStepGeom_RWOffsetCurve3d();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 1c8d01465ec08ab6d070358292f241a1 ****/
+		/****** RWStepGeom_RWOffsetCurve3d::ReadStep ******/
+		/****** md5 signature: 1c8d01465ec08ab6d070358292f241a1 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3813,8 +3813,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_OffsetCurve3d> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 3b81585291f19dd350055cf8e23fd5f1 ****/
+		/****** RWStepGeom_RWOffsetCurve3d::Share ******/
+		/****** md5 signature: 3b81585291f19dd350055cf8e23fd5f1 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -3832,8 +3832,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_OffsetCurve3d> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 937f84e93014043e60354a4e70421457 ****/
+		/****** RWStepGeom_RWOffsetCurve3d::WriteStep ******/
+		/****** md5 signature: 937f84e93014043e60354a4e70421457 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3865,8 +3865,8 @@ No available documentation.
 ***********************************/
 class RWStepGeom_RWOffsetSurface {
 	public:
-		/****************** RWStepGeom_RWOffsetSurface ******************/
-		/**** md5 signature: 084cc30ea561dbe6213eb281499ffa1e ****/
+		/****** RWStepGeom_RWOffsetSurface::RWStepGeom_RWOffsetSurface ******/
+		/****** md5 signature: 084cc30ea561dbe6213eb281499ffa1e ******/
 		%feature("compactdefaultargs") RWStepGeom_RWOffsetSurface;
 		%feature("autodoc", "Return
 -------
@@ -3878,8 +3878,8 @@ No available documentation.
 ") RWStepGeom_RWOffsetSurface;
 		 RWStepGeom_RWOffsetSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 44de17b4bfcb6f96b4600b76732fc1ed ****/
+		/****** RWStepGeom_RWOffsetSurface::ReadStep ******/
+		/****** md5 signature: 44de17b4bfcb6f96b4600b76732fc1ed ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3899,8 +3899,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_OffsetSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 34119399f0e4229d44f6772603d43133 ****/
+		/****** RWStepGeom_RWOffsetSurface::Share ******/
+		/****** md5 signature: 34119399f0e4229d44f6772603d43133 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -3918,8 +3918,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_OffsetSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 86fe1f350e7886f5531bbb879cab0845 ****/
+		/****** RWStepGeom_RWOffsetSurface::WriteStep ******/
+		/****** md5 signature: 86fe1f350e7886f5531bbb879cab0845 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -3951,8 +3951,8 @@ No available documentation.
 *************************************/
 class RWStepGeom_RWOrientedSurface {
 	public:
-		/****************** RWStepGeom_RWOrientedSurface ******************/
-		/**** md5 signature: 9009b9ee8a6406d60b2f65d11c230145 ****/
+		/****** RWStepGeom_RWOrientedSurface::RWStepGeom_RWOrientedSurface ******/
+		/****** md5 signature: 9009b9ee8a6406d60b2f65d11c230145 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWOrientedSurface;
 		%feature("autodoc", "Return
 -------
@@ -3964,8 +3964,8 @@ Empty constructor.
 ") RWStepGeom_RWOrientedSurface;
 		 RWStepGeom_RWOrientedSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: b40957dd73c11d53a729a7680edf0516 ****/
+		/****** RWStepGeom_RWOrientedSurface::ReadStep ******/
+		/****** md5 signature: b40957dd73c11d53a729a7680edf0516 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -3985,8 +3985,8 @@ Reads orientedsurface.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_OrientedSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: a2972cca4722e633fb3b148e56158747 ****/
+		/****** RWStepGeom_RWOrientedSurface::Share ******/
+		/****** md5 signature: a2972cca4722e633fb3b148e56158747 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4004,8 +4004,8 @@ Fills data for graph (shared items).
 ") Share;
 		void Share(const opencascade::handle<StepGeom_OrientedSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 7f8afc403f242dceee0ae5232ebcf52c ****/
+		/****** RWStepGeom_RWOrientedSurface::WriteStep ******/
+		/****** md5 signature: 7f8afc403f242dceee0ae5232ebcf52c ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4037,8 +4037,8 @@ Writes orientedsurface.
 ****************************************/
 class RWStepGeom_RWOuterBoundaryCurve {
 	public:
-		/****************** RWStepGeom_RWOuterBoundaryCurve ******************/
-		/**** md5 signature: 729feaa676f276d0c22914ef201a9f39 ****/
+		/****** RWStepGeom_RWOuterBoundaryCurve::RWStepGeom_RWOuterBoundaryCurve ******/
+		/****** md5 signature: 729feaa676f276d0c22914ef201a9f39 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWOuterBoundaryCurve;
 		%feature("autodoc", "Return
 -------
@@ -4050,8 +4050,8 @@ No available documentation.
 ") RWStepGeom_RWOuterBoundaryCurve;
 		 RWStepGeom_RWOuterBoundaryCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 305bae04b8ef253be2f93e9386742316 ****/
+		/****** RWStepGeom_RWOuterBoundaryCurve::ReadStep ******/
+		/****** md5 signature: 305bae04b8ef253be2f93e9386742316 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4071,8 +4071,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_OuterBoundaryCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 33aa783a5369a70bd53f9b379b0bd78d ****/
+		/****** RWStepGeom_RWOuterBoundaryCurve::Share ******/
+		/****** md5 signature: 33aa783a5369a70bd53f9b379b0bd78d ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4090,8 +4090,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_OuterBoundaryCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 5f391052ef6e88ea5ea0b97286ff33e7 ****/
+		/****** RWStepGeom_RWOuterBoundaryCurve::WriteStep ******/
+		/****** md5 signature: 5f391052ef6e88ea5ea0b97286ff33e7 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4123,8 +4123,8 @@ No available documentation.
 ******************************/
 class RWStepGeom_RWParabola {
 	public:
-		/****************** RWStepGeom_RWParabola ******************/
-		/**** md5 signature: 9d349061747d3ff17ad53acbac3af5ca ****/
+		/****** RWStepGeom_RWParabola::RWStepGeom_RWParabola ******/
+		/****** md5 signature: 9d349061747d3ff17ad53acbac3af5ca ******/
 		%feature("compactdefaultargs") RWStepGeom_RWParabola;
 		%feature("autodoc", "Return
 -------
@@ -4136,8 +4136,8 @@ No available documentation.
 ") RWStepGeom_RWParabola;
 		 RWStepGeom_RWParabola();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: a137ce5cf827fe5ff8ffeb3cd3c3471f ****/
+		/****** RWStepGeom_RWParabola::ReadStep ******/
+		/****** md5 signature: a137ce5cf827fe5ff8ffeb3cd3c3471f ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4157,8 +4157,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Parabola> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 1b7385016b24f8b36a4999c004bde3c6 ****/
+		/****** RWStepGeom_RWParabola::Share ******/
+		/****** md5 signature: 1b7385016b24f8b36a4999c004bde3c6 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4176,8 +4176,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Parabola> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 5a1c28dce4213e260807eadfee7dafe1 ****/
+		/****** RWStepGeom_RWParabola::WriteStep ******/
+		/****** md5 signature: 5a1c28dce4213e260807eadfee7dafe1 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4209,8 +4209,8 @@ No available documentation.
 ****************************/
 class RWStepGeom_RWPcurve {
 	public:
-		/****************** RWStepGeom_RWPcurve ******************/
-		/**** md5 signature: a3f7bf2c7f4f5ef3d2250873591da47e ****/
+		/****** RWStepGeom_RWPcurve::RWStepGeom_RWPcurve ******/
+		/****** md5 signature: a3f7bf2c7f4f5ef3d2250873591da47e ******/
 		%feature("compactdefaultargs") RWStepGeom_RWPcurve;
 		%feature("autodoc", "Return
 -------
@@ -4222,8 +4222,8 @@ No available documentation.
 ") RWStepGeom_RWPcurve;
 		 RWStepGeom_RWPcurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 08a4fe6f7f84fa1903861e96f512cb9b ****/
+		/****** RWStepGeom_RWPcurve::ReadStep ******/
+		/****** md5 signature: 08a4fe6f7f84fa1903861e96f512cb9b ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4243,8 +4243,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Pcurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: f668f7222d6d45a263a2936de193318f ****/
+		/****** RWStepGeom_RWPcurve::Share ******/
+		/****** md5 signature: f668f7222d6d45a263a2936de193318f ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4262,8 +4262,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Pcurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 36d0ebb996cada81f88beca4f71b3096 ****/
+		/****** RWStepGeom_RWPcurve::WriteStep ******/
+		/****** md5 signature: 36d0ebb996cada81f88beca4f71b3096 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4295,8 +4295,8 @@ No available documentation.
 *******************************/
 class RWStepGeom_RWPlacement {
 	public:
-		/****************** RWStepGeom_RWPlacement ******************/
-		/**** md5 signature: 93c285c2be48cb40c3891e895ee2ed88 ****/
+		/****** RWStepGeom_RWPlacement::RWStepGeom_RWPlacement ******/
+		/****** md5 signature: 93c285c2be48cb40c3891e895ee2ed88 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWPlacement;
 		%feature("autodoc", "Return
 -------
@@ -4308,8 +4308,8 @@ No available documentation.
 ") RWStepGeom_RWPlacement;
 		 RWStepGeom_RWPlacement();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 189c44ccadf8e835f2aaadec57ae9bbc ****/
+		/****** RWStepGeom_RWPlacement::ReadStep ******/
+		/****** md5 signature: 189c44ccadf8e835f2aaadec57ae9bbc ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4329,8 +4329,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Placement> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: c291d9eac5b3ad45efa44ff73e49c1d9 ****/
+		/****** RWStepGeom_RWPlacement::Share ******/
+		/****** md5 signature: c291d9eac5b3ad45efa44ff73e49c1d9 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4348,8 +4348,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Placement> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 8c4f374a1dcce505d69c7b9b716e550f ****/
+		/****** RWStepGeom_RWPlacement::WriteStep ******/
+		/****** md5 signature: 8c4f374a1dcce505d69c7b9b716e550f ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4381,8 +4381,8 @@ No available documentation.
 ***************************/
 class RWStepGeom_RWPlane {
 	public:
-		/****************** RWStepGeom_RWPlane ******************/
-		/**** md5 signature: b2d83b3e7e29da5bca586b6e19792ef3 ****/
+		/****** RWStepGeom_RWPlane::RWStepGeom_RWPlane ******/
+		/****** md5 signature: b2d83b3e7e29da5bca586b6e19792ef3 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWPlane;
 		%feature("autodoc", "Return
 -------
@@ -4394,8 +4394,8 @@ No available documentation.
 ") RWStepGeom_RWPlane;
 		 RWStepGeom_RWPlane();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: d2c6dc29969b4e57b73e1fbd07912266 ****/
+		/****** RWStepGeom_RWPlane::ReadStep ******/
+		/****** md5 signature: d2c6dc29969b4e57b73e1fbd07912266 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4415,8 +4415,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Plane> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 1188efd7c80feeb13462dde80524d66a ****/
+		/****** RWStepGeom_RWPlane::Share ******/
+		/****** md5 signature: 1188efd7c80feeb13462dde80524d66a ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4434,8 +4434,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Plane> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 28ee72dd522cc279dd2c97359b975545 ****/
+		/****** RWStepGeom_RWPlane::WriteStep ******/
+		/****** md5 signature: 28ee72dd522cc279dd2c97359b975545 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4467,8 +4467,8 @@ No available documentation.
 ***************************/
 class RWStepGeom_RWPoint {
 	public:
-		/****************** RWStepGeom_RWPoint ******************/
-		/**** md5 signature: 8c5ffb8ebc4ac05460f3a497d7153b15 ****/
+		/****** RWStepGeom_RWPoint::RWStepGeom_RWPoint ******/
+		/****** md5 signature: 8c5ffb8ebc4ac05460f3a497d7153b15 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWPoint;
 		%feature("autodoc", "Return
 -------
@@ -4480,8 +4480,8 @@ No available documentation.
 ") RWStepGeom_RWPoint;
 		 RWStepGeom_RWPoint();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 246b390abc793c2e2b06d9d77bca6a1d ****/
+		/****** RWStepGeom_RWPoint::ReadStep ******/
+		/****** md5 signature: 246b390abc793c2e2b06d9d77bca6a1d ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4501,8 +4501,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Point> & ent);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 54ee152c68f32466f22adfd2ca19226e ****/
+		/****** RWStepGeom_RWPoint::WriteStep ******/
+		/****** md5 signature: 54ee152c68f32466f22adfd2ca19226e ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4534,8 +4534,8 @@ No available documentation.
 **********************************/
 class RWStepGeom_RWPointOnCurve {
 	public:
-		/****************** RWStepGeom_RWPointOnCurve ******************/
-		/**** md5 signature: 98b60b904b45e471abdbaf22e69431c0 ****/
+		/****** RWStepGeom_RWPointOnCurve::RWStepGeom_RWPointOnCurve ******/
+		/****** md5 signature: 98b60b904b45e471abdbaf22e69431c0 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWPointOnCurve;
 		%feature("autodoc", "Return
 -------
@@ -4547,8 +4547,8 @@ No available documentation.
 ") RWStepGeom_RWPointOnCurve;
 		 RWStepGeom_RWPointOnCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: be85eaa7906e08cbf0b84d207701496b ****/
+		/****** RWStepGeom_RWPointOnCurve::ReadStep ******/
+		/****** md5 signature: be85eaa7906e08cbf0b84d207701496b ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4568,8 +4568,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_PointOnCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 1b1fae3278542d9db0f04d9e34db2335 ****/
+		/****** RWStepGeom_RWPointOnCurve::Share ******/
+		/****** md5 signature: 1b1fae3278542d9db0f04d9e34db2335 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4587,8 +4587,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_PointOnCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 2ee8dde04338a749196f8dc30c0a4350 ****/
+		/****** RWStepGeom_RWPointOnCurve::WriteStep ******/
+		/****** md5 signature: 2ee8dde04338a749196f8dc30c0a4350 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4620,8 +4620,8 @@ No available documentation.
 ************************************/
 class RWStepGeom_RWPointOnSurface {
 	public:
-		/****************** RWStepGeom_RWPointOnSurface ******************/
-		/**** md5 signature: 55f751177629595f08161e177cd2a517 ****/
+		/****** RWStepGeom_RWPointOnSurface::RWStepGeom_RWPointOnSurface ******/
+		/****** md5 signature: 55f751177629595f08161e177cd2a517 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWPointOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -4633,8 +4633,8 @@ No available documentation.
 ") RWStepGeom_RWPointOnSurface;
 		 RWStepGeom_RWPointOnSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: f27dd37df91308fe7ce462a7ed50558f ****/
+		/****** RWStepGeom_RWPointOnSurface::ReadStep ******/
+		/****** md5 signature: f27dd37df91308fe7ce462a7ed50558f ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4654,8 +4654,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_PointOnSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 0283544195763adb93e71cc722d5910a ****/
+		/****** RWStepGeom_RWPointOnSurface::Share ******/
+		/****** md5 signature: 0283544195763adb93e71cc722d5910a ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4673,8 +4673,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_PointOnSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 3b370b97ba64c7c43c3f68c640f73454 ****/
+		/****** RWStepGeom_RWPointOnSurface::WriteStep ******/
+		/****** md5 signature: 3b370b97ba64c7c43c3f68c640f73454 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4706,8 +4706,8 @@ No available documentation.
 **********************************/
 class RWStepGeom_RWPointReplica {
 	public:
-		/****************** RWStepGeom_RWPointReplica ******************/
-		/**** md5 signature: bc9e88cf267b0e80145a16ae2c41a49a ****/
+		/****** RWStepGeom_RWPointReplica::RWStepGeom_RWPointReplica ******/
+		/****** md5 signature: bc9e88cf267b0e80145a16ae2c41a49a ******/
 		%feature("compactdefaultargs") RWStepGeom_RWPointReplica;
 		%feature("autodoc", "Return
 -------
@@ -4719,8 +4719,8 @@ No available documentation.
 ") RWStepGeom_RWPointReplica;
 		 RWStepGeom_RWPointReplica();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: dbcba54c7324d5e4be7172db56f637e3 ****/
+		/****** RWStepGeom_RWPointReplica::ReadStep ******/
+		/****** md5 signature: dbcba54c7324d5e4be7172db56f637e3 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4740,8 +4740,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_PointReplica> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 014e4270f7cf25ad48087f4eb562b95a ****/
+		/****** RWStepGeom_RWPointReplica::Share ******/
+		/****** md5 signature: 014e4270f7cf25ad48087f4eb562b95a ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4759,8 +4759,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_PointReplica> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 718c436e8cb449247ed3bd6a94223901 ****/
+		/****** RWStepGeom_RWPointReplica::WriteStep ******/
+		/****** md5 signature: 718c436e8cb449247ed3bd6a94223901 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4792,8 +4792,8 @@ No available documentation.
 ******************************/
 class RWStepGeom_RWPolyline {
 	public:
-		/****************** RWStepGeom_RWPolyline ******************/
-		/**** md5 signature: 81e738bee5fc5b8baa2bb5c11548dcd4 ****/
+		/****** RWStepGeom_RWPolyline::RWStepGeom_RWPolyline ******/
+		/****** md5 signature: 81e738bee5fc5b8baa2bb5c11548dcd4 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWPolyline;
 		%feature("autodoc", "Return
 -------
@@ -4805,8 +4805,8 @@ No available documentation.
 ") RWStepGeom_RWPolyline;
 		 RWStepGeom_RWPolyline();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 177c808b61723ced00668d26834ac6db ****/
+		/****** RWStepGeom_RWPolyline::ReadStep ******/
+		/****** md5 signature: 177c808b61723ced00668d26834ac6db ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4826,8 +4826,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Polyline> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 84a30eb3c55fd8f80109f65fd6bd791c ****/
+		/****** RWStepGeom_RWPolyline::Share ******/
+		/****** md5 signature: 84a30eb3c55fd8f80109f65fd6bd791c ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4845,8 +4845,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Polyline> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 3a59c7fd8ff03a7d0388febf087019b5 ****/
+		/****** RWStepGeom_RWPolyline::WriteStep ******/
+		/****** md5 signature: 3a59c7fd8ff03a7d0388febf087019b5 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4878,8 +4878,8 @@ No available documentation.
 ***************************************/
 class RWStepGeom_RWQuasiUniformCurve {
 	public:
-		/****************** RWStepGeom_RWQuasiUniformCurve ******************/
-		/**** md5 signature: 039ec554b5ba5cfdbdb977c86590d066 ****/
+		/****** RWStepGeom_RWQuasiUniformCurve::RWStepGeom_RWQuasiUniformCurve ******/
+		/****** md5 signature: 039ec554b5ba5cfdbdb977c86590d066 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWQuasiUniformCurve;
 		%feature("autodoc", "Return
 -------
@@ -4891,8 +4891,8 @@ No available documentation.
 ") RWStepGeom_RWQuasiUniformCurve;
 		 RWStepGeom_RWQuasiUniformCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: ff1812a20da0454cacf0de0f4d556e7a ****/
+		/****** RWStepGeom_RWQuasiUniformCurve::ReadStep ******/
+		/****** md5 signature: ff1812a20da0454cacf0de0f4d556e7a ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4912,8 +4912,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_QuasiUniformCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 63af369f175ad83b1d191002232ab41d ****/
+		/****** RWStepGeom_RWQuasiUniformCurve::Share ******/
+		/****** md5 signature: 63af369f175ad83b1d191002232ab41d ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -4931,8 +4931,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_QuasiUniformCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: dcbaca55d2f1f60dee90bdd88892eeba ****/
+		/****** RWStepGeom_RWQuasiUniformCurve::WriteStep ******/
+		/****** md5 signature: dcbaca55d2f1f60dee90bdd88892eeba ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -4964,8 +4964,8 @@ No available documentation.
 **************************************************************/
 class RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve {
 	public:
-		/****************** RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve ******************/
-		/**** md5 signature: 621e31a70f4911687466203f69e35198 ****/
+		/****** RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve::RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve ******/
+		/****** md5 signature: 621e31a70f4911687466203f69e35198 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -4977,8 +4977,8 @@ No available documentation.
 ") RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve;
 		 RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: cf6de311809f26e9c6c73776af4ac1c9 ****/
+		/****** RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve::ReadStep ******/
+		/****** md5 signature: cf6de311809f26e9c6c73776af4ac1c9 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -4998,8 +4998,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_QuasiUniformCurveAndRationalBSplineCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 3bdb7a520271a76f2b71c3ac62d41630 ****/
+		/****** RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve::Share ******/
+		/****** md5 signature: 3bdb7a520271a76f2b71c3ac62d41630 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5017,8 +5017,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_QuasiUniformCurveAndRationalBSplineCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: a5ff936544c7cf2d7ff0b5ca2b72f563 ****/
+		/****** RWStepGeom_RWQuasiUniformCurveAndRationalBSplineCurve::WriteStep ******/
+		/****** md5 signature: a5ff936544c7cf2d7ff0b5ca2b72f563 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5050,8 +5050,8 @@ No available documentation.
 *****************************************/
 class RWStepGeom_RWQuasiUniformSurface {
 	public:
-		/****************** RWStepGeom_RWQuasiUniformSurface ******************/
-		/**** md5 signature: f309fafcb637bd36aa2c9682af2b77fd ****/
+		/****** RWStepGeom_RWQuasiUniformSurface::RWStepGeom_RWQuasiUniformSurface ******/
+		/****** md5 signature: f309fafcb637bd36aa2c9682af2b77fd ******/
 		%feature("compactdefaultargs") RWStepGeom_RWQuasiUniformSurface;
 		%feature("autodoc", "Return
 -------
@@ -5063,8 +5063,8 @@ No available documentation.
 ") RWStepGeom_RWQuasiUniformSurface;
 		 RWStepGeom_RWQuasiUniformSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: a9b86c8d5ae59ef84364211fd985005d ****/
+		/****** RWStepGeom_RWQuasiUniformSurface::ReadStep ******/
+		/****** md5 signature: a9b86c8d5ae59ef84364211fd985005d ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5084,8 +5084,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_QuasiUniformSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 136d1514722b045cbe36f9028443004b ****/
+		/****** RWStepGeom_RWQuasiUniformSurface::Share ******/
+		/****** md5 signature: 136d1514722b045cbe36f9028443004b ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5103,8 +5103,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_QuasiUniformSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: e317076fcac85cb27667fc4f67373d7f ****/
+		/****** RWStepGeom_RWQuasiUniformSurface::WriteStep ******/
+		/****** md5 signature: e317076fcac85cb27667fc4f67373d7f ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5136,8 +5136,8 @@ No available documentation.
 ******************************************************************/
 class RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface {
 	public:
-		/****************** RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface ******************/
-		/**** md5 signature: 54fa816d66574c7bf5c8634367ba3a7d ****/
+		/****** RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface::RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface ******/
+		/****** md5 signature: 54fa816d66574c7bf5c8634367ba3a7d ******/
 		%feature("compactdefaultargs") RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -5149,8 +5149,8 @@ No available documentation.
 ") RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface;
 		 RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 61a007a4855830f64fc80be09baa9bed ****/
+		/****** RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface::ReadStep ******/
+		/****** md5 signature: 61a007a4855830f64fc80be09baa9bed ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5170,8 +5170,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 1ea14a0c1a557d7280522fc5351877b8 ****/
+		/****** RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface::Share ******/
+		/****** md5 signature: 1ea14a0c1a557d7280522fc5351877b8 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5189,8 +5189,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 75f335e2007be441bd243c393056df7d ****/
+		/****** RWStepGeom_RWQuasiUniformSurfaceAndRationalBSplineSurface::WriteStep ******/
+		/****** md5 signature: 75f335e2007be441bd243c393056df7d ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5222,8 +5222,8 @@ No available documentation.
 ******************************************/
 class RWStepGeom_RWRationalBSplineCurve {
 	public:
-		/****************** RWStepGeom_RWRationalBSplineCurve ******************/
-		/**** md5 signature: ca168c8ad279d2ece2baf08611893679 ****/
+		/****** RWStepGeom_RWRationalBSplineCurve::RWStepGeom_RWRationalBSplineCurve ******/
+		/****** md5 signature: ca168c8ad279d2ece2baf08611893679 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWRationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -5235,8 +5235,8 @@ No available documentation.
 ") RWStepGeom_RWRationalBSplineCurve;
 		 RWStepGeom_RWRationalBSplineCurve();
 
-		/****************** Check ******************/
-		/**** md5 signature: 0b41057af9ae1211340ecd0a0b331d93 ****/
+		/****** RWStepGeom_RWRationalBSplineCurve::Check ******/
+		/****** md5 signature: 0b41057af9ae1211340ecd0a0b331d93 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -5255,8 +5255,8 @@ No available documentation.
 ") Check;
 		void Check(const opencascade::handle<StepGeom_RationalBSplineCurve> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 618ac19b39464596c92bd64a2b40b6e7 ****/
+		/****** RWStepGeom_RWRationalBSplineCurve::ReadStep ******/
+		/****** md5 signature: 618ac19b39464596c92bd64a2b40b6e7 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5276,8 +5276,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_RationalBSplineCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ccf9237cd4187e59f770108f189dc938 ****/
+		/****** RWStepGeom_RWRationalBSplineCurve::Share ******/
+		/****** md5 signature: ccf9237cd4187e59f770108f189dc938 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5295,8 +5295,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_RationalBSplineCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: dd146a1572150c7ea391cab4ebf418d0 ****/
+		/****** RWStepGeom_RWRationalBSplineCurve::WriteStep ******/
+		/****** md5 signature: dd146a1572150c7ea391cab4ebf418d0 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5328,8 +5328,8 @@ No available documentation.
 ********************************************/
 class RWStepGeom_RWRationalBSplineSurface {
 	public:
-		/****************** RWStepGeom_RWRationalBSplineSurface ******************/
-		/**** md5 signature: e262d313fa3b22b9f337347ba9dcc2c6 ****/
+		/****** RWStepGeom_RWRationalBSplineSurface::RWStepGeom_RWRationalBSplineSurface ******/
+		/****** md5 signature: e262d313fa3b22b9f337347ba9dcc2c6 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWRationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -5341,8 +5341,8 @@ No available documentation.
 ") RWStepGeom_RWRationalBSplineSurface;
 		 RWStepGeom_RWRationalBSplineSurface();
 
-		/****************** Check ******************/
-		/**** md5 signature: 4c41204e61886bc637ed024522fd1974 ****/
+		/****** RWStepGeom_RWRationalBSplineSurface::Check ******/
+		/****** md5 signature: 4c41204e61886bc637ed024522fd1974 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -5361,8 +5361,8 @@ No available documentation.
 ") Check;
 		void Check(const opencascade::handle<StepGeom_RationalBSplineSurface> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 4a60f753402e977e143a20db8118fcf7 ****/
+		/****** RWStepGeom_RWRationalBSplineSurface::ReadStep ******/
+		/****** md5 signature: 4a60f753402e977e143a20db8118fcf7 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5382,8 +5382,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_RationalBSplineSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 6a47e3e27f6ec7037aa30e33423b6ac6 ****/
+		/****** RWStepGeom_RWRationalBSplineSurface::Share ******/
+		/****** md5 signature: 6a47e3e27f6ec7037aa30e33423b6ac6 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5401,8 +5401,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_RationalBSplineSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: c7f72db1313a44810dbfde1954261e28 ****/
+		/****** RWStepGeom_RWRationalBSplineSurface::WriteStep ******/
+		/****** md5 signature: c7f72db1313a44810dbfde1954261e28 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5434,8 +5434,8 @@ No available documentation.
 *************************************************/
 class RWStepGeom_RWRectangularCompositeSurface {
 	public:
-		/****************** RWStepGeom_RWRectangularCompositeSurface ******************/
-		/**** md5 signature: acbe0477581509ca7d50d445e351df6a ****/
+		/****** RWStepGeom_RWRectangularCompositeSurface::RWStepGeom_RWRectangularCompositeSurface ******/
+		/****** md5 signature: acbe0477581509ca7d50d445e351df6a ******/
 		%feature("compactdefaultargs") RWStepGeom_RWRectangularCompositeSurface;
 		%feature("autodoc", "Return
 -------
@@ -5447,8 +5447,8 @@ No available documentation.
 ") RWStepGeom_RWRectangularCompositeSurface;
 		 RWStepGeom_RWRectangularCompositeSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 8a3a5e7a22e254b66f7c3a872faaed1a ****/
+		/****** RWStepGeom_RWRectangularCompositeSurface::ReadStep ******/
+		/****** md5 signature: 8a3a5e7a22e254b66f7c3a872faaed1a ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5468,8 +5468,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_RectangularCompositeSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 8c6530ed87ed4dc4fc98b7d98e66c901 ****/
+		/****** RWStepGeom_RWRectangularCompositeSurface::Share ******/
+		/****** md5 signature: 8c6530ed87ed4dc4fc98b7d98e66c901 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5487,8 +5487,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_RectangularCompositeSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 6b55275ca8a40902c923c2f951a0fe20 ****/
+		/****** RWStepGeom_RWRectangularCompositeSurface::WriteStep ******/
+		/****** md5 signature: 6b55275ca8a40902c923c2f951a0fe20 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5520,8 +5520,8 @@ No available documentation.
 ***********************************************/
 class RWStepGeom_RWRectangularTrimmedSurface {
 	public:
-		/****************** RWStepGeom_RWRectangularTrimmedSurface ******************/
-		/**** md5 signature: a2fbf7107974363ea110bfa5455ce828 ****/
+		/****** RWStepGeom_RWRectangularTrimmedSurface::RWStepGeom_RWRectangularTrimmedSurface ******/
+		/****** md5 signature: a2fbf7107974363ea110bfa5455ce828 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWRectangularTrimmedSurface;
 		%feature("autodoc", "Return
 -------
@@ -5533,8 +5533,8 @@ No available documentation.
 ") RWStepGeom_RWRectangularTrimmedSurface;
 		 RWStepGeom_RWRectangularTrimmedSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 10a37f924bce933b57dd3a93da053c1a ****/
+		/****** RWStepGeom_RWRectangularTrimmedSurface::ReadStep ******/
+		/****** md5 signature: 10a37f924bce933b57dd3a93da053c1a ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5554,8 +5554,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_RectangularTrimmedSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ab77da3b6103b2852404589a5c791e3e ****/
+		/****** RWStepGeom_RWRectangularTrimmedSurface::Share ******/
+		/****** md5 signature: ab77da3b6103b2852404589a5c791e3e ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5573,8 +5573,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_RectangularTrimmedSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 43d6b5b02762b1e2aacd878895b25b7c ****/
+		/****** RWStepGeom_RWRectangularTrimmedSurface::WriteStep ******/
+		/****** md5 signature: 43d6b5b02762b1e2aacd878895b25b7c ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5606,8 +5606,8 @@ No available documentation.
 *********************************************************/
 class RWStepGeom_RWReparametrisedCompositeCurveSegment {
 	public:
-		/****************** RWStepGeom_RWReparametrisedCompositeCurveSegment ******************/
-		/**** md5 signature: e585638b16da206e53a15158982c3616 ****/
+		/****** RWStepGeom_RWReparametrisedCompositeCurveSegment::RWStepGeom_RWReparametrisedCompositeCurveSegment ******/
+		/****** md5 signature: e585638b16da206e53a15158982c3616 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWReparametrisedCompositeCurveSegment;
 		%feature("autodoc", "Return
 -------
@@ -5619,8 +5619,8 @@ No available documentation.
 ") RWStepGeom_RWReparametrisedCompositeCurveSegment;
 		 RWStepGeom_RWReparametrisedCompositeCurveSegment();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: dd156184d17797bff9a68a60dd602b8b ****/
+		/****** RWStepGeom_RWReparametrisedCompositeCurveSegment::ReadStep ******/
+		/****** md5 signature: dd156184d17797bff9a68a60dd602b8b ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5640,8 +5640,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_ReparametrisedCompositeCurveSegment> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 80bb7b8798f563ddd2fb2a3a04d004eb ****/
+		/****** RWStepGeom_RWReparametrisedCompositeCurveSegment::Share ******/
+		/****** md5 signature: 80bb7b8798f563ddd2fb2a3a04d004eb ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5659,8 +5659,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_ReparametrisedCompositeCurveSegment> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 7d96990fd4c7ad5f3590c9eed10e4262 ****/
+		/****** RWStepGeom_RWReparametrisedCompositeCurveSegment::WriteStep ******/
+		/****** md5 signature: 7d96990fd4c7ad5f3590c9eed10e4262 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5692,8 +5692,8 @@ No available documentation.
 *******************************/
 class RWStepGeom_RWSeamCurve {
 	public:
-		/****************** RWStepGeom_RWSeamCurve ******************/
-		/**** md5 signature: 0d5b4e551c02e4b558d8b0e579ae8979 ****/
+		/****** RWStepGeom_RWSeamCurve::RWStepGeom_RWSeamCurve ******/
+		/****** md5 signature: 0d5b4e551c02e4b558d8b0e579ae8979 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSeamCurve;
 		%feature("autodoc", "Return
 -------
@@ -5705,8 +5705,8 @@ No available documentation.
 ") RWStepGeom_RWSeamCurve;
 		 RWStepGeom_RWSeamCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 7d5516a9fad63d0ea16e9ef820580fd9 ****/
+		/****** RWStepGeom_RWSeamCurve::ReadStep ******/
+		/****** md5 signature: 7d5516a9fad63d0ea16e9ef820580fd9 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5726,8 +5726,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_SeamCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 5a859ff6ff74473b462d5a19b371cd96 ****/
+		/****** RWStepGeom_RWSeamCurve::Share ******/
+		/****** md5 signature: 5a859ff6ff74473b462d5a19b371cd96 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5745,8 +5745,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_SeamCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 8beba0f2f6037208ccb8c74d92df8ec4 ****/
+		/****** RWStepGeom_RWSeamCurve::WriteStep ******/
+		/****** md5 signature: 8beba0f2f6037208ccb8c74d92df8ec4 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5778,8 +5778,8 @@ No available documentation.
 **************************************/
 class RWStepGeom_RWSphericalSurface {
 	public:
-		/****************** RWStepGeom_RWSphericalSurface ******************/
-		/**** md5 signature: 5bc0a8a127d82adf9db1772c20f31103 ****/
+		/****** RWStepGeom_RWSphericalSurface::RWStepGeom_RWSphericalSurface ******/
+		/****** md5 signature: 5bc0a8a127d82adf9db1772c20f31103 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSphericalSurface;
 		%feature("autodoc", "Return
 -------
@@ -5791,8 +5791,8 @@ No available documentation.
 ") RWStepGeom_RWSphericalSurface;
 		 RWStepGeom_RWSphericalSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 3ffdf8bdd76cfd136ee88d294edaa186 ****/
+		/****** RWStepGeom_RWSphericalSurface::ReadStep ******/
+		/****** md5 signature: 3ffdf8bdd76cfd136ee88d294edaa186 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5812,8 +5812,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_SphericalSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ecdf3891282ad13d6d328d8d9fb4a97e ****/
+		/****** RWStepGeom_RWSphericalSurface::Share ******/
+		/****** md5 signature: ecdf3891282ad13d6d328d8d9fb4a97e ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5831,8 +5831,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_SphericalSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: c54afb38093a75120e28dffe06cbd49d ****/
+		/****** RWStepGeom_RWSphericalSurface::WriteStep ******/
+		/****** md5 signature: c54afb38093a75120e28dffe06cbd49d ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5864,8 +5864,8 @@ No available documentation.
 **********************************/
 class RWStepGeom_RWSuParameters {
 	public:
-		/****************** RWStepGeom_RWSuParameters ******************/
-		/**** md5 signature: 8a2b07a385085e201d4d219699f3cd36 ****/
+		/****** RWStepGeom_RWSuParameters::RWStepGeom_RWSuParameters ******/
+		/****** md5 signature: 8a2b07a385085e201d4d219699f3cd36 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSuParameters;
 		%feature("autodoc", "Return
 -------
@@ -5877,8 +5877,8 @@ No available documentation.
 ") RWStepGeom_RWSuParameters;
 		 RWStepGeom_RWSuParameters();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 1db8a731b521247bb58ea688443826a1 ****/
+		/****** RWStepGeom_RWSuParameters::ReadStep ******/
+		/****** md5 signature: 1db8a731b521247bb58ea688443826a1 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5898,8 +5898,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & theData, const Standard_Integer theNum, opencascade::handle<Interface_Check> & theAch, const opencascade::handle<StepGeom_SuParameters> & theEnt);
 
-		/****************** Share ******************/
-		/**** md5 signature: 6a1ea50614f8d7356a7f7660630f90e2 ****/
+		/****** RWStepGeom_RWSuParameters::Share ******/
+		/****** md5 signature: 6a1ea50614f8d7356a7f7660630f90e2 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5917,8 +5917,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_SuParameters> & theEnt, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 08718add97158750d10b201d6c6569f4 ****/
+		/****** RWStepGeom_RWSuParameters::WriteStep ******/
+		/****** md5 signature: 08718add97158750d10b201d6c6569f4 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -5950,8 +5950,8 @@ No available documentation.
 *****************************/
 class RWStepGeom_RWSurface {
 	public:
-		/****************** RWStepGeom_RWSurface ******************/
-		/**** md5 signature: 600be62550365adc83b7870d95a786ba ****/
+		/****** RWStepGeom_RWSurface::RWStepGeom_RWSurface ******/
+		/****** md5 signature: 600be62550365adc83b7870d95a786ba ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSurface;
 		%feature("autodoc", "Return
 -------
@@ -5963,8 +5963,8 @@ No available documentation.
 ") RWStepGeom_RWSurface;
 		 RWStepGeom_RWSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 827c2398b3eedb642ad293ad0946b9ce ****/
+		/****** RWStepGeom_RWSurface::ReadStep ******/
+		/****** md5 signature: 827c2398b3eedb642ad293ad0946b9ce ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -5984,8 +5984,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Surface> & ent);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: bbb85dd7c1caffb27a7f5fb3dcacdbdb ****/
+		/****** RWStepGeom_RWSurface::WriteStep ******/
+		/****** md5 signature: bbb85dd7c1caffb27a7f5fb3dcacdbdb ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6017,8 +6017,8 @@ No available documentation.
 **********************************/
 class RWStepGeom_RWSurfaceCurve {
 	public:
-		/****************** RWStepGeom_RWSurfaceCurve ******************/
-		/**** md5 signature: d228a88d5e363221edff3053483983cf ****/
+		/****** RWStepGeom_RWSurfaceCurve::RWStepGeom_RWSurfaceCurve ******/
+		/****** md5 signature: d228a88d5e363221edff3053483983cf ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSurfaceCurve;
 		%feature("autodoc", "Return
 -------
@@ -6030,8 +6030,8 @@ No available documentation.
 ") RWStepGeom_RWSurfaceCurve;
 		 RWStepGeom_RWSurfaceCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 5a2580f3ff759d66e6cd1027a3363ddb ****/
+		/****** RWStepGeom_RWSurfaceCurve::ReadStep ******/
+		/****** md5 signature: 5a2580f3ff759d66e6cd1027a3363ddb ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6051,8 +6051,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_SurfaceCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 740eb120379bbc738cf1c9f2a7ab7a32 ****/
+		/****** RWStepGeom_RWSurfaceCurve::Share ******/
+		/****** md5 signature: 740eb120379bbc738cf1c9f2a7ab7a32 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6070,8 +6070,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_SurfaceCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: af2ecd44f33ff6a5248fe47ff8cb7f9c ****/
+		/****** RWStepGeom_RWSurfaceCurve::WriteStep ******/
+		/****** md5 signature: af2ecd44f33ff6a5248fe47ff8cb7f9c ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6103,8 +6103,8 @@ No available documentation.
 *************************************************/
 class RWStepGeom_RWSurfaceCurveAndBoundedCurve {
 	public:
-		/****************** RWStepGeom_RWSurfaceCurveAndBoundedCurve ******************/
-		/**** md5 signature: 0a50f7aba55f7afad7de07a2aa5a5c48 ****/
+		/****** RWStepGeom_RWSurfaceCurveAndBoundedCurve::RWStepGeom_RWSurfaceCurveAndBoundedCurve ******/
+		/****** md5 signature: 0a50f7aba55f7afad7de07a2aa5a5c48 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSurfaceCurveAndBoundedCurve;
 		%feature("autodoc", "Return
 -------
@@ -6116,8 +6116,8 @@ No available documentation.
 ") RWStepGeom_RWSurfaceCurveAndBoundedCurve;
 		 RWStepGeom_RWSurfaceCurveAndBoundedCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 04f75df590741f710280093c971f5182 ****/
+		/****** RWStepGeom_RWSurfaceCurveAndBoundedCurve::ReadStep ******/
+		/****** md5 signature: 04f75df590741f710280093c971f5182 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6137,8 +6137,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_SurfaceCurveAndBoundedCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 9ec92d4b0ab878069ca6318f6ee26be0 ****/
+		/****** RWStepGeom_RWSurfaceCurveAndBoundedCurve::Share ******/
+		/****** md5 signature: 9ec92d4b0ab878069ca6318f6ee26be0 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6156,8 +6156,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_SurfaceCurveAndBoundedCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 3f22ee4dae76601f4b45853da6c190e1 ****/
+		/****** RWStepGeom_RWSurfaceCurveAndBoundedCurve::WriteStep ******/
+		/****** md5 signature: 3f22ee4dae76601f4b45853da6c190e1 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6189,8 +6189,8 @@ No available documentation.
 **********************************************/
 class RWStepGeom_RWSurfaceOfLinearExtrusion {
 	public:
-		/****************** RWStepGeom_RWSurfaceOfLinearExtrusion ******************/
-		/**** md5 signature: a04b0a60caf283f30dd8b11c677572de ****/
+		/****** RWStepGeom_RWSurfaceOfLinearExtrusion::RWStepGeom_RWSurfaceOfLinearExtrusion ******/
+		/****** md5 signature: a04b0a60caf283f30dd8b11c677572de ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSurfaceOfLinearExtrusion;
 		%feature("autodoc", "Return
 -------
@@ -6202,8 +6202,8 @@ No available documentation.
 ") RWStepGeom_RWSurfaceOfLinearExtrusion;
 		 RWStepGeom_RWSurfaceOfLinearExtrusion();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: a5f51254fa6bf9232629e6217530fdca ****/
+		/****** RWStepGeom_RWSurfaceOfLinearExtrusion::ReadStep ******/
+		/****** md5 signature: a5f51254fa6bf9232629e6217530fdca ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6223,8 +6223,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 357a5f59eaca6caa11c11776a9e46569 ****/
+		/****** RWStepGeom_RWSurfaceOfLinearExtrusion::Share ******/
+		/****** md5 signature: 357a5f59eaca6caa11c11776a9e46569 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6242,8 +6242,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_SurfaceOfLinearExtrusion> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: e4ca413ae7af44c6c7356a6d3c48d458 ****/
+		/****** RWStepGeom_RWSurfaceOfLinearExtrusion::WriteStep ******/
+		/****** md5 signature: e4ca413ae7af44c6c7356a6d3c48d458 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6275,8 +6275,8 @@ No available documentation.
 *****************************************/
 class RWStepGeom_RWSurfaceOfRevolution {
 	public:
-		/****************** RWStepGeom_RWSurfaceOfRevolution ******************/
-		/**** md5 signature: 8cb698498408e1a52233b6149a395a8b ****/
+		/****** RWStepGeom_RWSurfaceOfRevolution::RWStepGeom_RWSurfaceOfRevolution ******/
+		/****** md5 signature: 8cb698498408e1a52233b6149a395a8b ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSurfaceOfRevolution;
 		%feature("autodoc", "Return
 -------
@@ -6288,8 +6288,8 @@ No available documentation.
 ") RWStepGeom_RWSurfaceOfRevolution;
 		 RWStepGeom_RWSurfaceOfRevolution();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 35e13f238801dc5fafa73bcb1d18e772 ****/
+		/****** RWStepGeom_RWSurfaceOfRevolution::ReadStep ******/
+		/****** md5 signature: 35e13f238801dc5fafa73bcb1d18e772 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6309,8 +6309,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_SurfaceOfRevolution> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 81d0be23c060f02ea598bd68cbe1b99a ****/
+		/****** RWStepGeom_RWSurfaceOfRevolution::Share ******/
+		/****** md5 signature: 81d0be23c060f02ea598bd68cbe1b99a ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6328,8 +6328,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_SurfaceOfRevolution> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 08c79201c37082519131c434ea566102 ****/
+		/****** RWStepGeom_RWSurfaceOfRevolution::WriteStep ******/
+		/****** md5 signature: 08c79201c37082519131c434ea566102 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6361,8 +6361,8 @@ No available documentation.
 **********************************/
 class RWStepGeom_RWSurfacePatch {
 	public:
-		/****************** RWStepGeom_RWSurfacePatch ******************/
-		/**** md5 signature: 844117723a3dfa1ed63829babdf7dfca ****/
+		/****** RWStepGeom_RWSurfacePatch::RWStepGeom_RWSurfacePatch ******/
+		/****** md5 signature: 844117723a3dfa1ed63829babdf7dfca ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSurfacePatch;
 		%feature("autodoc", "Return
 -------
@@ -6374,8 +6374,8 @@ No available documentation.
 ") RWStepGeom_RWSurfacePatch;
 		 RWStepGeom_RWSurfacePatch();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 70986cbaf7ce17ebeea7b3191f079dbe ****/
+		/****** RWStepGeom_RWSurfacePatch::ReadStep ******/
+		/****** md5 signature: 70986cbaf7ce17ebeea7b3191f079dbe ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6395,8 +6395,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_SurfacePatch> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: ea68651a4e3b59e91412d56857fdf3dc ****/
+		/****** RWStepGeom_RWSurfacePatch::Share ******/
+		/****** md5 signature: ea68651a4e3b59e91412d56857fdf3dc ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6414,8 +6414,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_SurfacePatch> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 0e4f1ae70d9409da13ec891ada207ff8 ****/
+		/****** RWStepGeom_RWSurfacePatch::WriteStep ******/
+		/****** md5 signature: 0e4f1ae70d9409da13ec891ada207ff8 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6447,8 +6447,8 @@ No available documentation.
 ************************************/
 class RWStepGeom_RWSurfaceReplica {
 	public:
-		/****************** RWStepGeom_RWSurfaceReplica ******************/
-		/**** md5 signature: 0ee6b6d26e26793d1e088ab816fa5d2a ****/
+		/****** RWStepGeom_RWSurfaceReplica::RWStepGeom_RWSurfaceReplica ******/
+		/****** md5 signature: 0ee6b6d26e26793d1e088ab816fa5d2a ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSurfaceReplica;
 		%feature("autodoc", "Return
 -------
@@ -6460,8 +6460,8 @@ No available documentation.
 ") RWStepGeom_RWSurfaceReplica;
 		 RWStepGeom_RWSurfaceReplica();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 80eeb7b68f9ebfe5386f34ea14610959 ****/
+		/****** RWStepGeom_RWSurfaceReplica::ReadStep ******/
+		/****** md5 signature: 80eeb7b68f9ebfe5386f34ea14610959 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6481,8 +6481,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_SurfaceReplica> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 9425d79231f8e9977804ab041e18500f ****/
+		/****** RWStepGeom_RWSurfaceReplica::Share ******/
+		/****** md5 signature: 9425d79231f8e9977804ab041e18500f ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6500,8 +6500,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_SurfaceReplica> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: b29b19356e5a7c882d3f9e4d2721ae32 ****/
+		/****** RWStepGeom_RWSurfaceReplica::WriteStep ******/
+		/****** md5 signature: b29b19356e5a7c882d3f9e4d2721ae32 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6533,8 +6533,8 @@ No available documentation.
 **********************************/
 class RWStepGeom_RWSweptSurface {
 	public:
-		/****************** RWStepGeom_RWSweptSurface ******************/
-		/**** md5 signature: 44b746455c8caa10b50c348b922c6ce4 ****/
+		/****** RWStepGeom_RWSweptSurface::RWStepGeom_RWSweptSurface ******/
+		/****** md5 signature: 44b746455c8caa10b50c348b922c6ce4 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWSweptSurface;
 		%feature("autodoc", "Return
 -------
@@ -6546,8 +6546,8 @@ No available documentation.
 ") RWStepGeom_RWSweptSurface;
 		 RWStepGeom_RWSweptSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: d8c066a0add9dc58bfb4362f4f701cdd ****/
+		/****** RWStepGeom_RWSweptSurface::ReadStep ******/
+		/****** md5 signature: d8c066a0add9dc58bfb4362f4f701cdd ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6567,8 +6567,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_SweptSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 52b3fd0781ea147b9ec3b232a5b8ec0b ****/
+		/****** RWStepGeom_RWSweptSurface::Share ******/
+		/****** md5 signature: 52b3fd0781ea147b9ec3b232a5b8ec0b ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6586,8 +6586,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_SweptSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: b099141d6ca44dd251e469bd2dc254b6 ****/
+		/****** RWStepGeom_RWSweptSurface::WriteStep ******/
+		/****** md5 signature: b099141d6ca44dd251e469bd2dc254b6 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6619,8 +6619,8 @@ No available documentation.
 *************************************/
 class RWStepGeom_RWToroidalSurface {
 	public:
-		/****************** RWStepGeom_RWToroidalSurface ******************/
-		/**** md5 signature: 4e908995a7cdf91f929f29dd62d388d3 ****/
+		/****** RWStepGeom_RWToroidalSurface::RWStepGeom_RWToroidalSurface ******/
+		/****** md5 signature: 4e908995a7cdf91f929f29dd62d388d3 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWToroidalSurface;
 		%feature("autodoc", "Return
 -------
@@ -6632,8 +6632,8 @@ No available documentation.
 ") RWStepGeom_RWToroidalSurface;
 		 RWStepGeom_RWToroidalSurface();
 
-		/****************** Check ******************/
-		/**** md5 signature: 546d733250741f5fb00de50f3decb39d ****/
+		/****** RWStepGeom_RWToroidalSurface::Check ******/
+		/****** md5 signature: 546d733250741f5fb00de50f3decb39d ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -6652,8 +6652,8 @@ No available documentation.
 ") Check;
 		void Check(const opencascade::handle<StepGeom_ToroidalSurface> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: f9e54adc0c00cfb25632f55bb6947cd6 ****/
+		/****** RWStepGeom_RWToroidalSurface::ReadStep ******/
+		/****** md5 signature: f9e54adc0c00cfb25632f55bb6947cd6 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6673,8 +6673,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_ToroidalSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 298a207f1dab39cd1bbb2dcc850d1e54 ****/
+		/****** RWStepGeom_RWToroidalSurface::Share ******/
+		/****** md5 signature: 298a207f1dab39cd1bbb2dcc850d1e54 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6692,8 +6692,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_ToroidalSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 4b0c2eec6f94dcc79eaec18552232596 ****/
+		/****** RWStepGeom_RWToroidalSurface::WriteStep ******/
+		/****** md5 signature: 4b0c2eec6f94dcc79eaec18552232596 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6725,8 +6725,8 @@ No available documentation.
 **********************************/
 class RWStepGeom_RWTrimmedCurve {
 	public:
-		/****************** RWStepGeom_RWTrimmedCurve ******************/
-		/**** md5 signature: 9637aeb9fde570439ea8e2c3a25fa810 ****/
+		/****** RWStepGeom_RWTrimmedCurve::RWStepGeom_RWTrimmedCurve ******/
+		/****** md5 signature: 9637aeb9fde570439ea8e2c3a25fa810 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWTrimmedCurve;
 		%feature("autodoc", "Return
 -------
@@ -6738,8 +6738,8 @@ No available documentation.
 ") RWStepGeom_RWTrimmedCurve;
 		 RWStepGeom_RWTrimmedCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 89b6863a8c94770d0810fc8dfd534590 ****/
+		/****** RWStepGeom_RWTrimmedCurve::ReadStep ******/
+		/****** md5 signature: 89b6863a8c94770d0810fc8dfd534590 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6759,8 +6759,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_TrimmedCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 48bfd613406f6eb6aa79ef2f49dd2e04 ****/
+		/****** RWStepGeom_RWTrimmedCurve::Share ******/
+		/****** md5 signature: 48bfd613406f6eb6aa79ef2f49dd2e04 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6778,8 +6778,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_TrimmedCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: bc69592963afe1f9e6a9a7ebb10d4943 ****/
+		/****** RWStepGeom_RWTrimmedCurve::WriteStep ******/
+		/****** md5 signature: bc69592963afe1f9e6a9a7ebb10d4943 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6811,8 +6811,8 @@ No available documentation.
 **********************************/
 class RWStepGeom_RWUniformCurve {
 	public:
-		/****************** RWStepGeom_RWUniformCurve ******************/
-		/**** md5 signature: 8113dad57c531d10fbcabccfc9b048e1 ****/
+		/****** RWStepGeom_RWUniformCurve::RWStepGeom_RWUniformCurve ******/
+		/****** md5 signature: 8113dad57c531d10fbcabccfc9b048e1 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWUniformCurve;
 		%feature("autodoc", "Return
 -------
@@ -6824,8 +6824,8 @@ No available documentation.
 ") RWStepGeom_RWUniformCurve;
 		 RWStepGeom_RWUniformCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 89e4f1408614c785ca45b09b80aae4f1 ****/
+		/****** RWStepGeom_RWUniformCurve::ReadStep ******/
+		/****** md5 signature: 89e4f1408614c785ca45b09b80aae4f1 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6845,8 +6845,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_UniformCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: c0a3bd82959b3a29cf3664f0bcc196eb ****/
+		/****** RWStepGeom_RWUniformCurve::Share ******/
+		/****** md5 signature: c0a3bd82959b3a29cf3664f0bcc196eb ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6864,8 +6864,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_UniformCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 00bd6b8abfef8b6382bbce1a594e024b ****/
+		/****** RWStepGeom_RWUniformCurve::WriteStep ******/
+		/****** md5 signature: 00bd6b8abfef8b6382bbce1a594e024b ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6897,8 +6897,8 @@ No available documentation.
 *********************************************************/
 class RWStepGeom_RWUniformCurveAndRationalBSplineCurve {
 	public:
-		/****************** RWStepGeom_RWUniformCurveAndRationalBSplineCurve ******************/
-		/**** md5 signature: 9e41e029063fe54b0208519b90b30380 ****/
+		/****** RWStepGeom_RWUniformCurveAndRationalBSplineCurve::RWStepGeom_RWUniformCurveAndRationalBSplineCurve ******/
+		/****** md5 signature: 9e41e029063fe54b0208519b90b30380 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWUniformCurveAndRationalBSplineCurve;
 		%feature("autodoc", "Return
 -------
@@ -6910,8 +6910,8 @@ No available documentation.
 ") RWStepGeom_RWUniformCurveAndRationalBSplineCurve;
 		 RWStepGeom_RWUniformCurveAndRationalBSplineCurve();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 99d5c8504c7bcbb1fc916fa033bafb8f ****/
+		/****** RWStepGeom_RWUniformCurveAndRationalBSplineCurve::ReadStep ******/
+		/****** md5 signature: 99d5c8504c7bcbb1fc916fa033bafb8f ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -6931,8 +6931,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_UniformCurveAndRationalBSplineCurve> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 55ee804f3aa53d60e3f126f47a71d6bf ****/
+		/****** RWStepGeom_RWUniformCurveAndRationalBSplineCurve::Share ******/
+		/****** md5 signature: 55ee804f3aa53d60e3f126f47a71d6bf ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -6950,8 +6950,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_UniformCurveAndRationalBSplineCurve> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: b19574f47f30d968971e395cbdd25d08 ****/
+		/****** RWStepGeom_RWUniformCurveAndRationalBSplineCurve::WriteStep ******/
+		/****** md5 signature: b19574f47f30d968971e395cbdd25d08 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -6983,8 +6983,8 @@ No available documentation.
 ************************************/
 class RWStepGeom_RWUniformSurface {
 	public:
-		/****************** RWStepGeom_RWUniformSurface ******************/
-		/**** md5 signature: 5d787dfd70ebbe5ee0a924a7e3c595d0 ****/
+		/****** RWStepGeom_RWUniformSurface::RWStepGeom_RWUniformSurface ******/
+		/****** md5 signature: 5d787dfd70ebbe5ee0a924a7e3c595d0 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWUniformSurface;
 		%feature("autodoc", "Return
 -------
@@ -6996,8 +6996,8 @@ No available documentation.
 ") RWStepGeom_RWUniformSurface;
 		 RWStepGeom_RWUniformSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 5fd04558caf993133e965d23f4d133fd ****/
+		/****** RWStepGeom_RWUniformSurface::ReadStep ******/
+		/****** md5 signature: 5fd04558caf993133e965d23f4d133fd ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -7017,8 +7017,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_UniformSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 69ddf79f5665ec0e34b438f7d6452f3c ****/
+		/****** RWStepGeom_RWUniformSurface::Share ******/
+		/****** md5 signature: 69ddf79f5665ec0e34b438f7d6452f3c ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -7036,8 +7036,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_UniformSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 2bd5129e65c48ff26744c50d2826650f ****/
+		/****** RWStepGeom_RWUniformSurface::WriteStep ******/
+		/****** md5 signature: 2bd5129e65c48ff26744c50d2826650f ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -7069,8 +7069,8 @@ No available documentation.
 *************************************************************/
 class RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface {
 	public:
-		/****************** RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface ******************/
-		/**** md5 signature: 3e2ccf138ec408b101bf8e209dbf2376 ****/
+		/****** RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface::RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface ******/
+		/****** md5 signature: 3e2ccf138ec408b101bf8e209dbf2376 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -7082,8 +7082,8 @@ No available documentation.
 ") RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface;
 		 RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface();
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: d1d7120f84eeb4957b4caae9015f9f0c ****/
+		/****** RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface::ReadStep ******/
+		/****** md5 signature: d1d7120f84eeb4957b4caae9015f9f0c ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -7103,8 +7103,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_UniformSurfaceAndRationalBSplineSurface> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: 90f1e7305f8665ce07ab8147e275e34c ****/
+		/****** RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface::Share ******/
+		/****** md5 signature: 90f1e7305f8665ce07ab8147e275e34c ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -7122,8 +7122,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_UniformSurfaceAndRationalBSplineSurface> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: 68e56ab79fe4faccba3a7c0e4b6b6156 ****/
+		/****** RWStepGeom_RWUniformSurfaceAndRationalBSplineSurface::WriteStep ******/
+		/****** md5 signature: 68e56ab79fe4faccba3a7c0e4b6b6156 ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters
@@ -7155,8 +7155,8 @@ No available documentation.
 ****************************/
 class RWStepGeom_RWVector {
 	public:
-		/****************** RWStepGeom_RWVector ******************/
-		/**** md5 signature: d7f12a1ca0fd789a97cfc98ac4dd4af7 ****/
+		/****** RWStepGeom_RWVector::RWStepGeom_RWVector ******/
+		/****** md5 signature: d7f12a1ca0fd789a97cfc98ac4dd4af7 ******/
 		%feature("compactdefaultargs") RWStepGeom_RWVector;
 		%feature("autodoc", "Return
 -------
@@ -7168,8 +7168,8 @@ No available documentation.
 ") RWStepGeom_RWVector;
 		 RWStepGeom_RWVector();
 
-		/****************** Check ******************/
-		/**** md5 signature: 0ab6823c4c44bb18eb9a3076903b3439 ****/
+		/****** RWStepGeom_RWVector::Check ******/
+		/****** md5 signature: 0ab6823c4c44bb18eb9a3076903b3439 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -7188,8 +7188,8 @@ No available documentation.
 ") Check;
 		void Check(const opencascade::handle<StepGeom_Vector> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** ReadStep ******************/
-		/**** md5 signature: 6a87bc6dec71e3d79050d6a6843ad6e9 ****/
+		/****** RWStepGeom_RWVector::ReadStep ******/
+		/****** md5 signature: 6a87bc6dec71e3d79050d6a6843ad6e9 ******/
 		%feature("compactdefaultargs") ReadStep;
 		%feature("autodoc", "
 Parameters
@@ -7209,8 +7209,8 @@ No available documentation.
 ") ReadStep;
 		void ReadStep(const opencascade::handle<StepData_StepReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, const opencascade::handle<StepGeom_Vector> & ent);
 
-		/****************** Share ******************/
-		/**** md5 signature: bb9ff0b9552d294dcb2cf1f74d1d8ec9 ****/
+		/****** RWStepGeom_RWVector::Share ******/
+		/****** md5 signature: bb9ff0b9552d294dcb2cf1f74d1d8ec9 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -7228,8 +7228,8 @@ No available documentation.
 ") Share;
 		void Share(const opencascade::handle<StepGeom_Vector> & ent, Interface_EntityIterator & iter);
 
-		/****************** WriteStep ******************/
-		/**** md5 signature: dc159ba5a484e5b989e47623ccb55efc ****/
+		/****** RWStepGeom_RWVector::WriteStep ******/
+		/****** md5 signature: dc159ba5a484e5b989e47623ccb55efc ******/
 		%feature("compactdefaultargs") WriteStep;
 		%feature("autodoc", "
 Parameters

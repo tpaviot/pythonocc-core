@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define XBREPMESHDOCSTRING
 "XBRepMesh module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_xbrepmesh.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_xbrepmesh.html"
 %enddef
 %module (package="OCC.Core", docstring=XBREPMESHDOCSTRING) XBRepMesh
 
@@ -97,8 +97,8 @@ from OCC.Core.Exception import *
 %rename(xbrepmesh) XBRepMesh;
 class XBRepMesh {
 	public:
-		/****************** Discret ******************/
-		/**** md5 signature: 2d40e0c47db8d58631623439c9d30c12 ****/
+		/****** XBRepMesh::Discret ******/
+		/****** md5 signature: 2d40e0c47db8d58631623439c9d30c12 ******/
 		%feature("compactdefaultargs") Discret;
 		%feature("autodoc", "
 Parameters

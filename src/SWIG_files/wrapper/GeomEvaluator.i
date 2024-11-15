@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMEVALUATORDOCSTRING
 "GeomEvaluator module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geomevaluator.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geomevaluator.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMEVALUATORDOCSTRING) GeomEvaluator
 
@@ -98,8 +98,8 @@ from OCC.Core.Exception import *
 %nodefaultctor GeomEvaluator_Curve;
 class GeomEvaluator_Curve : public Standard_Transient {
 	public:
-		/****************** D0 ******************/
-		/**** md5 signature: 746da35370896ff17a6001b63a637f21 ****/
+		/****** GeomEvaluator_Curve::D0 ******/
+		/****** md5 signature: 746da35370896ff17a6001b63a637f21 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -117,8 +117,8 @@ Value of 3d curve.
 ") D0;
 		virtual void D0(const Standard_Real theU, gp_Pnt & theValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: bc585642e9efc7f923dc9609fa8449f9 ****/
+		/****** GeomEvaluator_Curve::D1 ******/
+		/****** md5 signature: bc585642e9efc7f923dc9609fa8449f9 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -137,8 +137,8 @@ Value and first derivatives of curve.
 ") D1;
 		virtual void D1(const Standard_Real theU, gp_Pnt & theValue, gp_Vec & theD1);
 
-		/****************** D2 ******************/
-		/**** md5 signature: be5ad77d75f0e9e83b09cafed5376e77 ****/
+		/****** GeomEvaluator_Curve::D2 ******/
+		/****** md5 signature: be5ad77d75f0e9e83b09cafed5376e77 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -158,8 +158,8 @@ Value, first and second derivatives of curve.
 ") D2;
 		virtual void D2(const Standard_Real theU, gp_Pnt & theValue, gp_Vec & theD1, gp_Vec & theD2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 3cdcd7f890afa95c2858b7b1185c95dd ****/
+		/****** GeomEvaluator_Curve::D3 ******/
+		/****** md5 signature: 3cdcd7f890afa95c2858b7b1185c95dd ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -180,8 +180,8 @@ Value, first, second and third derivatives of curve.
 ") D3;
 		virtual void D3(const Standard_Real theU, gp_Pnt & theValue, gp_Vec & theD1, gp_Vec & theD2, gp_Vec & theD3);
 
-		/****************** DN ******************/
-		/**** md5 signature: e534d902338ab19561f4b339de53b57d ****/
+		/****** GeomEvaluator_Curve::DN ******/
+		/****** md5 signature: e534d902338ab19561f4b339de53b57d ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -199,8 +199,8 @@ Calculates n-th derivatives of curve, where n = thederu. raises if n < 1.
 ") DN;
 		virtual gp_Vec DN(const Standard_Real theU, const Standard_Integer theDerU);
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: fe124b26167bed39ff3eec7e218a1392 ****/
+		/****** GeomEvaluator_Curve::ShallowCopy ******/
+		/****** md5 signature: fe124b26167bed39ff3eec7e218a1392 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -229,8 +229,8 @@ No available documentation.
 %nodefaultctor GeomEvaluator_Surface;
 class GeomEvaluator_Surface : public Standard_Transient {
 	public:
-		/****************** D0 ******************/
-		/**** md5 signature: 28f3f8227c1f19f0ca123dc63d72beab ****/
+		/****** GeomEvaluator_Surface::D0 ******/
+		/****** md5 signature: 28f3f8227c1f19f0ca123dc63d72beab ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -249,8 +249,8 @@ Value of surface.
 ") D0;
 		virtual void D0(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: d72b3ce46e021168c8c8908d8a0f8f5f ****/
+		/****** GeomEvaluator_Surface::D1 ******/
+		/****** md5 signature: d72b3ce46e021168c8c8908d8a0f8f5f ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -271,8 +271,8 @@ Value and first derivatives of surface.
 ") D1;
 		virtual void D1(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 80dee925b5bda94bb05a95824c3ab611 ****/
+		/****** GeomEvaluator_Surface::D2 ******/
+		/****** md5 signature: 80dee925b5bda94bb05a95824c3ab611 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -296,8 +296,8 @@ Value, first and second derivatives of surface.
 ") D2;
 		virtual void D2(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV);
 
-		/****************** D3 ******************/
-		/**** md5 signature: d0a97233c6a934217820824209e6d50a ****/
+		/****** GeomEvaluator_Surface::D3 ******/
+		/****** md5 signature: d0a97233c6a934217820824209e6d50a ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -325,8 +325,8 @@ Value, first, second and third derivatives of surface.
 ") D3;
 		virtual void D3(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV, gp_Vec & theD3U, gp_Vec & theD3V, gp_Vec & theD3UUV, gp_Vec & theD3UVV);
 
-		/****************** DN ******************/
-		/**** md5 signature: 5435d2f1e43ba841a8a8a3814f03c6cb ****/
+		/****** GeomEvaluator_Surface::DN ******/
+		/****** md5 signature: 5435d2f1e43ba841a8a8a3814f03c6cb ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -346,8 +346,8 @@ Calculates n-th derivatives of surface, where n = thederu + thederv. //! raises 
 ") DN;
 		virtual gp_Vec DN(const Standard_Real theU, const Standard_Real theV, const Standard_Integer theDerU, const Standard_Integer theDerV);
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: ac67d92775466f864dab9cc14e400cb7 ****/
+		/****** GeomEvaluator_Surface::ShallowCopy ******/
+		/****** md5 signature: ac67d92775466f864dab9cc14e400cb7 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -375,8 +375,8 @@ No available documentation.
 **********************************/
 class GeomEvaluator_OffsetCurve : public GeomEvaluator_Curve {
 	public:
-		/****************** GeomEvaluator_OffsetCurve ******************/
-		/**** md5 signature: 2566a84ab011d3456edd3ecfeed95ade ****/
+		/****** GeomEvaluator_OffsetCurve::GeomEvaluator_OffsetCurve ******/
+		/****** md5 signature: 2566a84ab011d3456edd3ecfeed95ade ******/
 		%feature("compactdefaultargs") GeomEvaluator_OffsetCurve;
 		%feature("autodoc", "
 Parameters
@@ -395,8 +395,8 @@ Initialize evaluator by curve.
 ") GeomEvaluator_OffsetCurve;
 		 GeomEvaluator_OffsetCurve(const opencascade::handle<Geom_Curve> & theBase, const Standard_Real theOffset, const gp_Dir & theDirection);
 
-		/****************** GeomEvaluator_OffsetCurve ******************/
-		/**** md5 signature: 8420eeb2fd48f6a959e9185e74f5fbe5 ****/
+		/****** GeomEvaluator_OffsetCurve::GeomEvaluator_OffsetCurve ******/
+		/****** md5 signature: 8420eeb2fd48f6a959e9185e74f5fbe5 ******/
 		%feature("compactdefaultargs") GeomEvaluator_OffsetCurve;
 		%feature("autodoc", "
 Parameters
@@ -415,8 +415,8 @@ Initialize evaluator by curve adaptor.
 ") GeomEvaluator_OffsetCurve;
 		 GeomEvaluator_OffsetCurve(const opencascade::handle<GeomAdaptor_Curve> & theBase, const Standard_Real theOffset, const gp_Dir & theDirection);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 66474176b3d6e773fa82e2e75db9adbb ****/
+		/****** GeomEvaluator_OffsetCurve::D0 ******/
+		/****** md5 signature: 66474176b3d6e773fa82e2e75db9adbb ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -434,8 +434,8 @@ Value of curve.
 ") D0;
 		void D0(const Standard_Real theU, gp_Pnt & theValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: e96d41cf42350bc1dcbb7992bfffd9ec ****/
+		/****** GeomEvaluator_OffsetCurve::D1 ******/
+		/****** md5 signature: e96d41cf42350bc1dcbb7992bfffd9ec ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -454,8 +454,8 @@ Value and first derivatives of curve.
 ") D1;
 		void D1(const Standard_Real theU, gp_Pnt & theValue, gp_Vec & theD1);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 23e61b74d05ad8f718526eefa7754d47 ****/
+		/****** GeomEvaluator_OffsetCurve::D2 ******/
+		/****** md5 signature: 23e61b74d05ad8f718526eefa7754d47 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -475,8 +475,8 @@ Value, first and second derivatives of curve.
 ") D2;
 		void D2(const Standard_Real theU, gp_Pnt & theValue, gp_Vec & theD1, gp_Vec & theD2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 989c0f9e45a005ca9fa4652fb525a4e3 ****/
+		/****** GeomEvaluator_OffsetCurve::D3 ******/
+		/****** md5 signature: 989c0f9e45a005ca9fa4652fb525a4e3 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -497,8 +497,8 @@ Value, first, second and third derivatives of curve.
 ") D3;
 		void D3(const Standard_Real theU, gp_Pnt & theValue, gp_Vec & theD1, gp_Vec & theD2, gp_Vec & theD3);
 
-		/****************** DN ******************/
-		/**** md5 signature: ed7b981f4c22948574d702d532333fea ****/
+		/****** GeomEvaluator_OffsetCurve::DN ******/
+		/****** md5 signature: ed7b981f4c22948574d702d532333fea ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -516,8 +516,8 @@ Calculates n-th derivatives of curve, where n = thederiv. raises if n < 1.
 ") DN;
 		gp_Vec DN(const Standard_Real theU, const Standard_Integer theDeriv);
 
-		/****************** SetOffsetDirection ******************/
-		/**** md5 signature: 17569b0102b44b0960ea08936e2845af ****/
+		/****** GeomEvaluator_OffsetCurve::SetOffsetDirection ******/
+		/****** md5 signature: 17569b0102b44b0960ea08936e2845af ******/
 		%feature("compactdefaultargs") SetOffsetDirection;
 		%feature("autodoc", "
 Parameters
@@ -534,8 +534,8 @@ No available documentation.
 ") SetOffsetDirection;
 		void SetOffsetDirection(const gp_Dir & theDirection);
 
-		/****************** SetOffsetValue ******************/
-		/**** md5 signature: 548afc85f8e72630a916fe190a2fc526 ****/
+		/****** GeomEvaluator_OffsetCurve::SetOffsetValue ******/
+		/****** md5 signature: 548afc85f8e72630a916fe190a2fc526 ******/
 		%feature("compactdefaultargs") SetOffsetValue;
 		%feature("autodoc", "
 Parameters
@@ -552,8 +552,8 @@ Change the offset value.
 ") SetOffsetValue;
 		void SetOffsetValue(Standard_Real theOffset);
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: 3f4f479803591b29cc1a58914798e6e1 ****/
+		/****** GeomEvaluator_OffsetCurve::ShallowCopy ******/
+		/****** md5 signature: 3f4f479803591b29cc1a58914798e6e1 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -581,8 +581,8 @@ No available documentation.
 ************************************/
 class GeomEvaluator_OffsetSurface : public GeomEvaluator_Surface {
 	public:
-		/****************** GeomEvaluator_OffsetSurface ******************/
-		/**** md5 signature: 4d7c3bf711d1b6d259802ef57b452513 ****/
+		/****** GeomEvaluator_OffsetSurface::GeomEvaluator_OffsetSurface ******/
+		/****** md5 signature: 4d7c3bf711d1b6d259802ef57b452513 ******/
 		%feature("compactdefaultargs") GeomEvaluator_OffsetSurface;
 		%feature("autodoc", "
 Parameters
@@ -601,8 +601,8 @@ Initialize evaluator by surface.
 ") GeomEvaluator_OffsetSurface;
 		 GeomEvaluator_OffsetSurface(const opencascade::handle<Geom_Surface> & theBase, const Standard_Real theOffset, const opencascade::handle<Geom_OsculatingSurface> & theOscSurf = opencascade::handle<Geom_OsculatingSurface>());
 
-		/****************** GeomEvaluator_OffsetSurface ******************/
-		/**** md5 signature: e3bc6f3b2d5210513e3b544eee3ebaa6 ****/
+		/****** GeomEvaluator_OffsetSurface::GeomEvaluator_OffsetSurface ******/
+		/****** md5 signature: e3bc6f3b2d5210513e3b544eee3ebaa6 ******/
 		%feature("compactdefaultargs") GeomEvaluator_OffsetSurface;
 		%feature("autodoc", "
 Parameters
@@ -621,8 +621,8 @@ Initialize evaluator by surface adaptor.
 ") GeomEvaluator_OffsetSurface;
 		 GeomEvaluator_OffsetSurface(const opencascade::handle<GeomAdaptor_Surface> & theBase, const Standard_Real theOffset, const opencascade::handle<Geom_OsculatingSurface> & theOscSurf = opencascade::handle<Geom_OsculatingSurface>());
 
-		/****************** D0 ******************/
-		/**** md5 signature: 2d6a7e09cbdc01a4df050802195d3171 ****/
+		/****** GeomEvaluator_OffsetSurface::D0 ******/
+		/****** md5 signature: 2d6a7e09cbdc01a4df050802195d3171 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -641,8 +641,8 @@ Value of surface.
 ") D0;
 		void D0(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 3b3d2c9c0dc9beb616d2945ae2a7c9c7 ****/
+		/****** GeomEvaluator_OffsetSurface::D1 ******/
+		/****** md5 signature: 3b3d2c9c0dc9beb616d2945ae2a7c9c7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -663,8 +663,8 @@ Value and first derivatives of surface.
 ") D1;
 		void D1(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V);
 
-		/****************** D2 ******************/
-		/**** md5 signature: aac577d0db0df7fbead5f8a72afb2a29 ****/
+		/****** GeomEvaluator_OffsetSurface::D2 ******/
+		/****** md5 signature: aac577d0db0df7fbead5f8a72afb2a29 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -688,8 +688,8 @@ Value, first and second derivatives of surface.
 ") D2;
 		void D2(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV);
 
-		/****************** D3 ******************/
-		/**** md5 signature: c38285b0561ae3aedece5bc2ddb140bc ****/
+		/****** GeomEvaluator_OffsetSurface::D3 ******/
+		/****** md5 signature: c38285b0561ae3aedece5bc2ddb140bc ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -717,8 +717,8 @@ Value, first, second and third derivatives of surface.
 ") D3;
 		void D3(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV, gp_Vec & theD3U, gp_Vec & theD3V, gp_Vec & theD3UUV, gp_Vec & theD3UVV);
 
-		/****************** DN ******************/
-		/**** md5 signature: 2f26fde6dd2535ddcb6fdca1b00f06c7 ****/
+		/****** GeomEvaluator_OffsetSurface::DN ******/
+		/****** md5 signature: 2f26fde6dd2535ddcb6fdca1b00f06c7 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -738,8 +738,8 @@ Calculates n-th derivatives of surface, where n = thederu + thederv. //! raises 
 ") DN;
 		gp_Vec DN(const Standard_Real theU, const Standard_Real theV, const Standard_Integer theDerU, const Standard_Integer theDerV);
 
-		/****************** SetOffsetValue ******************/
-		/**** md5 signature: 548afc85f8e72630a916fe190a2fc526 ****/
+		/****** GeomEvaluator_OffsetSurface::SetOffsetValue ******/
+		/****** md5 signature: 548afc85f8e72630a916fe190a2fc526 ******/
 		%feature("compactdefaultargs") SetOffsetValue;
 		%feature("autodoc", "
 Parameters
@@ -756,8 +756,8 @@ Change the offset value.
 ") SetOffsetValue;
 		void SetOffsetValue(Standard_Real theOffset);
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: fbd80b36cea42259d24868636d99709b ****/
+		/****** GeomEvaluator_OffsetSurface::ShallowCopy ******/
+		/****** md5 signature: fbd80b36cea42259d24868636d99709b ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -785,8 +785,8 @@ No available documentation.
 *****************************************/
 class GeomEvaluator_SurfaceOfExtrusion : public GeomEvaluator_Surface {
 	public:
-		/****************** GeomEvaluator_SurfaceOfExtrusion ******************/
-		/**** md5 signature: 027d7da117e9a6df658ed7f2f2a87e3f ****/
+		/****** GeomEvaluator_SurfaceOfExtrusion::GeomEvaluator_SurfaceOfExtrusion ******/
+		/****** md5 signature: 027d7da117e9a6df658ed7f2f2a87e3f ******/
 		%feature("compactdefaultargs") GeomEvaluator_SurfaceOfExtrusion;
 		%feature("autodoc", "
 Parameters
@@ -804,8 +804,8 @@ Initialize evaluator by surface.
 ") GeomEvaluator_SurfaceOfExtrusion;
 		 GeomEvaluator_SurfaceOfExtrusion(const opencascade::handle<Geom_Curve> & theBase, const gp_Dir & theExtrusionDir);
 
-		/****************** GeomEvaluator_SurfaceOfExtrusion ******************/
-		/**** md5 signature: e3cfee6ab38d3d48bacd1ea362d5426a ****/
+		/****** GeomEvaluator_SurfaceOfExtrusion::GeomEvaluator_SurfaceOfExtrusion ******/
+		/****** md5 signature: e3cfee6ab38d3d48bacd1ea362d5426a ******/
 		%feature("compactdefaultargs") GeomEvaluator_SurfaceOfExtrusion;
 		%feature("autodoc", "
 Parameters
@@ -823,8 +823,8 @@ Initialize evaluator by surface adaptor.
 ") GeomEvaluator_SurfaceOfExtrusion;
 		 GeomEvaluator_SurfaceOfExtrusion(const opencascade::handle<Adaptor3d_Curve> & theBase, const gp_Dir & theExtrusionDir);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 2d6a7e09cbdc01a4df050802195d3171 ****/
+		/****** GeomEvaluator_SurfaceOfExtrusion::D0 ******/
+		/****** md5 signature: 2d6a7e09cbdc01a4df050802195d3171 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -843,8 +843,8 @@ Value of surface.
 ") D0;
 		void D0(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 3b3d2c9c0dc9beb616d2945ae2a7c9c7 ****/
+		/****** GeomEvaluator_SurfaceOfExtrusion::D1 ******/
+		/****** md5 signature: 3b3d2c9c0dc9beb616d2945ae2a7c9c7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -865,8 +865,8 @@ Value and first derivatives of surface.
 ") D1;
 		void D1(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V);
 
-		/****************** D2 ******************/
-		/**** md5 signature: aac577d0db0df7fbead5f8a72afb2a29 ****/
+		/****** GeomEvaluator_SurfaceOfExtrusion::D2 ******/
+		/****** md5 signature: aac577d0db0df7fbead5f8a72afb2a29 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -890,8 +890,8 @@ Value, first and second derivatives of surface.
 ") D2;
 		void D2(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV);
 
-		/****************** D3 ******************/
-		/**** md5 signature: c38285b0561ae3aedece5bc2ddb140bc ****/
+		/****** GeomEvaluator_SurfaceOfExtrusion::D3 ******/
+		/****** md5 signature: c38285b0561ae3aedece5bc2ddb140bc ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -919,8 +919,8 @@ Value, first, second and third derivatives of surface.
 ") D3;
 		void D3(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV, gp_Vec & theD3U, gp_Vec & theD3V, gp_Vec & theD3UUV, gp_Vec & theD3UVV);
 
-		/****************** DN ******************/
-		/**** md5 signature: 2f26fde6dd2535ddcb6fdca1b00f06c7 ****/
+		/****** GeomEvaluator_SurfaceOfExtrusion::DN ******/
+		/****** md5 signature: 2f26fde6dd2535ddcb6fdca1b00f06c7 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -940,8 +940,8 @@ Calculates n-th derivatives of surface, where n = thederu + thederv. //! raises 
 ") DN;
 		gp_Vec DN(const Standard_Real theU, const Standard_Real theV, const Standard_Integer theDerU, const Standard_Integer theDerV);
 
-		/****************** SetDirection ******************/
-		/**** md5 signature: 03e096726d774182cbdd6e00d0d20499 ****/
+		/****** GeomEvaluator_SurfaceOfExtrusion::SetDirection ******/
+		/****** md5 signature: 03e096726d774182cbdd6e00d0d20499 ******/
 		%feature("compactdefaultargs") SetDirection;
 		%feature("autodoc", "
 Parameters
@@ -958,8 +958,8 @@ Description
 ") SetDirection;
 		void SetDirection(const gp_Dir & theDirection);
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: fbd80b36cea42259d24868636d99709b ****/
+		/****** GeomEvaluator_SurfaceOfExtrusion::ShallowCopy ******/
+		/****** md5 signature: fbd80b36cea42259d24868636d99709b ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -987,8 +987,8 @@ No available documentation.
 ******************************************/
 class GeomEvaluator_SurfaceOfRevolution : public GeomEvaluator_Surface {
 	public:
-		/****************** GeomEvaluator_SurfaceOfRevolution ******************/
-		/**** md5 signature: 8832b9c3887d3ff766e516c6cd21463d ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::GeomEvaluator_SurfaceOfRevolution ******/
+		/****** md5 signature: 8832b9c3887d3ff766e516c6cd21463d ******/
 		%feature("compactdefaultargs") GeomEvaluator_SurfaceOfRevolution;
 		%feature("autodoc", "
 Parameters
@@ -1007,8 +1007,8 @@ Initialize evaluator by revolved curve, the axis of revolution and the location.
 ") GeomEvaluator_SurfaceOfRevolution;
 		 GeomEvaluator_SurfaceOfRevolution(const opencascade::handle<Geom_Curve> & theBase, const gp_Dir & theRevolDir, const gp_Pnt & theRevolLoc);
 
-		/****************** GeomEvaluator_SurfaceOfRevolution ******************/
-		/**** md5 signature: c0d248a0845d27bb2b25e4ec8a363cc5 ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::GeomEvaluator_SurfaceOfRevolution ******/
+		/****** md5 signature: c0d248a0845d27bb2b25e4ec8a363cc5 ******/
 		%feature("compactdefaultargs") GeomEvaluator_SurfaceOfRevolution;
 		%feature("autodoc", "
 Parameters
@@ -1027,8 +1027,8 @@ Initialize evaluator by adaptor of the revolved curve, the axis of revolution an
 ") GeomEvaluator_SurfaceOfRevolution;
 		 GeomEvaluator_SurfaceOfRevolution(const opencascade::handle<Adaptor3d_Curve> & theBase, const gp_Dir & theRevolDir, const gp_Pnt & theRevolLoc);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 2d6a7e09cbdc01a4df050802195d3171 ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::D0 ******/
+		/****** md5 signature: 2d6a7e09cbdc01a4df050802195d3171 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -1047,8 +1047,8 @@ Value of surface.
 ") D0;
 		void D0(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 3b3d2c9c0dc9beb616d2945ae2a7c9c7 ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::D1 ******/
+		/****** md5 signature: 3b3d2c9c0dc9beb616d2945ae2a7c9c7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1069,8 +1069,8 @@ Value and first derivatives of surface.
 ") D1;
 		void D1(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V);
 
-		/****************** D2 ******************/
-		/**** md5 signature: aac577d0db0df7fbead5f8a72afb2a29 ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::D2 ******/
+		/****** md5 signature: aac577d0db0df7fbead5f8a72afb2a29 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -1094,8 +1094,8 @@ Value, first and second derivatives of surface.
 ") D2;
 		void D2(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV);
 
-		/****************** D3 ******************/
-		/**** md5 signature: c38285b0561ae3aedece5bc2ddb140bc ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::D3 ******/
+		/****** md5 signature: c38285b0561ae3aedece5bc2ddb140bc ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -1123,8 +1123,8 @@ Value, first, second and third derivatives of surface.
 ") D3;
 		void D3(const Standard_Real theU, const Standard_Real theV, gp_Pnt & theValue, gp_Vec & theD1U, gp_Vec & theD1V, gp_Vec & theD2U, gp_Vec & theD2V, gp_Vec & theD2UV, gp_Vec & theD3U, gp_Vec & theD3V, gp_Vec & theD3UUV, gp_Vec & theD3UVV);
 
-		/****************** DN ******************/
-		/**** md5 signature: 2f26fde6dd2535ddcb6fdca1b00f06c7 ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::DN ******/
+		/****** md5 signature: 2f26fde6dd2535ddcb6fdca1b00f06c7 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -1144,8 +1144,8 @@ Calculates n-th derivatives of surface, where n = thederu + thederv. //! raises 
 ") DN;
 		gp_Vec DN(const Standard_Real theU, const Standard_Real theV, const Standard_Integer theDerU, const Standard_Integer theDerV);
 
-		/****************** SetAxis ******************/
-		/**** md5 signature: 3e4d4cf0a38b798ede2d2c35caaa9626 ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::SetAxis ******/
+		/****** md5 signature: 3e4d4cf0a38b798ede2d2c35caaa9626 ******/
 		%feature("compactdefaultargs") SetAxis;
 		%feature("autodoc", "
 Parameters
@@ -1162,8 +1162,8 @@ Change the axis of revolution.
 ") SetAxis;
 		void SetAxis(const gp_Ax1 & theAxis);
 
-		/****************** SetDirection ******************/
-		/**** md5 signature: 03e096726d774182cbdd6e00d0d20499 ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::SetDirection ******/
+		/****** md5 signature: 03e096726d774182cbdd6e00d0d20499 ******/
 		%feature("compactdefaultargs") SetDirection;
 		%feature("autodoc", "
 Parameters
@@ -1180,8 +1180,8 @@ Change direction of the axis of revolution.
 ") SetDirection;
 		void SetDirection(const gp_Dir & theDirection);
 
-		/****************** SetLocation ******************/
-		/**** md5 signature: 49b73879adebd078faa244b518af4276 ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::SetLocation ******/
+		/****** md5 signature: 49b73879adebd078faa244b518af4276 ******/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "
 Parameters
@@ -1198,8 +1198,8 @@ Change location of the axis of revolution.
 ") SetLocation;
 		void SetLocation(const gp_Pnt & theLocation);
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: fbd80b36cea42259d24868636d99709b ****/
+		/****** GeomEvaluator_SurfaceOfRevolution::ShallowCopy ******/
+		/****** md5 signature: fbd80b36cea42259d24868636d99709b ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------

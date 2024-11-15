@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOM2DAPIDOCSTRING
 "Geom2dAPI module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geom2dapi.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geom2dapi.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOM2DAPIDOCSTRING) Geom2dAPI
 
@@ -102,8 +102,8 @@ from OCC.Core.Exception import *
 ************************************/
 class Geom2dAPI_ExtremaCurveCurve {
 	public:
-		/****************** Geom2dAPI_ExtremaCurveCurve ******************/
-		/**** md5 signature: 8f2f31b9577dc2d995aebb74682e6a81 ****/
+		/****** Geom2dAPI_ExtremaCurveCurve::Geom2dAPI_ExtremaCurveCurve ******/
+		/****** md5 signature: 8f2f31b9577dc2d995aebb74682e6a81 ******/
 		%feature("compactdefaultargs") Geom2dAPI_ExtremaCurveCurve;
 		%feature("autodoc", "
 Parameters
@@ -125,8 +125,8 @@ Computes the extrema between - the portion of the curve c1 limited by the two po
 ") Geom2dAPI_ExtremaCurveCurve;
 		 Geom2dAPI_ExtremaCurveCurve(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real U2min, const Standard_Real U2max);
 
-		/****************** Distance ******************/
-		/**** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ****/
+		/****** Geom2dAPI_ExtremaCurveCurve::Distance ******/
+		/****** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -143,8 +143,8 @@ Computes the distance between the end points of the extremum of index index comp
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
-		/****************** Extrema ******************/
-		/**** md5 signature: b1d6dfe7a95af8a82b7106fd7bcb56f9 ****/
+		/****** Geom2dAPI_ExtremaCurveCurve::Extrema ******/
+		/****** md5 signature: b1d6dfe7a95af8a82b7106fd7bcb56f9 ******/
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "Return
 -------
@@ -156,8 +156,8 @@ No available documentation.
 ") Extrema;
 		const Extrema_ExtCC2d & Extrema();
 
-		/****************** LowerDistance ******************/
-		/**** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ****/
+		/****** Geom2dAPI_ExtremaCurveCurve::LowerDistance ******/
+		/****** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ******/
 		%feature("compactdefaultargs") LowerDistance;
 		%feature("autodoc", "Return
 -------
@@ -169,8 +169,8 @@ Computes the distance between the end points of the shortest extremum computed b
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
-		/****************** LowerDistanceParameters ******************/
-		/**** md5 signature: 8692eb96773a2ce4edf4599b17864e52 ****/
+		/****** Geom2dAPI_ExtremaCurveCurve::LowerDistanceParameters ******/
+		/****** md5 signature: 8692eb96773a2ce4edf4599b17864e52 ******/
 		%feature("compactdefaultargs") LowerDistanceParameters;
 		%feature("autodoc", "
 Parameters
@@ -187,8 +187,8 @@ Returns the parameters u1 of the point on the first curve and u2 of the point on
 ") LowerDistanceParameters;
 		void LowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** NbExtrema ******************/
-		/**** md5 signature: 29e39c32fb361964ef3fb09e088c11d8 ****/
+		/****** Geom2dAPI_ExtremaCurveCurve::NbExtrema ******/
+		/****** md5 signature: 29e39c32fb361964ef3fb09e088c11d8 ******/
 		%feature("compactdefaultargs") NbExtrema;
 		%feature("autodoc", "Return
 -------
@@ -200,8 +200,8 @@ Returns the number of extrema computed by this algorithm. note: if this algorith
 ") NbExtrema;
 		Standard_Integer NbExtrema();
 
-		/****************** NearestPoints ******************/
-		/**** md5 signature: d1cedc9a4b8798a784e5474f9d0aa977 ****/
+		/****** Geom2dAPI_ExtremaCurveCurve::NearestPoints ******/
+		/****** md5 signature: d1cedc9a4b8798a784e5474f9d0aa977 ******/
 		%feature("compactdefaultargs") NearestPoints;
 		%feature("autodoc", "
 Parameters
@@ -219,8 +219,8 @@ Returns the points p1 on the first curve and p2 on the second curve, which are t
 ") NearestPoints;
 		void NearestPoints(gp_Pnt2d & P1, gp_Pnt2d & P2);
 
-		/****************** Parameters ******************/
-		/**** md5 signature: f35f3eb64c1cede9adcbe1fc2f680bb0 ****/
+		/****** Geom2dAPI_ExtremaCurveCurve::Parameters ******/
+		/****** md5 signature: f35f3eb64c1cede9adcbe1fc2f680bb0 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -238,8 +238,8 @@ Returns the parameters u1 of the point on the first curve and u2 of the point on
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Points ******************/
-		/**** md5 signature: e7ce8c9f5202ad3a50be862129fd5390 ****/
+		/****** Geom2dAPI_ExtremaCurveCurve::Points ******/
+		/****** md5 signature: e7ce8c9f5202ad3a50be862129fd5390 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -272,8 +272,8 @@ Returns the points p1 on the first curve and p2 on the second curve, which are t
 **********************************/
 class Geom2dAPI_InterCurveCurve {
 	public:
-		/****************** Geom2dAPI_InterCurveCurve ******************/
-		/**** md5 signature: d3ab574ddf861c120b18e9c93d89c339 ****/
+		/****** Geom2dAPI_InterCurveCurve::Geom2dAPI_InterCurveCurve ******/
+		/****** md5 signature: d3ab574ddf861c120b18e9c93d89c339 ******/
 		%feature("compactdefaultargs") Geom2dAPI_InterCurveCurve;
 		%feature("autodoc", "Return
 -------
@@ -285,8 +285,8 @@ Create an empty intersector. use the function init for further initialization of
 ") Geom2dAPI_InterCurveCurve;
 		 Geom2dAPI_InterCurveCurve();
 
-		/****************** Geom2dAPI_InterCurveCurve ******************/
-		/**** md5 signature: 46b74a2815829c9dfa15b95e8e1ce241 ****/
+		/****** Geom2dAPI_InterCurveCurve::Geom2dAPI_InterCurveCurve ******/
+		/****** md5 signature: 46b74a2815829c9dfa15b95e8e1ce241 ******/
 		%feature("compactdefaultargs") Geom2dAPI_InterCurveCurve;
 		%feature("autodoc", "
 Parameters
@@ -305,8 +305,8 @@ Creates an object and computes the intersections between the curves c1 and c2.
 ") Geom2dAPI_InterCurveCurve;
 		 Geom2dAPI_InterCurveCurve(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const Standard_Real Tol = 1.0e-6);
 
-		/****************** Geom2dAPI_InterCurveCurve ******************/
-		/**** md5 signature: 931286664b6e6aefcf2c51062461087c ****/
+		/****** Geom2dAPI_InterCurveCurve::Geom2dAPI_InterCurveCurve ******/
+		/****** md5 signature: 931286664b6e6aefcf2c51062461087c ******/
 		%feature("compactdefaultargs") Geom2dAPI_InterCurveCurve;
 		%feature("autodoc", "
 Parameters
@@ -324,8 +324,8 @@ Creates an object and computes self-intersections of the curve c1. tolerance val
 ") Geom2dAPI_InterCurveCurve;
 		 Geom2dAPI_InterCurveCurve(const opencascade::handle<Geom2d_Curve> & C1, const Standard_Real Tol = 1.0e-6);
 
-		/****************** Init ******************/
-		/**** md5 signature: 16764f90ec7716443cef53da1c6adea1 ****/
+		/****** Geom2dAPI_InterCurveCurve::Init ******/
+		/****** md5 signature: 16764f90ec7716443cef53da1c6adea1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -344,8 +344,8 @@ Initializes an algorithm with the given arguments and computes the intersections
 ") Init;
 		void Init(const opencascade::handle<Geom2d_Curve> & C1, const opencascade::handle<Geom2d_Curve> & C2, const Standard_Real Tol = 1.0e-6);
 
-		/****************** Init ******************/
-		/**** md5 signature: dcca515b62d5af999e8065406a32e82b ****/
+		/****** Geom2dAPI_InterCurveCurve::Init ******/
+		/****** md5 signature: dcca515b62d5af999e8065406a32e82b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -363,8 +363,8 @@ Initializes an algorithm with the given arguments and computes the self-intersec
 ") Init;
 		void Init(const opencascade::handle<Geom2d_Curve> & C1, const Standard_Real Tol = 1.0e-6);
 
-		/****************** Intersector ******************/
-		/**** md5 signature: 4ebbf59c42ad801a63e34dfa17e19ef4 ****/
+		/****** Geom2dAPI_InterCurveCurve::Intersector ******/
+		/****** md5 signature: 4ebbf59c42ad801a63e34dfa17e19ef4 ******/
 		%feature("compactdefaultargs") Intersector;
 		%feature("autodoc", "Return
 -------
@@ -376,8 +376,8 @@ Return the algorithmic object from intersection.
 ") Intersector;
 		const Geom2dInt_GInter & Intersector();
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** Geom2dAPI_InterCurveCurve::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -389,8 +389,8 @@ Returns the number of intersection-points in case of cross intersections. nbpoin
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** NbSegments ******************/
-		/**** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ****/
+		/****** Geom2dAPI_InterCurveCurve::NbSegments ******/
+		/****** md5 signature: 6791e2039921b3bb6b2ff0f8e741d76b ******/
 		%feature("compactdefaultargs") NbSegments;
 		%feature("autodoc", "Return
 -------
@@ -402,8 +402,8 @@ Returns the number of tangential intersections. nbsegments returns 0 if no inter
 ") NbSegments;
 		Standard_Integer NbSegments();
 
-		/****************** Point ******************/
-		/**** md5 signature: dfa31b44e58975a6577c15284df2704c ****/
+		/****** Geom2dAPI_InterCurveCurve::Point ******/
+		/****** md5 signature: dfa31b44e58975a6577c15284df2704c ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -420,8 +420,8 @@ Returns the intersection point of index index. intersection points are computed 
 ") Point;
 		gp_Pnt2d Point(const Standard_Integer Index);
 
-		/****************** Segment ******************/
-		/**** md5 signature: b37643f2678b364da2f6153ed330844f ****/
+		/****** Geom2dAPI_InterCurveCurve::Segment ******/
+		/****** md5 signature: b37643f2678b364da2f6153ed330844f ******/
 		%feature("compactdefaultargs") Segment;
 		%feature("autodoc", "
 Parameters
@@ -454,8 +454,8 @@ Use this syntax only to get solutions of tangential intersection between two cur
 ******************************/
 class Geom2dAPI_Interpolate {
 	public:
-		/****************** Geom2dAPI_Interpolate ******************/
-		/**** md5 signature: 49377e07923a612a4e586c2817e4aac7 ****/
+		/****** Geom2dAPI_Interpolate::Geom2dAPI_Interpolate ******/
+		/****** md5 signature: 49377e07923a612a4e586c2817e4aac7 ******/
 		%feature("compactdefaultargs") Geom2dAPI_Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -474,8 +474,8 @@ Tolerance is to check if the points are not too close to one an other it is also
 ") Geom2dAPI_Interpolate;
 		 Geom2dAPI_Interpolate(const opencascade::handle<TColgp_HArray1OfPnt2d> & Points, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
 
-		/****************** Geom2dAPI_Interpolate ******************/
-		/**** md5 signature: 2d0547cfca5a9782d47bfd0d341e2b99 ****/
+		/****** Geom2dAPI_Interpolate::Geom2dAPI_Interpolate ******/
+		/****** md5 signature: 2d0547cfca5a9782d47bfd0d341e2b99 ******/
 		%feature("compactdefaultargs") Geom2dAPI_Interpolate;
 		%feature("autodoc", "
 Parameters
@@ -495,8 +495,8 @@ If periodicflag is true then the curve will be periodic warning: there should be
 ") Geom2dAPI_Interpolate;
 		 Geom2dAPI_Interpolate(const opencascade::handle<TColgp_HArray1OfPnt2d> & Points, const opencascade::handle<TColStd_HArray1OfReal> & Parameters, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
 
-		/****************** Curve ******************/
-		/**** md5 signature: c8126eab6a406e6375cef128d14447d1 ****/
+		/****** Geom2dAPI_Interpolate::Curve ******/
+		/****** md5 signature: c8126eab6a406e6375cef128d14447d1 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -508,8 +508,8 @@ Returns the computed bspline curve. raises stdfail_notdone if the interpolation 
 ") Curve;
 		const opencascade::handle<Geom2d_BSplineCurve> & Curve();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Geom2dAPI_Interpolate::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -521,8 +521,8 @@ Returns true if the constrained bspline curve is successfully constructed. note:
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Load ******************/
-		/**** md5 signature: 0f23e749706437cef362026287716abb ****/
+		/****** Geom2dAPI_Interpolate::Load ******/
+		/****** md5 signature: 0f23e749706437cef362026287716abb ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -541,8 +541,8 @@ Assigns this constrained bspline curve to be tangential to vectors initialtangen
 ") Load;
 		void Load(const gp_Vec2d & InitialTangent, const gp_Vec2d & FinalTangent, const Standard_Boolean Scale = Standard_True);
 
-		/****************** Load ******************/
-		/**** md5 signature: f5bd9744b516b42691af1429f15fb3a9 ****/
+		/****** Geom2dAPI_Interpolate::Load ******/
+		/****** md5 signature: f5bd9744b516b42691af1429f15fb3a9 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -561,8 +561,8 @@ Assigns this constrained bspline curve to be tangential to vectors defined in th
 ") Load;
 		void Load(const TColgp_Array1OfVec2d & Tangents, const opencascade::handle<TColStd_HArray1OfBoolean> & TangentFlags, const Standard_Boolean Scale = Standard_True);
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** Geom2dAPI_Interpolate::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -592,8 +592,8 @@ Computes the constrained bspline curve. use the function isdone to verify that t
 **********************************/
 class Geom2dAPI_PointsToBSpline {
 	public:
-		/****************** Geom2dAPI_PointsToBSpline ******************/
-		/**** md5 signature: 37f5e5ef14db831b4c1f14c10abd6e48 ****/
+		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
+		/****** md5 signature: 37f5e5ef14db831b4c1f14c10abd6e48 ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "Return
 -------
@@ -605,8 +605,8 @@ Constructs an empty approximation algorithm. use an init function to define and 
 ") Geom2dAPI_PointsToBSpline;
 		 Geom2dAPI_PointsToBSpline();
 
-		/****************** Geom2dAPI_PointsToBSpline ******************/
-		/**** md5 signature: 830d3938863063c3ae0bd0e19d46d2d6 ****/
+		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
+		/****** md5 signature: 830d3938863063c3ae0bd0e19d46d2d6 ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -627,8 +627,8 @@ Approximate a bspline curve passing through an array of point. the resulting bsp
 ") Geom2dAPI_PointsToBSpline;
 		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-6);
 
-		/****************** Geom2dAPI_PointsToBSpline ******************/
-		/**** md5 signature: 58a92343185d22f3ab354500f277e067 ****/
+		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
+		/****** md5 signature: 58a92343185d22f3ab354500f277e067 ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -651,8 +651,8 @@ Approximate a bspline curve passing through an array of point. of coordinates: /
 ") Geom2dAPI_PointsToBSpline;
 		 Geom2dAPI_PointsToBSpline(const TColStd_Array1OfReal & YValues, const Standard_Real X0, const Standard_Real DX, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-6);
 
-		/****************** Geom2dAPI_PointsToBSpline ******************/
-		/**** md5 signature: ffd4c32899b0798f37f300c7c11ce76b ****/
+		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
+		/****** md5 signature: ffd4c32899b0798f37f300c7c11ce76b ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -674,8 +674,8 @@ Approximate a bspline curve passing through an array of point. the resulting bsp
 ") Geom2dAPI_PointsToBSpline;
 		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const Approx_ParametrizationType ParType, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-3);
 
-		/****************** Geom2dAPI_PointsToBSpline ******************/
-		/**** md5 signature: 38f4cc503788ef04ecb6b56426e8ab0c ****/
+		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
+		/****** md5 signature: 38f4cc503788ef04ecb6b56426e8ab0c ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -697,8 +697,8 @@ Approximate a bspline curve passing through an array of point, which parameters 
 ") Geom2dAPI_PointsToBSpline;
 		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const TColStd_Array1OfReal & Parameters, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-3);
 
-		/****************** Geom2dAPI_PointsToBSpline ******************/
-		/**** md5 signature: 1f5e05b5f16b30a46e47882cbed57fbb ****/
+		/****** Geom2dAPI_PointsToBSpline::Geom2dAPI_PointsToBSpline ******/
+		/****** md5 signature: 1f5e05b5f16b30a46e47882cbed57fbb ******/
 		%feature("compactdefaultargs") Geom2dAPI_PointsToBSpline;
 		%feature("autodoc", "
 Parameters
@@ -721,8 +721,8 @@ Approximate a bspline curve passing through an array of point using variational 
 ") Geom2dAPI_PointsToBSpline;
 		 Geom2dAPI_PointsToBSpline(const TColgp_Array1OfPnt2d & Points, const Standard_Real Weight1, const Standard_Real Weight2, const Standard_Real Weight3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
-		/****************** Curve ******************/
-		/**** md5 signature: c8126eab6a406e6375cef128d14447d1 ****/
+		/****** Geom2dAPI_PointsToBSpline::Curve ******/
+		/****** md5 signature: c8126eab6a406e6375cef128d14447d1 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -734,8 +734,8 @@ Returns the approximate bspline curve.
 ") Curve;
 		const opencascade::handle<Geom2d_BSplineCurve> & Curve();
 
-		/****************** Init ******************/
-		/**** md5 signature: 6ca3783005f594fec489fa91fab16d07 ****/
+		/****** Geom2dAPI_PointsToBSpline::Init ******/
+		/****** md5 signature: 6ca3783005f594fec489fa91fab16d07 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -756,8 +756,8 @@ Approximate a bspline curve passing through an array of point. the resulting bsp
 ") Init;
 		void Init(const TColgp_Array1OfPnt2d & Points, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-6);
 
-		/****************** Init ******************/
-		/**** md5 signature: d1f1fe186fd7fcfe0d0ab51721cd9f86 ****/
+		/****** Geom2dAPI_PointsToBSpline::Init ******/
+		/****** md5 signature: d1f1fe186fd7fcfe0d0ab51721cd9f86 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -780,8 +780,8 @@ Approximate a bspline curve passing through an array of point. of coordinates: /
 ") Init;
 		void Init(const TColStd_Array1OfReal & YValues, const Standard_Real X0, const Standard_Real DX, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-6);
 
-		/****************** Init ******************/
-		/**** md5 signature: 8f56492cb28274fe7d59263eedd837b6 ****/
+		/****** Geom2dAPI_PointsToBSpline::Init ******/
+		/****** md5 signature: 8f56492cb28274fe7d59263eedd837b6 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -803,8 +803,8 @@ Approximate a bspline curve passing through an array of point. the resulting bsp
 ") Init;
 		void Init(const TColgp_Array1OfPnt2d & Points, const Approx_ParametrizationType ParType, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-3);
 
-		/****************** Init ******************/
-		/**** md5 signature: dccd9fb501307ee3968c5149631048a3 ****/
+		/****** Geom2dAPI_PointsToBSpline::Init ******/
+		/****** md5 signature: dccd9fb501307ee3968c5149631048a3 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -826,8 +826,8 @@ Approximate a bspline curve passing through an array of point, which parameters 
 ") Init;
 		void Init(const TColgp_Array1OfPnt2d & Points, const TColStd_Array1OfReal & Parameters, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-3);
 
-		/****************** Init ******************/
-		/**** md5 signature: ce994358c4ead47ddeae1a6d0064f3fc ****/
+		/****** Geom2dAPI_PointsToBSpline::Init ******/
+		/****** md5 signature: ce994358c4ead47ddeae1a6d0064f3fc ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -850,8 +850,8 @@ Approximate a bspline curve passing through an array of point using variational 
 ") Init;
 		void Init(const TColgp_Array1OfPnt2d & Points, const Standard_Real Weight1, const Standard_Real Weight2, const Standard_Real Weight3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol2D = 1.0e-3);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** Geom2dAPI_PointsToBSpline::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -877,8 +877,8 @@ No available documentation.
 **************************************/
 class Geom2dAPI_ProjectPointOnCurve {
 	public:
-		/****************** Geom2dAPI_ProjectPointOnCurve ******************/
-		/**** md5 signature: 00b869ffe6e5cde56143f245901cc73f ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::Geom2dAPI_ProjectPointOnCurve ******/
+		/****** md5 signature: 00b869ffe6e5cde56143f245901cc73f ******/
 		%feature("compactdefaultargs") Geom2dAPI_ProjectPointOnCurve;
 		%feature("autodoc", "Return
 -------
@@ -890,8 +890,8 @@ Constructs an empty projector algorithm. use an init function to define the poin
 ") Geom2dAPI_ProjectPointOnCurve;
 		 Geom2dAPI_ProjectPointOnCurve();
 
-		/****************** Geom2dAPI_ProjectPointOnCurve ******************/
-		/**** md5 signature: 2a8697c5853111ca52cc2ff95f60a788 ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::Geom2dAPI_ProjectPointOnCurve ******/
+		/****** md5 signature: 2a8697c5853111ca52cc2ff95f60a788 ******/
 		%feature("compactdefaultargs") Geom2dAPI_ProjectPointOnCurve;
 		%feature("autodoc", "
 Parameters
@@ -909,8 +909,8 @@ Create the projection of a point <p> on a curve <curve>.
 ") Geom2dAPI_ProjectPointOnCurve;
 		 Geom2dAPI_ProjectPointOnCurve(const gp_Pnt2d & P, const opencascade::handle<Geom2d_Curve> & Curve);
 
-		/****************** Geom2dAPI_ProjectPointOnCurve ******************/
-		/**** md5 signature: 2a966d6fa7adafea65c220fc5142a177 ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::Geom2dAPI_ProjectPointOnCurve ******/
+		/****** md5 signature: 2a966d6fa7adafea65c220fc5142a177 ******/
 		%feature("compactdefaultargs") Geom2dAPI_ProjectPointOnCurve;
 		%feature("autodoc", "
 Parameters
@@ -930,8 +930,8 @@ Create the projection of a point <p> on a curve <curve> limited by the two point
 ") Geom2dAPI_ProjectPointOnCurve;
 		 Geom2dAPI_ProjectPointOnCurve(const gp_Pnt2d & P, const opencascade::handle<Geom2d_Curve> & Curve, const Standard_Real Umin, const Standard_Real Usup);
 
-		/****************** Distance ******************/
-		/**** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::Distance ******/
+		/****** md5 signature: 37e7953cf025135cd465c5cdf9b17da9 ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "
 Parameters
@@ -948,8 +948,8 @@ Computes the distance between the point and its computed orthogonal projection o
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
-		/****************** Extrema ******************/
-		/**** md5 signature: 37af5c9efb51737c22aa348e6a3ceb1b ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::Extrema ******/
+		/****** md5 signature: 37af5c9efb51737c22aa348e6a3ceb1b ******/
 		%feature("compactdefaultargs") Extrema;
 		%feature("autodoc", "Return
 -------
@@ -961,8 +961,8 @@ Return the algorithmic object from extrema.
 ") Extrema;
 		const Extrema_ExtPC2d & Extrema();
 
-		/****************** Init ******************/
-		/**** md5 signature: b7c760cd0a5800e0fff6c3a0ccbf56ea ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::Init ******/
+		/****** md5 signature: b7c760cd0a5800e0fff6c3a0ccbf56ea ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -980,8 +980,8 @@ Initializes this algorithm with the given arguments, and computes the orthogonal
 ") Init;
 		void Init(const gp_Pnt2d & P, const opencascade::handle<Geom2d_Curve> & Curve);
 
-		/****************** Init ******************/
-		/**** md5 signature: 88842ac6a9c774f96727660f342b896a ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::Init ******/
+		/****** md5 signature: 88842ac6a9c774f96727660f342b896a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1001,8 +1001,8 @@ Initializes this algorithm with the given arguments, and computes the orthogonal
 ") Init;
 		void Init(const gp_Pnt2d & P, const opencascade::handle<Geom2d_Curve> & Curve, const Standard_Real Umin, const Standard_Real Usup);
 
-		/****************** LowerDistance ******************/
-		/**** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::LowerDistance ******/
+		/****** md5 signature: 9f0e68fdb00336442bc7528a9d585436 ******/
 		%feature("compactdefaultargs") LowerDistance;
 		%feature("autodoc", "Return
 -------
@@ -1014,8 +1014,8 @@ Computes the distance between the point and its nearest orthogonal projection on
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
-		/****************** LowerDistanceParameter ******************/
-		/**** md5 signature: d92357b64b8dcbaeedf932cd195aa800 ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::LowerDistanceParameter ******/
+		/****** md5 signature: d92357b64b8dcbaeedf932cd195aa800 ******/
 		%feature("compactdefaultargs") LowerDistanceParameter;
 		%feature("autodoc", "Return
 -------
@@ -1027,8 +1027,8 @@ Returns the parameter on the curve of the nearest orthogonal projection of the p
 ") LowerDistanceParameter;
 		Standard_Real LowerDistanceParameter();
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -1040,8 +1040,8 @@ Return the number of of computed orthogonal projectionn points.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** NearestPoint ******************/
-		/**** md5 signature: cabb3a250e83e793f9286cffa3acff32 ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::NearestPoint ******/
+		/****** md5 signature: cabb3a250e83e793f9286cffa3acff32 ******/
 		%feature("compactdefaultargs") NearestPoint;
 		%feature("autodoc", "Return
 -------
@@ -1053,8 +1053,8 @@ Returns the nearest orthogonal projection of the point on the curve. exceptions 
 ") NearestPoint;
 		gp_Pnt2d NearestPoint();
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 82ceab80f2b18ab921fa91f907001d9f ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::Parameter ******/
+		/****** md5 signature: 82ceab80f2b18ab921fa91f907001d9f ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -1071,8 +1071,8 @@ Returns the parameter on the curve of a point which is the orthogonal projection
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer Index);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 27513c7a9d44f786990664b216249792 ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::Parameter ******/
+		/****** md5 signature: 27513c7a9d44f786990664b216249792 ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -1089,8 +1089,8 @@ Returns the parameter on the curve of a point which is the orthogonal projection
 ") Parameter;
 		void Parameter(const Standard_Integer Index, Standard_Real &OutValue);
 
-		/****************** Point ******************/
-		/**** md5 signature: dfa31b44e58975a6577c15284df2704c ****/
+		/****** Geom2dAPI_ProjectPointOnCurve::Point ******/
+		/****** md5 signature: dfa31b44e58975a6577c15284df2704c ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters

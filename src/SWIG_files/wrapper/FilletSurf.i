@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define FILLETSURFDOCSTRING
 "FilletSurf module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_filletsurf.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_filletsurf.html"
 %enddef
 %module (package="OCC.Core", docstring=FILLETSURFDOCSTRING) FilletSurf
 
@@ -161,8 +161,8 @@ FilletSurf_NoExtremityOnEdge = FilletSurf_StatusType.FilletSurf_NoExtremityOnEdg
 ***************************/
 class FilletSurf_Builder {
 	public:
-		/****************** FilletSurf_Builder ******************/
-		/**** md5 signature: c321636a39909ce21004c881f9c9aefa ****/
+		/****** FilletSurf_Builder::FilletSurf_Builder ******/
+		/****** md5 signature: c321636a39909ce21004c881f9c9aefa ******/
 		%feature("compactdefaultargs") FilletSurf_Builder;
 		%feature("autodoc", "
 Parameters
@@ -184,8 +184,8 @@ Initialize of the information necessary for the computation of the fillet on the
 ") FilletSurf_Builder;
 		 FilletSurf_Builder(const TopoDS_Shape & S, const TopTools_ListOfShape & E, const Standard_Real R, const Standard_Real Ta = 1.0e-2, const Standard_Real Tapp3d = 1.0e-4, const Standard_Real Tapp2d = 1.0e-5);
 
-		/****************** CurveOnFace1 ******************/
-		/**** md5 signature: 5445bf9792da9fa587841585944e218e ****/
+		/****** FilletSurf_Builder::CurveOnFace1 ******/
+		/****** md5 signature: 5445bf9792da9fa587841585944e218e ******/
 		%feature("compactdefaultargs") CurveOnFace1;
 		%feature("autodoc", "
 Parameters
@@ -202,8 +202,8 @@ Gives the 3d curve of surfacefillet(index) on supportface1(index).
 ") CurveOnFace1;
 		const opencascade::handle<Geom_Curve> & CurveOnFace1(const Standard_Integer Index);
 
-		/****************** CurveOnFace2 ******************/
-		/**** md5 signature: 13c5e38bb71d885e22f2d30ac4e13bb8 ****/
+		/****** FilletSurf_Builder::CurveOnFace2 ******/
+		/****** md5 signature: 13c5e38bb71d885e22f2d30ac4e13bb8 ******/
 		%feature("compactdefaultargs") CurveOnFace2;
 		%feature("autodoc", "
 Parameters
@@ -220,8 +220,8 @@ Gives the 3d curve of surfacefillet(index) on supportface2(index).
 ") CurveOnFace2;
 		const opencascade::handle<Geom_Curve> & CurveOnFace2(const Standard_Integer Index);
 
-		/****************** EndSectionStatus ******************/
-		/**** md5 signature: cbcb6a2427b18dd39891e15bca5f255b ****/
+		/****** FilletSurf_Builder::EndSectionStatus ******/
+		/****** md5 signature: cbcb6a2427b18dd39891e15bca5f255b ******/
 		%feature("compactdefaultargs") EndSectionStatus;
 		%feature("autodoc", "Return
 -------
@@ -233,8 +233,8 @@ No available documentation.
 ") EndSectionStatus;
 		FilletSurf_StatusType EndSectionStatus();
 
-		/****************** FirstParameter ******************/
-		/**** md5 signature: 4ccedbaad83be904f510b4760c75f69c ****/
+		/****** FilletSurf_Builder::FirstParameter ******/
+		/****** md5 signature: 4ccedbaad83be904f510b4760c75f69c ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
@@ -246,8 +246,8 @@ Gives the parameter of the fillet on the first edge.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: 92d7a8cfe6d398ee725e94e6b7921ea2 ****/
+		/****** FilletSurf_Builder::IsDone ******/
+		/****** md5 signature: 92d7a8cfe6d398ee725e94e6b7921ea2 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -259,8 +259,8 @@ Gives the status about the computation of the fillet returns: isok :no problem d
 ") IsDone;
 		FilletSurf_StatusDone IsDone();
 
-		/****************** LastParameter ******************/
-		/**** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ****/
+		/****** FilletSurf_Builder::LastParameter ******/
+		/****** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
@@ -272,8 +272,8 @@ Gives the parameter of the fillet on the last edge.
 ") LastParameter;
 		Standard_Real LastParameter();
 
-		/****************** NbSection ******************/
-		/**** md5 signature: 99ee580399a7b9319ad347198b2956ec ****/
+		/****** FilletSurf_Builder::NbSection ******/
+		/****** md5 signature: 99ee580399a7b9319ad347198b2956ec ******/
 		%feature("compactdefaultargs") NbSection;
 		%feature("autodoc", "
 Parameters
@@ -290,8 +290,8 @@ No available documentation.
 ") NbSection;
 		Standard_Integer NbSection(const Standard_Integer IndexSurf);
 
-		/****************** NbSurface ******************/
-		/**** md5 signature: 6446599441fe76e6ea2e79a625f17c4d ****/
+		/****** FilletSurf_Builder::NbSurface ******/
+		/****** md5 signature: 6446599441fe76e6ea2e79a625f17c4d ******/
 		%feature("compactdefaultargs") NbSurface;
 		%feature("autodoc", "Return
 -------
@@ -303,8 +303,8 @@ Gives the number of nubs surfaces of the fillet.
 ") NbSurface;
 		Standard_Integer NbSurface();
 
-		/****************** PCurve1OnFillet ******************/
-		/**** md5 signature: 9ca0705edcdde428b40c8d20bfce08a6 ****/
+		/****** FilletSurf_Builder::PCurve1OnFillet ******/
+		/****** md5 signature: 9ca0705edcdde428b40c8d20bfce08a6 ******/
 		%feature("compactdefaultargs") PCurve1OnFillet;
 		%feature("autodoc", "
 Parameters
@@ -321,8 +321,8 @@ Gives the pcurve associated to curveonface1(index) on the fillet.
 ") PCurve1OnFillet;
 		const opencascade::handle<Geom2d_Curve> & PCurve1OnFillet(const Standard_Integer Index);
 
-		/****************** PCurve2OnFillet ******************/
-		/**** md5 signature: ccada6c70d4b2e28f7d6892bb1ad31ac ****/
+		/****** FilletSurf_Builder::PCurve2OnFillet ******/
+		/****** md5 signature: ccada6c70d4b2e28f7d6892bb1ad31ac ******/
 		%feature("compactdefaultargs") PCurve2OnFillet;
 		%feature("autodoc", "
 Parameters
@@ -339,8 +339,8 @@ Gives the pcurve associated to curveonsup2(index) on the fillet.
 ") PCurve2OnFillet;
 		const opencascade::handle<Geom2d_Curve> & PCurve2OnFillet(const Standard_Integer Index);
 
-		/****************** PCurveOnFace1 ******************/
-		/**** md5 signature: 159d8ccf583c25115cc5cb77c8f6a52e ****/
+		/****** FilletSurf_Builder::PCurveOnFace1 ******/
+		/****** md5 signature: 159d8ccf583c25115cc5cb77c8f6a52e ******/
 		%feature("compactdefaultargs") PCurveOnFace1;
 		%feature("autodoc", "
 Parameters
@@ -357,8 +357,8 @@ Gives the pcurve associated to curvonsup1(index) on the support face.
 ") PCurveOnFace1;
 		const opencascade::handle<Geom2d_Curve> & PCurveOnFace1(const Standard_Integer Index);
 
-		/****************** PCurveOnFace2 ******************/
-		/**** md5 signature: 78540fdd470849ffa161899134cc43a4 ****/
+		/****** FilletSurf_Builder::PCurveOnFace2 ******/
+		/****** md5 signature: 78540fdd470849ffa161899134cc43a4 ******/
 		%feature("compactdefaultargs") PCurveOnFace2;
 		%feature("autodoc", "
 Parameters
@@ -375,8 +375,8 @@ Gives the pcurve associated to curveonsup2(index) on the support face.
 ") PCurveOnFace2;
 		const opencascade::handle<Geom2d_Curve> & PCurveOnFace2(const Standard_Integer Index);
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** FilletSurf_Builder::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -388,8 +388,8 @@ Description
 ") Perform;
 		void Perform();
 
-		/****************** Section ******************/
-		/**** md5 signature: 929bbd79a6908ae08cf36ef4a533db53 ****/
+		/****** FilletSurf_Builder::Section ******/
+		/****** md5 signature: 929bbd79a6908ae08cf36ef4a533db53 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -408,8 +408,8 @@ No available documentation.
 ") Section;
 		void Section(const Standard_Integer IndexSurf, const Standard_Integer IndexSec, opencascade::handle<Geom_TrimmedCurve> & Circ);
 
-		/****************** Simulate ******************/
-		/**** md5 signature: 9676554fe6894b29846ee30e6ab9491e ****/
+		/****** FilletSurf_Builder::Simulate ******/
+		/****** md5 signature: 9676554fe6894b29846ee30e6ab9491e ******/
 		%feature("compactdefaultargs") Simulate;
 		%feature("autodoc", "Return
 -------
@@ -421,8 +421,8 @@ No available documentation.
 ") Simulate;
 		void Simulate();
 
-		/****************** StartSectionStatus ******************/
-		/**** md5 signature: 44600984cf9e0d8a17bf00b703f45d7d ****/
+		/****** FilletSurf_Builder::StartSectionStatus ******/
+		/****** md5 signature: 44600984cf9e0d8a17bf00b703f45d7d ******/
 		%feature("compactdefaultargs") StartSectionStatus;
 		%feature("autodoc", "Return
 -------
@@ -434,8 +434,8 @@ No available documentation.
 ") StartSectionStatus;
 		FilletSurf_StatusType StartSectionStatus();
 
-		/****************** StatusError ******************/
-		/**** md5 signature: 5167445f2539889d85097497988c0fab ****/
+		/****** FilletSurf_Builder::StatusError ******/
+		/****** md5 signature: 5167445f2539889d85097497988c0fab ******/
 		%feature("compactdefaultargs") StatusError;
 		%feature("autodoc", "Return
 -------
@@ -447,8 +447,8 @@ Gives information about error status if isdone=isnotok returns edgenotg1: the ed
 ") StatusError;
 		FilletSurf_ErrorTypeStatus StatusError();
 
-		/****************** SupportFace1 ******************/
-		/**** md5 signature: 9ec300c946db55146ba1c9c3bb397e9a ****/
+		/****** FilletSurf_Builder::SupportFace1 ******/
+		/****** md5 signature: 9ec300c946db55146ba1c9c3bb397e9a ******/
 		%feature("compactdefaultargs") SupportFace1;
 		%feature("autodoc", "
 Parameters
@@ -465,8 +465,8 @@ Gives the first support face relative to surfacefillet(index);.
 ") SupportFace1;
 		const TopoDS_Face SupportFace1(const Standard_Integer Index);
 
-		/****************** SupportFace2 ******************/
-		/**** md5 signature: db7f267e13f2bc34123d3b0e30083068 ****/
+		/****** FilletSurf_Builder::SupportFace2 ******/
+		/****** md5 signature: db7f267e13f2bc34123d3b0e30083068 ******/
 		%feature("compactdefaultargs") SupportFace2;
 		%feature("autodoc", "
 Parameters
@@ -483,8 +483,8 @@ Gives the second support face relative to surfacefillet(index);.
 ") SupportFace2;
 		const TopoDS_Face SupportFace2(const Standard_Integer Index);
 
-		/****************** SurfaceFillet ******************/
-		/**** md5 signature: 84050020d30ed5ec3096fd3fcfa803fd ****/
+		/****** FilletSurf_Builder::SurfaceFillet ******/
+		/****** md5 signature: 84050020d30ed5ec3096fd3fcfa803fd ******/
 		%feature("compactdefaultargs") SurfaceFillet;
 		%feature("autodoc", "
 Parameters
@@ -501,8 +501,8 @@ Gives the nubs surface of index index.
 ") SurfaceFillet;
 		const opencascade::handle<Geom_Surface> & SurfaceFillet(const Standard_Integer Index);
 
-		/****************** TolApp3d ******************/
-		/**** md5 signature: c848ce013cfe22b8b47535c612e0fc54 ****/
+		/****** FilletSurf_Builder::TolApp3d ******/
+		/****** md5 signature: c848ce013cfe22b8b47535c612e0fc54 ******/
 		%feature("compactdefaultargs") TolApp3d;
 		%feature("autodoc", "
 Parameters
@@ -533,8 +533,8 @@ Gives the 3d tolerance reached during approximation of surface of index index.
 ***********************************/
 class FilletSurf_InternalBuilder : public ChFi3d_FilBuilder {
 	public:
-		/****************** FilletSurf_InternalBuilder ******************/
-		/**** md5 signature: 1cc870c5e52bfd03475b31ff2c15c7d0 ****/
+		/****** FilletSurf_InternalBuilder::FilletSurf_InternalBuilder ******/
+		/****** md5 signature: 1cc870c5e52bfd03475b31ff2c15c7d0 ******/
 		%feature("compactdefaultargs") FilletSurf_InternalBuilder;
 		%feature("autodoc", "
 Parameters
@@ -555,8 +555,8 @@ No available documentation.
 ") FilletSurf_InternalBuilder;
 		 FilletSurf_InternalBuilder(const TopoDS_Shape & S, const ChFi3d_FilletShape FShape = ChFi3d_Polynomial, const Standard_Real Ta = 1.0e-2, const Standard_Real Tapp3d = 1.0e-4, const Standard_Real Tapp2d = 1.0e-5);
 
-		/****************** Add ******************/
-		/**** md5 signature: 00451ce1b932f1bab92a7ffea0a8f169 ****/
+		/****** FilletSurf_InternalBuilder::Add ******/
+		/****** md5 signature: 00451ce1b932f1bab92a7ffea0a8f169 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -574,8 +574,8 @@ Initializes the contour with a list of edges 0: no problem 1: empty list 2: the 
 ") Add;
 		Standard_Integer Add(const TopTools_ListOfShape & E, const Standard_Real R);
 
-		/****************** CurveOnFace1 ******************/
-		/**** md5 signature: 5445bf9792da9fa587841585944e218e ****/
+		/****** FilletSurf_InternalBuilder::CurveOnFace1 ******/
+		/****** md5 signature: 5445bf9792da9fa587841585944e218e ******/
 		%feature("compactdefaultargs") CurveOnFace1;
 		%feature("autodoc", "
 Parameters
@@ -592,8 +592,8 @@ Gives the 3d curve of surfacefillet(index) on supportface1(index).
 ") CurveOnFace1;
 		const opencascade::handle<Geom_Curve> & CurveOnFace1(const Standard_Integer Index);
 
-		/****************** CurveOnFace2 ******************/
-		/**** md5 signature: 13c5e38bb71d885e22f2d30ac4e13bb8 ****/
+		/****** FilletSurf_InternalBuilder::CurveOnFace2 ******/
+		/****** md5 signature: 13c5e38bb71d885e22f2d30ac4e13bb8 ******/
 		%feature("compactdefaultargs") CurveOnFace2;
 		%feature("autodoc", "
 Parameters
@@ -610,8 +610,8 @@ Gives the 3d curve of surfacefillet(index) on supportface2(index).
 ") CurveOnFace2;
 		const opencascade::handle<Geom_Curve> & CurveOnFace2(const Standard_Integer Index);
 
-		/****************** Done ******************/
-		/**** md5 signature: 724727c7a05fccf5b11394f7ea28f04a ****/
+		/****** FilletSurf_InternalBuilder::Done ******/
+		/****** md5 signature: 724727c7a05fccf5b11394f7ea28f04a ******/
 		%feature("compactdefaultargs") Done;
 		%feature("autodoc", "Return
 -------
@@ -623,8 +623,8 @@ No available documentation.
 ") Done;
 		Standard_Boolean Done();
 
-		/****************** EndSectionStatus ******************/
-		/**** md5 signature: cbcb6a2427b18dd39891e15bca5f255b ****/
+		/****** FilletSurf_InternalBuilder::EndSectionStatus ******/
+		/****** md5 signature: cbcb6a2427b18dd39891e15bca5f255b ******/
 		%feature("compactdefaultargs") EndSectionStatus;
 		%feature("autodoc", "Return
 -------
@@ -636,8 +636,8 @@ No available documentation.
 ") EndSectionStatus;
 		FilletSurf_StatusType EndSectionStatus();
 
-		/****************** FirstParameter ******************/
-		/**** md5 signature: 4ccedbaad83be904f510b4760c75f69c ****/
+		/****** FilletSurf_InternalBuilder::FirstParameter ******/
+		/****** md5 signature: 4ccedbaad83be904f510b4760c75f69c ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
@@ -649,8 +649,8 @@ Gives the parameter of the fillet on the first edge.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
-		/****************** LastParameter ******************/
-		/**** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ****/
+		/****** FilletSurf_InternalBuilder::LastParameter ******/
+		/****** md5 signature: 7cdf630921ee47ad365a5a6bafd4b46e ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
@@ -662,8 +662,8 @@ Gives the parameter of the fillet on the last edge.
 ") LastParameter;
 		Standard_Real LastParameter();
 
-		/****************** NbSection ******************/
-		/**** md5 signature: 99ee580399a7b9319ad347198b2956ec ****/
+		/****** FilletSurf_InternalBuilder::NbSection ******/
+		/****** md5 signature: 99ee580399a7b9319ad347198b2956ec ******/
 		%feature("compactdefaultargs") NbSection;
 		%feature("autodoc", "
 Parameters
@@ -680,8 +680,8 @@ No available documentation.
 ") NbSection;
 		Standard_Integer NbSection(const Standard_Integer IndexSurf);
 
-		/****************** NbSurface ******************/
-		/**** md5 signature: 6446599441fe76e6ea2e79a625f17c4d ****/
+		/****** FilletSurf_InternalBuilder::NbSurface ******/
+		/****** md5 signature: 6446599441fe76e6ea2e79a625f17c4d ******/
 		%feature("compactdefaultargs") NbSurface;
 		%feature("autodoc", "Return
 -------
@@ -693,8 +693,8 @@ Gives the number of nubs surfaces of the fillet.
 ") NbSurface;
 		Standard_Integer NbSurface();
 
-		/****************** PCurve1OnFillet ******************/
-		/**** md5 signature: 9ca0705edcdde428b40c8d20bfce08a6 ****/
+		/****** FilletSurf_InternalBuilder::PCurve1OnFillet ******/
+		/****** md5 signature: 9ca0705edcdde428b40c8d20bfce08a6 ******/
 		%feature("compactdefaultargs") PCurve1OnFillet;
 		%feature("autodoc", "
 Parameters
@@ -711,8 +711,8 @@ Gives the pcurve associated to curveonface1(index) on the fillet.
 ") PCurve1OnFillet;
 		const opencascade::handle<Geom2d_Curve> & PCurve1OnFillet(const Standard_Integer Index);
 
-		/****************** PCurve2OnFillet ******************/
-		/**** md5 signature: ccada6c70d4b2e28f7d6892bb1ad31ac ****/
+		/****** FilletSurf_InternalBuilder::PCurve2OnFillet ******/
+		/****** md5 signature: ccada6c70d4b2e28f7d6892bb1ad31ac ******/
 		%feature("compactdefaultargs") PCurve2OnFillet;
 		%feature("autodoc", "
 Parameters
@@ -729,8 +729,8 @@ Gives the pcurve associated to curveonsup2(index) on the fillet.
 ") PCurve2OnFillet;
 		const opencascade::handle<Geom2d_Curve> & PCurve2OnFillet(const Standard_Integer Index);
 
-		/****************** PCurveOnFace1 ******************/
-		/**** md5 signature: 159d8ccf583c25115cc5cb77c8f6a52e ****/
+		/****** FilletSurf_InternalBuilder::PCurveOnFace1 ******/
+		/****** md5 signature: 159d8ccf583c25115cc5cb77c8f6a52e ******/
 		%feature("compactdefaultargs") PCurveOnFace1;
 		%feature("autodoc", "
 Parameters
@@ -747,8 +747,8 @@ Gives the pcurve associated to curvonsup1(index) on the support face.
 ") PCurveOnFace1;
 		const opencascade::handle<Geom2d_Curve> & PCurveOnFace1(const Standard_Integer Index);
 
-		/****************** PCurveOnFace2 ******************/
-		/**** md5 signature: 78540fdd470849ffa161899134cc43a4 ****/
+		/****** FilletSurf_InternalBuilder::PCurveOnFace2 ******/
+		/****** md5 signature: 78540fdd470849ffa161899134cc43a4 ******/
 		%feature("compactdefaultargs") PCurveOnFace2;
 		%feature("autodoc", "
 Parameters
@@ -765,8 +765,8 @@ Gives the pcurve associated to curveonsup2(index) on the support face.
 ") PCurveOnFace2;
 		const opencascade::handle<Geom2d_Curve> & PCurveOnFace2(const Standard_Integer Index);
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** FilletSurf_InternalBuilder::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -778,8 +778,8 @@ No available documentation.
 ") Perform;
 		void Perform();
 
-		/****************** Section ******************/
-		/**** md5 signature: 929bbd79a6908ae08cf36ef4a533db53 ****/
+		/****** FilletSurf_InternalBuilder::Section ******/
+		/****** md5 signature: 929bbd79a6908ae08cf36ef4a533db53 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -798,8 +798,8 @@ No available documentation.
 ") Section;
 		void Section(const Standard_Integer IndexSurf, const Standard_Integer IndexSec, opencascade::handle<Geom_TrimmedCurve> & Circ);
 
-		/****************** Simulate ******************/
-		/**** md5 signature: 9676554fe6894b29846ee30e6ab9491e ****/
+		/****** FilletSurf_InternalBuilder::Simulate ******/
+		/****** md5 signature: 9676554fe6894b29846ee30e6ab9491e ******/
 		%feature("compactdefaultargs") Simulate;
 		%feature("autodoc", "Return
 -------
@@ -811,8 +811,8 @@ No available documentation.
 ") Simulate;
 		void Simulate();
 
-		/****************** StartSectionStatus ******************/
-		/**** md5 signature: 44600984cf9e0d8a17bf00b703f45d7d ****/
+		/****** FilletSurf_InternalBuilder::StartSectionStatus ******/
+		/****** md5 signature: 44600984cf9e0d8a17bf00b703f45d7d ******/
 		%feature("compactdefaultargs") StartSectionStatus;
 		%feature("autodoc", "Return
 -------
@@ -824,8 +824,8 @@ No available documentation.
 ") StartSectionStatus;
 		FilletSurf_StatusType StartSectionStatus();
 
-		/****************** SupportFace1 ******************/
-		/**** md5 signature: 9ec300c946db55146ba1c9c3bb397e9a ****/
+		/****** FilletSurf_InternalBuilder::SupportFace1 ******/
+		/****** md5 signature: 9ec300c946db55146ba1c9c3bb397e9a ******/
 		%feature("compactdefaultargs") SupportFace1;
 		%feature("autodoc", "
 Parameters
@@ -842,8 +842,8 @@ Gives the first support face relative to surfacefillet(index);.
 ") SupportFace1;
 		const TopoDS_Face SupportFace1(const Standard_Integer Index);
 
-		/****************** SupportFace2 ******************/
-		/**** md5 signature: db7f267e13f2bc34123d3b0e30083068 ****/
+		/****** FilletSurf_InternalBuilder::SupportFace2 ******/
+		/****** md5 signature: db7f267e13f2bc34123d3b0e30083068 ******/
 		%feature("compactdefaultargs") SupportFace2;
 		%feature("autodoc", "
 Parameters
@@ -860,8 +860,8 @@ Gives the second support face relative to surfacefillet(index);.
 ") SupportFace2;
 		const TopoDS_Face SupportFace2(const Standard_Integer Index);
 
-		/****************** SurfaceFillet ******************/
-		/**** md5 signature: 84050020d30ed5ec3096fd3fcfa803fd ****/
+		/****** FilletSurf_InternalBuilder::SurfaceFillet ******/
+		/****** md5 signature: 84050020d30ed5ec3096fd3fcfa803fd ******/
 		%feature("compactdefaultargs") SurfaceFillet;
 		%feature("autodoc", "
 Parameters
@@ -878,8 +878,8 @@ Gives the nubs surface of index index.
 ") SurfaceFillet;
 		const opencascade::handle<Geom_Surface> & SurfaceFillet(const Standard_Integer Index);
 
-		/****************** TolApp3d ******************/
-		/**** md5 signature: c848ce013cfe22b8b47535c612e0fc54 ****/
+		/****** FilletSurf_InternalBuilder::TolApp3d ******/
+		/****** md5 signature: c848ce013cfe22b8b47535c612e0fc54 ******/
 		%feature("compactdefaultargs") TolApp3d;
 		%feature("autodoc", "
 Parameters

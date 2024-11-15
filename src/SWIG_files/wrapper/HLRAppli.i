@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define HLRAPPLIDOCSTRING
 "HLRAppli module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_hlrappli.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_hlrappli.html"
 %enddef
 %module (package="OCC.Core", docstring=HLRAPPLIDOCSTRING) HLRAppli
 
@@ -100,8 +100,8 @@ from OCC.Core.Exception import *
 ******************************/
 class HLRAppli_ReflectLines {
 	public:
-		/****************** HLRAppli_ReflectLines ******************/
-		/**** md5 signature: c68fdca60efe22186684369fafa6346f ****/
+		/****** HLRAppli_ReflectLines::HLRAppli_ReflectLines ******/
+		/****** md5 signature: c68fdca60efe22186684369fafa6346f ******/
 		%feature("compactdefaultargs") HLRAppli_ReflectLines;
 		%feature("autodoc", "
 Parameters
@@ -118,8 +118,8 @@ Constructor.
 ") HLRAppli_ReflectLines;
 		 HLRAppli_ReflectLines(const TopoDS_Shape & aShape);
 
-		/****************** GetCompoundOf3dEdges ******************/
-		/**** md5 signature: 56814c9f5f74fb78cdeb6b9ce73f3eda ****/
+		/****** HLRAppli_ReflectLines::GetCompoundOf3dEdges ******/
+		/****** md5 signature: 56814c9f5f74fb78cdeb6b9ce73f3eda ******/
 		%feature("compactdefaultargs") GetCompoundOf3dEdges;
 		%feature("autodoc", "
 Parameters
@@ -138,8 +138,8 @@ Returns resulting compound of lines of specified type and visibility represented
 ") GetCompoundOf3dEdges;
 		TopoDS_Shape GetCompoundOf3dEdges(const HLRBRep_TypeOfResultingEdge type, const Standard_Boolean visible, const Standard_Boolean In3d);
 
-		/****************** GetResult ******************/
-		/**** md5 signature: 61ceaea87a267f8cb3587a019bfaa140 ****/
+		/****** HLRAppli_ReflectLines::GetResult ******/
+		/****** md5 signature: 61ceaea87a267f8cb3587a019bfaa140 ******/
 		%feature("compactdefaultargs") GetResult;
 		%feature("autodoc", "Return
 -------
@@ -151,8 +151,8 @@ Returns resulting compound of reflect lines represented by edges in 3d.
 ") GetResult;
 		TopoDS_Shape GetResult();
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** HLRAppli_ReflectLines::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -164,8 +164,8 @@ No available documentation.
 ") Perform;
 		void Perform();
 
-		/****************** SetAxes ******************/
-		/**** md5 signature: 4220cc44329eacefbd57c3d09a70953f ****/
+		/****** HLRAppli_ReflectLines::SetAxes ******/
+		/****** md5 signature: 4220cc44329eacefbd57c3d09a70953f ******/
 		%feature("compactdefaultargs") SetAxes;
 		%feature("autodoc", "
 Parameters

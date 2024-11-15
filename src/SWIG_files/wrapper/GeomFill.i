@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define GEOMFILLDOCSTRING
 "GeomFill module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_geomfill.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_geomfill.html"
 %enddef
 %module (package="OCC.Core", docstring=GEOMFILLDOCSTRING) GeomFill
 
@@ -247,8 +247,8 @@ typedef NCollection_Sequence<gp_Trsf> GeomFill_SequenceOfTrsf;
 %rename(geomfill) GeomFill;
 class GeomFill {
 	public:
-		/****************** GetCircle ******************/
-		/**** md5 signature: 7670935987fa38c6bda2cd1f57feb0ed ****/
+		/****** GeomFill::GetCircle ******/
+		/****** md5 signature: 7670935987fa38c6bda2cd1f57feb0ed ******/
 		%feature("compactdefaultargs") GetCircle;
 		%feature("autodoc", "
 Parameters
@@ -274,8 +274,8 @@ No available documentation.
 ") GetCircle;
 		static void GetCircle(const Convert_ParameterisationType TConv, const gp_Vec & ns1, const gp_Vec & ns2, const gp_Vec & nplan, const gp_Pnt & pt1, const gp_Pnt & pt2, const Standard_Real Rayon, const gp_Pnt & Center, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
-		/****************** GetCircle ******************/
-		/**** md5 signature: 32287dfdf4d02cc6e907c948a85c8d68 ****/
+		/****** GeomFill::GetCircle ******/
+		/****** md5 signature: 32287dfdf4d02cc6e907c948a85c8d68 ******/
 		%feature("compactdefaultargs") GetCircle;
 		%feature("autodoc", "
 Parameters
@@ -310,8 +310,8 @@ No available documentation.
 ") GetCircle;
 		static Standard_Boolean GetCircle(const Convert_ParameterisationType TConv, const gp_Vec & ns1, const gp_Vec & ns2, const gp_Vec & dn1w, const gp_Vec & dn2w, const gp_Vec & nplan, const gp_Vec & dnplan, const gp_Pnt & pts1, const gp_Pnt & pts2, const gp_Vec & tang1, const gp_Vec & tang2, const Standard_Real Rayon, const Standard_Real DRayon, const gp_Pnt & Center, const gp_Vec & DCenter, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** GetCircle ******************/
-		/**** md5 signature: a00c25f874484c064860aa81fa70acb6 ****/
+		/****** GeomFill::GetCircle ******/
+		/****** md5 signature: a00c25f874484c064860aa81fa70acb6 ******/
 		%feature("compactdefaultargs") GetCircle;
 		%feature("autodoc", "
 Parameters
@@ -355,8 +355,8 @@ No available documentation.
 ") GetCircle;
 		static Standard_Boolean GetCircle(const Convert_ParameterisationType TConv, const gp_Vec & ns1, const gp_Vec & ns2, const gp_Vec & dn1w, const gp_Vec & dn2w, const gp_Vec & d2n1w, const gp_Vec & d2n2w, const gp_Vec & nplan, const gp_Vec & dnplan, const gp_Vec & d2nplan, const gp_Pnt & pts1, const gp_Pnt & pts2, const gp_Vec & tang1, const gp_Vec & tang2, const gp_Vec & Dtang1, const gp_Vec & Dtang2, const Standard_Real Rayon, const Standard_Real DRayon, const Standard_Real D2Rayon, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & D2Center, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** GetMinimalWeights ******************/
-		/**** md5 signature: f85c68b214a52df79ab84c0fed389ed6 ****/
+		/****** GeomFill::GetMinimalWeights ******/
+		/****** md5 signature: f85c68b214a52df79ab84c0fed389ed6 ******/
 		%feature("compactdefaultargs") GetMinimalWeights;
 		%feature("autodoc", "
 Parameters
@@ -376,8 +376,8 @@ No available documentation.
 ") GetMinimalWeights;
 		static void GetMinimalWeights(const Convert_ParameterisationType TConv, const Standard_Real AngleMin, const Standard_Real AngleMax, TColStd_Array1OfReal & Weigths);
 
-		/****************** GetShape ******************/
-		/**** md5 signature: 003ee9f808c91303411dd1103ac1580f ****/
+		/****** GeomFill::GetShape ******/
+		/****** md5 signature: 003ee9f808c91303411dd1103ac1580f ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
@@ -397,8 +397,8 @@ No available documentation.
 ") GetShape;
 		static void GetShape(const Standard_Real MaxAng, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Convert_ParameterisationType & TypeConv);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: 41a668da380cd0191814e6697f67950d ****/
+		/****** GeomFill::GetTolerance ******/
+		/****** md5 signature: 41a668da380cd0191814e6697f67950d ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -419,8 +419,8 @@ Used by the generical classes to determine tolerance for approximation.
 ") GetTolerance;
 		static Standard_Real GetTolerance(const Convert_ParameterisationType TConv, const Standard_Real AngleMin, const Standard_Real Radius, const Standard_Real AngularTol, const Standard_Real SpatialTol);
 
-		/****************** Knots ******************/
-		/**** md5 signature: 8c24952ff029ceb3b99a201b830b6212 ****/
+		/****** GeomFill::Knots ******/
+		/****** md5 signature: 8c24952ff029ceb3b99a201b830b6212 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -438,8 +438,8 @@ No available documentation.
 ") Knots;
 		static void Knots(const Convert_ParameterisationType TypeConv, TColStd_Array1OfReal & TKnots);
 
-		/****************** Mults ******************/
-		/**** md5 signature: 264559ae34cbb529bcff7630a6f546c3 ****/
+		/****** GeomFill::Mults ******/
+		/****** md5 signature: 264559ae34cbb529bcff7630a6f546c3 ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -457,8 +457,8 @@ No available documentation.
 ") Mults;
 		static void Mults(const Convert_ParameterisationType TypeConv, TColStd_Array1OfInteger & TMults);
 
-		/****************** Surface ******************/
-		/**** md5 signature: 9ce66d74545adeac22c48a48241309ed ****/
+		/****** GeomFill::Surface ******/
+		/****** md5 signature: 9ce66d74545adeac22c48a48241309ed ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -490,8 +490,8 @@ Builds a ruled surface between the two curves, curve1 and curve2.
 *************************/
 class GeomFill_AppSurf : public AppBlend_Approx {
 	public:
-		/****************** GeomFill_AppSurf ******************/
-		/**** md5 signature: 1c7dbddb83a07cfe5e8bef48ba5dabe0 ****/
+		/****** GeomFill_AppSurf::GeomFill_AppSurf ******/
+		/****** md5 signature: 1c7dbddb83a07cfe5e8bef48ba5dabe0 ******/
 		%feature("compactdefaultargs") GeomFill_AppSurf;
 		%feature("autodoc", "Return
 -------
@@ -503,8 +503,8 @@ No available documentation.
 ") GeomFill_AppSurf;
 		 GeomFill_AppSurf();
 
-		/****************** GeomFill_AppSurf ******************/
-		/**** md5 signature: 3bd483f9e3eb4e01e4564c16be2b3791 ****/
+		/****** GeomFill_AppSurf::GeomFill_AppSurf ******/
+		/****** md5 signature: 3bd483f9e3eb4e01e4564c16be2b3791 ******/
 		%feature("compactdefaultargs") GeomFill_AppSurf;
 		%feature("autodoc", "
 Parameters
@@ -526,8 +526,8 @@ No available documentation.
 ") GeomFill_AppSurf;
 		 GeomFill_AppSurf(const Standard_Integer Degmin, const Standard_Integer Degmax, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIt, const Standard_Boolean KnownParameters = Standard_False);
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 4cc571878c66d538aeaf8b0affec3574 ****/
+		/****** GeomFill_AppSurf::Continuity ******/
+		/****** md5 signature: 4cc571878c66d538aeaf8b0affec3574 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -539,8 +539,8 @@ Returns the continuity used in the approximation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
-		/****************** CriteriumWeight ******************/
-		/**** md5 signature: 4b68323f3c03d233f69e27404a58a42c ****/
+		/****** GeomFill_AppSurf::CriteriumWeight ******/
+		/****** md5 signature: 4b68323f3c03d233f69e27404a58a42c ******/
 		%feature("compactdefaultargs") CriteriumWeight;
 		%feature("autodoc", "
 Parameters
@@ -558,8 +558,8 @@ Returns the weights (as percent) associed to the criterium used in the optimizat
 ") CriteriumWeight;
 		void CriteriumWeight(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Curve2d ******************/
-		/**** md5 signature: 45f5fb41b7daba7a20d1fb56ead05f0f ****/
+		/****** GeomFill_AppSurf::Curve2d ******/
+		/****** md5 signature: 45f5fb41b7daba7a20d1fb56ead05f0f ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -579,8 +579,8 @@ No available documentation.
 ") Curve2d;
 		void Curve2d(const Standard_Integer Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
-		/****************** Curve2dPoles ******************/
-		/**** md5 signature: 8df321abd16a4651f96229eab1c5f048 ****/
+		/****** GeomFill_AppSurf::Curve2dPoles ******/
+		/****** md5 signature: 8df321abd16a4651f96229eab1c5f048 ******/
 		%feature("compactdefaultargs") Curve2dPoles;
 		%feature("autodoc", "
 Parameters
@@ -597,8 +597,8 @@ No available documentation.
 ") Curve2dPoles;
 		const TColgp_Array1OfPnt2d & Curve2dPoles(const Standard_Integer Index);
 
-		/****************** Curves2dDegree ******************/
-		/**** md5 signature: 85ba31033da623d05ad75c9b051842b3 ****/
+		/****** GeomFill_AppSurf::Curves2dDegree ******/
+		/****** md5 signature: 85ba31033da623d05ad75c9b051842b3 ******/
 		%feature("compactdefaultargs") Curves2dDegree;
 		%feature("autodoc", "Return
 -------
@@ -610,8 +610,8 @@ No available documentation.
 ") Curves2dDegree;
 		Standard_Integer Curves2dDegree();
 
-		/****************** Curves2dKnots ******************/
-		/**** md5 signature: cd12725d88c425f3fe1ebccf9467256f ****/
+		/****** GeomFill_AppSurf::Curves2dKnots ******/
+		/****** md5 signature: cd12725d88c425f3fe1ebccf9467256f ******/
 		%feature("compactdefaultargs") Curves2dKnots;
 		%feature("autodoc", "Return
 -------
@@ -623,8 +623,8 @@ No available documentation.
 ") Curves2dKnots;
 		const TColStd_Array1OfReal & Curves2dKnots();
 
-		/****************** Curves2dMults ******************/
-		/**** md5 signature: d4f1ca5a39a589bb289460010c5bbf39 ****/
+		/****** GeomFill_AppSurf::Curves2dMults ******/
+		/****** md5 signature: d4f1ca5a39a589bb289460010c5bbf39 ******/
 		%feature("compactdefaultargs") Curves2dMults;
 		%feature("autodoc", "Return
 -------
@@ -636,8 +636,8 @@ No available documentation.
 ") Curves2dMults;
 		const TColStd_Array1OfInteger & Curves2dMults();
 
-		/****************** Curves2dShape ******************/
-		/**** md5 signature: 28bf2faa4b8e811f12223cb99d1721ea ****/
+		/****** GeomFill_AppSurf::Curves2dShape ******/
+		/****** md5 signature: 28bf2faa4b8e811f12223cb99d1721ea ******/
 		%feature("compactdefaultargs") Curves2dShape;
 		%feature("autodoc", "
 Parameters
@@ -655,8 +655,8 @@ No available documentation.
 ") Curves2dShape;
 		void Curves2dShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** Init ******************/
-		/**** md5 signature: 44a81349dbd1c40eccbaf3f763903054 ****/
+		/****** GeomFill_AppSurf::Init ******/
+		/****** md5 signature: 44a81349dbd1c40eccbaf3f763903054 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -678,8 +678,8 @@ No available documentation.
 ") Init;
 		void Init(const Standard_Integer Degmin, const Standard_Integer Degmax, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIt, const Standard_Boolean KnownParameters = Standard_False);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomFill_AppSurf::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -691,8 +691,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbCurves2d ******************/
-		/**** md5 signature: 91ae967daa54efe7d38afad4a5698e5b ****/
+		/****** GeomFill_AppSurf::NbCurves2d ******/
+		/****** md5 signature: 91ae967daa54efe7d38afad4a5698e5b ******/
 		%feature("compactdefaultargs") NbCurves2d;
 		%feature("autodoc", "Return
 -------
@@ -704,8 +704,8 @@ No available documentation.
 ") NbCurves2d;
 		Standard_Integer NbCurves2d();
 
-		/****************** ParType ******************/
-		/**** md5 signature: 97fa11d31bc8075ba4a84bf8b926a855 ****/
+		/****** GeomFill_AppSurf::ParType ******/
+		/****** md5 signature: 97fa11d31bc8075ba4a84bf8b926a855 ******/
 		%feature("compactdefaultargs") ParType;
 		%feature("autodoc", "Return
 -------
@@ -717,8 +717,8 @@ Returns the type of parametrization used in the approximation.
 ") ParType;
 		Approx_ParametrizationType ParType();
 
-		/****************** Perform ******************/
-		/**** md5 signature: e8e4da371dbd87da036a62de5595f08b ****/
+		/****** GeomFill_AppSurf::Perform ******/
+		/****** md5 signature: e8e4da371dbd87da036a62de5595f08b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -737,8 +737,8 @@ No available documentation.
 ") Perform;
 		void Perform(const opencascade::handle<GeomFill_Line> & Lin, GeomFill_SectionGenerator & SecGen, const Standard_Boolean SpApprox = Standard_False);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 2eb325a3136863679e94e12dd2910a46 ****/
+		/****** GeomFill_AppSurf::Perform ******/
+		/****** md5 signature: 2eb325a3136863679e94e12dd2910a46 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -757,8 +757,8 @@ No available documentation.
 ") Perform;
 		void Perform(const opencascade::handle<GeomFill_Line> & Lin, GeomFill_SectionGenerator & SecGen, const Standard_Integer NbMaxP);
 
-		/****************** PerformSmoothing ******************/
-		/**** md5 signature: e46fca96d8fba2154acfef98f49f263e ****/
+		/****** GeomFill_AppSurf::PerformSmoothing ******/
+		/****** md5 signature: e46fca96d8fba2154acfef98f49f263e ******/
 		%feature("compactdefaultargs") PerformSmoothing;
 		%feature("autodoc", "
 Parameters
@@ -776,8 +776,8 @@ No available documentation.
 ") PerformSmoothing;
 		void PerformSmoothing(const opencascade::handle<GeomFill_Line> & Lin, GeomFill_SectionGenerator & SecGen);
 
-		/****************** SetContinuity ******************/
-		/**** md5 signature: 41a91b0ea6e9b248a1b48c05882f4281 ****/
+		/****** GeomFill_AppSurf::SetContinuity ******/
+		/****** md5 signature: 41a91b0ea6e9b248a1b48c05882f4281 ******/
 		%feature("compactdefaultargs") SetContinuity;
 		%feature("autodoc", "
 Parameters
@@ -794,8 +794,8 @@ Define the continuity used in the approximation.
 ") SetContinuity;
 		void SetContinuity(const GeomAbs_Shape C);
 
-		/****************** SetCriteriumWeight ******************/
-		/**** md5 signature: f8c7045bd0e7f781a0984d023e8b1268 ****/
+		/****** GeomFill_AppSurf::SetCriteriumWeight ******/
+		/****** md5 signature: f8c7045bd0e7f781a0984d023e8b1268 ******/
 		%feature("compactdefaultargs") SetCriteriumWeight;
 		%feature("autodoc", "
 Parameters
@@ -814,8 +814,8 @@ Define the weights associed to the criterium used in the optimization. //! if wi
 ") SetCriteriumWeight;
 		void SetCriteriumWeight(const Standard_Real W1, const Standard_Real W2, const Standard_Real W3);
 
-		/****************** SetParType ******************/
-		/**** md5 signature: ff343d7833ad3cc796439eb5cefa88ba ****/
+		/****** GeomFill_AppSurf::SetParType ******/
+		/****** md5 signature: ff343d7833ad3cc796439eb5cefa88ba ******/
 		%feature("compactdefaultargs") SetParType;
 		%feature("autodoc", "
 Parameters
@@ -832,8 +832,8 @@ Define the type of parametrization used in the approximation.
 ") SetParType;
 		void SetParType(const Approx_ParametrizationType ParType);
 
-		/****************** SurfPoles ******************/
-		/**** md5 signature: 33be5d08621b237fcd73b5b9accd2338 ****/
+		/****** GeomFill_AppSurf::SurfPoles ******/
+		/****** md5 signature: 33be5d08621b237fcd73b5b9accd2338 ******/
 		%feature("compactdefaultargs") SurfPoles;
 		%feature("autodoc", "Return
 -------
@@ -845,8 +845,8 @@ No available documentation.
 ") SurfPoles;
 		const TColgp_Array2OfPnt & SurfPoles();
 
-		/****************** SurfShape ******************/
-		/**** md5 signature: 6dbc9c018a92aabb9f9d1988ac20cb43 ****/
+		/****** GeomFill_AppSurf::SurfShape ******/
+		/****** md5 signature: 6dbc9c018a92aabb9f9d1988ac20cb43 ******/
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", "
 Parameters
@@ -867,8 +867,8 @@ No available documentation.
 ") SurfShape;
 		void SurfShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SurfUKnots ******************/
-		/**** md5 signature: 30cf4dd9deaf04a1c77052e14ae7392b ****/
+		/****** GeomFill_AppSurf::SurfUKnots ******/
+		/****** md5 signature: 30cf4dd9deaf04a1c77052e14ae7392b ******/
 		%feature("compactdefaultargs") SurfUKnots;
 		%feature("autodoc", "Return
 -------
@@ -880,8 +880,8 @@ No available documentation.
 ") SurfUKnots;
 		const TColStd_Array1OfReal & SurfUKnots();
 
-		/****************** SurfUMults ******************/
-		/**** md5 signature: ef046447df8e4b2931da90e1475e731f ****/
+		/****** GeomFill_AppSurf::SurfUMults ******/
+		/****** md5 signature: ef046447df8e4b2931da90e1475e731f ******/
 		%feature("compactdefaultargs") SurfUMults;
 		%feature("autodoc", "Return
 -------
@@ -893,8 +893,8 @@ No available documentation.
 ") SurfUMults;
 		const TColStd_Array1OfInteger & SurfUMults();
 
-		/****************** SurfVKnots ******************/
-		/**** md5 signature: 52c9dafc43c5e3713c77d7aa4381da5c ****/
+		/****** GeomFill_AppSurf::SurfVKnots ******/
+		/****** md5 signature: 52c9dafc43c5e3713c77d7aa4381da5c ******/
 		%feature("compactdefaultargs") SurfVKnots;
 		%feature("autodoc", "Return
 -------
@@ -906,8 +906,8 @@ No available documentation.
 ") SurfVKnots;
 		const TColStd_Array1OfReal & SurfVKnots();
 
-		/****************** SurfVMults ******************/
-		/**** md5 signature: 589e6536c77c512e7a37f99faf0fa21c ****/
+		/****** GeomFill_AppSurf::SurfVMults ******/
+		/****** md5 signature: 589e6536c77c512e7a37f99faf0fa21c ******/
 		%feature("compactdefaultargs") SurfVMults;
 		%feature("autodoc", "Return
 -------
@@ -919,8 +919,8 @@ No available documentation.
 ") SurfVMults;
 		const TColStd_Array1OfInteger & SurfVMults();
 
-		/****************** SurfWeights ******************/
-		/**** md5 signature: 894d2a3f2c33f7d641aef9c7f9e3fa57 ****/
+		/****** GeomFill_AppSurf::SurfWeights ******/
+		/****** md5 signature: 894d2a3f2c33f7d641aef9c7f9e3fa57 ******/
 		%feature("compactdefaultargs") SurfWeights;
 		%feature("autodoc", "Return
 -------
@@ -932,8 +932,8 @@ No available documentation.
 ") SurfWeights;
 		const TColStd_Array2OfReal & SurfWeights();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 49bb9dd6da49966f0010e14dd0ffef04 ****/
+		/****** GeomFill_AppSurf::Surface ******/
+		/****** md5 signature: 49bb9dd6da49966f0010e14dd0ffef04 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -955,8 +955,8 @@ No available documentation.
 ") Surface;
 		void Surface(TColgp_Array2OfPnt & TPoles, TColStd_Array2OfReal & TWeights, TColStd_Array1OfReal & TUKnots, TColStd_Array1OfReal & TVKnots, TColStd_Array1OfInteger & TUMults, TColStd_Array1OfInteger & TVMults);
 
-		/****************** TolCurveOnSurf ******************/
-		/**** md5 signature: f21f0f877b35cf67581fa59260f72857 ****/
+		/****** GeomFill_AppSurf::TolCurveOnSurf ******/
+		/****** md5 signature: f21f0f877b35cf67581fa59260f72857 ******/
 		%feature("compactdefaultargs") TolCurveOnSurf;
 		%feature("autodoc", "
 Parameters
@@ -973,8 +973,8 @@ No available documentation.
 ") TolCurveOnSurf;
 		Standard_Real TolCurveOnSurf(const Standard_Integer Index);
 
-		/****************** TolReached ******************/
-		/**** md5 signature: c8d3e7f26c4ee8a50f4eca5274d79e63 ****/
+		/****** GeomFill_AppSurf::TolReached ******/
+		/****** md5 signature: c8d3e7f26c4ee8a50f4eca5274d79e63 ******/
 		%feature("compactdefaultargs") TolReached;
 		%feature("autodoc", "
 Parameters
@@ -991,8 +991,8 @@ No available documentation.
 ") TolReached;
 		void TolReached(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** UDegree ******************/
-		/**** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ****/
+		/****** GeomFill_AppSurf::UDegree ******/
+		/****** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -1004,8 +1004,8 @@ No available documentation.
 ") UDegree;
 		Standard_Integer UDegree();
 
-		/****************** VDegree ******************/
-		/**** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ****/
+		/****** GeomFill_AppSurf::VDegree ******/
+		/****** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -1031,8 +1031,8 @@ No available documentation.
 **************************/
 class GeomFill_AppSweep : public AppBlend_Approx {
 	public:
-		/****************** GeomFill_AppSweep ******************/
-		/**** md5 signature: 9e735b03a8b92d1b4b7f9849156ea8dc ****/
+		/****** GeomFill_AppSweep::GeomFill_AppSweep ******/
+		/****** md5 signature: 9e735b03a8b92d1b4b7f9849156ea8dc ******/
 		%feature("compactdefaultargs") GeomFill_AppSweep;
 		%feature("autodoc", "Return
 -------
@@ -1044,8 +1044,8 @@ No available documentation.
 ") GeomFill_AppSweep;
 		 GeomFill_AppSweep();
 
-		/****************** GeomFill_AppSweep ******************/
-		/**** md5 signature: 1077fe95aa476880e0b3f86c33c517cd ****/
+		/****** GeomFill_AppSweep::GeomFill_AppSweep ******/
+		/****** md5 signature: 1077fe95aa476880e0b3f86c33c517cd ******/
 		%feature("compactdefaultargs") GeomFill_AppSweep;
 		%feature("autodoc", "
 Parameters
@@ -1067,8 +1067,8 @@ No available documentation.
 ") GeomFill_AppSweep;
 		 GeomFill_AppSweep(const Standard_Integer Degmin, const Standard_Integer Degmax, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIt, const Standard_Boolean KnownParameters = Standard_False);
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 4cc571878c66d538aeaf8b0affec3574 ****/
+		/****** GeomFill_AppSweep::Continuity ******/
+		/****** md5 signature: 4cc571878c66d538aeaf8b0affec3574 ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -1080,8 +1080,8 @@ Returns the continuity used in the approximation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
-		/****************** CriteriumWeight ******************/
-		/**** md5 signature: 4b68323f3c03d233f69e27404a58a42c ****/
+		/****** GeomFill_AppSweep::CriteriumWeight ******/
+		/****** md5 signature: 4b68323f3c03d233f69e27404a58a42c ******/
 		%feature("compactdefaultargs") CriteriumWeight;
 		%feature("autodoc", "
 Parameters
@@ -1099,8 +1099,8 @@ Returns the weights (as percent) associed to the criterium used in the optimizat
 ") CriteriumWeight;
 		void CriteriumWeight(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Curve2d ******************/
-		/**** md5 signature: 45f5fb41b7daba7a20d1fb56ead05f0f ****/
+		/****** GeomFill_AppSweep::Curve2d ******/
+		/****** md5 signature: 45f5fb41b7daba7a20d1fb56ead05f0f ******/
 		%feature("compactdefaultargs") Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -1120,8 +1120,8 @@ No available documentation.
 ") Curve2d;
 		void Curve2d(const Standard_Integer Index, TColgp_Array1OfPnt2d & TPoles, TColStd_Array1OfReal & TKnots, TColStd_Array1OfInteger & TMults);
 
-		/****************** Curve2dPoles ******************/
-		/**** md5 signature: 8df321abd16a4651f96229eab1c5f048 ****/
+		/****** GeomFill_AppSweep::Curve2dPoles ******/
+		/****** md5 signature: 8df321abd16a4651f96229eab1c5f048 ******/
 		%feature("compactdefaultargs") Curve2dPoles;
 		%feature("autodoc", "
 Parameters
@@ -1138,8 +1138,8 @@ No available documentation.
 ") Curve2dPoles;
 		const TColgp_Array1OfPnt2d & Curve2dPoles(const Standard_Integer Index);
 
-		/****************** Curves2dDegree ******************/
-		/**** md5 signature: 85ba31033da623d05ad75c9b051842b3 ****/
+		/****** GeomFill_AppSweep::Curves2dDegree ******/
+		/****** md5 signature: 85ba31033da623d05ad75c9b051842b3 ******/
 		%feature("compactdefaultargs") Curves2dDegree;
 		%feature("autodoc", "Return
 -------
@@ -1151,8 +1151,8 @@ No available documentation.
 ") Curves2dDegree;
 		Standard_Integer Curves2dDegree();
 
-		/****************** Curves2dKnots ******************/
-		/**** md5 signature: cd12725d88c425f3fe1ebccf9467256f ****/
+		/****** GeomFill_AppSweep::Curves2dKnots ******/
+		/****** md5 signature: cd12725d88c425f3fe1ebccf9467256f ******/
 		%feature("compactdefaultargs") Curves2dKnots;
 		%feature("autodoc", "Return
 -------
@@ -1164,8 +1164,8 @@ No available documentation.
 ") Curves2dKnots;
 		const TColStd_Array1OfReal & Curves2dKnots();
 
-		/****************** Curves2dMults ******************/
-		/**** md5 signature: d4f1ca5a39a589bb289460010c5bbf39 ****/
+		/****** GeomFill_AppSweep::Curves2dMults ******/
+		/****** md5 signature: d4f1ca5a39a589bb289460010c5bbf39 ******/
 		%feature("compactdefaultargs") Curves2dMults;
 		%feature("autodoc", "Return
 -------
@@ -1177,8 +1177,8 @@ No available documentation.
 ") Curves2dMults;
 		const TColStd_Array1OfInteger & Curves2dMults();
 
-		/****************** Curves2dShape ******************/
-		/**** md5 signature: 28bf2faa4b8e811f12223cb99d1721ea ****/
+		/****** GeomFill_AppSweep::Curves2dShape ******/
+		/****** md5 signature: 28bf2faa4b8e811f12223cb99d1721ea ******/
 		%feature("compactdefaultargs") Curves2dShape;
 		%feature("autodoc", "
 Parameters
@@ -1196,8 +1196,8 @@ No available documentation.
 ") Curves2dShape;
 		void Curves2dShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** Init ******************/
-		/**** md5 signature: 44a81349dbd1c40eccbaf3f763903054 ****/
+		/****** GeomFill_AppSweep::Init ******/
+		/****** md5 signature: 44a81349dbd1c40eccbaf3f763903054 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1219,8 +1219,8 @@ No available documentation.
 ") Init;
 		void Init(const Standard_Integer Degmin, const Standard_Integer Degmax, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIt, const Standard_Boolean KnownParameters = Standard_False);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomFill_AppSweep::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1232,8 +1232,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NbCurves2d ******************/
-		/**** md5 signature: 91ae967daa54efe7d38afad4a5698e5b ****/
+		/****** GeomFill_AppSweep::NbCurves2d ******/
+		/****** md5 signature: 91ae967daa54efe7d38afad4a5698e5b ******/
 		%feature("compactdefaultargs") NbCurves2d;
 		%feature("autodoc", "Return
 -------
@@ -1245,8 +1245,8 @@ No available documentation.
 ") NbCurves2d;
 		Standard_Integer NbCurves2d();
 
-		/****************** ParType ******************/
-		/**** md5 signature: 97fa11d31bc8075ba4a84bf8b926a855 ****/
+		/****** GeomFill_AppSweep::ParType ******/
+		/****** md5 signature: 97fa11d31bc8075ba4a84bf8b926a855 ******/
 		%feature("compactdefaultargs") ParType;
 		%feature("autodoc", "Return
 -------
@@ -1258,8 +1258,8 @@ Returns the type of parametrization used in the approximation.
 ") ParType;
 		Approx_ParametrizationType ParType();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 5729175890fe0309e2865ec4bb63bd8f ****/
+		/****** GeomFill_AppSweep::Perform ******/
+		/****** md5 signature: 5729175890fe0309e2865ec4bb63bd8f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1278,8 +1278,8 @@ No available documentation.
 ") Perform;
 		void Perform(const opencascade::handle<GeomFill_Line> & Lin, GeomFill_SweepSectionGenerator & SecGen, const Standard_Boolean SpApprox = Standard_False);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 57bd689c19c25917c19e2b9cd362cce3 ****/
+		/****** GeomFill_AppSweep::Perform ******/
+		/****** md5 signature: 57bd689c19c25917c19e2b9cd362cce3 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -1298,8 +1298,8 @@ No available documentation.
 ") Perform;
 		void Perform(const opencascade::handle<GeomFill_Line> & Lin, GeomFill_SweepSectionGenerator & SecGen, const Standard_Integer NbMaxP);
 
-		/****************** PerformSmoothing ******************/
-		/**** md5 signature: 405eff04997dd8c0d95c5553e2f99624 ****/
+		/****** GeomFill_AppSweep::PerformSmoothing ******/
+		/****** md5 signature: 405eff04997dd8c0d95c5553e2f99624 ******/
 		%feature("compactdefaultargs") PerformSmoothing;
 		%feature("autodoc", "
 Parameters
@@ -1317,8 +1317,8 @@ No available documentation.
 ") PerformSmoothing;
 		void PerformSmoothing(const opencascade::handle<GeomFill_Line> & Lin, GeomFill_SweepSectionGenerator & SecGen);
 
-		/****************** SetContinuity ******************/
-		/**** md5 signature: 41a91b0ea6e9b248a1b48c05882f4281 ****/
+		/****** GeomFill_AppSweep::SetContinuity ******/
+		/****** md5 signature: 41a91b0ea6e9b248a1b48c05882f4281 ******/
 		%feature("compactdefaultargs") SetContinuity;
 		%feature("autodoc", "
 Parameters
@@ -1335,8 +1335,8 @@ Define the continuity used in the approximation.
 ") SetContinuity;
 		void SetContinuity(const GeomAbs_Shape C);
 
-		/****************** SetCriteriumWeight ******************/
-		/**** md5 signature: f8c7045bd0e7f781a0984d023e8b1268 ****/
+		/****** GeomFill_AppSweep::SetCriteriumWeight ******/
+		/****** md5 signature: f8c7045bd0e7f781a0984d023e8b1268 ******/
 		%feature("compactdefaultargs") SetCriteriumWeight;
 		%feature("autodoc", "
 Parameters
@@ -1355,8 +1355,8 @@ Define the weights associed to the criterium used in the optimization. //! if wi
 ") SetCriteriumWeight;
 		void SetCriteriumWeight(const Standard_Real W1, const Standard_Real W2, const Standard_Real W3);
 
-		/****************** SetParType ******************/
-		/**** md5 signature: ff343d7833ad3cc796439eb5cefa88ba ****/
+		/****** GeomFill_AppSweep::SetParType ******/
+		/****** md5 signature: ff343d7833ad3cc796439eb5cefa88ba ******/
 		%feature("compactdefaultargs") SetParType;
 		%feature("autodoc", "
 Parameters
@@ -1373,8 +1373,8 @@ Define the type of parametrization used in the approximation.
 ") SetParType;
 		void SetParType(const Approx_ParametrizationType ParType);
 
-		/****************** SurfPoles ******************/
-		/**** md5 signature: 33be5d08621b237fcd73b5b9accd2338 ****/
+		/****** GeomFill_AppSweep::SurfPoles ******/
+		/****** md5 signature: 33be5d08621b237fcd73b5b9accd2338 ******/
 		%feature("compactdefaultargs") SurfPoles;
 		%feature("autodoc", "Return
 -------
@@ -1386,8 +1386,8 @@ No available documentation.
 ") SurfPoles;
 		const TColgp_Array2OfPnt & SurfPoles();
 
-		/****************** SurfShape ******************/
-		/**** md5 signature: 6dbc9c018a92aabb9f9d1988ac20cb43 ****/
+		/****** GeomFill_AppSweep::SurfShape ******/
+		/****** md5 signature: 6dbc9c018a92aabb9f9d1988ac20cb43 ******/
 		%feature("compactdefaultargs") SurfShape;
 		%feature("autodoc", "
 Parameters
@@ -1408,8 +1408,8 @@ No available documentation.
 ") SurfShape;
 		void SurfShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SurfUKnots ******************/
-		/**** md5 signature: 30cf4dd9deaf04a1c77052e14ae7392b ****/
+		/****** GeomFill_AppSweep::SurfUKnots ******/
+		/****** md5 signature: 30cf4dd9deaf04a1c77052e14ae7392b ******/
 		%feature("compactdefaultargs") SurfUKnots;
 		%feature("autodoc", "Return
 -------
@@ -1421,8 +1421,8 @@ No available documentation.
 ") SurfUKnots;
 		const TColStd_Array1OfReal & SurfUKnots();
 
-		/****************** SurfUMults ******************/
-		/**** md5 signature: ef046447df8e4b2931da90e1475e731f ****/
+		/****** GeomFill_AppSweep::SurfUMults ******/
+		/****** md5 signature: ef046447df8e4b2931da90e1475e731f ******/
 		%feature("compactdefaultargs") SurfUMults;
 		%feature("autodoc", "Return
 -------
@@ -1434,8 +1434,8 @@ No available documentation.
 ") SurfUMults;
 		const TColStd_Array1OfInteger & SurfUMults();
 
-		/****************** SurfVKnots ******************/
-		/**** md5 signature: 52c9dafc43c5e3713c77d7aa4381da5c ****/
+		/****** GeomFill_AppSweep::SurfVKnots ******/
+		/****** md5 signature: 52c9dafc43c5e3713c77d7aa4381da5c ******/
 		%feature("compactdefaultargs") SurfVKnots;
 		%feature("autodoc", "Return
 -------
@@ -1447,8 +1447,8 @@ No available documentation.
 ") SurfVKnots;
 		const TColStd_Array1OfReal & SurfVKnots();
 
-		/****************** SurfVMults ******************/
-		/**** md5 signature: 589e6536c77c512e7a37f99faf0fa21c ****/
+		/****** GeomFill_AppSweep::SurfVMults ******/
+		/****** md5 signature: 589e6536c77c512e7a37f99faf0fa21c ******/
 		%feature("compactdefaultargs") SurfVMults;
 		%feature("autodoc", "Return
 -------
@@ -1460,8 +1460,8 @@ No available documentation.
 ") SurfVMults;
 		const TColStd_Array1OfInteger & SurfVMults();
 
-		/****************** SurfWeights ******************/
-		/**** md5 signature: 894d2a3f2c33f7d641aef9c7f9e3fa57 ****/
+		/****** GeomFill_AppSweep::SurfWeights ******/
+		/****** md5 signature: 894d2a3f2c33f7d641aef9c7f9e3fa57 ******/
 		%feature("compactdefaultargs") SurfWeights;
 		%feature("autodoc", "Return
 -------
@@ -1473,8 +1473,8 @@ No available documentation.
 ") SurfWeights;
 		const TColStd_Array2OfReal & SurfWeights();
 
-		/****************** Surface ******************/
-		/**** md5 signature: 49bb9dd6da49966f0010e14dd0ffef04 ****/
+		/****** GeomFill_AppSweep::Surface ******/
+		/****** md5 signature: 49bb9dd6da49966f0010e14dd0ffef04 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "
 Parameters
@@ -1496,8 +1496,8 @@ No available documentation.
 ") Surface;
 		void Surface(TColgp_Array2OfPnt & TPoles, TColStd_Array2OfReal & TWeights, TColStd_Array1OfReal & TUKnots, TColStd_Array1OfReal & TVKnots, TColStd_Array1OfInteger & TUMults, TColStd_Array1OfInteger & TVMults);
 
-		/****************** TolCurveOnSurf ******************/
-		/**** md5 signature: f21f0f877b35cf67581fa59260f72857 ****/
+		/****** GeomFill_AppSweep::TolCurveOnSurf ******/
+		/****** md5 signature: f21f0f877b35cf67581fa59260f72857 ******/
 		%feature("compactdefaultargs") TolCurveOnSurf;
 		%feature("autodoc", "
 Parameters
@@ -1514,8 +1514,8 @@ No available documentation.
 ") TolCurveOnSurf;
 		Standard_Real TolCurveOnSurf(const Standard_Integer Index);
 
-		/****************** TolReached ******************/
-		/**** md5 signature: c8d3e7f26c4ee8a50f4eca5274d79e63 ****/
+		/****** GeomFill_AppSweep::TolReached ******/
+		/****** md5 signature: c8d3e7f26c4ee8a50f4eca5274d79e63 ******/
 		%feature("compactdefaultargs") TolReached;
 		%feature("autodoc", "
 Parameters
@@ -1532,8 +1532,8 @@ No available documentation.
 ") TolReached;
 		void TolReached(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** UDegree ******************/
-		/**** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ****/
+		/****** GeomFill_AppSweep::UDegree ******/
+		/****** md5 signature: f204e5fbf1c49e3d9e4889dfead5a190 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -1545,8 +1545,8 @@ No available documentation.
 ") UDegree;
 		Standard_Integer UDegree();
 
-		/****************** VDegree ******************/
-		/**** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ****/
+		/****** GeomFill_AppSweep::VDegree ******/
+		/****** md5 signature: 4901bdb3b29a5c2410ca93d6a7816f06 ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -1572,8 +1572,8 @@ No available documentation.
 *******************************/
 class GeomFill_BSplineCurves {
 	public:
-		/****************** GeomFill_BSplineCurves ******************/
-		/**** md5 signature: 87e0aef52475a1573c465fec5d82d48d ****/
+		/****** GeomFill_BSplineCurves::GeomFill_BSplineCurves ******/
+		/****** md5 signature: 87e0aef52475a1573c465fec5d82d48d ******/
 		%feature("compactdefaultargs") GeomFill_BSplineCurves;
 		%feature("autodoc", "Return
 -------
@@ -1585,8 +1585,8 @@ Constructs a default bspline surface framework.
 ") GeomFill_BSplineCurves;
 		 GeomFill_BSplineCurves();
 
-		/****************** GeomFill_BSplineCurves ******************/
-		/**** md5 signature: e2d7231f750710ead9d50ecb66ca1979 ****/
+		/****** GeomFill_BSplineCurves::GeomFill_BSplineCurves ******/
+		/****** md5 signature: e2d7231f750710ead9d50ecb66ca1979 ******/
 		%feature("compactdefaultargs") GeomFill_BSplineCurves;
 		%feature("autodoc", "
 Parameters
@@ -1607,8 +1607,8 @@ No available documentation.
 ") GeomFill_BSplineCurves;
 		 GeomFill_BSplineCurves(const opencascade::handle<Geom_BSplineCurve> & C1, const opencascade::handle<Geom_BSplineCurve> & C2, const opencascade::handle<Geom_BSplineCurve> & C3, const opencascade::handle<Geom_BSplineCurve> & C4, const GeomFill_FillingStyle Type);
 
-		/****************** GeomFill_BSplineCurves ******************/
-		/**** md5 signature: acb50b52f59852f0aa0519551cc6a635 ****/
+		/****** GeomFill_BSplineCurves::GeomFill_BSplineCurves ******/
+		/****** md5 signature: acb50b52f59852f0aa0519551cc6a635 ******/
 		%feature("compactdefaultargs") GeomFill_BSplineCurves;
 		%feature("autodoc", "
 Parameters
@@ -1628,8 +1628,8 @@ No available documentation.
 ") GeomFill_BSplineCurves;
 		 GeomFill_BSplineCurves(const opencascade::handle<Geom_BSplineCurve> & C1, const opencascade::handle<Geom_BSplineCurve> & C2, const opencascade::handle<Geom_BSplineCurve> & C3, const GeomFill_FillingStyle Type);
 
-		/****************** GeomFill_BSplineCurves ******************/
-		/**** md5 signature: 128f91ad74ed4756ca15ba7ce405c9c7 ****/
+		/****** GeomFill_BSplineCurves::GeomFill_BSplineCurves ******/
+		/****** md5 signature: 128f91ad74ed4756ca15ba7ce405c9c7 ******/
 		%feature("compactdefaultargs") GeomFill_BSplineCurves;
 		%feature("autodoc", "
 Parameters
@@ -1648,8 +1648,8 @@ Constructs a framework for building a bspline surface from either - the four con
 ") GeomFill_BSplineCurves;
 		 GeomFill_BSplineCurves(const opencascade::handle<Geom_BSplineCurve> & C1, const opencascade::handle<Geom_BSplineCurve> & C2, const GeomFill_FillingStyle Type);
 
-		/****************** Init ******************/
-		/**** md5 signature: 39be09b652d63f92221b6a9f668da556 ****/
+		/****** GeomFill_BSplineCurves::Init ******/
+		/****** md5 signature: 39be09b652d63f92221b6a9f668da556 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1670,8 +1670,8 @@ If the curves cannot be joined.
 ") Init;
 		void Init(const opencascade::handle<Geom_BSplineCurve> & C1, const opencascade::handle<Geom_BSplineCurve> & C2, const opencascade::handle<Geom_BSplineCurve> & C3, const opencascade::handle<Geom_BSplineCurve> & C4, const GeomFill_FillingStyle Type);
 
-		/****************** Init ******************/
-		/**** md5 signature: 8c1e4ea27db140918013a210804afd7a ****/
+		/****** GeomFill_BSplineCurves::Init ******/
+		/****** md5 signature: 8c1e4ea27db140918013a210804afd7a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1691,8 +1691,8 @@ If the curves cannot be joined.
 ") Init;
 		void Init(const opencascade::handle<Geom_BSplineCurve> & C1, const opencascade::handle<Geom_BSplineCurve> & C2, const opencascade::handle<Geom_BSplineCurve> & C3, const GeomFill_FillingStyle Type);
 
-		/****************** Init ******************/
-		/**** md5 signature: a60013b896a33bdae0dfab458ab2dd4c ****/
+		/****** GeomFill_BSplineCurves::Init ******/
+		/****** md5 signature: a60013b896a33bdae0dfab458ab2dd4c ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1711,8 +1711,8 @@ Initializes or reinitializes this algorithm with two, three, or four curves - c1
 ") Init;
 		void Init(const opencascade::handle<Geom_BSplineCurve> & C1, const opencascade::handle<Geom_BSplineCurve> & C2, const GeomFill_FillingStyle Type);
 
-		/****************** Surface ******************/
-		/**** md5 signature: 671a5de971e9a6baf08b4e111daa768f ****/
+		/****** GeomFill_BSplineCurves::Surface ******/
+		/****** md5 signature: 671a5de971e9a6baf08b4e111daa768f ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -1738,8 +1738,8 @@ Returns the bspline surface surface resulting from the computation performed by 
 ******************************/
 class GeomFill_BezierCurves {
 	public:
-		/****************** GeomFill_BezierCurves ******************/
-		/**** md5 signature: bfa320d41e7cefe14ec555f53005095c ****/
+		/****** GeomFill_BezierCurves::GeomFill_BezierCurves ******/
+		/****** md5 signature: bfa320d41e7cefe14ec555f53005095c ******/
 		%feature("compactdefaultargs") GeomFill_BezierCurves;
 		%feature("autodoc", "Return
 -------
@@ -1751,8 +1751,8 @@ Constructs an empty framework for building a bezier surface from contiguous bezi
 ") GeomFill_BezierCurves;
 		 GeomFill_BezierCurves();
 
-		/****************** GeomFill_BezierCurves ******************/
-		/**** md5 signature: 66f314aaa192119199c8fed852c1b6d5 ****/
+		/****** GeomFill_BezierCurves::GeomFill_BezierCurves ******/
+		/****** md5 signature: 66f314aaa192119199c8fed852c1b6d5 ******/
 		%feature("compactdefaultargs") GeomFill_BezierCurves;
 		%feature("autodoc", "
 Parameters
@@ -1773,8 +1773,8 @@ Constructs a framework for building a bezier surface from the four contiguous be
 ") GeomFill_BezierCurves;
 		 GeomFill_BezierCurves(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const opencascade::handle<Geom_BezierCurve> & C3, const opencascade::handle<Geom_BezierCurve> & C4, const GeomFill_FillingStyle Type);
 
-		/****************** GeomFill_BezierCurves ******************/
-		/**** md5 signature: 097f529258a45247cc5acab7298ebfa1 ****/
+		/****** GeomFill_BezierCurves::GeomFill_BezierCurves ******/
+		/****** md5 signature: 097f529258a45247cc5acab7298ebfa1 ******/
 		%feature("compactdefaultargs") GeomFill_BezierCurves;
 		%feature("autodoc", "
 Parameters
@@ -1794,8 +1794,8 @@ Constructs a framework for building a bezier surface from the three contiguous b
 ") GeomFill_BezierCurves;
 		 GeomFill_BezierCurves(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const opencascade::handle<Geom_BezierCurve> & C3, const GeomFill_FillingStyle Type);
 
-		/****************** GeomFill_BezierCurves ******************/
-		/**** md5 signature: 510d7795e7257dc3b826a3c0344d89f7 ****/
+		/****** GeomFill_BezierCurves::GeomFill_BezierCurves ******/
+		/****** md5 signature: 510d7795e7257dc3b826a3c0344d89f7 ******/
 		%feature("compactdefaultargs") GeomFill_BezierCurves;
 		%feature("autodoc", "
 Parameters
@@ -1814,8 +1814,8 @@ Constructs a framework for building a bezier surface from the two contiguous bez
 ") GeomFill_BezierCurves;
 		 GeomFill_BezierCurves(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const GeomFill_FillingStyle Type);
 
-		/****************** Init ******************/
-		/**** md5 signature: 6f1126ff718aaa99f991335b7e5e5379 ****/
+		/****** GeomFill_BezierCurves::Init ******/
+		/****** md5 signature: 6f1126ff718aaa99f991335b7e5e5379 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1836,8 +1836,8 @@ If the curves cannot be joined.
 ") Init;
 		void Init(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const opencascade::handle<Geom_BezierCurve> & C3, const opencascade::handle<Geom_BezierCurve> & C4, const GeomFill_FillingStyle Type);
 
-		/****************** Init ******************/
-		/**** md5 signature: 7df84fc2f0be865f8a23e1f7b445f402 ****/
+		/****** GeomFill_BezierCurves::Init ******/
+		/****** md5 signature: 7df84fc2f0be865f8a23e1f7b445f402 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1857,8 +1857,8 @@ If the curves cannot be joined.
 ") Init;
 		void Init(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const opencascade::handle<Geom_BezierCurve> & C3, const GeomFill_FillingStyle Type);
 
-		/****************** Init ******************/
-		/**** md5 signature: bcf8670cf0bcde11da542b274e3f7ff9 ****/
+		/****** GeomFill_BezierCurves::Init ******/
+		/****** md5 signature: bcf8670cf0bcde11da542b274e3f7ff9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1877,8 +1877,8 @@ Initializes or reinitializes this algorithm with two, three, or four curves - c1
 ") Init;
 		void Init(const opencascade::handle<Geom_BezierCurve> & C1, const opencascade::handle<Geom_BezierCurve> & C2, const GeomFill_FillingStyle Type);
 
-		/****************** Surface ******************/
-		/**** md5 signature: ec0ec9a2ddd5540d0c39fd4a1f632437 ****/
+		/****** GeomFill_BezierCurves::Surface ******/
+		/****** md5 signature: ec0ec9a2ddd5540d0c39fd4a1f632437 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -1905,8 +1905,8 @@ Returns the bezier surface resulting from the computation performed by this algo
 %nodefaultctor GeomFill_Boundary;
 class GeomFill_Boundary : public Standard_Transient {
 	public:
-		/****************** Bounds ******************/
-		/**** md5 signature: 4e8179e13e1bc1406a047903884f8b0f ****/
+		/****** GeomFill_Boundary::Bounds ******/
+		/****** md5 signature: 4e8179e13e1bc1406a047903884f8b0f ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -1923,8 +1923,8 @@ No available documentation.
 ") Bounds;
 		virtual void Bounds(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: ae5a83b60da9cbff06b3607a7e3ff572 ****/
+		/****** GeomFill_Boundary::D1 ******/
+		/****** md5 signature: ae5a83b60da9cbff06b3607a7e3ff572 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1943,8 +1943,8 @@ No available documentation.
 ") D1;
 		virtual void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
-		/****************** D1Norm ******************/
-		/**** md5 signature: f893ebdce4a5fbbff73f4358ac8b5978 ****/
+		/****** GeomFill_Boundary::D1Norm ******/
+		/****** md5 signature: f893ebdce4a5fbbff73f4358ac8b5978 ******/
 		%feature("compactdefaultargs") D1Norm;
 		%feature("autodoc", "
 Parameters
@@ -1963,8 +1963,8 @@ No available documentation.
 ") D1Norm;
 		virtual void D1Norm(const Standard_Real U, gp_Vec & N, gp_Vec & DN);
 
-		/****************** HasNormals ******************/
-		/**** md5 signature: 5f6a8ed75c40f46eb7071afbd4bf6f85 ****/
+		/****** GeomFill_Boundary::HasNormals ******/
+		/****** md5 signature: 5f6a8ed75c40f46eb7071afbd4bf6f85 ******/
 		%feature("compactdefaultargs") HasNormals;
 		%feature("autodoc", "Return
 -------
@@ -1976,8 +1976,8 @@ No available documentation.
 ") HasNormals;
 		virtual Standard_Boolean HasNormals();
 
-		/****************** IsDegenerated ******************/
-		/**** md5 signature: 394a948c8760e522f4d807c029014116 ****/
+		/****** GeomFill_Boundary::IsDegenerated ******/
+		/****** md5 signature: 394a948c8760e522f4d807c029014116 ******/
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "Return
 -------
@@ -1989,8 +1989,8 @@ No available documentation.
 ") IsDegenerated;
 		virtual Standard_Boolean IsDegenerated();
 
-		/****************** Norm ******************/
-		/**** md5 signature: 987eaa9aa4439bd8474e291368d19c1e ****/
+		/****** GeomFill_Boundary::Norm ******/
+		/****** md5 signature: 987eaa9aa4439bd8474e291368d19c1e ******/
 		%feature("compactdefaultargs") Norm;
 		%feature("autodoc", "
 Parameters
@@ -2007,8 +2007,8 @@ No available documentation.
 ") Norm;
 		virtual gp_Vec Norm(const Standard_Real U);
 
-		/****************** Points ******************/
-		/**** md5 signature: 63f81329674af973a02f91ae5822973a ****/
+		/****** GeomFill_Boundary::Points ******/
+		/****** md5 signature: 63f81329674af973a02f91ae5822973a ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "
 Parameters
@@ -2026,8 +2026,8 @@ No available documentation.
 ") Points;
 		void Points(gp_Pnt & PFirst, gp_Pnt & PLast);
 
-		/****************** Reparametrize ******************/
-		/**** md5 signature: 89d15d5b042afa6cfa640283df9a718e ****/
+		/****** GeomFill_Boundary::Reparametrize ******/
+		/****** md5 signature: 89d15d5b042afa6cfa640283df9a718e ******/
 		%feature("compactdefaultargs") Reparametrize;
 		%feature("autodoc", "
 Parameters
@@ -2050,8 +2050,8 @@ No available documentation.
 ") Reparametrize;
 		virtual void Reparametrize(const Standard_Real First, const Standard_Real Last, const Standard_Boolean HasDF, const Standard_Boolean HasDL, const Standard_Real DF, const Standard_Real DL, const Standard_Boolean Rev);
 
-		/****************** Tol3d ******************/
-		/**** md5 signature: 0c721fa385f74a0241e7db7704f9176b ****/
+		/****** GeomFill_Boundary::Tol3d ******/
+		/****** md5 signature: 0c721fa385f74a0241e7db7704f9176b ******/
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "Return
 -------
@@ -2063,8 +2063,8 @@ No available documentation.
 ") Tol3d;
 		Standard_Real Tol3d();
 
-		/****************** Tol3d ******************/
-		/**** md5 signature: e2856f01229403a6922bd0bdb96cc6a4 ****/
+		/****** GeomFill_Boundary::Tol3d ******/
+		/****** md5 signature: e2856f01229403a6922bd0bdb96cc6a4 ******/
 		%feature("compactdefaultargs") Tol3d;
 		%feature("autodoc", "
 Parameters
@@ -2081,8 +2081,8 @@ No available documentation.
 ") Tol3d;
 		void Tol3d(const Standard_Real Tol);
 
-		/****************** Tolang ******************/
-		/**** md5 signature: 4dd5ea66cb1bdd5fbeec6eac3cb6a07c ****/
+		/****** GeomFill_Boundary::Tolang ******/
+		/****** md5 signature: 4dd5ea66cb1bdd5fbeec6eac3cb6a07c ******/
 		%feature("compactdefaultargs") Tolang;
 		%feature("autodoc", "Return
 -------
@@ -2094,8 +2094,8 @@ No available documentation.
 ") Tolang;
 		Standard_Real Tolang();
 
-		/****************** Tolang ******************/
-		/**** md5 signature: be6abd09513454fc3f8616ab23ce4464 ****/
+		/****** GeomFill_Boundary::Tolang ******/
+		/****** md5 signature: be6abd09513454fc3f8616ab23ce4464 ******/
 		%feature("compactdefaultargs") Tolang;
 		%feature("autodoc", "
 Parameters
@@ -2112,8 +2112,8 @@ No available documentation.
 ") Tolang;
 		void Tolang(const Standard_Real Tol);
 
-		/****************** Value ******************/
-		/**** md5 signature: 1036ed4d9f5021803fbe93aafa457209 ****/
+		/****** GeomFill_Boundary::Value ******/
+		/****** md5 signature: 1036ed4d9f5021803fbe93aafa457209 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2146,8 +2146,8 @@ No available documentation.
 ***********************************/
 class GeomFill_CircularBlendFunc : public Approx_SweepFunction {
 	public:
-		/****************** GeomFill_CircularBlendFunc ******************/
-		/**** md5 signature: 83f6c8e8a78d3d9b9d1c32c9733c80f7 ****/
+		/****** GeomFill_CircularBlendFunc::GeomFill_CircularBlendFunc ******/
+		/****** md5 signature: 83f6c8e8a78d3d9b9d1c32c9733c80f7 ******/
 		%feature("compactdefaultargs") GeomFill_CircularBlendFunc;
 		%feature("autodoc", "
 Parameters
@@ -2168,8 +2168,8 @@ Create a blend with a constant radius with 2 guide-line. <fshape> sets the type 
 ") GeomFill_CircularBlendFunc;
 		 GeomFill_CircularBlendFunc(const opencascade::handle<Adaptor3d_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Curve1, const opencascade::handle<Adaptor3d_Curve> & Curve2, const Standard_Real Radius, const Standard_Boolean Polynomial = Standard_False);
 
-		/****************** BarycentreOfSurf ******************/
-		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
+		/****** GeomFill_CircularBlendFunc::BarycentreOfSurf ******/
+		/****** md5 signature: a691940df52b45c198f3414d0790e091 ******/
 		%feature("compactdefaultargs") BarycentreOfSurf;
 		%feature("autodoc", "Return
 -------
@@ -2181,8 +2181,8 @@ Get the barycentre of surface. an very poor estimation is sufficient. this infor
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 6e91f38f7b850db44626fcacae37aa41 ****/
+		/****** GeomFill_CircularBlendFunc::D0 ******/
+		/****** md5 signature: 6e91f38f7b850db44626fcacae37aa41 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -2204,8 +2204,8 @@ Compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 2393309f0bc419006f62cbad28865129 ****/
+		/****** GeomFill_CircularBlendFunc::D1 ******/
+		/****** md5 signature: 2393309f0bc419006f62cbad28865129 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -2230,8 +2230,8 @@ Compute the first derivative in v direction of the section for v = param.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 4cdf4be928174877f3da59b3bf48c192 ****/
+		/****** GeomFill_CircularBlendFunc::D2 ******/
+		/****** md5 signature: 4cdf4be928174877f3da59b3bf48c192 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -2259,8 +2259,8 @@ Compute the second derivative in v direction of the section for v = param.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
+		/****** GeomFill_CircularBlendFunc::GetMinimalWeight ******/
+		/****** md5 signature: 36fb20110448cba55b750bc7db93d222 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -2277,8 +2277,8 @@ Compute the minimal value of weight for each poles of all sections. this informa
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: 3f6ec4398981d416a51435f14d7cee22 ****/
+		/****** GeomFill_CircularBlendFunc::GetTolerance ******/
+		/****** md5 signature: 3f6ec4398981d416a51435f14d7cee22 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -2298,8 +2298,8 @@ Returns the tolerance to reach in approximation to respecte boundtol error at th
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_CircularBlendFunc::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -2317,8 +2317,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ****/
+		/****** GeomFill_CircularBlendFunc::IsRational ******/
+		/****** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -2330,8 +2330,8 @@ Returns if the section is rationnal or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
-		/****************** Knots ******************/
-		/**** md5 signature: 25dbe24e24c953c2c68b0d008e63e5d6 ****/
+		/****** GeomFill_CircularBlendFunc::Knots ******/
+		/****** md5 signature: 25dbe24e24c953c2c68b0d008e63e5d6 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -2348,8 +2348,8 @@ Get the knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** MaximalSection ******************/
-		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
+		/****** GeomFill_CircularBlendFunc::MaximalSection ******/
+		/****** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ******/
 		%feature("compactdefaultargs") MaximalSection;
 		%feature("autodoc", "Return
 -------
@@ -2361,8 +2361,8 @@ Returns the length of the maximum section. this information is useful to perform
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
-		/****************** Mults ******************/
-		/**** md5 signature: 033dc1fab9e10e705c796ffc1e03a44d ****/
+		/****** GeomFill_CircularBlendFunc::Mults ******/
+		/****** md5 signature: 033dc1fab9e10e705c796ffc1e03a44d ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -2379,8 +2379,8 @@ Get the multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** Nb2dCurves ******************/
-		/**** md5 signature: a7d69b59dcf4f7a28533481bfba32ffb ****/
+		/****** GeomFill_CircularBlendFunc::Nb2dCurves ******/
+		/****** md5 signature: a7d69b59dcf4f7a28533481bfba32ffb ******/
 		%feature("compactdefaultargs") Nb2dCurves;
 		%feature("autodoc", "Return
 -------
@@ -2392,8 +2392,8 @@ Get the number of 2d curves to approximate.
 ") Nb2dCurves;
 		virtual Standard_Integer Nb2dCurves();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_CircularBlendFunc::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -2410,8 +2410,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SectionShape ******************/
-		/**** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ****/
+		/****** GeomFill_CircularBlendFunc::SectionShape ******/
+		/****** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ******/
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "
 Parameters
@@ -2429,8 +2429,8 @@ Get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_CircularBlendFunc::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -2448,8 +2448,8 @@ Sets the bounds of the parametric interval on the fonction this determines the d
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: bf0b5b1b4d35ebad7b1b81b0b9b8ba2c ****/
+		/****** GeomFill_CircularBlendFunc::SetTolerance ******/
+		/****** md5 signature: bf0b5b1b4d35ebad7b1b81b0b9b8ba2c ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -2483,8 +2483,8 @@ Is usfull, if (me) have to be run numerical algorithme to perform d0, d1 or d2.
 ************************************/
 class GeomFill_ConstrainedFilling {
 	public:
-		/****************** GeomFill_ConstrainedFilling ******************/
-		/**** md5 signature: 05a10ea67ce9ff5c6eb06e7785b8f511 ****/
+		/****** GeomFill_ConstrainedFilling::GeomFill_ConstrainedFilling ******/
+		/****** md5 signature: 05a10ea67ce9ff5c6eb06e7785b8f511 ******/
 		%feature("compactdefaultargs") GeomFill_ConstrainedFilling;
 		%feature("autodoc", "
 Parameters
@@ -2502,8 +2502,8 @@ Constructs an empty framework for filling a surface from boundaries. the boundar
 ") GeomFill_ConstrainedFilling;
 		 GeomFill_ConstrainedFilling(const Standard_Integer MaxDeg, const Standard_Integer MaxSeg);
 
-		/****************** Boundary ******************/
-		/**** md5 signature: d66093f22e02305950c68ac9d1e5738f ****/
+		/****** GeomFill_ConstrainedFilling::Boundary ******/
+		/****** md5 signature: d66093f22e02305950c68ac9d1e5738f ******/
 		%feature("compactdefaultargs") Boundary;
 		%feature("autodoc", "
 Parameters
@@ -2520,8 +2520,8 @@ Returns the bound of index i after sort.
 ") Boundary;
 		opencascade::handle<GeomFill_Boundary> Boundary(const Standard_Integer I);
 
-		/****************** CheckApprox ******************/
-		/**** md5 signature: 71f119ceb88cef03284bfde58080f00a ****/
+		/****** GeomFill_ConstrainedFilling::CheckApprox ******/
+		/****** md5 signature: 71f119ceb88cef03284bfde58080f00a ******/
 		%feature("compactdefaultargs") CheckApprox;
 		%feature("autodoc", "
 Parameters
@@ -2538,8 +2538,8 @@ Computes values and normals along the bound i and compare them to the approx res
 ") CheckApprox;
 		void CheckApprox(const Standard_Integer I);
 
-		/****************** CheckCoonsAlgPatch ******************/
-		/**** md5 signature: 5bb522a338dcaa3b28b36318e1e600dd ****/
+		/****** GeomFill_ConstrainedFilling::CheckCoonsAlgPatch ******/
+		/****** md5 signature: 5bb522a338dcaa3b28b36318e1e600dd ******/
 		%feature("compactdefaultargs") CheckCoonsAlgPatch;
 		%feature("autodoc", "
 Parameters
@@ -2556,8 +2556,8 @@ Computes the fields of tangents on 30 points along the bound i, these are not th
 ") CheckCoonsAlgPatch;
 		void CheckCoonsAlgPatch(const Standard_Integer I);
 
-		/****************** CheckResult ******************/
-		/**** md5 signature: c9aa2edfff728ef4e67f742b02df583e ****/
+		/****** GeomFill_ConstrainedFilling::CheckResult ******/
+		/****** md5 signature: c9aa2edfff728ef4e67f742b02df583e ******/
 		%feature("compactdefaultargs") CheckResult;
 		%feature("autodoc", "
 Parameters
@@ -2574,8 +2574,8 @@ Computes values and normals along the bound i on both constraint surface and res
 ") CheckResult;
 		void CheckResult(const Standard_Integer I);
 
-		/****************** CheckTgteField ******************/
-		/**** md5 signature: 92ccf822cba93322d7258e90bf6a9ed8 ****/
+		/****** GeomFill_ConstrainedFilling::CheckTgteField ******/
+		/****** md5 signature: 92ccf822cba93322d7258e90bf6a9ed8 ******/
 		%feature("compactdefaultargs") CheckTgteField;
 		%feature("autodoc", "
 Parameters
@@ -2592,8 +2592,8 @@ Computes the fields of tangents and normals on 30 points along the bound i, draw
 ") CheckTgteField;
 		void CheckTgteField(const Standard_Integer I);
 
-		/****************** Eval ******************/
-		/**** md5 signature: f6ee8af82d58715b28cbfb3fc55e1b3d ****/
+		/****** GeomFill_ConstrainedFilling::Eval ******/
+		/****** md5 signature: f6ee8af82d58715b28cbfb3fc55e1b3d ******/
 		%feature("compactdefaultargs") Eval;
 		%feature("autodoc", "
 Parameters
@@ -2611,8 +2611,8 @@ Internal use for advmath approximation call.
 ") Eval;
 		Standard_Integer Eval(const Standard_Real W, const Standard_Integer Ord, Standard_Real &OutValue);
 
-		/****************** Init ******************/
-		/**** md5 signature: bb90dabc55e8eef56ed3f74ed6e0c72e ****/
+		/****** GeomFill_ConstrainedFilling::Init ******/
+		/****** md5 signature: bb90dabc55e8eef56ed3f74ed6e0c72e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2632,8 +2632,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<GeomFill_Boundary> & B1, const opencascade::handle<GeomFill_Boundary> & B2, const opencascade::handle<GeomFill_Boundary> & B3, const Standard_Boolean NoCheck = Standard_False);
 
-		/****************** Init ******************/
-		/**** md5 signature: 6c95d04c6903e9495319ba3b7855e782 ****/
+		/****** GeomFill_ConstrainedFilling::Init ******/
+		/****** md5 signature: 6c95d04c6903e9495319ba3b7855e782 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2654,8 +2654,8 @@ Constructs a bspline surface filled from the series of boundaries b1, b2, b3 and
 ") Init;
 		void Init(const opencascade::handle<GeomFill_Boundary> & B1, const opencascade::handle<GeomFill_Boundary> & B2, const opencascade::handle<GeomFill_Boundary> & B3, const opencascade::handle<GeomFill_Boundary> & B4, const Standard_Boolean NoCheck = Standard_False);
 
-		/****************** ReBuild ******************/
-		/**** md5 signature: 446512b2f33090f1848a5ff7131926bf ****/
+		/****** GeomFill_ConstrainedFilling::ReBuild ******/
+		/****** md5 signature: 446512b2f33090f1848a5ff7131926bf ******/
 		%feature("compactdefaultargs") ReBuild;
 		%feature("autodoc", "Return
 -------
@@ -2667,8 +2667,8 @@ Computes the new poles of the surface using the new blending functions set by se
 ") ReBuild;
 		void ReBuild();
 
-		/****************** SetDomain ******************/
-		/**** md5 signature: f15e2b06830a710fdf8f11f792509cfd ****/
+		/****** GeomFill_ConstrainedFilling::SetDomain ******/
+		/****** md5 signature: f15e2b06830a710fdf8f11f792509cfd ******/
 		%feature("compactdefaultargs") SetDomain;
 		%feature("autodoc", "
 Parameters
@@ -2686,8 +2686,8 @@ Allows to modify domain on witch the blending function associated to the constra
 ") SetDomain;
 		void SetDomain(const Standard_Real l, const opencascade::handle<GeomFill_BoundWithSurf> & B);
 
-		/****************** Surface ******************/
-		/**** md5 signature: 2f50ef783efd4092d3a11c39580e031f ****/
+		/****** GeomFill_ConstrainedFilling::Surface ******/
+		/****** md5 signature: 2f50ef783efd4092d3a11c39580e031f ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -2713,8 +2713,8 @@ Returns the bspline surface after computation of the fill by this framework.
 *******************************/
 class GeomFill_CoonsAlgPatch : public Standard_Transient {
 	public:
-		/****************** GeomFill_CoonsAlgPatch ******************/
-		/**** md5 signature: 8313801afe15d97502730d205ba6aedd ****/
+		/****** GeomFill_CoonsAlgPatch::GeomFill_CoonsAlgPatch ******/
+		/****** md5 signature: 8313801afe15d97502730d205ba6aedd ******/
 		%feature("compactdefaultargs") GeomFill_CoonsAlgPatch;
 		%feature("autodoc", "
 Parameters
@@ -2734,8 +2734,8 @@ Constructs the algorithmic patch. by default the constructed blending functions 
 ") GeomFill_CoonsAlgPatch;
 		 GeomFill_CoonsAlgPatch(const opencascade::handle<GeomFill_Boundary> & B1, const opencascade::handle<GeomFill_Boundary> & B2, const opencascade::handle<GeomFill_Boundary> & B3, const opencascade::handle<GeomFill_Boundary> & B4);
 
-		/****************** Bound ******************/
-		/**** md5 signature: c7a6b953b6e3152dbf24245ec3855852 ****/
+		/****** GeomFill_CoonsAlgPatch::Bound ******/
+		/****** md5 signature: c7a6b953b6e3152dbf24245ec3855852 ******/
 		%feature("compactdefaultargs") Bound;
 		%feature("autodoc", "
 Parameters
@@ -2752,8 +2752,8 @@ No available documentation.
 ") Bound;
 		const opencascade::handle<GeomFill_Boundary> & Bound(const Standard_Integer I);
 
-		/****************** Corner ******************/
-		/**** md5 signature: 52d3f66618593ed082e79ce47ae5b2e9 ****/
+		/****** GeomFill_CoonsAlgPatch::Corner ******/
+		/****** md5 signature: 52d3f66618593ed082e79ce47ae5b2e9 ******/
 		%feature("compactdefaultargs") Corner;
 		%feature("autodoc", "
 Parameters
@@ -2770,8 +2770,8 @@ No available documentation.
 ") Corner;
 		const gp_Pnt Corner(const Standard_Integer I);
 
-		/****************** D1U ******************/
-		/**** md5 signature: e0ed54fcb23b418df4c3f658cc6a93a7 ****/
+		/****** GeomFill_CoonsAlgPatch::D1U ******/
+		/****** md5 signature: e0ed54fcb23b418df4c3f658cc6a93a7 ******/
 		%feature("compactdefaultargs") D1U;
 		%feature("autodoc", "
 Parameters
@@ -2789,8 +2789,8 @@ Computes the d/du partial derivative on the algorithmic patch at parameters u an
 ") D1U;
 		gp_Vec D1U(const Standard_Real U, const Standard_Real V);
 
-		/****************** D1V ******************/
-		/**** md5 signature: 3e884a933d6ef4b91df297a08be6eaed ****/
+		/****** GeomFill_CoonsAlgPatch::D1V ******/
+		/****** md5 signature: 3e884a933d6ef4b91df297a08be6eaed ******/
 		%feature("compactdefaultargs") D1V;
 		%feature("autodoc", "
 Parameters
@@ -2808,8 +2808,8 @@ Computes the d/dv partial derivative on the algorithmic patch at parameters u an
 ") D1V;
 		gp_Vec D1V(const Standard_Real U, const Standard_Real V);
 
-		/****************** DUV ******************/
-		/**** md5 signature: 551cda651252e0218c32235dbe891afa ****/
+		/****** GeomFill_CoonsAlgPatch::DUV ******/
+		/****** md5 signature: 551cda651252e0218c32235dbe891afa ******/
 		%feature("compactdefaultargs") DUV;
 		%feature("autodoc", "
 Parameters
@@ -2827,8 +2827,8 @@ Computes the d2/dudv partial derivative on the algorithmic patch made with linea
 ") DUV;
 		gp_Vec DUV(const Standard_Real U, const Standard_Real V);
 
-		/****************** Func ******************/
-		/**** md5 signature: e7f1d4ad2f7ad640080d862cd1acd5ac ****/
+		/****** GeomFill_CoonsAlgPatch::Func ******/
+		/****** md5 signature: e7f1d4ad2f7ad640080d862cd1acd5ac ******/
 		%feature("compactdefaultargs") Func;
 		%feature("autodoc", "
 Parameters
@@ -2846,8 +2846,8 @@ Give the blending functions.
 ") Func;
 		void Func(opencascade::handle<Law_Function> & f1, opencascade::handle<Law_Function> & f2);
 
-		/****************** Func ******************/
-		/**** md5 signature: 8d1466c000c855ccc37326b09627c4b3 ****/
+		/****** GeomFill_CoonsAlgPatch::Func ******/
+		/****** md5 signature: 8d1466c000c855ccc37326b09627c4b3 ******/
 		%feature("compactdefaultargs") Func;
 		%feature("autodoc", "
 Parameters
@@ -2864,8 +2864,8 @@ No available documentation.
 ") Func;
 		const opencascade::handle<Law_Function> & Func(const Standard_Integer I);
 
-		/****************** SetFunc ******************/
-		/**** md5 signature: d7c144cb61c98bd760c2897ab648584c ****/
+		/****** GeomFill_CoonsAlgPatch::SetFunc ******/
+		/****** md5 signature: d7c144cb61c98bd760c2897ab648584c ******/
 		%feature("compactdefaultargs") SetFunc;
 		%feature("autodoc", "
 Parameters
@@ -2883,8 +2883,8 @@ Set the blending functions.
 ") SetFunc;
 		void SetFunc(const opencascade::handle<Law_Function> & f1, const opencascade::handle<Law_Function> & f2);
 
-		/****************** Value ******************/
-		/**** md5 signature: 42959897db65d301eb66b5528ed15f16 ****/
+		/****** GeomFill_CoonsAlgPatch::Value ******/
+		/****** md5 signature: 42959897db65d301eb66b5528ed15f16 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2918,8 +2918,8 @@ Computes the value on the algorithmic patch at parameters u and v.
 *****************************/
 class GeomFill_CornerState {
 	public:
-		/****************** GeomFill_CornerState ******************/
-		/**** md5 signature: 6f8ba49168e735184f5cbf02f218d961 ****/
+		/****** GeomFill_CornerState::GeomFill_CornerState ******/
+		/****** md5 signature: 6f8ba49168e735184f5cbf02f218d961 ******/
 		%feature("compactdefaultargs") GeomFill_CornerState;
 		%feature("autodoc", "Return
 -------
@@ -2931,8 +2931,8 @@ No available documentation.
 ") GeomFill_CornerState;
 		 GeomFill_CornerState();
 
-		/****************** Constraint ******************/
-		/**** md5 signature: c65689f41db5ca0fb92caabb5e354a5d ****/
+		/****** GeomFill_CornerState::Constraint ******/
+		/****** md5 signature: c65689f41db5ca0fb92caabb5e354a5d ******/
 		%feature("compactdefaultargs") Constraint;
 		%feature("autodoc", "Return
 -------
@@ -2944,8 +2944,8 @@ No available documentation.
 ") Constraint;
 		void Constraint();
 
-		/****************** DoKill ******************/
-		/**** md5 signature: f59d3324e2d958952750dbe3caa2d8ca ****/
+		/****** GeomFill_CornerState::DoKill ******/
+		/****** md5 signature: f59d3324e2d958952750dbe3caa2d8ca ******/
 		%feature("compactdefaultargs") DoKill;
 		%feature("autodoc", "
 Parameters
@@ -2962,8 +2962,8 @@ No available documentation.
 ") DoKill;
 		void DoKill(const Standard_Real Scal);
 
-		/****************** Gap ******************/
-		/**** md5 signature: 57884ecbe8d7b5b092e706848a3678db ****/
+		/****** GeomFill_CornerState::Gap ******/
+		/****** md5 signature: 57884ecbe8d7b5b092e706848a3678db ******/
 		%feature("compactdefaultargs") Gap;
 		%feature("autodoc", "Return
 -------
@@ -2975,8 +2975,8 @@ No available documentation.
 ") Gap;
 		Standard_Real Gap();
 
-		/****************** Gap ******************/
-		/**** md5 signature: f1f69db79c82510ff6d3e007517400a7 ****/
+		/****** GeomFill_CornerState::Gap ******/
+		/****** md5 signature: f1f69db79c82510ff6d3e007517400a7 ******/
 		%feature("compactdefaultargs") Gap;
 		%feature("autodoc", "
 Parameters
@@ -2993,8 +2993,8 @@ No available documentation.
 ") Gap;
 		void Gap(const Standard_Real G);
 
-		/****************** HasConstraint ******************/
-		/**** md5 signature: b284feaf1d053df9b6efe4b2a8443c50 ****/
+		/****** GeomFill_CornerState::HasConstraint ******/
+		/****** md5 signature: b284feaf1d053df9b6efe4b2a8443c50 ******/
 		%feature("compactdefaultargs") HasConstraint;
 		%feature("autodoc", "Return
 -------
@@ -3006,8 +3006,8 @@ No available documentation.
 ") HasConstraint;
 		Standard_Boolean HasConstraint();
 
-		/****************** IsToKill ******************/
-		/**** md5 signature: 6df117c61ed49f132cf24a2849741b58 ****/
+		/****** GeomFill_CornerState::IsToKill ******/
+		/****** md5 signature: 6df117c61ed49f132cf24a2849741b58 ******/
 		%feature("compactdefaultargs") IsToKill;
 		%feature("autodoc", "
 Parameters
@@ -3023,8 +3023,8 @@ No available documentation.
 ") IsToKill;
 		Standard_Boolean IsToKill(Standard_Real &OutValue);
 
-		/****************** NorAng ******************/
-		/**** md5 signature: af8052ba83d247ad3d6bb5c4ca00983f ****/
+		/****** GeomFill_CornerState::NorAng ******/
+		/****** md5 signature: af8052ba83d247ad3d6bb5c4ca00983f ******/
 		%feature("compactdefaultargs") NorAng;
 		%feature("autodoc", "Return
 -------
@@ -3036,8 +3036,8 @@ No available documentation.
 ") NorAng;
 		Standard_Real NorAng();
 
-		/****************** NorAng ******************/
-		/**** md5 signature: 978de348befc356078bda3f1ab4a84d4 ****/
+		/****** GeomFill_CornerState::NorAng ******/
+		/****** md5 signature: 978de348befc356078bda3f1ab4a84d4 ******/
 		%feature("compactdefaultargs") NorAng;
 		%feature("autodoc", "
 Parameters
@@ -3054,8 +3054,8 @@ No available documentation.
 ") NorAng;
 		void NorAng(const Standard_Real Ang);
 
-		/****************** TgtAng ******************/
-		/**** md5 signature: 0c0974dcf961b00f0f5e5459288df2aa ****/
+		/****** GeomFill_CornerState::TgtAng ******/
+		/****** md5 signature: 0c0974dcf961b00f0f5e5459288df2aa ******/
 		%feature("compactdefaultargs") TgtAng;
 		%feature("autodoc", "Return
 -------
@@ -3067,8 +3067,8 @@ No available documentation.
 ") TgtAng;
 		Standard_Real TgtAng();
 
-		/****************** TgtAng ******************/
-		/**** md5 signature: 25b12c2b442b6535ed79421583afc990 ****/
+		/****** GeomFill_CornerState::TgtAng ******/
+		/****** md5 signature: 25b12c2b442b6535ed79421583afc990 ******/
 		%feature("compactdefaultargs") TgtAng;
 		%feature("autodoc", "
 Parameters
@@ -3099,8 +3099,8 @@ No available documentation.
 *************************/
 class GeomFill_Filling {
 	public:
-		/****************** GeomFill_Filling ******************/
-		/**** md5 signature: 3b1110ca9e87c0eec14c23c2b775f31f ****/
+		/****** GeomFill_Filling::GeomFill_Filling ******/
+		/****** md5 signature: 3b1110ca9e87c0eec14c23c2b775f31f ******/
 		%feature("compactdefaultargs") GeomFill_Filling;
 		%feature("autodoc", "Return
 -------
@@ -3112,8 +3112,8 @@ No available documentation.
 ") GeomFill_Filling;
 		 GeomFill_Filling();
 
-		/****************** NbUPoles ******************/
-		/**** md5 signature: fb7c625af5aeee8be8cffdd28f1b08d5 ****/
+		/****** GeomFill_Filling::NbUPoles ******/
+		/****** md5 signature: fb7c625af5aeee8be8cffdd28f1b08d5 ******/
 		%feature("compactdefaultargs") NbUPoles;
 		%feature("autodoc", "Return
 -------
@@ -3125,8 +3125,8 @@ No available documentation.
 ") NbUPoles;
 		Standard_Integer NbUPoles();
 
-		/****************** NbVPoles ******************/
-		/**** md5 signature: 098754ae7893287e442d0a3c48b39cf0 ****/
+		/****** GeomFill_Filling::NbVPoles ******/
+		/****** md5 signature: 098754ae7893287e442d0a3c48b39cf0 ******/
 		%feature("compactdefaultargs") NbVPoles;
 		%feature("autodoc", "Return
 -------
@@ -3138,8 +3138,8 @@ No available documentation.
 ") NbVPoles;
 		Standard_Integer NbVPoles();
 
-		/****************** Poles ******************/
-		/**** md5 signature: d37f7b27fa9ff1e224fe0dc4f7081466 ****/
+		/****** GeomFill_Filling::Poles ******/
+		/****** md5 signature: d37f7b27fa9ff1e224fe0dc4f7081466 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
@@ -3156,8 +3156,8 @@ No available documentation.
 ") Poles;
 		void Poles(TColgp_Array2OfPnt & Poles);
 
-		/****************** Weights ******************/
-		/**** md5 signature: db937f94d83b7a0ec9af807fb8a53a4c ****/
+		/****** GeomFill_Filling::Weights ******/
+		/****** md5 signature: db937f94d83b7a0ec9af807fb8a53a4c ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "
 Parameters
@@ -3174,8 +3174,8 @@ No available documentation.
 ") Weights;
 		void Weights(TColStd_Array2OfReal & Weights);
 
-		/****************** isRational ******************/
-		/**** md5 signature: fd4212ffa7bc30cde420e74a2c539434 ****/
+		/****** GeomFill_Filling::isRational ******/
+		/****** md5 signature: fd4212ffa7bc30cde420e74a2c539434 ******/
 		%feature("compactdefaultargs") isRational;
 		%feature("autodoc", "Return
 -------
@@ -3201,8 +3201,8 @@ No available documentation.
 *******************************/
 class GeomFill_FunctionDraft : public math_FunctionSetWithDerivatives {
 	public:
-		/****************** GeomFill_FunctionDraft ******************/
-		/**** md5 signature: e0b75f20f9ca33331d77d2796abf9e26 ****/
+		/****** GeomFill_FunctionDraft::GeomFill_FunctionDraft ******/
+		/****** md5 signature: e0b75f20f9ca33331d77d2796abf9e26 ******/
 		%feature("compactdefaultargs") GeomFill_FunctionDraft;
 		%feature("autodoc", "
 Parameters
@@ -3220,8 +3220,8 @@ No available documentation.
 ") GeomFill_FunctionDraft;
 		 GeomFill_FunctionDraft(const opencascade::handle<Adaptor3d_Surface> & S, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** Deriv2T ******************/
-		/**** md5 signature: ed865b0d80ade12a428d221ca18ba8bf ****/
+		/****** GeomFill_FunctionDraft::Deriv2T ******/
+		/****** md5 signature: ed865b0d80ade12a428d221ca18ba8bf ******/
 		%feature("compactdefaultargs") Deriv2T;
 		%feature("autodoc", "
 Parameters
@@ -3243,8 +3243,8 @@ Returns the values <f> of the t2 derivatives for the parameter param .
 ") Deriv2T;
 		Standard_Boolean Deriv2T(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Param, const Standard_Real W, const gp_Vec & d2N, const Standard_Real teta, math_Vector & F);
 
-		/****************** Deriv2X ******************/
-		/**** md5 signature: 3717235c7a0694bb0026f224747d3335 ****/
+		/****** GeomFill_FunctionDraft::Deriv2X ******/
+		/****** md5 signature: 3717235c7a0694bb0026f224747d3335 ******/
 		%feature("compactdefaultargs") Deriv2X;
 		%feature("autodoc", "
 Parameters
@@ -3262,8 +3262,8 @@ Returns the values <t> of the x2 derivatives for the parameter param .
 ") Deriv2X;
 		Standard_Boolean Deriv2X(const math_Vector & X, GeomFill_Tensor & T);
 
-		/****************** DerivT ******************/
-		/**** md5 signature: 009f827b0251fad55638995d4292a3f9 ****/
+		/****** GeomFill_FunctionDraft::DerivT ******/
+		/****** md5 signature: 009f827b0251fad55638995d4292a3f9 ******/
 		%feature("compactdefaultargs") DerivT;
 		%feature("autodoc", "
 Parameters
@@ -3285,8 +3285,8 @@ Returns the values <f> of the t derivatives for the parameter param .
 ") DerivT;
 		Standard_Boolean DerivT(const opencascade::handle<Adaptor3d_Curve> & C, const Standard_Real Param, const Standard_Real W, const gp_Vec & dN, const Standard_Real teta, math_Vector & F);
 
-		/****************** DerivTX ******************/
-		/**** md5 signature: 364759ce3f6d1a901ce6394ecbbe5652 ****/
+		/****** GeomFill_FunctionDraft::DerivTX ******/
+		/****** md5 signature: 364759ce3f6d1a901ce6394ecbbe5652 ******/
 		%feature("compactdefaultargs") DerivTX;
 		%feature("autodoc", "
 Parameters
@@ -3305,8 +3305,8 @@ Returns the values <d> of the tx derivatives for the parameter param .
 ") DerivTX;
 		Standard_Boolean DerivTX(const gp_Vec & dN, const Standard_Real teta, math_Matrix & D);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 95432d04d2efca37d62c37543709dc0f ****/
+		/****** GeomFill_FunctionDraft::Derivatives ******/
+		/****** md5 signature: 95432d04d2efca37d62c37543709dc0f ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -3324,8 +3324,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 186743efcc98b222ef8f5159fb11b9d2 ****/
+		/****** GeomFill_FunctionDraft::NbEquations ******/
+		/****** md5 signature: 186743efcc98b222ef8f5159fb11b9d2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -3337,8 +3337,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
-		/****************** NbVariables ******************/
-		/**** md5 signature: 28ab91d0183585502101892aac2c5b98 ****/
+		/****** GeomFill_FunctionDraft::NbVariables ******/
+		/****** md5 signature: 28ab91d0183585502101892aac2c5b98 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -3350,8 +3350,8 @@ Returns the number of variables of the function.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
-		/****************** Value ******************/
-		/**** md5 signature: 0f8ab7140704c6b797e41dd63743f62b ****/
+		/****** GeomFill_FunctionDraft::Value ******/
+		/****** md5 signature: 0f8ab7140704c6b797e41dd63743f62b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3369,8 +3369,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: e89fa39b5a97388571b1cb93b3e7b2fc ****/
+		/****** GeomFill_FunctionDraft::Values ******/
+		/****** md5 signature: e89fa39b5a97388571b1cb93b3e7b2fc ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -3403,8 +3403,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 *******************************/
 class GeomFill_FunctionGuide : public math_FunctionSetWithDerivatives {
 	public:
-		/****************** GeomFill_FunctionGuide ******************/
-		/**** md5 signature: 126009e7c37512c316697b8b2d32329a ****/
+		/****** GeomFill_FunctionGuide::GeomFill_FunctionGuide ******/
+		/****** md5 signature: 126009e7c37512c316697b8b2d32329a ******/
 		%feature("compactdefaultargs") GeomFill_FunctionGuide;
 		%feature("autodoc", "
 Parameters
@@ -3423,8 +3423,8 @@ No available documentation.
 ") GeomFill_FunctionGuide;
 		 GeomFill_FunctionGuide(const opencascade::handle<GeomFill_SectionLaw> & S, const opencascade::handle<Adaptor3d_Curve> & Guide, const Standard_Real ParamOnLaw = 0.0);
 
-		/****************** DerivT ******************/
-		/**** md5 signature: 8497a0e1c79d28b9784f7f110d8384d9 ****/
+		/****** GeomFill_FunctionGuide::DerivT ******/
+		/****** md5 signature: 8497a0e1c79d28b9784f7f110d8384d9 ******/
 		%feature("compactdefaultargs") DerivT;
 		%feature("autodoc", "
 Parameters
@@ -3444,8 +3444,8 @@ Returns the values <f> of the t derivatives for the parameter param .
 ") DerivT;
 		Standard_Boolean DerivT(const math_Vector & X, const gp_XYZ & DCentre, const gp_XYZ & DDir, math_Vector & DFDT);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 95432d04d2efca37d62c37543709dc0f ****/
+		/****** GeomFill_FunctionGuide::Derivatives ******/
+		/****** md5 signature: 95432d04d2efca37d62c37543709dc0f ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -3463,8 +3463,8 @@ Returns the values <d> of the derivatives for the variable <x>. returns true if 
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 186743efcc98b222ef8f5159fb11b9d2 ****/
+		/****** GeomFill_FunctionGuide::NbEquations ******/
+		/****** md5 signature: 186743efcc98b222ef8f5159fb11b9d2 ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -3476,8 +3476,8 @@ Returns the number of equations of the function.
 ") NbEquations;
 		virtual Standard_Integer NbEquations();
 
-		/****************** NbVariables ******************/
-		/**** md5 signature: 28ab91d0183585502101892aac2c5b98 ****/
+		/****** GeomFill_FunctionGuide::NbVariables ******/
+		/****** md5 signature: 28ab91d0183585502101892aac2c5b98 ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -3489,8 +3489,8 @@ Returns the number of variables of the function.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
-		/****************** SetParam ******************/
-		/**** md5 signature: 3321ed78a982705949ad4814c7465405 ****/
+		/****** GeomFill_FunctionGuide::SetParam ******/
+		/****** md5 signature: 3321ed78a982705949ad4814c7465405 ******/
 		%feature("compactdefaultargs") SetParam;
 		%feature("autodoc", "
 Parameters
@@ -3510,8 +3510,8 @@ No available documentation.
 ") SetParam;
 		void SetParam(const Standard_Real Param, const gp_Pnt & Centre, const gp_XYZ & Dir, const gp_XYZ & XDir);
 
-		/****************** Value ******************/
-		/**** md5 signature: 0f8ab7140704c6b797e41dd63743f62b ****/
+		/****** GeomFill_FunctionGuide::Value ******/
+		/****** md5 signature: 0f8ab7140704c6b797e41dd63743f62b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3529,8 +3529,8 @@ Computes the values <f> of the functions for the variable <x>. returns true if t
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: e89fa39b5a97388571b1cb93b3e7b2fc ****/
+		/****** GeomFill_FunctionGuide::Values ******/
+		/****** md5 signature: e89fa39b5a97388571b1cb93b3e7b2fc ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -3567,8 +3567,8 @@ Returns the values <f> of the functions and the derivatives <d> for the variable
 **********************/
 class GeomFill_Line : public Standard_Transient {
 	public:
-		/****************** GeomFill_Line ******************/
-		/**** md5 signature: d3df0f91b73168b7305fa019e59eba18 ****/
+		/****** GeomFill_Line::GeomFill_Line ******/
+		/****** md5 signature: d3df0f91b73168b7305fa019e59eba18 ******/
 		%feature("compactdefaultargs") GeomFill_Line;
 		%feature("autodoc", "Return
 -------
@@ -3580,8 +3580,8 @@ No available documentation.
 ") GeomFill_Line;
 		 GeomFill_Line();
 
-		/****************** GeomFill_Line ******************/
-		/**** md5 signature: 00a03a4156c22378791f2c1ca351787c ****/
+		/****** GeomFill_Line::GeomFill_Line ******/
+		/****** md5 signature: 00a03a4156c22378791f2c1ca351787c ******/
 		%feature("compactdefaultargs") GeomFill_Line;
 		%feature("autodoc", "
 Parameters
@@ -3598,8 +3598,8 @@ No available documentation.
 ") GeomFill_Line;
 		 GeomFill_Line(const Standard_Integer NbPoints);
 
-		/****************** NbPoints ******************/
-		/**** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ****/
+		/****** GeomFill_Line::NbPoints ******/
+		/****** md5 signature: 1d4bbbd7c4dda4f1e56c00ae994bedbe ******/
 		%feature("compactdefaultargs") NbPoints;
 		%feature("autodoc", "Return
 -------
@@ -3611,8 +3611,8 @@ No available documentation.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
-		/****************** Point ******************/
-		/**** md5 signature: c110b5c5190958c17fd0e50ed19311a4 ****/
+		/****** GeomFill_Line::Point ******/
+		/****** md5 signature: c110b5c5190958c17fd0e50ed19311a4 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "
 Parameters
@@ -3645,8 +3645,8 @@ No available documentation.
 *****************************/
 class GeomFill_LocFunction {
 	public:
-		/****************** GeomFill_LocFunction ******************/
-		/**** md5 signature: cf11221f5fc7ad9a3cce4de4d90f2173 ****/
+		/****** GeomFill_LocFunction::GeomFill_LocFunction ******/
+		/****** md5 signature: cf11221f5fc7ad9a3cce4de4d90f2173 ******/
 		%feature("compactdefaultargs") GeomFill_LocFunction;
 		%feature("autodoc", "
 Parameters
@@ -3663,8 +3663,8 @@ No available documentation.
 ") GeomFill_LocFunction;
 		 GeomFill_LocFunction(const opencascade::handle<GeomFill_LocationLaw> & Law);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 006a1880f4e40acd2935e3b8032245a4 ****/
+		/****** GeomFill_LocFunction::D0 ******/
+		/****** md5 signature: 006a1880f4e40acd2935e3b8032245a4 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -3683,8 +3683,8 @@ Compute the section for v = param.
 ") D0;
 		Standard_Boolean D0(const Standard_Real Param, const Standard_Real First, const Standard_Real Last);
 
-		/****************** D1 ******************/
-		/**** md5 signature: d5c0cc2ce05f94677e40a80295be4ff8 ****/
+		/****** GeomFill_LocFunction::D1 ******/
+		/****** md5 signature: d5c0cc2ce05f94677e40a80295be4ff8 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -3703,8 +3703,8 @@ Compute the first derivative in v direction of the section for v = param.
 ") D1;
 		Standard_Boolean D1(const Standard_Real Param, const Standard_Real First, const Standard_Real Last);
 
-		/****************** D2 ******************/
-		/**** md5 signature: f79a4f85e4411bd9394e523c7df07571 ****/
+		/****** GeomFill_LocFunction::D2 ******/
+		/****** md5 signature: f79a4f85e4411bd9394e523c7df07571 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -3723,8 +3723,8 @@ Compute the second derivative in v direction of the section for v = param.
 ") D2;
 		Standard_Boolean D2(const Standard_Real Param, const Standard_Real First, const Standard_Real Last);
 
-		/****************** DN ******************/
-		/**** md5 signature: 1ae44f0e971d9abebc1a35a83c1801f8 ****/
+		/****** GeomFill_LocFunction::DN ******/
+		/****** md5 signature: 1ae44f0e971d9abebc1a35a83c1801f8 ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -3760,8 +3760,8 @@ No available documentation.
 %nodefaultctor GeomFill_LocationLaw;
 class GeomFill_LocationLaw : public Standard_Transient {
 	public:
-		/****************** Copy ******************/
-		/**** md5 signature: 29fa43f07f04799bcbcf97729b2d4ad0 ****/
+		/****** GeomFill_LocationLaw::Copy ******/
+		/****** md5 signature: 29fa43f07f04799bcbcf97729b2d4ad0 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -3773,8 +3773,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_LocationLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: fc43bb497d611730db6e5b24c13bb862 ****/
+		/****** GeomFill_LocationLaw::D0 ******/
+		/****** md5 signature: fc43bb497d611730db6e5b24c13bb862 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -3793,8 +3793,8 @@ Compute location.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 593572b2f048fe9a55932c2f8460631d ****/
+		/****** GeomFill_LocationLaw::D0 ******/
+		/****** md5 signature: 593572b2f048fe9a55932c2f8460631d ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -3814,8 +3814,8 @@ Compute location and 2d points.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 86f0d1b0166d91c445bbc4baeef97928 ****/
+		/****** GeomFill_LocationLaw::D1 ******/
+		/****** md5 signature: 86f0d1b0166d91c445bbc4baeef97928 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -3838,8 +3838,8 @@ Compute location 2d points and associated first derivatives. warning: it used on
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
-		/****************** D2 ******************/
-		/**** md5 signature: b8394f0997756eb2e29dda1a7f0fba5e ****/
+		/****** GeomFill_LocationLaw::D2 ******/
+		/****** md5 signature: b8394f0997756eb2e29dda1a7f0fba5e ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -3865,8 +3865,8 @@ Compute location 2d points and associated first and seconde derivatives. warning
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
-		/****************** ErrorStatus ******************/
-		/**** md5 signature: 6ba28977b4572c57396a526bbdd7889b ****/
+		/****** GeomFill_LocationLaw::ErrorStatus ******/
+		/****** md5 signature: 6ba28977b4572c57396a526bbdd7889b ******/
 		%feature("compactdefaultargs") ErrorStatus;
 		%feature("autodoc", "Return
 -------
@@ -3878,8 +3878,8 @@ Give a status to the law returns pipeok (default implementation).
 ") ErrorStatus;
 		virtual GeomFill_PipeError ErrorStatus();
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: 61f510937966f8431506453d1a544474 ****/
+		/****** GeomFill_LocationLaw::GetAverageLaw ******/
+		/****** md5 signature: 61f510937966f8431506453d1a544474 ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -3897,8 +3897,8 @@ Get average value of m(t) and v(t) it is usfull to make fast approximation of ra
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
-		/****************** GetCurve ******************/
-		/**** md5 signature: 1afa1565b694007fff9dce84f020382d ****/
+		/****** GeomFill_LocationLaw::GetCurve ******/
+		/****** md5 signature: 1afa1565b694007fff9dce84f020382d ******/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "Return
 -------
@@ -3910,8 +3910,8 @@ No available documentation.
 ") GetCurve;
 		virtual const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
-		/****************** GetDomain ******************/
-		/**** md5 signature: cf4b59a00ac748986e419ee48c8333d6 ****/
+		/****** GeomFill_LocationLaw::GetDomain ******/
+		/****** md5 signature: cf4b59a00ac748986e419ee48c8333d6 ******/
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "
 Parameters
@@ -3928,8 +3928,8 @@ Gets the bounds of the function parametric domain. warning: this domain it is no
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetInterval ******************/
-		/**** md5 signature: a17748ec1150378c402b1599113effd4 ****/
+		/****** GeomFill_LocationLaw::GetInterval ******/
+		/****** md5 signature: a17748ec1150378c402b1599113effd4 ******/
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "
 Parameters
@@ -3946,8 +3946,8 @@ Gets the bounds of the parametric interval on the function.
 ") GetInterval;
 		virtual void GetInterval(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetMaximalNorm ******************/
-		/**** md5 signature: 1b12372928d2ac3fbdb0f3124e438215 ****/
+		/****** GeomFill_LocationLaw::GetMaximalNorm ******/
+		/****** md5 signature: 1b12372928d2ac3fbdb0f3124e438215 ******/
 		%feature("compactdefaultargs") GetMaximalNorm;
 		%feature("autodoc", "Return
 -------
@@ -3959,8 +3959,8 @@ Get the maximum norm of the matrix-location part. it is usful to find an good to
 ") GetMaximalNorm;
 		virtual Standard_Real GetMaximalNorm();
 
-		/****************** HasFirstRestriction ******************/
-		/**** md5 signature: ad052bc083e2d3e77328b919df490b7a ****/
+		/****** GeomFill_LocationLaw::HasFirstRestriction ******/
+		/****** md5 signature: ad052bc083e2d3e77328b919df490b7a ******/
 		%feature("compactdefaultargs") HasFirstRestriction;
 		%feature("autodoc", "Return
 -------
@@ -3972,8 +3972,8 @@ Say if the first restriction is defined in this class. if it is true the first e
 ") HasFirstRestriction;
 		virtual Standard_Boolean HasFirstRestriction();
 
-		/****************** HasLastRestriction ******************/
-		/**** md5 signature: e04ed5bec90f35e567347a3b96d763c3 ****/
+		/****** GeomFill_LocationLaw::HasLastRestriction ******/
+		/****** md5 signature: e04ed5bec90f35e567347a3b96d763c3 ******/
 		%feature("compactdefaultargs") HasLastRestriction;
 		%feature("autodoc", "Return
 -------
@@ -3985,8 +3985,8 @@ Say if the last restriction is defined in this class. if it is true the last ele
 ") HasLastRestriction;
 		virtual Standard_Boolean HasLastRestriction();
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
+		/****** GeomFill_LocationLaw::Intervals ******/
+		/****** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -4004,8 +4004,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRotation ******************/
-		/**** md5 signature: 973edf98b0a7a11b959acaead8b42c67 ****/
+		/****** GeomFill_LocationLaw::IsRotation ******/
+		/****** md5 signature: 973edf98b0a7a11b959acaead8b42c67 ******/
 		%feature("compactdefaultargs") IsRotation;
 		%feature("autodoc", "
 Parameters
@@ -4021,8 +4021,8 @@ Say if the location law, is a rotation of location the default implementation is
 ") IsRotation;
 		virtual Standard_Boolean IsRotation(Standard_Real &OutValue);
 
-		/****************** IsTranslation ******************/
-		/**** md5 signature: ab2a53c062db49c3cabaf4b675826102 ****/
+		/****** GeomFill_LocationLaw::IsTranslation ******/
+		/****** md5 signature: ab2a53c062db49c3cabaf4b675826102 ******/
 		%feature("compactdefaultargs") IsTranslation;
 		%feature("autodoc", "
 Parameters
@@ -4038,8 +4038,8 @@ Say if the location law, is an translation of location the default implementatio
 ") IsTranslation;
 		virtual Standard_Boolean IsTranslation(Standard_Real &OutValue);
 
-		/****************** Nb2dCurves ******************/
-		/**** md5 signature: 6db4babc7c8801d581426366f92a32f0 ****/
+		/****** GeomFill_LocationLaw::Nb2dCurves ******/
+		/****** md5 signature: 6db4babc7c8801d581426366f92a32f0 ******/
 		%feature("compactdefaultargs") Nb2dCurves;
 		%feature("autodoc", "Return
 -------
@@ -4051,8 +4051,8 @@ Get the number of 2d curves (restrictions + traces) to approximate.
 ") Nb2dCurves;
 		Standard_Integer Nb2dCurves();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ****/
+		/****** GeomFill_LocationLaw::NbIntervals ******/
+		/****** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -4069,8 +4069,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** Resolution ******************/
-		/**** md5 signature: 70b0f0265ef5802a650e7ab2f0220a7e ****/
+		/****** GeomFill_LocationLaw::Resolution ******/
+		/****** md5 signature: 70b0f0265ef5802a650e7ab2f0220a7e ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -4089,8 +4089,8 @@ Returns the resolutions in the sub-space 2d <index> this information is usfull t
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Rotation ******************/
-		/**** md5 signature: af16e6da9546d03e40f34ed4bd8cc695 ****/
+		/****** GeomFill_LocationLaw::Rotation ******/
+		/****** md5 signature: af16e6da9546d03e40f34ed4bd8cc695 ******/
 		%feature("compactdefaultargs") Rotation;
 		%feature("autodoc", "
 Parameters
@@ -4107,8 +4107,8 @@ No available documentation.
 ") Rotation;
 		virtual void Rotation(gp_Pnt & Center);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: 4f61bd5930a6293e48d18d548fb6b67a ****/
+		/****** GeomFill_LocationLaw::SetCurve ******/
+		/****** md5 signature: 4f61bd5930a6293e48d18d548fb6b67a ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -4125,8 +4125,8 @@ Initialize curve of location law.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 0547f3a9c04c5f6c0363c26295b2e795 ****/
+		/****** GeomFill_LocationLaw::SetInterval ******/
+		/****** md5 signature: 0547f3a9c04c5f6c0363c26295b2e795 ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -4144,8 +4144,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: 1565024762efa75936883ee9558fa99d ****/
+		/****** GeomFill_LocationLaw::SetTolerance ******/
+		/****** md5 signature: 1565024762efa75936883ee9558fa99d ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -4163,8 +4163,8 @@ Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2 the d
 ") SetTolerance;
 		virtual void SetTolerance(const Standard_Real Tol3d, const Standard_Real Tol2d);
 
-		/****************** SetTrsf ******************/
-		/**** md5 signature: d24d0b12a29328de00f56e6c06319c83 ****/
+		/****** GeomFill_LocationLaw::SetTrsf ******/
+		/****** md5 signature: d24d0b12a29328de00f56e6c06319c83 ******/
 		%feature("compactdefaultargs") SetTrsf;
 		%feature("autodoc", "
 Parameters
@@ -4181,8 +4181,8 @@ Set a transformation matrix like the law m(t) become mat * m(t).
 ") SetTrsf;
 		virtual void SetTrsf(const gp_Mat & Transfo);
 
-		/****************** TraceNumber ******************/
-		/**** md5 signature: d8da584be0a6e10afb5206d653daab74 ****/
+		/****** GeomFill_LocationLaw::TraceNumber ******/
+		/****** md5 signature: d8da584be0a6e10afb5206d653daab74 ******/
 		%feature("compactdefaultargs") TraceNumber;
 		%feature("autodoc", "Return
 -------
@@ -4210,8 +4210,8 @@ Give the number of trace (curves 2d which are not restriction) returns 0 (defaul
 **********************/
 class GeomFill_Pipe {
 	public:
-		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: 26475aa1bbdb26dae7e70e591201bff5 ****/
+		/****** GeomFill_Pipe::GeomFill_Pipe ******/
+		/****** md5 signature: 26475aa1bbdb26dae7e70e591201bff5 ******/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "Return
 -------
@@ -4223,8 +4223,8 @@ Constructs an empty algorithm for building pipes. use the function init to initi
 ") GeomFill_Pipe;
 		 GeomFill_Pipe();
 
-		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: ee732a0cea4d5696417bc56d24241c83 ****/
+		/****** GeomFill_Pipe::GeomFill_Pipe ******/
+		/****** md5 signature: ee732a0cea4d5696417bc56d24241c83 ******/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "
 Parameters
@@ -4242,8 +4242,8 @@ No available documentation.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const Standard_Real Radius);
 
-		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: 00b93a896a2ca0b4ecb608e85a9693e4 ****/
+		/****** GeomFill_Pipe::GeomFill_Pipe ******/
+		/****** md5 signature: 00b93a896a2ca0b4ecb608e85a9693e4 ******/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "
 Parameters
@@ -4262,8 +4262,8 @@ Create a pipe with a constant section (<firstsection>) and a path (<path>) optio
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & FirstSect, const GeomFill_Trihedron Option = GeomFill_IsCorrectedFrenet);
 
-		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: 0a728fc1802aac6865c935cb6ea957ea ****/
+		/****** GeomFill_Pipe::GeomFill_Pipe ******/
+		/****** md5 signature: 0a728fc1802aac6865c935cb6ea957ea ******/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "
 Parameters
@@ -4282,8 +4282,8 @@ Create a pipe with a constant section (<firstsection>) and a path defined by <pa
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom2d_Curve> & Path, const opencascade::handle<Geom_Surface> & Support, const opencascade::handle<Geom_Curve> & FirstSect);
 
-		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: 0c249401b0246b0792f11f061c787f6b ****/
+		/****** GeomFill_Pipe::GeomFill_Pipe ******/
+		/****** md5 signature: 0c249401b0246b0792f11f061c787f6b ******/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "
 Parameters
@@ -4302,8 +4302,8 @@ Create a pipe with a constant section (<firstsection>) and a path <path> and a f
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & FirstSect, const gp_Dir & Dir);
 
-		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: 21e998388a5fd330c89065860278090b ****/
+		/****** GeomFill_Pipe::GeomFill_Pipe ******/
+		/****** md5 signature: 21e998388a5fd330c89065860278090b ******/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "
 Parameters
@@ -4322,8 +4322,8 @@ Create a pipe with an evolving section the section evaluate from first to last s
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & FirstSect, const opencascade::handle<Geom_Curve> & LastSect);
 
-		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: d33e1011fa11db81b148eb3e78127152 ****/
+		/****** GeomFill_Pipe::GeomFill_Pipe ******/
+		/****** md5 signature: d33e1011fa11db81b148eb3e78127152 ******/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "
 Parameters
@@ -4341,8 +4341,8 @@ Create a pipe with n sections the section evaluate from first to last section.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const TColGeom_SequenceOfCurve & NSections);
 
-		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: bee87cb22c4bccd102806cb27434f59a ****/
+		/****** GeomFill_Pipe::GeomFill_Pipe ******/
+		/****** md5 signature: bee87cb22c4bccd102806cb27434f59a ******/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "
 Parameters
@@ -4362,8 +4362,8 @@ Create a pipe with a constant radius with 2 guide-line.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & Curve1, const opencascade::handle<Geom_Curve> & Curve2, const Standard_Real Radius);
 
-		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: 4530f1063599f6222f5a997daa03b7d8 ****/
+		/****** GeomFill_Pipe::GeomFill_Pipe ******/
+		/****** md5 signature: 4530f1063599f6222f5a997daa03b7d8 ******/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "
 Parameters
@@ -4383,8 +4383,8 @@ Create a pipe with a constant radius with 2 guide-line.
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Adaptor3d_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Curve1, const opencascade::handle<Adaptor3d_Curve> & Curve2, const Standard_Real Radius);
 
-		/****************** GeomFill_Pipe ******************/
-		/**** md5 signature: 62a6afc55ea058c5a6fba97090c13c8d ****/
+		/****** GeomFill_Pipe::GeomFill_Pipe ******/
+		/****** md5 signature: 62a6afc55ea058c5a6fba97090c13c8d ******/
 		%feature("compactdefaultargs") GeomFill_Pipe;
 		%feature("autodoc", "
 Parameters
@@ -4405,8 +4405,8 @@ Create a pipe with a constant section and with 1 guide-line. use the function pe
 ") GeomFill_Pipe;
 		 GeomFill_Pipe(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Guide, const opencascade::handle<Geom_Curve> & FirstSect, const Standard_Boolean ByACR, const Standard_Boolean rotat);
 
-		/****************** ErrorOnSurf ******************/
-		/**** md5 signature: 8f3f314d7b67e1d3eba24c5bbbfc1bbe ****/
+		/****** GeomFill_Pipe::ErrorOnSurf ******/
+		/****** md5 signature: 8f3f314d7b67e1d3eba24c5bbbfc1bbe ******/
 		%feature("compactdefaultargs") ErrorOnSurf;
 		%feature("autodoc", "Return
 -------
@@ -4418,8 +4418,8 @@ Returns the approximation's error. if the surface is plane, cylinder ... this er
 ") ErrorOnSurf;
 		Standard_Real ErrorOnSurf();
 
-		/****************** ExchangeUV ******************/
-		/**** md5 signature: b9b6c7f5992ff1ca7ae0d75a331ba2e9 ****/
+		/****** GeomFill_Pipe::ExchangeUV ******/
+		/****** md5 signature: b9b6c7f5992ff1ca7ae0d75a331ba2e9 ******/
 		%feature("compactdefaultargs") ExchangeUV;
 		%feature("autodoc", "Return
 -------
@@ -4431,8 +4431,8 @@ The u parametric direction of the surface constructed by this algorithm usually 
 ") ExchangeUV;
 		Standard_Boolean ExchangeUV();
 
-		/****************** GenerateParticularCase ******************/
-		/**** md5 signature: aa8149250d2924b1d4e59f5e32c9e9c4 ****/
+		/****** GeomFill_Pipe::GenerateParticularCase ******/
+		/****** md5 signature: aa8149250d2924b1d4e59f5e32c9e9c4 ******/
 		%feature("compactdefaultargs") GenerateParticularCase;
 		%feature("autodoc", "
 Parameters
@@ -4449,8 +4449,8 @@ Sets a flag to try to create as many planes, cylinder,... as possible. default v
 ") GenerateParticularCase;
 		void GenerateParticularCase(const Standard_Boolean B);
 
-		/****************** GenerateParticularCase ******************/
-		/**** md5 signature: 25ab3daf2d52dd071efed1af2e8f07fe ****/
+		/****** GeomFill_Pipe::GenerateParticularCase ******/
+		/****** md5 signature: 25ab3daf2d52dd071efed1af2e8f07fe ******/
 		%feature("compactdefaultargs") GenerateParticularCase;
 		%feature("autodoc", "Return
 -------
@@ -4462,8 +4462,8 @@ Returns the flag.
 ") GenerateParticularCase;
 		Standard_Boolean GenerateParticularCase();
 
-		/****************** GetStatus ******************/
-		/**** md5 signature: c62c84d505dd238d67f4c6383f3266b4 ****/
+		/****** GeomFill_Pipe::GetStatus ******/
+		/****** md5 signature: c62c84d505dd238d67f4c6383f3266b4 ******/
 		%feature("compactdefaultargs") GetStatus;
 		%feature("autodoc", "Return
 -------
@@ -4475,8 +4475,8 @@ Returns execution status.
 ") GetStatus;
 		GeomFill_PipeError GetStatus();
 
-		/****************** Init ******************/
-		/**** md5 signature: d03408a50bd75e5b4692d40387d5a32a ****/
+		/****** GeomFill_Pipe::Init ******/
+		/****** md5 signature: d03408a50bd75e5b4692d40387d5a32a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4494,8 +4494,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Path, const Standard_Real Radius);
 
-		/****************** Init ******************/
-		/**** md5 signature: b88dff012b9c1655d8e30b8428e98490 ****/
+		/****** GeomFill_Pipe::Init ******/
+		/****** md5 signature: b88dff012b9c1655d8e30b8428e98490 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4514,8 +4514,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & FirstSect, const GeomFill_Trihedron Option = GeomFill_IsCorrectedFrenet);
 
-		/****************** Init ******************/
-		/**** md5 signature: dd3854a6bba8e1f858ac6a42fe88b1f3 ****/
+		/****** GeomFill_Pipe::Init ******/
+		/****** md5 signature: dd3854a6bba8e1f858ac6a42fe88b1f3 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4534,8 +4534,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Geom2d_Curve> & Path, const opencascade::handle<Geom_Surface> & Support, const opencascade::handle<Geom_Curve> & FirstSect);
 
-		/****************** Init ******************/
-		/**** md5 signature: 9706fb74713beb9a8067845e9f3a59ee ****/
+		/****** GeomFill_Pipe::Init ******/
+		/****** md5 signature: 9706fb74713beb9a8067845e9f3a59ee ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4554,8 +4554,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & FirstSect, const gp_Dir & Dir);
 
-		/****************** Init ******************/
-		/**** md5 signature: 95c764e9435c3ae61bdb25df43fb5a17 ****/
+		/****** GeomFill_Pipe::Init ******/
+		/****** md5 signature: 95c764e9435c3ae61bdb25df43fb5a17 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4574,8 +4574,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Geom_Curve> & FirstSect, const opencascade::handle<Geom_Curve> & LastSect);
 
-		/****************** Init ******************/
-		/**** md5 signature: 1a1e6dec3cfed294ef6c0e487fa8fa7b ****/
+		/****** GeomFill_Pipe::Init ******/
+		/****** md5 signature: 1a1e6dec3cfed294ef6c0e487fa8fa7b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4593,8 +4593,8 @@ No available documentation.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Path, const TColGeom_SequenceOfCurve & NSections);
 
-		/****************** Init ******************/
-		/**** md5 signature: 12794c57e4e9e1d3f57a21a8225d0fc9 ****/
+		/****** GeomFill_Pipe::Init ******/
+		/****** md5 signature: 12794c57e4e9e1d3f57a21a8225d0fc9 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4614,8 +4614,8 @@ Create a pipe with a constant radius with 2 guide-line.
 ") Init;
 		void Init(const opencascade::handle<Adaptor3d_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Curve1, const opencascade::handle<Adaptor3d_Curve> & Curve2, const Standard_Real Radius);
 
-		/****************** Init ******************/
-		/**** md5 signature: d595c424249c2e943c3d6b16e9369ce8 ****/
+		/****** GeomFill_Pipe::Init ******/
+		/****** md5 signature: d595c424249c2e943c3d6b16e9369ce8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -4636,8 +4636,8 @@ Initializes this pipe algorithm to build the following surface: - a pipe with a 
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Path, const opencascade::handle<Adaptor3d_Curve> & Guide, const opencascade::handle<Geom_Curve> & FirstSect, const Standard_Boolean ByACR, const Standard_Boolean rotat);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomFill_Pipe::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4649,8 +4649,8 @@ Returns whether approximation was done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 6d0a57d6eb2e1596ca375a617ef63411 ****/
+		/****** GeomFill_Pipe::Perform ******/
+		/****** md5 signature: 6d0a57d6eb2e1596ca375a617ef63411 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4668,8 +4668,8 @@ Builds the pipe defined at the time of initialization of this algorithm. a descr
 ") Perform;
 		void Perform(const Standard_Boolean WithParameters = Standard_False, const Standard_Boolean myPolynomial = Standard_False);
 
-		/****************** Perform ******************/
-		/**** md5 signature: aca0081a2ee5f30c242a64dc111e92c1 ****/
+		/****** GeomFill_Pipe::Perform ******/
+		/****** md5 signature: aca0081a2ee5f30c242a64dc111e92c1 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -4690,8 +4690,8 @@ Detects the particular cases. and compute the surface. if none particular case i
 ") Perform;
 		void Perform(const Standard_Real Tol, const Standard_Boolean Polynomial, const GeomAbs_Shape Conti = GeomAbs_C1, const Standard_Integer MaxDegree = 11, const Standard_Integer NbMaxSegment = 30);
 
-		/****************** Surface ******************/
-		/**** md5 signature: a469e18cbceeb351572a461f96ff0f4d ****/
+		/****** GeomFill_Pipe::Surface ******/
+		/****** md5 signature: a469e18cbceeb351572a461f96ff0f4d ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -4717,8 +4717,8 @@ Returns the surface built by this algorithm. warning do not use this function be
 **************************/
 class GeomFill_PlanFunc : public math_FunctionWithDerivative {
 	public:
-		/****************** GeomFill_PlanFunc ******************/
-		/**** md5 signature: d2111f7e04703bf5d8e4b88603c7da47 ****/
+		/****** GeomFill_PlanFunc::GeomFill_PlanFunc ******/
+		/****** md5 signature: d2111f7e04703bf5d8e4b88603c7da47 ******/
 		%feature("compactdefaultargs") GeomFill_PlanFunc;
 		%feature("autodoc", "
 Parameters
@@ -4737,8 +4737,8 @@ No available documentation.
 ") GeomFill_PlanFunc;
 		 GeomFill_PlanFunc(const gp_Pnt & P, const gp_Vec & V, const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 3593cd3677dd66060bb00c05ef08ee1e ****/
+		/****** GeomFill_PlanFunc::D2 ******/
+		/****** md5 signature: 3593cd3677dd66060bb00c05ef08ee1e ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -4757,8 +4757,8 @@ No available documentation.
 ") D2;
 		void D2(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** D2E ******************/
-		/**** md5 signature: 0d2ec6b4f7dc96e9de72b64afa69ab3d ****/
+		/****** GeomFill_PlanFunc::D2E ******/
+		/****** md5 signature: 0d2ec6b4f7dc96e9de72b64afa69ab3d ******/
 		%feature("compactdefaultargs") D2E;
 		%feature("autodoc", "
 Parameters
@@ -4781,8 +4781,8 @@ No available documentation.
 ") D2E;
 		void D2E(const Standard_Real X, const gp_Vec & DP, const gp_Vec & D2P, const gp_Vec & DV, const gp_Vec & D2V, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** DEDT ******************/
-		/**** md5 signature: f8ffb48842950ca5a73c35193856f25e ****/
+		/****** GeomFill_PlanFunc::DEDT ******/
+		/****** md5 signature: f8ffb48842950ca5a73c35193856f25e ******/
 		%feature("compactdefaultargs") DEDT;
 		%feature("autodoc", "
 Parameters
@@ -4801,8 +4801,8 @@ No available documentation.
 ") DEDT;
 		void DEDT(const Standard_Real X, const gp_Vec & DP, const gp_Vec & DV, Standard_Real &OutValue);
 
-		/****************** Derivative ******************/
-		/**** md5 signature: db0dcd567f64073c6f81e974e7fd2624 ****/
+		/****** GeomFill_PlanFunc::Derivative ******/
+		/****** md5 signature: db0dcd567f64073c6f81e974e7fd2624 ******/
 		%feature("compactdefaultargs") Derivative;
 		%feature("autodoc", "
 Parameters
@@ -4819,8 +4819,8 @@ Computes the derivative <d> of the function for the variable <x>. returns true i
 ") Derivative;
 		virtual Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
-		/****************** Value ******************/
-		/**** md5 signature: 15617dca721c4472bfb7ee7933f04bce ****/
+		/****** GeomFill_PlanFunc::Value ******/
+		/****** md5 signature: 15617dca721c4472bfb7ee7933f04bce ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -4837,8 +4837,8 @@ Computes the value <f>of the function for the variable <x>. returns true if the 
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
-		/****************** Values ******************/
-		/**** md5 signature: 6f2163d9b7f09d24e575a61101ce4492 ****/
+		/****** GeomFill_PlanFunc::Values ******/
+		/****** md5 signature: 6f2163d9b7f09d24e575a61101ce4492 ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -4870,8 +4870,8 @@ Computes the value <f> and the derivative <d> of the function for the variable <
 *************************************/
 class GeomFill_PolynomialConvertor {
 	public:
-		/****************** GeomFill_PolynomialConvertor ******************/
-		/**** md5 signature: ee753b2a7ff11205a515831d90f0a487 ****/
+		/****** GeomFill_PolynomialConvertor::GeomFill_PolynomialConvertor ******/
+		/****** md5 signature: ee753b2a7ff11205a515831d90f0a487 ******/
 		%feature("compactdefaultargs") GeomFill_PolynomialConvertor;
 		%feature("autodoc", "Return
 -------
@@ -4883,8 +4883,8 @@ No available documentation.
 ") GeomFill_PolynomialConvertor;
 		 GeomFill_PolynomialConvertor();
 
-		/****************** Init ******************/
-		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
+		/****** GeomFill_PolynomialConvertor::Init ******/
+		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -4896,8 +4896,8 @@ No available documentation.
 ") Init;
 		void Init();
 
-		/****************** Initialized ******************/
-		/**** md5 signature: 54566042fad9d35dc02b275e9a7893f4 ****/
+		/****** GeomFill_PolynomialConvertor::Initialized ******/
+		/****** md5 signature: 54566042fad9d35dc02b275e9a7893f4 ******/
 		%feature("compactdefaultargs") Initialized;
 		%feature("autodoc", "Return
 -------
@@ -4909,8 +4909,8 @@ Say if <self> is initialized.
 ") Initialized;
 		Standard_Boolean Initialized();
 
-		/****************** Section ******************/
-		/**** md5 signature: 1595f7a23eaa9457c3afbcaa7893b4ed ****/
+		/****** GeomFill_PolynomialConvertor::Section ******/
+		/****** md5 signature: 1595f7a23eaa9457c3afbcaa7893b4ed ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -4931,8 +4931,8 @@ No available documentation.
 ") Section;
 		void Section(const gp_Pnt & FirstPnt, const gp_Pnt & Center, const gp_Vec & Dir, const Standard_Real Angle, TColgp_Array1OfPnt & Poles);
 
-		/****************** Section ******************/
-		/**** md5 signature: ec8a210042d92172d84213435013a438 ****/
+		/****** GeomFill_PolynomialConvertor::Section ******/
+		/****** md5 signature: ec8a210042d92172d84213435013a438 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -4958,8 +4958,8 @@ No available documentation.
 ") Section;
 		void Section(const gp_Pnt & FirstPnt, const gp_Vec & DFirstPnt, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & Dir, const gp_Vec & DDir, const Standard_Real Angle, const Standard_Real DAngle, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles);
 
-		/****************** Section ******************/
-		/**** md5 signature: 3b65c9fc21cb71775c8b8c832946e6f3 ****/
+		/****** GeomFill_PolynomialConvertor::Section ******/
+		/****** md5 signature: 3b65c9fc21cb71775c8b8c832946e6f3 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -5004,8 +5004,8 @@ No available documentation.
 **************************/
 class GeomFill_Profiler {
 	public:
-		/****************** GeomFill_Profiler ******************/
-		/**** md5 signature: f2c7a9b80da515f2c466a31f1c6d230f ****/
+		/****** GeomFill_Profiler::GeomFill_Profiler ******/
+		/****** md5 signature: f2c7a9b80da515f2c466a31f1c6d230f ******/
 		%feature("compactdefaultargs") GeomFill_Profiler;
 		%feature("autodoc", "Return
 -------
@@ -5017,8 +5017,8 @@ No available documentation.
 ") GeomFill_Profiler;
 		 GeomFill_Profiler();
 
-		/****************** AddCurve ******************/
-		/**** md5 signature: 11c20dbcd749bd2a76890d8d6a6be7ae ****/
+		/****** GeomFill_Profiler::AddCurve ******/
+		/****** md5 signature: 11c20dbcd749bd2a76890d8d6a6be7ae ******/
 		%feature("compactdefaultargs") AddCurve;
 		%feature("autodoc", "
 Parameters
@@ -5035,8 +5035,8 @@ No available documentation.
 ") AddCurve;
 		void AddCurve(const opencascade::handle<Geom_Curve> & Curve);
 
-		/****************** Curve ******************/
-		/**** md5 signature: 684e9a3c11b3f249343e6a914ac640ee ****/
+		/****** GeomFill_Profiler::Curve ******/
+		/****** md5 signature: 684e9a3c11b3f249343e6a914ac640ee ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "
 Parameters
@@ -5053,8 +5053,8 @@ No available documentation.
 ") Curve;
 		const opencascade::handle<Geom_Curve> & Curve(const Standard_Integer Index);
 
-		/****************** Degree ******************/
-		/**** md5 signature: e3276df1ce733e2c8e940db548a26d03 ****/
+		/****** GeomFill_Profiler::Degree ******/
+		/****** md5 signature: e3276df1ce733e2c8e940db548a26d03 ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -5066,8 +5066,8 @@ Raises if not yet perform.
 ") Degree;
 		Standard_Integer Degree();
 
-		/****************** IsPeriodic ******************/
-		/**** md5 signature: 62d7f554b0b7785e1f3919569dfbc68f ****/
+		/****** GeomFill_Profiler::IsPeriodic ******/
+		/****** md5 signature: 62d7f554b0b7785e1f3919569dfbc68f ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -5079,8 +5079,8 @@ No available documentation.
 ") IsPeriodic;
 		Standard_Boolean IsPeriodic();
 
-		/****************** KnotsAndMults ******************/
-		/**** md5 signature: 19787aa39b0400d3a08b5785b90459e8 ****/
+		/****** GeomFill_Profiler::KnotsAndMults ******/
+		/****** md5 signature: 19787aa39b0400d3a08b5785b90459e8 ******/
 		%feature("compactdefaultargs") KnotsAndMults;
 		%feature("autodoc", "
 Parameters
@@ -5098,8 +5098,8 @@ Raises if not yet perform raises if the lengths of <knots> and <mults> are not e
 ") KnotsAndMults;
 		void KnotsAndMults(TColStd_Array1OfReal & Knots, TColStd_Array1OfInteger & Mults);
 
-		/****************** NbKnots ******************/
-		/**** md5 signature: ccda669299f8eba1ba0d3387af4c950e ****/
+		/****** GeomFill_Profiler::NbKnots ******/
+		/****** md5 signature: ccda669299f8eba1ba0d3387af4c950e ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -5111,8 +5111,8 @@ Raises if not yet perform.
 ") NbKnots;
 		Standard_Integer NbKnots();
 
-		/****************** NbPoles ******************/
-		/**** md5 signature: 9a7d6d5f8a21c5833786e951bce99604 ****/
+		/****** GeomFill_Profiler::NbPoles ******/
+		/****** md5 signature: 9a7d6d5f8a21c5833786e951bce99604 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -5124,8 +5124,8 @@ Raises if not yet perform.
 ") NbPoles;
 		Standard_Integer NbPoles();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 190ae4aa2767ac61fd4fd06132b62d02 ****/
+		/****** GeomFill_Profiler::Perform ******/
+		/****** md5 signature: 190ae4aa2767ac61fd4fd06132b62d02 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -5142,8 +5142,8 @@ Converts all curves to bsplinecurves. set them to the common profile. <ptol> is 
 ") Perform;
 		virtual void Perform(const Standard_Real PTol);
 
-		/****************** Poles ******************/
-		/**** md5 signature: 66d6e30649c8a0a21c5831aa2eb82d30 ****/
+		/****** GeomFill_Profiler::Poles ******/
+		/****** md5 signature: 66d6e30649c8a0a21c5831aa2eb82d30 ******/
 		%feature("compactdefaultargs") Poles;
 		%feature("autodoc", "
 Parameters
@@ -5161,8 +5161,8 @@ Returns in <poles> the poles of the bsplinecurve from index <index> adjusting to
 ") Poles;
 		void Poles(const Standard_Integer Index, TColgp_Array1OfPnt & Poles);
 
-		/****************** Weights ******************/
-		/**** md5 signature: ccaae2145009995024e15db4b294fc35 ****/
+		/****** GeomFill_Profiler::Weights ******/
+		/****** md5 signature: ccaae2145009995024e15db4b294fc35 ******/
 		%feature("compactdefaultargs") Weights;
 		%feature("autodoc", "
 Parameters
@@ -5194,8 +5194,8 @@ Returns in <weights> the weights of the bsplinecurve from index <index> adjustin
 ***************************************/
 class GeomFill_QuasiAngularConvertor {
 	public:
-		/****************** GeomFill_QuasiAngularConvertor ******************/
-		/**** md5 signature: 1cc1111b9d2a6695b2f123ffc4cf75f3 ****/
+		/****** GeomFill_QuasiAngularConvertor::GeomFill_QuasiAngularConvertor ******/
+		/****** md5 signature: 1cc1111b9d2a6695b2f123ffc4cf75f3 ******/
 		%feature("compactdefaultargs") GeomFill_QuasiAngularConvertor;
 		%feature("autodoc", "Return
 -------
@@ -5207,8 +5207,8 @@ No available documentation.
 ") GeomFill_QuasiAngularConvertor;
 		 GeomFill_QuasiAngularConvertor();
 
-		/****************** Init ******************/
-		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
+		/****** GeomFill_QuasiAngularConvertor::Init ******/
+		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -5220,8 +5220,8 @@ No available documentation.
 ") Init;
 		void Init();
 
-		/****************** Initialized ******************/
-		/**** md5 signature: 54566042fad9d35dc02b275e9a7893f4 ****/
+		/****** GeomFill_QuasiAngularConvertor::Initialized ******/
+		/****** md5 signature: 54566042fad9d35dc02b275e9a7893f4 ******/
 		%feature("compactdefaultargs") Initialized;
 		%feature("autodoc", "Return
 -------
@@ -5233,8 +5233,8 @@ Say if <self> is initialized.
 ") Initialized;
 		Standard_Boolean Initialized();
 
-		/****************** Section ******************/
-		/**** md5 signature: 90bd2cc2c9a5b6ae2fba3dd58381e760 ****/
+		/****** GeomFill_QuasiAngularConvertor::Section ******/
+		/****** md5 signature: 90bd2cc2c9a5b6ae2fba3dd58381e760 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -5256,8 +5256,8 @@ No available documentation.
 ") Section;
 		void Section(const gp_Pnt & FirstPnt, const gp_Pnt & Center, const gp_Vec & Dir, const Standard_Real Angle, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weights);
 
-		/****************** Section ******************/
-		/**** md5 signature: bf838dcc8ca8bb48e4e3083dbbf9d136 ****/
+		/****** GeomFill_QuasiAngularConvertor::Section ******/
+		/****** md5 signature: bf838dcc8ca8bb48e4e3083dbbf9d136 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -5285,8 +5285,8 @@ No available documentation.
 ") Section;
 		void Section(const gp_Pnt & FirstPnt, const gp_Vec & DFirstPnt, const gp_Pnt & Center, const gp_Vec & DCenter, const gp_Vec & Dir, const gp_Vec & DDir, const Standard_Real Angle, const Standard_Real DAngle, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weights, TColStd_Array1OfReal & DWeights);
 
-		/****************** Section ******************/
-		/**** md5 signature: fe6e5b059717f9ab3a642382d42feeea ****/
+		/****** GeomFill_QuasiAngularConvertor::Section ******/
+		/****** md5 signature: fe6e5b059717f9ab3a642382d42feeea ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -5335,8 +5335,8 @@ No available documentation.
 %nodefaultctor GeomFill_SectionLaw;
 class GeomFill_SectionLaw : public Standard_Transient {
 	public:
-		/****************** BSplineSurface ******************/
-		/**** md5 signature: b51703ac160c5002a0ad431d9cf0e55c ****/
+		/****** GeomFill_SectionLaw::BSplineSurface ******/
+		/****** md5 signature: b51703ac160c5002a0ad431d9cf0e55c ******/
 		%feature("compactdefaultargs") BSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -5348,8 +5348,8 @@ Give if possible an bspline surface, like iso-v are the section. if it is not po
 ") BSplineSurface;
 		virtual opencascade::handle<Geom_BSplineSurface> BSplineSurface();
 
-		/****************** BarycentreOfSurf ******************/
-		/**** md5 signature: cbc6eaf5619edbfc0f2839466f8de856 ****/
+		/****** GeomFill_SectionLaw::BarycentreOfSurf ******/
+		/****** md5 signature: cbc6eaf5619edbfc0f2839466f8de856 ******/
 		%feature("compactdefaultargs") BarycentreOfSurf;
 		%feature("autodoc", "Return
 -------
@@ -5361,8 +5361,8 @@ Get the barycentre of surface. an very poor estimation is sufficient. this infor
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
-		/****************** CirclSection ******************/
-		/**** md5 signature: ac51174d3b9979dabe76e219f49bf427 ****/
+		/****** GeomFill_SectionLaw::CirclSection ******/
+		/****** md5 signature: ac51174d3b9979dabe76e219f49bf427 ******/
 		%feature("compactdefaultargs") CirclSection;
 		%feature("autodoc", "
 Parameters
@@ -5379,8 +5379,8 @@ Return the circle section at parameter <param>, if <self> a isconicallaw.
 ") CirclSection;
 		virtual opencascade::handle<Geom_Curve> CirclSection(const Standard_Real Param);
 
-		/****************** ConstantSection ******************/
-		/**** md5 signature: 295eba02ad0b95a48fd7857d1d41877a ****/
+		/****** GeomFill_SectionLaw::ConstantSection ******/
+		/****** md5 signature: 295eba02ad0b95a48fd7857d1d41877a ******/
 		%feature("compactdefaultargs") ConstantSection;
 		%feature("autodoc", "Return
 -------
@@ -5392,8 +5392,8 @@ Return a copy of the constant section, if me isconstant.
 ") ConstantSection;
 		virtual opencascade::handle<Geom_Curve> ConstantSection();
 
-		/****************** D0 ******************/
-		/**** md5 signature: eaa73c1de6c91beab5d6772f732020d6 ****/
+		/****** GeomFill_SectionLaw::D0 ******/
+		/****** md5 signature: eaa73c1de6c91beab5d6772f732020d6 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -5412,8 +5412,8 @@ Compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
-		/****************** D1 ******************/
-		/**** md5 signature: e3c6434afb03815d368e10617d5a7f5b ****/
+		/****** GeomFill_SectionLaw::D1 ******/
+		/****** md5 signature: e3c6434afb03815d368e10617d5a7f5b ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -5434,8 +5434,8 @@ Compute the first derivative in v direction of the section for v = param warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 8e60d2fe6644e0ec8d5c8468e973d40c ****/
+		/****** GeomFill_SectionLaw::D2 ******/
+		/****** md5 signature: 8e60d2fe6644e0ec8d5c8468e973d40c ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -5458,8 +5458,8 @@ Compute the second derivative in v direction of the section for v = param warnin
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** GetDomain ******************/
-		/**** md5 signature: cf4b59a00ac748986e419ee48c8333d6 ****/
+		/****** GeomFill_SectionLaw::GetDomain ******/
+		/****** md5 signature: cf4b59a00ac748986e419ee48c8333d6 ******/
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "
 Parameters
@@ -5476,8 +5476,8 @@ Gets the bounds of the function parametric domain. warning: this domain it is no
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetInterval ******************/
-		/**** md5 signature: a17748ec1150378c402b1599113effd4 ****/
+		/****** GeomFill_SectionLaw::GetInterval ******/
+		/****** md5 signature: a17748ec1150378c402b1599113effd4 ******/
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "
 Parameters
@@ -5494,8 +5494,8 @@ Gets the bounds of the parametric interval on the function.
 ") GetInterval;
 		virtual void GetInterval(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: 6fdd12d5da1669c5217b9449c91c0d9e ****/
+		/****** GeomFill_SectionLaw::GetMinimalWeight ******/
+		/****** md5 signature: 6fdd12d5da1669c5217b9449c91c0d9e ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -5512,8 +5512,8 @@ Compute the minimal value of weight for each poles in all sections. this informa
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: 1096196f89d9fc10f33e62e0d43284fe ****/
+		/****** GeomFill_SectionLaw::GetTolerance ******/
+		/****** md5 signature: 1096196f89d9fc10f33e62e0d43284fe ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -5533,8 +5533,8 @@ Returns the tolerances associated at each poles to reach in approximation, to sa
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
+		/****** GeomFill_SectionLaw::Intervals ******/
+		/****** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -5552,8 +5552,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConicalLaw ******************/
-		/**** md5 signature: 1abaa4ece9c4b4d441420168b7911bfc ****/
+		/****** GeomFill_SectionLaw::IsConicalLaw ******/
+		/****** md5 signature: 1abaa4ece9c4b4d441420168b7911bfc ******/
 		%feature("compactdefaultargs") IsConicalLaw;
 		%feature("autodoc", "
 Parameters
@@ -5569,8 +5569,8 @@ Returns true if all section are circle, with same plane,same center and linear r
 ") IsConicalLaw;
 		virtual Standard_Boolean IsConicalLaw(Standard_Real &OutValue);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 2bee4baf834a2f08caa73a2fd5e7286c ****/
+		/****** GeomFill_SectionLaw::IsConstant ******/
+		/****** md5 signature: 2bee4baf834a2f08caa73a2fd5e7286c ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "
 Parameters
@@ -5586,8 +5586,8 @@ Say if all sections are equals.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant(Standard_Real &OutValue);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: e2d546fe827c13e22032dacc2ce90819 ****/
+		/****** GeomFill_SectionLaw::IsRational ******/
+		/****** md5 signature: e2d546fe827c13e22032dacc2ce90819 ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -5599,8 +5599,8 @@ Returns if the sections are rationnal or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
-		/****************** IsUPeriodic ******************/
-		/**** md5 signature: 7581170790b0f02294b3a98c2ef39654 ****/
+		/****** GeomFill_SectionLaw::IsUPeriodic ******/
+		/****** md5 signature: 7581170790b0f02294b3a98c2ef39654 ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -5612,8 +5612,8 @@ Returns if the sections are periodic or not.
 ") IsUPeriodic;
 		virtual Standard_Boolean IsUPeriodic();
 
-		/****************** IsVPeriodic ******************/
-		/**** md5 signature: 157f80ff35b8cd25014f915c1fea4793 ****/
+		/****** GeomFill_SectionLaw::IsVPeriodic ******/
+		/****** md5 signature: 157f80ff35b8cd25014f915c1fea4793 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -5625,8 +5625,8 @@ Returns if law is periodic or not.
 ") IsVPeriodic;
 		virtual Standard_Boolean IsVPeriodic();
 
-		/****************** Knots ******************/
-		/**** md5 signature: 7e71a376fdfa4fc27638b1b7f6f203bb ****/
+		/****** GeomFill_SectionLaw::Knots ******/
+		/****** md5 signature: 7e71a376fdfa4fc27638b1b7f6f203bb ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -5643,8 +5643,8 @@ Get the knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** MaximalSection ******************/
-		/**** md5 signature: 138e071f49741ba955ed2185c4c8ab9f ****/
+		/****** GeomFill_SectionLaw::MaximalSection ******/
+		/****** md5 signature: 138e071f49741ba955ed2185c4c8ab9f ******/
 		%feature("compactdefaultargs") MaximalSection;
 		%feature("autodoc", "Return
 -------
@@ -5656,8 +5656,8 @@ Returns the length of the greater section. this information is useful to g1's co
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
-		/****************** Mults ******************/
-		/**** md5 signature: d5fb3b1381d15914585fd7e6e0eafecb ****/
+		/****** GeomFill_SectionLaw::Mults ******/
+		/****** md5 signature: d5fb3b1381d15914585fd7e6e0eafecb ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -5674,8 +5674,8 @@ Get the multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ****/
+		/****** GeomFill_SectionLaw::NbIntervals ******/
+		/****** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -5692,8 +5692,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SectionShape ******************/
-		/**** md5 signature: 2709d0545e048eec44ae3de66392188f ****/
+		/****** GeomFill_SectionLaw::SectionShape ******/
+		/****** md5 signature: 2709d0545e048eec44ae3de66392188f ******/
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "
 Parameters
@@ -5711,8 +5711,8 @@ Get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 0547f3a9c04c5f6c0363c26295b2e795 ****/
+		/****** GeomFill_SectionLaw::SetInterval ******/
+		/****** md5 signature: 0547f3a9c04c5f6c0363c26295b2e795 ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -5730,8 +5730,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: 1565024762efa75936883ee9558fa99d ****/
+		/****** GeomFill_SectionLaw::SetTolerance ******/
+		/****** md5 signature: 1565024762efa75936883ee9558fa99d ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -5765,8 +5765,8 @@ Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2 the d
 **********************************/
 class GeomFill_SectionPlacement {
 	public:
-		/****************** GeomFill_SectionPlacement ******************/
-		/**** md5 signature: ced25f171c3a20926362a90337aa6c13 ****/
+		/****** GeomFill_SectionPlacement::GeomFill_SectionPlacement ******/
+		/****** md5 signature: ced25f171c3a20926362a90337aa6c13 ******/
 		%feature("compactdefaultargs") GeomFill_SectionPlacement;
 		%feature("autodoc", "
 Parameters
@@ -5784,8 +5784,8 @@ No available documentation.
 ") GeomFill_SectionPlacement;
 		 GeomFill_SectionPlacement(const opencascade::handle<GeomFill_LocationLaw> & L, const opencascade::handle<Geom_Geometry> & Section);
 
-		/****************** Angle ******************/
-		/**** md5 signature: dce50192c350c43b54f2e88e94e5372a ****/
+		/****** GeomFill_SectionPlacement::Angle ******/
+		/****** md5 signature: dce50192c350c43b54f2e88e94e5372a ******/
 		%feature("compactdefaultargs") Angle;
 		%feature("autodoc", "Return
 -------
@@ -5797,8 +5797,8 @@ No available documentation.
 ") Angle;
 		Standard_Real Angle();
 
-		/****************** Distance ******************/
-		/**** md5 signature: c054352e1b604c83d759bc4ccf6c526d ****/
+		/****** GeomFill_SectionPlacement::Distance ******/
+		/****** md5 signature: c054352e1b604c83d759bc4ccf6c526d ******/
 		%feature("compactdefaultargs") Distance;
 		%feature("autodoc", "Return
 -------
@@ -5810,8 +5810,8 @@ No available documentation.
 ") Distance;
 		Standard_Real Distance();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomFill_SectionPlacement::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -5823,8 +5823,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** ModifiedSection ******************/
-		/**** md5 signature: d50774cace5784c6bcc30e9f082ed831 ****/
+		/****** GeomFill_SectionPlacement::ModifiedSection ******/
+		/****** md5 signature: d50774cace5784c6bcc30e9f082ed831 ******/
 		%feature("compactdefaultargs") ModifiedSection;
 		%feature("autodoc", "
 Parameters
@@ -5841,8 +5841,8 @@ Compute the section, in the coordinate system given by the location law. to have
 ") ModifiedSection;
 		opencascade::handle<Geom_Curve> ModifiedSection(const Standard_Boolean WithTranslation);
 
-		/****************** ParameterOnPath ******************/
-		/**** md5 signature: a4a06b5cfcc62ace4862e77e5e07ee7d ****/
+		/****** GeomFill_SectionPlacement::ParameterOnPath ******/
+		/****** md5 signature: a4a06b5cfcc62ace4862e77e5e07ee7d ******/
 		%feature("compactdefaultargs") ParameterOnPath;
 		%feature("autodoc", "Return
 -------
@@ -5854,8 +5854,8 @@ No available documentation.
 ") ParameterOnPath;
 		Standard_Real ParameterOnPath();
 
-		/****************** ParameterOnSection ******************/
-		/**** md5 signature: d63193b90bace979eb3a78d341ba60bb ****/
+		/****** GeomFill_SectionPlacement::ParameterOnSection ******/
+		/****** md5 signature: d63193b90bace979eb3a78d341ba60bb ******/
 		%feature("compactdefaultargs") ParameterOnSection;
 		%feature("autodoc", "Return
 -------
@@ -5867,8 +5867,8 @@ No available documentation.
 ") ParameterOnSection;
 		Standard_Real ParameterOnSection();
 
-		/****************** Perform ******************/
-		/**** md5 signature: ef21d92cc56ea9fb08a6295512a1f679 ****/
+		/****** GeomFill_SectionPlacement::Perform ******/
+		/****** md5 signature: ef21d92cc56ea9fb08a6295512a1f679 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -5885,8 +5885,8 @@ No available documentation.
 ") Perform;
 		void Perform(const Standard_Real Tol);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 323bd7995787fb3c31cb6a2a0269c1cc ****/
+		/****** GeomFill_SectionPlacement::Perform ******/
+		/****** md5 signature: 323bd7995787fb3c31cb6a2a0269c1cc ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -5904,8 +5904,8 @@ No available documentation.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & Path, const Standard_Real Tol);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 1247c2342803e8af98196331e0da37ff ****/
+		/****** GeomFill_SectionPlacement::Perform ******/
+		/****** md5 signature: 1247c2342803e8af98196331e0da37ff ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -5923,8 +5923,8 @@ No available documentation.
 ") Perform;
 		void Perform(const Standard_Real ParamOnPath, const Standard_Real Tol);
 
-		/****************** Section ******************/
-		/**** md5 signature: 06d8ebfd837653e5db544efc38571dc8 ****/
+		/****** GeomFill_SectionPlacement::Section ******/
+		/****** md5 signature: 06d8ebfd837653e5db544efc38571dc8 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -5941,8 +5941,8 @@ Compute the section, in the coordinate system given by the location law. if <wit
 ") Section;
 		opencascade::handle<Geom_Curve> Section(const Standard_Boolean WithTranslation);
 
-		/****************** SetLocation ******************/
-		/**** md5 signature: bb75da6b01c89ab382627f3ab60412e1 ****/
+		/****** GeomFill_SectionPlacement::SetLocation ******/
+		/****** md5 signature: bb75da6b01c89ab382627f3ab60412e1 ******/
 		%feature("compactdefaultargs") SetLocation;
 		%feature("autodoc", "
 Parameters
@@ -5959,8 +5959,8 @@ To change the section law.
 ") SetLocation;
 		void SetLocation(const opencascade::handle<GeomFill_LocationLaw> & L);
 
-		/****************** Transformation ******************/
-		/**** md5 signature: 868f10efc437c37220d49de0dc80a297 ****/
+		/****** GeomFill_SectionPlacement::Transformation ******/
+		/****** md5 signature: 868f10efc437c37220d49de0dc80a297 ******/
 		%feature("compactdefaultargs") Transformation;
 		%feature("autodoc", "
 Parameters
@@ -5992,8 +5992,8 @@ No available documentation.
 ***************************/
 class GeomFill_SnglrFunc : public Adaptor3d_Curve {
 	public:
-		/****************** GeomFill_SnglrFunc ******************/
-		/**** md5 signature: 11e312347af8bf4b41690fc0fcf50e44 ****/
+		/****** GeomFill_SnglrFunc::GeomFill_SnglrFunc ******/
+		/****** md5 signature: 11e312347af8bf4b41690fc0fcf50e44 ******/
 		%feature("compactdefaultargs") GeomFill_SnglrFunc;
 		%feature("autodoc", "
 Parameters
@@ -6010,8 +6010,8 @@ No available documentation.
 ") GeomFill_SnglrFunc;
 		 GeomFill_SnglrFunc(const opencascade::handle<Adaptor3d_Curve> & HC);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ****/
+		/****** GeomFill_SnglrFunc::D0 ******/
+		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -6029,8 +6029,8 @@ Computes the point of parameter u on the curve.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ****/
+		/****** GeomFill_SnglrFunc::D1 ******/
+		/****** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -6049,8 +6049,8 @@ Computes the point of parameter u on the curve with its first derivative. raised
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
-		/****************** D2 ******************/
-		/**** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ****/
+		/****** GeomFill_SnglrFunc::D2 ******/
+		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -6070,8 +6070,8 @@ Returns the point p of parameter u, the first and second derivatives v1 and v2. 
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ****/
+		/****** GeomFill_SnglrFunc::D3 ******/
+		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -6092,8 +6092,8 @@ Returns the point p of parameter u, the first, the second and the third derivati
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** DN ******************/
-		/**** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ****/
+		/****** GeomFill_SnglrFunc::DN ******/
+		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -6111,8 +6111,8 @@ The returned vector gives the value of the derivative for the order of derivatio
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
-		/****************** FirstParameter ******************/
-		/**** md5 signature: eb9ebe94572bd67588fe8811eac261fb ****/
+		/****** GeomFill_SnglrFunc::FirstParameter ******/
+		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
@@ -6124,8 +6124,8 @@ No available documentation.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
-		/****************** GetType ******************/
-		/**** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ****/
+		/****** GeomFill_SnglrFunc::GetType ******/
+		/****** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -6137,8 +6137,8 @@ Returns the type of the curve in the current interval: line, circle, ellipse, hy
 ") GetType;
 		GeomAbs_CurveType GetType();
 
-		/****************** Intervals ******************/
-		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
+		/****** GeomFill_SnglrFunc::Intervals ******/
+		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -6156,8 +6156,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsPeriodic ******************/
-		/**** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ****/
+		/****** GeomFill_SnglrFunc::IsPeriodic ******/
+		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -6169,8 +6169,8 @@ No available documentation.
 ") IsPeriodic;
 		Standard_Boolean IsPeriodic();
 
-		/****************** LastParameter ******************/
-		/**** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ****/
+		/****** GeomFill_SnglrFunc::LastParameter ******/
+		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
@@ -6182,8 +6182,8 @@ No available documentation.
 ") LastParameter;
 		Standard_Real LastParameter();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
+		/****** GeomFill_SnglrFunc::NbIntervals ******/
+		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -6200,8 +6200,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** Period ******************/
-		/**** md5 signature: 88909a321398632744c0d6841580c626 ****/
+		/****** GeomFill_SnglrFunc::Period ******/
+		/****** md5 signature: 88909a321398632744c0d6841580c626 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
@@ -6213,8 +6213,8 @@ No available documentation.
 ") Period;
 		Standard_Real Period();
 
-		/****************** Resolution ******************/
-		/**** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ****/
+		/****** GeomFill_SnglrFunc::Resolution ******/
+		/****** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -6231,8 +6231,8 @@ Returns the parametric resolution corresponding to the real space resolution <r3
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
-		/****************** SetRatio ******************/
-		/**** md5 signature: cc4a35be4cdecff3ce638489af66189a ****/
+		/****** GeomFill_SnglrFunc::SetRatio ******/
+		/****** md5 signature: cc4a35be4cdecff3ce638489af66189a ******/
 		%feature("compactdefaultargs") SetRatio;
 		%feature("autodoc", "
 Parameters
@@ -6249,8 +6249,8 @@ No available documentation.
 ") SetRatio;
 		void SetRatio(const Standard_Real Ratio);
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ****/
+		/****** GeomFill_SnglrFunc::ShallowCopy ******/
+		/****** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -6262,8 +6262,8 @@ Shallow copy of adaptor.
 ") ShallowCopy;
 		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
 
-		/****************** Value ******************/
-		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
+		/****** GeomFill_SnglrFunc::Value ******/
+		/****** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -6296,8 +6296,8 @@ Computes the point of parameter u on the curve.
 ***********************/
 class GeomFill_Sweep {
 	public:
-		/****************** GeomFill_Sweep ******************/
-		/**** md5 signature: ce50089dbc77201f26c276d7fa420f1d ****/
+		/****** GeomFill_Sweep::GeomFill_Sweep ******/
+		/****** md5 signature: ce50089dbc77201f26c276d7fa420f1d ******/
 		%feature("compactdefaultargs") GeomFill_Sweep;
 		%feature("autodoc", "
 Parameters
@@ -6315,8 +6315,8 @@ No available documentation.
 ") GeomFill_Sweep;
 		 GeomFill_Sweep(const opencascade::handle<GeomFill_LocationLaw> & Location, const Standard_Boolean WithKpart = Standard_True);
 
-		/****************** Build ******************/
-		/**** md5 signature: 81671eb89e696302d692cbf60bef48d7 ****/
+		/****** GeomFill_Sweep::Build ******/
+		/****** md5 signature: 81671eb89e696302d692cbf60bef48d7 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "
 Parameters
@@ -6337,8 +6337,8 @@ Build the sweeep surface approxstyle defines approximation strategy - geomfill_s
 ") Build;
 		void Build(const opencascade::handle<GeomFill_SectionLaw> & Section, const GeomFill_ApproxStyle Methode = GeomFill_Location, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Integer Degmax = 10, const Standard_Integer Segmax = 30);
 
-		/****************** ErrorOnRestriction ******************/
-		/**** md5 signature: 13a5e151e0b4b5ded2aaf892b3908f57 ****/
+		/****** GeomFill_Sweep::ErrorOnRestriction ******/
+		/****** md5 signature: 13a5e151e0b4b5ded2aaf892b3908f57 ******/
 		%feature("compactdefaultargs") ErrorOnRestriction;
 		%feature("autodoc", "
 Parameters
@@ -6356,8 +6356,8 @@ Gets the approximation error.
 ") ErrorOnRestriction;
 		void ErrorOnRestriction(const Standard_Boolean IsFirst, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ErrorOnSurface ******************/
-		/**** md5 signature: b6b87ca0efc7814953c22829fefc7f65 ****/
+		/****** GeomFill_Sweep::ErrorOnSurface ******/
+		/****** md5 signature: b6b87ca0efc7814953c22829fefc7f65 ******/
 		%feature("compactdefaultargs") ErrorOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -6369,8 +6369,8 @@ Gets the approximation error.
 ") ErrorOnSurface;
 		Standard_Real ErrorOnSurface();
 
-		/****************** ErrorOnTrace ******************/
-		/**** md5 signature: e1d1b11dd51d8fa33d430dff16f939ce ****/
+		/****** GeomFill_Sweep::ErrorOnTrace ******/
+		/****** md5 signature: e1d1b11dd51d8fa33d430dff16f939ce ******/
 		%feature("compactdefaultargs") ErrorOnTrace;
 		%feature("autodoc", "
 Parameters
@@ -6388,8 +6388,8 @@ Gets the approximation error.
 ") ErrorOnTrace;
 		void ErrorOnTrace(const Standard_Integer IndexOfTrace, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ExchangeUV ******************/
-		/**** md5 signature: b9b6c7f5992ff1ca7ae0d75a331ba2e9 ****/
+		/****** GeomFill_Sweep::ExchangeUV ******/
+		/****** md5 signature: b9b6c7f5992ff1ca7ae0d75a331ba2e9 ******/
 		%feature("compactdefaultargs") ExchangeUV;
 		%feature("autodoc", "Return
 -------
@@ -6401,8 +6401,8 @@ Returns true if sections are u-iso this can be produce in some cases when <withk
 ") ExchangeUV;
 		Standard_Boolean ExchangeUV();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** GeomFill_Sweep::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -6414,8 +6414,8 @@ Tells if the surface is buildt.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NumberOfTrace ******************/
-		/**** md5 signature: b894645ce5dbfa6b6645bffcaaefc219 ****/
+		/****** GeomFill_Sweep::NumberOfTrace ******/
+		/****** md5 signature: b894645ce5dbfa6b6645bffcaaefc219 ******/
 		%feature("compactdefaultargs") NumberOfTrace;
 		%feature("autodoc", "Return
 -------
@@ -6427,8 +6427,8 @@ No available documentation.
 ") NumberOfTrace;
 		Standard_Integer NumberOfTrace();
 
-		/****************** Restriction ******************/
-		/**** md5 signature: 1e847729e33880d2f3dfee7d55da1756 ****/
+		/****** GeomFill_Sweep::Restriction ******/
+		/****** md5 signature: 1e847729e33880d2f3dfee7d55da1756 ******/
 		%feature("compactdefaultargs") Restriction;
 		%feature("autodoc", "
 Parameters
@@ -6445,8 +6445,8 @@ No available documentation.
 ") Restriction;
 		opencascade::handle<Geom2d_Curve> Restriction(const Standard_Boolean IsFirst);
 
-		/****************** SetDomain ******************/
-		/**** md5 signature: cd38e538169c6afd28f46a7bef651d8c ****/
+		/****** GeomFill_Sweep::SetDomain ******/
+		/****** md5 signature: cd38e538169c6afd28f46a7bef651d8c ******/
 		%feature("compactdefaultargs") SetDomain;
 		%feature("autodoc", "
 Parameters
@@ -6466,8 +6466,8 @@ Set parametric information [<first>, <last>] sets the parametric bound of the sw
 ") SetDomain;
 		void SetDomain(const Standard_Real First, const Standard_Real Last, const Standard_Real SectionFirst, const Standard_Real SectionLast);
 
-		/****************** SetForceApproxC1 ******************/
-		/**** md5 signature: ef99bf0713e14fbe9531aef549b5c75b ****/
+		/****** GeomFill_Sweep::SetForceApproxC1 ******/
+		/****** md5 signature: ef99bf0713e14fbe9531aef549b5c75b ******/
 		%feature("compactdefaultargs") SetForceApproxC1;
 		%feature("autodoc", "
 Parameters
@@ -6484,8 +6484,8 @@ Set the flag that indicates attempt to approximate a c1-continuous surface if a 
 ") SetForceApproxC1;
 		void SetForceApproxC1(const Standard_Boolean ForceApproxC1);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: 9b397c9283d7e37feb630a46515777f2 ****/
+		/****** GeomFill_Sweep::SetTolerance ******/
+		/****** md5 signature: 9b397c9283d7e37feb630a46515777f2 ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -6505,8 +6505,8 @@ Set approximation tolerance tol3d: tolerance to surface approximation tol2d: tol
 ") SetTolerance;
 		void SetTolerance(const Standard_Real Tol3d, const Standard_Real BoundTol = 1.0, const Standard_Real Tol2d = 1.0e-5, const Standard_Real TolAngular = 1.0);
 
-		/****************** Surface ******************/
-		/**** md5 signature: 352bd890213763e77e08756c09e1fdcc ****/
+		/****** GeomFill_Sweep::Surface ******/
+		/****** md5 signature: 352bd890213763e77e08756c09e1fdcc ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -6518,8 +6518,8 @@ No available documentation.
 ") Surface;
 		opencascade::handle<Geom_Surface> Surface();
 
-		/****************** Trace ******************/
-		/**** md5 signature: e6371fd3991ead038eaf12d26411dece ****/
+		/****** GeomFill_Sweep::Trace ******/
+		/****** md5 signature: e6371fd3991ead038eaf12d26411dece ******/
 		%feature("compactdefaultargs") Trace;
 		%feature("autodoc", "
 Parameters
@@ -6536,8 +6536,8 @@ No available documentation.
 ") Trace;
 		opencascade::handle<Geom2d_Curve> Trace(const Standard_Integer IndexOfTrace);
 
-		/****************** UReversed ******************/
-		/**** md5 signature: 34ae19eef56aaa441350ad13af311fe2 ****/
+		/****** GeomFill_Sweep::UReversed ******/
+		/****** md5 signature: 34ae19eef56aaa441350ad13af311fe2 ******/
 		%feature("compactdefaultargs") UReversed;
 		%feature("autodoc", "Return
 -------
@@ -6549,8 +6549,8 @@ Returns true if parametrisation sens in u is inverse of parametrisation sens of 
 ") UReversed;
 		Standard_Boolean UReversed();
 
-		/****************** VReversed ******************/
-		/**** md5 signature: 3da7b47a32a00f3b216aa304d3009cba ****/
+		/****** GeomFill_Sweep::VReversed ******/
+		/****** md5 signature: 3da7b47a32a00f3b216aa304d3009cba ******/
 		%feature("compactdefaultargs") VReversed;
 		%feature("autodoc", "Return
 -------
@@ -6576,8 +6576,8 @@ Returns true if parametrisation sens in v is inverse of parametrisation sens of 
 *******************************/
 class GeomFill_SweepFunction : public Approx_SweepFunction {
 	public:
-		/****************** GeomFill_SweepFunction ******************/
-		/**** md5 signature: 352eb55fcdf0347a67f21144e2b992d0 ****/
+		/****** GeomFill_SweepFunction::GeomFill_SweepFunction ******/
+		/****** md5 signature: 352eb55fcdf0347a67f21144e2b992d0 ******/
 		%feature("compactdefaultargs") GeomFill_SweepFunction;
 		%feature("autodoc", "
 Parameters
@@ -6598,8 +6598,8 @@ No available documentation.
 ") GeomFill_SweepFunction;
 		 GeomFill_SweepFunction(const opencascade::handle<GeomFill_SectionLaw> & Section, const opencascade::handle<GeomFill_LocationLaw> & Location, const Standard_Real FirstParameter, const Standard_Real FirstParameterOnS, const Standard_Real RatioParameterOnS);
 
-		/****************** BarycentreOfSurf ******************/
-		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
+		/****** GeomFill_SweepFunction::BarycentreOfSurf ******/
+		/****** md5 signature: a691940df52b45c198f3414d0790e091 ******/
 		%feature("compactdefaultargs") BarycentreOfSurf;
 		%feature("autodoc", "Return
 -------
@@ -6611,8 +6611,8 @@ Get the barycentre of surface. an very poor estimation is sufficient. this infor
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 6e91f38f7b850db44626fcacae37aa41 ****/
+		/****** GeomFill_SweepFunction::D0 ******/
+		/****** md5 signature: 6e91f38f7b850db44626fcacae37aa41 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -6634,8 +6634,8 @@ Compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 2393309f0bc419006f62cbad28865129 ****/
+		/****** GeomFill_SweepFunction::D1 ******/
+		/****** md5 signature: 2393309f0bc419006f62cbad28865129 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -6660,8 +6660,8 @@ Compute the first derivative in v direction of the section for v = param.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 4cdf4be928174877f3da59b3bf48c192 ****/
+		/****** GeomFill_SweepFunction::D2 ******/
+		/****** md5 signature: 4cdf4be928174877f3da59b3bf48c192 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -6689,8 +6689,8 @@ Compute the second derivative in v direction of the section for v = param.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, const Standard_Real First, const Standard_Real Last, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
+		/****** GeomFill_SweepFunction::GetMinimalWeight ******/
+		/****** md5 signature: 36fb20110448cba55b750bc7db93d222 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -6707,8 +6707,8 @@ Compute the minimal value of weight for each poles of all sections. this informa
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: 3f6ec4398981d416a51435f14d7cee22 ****/
+		/****** GeomFill_SweepFunction::GetTolerance ******/
+		/****** md5 signature: 3f6ec4398981d416a51435f14d7cee22 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -6728,8 +6728,8 @@ Returns the tolerance to reach in approximation to respecte boundtol error at th
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_SweepFunction::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -6747,8 +6747,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ****/
+		/****** GeomFill_SweepFunction::IsRational ******/
+		/****** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -6760,8 +6760,8 @@ Returns if the section is rational or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
-		/****************** Knots ******************/
-		/**** md5 signature: 25dbe24e24c953c2c68b0d008e63e5d6 ****/
+		/****** GeomFill_SweepFunction::Knots ******/
+		/****** md5 signature: 25dbe24e24c953c2c68b0d008e63e5d6 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -6778,8 +6778,8 @@ Get the knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** MaximalSection ******************/
-		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
+		/****** GeomFill_SweepFunction::MaximalSection ******/
+		/****** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ******/
 		%feature("compactdefaultargs") MaximalSection;
 		%feature("autodoc", "Return
 -------
@@ -6791,8 +6791,8 @@ Returns the length of the maximum section. this information is useful to perform
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
-		/****************** Mults ******************/
-		/**** md5 signature: 033dc1fab9e10e705c796ffc1e03a44d ****/
+		/****** GeomFill_SweepFunction::Mults ******/
+		/****** md5 signature: 033dc1fab9e10e705c796ffc1e03a44d ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -6809,8 +6809,8 @@ Get the multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** Nb2dCurves ******************/
-		/**** md5 signature: a7d69b59dcf4f7a28533481bfba32ffb ****/
+		/****** GeomFill_SweepFunction::Nb2dCurves ******/
+		/****** md5 signature: a7d69b59dcf4f7a28533481bfba32ffb ******/
 		%feature("compactdefaultargs") Nb2dCurves;
 		%feature("autodoc", "Return
 -------
@@ -6822,8 +6822,8 @@ Get the number of 2d curves to approximate.
 ") Nb2dCurves;
 		virtual Standard_Integer Nb2dCurves();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_SweepFunction::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -6840,8 +6840,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** Resolution ******************/
-		/**** md5 signature: ed5d1e3e2211bf035576b0c56d934522 ****/
+		/****** GeomFill_SweepFunction::Resolution ******/
+		/****** md5 signature: ed5d1e3e2211bf035576b0c56d934522 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -6860,8 +6860,8 @@ Returns the resolutions in the sub-space 2d <index> this information is usfull t
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SectionShape ******************/
-		/**** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ****/
+		/****** GeomFill_SweepFunction::SectionShape ******/
+		/****** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ******/
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "
 Parameters
@@ -6879,8 +6879,8 @@ Get the format of a section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_SweepFunction::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -6898,8 +6898,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: bf0b5b1b4d35ebad7b1b81b0b9b8ba2c ****/
+		/****** GeomFill_SweepFunction::SetTolerance ******/
+		/****** md5 signature: bf0b5b1b4d35ebad7b1b81b0b9b8ba2c ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -6936,8 +6936,8 @@ Is usfull, if (me) have to be run numerical algorithme to perform d0, d1 or d2.
 ************************/
 class GeomFill_Tensor {
 	public:
-		/****************** GeomFill_Tensor ******************/
-		/**** md5 signature: 000a58d4d29e492e0aabe3e1452a182e ****/
+		/****** GeomFill_Tensor::GeomFill_Tensor ******/
+		/****** md5 signature: 000a58d4d29e492e0aabe3e1452a182e ******/
 		%feature("compactdefaultargs") GeomFill_Tensor;
 		%feature("autodoc", "
 Parameters
@@ -6969,8 +6969,8 @@ No available documentation.
             $self->ChangeValue(Row,Col,Mat)=value;
             }
         };
-		/****************** Init ******************/
-		/**** md5 signature: 6aef026ef1fcb18a844e723ac935cd4b ****/
+		/****** GeomFill_Tensor::Init ******/
+		/****** md5 signature: 6aef026ef1fcb18a844e723ac935cd4b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -6987,8 +6987,8 @@ Initialize all the elements of a tensor to initialvalue.
 ") Init;
 		void Init(const Standard_Real InitialValue);
 
-		/****************** Multiply ******************/
-		/**** md5 signature: 1744e84f6795d21ff935088da038d2e5 ****/
+		/****** GeomFill_Tensor::Multiply ******/
+		/****** md5 signature: 1744e84f6795d21ff935088da038d2e5 ******/
 		%feature("compactdefaultargs") Multiply;
 		%feature("autodoc", "
 Parameters
@@ -7006,8 +7006,8 @@ No available documentation.
 ") Multiply;
 		void Multiply(const math_Vector & Right, math_Matrix & Product);
 
-		/****************** Value ******************/
-		/**** md5 signature: fd791f445ff1b5b7d6ca99e04d3b9805 ****/
+		/****** GeomFill_Tensor::Value ******/
+		/****** md5 signature: fd791f445ff1b5b7d6ca99e04d3b9805 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -7041,8 +7041,8 @@ Accesses (in read or write mode) the value of index <row>, <col> and <mat> of a 
 %nodefaultctor GeomFill_TgtField;
 class GeomFill_TgtField : public Standard_Transient {
 	public:
-		/****************** D1 ******************/
-		/**** md5 signature: 7fbff4c14c2799d1ff4bfb28332c2b6c ****/
+		/****** GeomFill_TgtField::D1 ******/
+		/****** md5 signature: 7fbff4c14c2799d1ff4bfb28332c2b6c ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -7059,8 +7059,8 @@ Computes the derivative of the field of tangency at parameter w.
 ") D1;
 		virtual gp_Vec D1(const Standard_Real W);
 
-		/****************** D1 ******************/
-		/**** md5 signature: d71dce235736f311096e4f932871958f ****/
+		/****** GeomFill_TgtField::D1 ******/
+		/****** md5 signature: d71dce235736f311096e4f932871958f ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -7079,8 +7079,8 @@ Computes the value and the derivative of the field of tangency at parameter w.
 ") D1;
 		virtual void D1(const Standard_Real W, gp_Vec & V, gp_Vec & DV);
 
-		/****************** IsScalable ******************/
-		/**** md5 signature: d0bcc01a9a4d8ef8a1917bcff520e752 ****/
+		/****** GeomFill_TgtField::IsScalable ******/
+		/****** md5 signature: d0bcc01a9a4d8ef8a1917bcff520e752 ******/
 		%feature("compactdefaultargs") IsScalable;
 		%feature("autodoc", "Return
 -------
@@ -7092,8 +7092,8 @@ No available documentation.
 ") IsScalable;
 		virtual Standard_Boolean IsScalable();
 
-		/****************** Scale ******************/
-		/**** md5 signature: f0c1f3ce29463e8b8cb8c0b2fa88c037 ****/
+		/****** GeomFill_TgtField::Scale ******/
+		/****** md5 signature: f0c1f3ce29463e8b8cb8c0b2fa88c037 ******/
 		%feature("compactdefaultargs") Scale;
 		%feature("autodoc", "
 Parameters
@@ -7110,8 +7110,8 @@ No available documentation.
 ") Scale;
 		virtual void Scale(const opencascade::handle<Law_BSpline> & Func);
 
-		/****************** Value ******************/
-		/**** md5 signature: 9bacab87e385edc8be267028cb7f46b8 ****/
+		/****** GeomFill_TgtField::Value ******/
+		/****** md5 signature: 9bacab87e385edc8be267028cb7f46b8 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -7145,8 +7145,8 @@ Computes the value of the field of tangency at parameter w.
 %nodefaultctor GeomFill_TrihedronLaw;
 class GeomFill_TrihedronLaw : public Standard_Transient {
 	public:
-		/****************** Copy ******************/
-		/**** md5 signature: 601808d007c14e98b2b54a537528d3e3 ****/
+		/****** GeomFill_TrihedronLaw::Copy ******/
+		/****** md5 signature: 601808d007c14e98b2b54a537528d3e3 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -7158,8 +7158,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_TrihedronLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 13340e73a6729e1ab799d984c9be5508 ****/
+		/****** GeomFill_TrihedronLaw::D0 ******/
+		/****** md5 signature: 13340e73a6729e1ab799d984c9be5508 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -7179,8 +7179,8 @@ Compute triedrhon on curve at parameter <param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
-		/****************** D1 ******************/
-		/**** md5 signature: b5761cd22f011e952e89db7159aa7a9f ****/
+		/****** GeomFill_TrihedronLaw::D1 ******/
+		/****** md5 signature: b5761cd22f011e952e89db7159aa7a9f ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -7203,8 +7203,8 @@ Compute triedrhon and derivative trihedron on curve at parameter <param> warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 6a10a5c6f84e96e0f1ac82eef85cbf5f ****/
+		/****** GeomFill_TrihedronLaw::D2 ******/
+		/****** md5 signature: 6a10a5c6f84e96e0f1ac82eef85cbf5f ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -7230,8 +7230,8 @@ Compute trihedron on curve first and seconde derivatives. warning: it used only 
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
-		/****************** ErrorStatus ******************/
-		/**** md5 signature: 6ba28977b4572c57396a526bbdd7889b ****/
+		/****** GeomFill_TrihedronLaw::ErrorStatus ******/
+		/****** md5 signature: 6ba28977b4572c57396a526bbdd7889b ******/
 		%feature("compactdefaultargs") ErrorStatus;
 		%feature("autodoc", "Return
 -------
@@ -7243,8 +7243,8 @@ Give a status to the law returns pipeok (default implementation).
 ") ErrorStatus;
 		virtual GeomFill_PipeError ErrorStatus();
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: fef62e0a533c49957f58085cc44431be ****/
+		/****** GeomFill_TrihedronLaw::GetAverageLaw ******/
+		/****** md5 signature: fef62e0a533c49957f58085cc44431be ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -7263,8 +7263,8 @@ Get average value of m(t) and v(t) it is usfull to make fast approximation of ra
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
-		/****************** GetInterval ******************/
-		/**** md5 signature: bcc50715ebf5d151a1f9ef097844cbdc ****/
+		/****** GeomFill_TrihedronLaw::GetInterval ******/
+		/****** md5 signature: bcc50715ebf5d151a1f9ef097844cbdc ******/
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "
 Parameters
@@ -7281,8 +7281,8 @@ Gets the bounds of the parametric interval on the function.
 ") GetInterval;
 		void GetInterval(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ****/
+		/****** GeomFill_TrihedronLaw::Intervals ******/
+		/****** md5 signature: 7d2bf038a9213acf1609cc1244a3ee03 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -7300,8 +7300,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 9069188cb3620131a57a89d1f535a3b9 ****/
+		/****** GeomFill_TrihedronLaw::IsConstant ******/
+		/****** md5 signature: 9069188cb3620131a57a89d1f535a3b9 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -7313,8 +7313,8 @@ Say if the law is constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
-		/****************** IsOnlyBy3dCurve ******************/
-		/**** md5 signature: f8d791bc049901655a5239dfa1822db7 ****/
+		/****** GeomFill_TrihedronLaw::IsOnlyBy3dCurve ******/
+		/****** md5 signature: f8d791bc049901655a5239dfa1822db7 ******/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
 		%feature("autodoc", "Return
 -------
@@ -7326,8 +7326,8 @@ Say if the law is defined, only by the 3d geometry of the set curve return false
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ****/
+		/****** GeomFill_TrihedronLaw::NbIntervals ******/
+		/****** md5 signature: cb7f68d4b2c30f29cd5ba6f81443d314 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -7344,8 +7344,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: a1d4a28acef1d51b0f5fb229ea384020 ****/
+		/****** GeomFill_TrihedronLaw::SetCurve ******/
+		/****** md5 signature: a1d4a28acef1d51b0f5fb229ea384020 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -7362,8 +7362,8 @@ Initialize curve of trihedron law return standard_true.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 128fbeb43b59baa5a891a2c4ea58f02a ****/
+		/****** GeomFill_TrihedronLaw::SetInterval ******/
+		/****** md5 signature: 128fbeb43b59baa5a891a2c4ea58f02a ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -7397,8 +7397,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 *******************************/
 class GeomFill_BoundWithSurf : public GeomFill_Boundary {
 	public:
-		/****************** GeomFill_BoundWithSurf ******************/
-		/**** md5 signature: d054c1079b9edcd7cb9b4e65d2b74232 ****/
+		/****** GeomFill_BoundWithSurf::GeomFill_BoundWithSurf ******/
+		/****** md5 signature: d054c1079b9edcd7cb9b4e65d2b74232 ******/
 		%feature("compactdefaultargs") GeomFill_BoundWithSurf;
 		%feature("autodoc", "
 Parameters
@@ -7417,8 +7417,8 @@ Constructs a boundary object defined by the 3d curve curveonsurf. the surface to
 ") GeomFill_BoundWithSurf;
 		 GeomFill_BoundWithSurf(const Adaptor3d_CurveOnSurface & CurveOnSurf, const Standard_Real Tol3d, const Standard_Real Tolang);
 
-		/****************** Bounds ******************/
-		/**** md5 signature: 618f7ac8e8773975015964105699f46f ****/
+		/****** GeomFill_BoundWithSurf::Bounds ******/
+		/****** md5 signature: 618f7ac8e8773975015964105699f46f ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -7435,8 +7435,8 @@ No available documentation.
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ****/
+		/****** GeomFill_BoundWithSurf::D1 ******/
+		/****** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -7455,8 +7455,8 @@ No available documentation.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
-		/****************** D1Norm ******************/
-		/**** md5 signature: eae6b219d51a14ef99ea0d96ffa245af ****/
+		/****** GeomFill_BoundWithSurf::D1Norm ******/
+		/****** md5 signature: eae6b219d51a14ef99ea0d96ffa245af ******/
 		%feature("compactdefaultargs") D1Norm;
 		%feature("autodoc", "
 Parameters
@@ -7475,8 +7475,8 @@ No available documentation.
 ") D1Norm;
 		virtual void D1Norm(const Standard_Real U, gp_Vec & N, gp_Vec & DN);
 
-		/****************** HasNormals ******************/
-		/**** md5 signature: 6931d1f66362c6d45d4df1056914318c ****/
+		/****** GeomFill_BoundWithSurf::HasNormals ******/
+		/****** md5 signature: 6931d1f66362c6d45d4df1056914318c ******/
 		%feature("compactdefaultargs") HasNormals;
 		%feature("autodoc", "Return
 -------
@@ -7488,8 +7488,8 @@ No available documentation.
 ") HasNormals;
 		virtual Standard_Boolean HasNormals();
 
-		/****************** IsDegenerated ******************/
-		/**** md5 signature: 79ce66385cf4dd5e407488fd7c6a2ef0 ****/
+		/****** GeomFill_BoundWithSurf::IsDegenerated ******/
+		/****** md5 signature: 79ce66385cf4dd5e407488fd7c6a2ef0 ******/
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "Return
 -------
@@ -7501,8 +7501,8 @@ No available documentation.
 ") IsDegenerated;
 		Standard_Boolean IsDegenerated();
 
-		/****************** Norm ******************/
-		/**** md5 signature: 8ec9451193b200cdc07951b55f2348bd ****/
+		/****** GeomFill_BoundWithSurf::Norm ******/
+		/****** md5 signature: 8ec9451193b200cdc07951b55f2348bd ******/
 		%feature("compactdefaultargs") Norm;
 		%feature("autodoc", "
 Parameters
@@ -7519,8 +7519,8 @@ No available documentation.
 ") Norm;
 		virtual gp_Vec Norm(const Standard_Real U);
 
-		/****************** Reparametrize ******************/
-		/**** md5 signature: bd7b671d45505164bc59f6ce8496d6d0 ****/
+		/****** GeomFill_BoundWithSurf::Reparametrize ******/
+		/****** md5 signature: bd7b671d45505164bc59f6ce8496d6d0 ******/
 		%feature("compactdefaultargs") Reparametrize;
 		%feature("autodoc", "
 Parameters
@@ -7543,8 +7543,8 @@ No available documentation.
 ") Reparametrize;
 		void Reparametrize(const Standard_Real First, const Standard_Real Last, const Standard_Boolean HasDF, const Standard_Boolean HasDL, const Standard_Real DF, const Standard_Real DL, const Standard_Boolean Rev);
 
-		/****************** Value ******************/
-		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
+		/****** GeomFill_BoundWithSurf::Value ******/
+		/****** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -7577,8 +7577,8 @@ No available documentation.
 **********************************/
 class GeomFill_ConstantBiNormal : public GeomFill_TrihedronLaw {
 	public:
-		/****************** GeomFill_ConstantBiNormal ******************/
-		/**** md5 signature: 8343818ff749757501766023742e5008 ****/
+		/****** GeomFill_ConstantBiNormal::GeomFill_ConstantBiNormal ******/
+		/****** md5 signature: 8343818ff749757501766023742e5008 ******/
 		%feature("compactdefaultargs") GeomFill_ConstantBiNormal;
 		%feature("autodoc", "
 Parameters
@@ -7595,8 +7595,8 @@ No available documentation.
 ") GeomFill_ConstantBiNormal;
 		 GeomFill_ConstantBiNormal(const gp_Dir & BiNormal);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
+		/****** GeomFill_ConstantBiNormal::Copy ******/
+		/****** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -7608,8 +7608,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_TrihedronLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ****/
+		/****** GeomFill_ConstantBiNormal::D0 ******/
+		/****** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -7629,8 +7629,8 @@ Computes triedrhon on curve at parameter <param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
+		/****** GeomFill_ConstantBiNormal::D1 ******/
+		/****** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -7653,8 +7653,8 @@ Computes triedrhon and derivative trihedron on curve at parameter <param> warnin
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
+		/****** GeomFill_ConstantBiNormal::D2 ******/
+		/****** md5 signature: e308ebcce924017ac2cd5d4701d10219 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -7680,8 +7680,8 @@ Compute trihedron on curve first and seconde derivatives. warning: it used only 
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ****/
+		/****** GeomFill_ConstantBiNormal::GetAverageLaw ******/
+		/****** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -7700,8 +7700,8 @@ Gets average value of tangent(t) and normal(t) it is usfull to make fast approxi
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_ConstantBiNormal::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -7719,8 +7719,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ****/
+		/****** GeomFill_ConstantBiNormal::IsConstant ******/
+		/****** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -7732,8 +7732,8 @@ Says if the law is constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
-		/****************** IsOnlyBy3dCurve ******************/
-		/**** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ****/
+		/****** GeomFill_ConstantBiNormal::IsOnlyBy3dCurve ******/
+		/****** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ******/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
 		%feature("autodoc", "Return
 -------
@@ -7745,8 +7745,8 @@ Return true.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_ConstantBiNormal::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -7763,8 +7763,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
+		/****** GeomFill_ConstantBiNormal::SetCurve ******/
+		/****** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -7797,8 +7797,8 @@ Initialize curve of trihedron law return standard_true in case if execution end 
 ***********************/
 class GeomFill_Coons : public GeomFill_Filling {
 	public:
-		/****************** GeomFill_Coons ******************/
-		/**** md5 signature: 3e7ce345fdc4339d51a4f1830d2d4a10 ****/
+		/****** GeomFill_Coons::GeomFill_Coons ******/
+		/****** md5 signature: 3e7ce345fdc4339d51a4f1830d2d4a10 ******/
 		%feature("compactdefaultargs") GeomFill_Coons;
 		%feature("autodoc", "Return
 -------
@@ -7810,8 +7810,8 @@ No available documentation.
 ") GeomFill_Coons;
 		 GeomFill_Coons();
 
-		/****************** GeomFill_Coons ******************/
-		/**** md5 signature: d3ed2c1d3406214cebf52159644ee665 ****/
+		/****** GeomFill_Coons::GeomFill_Coons ******/
+		/****** md5 signature: d3ed2c1d3406214cebf52159644ee665 ******/
 		%feature("compactdefaultargs") GeomFill_Coons;
 		%feature("autodoc", "
 Parameters
@@ -7831,8 +7831,8 @@ No available documentation.
 ") GeomFill_Coons;
 		 GeomFill_Coons(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
-		/****************** GeomFill_Coons ******************/
-		/**** md5 signature: cbef7bb663e9994379c9aab840ba0fd0 ****/
+		/****** GeomFill_Coons::GeomFill_Coons ******/
+		/****** md5 signature: cbef7bb663e9994379c9aab840ba0fd0 ******/
 		%feature("compactdefaultargs") GeomFill_Coons;
 		%feature("autodoc", "
 Parameters
@@ -7856,8 +7856,8 @@ No available documentation.
 ") GeomFill_Coons;
 		 GeomFill_Coons(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2, const TColStd_Array1OfReal & W3, const TColStd_Array1OfReal & W4);
 
-		/****************** Init ******************/
-		/**** md5 signature: d3ffe113a485ff934a537831bed2560b ****/
+		/****** GeomFill_Coons::Init ******/
+		/****** md5 signature: d3ffe113a485ff934a537831bed2560b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7877,8 +7877,8 @@ No available documentation.
 ") Init;
 		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
-		/****************** Init ******************/
-		/**** md5 signature: 094f730897c039878a8e655c32e65678 ****/
+		/****** GeomFill_Coons::Init ******/
+		/****** md5 signature: 094f730897c039878a8e655c32e65678 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -7916,8 +7916,8 @@ No available documentation.
 *********************************/
 class GeomFill_CorrectedFrenet : public GeomFill_TrihedronLaw {
 	public:
-		/****************** GeomFill_CorrectedFrenet ******************/
-		/**** md5 signature: d76c98f61ce89e9ec82b5b957281f8d0 ****/
+		/****** GeomFill_CorrectedFrenet::GeomFill_CorrectedFrenet ******/
+		/****** md5 signature: d76c98f61ce89e9ec82b5b957281f8d0 ******/
 		%feature("compactdefaultargs") GeomFill_CorrectedFrenet;
 		%feature("autodoc", "Return
 -------
@@ -7929,8 +7929,8 @@ No available documentation.
 ") GeomFill_CorrectedFrenet;
 		 GeomFill_CorrectedFrenet();
 
-		/****************** GeomFill_CorrectedFrenet ******************/
-		/**** md5 signature: ca99dabed4feeef737a90b4a039cdf77 ****/
+		/****** GeomFill_CorrectedFrenet::GeomFill_CorrectedFrenet ******/
+		/****** md5 signature: ca99dabed4feeef737a90b4a039cdf77 ******/
 		%feature("compactdefaultargs") GeomFill_CorrectedFrenet;
 		%feature("autodoc", "
 Parameters
@@ -7947,8 +7947,8 @@ No available documentation.
 ") GeomFill_CorrectedFrenet;
 		 GeomFill_CorrectedFrenet(const Standard_Boolean ForEvaluation);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
+		/****** GeomFill_CorrectedFrenet::Copy ******/
+		/****** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -7960,8 +7960,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_TrihedronLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ****/
+		/****** GeomFill_CorrectedFrenet::D0 ******/
+		/****** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -7981,8 +7981,8 @@ Compute triedrhon on curve at parameter <param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
+		/****** GeomFill_CorrectedFrenet::D1 ******/
+		/****** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -8005,8 +8005,8 @@ Compute triedrhon and derivative trihedron on curve at parameter <param> warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
+		/****** GeomFill_CorrectedFrenet::D2 ******/
+		/****** md5 signature: e308ebcce924017ac2cd5d4701d10219 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -8032,8 +8032,8 @@ Compute trihedron on curve first and seconde derivatives. warning: it used only 
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
-		/****************** EvaluateBestMode ******************/
-		/**** md5 signature: d239be0fafe7316fa059e4a41d53d45f ****/
+		/****** GeomFill_CorrectedFrenet::EvaluateBestMode ******/
+		/****** md5 signature: d239be0fafe7316fa059e4a41d53d45f ******/
 		%feature("compactdefaultargs") EvaluateBestMode;
 		%feature("autodoc", "Return
 -------
@@ -8045,8 +8045,8 @@ Tries to define the best trihedron mode for the curve. it can be: - frenet - cor
 ") EvaluateBestMode;
 		GeomFill_Trihedron EvaluateBestMode();
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ****/
+		/****** GeomFill_CorrectedFrenet::GetAverageLaw ******/
+		/****** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -8065,8 +8065,8 @@ Get average value of tangent(t) and normal(t) it is usfull to make fast approxim
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_CorrectedFrenet::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -8084,8 +8084,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ****/
+		/****** GeomFill_CorrectedFrenet::IsConstant ******/
+		/****** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -8097,8 +8097,8 @@ Say if the law is constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
-		/****************** IsOnlyBy3dCurve ******************/
-		/**** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ****/
+		/****** GeomFill_CorrectedFrenet::IsOnlyBy3dCurve ******/
+		/****** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ******/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
 		%feature("autodoc", "Return
 -------
@@ -8110,8 +8110,8 @@ Return true.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_CorrectedFrenet::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -8128,8 +8128,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
+		/****** GeomFill_CorrectedFrenet::SetCurve ******/
+		/****** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -8146,8 +8146,8 @@ Initialize curve of frenet law return standard_true in case if execution end cor
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_CorrectedFrenet::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -8181,8 +8181,8 @@ No available documentation.
 ***********************************/
 class GeomFill_CurveAndTrihedron : public GeomFill_LocationLaw {
 	public:
-		/****************** GeomFill_CurveAndTrihedron ******************/
-		/**** md5 signature: bd832d5dba5dd09f0cd75b38254e98a1 ****/
+		/****** GeomFill_CurveAndTrihedron::GeomFill_CurveAndTrihedron ******/
+		/****** md5 signature: bd832d5dba5dd09f0cd75b38254e98a1 ******/
 		%feature("compactdefaultargs") GeomFill_CurveAndTrihedron;
 		%feature("autodoc", "
 Parameters
@@ -8199,8 +8199,8 @@ No available documentation.
 ") GeomFill_CurveAndTrihedron;
 		 GeomFill_CurveAndTrihedron(const opencascade::handle<GeomFill_TrihedronLaw> & Trihedron);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 6211f5514688258100f0ea82262b2f4b ****/
+		/****** GeomFill_CurveAndTrihedron::Copy ******/
+		/****** md5 signature: 6211f5514688258100f0ea82262b2f4b ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -8212,8 +8212,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_LocationLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 316ea693fc5dcb4b89eef4bd219d0f5e ****/
+		/****** GeomFill_CurveAndTrihedron::D0 ******/
+		/****** md5 signature: 316ea693fc5dcb4b89eef4bd219d0f5e ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -8232,8 +8232,8 @@ Compute location and 2d points.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 924a51426e408dff0c68c8625c80f165 ****/
+		/****** GeomFill_CurveAndTrihedron::D0 ******/
+		/****** md5 signature: 924a51426e408dff0c68c8625c80f165 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -8253,8 +8253,8 @@ Compute location and 2d points.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 288bb22d14e06a66281554b33f433d63 ****/
+		/****** GeomFill_CurveAndTrihedron::D1 ******/
+		/****** md5 signature: 288bb22d14e06a66281554b33f433d63 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -8277,8 +8277,8 @@ Compute location 2d points and associated first derivatives. warning: it used on
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 940621cc935757a0b177b16f7cd72d05 ****/
+		/****** GeomFill_CurveAndTrihedron::D2 ******/
+		/****** md5 signature: 940621cc935757a0b177b16f7cd72d05 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -8304,8 +8304,8 @@ Compute location 2d points and associated first and seconde derivatives. warning
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: c8399d110fc93e54f7a94c0255e22682 ****/
+		/****** GeomFill_CurveAndTrihedron::GetAverageLaw ******/
+		/****** md5 signature: c8399d110fc93e54f7a94c0255e22682 ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -8323,8 +8323,8 @@ Get average value of m(t) and v(t) it is usfull to make fast approximation of ra
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
-		/****************** GetCurve ******************/
-		/**** md5 signature: b5470ee2464d4db2182ec23b2a5e7e7f ****/
+		/****** GeomFill_CurveAndTrihedron::GetCurve ******/
+		/****** md5 signature: b5470ee2464d4db2182ec23b2a5e7e7f ******/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "Return
 -------
@@ -8336,8 +8336,8 @@ No available documentation.
 ") GetCurve;
 		virtual const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
-		/****************** GetDomain ******************/
-		/**** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ****/
+		/****** GeomFill_CurveAndTrihedron::GetDomain ******/
+		/****** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ******/
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "
 Parameters
@@ -8354,8 +8354,8 @@ Gets the bounds of the function parametric domain. warning: this domain it is no
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetInterval ******************/
-		/**** md5 signature: 5025922809e891f5aa8a2358198f31e4 ****/
+		/****** GeomFill_CurveAndTrihedron::GetInterval ******/
+		/****** md5 signature: 5025922809e891f5aa8a2358198f31e4 ******/
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "
 Parameters
@@ -8372,8 +8372,8 @@ Gets the bounds of the parametric interval on the function.
 ") GetInterval;
 		virtual void GetInterval(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetMaximalNorm ******************/
-		/**** md5 signature: d33bcb5496370d9914e70fb48ea83d28 ****/
+		/****** GeomFill_CurveAndTrihedron::GetMaximalNorm ******/
+		/****** md5 signature: d33bcb5496370d9914e70fb48ea83d28 ******/
 		%feature("compactdefaultargs") GetMaximalNorm;
 		%feature("autodoc", "Return
 -------
@@ -8385,8 +8385,8 @@ Get the maximum norm of the matrix-location part. it is usful to find an good to
 ") GetMaximalNorm;
 		virtual Standard_Real GetMaximalNorm();
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_CurveAndTrihedron::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -8404,8 +8404,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRotation ******************/
-		/**** md5 signature: 69c76c5168e987b8419ad259813fc9af ****/
+		/****** GeomFill_CurveAndTrihedron::IsRotation ******/
+		/****** md5 signature: 69c76c5168e987b8419ad259813fc9af ******/
 		%feature("compactdefaultargs") IsRotation;
 		%feature("autodoc", "
 Parameters
@@ -8421,8 +8421,8 @@ Say if the location law, is a rotation of location the default implementation is
 ") IsRotation;
 		virtual Standard_Boolean IsRotation(Standard_Real &OutValue);
 
-		/****************** IsTranslation ******************/
-		/**** md5 signature: 4064d79964f3a03428b0eb9740c21e0f ****/
+		/****** GeomFill_CurveAndTrihedron::IsTranslation ******/
+		/****** md5 signature: 4064d79964f3a03428b0eb9740c21e0f ******/
 		%feature("compactdefaultargs") IsTranslation;
 		%feature("autodoc", "
 Parameters
@@ -8438,8 +8438,8 @@ Say if the location law, is an translation of location the default implementatio
 ") IsTranslation;
 		virtual Standard_Boolean IsTranslation(Standard_Real &OutValue);
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_CurveAndTrihedron::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -8456,8 +8456,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** Rotation ******************/
-		/**** md5 signature: b76821e717ce4d2049156bbde7eb7114 ****/
+		/****** GeomFill_CurveAndTrihedron::Rotation ******/
+		/****** md5 signature: b76821e717ce4d2049156bbde7eb7114 ******/
 		%feature("compactdefaultargs") Rotation;
 		%feature("autodoc", "
 Parameters
@@ -8474,8 +8474,8 @@ No available documentation.
 ") Rotation;
 		virtual void Rotation(gp_Pnt & Center);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
+		/****** GeomFill_CurveAndTrihedron::SetCurve ******/
+		/****** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -8492,8 +8492,8 @@ Initialize curve of trihedron law return standard_true in case if execution end 
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_CurveAndTrihedron::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -8511,8 +8511,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
-		/****************** SetTrsf ******************/
-		/**** md5 signature: 52b4e29e16b9b86f3d7835907847b3d0 ****/
+		/****** GeomFill_CurveAndTrihedron::SetTrsf ******/
+		/****** md5 signature: 52b4e29e16b9b86f3d7835907847b3d0 ******/
 		%feature("compactdefaultargs") SetTrsf;
 		%feature("autodoc", "
 Parameters
@@ -8545,8 +8545,8 @@ Set a transformation matrix like the law m(t) become mat * m(t).
 ************************/
 class GeomFill_Curved : public GeomFill_Filling {
 	public:
-		/****************** GeomFill_Curved ******************/
-		/**** md5 signature: 6c0f36b4961d5e44a2bcde6567edd42e ****/
+		/****** GeomFill_Curved::GeomFill_Curved ******/
+		/****** md5 signature: 6c0f36b4961d5e44a2bcde6567edd42e ******/
 		%feature("compactdefaultargs") GeomFill_Curved;
 		%feature("autodoc", "Return
 -------
@@ -8558,8 +8558,8 @@ No available documentation.
 ") GeomFill_Curved;
 		 GeomFill_Curved();
 
-		/****************** GeomFill_Curved ******************/
-		/**** md5 signature: eddcfa7b1fc9058a685f65fa4e4f0c91 ****/
+		/****** GeomFill_Curved::GeomFill_Curved ******/
+		/****** md5 signature: eddcfa7b1fc9058a685f65fa4e4f0c91 ******/
 		%feature("compactdefaultargs") GeomFill_Curved;
 		%feature("autodoc", "
 Parameters
@@ -8579,8 +8579,8 @@ No available documentation.
 ") GeomFill_Curved;
 		 GeomFill_Curved(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
-		/****************** GeomFill_Curved ******************/
-		/**** md5 signature: f2ed21eacfd772c7afd8f10da79331b7 ****/
+		/****** GeomFill_Curved::GeomFill_Curved ******/
+		/****** md5 signature: f2ed21eacfd772c7afd8f10da79331b7 ******/
 		%feature("compactdefaultargs") GeomFill_Curved;
 		%feature("autodoc", "
 Parameters
@@ -8604,8 +8604,8 @@ No available documentation.
 ") GeomFill_Curved;
 		 GeomFill_Curved(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2, const TColStd_Array1OfReal & W3, const TColStd_Array1OfReal & W4);
 
-		/****************** GeomFill_Curved ******************/
-		/**** md5 signature: b8dc04ce3e1f65428d7efb97fba9cc9b ****/
+		/****** GeomFill_Curved::GeomFill_Curved ******/
+		/****** md5 signature: b8dc04ce3e1f65428d7efb97fba9cc9b ******/
 		%feature("compactdefaultargs") GeomFill_Curved;
 		%feature("autodoc", "
 Parameters
@@ -8623,8 +8623,8 @@ No available documentation.
 ") GeomFill_Curved;
 		 GeomFill_Curved(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2);
 
-		/****************** GeomFill_Curved ******************/
-		/**** md5 signature: 006a3e85ffd95781c1e9baa1fbb76176 ****/
+		/****** GeomFill_Curved::GeomFill_Curved ******/
+		/****** md5 signature: 006a3e85ffd95781c1e9baa1fbb76176 ******/
 		%feature("compactdefaultargs") GeomFill_Curved;
 		%feature("autodoc", "
 Parameters
@@ -8644,8 +8644,8 @@ No available documentation.
 ") GeomFill_Curved;
 		 GeomFill_Curved(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2);
 
-		/****************** Init ******************/
-		/**** md5 signature: d3ffe113a485ff934a537831bed2560b ****/
+		/****** GeomFill_Curved::Init ******/
+		/****** md5 signature: d3ffe113a485ff934a537831bed2560b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8665,8 +8665,8 @@ No available documentation.
 ") Init;
 		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
-		/****************** Init ******************/
-		/**** md5 signature: 094f730897c039878a8e655c32e65678 ****/
+		/****** GeomFill_Curved::Init ******/
+		/****** md5 signature: 094f730897c039878a8e655c32e65678 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8690,8 +8690,8 @@ No available documentation.
 ") Init;
 		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2, const TColStd_Array1OfReal & W3, const TColStd_Array1OfReal & W4);
 
-		/****************** Init ******************/
-		/**** md5 signature: f6ef827de0cf3ac234bbfb173cd78cfe ****/
+		/****** GeomFill_Curved::Init ******/
+		/****** md5 signature: f6ef827de0cf3ac234bbfb173cd78cfe ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8709,8 +8709,8 @@ No available documentation.
 ") Init;
 		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2);
 
-		/****************** Init ******************/
-		/**** md5 signature: 0bfe4b6915157b1607faa578cfa286ef ****/
+		/****** GeomFill_Curved::Init ******/
+		/****** md5 signature: 0bfe4b6915157b1607faa578cfa286ef ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -8744,8 +8744,8 @@ No available documentation.
 *************************/
 class GeomFill_Darboux : public GeomFill_TrihedronLaw {
 	public:
-		/****************** GeomFill_Darboux ******************/
-		/**** md5 signature: 5873413a2d8edcecd0fc7983a15a6a0d ****/
+		/****** GeomFill_Darboux::GeomFill_Darboux ******/
+		/****** md5 signature: 5873413a2d8edcecd0fc7983a15a6a0d ******/
 		%feature("compactdefaultargs") GeomFill_Darboux;
 		%feature("autodoc", "Return
 -------
@@ -8757,8 +8757,8 @@ No available documentation.
 ") GeomFill_Darboux;
 		 GeomFill_Darboux();
 
-		/****************** Copy ******************/
-		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
+		/****** GeomFill_Darboux::Copy ******/
+		/****** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -8770,8 +8770,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_TrihedronLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ****/
+		/****** GeomFill_Darboux::D0 ******/
+		/****** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -8791,8 +8791,8 @@ Compute triedrhon on curve at parameter <param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
+		/****** GeomFill_Darboux::D1 ******/
+		/****** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -8815,8 +8815,8 @@ Compute triedrhon and derivative trihedron on curve at parameter <param> warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
+		/****** GeomFill_Darboux::D2 ******/
+		/****** md5 signature: e308ebcce924017ac2cd5d4701d10219 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -8842,8 +8842,8 @@ Compute trihedron on curve first and seconde derivatives. warning: it used only 
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ****/
+		/****** GeomFill_Darboux::GetAverageLaw ******/
+		/****** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -8862,8 +8862,8 @@ Get average value of tangent(t) and normal(t) it is usfull to make fast approxim
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_Darboux::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -8881,8 +8881,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ****/
+		/****** GeomFill_Darboux::IsConstant ******/
+		/****** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -8894,8 +8894,8 @@ Say if the law is constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
-		/****************** IsOnlyBy3dCurve ******************/
-		/**** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ****/
+		/****** GeomFill_Darboux::IsOnlyBy3dCurve ******/
+		/****** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ******/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
 		%feature("autodoc", "Return
 -------
@@ -8907,8 +8907,8 @@ Return false.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_Darboux::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -8941,8 +8941,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 **********************************/
 class GeomFill_DegeneratedBound : public GeomFill_Boundary {
 	public:
-		/****************** GeomFill_DegeneratedBound ******************/
-		/**** md5 signature: f676839e48e6a57f125f5a1250ca4763 ****/
+		/****** GeomFill_DegeneratedBound::GeomFill_DegeneratedBound ******/
+		/****** md5 signature: f676839e48e6a57f125f5a1250ca4763 ******/
 		%feature("compactdefaultargs") GeomFill_DegeneratedBound;
 		%feature("autodoc", "
 Parameters
@@ -8963,8 +8963,8 @@ No available documentation.
 ") GeomFill_DegeneratedBound;
 		 GeomFill_DegeneratedBound(const gp_Pnt & Point, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol3d, const Standard_Real Tolang);
 
-		/****************** Bounds ******************/
-		/**** md5 signature: 618f7ac8e8773975015964105699f46f ****/
+		/****** GeomFill_DegeneratedBound::Bounds ******/
+		/****** md5 signature: 618f7ac8e8773975015964105699f46f ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -8981,8 +8981,8 @@ No available documentation.
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ****/
+		/****** GeomFill_DegeneratedBound::D1 ******/
+		/****** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -9001,8 +9001,8 @@ No available documentation.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
-		/****************** IsDegenerated ******************/
-		/**** md5 signature: 79ce66385cf4dd5e407488fd7c6a2ef0 ****/
+		/****** GeomFill_DegeneratedBound::IsDegenerated ******/
+		/****** md5 signature: 79ce66385cf4dd5e407488fd7c6a2ef0 ******/
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "Return
 -------
@@ -9014,8 +9014,8 @@ No available documentation.
 ") IsDegenerated;
 		Standard_Boolean IsDegenerated();
 
-		/****************** Reparametrize ******************/
-		/**** md5 signature: bd7b671d45505164bc59f6ce8496d6d0 ****/
+		/****** GeomFill_DegeneratedBound::Reparametrize ******/
+		/****** md5 signature: bd7b671d45505164bc59f6ce8496d6d0 ******/
 		%feature("compactdefaultargs") Reparametrize;
 		%feature("autodoc", "
 Parameters
@@ -9038,8 +9038,8 @@ No available documentation.
 ") Reparametrize;
 		void Reparametrize(const Standard_Real First, const Standard_Real Last, const Standard_Boolean HasDF, const Standard_Boolean HasDL, const Standard_Real DF, const Standard_Real DL, const Standard_Boolean Rev);
 
-		/****************** Value ******************/
-		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
+		/****** GeomFill_DegeneratedBound::Value ******/
+		/****** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -9072,8 +9072,8 @@ No available documentation.
 ***********************************/
 class GeomFill_DiscreteTrihedron : public GeomFill_TrihedronLaw {
 	public:
-		/****************** GeomFill_DiscreteTrihedron ******************/
-		/**** md5 signature: 76fb1e45ad1e1d3ab57dc791e8e6458c ****/
+		/****** GeomFill_DiscreteTrihedron::GeomFill_DiscreteTrihedron ******/
+		/****** md5 signature: 76fb1e45ad1e1d3ab57dc791e8e6458c ******/
 		%feature("compactdefaultargs") GeomFill_DiscreteTrihedron;
 		%feature("autodoc", "Return
 -------
@@ -9085,8 +9085,8 @@ No available documentation.
 ") GeomFill_DiscreteTrihedron;
 		 GeomFill_DiscreteTrihedron();
 
-		/****************** Copy ******************/
-		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
+		/****** GeomFill_DiscreteTrihedron::Copy ******/
+		/****** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -9098,8 +9098,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_TrihedronLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ****/
+		/****** GeomFill_DiscreteTrihedron::D0 ******/
+		/****** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -9119,8 +9119,8 @@ Compute trihedron on curve at parameter <param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
+		/****** GeomFill_DiscreteTrihedron::D1 ******/
+		/****** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -9143,8 +9143,8 @@ Compute trihedron and derivative trihedron on curve at parameter <param> warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
+		/****** GeomFill_DiscreteTrihedron::D2 ******/
+		/****** md5 signature: e308ebcce924017ac2cd5d4701d10219 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -9170,8 +9170,8 @@ Compute trihedron on curve first and seconde derivatives. warning: it used only 
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ****/
+		/****** GeomFill_DiscreteTrihedron::GetAverageLaw ******/
+		/****** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -9190,8 +9190,8 @@ Get average value of tangent(t) and normal(t) it is usful to make fast approxima
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
-		/****************** Init ******************/
-		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
+		/****** GeomFill_DiscreteTrihedron::Init ******/
+		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -9203,8 +9203,8 @@ No available documentation.
 ") Init;
 		void Init();
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_DiscreteTrihedron::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -9222,8 +9222,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ****/
+		/****** GeomFill_DiscreteTrihedron::IsConstant ******/
+		/****** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -9235,8 +9235,8 @@ Say if the law is constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
-		/****************** IsOnlyBy3dCurve ******************/
-		/**** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ****/
+		/****** GeomFill_DiscreteTrihedron::IsOnlyBy3dCurve ******/
+		/****** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ******/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
 		%feature("autodoc", "Return
 -------
@@ -9248,8 +9248,8 @@ Return true.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_DiscreteTrihedron::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -9266,8 +9266,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
+		/****** GeomFill_DiscreteTrihedron::SetCurve ******/
+		/****** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -9300,8 +9300,8 @@ Initialize curve of trihedron law return standard_true in case if execution end 
 ********************************/
 class GeomFill_DraftTrihedron : public GeomFill_TrihedronLaw {
 	public:
-		/****************** GeomFill_DraftTrihedron ******************/
-		/**** md5 signature: 729e35bd4c91cccae626d88982c0923e ****/
+		/****** GeomFill_DraftTrihedron::GeomFill_DraftTrihedron ******/
+		/****** md5 signature: 729e35bd4c91cccae626d88982c0923e ******/
 		%feature("compactdefaultargs") GeomFill_DraftTrihedron;
 		%feature("autodoc", "
 Parameters
@@ -9319,8 +9319,8 @@ No available documentation.
 ") GeomFill_DraftTrihedron;
 		 GeomFill_DraftTrihedron(const gp_Vec & BiNormal, const Standard_Real Angle);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
+		/****** GeomFill_DraftTrihedron::Copy ******/
+		/****** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -9332,8 +9332,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_TrihedronLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ****/
+		/****** GeomFill_DraftTrihedron::D0 ******/
+		/****** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -9353,8 +9353,8 @@ Compute triedrhon and derivative trihedron on curve at parameter <param> warning
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
+		/****** GeomFill_DraftTrihedron::D1 ******/
+		/****** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -9377,8 +9377,8 @@ Compute trihedron on curve first and seconde derivatives. warning: it used only 
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
+		/****** GeomFill_DraftTrihedron::D2 ******/
+		/****** md5 signature: e308ebcce924017ac2cd5d4701d10219 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -9404,8 +9404,8 @@ No available documentation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ****/
+		/****** GeomFill_DraftTrihedron::GetAverageLaw ******/
+		/****** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -9424,8 +9424,8 @@ Get average value of tangent(t) and normal(t) it is useful to make fast approxim
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_DraftTrihedron::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -9443,8 +9443,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ****/
+		/****** GeomFill_DraftTrihedron::IsConstant ******/
+		/****** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -9456,8 +9456,8 @@ Say if the law is constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
-		/****************** IsOnlyBy3dCurve ******************/
-		/**** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ****/
+		/****** GeomFill_DraftTrihedron::IsOnlyBy3dCurve ******/
+		/****** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ******/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
 		%feature("autodoc", "Return
 -------
@@ -9469,8 +9469,8 @@ Return true.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_DraftTrihedron::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -9487,8 +9487,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SetAngle ******************/
-		/**** md5 signature: a0d60e2a1ea25c193dafa15194b0ab24 ****/
+		/****** GeomFill_DraftTrihedron::SetAngle ******/
+		/****** md5 signature: a0d60e2a1ea25c193dafa15194b0ab24 ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
@@ -9521,8 +9521,8 @@ No available documentation.
 ********************************/
 class GeomFill_EvolvedSection : public GeomFill_SectionLaw {
 	public:
-		/****************** GeomFill_EvolvedSection ******************/
-		/**** md5 signature: 5316bbaca3d5924b7b79d5ad0d098294 ****/
+		/****** GeomFill_EvolvedSection::GeomFill_EvolvedSection ******/
+		/****** md5 signature: 5316bbaca3d5924b7b79d5ad0d098294 ******/
 		%feature("compactdefaultargs") GeomFill_EvolvedSection;
 		%feature("autodoc", "
 Parameters
@@ -9540,8 +9540,8 @@ Make an sectionlaw with a curve and a real law.
 ") GeomFill_EvolvedSection;
 		 GeomFill_EvolvedSection(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Law_Function> & L);
 
-		/****************** BSplineSurface ******************/
-		/**** md5 signature: 723eb488e2a06d913977b581dcccba8f ****/
+		/****** GeomFill_EvolvedSection::BSplineSurface ******/
+		/****** md5 signature: 723eb488e2a06d913977b581dcccba8f ******/
 		%feature("compactdefaultargs") BSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -9553,8 +9553,8 @@ Give if possible an bspline surface, like iso-v are the section. if it is not po
 ") BSplineSurface;
 		virtual opencascade::handle<Geom_BSplineSurface> BSplineSurface();
 
-		/****************** BarycentreOfSurf ******************/
-		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
+		/****** GeomFill_EvolvedSection::BarycentreOfSurf ******/
+		/****** md5 signature: a691940df52b45c198f3414d0790e091 ******/
 		%feature("compactdefaultargs") BarycentreOfSurf;
 		%feature("autodoc", "Return
 -------
@@ -9566,8 +9566,8 @@ Get the barycentre of surface. an very poor estimation is sufficient. this infor
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
-		/****************** ConstantSection ******************/
-		/**** md5 signature: 86519bb197ca223d0ba2720b381f4036 ****/
+		/****** GeomFill_EvolvedSection::ConstantSection ******/
+		/****** md5 signature: 86519bb197ca223d0ba2720b381f4036 ******/
 		%feature("compactdefaultargs") ConstantSection;
 		%feature("autodoc", "Return
 -------
@@ -9579,8 +9579,8 @@ Return the constant section if <self> isconstant.
 ") ConstantSection;
 		virtual opencascade::handle<Geom_Curve> ConstantSection();
 
-		/****************** D0 ******************/
-		/**** md5 signature: d889e1bd3dadd721c935f604be609d57 ****/
+		/****** GeomFill_EvolvedSection::D0 ******/
+		/****** md5 signature: d889e1bd3dadd721c935f604be609d57 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -9599,8 +9599,8 @@ Compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 127f80b4c43e681b4262dad7d1db79d7 ****/
+		/****** GeomFill_EvolvedSection::D1 ******/
+		/****** md5 signature: 127f80b4c43e681b4262dad7d1db79d7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -9621,8 +9621,8 @@ Compute the first derivative in v direction of the section for v = param warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e7553cf232323cae7964c205cd5a06a9 ****/
+		/****** GeomFill_EvolvedSection::D2 ******/
+		/****** md5 signature: e7553cf232323cae7964c205cd5a06a9 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -9645,8 +9645,8 @@ Compute the second derivative in v direction of the section for v = param warnin
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** GetDomain ******************/
-		/**** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ****/
+		/****** GeomFill_EvolvedSection::GetDomain ******/
+		/****** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ******/
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "
 Parameters
@@ -9663,8 +9663,8 @@ Gets the bounds of the function parametric domain. warning: this domain it is no
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetInterval ******************/
-		/**** md5 signature: 5025922809e891f5aa8a2358198f31e4 ****/
+		/****** GeomFill_EvolvedSection::GetInterval ******/
+		/****** md5 signature: 5025922809e891f5aa8a2358198f31e4 ******/
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "
 Parameters
@@ -9681,8 +9681,8 @@ Gets the bounds of the parametric interval on the function.
 ") GetInterval;
 		virtual void GetInterval(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
+		/****** GeomFill_EvolvedSection::GetMinimalWeight ******/
+		/****** md5 signature: 36fb20110448cba55b750bc7db93d222 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -9699,8 +9699,8 @@ Compute the minimal value of weight for each poles in all sections. this informa
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: 3f6ec4398981d416a51435f14d7cee22 ****/
+		/****** GeomFill_EvolvedSection::GetTolerance ******/
+		/****** md5 signature: 3f6ec4398981d416a51435f14d7cee22 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -9720,8 +9720,8 @@ Returns the tolerances associated at each poles to reach in approximation, to sa
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_EvolvedSection::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -9739,8 +9739,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: b8fcd911afc2577f90f33f0c8d046c8a ****/
+		/****** GeomFill_EvolvedSection::IsConstant ******/
+		/****** md5 signature: b8fcd911afc2577f90f33f0c8d046c8a ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "
 Parameters
@@ -9756,8 +9756,8 @@ Return true if the law isconstant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant(Standard_Real &OutValue);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ****/
+		/****** GeomFill_EvolvedSection::IsRational ******/
+		/****** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -9769,8 +9769,8 @@ Returns if the sections are rationnal or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
-		/****************** IsUPeriodic ******************/
-		/**** md5 signature: ee1d04d096d58c0c69971438c1aa71fc ****/
+		/****** GeomFill_EvolvedSection::IsUPeriodic ******/
+		/****** md5 signature: ee1d04d096d58c0c69971438c1aa71fc ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -9782,8 +9782,8 @@ Returns if the sections are periodic or not.
 ") IsUPeriodic;
 		virtual Standard_Boolean IsUPeriodic();
 
-		/****************** IsVPeriodic ******************/
-		/**** md5 signature: c62bf083eb7bc6b915c3cdeea2fc8406 ****/
+		/****** GeomFill_EvolvedSection::IsVPeriodic ******/
+		/****** md5 signature: c62bf083eb7bc6b915c3cdeea2fc8406 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -9795,8 +9795,8 @@ Returns if the law isperiodic or not.
 ") IsVPeriodic;
 		virtual Standard_Boolean IsVPeriodic();
 
-		/****************** Knots ******************/
-		/**** md5 signature: 25dbe24e24c953c2c68b0d008e63e5d6 ****/
+		/****** GeomFill_EvolvedSection::Knots ******/
+		/****** md5 signature: 25dbe24e24c953c2c68b0d008e63e5d6 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -9813,8 +9813,8 @@ Get the knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** MaximalSection ******************/
-		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
+		/****** GeomFill_EvolvedSection::MaximalSection ******/
+		/****** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ******/
 		%feature("compactdefaultargs") MaximalSection;
 		%feature("autodoc", "Return
 -------
@@ -9826,8 +9826,8 @@ Returns the length of the greater section. this information is useful to g1's co
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
-		/****************** Mults ******************/
-		/**** md5 signature: 033dc1fab9e10e705c796ffc1e03a44d ****/
+		/****** GeomFill_EvolvedSection::Mults ******/
+		/****** md5 signature: 033dc1fab9e10e705c796ffc1e03a44d ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -9844,8 +9844,8 @@ Get the multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_EvolvedSection::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -9862,8 +9862,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SectionShape ******************/
-		/**** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ****/
+		/****** GeomFill_EvolvedSection::SectionShape ******/
+		/****** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ******/
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "
 Parameters
@@ -9881,8 +9881,8 @@ Get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_EvolvedSection::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -9916,8 +9916,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 ***********************/
 class GeomFill_Fixed : public GeomFill_TrihedronLaw {
 	public:
-		/****************** GeomFill_Fixed ******************/
-		/**** md5 signature: 5e2066acb7e356d3da3376939b0798ba ****/
+		/****** GeomFill_Fixed::GeomFill_Fixed ******/
+		/****** md5 signature: 5e2066acb7e356d3da3376939b0798ba ******/
 		%feature("compactdefaultargs") GeomFill_Fixed;
 		%feature("autodoc", "
 Parameters
@@ -9935,8 +9935,8 @@ No available documentation.
 ") GeomFill_Fixed;
 		 GeomFill_Fixed(const gp_Vec & Tangent, const gp_Vec & Normal);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
+		/****** GeomFill_Fixed::Copy ******/
+		/****** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -9948,8 +9948,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_TrihedronLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ****/
+		/****** GeomFill_Fixed::D0 ******/
+		/****** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -9969,8 +9969,8 @@ Compute triedrhon on curve at parameter <param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
+		/****** GeomFill_Fixed::D1 ******/
+		/****** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -9993,8 +9993,8 @@ Compute triedrhon and derivative trihedron on curve at parameter <param> warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
+		/****** GeomFill_Fixed::D2 ******/
+		/****** md5 signature: e308ebcce924017ac2cd5d4701d10219 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -10020,8 +10020,8 @@ Compute trihedron on curve first and seconde derivatives. warning: it used only 
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ****/
+		/****** GeomFill_Fixed::GetAverageLaw ******/
+		/****** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -10040,8 +10040,8 @@ Get average value of tangent(t) and normal(t) it is usfull to make fast approxim
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_Fixed::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -10059,8 +10059,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ****/
+		/****** GeomFill_Fixed::IsConstant ******/
+		/****** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -10072,8 +10072,8 @@ Return true.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_Fixed::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -10106,8 +10106,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ************************/
 class GeomFill_Frenet : public GeomFill_TrihedronLaw {
 	public:
-		/****************** GeomFill_Frenet ******************/
-		/**** md5 signature: 288a206669314641ffb5fa1c0c70d683 ****/
+		/****** GeomFill_Frenet::GeomFill_Frenet ******/
+		/****** md5 signature: 288a206669314641ffb5fa1c0c70d683 ******/
 		%feature("compactdefaultargs") GeomFill_Frenet;
 		%feature("autodoc", "Return
 -------
@@ -10119,8 +10119,8 @@ No available documentation.
 ") GeomFill_Frenet;
 		 GeomFill_Frenet();
 
-		/****************** Copy ******************/
-		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
+		/****** GeomFill_Frenet::Copy ******/
+		/****** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -10132,8 +10132,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_TrihedronLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ****/
+		/****** GeomFill_Frenet::D0 ******/
+		/****** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -10153,8 +10153,8 @@ Compute triedrhon on curve at parameter <param>.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
+		/****** GeomFill_Frenet::D1 ******/
+		/****** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -10177,8 +10177,8 @@ Compute triedrhon and derivative trihedron on curve at parameter <param> warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
+		/****** GeomFill_Frenet::D2 ******/
+		/****** md5 signature: e308ebcce924017ac2cd5d4701d10219 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -10204,8 +10204,8 @@ Compute trihedron on curve first and seconde derivatives. warning: it used only 
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ****/
+		/****** GeomFill_Frenet::GetAverageLaw ******/
+		/****** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -10224,8 +10224,8 @@ Get average value of tangent(t) and normal(t) it is usfull to make fast approxim
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
-		/****************** Init ******************/
-		/**** md5 signature: 0de93ef32c53d091768788dca0e281fd ****/
+		/****** GeomFill_Frenet::Init ******/
+		/****** md5 signature: 0de93ef32c53d091768788dca0e281fd ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -10237,8 +10237,8 @@ No available documentation.
 ") Init;
 		void Init();
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_Frenet::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -10256,8 +10256,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ****/
+		/****** GeomFill_Frenet::IsConstant ******/
+		/****** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -10269,8 +10269,8 @@ Say if the law is constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
-		/****************** IsOnlyBy3dCurve ******************/
-		/**** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ****/
+		/****** GeomFill_Frenet::IsOnlyBy3dCurve ******/
+		/****** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ******/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
 		%feature("autodoc", "Return
 -------
@@ -10282,8 +10282,8 @@ Return true.
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_Frenet::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -10300,8 +10300,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
+		/****** GeomFill_Frenet::SetCurve ******/
+		/****** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -10334,8 +10334,8 @@ Initialize curve of frenet law return standard_true.
 ***************************/
 class GeomFill_Generator : public GeomFill_Profiler {
 	public:
-		/****************** GeomFill_Generator ******************/
-		/**** md5 signature: 7ab26cd3e7d707fc8575a1a0a3937407 ****/
+		/****** GeomFill_Generator::GeomFill_Generator ******/
+		/****** md5 signature: 7ab26cd3e7d707fc8575a1a0a3937407 ******/
 		%feature("compactdefaultargs") GeomFill_Generator;
 		%feature("autodoc", "Return
 -------
@@ -10347,8 +10347,8 @@ No available documentation.
 ") GeomFill_Generator;
 		 GeomFill_Generator();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 3733dc09fb22e11eab38814671c39e85 ****/
+		/****** GeomFill_Generator::Perform ******/
+		/****** md5 signature: 3733dc09fb22e11eab38814671c39e85 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -10365,8 +10365,8 @@ Converts all curves to bsplinecurves. set them to the common profile. compute th
 ") Perform;
 		virtual void Perform(const Standard_Real PTol);
 
-		/****************** Surface ******************/
-		/**** md5 signature: a469e18cbceeb351572a461f96ff0f4d ****/
+		/****** GeomFill_Generator::Surface ******/
+		/****** md5 signature: a469e18cbceeb351572a461f96ff0f4d ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -10392,8 +10392,8 @@ No available documentation.
 *******************************/
 class GeomFill_LocationDraft : public GeomFill_LocationLaw {
 	public:
-		/****************** GeomFill_LocationDraft ******************/
-		/**** md5 signature: d7713d06b5da3938a026ac9f7be9143a ****/
+		/****** GeomFill_LocationDraft::GeomFill_LocationDraft ******/
+		/****** md5 signature: d7713d06b5da3938a026ac9f7be9143a ******/
 		%feature("compactdefaultargs") GeomFill_LocationDraft;
 		%feature("autodoc", "
 Parameters
@@ -10411,8 +10411,8 @@ No available documentation.
 ") GeomFill_LocationDraft;
 		 GeomFill_LocationDraft(const gp_Dir & Direction, const Standard_Real Angle);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 6211f5514688258100f0ea82262b2f4b ****/
+		/****** GeomFill_LocationDraft::Copy ******/
+		/****** md5 signature: 6211f5514688258100f0ea82262b2f4b ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -10424,8 +10424,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_LocationLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 316ea693fc5dcb4b89eef4bd219d0f5e ****/
+		/****** GeomFill_LocationDraft::D0 ******/
+		/****** md5 signature: 316ea693fc5dcb4b89eef4bd219d0f5e ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -10444,8 +10444,8 @@ Compute location.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 924a51426e408dff0c68c8625c80f165 ****/
+		/****** GeomFill_LocationDraft::D0 ******/
+		/****** md5 signature: 924a51426e408dff0c68c8625c80f165 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -10465,8 +10465,8 @@ Compute location and 2d points.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 288bb22d14e06a66281554b33f433d63 ****/
+		/****** GeomFill_LocationDraft::D1 ******/
+		/****** md5 signature: 288bb22d14e06a66281554b33f433d63 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -10489,8 +10489,8 @@ Compute location 2d points and associated first derivatives. warning: it used on
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 940621cc935757a0b177b16f7cd72d05 ****/
+		/****** GeomFill_LocationDraft::D2 ******/
+		/****** md5 signature: 940621cc935757a0b177b16f7cd72d05 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -10516,8 +10516,8 @@ Compute location 2d points and associated first and seconde derivatives. warning
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
-		/****************** Direction ******************/
-		/**** md5 signature: 7db1622a0b370b4453af0886bb5f840c ****/
+		/****** GeomFill_LocationDraft::Direction ******/
+		/****** md5 signature: 7db1622a0b370b4453af0886bb5f840c ******/
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", "Return
 -------
@@ -10529,8 +10529,8 @@ No available documentation.
 ") Direction;
 		gp_Dir Direction();
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: c8399d110fc93e54f7a94c0255e22682 ****/
+		/****** GeomFill_LocationDraft::GetAverageLaw ******/
+		/****** md5 signature: c8399d110fc93e54f7a94c0255e22682 ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -10548,8 +10548,8 @@ Get average value of m(t) and v(t) it is usfull to make fast approximation of ra
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
-		/****************** GetCurve ******************/
-		/**** md5 signature: b5470ee2464d4db2182ec23b2a5e7e7f ****/
+		/****** GeomFill_LocationDraft::GetCurve ******/
+		/****** md5 signature: b5470ee2464d4db2182ec23b2a5e7e7f ******/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "Return
 -------
@@ -10561,8 +10561,8 @@ No available documentation.
 ") GetCurve;
 		virtual const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
-		/****************** GetDomain ******************/
-		/**** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ****/
+		/****** GeomFill_LocationDraft::GetDomain ******/
+		/****** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ******/
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "
 Parameters
@@ -10579,8 +10579,8 @@ Gets the bounds of the function parametric domain. warning: this domain it is no
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetInterval ******************/
-		/**** md5 signature: 5025922809e891f5aa8a2358198f31e4 ****/
+		/****** GeomFill_LocationDraft::GetInterval ******/
+		/****** md5 signature: 5025922809e891f5aa8a2358198f31e4 ******/
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "
 Parameters
@@ -10597,8 +10597,8 @@ Gets the bounds of the parametric interval on the function.
 ") GetInterval;
 		virtual void GetInterval(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetMaximalNorm ******************/
-		/**** md5 signature: d33bcb5496370d9914e70fb48ea83d28 ****/
+		/****** GeomFill_LocationDraft::GetMaximalNorm ******/
+		/****** md5 signature: d33bcb5496370d9914e70fb48ea83d28 ******/
 		%feature("compactdefaultargs") GetMaximalNorm;
 		%feature("autodoc", "Return
 -------
@@ -10610,8 +10610,8 @@ Get the maximum norm of the matrix-location part. it is usful to find an good to
 ") GetMaximalNorm;
 		virtual Standard_Real GetMaximalNorm();
 
-		/****************** HasFirstRestriction ******************/
-		/**** md5 signature: ccbee780c99b1c07b285852506752491 ****/
+		/****** GeomFill_LocationDraft::HasFirstRestriction ******/
+		/****** md5 signature: ccbee780c99b1c07b285852506752491 ******/
 		%feature("compactdefaultargs") HasFirstRestriction;
 		%feature("autodoc", "Return
 -------
@@ -10623,8 +10623,8 @@ Say if the first restriction is defined in this class. if it is true the first e
 ") HasFirstRestriction;
 		virtual Standard_Boolean HasFirstRestriction();
 
-		/****************** HasLastRestriction ******************/
-		/**** md5 signature: 74a37dbf296a415f833e8fc9033f1e92 ****/
+		/****** GeomFill_LocationDraft::HasLastRestriction ******/
+		/****** md5 signature: 74a37dbf296a415f833e8fc9033f1e92 ******/
 		%feature("compactdefaultargs") HasLastRestriction;
 		%feature("autodoc", "Return
 -------
@@ -10636,8 +10636,8 @@ Say if the last restriction is defined in this class. if it is true the last ele
 ") HasLastRestriction;
 		virtual Standard_Boolean HasLastRestriction();
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_LocationDraft::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -10655,8 +10655,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsIntersec ******************/
-		/**** md5 signature: 2edf1ff5440c6e25ebd8f0348eb8f041 ****/
+		/****** GeomFill_LocationDraft::IsIntersec ******/
+		/****** md5 signature: 2edf1ff5440c6e25ebd8f0348eb8f041 ******/
 		%feature("compactdefaultargs") IsIntersec;
 		%feature("autodoc", "Return
 -------
@@ -10668,8 +10668,8 @@ Say if the generatrice interset the surface.
 ") IsIntersec;
 		Standard_Boolean IsIntersec();
 
-		/****************** IsRotation ******************/
-		/**** md5 signature: 69c76c5168e987b8419ad259813fc9af ****/
+		/****** GeomFill_LocationDraft::IsRotation ******/
+		/****** md5 signature: 69c76c5168e987b8419ad259813fc9af ******/
 		%feature("compactdefaultargs") IsRotation;
 		%feature("autodoc", "
 Parameters
@@ -10685,8 +10685,8 @@ Say if the location law, is a rotation of location the default implementation is
 ") IsRotation;
 		virtual Standard_Boolean IsRotation(Standard_Real &OutValue);
 
-		/****************** IsTranslation ******************/
-		/**** md5 signature: 4064d79964f3a03428b0eb9740c21e0f ****/
+		/****** GeomFill_LocationDraft::IsTranslation ******/
+		/****** md5 signature: 4064d79964f3a03428b0eb9740c21e0f ******/
 		%feature("compactdefaultargs") IsTranslation;
 		%feature("autodoc", "
 Parameters
@@ -10702,8 +10702,8 @@ Say if the location law, is an translation of location the default implementatio
 ") IsTranslation;
 		virtual Standard_Boolean IsTranslation(Standard_Real &OutValue);
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_LocationDraft::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -10720,8 +10720,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** Resolution ******************/
-		/**** md5 signature: ed5d1e3e2211bf035576b0c56d934522 ****/
+		/****** GeomFill_LocationDraft::Resolution ******/
+		/****** md5 signature: ed5d1e3e2211bf035576b0c56d934522 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -10740,8 +10740,8 @@ Returns the resolutions in the sub-space 2d <index> this information is usfull t
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Rotation ******************/
-		/**** md5 signature: b76821e717ce4d2049156bbde7eb7114 ****/
+		/****** GeomFill_LocationDraft::Rotation ******/
+		/****** md5 signature: b76821e717ce4d2049156bbde7eb7114 ******/
 		%feature("compactdefaultargs") Rotation;
 		%feature("autodoc", "
 Parameters
@@ -10758,8 +10758,8 @@ No available documentation.
 ") Rotation;
 		virtual void Rotation(gp_Pnt & Center);
 
-		/****************** SetAngle ******************/
-		/**** md5 signature: a0d60e2a1ea25c193dafa15194b0ab24 ****/
+		/****** GeomFill_LocationDraft::SetAngle ******/
+		/****** md5 signature: a0d60e2a1ea25c193dafa15194b0ab24 ******/
 		%feature("compactdefaultargs") SetAngle;
 		%feature("autodoc", "
 Parameters
@@ -10776,8 +10776,8 @@ No available documentation.
 ") SetAngle;
 		void SetAngle(const Standard_Real Angle);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
+		/****** GeomFill_LocationDraft::SetCurve ******/
+		/****** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -10794,8 +10794,8 @@ Calculation of poles on locking surfaces (the intersection between the generatri
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_LocationDraft::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -10813,8 +10813,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
-		/****************** SetStopSurf ******************/
-		/**** md5 signature: 27ac1cb5a5e32dd01b46f24b3bd0230c ****/
+		/****** GeomFill_LocationDraft::SetStopSurf ******/
+		/****** md5 signature: 27ac1cb5a5e32dd01b46f24b3bd0230c ******/
 		%feature("compactdefaultargs") SetStopSurf;
 		%feature("autodoc", "
 Parameters
@@ -10831,8 +10831,8 @@ No available documentation.
 ") SetStopSurf;
 		void SetStopSurf(const opencascade::handle<Adaptor3d_Surface> & Surf);
 
-		/****************** SetTrsf ******************/
-		/**** md5 signature: 52b4e29e16b9b86f3d7835907847b3d0 ****/
+		/****** GeomFill_LocationDraft::SetTrsf ******/
+		/****** md5 signature: 52b4e29e16b9b86f3d7835907847b3d0 ******/
 		%feature("compactdefaultargs") SetTrsf;
 		%feature("autodoc", "
 Parameters
@@ -10849,8 +10849,8 @@ No available documentation.
 ") SetTrsf;
 		virtual void SetTrsf(const gp_Mat & Transfo);
 
-		/****************** TraceNumber ******************/
-		/**** md5 signature: 603a2d12181693878dfcc406bb4cd8ac ****/
+		/****** GeomFill_LocationDraft::TraceNumber ******/
+		/****** md5 signature: 603a2d12181693878dfcc406bb4cd8ac ******/
 		%feature("compactdefaultargs") TraceNumber;
 		%feature("autodoc", "Return
 -------
@@ -10878,8 +10878,8 @@ Give the number of trace (curves 2d which are not restriction) returns 1 (defaul
 *******************************/
 class GeomFill_LocationGuide : public GeomFill_LocationLaw {
 	public:
-		/****************** GeomFill_LocationGuide ******************/
-		/**** md5 signature: 136dfedf65ea6a2c7c98ae444031587f ****/
+		/****** GeomFill_LocationGuide::GeomFill_LocationGuide ******/
+		/****** md5 signature: 136dfedf65ea6a2c7c98ae444031587f ******/
 		%feature("compactdefaultargs") GeomFill_LocationGuide;
 		%feature("autodoc", "
 Parameters
@@ -10896,8 +10896,8 @@ No available documentation.
 ") GeomFill_LocationGuide;
 		 GeomFill_LocationGuide(const opencascade::handle<GeomFill_TrihedronWithGuide> & Triedre);
 
-		/****************** ComputeAutomaticLaw ******************/
-		/**** md5 signature: cbfc9f5ba26398ec5c16dc921f27bd12 ****/
+		/****** GeomFill_LocationGuide::ComputeAutomaticLaw ******/
+		/****** md5 signature: cbfc9f5ba26398ec5c16dc921f27bd12 ******/
 		%feature("compactdefaultargs") ComputeAutomaticLaw;
 		%feature("autodoc", "
 Parameters
@@ -10914,8 +10914,8 @@ No available documentation.
 ") ComputeAutomaticLaw;
 		GeomFill_PipeError ComputeAutomaticLaw(opencascade::handle<TColgp_HArray1OfPnt2d> & ParAndRad);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 6211f5514688258100f0ea82262b2f4b ****/
+		/****** GeomFill_LocationGuide::Copy ******/
+		/****** md5 signature: 6211f5514688258100f0ea82262b2f4b ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -10927,8 +10927,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_LocationLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 316ea693fc5dcb4b89eef4bd219d0f5e ****/
+		/****** GeomFill_LocationGuide::D0 ******/
+		/****** md5 signature: 316ea693fc5dcb4b89eef4bd219d0f5e ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -10947,8 +10947,8 @@ Compute location.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V);
 
-		/****************** D0 ******************/
-		/**** md5 signature: 924a51426e408dff0c68c8625c80f165 ****/
+		/****** GeomFill_LocationGuide::D0 ******/
+		/****** md5 signature: 924a51426e408dff0c68c8625c80f165 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -10968,8 +10968,8 @@ Compute location and 2d points.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Mat & M, gp_Vec & V, TColgp_Array1OfPnt2d & Poles2d);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 288bb22d14e06a66281554b33f433d63 ****/
+		/****** GeomFill_LocationGuide::D1 ******/
+		/****** md5 signature: 288bb22d14e06a66281554b33f433d63 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -10992,8 +10992,8 @@ Compute location 2d points and associated first derivatives. warning: it used on
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 940621cc935757a0b177b16f7cd72d05 ****/
+		/****** GeomFill_LocationGuide::D2 ******/
+		/****** md5 signature: 940621cc935757a0b177b16f7cd72d05 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -11019,8 +11019,8 @@ Compute location 2d points and associated first and seconde derivatives. warning
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Mat & M, gp_Vec & V, gp_Mat & DM, gp_Vec & DV, gp_Mat & D2M, gp_Vec & D2V, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColgp_Array1OfVec2d & D2Poles2d);
 
-		/****************** EraseRotation ******************/
-		/**** md5 signature: 2a36e5d874195d280379b1872ee5893a ****/
+		/****** GeomFill_LocationGuide::EraseRotation ******/
+		/****** md5 signature: 2a36e5d874195d280379b1872ee5893a ******/
 		%feature("compactdefaultargs") EraseRotation;
 		%feature("autodoc", "Return
 -------
@@ -11032,8 +11032,8 @@ No available documentation.
 ") EraseRotation;
 		void EraseRotation();
 
-		/****************** ErrorStatus ******************/
-		/**** md5 signature: 0524df84e8d9c275d5bcd5d3fe7977dc ****/
+		/****** GeomFill_LocationGuide::ErrorStatus ******/
+		/****** md5 signature: 0524df84e8d9c275d5bcd5d3fe7977dc ******/
 		%feature("compactdefaultargs") ErrorStatus;
 		%feature("autodoc", "Return
 -------
@@ -11045,8 +11045,8 @@ Give a status to the law returns pipeok (default implementation).
 ") ErrorStatus;
 		virtual GeomFill_PipeError ErrorStatus();
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: c8399d110fc93e54f7a94c0255e22682 ****/
+		/****** GeomFill_LocationGuide::GetAverageLaw ******/
+		/****** md5 signature: c8399d110fc93e54f7a94c0255e22682 ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -11064,8 +11064,8 @@ Get average value of m(t) and v(t) it is usfull to make fast approximation of ra
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Mat & AM, gp_Vec & AV);
 
-		/****************** GetCurve ******************/
-		/**** md5 signature: b5470ee2464d4db2182ec23b2a5e7e7f ****/
+		/****** GeomFill_LocationGuide::GetCurve ******/
+		/****** md5 signature: b5470ee2464d4db2182ec23b2a5e7e7f ******/
 		%feature("compactdefaultargs") GetCurve;
 		%feature("autodoc", "Return
 -------
@@ -11077,8 +11077,8 @@ No available documentation.
 ") GetCurve;
 		virtual const opencascade::handle<Adaptor3d_Curve> & GetCurve();
 
-		/****************** GetDomain ******************/
-		/**** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ****/
+		/****** GeomFill_LocationGuide::GetDomain ******/
+		/****** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ******/
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "
 Parameters
@@ -11095,8 +11095,8 @@ Gets the bounds of the function parametric domain. warning: this domain it is no
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetInterval ******************/
-		/**** md5 signature: 5025922809e891f5aa8a2358198f31e4 ****/
+		/****** GeomFill_LocationGuide::GetInterval ******/
+		/****** md5 signature: 5025922809e891f5aa8a2358198f31e4 ******/
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "
 Parameters
@@ -11113,8 +11113,8 @@ Gets the bounds of the parametric interval on the function.
 ") GetInterval;
 		virtual void GetInterval(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetMaximalNorm ******************/
-		/**** md5 signature: d33bcb5496370d9914e70fb48ea83d28 ****/
+		/****** GeomFill_LocationGuide::GetMaximalNorm ******/
+		/****** md5 signature: d33bcb5496370d9914e70fb48ea83d28 ******/
 		%feature("compactdefaultargs") GetMaximalNorm;
 		%feature("autodoc", "Return
 -------
@@ -11126,8 +11126,8 @@ Get the maximum norm of the matrix-location part. it is usful to find an good to
 ") GetMaximalNorm;
 		virtual Standard_Real GetMaximalNorm();
 
-		/****************** Guide ******************/
-		/**** md5 signature: c51ccc2583f44ed177afcd058430a88a ****/
+		/****** GeomFill_LocationGuide::Guide ******/
+		/****** md5 signature: c51ccc2583f44ed177afcd058430a88a ******/
 		%feature("compactdefaultargs") Guide;
 		%feature("autodoc", "Return
 -------
@@ -11139,8 +11139,8 @@ No available documentation.
 ") Guide;
 		opencascade::handle<Adaptor3d_Curve> Guide();
 
-		/****************** HasFirstRestriction ******************/
-		/**** md5 signature: ccbee780c99b1c07b285852506752491 ****/
+		/****** GeomFill_LocationGuide::HasFirstRestriction ******/
+		/****** md5 signature: ccbee780c99b1c07b285852506752491 ******/
 		%feature("compactdefaultargs") HasFirstRestriction;
 		%feature("autodoc", "Return
 -------
@@ -11152,8 +11152,8 @@ Say if the first restriction is defined in this class. if it is true the first e
 ") HasFirstRestriction;
 		virtual Standard_Boolean HasFirstRestriction();
 
-		/****************** HasLastRestriction ******************/
-		/**** md5 signature: 74a37dbf296a415f833e8fc9033f1e92 ****/
+		/****** GeomFill_LocationGuide::HasLastRestriction ******/
+		/****** md5 signature: 74a37dbf296a415f833e8fc9033f1e92 ******/
 		%feature("compactdefaultargs") HasLastRestriction;
 		%feature("autodoc", "Return
 -------
@@ -11165,8 +11165,8 @@ Say if the last restriction is defined in this class. if it is true the last ele
 ") HasLastRestriction;
 		virtual Standard_Boolean HasLastRestriction();
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_LocationGuide::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -11184,8 +11184,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsRotation ******************/
-		/**** md5 signature: 69c76c5168e987b8419ad259813fc9af ****/
+		/****** GeomFill_LocationGuide::IsRotation ******/
+		/****** md5 signature: 69c76c5168e987b8419ad259813fc9af ******/
 		%feature("compactdefaultargs") IsRotation;
 		%feature("autodoc", "
 Parameters
@@ -11201,8 +11201,8 @@ Say if the location law, is a rotation of location the default implementation is
 ") IsRotation;
 		virtual Standard_Boolean IsRotation(Standard_Real &OutValue);
 
-		/****************** IsTranslation ******************/
-		/**** md5 signature: 4064d79964f3a03428b0eb9740c21e0f ****/
+		/****** GeomFill_LocationGuide::IsTranslation ******/
+		/****** md5 signature: 4064d79964f3a03428b0eb9740c21e0f ******/
 		%feature("compactdefaultargs") IsTranslation;
 		%feature("autodoc", "
 Parameters
@@ -11218,8 +11218,8 @@ Say if the location law, is an translation of location the default implementatio
 ") IsTranslation;
 		virtual Standard_Boolean IsTranslation(Standard_Real &OutValue);
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_LocationGuide::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -11236,8 +11236,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** Resolution ******************/
-		/**** md5 signature: ed5d1e3e2211bf035576b0c56d934522 ****/
+		/****** GeomFill_LocationGuide::Resolution ******/
+		/****** md5 signature: ed5d1e3e2211bf035576b0c56d934522 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -11256,8 +11256,8 @@ Returns the resolutions in the sub-space 2d <index> this information is usfull t
 ") Resolution;
 		virtual void Resolution(const Standard_Integer Index, const Standard_Real Tol, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Rotation ******************/
-		/**** md5 signature: b76821e717ce4d2049156bbde7eb7114 ****/
+		/****** GeomFill_LocationGuide::Rotation ******/
+		/****** md5 signature: b76821e717ce4d2049156bbde7eb7114 ******/
 		%feature("compactdefaultargs") Rotation;
 		%feature("autodoc", "
 Parameters
@@ -11274,8 +11274,8 @@ No available documentation.
 ") Rotation;
 		virtual void Rotation(gp_Pnt & Center);
 
-		/****************** Section ******************/
-		/**** md5 signature: f9bca12fa783e47192673ca3f07be5a5 ****/
+		/****** GeomFill_LocationGuide::Section ******/
+		/****** md5 signature: f9bca12fa783e47192673ca3f07be5a5 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "Return
 -------
@@ -11287,8 +11287,8 @@ No available documentation.
 ") Section;
 		opencascade::handle<Geom_Curve> Section();
 
-		/****************** Set ******************/
-		/**** md5 signature: 4de0dc1362ddd21a958ddc8382ea6c1d ****/
+		/****** GeomFill_LocationGuide::Set ******/
+		/****** md5 signature: 4de0dc1362ddd21a958ddc8382ea6c1d ******/
 		%feature("compactdefaultargs") Set;
 		%feature("autodoc", "
 Parameters
@@ -11309,8 +11309,8 @@ No available documentation.
 ") Set;
 		void Set(const opencascade::handle<GeomFill_SectionLaw> & Section, const Standard_Boolean rotat, const Standard_Real SFirst, const Standard_Real SLast, const Standard_Real PrecAngle, Standard_Real &OutValue);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
+		/****** GeomFill_LocationGuide::SetCurve ******/
+		/****** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -11327,8 +11327,8 @@ Calculating poles on a surface (courbe guide / the surface of rotation in points
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_LocationGuide::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -11346,8 +11346,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
-		/****************** SetOrigine ******************/
-		/**** md5 signature: fe581f3dcaec0cd160e673a6c833f73a ****/
+		/****** GeomFill_LocationGuide::SetOrigine ******/
+		/****** md5 signature: fe581f3dcaec0cd160e673a6c833f73a ******/
 		%feature("compactdefaultargs") SetOrigine;
 		%feature("autodoc", "
 Parameters
@@ -11365,8 +11365,8 @@ No available documentation.
 ") SetOrigine;
 		void SetOrigine(const Standard_Real Param1, const Standard_Real Param2);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: bf0b5b1b4d35ebad7b1b81b0b9b8ba2c ****/
+		/****** GeomFill_LocationGuide::SetTolerance ******/
+		/****** md5 signature: bf0b5b1b4d35ebad7b1b81b0b9b8ba2c ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -11384,8 +11384,8 @@ Is useful, if (me) have to run numerical algorithm to perform d0, d1 or d2 the d
 ") SetTolerance;
 		virtual void SetTolerance(const Standard_Real Tol3d, const Standard_Real Tol2d);
 
-		/****************** SetTrsf ******************/
-		/**** md5 signature: 52b4e29e16b9b86f3d7835907847b3d0 ****/
+		/****** GeomFill_LocationGuide::SetTrsf ******/
+		/****** md5 signature: 52b4e29e16b9b86f3d7835907847b3d0 ******/
 		%feature("compactdefaultargs") SetTrsf;
 		%feature("autodoc", "
 Parameters
@@ -11402,8 +11402,8 @@ No available documentation.
 ") SetTrsf;
 		virtual void SetTrsf(const gp_Mat & Transfo);
 
-		/****************** TraceNumber ******************/
-		/**** md5 signature: 603a2d12181693878dfcc406bb4cd8ac ****/
+		/****** GeomFill_LocationGuide::TraceNumber ******/
+		/****** md5 signature: 603a2d12181693878dfcc406bb4cd8ac ******/
 		%feature("compactdefaultargs") TraceNumber;
 		%feature("autodoc", "Return
 -------
@@ -11431,8 +11431,8 @@ Give the number of trace (curves 2d which are not restriction) returns 1 (defaul
 ***************************/
 class GeomFill_NSections : public GeomFill_SectionLaw {
 	public:
-		/****************** GeomFill_NSections ******************/
-		/**** md5 signature: 0d9de61d62ecb7757dcd4d340c2a039b ****/
+		/****** GeomFill_NSections::GeomFill_NSections ******/
+		/****** md5 signature: 0d9de61d62ecb7757dcd4d340c2a039b ******/
 		%feature("compactdefaultargs") GeomFill_NSections;
 		%feature("autodoc", "
 Parameters
@@ -11449,8 +11449,8 @@ Make a sectionlaw with n curves.
 ") GeomFill_NSections;
 		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC);
 
-		/****************** GeomFill_NSections ******************/
-		/**** md5 signature: b6026d7641aed88e8faa4632aecda31b ****/
+		/****** GeomFill_NSections::GeomFill_NSections ******/
+		/****** md5 signature: b6026d7641aed88e8faa4632aecda31b ******/
 		%feature("compactdefaultargs") GeomFill_NSections;
 		%feature("autodoc", "
 Parameters
@@ -11468,8 +11468,8 @@ Make a sectionlaw with n curves and n associated parameters.
 ") GeomFill_NSections;
 		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const TColStd_SequenceOfReal & NP);
 
-		/****************** GeomFill_NSections ******************/
-		/**** md5 signature: 979fe2339b2fd239655f9ddec9dcb075 ****/
+		/****** GeomFill_NSections::GeomFill_NSections ******/
+		/****** md5 signature: 979fe2339b2fd239655f9ddec9dcb075 ******/
 		%feature("compactdefaultargs") GeomFill_NSections;
 		%feature("autodoc", "
 Parameters
@@ -11491,8 +11491,8 @@ Make a sectionlaw with n curves and n associated parameters. uf and ul are the p
 ") GeomFill_NSections;
 		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const TColStd_SequenceOfReal & NP, const Standard_Real UF, const Standard_Real UL, const Standard_Real VF, const Standard_Real VL);
 
-		/****************** GeomFill_NSections ******************/
-		/**** md5 signature: beb7f1c7e304223c771db4b9243db92d ****/
+		/****** GeomFill_NSections::GeomFill_NSections ******/
+		/****** md5 signature: beb7f1c7e304223c771db4b9243db92d ******/
 		%feature("compactdefaultargs") GeomFill_NSections;
 		%feature("autodoc", "
 Parameters
@@ -11516,8 +11516,8 @@ Make a sectionlaw with n curves and n associated parameters. uf and ul are the p
 ") GeomFill_NSections;
 		 GeomFill_NSections(const TColGeom_SequenceOfCurve & NC, const GeomFill_SequenceOfTrsf & Trsfs, const TColStd_SequenceOfReal & NP, const Standard_Real UF, const Standard_Real UL, const Standard_Real VF, const Standard_Real VL, const opencascade::handle<Geom_BSplineSurface> & Surf);
 
-		/****************** BSplineSurface ******************/
-		/**** md5 signature: 723eb488e2a06d913977b581dcccba8f ****/
+		/****** GeomFill_NSections::BSplineSurface ******/
+		/****** md5 signature: 723eb488e2a06d913977b581dcccba8f ******/
 		%feature("compactdefaultargs") BSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -11529,8 +11529,8 @@ Give if possible an bspline surface, like iso-v are the section. if it is not po
 ") BSplineSurface;
 		virtual opencascade::handle<Geom_BSplineSurface> BSplineSurface();
 
-		/****************** BarycentreOfSurf ******************/
-		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
+		/****** GeomFill_NSections::BarycentreOfSurf ******/
+		/****** md5 signature: a691940df52b45c198f3414d0790e091 ******/
 		%feature("compactdefaultargs") BarycentreOfSurf;
 		%feature("autodoc", "Return
 -------
@@ -11542,8 +11542,8 @@ Get the barycentre of surface. an very poor estimation is sufficient. this infor
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
-		/****************** CirclSection ******************/
-		/**** md5 signature: f8ab2465d0ffa1d0b9c5f4f02cd11e1d ****/
+		/****** GeomFill_NSections::CirclSection ******/
+		/****** md5 signature: f8ab2465d0ffa1d0b9c5f4f02cd11e1d ******/
 		%feature("compactdefaultargs") CirclSection;
 		%feature("autodoc", "
 Parameters
@@ -11560,8 +11560,8 @@ Return the circle section at parameter <param>, if <self> a isconicallaw.
 ") CirclSection;
 		virtual opencascade::handle<Geom_Curve> CirclSection(const Standard_Real Param);
 
-		/****************** ComputeSurface ******************/
-		/**** md5 signature: 476c520f64187195041f7fc66a49e45d ****/
+		/****** GeomFill_NSections::ComputeSurface ******/
+		/****** md5 signature: 476c520f64187195041f7fc66a49e45d ******/
 		%feature("compactdefaultargs") ComputeSurface;
 		%feature("autodoc", "Return
 -------
@@ -11573,8 +11573,8 @@ Computes the surface.
 ") ComputeSurface;
 		void ComputeSurface();
 
-		/****************** ConstantSection ******************/
-		/**** md5 signature: 86519bb197ca223d0ba2720b381f4036 ****/
+		/****** GeomFill_NSections::ConstantSection ******/
+		/****** md5 signature: 86519bb197ca223d0ba2720b381f4036 ******/
 		%feature("compactdefaultargs") ConstantSection;
 		%feature("autodoc", "Return
 -------
@@ -11586,8 +11586,8 @@ Return the constant section if <self> isconstant.
 ") ConstantSection;
 		virtual opencascade::handle<Geom_Curve> ConstantSection();
 
-		/****************** D0 ******************/
-		/**** md5 signature: d889e1bd3dadd721c935f604be609d57 ****/
+		/****** GeomFill_NSections::D0 ******/
+		/****** md5 signature: d889e1bd3dadd721c935f604be609d57 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -11606,8 +11606,8 @@ Compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 127f80b4c43e681b4262dad7d1db79d7 ****/
+		/****** GeomFill_NSections::D1 ******/
+		/****** md5 signature: 127f80b4c43e681b4262dad7d1db79d7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -11628,8 +11628,8 @@ Compute the first derivative in v direction of the section for v = param warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e7553cf232323cae7964c205cd5a06a9 ****/
+		/****** GeomFill_NSections::D2 ******/
+		/****** md5 signature: e7553cf232323cae7964c205cd5a06a9 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -11652,8 +11652,8 @@ Compute the second derivative in v direction of the section for v = param warnin
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** GetDomain ******************/
-		/**** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ****/
+		/****** GeomFill_NSections::GetDomain ******/
+		/****** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ******/
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "
 Parameters
@@ -11670,8 +11670,8 @@ Gets the bounds of the function parametric domain. warning: this domain it is no
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetInterval ******************/
-		/**** md5 signature: 5025922809e891f5aa8a2358198f31e4 ****/
+		/****** GeomFill_NSections::GetInterval ******/
+		/****** md5 signature: 5025922809e891f5aa8a2358198f31e4 ******/
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "
 Parameters
@@ -11688,8 +11688,8 @@ Gets the bounds of the parametric interval on the function.
 ") GetInterval;
 		virtual void GetInterval(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
+		/****** GeomFill_NSections::GetMinimalWeight ******/
+		/****** md5 signature: 36fb20110448cba55b750bc7db93d222 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -11706,8 +11706,8 @@ Compute the minimal value of weight for each poles in all sections. this informa
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: 3f6ec4398981d416a51435f14d7cee22 ****/
+		/****** GeomFill_NSections::GetTolerance ******/
+		/****** md5 signature: 3f6ec4398981d416a51435f14d7cee22 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -11727,8 +11727,8 @@ Returns the tolerances associated at each poles to reach in approximation, to sa
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_NSections::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -11746,8 +11746,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConicalLaw ******************/
-		/**** md5 signature: 650c3ea527a26e948c9d1fcec0b7a9f1 ****/
+		/****** GeomFill_NSections::IsConicalLaw ******/
+		/****** md5 signature: 650c3ea527a26e948c9d1fcec0b7a9f1 ******/
 		%feature("compactdefaultargs") IsConicalLaw;
 		%feature("autodoc", "
 Parameters
@@ -11763,8 +11763,8 @@ Returns true if all section are circle, with same plane,same center and linear r
 ") IsConicalLaw;
 		virtual Standard_Boolean IsConicalLaw(Standard_Real &OutValue);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: b8fcd911afc2577f90f33f0c8d046c8a ****/
+		/****** GeomFill_NSections::IsConstant ******/
+		/****** md5 signature: b8fcd911afc2577f90f33f0c8d046c8a ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "
 Parameters
@@ -11780,8 +11780,8 @@ Return true if the law isconstant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant(Standard_Real &OutValue);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ****/
+		/****** GeomFill_NSections::IsRational ******/
+		/****** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -11793,8 +11793,8 @@ Returns if the sections are rationnal or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
-		/****************** IsUPeriodic ******************/
-		/**** md5 signature: ee1d04d096d58c0c69971438c1aa71fc ****/
+		/****** GeomFill_NSections::IsUPeriodic ******/
+		/****** md5 signature: ee1d04d096d58c0c69971438c1aa71fc ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -11806,8 +11806,8 @@ Returns if the sections are periodic or not.
 ") IsUPeriodic;
 		virtual Standard_Boolean IsUPeriodic();
 
-		/****************** IsVPeriodic ******************/
-		/**** md5 signature: c62bf083eb7bc6b915c3cdeea2fc8406 ****/
+		/****** GeomFill_NSections::IsVPeriodic ******/
+		/****** md5 signature: c62bf083eb7bc6b915c3cdeea2fc8406 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -11819,8 +11819,8 @@ Returns if the law isperiodic or not.
 ") IsVPeriodic;
 		virtual Standard_Boolean IsVPeriodic();
 
-		/****************** Knots ******************/
-		/**** md5 signature: 25dbe24e24c953c2c68b0d008e63e5d6 ****/
+		/****** GeomFill_NSections::Knots ******/
+		/****** md5 signature: 25dbe24e24c953c2c68b0d008e63e5d6 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -11837,8 +11837,8 @@ Get the knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** MaximalSection ******************/
-		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
+		/****** GeomFill_NSections::MaximalSection ******/
+		/****** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ******/
 		%feature("compactdefaultargs") MaximalSection;
 		%feature("autodoc", "Return
 -------
@@ -11850,8 +11850,8 @@ Returns the length of the greater section. this information is useful to g1's co
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
-		/****************** Mults ******************/
-		/**** md5 signature: 033dc1fab9e10e705c796ffc1e03a44d ****/
+		/****** GeomFill_NSections::Mults ******/
+		/****** md5 signature: 033dc1fab9e10e705c796ffc1e03a44d ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -11868,8 +11868,8 @@ Get the multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_NSections::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -11886,8 +11886,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SectionShape ******************/
-		/**** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ****/
+		/****** GeomFill_NSections::SectionShape ******/
+		/****** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ******/
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "
 Parameters
@@ -11905,8 +11905,8 @@ Get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_NSections::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -11924,8 +11924,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 ") SetInterval;
 		virtual void SetInterval(const Standard_Real First, const Standard_Real Last);
 
-		/****************** SetSurface ******************/
-		/**** md5 signature: f01d27fcfb76b333f1ccc32457928336 ****/
+		/****** GeomFill_NSections::SetSurface ******/
+		/****** md5 signature: f01d27fcfb76b333f1ccc32457928336 ******/
 		%feature("compactdefaultargs") SetSurface;
 		%feature("autodoc", "
 Parameters
@@ -11958,8 +11958,8 @@ Sets the reference surface.
 **********************************/
 class GeomFill_SectionGenerator : public GeomFill_Profiler {
 	public:
-		/****************** GeomFill_SectionGenerator ******************/
-		/**** md5 signature: dca68bc2332bb276f5d183db1f4a4460 ****/
+		/****** GeomFill_SectionGenerator::GeomFill_SectionGenerator ******/
+		/****** md5 signature: dca68bc2332bb276f5d183db1f4a4460 ******/
 		%feature("compactdefaultargs") GeomFill_SectionGenerator;
 		%feature("autodoc", "Return
 -------
@@ -11971,8 +11971,8 @@ No available documentation.
 ") GeomFill_SectionGenerator;
 		 GeomFill_SectionGenerator();
 
-		/****************** GetShape ******************/
-		/**** md5 signature: 6fa2df877c22a0270d6d56c00ebd130a ****/
+		/****** GeomFill_SectionGenerator::GetShape ******/
+		/****** md5 signature: 6fa2df877c22a0270d6d56c00ebd130a ******/
 		%feature("compactdefaultargs") GetShape;
 		%feature("autodoc", "
 Parameters
@@ -11991,8 +11991,8 @@ No available documentation.
 ") GetShape;
 		void GetShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** Knots ******************/
-		/**** md5 signature: 4ce44c7a3fc1e54d65161ad10947be07 ****/
+		/****** GeomFill_SectionGenerator::Knots ******/
+		/****** md5 signature: 4ce44c7a3fc1e54d65161ad10947be07 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -12009,8 +12009,8 @@ No available documentation.
 ") Knots;
 		void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** Mults ******************/
-		/**** md5 signature: 010f762aa4509ca765334728b1b5f9d3 ****/
+		/****** GeomFill_SectionGenerator::Mults ******/
+		/****** md5 signature: 010f762aa4509ca765334728b1b5f9d3 ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -12027,8 +12027,8 @@ No available documentation.
 ") Mults;
 		void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 8b634e347a83843e998af17b94636e6a ****/
+		/****** GeomFill_SectionGenerator::Parameter ******/
+		/****** md5 signature: 8b634e347a83843e998af17b94636e6a ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -12045,8 +12045,8 @@ Returns the parameter of section<p>, to impose it for the approximation.
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer P);
 
-		/****************** Section ******************/
-		/**** md5 signature: 941468dc4168033158bf84bf49fd2ff4 ****/
+		/****** GeomFill_SectionGenerator::Section ******/
+		/****** md5 signature: 941468dc4168033158bf84bf49fd2ff4 ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -12069,8 +12069,8 @@ Used for the first and last section the method returns standard_true if the deri
 ") Section;
 		Standard_Boolean Section(const Standard_Integer P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfPnt2d & Poles2d, TColgp_Array1OfVec2d & DPoles2d, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** Section ******************/
-		/**** md5 signature: 29433ba5af12c8cc98ba4cf28193643f ****/
+		/****** GeomFill_SectionGenerator::Section ******/
+		/****** md5 signature: 29433ba5af12c8cc98ba4cf28193643f ******/
 		%feature("compactdefaultargs") Section;
 		%feature("autodoc", "
 Parameters
@@ -12090,8 +12090,8 @@ No available documentation.
 ") Section;
 		void Section(const Standard_Integer P, TColgp_Array1OfPnt & Poles, TColgp_Array1OfPnt2d & Poles2d, TColStd_Array1OfReal & Weigths);
 
-		/****************** SetParam ******************/
-		/**** md5 signature: b95716ca77d413493ee4b317df6cb485 ****/
+		/****** GeomFill_SectionGenerator::SetParam ******/
+		/****** md5 signature: b95716ca77d413493ee4b317df6cb485 ******/
 		%feature("compactdefaultargs") SetParam;
 		%feature("autodoc", "
 Parameters
@@ -12122,8 +12122,8 @@ No available documentation.
 *****************************/
 class GeomFill_SimpleBound : public GeomFill_Boundary {
 	public:
-		/****************** GeomFill_SimpleBound ******************/
-		/**** md5 signature: dc4d80fb194fc40e8b356e68221b1993 ****/
+		/****** GeomFill_SimpleBound::GeomFill_SimpleBound ******/
+		/****** md5 signature: dc4d80fb194fc40e8b356e68221b1993 ******/
 		%feature("compactdefaultargs") GeomFill_SimpleBound;
 		%feature("autodoc", "
 Parameters
@@ -12142,8 +12142,8 @@ Constructs the boundary object defined by the 3d curve. the surface to be built 
 ") GeomFill_SimpleBound;
 		 GeomFill_SimpleBound(const opencascade::handle<Adaptor3d_Curve> & Curve, const Standard_Real Tol3d, const Standard_Real Tolang);
 
-		/****************** Bounds ******************/
-		/**** md5 signature: 618f7ac8e8773975015964105699f46f ****/
+		/****** GeomFill_SimpleBound::Bounds ******/
+		/****** md5 signature: 618f7ac8e8773975015964105699f46f ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -12160,8 +12160,8 @@ No available documentation.
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ****/
+		/****** GeomFill_SimpleBound::D1 ******/
+		/****** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -12180,8 +12180,8 @@ No available documentation.
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
-		/****************** IsDegenerated ******************/
-		/**** md5 signature: 79ce66385cf4dd5e407488fd7c6a2ef0 ****/
+		/****** GeomFill_SimpleBound::IsDegenerated ******/
+		/****** md5 signature: 79ce66385cf4dd5e407488fd7c6a2ef0 ******/
 		%feature("compactdefaultargs") IsDegenerated;
 		%feature("autodoc", "Return
 -------
@@ -12193,8 +12193,8 @@ No available documentation.
 ") IsDegenerated;
 		Standard_Boolean IsDegenerated();
 
-		/****************** Reparametrize ******************/
-		/**** md5 signature: bd7b671d45505164bc59f6ce8496d6d0 ****/
+		/****** GeomFill_SimpleBound::Reparametrize ******/
+		/****** md5 signature: bd7b671d45505164bc59f6ce8496d6d0 ******/
 		%feature("compactdefaultargs") Reparametrize;
 		%feature("autodoc", "
 Parameters
@@ -12217,8 +12217,8 @@ No available documentation.
 ") Reparametrize;
 		void Reparametrize(const Standard_Real First, const Standard_Real Last, const Standard_Boolean HasDF, const Standard_Boolean HasDL, const Standard_Real DF, const Standard_Real DL, const Standard_Boolean Rev);
 
-		/****************** Value ******************/
-		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
+		/****** GeomFill_SimpleBound::Value ******/
+		/****** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -12251,8 +12251,8 @@ No available documentation.
 *************************/
 class GeomFill_Stretch : public GeomFill_Filling {
 	public:
-		/****************** GeomFill_Stretch ******************/
-		/**** md5 signature: 41f33067fd48a3590d98e7ade538a4c7 ****/
+		/****** GeomFill_Stretch::GeomFill_Stretch ******/
+		/****** md5 signature: 41f33067fd48a3590d98e7ade538a4c7 ******/
 		%feature("compactdefaultargs") GeomFill_Stretch;
 		%feature("autodoc", "Return
 -------
@@ -12264,8 +12264,8 @@ No available documentation.
 ") GeomFill_Stretch;
 		 GeomFill_Stretch();
 
-		/****************** GeomFill_Stretch ******************/
-		/**** md5 signature: bd6d1b8bdd9019d915c725313de24d3f ****/
+		/****** GeomFill_Stretch::GeomFill_Stretch ******/
+		/****** md5 signature: bd6d1b8bdd9019d915c725313de24d3f ******/
 		%feature("compactdefaultargs") GeomFill_Stretch;
 		%feature("autodoc", "
 Parameters
@@ -12285,8 +12285,8 @@ No available documentation.
 ") GeomFill_Stretch;
 		 GeomFill_Stretch(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
-		/****************** GeomFill_Stretch ******************/
-		/**** md5 signature: e01a073231883a55d9edf57f955bbdb7 ****/
+		/****** GeomFill_Stretch::GeomFill_Stretch ******/
+		/****** md5 signature: e01a073231883a55d9edf57f955bbdb7 ******/
 		%feature("compactdefaultargs") GeomFill_Stretch;
 		%feature("autodoc", "
 Parameters
@@ -12310,8 +12310,8 @@ No available documentation.
 ") GeomFill_Stretch;
 		 GeomFill_Stretch(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4, const TColStd_Array1OfReal & W1, const TColStd_Array1OfReal & W2, const TColStd_Array1OfReal & W3, const TColStd_Array1OfReal & W4);
 
-		/****************** Init ******************/
-		/**** md5 signature: d3ffe113a485ff934a537831bed2560b ****/
+		/****** GeomFill_Stretch::Init ******/
+		/****** md5 signature: d3ffe113a485ff934a537831bed2560b ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -12331,8 +12331,8 @@ No available documentation.
 ") Init;
 		void Init(const TColgp_Array1OfPnt & P1, const TColgp_Array1OfPnt & P2, const TColgp_Array1OfPnt & P3, const TColgp_Array1OfPnt & P4);
 
-		/****************** Init ******************/
-		/**** md5 signature: 094f730897c039878a8e655c32e65678 ****/
+		/****** GeomFill_Stretch::Init ******/
+		/****** md5 signature: 094f730897c039878a8e655c32e65678 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -12370,8 +12370,8 @@ No available documentation.
 ****************************/
 class GeomFill_TgtOnCoons : public GeomFill_TgtField {
 	public:
-		/****************** GeomFill_TgtOnCoons ******************/
-		/**** md5 signature: f9db6752cf19f01ffe8c0de3e7fd61d6 ****/
+		/****** GeomFill_TgtOnCoons::GeomFill_TgtOnCoons ******/
+		/****** md5 signature: f9db6752cf19f01ffe8c0de3e7fd61d6 ******/
 		%feature("compactdefaultargs") GeomFill_TgtOnCoons;
 		%feature("autodoc", "
 Parameters
@@ -12389,8 +12389,8 @@ No available documentation.
 ") GeomFill_TgtOnCoons;
 		 GeomFill_TgtOnCoons(const opencascade::handle<GeomFill_CoonsAlgPatch> & K, const Standard_Integer I);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 42d862b11603d6c162c9eabde6707d9b ****/
+		/****** GeomFill_TgtOnCoons::D1 ******/
+		/****** md5 signature: 42d862b11603d6c162c9eabde6707d9b ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -12407,8 +12407,8 @@ Computes the derivative of the field of tangency at parameter w.
 ") D1;
 		gp_Vec D1(const Standard_Real W);
 
-		/****************** D1 ******************/
-		/**** md5 signature: e2197b03e817998bb9edb386a43462ba ****/
+		/****** GeomFill_TgtOnCoons::D1 ******/
+		/****** md5 signature: e2197b03e817998bb9edb386a43462ba ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -12427,8 +12427,8 @@ Computes the value and the derivative of the field of tangency at parameter w.
 ") D1;
 		void D1(const Standard_Real W, gp_Vec & T, gp_Vec & DT);
 
-		/****************** Value ******************/
-		/**** md5 signature: 7ecedcaa349ee68ef1012600c127d0d1 ****/
+		/****** GeomFill_TgtOnCoons::Value ******/
+		/****** md5 signature: 7ecedcaa349ee68ef1012600c127d0d1 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -12462,8 +12462,8 @@ Computes the value of the field of tangency at parameter w.
 %nodefaultctor GeomFill_TrihedronWithGuide;
 class GeomFill_TrihedronWithGuide : public GeomFill_TrihedronLaw {
 	public:
-		/****************** CurrentPointOnGuide ******************/
-		/**** md5 signature: 3f10164efb4173e700e58c5603874672 ****/
+		/****** GeomFill_TrihedronWithGuide::CurrentPointOnGuide ******/
+		/****** md5 signature: 3f10164efb4173e700e58c5603874672 ******/
 		%feature("compactdefaultargs") CurrentPointOnGuide;
 		%feature("autodoc", "Return
 -------
@@ -12475,8 +12475,8 @@ Returns the current point on guide found by d0, d1 or d2.
 ") CurrentPointOnGuide;
 		gp_Pnt CurrentPointOnGuide();
 
-		/****************** Guide ******************/
-		/**** md5 signature: 09e47fc31e0ff29ebb6d8706ed5b2098 ****/
+		/****** GeomFill_TrihedronWithGuide::Guide ******/
+		/****** md5 signature: 09e47fc31e0ff29ebb6d8706ed5b2098 ******/
 		%feature("compactdefaultargs") Guide;
 		%feature("autodoc", "Return
 -------
@@ -12488,8 +12488,8 @@ No available documentation.
 ") Guide;
 		virtual opencascade::handle<Adaptor3d_Curve> Guide();
 
-		/****************** Origine ******************/
-		/**** md5 signature: 16919287683a2d5ba18e225cee37cd92 ****/
+		/****** GeomFill_TrihedronWithGuide::Origine ******/
+		/****** md5 signature: 16919287683a2d5ba18e225cee37cd92 ******/
 		%feature("compactdefaultargs") Origine;
 		%feature("autodoc", "
 Parameters
@@ -12523,8 +12523,8 @@ No available documentation.
 ********************************/
 class GeomFill_UniformSection : public GeomFill_SectionLaw {
 	public:
-		/****************** GeomFill_UniformSection ******************/
-		/**** md5 signature: 41b6e34dce2780689a7d85e0f3b351f6 ****/
+		/****** GeomFill_UniformSection::GeomFill_UniformSection ******/
+		/****** md5 signature: 41b6e34dce2780689a7d85e0f3b351f6 ******/
 		%feature("compactdefaultargs") GeomFill_UniformSection;
 		%feature("autodoc", "
 Parameters
@@ -12543,8 +12543,8 @@ Make an constant law with c. [first, last] define law definition domain.
 ") GeomFill_UniformSection;
 		 GeomFill_UniformSection(const opencascade::handle<Geom_Curve> & C, const Standard_Real FirstParameter = 0.0, const Standard_Real LastParameter = 1.0);
 
-		/****************** BSplineSurface ******************/
-		/**** md5 signature: 723eb488e2a06d913977b581dcccba8f ****/
+		/****** GeomFill_UniformSection::BSplineSurface ******/
+		/****** md5 signature: 723eb488e2a06d913977b581dcccba8f ******/
 		%feature("compactdefaultargs") BSplineSurface;
 		%feature("autodoc", "Return
 -------
@@ -12556,8 +12556,8 @@ Give if possible an bspline surface, like iso-v are the section. if it is not po
 ") BSplineSurface;
 		virtual opencascade::handle<Geom_BSplineSurface> BSplineSurface();
 
-		/****************** BarycentreOfSurf ******************/
-		/**** md5 signature: a691940df52b45c198f3414d0790e091 ****/
+		/****** GeomFill_UniformSection::BarycentreOfSurf ******/
+		/****** md5 signature: a691940df52b45c198f3414d0790e091 ******/
 		%feature("compactdefaultargs") BarycentreOfSurf;
 		%feature("autodoc", "Return
 -------
@@ -12569,8 +12569,8 @@ Get the barycentre of surface. an very poor estimation is sufficient. this infor
 ") BarycentreOfSurf;
 		virtual gp_Pnt BarycentreOfSurf();
 
-		/****************** ConstantSection ******************/
-		/**** md5 signature: 86519bb197ca223d0ba2720b381f4036 ****/
+		/****** GeomFill_UniformSection::ConstantSection ******/
+		/****** md5 signature: 86519bb197ca223d0ba2720b381f4036 ******/
 		%feature("compactdefaultargs") ConstantSection;
 		%feature("autodoc", "Return
 -------
@@ -12582,8 +12582,8 @@ Return the constant section if <self> isconstant.
 ") ConstantSection;
 		virtual opencascade::handle<Geom_Curve> ConstantSection();
 
-		/****************** D0 ******************/
-		/**** md5 signature: d889e1bd3dadd721c935f604be609d57 ****/
+		/****** GeomFill_UniformSection::D0 ******/
+		/****** md5 signature: d889e1bd3dadd721c935f604be609d57 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -12602,8 +12602,8 @@ Compute the section for v = param.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColStd_Array1OfReal & Weigths);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 127f80b4c43e681b4262dad7d1db79d7 ****/
+		/****** GeomFill_UniformSection::D1 ******/
+		/****** md5 signature: 127f80b4c43e681b4262dad7d1db79d7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -12624,8 +12624,8 @@ Compute the first derivative in v direction of the section for v = param warning
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e7553cf232323cae7964c205cd5a06a9 ****/
+		/****** GeomFill_UniformSection::D2 ******/
+		/****** md5 signature: e7553cf232323cae7964c205cd5a06a9 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -12648,8 +12648,8 @@ Compute the second derivative in v direction of the section for v = param warnin
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, TColgp_Array1OfPnt & Poles, TColgp_Array1OfVec & DPoles, TColgp_Array1OfVec & D2Poles, TColStd_Array1OfReal & Weigths, TColStd_Array1OfReal & DWeigths, TColStd_Array1OfReal & D2Weigths);
 
-		/****************** GetDomain ******************/
-		/**** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ****/
+		/****** GeomFill_UniformSection::GetDomain ******/
+		/****** md5 signature: 5949ecf80ee7cf5a86623a8a457dd2b9 ******/
 		%feature("compactdefaultargs") GetDomain;
 		%feature("autodoc", "
 Parameters
@@ -12666,8 +12666,8 @@ Gets the bounds of the function parametric domain. warning: this domain it is no
 ") GetDomain;
 		virtual void GetDomain(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetInterval ******************/
-		/**** md5 signature: 5025922809e891f5aa8a2358198f31e4 ****/
+		/****** GeomFill_UniformSection::GetInterval ******/
+		/****** md5 signature: 5025922809e891f5aa8a2358198f31e4 ******/
 		%feature("compactdefaultargs") GetInterval;
 		%feature("autodoc", "
 Parameters
@@ -12684,8 +12684,8 @@ Gets the bounds of the parametric interval on the function.
 ") GetInterval;
 		virtual void GetInterval(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** GetMinimalWeight ******************/
-		/**** md5 signature: 36fb20110448cba55b750bc7db93d222 ****/
+		/****** GeomFill_UniformSection::GetMinimalWeight ******/
+		/****** md5 signature: 36fb20110448cba55b750bc7db93d222 ******/
 		%feature("compactdefaultargs") GetMinimalWeight;
 		%feature("autodoc", "
 Parameters
@@ -12702,8 +12702,8 @@ Compute the minimal value of weight for each poles in all sections. this informa
 ") GetMinimalWeight;
 		virtual void GetMinimalWeight(TColStd_Array1OfReal & Weigths);
 
-		/****************** GetTolerance ******************/
-		/**** md5 signature: 3f6ec4398981d416a51435f14d7cee22 ****/
+		/****** GeomFill_UniformSection::GetTolerance ******/
+		/****** md5 signature: 3f6ec4398981d416a51435f14d7cee22 ******/
 		%feature("compactdefaultargs") GetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -12723,8 +12723,8 @@ Returns the tolerances associated at each poles to reach in approximation, to sa
 ") GetTolerance;
 		virtual void GetTolerance(const Standard_Real BoundTol, const Standard_Real SurfTol, const Standard_Real AngleTol, TColStd_Array1OfReal & Tol3d);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_UniformSection::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -12742,8 +12742,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: b8fcd911afc2577f90f33f0c8d046c8a ****/
+		/****** GeomFill_UniformSection::IsConstant ******/
+		/****** md5 signature: b8fcd911afc2577f90f33f0c8d046c8a ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "
 Parameters
@@ -12759,8 +12759,8 @@ Return true.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant(Standard_Real &OutValue);
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ****/
+		/****** GeomFill_UniformSection::IsRational ******/
+		/****** md5 signature: 2a6f0ec7e4a129780b654d163e7e3b1c ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -12772,8 +12772,8 @@ Returns if the sections are rationnal or not.
 ") IsRational;
 		virtual Standard_Boolean IsRational();
 
-		/****************** IsUPeriodic ******************/
-		/**** md5 signature: ee1d04d096d58c0c69971438c1aa71fc ****/
+		/****** GeomFill_UniformSection::IsUPeriodic ******/
+		/****** md5 signature: ee1d04d096d58c0c69971438c1aa71fc ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -12785,8 +12785,8 @@ Returns if the sections are periodic or not.
 ") IsUPeriodic;
 		virtual Standard_Boolean IsUPeriodic();
 
-		/****************** IsVPeriodic ******************/
-		/**** md5 signature: c62bf083eb7bc6b915c3cdeea2fc8406 ****/
+		/****** GeomFill_UniformSection::IsVPeriodic ******/
+		/****** md5 signature: c62bf083eb7bc6b915c3cdeea2fc8406 ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -12798,8 +12798,8 @@ Returns if the law isperiodic or not.
 ") IsVPeriodic;
 		virtual Standard_Boolean IsVPeriodic();
 
-		/****************** Knots ******************/
-		/**** md5 signature: 25dbe24e24c953c2c68b0d008e63e5d6 ****/
+		/****** GeomFill_UniformSection::Knots ******/
+		/****** md5 signature: 25dbe24e24c953c2c68b0d008e63e5d6 ******/
 		%feature("compactdefaultargs") Knots;
 		%feature("autodoc", "
 Parameters
@@ -12816,8 +12816,8 @@ Get the knots of the section.
 ") Knots;
 		virtual void Knots(TColStd_Array1OfReal & TKnots);
 
-		/****************** MaximalSection ******************/
-		/**** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ****/
+		/****** GeomFill_UniformSection::MaximalSection ******/
+		/****** md5 signature: b8f0d759fcd21b95d400b3aae3c12cfc ******/
 		%feature("compactdefaultargs") MaximalSection;
 		%feature("autodoc", "Return
 -------
@@ -12829,8 +12829,8 @@ Returns the length of the greater section. this information is useful to g1's co
 ") MaximalSection;
 		virtual Standard_Real MaximalSection();
 
-		/****************** Mults ******************/
-		/**** md5 signature: 033dc1fab9e10e705c796ffc1e03a44d ****/
+		/****** GeomFill_UniformSection::Mults ******/
+		/****** md5 signature: 033dc1fab9e10e705c796ffc1e03a44d ******/
 		%feature("compactdefaultargs") Mults;
 		%feature("autodoc", "
 Parameters
@@ -12847,8 +12847,8 @@ Get the multplicities of the section.
 ") Mults;
 		virtual void Mults(TColStd_Array1OfInteger & TMults);
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_UniformSection::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -12865,8 +12865,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** SectionShape ******************/
-		/**** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ****/
+		/****** GeomFill_UniformSection::SectionShape ******/
+		/****** md5 signature: 4b057291e9e338f8d299ce252e7fb36b ******/
 		%feature("compactdefaultargs") SectionShape;
 		%feature("autodoc", "
 Parameters
@@ -12884,8 +12884,8 @@ Get the format of an section.
 ") SectionShape;
 		virtual void SectionShape(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_UniformSection::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -12919,8 +12919,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 **********************************/
 class GeomFill_GuideTrihedronAC : public GeomFill_TrihedronWithGuide {
 	public:
-		/****************** GeomFill_GuideTrihedronAC ******************/
-		/**** md5 signature: b3b260cc8039974b28f456867aa004c0 ****/
+		/****** GeomFill_GuideTrihedronAC::GeomFill_GuideTrihedronAC ******/
+		/****** md5 signature: b3b260cc8039974b28f456867aa004c0 ******/
 		%feature("compactdefaultargs") GeomFill_GuideTrihedronAC;
 		%feature("autodoc", "
 Parameters
@@ -12937,8 +12937,8 @@ No available documentation.
 ") GeomFill_GuideTrihedronAC;
 		 GeomFill_GuideTrihedronAC(const opencascade::handle<Adaptor3d_Curve> & guide);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
+		/****** GeomFill_GuideTrihedronAC::Copy ******/
+		/****** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -12950,8 +12950,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_TrihedronLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ****/
+		/****** GeomFill_GuideTrihedronAC::D0 ******/
+		/****** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -12971,8 +12971,8 @@ No available documentation.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
+		/****** GeomFill_GuideTrihedronAC::D1 ******/
+		/****** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -12995,8 +12995,8 @@ No available documentation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
+		/****** GeomFill_GuideTrihedronAC::D2 ******/
+		/****** md5 signature: e308ebcce924017ac2cd5d4701d10219 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -13022,8 +13022,8 @@ No available documentation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ****/
+		/****** GeomFill_GuideTrihedronAC::GetAverageLaw ******/
+		/****** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -13042,8 +13042,8 @@ Get average value of m(t) and v(t) it is usfull to make fast approximation of ra
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
-		/****************** Guide ******************/
-		/**** md5 signature: 17558c6f9257708f1da49899c586c13c ****/
+		/****** GeomFill_GuideTrihedronAC::Guide ******/
+		/****** md5 signature: 17558c6f9257708f1da49899c586c13c ******/
 		%feature("compactdefaultargs") Guide;
 		%feature("autodoc", "Return
 -------
@@ -13055,8 +13055,8 @@ No available documentation.
 ") Guide;
 		virtual opencascade::handle<Adaptor3d_Curve> Guide();
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_GuideTrihedronAC::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -13074,8 +13074,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ****/
+		/****** GeomFill_GuideTrihedronAC::IsConstant ******/
+		/****** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -13087,8 +13087,8 @@ Say if the law is constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
-		/****************** IsOnlyBy3dCurve ******************/
-		/**** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ****/
+		/****** GeomFill_GuideTrihedronAC::IsOnlyBy3dCurve ******/
+		/****** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ******/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
 		%feature("autodoc", "Return
 -------
@@ -13100,8 +13100,8 @@ Say if the law is defined, only by the 3d geometry of the set curve return false
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_GuideTrihedronAC::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -13118,8 +13118,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** Origine ******************/
-		/**** md5 signature: 7e4cf323c0179191614321290ceee376 ****/
+		/****** GeomFill_GuideTrihedronAC::Origine ******/
+		/****** md5 signature: 7e4cf323c0179191614321290ceee376 ******/
 		%feature("compactdefaultargs") Origine;
 		%feature("autodoc", "
 Parameters
@@ -13137,8 +13137,8 @@ No available documentation.
 ") Origine;
 		virtual void Origine(const Standard_Real OrACR1, const Standard_Real OrACR2);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ****/
+		/****** GeomFill_GuideTrihedronAC::SetCurve ******/
+		/****** md5 signature: b0541b7921a5c5b75a45dc913166e3d3 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -13155,8 +13155,8 @@ Initialize curve of trihedron law return standard_true.
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & C);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_GuideTrihedronAC::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -13190,8 +13190,8 @@ Sets the bounds of the parametric interval on the function this determines the d
 ************************************/
 class GeomFill_GuideTrihedronPlan : public GeomFill_TrihedronWithGuide {
 	public:
-		/****************** GeomFill_GuideTrihedronPlan ******************/
-		/**** md5 signature: 0e4f012fb4a92ecb65e9205ba6b0adce ****/
+		/****** GeomFill_GuideTrihedronPlan::GeomFill_GuideTrihedronPlan ******/
+		/****** md5 signature: 0e4f012fb4a92ecb65e9205ba6b0adce ******/
 		%feature("compactdefaultargs") GeomFill_GuideTrihedronPlan;
 		%feature("autodoc", "
 Parameters
@@ -13208,8 +13208,8 @@ No available documentation.
 ") GeomFill_GuideTrihedronPlan;
 		 GeomFill_GuideTrihedronPlan(const opencascade::handle<Adaptor3d_Curve> & theGuide);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ****/
+		/****** GeomFill_GuideTrihedronPlan::Copy ******/
+		/****** md5 signature: 9645e7734f6f9fcd3bd1e528a8c82987 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -13221,8 +13221,8 @@ No available documentation.
 ") Copy;
 		virtual opencascade::handle<GeomFill_TrihedronLaw> Copy();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ****/
+		/****** GeomFill_GuideTrihedronPlan::D0 ******/
+		/****** md5 signature: 8127a750255133d6fe0cc96880f4f1ab ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -13242,8 +13242,8 @@ No available documentation.
 ") D0;
 		virtual Standard_Boolean D0(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & Normal, gp_Vec & BiNormal);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ****/
+		/****** GeomFill_GuideTrihedronPlan::D1 ******/
+		/****** md5 signature: 7b1b7607df3259d1ef02c15ca0ffdd69 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -13266,8 +13266,8 @@ No available documentation.
 ") D1;
 		virtual Standard_Boolean D1(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & BiNormal, gp_Vec & DBiNormal);
 
-		/****************** D2 ******************/
-		/**** md5 signature: e308ebcce924017ac2cd5d4701d10219 ****/
+		/****** GeomFill_GuideTrihedronPlan::D2 ******/
+		/****** md5 signature: e308ebcce924017ac2cd5d4701d10219 ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -13293,8 +13293,8 @@ No available documentation.
 ") D2;
 		virtual Standard_Boolean D2(const Standard_Real Param, gp_Vec & Tangent, gp_Vec & DTangent, gp_Vec & D2Tangent, gp_Vec & Normal, gp_Vec & DNormal, gp_Vec & D2Normal, gp_Vec & BiNormal, gp_Vec & DBiNormal, gp_Vec & D2BiNormal);
 
-		/****************** ErrorStatus ******************/
-		/**** md5 signature: 0524df84e8d9c275d5bcd5d3fe7977dc ****/
+		/****** GeomFill_GuideTrihedronPlan::ErrorStatus ******/
+		/****** md5 signature: 0524df84e8d9c275d5bcd5d3fe7977dc ******/
 		%feature("compactdefaultargs") ErrorStatus;
 		%feature("autodoc", "Return
 -------
@@ -13306,8 +13306,8 @@ Give a status to the law returns pipeok (default implementation).
 ") ErrorStatus;
 		virtual GeomFill_PipeError ErrorStatus();
 
-		/****************** GetAverageLaw ******************/
-		/**** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ****/
+		/****** GeomFill_GuideTrihedronPlan::GetAverageLaw ******/
+		/****** md5 signature: e4ba5f43e35cc3444d51c5ee4d7b6fff ******/
 		%feature("compactdefaultargs") GetAverageLaw;
 		%feature("autodoc", "
 Parameters
@@ -13326,8 +13326,8 @@ Get average value of m(t) and v(t) it is usfull to make fast approximation of ra
 ") GetAverageLaw;
 		virtual void GetAverageLaw(gp_Vec & ATangent, gp_Vec & ANormal, gp_Vec & ABiNormal);
 
-		/****************** Guide ******************/
-		/**** md5 signature: 17558c6f9257708f1da49899c586c13c ****/
+		/****** GeomFill_GuideTrihedronPlan::Guide ******/
+		/****** md5 signature: 17558c6f9257708f1da49899c586c13c ******/
 		%feature("compactdefaultargs") Guide;
 		%feature("autodoc", "Return
 -------
@@ -13339,8 +13339,8 @@ No available documentation.
 ") Guide;
 		virtual opencascade::handle<Adaptor3d_Curve> Guide();
 
-		/****************** Intervals ******************/
-		/**** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ****/
+		/****** GeomFill_GuideTrihedronPlan::Intervals ******/
+		/****** md5 signature: 89fb47d5d3721d82826a17cc788156e4 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -13358,8 +13358,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		virtual void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsConstant ******************/
-		/**** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ****/
+		/****** GeomFill_GuideTrihedronPlan::IsConstant ******/
+		/****** md5 signature: 117737bfe11f2fa5e6c2b702110a9201 ******/
 		%feature("compactdefaultargs") IsConstant;
 		%feature("autodoc", "Return
 -------
@@ -13371,8 +13371,8 @@ Say if the law is constant.
 ") IsConstant;
 		virtual Standard_Boolean IsConstant();
 
-		/****************** IsOnlyBy3dCurve ******************/
-		/**** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ****/
+		/****** GeomFill_GuideTrihedronPlan::IsOnlyBy3dCurve ******/
+		/****** md5 signature: dce50a0e4caf3b6774af0413898e9c4b ******/
 		%feature("compactdefaultargs") IsOnlyBy3dCurve;
 		%feature("autodoc", "Return
 -------
@@ -13384,8 +13384,8 @@ Say if the law is defined, only by the 3d geometry of the set curve return false
 ") IsOnlyBy3dCurve;
 		virtual Standard_Boolean IsOnlyBy3dCurve();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ****/
+		/****** GeomFill_GuideTrihedronPlan::NbIntervals ******/
+		/****** md5 signature: f69f597bd42e14bdc81d20aa650b3d54 ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -13402,8 +13402,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** Origine ******************/
-		/**** md5 signature: 7e4cf323c0179191614321290ceee376 ****/
+		/****** GeomFill_GuideTrihedronPlan::Origine ******/
+		/****** md5 signature: 7e4cf323c0179191614321290ceee376 ******/
 		%feature("compactdefaultargs") Origine;
 		%feature("autodoc", "
 Parameters
@@ -13421,8 +13421,8 @@ No available documentation.
 ") Origine;
 		virtual void Origine(const Standard_Real OrACR1, const Standard_Real OrACR2);
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: 855db3d4cb52339d3bce0cd3d9c66477 ****/
+		/****** GeomFill_GuideTrihedronPlan::SetCurve ******/
+		/****** md5 signature: 855db3d4cb52339d3bce0cd3d9c66477 ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -13439,8 +13439,8 @@ Initialize curve of trihedron law return standard_true in case if execution end 
 ") SetCurve;
 		virtual Standard_Boolean SetCurve(const opencascade::handle<Adaptor3d_Curve> & thePath);
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 09d00fda8057705f50d4a0bf656696ed ****/
+		/****** GeomFill_GuideTrihedronPlan::SetInterval ******/
+		/****** md5 signature: 09d00fda8057705f50d4a0bf656696ed ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters

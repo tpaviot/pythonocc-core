@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPMAT2DDOCSTRING
 "BRepMAT2d module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepmat2d.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepmat2d.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPMAT2DDOCSTRING) BRepMAT2d
 
@@ -102,8 +102,8 @@ typedef NCollection_DataMap<TopoDS_Shape, MAT_SequenceOfBasicElt, TopTools_Shape
 *********************************/
 class BRepMAT2d_BisectingLocus {
 	public:
-		/****************** BRepMAT2d_BisectingLocus ******************/
-		/**** md5 signature: 1c9f589ed2119f39637c75c4919e8aaa ****/
+		/****** BRepMAT2d_BisectingLocus::BRepMAT2d_BisectingLocus ******/
+		/****** md5 signature: 1c9f589ed2119f39637c75c4919e8aaa ******/
 		%feature("compactdefaultargs") BRepMAT2d_BisectingLocus;
 		%feature("autodoc", "Return
 -------
@@ -115,8 +115,8 @@ No available documentation.
 ") BRepMAT2d_BisectingLocus;
 		 BRepMAT2d_BisectingLocus();
 
-		/****************** BasicElt ******************/
-		/**** md5 signature: 3d0067523ed5e0250793c967c6e6f2f8 ****/
+		/****** BRepMAT2d_BisectingLocus::BasicElt ******/
+		/****** md5 signature: 3d0067523ed5e0250793c967c6e6f2f8 ******/
 		%feature("compactdefaultargs") BasicElt;
 		%feature("autodoc", "
 Parameters
@@ -134,8 +134,8 @@ Returns the basicelts located at the position <index> on the contour designed by
 ") BasicElt;
 		opencascade::handle<MAT_BasicElt> BasicElt(const Standard_Integer IndLine, const Standard_Integer Index);
 
-		/****************** Compute ******************/
-		/**** md5 signature: b86912005db7017db1b8639215ff1b3f ****/
+		/****** BRepMAT2d_BisectingLocus::Compute ******/
+		/****** md5 signature: b86912005db7017db1b8639215ff1b3f ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -156,8 +156,8 @@ Computation of the bisector_locus in a set of lines defined in <anexplo>. the bi
 ") Compute;
 		void Compute(BRepMAT2d_Explorer & anExplo, const Standard_Integer LineIndex = 1, const MAT_Side aSide = MAT_Left, const GeomAbs_JoinType aJoinType = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
 
-		/****************** GeomBis ******************/
-		/**** md5 signature: fc928757a87c93f00c8941a3d64abfe5 ****/
+		/****** BRepMAT2d_BisectingLocus::GeomBis ******/
+		/****** md5 signature: fc928757a87c93f00c8941a3d64abfe5 ******/
 		%feature("compactdefaultargs") GeomBis;
 		%feature("autodoc", "
 Parameters
@@ -174,8 +174,8 @@ Returns the geometry of type <bissec> linked to the arc <arc>. <reverse> is fals
 ") GeomBis;
 		Bisector_Bisec GeomBis(const opencascade::handle<MAT_Arc> & anArc, Standard_Boolean &OutValue);
 
-		/****************** GeomElt ******************/
-		/**** md5 signature: 3094b05485b558a0b6ada2e506bda25a ****/
+		/****** BRepMAT2d_BisectingLocus::GeomElt ******/
+		/****** md5 signature: 3094b05485b558a0b6ada2e506bda25a ******/
 		%feature("compactdefaultargs") GeomElt;
 		%feature("autodoc", "
 Parameters
@@ -192,8 +192,8 @@ Returns the geometry linked to the <basicelt>.
 ") GeomElt;
 		opencascade::handle<Geom2d_Geometry> GeomElt(const opencascade::handle<MAT_BasicElt> & aBasicElt);
 
-		/****************** GeomElt ******************/
-		/**** md5 signature: f5f102fded3cad27f433e1250d746e27 ****/
+		/****** BRepMAT2d_BisectingLocus::GeomElt ******/
+		/****** md5 signature: f5f102fded3cad27f433e1250d746e27 ******/
 		%feature("compactdefaultargs") GeomElt;
 		%feature("autodoc", "
 Parameters
@@ -210,8 +210,8 @@ Returns the geometry of type <gp> linked to the <node>.
 ") GeomElt;
 		gp_Pnt2d GeomElt(const opencascade::handle<MAT_Node> & aNode);
 
-		/****************** Graph ******************/
-		/**** md5 signature: 6513aaaee674215ea3a22bbe7f65bd68 ****/
+		/****** BRepMAT2d_BisectingLocus::Graph ******/
+		/****** md5 signature: 6513aaaee674215ea3a22bbe7f65bd68 ******/
 		%feature("compactdefaultargs") Graph;
 		%feature("autodoc", "Return
 -------
@@ -223,8 +223,8 @@ Returns <thegraph> of <self>.
 ") Graph;
 		opencascade::handle<MAT_Graph> Graph();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** BRepMAT2d_BisectingLocus::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -236,8 +236,8 @@ Returns true if compute has succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** NumberOfContours ******************/
-		/**** md5 signature: 466b646e5536f1219bac12e9b35bbe15 ****/
+		/****** BRepMAT2d_BisectingLocus::NumberOfContours ******/
+		/****** md5 signature: 466b646e5536f1219bac12e9b35bbe15 ******/
 		%feature("compactdefaultargs") NumberOfContours;
 		%feature("autodoc", "Return
 -------
@@ -249,8 +249,8 @@ Returns the number of contours.
 ") NumberOfContours;
 		Standard_Integer NumberOfContours();
 
-		/****************** NumberOfElts ******************/
-		/**** md5 signature: 99801e5526ee454661c76118ded5fb34 ****/
+		/****** BRepMAT2d_BisectingLocus::NumberOfElts ******/
+		/****** md5 signature: 99801e5526ee454661c76118ded5fb34 ******/
 		%feature("compactdefaultargs") NumberOfElts;
 		%feature("autodoc", "
 Parameters
@@ -267,8 +267,8 @@ Returns the number of basicelts on the line <indline>.
 ") NumberOfElts;
 		Standard_Integer NumberOfElts(const Standard_Integer IndLine);
 
-		/****************** NumberOfSections ******************/
-		/**** md5 signature: fb6c2648dc8f1b7e426fa3af236d1d9a ****/
+		/****** BRepMAT2d_BisectingLocus::NumberOfSections ******/
+		/****** md5 signature: fb6c2648dc8f1b7e426fa3af236d1d9a ******/
 		%feature("compactdefaultargs") NumberOfSections;
 		%feature("autodoc", "
 Parameters
@@ -300,8 +300,8 @@ Returns the number of sections of a curve. this curve is the indexth curve in th
 ***************************/
 class BRepMAT2d_Explorer {
 	public:
-		/****************** BRepMAT2d_Explorer ******************/
-		/**** md5 signature: fa74fa874c29b3a1144a1efb889c4543 ****/
+		/****** BRepMAT2d_Explorer::BRepMAT2d_Explorer ******/
+		/****** md5 signature: fa74fa874c29b3a1144a1efb889c4543 ******/
 		%feature("compactdefaultargs") BRepMAT2d_Explorer;
 		%feature("autodoc", "Return
 -------
@@ -313,8 +313,8 @@ No available documentation.
 ") BRepMAT2d_Explorer;
 		 BRepMAT2d_Explorer();
 
-		/****************** BRepMAT2d_Explorer ******************/
-		/**** md5 signature: 54cc4fcdafcf467ff86c79d6c6b71792 ****/
+		/****** BRepMAT2d_Explorer::BRepMAT2d_Explorer ******/
+		/****** md5 signature: 54cc4fcdafcf467ff86c79d6c6b71792 ******/
 		%feature("compactdefaultargs") BRepMAT2d_Explorer;
 		%feature("autodoc", "
 Parameters
@@ -331,8 +331,8 @@ No available documentation.
 ") BRepMAT2d_Explorer;
 		 BRepMAT2d_Explorer(const TopoDS_Face & aFace);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** BRepMAT2d_Explorer::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -344,8 +344,8 @@ Clear the contents of <self>.
 ") Clear;
 		void Clear();
 
-		/****************** Contour ******************/
-		/**** md5 signature: 0abd7c353f6b45daa5e0b5bd0f6b7766 ****/
+		/****** BRepMAT2d_Explorer::Contour ******/
+		/****** md5 signature: 0abd7c353f6b45daa5e0b5bd0f6b7766 ******/
 		%feature("compactdefaultargs") Contour;
 		%feature("autodoc", "
 Parameters
@@ -362,8 +362,8 @@ No available documentation.
 ") Contour;
 		TColGeom2d_SequenceOfCurve Contour(const Standard_Integer IndexContour);
 
-		/****************** GetIsClosed ******************/
-		/**** md5 signature: fe2549f56b3cb80b5c2da5e5e50f62a0 ****/
+		/****** BRepMAT2d_Explorer::GetIsClosed ******/
+		/****** md5 signature: fe2549f56b3cb80b5c2da5e5e50f62a0 ******/
 		%feature("compactdefaultargs") GetIsClosed;
 		%feature("autodoc", "Return
 -------
@@ -375,8 +375,8 @@ No available documentation.
 ") GetIsClosed;
 		const TColStd_SequenceOfBoolean & GetIsClosed();
 
-		/****************** Init ******************/
-		/**** md5 signature: 488a24dcd1db8a348e37bafc2ae6f6b7 ****/
+		/****** BRepMAT2d_Explorer::Init ******/
+		/****** md5 signature: 488a24dcd1db8a348e37bafc2ae6f6b7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -393,8 +393,8 @@ Initialisation of an iterator on the curves of the contour number <indexcontour>
 ") Init;
 		void Init(const Standard_Integer IndexContour);
 
-		/****************** IsModified ******************/
-		/**** md5 signature: 54da3346406078b7c7a1e3bef5b4bfbf ****/
+		/****** BRepMAT2d_Explorer::IsModified ******/
+		/****** md5 signature: 54da3346406078b7c7a1e3bef5b4bfbf ******/
 		%feature("compactdefaultargs") IsModified;
 		%feature("autodoc", "
 Parameters
@@ -411,8 +411,8 @@ No available documentation.
 ") IsModified;
 		Standard_Boolean IsModified(const TopoDS_Shape & aShape);
 
-		/****************** ModifiedShape ******************/
-		/**** md5 signature: 4cc3fd5d5aff0bcce310ec88a2345639 ****/
+		/****** BRepMAT2d_Explorer::ModifiedShape ******/
+		/****** md5 signature: 4cc3fd5d5aff0bcce310ec88a2345639 ******/
 		%feature("compactdefaultargs") ModifiedShape;
 		%feature("autodoc", "
 Parameters
@@ -429,8 +429,8 @@ If the shape is not modified, returns the shape itself.
 ") ModifiedShape;
 		TopoDS_Shape ModifiedShape(const TopoDS_Shape & aShape);
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** BRepMAT2d_Explorer::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -442,8 +442,8 @@ Return false if there is no more curves on the contour initialised by the method
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** BRepMAT2d_Explorer::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -455,8 +455,8 @@ Move to the next curve of the current contour.
 ") Next;
 		void Next();
 
-		/****************** NumberOfContours ******************/
-		/**** md5 signature: 466b646e5536f1219bac12e9b35bbe15 ****/
+		/****** BRepMAT2d_Explorer::NumberOfContours ******/
+		/****** md5 signature: 466b646e5536f1219bac12e9b35bbe15 ******/
 		%feature("compactdefaultargs") NumberOfContours;
 		%feature("autodoc", "Return
 -------
@@ -468,8 +468,8 @@ Returns the number of contours.
 ") NumberOfContours;
 		Standard_Integer NumberOfContours();
 
-		/****************** NumberOfCurves ******************/
-		/**** md5 signature: bbc17284909b7a04d80469d6df5d679d ****/
+		/****** BRepMAT2d_Explorer::NumberOfCurves ******/
+		/****** md5 signature: bbc17284909b7a04d80469d6df5d679d ******/
 		%feature("compactdefaultargs") NumberOfCurves;
 		%feature("autodoc", "
 Parameters
@@ -486,8 +486,8 @@ Returns the number of curves in the contour number <indexcontour>.
 ") NumberOfCurves;
 		Standard_Integer NumberOfCurves(const Standard_Integer IndexContour);
 
-		/****************** Perform ******************/
-		/**** md5 signature: c84f1304d8c6b6741bee2823ebd22589 ****/
+		/****** BRepMAT2d_Explorer::Perform ******/
+		/****** md5 signature: c84f1304d8c6b6741bee2823ebd22589 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -504,8 +504,8 @@ No available documentation.
 ") Perform;
 		void Perform(const TopoDS_Face & aFace);
 
-		/****************** Shape ******************/
-		/**** md5 signature: 3aece276415d56b8bd9afa5bf371db57 ****/
+		/****** BRepMAT2d_Explorer::Shape ******/
+		/****** md5 signature: 3aece276415d56b8bd9afa5bf371db57 ******/
 		%feature("compactdefaultargs") Shape;
 		%feature("autodoc", "Return
 -------
@@ -517,8 +517,8 @@ No available documentation.
 ") Shape;
 		TopoDS_Shape Shape();
 
-		/****************** Value ******************/
-		/**** md5 signature: 5ee7c7b75ee4ebc058a6e98f3b655bda ****/
+		/****** BRepMAT2d_Explorer::Value ******/
+		/****** md5 signature: 5ee7c7b75ee4ebc058a6e98f3b655bda ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -544,8 +544,8 @@ Returns the current curve on the current contour.
 *******************************/
 class BRepMAT2d_LinkTopoBilo {
 	public:
-		/****************** BRepMAT2d_LinkTopoBilo ******************/
-		/**** md5 signature: 1cd1ab766f92fced8a2bdbf812bbef03 ****/
+		/****** BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo ******/
+		/****** md5 signature: 1cd1ab766f92fced8a2bdbf812bbef03 ******/
 		%feature("compactdefaultargs") BRepMAT2d_LinkTopoBilo;
 		%feature("autodoc", "Return
 -------
@@ -557,8 +557,8 @@ No available documentation.
 ") BRepMAT2d_LinkTopoBilo;
 		 BRepMAT2d_LinkTopoBilo();
 
-		/****************** BRepMAT2d_LinkTopoBilo ******************/
-		/**** md5 signature: 2dc1f521964433428cc7c428c56642c2 ****/
+		/****** BRepMAT2d_LinkTopoBilo::BRepMAT2d_LinkTopoBilo ******/
+		/****** md5 signature: 2dc1f521964433428cc7c428c56642c2 ******/
 		%feature("compactdefaultargs") BRepMAT2d_LinkTopoBilo;
 		%feature("autodoc", "
 Parameters
@@ -576,8 +576,8 @@ Constructs the links between s and bilo. //! raises if <s> is not a face.
 ") BRepMAT2d_LinkTopoBilo;
 		 BRepMAT2d_LinkTopoBilo(const BRepMAT2d_Explorer & Explo, const BRepMAT2d_BisectingLocus & BiLo);
 
-		/****************** GeneratingShape ******************/
-		/**** md5 signature: fd0c19244afd2eedb4578380434efe72 ****/
+		/****** BRepMAT2d_LinkTopoBilo::GeneratingShape ******/
+		/****** md5 signature: fd0c19244afd2eedb4578380434efe72 ******/
 		%feature("compactdefaultargs") GeneratingShape;
 		%feature("autodoc", "
 Parameters
@@ -594,8 +594,8 @@ Returns the shape linked to <abe>.
 ") GeneratingShape;
 		TopoDS_Shape GeneratingShape(const opencascade::handle<MAT_BasicElt> & aBE);
 
-		/****************** Init ******************/
-		/**** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ****/
+		/****** BRepMAT2d_LinkTopoBilo::Init ******/
+		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -612,8 +612,8 @@ Initialise the iterator on <s> <s> is an edge or a vertex of the initial wire or
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
-		/****************** More ******************/
-		/**** md5 signature: f2144011648ae849666b28430a27a0ea ****/
+		/****** BRepMAT2d_LinkTopoBilo::More ******/
+		/****** md5 signature: f2144011648ae849666b28430a27a0ea ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -625,8 +625,8 @@ Returns true if there is a current basicelt.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** BRepMAT2d_LinkTopoBilo::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -638,8 +638,8 @@ Proceed to the next basicelt.
 ") Next;
 		void Next();
 
-		/****************** Perform ******************/
-		/**** md5 signature: e58f0cdf711f332828907215f894ed67 ****/
+		/****** BRepMAT2d_LinkTopoBilo::Perform ******/
+		/****** md5 signature: e58f0cdf711f332828907215f894ed67 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -657,8 +657,8 @@ Constructs the links between s and bilo. //! raises if <s> is not a face or a wi
 ") Perform;
 		void Perform(const BRepMAT2d_Explorer & Explo, const BRepMAT2d_BisectingLocus & BiLo);
 
-		/****************** Value ******************/
-		/**** md5 signature: 2aa6c89e250a68722ac2342ac35acc59 ****/
+		/****** BRepMAT2d_LinkTopoBilo::Value ******/
+		/****** md5 signature: 2aa6c89e250a68722ac2342ac35acc59 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------

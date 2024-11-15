@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTTOOLSDOCSTRING
 "IntTools module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_inttools.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_inttools.html"
 %enddef
 %module (package="OCC.Core", docstring=INTTOOLSDOCSTRING) IntTools
 
@@ -237,8 +237,8 @@ typedef NCollection_Sequence<IntTools_Root> IntTools_SequenceOfRoots;
 %rename(inttools) IntTools;
 class IntTools {
 	public:
-		/****************** FindRootStates ******************/
-		/**** md5 signature: c8523d4252dcd1c41e362a17e26b9c2d ****/
+		/****** IntTools::FindRootStates ******/
+		/****** md5 signature: c8523d4252dcd1c41e362a17e26b9c2d ******/
 		%feature("compactdefaultargs") FindRootStates;
 		%feature("autodoc", "
 Parameters
@@ -256,8 +256,8 @@ Find the states (before and after) for each root from the sequence aseq.
 ") FindRootStates;
 		static void FindRootStates(IntTools_SequenceOfRoots & aSeq, const Standard_Real anEpsNull);
 
-		/****************** GetRadius ******************/
-		/**** md5 signature: ebb9a3a6ab13c6cdada34d26544cc9b4 ****/
+		/****** IntTools::GetRadius ******/
+		/****** md5 signature: ebb9a3a6ab13c6cdada34d26544cc9b4 ******/
 		%feature("compactdefaultargs") GetRadius;
 		%feature("autodoc", "
 Parameters
@@ -276,8 +276,8 @@ No available documentation.
 ") GetRadius;
 		static Standard_Integer GetRadius(const BRepAdaptor_Curve & C, const Standard_Real t1, const Standard_Real t3, Standard_Real &OutValue);
 
-		/****************** Length ******************/
-		/**** md5 signature: fedfe5a7d041fc303d9b54c2f39dbbf1 ****/
+		/****** IntTools::Length ******/
+		/****** md5 signature: fedfe5a7d041fc303d9b54c2f39dbbf1 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "
 Parameters
@@ -294,8 +294,8 @@ Returns the length of the edge;.
 ") Length;
 		static Standard_Real Length(const TopoDS_Edge & E);
 
-		/****************** Parameter ******************/
-		/**** md5 signature: 66759e79aa637f03b445d32db9b6547f ****/
+		/****** IntTools::Parameter ******/
+		/****** md5 signature: 66759e79aa637f03b445d32db9b6547f ******/
 		%feature("compactdefaultargs") Parameter;
 		%feature("autodoc", "
 Parameters
@@ -313,8 +313,8 @@ No available documentation.
 ") Parameter;
 		static Standard_Integer Parameter(const gp_Pnt & P, const opencascade::handle<Geom_Curve> & Curve, Standard_Real &OutValue);
 
-		/****************** PrepareArgs ******************/
-		/**** md5 signature: db11865e519dd2b6c4899b1e9a125409 ****/
+		/****** IntTools::PrepareArgs ******/
+		/****** md5 signature: db11865e519dd2b6c4899b1e9a125409 ******/
 		%feature("compactdefaultargs") PrepareArgs;
 		%feature("autodoc", "
 Parameters
@@ -336,8 +336,8 @@ No available documentation.
 ") PrepareArgs;
 		static Standard_Integer PrepareArgs(BRepAdaptor_Curve & C, const Standard_Real tMax, const Standard_Real tMin, const Standard_Integer Discret, const Standard_Real Deflect, TColStd_Array1OfReal & anArgs);
 
-		/****************** RemoveIdenticalRoots ******************/
-		/**** md5 signature: 105777c711c5ed7389810d8aa8b35c2b ****/
+		/****** IntTools::RemoveIdenticalRoots ******/
+		/****** md5 signature: 105777c711c5ed7389810d8aa8b35c2b ******/
 		%feature("compactdefaultargs") RemoveIdenticalRoots;
 		%feature("autodoc", "
 Parameters
@@ -355,8 +355,8 @@ Remove from the sequence aseq the roots that have values ti and tj such as |ti-t
 ") RemoveIdenticalRoots;
 		static void RemoveIdenticalRoots(IntTools_SequenceOfRoots & aSeq, const Standard_Real anEpsT);
 
-		/****************** SortRoots ******************/
-		/**** md5 signature: b0ecb73396f4953e96f152f925a6cdf5 ****/
+		/****** IntTools::SortRoots ******/
+		/****** md5 signature: b0ecb73396f4953e96f152f925a6cdf5 ******/
 		%feature("compactdefaultargs") SortRoots;
 		%feature("autodoc", "
 Parameters
@@ -388,8 +388,8 @@ Sort the sequence aseq of the roots to arrange the roots in increasing order.
 *********************************/
 class IntTools_BaseRangeSample {
 	public:
-		/****************** IntTools_BaseRangeSample ******************/
-		/**** md5 signature: 548c6fa8e9f4e6206978e24297ee5e8b ****/
+		/****** IntTools_BaseRangeSample::IntTools_BaseRangeSample ******/
+		/****** md5 signature: 548c6fa8e9f4e6206978e24297ee5e8b ******/
 		%feature("compactdefaultargs") IntTools_BaseRangeSample;
 		%feature("autodoc", "Return
 -------
@@ -401,8 +401,8 @@ No available documentation.
 ") IntTools_BaseRangeSample;
 		 IntTools_BaseRangeSample();
 
-		/****************** IntTools_BaseRangeSample ******************/
-		/**** md5 signature: 4e59068351d36c15d01056928d2cfd8a ****/
+		/****** IntTools_BaseRangeSample::IntTools_BaseRangeSample ******/
+		/****** md5 signature: 4e59068351d36c15d01056928d2cfd8a ******/
 		%feature("compactdefaultargs") IntTools_BaseRangeSample;
 		%feature("autodoc", "
 Parameters
@@ -419,8 +419,8 @@ No available documentation.
 ") IntTools_BaseRangeSample;
 		 IntTools_BaseRangeSample(const Standard_Integer theDepth);
 
-		/****************** GetDepth ******************/
-		/**** md5 signature: 3240086606b0522e674383dfc59a8226 ****/
+		/****** IntTools_BaseRangeSample::GetDepth ******/
+		/****** md5 signature: 3240086606b0522e674383dfc59a8226 ******/
 		%feature("compactdefaultargs") GetDepth;
 		%feature("autodoc", "Return
 -------
@@ -432,8 +432,8 @@ No available documentation.
 ") GetDepth;
 		Standard_Integer GetDepth();
 
-		/****************** SetDepth ******************/
-		/**** md5 signature: 5e77e638430ea7a494f4d91f424ddb79 ****/
+		/****** IntTools_BaseRangeSample::SetDepth ******/
+		/****** md5 signature: 5e77e638430ea7a494f4d91f424ddb79 ******/
 		%feature("compactdefaultargs") SetDepth;
 		%feature("autodoc", "
 Parameters
@@ -464,8 +464,8 @@ No available documentation.
 *************************************/
 class IntTools_BeanFaceIntersector {
 	public:
-		/****************** IntTools_BeanFaceIntersector ******************/
-		/**** md5 signature: 238be002c71b6de72f26b16c6e0bc07b ****/
+		/****** IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector ******/
+		/****** md5 signature: 238be002c71b6de72f26b16c6e0bc07b ******/
 		%feature("compactdefaultargs") IntTools_BeanFaceIntersector;
 		%feature("autodoc", "Return
 -------
@@ -477,8 +477,8 @@ No available documentation.
 ") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector();
 
-		/****************** IntTools_BeanFaceIntersector ******************/
-		/**** md5 signature: cbfc790d73fd8f2233124f7fdb7c76ee ****/
+		/****** IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector ******/
+		/****** md5 signature: cbfc790d73fd8f2233124f7fdb7c76ee ******/
 		%feature("compactdefaultargs") IntTools_BeanFaceIntersector;
 		%feature("autodoc", "
 Parameters
@@ -496,8 +496,8 @@ Initializes the algorithm //! warning: the parts of the edge which are on the su
 ") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace);
 
-		/****************** IntTools_BeanFaceIntersector ******************/
-		/**** md5 signature: 543f11aedbb682a6ce91ee4fc0d7bb1a ****/
+		/****** IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector ******/
+		/****** md5 signature: 543f11aedbb682a6ce91ee4fc0d7bb1a ******/
 		%feature("compactdefaultargs") IntTools_BeanFaceIntersector;
 		%feature("autodoc", "
 Parameters
@@ -517,8 +517,8 @@ Initializes the algorithm.
 ") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector(const BRepAdaptor_Curve & theCurve, const BRepAdaptor_Surface & theSurface, const Standard_Real theBeanTolerance, const Standard_Real theFaceTolerance);
 
-		/****************** IntTools_BeanFaceIntersector ******************/
-		/**** md5 signature: ff2b189d70ec0dd86884da9cd32f96bf ****/
+		/****** IntTools_BeanFaceIntersector::IntTools_BeanFaceIntersector ******/
+		/****** md5 signature: ff2b189d70ec0dd86884da9cd32f96bf ******/
 		%feature("compactdefaultargs") IntTools_BeanFaceIntersector;
 		%feature("autodoc", "
 Parameters
@@ -544,8 +544,8 @@ Initializes the algorithm theuminparameter, ... are used for optimization purpos
 ") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector(const BRepAdaptor_Curve & theCurve, const BRepAdaptor_Surface & theSurface, const Standard_Real theFirstParOnCurve, const Standard_Real theLastParOnCurve, const Standard_Real theUMinParameter, const Standard_Real theUMaxParameter, const Standard_Real theVMinParameter, const Standard_Real theVMaxParameter, const Standard_Real theBeanTolerance, const Standard_Real theFaceTolerance);
 
-		/****************** Context ******************/
-		/**** md5 signature: 3ea460f8e5a9e1fe83439fe69bd1002e ****/
+		/****** IntTools_BeanFaceIntersector::Context ******/
+		/****** md5 signature: 3ea460f8e5a9e1fe83439fe69bd1002e ******/
 		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "Return
 -------
@@ -557,8 +557,8 @@ Gets the intersection context.
 ") Context;
 		const opencascade::handle<IntTools_Context> & Context();
 
-		/****************** Init ******************/
-		/**** md5 signature: 2a831d636c2c924d38adfdfa075e8336 ****/
+		/****** IntTools_BeanFaceIntersector::Init ******/
+		/****** md5 signature: 2a831d636c2c924d38adfdfa075e8336 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -576,8 +576,8 @@ Initializes the algorithm //! warning: the parts of the edge which are on the su
 ") Init;
 		void Init(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace);
 
-		/****************** Init ******************/
-		/**** md5 signature: 8502d8c9b8fd0854d0f0b6426b618b36 ****/
+		/****** IntTools_BeanFaceIntersector::Init ******/
+		/****** md5 signature: 8502d8c9b8fd0854d0f0b6426b618b36 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -597,8 +597,8 @@ Initializes the algorithm.
 ") Init;
 		void Init(const BRepAdaptor_Curve & theCurve, const BRepAdaptor_Surface & theSurface, const Standard_Real theBeanTolerance, const Standard_Real theFaceTolerance);
 
-		/****************** Init ******************/
-		/**** md5 signature: 0dabb5d8961ba27a6e5407fd062ddd7e ****/
+		/****** IntTools_BeanFaceIntersector::Init ******/
+		/****** md5 signature: 0dabb5d8961ba27a6e5407fd062ddd7e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -624,8 +624,8 @@ Initializes the algorithm theuminparameter, ... are used for optimization purpos
 ") Init;
 		void Init(const BRepAdaptor_Curve & theCurve, const BRepAdaptor_Surface & theSurface, const Standard_Real theFirstParOnCurve, const Standard_Real theLastParOnCurve, const Standard_Real theUMinParameter, const Standard_Real theUMaxParameter, const Standard_Real theVMinParameter, const Standard_Real theVMaxParameter, const Standard_Real theBeanTolerance, const Standard_Real theFaceTolerance);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
+		/****** IntTools_BeanFaceIntersector::IsDone ******/
+		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -637,8 +637,8 @@ Returns done/notdone state of the algorithm.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** MinimalSquareDistance ******************/
-		/**** md5 signature: 6aafb3181efcd21f3cf1bd5eea608a1e ****/
+		/****** IntTools_BeanFaceIntersector::MinimalSquareDistance ******/
+		/****** md5 signature: 6aafb3181efcd21f3cf1bd5eea608a1e ******/
 		%feature("compactdefaultargs") MinimalSquareDistance;
 		%feature("autodoc", "Return
 -------
@@ -650,8 +650,8 @@ Returns the minimal distance found between edge and face.
 ") MinimalSquareDistance;
 		Standard_Real MinimalSquareDistance();
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** IntTools_BeanFaceIntersector::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -663,8 +663,8 @@ Launches the algorithm.
 ") Perform;
 		void Perform();
 
-		/****************** Result ******************/
-		/**** md5 signature: f3e9d73a3167c18aec1551dbc927085e ****/
+		/****** IntTools_BeanFaceIntersector::Result ******/
+		/****** md5 signature: f3e9d73a3167c18aec1551dbc927085e ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
@@ -676,8 +676,8 @@ No available documentation.
 ") Result;
 		const IntTools_SequenceOfRanges & Result();
 
-		/****************** Result ******************/
-		/**** md5 signature: 2d516e231789832b6855010cf4ce321f ****/
+		/****** IntTools_BeanFaceIntersector::Result ******/
+		/****** md5 signature: 2d516e231789832b6855010cf4ce321f ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "
 Parameters
@@ -694,8 +694,8 @@ No available documentation.
 ") Result;
 		void Result(IntTools_SequenceOfRanges & theResults);
 
-		/****************** SetBeanParameters ******************/
-		/**** md5 signature: 497fa539c82b82f373e3e356479adb27 ****/
+		/****** IntTools_BeanFaceIntersector::SetBeanParameters ******/
+		/****** md5 signature: 497fa539c82b82f373e3e356479adb27 ******/
 		%feature("compactdefaultargs") SetBeanParameters;
 		%feature("autodoc", "
 Parameters
@@ -713,8 +713,8 @@ Set restrictions for curve.
 ") SetBeanParameters;
 		void SetBeanParameters(const Standard_Real theFirstParOnCurve, const Standard_Real theLastParOnCurve);
 
-		/****************** SetContext ******************/
-		/**** md5 signature: e78608a6b667b26dfbb5221975ad17a2 ****/
+		/****** IntTools_BeanFaceIntersector::SetContext ******/
+		/****** md5 signature: e78608a6b667b26dfbb5221975ad17a2 ******/
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "
 Parameters
@@ -731,8 +731,8 @@ Sets the intersection context.
 ") SetContext;
 		void SetContext(const opencascade::handle<IntTools_Context> & theContext);
 
-		/****************** SetSurfaceParameters ******************/
-		/**** md5 signature: 7c0eb1fe9df7cc46637f388f30d4e005 ****/
+		/****** IntTools_BeanFaceIntersector::SetSurfaceParameters ******/
+		/****** md5 signature: 7c0eb1fe9df7cc46637f388f30d4e005 ******/
 		%feature("compactdefaultargs") SetSurfaceParameters;
 		%feature("autodoc", "
 Parameters
@@ -766,8 +766,8 @@ Set restrictions for surface.
 ***************************/
 class IntTools_CommonPrt {
 	public:
-		/****************** IntTools_CommonPrt ******************/
-		/**** md5 signature: 84f1339c773d48f9f538a3d1851d5e64 ****/
+		/****** IntTools_CommonPrt::IntTools_CommonPrt ******/
+		/****** md5 signature: 84f1339c773d48f9f538a3d1851d5e64 ******/
 		%feature("compactdefaultargs") IntTools_CommonPrt;
 		%feature("autodoc", "Return
 -------
@@ -779,8 +779,8 @@ Empty constructor.
 ") IntTools_CommonPrt;
 		 IntTools_CommonPrt();
 
-		/****************** IntTools_CommonPrt ******************/
-		/**** md5 signature: a37b2e310776652090dfa92ef0d1e78d ****/
+		/****** IntTools_CommonPrt::IntTools_CommonPrt ******/
+		/****** md5 signature: a37b2e310776652090dfa92ef0d1e78d ******/
 		%feature("compactdefaultargs") IntTools_CommonPrt;
 		%feature("autodoc", "
 Parameters
@@ -797,8 +797,8 @@ Copy constructor.
 ") IntTools_CommonPrt;
 		 IntTools_CommonPrt(const IntTools_CommonPrt & aCPrt);
 
-		/****************** AllNullFlag ******************/
-		/**** md5 signature: 908c5545063b9bbda8bc65208ceef27b ****/
+		/****** IntTools_CommonPrt::AllNullFlag ******/
+		/****** md5 signature: 908c5545063b9bbda8bc65208ceef27b ******/
 		%feature("compactdefaultargs") AllNullFlag;
 		%feature("autodoc", "Return
 -------
@@ -810,8 +810,8 @@ Modifier.
 ") AllNullFlag;
 		Standard_Boolean AllNullFlag();
 
-		/****************** AppendRange2 ******************/
-		/**** md5 signature: 5960301fb39fc0b320c947efb4dc1768 ****/
+		/****** IntTools_CommonPrt::AppendRange2 ******/
+		/****** md5 signature: 5960301fb39fc0b320c947efb4dc1768 ******/
 		%feature("compactdefaultargs") AppendRange2;
 		%feature("autodoc", "
 Parameters
@@ -828,8 +828,8 @@ Appends the range of second edge.
 ") AppendRange2;
 		void AppendRange2(const IntTools_Range & aR);
 
-		/****************** AppendRange2 ******************/
-		/**** md5 signature: 708bef267715325be71ab6aee65ad124 ****/
+		/****** IntTools_CommonPrt::AppendRange2 ******/
+		/****** md5 signature: 708bef267715325be71ab6aee65ad124 ******/
 		%feature("compactdefaultargs") AppendRange2;
 		%feature("autodoc", "
 Parameters
@@ -847,8 +847,8 @@ Appends the range of second edge.
 ") AppendRange2;
 		void AppendRange2(const Standard_Real tf, const Standard_Real tl);
 
-		/****************** Assign ******************/
-		/**** md5 signature: d342dcb5dbafbbae0c09bb3b1dd5f817 ****/
+		/****** IntTools_CommonPrt::Assign ******/
+		/****** md5 signature: d342dcb5dbafbbae0c09bb3b1dd5f817 ******/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "
 Parameters
@@ -865,8 +865,8 @@ No available documentation.
 ") Assign;
 		IntTools_CommonPrt & Assign(const IntTools_CommonPrt & Other);
 
-		/****************** BoundingPoints ******************/
-		/**** md5 signature: 62077ccb7936ded8e52da8bf1d282415 ****/
+		/****** IntTools_CommonPrt::BoundingPoints ******/
+		/****** md5 signature: 62077ccb7936ded8e52da8bf1d282415 ******/
 		%feature("compactdefaultargs") BoundingPoints;
 		%feature("autodoc", "
 Parameters
@@ -884,8 +884,8 @@ Selector.
 ") BoundingPoints;
 		void BoundingPoints(gp_Pnt & aP1, gp_Pnt & aP2);
 
-		/****************** ChangeRanges2 ******************/
-		/**** md5 signature: 68063400b9174bcfd695fd516296d397 ****/
+		/****** IntTools_CommonPrt::ChangeRanges2 ******/
+		/****** md5 signature: 68063400b9174bcfd695fd516296d397 ******/
 		%feature("compactdefaultargs") ChangeRanges2;
 		%feature("autodoc", "Return
 -------
@@ -897,8 +897,8 @@ Returns the ranges of second edge.
 ") ChangeRanges2;
 		IntTools_SequenceOfRanges & ChangeRanges2();
 
-		/****************** Copy ******************/
-		/**** md5 signature: 5e9d1484e7afefb381d4011472955718 ****/
+		/****** IntTools_CommonPrt::Copy ******/
+		/****** md5 signature: 5e9d1484e7afefb381d4011472955718 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -915,8 +915,8 @@ Copies me to another.
 ") Copy;
 		void Copy(IntTools_CommonPrt & anOther);
 
-		/****************** Edge1 ******************/
-		/**** md5 signature: 290a5674bfab5bc84045440976535c10 ****/
+		/****** IntTools_CommonPrt::Edge1 ******/
+		/****** md5 signature: 290a5674bfab5bc84045440976535c10 ******/
 		%feature("compactdefaultargs") Edge1;
 		%feature("autodoc", "Return
 -------
@@ -928,8 +928,8 @@ Returns the first edge.
 ") Edge1;
 		const TopoDS_Edge Edge1();
 
-		/****************** Edge2 ******************/
-		/**** md5 signature: 74392148a2fac80727ba273414a06928 ****/
+		/****** IntTools_CommonPrt::Edge2 ******/
+		/****** md5 signature: 74392148a2fac80727ba273414a06928 ******/
 		%feature("compactdefaultargs") Edge2;
 		%feature("autodoc", "Return
 -------
@@ -941,8 +941,8 @@ Returns the second edge.
 ") Edge2;
 		const TopoDS_Edge Edge2();
 
-		/****************** Range1 ******************/
-		/**** md5 signature: 661e98a7d85147b7d3a4f3bd5a54c295 ****/
+		/****** IntTools_CommonPrt::Range1 ******/
+		/****** md5 signature: 661e98a7d85147b7d3a4f3bd5a54c295 ******/
 		%feature("compactdefaultargs") Range1;
 		%feature("autodoc", "Return
 -------
@@ -954,8 +954,8 @@ Returns the range of first edge.
 ") Range1;
 		const IntTools_Range & Range1();
 
-		/****************** Range1 ******************/
-		/**** md5 signature: 30700790756f454886ee8e50c2e8bf90 ****/
+		/****** IntTools_CommonPrt::Range1 ******/
+		/****** md5 signature: 30700790756f454886ee8e50c2e8bf90 ******/
 		%feature("compactdefaultargs") Range1;
 		%feature("autodoc", "
 Parameters
@@ -972,8 +972,8 @@ Returns the range of first edge.
 ") Range1;
 		void Range1(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Ranges2 ******************/
-		/**** md5 signature: d424fd3763f6e267958ee53278d49c9f ****/
+		/****** IntTools_CommonPrt::Ranges2 ******/
+		/****** md5 signature: d424fd3763f6e267958ee53278d49c9f ******/
 		%feature("compactdefaultargs") Ranges2;
 		%feature("autodoc", "Return
 -------
@@ -985,8 +985,8 @@ Returns the ranges of second edge.
 ") Ranges2;
 		const IntTools_SequenceOfRanges & Ranges2();
 
-		/****************** SetAllNullFlag ******************/
-		/**** md5 signature: 093ece8d9b8d0ba21c3c4d4f9e3112c7 ****/
+		/****** IntTools_CommonPrt::SetAllNullFlag ******/
+		/****** md5 signature: 093ece8d9b8d0ba21c3c4d4f9e3112c7 ******/
 		%feature("compactdefaultargs") SetAllNullFlag;
 		%feature("autodoc", "
 Parameters
@@ -1003,8 +1003,8 @@ Selector.
 ") SetAllNullFlag;
 		void SetAllNullFlag(const Standard_Boolean aFlag);
 
-		/****************** SetBoundingPoints ******************/
-		/**** md5 signature: 5be6ee5d794590b5e394dce9904907bc ****/
+		/****** IntTools_CommonPrt::SetBoundingPoints ******/
+		/****** md5 signature: 5be6ee5d794590b5e394dce9904907bc ******/
 		%feature("compactdefaultargs") SetBoundingPoints;
 		%feature("autodoc", "
 Parameters
@@ -1022,8 +1022,8 @@ Modifier.
 ") SetBoundingPoints;
 		void SetBoundingPoints(const gp_Pnt & aP1, const gp_Pnt & aP2);
 
-		/****************** SetEdge1 ******************/
-		/**** md5 signature: 589c51a96f15d196589c8826cf3bfa58 ****/
+		/****** IntTools_CommonPrt::SetEdge1 ******/
+		/****** md5 signature: 589c51a96f15d196589c8826cf3bfa58 ******/
 		%feature("compactdefaultargs") SetEdge1;
 		%feature("autodoc", "
 Parameters
@@ -1040,8 +1040,8 @@ Sets the first edge.
 ") SetEdge1;
 		void SetEdge1(const TopoDS_Edge & anE);
 
-		/****************** SetEdge2 ******************/
-		/**** md5 signature: 4e912f624d1386896b459de262e40b21 ****/
+		/****** IntTools_CommonPrt::SetEdge2 ******/
+		/****** md5 signature: 4e912f624d1386896b459de262e40b21 ******/
 		%feature("compactdefaultargs") SetEdge2;
 		%feature("autodoc", "
 Parameters
@@ -1058,8 +1058,8 @@ Sets the second edge.
 ") SetEdge2;
 		void SetEdge2(const TopoDS_Edge & anE);
 
-		/****************** SetRange1 ******************/
-		/**** md5 signature: 45335c811770d711e394b42e23c8db15 ****/
+		/****** IntTools_CommonPrt::SetRange1 ******/
+		/****** md5 signature: 45335c811770d711e394b42e23c8db15 ******/
 		%feature("compactdefaultargs") SetRange1;
 		%feature("autodoc", "
 Parameters
@@ -1076,8 +1076,8 @@ Sets the range of first edge.
 ") SetRange1;
 		void SetRange1(const IntTools_Range & aR);
 
-		/****************** SetRange1 ******************/
-		/**** md5 signature: 79f55915b2d14e875ddb73de80604eaa ****/
+		/****** IntTools_CommonPrt::SetRange1 ******/
+		/****** md5 signature: 79f55915b2d14e875ddb73de80604eaa ******/
 		%feature("compactdefaultargs") SetRange1;
 		%feature("autodoc", "
 Parameters
@@ -1095,8 +1095,8 @@ Sets the range of first edge.
 ") SetRange1;
 		void SetRange1(const Standard_Real tf, const Standard_Real tl);
 
-		/****************** SetType ******************/
-		/**** md5 signature: 17ce8083107574d8d14b69b99c94920e ****/
+		/****** IntTools_CommonPrt::SetType ******/
+		/****** md5 signature: 17ce8083107574d8d14b69b99c94920e ******/
 		%feature("compactdefaultargs") SetType;
 		%feature("autodoc", "
 Parameters
@@ -1113,8 +1113,8 @@ Sets the type of the common part vertex or edge.
 ") SetType;
 		void SetType(const TopAbs_ShapeEnum aType);
 
-		/****************** SetVertexParameter1 ******************/
-		/**** md5 signature: 4a9de2bb794f2e7b8fd44058b76de958 ****/
+		/****** IntTools_CommonPrt::SetVertexParameter1 ******/
+		/****** md5 signature: 4a9de2bb794f2e7b8fd44058b76de958 ******/
 		%feature("compactdefaultargs") SetVertexParameter1;
 		%feature("autodoc", "
 Parameters
@@ -1131,8 +1131,8 @@ Sets a parameter of first vertex.
 ") SetVertexParameter1;
 		void SetVertexParameter1(const Standard_Real tV);
 
-		/****************** SetVertexParameter2 ******************/
-		/**** md5 signature: 67c95a8c184f23fe920a7cb6f70674d4 ****/
+		/****** IntTools_CommonPrt::SetVertexParameter2 ******/
+		/****** md5 signature: 67c95a8c184f23fe920a7cb6f70674d4 ******/
 		%feature("compactdefaultargs") SetVertexParameter2;
 		%feature("autodoc", "
 Parameters
@@ -1149,8 +1149,8 @@ Sets a parameter of second vertex.
 ") SetVertexParameter2;
 		void SetVertexParameter2(const Standard_Real tV);
 
-		/****************** Type ******************/
-		/**** md5 signature: 3f27a65186b8053d282c2c0d8c4513b8 ****/
+		/****** IntTools_CommonPrt::Type ******/
+		/****** md5 signature: 3f27a65186b8053d282c2c0d8c4513b8 ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Return
 -------
@@ -1162,8 +1162,8 @@ Returns the type of the common part.
 ") Type;
 		TopAbs_ShapeEnum Type();
 
-		/****************** VertexParameter1 ******************/
-		/**** md5 signature: 5b5eede02e9405b4f1d5c9ebe2105684 ****/
+		/****** IntTools_CommonPrt::VertexParameter1 ******/
+		/****** md5 signature: 5b5eede02e9405b4f1d5c9ebe2105684 ******/
 		%feature("compactdefaultargs") VertexParameter1;
 		%feature("autodoc", "Return
 -------
@@ -1175,8 +1175,8 @@ Returns parameter of first vertex.
 ") VertexParameter1;
 		Standard_Real VertexParameter1();
 
-		/****************** VertexParameter2 ******************/
-		/**** md5 signature: 47c8acaed04542460a05bac34c48c80a ****/
+		/****** IntTools_CommonPrt::VertexParameter2 ******/
+		/****** md5 signature: 47c8acaed04542460a05bac34c48c80a ******/
 		%feature("compactdefaultargs") VertexParameter2;
 		%feature("autodoc", "Return
 -------
@@ -1202,8 +1202,8 @@ Returns parameter of second vertex.
 *************************/
 class IntTools_Context : public Standard_Transient {
 	public:
-		/****************** IntTools_Context ******************/
-		/**** md5 signature: 5a8fa8d388ac98fd0b79fa4d55afb898 ****/
+		/****** IntTools_Context::IntTools_Context ******/
+		/****** md5 signature: 5a8fa8d388ac98fd0b79fa4d55afb898 ******/
 		%feature("compactdefaultargs") IntTools_Context;
 		%feature("autodoc", "Return
 -------
@@ -1215,8 +1215,8 @@ No available documentation.
 ") IntTools_Context;
 		 IntTools_Context();
 
-		/****************** IntTools_Context ******************/
-		/**** md5 signature: c12f5dba02b71233c7206c50d55269d5 ****/
+		/****** IntTools_Context::IntTools_Context ******/
+		/****** md5 signature: c12f5dba02b71233c7206c50d55269d5 ******/
 		%feature("compactdefaultargs") IntTools_Context;
 		%feature("autodoc", "
 Parameters
@@ -1233,8 +1233,8 @@ No available documentation.
 ") IntTools_Context;
 		 IntTools_Context(const opencascade::handle<NCollection_BaseAllocator> & theAllocator);
 
-		/****************** BndBox ******************/
-		/**** md5 signature: b665f86cc78f1726c03e804fc38d0b73 ****/
+		/****** IntTools_Context::BndBox ******/
+		/****** md5 signature: b665f86cc78f1726c03e804fc38d0b73 ******/
 		%feature("compactdefaultargs") BndBox;
 		%feature("autodoc", "
 Parameters
@@ -1251,8 +1251,8 @@ No available documentation.
 ") BndBox;
 		Bnd_Box & BndBox(const TopoDS_Shape & theS);
 
-		/****************** ComputePE ******************/
-		/**** md5 signature: 433859fbf446aebf55a30c6b1d66ed46 ****/
+		/****** IntTools_Context::ComputePE ******/
+		/****** md5 signature: 433859fbf446aebf55a30c6b1d66ed46 ******/
 		%feature("compactdefaultargs") ComputePE;
 		%feature("autodoc", "
 Parameters
@@ -1272,8 +1272,8 @@ Computes parameter of the point thep on the edge ae. returns zero if the distanc
 ") ComputePE;
 		Standard_Integer ComputePE(const gp_Pnt & theP, const Standard_Real theTolP, const TopoDS_Edge & theE, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** ComputeVE ******************/
-		/**** md5 signature: b6290a8ed372f0df63c99255ce0ffc35 ****/
+		/****** IntTools_Context::ComputeVE ******/
+		/****** md5 signature: b6290a8ed372f0df63c99255ce0ffc35 ******/
 		%feature("compactdefaultargs") ComputeVE;
 		%feature("autodoc", "
 Parameters
@@ -1293,8 +1293,8 @@ Computes parameter of the vertex av on the edge ae and correct tolerance value f
 ") ComputeVE;
 		Standard_Integer ComputeVE(const TopoDS_Vertex & theV, const TopoDS_Edge & theE, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real theFuzz = Precision::Confusion());
 
-		/****************** ComputeVF ******************/
-		/**** md5 signature: 0d41241c758f89c65227f2424527c288 ****/
+		/****** IntTools_Context::ComputeVF ******/
+		/****** md5 signature: 0d41241c758f89c65227f2424527c288 ******/
 		%feature("compactdefaultargs") ComputeVF;
 		%feature("autodoc", "
 Parameters
@@ -1315,8 +1315,8 @@ Computes uv parameters of the vertex av on face af and correct tolerance value f
 ") ComputeVF;
 		Standard_Integer ComputeVF(const TopoDS_Vertex & theVertex, const TopoDS_Face & theFace, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real theFuzz = Precision::Confusion());
 
-		/****************** FClass2d ******************/
-		/**** md5 signature: b1c2f6895ff38359f51ae392b469a3e5 ****/
+		/****** IntTools_Context::FClass2d ******/
+		/****** md5 signature: b1c2f6895ff38359f51ae392b469a3e5 ******/
 		%feature("compactdefaultargs") FClass2d;
 		%feature("autodoc", "
 Parameters
@@ -1333,8 +1333,8 @@ Returns a reference to point classifier for given face.
 ") FClass2d;
 		IntTools_FClass2d & FClass2d(const TopoDS_Face & aF);
 
-		/****************** Hatcher ******************/
-		/**** md5 signature: eafd4ba666fa66dd0acd6b30451e32b7 ****/
+		/****** IntTools_Context::Hatcher ******/
+		/****** md5 signature: eafd4ba666fa66dd0acd6b30451e32b7 ******/
 		%feature("compactdefaultargs") Hatcher;
 		%feature("autodoc", "
 Parameters
@@ -1351,8 +1351,8 @@ Returns a reference to 2d hatcher for given face.
 ") Hatcher;
 		Geom2dHatch_Hatcher & Hatcher(const TopoDS_Face & aF);
 
-		/****************** IsInfiniteFace ******************/
-		/**** md5 signature: 4208488ba6be349c9a4870e649bd7a9e ****/
+		/****** IntTools_Context::IsInfiniteFace ******/
+		/****** md5 signature: 4208488ba6be349c9a4870e649bd7a9e ******/
 		%feature("compactdefaultargs") IsInfiniteFace;
 		%feature("autodoc", "
 Parameters
@@ -1369,8 +1369,8 @@ Returns true if the solid <theface> has infinite bounds.
 ") IsInfiniteFace;
 		Standard_Boolean IsInfiniteFace(const TopoDS_Face & theFace);
 
-		/****************** IsPointInFace ******************/
-		/**** md5 signature: dd8b7ab67a350d30d534581f18bc3b1f ****/
+		/****** IntTools_Context::IsPointInFace ******/
+		/****** md5 signature: dd8b7ab67a350d30d534581f18bc3b1f ******/
 		%feature("compactdefaultargs") IsPointInFace;
 		%feature("autodoc", "
 Parameters
@@ -1388,8 +1388,8 @@ Returns true if the point ap2d is inside the boundaries of the face af, otherwis
 ") IsPointInFace;
 		Standard_Boolean IsPointInFace(const TopoDS_Face & aF, const gp_Pnt2d & aP2D);
 
-		/****************** IsPointInFace ******************/
-		/**** md5 signature: 6282883d47a3ccc0957daf8fa6b4d1d4 ****/
+		/****** IntTools_Context::IsPointInFace ******/
+		/****** md5 signature: 6282883d47a3ccc0957daf8fa6b4d1d4 ******/
 		%feature("compactdefaultargs") IsPointInFace;
 		%feature("autodoc", "
 Parameters
@@ -1408,8 +1408,8 @@ Returns true if the point ap2d is inside the boundaries of the face af, otherwis
 ") IsPointInFace;
 		Standard_Boolean IsPointInFace(const gp_Pnt & aP3D, const TopoDS_Face & aF, const Standard_Real aTol);
 
-		/****************** IsPointInOnFace ******************/
-		/**** md5 signature: 41eefe589d896e0e205f0ab5615c1747 ****/
+		/****** IntTools_Context::IsPointInOnFace ******/
+		/****** md5 signature: 41eefe589d896e0e205f0ab5615c1747 ******/
 		%feature("compactdefaultargs") IsPointInOnFace;
 		%feature("autodoc", "
 Parameters
@@ -1427,8 +1427,8 @@ Returns true if the point ap2d is inside or on the boundaries of af.
 ") IsPointInOnFace;
 		Standard_Boolean IsPointInOnFace(const TopoDS_Face & aF, const gp_Pnt2d & aP2D);
 
-		/****************** IsValidBlockForFace ******************/
-		/**** md5 signature: 9b87a05baa78912887ba878a42d1224f ****/
+		/****** IntTools_Context::IsValidBlockForFace ******/
+		/****** md5 signature: 9b87a05baa78912887ba878a42d1224f ******/
 		%feature("compactdefaultargs") IsValidBlockForFace;
 		%feature("autodoc", "
 Parameters
@@ -1449,8 +1449,8 @@ Returns true if isvalidpointforface returns true for some 3d point that lay on t
 ") IsValidBlockForFace;
 		Standard_Boolean IsValidBlockForFace(const Standard_Real aT1, const Standard_Real aT2, const IntTools_Curve & aIC, const TopoDS_Face & aF, const Standard_Real aTol);
 
-		/****************** IsValidBlockForFaces ******************/
-		/**** md5 signature: 701eb7bbbdf70f75992f852885147978 ****/
+		/****** IntTools_Context::IsValidBlockForFaces ******/
+		/****** md5 signature: 701eb7bbbdf70f75992f852885147978 ******/
 		%feature("compactdefaultargs") IsValidBlockForFaces;
 		%feature("autodoc", "
 Parameters
@@ -1472,8 +1472,8 @@ Returns true if isvalidblockforface returns true for both faces af1 and af2.
 ") IsValidBlockForFaces;
 		Standard_Boolean IsValidBlockForFaces(const Standard_Real aT1, const Standard_Real aT2, const IntTools_Curve & aIC, const TopoDS_Face & aF1, const TopoDS_Face & aF2, const Standard_Real aTol);
 
-		/****************** IsValidPointForFace ******************/
-		/**** md5 signature: f72d455d56ecf493cea383abf0705839 ****/
+		/****** IntTools_Context::IsValidPointForFace ******/
+		/****** md5 signature: f72d455d56ecf493cea383abf0705839 ******/
 		%feature("compactdefaultargs") IsValidPointForFace;
 		%feature("autodoc", "
 Parameters
@@ -1492,8 +1492,8 @@ Returns true if the distance between point ap3d and face af is less or equal to 
 ") IsValidPointForFace;
 		Standard_Boolean IsValidPointForFace(const gp_Pnt & aP3D, const TopoDS_Face & aF, const Standard_Real aTol);
 
-		/****************** IsValidPointForFaces ******************/
-		/**** md5 signature: bacf6bc4d2c743db6314f13811d22957 ****/
+		/****** IntTools_Context::IsValidPointForFaces ******/
+		/****** md5 signature: bacf6bc4d2c743db6314f13811d22957 ******/
 		%feature("compactdefaultargs") IsValidPointForFaces;
 		%feature("autodoc", "
 Parameters
@@ -1513,8 +1513,8 @@ Returns true if isvalidpointforface returns true for both face af1 and af2.
 ") IsValidPointForFaces;
 		Standard_Boolean IsValidPointForFaces(const gp_Pnt & aP3D, const TopoDS_Face & aF1, const TopoDS_Face & aF2, const Standard_Real aTol);
 
-		/****************** IsVertexOnLine ******************/
-		/**** md5 signature: ada36e522fc40610fef0c99f6081e687 ****/
+		/****** IntTools_Context::IsVertexOnLine ******/
+		/****** md5 signature: ada36e522fc40610fef0c99f6081e687 ******/
 		%feature("compactdefaultargs") IsVertexOnLine;
 		%feature("autodoc", "
 Parameters
@@ -1533,8 +1533,8 @@ Computes parameter of the vertex av on the curve aic. returns true if the distan
 ") IsVertexOnLine;
 		Standard_Boolean IsVertexOnLine(const TopoDS_Vertex & aV, const IntTools_Curve & aIC, const Standard_Real aTolC, Standard_Real &OutValue);
 
-		/****************** IsVertexOnLine ******************/
-		/**** md5 signature: 3d4b43894f64d9f00a92f55e69fc53ae ****/
+		/****** IntTools_Context::IsVertexOnLine ******/
+		/****** md5 signature: 3d4b43894f64d9f00a92f55e69fc53ae ******/
 		%feature("compactdefaultargs") IsVertexOnLine;
 		%feature("autodoc", "
 Parameters
@@ -1554,8 +1554,8 @@ Computes parameter of the vertex av on the curve aic. returns true if the distan
 ") IsVertexOnLine;
 		Standard_Boolean IsVertexOnLine(const TopoDS_Vertex & aV, const Standard_Real aTolV, const IntTools_Curve & aIC, const Standard_Real aTolC, Standard_Real &OutValue);
 
-		/****************** OBB ******************/
-		/**** md5 signature: 1d5864d2e1ead554a014d93c916407d2 ****/
+		/****** IntTools_Context::OBB ******/
+		/****** md5 signature: 1d5864d2e1ead554a014d93c916407d2 ******/
 		%feature("compactdefaultargs") OBB;
 		%feature("autodoc", "
 Parameters
@@ -1573,8 +1573,8 @@ Builds and stores an oriented bounding box for the shape. returns a reference to
 ") OBB;
 		Bnd_OBB & OBB(const TopoDS_Shape & theShape, const Standard_Real theFuzzyValue = Precision::Confusion());
 
-		/****************** ProjPC ******************/
-		/**** md5 signature: 80777d0414fefd358cdb191eb228dd85 ****/
+		/****** IntTools_Context::ProjPC ******/
+		/****** md5 signature: 80777d0414fefd358cdb191eb228dd85 ******/
 		%feature("compactdefaultargs") ProjPC;
 		%feature("autodoc", "
 Parameters
@@ -1591,8 +1591,8 @@ Returns a reference to point projector for given edge.
 ") ProjPC;
 		GeomAPI_ProjectPointOnCurve & ProjPC(const TopoDS_Edge & aE);
 
-		/****************** ProjPS ******************/
-		/**** md5 signature: 438fda98b0efafe0ae8ce6560c616a59 ****/
+		/****** IntTools_Context::ProjPS ******/
+		/****** md5 signature: 438fda98b0efafe0ae8ce6560c616a59 ******/
 		%feature("compactdefaultargs") ProjPS;
 		%feature("autodoc", "
 Parameters
@@ -1609,8 +1609,8 @@ Returns a reference to point projector for given face.
 ") ProjPS;
 		GeomAPI_ProjectPointOnSurf & ProjPS(const TopoDS_Face & aF);
 
-		/****************** ProjPT ******************/
-		/**** md5 signature: aba2bd758e4199242c7964213c263db8 ****/
+		/****** IntTools_Context::ProjPT ******/
+		/****** md5 signature: aba2bd758e4199242c7964213c263db8 ******/
 		%feature("compactdefaultargs") ProjPT;
 		%feature("autodoc", "
 Parameters
@@ -1627,8 +1627,8 @@ Returns a reference to point projector for given curve.
 ") ProjPT;
 		GeomAPI_ProjectPointOnCurve & ProjPT(const opencascade::handle<Geom_Curve> & aC);
 
-		/****************** ProjectPointOnEdge ******************/
-		/**** md5 signature: 232fa89a199cb61ab107fd3a27a80ef6 ****/
+		/****** IntTools_Context::ProjectPointOnEdge ******/
+		/****** md5 signature: 232fa89a199cb61ab107fd3a27a80ef6 ******/
 		%feature("compactdefaultargs") ProjectPointOnEdge;
 		%feature("autodoc", "
 Parameters
@@ -1646,8 +1646,8 @@ Computes parameter of the point ap on the edge ae. returns false if projection a
 ") ProjectPointOnEdge;
 		Standard_Boolean ProjectPointOnEdge(const gp_Pnt & aP, const TopoDS_Edge & aE, Standard_Real &OutValue);
 
-		/****************** SetPOnSProjectionTolerance ******************/
-		/**** md5 signature: 0a006e545a34b530febea0340daba8f1 ****/
+		/****** IntTools_Context::SetPOnSProjectionTolerance ******/
+		/****** md5 signature: 0a006e545a34b530febea0340daba8f1 ******/
 		%feature("compactdefaultargs") SetPOnSProjectionTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1664,8 +1664,8 @@ Sets tolerance to be used for projection of point on surface. clears map of alre
 ") SetPOnSProjectionTolerance;
 		void SetPOnSProjectionTolerance(const Standard_Real theValue);
 
-		/****************** SolidClassifier ******************/
-		/**** md5 signature: 0cbf16c1445d0ca00ad0f27f6ae63d0a ****/
+		/****** IntTools_Context::SolidClassifier ******/
+		/****** md5 signature: 0cbf16c1445d0ca00ad0f27f6ae63d0a ******/
 		%feature("compactdefaultargs") SolidClassifier;
 		%feature("autodoc", "
 Parameters
@@ -1682,8 +1682,8 @@ Returns a reference to solid classifier for given solid.
 ") SolidClassifier;
 		BRepClass3d_SolidClassifier & SolidClassifier(const TopoDS_Solid & aSolid);
 
-		/****************** StatePointFace ******************/
-		/**** md5 signature: 9349db404468e857455e4a423e76c10a ****/
+		/****** IntTools_Context::StatePointFace ******/
+		/****** md5 signature: 9349db404468e857455e4a423e76c10a ******/
 		%feature("compactdefaultargs") StatePointFace;
 		%feature("autodoc", "
 Parameters
@@ -1701,8 +1701,8 @@ Returns the state of the point ap2d relative to face af.
 ") StatePointFace;
 		TopAbs_State StatePointFace(const TopoDS_Face & aF, const gp_Pnt2d & aP2D);
 
-		/****************** SurfaceAdaptor ******************/
-		/**** md5 signature: 20b00b48b9d70640e64ccf30711ff36f ****/
+		/****** IntTools_Context::SurfaceAdaptor ******/
+		/****** md5 signature: 20b00b48b9d70640e64ccf30711ff36f ******/
 		%feature("compactdefaultargs") SurfaceAdaptor;
 		%feature("autodoc", "
 Parameters
@@ -1719,8 +1719,8 @@ Returns a reference to surface adaptor for given face.
 ") SurfaceAdaptor;
 		BRepAdaptor_Surface & SurfaceAdaptor(const TopoDS_Face & theFace);
 
-		/****************** SurfaceData ******************/
-		/**** md5 signature: 7cc75d022ff217235e007983741d5277 ****/
+		/****** IntTools_Context::SurfaceData ******/
+		/****** md5 signature: 7cc75d022ff217235e007983741d5277 ******/
 		%feature("compactdefaultargs") SurfaceData;
 		%feature("autodoc", "
 Parameters
@@ -1737,8 +1737,8 @@ Returns a reference to surface localization data for given face.
 ") SurfaceData;
 		IntTools_SurfaceRangeLocalizeData & SurfaceData(const TopoDS_Face & aF);
 
-		/****************** UVBounds ******************/
-		/**** md5 signature: 72d57696b592f2c756d1efcef885d122 ****/
+		/****** IntTools_Context::UVBounds ******/
+		/****** md5 signature: 72d57696b592f2c756d1efcef885d122 ******/
 		%feature("compactdefaultargs") UVBounds;
 		%feature("autodoc", "
 Parameters
@@ -1774,8 +1774,8 @@ Computes the boundaries of the face using surface adaptor.
 ***********************/
 class IntTools_Curve {
 	public:
-		/****************** IntTools_Curve ******************/
-		/**** md5 signature: 1f839c29da82c1c9663c05f577e6125d ****/
+		/****** IntTools_Curve::IntTools_Curve ******/
+		/****** md5 signature: 1f839c29da82c1c9663c05f577e6125d ******/
 		%feature("compactdefaultargs") IntTools_Curve;
 		%feature("autodoc", "Return
 -------
@@ -1787,8 +1787,8 @@ Empty constructor.
 ") IntTools_Curve;
 		 IntTools_Curve();
 
-		/****************** IntTools_Curve ******************/
-		/**** md5 signature: bd3979a356abc48d3a7e7473a7d68d25 ****/
+		/****** IntTools_Curve::IntTools_Curve ******/
+		/****** md5 signature: bd3979a356abc48d3a7e7473a7d68d25 ******/
 		%feature("compactdefaultargs") IntTools_Curve;
 		%feature("autodoc", "
 Parameters
@@ -1809,8 +1809,8 @@ Constructor taking 3d curve, two 2d curves and two tolerance values.
 ") IntTools_Curve;
 		 IntTools_Curve(const opencascade::handle<Geom_Curve> & the3dCurve3d, const opencascade::handle<Geom2d_Curve> & the2dCurve1, const opencascade::handle<Geom2d_Curve> & the2dCurve2, const Standard_Real theTolerance = 0.0, const Standard_Real theTangentialTolerance = 0.0);
 
-		/****************** Bounds ******************/
-		/**** md5 signature: ba1495abc333e2d042b010a7e696f504 ****/
+		/****** IntTools_Curve::Bounds ******/
+		/****** md5 signature: ba1495abc333e2d042b010a7e696f504 ******/
 		%feature("compactdefaultargs") Bounds;
 		%feature("autodoc", "
 Parameters
@@ -1829,8 +1829,8 @@ If the 3d curve is bounded curve the method will return true and modify the outp
 ") Bounds;
 		Standard_Boolean Bounds(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt);
 
-		/****************** Curve ******************/
-		/**** md5 signature: 62a16889fb975efa1b2de012099c169b ****/
+		/****** IntTools_Curve::Curve ******/
+		/****** md5 signature: 62a16889fb975efa1b2de012099c169b ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -1842,8 +1842,8 @@ Returns 3d curve.
 ") Curve;
 		const opencascade::handle<Geom_Curve> & Curve();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 78502201fa5be47ff5bf66d737b6bf31 ****/
+		/****** IntTools_Curve::D0 ******/
+		/****** md5 signature: 78502201fa5be47ff5bf66d737b6bf31 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -1861,8 +1861,8 @@ Computes 3d point corresponded to the given parameter if this parameter is insid
 ") D0;
 		Standard_Boolean D0(const Standard_Real & thePar, gp_Pnt & thePnt);
 
-		/****************** FirstCurve2d ******************/
-		/**** md5 signature: c3d29c0810f888c120a5078e912786f3 ****/
+		/****** IntTools_Curve::FirstCurve2d ******/
+		/****** md5 signature: c3d29c0810f888c120a5078e912786f3 ******/
 		%feature("compactdefaultargs") FirstCurve2d;
 		%feature("autodoc", "Return
 -------
@@ -1874,8 +1874,8 @@ Returns first 2d curve.
 ") FirstCurve2d;
 		const opencascade::handle<Geom2d_Curve> & FirstCurve2d();
 
-		/****************** HasBounds ******************/
-		/**** md5 signature: 709735581c3c2f455f6927bb4a4e531d ****/
+		/****** IntTools_Curve::HasBounds ******/
+		/****** md5 signature: 709735581c3c2f455f6927bb4a4e531d ******/
 		%feature("compactdefaultargs") HasBounds;
 		%feature("autodoc", "Return
 -------
@@ -1887,8 +1887,8 @@ Returns true if 3d curve is boundedcurve.
 ") HasBounds;
 		Standard_Boolean HasBounds();
 
-		/****************** SecondCurve2d ******************/
-		/**** md5 signature: 01e3a51db1c39fa9598c0ad8bfdcbbd9 ****/
+		/****** IntTools_Curve::SecondCurve2d ******/
+		/****** md5 signature: 01e3a51db1c39fa9598c0ad8bfdcbbd9 ******/
 		%feature("compactdefaultargs") SecondCurve2d;
 		%feature("autodoc", "Return
 -------
@@ -1900,8 +1900,8 @@ Returns second 2d curve.
 ") SecondCurve2d;
 		const opencascade::handle<Geom2d_Curve> & SecondCurve2d();
 
-		/****************** SetCurve ******************/
-		/**** md5 signature: 8875d532d0f382113206b2bfe333cdac ****/
+		/****** IntTools_Curve::SetCurve ******/
+		/****** md5 signature: 8875d532d0f382113206b2bfe333cdac ******/
 		%feature("compactdefaultargs") SetCurve;
 		%feature("autodoc", "
 Parameters
@@ -1918,8 +1918,8 @@ Sets the 3d curve.
 ") SetCurve;
 		void SetCurve(const opencascade::handle<Geom_Curve> & the3dCurve);
 
-		/****************** SetCurves ******************/
-		/**** md5 signature: bd816be358e1f1ede5b32ee8a63a4168 ****/
+		/****** IntTools_Curve::SetCurves ******/
+		/****** md5 signature: bd816be358e1f1ede5b32ee8a63a4168 ******/
 		%feature("compactdefaultargs") SetCurves;
 		%feature("autodoc", "
 Parameters
@@ -1938,8 +1938,8 @@ Sets the curves.
 ") SetCurves;
 		void SetCurves(const opencascade::handle<Geom_Curve> & the3dCurve, const opencascade::handle<Geom2d_Curve> & the2dCurve1, const opencascade::handle<Geom2d_Curve> & the2dCurve2);
 
-		/****************** SetFirstCurve2d ******************/
-		/**** md5 signature: 76c7aa7f7240116462c8f710634326f5 ****/
+		/****** IntTools_Curve::SetFirstCurve2d ******/
+		/****** md5 signature: 76c7aa7f7240116462c8f710634326f5 ******/
 		%feature("compactdefaultargs") SetFirstCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -1956,8 +1956,8 @@ Sets the first 2d curve.
 ") SetFirstCurve2d;
 		void SetFirstCurve2d(const opencascade::handle<Geom2d_Curve> & the2dCurve1);
 
-		/****************** SetSecondCurve2d ******************/
-		/**** md5 signature: 9d7a24597025b9d91d230fd458e16942 ****/
+		/****** IntTools_Curve::SetSecondCurve2d ******/
+		/****** md5 signature: 9d7a24597025b9d91d230fd458e16942 ******/
 		%feature("compactdefaultargs") SetSecondCurve2d;
 		%feature("autodoc", "
 Parameters
@@ -1974,8 +1974,8 @@ Sets the second 2d curve.
 ") SetSecondCurve2d;
 		void SetSecondCurve2d(const opencascade::handle<Geom2d_Curve> & the2dCurve2);
 
-		/****************** SetTangentialTolerance ******************/
-		/**** md5 signature: 30b3ca13e643da6655abf5b0795a5374 ****/
+		/****** IntTools_Curve::SetTangentialTolerance ******/
+		/****** md5 signature: 30b3ca13e643da6655abf5b0795a5374 ******/
 		%feature("compactdefaultargs") SetTangentialTolerance;
 		%feature("autodoc", "
 Parameters
@@ -1992,8 +1992,8 @@ Sets the tangential tolerance.
 ") SetTangentialTolerance;
 		void SetTangentialTolerance(const Standard_Real theTangentialTolerance);
 
-		/****************** SetTolerance ******************/
-		/**** md5 signature: 2df6ca87a12fc10518568e45d2ce38db ****/
+		/****** IntTools_Curve::SetTolerance ******/
+		/****** md5 signature: 2df6ca87a12fc10518568e45d2ce38db ******/
 		%feature("compactdefaultargs") SetTolerance;
 		%feature("autodoc", "
 Parameters
@@ -2010,8 +2010,8 @@ Sets the tolerance for the curve.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real theTolerance);
 
-		/****************** TangentialTolerance ******************/
-		/**** md5 signature: c1e785de724669f2f929496d8c904a9c ****/
+		/****** IntTools_Curve::TangentialTolerance ******/
+		/****** md5 signature: c1e785de724669f2f929496d8c904a9c ******/
 		%feature("compactdefaultargs") TangentialTolerance;
 		%feature("autodoc", "Return
 -------
@@ -2023,8 +2023,8 @@ Returns the tangential tolerance.
 ") TangentialTolerance;
 		Standard_Real TangentialTolerance();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ****/
+		/****** IntTools_Curve::Tolerance ******/
+		/****** md5 signature: 327dcbe220ae5ba3e0203f32c61c38db ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -2036,8 +2036,8 @@ Returns the tolerance.
 ") Tolerance;
 		Standard_Real Tolerance();
 
-		/****************** Type ******************/
-		/**** md5 signature: af8b9d8db8cab58b4286d8896f12d09c ****/
+		/****** IntTools_Curve::Type ******/
+		/****** md5 signature: af8b9d8db8cab58b4286d8896f12d09c ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Return
 -------
@@ -2063,8 +2063,8 @@ Returns the type of the 3d curve.
 ****************************************/
 class IntTools_CurveRangeLocalizeData {
 	public:
-		/****************** IntTools_CurveRangeLocalizeData ******************/
-		/**** md5 signature: b15946d4ec9579fb879a3817251b96f6 ****/
+		/****** IntTools_CurveRangeLocalizeData::IntTools_CurveRangeLocalizeData ******/
+		/****** md5 signature: b15946d4ec9579fb879a3817251b96f6 ******/
 		%feature("compactdefaultargs") IntTools_CurveRangeLocalizeData;
 		%feature("autodoc", "
 Parameters
@@ -2082,8 +2082,8 @@ No available documentation.
 ") IntTools_CurveRangeLocalizeData;
 		 IntTools_CurveRangeLocalizeData(const Standard_Integer theNbSample, const Standard_Real theMinRange);
 
-		/****************** AddBox ******************/
-		/**** md5 signature: 610b7a5472a894448f6ee0290e9bc472 ****/
+		/****** IntTools_CurveRangeLocalizeData::AddBox ******/
+		/****** md5 signature: 610b7a5472a894448f6ee0290e9bc472 ******/
 		%feature("compactdefaultargs") AddBox;
 		%feature("autodoc", "
 Parameters
@@ -2101,8 +2101,8 @@ No available documentation.
 ") AddBox;
 		void AddBox(const IntTools_CurveRangeSample & theRange, const Bnd_Box & theBox);
 
-		/****************** AddOutRange ******************/
-		/**** md5 signature: 7fd7fe5924530ae86b84715f2b9a2c44 ****/
+		/****** IntTools_CurveRangeLocalizeData::AddOutRange ******/
+		/****** md5 signature: 7fd7fe5924530ae86b84715f2b9a2c44 ******/
 		%feature("compactdefaultargs") AddOutRange;
 		%feature("autodoc", "
 Parameters
@@ -2119,8 +2119,8 @@ No available documentation.
 ") AddOutRange;
 		void AddOutRange(const IntTools_CurveRangeSample & theRange);
 
-		/****************** FindBox ******************/
-		/**** md5 signature: 955c2eb738662c02a335a8720b04c6fa ****/
+		/****** IntTools_CurveRangeLocalizeData::FindBox ******/
+		/****** md5 signature: 955c2eb738662c02a335a8720b04c6fa ******/
 		%feature("compactdefaultargs") FindBox;
 		%feature("autodoc", "
 Parameters
@@ -2138,8 +2138,8 @@ No available documentation.
 ") FindBox;
 		Standard_Boolean FindBox(const IntTools_CurveRangeSample & theRange, Bnd_Box & theBox);
 
-		/****************** GetMinRange ******************/
-		/**** md5 signature: c20164b072a0539b77d80ec44457b89b ****/
+		/****** IntTools_CurveRangeLocalizeData::GetMinRange ******/
+		/****** md5 signature: c20164b072a0539b77d80ec44457b89b ******/
 		%feature("compactdefaultargs") GetMinRange;
 		%feature("autodoc", "Return
 -------
@@ -2151,8 +2151,8 @@ No available documentation.
 ") GetMinRange;
 		Standard_Real GetMinRange();
 
-		/****************** GetNbSample ******************/
-		/**** md5 signature: b7817d28b4ff3dc88a09b6dd1762ed0e ****/
+		/****** IntTools_CurveRangeLocalizeData::GetNbSample ******/
+		/****** md5 signature: b7817d28b4ff3dc88a09b6dd1762ed0e ******/
 		%feature("compactdefaultargs") GetNbSample;
 		%feature("autodoc", "Return
 -------
@@ -2164,8 +2164,8 @@ No available documentation.
 ") GetNbSample;
 		Standard_Integer GetNbSample();
 
-		/****************** IsRangeOut ******************/
-		/**** md5 signature: fe3cadcb4748c51492051c9c24a9f858 ****/
+		/****** IntTools_CurveRangeLocalizeData::IsRangeOut ******/
+		/****** md5 signature: fe3cadcb4748c51492051c9c24a9f858 ******/
 		%feature("compactdefaultargs") IsRangeOut;
 		%feature("autodoc", "
 Parameters
@@ -2182,8 +2182,8 @@ No available documentation.
 ") IsRangeOut;
 		Standard_Boolean IsRangeOut(const IntTools_CurveRangeSample & theRange);
 
-		/****************** ListRangeOut ******************/
-		/**** md5 signature: 2260e4f3f132ded0a9ac9ebb91324c89 ****/
+		/****** IntTools_CurveRangeLocalizeData::ListRangeOut ******/
+		/****** md5 signature: 2260e4f3f132ded0a9ac9ebb91324c89 ******/
 		%feature("compactdefaultargs") ListRangeOut;
 		%feature("autodoc", "
 Parameters
@@ -2214,8 +2214,8 @@ No available documentation.
 **************************/
 class IntTools_EdgeEdge {
 	public:
-		/****************** IntTools_EdgeEdge ******************/
-		/**** md5 signature: 4551d18744ed7c6ae5b1e1b4794a6264 ****/
+		/****** IntTools_EdgeEdge::IntTools_EdgeEdge ******/
+		/****** md5 signature: 4551d18744ed7c6ae5b1e1b4794a6264 ******/
 		%feature("compactdefaultargs") IntTools_EdgeEdge;
 		%feature("autodoc", "Return
 -------
@@ -2227,8 +2227,8 @@ Empty constructor.
 ") IntTools_EdgeEdge;
 		 IntTools_EdgeEdge();
 
-		/****************** IntTools_EdgeEdge ******************/
-		/**** md5 signature: a7b58f57429b22fb3dc3ed0030a8f53e ****/
+		/****** IntTools_EdgeEdge::IntTools_EdgeEdge ******/
+		/****** md5 signature: a7b58f57429b22fb3dc3ed0030a8f53e ******/
 		%feature("compactdefaultargs") IntTools_EdgeEdge;
 		%feature("autodoc", "
 Parameters
@@ -2246,8 +2246,8 @@ Constructor.
 ") IntTools_EdgeEdge;
 		 IntTools_EdgeEdge(const TopoDS_Edge & theEdge1, const TopoDS_Edge & theEdge2);
 
-		/****************** IntTools_EdgeEdge ******************/
-		/**** md5 signature: 69b54a28360beb7321650d1ae6f019d5 ****/
+		/****** IntTools_EdgeEdge::IntTools_EdgeEdge ******/
+		/****** md5 signature: 69b54a28360beb7321650d1ae6f019d5 ******/
 		%feature("compactdefaultargs") IntTools_EdgeEdge;
 		%feature("autodoc", "
 Parameters
@@ -2269,8 +2269,8 @@ Constructor.
 ") IntTools_EdgeEdge;
 		 IntTools_EdgeEdge(const TopoDS_Edge & theEdge1, const Standard_Real aT11, const Standard_Real aT12, const TopoDS_Edge & theEdge2, const Standard_Real aT21, const Standard_Real aT22);
 
-		/****************** CommonParts ******************/
-		/**** md5 signature: da730b5d8002362e580852ec6aa829ea ****/
+		/****** IntTools_EdgeEdge::CommonParts ******/
+		/****** md5 signature: da730b5d8002362e580852ec6aa829ea ******/
 		%feature("compactdefaultargs") CommonParts;
 		%feature("autodoc", "Return
 -------
@@ -2282,8 +2282,8 @@ Returns common parts.
 ") CommonParts;
 		const IntTools_SequenceOfCommonPrts & CommonParts();
 
-		/****************** FuzzyValue ******************/
-		/**** md5 signature: be29fbc3587cce2740c43ae36346b88f ****/
+		/****** IntTools_EdgeEdge::FuzzyValue ******/
+		/****** md5 signature: be29fbc3587cce2740c43ae36346b88f ******/
 		%feature("compactdefaultargs") FuzzyValue;
 		%feature("autodoc", "Return
 -------
@@ -2295,8 +2295,8 @@ Returns fuzzy value.
 ") FuzzyValue;
 		Standard_Real FuzzyValue();
 
-		/****************** IsCoincidenceCheckedQuickly ******************/
-		/**** md5 signature: 2e1263cf549e045820bc46ffe90d3253 ****/
+		/****** IntTools_EdgeEdge::IsCoincidenceCheckedQuickly ******/
+		/****** md5 signature: 2e1263cf549e045820bc46ffe90d3253 ******/
 		%feature("compactdefaultargs") IsCoincidenceCheckedQuickly;
 		%feature("autodoc", "Return
 -------
@@ -2308,8 +2308,8 @@ Returns the flag myquickcoincidencecheck.
 ") IsCoincidenceCheckedQuickly;
 		Standard_Boolean IsCoincidenceCheckedQuickly();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** IntTools_EdgeEdge::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2321,8 +2321,8 @@ Returns true if common part(s) is(are) found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** IntTools_EdgeEdge::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -2334,8 +2334,8 @@ Performs the intersection between edges.
 ") Perform;
 		void Perform();
 
-		/****************** SetEdge1 ******************/
-		/**** md5 signature: 40a00ccba436889bf949ef0562a3edc9 ****/
+		/****** IntTools_EdgeEdge::SetEdge1 ******/
+		/****** md5 signature: 40a00ccba436889bf949ef0562a3edc9 ******/
 		%feature("compactdefaultargs") SetEdge1;
 		%feature("autodoc", "
 Parameters
@@ -2352,8 +2352,8 @@ Sets the first edge.
 ") SetEdge1;
 		void SetEdge1(const TopoDS_Edge & theEdge);
 
-		/****************** SetEdge1 ******************/
-		/**** md5 signature: 8a8c45ff8cf8fef31a0cff22252d974d ****/
+		/****** IntTools_EdgeEdge::SetEdge1 ******/
+		/****** md5 signature: 8a8c45ff8cf8fef31a0cff22252d974d ******/
 		%feature("compactdefaultargs") SetEdge1;
 		%feature("autodoc", "
 Parameters
@@ -2372,8 +2372,8 @@ Sets the first edge and its range.
 ") SetEdge1;
 		void SetEdge1(const TopoDS_Edge & theEdge, const Standard_Real aT1, const Standard_Real aT2);
 
-		/****************** SetEdge2 ******************/
-		/**** md5 signature: d035a1056357fbcc58da99d53f25508d ****/
+		/****** IntTools_EdgeEdge::SetEdge2 ******/
+		/****** md5 signature: d035a1056357fbcc58da99d53f25508d ******/
 		%feature("compactdefaultargs") SetEdge2;
 		%feature("autodoc", "
 Parameters
@@ -2390,8 +2390,8 @@ Sets the second edge.
 ") SetEdge2;
 		void SetEdge2(const TopoDS_Edge & theEdge);
 
-		/****************** SetEdge2 ******************/
-		/**** md5 signature: 965a565189573aaa4fb5001e8b5d25c6 ****/
+		/****** IntTools_EdgeEdge::SetEdge2 ******/
+		/****** md5 signature: 965a565189573aaa4fb5001e8b5d25c6 ******/
 		%feature("compactdefaultargs") SetEdge2;
 		%feature("autodoc", "
 Parameters
@@ -2410,8 +2410,8 @@ Sets the first edge and its range.
 ") SetEdge2;
 		void SetEdge2(const TopoDS_Edge & theEdge, const Standard_Real aT1, const Standard_Real aT2);
 
-		/****************** SetFuzzyValue ******************/
-		/**** md5 signature: a6e52c994eeddfce238b90491de5f35c ****/
+		/****** IntTools_EdgeEdge::SetFuzzyValue ******/
+		/****** md5 signature: a6e52c994eeddfce238b90491de5f35c ******/
 		%feature("compactdefaultargs") SetFuzzyValue;
 		%feature("autodoc", "
 Parameters
@@ -2428,8 +2428,8 @@ Sets the fuzzy value.
 ") SetFuzzyValue;
 		void SetFuzzyValue(const Standard_Real theFuzz);
 
-		/****************** SetRange1 ******************/
-		/**** md5 signature: bb41bc42e46d2436a40c8d973157bb65 ****/
+		/****** IntTools_EdgeEdge::SetRange1 ******/
+		/****** md5 signature: bb41bc42e46d2436a40c8d973157bb65 ******/
 		%feature("compactdefaultargs") SetRange1;
 		%feature("autodoc", "
 Parameters
@@ -2446,8 +2446,8 @@ Sets the range for the first edge.
 ") SetRange1;
 		void SetRange1(const IntTools_Range & theRange1);
 
-		/****************** SetRange1 ******************/
-		/**** md5 signature: 63f455ae2a073f05bf87ce70fddb7730 ****/
+		/****** IntTools_EdgeEdge::SetRange1 ******/
+		/****** md5 signature: 63f455ae2a073f05bf87ce70fddb7730 ******/
 		%feature("compactdefaultargs") SetRange1;
 		%feature("autodoc", "
 Parameters
@@ -2465,8 +2465,8 @@ Sets the range for the first edge.
 ") SetRange1;
 		void SetRange1(const Standard_Real aT1, const Standard_Real aT2);
 
-		/****************** SetRange2 ******************/
-		/**** md5 signature: e1e1c703a47bde8600bea5eeaaf0ba9f ****/
+		/****** IntTools_EdgeEdge::SetRange2 ******/
+		/****** md5 signature: e1e1c703a47bde8600bea5eeaaf0ba9f ******/
 		%feature("compactdefaultargs") SetRange2;
 		%feature("autodoc", "
 Parameters
@@ -2483,8 +2483,8 @@ Sets the range for the second edge.
 ") SetRange2;
 		void SetRange2(const IntTools_Range & theRange);
 
-		/****************** SetRange2 ******************/
-		/**** md5 signature: 6a7c748b7970e48d68dfede3398ce2ad ****/
+		/****** IntTools_EdgeEdge::SetRange2 ******/
+		/****** md5 signature: 6a7c748b7970e48d68dfede3398ce2ad ******/
 		%feature("compactdefaultargs") SetRange2;
 		%feature("autodoc", "
 Parameters
@@ -2502,8 +2502,8 @@ Sets the range for the second edge.
 ") SetRange2;
 		void SetRange2(const Standard_Real aT1, const Standard_Real aT2);
 
-		/****************** UseQuickCoincidenceCheck ******************/
-		/**** md5 signature: 5de7595b312e0b345a56002567eeaeb1 ****/
+		/****** IntTools_EdgeEdge::UseQuickCoincidenceCheck ******/
+		/****** md5 signature: 5de7595b312e0b345a56002567eeaeb1 ******/
 		%feature("compactdefaultargs") UseQuickCoincidenceCheck;
 		%feature("autodoc", "
 Parameters
@@ -2534,8 +2534,8 @@ Sets the flag myquickcoincidencecheck.
 **************************/
 class IntTools_EdgeFace {
 	public:
-		/****************** IntTools_EdgeFace ******************/
-		/**** md5 signature: ac76d8fd37641cf3850f9d0e1fa7cf07 ****/
+		/****** IntTools_EdgeFace::IntTools_EdgeFace ******/
+		/****** md5 signature: ac76d8fd37641cf3850f9d0e1fa7cf07 ******/
 		%feature("compactdefaultargs") IntTools_EdgeFace;
 		%feature("autodoc", "Return
 -------
@@ -2547,8 +2547,8 @@ Empty constructor.
 ") IntTools_EdgeFace;
 		 IntTools_EdgeFace();
 
-		/****************** CommonParts ******************/
-		/**** md5 signature: b79ce635c2dbbad1683c1b56a034e14b ****/
+		/****** IntTools_EdgeFace::CommonParts ******/
+		/****** md5 signature: b79ce635c2dbbad1683c1b56a034e14b ******/
 		%feature("compactdefaultargs") CommonParts;
 		%feature("autodoc", "Return
 -------
@@ -2560,8 +2560,8 @@ Returns resulting common parts.
 ") CommonParts;
 		const IntTools_SequenceOfCommonPrts & CommonParts();
 
-		/****************** Context ******************/
-		/**** md5 signature: 298a8dbfee117eca77851222c773740a ****/
+		/****** IntTools_EdgeFace::Context ******/
+		/****** md5 signature: 298a8dbfee117eca77851222c773740a ******/
 		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "Return
 -------
@@ -2573,8 +2573,8 @@ Returns the intersection context.
 ") Context;
 		const opencascade::handle<IntTools_Context> & Context();
 
-		/****************** Edge ******************/
-		/**** md5 signature: 657c12d9769667081fd960b688690cc0 ****/
+		/****** IntTools_EdgeFace::Edge ******/
+		/****** md5 signature: 657c12d9769667081fd960b688690cc0 ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -2586,8 +2586,8 @@ Returns the edge.
 ") Edge;
 		const TopoDS_Edge Edge();
 
-		/****************** ErrorStatus ******************/
-		/**** md5 signature: 23ccaf4f25108c0b871675cdf964cbf6 ****/
+		/****** IntTools_EdgeFace::ErrorStatus ******/
+		/****** md5 signature: 23ccaf4f25108c0b871675cdf964cbf6 ******/
 		%feature("compactdefaultargs") ErrorStatus;
 		%feature("autodoc", "Return
 -------
@@ -2599,8 +2599,8 @@ Returns the code of completion: 0 - means successful completion; 1 - the process
 ") ErrorStatus;
 		Standard_Integer ErrorStatus();
 
-		/****************** Face ******************/
-		/**** md5 signature: 95406b8d0d556c0537e0768c48713f21 ****/
+		/****** IntTools_EdgeFace::Face ******/
+		/****** md5 signature: 95406b8d0d556c0537e0768c48713f21 ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "Return
 -------
@@ -2612,8 +2612,8 @@ Returns the face.
 ") Face;
 		const TopoDS_Face Face();
 
-		/****************** FuzzyValue ******************/
-		/**** md5 signature: c7081d612ee5325e18733e215807d19f ****/
+		/****** IntTools_EdgeFace::FuzzyValue ******/
+		/****** md5 signature: c7081d612ee5325e18733e215807d19f ******/
 		%feature("compactdefaultargs") FuzzyValue;
 		%feature("autodoc", "Return
 -------
@@ -2625,8 +2625,8 @@ Returns the fuzzy value.
 ") FuzzyValue;
 		Standard_Real FuzzyValue();
 
-		/****************** IsCoincidenceCheckedQuickly ******************/
-		/**** md5 signature: 2e1263cf549e045820bc46ffe90d3253 ****/
+		/****** IntTools_EdgeFace::IsCoincidenceCheckedQuickly ******/
+		/****** md5 signature: 2e1263cf549e045820bc46ffe90d3253 ******/
 		%feature("compactdefaultargs") IsCoincidenceCheckedQuickly;
 		%feature("autodoc", "Return
 -------
@@ -2638,8 +2638,8 @@ Returns the flag myquickcoincidencecheck.
 ") IsCoincidenceCheckedQuickly;
 		Standard_Boolean IsCoincidenceCheckedQuickly();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
+		/****** IntTools_EdgeFace::IsDone ******/
+		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -2651,8 +2651,8 @@ Returns true if computation was successful. otherwise returns false.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** MinimalDistance ******************/
-		/**** md5 signature: 47310ba90ae5863695bce35b764f5f23 ****/
+		/****** IntTools_EdgeFace::MinimalDistance ******/
+		/****** md5 signature: 47310ba90ae5863695bce35b764f5f23 ******/
 		%feature("compactdefaultargs") MinimalDistance;
 		%feature("autodoc", "Return
 -------
@@ -2664,8 +2664,8 @@ Returns the minimal distance found between edge and face.
 ") MinimalDistance;
 		Standard_Real MinimalDistance();
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** IntTools_EdgeFace::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -2677,8 +2677,8 @@ Launches the process.
 ") Perform;
 		void Perform();
 
-		/****************** Range ******************/
-		/**** md5 signature: 1c00b6a66baae86f89ee003b9c965318 ****/
+		/****** IntTools_EdgeFace::Range ******/
+		/****** md5 signature: 1c00b6a66baae86f89ee003b9c965318 ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "Return
 -------
@@ -2690,8 +2690,8 @@ Returns intersection range of the edge.
 ") Range;
 		const IntTools_Range & Range();
 
-		/****************** SetContext ******************/
-		/**** md5 signature: 45a35eea8f4e3016f544e19c60ac3b92 ****/
+		/****** IntTools_EdgeFace::SetContext ******/
+		/****** md5 signature: 45a35eea8f4e3016f544e19c60ac3b92 ******/
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "
 Parameters
@@ -2708,8 +2708,8 @@ Sets the intersection context.
 ") SetContext;
 		void SetContext(const opencascade::handle<IntTools_Context> & theContext);
 
-		/****************** SetEdge ******************/
-		/**** md5 signature: 6f2fdc35f76ff0b75031b7bba2264008 ****/
+		/****** IntTools_EdgeFace::SetEdge ******/
+		/****** md5 signature: 6f2fdc35f76ff0b75031b7bba2264008 ******/
 		%feature("compactdefaultargs") SetEdge;
 		%feature("autodoc", "
 Parameters
@@ -2726,8 +2726,8 @@ Sets the edge for intersection.
 ") SetEdge;
 		void SetEdge(const TopoDS_Edge & theEdge);
 
-		/****************** SetFace ******************/
-		/**** md5 signature: 9ec2310ee9bc7ec9517d4be701570074 ****/
+		/****** IntTools_EdgeFace::SetFace ******/
+		/****** md5 signature: 9ec2310ee9bc7ec9517d4be701570074 ******/
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", "
 Parameters
@@ -2744,8 +2744,8 @@ Sets the face for intersection.
 ") SetFace;
 		void SetFace(const TopoDS_Face & theFace);
 
-		/****************** SetFuzzyValue ******************/
-		/**** md5 signature: 1ec359b4264167db67f0bb6c774993d9 ****/
+		/****** IntTools_EdgeFace::SetFuzzyValue ******/
+		/****** md5 signature: 1ec359b4264167db67f0bb6c774993d9 ******/
 		%feature("compactdefaultargs") SetFuzzyValue;
 		%feature("autodoc", "
 Parameters
@@ -2762,8 +2762,8 @@ Sets the fuzzy value.
 ") SetFuzzyValue;
 		void SetFuzzyValue(const Standard_Real theFuzz);
 
-		/****************** SetRange ******************/
-		/**** md5 signature: cac66bc6039d9794014f338069dd5d2f ****/
+		/****** IntTools_EdgeFace::SetRange ******/
+		/****** md5 signature: cac66bc6039d9794014f338069dd5d2f ******/
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", "
 Parameters
@@ -2780,8 +2780,8 @@ Sets the boundaries for the edge. the algorithm processes edge inside these boun
 ") SetRange;
 		void SetRange(const IntTools_Range & theRange);
 
-		/****************** SetRange ******************/
-		/**** md5 signature: f3f7b3d5c973131ef8d69afe846c0288 ****/
+		/****** IntTools_EdgeFace::SetRange ******/
+		/****** md5 signature: f3f7b3d5c973131ef8d69afe846c0288 ******/
 		%feature("compactdefaultargs") SetRange;
 		%feature("autodoc", "
 Parameters
@@ -2799,8 +2799,8 @@ Sets the boundaries for the edge. the algorithm processes edge inside these boun
 ") SetRange;
 		void SetRange(const Standard_Real theFirst, const Standard_Real theLast);
 
-		/****************** UseQuickCoincidenceCheck ******************/
-		/**** md5 signature: 380eb1480dddecea984b19d084e9685a ****/
+		/****** IntTools_EdgeFace::UseQuickCoincidenceCheck ******/
+		/****** md5 signature: 380eb1480dddecea984b19d084e9685a ******/
 		%feature("compactdefaultargs") UseQuickCoincidenceCheck;
 		%feature("autodoc", "
 Parameters
@@ -2831,8 +2831,8 @@ Sets the flag for quick coincidence check. it is safe to use the quick check for
 **************************/
 class IntTools_FClass2d {
 	public:
-		/****************** IntTools_FClass2d ******************/
-		/**** md5 signature: 71448dbf418cca7a680d55a7c57f945e ****/
+		/****** IntTools_FClass2d::IntTools_FClass2d ******/
+		/****** md5 signature: 71448dbf418cca7a680d55a7c57f945e ******/
 		%feature("compactdefaultargs") IntTools_FClass2d;
 		%feature("autodoc", "Return
 -------
@@ -2844,8 +2844,8 @@ Empty constructor.
 ") IntTools_FClass2d;
 		 IntTools_FClass2d();
 
-		/****************** IntTools_FClass2d ******************/
-		/**** md5 signature: 2ff64ae474e59221d0e35fcbe73d6a83 ****/
+		/****** IntTools_FClass2d::IntTools_FClass2d ******/
+		/****** md5 signature: 2ff64ae474e59221d0e35fcbe73d6a83 ******/
 		%feature("compactdefaultargs") IntTools_FClass2d;
 		%feature("autodoc", "
 Parameters
@@ -2863,8 +2863,8 @@ Initializes algorithm by the face f and tolerance tol.
 ") IntTools_FClass2d;
 		 IntTools_FClass2d(const TopoDS_Face & F, const Standard_Real Tol);
 
-		/****************** Init ******************/
-		/**** md5 signature: 9fa3174f39f493855c5fe31d2b5b64fc ****/
+		/****** IntTools_FClass2d::Init ******/
+		/****** md5 signature: 9fa3174f39f493855c5fe31d2b5b64fc ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -2882,8 +2882,8 @@ Initializes algorithm by the face f and tolerance tol.
 ") Init;
 		void Init(const TopoDS_Face & F, const Standard_Real Tol);
 
-		/****************** IsHole ******************/
-		/**** md5 signature: b5f4b5210b3b0507eda73b3be749bc8d ****/
+		/****** IntTools_FClass2d::IsHole ******/
+		/****** md5 signature: b5f4b5210b3b0507eda73b3be749bc8d ******/
 		%feature("compactdefaultargs") IsHole;
 		%feature("autodoc", "Return
 -------
@@ -2895,8 +2895,8 @@ No available documentation.
 ") IsHole;
 		Standard_Boolean IsHole();
 
-		/****************** Perform ******************/
-		/**** md5 signature: 403774510e6e0c4bd249a27908ad88fd ****/
+		/****** IntTools_FClass2d::Perform ******/
+		/****** md5 signature: 403774510e6e0c4bd249a27908ad88fd ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -2914,8 +2914,8 @@ Returns state of the 2d point puv. if recadreonperiodic is true (default value),
 ") Perform;
 		TopAbs_State Perform(const gp_Pnt2d & Puv, const Standard_Boolean RecadreOnPeriodic = Standard_True);
 
-		/****************** PerformInfinitePoint ******************/
-		/**** md5 signature: 372e31f938f00ae741d3664c08c086b5 ****/
+		/****** IntTools_FClass2d::PerformInfinitePoint ******/
+		/****** md5 signature: 372e31f938f00ae741d3664c08c086b5 ******/
 		%feature("compactdefaultargs") PerformInfinitePoint;
 		%feature("autodoc", "Return
 -------
@@ -2927,8 +2927,8 @@ Returns state of infinite 2d point relatively to (0, 0).
 ") PerformInfinitePoint;
 		TopAbs_State PerformInfinitePoint();
 
-		/****************** TestOnRestriction ******************/
-		/**** md5 signature: 6c77262c5fd5c2462a11220de78e70e9 ****/
+		/****** IntTools_FClass2d::TestOnRestriction ******/
+		/****** md5 signature: 6c77262c5fd5c2462a11220de78e70e9 ******/
 		%feature("compactdefaultargs") TestOnRestriction;
 		%feature("autodoc", "
 Parameters
@@ -2961,8 +2961,8 @@ Test a point with +- an offset (tol) and returns on if some points are out an so
 **************************/
 class IntTools_FaceFace {
 	public:
-		/****************** IntTools_FaceFace ******************/
-		/**** md5 signature: b1adf597b2fd293465ee783c22f7bd7a ****/
+		/****** IntTools_FaceFace::IntTools_FaceFace ******/
+		/****** md5 signature: b1adf597b2fd293465ee783c22f7bd7a ******/
 		%feature("compactdefaultargs") IntTools_FaceFace;
 		%feature("autodoc", "Return
 -------
@@ -2974,8 +2974,8 @@ Empty constructor.
 ") IntTools_FaceFace;
 		 IntTools_FaceFace();
 
-		/****************** Context ******************/
-		/**** md5 signature: 3ea460f8e5a9e1fe83439fe69bd1002e ****/
+		/****** IntTools_FaceFace::Context ******/
+		/****** md5 signature: 3ea460f8e5a9e1fe83439fe69bd1002e ******/
 		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "Return
 -------
@@ -2987,8 +2987,8 @@ Gets the intersection context.
 ") Context;
 		const opencascade::handle<IntTools_Context> & Context();
 
-		/****************** Face1 ******************/
-		/**** md5 signature: ab2eca052beed46bd39ad31d28c4ee92 ****/
+		/****** IntTools_FaceFace::Face1 ******/
+		/****** md5 signature: ab2eca052beed46bd39ad31d28c4ee92 ******/
 		%feature("compactdefaultargs") Face1;
 		%feature("autodoc", "Return
 -------
@@ -3000,8 +3000,8 @@ Returns first of processed faces.
 ") Face1;
 		const TopoDS_Face Face1();
 
-		/****************** Face2 ******************/
-		/**** md5 signature: 4b53886e6b114a0c7d6d5bbf493d04f4 ****/
+		/****** IntTools_FaceFace::Face2 ******/
+		/****** md5 signature: 4b53886e6b114a0c7d6d5bbf493d04f4 ******/
 		%feature("compactdefaultargs") Face2;
 		%feature("autodoc", "Return
 -------
@@ -3013,8 +3013,8 @@ Returns second of processed faces.
 ") Face2;
 		const TopoDS_Face Face2();
 
-		/****************** FuzzyValue ******************/
-		/**** md5 signature: be29fbc3587cce2740c43ae36346b88f ****/
+		/****** IntTools_FaceFace::FuzzyValue ******/
+		/****** md5 signature: be29fbc3587cce2740c43ae36346b88f ******/
 		%feature("compactdefaultargs") FuzzyValue;
 		%feature("autodoc", "Return
 -------
@@ -3026,8 +3026,8 @@ Returns fuzzy value.
 ") FuzzyValue;
 		Standard_Real FuzzyValue();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** IntTools_FaceFace::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -3039,8 +3039,8 @@ Returns true if the intersection was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** Lines ******************/
-		/**** md5 signature: 63ca1b903d3f6250f96d4975cfd4a797 ****/
+		/****** IntTools_FaceFace::Lines ******/
+		/****** md5 signature: 63ca1b903d3f6250f96d4975cfd4a797 ******/
 		%feature("compactdefaultargs") Lines;
 		%feature("autodoc", "Return
 -------
@@ -3052,8 +3052,8 @@ Returns sequence of 3d curves as result of intersection.
 ") Lines;
 		IntTools_SequenceOfCurves Lines();
 
-		/****************** Perform ******************/
-		/**** md5 signature: fc787f09bbe9fa2375bf6639020db29c ****/
+		/****** IntTools_FaceFace::Perform ******/
+		/****** md5 signature: fc787f09bbe9fa2375bf6639020db29c ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -3072,8 +3072,8 @@ Intersects underliing surfaces of f1 and f2 use sum of tolerance of f1 and f2 as
 ") Perform;
 		void Perform(const TopoDS_Face & F1, const TopoDS_Face & F2, const Standard_Boolean theToRunParallel = Standard_False);
 
-		/****************** Points ******************/
-		/**** md5 signature: 4c491afe08e7fca7a25cfca5246db6f2 ****/
+		/****** IntTools_FaceFace::Points ******/
+		/****** md5 signature: 4c491afe08e7fca7a25cfca5246db6f2 ******/
 		%feature("compactdefaultargs") Points;
 		%feature("autodoc", "Return
 -------
@@ -3085,8 +3085,8 @@ Returns sequence of 3d curves as result of intersection.
 ") Points;
 		const IntTools_SequenceOfPntOn2Faces & Points();
 
-		/****************** PrepareLines3D ******************/
-		/**** md5 signature: 9608103b9dced13800e46e92e7b50562 ****/
+		/****** IntTools_FaceFace::PrepareLines3D ******/
+		/****** md5 signature: 9608103b9dced13800e46e92e7b50562 ******/
 		%feature("compactdefaultargs") PrepareLines3D;
 		%feature("autodoc", "
 Parameters
@@ -3103,8 +3103,8 @@ Provides post-processing the result lines. @param btosplit [in] split the closed
 ") PrepareLines3D;
 		void PrepareLines3D(const Standard_Boolean bToSplit = Standard_True);
 
-		/****************** SetContext ******************/
-		/**** md5 signature: ca18ce635d4700b2601132549e0efa1a ****/
+		/****** IntTools_FaceFace::SetContext ******/
+		/****** md5 signature: ca18ce635d4700b2601132549e0efa1a ******/
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "
 Parameters
@@ -3121,8 +3121,8 @@ Sets the intersection context.
 ") SetContext;
 		void SetContext(const opencascade::handle<IntTools_Context> & aContext);
 
-		/****************** SetFuzzyValue ******************/
-		/**** md5 signature: a6e52c994eeddfce238b90491de5f35c ****/
+		/****** IntTools_FaceFace::SetFuzzyValue ******/
+		/****** md5 signature: a6e52c994eeddfce238b90491de5f35c ******/
 		%feature("compactdefaultargs") SetFuzzyValue;
 		%feature("autodoc", "
 Parameters
@@ -3139,8 +3139,8 @@ Sets the fuzzy value.
 ") SetFuzzyValue;
 		void SetFuzzyValue(const Standard_Real theFuzz);
 
-		/****************** SetList ******************/
-		/**** md5 signature: 7b3314b4041c0a608529322354aff67b ****/
+		/****** IntTools_FaceFace::SetList ******/
+		/****** md5 signature: 7b3314b4041c0a608529322354aff67b ******/
 		%feature("compactdefaultargs") SetList;
 		%feature("autodoc", "
 Parameters
@@ -3157,8 +3157,8 @@ No available documentation.
 ") SetList;
 		void SetList(IntSurf_ListOfPntOn2S & ListOfPnts);
 
-		/****************** SetParameters ******************/
-		/**** md5 signature: fb88c48e2809576decba34c028b1f91a ****/
+		/****** IntTools_FaceFace::SetParameters ******/
+		/****** md5 signature: fb88c48e2809576decba34c028b1f91a ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
@@ -3178,8 +3178,8 @@ Modifier.
 ") SetParameters;
 		void SetParameters(const Standard_Boolean ApproxCurves, const Standard_Boolean ComputeCurveOnS1, const Standard_Boolean ComputeCurveOnS2, const Standard_Real ApproximationTolerance);
 
-		/****************** TangentFaces ******************/
-		/**** md5 signature: 1bd0aa400de87da796d429cdd88c31ea ****/
+		/****** IntTools_FaceFace::TangentFaces ******/
+		/****** md5 signature: 1bd0aa400de87da796d429cdd88c31ea ******/
 		%feature("compactdefaultargs") TangentFaces;
 		%feature("autodoc", "Return
 -------
@@ -3205,8 +3205,8 @@ Returns true if faces are tangent.
 ********************************/
 class IntTools_MarkedRangeSet {
 	public:
-		/****************** IntTools_MarkedRangeSet ******************/
-		/**** md5 signature: 2de81fd2aa2e1959e9370fe9d98a7775 ****/
+		/****** IntTools_MarkedRangeSet::IntTools_MarkedRangeSet ******/
+		/****** md5 signature: 2de81fd2aa2e1959e9370fe9d98a7775 ******/
 		%feature("compactdefaultargs") IntTools_MarkedRangeSet;
 		%feature("autodoc", "Return
 -------
@@ -3218,8 +3218,8 @@ Empty constructor.
 ") IntTools_MarkedRangeSet;
 		 IntTools_MarkedRangeSet();
 
-		/****************** IntTools_MarkedRangeSet ******************/
-		/**** md5 signature: 4500ab531466526ba62c7a3cf3175ae2 ****/
+		/****** IntTools_MarkedRangeSet::IntTools_MarkedRangeSet ******/
+		/****** md5 signature: 4500ab531466526ba62c7a3cf3175ae2 ******/
 		%feature("compactdefaultargs") IntTools_MarkedRangeSet;
 		%feature("autodoc", "
 Parameters
@@ -3238,8 +3238,8 @@ Build set of ranges which consists of one range with boundary values thefirstbou
 ") IntTools_MarkedRangeSet;
 		 IntTools_MarkedRangeSet(const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theInitFlag);
 
-		/****************** IntTools_MarkedRangeSet ******************/
-		/**** md5 signature: 508a82e4699613c19a94c30b7427830c ****/
+		/****** IntTools_MarkedRangeSet::IntTools_MarkedRangeSet ******/
+		/****** md5 signature: 508a82e4699613c19a94c30b7427830c ******/
 		%feature("compactdefaultargs") IntTools_MarkedRangeSet;
 		%feature("autodoc", "
 Parameters
@@ -3257,8 +3257,8 @@ Build set of ranges based on the array of progressive sorted values //! warning:
 ") IntTools_MarkedRangeSet;
 		 IntTools_MarkedRangeSet(const TColStd_Array1OfReal & theSortedArray, const Standard_Integer theInitFlag);
 
-		/****************** Flag ******************/
-		/**** md5 signature: 5a633977422925ff5909997008039bcc ****/
+		/****** IntTools_MarkedRangeSet::Flag ******/
+		/****** md5 signature: 5a633977422925ff5909997008039bcc ******/
 		%feature("compactdefaultargs") Flag;
 		%feature("autodoc", "
 Parameters
@@ -3275,8 +3275,8 @@ Returns flag of the range with index theindex.
 ") Flag;
 		Standard_Integer Flag(const Standard_Integer theIndex);
 
-		/****************** GetIndex ******************/
-		/**** md5 signature: 19f111e88c6d1b4323855209356ac656 ****/
+		/****** IntTools_MarkedRangeSet::GetIndex ******/
+		/****** md5 signature: 19f111e88c6d1b4323855209356ac656 ******/
 		%feature("compactdefaultargs") GetIndex;
 		%feature("autodoc", "
 Parameters
@@ -3293,8 +3293,8 @@ Returns index of range which contains thevalue. if thevalue do not belong any ra
 ") GetIndex;
 		Standard_Integer GetIndex(const Standard_Real theValue);
 
-		/****************** GetIndex ******************/
-		/**** md5 signature: 26ff8081726339df9334c1710af4dfc6 ****/
+		/****** IntTools_MarkedRangeSet::GetIndex ******/
+		/****** md5 signature: 26ff8081726339df9334c1710af4dfc6 ******/
 		%feature("compactdefaultargs") GetIndex;
 		%feature("autodoc", "
 Parameters
@@ -3312,8 +3312,8 @@ Returns index of range which contains thevalue if thevalue do not belong any ran
 ") GetIndex;
 		Standard_Integer GetIndex(const Standard_Real theValue, const Standard_Boolean UseLower);
 
-		/****************** GetIndices ******************/
-		/**** md5 signature: 47656e5616d80ed5ba6856249a9fcd21 ****/
+		/****** IntTools_MarkedRangeSet::GetIndices ******/
+		/****** md5 signature: 47656e5616d80ed5ba6856249a9fcd21 ******/
 		%feature("compactdefaultargs") GetIndices;
 		%feature("autodoc", "
 Parameters
@@ -3330,8 +3330,8 @@ No available documentation.
 ") GetIndices;
 		const TColStd_SequenceOfInteger & GetIndices(const Standard_Real theValue);
 
-		/****************** InsertRange ******************/
-		/**** md5 signature: 147160f23e4f53045cc99bcee1449de1 ****/
+		/****** IntTools_MarkedRangeSet::InsertRange ******/
+		/****** md5 signature: 147160f23e4f53045cc99bcee1449de1 ******/
 		%feature("compactdefaultargs") InsertRange;
 		%feature("autodoc", "
 Parameters
@@ -3350,8 +3350,8 @@ Inserts a new range marked with flag theflag it replace the existing ranges or p
 ") InsertRange;
 		Standard_Boolean InsertRange(const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theFlag);
 
-		/****************** InsertRange ******************/
-		/**** md5 signature: 2de36adb6ef89f9e45fd40c833288539 ****/
+		/****** IntTools_MarkedRangeSet::InsertRange ******/
+		/****** md5 signature: 2de36adb6ef89f9e45fd40c833288539 ******/
 		%feature("compactdefaultargs") InsertRange;
 		%feature("autodoc", "
 Parameters
@@ -3369,8 +3369,8 @@ Inserts a new range marked with flag theflag it replace the existing ranges or p
 ") InsertRange;
 		Standard_Boolean InsertRange(const IntTools_Range & theRange, const Standard_Integer theFlag);
 
-		/****************** InsertRange ******************/
-		/**** md5 signature: b8fd2d3918a0cf59c612b32626527343 ****/
+		/****** IntTools_MarkedRangeSet::InsertRange ******/
+		/****** md5 signature: b8fd2d3918a0cf59c612b32626527343 ******/
 		%feature("compactdefaultargs") InsertRange;
 		%feature("autodoc", "
 Parameters
@@ -3390,8 +3390,8 @@ Inserts a new range marked with flag theflag it replace the existing ranges or p
 ") InsertRange;
 		Standard_Boolean InsertRange(const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theFlag, const Standard_Integer theIndex);
 
-		/****************** InsertRange ******************/
-		/**** md5 signature: 79a2f1d842051df9c1cbd66c9d95b899 ****/
+		/****** IntTools_MarkedRangeSet::InsertRange ******/
+		/****** md5 signature: 79a2f1d842051df9c1cbd66c9d95b899 ******/
 		%feature("compactdefaultargs") InsertRange;
 		%feature("autodoc", "
 Parameters
@@ -3410,8 +3410,8 @@ Inserts a new range marked with flag theflag it replace the existing ranges or p
 ") InsertRange;
 		Standard_Boolean InsertRange(const IntTools_Range & theRange, const Standard_Integer theFlag, const Standard_Integer theIndex);
 
-		/****************** Length ******************/
-		/**** md5 signature: f2d149cffca76ec002490404b3e808e1 ****/
+		/****** IntTools_MarkedRangeSet::Length ******/
+		/****** md5 signature: f2d149cffca76ec002490404b3e808e1 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -3423,8 +3423,8 @@ Returns number of ranges.
 ") Length;
 		Standard_Integer Length();
 
-		/****************** Range ******************/
-		/**** md5 signature: fcf0a09254cfa5f779950e9b958dff55 ****/
+		/****** IntTools_MarkedRangeSet::Range ******/
+		/****** md5 signature: fcf0a09254cfa5f779950e9b958dff55 ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -3441,8 +3441,8 @@ Returns the range with index theindex. the index can be from 1 to length().
 ") Range;
 		IntTools_Range Range(const Standard_Integer theIndex);
 
-		/****************** SetBoundaries ******************/
-		/**** md5 signature: cbbd15d1280518d84c73f96f152194ff ****/
+		/****** IntTools_MarkedRangeSet::SetBoundaries ******/
+		/****** md5 signature: cbbd15d1280518d84c73f96f152194ff ******/
 		%feature("compactdefaultargs") SetBoundaries;
 		%feature("autodoc", "
 Parameters
@@ -3461,8 +3461,8 @@ Build set of ranges which consists of one range with boundary values thefirstbou
 ") SetBoundaries;
 		void SetBoundaries(const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theInitFlag);
 
-		/****************** SetFlag ******************/
-		/**** md5 signature: ddfe10428610541083a77392737cdd51 ****/
+		/****** IntTools_MarkedRangeSet::SetFlag ******/
+		/****** md5 signature: ddfe10428610541083a77392737cdd51 ******/
 		%feature("compactdefaultargs") SetFlag;
 		%feature("autodoc", "
 Parameters
@@ -3480,8 +3480,8 @@ Set flag theflag for range with index theindex.
 ") SetFlag;
 		void SetFlag(const Standard_Integer theIndex, const Standard_Integer theFlag);
 
-		/****************** SetRanges ******************/
-		/**** md5 signature: c5c8955c67ec7778126857cdd282197b ****/
+		/****** IntTools_MarkedRangeSet::SetRanges ******/
+		/****** md5 signature: c5c8955c67ec7778126857cdd282197b ******/
 		%feature("compactdefaultargs") SetRanges;
 		%feature("autodoc", "
 Parameters
@@ -3513,8 +3513,8 @@ Build set of ranges based on the array of progressive sorted values //! warning:
 *****************************/
 class IntTools_PntOn2Faces {
 	public:
-		/****************** IntTools_PntOn2Faces ******************/
-		/**** md5 signature: 2dbfead125cca31bb1f4cf9fd76dec35 ****/
+		/****** IntTools_PntOn2Faces::IntTools_PntOn2Faces ******/
+		/****** md5 signature: 2dbfead125cca31bb1f4cf9fd76dec35 ******/
 		%feature("compactdefaultargs") IntTools_PntOn2Faces;
 		%feature("autodoc", "Return
 -------
@@ -3526,8 +3526,8 @@ Empty constructor.
 ") IntTools_PntOn2Faces;
 		 IntTools_PntOn2Faces();
 
-		/****************** IntTools_PntOn2Faces ******************/
-		/**** md5 signature: afb2dbb31f2af1cbbfb06f9506775ae8 ****/
+		/****** IntTools_PntOn2Faces::IntTools_PntOn2Faces ******/
+		/****** md5 signature: afb2dbb31f2af1cbbfb06f9506775ae8 ******/
 		%feature("compactdefaultargs") IntTools_PntOn2Faces;
 		%feature("autodoc", "
 Parameters
@@ -3545,8 +3545,8 @@ Initializes me by two points ap1 and ap2.
 ") IntTools_PntOn2Faces;
 		 IntTools_PntOn2Faces(const IntTools_PntOnFace & aP1, const IntTools_PntOnFace & aP2);
 
-		/****************** IsValid ******************/
-		/**** md5 signature: 2809e700423e4fe6ecd395953f3a2406 ****/
+		/****** IntTools_PntOn2Faces::IsValid ******/
+		/****** md5 signature: 2809e700423e4fe6ecd395953f3a2406 ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Return
 -------
@@ -3558,8 +3558,8 @@ Selector.
 ") IsValid;
 		Standard_Boolean IsValid();
 
-		/****************** P1 ******************/
-		/**** md5 signature: f057dd4658f8319bab9d06497b601c43 ****/
+		/****** IntTools_PntOn2Faces::P1 ******/
+		/****** md5 signature: f057dd4658f8319bab9d06497b601c43 ******/
 		%feature("compactdefaultargs") P1;
 		%feature("autodoc", "Return
 -------
@@ -3571,8 +3571,8 @@ Selector.
 ") P1;
 		const IntTools_PntOnFace & P1();
 
-		/****************** P2 ******************/
-		/**** md5 signature: d03b398a4a4515fff13f3bbb63105f04 ****/
+		/****** IntTools_PntOn2Faces::P2 ******/
+		/****** md5 signature: d03b398a4a4515fff13f3bbb63105f04 ******/
 		%feature("compactdefaultargs") P2;
 		%feature("autodoc", "Return
 -------
@@ -3584,8 +3584,8 @@ Selector.
 ") P2;
 		const IntTools_PntOnFace & P2();
 
-		/****************** SetP1 ******************/
-		/**** md5 signature: 18db88b6150151cd47132f94a6a27ca9 ****/
+		/****** IntTools_PntOn2Faces::SetP1 ******/
+		/****** md5 signature: 18db88b6150151cd47132f94a6a27ca9 ******/
 		%feature("compactdefaultargs") SetP1;
 		%feature("autodoc", "
 Parameters
@@ -3602,8 +3602,8 @@ Modifier.
 ") SetP1;
 		void SetP1(const IntTools_PntOnFace & aP1);
 
-		/****************** SetP2 ******************/
-		/**** md5 signature: 7bf16fc967708fc83aabc008fa843a97 ****/
+		/****** IntTools_PntOn2Faces::SetP2 ******/
+		/****** md5 signature: 7bf16fc967708fc83aabc008fa843a97 ******/
 		%feature("compactdefaultargs") SetP2;
 		%feature("autodoc", "
 Parameters
@@ -3620,8 +3620,8 @@ Modifier.
 ") SetP2;
 		void SetP2(const IntTools_PntOnFace & aP2);
 
-		/****************** SetValid ******************/
-		/**** md5 signature: 85144754cba02ed47a44352f79ae48b4 ****/
+		/****** IntTools_PntOn2Faces::SetValid ******/
+		/****** md5 signature: 85144754cba02ed47a44352f79ae48b4 ******/
 		%feature("compactdefaultargs") SetValid;
 		%feature("autodoc", "
 Parameters
@@ -3652,8 +3652,8 @@ Modifier.
 ***************************/
 class IntTools_PntOnFace {
 	public:
-		/****************** IntTools_PntOnFace ******************/
-		/**** md5 signature: 1c0e5bbf17215766ba82417ebcfe74f0 ****/
+		/****** IntTools_PntOnFace::IntTools_PntOnFace ******/
+		/****** md5 signature: 1c0e5bbf17215766ba82417ebcfe74f0 ******/
 		%feature("compactdefaultargs") IntTools_PntOnFace;
 		%feature("autodoc", "Return
 -------
@@ -3665,8 +3665,8 @@ Empty constructor.
 ") IntTools_PntOnFace;
 		 IntTools_PntOnFace();
 
-		/****************** Face ******************/
-		/**** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ****/
+		/****** IntTools_PntOnFace::Face ******/
+		/****** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "Return
 -------
@@ -3678,8 +3678,8 @@ Selector.
 ") Face;
 		const TopoDS_Face Face();
 
-		/****************** Init ******************/
-		/**** md5 signature: 58e5f3dd5eb5e4ad5ab1fd9f3909abf1 ****/
+		/****** IntTools_PntOnFace::Init ******/
+		/****** md5 signature: 58e5f3dd5eb5e4ad5ab1fd9f3909abf1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3699,8 +3699,8 @@ Initializes me by aface, a 3d point and it's uv parameters on face.
 ") Init;
 		void Init(const TopoDS_Face & aF, const gp_Pnt & aP, const Standard_Real U, const Standard_Real V);
 
-		/****************** Parameters ******************/
-		/**** md5 signature: 24a2c71191423d4e30ed72f58cb5de87 ****/
+		/****** IntTools_PntOnFace::Parameters ******/
+		/****** md5 signature: 24a2c71191423d4e30ed72f58cb5de87 ******/
 		%feature("compactdefaultargs") Parameters;
 		%feature("autodoc", "
 Parameters
@@ -3717,8 +3717,8 @@ Selector.
 ") Parameters;
 		void Parameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** Pnt ******************/
-		/**** md5 signature: c0bafeed50f4eebb5964e2bf8520bf90 ****/
+		/****** IntTools_PntOnFace::Pnt ******/
+		/****** md5 signature: c0bafeed50f4eebb5964e2bf8520bf90 ******/
 		%feature("compactdefaultargs") Pnt;
 		%feature("autodoc", "Return
 -------
@@ -3730,8 +3730,8 @@ Selector.
 ") Pnt;
 		const gp_Pnt Pnt();
 
-		/****************** SetFace ******************/
-		/**** md5 signature: b689a8f4d5c8b24783cd7ff1ee539b06 ****/
+		/****** IntTools_PntOnFace::SetFace ******/
+		/****** md5 signature: b689a8f4d5c8b24783cd7ff1ee539b06 ******/
 		%feature("compactdefaultargs") SetFace;
 		%feature("autodoc", "
 Parameters
@@ -3748,8 +3748,8 @@ Modifier.
 ") SetFace;
 		void SetFace(const TopoDS_Face & aF);
 
-		/****************** SetParameters ******************/
-		/**** md5 signature: 766228d61435cf9eaba866b58733ed73 ****/
+		/****** IntTools_PntOnFace::SetParameters ******/
+		/****** md5 signature: 766228d61435cf9eaba866b58733ed73 ******/
 		%feature("compactdefaultargs") SetParameters;
 		%feature("autodoc", "
 Parameters
@@ -3767,8 +3767,8 @@ Modifier.
 ") SetParameters;
 		void SetParameters(const Standard_Real U, const Standard_Real V);
 
-		/****************** SetPnt ******************/
-		/**** md5 signature: e7d87e72863cdb2f7fd541f048388bf8 ****/
+		/****** IntTools_PntOnFace::SetPnt ******/
+		/****** md5 signature: e7d87e72863cdb2f7fd541f048388bf8 ******/
 		%feature("compactdefaultargs") SetPnt;
 		%feature("autodoc", "
 Parameters
@@ -3785,8 +3785,8 @@ Modifier.
 ") SetPnt;
 		void SetPnt(const gp_Pnt & aP);
 
-		/****************** SetValid ******************/
-		/**** md5 signature: 85144754cba02ed47a44352f79ae48b4 ****/
+		/****** IntTools_PntOnFace::SetValid ******/
+		/****** md5 signature: 85144754cba02ed47a44352f79ae48b4 ******/
 		%feature("compactdefaultargs") SetValid;
 		%feature("autodoc", "
 Parameters
@@ -3803,8 +3803,8 @@ Modifier.
 ") SetValid;
 		void SetValid(const Standard_Boolean bF);
 
-		/****************** Valid ******************/
-		/**** md5 signature: 937ff4933c1c21f110867b68d8e68ce4 ****/
+		/****** IntTools_PntOnFace::Valid ******/
+		/****** md5 signature: 937ff4933c1c21f110867b68d8e68ce4 ******/
 		%feature("compactdefaultargs") Valid;
 		%feature("autodoc", "Return
 -------
@@ -3834,8 +3834,8 @@ Selector.
 ***********************/
 class IntTools_Range {
 	public:
-		/****************** IntTools_Range ******************/
-		/**** md5 signature: e41c61afdd5ca0133ff554bb45f86cfe ****/
+		/****** IntTools_Range::IntTools_Range ******/
+		/****** md5 signature: e41c61afdd5ca0133ff554bb45f86cfe ******/
 		%feature("compactdefaultargs") IntTools_Range;
 		%feature("autodoc", "Return
 -------
@@ -3847,8 +3847,8 @@ Empty constructor.
 ") IntTools_Range;
 		 IntTools_Range();
 
-		/****************** IntTools_Range ******************/
-		/**** md5 signature: 9c803d1ab38f8f55fe7a1646da7b942f ****/
+		/****** IntTools_Range::IntTools_Range ******/
+		/****** md5 signature: 9c803d1ab38f8f55fe7a1646da7b942f ******/
 		%feature("compactdefaultargs") IntTools_Range;
 		%feature("autodoc", "
 Parameters
@@ -3866,8 +3866,8 @@ Initialize me by range boundaries.
 ") IntTools_Range;
 		 IntTools_Range(const Standard_Real aFirst, const Standard_Real aLast);
 
-		/****************** First ******************/
-		/**** md5 signature: 009dd98af15e46b2da286731f40e1839 ****/
+		/****** IntTools_Range::First ******/
+		/****** md5 signature: 009dd98af15e46b2da286731f40e1839 ******/
 		%feature("compactdefaultargs") First;
 		%feature("autodoc", "Return
 -------
@@ -3879,8 +3879,8 @@ Selector.
 ") First;
 		Standard_Real First();
 
-		/****************** Last ******************/
-		/**** md5 signature: 4c8063c237a4f73018a7949da8aef9fb ****/
+		/****** IntTools_Range::Last ******/
+		/****** md5 signature: 4c8063c237a4f73018a7949da8aef9fb ******/
 		%feature("compactdefaultargs") Last;
 		%feature("autodoc", "Return
 -------
@@ -3892,8 +3892,8 @@ Selector.
 ") Last;
 		Standard_Real Last();
 
-		/****************** Range ******************/
-		/**** md5 signature: f69d6fade06795ea9184575ce38ac05f ****/
+		/****** IntTools_Range::Range ******/
+		/****** md5 signature: f69d6fade06795ea9184575ce38ac05f ******/
 		%feature("compactdefaultargs") Range;
 		%feature("autodoc", "
 Parameters
@@ -3910,8 +3910,8 @@ Selector.
 ") Range;
 		void Range(Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SetFirst ******************/
-		/**** md5 signature: ee35428bdecb415ec0e9224957286cfd ****/
+		/****** IntTools_Range::SetFirst ******/
+		/****** md5 signature: ee35428bdecb415ec0e9224957286cfd ******/
 		%feature("compactdefaultargs") SetFirst;
 		%feature("autodoc", "
 Parameters
@@ -3928,8 +3928,8 @@ Modifier.
 ") SetFirst;
 		void SetFirst(const Standard_Real aFirst);
 
-		/****************** SetLast ******************/
-		/**** md5 signature: 5a37b268680286d7ec66485fc6a499f6 ****/
+		/****** IntTools_Range::SetLast ******/
+		/****** md5 signature: 5a37b268680286d7ec66485fc6a499f6 ******/
 		%feature("compactdefaultargs") SetLast;
 		%feature("autodoc", "
 Parameters
@@ -3960,8 +3960,8 @@ Modifier.
 **********************/
 class IntTools_Root {
 	public:
-		/****************** IntTools_Root ******************/
-		/**** md5 signature: 17b1d91ee8fc43f1186accf3cd84cc0d ****/
+		/****** IntTools_Root::IntTools_Root ******/
+		/****** md5 signature: 17b1d91ee8fc43f1186accf3cd84cc0d ******/
 		%feature("compactdefaultargs") IntTools_Root;
 		%feature("autodoc", "Return
 -------
@@ -3973,8 +3973,8 @@ Empty constructor.
 ") IntTools_Root;
 		 IntTools_Root();
 
-		/****************** IntTools_Root ******************/
-		/**** md5 signature: b959cc27cd34019eddf168fa6bb022cf ****/
+		/****** IntTools_Root::IntTools_Root ******/
+		/****** md5 signature: b959cc27cd34019eddf168fa6bb022cf ******/
 		%feature("compactdefaultargs") IntTools_Root;
 		%feature("autodoc", "
 Parameters
@@ -3992,8 +3992,8 @@ Initializes my by range of parameters and type of root.
 ") IntTools_Root;
 		 IntTools_Root(const Standard_Real aRoot, const Standard_Integer aType);
 
-		/****************** Interval ******************/
-		/**** md5 signature: a31ff5dbe0f0228a00c50b508f91df69 ****/
+		/****** IntTools_Root::Interval ******/
+		/****** md5 signature: a31ff5dbe0f0228a00c50b508f91df69 ******/
 		%feature("compactdefaultargs") Interval;
 		%feature("autodoc", "
 Parameters
@@ -4012,8 +4012,8 @@ Returns the values of interval from which the root was found [t1,t2] and the cor
 ") Interval;
 		void Interval(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** IsValid ******************/
-		/**** md5 signature: 2809e700423e4fe6ecd395953f3a2406 ****/
+		/****** IntTools_Root::IsValid ******/
+		/****** md5 signature: 2809e700423e4fe6ecd395953f3a2406 ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "Return
 -------
@@ -4025,8 +4025,8 @@ Returns the validity flag for the root, true if mystatebefore==topabs_out && mys
 ") IsValid;
 		Standard_Boolean IsValid();
 
-		/****************** LayerHeight ******************/
-		/**** md5 signature: b68e4274e6a27174113c27cc38c0b399 ****/
+		/****** IntTools_Root::LayerHeight ******/
+		/****** md5 signature: b68e4274e6a27174113c27cc38c0b399 ******/
 		%feature("compactdefaultargs") LayerHeight;
 		%feature("autodoc", "Return
 -------
@@ -4038,8 +4038,8 @@ Not used in edge/edge algorithm.
 ") LayerHeight;
 		Standard_Real LayerHeight();
 
-		/****************** Root ******************/
-		/**** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ****/
+		/****** IntTools_Root::Root ******/
+		/****** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
@@ -4051,8 +4051,8 @@ Returns the root value.
 ") Root;
 		Standard_Real Root();
 
-		/****************** SetInterval ******************/
-		/**** md5 signature: 5db8941833681411c96383f7f525cd0b ****/
+		/****** IntTools_Root::SetInterval ******/
+		/****** md5 signature: 5db8941833681411c96383f7f525cd0b ******/
 		%feature("compactdefaultargs") SetInterval;
 		%feature("autodoc", "
 Parameters
@@ -4072,8 +4072,8 @@ Sets the interval from which the root was found [t1,t2] and the corresponding va
 ") SetInterval;
 		void SetInterval(const Standard_Real t1, const Standard_Real t2, const Standard_Real f1, const Standard_Real f2);
 
-		/****************** SetLayerHeight ******************/
-		/**** md5 signature: 360921e799cf445e50e6e253a3330162 ****/
+		/****** IntTools_Root::SetLayerHeight ******/
+		/****** md5 signature: 360921e799cf445e50e6e253a3330162 ******/
 		%feature("compactdefaultargs") SetLayerHeight;
 		%feature("autodoc", "
 Parameters
@@ -4090,8 +4090,8 @@ Not used in edge/edge algorithm.
 ") SetLayerHeight;
 		void SetLayerHeight(const Standard_Real aHeight);
 
-		/****************** SetRoot ******************/
-		/**** md5 signature: 3e1ad94889d57c4dd5375b3307a5f5f7 ****/
+		/****** IntTools_Root::SetRoot ******/
+		/****** md5 signature: 3e1ad94889d57c4dd5375b3307a5f5f7 ******/
 		%feature("compactdefaultargs") SetRoot;
 		%feature("autodoc", "
 Parameters
@@ -4108,8 +4108,8 @@ Sets the root's value.
 ") SetRoot;
 		void SetRoot(const Standard_Real aRoot);
 
-		/****************** SetStateAfter ******************/
-		/**** md5 signature: ee9149c1422baa739405b40c2f9f26ec ****/
+		/****** IntTools_Root::SetStateAfter ******/
+		/****** md5 signature: ee9149c1422baa739405b40c2f9f26ec ******/
 		%feature("compactdefaultargs") SetStateAfter;
 		%feature("autodoc", "
 Parameters
@@ -4126,8 +4126,8 @@ Set the value of the state after the root (at t=root-dt).
 ") SetStateAfter;
 		void SetStateAfter(const TopAbs_State aState);
 
-		/****************** SetStateBefore ******************/
-		/**** md5 signature: e698a20e4fef1eee6e76052d9adf9c4e ****/
+		/****** IntTools_Root::SetStateBefore ******/
+		/****** md5 signature: e698a20e4fef1eee6e76052d9adf9c4e ******/
 		%feature("compactdefaultargs") SetStateBefore;
 		%feature("autodoc", "
 Parameters
@@ -4144,8 +4144,8 @@ Set the value of the state before the root (at t=root-dt).
 ") SetStateBefore;
 		void SetStateBefore(const TopAbs_State aState);
 
-		/****************** SetType ******************/
-		/**** md5 signature: b822c030059898c5c30ee0f0c5c0860f ****/
+		/****** IntTools_Root::SetType ******/
+		/****** md5 signature: b822c030059898c5c30ee0f0c5c0860f ******/
 		%feature("compactdefaultargs") SetType;
 		%feature("autodoc", "
 Parameters
@@ -4162,8 +4162,8 @@ Sets the root's type.
 ") SetType;
 		void SetType(const Standard_Integer aType);
 
-		/****************** StateAfter ******************/
-		/**** md5 signature: 00cc234f23b0e06606bd1ce121c9c7ae ****/
+		/****** IntTools_Root::StateAfter ******/
+		/****** md5 signature: 00cc234f23b0e06606bd1ce121c9c7ae ******/
 		%feature("compactdefaultargs") StateAfter;
 		%feature("autodoc", "Return
 -------
@@ -4175,8 +4175,8 @@ Returns the state after the root.
 ") StateAfter;
 		TopAbs_State StateAfter();
 
-		/****************** StateBefore ******************/
-		/**** md5 signature: 76fbbf983aacdcf0487328d9ca214104 ****/
+		/****** IntTools_Root::StateBefore ******/
+		/****** md5 signature: 76fbbf983aacdcf0487328d9ca214104 ******/
 		%feature("compactdefaultargs") StateBefore;
 		%feature("autodoc", "Return
 -------
@@ -4188,8 +4188,8 @@ Returns the state before the root.
 ") StateBefore;
 		TopAbs_State StateBefore();
 
-		/****************** Type ******************/
-		/**** md5 signature: fadaf18b7481222141380b2bb22870ff ****/
+		/****** IntTools_Root::Type ******/
+		/****** md5 signature: fadaf18b7481222141380b2bb22870ff ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Return
 -------
@@ -4215,8 +4215,8 @@ Returns the type of the root =0 - simple (was found by bisection method); =2 - s
 *****************************/
 class IntTools_ShrunkRange {
 	public:
-		/****************** IntTools_ShrunkRange ******************/
-		/**** md5 signature: fb902a78ac553b0c26886882f99dcf4b ****/
+		/****** IntTools_ShrunkRange::IntTools_ShrunkRange ******/
+		/****** md5 signature: fb902a78ac553b0c26886882f99dcf4b ******/
 		%feature("compactdefaultargs") IntTools_ShrunkRange;
 		%feature("autodoc", "Return
 -------
@@ -4228,8 +4228,8 @@ No available documentation.
 ") IntTools_ShrunkRange;
 		 IntTools_ShrunkRange();
 
-		/****************** BndBox ******************/
-		/**** md5 signature: 9dc09300173f027acf300663c3825bb1 ****/
+		/****** IntTools_ShrunkRange::BndBox ******/
+		/****** md5 signature: 9dc09300173f027acf300663c3825bb1 ******/
 		%feature("compactdefaultargs") BndBox;
 		%feature("autodoc", "Return
 -------
@@ -4241,8 +4241,8 @@ No available documentation.
 ") BndBox;
 		const Bnd_Box & BndBox();
 
-		/****************** Context ******************/
-		/**** md5 signature: 3ea460f8e5a9e1fe83439fe69bd1002e ****/
+		/****** IntTools_ShrunkRange::Context ******/
+		/****** md5 signature: 3ea460f8e5a9e1fe83439fe69bd1002e ******/
 		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "Return
 -------
@@ -4254,8 +4254,8 @@ No available documentation.
 ") Context;
 		const opencascade::handle<IntTools_Context> & Context();
 
-		/****************** Edge ******************/
-		/**** md5 signature: be590cff987799d8b7c28083399d0e9f ****/
+		/****** IntTools_ShrunkRange::Edge ******/
+		/****** md5 signature: be590cff987799d8b7c28083399d0e9f ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -4267,8 +4267,8 @@ No available documentation.
 ") Edge;
 		const TopoDS_Edge Edge();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: e385477ab1bec806154173d4a550fd68 ****/
+		/****** IntTools_ShrunkRange::IsDone ******/
+		/****** md5 signature: e385477ab1bec806154173d4a550fd68 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -4280,8 +4280,8 @@ Returns true in case the shrunk range is computed.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsSplittable ******************/
-		/**** md5 signature: 4b9dd74e2aa42018fe83fe5063aa511b ****/
+		/****** IntTools_ShrunkRange::IsSplittable ******/
+		/****** md5 signature: 4b9dd74e2aa42018fe83fe5063aa511b ******/
 		%feature("compactdefaultargs") IsSplittable;
 		%feature("autodoc", "Return
 -------
@@ -4293,8 +4293,8 @@ Returns false in case the shrunk range is too short and the edge cannot be split
 ") IsSplittable;
 		Standard_Boolean IsSplittable();
 
-		/****************** Length ******************/
-		/**** md5 signature: 1d863a710d06afea5559458878200357 ****/
+		/****** IntTools_ShrunkRange::Length ******/
+		/****** md5 signature: 1d863a710d06afea5559458878200357 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -4306,8 +4306,8 @@ Returns the length of the edge if computed.
 ") Length;
 		Standard_Real Length();
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** IntTools_ShrunkRange::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -4319,8 +4319,8 @@ No available documentation.
 ") Perform;
 		void Perform();
 
-		/****************** SetContext ******************/
-		/**** md5 signature: f53c6fcf684a956c5bb75c3ef4778c58 ****/
+		/****** IntTools_ShrunkRange::SetContext ******/
+		/****** md5 signature: f53c6fcf684a956c5bb75c3ef4778c58 ******/
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "
 Parameters
@@ -4337,8 +4337,8 @@ No available documentation.
 ") SetContext;
 		void SetContext(const opencascade::handle<IntTools_Context> & aCtx);
 
-		/****************** SetData ******************/
-		/**** md5 signature: 145ffca467a99ee459c5808f83bfde01 ****/
+		/****** IntTools_ShrunkRange::SetData ******/
+		/****** md5 signature: 145ffca467a99ee459c5808f83bfde01 ******/
 		%feature("compactdefaultargs") SetData;
 		%feature("autodoc", "
 Parameters
@@ -4359,8 +4359,8 @@ No available documentation.
 ") SetData;
 		void SetData(const TopoDS_Edge & aE, const Standard_Real aT1, const Standard_Real aT2, const TopoDS_Vertex & aV1, const TopoDS_Vertex & aV2);
 
-		/****************** SetShrunkRange ******************/
-		/**** md5 signature: 67d5d9ae0e5a6a07df554656c52ff308 ****/
+		/****** IntTools_ShrunkRange::SetShrunkRange ******/
+		/****** md5 signature: 67d5d9ae0e5a6a07df554656c52ff308 ******/
 		%feature("compactdefaultargs") SetShrunkRange;
 		%feature("autodoc", "
 Parameters
@@ -4378,8 +4378,8 @@ No available documentation.
 ") SetShrunkRange;
 		void SetShrunkRange(const Standard_Real aT1, const Standard_Real aT2);
 
-		/****************** ShrunkRange ******************/
-		/**** md5 signature: 35baf6c03780024996387c9697b878db ****/
+		/****** IntTools_ShrunkRange::ShrunkRange ******/
+		/****** md5 signature: 35baf6c03780024996387c9697b878db ******/
 		%feature("compactdefaultargs") ShrunkRange;
 		%feature("autodoc", "
 Parameters
@@ -4410,8 +4410,8 @@ No available documentation.
 ******************************************/
 class IntTools_SurfaceRangeLocalizeData {
 	public:
-		/****************** IntTools_SurfaceRangeLocalizeData ******************/
-		/**** md5 signature: 181c969b7f7ccf70d15429ee3d0ddec0 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData ******/
+		/****** md5 signature: 181c969b7f7ccf70d15429ee3d0ddec0 ******/
 		%feature("compactdefaultargs") IntTools_SurfaceRangeLocalizeData;
 		%feature("autodoc", "Return
 -------
@@ -4423,8 +4423,8 @@ No available documentation.
 ") IntTools_SurfaceRangeLocalizeData;
 		 IntTools_SurfaceRangeLocalizeData();
 
-		/****************** IntTools_SurfaceRangeLocalizeData ******************/
-		/**** md5 signature: e50c45554410b70cdf3dd0ce0d5f1c38 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData ******/
+		/****** md5 signature: e50c45554410b70cdf3dd0ce0d5f1c38 ******/
 		%feature("compactdefaultargs") IntTools_SurfaceRangeLocalizeData;
 		%feature("autodoc", "
 Parameters
@@ -4444,8 +4444,8 @@ No available documentation.
 ") IntTools_SurfaceRangeLocalizeData;
 		 IntTools_SurfaceRangeLocalizeData(const Standard_Integer theNbSampleU, const Standard_Integer theNbSampleV, const Standard_Real theMinRangeU, const Standard_Real theMinRangeV);
 
-		/****************** IntTools_SurfaceRangeLocalizeData ******************/
-		/**** md5 signature: 1f979aa83f2fa69e6e52f02ff927f89b ****/
+		/****** IntTools_SurfaceRangeLocalizeData::IntTools_SurfaceRangeLocalizeData ******/
+		/****** md5 signature: 1f979aa83f2fa69e6e52f02ff927f89b ******/
 		%feature("compactdefaultargs") IntTools_SurfaceRangeLocalizeData;
 		%feature("autodoc", "
 Parameters
@@ -4462,8 +4462,8 @@ No available documentation.
 ") IntTools_SurfaceRangeLocalizeData;
 		 IntTools_SurfaceRangeLocalizeData(const IntTools_SurfaceRangeLocalizeData & Other);
 
-		/****************** AddBox ******************/
-		/**** md5 signature: 36a4ee0ba3f5d25cfcb396af65848035 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::AddBox ******/
+		/****** md5 signature: 36a4ee0ba3f5d25cfcb396af65848035 ******/
 		%feature("compactdefaultargs") AddBox;
 		%feature("autodoc", "
 Parameters
@@ -4481,8 +4481,8 @@ No available documentation.
 ") AddBox;
 		void AddBox(const IntTools_SurfaceRangeSample & theRange, const Bnd_Box & theBox);
 
-		/****************** AddOutRange ******************/
-		/**** md5 signature: fc05412e16f8b608962e691276314a35 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::AddOutRange ******/
+		/****** md5 signature: fc05412e16f8b608962e691276314a35 ******/
 		%feature("compactdefaultargs") AddOutRange;
 		%feature("autodoc", "
 Parameters
@@ -4499,8 +4499,8 @@ No available documentation.
 ") AddOutRange;
 		void AddOutRange(const IntTools_SurfaceRangeSample & theRange);
 
-		/****************** Assign ******************/
-		/**** md5 signature: 575be6410612719126135385b1cd425e ****/
+		/****** IntTools_SurfaceRangeLocalizeData::Assign ******/
+		/****** md5 signature: 575be6410612719126135385b1cd425e ******/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "
 Parameters
@@ -4517,8 +4517,8 @@ No available documentation.
 ") Assign;
 		IntTools_SurfaceRangeLocalizeData & Assign(const IntTools_SurfaceRangeLocalizeData & Other);
 
-		/****************** ClearGrid ******************/
-		/**** md5 signature: e1cb2030c59bf4aaf51aadf8a8ccada4 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::ClearGrid ******/
+		/****** md5 signature: e1cb2030c59bf4aaf51aadf8a8ccada4 ******/
 		%feature("compactdefaultargs") ClearGrid;
 		%feature("autodoc", "Return
 -------
@@ -4530,8 +4530,8 @@ Clears the grid of points.
 ") ClearGrid;
 		void ClearGrid();
 
-		/****************** FindBox ******************/
-		/**** md5 signature: 023588dc4cb9abd025cc0596939d5783 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::FindBox ******/
+		/****** md5 signature: 023588dc4cb9abd025cc0596939d5783 ******/
 		%feature("compactdefaultargs") FindBox;
 		%feature("autodoc", "
 Parameters
@@ -4549,8 +4549,8 @@ No available documentation.
 ") FindBox;
 		Standard_Boolean FindBox(const IntTools_SurfaceRangeSample & theRange, Bnd_Box & theBox);
 
-		/****************** GetGridDeflection ******************/
-		/**** md5 signature: 651ffb3f8257131de50ed9c5c36b2b3a ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetGridDeflection ******/
+		/****** md5 signature: 651ffb3f8257131de50ed9c5c36b2b3a ******/
 		%feature("compactdefaultargs") GetGridDeflection;
 		%feature("autodoc", "Return
 -------
@@ -4562,8 +4562,8 @@ Query the grid deflection.
 ") GetGridDeflection;
 		Standard_Real GetGridDeflection();
 
-		/****************** GetGridPoint ******************/
-		/**** md5 signature: 7a9de1bb49672a1f2998131bff77fd7c ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetGridPoint ******/
+		/****** md5 signature: 7a9de1bb49672a1f2998131bff77fd7c ******/
 		%feature("compactdefaultargs") GetGridPoint;
 		%feature("autodoc", "
 Parameters
@@ -4581,8 +4581,8 @@ Set the grid point.
 ") GetGridPoint;
 		const gp_Pnt GetGridPoint(const Standard_Integer theUIndex, const Standard_Integer theVIndex);
 
-		/****************** GetMinRangeU ******************/
-		/**** md5 signature: ed1831687c3252e4ab7462e58541aad9 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetMinRangeU ******/
+		/****** md5 signature: ed1831687c3252e4ab7462e58541aad9 ******/
 		%feature("compactdefaultargs") GetMinRangeU;
 		%feature("autodoc", "Return
 -------
@@ -4594,8 +4594,8 @@ No available documentation.
 ") GetMinRangeU;
 		Standard_Real GetMinRangeU();
 
-		/****************** GetMinRangeV ******************/
-		/**** md5 signature: 741dea0f057ccfd53f8013d45f1e2e00 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetMinRangeV ******/
+		/****** md5 signature: 741dea0f057ccfd53f8013d45f1e2e00 ******/
 		%feature("compactdefaultargs") GetMinRangeV;
 		%feature("autodoc", "Return
 -------
@@ -4607,8 +4607,8 @@ No available documentation.
 ") GetMinRangeV;
 		Standard_Real GetMinRangeV();
 
-		/****************** GetNBUPointsInFrame ******************/
-		/**** md5 signature: 21e45d90ea5d5c1d2bcbf5240f17f4d8 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetNBUPointsInFrame ******/
+		/****** md5 signature: 21e45d90ea5d5c1d2bcbf5240f17f4d8 ******/
 		%feature("compactdefaultargs") GetNBUPointsInFrame;
 		%feature("autodoc", "Return
 -------
@@ -4620,8 +4620,8 @@ Returns the number of grid points on u direction in frame.
 ") GetNBUPointsInFrame;
 		Standard_Integer GetNBUPointsInFrame();
 
-		/****************** GetNBVPointsInFrame ******************/
-		/**** md5 signature: d30c8ef308d88876f4fa3c2d1c01738e ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetNBVPointsInFrame ******/
+		/****** md5 signature: d30c8ef308d88876f4fa3c2d1c01738e ******/
 		%feature("compactdefaultargs") GetNBVPointsInFrame;
 		%feature("autodoc", "Return
 -------
@@ -4633,8 +4633,8 @@ Returns the number of grid points on v direction in frame.
 ") GetNBVPointsInFrame;
 		Standard_Integer GetNBVPointsInFrame();
 
-		/****************** GetNbSampleU ******************/
-		/**** md5 signature: a8ca4343c5fe1833f66c7f9bc7e3ee91 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetNbSampleU ******/
+		/****** md5 signature: a8ca4343c5fe1833f66c7f9bc7e3ee91 ******/
 		%feature("compactdefaultargs") GetNbSampleU;
 		%feature("autodoc", "Return
 -------
@@ -4646,8 +4646,8 @@ No available documentation.
 ") GetNbSampleU;
 		Standard_Integer GetNbSampleU();
 
-		/****************** GetNbSampleV ******************/
-		/**** md5 signature: 6e376b56bc07ba30f1f403960624bddb ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetNbSampleV ******/
+		/****** md5 signature: 6e376b56bc07ba30f1f403960624bddb ******/
 		%feature("compactdefaultargs") GetNbSampleV;
 		%feature("autodoc", "Return
 -------
@@ -4659,8 +4659,8 @@ No available documentation.
 ") GetNbSampleV;
 		Standard_Integer GetNbSampleV();
 
-		/****************** GetPointInFrame ******************/
-		/**** md5 signature: 7c30fd123ce2ee2a0a49fc12a6d1c102 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetPointInFrame ******/
+		/****** md5 signature: 7c30fd123ce2ee2a0a49fc12a6d1c102 ******/
 		%feature("compactdefaultargs") GetPointInFrame;
 		%feature("autodoc", "
 Parameters
@@ -4678,8 +4678,8 @@ Returns the grid point in frame.
 ") GetPointInFrame;
 		const gp_Pnt GetPointInFrame(const Standard_Integer theUIndex, const Standard_Integer theVIndex);
 
-		/****************** GetRangeUGrid ******************/
-		/**** md5 signature: 59c8708007b756d9b4de4f6f36d8e9cc ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetRangeUGrid ******/
+		/****** md5 signature: 59c8708007b756d9b4de4f6f36d8e9cc ******/
 		%feature("compactdefaultargs") GetRangeUGrid;
 		%feature("autodoc", "Return
 -------
@@ -4691,8 +4691,8 @@ Query the range u of the grid of points.
 ") GetRangeUGrid;
 		Standard_Integer GetRangeUGrid();
 
-		/****************** GetRangeVGrid ******************/
-		/**** md5 signature: 598ea256b66084f07b916a146e5a3863 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetRangeVGrid ******/
+		/****** md5 signature: 598ea256b66084f07b916a146e5a3863 ******/
 		%feature("compactdefaultargs") GetRangeVGrid;
 		%feature("autodoc", "Return
 -------
@@ -4704,8 +4704,8 @@ Query the range v of the grid of points.
 ") GetRangeVGrid;
 		Standard_Integer GetRangeVGrid();
 
-		/****************** GetUParam ******************/
-		/**** md5 signature: d334fea47334c7b8b5145f289d532693 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetUParam ******/
+		/****** md5 signature: d334fea47334c7b8b5145f289d532693 ******/
 		%feature("compactdefaultargs") GetUParam;
 		%feature("autodoc", "
 Parameters
@@ -4722,8 +4722,8 @@ Query the u parameter of the grid points at that index.
 ") GetUParam;
 		Standard_Real GetUParam(const Standard_Integer theIndex);
 
-		/****************** GetUParamInFrame ******************/
-		/**** md5 signature: 92eaa408ea28122033919dcbcb63d9e5 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetUParamInFrame ******/
+		/****** md5 signature: 92eaa408ea28122033919dcbcb63d9e5 ******/
 		%feature("compactdefaultargs") GetUParamInFrame;
 		%feature("autodoc", "
 Parameters
@@ -4740,8 +4740,8 @@ Query the u parameter of the grid points at that index in frame.
 ") GetUParamInFrame;
 		Standard_Real GetUParamInFrame(const Standard_Integer theIndex);
 
-		/****************** GetVParam ******************/
-		/**** md5 signature: 522b7d820733a44e26c053b89a2ce495 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetVParam ******/
+		/****** md5 signature: 522b7d820733a44e26c053b89a2ce495 ******/
 		%feature("compactdefaultargs") GetVParam;
 		%feature("autodoc", "
 Parameters
@@ -4758,8 +4758,8 @@ Query the v parameter of the grid points at that index.
 ") GetVParam;
 		Standard_Real GetVParam(const Standard_Integer theIndex);
 
-		/****************** GetVParamInFrame ******************/
-		/**** md5 signature: 96ffe45892410c71f1692de642b94cf6 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::GetVParamInFrame ******/
+		/****** md5 signature: 96ffe45892410c71f1692de642b94cf6 ******/
 		%feature("compactdefaultargs") GetVParamInFrame;
 		%feature("autodoc", "
 Parameters
@@ -4776,8 +4776,8 @@ Query the v parameter of the grid points at that index in frame.
 ") GetVParamInFrame;
 		Standard_Real GetVParamInFrame(const Standard_Integer theIndex);
 
-		/****************** IsRangeOut ******************/
-		/**** md5 signature: 4171d39ff5e1e60b7c118de87554283e ****/
+		/****** IntTools_SurfaceRangeLocalizeData::IsRangeOut ******/
+		/****** md5 signature: 4171d39ff5e1e60b7c118de87554283e ******/
 		%feature("compactdefaultargs") IsRangeOut;
 		%feature("autodoc", "
 Parameters
@@ -4794,8 +4794,8 @@ No available documentation.
 ") IsRangeOut;
 		Standard_Boolean IsRangeOut(const IntTools_SurfaceRangeSample & theRange);
 
-		/****************** ListRangeOut ******************/
-		/**** md5 signature: 7e891694efd307800817a73b6e661981 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::ListRangeOut ******/
+		/****** md5 signature: 7e891694efd307800817a73b6e661981 ******/
 		%feature("compactdefaultargs") ListRangeOut;
 		%feature("autodoc", "
 Parameters
@@ -4812,8 +4812,8 @@ No available documentation.
 ") ListRangeOut;
 		void ListRangeOut(IntTools_ListOfSurfaceRangeSample & theList);
 
-		/****************** RemoveRangeOutAll ******************/
-		/**** md5 signature: 28428b3ed3ac18659d285cf9089ace1f ****/
+		/****** IntTools_SurfaceRangeLocalizeData::RemoveRangeOutAll ******/
+		/****** md5 signature: 28428b3ed3ac18659d285cf9089ace1f ******/
 		%feature("compactdefaultargs") RemoveRangeOutAll;
 		%feature("autodoc", "Return
 -------
@@ -4825,8 +4825,8 @@ No available documentation.
 ") RemoveRangeOutAll;
 		void RemoveRangeOutAll();
 
-		/****************** SetFrame ******************/
-		/**** md5 signature: 62f01763553d6c704667200d37d30284 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::SetFrame ******/
+		/****** md5 signature: 62f01763553d6c704667200d37d30284 ******/
 		%feature("compactdefaultargs") SetFrame;
 		%feature("autodoc", "
 Parameters
@@ -4846,8 +4846,8 @@ Sets the frame area. used to work with grid points.
 ") SetFrame;
 		void SetFrame(const Standard_Real theUMin, const Standard_Real theUMax, const Standard_Real theVMin, const Standard_Real theVMax);
 
-		/****************** SetGridDeflection ******************/
-		/**** md5 signature: ad150e2f221695db1a8d64c83709443c ****/
+		/****** IntTools_SurfaceRangeLocalizeData::SetGridDeflection ******/
+		/****** md5 signature: ad150e2f221695db1a8d64c83709443c ******/
 		%feature("compactdefaultargs") SetGridDeflection;
 		%feature("autodoc", "
 Parameters
@@ -4864,8 +4864,8 @@ Set the grid deflection.
 ") SetGridDeflection;
 		void SetGridDeflection(const Standard_Real theDeflection);
 
-		/****************** SetGridPoint ******************/
-		/**** md5 signature: 8e372cce2d0d9bfc06fb6def7d31de46 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::SetGridPoint ******/
+		/****** md5 signature: 8e372cce2d0d9bfc06fb6def7d31de46 ******/
 		%feature("compactdefaultargs") SetGridPoint;
 		%feature("autodoc", "
 Parameters
@@ -4884,8 +4884,8 @@ Set the grid point.
 ") SetGridPoint;
 		void SetGridPoint(const Standard_Integer theUIndex, const Standard_Integer theVIndex, const gp_Pnt & thePoint);
 
-		/****************** SetRangeUGrid ******************/
-		/**** md5 signature: 95df3cf834523d9177b370c524ea192f ****/
+		/****** IntTools_SurfaceRangeLocalizeData::SetRangeUGrid ******/
+		/****** md5 signature: 95df3cf834523d9177b370c524ea192f ******/
 		%feature("compactdefaultargs") SetRangeUGrid;
 		%feature("autodoc", "
 Parameters
@@ -4902,8 +4902,8 @@ Set the range u of the grid of points.
 ") SetRangeUGrid;
 		void SetRangeUGrid(const Standard_Integer theNbUGrid);
 
-		/****************** SetRangeVGrid ******************/
-		/**** md5 signature: f28a03e8ce81925252a1b0612f7804a7 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::SetRangeVGrid ******/
+		/****** md5 signature: f28a03e8ce81925252a1b0612f7804a7 ******/
 		%feature("compactdefaultargs") SetRangeVGrid;
 		%feature("autodoc", "
 Parameters
@@ -4920,8 +4920,8 @@ Set the range v of the grid of points.
 ") SetRangeVGrid;
 		void SetRangeVGrid(const Standard_Integer theNbVGrid);
 
-		/****************** SetUParam ******************/
-		/**** md5 signature: f67b7ed49aa6c5b3b6b2f4283362aba8 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::SetUParam ******/
+		/****** md5 signature: f67b7ed49aa6c5b3b6b2f4283362aba8 ******/
 		%feature("compactdefaultargs") SetUParam;
 		%feature("autodoc", "
 Parameters
@@ -4939,8 +4939,8 @@ Set the u parameter of the grid points at that index.
 ") SetUParam;
 		void SetUParam(const Standard_Integer theIndex, const Standard_Real theUParam);
 
-		/****************** SetVParam ******************/
-		/**** md5 signature: 0aead173989e738d49f578f497a73972 ****/
+		/****** IntTools_SurfaceRangeLocalizeData::SetVParam ******/
+		/****** md5 signature: 0aead173989e738d49f578f497a73972 ******/
 		%feature("compactdefaultargs") SetVParam;
 		%feature("autodoc", "
 Parameters
@@ -4972,8 +4972,8 @@ Set the v parameter of the grid points at that index.
 ************************************/
 class IntTools_SurfaceRangeSample {
 	public:
-		/****************** IntTools_SurfaceRangeSample ******************/
-		/**** md5 signature: 36554645d304d412b4acfaf570fc44fe ****/
+		/****** IntTools_SurfaceRangeSample::IntTools_SurfaceRangeSample ******/
+		/****** md5 signature: 36554645d304d412b4acfaf570fc44fe ******/
 		%feature("compactdefaultargs") IntTools_SurfaceRangeSample;
 		%feature("autodoc", "Return
 -------
@@ -4985,8 +4985,8 @@ No available documentation.
 ") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample();
 
-		/****************** IntTools_SurfaceRangeSample ******************/
-		/**** md5 signature: 21ff6db05e69e0f7dd8d31a6a5c2f4a7 ****/
+		/****** IntTools_SurfaceRangeSample::IntTools_SurfaceRangeSample ******/
+		/****** md5 signature: 21ff6db05e69e0f7dd8d31a6a5c2f4a7 ******/
 		%feature("compactdefaultargs") IntTools_SurfaceRangeSample;
 		%feature("autodoc", "
 Parameters
@@ -5006,8 +5006,8 @@ No available documentation.
 ") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample(const Standard_Integer theIndexU, const Standard_Integer theDepthU, const Standard_Integer theIndexV, const Standard_Integer theDepthV);
 
-		/****************** IntTools_SurfaceRangeSample ******************/
-		/**** md5 signature: 9031a81e342f54de215dbbae20c7aaa1 ****/
+		/****** IntTools_SurfaceRangeSample::IntTools_SurfaceRangeSample ******/
+		/****** md5 signature: 9031a81e342f54de215dbbae20c7aaa1 ******/
 		%feature("compactdefaultargs") IntTools_SurfaceRangeSample;
 		%feature("autodoc", "
 Parameters
@@ -5025,8 +5025,8 @@ No available documentation.
 ") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample(const IntTools_CurveRangeSample & theRangeU, const IntTools_CurveRangeSample & theRangeV);
 
-		/****************** IntTools_SurfaceRangeSample ******************/
-		/**** md5 signature: fadc9424e42fab0d43b28577872b45e4 ****/
+		/****** IntTools_SurfaceRangeSample::IntTools_SurfaceRangeSample ******/
+		/****** md5 signature: fadc9424e42fab0d43b28577872b45e4 ******/
 		%feature("compactdefaultargs") IntTools_SurfaceRangeSample;
 		%feature("autodoc", "
 Parameters
@@ -5043,8 +5043,8 @@ No available documentation.
 ") IntTools_SurfaceRangeSample;
 		 IntTools_SurfaceRangeSample(const IntTools_SurfaceRangeSample & Other);
 
-		/****************** Assign ******************/
-		/**** md5 signature: 4e0bcda96fd80097916b7a4e25b36492 ****/
+		/****** IntTools_SurfaceRangeSample::Assign ******/
+		/****** md5 signature: 4e0bcda96fd80097916b7a4e25b36492 ******/
 		%feature("compactdefaultargs") Assign;
 		%feature("autodoc", "
 Parameters
@@ -5061,8 +5061,8 @@ No available documentation.
 ") Assign;
 		IntTools_SurfaceRangeSample & Assign(const IntTools_SurfaceRangeSample & Other);
 
-		/****************** GetDepthU ******************/
-		/**** md5 signature: 20a9fd80f0760f5e378e58f3b3487469 ****/
+		/****** IntTools_SurfaceRangeSample::GetDepthU ******/
+		/****** md5 signature: 20a9fd80f0760f5e378e58f3b3487469 ******/
 		%feature("compactdefaultargs") GetDepthU;
 		%feature("autodoc", "Return
 -------
@@ -5074,8 +5074,8 @@ No available documentation.
 ") GetDepthU;
 		Standard_Integer GetDepthU();
 
-		/****************** GetDepthV ******************/
-		/**** md5 signature: 38cbf0f4b918cec1d587d3332f387fec ****/
+		/****** IntTools_SurfaceRangeSample::GetDepthV ******/
+		/****** md5 signature: 38cbf0f4b918cec1d587d3332f387fec ******/
 		%feature("compactdefaultargs") GetDepthV;
 		%feature("autodoc", "Return
 -------
@@ -5087,8 +5087,8 @@ No available documentation.
 ") GetDepthV;
 		Standard_Integer GetDepthV();
 
-		/****************** GetDepths ******************/
-		/**** md5 signature: 844bc266209967a29ad8670af126cf63 ****/
+		/****** IntTools_SurfaceRangeSample::GetDepths ******/
+		/****** md5 signature: 844bc266209967a29ad8670af126cf63 ******/
 		%feature("compactdefaultargs") GetDepths;
 		%feature("autodoc", "
 Parameters
@@ -5105,8 +5105,8 @@ No available documentation.
 ") GetDepths;
 		void GetDepths(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** GetIndexU ******************/
-		/**** md5 signature: 6c546506ed977d446dadd78e60b74b9e ****/
+		/****** IntTools_SurfaceRangeSample::GetIndexU ******/
+		/****** md5 signature: 6c546506ed977d446dadd78e60b74b9e ******/
 		%feature("compactdefaultargs") GetIndexU;
 		%feature("autodoc", "Return
 -------
@@ -5118,8 +5118,8 @@ No available documentation.
 ") GetIndexU;
 		Standard_Integer GetIndexU();
 
-		/****************** GetIndexV ******************/
-		/**** md5 signature: b898bf54d7f9baa019e5f8d7ef19b8ec ****/
+		/****** IntTools_SurfaceRangeSample::GetIndexV ******/
+		/****** md5 signature: b898bf54d7f9baa019e5f8d7ef19b8ec ******/
 		%feature("compactdefaultargs") GetIndexV;
 		%feature("autodoc", "Return
 -------
@@ -5131,8 +5131,8 @@ No available documentation.
 ") GetIndexV;
 		Standard_Integer GetIndexV();
 
-		/****************** GetIndexes ******************/
-		/**** md5 signature: 4345854f43a8a3b26eb6fc28e64befe6 ****/
+		/****** IntTools_SurfaceRangeSample::GetIndexes ******/
+		/****** md5 signature: 4345854f43a8a3b26eb6fc28e64befe6 ******/
 		%feature("compactdefaultargs") GetIndexes;
 		%feature("autodoc", "
 Parameters
@@ -5149,8 +5149,8 @@ No available documentation.
 ") GetIndexes;
 		void GetIndexes(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** GetRangeIndexUDeeper ******************/
-		/**** md5 signature: 72f3092305de05434db2f1c58933af8f ****/
+		/****** IntTools_SurfaceRangeSample::GetRangeIndexUDeeper ******/
+		/****** md5 signature: 72f3092305de05434db2f1c58933af8f ******/
 		%feature("compactdefaultargs") GetRangeIndexUDeeper;
 		%feature("autodoc", "
 Parameters
@@ -5167,8 +5167,8 @@ No available documentation.
 ") GetRangeIndexUDeeper;
 		Standard_Integer GetRangeIndexUDeeper(const Standard_Integer theNbSampleU);
 
-		/****************** GetRangeIndexVDeeper ******************/
-		/**** md5 signature: 5b303d66cc6eb2c7d3e1b51dca13d071 ****/
+		/****** IntTools_SurfaceRangeSample::GetRangeIndexVDeeper ******/
+		/****** md5 signature: 5b303d66cc6eb2c7d3e1b51dca13d071 ******/
 		%feature("compactdefaultargs") GetRangeIndexVDeeper;
 		%feature("autodoc", "
 Parameters
@@ -5185,8 +5185,8 @@ No available documentation.
 ") GetRangeIndexVDeeper;
 		Standard_Integer GetRangeIndexVDeeper(const Standard_Integer theNbSampleV);
 
-		/****************** GetRangeU ******************/
-		/**** md5 signature: 41b0a68ddb0905f10341d96685362caf ****/
+		/****** IntTools_SurfaceRangeSample::GetRangeU ******/
+		/****** md5 signature: 41b0a68ddb0905f10341d96685362caf ******/
 		%feature("compactdefaultargs") GetRangeU;
 		%feature("autodoc", "
 Parameters
@@ -5205,8 +5205,8 @@ No available documentation.
 ") GetRangeU;
 		IntTools_Range GetRangeU(const Standard_Real theFirstU, const Standard_Real theLastU, const Standard_Integer theNbSampleU);
 
-		/****************** GetRangeV ******************/
-		/**** md5 signature: 9be3dca4afa7b109fe244f818ad4d722 ****/
+		/****** IntTools_SurfaceRangeSample::GetRangeV ******/
+		/****** md5 signature: 9be3dca4afa7b109fe244f818ad4d722 ******/
 		%feature("compactdefaultargs") GetRangeV;
 		%feature("autodoc", "
 Parameters
@@ -5225,8 +5225,8 @@ No available documentation.
 ") GetRangeV;
 		IntTools_Range GetRangeV(const Standard_Real theFirstV, const Standard_Real theLastV, const Standard_Integer theNbSampleV);
 
-		/****************** GetRanges ******************/
-		/**** md5 signature: b22b6f78ee7cde851a90c8d7f85fe396 ****/
+		/****** IntTools_SurfaceRangeSample::GetRanges ******/
+		/****** md5 signature: b22b6f78ee7cde851a90c8d7f85fe396 ******/
 		%feature("compactdefaultargs") GetRanges;
 		%feature("autodoc", "
 Parameters
@@ -5244,8 +5244,8 @@ No available documentation.
 ") GetRanges;
 		void GetRanges(IntTools_CurveRangeSample & theRangeU, IntTools_CurveRangeSample & theRangeV);
 
-		/****************** GetSampleRangeU ******************/
-		/**** md5 signature: c8d49108f18324a413f503160a965248 ****/
+		/****** IntTools_SurfaceRangeSample::GetSampleRangeU ******/
+		/****** md5 signature: c8d49108f18324a413f503160a965248 ******/
 		%feature("compactdefaultargs") GetSampleRangeU;
 		%feature("autodoc", "Return
 -------
@@ -5257,8 +5257,8 @@ No available documentation.
 ") GetSampleRangeU;
 		IntTools_CurveRangeSample GetSampleRangeU();
 
-		/****************** GetSampleRangeV ******************/
-		/**** md5 signature: 964dc9ccf4277374195c5fbb755fb5fe ****/
+		/****** IntTools_SurfaceRangeSample::GetSampleRangeV ******/
+		/****** md5 signature: 964dc9ccf4277374195c5fbb755fb5fe ******/
 		%feature("compactdefaultargs") GetSampleRangeV;
 		%feature("autodoc", "Return
 -------
@@ -5270,8 +5270,8 @@ No available documentation.
 ") GetSampleRangeV;
 		IntTools_CurveRangeSample GetSampleRangeV();
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: 080f0097ea4e0085b67175107f1752fc ****/
+		/****** IntTools_SurfaceRangeSample::IsEqual ******/
+		/****** md5 signature: 080f0097ea4e0085b67175107f1752fc ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -5288,8 +5288,8 @@ No available documentation.
 ") IsEqual;
 		Standard_Boolean IsEqual(const IntTools_SurfaceRangeSample & Other);
 
-		/****************** SetDepthU ******************/
-		/**** md5 signature: d8a4079bd407e8288e6043ce7cf17488 ****/
+		/****** IntTools_SurfaceRangeSample::SetDepthU ******/
+		/****** md5 signature: d8a4079bd407e8288e6043ce7cf17488 ******/
 		%feature("compactdefaultargs") SetDepthU;
 		%feature("autodoc", "
 Parameters
@@ -5306,8 +5306,8 @@ No available documentation.
 ") SetDepthU;
 		void SetDepthU(const Standard_Integer theDepthU);
 
-		/****************** SetDepthV ******************/
-		/**** md5 signature: 8709b38d8e87682864a6f12b945ed365 ****/
+		/****** IntTools_SurfaceRangeSample::SetDepthV ******/
+		/****** md5 signature: 8709b38d8e87682864a6f12b945ed365 ******/
 		%feature("compactdefaultargs") SetDepthV;
 		%feature("autodoc", "
 Parameters
@@ -5324,8 +5324,8 @@ No available documentation.
 ") SetDepthV;
 		void SetDepthV(const Standard_Integer theDepthV);
 
-		/****************** SetIndexU ******************/
-		/**** md5 signature: 5422f55f0687626c3da85047f838ac09 ****/
+		/****** IntTools_SurfaceRangeSample::SetIndexU ******/
+		/****** md5 signature: 5422f55f0687626c3da85047f838ac09 ******/
 		%feature("compactdefaultargs") SetIndexU;
 		%feature("autodoc", "
 Parameters
@@ -5342,8 +5342,8 @@ No available documentation.
 ") SetIndexU;
 		void SetIndexU(const Standard_Integer theIndexU);
 
-		/****************** SetIndexV ******************/
-		/**** md5 signature: 20242e42e3223d4ed1d2a8c1db6746d6 ****/
+		/****** IntTools_SurfaceRangeSample::SetIndexV ******/
+		/****** md5 signature: 20242e42e3223d4ed1d2a8c1db6746d6 ******/
 		%feature("compactdefaultargs") SetIndexV;
 		%feature("autodoc", "
 Parameters
@@ -5360,8 +5360,8 @@ No available documentation.
 ") SetIndexV;
 		void SetIndexV(const Standard_Integer theIndexV);
 
-		/****************** SetIndexes ******************/
-		/**** md5 signature: 025553a666d9b1a883bcaca1c542339a ****/
+		/****** IntTools_SurfaceRangeSample::SetIndexes ******/
+		/****** md5 signature: 025553a666d9b1a883bcaca1c542339a ******/
 		%feature("compactdefaultargs") SetIndexes;
 		%feature("autodoc", "
 Parameters
@@ -5379,8 +5379,8 @@ No available documentation.
 ") SetIndexes;
 		void SetIndexes(const Standard_Integer theIndexU, const Standard_Integer theIndexV);
 
-		/****************** SetRanges ******************/
-		/**** md5 signature: bff32a2faf670df061c3e451e4fcecd5 ****/
+		/****** IntTools_SurfaceRangeSample::SetRanges ******/
+		/****** md5 signature: bff32a2faf670df061c3e451e4fcecd5 ******/
 		%feature("compactdefaultargs") SetRanges;
 		%feature("autodoc", "
 Parameters
@@ -5398,8 +5398,8 @@ No available documentation.
 ") SetRanges;
 		void SetRanges(const IntTools_CurveRangeSample & theRangeU, const IntTools_CurveRangeSample & theRangeV);
 
-		/****************** SetSampleRangeU ******************/
-		/**** md5 signature: 9f24c8e6d2094ab643971884e239967d ****/
+		/****** IntTools_SurfaceRangeSample::SetSampleRangeU ******/
+		/****** md5 signature: 9f24c8e6d2094ab643971884e239967d ******/
 		%feature("compactdefaultargs") SetSampleRangeU;
 		%feature("autodoc", "
 Parameters
@@ -5416,8 +5416,8 @@ No available documentation.
 ") SetSampleRangeU;
 		void SetSampleRangeU(const IntTools_CurveRangeSample & theRangeSampleU);
 
-		/****************** SetSampleRangeV ******************/
-		/**** md5 signature: 15674547bc26c4dcf058e0909269422d ****/
+		/****** IntTools_SurfaceRangeSample::SetSampleRangeV ******/
+		/****** md5 signature: 15674547bc26c4dcf058e0909269422d ******/
 		%feature("compactdefaultargs") SetSampleRangeV;
 		%feature("autodoc", "
 Parameters
@@ -5462,8 +5462,8 @@ def __eq__(self, right):
 ***********************/
 class IntTools_Tools {
 	public:
-		/****************** CheckCurve ******************/
-		/**** md5 signature: 81c1b71f6c538dd0c56d64c159e8676d ****/
+		/****** IntTools_Tools::CheckCurve ******/
+		/****** md5 signature: 81c1b71f6c538dd0c56d64c159e8676d ******/
 		%feature("compactdefaultargs") CheckCurve;
 		%feature("autodoc", "
 Parameters
@@ -5481,8 +5481,8 @@ Checks if the curve is not covered by the default tolerance (confusion). builds 
 ") CheckCurve;
 		static Standard_Boolean CheckCurve(const IntTools_Curve & theCurve, Bnd_Box & theBox);
 
-		/****************** ClassifyPointByFace ******************/
-		/**** md5 signature: 15d02586fff2ce52edcffb1b31010e98 ****/
+		/****** IntTools_Tools::ClassifyPointByFace ******/
+		/****** md5 signature: 15d02586fff2ce52edcffb1b31010e98 ******/
 		%feature("compactdefaultargs") ClassifyPointByFace;
 		%feature("autodoc", "
 Parameters
@@ -5500,8 +5500,8 @@ No available documentation.
 ") ClassifyPointByFace;
 		static TopAbs_State ClassifyPointByFace(const TopoDS_Face & aF, const gp_Pnt2d & P);
 
-		/****************** ComputeIntRange ******************/
-		/**** md5 signature: 2b848ae9972fb59beee0caec542fcfd5 ****/
+		/****** IntTools_Tools::ComputeIntRange ******/
+		/****** md5 signature: 2b848ae9972fb59beee0caec542fcfd5 ******/
 		%feature("compactdefaultargs") ComputeIntRange;
 		%feature("autodoc", "
 Parameters
@@ -5520,8 +5520,8 @@ Computes the correct intersection range for line/line, line/plane and plane/plan
 ") ComputeIntRange;
 		static Standard_Real ComputeIntRange(const Standard_Real theTol1, const Standard_Real theTol2, const Standard_Real theAngle);
 
-		/****************** ComputeTolerance ******************/
-		/**** md5 signature: 81df055defddfd139d552aebd1f5b38b ****/
+		/****** IntTools_Tools::ComputeTolerance ******/
+		/****** md5 signature: 81df055defddfd139d552aebd1f5b38b ******/
 		%feature("compactdefaultargs") ComputeTolerance;
 		%feature("autodoc", "
 Parameters
@@ -5545,8 +5545,8 @@ Computes the max distance between points taken from 3d and 2d curves by the same
 ") ComputeTolerance;
 		static Standard_Boolean ComputeTolerance(const opencascade::handle<Geom_Curve> & theCurve3D, const opencascade::handle<Geom2d_Curve> & theCurve2D, const opencascade::handle<Geom_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real theTolRange = Precision::PConfusion(), const Standard_Boolean theToRunParallel = Standard_False);
 
-		/****************** ComputeVV ******************/
-		/**** md5 signature: 2b5edabfa3d68f4b56b0751fa8f7f611 ****/
+		/****** IntTools_Tools::ComputeVV ******/
+		/****** md5 signature: 2b5edabfa3d68f4b56b0751fa8f7f611 ******/
 		%feature("compactdefaultargs") ComputeVV;
 		%feature("autodoc", "
 Parameters
@@ -5564,8 +5564,8 @@ Computes distance between vertex v1 and vertex v2, if the distance is less than 
 ") ComputeVV;
 		static Standard_Integer ComputeVV(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
-		/****************** CurveTolerance ******************/
-		/**** md5 signature: de65e79bc2a32325faa9c51067b72bce ****/
+		/****** IntTools_Tools::CurveTolerance ******/
+		/****** md5 signature: de65e79bc2a32325faa9c51067b72bce ******/
 		%feature("compactdefaultargs") CurveTolerance;
 		%feature("autodoc", "
 Parameters
@@ -5583,8 +5583,8 @@ Returns adaptive tolerance for given atolbase if ac is trimmed curve and basis c
 ") CurveTolerance;
 		static Standard_Real CurveTolerance(const opencascade::handle<Geom_Curve> & aC, const Standard_Real aTolBase);
 
-		/****************** HasInternalEdge ******************/
-		/**** md5 signature: 599527b22eb0bb087b88f7ee1ec60887 ****/
+		/****** IntTools_Tools::HasInternalEdge ******/
+		/****** md5 signature: 599527b22eb0bb087b88f7ee1ec60887 ******/
 		%feature("compactdefaultargs") HasInternalEdge;
 		%feature("autodoc", "
 Parameters
@@ -5601,8 +5601,8 @@ Returns true if wire aw contains edges with internal orientation.
 ") HasInternalEdge;
 		static Standard_Boolean HasInternalEdge(const TopoDS_Wire & aW);
 
-		/****************** IntermediatePoint ******************/
-		/**** md5 signature: 8663f92679b0dc5e2760d0cb00974303 ****/
+		/****** IntTools_Tools::IntermediatePoint ******/
+		/****** md5 signature: 8663f92679b0dc5e2760d0cb00974303 ******/
 		%feature("compactdefaultargs") IntermediatePoint;
 		%feature("autodoc", "
 Parameters
@@ -5620,8 +5620,8 @@ Returns some value between afirst and alast.
 ") IntermediatePoint;
 		static Standard_Real IntermediatePoint(const Standard_Real aFirst, const Standard_Real aLast);
 
-		/****************** IsClosed ******************/
-		/**** md5 signature: d616ccafe9e5d900be2c210b58b3c4b3 ****/
+		/****** IntTools_Tools::IsClosed ******/
+		/****** md5 signature: d616ccafe9e5d900be2c210b58b3c4b3 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "
 Parameters
@@ -5638,8 +5638,8 @@ Returns true if ac is boundedcurve from geom and the distance between first poin
 ") IsClosed;
 		static Standard_Boolean IsClosed(const opencascade::handle<Geom_Curve> & aC);
 
-		/****************** IsDirsCoinside ******************/
-		/**** md5 signature: 5decb6946d416223e5b88e58f24beacb ****/
+		/****** IntTools_Tools::IsDirsCoinside ******/
+		/****** md5 signature: 5decb6946d416223e5b88e58f24beacb ******/
 		%feature("compactdefaultargs") IsDirsCoinside;
 		%feature("autodoc", "
 Parameters
@@ -5657,8 +5657,8 @@ Returns true if d1 and d2 coincide.
 ") IsDirsCoinside;
 		static Standard_Boolean IsDirsCoinside(const gp_Dir & D1, const gp_Dir & D2);
 
-		/****************** IsDirsCoinside ******************/
-		/**** md5 signature: dd7cc4ec22a39e710a7e84da1ec268a6 ****/
+		/****** IntTools_Tools::IsDirsCoinside ******/
+		/****** md5 signature: dd7cc4ec22a39e710a7e84da1ec268a6 ******/
 		%feature("compactdefaultargs") IsDirsCoinside;
 		%feature("autodoc", "
 Parameters
@@ -5677,8 +5677,8 @@ Returns true if d1 and d2 coincide with given tolerance.
 ") IsDirsCoinside;
 		static Standard_Boolean IsDirsCoinside(const gp_Dir & D1, const gp_Dir & D2, const Standard_Real aTol);
 
-		/****************** IsInRange ******************/
-		/**** md5 signature: 1e32c11974401d3014dc54f91407f85d ****/
+		/****** IntTools_Tools::IsInRange ******/
+		/****** md5 signature: 1e32c11974401d3014dc54f91407f85d ******/
 		%feature("compactdefaultargs") IsInRange;
 		%feature("autodoc", "
 Parameters
@@ -5697,8 +5697,8 @@ Checks if the range <ther> interfere with the range <therref>.
 ") IsInRange;
 		static Standard_Boolean IsInRange(const IntTools_Range & theRRef, const IntTools_Range & theR, const Standard_Real theTol);
 
-		/****************** IsMiddlePointsEqual ******************/
-		/**** md5 signature: f386bc6e11da4c61e860043065213189 ****/
+		/****** IntTools_Tools::IsMiddlePointsEqual ******/
+		/****** md5 signature: f386bc6e11da4c61e860043065213189 ******/
 		%feature("compactdefaultargs") IsMiddlePointsEqual;
 		%feature("autodoc", "
 Parameters
@@ -5716,8 +5716,8 @@ Gets boundary of parameters of e1 and e2. computes 3d points on each corresponde
 ") IsMiddlePointsEqual;
 		static Standard_Boolean IsMiddlePointsEqual(const TopoDS_Edge & E1, const TopoDS_Edge & E2);
 
-		/****************** IsOnPave ******************/
-		/**** md5 signature: 528780513280095656a4a6bf4ca88af3 ****/
+		/****** IntTools_Tools::IsOnPave ******/
+		/****** md5 signature: 528780513280095656a4a6bf4ca88af3 ******/
 		%feature("compactdefaultargs") IsOnPave;
 		%feature("autodoc", "
 Parameters
@@ -5736,8 +5736,8 @@ No available documentation.
 ") IsOnPave;
 		static Standard_Boolean IsOnPave(const Standard_Real theT, const IntTools_Range & theRange, const Standard_Real theTol);
 
-		/****************** IsOnPave1 ******************/
-		/**** md5 signature: 4e210e7add3be3fc346ff30953ce57ec ****/
+		/****** IntTools_Tools::IsOnPave1 ******/
+		/****** md5 signature: 4e210e7add3be3fc346ff30953ce57ec ******/
 		%feature("compactdefaultargs") IsOnPave1;
 		%feature("autodoc", "
 Parameters
@@ -5756,8 +5756,8 @@ No available documentation.
 ") IsOnPave1;
 		static Standard_Boolean IsOnPave1(const Standard_Real theT, const IntTools_Range & theRange, const Standard_Real theTol);
 
-		/****************** IsVertex ******************/
-		/**** md5 signature: 3cf3602d9a764f11f4a5915022c5727c ****/
+		/****** IntTools_Tools::IsVertex ******/
+		/****** md5 signature: 3cf3602d9a764f11f4a5915022c5727c ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "
 Parameters
@@ -5775,8 +5775,8 @@ Computes square distance between a point on the edge e corresponded to parameter
 ") IsVertex;
 		static Standard_Boolean IsVertex(const TopoDS_Edge & E, const Standard_Real t);
 
-		/****************** IsVertex ******************/
-		/**** md5 signature: 6916a00d7d86c20fd88332383c70c9c3 ****/
+		/****** IntTools_Tools::IsVertex ******/
+		/****** md5 signature: 6916a00d7d86c20fd88332383c70c9c3 ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "
 Parameters
@@ -5795,8 +5795,8 @@ Returns true if square distance between vertex v and a point on the edge e corre
 ") IsVertex;
 		static Standard_Boolean IsVertex(const TopoDS_Edge & E, const TopoDS_Vertex & V, const Standard_Real t);
 
-		/****************** IsVertex ******************/
-		/**** md5 signature: 7880bb60e450d0a23174ee9e40cf6897 ****/
+		/****** IntTools_Tools::IsVertex ******/
+		/****** md5 signature: 7880bb60e450d0a23174ee9e40cf6897 ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "
 Parameters
@@ -5813,8 +5813,8 @@ Returns true if isvertx for middle parameter of fist range and first edge return
 ") IsVertex;
 		static Standard_Boolean IsVertex(const IntTools_CommonPrt & aCmnPrt);
 
-		/****************** IsVertex ******************/
-		/**** md5 signature: 190862cc3492764794d377d819f0271b ****/
+		/****** IntTools_Tools::IsVertex ******/
+		/****** md5 signature: 190862cc3492764794d377d819f0271b ******/
 		%feature("compactdefaultargs") IsVertex;
 		%feature("autodoc", "
 Parameters
@@ -5833,8 +5833,8 @@ Returns true if the distance between point ap and vertex av is less or equal to 
 ") IsVertex;
 		static Standard_Boolean IsVertex(const gp_Pnt & aP, const Standard_Real aTolPV, const TopoDS_Vertex & aV);
 
-		/****************** MakeFaceFromWireAndFace ******************/
-		/**** md5 signature: 5b755414e3334a00809a9a119642162b ****/
+		/****** IntTools_Tools::MakeFaceFromWireAndFace ******/
+		/****** md5 signature: 5b755414e3334a00809a9a119642162b ******/
 		%feature("compactdefaultargs") MakeFaceFromWireAndFace;
 		%feature("autodoc", "
 Parameters
@@ -5853,8 +5853,8 @@ Build a face based on surface of given face af and bounded by wire aw.
 ") MakeFaceFromWireAndFace;
 		static void MakeFaceFromWireAndFace(const TopoDS_Wire & aW, const TopoDS_Face & aF, TopoDS_Face & aFNew);
 
-		/****************** RejectLines ******************/
-		/**** md5 signature: 59c4a1828a04fc7a8c2e2299a762106d ****/
+		/****** IntTools_Tools::RejectLines ******/
+		/****** md5 signature: 59c4a1828a04fc7a8c2e2299a762106d ******/
 		%feature("compactdefaultargs") RejectLines;
 		%feature("autodoc", "
 Parameters
@@ -5872,8 +5872,8 @@ Puts curves from asin to asout except those curves that are coincide with first 
 ") RejectLines;
 		static void RejectLines(const IntTools_SequenceOfCurves & aSIn, IntTools_SequenceOfCurves & aSOut);
 
-		/****************** SegPln ******************/
-		/**** md5 signature: 8501611b07c9e9b528bc9d65b9c7b062 ****/
+		/****** IntTools_Tools::SegPln ******/
+		/****** md5 signature: 8501611b07c9e9b528bc9d65b9c7b062 ******/
 		%feature("compactdefaultargs") SegPln;
 		%feature("autodoc", "
 Parameters
@@ -5899,8 +5899,8 @@ No available documentation.
 ") SegPln;
 		static Standard_Integer SegPln(const gp_Lin & theLin, const Standard_Real theTLin1, const Standard_Real theTLin2, const Standard_Real theTolLin, const gp_Pln & thePln, const Standard_Real theTolPln, gp_Pnt & theP, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SplitCurve ******************/
-		/**** md5 signature: 2c29a56daaa80b862224e90f08329dc6 ****/
+		/****** IntTools_Tools::SplitCurve ******/
+		/****** md5 signature: 2c29a56daaa80b862224e90f08329dc6 ******/
 		%feature("compactdefaultargs") SplitCurve;
 		%feature("autodoc", "
 Parameters
@@ -5918,8 +5918,8 @@ Split ac by average parameter if ac is closed in 3d. returns positive value if s
 ") SplitCurve;
 		static Standard_Integer SplitCurve(const IntTools_Curve & aC, IntTools_SequenceOfCurves & aS);
 
-		/****************** VertexParameter ******************/
-		/**** md5 signature: 93afc76cdd7125ff52ee1efa8473ba88 ****/
+		/****** IntTools_Tools::VertexParameter ******/
+		/****** md5 signature: 93afc76cdd7125ff52ee1efa8473ba88 ******/
 		%feature("compactdefaultargs") VertexParameter;
 		%feature("autodoc", "
 Parameters
@@ -5936,8 +5936,8 @@ No available documentation.
 ") VertexParameter;
 		static void VertexParameter(const IntTools_CommonPrt & theCP, Standard_Real &OutValue);
 
-		/****************** VertexParameters ******************/
-		/**** md5 signature: 4808f7151517417a5f73a7bf9e74ffd3 ****/
+		/****** IntTools_Tools::VertexParameters ******/
+		/****** md5 signature: 4808f7151517417a5f73a7bf9e74ffd3 ******/
 		%feature("compactdefaultargs") VertexParameters;
 		%feature("autodoc", "
 Parameters
@@ -5969,8 +5969,8 @@ No available documentation.
 ***************************/
 class IntTools_TopolTool : public Adaptor3d_TopolTool {
 	public:
-		/****************** IntTools_TopolTool ******************/
-		/**** md5 signature: aecf076ba5efb59825cef958cc497444 ****/
+		/****** IntTools_TopolTool::IntTools_TopolTool ******/
+		/****** md5 signature: aecf076ba5efb59825cef958cc497444 ******/
 		%feature("compactdefaultargs") IntTools_TopolTool;
 		%feature("autodoc", "Return
 -------
@@ -5982,8 +5982,8 @@ Empty constructor.
 ") IntTools_TopolTool;
 		 IntTools_TopolTool();
 
-		/****************** IntTools_TopolTool ******************/
-		/**** md5 signature: 818340ed6ac86f3b5724d0b7304c646e ****/
+		/****** IntTools_TopolTool::IntTools_TopolTool ******/
+		/****** md5 signature: 818340ed6ac86f3b5724d0b7304c646e ******/
 		%feature("compactdefaultargs") IntTools_TopolTool;
 		%feature("autodoc", "
 Parameters
@@ -6000,8 +6000,8 @@ Initializes me by surface.
 ") IntTools_TopolTool;
 		 IntTools_TopolTool(const opencascade::handle<Adaptor3d_Surface> & theSurface);
 
-		/****************** ComputeSamplePoints ******************/
-		/**** md5 signature: 940d159b31fac83590ed8721227cec02 ****/
+		/****** IntTools_TopolTool::ComputeSamplePoints ******/
+		/****** md5 signature: 940d159b31fac83590ed8721227cec02 ******/
 		%feature("compactdefaultargs") ComputeSamplePoints;
 		%feature("autodoc", "Return
 -------
@@ -6013,8 +6013,8 @@ No available documentation.
 ") ComputeSamplePoints;
 		virtual void ComputeSamplePoints();
 
-		/****************** Initialize ******************/
-		/**** md5 signature: c1406d3f37ede5ce5f7bca787b95af63 ****/
+		/****** IntTools_TopolTool::Initialize ******/
+		/****** md5 signature: c1406d3f37ede5ce5f7bca787b95af63 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "Return
 -------
@@ -6026,8 +6026,8 @@ Redefined empty initializer //! warning: raises the exception notimplemented.
 ") Initialize;
 		virtual void Initialize();
 
-		/****************** Initialize ******************/
-		/**** md5 signature: 2bf222342864de7b8471615bc05064e5 ****/
+		/****** IntTools_TopolTool::Initialize ******/
+		/****** md5 signature: 2bf222342864de7b8471615bc05064e5 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -6044,8 +6044,8 @@ Initializes me by surface.
 ") Initialize;
 		virtual void Initialize(const opencascade::handle<Adaptor3d_Surface> & theSurface);
 
-		/****************** NbSamples ******************/
-		/**** md5 signature: cd99f1dfd0ef40a4d961f9638d39e555 ****/
+		/****** IntTools_TopolTool::NbSamples ******/
+		/****** md5 signature: cd99f1dfd0ef40a4d961f9638d39e555 ******/
 		%feature("compactdefaultargs") NbSamples;
 		%feature("autodoc", "Return
 -------
@@ -6057,8 +6057,8 @@ Computes the sample-points for the intersections algorithms.
 ") NbSamples;
 		virtual Standard_Integer NbSamples();
 
-		/****************** NbSamplesU ******************/
-		/**** md5 signature: 9402b5b7fe65eb10df77f3437e175357 ****/
+		/****** IntTools_TopolTool::NbSamplesU ******/
+		/****** md5 signature: 9402b5b7fe65eb10df77f3437e175357 ******/
 		%feature("compactdefaultargs") NbSamplesU;
 		%feature("autodoc", "Return
 -------
@@ -6070,8 +6070,8 @@ Computes the sample-points for the intersections algorithms.
 ") NbSamplesU;
 		virtual Standard_Integer NbSamplesU();
 
-		/****************** NbSamplesV ******************/
-		/**** md5 signature: d6f9b32ddea97452b8d6f7035907d24a ****/
+		/****** IntTools_TopolTool::NbSamplesV ******/
+		/****** md5 signature: d6f9b32ddea97452b8d6f7035907d24a ******/
 		%feature("compactdefaultargs") NbSamplesV;
 		%feature("autodoc", "Return
 -------
@@ -6083,8 +6083,8 @@ Computes the sample-points for the intersections algorithms.
 ") NbSamplesV;
 		virtual Standard_Integer NbSamplesV();
 
-		/****************** SamplePnts ******************/
-		/**** md5 signature: a3961c7c25c5a055dad05c3f17c7d5a9 ****/
+		/****** IntTools_TopolTool::SamplePnts ******/
+		/****** md5 signature: a3961c7c25c5a055dad05c3f17c7d5a9 ******/
 		%feature("compactdefaultargs") SamplePnts;
 		%feature("autodoc", "
 Parameters
@@ -6103,8 +6103,8 @@ Compute the sample-points for the intersections algorithms by adaptive algorithm
 ") SamplePnts;
 		virtual void SamplePnts(const Standard_Real theDefl, const Standard_Integer theNUmin, const Standard_Integer theNVmin);
 
-		/****************** SamplePoint ******************/
-		/**** md5 signature: bc5c941f9b59752a7a36373d9a170420 ****/
+		/****** IntTools_TopolTool::SamplePoint ******/
+		/****** md5 signature: bc5c941f9b59752a7a36373d9a170420 ******/
 		%feature("compactdefaultargs") SamplePoint;
 		%feature("autodoc", "
 Parameters
@@ -6139,8 +6139,8 @@ Returns a 2d point from surface mys and a corresponded 3d point for given index.
 ***************************/
 class IntTools_WLineTool {
 	public:
-		/****************** DecompositionOfWLine ******************/
-		/**** md5 signature: 5c7884447a7d22e6ab34f6cf1e1fb685 ****/
+		/****** IntTools_WLineTool::DecompositionOfWLine ******/
+		/****** md5 signature: 5c7884447a7d22e6ab34f6cf1e1fb685 ******/
 		%feature("compactdefaultargs") DecompositionOfWLine;
 		%feature("autodoc", "
 Parameters
@@ -6166,8 +6166,8 @@ No available documentation.
 ") DecompositionOfWLine;
 		static Standard_Boolean DecompositionOfWLine(const opencascade::handle<IntPatch_WLine> & theWLine, const opencascade::handle<GeomAdaptor_Surface> & theSurface1, const opencascade::handle<GeomAdaptor_Surface> & theSurface2, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const GeomInt_LineConstructor & theLConstructor, const Standard_Boolean theAvoidLConstructor, const Standard_Real theTol, IntPatch_SequenceOfLine & theNewLines, const opencascade::handle<IntTools_Context > &);
 
-		/****************** NotUseSurfacesForApprox ******************/
-		/**** md5 signature: eb83c267182a721a80afc576ebb61258 ****/
+		/****** IntTools_WLineTool::NotUseSurfacesForApprox ******/
+		/****** md5 signature: eb83c267182a721a80afc576ebb61258 ******/
 		%feature("compactdefaultargs") NotUseSurfacesForApprox;
 		%feature("autodoc", "
 Parameters
@@ -6205,8 +6205,8 @@ No available documentation.
 **********************************/
 class IntTools_CurveRangeSample : public IntTools_BaseRangeSample {
 	public:
-		/****************** IntTools_CurveRangeSample ******************/
-		/**** md5 signature: 76a0087adc5596d0e617ef24565b7dff ****/
+		/****** IntTools_CurveRangeSample::IntTools_CurveRangeSample ******/
+		/****** md5 signature: 76a0087adc5596d0e617ef24565b7dff ******/
 		%feature("compactdefaultargs") IntTools_CurveRangeSample;
 		%feature("autodoc", "Return
 -------
@@ -6218,8 +6218,8 @@ No available documentation.
 ") IntTools_CurveRangeSample;
 		 IntTools_CurveRangeSample();
 
-		/****************** IntTools_CurveRangeSample ******************/
-		/**** md5 signature: dbd85bca232b8f6decc3c23073331567 ****/
+		/****** IntTools_CurveRangeSample::IntTools_CurveRangeSample ******/
+		/****** md5 signature: dbd85bca232b8f6decc3c23073331567 ******/
 		%feature("compactdefaultargs") IntTools_CurveRangeSample;
 		%feature("autodoc", "
 Parameters
@@ -6236,8 +6236,8 @@ No available documentation.
 ") IntTools_CurveRangeSample;
 		 IntTools_CurveRangeSample(const Standard_Integer theIndex);
 
-		/****************** GetRange ******************/
-		/**** md5 signature: 7ac23a49be79924087f52de600296943 ****/
+		/****** IntTools_CurveRangeSample::GetRange ******/
+		/****** md5 signature: 7ac23a49be79924087f52de600296943 ******/
 		%feature("compactdefaultargs") GetRange;
 		%feature("autodoc", "
 Parameters
@@ -6256,8 +6256,8 @@ No available documentation.
 ") GetRange;
 		IntTools_Range GetRange(const Standard_Real theFirst, const Standard_Real theLast, const Standard_Integer theNbSample);
 
-		/****************** GetRangeIndex ******************/
-		/**** md5 signature: d7c896b92faa58172b48e4a3aace9c5d ****/
+		/****** IntTools_CurveRangeSample::GetRangeIndex ******/
+		/****** md5 signature: d7c896b92faa58172b48e4a3aace9c5d ******/
 		%feature("compactdefaultargs") GetRangeIndex;
 		%feature("autodoc", "Return
 -------
@@ -6269,8 +6269,8 @@ No available documentation.
 ") GetRangeIndex;
 		Standard_Integer GetRangeIndex();
 
-		/****************** GetRangeIndexDeeper ******************/
-		/**** md5 signature: 2c6cf6516f0d753f98e1f1c5b208996f ****/
+		/****** IntTools_CurveRangeSample::GetRangeIndexDeeper ******/
+		/****** md5 signature: 2c6cf6516f0d753f98e1f1c5b208996f ******/
 		%feature("compactdefaultargs") GetRangeIndexDeeper;
 		%feature("autodoc", "
 Parameters
@@ -6287,8 +6287,8 @@ No available documentation.
 ") GetRangeIndexDeeper;
 		Standard_Integer GetRangeIndexDeeper(const Standard_Integer theNbSample);
 
-		/****************** IsEqual ******************/
-		/**** md5 signature: d04651fd45b57f48a9ead52d9839367a ****/
+		/****** IntTools_CurveRangeSample::IsEqual ******/
+		/****** md5 signature: d04651fd45b57f48a9ead52d9839367a ******/
 		%feature("compactdefaultargs") IsEqual;
 		%feature("autodoc", "
 Parameters
@@ -6305,8 +6305,8 @@ No available documentation.
 ") IsEqual;
 		Standard_Boolean IsEqual(const IntTools_CurveRangeSample & Other);
 
-		/****************** SetRangeIndex ******************/
-		/**** md5 signature: d58a3cfeddc0c94332057980ef6d4fef ****/
+		/****** IntTools_CurveRangeSample::SetRangeIndex ******/
+		/****** md5 signature: d58a3cfeddc0c94332057980ef6d4fef ******/
 		%feature("compactdefaultargs") SetRangeIndex;
 		%feature("autodoc", "
 Parameters

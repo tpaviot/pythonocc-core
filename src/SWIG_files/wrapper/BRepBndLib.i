@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPBNDLIBDOCSTRING
 "BRepBndLib module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepbndlib.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepbndlib.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPBNDLIBDOCSTRING) BRepBndLib
 
@@ -86,8 +86,8 @@ from OCC.Core.Exception import *
 %rename(brepbndlib) BRepBndLib;
 class BRepBndLib {
 	public:
-		/****************** Add ******************/
-		/**** md5 signature: 9c3545c9b1c2df3d52fed48b98ad0a1a ****/
+		/****** BRepBndLib::Add ******/
+		/****** md5 signature: 9c3545c9b1c2df3d52fed48b98ad0a1a ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -106,8 +106,8 @@ Adds the shape s to the bounding box b. more precisely are successively added to
 ") Add;
 		static void Add(const TopoDS_Shape & S, Bnd_Box & B, const Standard_Boolean useTriangulation = Standard_True);
 
-		/****************** AddClose ******************/
-		/**** md5 signature: 5b4c3dd1c546b82ab92a38e981573fb5 ****/
+		/****** BRepBndLib::AddClose ******/
+		/****** md5 signature: 5b4c3dd1c546b82ab92a38e981573fb5 ******/
 		%feature("compactdefaultargs") AddClose;
 		%feature("autodoc", "
 Parameters
@@ -125,8 +125,8 @@ Adds the shape s to the bounding box b. this is a quick algorithm but only works
 ") AddClose;
 		static void AddClose(const TopoDS_Shape & S, Bnd_Box & B);
 
-		/****************** AddOBB ******************/
-		/**** md5 signature: 4475957a182d53ac4344f17f5720d203 ****/
+		/****** BRepBndLib::AddOBB ******/
+		/****** md5 signature: 4475957a182d53ac4344f17f5720d203 ******/
 		%feature("compactdefaultargs") AddOBB;
 		%feature("autodoc", "
 Parameters
@@ -147,8 +147,8 @@ Computes the oriented bounding box for the shape <thes>. two independent methods
 ") AddOBB;
 		static void AddOBB(const TopoDS_Shape & theS, Bnd_OBB & theOBB, const Standard_Boolean theIsTriangulationUsed = Standard_True, const Standard_Boolean theIsOptimal = Standard_False, const Standard_Boolean theIsShapeToleranceUsed = Standard_True);
 
-		/****************** AddOptimal ******************/
-		/**** md5 signature: bd6c1029fd07d68da48862cc70fd6a39 ****/
+		/****** BRepBndLib::AddOptimal ******/
+		/****** md5 signature: bd6c1029fd07d68da48862cc70fd6a39 ******/
 		%feature("compactdefaultargs") AddOptimal;
 		%feature("autodoc", "
 Parameters

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TCOLGEOM2DDOCSTRING
 "TColGeom2d module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_tcolgeom2d.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_tcolgeom2d.html"
 %enddef
 %module (package="OCC.Core", docstring=TCOLGEOM2DDOCSTRING) TColGeom2d
 

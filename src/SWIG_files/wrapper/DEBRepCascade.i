@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define DEBREPCASCADEDOCSTRING
 "DEBRepCascade module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_debrepcascade.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_debrepcascade.html"
 %enddef
 %module (package="OCC.Core", docstring=DEBREPCASCADEDOCSTRING) DEBRepCascade
 
@@ -107,8 +107,8 @@ class DEBRepCascade_ConfigurationNode : public DE_ConfigurationNode {
 	public:
 		class DEBRep_InternalSection {};
 		DEBRep_InternalSection InternalParameters;
-		/****************** DEBRepCascade_ConfigurationNode ******************/
-		/**** md5 signature: fec3c8e82c462df89bb2c327879d19ca ****/
+		/****** DEBRepCascade_ConfigurationNode::DEBRepCascade_ConfigurationNode ******/
+		/****** md5 signature: fec3c8e82c462df89bb2c327879d19ca ******/
 		%feature("compactdefaultargs") DEBRepCascade_ConfigurationNode;
 		%feature("autodoc", "Return
 -------
@@ -120,8 +120,8 @@ Initializes all field by default.
 ") DEBRepCascade_ConfigurationNode;
 		 DEBRepCascade_ConfigurationNode();
 
-		/****************** DEBRepCascade_ConfigurationNode ******************/
-		/**** md5 signature: 1b6dc3286b5e6646ee8f39c1df6ed0b7 ****/
+		/****** DEBRepCascade_ConfigurationNode::DEBRepCascade_ConfigurationNode ******/
+		/****** md5 signature: 1b6dc3286b5e6646ee8f39c1df6ed0b7 ******/
 		%feature("compactdefaultargs") DEBRepCascade_ConfigurationNode;
 		%feature("autodoc", "
 Parameters
@@ -138,8 +138,8 @@ Copies values of all fields @param[in] thenode object to copy.
 ") DEBRepCascade_ConfigurationNode;
 		 DEBRepCascade_ConfigurationNode(const opencascade::handle<DEBRepCascade_ConfigurationNode> & theNode);
 
-		/****************** BuildProvider ******************/
-		/**** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ****/
+		/****** DEBRepCascade_ConfigurationNode::BuildProvider ******/
+		/****** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ******/
 		%feature("compactdefaultargs") BuildProvider;
 		%feature("autodoc", "Return
 -------
@@ -151,8 +151,8 @@ Creates new provider for the own format return new created provider.
 ") BuildProvider;
 		virtual opencascade::handle<DE_Provider> BuildProvider();
 
-		/****************** CheckContent ******************/
-		/**** md5 signature: 2a770b41fb754bfe0ef0260c549f4919 ****/
+		/****** DEBRepCascade_ConfigurationNode::CheckContent ******/
+		/****** md5 signature: 2a770b41fb754bfe0ef0260c549f4919 ******/
 		%feature("compactdefaultargs") CheckContent;
 		%feature("autodoc", "
 Parameters
@@ -169,8 +169,8 @@ Checks the file content to verify a format @param[in] thebuffer read stream buff
 ") CheckContent;
 		virtual bool CheckContent(const opencascade::handle<NCollection_Buffer> & theBuffer);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 4559608ebdab2961e97de40732291656 ****/
+		/****** DEBRepCascade_ConfigurationNode::Copy ******/
+		/****** md5 signature: 4559608ebdab2961e97de40732291656 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -182,8 +182,8 @@ Copies values of all fields return new object with the same field values.
 ") Copy;
 		virtual opencascade::handle<DE_ConfigurationNode> Copy();
 
-		/****************** GetExtensions ******************/
-		/**** md5 signature: a58fd9c22a501a38d695eed6406f94bb ****/
+		/****** DEBRepCascade_ConfigurationNode::GetExtensions ******/
+		/****** md5 signature: a58fd9c22a501a38d695eed6406f94bb ******/
 		%feature("compactdefaultargs") GetExtensions;
 		%feature("autodoc", "Return
 -------
@@ -195,8 +195,8 @@ Gets list of supported file extensions return list of extensions.
 ") GetExtensions;
 		virtual TColStd_ListOfAsciiString GetExtensions();
 
-		/****************** GetFormat ******************/
-		/**** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ****/
+		/****** DEBRepCascade_ConfigurationNode::GetFormat ******/
+		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "Return
 -------
@@ -208,8 +208,8 @@ Gets cad format name of associated provider return provider cad format.
 ") GetFormat;
 		virtual TCollection_AsciiString GetFormat();
 
-		/****************** GetVendor ******************/
-		/**** md5 signature: dec3ae3842639c0f3f7b51f11891135d ****/
+		/****** DEBRepCascade_ConfigurationNode::GetVendor ******/
+		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
 		%feature("compactdefaultargs") GetVendor;
 		%feature("autodoc", "Return
 -------
@@ -221,8 +221,8 @@ Gets provider's vendor name of associated provider return provider's vendor name
 ") GetVendor;
 		virtual TCollection_AsciiString GetVendor();
 
-		/****************** IsExportSupported ******************/
-		/**** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ****/
+		/****** DEBRepCascade_ConfigurationNode::IsExportSupported ******/
+		/****** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ******/
 		%feature("compactdefaultargs") IsExportSupported;
 		%feature("autodoc", "Return
 -------
@@ -234,8 +234,8 @@ Checks the export supporting return true if export is supported.
 ") IsExportSupported;
 		virtual bool IsExportSupported();
 
-		/****************** IsImportSupported ******************/
-		/**** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ****/
+		/****** DEBRepCascade_ConfigurationNode::IsImportSupported ******/
+		/****** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ******/
 		%feature("compactdefaultargs") IsImportSupported;
 		%feature("autodoc", "Return
 -------
@@ -247,8 +247,8 @@ Checks the import supporting return true if import is supported.
 ") IsImportSupported;
 		virtual bool IsImportSupported();
 
-		/****************** Load ******************/
-		/**** md5 signature: 994009254510d81a5f0f9a326a356850 ****/
+		/****** DEBRepCascade_ConfigurationNode::Load ******/
+		/****** md5 signature: 994009254510d81a5f0f9a326a356850 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -265,8 +265,8 @@ Updates values according the resource @param[in] theresource input resource to u
 ") Load;
 		virtual bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
 
-		/****************** Save ******************/
-		/**** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ****/
+		/****** DEBRepCascade_ConfigurationNode::Save ******/
+		/****** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ******/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "Return
 -------
@@ -294,8 +294,8 @@ Writes configuration to the string return result resource string.
 *******************************/
 class DEBRepCascade_Provider : public DE_Provider {
 	public:
-		/****************** DEBRepCascade_Provider ******************/
-		/**** md5 signature: 6bd6dbf02ce8868a36511462f0ecb46d ****/
+		/****** DEBRepCascade_Provider::DEBRepCascade_Provider ******/
+		/****** md5 signature: 6bd6dbf02ce8868a36511462f0ecb46d ******/
 		%feature("compactdefaultargs") DEBRepCascade_Provider;
 		%feature("autodoc", "Return
 -------
@@ -307,8 +307,8 @@ Default constructor configure translation process with global configuration.
 ") DEBRepCascade_Provider;
 		 DEBRepCascade_Provider();
 
-		/****************** DEBRepCascade_Provider ******************/
-		/**** md5 signature: e594eaa8b32df3508c5c521e6fcb8375 ****/
+		/****** DEBRepCascade_Provider::DEBRepCascade_Provider ******/
+		/****** md5 signature: e594eaa8b32df3508c5c521e6fcb8375 ******/
 		%feature("compactdefaultargs") DEBRepCascade_Provider;
 		%feature("autodoc", "
 Parameters
@@ -325,8 +325,8 @@ Configure translation process @param[in] thenode object to init the de_provider.
 ") DEBRepCascade_Provider;
 		 DEBRepCascade_Provider(const opencascade::handle<DE_ConfigurationNode> & theNode);
 
-		/****************** GetFormat ******************/
-		/**** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ****/
+		/****** DEBRepCascade_Provider::GetFormat ******/
+		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "Return
 -------
@@ -338,8 +338,8 @@ Gets cad format name of associated provider return provider cad format.
 ") GetFormat;
 		virtual TCollection_AsciiString GetFormat();
 
-		/****************** GetVendor ******************/
-		/**** md5 signature: dec3ae3842639c0f3f7b51f11891135d ****/
+		/****** DEBRepCascade_Provider::GetVendor ******/
+		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
 		%feature("compactdefaultargs") GetVendor;
 		%feature("autodoc", "Return
 -------
@@ -351,8 +351,8 @@ Gets provider's vendor name of associated provider return provider's vendor name
 ") GetVendor;
 		virtual TCollection_AsciiString GetVendor();
 
-		/****************** Read ******************/
-		/**** md5 signature: 5da3d196d6292385962a1e60f3dec8a0 ****/
+		/****** DEBRepCascade_Provider::Read ******/
+		/****** md5 signature: 5da3d196d6292385962a1e60f3dec8a0 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -372,8 +372,8 @@ Reads a cad file, according internal configuration @param[in] thepath path to th
 ") Read;
 		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Read ******************/
-		/**** md5 signature: ec9914af037216c0502c72d0c8784072 ****/
+		/****** DEBRepCascade_Provider::Read ******/
+		/****** md5 signature: ec9914af037216c0502c72d0c8784072 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -392,8 +392,8 @@ Reads a cad file, according internal configuration @param[in] thepath path to th
 ") Read;
 		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Read ******************/
-		/**** md5 signature: f5c487132f5fe207a43ed7a7e7ce6afc ****/
+		/****** DEBRepCascade_Provider::Read ******/
+		/****** md5 signature: f5c487132f5fe207a43ed7a7e7ce6afc ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -413,8 +413,8 @@ Reads a cad file, according internal configuration @param[in] thepath path to th
 ") Read;
 		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Read ******************/
-		/**** md5 signature: 25ccf35b1d33bce5d3311fc0dff44615 ****/
+		/****** DEBRepCascade_Provider::Read ******/
+		/****** md5 signature: 25ccf35b1d33bce5d3311fc0dff44615 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -433,8 +433,8 @@ Reads a cad file, according internal configuration @param[in] thepath path to th
 ") Read;
 		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ****/
+		/****** DEBRepCascade_Provider::Write ******/
+		/****** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -454,8 +454,8 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 ") Write;
 		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ****/
+		/****** DEBRepCascade_Provider::Write ******/
+		/****** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -474,8 +474,8 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 ") Write;
 		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ****/
+		/****** DEBRepCascade_Provider::Write ******/
+		/****** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -495,8 +495,8 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 ") Write;
 		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ****/
+		/****** DEBRepCascade_Provider::Write ******/
+		/****** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters

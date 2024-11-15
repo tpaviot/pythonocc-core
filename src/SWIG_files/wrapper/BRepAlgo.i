@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPALGODOCSTRING
 "BRepAlgo module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepalgo.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepalgo.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPALGODOCSTRING) BRepAlgo
 
@@ -111,8 +111,8 @@ from OCC.Core.Exception import *
 %rename(brepalgo) BRepAlgo;
 class BRepAlgo {
 	public:
-		/****************** ConcatenateWire ******************/
-		/**** md5 signature: 1a32b306b59aab7db7f1be46215b37ef ****/
+		/****** BRepAlgo::ConcatenateWire ******/
+		/****** md5 signature: 1a32b306b59aab7db7f1be46215b37ef ******/
 		%feature("compactdefaultargs") ConcatenateWire;
 		%feature("autodoc", "
 Parameters
@@ -131,8 +131,8 @@ This method makes a wire whose edges are c1 from a wire whose edges could be g1.
 ") ConcatenateWire;
 		static TopoDS_Wire ConcatenateWire(const TopoDS_Wire & Wire, const GeomAbs_Shape Option, const Standard_Real AngularTolerance = 1.0e-4);
 
-		/****************** ConcatenateWireC0 ******************/
-		/**** md5 signature: 80cfe190357e01a0436f222bec60fa13 ****/
+		/****** BRepAlgo::ConcatenateWireC0 ******/
+		/****** md5 signature: 80cfe190357e01a0436f222bec60fa13 ******/
 		%feature("compactdefaultargs") ConcatenateWireC0;
 		%feature("autodoc", "
 Parameters
@@ -149,8 +149,8 @@ This method makes an edge from a wire. junction points between edges of wire may
 ") ConcatenateWireC0;
 		static TopoDS_Edge ConcatenateWireC0(const TopoDS_Wire & Wire);
 
-		/****************** ConvertFace ******************/
-		/**** md5 signature: 4995d6c46f75b841a5ec1eeddfe269b6 ****/
+		/****** BRepAlgo::ConvertFace ******/
+		/****** md5 signature: 4995d6c46f75b841a5ec1eeddfe269b6 ******/
 		%feature("compactdefaultargs") ConvertFace;
 		%feature("autodoc", "
 Parameters
@@ -168,8 +168,8 @@ Method of face conversion. the api corresponds to the method convertwire. this i
 ") ConvertFace;
 		static TopoDS_Face ConvertFace(const TopoDS_Face & theFace, const Standard_Real theAngleTolerance);
 
-		/****************** ConvertWire ******************/
-		/**** md5 signature: 803ac9affea1e0a7a42b271f20e61001 ****/
+		/****** BRepAlgo::ConvertWire ******/
+		/****** md5 signature: 803ac9affea1e0a7a42b271f20e61001 ******/
 		%feature("compactdefaultargs") ConvertWire;
 		%feature("autodoc", "
 Parameters
@@ -188,8 +188,8 @@ Method of wire conversion, calls brepalgo_approx internally. @param thewire inpu
 ") ConvertWire;
 		static TopoDS_Wire ConvertWire(const TopoDS_Wire & theWire, const Standard_Real theAngleTolerance, const TopoDS_Face & theFace);
 
-		/****************** IsTopologicallyValid ******************/
-		/**** md5 signature: 862e9687e6641e5b5520e1bc35a7dd50 ****/
+		/****** BRepAlgo::IsTopologicallyValid ******/
+		/****** md5 signature: 862e9687e6641e5b5520e1bc35a7dd50 ******/
 		%feature("compactdefaultargs") IsTopologicallyValid;
 		%feature("autodoc", "
 Parameters
@@ -206,8 +206,8 @@ Checks if the shape is 'correct'. if not, returns false, else returns true. this
 ") IsTopologicallyValid;
 		static Standard_Boolean IsTopologicallyValid(const TopoDS_Shape & S);
 
-		/****************** IsValid ******************/
-		/**** md5 signature: f6c51d6a17d819532ca2912c3fc6a304 ****/
+		/****** BRepAlgo::IsValid ******/
+		/****** md5 signature: f6c51d6a17d819532ca2912c3fc6a304 ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "
 Parameters
@@ -224,8 +224,8 @@ Checks if the shape is 'correct'. if not, returns <standard_false>, else returns
 ") IsValid;
 		static Standard_Boolean IsValid(const TopoDS_Shape & S);
 
-		/****************** IsValid ******************/
-		/**** md5 signature: a6a7c5ea6808afc2c6c282f452e359df ****/
+		/****** BRepAlgo::IsValid ******/
+		/****** md5 signature: a6a7c5ea6808afc2c6c282f452e359df ******/
 		%feature("compactdefaultargs") IsValid;
 		%feature("autodoc", "
 Parameters
@@ -259,8 +259,8 @@ Checks if the generated and modified faces from the shapes <arguments> in the sh
 ***********************/
 class BRepAlgo_AsDes : public Standard_Transient {
 	public:
-		/****************** BRepAlgo_AsDes ******************/
-		/**** md5 signature: c38ef1363f12544146fc23652e8830a6 ****/
+		/****** BRepAlgo_AsDes::BRepAlgo_AsDes ******/
+		/****** md5 signature: c38ef1363f12544146fc23652e8830a6 ******/
 		%feature("compactdefaultargs") BRepAlgo_AsDes;
 		%feature("autodoc", "Return
 -------
@@ -272,8 +272,8 @@ Creates an empty asdes.
 ") BRepAlgo_AsDes;
 		 BRepAlgo_AsDes();
 
-		/****************** Add ******************/
-		/**** md5 signature: 21aba0cbf9c8c8c11e064d9e2e6a5fc5 ****/
+		/****** BRepAlgo_AsDes::Add ******/
+		/****** md5 signature: 21aba0cbf9c8c8c11e064d9e2e6a5fc5 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -291,8 +291,8 @@ Stores <ss> as a futur subshape of <s>.
 ") Add;
 		void Add(const TopoDS_Shape & S, const TopoDS_Shape & SS);
 
-		/****************** Add ******************/
-		/**** md5 signature: daedb93f45ca97af04bcfee2319db368 ****/
+		/****** BRepAlgo_AsDes::Add ******/
+		/****** md5 signature: daedb93f45ca97af04bcfee2319db368 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -310,8 +310,8 @@ Stores <ss> as futurs subshapes of <s>.
 ") Add;
 		void Add(const TopoDS_Shape & S, const TopTools_ListOfShape & SS);
 
-		/****************** Ascendant ******************/
-		/**** md5 signature: 0f9934446c2b983d1dfe0f2d9e5cbbab ****/
+		/****** BRepAlgo_AsDes::Ascendant ******/
+		/****** md5 signature: 0f9934446c2b983d1dfe0f2d9e5cbbab ******/
 		%feature("compactdefaultargs") Ascendant;
 		%feature("autodoc", "
 Parameters
@@ -328,8 +328,8 @@ Returns the shape containing <s>.
 ") Ascendant;
 		const TopTools_ListOfShape & Ascendant(const TopoDS_Shape & S);
 
-		/****************** ChangeDescendant ******************/
-		/**** md5 signature: 4e3d115ec5f7066ca927facb2b62a0bd ****/
+		/****** BRepAlgo_AsDes::ChangeDescendant ******/
+		/****** md5 signature: 4e3d115ec5f7066ca927facb2b62a0bd ******/
 		%feature("compactdefaultargs") ChangeDescendant;
 		%feature("autodoc", "
 Parameters
@@ -346,8 +346,8 @@ Returns futur subhapes of <s>.
 ") ChangeDescendant;
 		TopTools_ListOfShape & ChangeDescendant(const TopoDS_Shape & S);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** BRepAlgo_AsDes::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -359,8 +359,8 @@ No available documentation.
 ") Clear;
 		void Clear();
 
-		/****************** Descendant ******************/
-		/**** md5 signature: d8b2fd69d6ffe678b09cae4efb7ca892 ****/
+		/****** BRepAlgo_AsDes::Descendant ******/
+		/****** md5 signature: d8b2fd69d6ffe678b09cae4efb7ca892 ******/
 		%feature("compactdefaultargs") Descendant;
 		%feature("autodoc", "
 Parameters
@@ -377,8 +377,8 @@ Returns futur subhapes of <s>.
 ") Descendant;
 		const TopTools_ListOfShape & Descendant(const TopoDS_Shape & S);
 
-		/****************** HasAscendant ******************/
-		/**** md5 signature: 0061ff91c4aff940f5e0352c160d969d ****/
+		/****** BRepAlgo_AsDes::HasAscendant ******/
+		/****** md5 signature: 0061ff91c4aff940f5e0352c160d969d ******/
 		%feature("compactdefaultargs") HasAscendant;
 		%feature("autodoc", "
 Parameters
@@ -395,8 +395,8 @@ No available documentation.
 ") HasAscendant;
 		Standard_Boolean HasAscendant(const TopoDS_Shape & S);
 
-		/****************** HasCommonDescendant ******************/
-		/**** md5 signature: 05dfab339e3899f1fa3e137bc970f96e ****/
+		/****** BRepAlgo_AsDes::HasCommonDescendant ******/
+		/****** md5 signature: 05dfab339e3899f1fa3e137bc970f96e ******/
 		%feature("compactdefaultargs") HasCommonDescendant;
 		%feature("autodoc", "
 Parameters
@@ -415,8 +415,8 @@ Returns true if (s1> and <s2> has common descendants. stores in <lc> the commons
 ") HasCommonDescendant;
 		Standard_Boolean HasCommonDescendant(const TopoDS_Shape & S1, const TopoDS_Shape & S2, TopTools_ListOfShape & LC);
 
-		/****************** HasDescendant ******************/
-		/**** md5 signature: 33b990046a91014730d870870286c8bc ****/
+		/****** BRepAlgo_AsDes::HasDescendant ******/
+		/****** md5 signature: 33b990046a91014730d870870286c8bc ******/
 		%feature("compactdefaultargs") HasDescendant;
 		%feature("autodoc", "
 Parameters
@@ -433,8 +433,8 @@ No available documentation.
 ") HasDescendant;
 		Standard_Boolean HasDescendant(const TopoDS_Shape & S);
 
-		/****************** Remove ******************/
-		/**** md5 signature: add61cba503919d35888054f3de3699f ****/
+		/****** BRepAlgo_AsDes::Remove ******/
+		/****** md5 signature: add61cba503919d35888054f3de3699f ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -451,8 +451,8 @@ Remove thes from me.
 ") Remove;
 		void Remove(const TopoDS_Shape & theS);
 
-		/****************** Replace ******************/
-		/**** md5 signature: 7efbf7d2833396fcda557293d6dcc3ee ****/
+		/****** BRepAlgo_AsDes::Replace ******/
+		/****** md5 signature: 7efbf7d2833396fcda557293d6dcc3ee ******/
 		%feature("compactdefaultargs") Replace;
 		%feature("autodoc", "
 Parameters
@@ -486,8 +486,8 @@ Replace theolds by thenews. theolds disappear from this.
 ********************************/
 class BRepAlgo_FaceRestrictor {
 	public:
-		/****************** BRepAlgo_FaceRestrictor ******************/
-		/**** md5 signature: 82683998c51ff8824cac4f9f6d46eb4a ****/
+		/****** BRepAlgo_FaceRestrictor::BRepAlgo_FaceRestrictor ******/
+		/****** md5 signature: 82683998c51ff8824cac4f9f6d46eb4a ******/
 		%feature("compactdefaultargs") BRepAlgo_FaceRestrictor;
 		%feature("autodoc", "Return
 -------
@@ -499,8 +499,8 @@ No available documentation.
 ") BRepAlgo_FaceRestrictor;
 		 BRepAlgo_FaceRestrictor();
 
-		/****************** Add ******************/
-		/**** md5 signature: a6ce79dcf272de14f2ac11be8579ec3c ****/
+		/****** BRepAlgo_FaceRestrictor::Add ******/
+		/****** md5 signature: a6ce79dcf272de14f2ac11be8579ec3c ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -517,8 +517,8 @@ Add the wire <w> to the set of wires. //! warning: the wires must be closed. //!
 ") Add;
 		void Add(TopoDS_Wire & W);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** BRepAlgo_FaceRestrictor::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -530,8 +530,8 @@ Removes all the wires.
 ") Clear;
 		void Clear();
 
-		/****************** Current ******************/
-		/**** md5 signature: 9fb8c8be97ea707acffa5681bd8041e7 ****/
+		/****** BRepAlgo_FaceRestrictor::Current ******/
+		/****** md5 signature: 9fb8c8be97ea707acffa5681bd8041e7 ******/
 		%feature("compactdefaultargs") Current;
 		%feature("autodoc", "Return
 -------
@@ -543,8 +543,8 @@ No available documentation.
 ") Current;
 		TopoDS_Face Current();
 
-		/****************** Init ******************/
-		/**** md5 signature: 8a340284dcc52534c4ed6303f8706321 ****/
+		/****** BRepAlgo_FaceRestrictor::Init ******/
+		/****** md5 signature: 8a340284dcc52534c4ed6303f8706321 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -563,8 +563,8 @@ The surface of <f> will be the surface of each new faces built. <proj> is used t
 ") Init;
 		void Init(const TopoDS_Face & F, const Standard_Boolean Proj = Standard_False, const Standard_Boolean ControlOrientation = Standard_False);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** BRepAlgo_FaceRestrictor::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -576,8 +576,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** BRepAlgo_FaceRestrictor::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -589,8 +589,8 @@ No available documentation.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** BRepAlgo_FaceRestrictor::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -602,8 +602,8 @@ No available documentation.
 ") Next;
 		void Next();
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** BRepAlgo_FaceRestrictor::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -629,8 +629,8 @@ Evaluate all the faces limited by the set of wires.
 ***********************/
 class BRepAlgo_Image {
 	public:
-		/****************** BRepAlgo_Image ******************/
-		/**** md5 signature: 565a5b0a190c69489d75a611c64badca ****/
+		/****** BRepAlgo_Image::BRepAlgo_Image ******/
+		/****** md5 signature: 565a5b0a190c69489d75a611c64badca ******/
 		%feature("compactdefaultargs") BRepAlgo_Image;
 		%feature("autodoc", "Return
 -------
@@ -642,8 +642,8 @@ No available documentation.
 ") BRepAlgo_Image;
 		 BRepAlgo_Image();
 
-		/****************** Add ******************/
-		/**** md5 signature: b8225f975bf15fd818dbd9e49f0d729d ****/
+		/****** BRepAlgo_Image::Add ******/
+		/****** md5 signature: b8225f975bf15fd818dbd9e49f0d729d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -661,8 +661,8 @@ Add <news> to the image of <olds>.
 ") Add;
 		void Add(const TopoDS_Shape & OldS, const TopoDS_Shape & NewS);
 
-		/****************** Add ******************/
-		/**** md5 signature: 1f4f782b77630d9c71cd4cdce8e3437f ****/
+		/****** BRepAlgo_Image::Add ******/
+		/****** md5 signature: 1f4f782b77630d9c71cd4cdce8e3437f ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -680,8 +680,8 @@ Add <news> to the image of <olds>.
 ") Add;
 		void Add(const TopoDS_Shape & OldS, const TopTools_ListOfShape & NewS);
 
-		/****************** Bind ******************/
-		/**** md5 signature: 94395a7acc1c19970a6c18429f703cbd ****/
+		/****** BRepAlgo_Image::Bind ******/
+		/****** md5 signature: 94395a7acc1c19970a6c18429f703cbd ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -699,8 +699,8 @@ Links <news> as image of <olds>.
 ") Bind;
 		void Bind(const TopoDS_Shape & OldS, const TopoDS_Shape & NewS);
 
-		/****************** Bind ******************/
-		/**** md5 signature: e46b9362344bef9a466680c15824c045 ****/
+		/****** BRepAlgo_Image::Bind ******/
+		/****** md5 signature: e46b9362344bef9a466680c15824c045 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -718,8 +718,8 @@ Links <news> as image of <olds>.
 ") Bind;
 		void Bind(const TopoDS_Shape & OldS, const TopTools_ListOfShape & NewS);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** BRepAlgo_Image::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -731,8 +731,8 @@ No available documentation.
 ") Clear;
 		void Clear();
 
-		/****************** Compact ******************/
-		/**** md5 signature: 9a98bd4200c1c286e12857cb2eb1f23a ****/
+		/****** BRepAlgo_Image::Compact ******/
+		/****** md5 signature: 9a98bd4200c1c286e12857cb2eb1f23a ******/
 		%feature("compactdefaultargs") Compact;
 		%feature("autodoc", "Return
 -------
@@ -744,8 +744,8 @@ Keeps only the link between roots and lastimage.
 ") Compact;
 		void Compact();
 
-		/****************** Filter ******************/
-		/**** md5 signature: e4937792550998c8721aa07df5c84e90 ****/
+		/****** BRepAlgo_Image::Filter ******/
+		/****** md5 signature: e4937792550998c8721aa07df5c84e90 ******/
 		%feature("compactdefaultargs") Filter;
 		%feature("autodoc", "
 Parameters
@@ -763,8 +763,8 @@ Deletes in the images the shape of type <shapetype> which are not in <s>. warnin
 ") Filter;
 		void Filter(const TopoDS_Shape & S, const TopAbs_ShapeEnum ShapeType);
 
-		/****************** HasImage ******************/
-		/**** md5 signature: b3bc7608851b977522a41dfadb246e5f ****/
+		/****** BRepAlgo_Image::HasImage ******/
+		/****** md5 signature: b3bc7608851b977522a41dfadb246e5f ******/
 		%feature("compactdefaultargs") HasImage;
 		%feature("autodoc", "
 Parameters
@@ -781,8 +781,8 @@ No available documentation.
 ") HasImage;
 		Standard_Boolean HasImage(const TopoDS_Shape & S);
 
-		/****************** Image ******************/
-		/**** md5 signature: a0b14766d744925d80794ae4914acb1c ****/
+		/****** BRepAlgo_Image::Image ******/
+		/****** md5 signature: a0b14766d744925d80794ae4914acb1c ******/
 		%feature("compactdefaultargs") Image;
 		%feature("autodoc", "
 Parameters
@@ -799,8 +799,8 @@ Returns the image of <s>. returns <s> in the list if hasimage(s) is false.
 ") Image;
 		const TopTools_ListOfShape & Image(const TopoDS_Shape & S);
 
-		/****************** ImageFrom ******************/
-		/**** md5 signature: 2290fb99e58edb77e8d51c7bee3ddaa5 ****/
+		/****** BRepAlgo_Image::ImageFrom ******/
+		/****** md5 signature: 2290fb99e58edb77e8d51c7bee3ddaa5 ******/
 		%feature("compactdefaultargs") ImageFrom;
 		%feature("autodoc", "
 Parameters
@@ -817,8 +817,8 @@ Returns the generator of <s>.
 ") ImageFrom;
 		const TopoDS_Shape ImageFrom(const TopoDS_Shape & S);
 
-		/****************** IsImage ******************/
-		/**** md5 signature: 5d4abe9bfc888b8046977ea97f0d29c3 ****/
+		/****** BRepAlgo_Image::IsImage ******/
+		/****** md5 signature: 5d4abe9bfc888b8046977ea97f0d29c3 ******/
 		%feature("compactdefaultargs") IsImage;
 		%feature("autodoc", "
 Parameters
@@ -835,8 +835,8 @@ No available documentation.
 ") IsImage;
 		Standard_Boolean IsImage(const TopoDS_Shape & S);
 
-		/****************** LastImage ******************/
-		/**** md5 signature: f49808c3101a3f0962d4a981cc2e0fa3 ****/
+		/****** BRepAlgo_Image::LastImage ******/
+		/****** md5 signature: f49808c3101a3f0962d4a981cc2e0fa3 ******/
 		%feature("compactdefaultargs") LastImage;
 		%feature("autodoc", "
 Parameters
@@ -854,8 +854,8 @@ Stores in <l> the images of images of...images of <s>. <l> contains only <s> if 
 ") LastImage;
 		void LastImage(const TopoDS_Shape & S, TopTools_ListOfShape & L);
 
-		/****************** Remove ******************/
-		/**** md5 signature: 05a88c75d9ea5ff51b2f8c0a39e09679 ****/
+		/****** BRepAlgo_Image::Remove ******/
+		/****** md5 signature: 05a88c75d9ea5ff51b2f8c0a39e09679 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -872,8 +872,8 @@ Remove <s> to set of images.
 ") Remove;
 		void Remove(const TopoDS_Shape & S);
 
-		/****************** RemoveRoot ******************/
-		/**** md5 signature: 690c4fd21a18576f149a066c30568867 ****/
+		/****** BRepAlgo_Image::RemoveRoot ******/
+		/****** md5 signature: 690c4fd21a18576f149a066c30568867 ******/
 		%feature("compactdefaultargs") RemoveRoot;
 		%feature("autodoc", "
 Parameters
@@ -890,8 +890,8 @@ Removes the root <theroot> from the list of roots and up and down maps.
 ") RemoveRoot;
 		void RemoveRoot(const TopoDS_Shape & Root);
 
-		/****************** ReplaceRoot ******************/
-		/**** md5 signature: 285b3a580e43af49c3fb24e085a66aef ****/
+		/****** BRepAlgo_Image::ReplaceRoot ******/
+		/****** md5 signature: 285b3a580e43af49c3fb24e085a66aef ******/
 		%feature("compactdefaultargs") ReplaceRoot;
 		%feature("autodoc", "
 Parameters
@@ -909,8 +909,8 @@ Replaces the <oldroot> with the <newroot>, so all images of the <oldroot> become
 ") ReplaceRoot;
 		void ReplaceRoot(const TopoDS_Shape & OldRoot, const TopoDS_Shape & NewRoot);
 
-		/****************** Root ******************/
-		/**** md5 signature: b928b7ce7a4d68875a739516be55eb7c ****/
+		/****** BRepAlgo_Image::Root ******/
+		/****** md5 signature: b928b7ce7a4d68875a739516be55eb7c ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "
 Parameters
@@ -927,8 +927,8 @@ Returns the upper generator of <s>.
 ") Root;
 		const TopoDS_Shape Root(const TopoDS_Shape & S);
 
-		/****************** Roots ******************/
-		/**** md5 signature: 82f242faa3e008b8cefc3123c93c72c8 ****/
+		/****** BRepAlgo_Image::Roots ******/
+		/****** md5 signature: 82f242faa3e008b8cefc3123c93c72c8 ******/
 		%feature("compactdefaultargs") Roots;
 		%feature("autodoc", "Return
 -------
@@ -940,8 +940,8 @@ No available documentation.
 ") Roots;
 		const TopTools_ListOfShape & Roots();
 
-		/****************** SetRoot ******************/
-		/**** md5 signature: 81eb99d7d9d22432167b234cf063481a ****/
+		/****** BRepAlgo_Image::SetRoot ******/
+		/****** md5 signature: 81eb99d7d9d22432167b234cf063481a ******/
 		%feature("compactdefaultargs") SetRoot;
 		%feature("autodoc", "
 Parameters
@@ -972,8 +972,8 @@ No available documentation.
 **********************/
 class BRepAlgo_Loop {
 	public:
-		/****************** BRepAlgo_Loop ******************/
-		/**** md5 signature: 25f06f5c44068f0a3075667be6a6a58b ****/
+		/****** BRepAlgo_Loop::BRepAlgo_Loop ******/
+		/****** md5 signature: 25f06f5c44068f0a3075667be6a6a58b ******/
 		%feature("compactdefaultargs") BRepAlgo_Loop;
 		%feature("autodoc", "Return
 -------
@@ -985,8 +985,8 @@ No available documentation.
 ") BRepAlgo_Loop;
 		 BRepAlgo_Loop();
 
-		/****************** AddConstEdge ******************/
-		/**** md5 signature: c7f7273f1289f10b479203d0e90b817d ****/
+		/****** BRepAlgo_Loop::AddConstEdge ******/
+		/****** md5 signature: c7f7273f1289f10b479203d0e90b817d ******/
 		%feature("compactdefaultargs") AddConstEdge;
 		%feature("autodoc", "
 Parameters
@@ -1003,8 +1003,8 @@ Add <e> as const edge, e can be in the result.
 ") AddConstEdge;
 		void AddConstEdge(const TopoDS_Edge & E);
 
-		/****************** AddConstEdges ******************/
-		/**** md5 signature: bb5e3e5bda091bc51538ebc7c94a845d ****/
+		/****** BRepAlgo_Loop::AddConstEdges ******/
+		/****** md5 signature: bb5e3e5bda091bc51538ebc7c94a845d ******/
 		%feature("compactdefaultargs") AddConstEdges;
 		%feature("autodoc", "
 Parameters
@@ -1021,8 +1021,8 @@ Add <le> as a set of const edges.
 ") AddConstEdges;
 		void AddConstEdges(const TopTools_ListOfShape & LE);
 
-		/****************** AddEdge ******************/
-		/**** md5 signature: 1d4fc83e654194c8544ee17710aa8d90 ****/
+		/****** BRepAlgo_Loop::AddEdge ******/
+		/****** md5 signature: 1d4fc83e654194c8544ee17710aa8d90 ******/
 		%feature("compactdefaultargs") AddEdge;
 		%feature("autodoc", "
 Parameters
@@ -1040,8 +1040,8 @@ Add e with <lv>. <e> will be copied and trim by vertices in <lv>.
 ") AddEdge;
 		void AddEdge(TopoDS_Edge & E, const TopTools_ListOfShape & LV);
 
-		/****************** CutEdge ******************/
-		/**** md5 signature: c3ea87f98f6a4b2923c6235d7b903c58 ****/
+		/****** BRepAlgo_Loop::CutEdge ******/
+		/****** md5 signature: c3ea87f98f6a4b2923c6235d7b903c58 ******/
 		%feature("compactdefaultargs") CutEdge;
 		%feature("autodoc", "
 Parameters
@@ -1060,8 +1060,8 @@ Cut the edge <e> in several edges <ne> on the vertices<vone>.
 ") CutEdge;
 		void CutEdge(const TopoDS_Edge & E, const TopTools_ListOfShape & VonE, TopTools_ListOfShape & NE);
 
-		/****************** GetTolConf ******************/
-		/**** md5 signature: 7e9f7b87eb3b20edee9e3a86157928cd ****/
+		/****** BRepAlgo_Loop::GetTolConf ******/
+		/****** md5 signature: 7e9f7b87eb3b20edee9e3a86157928cd ******/
 		%feature("compactdefaultargs") GetTolConf;
 		%feature("autodoc", "Return
 -------
@@ -1073,8 +1073,8 @@ Get maximal tolerance used for comparing distaces between vertices. .
 ") GetTolConf;
 		Standard_Real GetTolConf();
 
-		/****************** GetVerticesForSubstitute ******************/
-		/**** md5 signature: 3b0ea732ecf076dde3f931f0997c07aa ****/
+		/****** BRepAlgo_Loop::GetVerticesForSubstitute ******/
+		/****** md5 signature: 3b0ea732ecf076dde3f931f0997c07aa ******/
 		%feature("compactdefaultargs") GetVerticesForSubstitute;
 		%feature("autodoc", "
 Parameters
@@ -1091,8 +1091,8 @@ Returns the datamap of vertices with their substitutes.
 ") GetVerticesForSubstitute;
 		void GetVerticesForSubstitute(TopTools_DataMapOfShapeShape & VerVerMap);
 
-		/****************** Init ******************/
-		/**** md5 signature: a8dfaa68079e743e08190fe58d950a9a ****/
+		/****** BRepAlgo_Loop::Init ******/
+		/****** md5 signature: a8dfaa68079e743e08190fe58d950a9a ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1109,8 +1109,8 @@ Init with <f> the set of edges must have pcurves on <f>.
 ") Init;
 		void Init(const TopoDS_Face & F);
 
-		/****************** NewEdges ******************/
-		/**** md5 signature: ca2bf0bfae43c579574670d69e837949 ****/
+		/****** BRepAlgo_Loop::NewEdges ******/
+		/****** md5 signature: ca2bf0bfae43c579574670d69e837949 ******/
 		%feature("compactdefaultargs") NewEdges;
 		%feature("autodoc", "
 Parameters
@@ -1127,8 +1127,8 @@ Returns the list of new edges built from an edge <e> it can be an empty list.
 ") NewEdges;
 		const TopTools_ListOfShape & NewEdges(const TopoDS_Edge & E);
 
-		/****************** NewFaces ******************/
-		/**** md5 signature: 1760fdb1c9e5525f7aa9e149d10051e7 ****/
+		/****** BRepAlgo_Loop::NewFaces ******/
+		/****** md5 signature: 1760fdb1c9e5525f7aa9e149d10051e7 ******/
 		%feature("compactdefaultargs") NewFaces;
 		%feature("autodoc", "Return
 -------
@@ -1140,8 +1140,8 @@ Returns the list of faces. warning: the method <wirestofaces> as to be called be
 ") NewFaces;
 		const TopTools_ListOfShape & NewFaces();
 
-		/****************** NewWires ******************/
-		/**** md5 signature: e3fe3b335b8953ae48d1acc70c50f835 ****/
+		/****** BRepAlgo_Loop::NewWires ******/
+		/****** md5 signature: e3fe3b335b8953ae48d1acc70c50f835 ******/
 		%feature("compactdefaultargs") NewWires;
 		%feature("autodoc", "Return
 -------
@@ -1153,8 +1153,8 @@ Returns the list of wires performed. can be an empty list.
 ") NewWires;
 		const TopTools_ListOfShape & NewWires();
 
-		/****************** Perform ******************/
-		/**** md5 signature: c04b01412cba7220c024b5eb4532697f ****/
+		/****** BRepAlgo_Loop::Perform ******/
+		/****** md5 signature: c04b01412cba7220c024b5eb4532697f ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "Return
 -------
@@ -1166,8 +1166,8 @@ Make loops.
 ") Perform;
 		void Perform();
 
-		/****************** SetImageVV ******************/
-		/**** md5 signature: e4e1ed7e9cd079a003f1ab409e87973e ****/
+		/****** BRepAlgo_Loop::SetImageVV ******/
+		/****** md5 signature: e4e1ed7e9cd079a003f1ab409e87973e ******/
 		%feature("compactdefaultargs") SetImageVV;
 		%feature("autodoc", "
 Parameters
@@ -1184,8 +1184,8 @@ Sets the image vertex - vertex.
 ") SetImageVV;
 		void SetImageVV(const BRepAlgo_Image & theImageVV);
 
-		/****************** SetTolConf ******************/
-		/**** md5 signature: 1c312d5c00a3d856c91eb31857ae32c6 ****/
+		/****** BRepAlgo_Loop::SetTolConf ******/
+		/****** md5 signature: 1c312d5c00a3d856c91eb31857ae32c6 ******/
 		%feature("compactdefaultargs") SetTolConf;
 		%feature("autodoc", "
 Parameters
@@ -1202,8 +1202,8 @@ Set maximal tolerance used for comparing distaces between vertices. .
 ") SetTolConf;
 		void SetTolConf(const Standard_Real theTolConf);
 
-		/****************** UpdateVEmap ******************/
-		/**** md5 signature: 491681c63af221fbd7247e01d389bbc0 ****/
+		/****** BRepAlgo_Loop::UpdateVEmap ******/
+		/****** md5 signature: 491681c63af221fbd7247e01d389bbc0 ******/
 		%feature("compactdefaultargs") UpdateVEmap;
 		%feature("autodoc", "
 Parameters
@@ -1220,8 +1220,8 @@ Update ve map according to image vertex - vertex.
 ") UpdateVEmap;
 		void UpdateVEmap(TopTools_IndexedDataMapOfShapeListOfShape & theVEmap);
 
-		/****************** VerticesForSubstitute ******************/
-		/**** md5 signature: b26ff2366762048c84c096651ba2d80c ****/
+		/****** BRepAlgo_Loop::VerticesForSubstitute ******/
+		/****** md5 signature: b26ff2366762048c84c096651ba2d80c ******/
 		%feature("compactdefaultargs") VerticesForSubstitute;
 		%feature("autodoc", "
 Parameters
@@ -1238,8 +1238,8 @@ No available documentation.
 ") VerticesForSubstitute;
 		void VerticesForSubstitute(TopTools_DataMapOfShapeShape & VerVerMap);
 
-		/****************** WiresToFaces ******************/
-		/**** md5 signature: ba4d21c35d79af050089e2828b0fc192 ****/
+		/****** BRepAlgo_Loop::WiresToFaces ******/
+		/****** md5 signature: ba4d21c35d79af050089e2828b0fc192 ******/
 		%feature("compactdefaultargs") WiresToFaces;
 		%feature("autodoc", "Return
 -------
@@ -1265,8 +1265,8 @@ Build faces from the wires result.
 **********************************/
 class BRepAlgo_NormalProjection {
 	public:
-		/****************** BRepAlgo_NormalProjection ******************/
-		/**** md5 signature: 9701a9046a8430d62899e04270a74739 ****/
+		/****** BRepAlgo_NormalProjection::BRepAlgo_NormalProjection ******/
+		/****** md5 signature: 9701a9046a8430d62899e04270a74739 ******/
 		%feature("compactdefaultargs") BRepAlgo_NormalProjection;
 		%feature("autodoc", "Return
 -------
@@ -1278,8 +1278,8 @@ No available documentation.
 ") BRepAlgo_NormalProjection;
 		 BRepAlgo_NormalProjection();
 
-		/****************** BRepAlgo_NormalProjection ******************/
-		/**** md5 signature: 420e8a2be230db44d7bc7c2631e1f8fe ****/
+		/****** BRepAlgo_NormalProjection::BRepAlgo_NormalProjection ******/
+		/****** md5 signature: 420e8a2be230db44d7bc7c2631e1f8fe ******/
 		%feature("compactdefaultargs") BRepAlgo_NormalProjection;
 		%feature("autodoc", "
 Parameters
@@ -1296,8 +1296,8 @@ No available documentation.
 ") BRepAlgo_NormalProjection;
 		 BRepAlgo_NormalProjection(const TopoDS_Shape & S);
 
-		/****************** Add ******************/
-		/**** md5 signature: 819f71062dd96e4b529bccdf1bb50cf1 ****/
+		/****** BRepAlgo_NormalProjection::Add ******/
+		/****** md5 signature: 819f71062dd96e4b529bccdf1bb50cf1 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1314,8 +1314,8 @@ Add an edge or a wire to the list of shape to project.
 ") Add;
 		void Add(const TopoDS_Shape & ToProj);
 
-		/****************** Ancestor ******************/
-		/**** md5 signature: 551c6ce85c529cb60615765a58d47215 ****/
+		/****** BRepAlgo_NormalProjection::Ancestor ******/
+		/****** md5 signature: 551c6ce85c529cb60615765a58d47215 ******/
 		%feature("compactdefaultargs") Ancestor;
 		%feature("autodoc", "
 Parameters
@@ -1332,8 +1332,8 @@ For a resulting edge, returns the corresponding initial edge.
 ") Ancestor;
 		const TopoDS_Shape Ancestor(const TopoDS_Edge & E);
 
-		/****************** Build ******************/
-		/**** md5 signature: 634d88e5c99c5ce236c07b337243d591 ****/
+		/****** BRepAlgo_NormalProjection::Build ******/
+		/****** md5 signature: 634d88e5c99c5ce236c07b337243d591 ******/
 		%feature("compactdefaultargs") Build;
 		%feature("autodoc", "Return
 -------
@@ -1345,8 +1345,8 @@ Builds the result as a compound.
 ") Build;
 		void Build();
 
-		/****************** BuildWire ******************/
-		/**** md5 signature: e5fb4f3952649b872b4fb3c469f5b161 ****/
+		/****** BRepAlgo_NormalProjection::BuildWire ******/
+		/****** md5 signature: e5fb4f3952649b872b4fb3c469f5b161 ******/
 		%feature("compactdefaultargs") BuildWire;
 		%feature("autodoc", "
 Parameters
@@ -1363,8 +1363,8 @@ Build the result as a list of wire if possible in -- a first returns a wire only
 ") BuildWire;
 		Standard_Boolean BuildWire(TopTools_ListOfShape & Liste);
 
-		/****************** Compute3d ******************/
-		/**** md5 signature: a18b9a3fc4a7d346645e19e03d893102 ****/
+		/****** BRepAlgo_NormalProjection::Compute3d ******/
+		/****** md5 signature: a18b9a3fc4a7d346645e19e03d893102 ******/
 		%feature("compactdefaultargs") Compute3d;
 		%feature("autodoc", "
 Parameters
@@ -1381,8 +1381,8 @@ If with3d = standard_false the 3dcurve is not computed the initial 3dcurve is ke
 ") Compute3d;
 		void Compute3d(const Standard_Boolean With3d = Standard_True);
 
-		/****************** Couple ******************/
-		/**** md5 signature: cbe6db4e25bf42b45544f6235fc33773 ****/
+		/****** BRepAlgo_NormalProjection::Couple ******/
+		/****** md5 signature: cbe6db4e25bf42b45544f6235fc33773 ******/
 		%feature("compactdefaultargs") Couple;
 		%feature("autodoc", "
 Parameters
@@ -1399,8 +1399,8 @@ For a projected edge, returns the corresponding initial face.
 ") Couple;
 		const TopoDS_Shape Couple(const TopoDS_Edge & E);
 
-		/****************** Generated ******************/
-		/**** md5 signature: 20432e4d7ffc2a154be36ff0a467a19b ****/
+		/****** BRepAlgo_NormalProjection::Generated ******/
+		/****** md5 signature: 20432e4d7ffc2a154be36ff0a467a19b ******/
 		%feature("compactdefaultargs") Generated;
 		%feature("autodoc", "
 Parameters
@@ -1417,8 +1417,8 @@ Returns the list of shapes generated from the shape <s>.
 ") Generated;
 		const TopTools_ListOfShape & Generated(const TopoDS_Shape & S);
 
-		/****************** Init ******************/
-		/**** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ****/
+		/****** BRepAlgo_NormalProjection::Init ******/
+		/****** md5 signature: 5b69b32485b3d9f82ae4abb9c853c3c7 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1435,8 +1435,8 @@ No available documentation.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** BRepAlgo_NormalProjection::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -1448,8 +1448,8 @@ No available documentation.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsElementary ******************/
-		/**** md5 signature: 946351933089b0d0f29c01807aef61fe ****/
+		/****** BRepAlgo_NormalProjection::IsElementary ******/
+		/****** md5 signature: 946351933089b0d0f29c01807aef61fe ******/
 		%feature("compactdefaultargs") IsElementary;
 		%feature("autodoc", "
 Parameters
@@ -1466,8 +1466,8 @@ No available documentation.
 ") IsElementary;
 		Standard_Boolean IsElementary(const Adaptor3d_Curve & C);
 
-		/****************** Projection ******************/
-		/**** md5 signature: d96e6638e8d3c59fa6809c83eda77a82 ****/
+		/****** BRepAlgo_NormalProjection::Projection ******/
+		/****** md5 signature: d96e6638e8d3c59fa6809c83eda77a82 ******/
 		%feature("compactdefaultargs") Projection;
 		%feature("autodoc", "Return
 -------
@@ -1479,8 +1479,8 @@ Returns the result.
 ") Projection;
 		const TopoDS_Shape Projection();
 
-		/****************** SetDefaultParams ******************/
-		/**** md5 signature: 41db5be74abe064c4ef67334ff98774d ****/
+		/****** BRepAlgo_NormalProjection::SetDefaultParams ******/
+		/****** md5 signature: 41db5be74abe064c4ef67334ff98774d ******/
 		%feature("compactdefaultargs") SetDefaultParams;
 		%feature("autodoc", "Return
 -------
@@ -1492,8 +1492,8 @@ Set the parameters used for computation in their default values.
 ") SetDefaultParams;
 		void SetDefaultParams();
 
-		/****************** SetLimit ******************/
-		/**** md5 signature: 2affba7d2b02ca0d9a96522f0a57d409 ****/
+		/****** BRepAlgo_NormalProjection::SetLimit ******/
+		/****** md5 signature: 2affba7d2b02ca0d9a96522f0a57d409 ******/
 		%feature("compactdefaultargs") SetLimit;
 		%feature("autodoc", "
 Parameters
@@ -1510,8 +1510,8 @@ Manage limitation of projected edges.
 ") SetLimit;
 		void SetLimit(const Standard_Boolean FaceBoundaries = Standard_True);
 
-		/****************** SetMaxDistance ******************/
-		/**** md5 signature: 7c596903416448c58cc2576fe5ca8153 ****/
+		/****** BRepAlgo_NormalProjection::SetMaxDistance ******/
+		/****** md5 signature: 7c596903416448c58cc2576fe5ca8153 ******/
 		%feature("compactdefaultargs") SetMaxDistance;
 		%feature("autodoc", "
 Parameters
@@ -1528,8 +1528,8 @@ Sets the maximum distance between target shape and shape to project. if this con
 ") SetMaxDistance;
 		void SetMaxDistance(const Standard_Real MaxDist);
 
-		/****************** SetParams ******************/
-		/**** md5 signature: 145439fe62b19bd0fd3e24e9c7dd4c4d ****/
+		/****** BRepAlgo_NormalProjection::SetParams ******/
+		/****** md5 signature: 145439fe62b19bd0fd3e24e9c7dd4c4d ******/
 		%feature("compactdefaultargs") SetParams;
 		%feature("autodoc", "
 Parameters

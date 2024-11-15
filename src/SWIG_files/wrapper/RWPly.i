@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWPLYDOCSTRING
 "RWPly module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_rwply.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwply.html"
 %enddef
 %module (package="OCC.Core", docstring=RWPLYDOCSTRING) RWPly
 
@@ -140,8 +140,8 @@ from OCC.Core.Exception import *
 ************************/
 class RWPly_CafWriter : public Standard_Transient {
 	public:
-		/****************** RWPly_CafWriter ******************/
-		/**** md5 signature: 7661adcd345800ddea46b4833fab1685 ****/
+		/****** RWPly_CafWriter::RWPly_CafWriter ******/
+		/****** md5 signature: 7661adcd345800ddea46b4833fab1685 ******/
 		%feature("compactdefaultargs") RWPly_CafWriter;
 		%feature("autodoc", "
 Parameters
@@ -158,8 +158,8 @@ Main constructor. @param[in] thefile path to output ply file.
 ") RWPly_CafWriter;
 		 RWPly_CafWriter(TCollection_AsciiString theFile);
 
-		/****************** ChangeCoordinateSystemConverter ******************/
-		/**** md5 signature: fd10c9e3345c0c11d37ccaa13f77ec3f ****/
+		/****** RWPly_CafWriter::ChangeCoordinateSystemConverter ******/
+		/****** md5 signature: fd10c9e3345c0c11d37ccaa13f77ec3f ******/
 		%feature("compactdefaultargs") ChangeCoordinateSystemConverter;
 		%feature("autodoc", "Return
 -------
@@ -171,8 +171,8 @@ Return transformation from occt to ply coordinate system.
 ") ChangeCoordinateSystemConverter;
 		RWMesh_CoordinateSystemConverter & ChangeCoordinateSystemConverter();
 
-		/****************** CoordinateSystemConverter ******************/
-		/**** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ****/
+		/****** RWPly_CafWriter::CoordinateSystemConverter ******/
+		/****** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ******/
 		%feature("compactdefaultargs") CoordinateSystemConverter;
 		%feature("autodoc", "Return
 -------
@@ -184,8 +184,8 @@ Return transformation from occt to ply coordinate system.
 ") CoordinateSystemConverter;
 		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
 
-		/****************** DefaultStyle ******************/
-		/**** md5 signature: 0cce26cdd3c825de33af4373c0cf99e8 ****/
+		/****** RWPly_CafWriter::DefaultStyle ******/
+		/****** md5 signature: 0cce26cdd3c825de33af4373c0cf99e8 ******/
 		%feature("compactdefaultargs") DefaultStyle;
 		%feature("autodoc", "Return
 -------
@@ -197,8 +197,8 @@ Return default material definition to be used for nodes with only color defined.
 ") DefaultStyle;
 		const XCAFPrs_Style & DefaultStyle();
 
-		/****************** HasColors ******************/
-		/**** md5 signature: 712f2254ec70a61013d7074011cd5139 ****/
+		/****** RWPly_CafWriter::HasColors ******/
+		/****** md5 signature: 712f2254ec70a61013d7074011cd5139 ******/
 		%feature("compactdefaultargs") HasColors;
 		%feature("autodoc", "Return
 -------
@@ -210,8 +210,8 @@ Return true if point colors should be written; true by default.
 ") HasColors;
 		bool HasColors();
 
-		/****************** HasFaceId ******************/
-		/**** md5 signature: ff6f108da4a312e26c94c269aec89a64 ****/
+		/****** RWPly_CafWriter::HasFaceId ******/
+		/****** md5 signature: ff6f108da4a312e26c94c269aec89a64 ******/
 		%feature("compactdefaultargs") HasFaceId;
 		%feature("autodoc", "Return
 -------
@@ -223,8 +223,8 @@ Return true if face id should be written as element attribute; false by default.
 ") HasFaceId;
 		bool HasFaceId();
 
-		/****************** HasNormals ******************/
-		/**** md5 signature: cebae9ec3e325d610c43710c6d20c302 ****/
+		/****** RWPly_CafWriter::HasNormals ******/
+		/****** md5 signature: cebae9ec3e325d610c43710c6d20c302 ******/
 		%feature("compactdefaultargs") HasNormals;
 		%feature("autodoc", "Return
 -------
@@ -236,8 +236,8 @@ Return true if normals should be written; true by default.
 ") HasNormals;
 		bool HasNormals();
 
-		/****************** HasPartId ******************/
-		/**** md5 signature: ce7912932485481d01bf78dff644e6b1 ****/
+		/****** RWPly_CafWriter::HasPartId ******/
+		/****** md5 signature: ce7912932485481d01bf78dff644e6b1 ******/
 		%feature("compactdefaultargs") HasPartId;
 		%feature("autodoc", "Return
 -------
@@ -249,8 +249,8 @@ Return true if part id should be written as element attribute; true by default.
 ") HasPartId;
 		bool HasPartId();
 
-		/****************** HasTexCoords ******************/
-		/**** md5 signature: f5f5a85a7931cb9e0f30d5c5519dc79e ****/
+		/****** RWPly_CafWriter::HasTexCoords ******/
+		/****** md5 signature: f5f5a85a7931cb9e0f30d5c5519dc79e ******/
 		%feature("compactdefaultargs") HasTexCoords;
 		%feature("autodoc", "Return
 -------
@@ -262,8 +262,8 @@ Return true if uv / texture coordinates should be written; false by default.
 ") HasTexCoords;
 		bool HasTexCoords();
 
-		/****************** IsDoublePrecision ******************/
-		/**** md5 signature: c768d26054fe7836c133ffb1451dd7cd ****/
+		/****** RWPly_CafWriter::IsDoublePrecision ******/
+		/****** md5 signature: c768d26054fe7836c133ffb1451dd7cd ******/
 		%feature("compactdefaultargs") IsDoublePrecision;
 		%feature("autodoc", "Return
 -------
@@ -275,8 +275,8 @@ Return true if vertex position should be stored with double floating point preci
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
-		/****************** Perform ******************/
-		/**** md5 signature: b3c8698b77ac74b0d206a2448964d2ac ****/
+		/****** RWPly_CafWriter::Perform ******/
+		/****** md5 signature: b3c8698b77ac74b0d206a2448964d2ac ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -297,8 +297,8 @@ Write ply file and associated mtl material file. triangulation data should be pr
 ") Perform;
 		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 1b913d1bf9a15143b50ebedc5b820192 ****/
+		/****** RWPly_CafWriter::Perform ******/
+		/****** md5 signature: 1b913d1bf9a15143b50ebedc5b820192 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -317,8 +317,8 @@ Write ply file and associated mtl material file. triangulation data should be pr
 ") Perform;
 		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
-		/****************** SetColors ******************/
-		/**** md5 signature: ba154b7155d7a27211ce6b222d360537 ****/
+		/****** RWPly_CafWriter::SetColors ******/
+		/****** md5 signature: ba154b7155d7a27211ce6b222d360537 ******/
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "
 Parameters
@@ -335,8 +335,8 @@ Set if point colors should be written.
 ") SetColors;
 		void SetColors(bool theToWrite);
 
-		/****************** SetCoordinateSystemConverter ******************/
-		/**** md5 signature: 8488d2b612c66076826cc33d2ac72536 ****/
+		/****** RWPly_CafWriter::SetCoordinateSystemConverter ******/
+		/****** md5 signature: 8488d2b612c66076826cc33d2ac72536 ******/
 		%feature("compactdefaultargs") SetCoordinateSystemConverter;
 		%feature("autodoc", "
 Parameters
@@ -353,8 +353,8 @@ Set transformation from occt to ply coordinate system.
 ") SetCoordinateSystemConverter;
 		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
 
-		/****************** SetDefaultStyle ******************/
-		/**** md5 signature: 69b73a5756eee96becb5ddbe7670a837 ****/
+		/****** RWPly_CafWriter::SetDefaultStyle ******/
+		/****** md5 signature: 69b73a5756eee96becb5ddbe7670a837 ******/
 		%feature("compactdefaultargs") SetDefaultStyle;
 		%feature("autodoc", "
 Parameters
@@ -371,8 +371,8 @@ Set default material definition to be used for nodes with only color defined.
 ") SetDefaultStyle;
 		void SetDefaultStyle(const XCAFPrs_Style & theStyle);
 
-		/****************** SetDoublePrecision ******************/
-		/**** md5 signature: 87f899aebadbaf3c77ac480419c2a513 ****/
+		/****** RWPly_CafWriter::SetDoublePrecision ******/
+		/****** md5 signature: 87f899aebadbaf3c77ac480419c2a513 ******/
 		%feature("compactdefaultargs") SetDoublePrecision;
 		%feature("autodoc", "
 Parameters
@@ -389,8 +389,8 @@ Set if vertex position should be stored with double floating point precision.
 ") SetDoublePrecision;
 		void SetDoublePrecision(bool theDoublePrec);
 
-		/****************** SetFaceId ******************/
-		/**** md5 signature: ef237c04b3b19f455778705d5f7bd51c ****/
+		/****** RWPly_CafWriter::SetFaceId ******/
+		/****** md5 signature: ef237c04b3b19f455778705d5f7bd51c ******/
 		%feature("compactdefaultargs") SetFaceId;
 		%feature("autodoc", "
 Parameters
@@ -407,8 +407,8 @@ Set if face id should be written as element attribute; false by default. cannot 
 ") SetFaceId;
 		void SetFaceId(bool theSurfId);
 
-		/****************** SetNormals ******************/
-		/**** md5 signature: c17e8893570a40ab30ed9c9800b14305 ****/
+		/****** RWPly_CafWriter::SetNormals ******/
+		/****** md5 signature: c17e8893570a40ab30ed9c9800b14305 ******/
 		%feature("compactdefaultargs") SetNormals;
 		%feature("autodoc", "
 Parameters
@@ -425,8 +425,8 @@ Set if normals are defined.
 ") SetNormals;
 		void SetNormals(const bool theHasNormals);
 
-		/****************** SetPartId ******************/
-		/**** md5 signature: 80dd08549ed4fc61f3bd1130862f0b61 ****/
+		/****** RWPly_CafWriter::SetPartId ******/
+		/****** md5 signature: 80dd08549ed4fc61f3bd1130862f0b61 ******/
 		%feature("compactdefaultargs") SetPartId;
 		%feature("autodoc", "
 Parameters
@@ -443,8 +443,8 @@ Set if part id should be written as element attribute; false by default. cannot 
 ") SetPartId;
 		void SetPartId(bool theSurfId);
 
-		/****************** SetTexCoords ******************/
-		/**** md5 signature: 1ccc8f9785a944bcf850c64e7095429d ****/
+		/****** RWPly_CafWriter::SetTexCoords ******/
+		/****** md5 signature: 1ccc8f9785a944bcf850c64e7095429d ******/
 		%feature("compactdefaultargs") SetTexCoords;
 		%feature("autodoc", "
 Parameters
@@ -479,8 +479,8 @@ class RWPly_ConfigurationNode : public DE_ConfigurationNode {
 	public:
 		class RWPly_InternalSection {};
 		RWPly_InternalSection InternalParameters;
-		/****************** RWPly_ConfigurationNode ******************/
-		/**** md5 signature: 122eb8f7fe95688fbf89fba50434510b ****/
+		/****** RWPly_ConfigurationNode::RWPly_ConfigurationNode ******/
+		/****** md5 signature: 122eb8f7fe95688fbf89fba50434510b ******/
 		%feature("compactdefaultargs") RWPly_ConfigurationNode;
 		%feature("autodoc", "Return
 -------
@@ -492,8 +492,8 @@ Initializes all field by default.
 ") RWPly_ConfigurationNode;
 		 RWPly_ConfigurationNode();
 
-		/****************** RWPly_ConfigurationNode ******************/
-		/**** md5 signature: 4a8817e7dde67848475c0ea90afcfa74 ****/
+		/****** RWPly_ConfigurationNode::RWPly_ConfigurationNode ******/
+		/****** md5 signature: 4a8817e7dde67848475c0ea90afcfa74 ******/
 		%feature("compactdefaultargs") RWPly_ConfigurationNode;
 		%feature("autodoc", "
 Parameters
@@ -510,8 +510,8 @@ Copies values of all fields @param[in] thenode object to copy.
 ") RWPly_ConfigurationNode;
 		 RWPly_ConfigurationNode(const opencascade::handle<RWPly_ConfigurationNode> & theNode);
 
-		/****************** BuildProvider ******************/
-		/**** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ****/
+		/****** RWPly_ConfigurationNode::BuildProvider ******/
+		/****** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ******/
 		%feature("compactdefaultargs") BuildProvider;
 		%feature("autodoc", "Return
 -------
@@ -523,8 +523,8 @@ Creates new provider for the own format return new created provider.
 ") BuildProvider;
 		virtual opencascade::handle<DE_Provider> BuildProvider();
 
-		/****************** CheckContent ******************/
-		/**** md5 signature: 2a770b41fb754bfe0ef0260c549f4919 ****/
+		/****** RWPly_ConfigurationNode::CheckContent ******/
+		/****** md5 signature: 2a770b41fb754bfe0ef0260c549f4919 ******/
 		%feature("compactdefaultargs") CheckContent;
 		%feature("autodoc", "
 Parameters
@@ -541,8 +541,8 @@ Checks the file content to verify a format @param[in] thebuffer read stream buff
 ") CheckContent;
 		virtual bool CheckContent(const opencascade::handle<NCollection_Buffer> & theBuffer);
 
-		/****************** Copy ******************/
-		/**** md5 signature: 4559608ebdab2961e97de40732291656 ****/
+		/****** RWPly_ConfigurationNode::Copy ******/
+		/****** md5 signature: 4559608ebdab2961e97de40732291656 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "Return
 -------
@@ -554,8 +554,8 @@ Copies values of all fields return new object with the same field values.
 ") Copy;
 		virtual opencascade::handle<DE_ConfigurationNode> Copy();
 
-		/****************** GetExtensions ******************/
-		/**** md5 signature: a58fd9c22a501a38d695eed6406f94bb ****/
+		/****** RWPly_ConfigurationNode::GetExtensions ******/
+		/****** md5 signature: a58fd9c22a501a38d695eed6406f94bb ******/
 		%feature("compactdefaultargs") GetExtensions;
 		%feature("autodoc", "Return
 -------
@@ -567,8 +567,8 @@ Gets list of supported file extensions return list of extensions.
 ") GetExtensions;
 		virtual TColStd_ListOfAsciiString GetExtensions();
 
-		/****************** GetFormat ******************/
-		/**** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ****/
+		/****** RWPly_ConfigurationNode::GetFormat ******/
+		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "Return
 -------
@@ -580,8 +580,8 @@ Gets cad format name of associated provider return provider cad format.
 ") GetFormat;
 		virtual TCollection_AsciiString GetFormat();
 
-		/****************** GetVendor ******************/
-		/**** md5 signature: dec3ae3842639c0f3f7b51f11891135d ****/
+		/****** RWPly_ConfigurationNode::GetVendor ******/
+		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
 		%feature("compactdefaultargs") GetVendor;
 		%feature("autodoc", "Return
 -------
@@ -593,8 +593,8 @@ Gets provider's vendor name of associated provider return provider's vendor name
 ") GetVendor;
 		virtual TCollection_AsciiString GetVendor();
 
-		/****************** IsExportSupported ******************/
-		/**** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ****/
+		/****** RWPly_ConfigurationNode::IsExportSupported ******/
+		/****** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ******/
 		%feature("compactdefaultargs") IsExportSupported;
 		%feature("autodoc", "Return
 -------
@@ -606,8 +606,8 @@ Checks the export supporting return true if export is supported.
 ") IsExportSupported;
 		virtual bool IsExportSupported();
 
-		/****************** IsImportSupported ******************/
-		/**** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ****/
+		/****** RWPly_ConfigurationNode::IsImportSupported ******/
+		/****** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ******/
 		%feature("compactdefaultargs") IsImportSupported;
 		%feature("autodoc", "Return
 -------
@@ -619,8 +619,8 @@ Checks the import supporting return true if import is supported.
 ") IsImportSupported;
 		virtual bool IsImportSupported();
 
-		/****************** Load ******************/
-		/**** md5 signature: 994009254510d81a5f0f9a326a356850 ****/
+		/****** RWPly_ConfigurationNode::Load ******/
+		/****** md5 signature: 994009254510d81a5f0f9a326a356850 ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -637,8 +637,8 @@ Updates values according the resource @param[in] theresource input resource to u
 ") Load;
 		virtual bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
 
-		/****************** Save ******************/
-		/**** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ****/
+		/****** RWPly_ConfigurationNode::Save ******/
+		/****** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ******/
 		%feature("compactdefaultargs") Save;
 		%feature("autodoc", "Return
 -------
@@ -664,8 +664,8 @@ Writes configuration to the string return result resource string.
 *******************************/
 class RWPly_PlyWriterContext {
 	public:
-		/****************** RWPly_PlyWriterContext ******************/
-		/**** md5 signature: 0095ac9359582033889154c7b0a2951a ****/
+		/****** RWPly_PlyWriterContext::RWPly_PlyWriterContext ******/
+		/****** md5 signature: 0095ac9359582033889154c7b0a2951a ******/
 		%feature("compactdefaultargs") RWPly_PlyWriterContext;
 		%feature("autodoc", "Return
 -------
@@ -677,8 +677,8 @@ Empty constructor.
 ") RWPly_PlyWriterContext;
 		 RWPly_PlyWriterContext();
 
-		/****************** Close ******************/
-		/**** md5 signature: 72688dacad445840522982ccaf6d1fc3 ****/
+		/****** RWPly_PlyWriterContext::Close ******/
+		/****** md5 signature: 72688dacad445840522982ccaf6d1fc3 ******/
 		%feature("compactdefaultargs") Close;
 		%feature("autodoc", "
 Parameters
@@ -695,8 +695,8 @@ Correctly close the file. return false in case of writing error.
 ") Close;
 		bool Close(bool theIsAborted = false);
 
-		/****************** HasColors ******************/
-		/**** md5 signature: 712f2254ec70a61013d7074011cd5139 ****/
+		/****** RWPly_PlyWriterContext::HasColors ******/
+		/****** md5 signature: 712f2254ec70a61013d7074011cd5139 ******/
 		%feature("compactdefaultargs") HasColors;
 		%feature("autodoc", "Return
 -------
@@ -708,8 +708,8 @@ Return true if point colors should be written as vertex attribute; false by defa
 ") HasColors;
 		bool HasColors();
 
-		/****************** HasNormals ******************/
-		/**** md5 signature: cebae9ec3e325d610c43710c6d20c302 ****/
+		/****** RWPly_PlyWriterContext::HasNormals ******/
+		/****** md5 signature: cebae9ec3e325d610c43710c6d20c302 ******/
 		%feature("compactdefaultargs") HasNormals;
 		%feature("autodoc", "Return
 -------
@@ -721,8 +721,8 @@ Return true if normals should be written as vertex attribute; false by default.
 ") HasNormals;
 		bool HasNormals();
 
-		/****************** HasSurfaceId ******************/
-		/**** md5 signature: 06476969015b7cfc83bfb928b3eaadfb ****/
+		/****** RWPly_PlyWriterContext::HasSurfaceId ******/
+		/****** md5 signature: 06476969015b7cfc83bfb928b3eaadfb ******/
 		%feature("compactdefaultargs") HasSurfaceId;
 		%feature("autodoc", "Return
 -------
@@ -734,8 +734,8 @@ Return true if surface id should be written as element attribute; false by defau
 ") HasSurfaceId;
 		bool HasSurfaceId();
 
-		/****************** HasTexCoords ******************/
-		/**** md5 signature: f5f5a85a7931cb9e0f30d5c5519dc79e ****/
+		/****** RWPly_PlyWriterContext::HasTexCoords ******/
+		/****** md5 signature: f5f5a85a7931cb9e0f30d5c5519dc79e ******/
 		%feature("compactdefaultargs") HasTexCoords;
 		%feature("autodoc", "Return
 -------
@@ -747,8 +747,8 @@ Return true if uv / texture coordinates should be written as vertex attribute; f
 ") HasTexCoords;
 		bool HasTexCoords();
 
-		/****************** IsDoublePrecision ******************/
-		/**** md5 signature: c768d26054fe7836c133ffb1451dd7cd ****/
+		/****** RWPly_PlyWriterContext::IsDoublePrecision ******/
+		/****** md5 signature: c768d26054fe7836c133ffb1451dd7cd ******/
 		%feature("compactdefaultargs") IsDoublePrecision;
 		%feature("autodoc", "Return
 -------
@@ -760,8 +760,8 @@ Return true if vertex position should be stored with double floating point preci
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
-		/****************** IsOpened ******************/
-		/**** md5 signature: d6d5671acf3a396e5229c08ea66ce77f ****/
+		/****** RWPly_PlyWriterContext::IsOpened ******/
+		/****** md5 signature: d6d5671acf3a396e5229c08ea66ce77f ******/
 		%feature("compactdefaultargs") IsOpened;
 		%feature("autodoc", "Return
 -------
@@ -773,8 +773,8 @@ Return true if file has been opened.
 ") IsOpened;
 		bool IsOpened();
 
-		/****************** NbWrittenElements ******************/
-		/**** md5 signature: ecc0b264e1a3bb8d301c86ecffb2c674 ****/
+		/****** RWPly_PlyWriterContext::NbWrittenElements ******/
+		/****** md5 signature: ecc0b264e1a3bb8d301c86ecffb2c674 ******/
 		%feature("compactdefaultargs") NbWrittenElements;
 		%feature("autodoc", "Return
 -------
@@ -786,8 +786,8 @@ Return number of written elements.
 ") NbWrittenElements;
 		Standard_Integer NbWrittenElements();
 
-		/****************** NbWrittenVertices ******************/
-		/**** md5 signature: 458f3601ac5013f5a9e9bddd66fefbf5 ****/
+		/****** RWPly_PlyWriterContext::NbWrittenVertices ******/
+		/****** md5 signature: 458f3601ac5013f5a9e9bddd66fefbf5 ******/
 		%feature("compactdefaultargs") NbWrittenVertices;
 		%feature("autodoc", "Return
 -------
@@ -799,8 +799,8 @@ Return number of written vertices.
 ") NbWrittenVertices;
 		Standard_Integer NbWrittenVertices();
 
-		/****************** SetColors ******************/
-		/**** md5 signature: ba154b7155d7a27211ce6b222d360537 ****/
+		/****** RWPly_PlyWriterContext::SetColors ******/
+		/****** md5 signature: ba154b7155d7a27211ce6b222d360537 ******/
 		%feature("compactdefaultargs") SetColors;
 		%feature("autodoc", "
 Parameters
@@ -817,8 +817,8 @@ Set if point colors should be written.
 ") SetColors;
 		void SetColors(bool theToWrite);
 
-		/****************** SetDoublePrecision ******************/
-		/**** md5 signature: 87f899aebadbaf3c77ac480419c2a513 ****/
+		/****** RWPly_PlyWriterContext::SetDoublePrecision ******/
+		/****** md5 signature: 87f899aebadbaf3c77ac480419c2a513 ******/
 		%feature("compactdefaultargs") SetDoublePrecision;
 		%feature("autodoc", "
 Parameters
@@ -835,8 +835,8 @@ Set if vertex position should be stored with double floating point precision.
 ") SetDoublePrecision;
 		void SetDoublePrecision(bool theDoublePrec);
 
-		/****************** SetNormals ******************/
-		/**** md5 signature: c17e8893570a40ab30ed9c9800b14305 ****/
+		/****** RWPly_PlyWriterContext::SetNormals ******/
+		/****** md5 signature: c17e8893570a40ab30ed9c9800b14305 ******/
 		%feature("compactdefaultargs") SetNormals;
 		%feature("autodoc", "
 Parameters
@@ -853,8 +853,8 @@ Set if normals should be written.
 ") SetNormals;
 		void SetNormals(const bool theHasNormals);
 
-		/****************** SetSurfaceId ******************/
-		/**** md5 signature: dcafc2be1c309fec0b8f815a88dcdca3 ****/
+		/****** RWPly_PlyWriterContext::SetSurfaceId ******/
+		/****** md5 signature: dcafc2be1c309fec0b8f815a88dcdca3 ******/
 		%feature("compactdefaultargs") SetSurfaceId;
 		%feature("autodoc", "
 Parameters
@@ -871,8 +871,8 @@ Set if surface id should be written as element attribute; false by default.
 ") SetSurfaceId;
 		void SetSurfaceId(bool theSurfId);
 
-		/****************** SetSurfaceId ******************/
-		/**** md5 signature: ed8fc26aef086d397edb955a4204f8df ****/
+		/****** RWPly_PlyWriterContext::SetSurfaceId ******/
+		/****** md5 signature: ed8fc26aef086d397edb955a4204f8df ******/
 		%feature("compactdefaultargs") SetSurfaceId;
 		%feature("autodoc", "
 Parameters
@@ -889,8 +889,8 @@ Set surface id to write with element.
 ") SetSurfaceId;
 		void SetSurfaceId(Standard_Integer theSurfId);
 
-		/****************** SetTexCoords ******************/
-		/**** md5 signature: 1ccc8f9785a944bcf850c64e7095429d ****/
+		/****** RWPly_PlyWriterContext::SetTexCoords ******/
+		/****** md5 signature: 1ccc8f9785a944bcf850c64e7095429d ******/
 		%feature("compactdefaultargs") SetTexCoords;
 		%feature("autodoc", "
 Parameters
@@ -907,8 +907,8 @@ Set if uv / texture coordinates should be written.
 ") SetTexCoords;
 		void SetTexCoords(const bool theHasTexCoords);
 
-		/****************** SetVertexOffset ******************/
-		/**** md5 signature: 5670959c498d4f9994771a46e7478e48 ****/
+		/****** RWPly_PlyWriterContext::SetVertexOffset ******/
+		/****** md5 signature: 5670959c498d4f9994771a46e7478e48 ******/
 		%feature("compactdefaultargs") SetVertexOffset;
 		%feature("autodoc", "
 Parameters
@@ -925,8 +925,8 @@ Set vertex offset to be applied to element indices.
 ") SetVertexOffset;
 		void SetVertexOffset(Standard_Integer theOffset);
 
-		/****************** SurfaceId ******************/
-		/**** md5 signature: ad3e324fc8217dd4e403e63f2070e2a3 ****/
+		/****** RWPly_PlyWriterContext::SurfaceId ******/
+		/****** md5 signature: ad3e324fc8217dd4e403e63f2070e2a3 ******/
 		%feature("compactdefaultargs") SurfaceId;
 		%feature("autodoc", "Return
 -------
@@ -938,8 +938,8 @@ Return surface id to write with element; 0 by default.
 ") SurfaceId;
 		Standard_Integer SurfaceId();
 
-		/****************** VertexOffset ******************/
-		/**** md5 signature: 73942f395a32c5fba1ef0d292a102ade ****/
+		/****** RWPly_PlyWriterContext::VertexOffset ******/
+		/****** md5 signature: 73942f395a32c5fba1ef0d292a102ade ******/
 		%feature("compactdefaultargs") VertexOffset;
 		%feature("autodoc", "Return
 -------
@@ -951,8 +951,8 @@ Return vertex offset to be applied to element indices; 0 by default.
 ") VertexOffset;
 		Standard_Integer VertexOffset();
 
-		/****************** WriteHeader ******************/
-		/**** md5 signature: 69c697919712d5a86d0d3a637c7dfb3a ****/
+		/****** RWPly_PlyWriterContext::WriteHeader ******/
+		/****** md5 signature: 69c697919712d5a86d0d3a637c7dfb3a ******/
 		%feature("compactdefaultargs") WriteHeader;
 		%feature("autodoc", "
 Parameters
@@ -971,8 +971,8 @@ Write the header. @param[in] thenbnodes number of vertex nodes @param[in] thenbe
 ") WriteHeader;
 		bool WriteHeader(const Standard_Integer theNbNodes, const Standard_Integer theNbElems, const TColStd_IndexedDataMapOfStringString & theFileInfo);
 
-		/****************** WriteQuad ******************/
-		/**** md5 signature: 6ec1ecdd2b0fdcce6c29fc362c45dad1 ****/
+		/****** RWPly_PlyWriterContext::WriteQuad ******/
+		/****** md5 signature: 6ec1ecdd2b0fdcce6c29fc362c45dad1 ******/
 		%feature("compactdefaultargs") WriteQuad;
 		%feature("autodoc", "
 Parameters
@@ -989,8 +989,8 @@ Writing a quad.
 ") WriteQuad;
 		bool WriteQuad(const Graphic3d_Vec4i & theQuad);
 
-		/****************** WriteTriangle ******************/
-		/**** md5 signature: 7386d86fd240dee0a67bac21ae95cc21 ****/
+		/****** RWPly_PlyWriterContext::WriteTriangle ******/
+		/****** md5 signature: 7386d86fd240dee0a67bac21ae95cc21 ******/
 		%feature("compactdefaultargs") WriteTriangle;
 		%feature("autodoc", "
 Parameters
@@ -1007,8 +1007,8 @@ Writing a triangle.
 ") WriteTriangle;
 		bool WriteTriangle(const Graphic3d_Vec3i & theTri);
 
-		/****************** WriteVertex ******************/
-		/**** md5 signature: 7558b6ad6baeec647d11f7cdfc88e01f ****/
+		/****** RWPly_PlyWriterContext::WriteVertex ******/
+		/****** md5 signature: 7558b6ad6baeec647d11f7cdfc88e01f ******/
 		%feature("compactdefaultargs") WriteVertex;
 		%feature("autodoc", "
 Parameters
@@ -1046,8 +1046,8 @@ Write single point with all attributes. @param[in] thepoint 3d point coordinates
 ***********************/
 class RWPly_Provider : public DE_Provider {
 	public:
-		/****************** RWPly_Provider ******************/
-		/**** md5 signature: 6771db1194c61e7bef3f10a1cc580658 ****/
+		/****** RWPly_Provider::RWPly_Provider ******/
+		/****** md5 signature: 6771db1194c61e7bef3f10a1cc580658 ******/
 		%feature("compactdefaultargs") RWPly_Provider;
 		%feature("autodoc", "Return
 -------
@@ -1059,8 +1059,8 @@ Default constructor configure translation process with global configuration.
 ") RWPly_Provider;
 		 RWPly_Provider();
 
-		/****************** RWPly_Provider ******************/
-		/**** md5 signature: e76197b0008bdcfe2baa88e2ac114a8a ****/
+		/****** RWPly_Provider::RWPly_Provider ******/
+		/****** md5 signature: e76197b0008bdcfe2baa88e2ac114a8a ******/
 		%feature("compactdefaultargs") RWPly_Provider;
 		%feature("autodoc", "
 Parameters
@@ -1077,8 +1077,8 @@ Configure translation process @param[in] thenode object to copy.
 ") RWPly_Provider;
 		 RWPly_Provider(const opencascade::handle<DE_ConfigurationNode> & theNode);
 
-		/****************** GetFormat ******************/
-		/**** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ****/
+		/****** RWPly_Provider::GetFormat ******/
+		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
 		%feature("compactdefaultargs") GetFormat;
 		%feature("autodoc", "Return
 -------
@@ -1090,8 +1090,8 @@ Gets cad format name of associated provider return provider cad format.
 ") GetFormat;
 		virtual TCollection_AsciiString GetFormat();
 
-		/****************** GetVendor ******************/
-		/**** md5 signature: dec3ae3842639c0f3f7b51f11891135d ****/
+		/****** RWPly_Provider::GetVendor ******/
+		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
 		%feature("compactdefaultargs") GetVendor;
 		%feature("autodoc", "Return
 -------
@@ -1103,8 +1103,8 @@ Gets provider's vendor name of associated provider return provider's vendor name
 ") GetVendor;
 		virtual TCollection_AsciiString GetVendor();
 
-		/****************** Write ******************/
-		/**** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ****/
+		/****** RWPly_Provider::Write ******/
+		/****** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1124,8 +1124,8 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 ") Write;
 		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ****/
+		/****** RWPly_Provider::Write ******/
+		/****** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1144,8 +1144,8 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 ") Write;
 		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ****/
+		/****** RWPly_Provider::Write ******/
+		/****** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -1165,8 +1165,8 @@ Writes a cad file, according internal configuration @param[in] thepath path to t
 ") Write;
 		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Write ******************/
-		/**** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ****/
+		/****** RWPly_Provider::Write ******/
+		/****** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters

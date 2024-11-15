@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define BREPADAPTORDOCSTRING
 "BRepAdaptor module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_brepadaptor.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_brepadaptor.html"
 %enddef
 %module (package="OCC.Core", docstring=BREPADAPTORDOCSTRING) BRepAdaptor
 
@@ -110,8 +110,8 @@ typedef NCollection_Array1<BRepAdaptor_Curve> BRepAdaptor_Array1OfCurve;
 ******************************/
 class BRepAdaptor_CompCurve : public Adaptor3d_Curve {
 	public:
-		/****************** BRepAdaptor_CompCurve ******************/
-		/**** md5 signature: c1152ba591cae8b160ace1ba10d270dc ****/
+		/****** BRepAdaptor_CompCurve::BRepAdaptor_CompCurve ******/
+		/****** md5 signature: c1152ba591cae8b160ace1ba10d270dc ******/
 		%feature("compactdefaultargs") BRepAdaptor_CompCurve;
 		%feature("autodoc", "Return
 -------
@@ -123,8 +123,8 @@ Creates an undefined curve with no wire loaded.
 ") BRepAdaptor_CompCurve;
 		 BRepAdaptor_CompCurve();
 
-		/****************** BRepAdaptor_CompCurve ******************/
-		/**** md5 signature: 536f827323fa633aa2cdc2b24e992a20 ****/
+		/****** BRepAdaptor_CompCurve::BRepAdaptor_CompCurve ******/
+		/****** md5 signature: 536f827323fa633aa2cdc2b24e992a20 ******/
 		%feature("compactdefaultargs") BRepAdaptor_CompCurve;
 		%feature("autodoc", "
 Parameters
@@ -142,8 +142,8 @@ No available documentation.
 ") BRepAdaptor_CompCurve;
 		 BRepAdaptor_CompCurve(const TopoDS_Wire & W, const Standard_Boolean KnotByCurvilinearAbcissa = Standard_False);
 
-		/****************** BRepAdaptor_CompCurve ******************/
-		/**** md5 signature: d6d730d5ed59cc103614b39691bdbfd1 ****/
+		/****** BRepAdaptor_CompCurve::BRepAdaptor_CompCurve ******/
+		/****** md5 signature: d6d730d5ed59cc103614b39691bdbfd1 ******/
 		%feature("compactdefaultargs") BRepAdaptor_CompCurve;
 		%feature("autodoc", "
 Parameters
@@ -164,8 +164,8 @@ Creates a curve to access the geometry of edge <w>.
 ") BRepAdaptor_CompCurve;
 		 BRepAdaptor_CompCurve(const TopoDS_Wire & W, const Standard_Boolean KnotByCurvilinearAbcissa, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
-		/****************** BSpline ******************/
-		/**** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ****/
+		/****** BRepAdaptor_CompCurve::BSpline ******/
+		/****** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -177,8 +177,8 @@ No available documentation.
 ") BSpline;
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
-		/****************** Bezier ******************/
-		/**** md5 signature: 092280fc6ee0e7104fbbe3460d73e83c ****/
+		/****** BRepAdaptor_CompCurve::Bezier ******/
+		/****** md5 signature: 092280fc6ee0e7104fbbe3460d73e83c ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -190,8 +190,8 @@ No available documentation.
 ") Bezier;
 		opencascade::handle<Geom_BezierCurve> Bezier();
 
-		/****************** Circle ******************/
-		/**** md5 signature: 5f382e7a6af009845ea6e16d54814298 ****/
+		/****** BRepAdaptor_CompCurve::Circle ******/
+		/****** md5 signature: 5f382e7a6af009845ea6e16d54814298 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -203,8 +203,8 @@ No available documentation.
 ") Circle;
 		gp_Circ Circle();
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ****/
+		/****** BRepAdaptor_CompCurve::Continuity ******/
+		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -216,8 +216,8 @@ No available documentation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ****/
+		/****** BRepAdaptor_CompCurve::D0 ******/
+		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -235,8 +235,8 @@ Computes the point of parameter u.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ****/
+		/****** BRepAdaptor_CompCurve::D1 ******/
+		/****** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -255,8 +255,8 @@ Computes the point of parameter u on the curve with its first derivative. raised
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
-		/****************** D2 ******************/
-		/**** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ****/
+		/****** BRepAdaptor_CompCurve::D2 ******/
+		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -276,8 +276,8 @@ Returns the point p of parameter u, the first and second derivatives v1 and v2. 
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ****/
+		/****** BRepAdaptor_CompCurve::D3 ******/
+		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -298,8 +298,8 @@ Returns the point p of parameter u, the first, the second and the third derivati
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** DN ******************/
-		/**** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ****/
+		/****** BRepAdaptor_CompCurve::DN ******/
+		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -317,8 +317,8 @@ The returned vector gives the value of the derivative for the order of derivatio
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
-		/****************** Degree ******************/
-		/**** md5 signature: 5ce473e72cc7bb935a667f4c839dab09 ****/
+		/****** BRepAdaptor_CompCurve::Degree ******/
+		/****** md5 signature: 5ce473e72cc7bb935a667f4c839dab09 ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -330,8 +330,8 @@ No available documentation.
 ") Degree;
 		Standard_Integer Degree();
 
-		/****************** Edge ******************/
-		/**** md5 signature: f73dfc9c9040a29acf2262eb8cd9a8ea ****/
+		/****** BRepAdaptor_CompCurve::Edge ******/
+		/****** md5 signature: f73dfc9c9040a29acf2262eb8cd9a8ea ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "
 Parameters
@@ -349,8 +349,8 @@ Returns an edge and one parameter on them corresponding to the parameter u.
 ") Edge;
 		void Edge(const Standard_Real U, TopoDS_Edge & E, Standard_Real &OutValue);
 
-		/****************** Ellipse ******************/
-		/**** md5 signature: e9a77f14e9bbca29370202de404ea9c1 ****/
+		/****** BRepAdaptor_CompCurve::Ellipse ******/
+		/****** md5 signature: e9a77f14e9bbca29370202de404ea9c1 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -362,8 +362,8 @@ No available documentation.
 ") Ellipse;
 		gp_Elips Ellipse();
 
-		/****************** FirstParameter ******************/
-		/**** md5 signature: eb9ebe94572bd67588fe8811eac261fb ****/
+		/****** BRepAdaptor_CompCurve::FirstParameter ******/
+		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
@@ -375,8 +375,8 @@ No available documentation.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
-		/****************** GetType ******************/
-		/**** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ****/
+		/****** BRepAdaptor_CompCurve::GetType ******/
+		/****** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -388,8 +388,8 @@ No available documentation.
 ") GetType;
 		GeomAbs_CurveType GetType();
 
-		/****************** Hyperbola ******************/
-		/**** md5 signature: a96ca49b2ad017b35bb09d0b86cb690d ****/
+		/****** BRepAdaptor_CompCurve::Hyperbola ******/
+		/****** md5 signature: a96ca49b2ad017b35bb09d0b86cb690d ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -401,8 +401,8 @@ No available documentation.
 ") Hyperbola;
 		gp_Hypr Hyperbola();
 
-		/****************** Initialize ******************/
-		/**** md5 signature: 084e04b2711058308ee9c6ffc8589f6f ****/
+		/****** BRepAdaptor_CompCurve::Initialize ******/
+		/****** md5 signature: 084e04b2711058308ee9c6ffc8589f6f ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -420,8 +420,8 @@ Sets the wire <w>.
 ") Initialize;
 		void Initialize(const TopoDS_Wire & W, const Standard_Boolean KnotByCurvilinearAbcissa);
 
-		/****************** Initialize ******************/
-		/**** md5 signature: 3f7ce5fd6aa0f7b3bdaf45694f156692 ****/
+		/****** BRepAdaptor_CompCurve::Initialize ******/
+		/****** md5 signature: 3f7ce5fd6aa0f7b3bdaf45694f156692 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -442,8 +442,8 @@ Sets wire <w> and trimmed parameter.
 ") Initialize;
 		void Initialize(const TopoDS_Wire & W, const Standard_Boolean KnotByCurvilinearAbcissa, const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
+		/****** BRepAdaptor_CompCurve::Intervals ******/
+		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -461,8 +461,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** IsClosed ******************/
-		/**** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ****/
+		/****** BRepAdaptor_CompCurve::IsClosed ******/
+		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -474,8 +474,8 @@ No available documentation.
 ") IsClosed;
 		Standard_Boolean IsClosed();
 
-		/****************** IsPeriodic ******************/
-		/**** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ****/
+		/****** BRepAdaptor_CompCurve::IsPeriodic ******/
+		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -487,8 +487,8 @@ No available documentation.
 ") IsPeriodic;
 		Standard_Boolean IsPeriodic();
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 82ca56fad113156125f40128b25c0d8e ****/
+		/****** BRepAdaptor_CompCurve::IsRational ******/
+		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -500,8 +500,8 @@ No available documentation.
 ") IsRational;
 		Standard_Boolean IsRational();
 
-		/****************** LastParameter ******************/
-		/**** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ****/
+		/****** BRepAdaptor_CompCurve::LastParameter ******/
+		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
@@ -513,8 +513,8 @@ No available documentation.
 ") LastParameter;
 		Standard_Real LastParameter();
 
-		/****************** Line ******************/
-		/**** md5 signature: cf28f5541e4e744dd8038e2a9ac75a8f ****/
+		/****** BRepAdaptor_CompCurve::Line ******/
+		/****** md5 signature: cf28f5541e4e744dd8038e2a9ac75a8f ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -526,8 +526,8 @@ No available documentation.
 ") Line;
 		gp_Lin Line();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
+		/****** BRepAdaptor_CompCurve::NbIntervals ******/
+		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -544,8 +544,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** NbKnots ******************/
-		/**** md5 signature: 841663cbf96bec3b939f307c52df6c7c ****/
+		/****** BRepAdaptor_CompCurve::NbKnots ******/
+		/****** md5 signature: 841663cbf96bec3b939f307c52df6c7c ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -557,8 +557,8 @@ No available documentation.
 ") NbKnots;
 		Standard_Integer NbKnots();
 
-		/****************** NbPoles ******************/
-		/**** md5 signature: 52e5fadf897540545847ef59cc0ba942 ****/
+		/****** BRepAdaptor_CompCurve::NbPoles ******/
+		/****** md5 signature: 52e5fadf897540545847ef59cc0ba942 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -570,8 +570,8 @@ No available documentation.
 ") NbPoles;
 		Standard_Integer NbPoles();
 
-		/****************** Parabola ******************/
-		/**** md5 signature: 68860abab63fd184ea5c7eb97f0762c1 ****/
+		/****** BRepAdaptor_CompCurve::Parabola ******/
+		/****** md5 signature: 68860abab63fd184ea5c7eb97f0762c1 ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "Return
 -------
@@ -583,8 +583,8 @@ No available documentation.
 ") Parabola;
 		gp_Parab Parabola();
 
-		/****************** Period ******************/
-		/**** md5 signature: 88909a321398632744c0d6841580c626 ****/
+		/****** BRepAdaptor_CompCurve::Period ******/
+		/****** md5 signature: 88909a321398632744c0d6841580c626 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
@@ -596,8 +596,8 @@ No available documentation.
 ") Period;
 		Standard_Real Period();
 
-		/****************** Resolution ******************/
-		/**** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ****/
+		/****** BRepAdaptor_CompCurve::Resolution ******/
+		/****** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -614,8 +614,8 @@ Returns the parametric resolution.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ****/
+		/****** BRepAdaptor_CompCurve::ShallowCopy ******/
+		/****** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -627,8 +627,8 @@ Shallow copy of adaptor.
 ") ShallowCopy;
 		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
 
-		/****************** Trim ******************/
-		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
+		/****** BRepAdaptor_CompCurve::Trim ******/
+		/****** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
@@ -647,8 +647,8 @@ Returns a curve equivalent of <self> between parameters <first> and <last>. <tol
 ") Trim;
 		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
-		/****************** Value ******************/
-		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
+		/****** BRepAdaptor_CompCurve::Value ******/
+		/****** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -665,8 +665,8 @@ Computes the point of parameter u on the curve.
 ") Value;
 		gp_Pnt Value(const Standard_Real U);
 
-		/****************** Wire ******************/
-		/**** md5 signature: 066765b94f5225dad05ab95ae3f8b503 ****/
+		/****** BRepAdaptor_CompCurve::Wire ******/
+		/****** md5 signature: 066765b94f5225dad05ab95ae3f8b503 ******/
 		%feature("compactdefaultargs") Wire;
 		%feature("autodoc", "Return
 -------
@@ -694,8 +694,8 @@ Returns the wire.
 **************************/
 class BRepAdaptor_Curve : public Adaptor3d_Curve {
 	public:
-		/****************** BRepAdaptor_Curve ******************/
-		/**** md5 signature: 36916a7ac88f4dc1e560c43c25da0671 ****/
+		/****** BRepAdaptor_Curve::BRepAdaptor_Curve ******/
+		/****** md5 signature: 36916a7ac88f4dc1e560c43c25da0671 ******/
 		%feature("compactdefaultargs") BRepAdaptor_Curve;
 		%feature("autodoc", "Return
 -------
@@ -707,8 +707,8 @@ Creates an undefined curve with no edge loaded.
 ") BRepAdaptor_Curve;
 		 BRepAdaptor_Curve();
 
-		/****************** BRepAdaptor_Curve ******************/
-		/**** md5 signature: 740e451b59f60726263aab98ec1f1316 ****/
+		/****** BRepAdaptor_Curve::BRepAdaptor_Curve ******/
+		/****** md5 signature: 740e451b59f60726263aab98ec1f1316 ******/
 		%feature("compactdefaultargs") BRepAdaptor_Curve;
 		%feature("autodoc", "
 Parameters
@@ -725,8 +725,8 @@ Creates a curve to access the geometry of edge <e>.
 ") BRepAdaptor_Curve;
 		 BRepAdaptor_Curve(const TopoDS_Edge & E);
 
-		/****************** BRepAdaptor_Curve ******************/
-		/**** md5 signature: c4ad88c445ddb172d9a61b5a673cf024 ****/
+		/****** BRepAdaptor_Curve::BRepAdaptor_Curve ******/
+		/****** md5 signature: c4ad88c445ddb172d9a61b5a673cf024 ******/
 		%feature("compactdefaultargs") BRepAdaptor_Curve;
 		%feature("autodoc", "
 Parameters
@@ -744,8 +744,8 @@ Creates a curve to access the geometry of edge <e>. the geometry will be compute
 ") BRepAdaptor_Curve;
 		 BRepAdaptor_Curve(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** BSpline ******************/
-		/**** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ****/
+		/****** BRepAdaptor_Curve::BSpline ******/
+		/****** md5 signature: 3ccc0d851302bffb5de6344e3eb3e58d ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -757,8 +757,8 @@ Warning: this will make a copy of the bspline curve since it applies to it mytsr
 ") BSpline;
 		opencascade::handle<Geom_BSplineCurve> BSpline();
 
-		/****************** Bezier ******************/
-		/**** md5 signature: 092280fc6ee0e7104fbbe3460d73e83c ****/
+		/****** BRepAdaptor_Curve::Bezier ******/
+		/****** md5 signature: 092280fc6ee0e7104fbbe3460d73e83c ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -770,8 +770,8 @@ Warning: this will make a copy of the bezier curve since it applies to it mytsrf
 ") Bezier;
 		opencascade::handle<Geom_BezierCurve> Bezier();
 
-		/****************** Circle ******************/
-		/**** md5 signature: 5f382e7a6af009845ea6e16d54814298 ****/
+		/****** BRepAdaptor_Curve::Circle ******/
+		/****** md5 signature: 5f382e7a6af009845ea6e16d54814298 ******/
 		%feature("compactdefaultargs") Circle;
 		%feature("autodoc", "Return
 -------
@@ -783,8 +783,8 @@ No available documentation.
 ") Circle;
 		gp_Circ Circle();
 
-		/****************** Continuity ******************/
-		/**** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ****/
+		/****** BRepAdaptor_Curve::Continuity ******/
+		/****** md5 signature: 9381b370dfdd50af7f1b79ce202f0c6f ******/
 		%feature("compactdefaultargs") Continuity;
 		%feature("autodoc", "Return
 -------
@@ -796,8 +796,8 @@ No available documentation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
-		/****************** Curve ******************/
-		/**** md5 signature: f572f2bd5ed01577163560ac880dd538 ****/
+		/****** BRepAdaptor_Curve::Curve ******/
+		/****** md5 signature: f572f2bd5ed01577163560ac880dd538 ******/
 		%feature("compactdefaultargs") Curve;
 		%feature("autodoc", "Return
 -------
@@ -809,8 +809,8 @@ Returns the curve of the edge.
 ") Curve;
 		GeomAdaptor_Curve Curve();
 
-		/****************** CurveOnSurface ******************/
-		/**** md5 signature: f06c54ea203f128f90114fb7bd684518 ****/
+		/****** BRepAdaptor_Curve::CurveOnSurface ******/
+		/****** md5 signature: f06c54ea203f128f90114fb7bd684518 ******/
 		%feature("compactdefaultargs") CurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -822,8 +822,8 @@ Returns the curveonsurface of the edge.
 ") CurveOnSurface;
 		Adaptor3d_CurveOnSurface CurveOnSurface();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ****/
+		/****** BRepAdaptor_Curve::D0 ******/
+		/****** md5 signature: 5f7d08d8d17afc516aac9ef64bf9711f ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -841,8 +841,8 @@ Computes the point of parameter u.
 ") D0;
 		void D0(const Standard_Real U, gp_Pnt & P);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ****/
+		/****** BRepAdaptor_Curve::D1 ******/
+		/****** md5 signature: 1dc830ec49a945a61cde5e5c027b78d7 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -861,8 +861,8 @@ Computes the point of parameter u on the curve with its first derivative. raised
 ") D1;
 		void D1(const Standard_Real U, gp_Pnt & P, gp_Vec & V);
 
-		/****************** D2 ******************/
-		/**** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ****/
+		/****** BRepAdaptor_Curve::D2 ******/
+		/****** md5 signature: a694b4ba68c0fd83fbac79f945cb5d8c ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -882,8 +882,8 @@ Returns the point p of parameter u, the first and second derivatives v1 and v2. 
 ") D2;
 		void D2(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
-		/****************** D3 ******************/
-		/**** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ****/
+		/****** BRepAdaptor_Curve::D3 ******/
+		/****** md5 signature: cf1c3b5fe7af9d5c183c1b16b21c43f1 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -904,8 +904,8 @@ Returns the point p of parameter u, the first, the second and the third derivati
 ") D3;
 		void D3(const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
-		/****************** DN ******************/
-		/**** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ****/
+		/****** BRepAdaptor_Curve::DN ******/
+		/****** md5 signature: 0d4a3e2fc2b4b03d2a49e0796a487efb ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -923,8 +923,8 @@ The returned vector gives the value of the derivative for the order of derivatio
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Integer N);
 
-		/****************** Degree ******************/
-		/**** md5 signature: 5ce473e72cc7bb935a667f4c839dab09 ****/
+		/****** BRepAdaptor_Curve::Degree ******/
+		/****** md5 signature: 5ce473e72cc7bb935a667f4c839dab09 ******/
 		%feature("compactdefaultargs") Degree;
 		%feature("autodoc", "Return
 -------
@@ -936,8 +936,8 @@ No available documentation.
 ") Degree;
 		Standard_Integer Degree();
 
-		/****************** Edge ******************/
-		/**** md5 signature: be590cff987799d8b7c28083399d0e9f ****/
+		/****** BRepAdaptor_Curve::Edge ******/
+		/****** md5 signature: be590cff987799d8b7c28083399d0e9f ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -949,8 +949,8 @@ Returns the edge.
 ") Edge;
 		const TopoDS_Edge Edge();
 
-		/****************** Ellipse ******************/
-		/**** md5 signature: e9a77f14e9bbca29370202de404ea9c1 ****/
+		/****** BRepAdaptor_Curve::Ellipse ******/
+		/****** md5 signature: e9a77f14e9bbca29370202de404ea9c1 ******/
 		%feature("compactdefaultargs") Ellipse;
 		%feature("autodoc", "Return
 -------
@@ -962,8 +962,8 @@ No available documentation.
 ") Ellipse;
 		gp_Elips Ellipse();
 
-		/****************** FirstParameter ******************/
-		/**** md5 signature: eb9ebe94572bd67588fe8811eac261fb ****/
+		/****** BRepAdaptor_Curve::FirstParameter ******/
+		/****** md5 signature: eb9ebe94572bd67588fe8811eac261fb ******/
 		%feature("compactdefaultargs") FirstParameter;
 		%feature("autodoc", "Return
 -------
@@ -975,8 +975,8 @@ No available documentation.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
-		/****************** GetType ******************/
-		/**** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ****/
+		/****** BRepAdaptor_Curve::GetType ******/
+		/****** md5 signature: 0ad61dcbb5497908c1b536e766f0fcb9 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -988,8 +988,8 @@ No available documentation.
 ") GetType;
 		GeomAbs_CurveType GetType();
 
-		/****************** Hyperbola ******************/
-		/**** md5 signature: a96ca49b2ad017b35bb09d0b86cb690d ****/
+		/****** BRepAdaptor_Curve::Hyperbola ******/
+		/****** md5 signature: a96ca49b2ad017b35bb09d0b86cb690d ******/
 		%feature("compactdefaultargs") Hyperbola;
 		%feature("autodoc", "Return
 -------
@@ -1001,8 +1001,8 @@ No available documentation.
 ") Hyperbola;
 		gp_Hypr Hyperbola();
 
-		/****************** Initialize ******************/
-		/**** md5 signature: b0b8cb0790e5e63c5a8b3b133b757731 ****/
+		/****** BRepAdaptor_Curve::Initialize ******/
+		/****** md5 signature: b0b8cb0790e5e63c5a8b3b133b757731 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -1019,8 +1019,8 @@ Sets the curve <self> to access the geometry of edge <e>.
 ") Initialize;
 		void Initialize(const TopoDS_Edge & E);
 
-		/****************** Initialize ******************/
-		/**** md5 signature: cf258179577adbc75b4efbc5847934f6 ****/
+		/****** BRepAdaptor_Curve::Initialize ******/
+		/****** md5 signature: cf258179577adbc75b4efbc5847934f6 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -1038,8 +1038,8 @@ Sets the curve <self> to access the geometry of edge <e>. the geometry will be c
 ") Initialize;
 		void Initialize(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** Intervals ******************/
-		/**** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ****/
+		/****** BRepAdaptor_Curve::Intervals ******/
+		/****** md5 signature: fc573cb56cf1a9c05ee189fd913ff6f5 ******/
 		%feature("compactdefaultargs") Intervals;
 		%feature("autodoc", "
 Parameters
@@ -1057,8 +1057,8 @@ Stores in <t> the parameters bounding the intervals of continuity <s>. //! the a
 ") Intervals;
 		void Intervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** Is3DCurve ******************/
-		/**** md5 signature: f5d6aa26c69fccbb40636aa757b15284 ****/
+		/****** BRepAdaptor_Curve::Is3DCurve ******/
+		/****** md5 signature: f5d6aa26c69fccbb40636aa757b15284 ******/
 		%feature("compactdefaultargs") Is3DCurve;
 		%feature("autodoc", "Return
 -------
@@ -1070,8 +1070,8 @@ Returns true if the edge geometry is computed from a 3d curve.
 ") Is3DCurve;
 		Standard_Boolean Is3DCurve();
 
-		/****************** IsClosed ******************/
-		/**** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ****/
+		/****** BRepAdaptor_Curve::IsClosed ******/
+		/****** md5 signature: 00978070ec4cb5f00d1d002a8d5d3763 ******/
 		%feature("compactdefaultargs") IsClosed;
 		%feature("autodoc", "Return
 -------
@@ -1083,8 +1083,8 @@ No available documentation.
 ") IsClosed;
 		Standard_Boolean IsClosed();
 
-		/****************** IsCurveOnSurface ******************/
-		/**** md5 signature: 3910efc6129939aa50e8be5bbd9c78d4 ****/
+		/****** BRepAdaptor_Curve::IsCurveOnSurface ******/
+		/****** md5 signature: 3910efc6129939aa50e8be5bbd9c78d4 ******/
 		%feature("compactdefaultargs") IsCurveOnSurface;
 		%feature("autodoc", "Return
 -------
@@ -1096,8 +1096,8 @@ Returns true if the edge geometry is computed from a pcurve on a surface.
 ") IsCurveOnSurface;
 		Standard_Boolean IsCurveOnSurface();
 
-		/****************** IsPeriodic ******************/
-		/**** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ****/
+		/****** BRepAdaptor_Curve::IsPeriodic ******/
+		/****** md5 signature: 15e3ccfd3ad4ae42959489f7f64aa8ca ******/
 		%feature("compactdefaultargs") IsPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1109,8 +1109,8 @@ No available documentation.
 ") IsPeriodic;
 		Standard_Boolean IsPeriodic();
 
-		/****************** IsRational ******************/
-		/**** md5 signature: 82ca56fad113156125f40128b25c0d8e ****/
+		/****** BRepAdaptor_Curve::IsRational ******/
+		/****** md5 signature: 82ca56fad113156125f40128b25c0d8e ******/
 		%feature("compactdefaultargs") IsRational;
 		%feature("autodoc", "Return
 -------
@@ -1122,8 +1122,8 @@ No available documentation.
 ") IsRational;
 		Standard_Boolean IsRational();
 
-		/****************** LastParameter ******************/
-		/**** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ****/
+		/****** BRepAdaptor_Curve::LastParameter ******/
+		/****** md5 signature: cb4925a2d4a451ceec8f6ad486530f9c ******/
 		%feature("compactdefaultargs") LastParameter;
 		%feature("autodoc", "Return
 -------
@@ -1135,8 +1135,8 @@ No available documentation.
 ") LastParameter;
 		Standard_Real LastParameter();
 
-		/****************** Line ******************/
-		/**** md5 signature: cf28f5541e4e744dd8038e2a9ac75a8f ****/
+		/****** BRepAdaptor_Curve::Line ******/
+		/****** md5 signature: cf28f5541e4e744dd8038e2a9ac75a8f ******/
 		%feature("compactdefaultargs") Line;
 		%feature("autodoc", "Return
 -------
@@ -1148,8 +1148,8 @@ No available documentation.
 ") Line;
 		gp_Lin Line();
 
-		/****************** NbIntervals ******************/
-		/**** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ****/
+		/****** BRepAdaptor_Curve::NbIntervals ******/
+		/****** md5 signature: 8ce4f61bff96d1ce0784028b47edd8dc ******/
 		%feature("compactdefaultargs") NbIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1166,8 +1166,8 @@ Returns the number of intervals for continuity <s>. may be one if continuity(me)
 ") NbIntervals;
 		Standard_Integer NbIntervals(const GeomAbs_Shape S);
 
-		/****************** NbKnots ******************/
-		/**** md5 signature: 841663cbf96bec3b939f307c52df6c7c ****/
+		/****** BRepAdaptor_Curve::NbKnots ******/
+		/****** md5 signature: 841663cbf96bec3b939f307c52df6c7c ******/
 		%feature("compactdefaultargs") NbKnots;
 		%feature("autodoc", "Return
 -------
@@ -1179,8 +1179,8 @@ No available documentation.
 ") NbKnots;
 		Standard_Integer NbKnots();
 
-		/****************** NbPoles ******************/
-		/**** md5 signature: 52e5fadf897540545847ef59cc0ba942 ****/
+		/****** BRepAdaptor_Curve::NbPoles ******/
+		/****** md5 signature: 52e5fadf897540545847ef59cc0ba942 ******/
 		%feature("compactdefaultargs") NbPoles;
 		%feature("autodoc", "Return
 -------
@@ -1192,8 +1192,8 @@ No available documentation.
 ") NbPoles;
 		Standard_Integer NbPoles();
 
-		/****************** OffsetCurve ******************/
-		/**** md5 signature: c9712770a031ed315e762ca33ff3eddd ****/
+		/****** BRepAdaptor_Curve::OffsetCurve ******/
+		/****** md5 signature: c9712770a031ed315e762ca33ff3eddd ******/
 		%feature("compactdefaultargs") OffsetCurve;
 		%feature("autodoc", "Return
 -------
@@ -1205,8 +1205,8 @@ No available documentation.
 ") OffsetCurve;
 		opencascade::handle<Geom_OffsetCurve> OffsetCurve();
 
-		/****************** Parabola ******************/
-		/**** md5 signature: 68860abab63fd184ea5c7eb97f0762c1 ****/
+		/****** BRepAdaptor_Curve::Parabola ******/
+		/****** md5 signature: 68860abab63fd184ea5c7eb97f0762c1 ******/
 		%feature("compactdefaultargs") Parabola;
 		%feature("autodoc", "Return
 -------
@@ -1218,8 +1218,8 @@ No available documentation.
 ") Parabola;
 		gp_Parab Parabola();
 
-		/****************** Period ******************/
-		/**** md5 signature: 88909a321398632744c0d6841580c626 ****/
+		/****** BRepAdaptor_Curve::Period ******/
+		/****** md5 signature: 88909a321398632744c0d6841580c626 ******/
 		%feature("compactdefaultargs") Period;
 		%feature("autodoc", "Return
 -------
@@ -1231,8 +1231,8 @@ No available documentation.
 ") Period;
 		Standard_Real Period();
 
-		/****************** Reset ******************/
-		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
+		/****** BRepAdaptor_Curve::Reset ******/
+		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "Return
 -------
@@ -1244,8 +1244,8 @@ Reset currently loaded curve (undone load()).
 ") Reset;
 		void Reset();
 
-		/****************** Resolution ******************/
-		/**** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ****/
+		/****** BRepAdaptor_Curve::Resolution ******/
+		/****** md5 signature: cc4a4d9111fadd20ad48e62bc4df1579 ******/
 		%feature("compactdefaultargs") Resolution;
 		%feature("autodoc", "
 Parameters
@@ -1262,8 +1262,8 @@ Returns the parametric resolution.
 ") Resolution;
 		Standard_Real Resolution(const Standard_Real R3d);
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ****/
+		/****** BRepAdaptor_Curve::ShallowCopy ******/
+		/****** md5 signature: 1b6b0927543eab9d05e2c875c0c3efb6 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -1275,8 +1275,8 @@ Shallow copy of adaptor.
 ") ShallowCopy;
 		virtual opencascade::handle<Adaptor3d_Curve> ShallowCopy();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/****** BRepAdaptor_Curve::Tolerance ******/
+		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -1288,8 +1288,8 @@ Returns the edge tolerance.
 ") Tolerance;
 		Standard_Real Tolerance();
 
-		/****************** Trim ******************/
-		/**** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ****/
+		/****** BRepAdaptor_Curve::Trim ******/
+		/****** md5 signature: 40a46ffe7379c6d919968b501b8343a5 ******/
 		%feature("compactdefaultargs") Trim;
 		%feature("autodoc", "
 Parameters
@@ -1308,8 +1308,8 @@ Returns a curve equivalent of <self> between parameters <first> and <last>. <tol
 ") Trim;
 		opencascade::handle<Adaptor3d_Curve> Trim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
-		/****************** Trsf ******************/
-		/**** md5 signature: 97ab79d36bbfac916eee88e8b5acb351 ****/
+		/****** BRepAdaptor_Curve::Trsf ******/
+		/****** md5 signature: 97ab79d36bbfac916eee88e8b5acb351 ******/
 		%feature("compactdefaultargs") Trsf;
 		%feature("autodoc", "Return
 -------
@@ -1321,8 +1321,8 @@ Returns the coordinate system of the curve.
 ") Trsf;
 		const gp_Trsf Trsf();
 
-		/****************** Value ******************/
-		/**** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ****/
+		/****** BRepAdaptor_Curve::Value ******/
+		/****** md5 signature: d7f310c73762cbaa285ace0a141bc7bf ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -1355,8 +1355,8 @@ Computes the point of parameter u on the curve.
 ****************************/
 class BRepAdaptor_Curve2d : public Geom2dAdaptor_Curve {
 	public:
-		/****************** BRepAdaptor_Curve2d ******************/
-		/**** md5 signature: b7ed47cccfb977bc356e474765ba5816 ****/
+		/****** BRepAdaptor_Curve2d::BRepAdaptor_Curve2d ******/
+		/****** md5 signature: b7ed47cccfb977bc356e474765ba5816 ******/
 		%feature("compactdefaultargs") BRepAdaptor_Curve2d;
 		%feature("autodoc", "Return
 -------
@@ -1368,8 +1368,8 @@ Creates an uninitialized curve2d.
 ") BRepAdaptor_Curve2d;
 		 BRepAdaptor_Curve2d();
 
-		/****************** BRepAdaptor_Curve2d ******************/
-		/**** md5 signature: e386e29ae63edd3b069e2ac2448ce78a ****/
+		/****** BRepAdaptor_Curve2d::BRepAdaptor_Curve2d ******/
+		/****** md5 signature: e386e29ae63edd3b069e2ac2448ce78a ******/
 		%feature("compactdefaultargs") BRepAdaptor_Curve2d;
 		%feature("autodoc", "
 Parameters
@@ -1387,8 +1387,8 @@ Creates with the pcurve of <e> on <f>.
 ") BRepAdaptor_Curve2d;
 		 BRepAdaptor_Curve2d(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** Edge ******************/
-		/**** md5 signature: be590cff987799d8b7c28083399d0e9f ****/
+		/****** BRepAdaptor_Curve2d::Edge ******/
+		/****** md5 signature: be590cff987799d8b7c28083399d0e9f ******/
 		%feature("compactdefaultargs") Edge;
 		%feature("autodoc", "Return
 -------
@@ -1400,8 +1400,8 @@ Returns the edge.
 ") Edge;
 		const TopoDS_Edge Edge();
 
-		/****************** Face ******************/
-		/**** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ****/
+		/****** BRepAdaptor_Curve2d::Face ******/
+		/****** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "Return
 -------
@@ -1413,8 +1413,8 @@ Returns the face.
 ") Face;
 		const TopoDS_Face Face();
 
-		/****************** Initialize ******************/
-		/**** md5 signature: cf258179577adbc75b4efbc5847934f6 ****/
+		/****** BRepAdaptor_Curve2d::Initialize ******/
+		/****** md5 signature: cf258179577adbc75b4efbc5847934f6 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -1432,8 +1432,8 @@ Initialize with the pcurve of <e> on <f>.
 ") Initialize;
 		void Initialize(const TopoDS_Edge & E, const TopoDS_Face & F);
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: 7526aff3b770b4e3b1eb3cc08adfb4b0 ****/
+		/****** BRepAdaptor_Curve2d::ShallowCopy ******/
+		/****** md5 signature: 7526aff3b770b4e3b1eb3cc08adfb4b0 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -1461,8 +1461,8 @@ Shallow copy of adaptor.
 ****************************/
 class BRepAdaptor_Surface : public Adaptor3d_Surface {
 	public:
-		/****************** BRepAdaptor_Surface ******************/
-		/**** md5 signature: fd2163b01d125040a3f6f06ce9213655 ****/
+		/****** BRepAdaptor_Surface::BRepAdaptor_Surface ******/
+		/****** md5 signature: fd2163b01d125040a3f6f06ce9213655 ******/
 		%feature("compactdefaultargs") BRepAdaptor_Surface;
 		%feature("autodoc", "Return
 -------
@@ -1474,8 +1474,8 @@ Creates an undefined surface with no face loaded.
 ") BRepAdaptor_Surface;
 		 BRepAdaptor_Surface();
 
-		/****************** BRepAdaptor_Surface ******************/
-		/**** md5 signature: 0cf16f4fea8b7b02de8e7d0a77cdc16a ****/
+		/****** BRepAdaptor_Surface::BRepAdaptor_Surface ******/
+		/****** md5 signature: 0cf16f4fea8b7b02de8e7d0a77cdc16a ******/
 		%feature("compactdefaultargs") BRepAdaptor_Surface;
 		%feature("autodoc", "
 Parameters
@@ -1493,8 +1493,8 @@ Creates a surface to access the geometry of <f>. if <restriction> is true the pa
 ") BRepAdaptor_Surface;
 		 BRepAdaptor_Surface(const TopoDS_Face & F, const Standard_Boolean R = Standard_True);
 
-		/****************** AxeOfRevolution ******************/
-		/**** md5 signature: ba4a8d5fbd6cead47ee1b295e5469d5d ****/
+		/****** BRepAdaptor_Surface::AxeOfRevolution ******/
+		/****** md5 signature: ba4a8d5fbd6cead47ee1b295e5469d5d ******/
 		%feature("compactdefaultargs") AxeOfRevolution;
 		%feature("autodoc", "Return
 -------
@@ -1506,8 +1506,8 @@ No available documentation.
 ") AxeOfRevolution;
 		gp_Ax1 AxeOfRevolution();
 
-		/****************** BSpline ******************/
-		/**** md5 signature: 7edfedec29b3e090d1dbb1c560f9218f ****/
+		/****** BRepAdaptor_Surface::BSpline ******/
+		/****** md5 signature: 7edfedec29b3e090d1dbb1c560f9218f ******/
 		%feature("compactdefaultargs") BSpline;
 		%feature("autodoc", "Return
 -------
@@ -1519,8 +1519,8 @@ Warning: this will make a copy of the bspline surface since it applies to it the
 ") BSpline;
 		opencascade::handle<Geom_BSplineSurface> BSpline();
 
-		/****************** BasisCurve ******************/
-		/**** md5 signature: 3da13dd15bd6f8a74a4a076b13266260 ****/
+		/****** BRepAdaptor_Surface::BasisCurve ******/
+		/****** md5 signature: 3da13dd15bd6f8a74a4a076b13266260 ******/
 		%feature("compactdefaultargs") BasisCurve;
 		%feature("autodoc", "Return
 -------
@@ -1532,8 +1532,8 @@ Only for surfaceofextrusion and surfaceofrevolution warning: this will make a co
 ") BasisCurve;
 		opencascade::handle<Adaptor3d_Curve> BasisCurve();
 
-		/****************** BasisSurface ******************/
-		/**** md5 signature: de63a8a43356a45f5d395e828ec0014c ****/
+		/****** BRepAdaptor_Surface::BasisSurface ******/
+		/****** md5 signature: de63a8a43356a45f5d395e828ec0014c ******/
 		%feature("compactdefaultargs") BasisSurface;
 		%feature("autodoc", "Return
 -------
@@ -1545,8 +1545,8 @@ No available documentation.
 ") BasisSurface;
 		opencascade::handle<Adaptor3d_Surface> BasisSurface();
 
-		/****************** Bezier ******************/
-		/**** md5 signature: 98b7293dc91af28a1a57c0bfbd1e467a ****/
+		/****** BRepAdaptor_Surface::Bezier ******/
+		/****** md5 signature: 98b7293dc91af28a1a57c0bfbd1e467a ******/
 		%feature("compactdefaultargs") Bezier;
 		%feature("autodoc", "Return
 -------
@@ -1558,8 +1558,8 @@ No available documentation.
 ") Bezier;
 		opencascade::handle<Geom_BezierSurface> Bezier();
 
-		/****************** ChangeSurface ******************/
-		/**** md5 signature: ead718e69fe53e8fd677c1b9c64ff5a3 ****/
+		/****** BRepAdaptor_Surface::ChangeSurface ******/
+		/****** md5 signature: ead718e69fe53e8fd677c1b9c64ff5a3 ******/
 		%feature("compactdefaultargs") ChangeSurface;
 		%feature("autodoc", "Return
 -------
@@ -1571,8 +1571,8 @@ Returns the surface.
 ") ChangeSurface;
 		GeomAdaptor_Surface & ChangeSurface();
 
-		/****************** Cone ******************/
-		/**** md5 signature: 3ce87f79e83a129f74e88ef746e3e34b ****/
+		/****** BRepAdaptor_Surface::Cone ******/
+		/****** md5 signature: 3ce87f79e83a129f74e88ef746e3e34b ******/
 		%feature("compactdefaultargs") Cone;
 		%feature("autodoc", "Return
 -------
@@ -1584,8 +1584,8 @@ No available documentation.
 ") Cone;
 		gp_Cone Cone();
 
-		/****************** Cylinder ******************/
-		/**** md5 signature: fdc0e133b47b8d299b834e1b65638963 ****/
+		/****** BRepAdaptor_Surface::Cylinder ******/
+		/****** md5 signature: fdc0e133b47b8d299b834e1b65638963 ******/
 		%feature("compactdefaultargs") Cylinder;
 		%feature("autodoc", "Return
 -------
@@ -1597,8 +1597,8 @@ No available documentation.
 ") Cylinder;
 		gp_Cylinder Cylinder();
 
-		/****************** D0 ******************/
-		/**** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ****/
+		/****** BRepAdaptor_Surface::D0 ******/
+		/****** md5 signature: 909f7ecc223d561155c9c3ba4b8e7b64 ******/
 		%feature("compactdefaultargs") D0;
 		%feature("autodoc", "
 Parameters
@@ -1617,8 +1617,8 @@ Computes the point of parameters u,v on the surface.
 ") D0;
 		void D0(const Standard_Real U, const Standard_Real V, gp_Pnt & P);
 
-		/****************** D1 ******************/
-		/**** md5 signature: 0868b105367e01c443402a5728aa3395 ****/
+		/****** BRepAdaptor_Surface::D1 ******/
+		/****** md5 signature: 0868b105367e01c443402a5728aa3395 ******/
 		%feature("compactdefaultargs") D1;
 		%feature("autodoc", "
 Parameters
@@ -1639,8 +1639,8 @@ Computes the point and the first derivatives on the surface. raised if the conti
 ") D1;
 		void D1(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
-		/****************** D2 ******************/
-		/**** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ****/
+		/****** BRepAdaptor_Surface::D2 ******/
+		/****** md5 signature: 5bdb029d3f1561c55d7ab1d1b0b0282a ******/
 		%feature("compactdefaultargs") D2;
 		%feature("autodoc", "
 Parameters
@@ -1664,8 +1664,8 @@ Computes the point, the first and second derivatives on the surface. raised if t
 ") D2;
 		void D2(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV);
 
-		/****************** D3 ******************/
-		/**** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ****/
+		/****** BRepAdaptor_Surface::D3 ******/
+		/****** md5 signature: 2fbd4d1b6bb5f19034b05b5a6e0ddec0 ******/
 		%feature("compactdefaultargs") D3;
 		%feature("autodoc", "
 Parameters
@@ -1693,8 +1693,8 @@ Computes the point, the first, second and third derivatives on the surface. rais
 ") D3;
 		void D3(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & D2UV, gp_Vec & D3U, gp_Vec & D3V, gp_Vec & D3UUV, gp_Vec & D3UVV);
 
-		/****************** DN ******************/
-		/**** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ****/
+		/****** BRepAdaptor_Surface::DN ******/
+		/****** md5 signature: 78200f5fa5a4060f4022c2e3d9d8ac0e ******/
 		%feature("compactdefaultargs") DN;
 		%feature("autodoc", "
 Parameters
@@ -1714,8 +1714,8 @@ Computes the derivative of order nu in the direction u and nv in the direction v
 ") DN;
 		gp_Vec DN(const Standard_Real U, const Standard_Real V, const Standard_Integer Nu, const Standard_Integer Nv);
 
-		/****************** Direction ******************/
-		/**** md5 signature: 701909e88752dfbf540944de6bad9f3a ****/
+		/****** BRepAdaptor_Surface::Direction ******/
+		/****** md5 signature: 701909e88752dfbf540944de6bad9f3a ******/
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", "Return
 -------
@@ -1727,8 +1727,8 @@ No available documentation.
 ") Direction;
 		gp_Dir Direction();
 
-		/****************** Face ******************/
-		/**** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ****/
+		/****** BRepAdaptor_Surface::Face ******/
+		/****** md5 signature: 91e216ebeb76e55c73eb9e179241a6ff ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "Return
 -------
@@ -1740,8 +1740,8 @@ Returns the face.
 ") Face;
 		const TopoDS_Face Face();
 
-		/****************** FirstUParameter ******************/
-		/**** md5 signature: 9f6a318ef39f30d9051cc243f6edc9ac ****/
+		/****** BRepAdaptor_Surface::FirstUParameter ******/
+		/****** md5 signature: 9f6a318ef39f30d9051cc243f6edc9ac ******/
 		%feature("compactdefaultargs") FirstUParameter;
 		%feature("autodoc", "Return
 -------
@@ -1753,8 +1753,8 @@ No available documentation.
 ") FirstUParameter;
 		virtual Standard_Real FirstUParameter();
 
-		/****************** FirstVParameter ******************/
-		/**** md5 signature: 026c8b687e22be56263a275efcb1a191 ****/
+		/****** BRepAdaptor_Surface::FirstVParameter ******/
+		/****** md5 signature: 026c8b687e22be56263a275efcb1a191 ******/
 		%feature("compactdefaultargs") FirstVParameter;
 		%feature("autodoc", "Return
 -------
@@ -1766,8 +1766,8 @@ No available documentation.
 ") FirstVParameter;
 		virtual Standard_Real FirstVParameter();
 
-		/****************** GetType ******************/
-		/**** md5 signature: 936170b269276a5a12605a71a86272c0 ****/
+		/****** BRepAdaptor_Surface::GetType ******/
+		/****** md5 signature: 936170b269276a5a12605a71a86272c0 ******/
 		%feature("compactdefaultargs") GetType;
 		%feature("autodoc", "Return
 -------
@@ -1779,8 +1779,8 @@ Returns the type of the surface: plane, cylinder, cone, sphere, torus, beziersur
 ") GetType;
 		virtual GeomAbs_SurfaceType GetType();
 
-		/****************** Initialize ******************/
-		/**** md5 signature: f3aeecb0e2fbd866889f168f070cf082 ****/
+		/****** BRepAdaptor_Surface::Initialize ******/
+		/****** md5 signature: f3aeecb0e2fbd866889f168f070cf082 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -1798,8 +1798,8 @@ Sets the surface to the geometry of <f>.
 ") Initialize;
 		void Initialize(const TopoDS_Face & F, const Standard_Boolean Restriction = Standard_True);
 
-		/****************** IsUClosed ******************/
-		/**** md5 signature: 3889881a8bccaf01bdc63482d847fec7 ****/
+		/****** BRepAdaptor_Surface::IsUClosed ******/
+		/****** md5 signature: 3889881a8bccaf01bdc63482d847fec7 ******/
 		%feature("compactdefaultargs") IsUClosed;
 		%feature("autodoc", "Return
 -------
@@ -1811,8 +1811,8 @@ No available documentation.
 ") IsUClosed;
 		virtual Standard_Boolean IsUClosed();
 
-		/****************** IsUPeriodic ******************/
-		/**** md5 signature: baaa80f0fba4fab1ff0458c41067535b ****/
+		/****** BRepAdaptor_Surface::IsUPeriodic ******/
+		/****** md5 signature: baaa80f0fba4fab1ff0458c41067535b ******/
 		%feature("compactdefaultargs") IsUPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1824,8 +1824,8 @@ No available documentation.
 ") IsUPeriodic;
 		virtual Standard_Boolean IsUPeriodic();
 
-		/****************** IsURational ******************/
-		/**** md5 signature: 972bde55bb1931ba89cfd38a75b346b4 ****/
+		/****** BRepAdaptor_Surface::IsURational ******/
+		/****** md5 signature: 972bde55bb1931ba89cfd38a75b346b4 ******/
 		%feature("compactdefaultargs") IsURational;
 		%feature("autodoc", "Return
 -------
@@ -1837,8 +1837,8 @@ No available documentation.
 ") IsURational;
 		virtual Standard_Boolean IsURational();
 
-		/****************** IsVClosed ******************/
-		/**** md5 signature: f5d8b2178f14695d158c648b5d67e50b ****/
+		/****** BRepAdaptor_Surface::IsVClosed ******/
+		/****** md5 signature: f5d8b2178f14695d158c648b5d67e50b ******/
 		%feature("compactdefaultargs") IsVClosed;
 		%feature("autodoc", "Return
 -------
@@ -1850,8 +1850,8 @@ No available documentation.
 ") IsVClosed;
 		virtual Standard_Boolean IsVClosed();
 
-		/****************** IsVPeriodic ******************/
-		/**** md5 signature: a7b7752f1716f49329b3486241deda0e ****/
+		/****** BRepAdaptor_Surface::IsVPeriodic ******/
+		/****** md5 signature: a7b7752f1716f49329b3486241deda0e ******/
 		%feature("compactdefaultargs") IsVPeriodic;
 		%feature("autodoc", "Return
 -------
@@ -1863,8 +1863,8 @@ No available documentation.
 ") IsVPeriodic;
 		virtual Standard_Boolean IsVPeriodic();
 
-		/****************** IsVRational ******************/
-		/**** md5 signature: bfc5bd774a4b38bf6259615a711f8ed2 ****/
+		/****** BRepAdaptor_Surface::IsVRational ******/
+		/****** md5 signature: bfc5bd774a4b38bf6259615a711f8ed2 ******/
 		%feature("compactdefaultargs") IsVRational;
 		%feature("autodoc", "Return
 -------
@@ -1876,8 +1876,8 @@ No available documentation.
 ") IsVRational;
 		virtual Standard_Boolean IsVRational();
 
-		/****************** LastUParameter ******************/
-		/**** md5 signature: 3133997e2ee3ea09c0b46a884e833ca4 ****/
+		/****** BRepAdaptor_Surface::LastUParameter ******/
+		/****** md5 signature: 3133997e2ee3ea09c0b46a884e833ca4 ******/
 		%feature("compactdefaultargs") LastUParameter;
 		%feature("autodoc", "Return
 -------
@@ -1889,8 +1889,8 @@ No available documentation.
 ") LastUParameter;
 		virtual Standard_Real LastUParameter();
 
-		/****************** LastVParameter ******************/
-		/**** md5 signature: f1f64233932dd0768276d78ffb537717 ****/
+		/****** BRepAdaptor_Surface::LastVParameter ******/
+		/****** md5 signature: f1f64233932dd0768276d78ffb537717 ******/
 		%feature("compactdefaultargs") LastVParameter;
 		%feature("autodoc", "Return
 -------
@@ -1902,8 +1902,8 @@ No available documentation.
 ") LastVParameter;
 		virtual Standard_Real LastVParameter();
 
-		/****************** NbUIntervals ******************/
-		/**** md5 signature: ae4875076949dd10d5b3e8aa53673562 ****/
+		/****** BRepAdaptor_Surface::NbUIntervals ******/
+		/****** md5 signature: ae4875076949dd10d5b3e8aa53673562 ******/
 		%feature("compactdefaultargs") NbUIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1920,8 +1920,8 @@ If necessary, breaks the surface in u intervals of continuity <s>. and returns t
 ") NbUIntervals;
 		virtual Standard_Integer NbUIntervals(const GeomAbs_Shape theSh);
 
-		/****************** NbUKnots ******************/
-		/**** md5 signature: 9c52bcf67cce67b26f246c3aa4ea551f ****/
+		/****** BRepAdaptor_Surface::NbUKnots ******/
+		/****** md5 signature: 9c52bcf67cce67b26f246c3aa4ea551f ******/
 		%feature("compactdefaultargs") NbUKnots;
 		%feature("autodoc", "Return
 -------
@@ -1933,8 +1933,8 @@ No available documentation.
 ") NbUKnots;
 		virtual Standard_Integer NbUKnots();
 
-		/****************** NbUPoles ******************/
-		/**** md5 signature: 8d31152e70dd85bb21fb36dbd5b33693 ****/
+		/****** BRepAdaptor_Surface::NbUPoles ******/
+		/****** md5 signature: 8d31152e70dd85bb21fb36dbd5b33693 ******/
 		%feature("compactdefaultargs") NbUPoles;
 		%feature("autodoc", "Return
 -------
@@ -1946,8 +1946,8 @@ No available documentation.
 ") NbUPoles;
 		virtual Standard_Integer NbUPoles();
 
-		/****************** NbVIntervals ******************/
-		/**** md5 signature: f8d85deebab1e39694985284c6a9f17e ****/
+		/****** BRepAdaptor_Surface::NbVIntervals ******/
+		/****** md5 signature: f8d85deebab1e39694985284c6a9f17e ******/
 		%feature("compactdefaultargs") NbVIntervals;
 		%feature("autodoc", "
 Parameters
@@ -1964,8 +1964,8 @@ If necessary, breaks the surface in v intervals of continuity <s>. and returns t
 ") NbVIntervals;
 		virtual Standard_Integer NbVIntervals(const GeomAbs_Shape theSh);
 
-		/****************** NbVKnots ******************/
-		/**** md5 signature: 6aef7952062b9c9994e4e5162b5eecc2 ****/
+		/****** BRepAdaptor_Surface::NbVKnots ******/
+		/****** md5 signature: 6aef7952062b9c9994e4e5162b5eecc2 ******/
 		%feature("compactdefaultargs") NbVKnots;
 		%feature("autodoc", "Return
 -------
@@ -1977,8 +1977,8 @@ No available documentation.
 ") NbVKnots;
 		virtual Standard_Integer NbVKnots();
 
-		/****************** NbVPoles ******************/
-		/**** md5 signature: c198f9b4e351d69009dae4cc79544fc2 ****/
+		/****** BRepAdaptor_Surface::NbVPoles ******/
+		/****** md5 signature: c198f9b4e351d69009dae4cc79544fc2 ******/
 		%feature("compactdefaultargs") NbVPoles;
 		%feature("autodoc", "Return
 -------
@@ -1990,8 +1990,8 @@ No available documentation.
 ") NbVPoles;
 		virtual Standard_Integer NbVPoles();
 
-		/****************** OffsetValue ******************/
-		/**** md5 signature: ae23f5f41fc62b65137ff41b8ee27c47 ****/
+		/****** BRepAdaptor_Surface::OffsetValue ******/
+		/****** md5 signature: ae23f5f41fc62b65137ff41b8ee27c47 ******/
 		%feature("compactdefaultargs") OffsetValue;
 		%feature("autodoc", "Return
 -------
@@ -2003,8 +2003,8 @@ No available documentation.
 ") OffsetValue;
 		Standard_Real OffsetValue();
 
-		/****************** Plane ******************/
-		/**** md5 signature: 38bd3e56cdca70a78cd998154292a430 ****/
+		/****** BRepAdaptor_Surface::Plane ******/
+		/****** md5 signature: 38bd3e56cdca70a78cd998154292a430 ******/
 		%feature("compactdefaultargs") Plane;
 		%feature("autodoc", "Return
 -------
@@ -2016,8 +2016,8 @@ No available documentation.
 ") Plane;
 		gp_Pln Plane();
 
-		/****************** ShallowCopy ******************/
-		/**** md5 signature: 0f1e5e5cc4137678a63b6cdf38f07462 ****/
+		/****** BRepAdaptor_Surface::ShallowCopy ******/
+		/****** md5 signature: 0f1e5e5cc4137678a63b6cdf38f07462 ******/
 		%feature("compactdefaultargs") ShallowCopy;
 		%feature("autodoc", "Return
 -------
@@ -2029,8 +2029,8 @@ Shallow copy of adaptor.
 ") ShallowCopy;
 		virtual opencascade::handle<Adaptor3d_Surface> ShallowCopy();
 
-		/****************** Sphere ******************/
-		/**** md5 signature: d13f3935ec312564a2f8ef1b299ecf9a ****/
+		/****** BRepAdaptor_Surface::Sphere ******/
+		/****** md5 signature: d13f3935ec312564a2f8ef1b299ecf9a ******/
 		%feature("compactdefaultargs") Sphere;
 		%feature("autodoc", "Return
 -------
@@ -2042,8 +2042,8 @@ No available documentation.
 ") Sphere;
 		gp_Sphere Sphere();
 
-		/****************** Surface ******************/
-		/**** md5 signature: e09b6aa0166ca76f2672af1ac0cf0ae2 ****/
+		/****** BRepAdaptor_Surface::Surface ******/
+		/****** md5 signature: e09b6aa0166ca76f2672af1ac0cf0ae2 ******/
 		%feature("compactdefaultargs") Surface;
 		%feature("autodoc", "Return
 -------
@@ -2055,8 +2055,8 @@ Returns the surface.
 ") Surface;
 		GeomAdaptor_Surface Surface();
 
-		/****************** Tolerance ******************/
-		/**** md5 signature: 9e5775014410d884d1a1adc1cd47930b ****/
+		/****** BRepAdaptor_Surface::Tolerance ******/
+		/****** md5 signature: 9e5775014410d884d1a1adc1cd47930b ******/
 		%feature("compactdefaultargs") Tolerance;
 		%feature("autodoc", "Return
 -------
@@ -2068,8 +2068,8 @@ Returns the face tolerance.
 ") Tolerance;
 		Standard_Real Tolerance();
 
-		/****************** Torus ******************/
-		/**** md5 signature: 13ce946397b0f1bcfd3f38f215bbadac ****/
+		/****** BRepAdaptor_Surface::Torus ******/
+		/****** md5 signature: 13ce946397b0f1bcfd3f38f215bbadac ******/
 		%feature("compactdefaultargs") Torus;
 		%feature("autodoc", "Return
 -------
@@ -2081,8 +2081,8 @@ No available documentation.
 ") Torus;
 		gp_Torus Torus();
 
-		/****************** Trsf ******************/
-		/**** md5 signature: 97ab79d36bbfac916eee88e8b5acb351 ****/
+		/****** BRepAdaptor_Surface::Trsf ******/
+		/****** md5 signature: 97ab79d36bbfac916eee88e8b5acb351 ******/
 		%feature("compactdefaultargs") Trsf;
 		%feature("autodoc", "Return
 -------
@@ -2094,8 +2094,8 @@ Returns the surface coordinate system.
 ") Trsf;
 		const gp_Trsf Trsf();
 
-		/****************** UContinuity ******************/
-		/**** md5 signature: 3d5af3bf8bc22c7a70f14bdb9e75696a ****/
+		/****** BRepAdaptor_Surface::UContinuity ******/
+		/****** md5 signature: 3d5af3bf8bc22c7a70f14bdb9e75696a ******/
 		%feature("compactdefaultargs") UContinuity;
 		%feature("autodoc", "Return
 -------
@@ -2107,8 +2107,8 @@ No available documentation.
 ") UContinuity;
 		virtual GeomAbs_Shape UContinuity();
 
-		/****************** UDegree ******************/
-		/**** md5 signature: 2acc7b7f865332e05b9779cd0a953da6 ****/
+		/****** BRepAdaptor_Surface::UDegree ******/
+		/****** md5 signature: 2acc7b7f865332e05b9779cd0a953da6 ******/
 		%feature("compactdefaultargs") UDegree;
 		%feature("autodoc", "Return
 -------
@@ -2120,8 +2120,8 @@ No available documentation.
 ") UDegree;
 		virtual Standard_Integer UDegree();
 
-		/****************** UIntervals ******************/
-		/**** md5 signature: 5a653f364681c4a5c1065b7e92c5d659 ****/
+		/****** BRepAdaptor_Surface::UIntervals ******/
+		/****** md5 signature: 5a653f364681c4a5c1065b7e92c5d659 ******/
 		%feature("compactdefaultargs") UIntervals;
 		%feature("autodoc", "
 Parameters
@@ -2139,8 +2139,8 @@ Returns the intervals with the requested continuity in the u direction.
 ") UIntervals;
 		void UIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** UPeriod ******************/
-		/**** md5 signature: 9816370c908f909f6185bf5b607b6ed4 ****/
+		/****** BRepAdaptor_Surface::UPeriod ******/
+		/****** md5 signature: 9816370c908f909f6185bf5b607b6ed4 ******/
 		%feature("compactdefaultargs") UPeriod;
 		%feature("autodoc", "Return
 -------
@@ -2152,8 +2152,8 @@ No available documentation.
 ") UPeriod;
 		virtual Standard_Real UPeriod();
 
-		/****************** UResolution ******************/
-		/**** md5 signature: c908970ed85794b4b55fe21095a41df4 ****/
+		/****** BRepAdaptor_Surface::UResolution ******/
+		/****** md5 signature: c908970ed85794b4b55fe21095a41df4 ******/
 		%feature("compactdefaultargs") UResolution;
 		%feature("autodoc", "
 Parameters
@@ -2170,8 +2170,8 @@ Returns the parametric u resolution corresponding to the real space resolution <
 ") UResolution;
 		virtual Standard_Real UResolution(const Standard_Real theR3d);
 
-		/****************** UTrim ******************/
-		/**** md5 signature: 3604326125cf753b2a6722a946fb54be ****/
+		/****** BRepAdaptor_Surface::UTrim ******/
+		/****** md5 signature: 3604326125cf753b2a6722a946fb54be ******/
 		%feature("compactdefaultargs") UTrim;
 		%feature("autodoc", "
 Parameters
@@ -2190,8 +2190,8 @@ Returns a surface trimmed in the u direction equivalent of <self> between parame
 ") UTrim;
 		opencascade::handle<Adaptor3d_Surface> UTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
-		/****************** VContinuity ******************/
-		/**** md5 signature: a992dce85d001ed1cf99e1672e6d07ff ****/
+		/****** BRepAdaptor_Surface::VContinuity ******/
+		/****** md5 signature: a992dce85d001ed1cf99e1672e6d07ff ******/
 		%feature("compactdefaultargs") VContinuity;
 		%feature("autodoc", "Return
 -------
@@ -2203,8 +2203,8 @@ No available documentation.
 ") VContinuity;
 		virtual GeomAbs_Shape VContinuity();
 
-		/****************** VDegree ******************/
-		/**** md5 signature: 40f217d7a0d71a97880e9ed212ed6f4e ****/
+		/****** BRepAdaptor_Surface::VDegree ******/
+		/****** md5 signature: 40f217d7a0d71a97880e9ed212ed6f4e ******/
 		%feature("compactdefaultargs") VDegree;
 		%feature("autodoc", "Return
 -------
@@ -2216,8 +2216,8 @@ No available documentation.
 ") VDegree;
 		virtual Standard_Integer VDegree();
 
-		/****************** VIntervals ******************/
-		/**** md5 signature: bf8bef8286fec18f81beea299dd5cb6d ****/
+		/****** BRepAdaptor_Surface::VIntervals ******/
+		/****** md5 signature: bf8bef8286fec18f81beea299dd5cb6d ******/
 		%feature("compactdefaultargs") VIntervals;
 		%feature("autodoc", "
 Parameters
@@ -2235,8 +2235,8 @@ Returns the intervals with the requested continuity in the v direction.
 ") VIntervals;
 		void VIntervals(TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
-		/****************** VPeriod ******************/
-		/**** md5 signature: 72036cc062bfffc50fc8cd70671f4f03 ****/
+		/****** BRepAdaptor_Surface::VPeriod ******/
+		/****** md5 signature: 72036cc062bfffc50fc8cd70671f4f03 ******/
 		%feature("compactdefaultargs") VPeriod;
 		%feature("autodoc", "Return
 -------
@@ -2248,8 +2248,8 @@ No available documentation.
 ") VPeriod;
 		virtual Standard_Real VPeriod();
 
-		/****************** VResolution ******************/
-		/**** md5 signature: 6834713e8a40b99362514d586f78d876 ****/
+		/****** BRepAdaptor_Surface::VResolution ******/
+		/****** md5 signature: 6834713e8a40b99362514d586f78d876 ******/
 		%feature("compactdefaultargs") VResolution;
 		%feature("autodoc", "
 Parameters
@@ -2266,8 +2266,8 @@ Returns the parametric v resolution corresponding to the real space resolution <
 ") VResolution;
 		virtual Standard_Real VResolution(const Standard_Real theR3d);
 
-		/****************** VTrim ******************/
-		/**** md5 signature: d094345261a4439c6edc98b200ea4e3d ****/
+		/****** BRepAdaptor_Surface::VTrim ******/
+		/****** md5 signature: d094345261a4439c6edc98b200ea4e3d ******/
 		%feature("compactdefaultargs") VTrim;
 		%feature("autodoc", "
 Parameters
@@ -2286,8 +2286,8 @@ Returns a surface trimmed in the v direction between parameters <first> and <las
 ") VTrim;
 		opencascade::handle<Adaptor3d_Surface> VTrim(const Standard_Real First, const Standard_Real Last, const Standard_Real Tol);
 
-		/****************** Value ******************/
-		/**** md5 signature: bc01a119296408176c75cc0dfb0636ae ****/
+		/****** BRepAdaptor_Surface::Value ******/
+		/****** md5 signature: bc01a119296408176c75cc0dfb0636ae ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters

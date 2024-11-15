@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTERFACEDOCSTRING
 "Interface module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_interface.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_interface.html"
 %enddef
 %module (package="OCC.Core", docstring=INTERFACEDOCSTRING) Interface
 
@@ -226,8 +226,8 @@ typedef NCollection_Vector<Interface_FileParameter> Interface_VectorOfFileParame
 *************************/
 class Interface_BitMap {
 	public:
-		/****************** Interface_BitMap ******************/
-		/**** md5 signature: db569c1187338b8b4d403ec388a0f626 ****/
+		/****** Interface_BitMap::Interface_BitMap ******/
+		/****** md5 signature: db569c1187338b8b4d403ec388a0f626 ******/
 		%feature("compactdefaultargs") Interface_BitMap;
 		%feature("autodoc", "Return
 -------
@@ -239,8 +239,8 @@ Creates a empty bitmap.
 ") Interface_BitMap;
 		 Interface_BitMap();
 
-		/****************** Interface_BitMap ******************/
-		/**** md5 signature: 962bea8ef2bbf44e9f6d708deb599079 ****/
+		/****** Interface_BitMap::Interface_BitMap ******/
+		/****** md5 signature: 962bea8ef2bbf44e9f6d708deb599079 ******/
 		%feature("compactdefaultargs") Interface_BitMap;
 		%feature("autodoc", "
 Parameters
@@ -258,8 +258,8 @@ Creates a bitmap for <nbitems> items one flag is defined, n0 0 <resflags> prepar
 ") Interface_BitMap;
 		 Interface_BitMap(const Standard_Integer nbitems, const Standard_Integer resflags = 0);
 
-		/****************** Interface_BitMap ******************/
-		/**** md5 signature: 969939d4e3440c110cf2bc7d3c420793 ****/
+		/****** Interface_BitMap::Interface_BitMap ******/
+		/****** md5 signature: 969939d4e3440c110cf2bc7d3c420793 ******/
 		%feature("compactdefaultargs") Interface_BitMap;
 		%feature("autodoc", "
 Parameters
@@ -277,8 +277,8 @@ Creates a bitmap from another one if <copied> is true, copies data else, data ar
 ") Interface_BitMap;
 		 Interface_BitMap(const Interface_BitMap & other, const Standard_Boolean copied = Standard_False);
 
-		/****************** AddFlag ******************/
-		/**** md5 signature: 19d04033b263e56b9a42c22690f3c1e2 ****/
+		/****** Interface_BitMap::AddFlag ******/
+		/****** md5 signature: 19d04033b263e56b9a42c22690f3c1e2 ******/
 		%feature("compactdefaultargs") AddFlag;
 		%feature("autodoc", "
 Parameters
@@ -295,8 +295,8 @@ Adds a flag, a name can be attached to it returns its flag number makes required
 ") AddFlag;
 		Standard_Integer AddFlag(Standard_CString name = "");
 
-		/****************** AddSomeFlags ******************/
-		/**** md5 signature: 847e94177a4401a5471f0ce8809a2518 ****/
+		/****** Interface_BitMap::AddSomeFlags ******/
+		/****** md5 signature: 847e94177a4401a5471f0ce8809a2518 ******/
 		%feature("compactdefaultargs") AddSomeFlags;
 		%feature("autodoc", "
 Parameters
@@ -313,8 +313,8 @@ Adds several flags (<more>) with no name returns the number of last added flag.
 ") AddSomeFlags;
 		Standard_Integer AddSomeFlags(const Standard_Integer more);
 
-		/****************** CFalse ******************/
-		/**** md5 signature: f737c3c281669deb5997674e8b92e10c ****/
+		/****** Interface_BitMap::CFalse ******/
+		/****** md5 signature: f737c3c281669deb5997674e8b92e10c ******/
 		%feature("compactdefaultargs") CFalse;
 		%feature("autodoc", "
 Parameters
@@ -332,8 +332,8 @@ Returns the former value for a flag and sets it to false (before: value returned
 ") CFalse;
 		Standard_Boolean CFalse(const Standard_Integer item, const Standard_Integer flag = 0);
 
-		/****************** CTrue ******************/
-		/**** md5 signature: 71ec9b397601f115038302f533af5415 ****/
+		/****** Interface_BitMap::CTrue ******/
+		/****** md5 signature: 71ec9b397601f115038302f533af5415 ******/
 		%feature("compactdefaultargs") CTrue;
 		%feature("autodoc", "
 Parameters
@@ -351,8 +351,8 @@ Returns the former value for a flag and sets it to true (before: value returned;
 ") CTrue;
 		Standard_Boolean CTrue(const Standard_Integer item, const Standard_Integer flag = 0);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_BitMap::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -364,8 +364,8 @@ Clear all field of bit map.
 ") Clear;
 		void Clear();
 
-		/****************** FlagName ******************/
-		/**** md5 signature: 37218c965ffaaa4420e6c83f3497e2e4 ****/
+		/****** Interface_BitMap::FlagName ******/
+		/****** md5 signature: 37218c965ffaaa4420e6c83f3497e2e4 ******/
 		%feature("compactdefaultargs") FlagName;
 		%feature("autodoc", "
 Parameters
@@ -382,8 +382,8 @@ Returns the name recorded for a flag, or an empty string.
 ") FlagName;
 		Standard_CString FlagName(const Standard_Integer num);
 
-		/****************** FlagNumber ******************/
-		/**** md5 signature: dfbf758026c5cedb65e5965d13b268be ****/
+		/****** Interface_BitMap::FlagNumber ******/
+		/****** md5 signature: dfbf758026c5cedb65e5965d13b268be ******/
 		%feature("compactdefaultargs") FlagNumber;
 		%feature("autodoc", "
 Parameters
@@ -400,8 +400,8 @@ Returns the number or a flag given its name, or zero.
 ") FlagNumber;
 		Standard_Integer FlagNumber(Standard_CString name);
 
-		/****************** Init ******************/
-		/**** md5 signature: 4873c90a7d9b0873090a22d6fde2925e ****/
+		/****** Interface_BitMap::Init ******/
+		/****** md5 signature: 4873c90a7d9b0873090a22d6fde2925e ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -419,8 +419,8 @@ Initialises all the values of flag number <flag> to a given value <val>.
 ") Init;
 		void Init(const Standard_Boolean val, const Standard_Integer flag = 0);
 
-		/****************** Initialize ******************/
-		/**** md5 signature: 2726d6fdc01da6c8dd49a7b16ec44631 ****/
+		/****** Interface_BitMap::Initialize ******/
+		/****** md5 signature: 2726d6fdc01da6c8dd49a7b16ec44631 ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -438,8 +438,8 @@ Initialize empty bit by <nbitems> items one flag is defined, n0 0 <resflags> pre
 ") Initialize;
 		void Initialize(const Standard_Integer nbitems, const Standard_Integer resflags = 0);
 
-		/****************** Initialize ******************/
-		/**** md5 signature: 076577a8f47a7fa021348180ef2d87cc ****/
+		/****** Interface_BitMap::Initialize ******/
+		/****** md5 signature: 076577a8f47a7fa021348180ef2d87cc ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -457,8 +457,8 @@ Initialize a bitmap from another one.
 ") Initialize;
 		void Initialize(const Interface_BitMap & other, const Standard_Boolean copied = Standard_False);
 
-		/****************** Length ******************/
-		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
+		/****** Interface_BitMap::Length ******/
+		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -470,8 +470,8 @@ Returns the count of items (i.e. the length of the bitmap).
 ") Length;
 		Standard_Integer Length();
 
-		/****************** NbFlags ******************/
-		/**** md5 signature: 57c8ed141584427f546add7793d296d7 ****/
+		/****** Interface_BitMap::NbFlags ******/
+		/****** md5 signature: 57c8ed141584427f546add7793d296d7 ******/
 		%feature("compactdefaultargs") NbFlags;
 		%feature("autodoc", "Return
 -------
@@ -483,8 +483,8 @@ Returns the count of flags (flag 0 not included).
 ") NbFlags;
 		Standard_Integer NbFlags();
 
-		/****************** RemoveFlag ******************/
-		/**** md5 signature: 39c5f622dd041834d59347d40f6b1005 ****/
+		/****** Interface_BitMap::RemoveFlag ******/
+		/****** md5 signature: 39c5f622dd041834d59347d40f6b1005 ******/
 		%feature("compactdefaultargs") RemoveFlag;
 		%feature("autodoc", "
 Parameters
@@ -501,8 +501,8 @@ Removes a flag given its number. returns true if done, false if num is out of ra
 ") RemoveFlag;
 		Standard_Boolean RemoveFlag(const Standard_Integer num);
 
-		/****************** Reservate ******************/
-		/**** md5 signature: 959e159d3bb93437bea1686165cf9478 ****/
+		/****** Interface_BitMap::Reservate ******/
+		/****** md5 signature: 959e159d3bb93437bea1686165cf9478 ******/
 		%feature("compactdefaultargs") Reservate;
 		%feature("autodoc", "
 Parameters
@@ -519,8 +519,8 @@ Reservates for a count of more flags.
 ") Reservate;
 		void Reservate(const Standard_Integer moreflags);
 
-		/****************** SetFalse ******************/
-		/**** md5 signature: 5f1673cee0277c1086c4194336d9a66e ****/
+		/****** Interface_BitMap::SetFalse ******/
+		/****** md5 signature: 5f1673cee0277c1086c4194336d9a66e ******/
 		%feature("compactdefaultargs") SetFalse;
 		%feature("autodoc", "
 Parameters
@@ -538,8 +538,8 @@ Sets a flag to false.
 ") SetFalse;
 		void SetFalse(const Standard_Integer item, const Standard_Integer flag = 0);
 
-		/****************** SetFlagName ******************/
-		/**** md5 signature: 19b1ab796cecaa9a8005cbbfa7d56f0b ****/
+		/****** Interface_BitMap::SetFlagName ******/
+		/****** md5 signature: 19b1ab796cecaa9a8005cbbfa7d56f0b ******/
 		%feature("compactdefaultargs") SetFlagName;
 		%feature("autodoc", "
 Parameters
@@ -557,8 +557,8 @@ Sets a name for a flag, given its number name can be empty (to erase the name of
 ") SetFlagName;
 		Standard_Boolean SetFlagName(const Standard_Integer num, Standard_CString name);
 
-		/****************** SetLength ******************/
-		/**** md5 signature: 7fa593eecff52e65f7a52831a8cc6baf ****/
+		/****** Interface_BitMap::SetLength ******/
+		/****** md5 signature: 7fa593eecff52e65f7a52831a8cc6baf ******/
 		%feature("compactdefaultargs") SetLength;
 		%feature("autodoc", "
 Parameters
@@ -575,8 +575,8 @@ Sets for a new count of items, which can be either less or greater than the form
 ") SetLength;
 		void SetLength(const Standard_Integer nbitems);
 
-		/****************** SetTrue ******************/
-		/**** md5 signature: f8c0dc76542f6761e10acb7317a315be ****/
+		/****** Interface_BitMap::SetTrue ******/
+		/****** md5 signature: f8c0dc76542f6761e10acb7317a315be ******/
 		%feature("compactdefaultargs") SetTrue;
 		%feature("autodoc", "
 Parameters
@@ -594,8 +594,8 @@ Sets a flag to true.
 ") SetTrue;
 		void SetTrue(const Standard_Integer item, const Standard_Integer flag = 0);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 1c326ec9bbb4d3af44ace82642a4e699 ****/
+		/****** Interface_BitMap::SetValue ******/
+		/****** md5 signature: 1c326ec9bbb4d3af44ace82642a4e699 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -614,8 +614,8 @@ Sets a new value for a flag.
 ") SetValue;
 		void SetValue(const Standard_Integer item, const Standard_Boolean val, const Standard_Integer flag = 0);
 
-		/****************** Value ******************/
-		/**** md5 signature: b99e23510d657e7d6539e0a7d8252a01 ****/
+		/****** Interface_BitMap::Value ******/
+		/****** md5 signature: b99e23510d657e7d6539e0a7d8252a01 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -647,8 +647,8 @@ Returns the value (true/false) of a flag, from: - the number of the item - the f
 ***************************/
 class Interface_Category {
 	public:
-		/****************** Interface_Category ******************/
-		/**** md5 signature: efb3fe3148b618457c9b09c50b924bec ****/
+		/****** Interface_Category::Interface_Category ******/
+		/****** md5 signature: efb3fe3148b618457c9b09c50b924bec ******/
 		%feature("compactdefaultargs") Interface_Category;
 		%feature("autodoc", "Return
 -------
@@ -660,8 +660,8 @@ Creates a category, with no protocol yet.
 ") Interface_Category;
 		 Interface_Category();
 
-		/****************** Interface_Category ******************/
-		/**** md5 signature: 78e71b948bfa660059997bf6cc10c1c7 ****/
+		/****** Interface_Category::Interface_Category ******/
+		/****** md5 signature: 78e71b948bfa660059997bf6cc10c1c7 ******/
 		%feature("compactdefaultargs") Interface_Category;
 		%feature("autodoc", "
 Parameters
@@ -678,8 +678,8 @@ Creates a category with a given protocol.
 ") Interface_Category;
 		 Interface_Category(const opencascade::handle<Interface_Protocol> & theProtocol);
 
-		/****************** Interface_Category ******************/
-		/**** md5 signature: ba7276b213b743915ca4fe4fc5707d99 ****/
+		/****** Interface_Category::Interface_Category ******/
+		/****** md5 signature: ba7276b213b743915ca4fe4fc5707d99 ******/
 		%feature("compactdefaultargs") Interface_Category;
 		%feature("autodoc", "
 Parameters
@@ -696,8 +696,8 @@ Creates a category with a given gtool.
 ") Interface_Category;
 		 Interface_Category(const opencascade::handle<Interface_GTool> & theGTool);
 
-		/****************** AddCategory ******************/
-		/**** md5 signature: a27890a05fa847cd11e98959beb93723 ****/
+		/****** Interface_Category::AddCategory ******/
+		/****** md5 signature: a27890a05fa847cd11e98959beb93723 ******/
 		%feature("compactdefaultargs") AddCategory;
 		%feature("autodoc", "
 Parameters
@@ -714,8 +714,8 @@ Records a new category defined by its names, produces a number new if not yet re
 ") AddCategory;
 		static Standard_Integer AddCategory(Standard_CString theName);
 
-		/****************** CatNum ******************/
-		/**** md5 signature: 3e07cbf7623ae6de435ab6d784f7ef87 ****/
+		/****** Interface_Category::CatNum ******/
+		/****** md5 signature: 3e07cbf7623ae6de435ab6d784f7ef87 ******/
 		%feature("compactdefaultargs") CatNum;
 		%feature("autodoc", "
 Parameters
@@ -733,8 +733,8 @@ Determines the category number for an entity in its context, by using general se
 ") CatNum;
 		Standard_Integer CatNum(const opencascade::handle<Standard_Transient> & theEnt, const Interface_ShareTool & theShares);
 
-		/****************** ClearNums ******************/
-		/**** md5 signature: 00bfeb1c200ec3206c2a9b63ac3cb30b ****/
+		/****** Interface_Category::ClearNums ******/
+		/****** md5 signature: 00bfeb1c200ec3206c2a9b63ac3cb30b ******/
 		%feature("compactdefaultargs") ClearNums;
 		%feature("autodoc", "Return
 -------
@@ -746,8 +746,8 @@ Clears the recorded list of category numbers for a model.
 ") ClearNums;
 		void ClearNums();
 
-		/****************** Compute ******************/
-		/**** md5 signature: 2330764963d309efcab791418279b57a ****/
+		/****** Interface_Category::Compute ******/
+		/****** md5 signature: 2330764963d309efcab791418279b57a ******/
 		%feature("compactdefaultargs") Compute;
 		%feature("autodoc", "
 Parameters
@@ -765,8 +765,8 @@ Computes the category number for each entity and records it, in an array (ent.nu
 ") Compute;
 		void Compute(const opencascade::handle<Interface_InterfaceModel> & theModel, const Interface_ShareTool & theShares);
 
-		/****************** Init ******************/
-		/**** md5 signature: 342fdccc4643f67c269591c4b6447108 ****/
+		/****** Interface_Category::Init ******/
+		/****** md5 signature: 342fdccc4643f67c269591c4b6447108 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "Return
 -------
@@ -778,8 +778,8 @@ Default initialisation (protected against several calls: passes only once).
 ") Init;
 		static void Init();
 
-		/****************** Name ******************/
-		/**** md5 signature: 90b2dbf508375c5337d5df4595e90cec ****/
+		/****** Interface_Category::Name ******/
+		/****** md5 signature: 90b2dbf508375c5337d5df4595e90cec ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
@@ -796,8 +796,8 @@ Returns the name of a category, according to its number.
 ") Name;
 		static Standard_CString Name(const Standard_Integer theNum);
 
-		/****************** NbCategories ******************/
-		/**** md5 signature: 15ca00fe4737c8bde1c54290a257c1ec ****/
+		/****** Interface_Category::NbCategories ******/
+		/****** md5 signature: 15ca00fe4737c8bde1c54290a257c1ec ******/
 		%feature("compactdefaultargs") NbCategories;
 		%feature("autodoc", "Return
 -------
@@ -809,8 +809,8 @@ Returns the count of recorded categories.
 ") NbCategories;
 		static Standard_Integer NbCategories();
 
-		/****************** Num ******************/
-		/**** md5 signature: d2a0fda3a2229bf8d99e97222156a256 ****/
+		/****** Interface_Category::Num ******/
+		/****** md5 signature: d2a0fda3a2229bf8d99e97222156a256 ******/
 		%feature("compactdefaultargs") Num;
 		%feature("autodoc", "
 Parameters
@@ -827,8 +827,8 @@ Returns the category number recorded for an entity number returns 0 if out of ra
 ") Num;
 		Standard_Integer Num(const Standard_Integer theNumEnt);
 
-		/****************** Number ******************/
-		/**** md5 signature: fbe1daf3ab8187f5e5ecd5017d9938f3 ****/
+		/****** Interface_Category::Number ******/
+		/****** md5 signature: fbe1daf3ab8187f5e5ecd5017d9938f3 ******/
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "
 Parameters
@@ -845,8 +845,8 @@ Returns the number of a category, according to its name.
 ") Number;
 		static Standard_Integer Number(Standard_CString theName);
 
-		/****************** SetProtocol ******************/
-		/**** md5 signature: 037fff6bcbc07de18c1688974b3bee5c ****/
+		/****** Interface_Category::SetProtocol ******/
+		/****** md5 signature: 037fff6bcbc07de18c1688974b3bee5c ******/
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "
 Parameters
@@ -877,8 +877,8 @@ Sets/changes protocol.
 ************************/
 class Interface_Check : public Standard_Transient {
 	public:
-		/****************** Interface_Check ******************/
-		/**** md5 signature: 7f90a0235cc0c2fbe51830893d2b11de ****/
+		/****** Interface_Check::Interface_Check ******/
+		/****** md5 signature: 7f90a0235cc0c2fbe51830893d2b11de ******/
 		%feature("compactdefaultargs") Interface_Check;
 		%feature("autodoc", "Return
 -------
@@ -890,8 +890,8 @@ Allows definition of a sequence. used also for global check of an interfacemodel
 ") Interface_Check;
 		 Interface_Check();
 
-		/****************** Interface_Check ******************/
-		/**** md5 signature: 430409a4cca19f08ea37d04913f5ac29 ****/
+		/****** Interface_Check::Interface_Check ******/
+		/****** md5 signature: 430409a4cca19f08ea37d04913f5ac29 ******/
 		%feature("compactdefaultargs") Interface_Check;
 		%feature("autodoc", "
 Parameters
@@ -908,8 +908,8 @@ Defines a check on an entity.
 ") Interface_Check;
 		 Interface_Check(const opencascade::handle<Standard_Transient> & anentity);
 
-		/****************** AddFail ******************/
-		/**** md5 signature: f9be97b778e94cadf07344b48c88b2ec ****/
+		/****** Interface_Check::AddFail ******/
+		/****** md5 signature: f9be97b778e94cadf07344b48c88b2ec ******/
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "
 Parameters
@@ -926,8 +926,8 @@ Records a new fail message.
 ") AddFail;
 		void AddFail(const opencascade::handle<TCollection_HAsciiString> & amess);
 
-		/****************** AddFail ******************/
-		/**** md5 signature: 8be0c4574a6a147568ae3462cbf85ae3 ****/
+		/****** Interface_Check::AddFail ******/
+		/****** md5 signature: 8be0c4574a6a147568ae3462cbf85ae3 ******/
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "
 Parameters
@@ -945,8 +945,8 @@ Records a new fail message under two forms: final,original.
 ") AddFail;
 		void AddFail(const opencascade::handle<TCollection_HAsciiString> & amess, const opencascade::handle<TCollection_HAsciiString> & orig);
 
-		/****************** AddFail ******************/
-		/**** md5 signature: f605f13d55ac347cc1a224f7bb297f1f ****/
+		/****** Interface_Check::AddFail ******/
+		/****** md5 signature: f605f13d55ac347cc1a224f7bb297f1f ******/
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "
 Parameters
@@ -964,8 +964,8 @@ Records a new fail message given as 'error text' directly if <orig> is given, a 
 ") AddFail;
 		void AddFail(Standard_CString amess, Standard_CString orig = "");
 
-		/****************** AddFail ******************/
-		/**** md5 signature: 475a01b010b4e2f284e66a83730c9014 ****/
+		/****** Interface_Check::AddFail ******/
+		/****** md5 signature: 475a01b010b4e2f284e66a83730c9014 ******/
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "
 Parameters
@@ -982,8 +982,8 @@ Records a new fail from the definition of a msg (original+value).
 ") AddFail;
 		void AddFail(const Message_Msg & amsg);
 
-		/****************** AddWarning ******************/
-		/**** md5 signature: 9ec76aca562eb8e28b5411eba37ffcb8 ****/
+		/****** Interface_Check::AddWarning ******/
+		/****** md5 signature: 9ec76aca562eb8e28b5411eba37ffcb8 ******/
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "
 Parameters
@@ -1000,8 +1000,8 @@ Records a new warning message.
 ") AddWarning;
 		void AddWarning(const opencascade::handle<TCollection_HAsciiString> & amess);
 
-		/****************** AddWarning ******************/
-		/**** md5 signature: 77fe09ed073b8c6e96e8621c7d0459c8 ****/
+		/****** Interface_Check::AddWarning ******/
+		/****** md5 signature: 77fe09ed073b8c6e96e8621c7d0459c8 ******/
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "
 Parameters
@@ -1019,8 +1019,8 @@ Records a new warning message under two forms: final,original.
 ") AddWarning;
 		void AddWarning(const opencascade::handle<TCollection_HAsciiString> & amess, const opencascade::handle<TCollection_HAsciiString> & orig);
 
-		/****************** AddWarning ******************/
-		/**** md5 signature: d0551ee8497c3fe957e762088a968913 ****/
+		/****** Interface_Check::AddWarning ******/
+		/****** md5 signature: d0551ee8497c3fe957e762088a968913 ******/
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "
 Parameters
@@ -1038,8 +1038,8 @@ Records a warning message given as 'warning message' directly if <orig> is given
 ") AddWarning;
 		void AddWarning(Standard_CString amess, Standard_CString orig = "");
 
-		/****************** AddWarning ******************/
-		/**** md5 signature: 00bb7fdd767eee55c100662f590ee316 ****/
+		/****** Interface_Check::AddWarning ******/
+		/****** md5 signature: 00bb7fdd767eee55c100662f590ee316 ******/
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "
 Parameters
@@ -1056,8 +1056,8 @@ Records a new warning from the definition of a msg (original+value).
 ") AddWarning;
 		void AddWarning(const Message_Msg & amsg);
 
-		/****************** CFail ******************/
-		/**** md5 signature: 76917aed443f5ffeff440c8f1fa8f5dc ****/
+		/****** Interface_Check::CFail ******/
+		/****** md5 signature: 76917aed443f5ffeff440c8f1fa8f5dc ******/
 		%feature("compactdefaultargs") CFail;
 		%feature("autodoc", "
 Parameters
@@ -1075,8 +1075,8 @@ Same as above, but returns a cstring (to be printed ...) final form by default, 
 ") CFail;
 		Standard_CString CFail(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
-		/****************** CInfoMsg ******************/
-		/**** md5 signature: cf6d3b7d4e368c59afdf8bee8c06f62f ****/
+		/****** Interface_Check::CInfoMsg ******/
+		/****** md5 signature: cf6d3b7d4e368c59afdf8bee8c06f62f ******/
 		%feature("compactdefaultargs") CInfoMsg;
 		%feature("autodoc", "
 Parameters
@@ -1094,8 +1094,8 @@ Same as above, but returns a cstring (to be printed ...) final form by default, 
 ") CInfoMsg;
 		Standard_CString CInfoMsg(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
-		/****************** CWarning ******************/
-		/**** md5 signature: 808de3f2d1afa1bd13afa58f447ddf7e ****/
+		/****** Interface_Check::CWarning ******/
+		/****** md5 signature: 808de3f2d1afa1bd13afa58f447ddf7e ******/
 		%feature("compactdefaultargs") CWarning;
 		%feature("autodoc", "
 Parameters
@@ -1113,8 +1113,8 @@ Same as above, but returns a cstring (to be printed ...) final form by default, 
 ") CWarning;
 		Standard_CString CWarning(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_Check::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1126,8 +1126,8 @@ Clears a check, in order to receive information from transfer (messages and enti
 ") Clear;
 		void Clear();
 
-		/****************** ClearFails ******************/
-		/**** md5 signature: 2ad879b4d2e37bf4698c253c8b35971a ****/
+		/****** Interface_Check::ClearFails ******/
+		/****** md5 signature: 2ad879b4d2e37bf4698c253c8b35971a ******/
 		%feature("compactdefaultargs") ClearFails;
 		%feature("autodoc", "Return
 -------
@@ -1139,8 +1139,8 @@ Clears the fail messages (for instance to keep only warnings).
 ") ClearFails;
 		void ClearFails();
 
-		/****************** ClearInfoMsgs ******************/
-		/**** md5 signature: 34c3c2a0c22ab10df12a5dd59859cab0 ****/
+		/****** Interface_Check::ClearInfoMsgs ******/
+		/****** md5 signature: 34c3c2a0c22ab10df12a5dd59859cab0 ******/
 		%feature("compactdefaultargs") ClearInfoMsgs;
 		%feature("autodoc", "Return
 -------
@@ -1152,8 +1152,8 @@ Clears the info messages.
 ") ClearInfoMsgs;
 		void ClearInfoMsgs();
 
-		/****************** ClearWarnings ******************/
-		/**** md5 signature: 21ba9936fe5384f574f7b3e976f914eb ****/
+		/****** Interface_Check::ClearWarnings ******/
+		/****** md5 signature: 21ba9936fe5384f574f7b3e976f914eb ******/
 		%feature("compactdefaultargs") ClearWarnings;
 		%feature("autodoc", "Return
 -------
@@ -1165,8 +1165,8 @@ Clears the warning messages (for instance to keep only fails).
 ") ClearWarnings;
 		void ClearWarnings();
 
-		/****************** Complies ******************/
-		/**** md5 signature: bd47c5c42d431ecc7dae0adf51b14f93 ****/
+		/****** Interface_Check::Complies ******/
+		/****** md5 signature: bd47c5c42d431ecc7dae0adf51b14f93 ******/
 		%feature("compactdefaultargs") Complies;
 		%feature("autodoc", "
 Parameters
@@ -1183,8 +1183,8 @@ Tells if check status complies with a given one (i.e. also status for query).
 ") Complies;
 		Standard_Boolean Complies(const Interface_CheckStatus status);
 
-		/****************** Complies ******************/
-		/**** md5 signature: a0c202208e05c6908f6f28441a6077da ****/
+		/****** Interface_Check::Complies ******/
+		/****** md5 signature: a0c202208e05c6908f6f28441a6077da ******/
 		%feature("compactdefaultargs") Complies;
 		%feature("autodoc", "
 Parameters
@@ -1203,8 +1203,8 @@ Tells if a message is brought by a check, as follows: <incl> = 0: <mess> exactly
 ") Complies;
 		Standard_Boolean Complies(const opencascade::handle<TCollection_HAsciiString> & mess, const Standard_Integer incl, const Interface_CheckStatus status);
 
-		/****************** Entity ******************/
-		/**** md5 signature: fef0e331cb625aad1f4e0bc4e9d437d6 ****/
+		/****** Interface_Check::Entity ******/
+		/****** md5 signature: fef0e331cb625aad1f4e0bc4e9d437d6 ******/
 		%feature("compactdefaultargs") Entity;
 		%feature("autodoc", "Return
 -------
@@ -1216,8 +1216,8 @@ Returns the entity on which the check has been defined.
 ") Entity;
 		const opencascade::handle<Standard_Transient> & Entity();
 
-		/****************** Fail ******************/
-		/**** md5 signature: 33f2fd9aaa3595fbdec444a4f9c1d29c ****/
+		/****** Interface_Check::Fail ******/
+		/****** md5 signature: 33f2fd9aaa3595fbdec444a4f9c1d29c ******/
 		%feature("compactdefaultargs") Fail;
 		%feature("autodoc", "
 Parameters
@@ -1235,8 +1235,8 @@ Returns fail message as a string final form by default, original form if <final>
 ") Fail;
 		const opencascade::handle<TCollection_HAsciiString> & Fail(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
-		/****************** Fails ******************/
-		/**** md5 signature: 21c724cd0264efcfa01b1a66ff968891 ****/
+		/****** Interface_Check::Fails ******/
+		/****** md5 signature: 21c724cd0264efcfa01b1a66ff968891 ******/
 		%feature("compactdefaultargs") Fails;
 		%feature("autodoc", "
 Parameters
@@ -1253,8 +1253,8 @@ Returns the list of fails, for a frontal-engine logic final forms by default, or
 ") Fails;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> Fails(const Standard_Boolean final = Standard_True);
 
-		/****************** GetAsWarning ******************/
-		/**** md5 signature: 45e1d9a7e61c5beb11f12bc052896e68 ****/
+		/****** Interface_Check::GetAsWarning ******/
+		/****** md5 signature: 45e1d9a7e61c5beb11f12bc052896e68 ******/
 		%feature("compactdefaultargs") GetAsWarning;
 		%feature("autodoc", "
 Parameters
@@ -1272,8 +1272,8 @@ Copies messages converted into warning messages if failsonly is true, only fails
 ") GetAsWarning;
 		void GetAsWarning(const opencascade::handle<Interface_Check> & other, const Standard_Boolean failsonly);
 
-		/****************** GetEntity ******************/
-		/**** md5 signature: 6c9b69baffd432a259c6cbae6828d8d2 ****/
+		/****** Interface_Check::GetEntity ******/
+		/****** md5 signature: 6c9b69baffd432a259c6cbae6828d8d2 ******/
 		%feature("compactdefaultargs") GetEntity;
 		%feature("autodoc", "
 Parameters
@@ -1290,8 +1290,8 @@ Same as setentity (old form kept for compatibility) warning: does nothing if ent
 ") GetEntity;
 		void GetEntity(const opencascade::handle<Standard_Transient> & anentity);
 
-		/****************** GetMessages ******************/
-		/**** md5 signature: ade88a62763cbaa286e34927e67ec97d ****/
+		/****** Interface_Check::GetMessages ******/
+		/****** md5 signature: ade88a62763cbaa286e34927e67ec97d ******/
 		%feature("compactdefaultargs") GetMessages;
 		%feature("autodoc", "
 Parameters
@@ -1308,8 +1308,8 @@ Copies messages stored in another check, cumulating does not regard other's enti
 ") GetMessages;
 		void GetMessages(const opencascade::handle<Interface_Check> & other);
 
-		/****************** HasEntity ******************/
-		/**** md5 signature: da207550990fa73aecc203a0676ca926 ****/
+		/****** Interface_Check::HasEntity ******/
+		/****** md5 signature: da207550990fa73aecc203a0676ca926 ******/
 		%feature("compactdefaultargs") HasEntity;
 		%feature("autodoc", "Return
 -------
@@ -1321,8 +1321,8 @@ Returns true if a check is devoted to an entity; else, it is global (for interfa
 ") HasEntity;
 		Standard_Boolean HasEntity();
 
-		/****************** HasFailed ******************/
-		/**** md5 signature: 231f6cf476d6eb671060105fc565fef7 ****/
+		/****** Interface_Check::HasFailed ******/
+		/****** md5 signature: 231f6cf476d6eb671060105fc565fef7 ******/
 		%feature("compactdefaultargs") HasFailed;
 		%feature("autodoc", "Return
 -------
@@ -1334,8 +1334,8 @@ Returns true if check brings at least one fail message.
 ") HasFailed;
 		Standard_Boolean HasFailed();
 
-		/****************** HasWarnings ******************/
-		/**** md5 signature: 62eec0bc4f8c89e1937e6ebe5c890272 ****/
+		/****** Interface_Check::HasWarnings ******/
+		/****** md5 signature: 62eec0bc4f8c89e1937e6ebe5c890272 ******/
 		%feature("compactdefaultargs") HasWarnings;
 		%feature("autodoc", "Return
 -------
@@ -1347,8 +1347,8 @@ Returns true if check brings at least one warning message.
 ") HasWarnings;
 		Standard_Boolean HasWarnings();
 
-		/****************** InfoMsg ******************/
-		/**** md5 signature: b59326ec723b9d632798269a90b5c27c ****/
+		/****** Interface_Check::InfoMsg ******/
+		/****** md5 signature: b59326ec723b9d632798269a90b5c27c ******/
 		%feature("compactdefaultargs") InfoMsg;
 		%feature("autodoc", "
 Parameters
@@ -1366,8 +1366,8 @@ Returns information message as a string.
 ") InfoMsg;
 		const opencascade::handle<TCollection_HAsciiString> & InfoMsg(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
-		/****************** InfoMsgs ******************/
-		/**** md5 signature: e2eed28c1b84021b5a9b4883813984d8 ****/
+		/****** Interface_Check::InfoMsgs ******/
+		/****** md5 signature: e2eed28c1b84021b5a9b4883813984d8 ******/
 		%feature("compactdefaultargs") InfoMsgs;
 		%feature("autodoc", "
 Parameters
@@ -1384,8 +1384,8 @@ Returns the list of info msg, for a frontal-engine logic final forms by default,
 ") InfoMsgs;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> InfoMsgs(const Standard_Boolean final = Standard_True);
 
-		/****************** Mend ******************/
-		/**** md5 signature: 5b7eeed5c29bcfb2d1e36c54d12a46af ****/
+		/****** Interface_Check::Mend ******/
+		/****** md5 signature: 5b7eeed5c29bcfb2d1e36c54d12a46af ******/
 		%feature("compactdefaultargs") Mend;
 		%feature("autodoc", "
 Parameters
@@ -1403,8 +1403,8 @@ Mends messages, according <pref> and <num> according to <num>, works on the whol
 ") Mend;
 		Standard_Boolean Mend(Standard_CString pref, const Standard_Integer num = 0);
 
-		/****************** NbFails ******************/
-		/**** md5 signature: 950d340013c289e6e9c9d027f2051ade ****/
+		/****** Interface_Check::NbFails ******/
+		/****** md5 signature: 950d340013c289e6e9c9d027f2051ade ******/
 		%feature("compactdefaultargs") NbFails;
 		%feature("autodoc", "Return
 -------
@@ -1416,8 +1416,8 @@ Returns count of recorded fails.
 ") NbFails;
 		Standard_Integer NbFails();
 
-		/****************** NbInfoMsgs ******************/
-		/**** md5 signature: cb3779319716b130c2d191208e46fc78 ****/
+		/****** Interface_Check::NbInfoMsgs ******/
+		/****** md5 signature: cb3779319716b130c2d191208e46fc78 ******/
 		%feature("compactdefaultargs") NbInfoMsgs;
 		%feature("autodoc", "Return
 -------
@@ -1429,8 +1429,8 @@ Returns the count of recorded information messages.
 ") NbInfoMsgs;
 		Standard_Integer NbInfoMsgs();
 
-		/****************** NbWarnings ******************/
-		/**** md5 signature: 8e87d048d54d06f512ddb6e0bbb2f55a ****/
+		/****** Interface_Check::NbWarnings ******/
+		/****** md5 signature: 8e87d048d54d06f512ddb6e0bbb2f55a ******/
 		%feature("compactdefaultargs") NbWarnings;
 		%feature("autodoc", "Return
 -------
@@ -1442,8 +1442,8 @@ Returns count of recorded warning messages.
 ") NbWarnings;
 		Standard_Integer NbWarnings();
 
-		/****************** Print ******************/
-		/**** md5 signature: cd6f31420152be00482d8b2c47fd50c1 ****/
+		/****** Interface_Check::Print ******/
+		/****** md5 signature: cd6f31420152be00482d8b2c47fd50c1 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -1461,8 +1461,8 @@ Prints the messages of the check to an messenger <level> = 1: only fails <level>
 ") Print;
 		void Print(std::ostream &OutValue, const Standard_Integer level, const Standard_Integer final = 1);
 
-		/****************** Remove ******************/
-		/**** md5 signature: fbc96bff34dc8f4089235a7befff9769 ****/
+		/****** Interface_Check::Remove ******/
+		/****** md5 signature: fbc96bff34dc8f4089235a7befff9769 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -1481,8 +1481,8 @@ Removes the messages which comply with <mess>, as follows: <incl> = 0: <mess> ex
 ") Remove;
 		Standard_Boolean Remove(const opencascade::handle<TCollection_HAsciiString> & mess, const Standard_Integer incl, const Interface_CheckStatus status);
 
-		/****************** SendFail ******************/
-		/**** md5 signature: 1eab4e53649e1a16e12a6f58bd826f30 ****/
+		/****** Interface_Check::SendFail ******/
+		/****** md5 signature: 1eab4e53649e1a16e12a6f58bd826f30 ******/
 		%feature("compactdefaultargs") SendFail;
 		%feature("autodoc", "
 Parameters
@@ -1499,8 +1499,8 @@ New name for addfail (msg).
 ") SendFail;
 		void SendFail(const Message_Msg & amsg);
 
-		/****************** SendMsg ******************/
-		/**** md5 signature: f751f85c3590977261d17744924ccb9f ****/
+		/****** Interface_Check::SendMsg ******/
+		/****** md5 signature: f751f85c3590977261d17744924ccb9f ******/
 		%feature("compactdefaultargs") SendMsg;
 		%feature("autodoc", "
 Parameters
@@ -1517,8 +1517,8 @@ Records an information message this does not change the status of the check.
 ") SendMsg;
 		void SendMsg(const Message_Msg & amsg);
 
-		/****************** SendWarning ******************/
-		/**** md5 signature: 7a784110763f5a191de87e4b30b0324e ****/
+		/****** Interface_Check::SendWarning ******/
+		/****** md5 signature: 7a784110763f5a191de87e4b30b0324e ******/
 		%feature("compactdefaultargs") SendWarning;
 		%feature("autodoc", "
 Parameters
@@ -1535,8 +1535,8 @@ New name for addwarning.
 ") SendWarning;
 		void SendWarning(const Message_Msg & amsg);
 
-		/****************** SetEntity ******************/
-		/**** md5 signature: 4831d2207818bfa2888384573ff378ca ****/
+		/****** Interface_Check::SetEntity ******/
+		/****** md5 signature: 4831d2207818bfa2888384573ff378ca ******/
 		%feature("compactdefaultargs") SetEntity;
 		%feature("autodoc", "
 Parameters
@@ -1553,8 +1553,8 @@ Receives an entity result of a transfer.
 ") SetEntity;
 		void SetEntity(const opencascade::handle<Standard_Transient> & anentity);
 
-		/****************** Status ******************/
-		/**** md5 signature: a1aa35ee9c0826471c319adbfef1a3ec ****/
+		/****** Interface_Check::Status ******/
+		/****** md5 signature: a1aa35ee9c0826471c319adbfef1a3ec ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "Return
 -------
@@ -1566,8 +1566,8 @@ Returns the check status: ok, warning or fail.
 ") Status;
 		Interface_CheckStatus Status();
 
-		/****************** Trace ******************/
-		/**** md5 signature: cf02ca3158b0207f14d520f0a8d5c02b ****/
+		/****** Interface_Check::Trace ******/
+		/****** md5 signature: cf02ca3158b0207f14d520f0a8d5c02b ******/
 		%feature("compactdefaultargs") Trace;
 		%feature("autodoc", "
 Parameters
@@ -1585,8 +1585,8 @@ Prints the messages of the check to the default trace file by default, according
 ") Trace;
 		void Trace(const Standard_Integer level = -1, const Standard_Integer final = 1);
 
-		/****************** Warning ******************/
-		/**** md5 signature: 8a10938d450687ebc48c00aa49f83e4b ****/
+		/****** Interface_Check::Warning ******/
+		/****** md5 signature: 8a10938d450687ebc48c00aa49f83e4b ******/
 		%feature("compactdefaultargs") Warning;
 		%feature("autodoc", "
 Parameters
@@ -1604,8 +1604,8 @@ Returns warning message as a string final form by default, original form if <fin
 ") Warning;
 		const opencascade::handle<TCollection_HAsciiString> & Warning(const Standard_Integer num, const Standard_Boolean final = Standard_True);
 
-		/****************** Warnings ******************/
-		/**** md5 signature: d581bddbb927ec43e862233c97e84719 ****/
+		/****** Interface_Check::Warnings ******/
+		/****** md5 signature: d581bddbb927ec43e862233c97e84719 ******/
 		%feature("compactdefaultargs") Warnings;
 		%feature("autodoc", "
 Parameters
@@ -1638,8 +1638,8 @@ Returns the list of warnings, for a frontal-engine logic final forms by default,
 ********************************/
 class Interface_CheckIterator {
 	public:
-		/****************** Interface_CheckIterator ******************/
-		/**** md5 signature: b5e866bc02592812e8fd52bfe221f952 ****/
+		/****** Interface_CheckIterator::Interface_CheckIterator ******/
+		/****** md5 signature: b5e866bc02592812e8fd52bfe221f952 ******/
 		%feature("compactdefaultargs") Interface_CheckIterator;
 		%feature("autodoc", "Return
 -------
@@ -1651,8 +1651,8 @@ Creates an empty checkiterator.
 ") Interface_CheckIterator;
 		 Interface_CheckIterator();
 
-		/****************** Interface_CheckIterator ******************/
-		/**** md5 signature: 9a5a658844504095beb82bc8fd617c2c ****/
+		/****** Interface_CheckIterator::Interface_CheckIterator ******/
+		/****** md5 signature: 9a5a658844504095beb82bc8fd617c2c ******/
 		%feature("compactdefaultargs") Interface_CheckIterator;
 		%feature("autodoc", "
 Parameters
@@ -1669,8 +1669,8 @@ Creates a checkiterator with a name (displayed by print as a title).
 ") Interface_CheckIterator;
 		 Interface_CheckIterator(Standard_CString name);
 
-		/****************** Add ******************/
-		/**** md5 signature: 4a6b3c1f769b0854805edff2f650eff6 ****/
+		/****** Interface_CheckIterator::Add ******/
+		/****** md5 signature: 4a6b3c1f769b0854805edff2f650eff6 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -1688,8 +1688,8 @@ Adds a check to the list to be iterated this check is accompanied by entity numb
 ") Add;
 		void Add(const opencascade::handle<Interface_Check> & ach, const Standard_Integer num = 0);
 
-		/****************** CCheck ******************/
-		/**** md5 signature: c28c01886a4208269253e2208277edbf ****/
+		/****** Interface_CheckIterator::CCheck ******/
+		/****** md5 signature: c28c01886a4208269253e2208277edbf ******/
 		%feature("compactdefaultargs") CCheck;
 		%feature("autodoc", "
 Parameters
@@ -1706,8 +1706,8 @@ Returns the check bound to an entity number (0: global) in order to be consulted
 ") CCheck;
 		opencascade::handle<Interface_Check> & CCheck(const Standard_Integer num);
 
-		/****************** CCheck ******************/
-		/**** md5 signature: afbcceb69ef295e5e0a74341809ed4a8 ****/
+		/****** Interface_CheckIterator::CCheck ******/
+		/****** md5 signature: afbcceb69ef295e5e0a74341809ed4a8 ******/
 		%feature("compactdefaultargs") CCheck;
 		%feature("autodoc", "
 Parameters
@@ -1724,8 +1724,8 @@ Returns the check bound to an entity, in order to be consulted or completed on t
 ") CCheck;
 		opencascade::handle<Interface_Check> & CCheck(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Check ******************/
-		/**** md5 signature: 96c2f23202b10afafa9169d8cdd86ad2 ****/
+		/****** Interface_CheckIterator::Check ******/
+		/****** md5 signature: 96c2f23202b10afafa9169d8cdd86ad2 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -1742,8 +1742,8 @@ Returns the check which was attached to an entity given its number in the model.
 ") Check;
 		const opencascade::handle<Interface_Check> & Check(const Standard_Integer num);
 
-		/****************** Check ******************/
-		/**** md5 signature: 51be1e644fb07f435d639ea2c6b1e086 ****/
+		/****** Interface_CheckIterator::Check ******/
+		/****** md5 signature: 51be1e644fb07f435d639ea2c6b1e086 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -1760,8 +1760,8 @@ Returns the check attached to an entity if no check was recorded for this entity
 ") Check;
 		const opencascade::handle<Interface_Check> & Check(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Checkeds ******************/
-		/**** md5 signature: 6af14138eebf6a903d15085a084f054e ****/
+		/****** Interface_CheckIterator::Checkeds ******/
+		/****** md5 signature: 6af14138eebf6a903d15085a084f054e ******/
 		%feature("compactdefaultargs") Checkeds;
 		%feature("autodoc", "
 Parameters
@@ -1779,8 +1779,8 @@ Returns the list of entities concerned by a check only fails if <failsonly> is t
 ") Checkeds;
 		opencascade::handle<TColStd_HSequenceOfTransient> Checkeds(const Standard_Boolean failsonly, const Standard_Boolean global);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_CheckIterator::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1792,8 +1792,8 @@ Clears the list of checks.
 ") Clear;
 		void Clear();
 
-		/****************** Complies ******************/
-		/**** md5 signature: bd47c5c42d431ecc7dae0adf51b14f93 ****/
+		/****** Interface_CheckIterator::Complies ******/
+		/****** md5 signature: bd47c5c42d431ecc7dae0adf51b14f93 ******/
 		%feature("compactdefaultargs") Complies;
 		%feature("autodoc", "
 Parameters
@@ -1810,8 +1810,8 @@ Tells if this check list complies with a given status: ok (i.e. empty), warning 
 ") Complies;
 		Standard_Boolean Complies(const Interface_CheckStatus status);
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
+		/****** Interface_CheckIterator::Destroy ******/
+		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "Return
 -------
@@ -1823,8 +1823,8 @@ Clears data of iteration.
 ") Destroy;
 		void Destroy();
 
-		/****************** Extract ******************/
-		/**** md5 signature: 4e27e823b8768c522445cdc0e4043cfa ****/
+		/****** Interface_CheckIterator::Extract ******/
+		/****** md5 signature: 4e27e823b8768c522445cdc0e4043cfa ******/
 		%feature("compactdefaultargs") Extract;
 		%feature("autodoc", "
 Parameters
@@ -1841,8 +1841,8 @@ Returns a checkiterator which contains the checks which comply with a given stat
 ") Extract;
 		Interface_CheckIterator Extract(const Interface_CheckStatus status);
 
-		/****************** Extract ******************/
-		/**** md5 signature: 2db622a09a39a7b3c216db6d134bd273 ****/
+		/****** Interface_CheckIterator::Extract ******/
+		/****** md5 signature: 2db622a09a39a7b3c216db6d134bd273 ******/
 		%feature("compactdefaultargs") Extract;
 		%feature("autodoc", "
 Parameters
@@ -1861,8 +1861,8 @@ Returns a checkiterator which contains the check which comply with a message, pl
 ") Extract;
 		Interface_CheckIterator Extract(Standard_CString mess, const Standard_Integer incl, const Interface_CheckStatus status);
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: 803613576dcec3f9a8d605a071deb357 ****/
+		/****** Interface_CheckIterator::IsEmpty ******/
+		/****** md5 signature: 803613576dcec3f9a8d605a071deb357 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "
 Parameters
@@ -1879,8 +1879,8 @@ Returns true if: no fail has been recorded if <failsonly> is true, no check at a
 ") IsEmpty;
 		Standard_Boolean IsEmpty(const Standard_Boolean failsonly);
 
-		/****************** Merge ******************/
-		/**** md5 signature: baac633c3fc83575a5e2da46ece8b525 ****/
+		/****** Interface_CheckIterator::Merge ******/
+		/****** md5 signature: baac633c3fc83575a5e2da46ece8b525 ******/
 		%feature("compactdefaultargs") Merge;
 		%feature("autodoc", "
 Parameters
@@ -1897,8 +1897,8 @@ Merges another checkiterator into <self>, i.e. adds each of its checks. content 
 ") Merge;
 		void Merge(Interface_CheckIterator & other);
 
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** Interface_CheckIterator::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -1910,8 +1910,8 @@ Returns the stored model (can be a null handle).
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** Interface_CheckIterator::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1923,8 +1923,8 @@ Returns true if there are more checks to get.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Name ******************/
-		/**** md5 signature: 2e8cb64f99d00deafae9c92f20b187a2 ****/
+		/****** Interface_CheckIterator::Name ******/
+		/****** md5 signature: 2e8cb64f99d00deafae9c92f20b187a2 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -1936,8 +1936,8 @@ Returns the recorded name (can be empty).
 ") Name;
 		Standard_CString Name();
 
-		/****************** Next ******************/
-		/**** md5 signature: db8382462e33c960ba2eedf02613f499 ****/
+		/****** Interface_CheckIterator::Next ******/
+		/****** md5 signature: db8382462e33c960ba2eedf02613f499 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -1949,8 +1949,8 @@ Sets iteration to next item.
 ") Next;
 		void Next();
 
-		/****************** Number ******************/
-		/**** md5 signature: 0049d1350ba9feffbbe0d130f3765410 ****/
+		/****** Interface_CheckIterator::Number ******/
+		/****** md5 signature: 0049d1350ba9feffbbe0d130f3765410 ******/
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "Return
 -------
@@ -1962,8 +1962,8 @@ Returns number of entity for the check currently iterated or 0 for globalcheck.
 ") Number;
 		Standard_Integer Number();
 
-		/****************** Print ******************/
-		/**** md5 signature: fbbffa04ee2028cd35a21f2ac0226d1e ****/
+		/****** Interface_CheckIterator::Print ******/
+		/****** md5 signature: fbbffa04ee2028cd35a21f2ac0226d1e ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -1981,8 +1981,8 @@ Prints the list of checks with their attached numbers if <failsonly> is true, pr
 ") Print;
 		void Print(std::ostream &OutValue, const Standard_Boolean failsonly, const Standard_Integer final = 0);
 
-		/****************** Print ******************/
-		/**** md5 signature: 287a76ed6178a67e94c843a507962cc1 ****/
+		/****** Interface_CheckIterator::Print ******/
+		/****** md5 signature: 287a76ed6178a67e94c843a507962cc1 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -2001,8 +2001,8 @@ Works as print without a model, but for entities which have no attached number (
 ") Print;
 		void Print(std::ostream &OutValue, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Boolean failsonly, const Standard_Integer final = 0);
 
-		/****************** Remove ******************/
-		/**** md5 signature: 81170abf4e017303192fc5e4bf72fea9 ****/
+		/****** Interface_CheckIterator::Remove ******/
+		/****** md5 signature: 81170abf4e017303192fc5e4bf72fea9 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -2021,8 +2021,8 @@ Removes the messages of all checks, under these conditions: <incl> = 0: <mess> e
 ") Remove;
 		Standard_Boolean Remove(Standard_CString mess, const Standard_Integer incl, const Interface_CheckStatus status);
 
-		/****************** SetModel ******************/
-		/**** md5 signature: 70328a97cec44e457500ce3b002efc49 ****/
+		/****** Interface_CheckIterator::SetModel ******/
+		/****** md5 signature: 70328a97cec44e457500ce3b002efc49 ******/
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "
 Parameters
@@ -2039,8 +2039,8 @@ Defines a model, used to locate entities (not required, if it is absent, entitie
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** SetName ******************/
-		/**** md5 signature: 208d3e507b11ad1eb22d3afd35f96209 ****/
+		/****** Interface_CheckIterator::SetName ******/
+		/****** md5 signature: 208d3e507b11ad1eb22d3afd35f96209 ******/
 		%feature("compactdefaultargs") SetName;
 		%feature("autodoc", "
 Parameters
@@ -2057,8 +2057,8 @@ Sets / changes the name.
 ") SetName;
 		void SetName(Standard_CString name);
 
-		/****************** Start ******************/
-		/**** md5 signature: c626be121588f79e9e18cc24cc705050 ****/
+		/****** Interface_CheckIterator::Start ******/
+		/****** md5 signature: c626be121588f79e9e18cc24cc705050 ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "Return
 -------
@@ -2070,8 +2070,8 @@ Starts iteration. thus, it is possible to restart it remark: an iteration may be
 ") Start;
 		void Start();
 
-		/****************** Status ******************/
-		/**** md5 signature: a1aa35ee9c0826471c319adbfef1a3ec ****/
+		/****** Interface_CheckIterator::Status ******/
+		/****** md5 signature: a1aa35ee9c0826471c319adbfef1a3ec ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "Return
 -------
@@ -2083,8 +2083,8 @@ Returns worst status among: ok, warning, fail.
 ") Status;
 		Interface_CheckStatus Status();
 
-		/****************** Value ******************/
-		/**** md5 signature: f4d2f44a410b3e3cf64e685769098635 ****/
+		/****** Interface_CheckIterator::Value ******/
+		/****** md5 signature: f4d2f44a410b3e3cf64e685769098635 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -2110,8 +2110,8 @@ Returns check currently iterated it brings all other information (status, messag
 ****************************/
 class Interface_CheckTool {
 	public:
-		/****************** Interface_CheckTool ******************/
-		/**** md5 signature: 5ab8272955d617e24b07e8494b0c2533 ****/
+		/****** Interface_CheckTool::Interface_CheckTool ******/
+		/****** md5 signature: 5ab8272955d617e24b07e8494b0c2533 ******/
 		%feature("compactdefaultargs") Interface_CheckTool;
 		%feature("autodoc", "
 Parameters
@@ -2129,8 +2129,8 @@ Creates a checktool, by calling the general service library and modules, selecte
 ") Interface_CheckTool;
 		 Interface_CheckTool(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
 
-		/****************** Interface_CheckTool ******************/
-		/**** md5 signature: b514ba2dd5b625afdc2b750255b2df75 ****/
+		/****** Interface_CheckTool::Interface_CheckTool ******/
+		/****** md5 signature: b514ba2dd5b625afdc2b750255b2df75 ******/
 		%feature("compactdefaultargs") Interface_CheckTool;
 		%feature("autodoc", "
 Parameters
@@ -2147,8 +2147,8 @@ Creates a checktool, by calling the general service library and modules, selecte
 ") Interface_CheckTool;
 		 Interface_CheckTool(const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** Interface_CheckTool ******************/
-		/**** md5 signature: 753f9154813699d83f4038bf6b8c04d0 ****/
+		/****** Interface_CheckTool::Interface_CheckTool ******/
+		/****** md5 signature: 753f9154813699d83f4038bf6b8c04d0 ******/
 		%feature("compactdefaultargs") Interface_CheckTool;
 		%feature("autodoc", "
 Parameters
@@ -2165,8 +2165,8 @@ Creates a checktool from a graph. the graph contains a model which designates a 
 ") Interface_CheckTool;
 		 Interface_CheckTool(const Interface_Graph & graph);
 
-		/****************** Interface_CheckTool ******************/
-		/**** md5 signature: 59802d0acbc68e3993d49b35e5ec0eeb ****/
+		/****** Interface_CheckTool::Interface_CheckTool ******/
+		/****** md5 signature: 59802d0acbc68e3993d49b35e5ec0eeb ******/
 		%feature("compactdefaultargs") Interface_CheckTool;
 		%feature("autodoc", "
 Parameters
@@ -2183,8 +2183,8 @@ No available documentation.
 ") Interface_CheckTool;
 		 Interface_CheckTool(const opencascade::handle<Interface_HGraph> & hgraph);
 
-		/****************** AnalyseCheckList ******************/
-		/**** md5 signature: b1a8bd4983e0bb079b0cb8d99027dfab ****/
+		/****** Interface_CheckTool::AnalyseCheckList ******/
+		/****** md5 signature: b1a8bd4983e0bb079b0cb8d99027dfab ******/
 		%feature("compactdefaultargs") AnalyseCheckList;
 		%feature("autodoc", "Return
 -------
@@ -2196,8 +2196,8 @@ Returns list of errors detected at analyse time (syntactic) (note that globalche
 ") AnalyseCheckList;
 		Interface_CheckIterator AnalyseCheckList();
 
-		/****************** Check ******************/
-		/**** md5 signature: af76360fee7801f23a6d8aa9bab38117 ****/
+		/****** Interface_CheckTool::Check ******/
+		/****** md5 signature: af76360fee7801f23a6d8aa9bab38117 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -2214,8 +2214,8 @@ Returns the check associated to an entity identified by its number in a model.
 ") Check;
 		opencascade::handle<Interface_Check> Check(const Standard_Integer num);
 
-		/****************** CheckList ******************/
-		/**** md5 signature: a0f363eff6cccdc4c389615b84796fd3 ****/
+		/****** Interface_CheckTool::CheckList ******/
+		/****** md5 signature: a0f363eff6cccdc4c389615b84796fd3 ******/
 		%feature("compactdefaultargs") CheckList;
 		%feature("autodoc", "Return
 -------
@@ -2227,8 +2227,8 @@ Returns list of all errors detected note that presence of unknown entities is no
 ") CheckList;
 		Interface_CheckIterator CheckList();
 
-		/****************** CheckSuccess ******************/
-		/**** md5 signature: 831d2a1e101dcafb9604bb86498b17d9 ****/
+		/****** Interface_CheckTool::CheckSuccess ******/
+		/****** md5 signature: 831d2a1e101dcafb9604bb86498b17d9 ******/
 		%feature("compactdefaultargs") CheckSuccess;
 		%feature("autodoc", "
 Parameters
@@ -2245,8 +2245,8 @@ Checks if any error has been detected (checklist not empty) returns normally if 
 ") CheckSuccess;
 		void CheckSuccess(const Standard_Boolean reset = Standard_False);
 
-		/****************** CompleteCheckList ******************/
-		/**** md5 signature: dd892cfac1922aa0f3c0767a3cb97241 ****/
+		/****** Interface_CheckTool::CompleteCheckList ******/
+		/****** md5 signature: dd892cfac1922aa0f3c0767a3cb97241 ******/
 		%feature("compactdefaultargs") CompleteCheckList;
 		%feature("autodoc", "Return
 -------
@@ -2258,8 +2258,8 @@ Returns list of all 'remarkable' information, which include: - globalcheck, if n
 ") CompleteCheckList;
 		Interface_CheckIterator CompleteCheckList();
 
-		/****************** FillCheck ******************/
-		/**** md5 signature: 96faa5770c5b0e45661900a72f015d22 ****/
+		/****** Interface_CheckTool::FillCheck ******/
+		/****** md5 signature: 96faa5770c5b0e45661900a72f015d22 ******/
 		%feature("compactdefaultargs") FillCheck;
 		%feature("autodoc", "
 Parameters
@@ -2278,8 +2278,8 @@ Fills as required a check with the error and warning messages produced by checki
 ") FillCheck;
 		void FillCheck(const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & sh, opencascade::handle<Interface_Check> & ach);
 
-		/****************** Print ******************/
-		/**** md5 signature: 77b918ff1d1ec5c1b0230477d5a40611 ****/
+		/****** Interface_CheckTool::Print ******/
+		/****** md5 signature: 77b918ff1d1ec5c1b0230477d5a40611 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -2296,8 +2296,8 @@ Utility method which prints the content of a check.
 ") Print;
 		void Print(const opencascade::handle<Interface_Check> & ach, std::ostream &OutValue);
 
-		/****************** Print ******************/
-		/**** md5 signature: 14d98babb92b15fa230bc4228bcc71be ****/
+		/****** Interface_CheckTool::Print ******/
+		/****** md5 signature: 14d98babb92b15fa230bc4228bcc71be ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -2314,8 +2314,8 @@ Simply lists all the checks and the content (messages) and the entity, if there 
 ") Print;
 		void Print(const Interface_CheckIterator & list, std::ostream &OutValue);
 
-		/****************** UnknownEntities ******************/
-		/**** md5 signature: bd331908c549b04b25469271a771e03d ****/
+		/****** Interface_CheckTool::UnknownEntities ******/
+		/****** md5 signature: bd331908c549b04b25469271a771e03d ******/
 		%feature("compactdefaultargs") UnknownEntities;
 		%feature("autodoc", "Return
 -------
@@ -2327,8 +2327,8 @@ Returns list of unknown entities note that error and erroneous entities are not 
 ") UnknownEntities;
 		Interface_EntityIterator UnknownEntities();
 
-		/****************** VerifyCheckList ******************/
-		/**** md5 signature: 4dcbd6c0a58f6c164d0fa0dc3b33638d ****/
+		/****** Interface_CheckTool::VerifyCheckList ******/
+		/****** md5 signature: 4dcbd6c0a58f6c164d0fa0dc3b33638d ******/
 		%feature("compactdefaultargs") VerifyCheckList;
 		%feature("autodoc", "Return
 -------
@@ -2340,8 +2340,8 @@ Returns list of integrity constraints errors (semantic) (note that globalcheck i
 ") VerifyCheckList;
 		Interface_CheckIterator VerifyCheckList();
 
-		/****************** WarningCheckList ******************/
-		/**** md5 signature: 2443d0ebe4f00c6ed5a384c81a4f663b ****/
+		/****** Interface_CheckTool::WarningCheckList ******/
+		/****** md5 signature: 2443d0ebe4f00c6ed5a384c81a4f663b ******/
 		%feature("compactdefaultargs") WarningCheckList;
 		%feature("autodoc", "Return
 -------
@@ -2368,8 +2368,8 @@ Returns list of corrections (includes globalcheck if corrected).
 %nodefaultctor Interface_CopyControl;
 class Interface_CopyControl : public Standard_Transient {
 	public:
-		/****************** Bind ******************/
-		/**** md5 signature: 198684707fd621b3a8201773431c09ef ****/
+		/****** Interface_CopyControl::Bind ******/
+		/****** md5 signature: 198684707fd621b3a8201773431c09ef ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -2387,8 +2387,8 @@ Bind a result to a starting entity identified by its number.
 ") Bind;
 		virtual void Bind(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & res);
 
-		/****************** Clear ******************/
-		/**** md5 signature: d67699716a1d70f3f12e5a2b1d81e2d9 ****/
+		/****** Interface_CopyControl::Clear ******/
+		/****** md5 signature: d67699716a1d70f3f12e5a2b1d81e2d9 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -2400,8 +2400,8 @@ Clears list of copy results. gets ready to begin another copy process.
 ") Clear;
 		virtual void Clear();
 
-		/****************** Search ******************/
-		/**** md5 signature: be4105f70addedede9c47b4c043c8dfb ****/
+		/****** Interface_CopyControl::Search ******/
+		/****** md5 signature: be4105f70addedede9c47b4c043c8dfb ******/
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "
 Parameters
@@ -2435,8 +2435,8 @@ Searches for the result bound to a startingf entity identified by its number. if
 ***************************/
 class Interface_CopyTool {
 	public:
-		/****************** Interface_CopyTool ******************/
-		/**** md5 signature: 2ffe2dfad4989a2f525d6a72fa611c8c ****/
+		/****** Interface_CopyTool::Interface_CopyTool ******/
+		/****** md5 signature: 2ffe2dfad4989a2f525d6a72fa611c8c ******/
 		%feature("compactdefaultargs") Interface_CopyTool;
 		%feature("autodoc", "
 Parameters
@@ -2454,8 +2454,8 @@ Creates a copytool adapted to work from a model. works with a general service li
 ") Interface_CopyTool;
 		 Interface_CopyTool(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib);
 
-		/****************** Interface_CopyTool ******************/
-		/**** md5 signature: 476f3608a5b01ab0028273c541d9d50b ****/
+		/****** Interface_CopyTool::Interface_CopyTool ******/
+		/****** md5 signature: 476f3608a5b01ab0028273c541d9d50b ******/
 		%feature("compactdefaultargs") Interface_CopyTool;
 		%feature("autodoc", "
 Parameters
@@ -2473,8 +2473,8 @@ Same as above, but library is defined through a protocol.
 ") Interface_CopyTool;
 		 Interface_CopyTool(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol);
 
-		/****************** Interface_CopyTool ******************/
-		/**** md5 signature: 6e5408215b76b084ba5f396e61b79c78 ****/
+		/****** Interface_CopyTool::Interface_CopyTool ******/
+		/****** md5 signature: 6e5408215b76b084ba5f396e61b79c78 ******/
 		%feature("compactdefaultargs") Interface_CopyTool;
 		%feature("autodoc", "
 Parameters
@@ -2491,8 +2491,8 @@ Same as above, but works with the active protocol.
 ") Interface_CopyTool;
 		 Interface_CopyTool(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** Bind ******************/
-		/**** md5 signature: f07152d868147881642168cd837b3600 ****/
+		/****** Interface_CopyTool::Bind ******/
+		/****** md5 signature: f07152d868147881642168cd837b3600 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -2510,8 +2510,8 @@ Defines a result for the transfer of a starting object. used by method transferr
 ") Bind;
 		void Bind(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & res);
 
-		/****************** Clear ******************/
-		/**** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ****/
+		/****** Interface_CopyTool::Clear ******/
+		/****** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -2523,8 +2523,8 @@ Clears transfer list. gets ready to begin another transfer.
 ") Clear;
 		virtual void Clear();
 
-		/****************** ClearLastFlags ******************/
-		/**** md5 signature: 468b0c960533d5923d24b4dd930d9acf ****/
+		/****** Interface_CopyTool::ClearLastFlags ******/
+		/****** md5 signature: 468b0c960533d5923d24b4dd930d9acf ******/
 		%feature("compactdefaultargs") ClearLastFlags;
 		%feature("autodoc", "Return
 -------
@@ -2536,8 +2536,8 @@ Clears lastflags only. this allows to know what entities are copied after its ca
 ") ClearLastFlags;
 		void ClearLastFlags();
 
-		/****************** CompleteResult ******************/
-		/**** md5 signature: ea9b74b309317519b06757d93262c0cc ****/
+		/****** Interface_CopyTool::CompleteResult ******/
+		/****** md5 signature: ea9b74b309317519b06757d93262c0cc ******/
 		%feature("compactdefaultargs") CompleteResult;
 		%feature("autodoc", "
 Parameters
@@ -2554,8 +2554,8 @@ Returns the complete list of copied entities if <withreports> is given true, the
 ") CompleteResult;
 		Interface_EntityIterator CompleteResult(const Standard_Boolean withreports = Standard_False);
 
-		/****************** Control ******************/
-		/**** md5 signature: 2b9c8e9c0d77e4d7c78d407ba1dab327 ****/
+		/****** Interface_CopyTool::Control ******/
+		/****** md5 signature: 2b9c8e9c0d77e4d7c78d407ba1dab327 ******/
 		%feature("compactdefaultargs") Control;
 		%feature("autodoc", "Return
 -------
@@ -2567,8 +2567,8 @@ Returns the object used for control.
 ") Control;
 		opencascade::handle<Interface_CopyControl> Control();
 
-		/****************** Copy ******************/
-		/**** md5 signature: 32447fdc65ef06ca5213043fab887ec0 ****/
+		/****** Interface_CopyTool::Copy ******/
+		/****** md5 signature: 32447fdc65ef06ca5213043fab887ec0 ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -2588,8 +2588,8 @@ Creates the counterpart of an entity (by shallowcopy), binds it, then copies the
 ") Copy;
 		virtual Standard_Boolean Copy(const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto, const Standard_Boolean mapped, const Standard_Boolean errstat);
 
-		/****************** FillModel ******************/
-		/**** md5 signature: ce66908e7c19c6a4a9db70933c852f31 ****/
+		/****** Interface_CopyTool::FillModel ******/
+		/****** md5 signature: ce66908e7c19c6a4a9db70933c852f31 ******/
 		%feature("compactdefaultargs") FillModel;
 		%feature("autodoc", "
 Parameters
@@ -2606,8 +2606,8 @@ Fills a model with the result of the transfer (transferlist) commands copy of he
 ") FillModel;
 		void FillModel(const opencascade::handle<Interface_InterfaceModel> & bmodel);
 
-		/****************** LastCopiedAfter ******************/
-		/**** md5 signature: aad84202daf9f6c736716707bc1e4a41 ****/
+		/****** Interface_CopyTool::LastCopiedAfter ******/
+		/****** md5 signature: aad84202daf9f6c736716707bc1e4a41 ******/
 		%feature("compactdefaultargs") LastCopiedAfter;
 		%feature("autodoc", "
 Parameters
@@ -2626,8 +2626,8 @@ Returns an copied entity and its result which were operated after last call to c
 ") LastCopiedAfter;
 		Standard_Integer LastCopiedAfter(const Standard_Integer numfrom, opencascade::handle<Standard_Transient> & ent, opencascade::handle<Standard_Transient> & res);
 
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** Interface_CopyTool::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -2639,8 +2639,8 @@ Returns the model on which the copytool works.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** RenewImpliedRefs ******************/
-		/**** md5 signature: 40b882fa61fc4daed48f8bb89f5d7134 ****/
+		/****** Interface_CopyTool::RenewImpliedRefs ******/
+		/****** md5 signature: 40b882fa61fc4daed48f8bb89f5d7134 ******/
 		%feature("compactdefaultargs") RenewImpliedRefs;
 		%feature("autodoc", "Return
 -------
@@ -2652,8 +2652,8 @@ Renews the implied references. these references do not involve copying of refere
 ") RenewImpliedRefs;
 		void RenewImpliedRefs();
 
-		/****************** RootResult ******************/
-		/**** md5 signature: 6ce16052973bb08c300e2dc2ed1bab8e ****/
+		/****** Interface_CopyTool::RootResult ******/
+		/****** md5 signature: 6ce16052973bb08c300e2dc2ed1bab8e ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -2670,8 +2670,8 @@ Returns the list of root copied entities (those which were asked for copy by the
 ") RootResult;
 		Interface_EntityIterator RootResult(const Standard_Boolean withreports = Standard_False);
 
-		/****************** Search ******************/
-		/**** md5 signature: 96f59d0b51cfcc113410b586ef3795ea ****/
+		/****** Interface_CopyTool::Search ******/
+		/****** md5 signature: 96f59d0b51cfcc113410b586ef3795ea ******/
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "
 Parameters
@@ -2689,8 +2689,8 @@ Search for the result of a starting object (i.e. an entity) returns true if a re
 ") Search;
 		Standard_Boolean Search(const opencascade::handle<Standard_Transient> & ent, opencascade::handle<Standard_Transient> & res);
 
-		/****************** SetControl ******************/
-		/**** md5 signature: 64e426bc76ca2f83a12255dffec8e1b1 ****/
+		/****** Interface_CopyTool::SetControl ******/
+		/****** md5 signature: 64e426bc76ca2f83a12255dffec8e1b1 ******/
 		%feature("compactdefaultargs") SetControl;
 		%feature("autodoc", "
 Parameters
@@ -2707,8 +2707,8 @@ Changes the map of result for another one. this allows to work with a more sophi
 ") SetControl;
 		void SetControl(const opencascade::handle<Interface_CopyControl> & othermap);
 
-		/****************** TransferEntity ******************/
-		/**** md5 signature: aca492321a7b9c62fac89c749bbea9fb ****/
+		/****** Interface_CopyTool::TransferEntity ******/
+		/****** md5 signature: aca492321a7b9c62fac89c749bbea9fb ******/
 		%feature("compactdefaultargs") TransferEntity;
 		%feature("autodoc", "
 Parameters
@@ -2725,8 +2725,8 @@ Transfers one entity and records result into the transfer list calls method tran
 ") TransferEntity;
 		void TransferEntity(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Transferred ******************/
-		/**** md5 signature: 0fd56aa6288b9056a0f09f28c8c6abe6 ****/
+		/****** Interface_CopyTool::Transferred ******/
+		/****** md5 signature: 0fd56aa6288b9056a0f09f28c8c6abe6 ******/
 		%feature("compactdefaultargs") Transferred;
 		%feature("autodoc", "
 Parameters
@@ -2757,8 +2757,8 @@ Transfers one entity, if not yet bound to a result remark: for an entity which i
 ********************************/
 class Interface_EntityCluster : public Standard_Transient {
 	public:
-		/****************** Interface_EntityCluster ******************/
-		/**** md5 signature: 6a48e9387c8e9f341264b3e1eab6c7e9 ****/
+		/****** Interface_EntityCluster::Interface_EntityCluster ******/
+		/****** md5 signature: 6a48e9387c8e9f341264b3e1eab6c7e9 ******/
 		%feature("compactdefaultargs") Interface_EntityCluster;
 		%feature("autodoc", "Return
 -------
@@ -2770,8 +2770,8 @@ Creates an empty, non-chained, entitycluster.
 ") Interface_EntityCluster;
 		 Interface_EntityCluster();
 
-		/****************** Interface_EntityCluster ******************/
-		/**** md5 signature: 334cdf9a9e23d80260833d407825d25f ****/
+		/****** Interface_EntityCluster::Interface_EntityCluster ******/
+		/****** md5 signature: 334cdf9a9e23d80260833d407825d25f ******/
 		%feature("compactdefaultargs") Interface_EntityCluster;
 		%feature("autodoc", "
 Parameters
@@ -2788,8 +2788,8 @@ Creates a non-chained entitycluster, filled with one entity.
 ") Interface_EntityCluster;
 		 Interface_EntityCluster(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Interface_EntityCluster ******************/
-		/**** md5 signature: a40c745c34f2ee9441c8cc983c64cb3e ****/
+		/****** Interface_EntityCluster::Interface_EntityCluster ******/
+		/****** md5 signature: a40c745c34f2ee9441c8cc983c64cb3e ******/
 		%feature("compactdefaultargs") Interface_EntityCluster;
 		%feature("autodoc", "
 Parameters
@@ -2806,8 +2806,8 @@ Creates an empty entitycluster, chained with another one (that is, put before th
 ") Interface_EntityCluster;
 		 Interface_EntityCluster(const opencascade::handle<Interface_EntityCluster> & ec);
 
-		/****************** Interface_EntityCluster ******************/
-		/**** md5 signature: 7c75335c8a0977377938d37cc9bddfc9 ****/
+		/****** Interface_EntityCluster::Interface_EntityCluster ******/
+		/****** md5 signature: 7c75335c8a0977377938d37cc9bddfc9 ******/
 		%feature("compactdefaultargs") Interface_EntityCluster;
 		%feature("autodoc", "
 Parameters
@@ -2825,8 +2825,8 @@ Creates an entitycluster, filled with a first entity, and chained to another ent
 ") Interface_EntityCluster;
 		 Interface_EntityCluster(const opencascade::handle<Standard_Transient> & ant, const opencascade::handle<Interface_EntityCluster> & ec);
 
-		/****************** Append ******************/
-		/**** md5 signature: 48722434508b90c52582bcdb47c3a1c8 ****/
+		/****** Interface_EntityCluster::Append ******/
+		/****** md5 signature: 48722434508b90c52582bcdb47c3a1c8 ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -2843,8 +2843,8 @@ Appends an entity to the cluster. if it is not full, adds the entity directly in
 ") Append;
 		void Append(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** FillIterator ******************/
-		/**** md5 signature: e32e298c5181f5a878a91b9da55bfb78 ****/
+		/****** Interface_EntityCluster::FillIterator ******/
+		/****** md5 signature: e32e298c5181f5a878a91b9da55bfb78 ******/
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "
 Parameters
@@ -2861,8 +2861,8 @@ Fills an iterator with designated entities (includes next).
 ") FillIterator;
 		void FillIterator(Interface_EntityIterator & iter);
 
-		/****************** NbEntities ******************/
-		/**** md5 signature: 533943455099343f106415a0a22e8ac9 ****/
+		/****** Interface_EntityCluster::NbEntities ******/
+		/****** md5 signature: 533943455099343f106415a0a22e8ac9 ******/
 		%feature("compactdefaultargs") NbEntities;
 		%feature("autodoc", "Return
 -------
@@ -2874,8 +2874,8 @@ Returns total count of entities (including next).
 ") NbEntities;
 		Standard_Integer NbEntities();
 
-		/****************** Remove ******************/
-		/**** md5 signature: 15abc7881be881e58d0907223e239cc2 ****/
+		/****** Interface_EntityCluster::Remove ******/
+		/****** md5 signature: 15abc7881be881e58d0907223e239cc2 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -2892,8 +2892,8 @@ Removes an entity from the cluster. if it is not found, calls its next one to do
 ") Remove;
 		Standard_Boolean Remove(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Remove ******************/
-		/**** md5 signature: 37f5a5cdb681cc08ea6f88bf3c6c2dca ****/
+		/****** Interface_EntityCluster::Remove ******/
+		/****** md5 signature: 37f5a5cdb681cc08ea6f88bf3c6c2dca ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -2910,8 +2910,8 @@ Removes an entity from the cluster, given its rank. if <num> is greater than nbl
 ") Remove;
 		Standard_Boolean Remove(const Standard_Integer num);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: b9b839d4cab4434a1fde39fb5e695825 ****/
+		/****** Interface_EntityCluster::SetValue ******/
+		/****** md5 signature: b9b839d4cab4434a1fde39fb5e695825 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -2929,8 +2929,8 @@ Changes an entity given its rank.
 ") SetValue;
 		void SetValue(const Standard_Integer num, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Value ******************/
-		/**** md5 signature: a291325b4e5caa2a5ab946934090ec8b ****/
+		/****** Interface_EntityCluster::Value ******/
+		/****** md5 signature: a291325b4e5caa2a5ab946934090ec8b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -2963,8 +2963,8 @@ Returns the entity identified by its rank in the list (including next).
 *********************************/
 class Interface_EntityIterator {
 	public:
-		/****************** Interface_EntityIterator ******************/
-		/**** md5 signature: 685665124dd234df3a83f75507ec3d1b ****/
+		/****** Interface_EntityIterator::Interface_EntityIterator ******/
+		/****** md5 signature: 685665124dd234df3a83f75507ec3d1b ******/
 		%feature("compactdefaultargs") Interface_EntityIterator;
 		%feature("autodoc", "Return
 -------
@@ -2976,8 +2976,8 @@ Defines an empty iterator (see addlist & additem).
 ") Interface_EntityIterator;
 		 Interface_EntityIterator();
 
-		/****************** Interface_EntityIterator ******************/
-		/**** md5 signature: d1f133a9b3912cf24f8d9444ce7616b8 ****/
+		/****** Interface_EntityIterator::Interface_EntityIterator ******/
+		/****** md5 signature: d1f133a9b3912cf24f8d9444ce7616b8 ******/
 		%feature("compactdefaultargs") Interface_EntityIterator;
 		%feature("autodoc", "
 Parameters
@@ -2994,8 +2994,8 @@ Defines an iterator on a list, directly i.e. without copying it.
 ") Interface_EntityIterator;
 		 Interface_EntityIterator(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
-		/****************** AddItem ******************/
-		/**** md5 signature: 3f10cb57683e1144e46e0f94e8de6fea ****/
+		/****** Interface_EntityIterator::AddItem ******/
+		/****** md5 signature: 3f10cb57683e1144e46e0f94e8de6fea ******/
 		%feature("compactdefaultargs") AddItem;
 		%feature("autodoc", "
 Parameters
@@ -3012,8 +3012,8 @@ Adds to the iteration list a defined entity.
 ") AddItem;
 		void AddItem(const opencascade::handle<Standard_Transient> & anentity);
 
-		/****************** AddList ******************/
-		/**** md5 signature: aa5a44f7eb178e7bc497b41c38a65aad ****/
+		/****** Interface_EntityIterator::AddList ******/
+		/****** md5 signature: aa5a44f7eb178e7bc497b41c38a65aad ******/
 		%feature("compactdefaultargs") AddList;
 		%feature("autodoc", "
 Parameters
@@ -3030,8 +3030,8 @@ Gets a list of entities and adds its to the iteration list.
 ") AddList;
 		void AddList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
-		/****************** Content ******************/
-		/**** md5 signature: 7b256486d5a1be7418a47021add2e3df ****/
+		/****** Interface_EntityIterator::Content ******/
+		/****** md5 signature: 7b256486d5a1be7418a47021add2e3df ******/
 		%feature("compactdefaultargs") Content;
 		%feature("autodoc", "Return
 -------
@@ -3043,8 +3043,8 @@ Returns the content of the iterator, accessed through a handle to be used by a f
 ") Content;
 		opencascade::handle<TColStd_HSequenceOfTransient> Content();
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
+		/****** Interface_EntityIterator::Destroy ******/
+		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "Return
 -------
@@ -3056,8 +3056,8 @@ Clears data of iteration.
 ") Destroy;
 		void Destroy();
 
-		/****************** GetOneItem ******************/
-		/**** md5 signature: 1b4381c0765863bea2533a714d734ccd ****/
+		/****** Interface_EntityIterator::GetOneItem ******/
+		/****** md5 signature: 1b4381c0765863bea2533a714d734ccd ******/
 		%feature("compactdefaultargs") GetOneItem;
 		%feature("autodoc", "
 Parameters
@@ -3074,8 +3074,8 @@ Same as additem (kept for compatibility).
 ") GetOneItem;
 		void GetOneItem(const opencascade::handle<Standard_Transient> & anentity);
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** Interface_EntityIterator::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -3087,8 +3087,8 @@ Says if there are other entities (vertices) to iterate the first time, calls sta
 ") More;
 		Standard_Boolean More();
 
-		/****************** NbEntities ******************/
-		/**** md5 signature: 533943455099343f106415a0a22e8ac9 ****/
+		/****** Interface_EntityIterator::NbEntities ******/
+		/****** md5 signature: 533943455099343f106415a0a22e8ac9 ******/
 		%feature("compactdefaultargs") NbEntities;
 		%feature("autodoc", "Return
 -------
@@ -3100,8 +3100,8 @@ Returns count of entities which will be iterated on calls start if not yet done.
 ") NbEntities;
 		Standard_Integer NbEntities();
 
-		/****************** NbTyped ******************/
-		/**** md5 signature: 999a48c8c6ac9f22884970d7325b38c7 ****/
+		/****** Interface_EntityIterator::NbTyped ******/
+		/****** md5 signature: 999a48c8c6ac9f22884970d7325b38c7 ******/
 		%feature("compactdefaultargs") NbTyped;
 		%feature("autodoc", "
 Parameters
@@ -3118,8 +3118,8 @@ Returns count of entities of a given type (kind of).
 ") NbTyped;
 		Standard_Integer NbTyped(const opencascade::handle<Standard_Type> & type);
 
-		/****************** Next ******************/
-		/**** md5 signature: db8382462e33c960ba2eedf02613f499 ****/
+		/****** Interface_EntityIterator::Next ******/
+		/****** md5 signature: db8382462e33c960ba2eedf02613f499 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -3131,8 +3131,8 @@ Sets iteration to the next entity (vertex) to give.
 ") Next;
 		void Next();
 
-		/****************** SelectType ******************/
-		/**** md5 signature: 1c0dfe46bcf42d7b3d927e5df31e1e68 ****/
+		/****** Interface_EntityIterator::SelectType ******/
+		/****** md5 signature: 1c0dfe46bcf42d7b3d927e5df31e1e68 ******/
 		%feature("compactdefaultargs") SelectType;
 		%feature("autodoc", "
 Parameters
@@ -3150,8 +3150,8 @@ Selects entities with are kind of a given type, keep only them (is keep is true)
 ") SelectType;
 		void SelectType(const opencascade::handle<Standard_Type> & atype, const Standard_Boolean keep);
 
-		/****************** Start ******************/
-		/**** md5 signature: dde3966b7a16919fa06cc08ef880a579 ****/
+		/****** Interface_EntityIterator::Start ******/
+		/****** md5 signature: dde3966b7a16919fa06cc08ef880a579 ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "Return
 -------
@@ -3163,8 +3163,8 @@ Allows re-iteration (useless for the first iteration).
 ") Start;
 		virtual void Start();
 
-		/****************** Typed ******************/
-		/**** md5 signature: 89394515bc1f2d9fa11805dfbe59ac72 ****/
+		/****** Interface_EntityIterator::Typed ******/
+		/****** md5 signature: 89394515bc1f2d9fa11805dfbe59ac72 ******/
 		%feature("compactdefaultargs") Typed;
 		%feature("autodoc", "
 Parameters
@@ -3181,8 +3181,8 @@ Returns the list of entities of a given type (kind of).
 ") Typed;
 		Interface_EntityIterator Typed(const opencascade::handle<Standard_Type> & type);
 
-		/****************** Value ******************/
-		/**** md5 signature: b1443f8da90189a74241bf586c57fc63 ****/
+		/****** Interface_EntityIterator::Value ******/
+		/****** md5 signature: b1443f8da90189a74241bf586c57fc63 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -3208,8 +3208,8 @@ Returns the current entity iterated, to be used by interface tools.
 *****************************/
 class Interface_EntityList {
 	public:
-		/****************** Interface_EntityList ******************/
-		/**** md5 signature: 627b17e512379a9e8b95fe4155041e80 ****/
+		/****** Interface_EntityList::Interface_EntityList ******/
+		/****** md5 signature: 627b17e512379a9e8b95fe4155041e80 ******/
 		%feature("compactdefaultargs") Interface_EntityList;
 		%feature("autodoc", "Return
 -------
@@ -3221,8 +3221,8 @@ Creates a list as being empty.
 ") Interface_EntityList;
 		 Interface_EntityList();
 
-		/****************** Add ******************/
-		/**** md5 signature: c44fbf384fa2d194a65791bc9700727c ****/
+		/****** Interface_EntityList::Add ******/
+		/****** md5 signature: c44fbf384fa2d194a65791bc9700727c ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -3239,8 +3239,8 @@ Adds an entity to the list, that is, with no regard about the order (faster than
 ") Add;
 		void Add(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Append ******************/
-		/**** md5 signature: 48722434508b90c52582bcdb47c3a1c8 ****/
+		/****** Interface_EntityList::Append ******/
+		/****** md5 signature: 48722434508b90c52582bcdb47c3a1c8 ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -3257,8 +3257,8 @@ Appends an entity, that is to the end of the list (keeps order, but works slower
 ") Append;
 		void Append(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_EntityList::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -3270,8 +3270,8 @@ Clears the list.
 ") Clear;
 		void Clear();
 
-		/****************** FillIterator ******************/
-		/**** md5 signature: e32e298c5181f5a878a91b9da55bfb78 ****/
+		/****** Interface_EntityList::FillIterator ******/
+		/****** md5 signature: e32e298c5181f5a878a91b9da55bfb78 ******/
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "
 Parameters
@@ -3288,8 +3288,8 @@ Fills an iterator with the content of the list (normal way to consult a list whi
 ") FillIterator;
 		void FillIterator(Interface_EntityIterator & iter);
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
+		/****** Interface_EntityList::IsEmpty ******/
+		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -3301,8 +3301,8 @@ Returns true if the list is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** NbEntities ******************/
-		/**** md5 signature: 533943455099343f106415a0a22e8ac9 ****/
+		/****** Interface_EntityList::NbEntities ******/
+		/****** md5 signature: 533943455099343f106415a0a22e8ac9 ******/
 		%feature("compactdefaultargs") NbEntities;
 		%feature("autodoc", "Return
 -------
@@ -3314,8 +3314,8 @@ Returns count of recorded entities.
 ") NbEntities;
 		Standard_Integer NbEntities();
 
-		/****************** NbTypedEntities ******************/
-		/**** md5 signature: 4a49de8b8d8c868d4307a6b3433312af ****/
+		/****** Interface_EntityList::NbTypedEntities ******/
+		/****** md5 signature: 4a49de8b8d8c868d4307a6b3433312af ******/
 		%feature("compactdefaultargs") NbTypedEntities;
 		%feature("autodoc", "
 Parameters
@@ -3332,8 +3332,8 @@ Returns count of entities of a given type (0: none).
 ") NbTypedEntities;
 		Standard_Integer NbTypedEntities(const opencascade::handle<Standard_Type> & atype);
 
-		/****************** Remove ******************/
-		/**** md5 signature: bc1ae58548c5800e7ea8050cad381881 ****/
+		/****** Interface_EntityList::Remove ******/
+		/****** md5 signature: bc1ae58548c5800e7ea8050cad381881 ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -3350,8 +3350,8 @@ Removes an entity from the list, if it is there.
 ") Remove;
 		void Remove(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Remove ******************/
-		/**** md5 signature: e3847406ec281ce8f6c5ad43b1693cec ****/
+		/****** Interface_EntityList::Remove ******/
+		/****** md5 signature: e3847406ec281ce8f6c5ad43b1693cec ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -3368,8 +3368,8 @@ Removes an entity from the list, given its rank.
 ") Remove;
 		void Remove(const Standard_Integer num);
 
-		/****************** SetValue ******************/
-		/**** md5 signature: b9b839d4cab4434a1fde39fb5e695825 ****/
+		/****** Interface_EntityList::SetValue ******/
+		/****** md5 signature: b9b839d4cab4434a1fde39fb5e695825 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -3387,8 +3387,8 @@ Returns an item given its number. beware about the way the list was filled (see 
 ") SetValue;
 		void SetValue(const Standard_Integer num, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** TypedEntity ******************/
-		/**** md5 signature: 67e22368a55b7a38e5b3e70c37bf0cb3 ****/
+		/****** Interface_EntityList::TypedEntity ******/
+		/****** md5 signature: 67e22368a55b7a38e5b3e70c37bf0cb3 ******/
 		%feature("compactdefaultargs") TypedEntity;
 		%feature("autodoc", "
 Parameters
@@ -3406,8 +3406,8 @@ Returns the entity which is of a given type. if num = 0 (d), there must be one a
 ") TypedEntity;
 		opencascade::handle<Standard_Transient> TypedEntity(const opencascade::handle<Standard_Type> & atype, const Standard_Integer num = 0);
 
-		/****************** Value ******************/
-		/**** md5 signature: a291325b4e5caa2a5ab946934090ec8b ****/
+		/****** Interface_EntityList::Value ******/
+		/****** md5 signature: a291325b4e5caa2a5ab946934090ec8b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -3438,8 +3438,8 @@ Returns an item given its number. beware about the way the list was filled (see 
 ********************************/
 class Interface_FileParameter {
 	public:
-		/****************** Interface_FileParameter ******************/
-		/**** md5 signature: 10c28b1eddd0be7d98b4d0e9b8f5e694 ****/
+		/****** Interface_FileParameter::Interface_FileParameter ******/
+		/****** md5 signature: 10c28b1eddd0be7d98b4d0e9b8f5e694 ******/
 		%feature("compactdefaultargs") Interface_FileParameter;
 		%feature("autodoc", "Return
 -------
@@ -3451,8 +3451,8 @@ No available documentation.
 ") Interface_FileParameter;
 		 Interface_FileParameter();
 
-		/****************** CValue ******************/
-		/**** md5 signature: e98648cfa0854064b9564f027ea87801 ****/
+		/****** Interface_FileParameter::CValue ******/
+		/****** md5 signature: e98648cfa0854064b9564f027ea87801 ******/
 		%feature("compactdefaultargs") CValue;
 		%feature("autodoc", "Return
 -------
@@ -3464,8 +3464,8 @@ Same as above, but as a cstring (for immediate exploitation) was c++: return con
 ") CValue;
 		Standard_CString CValue();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_FileParameter::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -3477,8 +3477,8 @@ Clears stored data: frees memory taken for the string value.
 ") Clear;
 		void Clear();
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
+		/****** Interface_FileParameter::Destroy ******/
+		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "Return
 -------
@@ -3490,8 +3490,8 @@ Destructor. does nothing because memory is managed by paramset.
 ") Destroy;
 		void Destroy();
 
-		/****************** EntityNumber ******************/
-		/**** md5 signature: 3b5de40d76500537f54e61dc1880dcc0 ****/
+		/****** Interface_FileParameter::EntityNumber ******/
+		/****** md5 signature: 3b5de40d76500537f54e61dc1880dcc0 ******/
 		%feature("compactdefaultargs") EntityNumber;
 		%feature("autodoc", "Return
 -------
@@ -3503,8 +3503,8 @@ Returns value set by setentitynumber.
 ") EntityNumber;
 		Standard_Integer EntityNumber();
 
-		/****************** Init ******************/
-		/**** md5 signature: 605189a0f3dfab6af921265c543ce052 ****/
+		/****** Interface_FileParameter::Init ******/
+		/****** md5 signature: 605189a0f3dfab6af921265c543ce052 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3522,8 +3522,8 @@ Fills fields (with entity number set to zero).
 ") Init;
 		void Init(TCollection_AsciiString val, const Interface_ParamType typ);
 
-		/****************** Init ******************/
-		/**** md5 signature: d9af5d9fa4a25bf77ef7ae426708d16d ****/
+		/****** Interface_FileParameter::Init ******/
+		/****** md5 signature: d9af5d9fa4a25bf77ef7ae426708d16d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -3541,8 +3541,8 @@ Same as above, but builds the value from a cstring.
 ") Init;
 		void Init(Standard_CString val, const Interface_ParamType typ);
 
-		/****************** ParamType ******************/
-		/**** md5 signature: dc18453a4564d25585accbb5ebf0a4f7 ****/
+		/****** Interface_FileParameter::ParamType ******/
+		/****** md5 signature: dc18453a4564d25585accbb5ebf0a4f7 ******/
 		%feature("compactdefaultargs") ParamType;
 		%feature("autodoc", "Return
 -------
@@ -3554,8 +3554,8 @@ Returns the type of the parameter.
 ") ParamType;
 		Interface_ParamType ParamType();
 
-		/****************** SetEntityNumber ******************/
-		/**** md5 signature: 983185a3faf631b23ae4c33cb29ff8e7 ****/
+		/****** Interface_FileParameter::SetEntityNumber ******/
+		/****** md5 signature: 983185a3faf631b23ae4c33cb29ff8e7 ******/
 		%feature("compactdefaultargs") SetEntityNumber;
 		%feature("autodoc", "
 Parameters
@@ -3587,8 +3587,8 @@ Allows to set a reference to an entity in a numbered list.
 %nodefaultctor Interface_FileReaderData;
 class Interface_FileReaderData : public Standard_Transient {
 	public:
-		/****************** AddParam ******************/
-		/**** md5 signature: 49ab830a569601354ff545df352b0db0 ****/
+		/****** Interface_FileReaderData::AddParam ******/
+		/****** md5 signature: 49ab830a569601354ff545df352b0db0 ******/
 		%feature("compactdefaultargs") AddParam;
 		%feature("autodoc", "
 Parameters
@@ -3608,8 +3608,8 @@ Adds a parameter to record no 'num' and fills its fields (entitynumber is option
 ") AddParam;
 		void AddParam(const Standard_Integer num, Standard_CString aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
 
-		/****************** AddParam ******************/
-		/**** md5 signature: cbb0f2de6076dbed8f2cd91097dbd947 ****/
+		/****** Interface_FileReaderData::AddParam ******/
+		/****** md5 signature: cbb0f2de6076dbed8f2cd91097dbd947 ******/
 		%feature("compactdefaultargs") AddParam;
 		%feature("autodoc", "
 Parameters
@@ -3629,8 +3629,8 @@ Same as above, but gets a asciistring from tcollection remark that the content o
 ") AddParam;
 		void AddParam(const Standard_Integer num, TCollection_AsciiString aval, const Interface_ParamType atype, const Standard_Integer nument = 0);
 
-		/****************** AddParam ******************/
-		/**** md5 signature: cd0f1b4fe80c892227e65eb7256dde7c ****/
+		/****** Interface_FileReaderData::AddParam ******/
+		/****** md5 signature: cd0f1b4fe80c892227e65eb7256dde7c ******/
 		%feature("compactdefaultargs") AddParam;
 		%feature("autodoc", "
 Parameters
@@ -3648,8 +3648,8 @@ Same as above, but gets a complete fileparameter warning: content of <fp> is not
 ") AddParam;
 		void AddParam(const Standard_Integer num, const Interface_FileParameter & FP);
 
-		/****************** BindEntity ******************/
-		/**** md5 signature: 20492aaa4dc299bd67a1910947dfdc5e ****/
+		/****** Interface_FileReaderData::BindEntity ******/
+		/****** md5 signature: 20492aaa4dc299bd67a1910947dfdc5e ******/
 		%feature("compactdefaultargs") BindEntity;
 		%feature("autodoc", "
 Parameters
@@ -3667,8 +3667,8 @@ Binds an entity to a record.
 ") BindEntity;
 		void BindEntity(const Standard_Integer num, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** BoundEntity ******************/
-		/**** md5 signature: 44a67375acd0858955b64bd37ff52347 ****/
+		/****** Interface_FileReaderData::BoundEntity ******/
+		/****** md5 signature: 44a67375acd0858955b64bd37ff52347 ******/
 		%feature("compactdefaultargs") BoundEntity;
 		%feature("autodoc", "
 Parameters
@@ -3685,8 +3685,8 @@ Returns the entity bound to a record, set by setentities.
 ") BoundEntity;
 		const opencascade::handle<Standard_Transient> & BoundEntity(const Standard_Integer num);
 
-		/****************** ChangeParam ******************/
-		/**** md5 signature: f1f2af05c4712705f3e1b45bd7a9a406 ****/
+		/****** Interface_FileReaderData::ChangeParam ******/
+		/****** md5 signature: f1f2af05c4712705f3e1b45bd7a9a406 ******/
 		%feature("compactdefaultargs") ChangeParam;
 		%feature("autodoc", "
 Parameters
@@ -3704,8 +3704,8 @@ Same as above, but in order to be modified on place.
 ") ChangeParam;
 		Interface_FileParameter & ChangeParam(const Standard_Integer num, const Standard_Integer nump);
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
+		/****** Interface_FileReaderData::Destroy ******/
+		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "Return
 -------
@@ -3717,8 +3717,8 @@ Destructor (waiting for memory management).
 ") Destroy;
 		void Destroy();
 
-		/****************** Fastof ******************/
-		/**** md5 signature: 2de3aa8dfb81cfc084890473f14c218d ****/
+		/****** Interface_FileReaderData::Fastof ******/
+		/****** md5 signature: 2de3aa8dfb81cfc084890473f14c218d ******/
 		%feature("compactdefaultargs") Fastof;
 		%feature("autodoc", "
 Parameters
@@ -3735,8 +3735,8 @@ Same spec.s as standard <atof> but 5 times faster.
 ") Fastof;
 		static Standard_Real Fastof(Standard_CString str);
 
-		/****************** FindNextRecord ******************/
-		/**** md5 signature: fb2560ab5021a7b300ace6b22efac7bc ****/
+		/****** Interface_FileReaderData::FindNextRecord ******/
+		/****** md5 signature: fb2560ab5021a7b300ace6b22efac7bc ******/
 		%feature("compactdefaultargs") FindNextRecord;
 		%feature("autodoc", "
 Parameters
@@ -3753,8 +3753,8 @@ Determines the record number defining an entity following a given record number.
 ") FindNextRecord;
 		virtual Standard_Integer FindNextRecord(const Standard_Integer num);
 
-		/****************** InitParams ******************/
-		/**** md5 signature: bfb17402e023749815f9bb51607f8362 ****/
+		/****** Interface_FileReaderData::InitParams ******/
+		/****** md5 signature: bfb17402e023749815f9bb51607f8362 ******/
 		%feature("compactdefaultargs") InitParams;
 		%feature("autodoc", "
 Parameters
@@ -3771,8 +3771,8 @@ Attaches an empty paramlist to a record.
 ") InitParams;
 		void InitParams(const Standard_Integer num);
 
-		/****************** IsErrorLoad ******************/
-		/**** md5 signature: 6ebd932c81cca5f3fefd96348c513a41 ****/
+		/****** Interface_FileReaderData::IsErrorLoad ******/
+		/****** md5 signature: 6ebd932c81cca5f3fefd96348c513a41 ******/
 		%feature("compactdefaultargs") IsErrorLoad;
 		%feature("autodoc", "Return
 -------
@@ -3784,8 +3784,8 @@ Returns true if the status 'error load' has been set (to true or false).
 ") IsErrorLoad;
 		Standard_Boolean IsErrorLoad();
 
-		/****************** IsParamDefined ******************/
-		/**** md5 signature: ed3dab666107da204e7759a1b035a969 ****/
+		/****** Interface_FileReaderData::IsParamDefined ******/
+		/****** md5 signature: ed3dab666107da204e7759a1b035a969 ******/
 		%feature("compactdefaultargs") IsParamDefined;
 		%feature("autodoc", "
 Parameters
@@ -3803,8 +3803,8 @@ Returns true if parameter 'nump' of record 'num' is defined (it is not if its ty
 ") IsParamDefined;
 		Standard_Boolean IsParamDefined(const Standard_Integer num, const Standard_Integer nump);
 
-		/****************** NbEntities ******************/
-		/**** md5 signature: ab5845a31867507585d5d3908ca3a16a ****/
+		/****** Interface_FileReaderData::NbEntities ******/
+		/****** md5 signature: ab5845a31867507585d5d3908ca3a16a ******/
 		%feature("compactdefaultargs") NbEntities;
 		%feature("autodoc", "Return
 -------
@@ -3816,8 +3816,8 @@ Returns the count of entities. depending of each norm, records can be entities o
 ") NbEntities;
 		virtual Standard_Integer NbEntities();
 
-		/****************** NbParams ******************/
-		/**** md5 signature: 444b962634792441aa4386da72bb86a3 ****/
+		/****** Interface_FileReaderData::NbParams ******/
+		/****** md5 signature: 444b962634792441aa4386da72bb86a3 ******/
 		%feature("compactdefaultargs") NbParams;
 		%feature("autodoc", "
 Parameters
@@ -3834,8 +3834,8 @@ Returns count of parameters attached to record 'num' if <num> = 0, returns the t
 ") NbParams;
 		Standard_Integer NbParams(const Standard_Integer num);
 
-		/****************** NbRecords ******************/
-		/**** md5 signature: 4cdd54a49baca0bb87c9a76a070d4161 ****/
+		/****** Interface_FileReaderData::NbRecords ******/
+		/****** md5 signature: 4cdd54a49baca0bb87c9a76a070d4161 ******/
 		%feature("compactdefaultargs") NbRecords;
 		%feature("autodoc", "Return
 -------
@@ -3847,8 +3847,8 @@ Returns the count of registered records that is, value given for initialization 
 ") NbRecords;
 		virtual Standard_Integer NbRecords();
 
-		/****************** Param ******************/
-		/**** md5 signature: 01d82022cc2948d2e6b9cd579181f8e4 ****/
+		/****** Interface_FileReaderData::Param ******/
+		/****** md5 signature: 01d82022cc2948d2e6b9cd579181f8e4 ******/
 		%feature("compactdefaultargs") Param;
 		%feature("autodoc", "
 Parameters
@@ -3866,8 +3866,8 @@ Returns parameter 'nump' of record 'num', as a complete fileparameter.
 ") Param;
 		const Interface_FileParameter & Param(const Standard_Integer num, const Standard_Integer nump);
 
-		/****************** ParamCValue ******************/
-		/**** md5 signature: 56f6b32baee7265ac54bb79c5669632b ****/
+		/****** Interface_FileReaderData::ParamCValue ******/
+		/****** md5 signature: 56f6b32baee7265ac54bb79c5669632b ******/
 		%feature("compactdefaultargs") ParamCValue;
 		%feature("autodoc", "
 Parameters
@@ -3885,8 +3885,8 @@ Same as above, but as a cstring was c++: return const.
 ") ParamCValue;
 		Standard_CString ParamCValue(const Standard_Integer num, const Standard_Integer nump);
 
-		/****************** ParamEntity ******************/
-		/**** md5 signature: 7e8a196be284eb0e3e1b2a2dbd45f003 ****/
+		/****** Interface_FileReaderData::ParamEntity ******/
+		/****** md5 signature: 7e8a196be284eb0e3e1b2a2dbd45f003 ******/
 		%feature("compactdefaultargs") ParamEntity;
 		%feature("autodoc", "
 Parameters
@@ -3904,8 +3904,8 @@ Returns the stepentity referenced by a parameter error if none.
 ") ParamEntity;
 		const opencascade::handle<Standard_Transient> & ParamEntity(const Standard_Integer num, const Standard_Integer nump);
 
-		/****************** ParamFirstRank ******************/
-		/**** md5 signature: cf6bb15954cc88ad7b3d34301ce9dd64 ****/
+		/****** Interface_FileReaderData::ParamFirstRank ******/
+		/****** md5 signature: cf6bb15954cc88ad7b3d34301ce9dd64 ******/
 		%feature("compactdefaultargs") ParamFirstRank;
 		%feature("autodoc", "
 Parameters
@@ -3922,8 +3922,8 @@ Returns the absolute rank of the beginning of a record (its list is from paramfi
 ") ParamFirstRank;
 		Standard_Integer ParamFirstRank(const Standard_Integer num);
 
-		/****************** ParamNumber ******************/
-		/**** md5 signature: 93ae7fc0b31be5ae384b53b3e789927c ****/
+		/****** Interface_FileReaderData::ParamNumber ******/
+		/****** md5 signature: 93ae7fc0b31be5ae384b53b3e789927c ******/
 		%feature("compactdefaultargs") ParamNumber;
 		%feature("autodoc", "
 Parameters
@@ -3941,8 +3941,8 @@ Returns record number of an entity referenced by a parameter of type ident; 0 if
 ") ParamNumber;
 		Standard_Integer ParamNumber(const Standard_Integer num, const Standard_Integer nump);
 
-		/****************** ParamType ******************/
-		/**** md5 signature: f6838b8aab8ad4ba5ebb10d0df766162 ****/
+		/****** Interface_FileReaderData::ParamType ******/
+		/****** md5 signature: f6838b8aab8ad4ba5ebb10d0df766162 ******/
 		%feature("compactdefaultargs") ParamType;
 		%feature("autodoc", "
 Parameters
@@ -3960,8 +3960,8 @@ Returns type of parameter 'nump' of record 'num' returns literal value of parame
 ") ParamType;
 		Interface_ParamType ParamType(const Standard_Integer num, const Standard_Integer nump);
 
-		/****************** Params ******************/
-		/**** md5 signature: da09bb21c50e10920acb7bee59692444 ****/
+		/****** Interface_FileReaderData::Params ******/
+		/****** md5 signature: da09bb21c50e10920acb7bee59692444 ******/
 		%feature("compactdefaultargs") Params;
 		%feature("autodoc", "
 Parameters
@@ -3978,8 +3978,8 @@ Returns the complete paramlist of a record (read only) num = 0 to return the who
 ") Params;
 		opencascade::handle<Interface_ParamList> Params(const Standard_Integer num);
 
-		/****************** ResetErrorLoad ******************/
-		/**** md5 signature: ff1f2143e5d4f24f07df049dd98c3ec3 ****/
+		/****** Interface_FileReaderData::ResetErrorLoad ******/
+		/****** md5 signature: ff1f2143e5d4f24f07df049dd98c3ec3 ******/
 		%feature("compactdefaultargs") ResetErrorLoad;
 		%feature("autodoc", "Return
 -------
@@ -3991,8 +3991,8 @@ Returns the former value of status 'error load' then resets it used to read the 
 ") ResetErrorLoad;
 		Standard_Boolean ResetErrorLoad();
 
-		/****************** SetErrorLoad ******************/
-		/**** md5 signature: 0317d8fd41572c2017db42b6762a896b ****/
+		/****** Interface_FileReaderData::SetErrorLoad ******/
+		/****** md5 signature: 0317d8fd41572c2017db42b6762a896b ******/
 		%feature("compactdefaultargs") SetErrorLoad;
 		%feature("autodoc", "
 Parameters
@@ -4009,8 +4009,8 @@ Sets the status 'error load' on, to overside check fails <val> true: declares un
 ") SetErrorLoad;
 		void SetErrorLoad(const Standard_Boolean val);
 
-		/****************** SetParam ******************/
-		/**** md5 signature: 2948cd7887037c996e67b001b8ecce1c ****/
+		/****** Interface_FileReaderData::SetParam ******/
+		/****** md5 signature: 2948cd7887037c996e67b001b8ecce1c ******/
 		%feature("compactdefaultargs") SetParam;
 		%feature("autodoc", "
 Parameters
@@ -4046,8 +4046,8 @@ Sets a new value for a parameter of a record, given by: num: record number; nump
 %nodefaultctor Interface_FileReaderTool;
 class Interface_FileReaderTool {
 	public:
-		/****************** AnalyseRecord ******************/
-		/**** md5 signature: 8991919de54e808e3c29871e15369043 ****/
+		/****** Interface_FileReaderTool::AnalyseRecord ******/
+		/****** md5 signature: 8991919de54e808e3c29871e15369043 ******/
 		%feature("compactdefaultargs") AnalyseRecord;
 		%feature("autodoc", "
 Parameters
@@ -4066,8 +4066,8 @@ Fills an entity, given record no; specific to each interface, called by analysef
 ") AnalyseRecord;
 		virtual Standard_Boolean AnalyseRecord(const Standard_Integer num, const opencascade::handle<Standard_Transient> & anent, opencascade::handle<Interface_Check> & acheck);
 
-		/****************** BeginRead ******************/
-		/**** md5 signature: ea0231aaf37d47bdb27fe7301b32e5f7 ****/
+		/****** Interface_FileReaderTool::BeginRead ******/
+		/****** md5 signature: ea0231aaf37d47bdb27fe7301b32e5f7 ******/
 		%feature("compactdefaultargs") BeginRead;
 		%feature("autodoc", "
 Parameters
@@ -4084,8 +4084,8 @@ Fills model's header; each interface defines for its model its own file header; 
 ") BeginRead;
 		virtual void BeginRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_FileReaderTool::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -4097,8 +4097,8 @@ Clear fields.
 ") Clear;
 		void Clear();
 
-		/****************** Data ******************/
-		/**** md5 signature: 49aab703e17779aa888cdea315837d69 ****/
+		/****** Interface_FileReaderTool::Data ******/
+		/****** md5 signature: 49aab703e17779aa888cdea315837d69 ******/
 		%feature("compactdefaultargs") Data;
 		%feature("autodoc", "Return
 -------
@@ -4110,8 +4110,8 @@ Returns the filereaderdata which is used to work.
 ") Data;
 		opencascade::handle<Interface_FileReaderData> Data();
 
-		/****************** EndRead ******************/
-		/**** md5 signature: c5425c5baff54d6d611eb77a975e4457 ****/
+		/****** Interface_FileReaderTool::EndRead ******/
+		/****** md5 signature: c5425c5baff54d6d611eb77a975e4457 ******/
 		%feature("compactdefaultargs") EndRead;
 		%feature("autodoc", "
 Parameters
@@ -4128,8 +4128,8 @@ Ends file reading after reading all the entities default is doing nothing; redef
 ") EndRead;
 		virtual void EndRead(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** ErrorHandle ******************/
-		/**** md5 signature: 8cd52cc3593d14fa4239b9d171ad1cc0 ****/
+		/****** Interface_FileReaderTool::ErrorHandle ******/
+		/****** md5 signature: 8cd52cc3593d14fa4239b9d171ad1cc0 ******/
 		%feature("compactdefaultargs") ErrorHandle;
 		%feature("autodoc", "Return
 -------
@@ -4141,8 +4141,8 @@ Returns errorhandle flag.
 ") ErrorHandle;
 		Standard_Boolean ErrorHandle();
 
-		/****************** LoadModel ******************/
-		/**** md5 signature: 995ec1cbe3fa773a68344ea7366dfca3 ****/
+		/****** Interface_FileReaderTool::LoadModel ******/
+		/****** md5 signature: 995ec1cbe3fa773a68344ea7366dfca3 ******/
 		%feature("compactdefaultargs") LoadModel;
 		%feature("autodoc", "
 Parameters
@@ -4159,8 +4159,8 @@ Reads and fills entities from the filereaderdata set by setdata to an interfacem
 ") LoadModel;
 		void LoadModel(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** LoadedEntity ******************/
-		/**** md5 signature: 6c28966f22e0448001189f7322930ddf ****/
+		/****** Interface_FileReaderTool::LoadedEntity ******/
+		/****** md5 signature: 6c28966f22e0448001189f7322930ddf ******/
 		%feature("compactdefaultargs") LoadedEntity;
 		%feature("autodoc", "
 Parameters
@@ -4177,8 +4177,8 @@ Reads, fills and returns one entity read from a record of the filereaderdata. th
 ") LoadedEntity;
 		opencascade::handle<Standard_Transient> LoadedEntity(const Standard_Integer num);
 
-		/****************** Messenger ******************/
-		/**** md5 signature: c51845cdafadb143338935f519a3d7c7 ****/
+		/****** Interface_FileReaderTool::Messenger ******/
+		/****** md5 signature: c51845cdafadb143338935f519a3d7c7 ******/
 		%feature("compactdefaultargs") Messenger;
 		%feature("autodoc", "Return
 -------
@@ -4190,8 +4190,8 @@ Returns messenger used for outputting messages. the returned object is guarantee
 ") Messenger;
 		opencascade::handle<Message_Messenger> Messenger();
 
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** Interface_FileReaderTool::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -4203,8 +4203,8 @@ Returns the stored model.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** NewModel ******************/
-		/**** md5 signature: ffdc5f59840456ad78fada00ad126d58 ****/
+		/****** Interface_FileReaderTool::NewModel ******/
+		/****** md5 signature: ffdc5f59840456ad78fada00ad126d58 ******/
 		%feature("compactdefaultargs") NewModel;
 		%feature("autodoc", "Return
 -------
@@ -4216,8 +4216,8 @@ Creates an empty model of the norm. uses protocol to do it.
 ") NewModel;
 		opencascade::handle<Interface_InterfaceModel> NewModel();
 
-		/****************** Protocol ******************/
-		/**** md5 signature: 1441632a4f2333f871a63bf366a58f3e ****/
+		/****** Interface_FileReaderTool::Protocol ******/
+		/****** md5 signature: 1441632a4f2333f871a63bf366a58f3e ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -4229,8 +4229,8 @@ Returns the protocol given at creation time.
 ") Protocol;
 		opencascade::handle<Interface_Protocol> Protocol();
 
-		/****************** Recognize ******************/
-		/**** md5 signature: 9f38dcf5fb1595ae7483daff0d787242 ****/
+		/****** Interface_FileReaderTool::Recognize ******/
+		/****** md5 signature: 9f38dcf5fb1595ae7483daff0d787242 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -4249,8 +4249,8 @@ Recognizes a record, given its number. specific to each interface; called by set
 ") Recognize;
 		virtual Standard_Boolean Recognize(const Standard_Integer num, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
 
-		/****************** RecognizeByLib ******************/
-		/**** md5 signature: 43604696c88d235293f2a7286a049315 ****/
+		/****** Interface_FileReaderTool::RecognizeByLib ******/
+		/****** md5 signature: 43604696c88d235293f2a7286a049315 ******/
 		%feature("compactdefaultargs") RecognizeByLib;
 		%feature("autodoc", "
 Parameters
@@ -4271,8 +4271,8 @@ Recognizes a record with the help of libraries. can be used to implement the met
 ") RecognizeByLib;
 		Standard_Boolean RecognizeByLib(const Standard_Integer num, Interface_GeneralLib & glib, Interface_ReaderLib & rlib, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
 
-		/****************** SetData ******************/
-		/**** md5 signature: 4d43cc70376bf1ba45d9a38d1f369c8d ****/
+		/****** Interface_FileReaderTool::SetData ******/
+		/****** md5 signature: 4d43cc70376bf1ba45d9a38d1f369c8d ******/
 		%feature("compactdefaultargs") SetData;
 		%feature("autodoc", "
 Parameters
@@ -4290,8 +4290,8 @@ Sets data to a filereaderdata. works with a protocol.
 ") SetData;
 		void SetData(const opencascade::handle<Interface_FileReaderData> & reader, const opencascade::handle<Interface_Protocol> & protocol);
 
-		/****************** SetEntities ******************/
-		/**** md5 signature: 6829df1058b14254ac43288db26b08c1 ****/
+		/****** Interface_FileReaderTool::SetEntities ******/
+		/****** md5 signature: 6829df1058b14254ac43288db26b08c1 ******/
 		%feature("compactdefaultargs") SetEntities;
 		%feature("autodoc", "Return
 -------
@@ -4303,8 +4303,8 @@ Fills records with empty entities; once done, each entity can ask the filereader
 ") SetEntities;
 		void SetEntities();
 
-		/****************** SetErrorHandle ******************/
-		/**** md5 signature: cea15a20003832113608c312ef431fa6 ****/
+		/****** Interface_FileReaderTool::SetErrorHandle ******/
+		/****** md5 signature: cea15a20003832113608c312ef431fa6 ******/
 		%feature("compactdefaultargs") SetErrorHandle;
 		%feature("autodoc", "
 Parameters
@@ -4321,8 +4321,8 @@ Allows controlling whether exception raisings are handled if err is false, they 
 ") SetErrorHandle;
 		void SetErrorHandle(const Standard_Boolean err);
 
-		/****************** SetMessenger ******************/
-		/**** md5 signature: a9749da4085afccb49a47ccebbb86045 ****/
+		/****** Interface_FileReaderTool::SetMessenger ******/
+		/****** md5 signature: a9749da4085afccb49a47ccebbb86045 ******/
 		%feature("compactdefaultargs") SetMessenger;
 		%feature("autodoc", "
 Parameters
@@ -4339,8 +4339,8 @@ Sets messenger used for outputting messages.
 ") SetMessenger;
 		void SetMessenger(const opencascade::handle<Message_Messenger> & messenger);
 
-		/****************** SetModel ******************/
-		/**** md5 signature: 4df40e0b744cd676e093c21750a0c572 ****/
+		/****** Interface_FileReaderTool::SetModel ******/
+		/****** md5 signature: 4df40e0b744cd676e093c21750a0c572 ******/
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "
 Parameters
@@ -4357,8 +4357,8 @@ Stores a model. used when the model has been loaded.
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** SetTraceLevel ******************/
-		/**** md5 signature: b2d3fab409a6e2832ea6fb56a22812c1 ****/
+		/****** Interface_FileReaderTool::SetTraceLevel ******/
+		/****** md5 signature: b2d3fab409a6e2832ea6fb56a22812c1 ******/
 		%feature("compactdefaultargs") SetTraceLevel;
 		%feature("autodoc", "
 Parameters
@@ -4375,8 +4375,8 @@ Sets trace level used for outputting messages - 0: no trace at all - 1: errors -
 ") SetTraceLevel;
 		void SetTraceLevel(const Standard_Integer tracelev);
 
-		/****************** TraceLevel ******************/
-		/**** md5 signature: 71a5f63811c28c261ef1f9e77d8b2618 ****/
+		/****** Interface_FileReaderTool::TraceLevel ******/
+		/****** md5 signature: 71a5f63811c28c261ef1f9e77d8b2618 ******/
 		%feature("compactdefaultargs") TraceLevel;
 		%feature("autodoc", "Return
 -------
@@ -4388,8 +4388,8 @@ Returns trace level used for outputting messages.
 ") TraceLevel;
 		Standard_Integer TraceLevel();
 
-		/****************** UnknownEntity ******************/
-		/**** md5 signature: e1212622c449569754bddae17d05661d ****/
+		/****** Interface_FileReaderTool::UnknownEntity ******/
+		/****** md5 signature: e1212622c449569754bddae17d05661d ******/
 		%feature("compactdefaultargs") UnknownEntity;
 		%feature("autodoc", "Return
 -------
@@ -4415,8 +4415,8 @@ Provides an unknown entity, specific to the interface called by setentities when
 ******************************/
 class Interface_FloatWriter {
 	public:
-		/****************** Interface_FloatWriter ******************/
-		/**** md5 signature: 022ac7db62033741bbe1ea50a9edbdce ****/
+		/****** Interface_FloatWriter::Interface_FloatWriter ******/
+		/****** md5 signature: 022ac7db62033741bbe1ea50a9edbdce ******/
 		%feature("compactdefaultargs") Interface_FloatWriter;
 		%feature("autodoc", "
 Parameters
@@ -4433,8 +4433,8 @@ Creates a floatwriter ready to work, with default options - - zero suppress opti
 ") Interface_FloatWriter;
 		 Interface_FloatWriter(const Standard_Integer chars = 0);
 
-		/****************** Convert ******************/
-		/**** md5 signature: b67fef250ce64c3c0c648b18db37f72c ****/
+		/****** Interface_FloatWriter::Convert ******/
+		/****** md5 signature: b67fef250ce64c3c0c648b18db37f72c ******/
 		%feature("compactdefaultargs") Convert;
 		%feature("autodoc", "
 Parameters
@@ -4457,8 +4457,8 @@ This class method converts a real value to a string, given options given as argu
 ") Convert;
 		static Standard_Integer Convert(const Standard_Real val, Standard_CString text, const Standard_Boolean zerosup, const Standard_Real Range1, const Standard_Real Range2, Standard_CString mainform, Standard_CString rangeform);
 
-		/****************** FormatForRange ******************/
-		/**** md5 signature: 4c66511040ab21973efd4fb8a5336a70 ****/
+		/****** Interface_FloatWriter::FormatForRange ******/
+		/****** md5 signature: 4c66511040ab21973efd4fb8a5336a70 ******/
 		%feature("compactdefaultargs") FormatForRange;
 		%feature("autodoc", "Return
 -------
@@ -4470,8 +4470,8 @@ Returns the format for range, if set meaningful only if <range> from options is 
 ") FormatForRange;
 		Standard_CString FormatForRange();
 
-		/****************** MainFormat ******************/
-		/**** md5 signature: d5f20ec9bffc0b0df53410e928ed4e20 ****/
+		/****** Interface_FloatWriter::MainFormat ******/
+		/****** md5 signature: d5f20ec9bffc0b0df53410e928ed4e20 ******/
 		%feature("compactdefaultargs") MainFormat;
 		%feature("autodoc", "Return
 -------
@@ -4483,8 +4483,8 @@ Returns the main format was c++: return const.
 ") MainFormat;
 		Standard_CString MainFormat();
 
-		/****************** Options ******************/
-		/**** md5 signature: 0f9f7a2d709a585ab79f1b8ab7b7da24 ****/
+		/****** Interface_FloatWriter::Options ******/
+		/****** md5 signature: 0f9f7a2d709a585ab79f1b8ab7b7da24 ******/
 		%feature("compactdefaultargs") Options;
 		%feature("autodoc", "
 Parameters
@@ -4503,8 +4503,8 @@ Returns active options: <zerosup> is the option zerosuppress, <range> is true if
 ") Options;
 		void Options(Standard_Boolean &OutValue, Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
-		/****************** SetDefaults ******************/
-		/**** md5 signature: fd7085146d9f759589ce4b06625f6361 ****/
+		/****** Interface_FloatWriter::SetDefaults ******/
+		/****** md5 signature: fd7085146d9f759589ce4b06625f6361 ******/
 		%feature("compactdefaultargs") SetDefaults;
 		%feature("autodoc", "
 Parameters
@@ -4521,8 +4521,8 @@ Sets again options to the defaults given by create.
 ") SetDefaults;
 		void SetDefaults(const Standard_Integer chars = 0);
 
-		/****************** SetFormat ******************/
-		/**** md5 signature: e09be756d5e71f033f39c42255999e72 ****/
+		/****** Interface_FloatWriter::SetFormat ******/
+		/****** md5 signature: e09be756d5e71f033f39c42255999e72 ******/
 		%feature("compactdefaultargs") SetFormat;
 		%feature("autodoc", "
 Parameters
@@ -4540,8 +4540,8 @@ Sets a specific format for sending reals (main format) (default from creation is
 ") SetFormat;
 		void SetFormat(Standard_CString form, const Standard_Boolean reset = Standard_True);
 
-		/****************** SetFormatForRange ******************/
-		/**** md5 signature: dae1e339fb84d300b23b00a19e3bdceb ****/
+		/****** Interface_FloatWriter::SetFormatForRange ******/
+		/****** md5 signature: dae1e339fb84d300b23b00a19e3bdceb ******/
 		%feature("compactdefaultargs") SetFormatForRange;
 		%feature("autodoc", "
 Parameters
@@ -4560,8 +4560,8 @@ Sets a secondary format for real, to be applied between r1 and r2 (in absolute v
 ") SetFormatForRange;
 		void SetFormatForRange(Standard_CString form, const Standard_Real R1, const Standard_Real R2);
 
-		/****************** SetZeroSuppress ******************/
-		/**** md5 signature: 37a02e3338eee7e275b19584090a7212 ****/
+		/****** Interface_FloatWriter::SetZeroSuppress ******/
+		/****** md5 signature: 37a02e3338eee7e275b19584090a7212 ******/
 		%feature("compactdefaultargs") SetZeroSuppress;
 		%feature("autodoc", "
 Parameters
@@ -4578,8 +4578,8 @@ Sets sending real parameters to suppress trailing zeros and null exponent ('e+00
 ") SetZeroSuppress;
 		void SetZeroSuppress(const Standard_Boolean mode);
 
-		/****************** Write ******************/
-		/**** md5 signature: 59b8b728e9dea7c104d93078939a8f17 ****/
+		/****** Interface_FloatWriter::Write ******/
+		/****** md5 signature: 59b8b728e9dea7c104d93078939a8f17 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -4611,8 +4611,8 @@ Writes a real value <val> to a string <text> by using the options. returns the u
 ************************/
 class Interface_GTool : public Standard_Transient {
 	public:
-		/****************** Interface_GTool ******************/
-		/**** md5 signature: d447996be6706f4a0b8afd8e40dacd2a ****/
+		/****** Interface_GTool::Interface_GTool ******/
+		/****** md5 signature: d447996be6706f4a0b8afd8e40dacd2a ******/
 		%feature("compactdefaultargs") Interface_GTool;
 		%feature("autodoc", "Return
 -------
@@ -4624,8 +4624,8 @@ Creates an empty, not set, gtool.
 ") Interface_GTool;
 		 Interface_GTool();
 
-		/****************** Interface_GTool ******************/
-		/**** md5 signature: 7d65dec81ae8d78db722f997cc8c0b18 ****/
+		/****** Interface_GTool::Interface_GTool ******/
+		/****** md5 signature: 7d65dec81ae8d78db722f997cc8c0b18 ******/
 		%feature("compactdefaultargs") Interface_GTool;
 		%feature("autodoc", "
 Parameters
@@ -4643,8 +4643,8 @@ Creates a gtool from a protocol optional starting count of entities.
 ") Interface_GTool;
 		 Interface_GTool(const opencascade::handle<Interface_Protocol> & proto, const Standard_Integer nbent = 0);
 
-		/****************** ClearEntities ******************/
-		/**** md5 signature: 90404488abdcf1cf8bf25e6c045c694c ****/
+		/****** Interface_GTool::ClearEntities ******/
+		/****** md5 signature: 90404488abdcf1cf8bf25e6c045c694c ******/
 		%feature("compactdefaultargs") ClearEntities;
 		%feature("autodoc", "Return
 -------
@@ -4656,8 +4656,8 @@ Clears the maps which record, for each already recorded entity its module and ca
 ") ClearEntities;
 		void ClearEntities();
 
-		/****************** Lib ******************/
-		/**** md5 signature: 18692df48b34b8e9f55d362fa00f1cf8 ****/
+		/****** Interface_GTool::Lib ******/
+		/****** md5 signature: 18692df48b34b8e9f55d362fa00f1cf8 ******/
 		%feature("compactdefaultargs") Lib;
 		%feature("autodoc", "Return
 -------
@@ -4669,8 +4669,8 @@ Returns the generallib itself.
 ") Lib;
 		Interface_GeneralLib & Lib();
 
-		/****************** Protocol ******************/
-		/**** md5 signature: 1441632a4f2333f871a63bf366a58f3e ****/
+		/****** Interface_GTool::Protocol ******/
+		/****** md5 signature: 1441632a4f2333f871a63bf366a58f3e ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -4682,8 +4682,8 @@ Returns the protocol. warning: it can be null.
 ") Protocol;
 		opencascade::handle<Interface_Protocol> Protocol();
 
-		/****************** Reservate ******************/
-		/**** md5 signature: a6488dc43344714c8373a9496f5dba2a ****/
+		/****** Interface_GTool::Reservate ******/
+		/****** md5 signature: a6488dc43344714c8373a9496f5dba2a ******/
 		%feature("compactdefaultargs") Reservate;
 		%feature("autodoc", "
 Parameters
@@ -4701,8 +4701,8 @@ Reservates maps for a count of entities <enforce> false: minimum count <enforce>
 ") Reservate;
 		void Reservate(const Standard_Integer nb, const Standard_Boolean enforce = Standard_False);
 
-		/****************** Select ******************/
-		/**** md5 signature: 79205ee17a76fbfb6a9fbbe9fe1a3799 ****/
+		/****** Interface_GTool::Select ******/
+		/****** md5 signature: 79205ee17a76fbfb6a9fbbe9fe1a3799 ******/
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "
 Parameters
@@ -4721,8 +4721,8 @@ Selects for an entity, its module and case number it is optimised: once done for
 ") Select;
 		Standard_Boolean Select(const opencascade::handle<Standard_Transient> & ent, opencascade::handle<Interface_GeneralModule> & gmod, Standard_Integer &OutValue, const Standard_Boolean enforce = Standard_False);
 
-		/****************** SetProtocol ******************/
-		/**** md5 signature: 7a71abccdd374448d4d493b6cc90407c ****/
+		/****** Interface_GTool::SetProtocol ******/
+		/****** md5 signature: 7a71abccdd374448d4d493b6cc90407c ******/
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "
 Parameters
@@ -4740,8 +4740,8 @@ Sets a new protocol if <enforce> is false and the new protocol equates the old o
 ") SetProtocol;
 		void SetProtocol(const opencascade::handle<Interface_Protocol> & proto, const Standard_Boolean enforce = Standard_False);
 
-		/****************** SetSignType ******************/
-		/**** md5 signature: a41aae67f5d11d1183e403f69f4a9291 ****/
+		/****** Interface_GTool::SetSignType ******/
+		/****** md5 signature: a41aae67f5d11d1183e403f69f4a9291 ******/
 		%feature("compactdefaultargs") SetSignType;
 		%feature("autodoc", "
 Parameters
@@ -4758,8 +4758,8 @@ Sets a new signtype.
 ") SetSignType;
 		void SetSignType(const opencascade::handle<Interface_SignType> & sign);
 
-		/****************** SignName ******************/
-		/**** md5 signature: c80dec5f02b4d9bc775dd97b309227ce ****/
+		/****** Interface_GTool::SignName ******/
+		/****** md5 signature: c80dec5f02b4d9bc775dd97b309227ce ******/
 		%feature("compactdefaultargs") SignName;
 		%feature("autodoc", "Return
 -------
@@ -4771,8 +4771,8 @@ Returns the name of the signtype, or 'class name'.
 ") SignName;
 		Standard_CString SignName();
 
-		/****************** SignType ******************/
-		/**** md5 signature: a97b35b4b087c5effacf0c1cc3ab8526 ****/
+		/****** Interface_GTool::SignType ******/
+		/****** md5 signature: a97b35b4b087c5effacf0c1cc3ab8526 ******/
 		%feature("compactdefaultargs") SignType;
 		%feature("autodoc", "Return
 -------
@@ -4784,8 +4784,8 @@ Returns the signtype. can be null.
 ") SignType;
 		opencascade::handle<Interface_SignType> SignType();
 
-		/****************** SignValue ******************/
-		/**** md5 signature: b369e52ecf603b4cf3d9679e9dbc0ad6 ****/
+		/****** Interface_GTool::SignValue ******/
+		/****** md5 signature: b369e52ecf603b4cf3d9679e9dbc0ad6 ******/
 		%feature("compactdefaultargs") SignValue;
 		%feature("autodoc", "
 Parameters
@@ -4819,8 +4819,8 @@ Returns the signature for a transient object in a model it calls signtype to do 
 *****************************/
 class Interface_GeneralLib {
 	public:
-		/****************** Interface_GeneralLib ******************/
-		/**** md5 signature: 8f7d43b287cf0d73133272e9eefa2c79 ****/
+		/****** Interface_GeneralLib::Interface_GeneralLib ******/
+		/****** md5 signature: 8f7d43b287cf0d73133272e9eefa2c79 ******/
 		%feature("compactdefaultargs") Interface_GeneralLib;
 		%feature("autodoc", "
 Parameters
@@ -4837,8 +4837,8 @@ Creates a library which complies with a protocol, that is: same class (criterium
 ") Interface_GeneralLib;
 		 Interface_GeneralLib(const opencascade::handle<Interface_Protocol> & aprotocol);
 
-		/****************** Interface_GeneralLib ******************/
-		/**** md5 signature: 2e5af17300a8a9ababda5ad49844e979 ****/
+		/****** Interface_GeneralLib::Interface_GeneralLib ******/
+		/****** md5 signature: 2e5af17300a8a9ababda5ad49844e979 ******/
 		%feature("compactdefaultargs") Interface_GeneralLib;
 		%feature("autodoc", "Return
 -------
@@ -4850,8 +4850,8 @@ Creates an empty library: it will later by filled by method addprotocol.
 ") Interface_GeneralLib;
 		 Interface_GeneralLib();
 
-		/****************** AddProtocol ******************/
-		/**** md5 signature: 97bedbaaa5336e800a60d78a56ab8c60 ****/
+		/****** Interface_GeneralLib::AddProtocol ******/
+		/****** md5 signature: 97bedbaaa5336e800a60d78a56ab8c60 ******/
 		%feature("compactdefaultargs") AddProtocol;
 		%feature("autodoc", "
 Parameters
@@ -4868,8 +4868,8 @@ Adds a couple (module-protocol) to the library, given the class of a protocol. t
 ") AddProtocol;
 		void AddProtocol(const opencascade::handle<Standard_Transient> & aprotocol);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_GeneralLib::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -4881,8 +4881,8 @@ Clears the list of modules of a library (can be used to redefine the order of mo
 ") Clear;
 		void Clear();
 
-		/****************** Module ******************/
-		/**** md5 signature: 786fb9d122db15779294d93c1e06036b ****/
+		/****** Interface_GeneralLib::Module ******/
+		/****** md5 signature: 786fb9d122db15779294d93c1e06036b ******/
 		%feature("compactdefaultargs") Module;
 		%feature("autodoc", "Return
 -------
@@ -4894,8 +4894,8 @@ Returns the current module in the iteration.
 ") Module;
 		const opencascade::handle<Interface_GeneralModule> & Module();
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** Interface_GeneralLib::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -4907,8 +4907,8 @@ Returns true if there are more modules to iterate on.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** Interface_GeneralLib::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -4920,8 +4920,8 @@ Iterates by getting the next module in the list if there is none, the exception 
 ") Next;
 		void Next();
 
-		/****************** Protocol ******************/
-		/**** md5 signature: c905586547d9ad373f87bcb2ce1d329f ****/
+		/****** Interface_GeneralLib::Protocol ******/
+		/****** md5 signature: c905586547d9ad373f87bcb2ce1d329f ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -4933,8 +4933,8 @@ Returns the current protocol in the iteration.
 ") Protocol;
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
-		/****************** Select ******************/
-		/**** md5 signature: 66c3385afed283d61a6402b185664c2a ****/
+		/****** Interface_GeneralLib::Select ******/
+		/****** md5 signature: 66c3385afed283d61a6402b185664c2a ******/
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "
 Parameters
@@ -4952,8 +4952,8 @@ Selects a module from the library, given an object. returns true if select has s
 ") Select;
 		Standard_Boolean Select(const opencascade::handle<Standard_Transient> & obj, opencascade::handle<Interface_GeneralModule> & module, Standard_Integer &OutValue);
 
-		/****************** SetComplete ******************/
-		/**** md5 signature: 9b2529d2e257b2464fe4d8064a8a0171 ****/
+		/****** Interface_GeneralLib::SetComplete ******/
+		/****** md5 signature: 9b2529d2e257b2464fe4d8064a8a0171 ******/
 		%feature("compactdefaultargs") SetComplete;
 		%feature("autodoc", "Return
 -------
@@ -4965,8 +4965,8 @@ Sets a library to be defined with the complete global list (all the couples prot
 ") SetComplete;
 		void SetComplete();
 
-		/****************** SetGlobal ******************/
-		/**** md5 signature: 2b2293c98b9172bae197316c65be22d5 ****/
+		/****** Interface_GeneralLib::SetGlobal ******/
+		/****** md5 signature: 2b2293c98b9172bae197316c65be22d5 ******/
 		%feature("compactdefaultargs") SetGlobal;
 		%feature("autodoc", "
 Parameters
@@ -4984,8 +4984,8 @@ Adds a couple (module-protocol) into the global definition set for this class of
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<Interface_GeneralModule> & amodule, const opencascade::handle<Interface_Protocol> & aprotocol);
 
-		/****************** Start ******************/
-		/**** md5 signature: f8a4dbf1e6f2cec0927301856b440be5 ****/
+		/****** Interface_GeneralLib::Start ******/
+		/****** md5 signature: f8a4dbf1e6f2cec0927301856b440be5 ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "Return
 -------
@@ -5012,8 +5012,8 @@ Starts iteration on the modules (sets it on the first one).
 %nodefaultctor Interface_GeneralModule;
 class Interface_GeneralModule : public Standard_Transient {
 	public:
-		/****************** CanCopy ******************/
-		/**** md5 signature: 0c59338e969e3e17aec56ffbfef71f8c ****/
+		/****** Interface_GeneralModule::CanCopy ******/
+		/****** md5 signature: 0c59338e969e3e17aec56ffbfef71f8c ******/
 		%feature("compactdefaultargs") CanCopy;
 		%feature("autodoc", "
 Parameters
@@ -5031,8 +5031,8 @@ Specific answer to the question 'is copy properly implemented' remark that it sh
 ") CanCopy;
 		virtual Standard_Boolean CanCopy(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** CategoryNumber ******************/
-		/**** md5 signature: 136d8c82c810f302ff4fd533b01e3f76 ****/
+		/****** Interface_GeneralModule::CategoryNumber ******/
+		/****** md5 signature: 136d8c82c810f302ff4fd533b01e3f76 ******/
 		%feature("compactdefaultargs") CategoryNumber;
 		%feature("autodoc", "
 Parameters
@@ -5051,8 +5051,8 @@ Returns a category number which characterizes an entity category numbers are man
 ") CategoryNumber;
 		virtual Standard_Integer CategoryNumber(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares);
 
-		/****************** CheckCase ******************/
-		/**** md5 signature: 01815a85d533821d13b510ff163b51a7 ****/
+		/****** Interface_GeneralModule::CheckCase ******/
+		/****** md5 signature: 01815a85d533821d13b510ff163b51a7 ******/
 		%feature("compactdefaultargs") CheckCase;
 		%feature("autodoc", "
 Parameters
@@ -5072,8 +5072,8 @@ Specific checking of an entity <ent> can check context queried through a shareto
 ") CheckCase;
 		virtual void CheckCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares, opencascade::handle<Interface_Check> & ach);
 
-		/****************** CopyCase ******************/
-		/**** md5 signature: 60b767f98105cd501c4069f53a650f7d ****/
+		/****** Interface_GeneralModule::CopyCase ******/
+		/****** md5 signature: 60b767f98105cd501c4069f53a650f7d ******/
 		%feature("compactdefaultargs") CopyCase;
 		%feature("autodoc", "
 Parameters
@@ -5093,8 +5093,8 @@ Specific copy ('deep') from <entfrom> to <entto> (same type) by using a copytool
 ") CopyCase;
 		virtual void CopyCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
-		/****************** Dispatch ******************/
-		/**** md5 signature: 1e8c602eed940595804d6538a183911f ****/
+		/****** Interface_GeneralModule::Dispatch ******/
+		/****** md5 signature: 1e8c602eed940595804d6538a183911f ******/
 		%feature("compactdefaultargs") Dispatch;
 		%feature("autodoc", "
 Parameters
@@ -5114,8 +5114,8 @@ Dispatches an entity returns true if it works by copy, false if it just duplicat
 ") Dispatch;
 		virtual Standard_Boolean Dispatch(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
-		/****************** FillShared ******************/
-		/**** md5 signature: c18d1339d1d991cc01a62ac3534c9c23 ****/
+		/****** Interface_GeneralModule::FillShared ******/
+		/****** md5 signature: c18d1339d1d991cc01a62ac3534c9c23 ******/
 		%feature("compactdefaultargs") FillShared;
 		%feature("autodoc", "
 Parameters
@@ -5135,8 +5135,8 @@ Specific filling of the list of entities shared by an entity <ent>, according a 
 ") FillShared;
 		virtual void FillShared(const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
-		/****************** FillSharedCase ******************/
-		/**** md5 signature: b4e98b5dbf7df653c06918f56463af8d ****/
+		/****** Interface_GeneralModule::FillSharedCase ******/
+		/****** md5 signature: b4e98b5dbf7df653c06918f56463af8d ******/
 		%feature("compactdefaultargs") FillSharedCase;
 		%feature("autodoc", "
 Parameters
@@ -5155,8 +5155,8 @@ Specific filling of the list of entities shared by an entity <ent>, according a 
 ") FillSharedCase;
 		virtual void FillSharedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
-		/****************** ListImplied ******************/
-		/**** md5 signature: 020a277801f8e5db4642c90712650bbb ****/
+		/****** Interface_GeneralModule::ListImplied ******/
+		/****** md5 signature: 020a277801f8e5db4642c90712650bbb ******/
 		%feature("compactdefaultargs") ListImplied;
 		%feature("autodoc", "
 Parameters
@@ -5176,8 +5176,8 @@ List the implied references of <ent> considered in the context of a model <model
 ") ListImplied;
 		virtual void ListImplied(const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
-		/****************** ListImpliedCase ******************/
-		/**** md5 signature: 9bbb8c5e9444c92c9aa384b239c90a88 ****/
+		/****** Interface_GeneralModule::ListImpliedCase ******/
+		/****** md5 signature: 9bbb8c5e9444c92c9aa384b239c90a88 ******/
 		%feature("compactdefaultargs") ListImpliedCase;
 		%feature("autodoc", "
 Parameters
@@ -5196,8 +5196,8 @@ List the implied references of <ent> (see above) are referenced while not consid
 ") ListImpliedCase;
 		virtual void ListImpliedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & iter);
 
-		/****************** Name ******************/
-		/**** md5 signature: 250c362cd39947a2262d119d4f6e8618 ****/
+		/****** Interface_GeneralModule::Name ******/
+		/****** md5 signature: 250c362cd39947a2262d119d4f6e8618 ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
@@ -5216,8 +5216,8 @@ Determines if an entity brings a name (or widerly, if a name can be attached to 
 ") Name;
 		virtual opencascade::handle<TCollection_HAsciiString> Name(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & ent, const Interface_ShareTool & shares);
 
-		/****************** NewCopiedCase ******************/
-		/**** md5 signature: bb124a1f433035df781a2ef5969f8555 ****/
+		/****** Interface_GeneralModule::NewCopiedCase ******/
+		/****** md5 signature: bb124a1f433035df781a2ef5969f8555 ******/
 		%feature("compactdefaultargs") NewCopiedCase;
 		%feature("autodoc", "
 Parameters
@@ -5237,8 +5237,8 @@ Specific operator (create+copy) defaulted to do nothing. it can be redefined: wh
 ") NewCopiedCase;
 		virtual Standard_Boolean NewCopiedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto, Interface_CopyTool & TC);
 
-		/****************** NewVoid ******************/
-		/**** md5 signature: cf68997b9516102da0b47eaf9e006411 ****/
+		/****** Interface_GeneralModule::NewVoid ******/
+		/****** md5 signature: cf68997b9516102da0b47eaf9e006411 ******/
 		%feature("compactdefaultargs") NewVoid;
 		%feature("autodoc", "
 Parameters
@@ -5256,8 +5256,8 @@ Creates a new void entity <entto> according to a case number this entity remains
 ") NewVoid;
 		virtual Standard_Boolean NewVoid(const Standard_Integer CN, opencascade::handle<Standard_Transient> & entto);
 
-		/****************** RenewImpliedCase ******************/
-		/**** md5 signature: 2dd5da909ccb2b579d7ef3904f8b31db ****/
+		/****** Interface_GeneralModule::RenewImpliedCase ******/
+		/****** md5 signature: 2dd5da909ccb2b579d7ef3904f8b31db ******/
 		%feature("compactdefaultargs") RenewImpliedCase;
 		%feature("autodoc", "
 Parameters
@@ -5277,8 +5277,8 @@ Specific copying of implied references a default is provided which does nothing 
 ") RenewImpliedCase;
 		virtual void RenewImpliedCase(const Standard_Integer CN, const opencascade::handle<Standard_Transient> & entfrom, const opencascade::handle<Standard_Transient> & entto, const Interface_CopyTool & TC);
 
-		/****************** Share ******************/
-		/**** md5 signature: b53143412198cfa30a2430c8c7452b28 ****/
+		/****** Interface_GeneralModule::Share ******/
+		/****** md5 signature: b53143412198cfa30a2430c8c7452b28 ******/
 		%feature("compactdefaultargs") Share;
 		%feature("autodoc", "
 Parameters
@@ -5296,8 +5296,8 @@ Adds an entity to a shared list (uses getoneitem on <iter>).
 ") Share;
 		void Share(Interface_EntityIterator & iter, const opencascade::handle<Standard_Transient> & shared);
 
-		/****************** WhenDeleteCase ******************/
-		/**** md5 signature: 6b78c36a5656a6d73b50c68135a2b6d4 ****/
+		/****** Interface_GeneralModule::WhenDeleteCase ******/
+		/****** md5 signature: 6b78c36a5656a6d73b50c68135a2b6d4 ******/
 		%feature("compactdefaultargs") WhenDeleteCase;
 		%feature("autodoc", "
 Parameters
@@ -5332,8 +5332,8 @@ Prepares an entity to be deleted. what does it mean: basically, any class of ent
 *****************************************/
 class Interface_GlobalNodeOfGeneralLib : public Standard_Transient {
 	public:
-		/****************** Interface_GlobalNodeOfGeneralLib ******************/
-		/**** md5 signature: 004504aeea0aa4a254103c28e7783208 ****/
+		/****** Interface_GlobalNodeOfGeneralLib::Interface_GlobalNodeOfGeneralLib ******/
+		/****** md5 signature: 004504aeea0aa4a254103c28e7783208 ******/
 		%feature("compactdefaultargs") Interface_GlobalNodeOfGeneralLib;
 		%feature("autodoc", "Return
 -------
@@ -5345,8 +5345,8 @@ Creates an empty globalnode, with no next.
 ") Interface_GlobalNodeOfGeneralLib;
 		 Interface_GlobalNodeOfGeneralLib();
 
-		/****************** Add ******************/
-		/**** md5 signature: 52a71ed7b2dcafa006109d66faa88607 ****/
+		/****** Interface_GlobalNodeOfGeneralLib::Add ******/
+		/****** md5 signature: 52a71ed7b2dcafa006109d66faa88607 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -5364,8 +5364,8 @@ Adds a module bound with a protocol to the list: does nothing if already in the 
 ") Add;
 		void Add(const opencascade::handle<Interface_GeneralModule> & amodule, const opencascade::handle<Interface_Protocol> & aprotocol);
 
-		/****************** Module ******************/
-		/**** md5 signature: 786fb9d122db15779294d93c1e06036b ****/
+		/****** Interface_GlobalNodeOfGeneralLib::Module ******/
+		/****** md5 signature: 786fb9d122db15779294d93c1e06036b ******/
 		%feature("compactdefaultargs") Module;
 		%feature("autodoc", "Return
 -------
@@ -5377,8 +5377,8 @@ Returns the module stored in a given globalnode.
 ") Module;
 		const opencascade::handle<Interface_GeneralModule> & Module();
 
-		/****************** Next ******************/
-		/**** md5 signature: b0be6825d69567690d78e706e2027f21 ****/
+		/****** Interface_GlobalNodeOfGeneralLib::Next ******/
+		/****** md5 signature: b0be6825d69567690d78e706e2027f21 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -5390,8 +5390,8 @@ Returns the next globalnode. if none is defined, returned value is a null handle
 ") Next;
 		const opencascade::handle<Interface_GlobalNodeOfGeneralLib> & Next();
 
-		/****************** Protocol ******************/
-		/**** md5 signature: c905586547d9ad373f87bcb2ce1d329f ****/
+		/****** Interface_GlobalNodeOfGeneralLib::Protocol ******/
+		/****** md5 signature: c905586547d9ad373f87bcb2ce1d329f ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -5419,8 +5419,8 @@ Returns the attached protocol stored in a given globalnode.
 ****************************************/
 class Interface_GlobalNodeOfReaderLib : public Standard_Transient {
 	public:
-		/****************** Interface_GlobalNodeOfReaderLib ******************/
-		/**** md5 signature: 82c1cb743d14c2075c02b445aa26388d ****/
+		/****** Interface_GlobalNodeOfReaderLib::Interface_GlobalNodeOfReaderLib ******/
+		/****** md5 signature: 82c1cb743d14c2075c02b445aa26388d ******/
 		%feature("compactdefaultargs") Interface_GlobalNodeOfReaderLib;
 		%feature("autodoc", "Return
 -------
@@ -5432,8 +5432,8 @@ Creates an empty globalnode, with no next.
 ") Interface_GlobalNodeOfReaderLib;
 		 Interface_GlobalNodeOfReaderLib();
 
-		/****************** Add ******************/
-		/**** md5 signature: 9c33b501cc7aba278ca4c14a3d8c84e0 ****/
+		/****** Interface_GlobalNodeOfReaderLib::Add ******/
+		/****** md5 signature: 9c33b501cc7aba278ca4c14a3d8c84e0 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -5451,8 +5451,8 @@ Adds a module bound with a protocol to the list: does nothing if already in the 
 ") Add;
 		void Add(const opencascade::handle<Interface_ReaderModule> & amodule, const opencascade::handle<Interface_Protocol> & aprotocol);
 
-		/****************** Module ******************/
-		/**** md5 signature: ee4e5065695c1821dd69ceb165b67caf ****/
+		/****** Interface_GlobalNodeOfReaderLib::Module ******/
+		/****** md5 signature: ee4e5065695c1821dd69ceb165b67caf ******/
 		%feature("compactdefaultargs") Module;
 		%feature("autodoc", "Return
 -------
@@ -5464,8 +5464,8 @@ Returns the module stored in a given globalnode.
 ") Module;
 		const opencascade::handle<Interface_ReaderModule> & Module();
 
-		/****************** Next ******************/
-		/**** md5 signature: 0a362545d2eb46b8ee0501bb8c9630fb ****/
+		/****** Interface_GlobalNodeOfReaderLib::Next ******/
+		/****** md5 signature: 0a362545d2eb46b8ee0501bb8c9630fb ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -5477,8 +5477,8 @@ Returns the next globalnode. if none is defined, returned value is a null handle
 ") Next;
 		const opencascade::handle<Interface_GlobalNodeOfReaderLib> & Next();
 
-		/****************** Protocol ******************/
-		/**** md5 signature: c905586547d9ad373f87bcb2ce1d329f ****/
+		/****** Interface_GlobalNodeOfReaderLib::Protocol ******/
+		/****** md5 signature: c905586547d9ad373f87bcb2ce1d329f ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -5506,8 +5506,8 @@ Returns the attached protocol stored in a given globalnode.
 ************************/
 class Interface_Graph {
 	public:
-		/****************** Interface_Graph ******************/
-		/**** md5 signature: 0275f2c13add0e6ada4df7a5ab2b291a ****/
+		/****** Interface_Graph::Interface_Graph ******/
+		/****** md5 signature: 0275f2c13add0e6ada4df7a5ab2b291a ******/
 		%feature("compactdefaultargs") Interface_Graph;
 		%feature("autodoc", "
 Parameters
@@ -5526,8 +5526,8 @@ Creates an empty graph, ready to receive entities from amodel note that this way
 ") Interface_Graph;
 		 Interface_Graph(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib, const Standard_Boolean theModeStats = Standard_True);
 
-		/****************** Interface_Graph ******************/
-		/**** md5 signature: 41d9670526e656e678d6bf65c28e363a ****/
+		/****** Interface_Graph::Interface_Graph ******/
+		/****** md5 signature: 41d9670526e656e678d6bf65c28e363a ******/
 		%feature("compactdefaultargs") Interface_Graph;
 		%feature("autodoc", "
 Parameters
@@ -5546,8 +5546,8 @@ Same as above, but the library is defined through a protocol.
 ") Interface_Graph;
 		 Interface_Graph(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol, const Standard_Boolean theModeStats = Standard_True);
 
-		/****************** Interface_Graph ******************/
-		/**** md5 signature: b61dbaaf54a955cd3bddd3309de9ca6c ****/
+		/****** Interface_Graph::Interface_Graph ******/
+		/****** md5 signature: b61dbaaf54a955cd3bddd3309de9ca6c ******/
 		%feature("compactdefaultargs") Interface_Graph;
 		%feature("autodoc", "
 Parameters
@@ -5566,8 +5566,8 @@ Same as above, but the library is defined through a protocol.
 ") Interface_Graph;
 		 Interface_Graph(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_GTool> & gtool, const Standard_Boolean theModeStats = Standard_True);
 
-		/****************** Interface_Graph ******************/
-		/**** md5 signature: e7ee70b3414e84aa5e75fd6322da3baa ****/
+		/****** Interface_Graph::Interface_Graph ******/
+		/****** md5 signature: e7ee70b3414e84aa5e75fd6322da3baa ******/
 		%feature("compactdefaultargs") Interface_Graph;
 		%feature("autodoc", "
 Parameters
@@ -5585,8 +5585,8 @@ Same a above but works with the protocol recorded in the model.
 ") Interface_Graph;
 		 Interface_Graph(const opencascade::handle<Interface_InterfaceModel> & amodel, const Standard_Boolean theModeStats = Standard_True);
 
-		/****************** Interface_Graph ******************/
-		/**** md5 signature: 2083e68225a9e6168cd87f137b0e3844 ****/
+		/****** Interface_Graph::Interface_Graph ******/
+		/****** md5 signature: 2083e68225a9e6168cd87f137b0e3844 ******/
 		%feature("compactdefaultargs") Interface_Graph;
 		%feature("autodoc", "
 Parameters
@@ -5604,8 +5604,8 @@ Creates a graph from another one, getting all its data remark that status are co
 ") Interface_Graph;
 		 Interface_Graph(const Interface_Graph & agraph, const Standard_Boolean copied = Standard_False);
 
-		/****************** BitMap ******************/
-		/**** md5 signature: 6afca68ff9833e671b4be2be9243cbd9 ****/
+		/****** Interface_Graph::BitMap ******/
+		/****** md5 signature: 6afca68ff9833e671b4be2be9243cbd9 ******/
 		%feature("compactdefaultargs") BitMap;
 		%feature("autodoc", "Return
 -------
@@ -5617,8 +5617,8 @@ Returns the bit map in order to read or edit flag values.
 ") BitMap;
 		const Interface_BitMap & BitMap();
 
-		/****************** CBitMap ******************/
-		/**** md5 signature: 15f5051286ba99cc042d93116415aa43 ****/
+		/****** Interface_Graph::CBitMap ******/
+		/****** md5 signature: 15f5051286ba99cc042d93116415aa43 ******/
 		%feature("compactdefaultargs") CBitMap;
 		%feature("autodoc", "Return
 -------
@@ -5630,8 +5630,8 @@ Returns the bit map in order to edit it (add new flags).
 ") CBitMap;
 		Interface_BitMap & CBitMap();
 
-		/****************** ChangeStatus ******************/
-		/**** md5 signature: 82819e9cb729a87e3c8360e4b60cc647 ****/
+		/****** Interface_Graph::ChangeStatus ******/
+		/****** md5 signature: 82819e9cb729a87e3c8360e4b60cc647 ******/
 		%feature("compactdefaultargs") ChangeStatus;
 		%feature("autodoc", "
 Parameters
@@ -5649,8 +5649,8 @@ Changes all status which value is oldstat to new value newstat.
 ") ChangeStatus;
 		void ChangeStatus(const Standard_Integer oldstat, const Standard_Integer newstat);
 
-		/****************** Entity ******************/
-		/**** md5 signature: fe6771707abbc72dabd1d83eab337657 ****/
+		/****** Interface_Graph::Entity ******/
+		/****** md5 signature: fe6771707abbc72dabd1d83eab337657 ******/
 		%feature("compactdefaultargs") Entity;
 		%feature("autodoc", "
 Parameters
@@ -5667,8 +5667,8 @@ Returns mapped entity given its no (if it is present).
 ") Entity;
 		const opencascade::handle<Standard_Transient> & Entity(const Standard_Integer num);
 
-		/****************** EntityNumber ******************/
-		/**** md5 signature: 4257559df5e64edec8716b8bacc8af3a ****/
+		/****** Interface_Graph::EntityNumber ******/
+		/****** md5 signature: 4257559df5e64edec8716b8bacc8af3a ******/
 		%feature("compactdefaultargs") EntityNumber;
 		%feature("autodoc", "
 Parameters
@@ -5685,8 +5685,8 @@ Returns the number of the entity in the map, computed at creation time (entities
 ") EntityNumber;
 		Standard_Integer EntityNumber(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** GetFromEntity ******************/
-		/**** md5 signature: 31891fd23708ae104ac2c5d6422e8937 ****/
+		/****** Interface_Graph::GetFromEntity ******/
+		/****** md5 signature: 31891fd23708ae104ac2c5d6422e8937 ******/
 		%feature("compactdefaultargs") GetFromEntity;
 		%feature("autodoc", "
 Parameters
@@ -5705,8 +5705,8 @@ Gets an entity, plus its shared ones (at every level) if 'shared' is true. new i
 ") GetFromEntity;
 		void GetFromEntity(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean shared, const Standard_Integer newstat = 0);
 
-		/****************** GetFromEntity ******************/
-		/**** md5 signature: 418999aa71dd53d9afa78651d6d0a47e ****/
+		/****** Interface_Graph::GetFromEntity ******/
+		/****** md5 signature: 418999aa71dd53d9afa78651d6d0a47e ******/
 		%feature("compactdefaultargs") GetFromEntity;
 		%feature("autodoc", "
 Parameters
@@ -5727,8 +5727,8 @@ Gets an entity, plus its shared ones (at every level) if 'shared' is true. new i
 ") GetFromEntity;
 		void GetFromEntity(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean shared, const Standard_Integer newstat, const Standard_Integer overlapstat, const Standard_Boolean cumul);
 
-		/****************** GetFromGraph ******************/
-		/**** md5 signature: ae6a9a559f58dc138ed87b411e11d722 ****/
+		/****** Interface_Graph::GetFromGraph ******/
+		/****** md5 signature: ae6a9a559f58dc138ed87b411e11d722 ******/
 		%feature("compactdefaultargs") GetFromGraph;
 		%feature("autodoc", "
 Parameters
@@ -5745,8 +5745,8 @@ Gets all present items from another graph.
 ") GetFromGraph;
 		void GetFromGraph(const Interface_Graph & agraph);
 
-		/****************** GetFromGraph ******************/
-		/**** md5 signature: 418d34704ccd99f0633d30895e747dbc ****/
+		/****** Interface_Graph::GetFromGraph ******/
+		/****** md5 signature: 418d34704ccd99f0633d30895e747dbc ******/
 		%feature("compactdefaultargs") GetFromGraph;
 		%feature("autodoc", "
 Parameters
@@ -5764,8 +5764,8 @@ Gets items from another graph which have a specific status.
 ") GetFromGraph;
 		void GetFromGraph(const Interface_Graph & agraph, const Standard_Integer stat);
 
-		/****************** GetFromIter ******************/
-		/**** md5 signature: 294061522bd198df9200ca94bd5be5a5 ****/
+		/****** Interface_Graph::GetFromIter ******/
+		/****** md5 signature: 294061522bd198df9200ca94bd5be5a5 ******/
 		%feature("compactdefaultargs") GetFromIter;
 		%feature("autodoc", "
 Parameters
@@ -5783,8 +5783,8 @@ Gets entities given by an entityiterator. entities which were not yet present in
 ") GetFromIter;
 		void GetFromIter(const Interface_EntityIterator & iter, const Standard_Integer newstat);
 
-		/****************** GetFromIter ******************/
-		/**** md5 signature: 3165a82e20f374e686a5cf0ea806604e ****/
+		/****** Interface_Graph::GetFromIter ******/
+		/****** md5 signature: 3165a82e20f374e686a5cf0ea806604e ******/
 		%feature("compactdefaultargs") GetFromIter;
 		%feature("autodoc", "
 Parameters
@@ -5804,8 +5804,8 @@ Gets entities given by an entityiterator and distinguishes those already present
 ") GetFromIter;
 		void GetFromIter(const Interface_EntityIterator & iter, const Standard_Integer newstat, const Standard_Integer overlapstat, const Standard_Boolean cumul);
 
-		/****************** GetFromModel ******************/
-		/**** md5 signature: 25e999deabc386be45884b4b74d134d3 ****/
+		/****** Interface_Graph::GetFromModel ******/
+		/****** md5 signature: 25e999deabc386be45884b4b74d134d3 ******/
 		%feature("compactdefaultargs") GetFromModel;
 		%feature("autodoc", "Return
 -------
@@ -5817,8 +5817,8 @@ Loads graph with all entities contained in the model.
 ") GetFromModel;
 		void GetFromModel();
 
-		/****************** GetShareds ******************/
-		/**** md5 signature: be5529afe561d5bd1bd6933a1651fcf8 ****/
+		/****** Interface_Graph::GetShareds ******/
+		/****** md5 signature: be5529afe561d5bd1bd6933a1651fcf8 ******/
 		%feature("compactdefaultargs") GetShareds;
 		%feature("autodoc", "
 Parameters
@@ -5835,8 +5835,8 @@ Returns the sequence of entities shared by an entity.
 ") GetShareds;
 		opencascade::handle<TColStd_HSequenceOfTransient> GetShareds(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** GetSharings ******************/
-		/**** md5 signature: 85faeb2b2f9d4bc53d56541c9ab8dc2a ****/
+		/****** Interface_Graph::GetSharings ******/
+		/****** md5 signature: 85faeb2b2f9d4bc53d56541c9ab8dc2a ******/
 		%feature("compactdefaultargs") GetSharings;
 		%feature("autodoc", "
 Parameters
@@ -5853,8 +5853,8 @@ Returns the sequence of entities sharings by an entity.
 ") GetSharings;
 		opencascade::handle<TColStd_HSequenceOfTransient> GetSharings(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** HasShareErrors ******************/
-		/**** md5 signature: b9b55c8ec1b92fcbdf33830713fe3c72 ****/
+		/****** Interface_Graph::HasShareErrors ******/
+		/****** md5 signature: b9b55c8ec1b92fcbdf33830713fe3c72 ******/
 		%feature("compactdefaultargs") HasShareErrors;
 		%feature("autodoc", "
 Parameters
@@ -5871,8 +5871,8 @@ Returns true if <ent> or the list of entities shared by <ent> (not redefined) co
 ") HasShareErrors;
 		Standard_Boolean HasShareErrors(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** IsPresent ******************/
-		/**** md5 signature: 08af4067390184e0c6e9dcc44f1f204b ****/
+		/****** Interface_Graph::IsPresent ******/
+		/****** md5 signature: 08af4067390184e0c6e9dcc44f1f204b ******/
 		%feature("compactdefaultargs") IsPresent;
 		%feature("autodoc", "
 Parameters
@@ -5889,8 +5889,8 @@ Returns true if an entity is noted as present in the graph (see methods get... w
 ") IsPresent;
 		Standard_Boolean IsPresent(const Standard_Integer num);
 
-		/****************** IsPresent ******************/
-		/**** md5 signature: aa90c7192d821ba5ec6af7a1dff13c2a ****/
+		/****** Interface_Graph::IsPresent ******/
+		/****** md5 signature: aa90c7192d821ba5ec6af7a1dff13c2a ******/
 		%feature("compactdefaultargs") IsPresent;
 		%feature("autodoc", "
 Parameters
@@ -5907,8 +5907,8 @@ Same as above but directly on an entity <ent>: if it is not contained in the mod
 ") IsPresent;
 		Standard_Boolean IsPresent(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** ModeStat ******************/
-		/**** md5 signature: d0863ee0605b2f76e4ecd849fb34078d ****/
+		/****** Interface_Graph::ModeStat ******/
+		/****** md5 signature: d0863ee0605b2f76e4ecd849fb34078d ******/
 		%feature("compactdefaultargs") ModeStat;
 		%feature("autodoc", "Return
 -------
@@ -5920,8 +5920,8 @@ Returns mode responsible for computation of statuses;.
 ") ModeStat;
 		Standard_Boolean ModeStat();
 
-		/****************** Model ******************/
-		/**** md5 signature: 7883272628747d0cc1230b6871802da7 ****/
+		/****** Interface_Graph::Model ******/
+		/****** md5 signature: 7883272628747d0cc1230b6871802da7 ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -5933,8 +5933,8 @@ Returns the model with which this graph was created.
 ") Model;
 		const opencascade::handle<Interface_InterfaceModel> & Model();
 
-		/****************** Name ******************/
-		/**** md5 signature: 35b5790ba05c4a2997c3061615e9b3cb ****/
+		/****** Interface_Graph::Name ******/
+		/****** md5 signature: 35b5790ba05c4a2997c3061615e9b3cb ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "
 Parameters
@@ -5951,8 +5951,8 @@ Determines the name attached to an entity, by using the general service name in 
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** NbStatuses ******************/
-		/**** md5 signature: e20ed4e9671fcde690f46a12623b705b ****/
+		/****** Interface_Graph::NbStatuses ******/
+		/****** md5 signature: e20ed4e9671fcde690f46a12623b705b ******/
 		%feature("compactdefaultargs") NbStatuses;
 		%feature("autodoc", "Return
 -------
@@ -5964,8 +5964,8 @@ Returns size of array of statuses.
 ") NbStatuses;
 		Standard_Integer NbStatuses();
 
-		/****************** RemoveItem ******************/
-		/**** md5 signature: ffd0c00631edd52da4bf51d8f077bbce ****/
+		/****** Interface_Graph::RemoveItem ******/
+		/****** md5 signature: ffd0c00631edd52da4bf51d8f077bbce ******/
 		%feature("compactdefaultargs") RemoveItem;
 		%feature("autodoc", "
 Parameters
@@ -5982,8 +5982,8 @@ Clears entity and sets status to 0, for a numero.
 ") RemoveItem;
 		void RemoveItem(const Standard_Integer num);
 
-		/****************** RemoveStatus ******************/
-		/**** md5 signature: eae772beea7560c66e9214dd83a30e46 ****/
+		/****** Interface_Graph::RemoveStatus ******/
+		/****** md5 signature: eae772beea7560c66e9214dd83a30e46 ******/
 		%feature("compactdefaultargs") RemoveStatus;
 		%feature("autodoc", "
 Parameters
@@ -6000,8 +6000,8 @@ Removes all items of which status has a given value stat.
 ") RemoveStatus;
 		void RemoveStatus(const Standard_Integer stat);
 
-		/****************** Reset ******************/
-		/**** md5 signature: 7beb446fe26b948f797f8de87e46c23d ****/
+		/****** Interface_Graph::Reset ******/
+		/****** md5 signature: 7beb446fe26b948f797f8de87e46c23d ******/
 		%feature("compactdefaultargs") Reset;
 		%feature("autodoc", "Return
 -------
@@ -6013,8 +6013,8 @@ Erases data, making graph ready to rebegin from void (also resets shared lists r
 ") Reset;
 		void Reset();
 
-		/****************** ResetStatus ******************/
-		/**** md5 signature: 88223281f0684fd4d3240d18db72f6d0 ****/
+		/****** Interface_Graph::ResetStatus ******/
+		/****** md5 signature: 88223281f0684fd4d3240d18db72f6d0 ******/
 		%feature("compactdefaultargs") ResetStatus;
 		%feature("autodoc", "Return
 -------
@@ -6026,8 +6026,8 @@ Erases status (values and flags of presence), making graph ready to rebegin from
 ") ResetStatus;
 		void ResetStatus();
 
-		/****************** RootEntities ******************/
-		/**** md5 signature: 63cd32bddc79c5ff7cf79d39668774c9 ****/
+		/****** Interface_Graph::RootEntities ******/
+		/****** md5 signature: 63cd32bddc79c5ff7cf79d39668774c9 ******/
 		%feature("compactdefaultargs") RootEntities;
 		%feature("autodoc", "Return
 -------
@@ -6039,8 +6039,8 @@ Returns the entities which are not shared (their sharing list is empty) in the m
 ") RootEntities;
 		Interface_EntityIterator RootEntities();
 
-		/****************** SetStatus ******************/
-		/**** md5 signature: 029712b154eb915b22d51cf3198eeaf1 ****/
+		/****** Interface_Graph::SetStatus ******/
+		/****** md5 signature: 029712b154eb915b22d51cf3198eeaf1 ******/
 		%feature("compactdefaultargs") SetStatus;
 		%feature("autodoc", "
 Parameters
@@ -6058,8 +6058,8 @@ Modifies status associated to a numero.
 ") SetStatus;
 		void SetStatus(const Standard_Integer num, const Standard_Integer stat);
 
-		/****************** Shareds ******************/
-		/**** md5 signature: d7f3cd187cff94c69bea537ec01567d5 ****/
+		/****** Interface_Graph::Shareds ******/
+		/****** md5 signature: d7f3cd187cff94c69bea537ec01567d5 ******/
 		%feature("compactdefaultargs") Shareds;
 		%feature("autodoc", "
 Parameters
@@ -6076,8 +6076,8 @@ Returns the list of entities shared by an entity, as recorded by the graph. that
 ") Shareds;
 		Interface_EntityIterator Shareds(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** SharingTable ******************/
-		/**** md5 signature: 2bac1d4e04fc72fe327f0913adc89070 ****/
+		/****** Interface_Graph::SharingTable ******/
+		/****** md5 signature: 2bac1d4e04fc72fe327f0913adc89070 ******/
 		%feature("compactdefaultargs") SharingTable;
 		%feature("autodoc", "Return
 -------
@@ -6089,8 +6089,8 @@ Returns the table of sharing lists. used to create another graph from <self>.
 ") SharingTable;
 		const opencascade::handle<TColStd_HArray1OfListOfInteger> & SharingTable();
 
-		/****************** Sharings ******************/
-		/**** md5 signature: 561a9bb8187bfa6649f3c1fcaacdaeed ****/
+		/****** Interface_Graph::Sharings ******/
+		/****** md5 signature: 561a9bb8187bfa6649f3c1fcaacdaeed ******/
 		%feature("compactdefaultargs") Sharings;
 		%feature("autodoc", "
 Parameters
@@ -6107,8 +6107,8 @@ Returns the list of entities which share an entity, computed from the basic or r
 ") Sharings;
 		Interface_EntityIterator Sharings(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Size ******************/
-		/**** md5 signature: a263c9cd5bbf3a30f07620f6c5b86b83 ****/
+		/****** Interface_Graph::Size ******/
+		/****** md5 signature: a263c9cd5bbf3a30f07620f6c5b86b83 ******/
 		%feature("compactdefaultargs") Size;
 		%feature("autodoc", "Return
 -------
@@ -6120,8 +6120,8 @@ Returns size (max nb of entities, i.e. model's nb of entities).
 ") Size;
 		Standard_Integer Size();
 
-		/****************** Status ******************/
-		/**** md5 signature: fe83936279a1a53fbd5bae4ee4fd0684 ****/
+		/****** Interface_Graph::Status ******/
+		/****** md5 signature: fe83936279a1a53fbd5bae4ee4fd0684 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "
 Parameters
@@ -6138,8 +6138,8 @@ Returns status associated to a numero (only to read it).
 ") Status;
 		Standard_Integer Status(const Standard_Integer num);
 
-		/****************** TypedSharings ******************/
-		/**** md5 signature: b4490a19ff7734ca033f4de70617288c ****/
+		/****** Interface_Graph::TypedSharings ******/
+		/****** md5 signature: b4490a19ff7734ca033f4de70617288c ******/
 		%feature("compactdefaultargs") TypedSharings;
 		%feature("autodoc", "
 Parameters
@@ -6171,8 +6171,8 @@ Returns the list of sharings entities, at any level, which are kind of a given t
 *************************/
 class Interface_HGraph : public Standard_Transient {
 	public:
-		/****************** Interface_HGraph ******************/
-		/**** md5 signature: 0513d289715c599c31389ba0f193b9af ****/
+		/****** Interface_HGraph::Interface_HGraph ******/
+		/****** md5 signature: 0513d289715c599c31389ba0f193b9af ******/
 		%feature("compactdefaultargs") Interface_HGraph;
 		%feature("autodoc", "
 Parameters
@@ -6189,8 +6189,8 @@ Creates an hgraph directly from a graph. remark that the starting graph is dupli
 ") Interface_HGraph;
 		 Interface_HGraph(const Interface_Graph & agraph);
 
-		/****************** Interface_HGraph ******************/
-		/**** md5 signature: 893b557ade4e8ce58a33915e14410d5d ****/
+		/****** Interface_HGraph::Interface_HGraph ******/
+		/****** md5 signature: 893b557ade4e8ce58a33915e14410d5d ******/
 		%feature("compactdefaultargs") Interface_HGraph;
 		%feature("autodoc", "
 Parameters
@@ -6209,8 +6209,8 @@ Creates an hgraph with a graph created from <amodel> and <lib>.
 ") Interface_HGraph;
 		 Interface_HGraph(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib, const Standard_Boolean theModeStats = Standard_True);
 
-		/****************** Interface_HGraph ******************/
-		/**** md5 signature: 1753e0a665aac413a87d04faed9bfdb6 ****/
+		/****** Interface_HGraph::Interface_HGraph ******/
+		/****** md5 signature: 1753e0a665aac413a87d04faed9bfdb6 ******/
 		%feature("compactdefaultargs") Interface_HGraph;
 		%feature("autodoc", "
 Parameters
@@ -6229,8 +6229,8 @@ Creates an hgraph with a graph itself created from <amodel> and <protocol>.
 ") Interface_HGraph;
 		 Interface_HGraph(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol, const Standard_Boolean theModeStats = Standard_True);
 
-		/****************** Interface_HGraph ******************/
-		/**** md5 signature: 76bfa8f56a06bbb74e3664d95938323c ****/
+		/****** Interface_HGraph::Interface_HGraph ******/
+		/****** md5 signature: 76bfa8f56a06bbb74e3664d95938323c ******/
 		%feature("compactdefaultargs") Interface_HGraph;
 		%feature("autodoc", "
 Parameters
@@ -6249,8 +6249,8 @@ Creates an hgraph with a graph itself created from <amodel> and <protocol>.
 ") Interface_HGraph;
 		 Interface_HGraph(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_GTool> & gtool, const Standard_Boolean theModeStats = Standard_True);
 
-		/****************** Interface_HGraph ******************/
-		/**** md5 signature: a93d94da3e923059b4042e8143bb32ba ****/
+		/****** Interface_HGraph::Interface_HGraph ******/
+		/****** md5 signature: a93d94da3e923059b4042e8143bb32ba ******/
 		%feature("compactdefaultargs") Interface_HGraph;
 		%feature("autodoc", "
 Parameters
@@ -6268,8 +6268,8 @@ Same a above, but works with the gtool in the model.
 ") Interface_HGraph;
 		 Interface_HGraph(const opencascade::handle<Interface_InterfaceModel> & amodel, const Standard_Boolean theModeStats = Standard_True);
 
-		/****************** CGraph ******************/
-		/**** md5 signature: bec710075a9272715539ab2d07af5ab2 ****/
+		/****** Interface_HGraph::CGraph ******/
+		/****** md5 signature: bec710075a9272715539ab2d07af5ab2 ******/
 		%feature("compactdefaultargs") CGraph;
 		%feature("autodoc", "Return
 -------
@@ -6281,8 +6281,8 @@ Same as above, but for read-write operations then, the graph will be modified in
 ") CGraph;
 		Interface_Graph & CGraph();
 
-		/****************** Graph ******************/
-		/**** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ****/
+		/****** Interface_HGraph::Graph ******/
+		/****** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ******/
 		%feature("compactdefaultargs") Graph;
 		%feature("autodoc", "Return
 -------
@@ -6310,8 +6310,8 @@ Returns the graph contained in <self>, for read only operations remark that it i
 **************************/
 class Interface_IntList {
 	public:
-		/****************** Interface_IntList ******************/
-		/**** md5 signature: ec19d550108932b5224831f711a35e62 ****/
+		/****** Interface_IntList::Interface_IntList ******/
+		/****** md5 signature: ec19d550108932b5224831f711a35e62 ******/
 		%feature("compactdefaultargs") Interface_IntList;
 		%feature("autodoc", "Return
 -------
@@ -6323,8 +6323,8 @@ Creates empty intlist.
 ") Interface_IntList;
 		 Interface_IntList();
 
-		/****************** Interface_IntList ******************/
-		/**** md5 signature: b37c4bb58fbfdd8d36320b3b6f99833a ****/
+		/****** Interface_IntList::Interface_IntList ******/
+		/****** md5 signature: b37c4bb58fbfdd8d36320b3b6f99833a ******/
 		%feature("compactdefaultargs") Interface_IntList;
 		%feature("autodoc", "
 Parameters
@@ -6341,8 +6341,8 @@ Creates an intlist for <nbe> entities.
 ") Interface_IntList;
 		 Interface_IntList(const Standard_Integer nbe);
 
-		/****************** Interface_IntList ******************/
-		/**** md5 signature: 0480cadde3c17e0eb1407b9c7b192303 ****/
+		/****** Interface_IntList::Interface_IntList ******/
+		/****** md5 signature: 0480cadde3c17e0eb1407b9c7b192303 ******/
 		%feature("compactdefaultargs") Interface_IntList;
 		%feature("autodoc", "
 Parameters
@@ -6360,8 +6360,8 @@ Creates an intlist from another one. if <copied> is true, copies data else, data
 ") Interface_IntList;
 		 Interface_IntList(const Interface_IntList & other, const Standard_Boolean copied);
 
-		/****************** Add ******************/
-		/**** md5 signature: cd60596a44a700fa317ebf8f8b1e5827 ****/
+		/****** Interface_IntList::Add ******/
+		/****** md5 signature: cd60596a44a700fa317ebf8f8b1e5827 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -6378,8 +6378,8 @@ Adds a reference (as an integer value, an entity number) to the current entity n
 ") Add;
 		void Add(const Standard_Integer ref);
 
-		/****************** AdjustSize ******************/
-		/**** md5 signature: f5e018890a3a2a3b5a3f546e318cb26f ****/
+		/****** Interface_IntList::AdjustSize ******/
+		/****** md5 signature: f5e018890a3a2a3b5a3f546e318cb26f ******/
 		%feature("compactdefaultargs") AdjustSize;
 		%feature("autodoc", "
 Parameters
@@ -6396,8 +6396,8 @@ Resizes lists to exact sizes. for list of refs, a positive margin can be added.
 ") AdjustSize;
 		void AdjustSize(const Standard_Integer margin = 0);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_IntList::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -6409,8 +6409,8 @@ Clears all data, hence each entity number has an empty list.
 ") Clear;
 		void Clear();
 
-		/****************** Initialize ******************/
-		/**** md5 signature: c237fd6b5333f84217375f02f49572be ****/
+		/****** Interface_IntList::Initialize ******/
+		/****** md5 signature: c237fd6b5333f84217375f02f49572be ******/
 		%feature("compactdefaultargs") Initialize;
 		%feature("autodoc", "
 Parameters
@@ -6427,8 +6427,8 @@ Initialize intlist by number of entities.
 ") Initialize;
 		void Initialize(const Standard_Integer nbe);
 
-		/****************** Internals ******************/
-		/**** md5 signature: fd1babce4b67ac99ebe23a987a453b4d ****/
+		/****** Interface_IntList::Internals ******/
+		/****** md5 signature: fd1babce4b67ac99ebe23a987a453b4d ******/
 		%feature("compactdefaultargs") Internals;
 		%feature("autodoc", "
 Parameters
@@ -6446,8 +6446,8 @@ Returns internal values, used for copying.
 ") Internals;
 		void Internals(Standard_Integer &OutValue, opencascade::handle<TColStd_HArray1OfInteger> & ents, opencascade::handle<TColStd_HArray1OfInteger> & refs);
 
-		/****************** IsRedefined ******************/
-		/**** md5 signature: 2634d7efe5f57981ef79cc93aa14462d ****/
+		/****** Interface_IntList::IsRedefined ******/
+		/****** md5 signature: 2634d7efe5f57981ef79cc93aa14462d ******/
 		%feature("compactdefaultargs") IsRedefined;
 		%feature("autodoc", "
 Parameters
@@ -6464,8 +6464,8 @@ Returns true if the list for a number (default is taken as current) is 'redefine
 ") IsRedefined;
 		Standard_Boolean IsRedefined(const Standard_Integer num = 0);
 
-		/****************** Length ******************/
-		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
+		/****** Interface_IntList::Length ******/
+		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -6477,8 +6477,8 @@ Returns the count of refs attached to current entity number.
 ") Length;
 		Standard_Integer Length();
 
-		/****************** List ******************/
-		/**** md5 signature: 57597a0a72ee1575151f494c25e4c3eb ****/
+		/****** Interface_IntList::List ******/
+		/****** md5 signature: 57597a0a72ee1575151f494c25e4c3eb ******/
 		%feature("compactdefaultargs") List;
 		%feature("autodoc", "
 Parameters
@@ -6496,8 +6496,8 @@ Returns an intlist, identical to <self> but set to a specified entity number by 
 ") List;
 		Interface_IntList List(const Standard_Integer number, const Standard_Boolean copied = Standard_False);
 
-		/****************** NbEntities ******************/
-		/**** md5 signature: 533943455099343f106415a0a22e8ac9 ****/
+		/****** Interface_IntList::NbEntities ******/
+		/****** md5 signature: 533943455099343f106415a0a22e8ac9 ******/
 		%feature("compactdefaultargs") NbEntities;
 		%feature("autodoc", "Return
 -------
@@ -6509,8 +6509,8 @@ Returns count of entities to be aknowledged.
 ") NbEntities;
 		Standard_Integer NbEntities();
 
-		/****************** Number ******************/
-		/**** md5 signature: 0049d1350ba9feffbbe0d130f3765410 ****/
+		/****** Interface_IntList::Number ******/
+		/****** md5 signature: 0049d1350ba9feffbbe0d130f3765410 ******/
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "Return
 -------
@@ -6522,8 +6522,8 @@ Returns the current entity number.
 ") Number;
 		Standard_Integer Number();
 
-		/****************** Remove ******************/
-		/**** md5 signature: 37f5a5cdb681cc08ea6f88bf3c6c2dca ****/
+		/****** Interface_IntList::Remove ******/
+		/****** md5 signature: 37f5a5cdb681cc08ea6f88bf3c6c2dca ******/
 		%feature("compactdefaultargs") Remove;
 		%feature("autodoc", "
 Parameters
@@ -6540,8 +6540,8 @@ Removes an item in the list for current number, given its rank returns true if d
 ") Remove;
 		Standard_Boolean Remove(const Standard_Integer num);
 
-		/****************** Reservate ******************/
-		/**** md5 signature: 364547d2a05c1bcc458abef36a679601 ****/
+		/****** Interface_IntList::Reservate ******/
+		/****** md5 signature: 364547d2a05c1bcc458abef36a679601 ******/
 		%feature("compactdefaultargs") Reservate;
 		%feature("autodoc", "
 Parameters
@@ -6558,8 +6558,8 @@ Makes a reservation for <count> references to be later attached to the current e
 ") Reservate;
 		void Reservate(const Standard_Integer count);
 
-		/****************** SetNbEntities ******************/
-		/**** md5 signature: c6d2ce641f4ae51c5143271bfac46e17 ****/
+		/****** Interface_IntList::SetNbEntities ******/
+		/****** md5 signature: c6d2ce641f4ae51c5143271bfac46e17 ******/
 		%feature("compactdefaultargs") SetNbEntities;
 		%feature("autodoc", "
 Parameters
@@ -6576,8 +6576,8 @@ Changes the count of entities (ignored if decreased).
 ") SetNbEntities;
 		void SetNbEntities(const Standard_Integer nbe);
 
-		/****************** SetNumber ******************/
-		/**** md5 signature: 85e23abe597a6ad027059592ad519319 ****/
+		/****** Interface_IntList::SetNumber ******/
+		/****** md5 signature: 85e23abe597a6ad027059592ad519319 ******/
 		%feature("compactdefaultargs") SetNumber;
 		%feature("autodoc", "
 Parameters
@@ -6594,8 +6594,8 @@ Sets an entity number as current (for read and fill).
 ") SetNumber;
 		void SetNumber(const Standard_Integer number);
 
-		/****************** SetRedefined ******************/
-		/**** md5 signature: 7cabdf15a91372eeafa0e8650fea706f ****/
+		/****** Interface_IntList::SetRedefined ******/
+		/****** md5 signature: 7cabdf15a91372eeafa0e8650fea706f ******/
 		%feature("compactdefaultargs") SetRedefined;
 		%feature("autodoc", "
 Parameters
@@ -6612,8 +6612,8 @@ Sets current entity list to be redefined or not this is used in a graph for rede
 ") SetRedefined;
 		void SetRedefined(const Standard_Boolean mode);
 
-		/****************** Value ******************/
-		/**** md5 signature: ef9afc62c16e7d8be71a9016548b2389 ****/
+		/****** Interface_IntList::Value ******/
+		/****** md5 signature: ef9afc62c16e7d8be71a9016548b2389 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -6644,8 +6644,8 @@ Returns a reference number in the list for current number, according to its rank
 *************************/
 class Interface_IntVal : public Standard_Transient {
 	public:
-		/****************** Interface_IntVal ******************/
-		/**** md5 signature: 05fc265cb59323c6464c768349b7da1b ****/
+		/****** Interface_IntVal::Interface_IntVal ******/
+		/****** md5 signature: 05fc265cb59323c6464c768349b7da1b ******/
 		%feature("compactdefaultargs") Interface_IntVal;
 		%feature("autodoc", "Return
 -------
@@ -6670,8 +6670,8 @@ No available documentation.
             $self->CValue()=value;
             }
         };
-		/****************** Value ******************/
-		/**** md5 signature: c6d99989077b92200f0377d8b792ba0b ****/
+		/****** Interface_IntVal::Value ******/
+		/****** md5 signature: c6d99989077b92200f0377d8b792ba0b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -6700,8 +6700,8 @@ No available documentation.
 %nodefaultctor Interface_InterfaceModel;
 class Interface_InterfaceModel : public Standard_Transient {
 	public:
-		/****************** AddEntity ******************/
-		/**** md5 signature: 36660b5c5ccaf3658f088997f413ed03 ****/
+		/****** Interface_InterfaceModel::AddEntity ******/
+		/****** md5 signature: 36660b5c5ccaf3658f088997f413ed03 ******/
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "
 Parameters
@@ -6718,8 +6718,8 @@ Internal method for adding an entity. used by file reading (defined by each inte
 ") AddEntity;
 		virtual void AddEntity(const opencascade::handle<Standard_Transient> & anentity);
 
-		/****************** AddReportEntity ******************/
-		/**** md5 signature: cfa374c9a5be1ceb7121eedcea8196e0 ****/
+		/****** Interface_InterfaceModel::AddReportEntity ******/
+		/****** md5 signature: cfa374c9a5be1ceb7121eedcea8196e0 ******/
 		%feature("compactdefaultargs") AddReportEntity;
 		%feature("autodoc", "
 Parameters
@@ -6737,8 +6737,8 @@ Adds a reportentity as such. returns false if the concerned entity is not record
 ") AddReportEntity;
 		Standard_Boolean AddReportEntity(const opencascade::handle<Interface_ReportEntity> & rep, const Standard_Boolean semantic = Standard_False);
 
-		/****************** AddWithRefs ******************/
-		/**** md5 signature: 7141d3692dcc02334df27c34d6ede76b ****/
+		/****** Interface_InterfaceModel::AddWithRefs ******/
+		/****** md5 signature: 7141d3692dcc02334df27c34d6ede76b ******/
 		%feature("compactdefaultargs") AddWithRefs;
 		%feature("autodoc", "
 Parameters
@@ -6758,8 +6758,8 @@ Adds to the model, an entity with all its references, as they are defined by gen
 ") AddWithRefs;
 		void AddWithRefs(const opencascade::handle<Standard_Transient> & anent, const opencascade::handle<Interface_Protocol> & proto, const Standard_Integer level = 0, const Standard_Boolean listall = Standard_False);
 
-		/****************** AddWithRefs ******************/
-		/**** md5 signature: 8d0c9dd877a8f5c4dd4c3893f6965246 ****/
+		/****** Interface_InterfaceModel::AddWithRefs ******/
+		/****** md5 signature: 8d0c9dd877a8f5c4dd4c3893f6965246 ******/
 		%feature("compactdefaultargs") AddWithRefs;
 		%feature("autodoc", "
 Parameters
@@ -6778,8 +6778,8 @@ Same as above, but works with the protocol of the model.
 ") AddWithRefs;
 		void AddWithRefs(const opencascade::handle<Standard_Transient> & anent, const Standard_Integer level = 0, const Standard_Boolean listall = Standard_False);
 
-		/****************** AddWithRefs ******************/
-		/**** md5 signature: 733b542fd82fe1a253419fba3ab93c40 ****/
+		/****** Interface_InterfaceModel::AddWithRefs ******/
+		/****** md5 signature: 733b542fd82fe1a253419fba3ab93c40 ******/
 		%feature("compactdefaultargs") AddWithRefs;
 		%feature("autodoc", "
 Parameters
@@ -6799,8 +6799,8 @@ Same as above, but works with an already created generallib.
 ") AddWithRefs;
 		void AddWithRefs(const opencascade::handle<Standard_Transient> & anent, const Interface_GeneralLib & lib, const Standard_Integer level = 0, const Standard_Boolean listall = Standard_False);
 
-		/****************** CategoryNumber ******************/
-		/**** md5 signature: c04739821ee1601715da6f534bdedafe ****/
+		/****** Interface_InterfaceModel::CategoryNumber ******/
+		/****** md5 signature: c04739821ee1601715da6f534bdedafe ******/
 		%feature("compactdefaultargs") CategoryNumber;
 		%feature("autodoc", "
 Parameters
@@ -6817,8 +6817,8 @@ Returns the recorded category number for a given entity number 0 if none was def
 ") CategoryNumber;
 		Standard_Integer CategoryNumber(const Standard_Integer num);
 
-		/****************** ChangeOrder ******************/
-		/**** md5 signature: 09115a1570cd7299c84cb92ee414ba1b ****/
+		/****** Interface_InterfaceModel::ChangeOrder ******/
+		/****** md5 signature: 09115a1570cd7299c84cb92ee414ba1b ******/
 		%feature("compactdefaultargs") ChangeOrder;
 		%feature("autodoc", "
 Parameters
@@ -6837,8 +6837,8 @@ Changes the numbers of some entities: <oldnum> is moved to <newnum>, same for <c
 ") ChangeOrder;
 		void ChangeOrder(const Standard_Integer oldnum, const Standard_Integer newnum, const Standard_Integer count = 1);
 
-		/****************** Check ******************/
-		/**** md5 signature: ecfbc87eedd38d86f1a42b818ec4cee7 ****/
+		/****** Interface_InterfaceModel::Check ******/
+		/****** md5 signature: ecfbc87eedd38d86f1a42b818ec4cee7 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -6856,8 +6856,8 @@ Returns the check attached to an entity, designated by its number. 0 for global 
 ") Check;
 		const opencascade::handle<Interface_Check> & Check(const Standard_Integer num, const Standard_Boolean syntactic);
 
-		/****************** ClassName ******************/
-		/**** md5 signature: 5c848fa4e9ca29e4e7b7a55157f5d8c4 ****/
+		/****** Interface_InterfaceModel::ClassName ******/
+		/****** md5 signature: 5c848fa4e9ca29e4e7b7a55157f5d8c4 ******/
 		%feature("compactdefaultargs") ClassName;
 		%feature("autodoc", "
 Parameters
@@ -6874,8 +6874,8 @@ From a cdl type name, returns the class part (package dropped) warning: buffered
 ") ClassName;
 		static Standard_CString ClassName(Standard_CString typnam);
 
-		/****************** Clear ******************/
-		/**** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ****/
+		/****** Interface_InterfaceModel::Clear ******/
+		/****** md5 signature: 1badd2d119b64dbdb177834e510c3af9 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -6887,8 +6887,8 @@ Erases contained data; used when a model is copied to others: the new copied one
 ") Clear;
 		virtual void Clear();
 
-		/****************** ClearEntities ******************/
-		/**** md5 signature: 290376598adc8dd87baf57964ef808e5 ****/
+		/****** Interface_InterfaceModel::ClearEntities ******/
+		/****** md5 signature: 290376598adc8dd87baf57964ef808e5 ******/
 		%feature("compactdefaultargs") ClearEntities;
 		%feature("autodoc", "Return
 -------
@@ -6900,8 +6900,8 @@ Clears the entities; uses the general service whendelete, in addition to the sta
 ") ClearEntities;
 		virtual void ClearEntities();
 
-		/****************** ClearHeader ******************/
-		/**** md5 signature: 2d2d6c6f650c81db4fbe3d0ba2eaa00b ****/
+		/****** Interface_InterfaceModel::ClearHeader ******/
+		/****** md5 signature: 2d2d6c6f650c81db4fbe3d0ba2eaa00b ******/
 		%feature("compactdefaultargs") ClearHeader;
 		%feature("autodoc", "Return
 -------
@@ -6913,8 +6913,8 @@ Clears model's header: specific to each norm.
 ") ClearHeader;
 		virtual void ClearHeader();
 
-		/****************** ClearLabels ******************/
-		/**** md5 signature: 25c392ea756509d2f11c0754fb09a6d0 ****/
+		/****** Interface_InterfaceModel::ClearLabels ******/
+		/****** md5 signature: 25c392ea756509d2f11c0754fb09a6d0 ******/
 		%feature("compactdefaultargs") ClearLabels;
 		%feature("autodoc", "Return
 -------
@@ -6926,8 +6926,8 @@ Erases information about labels, if any: specific to each norm.
 ") ClearLabels;
 		virtual void ClearLabels();
 
-		/****************** ClearReportEntity ******************/
-		/**** md5 signature: caece735d9030fe4491e05e5614741b1 ****/
+		/****** Interface_InterfaceModel::ClearReportEntity ******/
+		/****** md5 signature: caece735d9030fe4491e05e5614741b1 ******/
 		%feature("compactdefaultargs") ClearReportEntity;
 		%feature("autodoc", "
 Parameters
@@ -6944,8 +6944,8 @@ Removes the reportentity attached to entity <num>. returns true if done, false i
 ") ClearReportEntity;
 		Standard_Boolean ClearReportEntity(const Standard_Integer num);
 
-		/****************** Contains ******************/
-		/**** md5 signature: 86d9b2cd7c6aab5b29da3a6398f95c37 ****/
+		/****** Interface_InterfaceModel::Contains ******/
+		/****** md5 signature: 86d9b2cd7c6aab5b29da3a6398f95c37 ******/
 		%feature("compactdefaultargs") Contains;
 		%feature("autodoc", "
 Parameters
@@ -6962,8 +6962,8 @@ Returns true if a model contains an entity (for a reportentity, looks for the re
 ") Contains;
 		Standard_Boolean Contains(const opencascade::handle<Standard_Transient> & anentity);
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
+		/****** Interface_InterfaceModel::Destroy ******/
+		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "Return
 -------
@@ -6988,8 +6988,8 @@ Clears the list of entities (service whendelete).
             $self->DispatchStatus()=value;
             }
         };
-		/****************** DumpHeader ******************/
-		/**** md5 signature: aa1f14cdc284ebad5c520a0f2f1e0070 ****/
+		/****** Interface_InterfaceModel::DumpHeader ******/
+		/****** md5 signature: aa1f14cdc284ebad5c520a0f2f1e0070 ******/
 		%feature("compactdefaultargs") DumpHeader;
 		%feature("autodoc", "
 Parameters
@@ -7006,8 +7006,8 @@ Dumps header in a short, easy to read, form, onto a stream <level> allows to pri
 ") DumpHeader;
 		virtual void DumpHeader(std::ostream &OutValue, const Standard_Integer level = 0);
 
-		/****************** Entities ******************/
-		/**** md5 signature: 5b7a9453b66b65586915cfb6dcb67a37 ****/
+		/****** Interface_InterfaceModel::Entities ******/
+		/****** md5 signature: 5b7a9453b66b65586915cfb6dcb67a37 ******/
 		%feature("compactdefaultargs") Entities;
 		%feature("autodoc", "Return
 -------
@@ -7019,8 +7019,8 @@ Returns the list of all entities, as an iterator on entities (the entities thems
 ") Entities;
 		Interface_EntityIterator Entities();
 
-		/****************** EntityState ******************/
-		/**** md5 signature: 8832d46c1ee04c5248c965fe8ea44bdc ****/
+		/****** Interface_InterfaceModel::EntityState ******/
+		/****** md5 signature: 8832d46c1ee04c5248c965fe8ea44bdc ******/
 		%feature("compactdefaultargs") EntityState;
 		%feature("autodoc", "
 Parameters
@@ -7037,8 +7037,8 @@ Returns the state of an entity, given its number.
 ") EntityState;
 		Interface_DataState EntityState(const Standard_Integer num);
 
-		/****************** FillIterator ******************/
-		/**** md5 signature: e32e298c5181f5a878a91b9da55bfb78 ****/
+		/****** Interface_InterfaceModel::FillIterator ******/
+		/****** md5 signature: e32e298c5181f5a878a91b9da55bfb78 ******/
 		%feature("compactdefaultargs") FillIterator;
 		%feature("autodoc", "
 Parameters
@@ -7055,8 +7055,8 @@ Allows an entityiterator to get a list of entities.
 ") FillIterator;
 		void FillIterator(Interface_EntityIterator & iter);
 
-		/****************** FillSemanticChecks ******************/
-		/**** md5 signature: 40e1fc0a50fdfc3138757138d2820d80 ****/
+		/****** Interface_InterfaceModel::FillSemanticChecks ******/
+		/****** md5 signature: 40e1fc0a50fdfc3138757138d2820d80 ******/
 		%feature("compactdefaultargs") FillSemanticChecks;
 		%feature("autodoc", "
 Parameters
@@ -7074,8 +7074,8 @@ Fills the list of semantic checks. this list is computed (by checktool). hence, 
 ") FillSemanticChecks;
 		void FillSemanticChecks(const Interface_CheckIterator & checks, const Standard_Boolean clear = Standard_True);
 
-		/****************** GTool ******************/
-		/**** md5 signature: 442168885b1e4cac37d4ca65310561d7 ****/
+		/****** Interface_InterfaceModel::GTool ******/
+		/****** md5 signature: 442168885b1e4cac37d4ca65310561d7 ******/
 		%feature("compactdefaultargs") GTool;
 		%feature("autodoc", "Return
 -------
@@ -7087,8 +7087,8 @@ Returns the gtool, set by setprotocol or by setgtool.
 ") GTool;
 		opencascade::handle<Interface_GTool> GTool();
 
-		/****************** GetFromAnother ******************/
-		/**** md5 signature: 2b999b3d9af826c9b51624ead382edcb ****/
+		/****** Interface_InterfaceModel::GetFromAnother ******/
+		/****** md5 signature: 2b999b3d9af826c9b51624ead382edcb ******/
 		%feature("compactdefaultargs") GetFromAnother;
 		%feature("autodoc", "
 Parameters
@@ -7105,8 +7105,8 @@ Gets header (data specific of a defined interface) from another interfacemodel; 
 ") GetFromAnother;
 		virtual void GetFromAnother(const opencascade::handle<Interface_InterfaceModel> & other);
 
-		/****************** GetFromTransfer ******************/
-		/**** md5 signature: b546874e810498b992cf5d8486c6d36f ****/
+		/****** Interface_InterfaceModel::GetFromTransfer ******/
+		/****** md5 signature: b546874e810498b992cf5d8486c6d36f ******/
 		%feature("compactdefaultargs") GetFromTransfer;
 		%feature("autodoc", "
 Parameters
@@ -7123,8 +7123,8 @@ Gets contents from an entityiterator, prepared by a transfer tool (e.g transferc
 ") GetFromTransfer;
 		void GetFromTransfer(const Interface_EntityIterator & aniter);
 
-		/****************** GlobalCheck ******************/
-		/**** md5 signature: 07ea4d2b31d05f75a8ce725bb91a30f1 ****/
+		/****** Interface_InterfaceModel::GlobalCheck ******/
+		/****** md5 signature: 07ea4d2b31d05f75a8ce725bb91a30f1 ******/
 		%feature("compactdefaultargs") GlobalCheck;
 		%feature("autodoc", "
 Parameters
@@ -7141,8 +7141,8 @@ Returns the globalcheck, which memorizes messages global to the file (not specif
 ") GlobalCheck;
 		const opencascade::handle<Interface_Check> & GlobalCheck(const Standard_Boolean syntactic = Standard_True);
 
-		/****************** HasSemanticChecks ******************/
-		/**** md5 signature: 25996bc5ed2fb63f583d93c6a05d5b3a ****/
+		/****** Interface_InterfaceModel::HasSemanticChecks ******/
+		/****** md5 signature: 25996bc5ed2fb63f583d93c6a05d5b3a ******/
 		%feature("compactdefaultargs") HasSemanticChecks;
 		%feature("autodoc", "Return
 -------
@@ -7154,8 +7154,8 @@ Returns true if semantic checks have been filled.
 ") HasSemanticChecks;
 		Standard_Boolean HasSemanticChecks();
 
-		/****************** HasTemplate ******************/
-		/**** md5 signature: b06e71ec5ad78b50c72b6246c9763170 ****/
+		/****** Interface_InterfaceModel::HasTemplate ******/
+		/****** md5 signature: b06e71ec5ad78b50c72b6246c9763170 ******/
 		%feature("compactdefaultargs") HasTemplate;
 		%feature("autodoc", "
 Parameters
@@ -7172,8 +7172,8 @@ Returns true if a template is attached to a given name.
 ") HasTemplate;
 		static Standard_Boolean HasTemplate(Standard_CString name);
 
-		/****************** IsErrorEntity ******************/
-		/**** md5 signature: 9a0553bfba8f28a3e309e7419a8bf0b2 ****/
+		/****** Interface_InterfaceModel::IsErrorEntity ******/
+		/****** md5 signature: 9a0553bfba8f28a3e309e7419a8bf0b2 ******/
 		%feature("compactdefaultargs") IsErrorEntity;
 		%feature("autodoc", "
 Parameters
@@ -7190,8 +7190,8 @@ Returns true if <num> identifies an error entity: in this case, a reportentity b
 ") IsErrorEntity;
 		Standard_Boolean IsErrorEntity(const Standard_Integer num);
 
-		/****************** IsRedefinedContent ******************/
-		/**** md5 signature: 2d2b05e5e8de661ff25d445ddf8f7cb9 ****/
+		/****** Interface_InterfaceModel::IsRedefinedContent ******/
+		/****** md5 signature: 2d2b05e5e8de661ff25d445ddf8f7cb9 ******/
 		%feature("compactdefaultargs") IsRedefinedContent;
 		%feature("autodoc", "
 Parameters
@@ -7208,8 +7208,8 @@ Returns true if <num> identifies an entity which content is redefined through a 
 ") IsRedefinedContent;
 		Standard_Boolean IsRedefinedContent(const Standard_Integer num);
 
-		/****************** IsReportEntity ******************/
-		/**** md5 signature: 8a51fbfcbc8281bc9537df0d8f270f72 ****/
+		/****** Interface_InterfaceModel::IsReportEntity ******/
+		/****** md5 signature: 8a51fbfcbc8281bc9537df0d8f270f72 ******/
 		%feature("compactdefaultargs") IsReportEntity;
 		%feature("autodoc", "
 Parameters
@@ -7227,8 +7227,8 @@ Returns true if <num> identifies a reportentity in the model hence, reportentity
 ") IsReportEntity;
 		Standard_Boolean IsReportEntity(const Standard_Integer num, const Standard_Boolean semantic = Standard_False);
 
-		/****************** IsUnknownEntity ******************/
-		/**** md5 signature: 33f8ad771959bb49a6c2ad1988bd484a ****/
+		/****** Interface_InterfaceModel::IsUnknownEntity ******/
+		/****** md5 signature: 33f8ad771959bb49a6c2ad1988bd484a ******/
 		%feature("compactdefaultargs") IsUnknownEntity;
 		%feature("autodoc", "
 Parameters
@@ -7245,8 +7245,8 @@ Returns true if <num> identifies an unknown entity: in this case, a reportentity
 ") IsUnknownEntity;
 		Standard_Boolean IsUnknownEntity(const Standard_Integer num);
 
-		/****************** ListTemplates ******************/
-		/**** md5 signature: 2c47e2ad24fb7574a13bdb719e3129de ****/
+		/****** Interface_InterfaceModel::ListTemplates ******/
+		/****** md5 signature: 2c47e2ad24fb7574a13bdb719e3129de ******/
 		%feature("compactdefaultargs") ListTemplates;
 		%feature("autodoc", "Return
 -------
@@ -7258,8 +7258,8 @@ Returns the complete list of names attached to template models.
 ") ListTemplates;
 		static opencascade::handle<TColStd_HSequenceOfHAsciiString> ListTemplates();
 
-		/****************** NbEntities ******************/
-		/**** md5 signature: 533943455099343f106415a0a22e8ac9 ****/
+		/****** Interface_InterfaceModel::NbEntities ******/
+		/****** md5 signature: 533943455099343f106415a0a22e8ac9 ******/
 		%feature("compactdefaultargs") NbEntities;
 		%feature("autodoc", "Return
 -------
@@ -7271,8 +7271,8 @@ Returns count of contained entities.
 ") NbEntities;
 		Standard_Integer NbEntities();
 
-		/****************** NbTypes ******************/
-		/**** md5 signature: 2114040d9f988eb8e8a24fa970513b31 ****/
+		/****** Interface_InterfaceModel::NbTypes ******/
+		/****** md5 signature: 2114040d9f988eb8e8a24fa970513b31 ******/
 		%feature("compactdefaultargs") NbTypes;
 		%feature("autodoc", "
 Parameters
@@ -7289,8 +7289,8 @@ Returns the count of distinct types under which an entity may be processed. defi
 ") NbTypes;
 		Standard_Integer NbTypes(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** NewEmptyModel ******************/
-		/**** md5 signature: b02638b80473ee01c47c59397cf9207f ****/
+		/****** Interface_InterfaceModel::NewEmptyModel ******/
+		/****** md5 signature: b02638b80473ee01c47c59397cf9207f ******/
 		%feature("compactdefaultargs") NewEmptyModel;
 		%feature("autodoc", "Return
 -------
@@ -7302,8 +7302,8 @@ Returns a new empty model, same type as <self> (whatever its type); called to co
 ") NewEmptyModel;
 		virtual opencascade::handle<Interface_InterfaceModel> NewEmptyModel();
 
-		/****************** NextNumberForLabel ******************/
-		/**** md5 signature: 8f59fe41365cb072f36e69eb064247b9 ****/
+		/****** Interface_InterfaceModel::NextNumberForLabel ******/
+		/****** md5 signature: 8f59fe41365cb072f36e69eb064247b9 ******/
 		%feature("compactdefaultargs") NextNumberForLabel;
 		%feature("autodoc", "
 Parameters
@@ -7322,8 +7322,8 @@ Searches a label which matches with one entity. begins from <lastnum>+1 (default
 ") NextNumberForLabel;
 		virtual Standard_Integer NextNumberForLabel(Standard_CString label, const Standard_Integer lastnum = 0, const Standard_Boolean exact = Standard_True);
 
-		/****************** Number ******************/
-		/**** md5 signature: f25a1d68cbbad3b088f5d847de3ffede ****/
+		/****** Interface_InterfaceModel::Number ******/
+		/****** md5 signature: f25a1d68cbbad3b088f5d847de3ffede ******/
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "
 Parameters
@@ -7340,8 +7340,8 @@ Returns the number of an entity in the model if it contains it. else returns 0. 
 ") Number;
 		Standard_Integer Number(const opencascade::handle<Standard_Transient> & anentity);
 
-		/****************** Print ******************/
-		/**** md5 signature: f32d9b13a42d350bd451be6e924bdd04 ****/
+		/****** Interface_InterfaceModel::Print ******/
+		/****** md5 signature: f32d9b13a42d350bd451be6e924bdd04 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -7359,8 +7359,8 @@ Prints identification of a given entity in <self>, in order to be printed in a l
 ") Print;
 		void Print(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue, const Standard_Integer mode = 0);
 
-		/****************** PrintLabel ******************/
-		/**** md5 signature: 52220811631aa24ac981dc628dc618c9 ****/
+		/****** Interface_InterfaceModel::PrintLabel ******/
+		/****** md5 signature: 52220811631aa24ac981dc628dc618c9 ******/
 		%feature("compactdefaultargs") PrintLabel;
 		%feature("autodoc", "
 Parameters
@@ -7377,8 +7377,8 @@ Prints label specific to each norm, for a given entity. must only print label it
 ") PrintLabel;
 		virtual void PrintLabel(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
-		/****************** PrintToLog ******************/
-		/**** md5 signature: b7aa819e37079792a003e300dd25e367 ****/
+		/****** Interface_InterfaceModel::PrintToLog ******/
+		/****** md5 signature: b7aa819e37079792a003e300dd25e367 ******/
 		%feature("compactdefaultargs") PrintToLog;
 		%feature("autodoc", "
 Parameters
@@ -7395,8 +7395,8 @@ Prints label specific to each norm in log format, for a given entity. by default
 ") PrintToLog;
 		virtual void PrintToLog(const opencascade::handle<Standard_Transient> & ent, std::ostream &OutValue);
 
-		/****************** Protocol ******************/
-		/**** md5 signature: 2dce80af32cedc07d353d312ab7e2c73 ****/
+		/****** Interface_InterfaceModel::Protocol ******/
+		/****** md5 signature: 2dce80af32cedc07d353d312ab7e2c73 ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -7408,8 +7408,8 @@ Returns the protocol which has been set by setprotocol, or addwithrefs with prot
 ") Protocol;
 		virtual opencascade::handle<Interface_Protocol> Protocol();
 
-		/****************** Redefineds ******************/
-		/**** md5 signature: 9237c4996df81ce3ec342e4fde1775ed ****/
+		/****** Interface_InterfaceModel::Redefineds ******/
+		/****** md5 signature: 9237c4996df81ce3ec342e4fde1775ed ******/
 		%feature("compactdefaultargs") Redefineds;
 		%feature("autodoc", "Return
 -------
@@ -7421,8 +7421,8 @@ Returns the list of reportentities which redefine data (generally, if concerned 
 ") Redefineds;
 		Interface_EntityIterator Redefineds();
 
-		/****************** ReplaceEntity ******************/
-		/**** md5 signature: d6293134eba6b588440f32634f39e804 ****/
+		/****** Interface_InterfaceModel::ReplaceEntity ******/
+		/****** md5 signature: d6293134eba6b588440f32634f39e804 ******/
 		%feature("compactdefaultargs") ReplaceEntity;
 		%feature("autodoc", "
 Parameters
@@ -7440,8 +7440,8 @@ Replace entity with number=nument on other entity - 'anent'.
 ") ReplaceEntity;
 		void ReplaceEntity(const Standard_Integer nument, const opencascade::handle<Standard_Transient> & anent);
 
-		/****************** ReportEntity ******************/
-		/**** md5 signature: ddc1c48add2352efbffabcf415ec0d82 ****/
+		/****** Interface_InterfaceModel::ReportEntity ******/
+		/****** md5 signature: ddc1c48add2352efbffabcf415ec0d82 ******/
 		%feature("compactdefaultargs") ReportEntity;
 		%feature("autodoc", "
 Parameters
@@ -7459,8 +7459,8 @@ Returns a reportentity identified by its number in the model, or a null handle i
 ") ReportEntity;
 		opencascade::handle<Interface_ReportEntity> ReportEntity(const Standard_Integer num, const Standard_Boolean semantic = Standard_False);
 
-		/****************** Reports ******************/
-		/**** md5 signature: 7dcbd1cdc4196a34ee9cc60f3720069c ****/
+		/****** Interface_InterfaceModel::Reports ******/
+		/****** md5 signature: 7dcbd1cdc4196a34ee9cc60f3720069c ******/
 		%feature("compactdefaultargs") Reports;
 		%feature("autodoc", "
 Parameters
@@ -7477,8 +7477,8 @@ Returns the list of all reportentities, i.e. data about entities read with error
 ") Reports;
 		Interface_EntityIterator Reports(const Standard_Boolean semantic = Standard_False);
 
-		/****************** Reservate ******************/
-		/**** md5 signature: 6f07eeb3c9145319791e01dbbf310cf9 ****/
+		/****** Interface_InterfaceModel::Reservate ******/
+		/****** md5 signature: 6f07eeb3c9145319791e01dbbf310cf9 ******/
 		%feature("compactdefaultargs") Reservate;
 		%feature("autodoc", "
 Parameters
@@ -7495,8 +7495,8 @@ Does a reservation for the list of entities (for optimized storage management). 
 ") Reservate;
 		virtual void Reservate(const Standard_Integer nbent);
 
-		/****************** ReverseOrders ******************/
-		/**** md5 signature: 4dcab9ca5675a7721a6366662a3fb695 ****/
+		/****** Interface_InterfaceModel::ReverseOrders ******/
+		/****** md5 signature: 4dcab9ca5675a7721a6366662a3fb695 ******/
 		%feature("compactdefaultargs") ReverseOrders;
 		%feature("autodoc", "
 Parameters
@@ -7513,8 +7513,8 @@ Reverses the numbers of the entities, between <after> and the total count of ent
 ") ReverseOrders;
 		void ReverseOrders(const Standard_Integer after = 0);
 
-		/****************** SetCategoryNumber ******************/
-		/**** md5 signature: 0de38faf7d2d0456d0b564ba5cc882c6 ****/
+		/****** Interface_InterfaceModel::SetCategoryNumber ******/
+		/****** md5 signature: 0de38faf7d2d0456d0b564ba5cc882c6 ******/
 		%feature("compactdefaultargs") SetCategoryNumber;
 		%feature("autodoc", "
 Parameters
@@ -7532,8 +7532,8 @@ Records a category number for an entity number returns true when done, false if 
 ") SetCategoryNumber;
 		Standard_Boolean SetCategoryNumber(const Standard_Integer num, const Standard_Integer val);
 
-		/****************** SetGTool ******************/
-		/**** md5 signature: 426fee21a6a5a7870be99f65c2ee1aa3 ****/
+		/****** Interface_InterfaceModel::SetGTool ******/
+		/****** md5 signature: 426fee21a6a5a7870be99f65c2ee1aa3 ******/
 		%feature("compactdefaultargs") SetGTool;
 		%feature("autodoc", "
 Parameters
@@ -7550,8 +7550,8 @@ Sets a gtool for this model, which already defines a protocol.
 ") SetGTool;
 		void SetGTool(const opencascade::handle<Interface_GTool> & gtool);
 
-		/****************** SetGlobalCheck ******************/
-		/**** md5 signature: b9ac7c37d00ace1f24e5ca276842e825 ****/
+		/****** Interface_InterfaceModel::SetGlobalCheck ******/
+		/****** md5 signature: b9ac7c37d00ace1f24e5ca276842e825 ******/
 		%feature("compactdefaultargs") SetGlobalCheck;
 		%feature("autodoc", "
 Parameters
@@ -7568,8 +7568,8 @@ Allows to modify globalcheck, after getting then completing it remark: it is syn
 ") SetGlobalCheck;
 		void SetGlobalCheck(const opencascade::handle<Interface_Check> & ach);
 
-		/****************** SetProtocol ******************/
-		/**** md5 signature: 2468c79c489a1445180ccb57ff37a4b0 ****/
+		/****** Interface_InterfaceModel::SetProtocol ******/
+		/****** md5 signature: 2468c79c489a1445180ccb57ff37a4b0 ******/
 		%feature("compactdefaultargs") SetProtocol;
 		%feature("autodoc", "
 Parameters
@@ -7586,8 +7586,8 @@ Sets a protocol for this model it is also set by a call to addwithrefs with prot
 ") SetProtocol;
 		void SetProtocol(const opencascade::handle<Interface_Protocol> & proto);
 
-		/****************** SetReportEntity ******************/
-		/**** md5 signature: 47b9d0b16e3a849d4ba4e5137695613e ****/
+		/****** Interface_InterfaceModel::SetReportEntity ******/
+		/****** md5 signature: 47b9d0b16e3a849d4ba4e5137695613e ******/
 		%feature("compactdefaultargs") SetReportEntity;
 		%feature("autodoc", "
 Parameters
@@ -7605,8 +7605,8 @@ Sets or replaces a reportentity for the entity <num>. returns true if report is 
 ") SetReportEntity;
 		Standard_Boolean SetReportEntity(const Standard_Integer num, const opencascade::handle<Interface_ReportEntity> & rep);
 
-		/****************** SetTemplate ******************/
-		/**** md5 signature: 946918dd1dfae5599e9388cb399b596a ****/
+		/****** Interface_InterfaceModel::SetTemplate ******/
+		/****** md5 signature: 946918dd1dfae5599e9388cb399b596a ******/
 		%feature("compactdefaultargs") SetTemplate;
 		%feature("autodoc", "
 Parameters
@@ -7624,8 +7624,8 @@ Records a new template model with a name. if the name was already recorded, the 
 ") SetTemplate;
 		static Standard_Boolean SetTemplate(Standard_CString name, const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** StringLabel ******************/
-		/**** md5 signature: 31c0b3f4364a8064ca7024a2a736f259 ****/
+		/****** Interface_InterfaceModel::StringLabel ******/
+		/****** md5 signature: 31c0b3f4364a8064ca7024a2a736f259 ******/
 		%feature("compactdefaultargs") StringLabel;
 		%feature("autodoc", "
 Parameters
@@ -7642,8 +7642,8 @@ Returns a string with the label attached to a given entity. warning: while this 
 ") StringLabel;
 		virtual opencascade::handle<TCollection_HAsciiString> StringLabel(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Template ******************/
-		/**** md5 signature: 3304d8ba4bb5c09675517f94d9d091c3 ****/
+		/****** Interface_InterfaceModel::Template ******/
+		/****** md5 signature: 3304d8ba4bb5c09675517f94d9d091c3 ******/
 		%feature("compactdefaultargs") Template;
 		%feature("autodoc", "
 Parameters
@@ -7660,8 +7660,8 @@ Returns the template model attached to a name, or a null handle.
 ") Template;
 		static opencascade::handle<Interface_InterfaceModel> Template(Standard_CString name);
 
-		/****************** Type ******************/
-		/**** md5 signature: da60bf49fd753ae14bcafada17bba312 ****/
+		/****** Interface_InterfaceModel::Type ******/
+		/****** md5 signature: da60bf49fd753ae14bcafada17bba312 ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "
 Parameters
@@ -7679,8 +7679,8 @@ Returns a type, given its rank: defined by the protocol (by default, the first o
 ") Type;
 		opencascade::handle<Standard_Type> Type(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer num = 1);
 
-		/****************** TypeName ******************/
-		/**** md5 signature: 6373a0a5f8f4cdd443caf338fdcd04a8 ****/
+		/****** Interface_InterfaceModel::TypeName ******/
+		/****** md5 signature: 6373a0a5f8f4cdd443caf338fdcd04a8 ******/
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "
 Parameters
@@ -7698,8 +7698,8 @@ Returns the type name of an entity, from the list of types (one or more ...) <co
 ") TypeName;
 		Standard_CString TypeName(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean complete = Standard_True);
 
-		/****************** Value ******************/
-		/**** md5 signature: a291325b4e5caa2a5ab946934090ec8b ****/
+		/****** Interface_InterfaceModel::Value ******/
+		/****** md5 signature: a291325b4e5caa2a5ab946934090ec8b ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -7716,8 +7716,8 @@ Returns an entity identified by its number in the model each sub-class of interf
 ") Value;
 		const opencascade::handle<Standard_Transient> & Value(const Standard_Integer num);
 
-		/****************** VerifyCheck ******************/
-		/**** md5 signature: 2f1dfe74657145cf0073cfba1684e844 ****/
+		/****** Interface_InterfaceModel::VerifyCheck ******/
+		/****** md5 signature: 2f1dfe74657145cf0073cfba1684e844 ******/
 		%feature("compactdefaultargs") VerifyCheck;
 		%feature("autodoc", "
 Parameters
@@ -7750,8 +7750,8 @@ Minimum semantic global check on data in model (header) can only check basic dat
 *****************************/
 class Interface_LineBuffer {
 	public:
-		/****************** Interface_LineBuffer ******************/
-		/**** md5 signature: 4cdbf84bbb8d172c7bfdf161780c1eba ****/
+		/****** Interface_LineBuffer::Interface_LineBuffer ******/
+		/****** md5 signature: 4cdbf84bbb8d172c7bfdf161780c1eba ******/
 		%feature("compactdefaultargs") Interface_LineBuffer;
 		%feature("autodoc", "
 Parameters
@@ -7768,8 +7768,8 @@ Creates a linebuffer with an absolute maximum size (default value is only to sat
 ") Interface_LineBuffer;
 		 Interface_LineBuffer(const Standard_Integer size = 10);
 
-		/****************** Add ******************/
-		/**** md5 signature: 5c01da915f25c93071b431b3f7ef2eca ****/
+		/****** Interface_LineBuffer::Add ******/
+		/****** md5 signature: 5c01da915f25c93071b431b3f7ef2eca ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -7786,8 +7786,8 @@ Adds a text as a cstring. its length is evaluated from the text (by c function s
 ") Add;
 		void Add(Standard_CString text);
 
-		/****************** Add ******************/
-		/**** md5 signature: 881da44d801a4bde276a120320281d38 ****/
+		/****** Interface_LineBuffer::Add ******/
+		/****** md5 signature: 881da44d801a4bde276a120320281d38 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -7805,8 +7805,8 @@ Adds a text as a cstring. its length is given as <lntext>.
 ") Add;
 		void Add(Standard_CString text, const Standard_Integer lntext);
 
-		/****************** Add ******************/
-		/**** md5 signature: 44e9d546aa4891e8b4d514c71dd12e4a ****/
+		/****** Interface_LineBuffer::Add ******/
+		/****** md5 signature: 44e9d546aa4891e8b4d514c71dd12e4a ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -7823,8 +7823,8 @@ Adds a text as a asciistring from tcollection.
 ") Add;
 		void Add(TCollection_AsciiString text);
 
-		/****************** Add ******************/
-		/**** md5 signature: 09c9ed86e8cab71a163a455eb49a769d ****/
+		/****** Interface_LineBuffer::Add ******/
+		/****** md5 signature: 09c9ed86e8cab71a163a455eb49a769d ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -7841,8 +7841,8 @@ Adds a text made of only one character.
 ") Add;
 		void Add(const Standard_Character text);
 
-		/****************** CanGet ******************/
-		/**** md5 signature: c90da290ebabc1722b6f88371ad4504a ****/
+		/****** Interface_LineBuffer::CanGet ******/
+		/****** md5 signature: c90da290ebabc1722b6f88371ad4504a ******/
 		%feature("compactdefaultargs") CanGet;
 		%feature("autodoc", "
 Parameters
@@ -7859,8 +7859,8 @@ Returns true if there is room enough to add <more> characters else, it is requir
 ") CanGet;
 		Standard_Boolean CanGet(const Standard_Integer more);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_LineBuffer::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -7872,8 +7872,8 @@ Clears completely the linebuffer.
 ") Clear;
 		void Clear();
 
-		/****************** Content ******************/
-		/**** md5 signature: da26760e5fb7431e97c1e9a66278100f ****/
+		/****** Interface_LineBuffer::Content ******/
+		/****** md5 signature: da26760e5fb7431e97c1e9a66278100f ******/
 		%feature("compactdefaultargs") Content;
 		%feature("autodoc", "Return
 -------
@@ -7885,8 +7885,8 @@ Returns the content of the linebuffer.
 ") Content;
 		Standard_CString Content();
 
-		/****************** FreezeInitial ******************/
-		/**** md5 signature: dbf139b695534a1365987a2862b1ca6a ****/
+		/****** Interface_LineBuffer::FreezeInitial ******/
+		/****** md5 signature: dbf139b695534a1365987a2862b1ca6a ******/
 		%feature("compactdefaultargs") FreezeInitial;
 		%feature("autodoc", "Return
 -------
@@ -7898,8 +7898,8 @@ Inhibits effect of setinitial until the next move (i.e. keep) then prepare will 
 ") FreezeInitial;
 		void FreezeInitial();
 
-		/****************** Length ******************/
-		/**** md5 signature: f2d149cffca76ec002490404b3e808e1 ****/
+		/****** Interface_LineBuffer::Length ******/
+		/****** md5 signature: f2d149cffca76ec002490404b3e808e1 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -7911,8 +7911,8 @@ Returns the length of the linebuffer.
 ") Length;
 		Standard_Integer Length();
 
-		/****************** Move ******************/
-		/**** md5 signature: 52b2fbc1473ae88a85a1baac6aa8cced ****/
+		/****** Interface_LineBuffer::Move ******/
+		/****** md5 signature: 52b2fbc1473ae88a85a1baac6aa8cced ******/
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "
 Parameters
@@ -7929,8 +7929,8 @@ Fills a asciistring <str> with the content of the line buffer, then clears the l
 ") Move;
 		void Move(TCollection_AsciiString & str);
 
-		/****************** Move ******************/
-		/**** md5 signature: 6419cf4f874e6c5de19972a46c8093f2 ****/
+		/****** Interface_LineBuffer::Move ******/
+		/****** md5 signature: 6419cf4f874e6c5de19972a46c8093f2 ******/
 		%feature("compactdefaultargs") Move;
 		%feature("autodoc", "
 Parameters
@@ -7947,8 +7947,8 @@ Same as above, but <str> is known through a handle.
 ") Move;
 		void Move(const opencascade::handle<TCollection_HAsciiString> & str);
 
-		/****************** Moved ******************/
-		/**** md5 signature: 1436c75d7c1b6cb7f8d6f09dadd0b398 ****/
+		/****** Interface_LineBuffer::Moved ******/
+		/****** md5 signature: 1436c75d7c1b6cb7f8d6f09dadd0b398 ******/
 		%feature("compactdefaultargs") Moved;
 		%feature("autodoc", "Return
 -------
@@ -7960,8 +7960,8 @@ Same as above, but generates the hasciistring.
 ") Moved;
 		opencascade::handle<TCollection_HAsciiString> Moved();
 
-		/****************** SetInitial ******************/
-		/**** md5 signature: 6d58812e5a742367fc4745b4777bddbc ****/
+		/****** Interface_LineBuffer::SetInitial ******/
+		/****** md5 signature: 6d58812e5a742367fc4745b4777bddbc ******/
 		%feature("compactdefaultargs") SetInitial;
 		%feature("autodoc", "
 Parameters
@@ -7978,8 +7978,8 @@ Sets an initial reservation for blank characters (this reservation is counted in
 ") SetInitial;
 		void SetInitial(const Standard_Integer initial);
 
-		/****************** SetKeep ******************/
-		/**** md5 signature: 83f5e8d529bc280c88f0ac23cf9c718b ****/
+		/****** Interface_LineBuffer::SetKeep ******/
+		/****** md5 signature: 83f5e8d529bc280c88f0ac23cf9c718b ******/
 		%feature("compactdefaultargs") SetKeep;
 		%feature("autodoc", "Return
 -------
@@ -7991,8 +7991,8 @@ Sets a keep status at current length. it means that at next move, the new line w
 ") SetKeep;
 		void SetKeep();
 
-		/****************** SetMax ******************/
-		/**** md5 signature: 87c4c922204a679f3662057e4a91f350 ****/
+		/****** Interface_LineBuffer::SetMax ******/
+		/****** md5 signature: 87c4c922204a679f3662057e4a91f350 ******/
 		%feature("compactdefaultargs") SetMax;
 		%feature("autodoc", "
 Parameters
@@ -8023,8 +8023,8 @@ Changes maximum allowed size of buffer. if <max> is zero, maximum size is set to
 **********************/
 class Interface_MSG {
 	public:
-		/****************** Interface_MSG ******************/
-		/**** md5 signature: 04a5264e61423cc57b6a1ff68915b6bf ****/
+		/****** Interface_MSG::Interface_MSG ******/
+		/****** md5 signature: 04a5264e61423cc57b6a1ff68915b6bf ******/
 		%feature("compactdefaultargs") Interface_MSG;
 		%feature("autodoc", "
 Parameters
@@ -8041,8 +8041,8 @@ A msg is created to write a 'functional code' in conjunction with operator () at
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key);
 
-		/****************** Interface_MSG ******************/
-		/**** md5 signature: 8fef5720569bdcbf8f66102a1bcd3773 ****/
+		/****** Interface_MSG::Interface_MSG ******/
+		/****** md5 signature: 8fef5720569bdcbf8f66102a1bcd3773 ******/
 		%feature("compactdefaultargs") Interface_MSG;
 		%feature("autodoc", "
 Parameters
@@ -8060,8 +8060,8 @@ Translates a message which contains one integer variable it is just a help which
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key, const Standard_Integer i1);
 
-		/****************** Interface_MSG ******************/
-		/**** md5 signature: b704e9e172b160d189e3aae96cf60977 ****/
+		/****** Interface_MSG::Interface_MSG ******/
+		/****** md5 signature: b704e9e172b160d189e3aae96cf60977 ******/
 		%feature("compactdefaultargs") Interface_MSG;
 		%feature("autodoc", "
 Parameters
@@ -8080,8 +8080,8 @@ Translates a message which contains two integer variables as for one integer, it
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key, const Standard_Integer i1, const Standard_Integer i2);
 
-		/****************** Interface_MSG ******************/
-		/**** md5 signature: 39d5887ce5b9e3f190368eb9565041a7 ****/
+		/****** Interface_MSG::Interface_MSG ******/
+		/****** md5 signature: 39d5887ce5b9e3f190368eb9565041a7 ******/
 		%feature("compactdefaultargs") Interface_MSG;
 		%feature("autodoc", "
 Parameters
@@ -8100,8 +8100,8 @@ Translates a message which contains one real variable <intervals> if set, comman
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key, const Standard_Real r1, const Standard_Integer intervals = -1);
 
-		/****************** Interface_MSG ******************/
-		/**** md5 signature: a2f1c0137cdd8a92831417c5462bb4ac ****/
+		/****** Interface_MSG::Interface_MSG ******/
+		/****** md5 signature: a2f1c0137cdd8a92831417c5462bb4ac ******/
 		%feature("compactdefaultargs") Interface_MSG;
 		%feature("autodoc", "
 Parameters
@@ -8119,8 +8119,8 @@ Translates a message which contains one string variable as for one integer, it i
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key, Standard_CString str);
 
-		/****************** Interface_MSG ******************/
-		/**** md5 signature: 8e2b0e98eefb8d62808c6366cf59b6c7 ****/
+		/****** Interface_MSG::Interface_MSG ******/
+		/****** md5 signature: 8e2b0e98eefb8d62808c6366cf59b6c7 ******/
 		%feature("compactdefaultargs") Interface_MSG;
 		%feature("autodoc", "
 Parameters
@@ -8139,8 +8139,8 @@ Translates a message which contains one integer and one string variables as for 
 ") Interface_MSG;
 		 Interface_MSG(Standard_CString key, const Standard_Integer ival, Standard_CString str);
 
-		/****************** Blanks ******************/
-		/**** md5 signature: cbb8c4b37e8156925f73c160286da4ff ****/
+		/****** Interface_MSG::Blanks ******/
+		/****** md5 signature: cbb8c4b37e8156925f73c160286da4ff ******/
 		%feature("compactdefaultargs") Blanks;
 		%feature("autodoc", "
 Parameters
@@ -8158,8 +8158,8 @@ Returns a blank string, of length between 0 and <max>, to fill the printing of a
 ") Blanks;
 		static Standard_CString Blanks(const Standard_Integer val, const Standard_Integer max);
 
-		/****************** Blanks ******************/
-		/**** md5 signature: a27333232482e7c6487dfb04b0ad78af ****/
+		/****** Interface_MSG::Blanks ******/
+		/****** md5 signature: a27333232482e7c6487dfb04b0ad78af ******/
 		%feature("compactdefaultargs") Blanks;
 		%feature("autodoc", "
 Parameters
@@ -8177,8 +8177,8 @@ Returns a blank string, to complete a given string <val> up to <max> characters:
 ") Blanks;
 		static Standard_CString Blanks(Standard_CString val, const Standard_Integer max);
 
-		/****************** Blanks ******************/
-		/**** md5 signature: 0e8c564f928f260c2991324aa3b7b503 ****/
+		/****** Interface_MSG::Blanks ******/
+		/****** md5 signature: 0e8c564f928f260c2991324aa3b7b503 ******/
 		%feature("compactdefaultargs") Blanks;
 		%feature("autodoc", "
 Parameters
@@ -8195,8 +8195,8 @@ Returns a blank string of <count> blanks (mini 0, maxi 76).
 ") Blanks;
 		static Standard_CString Blanks(const Standard_Integer count);
 
-		/****************** CDate ******************/
-		/**** md5 signature: 87ef2d72f27848bc913516356143b696 ****/
+		/****** Interface_MSG::CDate ******/
+		/****** md5 signature: 87ef2d72f27848bc913516356143b696 ******/
 		%feature("compactdefaultargs") CDate;
 		%feature("autodoc", "
 Parameters
@@ -8214,8 +8214,8 @@ Returns a value about comparison of two dates 0: equal. <0 text1 anterior. >0 te
 ") CDate;
 		static Standard_Integer CDate(Standard_CString text1, Standard_CString text2);
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
+		/****** Interface_MSG::Destroy ******/
+		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "Return
 -------
@@ -8227,8 +8227,8 @@ Optimised destructor (applies for additional forms of create).
 ") Destroy;
 		void Destroy();
 
-		/****************** Intervalled ******************/
-		/**** md5 signature: e4c9aeb91835b2908a66a08b0440622e ****/
+		/****** Interface_MSG::Intervalled ******/
+		/****** md5 signature: e4c9aeb91835b2908a66a08b0440622e ******/
 		%feature("compactdefaultargs") Intervalled;
 		%feature("autodoc", "
 Parameters
@@ -8247,8 +8247,8 @@ Returns an 'intervalled' value from a starting real <val>: i.e. a value which is
 ") Intervalled;
 		static Standard_Real Intervalled(const Standard_Real val, const Standard_Integer order = 3, const Standard_Boolean upper = Standard_False);
 
-		/****************** IsKey ******************/
-		/**** md5 signature: e0815ed8b6506b4eb3f582c4ad557426 ****/
+		/****** Interface_MSG::IsKey ******/
+		/****** md5 signature: e0815ed8b6506b4eb3f582c4ad557426 ******/
 		%feature("compactdefaultargs") IsKey;
 		%feature("autodoc", "
 Parameters
@@ -8265,8 +8265,8 @@ Returns true if a given message is surely a key (according to the form adopted f
 ") IsKey;
 		static Standard_Boolean IsKey(Standard_CString mess);
 
-		/****************** NDate ******************/
-		/**** md5 signature: eeb2f5af5a033fa1528f872cb3fd2fa2 ****/
+		/****** Interface_MSG::NDate ******/
+		/****** md5 signature: eeb2f5af5a033fa1528f872cb3fd2fa2 ******/
 		%feature("compactdefaultargs") NDate;
 		%feature("autodoc", "
 Parameters
@@ -8288,8 +8288,8 @@ Decodes a date to numeric integer values returns true if ok, false if text does 
 ") NDate;
 		static Standard_Boolean NDate(Standard_CString text, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
-		/****************** Print ******************/
-		/**** md5 signature: 8ceabb583669672b2199c7b698914502 ****/
+		/****** Interface_MSG::Print ******/
+		/****** md5 signature: 8ceabb583669672b2199c7b698914502 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -8308,8 +8308,8 @@ Prints a string on an output stream, as follows: accompanied with blanks, to giv
 ") Print;
 		static void Print(std::ostream &OutValue, Standard_CString val, const Standard_Integer max, const Standard_Integer just = -1);
 
-		/****************** PrintTrace ******************/
-		/**** md5 signature: 1e6fc924febc04632e11bb3880253bee ****/
+		/****** Interface_MSG::PrintTrace ******/
+		/****** md5 signature: 1e6fc924febc04632e11bb3880253bee ******/
 		%feature("compactdefaultargs") PrintTrace;
 		%feature("autodoc", "
 Parameters
@@ -8325,8 +8325,8 @@ Prints the recorded errors (without title; can be empty, this is the normally ex
 ") PrintTrace;
 		static void PrintTrace(std::ostream &OutValue);
 
-		/****************** Read ******************/
-		/**** md5 signature: f8598b09b5e3b635ed31058415611435 ****/
+		/****** Interface_MSG::Read ******/
+		/****** md5 signature: f8598b09b5e3b635ed31058415611435 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -8343,8 +8343,8 @@ Reads a list of messages from a stream, returns read count 0 means empty file, -
 ") Read;
 		static Standard_Integer Read(std::istream & S);
 
-		/****************** Read ******************/
-		/**** md5 signature: 858a3ab50e2d14b2c69b3dde90ff0915 ****/
+		/****** Interface_MSG::Read ******/
+		/****** md5 signature: 858a3ab50e2d14b2c69b3dde90ff0915 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -8361,8 +8361,8 @@ Reads a list of messages from a file defined by its name.
 ") Read;
 		static Standard_Integer Read(Standard_CString file);
 
-		/****************** Record ******************/
-		/**** md5 signature: 57cce17521acc7b079a4a53ccae00972 ****/
+		/****** Interface_MSG::Record ******/
+		/****** md5 signature: 57cce17521acc7b079a4a53ccae00972 ******/
 		%feature("compactdefaultargs") Record;
 		%feature("autodoc", "
 Parameters
@@ -8380,8 +8380,8 @@ Fills the dictionary with a couple (key-item) if a key is already recorded, it i
 ") Record;
 		static void Record(Standard_CString key, Standard_CString item);
 
-		/****************** SetMode ******************/
-		/**** md5 signature: b14fe630786054e523f862ea57aaf3ad ****/
+		/****** Interface_MSG::SetMode ******/
+		/****** md5 signature: b14fe630786054e523f862ea57aaf3ad ******/
 		%feature("compactdefaultargs") SetMode;
 		%feature("autodoc", "
 Parameters
@@ -8399,8 +8399,8 @@ Sets the main modes for msg: - if <running> is true, translation works normally 
 ") SetMode;
 		static void SetMode(const Standard_Boolean running, const Standard_Boolean raising);
 
-		/****************** SetTrace ******************/
-		/**** md5 signature: 952f5a6e86a025207fa89158cf3a7bb0 ****/
+		/****** Interface_MSG::SetTrace ******/
+		/****** md5 signature: 952f5a6e86a025207fa89158cf3a7bb0 ******/
 		%feature("compactdefaultargs") SetTrace;
 		%feature("autodoc", "
 Parameters
@@ -8418,8 +8418,8 @@ Sets the trace system to work when activated, as follow: - if <toprint> is true,
 ") SetTrace;
 		static void SetTrace(const Standard_Boolean toprint, const Standard_Boolean torecord);
 
-		/****************** TDate ******************/
-		/**** md5 signature: e8cc703373ff0bd4920d29504dfa08bf ****/
+		/****** Interface_MSG::TDate ******/
+		/****** md5 signature: e8cc703373ff0bd4920d29504dfa08bf ******/
 		%feature("compactdefaultargs") TDate;
 		%feature("autodoc", "
 Parameters
@@ -8443,8 +8443,8 @@ Codes a date as a text, from its numeric value (-> seconds): yyyy-mm-dd:hh-mn-ss
 ") TDate;
 		static void TDate(Standard_CString text, const Standard_Integer yy, const Standard_Integer mm, const Standard_Integer dd, const Standard_Integer hh, const Standard_Integer mn, const Standard_Integer ss, Standard_CString format = "");
 
-		/****************** Translated ******************/
-		/**** md5 signature: c9597bb549cfddf798fd1bc9a797094c ****/
+		/****** Interface_MSG::Translated ******/
+		/****** md5 signature: c9597bb549cfddf798fd1bc9a797094c ******/
 		%feature("compactdefaultargs") Translated;
 		%feature("autodoc", "
 Parameters
@@ -8461,8 +8461,8 @@ Returns the item recorded for a key. returns the key itself if: - it is not reco
 ") Translated;
 		static Standard_CString Translated(Standard_CString key);
 
-		/****************** Value ******************/
-		/**** md5 signature: e8ad3e0eb6ba1377e7d5d00bb4ae5215 ****/
+		/****** Interface_MSG::Value ******/
+		/****** md5 signature: e8ad3e0eb6ba1377e7d5d00bb4ae5215 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -8474,8 +8474,8 @@ Returns the translated message, in a functional form with operator () was c++: r
 ") Value;
 		Standard_CString Value();
 
-		/****************** Write ******************/
-		/**** md5 signature: 5d0fb0710cbfaa527a5eba31f6de7c16 ****/
+		/****** Interface_MSG::Write ******/
+		/****** md5 signature: 5d0fb0710cbfaa527a5eba31f6de7c16 ******/
 		%feature("compactdefaultargs") Write;
 		%feature("autodoc", "
 Parameters
@@ -8506,8 +8506,8 @@ Writes the list of messages recorded to be translated, to a stream. writes all t
 ***********************************/
 class Interface_NodeOfGeneralLib : public Standard_Transient {
 	public:
-		/****************** Interface_NodeOfGeneralLib ******************/
-		/**** md5 signature: b52c0341579621739870213e13925863 ****/
+		/****** Interface_NodeOfGeneralLib::Interface_NodeOfGeneralLib ******/
+		/****** md5 signature: b52c0341579621739870213e13925863 ******/
 		%feature("compactdefaultargs") Interface_NodeOfGeneralLib;
 		%feature("autodoc", "Return
 -------
@@ -8519,8 +8519,8 @@ Creates an empty node, with no next.
 ") Interface_NodeOfGeneralLib;
 		 Interface_NodeOfGeneralLib();
 
-		/****************** AddNode ******************/
-		/**** md5 signature: 2b5e7f65eeae1b8a04ccce75ba8f30e8 ****/
+		/****** Interface_NodeOfGeneralLib::AddNode ******/
+		/****** md5 signature: 2b5e7f65eeae1b8a04ccce75ba8f30e8 ******/
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", "
 Parameters
@@ -8537,8 +8537,8 @@ Adds a couple (module,protocol), that is, stores it into itself if not yet done,
 ") AddNode;
 		void AddNode(const opencascade::handle<Interface_GlobalNodeOfGeneralLib> & anode);
 
-		/****************** Module ******************/
-		/**** md5 signature: 786fb9d122db15779294d93c1e06036b ****/
+		/****** Interface_NodeOfGeneralLib::Module ******/
+		/****** md5 signature: 786fb9d122db15779294d93c1e06036b ******/
 		%feature("compactdefaultargs") Module;
 		%feature("autodoc", "Return
 -------
@@ -8550,8 +8550,8 @@ Returns the module designated by a precise node.
 ") Module;
 		const opencascade::handle<Interface_GeneralModule> & Module();
 
-		/****************** Next ******************/
-		/**** md5 signature: f4703661a70ab405f55a3a493a07aa3d ****/
+		/****** Interface_NodeOfGeneralLib::Next ******/
+		/****** md5 signature: f4703661a70ab405f55a3a493a07aa3d ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -8563,8 +8563,8 @@ Returns the next node. if none was defined, returned value is a null handle.
 ") Next;
 		const opencascade::handle<Interface_NodeOfGeneralLib> & Next();
 
-		/****************** Protocol ******************/
-		/**** md5 signature: c905586547d9ad373f87bcb2ce1d329f ****/
+		/****** Interface_NodeOfGeneralLib::Protocol ******/
+		/****** md5 signature: c905586547d9ad373f87bcb2ce1d329f ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -8592,8 +8592,8 @@ Returns the protocol designated by a precise node.
 **********************************/
 class Interface_NodeOfReaderLib : public Standard_Transient {
 	public:
-		/****************** Interface_NodeOfReaderLib ******************/
-		/**** md5 signature: f83b980811fbfe5223fa65e10445ded4 ****/
+		/****** Interface_NodeOfReaderLib::Interface_NodeOfReaderLib ******/
+		/****** md5 signature: f83b980811fbfe5223fa65e10445ded4 ******/
 		%feature("compactdefaultargs") Interface_NodeOfReaderLib;
 		%feature("autodoc", "Return
 -------
@@ -8605,8 +8605,8 @@ Creates an empty node, with no next.
 ") Interface_NodeOfReaderLib;
 		 Interface_NodeOfReaderLib();
 
-		/****************** AddNode ******************/
-		/**** md5 signature: e682845bab9f0ad9949e35b0a7eade5a ****/
+		/****** Interface_NodeOfReaderLib::AddNode ******/
+		/****** md5 signature: e682845bab9f0ad9949e35b0a7eade5a ******/
 		%feature("compactdefaultargs") AddNode;
 		%feature("autodoc", "
 Parameters
@@ -8623,8 +8623,8 @@ Adds a couple (module,protocol), that is, stores it into itself if not yet done,
 ") AddNode;
 		void AddNode(const opencascade::handle<Interface_GlobalNodeOfReaderLib> & anode);
 
-		/****************** Module ******************/
-		/**** md5 signature: ee4e5065695c1821dd69ceb165b67caf ****/
+		/****** Interface_NodeOfReaderLib::Module ******/
+		/****** md5 signature: ee4e5065695c1821dd69ceb165b67caf ******/
 		%feature("compactdefaultargs") Module;
 		%feature("autodoc", "Return
 -------
@@ -8636,8 +8636,8 @@ Returns the module designated by a precise node.
 ") Module;
 		const opencascade::handle<Interface_ReaderModule> & Module();
 
-		/****************** Next ******************/
-		/**** md5 signature: 190c0410bd65df10af82886b13de3970 ****/
+		/****** Interface_NodeOfReaderLib::Next ******/
+		/****** md5 signature: 190c0410bd65df10af82886b13de3970 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -8649,8 +8649,8 @@ Returns the next node. if none was defined, returned value is a null handle.
 ") Next;
 		const opencascade::handle<Interface_NodeOfReaderLib> & Next();
 
-		/****************** Protocol ******************/
-		/**** md5 signature: c905586547d9ad373f87bcb2ce1d329f ****/
+		/****** Interface_NodeOfReaderLib::Protocol ******/
+		/****** md5 signature: c905586547d9ad373f87bcb2ce1d329f ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -8678,8 +8678,8 @@ Returns the protocol designated by a precise node.
 ****************************/
 class Interface_ParamList : public Standard_Transient {
 	public:
-		/****************** Interface_ParamList ******************/
-		/**** md5 signature: fa22f878906433dd2e43f0b2deb4af1c ****/
+		/****** Interface_ParamList::Interface_ParamList ******/
+		/****** md5 signature: fa22f878906433dd2e43f0b2deb4af1c ******/
 		%feature("compactdefaultargs") Interface_ParamList;
 		%feature("autodoc", "
 Parameters
@@ -8696,8 +8696,8 @@ Creates an vector with size of memory block equal to theincrement.
 ") Interface_ParamList;
 		 Interface_ParamList(const Standard_Integer theIncrement = 256);
 
-		/****************** ChangeValue ******************/
-		/**** md5 signature: e4421944ff2304a2e0ee257a1e10e1f2 ****/
+		/****** Interface_ParamList::ChangeValue ******/
+		/****** md5 signature: e4421944ff2304a2e0ee257a1e10e1f2 ******/
 		%feature("compactdefaultargs") ChangeValue;
 		%feature("autodoc", "
 Parameters
@@ -8714,8 +8714,8 @@ Return the value of the <index>th element of the array.
 ") ChangeValue;
 		Interface_FileParameter & ChangeValue(const Standard_Integer Index);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_ParamList::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -8727,8 +8727,8 @@ No available documentation.
 ") Clear;
 		void Clear();
 
-		/****************** Length ******************/
-		/**** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ****/
+		/****** Interface_ParamList::Length ******/
+		/****** md5 signature: 58bd40380acccb2733bfbd37bf3cbb11 ******/
 		%feature("compactdefaultargs") Length;
 		%feature("autodoc", "Return
 -------
@@ -8740,8 +8740,8 @@ Returns the number of elements of <self>.
 ") Length;
 		Standard_Integer Length();
 
-		/****************** Lower ******************/
-		/**** md5 signature: fe1655437e349162aeffc9b3814347af ****/
+		/****** Interface_ParamList::Lower ******/
+		/****** md5 signature: fe1655437e349162aeffc9b3814347af ******/
 		%feature("compactdefaultargs") Lower;
 		%feature("autodoc", "Return
 -------
@@ -8753,8 +8753,8 @@ Returns the lower bound. warning.
 ") Lower;
 		Standard_Integer Lower();
 
-		/****************** SetValue ******************/
-		/**** md5 signature: 2a498ccff6a27a887665ac3ac4d82783 ****/
+		/****** Interface_ParamList::SetValue ******/
+		/****** md5 signature: 2a498ccff6a27a887665ac3ac4d82783 ******/
 		%feature("compactdefaultargs") SetValue;
 		%feature("autodoc", "
 Parameters
@@ -8772,8 +8772,8 @@ Assigns the value <value> to the <index>-th item of this array.
 ") SetValue;
 		void SetValue(const Standard_Integer Index, const Interface_FileParameter & Value);
 
-		/****************** Upper ******************/
-		/**** md5 signature: 8f614b31058bb30bdf81ecd0e2d444dc ****/
+		/****** Interface_ParamList::Upper ******/
+		/****** md5 signature: 8f614b31058bb30bdf81ecd0e2d444dc ******/
 		%feature("compactdefaultargs") Upper;
 		%feature("autodoc", "Return
 -------
@@ -8785,8 +8785,8 @@ Returns the upper bound. warning.
 ") Upper;
 		Standard_Integer Upper();
 
-		/****************** Value ******************/
-		/**** md5 signature: d29c7009230283aad1de36c2a391ae06 ****/
+		/****** Interface_ParamList::Value ******/
+		/****** md5 signature: d29c7009230283aad1de36c2a391ae06 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -8819,8 +8819,8 @@ Return the value of the <index>th element of the array.
 ***************************/
 class Interface_ParamSet : public Standard_Transient {
 	public:
-		/****************** Interface_ParamSet ******************/
-		/**** md5 signature: 86128b8ca41fe34b4b00734276016d1a ****/
+		/****** Interface_ParamSet::Interface_ParamSet ******/
+		/****** md5 signature: 86128b8ca41fe34b4b00734276016d1a ******/
 		%feature("compactdefaultargs") Interface_ParamSet;
 		%feature("autodoc", "
 Parameters
@@ -8838,8 +8838,8 @@ Creates an empty paramset, beginning at number 'nst' and of initial reservation 
 ") Interface_ParamSet;
 		 Interface_ParamSet(const Standard_Integer nres, const Standard_Integer nst = 1);
 
-		/****************** Append ******************/
-		/**** md5 signature: 6df473310f93a04e1bdad84f4c47b22a ****/
+		/****** Interface_ParamSet::Append ******/
+		/****** md5 signature: 6df473310f93a04e1bdad84f4c47b22a ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -8859,8 +8859,8 @@ Adds a parameter defined as its value (cstring and length) and type. optional en
 ") Append;
 		Standard_Integer Append(Standard_CString val, const Standard_Integer lnval, const Interface_ParamType typ, const Standard_Integer nument);
 
-		/****************** Append ******************/
-		/**** md5 signature: 9fa5e37158f08c7bcfa7adde0474e56e ****/
+		/****** Interface_ParamSet::Append ******/
+		/****** md5 signature: 9fa5e37158f08c7bcfa7adde0474e56e ******/
 		%feature("compactdefaultargs") Append;
 		%feature("autodoc", "
 Parameters
@@ -8877,8 +8877,8 @@ Adds a parameter at the end of the paramset (transparent about reservation and '
 ") Append;
 		Standard_Integer Append(const Interface_FileParameter & FP);
 
-		/****************** ChangeParam ******************/
-		/**** md5 signature: 87258e99ccdae918a9d150888fa01878 ****/
+		/****** Interface_ParamSet::ChangeParam ******/
+		/****** md5 signature: 87258e99ccdae918a9d150888fa01878 ******/
 		%feature("compactdefaultargs") ChangeParam;
 		%feature("autodoc", "
 Parameters
@@ -8895,8 +8895,8 @@ Same as above, but in order to be modified on place.
 ") ChangeParam;
 		Interface_FileParameter & ChangeParam(const Standard_Integer num);
 
-		/****************** Destroy ******************/
-		/**** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ****/
+		/****** Interface_ParamSet::Destroy ******/
+		/****** md5 signature: 73111f72f4ab0474eb2cfbd7e4af4e1a ******/
 		%feature("compactdefaultargs") Destroy;
 		%feature("autodoc", "Return
 -------
@@ -8908,8 +8908,8 @@ Destructor (waiting for transparent memory management).
 ") Destroy;
 		void Destroy();
 
-		/****************** NbParams ******************/
-		/**** md5 signature: 826f4756fca7f780e6d976c60183d715 ****/
+		/****** Interface_ParamSet::NbParams ******/
+		/****** md5 signature: 826f4756fca7f780e6d976c60183d715 ******/
 		%feature("compactdefaultargs") NbParams;
 		%feature("autodoc", "Return
 -------
@@ -8921,8 +8921,8 @@ Returns the total count of parameters (including nexts).
 ") NbParams;
 		Standard_Integer NbParams();
 
-		/****************** Param ******************/
-		/**** md5 signature: 1949a53b04a655a6338a187d5fcc5a80 ****/
+		/****** Interface_ParamSet::Param ******/
+		/****** md5 signature: 1949a53b04a655a6338a187d5fcc5a80 ******/
 		%feature("compactdefaultargs") Param;
 		%feature("autodoc", "
 Parameters
@@ -8939,8 +8939,8 @@ Returns a parameter identified by its number.
 ") Param;
 		const Interface_FileParameter & Param(const Standard_Integer num);
 
-		/****************** Params ******************/
-		/**** md5 signature: e567d6332f33622017ba4bad2eb07dc3 ****/
+		/****** Interface_ParamSet::Params ******/
+		/****** md5 signature: e567d6332f33622017ba4bad2eb07dc3 ******/
 		%feature("compactdefaultargs") Params;
 		%feature("autodoc", "
 Parameters
@@ -8958,8 +8958,8 @@ Builds and returns the sub-list corresponding to parameters, from 'num' included
 ") Params;
 		opencascade::handle<Interface_ParamList> Params(const Standard_Integer num, const Standard_Integer nb);
 
-		/****************** SetParam ******************/
-		/**** md5 signature: 5ed10a82094e3c00e10cf64893729af7 ****/
+		/****** Interface_ParamSet::SetParam ******/
+		/****** md5 signature: 5ed10a82094e3c00e10cf64893729af7 ******/
 		%feature("compactdefaultargs") SetParam;
 		%feature("autodoc", "
 Parameters
@@ -8994,8 +8994,8 @@ Changes a parameter identified by its number.
 %nodefaultctor Interface_Protocol;
 class Interface_Protocol : public Standard_Transient {
 	public:
-		/****************** Active ******************/
-		/**** md5 signature: ac2f57ce0f32b6604eeb6b435022b39c ****/
+		/****** Interface_Protocol::Active ******/
+		/****** md5 signature: ac2f57ce0f32b6604eeb6b435022b39c ******/
 		%feature("compactdefaultargs") Active;
 		%feature("autodoc", "Return
 -------
@@ -9007,8 +9007,8 @@ Returns the active protocol, if defined (else, returns a null handle, which mean
 ") Active;
 		static opencascade::handle<Interface_Protocol> Active();
 
-		/****************** CaseNumber ******************/
-		/**** md5 signature: 3bd7fad3575759d2b8624f3c1aea4aed ****/
+		/****** Interface_Protocol::CaseNumber ******/
+		/****** md5 signature: 3bd7fad3575759d2b8624f3c1aea4aed ******/
 		%feature("compactdefaultargs") CaseNumber;
 		%feature("autodoc", "
 Parameters
@@ -9025,8 +9025,8 @@ Returns a unique positive casenumber for each recognized object. by default, rec
 ") CaseNumber;
 		virtual Standard_Integer CaseNumber(const opencascade::handle<Standard_Transient> & obj);
 
-		/****************** ClearActive ******************/
-		/**** md5 signature: eb7803a003eb79b2bf4d87bc993aa0bf ****/
+		/****** Interface_Protocol::ClearActive ******/
+		/****** md5 signature: eb7803a003eb79b2bf4d87bc993aa0bf ******/
 		%feature("compactdefaultargs") ClearActive;
 		%feature("autodoc", "Return
 -------
@@ -9038,8 +9038,8 @@ Erases the active protocol (hence it becomes undefined).
 ") ClearActive;
 		static void ClearActive();
 
-		/****************** GlobalCheck ******************/
-		/**** md5 signature: 47cba6309a9fd154d60abc631f398f9c ****/
+		/****** Interface_Protocol::GlobalCheck ******/
+		/****** md5 signature: 47cba6309a9fd154d60abc631f398f9c ******/
 		%feature("compactdefaultargs") GlobalCheck;
 		%feature("autodoc", "
 Parameters
@@ -9057,8 +9057,8 @@ Evaluates a global check for a model (with its graph) returns true when done, fa
 ") GlobalCheck;
 		virtual Standard_Boolean GlobalCheck(const Interface_Graph & G, opencascade::handle<Interface_Check> & ach);
 
-		/****************** IsDynamicType ******************/
-		/**** md5 signature: f4373a95f4c0e87bff704722f30ec5af ****/
+		/****** Interface_Protocol::IsDynamicType ******/
+		/****** md5 signature: f4373a95f4c0e87bff704722f30ec5af ******/
 		%feature("compactdefaultargs") IsDynamicType;
 		%feature("autodoc", "
 Parameters
@@ -9075,8 +9075,8 @@ Returns true if type of <obj> is that defined from cdl this is the default but i
 ") IsDynamicType;
 		virtual Standard_Boolean IsDynamicType(const opencascade::handle<Standard_Transient> & obj);
 
-		/****************** IsSuitableModel ******************/
-		/**** md5 signature: c8cdcc13aac628ff657714e3f6014d38 ****/
+		/****** Interface_Protocol::IsSuitableModel ******/
+		/****** md5 signature: c8cdcc13aac628ff657714e3f6014d38 ******/
 		%feature("compactdefaultargs") IsSuitableModel;
 		%feature("autodoc", "
 Parameters
@@ -9093,8 +9093,8 @@ Returns true if <model> is a model of the considered norm.
 ") IsSuitableModel;
 		virtual Standard_Boolean IsSuitableModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** IsUnknownEntity ******************/
-		/**** md5 signature: 47ee5a51ccc521cdb34550721716d8b8 ****/
+		/****** Interface_Protocol::IsUnknownEntity ******/
+		/****** md5 signature: 47ee5a51ccc521cdb34550721716d8b8 ******/
 		%feature("compactdefaultargs") IsUnknownEntity;
 		%feature("autodoc", "
 Parameters
@@ -9111,8 +9111,8 @@ Returns true if <ent> is an unknown entity for the norm, i.e. same type as them 
 ") IsUnknownEntity;
 		virtual Standard_Boolean IsUnknownEntity(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** NbResources ******************/
-		/**** md5 signature: bef01036104619c58ab5a6ff9b039599 ****/
+		/****** Interface_Protocol::NbResources ******/
+		/****** md5 signature: bef01036104619c58ab5a6ff9b039599 ******/
 		%feature("compactdefaultargs") NbResources;
 		%feature("autodoc", "Return
 -------
@@ -9124,8 +9124,8 @@ Returns count of protocol used as resources (level one).
 ") NbResources;
 		virtual Standard_Integer NbResources();
 
-		/****************** NbTypes ******************/
-		/**** md5 signature: ef3faaf596b1391c100a035b9879de7d ****/
+		/****** Interface_Protocol::NbTypes ******/
+		/****** md5 signature: ef3faaf596b1391c100a035b9879de7d ******/
 		%feature("compactdefaultargs") NbTypes;
 		%feature("autodoc", "
 Parameters
@@ -9142,8 +9142,8 @@ Returns the count of distinct types under which an entity may be processed. each
 ") NbTypes;
 		virtual Standard_Integer NbTypes(const opencascade::handle<Standard_Transient> & obj);
 
-		/****************** NewModel ******************/
-		/**** md5 signature: 0b1be90749007fa9c3aadc3c17bc79c8 ****/
+		/****** Interface_Protocol::NewModel ******/
+		/****** md5 signature: 0b1be90749007fa9c3aadc3c17bc79c8 ******/
 		%feature("compactdefaultargs") NewModel;
 		%feature("autodoc", "Return
 -------
@@ -9155,8 +9155,8 @@ Creates an empty model of the considered norm.
 ") NewModel;
 		virtual opencascade::handle<Interface_InterfaceModel> NewModel();
 
-		/****************** Resource ******************/
-		/**** md5 signature: 5ab5f1cb3c235f55188fa96d5b103d57 ****/
+		/****** Interface_Protocol::Resource ******/
+		/****** md5 signature: 5ab5f1cb3c235f55188fa96d5b103d57 ******/
 		%feature("compactdefaultargs") Resource;
 		%feature("autodoc", "
 Parameters
@@ -9173,8 +9173,8 @@ Returns a resource, given its rank (between 1 and nbresources).
 ") Resource;
 		virtual opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
 
-		/****************** SetActive ******************/
-		/**** md5 signature: c76a58398abc9564e948ae5e77d8863a ****/
+		/****** Interface_Protocol::SetActive ******/
+		/****** md5 signature: c76a58398abc9564e948ae5e77d8863a ******/
 		%feature("compactdefaultargs") SetActive;
 		%feature("autodoc", "
 Parameters
@@ -9191,8 +9191,8 @@ Sets a given protocol to be the active one (for the users of active, see just ab
 ") SetActive;
 		static void SetActive(const opencascade::handle<Interface_Protocol> & aprotocol);
 
-		/****************** Type ******************/
-		/**** md5 signature: 5efb3ed3d5f07e443d940e9ce4dea4c2 ****/
+		/****** Interface_Protocol::Type ******/
+		/****** md5 signature: 5efb3ed3d5f07e443d940e9ce4dea4c2 ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "
 Parameters
@@ -9210,8 +9210,8 @@ Returns a type under which <obj> can be recognized and processed, according its 
 ") Type;
 		opencascade::handle<Standard_Type> Type(const opencascade::handle<Standard_Transient> & obj, const Standard_Integer nt = 1);
 
-		/****************** TypeNumber ******************/
-		/**** md5 signature: 3ad63721d780561a40202c3ceb8b3449 ****/
+		/****** Interface_Protocol::TypeNumber ******/
+		/****** md5 signature: 3ad63721d780561a40202c3ceb8b3449 ******/
 		%feature("compactdefaultargs") TypeNumber;
 		%feature("autodoc", "
 Parameters
@@ -9228,8 +9228,8 @@ Returns a unique positive casenumber for each recognized type, returns zero for 
 ") TypeNumber;
 		virtual Standard_Integer TypeNumber(const opencascade::handle<Standard_Type> & atype);
 
-		/****************** UnknownEntity ******************/
-		/**** md5 signature: 5e0083a65d62cab5e9ac76cb7160632d ****/
+		/****** Interface_Protocol::UnknownEntity ******/
+		/****** md5 signature: 5e0083a65d62cab5e9ac76cb7160632d ******/
 		%feature("compactdefaultargs") UnknownEntity;
 		%feature("autodoc", "Return
 -------
@@ -9257,8 +9257,8 @@ Creates a new unknown entity for the considered norm.
 ****************************/
 class Interface_ReaderLib {
 	public:
-		/****************** Interface_ReaderLib ******************/
-		/**** md5 signature: 9397aeeba35410106f91c6d54b8d2053 ****/
+		/****** Interface_ReaderLib::Interface_ReaderLib ******/
+		/****** md5 signature: 9397aeeba35410106f91c6d54b8d2053 ******/
 		%feature("compactdefaultargs") Interface_ReaderLib;
 		%feature("autodoc", "
 Parameters
@@ -9275,8 +9275,8 @@ Creates a library which complies with a protocol, that is: same class (criterium
 ") Interface_ReaderLib;
 		 Interface_ReaderLib(const opencascade::handle<Interface_Protocol> & aprotocol);
 
-		/****************** Interface_ReaderLib ******************/
-		/**** md5 signature: 220dce1c616bb912aa974e026d63c97e ****/
+		/****** Interface_ReaderLib::Interface_ReaderLib ******/
+		/****** md5 signature: 220dce1c616bb912aa974e026d63c97e ******/
 		%feature("compactdefaultargs") Interface_ReaderLib;
 		%feature("autodoc", "Return
 -------
@@ -9288,8 +9288,8 @@ Creates an empty library: it will later by filled by method addprotocol.
 ") Interface_ReaderLib;
 		 Interface_ReaderLib();
 
-		/****************** AddProtocol ******************/
-		/**** md5 signature: 97bedbaaa5336e800a60d78a56ab8c60 ****/
+		/****** Interface_ReaderLib::AddProtocol ******/
+		/****** md5 signature: 97bedbaaa5336e800a60d78a56ab8c60 ******/
 		%feature("compactdefaultargs") AddProtocol;
 		%feature("autodoc", "
 Parameters
@@ -9306,8 +9306,8 @@ Adds a couple (module-protocol) to the library, given the class of a protocol. t
 ") AddProtocol;
 		void AddProtocol(const opencascade::handle<Standard_Transient> & aprotocol);
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Interface_ReaderLib::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -9319,8 +9319,8 @@ Clears the list of modules of a library (can be used to redefine the order of mo
 ") Clear;
 		void Clear();
 
-		/****************** Module ******************/
-		/**** md5 signature: ee4e5065695c1821dd69ceb165b67caf ****/
+		/****** Interface_ReaderLib::Module ******/
+		/****** md5 signature: ee4e5065695c1821dd69ceb165b67caf ******/
 		%feature("compactdefaultargs") Module;
 		%feature("autodoc", "Return
 -------
@@ -9332,8 +9332,8 @@ Returns the current module in the iteration.
 ") Module;
 		const opencascade::handle<Interface_ReaderModule> & Module();
 
-		/****************** More ******************/
-		/**** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ****/
+		/****** Interface_ReaderLib::More ******/
+		/****** md5 signature: 6f6e915c9a3dca758c059d9e8af02dff ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -9345,8 +9345,8 @@ Returns true if there are more modules to iterate on.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** Interface_ReaderLib::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -9358,8 +9358,8 @@ Iterates by getting the next module in the list if there is none, the exception 
 ") Next;
 		void Next();
 
-		/****************** Protocol ******************/
-		/**** md5 signature: c905586547d9ad373f87bcb2ce1d329f ****/
+		/****** Interface_ReaderLib::Protocol ******/
+		/****** md5 signature: c905586547d9ad373f87bcb2ce1d329f ******/
 		%feature("compactdefaultargs") Protocol;
 		%feature("autodoc", "Return
 -------
@@ -9371,8 +9371,8 @@ Returns the current protocol in the iteration.
 ") Protocol;
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
-		/****************** Select ******************/
-		/**** md5 signature: 497bfc4f63c715364b3e245ec65b9cfa ****/
+		/****** Interface_ReaderLib::Select ******/
+		/****** md5 signature: 497bfc4f63c715364b3e245ec65b9cfa ******/
 		%feature("compactdefaultargs") Select;
 		%feature("autodoc", "
 Parameters
@@ -9390,8 +9390,8 @@ Selects a module from the library, given an object. returns true if select has s
 ") Select;
 		Standard_Boolean Select(const opencascade::handle<Standard_Transient> & obj, opencascade::handle<Interface_ReaderModule> & module, Standard_Integer &OutValue);
 
-		/****************** SetComplete ******************/
-		/**** md5 signature: 9b2529d2e257b2464fe4d8064a8a0171 ****/
+		/****** Interface_ReaderLib::SetComplete ******/
+		/****** md5 signature: 9b2529d2e257b2464fe4d8064a8a0171 ******/
 		%feature("compactdefaultargs") SetComplete;
 		%feature("autodoc", "Return
 -------
@@ -9403,8 +9403,8 @@ Sets a library to be defined with the complete global list (all the couples prot
 ") SetComplete;
 		void SetComplete();
 
-		/****************** SetGlobal ******************/
-		/**** md5 signature: 6031cab62dcf6d29c852188796a5f886 ****/
+		/****** Interface_ReaderLib::SetGlobal ******/
+		/****** md5 signature: 6031cab62dcf6d29c852188796a5f886 ******/
 		%feature("compactdefaultargs") SetGlobal;
 		%feature("autodoc", "
 Parameters
@@ -9422,8 +9422,8 @@ Adds a couple (module-protocol) into the global definition set for this class of
 ") SetGlobal;
 		static void SetGlobal(const opencascade::handle<Interface_ReaderModule> & amodule, const opencascade::handle<Interface_Protocol> & aprotocol);
 
-		/****************** Start ******************/
-		/**** md5 signature: f8a4dbf1e6f2cec0927301856b440be5 ****/
+		/****** Interface_ReaderLib::Start ******/
+		/****** md5 signature: f8a4dbf1e6f2cec0927301856b440be5 ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "Return
 -------
@@ -9450,8 +9450,8 @@ Starts iteration on the modules (sets it on the first one).
 %nodefaultctor Interface_ReaderModule;
 class Interface_ReaderModule : public Standard_Transient {
 	public:
-		/****************** CaseNum ******************/
-		/**** md5 signature: afda30338c3cf672ec56cf415b53acb8 ****/
+		/****** Interface_ReaderModule::CaseNum ******/
+		/****** md5 signature: afda30338c3cf672ec56cf415b53acb8 ******/
 		%feature("compactdefaultargs") CaseNum;
 		%feature("autodoc", "
 Parameters
@@ -9469,8 +9469,8 @@ Translates the type of record <num> in <data> to a positive case number. if reco
 ") CaseNum;
 		virtual Standard_Integer CaseNum(const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num);
 
-		/****************** NewRead ******************/
-		/**** md5 signature: 9690dce15c449ffdac5e561e315975d5 ****/
+		/****** Interface_ReaderModule::NewRead ******/
+		/****** md5 signature: 9690dce15c449ffdac5e561e315975d5 ******/
 		%feature("compactdefaultargs") NewRead;
 		%feature("autodoc", "
 Parameters
@@ -9491,8 +9491,8 @@ Specific operator (create+read) defaulted to do nothing. it can be redefined whe
 ") NewRead;
 		virtual Standard_Boolean NewRead(const Standard_Integer casenum, const opencascade::handle<Interface_FileReaderData> & data, const Standard_Integer num, opencascade::handle<Interface_Check> & ach, opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Read ******************/
-		/**** md5 signature: aa6a782fcb84cf576b0f1c9b9f4c6f00 ****/
+		/****** Interface_ReaderModule::Read ******/
+		/****** md5 signature: aa6a782fcb84cf576b0f1c9b9f4c6f00 ******/
 		%feature("compactdefaultargs") Read;
 		%feature("autodoc", "
 Parameters
@@ -9529,8 +9529,8 @@ Performs the effective loading from <data>, record <num>, to the entity <ent> fo
 *******************************/
 class Interface_ReportEntity : public Standard_Transient {
 	public:
-		/****************** Interface_ReportEntity ******************/
-		/**** md5 signature: 298b7c97f0e27125785198872d678e07 ****/
+		/****** Interface_ReportEntity::Interface_ReportEntity ******/
+		/****** md5 signature: 298b7c97f0e27125785198872d678e07 ******/
 		%feature("compactdefaultargs") Interface_ReportEntity;
 		%feature("autodoc", "
 Parameters
@@ -9547,8 +9547,8 @@ Creates a reportentity for an unknown entity: check is empty, and concerned equa
 ") Interface_ReportEntity;
 		 Interface_ReportEntity(const opencascade::handle<Standard_Transient> & unknown);
 
-		/****************** Interface_ReportEntity ******************/
-		/**** md5 signature: df80b3ed874c22eaae50d96b60781c56 ****/
+		/****** Interface_ReportEntity::Interface_ReportEntity ******/
+		/****** md5 signature: df80b3ed874c22eaae50d96b60781c56 ******/
 		%feature("compactdefaultargs") Interface_ReportEntity;
 		%feature("autodoc", "
 Parameters
@@ -9566,8 +9566,8 @@ Creates a reportentity with its features: - <acheck> is the check to be memorise
 ") Interface_ReportEntity;
 		 Interface_ReportEntity(const opencascade::handle<Interface_Check> & acheck, const opencascade::handle<Standard_Transient> & concerned);
 
-		/****************** CCheck ******************/
-		/**** md5 signature: 6e66cd51a221a5f9b18ffa07111f133d ****/
+		/****** Interface_ReportEntity::CCheck ******/
+		/****** md5 signature: 6e66cd51a221a5f9b18ffa07111f133d ******/
 		%feature("compactdefaultargs") CCheck;
 		%feature("autodoc", "Return
 -------
@@ -9579,8 +9579,8 @@ Returns the stored check in order to change it.
 ") CCheck;
 		opencascade::handle<Interface_Check> & CCheck();
 
-		/****************** Check ******************/
-		/**** md5 signature: 535183f491df1166f3d80ddd8b810a47 ****/
+		/****** Interface_ReportEntity::Check ******/
+		/****** md5 signature: 535183f491df1166f3d80ddd8b810a47 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "Return
 -------
@@ -9592,8 +9592,8 @@ Returns the stored check.
 ") Check;
 		const opencascade::handle<Interface_Check> & Check();
 
-		/****************** Concerned ******************/
-		/**** md5 signature: 31d23dfc04cb92b0681e4429e255836d ****/
+		/****** Interface_ReportEntity::Concerned ******/
+		/****** md5 signature: 31d23dfc04cb92b0681e4429e255836d ******/
 		%feature("compactdefaultargs") Concerned;
 		%feature("autodoc", "Return
 -------
@@ -9605,8 +9605,8 @@ Returns the stored concerned entity. it equates the content in the case of an un
 ") Concerned;
 		opencascade::handle<Standard_Transient> Concerned();
 
-		/****************** Content ******************/
-		/**** md5 signature: 8f06554b5df01f4cef5ca6c131d633eb ****/
+		/****** Interface_ReportEntity::Content ******/
+		/****** md5 signature: 8f06554b5df01f4cef5ca6c131d633eb ******/
 		%feature("compactdefaultargs") Content;
 		%feature("autodoc", "Return
 -------
@@ -9618,8 +9618,8 @@ Returns the stored content, or a null handle remark that it must be an 'unknown 
 ") Content;
 		opencascade::handle<Standard_Transient> Content();
 
-		/****************** HasContent ******************/
-		/**** md5 signature: 139192491a3a3f3dbae7a9873a3beb19 ****/
+		/****** Interface_ReportEntity::HasContent ******/
+		/****** md5 signature: 139192491a3a3f3dbae7a9873a3beb19 ******/
 		%feature("compactdefaultargs") HasContent;
 		%feature("autodoc", "Return
 -------
@@ -9631,8 +9631,8 @@ Returns true if a content is stored (it can equate concerned).
 ") HasContent;
 		Standard_Boolean HasContent();
 
-		/****************** HasNewContent ******************/
-		/**** md5 signature: ca682f56104e3e248141935f535b6237 ****/
+		/****** Interface_ReportEntity::HasNewContent ******/
+		/****** md5 signature: ca682f56104e3e248141935f535b6237 ******/
 		%feature("compactdefaultargs") HasNewContent;
 		%feature("autodoc", "Return
 -------
@@ -9644,8 +9644,8 @@ Returns true if a content is stored and differs from concerned (i.e. redefines c
 ") HasNewContent;
 		Standard_Boolean HasNewContent();
 
-		/****************** IsError ******************/
-		/**** md5 signature: c52b85ee17e423925f2cd97bf6879614 ****/
+		/****** Interface_ReportEntity::IsError ******/
+		/****** md5 signature: c52b85ee17e423925f2cd97bf6879614 ******/
 		%feature("compactdefaultargs") IsError;
 		%feature("autodoc", "Return
 -------
@@ -9657,8 +9657,8 @@ Returns true for an error entity, i.e. if the check brings at least one fail mes
 ") IsError;
 		Standard_Boolean IsError();
 
-		/****************** IsUnknown ******************/
-		/**** md5 signature: 3664e7b68ca3ddc8f89b66fb416769e1 ****/
+		/****** Interface_ReportEntity::IsUnknown ******/
+		/****** md5 signature: 3664e7b68ca3ddc8f89b66fb416769e1 ******/
 		%feature("compactdefaultargs") IsUnknown;
 		%feature("autodoc", "Return
 -------
@@ -9670,8 +9670,8 @@ Returns true for an unknown entity, i,e. if the check is empty and concerned equ
 ") IsUnknown;
 		Standard_Boolean IsUnknown();
 
-		/****************** SetContent ******************/
-		/**** md5 signature: 9e2dd6e409838943a5bdfa7ca9ba5cd6 ****/
+		/****** Interface_ReportEntity::SetContent ******/
+		/****** md5 signature: 9e2dd6e409838943a5bdfa7ca9ba5cd6 ******/
 		%feature("compactdefaultargs") SetContent;
 		%feature("autodoc", "
 Parameters
@@ -9704,8 +9704,8 @@ Sets a content: it brings non interpreted data which belong to the concerned ent
 ***********************/
 class Interface_STAT {
 	public:
-		/****************** Interface_STAT ******************/
-		/**** md5 signature: 45e033643caee9f7e5dc73c369792e10 ****/
+		/****** Interface_STAT::Interface_STAT ******/
+		/****** md5 signature: 45e033643caee9f7e5dc73c369792e10 ******/
 		%feature("compactdefaultargs") Interface_STAT;
 		%feature("autodoc", "
 Parameters
@@ -9722,8 +9722,8 @@ Creates a stat form. at start, one default phase is defined, with one default st
 ") Interface_STAT;
 		 Interface_STAT(Standard_CString title = "");
 
-		/****************** Interface_STAT ******************/
-		/**** md5 signature: cb7d83a2fbadcfc6c6fe085b46e7cda4 ****/
+		/****** Interface_STAT::Interface_STAT ******/
+		/****** md5 signature: cb7d83a2fbadcfc6c6fe085b46e7cda4 ******/
 		%feature("compactdefaultargs") Interface_STAT;
 		%feature("autodoc", "
 Parameters
@@ -9740,8 +9740,8 @@ Used when starting.
 ") Interface_STAT;
 		 Interface_STAT(const Interface_STAT & other);
 
-		/****************** AddPhase ******************/
-		/**** md5 signature: 901e896e9fc7f2c7d6d35a838b9ae3fa ****/
+		/****** Interface_STAT::AddPhase ******/
+		/****** md5 signature: 901e896e9fc7f2c7d6d35a838b9ae3fa ******/
 		%feature("compactdefaultargs") AddPhase;
 		%feature("autodoc", "
 Parameters
@@ -9759,8 +9759,8 @@ Adds a new phase to the description. the first one after create replaces the def
 ") AddPhase;
 		void AddPhase(const Standard_Real weight, Standard_CString name = "");
 
-		/****************** AddStep ******************/
-		/**** md5 signature: 21cde4a1cc77e723291ed3b27cf07e1e ****/
+		/****** Interface_STAT::AddStep ******/
+		/****** md5 signature: 21cde4a1cc77e723291ed3b27cf07e1e ******/
 		%feature("compactdefaultargs") AddStep;
 		%feature("autodoc", "
 Parameters
@@ -9777,8 +9777,8 @@ Adds a new step for the last added phase, the default unique one if no addphase 
 ") AddStep;
 		void AddStep(const Standard_Real weight = 1);
 
-		/****************** Description ******************/
-		/**** md5 signature: ccb302c12ac3e5367aed0e7004aed292 ****/
+		/****** Interface_STAT::Description ******/
+		/****** md5 signature: ccb302c12ac3e5367aed0e7004aed292 ******/
 		%feature("compactdefaultargs") Description;
 		%feature("autodoc", "
 Parameters
@@ -9796,8 +9796,8 @@ Returns global description (cumulated weights of all phases, count of phases,1 f
 ") Description;
 		void Description(Standard_Integer &OutValue, Standard_Real &OutValue, Standard_CString title);
 
-		/****************** End ******************/
-		/**** md5 signature: fb2ee652f9985fe24d44f58655360e4e ****/
+		/****** Interface_STAT::End ******/
+		/****** md5 signature: fb2ee652f9985fe24d44f58655360e4e ******/
 		%feature("compactdefaultargs") End;
 		%feature("autodoc", "Return
 -------
@@ -9809,8 +9809,8 @@ Commands to declare the process ended (hence, advancement is forced to 100 %).
 ") End;
 		static void End();
 
-		/****************** Internals ******************/
-		/**** md5 signature: bc8ecc59db060541490d6f3fafb13d28 ****/
+		/****** Interface_STAT::Internals ******/
+		/****** md5 signature: bc8ecc59db060541490d6f3fafb13d28 ******/
 		%feature("compactdefaultargs") Internals;
 		%feature("autodoc", "
 Parameters
@@ -9832,8 +9832,8 @@ Returns fields in once, without copying them, used for copy when starting.
 ") Internals;
 		void Internals(opencascade::handle<TCollection_HAsciiString> &OutValue, Standard_Real &OutValue, opencascade::handle<TColStd_HSequenceOfAsciiString> & phn, opencascade::handle<TColStd_HSequenceOfReal> & phw, opencascade::handle<TColStd_HSequenceOfInteger> & phdeb, opencascade::handle<TColStd_HSequenceOfInteger> & phfin, opencascade::handle<TColStd_HSequenceOfReal> & stw);
 
-		/****************** NextCycle ******************/
-		/**** md5 signature: ca214add52f3821b26accc6fe7f36e0c ****/
+		/****** Interface_STAT::NextCycle ******/
+		/****** md5 signature: ca214add52f3821b26accc6fe7f36e0c ******/
 		%feature("compactdefaultargs") NextCycle;
 		%feature("autodoc", "
 Parameters
@@ -9850,8 +9850,8 @@ Commands to resume the preceding cycle and start a new one, with a count of item
 ") NextCycle;
 		static void NextCycle(const Standard_Integer items);
 
-		/****************** NextItem ******************/
-		/**** md5 signature: e1b17d15380adbd776c306226045c0e0 ****/
+		/****** Interface_STAT::NextItem ******/
+		/****** md5 signature: e1b17d15380adbd776c306226045c0e0 ******/
 		%feature("compactdefaultargs") NextItem;
 		%feature("autodoc", "
 Parameters
@@ -9868,8 +9868,8 @@ Commands to add an item in the current step of the current cycle of the current 
 ") NextItem;
 		static void NextItem(const Standard_Integer nbitems = 1);
 
-		/****************** NextPhase ******************/
-		/**** md5 signature: 9b523c6521e8002ac47a539ba98e971b ****/
+		/****** Interface_STAT::NextPhase ******/
+		/****** md5 signature: 9b523c6521e8002ac47a539ba98e971b ******/
 		%feature("compactdefaultargs") NextPhase;
 		%feature("autodoc", "
 Parameters
@@ -9887,8 +9887,8 @@ Commands to resume the preceding phase and start a new one <items> and <cycles> 
 ") NextPhase;
 		static void NextPhase(const Standard_Integer items, const Standard_Integer cycles = 1);
 
-		/****************** NextStep ******************/
-		/**** md5 signature: a06b9be16a1cd4fce846a9f6baf11cf8 ****/
+		/****** Interface_STAT::NextStep ******/
+		/****** md5 signature: a06b9be16a1cd4fce846a9f6baf11cf8 ******/
 		%feature("compactdefaultargs") NextStep;
 		%feature("autodoc", "Return
 -------
@@ -9900,8 +9900,8 @@ Commands to resume the preceding step of the cycle ignored if count of steps is 
 ") NextStep;
 		static void NextStep();
 
-		/****************** Percent ******************/
-		/**** md5 signature: af9ed9ea0ad2a0be9e5817b4231b4e34 ****/
+		/****** Interface_STAT::Percent ******/
+		/****** md5 signature: af9ed9ea0ad2a0be9e5817b4231b4e34 ******/
 		%feature("compactdefaultargs") Percent;
 		%feature("autodoc", "
 Parameters
@@ -9918,8 +9918,8 @@ Returns the advancement as a percentage: <phase> true: inside the current phase 
 ") Percent;
 		static Standard_Integer Percent(const Standard_Boolean phase = Standard_False);
 
-		/****************** Phase ******************/
-		/**** md5 signature: d890039f6e809714597defcff955c102 ****/
+		/****** Interface_STAT::Phase ******/
+		/****** md5 signature: d890039f6e809714597defcff955c102 ******/
 		%feature("compactdefaultargs") Phase;
 		%feature("autodoc", "
 Parameters
@@ -9939,8 +9939,8 @@ Returns description of a phase, given its rank (n0 for first step, count of step
 ") Phase;
 		void Phase(const Standard_Integer num, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Real &OutValue, Standard_CString name);
 
-		/****************** SetPhase ******************/
-		/**** md5 signature: 2ff988852c3a26f437f261f22891edb5 ****/
+		/****** Interface_STAT::SetPhase ******/
+		/****** md5 signature: 2ff988852c3a26f437f261f22891edb5 ******/
 		%feature("compactdefaultargs") SetPhase;
 		%feature("autodoc", "
 Parameters
@@ -9958,8 +9958,8 @@ Changes the parameters of the phase to start to be used before first counting (i
 ") SetPhase;
 		static void SetPhase(const Standard_Integer items, const Standard_Integer cycles = 1);
 
-		/****************** Start ******************/
-		/**** md5 signature: 5adfcc185e821aace27048b2e90b6aee ****/
+		/****** Interface_STAT::Start ******/
+		/****** md5 signature: 5adfcc185e821aace27048b2e90b6aee ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "
 Parameters
@@ -9977,8 +9977,8 @@ Starts a stat on its first phase (or its default one) <items> gives the total co
 ") Start;
 		void Start(const Standard_Integer items, const Standard_Integer cycles = 1);
 
-		/****************** StartCount ******************/
-		/**** md5 signature: ac80112bbb6b5fae525d592607a8b728 ****/
+		/****** Interface_STAT::StartCount ******/
+		/****** md5 signature: ac80112bbb6b5fae525d592607a8b728 ******/
 		%feature("compactdefaultargs") StartCount;
 		%feature("autodoc", "
 Parameters
@@ -9996,8 +9996,8 @@ Starts a default stat, with no phase, no step, ready to just count items. <items
 ") StartCount;
 		static void StartCount(const Standard_Integer items, Standard_CString title = "");
 
-		/****************** Step ******************/
-		/**** md5 signature: f6be15730fe53ce056667df4e2f42266 ****/
+		/****** Interface_STAT::Step ******/
+		/****** md5 signature: f6be15730fe53ce056667df4e2f42266 ******/
 		%feature("compactdefaultargs") Step;
 		%feature("autodoc", "
 Parameters
@@ -10014,8 +10014,8 @@ Returns weight of a step, related to the cumul given for the phase. <num> is giv
 ") Step;
 		Standard_Real Step(const Standard_Integer num);
 
-		/****************** Where ******************/
-		/**** md5 signature: 629e93f0486a39051b131b41dcb57749 ****/
+		/****** Interface_STAT::Where ******/
+		/****** md5 signature: 629e93f0486a39051b131b41dcb57749 ******/
 		%feature("compactdefaultargs") Where;
 		%feature("autodoc", "
 Parameters
@@ -10046,8 +10046,8 @@ Returns an identification of the stat: <phase> true (d): the name of the current
 *****************************/
 class Interface_ShareFlags {
 	public:
-		/****************** Interface_ShareFlags ******************/
-		/**** md5 signature: 3b54045ed65f4b7cacde9cf182c8db5a ****/
+		/****** Interface_ShareFlags::Interface_ShareFlags ******/
+		/****** md5 signature: 3b54045ed65f4b7cacde9cf182c8db5a ******/
 		%feature("compactdefaultargs") Interface_ShareFlags;
 		%feature("autodoc", "
 Parameters
@@ -10065,8 +10065,8 @@ Creates a shareflags from a model and builds required data (flags) by calling th
 ") Interface_ShareFlags;
 		 Interface_ShareFlags(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib);
 
-		/****************** Interface_ShareFlags ******************/
-		/**** md5 signature: 03df5fdb6716789d3f3c2dd21c6b7008 ****/
+		/****** Interface_ShareFlags::Interface_ShareFlags ******/
+		/****** md5 signature: 03df5fdb6716789d3f3c2dd21c6b7008 ******/
 		%feature("compactdefaultargs") Interface_ShareFlags;
 		%feature("autodoc", "
 Parameters
@@ -10084,8 +10084,8 @@ Same as above, but generallib is detained by a gtool.
 ") Interface_ShareFlags;
 		 Interface_ShareFlags(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_GTool> & gtool);
 
-		/****************** Interface_ShareFlags ******************/
-		/**** md5 signature: 8f8941d307658dae63d09634c406751e ****/
+		/****** Interface_ShareFlags::Interface_ShareFlags ******/
+		/****** md5 signature: 8f8941d307658dae63d09634c406751e ******/
 		%feature("compactdefaultargs") Interface_ShareFlags;
 		%feature("autodoc", "
 Parameters
@@ -10103,8 +10103,8 @@ Same as above, but generallib is defined through a protocol.
 ") Interface_ShareFlags;
 		 Interface_ShareFlags(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol);
 
-		/****************** Interface_ShareFlags ******************/
-		/**** md5 signature: 5cf82d9e7fc5e21bbbd898a70e9402bc ****/
+		/****** Interface_ShareFlags::Interface_ShareFlags ******/
+		/****** md5 signature: 5cf82d9e7fc5e21bbbd898a70e9402bc ******/
 		%feature("compactdefaultargs") Interface_ShareFlags;
 		%feature("autodoc", "
 Parameters
@@ -10121,8 +10121,8 @@ Same as above, but works with the gtool of the model.
 ") Interface_ShareFlags;
 		 Interface_ShareFlags(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** Interface_ShareFlags ******************/
-		/**** md5 signature: fb87355c221a29bfef4a7716e14429e5 ****/
+		/****** Interface_ShareFlags::Interface_ShareFlags ******/
+		/****** md5 signature: fb87355c221a29bfef4a7716e14429e5 ******/
 		%feature("compactdefaultargs") Interface_ShareFlags;
 		%feature("autodoc", "
 Parameters
@@ -10139,8 +10139,8 @@ Creates a shareflags by querying information from a graph (remark that graph als
 ") Interface_ShareFlags;
 		 Interface_ShareFlags(const Interface_Graph & agraph);
 
-		/****************** IsShared ******************/
-		/**** md5 signature: 3e66d0a7cc6678e53c33e376ce31731a ****/
+		/****** Interface_ShareFlags::IsShared ******/
+		/****** md5 signature: 3e66d0a7cc6678e53c33e376ce31731a ******/
 		%feature("compactdefaultargs") IsShared;
 		%feature("autodoc", "
 Parameters
@@ -10157,8 +10157,8 @@ Returns true if <ent> is shared by one or more other entity(ies) of the model.
 ") IsShared;
 		Standard_Boolean IsShared(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** Interface_ShareFlags::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -10170,8 +10170,8 @@ Returns the model used for the evaluation.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** NbRoots ******************/
-		/**** md5 signature: d23dc5b5f7fe61d6b998e72ba9eb27b3 ****/
+		/****** Interface_ShareFlags::NbRoots ******/
+		/****** md5 signature: d23dc5b5f7fe61d6b998e72ba9eb27b3 ******/
 		%feature("compactdefaultargs") NbRoots;
 		%feature("autodoc", "Return
 -------
@@ -10183,8 +10183,8 @@ Returns the count of root entities.
 ") NbRoots;
 		Standard_Integer NbRoots();
 
-		/****************** Root ******************/
-		/**** md5 signature: 4b8f069a9ea374ab5529724497f0d6e6 ****/
+		/****** Interface_ShareFlags::Root ******/
+		/****** md5 signature: 4b8f069a9ea374ab5529724497f0d6e6 ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "
 Parameters
@@ -10201,8 +10201,8 @@ Returns a root entity according its rank in the list of roots by default, it ret
 ") Root;
 		opencascade::handle<Standard_Transient> Root(const Standard_Integer num = 1);
 
-		/****************** RootEntities ******************/
-		/**** md5 signature: 63cd32bddc79c5ff7cf79d39668774c9 ****/
+		/****** Interface_ShareFlags::RootEntities ******/
+		/****** md5 signature: 63cd32bddc79c5ff7cf79d39668774c9 ******/
 		%feature("compactdefaultargs") RootEntities;
 		%feature("autodoc", "Return
 -------
@@ -10228,8 +10228,8 @@ Returns the entities which are not shared (see their flags).
 ****************************/
 class Interface_ShareTool {
 	public:
-		/****************** Interface_ShareTool ******************/
-		/**** md5 signature: ef7c138e0fb84e0457b735e8476e91ca ****/
+		/****** Interface_ShareTool::Interface_ShareTool ******/
+		/****** md5 signature: ef7c138e0fb84e0457b735e8476e91ca ******/
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "
 Parameters
@@ -10247,8 +10247,8 @@ Creates a sharetool from a model and builds all required data, by calling the ge
 ") Interface_ShareTool;
 		 Interface_ShareTool(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib);
 
-		/****************** Interface_ShareTool ******************/
-		/**** md5 signature: 9f0728a3ccc131f8a0ff0d5b4e01dafe ****/
+		/****** Interface_ShareTool::Interface_ShareTool ******/
+		/****** md5 signature: 9f0728a3ccc131f8a0ff0d5b4e01dafe ******/
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "
 Parameters
@@ -10266,8 +10266,8 @@ Same a above, but generallib is detained by a gtool.
 ") Interface_ShareTool;
 		 Interface_ShareTool(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_GTool> & gtool);
 
-		/****************** Interface_ShareTool ******************/
-		/**** md5 signature: 7524962121497ca46beced7d2935b3d5 ****/
+		/****** Interface_ShareTool::Interface_ShareTool ******/
+		/****** md5 signature: 7524962121497ca46beced7d2935b3d5 ******/
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "
 Parameters
@@ -10285,8 +10285,8 @@ Same a above, but generallib is defined through a protocol protocol is used to b
 ") Interface_ShareTool;
 		 Interface_ShareTool(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol);
 
-		/****************** Interface_ShareTool ******************/
-		/**** md5 signature: 42327af9af7b69150f615441485ea2f5 ****/
+		/****** Interface_ShareTool::Interface_ShareTool ******/
+		/****** md5 signature: 42327af9af7b69150f615441485ea2f5 ******/
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "
 Parameters
@@ -10303,8 +10303,8 @@ Same as above, but works with the gtool of the model.
 ") Interface_ShareTool;
 		 Interface_ShareTool(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** Interface_ShareTool ******************/
-		/**** md5 signature: 927bab793ffdcdd0792d3d0b4652e41d ****/
+		/****** Interface_ShareTool::Interface_ShareTool ******/
+		/****** md5 signature: 927bab793ffdcdd0792d3d0b4652e41d ******/
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "
 Parameters
@@ -10321,8 +10321,8 @@ Creates a sharetool from an already defined graph remark that the data of the gr
 ") Interface_ShareTool;
 		 Interface_ShareTool(const Interface_Graph & agraph);
 
-		/****************** Interface_ShareTool ******************/
-		/**** md5 signature: 1d933c78c10fafd47f3c117993302a04 ****/
+		/****** Interface_ShareTool::Interface_ShareTool ******/
+		/****** md5 signature: 1d933c78c10fafd47f3c117993302a04 ******/
 		%feature("compactdefaultargs") Interface_ShareTool;
 		%feature("autodoc", "
 Parameters
@@ -10339,8 +10339,8 @@ Completes the graph by adding implied references. hence, they are considered as 
 ") Interface_ShareTool;
 		 Interface_ShareTool(const opencascade::handle<Interface_HGraph> & ahgraph);
 
-		/****************** All ******************/
-		/**** md5 signature: b455c53620b389f3422e27d3f05c2e46 ****/
+		/****** Interface_ShareTool::All ******/
+		/****** md5 signature: b455c53620b389f3422e27d3f05c2e46 ******/
 		%feature("compactdefaultargs") All;
 		%feature("autodoc", "
 Parameters
@@ -10358,8 +10358,8 @@ Returns the complete list of entities shared by <ent> at any level, including <e
 ") All;
 		Interface_EntityIterator All(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean rootlast = Standard_True);
 
-		/****************** Graph ******************/
-		/**** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ****/
+		/****** Interface_ShareTool::Graph ******/
+		/****** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ******/
 		%feature("compactdefaultargs") Graph;
 		%feature("autodoc", "Return
 -------
@@ -10371,8 +10371,8 @@ Returns the data used by the sharetool to work can then be used directly (read o
 ") Graph;
 		const Interface_Graph & Graph();
 
-		/****************** IsShared ******************/
-		/**** md5 signature: 3e66d0a7cc6678e53c33e376ce31731a ****/
+		/****** Interface_ShareTool::IsShared ******/
+		/****** md5 signature: 3e66d0a7cc6678e53c33e376ce31731a ******/
 		%feature("compactdefaultargs") IsShared;
 		%feature("autodoc", "
 Parameters
@@ -10389,8 +10389,8 @@ Returns true if <ent> is shared by other entities in the model.
 ") IsShared;
 		Standard_Boolean IsShared(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** Interface_ShareTool::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -10402,8 +10402,8 @@ Returns the model used for creation (directly or for graph).
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** NbTypedSharings ******************/
-		/**** md5 signature: eef551aa63b33d7e36b531ff2d17cf0a ****/
+		/****** Interface_ShareTool::NbTypedSharings ******/
+		/****** md5 signature: eef551aa63b33d7e36b531ff2d17cf0a ******/
 		%feature("compactdefaultargs") NbTypedSharings;
 		%feature("autodoc", "
 Parameters
@@ -10421,8 +10421,8 @@ Returns the count of sharing entities of an entity, which are kind of a given ty
 ") NbTypedSharings;
 		Standard_Integer NbTypedSharings(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Type> & atype);
 
-		/****************** Print ******************/
-		/**** md5 signature: 2f38257dbca8db3ebc49f083711c4d06 ****/
+		/****** Interface_ShareTool::Print ******/
+		/****** md5 signature: 2f38257dbca8db3ebc49f083711c4d06 ******/
 		%feature("compactdefaultargs") Print;
 		%feature("autodoc", "
 Parameters
@@ -10439,8 +10439,8 @@ Utility method which prints the content of an iterator (by their numbers).
 ") Print;
 		void Print(const Interface_EntityIterator & iter, std::ostream &OutValue);
 
-		/****************** RootEntities ******************/
-		/**** md5 signature: 63cd32bddc79c5ff7cf79d39668774c9 ****/
+		/****** Interface_ShareTool::RootEntities ******/
+		/****** md5 signature: 63cd32bddc79c5ff7cf79d39668774c9 ******/
 		%feature("compactdefaultargs") RootEntities;
 		%feature("autodoc", "Return
 -------
@@ -10452,8 +10452,8 @@ Returns the entities which are not shared (their sharing list is empty) in the m
 ") RootEntities;
 		Interface_EntityIterator RootEntities();
 
-		/****************** Shareds ******************/
-		/**** md5 signature: d7f3cd187cff94c69bea537ec01567d5 ****/
+		/****** Interface_ShareTool::Shareds ******/
+		/****** md5 signature: d7f3cd187cff94c69bea537ec01567d5 ******/
 		%feature("compactdefaultargs") Shareds;
 		%feature("autodoc", "
 Parameters
@@ -10470,8 +10470,8 @@ Returns the list of entities shared by a given entity <ent>.
 ") Shareds;
 		Interface_EntityIterator Shareds(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Sharings ******************/
-		/**** md5 signature: 561a9bb8187bfa6649f3c1fcaacdaeed ****/
+		/****** Interface_ShareTool::Sharings ******/
+		/****** md5 signature: 561a9bb8187bfa6649f3c1fcaacdaeed ******/
 		%feature("compactdefaultargs") Sharings;
 		%feature("autodoc", "
 Parameters
@@ -10488,8 +10488,8 @@ Returns the list of entities sharing a given entity <ent>.
 ") Sharings;
 		Interface_EntityIterator Sharings(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** TypedSharing ******************/
-		/**** md5 signature: 2836ffecd2f16bf9dde6f5dabfce5fdd ****/
+		/****** Interface_ShareTool::TypedSharing ******/
+		/****** md5 signature: 2836ffecd2f16bf9dde6f5dabfce5fdd ******/
 		%feature("compactdefaultargs") TypedSharing;
 		%feature("autodoc", "
 Parameters
@@ -10521,8 +10521,8 @@ Returns the sharing entity of an entity, which is kind of a given type. allows t
 ****************************/
 class Interface_SignLabel : public MoniTool_SignText {
 	public:
-		/****************** Interface_SignLabel ******************/
-		/**** md5 signature: 9b29a88e8d714b586a7134f1ee0c12bd ****/
+		/****** Interface_SignLabel::Interface_SignLabel ******/
+		/****** md5 signature: 9b29a88e8d714b586a7134f1ee0c12bd ******/
 		%feature("compactdefaultargs") Interface_SignLabel;
 		%feature("autodoc", "Return
 -------
@@ -10534,8 +10534,8 @@ No available documentation.
 ") Interface_SignLabel;
 		 Interface_SignLabel();
 
-		/****************** Name ******************/
-		/**** md5 signature: f35e373630f40191cc40cd61094fa98a ****/
+		/****** Interface_SignLabel::Name ******/
+		/****** md5 signature: f35e373630f40191cc40cd61094fa98a ******/
 		%feature("compactdefaultargs") Name;
 		%feature("autodoc", "Return
 -------
@@ -10547,8 +10547,8 @@ Returns 'entity label'.
 ") Name;
 		Standard_CString Name();
 
-		/****************** Text ******************/
-		/**** md5 signature: 44c44c56f0e9da4d892db26a3852e369 ****/
+		/****** Interface_SignLabel::Text ******/
+		/****** md5 signature: 44c44c56f0e9da4d892db26a3852e369 ******/
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "
 Parameters
@@ -10583,8 +10583,8 @@ Considers context as an interfacemodel and returns the label computed by it.
 %nodefaultctor Interface_SignType;
 class Interface_SignType : public MoniTool_SignText {
 	public:
-		/****************** ClassName ******************/
-		/**** md5 signature: 5c848fa4e9ca29e4e7b7a55157f5d8c4 ****/
+		/****** Interface_SignType::ClassName ******/
+		/****** md5 signature: 5c848fa4e9ca29e4e7b7a55157f5d8c4 ******/
 		%feature("compactdefaultargs") ClassName;
 		%feature("autodoc", "
 Parameters
@@ -10601,8 +10601,8 @@ From a cdl type name, returns the class part (package dropped) warning: buffered
 ") ClassName;
 		static Standard_CString ClassName(Standard_CString typnam);
 
-		/****************** Text ******************/
-		/**** md5 signature: 44c44c56f0e9da4d892db26a3852e369 ****/
+		/****** Interface_SignType::Text ******/
+		/****** md5 signature: 44c44c56f0e9da4d892db26a3852e369 ******/
 		%feature("compactdefaultargs") Text;
 		%feature("autodoc", "
 Parameters
@@ -10620,8 +10620,8 @@ Returns an identification of the signature (a word), given at initialization tim
 ") Text;
 		TCollection_AsciiString Text(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & context);
 
-		/****************** Value ******************/
-		/**** md5 signature: 37c924359631a9d9e92ff35b3241caa4 ****/
+		/****** Interface_SignType::Value ******/
+		/****** md5 signature: 37c924359631a9d9e92ff35b3241caa4 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -10655,8 +10655,8 @@ Returns the signature for a transient object. it is specific of each sub-class o
 *****************************/
 class Interface_TypedValue : public MoniTool_TypedValue {
 	public:
-		/****************** Interface_TypedValue ******************/
-		/**** md5 signature: 7c0c3d4173d57fce3bb947c56cac91e2 ****/
+		/****** Interface_TypedValue::Interface_TypedValue ******/
+		/****** md5 signature: 7c0c3d4173d57fce3bb947c56cac91e2 ******/
 		%feature("compactdefaultargs") Interface_TypedValue;
 		%feature("autodoc", "
 Parameters
@@ -10675,8 +10675,8 @@ Creates a typedvalue, with a name //! type gives the type of the parameter, defa
 ") Interface_TypedValue;
 		 Interface_TypedValue(Standard_CString name, const Interface_ParamType type = Interface_ParamText, Standard_CString init = "");
 
-		/****************** ParamTypeToValueType ******************/
-		/**** md5 signature: aee1d139dcd9a716445f9c7c79e55597 ****/
+		/****** Interface_TypedValue::ParamTypeToValueType ******/
+		/****** md5 signature: aee1d139dcd9a716445f9c7c79e55597 ******/
 		%feature("compactdefaultargs") ParamTypeToValueType;
 		%feature("autodoc", "
 Parameters
@@ -10693,8 +10693,8 @@ Correspondence paramtype from interface to valuetype from monitool.
 ") ParamTypeToValueType;
 		static MoniTool_ValueType ParamTypeToValueType(const Interface_ParamType typ);
 
-		/****************** Type ******************/
-		/**** md5 signature: 47dd452537804ba27c0351c740f97ef5 ****/
+		/****** Interface_TypedValue::Type ******/
+		/****** md5 signature: 47dd452537804ba27c0351c740f97ef5 ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "Return
 -------
@@ -10706,8 +10706,8 @@ Returns the type i.e. calls valuetype then makes correspondence between paramtyp
 ") Type;
 		Interface_ParamType Type();
 
-		/****************** ValueTypeToParamType ******************/
-		/**** md5 signature: 03fb586ad085bc437a43df1d15b1dda6 ****/
+		/****** Interface_TypedValue::ValueTypeToParamType ******/
+		/****** md5 signature: 03fb586ad085bc437a43df1d15b1dda6 ******/
 		%feature("compactdefaultargs") ValueTypeToParamType;
 		%feature("autodoc", "
 Parameters
@@ -10740,8 +10740,8 @@ Correspondence paramtype from interface to valuetype from monitool.
 ***********************************/
 class Interface_UndefinedContent : public Standard_Transient {
 	public:
-		/****************** Interface_UndefinedContent ******************/
-		/**** md5 signature: 52380470e4dae639892aaa16535bd5b5 ****/
+		/****** Interface_UndefinedContent::Interface_UndefinedContent ******/
+		/****** md5 signature: 52380470e4dae639892aaa16535bd5b5 ******/
 		%feature("compactdefaultargs") Interface_UndefinedContent;
 		%feature("autodoc", "Return
 -------
@@ -10753,8 +10753,8 @@ Defines an empty undefinedcontent.
 ") Interface_UndefinedContent;
 		 Interface_UndefinedContent();
 
-		/****************** AddEntity ******************/
-		/**** md5 signature: 9c6f708c0c7add83fe57b03ecc71aeee ****/
+		/****** Interface_UndefinedContent::AddEntity ******/
+		/****** md5 signature: 9c6f708c0c7add83fe57b03ecc71aeee ******/
 		%feature("compactdefaultargs") AddEntity;
 		%feature("autodoc", "
 Parameters
@@ -10772,8 +10772,8 @@ Adds a parameter which references an entity.
 ") AddEntity;
 		void AddEntity(const Interface_ParamType ptype, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** AddLiteral ******************/
-		/**** md5 signature: 42c39aaae211ba3460d3b8849e56c767 ****/
+		/****** Interface_UndefinedContent::AddLiteral ******/
+		/****** md5 signature: 42c39aaae211ba3460d3b8849e56c767 ******/
 		%feature("compactdefaultargs") AddLiteral;
 		%feature("autodoc", "
 Parameters
@@ -10791,8 +10791,8 @@ Adds a literal parameter to the list.
 ") AddLiteral;
 		void AddLiteral(const Interface_ParamType ptype, const opencascade::handle<TCollection_HAsciiString> & val);
 
-		/****************** EntityList ******************/
-		/**** md5 signature: 4625df90b81c2aa3ad2b1dd9cd633919 ****/
+		/****** Interface_UndefinedContent::EntityList ******/
+		/****** md5 signature: 4625df90b81c2aa3ad2b1dd9cd633919 ******/
 		%feature("compactdefaultargs") EntityList;
 		%feature("autodoc", "Return
 -------
@@ -10804,8 +10804,8 @@ Returns globally the list of param entities. note that it can be used as shared 
 ") EntityList;
 		Interface_EntityList EntityList();
 
-		/****************** GetFromAnother ******************/
-		/**** md5 signature: b50ef3b4e3d7cc607524f9a4399fe516 ****/
+		/****** Interface_UndefinedContent::GetFromAnother ******/
+		/****** md5 signature: b50ef3b4e3d7cc607524f9a4399fe516 ******/
 		%feature("compactdefaultargs") GetFromAnother;
 		%feature("autodoc", "
 Parameters
@@ -10823,8 +10823,8 @@ Copies contents of undefined entities; deigned to be called by getfromanother me
 ") GetFromAnother;
 		void GetFromAnother(const opencascade::handle<Interface_UndefinedContent> & other, Interface_CopyTool & TC);
 
-		/****************** IsParamEntity ******************/
-		/**** md5 signature: edcc5f4164bf630a10b2eddc151d1934 ****/
+		/****** Interface_UndefinedContent::IsParamEntity ******/
+		/****** md5 signature: edcc5f4164bf630a10b2eddc151d1934 ******/
 		%feature("compactdefaultargs") IsParamEntity;
 		%feature("autodoc", "
 Parameters
@@ -10841,8 +10841,8 @@ Returns true if a parameter is recorded as an entity error if num is not between
 ") IsParamEntity;
 		Standard_Boolean IsParamEntity(const Standard_Integer num);
 
-		/****************** NbLiterals ******************/
-		/**** md5 signature: 12a4f0bd43456f607e315fdcf241cb29 ****/
+		/****** Interface_UndefinedContent::NbLiterals ******/
+		/****** md5 signature: 12a4f0bd43456f607e315fdcf241cb29 ******/
 		%feature("compactdefaultargs") NbLiterals;
 		%feature("autodoc", "Return
 -------
@@ -10854,8 +10854,8 @@ Gives count of literal parameters.
 ") NbLiterals;
 		Standard_Integer NbLiterals();
 
-		/****************** NbParams ******************/
-		/**** md5 signature: 826f4756fca7f780e6d976c60183d715 ****/
+		/****** Interface_UndefinedContent::NbParams ******/
+		/****** md5 signature: 826f4756fca7f780e6d976c60183d715 ******/
 		%feature("compactdefaultargs") NbParams;
 		%feature("autodoc", "Return
 -------
@@ -10867,8 +10867,8 @@ Gives count of recorded parameters.
 ") NbParams;
 		Standard_Integer NbParams();
 
-		/****************** ParamData ******************/
-		/**** md5 signature: 7ca464741028b870c741574661323ef4 ****/
+		/****** Interface_UndefinedContent::ParamData ******/
+		/****** md5 signature: 7ca464741028b870c741574661323ef4 ******/
 		%feature("compactdefaultargs") ParamData;
 		%feature("autodoc", "
 Parameters
@@ -10887,8 +10887,8 @@ Returns data of a parameter: its type, and the entity if it designates en entity
 ") ParamData;
 		Standard_Boolean ParamData(const Standard_Integer num, Interface_ParamType &OutValue, opencascade::handle<Standard_Transient> & ent, opencascade::handle<TCollection_HAsciiString> &OutValue);
 
-		/****************** ParamEntity ******************/
-		/**** md5 signature: 761c0b32c3eb0e5da7ddfca321a3322d ****/
+		/****** Interface_UndefinedContent::ParamEntity ******/
+		/****** md5 signature: 761c0b32c3eb0e5da7ddfca321a3322d ******/
 		%feature("compactdefaultargs") ParamEntity;
 		%feature("autodoc", "
 Parameters
@@ -10905,8 +10905,8 @@ Returns entity corresponding to a param, given its rank.
 ") ParamEntity;
 		opencascade::handle<Standard_Transient> ParamEntity(const Standard_Integer num);
 
-		/****************** ParamType ******************/
-		/**** md5 signature: 06805a954cdda33c70604680f220e0c5 ****/
+		/****** Interface_UndefinedContent::ParamType ******/
+		/****** md5 signature: 06805a954cdda33c70604680f220e0c5 ******/
 		%feature("compactdefaultargs") ParamType;
 		%feature("autodoc", "
 Parameters
@@ -10923,8 +10923,8 @@ Returns the paramtype of a param, given its rank error if num is not between 1 a
 ") ParamType;
 		Interface_ParamType ParamType(const Standard_Integer num);
 
-		/****************** ParamValue ******************/
-		/**** md5 signature: 27f0f605c60e921cd93c878a3119e98b ****/
+		/****** Interface_UndefinedContent::ParamValue ******/
+		/****** md5 signature: 27f0f605c60e921cd93c878a3119e98b ******/
 		%feature("compactdefaultargs") ParamValue;
 		%feature("autodoc", "
 Parameters
@@ -10941,8 +10941,8 @@ Returns literal value of a parameter, given its rank.
 ") ParamValue;
 		opencascade::handle<TCollection_HAsciiString> ParamValue(const Standard_Integer num);
 
-		/****************** RemoveParam ******************/
-		/**** md5 signature: 4dc35dce4aeb1dd96c7a9f880db74227 ****/
+		/****** Interface_UndefinedContent::RemoveParam ******/
+		/****** md5 signature: 4dc35dce4aeb1dd96c7a9f880db74227 ******/
 		%feature("compactdefaultargs") RemoveParam;
 		%feature("autodoc", "
 Parameters
@@ -10959,8 +10959,8 @@ Removes a parameter given its rank.
 ") RemoveParam;
 		void RemoveParam(const Standard_Integer num);
 
-		/****************** Reservate ******************/
-		/**** md5 signature: 31af5568472447f72c79220748d7c500 ****/
+		/****** Interface_UndefinedContent::Reservate ******/
+		/****** md5 signature: 31af5568472447f72c79220748d7c500 ******/
 		%feature("compactdefaultargs") Reservate;
 		%feature("autodoc", "
 Parameters
@@ -10978,8 +10978,8 @@ Manages reservation for parameters (internal use) (nb: total count of parameters
 ") Reservate;
 		void Reservate(const Standard_Integer nb, const Standard_Integer nblit);
 
-		/****************** SetEntity ******************/
-		/**** md5 signature: 4b8efff936bc3f2ead61fab318587ce2 ****/
+		/****** Interface_UndefinedContent::SetEntity ******/
+		/****** md5 signature: 4b8efff936bc3f2ead61fab318587ce2 ******/
 		%feature("compactdefaultargs") SetEntity;
 		%feature("autodoc", "
 Parameters
@@ -10998,8 +10998,8 @@ Sets a new value for the parameter <num>, to reference an entity. to simply chan
 ") SetEntity;
 		void SetEntity(const Standard_Integer num, const Interface_ParamType ptype, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** SetEntity ******************/
-		/**** md5 signature: eb5e85918c8177aa1aa31acbc491ce44 ****/
+		/****** Interface_UndefinedContent::SetEntity ******/
+		/****** md5 signature: eb5e85918c8177aa1aa31acbc491ce44 ******/
 		%feature("compactdefaultargs") SetEntity;
 		%feature("autodoc", "
 Parameters
@@ -11017,8 +11017,8 @@ Changes the entity referenced by the parameter <num> (with same paramtype).
 ") SetEntity;
 		void SetEntity(const Standard_Integer num, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** SetLiteral ******************/
-		/**** md5 signature: 8072f1d179fb9b4fc930b8da855eda9b ****/
+		/****** Interface_UndefinedContent::SetLiteral ******/
+		/****** md5 signature: 8072f1d179fb9b4fc930b8da855eda9b ******/
 		%feature("compactdefaultargs") SetLiteral;
 		%feature("autodoc", "
 Parameters
@@ -11053,8 +11053,8 @@ Sets a new value for the parameter <num>, to a literal value (if it referenced f
 **************************/
 class Interface_CopyMap : public Interface_CopyControl {
 	public:
-		/****************** Interface_CopyMap ******************/
-		/**** md5 signature: fa89544b2c0fbd11b7d29238b0368002 ****/
+		/****** Interface_CopyMap::Interface_CopyMap ******/
+		/****** md5 signature: fa89544b2c0fbd11b7d29238b0368002 ******/
 		%feature("compactdefaultargs") Interface_CopyMap;
 		%feature("autodoc", "
 Parameters
@@ -11071,8 +11071,8 @@ Creates a copymap adapted to work from a model.
 ") Interface_CopyMap;
 		 Interface_CopyMap(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** Bind ******************/
-		/**** md5 signature: 6b8123ff1b872cf7eccc6ee384405fb1 ****/
+		/****** Interface_CopyMap::Bind ******/
+		/****** md5 signature: 6b8123ff1b872cf7eccc6ee384405fb1 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -11090,8 +11090,8 @@ Binds a starting entity identified by its number <num> in the starting model, to
 ") Bind;
 		void Bind(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & res);
 
-		/****************** Clear ******************/
-		/**** md5 signature: 04e06e275d2bf51a1788968453d01f4e ****/
+		/****** Interface_CopyMap::Clear ******/
+		/****** md5 signature: 04e06e275d2bf51a1788968453d01f4e ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -11103,8 +11103,8 @@ Clears transfer list. gets ready to begin another transfer.
 ") Clear;
 		void Clear();
 
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** Interface_CopyMap::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -11116,8 +11116,8 @@ Returns the interfacemodel used at creation time.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** Search ******************/
-		/**** md5 signature: 525f5a6e060d9bc49aafdc8e913d57c5 ****/
+		/****** Interface_CopyMap::Search ******/
+		/****** md5 signature: 525f5a6e060d9bc49aafdc8e913d57c5 ******/
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "
 Parameters
@@ -11151,8 +11151,8 @@ Search for the result of a starting object (i.e. an entity, identified by its nu
 *******************************/
 class Interface_GraphContent : public Interface_EntityIterator {
 	public:
-		/****************** Interface_GraphContent ******************/
-		/**** md5 signature: e56f30d1da280cb2263c4816c559fcb2 ****/
+		/****** Interface_GraphContent::Interface_GraphContent ******/
+		/****** md5 signature: e56f30d1da280cb2263c4816c559fcb2 ******/
 		%feature("compactdefaultargs") Interface_GraphContent;
 		%feature("autodoc", "Return
 -------
@@ -11164,8 +11164,8 @@ Creates an empty graphcontent, ready to be filled.
 ") Interface_GraphContent;
 		 Interface_GraphContent();
 
-		/****************** Interface_GraphContent ******************/
-		/**** md5 signature: a36a6f6ccda585fc6089d779b7e3fe35 ****/
+		/****** Interface_GraphContent::Interface_GraphContent ******/
+		/****** md5 signature: a36a6f6ccda585fc6089d779b7e3fe35 ******/
 		%feature("compactdefaultargs") Interface_GraphContent;
 		%feature("autodoc", "
 Parameters
@@ -11182,8 +11182,8 @@ Creates with all entities designated by a graph.
 ") Interface_GraphContent;
 		 Interface_GraphContent(const Interface_Graph & agraph);
 
-		/****************** Interface_GraphContent ******************/
-		/**** md5 signature: c01dd0557fc9fe949a43f6239fec04ec ****/
+		/****** Interface_GraphContent::Interface_GraphContent ******/
+		/****** md5 signature: c01dd0557fc9fe949a43f6239fec04ec ******/
 		%feature("compactdefaultargs") Interface_GraphContent;
 		%feature("autodoc", "
 Parameters
@@ -11201,8 +11201,8 @@ Creates with entities having specific status value in a graph.
 ") Interface_GraphContent;
 		 Interface_GraphContent(const Interface_Graph & agraph, const Standard_Integer stat);
 
-		/****************** Interface_GraphContent ******************/
-		/**** md5 signature: db03489b1aaddcde63f86d6f02e71726 ****/
+		/****** Interface_GraphContent::Interface_GraphContent ******/
+		/****** md5 signature: db03489b1aaddcde63f86d6f02e71726 ******/
 		%feature("compactdefaultargs") Interface_GraphContent;
 		%feature("autodoc", "
 Parameters
@@ -11220,8 +11220,8 @@ Creates an iterator with shared entities of an entity (equivalente to entityiter
 ") Interface_GraphContent;
 		 Interface_GraphContent(const Interface_Graph & agraph, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Begin ******************/
-		/**** md5 signature: 6411d2d9578e36d75460c7dda67b7440 ****/
+		/****** Interface_GraphContent::Begin ******/
+		/****** md5 signature: 6411d2d9578e36d75460c7dda67b7440 ******/
 		%feature("compactdefaultargs") Begin;
 		%feature("autodoc", "Return
 -------
@@ -11233,8 +11233,8 @@ Does the evaluation before starting the iteration itself (in out).
 ") Begin;
 		void Begin();
 
-		/****************** Evaluate ******************/
-		/**** md5 signature: 6640605754ea7f26f131a8bc46247338 ****/
+		/****** Interface_GraphContent::Evaluate ******/
+		/****** md5 signature: 6640605754ea7f26f131a8bc46247338 ******/
 		%feature("compactdefaultargs") Evaluate;
 		%feature("autodoc", "Return
 -------
@@ -11246,8 +11246,8 @@ Evaluates list of entities to be iterated. called by start default is set to doi
 ") Evaluate;
 		virtual void Evaluate();
 
-		/****************** GetFromGraph ******************/
-		/**** md5 signature: ae6a9a559f58dc138ed87b411e11d722 ****/
+		/****** Interface_GraphContent::GetFromGraph ******/
+		/****** md5 signature: ae6a9a559f58dc138ed87b411e11d722 ******/
 		%feature("compactdefaultargs") GetFromGraph;
 		%feature("autodoc", "
 Parameters
@@ -11264,8 +11264,8 @@ Gets all entities designated by a graph (once created), adds them to those alrea
 ") GetFromGraph;
 		void GetFromGraph(const Interface_Graph & agraph);
 
-		/****************** GetFromGraph ******************/
-		/**** md5 signature: 418d34704ccd99f0633d30895e747dbc ****/
+		/****** Interface_GraphContent::GetFromGraph ******/
+		/****** md5 signature: 418d34704ccd99f0633d30895e747dbc ******/
 		%feature("compactdefaultargs") GetFromGraph;
 		%feature("autodoc", "
 Parameters
@@ -11283,8 +11283,8 @@ Gets entities from a graph which have a specific status value (one created), add
 ") GetFromGraph;
 		void GetFromGraph(const Interface_Graph & agraph, const Standard_Integer stat);
 
-		/****************** Result ******************/
-		/**** md5 signature: 8c4c469fb1e25be9ad684d7b09b36228 ****/
+		/****** Interface_GraphContent::Result ******/
+		/****** md5 signature: 8c4c469fb1e25be9ad684d7b09b36228 ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
@@ -11310,8 +11310,8 @@ Returns result under the exact form of an entityiterator: can be used when entit
 *************************/
 class Interface_Static : public Interface_TypedValue {
 	public:
-		/****************** Interface_Static ******************/
-		/**** md5 signature: a86af5cdb38073532a5a731958c23daf ****/
+		/****** Interface_Static::Interface_Static ******/
+		/****** md5 signature: a86af5cdb38073532a5a731958c23daf ******/
 		%feature("compactdefaultargs") Interface_Static;
 		%feature("autodoc", "
 Parameters
@@ -11331,8 +11331,8 @@ Creates and records a static, with a family and a name family can report to a na
 ") Interface_Static;
 		 Interface_Static(Standard_CString family, Standard_CString name, const Interface_ParamType type = Interface_ParamText, Standard_CString init = "");
 
-		/****************** Interface_Static ******************/
-		/**** md5 signature: 1b796482a7cd04d278a7b9014840dcaa ****/
+		/****** Interface_Static::Interface_Static ******/
+		/****** md5 signature: 1b796482a7cd04d278a7b9014840dcaa ******/
 		%feature("compactdefaultargs") Interface_Static;
 		%feature("autodoc", "
 Parameters
@@ -11351,8 +11351,8 @@ Creates a new static with same definition as another one (value is copied, excep
 ") Interface_Static;
 		 Interface_Static(Standard_CString family, Standard_CString name, const opencascade::handle<Interface_Static> & other);
 
-		/****************** CDef ******************/
-		/**** md5 signature: e75a32f8e0c4371af5746fcaf995304b ****/
+		/****** Interface_Static::CDef ******/
+		/****** md5 signature: e75a32f8e0c4371af5746fcaf995304b ******/
 		%feature("compactdefaultargs") CDef;
 		%feature("autodoc", "
 Parameters
@@ -11370,8 +11370,8 @@ Returns a part of the definition of a static, as a cstring the part is designate
 ") CDef;
 		static Standard_CString CDef(Standard_CString name, Standard_CString part);
 
-		/****************** CVal ******************/
-		/**** md5 signature: 78193cb29df4c8b21b9e3de1ba97a96c ****/
+		/****** Interface_Static::CVal ******/
+		/****** md5 signature: 78193cb29df4c8b21b9e3de1ba97a96c ******/
 		%feature("compactdefaultargs") CVal;
 		%feature("autodoc", "
 Parameters
@@ -11388,8 +11388,8 @@ Returns the value of the parameter identified by the string name. if the specifi
 ") CVal;
 		static Standard_CString CVal(Standard_CString name);
 
-		/****************** Family ******************/
-		/**** md5 signature: c69de37306b0fd5e9cf300cae0c2b57b ****/
+		/****** Interface_Static::Family ******/
+		/****** md5 signature: c69de37306b0fd5e9cf300cae0c2b57b ******/
 		%feature("compactdefaultargs") Family;
 		%feature("autodoc", "Return
 -------
@@ -11401,8 +11401,8 @@ Returns the family. it can be: a resource name for applis, an internal name betw
 ") Family;
 		Standard_CString Family();
 
-		/****************** FillMap ******************/
-		/**** md5 signature: 72aec84e532a60d574204def21e2557c ****/
+		/****** Interface_Static::FillMap ******/
+		/****** md5 signature: 72aec84e532a60d574204def21e2557c ******/
 		%feature("compactdefaultargs") FillMap;
 		%feature("autodoc", "
 Parameters
@@ -11419,8 +11419,8 @@ Fills given string-to-string map with all static data.
 ") FillMap;
 		static void FillMap(NCollection_DataMap<TCollection_AsciiString, TCollection_AsciiString> & theMap);
 
-		/****************** IDef ******************/
-		/**** md5 signature: 809047165ba17b6256ca717fd657b669 ****/
+		/****** Interface_Static::IDef ******/
+		/****** md5 signature: 809047165ba17b6256ca717fd657b669 ******/
 		%feature("compactdefaultargs") IDef;
 		%feature("autodoc", "
 Parameters
@@ -11438,8 +11438,8 @@ Returns a part of the definition of a static, as an integer the part is designat
 ") IDef;
 		static Standard_Integer IDef(Standard_CString name, Standard_CString part);
 
-		/****************** IVal ******************/
-		/**** md5 signature: d117b0899e16831696a0625d434eb539 ****/
+		/****** Interface_Static::IVal ******/
+		/****** md5 signature: d117b0899e16831696a0625d434eb539 ******/
 		%feature("compactdefaultargs") IVal;
 		%feature("autodoc", "
 Parameters
@@ -11456,8 +11456,8 @@ Returns the integer value of the translation parameter identified by the string 
 ") IVal;
 		static Standard_Integer IVal(Standard_CString name);
 
-		/****************** Init ******************/
-		/**** md5 signature: 02eb0352d106423d698462902e8b3ea1 ****/
+		/****** Interface_Static::Init ******/
+		/****** md5 signature: 02eb0352d106423d698462902e8b3ea1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11477,8 +11477,8 @@ Declares a new static (by calling its constructor) if this name is already taken
 ") Init;
 		static Standard_Boolean Init(Standard_CString family, Standard_CString name, const Interface_ParamType type, Standard_CString init = "");
 
-		/****************** Init ******************/
-		/**** md5 signature: d38b0a501f52a64fdd63d9f5c82fde52 ****/
+		/****** Interface_Static::Init ******/
+		/****** md5 signature: d38b0a501f52a64fdd63d9f5c82fde52 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -11498,8 +11498,8 @@ As init with paramtype, but type is given as a character this allows a simpler c
 ") Init;
 		static Standard_Boolean Init(Standard_CString family, Standard_CString name, const Standard_Character type, Standard_CString init = "");
 
-		/****************** IsPresent ******************/
-		/**** md5 signature: 739ef9f35758eeccd1fc8c726c993957 ****/
+		/****** Interface_Static::IsPresent ******/
+		/****** md5 signature: 739ef9f35758eeccd1fc8c726c993957 ******/
 		%feature("compactdefaultargs") IsPresent;
 		%feature("autodoc", "
 Parameters
@@ -11516,8 +11516,8 @@ Returns true if a static named <name> is present, false else.
 ") IsPresent;
 		static Standard_Boolean IsPresent(Standard_CString name);
 
-		/****************** IsSet ******************/
-		/**** md5 signature: 7cb64b3795f4342b7c2866fe3401f982 ****/
+		/****** Interface_Static::IsSet ******/
+		/****** md5 signature: 7cb64b3795f4342b7c2866fe3401f982 ******/
 		%feature("compactdefaultargs") IsSet;
 		%feature("autodoc", "
 Parameters
@@ -11535,8 +11535,8 @@ Returns true if <name> is present and set <proper> true (d): considers this item
 ") IsSet;
 		static Standard_Boolean IsSet(Standard_CString name, const Standard_Boolean proper = Standard_True);
 
-		/****************** IsUpdated ******************/
-		/**** md5 signature: 01f4e7e4af28f2ca518f5373d24756bb ****/
+		/****** Interface_Static::IsUpdated ******/
+		/****** md5 signature: 01f4e7e4af28f2ca518f5373d24756bb ******/
 		%feature("compactdefaultargs") IsUpdated;
 		%feature("autodoc", "
 Parameters
@@ -11553,8 +11553,8 @@ Returns the status 'uptodate' from a static returns false if <name> is not prese
 ") IsUpdated;
 		static Standard_Boolean IsUpdated(Standard_CString name);
 
-		/****************** Items ******************/
-		/**** md5 signature: 368d94dc7edec3aecfc9c0963e7a3712 ****/
+		/****** Interface_Static::Items ******/
+		/****** md5 signature: 368d94dc7edec3aecfc9c0963e7a3712 ******/
 		%feature("compactdefaultargs") Items;
 		%feature("autodoc", "
 Parameters
@@ -11572,8 +11572,8 @@ Returns a list of names of statics: <mode> = 0 (d): criter is for family <mode> 
 ") Items;
 		static opencascade::handle<TColStd_HSequenceOfHAsciiString> Items(const Standard_Integer mode = 0, Standard_CString criter = "");
 
-		/****************** PrintStatic ******************/
-		/**** md5 signature: 7f17a7202d6963fb7283a5d0144d0ad0 ****/
+		/****** Interface_Static::PrintStatic ******/
+		/****** md5 signature: 7f17a7202d6963fb7283a5d0144d0ad0 ******/
 		%feature("compactdefaultargs") PrintStatic;
 		%feature("autodoc", "
 Parameters
@@ -11589,8 +11589,8 @@ Writes the properties of a parameter in the diagnostic file. these include: - na
 ") PrintStatic;
 		void PrintStatic(std::ostream &OutValue);
 
-		/****************** RVal ******************/
-		/**** md5 signature: 916bf9a6651fba4b6f0c699767b5c1ed ****/
+		/****** Interface_Static::RVal ******/
+		/****** md5 signature: 916bf9a6651fba4b6f0c699767b5c1ed ******/
 		%feature("compactdefaultargs") RVal;
 		%feature("autodoc", "
 Parameters
@@ -11607,8 +11607,8 @@ Returns the value of a static translation parameter identified by the string nam
 ") RVal;
 		static Standard_Real RVal(Standard_CString name);
 
-		/****************** SetCVal ******************/
-		/**** md5 signature: 0ac37808e24c6befe2c30c23a9b6a3e1 ****/
+		/****** Interface_Static::SetCVal ******/
+		/****** md5 signature: 0ac37808e24c6befe2c30c23a9b6a3e1 ******/
 		%feature("compactdefaultargs") SetCVal;
 		%feature("autodoc", "
 Parameters
@@ -11626,8 +11626,8 @@ Modifies the value of the parameter identified by name. the modification is spec
 ") SetCVal;
 		static Standard_Boolean SetCVal(Standard_CString name, Standard_CString val);
 
-		/****************** SetIVal ******************/
-		/**** md5 signature: a57a08b3c5b23d03ffc49dcd7f055b8f ****/
+		/****** Interface_Static::SetIVal ******/
+		/****** md5 signature: a57a08b3c5b23d03ffc49dcd7f055b8f ******/
 		%feature("compactdefaultargs") SetIVal;
 		%feature("autodoc", "
 Parameters
@@ -11645,8 +11645,8 @@ Modifies the value of the parameter identified by name. the modification is spec
 ") SetIVal;
 		static Standard_Boolean SetIVal(Standard_CString name, const Standard_Integer val);
 
-		/****************** SetRVal ******************/
-		/**** md5 signature: 8c4a79176322045249fd27d78834411f ****/
+		/****** Interface_Static::SetRVal ******/
+		/****** md5 signature: 8c4a79176322045249fd27d78834411f ******/
 		%feature("compactdefaultargs") SetRVal;
 		%feature("autodoc", "
 Parameters
@@ -11664,8 +11664,8 @@ Modifies the value of a translation parameter. false is returned if the paramete
 ") SetRVal;
 		static Standard_Boolean SetRVal(Standard_CString name, const Standard_Real val);
 
-		/****************** SetUptodate ******************/
-		/**** md5 signature: 1cd883d27f7d4764a11bb187e2202572 ****/
+		/****** Interface_Static::SetUptodate ******/
+		/****** md5 signature: 1cd883d27f7d4764a11bb187e2202572 ******/
 		%feature("compactdefaultargs") SetUptodate;
 		%feature("autodoc", "Return
 -------
@@ -11677,8 +11677,8 @@ Records a static has 'uptodate', i.e. its value has been taken into account by a
 ") SetUptodate;
 		void SetUptodate();
 
-		/****************** SetWild ******************/
-		/**** md5 signature: 9fa05e145421691306295c2b3933e593 ****/
+		/****** Interface_Static::SetWild ******/
+		/****** md5 signature: 9fa05e145421691306295c2b3933e593 ******/
 		%feature("compactdefaultargs") SetWild;
 		%feature("autodoc", "
 Parameters
@@ -11695,8 +11695,8 @@ Sets a 'wild-card' static: its value will be considered if <self> is not properl
 ") SetWild;
 		void SetWild(const opencascade::handle<Interface_Static> & wildcard);
 
-		/****************** Standards ******************/
-		/**** md5 signature: d450cedacaedf8ce31e4acf84a376a0e ****/
+		/****** Interface_Static::Standards ******/
+		/****** md5 signature: d450cedacaedf8ce31e4acf84a376a0e ******/
 		%feature("compactdefaultargs") Standards;
 		%feature("autodoc", "Return
 -------
@@ -11708,8 +11708,8 @@ Initializes all standard static parameters, which can be used by every function.
 ") Standards;
 		static void Standards();
 
-		/****************** Static ******************/
-		/**** md5 signature: cec670c3b6ff48920ec19dc08a97c25d ****/
+		/****** Interface_Static::Static ******/
+		/****** md5 signature: cec670c3b6ff48920ec19dc08a97c25d ******/
 		%feature("compactdefaultargs") Static;
 		%feature("autodoc", "
 Parameters
@@ -11726,8 +11726,8 @@ Returns a static from its name. null handle if not present.
 ") Static;
 		static opencascade::handle<Interface_Static> Static(Standard_CString name);
 
-		/****************** Update ******************/
-		/**** md5 signature: 185a217a8a41cc482d0b132448e027b6 ****/
+		/****** Interface_Static::Update ******/
+		/****** md5 signature: 185a217a8a41cc482d0b132448e027b6 ******/
 		%feature("compactdefaultargs") Update;
 		%feature("autodoc", "
 Parameters
@@ -11744,8 +11744,8 @@ Sets a static to be 'uptodate' returns false if <name> is not present this statu
 ") Update;
 		static Standard_Boolean Update(Standard_CString name);
 
-		/****************** UpdatedStatus ******************/
-		/**** md5 signature: 930fc09d937027882f5df9305551114a ****/
+		/****** Interface_Static::UpdatedStatus ******/
+		/****** md5 signature: 930fc09d937027882f5df9305551114a ******/
 		%feature("compactdefaultargs") UpdatedStatus;
 		%feature("autodoc", "Return
 -------
@@ -11757,8 +11757,8 @@ Returns the status 'uptodate'.
 ") UpdatedStatus;
 		Standard_Boolean UpdatedStatus();
 
-		/****************** Wild ******************/
-		/**** md5 signature: 3052e9e89cc7cc0ab4bd29371d719900 ****/
+		/****** Interface_Static::Wild ******/
+		/****** md5 signature: 3052e9e89cc7cc0ab4bd29371d719900 ******/
 		%feature("compactdefaultargs") Wild;
 		%feature("autodoc", "Return
 -------

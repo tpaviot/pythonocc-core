@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define RWMESHDOCSTRING
 "RWMesh module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_rwmesh.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwmesh.html"
 %enddef
 %module (package="OCC.Core", docstring=RWMESHDOCSTRING) RWMesh
 
@@ -196,8 +196,8 @@ typedef NCollection_DataMap<TopoDS_Shape, RWMesh_NodeAttributes, TopTools_ShapeM
 %rename(rwmesh) RWMesh;
 class RWMesh {
 	public:
-		/****************** FormatName ******************/
-		/**** md5 signature: 8863a8ba0a3c5fdbbac0c46aca3d0e43 ****/
+		/****** RWMesh::FormatName ******/
+		/****** md5 signature: 8863a8ba0a3c5fdbbac0c46aca3d0e43 ******/
 		%feature("compactdefaultargs") FormatName;
 		%feature("autodoc", "
 Parameters
@@ -216,8 +216,8 @@ Generate name for specified labels. @param[in] theformat name format to apply @p
 ") FormatName;
 		static TCollection_AsciiString FormatName(RWMesh_NameFormat theFormat, const TDF_Label & theLabel, const TDF_Label & theRefLabel);
 
-		/****************** ReadNameAttribute ******************/
-		/**** md5 signature: aa66f503550211b8a83be1731945c715 ****/
+		/****** RWMesh::ReadNameAttribute ******/
+		/****** md5 signature: aa66f503550211b8a83be1731945c715 ******/
 		%feature("compactdefaultargs") ReadNameAttribute;
 		%feature("autodoc", "
 Parameters
@@ -250,8 +250,8 @@ Read name attribute from label.
 class RWMesh_CafReader : public Standard_Transient {
 	public:
 		class CafDocumentTools {};
-		/****************** CoordinateSystemConverter ******************/
-		/**** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ****/
+		/****** RWMesh_CafReader::CoordinateSystemConverter ******/
+		/****** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ******/
 		%feature("compactdefaultargs") CoordinateSystemConverter;
 		%feature("autodoc", "Return
 -------
@@ -263,8 +263,8 @@ Return coordinate system converter.
 ") CoordinateSystemConverter;
 		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
 
-		/****************** Document ******************/
-		/**** md5 signature: f1ea737a8b05f13f2dfa74b0220b3aaf ****/
+		/****** RWMesh_CafReader::Document ******/
+		/****** md5 signature: f1ea737a8b05f13f2dfa74b0220b3aaf ******/
 		%feature("compactdefaultargs") Document;
 		%feature("autodoc", "Return
 -------
@@ -276,8 +276,8 @@ Return target document.
 ") Document;
 		const opencascade::handle<TDocStd_Document> & Document();
 
-		/****************** ExternalFiles ******************/
-		/**** md5 signature: 1100efdc16f5df4da63f3649f3bae2f1 ****/
+		/****** RWMesh_CafReader::ExternalFiles ******/
+		/****** md5 signature: 1100efdc16f5df4da63f3649f3bae2f1 ******/
 		%feature("compactdefaultargs") ExternalFiles;
 		%feature("autodoc", "Return
 -------
@@ -289,8 +289,8 @@ Return the list of complementary files - external references (textures, data, et
 ") ExternalFiles;
 		const NCollection_IndexedMap<TCollection_AsciiString> & ExternalFiles();
 
-		/****************** ExtraStatus ******************/
-		/**** md5 signature: 4be6e997d4880e0ab8cc27428c8f0f54 ****/
+		/****** RWMesh_CafReader::ExtraStatus ******/
+		/****** md5 signature: 4be6e997d4880e0ab8cc27428c8f0f54 ******/
 		%feature("compactdefaultargs") ExtraStatus;
 		%feature("autodoc", "Return
 -------
@@ -302,8 +302,8 @@ Return extended status flags. @sa rwmesh_cafreaderstatusex enumeration.
 ") ExtraStatus;
 		Standard_Integer ExtraStatus();
 
-		/****************** FileCoordinateSystem ******************/
-		/**** md5 signature: d72ac3620d44fe58451d339df9438e6a ****/
+		/****** RWMesh_CafReader::FileCoordinateSystem ******/
+		/****** md5 signature: d72ac3620d44fe58451d339df9438e6a ******/
 		%feature("compactdefaultargs") FileCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -315,8 +315,8 @@ Return file origin coordinate system; can be undefined, which means no conversio
 ") FileCoordinateSystem;
 		const gp_Ax3 FileCoordinateSystem();
 
-		/****************** FileLengthUnit ******************/
-		/**** md5 signature: 14fd56cee1352d70dddb846bfcfdde08 ****/
+		/****** RWMesh_CafReader::FileLengthUnit ******/
+		/****** md5 signature: 14fd56cee1352d70dddb846bfcfdde08 ******/
 		%feature("compactdefaultargs") FileLengthUnit;
 		%feature("autodoc", "Return
 -------
@@ -328,8 +328,8 @@ Return the length unit to convert from while reading the file, defined as scale 
 ") FileLengthUnit;
 		Standard_Real FileLengthUnit();
 
-		/****************** HasFileCoordinateSystem ******************/
-		/**** md5 signature: da4cd60661aeb88dd4b9cedc5dc152b0 ****/
+		/****** RWMesh_CafReader::HasFileCoordinateSystem ******/
+		/****** md5 signature: da4cd60661aeb88dd4b9cedc5dc152b0 ******/
 		%feature("compactdefaultargs") HasFileCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -341,8 +341,8 @@ Return true if file origin coordinate system has been defined.
 ") HasFileCoordinateSystem;
 		Standard_Boolean HasFileCoordinateSystem();
 
-		/****************** HasSystemCoordinateSystem ******************/
-		/**** md5 signature: b112fe205acda6f2c67c5b6f44fb07f7 ****/
+		/****** RWMesh_CafReader::HasSystemCoordinateSystem ******/
+		/****** md5 signature: b112fe205acda6f2c67c5b6f44fb07f7 ******/
 		%feature("compactdefaultargs") HasSystemCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -354,8 +354,8 @@ Return true if system coordinate system has been defined; false by default.
 ") HasSystemCoordinateSystem;
 		Standard_Boolean HasSystemCoordinateSystem();
 
-		/****************** MemoryLimitMiB ******************/
-		/**** md5 signature: 253eb601a59ae112d72316a149f20351 ****/
+		/****** RWMesh_CafReader::MemoryLimitMiB ******/
+		/****** md5 signature: 253eb601a59ae112d72316a149f20351 ******/
 		%feature("compactdefaultargs") MemoryLimitMiB;
 		%feature("autodoc", "Return
 -------
@@ -367,8 +367,8 @@ Return memory usage limit in mib, -1 by default which means no limit.
 ") MemoryLimitMiB;
 		Standard_Integer MemoryLimitMiB();
 
-		/****************** Metadata ******************/
-		/**** md5 signature: e788e4dbc1ee17e53751666b1c7a1403 ****/
+		/****** RWMesh_CafReader::Metadata ******/
+		/****** md5 signature: e788e4dbc1ee17e53751666b1c7a1403 ******/
 		%feature("compactdefaultargs") Metadata;
 		%feature("autodoc", "Return
 -------
@@ -380,8 +380,8 @@ Return metadata map.
 ") Metadata;
 		const TColStd_IndexedDataMapOfStringString & Metadata();
 
-		/****************** Perform ******************/
-		/**** md5 signature: fb9d26fc55229f4ce3ada0d70bce287b ****/
+		/****** RWMesh_CafReader::Perform ******/
+		/****** md5 signature: fb9d26fc55229f4ce3ada0d70bce287b ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -399,8 +399,8 @@ Open stream and pass it to perform method. the document instance should be set b
 ") Perform;
 		bool Perform(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress);
 
-		/****************** Perform ******************/
-		/**** md5 signature: e74612796e1192fc32457c954904c5a3 ****/
+		/****** RWMesh_CafReader::Perform ******/
+		/****** md5 signature: e74612796e1192fc32457c954904c5a3 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -419,8 +419,8 @@ Read the data from specified file.
 ") Perform;
 		bool Perform(std::istream & theStream, const Message_ProgressRange & theProgress, TCollection_AsciiString theFile = "");
 
-		/****************** ProbeHeader ******************/
-		/**** md5 signature: 62d0d942adff0fd3f5d25c775b2e2dde ****/
+		/****** RWMesh_CafReader::ProbeHeader ******/
+		/****** md5 signature: 62d0d942adff0fd3f5d25c775b2e2dde ******/
 		%feature("compactdefaultargs") ProbeHeader;
 		%feature("autodoc", "
 Parameters
@@ -438,8 +438,8 @@ Open stream and pass it to probeheader method.
 ") ProbeHeader;
 		Standard_Boolean ProbeHeader(TCollection_AsciiString theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** ProbeHeader ******************/
-		/**** md5 signature: 2c51efd9dc4fbfa64c12b5e56a4545c2 ****/
+		/****** RWMesh_CafReader::ProbeHeader ******/
+		/****** md5 signature: 2c51efd9dc4fbfa64c12b5e56a4545c2 ******/
 		%feature("compactdefaultargs") ProbeHeader;
 		%feature("autodoc", "
 Parameters
@@ -458,8 +458,8 @@ Read the header data from specified file without reading entire model. the main 
 ") ProbeHeader;
 		Standard_Boolean ProbeHeader(std::istream & theStream, TCollection_AsciiString theFile = "", const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** RootPrefix ******************/
-		/**** md5 signature: 23690698ed70038f8be604f633be3713 ****/
+		/****** RWMesh_CafReader::RootPrefix ******/
+		/****** md5 signature: 23690698ed70038f8be604f633be3713 ******/
 		%feature("compactdefaultargs") RootPrefix;
 		%feature("autodoc", "Return
 -------
@@ -471,8 +471,8 @@ Return prefix for generating root labels names.
 ") RootPrefix;
 		const TCollection_AsciiString & RootPrefix();
 
-		/****************** SetCoordinateSystemConverter ******************/
-		/**** md5 signature: 8488d2b612c66076826cc33d2ac72536 ****/
+		/****** RWMesh_CafReader::SetCoordinateSystemConverter ******/
+		/****** md5 signature: 8488d2b612c66076826cc33d2ac72536 ******/
 		%feature("compactdefaultargs") SetCoordinateSystemConverter;
 		%feature("autodoc", "
 Parameters
@@ -489,8 +489,8 @@ Set coordinate system converter.
 ") SetCoordinateSystemConverter;
 		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
 
-		/****************** SetDocument ******************/
-		/**** md5 signature: fefb63e21ede613b0177b88e9cb03a5f ****/
+		/****** RWMesh_CafReader::SetDocument ******/
+		/****** md5 signature: fefb63e21ede613b0177b88e9cb03a5f ******/
 		%feature("compactdefaultargs") SetDocument;
 		%feature("autodoc", "
 Parameters
@@ -507,8 +507,8 @@ Set target document. set system length unit according to the units of the docume
 ") SetDocument;
 		void SetDocument(const opencascade::handle<TDocStd_Document> & theDoc);
 
-		/****************** SetFileCoordinateSystem ******************/
-		/**** md5 signature: 5b98d7175d246de57ccdb9b542ea9abf ****/
+		/****** RWMesh_CafReader::SetFileCoordinateSystem ******/
+		/****** md5 signature: 5b98d7175d246de57ccdb9b542ea9abf ******/
 		%feature("compactdefaultargs") SetFileCoordinateSystem;
 		%feature("autodoc", "
 Parameters
@@ -525,8 +525,8 @@ Set (override) file origin coordinate system to perform conversion during read.
 ") SetFileCoordinateSystem;
 		void SetFileCoordinateSystem(const gp_Ax3 & theCS);
 
-		/****************** SetFileCoordinateSystem ******************/
-		/**** md5 signature: 71f77ac32b577862a6651efd59130fc7 ****/
+		/****** RWMesh_CafReader::SetFileCoordinateSystem ******/
+		/****** md5 signature: 71f77ac32b577862a6651efd59130fc7 ******/
 		%feature("compactdefaultargs") SetFileCoordinateSystem;
 		%feature("autodoc", "
 Parameters
@@ -543,8 +543,8 @@ Set (override) file origin coordinate system to perform conversion during read.
 ") SetFileCoordinateSystem;
 		void SetFileCoordinateSystem(RWMesh_CoordinateSystem theCS);
 
-		/****************** SetFileLengthUnit ******************/
-		/**** md5 signature: 24dc22ac228a82196016ff9b95bad737 ****/
+		/****** RWMesh_CafReader::SetFileLengthUnit ******/
+		/****** md5 signature: 24dc22ac228a82196016ff9b95bad737 ******/
 		%feature("compactdefaultargs") SetFileLengthUnit;
 		%feature("autodoc", "
 Parameters
@@ -561,8 +561,8 @@ Set (override) file length units to convert from while reading the file, defined
 ") SetFileLengthUnit;
 		void SetFileLengthUnit(Standard_Real theUnits);
 
-		/****************** SetFillIncompleteDocument ******************/
-		/**** md5 signature: c6d0115c05694466da17a9288ba319c3 ****/
+		/****** RWMesh_CafReader::SetFillIncompleteDocument ******/
+		/****** md5 signature: c6d0115c05694466da17a9288ba319c3 ******/
 		%feature("compactdefaultargs") SetFillIncompleteDocument;
 		%feature("autodoc", "
 Parameters
@@ -579,8 +579,8 @@ Set flag allowing partially read file content to be put into the xde document.
 ") SetFillIncompleteDocument;
 		void SetFillIncompleteDocument(Standard_Boolean theToFillIncomplete);
 
-		/****************** SetMemoryLimitMiB ******************/
-		/**** md5 signature: 8047ea1bc715ccac147f78824b0ea73a ****/
+		/****** RWMesh_CafReader::SetMemoryLimitMiB ******/
+		/****** md5 signature: 8047ea1bc715ccac147f78824b0ea73a ******/
 		%feature("compactdefaultargs") SetMemoryLimitMiB;
 		%feature("autodoc", "
 Parameters
@@ -597,8 +597,8 @@ Set memory usage limit in mib; can be ignored by reader implementation!.
 ") SetMemoryLimitMiB;
 		void SetMemoryLimitMiB(Standard_Integer theLimitMiB);
 
-		/****************** SetRootPrefix ******************/
-		/**** md5 signature: 657f534b70513a001e6c397bdb5a0325 ****/
+		/****** RWMesh_CafReader::SetRootPrefix ******/
+		/****** md5 signature: 657f534b70513a001e6c397bdb5a0325 ******/
 		%feature("compactdefaultargs") SetRootPrefix;
 		%feature("autodoc", "
 Parameters
@@ -615,8 +615,8 @@ Set prefix for generating root labels names.
 ") SetRootPrefix;
 		void SetRootPrefix(TCollection_AsciiString theRootPrefix);
 
-		/****************** SetSystemCoordinateSystem ******************/
-		/**** md5 signature: 7c531314d6e79c5583ab16f29a8c9fcd ****/
+		/****** RWMesh_CafReader::SetSystemCoordinateSystem ******/
+		/****** md5 signature: 7c531314d6e79c5583ab16f29a8c9fcd ******/
 		%feature("compactdefaultargs") SetSystemCoordinateSystem;
 		%feature("autodoc", "
 Parameters
@@ -633,8 +633,8 @@ Set system origin coordinate system to perform conversion into during read.
 ") SetSystemCoordinateSystem;
 		void SetSystemCoordinateSystem(const gp_Ax3 & theCS);
 
-		/****************** SetSystemCoordinateSystem ******************/
-		/**** md5 signature: 133ae23cdde9f78e3a390a09a9d30c98 ****/
+		/****** RWMesh_CafReader::SetSystemCoordinateSystem ******/
+		/****** md5 signature: 133ae23cdde9f78e3a390a09a9d30c98 ******/
 		%feature("compactdefaultargs") SetSystemCoordinateSystem;
 		%feature("autodoc", "
 Parameters
@@ -651,8 +651,8 @@ Set system origin coordinate system to perform conversion into during read.
 ") SetSystemCoordinateSystem;
 		void SetSystemCoordinateSystem(RWMesh_CoordinateSystem theCS);
 
-		/****************** SetSystemLengthUnit ******************/
-		/**** md5 signature: 5f3c8fb3e46edd8048ef8a61eaf32fed ****/
+		/****** RWMesh_CafReader::SetSystemLengthUnit ******/
+		/****** md5 signature: 5f3c8fb3e46edd8048ef8a61eaf32fed ******/
 		%feature("compactdefaultargs") SetSystemLengthUnit;
 		%feature("autodoc", "
 Parameters
@@ -669,8 +669,8 @@ Set system length units to convert into while reading the file, defined as scale
 ") SetSystemLengthUnit;
 		void SetSystemLengthUnit(Standard_Real theUnits);
 
-		/****************** SingleShape ******************/
-		/**** md5 signature: 3346c14111103ab685485d1080bf09aa ****/
+		/****** RWMesh_CafReader::SingleShape ******/
+		/****** md5 signature: 3346c14111103ab685485d1080bf09aa ******/
 		%feature("compactdefaultargs") SingleShape;
 		%feature("autodoc", "Return
 -------
@@ -682,8 +682,8 @@ Return result as a single shape.
 ") SingleShape;
 		TopoDS_Shape SingleShape();
 
-		/****************** SystemCoordinateSystem ******************/
-		/**** md5 signature: ab4cd81dea76d6e81b65de38738c6cac ****/
+		/****** RWMesh_CafReader::SystemCoordinateSystem ******/
+		/****** md5 signature: ab4cd81dea76d6e81b65de38738c6cac ******/
 		%feature("compactdefaultargs") SystemCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -695,8 +695,8 @@ Return system coordinate system; undefined by default, which means that no conve
 ") SystemCoordinateSystem;
 		const gp_Ax3 SystemCoordinateSystem();
 
-		/****************** SystemLengthUnit ******************/
-		/**** md5 signature: 649d8789931f8f7ac327c46ab7779ce6 ****/
+		/****** RWMesh_CafReader::SystemLengthUnit ******/
+		/****** md5 signature: 649d8789931f8f7ac327c46ab7779ce6 ******/
 		%feature("compactdefaultargs") SystemLengthUnit;
 		%feature("autodoc", "Return
 -------
@@ -708,8 +708,8 @@ Return the length unit to convert into while reading the file, defined as scale 
 ") SystemLengthUnit;
 		Standard_Real SystemLengthUnit();
 
-		/****************** ToFillIncompleteDocument ******************/
-		/**** md5 signature: cecf92317828330259cbb2f292c7318f ****/
+		/****** RWMesh_CafReader::ToFillIncompleteDocument ******/
+		/****** md5 signature: cecf92317828330259cbb2f292c7318f ******/
 		%feature("compactdefaultargs") ToFillIncompleteDocument;
 		%feature("autodoc", "Return
 -------
@@ -737,8 +737,8 @@ Flag indicating if partially read file content should be put into the xde docume
 *****************************************/
 class RWMesh_CoordinateSystemConverter {
 	public:
-		/****************** RWMesh_CoordinateSystemConverter ******************/
-		/**** md5 signature: bcb5a19480807e1b0334c5d795c4be59 ****/
+		/****** RWMesh_CoordinateSystemConverter::RWMesh_CoordinateSystemConverter ******/
+		/****** md5 signature: bcb5a19480807e1b0334c5d795c4be59 ******/
 		%feature("compactdefaultargs") RWMesh_CoordinateSystemConverter;
 		%feature("autodoc", "Return
 -------
@@ -750,8 +750,8 @@ Empty constructor.
 ") RWMesh_CoordinateSystemConverter;
 		 RWMesh_CoordinateSystemConverter();
 
-		/****************** HasInputCoordinateSystem ******************/
-		/**** md5 signature: 74c9b0dd8f1c4c5d552747fc4d3ea778 ****/
+		/****** RWMesh_CoordinateSystemConverter::HasInputCoordinateSystem ******/
+		/****** md5 signature: 74c9b0dd8f1c4c5d552747fc4d3ea778 ******/
 		%feature("compactdefaultargs") HasInputCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -763,8 +763,8 @@ Return true if source coordinate system has been set; false by default.
 ") HasInputCoordinateSystem;
 		Standard_Boolean HasInputCoordinateSystem();
 
-		/****************** HasOutputCoordinateSystem ******************/
-		/**** md5 signature: 504c950bf18befad9824436f1fe538e0 ****/
+		/****** RWMesh_CoordinateSystemConverter::HasOutputCoordinateSystem ******/
+		/****** md5 signature: 504c950bf18befad9824436f1fe538e0 ******/
 		%feature("compactdefaultargs") HasOutputCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -776,8 +776,8 @@ Return true if destination coordinate system has been set; false by default.
 ") HasOutputCoordinateSystem;
 		Standard_Boolean HasOutputCoordinateSystem();
 
-		/****************** Init ******************/
-		/**** md5 signature: 2d7f0ece7e5684e591c591cd3a988934 ****/
+		/****** RWMesh_CoordinateSystemConverter::Init ******/
+		/****** md5 signature: 2d7f0ece7e5684e591c591cd3a988934 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -797,8 +797,8 @@ Initialize transformation.
 ") Init;
 		void Init(const gp_Ax3 & theInputSystem, Standard_Real theInputLengthUnit, const gp_Ax3 & theOutputSystem, Standard_Real theOutputLengthUnit);
 
-		/****************** InputCoordinateSystem ******************/
-		/**** md5 signature: 3f7a2866294a453a53ad901a303d263e ****/
+		/****** RWMesh_CoordinateSystemConverter::InputCoordinateSystem ******/
+		/****** md5 signature: 3f7a2866294a453a53ad901a303d263e ******/
 		%feature("compactdefaultargs") InputCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -810,8 +810,8 @@ Source coordinate system; undefined by default.
 ") InputCoordinateSystem;
 		const gp_Ax3 InputCoordinateSystem();
 
-		/****************** InputLengthUnit ******************/
-		/**** md5 signature: e32c18515dffaccbac8950fe43b8f4fa ****/
+		/****** RWMesh_CoordinateSystemConverter::InputLengthUnit ******/
+		/****** md5 signature: e32c18515dffaccbac8950fe43b8f4fa ******/
 		%feature("compactdefaultargs") InputLengthUnit;
 		%feature("autodoc", "Return
 -------
@@ -823,8 +823,8 @@ Return source length units, defined as scale factor to m (meters). -1.0 by defau
 ") InputLengthUnit;
 		Standard_Real InputLengthUnit();
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: d529c07ce9e12eea3222188c82b0e80b ****/
+		/****** RWMesh_CoordinateSystemConverter::IsEmpty ******/
+		/****** md5 signature: d529c07ce9e12eea3222188c82b0e80b ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -836,8 +836,8 @@ Return true if there is no transformation (target and current coordinates system
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** OutputCoordinateSystem ******************/
-		/**** md5 signature: 68af1e5a34cda818e1f3588e3a079334 ****/
+		/****** RWMesh_CoordinateSystemConverter::OutputCoordinateSystem ******/
+		/****** md5 signature: 68af1e5a34cda818e1f3588e3a079334 ******/
 		%feature("compactdefaultargs") OutputCoordinateSystem;
 		%feature("autodoc", "Return
 -------
@@ -849,8 +849,8 @@ Destination coordinate system; undefined by default.
 ") OutputCoordinateSystem;
 		const gp_Ax3 OutputCoordinateSystem();
 
-		/****************** OutputLengthUnit ******************/
-		/**** md5 signature: 0ae119c03ebef2a4d3b8df1aaeb82d1e ****/
+		/****** RWMesh_CoordinateSystemConverter::OutputLengthUnit ******/
+		/****** md5 signature: 0ae119c03ebef2a4d3b8df1aaeb82d1e ******/
 		%feature("compactdefaultargs") OutputLengthUnit;
 		%feature("autodoc", "Return
 -------
@@ -862,8 +862,8 @@ Return destination length units, defined as scale factor to m (meters). -1.0 by 
 ") OutputLengthUnit;
 		Standard_Real OutputLengthUnit();
 
-		/****************** SetInputCoordinateSystem ******************/
-		/**** md5 signature: db01175e9c17f68ee81a4c63910ceefc ****/
+		/****** RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem ******/
+		/****** md5 signature: db01175e9c17f68ee81a4c63910ceefc ******/
 		%feature("compactdefaultargs") SetInputCoordinateSystem;
 		%feature("autodoc", "
 Parameters
@@ -880,8 +880,8 @@ Set source coordinate system.
 ") SetInputCoordinateSystem;
 		void SetInputCoordinateSystem(const gp_Ax3 & theSysFrom);
 
-		/****************** SetInputCoordinateSystem ******************/
-		/**** md5 signature: 74ea6fa24c7089026e44553845424883 ****/
+		/****** RWMesh_CoordinateSystemConverter::SetInputCoordinateSystem ******/
+		/****** md5 signature: 74ea6fa24c7089026e44553845424883 ******/
 		%feature("compactdefaultargs") SetInputCoordinateSystem;
 		%feature("autodoc", "
 Parameters
@@ -898,8 +898,8 @@ Set source coordinate system.
 ") SetInputCoordinateSystem;
 		void SetInputCoordinateSystem(RWMesh_CoordinateSystem theSysFrom);
 
-		/****************** SetInputLengthUnit ******************/
-		/**** md5 signature: 8e0d5c594e5311f5a551042dec14a259 ****/
+		/****** RWMesh_CoordinateSystemConverter::SetInputLengthUnit ******/
+		/****** md5 signature: 8e0d5c594e5311f5a551042dec14a259 ******/
 		%feature("compactdefaultargs") SetInputLengthUnit;
 		%feature("autodoc", "
 Parameters
@@ -916,8 +916,8 @@ Set source length units as scale factor to m (meters).
 ") SetInputLengthUnit;
 		void SetInputLengthUnit(Standard_Real theInputScale);
 
-		/****************** SetOutputCoordinateSystem ******************/
-		/**** md5 signature: de7d4cbdce52865d84d9834d06c3af01 ****/
+		/****** RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem ******/
+		/****** md5 signature: de7d4cbdce52865d84d9834d06c3af01 ******/
 		%feature("compactdefaultargs") SetOutputCoordinateSystem;
 		%feature("autodoc", "
 Parameters
@@ -934,8 +934,8 @@ Set destination coordinate system.
 ") SetOutputCoordinateSystem;
 		void SetOutputCoordinateSystem(const gp_Ax3 & theSysTo);
 
-		/****************** SetOutputCoordinateSystem ******************/
-		/**** md5 signature: ac5577a94bf7ada0d8b3f89d5c80aa73 ****/
+		/****** RWMesh_CoordinateSystemConverter::SetOutputCoordinateSystem ******/
+		/****** md5 signature: ac5577a94bf7ada0d8b3f89d5c80aa73 ******/
 		%feature("compactdefaultargs") SetOutputCoordinateSystem;
 		%feature("autodoc", "
 Parameters
@@ -952,8 +952,8 @@ Set destination coordinate system.
 ") SetOutputCoordinateSystem;
 		void SetOutputCoordinateSystem(RWMesh_CoordinateSystem theSysTo);
 
-		/****************** SetOutputLengthUnit ******************/
-		/**** md5 signature: 9f51cf7920399e3b32715de9cc52e029 ****/
+		/****** RWMesh_CoordinateSystemConverter::SetOutputLengthUnit ******/
+		/****** md5 signature: 9f51cf7920399e3b32715de9cc52e029 ******/
 		%feature("compactdefaultargs") SetOutputLengthUnit;
 		%feature("autodoc", "
 Parameters
@@ -970,8 +970,8 @@ Set destination length units as scale factor to m (meters).
 ") SetOutputLengthUnit;
 		void SetOutputLengthUnit(Standard_Real theOutputScale);
 
-		/****************** StandardCoordinateSystem ******************/
-		/**** md5 signature: 21c5c69c0733e85d1bbad7241f970870 ****/
+		/****** RWMesh_CoordinateSystemConverter::StandardCoordinateSystem ******/
+		/****** md5 signature: 21c5c69c0733e85d1bbad7241f970870 ******/
 		%feature("compactdefaultargs") StandardCoordinateSystem;
 		%feature("autodoc", "
 Parameters
@@ -988,8 +988,8 @@ Return a standard coordinate system definition.
 ") StandardCoordinateSystem;
 		static gp_Ax3 StandardCoordinateSystem(RWMesh_CoordinateSystem theSys);
 
-		/****************** TransformNormal ******************/
-		/**** md5 signature: 717ef79ac0a987c4ab6a07db418749d1 ****/
+		/****** RWMesh_CoordinateSystemConverter::TransformNormal ******/
+		/****** md5 signature: 717ef79ac0a987c4ab6a07db418749d1 ******/
 		%feature("compactdefaultargs") TransformNormal;
 		%feature("autodoc", "
 Parameters
@@ -1006,8 +1006,8 @@ Transform normal (e.g. exclude translation/scale part of transformation).
 ") TransformNormal;
 		void TransformNormal(Graphic3d_Vec3 & theNorm);
 
-		/****************** TransformPosition ******************/
-		/**** md5 signature: 54a90bf495fe9cc8bc5bd66216c1c8df ****/
+		/****** RWMesh_CoordinateSystemConverter::TransformPosition ******/
+		/****** md5 signature: 54a90bf495fe9cc8bc5bd66216c1c8df ******/
 		%feature("compactdefaultargs") TransformPosition;
 		%feature("autodoc", "
 Parameters
@@ -1024,8 +1024,8 @@ Transform position.
 ") TransformPosition;
 		void TransformPosition(gp_XYZ & thePos);
 
-		/****************** TransformTransformation ******************/
-		/**** md5 signature: 41d1b592a031279063eb96769f2c6a5c ****/
+		/****** RWMesh_CoordinateSystemConverter::TransformTransformation ******/
+		/****** md5 signature: 41d1b592a031279063eb96769f2c6a5c ******/
 		%feature("compactdefaultargs") TransformTransformation;
 		%feature("autodoc", "
 Parameters
@@ -1056,8 +1056,8 @@ Transform transformation.
 ****************************/
 class RWMesh_FaceIterator {
 	public:
-		/****************** RWMesh_FaceIterator ******************/
-		/**** md5 signature: 9550d252cfb1a226d1292d60d8012ca5 ****/
+		/****** RWMesh_FaceIterator::RWMesh_FaceIterator ******/
+		/****** md5 signature: 9550d252cfb1a226d1292d60d8012ca5 ******/
 		%feature("compactdefaultargs") RWMesh_FaceIterator;
 		%feature("autodoc", "
 Parameters
@@ -1077,8 +1077,8 @@ Main constructor.
 ") RWMesh_FaceIterator;
 		 RWMesh_FaceIterator(const TDF_Label & theLabel, const TopLoc_Location & theLocation, const Standard_Boolean theToMapColors = false, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
 
-		/****************** RWMesh_FaceIterator ******************/
-		/**** md5 signature: 57b47bb450205e96f4feb877a8606d43 ****/
+		/****** RWMesh_FaceIterator::RWMesh_FaceIterator ******/
+		/****** md5 signature: 57b47bb450205e96f4feb877a8606d43 ******/
 		%feature("compactdefaultargs") RWMesh_FaceIterator;
 		%feature("autodoc", "
 Parameters
@@ -1096,8 +1096,8 @@ Auxiliary constructor.
 ") RWMesh_FaceIterator;
 		 RWMesh_FaceIterator(const TopoDS_Shape & theShape, const XCAFPrs_Style & theStyle = XCAFPrs_Style());
 
-		/****************** ElemLower ******************/
-		/**** md5 signature: 75e86e4f7178164b4c841f30991514ec ****/
+		/****** RWMesh_FaceIterator::ElemLower ******/
+		/****** md5 signature: 75e86e4f7178164b4c841f30991514ec ******/
 		%feature("compactdefaultargs") ElemLower;
 		%feature("autodoc", "Return
 -------
@@ -1109,8 +1109,8 @@ Lower element index in current triangulation.
 ") ElemLower;
 		Standard_Integer ElemLower();
 
-		/****************** ElemUpper ******************/
-		/**** md5 signature: e0dc6bff50b98695db11e36230915b31 ****/
+		/****** RWMesh_FaceIterator::ElemUpper ******/
+		/****** md5 signature: e0dc6bff50b98695db11e36230915b31 ******/
 		%feature("compactdefaultargs") ElemUpper;
 		%feature("autodoc", "Return
 -------
@@ -1122,8 +1122,8 @@ Upper element index in current triangulation.
 ") ElemUpper;
 		Standard_Integer ElemUpper();
 
-		/****************** ExploredShape ******************/
-		/**** md5 signature: c8a47d07240c1a2b5ff731be2f859ced ****/
+		/****** RWMesh_FaceIterator::ExploredShape ******/
+		/****** md5 signature: c8a47d07240c1a2b5ff731be2f859ced ******/
 		%feature("compactdefaultargs") ExploredShape;
 		%feature("autodoc", "Return
 -------
@@ -1135,8 +1135,8 @@ Return explored shape.
 ") ExploredShape;
 		const TopoDS_Shape ExploredShape();
 
-		/****************** Face ******************/
-		/**** md5 signature: 95406b8d0d556c0537e0768c48713f21 ****/
+		/****** RWMesh_FaceIterator::Face ******/
+		/****** md5 signature: 95406b8d0d556c0537e0768c48713f21 ******/
 		%feature("compactdefaultargs") Face;
 		%feature("autodoc", "Return
 -------
@@ -1148,8 +1148,8 @@ Return current face.
 ") Face;
 		const TopoDS_Face Face();
 
-		/****************** FaceColor ******************/
-		/**** md5 signature: 0f3ba9ec202ff58cbc6c3f9b79597b2e ****/
+		/****** RWMesh_FaceIterator::FaceColor ******/
+		/****** md5 signature: 0f3ba9ec202ff58cbc6c3f9b79597b2e ******/
 		%feature("compactdefaultargs") FaceColor;
 		%feature("autodoc", "Return
 -------
@@ -1161,8 +1161,8 @@ Return face color.
 ") FaceColor;
 		const Quantity_ColorRGBA & FaceColor();
 
-		/****************** FaceStyle ******************/
-		/**** md5 signature: d9c862b92cd1be596d93564678cbc76c ****/
+		/****** RWMesh_FaceIterator::FaceStyle ******/
+		/****** md5 signature: d9c862b92cd1be596d93564678cbc76c ******/
 		%feature("compactdefaultargs") FaceStyle;
 		%feature("autodoc", "Return
 -------
@@ -1174,8 +1174,8 @@ Return face material.
 ") FaceStyle;
 		const XCAFPrs_Style & FaceStyle();
 
-		/****************** HasFaceColor ******************/
-		/**** md5 signature: 1c6a60391741d362a0f27578bb7017fc ****/
+		/****** RWMesh_FaceIterator::HasFaceColor ******/
+		/****** md5 signature: 1c6a60391741d362a0f27578bb7017fc ******/
 		%feature("compactdefaultargs") HasFaceColor;
 		%feature("autodoc", "Return
 -------
@@ -1187,8 +1187,8 @@ Return true if face color is set.
 ") HasFaceColor;
 		bool HasFaceColor();
 
-		/****************** HasNormals ******************/
-		/**** md5 signature: cebae9ec3e325d610c43710c6d20c302 ****/
+		/****** RWMesh_FaceIterator::HasNormals ******/
+		/****** md5 signature: cebae9ec3e325d610c43710c6d20c302 ******/
 		%feature("compactdefaultargs") HasNormals;
 		%feature("autodoc", "Return
 -------
@@ -1200,8 +1200,8 @@ Return true if triangulation has defined normals.
 ") HasNormals;
 		bool HasNormals();
 
-		/****************** HasTexCoords ******************/
-		/**** md5 signature: f5f5a85a7931cb9e0f30d5c5519dc79e ****/
+		/****** RWMesh_FaceIterator::HasTexCoords ******/
+		/****** md5 signature: f5f5a85a7931cb9e0f30d5c5519dc79e ******/
 		%feature("compactdefaultargs") HasTexCoords;
 		%feature("autodoc", "Return
 -------
@@ -1213,8 +1213,8 @@ Return true if triangulation has defined normals.
 ") HasTexCoords;
 		bool HasTexCoords();
 
-		/****************** IsEmptyMesh ******************/
-		/**** md5 signature: dca0a5842197db2d84fece9c81db655d ****/
+		/****** RWMesh_FaceIterator::IsEmptyMesh ******/
+		/****** md5 signature: dca0a5842197db2d84fece9c81db655d ******/
 		%feature("compactdefaultargs") IsEmptyMesh;
 		%feature("autodoc", "Return
 -------
@@ -1226,8 +1226,8 @@ Return true if mesh data is defined.
 ") IsEmptyMesh;
 		bool IsEmptyMesh();
 
-		/****************** More ******************/
-		/**** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ****/
+		/****** RWMesh_FaceIterator::More ******/
+		/****** md5 signature: 0a7b505ff53e438121f2c208f8ae7ce8 ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -1239,8 +1239,8 @@ Return true if iterator points to the valid triangulation.
 ") More;
 		bool More();
 
-		/****************** NbNodes ******************/
-		/**** md5 signature: e10a1e755c3c99568fdfec53b6a1d5d1 ****/
+		/****** RWMesh_FaceIterator::NbNodes ******/
+		/****** md5 signature: e10a1e755c3c99568fdfec53b6a1d5d1 ******/
 		%feature("compactdefaultargs") NbNodes;
 		%feature("autodoc", "Return
 -------
@@ -1252,8 +1252,8 @@ Return number of nodes for the current face.
 ") NbNodes;
 		Standard_Integer NbNodes();
 
-		/****************** NbTriangles ******************/
-		/**** md5 signature: 192b02c351e0888abe52f9e1c6139918 ****/
+		/****** RWMesh_FaceIterator::NbTriangles ******/
+		/****** md5 signature: 192b02c351e0888abe52f9e1c6139918 ******/
 		%feature("compactdefaultargs") NbTriangles;
 		%feature("autodoc", "Return
 -------
@@ -1265,8 +1265,8 @@ Return number of elements of specific type for the current face.
 ") NbTriangles;
 		Standard_Integer NbTriangles();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** RWMesh_FaceIterator::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -1278,8 +1278,8 @@ Find next value.
 ") Next;
 		void Next();
 
-		/****************** NodeLower ******************/
-		/**** md5 signature: 9c1d2453f2b6b57ccd1578c46ed1af11 ****/
+		/****** RWMesh_FaceIterator::NodeLower ******/
+		/****** md5 signature: 9c1d2453f2b6b57ccd1578c46ed1af11 ******/
 		%feature("compactdefaultargs") NodeLower;
 		%feature("autodoc", "Return
 -------
@@ -1291,8 +1291,8 @@ Lower node index in current triangulation.
 ") NodeLower;
 		Standard_Integer NodeLower();
 
-		/****************** NodeTexCoord ******************/
-		/**** md5 signature: 80a58af4175663e02d8df9465dceee98 ****/
+		/****** RWMesh_FaceIterator::NodeTexCoord ******/
+		/****** md5 signature: 80a58af4175663e02d8df9465dceee98 ******/
 		%feature("compactdefaultargs") NodeTexCoord;
 		%feature("autodoc", "
 Parameters
@@ -1309,8 +1309,8 @@ Return texture coordinates for the node.
 ") NodeTexCoord;
 		gp_Pnt2d NodeTexCoord(const Standard_Integer theNode);
 
-		/****************** NodeTransformed ******************/
-		/**** md5 signature: 81f4327259dabdfc72b3bb97674f28b1 ****/
+		/****** RWMesh_FaceIterator::NodeTransformed ******/
+		/****** md5 signature: 81f4327259dabdfc72b3bb97674f28b1 ******/
 		%feature("compactdefaultargs") NodeTransformed;
 		%feature("autodoc", "
 Parameters
@@ -1327,8 +1327,8 @@ Return the node with specified index with applied transformation.
 ") NodeTransformed;
 		gp_Pnt NodeTransformed(const Standard_Integer theNode);
 
-		/****************** NodeUpper ******************/
-		/**** md5 signature: 007e5075cdc6bf3db6db43f88a5a868b ****/
+		/****** RWMesh_FaceIterator::NodeUpper ******/
+		/****** md5 signature: 007e5075cdc6bf3db6db43f88a5a868b ******/
 		%feature("compactdefaultargs") NodeUpper;
 		%feature("autodoc", "Return
 -------
@@ -1340,8 +1340,8 @@ Upper node index in current triangulation.
 ") NodeUpper;
 		Standard_Integer NodeUpper();
 
-		/****************** NormalTransformed ******************/
-		/**** md5 signature: 74bb2de6b86a11ea27e4a0cd18412b1e ****/
+		/****** RWMesh_FaceIterator::NormalTransformed ******/
+		/****** md5 signature: 74bb2de6b86a11ea27e4a0cd18412b1e ******/
 		%feature("compactdefaultargs") NormalTransformed;
 		%feature("autodoc", "
 Parameters
@@ -1358,8 +1358,8 @@ Return normal at specified node index with face transformation applied and face 
 ") NormalTransformed;
 		gp_Dir NormalTransformed(Standard_Integer theNode);
 
-		/****************** TriangleOriented ******************/
-		/**** md5 signature: 3e3ba0379e88457ac6cf61dd23f25b99 ****/
+		/****** RWMesh_FaceIterator::TriangleOriented ******/
+		/****** md5 signature: 3e3ba0379e88457ac6cf61dd23f25b99 ******/
 		%feature("compactdefaultargs") TriangleOriented;
 		%feature("autodoc", "
 Parameters
@@ -1376,8 +1376,8 @@ Return triangle with specified index with applied face orientation.
 ") TriangleOriented;
 		Poly_Triangle TriangleOriented(Standard_Integer theElemIndex);
 
-		/****************** Triangulation ******************/
-		/**** md5 signature: 640157cb50c1198f3e4d8cfb1696811e ****/
+		/****** RWMesh_FaceIterator::Triangulation ******/
+		/****** md5 signature: 640157cb50c1198f3e4d8cfb1696811e ******/
 		%feature("compactdefaultargs") Triangulation;
 		%feature("autodoc", "Return
 -------
@@ -1389,8 +1389,8 @@ Return current face triangulation.
 ") Triangulation;
 		const opencascade::handle<Poly_Triangulation> & Triangulation();
 
-		/****************** node ******************/
-		/**** md5 signature: a5ee3d2d51e21f86beeaf53a42ce61c6 ****/
+		/****** RWMesh_FaceIterator::node ******/
+		/****** md5 signature: a5ee3d2d51e21f86beeaf53a42ce61c6 ******/
 		%feature("compactdefaultargs") node;
 		%feature("autodoc", "
 Parameters
@@ -1407,8 +1407,8 @@ Return the node with specified index with applied transformation.
 ") node;
 		gp_Pnt node(const Standard_Integer theNode);
 
-		/****************** normal ******************/
-		/**** md5 signature: 38d3d2a1d856561177d7de28baaf5870 ****/
+		/****** RWMesh_FaceIterator::normal ******/
+		/****** md5 signature: 38d3d2a1d856561177d7de28baaf5870 ******/
 		%feature("compactdefaultargs") normal;
 		%feature("autodoc", "
 Parameters
@@ -1425,8 +1425,8 @@ Return normal at specified node index without face transformation applied.
 ") normal;
 		gp_Dir normal(Standard_Integer theNode);
 
-		/****************** triangle ******************/
-		/**** md5 signature: 3bb468df958d9e6f86f96995f199fc13 ****/
+		/****** RWMesh_FaceIterator::triangle ******/
+		/****** md5 signature: 3bb468df958d9e6f86f96995f199fc13 ******/
 		%feature("compactdefaultargs") triangle;
 		%feature("autodoc", "
 Parameters
@@ -1458,8 +1458,8 @@ Return triangle with specified index.
 %nodefaultctor RWMesh_MaterialMap;
 class RWMesh_MaterialMap : public Standard_Transient {
 	public:
-		/****************** AddMaterial ******************/
-		/**** md5 signature: 0f9190dda4051c96b8f2a967c00a35dd ****/
+		/****** RWMesh_MaterialMap::AddMaterial ******/
+		/****** md5 signature: 0f9190dda4051c96b8f2a967c00a35dd ******/
 		%feature("compactdefaultargs") AddMaterial;
 		%feature("autodoc", "
 Parameters
@@ -1476,8 +1476,8 @@ Register material and return its name identifier.
 ") AddMaterial;
 		virtual TCollection_AsciiString AddMaterial(const XCAFPrs_Style & theStyle);
 
-		/****************** CopyTexture ******************/
-		/**** md5 signature: ee3e4de94e6fb802152cc8dc6e855ea7 ****/
+		/****** RWMesh_MaterialMap::CopyTexture ******/
+		/****** md5 signature: ee3e4de94e6fb802152cc8dc6e855ea7 ******/
 		%feature("compactdefaultargs") CopyTexture;
 		%feature("autodoc", "
 Parameters
@@ -1496,8 +1496,8 @@ Copy and rename texture file to the new location. @param therestexture [out] res
 ") CopyTexture;
 		virtual bool CopyTexture(TCollection_AsciiString & theResTexture, const opencascade::handle<Image_Texture> & theTexture, TCollection_AsciiString theKey);
 
-		/****************** CreateTextureFolder ******************/
-		/**** md5 signature: 322adae0334fbf2be5b65dfb40347f45 ****/
+		/****** RWMesh_MaterialMap::CreateTextureFolder ******/
+		/****** md5 signature: 322adae0334fbf2be5b65dfb40347f45 ******/
 		%feature("compactdefaultargs") CreateTextureFolder;
 		%feature("autodoc", "Return
 -------
@@ -1509,8 +1509,8 @@ Create texture folder 'modelname/textures'; for example: model: path/modelname.g
 ") CreateTextureFolder;
 		virtual bool CreateTextureFolder();
 
-		/****************** DefaultStyle ******************/
-		/**** md5 signature: 0cce26cdd3c825de33af4373c0cf99e8 ****/
+		/****** RWMesh_MaterialMap::DefaultStyle ******/
+		/****** md5 signature: 0cce26cdd3c825de33af4373c0cf99e8 ******/
 		%feature("compactdefaultargs") DefaultStyle;
 		%feature("autodoc", "Return
 -------
@@ -1522,8 +1522,8 @@ Return default material definition to be used for nodes with only color defined.
 ") DefaultStyle;
 		const XCAFPrs_Style & DefaultStyle();
 
-		/****************** DefineMaterial ******************/
-		/**** md5 signature: 7f9586f95701241cc6a6b6f7bad25ebf ****/
+		/****** RWMesh_MaterialMap::DefineMaterial ******/
+		/****** md5 signature: 7f9586f95701241cc6a6b6f7bad25ebf ******/
 		%feature("compactdefaultargs") DefineMaterial;
 		%feature("autodoc", "
 Parameters
@@ -1542,8 +1542,8 @@ Virtual method actually defining the material (e.g. export to the file).
 ") DefineMaterial;
 		virtual void DefineMaterial(const XCAFPrs_Style & theStyle, TCollection_AsciiString theKey, TCollection_AsciiString theName);
 
-		/****************** FindMaterial ******************/
-		/**** md5 signature: 2f57483d42a6c3ddeac51741c6c32190 ****/
+		/****** RWMesh_MaterialMap::FindMaterial ******/
+		/****** md5 signature: 2f57483d42a6c3ddeac51741c6c32190 ******/
 		%feature("compactdefaultargs") FindMaterial;
 		%feature("autodoc", "
 Parameters
@@ -1560,8 +1560,8 @@ Find already registered material.
 ") FindMaterial;
 		TCollection_AsciiString FindMaterial(const XCAFPrs_Style & theStyle);
 
-		/****************** IsFailed ******************/
-		/**** md5 signature: 45d22ff81d4ca76a797a854e31d3557a ****/
+		/****** RWMesh_MaterialMap::IsFailed ******/
+		/****** md5 signature: 45d22ff81d4ca76a797a854e31d3557a ******/
 		%feature("compactdefaultargs") IsFailed;
 		%feature("autodoc", "Return
 -------
@@ -1573,8 +1573,8 @@ Return failed flag.
 ") IsFailed;
 		bool IsFailed();
 
-		/****************** SetDefaultStyle ******************/
-		/**** md5 signature: 69b73a5756eee96becb5ddbe7670a837 ****/
+		/****** RWMesh_MaterialMap::SetDefaultStyle ******/
+		/****** md5 signature: 69b73a5756eee96becb5ddbe7670a837 ******/
 		%feature("compactdefaultargs") SetDefaultStyle;
 		%feature("autodoc", "
 Parameters
@@ -1627,8 +1627,8 @@ class RWMesh_NodeAttributes {
 class RWMesh_TriangulationReader : public Standard_Transient {
 	public:
 		class LoadingStatistic {};
-		/****************** CoordinateSystemConverter ******************/
-		/**** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ****/
+		/****** RWMesh_TriangulationReader::CoordinateSystemConverter ******/
+		/****** md5 signature: ab88d1bd4b71da58aa0d6253db43d797 ******/
 		%feature("compactdefaultargs") CoordinateSystemConverter;
 		%feature("autodoc", "Return
 -------
@@ -1640,8 +1640,8 @@ Returns coordinate system converter using for correct data loading.
 ") CoordinateSystemConverter;
 		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
 
-		/****************** FileName ******************/
-		/**** md5 signature: dcea16627fbfa6bf9869d62bc863af8e ****/
+		/****** RWMesh_TriangulationReader::FileName ******/
+		/****** md5 signature: dcea16627fbfa6bf9869d62bc863af8e ******/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "Return
 -------
@@ -1653,8 +1653,8 @@ Returns file name for reporting issues.
 ") FileName;
 		const TCollection_AsciiString & FileName();
 
-		/****************** IsDoublePrecision ******************/
-		/**** md5 signature: c768d26054fe7836c133ffb1451dd7cd ****/
+		/****** RWMesh_TriangulationReader::IsDoublePrecision ******/
+		/****** md5 signature: c768d26054fe7836c133ffb1451dd7cd ******/
 		%feature("compactdefaultargs") IsDoublePrecision;
 		%feature("autodoc", "Return
 -------
@@ -1666,8 +1666,8 @@ Returns flag to fill in triangulation using double or single precision; false by
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
-		/****************** Load ******************/
-		/**** md5 signature: 6ef3f09c92594cbd8fa638ca01586c5d ****/
+		/****** RWMesh_TriangulationReader::Load ******/
+		/****** md5 signature: 6ef3f09c92594cbd8fa638ca01586c5d ******/
 		%feature("compactdefaultargs") Load;
 		%feature("autodoc", "
 Parameters
@@ -1686,8 +1686,8 @@ Loads primitive array.
 ") Load;
 		bool Load(const opencascade::handle<RWMesh_TriangulationSource> & theSourceMesh, const opencascade::handle<Poly_Triangulation> & theDestMesh, const opencascade::handle<OSD_FileSystem> & theFileSystem);
 
-		/****************** PrintStatistic ******************/
-		/**** md5 signature: 4491817941f6da0eae292263140d0469 ****/
+		/****** RWMesh_TriangulationReader::PrintStatistic ******/
+		/****** md5 signature: 4491817941f6da0eae292263140d0469 ******/
 		%feature("compactdefaultargs") PrintStatistic;
 		%feature("autodoc", "Return
 -------
@@ -1699,8 +1699,8 @@ Prints loading statistic. this method should be used between startstatistic() an
 ") PrintStatistic;
 		void PrintStatistic();
 
-		/****************** SetCoordinateSystemConverter ******************/
-		/**** md5 signature: 8488d2b612c66076826cc33d2ac72536 ****/
+		/****** RWMesh_TriangulationReader::SetCoordinateSystemConverter ******/
+		/****** md5 signature: 8488d2b612c66076826cc33d2ac72536 ******/
 		%feature("compactdefaultargs") SetCoordinateSystemConverter;
 		%feature("autodoc", "
 Parameters
@@ -1717,8 +1717,8 @@ Sets coordinate system converter.
 ") SetCoordinateSystemConverter;
 		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
 
-		/****************** SetDoublePrecision ******************/
-		/**** md5 signature: 2fee9d611d346cc1324a9f63e1c71f99 ****/
+		/****** RWMesh_TriangulationReader::SetDoublePrecision ******/
+		/****** md5 signature: 2fee9d611d346cc1324a9f63e1c71f99 ******/
 		%feature("compactdefaultargs") SetDoublePrecision;
 		%feature("autodoc", "
 Parameters
@@ -1735,8 +1735,8 @@ Sets flag to fill in triangulation using double or single precision.
 ") SetDoublePrecision;
 		void SetDoublePrecision(bool theIsDouble);
 
-		/****************** SetFileName ******************/
-		/**** md5 signature: 422e5cf48ba6ffc1d4cf82f2fe6d97c2 ****/
+		/****** RWMesh_TriangulationReader::SetFileName ******/
+		/****** md5 signature: 422e5cf48ba6ffc1d4cf82f2fe6d97c2 ******/
 		%feature("compactdefaultargs") SetFileName;
 		%feature("autodoc", "
 Parameters
@@ -1753,8 +1753,8 @@ Sets file name for reporting issues.
 ") SetFileName;
 		void SetFileName(TCollection_AsciiString theFileName);
 
-		/****************** SetToPrintDebugMessages ******************/
-		/**** md5 signature: dcbcbd79fdeab4f6976a1573fd9e5905 ****/
+		/****** RWMesh_TriangulationReader::SetToPrintDebugMessages ******/
+		/****** md5 signature: dcbcbd79fdeab4f6976a1573fd9e5905 ******/
 		%feature("compactdefaultargs") SetToPrintDebugMessages;
 		%feature("autodoc", "
 Parameters
@@ -1771,8 +1771,8 @@ Sets flag to print debug information.
 ") SetToPrintDebugMessages;
 		void SetToPrintDebugMessages(const Standard_Boolean theToPrint);
 
-		/****************** SetToSkipDegenerates ******************/
-		/**** md5 signature: 8f2eee3a91d34501a755dd28a3a30824 ****/
+		/****** RWMesh_TriangulationReader::SetToSkipDegenerates ******/
+		/****** md5 signature: 8f2eee3a91d34501a755dd28a3a30824 ******/
 		%feature("compactdefaultargs") SetToSkipDegenerates;
 		%feature("autodoc", "
 Parameters
@@ -1789,8 +1789,8 @@ Sets flag to skip degenerated triangles during mesh loading (only indexes will b
 ") SetToSkipDegenerates;
 		void SetToSkipDegenerates(const Standard_Boolean theToSkip);
 
-		/****************** StartStatistic ******************/
-		/**** md5 signature: a4bdfbb69ed74092a59b8aa233aedc5d ****/
+		/****** RWMesh_TriangulationReader::StartStatistic ******/
+		/****** md5 signature: a4bdfbb69ed74092a59b8aa233aedc5d ******/
 		%feature("compactdefaultargs") StartStatistic;
 		%feature("autodoc", "Return
 -------
@@ -1802,8 +1802,8 @@ Starts and reset internal object that accumulates nodes/triangles statistic duri
 ") StartStatistic;
 		void StartStatistic();
 
-		/****************** StopStatistic ******************/
-		/**** md5 signature: e3418ba02f31976af952ec885530e742 ****/
+		/****** RWMesh_TriangulationReader::StopStatistic ******/
+		/****** md5 signature: e3418ba02f31976af952ec885530e742 ******/
 		%feature("compactdefaultargs") StopStatistic;
 		%feature("autodoc", "Return
 -------
@@ -1815,8 +1815,8 @@ Stops and nullify internal object that accumulates nodes/triangles statistic dur
 ") StopStatistic;
 		void StopStatistic();
 
-		/****************** ToPrintDebugMessages ******************/
-		/**** md5 signature: 1ba8100a86ab6979545a37ba8507ce50 ****/
+		/****** RWMesh_TriangulationReader::ToPrintDebugMessages ******/
+		/****** md5 signature: 1ba8100a86ab6979545a37ba8507ce50 ******/
 		%feature("compactdefaultargs") ToPrintDebugMessages;
 		%feature("autodoc", "Return
 -------
@@ -1828,8 +1828,8 @@ Returns true if additional debug information should be print.
 ") ToPrintDebugMessages;
 		Standard_Boolean ToPrintDebugMessages();
 
-		/****************** ToSkipDegenerates ******************/
-		/**** md5 signature: 845530fc6fd2f6c43fcb01ed299e2914 ****/
+		/****** RWMesh_TriangulationReader::ToSkipDegenerates ******/
+		/****** md5 signature: 845530fc6fd2f6c43fcb01ed299e2914 ******/
 		%feature("compactdefaultargs") ToSkipDegenerates;
 		%feature("autodoc", "Return
 -------
@@ -1857,8 +1857,8 @@ Returns true if degenerated triangles should be skipped during mesh loading (onl
 ***********************************/
 class RWMesh_TriangulationSource : public Poly_Triangulation {
 	public:
-		/****************** RWMesh_TriangulationSource ******************/
-		/**** md5 signature: 4fb10652420e0d188c26defed2334454 ****/
+		/****** RWMesh_TriangulationSource::RWMesh_TriangulationSource ******/
+		/****** md5 signature: 4fb10652420e0d188c26defed2334454 ******/
 		%feature("compactdefaultargs") RWMesh_TriangulationSource;
 		%feature("autodoc", "Return
 -------
@@ -1883,8 +1883,8 @@ Constructor.
             $self->ChangeDegeneratedTriNb()=value;
             }
         };
-		/****************** DegeneratedTriNb ******************/
-		/**** md5 signature: 2a1611183102606c75dc3b897f8870c1 ****/
+		/****** RWMesh_TriangulationSource::DegeneratedTriNb ******/
+		/****** md5 signature: 2a1611183102606c75dc3b897f8870c1 ******/
 		%feature("compactdefaultargs") DegeneratedTriNb;
 		%feature("autodoc", "Return
 -------
@@ -1896,8 +1896,8 @@ Returns number of degenerated triangles collected during data reading. used for 
 ") DegeneratedTriNb;
 		Standard_Integer DegeneratedTriNb();
 
-		/****************** NbDeferredNodes ******************/
-		/**** md5 signature: d15a5896fc85a8c93365e1d85513fbb0 ****/
+		/****** RWMesh_TriangulationSource::NbDeferredNodes ******/
+		/****** md5 signature: d15a5896fc85a8c93365e1d85513fbb0 ******/
 		%feature("compactdefaultargs") NbDeferredNodes;
 		%feature("autodoc", "Return
 -------
@@ -1909,8 +1909,8 @@ Returns number of nodes for deferred loading. note: this is estimated values def
 ") NbDeferredNodes;
 		virtual Standard_Integer NbDeferredNodes();
 
-		/****************** NbDeferredTriangles ******************/
-		/**** md5 signature: 8c345ed875feecf632ebb9c62ff9481f ****/
+		/****** RWMesh_TriangulationSource::NbDeferredTriangles ******/
+		/****** md5 signature: 8c345ed875feecf632ebb9c62ff9481f ******/
 		%feature("compactdefaultargs") NbDeferredTriangles;
 		%feature("autodoc", "Return
 -------
@@ -1922,8 +1922,8 @@ Returns number of triangles for deferred loading. note: this is estimated values
 ") NbDeferredTriangles;
 		virtual Standard_Integer NbDeferredTriangles();
 
-		/****************** Reader ******************/
-		/**** md5 signature: 6ae7cdc70d1eaea13f56fb1f778f493a ****/
+		/****** RWMesh_TriangulationSource::Reader ******/
+		/****** md5 signature: 6ae7cdc70d1eaea13f56fb1f778f493a ******/
 		%feature("compactdefaultargs") Reader;
 		%feature("autodoc", "Return
 -------
@@ -1935,8 +1935,8 @@ Returns reader allowing to read data from the buffer.
 ") Reader;
 		const opencascade::handle<RWMesh_TriangulationReader> & Reader();
 
-		/****************** SetNbDeferredNodes ******************/
-		/**** md5 signature: 613e9c73fcbbe299958e31da2d3bf9b1 ****/
+		/****** RWMesh_TriangulationSource::SetNbDeferredNodes ******/
+		/****** md5 signature: 613e9c73fcbbe299958e31da2d3bf9b1 ******/
 		%feature("compactdefaultargs") SetNbDeferredNodes;
 		%feature("autodoc", "
 Parameters
@@ -1953,8 +1953,8 @@ Sets number of nodes for deferred loading.
 ") SetNbDeferredNodes;
 		void SetNbDeferredNodes(const Standard_Integer theNbNodes);
 
-		/****************** SetNbDeferredTriangles ******************/
-		/**** md5 signature: 4c754aa29da9094529581631690e3ff2 ****/
+		/****** RWMesh_TriangulationSource::SetNbDeferredTriangles ******/
+		/****** md5 signature: 4c754aa29da9094529581631690e3ff2 ******/
 		%feature("compactdefaultargs") SetNbDeferredTriangles;
 		%feature("autodoc", "
 Parameters
@@ -1971,8 +1971,8 @@ Sets number of triangles for deferred loading.
 ") SetNbDeferredTriangles;
 		void SetNbDeferredTriangles(const Standard_Integer theNbTris);
 
-		/****************** SetReader ******************/
-		/**** md5 signature: 9528188554fe70d155ea3d7fb58dcd0f ****/
+		/****** RWMesh_TriangulationSource::SetReader ******/
+		/****** md5 signature: 9528188554fe70d155ea3d7fb58dcd0f ******/
 		%feature("compactdefaultargs") SetReader;
 		%feature("autodoc", "
 Parameters

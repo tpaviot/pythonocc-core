@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define FSDDOCSTRING
 "FSD module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_fsd.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_fsd.html"
 %enddef
 %module (package="OCC.Core", docstring=FSDDOCSTRING) FSD
 

@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define TRANSFERDOCSTRING
 "Transfer module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_transfer.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_transfer.html"
 %enddef
 %module (package="OCC.Core", docstring=TRANSFERDOCSTRING) Transfer
 
@@ -182,8 +182,8 @@ typedef NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, open
 *****************************************/
 class Transfer_ActorOfProcessForFinder : public Standard_Transient {
 	public:
-		/****************** Transfer_ActorOfProcessForFinder ******************/
-		/**** md5 signature: 8e6c984da83716454314603871cb104a ****/
+		/****** Transfer_ActorOfProcessForFinder::Transfer_ActorOfProcessForFinder ******/
+		/****** md5 signature: 8e6c984da83716454314603871cb104a ******/
 		%feature("compactdefaultargs") Transfer_ActorOfProcessForFinder;
 		%feature("autodoc", "Return
 -------
@@ -195,8 +195,8 @@ No available documentation.
 ") Transfer_ActorOfProcessForFinder;
 		 Transfer_ActorOfProcessForFinder();
 
-		/****************** IsLast ******************/
-		/**** md5 signature: c5c02b95e7fdc27ff10e50bea8a37dfe ****/
+		/****** Transfer_ActorOfProcessForFinder::IsLast ******/
+		/****** md5 signature: c5c02b95e7fdc27ff10e50bea8a37dfe ******/
 		%feature("compactdefaultargs") IsLast;
 		%feature("autodoc", "Return
 -------
@@ -208,8 +208,8 @@ Returns the last status (see setlast).
 ") IsLast;
 		Standard_Boolean IsLast();
 
-		/****************** Next ******************/
-		/**** md5 signature: c935e6de5132ead936cbe353d0cb562b ****/
+		/****** Transfer_ActorOfProcessForFinder::Next ******/
+		/****** md5 signature: c935e6de5132ead936cbe353d0cb562b ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -221,8 +221,8 @@ Returns the actor defined as next, or a null handle.
 ") Next;
 		opencascade::handle<Transfer_ActorOfProcessForFinder> Next();
 
-		/****************** NullResult ******************/
-		/**** md5 signature: e02ea99a7200cf4f954ac79146fe413f ****/
+		/****** Transfer_ActorOfProcessForFinder::NullResult ******/
+		/****** md5 signature: e02ea99a7200cf4f954ac79146fe413f ******/
 		%feature("compactdefaultargs") NullResult;
 		%feature("autodoc", "Return
 -------
@@ -234,8 +234,8 @@ Returns a binder for no result, i.e. a null handle.
 ") NullResult;
 		opencascade::handle<Transfer_Binder> NullResult();
 
-		/****************** Recognize ******************/
-		/**** md5 signature: fdda053250b90625a3b286b329acd0e6 ****/
+		/****** Transfer_ActorOfProcessForFinder::Recognize ******/
+		/****** md5 signature: fdda053250b90625a3b286b329acd0e6 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -252,8 +252,8 @@ Prerequesite for transfer: the method transfer is called on a starting object on
 ") Recognize;
 		virtual Standard_Boolean Recognize(const opencascade::handle<Transfer_Finder> & start);
 
-		/****************** SetLast ******************/
-		/**** md5 signature: b98430590a856b85daea77920383b716 ****/
+		/****** Transfer_ActorOfProcessForFinder::SetLast ******/
+		/****** md5 signature: b98430590a856b85daea77920383b716 ******/
 		%feature("compactdefaultargs") SetLast;
 		%feature("autodoc", "
 Parameters
@@ -270,8 +270,8 @@ If <mode> is true, commands an actor to be set at the end of the list of actors 
 ") SetLast;
 		void SetLast(const Standard_Boolean mode = Standard_True);
 
-		/****************** SetNext ******************/
-		/**** md5 signature: 357d6d80d1ea70ffb9e7f1d5ca7255ac ****/
+		/****** Transfer_ActorOfProcessForFinder::SetNext ******/
+		/****** md5 signature: 357d6d80d1ea70ffb9e7f1d5ca7255ac ******/
 		%feature("compactdefaultargs") SetNext;
 		%feature("autodoc", "
 Parameters
@@ -288,8 +288,8 @@ Defines a next actor: it can then be asked to work if <self> produces no result 
 ") SetNext;
 		void SetNext(const opencascade::handle<Transfer_ActorOfProcessForFinder> & next);
 
-		/****************** Transferring ******************/
-		/**** md5 signature: 4f53e5d5a83d9867599cfcf49344ee90 ****/
+		/****** Transfer_ActorOfProcessForFinder::Transferring ******/
+		/****** md5 signature: 4f53e5d5a83d9867599cfcf49344ee90 ******/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "
 Parameters
@@ -308,8 +308,8 @@ Specific action of transfer. the result is stored in the returned binder, or a n
 ") Transferring;
 		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_ProcessForFinder> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransientResult ******************/
-		/**** md5 signature: 3c41d78d1eebeee46ad3f1cb847559e1 ****/
+		/****** Transfer_ActorOfProcessForFinder::TransientResult ******/
+		/****** md5 signature: 3c41d78d1eebeee46ad3f1cb847559e1 ******/
 		%feature("compactdefaultargs") TransientResult;
 		%feature("autodoc", "
 Parameters
@@ -342,8 +342,8 @@ Prepares and returns a binder for a transient result returns a null handle if <r
 ********************************************/
 class Transfer_ActorOfProcessForTransient : public Standard_Transient {
 	public:
-		/****************** Transfer_ActorOfProcessForTransient ******************/
-		/**** md5 signature: 14c09063d9885c017e3c05b3cc26bdaf ****/
+		/****** Transfer_ActorOfProcessForTransient::Transfer_ActorOfProcessForTransient ******/
+		/****** md5 signature: 14c09063d9885c017e3c05b3cc26bdaf ******/
 		%feature("compactdefaultargs") Transfer_ActorOfProcessForTransient;
 		%feature("autodoc", "Return
 -------
@@ -355,8 +355,8 @@ No available documentation.
 ") Transfer_ActorOfProcessForTransient;
 		 Transfer_ActorOfProcessForTransient();
 
-		/****************** IsLast ******************/
-		/**** md5 signature: c5c02b95e7fdc27ff10e50bea8a37dfe ****/
+		/****** Transfer_ActorOfProcessForTransient::IsLast ******/
+		/****** md5 signature: c5c02b95e7fdc27ff10e50bea8a37dfe ******/
 		%feature("compactdefaultargs") IsLast;
 		%feature("autodoc", "Return
 -------
@@ -368,8 +368,8 @@ Returns the last status (see setlast).
 ") IsLast;
 		Standard_Boolean IsLast();
 
-		/****************** Next ******************/
-		/**** md5 signature: e73b87337282519405d29c4bddc4ab4d ****/
+		/****** Transfer_ActorOfProcessForTransient::Next ******/
+		/****** md5 signature: e73b87337282519405d29c4bddc4ab4d ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -381,8 +381,8 @@ Returns the actor defined as next, or a null handle.
 ") Next;
 		opencascade::handle<Transfer_ActorOfProcessForTransient> Next();
 
-		/****************** NullResult ******************/
-		/**** md5 signature: e02ea99a7200cf4f954ac79146fe413f ****/
+		/****** Transfer_ActorOfProcessForTransient::NullResult ******/
+		/****** md5 signature: e02ea99a7200cf4f954ac79146fe413f ******/
 		%feature("compactdefaultargs") NullResult;
 		%feature("autodoc", "Return
 -------
@@ -394,8 +394,8 @@ Returns a binder for no result, i.e. a null handle.
 ") NullResult;
 		opencascade::handle<Transfer_Binder> NullResult();
 
-		/****************** Recognize ******************/
-		/**** md5 signature: 21881fa70b6757786f78e5a92965e2c1 ****/
+		/****** Transfer_ActorOfProcessForTransient::Recognize ******/
+		/****** md5 signature: 21881fa70b6757786f78e5a92965e2c1 ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -412,8 +412,8 @@ Prerequesite for transfer: the method transfer is called on a starting object on
 ") Recognize;
 		virtual Standard_Boolean Recognize(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** SetLast ******************/
-		/**** md5 signature: b98430590a856b85daea77920383b716 ****/
+		/****** Transfer_ActorOfProcessForTransient::SetLast ******/
+		/****** md5 signature: b98430590a856b85daea77920383b716 ******/
 		%feature("compactdefaultargs") SetLast;
 		%feature("autodoc", "
 Parameters
@@ -430,8 +430,8 @@ If <mode> is true, commands an actor to be set at the end of the list of actors 
 ") SetLast;
 		void SetLast(const Standard_Boolean mode = Standard_True);
 
-		/****************** SetNext ******************/
-		/**** md5 signature: 422e503b43f8cad5eb719b8bdd24baf2 ****/
+		/****** Transfer_ActorOfProcessForTransient::SetNext ******/
+		/****** md5 signature: 422e503b43f8cad5eb719b8bdd24baf2 ******/
 		%feature("compactdefaultargs") SetNext;
 		%feature("autodoc", "
 Parameters
@@ -448,8 +448,8 @@ Defines a next actor: it can then be asked to work if <self> produces no result 
 ") SetNext;
 		void SetNext(const opencascade::handle<Transfer_ActorOfProcessForTransient> & next);
 
-		/****************** Transferring ******************/
-		/**** md5 signature: e31455ac7db7ffccb1c6d0fa5dff964e ****/
+		/****** Transfer_ActorOfProcessForTransient::Transferring ******/
+		/****** md5 signature: e31455ac7db7ffccb1c6d0fa5dff964e ******/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "
 Parameters
@@ -468,8 +468,8 @@ Specific action of transfer. the result is stored in the returned binder, or a n
 ") Transferring;
 		virtual opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_ProcessForTransient> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransientResult ******************/
-		/**** md5 signature: 3c41d78d1eebeee46ad3f1cb847559e1 ****/
+		/****** Transfer_ActorOfProcessForTransient::TransientResult ******/
+		/****** md5 signature: 3c41d78d1eebeee46ad3f1cb847559e1 ******/
 		%feature("compactdefaultargs") TransientResult;
 		%feature("autodoc", "
 Parameters
@@ -503,8 +503,8 @@ Prepares and returns a binder for a transient result returns a null handle if <r
 %nodefaultctor Transfer_Binder;
 class Transfer_Binder : public Standard_Transient {
 	public:
-		/****************** AddFail ******************/
-		/**** md5 signature: 4da0304d0675e0e43eeeae8a464c5cc0 ****/
+		/****** Transfer_Binder::AddFail ******/
+		/****** md5 signature: 4da0304d0675e0e43eeeae8a464c5cc0 ******/
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "
 Parameters
@@ -522,8 +522,8 @@ Used to declare an individual transfer as being erroneous (status is set to void
 ") AddFail;
 		void AddFail(Standard_CString mess, Standard_CString orig = "");
 
-		/****************** AddResult ******************/
-		/**** md5 signature: c4d1dbf3cde88d1c0fe97dd4e1b160db ****/
+		/****** Transfer_Binder::AddResult ******/
+		/****** md5 signature: c4d1dbf3cde88d1c0fe97dd4e1b160db ******/
 		%feature("compactdefaultargs") AddResult;
 		%feature("autodoc", "
 Parameters
@@ -540,8 +540,8 @@ Adds a next result (at the end of the list) remark: this information is not proc
 ") AddResult;
 		void AddResult(const opencascade::handle<Transfer_Binder> & next);
 
-		/****************** AddWarning ******************/
-		/**** md5 signature: 7b0d842b79cba19dac8910421687d46e ****/
+		/****** Transfer_Binder::AddWarning ******/
+		/****** md5 signature: 7b0d842b79cba19dac8910421687d46e ******/
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "
 Parameters
@@ -559,8 +559,8 @@ Used to attach a warning message to an individual transfer it has no effect on t
 ") AddWarning;
 		void AddWarning(Standard_CString mess, Standard_CString orig = "");
 
-		/****************** CCheck ******************/
-		/**** md5 signature: 25f912471be6d6189472b3728ee8c8a0 ****/
+		/****** Transfer_Binder::CCheck ******/
+		/****** md5 signature: 25f912471be6d6189472b3728ee8c8a0 ******/
 		%feature("compactdefaultargs") CCheck;
 		%feature("autodoc", "Return
 -------
@@ -572,8 +572,8 @@ Returns check which stores fail messages, in order to modify it (adding messages
 ") CCheck;
 		opencascade::handle<Interface_Check> CCheck();
 
-		/****************** Check ******************/
-		/**** md5 signature: b324f0f5184c97d14308315ce8d6a533 ****/
+		/****** Transfer_Binder::Check ******/
+		/****** md5 signature: b324f0f5184c97d14308315ce8d6a533 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "Return
 -------
@@ -585,8 +585,8 @@ Returns check which stores fail messages note that no entity is associated in th
 ") Check;
 		const opencascade::handle<Interface_Check> Check();
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** Transfer_Binder::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -598,8 +598,8 @@ Returns true if a result is available (statusresult = defined) a unique result w
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** IsMultiple ******************/
-		/**** md5 signature: f7265f4dd0181907775998b527ac0435 ****/
+		/****** Transfer_Binder::IsMultiple ******/
+		/****** md5 signature: f7265f4dd0181907775998b527ac0435 ******/
 		%feature("compactdefaultargs") IsMultiple;
 		%feature("autodoc", "Return
 -------
@@ -611,8 +611,8 @@ Returns true if a binder has several results, either by itself or because it has
 ") IsMultiple;
 		virtual Standard_Boolean IsMultiple();
 
-		/****************** Merge ******************/
-		/**** md5 signature: 1b8206ff75c870ea0eb335e4e9e261f2 ****/
+		/****** Transfer_Binder::Merge ******/
+		/****** md5 signature: 1b8206ff75c870ea0eb335e4e9e261f2 ******/
 		%feature("compactdefaultargs") Merge;
 		%feature("autodoc", "
 Parameters
@@ -629,8 +629,8 @@ Merges basic data (check, execstatus) from another binder but keeps its result. 
 ") Merge;
 		void Merge(const opencascade::handle<Transfer_Binder> & other);
 
-		/****************** NextResult ******************/
-		/**** md5 signature: 9348b6e94723731bdfd7369e364da734 ****/
+		/****** Transfer_Binder::NextResult ******/
+		/****** md5 signature: 9348b6e94723731bdfd7369e364da734 ******/
 		%feature("compactdefaultargs") NextResult;
 		%feature("autodoc", "Return
 -------
@@ -642,8 +642,8 @@ Returns the next result, null if none.
 ") NextResult;
 		opencascade::handle<Transfer_Binder> NextResult();
 
-		/****************** ResultType ******************/
-		/**** md5 signature: ab5fb57ad3f62d92bd05bdc8355cd533 ****/
+		/****** Transfer_Binder::ResultType ******/
+		/****** md5 signature: ab5fb57ad3f62d92bd05bdc8355cd533 ******/
 		%feature("compactdefaultargs") ResultType;
 		%feature("autodoc", "Return
 -------
@@ -655,8 +655,8 @@ Returns the type which characterizes the result (if known).
 ") ResultType;
 		virtual opencascade::handle<Standard_Type> ResultType();
 
-		/****************** ResultTypeName ******************/
-		/**** md5 signature: 38fba6b08ecfdb5389d6ec3483bf3d6b ****/
+		/****** Transfer_Binder::ResultTypeName ******/
+		/****** md5 signature: 38fba6b08ecfdb5389d6ec3483bf3d6b ******/
 		%feature("compactdefaultargs") ResultTypeName;
 		%feature("autodoc", "Return
 -------
@@ -668,8 +668,8 @@ Returns the name of the type which characterizes the result can be returned even
 ") ResultTypeName;
 		virtual Standard_CString ResultTypeName();
 
-		/****************** SetAlreadyUsed ******************/
-		/**** md5 signature: da162a2fbf7d2c14d95e7b85fe8c2275 ****/
+		/****** Transfer_Binder::SetAlreadyUsed ******/
+		/****** md5 signature: da162a2fbf7d2c14d95e7b85fe8c2275 ******/
 		%feature("compactdefaultargs") SetAlreadyUsed;
 		%feature("autodoc", "Return
 -------
@@ -681,8 +681,8 @@ Declares that result is now used by another one, it means that it cannot be modi
 ") SetAlreadyUsed;
 		void SetAlreadyUsed();
 
-		/****************** SetStatusExec ******************/
-		/**** md5 signature: 50ba49bbb850ce57d41cfe1dc06f076e ****/
+		/****** Transfer_Binder::SetStatusExec ******/
+		/****** md5 signature: 50ba49bbb850ce57d41cfe1dc06f076e ******/
 		%feature("compactdefaultargs") SetStatusExec;
 		%feature("autodoc", "
 Parameters
@@ -699,8 +699,8 @@ Modifies execution status; called by transferprocess only (for statuserror, rath
 ") SetStatusExec;
 		void SetStatusExec(const Transfer_StatusExec stat);
 
-		/****************** Status ******************/
-		/**** md5 signature: 0d8fd839ccfcca8f1b040fc192113715 ****/
+		/****** Transfer_Binder::Status ******/
+		/****** md5 signature: 0d8fd839ccfcca8f1b040fc192113715 ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "Return
 -------
@@ -712,8 +712,8 @@ Returns status, which can be initial (not yet done), made (a result is recorded,
 ") Status;
 		Transfer_StatusResult Status();
 
-		/****************** StatusExec ******************/
-		/**** md5 signature: bc80a785b9df228c69ab57600a21eb85 ****/
+		/****** Transfer_Binder::StatusExec ******/
+		/****** md5 signature: bc80a785b9df228c69ab57600a21eb85 ******/
 		%feature("compactdefaultargs") StatusExec;
 		%feature("autodoc", "Return
 -------
@@ -741,8 +741,8 @@ Returns execution status.
 **************************/
 class Transfer_DataInfo {
 	public:
-		/****************** Type ******************/
-		/**** md5 signature: 192a28917d102787dc4550e6e61c97a0 ****/
+		/****** Transfer_DataInfo::Type ******/
+		/****** md5 signature: 192a28917d102787dc4550e6e61c97a0 ******/
 		%feature("compactdefaultargs") Type;
 		%feature("autodoc", "
 Parameters
@@ -759,8 +759,8 @@ Returns the type attached to an object here, the dynamic type of a transient. nu
 ") Type;
 		static opencascade::handle<Standard_Type> Type(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** TypeName ******************/
-		/**** md5 signature: 2ed9999dd09e4008de6273d943a36227 ****/
+		/****** Transfer_DataInfo::TypeName ******/
+		/****** md5 signature: 2ed9999dd09e4008de6273d943a36227 ******/
 		%feature("compactdefaultargs") TypeName;
 		%feature("autodoc", "
 Parameters
@@ -791,8 +791,8 @@ Returns type name (string) allows to name type of non-handled objects.
 *********************************/
 class Transfer_DispatchControl : public Interface_CopyControl {
 	public:
-		/****************** Transfer_DispatchControl ******************/
-		/**** md5 signature: 1f48b35507cb82a12d094f11795b8ad5 ****/
+		/****** Transfer_DispatchControl::Transfer_DispatchControl ******/
+		/****** md5 signature: 1f48b35507cb82a12d094f11795b8ad5 ******/
 		%feature("compactdefaultargs") Transfer_DispatchControl;
 		%feature("autodoc", "
 Parameters
@@ -810,8 +810,8 @@ Creates the dispatchcontrol, ready for use.
 ") Transfer_DispatchControl;
 		 Transfer_DispatchControl(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Transfer_TransientProcess> & TP);
 
-		/****************** Bind ******************/
-		/**** md5 signature: 6b8123ff1b872cf7eccc6ee384405fb1 ****/
+		/****** Transfer_DispatchControl::Bind ******/
+		/****** md5 signature: 6b8123ff1b872cf7eccc6ee384405fb1 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -829,8 +829,8 @@ Binds a (transient) result to a (transient) starting entity.
 ") Bind;
 		void Bind(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & res);
 
-		/****************** Clear ******************/
-		/**** md5 signature: 04e06e275d2bf51a1788968453d01f4e ****/
+		/****** Transfer_DispatchControl::Clear ******/
+		/****** md5 signature: 04e06e275d2bf51a1788968453d01f4e ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -842,8 +842,8 @@ Clears the list of copied results.
 ") Clear;
 		void Clear();
 
-		/****************** Search ******************/
-		/**** md5 signature: 525f5a6e060d9bc49aafdc8e913d57c5 ****/
+		/****** Transfer_DispatchControl::Search ******/
+		/****** md5 signature: 525f5a6e060d9bc49aafdc8e913d57c5 ******/
 		%feature("compactdefaultargs") Search;
 		%feature("autodoc", "
 Parameters
@@ -861,8 +861,8 @@ Searches for the result bound to a starting entity if found, returns true and fi
 ") Search;
 		Standard_Boolean Search(const opencascade::handle<Standard_Transient> & ent, opencascade::handle<Standard_Transient> & res);
 
-		/****************** StartingModel ******************/
-		/**** md5 signature: 8bd242b2c84ceecc600e7dcca67e7484 ****/
+		/****** Transfer_DispatchControl::StartingModel ******/
+		/****** md5 signature: 8bd242b2c84ceecc600e7dcca67e7484 ******/
 		%feature("compactdefaultargs") StartingModel;
 		%feature("autodoc", "Return
 -------
@@ -874,8 +874,8 @@ Returns the model from which the transfer is to be done.
 ") StartingModel;
 		const opencascade::handle<Interface_InterfaceModel> & StartingModel();
 
-		/****************** TransientProcess ******************/
-		/**** md5 signature: 0d1e45ead605e0700d65c1f7838e32c2 ****/
+		/****** Transfer_DispatchControl::TransientProcess ******/
+		/****** md5 signature: 0d1e45ead605e0700d65c1f7838e32c2 ******/
 		%feature("compactdefaultargs") TransientProcess;
 		%feature("autodoc", "Return
 -------
@@ -918,8 +918,8 @@ class Transfer_FindHasher {
 %nodefaultctor Transfer_Finder;
 class Transfer_Finder : public Standard_Transient {
 	public:
-		/****************** AttrList ******************/
-		/**** md5 signature: 91acc7815878cd2f4a493ea7669a3fe0 ****/
+		/****** Transfer_Finder::AttrList ******/
+		/****** md5 signature: 91acc7815878cd2f4a493ea7669a3fe0 ******/
 		%feature("compactdefaultargs") AttrList;
 		%feature("autodoc", "Return
 -------
@@ -931,8 +931,8 @@ Returns the exhaustive list of attributes.
 ") AttrList;
 		NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> & AttrList();
 
-		/****************** Attribute ******************/
-		/**** md5 signature: e5ad5be0e92752a0fdb049be9d57b2a2 ****/
+		/****** Transfer_Finder::Attribute ******/
+		/****** md5 signature: e5ad5be0e92752a0fdb049be9d57b2a2 ******/
 		%feature("compactdefaultargs") Attribute;
 		%feature("autodoc", "
 Parameters
@@ -949,8 +949,8 @@ Returns an attribute from its name. null handle if not recorded (whatever transi
 ") Attribute;
 		opencascade::handle<Standard_Transient> Attribute(Standard_CString name);
 
-		/****************** AttributeType ******************/
-		/**** md5 signature: ebecc9f18283c7073dbc9ff9e987f2ae ****/
+		/****** Transfer_Finder::AttributeType ******/
+		/****** md5 signature: ebecc9f18283c7073dbc9ff9e987f2ae ******/
 		%feature("compactdefaultargs") AttributeType;
 		%feature("autodoc", "
 Parameters
@@ -967,8 +967,8 @@ Returns the type of an attribute: paramint , paramreal , paramtext (string) , pa
 ") AttributeType;
 		Interface_ParamType AttributeType(Standard_CString name);
 
-		/****************** Equates ******************/
-		/**** md5 signature: c23eeb6738a5a3b9c168de5c90033b61 ****/
+		/****** Transfer_Finder::Equates ******/
+		/****** md5 signature: c23eeb6738a5a3b9c168de5c90033b61 ******/
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "
 Parameters
@@ -985,8 +985,8 @@ Specific testof equality: to be defined by each sub-class, must be false if find
 ") Equates;
 		virtual Standard_Boolean Equates(const opencascade::handle<Transfer_Finder> & other);
 
-		/****************** GetAttribute ******************/
-		/**** md5 signature: 2af91cadcf009781db910ca0a130a005 ****/
+		/****** Transfer_Finder::GetAttribute ******/
+		/****** md5 signature: 2af91cadcf009781db910ca0a130a005 ******/
 		%feature("compactdefaultargs") GetAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1005,8 +1005,8 @@ Returns an attribute from its name, filtered by a type if no attribute has this 
 ") GetAttribute;
 		Standard_Boolean GetAttribute(Standard_CString name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & val);
 
-		/****************** GetAttributes ******************/
-		/**** md5 signature: 2600862f8c38b03a0506b6b2c2a55c2a ****/
+		/****** Transfer_Finder::GetAttributes ******/
+		/****** md5 signature: 2600862f8c38b03a0506b6b2c2a55c2a ******/
 		%feature("compactdefaultargs") GetAttributes;
 		%feature("autodoc", "
 Parameters
@@ -1025,8 +1025,8 @@ Gets the list of attributes from <other>, by copying it by default, considers al
 ") GetAttributes;
 		void GetAttributes(const opencascade::handle<Transfer_Finder> & other, Standard_CString fromname = "", const Standard_Boolean copied = Standard_True);
 
-		/****************** GetHashCode ******************/
-		/**** md5 signature: 7287addabc58f18bcef75f2c632e90c4 ****/
+		/****** Transfer_Finder::GetHashCode ******/
+		/****** md5 signature: 7287addabc58f18bcef75f2c632e90c4 ******/
 		%feature("compactdefaultargs") GetHashCode;
 		%feature("autodoc", "Return
 -------
@@ -1038,8 +1038,8 @@ Returns the hashcode which has been stored by sethashcode (remark that hashcode 
 ") GetHashCode;
 		size_t GetHashCode();
 
-		/****************** GetIntegerAttribute ******************/
-		/**** md5 signature: ea2fdae17b02c2aa020d84d6b452688b ****/
+		/****** Transfer_Finder::GetIntegerAttribute ******/
+		/****** md5 signature: ea2fdae17b02c2aa020d84d6b452688b ******/
 		%feature("compactdefaultargs") GetIntegerAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1056,8 +1056,8 @@ Returns an attribute from its name, as integer if no attribute has this name, or
 ") GetIntegerAttribute;
 		Standard_Boolean GetIntegerAttribute(Standard_CString name, Standard_Integer &OutValue);
 
-		/****************** GetRealAttribute ******************/
-		/**** md5 signature: 5f2c96db8b329d634687ce67f5e59b4b ****/
+		/****** Transfer_Finder::GetRealAttribute ******/
+		/****** md5 signature: 5f2c96db8b329d634687ce67f5e59b4b ******/
 		%feature("compactdefaultargs") GetRealAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1074,8 +1074,8 @@ Returns an attribute from its name, as real if no attribute has this name, or no
 ") GetRealAttribute;
 		Standard_Boolean GetRealAttribute(Standard_CString name, Standard_Real &OutValue);
 
-		/****************** GetStringAttribute ******************/
-		/**** md5 signature: 318a12b6d26483dacbc14b18a716e743 ****/
+		/****** Transfer_Finder::GetStringAttribute ******/
+		/****** md5 signature: 318a12b6d26483dacbc14b18a716e743 ******/
 		%feature("compactdefaultargs") GetStringAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1093,8 +1093,8 @@ Returns an attribute from its name, as string if no attribute has this name, or 
 ") GetStringAttribute;
 		Standard_Boolean GetStringAttribute(Standard_CString name, Standard_CString val);
 
-		/****************** IntegerAttribute ******************/
-		/**** md5 signature: 93d9fbf5febe449e6af99311c8d8ce44 ****/
+		/****** Transfer_Finder::IntegerAttribute ******/
+		/****** md5 signature: 93d9fbf5febe449e6af99311c8d8ce44 ******/
 		%feature("compactdefaultargs") IntegerAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1111,8 +1111,8 @@ Returns an integer attribute from its name. 0 if not recorded.
 ") IntegerAttribute;
 		Standard_Integer IntegerAttribute(Standard_CString name);
 
-		/****************** RealAttribute ******************/
-		/**** md5 signature: 58a4e4d83ca92f4eca73ac61ee1fe729 ****/
+		/****** Transfer_Finder::RealAttribute ******/
+		/****** md5 signature: 58a4e4d83ca92f4eca73ac61ee1fe729 ******/
 		%feature("compactdefaultargs") RealAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1129,8 +1129,8 @@ Returns a real attribute from its name. 0.0 if not recorded.
 ") RealAttribute;
 		Standard_Real RealAttribute(Standard_CString name);
 
-		/****************** RemoveAttribute ******************/
-		/**** md5 signature: 57071515bfbcf1a2ae1f11ad7d448049 ****/
+		/****** Transfer_Finder::RemoveAttribute ******/
+		/****** md5 signature: 57071515bfbcf1a2ae1f11ad7d448049 ******/
 		%feature("compactdefaultargs") RemoveAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1147,8 +1147,8 @@ Removes an attribute returns true when done, false if this attribute did not exi
 ") RemoveAttribute;
 		Standard_Boolean RemoveAttribute(Standard_CString name);
 
-		/****************** SameAttributes ******************/
-		/**** md5 signature: 270660a3d80d1ea22a91fae883e90d14 ****/
+		/****** Transfer_Finder::SameAttributes ******/
+		/****** md5 signature: 270660a3d80d1ea22a91fae883e90d14 ******/
 		%feature("compactdefaultargs") SameAttributes;
 		%feature("autodoc", "
 Parameters
@@ -1165,8 +1165,8 @@ Gets the list of attributes from <other>, as such, i.e. not copied: attributes a
 ") SameAttributes;
 		void SameAttributes(const opencascade::handle<Transfer_Finder> & other);
 
-		/****************** SetAttribute ******************/
-		/**** md5 signature: ca59af36cb49e274007a7374b826f6d3 ****/
+		/****** Transfer_Finder::SetAttribute ******/
+		/****** md5 signature: ca59af36cb49e274007a7374b826f6d3 ******/
 		%feature("compactdefaultargs") SetAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1184,8 +1184,8 @@ Adds an attribute with a given name (replaces the former one with the same name 
 ") SetAttribute;
 		void SetAttribute(Standard_CString name, const opencascade::handle<Standard_Transient> & val);
 
-		/****************** SetIntegerAttribute ******************/
-		/**** md5 signature: 91bcd8c22467c6503d3124ea1bc29193 ****/
+		/****** Transfer_Finder::SetIntegerAttribute ******/
+		/****** md5 signature: 91bcd8c22467c6503d3124ea1bc29193 ******/
 		%feature("compactdefaultargs") SetIntegerAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1203,8 +1203,8 @@ Adds an integer value for an attribute.
 ") SetIntegerAttribute;
 		void SetIntegerAttribute(Standard_CString name, const Standard_Integer val);
 
-		/****************** SetRealAttribute ******************/
-		/**** md5 signature: 6336cf08a7edf9acb99611e6933d3024 ****/
+		/****** Transfer_Finder::SetRealAttribute ******/
+		/****** md5 signature: 6336cf08a7edf9acb99611e6933d3024 ******/
 		%feature("compactdefaultargs") SetRealAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1222,8 +1222,8 @@ Adds a real value for an attribute.
 ") SetRealAttribute;
 		void SetRealAttribute(Standard_CString name, const Standard_Real val);
 
-		/****************** SetStringAttribute ******************/
-		/**** md5 signature: c4470714ba0031d975841ff9a21690ca ****/
+		/****** Transfer_Finder::SetStringAttribute ******/
+		/****** md5 signature: c4470714ba0031d975841ff9a21690ca ******/
 		%feature("compactdefaultargs") SetStringAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1241,8 +1241,8 @@ Adds a string value for an attribute.
 ") SetStringAttribute;
 		void SetStringAttribute(Standard_CString name, Standard_CString val);
 
-		/****************** StringAttribute ******************/
-		/**** md5 signature: c2ee3863f53a113455cc1e4716e85015 ****/
+		/****** Transfer_Finder::StringAttribute ******/
+		/****** md5 signature: c2ee3863f53a113455cc1e4716e85015 ******/
 		%feature("compactdefaultargs") StringAttribute;
 		%feature("autodoc", "
 Parameters
@@ -1259,8 +1259,8 @@ Returns a string attribute from its name. '' if not recorded.
 ") StringAttribute;
 		Standard_CString StringAttribute(Standard_CString name);
 
-		/****************** ValueType ******************/
-		/**** md5 signature: 7bf10d093b4c83528695e983de0b203f ****/
+		/****** Transfer_Finder::ValueType ******/
+		/****** md5 signature: 7bf10d093b4c83528695e983de0b203f ******/
 		%feature("compactdefaultargs") ValueType;
 		%feature("autodoc", "Return
 -------
@@ -1272,8 +1272,8 @@ Returns the type of the value. by default, returns the dynamictype of <self>, bu
 ") ValueType;
 		virtual opencascade::handle<Standard_Type> ValueType();
 
-		/****************** ValueTypeName ******************/
-		/**** md5 signature: 9c551b5e8bde5c3427d2235f8cb0d374 ****/
+		/****** Transfer_Finder::ValueTypeName ******/
+		/****** md5 signature: 9c551b5e8bde5c3427d2235f8cb0d374 ******/
 		%feature("compactdefaultargs") ValueTypeName;
 		%feature("autodoc", "Return
 -------
@@ -1301,8 +1301,8 @@ Returns the name of the type of the value. default is name of valuetype, unless 
 ******************************/
 class Transfer_MapContainer : public Standard_Transient {
 	public:
-		/****************** Transfer_MapContainer ******************/
-		/**** md5 signature: b67b0a319d4bb2d6ca1c7d515ccc27a9 ****/
+		/****** Transfer_MapContainer::Transfer_MapContainer ******/
+		/****** md5 signature: b67b0a319d4bb2d6ca1c7d515ccc27a9 ******/
 		%feature("compactdefaultargs") Transfer_MapContainer;
 		%feature("autodoc", "Return
 -------
@@ -1314,8 +1314,8 @@ No available documentation.
 ") Transfer_MapContainer;
 		 Transfer_MapContainer();
 
-		/****************** GetMapObjects ******************/
-		/**** md5 signature: b78e42301b73ffbcdd944f891ef37929 ****/
+		/****** Transfer_MapContainer::GetMapObjects ******/
+		/****** md5 signature: b78e42301b73ffbcdd944f891ef37929 ******/
 		%feature("compactdefaultargs") GetMapObjects;
 		%feature("autodoc", "Return
 -------
@@ -1327,8 +1327,8 @@ Get map already translated geometry objects.
 ") GetMapObjects;
 		TColStd_DataMapOfTransientTransient & GetMapObjects();
 
-		/****************** SetMapObjects ******************/
-		/**** md5 signature: 42b12546d44c4134360d0249d249c527 ****/
+		/****** Transfer_MapContainer::SetMapObjects ******/
+		/****** md5 signature: 42b12546d44c4134360d0249d249c527 ******/
 		%feature("compactdefaultargs") SetMapObjects;
 		%feature("autodoc", "
 Parameters
@@ -1364,8 +1364,8 @@ Set map already translated geometry objects.
 *************************************/
 class Transfer_ProcessForTransient : public Standard_Transient {
 	public:
-		/****************** Transfer_ProcessForTransient ******************/
-		/**** md5 signature: c79c4a6f922b540d45457c332ef67290 ****/
+		/****** Transfer_ProcessForTransient::Transfer_ProcessForTransient ******/
+		/****** md5 signature: c79c4a6f922b540d45457c332ef67290 ******/
 		%feature("compactdefaultargs") Transfer_ProcessForTransient;
 		%feature("autodoc", "
 Parameters
@@ -1382,8 +1382,8 @@ Sets transferprocess at initial state. gives an initial size (indicative) for th
 ") Transfer_ProcessForTransient;
 		 Transfer_ProcessForTransient(const Standard_Integer nb = 10000);
 
-		/****************** Transfer_ProcessForTransient ******************/
-		/**** md5 signature: 08d1e19e4f9bb742f2b56d2f39bd884c ****/
+		/****** Transfer_ProcessForTransient::Transfer_ProcessForTransient ******/
+		/****** md5 signature: 08d1e19e4f9bb742f2b56d2f39bd884c ******/
 		%feature("compactdefaultargs") Transfer_ProcessForTransient;
 		%feature("autodoc", "
 Parameters
@@ -1401,8 +1401,8 @@ Sets transferprocess at initial state. gives an initial size (indicative) for th
 ") Transfer_ProcessForTransient;
 		 Transfer_ProcessForTransient(const opencascade::handle<Message_Messenger> & printer, const Standard_Integer nb = 10000);
 
-		/****************** AbnormalResult ******************/
-		/**** md5 signature: 83a1f95395dc879f57c81c4d201c078d ****/
+		/****** Transfer_ProcessForTransient::AbnormalResult ******/
+		/****** md5 signature: 83a1f95395dc879f57c81c4d201c078d ******/
 		%feature("compactdefaultargs") AbnormalResult;
 		%feature("autodoc", "Return
 -------
@@ -1414,8 +1414,8 @@ Returns binders which are neither 'done' nor 'initial', that is error,loop or ru
 ") AbnormalResult;
 		Transfer_IteratorOfProcessForTransient AbnormalResult();
 
-		/****************** Actor ******************/
-		/**** md5 signature: df2ebaaedc9ec93e08a548c3e1f4da11 ****/
+		/****** Transfer_ProcessForTransient::Actor ******/
+		/****** md5 signature: df2ebaaedc9ec93e08a548c3e1f4da11 ******/
 		%feature("compactdefaultargs") Actor;
 		%feature("autodoc", "Return
 -------
@@ -1427,8 +1427,8 @@ Returns the defined actor. returns a null handle if not set.
 ") Actor;
 		opencascade::handle<Transfer_ActorOfProcessForTransient> Actor();
 
-		/****************** AddError ******************/
-		/**** md5 signature: 964f0677a127bf5448523bd1e2fa9bbd ****/
+		/****** Transfer_ProcessForTransient::AddError ******/
+		/****** md5 signature: 964f0677a127bf5448523bd1e2fa9bbd ******/
 		%feature("compactdefaultargs") AddError;
 		%feature("autodoc", "
 Parameters
@@ -1447,8 +1447,8 @@ Description
 ") AddError;
 		void AddError(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
-		/****************** AddFail ******************/
-		/**** md5 signature: 9795f5c11159dce99f638412f8744dee ****/
+		/****** Transfer_ProcessForTransient::AddFail ******/
+		/****** md5 signature: 9795f5c11159dce99f638412f8744dee ******/
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "
 Parameters
@@ -1467,8 +1467,8 @@ Adds an error message to a starting entity (to the check of its binder of catego
 ") AddFail;
 		void AddFail(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
-		/****************** AddFail ******************/
-		/**** md5 signature: 6b0d3fec2a52085b81fbdbfe16aef486 ****/
+		/****** Transfer_ProcessForTransient::AddFail ******/
+		/****** md5 signature: 6b0d3fec2a52085b81fbdbfe16aef486 ******/
 		%feature("compactdefaultargs") AddFail;
 		%feature("autodoc", "
 Parameters
@@ -1486,8 +1486,8 @@ Adds an error message to a starting entity from the definition of a msg (origina
 ") AddFail;
 		void AddFail(const opencascade::handle<Standard_Transient> & start, const Message_Msg & amsg);
 
-		/****************** AddMultiple ******************/
-		/**** md5 signature: f39f85f6866e511f6f4b8239a808d7e3 ****/
+		/****** Transfer_ProcessForTransient::AddMultiple ******/
+		/****** md5 signature: f39f85f6866e511f6f4b8239a808d7e3 ******/
 		%feature("compactdefaultargs") AddMultiple;
 		%feature("autodoc", "
 Parameters
@@ -1505,8 +1505,8 @@ Adds an item to a list of results bound to a starting object. considers a catego
 ") AddMultiple;
 		void AddMultiple(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Standard_Transient> & res);
 
-		/****************** AddWarning ******************/
-		/**** md5 signature: 988f49b1d5bd3bf018afd5790e28b086 ****/
+		/****** Transfer_ProcessForTransient::AddWarning ******/
+		/****** md5 signature: 988f49b1d5bd3bf018afd5790e28b086 ******/
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "
 Parameters
@@ -1525,8 +1525,8 @@ Adds a warning message to a starting entity (to the check of its binder of categ
 ") AddWarning;
 		void AddWarning(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
-		/****************** AddWarning ******************/
-		/**** md5 signature: bc3b2f4ee089d893bd2b7716390affae ****/
+		/****** Transfer_ProcessForTransient::AddWarning ******/
+		/****** md5 signature: bc3b2f4ee089d893bd2b7716390affae ******/
 		%feature("compactdefaultargs") AddWarning;
 		%feature("autodoc", "
 Parameters
@@ -1544,8 +1544,8 @@ Adds a warning message to a starting entity from the definition of a msg (origin
 ") AddWarning;
 		void AddWarning(const opencascade::handle<Standard_Transient> & start, const Message_Msg & amsg);
 
-		/****************** Bind ******************/
-		/**** md5 signature: bf73e24e506125d3d9de2fea95969610 ****/
+		/****** Transfer_ProcessForTransient::Bind ******/
+		/****** md5 signature: bf73e24e506125d3d9de2fea95969610 ******/
 		%feature("compactdefaultargs") Bind;
 		%feature("autodoc", "
 Parameters
@@ -1563,8 +1563,8 @@ Creates a link a starting object with a binder. this binder can either bring a r
 ") Bind;
 		void Bind(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_Binder> & binder);
 
-		/****************** BindMultiple ******************/
-		/**** md5 signature: c447327618698dc54ddfbab057e8dd75 ****/
+		/****** Transfer_ProcessForTransient::BindMultiple ******/
+		/****** md5 signature: c447327618698dc54ddfbab057e8dd75 ******/
 		%feature("compactdefaultargs") BindMultiple;
 		%feature("autodoc", "
 Parameters
@@ -1581,8 +1581,8 @@ Prepares an object <start> to be bound with several results. if no binder is yet
 ") BindMultiple;
 		void BindMultiple(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** BindTransient ******************/
-		/**** md5 signature: 3f71962535ec43902228ab6280cedca8 ****/
+		/****** Transfer_ProcessForTransient::BindTransient ******/
+		/****** md5 signature: 3f71962535ec43902228ab6280cedca8 ******/
 		%feature("compactdefaultargs") BindTransient;
 		%feature("autodoc", "
 Parameters
@@ -1600,8 +1600,8 @@ Binds a starting object with a transient result. uses a simplebinderoftransient 
 ") BindTransient;
 		void BindTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Standard_Transient> & res);
 
-		/****************** Check ******************/
-		/**** md5 signature: 966e2a0b8c0a8863c7f85aafb48c01b9 ****/
+		/****** Transfer_ProcessForTransient::Check ******/
+		/****** md5 signature: 966e2a0b8c0a8863c7f85aafb48c01b9 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "
 Parameters
@@ -1618,8 +1618,8 @@ Returns the check attached to a starting entity. if <start> is unknown, returns 
 ") Check;
 		opencascade::handle<Interface_Check> Check(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** CheckList ******************/
-		/**** md5 signature: 4327fcc13c13f870f552e6873782ea4e ****/
+		/****** Transfer_ProcessForTransient::CheckList ******/
+		/****** md5 signature: 4327fcc13c13f870f552e6873782ea4e ******/
 		%feature("compactdefaultargs") CheckList;
 		%feature("autodoc", "
 Parameters
@@ -1636,8 +1636,8 @@ Returns a checklist as a list of check: each one is for a starting entity which 
 ") CheckList;
 		Interface_CheckIterator CheckList(const Standard_Boolean erronly);
 
-		/****************** CheckListOne ******************/
-		/**** md5 signature: 4a76bac661d5184a7fa791306eb73b5f ****/
+		/****** Transfer_ProcessForTransient::CheckListOne ******/
+		/****** md5 signature: 4a76bac661d5184a7fa791306eb73b5f ******/
 		%feature("compactdefaultargs") CheckListOne;
 		%feature("autodoc", "
 Parameters
@@ -1656,8 +1656,8 @@ Returns a checklist for one starting object <level> interpreted as by resultone 
 ") CheckListOne;
 		Interface_CheckIterator CheckListOne(const opencascade::handle<Standard_Transient> & start, const Standard_Integer level, const Standard_Boolean erronly);
 
-		/****************** CheckNum ******************/
-		/**** md5 signature: a6e945ebd9ab29fdd3875d21dd4e19ce ****/
+		/****** Transfer_ProcessForTransient::CheckNum ******/
+		/****** md5 signature: a6e945ebd9ab29fdd3875d21dd4e19ce ******/
 		%feature("compactdefaultargs") CheckNum;
 		%feature("autodoc", "
 Parameters
@@ -1674,8 +1674,8 @@ Computes a number to be associated to a starting object in a check or a check-li
 ") CheckNum;
 		virtual Standard_Integer CheckNum(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** Clean ******************/
-		/**** md5 signature: 2b06aa6e249aa983252ec57e01a88d51 ****/
+		/****** Transfer_ProcessForTransient::Clean ******/
+		/****** md5 signature: 2b06aa6e249aa983252ec57e01a88d51 ******/
 		%feature("compactdefaultargs") Clean;
 		%feature("autodoc", "Return
 -------
@@ -1687,8 +1687,8 @@ Rebuilds the map and the roots to really remove unbound items because unbind kee
 ") Clean;
 		void Clean();
 
-		/****************** Clear ******************/
-		/**** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ****/
+		/****** Transfer_ProcessForTransient::Clear ******/
+		/****** md5 signature: ae54be580b423a6eadbe062e0bdb44c2 ******/
 		%feature("compactdefaultargs") Clear;
 		%feature("autodoc", "Return
 -------
@@ -1700,8 +1700,8 @@ Resets a transferprocess as ready for a completely new work. clears general data
 ") Clear;
 		void Clear();
 
-		/****************** CompleteResult ******************/
-		/**** md5 signature: cdd116bbcf7ed573c06d1f2aa037184b ****/
+		/****** Transfer_ProcessForTransient::CompleteResult ******/
+		/****** md5 signature: cdd116bbcf7ed573c06d1f2aa037184b ******/
 		%feature("compactdefaultargs") CompleteResult;
 		%feature("autodoc", "
 Parameters
@@ -1718,8 +1718,8 @@ Returns, as an iterator, the entire log of transfer (list of created objects and
 ") CompleteResult;
 		Transfer_IteratorOfProcessForTransient CompleteResult(const Standard_Boolean withstart = Standard_False);
 
-		/****************** ErrorHandle ******************/
-		/**** md5 signature: 8cd52cc3593d14fa4239b9d171ad1cc0 ****/
+		/****** Transfer_ProcessForTransient::ErrorHandle ******/
+		/****** md5 signature: 8cd52cc3593d14fa4239b9d171ad1cc0 ******/
 		%feature("compactdefaultargs") ErrorHandle;
 		%feature("autodoc", "Return
 -------
@@ -1731,8 +1731,8 @@ Returns error handling flag.
 ") ErrorHandle;
 		Standard_Boolean ErrorHandle();
 
-		/****************** Find ******************/
-		/**** md5 signature: 4b1db88dfdd7187936e0a00f627e0355 ****/
+		/****** Transfer_ProcessForTransient::Find ******/
+		/****** md5 signature: 4b1db88dfdd7187936e0a00f627e0355 ******/
 		%feature("compactdefaultargs") Find;
 		%feature("autodoc", "
 Parameters
@@ -1749,8 +1749,8 @@ Returns the binder which is linked with a starting object it can either bring a 
 ") Find;
 		opencascade::handle<Transfer_Binder> Find(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** FindElseBind ******************/
-		/**** md5 signature: 33716994d9ad374a36f8b0501124baee ****/
+		/****** Transfer_ProcessForTransient::FindElseBind ******/
+		/****** md5 signature: 33716994d9ad374a36f8b0501124baee ******/
 		%feature("compactdefaultargs") FindElseBind;
 		%feature("autodoc", "
 Parameters
@@ -1767,8 +1767,8 @@ Returns a binder for a starting entity, as follows: tries to find the already bo
 ") FindElseBind;
 		opencascade::handle<Transfer_Binder> FindElseBind(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** FindTransient ******************/
-		/**** md5 signature: f705c1c0bd571b1513e731698548de36 ****/
+		/****** Transfer_ProcessForTransient::FindTransient ******/
+		/****** md5 signature: f705c1c0bd571b1513e731698548de36 ******/
 		%feature("compactdefaultargs") FindTransient;
 		%feature("autodoc", "
 Parameters
@@ -1785,8 +1785,8 @@ Returns the result of the transfer of an object <start> as a transient result. r
 ") FindTransient;
 		const opencascade::handle<Standard_Transient> & FindTransient(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** FindTypedTransient ******************/
-		/**** md5 signature: a092fef204d5075bf57172da498095b0 ****/
+		/****** Transfer_ProcessForTransient::FindTypedTransient ******/
+		/****** md5 signature: a092fef204d5075bf57172da498095b0 ******/
 		%feature("compactdefaultargs") FindTypedTransient;
 		%feature("autodoc", "
 Parameters
@@ -1805,8 +1805,8 @@ Searches for a transient result attached to a starting object, according to its 
 ") FindTypedTransient;
 		Standard_Boolean FindTypedTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Standard_Type> & atype, opencascade::handle<Standard_Transient> & val);
 
-		/****************** GetTypedTransient ******************/
-		/**** md5 signature: 6e9af0349f441e7b5ef9d474e02e3af3 ****/
+		/****** Transfer_ProcessForTransient::GetTypedTransient ******/
+		/****** md5 signature: 6e9af0349f441e7b5ef9d474e02e3af3 ******/
 		%feature("compactdefaultargs") GetTypedTransient;
 		%feature("autodoc", "
 Parameters
@@ -1825,8 +1825,8 @@ Searches for a transient result recorded in a binder, whatever this binder is re
 ") GetTypedTransient;
 		Standard_Boolean GetTypedTransient(const opencascade::handle<Transfer_Binder> & binder, const opencascade::handle<Standard_Type> & atype, opencascade::handle<Standard_Transient> & val);
 
-		/****************** IsAlreadyUsed ******************/
-		/**** md5 signature: dacef323e0776ce75d3126c178c4347c ****/
+		/****** Transfer_ProcessForTransient::IsAlreadyUsed ******/
+		/****** md5 signature: dacef323e0776ce75d3126c178c4347c ******/
 		%feature("compactdefaultargs") IsAlreadyUsed;
 		%feature("autodoc", "
 Parameters
@@ -1843,8 +1843,8 @@ Returns true if the result of the transfer of an object is already used in other
 ") IsAlreadyUsed;
 		Standard_Boolean IsAlreadyUsed(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** IsBound ******************/
-		/**** md5 signature: d65f302b06f5a51e9a0ec9a49de93450 ****/
+		/****** Transfer_ProcessForTransient::IsBound ******/
+		/****** md5 signature: d65f302b06f5a51e9a0ec9a49de93450 ******/
 		%feature("compactdefaultargs") IsBound;
 		%feature("autodoc", "
 Parameters
@@ -1861,8 +1861,8 @@ Returns true if a result (whatever its form) is bound with a starting object. i.
 ") IsBound;
 		Standard_Boolean IsBound(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** IsCheckListEmpty ******************/
-		/**** md5 signature: 7426a34e4b9432928d7b687b83017635 ****/
+		/****** Transfer_ProcessForTransient::IsCheckListEmpty ******/
+		/****** md5 signature: 7426a34e4b9432928d7b687b83017635 ******/
 		%feature("compactdefaultargs") IsCheckListEmpty;
 		%feature("autodoc", "
 Parameters
@@ -1881,8 +1881,8 @@ Returns true if no check message is attached to a starting object. <level> inter
 ") IsCheckListEmpty;
 		Standard_Boolean IsCheckListEmpty(const opencascade::handle<Standard_Transient> & start, const Standard_Integer level, const Standard_Boolean erronly);
 
-		/****************** IsLooping ******************/
-		/**** md5 signature: d40d7d099f2445cb01310e029b0dd3e8 ****/
+		/****** Transfer_ProcessForTransient::IsLooping ******/
+		/****** md5 signature: d40d7d099f2445cb01310e029b0dd3e8 ******/
 		%feature("compactdefaultargs") IsLooping;
 		%feature("autodoc", "
 Parameters
@@ -1899,8 +1899,8 @@ Returns true if we are surely in a deadloop. evaluation is not exact, it is a 'm
 ") IsLooping;
 		Standard_Boolean IsLooping(const Standard_Integer alevel);
 
-		/****************** MapIndex ******************/
-		/**** md5 signature: 6b6fdf8f30ea73356a799dd420a662a3 ****/
+		/****** Transfer_ProcessForTransient::MapIndex ******/
+		/****** md5 signature: 6b6fdf8f30ea73356a799dd420a662a3 ******/
 		%feature("compactdefaultargs") MapIndex;
 		%feature("autodoc", "
 Parameters
@@ -1917,8 +1917,8 @@ Returns the index value bound to a starting object, 0 if none.
 ") MapIndex;
 		Standard_Integer MapIndex(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** MapItem ******************/
-		/**** md5 signature: 5f31c62024685b4d7aed94e812e584a3 ****/
+		/****** Transfer_ProcessForTransient::MapItem ******/
+		/****** md5 signature: 5f31c62024685b4d7aed94e812e584a3 ******/
 		%feature("compactdefaultargs") MapItem;
 		%feature("autodoc", "
 Parameters
@@ -1935,8 +1935,8 @@ Returns the binder bound to an index considers a category number, by default 0.
 ") MapItem;
 		opencascade::handle<Transfer_Binder> MapItem(const Standard_Integer num);
 
-		/****************** Mapped ******************/
-		/**** md5 signature: d8895545f89e9e7068cd850cead74673 ****/
+		/****** Transfer_ProcessForTransient::Mapped ******/
+		/****** md5 signature: d8895545f89e9e7068cd850cead74673 ******/
 		%feature("compactdefaultargs") Mapped;
 		%feature("autodoc", "
 Parameters
@@ -1953,8 +1953,8 @@ Returns the starting object bound to an index,.
 ") Mapped;
 		const opencascade::handle<Standard_Transient> & Mapped(const Standard_Integer num);
 
-		/****************** Mend ******************/
-		/**** md5 signature: f0a439e76b2264f8c1afe70d021eed6d ****/
+		/****** Transfer_ProcessForTransient::Mend ******/
+		/****** md5 signature: f0a439e76b2264f8c1afe70d021eed6d ******/
 		%feature("compactdefaultargs") Mend;
 		%feature("autodoc", "
 Parameters
@@ -1972,8 +1972,8 @@ No available documentation.
 ") Mend;
 		void Mend(const opencascade::handle<Standard_Transient> & start, Standard_CString pref = "");
 
-		/****************** Messenger ******************/
-		/**** md5 signature: c51845cdafadb143338935f519a3d7c7 ****/
+		/****** Transfer_ProcessForTransient::Messenger ******/
+		/****** md5 signature: c51845cdafadb143338935f519a3d7c7 ******/
 		%feature("compactdefaultargs") Messenger;
 		%feature("autodoc", "Return
 -------
@@ -1985,8 +1985,8 @@ Returns messenger used for outputting messages. the returned object is guarantee
 ") Messenger;
 		opencascade::handle<Message_Messenger> Messenger();
 
-		/****************** NbMapped ******************/
-		/**** md5 signature: a11c288784ccf3ab5a7694b4a5ba48b6 ****/
+		/****** Transfer_ProcessForTransient::NbMapped ******/
+		/****** md5 signature: a11c288784ccf3ab5a7694b4a5ba48b6 ******/
 		%feature("compactdefaultargs") NbMapped;
 		%feature("autodoc", "Return
 -------
@@ -1998,8 +1998,8 @@ Returns the maximum possible value for map index (no result can be bound with a 
 ") NbMapped;
 		Standard_Integer NbMapped();
 
-		/****************** NbRoots ******************/
-		/**** md5 signature: d23dc5b5f7fe61d6b998e72ba9eb27b3 ****/
+		/****** Transfer_ProcessForTransient::NbRoots ******/
+		/****** md5 signature: d23dc5b5f7fe61d6b998e72ba9eb27b3 ******/
 		%feature("compactdefaultargs") NbRoots;
 		%feature("autodoc", "Return
 -------
@@ -2011,8 +2011,8 @@ Returns the count of recorded roots.
 ") NbRoots;
 		Standard_Integer NbRoots();
 
-		/****************** NestingLevel ******************/
-		/**** md5 signature: c7c3ad64a816ebfb4ee26d6fedec1d74 ****/
+		/****** Transfer_ProcessForTransient::NestingLevel ******/
+		/****** md5 signature: c7c3ad64a816ebfb4ee26d6fedec1d74 ******/
 		%feature("compactdefaultargs") NestingLevel;
 		%feature("autodoc", "Return
 -------
@@ -2024,8 +2024,8 @@ Returns nesting level of transfers (managed by methods transcriptwith & co). sta
 ") NestingLevel;
 		Standard_Integer NestingLevel();
 
-		/****************** PrintTrace ******************/
-		/**** md5 signature: 0a0a53bc4716a09a519c2ea2a9ac5776 ****/
+		/****** Transfer_ProcessForTransient::PrintTrace ******/
+		/****** md5 signature: 0a0a53bc4716a09a519c2ea2a9ac5776 ******/
 		%feature("compactdefaultargs") PrintTrace;
 		%feature("autodoc", "
 Parameters
@@ -2042,8 +2042,8 @@ Prints a short information on a starting object. by default prints its dynamic t
 ") PrintTrace;
 		virtual void PrintTrace(const opencascade::handle<Standard_Transient> & start, std::ostream &OutValue);
 
-		/****************** Rebind ******************/
-		/**** md5 signature: e57d830e06b8d133bb4caf4c620470a2 ****/
+		/****** Transfer_ProcessForTransient::Rebind ******/
+		/****** md5 signature: e57d830e06b8d133bb4caf4c620470a2 ******/
 		%feature("compactdefaultargs") Rebind;
 		%feature("autodoc", "
 Parameters
@@ -2061,8 +2061,8 @@ Changes the binder linked with a starting object for its unitary transfer. this 
 ") Rebind;
 		void Rebind(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_Binder> & binder);
 
-		/****************** Recognize ******************/
-		/**** md5 signature: e23945c2db95d9c698a143374250e68e ****/
+		/****** Transfer_ProcessForTransient::Recognize ******/
+		/****** md5 signature: e23945c2db95d9c698a143374250e68e ******/
 		%feature("compactdefaultargs") Recognize;
 		%feature("autodoc", "
 Parameters
@@ -2079,8 +2079,8 @@ Tells if <start> has been recognized as good candidate for transfer. i.e. querie
 ") Recognize;
 		Standard_Boolean Recognize(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** RemoveResult ******************/
-		/**** md5 signature: 53f7f36f61702374663ef90eb775010c ****/
+		/****** Transfer_ProcessForTransient::RemoveResult ******/
+		/****** md5 signature: 53f7f36f61702374663ef90eb775010c ******/
 		%feature("compactdefaultargs") RemoveResult;
 		%feature("autodoc", "
 Parameters
@@ -2099,8 +2099,8 @@ Removes results attached to (== unbinds) a given object and, according <level>: 
 ") RemoveResult;
 		void RemoveResult(const opencascade::handle<Standard_Transient> & start, const Standard_Integer level, const Standard_Boolean compute = Standard_True);
 
-		/****************** ResetNestingLevel ******************/
-		/**** md5 signature: fccac8107b781d03299e78e280fddae3 ****/
+		/****** Transfer_ProcessForTransient::ResetNestingLevel ******/
+		/****** md5 signature: fccac8107b781d03299e78e280fddae3 ******/
 		%feature("compactdefaultargs") ResetNestingLevel;
 		%feature("autodoc", "Return
 -------
@@ -2112,8 +2112,8 @@ Resets nesting level of transfers to zero (root level), whatever its current val
 ") ResetNestingLevel;
 		void ResetNestingLevel();
 
-		/****************** Resize ******************/
-		/**** md5 signature: ebe4063391e94c8a79c7ae789ec49dd6 ****/
+		/****** Transfer_ProcessForTransient::Resize ******/
+		/****** md5 signature: ebe4063391e94c8a79c7ae789ec49dd6 ******/
 		%feature("compactdefaultargs") Resize;
 		%feature("autodoc", "
 Parameters
@@ -2130,8 +2130,8 @@ Resizes the map as required (if a new reliable value has been determined). acts 
 ") Resize;
 		void Resize(const Standard_Integer nb);
 
-		/****************** ResultOne ******************/
-		/**** md5 signature: 701a5d7142af9dadfb756e80b076b539 ****/
+		/****** Transfer_ProcessForTransient::ResultOne ******/
+		/****** md5 signature: 701a5d7142af9dadfb756e80b076b539 ******/
 		%feature("compactdefaultargs") ResultOne;
 		%feature("autodoc", "
 Parameters
@@ -2150,8 +2150,8 @@ Returns, as an iterator, the log of transfer for one object <level> = 0: this ob
 ") ResultOne;
 		Transfer_IteratorOfProcessForTransient ResultOne(const opencascade::handle<Standard_Transient> & start, const Standard_Integer level, const Standard_Boolean withstart = Standard_False);
 
-		/****************** Root ******************/
-		/**** md5 signature: f8a933ff1567e74f038f01f1e6f35af9 ****/
+		/****** Transfer_ProcessForTransient::Root ******/
+		/****** md5 signature: f8a933ff1567e74f038f01f1e6f35af9 ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "
 Parameters
@@ -2168,8 +2168,8 @@ Returns a root entity given its number in the list (1-nbroots).
 ") Root;
 		const opencascade::handle<Standard_Transient> & Root(const Standard_Integer num);
 
-		/****************** RootIndex ******************/
-		/**** md5 signature: 04f4903bfd92b2823564e0b7ed401e44 ****/
+		/****** Transfer_ProcessForTransient::RootIndex ******/
+		/****** md5 signature: 04f4903bfd92b2823564e0b7ed401e44 ******/
 		%feature("compactdefaultargs") RootIndex;
 		%feature("autodoc", "
 Parameters
@@ -2186,8 +2186,8 @@ Returns the index in the list of roots for a starting item, or 0 if it is not re
 ") RootIndex;
 		Standard_Integer RootIndex(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** RootItem ******************/
-		/**** md5 signature: b07d66c4854cca1612fa392e6949c308 ****/
+		/****** Transfer_ProcessForTransient::RootItem ******/
+		/****** md5 signature: b07d66c4854cca1612fa392e6949c308 ******/
 		%feature("compactdefaultargs") RootItem;
 		%feature("autodoc", "
 Parameters
@@ -2204,8 +2204,8 @@ Returns the binder bound with a root entity given its number considers a categor
 ") RootItem;
 		opencascade::handle<Transfer_Binder> RootItem(const Standard_Integer num);
 
-		/****************** RootResult ******************/
-		/**** md5 signature: 0a0e61f56d5a609830fa57636a74d5b9 ****/
+		/****** Transfer_ProcessForTransient::RootResult ******/
+		/****** md5 signature: 0a0e61f56d5a609830fa57636a74d5b9 ******/
 		%feature("compactdefaultargs") RootResult;
 		%feature("autodoc", "
 Parameters
@@ -2222,8 +2222,8 @@ Returns, as an iterator, the log of root transfer, i.e. the created objects and 
 ") RootResult;
 		Transfer_IteratorOfProcessForTransient RootResult(const Standard_Boolean withstart = Standard_False);
 
-		/****************** SendFail ******************/
-		/**** md5 signature: d32875c652ac12b94f5494c8a6909e18 ****/
+		/****** Transfer_ProcessForTransient::SendFail ******/
+		/****** md5 signature: d32875c652ac12b94f5494c8a6909e18 ******/
 		%feature("compactdefaultargs") SendFail;
 		%feature("autodoc", "
 Parameters
@@ -2241,8 +2241,8 @@ New name for addfail (msg).
 ") SendFail;
 		void SendFail(const opencascade::handle<Standard_Transient> & start, const Message_Msg & amsg);
 
-		/****************** SendMsg ******************/
-		/**** md5 signature: 110e19651ba98c9b48fe9ab918091abf ****/
+		/****** Transfer_ProcessForTransient::SendMsg ******/
+		/****** md5 signature: 110e19651ba98c9b48fe9ab918091abf ******/
 		%feature("compactdefaultargs") SendMsg;
 		%feature("autodoc", "
 Parameters
@@ -2260,8 +2260,8 @@ Adds an information message trace is filled if trace level is at least 3.
 ") SendMsg;
 		void SendMsg(const opencascade::handle<Standard_Transient> & start, const Message_Msg & amsg);
 
-		/****************** SendWarning ******************/
-		/**** md5 signature: ba2cf32029cee904163d9bc8ed5139ff ****/
+		/****** Transfer_ProcessForTransient::SendWarning ******/
+		/****** md5 signature: ba2cf32029cee904163d9bc8ed5139ff ******/
 		%feature("compactdefaultargs") SendWarning;
 		%feature("autodoc", "
 Parameters
@@ -2279,8 +2279,8 @@ New name for addwarning (msg).
 ") SendWarning;
 		void SendWarning(const opencascade::handle<Standard_Transient> & start, const Message_Msg & amsg);
 
-		/****************** SetActor ******************/
-		/**** md5 signature: ad69a99f7d9cae16ffa3fbb2dde0adee ****/
+		/****** Transfer_ProcessForTransient::SetActor ******/
+		/****** md5 signature: ad69a99f7d9cae16ffa3fbb2dde0adee ******/
 		%feature("compactdefaultargs") SetActor;
 		%feature("autodoc", "
 Parameters
@@ -2297,8 +2297,8 @@ Defines an actor, which is used for automatic transfer if already defined, the n
 ") SetActor;
 		void SetActor(const opencascade::handle<Transfer_ActorOfProcessForTransient> & actor);
 
-		/****************** SetErrorHandle ******************/
-		/**** md5 signature: cea15a20003832113608c312ef431fa6 ****/
+		/****** Transfer_ProcessForTransient::SetErrorHandle ******/
+		/****** md5 signature: cea15a20003832113608c312ef431fa6 ******/
 		%feature("compactdefaultargs") SetErrorHandle;
 		%feature("autodoc", "
 Parameters
@@ -2315,8 +2315,8 @@ Allows controls if exceptions will be handled transfer operations <err> false: t
 ") SetErrorHandle;
 		void SetErrorHandle(const Standard_Boolean err);
 
-		/****************** SetMessenger ******************/
-		/**** md5 signature: a9749da4085afccb49a47ccebbb86045 ****/
+		/****** Transfer_ProcessForTransient::SetMessenger ******/
+		/****** md5 signature: a9749da4085afccb49a47ccebbb86045 ******/
 		%feature("compactdefaultargs") SetMessenger;
 		%feature("autodoc", "
 Parameters
@@ -2333,8 +2333,8 @@ Sets messenger used for outputting messages.
 ") SetMessenger;
 		void SetMessenger(const opencascade::handle<Message_Messenger> & messenger);
 
-		/****************** SetRoot ******************/
-		/**** md5 signature: 5a99d27cd967ef7f92acd7016203a0df ****/
+		/****** Transfer_ProcessForTransient::SetRoot ******/
+		/****** md5 signature: 5a99d27cd967ef7f92acd7016203a0df ******/
 		%feature("compactdefaultargs") SetRoot;
 		%feature("autodoc", "
 Parameters
@@ -2351,8 +2351,8 @@ Declares <obj> (and its result) as root. this status will be later exploited by 
 ") SetRoot;
 		void SetRoot(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** SetRootManagement ******************/
-		/**** md5 signature: f00b393b03802497e86faa83a981372a ****/
+		/****** Transfer_ProcessForTransient::SetRootManagement ******/
+		/****** md5 signature: f00b393b03802497e86faa83a981372a ******/
 		%feature("compactdefaultargs") SetRootManagement;
 		%feature("autodoc", "
 Parameters
@@ -2369,8 +2369,8 @@ Enable (if <stat> true) or disables (if <stat> false) root management. if it is 
 ") SetRootManagement;
 		void SetRootManagement(const Standard_Boolean stat);
 
-		/****************** SetTraceLevel ******************/
-		/**** md5 signature: b2d3fab409a6e2832ea6fb56a22812c1 ****/
+		/****** Transfer_ProcessForTransient::SetTraceLevel ******/
+		/****** md5 signature: b2d3fab409a6e2832ea6fb56a22812c1 ******/
 		%feature("compactdefaultargs") SetTraceLevel;
 		%feature("autodoc", "
 Parameters
@@ -2387,8 +2387,8 @@ Sets trace level used for outputting messages: <trace> = 0: no trace at all <tra
 ") SetTraceLevel;
 		void SetTraceLevel(const Standard_Integer tracelev);
 
-		/****************** StartTrace ******************/
-		/**** md5 signature: b740b16f2bf8b249951768f7a3a02cf8 ****/
+		/****** Transfer_ProcessForTransient::StartTrace ******/
+		/****** md5 signature: b740b16f2bf8b249951768f7a3a02cf8 ******/
 		%feature("compactdefaultargs") StartTrace;
 		%feature("autodoc", "
 Parameters
@@ -2408,8 +2408,8 @@ Method called when trace is asked calls printtrace to display information releva
 ") StartTrace;
 		void StartTrace(const opencascade::handle<Transfer_Binder> & binder, const opencascade::handle<Standard_Transient> & start, const Standard_Integer level, const Standard_Integer mode);
 
-		/****************** TraceLevel ******************/
-		/**** md5 signature: 71a5f63811c28c261ef1f9e77d8b2618 ****/
+		/****** Transfer_ProcessForTransient::TraceLevel ******/
+		/****** md5 signature: 71a5f63811c28c261ef1f9e77d8b2618 ******/
 		%feature("compactdefaultargs") TraceLevel;
 		%feature("autodoc", "Return
 -------
@@ -2421,8 +2421,8 @@ Returns trace level used for outputting messages.
 ") TraceLevel;
 		Standard_Integer TraceLevel();
 
-		/****************** Transfer ******************/
-		/**** md5 signature: c71bfebbf26d85976302e17529f72ccd ****/
+		/****** Transfer_ProcessForTransient::Transfer ******/
+		/****** md5 signature: c71bfebbf26d85976302e17529f72ccd ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -2440,8 +2440,8 @@ Same as transferring but does not return the binder. simply returns true in case
 ") Transfer;
 		Standard_Boolean Transfer(const opencascade::handle<Standard_Transient> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Transferring ******************/
-		/**** md5 signature: bf0dd68be3fa1440823e3d01d971993a ****/
+		/****** Transfer_ProcessForTransient::Transferring ******/
+		/****** md5 signature: bf0dd68be3fa1440823e3d01d971993a ******/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "
 Parameters
@@ -2459,8 +2459,8 @@ Performs the transfer of a starting object, by calling the method transferproduc
 ") Transferring;
 		opencascade::handle<Transfer_Binder> Transferring(const opencascade::handle<Standard_Transient> & start, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Unbind ******************/
-		/**** md5 signature: 68606943e62848e312bd09ef2c626c47 ****/
+		/****** Transfer_ProcessForTransient::Unbind ******/
+		/****** md5 signature: 68606943e62848e312bd09ef2c626c47 ******/
 		%feature("compactdefaultargs") Unbind;
 		%feature("autodoc", "
 Parameters
@@ -2493,8 +2493,8 @@ Removes the binder linked with a starting object if this binder brings a non-emp
 *********************************/
 class Transfer_ResultFromModel : public Standard_Transient {
 	public:
-		/****************** Transfer_ResultFromModel ******************/
-		/**** md5 signature: 86b3c4120f76ae1b9b78bddf7bfd580b ****/
+		/****** Transfer_ResultFromModel::Transfer_ResultFromModel ******/
+		/****** md5 signature: 86b3c4120f76ae1b9b78bddf7bfd580b ******/
 		%feature("compactdefaultargs") Transfer_ResultFromModel;
 		%feature("autodoc", "Return
 -------
@@ -2506,8 +2506,8 @@ Creates a resultfrommodel, empty.
 ") Transfer_ResultFromModel;
 		 Transfer_ResultFromModel();
 
-		/****************** CheckList ******************/
-		/**** md5 signature: a722cb68ab0a4d43a4bdfa4e46a07b58 ****/
+		/****** Transfer_ResultFromModel::CheckList ******/
+		/****** md5 signature: a722cb68ab0a4d43a4bdfa4e46a07b58 ******/
 		%feature("compactdefaultargs") CheckList;
 		%feature("autodoc", "
 Parameters
@@ -2525,8 +2525,8 @@ Returns the check-list of this set of results <erronly> true: only fails are con
 ") CheckList;
 		Interface_CheckIterator CheckList(const Standard_Boolean erronly, const Standard_Integer level = 2);
 
-		/****************** CheckStatus ******************/
-		/**** md5 signature: 435b2628f8f9bb8fdcca0c0ecf453f08 ****/
+		/****** Transfer_ResultFromModel::CheckStatus ******/
+		/****** md5 signature: 435b2628f8f9bb8fdcca0c0ecf453f08 ******/
 		%feature("compactdefaultargs") CheckStatus;
 		%feature("autodoc", "Return
 -------
@@ -2538,8 +2538,8 @@ Returns the check status with corresponds to the content of this resultfrommodel
 ") CheckStatus;
 		Interface_CheckStatus CheckStatus();
 
-		/****************** CheckedList ******************/
-		/**** md5 signature: 3cd3620ff5cdabbb428a24f5fa698607 ****/
+		/****** Transfer_ResultFromModel::CheckedList ******/
+		/****** md5 signature: 3cd3620ff5cdabbb428a24f5fa698607 ******/
 		%feature("compactdefaultargs") CheckedList;
 		%feature("autodoc", "
 Parameters
@@ -2557,8 +2557,8 @@ Returns the list of starting entities to which a check status is attached. <chec
 ") CheckedList;
 		opencascade::handle<TColStd_HSequenceOfTransient> CheckedList(const Interface_CheckStatus check, const Standard_Boolean result);
 
-		/****************** ComputeCheckStatus ******************/
-		/**** md5 signature: 5a4c69d05791fe7284103b8b3ecb9c62 ****/
+		/****** Transfer_ResultFromModel::ComputeCheckStatus ******/
+		/****** md5 signature: 5a4c69d05791fe7284103b8b3ecb9c62 ******/
 		%feature("compactdefaultargs") ComputeCheckStatus;
 		%feature("autodoc", "
 Parameters
@@ -2575,8 +2575,8 @@ Computes and records check status (see checkstatus) does not computes it if alre
 ") ComputeCheckStatus;
 		Interface_CheckStatus ComputeCheckStatus(const Standard_Boolean enforce);
 
-		/****************** FileName ******************/
-		/**** md5 signature: 85b6394bcac5e528aa5809d0c9e6d178 ****/
+		/****** Transfer_ResultFromModel::FileName ******/
+		/****** md5 signature: 85b6394bcac5e528aa5809d0c9e6d178 ******/
 		%feature("compactdefaultargs") FileName;
 		%feature("autodoc", "Return
 -------
@@ -2588,8 +2588,8 @@ Returns starting file name (empty if not set).
 ") FileName;
 		Standard_CString FileName();
 
-		/****************** Fill ******************/
-		/**** md5 signature: 4b4edb201c233e76456aea2eb36c64a5 ****/
+		/****** Transfer_ResultFromModel::Fill ******/
+		/****** md5 signature: 4b4edb201c233e76456aea2eb36c64a5 ******/
 		%feature("compactdefaultargs") Fill;
 		%feature("autodoc", "
 Parameters
@@ -2607,8 +2607,8 @@ Fills from a transientprocess, with the result attached to a starting entity. co
 ") Fill;
 		Standard_Boolean Fill(const opencascade::handle<Transfer_TransientProcess> & TP, const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** FillBack ******************/
-		/**** md5 signature: 8b4ef4bf5c68841052668acfafa83b62 ****/
+		/****** Transfer_ResultFromModel::FillBack ******/
+		/****** md5 signature: 8b4ef4bf5c68841052668acfafa83b62 ******/
 		%feature("compactdefaultargs") FillBack;
 		%feature("autodoc", "
 Parameters
@@ -2625,8 +2625,8 @@ Fills back a transientprocess from the structured set of binders. also sets the 
 ") FillBack;
 		void FillBack(const opencascade::handle<Transfer_TransientProcess> & TP);
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** Transfer_ResultFromModel::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -2638,8 +2638,8 @@ Returns true if a result is recorded.
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** MainLabel ******************/
-		/**** md5 signature: 89e5e795f3552e1c3474b97f7ba51e15 ****/
+		/****** Transfer_ResultFromModel::MainLabel ******/
+		/****** md5 signature: 89e5e795f3552e1c3474b97f7ba51e15 ******/
 		%feature("compactdefaultargs") MainLabel;
 		%feature("autodoc", "Return
 -------
@@ -2651,8 +2651,8 @@ Returns the label in starting model attached to main entity (updated by fill or 
 ") MainLabel;
 		Standard_CString MainLabel();
 
-		/****************** MainNumber ******************/
-		/**** md5 signature: c7812d4aa5ac295ddd43bdd4ac8f1ead ****/
+		/****** Transfer_ResultFromModel::MainNumber ******/
+		/****** md5 signature: c7812d4aa5ac295ddd43bdd4ac8f1ead ******/
 		%feature("compactdefaultargs") MainNumber;
 		%feature("autodoc", "Return
 -------
@@ -2664,8 +2664,8 @@ Returns the label in starting model attached to main entity.
 ") MainNumber;
 		Standard_Integer MainNumber();
 
-		/****************** MainResult ******************/
-		/**** md5 signature: a0a50a6aeb66f0640f3a596d505a9580 ****/
+		/****** Transfer_ResultFromModel::MainResult ******/
+		/****** md5 signature: a0a50a6aeb66f0640f3a596d505a9580 ******/
 		%feature("compactdefaultargs") MainResult;
 		%feature("autodoc", "Return
 -------
@@ -2677,8 +2677,8 @@ Returns the main recorded resultfromtransient, or a null.
 ") MainResult;
 		opencascade::handle<Transfer_ResultFromTransient> MainResult();
 
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** Transfer_ResultFromModel::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -2690,8 +2690,8 @@ Returns starting model (null if not set).
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** ResultFromKey ******************/
-		/**** md5 signature: faee4631c279d10c40033a6e68529cb4 ****/
+		/****** Transfer_ResultFromModel::ResultFromKey ******/
+		/****** md5 signature: faee4631c279d10c40033a6e68529cb4 ******/
 		%feature("compactdefaultargs") ResultFromKey;
 		%feature("autodoc", "
 Parameters
@@ -2708,8 +2708,8 @@ Searches for a key (starting entity) and returns its result returns a null handl
 ") ResultFromKey;
 		opencascade::handle<Transfer_ResultFromTransient> ResultFromKey(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** Results ******************/
-		/**** md5 signature: b4649f6d18c464f3f93aadeada3e7d81 ****/
+		/****** Transfer_ResultFromModel::Results ******/
+		/****** md5 signature: b4649f6d18c464f3f93aadeada3e7d81 ******/
 		%feature("compactdefaultargs") Results;
 		%feature("autodoc", "
 Parameters
@@ -2726,8 +2726,8 @@ Internal method which returns the list of resultfromtransient, according level (
 ") Results;
 		opencascade::handle<TColStd_HSequenceOfTransient> Results(const Standard_Integer level);
 
-		/****************** SetFileName ******************/
-		/**** md5 signature: 01264eab651f24a03fa095140833c1e6 ****/
+		/****** Transfer_ResultFromModel::SetFileName ******/
+		/****** md5 signature: 01264eab651f24a03fa095140833c1e6 ******/
 		%feature("compactdefaultargs") SetFileName;
 		%feature("autodoc", "
 Parameters
@@ -2744,8 +2744,8 @@ Sets starting file name.
 ") SetFileName;
 		void SetFileName(Standard_CString filename);
 
-		/****************** SetMainResult ******************/
-		/**** md5 signature: 65dcc5167fc4eed0bd35bdb86cf0bae5 ****/
+		/****** Transfer_ResultFromModel::SetMainResult ******/
+		/****** md5 signature: 65dcc5167fc4eed0bd35bdb86cf0bae5 ******/
 		%feature("compactdefaultargs") SetMainResult;
 		%feature("autodoc", "
 Parameters
@@ -2762,8 +2762,8 @@ Sets a new value for the main recorded resultfromtransient.
 ") SetMainResult;
 		void SetMainResult(const opencascade::handle<Transfer_ResultFromTransient> & amain);
 
-		/****************** SetModel ******************/
-		/**** md5 signature: 70328a97cec44e457500ce3b002efc49 ****/
+		/****** Transfer_ResultFromModel::SetModel ******/
+		/****** md5 signature: 70328a97cec44e457500ce3b002efc49 ******/
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "
 Parameters
@@ -2780,8 +2780,8 @@ Sets starting model.
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** Strip ******************/
-		/**** md5 signature: 44b7ddebb6940cf6f9077520c82b7817 ****/
+		/****** Transfer_ResultFromModel::Strip ******/
+		/****** md5 signature: 44b7ddebb6940cf6f9077520c82b7817 ******/
 		%feature("compactdefaultargs") Strip;
 		%feature("autodoc", "
 Parameters
@@ -2798,8 +2798,8 @@ Clears some data attached to binders used by transientprocess, which become usel
 ") Strip;
 		void Strip(const Standard_Integer mode);
 
-		/****************** TransferredList ******************/
-		/**** md5 signature: c57abe5750523fa9c76e621d52245f34 ****/
+		/****** Transfer_ResultFromModel::TransferredList ******/
+		/****** md5 signature: c57abe5750523fa9c76e621d52245f34 ******/
 		%feature("compactdefaultargs") TransferredList;
 		%feature("autodoc", "
 Parameters
@@ -2832,8 +2832,8 @@ Returns the list of recorded starting entities, ending by the root. entities wit
 *************************************/
 class Transfer_ResultFromTransient : public Standard_Transient {
 	public:
-		/****************** Transfer_ResultFromTransient ******************/
-		/**** md5 signature: b65f16aa0a33f9ee3fefcc03f2efaa09 ****/
+		/****** Transfer_ResultFromTransient::Transfer_ResultFromTransient ******/
+		/****** md5 signature: b65f16aa0a33f9ee3fefcc03f2efaa09 ******/
 		%feature("compactdefaultargs") Transfer_ResultFromTransient;
 		%feature("autodoc", "Return
 -------
@@ -2845,8 +2845,8 @@ Creates a resultfromtransient, empty.
 ") Transfer_ResultFromTransient;
 		 Transfer_ResultFromTransient();
 
-		/****************** AddSubResult ******************/
-		/**** md5 signature: 886b3d930bb307f552d4093b80373aed ****/
+		/****** Transfer_ResultFromTransient::AddSubResult ******/
+		/****** md5 signature: 886b3d930bb307f552d4093b80373aed ******/
 		%feature("compactdefaultargs") AddSubResult;
 		%feature("autodoc", "
 Parameters
@@ -2863,8 +2863,8 @@ Adds a sub-result.
 ") AddSubResult;
 		void AddSubResult(const opencascade::handle<Transfer_ResultFromTransient> & sub);
 
-		/****************** Binder ******************/
-		/**** md5 signature: c455fbd6c51c1b2aca4dda866aaa784a ****/
+		/****** Transfer_ResultFromTransient::Binder ******/
+		/****** md5 signature: c455fbd6c51c1b2aca4dda866aaa784a ******/
 		%feature("compactdefaultargs") Binder;
 		%feature("autodoc", "Return
 -------
@@ -2876,8 +2876,8 @@ Returns the binder.
 ") Binder;
 		opencascade::handle<Transfer_Binder> Binder();
 
-		/****************** Check ******************/
-		/**** md5 signature: b324f0f5184c97d14308315ce8d6a533 ****/
+		/****** Transfer_ResultFromTransient::Check ******/
+		/****** md5 signature: b324f0f5184c97d14308315ce8d6a533 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "Return
 -------
@@ -2889,8 +2889,8 @@ Returns the check (or an empty one if no binder).
 ") Check;
 		const opencascade::handle<Interface_Check> Check();
 
-		/****************** CheckStatus ******************/
-		/**** md5 signature: 435b2628f8f9bb8fdcca0c0ecf453f08 ****/
+		/****** Transfer_ResultFromTransient::CheckStatus ******/
+		/****** md5 signature: 435b2628f8f9bb8fdcca0c0ecf453f08 ******/
 		%feature("compactdefaultargs") CheckStatus;
 		%feature("autodoc", "Return
 -------
@@ -2902,8 +2902,8 @@ Returns the check status.
 ") CheckStatus;
 		Interface_CheckStatus CheckStatus();
 
-		/****************** ClearSubs ******************/
-		/**** md5 signature: b2f34bd33bc0c64da59a60de8fa03aba ****/
+		/****** Transfer_ResultFromTransient::ClearSubs ******/
+		/****** md5 signature: b2f34bd33bc0c64da59a60de8fa03aba ******/
 		%feature("compactdefaultargs") ClearSubs;
 		%feature("autodoc", "Return
 -------
@@ -2915,8 +2915,8 @@ Clears the list of (immediate) sub-results.
 ") ClearSubs;
 		void ClearSubs();
 
-		/****************** Fill ******************/
-		/**** md5 signature: 735772e116add5578a8805b8bd64ee4f ****/
+		/****** Transfer_ResultFromTransient::Fill ******/
+		/****** md5 signature: 735772e116add5578a8805b8bd64ee4f ******/
 		%feature("compactdefaultargs") Fill;
 		%feature("autodoc", "
 Parameters
@@ -2933,8 +2933,8 @@ Fills from a transientprocess, with the starting entity which must have been set
 ") Fill;
 		void Fill(const opencascade::handle<Transfer_TransientProcess> & TP);
 
-		/****************** FillBack ******************/
-		/**** md5 signature: 8b4ef4bf5c68841052668acfafa83b62 ****/
+		/****** Transfer_ResultFromTransient::FillBack ******/
+		/****** md5 signature: 8b4ef4bf5c68841052668acfafa83b62 ******/
 		%feature("compactdefaultargs") FillBack;
 		%feature("autodoc", "
 Parameters
@@ -2951,8 +2951,8 @@ Fills back a transientprocess with definition of a resultfromtransient, respectf
 ") FillBack;
 		void FillBack(const opencascade::handle<Transfer_TransientProcess> & TP);
 
-		/****************** FillMap ******************/
-		/**** md5 signature: 7ecb2a15540f8a1459eef96b7bd7b5d3 ****/
+		/****** Transfer_ResultFromTransient::FillMap ******/
+		/****** md5 signature: 7ecb2a15540f8a1459eef96b7bd7b5d3 ******/
 		%feature("compactdefaultargs") FillMap;
 		%feature("autodoc", "
 Parameters
@@ -2969,8 +2969,8 @@ This method is used by resultfrommodel to collate the list of resultfromtransien
 ") FillMap;
 		void FillMap(TColStd_IndexedMapOfTransient & map);
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** Transfer_ResultFromTransient::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -2982,8 +2982,8 @@ Returns true if a result is recorded.
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** NbSubResults ******************/
-		/**** md5 signature: 7d56bac3eea8a906a9dce0b236c3ab49 ****/
+		/****** Transfer_ResultFromTransient::NbSubResults ******/
+		/****** md5 signature: 7d56bac3eea8a906a9dce0b236c3ab49 ******/
 		%feature("compactdefaultargs") NbSubResults;
 		%feature("autodoc", "Return
 -------
@@ -2995,8 +2995,8 @@ Returns the count of recorded sub-results.
 ") NbSubResults;
 		Standard_Integer NbSubResults();
 
-		/****************** ResultFromKey ******************/
-		/**** md5 signature: 02fa96c7e49342a8237d57a19dbe007f ****/
+		/****** Transfer_ResultFromTransient::ResultFromKey ******/
+		/****** md5 signature: 02fa96c7e49342a8237d57a19dbe007f ******/
 		%feature("compactdefaultargs") ResultFromKey;
 		%feature("autodoc", "
 Parameters
@@ -3013,8 +3013,8 @@ Returns the resultfromtransient attached to a given starting entity (the key). r
 ") ResultFromKey;
 		opencascade::handle<Transfer_ResultFromTransient> ResultFromKey(const opencascade::handle<Standard_Transient> & key);
 
-		/****************** SetBinder ******************/
-		/**** md5 signature: 30383b14fb37fc48f3ef7bec1a62300c ****/
+		/****** Transfer_ResultFromTransient::SetBinder ******/
+		/****** md5 signature: 30383b14fb37fc48f3ef7bec1a62300c ******/
 		%feature("compactdefaultargs") SetBinder;
 		%feature("autodoc", "
 Parameters
@@ -3031,8 +3031,8 @@ Sets binder (for result plus individual check).
 ") SetBinder;
 		void SetBinder(const opencascade::handle<Transfer_Binder> & binder);
 
-		/****************** SetStart ******************/
-		/**** md5 signature: 45fd919f572141296eb48e05b1b6b4ed ****/
+		/****** Transfer_ResultFromTransient::SetStart ******/
+		/****** md5 signature: 45fd919f572141296eb48e05b1b6b4ed ******/
 		%feature("compactdefaultargs") SetStart;
 		%feature("autodoc", "
 Parameters
@@ -3049,8 +3049,8 @@ Sets starting entity.
 ") SetStart;
 		void SetStart(const opencascade::handle<Standard_Transient> & start);
 
-		/****************** Start ******************/
-		/**** md5 signature: c32fb6226af227c40c2acdfda7f56a5b ****/
+		/****** Transfer_ResultFromTransient::Start ******/
+		/****** md5 signature: c32fb6226af227c40c2acdfda7f56a5b ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "Return
 -------
@@ -3062,8 +3062,8 @@ Returns the starting entity.
 ") Start;
 		opencascade::handle<Standard_Transient> Start();
 
-		/****************** Strip ******************/
-		/**** md5 signature: 4e5d87f245ebfb5ab5077fbccee31377 ****/
+		/****** Transfer_ResultFromTransient::Strip ******/
+		/****** md5 signature: 4e5d87f245ebfb5ab5077fbccee31377 ******/
 		%feature("compactdefaultargs") Strip;
 		%feature("autodoc", "Return
 -------
@@ -3075,8 +3075,8 @@ Clears some data attached to binders used by transientprocess, which become usel
 ") Strip;
 		void Strip();
 
-		/****************** SubResult ******************/
-		/**** md5 signature: fb024d959d50cb4a0e4994637b0d0ba8 ****/
+		/****** Transfer_ResultFromTransient::SubResult ******/
+		/****** md5 signature: fb024d959d50cb4a0e4994637b0d0ba8 ******/
 		%feature("compactdefaultargs") SubResult;
 		%feature("autodoc", "
 Parameters
@@ -3109,8 +3109,8 @@ Returns a sub-result, given its rank.
 **********************************/
 class Transfer_TransferDispatch : public Interface_CopyTool {
 	public:
-		/****************** Transfer_TransferDispatch ******************/
-		/**** md5 signature: c9b164781c18f7824c36fc83469acb50 ****/
+		/****** Transfer_TransferDispatch::Transfer_TransferDispatch ******/
+		/****** md5 signature: c9b164781c18f7824c36fc83469acb50 ******/
 		%feature("compactdefaultargs") Transfer_TransferDispatch;
 		%feature("autodoc", "
 Parameters
@@ -3128,8 +3128,8 @@ Creates a transferdispatch from a model. works with a general service library, g
 ") Transfer_TransferDispatch;
 		 Transfer_TransferDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib);
 
-		/****************** Transfer_TransferDispatch ******************/
-		/**** md5 signature: 3ced86f31251498b6c7321d7f03c4479 ****/
+		/****** Transfer_TransferDispatch::Transfer_TransferDispatch ******/
+		/****** md5 signature: 3ced86f31251498b6c7321d7f03c4479 ******/
 		%feature("compactdefaultargs") Transfer_TransferDispatch;
 		%feature("autodoc", "
 Parameters
@@ -3147,8 +3147,8 @@ Same as above, but library is defined through a protocol.
 ") Transfer_TransferDispatch;
 		 Transfer_TransferDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol);
 
-		/****************** Transfer_TransferDispatch ******************/
-		/**** md5 signature: aee8a2ddf46a7ec2ba2142b905802fb2 ****/
+		/****** Transfer_TransferDispatch::Transfer_TransferDispatch ******/
+		/****** md5 signature: aee8a2ddf46a7ec2ba2142b905802fb2 ******/
 		%feature("compactdefaultargs") Transfer_TransferDispatch;
 		%feature("autodoc", "
 Parameters
@@ -3165,8 +3165,8 @@ Same as above, but works with the active protocol.
 ") Transfer_TransferDispatch;
 		 Transfer_TransferDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** Copy ******************/
-		/**** md5 signature: aa3dd3e372c9a6a86dd959e12d7e676b ****/
+		/****** Transfer_TransferDispatch::Copy ******/
+		/****** md5 signature: aa3dd3e372c9a6a86dd959e12d7e676b ******/
 		%feature("compactdefaultargs") Copy;
 		%feature("autodoc", "
 Parameters
@@ -3186,8 +3186,8 @@ Copies an entity by calling the method transferring from the transferprocess. if
 ") Copy;
 		virtual Standard_Boolean Copy(const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto, const Standard_Boolean mapped, const Standard_Boolean errstat);
 
-		/****************** TransientProcess ******************/
-		/**** md5 signature: cda5aa33365159e82c6213003de44419 ****/
+		/****** Transfer_TransferDispatch::TransientProcess ******/
+		/****** md5 signature: cda5aa33365159e82c6213003de44419 ******/
 		%feature("compactdefaultargs") TransientProcess;
 		%feature("autodoc", "Return
 -------
@@ -3213,8 +3213,8 @@ Returns the content of control object, as a transientprocess.
 *******************************/
 class Transfer_TransferInput {
 	public:
-		/****************** Transfer_TransferInput ******************/
-		/**** md5 signature: 55bb1c114579a47a6c9181979110ec4b ****/
+		/****** Transfer_TransferInput::Transfer_TransferInput ******/
+		/****** md5 signature: 55bb1c114579a47a6c9181979110ec4b ******/
 		%feature("compactdefaultargs") Transfer_TransferInput;
 		%feature("autodoc", "Return
 -------
@@ -3226,8 +3226,8 @@ Creates a transferinput ready to use.
 ") Transfer_TransferInput;
 		 Transfer_TransferInput();
 
-		/****************** Entities ******************/
-		/**** md5 signature: 5db3b76609b964e68d9effb3c627f015 ****/
+		/****** Transfer_TransferInput::Entities ******/
+		/****** md5 signature: 5db3b76609b964e68d9effb3c627f015 ******/
 		%feature("compactdefaultargs") Entities;
 		%feature("autodoc", "
 Parameters
@@ -3244,8 +3244,8 @@ Takes the transient items stored in a transferiterator.
 ") Entities;
 		Interface_EntityIterator Entities(Transfer_TransferIterator & list);
 
-		/****************** FillModel ******************/
-		/**** md5 signature: 481a8d7525eabb66fbaf189195b4a71e ****/
+		/****** Transfer_TransferInput::FillModel ******/
+		/****** md5 signature: 481a8d7525eabb66fbaf189195b4a71e ******/
 		%feature("compactdefaultargs") FillModel;
 		%feature("autodoc", "
 Parameters
@@ -3263,8 +3263,8 @@ Fills an interfacemodel with the complete result of a transfer stored in a trans
 ") FillModel;
 		void FillModel(const opencascade::handle<Transfer_TransientProcess> & proc, const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** FillModel ******************/
-		/**** md5 signature: c393e76b94aead8744d8bcd81893dc4b ****/
+		/****** Transfer_TransferInput::FillModel ******/
+		/****** md5 signature: c393e76b94aead8744d8bcd81893dc4b ******/
 		%feature("compactdefaultargs") FillModel;
 		%feature("autodoc", "
 Parameters
@@ -3284,8 +3284,8 @@ Fills an interfacemodel with results of the transfer recorded in a transientproc
 ") FillModel;
 		void FillModel(const opencascade::handle<Transfer_TransientProcess> & proc, const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & proto, const Standard_Boolean roots = Standard_True);
 
-		/****************** FillModel ******************/
-		/**** md5 signature: 5cb1480fcd475f430063f778828cd013 ****/
+		/****** Transfer_TransferInput::FillModel ******/
+		/****** md5 signature: 5cb1480fcd475f430063f778828cd013 ******/
 		%feature("compactdefaultargs") FillModel;
 		%feature("autodoc", "
 Parameters
@@ -3303,8 +3303,8 @@ Fills an interfacemodel with the complete result of a transfer stored in a trans
 ") FillModel;
 		void FillModel(const opencascade::handle<Transfer_FinderProcess> & proc, const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** FillModel ******************/
-		/**** md5 signature: c1bd0a25ad5e5f15b1a8e849cee73f86 ****/
+		/****** Transfer_TransferInput::FillModel ******/
+		/****** md5 signature: c1bd0a25ad5e5f15b1a8e849cee73f86 ******/
 		%feature("compactdefaultargs") FillModel;
 		%feature("autodoc", "
 Parameters
@@ -3338,8 +3338,8 @@ Fills an interfacemodel with results of the transfer recorded in a transientproc
 **********************************/
 class Transfer_TransferIterator {
 	public:
-		/****************** Transfer_TransferIterator ******************/
-		/**** md5 signature: 134d41c70233bac7a2658e98df51d73b ****/
+		/****** Transfer_TransferIterator::Transfer_TransferIterator ******/
+		/****** md5 signature: 134d41c70233bac7a2658e98df51d73b ******/
 		%feature("compactdefaultargs") Transfer_TransferIterator;
 		%feature("autodoc", "Return
 -------
@@ -3351,8 +3351,8 @@ Creates an empty iterator.
 ") Transfer_TransferIterator;
 		 Transfer_TransferIterator();
 
-		/****************** AddItem ******************/
-		/**** md5 signature: ffb50f9c2fd650a44d5f10516435f6e7 ****/
+		/****** Transfer_TransferIterator::AddItem ******/
+		/****** md5 signature: ffb50f9c2fd650a44d5f10516435f6e7 ******/
 		%feature("compactdefaultargs") AddItem;
 		%feature("autodoc", "
 Parameters
@@ -3369,8 +3369,8 @@ Adds a binder to the iteration list (construction).
 ") AddItem;
 		void AddItem(const opencascade::handle<Transfer_Binder> & atr);
 
-		/****************** Check ******************/
-		/**** md5 signature: b324f0f5184c97d14308315ce8d6a533 ****/
+		/****** Transfer_TransferIterator::Check ******/
+		/****** md5 signature: b324f0f5184c97d14308315ce8d6a533 ******/
 		%feature("compactdefaultargs") Check;
 		%feature("autodoc", "Return
 -------
@@ -3382,8 +3382,8 @@ Returns check associated to current binder (in case of error, it brings fail mes
 ") Check;
 		const opencascade::handle<Interface_Check> Check();
 
-		/****************** HasFails ******************/
-		/**** md5 signature: f3563bd9efac596467be81f4a575a861 ****/
+		/****** Transfer_TransferIterator::HasFails ******/
+		/****** md5 signature: f3563bd9efac596467be81f4a575a861 ******/
 		%feature("compactdefaultargs") HasFails;
 		%feature("autodoc", "Return
 -------
@@ -3395,8 +3395,8 @@ Returns true if fail messages are recorded with the current binder. they can the
 ") HasFails;
 		Standard_Boolean HasFails();
 
-		/****************** HasResult ******************/
-		/**** md5 signature: 345d4b0f7e88f528928167976d8256d5 ****/
+		/****** Transfer_TransferIterator::HasResult ******/
+		/****** md5 signature: 345d4b0f7e88f528928167976d8256d5 ******/
 		%feature("compactdefaultargs") HasResult;
 		%feature("autodoc", "Return
 -------
@@ -3408,8 +3408,8 @@ Returns true if current item brings a result, transient (handle) or not or multi
 ") HasResult;
 		Standard_Boolean HasResult();
 
-		/****************** HasTransientResult ******************/
-		/**** md5 signature: 54761d2e0d5d1752a81a9f361037869d ****/
+		/****** Transfer_TransferIterator::HasTransientResult ******/
+		/****** md5 signature: 54761d2e0d5d1752a81a9f361037869d ******/
 		%feature("compactdefaultargs") HasTransientResult;
 		%feature("autodoc", "Return
 -------
@@ -3421,8 +3421,8 @@ Returns true if the current item has a transient unique result (if yes, use tran
 ") HasTransientResult;
 		Standard_Boolean HasTransientResult();
 
-		/****************** HasUniqueResult ******************/
-		/**** md5 signature: 6740e85ed519d6758e40ab150f6cf865 ****/
+		/****** Transfer_TransferIterator::HasUniqueResult ******/
+		/****** md5 signature: 6740e85ed519d6758e40ab150f6cf865 ******/
 		%feature("compactdefaultargs") HasUniqueResult;
 		%feature("autodoc", "Return
 -------
@@ -3434,8 +3434,8 @@ Returns true if current item has a unique result.
 ") HasUniqueResult;
 		Standard_Boolean HasUniqueResult();
 
-		/****************** HasWarnings ******************/
-		/**** md5 signature: 62eec0bc4f8c89e1937e6ebe5c890272 ****/
+		/****** Transfer_TransferIterator::HasWarnings ******/
+		/****** md5 signature: 62eec0bc4f8c89e1937e6ebe5c890272 ******/
 		%feature("compactdefaultargs") HasWarnings;
 		%feature("autodoc", "Return
 -------
@@ -3447,8 +3447,8 @@ Returns true if warning messages are recorded with the current binder. they can 
 ") HasWarnings;
 		Standard_Boolean HasWarnings();
 
-		/****************** More ******************/
-		/**** md5 signature: f2144011648ae849666b28430a27a0ea ****/
+		/****** Transfer_TransferIterator::More ******/
+		/****** md5 signature: f2144011648ae849666b28430a27a0ea ******/
 		%feature("compactdefaultargs") More;
 		%feature("autodoc", "Return
 -------
@@ -3460,8 +3460,8 @@ Returns true if there are other items to iterate.
 ") More;
 		Standard_Boolean More();
 
-		/****************** Next ******************/
-		/**** md5 signature: f35c0df5f1d7c877986db18081404532 ****/
+		/****** Transfer_TransferIterator::Next ******/
+		/****** md5 signature: f35c0df5f1d7c877986db18081404532 ******/
 		%feature("compactdefaultargs") Next;
 		%feature("autodoc", "Return
 -------
@@ -3473,8 +3473,8 @@ Sets iteration to the next item.
 ") Next;
 		void Next();
 
-		/****************** Number ******************/
-		/**** md5 signature: 0049d1350ba9feffbbe0d130f3765410 ****/
+		/****** Transfer_TransferIterator::Number ******/
+		/****** md5 signature: 0049d1350ba9feffbbe0d130f3765410 ******/
 		%feature("compactdefaultargs") Number;
 		%feature("autodoc", "Return
 -------
@@ -3486,8 +3486,8 @@ Returns count of binders to be iterated.
 ") Number;
 		Standard_Integer Number();
 
-		/****************** ResultType ******************/
-		/**** md5 signature: 05a6797793486e19cd94de53a53b0ad7 ****/
+		/****** Transfer_TransferIterator::ResultType ******/
+		/****** md5 signature: 05a6797793486e19cd94de53a53b0ad7 ******/
 		%feature("compactdefaultargs") ResultType;
 		%feature("autodoc", "Return
 -------
@@ -3499,8 +3499,8 @@ Returns the type of the result of the current item, if unique. if no unique resu
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
-		/****************** SelectBinder ******************/
-		/**** md5 signature: 2c82f4aa316674dfa570b7eb99d3bde0 ****/
+		/****** Transfer_TransferIterator::SelectBinder ******/
+		/****** md5 signature: 2c82f4aa316674dfa570b7eb99d3bde0 ******/
 		%feature("compactdefaultargs") SelectBinder;
 		%feature("autodoc", "
 Parameters
@@ -3518,8 +3518,8 @@ Selects items on the type of binder: keep only binders which are of a given type
 ") SelectBinder;
 		void SelectBinder(const opencascade::handle<Standard_Type> & atype, const Standard_Boolean keep);
 
-		/****************** SelectItem ******************/
-		/**** md5 signature: c627e757f289a3bf535643d0f37dc088 ****/
+		/****** Transfer_TransferIterator::SelectItem ******/
+		/****** md5 signature: c627e757f289a3bf535643d0f37dc088 ******/
 		%feature("compactdefaultargs") SelectItem;
 		%feature("autodoc", "
 Parameters
@@ -3537,8 +3537,8 @@ Selects/unselect (according to <keep> an item designated by its rank <num> in th
 ") SelectItem;
 		void SelectItem(const Standard_Integer num, const Standard_Boolean keep);
 
-		/****************** SelectResult ******************/
-		/**** md5 signature: 42d4bd1677459c3b95b15ab4e6322f93 ****/
+		/****** Transfer_TransferIterator::SelectResult ******/
+		/****** md5 signature: 42d4bd1677459c3b95b15ab4e6322f93 ******/
 		%feature("compactdefaultargs") SelectResult;
 		%feature("autodoc", "
 Parameters
@@ -3556,8 +3556,8 @@ Selects items on the type of result. considers only unique results. considers dy
 ") SelectResult;
 		void SelectResult(const opencascade::handle<Standard_Type> & atype, const Standard_Boolean keep);
 
-		/****************** SelectUnique ******************/
-		/**** md5 signature: b7f115382ea39260170d68b3cf6fa384 ****/
+		/****** Transfer_TransferIterator::SelectUnique ******/
+		/****** md5 signature: b7f115382ea39260170d68b3cf6fa384 ******/
 		%feature("compactdefaultargs") SelectUnique;
 		%feature("autodoc", "
 Parameters
@@ -3574,8 +3574,8 @@ Select items according unicity: keep only unique results (if keep is true) or ke
 ") SelectUnique;
 		void SelectUnique(const Standard_Boolean keep);
 
-		/****************** Start ******************/
-		/**** md5 signature: f8a4dbf1e6f2cec0927301856b440be5 ****/
+		/****** Transfer_TransferIterator::Start ******/
+		/****** md5 signature: f8a4dbf1e6f2cec0927301856b440be5 ******/
 		%feature("compactdefaultargs") Start;
 		%feature("autodoc", "Return
 -------
@@ -3587,8 +3587,8 @@ Clears iteration in progress, to allow it to be restarted.
 ") Start;
 		void Start();
 
-		/****************** Status ******************/
-		/**** md5 signature: af810d21148ff7c88d270db082f6e47e ****/
+		/****** Transfer_TransferIterator::Status ******/
+		/****** md5 signature: af810d21148ff7c88d270db082f6e47e ******/
 		%feature("compactdefaultargs") Status;
 		%feature("autodoc", "Return
 -------
@@ -3600,8 +3600,8 @@ Returns execution status of current binder normal transfer corresponds to status
 ") Status;
 		Transfer_StatusExec Status();
 
-		/****************** TransientResult ******************/
-		/**** md5 signature: e45bdce8b328d0de242c1817ac28dff5 ****/
+		/****** Transfer_TransferIterator::TransientResult ******/
+		/****** md5 signature: e45bdce8b328d0de242c1817ac28dff5 ******/
 		%feature("compactdefaultargs") TransientResult;
 		%feature("autodoc", "Return
 -------
@@ -3613,8 +3613,8 @@ Returns the transient result of the current item if there is (else, returns a nu
 ") TransientResult;
 		const opencascade::handle<Standard_Transient> & TransientResult();
 
-		/****************** Value ******************/
-		/**** md5 signature: 1c6466500ab78c129af2bec42d07824f ****/
+		/****** Transfer_TransferIterator::Value ******/
+		/****** md5 signature: 1c6466500ab78c129af2bec42d07824f ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -3640,8 +3640,8 @@ Returns the current binder.
 ********************************/
 class Transfer_TransferOutput {
 	public:
-		/****************** Transfer_TransferOutput ******************/
-		/**** md5 signature: 03fff15a0a64ec9fe2d854f50dff2096 ****/
+		/****** Transfer_TransferOutput::Transfer_TransferOutput ******/
+		/****** md5 signature: 03fff15a0a64ec9fe2d854f50dff2096 ******/
 		%feature("compactdefaultargs") Transfer_TransferOutput;
 		%feature("autodoc", "
 Parameters
@@ -3659,8 +3659,8 @@ Creates a transferoutput ready to use, with a transientprocess.
 ") Transfer_TransferOutput;
 		 Transfer_TransferOutput(const opencascade::handle<Transfer_ActorOfTransientProcess> & actor, const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** Transfer_TransferOutput ******************/
-		/**** md5 signature: 4b89f60255b0ac584f32262753ec1711 ****/
+		/****** Transfer_TransferOutput::Transfer_TransferOutput ******/
+		/****** md5 signature: 4b89f60255b0ac584f32262753ec1711 ******/
 		%feature("compactdefaultargs") Transfer_TransferOutput;
 		%feature("autodoc", "
 Parameters
@@ -3678,8 +3678,8 @@ Creates a transferoutput from an already existing transientprocess, and a model 
 ") Transfer_TransferOutput;
 		 Transfer_TransferOutput(const opencascade::handle<Transfer_TransientProcess> & proc, const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** ListForStatus ******************/
-		/**** md5 signature: 4ce55ca144a32e7d7e82dc8e6e0441cc ****/
+		/****** Transfer_TransferOutput::ListForStatus ******/
+		/****** md5 signature: 4ce55ca144a32e7d7e82dc8e6e0441cc ******/
 		%feature("compactdefaultargs") ListForStatus;
 		%feature("autodoc", "
 Parameters
@@ -3697,8 +3697,8 @@ Returns the list of starting entities with these criteria: - <normal> false, giv
 ") ListForStatus;
 		Interface_EntityIterator ListForStatus(const Standard_Boolean normal, const Standard_Boolean roots = Standard_True);
 
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** Transfer_TransferOutput::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -3710,8 +3710,8 @@ Returns the starting model.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** ModelForStatus ******************/
-		/**** md5 signature: 0b2557037db5c1e870f84f83c96fdb72 ****/
+		/****** Transfer_TransferOutput::ModelForStatus ******/
+		/****** md5 signature: 0b2557037db5c1e870f84f83c96fdb72 ******/
 		%feature("compactdefaultargs") ModelForStatus;
 		%feature("autodoc", "
 Parameters
@@ -3730,8 +3730,8 @@ Fills a model with the list determined by listforstatus this model starts from s
 ") ModelForStatus;
 		opencascade::handle<Interface_InterfaceModel> ModelForStatus(const opencascade::handle<Interface_Protocol> & protocol, const Standard_Boolean normal, const Standard_Boolean roots = Standard_True);
 
-		/****************** Transfer ******************/
-		/**** md5 signature: 8e27747d8b599c3b80f2c1f3d03272cf ****/
+		/****** Transfer_TransferOutput::Transfer ******/
+		/****** md5 signature: 8e27747d8b599c3b80f2c1f3d03272cf ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -3749,8 +3749,8 @@ Transfer checks that all taken entities come from the same model, then calls tra
 ") Transfer;
 		void Transfer(const opencascade::handle<Standard_Transient> & obj, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransferRoots ******************/
-		/**** md5 signature: 61600e91fe0ddcbe06f4fcd277fb7c48 ****/
+		/****** Transfer_TransferOutput::TransferRoots ******/
+		/****** md5 signature: 61600e91fe0ddcbe06f4fcd277fb7c48 ******/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "
 Parameters
@@ -3768,8 +3768,8 @@ Runs transfer on the roots of the interface model the roots are computed with a 
 ") TransferRoots;
 		void TransferRoots(const opencascade::handle<Interface_Protocol> & protocol, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransferRoots ******************/
-		/**** md5 signature: da9746e970c0a8b791a4f5bb60c98105 ****/
+		/****** Transfer_TransferOutput::TransferRoots ******/
+		/****** md5 signature: da9746e970c0a8b791a4f5bb60c98105 ******/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "
 Parameters
@@ -3787,8 +3787,8 @@ Runs transfer on the roots defined by a graph of dependences (which detains also
 ") TransferRoots;
 		void TransferRoots(const Interface_Graph & G, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransferRoots ******************/
-		/**** md5 signature: 25bb247a7fd48e44af92ff0c96ed0a3c ****/
+		/****** Transfer_TransferOutput::TransferRoots ******/
+		/****** md5 signature: 25bb247a7fd48e44af92ff0c96ed0a3c ******/
 		%feature("compactdefaultargs") TransferRoots;
 		%feature("autodoc", "
 Parameters
@@ -3805,8 +3805,8 @@ Runs transfer on the roots of the interface model remark: the roots are computed
 ") TransferRoots;
 		void TransferRoots(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransientProcess ******************/
-		/**** md5 signature: cda5aa33365159e82c6213003de44419 ****/
+		/****** Transfer_TransferOutput::TransientProcess ******/
+		/****** md5 signature: cda5aa33365159e82c6213003de44419 ******/
 		%feature("compactdefaultargs") TransientProcess;
 		%feature("autodoc", "Return
 -------
@@ -3832,8 +3832,8 @@ Returns the transientprocess used to work.
 **************************************/
 class Transfer_ActorOfFinderProcess : public Transfer_ActorOfProcessForFinder {
 	public:
-		/****************** Transfer_ActorOfFinderProcess ******************/
-		/**** md5 signature: 7bb9ae8ae754ef772a43669f3406eaff ****/
+		/****** Transfer_ActorOfFinderProcess::Transfer_ActorOfFinderProcess ******/
+		/****** md5 signature: 7bb9ae8ae754ef772a43669f3406eaff ******/
 		%feature("compactdefaultargs") Transfer_ActorOfFinderProcess;
 		%feature("autodoc", "Return
 -------
@@ -3858,8 +3858,8 @@ No available documentation.
             $self->ModeTrans()=value;
             }
         };
-		/****************** Transfer ******************/
-		/**** md5 signature: 0fe03bef0cb14a70799d9821bdfd7128 ****/
+		/****** Transfer_ActorOfFinderProcess::Transfer ******/
+		/****** md5 signature: 0fe03bef0cb14a70799d9821bdfd7128 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -3878,8 +3878,8 @@ No available documentation.
 ") Transfer;
 		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Transfer_Finder> & start, const opencascade::handle<Transfer_FinderProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransferTransient ******************/
-		/**** md5 signature: 24fe8825c87ff896a8dc484d04499abd ****/
+		/****** Transfer_ActorOfFinderProcess::TransferTransient ******/
+		/****** md5 signature: 24fe8825c87ff896a8dc484d04499abd ******/
 		%feature("compactdefaultargs") TransferTransient;
 		%feature("autodoc", "
 Parameters
@@ -3898,8 +3898,8 @@ No available documentation.
 ") TransferTransient;
 		virtual opencascade::handle<Standard_Transient> TransferTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_FinderProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Transferring ******************/
-		/**** md5 signature: 3464a419c95c9be779a18d63ebe10db3 ****/
+		/****** Transfer_ActorOfFinderProcess::Transferring ******/
+		/****** md5 signature: 3464a419c95c9be779a18d63ebe10db3 ******/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "
 Parameters
@@ -3934,8 +3934,8 @@ No available documentation.
 *****************************************/
 class Transfer_ActorOfTransientProcess : public Transfer_ActorOfProcessForTransient {
 	public:
-		/****************** Transfer_ActorOfTransientProcess ******************/
-		/**** md5 signature: 3d05e6bcd3d347edb7b9af49cf89d070 ****/
+		/****** Transfer_ActorOfTransientProcess::Transfer_ActorOfTransientProcess ******/
+		/****** md5 signature: 3d05e6bcd3d347edb7b9af49cf89d070 ******/
 		%feature("compactdefaultargs") Transfer_ActorOfTransientProcess;
 		%feature("autodoc", "Return
 -------
@@ -3947,8 +3947,8 @@ No available documentation.
 ") Transfer_ActorOfTransientProcess;
 		 Transfer_ActorOfTransientProcess();
 
-		/****************** Transfer ******************/
-		/**** md5 signature: 61d6387dc674010808ec9a991a18e31d ****/
+		/****** Transfer_ActorOfTransientProcess::Transfer ******/
+		/****** md5 signature: 61d6387dc674010808ec9a991a18e31d ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -3967,8 +3967,8 @@ No available documentation.
 ") Transfer;
 		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransferTransient ******************/
-		/**** md5 signature: a9ca704c315b56c01b5f312b236d3746 ****/
+		/****** Transfer_ActorOfTransientProcess::TransferTransient ******/
+		/****** md5 signature: a9ca704c315b56c01b5f312b236d3746 ******/
 		%feature("compactdefaultargs") TransferTransient;
 		%feature("autodoc", "
 Parameters
@@ -3987,8 +3987,8 @@ No available documentation.
 ") TransferTransient;
 		virtual opencascade::handle<Standard_Transient> TransferTransient(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** Transferring ******************/
-		/**** md5 signature: 3d349a09aa7dbf438f1e3e4274f68f63 ****/
+		/****** Transfer_ActorOfTransientProcess::Transferring ******/
+		/****** md5 signature: 3d349a09aa7dbf438f1e3e4274f68f63 ******/
 		%feature("compactdefaultargs") Transferring;
 		%feature("autodoc", "
 Parameters
@@ -4023,8 +4023,8 @@ No available documentation.
 *******************************/
 class Transfer_FinderProcess : public Transfer_ProcessForFinder {
 	public:
-		/****************** Transfer_FinderProcess ******************/
-		/**** md5 signature: 6543e0b56743c35bf2edca1ce675466b ****/
+		/****** Transfer_FinderProcess::Transfer_FinderProcess ******/
+		/****** md5 signature: 6543e0b56743c35bf2edca1ce675466b ******/
 		%feature("compactdefaultargs") Transfer_FinderProcess;
 		%feature("autodoc", "
 Parameters
@@ -4041,8 +4041,8 @@ Sets finderprocess at initial state, with an initial size.
 ") Transfer_FinderProcess;
 		 Transfer_FinderProcess(const Standard_Integer nb = 10000);
 
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** Transfer_FinderProcess::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -4054,8 +4054,8 @@ Returns the model which can be used for context.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** NextMappedWithAttribute ******************/
-		/**** md5 signature: a8c8001b9761e03443a2cdb062e0a16f ****/
+		/****** Transfer_FinderProcess::NextMappedWithAttribute ******/
+		/****** md5 signature: a8c8001b9761e03443a2cdb062e0a16f ******/
 		%feature("compactdefaultargs") NextMappedWithAttribute;
 		%feature("autodoc", "
 Parameters
@@ -4073,8 +4073,8 @@ In the list of mapped items (between 1 and nbmapped), searches for the first map
 ") NextMappedWithAttribute;
 		Standard_Integer NextMappedWithAttribute(Standard_CString name, const Standard_Integer num0);
 
-		/****************** PrintStats ******************/
-		/**** md5 signature: a0a8d2448d0f09b0c479b104db5da053 ****/
+		/****** Transfer_FinderProcess::PrintStats ******/
+		/****** md5 signature: a0a8d2448d0f09b0c479b104db5da053 ******/
 		%feature("compactdefaultargs") PrintStats;
 		%feature("autodoc", "
 Parameters
@@ -4091,8 +4091,8 @@ Prints statistics on a given output, according mode.
 ") PrintStats;
 		void PrintStats(const Standard_Integer mode, std::ostream &OutValue);
 
-		/****************** PrintTrace ******************/
-		/**** md5 signature: 8380d2532e8d3f7819d2298d70b485c1 ****/
+		/****** Transfer_FinderProcess::PrintTrace ******/
+		/****** md5 signature: 8380d2532e8d3f7819d2298d70b485c1 ******/
 		%feature("compactdefaultargs") PrintTrace;
 		%feature("autodoc", "
 Parameters
@@ -4109,8 +4109,8 @@ Specific printing to trace a finder (by its method valuetype).
 ") PrintTrace;
 		virtual void PrintTrace(const opencascade::handle<Transfer_Finder> & start, std::ostream &OutValue);
 
-		/****************** SetModel ******************/
-		/**** md5 signature: 70328a97cec44e457500ce3b002efc49 ****/
+		/****** Transfer_FinderProcess::SetModel ******/
+		/****** md5 signature: 70328a97cec44e457500ce3b002efc49 ******/
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "
 Parameters
@@ -4127,8 +4127,8 @@ Sets an interfacemodel, which can be used during transfer for instance if a cont
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** TransientMapper ******************/
-		/**** md5 signature: bba75f1ee84dc872b5ce0fd3b61c5e38 ****/
+		/****** Transfer_FinderProcess::TransientMapper ******/
+		/****** md5 signature: bba75f1ee84dc872b5ce0fd3b61c5e38 ******/
 		%feature("compactdefaultargs") TransientMapper;
 		%feature("autodoc", "
 Parameters
@@ -4161,8 +4161,8 @@ Returns a transientmapper for a given transient object either <obj> is already m
 ********************************************/
 class Transfer_IteratorOfProcessForFinder : public Transfer_TransferIterator {
 	public:
-		/****************** Transfer_IteratorOfProcessForFinder ******************/
-		/**** md5 signature: d783e7a4df47396bdc8fdc69d99c7e82 ****/
+		/****** Transfer_IteratorOfProcessForFinder::Transfer_IteratorOfProcessForFinder ******/
+		/****** md5 signature: d783e7a4df47396bdc8fdc69d99c7e82 ******/
 		%feature("compactdefaultargs") Transfer_IteratorOfProcessForFinder;
 		%feature("autodoc", "
 Parameters
@@ -4179,8 +4179,8 @@ Creates an empty iterator if withstarts is true, each binder to be iterated will
 ") Transfer_IteratorOfProcessForFinder;
 		 Transfer_IteratorOfProcessForFinder(const Standard_Boolean withstarts);
 
-		/****************** Add ******************/
-		/**** md5 signature: f68e4cd22cf05819b22444f933cba064 ****/
+		/****** Transfer_IteratorOfProcessForFinder::Add ******/
+		/****** md5 signature: f68e4cd22cf05819b22444f933cba064 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -4197,8 +4197,8 @@ Adds a binder to the iteration list (construction) with no corresponding startin
 ") Add;
 		void Add(const opencascade::handle<Transfer_Binder> & binder);
 
-		/****************** Add ******************/
-		/**** md5 signature: 3829368d7c25902a6ca6c5f81bc0c127 ****/
+		/****** Transfer_IteratorOfProcessForFinder::Add ******/
+		/****** md5 signature: 3829368d7c25902a6ca6c5f81bc0c127 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -4216,8 +4216,8 @@ Adds a binder to the iteration list, associated with its corresponding starting 
 ") Add;
 		void Add(const opencascade::handle<Transfer_Binder> & binder, const opencascade::handle<Transfer_Finder> & start);
 
-		/****************** Filter ******************/
-		/**** md5 signature: 7dca65f9f52c4eef5fd7a100800ee481 ****/
+		/****** Transfer_IteratorOfProcessForFinder::Filter ******/
+		/****** md5 signature: 7dca65f9f52c4eef5fd7a100800ee481 ******/
 		%feature("compactdefaultargs") Filter;
 		%feature("autodoc", "
 Parameters
@@ -4235,8 +4235,8 @@ After having added all items, keeps or rejects items which are attached to start
 ") Filter;
 		void Filter(const opencascade::handle<Transfer_HSequenceOfFinder> & list, const Standard_Boolean keep = Standard_True);
 
-		/****************** HasStarting ******************/
-		/**** md5 signature: 1b1bfb78f506561ca067180b234691f6 ****/
+		/****** Transfer_IteratorOfProcessForFinder::HasStarting ******/
+		/****** md5 signature: 1b1bfb78f506561ca067180b234691f6 ******/
 		%feature("compactdefaultargs") HasStarting;
 		%feature("autodoc", "Return
 -------
@@ -4248,8 +4248,8 @@ Returns true if starting object is available (defined at creation time).
 ") HasStarting;
 		Standard_Boolean HasStarting();
 
-		/****************** Starting ******************/
-		/**** md5 signature: 26380a0cdbe90b58a344a44a1da254da ****/
+		/****** Transfer_IteratorOfProcessForFinder::Starting ******/
+		/****** md5 signature: 26380a0cdbe90b58a344a44a1da254da ******/
 		%feature("compactdefaultargs") Starting;
 		%feature("autodoc", "Return
 -------
@@ -4275,8 +4275,8 @@ Returns corresponding starting object.
 ***********************************************/
 class Transfer_IteratorOfProcessForTransient : public Transfer_TransferIterator {
 	public:
-		/****************** Transfer_IteratorOfProcessForTransient ******************/
-		/**** md5 signature: 3479b0d136a3c3b46f3735dd63a8b7b5 ****/
+		/****** Transfer_IteratorOfProcessForTransient::Transfer_IteratorOfProcessForTransient ******/
+		/****** md5 signature: 3479b0d136a3c3b46f3735dd63a8b7b5 ******/
 		%feature("compactdefaultargs") Transfer_IteratorOfProcessForTransient;
 		%feature("autodoc", "
 Parameters
@@ -4293,8 +4293,8 @@ Creates an empty iterator if withstarts is true, each binder to be iterated will
 ") Transfer_IteratorOfProcessForTransient;
 		 Transfer_IteratorOfProcessForTransient(const Standard_Boolean withstarts);
 
-		/****************** Add ******************/
-		/**** md5 signature: f68e4cd22cf05819b22444f933cba064 ****/
+		/****** Transfer_IteratorOfProcessForTransient::Add ******/
+		/****** md5 signature: f68e4cd22cf05819b22444f933cba064 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -4311,8 +4311,8 @@ Adds a binder to the iteration list (construction) with no corresponding startin
 ") Add;
 		void Add(const opencascade::handle<Transfer_Binder> & binder);
 
-		/****************** Add ******************/
-		/**** md5 signature: 9639a2f990316f7650c07d3ad3fbcfe4 ****/
+		/****** Transfer_IteratorOfProcessForTransient::Add ******/
+		/****** md5 signature: 9639a2f990316f7650c07d3ad3fbcfe4 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
@@ -4330,8 +4330,8 @@ Adds a binder to the iteration list, associated with its corresponding starting 
 ") Add;
 		void Add(const opencascade::handle<Transfer_Binder> & binder, const opencascade::handle<Standard_Transient> & start);
 
-		/****************** Filter ******************/
-		/**** md5 signature: 3a3817a192dd52120e799cdbbd427069 ****/
+		/****** Transfer_IteratorOfProcessForTransient::Filter ******/
+		/****** md5 signature: 3a3817a192dd52120e799cdbbd427069 ******/
 		%feature("compactdefaultargs") Filter;
 		%feature("autodoc", "
 Parameters
@@ -4349,8 +4349,8 @@ After having added all items, keeps or rejects items which are attached to start
 ") Filter;
 		void Filter(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Standard_Boolean keep = Standard_True);
 
-		/****************** HasStarting ******************/
-		/**** md5 signature: 1b1bfb78f506561ca067180b234691f6 ****/
+		/****** Transfer_IteratorOfProcessForTransient::HasStarting ******/
+		/****** md5 signature: 1b1bfb78f506561ca067180b234691f6 ******/
 		%feature("compactdefaultargs") HasStarting;
 		%feature("autodoc", "Return
 -------
@@ -4362,8 +4362,8 @@ Returns true if starting object is available (defined at creation time).
 ") HasStarting;
 		Standard_Boolean HasStarting();
 
-		/****************** Starting ******************/
-		/**** md5 signature: a57e499e7aa76b73a12df58540322b0e ****/
+		/****** Transfer_IteratorOfProcessForTransient::Starting ******/
+		/****** md5 signature: a57e499e7aa76b73a12df58540322b0e ******/
 		%feature("compactdefaultargs") Starting;
 		%feature("autodoc", "Return
 -------
@@ -4389,8 +4389,8 @@ Returns corresponding starting object.
 ********************************/
 class Transfer_MultipleBinder : public Transfer_Binder {
 	public:
-		/****************** Transfer_MultipleBinder ******************/
-		/**** md5 signature: a7b41247ba0ca79546043ab1f3e5fb45 ****/
+		/****** Transfer_MultipleBinder::Transfer_MultipleBinder ******/
+		/****** md5 signature: a7b41247ba0ca79546043ab1f3e5fb45 ******/
 		%feature("compactdefaultargs") Transfer_MultipleBinder;
 		%feature("autodoc", "Return
 -------
@@ -4402,8 +4402,8 @@ Normal standard constructor, creates an empty multiplebinder.
 ") Transfer_MultipleBinder;
 		 Transfer_MultipleBinder();
 
-		/****************** AddResult ******************/
-		/**** md5 signature: 26a5caa60fcbd70186b2bf4eb98b9e52 ****/
+		/****** Transfer_MultipleBinder::AddResult ******/
+		/****** md5 signature: 26a5caa60fcbd70186b2bf4eb98b9e52 ******/
 		%feature("compactdefaultargs") AddResult;
 		%feature("autodoc", "
 Parameters
@@ -4420,8 +4420,8 @@ Adds a new item to the multiple result.
 ") AddResult;
 		void AddResult(const opencascade::handle<Standard_Transient> & res);
 
-		/****************** IsMultiple ******************/
-		/**** md5 signature: 17145d71daab4028b6c7195d5ff772ce ****/
+		/****** Transfer_MultipleBinder::IsMultiple ******/
+		/****** md5 signature: 17145d71daab4028b6c7195d5ff772ce ******/
 		%feature("compactdefaultargs") IsMultiple;
 		%feature("autodoc", "Return
 -------
@@ -4433,8 +4433,8 @@ Returns true if a starting object is bound with several results: here, returns a
 ") IsMultiple;
 		virtual Standard_Boolean IsMultiple();
 
-		/****************** MultipleResult ******************/
-		/**** md5 signature: 9c5ec29750579258267602ea00ec37c5 ****/
+		/****** Transfer_MultipleBinder::MultipleResult ******/
+		/****** md5 signature: 9c5ec29750579258267602ea00ec37c5 ******/
 		%feature("compactdefaultargs") MultipleResult;
 		%feature("autodoc", "Return
 -------
@@ -4446,8 +4446,8 @@ Returns the multiple result, if it is defined (at least one item). else, returns
 ") MultipleResult;
 		opencascade::handle<TColStd_HSequenceOfTransient> MultipleResult();
 
-		/****************** NbResults ******************/
-		/**** md5 signature: d68eae21e09d79bb9e5b28df0fd8b0fd ****/
+		/****** Transfer_MultipleBinder::NbResults ******/
+		/****** md5 signature: d68eae21e09d79bb9e5b28df0fd8b0fd ******/
 		%feature("compactdefaultargs") NbResults;
 		%feature("autodoc", "Return
 -------
@@ -4459,8 +4459,8 @@ Returns the actual count of recorded (transient) results.
 ") NbResults;
 		Standard_Integer NbResults();
 
-		/****************** ResultType ******************/
-		/**** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ****/
+		/****** Transfer_MultipleBinder::ResultType ******/
+		/****** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ******/
 		%feature("compactdefaultargs") ResultType;
 		%feature("autodoc", "Return
 -------
@@ -4472,8 +4472,8 @@ Returns the type permitted for results, i.e. here transient.
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
-		/****************** ResultTypeName ******************/
-		/**** md5 signature: 7c976254948a22ef88ad8fdce635402f ****/
+		/****** Transfer_MultipleBinder::ResultTypeName ******/
+		/****** md5 signature: 7c976254948a22ef88ad8fdce635402f ******/
 		%feature("compactdefaultargs") ResultTypeName;
 		%feature("autodoc", "Return
 -------
@@ -4485,8 +4485,8 @@ Returns the name of the type which characterizes the result here, returns '(list
 ") ResultTypeName;
 		Standard_CString ResultTypeName();
 
-		/****************** ResultValue ******************/
-		/**** md5 signature: b7cf2832698e64e96726045e72479981 ****/
+		/****** Transfer_MultipleBinder::ResultValue ******/
+		/****** md5 signature: b7cf2832698e64e96726045e72479981 ******/
 		%feature("compactdefaultargs") ResultValue;
 		%feature("autodoc", "
 Parameters
@@ -4503,8 +4503,8 @@ Returns the value of the recorded result n0 <num>.
 ") ResultValue;
 		opencascade::handle<Standard_Transient> ResultValue(const Standard_Integer num);
 
-		/****************** SetMultipleResult ******************/
-		/**** md5 signature: 5172db3db7d4b82dac155e2bf0adeb18 ****/
+		/****** Transfer_MultipleBinder::SetMultipleResult ******/
+		/****** md5 signature: 5172db3db7d4b82dac155e2bf0adeb18 ******/
 		%feature("compactdefaultargs") SetMultipleResult;
 		%feature("autodoc", "
 Parameters
@@ -4537,8 +4537,8 @@ Defines a binding with a multiple result, given as a sequence error if a unique 
 *****************************************/
 class Transfer_SimpleBinderOfTransient : public Transfer_Binder {
 	public:
-		/****************** Transfer_SimpleBinderOfTransient ******************/
-		/**** md5 signature: 83ba599c048412012db5337e7fe1879c ****/
+		/****** Transfer_SimpleBinderOfTransient::Transfer_SimpleBinderOfTransient ******/
+		/****** md5 signature: 83ba599c048412012db5337e7fe1879c ******/
 		%feature("compactdefaultargs") Transfer_SimpleBinderOfTransient;
 		%feature("autodoc", "Return
 -------
@@ -4550,8 +4550,8 @@ Creates an empty simplebinderoftransient returns true if a starting object is bo
 ") Transfer_SimpleBinderOfTransient;
 		 Transfer_SimpleBinderOfTransient();
 
-		/****************** GetTypedResult ******************/
-		/**** md5 signature: ca1f1a878bdab3a27a7e99457abedbaa ****/
+		/****** Transfer_SimpleBinderOfTransient::GetTypedResult ******/
+		/****** md5 signature: ca1f1a878bdab3a27a7e99457abedbaa ******/
 		%feature("compactdefaultargs") GetTypedResult;
 		%feature("autodoc", "
 Parameters
@@ -4570,8 +4570,8 @@ Returns a transient result according to its type (iskind) i.e. the result itself
 ") GetTypedResult;
 		static Standard_Boolean GetTypedResult(const opencascade::handle<Transfer_Binder> & bnd, const opencascade::handle<Standard_Type> & atype, opencascade::handle<Standard_Transient> & res);
 
-		/****************** Result ******************/
-		/**** md5 signature: 95c161d526ef1674cc23bca685805385 ****/
+		/****** Transfer_SimpleBinderOfTransient::Result ******/
+		/****** md5 signature: 95c161d526ef1674cc23bca685805385 ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
@@ -4583,8 +4583,8 @@ Returns the defined result, if there is one.
 ") Result;
 		const opencascade::handle<Standard_Transient> & Result();
 
-		/****************** ResultType ******************/
-		/**** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ****/
+		/****** Transfer_SimpleBinderOfTransient::ResultType ******/
+		/****** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ******/
 		%feature("compactdefaultargs") ResultType;
 		%feature("autodoc", "Return
 -------
@@ -4596,8 +4596,8 @@ Returns the effective (dynamic) type of the result (standard_transient if no res
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
-		/****************** ResultTypeName ******************/
-		/**** md5 signature: 7c976254948a22ef88ad8fdce635402f ****/
+		/****** Transfer_SimpleBinderOfTransient::ResultTypeName ******/
+		/****** md5 signature: 7c976254948a22ef88ad8fdce635402f ******/
 		%feature("compactdefaultargs") ResultTypeName;
 		%feature("autodoc", "Return
 -------
@@ -4609,8 +4609,8 @@ Returns the effective name of (dynamic) type of the result (void) if no result i
 ") ResultTypeName;
 		Standard_CString ResultTypeName();
 
-		/****************** SetResult ******************/
-		/**** md5 signature: a91ed353e0cbe1f40e4af5c64aac3b28 ****/
+		/****** Transfer_SimpleBinderOfTransient::SetResult ******/
+		/****** md5 signature: a91ed353e0cbe1f40e4af5c64aac3b28 ******/
 		%feature("compactdefaultargs") SetResult;
 		%feature("autodoc", "
 Parameters
@@ -4643,8 +4643,8 @@ Defines the result.
 *************************************/
 class Transfer_TransientListBinder : public Transfer_Binder {
 	public:
-		/****************** Transfer_TransientListBinder ******************/
-		/**** md5 signature: 985ec942a6a31b56c14a317041081ab8 ****/
+		/****** Transfer_TransientListBinder::Transfer_TransientListBinder ******/
+		/****** md5 signature: 985ec942a6a31b56c14a317041081ab8 ******/
 		%feature("compactdefaultargs") Transfer_TransientListBinder;
 		%feature("autodoc", "Return
 -------
@@ -4656,8 +4656,8 @@ No available documentation.
 ") Transfer_TransientListBinder;
 		 Transfer_TransientListBinder();
 
-		/****************** Transfer_TransientListBinder ******************/
-		/**** md5 signature: f265a0b8c24820f23ed51a427318d965 ****/
+		/****** Transfer_TransientListBinder::Transfer_TransientListBinder ******/
+		/****** md5 signature: f265a0b8c24820f23ed51a427318d965 ******/
 		%feature("compactdefaultargs") Transfer_TransientListBinder;
 		%feature("autodoc", "
 Parameters
@@ -4674,8 +4674,8 @@ No available documentation.
 ") Transfer_TransientListBinder;
 		 Transfer_TransientListBinder(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
-		/****************** AddResult ******************/
-		/**** md5 signature: 26a5caa60fcbd70186b2bf4eb98b9e52 ****/
+		/****** Transfer_TransientListBinder::AddResult ******/
+		/****** md5 signature: 26a5caa60fcbd70186b2bf4eb98b9e52 ******/
 		%feature("compactdefaultargs") AddResult;
 		%feature("autodoc", "
 Parameters
@@ -4692,8 +4692,8 @@ Adds an item to the result list.
 ") AddResult;
 		void AddResult(const opencascade::handle<Standard_Transient> & res);
 
-		/****************** IsMultiple ******************/
-		/**** md5 signature: 17145d71daab4028b6c7195d5ff772ce ****/
+		/****** Transfer_TransientListBinder::IsMultiple ******/
+		/****** md5 signature: 17145d71daab4028b6c7195d5ff772ce ******/
 		%feature("compactdefaultargs") IsMultiple;
 		%feature("autodoc", "Return
 -------
@@ -4705,8 +4705,8 @@ No available documentation.
 ") IsMultiple;
 		virtual Standard_Boolean IsMultiple();
 
-		/****************** NbTransients ******************/
-		/**** md5 signature: 9436b9a550cdb03fdd33d4f80aca7526 ****/
+		/****** Transfer_TransientListBinder::NbTransients ******/
+		/****** md5 signature: 9436b9a550cdb03fdd33d4f80aca7526 ******/
 		%feature("compactdefaultargs") NbTransients;
 		%feature("autodoc", "Return
 -------
@@ -4718,8 +4718,8 @@ No available documentation.
 ") NbTransients;
 		Standard_Integer NbTransients();
 
-		/****************** Result ******************/
-		/**** md5 signature: 2bd6e9158d943b64479fab613acb4c84 ****/
+		/****** Transfer_TransientListBinder::Result ******/
+		/****** md5 signature: 2bd6e9158d943b64479fab613acb4c84 ******/
 		%feature("compactdefaultargs") Result;
 		%feature("autodoc", "Return
 -------
@@ -4731,8 +4731,8 @@ No available documentation.
 ") Result;
 		opencascade::handle<TColStd_HSequenceOfTransient> Result();
 
-		/****************** ResultType ******************/
-		/**** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ****/
+		/****** Transfer_TransientListBinder::ResultType ******/
+		/****** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ******/
 		%feature("compactdefaultargs") ResultType;
 		%feature("autodoc", "Return
 -------
@@ -4744,8 +4744,8 @@ No available documentation.
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
-		/****************** ResultTypeName ******************/
-		/**** md5 signature: 7c976254948a22ef88ad8fdce635402f ****/
+		/****** Transfer_TransientListBinder::ResultTypeName ******/
+		/****** md5 signature: 7c976254948a22ef88ad8fdce635402f ******/
 		%feature("compactdefaultargs") ResultTypeName;
 		%feature("autodoc", "Return
 -------
@@ -4757,8 +4757,8 @@ No available documentation.
 ") ResultTypeName;
 		Standard_CString ResultTypeName();
 
-		/****************** SetResult ******************/
-		/**** md5 signature: 9b9f3aa6b0da2cde777cca0377073974 ****/
+		/****** Transfer_TransientListBinder::SetResult ******/
+		/****** md5 signature: 9b9f3aa6b0da2cde777cca0377073974 ******/
 		%feature("compactdefaultargs") SetResult;
 		%feature("autodoc", "
 Parameters
@@ -4776,8 +4776,8 @@ Changes an already defined sub-result.
 ") SetResult;
 		void SetResult(const Standard_Integer num, const opencascade::handle<Standard_Transient> & res);
 
-		/****************** Transient ******************/
-		/**** md5 signature: 907a24a1042c0d2e6d96d99e25c98f79 ****/
+		/****** Transfer_TransientListBinder::Transient ******/
+		/****** md5 signature: 907a24a1042c0d2e6d96d99e25c98f79 ******/
 		%feature("compactdefaultargs") Transient;
 		%feature("autodoc", "
 Parameters
@@ -4810,8 +4810,8 @@ No available documentation.
 *********************************/
 class Transfer_TransientMapper : public Transfer_Finder {
 	public:
-		/****************** Transfer_TransientMapper ******************/
-		/**** md5 signature: 8b03be42c0b0bd26c5f38c74de7882a5 ****/
+		/****** Transfer_TransientMapper::Transfer_TransientMapper ******/
+		/****** md5 signature: 8b03be42c0b0bd26c5f38c74de7882a5 ******/
 		%feature("compactdefaultargs") Transfer_TransientMapper;
 		%feature("autodoc", "
 Parameters
@@ -4828,8 +4828,8 @@ Creates a mapper with a value. this value can then not be changed. it is used by
 ") Transfer_TransientMapper;
 		 Transfer_TransientMapper(const opencascade::handle<Standard_Transient> & akey);
 
-		/****************** Equates ******************/
-		/**** md5 signature: 2bde7773554342cacb5dfc4ee8d4c0f3 ****/
+		/****** Transfer_TransientMapper::Equates ******/
+		/****** md5 signature: 2bde7773554342cacb5dfc4ee8d4c0f3 ******/
 		%feature("compactdefaultargs") Equates;
 		%feature("autodoc", "
 Parameters
@@ -4846,8 +4846,8 @@ Specific testof equality: defined as false if <other> has not the same true type
 ") Equates;
 		Standard_Boolean Equates(const opencascade::handle<Transfer_Finder> & other);
 
-		/****************** Value ******************/
-		/**** md5 signature: b1443f8da90189a74241bf586c57fc63 ****/
+		/****** Transfer_TransientMapper::Value ******/
+		/****** md5 signature: b1443f8da90189a74241bf586c57fc63 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "Return
 -------
@@ -4859,8 +4859,8 @@ Returns the contained value.
 ") Value;
 		const opencascade::handle<Standard_Transient> & Value();
 
-		/****************** ValueType ******************/
-		/**** md5 signature: 40aa6e907b5cbe34817c19e20e6dde6e ****/
+		/****** Transfer_TransientMapper::ValueType ******/
+		/****** md5 signature: 40aa6e907b5cbe34817c19e20e6dde6e ******/
 		%feature("compactdefaultargs") ValueType;
 		%feature("autodoc", "Return
 -------
@@ -4872,8 +4872,8 @@ Returns the type of the value. by default, returns the dynamictype of <self>, bu
 ") ValueType;
 		virtual opencascade::handle<Standard_Type> ValueType();
 
-		/****************** ValueTypeName ******************/
-		/**** md5 signature: d49d824d6a98cbb182d37bee73d4be07 ****/
+		/****** Transfer_TransientMapper::ValueTypeName ******/
+		/****** md5 signature: d49d824d6a98cbb182d37bee73d4be07 ******/
 		%feature("compactdefaultargs") ValueTypeName;
 		%feature("autodoc", "Return
 -------
@@ -4901,8 +4901,8 @@ Returns the name of the type of the value. default is name of valuetype, unless 
 **********************************/
 class Transfer_TransientProcess : public Transfer_ProcessForTransient {
 	public:
-		/****************** Transfer_TransientProcess ******************/
-		/**** md5 signature: e2a3c82cef0311477806faa8bed05f28 ****/
+		/****** Transfer_TransientProcess::Transfer_TransientProcess ******/
+		/****** md5 signature: e2a3c82cef0311477806faa8bed05f28 ******/
 		%feature("compactdefaultargs") Transfer_TransientProcess;
 		%feature("autodoc", "
 Parameters
@@ -4919,8 +4919,8 @@ Sets transientprocess at initial state, with an initial size.
 ") Transfer_TransientProcess;
 		 Transfer_TransientProcess(const Standard_Integer nb = 10000);
 
-		/****************** CheckNum ******************/
-		/**** md5 signature: 1206215b29038b8bb2c684de751aa167 ****/
+		/****** Transfer_TransientProcess::CheckNum ******/
+		/****** md5 signature: 1206215b29038b8bb2c684de751aa167 ******/
 		%feature("compactdefaultargs") CheckNum;
 		%feature("autodoc", "
 Parameters
@@ -4937,8 +4937,8 @@ Specific number of a starting object for check-list: number in model.
 ") CheckNum;
 		virtual Standard_Integer CheckNum(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Context ******************/
-		/**** md5 signature: b81edf1d9ad3c29d489a2eda3dedcb1f ****/
+		/****** Transfer_TransientProcess::Context ******/
+		/****** md5 signature: b81edf1d9ad3c29d489a2eda3dedcb1f ******/
 		%feature("compactdefaultargs") Context;
 		%feature("autodoc", "Return
 -------
@@ -4950,8 +4950,8 @@ Returns (modifiable) the whole definition of context rather for internal use (ex
 ") Context;
 		NCollection_DataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient>> & Context();
 
-		/****************** GetContext ******************/
-		/**** md5 signature: 35a3fb181b40ac50cc3276aad484d0e6 ****/
+		/****** Transfer_TransientProcess::GetContext ******/
+		/****** md5 signature: 35a3fb181b40ac50cc3276aad484d0e6 ******/
 		%feature("compactdefaultargs") GetContext;
 		%feature("autodoc", "
 Parameters
@@ -4970,8 +4970,8 @@ Returns the context attached to a name, if set and if it is kind of the type, el
 ") GetContext;
 		Standard_Boolean GetContext(Standard_CString name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & ctx);
 
-		/****************** Graph ******************/
-		/**** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ****/
+		/****** Transfer_TransientProcess::Graph ******/
+		/****** md5 signature: 6a234e0475ae0da1c7d268d231e44a78 ******/
 		%feature("compactdefaultargs") Graph;
 		%feature("autodoc", "Return
 -------
@@ -4983,8 +4983,8 @@ No available documentation.
 ") Graph;
 		const Interface_Graph & Graph();
 
-		/****************** HGraph ******************/
-		/**** md5 signature: f11ddef29a65063d0492ed4367a78169 ****/
+		/****** Transfer_TransientProcess::HGraph ******/
+		/****** md5 signature: f11ddef29a65063d0492ed4367a78169 ******/
 		%feature("compactdefaultargs") HGraph;
 		%feature("autodoc", "Return
 -------
@@ -4996,8 +4996,8 @@ No available documentation.
 ") HGraph;
 		opencascade::handle<Interface_HGraph> HGraph();
 
-		/****************** HasGraph ******************/
-		/**** md5 signature: 9e75b58a6854bcc374aebe383c2cf582 ****/
+		/****** Transfer_TransientProcess::HasGraph ******/
+		/****** md5 signature: 9e75b58a6854bcc374aebe383c2cf582 ******/
 		%feature("compactdefaultargs") HasGraph;
 		%feature("autodoc", "Return
 -------
@@ -5009,8 +5009,8 @@ No available documentation.
 ") HasGraph;
 		Standard_Boolean HasGraph();
 
-		/****************** IsDataFail ******************/
-		/**** md5 signature: abfb0c083f555db3379af2b0895f676c ****/
+		/****** Transfer_TransientProcess::IsDataFail ******/
+		/****** md5 signature: abfb0c083f555db3379af2b0895f676c ******/
 		%feature("compactdefaultargs") IsDataFail;
 		%feature("autodoc", "
 Parameters
@@ -5027,8 +5027,8 @@ Tells if an entity fails on data checking (load time, syntactic, or semantic che
 ") IsDataFail;
 		Standard_Boolean IsDataFail(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** IsDataLoaded ******************/
-		/**** md5 signature: 0cfb430e098039c6765591e4d04235fd ****/
+		/****** Transfer_TransientProcess::IsDataLoaded ******/
+		/****** md5 signature: 0cfb430e098039c6765591e4d04235fd ******/
 		%feature("compactdefaultargs") IsDataLoaded;
 		%feature("autodoc", "
 Parameters
@@ -5045,8 +5045,8 @@ Tells if an entity is well loaded from file (even if its data fail on checking, 
 ") IsDataLoaded;
 		Standard_Boolean IsDataLoaded(const opencascade::handle<Standard_Transient> & ent);
 
-		/****************** Model ******************/
-		/**** md5 signature: aa6e85fbf0fa37084c702759534fae8b ****/
+		/****** Transfer_TransientProcess::Model ******/
+		/****** md5 signature: aa6e85fbf0fa37084c702759534fae8b ******/
 		%feature("compactdefaultargs") Model;
 		%feature("autodoc", "Return
 -------
@@ -5058,8 +5058,8 @@ Returns the model used for starttrace.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
-		/****************** PrintStats ******************/
-		/**** md5 signature: a0a8d2448d0f09b0c479b104db5da053 ****/
+		/****** Transfer_TransientProcess::PrintStats ******/
+		/****** md5 signature: a0a8d2448d0f09b0c479b104db5da053 ******/
 		%feature("compactdefaultargs") PrintStats;
 		%feature("autodoc", "
 Parameters
@@ -5076,8 +5076,8 @@ Prints statistics on a given output, according mode.
 ") PrintStats;
 		void PrintStats(const Standard_Integer mode, std::ostream &OutValue);
 
-		/****************** PrintTrace ******************/
-		/**** md5 signature: 52ba67cfb212004a5323c79b188c104d ****/
+		/****** Transfer_TransientProcess::PrintTrace ******/
+		/****** md5 signature: 52ba67cfb212004a5323c79b188c104d ******/
 		%feature("compactdefaultargs") PrintTrace;
 		%feature("autodoc", "
 Parameters
@@ -5094,8 +5094,8 @@ Specific printing to trace an entity: prints label and type (if model is set).
 ") PrintTrace;
 		virtual void PrintTrace(const opencascade::handle<Standard_Transient> & start, std::ostream &OutValue);
 
-		/****************** RootsForTransfer ******************/
-		/**** md5 signature: c79152a32ae4b6ec28313285c230ae8b ****/
+		/****** Transfer_TransientProcess::RootsForTransfer ******/
+		/****** md5 signature: c79152a32ae4b6ec28313285c230ae8b ******/
 		%feature("compactdefaultargs") RootsForTransfer;
 		%feature("autodoc", "Return
 -------
@@ -5107,8 +5107,8 @@ No available documentation.
 ") RootsForTransfer;
 		opencascade::handle<TColStd_HSequenceOfTransient> RootsForTransfer();
 
-		/****************** SetContext ******************/
-		/**** md5 signature: 687f3566e8f038cd942291d8a4bdf6b8 ****/
+		/****** Transfer_TransientProcess::SetContext ******/
+		/****** md5 signature: 687f3566e8f038cd942291d8a4bdf6b8 ******/
 		%feature("compactdefaultargs") SetContext;
 		%feature("autodoc", "
 Parameters
@@ -5126,8 +5126,8 @@ Sets a context: according to receiving appli, to be interpreted by the actor.
 ") SetContext;
 		void SetContext(Standard_CString name, const opencascade::handle<Standard_Transient> & ctx);
 
-		/****************** SetGraph ******************/
-		/**** md5 signature: c0b17a1913a1fcbe531cbabf35a93da0 ****/
+		/****** Transfer_TransientProcess::SetGraph ******/
+		/****** md5 signature: c0b17a1913a1fcbe531cbabf35a93da0 ******/
 		%feature("compactdefaultargs") SetGraph;
 		%feature("autodoc", "
 Parameters
@@ -5144,8 +5144,8 @@ Sets a graph: superseedes setmodel if already done.
 ") SetGraph;
 		void SetGraph(const opencascade::handle<Interface_HGraph> & HG);
 
-		/****************** SetModel ******************/
-		/**** md5 signature: 70328a97cec44e457500ce3b002efc49 ****/
+		/****** Transfer_TransientProcess::SetModel ******/
+		/****** md5 signature: 70328a97cec44e457500ce3b002efc49 ******/
 		%feature("compactdefaultargs") SetModel;
 		%feature("autodoc", "
 Parameters
@@ -5162,8 +5162,8 @@ Sets an interfacemodel, used by starttrace, checklist, queries on integrity, to 
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
-		/****************** TypedSharings ******************/
-		/**** md5 signature: 63d93577cdbacb42c1cd116ed1083072 ****/
+		/****** Transfer_TransientProcess::TypedSharings ******/
+		/****** md5 signature: 63d93577cdbacb42c1cd116ed1083072 ******/
 		%feature("compactdefaultargs") TypedSharings;
 		%feature("autodoc", "
 Parameters
@@ -5197,8 +5197,8 @@ Returns the list of sharings entities, at any level, which are kind of a given t
 ****************************/
 class Transfer_VoidBinder : public Transfer_Binder {
 	public:
-		/****************** Transfer_VoidBinder ******************/
-		/**** md5 signature: 1e864ae9b50ee16142e62aa5c24b1ca0 ****/
+		/****** Transfer_VoidBinder::Transfer_VoidBinder ******/
+		/****** md5 signature: 1e864ae9b50ee16142e62aa5c24b1ca0 ******/
 		%feature("compactdefaultargs") Transfer_VoidBinder;
 		%feature("autodoc", "Return
 -------
@@ -5210,8 +5210,8 @@ A voidbinder is not multiple (remark: it is not simple too) but it can bring nex
 ") Transfer_VoidBinder;
 		 Transfer_VoidBinder();
 
-		/****************** ResultType ******************/
-		/**** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ****/
+		/****** Transfer_VoidBinder::ResultType ******/
+		/****** md5 signature: 3e5db9429dee8b51366aef182b0d44a1 ******/
 		%feature("compactdefaultargs") ResultType;
 		%feature("autodoc", "Return
 -------
@@ -5223,8 +5223,8 @@ While a voidbinder admits no result, its resulttype returns the type of <self>.
 ") ResultType;
 		opencascade::handle<Standard_Type> ResultType();
 
-		/****************** ResultTypeName ******************/
-		/**** md5 signature: 7c976254948a22ef88ad8fdce635402f ****/
+		/****** Transfer_VoidBinder::ResultTypeName ******/
+		/****** md5 signature: 7c976254948a22ef88ad8fdce635402f ******/
 		%feature("compactdefaultargs") ResultTypeName;
 		%feature("autodoc", "Return
 -------
@@ -5252,8 +5252,8 @@ Returns '(void)'.
 *******************************/
 class Transfer_ActorDispatch : public Transfer_ActorOfTransientProcess {
 	public:
-		/****************** Transfer_ActorDispatch ******************/
-		/**** md5 signature: 152a07092c4c6159bd1b6d4e1036cd46 ****/
+		/****** Transfer_ActorDispatch::Transfer_ActorDispatch ******/
+		/****** md5 signature: 152a07092c4c6159bd1b6d4e1036cd46 ******/
 		%feature("compactdefaultargs") Transfer_ActorDispatch;
 		%feature("autodoc", "
 Parameters
@@ -5271,8 +5271,8 @@ Creates an actordispatch from a model. works with a general service library, giv
 ") Transfer_ActorDispatch;
 		 Transfer_ActorDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel, const Interface_GeneralLib & lib);
 
-		/****************** Transfer_ActorDispatch ******************/
-		/**** md5 signature: eb926ba71ad0fbf6df623ff34c9ccbe0 ****/
+		/****** Transfer_ActorDispatch::Transfer_ActorDispatch ******/
+		/****** md5 signature: eb926ba71ad0fbf6df623ff34c9ccbe0 ******/
 		%feature("compactdefaultargs") Transfer_ActorDispatch;
 		%feature("autodoc", "
 Parameters
@@ -5290,8 +5290,8 @@ Same as above, but library is defined through a protocol.
 ") Transfer_ActorDispatch;
 		 Transfer_ActorDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel, const opencascade::handle<Interface_Protocol> & protocol);
 
-		/****************** Transfer_ActorDispatch ******************/
-		/**** md5 signature: c14d8969419bcc9b1bdd4b3c583befc3 ****/
+		/****** Transfer_ActorDispatch::Transfer_ActorDispatch ******/
+		/****** md5 signature: c14d8969419bcc9b1bdd4b3c583befc3 ******/
 		%feature("compactdefaultargs") Transfer_ActorDispatch;
 		%feature("autodoc", "
 Parameters
@@ -5308,8 +5308,8 @@ Same as above, but works with the active protocol.
 ") Transfer_ActorDispatch;
 		 Transfer_ActorDispatch(const opencascade::handle<Interface_InterfaceModel> & amodel);
 
-		/****************** AddActor ******************/
-		/**** md5 signature: 017fc477d6292d482b50dd07c5f26ad2 ****/
+		/****** Transfer_ActorDispatch::AddActor ******/
+		/****** md5 signature: 017fc477d6292d482b50dd07c5f26ad2 ******/
 		%feature("compactdefaultargs") AddActor;
 		%feature("autodoc", "
 Parameters
@@ -5326,8 +5326,8 @@ Utility which adds an actor to the default <self> (it calls setactor from the tr
 ") AddActor;
 		void AddActor(const opencascade::handle<Transfer_ActorOfTransientProcess> & actor);
 
-		/****************** Transfer ******************/
-		/**** md5 signature: e4303fa9409798bd20ec402569b65ae8 ****/
+		/****** Transfer_ActorDispatch::Transfer ******/
+		/****** md5 signature: e4303fa9409798bd20ec402569b65ae8 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
@@ -5346,8 +5346,8 @@ Specific action: it calls the method transfer from copytool i.e. the general ser
 ") Transfer;
 		virtual opencascade::handle<Transfer_Binder> Transfer(const opencascade::handle<Standard_Transient> & start, const opencascade::handle<Transfer_TransientProcess> & TP, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-		/****************** TransferDispatch ******************/
-		/**** md5 signature: d8c37ebfb4344c5658d80d5678e6d3a2 ****/
+		/****** Transfer_ActorDispatch::TransferDispatch ******/
+		/****** md5 signature: d8c37ebfb4344c5658d80d5678e6d3a2 ******/
 		%feature("compactdefaultargs") TransferDispatch;
 		%feature("autodoc", "Return
 -------
@@ -5375,8 +5375,8 @@ Returns the transferdispatch, which does the work, records the intermediate data
 ******************************************/
 class Transfer_BinderOfTransientInteger : public Transfer_SimpleBinderOfTransient {
 	public:
-		/****************** Transfer_BinderOfTransientInteger ******************/
-		/**** md5 signature: 75a5cfc9d6db709047a5433470ef2411 ****/
+		/****** Transfer_BinderOfTransientInteger::Transfer_BinderOfTransientInteger ******/
+		/****** md5 signature: 75a5cfc9d6db709047a5433470ef2411 ******/
 		%feature("compactdefaultargs") Transfer_BinderOfTransientInteger;
 		%feature("autodoc", "Return
 -------
@@ -5388,8 +5388,8 @@ Creates an empty binderoftransientinteger; default value for the integer part is
 ") Transfer_BinderOfTransientInteger;
 		 Transfer_BinderOfTransientInteger();
 
-		/****************** Integer ******************/
-		/**** md5 signature: 5ca25bbf05344000d69837c81499cc7b ****/
+		/****** Transfer_BinderOfTransientInteger::Integer ******/
+		/****** md5 signature: 5ca25bbf05344000d69837c81499cc7b ******/
 		%feature("compactdefaultargs") Integer;
 		%feature("autodoc", "Return
 -------
@@ -5401,8 +5401,8 @@ Returns the value set for the integer part.
 ") Integer;
 		Standard_Integer Integer();
 
-		/****************** SetInteger ******************/
-		/**** md5 signature: 511ab2dde7e3346c66a01e27176236e9 ****/
+		/****** Transfer_BinderOfTransientInteger::SetInteger ******/
+		/****** md5 signature: 511ab2dde7e3346c66a01e27176236e9 ******/
 		%feature("compactdefaultargs") SetInteger;
 		%feature("autodoc", "
 Parameters

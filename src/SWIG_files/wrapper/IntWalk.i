@@ -17,7 +17,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 %define INTWALKDOCSTRING
 "IntWalk module, see official documentation at
-https://dev.opencascade.org/doc/occt-7.7.0/refman/html/package_intwalk.html"
+https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_intwalk.html"
 %enddef
 %module (package="OCC.Core", docstring=INTWALKDOCSTRING) IntWalk
 
@@ -119,8 +119,8 @@ IntWalk_OK = IntWalk_StatusDeflection.IntWalk_OK
 **************************************/
 class IntWalk_TheFunctionOfTheInt2S : public math_FunctionSetWithDerivatives {
 	public:
-		/****************** IntWalk_TheFunctionOfTheInt2S ******************/
-		/**** md5 signature: a6e86400c87c4372f37609d6e136a604 ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::IntWalk_TheFunctionOfTheInt2S ******/
+		/****** md5 signature: a6e86400c87c4372f37609d6e136a604 ******/
 		%feature("compactdefaultargs") IntWalk_TheFunctionOfTheInt2S;
 		%feature("autodoc", "
 Parameters
@@ -138,8 +138,8 @@ No available documentation.
 ") IntWalk_TheFunctionOfTheInt2S;
 		 IntWalk_TheFunctionOfTheInt2S(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2);
 
-		/****************** AuxillarSurface1 ******************/
-		/**** md5 signature: 2bcc0e8f6b940dfbbbc22a207b96f139 ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::AuxillarSurface1 ******/
+		/****** md5 signature: 2bcc0e8f6b940dfbbbc22a207b96f139 ******/
 		%feature("compactdefaultargs") AuxillarSurface1;
 		%feature("autodoc", "Return
 -------
@@ -151,8 +151,8 @@ No available documentation.
 ") AuxillarSurface1;
 		const opencascade::handle<Adaptor3d_Surface> & AuxillarSurface1();
 
-		/****************** AuxillarSurface2 ******************/
-		/**** md5 signature: 00eb01b56212c9640d2242fafdf3e920 ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::AuxillarSurface2 ******/
+		/****** md5 signature: 00eb01b56212c9640d2242fafdf3e920 ******/
 		%feature("compactdefaultargs") AuxillarSurface2;
 		%feature("autodoc", "Return
 -------
@@ -164,8 +164,8 @@ No available documentation.
 ") AuxillarSurface2;
 		const opencascade::handle<Adaptor3d_Surface> & AuxillarSurface2();
 
-		/****************** ComputeParameters ******************/
-		/**** md5 signature: 5686d6c4ca7c470ce5a820727bd25544 ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::ComputeParameters ******/
+		/****** md5 signature: 5686d6c4ca7c470ce5a820727bd25544 ******/
 		%feature("compactdefaultargs") ComputeParameters;
 		%feature("autodoc", "
 Parameters
@@ -187,8 +187,8 @@ No available documentation.
 ") ComputeParameters;
 		void ComputeParameters(const IntImp_ConstIsoparametric ChoixIso, const TColStd_Array1OfReal & Param, math_Vector & UVap, math_Vector & BornInf, math_Vector & BornSup, math_Vector & Tolerance);
 
-		/****************** Derivatives ******************/
-		/**** md5 signature: 80ee5f16e62731c095910ad60228848b ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::Derivatives ******/
+		/****** md5 signature: 80ee5f16e62731c095910ad60228848b ******/
 		%feature("compactdefaultargs") Derivatives;
 		%feature("autodoc", "
 Parameters
@@ -206,8 +206,8 @@ No available documentation.
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
-		/****************** Direction ******************/
-		/**** md5 signature: 7db1622a0b370b4453af0886bb5f840c ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::Direction ******/
+		/****** md5 signature: 7db1622a0b370b4453af0886bb5f840c ******/
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", "Return
 -------
@@ -219,8 +219,8 @@ No available documentation.
 ") Direction;
 		gp_Dir Direction();
 
-		/****************** DirectionOnS1 ******************/
-		/**** md5 signature: bc5dc0d8303d35b67ad8c11b04c94ec5 ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::DirectionOnS1 ******/
+		/****** md5 signature: bc5dc0d8303d35b67ad8c11b04c94ec5 ******/
 		%feature("compactdefaultargs") DirectionOnS1;
 		%feature("autodoc", "Return
 -------
@@ -232,8 +232,8 @@ No available documentation.
 ") DirectionOnS1;
 		gp_Dir2d DirectionOnS1();
 
-		/****************** DirectionOnS2 ******************/
-		/**** md5 signature: caea60e56e0b7869c8e3533543115136 ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::DirectionOnS2 ******/
+		/****** md5 signature: caea60e56e0b7869c8e3533543115136 ******/
 		%feature("compactdefaultargs") DirectionOnS2;
 		%feature("autodoc", "Return
 -------
@@ -245,8 +245,8 @@ No available documentation.
 ") DirectionOnS2;
 		gp_Dir2d DirectionOnS2();
 
-		/****************** IsTangent ******************/
-		/**** md5 signature: 9e73991f5144c0e218a14c453bc89c5f ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::IsTangent ******/
+		/****** md5 signature: 9e73991f5144c0e218a14c453bc89c5f ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "
 Parameters
@@ -264,8 +264,8 @@ No available documentation.
 ") IsTangent;
 		Standard_Boolean IsTangent(const math_Vector & UVap, TColStd_Array1OfReal & Param, IntImp_ConstIsoparametric &OutValue);
 
-		/****************** NbEquations ******************/
-		/**** md5 signature: 42be0dc2e32c8e563393e8490171707e ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::NbEquations ******/
+		/****** md5 signature: 42be0dc2e32c8e563393e8490171707e ******/
 		%feature("compactdefaultargs") NbEquations;
 		%feature("autodoc", "Return
 -------
@@ -277,8 +277,8 @@ No available documentation.
 ") NbEquations;
 		Standard_Integer NbEquations();
 
-		/****************** NbVariables ******************/
-		/**** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::NbVariables ******/
+		/****** md5 signature: a3de6b8a577fc113199e11b2b0bcdced ******/
 		%feature("compactdefaultargs") NbVariables;
 		%feature("autodoc", "Return
 -------
@@ -290,8 +290,8 @@ No available documentation.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
-		/****************** Point ******************/
-		/**** md5 signature: aacd847206090cc43a493e5072f97000 ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::Point ******/
+		/****** md5 signature: aacd847206090cc43a493e5072f97000 ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "Return
 -------
@@ -303,8 +303,8 @@ No available documentation.
 ") Point;
 		gp_Pnt Point();
 
-		/****************** Root ******************/
-		/**** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::Root ******/
+		/****** md5 signature: 1f1a437be6bd034392962de6cf04ded1 ******/
 		%feature("compactdefaultargs") Root;
 		%feature("autodoc", "Return
 -------
@@ -316,8 +316,8 @@ Returns somme des fi*fi.
 ") Root;
 		Standard_Real Root();
 
-		/****************** Value ******************/
-		/**** md5 signature: 31f6ba581b8fae503400d98976418349 ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::Value ******/
+		/****** md5 signature: 31f6ba581b8fae503400d98976418349 ******/
 		%feature("compactdefaultargs") Value;
 		%feature("autodoc", "
 Parameters
@@ -335,8 +335,8 @@ No available documentation.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
-		/****************** Values ******************/
-		/**** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ****/
+		/****** IntWalk_TheFunctionOfTheInt2S::Values ******/
+		/****** md5 signature: 17c41f2c2b925e9ddfe2f61a9052313c ******/
 		%feature("compactdefaultargs") Values;
 		%feature("autodoc", "
 Parameters
@@ -369,8 +369,8 @@ No available documentation.
 *************************/
 class IntWalk_TheInt2S {
 	public:
-		/****************** IntWalk_TheInt2S ******************/
-		/**** md5 signature: 1c4cc577e5086d81834c89e839f0d692 ****/
+		/****** IntWalk_TheInt2S::IntWalk_TheInt2S ******/
+		/****** md5 signature: 1c4cc577e5086d81834c89e839f0d692 ******/
 		%feature("compactdefaultargs") IntWalk_TheInt2S;
 		%feature("autodoc", "
 Parameters
@@ -390,8 +390,8 @@ Compute the solution point with the close point.
 ") IntWalk_TheInt2S;
 		 IntWalk_TheInt2S(const TColStd_Array1OfReal & Param, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real TolTangency);
 
-		/****************** IntWalk_TheInt2S ******************/
-		/**** md5 signature: f2356976844250378d7966a9409a843c ****/
+		/****** IntWalk_TheInt2S::IntWalk_TheInt2S ******/
+		/****** md5 signature: f2356976844250378d7966a9409a843c ******/
 		%feature("compactdefaultargs") IntWalk_TheInt2S;
 		%feature("autodoc", "
 Parameters
@@ -410,8 +410,8 @@ Initialize the parameters to compute the solution point it 's possible to write 
 ") IntWalk_TheInt2S;
 		 IntWalk_TheInt2S(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real TolTangency);
 
-		/****************** ChangePoint ******************/
-		/**** md5 signature: 1b1852ae04e18b1e3ae0c1ea8c1f6773 ****/
+		/****** IntWalk_TheInt2S::ChangePoint ******/
+		/****** md5 signature: 1b1852ae04e18b1e3ae0c1ea8c1f6773 ******/
 		%feature("compactdefaultargs") ChangePoint;
 		%feature("autodoc", "Return
 -------
@@ -423,8 +423,8 @@ Return the intersection point which is enable for changing.
 ") ChangePoint;
 		IntSurf_PntOn2S & ChangePoint();
 
-		/****************** Direction ******************/
-		/**** md5 signature: 6107c9113155a9ae9007c5c8e526a738 ****/
+		/****** IntWalk_TheInt2S::Direction ******/
+		/****** md5 signature: 6107c9113155a9ae9007c5c8e526a738 ******/
 		%feature("compactdefaultargs") Direction;
 		%feature("autodoc", "Return
 -------
@@ -436,8 +436,8 @@ Returns the tangent at the intersection line.
 ") Direction;
 		const gp_Dir Direction();
 
-		/****************** DirectionOnS1 ******************/
-		/**** md5 signature: 0ea23aedfa0d65293f06d50c4f4fd61f ****/
+		/****** IntWalk_TheInt2S::DirectionOnS1 ******/
+		/****** md5 signature: 0ea23aedfa0d65293f06d50c4f4fd61f ******/
 		%feature("compactdefaultargs") DirectionOnS1;
 		%feature("autodoc", "Return
 -------
@@ -449,8 +449,8 @@ Returns the tangent at the intersection line in the parametric space of the firs
 ") DirectionOnS1;
 		const gp_Dir2d DirectionOnS1();
 
-		/****************** DirectionOnS2 ******************/
-		/**** md5 signature: 9fe51e029e5ffcecf563550ef1c567fd ****/
+		/****** IntWalk_TheInt2S::DirectionOnS2 ******/
+		/****** md5 signature: 9fe51e029e5ffcecf563550ef1c567fd ******/
 		%feature("compactdefaultargs") DirectionOnS2;
 		%feature("autodoc", "Return
 -------
@@ -462,8 +462,8 @@ Returns the tangent at the intersection line in the parametric space of the seco
 ") DirectionOnS2;
 		const gp_Dir2d DirectionOnS2();
 
-		/****************** Function ******************/
-		/**** md5 signature: 9898950ac008c9766278e0ad6ed48528 ****/
+		/****** IntWalk_TheInt2S::Function ******/
+		/****** md5 signature: 9898950ac008c9766278e0ad6ed48528 ******/
 		%feature("compactdefaultargs") Function;
 		%feature("autodoc", "Return
 -------
@@ -475,8 +475,8 @@ Return the math function which is used to compute the intersection.
 ") Function;
 		IntWalk_TheFunctionOfTheInt2S & Function();
 
-		/****************** IsDone ******************/
-		/**** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ****/
+		/****** IntWalk_TheInt2S::IsDone ******/
+		/****** md5 signature: ec0624071ec7da54b3d9dacc7bcb05f9 ******/
 		%feature("compactdefaultargs") IsDone;
 		%feature("autodoc", "Return
 -------
@@ -488,8 +488,8 @@ Returns true if the creation completed without failure.
 ") IsDone;
 		Standard_Boolean IsDone();
 
-		/****************** IsEmpty ******************/
-		/**** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ****/
+		/****** IntWalk_TheInt2S::IsEmpty ******/
+		/****** md5 signature: 6ab5e1ad63f93168856ab126dd374b81 ******/
 		%feature("compactdefaultargs") IsEmpty;
 		%feature("autodoc", "Return
 -------
@@ -501,8 +501,8 @@ Returns true when there is no solution to the problem.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
-		/****************** IsTangent ******************/
-		/**** md5 signature: 16a7964bb24e34f80fabc93e5a65aedc ****/
+		/****** IntWalk_TheInt2S::IsTangent ******/
+		/****** md5 signature: 16a7964bb24e34f80fabc93e5a65aedc ******/
 		%feature("compactdefaultargs") IsTangent;
 		%feature("autodoc", "Return
 -------
@@ -514,8 +514,8 @@ Returns true if the surfaces are tangent at the intersection point.
 ") IsTangent;
 		Standard_Boolean IsTangent();
 
-		/****************** Perform ******************/
-		/**** md5 signature: ba19d26576d52e0e2824307d3171f0bf ****/
+		/****** IntWalk_TheInt2S::Perform ******/
+		/****** md5 signature: ba19d26576d52e0e2824307d3171f0bf ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -533,8 +533,8 @@ Returns the best constant isoparametric to find the next intersection's point +s
 ") Perform;
 		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld);
 
-		/****************** Perform ******************/
-		/**** md5 signature: 01d0aa4ed60a8ef13ed05d29863bed35 ****/
+		/****** IntWalk_TheInt2S::Perform ******/
+		/****** md5 signature: 01d0aa4ed60a8ef13ed05d29863bed35 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
@@ -553,8 +553,8 @@ Returns the best constant isoparametric to find the next intersection's point +s
 ") Perform;
 		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
 
-		/****************** Point ******************/
-		/**** md5 signature: be121892232ab68ab537f33c0dca8dfd ****/
+		/****** IntWalk_TheInt2S::Point ******/
+		/****** md5 signature: be121892232ab68ab537f33c0dca8dfd ******/
 		%feature("compactdefaultargs") Point;
 		%feature("autodoc", "Return
 -------
