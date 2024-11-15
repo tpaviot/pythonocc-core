@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : ee0643e
+git revision : 6514450
 
 operating system : Linux 64bit 6.8.0-48-generic
 
 occt version targeted : 7.8.1
 
-date : 2024-11-10 17:47:59.350215
+date : 2024-11-15 05:14:26.954816
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -8090,9 +8090,9 @@ date : 2024-11-10 17:47:59.350215
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: SelectMgr_Filter
 [INFO ]      Class SelectMgr_Filter is abstract, using %nodefaultctor.
+[INFO ]  Class: SelectMgr_FrustumBuilder
 [INFO ]  Class: SelectMgr_SelectableObject
 [INFO ]      Class SelectMgr_SelectableObject is abstract, using %nodefaultctor.
-[INFO ]      explicitly excluded method SelectMgr_SelectableObject::443f93b07a9907ef337840cc8b4ae9ed
 [INFO ]  Class: SelectMgr_SelectableObjectSet
 [INFO ]      Wrap nested class SelectMgr_SelectableObjectSet::Iterator
 [INFO ]  Enum: BVHSubset
@@ -8101,7 +8101,6 @@ date : 2024-11-10 17:47:59.350215
 [WARNI]      [TypeHint] Skipping type BVHSubset, should contain _
 [WARNI]      [TypeHint] Skipping type BVHSubset, should contain _
 [INFO ]  Class: SelectMgr_SelectingVolumeManager
-[INFO ]      explicitly excluded method SelectMgr_SelectingVolumeManager::8fea4d782109be39039e6429b87f144f
 [WARNI]      [TypeHint] Skipping type NCollection_Vector<SelectMgr_Vec4>, seems to be a template
 [INFO ]  Class: SelectMgr_Selection
 [WARNI]      [TypeHint] Skip type NCollection_Vector<opencascade::handle<SelectMgr_SensitiveEntity>>, because of trailing :
@@ -8112,8 +8111,13 @@ date : 2024-11-10 17:47:59.350215
 [INFO ]      Constructor skipped for abstract class SelectMgr_SelectionImageFiller
 [INFO ]  Class: SelectMgr_SelectionManager
 [INFO ]  Class: SelectMgr_SensitiveEntity
+[INFO ]  Class: SelectMgr_SensitiveEntitySet
 [INFO ]  Class: SelectMgr_SortCriterion
+[INFO ]  Class: SelectMgr_ToleranceMap
 [INFO ]  Class: SelectMgr_ViewClipRange
+[INFO ]  Class: SelectMgr_ViewerSelector
+[INFO ]      explicitly excluded method SelectMgr_ViewerSelector::c75f681b9842a1a990930b338f100d0b
+[WARNI]      [TypeHint] Skip type NCollection_List<opencascade::handle<SelectMgr_EntityOwner>, because of trailing :
 [INFO ]  Class: SelectMgr_AxisIntersector
 [INFO ]  Class: SelectMgr_CompositionFilter
 [INFO ]  Class: SelectMgr_AndFilter
@@ -9554,8 +9558,8 @@ date : 2024-11-10 17:47:59.350215
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 18.22s
+SWIG interface file generation completed in 33.27s
 #################################################
 
-[INFO ]  Number of classes: 4743
-[INFO ]  Number of methods: 47536
+[INFO ]  Number of classes: 4747
+[INFO ]  Number of methods: 47619
