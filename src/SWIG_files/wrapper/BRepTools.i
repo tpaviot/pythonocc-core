@@ -2549,24 +2549,30 @@ Writes the triangulation on the stream <os> in a format that can be read back by
 ") WriteTriangulation;
 		void WriteTriangulation(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
-};
+
+                    %feature("autodoc", "Serializes TopoDS_Shape to string. If full_precision is False, the default precision of std::stringstream is used which regularly causes rounding.") WriteToString;
+                    %extend{
+                        static std::string WriteToString(const TopoDS_Shape & shape, bool full_precision = true) {
+                        std::stringstream s;
+                        if(full_precision) {
+                            s.precision(17);
+                            s.setf(std::ios::scientific);
+                        }
+                        BRepTools::Write(shape, s);
+                        return s.str();}
+                    };
+                    %feature("autodoc", "Deserializes TopoDS_Shape from string") ReadFromString;
+                    %extend{
+                        static TopoDS_Shape ReadFromString(const std::string & src) {
+                        std::stringstream s(src);
+                        TopoDS_Shape shape;
+                        BRep_Builder b;
+                        BRepTools::Read(shape, s, b);
+                        return shape;}
+                    };
+            };
 
 
-
-%extend BRepTools_ShapeSet {
-    static TopoDS_Shape ReadFromString(const std::string & src) {
-       std::stringstream s(src);
-       TopoDS_Shape shape;
-       BRep_Builder b;
-       BRepTools::Read(shape, s, b);
-       return shape;
-    };
-    std::string WriteToString() {
-        std::stringstream s;
-        self->Write(s);
-        return s.str();
-    };
-};
 %extend BRepTools_ShapeSet {
 	%pythoncode {
 	__repr__ = _dumps_object
