@@ -1,4 +1,4 @@
-##Copyright 2011-2019 Thomas Paviot (tpaviot@gmail.com)
+##Copyright 2011-2024 Thomas Paviot (tpaviot@gmail.com)
 ##
 ##This file is part of pythonOCC.
 ##
@@ -168,7 +168,6 @@ MAIN_JS_TEMPLATE = Template(
     """
 import * as THREE from 'three';
 import { TrackballControls } from 'three/addons/controls/TrackballControls.js';
-import Stats from 'three/addons/libs/stats.module.js'
 
 var camera, scene, renderer, object, stats, container, shape_material;
 var controls;
@@ -202,21 +201,21 @@ function init() {
 
     camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 200);
     camera.position.z = 100;
-    //controls = new THREE.OrbitControls(camera);
-    //controls = new THREE.OrbitControls(camera);
-    // for selection
+    
     raycaster = new THREE.Raycaster();
     mouse = new THREE.Vector2();
-    // create scene
+    
     scene = new THREE.Scene();
-    scene.add(new THREE.AmbientLight(0x101010));
-    directionalLight = new THREE.DirectionalLight(0xffffff);
-    directionalLight.position.x = 1;
-    directionalLight.position.y = -1;
-    directionalLight.position.z = 2;
-    directionalLight.position.normalize();
+    scene.background = new THREE.Color(0xf0f0f0);
+    const ambientLight = new THREE.AmbientLight(0x404040, 1.5);
+    scene.add(ambientLight);
+
+    directionalLight = new THREE.DirectionalLight(0xffffff, 1);
+    directionalLight.position.set(1, 1, 1).normalize();
     scene.add(directionalLight);
-    light1 = new THREE.PointLight(0xffffff);
+
+    light1 = new THREE.PointLight(0xffffff, 0.8);
+    light1.position.set(50, 50, 50);
     scene.add(light1);
 
     $Uniforms
@@ -231,39 +230,42 @@ function init() {
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio( window.devicePixelRatio );
     container.appendChild(renderer.domElement);
-    //renderer.gammaInput = true;
-    //renderer.gammaOutput = true;
-    // for shadow rendering
+    
+    // shadow rendering
     renderer.shadowMap.enabled = true;
-    renderer.shadowMap.type = THREE.PCFShadowMap;
+    renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+    
+    // tone mapping
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.0;
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    
     controls = new TrackballControls(camera, renderer.domElement);
-    // show stats, is it really useful ?
-    stats = new Stats();
-    stats.domElement.style.position = 'absolute';
-    stats.domElement.style.top = '2%';
-    stats.domElement.style.left = '1%';
-    container.appendChild(stats.domElement);
-    // add events
+    
     document.addEventListener('keypress', onDocumentKeyPress, false);
     document.addEventListener('click', onDocumentMouseClick, false);
     window.addEventListener('resize', onWindowResize, false);
 }
+
 function animate() {
     requestAnimationFrame(animate);
     controls.update();
     render();
     stats.update();
 }
+
 function update_lights() {
     if (directionalLight != undefined) {
         directionalLight.position.copy(camera.position);
     }
 }
+
 function onWindowResize() {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
     renderer.setSize(window.innerWidth, window.innerHeight);
 }
+
 function onDocumentKeyPress(event) {
   event.preventDefault();
   if (event.key=="t") {  // t key
@@ -283,6 +285,7 @@ function onDocumentKeyPress(event) {
         }
   }
 }
+
 function onDocumentMouseClick(event) {
     event.preventDefault();
     mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
@@ -306,11 +309,13 @@ function onDocumentMouseClick(event) {
         selected_target = target;
     }
 }
+
 function fit_to_scene() {
     // compute bounding sphere of whole scene
     var center = new THREE.Vector3(0,0,0);
     var radiuses = new Array();
     var positions = new Array();
+
     // compute center of all objects
     scene.traverse(function(child) {
         if (child instanceof THREE.Mesh) {
@@ -323,9 +328,11 @@ function fit_to_scene() {
             radiuses.push(radius);
         }
     });
+
     if (radiuses.length > 0) {
         center.divideScalar(radiuses.length*0.7);
     }
+
     var maxRad = 1.;
     // compute bounding radius
     for (var ichild = 0; ichild < radiuses.length; ++ichild) {
@@ -335,6 +342,7 @@ function fit_to_scene() {
             maxRad = totalDist;
         }
     }
+
     maxRad = maxRad * 0.7; // otherwise the scene seems to be too far away
     camera.lookAt(center);
     var direction = new THREE.Vector3().copy(camera.position).sub(controls.target);
@@ -348,18 +356,21 @@ function fit_to_scene() {
     var pnew = new THREE.Vector3().copy(center).add(direction);
     // change near far values to avoid culling of objects 
     camera.position.set(pnew.x, pnew.y, pnew.z);
-    camera.far = lnew*50;
-    camera.near = lnew*50*0.001;
+    camera.far = lnew * 50;
+    camera.near = lnew * 50 * 0.001;
     camera.updateProjectionMatrix();
     controls.target = center;
     controls.update();
+
     // adds and adjust a grid helper if needed
     gridHelper = new THREE.GridHelper(maxRad*4, 10)
     scene.add(gridHelper);
+
     // axisHelper
     axisHelper = new THREE.AxesHelper(maxRad);
     scene.add(axisHelper);
 }
+
 function render() {
     //@IncrementTime@  TODO UNCOMMENT
     update_lights();
@@ -384,57 +395,6 @@ class HTMLHeader:
         )
 
 
-# class HTMLBody_Part1:
-#     def __init__(self, vertex_shader=None, fragment_shader=None, uniforms=None):
-#         self._vertex_shader = vertex_shader
-#         self._fragment_shader = fragment_shader
-#         self._uniforms = uniforms
-
-#     def get_str(self):
-#         global BODY_TEMPLATE_PART2
-#         # get the location where pythonocc is running from
-#         body_str = BODY_TEMPLATE_PART1.replace("@VERSION@", VERSION)
-#         if self._fragment_shader is not None:
-#             vertex_shader_string_definition = f'<script type="x-shader/x-vertex" id="vertexShader">{self._vertex_shader}</script>'
-#             fragment_shader_string_definition = f'<script type="x-shader/x-fragment" id="fragmentShader">{self._fragment_shader}</script>'
-#             shader_material_definition = """
-#             var vertexShader = document.getElementById('vertexShader').textContent;
-#             var fragmentShader = document.getElementById('fragmentShader').textContent;
-#             var shader_material = new THREE.ShaderMaterial({uniforms: uniforms,
-#                                                             vertexShader: vertexShader,
-#                                                             fragmentShader: fragmentShader});
-#             """
-#             if self._uniforms is None:
-#                 body_str = body_str.replace("@Uniforms@", "uniforms ={};\n")
-#                 BODY_TEMPLATE_PART2 = BODY_TEMPLATE_PART2.replace("@IncrementTime@", "")
-#             else:
-#                 body_str = body_str.replace("@Uniforms@", self._uniforms)
-#                 if "time" in self._uniforms:
-#                     BODY_TEMPLATE_PART2 = BODY_TEMPLATE_PART2.replace(
-#                         "@IncrementTime@", "uniforms.time.value += 0.05;"
-#                     )
-#                 else:
-#                     BODY_TEMPLATE_PART2 = BODY_TEMPLATE_PART2.replace("@IncrementTime@", "")
-#             body_str = body_str.replace(
-#                 "@VertexShaderDefinition@", vertex_shader_string_definition
-#             )
-#             body_str = body_str.replace(
-#                 "@FragmentShaderDefinition@", fragment_shader_string_definition
-#             )
-#             body_str = body_str.replace(
-#                 "@ShaderMaterialDefinition@", shader_material_definition
-#             )
-#             body_str = body_str.replace("@ShapeMaterial@", "shader_material")
-#         else:
-#             body_str = body_str.replace("@Uniforms@", "")
-#             body_str = body_str.replace("@VertexShaderDefinition@", "")
-#             body_str = body_str.replace("@FragmentShaderDefinition@", "")
-#             body_str = body_str.replace("@ShaderMaterialDefinition@", "")
-#             body_str = body_str.replace("@ShapeMaterial@", "phong_material")
-#             body_str = body_str.replace("@IncrementTime@", "")
-#         return body_str
-
-
 class ThreejsRenderer:
     def __init__(self, path=None):
         self._path = tempfile.mkdtemp() if not path else path
@@ -443,7 +403,7 @@ class ThreejsRenderer:
         self._3js_shapes = {}
         self._3js_edges = {}
         self.spinning_cursor = spinning_cursor()
-        print(f"## threejs renderer")
+        print("## threejs renderer")
 
     def DisplayShape(
         self,
@@ -506,7 +466,6 @@ class ThreejsRenderer:
             line_width,
         ]
         # generate the mesh
-        # tess.ExportShapeToThreejs(shape_hash, shape_full_path)
         # and also to JSON
         with open(shape_full_path, "w") as json_file:
             json_file.write(tess.ExportShapeToThreejsJSONString(shape_uuid))
@@ -559,6 +518,7 @@ class ThreejsRenderer:
                     f"specular:{color_to_hex(specular_color)},",
                     "shininess:%g," % shininess,
                     "side: THREE.DoubleSide,",
+                    "flatShading:false",
                 )
             )
             if transparency > 0.0:
@@ -606,11 +566,6 @@ class ThreejsRenderer:
                     "ShaderMaterialDefinition": "",
                 }
             )
-            # fp.write(HTMLBody_Part1().get_str())
-            # fp.write("".join(shape_string_list))
-            # fp.write("".join(edge_string_list))
-            ## then write header part 2
-            # fp.write(BODY_TEMPLATE_PART2)
             fp.write(main_js)
 
         # write the index.html file

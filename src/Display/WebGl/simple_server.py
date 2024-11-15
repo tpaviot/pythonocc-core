@@ -93,10 +93,15 @@ def start_server(addr="127.0.0.1", port=8080, x3d_path=".", open_webbrowser=Fals
         httpd = HTTPServer((addr, port), SimpleHTTPRequestHandler)
         print(f"\n## Serving {x3d_path} using SimpleHTTPServer")
         display_hostname = "localhost"
-        if addr == "0.0.0.0":  # Did not consider ipv6 `::` because httpd does not support it
+        if (
+            addr == "0.0.0.0"
+        ):  # Did not consider ipv6 `::` because httpd does not support it
             display_hostname = get_interface_ip(socket.AF_INET)
             print(f"## Running on all addresses ({addr})")
-        print("## Open your webbrowser at the URL: http://%s:%i" % (display_hostname, port))
+        print(
+            "## Open your webbrowser at the URL: http://%s:%i"
+            % (display_hostname, port)
+        )
         # open webbrowser
         if open_webbrowser:
             webbrowser.open("http://%s:%i" % (display_hostname, port), new=2)
