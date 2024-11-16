@@ -10,7 +10,10 @@ jobs:
   
   pool:
     vmImage: ${{ parameters.vmImage }}
-    
+  
+  variables:
+    architecture: 'arm64'
+
   steps: 
   # install conda on osx
   - ${{ if contains(parameters.vmImage, 'macOS') }}:
