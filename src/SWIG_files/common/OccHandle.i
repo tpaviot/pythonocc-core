@@ -20,12 +20,12 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 /**
- * This file defined the macro wrap_handle() and make_alias()
+ * This file defines the macro wrap_handle() and make_alias()
  *
- * It should be called on a OpenCASCADE Type that inherits from Standard_Transient
- * i.e. a class the also has a Handle_ class.
+ * It should be called on an OpenCASCADE Type that inherits from Standard_Transient
+ * i.e. a class that also has a Handle_ class.
  *
- * make_alias is to allow backwards compatibilty and defines a Handle_ alias to
+ * make_alias is to allow backwards compatibility and defines a Handle_ alias to
  * the non-handle version of the class.
  *
  * wrap_handle must be called before defining the class.
@@ -57,7 +57,6 @@ template <typename T> class handle{};
 
 %define WRAP_OCC_TRANSIENT(CONST, TYPE)
 
-
 %typemap(out) opencascade::handle<TYPE> {
   TYPE * presult = !$1.IsNull() ? $1.get() : 0;
   if (presult) presult->IncrementRefCounter();
@@ -69,20 +68,20 @@ template <typename T> class handle{};
   if (presult) presult->IncrementRefCounter();
   %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
 }
+
 %typemap(out) CONST TYPE {
   TYPE * presult = new TYPE(static_cast< CONST TYPE& >($1));
   presult->IncrementRefCounter();
   %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
 }
 
-%typemap(out) CONST opencascade::handle<TYPE>&{
+%typemap(out) CONST opencascade::handle<TYPE>& {
   TYPE * presult = !$1->IsNull() ? $1->get() : 0;
   if (presult) presult->IncrementRefCounter();
   %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
 }
 
-
-%typemap(out) CONST Handle_ ## TYPE&{
+%typemap(out) CONST Handle_ ## TYPE& {
   TYPE * presult = !$1->IsNull() ? $1->get() : 0;
   if (presult) presult->IncrementRefCounter();
   %set_output(SWIG_NewPointerObj(%as_voidptr(presult), $descriptor(TYPE *), SWIG_POINTER_OWN));
@@ -101,7 +100,6 @@ template <typename T> class handle{};
   }
   if (argp) $1 = opencascade::handle< TYPE >(%reinterpret_cast(argp, TYPE*));
 }
-
 
 // shared_ptr by reference
 %typemap(in) opencascade::handle<TYPE> &(void *argp, int res = 0, $*1_ltype tempshared) {
@@ -153,7 +151,7 @@ class TYPE;
 class Handle_ ## TYPE : public opencascade::handle< TYPE >{
 public:
   template <typename T2>
-  inline Handle_## TYPE(const T2* theOther) : Handle(TYPE)(theOther) {} \
+  inline Handle_## TYPE(const T2* theOther) : opencascade::handle< TYPE >(theOther) {}
 };
 #else
 typedef opencascade::handle< TYPE > Handle_ ## TYPE;
@@ -176,12 +174,12 @@ WRAP_OCC_TRANSIENT(const, TYPE)
     }
 
     opencascade::handle<TYPE>  Handle_ ## TYPE ## _DownCast(const opencascade::handle<Standard_Transient>& t) {
-        opencascade::handle<TYPE> downcasted_hanle = opencascade::handle<TYPE>::DownCast(t);
-        if (downcasted_hanle.IsNull()) {
+        opencascade::handle<TYPE> downcasted_handle = opencascade::handle<TYPE>::DownCast(t);
+        if (downcasted_handle.IsNull()) {
             PyErr_SetString(PyExc_RuntimeError, "Failed to downcast to TYPE.");
-            return NULL;
+            return nullptr;
         }
-        return downcasted_hanle;
+        return downcasted_handle;
     }
 
     bool Handle_ ## TYPE ## _IsNull(const opencascade::handle<TYPE> & t) {
@@ -189,7 +187,7 @@ WRAP_OCC_TRANSIENT(const, TYPE)
     }
 %}
 
-// This two functions are just for backwards compatibilty
+// These two functions are just for backwards compatibility
 %extend TYPE {
   %pythoncode {
 
@@ -201,8 +199,6 @@ WRAP_OCC_TRANSIENT(const, TYPE)
 
 %enddef
 
-
 %define %make_alias(TYPE)
-
+using Handle_ ## TYPE = opencascade::handle<TYPE>;
 %enddef
-
