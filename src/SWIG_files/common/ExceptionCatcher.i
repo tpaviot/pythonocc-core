@@ -22,15 +22,15 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 %{
 #include <Standard_Failure.hxx>
 #include <Standard_ErrorHandler.hxx>
+#include <sstream>
 %}
 
 %inline %{
-void process_exception(Standard_Failure const& error, std::string method_name, std::string class_name) {
-    std::string error_name = error.DynamicType()->Name();
-	std::string error_message = error.GetMessageString();
-	std::string message = error_name + error_message +
-	                      " raised from method " + method_name + " of class " + class_name;
-	PyErr_SetString(PyExc_RuntimeError, message.c_str());
+void process_exception(const Standard_Failure& error, const std::string& method_name, const std::string& class_name) {
+    std::ostringstream oss;
+    oss << error.DynamicType()->Name() << ": " << error.GetMessageString()
+        << " raised from method " << method_name << " of class " << class_name;
+    PyErr_SetString(PyExc_RuntimeError, oss.str().c_str());
 }
 %}
 
@@ -41,9 +41,9 @@ void process_exception(Standard_Failure const& error, std::string method_name, s
         OCC_CATCH_SIGNALS
         $action
     } 
-    catch(Standard_Failure const& error)
+    catch(const Standard_Failure& error)
     {
-	    process_exception(error, "$name", "$parentclassname");
-	    SWIG_fail;
+        process_exception(error, "$name", "$parentclassname");
+        SWIG_fail;
     }
 }
