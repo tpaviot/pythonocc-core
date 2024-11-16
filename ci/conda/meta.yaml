@@ -31,7 +31,6 @@ requirements:
 
   run:
     - occt ==7.8.1
-    - six
     - numpy >=1.17
 
 test:
