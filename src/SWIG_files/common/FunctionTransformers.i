@@ -213,41 +213,39 @@ Standard_Boolean & function transformation
 
 %typemap(out) TopoDS_Shape {
     TopoDS_Shape* sh = &$1;
-    PyObject *resultobj = 0;
     if (!sh || sh->IsNull()) {
         Py_RETURN_NONE;
     }
-    else {
-        TopAbs_ShapeEnum shape_type = sh->ShapeType();
-        switch (shape_type)
-        {
-          case TopAbs_COMPOUND:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Compound(TopoDS::Compound(*sh)), SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
-            break;
-          case TopAbs_COMPSOLID:
-            resultobj = SWIG_NewPointerObj(new TopoDS_CompSolid(TopoDS::CompSolid(*sh)), SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_SOLID:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Solid(TopoDS::Solid(*sh)), SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_SHELL:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Shell(TopoDS::Shell(*sh)), SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_FACE:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Face(TopoDS::Face(*sh)), SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_WIRE:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Wire(TopoDS::Wire(*sh)), SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_EDGE:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Edge(TopoDS::Edge(*sh)), SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_VERTEX:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Vertex(TopoDS::Vertex(*sh)), SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
-            break;
-          default:
-            break;
-        }
+    PyObject *resultobj = nullptr;
+    TopAbs_ShapeEnum shape_type = sh->ShapeType();
+    switch (shape_type)
+    {
+      case TopAbs_COMPOUND:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Compound(TopoDS::Compound(*sh)), SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
+        break;
+      case TopAbs_COMPSOLID:
+        resultobj = SWIG_NewPointerObj(new TopoDS_CompSolid(TopoDS::CompSolid(*sh)), SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_SOLID:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Solid(TopoDS::Solid(*sh)), SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_SHELL:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Shell(TopoDS::Shell(*sh)), SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_FACE:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Face(TopoDS::Face(*sh)), SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_WIRE:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Wire(TopoDS::Wire(*sh)), SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_EDGE:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Edge(TopoDS::Edge(*sh)), SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_VERTEX:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Vertex(TopoDS::Vertex(*sh)), SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
+        break;
+      default:
+        break;
     }
     return resultobj;
 }
@@ -255,41 +253,39 @@ Standard_Boolean & function transformation
 // Return TopoDS_Shapes by copy, as we could get lifetimes errors
 %typemap(out) const TopoDS_Shape& {
     TopoDS_Shape* sh = $1;
-    PyObject *resultobj = 0;
     if (!sh || sh->IsNull()) {
         Py_RETURN_NONE;
     }
-    else {
-        TopAbs_ShapeEnum shape_type = sh->ShapeType();
-        switch (shape_type)
-        {
-          case TopAbs_COMPOUND:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Compound(TopoDS::Compound(*sh)), SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
-            break;
-          case TopAbs_COMPSOLID:
-            resultobj = SWIG_NewPointerObj(new TopoDS_CompSolid(TopoDS::CompSolid(*sh)), SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_SOLID:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Solid(TopoDS::Solid(*sh)), SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_SHELL:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Shell(TopoDS::Shell(*sh)), SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_FACE:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Face(TopoDS::Face(*sh)), SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_WIRE:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Wire(TopoDS::Wire(*sh)), SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_EDGE:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Edge(TopoDS::Edge(*sh)), SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
-            break;
-          case TopAbs_VERTEX:
-            resultobj = SWIG_NewPointerObj(new TopoDS_Vertex(TopoDS::Vertex(*sh)), SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
-            break;
-          default:
-            break;
-        }
+    PyObject *resultobj = nullptr;
+    TopAbs_ShapeEnum shape_type = sh->ShapeType();
+    switch (shape_type)
+    {
+      case TopAbs_COMPOUND:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Compound(TopoDS::Compound(*sh)), SWIGTYPE_p_TopoDS_Compound, SWIG_POINTER_OWN |  0);
+        break;
+      case TopAbs_COMPSOLID:
+        resultobj = SWIG_NewPointerObj(new TopoDS_CompSolid(TopoDS::CompSolid(*sh)), SWIGTYPE_p_TopoDS_CompSolid, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_SOLID:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Solid(TopoDS::Solid(*sh)), SWIGTYPE_p_TopoDS_Solid, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_SHELL:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Shell(TopoDS::Shell(*sh)), SWIGTYPE_p_TopoDS_Shell, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_FACE:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Face(TopoDS::Face(*sh)), SWIGTYPE_p_TopoDS_Face, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_WIRE:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Wire(TopoDS::Wire(*sh)), SWIGTYPE_p_TopoDS_Wire, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_EDGE:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Edge(TopoDS::Edge(*sh)), SWIGTYPE_p_TopoDS_Edge, SWIG_POINTER_OWN |  0 );
+        break;
+      case TopAbs_VERTEX:
+        resultobj = SWIG_NewPointerObj(new TopoDS_Vertex(TopoDS::Vertex(*sh)), SWIGTYPE_p_TopoDS_Vertex, SWIG_POINTER_OWN |  0 );
+        break;
+      default:
+        break;
     }
     return resultobj;
 }
