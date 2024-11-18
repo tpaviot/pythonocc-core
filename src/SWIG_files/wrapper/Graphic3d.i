@@ -9385,44 +9385,6 @@ Returns current projection matrix.
 ") ProjectionMatrix;
 		const Graphic3d_Mat4d & ProjectionMatrix();
 
-		/****** Graphic3d_CullingTool::SetCullingDistance ******/
-		/****** md5 signature: 2c124390ed1785355c4fc42a9d178ce1 ******/
-		%feature("compactdefaultargs") SetCullingDistance;
-		%feature("autodoc", "
-Parameters
-----------
-theCtx: CullingContext
-theDistance: float
-
-Return
--------
-None
-
-Description
------------
-Setup distance culling.
-") SetCullingDistance;
-		void SetCullingDistance(CullingContext theCtx, Standard_Real theDistance);
-
-		/****** Graphic3d_CullingTool::SetCullingSize ******/
-		/****** md5 signature: 1674520241dff328a7784cfe9a955a47 ******/
-		%feature("compactdefaultargs") SetCullingSize;
-		%feature("autodoc", "
-Parameters
-----------
-theCtx: CullingContext
-theSize: float
-
-Return
--------
-None
-
-Description
------------
-Setup size culling.
-") SetCullingSize;
-		void SetCullingSize(CullingContext theCtx, Standard_Real theSize);
-
 		/****** Graphic3d_CullingTool::SetViewVolume ******/
 		/****** md5 signature: d764b63bb91ca03cf3925f731886ca22 ******/
 		%feature("compactdefaultargs") SetViewVolume;
@@ -9539,6 +9501,14 @@ Returns state of current world view projection transformation matrices.
 %extend Graphic3d_CullingTool {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def SetCullingDistance(self):
+		pass
+
+	@methodnotwrapped
+	def SetCullingSize(self):
+		pass
 	}
 };
 
@@ -14661,42 +14631,6 @@ Return true if sequence is empty.
 ") IsEmpty;
 		bool IsEmpty();
 
-		/****** Graphic3d_SequenceOfHClipPlane::Remove ******/
-		/****** md5 signature: 310df33a7b799f6704691d7306814390 ******/
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "
-Parameters
-----------
-theItem: Graphic3d_ClipPlane
-
-Return
--------
-bool
-
-Description
------------
-Remove a plane. return true if item has been found and removed.
-") Remove;
-		bool Remove(const opencascade::handle<Graphic3d_ClipPlane> & theItem);
-
-		/****** Graphic3d_SequenceOfHClipPlane::Remove ******/
-		/****** md5 signature: 67407ac4263b5ce4b1474bcb59790580 ******/
-		%feature("compactdefaultargs") Remove;
-		%feature("autodoc", "
-Parameters
-----------
-theItem: Iterator
-
-Return
--------
-None
-
-Description
------------
-Remove a plane.
-") Remove;
-		void Remove(Iterator theItem);
-
 		/****** Graphic3d_SequenceOfHClipPlane::SetOverrideGlobal ******/
 		/****** md5 signature: 53f2f55e405ecf8a104090892f86e38a ******/
 		%feature("compactdefaultargs") SetOverrideGlobal;
@@ -14749,6 +14683,10 @@ Return true if local properties should override global properties.
 %extend Graphic3d_SequenceOfHClipPlane {
 	%pythoncode {
 	__repr__ = _dumps_object
+
+	@methodnotwrapped
+	def Remove(self):
+		pass
 	}
 };
 

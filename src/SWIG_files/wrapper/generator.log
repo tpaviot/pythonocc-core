@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : 7640dd3
+git revision : e04b55b
 
 operating system : Linux 64bit 6.8.0-48-generic
 
 occt version targeted : 7.8.1
 
-date : 2024-11-15 17:51:03.025902
+date : 2024-11-18 04:50:36.281880
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -6842,8 +6842,8 @@ date : 2024-11-15 17:51:03.025902
 [INFO ]  Class: Graphic3d_CullingTool
 [INFO ]      Wrap nested class Graphic3d_CullingTool::CullingContext
 [INFO ]      Wrap nested class Graphic3d_CullingTool::Plane
-[WARNI]      [TypeHint] Skipping type CullingContext, should contain _
-[WARNI]      [TypeHint] Skipping type CullingContext, should contain _
+[INFO ]      explicitly excluded method Graphic3d_CullingTool::2c124390ed1785355c4fc42a9d178ce1
+[INFO ]      explicitly excluded method Graphic3d_CullingTool::1674520241dff328a7784cfe9a955a47
 [WARNI]      [TypeHint] Skipping type CullingContext, should contain _
 [WARNI]      [TypeHint] Skipping type CullingContext, should contain _
 [WARNI]      [TypeHint] Skipping type CullingContext, should contain _
@@ -6919,7 +6919,8 @@ date : 2024-11-15 17:51:03.025902
 [INFO ]  Enum: PerfCounters
 [INFO ]  Class: Graphic3d_SequenceOfHClipPlane
 [INFO ]      Wrap nested class Graphic3d_SequenceOfHClipPlane::Iterator
-[WARNI]      [TypeHint] Skipping type Iterator, should contain _
+[INFO ]      explicitly excluded method Graphic3d_SequenceOfHClipPlane::310df33a7b799f6704691d7306814390
+[INFO ]      explicitly excluded method Graphic3d_SequenceOfHClipPlane::67407ac4263b5ce4b1474bcb59790580
 [INFO ]  Class: Graphic3d_ShaderAttribute
 [INFO ]  Class: Graphic3d_ShaderManager
 [INFO ]  Class: Graphic3d_ShaderObject
@@ -9558,8 +9559,8 @@ date : 2024-11-15 17:51:03.025902
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 18.02s
+SWIG interface file generation completed in 18.76s
 #################################################
 
 [INFO ]  Number of classes: 4747
-[INFO ]  Number of methods: 47619
+[INFO ]  Number of methods: 47615
