@@ -83,6 +83,13 @@ jobs:
     py_maj: 3
     py_min: 12
 
+- template: conda-build.yml
+  parameters:
+    name: Ubuntu_22_04_python313
+    vmImage: 'ubuntu-22.04'
+    py_maj: 3
+    py_min: 13
+
 - template:  conda-build.yml
   parameters:
     name: macOS_12_python312
