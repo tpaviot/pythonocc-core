@@ -35,7 +35,7 @@ def initialize_occt_libraries(occt_essentials_path) -> None:
 
 
 # on windows, see #1347
-if platform.system() == "windows":
+if platform.system() == "Windows":
     try:
         # OCC_ESSENTIALS_ROOT was defined at build time
         # and is available in config.py
