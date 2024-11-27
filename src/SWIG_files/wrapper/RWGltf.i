@@ -132,11 +132,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum  {
-	RWGltf_WriterTrsfFormat_LOWER = 0,
-	RWGltf_WriterTrsfFormat_UPPER = RWGltf_WriterTrsfFormat_TRS,
-};
-
 enum RWGltf_GltfAccessorCompType {
 	RWGltf_GltfAccessorCompType_UNKNOWN = 0,
 	RWGltf_GltfAccessorCompType_Int8 = 5120,
@@ -221,6 +216,11 @@ enum RWGltf_WriterTrsfFormat {
 	RWGltf_WriterTrsfFormat_Compact = 0,
 	RWGltf_WriterTrsfFormat_Mat4 = 1,
 	RWGltf_WriterTrsfFormat_TRS = 2,
+};
+
+enum  {
+	RWGltf_WriterTrsfFormat_LOWER = 0,
+	RWGltf_WriterTrsfFormat_UPPER = RWGltf_WriterTrsfFormat_TRS,
 };
 
 /* end public enums declaration */

@@ -699,21 +699,27 @@ class Vrml_ConfigurationNode : public DE_ConfigurationNode {
 	public:
 		class Vrml_InternalSection {};
 /* public enums */
+enum WriteMode_WriterVersion {
+	WriteMode_WriterVersion_1 = 1,
+	WriteMode_WriterVersion_2 = 2,
+};
+
 enum WriteMode_RepresentationType {
 	WriteMode_RepresentationType_Shaded = 0,
 	WriteMode_RepresentationType_Wireframe = 1,
 	WriteMode_RepresentationType_Both = 2,
 };
 
-enum WriteMode_WriterVersion {
-	WriteMode_WriterVersion_1 = 1,
-	WriteMode_WriterVersion_2 = 2,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class WriteMode_WriterVersion(IntEnum):
+	WriteMode_WriterVersion_1 = 1
+	WriteMode_WriterVersion_2 = 2
+WriteMode_WriterVersion_1 = WriteMode_WriterVersion.WriteMode_WriterVersion_1
+WriteMode_WriterVersion_2 = WriteMode_WriterVersion.WriteMode_WriterVersion_2
 
 class WriteMode_RepresentationType(IntEnum):
 	WriteMode_RepresentationType_Shaded = 0
@@ -722,12 +728,6 @@ class WriteMode_RepresentationType(IntEnum):
 WriteMode_RepresentationType_Shaded = WriteMode_RepresentationType.WriteMode_RepresentationType_Shaded
 WriteMode_RepresentationType_Wireframe = WriteMode_RepresentationType.WriteMode_RepresentationType_Wireframe
 WriteMode_RepresentationType_Both = WriteMode_RepresentationType.WriteMode_RepresentationType_Both
-
-class WriteMode_WriterVersion(IntEnum):
-	WriteMode_WriterVersion_1 = 1
-	WriteMode_WriterVersion_2 = 2
-WriteMode_WriterVersion_1 = WriteMode_WriterVersion.WriteMode_WriterVersion_1
-WriteMode_WriterVersion_2 = WriteMode_WriterVersion.WriteMode_WriterVersion_2
 };
 /* end python proxy for enums */
 

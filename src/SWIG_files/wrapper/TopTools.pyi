@@ -104,7 +104,6 @@ class TopTools_SequenceOfShape:
     def Value(self, theIndex: int) -> TopoDS_Shape: ...
     def SetValue(self, theIndex: int, theValue: TopoDS_Shape) -> None: ...
 
-
 class TopTools_FormatVersion(IntEnum):
     TopTools_FormatVersion_VERSION_1: int = ...
     TopTools_FormatVersion_VERSION_2: int = ...
@@ -115,6 +114,7 @@ TopTools_FormatVersion_VERSION_1 = TopTools_FormatVersion.TopTools_FormatVersion
 TopTools_FormatVersion_VERSION_2 = TopTools_FormatVersion.TopTools_FormatVersion_VERSION_2
 TopTools_FormatVersion_VERSION_3 = TopTools_FormatVersion.TopTools_FormatVersion_VERSION_3
 TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_CURRENT
+
 
 class toptools:
     @staticmethod
@@ -187,14 +187,14 @@ class TopTools_ShapeSet:
 
 # harray1 classes
 
-class TopTools_HArray1OfShape(TopTools_Array1OfShape, Standard_Transient):
-    def __init__(self, theLower: int, theUpper: int) -> None: ...
-    def Array1(self) -> TopTools_Array1OfShape: ...
-
-
 class TopTools_HArray1OfListOfShape(TopTools_Array1OfListOfShape, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> TopTools_Array1OfListOfShape: ...
+
+
+class TopTools_HArray1OfShape(TopTools_Array1OfShape, Standard_Transient):
+    def __init__(self, theLower: int, theUpper: int) -> None: ...
+    def Array1(self) -> TopTools_Array1OfShape: ...
 
 # harray2 classes
 

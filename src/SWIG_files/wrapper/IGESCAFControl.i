@@ -185,14 +185,14 @@ enum ReadMode_BSplineContinuity {
 	ReadMode_BSplineContinuity_C2 = 2,
 };
 
-enum ReadMode_MaxPrecision {
-	ReadMode_MaxPrecision_Preferred = 0,
-	ReadMode_MaxPrecision_Forced = 1,
-};
-
 enum ReadMode_Precision {
 	ReadMode_Precision_File = 0,
 	ReadMode_Precision_User = 1,
+};
+
+enum ReadMode_MaxPrecision {
+	ReadMode_MaxPrecision_Preferred = 0,
+	ReadMode_MaxPrecision_Forced = 1,
 };
 
 enum ReadMode_SurfaceCurve {
@@ -213,16 +213,16 @@ enum WriteMode_ConvertSurface {
 	WriteMode_ConvertSurface_On = 1,
 };
 
-enum WriteMode_PlaneMode {
-	WriteMode_PlaneMode_Plane = 0,
-	WriteMode_PlaneMode_BSpline = 1,
-};
-
 enum WriteMode_PrecisionMode {
 	WriteMode_PrecisionMode_Least = - 1,
 	WriteMode_PrecisionMode_Average = 0,
 	WriteMode_PrecisionMode_Greatest = 1,
 	WriteMode_PrecisionMode_Session = 2,
+};
+
+enum WriteMode_PlaneMode {
+	WriteMode_PlaneMode_Plane = 0,
+	WriteMode_PlaneMode_BSpline = 1,
 };
 
 /* end public enums declaration */
@@ -238,17 +238,17 @@ ReadMode_BSplineContinuity_C0 = ReadMode_BSplineContinuity.ReadMode_BSplineConti
 ReadMode_BSplineContinuity_C1 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C1
 ReadMode_BSplineContinuity_C2 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C2
 
-class ReadMode_MaxPrecision(IntEnum):
-	ReadMode_MaxPrecision_Preferred = 0
-	ReadMode_MaxPrecision_Forced = 1
-ReadMode_MaxPrecision_Preferred = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Preferred
-ReadMode_MaxPrecision_Forced = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Forced
-
 class ReadMode_Precision(IntEnum):
 	ReadMode_Precision_File = 0
 	ReadMode_Precision_User = 1
 ReadMode_Precision_File = ReadMode_Precision.ReadMode_Precision_File
 ReadMode_Precision_User = ReadMode_Precision.ReadMode_Precision_User
+
+class ReadMode_MaxPrecision(IntEnum):
+	ReadMode_MaxPrecision_Preferred = 0
+	ReadMode_MaxPrecision_Forced = 1
+ReadMode_MaxPrecision_Preferred = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Preferred
+ReadMode_MaxPrecision_Forced = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Forced
 
 class ReadMode_SurfaceCurve(IntEnum):
 	ReadMode_SurfaceCurve_Default = 0
@@ -274,12 +274,6 @@ class WriteMode_ConvertSurface(IntEnum):
 WriteMode_ConvertSurface_Off = WriteMode_ConvertSurface.WriteMode_ConvertSurface_Off
 WriteMode_ConvertSurface_On = WriteMode_ConvertSurface.WriteMode_ConvertSurface_On
 
-class WriteMode_PlaneMode(IntEnum):
-	WriteMode_PlaneMode_Plane = 0
-	WriteMode_PlaneMode_BSpline = 1
-WriteMode_PlaneMode_Plane = WriteMode_PlaneMode.WriteMode_PlaneMode_Plane
-WriteMode_PlaneMode_BSpline = WriteMode_PlaneMode.WriteMode_PlaneMode_BSpline
-
 class WriteMode_PrecisionMode(IntEnum):
 	WriteMode_PrecisionMode_Least = - 1
 	WriteMode_PrecisionMode_Average = 0
@@ -289,6 +283,12 @@ WriteMode_PrecisionMode_Least = WriteMode_PrecisionMode.WriteMode_PrecisionMode_
 WriteMode_PrecisionMode_Average = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Average
 WriteMode_PrecisionMode_Greatest = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Greatest
 WriteMode_PrecisionMode_Session = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Session
+
+class WriteMode_PlaneMode(IntEnum):
+	WriteMode_PlaneMode_Plane = 0
+	WriteMode_PlaneMode_BSpline = 1
+WriteMode_PlaneMode_Plane = WriteMode_PlaneMode.WriteMode_PlaneMode_Plane
+WriteMode_PlaneMode_BSpline = WriteMode_PlaneMode.WriteMode_PlaneMode_BSpline
 };
 /* end python proxy for enums */
 

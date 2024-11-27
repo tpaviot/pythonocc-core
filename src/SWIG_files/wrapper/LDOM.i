@@ -137,23 +137,7 @@ from OCC.Core.Exception import *
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
-class LDOM_CharacterData:
-	pass
-
-@classnotwrapped
-class LDOM_BasicElement:
-	pass
-
-@classnotwrapped
-class LDOM_Text:
-	pass
-
-@classnotwrapped
-class LDOM_DocumentType:
-	pass
-
-@classnotwrapped
-class LDOM_XmlReader:
+class LDOM_Attr:
 	pass
 
 @classnotwrapped
@@ -161,19 +145,7 @@ class LDOM_BasicAttribute:
 	pass
 
 @classnotwrapped
-class LDOM_Node:
-	pass
-
-@classnotwrapped
-class LDOM_CDATASection:
-	pass
-
-@classnotwrapped
-class LDOM_LDOMImplementation:
-	pass
-
-@classnotwrapped
-class LDOM_Element:
+class LDOM_BasicElement:
 	pass
 
 @classnotwrapped
@@ -181,11 +153,19 @@ class LDOM_BasicNode:
 	pass
 
 @classnotwrapped
+class LDOM_BasicText:
+	pass
+
+@classnotwrapped
+class LDOM_CDATASection:
+	pass
+
+@classnotwrapped
 class LDOM_CharReference:
 	pass
 
 @classnotwrapped
-class LDOM_MemManager:
+class LDOM_CharacterData:
 	pass
 
 @classnotwrapped
@@ -197,7 +177,23 @@ class LDOM_Document:
 	pass
 
 @classnotwrapped
-class LDOM_Attr:
+class LDOM_DocumentType:
+	pass
+
+@classnotwrapped
+class LDOM_Element:
+	pass
+
+@classnotwrapped
+class LDOM_LDOMImplementation:
+	pass
+
+@classnotwrapped
+class LDOM_MemManager:
+	pass
+
+@classnotwrapped
+class LDOM_Node:
 	pass
 
 @classnotwrapped
@@ -213,11 +209,15 @@ class LDOM_OSStream:
 	pass
 
 @classnotwrapped
-class LDOM_XmlWriter:
+class LDOM_Text:
 	pass
 
 @classnotwrapped
-class LDOM_BasicText:
+class LDOM_XmlReader:
+	pass
+
+@classnotwrapped
+class LDOM_XmlWriter:
 	pass
 
 }

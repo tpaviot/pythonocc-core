@@ -349,7 +349,7 @@ OSD_WEnvironmentIterator = OSD_WhoAmI.OSD_WEnvironmentIterator
 /* end templates declaration */
 
 /* typedefs */
-typedef int ( * OSD_Function ) ( ... );
+typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
 typedef OSD_StreamBuffer<std::iostream> OSD_IOStreamBuffer;
 typedef OSD_StreamBuffer<std::istream> OSD_IStreamBuffer;
 typedef OSD_StreamBuffer<std::ostream> OSD_OStreamBuffer;
@@ -440,43 +440,23 @@ typedef pthread_t OSD_PThread;
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
-class OSD_SharedLibrary:
+class OSD:
 	pass
 
 @classnotwrapped
-class OSD_FileIterator:
+class OSD_CachedFileSystem:
 	pass
 
 @classnotwrapped
-class OSD_FileSystem:
+class OSD_Chronometer:
 	pass
 
 @classnotwrapped
-class OSD_Host:
+class OSD_Directory:
 	pass
 
 @classnotwrapped
-class OSD_File:
-	pass
-
-@classnotwrapped
-class OSD_StreamBuffer:
-	pass
-
-@classnotwrapped
-class OSD_Thread:
-	pass
-
-@classnotwrapped
-class OSD_Error:
-	pass
-
-@classnotwrapped
-class OSD_Process:
-	pass
-
-@classnotwrapped
-class OSD_Timer:
+class OSD_DirectoryIterator:
 	pass
 
 @classnotwrapped
@@ -488,43 +468,15 @@ class OSD_Environment:
 	pass
 
 @classnotwrapped
-class OSD_Parallel:
+class OSD_Error:
 	pass
 
 @classnotwrapped
-class OSD_PerfMeter:
+class OSD_File:
 	pass
 
 @classnotwrapped
-class OSD_Protection:
-	pass
-
-@classnotwrapped
-class OSD_Path:
-	pass
-
-@classnotwrapped
-class OSD_Directory:
-	pass
-
-@classnotwrapped
-class OSD_LocalFileSystem:
-	pass
-
-@classnotwrapped
-class OSD_ThreadPool:
-	pass
-
-@classnotwrapped
-class OSD_MemInfo:
-	pass
-
-@classnotwrapped
-class OSD_DirectoryIterator:
-	pass
-
-@classnotwrapped
-class OSD_MAllocHook:
+class OSD_FileIterator:
 	pass
 
 @classnotwrapped
@@ -532,7 +484,7 @@ class OSD_FileNode:
 	pass
 
 @classnotwrapped
-class OSD_CachedFileSystem:
+class OSD_FileSystem:
 	pass
 
 @classnotwrapped
@@ -540,11 +492,59 @@ class OSD_FileSystemSelector:
 	pass
 
 @classnotwrapped
-class OSD_Chronometer:
+class OSD_Host:
 	pass
 
 @classnotwrapped
-class OSD:
+class OSD_LocalFileSystem:
+	pass
+
+@classnotwrapped
+class OSD_MAllocHook:
+	pass
+
+@classnotwrapped
+class OSD_MemInfo:
+	pass
+
+@classnotwrapped
+class OSD_Parallel:
+	pass
+
+@classnotwrapped
+class OSD_Path:
+	pass
+
+@classnotwrapped
+class OSD_PerfMeter:
+	pass
+
+@classnotwrapped
+class OSD_Process:
+	pass
+
+@classnotwrapped
+class OSD_Protection:
+	pass
+
+@classnotwrapped
+class OSD_SharedLibrary:
+	pass
+
+@classnotwrapped
+class OSD_StreamBuffer:
+	pass
+
+@classnotwrapped
+class OSD_Thread:
+	pass
+
+@classnotwrapped
+class OSD_ThreadPool:
+	pass
+
+@classnotwrapped
+class OSD_Timer:
 	pass
 
 }

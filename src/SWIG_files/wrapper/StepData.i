@@ -204,29 +204,15 @@ Returns a protocol from stepdata (avoids to create it).
 class StepData_ConfParameters {
 	public:
 /* public enums */
-enum AngleUnitMode {
-	AngleUnitMode_File = 0,
-	AngleUnitMode_Rad = 1,
-	AngleUnitMode_Deg = 2,
-};
-
-enum RWMode_Tessellated {
-	RWMode_Tessellated_Off = 0,
-	RWMode_Tessellated_On = 1,
-	RWMode_Tessellated_OnNoBRep = 2,
-};
-
-enum ReadMode_AssemblyLevel {
-	ReadMode_AssemblyLevel_All = 1,
-	ReadMode_AssemblyLevel_Assembly = 2,
-	ReadMode_AssemblyLevel_Structure = 3,
-	ReadMode_AssemblyLevel_Shape = 4,
-};
-
 enum ReadMode_BSplineContinuity {
 	ReadMode_BSplineContinuity_C0 = 0,
 	ReadMode_BSplineContinuity_C1 = 1,
 	ReadMode_BSplineContinuity_C2 = 2,
+};
+
+enum ReadMode_Precision {
+	ReadMode_Precision_File = 0,
+	ReadMode_Precision_User = 1,
 };
 
 enum ReadMode_MaxPrecision {
@@ -234,9 +220,18 @@ enum ReadMode_MaxPrecision {
 	ReadMode_MaxPrecision_Forced = 1,
 };
 
-enum ReadMode_Precision {
-	ReadMode_Precision_File = 0,
-	ReadMode_Precision_User = 1,
+enum ReadMode_SurfaceCurve {
+	ReadMode_SurfaceCurve_Default = 0,
+	ReadMode_SurfaceCurve_2DUse_Preferred = 2,
+	ReadMode_SurfaceCurve_2DUse_Forced = - 2,
+	ReadMode_SurfaceCurve_3DUse_Preferred = 3,
+	ReadMode_SurfaceCurve_3DUse_Forced = - 3,
+};
+
+enum AngleUnitMode {
+	AngleUnitMode_File = 0,
+	AngleUnitMode_Rad = 1,
+	AngleUnitMode_Deg = 2,
 };
 
 enum ReadMode_ProductContext {
@@ -255,18 +250,17 @@ enum ReadMode_ShapeRepr {
 	ReadMode_ShapeRepr_GBWSR = 7,
 };
 
-enum ReadMode_SurfaceCurve {
-	ReadMode_SurfaceCurve_Default = 0,
-	ReadMode_SurfaceCurve_2DUse_Preferred = 2,
-	ReadMode_SurfaceCurve_2DUse_Forced = - 2,
-	ReadMode_SurfaceCurve_3DUse_Preferred = 3,
-	ReadMode_SurfaceCurve_3DUse_Forced = - 3,
+enum ReadMode_AssemblyLevel {
+	ReadMode_AssemblyLevel_All = 1,
+	ReadMode_AssemblyLevel_Assembly = 2,
+	ReadMode_AssemblyLevel_Structure = 3,
+	ReadMode_AssemblyLevel_Shape = 4,
 };
 
-enum WriteMode_Assembly {
-	WriteMode_Assembly_Off = 0,
-	WriteMode_Assembly_On = 1,
-	WriteMode_Assembly_Auto = 2,
+enum RWMode_Tessellated {
+	RWMode_Tessellated_Off = 0,
+	RWMode_Tessellated_On = 1,
+	RWMode_Tessellated_OnNoBRep = 2,
 };
 
 enum WriteMode_PrecisionMode {
@@ -274,6 +268,12 @@ enum WriteMode_PrecisionMode {
 	WriteMode_PrecisionMode_Average = 0,
 	WriteMode_PrecisionMode_Greatest = 1,
 	WriteMode_PrecisionMode_Session = 2,
+};
+
+enum WriteMode_Assembly {
+	WriteMode_Assembly_Off = 0,
+	WriteMode_Assembly_On = 1,
+	WriteMode_Assembly_Auto = 2,
 };
 
 enum WriteMode_StepSchema {
@@ -294,32 +294,6 @@ enum WriteMode_VertexMode {
 /* python proxy classes for enums */
 %pythoncode {
 
-class AngleUnitMode(IntEnum):
-	AngleUnitMode_File = 0
-	AngleUnitMode_Rad = 1
-	AngleUnitMode_Deg = 2
-AngleUnitMode_File = AngleUnitMode.AngleUnitMode_File
-AngleUnitMode_Rad = AngleUnitMode.AngleUnitMode_Rad
-AngleUnitMode_Deg = AngleUnitMode.AngleUnitMode_Deg
-
-class RWMode_Tessellated(IntEnum):
-	RWMode_Tessellated_Off = 0
-	RWMode_Tessellated_On = 1
-	RWMode_Tessellated_OnNoBRep = 2
-RWMode_Tessellated_Off = RWMode_Tessellated.RWMode_Tessellated_Off
-RWMode_Tessellated_On = RWMode_Tessellated.RWMode_Tessellated_On
-RWMode_Tessellated_OnNoBRep = RWMode_Tessellated.RWMode_Tessellated_OnNoBRep
-
-class ReadMode_AssemblyLevel(IntEnum):
-	ReadMode_AssemblyLevel_All = 1
-	ReadMode_AssemblyLevel_Assembly = 2
-	ReadMode_AssemblyLevel_Structure = 3
-	ReadMode_AssemblyLevel_Shape = 4
-ReadMode_AssemblyLevel_All = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_All
-ReadMode_AssemblyLevel_Assembly = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Assembly
-ReadMode_AssemblyLevel_Structure = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Structure
-ReadMode_AssemblyLevel_Shape = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Shape
-
 class ReadMode_BSplineContinuity(IntEnum):
 	ReadMode_BSplineContinuity_C0 = 0
 	ReadMode_BSplineContinuity_C1 = 1
@@ -328,17 +302,37 @@ ReadMode_BSplineContinuity_C0 = ReadMode_BSplineContinuity.ReadMode_BSplineConti
 ReadMode_BSplineContinuity_C1 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C1
 ReadMode_BSplineContinuity_C2 = ReadMode_BSplineContinuity.ReadMode_BSplineContinuity_C2
 
+class ReadMode_Precision(IntEnum):
+	ReadMode_Precision_File = 0
+	ReadMode_Precision_User = 1
+ReadMode_Precision_File = ReadMode_Precision.ReadMode_Precision_File
+ReadMode_Precision_User = ReadMode_Precision.ReadMode_Precision_User
+
 class ReadMode_MaxPrecision(IntEnum):
 	ReadMode_MaxPrecision_Preferred = 0
 	ReadMode_MaxPrecision_Forced = 1
 ReadMode_MaxPrecision_Preferred = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Preferred
 ReadMode_MaxPrecision_Forced = ReadMode_MaxPrecision.ReadMode_MaxPrecision_Forced
 
-class ReadMode_Precision(IntEnum):
-	ReadMode_Precision_File = 0
-	ReadMode_Precision_User = 1
-ReadMode_Precision_File = ReadMode_Precision.ReadMode_Precision_File
-ReadMode_Precision_User = ReadMode_Precision.ReadMode_Precision_User
+class ReadMode_SurfaceCurve(IntEnum):
+	ReadMode_SurfaceCurve_Default = 0
+	ReadMode_SurfaceCurve_2DUse_Preferred = 2
+	ReadMode_SurfaceCurve_2DUse_Forced = - 2
+	ReadMode_SurfaceCurve_3DUse_Preferred = 3
+	ReadMode_SurfaceCurve_3DUse_Forced = - 3
+ReadMode_SurfaceCurve_Default = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_Default
+ReadMode_SurfaceCurve_2DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Preferred
+ReadMode_SurfaceCurve_2DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Forced
+ReadMode_SurfaceCurve_3DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Preferred
+ReadMode_SurfaceCurve_3DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Forced
+
+class AngleUnitMode(IntEnum):
+	AngleUnitMode_File = 0
+	AngleUnitMode_Rad = 1
+	AngleUnitMode_Deg = 2
+AngleUnitMode_File = AngleUnitMode.AngleUnitMode_File
+AngleUnitMode_Rad = AngleUnitMode.AngleUnitMode_Rad
+AngleUnitMode_Deg = AngleUnitMode.AngleUnitMode_Deg
 
 class ReadMode_ProductContext(IntEnum):
 	ReadMode_ProductContext_All = 1
@@ -364,25 +358,23 @@ ReadMode_ShapeRepr_FBSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_FBSR
 ReadMode_ShapeRepr_EBWSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_EBWSR
 ReadMode_ShapeRepr_GBWSR = ReadMode_ShapeRepr.ReadMode_ShapeRepr_GBWSR
 
-class ReadMode_SurfaceCurve(IntEnum):
-	ReadMode_SurfaceCurve_Default = 0
-	ReadMode_SurfaceCurve_2DUse_Preferred = 2
-	ReadMode_SurfaceCurve_2DUse_Forced = - 2
-	ReadMode_SurfaceCurve_3DUse_Preferred = 3
-	ReadMode_SurfaceCurve_3DUse_Forced = - 3
-ReadMode_SurfaceCurve_Default = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_Default
-ReadMode_SurfaceCurve_2DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Preferred
-ReadMode_SurfaceCurve_2DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_2DUse_Forced
-ReadMode_SurfaceCurve_3DUse_Preferred = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Preferred
-ReadMode_SurfaceCurve_3DUse_Forced = ReadMode_SurfaceCurve.ReadMode_SurfaceCurve_3DUse_Forced
+class ReadMode_AssemblyLevel(IntEnum):
+	ReadMode_AssemblyLevel_All = 1
+	ReadMode_AssemblyLevel_Assembly = 2
+	ReadMode_AssemblyLevel_Structure = 3
+	ReadMode_AssemblyLevel_Shape = 4
+ReadMode_AssemblyLevel_All = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_All
+ReadMode_AssemblyLevel_Assembly = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Assembly
+ReadMode_AssemblyLevel_Structure = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Structure
+ReadMode_AssemblyLevel_Shape = ReadMode_AssemblyLevel.ReadMode_AssemblyLevel_Shape
 
-class WriteMode_Assembly(IntEnum):
-	WriteMode_Assembly_Off = 0
-	WriteMode_Assembly_On = 1
-	WriteMode_Assembly_Auto = 2
-WriteMode_Assembly_Off = WriteMode_Assembly.WriteMode_Assembly_Off
-WriteMode_Assembly_On = WriteMode_Assembly.WriteMode_Assembly_On
-WriteMode_Assembly_Auto = WriteMode_Assembly.WriteMode_Assembly_Auto
+class RWMode_Tessellated(IntEnum):
+	RWMode_Tessellated_Off = 0
+	RWMode_Tessellated_On = 1
+	RWMode_Tessellated_OnNoBRep = 2
+RWMode_Tessellated_Off = RWMode_Tessellated.RWMode_Tessellated_Off
+RWMode_Tessellated_On = RWMode_Tessellated.RWMode_Tessellated_On
+RWMode_Tessellated_OnNoBRep = RWMode_Tessellated.RWMode_Tessellated_OnNoBRep
 
 class WriteMode_PrecisionMode(IntEnum):
 	WriteMode_PrecisionMode_Least = - 1
@@ -393,6 +385,14 @@ WriteMode_PrecisionMode_Least = WriteMode_PrecisionMode.WriteMode_PrecisionMode_
 WriteMode_PrecisionMode_Average = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Average
 WriteMode_PrecisionMode_Greatest = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Greatest
 WriteMode_PrecisionMode_Session = WriteMode_PrecisionMode.WriteMode_PrecisionMode_Session
+
+class WriteMode_Assembly(IntEnum):
+	WriteMode_Assembly_Off = 0
+	WriteMode_Assembly_On = 1
+	WriteMode_Assembly_Auto = 2
+WriteMode_Assembly_Off = WriteMode_Assembly.WriteMode_Assembly_Off
+WriteMode_Assembly_On = WriteMode_Assembly.WriteMode_Assembly_On
+WriteMode_Assembly_Auto = WriteMode_Assembly.WriteMode_Assembly_Auto
 
 class WriteMode_StepSchema(IntEnum):
 	WriteMode_StepSchema_AP214CD = 1

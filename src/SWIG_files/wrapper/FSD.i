@@ -95,6 +95,10 @@ class FSD_Base64:
 	pass
 
 @classnotwrapped
+class FSD_BinaryFile:
+	pass
+
+@classnotwrapped
 class FSD_CmpFile:
 	pass
 
@@ -104,10 +108,6 @@ class FSD_File:
 
 @classnotwrapped
 class FSD_FileHeader:
-	pass
-
-@classnotwrapped
-class FSD_BinaryFile:
 	pass
 
 }

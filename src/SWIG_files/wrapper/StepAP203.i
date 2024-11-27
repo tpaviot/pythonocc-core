@@ -93,16 +93,16 @@ from OCC.Core.Exception import *
 %wrap_handle(StepAP203_ChangeRequest)
 %wrap_handle(StepAP203_StartRequest)
 %wrap_handle(StepAP203_StartWork)
+%wrap_handle(StepAP203_HArray1OfApprovedItem)
+%wrap_handle(StepAP203_HArray1OfCertifiedItem)
+%wrap_handle(StepAP203_HArray1OfChangeRequestItem)
 %wrap_handle(StepAP203_HArray1OfClassifiedItem)
-%wrap_handle(StepAP203_HArray1OfWorkItem)
+%wrap_handle(StepAP203_HArray1OfContractedItem)
+%wrap_handle(StepAP203_HArray1OfDateTimeItem)
+%wrap_handle(StepAP203_HArray1OfPersonOrganizationItem)
 %wrap_handle(StepAP203_HArray1OfSpecifiedItem)
 %wrap_handle(StepAP203_HArray1OfStartRequestItem)
-%wrap_handle(StepAP203_HArray1OfChangeRequestItem)
-%wrap_handle(StepAP203_HArray1OfPersonOrganizationItem)
-%wrap_handle(StepAP203_HArray1OfDateTimeItem)
-%wrap_handle(StepAP203_HArray1OfApprovedItem)
-%wrap_handle(StepAP203_HArray1OfContractedItem)
-%wrap_handle(StepAP203_HArray1OfCertifiedItem)
+%wrap_handle(StepAP203_HArray1OfWorkItem)
 /* end handles declaration */
 
 /* templates */
@@ -1982,6 +1982,39 @@ Returns value as productdefinitionformation (or null if another type).
 
 /* harray1 classes */
 
+class StepAP203_HArray1OfApprovedItem : public StepAP203_Array1OfApprovedItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfApprovedItem::value_type& theValue);
+    StepAP203_HArray1OfApprovedItem(const StepAP203_Array1OfApprovedItem& theOther);
+    const StepAP203_Array1OfApprovedItem& Array1();
+    StepAP203_Array1OfApprovedItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfApprovedItem)
+
+
+class StepAP203_HArray1OfCertifiedItem : public StepAP203_Array1OfCertifiedItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfCertifiedItem::value_type& theValue);
+    StepAP203_HArray1OfCertifiedItem(const StepAP203_Array1OfCertifiedItem& theOther);
+    const StepAP203_Array1OfCertifiedItem& Array1();
+    StepAP203_Array1OfCertifiedItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfCertifiedItem)
+
+
+class StepAP203_HArray1OfChangeRequestItem : public StepAP203_Array1OfChangeRequestItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfChangeRequestItem::value_type& theValue);
+    StepAP203_HArray1OfChangeRequestItem(const StepAP203_Array1OfChangeRequestItem& theOther);
+    const StepAP203_Array1OfChangeRequestItem& Array1();
+    StepAP203_Array1OfChangeRequestItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfChangeRequestItem)
+
+
 class StepAP203_HArray1OfClassifiedItem : public StepAP203_Array1OfClassifiedItem, public Standard_Transient {
   public:
     StepAP203_HArray1OfClassifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1993,15 +2026,37 @@ class StepAP203_HArray1OfClassifiedItem : public StepAP203_Array1OfClassifiedIte
 %make_alias(StepAP203_HArray1OfClassifiedItem)
 
 
-class StepAP203_HArray1OfWorkItem : public StepAP203_Array1OfWorkItem, public Standard_Transient {
+class StepAP203_HArray1OfContractedItem : public StepAP203_Array1OfContractedItem, public Standard_Transient {
   public:
-    StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfWorkItem::value_type& theValue);
-    StepAP203_HArray1OfWorkItem(const StepAP203_Array1OfWorkItem& theOther);
-    const StepAP203_Array1OfWorkItem& Array1();
-    StepAP203_Array1OfWorkItem& ChangeArray1();
+    StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfContractedItem::value_type& theValue);
+    StepAP203_HArray1OfContractedItem(const StepAP203_Array1OfContractedItem& theOther);
+    const StepAP203_Array1OfContractedItem& Array1();
+    StepAP203_Array1OfContractedItem& ChangeArray1();
 };
-%make_alias(StepAP203_HArray1OfWorkItem)
+%make_alias(StepAP203_HArray1OfContractedItem)
+
+
+class StepAP203_HArray1OfDateTimeItem : public StepAP203_Array1OfDateTimeItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfDateTimeItem::value_type& theValue);
+    StepAP203_HArray1OfDateTimeItem(const StepAP203_Array1OfDateTimeItem& theOther);
+    const StepAP203_Array1OfDateTimeItem& Array1();
+    StepAP203_Array1OfDateTimeItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfDateTimeItem)
+
+
+class StepAP203_HArray1OfPersonOrganizationItem : public StepAP203_Array1OfPersonOrganizationItem, public Standard_Transient {
+  public:
+    StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfPersonOrganizationItem::value_type& theValue);
+    StepAP203_HArray1OfPersonOrganizationItem(const StepAP203_Array1OfPersonOrganizationItem& theOther);
+    const StepAP203_Array1OfPersonOrganizationItem& Array1();
+    StepAP203_Array1OfPersonOrganizationItem& ChangeArray1();
+};
+%make_alias(StepAP203_HArray1OfPersonOrganizationItem)
 
 
 class StepAP203_HArray1OfSpecifiedItem : public StepAP203_Array1OfSpecifiedItem, public Standard_Transient {
@@ -2026,70 +2081,15 @@ class StepAP203_HArray1OfStartRequestItem : public StepAP203_Array1OfStartReques
 %make_alias(StepAP203_HArray1OfStartRequestItem)
 
 
-class StepAP203_HArray1OfChangeRequestItem : public StepAP203_Array1OfChangeRequestItem, public Standard_Transient {
+class StepAP203_HArray1OfWorkItem : public StepAP203_Array1OfWorkItem, public Standard_Transient {
   public:
-    StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfChangeRequestItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfChangeRequestItem::value_type& theValue);
-    StepAP203_HArray1OfChangeRequestItem(const StepAP203_Array1OfChangeRequestItem& theOther);
-    const StepAP203_Array1OfChangeRequestItem& Array1();
-    StepAP203_Array1OfChangeRequestItem& ChangeArray1();
+    StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepAP203_HArray1OfWorkItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfWorkItem::value_type& theValue);
+    StepAP203_HArray1OfWorkItem(const StepAP203_Array1OfWorkItem& theOther);
+    const StepAP203_Array1OfWorkItem& Array1();
+    StepAP203_Array1OfWorkItem& ChangeArray1();
 };
-%make_alias(StepAP203_HArray1OfChangeRequestItem)
-
-
-class StepAP203_HArray1OfPersonOrganizationItem : public StepAP203_Array1OfPersonOrganizationItem, public Standard_Transient {
-  public:
-    StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfPersonOrganizationItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfPersonOrganizationItem::value_type& theValue);
-    StepAP203_HArray1OfPersonOrganizationItem(const StepAP203_Array1OfPersonOrganizationItem& theOther);
-    const StepAP203_Array1OfPersonOrganizationItem& Array1();
-    StepAP203_Array1OfPersonOrganizationItem& ChangeArray1();
-};
-%make_alias(StepAP203_HArray1OfPersonOrganizationItem)
-
-
-class StepAP203_HArray1OfDateTimeItem : public StepAP203_Array1OfDateTimeItem, public Standard_Transient {
-  public:
-    StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfDateTimeItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfDateTimeItem::value_type& theValue);
-    StepAP203_HArray1OfDateTimeItem(const StepAP203_Array1OfDateTimeItem& theOther);
-    const StepAP203_Array1OfDateTimeItem& Array1();
-    StepAP203_Array1OfDateTimeItem& ChangeArray1();
-};
-%make_alias(StepAP203_HArray1OfDateTimeItem)
-
-
-class StepAP203_HArray1OfApprovedItem : public StepAP203_Array1OfApprovedItem, public Standard_Transient {
-  public:
-    StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfApprovedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfApprovedItem::value_type& theValue);
-    StepAP203_HArray1OfApprovedItem(const StepAP203_Array1OfApprovedItem& theOther);
-    const StepAP203_Array1OfApprovedItem& Array1();
-    StepAP203_Array1OfApprovedItem& ChangeArray1();
-};
-%make_alias(StepAP203_HArray1OfApprovedItem)
-
-
-class StepAP203_HArray1OfContractedItem : public StepAP203_Array1OfContractedItem, public Standard_Transient {
-  public:
-    StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfContractedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfContractedItem::value_type& theValue);
-    StepAP203_HArray1OfContractedItem(const StepAP203_Array1OfContractedItem& theOther);
-    const StepAP203_Array1OfContractedItem& Array1();
-    StepAP203_Array1OfContractedItem& ChangeArray1();
-};
-%make_alias(StepAP203_HArray1OfContractedItem)
-
-
-class StepAP203_HArray1OfCertifiedItem : public StepAP203_Array1OfCertifiedItem, public Standard_Transient {
-  public:
-    StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepAP203_HArray1OfCertifiedItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepAP203_Array1OfCertifiedItem::value_type& theValue);
-    StepAP203_HArray1OfCertifiedItem(const StepAP203_Array1OfCertifiedItem& theOther);
-    const StepAP203_Array1OfCertifiedItem& Array1();
-    StepAP203_Array1OfCertifiedItem& ChangeArray1();
-};
-%make_alias(StepAP203_HArray1OfCertifiedItem)
+%make_alias(StepAP203_HArray1OfWorkItem)
 
 /* harray2 classes */
 /* hsequence classes */

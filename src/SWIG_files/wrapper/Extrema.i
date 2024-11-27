@@ -131,11 +131,11 @@ Extrema_ExtFlag_MINMAX = Extrema_ExtFlag.Extrema_ExtFlag_MINMAX
 %wrap_handle(Extrema_ExtPExtS)
 %wrap_handle(Extrema_ExtPRevS)
 %wrap_handle(Extrema_HArray1OfPOnCurv)
-%wrap_handle(Extrema_HArray1OfPOnSurf)
 %wrap_handle(Extrema_HArray1OfPOnCurv2d)
-%wrap_handle(Extrema_HArray2OfPOnSurf)
+%wrap_handle(Extrema_HArray1OfPOnSurf)
 %wrap_handle(Extrema_HArray2OfPOnCurv)
 %wrap_handle(Extrema_HArray2OfPOnCurv2d)
+%wrap_handle(Extrema_HArray2OfPOnSurf)
 /* end handles declaration */
 
 /* templates */
@@ -13653,17 +13653,6 @@ class Extrema_HArray1OfPOnCurv : public Extrema_Array1OfPOnCurv, public Standard
 %make_alias(Extrema_HArray1OfPOnCurv)
 
 
-class Extrema_HArray1OfPOnSurf : public Extrema_Array1OfPOnSurf, public Standard_Transient {
-  public:
-    Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper, const Extrema_Array1OfPOnSurf::value_type& theValue);
-    Extrema_HArray1OfPOnSurf(const Extrema_Array1OfPOnSurf& theOther);
-    const Extrema_Array1OfPOnSurf& Array1();
-    Extrema_Array1OfPOnSurf& ChangeArray1();
-};
-%make_alias(Extrema_HArray1OfPOnSurf)
-
-
 class Extrema_HArray1OfPOnCurv2d : public Extrema_Array1OfPOnCurv2d, public Standard_Transient {
   public:
     Extrema_HArray1OfPOnCurv2d(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -13674,20 +13663,18 @@ class Extrema_HArray1OfPOnCurv2d : public Extrema_Array1OfPOnCurv2d, public Stan
 };
 %make_alias(Extrema_HArray1OfPOnCurv2d)
 
-/* harray2 classes */
-class Extrema_HArray2OfPOnSurf : public Extrema_Array2OfPOnSurf, public Standard_Transient {
+
+class Extrema_HArray1OfPOnSurf : public Extrema_Array1OfPOnSurf, public Standard_Transient {
   public:
-    Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const Extrema_Array2OfPOnSurf::value_type& theValue);
-    Extrema_HArray2OfPOnSurf(const Extrema_Array2OfPOnSurf& theOther);
-    const Extrema_Array2OfPOnSurf& Array2 ();
-    Extrema_Array2OfPOnSurf& ChangeArray2 (); 
+    Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper);
+    Extrema_HArray1OfPOnSurf(const Standard_Integer theLower, const Standard_Integer theUpper, const Extrema_Array1OfPOnSurf::value_type& theValue);
+    Extrema_HArray1OfPOnSurf(const Extrema_Array1OfPOnSurf& theOther);
+    const Extrema_Array1OfPOnSurf& Array1();
+    Extrema_Array1OfPOnSurf& ChangeArray1();
 };
-%make_alias(Extrema_HArray2OfPOnSurf)
+%make_alias(Extrema_HArray1OfPOnSurf)
 
-
+/* harray2 classes */
 class Extrema_HArray2OfPOnCurv : public Extrema_Array2OfPOnCurv, public Standard_Transient {
   public:
     Extrema_HArray2OfPOnCurv(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -13712,6 +13699,19 @@ class Extrema_HArray2OfPOnCurv2d : public Extrema_Array2OfPOnCurv2d, public Stan
     Extrema_Array2OfPOnCurv2d& ChangeArray2 (); 
 };
 %make_alias(Extrema_HArray2OfPOnCurv2d)
+
+
+class Extrema_HArray2OfPOnSurf : public Extrema_Array2OfPOnSurf, public Standard_Transient {
+  public:
+    Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    Extrema_HArray2OfPOnSurf(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const Extrema_Array2OfPOnSurf::value_type& theValue);
+    Extrema_HArray2OfPOnSurf(const Extrema_Array2OfPOnSurf& theOther);
+    const Extrema_Array2OfPOnSurf& Array2 ();
+    Extrema_Array2OfPOnSurf& ChangeArray2 (); 
+};
+%make_alias(Extrema_HArray2OfPOnSurf)
 
 
 /* hsequence classes */

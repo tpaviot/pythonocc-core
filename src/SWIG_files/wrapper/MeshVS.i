@@ -44,8 +44,8 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_meshvs.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColgp_module.hxx>
 #include<SelectMgr_module.hxx>
+#include<TColgp_module.hxx>
 #include<Select3D_module.hxx>
 #include<gp_module.hxx>
 #include<TColStd_module.hxx>
@@ -85,8 +85,8 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_meshvs.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TColgp.i
 %import SelectMgr.i
+%import TColgp.i
 %import Select3D.i
 %import gp.i
 %import TColStd.i
@@ -106,6 +106,16 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
+enum  {
+	MeshVS_BP_Mesh = 5,
+	MeshVS_BP_NodalColor = 10,
+	MeshVS_BP_ElemColor = 15,
+	MeshVS_BP_Text = 20,
+	MeshVS_BP_Vector = 25,
+	MeshVS_BP_User = 30,
+	MeshVS_BP_Default = MeshVS_BP_User,
+};
+
 enum  {
 	MeshVS_DMF_WireFrame = 1,
 	MeshVS_DMF_Shading = 2,

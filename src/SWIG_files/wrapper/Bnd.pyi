@@ -471,14 +471,14 @@ class Bnd_Tools:
 
 # harray1 classes
 
-class Bnd_HArray1OfBox2d(Bnd_Array1OfBox2d, Standard_Transient):
-    def __init__(self, theLower: int, theUpper: int) -> None: ...
-    def Array1(self) -> Bnd_Array1OfBox2d: ...
-
-
 class Bnd_HArray1OfBox(Bnd_Array1OfBox, Standard_Transient):
     def __init__(self, theLower: int, theUpper: int) -> None: ...
     def Array1(self) -> Bnd_Array1OfBox: ...
+
+
+class Bnd_HArray1OfBox2d(Bnd_Array1OfBox2d, Standard_Transient):
+    def __init__(self, theLower: int, theUpper: int) -> None: ...
+    def Array1(self) -> Bnd_Array1OfBox2d: ...
 
 
 class Bnd_HArray1OfSphere(Bnd_Array1OfSphere, Standard_Transient):

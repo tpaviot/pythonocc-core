@@ -32,7 +32,6 @@ class Prs3d_NListOfSequenceOfPnt:
     def Value(self, theIndex: int) -> False: ...
     def SetValue(self, theIndex: int, theValue: False) -> None: ...
 
-
 class Prs3d_DatumAttribute(IntEnum):
     Prs3d_DatumAttribute_XAxisLength: int = ...
     Prs3d_DatumAttribute_YAxisLength: int = ...
@@ -67,6 +66,7 @@ Prs3d_DP_ShadingConeRadiusPercent = Prs3d_DatumAttribute.Prs3d_DP_ShadingConeRad
 Prs3d_DP_ShadingConeLengthPercent = Prs3d_DatumAttribute.Prs3d_DP_ShadingConeLengthPercent
 Prs3d_DP_ShadingOriginRadiusPercent = Prs3d_DatumAttribute.Prs3d_DP_ShadingOriginRadiusPercent
 Prs3d_DP_ShadingNumberOfFacettes = Prs3d_DatumAttribute.Prs3d_DP_ShadingNumberOfFacettes
+
 
 class Prs3d_DatumAxes(IntEnum):
     Prs3d_DatumAxes_XAxis: int = ...
@@ -152,6 +152,7 @@ Prs3d_DP_XOYAxis = Prs3d_DatumParts.Prs3d_DP_XOYAxis
 Prs3d_DP_YOZAxis = Prs3d_DatumParts.Prs3d_DP_YOZAxis
 Prs3d_DP_XOZAxis = Prs3d_DatumParts.Prs3d_DP_XOZAxis
 Prs3d_DP_None = Prs3d_DatumParts.Prs3d_DP_None
+
 
 class Prs3d_DimensionArrowOrientation(IntEnum):
     Prs3d_DAO_Internal: int = ...

@@ -3,8 +3,8 @@ from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
-from OCC.Core.TColgp import *
 from OCC.Core.SelectMgr import *
+from OCC.Core.TColgp import *
 from OCC.Core.Select3D import *
 from OCC.Core.gp import *
 from OCC.Core.TColStd import *
@@ -80,6 +80,7 @@ class MeshVS_SequenceOfPrsBuilder:
     def Reverse(self) -> None: ...
     def Value(self, theIndex: int) -> False: ...
     def SetValue(self, theIndex: int, theValue: False) -> None: ...
+
 
 
 class MeshVS_DrawerAttribute(IntEnum):

@@ -81,7 +81,6 @@ class AIS_NListOfEntityOwner:
     def Value(self, theIndex: int) -> False: ...
     def SetValue(self, theIndex: int, theValue: False) -> None: ...
 
-
 class AIS_DisplayMode(IntEnum):
     AIS_WireFrame: int = ...
     AIS_Shaded: int = ...
@@ -174,6 +173,7 @@ AIS_NavigationMode_Orbit = AIS_NavigationMode.AIS_NavigationMode_Orbit
 AIS_NavigationMode_FirstPersonFlight = AIS_NavigationMode.AIS_NavigationMode_FirstPersonFlight
 AIS_NavigationMode_FirstPersonWalk = AIS_NavigationMode.AIS_NavigationMode_FirstPersonWalk
 
+
 class AIS_RotationMode(IntEnum):
     AIS_RotationMode_BndBoxActive: int = ...
     AIS_RotationMode_PickLast: int = ...
@@ -186,6 +186,7 @@ AIS_RotationMode_PickLast = AIS_RotationMode.AIS_RotationMode_PickLast
 AIS_RotationMode_PickCenter = AIS_RotationMode.AIS_RotationMode_PickCenter
 AIS_RotationMode_CameraAt = AIS_RotationMode.AIS_RotationMode_CameraAt
 AIS_RotationMode_BndBoxScene = AIS_RotationMode.AIS_RotationMode_BndBoxScene
+
 
 class AIS_SelectStatus(IntEnum):
     AIS_SS_Added: int = ...
@@ -329,13 +330,6 @@ AIS_TOPL_XYPlane = AIS_TypeOfPlane.AIS_TOPL_XYPlane
 AIS_TOPL_XZPlane = AIS_TypeOfPlane.AIS_TOPL_XZPlane
 AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
 
-class AIS_ViewInputBufferType(IntEnum):
-    AIS_ViewInputBufferType_UI: int = ...
-    AIS_ViewInputBufferType_GL: int = ...
-
-AIS_ViewInputBufferType_UI = AIS_ViewInputBufferType.AIS_ViewInputBufferType_UI
-AIS_ViewInputBufferType_GL = AIS_ViewInputBufferType.AIS_ViewInputBufferType_GL
-
 class AIS_ViewSelectionTool(IntEnum):
     AIS_ViewSelectionTool_Picking: int = ...
     AIS_ViewSelectionTool_RubberBand: int = ...
@@ -347,14 +341,12 @@ AIS_ViewSelectionTool_RubberBand = AIS_ViewSelectionTool.AIS_ViewSelectionTool_R
 AIS_ViewSelectionTool_Polygon = AIS_ViewSelectionTool.AIS_ViewSelectionTool_Polygon
 AIS_ViewSelectionTool_ZoomWindow = AIS_ViewSelectionTool.AIS_ViewSelectionTool_ZoomWindow
 
-class AIS_WalkRotation(IntEnum):
-    AIS_WalkRotation_Yaw: int = ...
-    AIS_WalkRotation_Pitch: int = ...
-    AIS_WalkRotation_Roll: int = ...
+class AIS_ViewInputBufferType(IntEnum):
+    AIS_ViewInputBufferType_UI: int = ...
+    AIS_ViewInputBufferType_GL: int = ...
 
-AIS_WalkRotation_Yaw = AIS_WalkRotation.AIS_WalkRotation_Yaw
-AIS_WalkRotation_Pitch = AIS_WalkRotation.AIS_WalkRotation_Pitch
-AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
+AIS_ViewInputBufferType_UI = AIS_ViewInputBufferType.AIS_ViewInputBufferType_UI
+AIS_ViewInputBufferType_GL = AIS_ViewInputBufferType.AIS_ViewInputBufferType_GL
 
 class AIS_WalkTranslation(IntEnum):
     AIS_WalkTranslation_Forward: int = ...
@@ -364,6 +356,15 @@ class AIS_WalkTranslation(IntEnum):
 AIS_WalkTranslation_Forward = AIS_WalkTranslation.AIS_WalkTranslation_Forward
 AIS_WalkTranslation_Side = AIS_WalkTranslation.AIS_WalkTranslation_Side
 AIS_WalkTranslation_Up = AIS_WalkTranslation.AIS_WalkTranslation_Up
+
+class AIS_WalkRotation(IntEnum):
+    AIS_WalkRotation_Yaw: int = ...
+    AIS_WalkRotation_Pitch: int = ...
+    AIS_WalkRotation_Roll: int = ...
+
+AIS_WalkRotation_Yaw = AIS_WalkRotation.AIS_WalkRotation_Yaw
+AIS_WalkRotation_Pitch = AIS_WalkRotation.AIS_WalkRotation_Pitch
+AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
 
 class ais:
     pass

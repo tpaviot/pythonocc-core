@@ -44,7 +44,6 @@ class TDocStd_SequenceOfDocument:
     def Value(self, theIndex: int) -> False: ...
     def SetValue(self, theIndex: int, theValue: False) -> None: ...
 
-
 class TDocStd_FormatVersion(IntEnum):
     TDocStd_FormatVersion_VERSION_2: int = ...
     TDocStd_FormatVersion_VERSION_3: int = ...
@@ -71,6 +70,7 @@ TDocStd_FormatVersion_VERSION_10 = TDocStd_FormatVersion.TDocStd_FormatVersion_V
 TDocStd_FormatVersion_VERSION_11 = TDocStd_FormatVersion.TDocStd_FormatVersion_VERSION_11
 TDocStd_FormatVersion_VERSION_12 = TDocStd_FormatVersion.TDocStd_FormatVersion_VERSION_12
 TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion.TDocStd_FormatVersion_CURRENT
+
 
 class tdocstd:
     @staticmethod

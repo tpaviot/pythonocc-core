@@ -125,7 +125,7 @@ typedef NCollection_Sequence<FEmTool_ListOfVectors> FEmTool_SeqOfLinConstr;
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
-class FEmTool_ElementsOfRefMatrix:
+class FEmTool_Assembly:
 	pass
 
 @classnotwrapped
@@ -133,19 +133,11 @@ class FEmTool_Curve:
 	pass
 
 @classnotwrapped
-class FEmTool_ProfileMatrix:
-	pass
-
-@classnotwrapped
 class FEmTool_ElementaryCriterion:
 	pass
 
 @classnotwrapped
-class FEmTool_LinearTension:
-	pass
-
-@classnotwrapped
-class FEmTool_LinearJerk:
+class FEmTool_ElementsOfRefMatrix:
 	pass
 
 @classnotwrapped
@@ -153,11 +145,19 @@ class FEmTool_LinearFlexion:
 	pass
 
 @classnotwrapped
-class FEmTool_SparseMatrix:
+class FEmTool_LinearJerk:
 	pass
 
 @classnotwrapped
-class FEmTool_Assembly:
+class FEmTool_LinearTension:
+	pass
+
+@classnotwrapped
+class FEmTool_ProfileMatrix:
+	pass
+
+@classnotwrapped
+class FEmTool_SparseMatrix:
 	pass
 
 }

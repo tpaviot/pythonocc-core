@@ -252,20 +252,20 @@ StepElement_Pyramid = StepElement_Volume3dElementShape.StepElement_Pyramid
 %wrap_handle(StepElement_SurfaceSectionFieldVarying)
 %wrap_handle(StepElement_UniformSurfaceSection)
 %wrap_handle(StepElement_Volume3dElementDescriptor)
+%wrap_handle(StepElement_HArray1OfCurveElementEndReleasePacket)
+%wrap_handle(StepElement_HArray1OfCurveElementSectionDefinition)
 %wrap_handle(StepElement_HArray1OfHSequenceOfCurveElementPurposeMember)
+%wrap_handle(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember)
+%wrap_handle(StepElement_HArray1OfMeasureOrUnspecifiedValue)
 %wrap_handle(StepElement_HArray1OfSurfaceSection)
 %wrap_handle(StepElement_HArray1OfVolumeElementPurpose)
-%wrap_handle(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember)
-%wrap_handle(StepElement_HArray1OfCurveElementSectionDefinition)
-%wrap_handle(StepElement_HArray1OfMeasureOrUnspecifiedValue)
-%wrap_handle(StepElement_HArray1OfCurveElementEndReleasePacket)
 %wrap_handle(StepElement_HArray1OfVolumeElementPurposeMember)
 %wrap_handle(StepElement_HArray2OfCurveElementPurposeMember)
-%wrap_handle(StepElement_HArray2OfSurfaceElementPurposeMember)
 %wrap_handle(StepElement_HArray2OfSurfaceElementPurpose)
-%wrap_handle(StepElement_HSequenceOfElementMaterial)
+%wrap_handle(StepElement_HArray2OfSurfaceElementPurposeMember)
 %wrap_handle(StepElement_HSequenceOfCurveElementPurposeMember)
 %wrap_handle(StepElement_HSequenceOfCurveElementSectionDefinition)
+%wrap_handle(StepElement_HSequenceOfElementMaterial)
 %wrap_handle(StepElement_HSequenceOfSurfaceElementPurposeMember)
 /* end handles declaration */
 
@@ -3934,6 +3934,28 @@ Returns field shape.
 
 /* harray1 classes */
 
+class StepElement_HArray1OfCurveElementEndReleasePacket : public StepElement_Array1OfCurveElementEndReleasePacket, public Standard_Transient {
+  public:
+    StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer theLower, const Standard_Integer theUpper, const StepElement_Array1OfCurveElementEndReleasePacket::value_type& theValue);
+    StepElement_HArray1OfCurveElementEndReleasePacket(const StepElement_Array1OfCurveElementEndReleasePacket& theOther);
+    const StepElement_Array1OfCurveElementEndReleasePacket& Array1();
+    StepElement_Array1OfCurveElementEndReleasePacket& ChangeArray1();
+};
+%make_alias(StepElement_HArray1OfCurveElementEndReleasePacket)
+
+
+class StepElement_HArray1OfCurveElementSectionDefinition : public StepElement_Array1OfCurveElementSectionDefinition, public Standard_Transient {
+  public:
+    StepElement_HArray1OfCurveElementSectionDefinition(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepElement_HArray1OfCurveElementSectionDefinition(const Standard_Integer theLower, const Standard_Integer theUpper, const StepElement_Array1OfCurveElementSectionDefinition::value_type& theValue);
+    StepElement_HArray1OfCurveElementSectionDefinition(const StepElement_Array1OfCurveElementSectionDefinition& theOther);
+    const StepElement_Array1OfCurveElementSectionDefinition& Array1();
+    StepElement_Array1OfCurveElementSectionDefinition& ChangeArray1();
+};
+%make_alias(StepElement_HArray1OfCurveElementSectionDefinition)
+
+
 class StepElement_HArray1OfHSequenceOfCurveElementPurposeMember : public StepElement_Array1OfHSequenceOfCurveElementPurposeMember, public Standard_Transient {
   public:
     StepElement_HArray1OfHSequenceOfCurveElementPurposeMember(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -3943,6 +3965,28 @@ class StepElement_HArray1OfHSequenceOfCurveElementPurposeMember : public StepEle
     StepElement_Array1OfHSequenceOfCurveElementPurposeMember& ChangeArray1();
 };
 %make_alias(StepElement_HArray1OfHSequenceOfCurveElementPurposeMember)
+
+
+class StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember : public StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember, public Standard_Transient {
+  public:
+    StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember(const Standard_Integer theLower, const Standard_Integer theUpper, const StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember::value_type& theValue);
+    StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember(const StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember& theOther);
+    const StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember& Array1();
+    StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember& ChangeArray1();
+};
+%make_alias(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember)
+
+
+class StepElement_HArray1OfMeasureOrUnspecifiedValue : public StepElement_Array1OfMeasureOrUnspecifiedValue, public Standard_Transient {
+  public:
+    StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer theLower, const Standard_Integer theUpper, const StepElement_Array1OfMeasureOrUnspecifiedValue::value_type& theValue);
+    StepElement_HArray1OfMeasureOrUnspecifiedValue(const StepElement_Array1OfMeasureOrUnspecifiedValue& theOther);
+    const StepElement_Array1OfMeasureOrUnspecifiedValue& Array1();
+    StepElement_Array1OfMeasureOrUnspecifiedValue& ChangeArray1();
+};
+%make_alias(StepElement_HArray1OfMeasureOrUnspecifiedValue)
 
 
 class StepElement_HArray1OfSurfaceSection : public StepElement_Array1OfSurfaceSection, public Standard_Transient {
@@ -3965,50 +4009,6 @@ class StepElement_HArray1OfVolumeElementPurpose : public StepElement_Array1OfVol
     StepElement_Array1OfVolumeElementPurpose& ChangeArray1();
 };
 %make_alias(StepElement_HArray1OfVolumeElementPurpose)
-
-
-class StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember : public StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember, public Standard_Transient {
-  public:
-    StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember(const Standard_Integer theLower, const Standard_Integer theUpper, const StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember::value_type& theValue);
-    StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember(const StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember& theOther);
-    const StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember& Array1();
-    StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember& ChangeArray1();
-};
-%make_alias(StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember)
-
-
-class StepElement_HArray1OfCurveElementSectionDefinition : public StepElement_Array1OfCurveElementSectionDefinition, public Standard_Transient {
-  public:
-    StepElement_HArray1OfCurveElementSectionDefinition(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepElement_HArray1OfCurveElementSectionDefinition(const Standard_Integer theLower, const Standard_Integer theUpper, const StepElement_Array1OfCurveElementSectionDefinition::value_type& theValue);
-    StepElement_HArray1OfCurveElementSectionDefinition(const StepElement_Array1OfCurveElementSectionDefinition& theOther);
-    const StepElement_Array1OfCurveElementSectionDefinition& Array1();
-    StepElement_Array1OfCurveElementSectionDefinition& ChangeArray1();
-};
-%make_alias(StepElement_HArray1OfCurveElementSectionDefinition)
-
-
-class StepElement_HArray1OfMeasureOrUnspecifiedValue : public StepElement_Array1OfMeasureOrUnspecifiedValue, public Standard_Transient {
-  public:
-    StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepElement_HArray1OfMeasureOrUnspecifiedValue(const Standard_Integer theLower, const Standard_Integer theUpper, const StepElement_Array1OfMeasureOrUnspecifiedValue::value_type& theValue);
-    StepElement_HArray1OfMeasureOrUnspecifiedValue(const StepElement_Array1OfMeasureOrUnspecifiedValue& theOther);
-    const StepElement_Array1OfMeasureOrUnspecifiedValue& Array1();
-    StepElement_Array1OfMeasureOrUnspecifiedValue& ChangeArray1();
-};
-%make_alias(StepElement_HArray1OfMeasureOrUnspecifiedValue)
-
-
-class StepElement_HArray1OfCurveElementEndReleasePacket : public StepElement_Array1OfCurveElementEndReleasePacket, public Standard_Transient {
-  public:
-    StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepElement_HArray1OfCurveElementEndReleasePacket(const Standard_Integer theLower, const Standard_Integer theUpper, const StepElement_Array1OfCurveElementEndReleasePacket::value_type& theValue);
-    StepElement_HArray1OfCurveElementEndReleasePacket(const StepElement_Array1OfCurveElementEndReleasePacket& theOther);
-    const StepElement_Array1OfCurveElementEndReleasePacket& Array1();
-    StepElement_Array1OfCurveElementEndReleasePacket& ChangeArray1();
-};
-%make_alias(StepElement_HArray1OfCurveElementEndReleasePacket)
 
 
 class StepElement_HArray1OfVolumeElementPurposeMember : public StepElement_Array1OfVolumeElementPurposeMember, public Standard_Transient {
@@ -4035,19 +4035,6 @@ class StepElement_HArray2OfCurveElementPurposeMember : public StepElement_Array2
 %make_alias(StepElement_HArray2OfCurveElementPurposeMember)
 
 
-class StepElement_HArray2OfSurfaceElementPurposeMember : public StepElement_Array2OfSurfaceElementPurposeMember, public Standard_Transient {
-  public:
-    StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const StepElement_Array2OfSurfaceElementPurposeMember::value_type& theValue);
-    StepElement_HArray2OfSurfaceElementPurposeMember(const StepElement_Array2OfSurfaceElementPurposeMember& theOther);
-    const StepElement_Array2OfSurfaceElementPurposeMember& Array2 ();
-    StepElement_Array2OfSurfaceElementPurposeMember& ChangeArray2 (); 
-};
-%make_alias(StepElement_HArray2OfSurfaceElementPurposeMember)
-
-
 class StepElement_HArray2OfSurfaceElementPurpose : public StepElement_Array2OfSurfaceElementPurpose, public Standard_Transient {
   public:
     StepElement_HArray2OfSurfaceElementPurpose(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
@@ -4061,19 +4048,20 @@ class StepElement_HArray2OfSurfaceElementPurpose : public StepElement_Array2OfSu
 %make_alias(StepElement_HArray2OfSurfaceElementPurpose)
 
 
-/* hsequence classes */
-class StepElement_HSequenceOfElementMaterial : public StepElement_SequenceOfElementMaterial, public Standard_Transient {
+class StepElement_HArray2OfSurfaceElementPurposeMember : public StepElement_Array2OfSurfaceElementPurposeMember, public Standard_Transient {
   public:
-    StepElement_HSequenceOfElementMaterial();
-    StepElement_HSequenceOfElementMaterial(const StepElement_SequenceOfElementMaterial& theOther);
-    const StepElement_SequenceOfElementMaterial& Sequence();
-    void Append (const StepElement_SequenceOfElementMaterial::value_type& theItem);
-    void Append (StepElement_SequenceOfElementMaterial& theSequence);
-    StepElement_SequenceOfElementMaterial& ChangeSequence();
+    StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    StepElement_HArray2OfSurfaceElementPurposeMember(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const StepElement_Array2OfSurfaceElementPurposeMember::value_type& theValue);
+    StepElement_HArray2OfSurfaceElementPurposeMember(const StepElement_Array2OfSurfaceElementPurposeMember& theOther);
+    const StepElement_Array2OfSurfaceElementPurposeMember& Array2 ();
+    StepElement_Array2OfSurfaceElementPurposeMember& ChangeArray2 (); 
 };
-%make_alias(StepElement_HSequenceOfElementMaterial)
+%make_alias(StepElement_HArray2OfSurfaceElementPurposeMember)
 
 
+/* hsequence classes */
 class StepElement_HSequenceOfCurveElementPurposeMember : public StepElement_SequenceOfCurveElementPurposeMember, public Standard_Transient {
   public:
     StepElement_HSequenceOfCurveElementPurposeMember();
@@ -4096,6 +4084,18 @@ class StepElement_HSequenceOfCurveElementSectionDefinition : public StepElement_
     StepElement_SequenceOfCurveElementSectionDefinition& ChangeSequence();
 };
 %make_alias(StepElement_HSequenceOfCurveElementSectionDefinition)
+
+
+class StepElement_HSequenceOfElementMaterial : public StepElement_SequenceOfElementMaterial, public Standard_Transient {
+  public:
+    StepElement_HSequenceOfElementMaterial();
+    StepElement_HSequenceOfElementMaterial(const StepElement_SequenceOfElementMaterial& theOther);
+    const StepElement_SequenceOfElementMaterial& Sequence();
+    void Append (const StepElement_SequenceOfElementMaterial::value_type& theItem);
+    void Append (StepElement_SequenceOfElementMaterial& theSequence);
+    StepElement_SequenceOfElementMaterial& ChangeSequence();
+};
+%make_alias(StepElement_HSequenceOfElementMaterial)
 
 
 class StepElement_HSequenceOfSurfaceElementPurposeMember : public StepElement_SequenceOfSurfaceElementPurposeMember, public Standard_Transient {

@@ -202,7 +202,6 @@ class Graphic3d_ShaderVariableList:
     def Value(self, theIndex: int) -> False: ...
     def SetValue(self, theIndex: int, theValue: False) -> None: ...
 
-
 class Graphic3d_AlphaMode(IntEnum):
     Graphic3d_AlphaMode_Opaque: int = ...
     Graphic3d_AlphaMode_Mask: int = ...
@@ -215,6 +214,48 @@ Graphic3d_AlphaMode_Mask = Graphic3d_AlphaMode.Graphic3d_AlphaMode_Mask
 Graphic3d_AlphaMode_Blend = Graphic3d_AlphaMode.Graphic3d_AlphaMode_Blend
 Graphic3d_AlphaMode_MaskBlend = Graphic3d_AlphaMode.Graphic3d_AlphaMode_MaskBlend
 Graphic3d_AlphaMode_BlendAuto = Graphic3d_AlphaMode.Graphic3d_AlphaMode_BlendAuto
+
+
+class Graphic3d_FresnelModel(IntEnum):
+    Graphic3d_FM_SCHLICK: int = ...
+    Graphic3d_FM_CONSTANT: int = ...
+    Graphic3d_FM_CONDUCTOR: int = ...
+    Graphic3d_FM_DIELECTRIC: int = ...
+
+Graphic3d_FM_SCHLICK = Graphic3d_FresnelModel.Graphic3d_FM_SCHLICK
+Graphic3d_FM_CONSTANT = Graphic3d_FresnelModel.Graphic3d_FM_CONSTANT
+Graphic3d_FM_CONDUCTOR = Graphic3d_FresnelModel.Graphic3d_FM_CONDUCTOR
+Graphic3d_FM_DIELECTRIC = Graphic3d_FresnelModel.Graphic3d_FM_DIELECTRIC
+
+class Graphic3d_TypeOfAttribute(IntEnum):
+    Graphic3d_TOA_POS: int = ...
+    Graphic3d_TOA_NORM: int = ...
+    Graphic3d_TOA_UV: int = ...
+    Graphic3d_TOA_COLOR: int = ...
+    Graphic3d_TOA_CUSTOM: int = ...
+
+Graphic3d_TOA_POS = Graphic3d_TypeOfAttribute.Graphic3d_TOA_POS
+Graphic3d_TOA_NORM = Graphic3d_TypeOfAttribute.Graphic3d_TOA_NORM
+Graphic3d_TOA_UV = Graphic3d_TypeOfAttribute.Graphic3d_TOA_UV
+Graphic3d_TOA_COLOR = Graphic3d_TypeOfAttribute.Graphic3d_TOA_COLOR
+Graphic3d_TOA_CUSTOM = Graphic3d_TypeOfAttribute.Graphic3d_TOA_CUSTOM
+
+class Graphic3d_TypeOfData(IntEnum):
+    Graphic3d_TOD_USHORT: int = ...
+    Graphic3d_TOD_UINT: int = ...
+    Graphic3d_TOD_VEC2: int = ...
+    Graphic3d_TOD_VEC3: int = ...
+    Graphic3d_TOD_VEC4: int = ...
+    Graphic3d_TOD_VEC4UB: int = ...
+    Graphic3d_TOD_FLOAT: int = ...
+
+Graphic3d_TOD_USHORT = Graphic3d_TypeOfData.Graphic3d_TOD_USHORT
+Graphic3d_TOD_UINT = Graphic3d_TypeOfData.Graphic3d_TOD_UINT
+Graphic3d_TOD_VEC2 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC2
+Graphic3d_TOD_VEC3 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC3
+Graphic3d_TOD_VEC4 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC4
+Graphic3d_TOD_VEC4UB = Graphic3d_TypeOfData.Graphic3d_TOD_VEC4UB
+Graphic3d_TOD_FLOAT = Graphic3d_TypeOfData.Graphic3d_TOD_FLOAT
 
 class Graphic3d_BufferType(IntEnum):
     Graphic3d_BT_RGB: int = ...
@@ -314,6 +355,7 @@ Graphic3d_DisplayPriority_Above2 = Graphic3d_DisplayPriority.Graphic3d_DisplayPr
 Graphic3d_DisplayPriority_Highlight = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Highlight
 Graphic3d_DisplayPriority_Topmost = Graphic3d_DisplayPriority.Graphic3d_DisplayPriority_Topmost
 
+
 class Graphic3d_FrameStatsCounter(IntEnum):
     Graphic3d_FrameStatsCounter_NbLayers: int = ...
     Graphic3d_FrameStatsCounter_NbStructs: int = ...
@@ -371,6 +413,7 @@ Graphic3d_FrameStatsCounter_NbTrianglesImmediate = Graphic3d_FrameStatsCounter.G
 Graphic3d_FrameStatsCounter_NbLinesImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbLinesImmediate
 Graphic3d_FrameStatsCounter_NbPointsImmediate = Graphic3d_FrameStatsCounter.Graphic3d_FrameStatsCounter_NbPointsImmediate
 
+
 class Graphic3d_FrameStatsTimer(IntEnum):
     Graphic3d_FrameStatsTimer_ElapsedFrame: int = ...
     Graphic3d_FrameStatsTimer_CpuFrame: int = ...
@@ -384,27 +427,6 @@ Graphic3d_FrameStatsTimer_CpuCulling = Graphic3d_FrameStatsTimer.Graphic3d_Frame
 Graphic3d_FrameStatsTimer_CpuPicking = Graphic3d_FrameStatsTimer.Graphic3d_FrameStatsTimer_CpuPicking
 Graphic3d_FrameStatsTimer_CpuDynamics = Graphic3d_FrameStatsTimer.Graphic3d_FrameStatsTimer_CpuDynamics
 
-class Graphic3d_FresnelModel(IntEnum):
-    Graphic3d_FM_SCHLICK: int = ...
-    Graphic3d_FM_CONSTANT: int = ...
-    Graphic3d_FM_CONDUCTOR: int = ...
-    Graphic3d_FM_DIELECTRIC: int = ...
-
-Graphic3d_FM_SCHLICK = Graphic3d_FresnelModel.Graphic3d_FM_SCHLICK
-Graphic3d_FM_CONSTANT = Graphic3d_FresnelModel.Graphic3d_FM_CONSTANT
-Graphic3d_FM_CONDUCTOR = Graphic3d_FresnelModel.Graphic3d_FM_CONDUCTOR
-Graphic3d_FM_DIELECTRIC = Graphic3d_FresnelModel.Graphic3d_FM_DIELECTRIC
-
-class Graphic3d_GlslExtension(IntEnum):
-    Graphic3d_GlslExtension_GL_OES_standard_derivatives: int = ...
-    Graphic3d_GlslExtension_GL_EXT_shader_texture_lod: int = ...
-    Graphic3d_GlslExtension_GL_EXT_frag_depth: int = ...
-    Graphic3d_GlslExtension_GL_EXT_gpu_shader4: int = ...
-
-Graphic3d_GlslExtension_GL_OES_standard_derivatives = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_OES_standard_derivatives
-Graphic3d_GlslExtension_GL_EXT_shader_texture_lod = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_shader_texture_lod
-Graphic3d_GlslExtension_GL_EXT_frag_depth = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_frag_depth
-Graphic3d_GlslExtension_GL_EXT_gpu_shader4 = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_gpu_shader4
 
 class Graphic3d_GroupAspect(IntEnum):
     Graphic3d_ASPECT_LINE: int = ...
@@ -691,6 +713,18 @@ Graphic3d_ShaderFlags_IsPoint = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_IsPo
 Graphic3d_ShaderFlags_HasTextures = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_HasTextures
 Graphic3d_ShaderFlags_NeedsGeomShader = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_NeedsGeomShader
 
+class Graphic3d_GlslExtension(IntEnum):
+    Graphic3d_GlslExtension_GL_OES_standard_derivatives: int = ...
+    Graphic3d_GlslExtension_GL_EXT_shader_texture_lod: int = ...
+    Graphic3d_GlslExtension_GL_EXT_frag_depth: int = ...
+    Graphic3d_GlslExtension_GL_EXT_gpu_shader4: int = ...
+
+Graphic3d_GlslExtension_GL_OES_standard_derivatives = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_OES_standard_derivatives
+Graphic3d_GlslExtension_GL_EXT_shader_texture_lod = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_shader_texture_lod
+Graphic3d_GlslExtension_GL_EXT_frag_depth = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_frag_depth
+Graphic3d_GlslExtension_GL_EXT_gpu_shader4 = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_gpu_shader4
+
+
 class Graphic3d_StereoMode(IntEnum):
     Graphic3d_StereoMode_QuadBuffer: int = ...
     Graphic3d_StereoMode_Anaglyph: int = ...
@@ -711,6 +745,7 @@ Graphic3d_StereoMode_SideBySide = Graphic3d_StereoMode.Graphic3d_StereoMode_Side
 Graphic3d_StereoMode_OverUnder = Graphic3d_StereoMode.Graphic3d_StereoMode_OverUnder
 Graphic3d_StereoMode_SoftPageFlip = Graphic3d_StereoMode.Graphic3d_StereoMode_SoftPageFlip
 Graphic3d_StereoMode_OpenVR = Graphic3d_StereoMode.Graphic3d_StereoMode_OpenVR
+
 
 class Graphic3d_TextPath(IntEnum):
     Graphic3d_TP_UP: int = ...
@@ -799,6 +834,7 @@ Graphic3d_TextureUnit_PbrEnvironmentLUT = Graphic3d_TextureUnit.Graphic3d_Textur
 Graphic3d_TextureUnit_PbrIblDiffuseSH = Graphic3d_TextureUnit.Graphic3d_TextureUnit_PbrIblDiffuseSH
 Graphic3d_TextureUnit_PbrIblSpecular = Graphic3d_TextureUnit.Graphic3d_TextureUnit_PbrIblSpecular
 
+
 class Graphic3d_ToneMappingMethod(IntEnum):
     Graphic3d_ToneMappingMethod_Disabled: int = ...
     Graphic3d_ToneMappingMethod_Filmic: int = ...
@@ -831,19 +867,6 @@ class Graphic3d_TypeOfAnswer(IntEnum):
 Graphic3d_TOA_YES = Graphic3d_TypeOfAnswer.Graphic3d_TOA_YES
 Graphic3d_TOA_NO = Graphic3d_TypeOfAnswer.Graphic3d_TOA_NO
 Graphic3d_TOA_COMPUTE = Graphic3d_TypeOfAnswer.Graphic3d_TOA_COMPUTE
-
-class Graphic3d_TypeOfAttribute(IntEnum):
-    Graphic3d_TOA_POS: int = ...
-    Graphic3d_TOA_NORM: int = ...
-    Graphic3d_TOA_UV: int = ...
-    Graphic3d_TOA_COLOR: int = ...
-    Graphic3d_TOA_CUSTOM: int = ...
-
-Graphic3d_TOA_POS = Graphic3d_TypeOfAttribute.Graphic3d_TOA_POS
-Graphic3d_TOA_NORM = Graphic3d_TypeOfAttribute.Graphic3d_TOA_NORM
-Graphic3d_TOA_UV = Graphic3d_TypeOfAttribute.Graphic3d_TOA_UV
-Graphic3d_TOA_COLOR = Graphic3d_TypeOfAttribute.Graphic3d_TOA_COLOR
-Graphic3d_TOA_CUSTOM = Graphic3d_TypeOfAttribute.Graphic3d_TOA_CUSTOM
 
 class Graphic3d_TypeOfBackfacingModel(IntEnum):
     Graphic3d_TypeOfBackfacingModel_Auto: int = ...
@@ -879,29 +902,13 @@ Graphic3d_TOB_GRADIENT = Graphic3d_TypeOfBackground.Graphic3d_TOB_GRADIENT
 Graphic3d_TOB_TEXTURE = Graphic3d_TypeOfBackground.Graphic3d_TOB_TEXTURE
 Graphic3d_TOB_CUBEMAP = Graphic3d_TypeOfBackground.Graphic3d_TOB_CUBEMAP
 
+
 class Graphic3d_TypeOfConnection(IntEnum):
     Graphic3d_TOC_ANCESTOR: int = ...
     Graphic3d_TOC_DESCENDANT: int = ...
 
 Graphic3d_TOC_ANCESTOR = Graphic3d_TypeOfConnection.Graphic3d_TOC_ANCESTOR
 Graphic3d_TOC_DESCENDANT = Graphic3d_TypeOfConnection.Graphic3d_TOC_DESCENDANT
-
-class Graphic3d_TypeOfData(IntEnum):
-    Graphic3d_TOD_USHORT: int = ...
-    Graphic3d_TOD_UINT: int = ...
-    Graphic3d_TOD_VEC2: int = ...
-    Graphic3d_TOD_VEC3: int = ...
-    Graphic3d_TOD_VEC4: int = ...
-    Graphic3d_TOD_VEC4UB: int = ...
-    Graphic3d_TOD_FLOAT: int = ...
-
-Graphic3d_TOD_USHORT = Graphic3d_TypeOfData.Graphic3d_TOD_USHORT
-Graphic3d_TOD_UINT = Graphic3d_TypeOfData.Graphic3d_TOD_UINT
-Graphic3d_TOD_VEC2 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC2
-Graphic3d_TOD_VEC3 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC3
-Graphic3d_TOD_VEC4 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC4
-Graphic3d_TOD_VEC4UB = Graphic3d_TypeOfData.Graphic3d_TOD_VEC4UB
-Graphic3d_TOD_FLOAT = Graphic3d_TypeOfData.Graphic3d_TOD_FLOAT
 
 class Graphic3d_TypeOfLightSource(IntEnum):
     Graphic3d_TypeOfLightSource_Ambient: int = ...
@@ -929,6 +936,7 @@ V3d_AMBIENT = Graphic3d_TypeOfLightSource.V3d_AMBIENT
 V3d_DIRECTIONAL = Graphic3d_TypeOfLightSource.V3d_DIRECTIONAL
 V3d_POSITIONAL = Graphic3d_TypeOfLightSource.V3d_POSITIONAL
 V3d_SPOT = Graphic3d_TypeOfLightSource.V3d_SPOT
+
 
 class Graphic3d_TypeOfLimit(IntEnum):
     Graphic3d_TypeOfLimit_MaxNbLights: int = ...
@@ -1022,6 +1030,7 @@ Graphic3d_TOR_DIFFUSE = Graphic3d_TypeOfReflection.Graphic3d_TOR_DIFFUSE
 Graphic3d_TOR_SPECULAR = Graphic3d_TypeOfReflection.Graphic3d_TOR_SPECULAR
 Graphic3d_TOR_EMISSION = Graphic3d_TypeOfReflection.Graphic3d_TOR_EMISSION
 
+
 class Graphic3d_TypeOfShaderObject(IntEnum):
     Graphic3d_TOS_VERTEX: int = ...
     Graphic3d_TOS_TESS_CONTROL: int = ...
@@ -1077,6 +1086,7 @@ V3d_COLOR = Graphic3d_TypeOfShadingModel.V3d_COLOR
 V3d_FLAT = Graphic3d_TypeOfShadingModel.V3d_FLAT
 V3d_GOURAUD = Graphic3d_TypeOfShadingModel.V3d_GOURAUD
 V3d_PHONG = Graphic3d_TypeOfShadingModel.V3d_PHONG
+
 
 class Graphic3d_TypeOfStructure(IntEnum):
     Graphic3d_TOS_WIREFRAME: int = ...
@@ -1147,6 +1157,7 @@ Graphic3d_VTA_BOTTOM = Graphic3d_VerticalTextAlignment.Graphic3d_VTA_BOTTOM
 Graphic3d_VTA_CENTER = Graphic3d_VerticalTextAlignment.Graphic3d_VTA_CENTER
 Graphic3d_VTA_TOP = Graphic3d_VerticalTextAlignment.Graphic3d_VTA_TOP
 Graphic3d_VTA_TOPFIRSTLINE = Graphic3d_VerticalTextAlignment.Graphic3d_VTA_TOPFIRSTLINE
+
 
 class Graphic3d_ArrayOfPrimitives(Standard_Transient):
     @overload
