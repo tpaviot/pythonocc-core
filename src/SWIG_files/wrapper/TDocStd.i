@@ -74,11 +74,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum  {
-	TDocStd_FormatVersion_LOWER = TDocStd_FormatVersion_VERSION_2,
-	TDocStd_FormatVersion_UPPER = TDocStd_FormatVersion_VERSION_12,
-};
-
 enum TDocStd_FormatVersion {
 	TDocStd_FormatVersion_VERSION_2 = 2,
 	TDocStd_FormatVersion_VERSION_3 = 3,
@@ -92,6 +87,11 @@ enum TDocStd_FormatVersion {
 	TDocStd_FormatVersion_VERSION_11 = 11,
 	TDocStd_FormatVersion_VERSION_12 = 12,
 	TDocStd_FormatVersion_CURRENT = TDocStd_FormatVersion_VERSION_12,
+};
+
+enum  {
+	TDocStd_FormatVersion_LOWER = TDocStd_FormatVersion_VERSION_2,
+	TDocStd_FormatVersion_UPPER = TDocStd_FormatVersion_VERSION_12,
 };
 
 /* end public enums declaration */

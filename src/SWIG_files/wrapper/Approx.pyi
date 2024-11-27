@@ -3,8 +3,8 @@ from typing import overload, NewType, Optional, Tuple
 
 from OCC.Core.Standard import *
 from OCC.Core.NCollection import *
-from OCC.Core.TColStd import *
 from OCC.Core.Adaptor3d import *
+from OCC.Core.TColStd import *
 from OCC.Core.Adaptor2d import *
 from OCC.Core.GeomAbs import *
 from OCC.Core.Geom2d import *

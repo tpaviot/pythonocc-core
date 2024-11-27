@@ -65,7 +65,6 @@ from OCC.Core.Exception import *
 %include "NCollection_BaseMap.hxx";
 %include "NCollection_BasePointerVector.hxx";
 %include "NCollection_Map.hxx";
-%include "NCollection_DefaultHasher.hxx";
 %include "NCollection_List.hxx";
 %include "NCollection_Sequence.hxx";
 %include "NCollection_DataMap.hxx";
@@ -293,7 +292,23 @@ typedef size_t Standard_Size;
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
-class NCollection_ListNode:
+class NCollection_AccAllocator:
+	pass
+
+@classnotwrapped
+class NCollection_AliasedArray:
+	pass
+
+@classnotwrapped
+class NCollection_AlignedAllocator:
+	pass
+
+@classnotwrapped
+class NCollection_Allocator:
+	pass
+
+@classnotwrapped
+class NCollection_Array1:
 	pass
 
 @classnotwrapped
@@ -301,47 +316,31 @@ class NCollection_Array2:
 	pass
 
 @classnotwrapped
-class NCollection_SparseArray:
+class NCollection_BaseAllocator:
 	pass
 
 @classnotwrapped
-class NCollection_IndexedDataMap:
+class NCollection_BaseList:
 	pass
 
 @classnotwrapped
-class NCollection_DefaultHasher:
+class NCollection_BaseMap:
 	pass
 
 @classnotwrapped
-class NCollection_IncAllocator:
+class NCollection_BasePointerVector:
 	pass
 
 @classnotwrapped
-class NCollection_Mat3:
+class NCollection_SeqNode:
 	pass
 
 @classnotwrapped
-class NCollection_IndexedIterator:
+class NCollection_BaseSequence:
 	pass
 
 @classnotwrapped
-class NCollection_UtfIterator:
-	pass
-
-@classnotwrapped
-class NCollection_EBTree:
-	pass
-
-@classnotwrapped
-class NCollection_Vec4:
-	pass
-
-@classnotwrapped
-class NCollection_Shared:
-	pass
-
-@classnotwrapped
-class NCollection_AlignedAllocator:
+class NCollection_Buffer:
 	pass
 
 @classnotwrapped
@@ -357,51 +356,27 @@ class NCollection_CellFilter_InspectorXY:
 	pass
 
 @classnotwrapped
-class NCollection_Iterator:
-	pass
-
-@classnotwrapped
-class NCollection_Sequence:
-	pass
-
-@classnotwrapped
-class NCollection_AliasedArray:
-	pass
-
-@classnotwrapped
-class NCollection_UBTreeFiller:
-	pass
-
-@classnotwrapped
-class NCollection_BaseAllocator:
-	pass
-
-@classnotwrapped
-class NCollection_BaseList:
-	pass
-
-@classnotwrapped
-class NCollection_List:
-	pass
-
-@classnotwrapped
 class NCollection_DataMap:
 	pass
 
 @classnotwrapped
-class NCollection_SparseArrayBase:
+class NCollection_DefaultHasher:
 	pass
 
 @classnotwrapped
-class NCollection_Vec2:
+class NCollection_DoubleMap:
 	pass
 
 @classnotwrapped
-class NCollection_Map:
+class NCollection_DynamicArray:
 	pass
 
 @classnotwrapped
-class NCollection_WinHeapAllocator:
+class NCollection_EBTree:
+	pass
+
+@classnotwrapped
+class NCollection_Handle:
 	pass
 
 @classnotwrapped
@@ -409,19 +384,35 @@ class NCollection_HeapAllocator:
 	pass
 
 @classnotwrapped
+class NCollection_IncAllocator:
+	pass
+
+@classnotwrapped
+class NCollection_IndexedDataMap:
+	pass
+
+@classnotwrapped
+class NCollection_IndexedIterator:
+	pass
+
+@classnotwrapped
 class NCollection_IndexedMap:
 	pass
 
 @classnotwrapped
-class NCollection_Vec3:
+class NCollection_Iterator:
 	pass
 
 @classnotwrapped
-class NCollection_TListNode:
+class NCollection_Lerp:
 	pass
 
 @classnotwrapped
-class NCollection_UBTree:
+class NCollection_List:
+	pass
+
+@classnotwrapped
+class NCollection_ListNode:
 	pass
 
 @classnotwrapped
@@ -429,23 +420,11 @@ class NCollection_LocalArray:
 	pass
 
 @classnotwrapped
-class NCollection_BasePointerVector:
+class NCollection_Map:
 	pass
 
 @classnotwrapped
-class NCollection_Allocator:
-	pass
-
-@classnotwrapped
-class NCollection_StlIterator:
-	pass
-
-@classnotwrapped
-class NCollection_AccAllocator:
-	pass
-
-@classnotwrapped
-class NCollection_Lerp:
+class NCollection_Mat3:
 	pass
 
 @classnotwrapped
@@ -457,7 +436,43 @@ class NCollection_OccAllocator:
 	pass
 
 @classnotwrapped
+class NCollection_Sequence:
+	pass
+
+@classnotwrapped
+class NCollection_Shared:
+	pass
+
+@classnotwrapped
+class NCollection_SparseArray:
+	pass
+
+@classnotwrapped
+class NCollection_SparseArrayBase:
+	pass
+
+@classnotwrapped
+class NCollection_StlIterator:
+	pass
+
+@classnotwrapped
 class NCollection_TListIterator:
+	pass
+
+@classnotwrapped
+class NCollection_TListNode:
+	pass
+
+@classnotwrapped
+class NCollection_UBTree:
+	pass
+
+@classnotwrapped
+class NCollection_UBTreeFiller:
+	pass
+
+@classnotwrapped
+class NCollection_UtfIterator:
 	pass
 
 @classnotwrapped
@@ -465,35 +480,19 @@ class NCollection_UtfString:
 	pass
 
 @classnotwrapped
-class NCollection_BaseMap:
+class NCollection_Vec2:
 	pass
 
 @classnotwrapped
-class NCollection_DynamicArray:
+class NCollection_Vec3:
 	pass
 
 @classnotwrapped
-class NCollection_Array1:
+class NCollection_Vec4:
 	pass
 
 @classnotwrapped
-class NCollection_Handle:
-	pass
-
-@classnotwrapped
-class NCollection_DoubleMap:
-	pass
-
-@classnotwrapped
-class NCollection_SeqNode:
-	pass
-
-@classnotwrapped
-class NCollection_BaseSequence:
-	pass
-
-@classnotwrapped
-class NCollection_Buffer:
+class NCollection_WinHeapAllocator:
 	pass
 
 }

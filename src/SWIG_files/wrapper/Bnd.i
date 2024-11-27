@@ -74,8 +74,8 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(Bnd_HArray1OfBox2d)
 %wrap_handle(Bnd_HArray1OfBox)
+%wrap_handle(Bnd_HArray1OfBox2d)
 %wrap_handle(Bnd_HArray1OfSphere)
 /* end handles declaration */
 
@@ -4651,17 +4651,6 @@ Converts the given bnd_box to bvh_box.
 
 /* harray1 classes */
 
-class Bnd_HArray1OfBox2d : public Bnd_Array1OfBox2d, public Standard_Transient {
-  public:
-    Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper, const Bnd_Array1OfBox2d::value_type& theValue);
-    Bnd_HArray1OfBox2d(const Bnd_Array1OfBox2d& theOther);
-    const Bnd_Array1OfBox2d& Array1();
-    Bnd_Array1OfBox2d& ChangeArray1();
-};
-%make_alias(Bnd_HArray1OfBox2d)
-
-
 class Bnd_HArray1OfBox : public Bnd_Array1OfBox, public Standard_Transient {
   public:
     Bnd_HArray1OfBox(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -4671,6 +4660,17 @@ class Bnd_HArray1OfBox : public Bnd_Array1OfBox, public Standard_Transient {
     Bnd_Array1OfBox& ChangeArray1();
 };
 %make_alias(Bnd_HArray1OfBox)
+
+
+class Bnd_HArray1OfBox2d : public Bnd_Array1OfBox2d, public Standard_Transient {
+  public:
+    Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper);
+    Bnd_HArray1OfBox2d(const Standard_Integer theLower, const Standard_Integer theUpper, const Bnd_Array1OfBox2d::value_type& theValue);
+    Bnd_HArray1OfBox2d(const Bnd_Array1OfBox2d& theOther);
+    const Bnd_Array1OfBox2d& Array1();
+    Bnd_Array1OfBox2d& ChangeArray1();
+};
+%make_alias(Bnd_HArray1OfBox2d)
 
 
 class Bnd_HArray1OfSphere : public Bnd_Array1OfSphere, public Standard_Transient {

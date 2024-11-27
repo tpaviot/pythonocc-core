@@ -208,14 +208,14 @@ StepFEA_Unspecified = StepFEA_UnspecifiedValue.StepFEA_Unspecified
 %wrap_handle(StepFEA_NodeWithVector)
 %wrap_handle(StepFEA_HArray1OfCurveElementEndOffset)
 %wrap_handle(StepFEA_HArray1OfCurveElementEndRelease)
+%wrap_handle(StepFEA_HArray1OfCurveElementInterval)
 %wrap_handle(StepFEA_HArray1OfDegreeOfFreedom)
 %wrap_handle(StepFEA_HArray1OfElementRepresentation)
-%wrap_handle(StepFEA_HArray1OfCurveElementInterval)
 %wrap_handle(StepFEA_HArray1OfNodeRepresentation)
-%wrap_handle(StepFEA_HSequenceOfElementRepresentation)
-%wrap_handle(StepFEA_HSequenceOfNodeRepresentation)
 %wrap_handle(StepFEA_HSequenceOfCurve3dElementProperty)
 %wrap_handle(StepFEA_HSequenceOfElementGeometricRelationship)
+%wrap_handle(StepFEA_HSequenceOfElementRepresentation)
+%wrap_handle(StepFEA_HSequenceOfNodeRepresentation)
 /* end handles declaration */
 
 /* templates */
@@ -5756,6 +5756,17 @@ class StepFEA_HArray1OfCurveElementEndRelease : public StepFEA_Array1OfCurveElem
 %make_alias(StepFEA_HArray1OfCurveElementEndRelease)
 
 
+class StepFEA_HArray1OfCurveElementInterval : public StepFEA_Array1OfCurveElementInterval, public Standard_Transient {
+  public:
+    StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper, const StepFEA_Array1OfCurveElementInterval::value_type& theValue);
+    StepFEA_HArray1OfCurveElementInterval(const StepFEA_Array1OfCurveElementInterval& theOther);
+    const StepFEA_Array1OfCurveElementInterval& Array1();
+    StepFEA_Array1OfCurveElementInterval& ChangeArray1();
+};
+%make_alias(StepFEA_HArray1OfCurveElementInterval)
+
+
 class StepFEA_HArray1OfDegreeOfFreedom : public StepFEA_Array1OfDegreeOfFreedom, public Standard_Transient {
   public:
     StepFEA_HArray1OfDegreeOfFreedom(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5778,17 +5789,6 @@ class StepFEA_HArray1OfElementRepresentation : public StepFEA_Array1OfElementRep
 %make_alias(StepFEA_HArray1OfElementRepresentation)
 
 
-class StepFEA_HArray1OfCurveElementInterval : public StepFEA_Array1OfCurveElementInterval, public Standard_Transient {
-  public:
-    StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepFEA_HArray1OfCurveElementInterval(const Standard_Integer theLower, const Standard_Integer theUpper, const StepFEA_Array1OfCurveElementInterval::value_type& theValue);
-    StepFEA_HArray1OfCurveElementInterval(const StepFEA_Array1OfCurveElementInterval& theOther);
-    const StepFEA_Array1OfCurveElementInterval& Array1();
-    StepFEA_Array1OfCurveElementInterval& ChangeArray1();
-};
-%make_alias(StepFEA_HArray1OfCurveElementInterval)
-
-
 class StepFEA_HArray1OfNodeRepresentation : public StepFEA_Array1OfNodeRepresentation, public Standard_Transient {
   public:
     StepFEA_HArray1OfNodeRepresentation(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5801,30 +5801,6 @@ class StepFEA_HArray1OfNodeRepresentation : public StepFEA_Array1OfNodeRepresent
 
 /* harray2 classes */
 /* hsequence classes */
-class StepFEA_HSequenceOfElementRepresentation : public StepFEA_SequenceOfElementRepresentation, public Standard_Transient {
-  public:
-    StepFEA_HSequenceOfElementRepresentation();
-    StepFEA_HSequenceOfElementRepresentation(const StepFEA_SequenceOfElementRepresentation& theOther);
-    const StepFEA_SequenceOfElementRepresentation& Sequence();
-    void Append (const StepFEA_SequenceOfElementRepresentation::value_type& theItem);
-    void Append (StepFEA_SequenceOfElementRepresentation& theSequence);
-    StepFEA_SequenceOfElementRepresentation& ChangeSequence();
-};
-%make_alias(StepFEA_HSequenceOfElementRepresentation)
-
-
-class StepFEA_HSequenceOfNodeRepresentation : public StepFEA_SequenceOfNodeRepresentation, public Standard_Transient {
-  public:
-    StepFEA_HSequenceOfNodeRepresentation();
-    StepFEA_HSequenceOfNodeRepresentation(const StepFEA_SequenceOfNodeRepresentation& theOther);
-    const StepFEA_SequenceOfNodeRepresentation& Sequence();
-    void Append (const StepFEA_SequenceOfNodeRepresentation::value_type& theItem);
-    void Append (StepFEA_SequenceOfNodeRepresentation& theSequence);
-    StepFEA_SequenceOfNodeRepresentation& ChangeSequence();
-};
-%make_alias(StepFEA_HSequenceOfNodeRepresentation)
-
-
 class StepFEA_HSequenceOfCurve3dElementProperty : public StepFEA_SequenceOfCurve3dElementProperty, public Standard_Transient {
   public:
     StepFEA_HSequenceOfCurve3dElementProperty();
@@ -5847,6 +5823,30 @@ class StepFEA_HSequenceOfElementGeometricRelationship : public StepFEA_SequenceO
     StepFEA_SequenceOfElementGeometricRelationship& ChangeSequence();
 };
 %make_alias(StepFEA_HSequenceOfElementGeometricRelationship)
+
+
+class StepFEA_HSequenceOfElementRepresentation : public StepFEA_SequenceOfElementRepresentation, public Standard_Transient {
+  public:
+    StepFEA_HSequenceOfElementRepresentation();
+    StepFEA_HSequenceOfElementRepresentation(const StepFEA_SequenceOfElementRepresentation& theOther);
+    const StepFEA_SequenceOfElementRepresentation& Sequence();
+    void Append (const StepFEA_SequenceOfElementRepresentation::value_type& theItem);
+    void Append (StepFEA_SequenceOfElementRepresentation& theSequence);
+    StepFEA_SequenceOfElementRepresentation& ChangeSequence();
+};
+%make_alias(StepFEA_HSequenceOfElementRepresentation)
+
+
+class StepFEA_HSequenceOfNodeRepresentation : public StepFEA_SequenceOfNodeRepresentation, public Standard_Transient {
+  public:
+    StepFEA_HSequenceOfNodeRepresentation();
+    StepFEA_HSequenceOfNodeRepresentation(const StepFEA_SequenceOfNodeRepresentation& theOther);
+    const StepFEA_SequenceOfNodeRepresentation& Sequence();
+    void Append (const StepFEA_SequenceOfNodeRepresentation::value_type& theItem);
+    void Append (StepFEA_SequenceOfNodeRepresentation& theSequence);
+    StepFEA_SequenceOfNodeRepresentation& ChangeSequence();
+};
+%make_alias(StepFEA_HSequenceOfNodeRepresentation)
 
 
 /* class aliases */

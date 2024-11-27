@@ -350,13 +350,13 @@ StepDimTol_SDRMTranslation = StepDimTol_SimpleDatumReferenceModifier.StepDimTol_
 %wrap_handle(StepDimTol_PerpendicularityTolerance)
 %wrap_handle(StepDimTol_SymmetryTolerance)
 %wrap_handle(StepDimTol_TotalRunoutTolerance)
-%wrap_handle(StepDimTol_HArray1OfGeometricToleranceModifier)
 %wrap_handle(StepDimTol_HArray1OfDatumReference)
-%wrap_handle(StepDimTol_HArray1OfToleranceZoneTarget)
+%wrap_handle(StepDimTol_HArray1OfDatumReferenceCompartment)
 %wrap_handle(StepDimTol_HArray1OfDatumReferenceElement)
 %wrap_handle(StepDimTol_HArray1OfDatumReferenceModifier)
 %wrap_handle(StepDimTol_HArray1OfDatumSystemOrReference)
-%wrap_handle(StepDimTol_HArray1OfDatumReferenceCompartment)
+%wrap_handle(StepDimTol_HArray1OfGeometricToleranceModifier)
+%wrap_handle(StepDimTol_HArray1OfToleranceZoneTarget)
 /* end handles declaration */
 
 /* templates */
@@ -5145,17 +5145,6 @@ Empty constructor.
 
 /* harray1 classes */
 
-class StepDimTol_HArray1OfGeometricToleranceModifier : public StepDimTol_Array1OfGeometricToleranceModifier, public Standard_Transient {
-  public:
-    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfGeometricToleranceModifier::value_type& theValue);
-    StepDimTol_HArray1OfGeometricToleranceModifier(const StepDimTol_Array1OfGeometricToleranceModifier& theOther);
-    const StepDimTol_Array1OfGeometricToleranceModifier& Array1();
-    StepDimTol_Array1OfGeometricToleranceModifier& ChangeArray1();
-};
-%make_alias(StepDimTol_HArray1OfGeometricToleranceModifier)
-
-
 class StepDimTol_HArray1OfDatumReference : public StepDimTol_Array1OfDatumReference, public Standard_Transient {
   public:
     StepDimTol_HArray1OfDatumReference(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -5167,15 +5156,15 @@ class StepDimTol_HArray1OfDatumReference : public StepDimTol_Array1OfDatumRefere
 %make_alias(StepDimTol_HArray1OfDatumReference)
 
 
-class StepDimTol_HArray1OfToleranceZoneTarget : public StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
+class StepDimTol_HArray1OfDatumReferenceCompartment : public StepDimTol_Array1OfDatumReferenceCompartment, public Standard_Transient {
   public:
-    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfToleranceZoneTarget::value_type& theValue);
-    StepDimTol_HArray1OfToleranceZoneTarget(const StepDimTol_Array1OfToleranceZoneTarget& theOther);
-    const StepDimTol_Array1OfToleranceZoneTarget& Array1();
-    StepDimTol_Array1OfToleranceZoneTarget& ChangeArray1();
+    StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceCompartment::value_type& theValue);
+    StepDimTol_HArray1OfDatumReferenceCompartment(const StepDimTol_Array1OfDatumReferenceCompartment& theOther);
+    const StepDimTol_Array1OfDatumReferenceCompartment& Array1();
+    StepDimTol_Array1OfDatumReferenceCompartment& ChangeArray1();
 };
-%make_alias(StepDimTol_HArray1OfToleranceZoneTarget)
+%make_alias(StepDimTol_HArray1OfDatumReferenceCompartment)
 
 
 class StepDimTol_HArray1OfDatumReferenceElement : public StepDimTol_Array1OfDatumReferenceElement, public Standard_Transient {
@@ -5211,15 +5200,26 @@ class StepDimTol_HArray1OfDatumSystemOrReference : public StepDimTol_Array1OfDat
 %make_alias(StepDimTol_HArray1OfDatumSystemOrReference)
 
 
-class StepDimTol_HArray1OfDatumReferenceCompartment : public StepDimTol_Array1OfDatumReferenceCompartment, public Standard_Transient {
+class StepDimTol_HArray1OfGeometricToleranceModifier : public StepDimTol_Array1OfGeometricToleranceModifier, public Standard_Transient {
   public:
-    StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepDimTol_HArray1OfDatumReferenceCompartment(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfDatumReferenceCompartment::value_type& theValue);
-    StepDimTol_HArray1OfDatumReferenceCompartment(const StepDimTol_Array1OfDatumReferenceCompartment& theOther);
-    const StepDimTol_Array1OfDatumReferenceCompartment& Array1();
-    StepDimTol_Array1OfDatumReferenceCompartment& ChangeArray1();
+    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepDimTol_HArray1OfGeometricToleranceModifier(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfGeometricToleranceModifier::value_type& theValue);
+    StepDimTol_HArray1OfGeometricToleranceModifier(const StepDimTol_Array1OfGeometricToleranceModifier& theOther);
+    const StepDimTol_Array1OfGeometricToleranceModifier& Array1();
+    StepDimTol_Array1OfGeometricToleranceModifier& ChangeArray1();
 };
-%make_alias(StepDimTol_HArray1OfDatumReferenceCompartment)
+%make_alias(StepDimTol_HArray1OfGeometricToleranceModifier)
+
+
+class StepDimTol_HArray1OfToleranceZoneTarget : public StepDimTol_Array1OfToleranceZoneTarget, public Standard_Transient {
+  public:
+    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepDimTol_HArray1OfToleranceZoneTarget(const Standard_Integer theLower, const Standard_Integer theUpper, const StepDimTol_Array1OfToleranceZoneTarget::value_type& theValue);
+    StepDimTol_HArray1OfToleranceZoneTarget(const StepDimTol_Array1OfToleranceZoneTarget& theOther);
+    const StepDimTol_Array1OfToleranceZoneTarget& Array1();
+    StepDimTol_Array1OfToleranceZoneTarget& ChangeArray1();
+};
+%make_alias(StepDimTol_HArray1OfToleranceZoneTarget)
 
 /* harray2 classes */
 /* hsequence classes */

@@ -70,10 +70,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum  {
-	Aspect_XRTrackedDeviceRole_NB = Aspect_XRTrackedDeviceRole_Other + 1,
-};
-
 enum Aspect_ColorSpace {
 	Aspect_ColorSpace_sRGB = 0,
 	Aspect_ColorSpace_Linear = 1,
@@ -412,6 +408,35 @@ enum Aspect_VKeyBasic {
 	Aspect_VKey_NavSpeedDecrease = 142,
 };
 
+enum  {
+	Aspect_VKey_Lower = 0,
+	Aspect_VKey_ModifiersLower = Aspect_VKey_Shift,
+	Aspect_VKey_ModifiersUpper = Aspect_VKey_Meta,
+	Aspect_VKey_NavigationKeysLower = Aspect_VKey_NavInteract,
+	Aspect_VKey_NavigationKeysUpper = Aspect_VKey_NavSpeedDecrease,
+	Aspect_VKey_Upper = Aspect_VKey_NavSpeedDecrease,
+	Aspect_VKey_NB = Aspect_VKey_Upper - Aspect_VKey_Lower + 1,
+	Aspect_VKey_MAX = 255,
+};
+
+enum  {
+	Aspect_VKeyFlags_NONE = 0,
+	Aspect_VKeyFlags_SHIFT = 1 << 8,
+	Aspect_VKeyFlags_CTRL = 1 << 9,
+	Aspect_VKeyFlags_ALT = 1 << 10,
+	Aspect_VKeyFlags_MENU = 1 << 11,
+	Aspect_VKeyFlags_META = 1 << 12,
+	Aspect_VKeyFlags_ALL = Aspect_VKeyFlags_SHIFT | Aspect_VKeyFlags_CTRL | Aspect_VKeyFlags_ALT | Aspect_VKeyFlags_MENU | Aspect_VKeyFlags_META,
+};
+
+enum  {
+	Aspect_VKeyMouse_NONE = 0,
+	Aspect_VKeyMouse_LeftButton = 1 << 13,
+	Aspect_VKeyMouse_MiddleButton = 1 << 14,
+	Aspect_VKeyMouse_RightButton = 1 << 15,
+	Aspect_VKeyMouse_MainButtons = Aspect_VKeyMouse_LeftButton | Aspect_VKeyMouse_MiddleButton | Aspect_VKeyMouse_RightButton,
+};
+
 enum Aspect_WidthOfLine {
 	Aspect_WOL_THIN = 0,
 	Aspect_WOL_MEDIUM = 1,
@@ -452,11 +477,19 @@ enum Aspect_XRGenericAction {
 	Aspect_XRGenericAction_OutputHaptic = 16,
 };
 
+enum  {
+	Aspect_XRGenericAction_NB = Aspect_XRGenericAction_OutputHaptic + 1,
+};
+
 enum Aspect_XRTrackedDeviceRole {
 	Aspect_XRTrackedDeviceRole_Head = 0,
 	Aspect_XRTrackedDeviceRole_LeftHand = 1,
 	Aspect_XRTrackedDeviceRole_RightHand = 2,
 	Aspect_XRTrackedDeviceRole_Other = 3,
+};
+
+enum  {
+	Aspect_XRTrackedDeviceRole_NB = Aspect_XRTrackedDeviceRole_Other + 1,
 };
 
 /* end public enums declaration */
@@ -4022,6 +4055,11 @@ Empty constructor.
 class Aspect_XRSession : public Standard_Transient {
 	public:
 /* public enums */
+enum TrackingUniverseOrigin {
+	TrackingUniverseOrigin_Seated = 0,
+	TrackingUniverseOrigin_Standing = 1,
+};
+
 enum InfoString {
 	InfoString_Vendor = 0,
 	InfoString_Device = 1,
@@ -4029,15 +4067,16 @@ enum InfoString {
 	InfoString_SerialNumber = 3,
 };
 
-enum TrackingUniverseOrigin {
-	TrackingUniverseOrigin_Seated = 0,
-	TrackingUniverseOrigin_Standing = 1,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class TrackingUniverseOrigin(IntEnum):
+	TrackingUniverseOrigin_Seated = 0
+	TrackingUniverseOrigin_Standing = 1
+TrackingUniverseOrigin_Seated = TrackingUniverseOrigin.TrackingUniverseOrigin_Seated
+TrackingUniverseOrigin_Standing = TrackingUniverseOrigin.TrackingUniverseOrigin_Standing
 
 class InfoString(IntEnum):
 	InfoString_Vendor = 0
@@ -4048,12 +4087,6 @@ InfoString_Vendor = InfoString.InfoString_Vendor
 InfoString_Device = InfoString.InfoString_Device
 InfoString_Tracker = InfoString.InfoString_Tracker
 InfoString_SerialNumber = InfoString.InfoString_SerialNumber
-
-class TrackingUniverseOrigin(IntEnum):
-	TrackingUniverseOrigin_Seated = 0
-	TrackingUniverseOrigin_Standing = 1
-TrackingUniverseOrigin_Seated = TrackingUniverseOrigin.TrackingUniverseOrigin_Seated
-TrackingUniverseOrigin_Standing = TrackingUniverseOrigin.TrackingUniverseOrigin_Standing
 };
 /* end python proxy for enums */
 

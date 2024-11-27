@@ -100,10 +100,6 @@ from OCC.Core.Exception import *
 
 %include "Prs3d_Point.hxx";
 /* public enums */
-enum  {
-	Prs3d_DatumAttribute_NB = Prs3d_DatumAttribute_ShadingNumberOfFacettes + 1,
-};
-
 enum Prs3d_DatumAttribute {
 	Prs3d_DatumAttribute_XAxisLength = 0,
 	Prs3d_DatumAttribute_YAxisLength = 1,
@@ -121,6 +117,10 @@ enum Prs3d_DatumAttribute {
 	Prs3d_DP_ShadingConeLengthPercent = Prs3d_DatumAttribute_ShadingConeLengthPercent,
 	Prs3d_DP_ShadingOriginRadiusPercent = Prs3d_DatumAttribute_ShadingOriginRadiusPercent,
 	Prs3d_DP_ShadingNumberOfFacettes = Prs3d_DatumAttribute_ShadingNumberOfFacettes,
+};
+
+enum  {
+	Prs3d_DatumAttribute_NB = Prs3d_DatumAttribute_ShadingNumberOfFacettes + 1,
 };
 
 enum Prs3d_DatumAxes {
@@ -168,6 +168,10 @@ enum Prs3d_DatumParts {
 	Prs3d_DP_YOZAxis = Prs3d_DatumParts_YOZAxis,
 	Prs3d_DP_XOZAxis = Prs3d_DatumParts_XOZAxis,
 	Prs3d_DP_None = Prs3d_DatumParts_None,
+};
+
+enum  {
+	Prs3d_DatumParts_NB = Prs3d_DatumParts_None + 1,
 };
 
 enum Prs3d_DimensionArrowOrientation {

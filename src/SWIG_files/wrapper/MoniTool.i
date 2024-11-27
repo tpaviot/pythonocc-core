@@ -143,7 +143,7 @@ MoniTool_ValueBinary = MoniTool_ValueType.MoniTool_ValueBinary
 /* end templates declaration */
 
 /* typedefs */
-typedef opencascade::handle<TCollection_HAsciiString>( * MoniTool_ValueInterpret ) ( const opencascade::handle<MoniTool_TypedValue>& typval, const opencascade::handle<TCollection_HAsciiString>& val, const Standard_Boolean native );
+typedef Standard_Boolean ( * MoniTool_ValueSatisfies ) ( const opencascade::handle<TCollection_HAsciiString>& val );
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfShapeTransient;
 typedef NCollection_DataMap<Standard_CString, opencascade::handle<MoniTool_Timer>, Standard_CStringHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfTimer;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> MoniTool_DataMapOfShapeTransient;

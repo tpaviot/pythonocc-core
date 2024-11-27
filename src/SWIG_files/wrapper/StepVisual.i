@@ -288,24 +288,24 @@ StepVisual_tpLeft = StepVisual_TextPath.StepVisual_tpLeft
 %wrap_handle(StepVisual_CubicBezierTriangulatedFace)
 %wrap_handle(StepVisual_TessellatedConnectingEdge)
 %wrap_handle(StepVisual_TriangulatedFace)
-%wrap_handle(StepVisual_HArray1OfSurfaceStyleElementSelect)
-%wrap_handle(StepVisual_HArray1OfDraughtingCalloutElement)
-%wrap_handle(StepVisual_HArray1OfPresentationStyleAssignment)
-%wrap_handle(StepVisual_HArray1OfDirectionCountSelect)
-%wrap_handle(StepVisual_HArray1OfTessellatedEdgeOrVertex)
-%wrap_handle(StepVisual_HArray1OfBoxCharacteristicSelect)
-%wrap_handle(StepVisual_HArray1OfFillStyleSelect)
-%wrap_handle(StepVisual_HArray1OfTextOrCharacter)
-%wrap_handle(StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect)
-%wrap_handle(StepVisual_HArray1OfStyleContextSelect)
-%wrap_handle(StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect)
-%wrap_handle(StepVisual_HArray1OfTessellatedStructuredItem)
-%wrap_handle(StepVisual_HArray1OfCurveStyleFontPattern)
 %wrap_handle(StepVisual_HArray1OfAnnotationPlaneElement)
-%wrap_handle(StepVisual_HArray1OfRenderingPropertiesSelect)
-%wrap_handle(StepVisual_HArray1OfPresentationStyleSelect)
+%wrap_handle(StepVisual_HArray1OfBoxCharacteristicSelect)
+%wrap_handle(StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect)
+%wrap_handle(StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect)
+%wrap_handle(StepVisual_HArray1OfCurveStyleFontPattern)
+%wrap_handle(StepVisual_HArray1OfDirectionCountSelect)
+%wrap_handle(StepVisual_HArray1OfDraughtingCalloutElement)
+%wrap_handle(StepVisual_HArray1OfFillStyleSelect)
 %wrap_handle(StepVisual_HArray1OfInvisibleItem)
 %wrap_handle(StepVisual_HArray1OfLayeredItem)
+%wrap_handle(StepVisual_HArray1OfPresentationStyleAssignment)
+%wrap_handle(StepVisual_HArray1OfPresentationStyleSelect)
+%wrap_handle(StepVisual_HArray1OfRenderingPropertiesSelect)
+%wrap_handle(StepVisual_HArray1OfStyleContextSelect)
+%wrap_handle(StepVisual_HArray1OfSurfaceStyleElementSelect)
+%wrap_handle(StepVisual_HArray1OfTessellatedEdgeOrVertex)
+%wrap_handle(StepVisual_HArray1OfTessellatedStructuredItem)
+%wrap_handle(StepVisual_HArray1OfTextOrCharacter)
 /* end handles declaration */
 
 /* templates */
@@ -12451,59 +12451,15 @@ Returns field triangles.
 
 /* harray1 classes */
 
-class StepVisual_HArray1OfSurfaceStyleElementSelect : public StepVisual_Array1OfSurfaceStyleElementSelect, public Standard_Transient {
+class StepVisual_HArray1OfAnnotationPlaneElement : public StepVisual_Array1OfAnnotationPlaneElement, public Standard_Transient {
   public:
-    StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfSurfaceStyleElementSelect::value_type& theValue);
-    StepVisual_HArray1OfSurfaceStyleElementSelect(const StepVisual_Array1OfSurfaceStyleElementSelect& theOther);
-    const StepVisual_Array1OfSurfaceStyleElementSelect& Array1();
-    StepVisual_Array1OfSurfaceStyleElementSelect& ChangeArray1();
+    StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfAnnotationPlaneElement::value_type& theValue);
+    StepVisual_HArray1OfAnnotationPlaneElement(const StepVisual_Array1OfAnnotationPlaneElement& theOther);
+    const StepVisual_Array1OfAnnotationPlaneElement& Array1();
+    StepVisual_Array1OfAnnotationPlaneElement& ChangeArray1();
 };
-%make_alias(StepVisual_HArray1OfSurfaceStyleElementSelect)
-
-
-class StepVisual_HArray1OfDraughtingCalloutElement : public StepVisual_Array1OfDraughtingCalloutElement, public Standard_Transient {
-  public:
-    StepVisual_HArray1OfDraughtingCalloutElement(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfDraughtingCalloutElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfDraughtingCalloutElement::value_type& theValue);
-    StepVisual_HArray1OfDraughtingCalloutElement(const StepVisual_Array1OfDraughtingCalloutElement& theOther);
-    const StepVisual_Array1OfDraughtingCalloutElement& Array1();
-    StepVisual_Array1OfDraughtingCalloutElement& ChangeArray1();
-};
-%make_alias(StepVisual_HArray1OfDraughtingCalloutElement)
-
-
-class StepVisual_HArray1OfPresentationStyleAssignment : public StepVisual_Array1OfPresentationStyleAssignment, public Standard_Transient {
-  public:
-    StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfPresentationStyleAssignment::value_type& theValue);
-    StepVisual_HArray1OfPresentationStyleAssignment(const StepVisual_Array1OfPresentationStyleAssignment& theOther);
-    const StepVisual_Array1OfPresentationStyleAssignment& Array1();
-    StepVisual_Array1OfPresentationStyleAssignment& ChangeArray1();
-};
-%make_alias(StepVisual_HArray1OfPresentationStyleAssignment)
-
-
-class StepVisual_HArray1OfDirectionCountSelect : public StepVisual_Array1OfDirectionCountSelect, public Standard_Transient {
-  public:
-    StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfDirectionCountSelect::value_type& theValue);
-    StepVisual_HArray1OfDirectionCountSelect(const StepVisual_Array1OfDirectionCountSelect& theOther);
-    const StepVisual_Array1OfDirectionCountSelect& Array1();
-    StepVisual_Array1OfDirectionCountSelect& ChangeArray1();
-};
-%make_alias(StepVisual_HArray1OfDirectionCountSelect)
-
-
-class StepVisual_HArray1OfTessellatedEdgeOrVertex : public StepVisual_Array1OfTessellatedEdgeOrVertex, public Standard_Transient {
-  public:
-    StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTessellatedEdgeOrVertex::value_type& theValue);
-    StepVisual_HArray1OfTessellatedEdgeOrVertex(const StepVisual_Array1OfTessellatedEdgeOrVertex& theOther);
-    const StepVisual_Array1OfTessellatedEdgeOrVertex& Array1();
-    StepVisual_Array1OfTessellatedEdgeOrVertex& ChangeArray1();
-};
-%make_alias(StepVisual_HArray1OfTessellatedEdgeOrVertex)
+%make_alias(StepVisual_HArray1OfAnnotationPlaneElement)
 
 
 class StepVisual_HArray1OfBoxCharacteristicSelect : public StepVisual_Array1OfBoxCharacteristicSelect, public Standard_Transient {
@@ -12517,28 +12473,6 @@ class StepVisual_HArray1OfBoxCharacteristicSelect : public StepVisual_Array1OfBo
 %make_alias(StepVisual_HArray1OfBoxCharacteristicSelect)
 
 
-class StepVisual_HArray1OfFillStyleSelect : public StepVisual_Array1OfFillStyleSelect, public Standard_Transient {
-  public:
-    StepVisual_HArray1OfFillStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfFillStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfFillStyleSelect::value_type& theValue);
-    StepVisual_HArray1OfFillStyleSelect(const StepVisual_Array1OfFillStyleSelect& theOther);
-    const StepVisual_Array1OfFillStyleSelect& Array1();
-    StepVisual_Array1OfFillStyleSelect& ChangeArray1();
-};
-%make_alias(StepVisual_HArray1OfFillStyleSelect)
-
-
-class StepVisual_HArray1OfTextOrCharacter : public StepVisual_Array1OfTextOrCharacter, public Standard_Transient {
-  public:
-    StepVisual_HArray1OfTextOrCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfTextOrCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTextOrCharacter::value_type& theValue);
-    StepVisual_HArray1OfTextOrCharacter(const StepVisual_Array1OfTextOrCharacter& theOther);
-    const StepVisual_Array1OfTextOrCharacter& Array1();
-    StepVisual_Array1OfTextOrCharacter& ChangeArray1();
-};
-%make_alias(StepVisual_HArray1OfTextOrCharacter)
-
-
 class StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect : public StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect, public Standard_Transient {
   public:
     StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -12548,17 +12482,6 @@ class StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect : public S
     StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect)
-
-
-class StepVisual_HArray1OfStyleContextSelect : public StepVisual_Array1OfStyleContextSelect, public Standard_Transient {
-  public:
-    StepVisual_HArray1OfStyleContextSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfStyleContextSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfStyleContextSelect::value_type& theValue);
-    StepVisual_HArray1OfStyleContextSelect(const StepVisual_Array1OfStyleContextSelect& theOther);
-    const StepVisual_Array1OfStyleContextSelect& Array1();
-    StepVisual_Array1OfStyleContextSelect& ChangeArray1();
-};
-%make_alias(StepVisual_HArray1OfStyleContextSelect)
 
 
 class StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect : public StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect, public Standard_Transient {
@@ -12572,17 +12495,6 @@ class StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect : public StepVis
 %make_alias(StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect)
 
 
-class StepVisual_HArray1OfTessellatedStructuredItem : public StepVisual_Array1OfTessellatedStructuredItem, public Standard_Transient {
-  public:
-    StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTessellatedStructuredItem::value_type& theValue);
-    StepVisual_HArray1OfTessellatedStructuredItem(const StepVisual_Array1OfTessellatedStructuredItem& theOther);
-    const StepVisual_Array1OfTessellatedStructuredItem& Array1();
-    StepVisual_Array1OfTessellatedStructuredItem& ChangeArray1();
-};
-%make_alias(StepVisual_HArray1OfTessellatedStructuredItem)
-
-
 class StepVisual_HArray1OfCurveStyleFontPattern : public StepVisual_Array1OfCurveStyleFontPattern, public Standard_Transient {
   public:
     StepVisual_HArray1OfCurveStyleFontPattern(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -12594,37 +12506,37 @@ class StepVisual_HArray1OfCurveStyleFontPattern : public StepVisual_Array1OfCurv
 %make_alias(StepVisual_HArray1OfCurveStyleFontPattern)
 
 
-class StepVisual_HArray1OfAnnotationPlaneElement : public StepVisual_Array1OfAnnotationPlaneElement, public Standard_Transient {
+class StepVisual_HArray1OfDirectionCountSelect : public StepVisual_Array1OfDirectionCountSelect, public Standard_Transient {
   public:
-    StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfAnnotationPlaneElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfAnnotationPlaneElement::value_type& theValue);
-    StepVisual_HArray1OfAnnotationPlaneElement(const StepVisual_Array1OfAnnotationPlaneElement& theOther);
-    const StepVisual_Array1OfAnnotationPlaneElement& Array1();
-    StepVisual_Array1OfAnnotationPlaneElement& ChangeArray1();
+    StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfDirectionCountSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfDirectionCountSelect::value_type& theValue);
+    StepVisual_HArray1OfDirectionCountSelect(const StepVisual_Array1OfDirectionCountSelect& theOther);
+    const StepVisual_Array1OfDirectionCountSelect& Array1();
+    StepVisual_Array1OfDirectionCountSelect& ChangeArray1();
 };
-%make_alias(StepVisual_HArray1OfAnnotationPlaneElement)
+%make_alias(StepVisual_HArray1OfDirectionCountSelect)
 
 
-class StepVisual_HArray1OfRenderingPropertiesSelect : public StepVisual_Array1OfRenderingPropertiesSelect, public Standard_Transient {
+class StepVisual_HArray1OfDraughtingCalloutElement : public StepVisual_Array1OfDraughtingCalloutElement, public Standard_Transient {
   public:
-    StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfRenderingPropertiesSelect::value_type& theValue);
-    StepVisual_HArray1OfRenderingPropertiesSelect(const StepVisual_Array1OfRenderingPropertiesSelect& theOther);
-    const StepVisual_Array1OfRenderingPropertiesSelect& Array1();
-    StepVisual_Array1OfRenderingPropertiesSelect& ChangeArray1();
+    StepVisual_HArray1OfDraughtingCalloutElement(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfDraughtingCalloutElement(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfDraughtingCalloutElement::value_type& theValue);
+    StepVisual_HArray1OfDraughtingCalloutElement(const StepVisual_Array1OfDraughtingCalloutElement& theOther);
+    const StepVisual_Array1OfDraughtingCalloutElement& Array1();
+    StepVisual_Array1OfDraughtingCalloutElement& ChangeArray1();
 };
-%make_alias(StepVisual_HArray1OfRenderingPropertiesSelect)
+%make_alias(StepVisual_HArray1OfDraughtingCalloutElement)
 
 
-class StepVisual_HArray1OfPresentationStyleSelect : public StepVisual_Array1OfPresentationStyleSelect, public Standard_Transient {
+class StepVisual_HArray1OfFillStyleSelect : public StepVisual_Array1OfFillStyleSelect, public Standard_Transient {
   public:
-    StepVisual_HArray1OfPresentationStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepVisual_HArray1OfPresentationStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfPresentationStyleSelect::value_type& theValue);
-    StepVisual_HArray1OfPresentationStyleSelect(const StepVisual_Array1OfPresentationStyleSelect& theOther);
-    const StepVisual_Array1OfPresentationStyleSelect& Array1();
-    StepVisual_Array1OfPresentationStyleSelect& ChangeArray1();
+    StepVisual_HArray1OfFillStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfFillStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfFillStyleSelect::value_type& theValue);
+    StepVisual_HArray1OfFillStyleSelect(const StepVisual_Array1OfFillStyleSelect& theOther);
+    const StepVisual_Array1OfFillStyleSelect& Array1();
+    StepVisual_Array1OfFillStyleSelect& ChangeArray1();
 };
-%make_alias(StepVisual_HArray1OfPresentationStyleSelect)
+%make_alias(StepVisual_HArray1OfFillStyleSelect)
 
 
 class StepVisual_HArray1OfInvisibleItem : public StepVisual_Array1OfInvisibleItem, public Standard_Transient {
@@ -12647,6 +12559,94 @@ class StepVisual_HArray1OfLayeredItem : public StepVisual_Array1OfLayeredItem, p
     StepVisual_Array1OfLayeredItem& ChangeArray1();
 };
 %make_alias(StepVisual_HArray1OfLayeredItem)
+
+
+class StepVisual_HArray1OfPresentationStyleAssignment : public StepVisual_Array1OfPresentationStyleAssignment, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfPresentationStyleAssignment(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfPresentationStyleAssignment::value_type& theValue);
+    StepVisual_HArray1OfPresentationStyleAssignment(const StepVisual_Array1OfPresentationStyleAssignment& theOther);
+    const StepVisual_Array1OfPresentationStyleAssignment& Array1();
+    StepVisual_Array1OfPresentationStyleAssignment& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfPresentationStyleAssignment)
+
+
+class StepVisual_HArray1OfPresentationStyleSelect : public StepVisual_Array1OfPresentationStyleSelect, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfPresentationStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfPresentationStyleSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfPresentationStyleSelect::value_type& theValue);
+    StepVisual_HArray1OfPresentationStyleSelect(const StepVisual_Array1OfPresentationStyleSelect& theOther);
+    const StepVisual_Array1OfPresentationStyleSelect& Array1();
+    StepVisual_Array1OfPresentationStyleSelect& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfPresentationStyleSelect)
+
+
+class StepVisual_HArray1OfRenderingPropertiesSelect : public StepVisual_Array1OfRenderingPropertiesSelect, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfRenderingPropertiesSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfRenderingPropertiesSelect::value_type& theValue);
+    StepVisual_HArray1OfRenderingPropertiesSelect(const StepVisual_Array1OfRenderingPropertiesSelect& theOther);
+    const StepVisual_Array1OfRenderingPropertiesSelect& Array1();
+    StepVisual_Array1OfRenderingPropertiesSelect& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfRenderingPropertiesSelect)
+
+
+class StepVisual_HArray1OfStyleContextSelect : public StepVisual_Array1OfStyleContextSelect, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfStyleContextSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfStyleContextSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfStyleContextSelect::value_type& theValue);
+    StepVisual_HArray1OfStyleContextSelect(const StepVisual_Array1OfStyleContextSelect& theOther);
+    const StepVisual_Array1OfStyleContextSelect& Array1();
+    StepVisual_Array1OfStyleContextSelect& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfStyleContextSelect)
+
+
+class StepVisual_HArray1OfSurfaceStyleElementSelect : public StepVisual_Array1OfSurfaceStyleElementSelect, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfSurfaceStyleElementSelect(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfSurfaceStyleElementSelect::value_type& theValue);
+    StepVisual_HArray1OfSurfaceStyleElementSelect(const StepVisual_Array1OfSurfaceStyleElementSelect& theOther);
+    const StepVisual_Array1OfSurfaceStyleElementSelect& Array1();
+    StepVisual_Array1OfSurfaceStyleElementSelect& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfSurfaceStyleElementSelect)
+
+
+class StepVisual_HArray1OfTessellatedEdgeOrVertex : public StepVisual_Array1OfTessellatedEdgeOrVertex, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfTessellatedEdgeOrVertex(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTessellatedEdgeOrVertex::value_type& theValue);
+    StepVisual_HArray1OfTessellatedEdgeOrVertex(const StepVisual_Array1OfTessellatedEdgeOrVertex& theOther);
+    const StepVisual_Array1OfTessellatedEdgeOrVertex& Array1();
+    StepVisual_Array1OfTessellatedEdgeOrVertex& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfTessellatedEdgeOrVertex)
+
+
+class StepVisual_HArray1OfTessellatedStructuredItem : public StepVisual_Array1OfTessellatedStructuredItem, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfTessellatedStructuredItem(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTessellatedStructuredItem::value_type& theValue);
+    StepVisual_HArray1OfTessellatedStructuredItem(const StepVisual_Array1OfTessellatedStructuredItem& theOther);
+    const StepVisual_Array1OfTessellatedStructuredItem& Array1();
+    StepVisual_Array1OfTessellatedStructuredItem& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfTessellatedStructuredItem)
+
+
+class StepVisual_HArray1OfTextOrCharacter : public StepVisual_Array1OfTextOrCharacter, public Standard_Transient {
+  public:
+    StepVisual_HArray1OfTextOrCharacter(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepVisual_HArray1OfTextOrCharacter(const Standard_Integer theLower, const Standard_Integer theUpper, const StepVisual_Array1OfTextOrCharacter::value_type& theValue);
+    StepVisual_HArray1OfTextOrCharacter(const StepVisual_Array1OfTextOrCharacter& theOther);
+    const StepVisual_Array1OfTextOrCharacter& Array1();
+    StepVisual_Array1OfTextOrCharacter& ChangeArray1();
+};
+%make_alias(StepVisual_HArray1OfTextOrCharacter)
 
 /* harray2 classes */
 /* hsequence classes */

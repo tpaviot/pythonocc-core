@@ -17,6 +17,8 @@ from OCC.Core.Geom import *
 # the following typedef cannot be wrapped as is
 Select3D_BVHBuilder3d = NewType("Select3D_BVHBuilder3d", Any)
 # the following typedef cannot be wrapped as is
+Select3D_BndBox3d = NewType("Select3D_BndBox3d", Any)
+# the following typedef cannot be wrapped as is
 Select3D_IndexedMapOfEntity = NewType("Select3D_IndexedMapOfEntity", Any)
 # the following typedef cannot be wrapped as is
 Select3D_Vec3 = NewType("Select3D_Vec3", Any)

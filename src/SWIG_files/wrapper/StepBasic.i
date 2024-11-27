@@ -385,16 +385,16 @@ StepBasic_sNotKnown = StepBasic_Source.StepBasic_sNotKnown
 %wrap_handle(StepBasic_SiUnitAndThermodynamicTemperatureUnit)
 %wrap_handle(StepBasic_SiUnitAndTimeUnit)
 %wrap_handle(StepBasic_SiUnitAndVolumeUnit)
-%wrap_handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
-%wrap_handle(StepBasic_HArray1OfProduct)
-%wrap_handle(StepBasic_HArray1OfProductContext)
-%wrap_handle(StepBasic_HArray1OfDerivedUnitElement)
-%wrap_handle(StepBasic_HArray1OfPerson)
 %wrap_handle(StepBasic_HArray1OfApproval)
+%wrap_handle(StepBasic_HArray1OfDerivedUnitElement)
 %wrap_handle(StepBasic_HArray1OfDocument)
 %wrap_handle(StepBasic_HArray1OfNamedUnit)
-%wrap_handle(StepBasic_HArray1OfProductDefinition)
 %wrap_handle(StepBasic_HArray1OfOrganization)
+%wrap_handle(StepBasic_HArray1OfPerson)
+%wrap_handle(StepBasic_HArray1OfProduct)
+%wrap_handle(StepBasic_HArray1OfProductContext)
+%wrap_handle(StepBasic_HArray1OfProductDefinition)
+%wrap_handle(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
 /* end handles declaration */
 
 /* templates */
@@ -15695,37 +15695,15 @@ No available documentation.
 
 /* harray1 classes */
 
-class StepBasic_HArray1OfUncertaintyMeasureWithUnit : public StepBasic_Array1OfUncertaintyMeasureWithUnit, public Standard_Transient {
+class StepBasic_HArray1OfApproval : public StepBasic_Array1OfApproval, public Standard_Transient {
   public:
-    StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfUncertaintyMeasureWithUnit::value_type& theValue);
-    StepBasic_HArray1OfUncertaintyMeasureWithUnit(const StepBasic_Array1OfUncertaintyMeasureWithUnit& theOther);
-    const StepBasic_Array1OfUncertaintyMeasureWithUnit& Array1();
-    StepBasic_Array1OfUncertaintyMeasureWithUnit& ChangeArray1();
+    StepBasic_HArray1OfApproval(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepBasic_HArray1OfApproval(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfApproval::value_type& theValue);
+    StepBasic_HArray1OfApproval(const StepBasic_Array1OfApproval& theOther);
+    const StepBasic_Array1OfApproval& Array1();
+    StepBasic_Array1OfApproval& ChangeArray1();
 };
-%make_alias(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
-
-
-class StepBasic_HArray1OfProduct : public StepBasic_Array1OfProduct, public Standard_Transient {
-  public:
-    StepBasic_HArray1OfProduct(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfProduct(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfProduct::value_type& theValue);
-    StepBasic_HArray1OfProduct(const StepBasic_Array1OfProduct& theOther);
-    const StepBasic_Array1OfProduct& Array1();
-    StepBasic_Array1OfProduct& ChangeArray1();
-};
-%make_alias(StepBasic_HArray1OfProduct)
-
-
-class StepBasic_HArray1OfProductContext : public StepBasic_Array1OfProductContext, public Standard_Transient {
-  public:
-    StepBasic_HArray1OfProductContext(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfProductContext(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfProductContext::value_type& theValue);
-    StepBasic_HArray1OfProductContext(const StepBasic_Array1OfProductContext& theOther);
-    const StepBasic_Array1OfProductContext& Array1();
-    StepBasic_Array1OfProductContext& ChangeArray1();
-};
-%make_alias(StepBasic_HArray1OfProductContext)
+%make_alias(StepBasic_HArray1OfApproval)
 
 
 class StepBasic_HArray1OfDerivedUnitElement : public StepBasic_Array1OfDerivedUnitElement, public Standard_Transient {
@@ -15737,28 +15715,6 @@ class StepBasic_HArray1OfDerivedUnitElement : public StepBasic_Array1OfDerivedUn
     StepBasic_Array1OfDerivedUnitElement& ChangeArray1();
 };
 %make_alias(StepBasic_HArray1OfDerivedUnitElement)
-
-
-class StepBasic_HArray1OfPerson : public StepBasic_Array1OfPerson, public Standard_Transient {
-  public:
-    StepBasic_HArray1OfPerson(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfPerson(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfPerson::value_type& theValue);
-    StepBasic_HArray1OfPerson(const StepBasic_Array1OfPerson& theOther);
-    const StepBasic_Array1OfPerson& Array1();
-    StepBasic_Array1OfPerson& ChangeArray1();
-};
-%make_alias(StepBasic_HArray1OfPerson)
-
-
-class StepBasic_HArray1OfApproval : public StepBasic_Array1OfApproval, public Standard_Transient {
-  public:
-    StepBasic_HArray1OfApproval(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfApproval(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfApproval::value_type& theValue);
-    StepBasic_HArray1OfApproval(const StepBasic_Array1OfApproval& theOther);
-    const StepBasic_Array1OfApproval& Array1();
-    StepBasic_Array1OfApproval& ChangeArray1();
-};
-%make_alias(StepBasic_HArray1OfApproval)
 
 
 class StepBasic_HArray1OfDocument : public StepBasic_Array1OfDocument, public Standard_Transient {
@@ -15783,6 +15739,50 @@ class StepBasic_HArray1OfNamedUnit : public StepBasic_Array1OfNamedUnit, public 
 %make_alias(StepBasic_HArray1OfNamedUnit)
 
 
+class StepBasic_HArray1OfOrganization : public StepBasic_Array1OfOrganization, public Standard_Transient {
+  public:
+    StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfOrganization::value_type& theValue);
+    StepBasic_HArray1OfOrganization(const StepBasic_Array1OfOrganization& theOther);
+    const StepBasic_Array1OfOrganization& Array1();
+    StepBasic_Array1OfOrganization& ChangeArray1();
+};
+%make_alias(StepBasic_HArray1OfOrganization)
+
+
+class StepBasic_HArray1OfPerson : public StepBasic_Array1OfPerson, public Standard_Transient {
+  public:
+    StepBasic_HArray1OfPerson(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepBasic_HArray1OfPerson(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfPerson::value_type& theValue);
+    StepBasic_HArray1OfPerson(const StepBasic_Array1OfPerson& theOther);
+    const StepBasic_Array1OfPerson& Array1();
+    StepBasic_Array1OfPerson& ChangeArray1();
+};
+%make_alias(StepBasic_HArray1OfPerson)
+
+
+class StepBasic_HArray1OfProduct : public StepBasic_Array1OfProduct, public Standard_Transient {
+  public:
+    StepBasic_HArray1OfProduct(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepBasic_HArray1OfProduct(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfProduct::value_type& theValue);
+    StepBasic_HArray1OfProduct(const StepBasic_Array1OfProduct& theOther);
+    const StepBasic_Array1OfProduct& Array1();
+    StepBasic_Array1OfProduct& ChangeArray1();
+};
+%make_alias(StepBasic_HArray1OfProduct)
+
+
+class StepBasic_HArray1OfProductContext : public StepBasic_Array1OfProductContext, public Standard_Transient {
+  public:
+    StepBasic_HArray1OfProductContext(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepBasic_HArray1OfProductContext(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfProductContext::value_type& theValue);
+    StepBasic_HArray1OfProductContext(const StepBasic_Array1OfProductContext& theOther);
+    const StepBasic_Array1OfProductContext& Array1();
+    StepBasic_Array1OfProductContext& ChangeArray1();
+};
+%make_alias(StepBasic_HArray1OfProductContext)
+
+
 class StepBasic_HArray1OfProductDefinition : public StepBasic_Array1OfProductDefinition, public Standard_Transient {
   public:
     StepBasic_HArray1OfProductDefinition(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -15794,15 +15794,15 @@ class StepBasic_HArray1OfProductDefinition : public StepBasic_Array1OfProductDef
 %make_alias(StepBasic_HArray1OfProductDefinition)
 
 
-class StepBasic_HArray1OfOrganization : public StepBasic_Array1OfOrganization, public Standard_Transient {
+class StepBasic_HArray1OfUncertaintyMeasureWithUnit : public StepBasic_Array1OfUncertaintyMeasureWithUnit, public Standard_Transient {
   public:
-    StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper);
-    StepBasic_HArray1OfOrganization(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfOrganization::value_type& theValue);
-    StepBasic_HArray1OfOrganization(const StepBasic_Array1OfOrganization& theOther);
-    const StepBasic_Array1OfOrganization& Array1();
-    StepBasic_Array1OfOrganization& ChangeArray1();
+    StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Standard_Integer theLower, const Standard_Integer theUpper);
+    StepBasic_HArray1OfUncertaintyMeasureWithUnit(const Standard_Integer theLower, const Standard_Integer theUpper, const StepBasic_Array1OfUncertaintyMeasureWithUnit::value_type& theValue);
+    StepBasic_HArray1OfUncertaintyMeasureWithUnit(const StepBasic_Array1OfUncertaintyMeasureWithUnit& theOther);
+    const StepBasic_Array1OfUncertaintyMeasureWithUnit& Array1();
+    StepBasic_Array1OfUncertaintyMeasureWithUnit& ChangeArray1();
 };
-%make_alias(StepBasic_HArray1OfOrganization)
+%make_alias(StepBasic_HArray1OfUncertaintyMeasureWithUnit)
 
 /* harray2 classes */
 /* hsequence classes */

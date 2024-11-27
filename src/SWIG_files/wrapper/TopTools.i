@@ -69,16 +69,16 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum  {
-	TopTools_FormatVersion_LOWER = TopTools_FormatVersion_VERSION_1,
-	TopTools_FormatVersion_UPPER = TopTools_FormatVersion_VERSION_3,
-};
-
 enum TopTools_FormatVersion {
 	TopTools_FormatVersion_VERSION_1 = 1,
 	TopTools_FormatVersion_VERSION_2 = 2,
 	TopTools_FormatVersion_VERSION_3 = 3,
 	TopTools_FormatVersion_CURRENT = TopTools_FormatVersion_VERSION_3,
+};
+
+enum  {
+	TopTools_FormatVersion_LOWER = TopTools_FormatVersion_VERSION_1,
+	TopTools_FormatVersion_UPPER = TopTools_FormatVersion_VERSION_3,
 };
 
 /* end public enums declaration */
@@ -99,8 +99,8 @@ TopTools_FormatVersion_CURRENT = TopTools_FormatVersion.TopTools_FormatVersion_C
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(TopTools_HArray1OfShape)
 %wrap_handle(TopTools_HArray1OfListOfShape)
+%wrap_handle(TopTools_HArray1OfShape)
 %wrap_handle(TopTools_HArray2OfShape)
 %wrap_handle(TopTools_HSequenceOfShape)
 /* end handles declaration */
@@ -1008,17 +1008,6 @@ Writes the geometry of <s> on the stream <os> in a format that can be read back 
 
 /* harray1 classes */
 
-class TopTools_HArray1OfShape : public TopTools_Array1OfShape, public Standard_Transient {
-  public:
-    TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const TopTools_Array1OfShape::value_type& theValue);
-    TopTools_HArray1OfShape(const TopTools_Array1OfShape& theOther);
-    const TopTools_Array1OfShape& Array1();
-    TopTools_Array1OfShape& ChangeArray1();
-};
-%make_alias(TopTools_HArray1OfShape)
-
-
 class TopTools_HArray1OfListOfShape : public TopTools_Array1OfListOfShape, public Standard_Transient {
   public:
     TopTools_HArray1OfListOfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -1028,6 +1017,17 @@ class TopTools_HArray1OfListOfShape : public TopTools_Array1OfListOfShape, publi
     TopTools_Array1OfListOfShape& ChangeArray1();
 };
 %make_alias(TopTools_HArray1OfListOfShape)
+
+
+class TopTools_HArray1OfShape : public TopTools_Array1OfShape, public Standard_Transient {
+  public:
+    TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TopTools_HArray1OfShape(const Standard_Integer theLower, const Standard_Integer theUpper, const TopTools_Array1OfShape::value_type& theValue);
+    TopTools_HArray1OfShape(const TopTools_Array1OfShape& theOther);
+    const TopTools_Array1OfShape& Array1();
+    TopTools_Array1OfShape& ChangeArray1();
+};
+%make_alias(TopTools_HArray1OfShape)
 
 /* harray2 classes */
 class TopTools_HArray2OfShape : public TopTools_Array2OfShape, public Standard_Transient {

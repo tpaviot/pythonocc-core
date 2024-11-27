@@ -2,13 +2,13 @@
 ############################
 Running pythonocc-generator.
 ############################
-git revision : e04b55b
+git revision : f90ea7e
 
-operating system : Linux 64bit 6.8.0-48-generic
+operating system : Linux 64bit 6.8.0-49-generic
 
 occt version targeted : 7.8.1
 
-date : 2024-11-18 04:50:36.281880
+date : 2024-11-27 14:27:24.474425
 ############################
 
 [INFO ]  Processing toolkit TKBO ===
@@ -303,8 +303,8 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]      Creating Get and Set methods for method IsCopyMesh
 [INFO ]  Class: BRepTools_NurbsConvertModification
 [INFO ]  ## Processing module BinTools
-[INFO ]  Enum: 
 [INFO ]  Enum: BinTools_FormatVersion
+[INFO ]  Enum: 
 [INFO ]  Enum: BinTools_ObjectType
 [INFO ]  Class: BinTools
 [INFO ]  Class: BinTools_Curve2dSet
@@ -328,12 +328,12 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: TopExp_Explorer
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module TopTools
-[INFO ]  Found HARRAY2 definition TopTools_HArray2OfShape: TopTools_Array2OfShape
-[INFO ]  Found HARRAY1 definition TopTools_HArray1OfShape: TopTools_Array1OfShape
-[INFO ]  Found HSEQUENCE definition TopTools_HSequenceOfShape: TopTools_SequenceOfShape
 [INFO ]  Found HARRAY1 definition TopTools_HArray1OfListOfShape: TopTools_Array1OfListOfShape
-[INFO ]  Enum: 
+[INFO ]  Found HARRAY1 definition TopTools_HArray1OfShape: TopTools_Array1OfShape
+[INFO ]  Found HARRAY2 definition TopTools_HArray2OfShape: TopTools_Array2OfShape
+[INFO ]  Found HSEQUENCE definition TopTools_HSequenceOfShape: TopTools_SequenceOfShape
 [INFO ]  Enum: TopTools_FormatVersion
+[INFO ]  Enum: 
 [WARNI]      [TypeHint] Skipping unknown type int,TopTools_ListOfShape, int,TopTools not in module list
 [WARNI]      [TypeHint] Skipping unknown type int,TopoDS_Shape, int,TopoDS not in module list
 [INFO ]  Class: TopTools
@@ -1281,9 +1281,9 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: LProp_AnalyticCurInf
 [INFO ]  Class: LProp_CurAndInf
 [INFO ]  ## Processing module TColGeom2d
+[INFO ]  Found HARRAY1 definition TColGeom2d_HArray1OfBSplineCurve: TColGeom2d_Array1OfBSplineCurve
 [INFO ]  Found HARRAY1 definition TColGeom2d_HArray1OfBezierCurve: TColGeom2d_Array1OfBezierCurve
 [INFO ]  Found HARRAY1 definition TColGeom2d_HArray1OfCurve: TColGeom2d_Array1OfCurve
-[INFO ]  Found HARRAY1 definition TColGeom2d_HArray1OfBSplineCurve: TColGeom2d_Array1OfBSplineCurve
 [INFO ]  Found HSEQUENCE definition TColGeom2d_HSequenceOfBoundedCurve: TColGeom2d_SequenceOfBoundedCurve
 [INFO ]  Found HSEQUENCE definition TColGeom2d_HSequenceOfCurve: TColGeom2d_SequenceOfCurve
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -1446,12 +1446,12 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: LProp3d_SurfaceTool
 [INFO ]  ## Processing module TColGeom
 [INFO ]  Found HARRAY1 definition TColGeom_HArray1OfBSplineCurve: TColGeom_Array1OfBSplineCurve
-[INFO ]  Found HARRAY1 definition TColGeom_HArray1OfSurface: TColGeom_Array1OfSurface
-[INFO ]  Found HSEQUENCE definition TColGeom_HSequenceOfBoundedCurve: TColGeom_SequenceOfBoundedCurve
-[INFO ]  Found HARRAY1 definition TColGeom_HArray1OfCurve: TColGeom_Array1OfCurve
-[INFO ]  Found HSEQUENCE definition TColGeom_HSequenceOfCurve: TColGeom_SequenceOfCurve
 [INFO ]  Found HARRAY1 definition TColGeom_HArray1OfBezierCurve: TColGeom_Array1OfBezierCurve
+[INFO ]  Found HARRAY1 definition TColGeom_HArray1OfCurve: TColGeom_Array1OfCurve
+[INFO ]  Found HARRAY1 definition TColGeom_HArray1OfSurface: TColGeom_Array1OfSurface
 [INFO ]  Found HARRAY2 definition TColGeom_HArray2OfSurface: TColGeom_Array2OfSurface
+[INFO ]  Found HSEQUENCE definition TColGeom_HSequenceOfBoundedCurve: TColGeom_SequenceOfBoundedCurve
+[INFO ]  Found HSEQUENCE definition TColGeom_HSequenceOfCurve: TColGeom_SequenceOfCurve
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -1930,10 +1930,10 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: GeomInt_TheZerImpFuncOfTheImpPrmSvSurfacesOfWLApprox
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module GeomPlate
-[INFO ]  Found HSEQUENCE definition GeomPlate_HSequenceOfCurveConstraint: GeomPlate_SequenceOfCurveConstraint
 [INFO ]  Found HARRAY1 definition GeomPlate_HArray1OfHCurve: GeomPlate_Array1OfHCurve
-[INFO ]  Found HSEQUENCE definition GeomPlate_HSequenceOfPointConstraint: GeomPlate_SequenceOfPointConstraint
 [INFO ]  Found HARRAY1 definition GeomPlate_HArray1OfSequenceOfReal: GeomPlate_Array1OfSequenceOfReal
+[INFO ]  Found HSEQUENCE definition GeomPlate_HSequenceOfCurveConstraint: GeomPlate_SequenceOfCurveConstraint
+[INFO ]  Found HSEQUENCE definition GeomPlate_HSequenceOfPointConstraint: GeomPlate_SequenceOfPointConstraint
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -2473,10 +2473,10 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: AppDef_LinearCriteria
 [INFO ]      Creating Get and Set methods for method EstLength
 [INFO ]  ## Processing module AppParCurves
-[INFO ]  Found HARRAY1 definition AppParCurves_HArray1OfMultiPoint: AppParCurves_Array1OfMultiPoint
+[INFO ]  Found HARRAY1 definition AppParCurves_HArray1OfConstraintCouple: AppParCurves_Array1OfConstraintCouple
 [INFO ]  Found HARRAY1 definition AppParCurves_HArray1OfMultiBSpCurve: AppParCurves_Array1OfMultiBSpCurve
 [INFO ]  Found HARRAY1 definition AppParCurves_HArray1OfMultiCurve: AppParCurves_Array1OfMultiCurve
-[INFO ]  Found HARRAY1 definition AppParCurves_HArray1OfConstraintCouple: AppParCurves_Array1OfConstraintCouple
+[INFO ]  Found HARRAY1 definition AppParCurves_HArray1OfMultiPoint: AppParCurves_Array1OfMultiPoint
 [INFO ]  Enum: AppParCurves_Constraint
 [INFO ]  Class: AppParCurves
 [INFO ]  Class: AppParCurves_ConstraintCouple
@@ -2532,12 +2532,12 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: CPnts_UniformDeflection
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module Extrema
-[INFO ]  Found HARRAY2 definition Extrema_HArray2OfPOnSurf: Extrema_Array2OfPOnSurf
 [INFO ]  Found HARRAY1 definition Extrema_HArray1OfPOnCurv: Extrema_Array1OfPOnCurv
+[INFO ]  Found HARRAY1 definition Extrema_HArray1OfPOnCurv2d: Extrema_Array1OfPOnCurv2d
+[INFO ]  Found HARRAY1 definition Extrema_HArray1OfPOnSurf: Extrema_Array1OfPOnSurf
 [INFO ]  Found HARRAY2 definition Extrema_HArray2OfPOnCurv: Extrema_Array2OfPOnCurv
 [INFO ]  Found HARRAY2 definition Extrema_HArray2OfPOnCurv2d: Extrema_Array2OfPOnCurv2d
-[INFO ]  Found HARRAY1 definition Extrema_HArray1OfPOnSurf: Extrema_Array1OfPOnSurf
-[INFO ]  Found HARRAY1 definition Extrema_HArray1OfPOnCurv2d: Extrema_Array1OfPOnCurv2d
+[INFO ]  Found HARRAY2 definition Extrema_HArray2OfPOnSurf: Extrema_Array2OfPOnSurf
 [INFO ]  Enum: Extrema_ElementType
 [INFO ]  Enum: Extrema_ExtAlgo
 [INFO ]  Enum: Extrema_ExtFlag
@@ -3004,9 +3004,9 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Contap_TheSegmentOfTheSearch
 [INFO ]  ## Processing module HLRAlgo
-[INFO ]  Found HARRAY1 definition HLRAlgo_HArray1OfPISeg: HLRAlgo_Array1OfPISeg
-[INFO ]  Found HARRAY1 definition HLRAlgo_HArray1OfPINod: HLRAlgo_Array1OfPINod
 [INFO ]  Found HARRAY1 definition HLRAlgo_HArray1OfPHDat: HLRAlgo_Array1OfPHDat
+[INFO ]  Found HARRAY1 definition HLRAlgo_HArray1OfPINod: HLRAlgo_Array1OfPINod
+[INFO ]  Found HARRAY1 definition HLRAlgo_HArray1OfPISeg: HLRAlgo_Array1OfPISeg
 [INFO ]  Found HARRAY1 definition HLRAlgo_HArray1OfTData: HLRAlgo_Array1OfTData
 [INFO ]  Enum: HLRAlgo_PolyMask
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -3468,8 +3468,8 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: TDataStd_Relation
 [INFO ]  Class: TDataStd_Tick
 [INFO ]  ## Processing module TDocStd
-[INFO ]  Enum: 
 [INFO ]  Enum: TDocStd_FormatVersion
+[INFO ]  Enum: 
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  Class: TDocStd
@@ -3542,8 +3542,8 @@ date : 2024-11-18 04:50:36.281880
 [WARNI]      [TypeHint] Skipping type T, should contain _
 [INFO ]  Class: BVH_Tree<T,N,BVH_QuadTree>
 [INFO ]  ## Processing module Bnd
-[INFO ]  Found HARRAY1 definition Bnd_HArray1OfBox2d: Bnd_Array1OfBox2d
 [INFO ]  Found HARRAY1 definition Bnd_HArray1OfBox: Bnd_Array1OfBox
+[INFO ]  Found HARRAY1 definition Bnd_HArray1OfBox2d: Bnd_Array1OfBox2d
 [INFO ]  Found HARRAY1 definition Bnd_HArray1OfSphere: Bnd_Array1OfSphere
 [INFO ]  Class: Bnd_B2d
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -3762,34 +3762,34 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  ## Processing module Precision
 [INFO ]  Class: Precision
 [INFO ]  ## Processing module TColgp
-[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfXYZ: TColgp_SequenceOfXYZ
-[INFO ]  Found HARRAY2 definition TColgp_HArray2OfCirc2d: TColgp_Array2OfCirc2d
-[INFO ]  Found HARRAY2 definition TColgp_HArray2OfDir: TColgp_Array2OfDir
-[INFO ]  Found HARRAY2 definition TColgp_HArray2OfPnt: TColgp_Array2OfPnt
-[INFO ]  Found HARRAY2 definition TColgp_HArray2OfLin2d: TColgp_Array2OfLin2d
-[INFO ]  Found HARRAY1 definition TColgp_HArray1OfDir2d: TColgp_Array1OfDir2d
-[INFO ]  Found HARRAY2 definition TColgp_HArray2OfVec2d: TColgp_Array2OfVec2d
-[INFO ]  Found HARRAY2 definition TColgp_HArray2OfPnt2d: TColgp_Array2OfPnt2d
-[INFO ]  Found HARRAY2 definition TColgp_HArray2OfVec: TColgp_Array2OfVec
-[INFO ]  Found HARRAY1 definition TColgp_HArray1OfVec: TColgp_Array1OfVec
 [INFO ]  Found HARRAY1 definition TColgp_HArray1OfCirc2d: TColgp_Array1OfCirc2d
-[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfPnt: TColgp_SequenceOfPnt
-[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfPnt2d: TColgp_SequenceOfPnt2d
-[INFO ]  Found HARRAY2 definition TColgp_HArray2OfXYZ: TColgp_Array2OfXYZ
-[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfXY: TColgp_SequenceOfXY
-[INFO ]  Found HARRAY1 definition TColgp_HArray1OfXYZ: TColgp_Array1OfXYZ
-[INFO ]  Found HARRAY1 definition TColgp_HArray1OfPnt: TColgp_Array1OfPnt
-[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfVec: TColgp_SequenceOfVec
-[INFO ]  Found HARRAY1 definition TColgp_HArray1OfLin2d: TColgp_Array1OfLin2d
-[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfVec2d: TColgp_SequenceOfVec2d
 [INFO ]  Found HARRAY1 definition TColgp_HArray1OfDir: TColgp_Array1OfDir
+[INFO ]  Found HARRAY1 definition TColgp_HArray1OfDir2d: TColgp_Array1OfDir2d
+[INFO ]  Found HARRAY1 definition TColgp_HArray1OfLin2d: TColgp_Array1OfLin2d
+[INFO ]  Found HARRAY1 definition TColgp_HArray1OfPnt: TColgp_Array1OfPnt
 [INFO ]  Found HARRAY1 definition TColgp_HArray1OfPnt2d: TColgp_Array1OfPnt2d
-[INFO ]  Found HARRAY2 definition TColgp_HArray2OfDir2d: TColgp_Array2OfDir2d
-[INFO ]  Found HARRAY2 definition TColgp_HArray2OfXY: TColgp_Array2OfXY
+[INFO ]  Found HARRAY1 definition TColgp_HArray1OfVec: TColgp_Array1OfVec
 [INFO ]  Found HARRAY1 definition TColgp_HArray1OfVec2d: TColgp_Array1OfVec2d
 [INFO ]  Found HARRAY1 definition TColgp_HArray1OfXY: TColgp_Array1OfXY
-[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfDir2d: TColgp_SequenceOfDir2d
+[INFO ]  Found HARRAY1 definition TColgp_HArray1OfXYZ: TColgp_Array1OfXYZ
+[INFO ]  Found HARRAY2 definition TColgp_HArray2OfCirc2d: TColgp_Array2OfCirc2d
+[INFO ]  Found HARRAY2 definition TColgp_HArray2OfDir: TColgp_Array2OfDir
+[INFO ]  Found HARRAY2 definition TColgp_HArray2OfDir2d: TColgp_Array2OfDir2d
+[INFO ]  Found HARRAY2 definition TColgp_HArray2OfLin2d: TColgp_Array2OfLin2d
+[INFO ]  Found HARRAY2 definition TColgp_HArray2OfPnt: TColgp_Array2OfPnt
+[INFO ]  Found HARRAY2 definition TColgp_HArray2OfPnt2d: TColgp_Array2OfPnt2d
+[INFO ]  Found HARRAY2 definition TColgp_HArray2OfVec: TColgp_Array2OfVec
+[INFO ]  Found HARRAY2 definition TColgp_HArray2OfVec2d: TColgp_Array2OfVec2d
+[INFO ]  Found HARRAY2 definition TColgp_HArray2OfXY: TColgp_Array2OfXY
+[INFO ]  Found HARRAY2 definition TColgp_HArray2OfXYZ: TColgp_Array2OfXYZ
 [INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfDir: TColgp_SequenceOfDir
+[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfDir2d: TColgp_SequenceOfDir2d
+[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfPnt: TColgp_SequenceOfPnt
+[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfPnt2d: TColgp_SequenceOfPnt2d
+[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfVec: TColgp_SequenceOfVec
+[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfVec2d: TColgp_SequenceOfVec2d
+[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfXY: TColgp_SequenceOfXY
+[INFO ]  Found HSEQUENCE definition TColgp_HSequenceOfXYZ: TColgp_SequenceOfXYZ
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  ## Processing module TopLoc
 [INFO ]  Class: TopLoc_Datum3D
@@ -4311,6 +4311,7 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  ## Processing module MeshVS
 [INFO ]  Found HARRAY1 definition MeshVS_HArray1OfSequenceOfInteger: MeshVS_Array1OfSequenceOfInteger
 [INFO ]  Enum: 
+[INFO ]  Enum: 
 [INFO ]  Enum: MeshVS_DrawerAttribute
 [INFO ]  Enum: MeshVS_EntityType
 [INFO ]  Enum: MeshVS_MeshSelectionMethod
@@ -4384,8 +4385,8 @@ date : 2024-11-18 04:50:36.281880
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [INFO ]  Processing toolkit TKOffset ===
 [INFO ]  ## Processing module BRepOffset
-[INFO ]  Enum: BRepOffsetSimple_Status
 [INFO ]  Enum: BRepOffset_Error
+[INFO ]  Enum: BRepOffsetSimple_Status
 [INFO ]  Enum: BRepOffset_Mode
 [INFO ]  Enum: BRepOffset_Status
 [INFO ]  Class: BRepOffset
@@ -4535,16 +4536,16 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: Sweep_NumShapeTool
 [INFO ]  Processing toolkit TKRWMesh ===
 [INFO ]  ## Processing module RWGltf
-[INFO ]  Enum: 
 [INFO ]  Enum: RWGltf_GltfAccessorCompType
 [INFO ]  Enum: RWGltf_GltfAccessorLayout
 [INFO ]  Enum: RWGltf_GltfAlphaMode
 [INFO ]  Enum: RWGltf_GltfArrayType
 [INFO ]  Enum: RWGltf_GltfBufferViewTarget
+[INFO ]  Skipping Enum: ShapeMapGroup
 [INFO ]  Enum: RWGltf_GltfPrimitiveMode
 [INFO ]  Enum: RWGltf_GltfRootElement
 [INFO ]  Enum: RWGltf_WriterTrsfFormat
-[INFO ]  Skipping Enum: ShapeMapGroup
+[INFO ]  Enum: 
 [WARNI]  This template type cannot be handled: NCollection_Shared<NCollection_List<opencascade::handle<RWGltf_GltfFace>>>
 [INFO ]  Class: RWGltf_CafReader
 [INFO ]  Class: RWGltf_CafWriter
@@ -4784,16 +4785,16 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: STEPSelections_SelectGSCurves
 [INFO ]  Class: STEPSelections_SelectInstances
 [INFO ]  ## Processing module StepAP203
+[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfApprovedItem: StepAP203_Array1OfApprovedItem
+[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfCertifiedItem: StepAP203_Array1OfCertifiedItem
+[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfChangeRequestItem: StepAP203_Array1OfChangeRequestItem
 [INFO ]  Found HARRAY1 definition StepAP203_HArray1OfClassifiedItem: StepAP203_Array1OfClassifiedItem
-[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfWorkItem: StepAP203_Array1OfWorkItem
+[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfContractedItem: StepAP203_Array1OfContractedItem
+[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfDateTimeItem: StepAP203_Array1OfDateTimeItem
+[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfPersonOrganizationItem: StepAP203_Array1OfPersonOrganizationItem
 [INFO ]  Found HARRAY1 definition StepAP203_HArray1OfSpecifiedItem: StepAP203_Array1OfSpecifiedItem
 [INFO ]  Found HARRAY1 definition StepAP203_HArray1OfStartRequestItem: StepAP203_Array1OfStartRequestItem
-[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfChangeRequestItem: StepAP203_Array1OfChangeRequestItem
-[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfPersonOrganizationItem: StepAP203_Array1OfPersonOrganizationItem
-[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfDateTimeItem: StepAP203_Array1OfDateTimeItem
-[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfApprovedItem: StepAP203_Array1OfApprovedItem
-[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfContractedItem: StepAP203_Array1OfContractedItem
-[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfCertifiedItem: StepAP203_Array1OfCertifiedItem
+[INFO ]  Found HARRAY1 definition StepAP203_HArray1OfWorkItem: StepAP203_Array1OfWorkItem
 [INFO ]  Class: StepAP203_ApprovedItem
 [INFO ]  Class: StepAP203_CcDesignApproval
 [INFO ]  Class: StepAP203_CcDesignCertification
@@ -4819,23 +4820,23 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: StepAP209_Construct
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module StepAP214
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfSecurityClassificationItem: StepAP214_Array1OfSecurityClassificationItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfPresentedItemSelect: StepAP214_Array1OfPresentedItemSelect
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfOrganizationItem: StepAP214_Array1OfOrganizationItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignGroupedItem: StepAP214_Array1OfAutoDesignGroupedItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfPersonAndOrganizationItem: StepAP214_Array1OfPersonAndOrganizationItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfDocumentReferenceItem: StepAP214_Array1OfDocumentReferenceItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignPresentedItemSelect: StepAP214_Array1OfAutoDesignPresentedItemSelect
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfDateAndTimeItem: StepAP214_Array1OfDateAndTimeItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignDatedItem: StepAP214_Array1OfAutoDesignDatedItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfExternalIdentificationItem: StepAP214_Array1OfExternalIdentificationItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignReferencingItem: StepAP214_Array1OfAutoDesignReferencingItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignDateAndTimeItem: StepAP214_Array1OfAutoDesignDateAndTimeItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfGroupItem: StepAP214_Array1OfGroupItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignGeneralOrgItem: StepAP214_Array1OfAutoDesignGeneralOrgItem
-[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfDateItem: StepAP214_Array1OfDateItem
 [INFO ]  Found HARRAY1 definition StepAP214_HArray1OfApprovalItem: StepAP214_Array1OfApprovalItem
 [INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignDateAndPersonItem: StepAP214_Array1OfAutoDesignDateAndPersonItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignDateAndTimeItem: StepAP214_Array1OfAutoDesignDateAndTimeItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignDatedItem: StepAP214_Array1OfAutoDesignDatedItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignGeneralOrgItem: StepAP214_Array1OfAutoDesignGeneralOrgItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignGroupedItem: StepAP214_Array1OfAutoDesignGroupedItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignPresentedItemSelect: StepAP214_Array1OfAutoDesignPresentedItemSelect
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfAutoDesignReferencingItem: StepAP214_Array1OfAutoDesignReferencingItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfDateAndTimeItem: StepAP214_Array1OfDateAndTimeItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfDateItem: StepAP214_Array1OfDateItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfDocumentReferenceItem: StepAP214_Array1OfDocumentReferenceItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfExternalIdentificationItem: StepAP214_Array1OfExternalIdentificationItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfGroupItem: StepAP214_Array1OfGroupItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfOrganizationItem: StepAP214_Array1OfOrganizationItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfPersonAndOrganizationItem: StepAP214_Array1OfPersonAndOrganizationItem
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfPresentedItemSelect: StepAP214_Array1OfPresentedItemSelect
+[INFO ]  Found HARRAY1 definition StepAP214_HArray1OfSecurityClassificationItem: StepAP214_Array1OfSecurityClassificationItem
 [INFO ]  Class: StepAP214
 [INFO ]  Class: StepAP214_AppliedApprovalAssignment
 [INFO ]  Class: StepAP214_AppliedDateAndTimeAssignment
@@ -5039,21 +5040,21 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: RWStepFEA_RWSurface3dElementRepresentation
 [INFO ]  Class: RWStepFEA_RWVolume3dElementRepresentation
 [INFO ]  ## Processing module StepElement
+[INFO ]  Found HARRAY1 definition StepElement_HArray1OfCurveElementEndReleasePacket: StepElement_Array1OfCurveElementEndReleasePacket
+[INFO ]  Found HARRAY1 definition StepElement_HArray1OfCurveElementSectionDefinition: StepElement_Array1OfCurveElementSectionDefinition
 [INFO ]  Found HARRAY1 definition StepElement_HArray1OfHSequenceOfCurveElementPurposeMember: StepElement_Array1OfHSequenceOfCurveElementPurposeMember
-[INFO ]  Found HARRAY2 definition StepElement_HArray2OfCurveElementPurposeMember: StepElement_Array2OfCurveElementPurposeMember
+[INFO ]  Found HARRAY1 definition StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember: StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember
+[INFO ]  Found HARRAY1 definition StepElement_HArray1OfMeasureOrUnspecifiedValue: StepElement_Array1OfMeasureOrUnspecifiedValue
 [INFO ]  Found HARRAY1 definition StepElement_HArray1OfSurfaceSection: StepElement_Array1OfSurfaceSection
 [INFO ]  Found HARRAY1 definition StepElement_HArray1OfVolumeElementPurpose: StepElement_Array1OfVolumeElementPurpose
-[INFO ]  Found HARRAY2 definition StepElement_HArray2OfSurfaceElementPurposeMember: StepElement_Array2OfSurfaceElementPurposeMember
-[INFO ]  Found HARRAY1 definition StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember: StepElement_Array1OfHSequenceOfSurfaceElementPurposeMember
-[INFO ]  Found HARRAY1 definition StepElement_HArray1OfCurveElementSectionDefinition: StepElement_Array1OfCurveElementSectionDefinition
-[INFO ]  Found HSEQUENCE definition StepElement_HSequenceOfElementMaterial: StepElement_SequenceOfElementMaterial
-[INFO ]  Found HARRAY1 definition StepElement_HArray1OfMeasureOrUnspecifiedValue: StepElement_Array1OfMeasureOrUnspecifiedValue
-[INFO ]  Found HARRAY1 definition StepElement_HArray1OfCurveElementEndReleasePacket: StepElement_Array1OfCurveElementEndReleasePacket
 [INFO ]  Found HARRAY1 definition StepElement_HArray1OfVolumeElementPurposeMember: StepElement_Array1OfVolumeElementPurposeMember
+[INFO ]  Found HARRAY2 definition StepElement_HArray2OfCurveElementPurposeMember: StepElement_Array2OfCurveElementPurposeMember
+[INFO ]  Found HARRAY2 definition StepElement_HArray2OfSurfaceElementPurpose: StepElement_Array2OfSurfaceElementPurpose
+[INFO ]  Found HARRAY2 definition StepElement_HArray2OfSurfaceElementPurposeMember: StepElement_Array2OfSurfaceElementPurposeMember
 [INFO ]  Found HSEQUENCE definition StepElement_HSequenceOfCurveElementPurposeMember: StepElement_SequenceOfCurveElementPurposeMember
 [INFO ]  Found HSEQUENCE definition StepElement_HSequenceOfCurveElementSectionDefinition: StepElement_SequenceOfCurveElementSectionDefinition
+[INFO ]  Found HSEQUENCE definition StepElement_HSequenceOfElementMaterial: StepElement_SequenceOfElementMaterial
 [INFO ]  Found HSEQUENCE definition StepElement_HSequenceOfSurfaceElementPurposeMember: StepElement_SequenceOfSurfaceElementPurposeMember
-[INFO ]  Found HARRAY2 definition StepElement_HArray2OfSurfaceElementPurpose: StepElement_Array2OfSurfaceElementPurpose
 [INFO ]  Enum: StepElement_CurveEdge
 [INFO ]  Enum: StepElement_Element2dShape
 [INFO ]  Enum: StepElement_ElementOrder
@@ -5102,16 +5103,16 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: StepElement_UniformSurfaceSection
 [INFO ]  Class: StepElement_Volume3dElementDescriptor
 [INFO ]  ## Processing module StepFEA
-[INFO ]  Found HSEQUENCE definition StepFEA_HSequenceOfElementRepresentation: StepFEA_SequenceOfElementRepresentation
-[INFO ]  Found HSEQUENCE definition StepFEA_HSequenceOfNodeRepresentation: StepFEA_SequenceOfNodeRepresentation
 [INFO ]  Found HARRAY1 definition StepFEA_HArray1OfCurveElementEndOffset: StepFEA_Array1OfCurveElementEndOffset
 [INFO ]  Found HARRAY1 definition StepFEA_HArray1OfCurveElementEndRelease: StepFEA_Array1OfCurveElementEndRelease
-[INFO ]  Found HSEQUENCE definition StepFEA_HSequenceOfCurve3dElementProperty: StepFEA_SequenceOfCurve3dElementProperty
+[INFO ]  Found HARRAY1 definition StepFEA_HArray1OfCurveElementInterval: StepFEA_Array1OfCurveElementInterval
 [INFO ]  Found HARRAY1 definition StepFEA_HArray1OfDegreeOfFreedom: StepFEA_Array1OfDegreeOfFreedom
 [INFO ]  Found HARRAY1 definition StepFEA_HArray1OfElementRepresentation: StepFEA_Array1OfElementRepresentation
-[INFO ]  Found HARRAY1 definition StepFEA_HArray1OfCurveElementInterval: StepFEA_Array1OfCurveElementInterval
 [INFO ]  Found HARRAY1 definition StepFEA_HArray1OfNodeRepresentation: StepFEA_Array1OfNodeRepresentation
+[INFO ]  Found HSEQUENCE definition StepFEA_HSequenceOfCurve3dElementProperty: StepFEA_SequenceOfCurve3dElementProperty
 [INFO ]  Found HSEQUENCE definition StepFEA_HSequenceOfElementGeometricRelationship: StepFEA_SequenceOfElementGeometricRelationship
+[INFO ]  Found HSEQUENCE definition StepFEA_HSequenceOfElementRepresentation: StepFEA_SequenceOfElementRepresentation
+[INFO ]  Found HSEQUENCE definition StepFEA_HSequenceOfNodeRepresentation: StepFEA_SequenceOfNodeRepresentation
 [INFO ]  Enum: StepFEA_CoordinateSystemType
 [INFO ]  Enum: StepFEA_CurveEdge
 [INFO ]  Enum: StepFEA_ElementVolume
@@ -5414,13 +5415,13 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: RWStepVisual_RWTriangulatedSurfaceSet
 [INFO ]  Class: RWStepVisual_RWViewVolume
 [INFO ]  ## Processing module StepDimTol
-[INFO ]  Found HARRAY1 definition StepDimTol_HArray1OfGeometricToleranceModifier: StepDimTol_Array1OfGeometricToleranceModifier
 [INFO ]  Found HARRAY1 definition StepDimTol_HArray1OfDatumReference: StepDimTol_Array1OfDatumReference
-[INFO ]  Found HARRAY1 definition StepDimTol_HArray1OfToleranceZoneTarget: StepDimTol_Array1OfToleranceZoneTarget
+[INFO ]  Found HARRAY1 definition StepDimTol_HArray1OfDatumReferenceCompartment: StepDimTol_Array1OfDatumReferenceCompartment
 [INFO ]  Found HARRAY1 definition StepDimTol_HArray1OfDatumReferenceElement: StepDimTol_Array1OfDatumReferenceElement
 [INFO ]  Found HARRAY1 definition StepDimTol_HArray1OfDatumReferenceModifier: StepDimTol_Array1OfDatumReferenceModifier
 [INFO ]  Found HARRAY1 definition StepDimTol_HArray1OfDatumSystemOrReference: StepDimTol_Array1OfDatumSystemOrReference
-[INFO ]  Found HARRAY1 definition StepDimTol_HArray1OfDatumReferenceCompartment: StepDimTol_Array1OfDatumReferenceCompartment
+[INFO ]  Found HARRAY1 definition StepDimTol_HArray1OfGeometricToleranceModifier: StepDimTol_Array1OfGeometricToleranceModifier
+[INFO ]  Found HARRAY1 definition StepDimTol_HArray1OfToleranceZoneTarget: StepDimTol_Array1OfToleranceZoneTarget
 [INFO ]  Enum: StepDimTol_AreaUnitType
 [INFO ]  Enum: StepDimTol_DatumReferenceModifierType
 [INFO ]  Enum: StepDimTol_GeometricToleranceModifier
@@ -5575,24 +5576,24 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: StepKinematics_SurfacePairWithRange
 [INFO ]  Class: StepKinematics_UniversalPairWithRange
 [INFO ]  ## Processing module StepVisual
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfSurfaceStyleElementSelect: StepVisual_Array1OfSurfaceStyleElementSelect
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfDraughtingCalloutElement: StepVisual_Array1OfDraughtingCalloutElement
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfPresentationStyleAssignment: StepVisual_Array1OfPresentationStyleAssignment
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfDirectionCountSelect: StepVisual_Array1OfDirectionCountSelect
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfTessellatedEdgeOrVertex: StepVisual_Array1OfTessellatedEdgeOrVertex
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfBoxCharacteristicSelect: StepVisual_Array1OfBoxCharacteristicSelect
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfFillStyleSelect: StepVisual_Array1OfFillStyleSelect
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfTextOrCharacter: StepVisual_Array1OfTextOrCharacter
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect: StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfStyleContextSelect: StepVisual_Array1OfStyleContextSelect
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect: StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfTessellatedStructuredItem: StepVisual_Array1OfTessellatedStructuredItem
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfCurveStyleFontPattern: StepVisual_Array1OfCurveStyleFontPattern
 [INFO ]  Found HARRAY1 definition StepVisual_HArray1OfAnnotationPlaneElement: StepVisual_Array1OfAnnotationPlaneElement
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfRenderingPropertiesSelect: StepVisual_Array1OfRenderingPropertiesSelect
-[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfPresentationStyleSelect: StepVisual_Array1OfPresentationStyleSelect
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfBoxCharacteristicSelect: StepVisual_Array1OfBoxCharacteristicSelect
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfCameraModelD3MultiClippingInterectionSelect: StepVisual_Array1OfCameraModelD3MultiClippingInterectionSelect
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfCameraModelD3MultiClippingUnionSelect: StepVisual_Array1OfCameraModelD3MultiClippingUnionSelect
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfCurveStyleFontPattern: StepVisual_Array1OfCurveStyleFontPattern
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfDirectionCountSelect: StepVisual_Array1OfDirectionCountSelect
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfDraughtingCalloutElement: StepVisual_Array1OfDraughtingCalloutElement
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfFillStyleSelect: StepVisual_Array1OfFillStyleSelect
 [INFO ]  Found HARRAY1 definition StepVisual_HArray1OfInvisibleItem: StepVisual_Array1OfInvisibleItem
 [INFO ]  Found HARRAY1 definition StepVisual_HArray1OfLayeredItem: StepVisual_Array1OfLayeredItem
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfPresentationStyleAssignment: StepVisual_Array1OfPresentationStyleAssignment
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfPresentationStyleSelect: StepVisual_Array1OfPresentationStyleSelect
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfRenderingPropertiesSelect: StepVisual_Array1OfRenderingPropertiesSelect
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfStyleContextSelect: StepVisual_Array1OfStyleContextSelect
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfSurfaceStyleElementSelect: StepVisual_Array1OfSurfaceStyleElementSelect
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfTessellatedEdgeOrVertex: StepVisual_Array1OfTessellatedEdgeOrVertex
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfTessellatedStructuredItem: StepVisual_Array1OfTessellatedStructuredItem
+[INFO ]  Found HARRAY1 definition StepVisual_HArray1OfTextOrCharacter: StepVisual_Array1OfTextOrCharacter
 [INFO ]  Enum: StepVisual_CentralOrParallel
 [INFO ]  Enum: StepVisual_MarkerType
 [INFO ]  Enum: StepVisual_NullStyle
@@ -6113,16 +6114,16 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: RWStepShape_RWVertexLoop
 [INFO ]  Class: RWStepShape_RWVertexPoint
 [INFO ]  ## Processing module StepBasic
-[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfUncertaintyMeasureWithUnit: StepBasic_Array1OfUncertaintyMeasureWithUnit
-[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfProduct: StepBasic_Array1OfProduct
-[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfProductContext: StepBasic_Array1OfProductContext
-[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfDerivedUnitElement: StepBasic_Array1OfDerivedUnitElement
-[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfPerson: StepBasic_Array1OfPerson
 [INFO ]  Found HARRAY1 definition StepBasic_HArray1OfApproval: StepBasic_Array1OfApproval
+[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfDerivedUnitElement: StepBasic_Array1OfDerivedUnitElement
 [INFO ]  Found HARRAY1 definition StepBasic_HArray1OfDocument: StepBasic_Array1OfDocument
 [INFO ]  Found HARRAY1 definition StepBasic_HArray1OfNamedUnit: StepBasic_Array1OfNamedUnit
-[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfProductDefinition: StepBasic_Array1OfProductDefinition
 [INFO ]  Found HARRAY1 definition StepBasic_HArray1OfOrganization: StepBasic_Array1OfOrganization
+[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfPerson: StepBasic_Array1OfPerson
+[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfProduct: StepBasic_Array1OfProduct
+[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfProductContext: StepBasic_Array1OfProductContext
+[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfProductDefinition: StepBasic_Array1OfProductDefinition
+[INFO ]  Found HARRAY1 definition StepBasic_HArray1OfUncertaintyMeasureWithUnit: StepBasic_Array1OfUncertaintyMeasureWithUnit
 [INFO ]  Enum: StepBasic_AheadOrBehind
 [INFO ]  Enum: StepBasic_SiPrefix
 [INFO ]  Enum: StepBasic_SiUnitName
@@ -6280,15 +6281,15 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: StepBasic_SiUnitAndTimeUnit
 [INFO ]  Class: StepBasic_SiUnitAndVolumeUnit
 [INFO ]  ## Processing module StepGeom
-[INFO ]  Found HARRAY1 definition StepGeom_HArray1OfSurfaceBoundary: StepGeom_Array1OfSurfaceBoundary
-[INFO ]  Found HARRAY2 definition StepGeom_HArray2OfCartesianPoint: StepGeom_Array2OfCartesianPoint
-[INFO ]  Found HARRAY1 definition StepGeom_HArray1OfCartesianPoint: StepGeom_Array1OfCartesianPoint
 [INFO ]  Found HARRAY1 definition StepGeom_HArray1OfBoundaryCurve: StepGeom_Array1OfBoundaryCurve
-[INFO ]  Found HARRAY2 definition StepGeom_HArray2OfSurfacePatch: StepGeom_Array2OfSurfacePatch
-[INFO ]  Found HARRAY1 definition StepGeom_HArray1OfPcurveOrSurface: StepGeom_Array1OfPcurveOrSurface
-[INFO ]  Found HARRAY1 definition StepGeom_HArray1OfCurve: StepGeom_Array1OfCurve
-[INFO ]  Found HARRAY1 definition StepGeom_HArray1OfTrimmingSelect: StepGeom_Array1OfTrimmingSelect
+[INFO ]  Found HARRAY1 definition StepGeom_HArray1OfCartesianPoint: StepGeom_Array1OfCartesianPoint
 [INFO ]  Found HARRAY1 definition StepGeom_HArray1OfCompositeCurveSegment: StepGeom_Array1OfCompositeCurveSegment
+[INFO ]  Found HARRAY1 definition StepGeom_HArray1OfCurve: StepGeom_Array1OfCurve
+[INFO ]  Found HARRAY1 definition StepGeom_HArray1OfPcurveOrSurface: StepGeom_Array1OfPcurveOrSurface
+[INFO ]  Found HARRAY1 definition StepGeom_HArray1OfSurfaceBoundary: StepGeom_Array1OfSurfaceBoundary
+[INFO ]  Found HARRAY1 definition StepGeom_HArray1OfTrimmingSelect: StepGeom_Array1OfTrimmingSelect
+[INFO ]  Found HARRAY2 definition StepGeom_HArray2OfCartesianPoint: StepGeom_Array2OfCartesianPoint
+[INFO ]  Found HARRAY2 definition StepGeom_HArray2OfSurfacePatch: StepGeom_Array2OfSurfacePatch
 [INFO ]  Enum: StepGeom_BSplineCurveForm
 [INFO ]  Enum: StepGeom_BSplineSurfaceForm
 [INFO ]  Enum: StepGeom_KnotType
@@ -6394,8 +6395,8 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Found HARRAY1 definition StepRepr_HArray1OfMaterialPropertyRepresentation: StepRepr_Array1OfMaterialPropertyRepresentation
 [INFO ]  Found HARRAY1 definition StepRepr_HArray1OfPropertyDefinitionRepresentation: StepRepr_Array1OfPropertyDefinitionRepresentation
 [INFO ]  Found HARRAY1 definition StepRepr_HArray1OfRepresentationItem: StepRepr_Array1OfRepresentationItem
-[INFO ]  Found HSEQUENCE definition StepRepr_HSequenceOfMaterialPropertyRepresentation: StepRepr_SequenceOfMaterialPropertyRepresentation
 [INFO ]  Found HARRAY1 definition StepRepr_HArray1OfShapeAspect: StepRepr_Array1OfShapeAspect
+[INFO ]  Found HSEQUENCE definition StepRepr_HSequenceOfMaterialPropertyRepresentation: StepRepr_SequenceOfMaterialPropertyRepresentation
 [INFO ]  Found HSEQUENCE definition StepRepr_HSequenceOfRepresentationItem: StepRepr_SequenceOfRepresentationItem
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -6485,17 +6486,17 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: StepRepr_ReprItemAndPlaneAngleMeasureWithUnitAndQRI
 [INFO ]  Class: StepRepr_ShapeRepresentationRelationshipWithTransformation
 [INFO ]  ## Processing module StepShape
-[INFO ]  Found HARRAY1 definition StepShape_HArray1OfShell: StepShape_Array1OfShell
-[INFO ]  Found HARRAY1 definition StepShape_HArray1OfFaceBound: StepShape_Array1OfFaceBound
-[INFO ]  Found HARRAY1 definition StepShape_HArray1OfFace: StepShape_Array1OfFace
-[INFO ]  Found HARRAY1 definition StepShape_HArray1OfShapeDimensionRepresentationItem: StepShape_Array1OfShapeDimensionRepresentationItem
-[INFO ]  Found HARRAY1 definition StepShape_HArray1OfConnectedFaceSet: StepShape_Array1OfConnectedFaceSet
 [INFO ]  Found HARRAY1 definition StepShape_HArray1OfConnectedEdgeSet: StepShape_Array1OfConnectedEdgeSet
+[INFO ]  Found HARRAY1 definition StepShape_HArray1OfConnectedFaceSet: StepShape_Array1OfConnectedFaceSet
 [INFO ]  Found HARRAY1 definition StepShape_HArray1OfEdge: StepShape_Array1OfEdge
-[INFO ]  Found HARRAY1 definition StepShape_HArray1OfOrientedClosedShell: StepShape_Array1OfOrientedClosedShell
-[INFO ]  Found HARRAY1 definition StepShape_HArray1OfValueQualifier: StepShape_Array1OfValueQualifier
-[INFO ]  Found HARRAY1 definition StepShape_HArray1OfOrientedEdge: StepShape_Array1OfOrientedEdge
+[INFO ]  Found HARRAY1 definition StepShape_HArray1OfFace: StepShape_Array1OfFace
+[INFO ]  Found HARRAY1 definition StepShape_HArray1OfFaceBound: StepShape_Array1OfFaceBound
 [INFO ]  Found HARRAY1 definition StepShape_HArray1OfGeometricSetSelect: StepShape_Array1OfGeometricSetSelect
+[INFO ]  Found HARRAY1 definition StepShape_HArray1OfOrientedClosedShell: StepShape_Array1OfOrientedClosedShell
+[INFO ]  Found HARRAY1 definition StepShape_HArray1OfOrientedEdge: StepShape_Array1OfOrientedEdge
+[INFO ]  Found HARRAY1 definition StepShape_HArray1OfShapeDimensionRepresentationItem: StepShape_Array1OfShapeDimensionRepresentationItem
+[INFO ]  Found HARRAY1 definition StepShape_HArray1OfShell: StepShape_Array1OfShell
+[INFO ]  Found HARRAY1 definition StepShape_HArray1OfValueQualifier: StepShape_Array1OfValueQualifier
 [INFO ]  Enum: StepShape_AngleRelator
 [INFO ]  Enum: StepShape_BooleanOperator
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -6624,7 +6625,6 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]      Creating Get and Set methods for method ASCIIMode
 [INFO ]  Processing toolkit TKService ===
 [INFO ]  ## Processing module Aspect
-[INFO ]  Enum: 
 [INFO ]  Enum: Aspect_ColorSpace
 [INFO ]  Enum: Aspect_Eye
 [INFO ]  Enum: Aspect_FillMethod
@@ -6648,11 +6648,16 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Enum: Aspect_TypeOfStyleText
 [INFO ]  Enum: Aspect_TypeOfTriedronPosition
 [INFO ]  Enum: Aspect_VKeyBasic
+[INFO ]  Enum: 
+[INFO ]  Enum: 
+[INFO ]  Enum: 
 [INFO ]  Enum: Aspect_WidthOfLine
 [INFO ]  Enum: Aspect_XAtom
 [INFO ]  Enum: Aspect_XRActionType
 [INFO ]  Enum: Aspect_XRGenericAction
+[INFO ]  Enum: 
 [INFO ]  Enum: Aspect_XRTrackedDeviceRole
+[INFO ]  Enum: 
 [WARNI]      [TypeHint] Skipping unknown type int,Aspect_Touch, int,Aspect not in module list
 [WARNI]      [TypeHint] Skip type TCollection_AsciiString,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type TCollection_AsciiString,opencascade::handle, because of trailing :
@@ -6717,8 +6722,8 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: Aspect_XRPoseActionData
 [INFO ]  Class: Aspect_XRSession
 [INFO ]      Class Aspect_XRSession is abstract, using %nodefaultctor.
-[INFO ]  Enum: InfoString
 [INFO ]  Enum: TrackingUniverseOrigin
+[INFO ]  Enum: InfoString
 [WARNI]      [TypeHint] Skipping type NCollection_Mat4<double, seems to be a template
 [WARNI]      [TypeHint] Skipping type InfoString, should contain _
 [WARNI]      [TypeHint] Skipping type NCollection_Mat4<double, seems to be a template
@@ -6736,18 +6741,22 @@ date : 2024-11-18 04:50:36.281880
 [WARNI]      [TypeHint] Skipping type NCollection_Vec2<int, seems to be a template
 [WARNI]      [TypeHint] Skipping type TrackingUniverseOrigin, should contain _
 [INFO ]  ## Processing module Graphic3d
-[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_AlphaMode
+[INFO ]  Enum: 
+[INFO ]  Enum: Graphic3d_FresnelModel
+[INFO ]  Enum: Graphic3d_TypeOfAttribute
+[INFO ]  Enum: Graphic3d_TypeOfData
 [INFO ]  Enum: Graphic3d_BufferType
 [INFO ]  Enum: Graphic3d_CappingFlags
 [INFO ]  Enum: Graphic3d_ClipState
 [INFO ]  Enum: Graphic3d_CubeMapSide
 [INFO ]  Enum: Graphic3d_DiagnosticInfo
 [INFO ]  Enum: Graphic3d_DisplayPriority
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_FrameStatsCounter
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_FrameStatsTimer
-[INFO ]  Enum: Graphic3d_FresnelModel
-[INFO ]  Enum: Graphic3d_GlslExtension
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_GroupAspect
 [INFO ]  Enum: Graphic3d_HorizontalTextAlignment
 [INFO ]  Enum: Graphic3d_LevelOfTextureAnisotropy
@@ -6759,31 +6768,38 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Enum: Graphic3d_RenderTransparentMethod
 [INFO ]  Enum: Graphic3d_RenderingMode
 [INFO ]  Enum: Graphic3d_ShaderFlags
+[INFO ]  Enum: Graphic3d_GlslExtension
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_StereoMode
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_TextPath
 [INFO ]  Enum: Graphic3d_TextureSetBits
 [INFO ]  Enum: Graphic3d_TextureUnit
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_ToneMappingMethod
 [INFO ]  Enum: Graphic3d_TransModeFlags
 [INFO ]  Enum: Graphic3d_TypeOfAnswer
-[INFO ]  Enum: Graphic3d_TypeOfAttribute
 [INFO ]  Enum: Graphic3d_TypeOfBackfacingModel
 [INFO ]  Enum: Graphic3d_TypeOfBackground
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_TypeOfConnection
-[INFO ]  Enum: Graphic3d_TypeOfData
 [INFO ]  Enum: Graphic3d_TypeOfLightSource
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_TypeOfLimit
 [INFO ]  Enum: Graphic3d_TypeOfMaterial
 [INFO ]  Enum: Graphic3d_TypeOfPrimitiveArray
 [INFO ]  Enum: Graphic3d_TypeOfReflection
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_TypeOfShaderObject
 [INFO ]  Enum: Graphic3d_TypeOfShadingModel
+[INFO ]  Enum: 
 [INFO ]  Enum: Graphic3d_TypeOfStructure
 [INFO ]  Enum: Graphic3d_TypeOfTexture
 [INFO ]  Enum: Graphic3d_TypeOfTextureFilter
 [INFO ]  Enum: Graphic3d_TypeOfTextureMode
 [INFO ]  Enum: Graphic3d_TypeOfVisualization
 [INFO ]  Enum: Graphic3d_VerticalTextAlignment
+[INFO ]  Enum: 
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Graphic3d_Aspects>, opencascade::handle<Graphic3d_Aspects>>
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -6823,10 +6839,10 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]      Wrap nested class Graphic3d_CStructure::SubclassGroupIterator
 [INFO ]  Class: Graphic3d_Camera
 [INFO ]      Wrap nested class Graphic3d_Camera::TransformMatrices
-[INFO ]  Enum: 
+[INFO ]  Enum: Projection
 [INFO ]  Enum: FocusType
 [INFO ]  Enum: IODType
-[INFO ]  Enum: Projection
+[INFO ]  Enum: 
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [WARNI]      [TypeHint] Skipping type NCollection_Array1<Graphic3d_Vec3d>, seems to be a template
 [WARNI]      [TypeHint] Skip type Graphic3d_Camera::IODType, because of trailing :
@@ -6915,8 +6931,8 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: Graphic3d_PresentationAttributes
 [INFO ]  Class: Graphic3d_RenderingParams
 [INFO ]  Enum: Anaglyph
-[INFO ]  Enum: FrustumCulling
 [INFO ]  Enum: PerfCounters
+[INFO ]  Enum: FrustumCulling
 [INFO ]  Class: Graphic3d_SequenceOfHClipPlane
 [INFO ]      Wrap nested class Graphic3d_SequenceOfHClipPlane::Iterator
 [INFO ]      explicitly excluded method Graphic3d_SequenceOfHClipPlane::310df33a7b799f6704691d7306814390
@@ -7036,9 +7052,10 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: Graphic3d_Texture2Dplane
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module Image
-[INFO ]  Enum: 
 [INFO ]  Enum: Image_CompressedFormat
+[INFO ]  Enum: 
 [INFO ]  Enum: Image_Format
+[INFO ]  Enum: 
 [INFO ]  ## Processing module InterfaceGraphic
 [WARNI]  No file for module InterfaceGraphic. Please check that the module name is part of occt.
 [INFO ]  ## Processing module Media
@@ -7350,8 +7367,8 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: TObj_Model
 [INFO ]      Class TObj_Model is abstract, using %nodefaultctor.
 [INFO ]  Class: TObj_Object
-[INFO ]  Enum: ObjectState
 [INFO ]  Enum: TypeFlags
+[INFO ]  Enum: ObjectState
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [WARNI]      [TypeHint] param name missing or '&', skip method type hint
 [INFO ]  Class: TObj_ObjectIterator
@@ -7747,14 +7764,15 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: MAT2d_Tool2d
 [INFO ]  Processing toolkit TKV3d ===
 [INFO ]  ## Processing module AIS
-[INFO ]  Enum: 
 [INFO ]  Enum: AIS_DisplayMode
 [INFO ]  Enum: AIS_DragAction
 [INFO ]  Enum: AIS_KindOfInteractive
 [INFO ]  Enum: AIS_ManipulatorMode
 [INFO ]  Enum: AIS_MouseGesture
 [INFO ]  Enum: AIS_NavigationMode
+[INFO ]  Enum: 
 [INFO ]  Enum: AIS_RotationMode
+[INFO ]  Enum: 
 [INFO ]  Enum: AIS_SelectStatus
 [INFO ]  Enum: AIS_SelectionModesConcurrency
 [INFO ]  Enum: AIS_SelectionScheme
@@ -7765,10 +7783,10 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Enum: AIS_TypeOfAxis
 [INFO ]  Enum: AIS_TypeOfIso
 [INFO ]  Enum: AIS_TypeOfPlane
-[INFO ]  Enum: AIS_ViewInputBufferType
 [INFO ]  Enum: AIS_ViewSelectionTool
-[INFO ]  Enum: AIS_WalkRotation
+[INFO ]  Enum: AIS_ViewInputBufferType
 [INFO ]  Enum: AIS_WalkTranslation
+[INFO ]  Enum: AIS_WalkRotation
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>>
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<AIS_InteractiveObject>, opencascade::handle<AIS_GlobalStatus>>::Iterator
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -7892,11 +7910,12 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  ## Processing module DsgPrs
 [INFO ]  Enum: DsgPrs_ArrowSide
 [INFO ]  ## Processing module Prs3d
-[INFO ]  Enum: 
 [INFO ]  Enum: Prs3d_DatumAttribute
+[INFO ]  Enum: 
 [INFO ]  Enum: Prs3d_DatumAxes
 [INFO ]  Enum: Prs3d_DatumMode
 [INFO ]  Enum: Prs3d_DatumParts
+[INFO ]  Enum: 
 [INFO ]  Enum: Prs3d_DimensionArrowOrientation
 [INFO ]  Enum: Prs3d_DimensionTextHorizontalPosition
 [INFO ]  Enum: Prs3d_DimensionTextVerticalPosition
@@ -8238,8 +8257,8 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: Vrml_Cone
 [INFO ]  Class: Vrml_ConfigurationNode
 [INFO ]      Wrap nested class Vrml_ConfigurationNode::Vrml_InternalSection
-[INFO ]  Enum: WriteMode_RepresentationType
 [INFO ]  Enum: WriteMode_WriterVersion
+[INFO ]  Enum: WriteMode_RepresentationType
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: Vrml_Coordinate3
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -8560,13 +8579,13 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: IGESCAFControl_ConfigurationNode
 [INFO ]      Wrap nested class IGESCAFControl_ConfigurationNode::IGESCAFControl_InternalSection
 [INFO ]  Enum: ReadMode_BSplineContinuity
-[INFO ]  Enum: ReadMode_MaxPrecision
 [INFO ]  Enum: ReadMode_Precision
+[INFO ]  Enum: ReadMode_MaxPrecision
 [INFO ]  Enum: ReadMode_SurfaceCurve
 [INFO ]  Enum: WriteMode_BRep
 [INFO ]  Enum: WriteMode_ConvertSurface
-[INFO ]  Enum: WriteMode_PlaneMode
 [INFO ]  Enum: WriteMode_PrecisionMode
+[INFO ]  Enum: WriteMode_PlaneMode
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Class: IGESCAFControl_Provider
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
@@ -8576,10 +8595,10 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  Processing toolkit TKXDESTEP ===
 [INFO ]  ## Processing module STEPCAFControl
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>>
-[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>>::Iterator
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>>
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepBasic_ProductDefinition>, opencascade::handle<STEPCAFControl_ExternFile>>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>>
+[WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<StepShape_ShapeDefinitionRepresentation>, opencascade::handle<STEPCAFControl_ExternFile>>::Iterator
 [WARNI]      [TypeHint] Skip type TDF_Label,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -8759,8 +8778,8 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: IFSelect_SelectType
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module Interface
-[INFO ]  Found HSEQUENCE definition Interface_HSequenceOfCheck: Interface_SequenceOfCheck
 [INFO ]  Found HARRAY1 definition Interface_HArray1OfHAsciiString: Interface_Array1OfHAsciiString
+[INFO ]  Found HSEQUENCE definition Interface_HSequenceOfCheck: Interface_SequenceOfCheck
 [INFO ]  Enum: Interface_CheckStatus
 [INFO ]  Enum: Interface_DataState
 [INFO ]  Enum: Interface_ParamType
@@ -8855,7 +8874,6 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  ## Processing module MoniTool
 [INFO ]  Found HSEQUENCE definition MoniTool_HSequenceOfElement: MoniTool_SequenceOfElement
 [INFO ]  Enum: MoniTool_ValueType
-[WARNI]  This template type cannot be handled: opencascade::handle<TCollection_HAsciiString>( * MoniTool_ValueInterpret ) ( const opencascade::handle<MoniTool_TypedValue>& typval, const opencascade::handle<TCollection_HAsciiString>& val, const Standard_Boolean native
 [WARNI]  Template ) skipped because name doesn't contain '_'.
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
 [WARNI]      [TypeHint] Skip type TopoDS_Shape,opencascade::handle, because of trailing :
@@ -8897,17 +8915,17 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Enum: StepData_Logical
 [INFO ]  Class: StepData
 [INFO ]  Class: StepData_ConfParameters
-[INFO ]  Enum: AngleUnitMode
-[INFO ]  Enum: RWMode_Tessellated
-[INFO ]  Enum: ReadMode_AssemblyLevel
 [INFO ]  Enum: ReadMode_BSplineContinuity
-[INFO ]  Enum: ReadMode_MaxPrecision
 [INFO ]  Enum: ReadMode_Precision
+[INFO ]  Enum: ReadMode_MaxPrecision
+[INFO ]  Enum: ReadMode_SurfaceCurve
+[INFO ]  Enum: AngleUnitMode
 [INFO ]  Enum: ReadMode_ProductContext
 [INFO ]  Enum: ReadMode_ShapeRepr
-[INFO ]  Enum: ReadMode_SurfaceCurve
-[INFO ]  Enum: WriteMode_Assembly
+[INFO ]  Enum: ReadMode_AssemblyLevel
+[INFO ]  Enum: RWMode_Tessellated
 [INFO ]  Enum: WriteMode_PrecisionMode
+[INFO ]  Enum: WriteMode_Assembly
 [INFO ]  Enum: WriteMode_StepSchema
 [INFO ]  Enum: WriteMode_VertexMode
 [WARNI]      [TypeHint] Skipping unknown type ReadMode_ProductContext, ReadMode not in module list
@@ -8970,8 +8988,8 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Enum: Transfer_StatusExec
 [INFO ]  Enum: Transfer_StatusResult
 [INFO ]  Enum: Transfer_UndefMode
-[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Transfer_Binder>>
 [WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Transfer_Finder>, opencascade::handle<Transfer_Binder>, Transfer_FindHasher>
+[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Transfer_Binder>>
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
@@ -9272,9 +9290,9 @@ date : 2024-11-18 04:50:36.281880
 [WARNI]      [TypeHint] Skipping type const std::stringstream &, should contain _
 [INFO ]  Class: Message_ProgressSentry
 [INFO ]  ## Processing module NCollection
-[INFO ]  Found HSEQUENCE definition HClassName: _SequenceType_
 [INFO ]  Found HARRAY1 definition HClassName: _Array1Type_
 [INFO ]  Found HARRAY2 definition HClassName: _Array2Type_
+[INFO ]  Found HSEQUENCE definition HClassName: _SequenceType_
 [INFO ]  Enum: NCollection_CellFilter_Action
 [WARNI]  Template ) skipped because name doesn't contain '_'.
 [INFO ]  ## Processing module OSD
@@ -9401,9 +9419,9 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]      operand new cannot be wrapped
 [INFO ]  ## Processing module StdFail
 [INFO ]  ## Processing module Storage
+[INFO ]  Found HARRAY1 definition Storage_HArrayOfCallBack: Storage_ArrayOfCallBack
 [INFO ]  Found HARRAY1 definition Storage_HArrayOfSchema: Storage_ArrayOfSchema
 [INFO ]  Found HARRAY1 definition Storage_HPArray: Storage_PArray
-[INFO ]  Found HARRAY1 definition Storage_HArrayOfCallBack: Storage_ArrayOfCallBack
 [INFO ]  Found HSEQUENCE definition Storage_HSeqOfRoot: Storage_SeqOfRoot
 [INFO ]  Enum: Storage_Error
 [INFO ]  Enum: Storage_OpenMode
@@ -9415,29 +9433,29 @@ date : 2024-11-18 04:50:36.281880
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [INFO ]  ## Processing module TColStd
 [INFO ]  Found HARRAY1 definition TColStd_HArray1OfAsciiString: TColStd_Array1OfAsciiString
-[INFO ]  Found HARRAY2 definition TColStd_HArray2OfInteger: TColStd_Array2OfInteger
-[INFO ]  Found HARRAY1 definition TColStd_HArray1OfByte: TColStd_Array1OfByte
-[INFO ]  Found HARRAY1 definition TColStd_HArray1OfInteger: TColStd_Array1OfInteger
 [INFO ]  Found HARRAY1 definition TColStd_HArray1OfBoolean: TColStd_Array1OfBoolean
-[INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfInteger: TColStd_SequenceOfInteger
-[INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfExtendedString: TColStd_SequenceOfExtendedString
-[INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfTransient: TColStd_SequenceOfTransient
-[INFO ]  Found HARRAY2 definition TColStd_HArray2OfTransient: TColStd_Array2OfTransient
-[INFO ]  Found HARRAY1 definition TColStd_HArray1OfListOfInteger: TColStd_Array1OfListOfInteger
-[INFO ]  Found HARRAY2 definition TColStd_HArray2OfBoolean: TColStd_Array2OfBoolean
-[INFO ]  Found HARRAY1 definition TColStd_HArray1OfTransient: TColStd_Array1OfTransient
-[INFO ]  Found HARRAY2 definition TColStd_HArray2OfReal: TColStd_Array2OfReal
+[INFO ]  Found HARRAY1 definition TColStd_HArray1OfByte: TColStd_Array1OfByte
 [INFO ]  Found HARRAY1 definition TColStd_HArray1OfCharacter: TColStd_Array1OfCharacter
 [INFO ]  Found HARRAY1 definition TColStd_HArray1OfExtendedString: TColStd_Array1OfExtendedString
+[INFO ]  Found HARRAY1 definition TColStd_HArray1OfInteger: TColStd_Array1OfInteger
+[INFO ]  Found HARRAY1 definition TColStd_HArray1OfListOfInteger: TColStd_Array1OfListOfInteger
+[INFO ]  Found HARRAY1 definition TColStd_HArray1OfReal: TColStd_Array1OfReal
+[INFO ]  Found HARRAY1 definition TColStd_HArray1OfTransient: TColStd_Array1OfTransient
+[INFO ]  Found HARRAY2 definition TColStd_HArray2OfBoolean: TColStd_Array2OfBoolean
+[INFO ]  Found HARRAY2 definition TColStd_HArray2OfCharacter: TColStd_Array2OfCharacter
+[INFO ]  Found HARRAY2 definition TColStd_HArray2OfInteger: TColStd_Array2OfInteger
+[INFO ]  Found HARRAY2 definition TColStd_HArray2OfReal: TColStd_Array2OfReal
+[INFO ]  Found HARRAY2 definition TColStd_HArray2OfTransient: TColStd_Array2OfTransient
+[INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfAsciiString: TColStd_SequenceOfAsciiString
+[INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfExtendedString: TColStd_SequenceOfExtendedString
 [INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfHAsciiString: TColStd_SequenceOfHAsciiString
 [INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfHExtendedString: TColStd_SequenceOfHExtendedString
-[INFO ]  Found HARRAY2 definition TColStd_HArray2OfCharacter: TColStd_Array2OfCharacter
+[INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfInteger: TColStd_SequenceOfInteger
 [INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfReal: TColStd_SequenceOfReal
-[INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfAsciiString: TColStd_SequenceOfAsciiString
-[INFO ]  Found HARRAY1 definition TColStd_HArray1OfReal: TColStd_Array1OfReal
-[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>>
+[INFO ]  Found HSEQUENCE definition TColStd_HSequenceOfTransient: TColStd_SequenceOfTransient
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>>
 [WARNI]  This template type cannot be handled: NCollection_DataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>>::Iterator
+[WARNI]  This template type cannot be handled: NCollection_IndexedDataMap<opencascade::handle<Standard_Transient>, opencascade::handle<Standard_Transient>>
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping type opencascade::handle, should contain _
 [WARNI]      [TypeHint] Skipping unknown type int,TColStd_ListOfInteger, int,TColStd not in module list
@@ -9508,9 +9526,9 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: TCollection_HExtendedString
 [INFO ]      [TypeHint] More than 1 constructor, @overload decorator needed.
 [INFO ]  ## Processing module TShort
-[INFO ]  Found HSEQUENCE definition TShort_HSequenceOfShortReal: TShort_SequenceOfShortReal
 [INFO ]  Found HARRAY1 definition TShort_HArray1OfShortReal: TShort_Array1OfShortReal
 [INFO ]  Found HARRAY2 definition TShort_HArray2OfShortReal: TShort_Array2OfShortReal
+[INFO ]  Found HSEQUENCE definition TShort_HSequenceOfShortReal: TShort_SequenceOfShortReal
 [INFO ]  ## Processing module Units
 [INFO ]  Found HSEQUENCE definition Units_QuantitiesSequence: Units_QtsSequence
 [INFO ]  Found HSEQUENCE definition Units_TokensSequence: Units_TksSequence
@@ -9559,7 +9577,7 @@ date : 2024-11-18 04:50:36.281880
 [INFO ]  Class: UnitsMethods
 [INFO ]  
 #################################################
-SWIG interface file generation completed in 18.76s
+SWIG interface file generation completed in 19.96s
 #################################################
 
 [INFO ]  Number of classes: 4747

@@ -95,22 +95,48 @@ from OCC.Core.Exception import *
 %define Handle_Graphic3d_NMapOfTransient Handle(Graphic3d_NMapOfTransient)
 %enddef
 /* public enums */
-enum  {
-	Graphic3d_FrameStatsCounter_NB = Graphic3d_FrameStatsCounter_NbPointsImmediate + 1,
-	Graphic3d_FrameStatsCounter_SCENE_LOWER = Graphic3d_FrameStatsCounter_NbLayers,
-	Graphic3d_FrameStatsCounter_SCENE_UPPER = Graphic3d_FrameStatsCounter_EstimatedBytesTextures,
-	Graphic3d_FrameStatsCounter_RENDERED_LOWER = Graphic3d_FrameStatsCounter_NbLayersNotCulled,
-	Graphic3d_FrameStatsCounter_RENDERED_UPPER = Graphic3d_FrameStatsCounter_NbPointsNotCulled,
-	Graphic3d_FrameStatsCounter_IMMEDIATE_LOWER = Graphic3d_FrameStatsCounter_NbLayersImmediate,
-	Graphic3d_FrameStatsCounter_IMMEDIATE_UPPER = Graphic3d_FrameStatsCounter_NbPointsImmediate,
-};
-
 enum Graphic3d_AlphaMode {
 	Graphic3d_AlphaMode_Opaque = 0,
 	Graphic3d_AlphaMode_Mask = 1,
 	Graphic3d_AlphaMode_Blend = 2,
 	Graphic3d_AlphaMode_MaskBlend = 3,
 	Graphic3d_AlphaMode_BlendAuto = - 1,
+};
+
+enum  {
+	Graphic3d_ArrayFlags_None = 0,
+	Graphic3d_ArrayFlags_VertexNormal = 1,
+	Graphic3d_ArrayFlags_VertexColor = 2,
+	Graphic3d_ArrayFlags_VertexTexel = 4,
+	Graphic3d_ArrayFlags_BoundColor = 16,
+	Graphic3d_ArrayFlags_AttribsMutable = 32,
+	Graphic3d_ArrayFlags_AttribsDeinterleaved = 64,
+	Graphic3d_ArrayFlags_IndexesMutable = 128,
+};
+
+enum Graphic3d_FresnelModel {
+	Graphic3d_FM_SCHLICK = 0,
+	Graphic3d_FM_CONSTANT = 1,
+	Graphic3d_FM_CONDUCTOR = 2,
+	Graphic3d_FM_DIELECTRIC = 3,
+};
+
+enum Graphic3d_TypeOfAttribute {
+	Graphic3d_TOA_POS = 0,
+	Graphic3d_TOA_NORM = 1,
+	Graphic3d_TOA_UV = 2,
+	Graphic3d_TOA_COLOR = 3,
+	Graphic3d_TOA_CUSTOM = 4,
+};
+
+enum Graphic3d_TypeOfData {
+	Graphic3d_TOD_USHORT = 0,
+	Graphic3d_TOD_UINT = 1,
+	Graphic3d_TOD_VEC2 = 2,
+	Graphic3d_TOD_VEC3 = 3,
+	Graphic3d_TOD_VEC4 = 4,
+	Graphic3d_TOD_VEC4UB = 5,
+	Graphic3d_TOD_FLOAT = 6,
 };
 
 enum Graphic3d_BufferType {
@@ -171,6 +197,10 @@ enum Graphic3d_DisplayPriority {
 	Graphic3d_DisplayPriority_Topmost = 10,
 };
 
+enum  {
+	Graphic3d_DisplayPriority_NB = Graphic3d_DisplayPriority_Topmost - Graphic3d_DisplayPriority_Bottom + 1,
+};
+
 enum Graphic3d_FrameStatsCounter {
 	Graphic3d_FrameStatsCounter_NbLayers = 0,
 	Graphic3d_FrameStatsCounter_NbStructs = 1,
@@ -201,6 +231,16 @@ enum Graphic3d_FrameStatsCounter {
 	Graphic3d_FrameStatsCounter_NbPointsImmediate = 26,
 };
 
+enum  {
+	Graphic3d_FrameStatsCounter_NB = Graphic3d_FrameStatsCounter_NbPointsImmediate + 1,
+	Graphic3d_FrameStatsCounter_SCENE_LOWER = Graphic3d_FrameStatsCounter_NbLayers,
+	Graphic3d_FrameStatsCounter_SCENE_UPPER = Graphic3d_FrameStatsCounter_EstimatedBytesTextures,
+	Graphic3d_FrameStatsCounter_RENDERED_LOWER = Graphic3d_FrameStatsCounter_NbLayersNotCulled,
+	Graphic3d_FrameStatsCounter_RENDERED_UPPER = Graphic3d_FrameStatsCounter_NbPointsNotCulled,
+	Graphic3d_FrameStatsCounter_IMMEDIATE_LOWER = Graphic3d_FrameStatsCounter_NbLayersImmediate,
+	Graphic3d_FrameStatsCounter_IMMEDIATE_UPPER = Graphic3d_FrameStatsCounter_NbPointsImmediate,
+};
+
 enum Graphic3d_FrameStatsTimer {
 	Graphic3d_FrameStatsTimer_ElapsedFrame = 0,
 	Graphic3d_FrameStatsTimer_CpuFrame = 1,
@@ -209,18 +249,8 @@ enum Graphic3d_FrameStatsTimer {
 	Graphic3d_FrameStatsTimer_CpuDynamics = 4,
 };
 
-enum Graphic3d_FresnelModel {
-	Graphic3d_FM_SCHLICK = 0,
-	Graphic3d_FM_CONSTANT = 1,
-	Graphic3d_FM_CONDUCTOR = 2,
-	Graphic3d_FM_DIELECTRIC = 3,
-};
-
-enum Graphic3d_GlslExtension {
-	Graphic3d_GlslExtension_GL_OES_standard_derivatives = 0,
-	Graphic3d_GlslExtension_GL_EXT_shader_texture_lod = 1,
-	Graphic3d_GlslExtension_GL_EXT_frag_depth = 2,
-	Graphic3d_GlslExtension_GL_EXT_gpu_shader4 = 3,
+enum  {
+	Graphic3d_FrameStatsTimer_NB = Graphic3d_FrameStatsTimer_CpuDynamics + 1,
 };
 
 enum Graphic3d_GroupAspect {
@@ -382,6 +412,17 @@ enum Graphic3d_ShaderFlags {
 	Graphic3d_ShaderFlags_NeedsGeomShader = Graphic3d_ShaderFlags_MeshEdges,
 };
 
+enum Graphic3d_GlslExtension {
+	Graphic3d_GlslExtension_GL_OES_standard_derivatives = 0,
+	Graphic3d_GlslExtension_GL_EXT_shader_texture_lod = 1,
+	Graphic3d_GlslExtension_GL_EXT_frag_depth = 2,
+	Graphic3d_GlslExtension_GL_EXT_gpu_shader4 = 3,
+};
+
+enum  {
+	Graphic3d_GlslExtension_NB = Graphic3d_GlslExtension_GL_EXT_gpu_shader4 + 1,
+};
+
 enum Graphic3d_StereoMode {
 	Graphic3d_StereoMode_QuadBuffer = 0,
 	Graphic3d_StereoMode_Anaglyph = 1,
@@ -392,6 +433,10 @@ enum Graphic3d_StereoMode {
 	Graphic3d_StereoMode_OverUnder = 6,
 	Graphic3d_StereoMode_SoftPageFlip = 7,
 	Graphic3d_StereoMode_OpenVR = 8,
+};
+
+enum  {
+	Graphic3d_StereoMode_NB = Graphic3d_StereoMode_OpenVR + 1,
 };
 
 enum Graphic3d_TextPath {
@@ -442,6 +487,10 @@ enum Graphic3d_TextureUnit {
 	Graphic3d_TextureUnit_PbrIblSpecular = - 1,
 };
 
+enum  {
+	Graphic3d_TextureUnit_NB = Graphic3d_TextureUnit_15 + 1,
+};
+
 enum Graphic3d_ToneMappingMethod {
 	Graphic3d_ToneMappingMethod_Disabled = 0,
 	Graphic3d_ToneMappingMethod_Filmic = 1,
@@ -461,14 +510,6 @@ enum Graphic3d_TypeOfAnswer {
 	Graphic3d_TOA_YES = 0,
 	Graphic3d_TOA_NO = 1,
 	Graphic3d_TOA_COMPUTE = 2,
-};
-
-enum Graphic3d_TypeOfAttribute {
-	Graphic3d_TOA_POS = 0,
-	Graphic3d_TOA_NORM = 1,
-	Graphic3d_TOA_UV = 2,
-	Graphic3d_TOA_COLOR = 3,
-	Graphic3d_TOA_CUSTOM = 4,
 };
 
 enum Graphic3d_TypeOfBackfacingModel {
@@ -491,19 +532,13 @@ enum Graphic3d_TypeOfBackground {
 	Graphic3d_TOB_CUBEMAP = 3,
 };
 
+enum  {
+	Graphic3d_TypeOfBackground_NB = Graphic3d_TOB_CUBEMAP + 1,
+};
+
 enum Graphic3d_TypeOfConnection {
 	Graphic3d_TOC_ANCESTOR = 0,
 	Graphic3d_TOC_DESCENDANT = 1,
-};
-
-enum Graphic3d_TypeOfData {
-	Graphic3d_TOD_USHORT = 0,
-	Graphic3d_TOD_UINT = 1,
-	Graphic3d_TOD_VEC2 = 2,
-	Graphic3d_TOD_VEC3 = 3,
-	Graphic3d_TOD_VEC4 = 4,
-	Graphic3d_TOD_VEC4UB = 5,
-	Graphic3d_TOD_FLOAT = 6,
 };
 
 enum Graphic3d_TypeOfLightSource {
@@ -519,6 +554,10 @@ enum Graphic3d_TypeOfLightSource {
 	V3d_DIRECTIONAL = Graphic3d_TypeOfLightSource_Directional,
 	V3d_POSITIONAL = Graphic3d_TypeOfLightSource_Positional,
 	V3d_SPOT = Graphic3d_TypeOfLightSource_Spot,
+};
+
+enum  {
+	Graphic3d_TypeOfLightSource_NB = Graphic3d_TypeOfLightSource_Spot + 1,
 };
 
 enum Graphic3d_TypeOfLimit {
@@ -573,6 +612,10 @@ enum Graphic3d_TypeOfReflection {
 	Graphic3d_TOR_EMISSION = 3,
 };
 
+enum  {
+	Graphic3d_TypeOfReflection_NB = 4,
+};
+
 enum Graphic3d_TypeOfShaderObject {
 	Graphic3d_TOS_VERTEX = 1,
 	Graphic3d_TOS_TESS_CONTROL = 2,
@@ -602,6 +645,10 @@ enum Graphic3d_TypeOfShadingModel {
 	V3d_FLAT = Graphic3d_TOSM_FACET,
 	V3d_GOURAUD = Graphic3d_TOSM_VERTEX,
 	V3d_PHONG = Graphic3d_TOSM_FRAGMENT,
+};
+
+enum  {
+	Graphic3d_TypeOfShadingModel_NB = Graphic3d_TypeOfShadingModel_PbrFacet + 1,
 };
 
 enum Graphic3d_TypeOfStructure {
@@ -648,6 +695,15 @@ enum Graphic3d_VerticalTextAlignment {
 	Graphic3d_VTA_TOPFIRSTLINE = 3,
 };
 
+enum  {
+	Graphic3d_ZLayerId_UNKNOWN = - 1,
+	Graphic3d_ZLayerId_Default = 0,
+	Graphic3d_ZLayerId_Top = - 2,
+	Graphic3d_ZLayerId_Topmost = - 3,
+	Graphic3d_ZLayerId_TopOSD = - 4,
+	Graphic3d_ZLayerId_BotOSD = - 5,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
@@ -664,6 +720,44 @@ Graphic3d_AlphaMode_Mask = Graphic3d_AlphaMode.Graphic3d_AlphaMode_Mask
 Graphic3d_AlphaMode_Blend = Graphic3d_AlphaMode.Graphic3d_AlphaMode_Blend
 Graphic3d_AlphaMode_MaskBlend = Graphic3d_AlphaMode.Graphic3d_AlphaMode_MaskBlend
 Graphic3d_AlphaMode_BlendAuto = Graphic3d_AlphaMode.Graphic3d_AlphaMode_BlendAuto
+
+class Graphic3d_FresnelModel(IntEnum):
+	Graphic3d_FM_SCHLICK = 0
+	Graphic3d_FM_CONSTANT = 1
+	Graphic3d_FM_CONDUCTOR = 2
+	Graphic3d_FM_DIELECTRIC = 3
+Graphic3d_FM_SCHLICK = Graphic3d_FresnelModel.Graphic3d_FM_SCHLICK
+Graphic3d_FM_CONSTANT = Graphic3d_FresnelModel.Graphic3d_FM_CONSTANT
+Graphic3d_FM_CONDUCTOR = Graphic3d_FresnelModel.Graphic3d_FM_CONDUCTOR
+Graphic3d_FM_DIELECTRIC = Graphic3d_FresnelModel.Graphic3d_FM_DIELECTRIC
+
+class Graphic3d_TypeOfAttribute(IntEnum):
+	Graphic3d_TOA_POS = 0
+	Graphic3d_TOA_NORM = 1
+	Graphic3d_TOA_UV = 2
+	Graphic3d_TOA_COLOR = 3
+	Graphic3d_TOA_CUSTOM = 4
+Graphic3d_TOA_POS = Graphic3d_TypeOfAttribute.Graphic3d_TOA_POS
+Graphic3d_TOA_NORM = Graphic3d_TypeOfAttribute.Graphic3d_TOA_NORM
+Graphic3d_TOA_UV = Graphic3d_TypeOfAttribute.Graphic3d_TOA_UV
+Graphic3d_TOA_COLOR = Graphic3d_TypeOfAttribute.Graphic3d_TOA_COLOR
+Graphic3d_TOA_CUSTOM = Graphic3d_TypeOfAttribute.Graphic3d_TOA_CUSTOM
+
+class Graphic3d_TypeOfData(IntEnum):
+	Graphic3d_TOD_USHORT = 0
+	Graphic3d_TOD_UINT = 1
+	Graphic3d_TOD_VEC2 = 2
+	Graphic3d_TOD_VEC3 = 3
+	Graphic3d_TOD_VEC4 = 4
+	Graphic3d_TOD_VEC4UB = 5
+	Graphic3d_TOD_FLOAT = 6
+Graphic3d_TOD_USHORT = Graphic3d_TypeOfData.Graphic3d_TOD_USHORT
+Graphic3d_TOD_UINT = Graphic3d_TypeOfData.Graphic3d_TOD_UINT
+Graphic3d_TOD_VEC2 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC2
+Graphic3d_TOD_VEC3 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC3
+Graphic3d_TOD_VEC4 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC4
+Graphic3d_TOD_VEC4UB = Graphic3d_TypeOfData.Graphic3d_TOD_VEC4UB
+Graphic3d_TOD_FLOAT = Graphic3d_TypeOfData.Graphic3d_TOD_FLOAT
 
 class Graphic3d_BufferType(IntEnum):
 	Graphic3d_BT_RGB = 0
@@ -824,26 +918,6 @@ Graphic3d_FrameStatsTimer_CpuFrame = Graphic3d_FrameStatsTimer.Graphic3d_FrameSt
 Graphic3d_FrameStatsTimer_CpuCulling = Graphic3d_FrameStatsTimer.Graphic3d_FrameStatsTimer_CpuCulling
 Graphic3d_FrameStatsTimer_CpuPicking = Graphic3d_FrameStatsTimer.Graphic3d_FrameStatsTimer_CpuPicking
 Graphic3d_FrameStatsTimer_CpuDynamics = Graphic3d_FrameStatsTimer.Graphic3d_FrameStatsTimer_CpuDynamics
-
-class Graphic3d_FresnelModel(IntEnum):
-	Graphic3d_FM_SCHLICK = 0
-	Graphic3d_FM_CONSTANT = 1
-	Graphic3d_FM_CONDUCTOR = 2
-	Graphic3d_FM_DIELECTRIC = 3
-Graphic3d_FM_SCHLICK = Graphic3d_FresnelModel.Graphic3d_FM_SCHLICK
-Graphic3d_FM_CONSTANT = Graphic3d_FresnelModel.Graphic3d_FM_CONSTANT
-Graphic3d_FM_CONDUCTOR = Graphic3d_FresnelModel.Graphic3d_FM_CONDUCTOR
-Graphic3d_FM_DIELECTRIC = Graphic3d_FresnelModel.Graphic3d_FM_DIELECTRIC
-
-class Graphic3d_GlslExtension(IntEnum):
-	Graphic3d_GlslExtension_GL_OES_standard_derivatives = 0
-	Graphic3d_GlslExtension_GL_EXT_shader_texture_lod = 1
-	Graphic3d_GlslExtension_GL_EXT_frag_depth = 2
-	Graphic3d_GlslExtension_GL_EXT_gpu_shader4 = 3
-Graphic3d_GlslExtension_GL_OES_standard_derivatives = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_OES_standard_derivatives
-Graphic3d_GlslExtension_GL_EXT_shader_texture_lod = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_shader_texture_lod
-Graphic3d_GlslExtension_GL_EXT_frag_depth = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_frag_depth
-Graphic3d_GlslExtension_GL_EXT_gpu_shader4 = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_gpu_shader4
 
 class Graphic3d_GroupAspect(IntEnum):
 	Graphic3d_ASPECT_LINE = 0
@@ -1119,6 +1193,16 @@ Graphic3d_ShaderFlags_IsPoint = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_IsPo
 Graphic3d_ShaderFlags_HasTextures = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_HasTextures
 Graphic3d_ShaderFlags_NeedsGeomShader = Graphic3d_ShaderFlags.Graphic3d_ShaderFlags_NeedsGeomShader
 
+class Graphic3d_GlslExtension(IntEnum):
+	Graphic3d_GlslExtension_GL_OES_standard_derivatives = 0
+	Graphic3d_GlslExtension_GL_EXT_shader_texture_lod = 1
+	Graphic3d_GlslExtension_GL_EXT_frag_depth = 2
+	Graphic3d_GlslExtension_GL_EXT_gpu_shader4 = 3
+Graphic3d_GlslExtension_GL_OES_standard_derivatives = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_OES_standard_derivatives
+Graphic3d_GlslExtension_GL_EXT_shader_texture_lod = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_shader_texture_lod
+Graphic3d_GlslExtension_GL_EXT_frag_depth = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_frag_depth
+Graphic3d_GlslExtension_GL_EXT_gpu_shader4 = Graphic3d_GlslExtension.Graphic3d_GlslExtension_GL_EXT_gpu_shader4
+
 class Graphic3d_StereoMode(IntEnum):
 	Graphic3d_StereoMode_QuadBuffer = 0
 	Graphic3d_StereoMode_Anaglyph = 1
@@ -1253,18 +1337,6 @@ Graphic3d_TOA_YES = Graphic3d_TypeOfAnswer.Graphic3d_TOA_YES
 Graphic3d_TOA_NO = Graphic3d_TypeOfAnswer.Graphic3d_TOA_NO
 Graphic3d_TOA_COMPUTE = Graphic3d_TypeOfAnswer.Graphic3d_TOA_COMPUTE
 
-class Graphic3d_TypeOfAttribute(IntEnum):
-	Graphic3d_TOA_POS = 0
-	Graphic3d_TOA_NORM = 1
-	Graphic3d_TOA_UV = 2
-	Graphic3d_TOA_COLOR = 3
-	Graphic3d_TOA_CUSTOM = 4
-Graphic3d_TOA_POS = Graphic3d_TypeOfAttribute.Graphic3d_TOA_POS
-Graphic3d_TOA_NORM = Graphic3d_TypeOfAttribute.Graphic3d_TOA_NORM
-Graphic3d_TOA_UV = Graphic3d_TypeOfAttribute.Graphic3d_TOA_UV
-Graphic3d_TOA_COLOR = Graphic3d_TypeOfAttribute.Graphic3d_TOA_COLOR
-Graphic3d_TOA_CUSTOM = Graphic3d_TypeOfAttribute.Graphic3d_TOA_CUSTOM
-
 class Graphic3d_TypeOfBackfacingModel(IntEnum):
 	Graphic3d_TypeOfBackfacingModel_Auto = 0
 	Graphic3d_TypeOfBackfacingModel_DoubleSided = 1
@@ -1302,22 +1374,6 @@ class Graphic3d_TypeOfConnection(IntEnum):
 	Graphic3d_TOC_DESCENDANT = 1
 Graphic3d_TOC_ANCESTOR = Graphic3d_TypeOfConnection.Graphic3d_TOC_ANCESTOR
 Graphic3d_TOC_DESCENDANT = Graphic3d_TypeOfConnection.Graphic3d_TOC_DESCENDANT
-
-class Graphic3d_TypeOfData(IntEnum):
-	Graphic3d_TOD_USHORT = 0
-	Graphic3d_TOD_UINT = 1
-	Graphic3d_TOD_VEC2 = 2
-	Graphic3d_TOD_VEC3 = 3
-	Graphic3d_TOD_VEC4 = 4
-	Graphic3d_TOD_VEC4UB = 5
-	Graphic3d_TOD_FLOAT = 6
-Graphic3d_TOD_USHORT = Graphic3d_TypeOfData.Graphic3d_TOD_USHORT
-Graphic3d_TOD_UINT = Graphic3d_TypeOfData.Graphic3d_TOD_UINT
-Graphic3d_TOD_VEC2 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC2
-Graphic3d_TOD_VEC3 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC3
-Graphic3d_TOD_VEC4 = Graphic3d_TypeOfData.Graphic3d_TOD_VEC4
-Graphic3d_TOD_VEC4UB = Graphic3d_TypeOfData.Graphic3d_TOD_VEC4UB
-Graphic3d_TOD_FLOAT = Graphic3d_TypeOfData.Graphic3d_TOD_FLOAT
 
 class Graphic3d_TypeOfLightSource(IntEnum):
 	Graphic3d_TypeOfLightSource_Ambient = 0
@@ -6763,16 +6819,12 @@ class Graphic3d_Camera : public Standard_Transient {
 	public:
 		class TransformMatrices {};
 /* public enums */
-enum  {
-	FrustumVert_LeftBottomNear = 0,
-	FrustumVert_LeftBottomFar = 1,
-	FrustumVert_LeftTopNear = 2,
-	FrustumVert_LeftTopFar = 3,
-	FrustumVert_RightBottomNear = 4,
-	FrustumVert_RightBottomFar = 5,
-	FrustumVert_RightTopNear = 6,
-	FrustumVert_RightTopFar = 7,
-	FrustumVerticesNB = 8,
+enum Projection {
+	Projection_Orthographic = 0,
+	Projection_Perspective = 1,
+	Projection_Stereo = 2,
+	Projection_MonoLeftEye = 3,
+	Projection_MonoRightEye = 4,
 };
 
 enum FocusType {
@@ -6785,30 +6837,22 @@ enum IODType {
 	IODType_Relative = 1,
 };
 
-enum Projection {
-	Projection_Orthographic = 0,
-	Projection_Perspective = 1,
-	Projection_Stereo = 2,
-	Projection_MonoLeftEye = 3,
-	Projection_MonoRightEye = 4,
+enum  {
+	FrustumVert_LeftBottomNear = 0,
+	FrustumVert_LeftBottomFar = 1,
+	FrustumVert_LeftTopNear = 2,
+	FrustumVert_LeftTopFar = 3,
+	FrustumVert_RightBottomNear = 4,
+	FrustumVert_RightBottomFar = 5,
+	FrustumVert_RightTopNear = 6,
+	FrustumVert_RightTopFar = 7,
+	FrustumVerticesNB = 8,
 };
 
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class FocusType(IntEnum):
-	FocusType_Absolute = 0
-	FocusType_Relative = 1
-FocusType_Absolute = FocusType.FocusType_Absolute
-FocusType_Relative = FocusType.FocusType_Relative
-
-class IODType(IntEnum):
-	IODType_Absolute = 0
-	IODType_Relative = 1
-IODType_Absolute = IODType.IODType_Absolute
-IODType_Relative = IODType.IODType_Relative
 
 class Projection(IntEnum):
 	Projection_Orthographic = 0
@@ -6821,6 +6865,18 @@ Projection_Perspective = Projection.Projection_Perspective
 Projection_Stereo = Projection.Projection_Stereo
 Projection_MonoLeftEye = Projection.Projection_MonoLeftEye
 Projection_MonoRightEye = Projection.Projection_MonoRightEye
+
+class FocusType(IntEnum):
+	FocusType_Absolute = 0
+	FocusType_Relative = 1
+FocusType_Absolute = FocusType.FocusType_Absolute
+FocusType_Relative = FocusType.FocusType_Relative
+
+class IODType(IntEnum):
+	IODType_Absolute = 0
+	IODType_Relative = 1
+IODType_Absolute = IODType.IODType_Absolute
+IODType_Relative = IODType.IODType_Relative
 };
 /* end python proxy for enums */
 
@@ -14326,12 +14382,6 @@ enum Anaglyph {
 	Anaglyph_UserDefined = 5,
 };
 
-enum FrustumCulling {
-	FrustumCulling_Off = 0,
-	FrustumCulling_On = 1,
-	FrustumCulling_NoUpdate = 2,
-};
-
 enum PerfCounters {
 	PerfCounters_NONE = 0,
 	PerfCounters_FrameRate = 1,
@@ -14352,6 +14402,12 @@ enum PerfCounters {
 	PerfCounters_All = PerfCounters_Extended | PerfCounters_FrameTime | PerfCounters_FrameTimeMax,
 };
 
+enum FrustumCulling {
+	FrustumCulling_Off = 0,
+	FrustumCulling_On = 1,
+	FrustumCulling_NoUpdate = 2,
+};
+
 /* end public enums declaration */
 
 /* python proxy classes for enums */
@@ -14370,14 +14426,6 @@ Anaglyph_YellowBlue_Simple = Anaglyph.Anaglyph_YellowBlue_Simple
 Anaglyph_YellowBlue_Optimized = Anaglyph.Anaglyph_YellowBlue_Optimized
 Anaglyph_GreenMagenta_Simple = Anaglyph.Anaglyph_GreenMagenta_Simple
 Anaglyph_UserDefined = Anaglyph.Anaglyph_UserDefined
-
-class FrustumCulling(IntEnum):
-	FrustumCulling_Off = 0
-	FrustumCulling_On = 1
-	FrustumCulling_NoUpdate = 2
-FrustumCulling_Off = FrustumCulling.FrustumCulling_Off
-FrustumCulling_On = FrustumCulling.FrustumCulling_On
-FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 
 class PerfCounters(IntEnum):
 	PerfCounters_NONE = 0
@@ -14414,6 +14462,14 @@ PerfCounters_SkipImmediate = PerfCounters.PerfCounters_SkipImmediate
 PerfCounters_Basic = PerfCounters.PerfCounters_Basic
 PerfCounters_Extended = PerfCounters.PerfCounters_Extended
 PerfCounters_All = PerfCounters.PerfCounters_All
+
+class FrustumCulling(IntEnum):
+	FrustumCulling_Off = 0
+	FrustumCulling_On = 1
+	FrustumCulling_NoUpdate = 2
+FrustumCulling_Off = FrustumCulling.FrustumCulling_Off
+FrustumCulling_On = FrustumCulling.FrustumCulling_On
+FrustumCulling_NoUpdate = FrustumCulling.FrustumCulling_NoUpdate
 };
 /* end python proxy for enums */
 

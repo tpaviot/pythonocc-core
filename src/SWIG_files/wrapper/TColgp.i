@@ -91,34 +91,34 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
-%wrap_handle(TColgp_HArray1OfDir2d)
-%wrap_handle(TColgp_HArray1OfVec)
 %wrap_handle(TColgp_HArray1OfCirc2d)
-%wrap_handle(TColgp_HArray1OfXYZ)
-%wrap_handle(TColgp_HArray1OfPnt)
-%wrap_handle(TColgp_HArray1OfLin2d)
 %wrap_handle(TColgp_HArray1OfDir)
+%wrap_handle(TColgp_HArray1OfDir2d)
+%wrap_handle(TColgp_HArray1OfLin2d)
+%wrap_handle(TColgp_HArray1OfPnt)
 %wrap_handle(TColgp_HArray1OfPnt2d)
+%wrap_handle(TColgp_HArray1OfVec)
 %wrap_handle(TColgp_HArray1OfVec2d)
 %wrap_handle(TColgp_HArray1OfXY)
+%wrap_handle(TColgp_HArray1OfXYZ)
 %wrap_handle(TColgp_HArray2OfCirc2d)
 %wrap_handle(TColgp_HArray2OfDir)
-%wrap_handle(TColgp_HArray2OfPnt)
+%wrap_handle(TColgp_HArray2OfDir2d)
 %wrap_handle(TColgp_HArray2OfLin2d)
-%wrap_handle(TColgp_HArray2OfVec2d)
+%wrap_handle(TColgp_HArray2OfPnt)
 %wrap_handle(TColgp_HArray2OfPnt2d)
 %wrap_handle(TColgp_HArray2OfVec)
-%wrap_handle(TColgp_HArray2OfXYZ)
-%wrap_handle(TColgp_HArray2OfDir2d)
+%wrap_handle(TColgp_HArray2OfVec2d)
 %wrap_handle(TColgp_HArray2OfXY)
-%wrap_handle(TColgp_HSequenceOfXYZ)
+%wrap_handle(TColgp_HArray2OfXYZ)
+%wrap_handle(TColgp_HSequenceOfDir)
+%wrap_handle(TColgp_HSequenceOfDir2d)
 %wrap_handle(TColgp_HSequenceOfPnt)
 %wrap_handle(TColgp_HSequenceOfPnt2d)
-%wrap_handle(TColgp_HSequenceOfXY)
 %wrap_handle(TColgp_HSequenceOfVec)
 %wrap_handle(TColgp_HSequenceOfVec2d)
-%wrap_handle(TColgp_HSequenceOfDir2d)
-%wrap_handle(TColgp_HSequenceOfDir)
+%wrap_handle(TColgp_HSequenceOfXY)
+%wrap_handle(TColgp_HSequenceOfXYZ)
 /* end handles declaration */
 
 /* templates */
@@ -295,28 +295,6 @@ typedef NCollection_Sequence<gp_XYZ> TColgp_SequenceOfXYZ;
 
 /* harray1 classes */
 
-class TColgp_HArray1OfDir2d : public TColgp_Array1OfDir2d, public Standard_Transient {
-  public:
-    TColgp_HArray1OfDir2d(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfDir2d(const Standard_Integer theLower, const Standard_Integer theUpper, const TColgp_Array1OfDir2d::value_type& theValue);
-    TColgp_HArray1OfDir2d(const TColgp_Array1OfDir2d& theOther);
-    const TColgp_Array1OfDir2d& Array1();
-    TColgp_Array1OfDir2d& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfDir2d)
-
-
-class TColgp_HArray1OfVec : public TColgp_Array1OfVec, public Standard_Transient {
-  public:
-    TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper, const TColgp_Array1OfVec::value_type& theValue);
-    TColgp_HArray1OfVec(const TColgp_Array1OfVec& theOther);
-    const TColgp_Array1OfVec& Array1();
-    TColgp_Array1OfVec& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfVec)
-
-
 class TColgp_HArray1OfCirc2d : public TColgp_Array1OfCirc2d, public Standard_Transient {
   public:
     TColgp_HArray1OfCirc2d(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -326,39 +304,6 @@ class TColgp_HArray1OfCirc2d : public TColgp_Array1OfCirc2d, public Standard_Tra
     TColgp_Array1OfCirc2d& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfCirc2d)
-
-
-class TColgp_HArray1OfXYZ : public TColgp_Array1OfXYZ, public Standard_Transient {
-  public:
-    TColgp_HArray1OfXYZ(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfXYZ(const Standard_Integer theLower, const Standard_Integer theUpper, const TColgp_Array1OfXYZ::value_type& theValue);
-    TColgp_HArray1OfXYZ(const TColgp_Array1OfXYZ& theOther);
-    const TColgp_Array1OfXYZ& Array1();
-    TColgp_Array1OfXYZ& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfXYZ)
-
-
-class TColgp_HArray1OfPnt : public TColgp_Array1OfPnt, public Standard_Transient {
-  public:
-    TColgp_HArray1OfPnt(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfPnt(const Standard_Integer theLower, const Standard_Integer theUpper, const TColgp_Array1OfPnt::value_type& theValue);
-    TColgp_HArray1OfPnt(const TColgp_Array1OfPnt& theOther);
-    const TColgp_Array1OfPnt& Array1();
-    TColgp_Array1OfPnt& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfPnt)
-
-
-class TColgp_HArray1OfLin2d : public TColgp_Array1OfLin2d, public Standard_Transient {
-  public:
-    TColgp_HArray1OfLin2d(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColgp_HArray1OfLin2d(const Standard_Integer theLower, const Standard_Integer theUpper, const TColgp_Array1OfLin2d::value_type& theValue);
-    TColgp_HArray1OfLin2d(const TColgp_Array1OfLin2d& theOther);
-    const TColgp_Array1OfLin2d& Array1();
-    TColgp_Array1OfLin2d& ChangeArray1();
-};
-%make_alias(TColgp_HArray1OfLin2d)
 
 
 class TColgp_HArray1OfDir : public TColgp_Array1OfDir, public Standard_Transient {
@@ -372,6 +317,39 @@ class TColgp_HArray1OfDir : public TColgp_Array1OfDir, public Standard_Transient
 %make_alias(TColgp_HArray1OfDir)
 
 
+class TColgp_HArray1OfDir2d : public TColgp_Array1OfDir2d, public Standard_Transient {
+  public:
+    TColgp_HArray1OfDir2d(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfDir2d(const Standard_Integer theLower, const Standard_Integer theUpper, const TColgp_Array1OfDir2d::value_type& theValue);
+    TColgp_HArray1OfDir2d(const TColgp_Array1OfDir2d& theOther);
+    const TColgp_Array1OfDir2d& Array1();
+    TColgp_Array1OfDir2d& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfDir2d)
+
+
+class TColgp_HArray1OfLin2d : public TColgp_Array1OfLin2d, public Standard_Transient {
+  public:
+    TColgp_HArray1OfLin2d(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfLin2d(const Standard_Integer theLower, const Standard_Integer theUpper, const TColgp_Array1OfLin2d::value_type& theValue);
+    TColgp_HArray1OfLin2d(const TColgp_Array1OfLin2d& theOther);
+    const TColgp_Array1OfLin2d& Array1();
+    TColgp_Array1OfLin2d& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfLin2d)
+
+
+class TColgp_HArray1OfPnt : public TColgp_Array1OfPnt, public Standard_Transient {
+  public:
+    TColgp_HArray1OfPnt(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfPnt(const Standard_Integer theLower, const Standard_Integer theUpper, const TColgp_Array1OfPnt::value_type& theValue);
+    TColgp_HArray1OfPnt(const TColgp_Array1OfPnt& theOther);
+    const TColgp_Array1OfPnt& Array1();
+    TColgp_Array1OfPnt& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfPnt)
+
+
 class TColgp_HArray1OfPnt2d : public TColgp_Array1OfPnt2d, public Standard_Transient {
   public:
     TColgp_HArray1OfPnt2d(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -381,6 +359,17 @@ class TColgp_HArray1OfPnt2d : public TColgp_Array1OfPnt2d, public Standard_Trans
     TColgp_Array1OfPnt2d& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfPnt2d)
+
+
+class TColgp_HArray1OfVec : public TColgp_Array1OfVec, public Standard_Transient {
+  public:
+    TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfVec(const Standard_Integer theLower, const Standard_Integer theUpper, const TColgp_Array1OfVec::value_type& theValue);
+    TColgp_HArray1OfVec(const TColgp_Array1OfVec& theOther);
+    const TColgp_Array1OfVec& Array1();
+    TColgp_Array1OfVec& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfVec)
 
 
 class TColgp_HArray1OfVec2d : public TColgp_Array1OfVec2d, public Standard_Transient {
@@ -403,6 +392,17 @@ class TColgp_HArray1OfXY : public TColgp_Array1OfXY, public Standard_Transient {
     TColgp_Array1OfXY& ChangeArray1();
 };
 %make_alias(TColgp_HArray1OfXY)
+
+
+class TColgp_HArray1OfXYZ : public TColgp_Array1OfXYZ, public Standard_Transient {
+  public:
+    TColgp_HArray1OfXYZ(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColgp_HArray1OfXYZ(const Standard_Integer theLower, const Standard_Integer theUpper, const TColgp_Array1OfXYZ::value_type& theValue);
+    TColgp_HArray1OfXYZ(const TColgp_Array1OfXYZ& theOther);
+    const TColgp_Array1OfXYZ& Array1();
+    TColgp_Array1OfXYZ& ChangeArray1();
+};
+%make_alias(TColgp_HArray1OfXYZ)
 
 /* harray2 classes */
 class TColgp_HArray2OfCirc2d : public TColgp_Array2OfCirc2d, public Standard_Transient {
@@ -431,17 +431,17 @@ class TColgp_HArray2OfDir : public TColgp_Array2OfDir, public Standard_Transient
 %make_alias(TColgp_HArray2OfDir)
 
 
-class TColgp_HArray2OfPnt : public TColgp_Array2OfPnt, public Standard_Transient {
+class TColgp_HArray2OfDir2d : public TColgp_Array2OfDir2d, public Standard_Transient {
   public:
-    TColgp_HArray2OfPnt(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+    TColgp_HArray2OfDir2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
-    TColgp_HArray2OfPnt(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const TColgp_Array2OfPnt::value_type& theValue);
-    TColgp_HArray2OfPnt(const TColgp_Array2OfPnt& theOther);
-    const TColgp_Array2OfPnt& Array2 ();
-    TColgp_Array2OfPnt& ChangeArray2 (); 
+    TColgp_HArray2OfDir2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const TColgp_Array2OfDir2d::value_type& theValue);
+    TColgp_HArray2OfDir2d(const TColgp_Array2OfDir2d& theOther);
+    const TColgp_Array2OfDir2d& Array2 ();
+    TColgp_Array2OfDir2d& ChangeArray2 (); 
 };
-%make_alias(TColgp_HArray2OfPnt)
+%make_alias(TColgp_HArray2OfDir2d)
 
 
 class TColgp_HArray2OfLin2d : public TColgp_Array2OfLin2d, public Standard_Transient {
@@ -457,17 +457,17 @@ class TColgp_HArray2OfLin2d : public TColgp_Array2OfLin2d, public Standard_Trans
 %make_alias(TColgp_HArray2OfLin2d)
 
 
-class TColgp_HArray2OfVec2d : public TColgp_Array2OfVec2d, public Standard_Transient {
+class TColgp_HArray2OfPnt : public TColgp_Array2OfPnt, public Standard_Transient {
   public:
-    TColgp_HArray2OfVec2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+    TColgp_HArray2OfPnt(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
-    TColgp_HArray2OfVec2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const TColgp_Array2OfVec2d::value_type& theValue);
-    TColgp_HArray2OfVec2d(const TColgp_Array2OfVec2d& theOther);
-    const TColgp_Array2OfVec2d& Array2 ();
-    TColgp_Array2OfVec2d& ChangeArray2 (); 
+    TColgp_HArray2OfPnt(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const TColgp_Array2OfPnt::value_type& theValue);
+    TColgp_HArray2OfPnt(const TColgp_Array2OfPnt& theOther);
+    const TColgp_Array2OfPnt& Array2 ();
+    TColgp_Array2OfPnt& ChangeArray2 (); 
 };
-%make_alias(TColgp_HArray2OfVec2d)
+%make_alias(TColgp_HArray2OfPnt)
 
 
 class TColgp_HArray2OfPnt2d : public TColgp_Array2OfPnt2d, public Standard_Transient {
@@ -496,30 +496,17 @@ class TColgp_HArray2OfVec : public TColgp_Array2OfVec, public Standard_Transient
 %make_alias(TColgp_HArray2OfVec)
 
 
-class TColgp_HArray2OfXYZ : public TColgp_Array2OfXYZ, public Standard_Transient {
+class TColgp_HArray2OfVec2d : public TColgp_Array2OfVec2d, public Standard_Transient {
   public:
-    TColgp_HArray2OfXYZ(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+    TColgp_HArray2OfVec2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
                 const Standard_Integer theColUpp);
-    TColgp_HArray2OfXYZ(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const TColgp_Array2OfXYZ::value_type& theValue);
-    TColgp_HArray2OfXYZ(const TColgp_Array2OfXYZ& theOther);
-    const TColgp_Array2OfXYZ& Array2 ();
-    TColgp_Array2OfXYZ& ChangeArray2 (); 
+    TColgp_HArray2OfVec2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const TColgp_Array2OfVec2d::value_type& theValue);
+    TColgp_HArray2OfVec2d(const TColgp_Array2OfVec2d& theOther);
+    const TColgp_Array2OfVec2d& Array2 ();
+    TColgp_Array2OfVec2d& ChangeArray2 (); 
 };
-%make_alias(TColgp_HArray2OfXYZ)
-
-
-class TColgp_HArray2OfDir2d : public TColgp_Array2OfDir2d, public Standard_Transient {
-  public:
-    TColgp_HArray2OfDir2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-                const Standard_Integer theColUpp);
-    TColgp_HArray2OfDir2d(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
-               const Standard_Integer theColUpp, const TColgp_Array2OfDir2d::value_type& theValue);
-    TColgp_HArray2OfDir2d(const TColgp_Array2OfDir2d& theOther);
-    const TColgp_Array2OfDir2d& Array2 ();
-    TColgp_Array2OfDir2d& ChangeArray2 (); 
-};
-%make_alias(TColgp_HArray2OfDir2d)
+%make_alias(TColgp_HArray2OfVec2d)
 
 
 class TColgp_HArray2OfXY : public TColgp_Array2OfXY, public Standard_Transient {
@@ -535,17 +522,42 @@ class TColgp_HArray2OfXY : public TColgp_Array2OfXY, public Standard_Transient {
 %make_alias(TColgp_HArray2OfXY)
 
 
-/* hsequence classes */
-class TColgp_HSequenceOfXYZ : public TColgp_SequenceOfXYZ, public Standard_Transient {
+class TColgp_HArray2OfXYZ : public TColgp_Array2OfXYZ, public Standard_Transient {
   public:
-    TColgp_HSequenceOfXYZ();
-    TColgp_HSequenceOfXYZ(const TColgp_SequenceOfXYZ& theOther);
-    const TColgp_SequenceOfXYZ& Sequence();
-    void Append (const TColgp_SequenceOfXYZ::value_type& theItem);
-    void Append (TColgp_SequenceOfXYZ& theSequence);
-    TColgp_SequenceOfXYZ& ChangeSequence();
+    TColgp_HArray2OfXYZ(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+                const Standard_Integer theColUpp);
+    TColgp_HArray2OfXYZ(const Standard_Integer theRowLow, const Standard_Integer theRowUpp, const Standard_Integer theColLow,
+               const Standard_Integer theColUpp, const TColgp_Array2OfXYZ::value_type& theValue);
+    TColgp_HArray2OfXYZ(const TColgp_Array2OfXYZ& theOther);
+    const TColgp_Array2OfXYZ& Array2 ();
+    TColgp_Array2OfXYZ& ChangeArray2 (); 
 };
-%make_alias(TColgp_HSequenceOfXYZ)
+%make_alias(TColgp_HArray2OfXYZ)
+
+
+/* hsequence classes */
+class TColgp_HSequenceOfDir : public TColgp_SequenceOfDir, public Standard_Transient {
+  public:
+    TColgp_HSequenceOfDir();
+    TColgp_HSequenceOfDir(const TColgp_SequenceOfDir& theOther);
+    const TColgp_SequenceOfDir& Sequence();
+    void Append (const TColgp_SequenceOfDir::value_type& theItem);
+    void Append (TColgp_SequenceOfDir& theSequence);
+    TColgp_SequenceOfDir& ChangeSequence();
+};
+%make_alias(TColgp_HSequenceOfDir)
+
+
+class TColgp_HSequenceOfDir2d : public TColgp_SequenceOfDir2d, public Standard_Transient {
+  public:
+    TColgp_HSequenceOfDir2d();
+    TColgp_HSequenceOfDir2d(const TColgp_SequenceOfDir2d& theOther);
+    const TColgp_SequenceOfDir2d& Sequence();
+    void Append (const TColgp_SequenceOfDir2d::value_type& theItem);
+    void Append (TColgp_SequenceOfDir2d& theSequence);
+    TColgp_SequenceOfDir2d& ChangeSequence();
+};
+%make_alias(TColgp_HSequenceOfDir2d)
 
 
 class TColgp_HSequenceOfPnt : public TColgp_SequenceOfPnt, public Standard_Transient {
@@ -572,18 +584,6 @@ class TColgp_HSequenceOfPnt2d : public TColgp_SequenceOfPnt2d, public Standard_T
 %make_alias(TColgp_HSequenceOfPnt2d)
 
 
-class TColgp_HSequenceOfXY : public TColgp_SequenceOfXY, public Standard_Transient {
-  public:
-    TColgp_HSequenceOfXY();
-    TColgp_HSequenceOfXY(const TColgp_SequenceOfXY& theOther);
-    const TColgp_SequenceOfXY& Sequence();
-    void Append (const TColgp_SequenceOfXY::value_type& theItem);
-    void Append (TColgp_SequenceOfXY& theSequence);
-    TColgp_SequenceOfXY& ChangeSequence();
-};
-%make_alias(TColgp_HSequenceOfXY)
-
-
 class TColgp_HSequenceOfVec : public TColgp_SequenceOfVec, public Standard_Transient {
   public:
     TColgp_HSequenceOfVec();
@@ -608,28 +608,28 @@ class TColgp_HSequenceOfVec2d : public TColgp_SequenceOfVec2d, public Standard_T
 %make_alias(TColgp_HSequenceOfVec2d)
 
 
-class TColgp_HSequenceOfDir2d : public TColgp_SequenceOfDir2d, public Standard_Transient {
+class TColgp_HSequenceOfXY : public TColgp_SequenceOfXY, public Standard_Transient {
   public:
-    TColgp_HSequenceOfDir2d();
-    TColgp_HSequenceOfDir2d(const TColgp_SequenceOfDir2d& theOther);
-    const TColgp_SequenceOfDir2d& Sequence();
-    void Append (const TColgp_SequenceOfDir2d::value_type& theItem);
-    void Append (TColgp_SequenceOfDir2d& theSequence);
-    TColgp_SequenceOfDir2d& ChangeSequence();
+    TColgp_HSequenceOfXY();
+    TColgp_HSequenceOfXY(const TColgp_SequenceOfXY& theOther);
+    const TColgp_SequenceOfXY& Sequence();
+    void Append (const TColgp_SequenceOfXY::value_type& theItem);
+    void Append (TColgp_SequenceOfXY& theSequence);
+    TColgp_SequenceOfXY& ChangeSequence();
 };
-%make_alias(TColgp_HSequenceOfDir2d)
+%make_alias(TColgp_HSequenceOfXY)
 
 
-class TColgp_HSequenceOfDir : public TColgp_SequenceOfDir, public Standard_Transient {
+class TColgp_HSequenceOfXYZ : public TColgp_SequenceOfXYZ, public Standard_Transient {
   public:
-    TColgp_HSequenceOfDir();
-    TColgp_HSequenceOfDir(const TColgp_SequenceOfDir& theOther);
-    const TColgp_SequenceOfDir& Sequence();
-    void Append (const TColgp_SequenceOfDir::value_type& theItem);
-    void Append (TColgp_SequenceOfDir& theSequence);
-    TColgp_SequenceOfDir& ChangeSequence();
+    TColgp_HSequenceOfXYZ();
+    TColgp_HSequenceOfXYZ(const TColgp_SequenceOfXYZ& theOther);
+    const TColgp_SequenceOfXYZ& Sequence();
+    void Append (const TColgp_SequenceOfXYZ::value_type& theItem);
+    void Append (TColgp_SequenceOfXYZ& theSequence);
+    TColgp_SequenceOfXYZ& ChangeSequence();
 };
-%make_alias(TColgp_HSequenceOfDir)
+%make_alias(TColgp_HSequenceOfXYZ)
 
 
 /* class aliases */

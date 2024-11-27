@@ -115,11 +115,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum  {
-	AIS_RotationMode_LOWER = 0,
-	AIS_RotationMode_UPPER = AIS_RotationMode_BndBoxScene,
-};
-
 enum AIS_DisplayMode {
 	AIS_WireFrame = 0,
 	AIS_Shaded = 1,
@@ -175,12 +170,22 @@ enum AIS_NavigationMode {
 	AIS_NavigationMode_FirstPersonWalk = 2,
 };
 
+enum  {
+	AIS_NavigationMode_LOWER = 0,
+	AIS_NavigationMode_UPPER = AIS_NavigationMode_FirstPersonWalk,
+};
+
 enum AIS_RotationMode {
 	AIS_RotationMode_BndBoxActive = 0,
 	AIS_RotationMode_PickLast = 1,
 	AIS_RotationMode_PickCenter = 2,
 	AIS_RotationMode_CameraAt = 3,
 	AIS_RotationMode_BndBoxScene = 4,
+};
+
+enum  {
+	AIS_RotationMode_LOWER = 0,
+	AIS_RotationMode_UPPER = AIS_RotationMode_BndBoxScene,
 };
 
 enum AIS_SelectStatus {
@@ -269,11 +274,6 @@ enum AIS_TypeOfPlane {
 	AIS_TOPL_YZPlane = 3,
 };
 
-enum AIS_ViewInputBufferType {
-	AIS_ViewInputBufferType_UI = 0,
-	AIS_ViewInputBufferType_GL = 1,
-};
-
 enum AIS_ViewSelectionTool {
 	AIS_ViewSelectionTool_Picking = 0,
 	AIS_ViewSelectionTool_RubberBand = 1,
@@ -281,16 +281,21 @@ enum AIS_ViewSelectionTool {
 	AIS_ViewSelectionTool_ZoomWindow = 3,
 };
 
-enum AIS_WalkRotation {
-	AIS_WalkRotation_Yaw = 0,
-	AIS_WalkRotation_Pitch = 1,
-	AIS_WalkRotation_Roll = 2,
+enum AIS_ViewInputBufferType {
+	AIS_ViewInputBufferType_UI = 0,
+	AIS_ViewInputBufferType_GL = 1,
 };
 
 enum AIS_WalkTranslation {
 	AIS_WalkTranslation_Forward = 0,
 	AIS_WalkTranslation_Side = 1,
 	AIS_WalkTranslation_Up = 2,
+};
+
+enum AIS_WalkRotation {
+	AIS_WalkRotation_Yaw = 0,
+	AIS_WalkRotation_Pitch = 1,
+	AIS_WalkRotation_Roll = 2,
 };
 
 /* end public enums declaration */
@@ -528,12 +533,6 @@ AIS_TOPL_XYPlane = AIS_TypeOfPlane.AIS_TOPL_XYPlane
 AIS_TOPL_XZPlane = AIS_TypeOfPlane.AIS_TOPL_XZPlane
 AIS_TOPL_YZPlane = AIS_TypeOfPlane.AIS_TOPL_YZPlane
 
-class AIS_ViewInputBufferType(IntEnum):
-	AIS_ViewInputBufferType_UI = 0
-	AIS_ViewInputBufferType_GL = 1
-AIS_ViewInputBufferType_UI = AIS_ViewInputBufferType.AIS_ViewInputBufferType_UI
-AIS_ViewInputBufferType_GL = AIS_ViewInputBufferType.AIS_ViewInputBufferType_GL
-
 class AIS_ViewSelectionTool(IntEnum):
 	AIS_ViewSelectionTool_Picking = 0
 	AIS_ViewSelectionTool_RubberBand = 1
@@ -544,13 +543,11 @@ AIS_ViewSelectionTool_RubberBand = AIS_ViewSelectionTool.AIS_ViewSelectionTool_R
 AIS_ViewSelectionTool_Polygon = AIS_ViewSelectionTool.AIS_ViewSelectionTool_Polygon
 AIS_ViewSelectionTool_ZoomWindow = AIS_ViewSelectionTool.AIS_ViewSelectionTool_ZoomWindow
 
-class AIS_WalkRotation(IntEnum):
-	AIS_WalkRotation_Yaw = 0
-	AIS_WalkRotation_Pitch = 1
-	AIS_WalkRotation_Roll = 2
-AIS_WalkRotation_Yaw = AIS_WalkRotation.AIS_WalkRotation_Yaw
-AIS_WalkRotation_Pitch = AIS_WalkRotation.AIS_WalkRotation_Pitch
-AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
+class AIS_ViewInputBufferType(IntEnum):
+	AIS_ViewInputBufferType_UI = 0
+	AIS_ViewInputBufferType_GL = 1
+AIS_ViewInputBufferType_UI = AIS_ViewInputBufferType.AIS_ViewInputBufferType_UI
+AIS_ViewInputBufferType_GL = AIS_ViewInputBufferType.AIS_ViewInputBufferType_GL
 
 class AIS_WalkTranslation(IntEnum):
 	AIS_WalkTranslation_Forward = 0
@@ -559,6 +556,14 @@ class AIS_WalkTranslation(IntEnum):
 AIS_WalkTranslation_Forward = AIS_WalkTranslation.AIS_WalkTranslation_Forward
 AIS_WalkTranslation_Side = AIS_WalkTranslation.AIS_WalkTranslation_Side
 AIS_WalkTranslation_Up = AIS_WalkTranslation.AIS_WalkTranslation_Up
+
+class AIS_WalkRotation(IntEnum):
+	AIS_WalkRotation_Yaw = 0
+	AIS_WalkRotation_Pitch = 1
+	AIS_WalkRotation_Roll = 2
+AIS_WalkRotation_Yaw = AIS_WalkRotation.AIS_WalkRotation_Yaw
+AIS_WalkRotation_Pitch = AIS_WalkRotation.AIS_WalkRotation_Pitch
+AIS_WalkRotation_Roll = AIS_WalkRotation.AIS_WalkRotation_Roll
 };
 /* end python proxy for enums */
 

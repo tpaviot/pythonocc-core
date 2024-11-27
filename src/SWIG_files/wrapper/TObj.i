@@ -1297,6 +1297,10 @@ This method is called before activating this model.
 class TObj_Object : public Standard_Transient {
 	public:
 /* public enums */
+enum TypeFlags {
+	Visible = 1,
+};
+
 enum ObjectState {
 	ObjectState_Hidden = 1,
 	ObjectState_Saved = 2,
@@ -1305,14 +1309,14 @@ enum ObjectState {
 	ObjectState_Ordered = 16,
 };
 
-enum TypeFlags {
-	Visible = 1,
-};
-
 /* end public enums declaration */
 
 /* python proxy classes for enums */
 %pythoncode {
+
+class TypeFlags(IntEnum):
+	Visible = 1
+Visible = TypeFlags.Visible
 
 class ObjectState(IntEnum):
 	ObjectState_Hidden = 1
@@ -1325,10 +1329,6 @@ ObjectState_Saved = ObjectState.ObjectState_Saved
 ObjectState_Imported = ObjectState.ObjectState_Imported
 ObjectState_ImportedByFile = ObjectState.ObjectState_ImportedByFile
 ObjectState_Ordered = ObjectState.ObjectState_Ordered
-
-class TypeFlags(IntEnum):
-	Visible = 1
-Visible = TypeFlags.Visible
 };
 /* end python proxy for enums */
 

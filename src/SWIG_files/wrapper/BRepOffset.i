@@ -122,15 +122,6 @@ from OCC.Core.Exception import *
 };
 
 /* public enums */
-enum BRepOffsetSimple_Status {
-	BRepOffsetSimple_OK = 0,
-	BRepOffsetSimple_NullInputShape = 1,
-	BRepOffsetSimple_ErrorOffsetComputation = 2,
-	BRepOffsetSimple_ErrorWallFaceComputation = 3,
-	BRepOffsetSimple_ErrorInvalidNbShells = 4,
-	BRepOffsetSimple_ErrorNonClosedShell = 5,
-};
-
 enum BRepOffset_Error {
 	BRepOffset_NoError = 0,
 	BRepOffset_UnknownError = 1,
@@ -143,6 +134,15 @@ enum BRepOffset_Error {
 	BRepOffset_CannotExtentEdge = 8,
 	BRepOffset_UserBreak = 9,
 	BRepOffset_MixedConnectivity = 10,
+};
+
+enum BRepOffsetSimple_Status {
+	BRepOffsetSimple_OK = 0,
+	BRepOffsetSimple_NullInputShape = 1,
+	BRepOffsetSimple_ErrorOffsetComputation = 2,
+	BRepOffsetSimple_ErrorWallFaceComputation = 3,
+	BRepOffsetSimple_ErrorInvalidNbShells = 4,
+	BRepOffsetSimple_ErrorNonClosedShell = 5,
 };
 
 enum BRepOffset_Mode {
@@ -162,20 +162,6 @@ enum BRepOffset_Status {
 
 /* python proxy classes for enums */
 %pythoncode {
-
-class BRepOffsetSimple_Status(IntEnum):
-	BRepOffsetSimple_OK = 0
-	BRepOffsetSimple_NullInputShape = 1
-	BRepOffsetSimple_ErrorOffsetComputation = 2
-	BRepOffsetSimple_ErrorWallFaceComputation = 3
-	BRepOffsetSimple_ErrorInvalidNbShells = 4
-	BRepOffsetSimple_ErrorNonClosedShell = 5
-BRepOffsetSimple_OK = BRepOffsetSimple_Status.BRepOffsetSimple_OK
-BRepOffsetSimple_NullInputShape = BRepOffsetSimple_Status.BRepOffsetSimple_NullInputShape
-BRepOffsetSimple_ErrorOffsetComputation = BRepOffsetSimple_Status.BRepOffsetSimple_ErrorOffsetComputation
-BRepOffsetSimple_ErrorWallFaceComputation = BRepOffsetSimple_Status.BRepOffsetSimple_ErrorWallFaceComputation
-BRepOffsetSimple_ErrorInvalidNbShells = BRepOffsetSimple_Status.BRepOffsetSimple_ErrorInvalidNbShells
-BRepOffsetSimple_ErrorNonClosedShell = BRepOffsetSimple_Status.BRepOffsetSimple_ErrorNonClosedShell
 
 class BRepOffset_Error(IntEnum):
 	BRepOffset_NoError = 0
@@ -200,6 +186,20 @@ BRepOffset_CannotFuseVertices = BRepOffset_Error.BRepOffset_CannotFuseVertices
 BRepOffset_CannotExtentEdge = BRepOffset_Error.BRepOffset_CannotExtentEdge
 BRepOffset_UserBreak = BRepOffset_Error.BRepOffset_UserBreak
 BRepOffset_MixedConnectivity = BRepOffset_Error.BRepOffset_MixedConnectivity
+
+class BRepOffsetSimple_Status(IntEnum):
+	BRepOffsetSimple_OK = 0
+	BRepOffsetSimple_NullInputShape = 1
+	BRepOffsetSimple_ErrorOffsetComputation = 2
+	BRepOffsetSimple_ErrorWallFaceComputation = 3
+	BRepOffsetSimple_ErrorInvalidNbShells = 4
+	BRepOffsetSimple_ErrorNonClosedShell = 5
+BRepOffsetSimple_OK = BRepOffsetSimple_Status.BRepOffsetSimple_OK
+BRepOffsetSimple_NullInputShape = BRepOffsetSimple_Status.BRepOffsetSimple_NullInputShape
+BRepOffsetSimple_ErrorOffsetComputation = BRepOffsetSimple_Status.BRepOffsetSimple_ErrorOffsetComputation
+BRepOffsetSimple_ErrorWallFaceComputation = BRepOffsetSimple_Status.BRepOffsetSimple_ErrorWallFaceComputation
+BRepOffsetSimple_ErrorInvalidNbShells = BRepOffsetSimple_Status.BRepOffsetSimple_ErrorInvalidNbShells
+BRepOffsetSimple_ErrorNonClosedShell = BRepOffsetSimple_Status.BRepOffsetSimple_ErrorNonClosedShell
 
 class BRepOffset_Mode(IntEnum):
 	BRepOffset_Skin = 0

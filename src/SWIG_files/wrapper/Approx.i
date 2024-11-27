@@ -44,8 +44,8 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_approx.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TColStd_module.hxx>
 #include<Adaptor3d_module.hxx>
+#include<TColStd_module.hxx>
 #include<Adaptor2d_module.hxx>
 #include<GeomAbs_module.hxx>
 #include<Geom2d_module.hxx>
@@ -64,8 +64,8 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_approx.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TColStd.i
 %import Adaptor3d.i
+%import TColStd.i
 %import Adaptor2d.i
 %import GeomAbs.i
 %import Geom2d.i

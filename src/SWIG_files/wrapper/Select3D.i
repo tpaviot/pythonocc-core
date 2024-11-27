@@ -153,6 +153,7 @@ Select3D_TOS_BOUNDARY = Select3D_TypeOfSensitivity.Select3D_TOS_BOUNDARY
 
 /* typedefs */
 typedef BVH_Builder<Standard_Real, 3> Select3D_BVHBuilder3d;
+typedef BVH_Box<Standard_Real, 3> Select3D_BndBox3d;
 typedef NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity>> Select3D_EntitySequence;
 typedef NCollection_Sequence<opencascade::handle<Select3D_SensitiveEntity>>::Iterator Select3D_EntitySequenceIter;
 typedef NCollection_IndexedMap<opencascade::handle<Select3D_SensitiveEntity>> Select3D_IndexedMapOfEntity;

@@ -66,7 +66,6 @@ class Aspect_TrackedDevicePoseArray:
     def Value(self, theIndex: int) -> Aspect_TrackedDevicePose: ...
     def SetValue(self, theIndex: int, theValue: Aspect_TrackedDevicePose) -> None: ...
 
-
 class Aspect_ColorSpace(IntEnum):
     Aspect_ColorSpace_sRGB: int = ...
     Aspect_ColorSpace_Linear: int = ...
@@ -674,6 +673,9 @@ Aspect_VKey_NavThrustStop = Aspect_VKeyBasic.Aspect_VKey_NavThrustStop
 Aspect_VKey_NavSpeedIncrease = Aspect_VKeyBasic.Aspect_VKey_NavSpeedIncrease
 Aspect_VKey_NavSpeedDecrease = Aspect_VKeyBasic.Aspect_VKey_NavSpeedDecrease
 
+
+
+
 class Aspect_WidthOfLine(IntEnum):
     Aspect_WOL_THIN: int = ...
     Aspect_WOL_MEDIUM: int = ...
@@ -742,6 +744,7 @@ Aspect_XRGenericAction_InputPoseHandGrip = Aspect_XRGenericAction.Aspect_XRGener
 Aspect_XRGenericAction_InputPoseFingerTip = Aspect_XRGenericAction.Aspect_XRGenericAction_InputPoseFingerTip
 Aspect_XRGenericAction_OutputHaptic = Aspect_XRGenericAction.Aspect_XRGenericAction_OutputHaptic
 
+
 class Aspect_XRTrackedDeviceRole(IntEnum):
     Aspect_XRTrackedDeviceRole_Head: int = ...
     Aspect_XRTrackedDeviceRole_LeftHand: int = ...
@@ -752,6 +755,7 @@ Aspect_XRTrackedDeviceRole_Head = Aspect_XRTrackedDeviceRole.Aspect_XRTrackedDev
 Aspect_XRTrackedDeviceRole_LeftHand = Aspect_XRTrackedDeviceRole.Aspect_XRTrackedDeviceRole_LeftHand
 Aspect_XRTrackedDeviceRole_RightHand = Aspect_XRTrackedDeviceRole.Aspect_XRTrackedDeviceRole_RightHand
 Aspect_XRTrackedDeviceRole_Other = Aspect_XRTrackedDeviceRole.Aspect_XRTrackedDeviceRole_Other
+
 
 class Aspect_Background:
     @overload

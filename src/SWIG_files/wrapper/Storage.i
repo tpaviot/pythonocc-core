@@ -224,43 +224,11 @@ typedef NCollection_Sequence<opencascade::handle<Storage_Root>> Storage_SeqOfRoo
 /* python proxy for excluded classes */
 %pythoncode {
 @classnotwrapped
-class Storage_HeaderData:
-	pass
-
-@classnotwrapped
-class Storage_Data:
-	pass
-
-@classnotwrapped
-class Storage_DefaultCallBack:
-	pass
-
-@classnotwrapped
-class Storage_RootData:
-	pass
-
-@classnotwrapped
-class Storage_TypedCallBack:
-	pass
-
-@classnotwrapped
-class Storage_InternalData:
-	pass
-
-@classnotwrapped
-class Storage_Root:
+class Storage:
 	pass
 
 @classnotwrapped
 class Storage_BaseDriver:
-	pass
-
-@classnotwrapped
-class Storage_CallBack:
-	pass
-
-@classnotwrapped
-class Storage_TypeData:
 	pass
 
 @classnotwrapped
@@ -276,16 +244,59 @@ class Storage_BucketIterator:
 	pass
 
 @classnotwrapped
+class Storage_CallBack:
+	pass
+
+@classnotwrapped
+class Storage_Data:
+	pass
+
+@classnotwrapped
+class Storage_DefaultCallBack:
+	pass
+
+@classnotwrapped
+class Storage_HeaderData:
+	pass
+
+@classnotwrapped
+class Storage_InternalData:
+	pass
+
+@classnotwrapped
+class Storage_Root:
+	pass
+
+@classnotwrapped
+class Storage_RootData:
+	pass
+
+@classnotwrapped
 class Storage_Schema:
 	pass
 
 @classnotwrapped
-class Storage:
+class Storage_TypeData:
+	pass
+
+@classnotwrapped
+class Storage_TypedCallBack:
 	pass
 
 }
 /* end python proxy for excluded classes */
 /* harray1 classes */
+
+class Storage_HArrayOfCallBack : public Storage_ArrayOfCallBack, public Standard_Transient {
+  public:
+    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper);
+    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper, const Storage_ArrayOfCallBack::value_type& theValue);
+    Storage_HArrayOfCallBack(const Storage_ArrayOfCallBack& theOther);
+    const Storage_ArrayOfCallBack& Array1();
+    Storage_ArrayOfCallBack& ChangeArray1();
+};
+%make_alias(Storage_HArrayOfCallBack)
+
 
 class Storage_HArrayOfSchema : public Storage_ArrayOfSchema, public Standard_Transient {
   public:
@@ -307,17 +318,6 @@ class Storage_HPArray : public Storage_PArray, public Standard_Transient {
     Storage_PArray& ChangeArray1();
 };
 %make_alias(Storage_HPArray)
-
-
-class Storage_HArrayOfCallBack : public Storage_ArrayOfCallBack, public Standard_Transient {
-  public:
-    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper);
-    Storage_HArrayOfCallBack(const Standard_Integer theLower, const Standard_Integer theUpper, const Storage_ArrayOfCallBack::value_type& theValue);
-    Storage_HArrayOfCallBack(const Storage_ArrayOfCallBack& theOther);
-    const Storage_ArrayOfCallBack& Array1();
-    Storage_ArrayOfCallBack& ChangeArray1();
-};
-%make_alias(Storage_HArrayOfCallBack)
 
 /* harray2 classes */
 /* hsequence classes */

@@ -12,7 +12,6 @@ from OCC.Core.TopAbs import *
 
 BinTools_LocationSetPtr = NewType("BinTools_LocationSetPtr", BinTools_LocationSet)
 
-
 class BinTools_FormatVersion(IntEnum):
     BinTools_FormatVersion_VERSION_1: int = ...
     BinTools_FormatVersion_VERSION_2: int = ...
@@ -25,6 +24,7 @@ BinTools_FormatVersion_VERSION_2 = BinTools_FormatVersion.BinTools_FormatVersion
 BinTools_FormatVersion_VERSION_3 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_3
 BinTools_FormatVersion_VERSION_4 = BinTools_FormatVersion.BinTools_FormatVersion_VERSION_4
 BinTools_FormatVersion_CURRENT = BinTools_FormatVersion.BinTools_FormatVersion_CURRENT
+
 
 class BinTools_ObjectType(IntEnum):
     BinTools_ObjectType_Unknown: int = ...

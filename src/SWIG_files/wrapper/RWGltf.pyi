@@ -24,7 +24,6 @@ from OCC.Core.Graphic3d import *
 # the following typedef cannot be wrapped as is
 RWGltf_JsonValue = NewType("RWGltf_JsonValue", Any)
 
-
 class RWGltf_GltfAccessorCompType(IntEnum):
     RWGltf_GltfAccessorCompType_UNKNOWN: int = ...
     RWGltf_GltfAccessorCompType_Int8: int = ...
@@ -172,6 +171,7 @@ class RWGltf_WriterTrsfFormat(IntEnum):
 RWGltf_WriterTrsfFormat_Compact = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_Compact
 RWGltf_WriterTrsfFormat_Mat4 = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_Mat4
 RWGltf_WriterTrsfFormat_TRS = RWGltf_WriterTrsfFormat.RWGltf_WriterTrsfFormat_TRS
+
 
 class RWGltf_CafReader(RWMesh_CafReader):
     def __init__(self) -> None: ...

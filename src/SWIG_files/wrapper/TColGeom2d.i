@@ -69,9 +69,9 @@ from OCC.Core.Exception import *
 /* end python proxy for enums */
 
 /* handles */
+%wrap_handle(TColGeom2d_HArray1OfBSplineCurve)
 %wrap_handle(TColGeom2d_HArray1OfBezierCurve)
 %wrap_handle(TColGeom2d_HArray1OfCurve)
-%wrap_handle(TColGeom2d_HArray1OfBSplineCurve)
 %wrap_handle(TColGeom2d_HSequenceOfBoundedCurve)
 %wrap_handle(TColGeom2d_HSequenceOfCurve)
 /* end handles declaration */
@@ -123,6 +123,17 @@ typedef NCollection_Sequence<opencascade::handle<Geom2d_Geometry>> TColGeom2d_Se
 
 /* harray1 classes */
 
+class TColGeom2d_HArray1OfBSplineCurve : public TColGeom2d_Array1OfBSplineCurve, public Standard_Transient {
+  public:
+    TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
+    TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const TColGeom2d_Array1OfBSplineCurve::value_type& theValue);
+    TColGeom2d_HArray1OfBSplineCurve(const TColGeom2d_Array1OfBSplineCurve& theOther);
+    const TColGeom2d_Array1OfBSplineCurve& Array1();
+    TColGeom2d_Array1OfBSplineCurve& ChangeArray1();
+};
+%make_alias(TColGeom2d_HArray1OfBSplineCurve)
+
+
 class TColGeom2d_HArray1OfBezierCurve : public TColGeom2d_Array1OfBezierCurve, public Standard_Transient {
   public:
     TColGeom2d_HArray1OfBezierCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
@@ -143,17 +154,6 @@ class TColGeom2d_HArray1OfCurve : public TColGeom2d_Array1OfCurve, public Standa
     TColGeom2d_Array1OfCurve& ChangeArray1();
 };
 %make_alias(TColGeom2d_HArray1OfCurve)
-
-
-class TColGeom2d_HArray1OfBSplineCurve : public TColGeom2d_Array1OfBSplineCurve, public Standard_Transient {
-  public:
-    TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper);
-    TColGeom2d_HArray1OfBSplineCurve(const Standard_Integer theLower, const Standard_Integer theUpper, const TColGeom2d_Array1OfBSplineCurve::value_type& theValue);
-    TColGeom2d_HArray1OfBSplineCurve(const TColGeom2d_Array1OfBSplineCurve& theOther);
-    const TColGeom2d_Array1OfBSplineCurve& Array1();
-    TColGeom2d_Array1OfBSplineCurve& ChangeArray1();
-};
-%make_alias(TColGeom2d_HArray1OfBSplineCurve)
 
 /* harray2 classes */
 /* hsequence classes */
