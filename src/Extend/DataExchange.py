@@ -710,13 +710,9 @@ def read_gltf_file(
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"{filename} not found.")
 
-    # Get root assembly
-    shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
-
     gltf_reader = RWGltf_CafReader()
     # gltf_reader.SetSystemLengthUnit (aScaleFactorM);
     gltf_reader.SetSystemCoordinateSystem(RWMesh_CoordinateSystem_posYfwd_posZup)
-    gltf_reader.SetDocument(doc)
     gltf_reader.SetParallel(is_parallel)
     gltf_reader.SetDoublePrecision(is_double_precision)
     gltf_reader.SetToSkipLateDataLoading(skip_late_data_loading)
