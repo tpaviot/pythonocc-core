@@ -1,3 +1,4 @@
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Azure Build Status](https://dev.azure.com/tpaviot/pythonocc-core/_apis/build/status/tpaviot.pythonocc-core?branchName=master)](https://dev.azure.com/tpaviot/pythonocc-core/_build?definitionId=2)
 [![Downloads Badge](https://anaconda.org/conda-forge/pythonocc-core/badges/downloads.svg)](https://anaconda.org/conda-forge/pythonocc-core)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/67c121324b8d4f37bc27029464c87020)](https://www.codacy.com/app/tpaviot/pythonocc-core?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tpaviot/pythonocc-core&amp;utm_campaign=Badge_Grade)
@@ -9,7 +10,7 @@ pythonocc-core
 
 About
 -----
-pythonocc provides 3D modeling and dataexchange features. It is intended to CAD/PDM/PLM and BIM related development. It is based on the OpenCascade Technology modeling kernel.
+pythonocc provides 3D modeling and dataexchange features. It is intended to CAD/PDM/PLM/BIM development. It is based on the OpenCascade Technology modeling kernel.
 
 Latest release: [pythonocc-core 7.8.1 (May 2024)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.8.1)
 
