@@ -700,7 +700,7 @@ def read_gltf_file(
     filename: str,
     is_parallel: bool = False,
     is_double_precision: bool = False,
-    skip_late_data_loading: bool = True,
+    skip_late_data_loading: bool = False,
     keep_late_data: bool = True,
     verbose: bool = False,
     load_all_scenes: bool = False,
