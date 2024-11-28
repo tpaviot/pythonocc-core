@@ -709,7 +709,6 @@ def read_gltf_file(
 
     if not os.path.isfile(filename):
         raise FileNotFoundError(f"{filename} not found.")
-    doc = TDocStd_Document("pythonocc-doc-gltf-import")
 
     # Get root assembly
     shape_tool = XCAFDoc_DocumentTool.ShapeTool(doc.Main())
@@ -730,13 +729,7 @@ def read_gltf_file(
     if status != IFSelect_RetDone:
         raise IOError("Error while reading GLTF file.")
 
-    labels = TDF_LabelSequence()
-    shape_tool.GetFreeShapes(labels)
-
-    for i in range(1, labels.Length()):
-        shapes_to_return.append(shape_tool.GetShape(labels.Value(i)))
-
-    return shapes_to_return
+    return [gltf_reader.SingleShape()]
 
 
 def write_gltf_file(a_shape: TopoDS_Shape, gltf_filename: str):
