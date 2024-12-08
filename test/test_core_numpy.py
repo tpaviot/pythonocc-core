@@ -154,3 +154,33 @@ def test_surface_eval():
     res = u[:, None, None] * u_vec + v[None, :, None] * v_vec
 
     assert np.all(res == arr_out)
+
+
+@pytest.mark.parametrize(
+    "line,ndim",
+    (
+        (Geom2d_Line(gp_Pnt2d(0.0, 0.0), gp_Dir2d(1.0, 0.15)), 2),
+        (Geom_Line(gp_Pnt(0.0, 0.0, 0.0), gp_Dir(1.0, 0.15, 0.0)), 3),
+    ),
+)
+def test_curve_derivative_eval(line, ndim):
+    u = np.arange(5, dtype=float)
+    vectors = line.eval_derivative_numpy_array(u, 1)
+
+    gp_line = line.Lin() if isinstance(line, Geom_Line) else line.Lin2d()
+
+    direction = np.array([gp_line.Direction().Coord(i + 1) for i in range(ndim)])
+    assert np.all(vectors == direction)
+
+
+def test_surface_derivative_eval():
+    n_vec = np.array([1.0, 0.15, 0.0])
+    u = np.arange(5, dtype=float)
+    v = np.arange(6, dtype=float)
+
+    plane = Geom_Plane(gp_Pnt(0.0, 0.0, 0.0), gp_Dir(*n_vec))
+    uv = np.dstack(np.meshgrid(u, v, indexing="ij")).reshape(-1, 2)
+    arr_out = plane.eval_derivative_numpy_array(uv, 0, 1).reshape(len(u), len(v), -1)
+    assert np.all(arr_out @ n_vec == 0.0)
+    arr_out = plane.eval_derivative_numpy_array(uv, 1, 0).reshape(len(u), len(v), -1)
+    assert np.all(arr_out @ n_vec == 0.0)
