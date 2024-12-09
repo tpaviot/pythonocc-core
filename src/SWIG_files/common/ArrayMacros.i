@@ -474,8 +474,8 @@
         def eval_numpy_array(self, u_arr):
             return self.evalNumpy(u_arr, len(u_arr) * 3, 3).reshape(-1, 3)
 
-        def eval_derivative_numpy_array(self, u_arr, n_u):
-            return self.evalDerivativeNumpy(u_arr, len(u_arr) * 3, 3, n_u).reshape(-1, 3)
+        def eval_derivative_numpy_array(self, u_arr, n_u, n_v):
+            return self.evalDerivativeNumpy(u_arr, len(u_arr) * 3, 3, n_u, n_v).reshape(-1, 3)
         }
 
     };
