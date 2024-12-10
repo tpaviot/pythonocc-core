@@ -56,7 +56,7 @@ Professional support
 --------------------
 pythonocc is backed by [meeDIA](https://meedia.ai/pythonocc-en), a company co-founded by pythonocc's creator and lead maintainer. For professional support inquiries, please contact us.
 
-![meedia logo](https://www.meedia.ai/wp-content/uploads/go-x/u/d3a61d32-b812-4a39-89c8-57fa93df5780/image-320x95.png | width=150)
+[![meedia logo](https://www.meedia.ai/wp-content/uploads/go-x/u/d3a61d32-b812-4a39-89c8-57fa93df5780/image-320x95.png)](https://meedia.ai/pythonocc-en)
 
 Other pythonocc related resources
 ---------------------------------
