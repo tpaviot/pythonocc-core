@@ -52,6 +52,12 @@ pythonocc is widely used in the industrial and academic communities. It is regis
 
 Paviot, T. (2022). "pythonocc". Zenodo. https://doi.org/10.5281/zenodo.3605364
 
+Professional support
+--------------------
+pythonocc is backed by [meeDIA](https://meedia.ai/pythonocc-en), a company co-founded by pythonocc's creator and lead maintainer. For professional support inquiries, please contact us.
+
+![meedia logo](https://www.meedia.ai/wp-content/uploads/go-x/u/d3a61d32-b812-4a39-89c8-57fa93df5780/image-320x95.png | width=150)
+
 Other pythonocc related resources
 ---------------------------------
 *   Demos: python examples, as well as jupyter notebooks <https://github.com/tpaviot/pythonocc-demos>. A good place to start with pythonocc
