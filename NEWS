@@ -1,5 +1,29 @@
-Current
-=======
+Version 7.8.1.1 - December 2024
+===============================
+
+Bugfix release. This release requires opencascade-7.8.1
+
+* wrapper: add support for SWIG-4.3.0
+
+* wrapper: add numpy interface for curve and surfaces, #1381 #1396
+
+* wrapper: add missing SelectMegr methods, #1387
+
+* wrapper: add __hash__ __eq__ and __neq__ methods to TShape, #1375
+
+* wrapper: fix BRepTools.Merge, #1342
+
+* wrapper: fix NCollection, #1332
+
+* wrapper: fix TopTools_ListIteratorOfListOfShape import, #1355
+
+* display: fix deprecation warning, #1386
+ 
+* test: move test suite to pytest, #1335
+
+* data exchange: fix gtlf importer
+
+* install: fix windows dll import, #1347 #1351, #1352
 
 Version 7.8.1 - May 2024
 ========================

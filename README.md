@@ -2,7 +2,7 @@
 [![Azure Build Status](https://dev.azure.com/tpaviot/pythonocc-core/_apis/build/status/tpaviot.pythonocc-core?branchName=master)](https://dev.azure.com/tpaviot/pythonocc-core/_build?definitionId=2)
 [![Downloads Badge](https://anaconda.org/conda-forge/pythonocc-core/badges/downloads.svg)](https://anaconda.org/conda-forge/pythonocc-core)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/67c121324b8d4f37bc27029464c87020)](https://www.codacy.com/app/tpaviot/pythonocc-core?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=tpaviot/pythonocc-core&amp;utm_campaign=Badge_Grade)
-[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.8.1)
+[![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.8.1.1)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.3605364.svg)](https://doi.org/10.5281/zenodo.3605364)
 
 pythonocc-core
@@ -12,7 +12,7 @@ About
 -----
 pythonocc provides 3D modeling and dataexchange features. It is intended to CAD/PDM/PLM/BIM development. It is based on the OpenCascade Technology modeling kernel.
 
-Latest release: [pythonocc-core 7.8.1 (May 2024)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.8.1)
+Latest release: [pythonocc-core 7.8.1.1 (Decembre 2024)](https://github.com/tpaviot/pythonocc-core/releases/tag/7.8.1.1)
 
 Features
 --------
@@ -27,7 +27,7 @@ pythonocc provides the following features:
 
 Try online at mybinder
 ----------------------
-Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.8.1) to open a jupyter notebook running the latest pythonocc-core 7.8.1, gmesh (<http://gmsh.info/>) and latest IfcOpenshell (<https://github.com/IfcOpenShell/IfcOpenShell/tree/v0.6.0>) dev branch.
+Click [![Binder](http://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/tpaviot/pythonocc-binderhub/7.8.1.1) to open a jupyter notebook running the latest pythonocc-core 7.8.1.1.
 
 Install with conda
 ------------------
@@ -37,7 +37,7 @@ pythonocc provides precompiled [conda packages](https://anaconda.org/pythonocc/p
 # first create an environment
 conda create --name=pyoccenv python=3.10
 source activate pyoccenv
-conda install -c conda-forge pythonocc-core=7.8.1
+conda install -c conda-forge pythonocc-core=7.8.1.1
 ```
 
 Other conda channels may provide pythonocc-core packages, check https://anaconda.org/search?q=pythonocc-core.
@@ -56,7 +56,7 @@ Professional support
 --------------------
 pythonocc is backed by [meeDIA](https://meedia.ai/pythonocc-en), a company co-founded by pythonocc's creator and lead maintainer. For professional support inquiries, please contact us.
 
-<img src="https://www.meedia.ai/wp-content/uploads/go-x/u/d3a61d32-b812-4a39-89c8-57fa93df5780/image-320x95.png" width="150">
+<a href="https://meedia.ai/pythonocc-en"><img src="https://www.meedia.ai/wp-content/uploads/go-x/u/d3a61d32-b812-4a39-89c8-57fa93df5780/image-320x95.png" width="150"></a>
 
 Other pythonocc related resources
 ---------------------------------
