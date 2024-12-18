@@ -39,9 +39,9 @@ X3DFILE_HEADER_TEMPLATE = Template(
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.3//EN" "http://www.web3d.org/specifications/x3d-3.3.dtd">
 <X3D profile="Immersive" version="3.3" xmlns:xsd="http://www.w3.org/2001/XMLSchema-instance" xsd:noNamespaceSchemaLocation="http://www.web3d.org/specifications/x3d-3.3.xsd">
 <head>
-    <meta name="generator" content="pythonocc-$VERSION X3D exporter (www.pythonocc.org)"/>
+    <meta name="generator" content="pythonocc-$VERSION X3D exporter (https://github.com/tpaviot/pythonocc-core)"/>
     <meta name="creator" content="pythonocc-$VERSION generator"/>
-    <meta name="identifier" content="http://www.pythonocc.org"/>
+    <meta name="identifier" content="https://github.com/tpaviot/pythonocc-core"/>
     <meta name="description" content="pythonocc-$VERSION x3dom based shape rendering"/>
 </head>
 <Scene>
