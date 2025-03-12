@@ -162,7 +162,7 @@ bool
 
 Description
 -----------
-With help of this class user can change parameters of writing. converts the shape ashape to vrml format of the passed version and writes it to the file identified by afilename using default parameters.
+With help of this class user can change parameters of writing. Converts the shape aShape to VRML format of the passed version and writes it to the file identified by aFileName using default parameters.
 ") Write;
 		static Standard_Boolean Write(const TopoDS_Shape & aShape, Standard_CString aFileName, const Standard_Integer aVersion = 2);
 
@@ -283,7 +283,7 @@ VrmlAPI_RepresentationOfShape
 
 Description
 -----------
-Returns the representation of the shape which is written to the vrml file. types of representation are set through the vrmlapi_representationofshape enumeration.
+Returns the representation of the shape which is written to the VRML file. Types of representation are set through the VrmlAPI_RepresentationOfShape enumeration.
 ") GetRepresentation;
 		VrmlAPI_RepresentationOfShape GetRepresentation();
 
@@ -385,7 +385,7 @@ None
 
 Description
 -----------
-Sets the deflection adef of the mesh algorithm which is used to compute the shaded representation of the translated shape. the default value is -1. when the deflection value is less than 0, the deflection is calculated from the relative size of the shaped.
+Sets the deflection aDef of the mesh algorithm which is used to compute the shaded representation of the translated shape. The default value is -1. When the deflection value is less than 0, the deflection is calculated from the relative size of the shaped.
 ") SetDeflection;
 		void SetDeflection(const Standard_Real aDef);
 
@@ -441,7 +441,7 @@ None
 
 Description
 -----------
-Sets the representation of the shape arep which is written to the vrml file. the three options are: - shaded - wireframe - both shaded and wireframe (default) defined through the vrmlapi_representationofshape enumeration.
+Sets the representation of the shape aRep which is written to the VRML file. The three options are: - shaded - wireframe - both shaded and wireframe (default) defined through the VrmlAPI_RepresentationOfShape enumeration.
 ") SetRepresentation;
 		void SetRepresentation(const VrmlAPI_RepresentationOfShape aRep);
 
@@ -518,7 +518,7 @@ bool
 
 Description
 -----------
-Converts the shape ashape to vrml format of the passed version and writes it to the file identified by afile.
+Converts the shape aShape to VRML format of the passed version and writes it to the file identified by aFile.
 ") Write;
 		Standard_Boolean Write(const TopoDS_Shape & aShape, Standard_CString aFile, const Standard_Integer aVersion = 2);
 
@@ -538,7 +538,7 @@ bool
 
 Description
 -----------
-Converts the document to vrml format of the passed version and writes it to the file identified by afile.
+Converts the document to VRML format of the passed version and writes it to the file identified by aFile.
 ") WriteDoc;
 		Standard_Boolean WriteDoc(const opencascade::handle<TDocStd_Document> & theDoc, Standard_CString theFile, const Standard_Real theScale);
 

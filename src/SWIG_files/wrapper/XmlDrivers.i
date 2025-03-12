@@ -130,7 +130,7 @@ None
 
 Description
 -----------
-Defines format 'xmlocaf' and registers its read and write drivers in the specified application.
+Defines format 'XmlOcaf' and registers its read and write drivers in the specified application.
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 

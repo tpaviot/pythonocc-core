@@ -296,7 +296,6 @@ IFSelect_RetStop = IFSelect_ReturnStatus.IFSelect_RetStop
 /* end templates declaration */
 
 /* typedefs */
-typedef IFSelect_ReturnStatus ( * IFSelect_ActFunc ) ( const opencascade::handle<IFSelect_SessionPilot>& );
 typedef NCollection_Sequence<opencascade::handle<IFSelect_AppliedModifiers>> IFSelect_SequenceOfAppliedModifiers;
 typedef NCollection_Sequence<opencascade::handle<IFSelect_GeneralModifier>> IFSelect_SequenceOfGeneralModifier;
 typedef NCollection_Sequence<opencascade::handle<Interface_InterfaceModel>> IFSelect_SequenceOfInterfaceModel;
@@ -325,7 +324,7 @@ bool
 
 Description
 -----------
-Restore the state of a worksession from ifselect, by using a sessionfile from ifselect. returns true if done, false in case of error on writing. <file> gives the name of the file to be used (this avoids to export the class sessionfile).
+Restore the state of a WorkSession from IFSelect, by using a SessionFile from IFSelect. Returns True if Done, False in case of Error on Writing. <file> gives the name of the File to be used (this avoids to export the class SessionFile).
 ") RestoreSession;
 		static Standard_Boolean RestoreSession(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString file);
 
@@ -344,7 +343,7 @@ bool
 
 Description
 -----------
-Saves the state of a worksession from ifselect, by using a sessionfile from ifselect. returns true if done, false in case of error on writing. <file> gives the name of the file to be produced (this avoids to export the class sessionfile).
+Saves the state of a WorkSession from IFSelect, by using a SessionFile from IFSelect. Returns True if Done, False in case of Error on Writing. <file> gives the name of the File to be produced (this avoids to export the class SessionFile).
 ") SaveSession;
 		static Standard_Boolean SaveSession(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString file);
 
@@ -378,7 +377,7 @@ None
 
 Description
 -----------
-Allows a self-definition by an activator of the commands it processes, call the class method adding (mode 0).
+Allows a self-definition by an Activator of the Commands it processes, call the class method Adding (mode 0).
 ") Add;
 		void Add(const Standard_Integer number, Standard_CString command);
 
@@ -397,7 +396,7 @@ None
 
 Description
 -----------
-Same as add but specifies that this command is candidate for xset (creation of items, xset: named items; mode 1).
+Same as Add but specifies that this command is candidate for xset (creation of items, xset: named items; mode 1).
 ") AddSet;
 		void AddSet(const Standard_Integer number, Standard_CString command);
 
@@ -418,7 +417,7 @@ None
 
 Description
 -----------
-Records, in a dictionary available for all the activators, the command title an activator can process, attached with its number, proper for this activator <mode> allows to distinguish various execution modes 0: default mode; 1: for xset.
+Records, in a Dictionary available for all the Activators, the command title an Activator can process, attached with its number, proper for this Activator <mode> allows to distinguish various execution modes 0: default mode; 1: for xset.
 ") Adding;
 		static void Adding(const opencascade::handle<IFSelect_Activator> & actor, const Standard_Integer number, Standard_CString command, const Standard_Integer mode);
 
@@ -437,7 +436,7 @@ opencascade::handle<TColStd_HSequenceOfAsciiString>
 
 Description
 -----------
-Returns, for a root of command title, the list of possible commands. <mode>: -1 (d) for all commands if <commands> is empty -1 + command: about a group , >= 0 see adding by default, it returns the whole list of known commands.
+Returns, for a root of command title, the list of possible commands. <mode>: -1 (D) for all commands if <commands> is empty -1 + command: about a Group , >= 0 see Adding By default, it returns the whole list of known commands.
 ") Commands;
 		static opencascade::handle<TColStd_HSequenceOfAsciiString> Commands(const Standard_Integer mode = -1, Standard_CString command = "");
 
@@ -456,7 +455,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Tries to execute a command line. <number> is the number of the command for this activator. it must forecast to record the result of the execution, for need of undo-redo must returns: 0 for a void command (not to be recorded), 1 if execution ok, -1 if command incorrect, -2 if error on execution.
+Tries to execute a Command Line. <number> is the number of the command for this Activator. It Must forecast to record the result of the execution, for need of Undo-Redo Must Returns: 0 for a void command (not to be recorded), 1 if execution OK, -1 if command incorrect, -2 if error on execution.
 ") Do;
 		virtual IFSelect_ReturnStatus Do(const Standard_Integer number, const opencascade::handle<IFSelect_SessionPilot> & pilot);
 
@@ -500,7 +499,7 @@ str
 
 Description
 -----------
-Sends a short help message for a given command identified by it number for this activator (must take one line max).
+Sends a short help message for a given command identified by it number for this Activator (must take one line max).
 ") Help;
 		virtual Standard_CString Help(const Standard_Integer number);
 
@@ -536,7 +535,7 @@ None
 
 Description
 -----------
-Removes a command, if it is recorded (else, does nothing).
+Removes a Command, if it is recorded (else, does nothing).
 ") Remove;
 		static void Remove(Standard_CString command);
 
@@ -555,7 +554,7 @@ number: int
 
 Description
 -----------
-Selects, for a command given by its title, an actor with its command number. returns true if found, false else.
+Selects, for a Command given by its title, an actor with its command number. Returns True if found, False else.
 ") Select;
 		static Standard_Boolean Select(Standard_CString command, Standard_Integer &OutValue, opencascade::handle<IFSelect_Activator> & actor);
 
@@ -574,7 +573,7 @@ None
 
 Description
 -----------
-Group and setgroup define a 'group of commands' which correspond to an activator. default is 'xstep' also a file may be attached.
+Group and SetGroup define a 'Group of commands' which correspond to an Activator. Default is 'XSTEP' Also a file may be attached.
 ") SetForGroup;
 		void SetForGroup(Standard_CString group, Standard_CString file = "");
 
@@ -609,7 +608,7 @@ None
 
 Description
 -----------
-Creates an appliedmodifiers, ready to record up to <nbmax> modifiers, on a model of <nbent> entities.
+Creates an AppliedModifiers, ready to record up to <nbmax> modifiers, on a model of <nbent> entities.
 ") IFSelect_AppliedModifiers;
 		 IFSelect_AppliedModifiers(const Standard_Integer nbmax, const Standard_Integer nbent);
 
@@ -627,7 +626,7 @@ bool
 
 Description
 -----------
-Records a modifier. by default, it is to apply on all a produced file. further calls to addnum will restrict this. returns true if done, false if too many modifiers are already recorded.
+Records a modifier. By default, it is to apply on all a produced file. Further calls to AddNum will restrict this. Returns True if done, False if too many modifiers are already recorded.
 ") AddModif;
 		Standard_Boolean AddModif(const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
@@ -645,7 +644,7 @@ bool
 
 Description
 -----------
-Adds a number of entity of the output file to be applied on. if a sequence of addnum is called after addmodif, this modifier will be applied on the list of designated entities. else, it will be applied on all the file returns true if done, false if no modifier has yet been added.
+Adds a number of entity of the output file to be applied on. If a sequence of AddNum is called after AddModif, this Modifier will be applied on the list of designated entities. Else, it will be applied on all the file Returns True if done, False if no modifier has yet been added.
 ") AddNum;
 		Standard_Boolean AddNum(const Standard_Integer nument);
 
@@ -671,7 +670,7 @@ bool
 
 Description
 -----------
-Returns true if the applied modifier queried by last call to item is to be applied to all the produced file. else, <entcount> returned by item gives the count of entity numbers, each one is queried by itemnum.
+Returns True if the applied modifier queried by last call to Item is to be applied to all the produced file. Else, <entcount> returned by Item gives the count of entity numbers, each one is queried by ItemNum.
 ") IsForAll;
 		Standard_Boolean IsForAll();
 
@@ -690,7 +689,7 @@ entcount: int
 
 Description
 -----------
-Returns the description for applied modifier n0 <num>: the modifier itself, and the count of entities to be applied on. if no specific list of number has been defined, returns the total count of entities of the file if this count is zero, then the modifier applies to all the file (see below). else, the numbers are then queried by calls to itemnum between 1 and <entcount> returns true if ok, false if <num> is out of range.
+Returns the description for applied modifier n0 <num>: the modifier itself, and the count of entities to be applied on. If no specific list of number has been defined, returns the total count of entities of the file If this count is zero, then the modifier applies to all the file (see below). Else, the numbers are then queried by calls to ItemNum between 1 and <entcount> Returns True if OK, False if <num> is out of range.
 ") Item;
 		Standard_Boolean Item(const Standard_Integer num, opencascade::handle<IFSelect_GeneralModifier> & modif, Standard_Integer &OutValue);
 
@@ -703,7 +702,7 @@ opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
-Returns the list of entities to be applied on (see item) as a hsequence (isforall produces the complete list of all the entity numbers of the file.
+Returns the list of entities to be applied on (see Item) as a HSequence (IsForAll produces the complete list of all the entity numbers of the file.
 ") ItemList;
 		opencascade::handle<TColStd_HSequenceOfInteger> ItemList();
 
@@ -721,7 +720,7 @@ int
 
 Description
 -----------
-Returns a numero of entity to be applied on, given its rank in the list. if no list is defined (i.e. for all the file), returns <nument> itself, to give all the entities of the file returns 0 if <nument> out of range.
+Returns a numero of entity to be applied on, given its rank in the list. If no list is defined (i.e. for all the file), returns <nument> itself, to give all the entities of the file Returns 0 if <nument> out of range.
 ") ItemNum;
 		Standard_Integer ItemNum(const Standard_Integer nument);
 
@@ -757,7 +756,7 @@ None
 
 Description
 -----------
-Prepares a contextmodif with these information: - the graph established from original model (target passed directly to modifier) - the copytool which detains the copycontrol, which maps starting (in original) and result (in target) entities - an optional file name (for file output) //! such a contextmodif is considered to be applied on all transferred entities (no filter active).
+Prepares a ContextModif with these information: - the graph established from original model (target passed directly to Modifier) - the CopyTool which detains the CopyControl, which maps starting (in original) and result (in target) entities - an optional file name (for file output) //! Such a ContextModif is considered to be applied on all transferred entities (no filter active).
 ") IFSelect_ContextModif;
 		 IFSelect_ContextModif(const Interface_Graph & graph, const Interface_CopyTool & TC, Standard_CString filename = "");
 
@@ -776,7 +775,7 @@ None
 
 Description
 -----------
-Prepares a contextmodif with these information: - the graph established from original model (target passed directly to modifier) - an optional file name (for file output) here, no copycontrol, hence all entities are considered equal as starting and result //! such a contextmodif is considered to be applied on all transferred entities (no filter active).
+Prepares a ContextModif with these information: - the graph established from original model (target passed directly to Modifier) - an optional file name (for file output) Here, no CopyControl, hence all entities are considered equal as starting and result //! Such a ContextModif is considered to be applied on all transferred entities (no filter active).
 ") IFSelect_ContextModif;
 		 IFSelect_ContextModif(const Interface_Graph & graph, Standard_CString filename = "");
 
@@ -794,7 +793,7 @@ None
 
 Description
 -----------
-Adds a check to the checklist. if it is empty, nothing is done if it concerns an entity from the original model (by setentity) to which another check is attached, it is merged to it. else, it is added or merged as to globalcheck.
+Adds a Check to the CheckList. If it is empty, nothing is done If it concerns an Entity from the Original Model (by SetEntity) to which another Check is attached, it is merged to it. Else, it is added or merged as to GlobalCheck.
 ") AddCheck;
 		void AddCheck(const opencascade::handle<Interface_Check> & check);
 
@@ -814,7 +813,7 @@ None
 
 Description
 -----------
-Adds a fail message for an entity from the original model if <start> is not an entity from the original model (e.g. the model itself) this message is added to global check.
+Adds a Fail Message for an Entity from the original Model If <start> is not an Entity from the original model (e.g. the model itself) this message is added to Global Check.
 ") AddFail;
 		void AddFail(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
@@ -834,7 +833,7 @@ None
 
 Description
 -----------
-Adds a warning message for an entity from the original model if <start> is not an entity from the original model (e.g. the model itself) this message is added to global check.
+Adds a Warning Message for an Entity from the original Model If <start> is not an Entity from the original model (e.g. the model itself) this message is added to Global Check.
 ") AddWarning;
 		void AddWarning(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
@@ -852,7 +851,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns a check given an entity number (in the original model) by default a global check. creates it the first time. it can then be acknowledged on the spot, in condition that the caller works by reference ('interface_check& check = ...').
+Returns a Check given an Entity number (in the original Model) by default a Global Check. Creates it the first time. It can then be acknowledged on the spot, in condition that the caller works by reference ('Interface_Check& check = ...').
 ") CCheck;
 		opencascade::handle<Interface_Check> CCheck(const Standard_Integer num = 0);
 
@@ -870,7 +869,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns a check attached to an entity from the original model it can then be acknowledged on the spot, in condition that the caller works by reference ('interface_check& check = ...').
+Returns a Check attached to an Entity from the original Model It can then be acknowledged on the spot, in condition that the caller works by reference ('Interface_Check& check = ...').
 ") CCheck;
 		opencascade::handle<Interface_Check> CCheck(const opencascade::handle<Standard_Transient> & start);
 
@@ -883,7 +882,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the complete checklist.
+Returns the complete CheckList.
 ") CheckList;
 		Interface_CheckIterator CheckList();
 
@@ -909,7 +908,7 @@ str
 
 Description
 -----------
-Returns file name (can be empty).
+Returns File Name (can be empty).
 ") FileName;
 		Standard_CString FileName();
 
@@ -922,7 +921,7 @@ bool
 
 Description
 -----------
-Returns true if a non empty file name has been defined.
+Returns True if a non empty file name has been defined.
 ") HasFileName;
 		Standard_Boolean HasFileName();
 
@@ -935,7 +934,7 @@ bool
 
 Description
 -----------
-Returns true if no filter is defined: a modifier has to work on all entities of the resulting (target) model.
+Returns True if no filter is defined: a Modifier has to work on all entities of the resulting (target) model.
 ") IsForAll;
 		Standard_Boolean IsForAll();
 
@@ -948,7 +947,7 @@ bool
 
 Description
 -----------
-Returns true if select has determined that a modifier may not be run (filter defined and empty).
+Returns True if Select has determined that a Modifier may not be run (filter defined and empty).
 ") IsForNone;
 		Standard_Boolean IsForNone();
 
@@ -966,7 +965,7 @@ bool
 
 Description
 -----------
-Returns true if a starting item has been transferred and selected.
+Returns True if a starting item has been transferred and selected.
 ") IsSelected;
 		Standard_Boolean IsSelected(const opencascade::handle<Standard_Transient> & ent);
 
@@ -984,7 +983,7 @@ bool
 
 Description
 -----------
-Returns true if a starting item has been transferred.
+Returns True if a starting item has been transferred.
 ") IsTransferred;
 		Standard_Boolean IsTransferred(const opencascade::handle<Standard_Transient> & ent);
 
@@ -997,7 +996,7 @@ bool
 
 Description
 -----------
-Returns true until the iteration has finished.
+Returns True until the iteration has finished.
 ") More;
 		Standard_Boolean More();
 
@@ -1023,7 +1022,7 @@ Interface_Graph
 
 Description
 -----------
-Returns the original graph (compared to originalmodel, it gives more query capabilitites).
+Returns the original Graph (compared to OriginalModel, it gives more query capabilitites).
 ") OriginalGraph;
 		const Interface_Graph & OriginalGraph();
 
@@ -1049,7 +1048,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the protocol (null if not set).
+Returns the Protocol (Null if not set).
 ") Protocol;
 		opencascade::handle<Interface_Protocol> Protocol();
 
@@ -1067,7 +1066,7 @@ None
 
 Description
 -----------
-This method requires contextmodif to be applied with a filter. if a modelmodifier is defined with a selection criterium, the result of this selection is used as a filter: - if none of its items has been transferred, the modification does not apply at all - else, the modifier can query for what entities were selected and what are their results - if this method is not called before working, the modifier has to work on the whole model.
+This method requires ContextModif to be applied with a filter. If a ModelModifier is defined with a Selection criterium, the result of this Selection is used as a filter: - if none of its items has been transferred, the modification does not apply at all - else, the Modifier can query for what entities were selected and what are their results - if this method is not called before working, the Modifier has to work on the whole Model.
 ") Select;
 		void Select(Interface_EntityIterator & list);
 
@@ -1093,7 +1092,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of original selected items. see also the iteration.
+Returns the list of original selected items. See also the iteration.
 ") SelectedOriginal;
 		Interface_EntityIterator SelectedOriginal();
 
@@ -1106,7 +1105,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of resulting counterparts of selected items. see also the iteration.
+Returns the list of resulting counterparts of selected items. See also the iteration.
 ") SelectedResult;
 		Interface_EntityIterator SelectedResult();
 
@@ -1124,7 +1123,7 @@ None
 
 Description
 -----------
-Allows to transmit a protocol as part of a contextmodif.
+Allows to transmit a Protocol as part of a ContextModif.
 ") SetProtocol;
 		void SetProtocol(const opencascade::handle<Interface_Protocol> & proto);
 
@@ -1137,7 +1136,7 @@ None
 
 Description
 -----------
-Starts an iteration on selected items. it takes into account isforall/isfornone, by really iterating on all selected items.
+Starts an iteration on selected items. It takes into account IsForAll/IsForNone, by really iterating on all selected items.
 ") Start;
 		void Start();
 
@@ -1155,7 +1154,7 @@ None
 
 Description
 -----------
-Traces the modification of the current entity (see above, valueoriginal and valueresult) for default trace level >= 2. to be called on each individual entity really modified <mess> is an optional additional message.
+Traces the modification of the current entity (see above, ValueOriginal and ValueResult) for default trace level >= 2. To be called on each individual entity really modified <mess> is an optional additional message.
 ") Trace;
 		void Trace(Standard_CString mess = "");
 
@@ -1173,7 +1172,7 @@ None
 
 Description
 -----------
-Traces the application of a modifier. works with default trace file and level. fills the trace if default trace level is at least 1. traces the modifier (its label) and its selection if there is one (its label). to be called after select (because status isforall is printed) worths to trace a global modification. see also trace below.
+Traces the application of a Modifier. Works with default trace File and Level. Fills the trace if default trace level is at least 1. Traces the Modifier (its Label) and its Selection if there is one (its Label). To be called after Select (because status IsForAll is printed) Worths to trace a global modification. See also Trace below.
 ") TraceModifier;
 		void TraceModifier(const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
@@ -1238,7 +1237,7 @@ None
 
 Description
 -----------
-Prepares a contextwrite with these information: - the model which is to be written - the protocol to be used - the filename - an object appliedmodifiers to work. it gives a list of filemodifiers to be ran, and for each one it can give a restricted list of entities (in the model), else all the model is considered.
+Prepares a ContextWrite with these information: - the model which is to be written - the protocol to be used - the filename - an object AppliedModifiers to work. It gives a list of FileModifiers to be ran, and for each one it can give a restricted list of entities (in the model), else all the model is considered.
 ") IFSelect_ContextWrite;
 		 IFSelect_ContextWrite(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & proto, const opencascade::handle<IFSelect_AppliedModifiers> & applieds, Standard_CString filename);
 
@@ -1259,7 +1258,7 @@ None
 
 Description
 -----------
-Same as above but with an already computed graph.
+Same as above but with an already computed Graph.
 ") IFSelect_ContextWrite;
 		 IFSelect_ContextWrite(const opencascade::handle<Interface_HGraph> & hgraph, const opencascade::handle<Interface_Protocol> & proto, const opencascade::handle<IFSelect_AppliedModifiers> & applieds, Standard_CString filename);
 
@@ -1277,7 +1276,7 @@ None
 
 Description
 -----------
-Adds a check to the checklist. if it is empty, nothing is done if it concerns an entity from the model (by setentity) to which another check is attached, it is merged to it. else, it is added or merged as to globalcheck.
+Adds a Check to the CheckList. If it is empty, nothing is done If it concerns an Entity from the Model (by SetEntity) to which another Check is attached, it is merged to it. Else, it is added or merged as to GlobalCheck.
 ") AddCheck;
 		void AddCheck(const opencascade::handle<Interface_Check> & check);
 
@@ -1297,7 +1296,7 @@ None
 
 Description
 -----------
-Adds a fail message for an entity from the model if <start> is not an entity from the model (e.g. the model itself) this message is added to global check.
+Adds a Fail Message for an Entity from the Model If <start> is not an Entity from the model (e.g. the model itself) this message is added to Global Check.
 ") AddFail;
 		void AddFail(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
@@ -1317,7 +1316,7 @@ None
 
 Description
 -----------
-Adds a warning message for an entity from the model if <start> is not an entity from the model (e.g. the model itself) this message is added to global check.
+Adds a Warning Message for an Entity from the Model If <start> is not an Entity from the model (e.g. the model itself) this message is added to Global Check.
 ") AddWarning;
 		void AddWarning(const opencascade::handle<Standard_Transient> & start, Standard_CString mess, Standard_CString orig = "");
 
@@ -1330,7 +1329,7 @@ opencascade::handle<IFSelect_AppliedModifiers>
 
 Description
 -----------
-Returns the object appliedmodifiers.
+Returns the object AppliedModifiers.
 ") AppliedModifiers;
 		opencascade::handle<IFSelect_AppliedModifiers> AppliedModifiers();
 
@@ -1348,7 +1347,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns a check given an entity number (in the model) by default a global check. creates it the first time. it can then be acknowledged on the spot, in condition that the caller works by reference ('interface_check& check = ...').
+Returns a Check given an Entity number (in the Model) by default a Global Check. Creates it the first time. It can then be acknowledged on the spot, in condition that the caller works by reference ('Interface_Check& check = ...').
 ") CCheck;
 		opencascade::handle<Interface_Check> CCheck(const Standard_Integer num = 0);
 
@@ -1366,7 +1365,7 @@ opencascade::handle<Interface_Check>
 
 Description
 -----------
-Returns a check attached to an entity from the model it can then be acknowledged on the spot, in condition that the caller works by reference ('interface_check& check = ...').
+Returns a Check attached to an Entity from the Model It can then be acknowledged on the spot, in condition that the caller works by reference ('Interface_Check& check = ...').
 ") CCheck;
 		opencascade::handle<Interface_Check> CCheck(const opencascade::handle<Standard_Transient> & start);
 
@@ -1379,7 +1378,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the complete checklist.
+Returns the complete CheckList.
 ") CheckList;
 		Interface_CheckIterator CheckList();
 
@@ -1392,7 +1391,7 @@ opencascade::handle<IFSelect_GeneralModifier>
 
 Description
 -----------
-Returns the currently active file modifier. cast to be done null if not properly set: must be test isnull after casting.
+Returns the currently active File Modifier. Cast to be done Null if not properly set: must be test IsNull after casting.
 ") FileModifier;
 		opencascade::handle<IFSelect_GeneralModifier> FileModifier();
 
@@ -1405,7 +1404,7 @@ str
 
 Description
 -----------
-Returns the file name.
+Returns the File Name.
 ") FileName;
 		Standard_CString FileName();
 
@@ -1418,7 +1417,7 @@ Interface_Graph
 
 Description
 -----------
-Returns the graph, either given when created, else created the first time it is queried.
+Returns the Graph, either given when created, else created the first time it is queried.
 ") Graph;
 		const Interface_Graph & Graph();
 
@@ -1431,7 +1430,7 @@ bool
 
 Description
 -----------
-Returns true if the current modifier is to be applied to the whole model. else, a restricted list of selected entities is defined, it can be exploited by the file modifier.
+Returns True if the current modifier is to be applied to the whole model. Else, a restricted list of selected entities is defined, it can be exploited by the File Modifier.
 ") IsForAll;
 		Standard_Boolean IsForAll();
 
@@ -1444,7 +1443,7 @@ bool
 
 Description
 -----------
-Returns true if no modifier is currently set.
+Returns True if no modifier is currently set.
 ") IsForNone;
 		Standard_Boolean IsForNone();
 
@@ -1457,7 +1456,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model.
+Returns the Model.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -1470,7 +1469,7 @@ bool
 
 Description
 -----------
-Returns true until the iteration has finished.
+Returns True until the iteration has finished.
 ") More;
 		Standard_Boolean More();
 
@@ -1496,7 +1495,7 @@ int
 
 Description
 -----------
-Returns the count of recorded file modifiers.
+Returns the count of recorded File Modifiers.
 ") NbModifiers;
 		Standard_Integer NbModifiers();
 
@@ -1522,7 +1521,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the protocol;.
+Returns the Protocol;.
 ") Protocol;
 		opencascade::handle<Interface_Protocol> Protocol();
 
@@ -1540,7 +1539,7 @@ bool
 
 Description
 -----------
-Sets active the file modifier n0 <numod> then, it prepares the list of entities to consider, if any returns false if <numod> out of range.
+Sets active the File Modifier n0 <numod> Then, it prepares the list of entities to consider, if any Returns False if <numod> out of range.
 ") SetModifier;
 		Standard_Boolean SetModifier(const Standard_Integer numod);
 
@@ -1553,7 +1552,7 @@ None
 
 Description
 -----------
-Starts an iteration on selected items. it takes into account isforall/isfornone, by really iterating on all selected items.
+Starts an iteration on selected items. It takes into account IsForAll/IsForNone, by really iterating on all selected items.
 ") Start;
 		void Start();
 
@@ -1594,7 +1593,7 @@ bool
 
 Description
 -----------
-Returns true if a dispatch can have a remainder, i.e. if its criterium can let entities apart. it is a potential answer, remainder can be empty at run-time even if answer is true. (to attach a remainderfromdispatch selection is not allowed if answer is true). default answer given here is false (can be redefined).
+Returns True if a Dispatch can have a Remainder, i.e. if its criterium can let entities apart. It is a potential answer, remainder can be empty at run-time even if answer is True. (to attach a RemainderFromDispatch Selection is not allowed if answer is True). Default answer given here is False (can be redefined).
 ") CanHaveRemainder;
 		virtual Standard_Boolean CanHaveRemainder();
 
@@ -1607,7 +1606,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns the final selection of a dispatch we 'd like: c++: return const &.
+Returns the Final Selection of a Dispatch we 'd like: C++: return const &.
 ") FinalSelection;
 		opencascade::handle<IFSelect_Selection> FinalSelection();
 
@@ -1625,7 +1624,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Gets unique root entities from the final selection, given an input graph this the starting step for an evaluation (packets - remainder).
+Gets Unique Root Entities from the Final Selection, given an input Graph This the starting step for an Evaluation (Packets - Remainder).
 ") GetEntities;
 		Interface_EntityIterator GetEntities(const Interface_Graph & G);
 
@@ -1638,7 +1637,7 @@ bool
 
 Description
 -----------
-Returns true if a specific root name has been set (else, the default root name has to be used).
+Returns True if a specific Root Name has been set (else, the Default Root Name has to be used).
 ") HasRootName;
 		Standard_Boolean HasRootName();
 
@@ -1651,7 +1650,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text which defines the way a dispatch produces packets (which will become files) from its input.
+Returns a text which defines the way a Dispatch produces packets (which will become files) from its Input.
 ") Label;
 		virtual TCollection_AsciiString Label();
 
@@ -1669,7 +1668,7 @@ max: int
 
 Description
 -----------
-Returns true if a dispatch generates a count of packets always less than or equal to a maximum value: it can be computed from the total count of entities to be dispatched: <nbent>. if answer is false, no limited maximum is expected for account if answer is true, expected maximum is given in argument <max> default answer given here is false (can be redefined).
+Returns True if a Dispatch generates a count of Packets always less than or equal to a maximum value: it can be computed from the total count of Entities to be dispatched: <nbent>. If answer is False, no limited maximum is expected for account If answer is True, expected maximum is given in argument <max> Default answer given here is False (can be redefined).
 ") LimitedMax;
 		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
 
@@ -1687,7 +1686,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of all input entities (see getentities) which are put in a packet. that is, entities listed in getentities but not in remainder (see below). input is given as a graph.
+Returns the list of all Input Entities (see GetEntities) which are put in a Packet. That is, Entities listed in GetEntities but not in Remainder (see below). Input is given as a Graph.
 ") Packeted;
 		Interface_EntityIterator Packeted(const Interface_Graph & G);
 
@@ -1706,7 +1705,7 @@ None
 
 Description
 -----------
-Returns the list of produced packets into argument <pack>. each packet corresponds to a part, the entities listed are the roots given by the selection. input is given as a graph. thus, to create a file from a packet, it suffices to take the entities listed in a part of packets (that is, a packet) without worrying about shared entities this method can raise an exception if data are not coherent.
+Returns the list of produced Packets into argument <pack>. Each Packet corresponds to a Part, the Entities listed are the Roots given by the Selection. Input is given as a Graph. Thus, to create a file from a packet, it suffices to take the entities listed in a Part of Packets (that is, a Packet) without worrying about Shared entities This method can raise an Exception if data are not coherent.
 ") Packets;
 		virtual void Packets(const Interface_Graph & G, IFGraph_SubPartsIterator & packs);
 
@@ -1724,7 +1723,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns remainder which is a set of entities. can be empty. default evaluation is empty (has to be redefined if canhaveremainder is redefined to return true).
+Returns Remainder which is a set of Entities. Can be empty. Default evaluation is empty (has to be redefined if CanHaveRemainder is redefined to return True).
 ") Remainder;
 		virtual Interface_EntityIterator Remainder(const Interface_Graph & G);
 
@@ -1737,7 +1736,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the root name for files produced by this dispatch it is empty if it has not been set or if it has been reset.
+Returns the Root Name for files produced by this dispatch It is empty if it has not been set or if it has been reset.
 ") RootName;
 		const opencascade::handle<TCollection_HAsciiString> & RootName();
 
@@ -1750,7 +1749,7 @@ IFSelect_SelectionIterator
 
 Description
 -----------
-Returns the complete list of source selections (starting from finalselection).
+Returns the complete list of source Selections (starting from FinalSelection).
 ") Selections;
 		IFSelect_SelectionIterator Selections();
 
@@ -1768,7 +1767,7 @@ None
 
 Description
 -----------
-Stores (or changes) the final selection for a dispatch.
+Stores (or Changes) the Final Selection for a Dispatch.
 ") SetFinalSelection;
 		void SetFinalSelection(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -1786,7 +1785,7 @@ None
 
 Description
 -----------
-Sets a root name as an hasciistring to reset it, give a null handle (then, a shareout will have to define the default root name).
+Sets a Root Name as an HAsciiString To reset it, give a Null Handle (then, a ShareOut will have to define the Default Root Name).
 ") SetRootName;
 		void SetRootName(const opencascade::handle<TCollection_HAsciiString> & name);
 
@@ -1823,7 +1822,7 @@ None
 
 Description
 -----------
-Creates a complete editform from an editor a specific label can be given.
+Creates a complete EditForm from an Editor A specific Label can be given.
 ") IFSelect_EditForm;
 		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const Standard_Boolean readonly, const Standard_Boolean undoable, Standard_CString label = "");
 
@@ -1845,7 +1844,7 @@ None
 
 Description
 -----------
-Creates an extracted editform from an editor, limited to the values identified in <nums> a specific label can be given.
+Creates an extracted EditForm from an Editor, limited to the values identified in <nums> A specific Label can be given.
 ") IFSelect_EditForm;
 		 IFSelect_EditForm(const opencascade::handle<IFSelect_Editor> & editor, const TColStd_SequenceOfInteger & nums, const Standard_Boolean readonly, const Standard_Boolean undoable, Standard_CString label = "");
 
@@ -1858,7 +1857,7 @@ bool
 
 Description
 -----------
-Applies modifications to own data calls applydata then clears status according editkeepstatus.
+Applies modifications to own data Calls ApplyData then Clears Status according EditKeepStatus.
 ") Apply;
 		Standard_Boolean Apply();
 
@@ -1877,7 +1876,7 @@ bool
 
 Description
 -----------
-Applies modifications to data default uses editor. can be redefined.
+Applies modifications to data Default uses Editor. Can be redefined.
 ") ApplyData;
 		virtual Standard_Boolean ApplyData(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -1908,7 +1907,7 @@ None
 
 Description
 -----------
-Clears modification status: by default all, or one by its numbers (in the editor).
+Clears modification status: by default all, or one by its numbers (in the Editor).
 ") ClearEdit;
 		void ClearEdit(const Standard_Integer num = 0);
 
@@ -1939,7 +1938,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns the edited value as a list if ismodified is false, returns originalvalue null with ismodified true: means that this value is not defined or has been removed for a single parameter, gives a null handle.
+Returns the Edited Value as a list If IsModified is False, returns OriginalValue Null with IsModified True: means that this value is not defined or has been removed For a single parameter, gives a Null Handle.
 ") EditedList;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> EditedList(const Standard_Integer num);
 
@@ -1957,7 +1956,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the edited (i.e. modified) value (string for single) <num> reports to the editform if ismodified is false, returns originalvalue null with ismodified true: means that this value is not defined or has been removed it is for a single parameter. for a list, gives a null handle.
+Returns the Edited (i.e. Modified) Value (string for single) <num> reports to the EditForm If IsModified is False, returns OriginalValue Null with IsModified True: means that this value is not defined or has been removed It is for a single parameter. For a list, gives a Null Handle.
 ") EditedValue;
 		opencascade::handle<TCollection_HAsciiString> EditedValue(const Standard_Integer num);
 
@@ -1996,7 +1995,7 @@ bool
 
 Description
 -----------
-Tells if an editform is complete or is an extract from editor.
+Tells if an EditForm is complete or is an extract from Editor.
 ") IsComplete;
 		Standard_Boolean IsComplete();
 
@@ -2009,7 +2008,7 @@ bool
 
 Description
 -----------
-Tells if the editform is loaded now.
+Tells if the EditForm is loaded now.
 ") IsLoaded;
 		Standard_Boolean IsLoaded();
 
@@ -2027,7 +2026,7 @@ bool
 
 Description
 -----------
-Tells if a value (of the editform) is modified (directly or through touching by update).
+Tells if a Value (of the EditForm) is modified (directly or through touching by Update).
 ") IsModified;
 		Standard_Boolean IsModified(const Standard_Integer num);
 
@@ -2045,7 +2044,7 @@ bool
 
 Description
 -----------
-Tells if a value (of the editform) has been touched, i.e. not modified directly but by the modification of another one (by method update from the editor).
+Tells if a Value (of the EditForm) has been touched, i.e. not modified directly but by the modification of another one (by method Update from the Editor).
 ") IsTouched;
 		Standard_Boolean IsTouched(const Standard_Integer num);
 
@@ -2076,7 +2075,7 @@ opencascade::handle<IFSelect_ListEditor>
 
 Description
 -----------
-Returns a listeditor to edit the parameter <num> of the editform, if it is a list the editor created it (by listeditor) then loads it (by listvalue) for a single parameter, returns a null handle ...
+Returns a ListEditor to edit the parameter <num> of the EditForm, if it is a List The Editor created it (by ListEditor) then loads it (by ListValue) For a single parameter, returns a Null Handle ...
 ") ListEditor;
 		opencascade::handle<IFSelect_ListEditor> ListEditor(const Standard_Integer num);
 
@@ -2095,7 +2094,7 @@ bool
 
 Description
 -----------
-Loads modifications to data default uses editor. can be redefined remark that <ent> and/or <model> may be null, according to the kind of editor. shortcuts are available for these cases, but they finally call loaddata (hence, just ignore non-used args).
+Loads modifications to data Default uses Editor. Can be redefined Remark that <ent> and/or <model> may be null, according to the kind of Editor. Shortcuts are available for these cases, but they finally call LoadData (hence, just ignore non-used args).
 ") LoadData;
 		virtual Standard_Boolean LoadData(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2108,7 +2107,7 @@ bool
 
 Description
 -----------
-Shortcut when both <ent> and <model> are not used (when the editor works on fully static or global data).
+Shortcut when both <ent> and <model> are not used (when the Editor works on fully static or global data).
 ") LoadData;
 		Standard_Boolean LoadData();
 
@@ -2121,7 +2120,7 @@ None
 
 Description
 -----------
-For a read-write undoable editform, loads original values from defaults stored in the editor.
+For a read-write undoable EditForm, loads original values from defaults stored in the Editor.
 ") LoadDefault;
 		void LoadDefault();
 
@@ -2139,7 +2138,7 @@ bool
 
 Description
 -----------
-Shortcut for loaddata when <model> is not used.
+Shortcut for LoadData when <model> is not used.
 ") LoadEntity;
 		Standard_Boolean LoadEntity(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2158,7 +2157,7 @@ None
 
 Description
 -----------
-Loads an original value as a list. called by the editor only.
+Loads an original value as a list. Called by the Editor only.
 ") LoadList;
 		void LoadList(const Standard_Integer num, const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list);
 
@@ -2176,7 +2175,7 @@ bool
 
 Description
 -----------
-Shortcut for loaddata when only the model is concerned.
+Shortcut for LoadData when only the model is concerned.
 ") LoadModel;
 		Standard_Boolean LoadModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2195,7 +2194,7 @@ None
 
 Description
 -----------
-Loads an original value (single). called by the editor only.
+Loads an original value (single). Called by the Editor only.
 ") LoadValue;
 		void LoadValue(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -2228,7 +2227,7 @@ bool
 
 Description
 -----------
-Gives a new value for the item <num> of the editform, if it is a single parameter (for a list, just returns false) null means to remove it <enforce> true to overpass protected or computed access mode calls the method update from the editor, which can touch other parameters (see nbtouched) returns true if well recorded, false if this value is not allowed warning: does not apply immediately: will be applied by the method apply.
+Gives a new value for the item <num> of the EditForm, if it is a single parameter (for a list, just returns False) Null means to Remove it <enforce> True to overpass Protected or Computed Access Mode Calls the method Update from the Editor, which can touch other parameters (see NbTouched) Returns True if well recorded, False if this value is not allowed Warning: Does not apply immediately: will be applied by the method Apply.
 ") Modify;
 		Standard_Boolean Modify(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & newval, const Standard_Boolean enforce = Standard_False);
 
@@ -2248,7 +2247,7 @@ bool
 
 Description
 -----------
-Changes the value of an item of the editform, if it is a list (else, just returns false) the listeditor contains the edited values of the list if no edition was recorded, just returns false calls the method update from the editor, which can touch other parameters (see nbtouched) returns true if well recorded, false if this value is not allowed warning: does not apply immediately: will be applied by the method apply.
+Changes the value of an item of the EditForm, if it is a List (else, just returns False) The ListEditor contains the edited values of the list If no edition was recorded, just returns False Calls the method Update from the Editor, which can touch other parameters (see NbTouched) Returns True if well recorded, False if this value is not allowed Warning: Does not apply immediately: will be applied by the method Apply.
 ") ModifyList;
 		Standard_Boolean ModifyList(const Standard_Integer num, const opencascade::handle<IFSelect_ListEditor> & edited, const Standard_Boolean enforce = Standard_False);
 
@@ -2268,7 +2267,7 @@ bool
 
 Description
 -----------
-As modifylist but the new value is given as such creates a listeditor, loads it, then calls modifylist.
+As ModifyList but the new value is given as such Creates a ListEditor, Loads it, then calls ModifyList.
 ") ModifyListValue;
 		Standard_Boolean ModifyListValue(const Standard_Integer num, const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list, const Standard_Boolean enforce = Standard_False);
 
@@ -2286,7 +2285,7 @@ int
 
 Description
 -----------
-Returns the value number in the editor for a given name i.e. the true valuenumber which can be used in various methods of editform if it is not complete, for a recorded (in the editor) but non-loaded name, returns negative value (- number).
+Returns the Value Number in the Editor for a given Name i.e. the true ValueNumber which can be used in various methods of EditForm If it is not complete, for a recorded (in the Editor) but non-loaded name, returns negative value (- number).
 ") NameNumber;
 		Standard_Integer NameNumber(Standard_CString name);
 
@@ -2304,7 +2303,7 @@ int
 
 Description
 -----------
-Returns the rank of value in the editform for a given name i.e. if it is not complete, for a recorded (in the editor) but non-loaded name, returns 0.
+Returns the Rank of Value in the EditForm for a given Name i.e. if it is not complete, for a recorded (in the Editor) but non-loaded name, returns 0.
 ") NameRank;
 		Standard_Integer NameRank(Standard_CString name);
 
@@ -2322,7 +2321,7 @@ int
 
 Description
 -----------
-Returns the count of values <editable> true: count of editable values, i.e. for a complete editform, it is given by the editor else, it is the length of the extraction map <editable> false: all the values from the editor.
+Returns the count of values <editable> True: count of editable values, i.e. For a complete EditForm, it is given by the Editor Else, it is the length of the extraction map <editable> False: all the values from the Editor.
 ") NbValues;
 		Standard_Integer NbValues(const Standard_Boolean editable);
 
@@ -2340,7 +2339,7 @@ int
 
 Description
 -----------
-Returns the value number in the editor from a given rank in the editform for a complete editform, both are equal else, it is given by the extraction map returns 0 if <rank> exceeds the count of editable values,.
+Returns the Value Number in the Editor from a given Rank in the EditForm For a complete EditForm, both are equal Else, it is given by the extraction map Returns 0 if <rank> exceeds the count of editable values,.
 ") NumberFromRank;
 		Standard_Integer NumberFromRank(const Standard_Integer rank);
 
@@ -2358,7 +2357,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns an original value, as a list <num> is for the editform, not the editor for a single parameter, gives a null handle.
+Returns an original value, as a list <num> is for the EditForm, not the Editor For a single parameter, gives a Null Handle.
 ") OriginalList;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> OriginalList(const Standard_Integer num);
 
@@ -2376,7 +2375,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-From an edited value, returns its ... value (original one) null means that this value is not defined <num> is for the editform, not the editor it is for a single parameter. for a list, gives a null handle.
+From an edited value, returns its ... value (original one) Null means that this value is not defined <num> is for the EditForm, not the Editor It is for a single parameter. For a list, gives a Null Handle.
 ") OriginalValue;
 		opencascade::handle<TCollection_HAsciiString> OriginalValue(const Standard_Integer num);
 
@@ -2393,7 +2392,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints definitions, relative to the editor.
+Prints Definitions, relative to the Editor.
 ") PrintDefs;
 		void PrintDefs(std::ostream &OutValue);
 
@@ -2413,7 +2412,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints values, according to what and alsolist <names> true: prints long names; false: prints short names <what> < 0: prints original values (+ flag modified) <what> > 0: prints final values (+flag modified) <what> = 0: prints modified values (original + edited) <alsolist> false (d): lists are printed only as their count <alsolist> true: lists are printed for all their items.
+Prints Values, according to what and alsolist <names> True: prints Long Names; False: prints Short Names <what> < 0: prints Original Values (+ flag Modified) <what> > 0: prints Final Values (+flag Modified) <what> = 0: prints Modified Values (Original + Edited) <alsolist> False (D): lists are printed only as their count <alsolist> True: lists are printed for all their items.
 ") PrintValues;
 		void PrintValues(std::ostream &OutValue, const Standard_Integer what, const Standard_Boolean names, const Standard_Boolean alsolist = Standard_False);
 
@@ -2431,7 +2430,7 @@ int
 
 Description
 -----------
-Returns the rank in the editform from a given number of value for the editor for a complete editform, both are equal else, it is given by the extraction map returns 0 if <number> is not forecast to be edited, or is out of range.
+Returns the Rank in the EditForm from a given Number of Value for the Editor For a complete EditForm, both are equal Else, it is given by the extraction map Returns 0 if <number> is not forecast to be edited, or is out of range.
 ") RankFromNumber;
 		Standard_Integer RankFromNumber(const Standard_Integer number);
 
@@ -2444,7 +2443,7 @@ bool
 
 Description
 -----------
-Tells if this editform can work with its editor and its actual data (entity and model) default uses editor. can be redefined.
+Tells if this EditForm can work with its Editor and its actual Data (Entity and Model) Default uses Editor. Can be redefined.
 ") Recognize;
 		virtual Standard_Boolean Recognize();
 
@@ -2518,7 +2517,7 @@ bool
 
 Description
 -----------
-Gives a new value computed by the editor, if another parameter commands the value of <num> it is generally the case for a computed parameter for instance increments the counter of touched parameters warning: it gives no protection for readonly etc... while it is the internal way of touching parameters does not work (returns false) if <num> is for a list.
+Gives a new value computed by the Editor, if another parameter commands the value of <num> It is generally the case for a Computed Parameter for instance Increments the counter of touched parameters Warning: it gives no protection for ReadOnly etc... while it is the internal way of touching parameters Does not work (returns False) if <num> is for a list.
 ") Touch;
 		Standard_Boolean Touch(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & newval);
 
@@ -2537,7 +2536,7 @@ bool
 
 Description
 -----------
-Acts as touch but for a list does not work (returns false) if <num> is for a single param.
+Acts as Touch but for a list Does not work (returns False) if <num> is for a single param.
 ") TouchList;
 		Standard_Boolean TouchList(const Standard_Integer num, const opencascade::handle<TColStd_HSequenceOfHAsciiString> & newlist);
 
@@ -2550,7 +2549,7 @@ bool
 
 Description
 -----------
-For an undoable editform, applies ... origibal values ! and clears modified ones can be run only once.
+For an undoable EditForm, Applies ... origibal values ! and clears modified ones Can be run only once.
 ") Undo;
 		Standard_Boolean Undo();
 
@@ -2591,7 +2590,7 @@ bool
 
 Description
 -----------
-Applies modified values of the editform with some data remark: <ent> may be null, this means all <model> is concerned also <model> may be null, if no context applies for <ent> and both <ent> and <model> may be null, for a full static editor.
+Applies modified values of the EditForm with some data Remark: <ent> may be Null, this means all <model> is concerned Also <model> may be Null, if no context applies for <ent> And both <ent> and <model> may be Null, for a full static editor.
 ") Apply;
 		virtual Standard_Boolean Apply(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2609,7 +2608,7 @@ IFSelect_EditValue
 
 Description
 -----------
-Returns the edit mode of a value.
+Returns the edit mode of a Value.
 ") EditMode;
 		IFSelect_EditValue EditMode(const Standard_Integer num);
 
@@ -2628,7 +2627,7 @@ opencascade::handle<IFSelect_EditForm>
 
 Description
 -----------
-Builds and returns an editform, empty (no data yet) can be redefined to return a specific type of editform.
+Builds and Returns an EditForm, empty (no data yet) Can be redefined to return a specific type of EditForm.
 ") Form;
 		virtual opencascade::handle<IFSelect_EditForm> Form(const Standard_Boolean readonly, const Standard_Boolean undoable = Standard_True);
 
@@ -2677,7 +2676,7 @@ opencascade::handle<IFSelect_ListEditor>
 
 Description
 -----------
-Returns a listeditor for a parameter which is a list default returns a basic listeditor for a list, a null handle if <num> is not for a list. can be redefined.
+Returns a ListEditor for a parameter which is a List Default returns a basic ListEditor for a List, a Null Handle if <num> is not for a List. Can be redefined.
 ") ListEditor;
 		virtual opencascade::handle<IFSelect_ListEditor> ListEditor(const Standard_Integer num);
 
@@ -2696,7 +2695,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns the value of an editform as a list, for a given item if not a list, a null handle should be returned default returns a null handle, because many editors have no list to edit. to be redefined as required.
+Returns the value of an EditForm as a List, for a given item If not a list, a Null Handle should be returned Default returns a Null Handle, because many Editors have no list to edit. To be redefined as required.
 ") ListValue;
 		virtual opencascade::handle<TColStd_HSequenceOfHAsciiString> ListValue(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num);
 
@@ -2716,7 +2715,7 @@ bool
 
 Description
 -----------
-Loads original values from some data, to an editform remark: <ent> may be null, this means all <model> is concerned also <model> may be null, if no context applies for <ent> and both <ent> and <model> may be null, for a full static editor.
+Loads original values from some data, to an EditForm Remark: <ent> may be Null, this means all <model> is concerned Also <model> may be Null, if no context applies for <ent> And both <ent> and <model> may be Null, for a full static editor.
 ") Load;
 		virtual Standard_Boolean Load(const opencascade::handle<IFSelect_EditForm> & form, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -2752,7 +2751,7 @@ int
 
 Description
 -----------
-Returns the maxlength of, according to what: <what> = -1: length of short names <what> = 0: length of complete names <what> = 1: length of values labels.
+Returns the MaxLength of, according to what: <what> = -1: length of short names <what> = 0: length of complete names <what> = 1: length of values labels.
 ") MaxNameLength;
 		Standard_Integer MaxNameLength(const Standard_Integer what);
 
@@ -2771,7 +2770,7 @@ str
 
 Description
 -----------
-Returns the name of a value (complete or short) from its ident short name can be empty.
+Returns the name of a Value (complete or short) from its ident Short Name can be empty.
 ") Name;
 		Standard_CString Name(const Standard_Integer num, const Standard_Boolean isshort = Standard_False);
 
@@ -2789,7 +2788,7 @@ int
 
 Description
 -----------
-Returns the number (ident) of a value, from its name, short or complete. if not found, returns 0.
+Returns the number (ident) of a Value, from its name, short or complete. If not found, returns 0.
 ") NameNumber;
 		Standard_Integer NameNumber(Standard_CString name);
 
@@ -2802,7 +2801,7 @@ int
 
 Description
 -----------
-Returns the count of typed values.
+Returns the count of Typed Values.
 ") NbValues;
 		Standard_Integer NbValues();
 
@@ -2855,7 +2854,7 @@ bool
 
 Description
 -----------
-Tells if this editor can work on this editform and its content (model, entity ?).
+Tells if this Editor can work on this EditForm and its content (model, entity ?).
 ") Recognize;
 		virtual Standard_Boolean Recognize(const opencascade::handle<IFSelect_EditForm> & form);
 
@@ -2874,7 +2873,7 @@ None
 
 Description
 -----------
-Sets a parameter to be a list max < 0: not for a list (set when starting) max = 0: list with no length limit (default for setlist) max > 0: list limited to <max> items.
+Sets a parameter to be a List max < 0: not for a list (set when starting) max = 0: list with no length limit (default for SetList) max > 0: list limited to <max> items.
 ") SetList;
 		void SetList(const Standard_Integer num, const Standard_Integer max = 0);
 
@@ -2895,7 +2894,7 @@ None
 
 Description
 -----------
-Sets a typed value for a given ident and short name, with an edit mode.
+Sets a Typed Value for a given ident and short name, with an Edit Mode.
 ") SetValue;
 		void SetValue(const Standard_Integer num, const opencascade::handle<Interface_TypedValue> & typval, Standard_CString shortname = "", const IFSelect_EditValue accessmode = IFSelect_Editable);
 
@@ -2914,7 +2913,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the value of an editform, for a given item (if not a list. for a list, a null string may be returned).
+Returns the value of an EditForm, for a given item (if not a list. for a list, a Null String may be returned).
 ") StringValue;
 		virtual opencascade::handle<TCollection_HAsciiString> StringValue(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num);
 
@@ -2932,7 +2931,7 @@ opencascade::handle<Interface_TypedValue>
 
 Description
 -----------
-Returns a typed value from its ident.
+Returns a Typed Value from its ident.
 ") TypedValue;
 		opencascade::handle<Interface_TypedValue> TypedValue(const Standard_Integer num);
 
@@ -2953,7 +2952,7 @@ bool
 
 Description
 -----------
-Updates the editform when a parameter is modified i.e. default does nothing, can be redefined, as follows: returns true when done (even if does nothing), false in case of refuse (for instance, if the new value is not suitable) <num> is the rank of the parameter for the editor itself <enforce> true means that protected parameters can be touched //! if a parameter commands the value of other ones, when it is modified, it is necessary to touch them by touch from editform.
+Updates the EditForm when a parameter is modified I.E. default does nothing, can be redefined, as follows: Returns True when done (even if does nothing), False in case of refuse (for instance, if the new value is not suitable) <num> is the rank of the parameter for the EDITOR itself <enforce> True means that protected parameters can be touched //! If a parameter commands the value of other ones, when it is modified, it is necessary to touch them by Touch from EditForm.
 ") Update;
 		virtual Standard_Boolean Update(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & newval, const Standard_Boolean enforce);
 
@@ -2974,7 +2973,7 @@ bool
 
 Description
 -----------
-Acts as update, but when the value is a list.
+Acts as Update, but when the value is a list.
 ") UpdateList;
 		virtual Standard_Boolean UpdateList(const opencascade::handle<IFSelect_EditForm> & form, const Standard_Integer num, const opencascade::handle<TColStd_HSequenceOfHAsciiString> & newlist, const Standard_Boolean enforce);
 
@@ -3010,7 +3009,7 @@ opencascade::handle<IFSelect_Dispatch>
 
 Description
 -----------
-Evaluates and returns a dispatch, from data of a worksession if <mode> is false, searches for exact name of dispatch in ws else (d), allows a parameter between brackets: ex.: dispatch_name(parameter) the parameter can be: an integer for disppercount or dispperfiles or the name of a signature for disppersignature returns null handle if not found not well evaluated.
+Evaluates and returns a Dispatch, from data of a WorkSession if <mode> is False, searches for exact name of Dispatch in WS Else (D), allows a parameter between brackets: ex.: dispatch_name(parameter) The parameter can be: an integer for DispPerCount or DispPerFiles or the name of a Signature for DispPerSignature Returns Null Handle if not found not well evaluated.
 ") GiveDispatch;
 		static opencascade::handle<IFSelect_Dispatch> GiveDispatch(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString name, const Standard_Boolean mode = Standard_True);
 
@@ -3029,7 +3028,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Takes the name of an entity, either as argument, or (if <name> is empty) on keyboard, and returns the entity name can be a label or a number (in alphanumeric), it is searched by numberfromlabel from worksession. if <name> doesn't match en entity, a null handle is returned.
+Takes the name of an entity, either as argument, or (if <name> is empty) on keyboard, and returns the entity name can be a label or a number (in alphanumeric), it is searched by NumberFromLabel from WorkSession. If <name> doesn't match en entity, a Null Handle is returned.
 ") GiveEntity;
 		static opencascade::handle<Standard_Transient> GiveEntity(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString name = "");
 
@@ -3048,7 +3047,7 @@ int
 
 Description
 -----------
-Same as getentity, but returns the number in the model of the entity. returns 0 for null handle.
+Same as GetEntity, but returns the number in the model of the entity. Returns 0 for null handle.
 ") GiveEntityNumber;
 		static Standard_Integer GiveEntityNumber(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString name = "");
 
@@ -3068,7 +3067,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Computes a list of entities from a worksession and two idents, first and second, as follows: if <first> is a number or label of an entity: this entity if <first> is the name of a selection in <ws>, and <second> not defined, the standard result of this selection if <first> is for a selection and <second> is defined, the standard result of this selection from the list computed with <second> (an entity or a selection) if <second> is erroneous, it is ignored.
+Computes a List of entities from a WorkSession and two idents, first and second, as follows: if <first> is a Number or Label of an entity: this entity if <first> is the name of a Selection in <WS>, and <second> not defined, the standard result of this Selection if <first> is for a Selection and <second> is defined, the standard result of this selection from the list computed with <second> (an entity or a selection) If <second> is erroneous, it is ignored.
 ") GiveList;
 		static opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString first = "", Standard_CString second = "");
 
@@ -3081,7 +3080,7 @@ None
 
 Description
 -----------
-Defines and loads all basic functions (as actfunc).
+Defines and loads all basic functions (as ActFunc).
 ") Init;
 		static void Init();
 
@@ -3114,7 +3113,7 @@ bool
 
 Description
 -----------
-Returns true if a model obtained from the dispatch <disp> is to be treated (apart from the selection criterium) if dispatch(me) is null, returns true. else, checks <disp>.
+Returns True if a Model obtained from the Dispatch <disp> is to be treated (apart from the Selection criterium) If Dispatch(me) is Null, returns True. Else, checks <disp>.
 ") Applies;
 		Standard_Boolean Applies(const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -3127,7 +3126,7 @@ opencascade::handle<IFSelect_Dispatch>
 
 Description
 -----------
-Returns the dispatch to be matched, null if not set.
+Returns the Dispatch to be matched, Null if not set.
 ") Dispatch;
 		opencascade::handle<IFSelect_Dispatch> Dispatch();
 
@@ -3140,7 +3139,7 @@ bool
 
 Description
 -----------
-Returns true if a selection is set as an additional criterium.
+Returns True if a Selection is set as an additional criterium.
 ") HasSelection;
 		Standard_Boolean HasSelection();
 
@@ -3166,7 +3165,7 @@ bool
 
 Description
 -----------
-Returns true if this modifier may change the graph of dependences (aknowledged at creation time).
+Returns True if this modifier may change the graph of dependences (acknowledged at creation time).
 ") MayChangeGraph;
 		Standard_Boolean MayChangeGraph();
 
@@ -3179,7 +3178,7 @@ None
 
 Description
 -----------
-Resets the selection: this criterium is not longer active.
+Resets the Selection: this criterium is not longer active.
 ") ResetSelection;
 		void ResetSelection();
 
@@ -3192,7 +3191,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns the selection, or a null handle if not set.
+Returns the Selection, or a Null Handle if not set.
 ") Selection;
 		opencascade::handle<IFSelect_Selection> Selection();
 
@@ -3210,7 +3209,7 @@ None
 
 Description
 -----------
-Attaches to a dispatch. if <disp> is null, resets it (to apply the modifier on every dispatch).
+Attaches to a Dispatch. If <disp> is Null, Resets it (to apply the Modifier on every Dispatch).
 ") SetDispatch;
 		void SetDispatch(const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -3228,7 +3227,7 @@ None
 
 Description
 -----------
-Sets a selection: a model is treated if it contains one or more entities designated by the selection.
+Sets a Selection: a Model is treated if it contains one or more Entities designated by the Selection.
 ") SetSelection;
 		void SetSelection(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -3257,7 +3256,7 @@ None
 
 Description
 -----------
-Creates an intparam. initial value is set to zer.
+Creates an IntParam. Initial value is set to zer.
 ") IFSelect_IntParam;
 		 IFSelect_IntParam();
 
@@ -3275,7 +3274,7 @@ None
 
 Description
 -----------
-Commands this intparam to be bound to a static hence, value will return the value if this static if it is set else, value works on the locally stored value setvalue also will set the value of the static this works only for a present static of type integer or enum else, it is ignored //! if <statname> is empty, disconnects the intparam from static.
+Commands this IntParam to be bound to a Static Hence, Value will return the value if this Static if it is set Else, Value works on the locally stored value SetValue also will set the value of the Static This works only for a present static of type integer or enum Else, it is ignored //! If <statname> is empty, disconnects the IntParam from Static.
 ") SetStaticName;
 		void SetStaticName(Standard_CString statname);
 
@@ -3293,7 +3292,7 @@ None
 
 Description
 -----------
-Sets a new integer value for the intparam. if a staticname is defined and the static is set, also sets the value of the static.
+Sets a new Integer Value for the IntParam. If a StaticName is defined and the Static is set, also sets the value of the static.
 ") SetValue;
 		void SetValue(const Standard_Integer val);
 
@@ -3306,7 +3305,7 @@ int
 
 Description
 -----------
-Reads integer value of the intparam. if a staticname is defined and the static is set, looks in priority the value of the static.
+Reads Integer Value of the IntParam. If a StaticName is defined and the Static is set, looks in priority the value of the static.
 ") Value;
 		Standard_Integer Value();
 
@@ -3339,7 +3338,7 @@ None
 
 Description
 -----------
-Creates a listeditor with absolutely no constraint.
+Creates a ListEditor with absolutely no constraint.
 ") IFSelect_ListEditor;
 		 IFSelect_ListEditor();
 
@@ -3358,7 +3357,7 @@ None
 
 Description
 -----------
-Creates a listeditor, for which items of the list to edit are defined by <def>, and <max> describes max length: 0 (d) means no limit value > 0 means: no more the <max> items are allowed.
+Creates a ListEditor, for which items of the list to edit are defined by <def>, and <max> describes max length: 0 (D) means no limit value > 0 means: no more the <max> items are allowed.
 ") IFSelect_ListEditor;
 		 IFSelect_ListEditor(const opencascade::handle<Interface_TypedValue> & def, const Standard_Integer max = 0);
 
@@ -3377,7 +3376,7 @@ bool
 
 Description
 -----------
-Adds a new item. by default appends (at the end of the list) can insert before a given rank <num>, if positive returns true when done. false if maxlength may be overpassed or if <val> does not satisfy the definition.
+Adds a new item. By default appends (at the end of the list) Can insert before a given rank <num>, if positive Returns True when done. False if MaxLength may be overpassed or if <val> does not satisfy the definition.
 ") AddValue;
 		virtual Standard_Boolean AddValue(const opencascade::handle<TCollection_HAsciiString> & val, const Standard_Integer atnum = 0);
 
@@ -3470,7 +3469,7 @@ bool
 
 Description
 -----------
-Tells if at least one edition (setvalue-addvalue-remove) has been recorded.
+Tells if at least one edition (SetValue-AddValue-Remove) has been recorded.
 ") IsTouched;
 		Standard_Boolean IsTouched();
 
@@ -3488,7 +3487,7 @@ bool
 
 Description
 -----------
-Loads a new list to replace the older one, in once ! by default (can be redefined) checks the length of the list and the value of each item according to the def items are all recorded as modified //! if no def has been given at creation time, no check is done returns true when done, false if checks have failed ... a specialisation may also lock it by returning always false ...
+Loads a new list to replace the older one, in once ! By default (can be redefined) checks the length of the list and the value of each item according to the def Items are all recorded as Modified //! If no def has been given at creation time, no check is done Returns True when done, False if checks have failed ... a specialisation may also lock it by returning always False ...
 ") LoadEdited;
 		virtual Standard_Boolean LoadEdited(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list);
 
@@ -3506,7 +3505,7 @@ None
 
 Description
 -----------
-Loads a model. it is used to check items of type entity(ident).
+Loads a Model. It is used to check items of type Entity(Ident).
 ") LoadModel;
 		void LoadModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -3524,7 +3523,7 @@ None
 
 Description
 -----------
-Loads the original values for the list. remark: if its length is more then maxlength, editions remain allowed, except add.
+Loads the original values for the list. Remark: If its length is more then MaxLength, editions remain allowed, except Add.
 ") LoadValues;
 		void LoadValues(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & vals);
 
@@ -3542,7 +3541,7 @@ int
 
 Description
 -----------
-Returns count of values, edited (d) or original.
+Returns count of values, edited (D) or original.
 ") NbValues;
 		Standard_Integer NbValues(const Standard_Boolean edited = Standard_True);
 
@@ -3574,7 +3573,7 @@ bool
 
 Description
 -----------
-Removes items from the list by default removes one item. else, count given by <howmany> remove from rank <num> included. by default, from the end returns true when done, false (and does not work) if case of out of range of if <howmany> is greater than current length.
+Removes items from the list By default removes one item. Else, count given by <howmany> Remove from rank <num> included. By default, from the end Returns True when done, False (and does not work) if case of out of range of if <howmany> is greater than current length.
 ") Remove;
 		virtual Standard_Boolean Remove(const Standard_Integer num = 0, const Standard_Integer howmany = 1);
 
@@ -3587,7 +3586,7 @@ None
 
 Description
 -----------
-Declares this listeditor to have been touched (whatever action).
+Declares this ListEditor to have been touched (whatever action).
 ") SetTouched;
 		void SetTouched();
 
@@ -3606,7 +3605,7 @@ bool
 
 Description
 -----------
-Sets a new value for the item <num> (in edited list) <val> may be a null handle, then the value will be cleared but not removed returns true when done. false if <num> is out of range or if <val> does not satisfy the definition.
+Sets a new value for the item <num> (in edited list) <val> may be a Null Handle, then the value will be cleared but not removed Returns True when done. False if <num> is out of range or if <val> does not satisfy the definition.
 ") SetValue;
 		virtual Standard_Boolean SetValue(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & val);
 
@@ -3625,7 +3624,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns a value given its rank. edited (d) or original a null string means the value is cleared but not removed.
+Returns a value given its rank. Edited (D) or Original A Null String means the value is cleared but not removed.
 ") Value;
 		opencascade::handle<TCollection_HAsciiString> Value(const Standard_Integer num, const Standard_Boolean edited = Standard_True);
 
@@ -3654,7 +3653,7 @@ None
 
 Description
 -----------
-Creates an empty modelcopier.
+Creates an empty ModelCopier.
 ") IFSelect_ModelCopier;
 		 IFSelect_ModelCopier();
 
@@ -3673,7 +3672,7 @@ bool
 
 Description
 -----------
-Records a new file to be sent, as a couple (name as asciistring, content as interfacemodel) returns true if done, false if <filename> is already attached to another file.
+Records a new File to be sent, as a couple (Name as AsciiString, Content as InterfaceModel) Returns True if Done, False if <filename> is already attached to another File.
 ") AddFile;
 		Standard_Boolean AddFile(TCollection_AsciiString filename, const opencascade::handle<Interface_InterfaceModel> & content);
 
@@ -3691,7 +3690,7 @@ None
 
 Description
 -----------
-Adds the name of a just sent file, if beginsentfiles has commanded recording; else does nothing it is called by methods sendcopied sending.
+Adds the name of a just sent file, if BeginSentFiles has commanded recording; else does nothing It is called by methods SendCopied Sending.
 ") AddSentFile;
 		void AddSentFile(Standard_CString filename);
 
@@ -3709,7 +3708,7 @@ opencascade::handle<IFSelect_AppliedModifiers>
 
 Description
 -----------
-Returns the list of file modifiers to be applied on a file when it will be sent, as computed by copiedmodel: if it is a null handle, no file modifier has to be applied.
+Returns the list of File Modifiers to be applied on a file when it will be sent, as computed by CopiedModel: If it is a null handle, no File Modifier has to be applied.
 ") AppliedModifiers;
 		opencascade::handle<IFSelect_AppliedModifiers> AppliedModifiers(const Standard_Integer num);
 
@@ -3728,7 +3727,7 @@ None
 
 Description
 -----------
-Begins a sequence of recording the really sent files <sho>: the default file numbering is cleared if <record> is false, clears the list and stops recording if <record> is true, clears the list and commands recording creation time corresponds to 'stop recording'.
+Begins a sequence of recording the really sent files <sho>: the default file numbering is cleared If <record> is False, clears the list and stops recording If <record> is True, clears the list and commands recording Creation time corresponds to 'stop recording'.
 ") BeginSentFiles;
 		void BeginSentFiles(const opencascade::handle<IFSelect_ShareOut> & sho, const Standard_Boolean record);
 
@@ -3746,7 +3745,7 @@ bool
 
 Description
 -----------
-Clears the list of file modifiers to be applied on a file.
+Clears the list of File Modifiers to be applied on a file.
 ") ClearAppliedModifiers;
 		Standard_Boolean ClearAppliedModifiers(const Standard_Integer num);
 
@@ -3764,7 +3763,7 @@ bool
 
 Description
 -----------
-Clears the name attached to a file which was formerly defined by a call to addfile. this clearing can be undone by a call to namefile (with same <num>) returns true if done, false else: if <num> is out of range.
+Clears the Name attached to a File which was formerly defined by a call to AddFile. This Clearing can be undone by a call to NameFile (with same <num>) Returns True if Done, False else: if <num> is out of range.
 ") ClearFile;
 		Standard_Boolean ClearFile(const Standard_Integer num);
 
@@ -3777,7 +3776,7 @@ None
 
 Description
 -----------
-Clears the list of produced models.
+Clears the list of produced Models.
 ") ClearResult;
 		void ClearResult();
 
@@ -3798,7 +3797,7 @@ None
 
 Description
 -----------
-Produces a model copied from the remaining list as <newmod> <newmod> is a null handle if this list is empty <wl> performs the copy by using <tc> <tc> is assumed to have been defined with the starting model same as defined by <g>.
+Produces a Model copied from the Remaining List as <newmod> <newmod> is a Null Handle if this list is empty <WL> performs the copy by using <TC> <TC> is assumed to have been defined with the starting model same as defined by <G>.
 ") CopiedRemaining;
 		void CopiedRemaining(const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, Interface_CopyTool & TC, opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -3818,7 +3817,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Performs the copy operations, which include the modifications defined by the list of modifiers. memorizes the result, as a list of interfacemodels with the corresponding filenames they can then be sent, by the method send, or queried copy calls internal method copying. returns the produced checklist.
+Performs the Copy Operations, which include the Modifications defined by the list of Modifiers. Memorizes the result, as a list of InterfaceModels with the corresponding FileNames They can then be sent, by the method Send, or queried Copy calls internal method Copying. Returns the produced CheckList.
 ") Copy;
 		Interface_CheckIterator Copy(IFSelect_ShareOutResult & eval, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -3836,7 +3835,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the content of a file before sending, under the form of an interfacemodel, given its rank.
+Returns the content of a file before sending, under the form of an InterfaceModel, given its rank.
 ") FileModel;
 		opencascade::handle<Interface_InterfaceModel> FileModel(const Standard_Integer num);
 
@@ -3854,7 +3853,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the file name for a file given its rank it is empty after a call to clearfile on same <num>.
+Returns the File Name for a file given its rank It is empty after a call to ClearFile on same <num>.
 ") FileName;
 		TCollection_AsciiString FileName(const Standard_Integer num);
 
@@ -3873,7 +3872,7 @@ bool
 
 Description
 -----------
-Changes the name attached to a file which was formerly defined by a call to addfile returns true if done, false else: if <num> out of range or if the new <filename> is already attached to another file remark: giving an empty file name is equivalent to clearfile.
+Changes the Name attached to a File which was formerly defined by a call to AddFile Returns True if Done, False else: if <num> out of range or if the new <filename> is already attached to another File Remark: Giving an empty File Name is equivalent to ClearFile.
 ") NameFile;
 		Standard_Boolean NameFile(const Standard_Integer num, TCollection_AsciiString filename);
 
@@ -3886,7 +3885,7 @@ int
 
 Description
 -----------
-Returns the count of files produced, i.e. the count of models memorized (produced by the mmethod copy) with their file names.
+Returns the count of Files produced, i.e. the count of Models memorized (produced by the mmethod Copy) with their file names.
 ") NbFiles;
 		Standard_Integer NbFiles();
 
@@ -3906,7 +3905,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Performs the copy operations (which include the modifications) and sends the result on files, without memorizing it. (the memorized result is ignored: neither queried not filled).
+Performs the Copy Operations (which include the Modifications) and Sends the result on files, without memorizing it. (the memorized result is ignored: neither queried not filled).
 ") Send;
 		Interface_CheckIterator Send(IFSelect_ShareOutResult & eval, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -3927,7 +3926,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Sends a model (defined in <g>) into one file, without managing remaining data, already sent files, etc. applies the model and file modifiers. returns true if well done, false else.
+Sends a model (defined in <G>) into one file, without managing remaining data, already sent files, etc. Applies the Model and File Modifiers. Returns True if well done, False else.
 ") SendAll;
 		Interface_CheckIterator SendAll(Standard_CString filename, const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -3946,7 +3945,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Sends the formerly defined results (see method copy) to files, then clears it remark: a null file name cause file to be not produced.
+Sends the formerly defined results (see method Copy) to files, then clears it Remark: A Null File Name cause file to be not produced.
 ") SendCopied;
 		Interface_CheckIterator SendCopied(const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -3968,7 +3967,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Sends a part of a model into one file. model is gotten from <g>, the part is defined in <iter>. remaining data are managed and can be later be worked on. returns true if well done, false else.
+Sends a part of a model into one file. Model is gotten from <G>, the part is defined in <iter>. Remaining data are managed and can be later be worked on. Returns True if well done, False else.
 ") SendSelected;
 		Interface_CheckIterator SendSelected(Standard_CString filename, const Interface_Graph & G, const opencascade::handle<IFSelect_WorkLibrary> & WL, const opencascade::handle<Interface_Protocol> & protocol, const Interface_EntityIterator & iter);
 
@@ -3981,7 +3980,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns the list of recorded names of sent files. can be empty (if no file has been sent). returns a null handle if beginsentfiles has stopped recording.
+Returns the list of recorded names of sent files. Can be empty (if no file has been sent). Returns a Null Handle if BeginSentFiles has stopped recording.
 ") SentFiles;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> SentFiles();
 
@@ -4000,7 +3999,7 @@ bool
 
 Description
 -----------
-Sets a list of file modifiers to be applied on a file.
+Sets a list of File Modifiers to be applied on a file.
 ") SetAppliedModifiers;
 		Standard_Boolean SetAppliedModifiers(const Standard_Integer num, const opencascade::handle<IFSelect_AppliedModifiers> & applied);
 
@@ -4018,7 +4017,7 @@ bool
 
 Description
 -----------
-Updates graph status for remaining data, for each entity: - entities just sent to file or copied (by copiedremaining) have their status set to 1 - the other keep their former status (1 for send/copied, 0 for remaining) these status are computed by copying/sending/copiedremaining then, setremaining updates graph status, and mustr be called just after one of these method has been called returns true if done, false if remaining info if not in phase which the graph (not same counts of items).
+Updates Graph status for remaining data, for each entity: - Entities just Sent to file or Copied (by CopiedRemaining) have their status set to 1 - the other keep their former status (1 for Send/Copied, 0 for Remaining) These status are computed by Copying/Sending/CopiedRemaining Then, SetRemaining updates graph status, and mustr be called just after one of these method has been called Returns True if done, False if remaining info if not in phase which the Graph (not same counts of items).
 ") SetRemaining;
 		Standard_Boolean SetRemaining(Interface_Graph & CG);
 
@@ -4036,7 +4035,7 @@ None
 
 Description
 -----------
-Sets the shareout, which is used to define modifiers to apply.
+Sets the ShareOut, which is used to define Modifiers to apply.
 ") SetShareOut;
 		void SetShareOut(const opencascade::handle<IFSelect_ShareOut> & sho);
 
@@ -4070,7 +4069,7 @@ None
 
 Description
 -----------
-Creates a packlist, empty, ready to receive entities from a given model.
+Creates a PackList, empty, ready to receive entities from a given Model.
 ") IFSelect_PacketList;
 		 IFSelect_PacketList(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -4088,7 +4087,7 @@ None
 
 Description
 -----------
-Adds an entity from the model into the current packet for add.
+Adds an entity from the Model into the current packet for Add.
 ") Add;
 		void Add(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4106,7 +4105,7 @@ None
 
 Description
 -----------
-Adds an list of entities into the current packet for add.
+Adds an list of entities into the current packet for Add.
 ") AddList;
 		void AddList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -4119,7 +4118,7 @@ None
 
 Description
 -----------
-Declares a new packet, ready to be filled the entities to be added will be added to this packet.
+Declares a new Packet, ready to be filled The entities to be added will be added to this Packet.
 ") AddPacket;
 		void AddPacket();
 
@@ -4138,7 +4137,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns a list of entities duplicated: <count> times, if <andmore> is false, or <count> or more times, if <andmore> is true hence, count=2 & andmore=true gives all duplicated entities count=1 gives non-duplicated entities (in only one packet) count=0 gives remaining entities (in no packet at all).
+Returns a list of entities duplicated: <count> times, if <andmore> is False, or <count> or more times, if <andmore> is True Hence, count=2 & andmore=True gives all duplicated entities count=1 gives non-duplicated entities (in only one packet) count=0 gives remaining entities (in no packet at all).
 ") Duplicated;
 		Interface_EntityIterator Duplicated(const Standard_Integer count, const Standard_Boolean andmore);
 
@@ -4156,7 +4155,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the content of a packet given its rank null handle if <numpack> is out of range.
+Returns the content of a Packet given its rank Null Handle if <numpack> is out of range.
 ") Entities;
 		Interface_EntityIterator Entities(const Standard_Integer numpack);
 
@@ -4169,7 +4168,7 @@ int
 
 Description
 -----------
-Returns the highest number of packets which know a same entity for no duplication, should be one.
+Returns the highest number of packets which know a same entity For no duplication, should be one.
 ") HighestDuplicationCount;
 		Standard_Integer HighestDuplicationCount();
 
@@ -4182,7 +4181,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model of reference.
+Returns the Model of reference.
 ") Model;
 		opencascade::handle<Interface_InterfaceModel> Model();
 
@@ -4214,7 +4213,7 @@ int
 
 Description
 -----------
-Returns the count of entities duplicated: <count> times, if <andmore> is false, or <count> or more times, if <andmore> is true see duplicated for more details.
+Returns the count of entities duplicated: <count> times, if <andmore> is False, or <count> or more times, if <andmore> is True See Duplicated for more details.
 ") NbDuplicated;
 		Standard_Integer NbDuplicated(const Standard_Integer count, const Standard_Boolean andmore);
 
@@ -4232,7 +4231,7 @@ int
 
 Description
 -----------
-Returns the count of entities in a packet given its rank, or 0.
+Returns the count of entities in a Packet given its rank, or 0.
 ") NbEntities;
 		Standard_Integer NbEntities(const Standard_Integer numpack);
 
@@ -4263,7 +4262,7 @@ None
 
 Description
 -----------
-Sets a name to a packet list: this makes easier a general routine to print it. default is 'packets'.
+Sets a name to a packet list: this makes easier a general routine to print it. Default is 'Packets'.
 ") SetName;
 		void SetName(Standard_CString name);
 
@@ -4298,7 +4297,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of entities involved by a selection, i.e. uniqueresult plus the shared entities (directly or not).
+Returns the list of entities involved by a Selection, i.e. UniqueResult plus the shared entities (directly or not).
 ") CompleteResult;
 		virtual Interface_EntityIterator CompleteResult(const Interface_Graph & G);
 
@@ -4316,7 +4315,7 @@ None
 
 Description
 -----------
-Puts in an iterator the selections from which 'me' depends (there can be zero, or one, or a list). specific to each class of selection.
+Puts in an Iterator the Selections from which 'me' depends (there can be zero, or one, or a list). Specific to each class of Selection.
 ") FillIterator;
 		virtual void FillIterator(IFSelect_SelectionIterator & iter);
 
@@ -4329,7 +4328,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text which defines the criterium applied by a selection (can be used to be printed, displayed ...) specific to each class.
+Returns a text which defines the criterium applied by a Selection (can be used to be printed, displayed ...) Specific to each class.
 ") Label;
 		virtual TCollection_AsciiString Label();
 
@@ -4347,7 +4346,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities, computed from input given as a graph. specific to each class of selection note that uniqueness of each entity is not required here this method can raise an exception as necessary.
+Returns the list of selected entities, computed from Input given as a Graph. Specific to each class of Selection Note that uniqueness of each entity is not required here This method can raise an exception as necessary.
 ") RootResult;
 		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -4365,7 +4364,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities, each of them being unique. default definition works from rootresult. according hasuniqueresult, uniqueresult returns directly rootresult, or build a unique result from it with a graph.
+Returns the list of selected entities, each of them being unique. Default definition works from RootResult. According HasUniqueResult, UniqueResult returns directly RootResult, or build a Unique Result from it with a Graph.
 ") UniqueResult;
 		Interface_EntityIterator UniqueResult(const Interface_Graph & G);
 
@@ -4412,7 +4411,7 @@ None
 
 Description
 -----------
-Creates an iterator from a selection: it lists the selections from which <sel> depends (given by its method filliterator).
+Creates an iterator from a Selection: it lists the Selections from which <sel> depends (given by its method FillIterator).
 ") IFSelect_SelectionIterator;
 		 IFSelect_SelectionIterator(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -4448,7 +4447,7 @@ None
 
 Description
 -----------
-Adds a selection to an iterator (if not yet noted).
+Adds a Selection to an iterator (if not yet noted).
 ") AddItem;
 		void AddItem(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -4466,7 +4465,7 @@ None
 
 Description
 -----------
-Adds a list of selections to an iterator (this list comes from the description of a selection or a dispatch, etc...).
+Adds a list of Selections to an iterator (this list comes from the description of a Selection or a Dispatch, etc...).
 ") AddList;
 		void AddList(const IFSelect_TSeqOfSelection & list);
 
@@ -4479,7 +4478,7 @@ bool
 
 Description
 -----------
-Returns true if there are more selections to get.
+Returns True if there are more Selections to get.
 ") More;
 		Standard_Boolean More();
 
@@ -4505,7 +4504,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns the current selection being iterated error if count of selection has been passed.
+Returns the current Selection being iterated Error if count of Selection has been passed.
 ") Value;
 		const opencascade::handle<IFSelect_Selection> & Value();
 
@@ -4533,7 +4532,7 @@ opencascade::handle<IFSelect_SessionDumper>
 
 Description
 -----------
-Returns the first item of the library of dumper. the next ones are then obtained by next on the returned items.
+Returns the First item of the Library of Dumper. The Next ones are then obtained by Next on the returned items.
 ") First;
 		static opencascade::handle<IFSelect_SessionDumper> First();
 
@@ -4546,7 +4545,7 @@ opencascade::handle<IFSelect_SessionDumper>
 
 Description
 -----------
-Returns the next sesiondumper in the library. returns a null handle at the end.
+Returns the Next SesionDumper in the Library. Returns a Null Handle at the End.
 ") Next;
 		opencascade::handle<IFSelect_SessionDumper> Next();
 
@@ -4566,7 +4565,7 @@ bool
 
 Description
 -----------
-Recognizes a type (given as <type>) then creates an item of this type with the own parameter, as required. returns true if it has recognized the type (in this case, it is assumed to have created the item, returned as <item>), false else: in that case, sessionfile will try another sessiondumper in the library. readown can use these methods from sessionfile to access own parameters: nbownparams, isvoid, istext, textvalue, itemvalue.
+Recognizes a Type (given as <type>) then Creates an Item of this Type with the Own Parameter, as required. Returns True if it has recognized the Type (in this case, it is assumed to have created the Item, returned as <item>), False else: in that case, SessionFile will try another SessionDumper in the Library. ReadOwn can use these methods from SessionFile to access Own Parameters: NbOwnParams, IsVoid, IsText, TextValue, ItemValue.
 ") ReadOwn;
 		virtual Standard_Boolean ReadOwn(IFSelect_SessionFile & file, TCollection_AsciiString type, opencascade::handle<Standard_Transient> & item);
 
@@ -4585,7 +4584,7 @@ bool
 
 Description
 -----------
-Writes the own parameters of a given item, if it forecast to manage its type. returns true if it has recognized the type of the item (in this case, it is assumed to have written the own parameters if there are some), false else: in that case, sessionfile will try another sessiondumper in the library. writeown can use these methods from sessionfile: sendvoid, senditem, sendtext, and if necessary, worksession.
+Writes the Own Parameters of a given Item, if it forecast to manage its Type. Returns True if it has recognized the Type of the Item (in this case, it is assumed to have written the Own Parameters if there are some), False else: in that case, SessionFile will try another SessionDumper in the Library. WriteOwn can use these methods from SessionFile: SendVoid, SendItem, SendText, and if necessary, WorkSession.
 ") WriteOwn;
 		virtual Standard_Boolean WriteOwn(IFSelect_SessionFile & file, const opencascade::handle<Standard_Transient> & item);
 
@@ -4619,7 +4618,7 @@ None
 
 Description
 -----------
-Creates a sessionfile, ready to read files in order to load them into a given worksession. the following read operations must then be called. it is also possible to perform a write, which produces a complete file of all the content of the worksession.
+Creates a SessionFile, ready to read Files in order to load them into a given WorkSession. The following Read Operations must then be called. It is also possible to perform a Write, which produces a complete File of all the content of the WorkSession.
 ") IFSelect_SessionFile;
 		 IFSelect_SessionFile(const opencascade::handle<IFSelect_WorkSession> & WS);
 
@@ -4638,7 +4637,7 @@ None
 
 Description
 -----------
-Creates a sessionfile which writes the content of a worksession to a file (directly calls write) then, isdone aknowledges on the result of the operation. but such a sessionfile may not read a file to a worksession.
+Creates a SessionFile which Writes the content of a WorkSession to a File (directly calls Write) Then, IsDone acknowledges on the result of the Operation. But such a SessionFile may not Read a File to a WorkSession.
 ") IFSelect_SessionFile;
 		 IFSelect_SessionFile(const opencascade::handle<IFSelect_WorkSession> & WS, Standard_CString filename);
 
@@ -4657,7 +4656,7 @@ None
 
 Description
 -----------
-Adds an item to the worksession, taken as name the first item of the read line. if this name is not a name but a number or if this name is already recorded in the worksession, it adds the item but with no name. then the name is recorded in order to be used by the method itemvalue <active> commands to make <item> active or not in the session.
+Adds an Item to the WorkSession, taken as Name the first item of the read Line. If this Name is not a Name but a Number or if this Name is already recorded in the WorkSession, it adds the Item but with no Name. Then the Name is recorded in order to be used by the method ItemValue <active> commands to make <item> active or not in the session.
 ") AddItem;
 		void AddItem(const opencascade::handle<Standard_Transient> & item, const Standard_Boolean active = Standard_True);
 
@@ -4701,7 +4700,7 @@ None
 
 Description
 -----------
-Specific destructor (closes the file if not yet done).
+Specific Destructor (closes the File if not yet done).
 ") Destroy;
 		void Destroy();
 
@@ -4714,7 +4713,7 @@ bool
 
 Description
 -----------
-Returns true if the last read or write operation has been correctly performed. else returns false.
+Returns True if the last Read or Write operation has been correctly performed. Else returns False.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -4732,7 +4731,7 @@ bool
 
 Description
 -----------
-Returns true if a parameter, in the own list (see nbownparams) is a text (between '...'). else it is an item (parameter, selection, dispatch ...), which can be void.
+Returns True if a Parameter, in the Own List (see NbOwnParams) is a Text (between '...'). Else it is an Item (Parameter, Selection, Dispatch ...), which can be Void.
 ") IsText;
 		Standard_Boolean IsText(const Standard_Integer num);
 
@@ -4750,7 +4749,7 @@ bool
 
 Description
 -----------
-Returns true if a parameter, given its rank in the own list (see nbownparams), is void. returns also true if <num> is out of range (undefined parameters).
+Returns True if a Parameter, given its rank in the Own List (see NbOwnParams), is Void. Returns also True if <num> is out of range (undefined parameters).
 ") IsVoid;
 		Standard_Boolean IsVoid(const Standard_Integer num);
 
@@ -4768,7 +4767,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns a parameter as an item. returns a null handle if the parameter is a text, or if it is defined as void.
+Returns a Parameter as an Item. Returns a Null Handle if the Parameter is a Text, or if it is defined as Void.
 ") ItemValue;
 		opencascade::handle<Standard_Transient> ItemValue(const Standard_Integer num);
 
@@ -4812,7 +4811,7 @@ int
 
 Description
 -----------
-During a read operation, sessionfile processes sequentially the items to read. for each one, it gives access to the list of its parameters: they were defined by calls to sendvoid/sendparam/sendtext during writing the file. nbparams returns the count of parameters for the line currently read.
+During a Read operation, SessionFile processes sequentially the Items to read. For each one, it gives access to the list of its Parameters: they were defined by calls to SendVoid/SendParam/SendText during Writing the File. NbParams returns the count of Parameters for the line currently read.
 ") NbParams;
 		Standard_Integer NbParams();
 
@@ -4831,7 +4830,7 @@ None
 
 Description
 -----------
-At beginning of writing an item, writes its basics: - either its name in the session if it has one - or its relative number of item in the file, else (preceded by a '_') - then, its dynamic type (in the sense of cdl: pk_class) this basic description can be followed by the parameters which are used in the definition of the item.
+At beginning of writing an Item, writes its basics: - either its name in the session if it has one - or its relative number of item in the file, else (preceded by a '_') - then, its Dynamic Type (in the sense of cdl: pk_class) This basic description can be followed by the parameters which are used in the definition of the item.
 ") NewItem;
 		void NewItem(const Standard_Integer ident, const opencascade::handle<Standard_Transient> & par);
 
@@ -4849,7 +4848,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a parameter (alphanumeric item of a line) as it has been read.
+Returns a Parameter (alphanumeric item of a line) as it has been read.
 ") ParamValue;
 		const TCollection_AsciiString & ParamValue(const Standard_Integer num);
 
@@ -4867,7 +4866,7 @@ int
 
 Description
 -----------
-Performs a read operation from a file to a worksession i.e. calls readfile, then readsession and readend returned value is: 0 for ok, -1 file could not be opened, >0 error during read (see writesession) isdone can be called too (will return true for ok).
+Performs a Read Operation from a file to a WorkSession i.e. calls ReadFile, then ReadSession and ReadEnd Returned Value is: 0 for OK, -1 File could not be opened, >0 Error during Read (see WriteSession) IsDone can be called too (will return True for OK).
 ") Read;
 		Standard_Integer Read(Standard_CString filename);
 
@@ -4880,7 +4879,7 @@ int
 
 Description
 -----------
-Reads the end of a file (its last line). returns 0 if ok, status >0 in case of error (not a suitable end line).
+Reads the end of a file (its last line). Returns 0 if OK, status >0 in case of error (not a suitable end line).
 ") ReadEnd;
 		Standard_Integer ReadEnd();
 
@@ -4898,7 +4897,7 @@ bool
 
 Description
 -----------
-Reads the recorded lines from a file named <name>, after having cleared the list (stops if recognizefile fails) returns false (with no clearing) if the file could not be read.
+Reads the recorded lines from a file named <name>, after having cleared the list (stops if RecognizeFile fails) Returns False (with no clearing) if the file could not be read.
 ") ReadFile;
 		Standard_Boolean ReadFile(Standard_CString name);
 
@@ -4911,7 +4910,7 @@ bool
 
 Description
 -----------
-Reads a line and splits it into a set of alphanumeric items, which can then be queried by nbparams/paramvalue ...
+Reads a Line and splits it into a set of alphanumeric items, which can then be queried by NbParams/ParamValue ...
 ") ReadLine;
 		Standard_Boolean ReadLine();
 
@@ -4929,7 +4928,7 @@ bool
 
 Description
 -----------
-Tries to read an item, by calling the library of dumpers sets the list of parameters of the line to be read from the first own one.
+Tries to Read an Item, by calling the Library of Dumpers Sets the list of parameters of the line to be read from the first own one.
 ") ReadOwn;
 		Standard_Boolean ReadOwn(opencascade::handle<Standard_Transient> & item);
 
@@ -4942,7 +4941,7 @@ int
 
 Description
 -----------
-Performs a read operation from a file to a worksession, i.e. reads the list of line (which must have already been loaded, by readfile or by calls to addline) important remark: this excludes the reading of the last line, which is performed by readend returns 0 for ok, >0 status for read error (not a suitable file, or worksession given as immutable at creation time) isdone can be called too (will return true for ok).
+Performs a Read Operation from a File to a WorkSession, i.e. reads the list of line (which must have already been loaded, by ReadFile or by calls to AddLine) Important Remark: this excludes the reading of the last line, which is performed by ReadEnd Returns 0 for OK, >0 status for Read Error (not a suitable File, or WorkSession given as Immutable at Creation Time) IsDone can be called too (will return True for OK).
 ") ReadSession;
 		Standard_Integer ReadSession();
 
@@ -4960,7 +4959,7 @@ bool
 
 Description
 -----------
-Recognizes the header line. returns true if ok, false else.
+Recognizes the header line. returns True if OK, False else.
 ") RecognizeFile;
 		Standard_Boolean RecognizeFile(Standard_CString headerline);
 
@@ -4973,7 +4972,7 @@ None
 
 Description
 -----------
-Removes the last line. can be called recursively. does nothing if the list is empty.
+Removes the last line. Can be called recursively. Does nothing if the list is empty.
 ") RemoveLastLine;
 		void RemoveLastLine();
 
@@ -4991,7 +4990,7 @@ None
 
 Description
 -----------
-During a write action, commands to send the identification of a parameter: if it is null (undefined) it is send as void ($) if it is named in the worksession, its name is sent preceded by ':', else a relative ident number is sent preceded by '#' (relative to the present write, i.e. starting at one, without skip, and counted part from named items).
+During a Write action, commands to send the identification of a Parameter: if it is Null (undefined) it is send as Void ($) if it is Named in the WorkSession, its Name is sent preceded by ':', else a relative Ident Number is sent preceded by '#' (relative to the present Write, i.e. starting at one, without skip, and counted part from Named Items).
 ") SendItem;
 		void SendItem(const opencascade::handle<Standard_Transient> & par);
 
@@ -5009,7 +5008,7 @@ None
 
 Description
 -----------
-During a write action, commands to send a text without interpretation. it will be sent as well.
+During a Write action, commands to send a Text without interpretation. It will be sent as well.
 ") SendText;
 		void SendText(Standard_CString text);
 
@@ -5022,7 +5021,7 @@ None
 
 Description
 -----------
-During a write action, commands to send a void parameter i.e. a parameter which is present but undefined its form will be the dollar sign: $.
+During a Write action, commands to send a Void Parameter i.e. a Parameter which is present but undefined Its form will be the dollar sign: $.
 ") SendVoid;
 		void SendVoid();
 
@@ -5040,7 +5039,7 @@ None
 
 Description
 -----------
-Sets the rank of last general parameter to a new value. it is followed by the fist own parameter of the item. used by sessionfile after reading general parameters.
+Sets the rank of Last General Parameter to a new value. It is followed by the Fist Own Parameter of the item. Used by SessionFile after reading general parameters.
 ") SetLastGeneral;
 		void SetLastGeneral(const Standard_Integer lastgen);
 
@@ -5058,7 +5057,7 @@ None
 
 Description
 -----------
-Sets parameters to be sent as own if <mode> is true (their name or number or void mark or text value is preceded by a column sign ':') else they are sent normally hence, the own parameter are clearly identified in the file.
+Sets Parameters to be sent as Own if <mode> is True (their Name or Number or Void Mark or Text Value is preceded by a Column sign ':') else they are sent normally Hence, the Own Parameter are clearly identified in the File.
 ") SetOwn;
 		void SetOwn(const Standard_Boolean mode);
 
@@ -5094,7 +5093,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the content of a text parameter (without the quotes). returns an empty string if the parameter is not a text.
+Returns the content of a Text Parameter (without the quotes). Returns an empty string if the Parameter is not a Text.
 ") TextValue;
 		TCollection_AsciiString TextValue(const Standard_Integer num);
 
@@ -5107,7 +5106,7 @@ opencascade::handle<IFSelect_WorkSession>
 
 Description
 -----------
-Returns the worksession on which a sessionfile works. remark that it is returned as immutable.
+Returns the WorkSession on which a SessionFile works. Remark that it is returned as Immutable.
 ") WorkSession;
 		opencascade::handle<IFSelect_WorkSession> WorkSession();
 
@@ -5125,7 +5124,7 @@ int
 
 Description
 -----------
-Performs a write operation from a worksession to a file i.e. calls writesession then writeend, and writefile returned value is: 0 for ok, -1 file could not be created, >0 error during write (see writesession) isdone can be called too (will return true for ok).
+Performs a Write Operation from a WorkSession to a File i.e. calls WriteSession then WriteEnd, and WriteFile Returned Value is: 0 for OK, -1 File could not be created, >0 Error during Write (see WriteSession) IsDone can be called too (will return True for OK).
 ") Write;
 		Standard_Integer Write(Standard_CString filename);
 
@@ -5138,7 +5137,7 @@ int
 
 Description
 -----------
-Writes the trailing line. it is separate from writesession, in order to allow to redefine writesession without touching writeend (writesession defines the body of the file) writeend fills the list of lines. returns a status of error, 0 if ok, >0 else.
+Writes the trailing line. It is separate from WriteSession, in order to allow to redefine WriteSession without touching WriteEnd (WriteSession defines the body of the file) WriteEnd fills the list of lines. Returns a status of error, 0 if OK, >0 else.
 ") WriteEnd;
 		Standard_Integer WriteEnd();
 
@@ -5156,7 +5155,7 @@ bool
 
 Description
 -----------
-Writes the recorded lines to a file named <name> then clears the list of lines. returns false (with no clearing) if the file could not be created.
+Writes the recorded lines to a file named <name> then clears the list of lines. Returns False (with no clearing) if the file could not be created.
 ") WriteFile;
 		Standard_Boolean WriteFile(Standard_CString name);
 
@@ -5175,7 +5174,7 @@ None
 
 Description
 -----------
-Writes a line to the file. if <follow> is given, it is added at the following of the line. a newline must be added for the end.
+Writes a line to the File. If <follow> is given, it is added at the following of the line. A newline must be added for the end.
 ") WriteLine;
 		void WriteLine(Standard_CString line, const Standard_Character follow = 0);
 
@@ -5193,7 +5192,7 @@ bool
 
 Description
 -----------
-Writes the parameters own to each type of item. uses the library of sessiondumpers returns true if done, false if <item> could not be treated (hence it remains written with no own parameter).
+Writes the Parameters own to each type of Item. Uses the Library of SessionDumpers Returns True if Done, False if <item> could not be treated (hence it remains written with no Own Parameter).
 ") WriteOwn;
 		Standard_Boolean WriteOwn(const opencascade::handle<Standard_Transient> & item);
 
@@ -5206,7 +5205,7 @@ int
 
 Description
 -----------
-Prepares the write operation from a worksession (ifselect) to a file, i.e. fills the list of lines (the file itself remains to be written; or nblines/line may be called) important remark: this excludes the reading of the last line, which is performed by writeend returns 0 if ok, status > 0 in case of error.
+Prepares the Write operation from a WorkSession (IFSelect) to a File, i.e. fills the list of lines (the file itself remains to be written; or NbLines/Line may be called) Important Remark: this excludes the reading of the last line, which is performed by WriteEnd Returns 0 if OK, status > 0 in case of error.
 ") WriteSession;
 		Standard_Integer WriteSession();
 
@@ -5233,7 +5232,7 @@ None
 
 Description
 -----------
-Creates an empty shareout.
+Creates an empty ShareOut.
 ") IFSelect_ShareOut;
 		 IFSelect_ShareOut();
 
@@ -5251,7 +5250,7 @@ None
 
 Description
 -----------
-Adds a dispatch to the list.
+Adds a Dispatch to the list.
 ") AddDispatch;
 		void AddDispatch(const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -5271,7 +5270,7 @@ None
 
 Description
 -----------
-Adds a modifier to the list of modifiers: model modifiers if <formodel> is true, file modifiers else (internal).
+Adds a Modifier to the list of Modifiers: Model Modifiers if <formodel> is True, File Modifiers else (internal).
 ") AddModif;
 		void AddModif(const opencascade::handle<IFSelect_GeneralModifier> & modifier, const Standard_Boolean formodel, const Standard_Integer atnum = 0);
 
@@ -5290,7 +5289,7 @@ None
 
 Description
 -----------
-Sets a modifier to be applied on all dispatches to be run if <modifier> is a modelmodifier, adds it to the list of model modifiers; else to the list of file modifiers by default (atnum = 0) at the end of the list, else at <atnum> each modifier is used, after each copy of a packet of entities into a model: its criteria are checked and if they are ok, the method perform of this modifier is run.
+Sets a Modifier to be applied on all Dispatches to be run If <modifier> is a ModelModifier, adds it to the list of Model Modifiers; else to the list of File Modifiers By default (atnum = 0) at the end of the list, else at <atnum> Each Modifier is used, after each copy of a packet of Entities into a Model: its criteria are checked and if they are OK, the method Perform of this Modifier is run.
 ") AddModifier;
 		void AddModifier(const opencascade::handle<IFSelect_GeneralModifier> & modifier, const Standard_Integer atnum);
 
@@ -5310,7 +5309,7 @@ None
 
 Description
 -----------
-Sets a modifier to be applied on the dispatch <dispnum> if <modifier> is a modelmodifier, adds it to the list of model modifiers; else to the list of file modifiers this is the same list as for all dispatches, but the modifier is qualified to be applied to one dispatch only then, <atnum> refers to the entire list by default (atnum = 0) at the end of the list, else at <atnum> remark: if the modifier was already in the list and if <atnum> = 0, the modifier is not moved, but only qualified for a dispatch.
+Sets a Modifier to be applied on the Dispatch <dispnum> If <modifier> is a ModelModifier, adds it to the list of Model Modifiers; else to the list of File Modifiers This is the same list as for all Dispatches, but the Modifier is qualified to be applied to one Dispatch only Then, <atnum> refers to the entire list By default (atnum = 0) at the end of the list, else at <atnum> Remark: if the Modifier was already in the list and if <atnum> = 0, the Modifier is not moved, but only qualified for a Dispatch.
 ") AddModifier;
 		void AddModifier(const opencascade::handle<IFSelect_GeneralModifier> & modifier, const Standard_Integer dispnum, const Standard_Integer atnum);
 
@@ -5330,7 +5329,7 @@ bool
 
 Description
 -----------
-Changes the rank of a modifier in the list: model modifiers if <formodel> is true, file modifiers else from <before> to <after> returns true if done, false else (before or after out of range).
+Changes the rank of a modifier in the list: Model Modifiers if <formodel> is True, File Modifiers else from <before> to <after> Returns True if done, False else (before or after out of range).
 ") ChangeModifierRank;
 		Standard_Boolean ChangeModifierRank(const Standard_Boolean formodel, const Standard_Integer befor, const Standard_Integer after);
 
@@ -5348,7 +5347,7 @@ None
 
 Description
 -----------
-Removes in one operation all the dispatches with their idents also clears all information about names, and all results but naming information which are: - kept if <onlydisp> is true. - cleared if <onlydisp> is false (complete clearing) if <onlydisp> is true, that's all. else, clears also modifiers.
+Removes in one operation all the Dispatches with their Idents Also clears all information about Names, and all Results but naming information which are: - kept if <onlydisp> is True. - cleared if <onlydisp> is False (complete clearing) If <onlydisp> is True, that's all. Else, clears also Modifiers.
 ") Clear;
 		void Clear(const Standard_Boolean onlydisp);
 
@@ -5366,7 +5365,7 @@ None
 
 Description
 -----------
-Clears all data produced (apart from dispatches, etc...) if <alsoname> is true, all is cleared. else, information about produced names are kept (to maintain unicity of naming across clearings).
+Clears all data produced (apart from Dispatches, etc...) if <alsoname> is True, all is cleared. Else, information about produced Names are kept (to maintain unicity of naming across clearings).
 ") ClearResult;
 		void ClearResult(const Standard_Boolean alsoname);
 
@@ -5379,7 +5378,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the default root name. can be empty.
+Returns the Default Root Name. Can be empty.
 ") DefaultRootName;
 		opencascade::handle<TCollection_HAsciiString> DefaultRootName();
 
@@ -5397,7 +5396,7 @@ opencascade::handle<IFSelect_Dispatch>
 
 Description
 -----------
-Returns a dispatch, given its rank in the list.
+Returns a Dispatch, given its rank in the list.
 ") Dispatch;
 		const opencascade::handle<IFSelect_Dispatch> & Dispatch(const Standard_Integer num);
 
@@ -5415,7 +5414,7 @@ int
 
 Description
 -----------
-Returns the rank of a dispatch, given its value (handle). returns 0 if the dispatch is unknown in the shareout.
+Returns the Rank of a Dispatch, given its Value (Handle). Returns 0 if the Dispatch is unknown in the ShareOut.
 ") DispatchRank;
 		Standard_Integer DispatchRank(const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -5428,7 +5427,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the general extension. can be empty (not recommended).
+Returns the general Extension. Can be empty (not recommended).
 ") Extension;
 		opencascade::handle<TCollection_HAsciiString> Extension();
 
@@ -5448,7 +5447,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Computes the complete file name for a packet of a dispatch, given dispatch number (rank), packet number, and count of packets generated by this dispatch (0 if unknown) //! file name is made of following strings, concatenated: general prefix, root name for dispatch, packet suffix, and general extension. if no root name is specified for a dispatch, defaultrootname is considered (and pnum is not used, but <thenbdefs> is incremented and used error if no root is defined for this <idnum>.
+Computes the complete file name for a Packet of a Dispatch, given Dispatch Number (Rank), Packet Number, and Count of Packets generated by this Dispatch (0 if unknown) //! File Name is made of following strings, concatenated: General Prefix, Root Name for Dispatch, Packet Suffix, and General Extension. If no Root Name is specified for a Dispatch, DefaultRootName is considered (and pnum is not used, but <thenbdefs> is incremented and used Error if no Root is defined for this <idnum>.
 ") FileName;
 		TCollection_AsciiString FileName(const Standard_Integer dnum, const Standard_Integer pnum, const Standard_Integer nbpack = 0);
 
@@ -5467,7 +5466,7 @@ opencascade::handle<IFSelect_GeneralModifier>
 
 Description
 -----------
-Returns a modifier of the list, given its rank: model modifiers if <formodel> is true, file modifiers else.
+Returns a Modifier of the list, given its rank: Model Modifiers if <formodel> is True, File Modifiers else.
 ") GeneralModifier;
 		opencascade::handle<IFSelect_GeneralModifier> GeneralModifier(const Standard_Boolean formodel, const Standard_Integer num);
 
@@ -5485,7 +5484,7 @@ bool
 
 Description
 -----------
-Returns true if the dispatch of rank <num> has an attached root name. false else, or if num is out of range.
+Returns True if the Dispatch of rank <num> has an attached Root Name. False else, or if num is out of range.
 ") HasRootName;
 		Standard_Boolean HasRootName(const Standard_Integer num);
 
@@ -5498,7 +5497,7 @@ int
 
 Description
 -----------
-Returns the rank of last run item (clearresult resets it to 0).
+Returns the rank of last run item (ClearResult resets it to 0).
 ") LastRun;
 		Standard_Integer LastRun();
 
@@ -5516,7 +5515,7 @@ opencascade::handle<IFSelect_Modifier>
 
 Description
 -----------
-Returns a modifier of the list of model modifiers, duely casted.
+Returns a Modifier of the list of Model Modifiers, duely casted.
 ") ModelModifier;
 		opencascade::handle<IFSelect_Modifier> ModelModifier(const Standard_Integer num);
 
@@ -5534,7 +5533,7 @@ int
 
 Description
 -----------
-Gives the rank of a modifier in the list, 0 if not in the list model modifiers if <modifier> is kind of modelmodifer, file modifiers else.
+Gives the rank of a Modifier in the list, 0 if not in the list Model Modifiers if <modifier> is kind of ModelModifer, File Modifiers else.
 ") ModifierRank;
 		Standard_Integer ModifierRank(const opencascade::handle<IFSelect_GeneralModifier> & modifier);
 
@@ -5547,7 +5546,7 @@ int
 
 Description
 -----------
-Returns the count of dispatches.
+Returns the count of Dispatches.
 ") NbDispatches;
 		Standard_Integer NbDispatches();
 
@@ -5565,7 +5564,7 @@ int
 
 Description
 -----------
-Returns count of modifiers (which apply to complete models): model modifiers if <formodel> is true, file modifiers else.
+Returns count of Modifiers (which apply to complete Models): Model Modifiers if <formodel> is True, File Modifiers else.
 ") NbModifiers;
 		Standard_Integer NbModifiers(const Standard_Boolean formodel);
 
@@ -5578,7 +5577,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the general prefix. can be empty.
+Returns the general Prefix. Can be empty.
 ") Prefix;
 		opencascade::handle<TCollection_HAsciiString> Prefix();
 
@@ -5596,7 +5595,7 @@ bool
 
 Description
 -----------
-Removes a dispatch, given its rank in the list returns true if done, false if rank is not between (lastrun + 1) and (nbdispatches).
+Removes a Dispatch, given its rank in the list Returns True if done, False if rank is not between (LastRun + 1) and (NbDispatches).
 ") RemoveDispatch;
 		Standard_Boolean RemoveDispatch(const Standard_Integer rank);
 
@@ -5614,7 +5613,7 @@ bool
 
 Description
 -----------
-Removes an item, which can be, either a dispatch (removed from the list of dispatches), or a generalmodifier (removed from the list of model modifiers or from the list of file modifiers according to its type). returns true if done, false if has not been found or if it is neither a dispatch, nor a modifier.
+Removes an item, which can be, either a Dispatch (removed from the list of Dispatches), or a GeneralModifier (removed from the list of Model Modifiers or from the list of File Modifiers according to its type). Returns True if done, False if has not been found or if it is neither a Dispatch, nor a Modifier.
 ") RemoveItem;
 		Standard_Boolean RemoveItem(const opencascade::handle<Standard_Transient> & item);
 
@@ -5633,7 +5632,7 @@ bool
 
 Description
 -----------
-Removes a modifier, given it rank in the list: model modifiers if <formodel> is true, file modifiers else returns true if done, false if <num> is out of range.
+Removes a Modifier, given it rank in the list: Model Modifiers if <formodel> is True, File Modifiers else Returns True if done, False if <num> is out of range.
 ") RemoveModifier;
 		Standard_Boolean RemoveModifier(const Standard_Boolean formodel, const Standard_Integer num);
 
@@ -5651,7 +5650,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the root bound to a dispatch, given its rank returns a null handle if not defined.
+Returns the Root bound to a Dispatch, given its rank Returns a Null Handle if not defined.
 ") RootName;
 		opencascade::handle<TCollection_HAsciiString> RootName(const Standard_Integer num);
 
@@ -5669,7 +5668,7 @@ int
 
 Description
 -----------
-Returns an integer value about a given root name: - positive: it's the rank of the dispatch which has this name - null: this root name is unknown - negative (-1): this root name is the default root name.
+Returns an integer value about a given root name: - positive: it's the rank of the Dispatch which has this name - null: this root name is unknown - negative (-1): this root name is the default root name.
 ") RootNumber;
 		Standard_Integer RootNumber(const opencascade::handle<TCollection_HAsciiString> & name);
 
@@ -5687,7 +5686,7 @@ bool
 
 Description
 -----------
-Defines or changes the default root name to a new value (which is used for dispatches which have no attached root name). if this method is not called, defaultrootname remains empty returns true if ok, false if this name is already attached, for a dispatch or for default.
+Defines or Changes the Default Root Name to a new value (which is used for dispatches which have no attached root name). If this method is not called, DefaultRootName remains empty Returns True if OK, False if this Name is already attached, for a Dispatch or for Default.
 ") SetDefaultRootName;
 		Standard_Boolean SetDefaultRootName(const opencascade::handle<TCollection_HAsciiString> & defrt);
 
@@ -5705,7 +5704,7 @@ None
 
 Description
 -----------
-Defines or changes the general extension (which is appended to complete file name generated). if this method is not call, extension remains empty.
+Defines or Changes the general Extension (which is appended to complete file name generated). If this method is not call, Extension remains empty.
 ") SetExtension;
 		void SetExtension(const opencascade::handle<TCollection_HAsciiString> & ext);
 
@@ -5741,7 +5740,7 @@ None
 
 Description
 -----------
-Defines or changes the general prefix (which is prepended to complete file name generated). if this method is not call, prefix remains empty.
+Defines or Changes the general Prefix (which is prepended to complete file name generated). If this method is not call, Prefix remains empty.
 ") SetPrefix;
 		void SetPrefix(const opencascade::handle<TCollection_HAsciiString> & pref);
 
@@ -5760,7 +5759,7 @@ bool
 
 Description
 -----------
-Attaches a root name to a dispatch given its rank, as an hasciistring (standard form). a null handle resets this name. returns true if ok, false if this name is already attached, for a dispatch or for default, or <num> out of range.
+Attaches a Root Name to a Dispatch given its rank, as an HAsciiString (standard form). A Null Handle resets this name. Returns True if OK, False if this Name is already attached, for a Dispatch or for Default, or <num> out of range.
 ") SetRootName;
 		Standard_Boolean SetRootName(const Standard_Integer num, const opencascade::handle<TCollection_HAsciiString> & name);
 
@@ -5795,7 +5794,7 @@ None
 
 Description
 -----------
-Creates a shareoutresult from a shareout, to work on a model (without any more precision; uses active protocol).
+Creates a ShareOutResult from a ShareOut, to work on a Model (without any more precision; uses Active Protocol).
 ") IFSelect_ShareOutResult;
 		 IFSelect_ShareOutResult(const opencascade::handle<IFSelect_ShareOut> & sho, const opencascade::handle<Interface_InterfaceModel> & mod);
 
@@ -5814,7 +5813,7 @@ None
 
 Description
 -----------
-Creates a shareoutresult from a shareout, to work on a graph already computed, which defines the input model and can specialize some entities.
+Creates a ShareOutResult from a ShareOut, to work on a Graph already computed, which defines the Input Model and can specialize some Entities.
 ") IFSelect_ShareOutResult;
 		 IFSelect_ShareOutResult(const opencascade::handle<IFSelect_ShareOut> & sho, const Interface_Graph & G);
 
@@ -5833,7 +5832,7 @@ None
 
 Description
 -----------
-Creates a shareoutresult from a unique dispatch, to work on a model. as if it was a shareout with only one dispatch (without any more precision; uses active protocol) allows to compute the effect of a single dispatch.
+Creates a ShareOutResult from a unique Dispatch, to work on a Model. As if it was a ShareOut with only one Dispatch (without any more precision; uses Active Protocol) Allows to compute the effect of a single Dispatch.
 ") IFSelect_ShareOutResult;
 		 IFSelect_ShareOutResult(const opencascade::handle<IFSelect_Dispatch> & disp, const opencascade::handle<Interface_InterfaceModel> & mod);
 
@@ -5852,7 +5851,7 @@ None
 
 Description
 -----------
-Creates a shareoutresult from a unique dispatch, to work on a graph. as if it was a shareout with only one dispatch allows to compute the effect of a single dispatch.
+Creates a ShareOutResult from a unique Dispatch, to work on a Graph. As if it was a ShareOut with only one Dispatch Allows to compute the effect of a single Dispatch.
 ") IFSelect_ShareOutResult;
 		 IFSelect_ShareOutResult(const opencascade::handle<IFSelect_Dispatch> & disp, const Interface_Graph & G);
 
@@ -5865,7 +5864,7 @@ opencascade::handle<IFSelect_Dispatch>
 
 Description
 -----------
-Returns the current dispatch.
+Returns the current Dispatch.
 ") Dispatch;
 		opencascade::handle<IFSelect_Dispatch> Dispatch();
 
@@ -5878,7 +5877,7 @@ int
 
 Description
 -----------
-Returns the rank of the current dispatch in the shareout returns zero if there is none (iteration finished).
+Returns the Rank of the current Dispatch in the ShareOut Returns Zero if there is none (iteration finished).
 ") DispatchRank;
 		Standard_Integer DispatchRank();
 
@@ -5891,7 +5890,7 @@ None
 
 Description
 -----------
-Evaluates the result of a shareout: determines entities to be forgotten by the shareout, entities to be transferred several times (duplicated), prepares an iteration on the packets to be produced called the first time anyone question is asked, or after a call to reset. works by calling the method prepare.
+Evaluates the result of a ShareOut: determines Entities to be forgotten by the ShareOut, Entities to be transferred several times (duplicated), prepares an iteration on the packets to be produced Called the first time anyone question is asked, or after a call to Reset. Works by calling the method Prepare.
 ") Evaluate;
 		void Evaluate();
 
@@ -5904,7 +5903,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the file name which corresponds to current packet (computed by shareout) if current packet has no associated name (see shareout), the returned value is null.
+Returns the File Name which corresponds to current Packet (computed by ShareOut) If current Packet has no associated name (see ShareOut), the returned value is Null.
 ") FileName;
 		TCollection_AsciiString FileName();
 
@@ -5917,7 +5916,7 @@ Interface_Graph
 
 Description
 -----------
-Returns the graph used to create theshareoutresult.
+Returns the Graph used to create theShareOutResult.
 ") Graph;
 		const Interface_Graph & Graph();
 
@@ -5930,7 +5929,7 @@ bool
 
 Description
 -----------
-Returns true if there is more packets in the current dispatch, else if there is more dispatch in the shareout.
+Returns True if there is more packets in the current Dispatch, else if there is more Dispatch in the ShareOut.
 ") More;
 		Standard_Boolean More();
 
@@ -5943,7 +5942,7 @@ int
 
 Description
 -----------
-Returns the total count of produced non empty packets (in out: calls evaluate as necessary).
+Returns the total count of produced non empty packets (in out: calls Evaluate as necessary).
 ") NbPackets;
 		Standard_Integer NbPackets();
 
@@ -5956,7 +5955,7 @@ None
 
 Description
 -----------
-Passes to the next packet in the current dispatch, or if there is none, to the next dispatch in the shareout.
+Passes to the next Packet in the current Dispatch, or if there is none, to the next Dispatch in the ShareOut.
 ") Next;
 		void Next();
 
@@ -5969,7 +5968,7 @@ None
 
 Description
 -----------
-Passes to the next dispatch, regardless about remaining packets.
+Passes to the next Dispatch, regardless about remaining packets.
 ") NextDispatch;
 		void NextDispatch();
 
@@ -5982,7 +5981,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the complete content of the current packet (i.e. with shared entities, which will also be put in the file).
+Returns the complete content of the current Packet (i.e. with shared entities, which will also be put in the file).
 ") PacketContent;
 		Interface_EntityIterator PacketContent();
 
@@ -5995,7 +5994,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of roots of the current packet (never empty) (i.e. the entities to be themselves asked for transfer) error if there is none (iteration finished).
+Returns the list of Roots of the current Packet (never empty) (i.e. the Entities to be themselves asked for transfer) Error if there is none (iteration finished).
 ") PacketRoot;
 		Interface_EntityIterator PacketRoot();
 
@@ -6013,7 +6012,7 @@ opencascade::handle<IFSelect_PacketList>
 
 Description
 -----------
-Returns the list of recorded packets, under two modes: - <complete> = false, the strict definition of packets, i.e. for each one, the root entities, to be explicitly sent - <complete> = true (default), the completely evaluated list, i.e. which really gives the destination of each entity: this mode allows to evaluate duplications remark that to send packets, iteration remains preferable (file names are managed).
+Returns the list of recorded Packets, under two modes: - <complete> = False, the strict definition of Packets, i.e. for each one, the Root Entities, to be explicitly sent - <complete> = True (Default), the completely evaluated list, i.e. which really gives the destination of each entity: this mode allows to evaluate duplications Remark that to send packets, iteration remains preferable (file names are managed).
 ") Packets;
 		opencascade::handle<IFSelect_PacketList> Packets(const Standard_Boolean complete = Standard_True);
 
@@ -6031,7 +6030,7 @@ nbpacks: int
 
 Description
 -----------
-Returns number (rank) of current packet in current dispatch, and total count of packets in current dispatch, as arguments.
+Returns Number (rank) of current Packet in current Dispatch, and total count of Packets in current Dispatch, as arguments.
 ") PacketsInDispatch;
 		void PacketsInDispatch(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -6044,7 +6043,7 @@ None
 
 Description
 -----------
-Prepares the iteration on the packets this method is called by evaluate, but can be called anytime the iteration consists in taking each dispatch of the shareout beginning by the first one, compute its packets, then iterate on these packets. once all these packets are iterated, the iteration passes to the next dispatch, or stops. for a creation from a unique dispatch, same but with only this dispatch. each packet can be listed, or really transferred (producing a derived model, from which a file can be generated) //! prepare sets the iteration to the first dispatch, first packet.
+Prepares the iteration on the packets This method is called by Evaluate, but can be called anytime The iteration consists in taking each Dispatch of the ShareOut beginning by the first one, compute its packets, then iterate on these packets. Once all these packets are iterated, the iteration passes to the next Dispatch, or stops. For a creation from a unique Dispatch, same but with only this Dispatch. Each packet can be listed, or really transferred (producing a derived Model, from which a file can be generated) //! Prepare sets the iteration to the first Dispatch, first Packet.
 ") Prepare;
 		void Prepare();
 
@@ -6057,7 +6056,7 @@ None
 
 Description
 -----------
-Erases computed data, in order to command a new evaluation.
+Erases computed data, in order to command a new Evaluation.
 ") Reset;
 		void Reset();
 
@@ -6070,7 +6069,7 @@ opencascade::handle<IFSelect_ShareOut>
 
 Description
 -----------
-Returns the shareout used to create the shareoutresult if creation from a dispatch, returns a null handle.
+Returns the ShareOut used to create the ShareOutResult if creation from a Dispatch, returns a Null Handle.
 ") ShareOut;
 		opencascade::handle<IFSelect_ShareOut> ShareOut();
 
@@ -6103,7 +6102,7 @@ None
 
 Description
 -----------
-Adds a possible case to be called when creating, if the list of possible cases for value is known when starting for instance, for cdl types, rather do not fill this, but for a specific enumeration (such as a status), can be used.
+Adds a possible case To be called when creating, IF the list of possible cases for Value is known when starting For instance, for CDL types, rather do not fill this, but for a specific enumeration (such as a status), can be used.
 ") AddCase;
 		void AddCase(Standard_CString acase);
 
@@ -6116,7 +6115,7 @@ opencascade::handle<TColStd_HSequenceOfAsciiString>
 
 Description
 -----------
-Returns the predefined list of possible cases, filled by addcase null handle if no predefined list (hence, to be counted) useful to filter on really possible vase, for instance, or for a help.
+Returns the predefined list of possible cases, filled by AddCase Null Handle if no predefined list (hence, to be counted) Useful to filter on really possible vase, for instance, or for a help.
 ") CaseList;
 		opencascade::handle<TColStd_HSequenceOfAsciiString> CaseList();
 
@@ -6134,7 +6133,7 @@ str
 
 Description
 -----------
-This procedure converts an integer to a cstring it is a convenient way when the value of a signature has the form of a simple integer value the value is to be used immediately (one buffer only, no copy).
+This procedure converts an Integer to a CString It is a convenient way when the value of a signature has the form of a simple integer value The value is to be used immediately (one buffer only, no copy).
 ") IntValue;
 		static Standard_CString IntValue(const Standard_Integer val);
 
@@ -6154,7 +6153,7 @@ valmax: int
 
 Description
 -----------
-Tells if this signature gives integer values and returns values from setintcase if true.
+Tells if this Signature gives integer values and returns values from SetIntCase if True.
 ") IsIntCase;
 		Standard_Boolean IsIntCase(Standard_Boolean &OutValue, Standard_Integer &OutValue, Standard_Boolean &OutValue, Standard_Integer &OutValue);
 
@@ -6167,7 +6166,7 @@ TCollection_AsciiString
 
 Description
 -----------
-The label of a signature uses its name as follow: 'signature: <name>'.
+The label of a Signature uses its name as follow: 'Signature: <name>'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -6187,7 +6186,7 @@ bool
 
 Description
 -----------
-Default procedure to tell if a value <val> matches a text with a criterium <exact>. <exact> = true requires equality, else only contained (no reg-exp).
+Default procedure to tell if a value <val> matches a text with a criterium <exact>. <exact> = True requires equality, else only contained (no reg-exp).
 ") MatchValue;
 		static Standard_Boolean MatchValue(Standard_CString val, TCollection_AsciiString text, const Standard_Boolean exact);
 
@@ -6208,7 +6207,7 @@ bool
 
 Description
 -----------
-Tells if the value for <ent> in <model> matches a text, with a criterium <exact>. the default definition calls matchvalue can be redefined.
+Tells if the value for <ent> in <model> matches a text, with a criterium <exact>. The default definition calls MatchValue Can be redefined.
 ") Matches;
 		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const Standard_Boolean exact);
 
@@ -6221,7 +6220,7 @@ str
 
 Description
 -----------
-Returns an identification of the signature (a word), given at initialization time returns the signature for a transient object. it is specific of each sub-class of signature. for a null handle, it should provide '' it can work with the model which contains the entity.
+Returns an identification of the Signature (a word), given at initialization time Returns the Signature for a Transient object. It is specific of each sub-class of Signature. For a Null Handle, it should provide '' It can work with the model which contains the entity.
 ") Name;
 		Standard_CString Name();
 
@@ -6242,7 +6241,7 @@ None
 
 Description
 -----------
-Sets the information data to tell 'integer cases' with possible min and max values to be called when creating.
+Sets the information data to tell 'integer cases' with possible min and max values To be called when creating.
 ") SetIntCase;
 		void SetIntCase(const Standard_Boolean hasmin, const Standard_Integer valmin, const Standard_Boolean hasmax, const Standard_Integer valmax);
 
@@ -6276,7 +6275,7 @@ None
 
 Description
 -----------
-Creates a signaturelist. if <withlist> is true, entities will be not only counted per signature, but also listed.
+Creates a SignatureList. If <withlist> is True, entities will be not only counted per signature, but also listed.
 ") IFSelect_SignatureList;
 		 IFSelect_SignatureList(const Standard_Boolean withlist = Standard_False);
 
@@ -6295,7 +6294,7 @@ None
 
 Description
 -----------
-Adds an entity with its signature, i.e.: - counts an item more for <sign> - if record-list status is set, records the entity accepts a null entity (the signature is then for the global model). but if the string is empty, counts a null item. //! if signonly mode is set, this work is replaced by just setting lastvalue.
+Adds an entity with its signature, i.e.: - counts an item more for <sign> - if record-list status is set, records the entity Accepts a null entity (the signature is then for the global model). But if the string is empty, counts a Null item. //! If SignOnly Mode is set, this work is replaced by just setting LastValue.
 ") Add;
 		void Add(const opencascade::handle<Standard_Transient> & ent, Standard_CString sign);
 
@@ -6326,7 +6325,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of entities attached to a signature it is empty if <sign> has not been recorded it is a null handle if the list of entities is not known.
+Returns the list of entities attached to a signature It is empty if <sign> has not been recorded It is a Null Handle if the list of entities is not known.
 ") Entities;
 		opencascade::handle<TColStd_HSequenceOfTransient> Entities(Standard_CString sign);
 
@@ -6339,7 +6338,7 @@ bool
 
 Description
 -----------
-Returns true if the list of entities is aknowledged, else the method entities will always return a null handle.
+Returns True if the list of Entities is acknowledged, else the method Entities will always return a Null Handle.
 ") HasEntities;
 		Standard_Boolean HasEntities();
 
@@ -6360,7 +6359,7 @@ None
 
 Description
 -----------
-Aknowledges the list in once. name identifies the signature.
+Aknowledges the list in once. Name identifies the Signature.
 ") Init;
 		void Init(Standard_CString name, const NCollection_IndexedDataMap<TCollection_AsciiString, Standard_Integer> & count, const NCollection_IndexedDataMap<TCollection_AsciiString, opencascade::handle<Standard_Transient> > & list, const Standard_Integer nbnuls);
 
@@ -6373,7 +6372,7 @@ str
 
 Description
 -----------
-Returns the last value recorded by add (only if signmode set) cleared by clear or init.
+Returns the last value recorded by Add (only if SignMode set) Cleared by Clear or Init.
 ") LastValue;
 		Standard_CString LastValue();
 
@@ -6391,7 +6390,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns the list of signatures, as a sequence of strings (but without their respective counts). it is ordered. by default, for all the signatures. if <root> is given non empty, for the signatures which begin by <root>.
+Returns the list of signatures, as a sequence of strings (but without their respective counts). It is ordered. By default, for all the signatures. If <root> is given non empty, for the signatures which begin by <root>.
 ") List;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> List(Standard_CString root = "");
 
@@ -6417,7 +6416,7 @@ str
 
 Description
 -----------
-Returns the recorded name. remark: default is '...' (no setname called).
+Returns the recorded Name. Remark: default is '...' (no SetName called).
 ") Name;
 		virtual Standard_CString Name();
 
@@ -6484,7 +6483,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the lists of items, if they are present (else, prints a message 'no list available') uses <model> to determine for each entity to be listed, its number, and its specific identifier (by printlabel) <mod> gives a mode for printing: - countbyitem: just count (as printcount) - shortbyitem: minimum i.e. count plus 5 first entity numbers - shortbyitem(d) complete list of entity numbers (0: 'global') - entitiesbyitem: list of (entity number/printlabel from the model) other modes are ignored.
+Prints the lists of items, if they are present (else, prints a message 'no list available') Uses <model> to determine for each entity to be listed, its number, and its specific identifier (by PrintLabel) <mod> gives a mode for printing: - CountByItem: just count (as PrintCount) - ShortByItem: minimum i.e. count plus 5 first entity numbers - ShortByItem(D) complete list of entity numbers (0: 'Global') - EntitiesByItem: list of (entity number/PrintLabel from the model) other modes are ignored.
 ") PrintList;
 		virtual void PrintList(std::ostream &OutValue, const opencascade::handle<Interface_InterfaceModel> & model, const IFSelect_PrintCount mod = IFSelect_ListByItem);
 
@@ -6501,7 +6500,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints a summary item which has the greatest count of entities for items which are numeric values: their count, maximum, minimum values, cumul, average.
+Prints a summary Item which has the greatest count of entities For items which are numeric values: their count, maximum, minimum values, cumul, average.
 ") PrintSum;
 		virtual void PrintSum(std::ostream &OutValue);
 
@@ -6519,7 +6518,7 @@ None
 
 Description
 -----------
-Changes the record-list status. the list is not cleared but its use changes.
+Changes the record-list status. The list is not cleared but its use changes.
 ") SetList;
 		void SetList(const Standard_Boolean withlist);
 
@@ -6537,7 +6536,7 @@ None
 
 Description
 -----------
-Defines a name for a signaturelist (used to print it).
+Defines a name for a SignatureList (used to print it).
 ") SetName;
 		void SetName(Standard_CString name);
 
@@ -6572,7 +6571,7 @@ bool
 
 Description
 -----------
-This methods allows to declare that the protocol applied to the new model has changed. it applies to the last call to perform. //! returns true if the protocol has changed, false else. the provided default keeps the starting protocol. this method should be redefined as required by the effect of perform.
+This methods allows to declare that the Protocol applied to the new Model has changed. It applies to the last call to Perform. //! Returns True if the Protocol has changed, False else. The provided default keeps the starting Protocol. This method should be redefined as required by the effect of Perform.
 ") ChangeProtocol;
 		virtual Standard_Boolean ChangeProtocol(opencascade::handle<Interface_Protocol> & newproto);
 
@@ -6585,7 +6584,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text which defines the way a transformer works (to identify the transformation it performs).
+Returns a text which defines the way a Transformer works (to identify the transformation it performs).
 ") Label;
 		virtual TCollection_AsciiString Label();
 
@@ -6606,7 +6605,7 @@ bool
 
 Description
 -----------
-Performs a transformation (defined by each sub-class): <g> gives the input data (especially the starting model) and can be used for queries (by selections, etc...) <protocol> allows to work with general services as necessary (it applies to input data) if the change corresponds to a conversion to a new protocol, see also the method changeprotocol <checks> stores produced checks messages if any <newmod> gives the result of the transformation: - if it is null (i.e. has not been affected), the transformation has been made on the spot, it is assumed to cause no change to the graph of dependances - if it equates the starting model, it has been transformed on the spot (possibiliy some entities were replaced inside it) - if it is new, it corresponds to a new data set which replaces the starting one //! <self> is mutable to allow results for changeprotocol to be memorized if needed, and to store information useful for the method updated //! returns true if done, false if an error occurred: in this case, if a new data set has been produced, the transformation is ignored, else data may be corrupted.
+Performs a Transformation (defined by each sub-class): <G> gives the input data (especially the starting model) and can be used for queries (by Selections, etc...) <protocol> allows to work with General Services as necessary (it applies to input data) If the change corresponds to a conversion to a new protocol, see also the method ChangeProtocol <checks> stores produced checks messages if any <newmod> gives the result of the transformation: - if it is Null (i.e. has not been affected), the transformation has been made on the spot, it is assumed to cause no change to the graph of dependances - if it equates the starting Model, it has been transformed on the spot (possibiliy some entities were replaced inside it) - if it is new, it corresponds to a new data set which replaces the starting one //! <self> is mutable to allow results for ChangeProtocol to be memorized if needed, and to store information useful for the method Updated //! Returns True if Done, False if an Error occurred: in this case, if a new data set has been produced, the transformation is ignored, else data may be corrupted.
 ") Perform;
 		virtual Standard_Boolean Perform(const Interface_Graph & G, const opencascade::handle<Interface_Protocol> & protocol, Interface_CheckIterator & checks, opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -6625,7 +6624,7 @@ bool
 
 Description
 -----------
-This method allows to know what happened to a starting entity after the last perform. if <entfrom> (from starting model) has one and only one known item which corresponds in the new produced model, this method must return true and fill the argument <entto>. else, it returns false.
+This method allows to know what happened to a starting entity after the last Perform. If <entfrom> (from starting model) has one and only one known item which corresponds in the new produced model, this method must return True and fill the argument <entto>. Else, it returns False.
 ") Updated;
 		virtual Standard_Boolean Updated(const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto);
 
@@ -6663,7 +6662,7 @@ bool
 
 Description
 -----------
-Performs the copy of entities from an original model to a new one. it must also copy headers if any. returns true when done. the provided default works by copying the individual entities designated in the list, by using the general service class copytool. it can be redefined for a norm which, either implements copy by another way (do not forget to bind each copied result with its original entity in tc) and returns true, or does not know how to copy and returns false.
+Performs the copy of entities from an original model to a new one. It must also copy headers if any. Returns True when done. The provided default works by copying the individual entities designated in the list, by using the general service class CopyTool. It can be redefined for a norm which, either implements Copy by another way (do not forget to Bind each copied result with its original entity in TC) and returns True, or does not know how to copy and returns False.
 ") CopyModel;
 		virtual Standard_Boolean CopyModel(const opencascade::handle<Interface_InterfaceModel> & original, const opencascade::handle<Interface_InterfaceModel> & newmodel, const Interface_EntityIterator & list, Interface_CopyTool & TC);
 
@@ -6704,7 +6703,7 @@ S: Standard_OStream
 
 Description
 -----------
-Calls deferred dumpentity with the recorded default level.
+Calls deferred DumpEntity with the recorded default level.
 ") DumpEntity;
 		void DumpEntity(const opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol, const opencascade::handle<Standard_Transient> & entity, std::ostream &OutValue);
 
@@ -6740,7 +6739,7 @@ max: int
 
 Description
 -----------
-Returns the recorded default and maximum dump levels if none was recorded, max is returned negative, def as zero.
+Returns the recorded default and maximum dump levels If none was recorded, max is returned negative, def as zero.
 ") DumpLevels;
 		void DumpLevels(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -6760,7 +6759,7 @@ int
 
 Description
 -----------
-Gives the way to read a file and transfer it to a model <mod> is the resulting model, which has to be created by this method. in case of error, <mod> must be returned null return value is a status with free values. simply, 0 is for 'execution ok' the protocol can be used to work (e.g. create the model, read and recognize the entities).
+Gives the way to Read a File and transfer it to a Model <mod> is the resulting Model, which has to be created by this method. In case of error, <mod> must be returned Null Return value is a status with free values. Simply, 0 is for 'Execution OK' The Protocol can be used to work (e.g. create the Model, read and recognize the Entities).
 ") ReadFile;
 		virtual Standard_Integer ReadFile(Standard_CString name, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -6781,7 +6780,8 @@ int
 
 Description
 -----------
-Interface to read a data from the specified stream. @param model is the resulting model, which has to be created by this method. in case of error, model must be returned null return value is a status: 0 - ok, 1 - read failure, -1 - stream failure. default implementation returns 1 (error).
+Interface to read a data from the specified stream. 
+Parameter model is the resulting Model, which has to be created by this method. In case of error, model must be returned Null Return value is a status: 0 - OK, 1 - read failure, -1 - stream failure. //! Default implementation returns 1 (error).
 ") ReadStream;
 		virtual Standard_Integer ReadStream(Standard_CString theName, std::istream & theIStream, opencascade::handle<Interface_InterfaceModel> & model, const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -6819,7 +6819,7 @@ None
 
 Description
 -----------
-Records a default level and a maximum value for level level for dumpentity can go between 0 and <max> default value will be <def>.
+Records a default level and a maximum value for level level for DumpEntity can go between 0 and <max> default value will be <def>.
 ") SetDumpLevels;
 		void SetDumpLevels(const Standard_Integer def, const Standard_Integer max);
 
@@ -6837,7 +6837,7 @@ bool
 
 Description
 -----------
-Gives the way to write a file from a model. <ctx> contains all necessary information: the model, the protocol, the file name, and the list of file modifiers to be applied, also with restricted list of selected entities for each one, if required. in return, it brings the produced check-list //! the worklibrary has to query <applied> to get then run the contextwrite by looping like this (example): for (numap = 1; numap <= ctx.nbmodifiers(); numap ++) { ctx.setmodifier (numap); cast ctx.filemodifier() to specific type -> variable filemod if (!filemod.isnull()) filemod->perform (ctx,writer); filemod then works with ctx. it can, either act on the model itself (for instance on its header), or iterate on selected entities (start/next/more/value) it can call addfail or addwarning, as necessary }.
+Gives the way to Write a File from a Model. <ctx> contains all necessary information: the model, the protocol, the file name, and the list of File Modifiers to be applied, also with restricted list of selected entities for each one, if required. In return, it brings the produced check-list //! The WorkLibrary has to query <applied> to get then run the ContextWrite by looping like this (example): for (numap = 1; numap <= ctx.NbModifiers(); numap ++) { ctx.SetModifier (numap); cast ctx.FileModifier() to specific type -> variable filemod if (!filemod.IsNull()) filemod->Perform (ctx,writer); filemod then works with ctx. It can, either act on the model itself (for instance on its header), or iterate on selected entities (Start/Next/More/Value) it can call AddFail or AddWarning, as necessary }.
 ") WriteFile;
 		virtual Standard_Boolean WriteFile(IFSelect_ContextWrite & ctx);
 
@@ -6866,7 +6866,7 @@ None
 
 Description
 -----------
-Creates a work session it provides default, empty shareout and modelcopier, which can be replaced (if required, should be done just after creation).
+Creates a Work Session It provides default, empty ShareOut and ModelCopier, which can be replaced (if required, should be done just after creation).
 ") IFSelect_WorkSession;
 		 IFSelect_WorkSession();
 
@@ -6885,7 +6885,7 @@ int
 
 Description
 -----------
-Adds an item and returns its attached ident. does nothing if <item> is already recorded (and returns its attached ident) <active> if true commands call to setactive (see below) remark: the determined ident is used if <item> is a dispatch, to fill the shareout.
+Adds an Item and returns its attached Ident. Does nothing if <item> is already recorded (and returns its attached Ident) <active> if True commands call to SetActive (see below) Remark: the determined Ident is used if <item> is a Dispatch, to fill the ShareOut.
 ") AddItem;
 		Standard_Integer AddItem(const opencascade::handle<Standard_Transient> & item, const Standard_Boolean active = Standard_True);
 
@@ -6905,7 +6905,7 @@ int
 
 Description
 -----------
-Adds an item with an attached name. if the name is already known in the worksession, the older item losts it returns ident if done, 0 else, i.e. if <item> is null if <name> is empty, works as additem (i.e. with no name) if <item> is already known but with no attached name, this method tries to attached a name to it <active> if true commands call to setactive (see below).
+Adds an Item with an attached Name. If the Name is already known in the WorkSession, the older item losts it Returns Ident if Done, 0 else, i.e. if <item> is null If <name> is empty, works as AddItem (i.e. with no name) If <item> is already known but with no attached Name, this method tries to attached a Name to it <active> if True commands call to SetActive (see below).
 ") AddNamedItem;
 		Standard_Integer AddNamedItem(Standard_CString name, const opencascade::handle<Standard_Transient> & item, const Standard_Boolean active = Standard_True);
 
@@ -6918,7 +6918,7 @@ opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
-Returns the ordered list of dispatches stored by the shareout.
+Returns the ordered list of dispatches stored by the ShareOut.
 ") AppliedDispatches;
 		opencascade::handle<TColStd_HSequenceOfInteger> AppliedDispatches();
 
@@ -6936,7 +6936,7 @@ None
 
 Description
 -----------
-Commands file sending to clear the list of already sent files, commands to record a new one if <record> is true this list is managed by the modelcopier when sendsplit is called it allows a global exploitation of the set of sent files.
+Commands file sending to clear the list of already sent files, commands to record a new one if <record> is True This list is managed by the ModelCopier when SendSplit is called It allows a global exploitation of the set of sent files.
 ") BeginSentFiles;
 		void BeginSentFiles(const Standard_Boolean record);
 
@@ -6954,7 +6954,7 @@ str
 
 Description
 -----------
-Returns the category name determined for an entity it is computed by the class category remark: an unknown entity gives an empty string.
+Returns the Category Name determined for an entity it is computed by the class Category Remark: an unknown entity gives an empty string.
 ") CategoryName;
 		Standard_CString CategoryName(const opencascade::handle<Standard_Transient> & ent);
 
@@ -6972,7 +6972,7 @@ int
 
 Description
 -----------
-Returns the category number determined for an entity it is computed by the class category an unknown entity (number 0) gives a value -1.
+Returns the Category Number determined for an entity it is computed by the class Category An unknown entity (number 0) gives a value -1.
 ") CategoryNumber;
 		Standard_Integer CategoryNumber(const opencascade::handle<Standard_Transient> & ent);
 
@@ -6992,7 +6992,7 @@ bool
 
 Description
 -----------
-Changes the rank of a modifier in the session: model modifiers if <formodel> is true, file modifiers else the modifier n0 <before> is put to n0 <after> return true if done, false if <before> or <after> out of range.
+Changes the Rank of a Modifier in the Session: Model Modifiers if <formodel> is True, File Modifiers else the Modifier n0 <before> is put to n0 <after> Return True if Done, False if <before> or <after> out of range.
 ") ChangeModifierRank;
 		Standard_Boolean ChangeModifierRank(const Standard_Boolean formodel, const Standard_Integer before, const Standard_Integer after);
 
@@ -7011,7 +7011,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns a check for a single entity, under the form of a checkiterator (this gives only one form for the user) if <ent> is null or equates the current model, it gives the global check, else the check for the given entity <complete> as for modelchecklist.
+Returns a Check for a single entity, under the form of a CheckIterator (this gives only one form for the user) if <ent> is Null or equates the current Model, it gives the Global Check, else the Check for the given entity <complete> as for ModelCheckList.
 ") CheckOne;
 		Interface_CheckIterator CheckOne(const opencascade::handle<Standard_Transient> & ent, const Standard_Boolean complete = Standard_True);
 
@@ -7029,7 +7029,7 @@ None
 
 Description
 -----------
-Clears recorded data (not the items) according mode: 1: all data: model, graph, checklist, + cleardata 4 2: graph and checklist (they will then be recomputed later) 3: checklist (it will be recomputed by computecheck) 4: just content of selectpointed and counters plus 0: does nothing but called by setmodel cleardata is virtual, hence it can be redefined to clear other data of a specialised work session.
+Clears recorded data (not the items) according mode: 1: all Data: Model, Graph, CheckList, + ClearData 4 2: Graph and CheckList (they will then be recomputed later) 3: CheckList (it will be recomputed by ComputeCheck) 4: just content of SelectPointed and Counters Plus 0: does nothing but called by SetModel ClearData is virtual, hence it can be redefined to clear other data of a specialised Work Session.
 ") ClearData;
 		virtual void ClearData(const Standard_Integer mode);
 
@@ -7042,7 +7042,7 @@ None
 
 Description
 -----------
-Erases all stored data from the file evaluation (i.e. all former naming information are lost).
+Erases all stored data from the File Evaluation (i.e. ALL former naming information are lost).
 ") ClearFile;
 		void ClearFile();
 
@@ -7055,7 +7055,7 @@ None
 
 Description
 -----------
-Removes all the modifiers active in the modelcopier: they become inactive and they are removed from the session.
+Removes all the Modifiers active in the ModelCopier: they become inactive and they are removed from the Session.
 ") ClearFinalModifiers;
 		void ClearFinalModifiers();
 
@@ -7068,7 +7068,7 @@ None
 
 Description
 -----------
-Clears all the recorded items: selections, dispatches, modifiers, and strings & intparams, with their idents & names. remark that if a model has been loaded, it is not cleared.
+Clears all the recorded Items: Selections, Dispatches, Modifiers, and Strings & IntParams, with their Idents & Names. Remark that if a Model has been loaded, it is not cleared.
 ") ClearItems;
 		void ClearItems();
 
@@ -7086,7 +7086,7 @@ None
 
 Description
 -----------
-Clears the list of dispatches recorded by the shareout if <only> disp is true, tha's all. else, clears also the lists of modifiers recorded by the shareout.
+Clears the list of Dispatches recorded by the ShareOut if <only> disp is True, tha's all. Else, clears also the lists of Modifiers recorded by the ShareOut.
 ") ClearShareOut;
 		void ClearShareOut(const Standard_Boolean onlydisp);
 
@@ -7106,7 +7106,7 @@ int
 
 Description
 -----------
-Adds an input selection to a selectcombine (union or inters.). returns new count of inputs for this selectcombine if done or 0 if <sel> is not kind of selectcombine, or if <seladd> or <sel> is not in the worksession by default, adding is done at the end of the list else, it is an insertion to rank <atnum> (useful for un-redo).
+Adds an input selection to a SelectCombine (Union or Inters.). Returns new count of inputs for this SelectCombine if Done or 0 if <sel> is not kind of SelectCombine, or if <seladd> or <sel> is not in the WorkSession By default, adding is done at the end of the list Else, it is an insertion to rank <atnum> (useful for Un-ReDo).
 ") CombineAdd;
 		Standard_Integer CombineAdd(const opencascade::handle<IFSelect_Selection> & selcomb, const opencascade::handle<IFSelect_Selection> & seladd, const Standard_Integer atnum = 0);
 
@@ -7125,7 +7125,7 @@ bool
 
 Description
 -----------
-Removes an input selection from a selectcombine (union or intersection). returns true if done, false if <selcomb> is not kind of selectcombine or <selrem> is not source of <selcomb>.
+Removes an input selection from a SelectCombine (Union or Intersection). Returns True if done, False if <selcomb> is not kind of SelectCombine or <selrem> is not source of <selcomb>.
 ") CombineRemove;
 		Standard_Boolean CombineRemove(const opencascade::handle<IFSelect_Selection> & selcomb, const opencascade::handle<IFSelect_Selection> & selrem);
 
@@ -7143,7 +7143,7 @@ bool
 
 Description
 -----------
-Computes the checklist for the model currently loaded it can then be used for displays, queries ... returns true if ok, false else (i.e. no protocol set, or model absent). if <enforce> is false, works only if not already done or if a new model has been loaded from last call. remark: computation is enforced by every call to setmodel or runtransformer.
+Computes the CheckList for the Model currently loaded It can then be used for displays, queries ... Returns True if OK, False else (i.e. no Protocol set, or Model absent). If <enforce> is False, works only if not already done or if a new Model has been loaded from last call. Remark: computation is enforced by every call to SetModel or RunTransformer.
 ") ComputeCheck;
 		Standard_Boolean ComputeCheck(const Standard_Boolean enforce = Standard_False);
 
@@ -7162,7 +7162,7 @@ bool
 
 Description
 -----------
-Computes the content of a signcounter when it is defined with a selection, then returns true returns false if the signcounter is not defined with a selection, or if its selection mode is inhibited <forced> to work around optimisations.
+Computes the content of a SignCounter when it is defined with a Selection, then returns True Returns False if the SignCounter is not defined with a Selection, or if its Selection Mode is inhibited <forced> to work around optimisations.
 ") ComputeCounter;
 		Standard_Boolean ComputeCounter(const opencascade::handle<IFSelect_SignCounter> & counter, const Standard_Boolean forced = Standard_False);
 
@@ -7182,7 +7182,7 @@ bool
 
 Description
 -----------
-Computes the content of a signcounter from an input list if <list> is null, uses internal definition of the counter: a selection, else the whole model (recomputation forced) if <clear> is true (d), starts from scratch else, cumulates computations.
+Computes the content of a SignCounter from an input list If <list> is Null, uses internal definition of the Counter: a Selection, else the whole Model (recomputation forced) If <clear> is True (D), starts from scratch Else, cumulates computations.
 ") ComputeCounterFromList;
 		Standard_Boolean ComputeCounterFromList(const opencascade::handle<IFSelect_SignCounter> & counter, const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Standard_Boolean clear = Standard_True);
 
@@ -7200,7 +7200,7 @@ bool
 
 Description
 -----------
-Computes the graph used for selections, displays ... if a hgraph is already set, with same model as given by method model, does nothing. else, computes a new graph. if <enforce> is given true, computes a new graph anyway. remark that a call to cleargraph will cause computegraph to really compute a new graph returns true if graph is ok, false else (i.e. if no protocol is set, or if model is absent or empty).
+Computes the Graph used for Selections, Displays ... If a HGraph is already set, with same model as given by method Model, does nothing. Else, computes a new Graph. If <enforce> is given True, computes a new Graph anyway. Remark that a call to ClearGraph will cause ComputeGraph to really compute a new Graph Returns True if Graph is OK, False else (i.e. if no Protocol is set, or if Model is absent or empty).
 ") ComputeGraph;
 		Standard_Boolean ComputeGraph(const Standard_Boolean enforce = Standard_False);
 
@@ -7213,7 +7213,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the defined default file root. it is used for dispatches which have no specific root attached. null handle if not defined.
+Returns the defined Default File Root. It is used for Dispatches which have no specific root attached. Null Handle if not defined.
 ") DefaultFileRoot;
 		opencascade::handle<TCollection_HAsciiString> DefaultFileRoot();
 
@@ -7231,7 +7231,7 @@ opencascade::handle<IFSelect_Dispatch>
 
 Description
 -----------
-Returns a dispatch, given its ident in the session null result if <id> is not suitable for a dispatch (undefined, or defined for another kind of variable).
+Returns a Dispatch, given its Ident in the Session Null result if <id> is not suitable for a Dispatch (undefined, or defined for another kind of variable).
 ") Dispatch;
 		opencascade::handle<IFSelect_Dispatch> Dispatch(const Standard_Integer id);
 
@@ -7249,7 +7249,7 @@ int
 
 Description
 -----------
-Returns the rank of a dispatch in the shareout, or 0 if <disp> is not in the shareout or not in the worksession.
+Returns the rank of a Dispatch in the ShareOut, or 0 if <disp> is not in the ShareOut or not in the WorkSession.
 ") DispatchRank;
 		Standard_Integer DispatchRank(const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -7268,7 +7268,7 @@ S: Standard_OStream
 
 Description
 -----------
-Dumps a starting entity according to the current norm. to do this, it calls dumpentity from worklibrary. <level> is to be interpreted for each norm: see specific classes of worklibrary for it. generally, 0 if for very basic (only type ...), greater values give more and more details.
+Dumps a starting entity according to the current norm. To do this, it calls DumpEntity from WorkLibrary. <level> is to be interpreted for each norm: see specific classes of WorkLibrary for it. Generally, 0 if for very basic (only type ...), greater values give more and more details.
 ") DumpEntity;
 		void DumpEntity(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer level, std::ostream &OutValue);
 
@@ -7286,7 +7286,7 @@ S: Standard_OStream
 
 Description
 -----------
-Lists the content of the input model (if there is one) according level: 0 -> gives only count of entities and roots 1 -> lists also roots; 2 -> lists all entities (by tracetype) 3 -> performs a call to checklist (fails) and lists the result 4 -> as 3 but all checklist (fails + warnings) 5,6,7: as 3 but resp. count,list,labels by fail 8,9,10: as 4 but resp. count,list,labels by message.
+Lists the content of the Input Model (if there is one) According level: 0 -> gives only count of Entities and Roots 1 -> Lists also Roots; 2 -> Lists all Entities (by TraceType) 3 -> Performs a call to CheckList (Fails) and lists the result 4 -> as 3 but all CheckList (Fails + Warnings) 5,6,7: as 3 but resp. Count,List,Labels by Fail 8,9,10: as 4 but resp. Count,List,Labels by message.
 ") DumpModel;
 		void DumpModel(const Standard_Integer level, std::ostream &OutValue);
 
@@ -7304,7 +7304,7 @@ None
 
 Description
 -----------
-Lists a selection and its sources (see selectioniterator), given its rank in the list.
+Lists a Selection and its Sources (see SelectionIterator), given its rank in the list.
 ") DumpSelection;
 		void DumpSelection(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -7317,7 +7317,7 @@ None
 
 Description
 -----------
-Dumps contents of the shareout (on 'cout').
+Dumps contents of the ShareOut (on 'cout').
 ") DumpShare;
 		void DumpShare();
 
@@ -7335,7 +7335,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the label for <ent>, as the model does if <ent> is not in the model or if no model is loaded, a null handle is returned.
+Returns the label for <ent>, as the Model does If <ent> is not in the Model or if no Model is loaded, a Null Handle is returned.
 ") EntityLabel;
 		opencascade::handle<TCollection_HAsciiString> EntityLabel(const opencascade::handle<Standard_Transient> & ent);
 
@@ -7353,7 +7353,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the name of an entity this name is computed by the general service name returns a null handle if fails.
+Returns the Name of an Entity This Name is computed by the general service Name Returns a Null Handle if fails.
 ") EntityName;
 		opencascade::handle<TCollection_HAsciiString> EntityName(const opencascade::handle<Standard_Transient> & ent);
 
@@ -7366,7 +7366,7 @@ bool
 
 Description
 -----------
-Returns the error handler status.
+Returns the Error Handler status.
 ") ErrorHandle;
 		Standard_Boolean ErrorHandle();
 
@@ -7384,7 +7384,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Evaluates the effect of a selection applied on the input model returned result remains empty if no input model has been set.
+Evaluates the effect of a Selection applied on the input Model Returned Result remains empty if no input Model has been set.
 ") EvalSelection;
 		Interface_EntityIterator EvalSelection(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -7397,7 +7397,7 @@ opencascade::handle<IFSelect_PacketList>
 
 Description
 -----------
-Returns an evaluation of the whole shareout definition: i.e. how the entities of the starting model are forecast to be sent to various files: list of packets according the dispatches, effective lists of roots for each packet (which determine the content of the corresponding file); plus evaluation of which entities are: forgotten (sent into no file), duplicated (sent into more than one file), sent into a given file. see the class packetlist for more details.
+Returns an Evaluation of the whole ShareOut definition: i.e. how the entities of the starting model are forecast to be sent to various files: list of packets according the dispatches, effective lists of roots for each packet (which determine the content of the corresponding file); plus evaluation of which entities are: forgotten (sent into no file), duplicated (sent into more than one file), sent into a given file. See the class PacketList for more details.
 ") EvalSplit;
 		opencascade::handle<IFSelect_PacketList> EvalSplit();
 
@@ -7415,7 +7415,7 @@ None
 
 Description
 -----------
-Displays the effect of applying the shareout on the input model. <mode> = 0 (default): displays only roots for each packet, <mode> = 1: displays all entities for each packet, plus duplicated entities <mode> = 2: same as <mode> = 1, plus displays forgotten entities (which are in no packet at all).
+Displays the effect of applying the ShareOut on the input Model. <mode> = 0 (default): displays only roots for each packet, <mode> = 1: displays all entities for each packet, plus duplicated entities <mode> = 2: same as <mode> = 1, plus displays forgotten entities (which are in no packet at all).
 ") EvaluateComplete;
 		void EvaluateComplete(const Standard_Integer mode = 0);
 
@@ -7434,7 +7434,7 @@ None
 
 Description
 -----------
-Displays the result of applying a dispatch on the input model (also shows remainder if there is) <mode> = 0 (default), displays nothing else <mode> = 1: displays also duplicated entities (because of this dispatch) <mode> = 2: displays the entities of the starting model which are not taken by this dispatch (forgotten entities) <mode> = 3: displays both duplicated and forgotten entities remark: evaluatecomplete displays these data evaluated for for all the dispatches, if there are several.
+Displays the result of applying a Dispatch on the input Model (also shows Remainder if there is) <mode> = 0 (default), displays nothing else <mode> = 1: displays also duplicated entities (because of this dispatch) <mode> = 2: displays the entities of the starting Model which are not taken by this dispatch (forgotten entities) <mode> = 3: displays both duplicated and forgotten entities Remark: EvaluateComplete displays these data evaluated for for all the dispatches, if there are several.
 ") EvaluateDispatch;
 		void EvaluateDispatch(const opencascade::handle<IFSelect_Dispatch> & disp, const Standard_Integer mode = 0);
 
@@ -7447,7 +7447,7 @@ None
 
 Description
 -----------
-Performs and stores a file evaluation. the results are a list of produced models and a list of names (strings), in parallel fills lastrunchecklist.
+Performs and stores a File Evaluation. The Results are a List of produced Models and a List of names (Strings), in parallel Fills LastRunCheckList.
 ") EvaluateFile;
 		void EvaluateFile();
 
@@ -7465,7 +7465,7 @@ None
 
 Description
 -----------
-Displays the list of entities selected by a selection (i.e. the result of evalselection).
+Displays the list of Entities selected by a Selection (i.e. the result of EvalSelection).
 ") EvaluateSelection;
 		void EvaluateSelection(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -7478,7 +7478,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the defined file extension. null handle if not defined.
+Returns the defined File Extension. Null Handle if not defined.
 ") FileExtension;
 		opencascade::handle<TCollection_HAsciiString> FileExtension();
 
@@ -7496,7 +7496,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns a model, given its rank in the evaluation list.
+Returns a Model, given its rank in the Evaluation List.
 ") FileModel;
 		opencascade::handle<Interface_InterfaceModel> FileModel(const Standard_Integer num);
 
@@ -7514,7 +7514,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the name of a file corresponding to a produced model, given its rank in the evaluation list.
+Returns the name of a file corresponding to a produced Model, given its rank in the Evaluation List.
 ") FileName;
 		TCollection_AsciiString FileName(const Standard_Integer num);
 
@@ -7527,7 +7527,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the defined file prefix. null handle if not defined.
+Returns the defined File Prefix. Null Handle if not defined.
 ") FilePrefix;
 		opencascade::handle<TCollection_HAsciiString> FilePrefix();
 
@@ -7545,7 +7545,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the file root defined for a dispatch. null if no root name is defined for it (hence, no file will be produced).
+Returns the File Root defined for a Dispatch. Null if no Root Name is defined for it (hence, no File will be produced).
 ") FileRoot;
 		opencascade::handle<TCollection_HAsciiString> FileRoot(const opencascade::handle<IFSelect_Dispatch> & disp);
 
@@ -7563,7 +7563,7 @@ opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
-Fills a sequence with a list of idents, those attached to the modifiers applied to final sending. model modifiers if <formodel> is true, file modifiers else this list is given in the order in which they will be applied (which takes into account the changes to modifier ranks).
+Fills a Sequence with a list of Idents, those attached to the Modifiers applied to final sending. Model Modifiers if <formodel> is True, File Modifiers else This list is given in the order in which they will be applied (which takes into account the Changes to Modifier Ranks).
 ") FinalModifierIdents;
 		opencascade::handle<TColStd_HSequenceOfInteger> FinalModifierIdents(const Standard_Boolean formodel);
 
@@ -7581,7 +7581,7 @@ opencascade::handle<IFSelect_GeneralModifier>
 
 Description
 -----------
-Returns a modifier, given its ident in the session null result if <id> is not suitable for a modifier (undefined, or defined for another kind of variable).
+Returns a Modifier, given its Ident in the Session Null result if <id> is not suitable for a Modifier (undefined, or defined for another kind of variable).
 ") GeneralModifier;
 		opencascade::handle<IFSelect_GeneralModifier> GeneralModifier(const Standard_Integer id);
 
@@ -7612,7 +7612,7 @@ str
 
 Description
 -----------
-Completes a file name as required, with prefix and extension (if defined; for a non-defined item, completes nothing).
+Completes a file name as required, with Prefix and Extension (if defined; for a non-defined item, completes nothing).
 ") GiveFileComplete;
 		Standard_CString GiveFileComplete(Standard_CString file);
 
@@ -7630,7 +7630,7 @@ str
 
 Description
 -----------
-Extracts file root name from a given complete file name (uses osd_path).
+Extracts File Root Name from a given complete file name (uses OSD_Path).
 ") GiveFileRoot;
 		Standard_CString GiveFileRoot(Standard_CString file);
 
@@ -7648,7 +7648,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Determines a list of entities from an object: <obj> already hsequenceoftransient: returned itself <obj> selection: its result of evaluation is returned <obj> an entity of the model: a hsequence which contains it else, an empty hsequence <obj> the model it self: all its content (not only the roots).
+Determines a list of entities from an object: <obj> already HSequenceOfTransient: returned itself <obj> Selection: its Result of Evaluation is returned <obj> an entity of the Model: a HSequence which contains it else, an empty HSequence <obj> the Model it self: ALL its content (not only the roots).
 ") GiveList;
 		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(const opencascade::handle<Standard_Transient> & obj);
 
@@ -7667,7 +7667,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Computes a list of entities from two alphanums, first and second, as follows: if <first> is a number or label of an entity: this entity if <first> is a list of numbers/labels: the list of entities if <first> is the name of a selection in <ws>, and <second> not defined, the standard result of this selection else, let's consider 'first second': this whole phrase is split by blanks, as follows (recursive call): - the leftest term is the final selection - the other terms define the result of the selection - and so on (the 'leftest minus one' is a selection, of which the input is given by the remaining ...).
+Computes a List of entities from two alphanums, first and second, as follows: if <first> is a Number or Label of an entity: this entity if <first> is a list of Numbers/Labels: the list of entities if <first> is the name of a Selection in <WS>, and <second> not defined, the standard result of this Selection else, let's consider 'first second': this whole phrase is split by blanks, as follows (RECURSIVE CALL): - the leftest term is the final selection - the other terms define the result of the selection - and so on (the 'leftest minus one' is a selection, of which the input is given by the remaining ...).
 ") GiveList;
 		opencascade::handle<TColStd_HSequenceOfTransient> GiveList(Standard_CString first, Standard_CString second = "");
 
@@ -7687,7 +7687,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Combines two lists and returns the result, according to mode: <mode> < 0: entities in <l1> and not in <l2> <mode> = 0: entities in <l1> and in <l2> <mode> > 0: entities in <l1> or in <l2>.
+Combines two lists and returns the result, according to mode: <mode> < 0: entities in <l1> AND NOT in <l2> <mode> = 0: entities in <l1> AND in <l2> <mode> > 0: entities in <l1> OR in <l2>.
 ") GiveListCombined;
 		opencascade::handle<TColStd_HSequenceOfTransient> GiveListCombined(const opencascade::handle<TColStd_HSequenceOfTransient> & l1, const opencascade::handle<TColStd_HSequenceOfTransient> & l2, const Standard_Integer mode);
 
@@ -7706,7 +7706,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Computes a list of entities from the model as follows <first> being a selection or a combination of selections, <ent> being an entity or a list of entities (as a hsequenceoftransient): the standard result of this selection applied to this list if <ent> is null, the standard definition of the selection is used (which contains a default input selection) if <selname> is erroneous, a null handle is returned //! remark: selname is processed as <first second> of preceding givelist.
+Computes a List of entities from the model as follows <first> being a Selection or a combination of Selections, <ent> being an entity or a list of entities (as a HSequenceOfTransient): the standard result of this selection applied to this list if <ent> is Null, the standard definition of the selection is used (which contains a default input selection) if <selname> is erroneous, a null handle is returned //! REMARK: selname is processed as <first second> of preceding GiveList.
 ") GiveListFromList;
 		opencascade::handle<TColStd_HSequenceOfTransient> GiveListFromList(Standard_CString selname, const opencascade::handle<Standard_Transient> & ent);
 
@@ -7724,7 +7724,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns a selection from a name: - the name of a selection: this selection - the name of a signature + criteria between (..): a new selection from this signature - an entity or a list of entities: a new selectpointed else, returns a null handle.
+Returns a Selection from a Name: - the name of a Selection: this Selection - the name of a Signature + criteria between (..): a new Selection from this Signature - an entity or a list of entities: a new SelectPointed Else, returns a Null Handle.
 ") GiveSelection;
 		opencascade::handle<IFSelect_Selection> GiveSelection(Standard_CString selname);
 
@@ -7737,7 +7737,7 @@ Interface_Graph
 
 Description
 -----------
-Returns the computed graph, for read only.
+Returns the Computed Graph, for Read only.
 ") Graph;
 		const Interface_Graph & Graph();
 
@@ -7750,7 +7750,7 @@ opencascade::handle<Interface_HGraph>
 
 Description
 -----------
-Returns the computed graph as hgraph (null handle if not set).
+Returns the Computed Graph as HGraph (Null Handle if not set).
 ") HGraph;
 		opencascade::handle<Interface_HGraph> HGraph();
 
@@ -7763,7 +7763,7 @@ bool
 
 Description
 -----------
-Returns true is a model has been set.
+Returns True is a Model has been set.
 ") HasModel;
 		Standard_Boolean HasModel();
 
@@ -7781,7 +7781,7 @@ bool
 
 Description
 -----------
-Returns true if an item of the worksession has an attached name.
+Returns True if an Item of the WorkSession has an attached Name.
 ") HasName;
 		Standard_Boolean HasName(const opencascade::handle<Standard_Transient> & item);
 
@@ -7799,7 +7799,7 @@ opencascade::handle<IFSelect_IntParam>
 
 Description
 -----------
-Returns an intparam, given its ident in the session null result if <id> is not suitable for an intparam (undefined, or defined for another kind of variable).
+Returns an IntParam, given its Ident in the Session Null result if <id> is not suitable for an IntParam (undefined, or defined for another kind of variable).
 ") IntParam;
 		opencascade::handle<IFSelect_IntParam> IntParam(const Standard_Integer id);
 
@@ -7817,7 +7817,7 @@ int
 
 Description
 -----------
-Returns integer value of an intparam.
+Returns Integer Value of an IntParam.
 ") IntValue;
 		Standard_Integer IntValue(const opencascade::handle<IFSelect_IntParam> & it);
 
@@ -7830,7 +7830,7 @@ bool
 
 Description
 -----------
-Returns true if a model is defined and really loaded (not empty), a protocol is set and a graph has been computed. in this case, the worksession can start to work.
+Returns True if a Model is defined and really loaded (not empty), a Protocol is set and a Graph has been computed. In this case, the WorkSession can start to work.
 ") IsLoaded;
 		Standard_Boolean IsLoaded();
 
@@ -7848,7 +7848,7 @@ bool
 
 Description
 -----------
-Returns true if <sel> a reversed selectextract, false else.
+Returns True if <sel> a Reversed SelectExtract, False else.
 ") IsReversedSelectExtract;
 		Standard_Boolean IsReversedSelectExtract(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -7866,7 +7866,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an item, given its ident. returns a null handle if no item corresponds to this ident.
+Returns an Item, given its Ident. Returns a Null Handle if no Item corresponds to this Ident.
 ") Item;
 		opencascade::handle<Standard_Transient> Item(const Standard_Integer id);
 
@@ -7884,7 +7884,7 @@ int
 
 Description
 -----------
-Returns the ident attached to an item in the worksession, or zero if it is unknown.
+Returns the Ident attached to an Item in the WorkSession, or Zero if it is unknown.
 ") ItemIdent;
 		Standard_Integer ItemIdent(const opencascade::handle<Standard_Transient> & item);
 
@@ -7902,7 +7902,7 @@ opencascade::handle<TColStd_HSequenceOfInteger>
 
 Description
 -----------
-Fills a sequence with the list of idents attached to the items of which type complies with (iskind) <type> (alphabetic order) remark: <type> = type(standard_transient) gives all the idents which are suitable in the worksession.
+Fills a Sequence with the List of Idents attached to the Items of which Type complies with (IsKind) <type> (alphabetic order) Remark: <type> = TYPE(Standard_Transient) gives all the Idents which are suitable in the WorkSession.
 ") ItemIdents;
 		opencascade::handle<TColStd_HSequenceOfInteger> ItemIdents(const opencascade::handle<Standard_Type> & type);
 
@@ -7920,7 +7920,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns a label which illustrates the content of an item, given its ident. this label is: - for a text parameter, 'text:<text value>' - for an integer parameter, 'integer:<integer value>' - for a selection, a dispatch or a modifier, its label (see these classes) - for any other kind of variable, its cdl type.
+Returns a Label which illustrates the content of an Item, given its Ident. This Label is: - for a Text Parameter, 'Text:<text value>' - for an Integer Parameter, 'Integer:<integer value>' - for a Selection, a Dispatch or a Modifier, its Label (see these classes) - for any other kind of Variable, its cdl type.
 ") ItemLabel;
 		opencascade::handle<TCollection_HAsciiString> ItemLabel(const Standard_Integer id);
 
@@ -7938,7 +7938,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Fills a sequence with the list of the names attached to items of which type complies with (iskind) <type> (alphabetic order) remark: <type> = type(standard_transient) gives all the names.
+Fills a Sequence with the list of the Names attached to Items of which Type complies with (IsKind) <type> (alphabetic order) Remark: <type> = TYPE(Standard_Transient) gives all the Names.
 ") ItemNames;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> ItemNames(const opencascade::handle<Standard_Type> & type);
 
@@ -7956,7 +7956,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Fills a sequence with the names of the control items, of which the label matches <label> (contain it): see nextidentforlabel search mode is fixed to 'contained' if <label> is empty, returns all names.
+Fills a Sequence with the NAMES of the control items, of which the label matches <label> (contain it): see NextIdentForLabel Search mode is fixed to 'contained' If <label> is empty, returns all Names.
 ") ItemNamesForLabel;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> ItemNamesForLabel(Standard_CString label);
 
@@ -7974,7 +7974,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns the selection of a dispatch or a generalmodifier. returns a null handle if none is defined or <item> not good type.
+Returns the Selection of a Dispatch or a GeneralModifier. Returns a Null Handle if none is defined or <item> not good type.
 ") ItemSelection;
 		opencascade::handle<IFSelect_Selection> ItemSelection(const opencascade::handle<Standard_Transient> & item);
 
@@ -7987,7 +7987,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the check list produced by the last execution of either: evaluatefile(for split), sendsplit, sendall, sendselected, runtransformer-runmodifier cleared by setmodel or cleardata(1) the field is protected, hence a specialized worksession may fill it.
+Returns the Check List produced by the last execution of either: EvaluateFile(for Split), SendSplit, SendAll, SendSelected, RunTransformer-RunModifier Cleared by SetModel or ClearData(1) The field is protected, hence a specialized WorkSession may fill it.
 ") LastRunCheckList;
 		Interface_CheckIterator LastRunCheckList();
 
@@ -8006,7 +8006,7 @@ S: Standard_OStream
 
 Description
 -----------
-Internal method which displays an entityiterator <mode> 0 gives short display (only entity numbers) 1 gives a more complete trace (1 line per entity) (can be used each time a trace has to be output from a list) 2 gives a form suitable for givelist: (n1,n2,n3...).
+Internal method which displays an EntityIterator <mode> 0 gives short display (only entity numbers) 1 gives a more complete trace (1 line per Entity) (can be used each time a trace has to be output from a list) 2 gives a form suitable for givelist: (n1,n2,n3...).
 ") ListEntities;
 		void ListEntities(const Interface_EntityIterator & iter, const Standard_Integer mode, std::ostream &OutValue);
 
@@ -8024,7 +8024,7 @@ None
 
 Description
 -----------
-Lists the modifiers of the session (for each one, displays its label). listing is done following ranks (modifiers are invoked following their ranks) model modifiers if <formodel> is true, file modifiers else.
+Lists the Modifiers of the session (for each one, displays its Label). Listing is done following Ranks (Modifiers are invoked following their ranks) Model Modifiers if <formodel> is True, File Modifiers else.
 ") ListFinalModifiers;
 		void ListFinalModifiers(const Standard_Boolean formodel);
 
@@ -8042,7 +8042,7 @@ None
 
 Description
 -----------
-Lists the labels of all items of the worksession if <label> is defined, lists labels which contain it.
+Lists the Labels of all Items of the WorkSession If <label> is defined, lists labels which contain it.
 ") ListItems;
 		void ListItems(Standard_CString label = "");
 
@@ -8068,7 +8068,7 @@ int
 
 Description
 -----------
-Returns the maximum value for an item identifier. it can be greater to the count of known items, because some can have been removed.
+Returns the Maximum Value for an Item Identifier. It can be greater to the count of known Items, because some can have been removed.
 ") MaxIdent;
 		Standard_Integer MaxIdent();
 
@@ -8081,7 +8081,7 @@ int
 
 Description
 -----------
-Returns the greater count of different files in which any of the starting entities could be sent. before any file output, this count is 0. ideal count is 1. more than 1 means that duplications occur.
+Returns the greater count of different files in which any of the starting entities could be sent. Before any file output, this count is 0. Ideal count is 1. More than 1 means that duplications occur.
 ") MaxSendingCount;
 		Standard_Integer MaxSendingCount();
 
@@ -8094,7 +8094,7 @@ opencascade::handle<Interface_InterfaceModel>
 
 Description
 -----------
-Returns the model of the work session (null handle if none) should be c++: return const &.
+Returns the Model of the Work Session (Null Handle if none) should be C++: return const &.
 ") Model;
 		const opencascade::handle<Interface_InterfaceModel> & Model();
 
@@ -8112,7 +8112,7 @@ Interface_CheckIterator
 
 Description
 -----------
-Returns the check list for the model currently loaded: <complete> = true: complete (syntactic & semantic messages), computed if not yet done <complete> = false: only syntactic (check file form).
+Returns the Check List for the Model currently loaded: <complete> = True: complete (syntactic & semantic messages), computed if not yet done <complete> = False: only syntactic (check file form).
 ") ModelCheckList;
 		Interface_CheckIterator ModelCheckList(const Standard_Boolean complete = Standard_True);
 
@@ -8125,7 +8125,7 @@ opencascade::handle<IFSelect_ModelCopier>
 
 Description
 -----------
-Gives access to the complete modelcopier.
+Gives access to the complete ModelCopier.
 ") ModelCopier;
 		const opencascade::handle<IFSelect_ModelCopier> & ModelCopier();
 
@@ -8143,7 +8143,7 @@ opencascade::handle<IFSelect_Modifier>
 
 Description
 -----------
-Returns a model modifier, given its ident in the session, i.e. typed as a modifier (not simply a generalmodifier) null result if <id> is not suitable for a modifier (undefined, or defined for another kind of variable).
+Returns a Model Modifier, given its Ident in the Session, i.e. typed as a Modifier (not simply a GeneralModifier) Null result if <id> is not suitable for a Modifier (undefined, or defined for another kind of variable).
 ") ModelModifier;
 		opencascade::handle<IFSelect_Modifier> ModelModifier(const Standard_Integer id);
 
@@ -8161,7 +8161,7 @@ int
 
 Description
 -----------
-Returns the rank of a modifier given its ident. model or file modifier according its type (modelmodifier or not) remember that modifiers are applied sequentially following their rank: first model modifiers then file modifiers rank is given by rank of call to additem and can be changed by changemodifierrank.
+Returns the Rank of a Modifier given its Ident. Model or File Modifier according its type (ModelModifier or not) Remember that Modifiers are applied sequentially following their Rank: first Model Modifiers then File Modifiers Rank is given by rank of call to AddItem and can be changed by ChangeModifierRank.
 ") ModifierRank;
 		Standard_Integer ModifierRank(const opencascade::handle<IFSelect_GeneralModifier> & item);
 
@@ -8179,7 +8179,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the name attached to an item as a variable of this worksession. if <item> is null or not recorded, returns an empty string.
+Returns the Name attached to an Item as a Variable of this WorkSession. If <item> is Null or not recorded, returns an empty string.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name(const opencascade::handle<Standard_Transient> & item);
 
@@ -8197,7 +8197,7 @@ int
 
 Description
 -----------
-Returns the ident attached to a name, 0 if name not recorded.
+Returns the Ident attached to a Name, 0 if name not recorded.
 ") NameIdent;
 		Standard_Integer NameIdent(Standard_CString name);
 
@@ -8215,7 +8215,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the item which corresponds to a variable, given its name (whatever the type of this item). returns a null handle if this name is not recorded.
+Returns the Item which corresponds to a Variable, given its Name (whatever the type of this Item). Returns a Null Handle if this Name is not recorded.
 ") NamedItem;
 		opencascade::handle<Standard_Transient> NamedItem(Standard_CString name);
 
@@ -8233,7 +8233,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Same as above, but <name> is given through a handle especially useful with methods selectionnames, etc...
+Same as above, but <name> is given through a Handle Especially useful with methods SelectionNames, etc...
 ") NamedItem;
 		opencascade::handle<Standard_Transient> NamedItem(const opencascade::handle<TCollection_HAsciiString> & name);
 
@@ -8246,7 +8246,7 @@ int
 
 Description
 -----------
-Returns the count of produced models.
+Returns the count of produced Models.
 ") NbFiles;
 		Standard_Integer NbFiles();
 
@@ -8264,7 +8264,7 @@ int
 
 Description
 -----------
-Returns the count of modifiers applied to final sending model modifiers if <formodel> is true, file modifiers else (i.e. modifiers which apply once the models have been filled).
+Returns the count of Modifiers applied to final sending Model Modifiers if <formodel> is True, File Modifiers else (i.e. Modifiers which apply once the Models have been filled).
 ") NbFinalModifiers;
 		Standard_Integer NbFinalModifiers(const Standard_Boolean formodel);
 
@@ -8282,7 +8282,7 @@ int
 
 Description
 -----------
-Returns the count of input selections known for a selection, or 0 if <sel> not in the worksession. this count is one for a selectdeduct / selectextract kind, two for selectcontrol kind, variable for a selectcombine (union/intersection), zero else.
+Returns the count of Input Selections known for a Selection, or 0 if <sel> not in the WorkSession. This count is one for a SelectDeduct / SelectExtract kind, two for SelectControl kind, variable for a SelectCombine (Union/Intersection), zero else.
 ") NbSources;
 		Standard_Integer NbSources(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -8295,7 +8295,7 @@ int
 
 Description
 -----------
-Returns the count of entities stored in the model, or 0.
+Returns the count of Entities stored in the Model, or 0.
 ") NbStartingEntities;
 		Standard_Integer NbStartingEntities();
 
@@ -8313,7 +8313,7 @@ opencascade::handle<IFSelect_IntParam>
 
 Description
 -----------
-Creates a new intparam. a name can be set (optional) returns the created intparam, or a null handle in case of failure (see additem/addnameditem).
+Creates a new IntParam. A Name can be set (Optional) Returns the created IntParam, or a Null Handle in case of Failure (see AddItem/AddNamedItem).
 ") NewIntParam;
 		opencascade::handle<IFSelect_IntParam> NewIntParam(Standard_CString name = "");
 
@@ -8332,7 +8332,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Creates a parameter as being bound to a static if the static is integer, this creates an intparam bound to it by its name. else this creates a string which is the value of the static. returns a null handle if <statname> is unknown as a static.
+Creates a parameter as being bound to a Static If the Static is Integer, this creates an IntParam bound to it by its name. Else this creates a String which is the value of the Static. Returns a null handle if <statname> is unknown as a Static.
 ") NewParamFromStatic;
 		opencascade::handle<Standard_Transient> NewParamFromStatic(Standard_CString statname, Standard_CString name = "");
 
@@ -8351,7 +8351,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Creates a new selection, of type selectpointed, its content starts with <list>. a name must be given (can be empty).
+Creates a new Selection, of type SelectPointed, its content starts with <list>. A name must be given (can be empty).
 ") NewSelectPointed;
 		opencascade::handle<IFSelect_Selection> NewSelectPointed(const opencascade::handle<TColStd_HSequenceOfTransient> & list, Standard_CString name);
 
@@ -8369,7 +8369,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Creates a new (empty) textparam. a name can be set (optional) returns the created textparam (as an hasciistring), or a null handle in case of failure (see additem/addnameditem).
+Creates a new (empty) TextParam. A Name can be set (Optional) Returns the created TextParam (as an HAsciiString), or a Null Handle in case of Failure (see AddItem/AddNamedItem).
 ") NewTextParam;
 		opencascade::handle<TCollection_HAsciiString> NewTextParam(Standard_CString name = "");
 
@@ -8388,7 +8388,7 @@ opencascade::handle<IFSelect_Transformer>
 
 Description
 -----------
-Creates and returns a transformstandard, empty, with its copy option (true = copy, false = on the spot) and an optional name. to a transformstandard, the method setappliedmodifier applies.
+Creates and returns a TransformStandard, empty, with its Copy Option (True = Copy, False = On the Spot) and an optional name. To a TransformStandard, the method SetAppliedModifier applies.
 ") NewTransformStandard;
 		opencascade::handle<IFSelect_Transformer> NewTransformStandard(const Standard_Boolean copy, Standard_CString name = "");
 
@@ -8408,7 +8408,7 @@ int
 
 Description
 -----------
-For query by label with possible iterations searches the ident of which item has a label which matches a given one, the search starts from an initial ident. returns the first found ident which follows <id>, or zero //! the search must start with <id> = 0, it returns the next ident which matches. to iterate, call again this method which this returned value as <id>. once an ident has been returned, the item can be obtained by the method item //! <mode> precises the required matching mode: - 0 (default): <label> must match exactly with the item label - 1: <label> must match the exact beginning (the end is free) - 2: <label> must be at least once wherever in the item label - other values are ignored.
+For query by Label with possible iterations Searches the Ident of which Item has a Label which matches a given one, the search starts from an initial Ident. Returns the first found Ident which follows <id>, or ZERO //! The search must start with <id> = 0, it returns the next Ident which matches. To iterate, call again this method which this returned value as <id>. Once an Ident has been returned, the Item can be obtained by the method Item //! <mode> precises the required matching mode: - 0 (Default): <label> must match exactly with the Item Label - 1: <label> must match the exact beginning (the end is free) - 2: <label> must be at least once wherever in the Item Label - other values are ignored.
 ") NextIdentForLabel;
 		Standard_Integer NextIdentForLabel(Standard_CString label, const Standard_Integer id, const Standard_Integer mode = 0);
 
@@ -8427,7 +8427,7 @@ int
 
 Description
 -----------
-From a given label in model, returns the corresponding number starts from first entity by default, may start after a given number: this number may be given negative, its absolute value is then considered. hence a loop on numberfromlabel may be programmed (stop test is: returned value positive or null) //! returns 0 if not found, < 0 if more than one found (first found in negative). if <val> just gives an integer value, returns it.
+From a given label in Model, returns the corresponding number Starts from first entity by Default, may start after a given number: this number may be given negative, its absolute value is then considered. Hence a loop on NumberFromLabel may be programmed (stop test is: returned value positive or null) //! Returns 0 if not found, < 0 if more than one found (first found in negative). If <val> just gives an integer value, returns it.
 ") NumberFromLabel;
 		Standard_Integer NumberFromLabel(Standard_CString val, const Standard_Integer afternum = 0);
 
@@ -8447,7 +8447,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints a checkiterator to the current trace file, controlled with the current model complete or fails only, according to <failsonly> <mode> defines the mode of printing 0: sequential, according entities; else with a checkcounter 1: according messages, count of entities 2: id but with list of entities, designated by their numbers 3: as 2 but with labels of entities.
+Prints a CheckIterator to the current Trace File, controlled with the current Model complete or fails only, according to <failsonly> <mode> defines the mode of printing 0: sequential, according entities; else with a CheckCounter 1: according messages, count of entities 2: id but with list of entities, designated by their numbers 3: as 2 but with labels of entities.
 ") PrintCheckList;
 		void PrintCheckList(std::ostream &OutValue, const Interface_CheckIterator & checklist, const Standard_Boolean failsonly, const IFSelect_PrintCount mode);
 
@@ -8484,7 +8484,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints a signaturelist to the current trace file, controlled with the current model <mode> defines the mode of printing (see signaturelist).
+Prints a SignatureList to the current Trace File, controlled with the current Model <mode> defines the mode of printing (see SignatureList).
 ") PrintSignatureList;
 		void PrintSignatureList(std::ostream &OutValue, const opencascade::handle<IFSelect_SignatureList> & signlist, const IFSelect_PrintCount mode);
 
@@ -8497,7 +8497,7 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns the protocol. null handle if not yet set should be c++: return const &.
+Returns the Protocol. Null Handle if not yet set should be C++: return const &.
 ") Protocol;
 		const opencascade::handle<Interface_Protocol> & Protocol();
 
@@ -8533,7 +8533,7 @@ int
 
 Description
 -----------
-Determines check status for an entity regarding last call to querychecklist: -1: <ent> unknown in the model, ignored 0: no check at all, immediate or inherited thru graph 1: immediate warning (no fail), no inherited check 2: immediate fail, no inherited check +10: idem but some inherited warning (no fail) +20: idem but some inherited fail.
+Determines check status for an entity regarding last call to QueryCheckList: -1: <ent> unknown in the model, ignored 0: no check at all, immediate or inherited thru Graph 1: immediate warning (no fail), no inherited check 2: immediate fail, no inherited check +10: idem but some inherited warning (no fail) +20: idem but some inherited fail.
 ") QueryCheckStatus;
 		Standard_Integer QueryCheckStatus(const opencascade::handle<Standard_Transient> & ent);
 
@@ -8570,7 +8570,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Reads a file with the worklibrary (sets model and loadedfile) returns a integer status which can be: retdone if ok, retvoid if no protocol not defined, reterror for file not found, retfail if fail during read.
+Reads a file with the WorkLibrary (sets Model and LoadedFile) Returns a integer status which can be: RetDone if OK, RetVoid if no Protocol not defined, RetError for file not found, RetFail if fail during read.
 ") ReadFile;
 		IFSelect_ReturnStatus ReadFile(Standard_CString filename);
 
@@ -8589,7 +8589,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Reads a file from stream with the worklibrary (sets model and loadedfile) returns a integer status which can be: retdone if ok, retvoid if no protocol not defined, reterror for file not found, retfail if fail during read.
+Reads a file from stream with the WorkLibrary (sets Model and LoadedFile) Returns a integer status which can be: RetDone if OK, RetVoid if no Protocol not defined, RetError for file not found, RetFail if fail during read.
 ") ReadStream;
 		IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
 
@@ -8607,7 +8607,7 @@ bool
 
 Description
 -----------
-Removes an item given its ident. returns false if <id> is attached to no item in the worksession. for a named item, also removes its name.
+Removes an Item given its Ident. Returns False if <id> is attached to no Item in the WorkSession. For a Named Item, also removes its Name.
 ") RemoveItem;
 		Standard_Boolean RemoveItem(const opencascade::handle<Standard_Transient> & item);
 
@@ -8625,7 +8625,7 @@ bool
 
 Description
 -----------
-Removes a name without removing the item returns true if done, false else (name not recorded).
+Removes a Name without removing the Item Returns True if Done, False else (Name not recorded).
 ") RemoveName;
 		Standard_Boolean RemoveName(Standard_CString name);
 
@@ -8643,7 +8643,7 @@ bool
 
 Description
 -----------
-Removes an item from the session, given its name returns true if done, false else (name not recorded) (applies only on item which are named).
+Removes an Item from the Session, given its Name Returns True if Done, False else (Name not recorded) (Applies only on Item which are Named).
 ") RemoveNamedItem;
 		Standard_Boolean RemoveNamedItem(Standard_CString name);
 
@@ -8661,7 +8661,7 @@ bool
 
 Description
 -----------
-Resets a generalmodifier to be applied returns true if done, false if <modif> was not applied.
+Resets a GeneralModifier to be applied Returns True if done, False if <modif> was not applied.
 ") ResetAppliedModifier;
 		Standard_Boolean ResetAppliedModifier(const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
@@ -8679,7 +8679,7 @@ bool
 
 Description
 -----------
-Resets input selection which was set by setitemselection same conditions as for setitemselection returns true if done, false if <item> is not in the worksession.
+Resets input Selection which was set by SetItemSelection Same conditions as for SetItemSelection Returns True if done, False if <item> is not in the WorkSession.
 ") ResetItemSelection;
 		Standard_Boolean ResetItemSelection(const opencascade::handle<Standard_Transient> & item);
 
@@ -8698,7 +8698,7 @@ int
 
 Description
 -----------
-Runs a modifier on starting model. it can modify entities, or add new ones. but the model or the protocol is unchanged. the modifier is applied on each entity of the model. see also runmodifierselected fills lastrunchecklist //! <copy>: if true, a new data set is produced which brings the modifications (model + its entities) if false, data are modified on the spot //! it works through a transformstandard defined with <modif> returned status as runtransformer: 0 nothing done, >0 ok, <0 problem, but only between -3 and 3 (protocol unchanged) remark: <copy> true will give <effect> = 3 or -3.
+Runs a Modifier on Starting Model. It can modify entities, or add new ones. But the Model or the Protocol is unchanged. The Modifier is applied on each entity of the Model. See also RunModifierSelected Fills LastRunCheckList //! <copy>: if True, a new data set is produced which brings the modifications (Model + its Entities) if False, data are modified on the spot //! It works through a TransformStandard defined with <modif> Returned status as RunTransformer: 0 nothing done, >0 OK, <0 problem, but only between -3 and 3 (protocol unchanged) Remark: <copy> True will give <effect> = 3 or -3.
 ") RunModifier;
 		Standard_Integer RunModifier(const opencascade::handle<IFSelect_Modifier> & modif, const Standard_Boolean copy);
 
@@ -8718,7 +8718,7 @@ int
 
 Description
 -----------
-Acts as runmodifier, but the modifier is applied on the list determined by a selection, rather than on the whole model if the selection is a null handle, the whole model is taken.
+Acts as RunModifier, but the Modifier is applied on the list determined by a Selection, rather than on the whole Model If the selection is a null handle, the whole model is taken.
 ") RunModifierSelected;
 		Standard_Integer RunModifierSelected(const opencascade::handle<IFSelect_Modifier> & modif, const opencascade::handle<IFSelect_Selection> & sel, const Standard_Boolean copy);
 
@@ -8736,7 +8736,7 @@ int
 
 Description
 -----------
-Runs a transformer on starting model, which can then be edited or replaced by a new one. the protocol can also be changed. fills lastrunchecklist //! returned status is 0 if nothing done (<transf> or model undefined), positive if ok, negative else: 0: nothing done 1: ok, edition on the spot with no change to the graph of dependances (purely local) 2: ok, model edited on the spot (graph recomputed, may have changed), protocol unchanged 3: ok, new model produced, same protocol 4: ok, model edited on the spot (graph recomputed), but protocol has changed 5: ok, new model produced, protocol has changed -1: error on the spot (slight changes), data may be corrupted (remark: corruption should not be profound) -2: error on edition the spot, data may be corrupted (checking them is recommended) -3: error with a new data set, transformation ignored -4: ok as 4, but graph of dependances count not be recomputed (the former one is kept): check the protocol.
+Runs a Transformer on starting Model, which can then be edited or replaced by a new one. The Protocol can also be changed. Fills LastRunCheckList //! Returned status is 0 if nothing done (<transf> or model undefined), positive if OK, negative else: 0: Nothing done 1: OK, edition on the spot with no change to the graph of dependencies (purely local) 2: OK, model edited on the spot (graph recomputed, may have changed), protocol unchanged 3: OK, new model produced, same protocol 4: OK, model edited on the spot (graph recomputed), but protocol has changed 5: OK, new model produced, protocol has changed -1: Error on the spot (slight changes), data may be corrupted (remark: corruption should not be profound) -2: Error on edition the spot, data may be corrupted (checking them is recommended) -3: Error with a new data set, transformation ignored -4: OK as 4, but graph of dependences count not be recomputed (the former one is kept): check the protocol.
 ") RunTransformer;
 		Standard_Integer RunTransformer(const opencascade::handle<IFSelect_Transformer> & transf);
 
@@ -8754,7 +8754,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns a selection, given its ident in the session null result if <id> is not suitable for a selection (undefined, or defined for another kind of variable).
+Returns a Selection, given its Ident in the Session Null result if <id> is not suitable for a Selection (undefined, or defined for another kind of variable).
 ") Selection;
 		opencascade::handle<IFSelect_Selection> Selection(const Standard_Integer id);
 
@@ -8772,7 +8772,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the result of a selection, computed by evalselection (see above) under the form of a hsequence (hence, it can be used by a frontal-engine logic). it can be empty returns a null handle if <sel> is not in the worksession.
+Returns the result of a Selection, computed by EvalSelection (see above) under the form of a HSequence (hence, it can be used by a frontal-engine logic). It can be empty Returns a Null Handle if <sel> is not in the WorkSession.
 ") SelectionResult;
 		opencascade::handle<TColStd_HSequenceOfTransient> SelectionResult(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -8791,7 +8791,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the result of a selection, by forcing its input with a given list <list> (unless <list> is null). rules: <list> applies only for a selectdeduct kind selection: its input is considered: if it is a selectdeduct kind selection, its input is considered, etc... until an input is not a deduct/extract: its result is replaced by <list> and all the chain of deductions is applied.
+Returns the result of a Selection, by forcing its input with a given list <list> (unless <list> is Null). RULES: <list> applies only for a SelectDeduct kind Selection: its Input is considered: if it is a SelectDeduct kind Selection, its Input is considered, etc... until an Input is not a Deduct/Extract: its result is replaced by <list> and all the chain of deductions is applied.
 ") SelectionResultFromList;
 		opencascade::handle<TColStd_HSequenceOfTransient> SelectionResultFromList(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -8810,7 +8810,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Sends the starting model into one file, without splitting, managing remaining data or anything else. <computegraph> true commands the graph to be recomputed before sending: required when a model is filled in several steps //! the model and file modifiers recorded to be applied on sending files are. returns a status of execution: done if ok, void if no data available, error if errors occurred (work library is not defined), errors during translation fail if exception during translation is raised stop if no disk space or disk, file is write protected fills lastrunchecklist.
+Sends the starting Model into one file, without splitting, managing remaining data or anything else. <computegraph> true commands the Graph to be recomputed before sending: required when a Model is filled in several steps //! The Model and File Modifiers recorded to be applied on sending files are. Returns a status of execution: Done if OK, Void if no data available, Error if errors occurred (work library is not defined), errors during translation Fail if exception during translation is raised Stop if no disk space or disk, file is write protected Fills LastRunCheckList.
 ") SendAll;
 		IFSelect_ReturnStatus SendAll(Standard_CString filename, const Standard_Boolean computegraph = Standard_False);
 
@@ -8830,7 +8830,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Sends a part of the starting model into one file, without splitting. but remaining data are managed. <computegraph> true commands the graph to be recomputed before sending: required when a model is filled in several steps //! the model and file modifiers recorded to be applied on sending files are. returns a status: done if ok, fail if error during send, error: worklibrary not defined, void: selection list empty fills lastrunchecklist.
+Sends a part of the starting Model into one file, without splitting. But remaining data are managed. <computegraph> true commands the Graph to be recomputed before sending: required when a Model is filled in several steps //! The Model and File Modifiers recorded to be applied on sending files are. Returns a status: Done if OK, Fail if error during send, Error: WorkLibrary not defined, Void: selection list empty Fills LastRunCheckList.
 ") SendSelected;
 		IFSelect_ReturnStatus SendSelected(Standard_CString filename, const opencascade::handle<IFSelect_Selection> & sel, const Standard_Boolean computegraph = Standard_False);
 
@@ -8843,7 +8843,7 @@ bool
 
 Description
 -----------
-Performs creation of derived files from the input model takes its data (sub-models and names), from result evaluatefile if active, else by dynamic evaluation (not stored) after sendsplit, result of evaluatefile is cleared fills lastrunchecklist //! works with the worklibrary which acts on specific type of model and can work with file modifiers (managed by the model copier) and a modelcopier, which can work with model modifiers returns false if, either worklibrary has failed on at least one sub-file, or the work session is badly conditioned (no model defined, or filenaming not in phase with shareout).
+Performs creation of derived files from the input Model Takes its data (sub-models and names), from result EvaluateFile if active, else by dynamic Evaluation (not stored) After SendSplit, result of EvaluateFile is Cleared Fills LastRunCheckList //! Works with the WorkLibrary which acts on specific type of Model and can work with File Modifiers (managed by the Model Copier) and a ModelCopier, which can work with Model Modifiers Returns False if, either WorkLibrary has failed on at least one sub-file, or the Work Session is badly conditioned (no Model defined, or FileNaming not in phase with ShareOut).
 ") SendSplit;
 		Standard_Boolean SendSplit();
 
@@ -8856,7 +8856,7 @@ opencascade::handle<TColStd_HSequenceOfHAsciiString>
 
 Description
 -----------
-Returns the list of recorded sent files, or a null handle is recording has not been enabled.
+Returns the list of recorded sent files, or a Null Handle is recording has not been enabled.
 ") SentFiles;
 		opencascade::handle<TColStd_HSequenceOfHAsciiString> SentFiles();
 
@@ -8874,7 +8874,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of entities sent in files, accourding the count of files each one has been sent (these counts are reset by setmodel or setremaining(forget) ) stored in graph status <count> = -1 (default) is for entities sent at least once <count> = 0 is for the remaining list (entities not yet sent) <count> = 1 is for entities sent in one and only one file (the ideal case) remaining data are computed on each sending/copying output files (see methods evaluatefile and sendsplit) graph status is 0 for remaining entity, <count> for sent into <count> files this status is set to 0 (not yet sent) for all by setmodel and by setremaining(mode=forget,display).
+Returns the list of Entities sent in files, according to the count of files each one has been sent (these counts are reset by SetModel or SetRemaining(Forget) ) stored in Graph Status <count> = -1 (default) is for ENtities sent at least once <count> = 0 is for the Remaining List (entities not yet sent) <count> = 1 is for entities sent in one and only one file (the ideal case) Remaining Data are computed on each Sending/Copying output files (see methods EvaluateFile and SendSplit) Graph Status is 0 for Remaining Entity, <count> for Sent into <count> files This status is set to 0 (not yet sent) for all by SetModel and by SetRemaining(mode=Forget,Display).
 ") SentList;
 		Interface_EntityIterator SentList(const Standard_Integer count = -1);
 
@@ -8893,7 +8893,7 @@ bool
 
 Description
 -----------
-Following the type of <item>: - dispatch: adds or removes it in the shareout & filenaming - generalmodifier: adds or removes it for final sending (i.e. in the modelcopier) returns true if it did something, false else (state unchanged).
+Following the type of <item>: - Dispatch: Adds or Removes it in the ShareOut & FileNaming - GeneralModifier: Adds or Removes it for final sending (i.e. in the ModelCopier) Returns True if it did something, False else (state unchanged).
 ") SetActive;
 		Standard_Boolean SetActive(const opencascade::handle<Standard_Transient> & item, const Standard_Boolean mode);
 
@@ -8912,7 +8912,7 @@ bool
 
 Description
 -----------
-Sets a generalmodifier to be applied to an item: - item = shareout: applies for final sending (all dispatches) - item is a dispatch: applies for this dispatch only returns true if done, false if <modif> or <item> not in <self>.
+Sets a GeneralModifier to be applied to an item: - item = ShareOut: applies for final sending (all dispatches) - item is a Dispatch: applies for this dispatch only Returns True if done, False if <modif> or <item> not in <self>.
 ") SetAppliedModifier;
 		Standard_Boolean SetAppliedModifier(const opencascade::handle<IFSelect_GeneralModifier> & modif, const opencascade::handle<Standard_Transient> & item);
 
@@ -8932,7 +8932,7 @@ bool
 
 Description
 -----------
-Sets an input selection, main if <formain> is true, second else (as <sc>) to a selectcontrol (as <sel>). returns true if done, false if <sel> is not a selectcontrol, or <sc> or <sel> is not in the worksession.
+Sets an Input Selection, Main if <formain> is True, Second else (as <sc>) to a SelectControl (as <sel>). Returns True if Done, False if <sel> is not a SelectControl, or <sc> or <sel> is not in the WorkSession.
 ") SetControl;
 		Standard_Boolean SetControl(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<IFSelect_Selection> & sc, const Standard_Boolean formain = Standard_True);
 
@@ -8950,7 +8950,7 @@ bool
 
 Description
 -----------
-Defines a default file root name. clears it is <name> = '' returns true if ok, false if <name> already set for a dispatch.
+Defines a Default File Root Name. Clears it is <name> = '' Returns True if OK, False if <name> already set for a Dispatch.
 ") SetDefaultFileRoot;
 		Standard_Boolean SetDefaultFileRoot(Standard_CString name);
 
@@ -8968,7 +8968,7 @@ None
 
 Description
 -----------
-Changes the error handler status (by default, it is not set).
+Changes the Error Handler status (by default, it is not set).
 ") SetErrorHandle;
 		void SetErrorHandle(const Standard_Boolean toHandle);
 
@@ -8986,7 +8986,7 @@ None
 
 Description
 -----------
-Defines a file extension.
+Defines a File Extension.
 ") SetFileExtension;
 		void SetFileExtension(Standard_CString name);
 
@@ -9004,7 +9004,7 @@ None
 
 Description
 -----------
-Defines a file prefix.
+Defines a File Prefix.
 ") SetFilePrefix;
 		void SetFilePrefix(Standard_CString name);
 
@@ -9023,7 +9023,7 @@ bool
 
 Description
 -----------
-Defines a root for a dispatch if <name> is empty, clears root name this has as effect to inhibit the production of file by <disp> returns false if <disp> is not in the worksession or if a root name is already defined for it.
+Defines a Root for a Dispatch If <name> is empty, clears Root Name This has as effect to inhibit the production of File by <disp> Returns False if <disp> is not in the WorkSession or if a root name is already defined for it.
 ") SetFileRoot;
 		Standard_Boolean SetFileRoot(const opencascade::handle<IFSelect_Dispatch> & disp, Standard_CString name);
 
@@ -9042,7 +9042,7 @@ bool
 
 Description
 -----------
-Sets an input selection (as <input>) to a selectextract or a selectdeduct (as <sel>). returns true if done, false if <sel> is neither a selectextract nor a selectdeduct, or not in the worksession.
+Sets an Input Selection (as <input>) to a SelectExtract or a SelectDeduct (as <sel>). Returns True if Done, False if <sel> is neither a SelectExtract nor a SelectDeduct, or not in the WorkSession.
 ") SetInputSelection;
 		Standard_Boolean SetInputSelection(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<IFSelect_Selection> & input);
 
@@ -9061,7 +9061,7 @@ bool
 
 Description
 -----------
-Changes the integer value of an intparam returns true if done, false if <it> is not in the worksession.
+Changes the Integer Value of an IntParam Returns True if Done, False if <it> is not in the WorkSession.
 ") SetIntValue;
 		Standard_Boolean SetIntValue(const opencascade::handle<IFSelect_IntParam> & it, const Standard_Integer val);
 
@@ -9080,7 +9080,7 @@ bool
 
 Description
 -----------
-Sets a selection as input for an item, according its type: if <item> is a dispatch: as final selection if <item> is a generalmodifier (i.e. any kind of modifier): as selection used to filter entities to modify <sel> null causes this selection to be nullified returns false if <item> is not of a suitable type, or <item> or <sel> is not in the worksession.
+Sets a Selection as input for an item, according its type: if <item> is a Dispatch: as Final Selection if <item> is a GeneralModifier (i.e. any kind of Modifier): as Selection used to filter entities to modify <sel> Null causes this Selection to be nullified Returns False if <item> is not of a suitable type, or <item> or <sel> is not in the WorkSession.
 ") SetItemSelection;
 		Standard_Boolean SetItemSelection(const opencascade::handle<Standard_Transient> & item, const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -9098,7 +9098,7 @@ None
 
 Description
 -----------
-Sets a worklibrary, which will be used to read and write files.
+Sets a WorkLibrary, which will be used to Read and Write Files.
 ") SetLibrary;
 		void SetLibrary(const opencascade::handle<IFSelect_WorkLibrary> & theLib);
 
@@ -9116,7 +9116,7 @@ None
 
 Description
 -----------
-Stores the filename used for read for setting the model it is cleared by setmodel and cleardata(1).
+Stores the filename used for read for setting the model It is cleared by SetModel and ClearData(1).
 ") SetLoadedFile;
 		void SetLoadedFile(Standard_CString theFileName);
 
@@ -9134,7 +9134,7 @@ None
 
 Description
 -----------
-Set value of mode responsible for presence of selections after loading if mode set to true that different selections will be accessible after loading else selections will be not accessible after loading( for economy memory in applications).
+Set value of mode responsible for presence of selections after loading If mode set to true that different selections will be accessible after loading else selections will be not accessible after loading( for economy memory in applications).
 ") SetModeStat;
 		void SetModeStat(const Standard_Boolean theMode);
 
@@ -9153,7 +9153,7 @@ None
 
 Description
 -----------
-Sets a model as input: this will be the model from which the shareout will work if <clearpointed> is true (default) all selectpointed items are cleared, else they must be managed by the caller remark: setmodel clears the graph, recomputes it if a protocol is set and if the model is not empty, of course.
+Sets a Model as input: this will be the Model from which the ShareOut will work if <clearpointed> is True (default) all SelectPointed items are cleared, else they must be managed by the caller Remark: SetModel clears the Graph, recomputes it if a Protocol is set and if the Model is not empty, of course.
 ") SetModel;
 		void SetModel(const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Boolean clearpointed = Standard_True);
 
@@ -9172,7 +9172,7 @@ bool
 
 Description
 -----------
-Defines a new content from the former one if <keep> is true, it is given by entities selected by selection <sel> (and all shared entities) else, it is given by all the former content but entities selected by the selection <sel> (and properly shared ones) returns true if done. returns false if the selected list (from <sel>) is empty, hence nothing is done.
+Defines a new content from the former one If <keep> is True, it is given by entities selected by Selection <sel> (and all shared entities) Else, it is given by all the former content but entities selected by the Selection <sel> (and properly shared ones) Returns True if done. Returns False if the selected list (from <sel>) is empty, hence nothing is done.
 ") SetModelContent;
 		Standard_Boolean SetModelContent(const opencascade::handle<IFSelect_Selection> & sel, const Standard_Boolean keep);
 
@@ -9190,7 +9190,7 @@ None
 
 Description
 -----------
-Sets a new modelcopier. fills items which its content.
+Sets a new ModelCopier. Fills Items which its content.
 ") SetModelCopier;
 		void SetModelCopier(const opencascade::handle<IFSelect_ModelCopier> & copier);
 
@@ -9209,7 +9209,7 @@ None
 
 Description
 -----------
-Sets a list of parameters, i.e. typedvalue, to be handled through an editor the two lists are parallel, if <params> is longer than <uses>, surnumeral parameters are for general use //! editforms are created to handle these parameters (list, edit) on the basis of a parameditor xst-params-edit //! a use number dispatches the parameter to a given editform editforms are defined as follows name use means xst-params all all parameters (complete list) xst-params-general 1 generals xst-params-load 2 loadfile (no transfer) xst-params-send 3 sendfile (write, no transfer) xst-params-split 4 split xst-param-read 5 transfer on reading xst-param-write 6 transfer on writing.
+Sets a list of Parameters, i.e. TypedValue, to be handled through an Editor The two lists are parallel, if <params> is longer than <uses>, surnumeral parameters are for general use //! EditForms are created to handle these parameters (list, edit) on the basis of a ParamEditor xst-params-edit //! A use number dispatches the parameter to a given EditForm EditForms are defined as follows Name Use Means xst-params all All Parameters (complete list) xst-params-general 1 Generals xst-params-load 2 LoadFile (no Transfer) xst-params-send 3 SendFile (Write, no Transfer) xst-params-split 4 Split xst-param-read 5 Transfer on Reading xst-param-write 6 Transfer on Writing.
 ") SetParams;
 		void SetParams(const NCollection_Vector<opencascade::handle<Standard_Transient> > & params, const NCollection_Vector<Standard_Integer> & uselist);
 
@@ -9227,7 +9227,7 @@ None
 
 Description
 -----------
-Sets a protocol, which will be used to determine graphs, to read and to write files.
+Sets a Protocol, which will be used to determine Graphs, to Read and to Write Files.
 ") SetProtocol;
 		void SetProtocol(const opencascade::handle<Interface_Protocol> & protocol);
 
@@ -9245,7 +9245,7 @@ bool
 
 Description
 -----------
-Processes remaining data (after having sent files), mode: forget: forget remaining info (i.e. clear all 'sent' status) compute: compute and keep remaining (does nothing if: remaining is empty or if no files has been sent) display: display entities recorded as remaining undo: restore former state of data (after remaining(1) ) returns true if ok, false else (i.e. mode = 2 and remaining list is either empty or takes all the entities, or mode = 3 and no former computation of remaining data was done).
+Processes Remaining data (after having sent files), mode: Forget: forget remaining info (i.e. clear all 'Sent' status) Compute: compute and keep remaining (does nothing if: remaining is empty or if no files has been sent) Display: display entities recorded as remaining Undo: restore former state of data (after Remaining(1) ) Returns True if OK, False else (i.e. mode = 2 and Remaining List is either empty or takes all the entities, or mode = 3 and no former computation of remaining data was done).
 ") SetRemaining;
 		Standard_Boolean SetRemaining(const IFSelect_RemainMode mode);
 
@@ -9265,7 +9265,7 @@ bool
 
 Description
 -----------
-Changes the content of a selection of type selectpointed according <mode>: 0 set <list> as new content (clear former) 1: adds <list> to actual content -1: removes <list> from actual content returns true if done, false if <sel> is not a selectpointed.
+Changes the content of a Selection of type SelectPointed According <mode>: 0 set <list> as new content (clear former) 1: adds <list> to actual content -1: removes <list> from actual content Returns True if done, False if <sel> is not a SelectPointed.
 ") SetSelectPointed;
 		Standard_Boolean SetSelectPointed(const opencascade::handle<IFSelect_Selection> & sel, const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Standard_Integer mode);
 
@@ -9283,7 +9283,7 @@ None
 
 Description
 -----------
-Sets a new shareout. fills items which its content warning: data from the former shareout are lost.
+Sets a new ShareOut. Fills Items which its content Warning: data from the former ShareOut are lost.
 ") SetShareOut;
 		void SetShareOut(const opencascade::handle<IFSelect_ShareOut> & shareout);
 
@@ -9301,7 +9301,7 @@ None
 
 Description
 -----------
-Sets a specific signature to be the signtype, i.e. the signature which will determine typename from the model (basic function). it is recorded in the gtool this signature is also set as 'xst-sign-type' (reserved name).
+Sets a specific Signature to be the SignType, i.e. the Signature which will determine TypeName from the Model (basic function). It is recorded in the GTool This Signature is also set as 'xst-sign-type' (reserved name).
 ") SetSignType;
 		void SetSignType(const opencascade::handle<IFSelect_Signature> & signtype);
 
@@ -9320,7 +9320,7 @@ bool
 
 Description
 -----------
-Changes the text value of a textparam (an hasciistring) returns true if done, false if <it> is not in the worksession.
+Changes the Text Value of a TextParam (an HAsciiString) Returns True if Done, False if <it> is not in the WorkSession.
 ") SetTextValue;
 		Standard_Boolean SetTextValue(const opencascade::handle<TCollection_HAsciiString> & par, Standard_CString val);
 
@@ -9333,7 +9333,7 @@ opencascade::handle<IFSelect_ShareOut>
 
 Description
 -----------
-Returns the shareout defined at creation time.
+Returns the ShareOut defined at creation time.
 ") ShareOut;
 		const opencascade::handle<IFSelect_ShareOut> & ShareOut();
 
@@ -9351,7 +9351,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of entities shared by <ent> (can be empty) returns a null handle if <ent> is unknown.
+Returns the list of entities shared by <ent> (can be empty) Returns a null Handle if <ent> is unknown.
 ") Shareds;
 		opencascade::handle<TColStd_HSequenceOfTransient> Shareds(const opencascade::handle<Standard_Transient> & ent);
 
@@ -9369,7 +9369,7 @@ opencascade::handle<TColStd_HSequenceOfTransient>
 
 Description
 -----------
-Returns the list of entities sharing <ent> (can be empty) returns a null handle if <ent> is unknown.
+Returns the list of entities sharing <ent> (can be empty) Returns a null Handle if <ent> is unknown.
 ") Sharings;
 		opencascade::handle<TColStd_HSequenceOfTransient> Sharings(const opencascade::handle<Standard_Transient> & ent);
 
@@ -9387,7 +9387,7 @@ opencascade::handle<IFSelect_SignCounter>
 
 Description
 -----------
-Returns a signcounter from its ident in the session null result if <id> is not suitable for a signcounter (undefined, or defined for another kind of variable).
+Returns a SignCounter from its ident in the Session Null result if <id> is not suitable for a SignCounter (undefined, or defined for another kind of variable).
 ") SignCounter;
 		opencascade::handle<IFSelect_SignCounter> SignCounter(const Standard_Integer id);
 
@@ -9400,7 +9400,7 @@ opencascade::handle<IFSelect_Signature>
 
 Description
 -----------
-Returns the current signtype.
+Returns the current SignType.
 ") SignType;
 		opencascade::handle<IFSelect_Signature> SignType();
 
@@ -9419,7 +9419,7 @@ str
 
 Description
 -----------
-Returns the value computed by a signature for an entity returns an empty string if the entity does not belong to the loaded model.
+Returns the Value computed by a Signature for an Entity Returns an empty string if the entity does not belong to the loaded model.
 ") SignValue;
 		Standard_CString SignValue(const opencascade::handle<IFSelect_Signature> & sign, const opencascade::handle<Standard_Transient> & ent);
 
@@ -9437,7 +9437,7 @@ opencascade::handle<IFSelect_Signature>
 
 Description
 -----------
-Returns a signature, given its ident in the session null result if <id> is not suitable for a signature (undefined, or defined for another kind of variable).
+Returns a Signature, given its Ident in the Session Null result if <id> is not suitable for a Signature (undefined, or defined for another kind of variable).
 ") Signature;
 		opencascade::handle<IFSelect_Signature> Signature(const Standard_Integer id);
 
@@ -9456,7 +9456,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns the <num>th input selection of a selection (see nbsources). returns a null handle if <sel> is not in the worksession or if <num> is out of the range <1-nbsources> to obtain more details, see the method sources.
+Returns the <num>th Input Selection of a Selection (see NbSources). Returns a Null Handle if <sel> is not in the WorkSession or if <num> is out of the range <1-NbSources> To obtain more details, see the method Sources.
 ") Source;
 		opencascade::handle<IFSelect_Selection> Source(const opencascade::handle<IFSelect_Selection> & sel, const Standard_Integer num = 1);
 
@@ -9474,7 +9474,7 @@ IFSelect_SelectionIterator
 
 Description
 -----------
-Returns the selections which are source of selection, given its rank in the list of selections (see selectioniterator) returned value is empty if <num> is out of range or if <sel> is not in the worksession.
+Returns the Selections which are source of Selection, given its rank in the List of Selections (see SelectionIterator) Returned value is empty if <num> is out of range or if <sel> is not in the WorkSession.
 ") Sources;
 		IFSelect_SelectionIterator Sources(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -9492,7 +9492,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an entity stored in the model of the worksession (null handle is no model or num out of range).
+Returns an Entity stored in the Model of the WorkSession (Null Handle is no Model or num out of range).
 ") StartingEntity;
 		opencascade::handle<Standard_Transient> StartingEntity(const Standard_Integer num);
 
@@ -9510,7 +9510,7 @@ int
 
 Description
 -----------
-Returns the number of an entity in the model (0 if no model set or <ent> not in the model).
+Returns the Number of an Entity in the Model (0 if no Model set or <ent> not in the Model).
 ") StartingNumber;
 		Standard_Integer StartingNumber(const opencascade::handle<Standard_Transient> & ent);
 
@@ -9528,7 +9528,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns a textparam, given its ident in the session null result if <id> is not suitable for a textparam (undefined, or defined for another kind of variable).
+Returns a TextParam, given its Ident in the Session Null result if <id> is not suitable for a TextParam (undefined, or defined for another kind of variable).
 ") TextParam;
 		opencascade::handle<TCollection_HAsciiString> TextParam(const Standard_Integer id);
 
@@ -9546,7 +9546,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns text value of a textparam (a string) or an empty string if <it> is not in the worksession.
+Returns Text Value of a TextParam (a String) or an empty string if <it> is not in the WorkSession.
 ") TextValue;
 		TCollection_AsciiString TextValue(const opencascade::handle<TCollection_HAsciiString> & par);
 
@@ -9564,7 +9564,7 @@ bool
 
 Description
 -----------
-Toggles the sense (direct <-> reversed) of a selectextract returns true if done, false if <sel> is not a selectextract or is not in the worksession.
+Toggles the Sense (Direct <-> Reversed) of a SelectExtract Returns True if Done, False if <sel> is not a SelectExtract or is not in the WorkSession.
 ") ToggleSelectExtract;
 		Standard_Boolean ToggleSelectExtract(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -9583,7 +9583,7 @@ None
 
 Description
 -----------
-Dumps an entity from the current model as inherited dumpentity on currently defined default trace file (<level> interpreted according to the norm, see worklibrary).
+Dumps an entity from the current Model as inherited DumpEntity on currently defined Default Trace File (<level> interpreted according to the Norm, see WorkLibrary).
 ") TraceDumpEntity;
 		void TraceDumpEntity(const opencascade::handle<Standard_Transient> & ent, const Standard_Integer level);
 
@@ -9601,7 +9601,7 @@ None
 
 Description
 -----------
-Dumps the current model (as inherited dumpmodel), on currently defined default trace file (default is standard output).
+Dumps the current Model (as inherited DumpModel), on currently defined Default Trace File (default is standard output).
 ") TraceDumpModel;
 		void TraceDumpModel(const Standard_Integer mode);
 
@@ -9620,7 +9620,7 @@ None
 
 Description
 -----------
-Traces the statics attached to a given use number if <use> is given positive (normal), the trace is embedded with a header and a trailer if <use> is negative, just values are printed (this allows to make compositions) remark: use number 5 commands use -2 to be traced remark: use numbers 4 and 6 command use -3 to be traced.
+Traces the Statics attached to a given use number If <use> is given positive (normal), the trace is embedded with a header and a trailer If <use> is negative, just values are printed (this allows to make compositions) Remark: use number 5 commands use -2 to be traced Remark: use numbers 4 and 6 command use -3 to be traced.
 ") TraceStatics;
 		void TraceStatics(const Standard_Integer use, const Standard_Integer mode = 0);
 
@@ -9638,7 +9638,7 @@ opencascade::handle<IFSelect_Transformer>
 
 Description
 -----------
-Returns a transformer, given its ident in the session null result if <id> is not suitable for a transformer (undefined, or defined for another kind of variable).
+Returns a Transformer, given its Ident in the Session Null result if <id> is not suitable for a Transformer (undefined, or defined for another kind of variable).
 ") Transformer;
 		opencascade::handle<IFSelect_Transformer> Transformer(const Standard_Integer id);
 
@@ -9656,7 +9656,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the item on which a generalmodifier is applied: the shareout, or a given dispatch returns a null handle if <modif> is not applied.
+Returns the item on which a GeneralModifier is applied: the ShareOut, or a given Dispatch Returns a Null Handle if <modif> is not applied.
 ") UsesAppliedModifier;
 		opencascade::handle<Standard_Transient> UsesAppliedModifier(const opencascade::handle<IFSelect_GeneralModifier> & modif);
 
@@ -9674,7 +9674,7 @@ str
 
 Description
 -----------
-Returns the validity name determined for an entity it is computed by the class signvalidity remark: an unknown entity gives an empty string.
+Returns the Validity Name determined for an entity it is computed by the class SignValidity Remark: an unknown entity gives an empty string.
 ") ValidityName;
 		Standard_CString ValidityName(const opencascade::handle<Standard_Transient> & ent);
 
@@ -9687,7 +9687,7 @@ opencascade::handle<IFSelect_WorkLibrary>
 
 Description
 -----------
-Returns the worklibrary. null handle if not yet set should be c++: return const &.
+Returns the WorkLibrary. Null Handle if not yet set should be C++: return const &.
 ") WorkLibrary;
 		const opencascade::handle<IFSelect_WorkLibrary> & WorkLibrary();
 
@@ -9705,7 +9705,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Writes the current interface model globally to a file, and returns a write status which can be: done ok, fail file could not be written, error no norm is selected remark: it is a simple, one-file writing, other operations are available (such as splitting ...) which calls sendall.
+Writes the current Interface Model globally to a File, and returns a write status which can be: Done OK, Fail file could not be written, Error no norm is selected Remark: It is a simple, one-file writing, other operations are available (such as splitting ...) which calls SendAll.
 ") WriteFile;
 		IFSelect_ReturnStatus WriteFile(Standard_CString filename);
 
@@ -9724,7 +9724,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Writes a sub-part of the current interface model to a file, as defined by a selection <sel>, recomputes the graph, and returns a write status which can be: done ok, fail file could not be written, error no norm is selected remark: it is a simple, one-file writing, other operations are available (such as splitting ...) which calls sendselected.
+Writes a sub-part of the current Interface Model to a File, as defined by a Selection <sel>, recomputes the Graph, and returns a write status which can be: Done OK, Fail file could not be written, Error no norm is selected Remark: It is a simple, one-file writing, other operations are available (such as splitting ...) which calls SendSelected.
 ") WriteFile;
 		IFSelect_ReturnStatus WriteFile(Standard_CString filename, const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -9764,7 +9764,7 @@ None
 
 Description
 -----------
-Creates an act with a name, help and a function mode (add or addset) is given when recording.
+Creates an Act with a name, help and a function mode (Add or AddSet) is given when recording.
 ") IFSelect_Act;
 		 IFSelect_Act(Standard_CString name, Standard_CString help, const IFSelect_ActFunc func);
 
@@ -9784,7 +9784,7 @@ None
 
 Description
 -----------
-Adds a function with its name and help: creates an act then records it as function for xset (i.e. to create control item).
+Adds a function with its name and help: creates an Act then records it as function for XSET (i.e. to create control item).
 ") AddFSet;
 		static void AddFSet(Standard_CString name, Standard_CString help, const IFSelect_ActFunc func);
 
@@ -9804,7 +9804,7 @@ None
 
 Description
 -----------
-Adds a function with its name and help: creates an act then records it as normal function.
+Adds a function with its name and help: creates an Act then records it as normal function.
 ") AddFunc;
 		static void AddFunc(Standard_CString name, Standard_CString help, const IFSelect_ActFunc func);
 
@@ -9823,7 +9823,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Execution of command line. remark that <number> is senseless because each act brings one and only one function.
+Execution of Command Line. remark that <number> is senseless because each Act brings one and only one function.
 ") Do;
 		IFSelect_ReturnStatus Do(const Standard_Integer number, const opencascade::handle<IFSelect_SessionPilot> & pilot);
 
@@ -9841,7 +9841,7 @@ str
 
 Description
 -----------
-Short help for commands: returns the help given to create.
+Short Help for commands: returns the help given to create.
 ") Help;
 		Standard_CString Help(const Standard_Integer number);
 
@@ -9860,7 +9860,7 @@ None
 
 Description
 -----------
-Changes the default group name for the following acts group empty means to come back to default from activator also a file name can be precised (to query by getsource).
+Changes the default group name for the following Acts group empty means to come back to default from Activator Also a file name can be precised (to query by getsource).
 ") SetGroup;
 		static void SetGroup(Standard_CString group, Standard_CString file = "");
 
@@ -9889,7 +9889,7 @@ None
 
 Description
 -----------
-Creates a basicdumper and puts it into the library of dumper.
+Creates a BasicDumper and puts it into the Library of Dumper.
 ") IFSelect_BasicDumper;
 		 IFSelect_BasicDumper();
 
@@ -9909,7 +9909,7 @@ bool
 
 Description
 -----------
-Recognizes and read own parameters for types of package ifselect. returns true if done and <item> created, false else.
+Recognizes and Read Own Parameters for Types of package IFSelect. Returns True if done and <item> created, False else.
 ") ReadOwn;
 		Standard_Boolean ReadOwn(IFSelect_SessionFile & file, TCollection_AsciiString type, opencascade::handle<Standard_Transient> & item);
 
@@ -9928,7 +9928,7 @@ bool
 
 Description
 -----------
-Write the own parameters of types defined in package ifselect returns true if <item> has been processed, false else.
+Write the Own Parameters of Types defined in package IFSelect Returns True if <item> has been processed, False else.
 ") WriteOwn;
 		Standard_Boolean WriteOwn(IFSelect_SessionFile & file, const opencascade::handle<Standard_Transient> & item);
 
@@ -9962,7 +9962,7 @@ None
 
 Description
 -----------
-Creates a checkcounter, empty ready to work.
+Creates a CheckCounter, empty ready to work.
 ") IFSelect_CheckCounter;
 		 IFSelect_CheckCounter(const Standard_Boolean withlist = Standard_False);
 
@@ -9983,7 +9983,7 @@ None
 
 Description
 -----------
-Analyses a checkiterator according a model (which detains the entities for which the checkiterator has messages), i.e. counts messages for entities if <original> is true, does not consider final messages but those before interpretation (such as inserting variables: integers, reals, strings) if <failsonly> is true, only fails are considered remark: global messages are recorded with a null entity.
+Analyses a CheckIterator according a Model (which detains the entities for which the CheckIterator has messages), i.e. counts messages for entities If <original> is True, does not consider final messages but those before interpretation (such as inserting variables: integers, reals, strings) If <failsonly> is True, only Fails are considered Remark: global messages are recorded with a Null entity.
 ") Analyse;
 		void Analyse(const Interface_CheckIterator & list, const opencascade::handle<Interface_InterfaceModel> & model, const Standard_Boolean original = Standard_False, const Standard_Boolean failsonly = Standard_False);
 
@@ -10001,7 +10001,7 @@ None
 
 Description
 -----------
-Sets a specific signature else, the current signtype (in the model) is used.
+Sets a specific signature Else, the current SignType (in the model) is used.
 ") SetSignature;
 		void SetSignature(const opencascade::handle<MoniTool_SignText> & sign);
 
@@ -10014,7 +10014,7 @@ opencascade::handle<MoniTool_SignText>
 
 Description
 -----------
-Returns the signature;.
+Returns the Signature;.
 ") Signature;
 		opencascade::handle<MoniTool_SignText> Signature();
 
@@ -10043,7 +10043,7 @@ None
 
 Description
 -----------
-Creates a dispglobal.
+Creates a DispGlobal.
 ") IFSelect_DispGlobal;
 		 IFSelect_DispGlobal();
 
@@ -10056,7 +10056,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns as label, 'one file for all input'.
+Returns as Label, 'One File for all Input'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -10074,7 +10074,7 @@ max: int
 
 Description
 -----------
-Returns true: maximum equates 1.
+Returns True: maximum equates 1.
 ") LimitedMax;
 		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
 
@@ -10093,7 +10093,7 @@ None
 
 Description
 -----------
-Computes the list of produced packets. it is made of only one packet, which gets the rootresult from the final selection. remark: the inherited exception raising is never activated.
+Computes the list of produced Packets. It is made of only ONE Packet, which gets the RootResult from the Final Selection. Remark: the inherited exception raising is never activated.
 ") Packets;
 		void Packets(const Interface_Graph & G, IFGraph_SubPartsIterator & packs);
 
@@ -10122,7 +10122,7 @@ None
 
 Description
 -----------
-Creates a disppercount with no count (default value 1).
+Creates a DispPerCount with no Count (default value 1).
 ") IFSelect_DispPerCount;
 		 IFSelect_DispPerCount();
 
@@ -10135,7 +10135,7 @@ opencascade::handle<IFSelect_IntParam>
 
 Description
 -----------
-Returns the count parameter used for splitting.
+Returns the Count Parameter used for splitting.
 ") Count;
 		opencascade::handle<IFSelect_IntParam> Count();
 
@@ -10148,7 +10148,7 @@ int
 
 Description
 -----------
-Returns the effective value of the count parameter (if count parameter not set or value not positive, returns 1).
+Returns the effective value of the count parameter (if Count Parameter not Set or value not positive, returns 1).
 ") CountValue;
 		Standard_Integer CountValue();
 
@@ -10161,7 +10161,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns as label, 'one file per <count> input entities'.
+Returns as Label, 'One File per <count> Input Entities'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -10179,7 +10179,7 @@ max: int
 
 Description
 -----------
-Returns true, maximum count is given as <nbent>.
+Returns True, maximum count is given as <nbent>.
 ") LimitedMax;
 		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
 
@@ -10198,7 +10198,7 @@ None
 
 Description
 -----------
-Computes the list of produced packets. it defines packets in order to have at most <count> entities per packet, entities are given by rootresult from the final selection.
+Computes the list of produced Packets. It defines Packets in order to have at most <Count> Entities per Packet, Entities are given by RootResult from the Final Selection.
 ") Packets;
 		void Packets(const Interface_Graph & G, IFGraph_SubPartsIterator & packs);
 
@@ -10216,7 +10216,7 @@ None
 
 Description
 -----------
-Sets a new parameter for count.
+Sets a new Parameter for Count.
 ") SetCount;
 		void SetCount(const opencascade::handle<IFSelect_IntParam> & count);
 
@@ -10245,7 +10245,7 @@ None
 
 Description
 -----------
-Creates a dispperfiles with no count (default value 1 file).
+Creates a DispPerFiles with no Count (default value 1 file).
 ") IFSelect_DispPerFiles;
 		 IFSelect_DispPerFiles();
 
@@ -10258,7 +10258,7 @@ opencascade::handle<IFSelect_IntParam>
 
 Description
 -----------
-Returns the count parameter used for splitting.
+Returns the Count Parameter used for splitting.
 ") Count;
 		opencascade::handle<IFSelect_IntParam> Count();
 
@@ -10271,7 +10271,7 @@ int
 
 Description
 -----------
-Returns the effective value of the count parameter (if count parameter not set or value not positive, returns 1).
+Returns the effective value of the count parameter (if Count Parameter not Set or value not positive, returns 1).
 ") CountValue;
 		Standard_Integer CountValue();
 
@@ -10284,7 +10284,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns as label, 'maximum <count> files'.
+Returns as Label, 'Maximum <count> Files'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -10302,7 +10302,7 @@ max: int
 
 Description
 -----------
-Returns true, maximum count is given as countvalue.
+Returns True, maximum count is given as CountValue.
 ") LimitedMax;
 		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
 
@@ -10321,7 +10321,7 @@ None
 
 Description
 -----------
-Computes the list of produced packets. it defines packets in order to have <count> packets, except if the input count of entities is lower. entities are given by rootresult from the final selection.
+Computes the list of produced Packets. It defines Packets in order to have <Count> Packets, except if the input count of Entities is lower. Entities are given by RootResult from the Final Selection.
 ") Packets;
 		void Packets(const Interface_Graph & G, IFGraph_SubPartsIterator & packs);
 
@@ -10339,7 +10339,7 @@ None
 
 Description
 -----------
-Sets a new parameter for count.
+Sets a new Parameter for Count.
 ") SetCount;
 		void SetCount(const opencascade::handle<IFSelect_IntParam> & count);
 
@@ -10368,7 +10368,7 @@ None
 
 Description
 -----------
-Creates a dispperone.
+Creates a DispPerOne.
 ") IFSelect_DispPerOne;
 		 IFSelect_DispPerOne();
 
@@ -10381,7 +10381,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns as label, 'one file per input entity'.
+Returns as Label, 'One File per Input Entity'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -10399,7 +10399,7 @@ max: int
 
 Description
 -----------
-Returns true, maximum limit is given as <nbent>.
+Returns True, maximum limit is given as <nbent>.
 ") LimitedMax;
 		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
 
@@ -10418,7 +10418,7 @@ None
 
 Description
 -----------
-Returns the list of produced packets. it defines one packet per entity given by rootresult from the final selection.
+Returns the list of produced Packets. It defines one Packet per Entity given by RootResult from the Final Selection.
 ") Packets;
 		void Packets(const Interface_Graph & G, IFGraph_SubPartsIterator & packs);
 
@@ -10447,7 +10447,7 @@ None
 
 Description
 -----------
-Creates a disppersignature with no signcounter (by default, produces only one packet).
+Creates a DispPerSignature with no SignCounter (by default, produces only one packet).
 ") IFSelect_DispPerSignature;
 		 IFSelect_DispPerSignature();
 
@@ -10460,7 +10460,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns as label, 'one file per signature <name>'.
+Returns as Label, 'One File per Signature <name>'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -10478,7 +10478,7 @@ max: int
 
 Description
 -----------
-Returns true, maximum count is given as <nbent>.
+Returns True, maximum count is given as <nbent>.
 ") LimitedMax;
 		virtual Standard_Boolean LimitedMax(const Standard_Integer nbent, Standard_Integer &OutValue);
 
@@ -10497,7 +10497,7 @@ None
 
 Description
 -----------
-Computes the list of produced packets. it defines packets from the signcounter, which sirts the input entities per signature (specific of the signcounter).
+Computes the list of produced Packets. It defines Packets from the SignCounter, which sirts the input Entities per Signature (specific of the SignCounter).
 ") Packets;
 		void Packets(const Interface_Graph & G, IFGraph_SubPartsIterator & packs);
 
@@ -10515,7 +10515,7 @@ None
 
 Description
 -----------
-Sets a signcounter for sort remark: it is set to record lists of entities, not only counts.
+Sets a SignCounter for sort Remark: it is set to record lists of entities, not only counts.
 ") SetSignCounter;
 		void SetSignCounter(const opencascade::handle<IFSelect_SignCounter> & sign);
 
@@ -10528,7 +10528,7 @@ opencascade::handle<IFSelect_SignCounter>
 
 Description
 -----------
-Returns the signcounter used for splitting.
+Returns the SignCounter used for splitting.
 ") SignCounter;
 		opencascade::handle<IFSelect_SignCounter> SignCounter();
 
@@ -10541,7 +10541,7 @@ str
 
 Description
 -----------
-Returns the name of the signcounter, which caracterises the sorting criterium for this dispatch.
+Returns the name of the SignCounter, which caracterises the sorting criterium for this Dispatch.
 ") SignName;
 		Standard_CString SignName();
 
@@ -10579,7 +10579,7 @@ None
 
 Description
 -----------
-This deferred method defines the action specific to each class of modifier. it is called by a modelcopier, once the model generated and filled. modelcopier has already checked the criteria (dispatch, model rank, selection) before calling it. //! <ctx> detains information about original data and selection. the result of copying, on which modifications are to be done, is <target>. <tc> allows to run additional copies as required //! in case of error, use methods ccheck from the contextmodif to aknowledge an entity check or a global check with messages.
+This deferred method defines the action specific to each class of Modifier. It is called by a ModelCopier, once the Model generated and filled. ModelCopier has already checked the criteria (Dispatch, Model Rank, Selection) before calling it. //! <ctx> detains information about original data and selection. The result of copying, on which modifications are to be done, is <target>. <TC> allows to run additional copies as required //! In case of Error, use methods CCheck from the ContextModif to acknowledge an entity Check or a Global Check with messages.
 ") Perform;
 		virtual void Perform(IFSelect_ContextModif & ctx, const opencascade::handle<Interface_InterfaceModel> & target, const opencascade::handle<Interface_Protocol> & protocol, Interface_CopyTool & TC);
 
@@ -10614,7 +10614,7 @@ None
 
 Description
 -----------
-Creates a parameditor, empty, with a maximum count of params (default is 100) and a label, by default it will be 'param editor'.
+Creates a ParamEditor, empty, with a maximum count of params (default is 100) And a label, by default it will be 'Param Editor'.
 ") IFSelect_ParamEditor;
 		 IFSelect_ParamEditor(const Standard_Integer nbmax = 100, Standard_CString label = "");
 
@@ -10634,7 +10634,7 @@ None
 
 Description
 -----------
-Adds a constant text, it will be read only by default, its long name equates its shortname.
+Adds a Constant Text, it will be Read Only By default, its long name equates its shortname.
 ") AddConstantText;
 		void AddConstantText(Standard_CString val, Standard_CString shortname, Standard_CString completename = "");
 
@@ -10653,7 +10653,7 @@ None
 
 Description
 -----------
-Adds a typedvalue by default, its short name equates its complete name, it can be made explicit.
+Adds a TypedValue By default, its short name equates its complete name, it can be made explicit.
 ") AddValue;
 		void AddValue(const opencascade::handle<Interface_TypedValue> & val, Standard_CString shortname = "");
 
@@ -10743,7 +10743,7 @@ opencascade::handle<IFSelect_ParamEditor>
 
 Description
 -----------
-Returns a parameditor to work on the static parameters of which names are listed in <list> null handle if <list> is null or empty.
+Returns a ParamEditor to work on the Static Parameters of which names are listed in <list> Null Handle if <list> is null or empty.
 ") StaticEditor;
 		static opencascade::handle<IFSelect_ParamEditor> StaticEditor(const opencascade::handle<TColStd_HSequenceOfHAsciiString> & list, Standard_CString label = "");
 
@@ -10797,7 +10797,7 @@ None
 
 Description
 -----------
-Puts in an iterator the selections from which 'me' depends this list is empty for all selectbase type selections.
+Puts in an Iterator the Selections from which 'me' depends This list is empty for all SelectBase type Selections.
 ") FillIterator;
 		void FillIterator(IFSelect_SelectionIterator & iter);
 
@@ -10833,7 +10833,7 @@ None
 
 Description
 -----------
-Adds a selection to the filling list by default, adds it to the end of the list a positive rank less then nbinputs gives an insertion rank (insertbefore: the new <atnum>th item of the list is <sel>).
+Adds a Selection to the filling list By default, adds it to the end of the list A Positive rank less then NbInputs gives an insertion rank (InsertBefore: the new <atnum>th item of the list is <sel>).
 ") Add;
 		void Add(const opencascade::handle<IFSelect_Selection> & sel, const Standard_Integer atnum = 0);
 
@@ -10851,7 +10851,7 @@ None
 
 Description
 -----------
-Puts in an iterator the selections from which 'me' depends that is to say, the list of input selections.
+Puts in an Iterator the Selections from which 'me' depends That is to say, the list of Input Selections.
 ") FillIterator;
 		void FillIterator(IFSelect_SelectionIterator & iter);
 
@@ -10869,7 +10869,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns an input selection, given its rank in the list.
+Returns an Input Selection, given its rank in the list.
 ") Input;
 		opencascade::handle<IFSelect_Selection> Input(const Standard_Integer num);
 
@@ -10887,7 +10887,7 @@ int
 
 Description
 -----------
-Returns the rank of an input selection, 0 if not in the list. most generally, its value is meaningless, except for testing the presence of an input selection: - == 0 if <sel> is not an input for <self> - > 0 if <sel> is an input for <self>.
+Returns the rank of an input Selection, 0 if not in the list. Most generally, its value is meaningless, except for testing the presence of an input Selection: - == 0 if <sel> is not an input for <self> - > 0 if <sel> is an input for <self>.
 ") InputRank;
 		Standard_Integer InputRank(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -10900,7 +10900,7 @@ int
 
 Description
 -----------
-Returns the count of input selections.
+Returns the count of Input Selections.
 ") NbInputs;
 		Standard_Integer NbInputs();
 
@@ -10918,7 +10918,7 @@ bool
 
 Description
 -----------
-Removes an input selection. returns true if done, false, if <sel> is not an input for <self>.
+Removes an input Selection. Returns True if Done, False, if <sel> is not an input for <self>.
 ") Remove;
 		Standard_Boolean Remove(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -10936,7 +10936,7 @@ bool
 
 Description
 -----------
-Removes an input selection, given its rank in the list returns true if done, false if <num> is out of range.
+Removes an input Selection, given its rank in the list Returns True if Done, False if <num> is out of range.
 ") Remove;
 		Standard_Boolean Remove(const Standard_Integer num);
 
@@ -10971,7 +10971,7 @@ None
 
 Description
 -----------
-Puts in an iterator the selections from which 'me' depends that is to say, the list of input selections.
+Puts in an Iterator the Selections from which 'me' depends That is to say, the list of Input Selections.
 ") FillIterator;
 		void FillIterator(IFSelect_SelectionIterator & iter);
 
@@ -10984,7 +10984,7 @@ bool
 
 Description
 -----------
-Returns true if a control input is defined thus, result can be computed differently if there is a control input or if there is none.
+Returns True if a Control Input is defined Thus, Result can be computed differently if there is a Control Input or if there is none.
 ") HasSecondInput;
 		Standard_Boolean HasSecondInput();
 
@@ -10997,7 +10997,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns the main input selection.
+Returns the Main Input Selection.
 ") MainInput;
 		opencascade::handle<IFSelect_Selection> MainInput();
 
@@ -11010,7 +11010,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns the control input selection, or a null handle.
+Returns the Control Input Selection, or a Null Handle.
 ") SecondInput;
 		opencascade::handle<IFSelect_Selection> SecondInput();
 
@@ -11028,7 +11028,7 @@ None
 
 Description
 -----------
-Sets a selection to be the main input.
+Sets a Selection to be the Main Input.
 ") SetMainInput;
 		void SetMainInput(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -11046,7 +11046,7 @@ None
 
 Description
 -----------
-Sets a selection to be the control input.
+Sets a Selection to be the Control Input.
 ") SetSecondInput;
 		void SetSecondInput(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -11076,7 +11076,7 @@ opencascade::handle<IFSelect_SelectPointed>
 
 Description
 -----------
-Returns the alternate definition it is returned modifiable, hence an already defined selectpointed can be used but if it was not yet defined, it is created the first time //! it is exploited by inputresult.
+Returns the Alternate Definition It is returned modifiable, hence an already defined SelectPointed can be used But if it was not yet defined, it is created the first time //! It is exploited by InputResult.
 ") Alternate;
 		opencascade::handle<IFSelect_SelectPointed> & Alternate();
 
@@ -11094,7 +11094,7 @@ None
 
 Description
 -----------
-Puts in an iterator the selections from which 'me' depends this list contains one selection: the inputselection.
+Puts in an Iterator the Selections from which 'me' depends This list contains one Selection: the InputSelection.
 ") FillIterator;
 		void FillIterator(IFSelect_SelectionIterator & iter);
 
@@ -11107,7 +11107,7 @@ bool
 
 Description
 -----------
-Tells if an alternate list has been set, i.e.: the alternate definition is present and set.
+Tells if an Alternate List has been set, i.e.: the Alternate Definition is present and set.
 ") HasAlternate;
 		Standard_Boolean HasAlternate();
 
@@ -11120,7 +11120,7 @@ bool
 
 Description
 -----------
-Returns true if the input selection is defined, false else.
+Returns True if the Input Selection is defined, False else.
 ") HasInput;
 		Standard_Boolean HasInput();
 
@@ -11133,7 +11133,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns the input selection.
+Returns the Input Selection.
 ") Input;
 		opencascade::handle<IFSelect_Selection> Input();
 
@@ -11151,7 +11151,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the result determined by input selection, as unique if input selection is not defined, returns an empty list. //! if alternate is set, inputresult takes its definition instead of calling the input selection, then clears it.
+Returns the Result determined by Input Selection, as Unique if Input Selection is not defined, returns an empty list. //! If Alternate is set, InputResult takes its definition instead of calling the Input Selection, then clears it.
 ") InputResult;
 		Interface_EntityIterator InputResult(const Interface_Graph & G);
 
@@ -11169,7 +11169,7 @@ None
 
 Description
 -----------
-Defines or changes the input selection.
+Defines or Changes the Input Selection.
 ") SetInput;
 		void SetInput(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -11203,7 +11203,7 @@ None
 
 Description
 -----------
-Creates an empty sessionpilot, with a prompt which will be displayed on querying commands. if not precised (''), this prompt is set to 'test-xstep>'.
+Creates an empty SessionPilot, with a prompt which will be displayed on querying commands. If not precised (''), this prompt is set to 'Test-XSTEP>'.
 ") IFSelect_SessionPilot;
 		 IFSelect_SessionPilot(Standard_CString prompt = "");
 
@@ -11221,7 +11221,7 @@ str
 
 Description
 -----------
-Returns a word given its rank, as a cstring. as for word, begins at 0 (the command name), etc...
+Returns a word given its rank, as a CString. As for Word, begins at 0 (the command name), etc...
 ") Arg;
 		Standard_CString Arg(const Standard_Integer num);
 
@@ -11252,7 +11252,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a recorded command, given its rank (from 1).
+Returns a recorded Command, given its rank (from 1).
 ") Command;
 		const TCollection_AsciiString & Command(const Standard_Integer num);
 
@@ -11265,7 +11265,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the command line to be interpreted.
+Returns the Command Line to be interpreted.
 ") CommandLine;
 		const TCollection_AsciiString & CommandLine();
 
@@ -11283,7 +11283,7 @@ str
 
 Description
 -----------
-Returns the part of the command line which begins at argument <numarg> between 0 and nbwords-1 (by default, all the line) empty string if out of range.
+Returns the part of the command line which begins at argument <numarg> between 0 and NbWords-1 (by default, all the line) Empty string if out of range.
 ") CommandPart;
 		Standard_CString CommandPart(const Standard_Integer numarg = 0);
 
@@ -11302,7 +11302,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Processes specific commands, which are: x or exit for end of session ? or help for help messages xcommand to control command lines (record mode, list, clear, file output ...) xsource to execute a command file (no nesting allowed), in case of error, source is stopped and keyword recovers xstep is a simple prefix (useful in a wider environment, to avoid conflicts on command names) xset control commands which create items with names.
+Processes specific commands, which are: x or exit for end of session ? or help for help messages xcommand to control command lines (Record Mode, List, Clear, File Output ...) xsource to execute a command file (no nesting allowed), in case of error, source is stopped and keyword recovers xstep is a simple prefix (useful in a wider environment, to avoid conflicts on command names) xset control commands which create items with names.
 ") Do;
 		IFSelect_ReturnStatus Do(const Standard_Integer number, const opencascade::handle<IFSelect_SessionPilot> & session);
 
@@ -11320,7 +11320,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Sets the command then tries to execute it. return value: same as for perform.
+Sets the Command then tries to execute it. Return value: same as for Perform.
 ") Execute;
 		IFSelect_ReturnStatus Execute(TCollection_AsciiString command);
 
@@ -11338,7 +11338,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Executes the commands, except that the command name (word 0) is aliased. the rest of the command line is unchanged if <alias> is empty, executes with no change //! error status is returned if the alias is unknown as command.
+Executes the Commands, except that the command name (word 0) is aliased. The rest of the command line is unchanged If <alias> is empty, Executes with no change //! Error status is returned if the alias is unknown as command.
 ") ExecuteAlias;
 		IFSelect_ReturnStatus ExecuteAlias(TCollection_AsciiString aliasname);
 
@@ -11358,7 +11358,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Executes a counter in a general way if <numword> is greater than count of command words, it counts all the model. else it considers the word <numword> as the identifier of a selection <mode> gives the mode of printing results, default is countbyitem.
+Executes a Counter in a general way If <numword> is greater than count of command words, it counts all the model. Else it considers the word <numword> as the identifier of a Selection <mode> gives the mode of printing results, default is CountByItem.
 ") ExecuteCounter;
 		IFSelect_ReturnStatus ExecuteCounter(const opencascade::handle<IFSelect_SignCounter> & counter, const Standard_Integer numword, const IFSelect_PrintCount mode = IFSelect_CountByItem);
 
@@ -11389,7 +11389,7 @@ opencascade::handle<IFSelect_WorkLibrary>
 
 Description
 -----------
-Returns the worklibrary (null if not set). worklibrary is used to read and write files, according to the norm.
+Returns the WorKlibrary (Null if not set). WorkLibrary is used to Read and Write Files, according to the Norm.
 ") Library;
 		opencascade::handle<IFSelect_WorkLibrary> Library();
 
@@ -11402,7 +11402,7 @@ int
 
 Description
 -----------
-Returns the count of recorded commands.
+Returns the count of recorded Commands.
 ") NbCommands;
 		Standard_Integer NbCommands();
 
@@ -11415,7 +11415,7 @@ int
 
 Description
 -----------
-Returns the count of words of the command line, separated by blanks: 0 if empty, one if a command without args, else it gives the count of args minus one. warning: limited to 10 (command title + 9 args).
+Returns the count of words of the Command Line, separated by blanks: 0 if empty, one if a command without args, else it gives the count of args minus one. Warning: limited to 10 (command title + 9 args).
 ") NbWords;
 		Standard_Integer NbWords();
 
@@ -11433,7 +11433,7 @@ int
 
 Description
 -----------
-Interprets a string value as an entity number: if it gives an integer, returns its value else, considers it as entitylabel (preferably case sensitive) in case of failure, returns 0.
+Interprets a string value as an entity number: if it gives an integer, returns its value else, considers it as ENtityLabel (preferably case sensitive) in case of failure, returns 0.
 ") Number;
 		Standard_Integer Number(Standard_CString val);
 
@@ -11446,7 +11446,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Executes the command, itself (for built-in commands, which have priority) or by using the list of activators. the value returned is: retvoid if nothing done (void command) retdone if execution ok, retend if end of session, reterror if command unknown or incorrect, retfail if error on execution if execution is ok and recordmode is set, this command line is recorded to the list (see below).
+Executes the Command, itself (for built-in commands, which have priority) or by using the list of Activators. The value returned is: RetVoid if nothing done (void command) RetDone if execution OK, RetEnd if END OF SESSION, RetError if command unknown or incorrect, RetFail if error on execution If execution is OK and RecordMode is set, this Command Line is recorded to the list (see below).
 ") Perform;
 		IFSelect_ReturnStatus Perform();
 
@@ -11464,7 +11464,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Reads commands from a script file, named <file>. by default (file = ''), reads from standard input with a prompt else (reading from a file), the read commands are displayed onto standard output. allows nested reads. reading is stopped either by command x or exit, or by reaching end of file return value follows the rules of do: retend for normal end, retfail if script could not be opened.
+Reads commands from a Script File, named <file>. By default (file = ''), reads from standard input with a prompt Else (reading from a file), the read commands are displayed onto standard output. Allows nested reads. Reading is stopped either by command x or exit, or by reaching end of file Return Value follows the rules of Do: RetEnd for normal end, RetFail if script could not be opened.
 ") ReadScript;
 		IFSelect_ReturnStatus ReadScript(Standard_CString file = "");
 
@@ -11482,7 +11482,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Allows to associate a transient value with the last execution as a partial result returns retdone if item is not null, retfail if item is null remark: it is nullified for each perform.
+Allows to associate a Transient Value with the last execution as a partial result Returns RetDone if item is not Null, RetFail if item is Null Remark: it is nullified for each Perform.
 ") RecordItem;
 		IFSelect_ReturnStatus RecordItem(const opencascade::handle<Standard_Transient> & item);
 
@@ -11495,7 +11495,7 @@ bool
 
 Description
 -----------
-Returns the record mode for commands. default is false.
+Returns the Record Mode for Commands. Default is False.
 ") RecordMode;
 		Standard_Boolean RecordMode();
 
@@ -11508,7 +11508,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the transient object which was recorded with the current line command. if none was, returns a null handle.
+Returns the Transient Object which was recorded with the current Line Command. If none was, returns a Null Handle.
 ") RecordedItem;
 		opencascade::handle<Standard_Transient> RecordedItem();
 
@@ -11526,7 +11526,7 @@ bool
 
 Description
 -----------
-Removes a word given its rank. returns true if done, false if <num> is out of range.
+Removes a word given its rank. Returns True if Done, False if <num> is out of range.
 ") RemoveWord;
 		Standard_Boolean RemoveWord(const Standard_Integer num);
 
@@ -11539,7 +11539,7 @@ opencascade::handle<IFSelect_WorkSession>
 
 Description
 -----------
-Returns the worksession which is worked on.
+Returns the WorkSession which is worked on.
 ") Session;
 		opencascade::handle<IFSelect_WorkSession> Session();
 
@@ -11557,7 +11557,7 @@ None
 
 Description
 -----------
-Sets the value of the command line to be interpreted also prepares the interpretation (splitting by blanks).
+Sets the value of the Command Line to be interpreted Also prepares the interpretation (splitting by blanks).
 ") SetCommandLine;
 		void SetCommandLine(TCollection_AsciiString command);
 
@@ -11575,7 +11575,7 @@ None
 
 Description
 -----------
-Sets a worklibrary.
+Sets a WorkLibrary.
 ") SetLibrary;
 		void SetLibrary(const opencascade::handle<IFSelect_WorkLibrary> & WL);
 
@@ -11593,7 +11593,7 @@ None
 
 Description
 -----------
-Changes the recordmode.
+Changes the RecordMode.
 ") SetRecordMode;
 		void SetRecordMode(const Standard_Boolean mode);
 
@@ -11611,7 +11611,7 @@ None
 
 Description
 -----------
-Sets a worksession to be worked on.
+Sets a WorkSession to be worked on.
 ") SetSession;
 		void SetSession(const opencascade::handle<IFSelect_WorkSession> & WS);
 
@@ -11629,7 +11629,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a word given its rank in the command line. begins at 0 which is the command title, 1 is the 1st arg., etc...
+Returns a word given its rank in the Command Line. Begins at 0 which is the Command Title, 1 is the 1st arg., etc...
 ") Word;
 		const TCollection_AsciiString & Word(const Standard_Integer num);
 
@@ -11658,7 +11658,7 @@ None
 
 Description
 -----------
-Returns a signcategory.
+Returns a SignCategory.
 ") IFSelect_SignCategory;
 		 IFSelect_SignCategory();
 
@@ -11677,7 +11677,7 @@ str
 
 Description
 -----------
-Returns the signature for a transient object, as its category recorded in the model.
+Returns the Signature for a Transient object, as its Category recorded in the model.
 ") Value;
 		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -11712,7 +11712,7 @@ None
 
 Description
 -----------
-Creates a signcounter, without proper signature if <withmap> is true (default), added entities are counted only if they are not yet recorded in the map map control can be set off if the input guarantees uniqueness of data <withlist> is transmitted to signaturelist (option to list entities, not only to count them).
+Creates a SignCounter, without proper Signature If <withmap> is True (default), added entities are counted only if they are not yet recorded in the map Map control can be set off if the input guarantees uniqueness of data <withlist> is transmitted to SignatureList (option to list entities, not only to count them).
 ") IFSelect_SignCounter;
 		 IFSelect_SignCounter(const Standard_Boolean withmap = Standard_True, const Standard_Boolean withlist = Standard_False);
 
@@ -11732,7 +11732,7 @@ None
 
 Description
 -----------
-Creates a signcounter, with a predefined signature other arguments as for create without signature.
+Creates a SignCounter, with a predefined Signature Other arguments as for Create without Signature.
 ") IFSelect_SignCounter;
 		 IFSelect_SignCounter(const opencascade::handle<IFSelect_Signature> & matcher, const Standard_Boolean withmap = Standard_True, const Standard_Boolean withlist = Standard_False);
 
@@ -11751,7 +11751,7 @@ bool
 
 Description
 -----------
-Adds an entity by considering its signature, which is given by call to method addsign returns true if added, false if already in the map (and map control status set).
+Adds an entity by considering its signature, which is given by call to method AddSign Returns True if added, False if already in the map (and map control status set).
 ") AddEntity;
 		virtual Standard_Boolean AddEntity(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -11770,7 +11770,7 @@ None
 
 Description
 -----------
-Adds the result determined by a selection from a graph remark: does not impact at all data from setselection & co.
+Adds the result determined by a Selection from a Graph Remark: does not impact at all data from SetSelection & Co.
 ") AddFromSelection;
 		void AddFromSelection(const opencascade::handle<IFSelect_Selection> & sel, const Interface_Graph & G);
 
@@ -11807,7 +11807,7 @@ None
 
 Description
 -----------
-Adds all the entities contained in a model.
+Adds all the entities contained in a Model.
 ") AddModel;
 		void AddModel(const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -11826,7 +11826,7 @@ None
 
 Description
 -----------
-Adds an entity (already filtered by map) with its signature. this signature can be computed with the containing model. its value is provided by the object signature given at start, if no signature is defined, it does nothing. //! can be redefined (in this case, see also sign).
+Adds an entity (already filtered by Map) with its signature. This signature can be computed with the containing model. Its value is provided by the object Signature given at start, if no Signature is defined, it does nothing. //! Can be redefined (in this case, see also Sign).
 ") AddSign;
 		virtual void AddSign(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -11845,7 +11845,7 @@ None
 
 Description
 -----------
-Adds a list of entities in the context given by the graph default just call basic addlist can be redefined to get a signature computed with the graph.
+Adds a list of entities in the context given by the graph Default just call basic AddList Can be redefined to get a signature computed with the graph.
 ") AddWithGraph;
 		virtual void AddWithGraph(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Interface_Graph & graph);
 
@@ -11864,7 +11864,7 @@ bool
 
 Description
 -----------
-Computes from the selection result, if selection is active (mode 2). if selection is not defined (mode 0) or is inhibited (mode 1) does nothing. returns true if computation is done (or optimised), false else this method is called by computecounter from worksession //! if <forced> is true, recomputes systematically else (d), if the counter was not cleared and if the former computed result started from the same total size of graph and same count of selected entities: computation is not redone unless <forced> is given as true.
+Computes from the selection result, if selection is active (mode 2). If selection is not defined (mode 0) or is inhibited (mode 1) does nothing. Returns True if computation is done (or optimised), False else This method is called by ComputeCounter from WorkSession //! If <forced> is True, recomputes systematically Else (D), if the counter was not cleared and if the former computed result started from the same total size of Graph and same count of selected entities: computation is not redone unless <forced> is given as True.
 ") ComputeSelected;
 		Standard_Boolean ComputeSelected(const Interface_Graph & G, const Standard_Boolean forced = Standard_False);
 
@@ -11883,7 +11883,7 @@ str
 
 Description
 -----------
-Applies addwithgraph on one entity, and returns the signature value which has been recorded to do this, add is called with signonly mode true during the call, the returned value is lastvalue.
+Applies AddWithGraph on one entity, and returns the Signature Value which has been recorded To do this, Add is called with SignOnly Mode True during the call, the returned value is LastValue.
 ") ComputedSign;
 		Standard_CString ComputedSign(const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
 
@@ -11909,7 +11909,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns the selection, or a null handle.
+Returns the selection, or a null Handle.
 ") Selection;
 		opencascade::handle<IFSelect_Selection> Selection();
 
@@ -11927,7 +11927,7 @@ None
 
 Description
 -----------
-Changes the control status. the map is not cleared, simply its use changes.
+Changes the control status. The map is not cleared, simply its use changes.
 ") SetMap;
 		void SetMap(const Standard_Boolean withmap);
 
@@ -11945,7 +11945,7 @@ None
 
 Description
 -----------
-Changes the mode of working with the selection: -1 just clears optimisation data and nothing else 0 clears it 1 inhibits it for computing (but no clearing) 2 sets it active for computing default at creation is 0, after setselection (not null) is 2.
+Changes the mode of working with the selection: -1 just clears optimisation data and nothing else 0 clears it 1 inhibits it for computing (but no clearing) 2 sets it active for computing Default at creation is 0, after SetSelection (not null) is 2.
 ") SetSelMode;
 		void SetSelMode(const Standard_Integer selmode);
 
@@ -11963,7 +11963,7 @@ None
 
 Description
 -----------
-Sets a selection as input: this causes content to be cleared then the selection to be ready to compute (but not immediately).
+Sets a Selection as input: this causes content to be cleared then the Selection to be ready to compute (but not immediately).
 ") SetSelection;
 		void SetSelection(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -11982,7 +11982,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Determines and returns the value of the signature for an entity as an hasciistring. this method works exactly as addsign, which is optimized //! can be redefined, accorded with addsign.
+Determines and returns the value of the signature for an entity as an HAsciiString. This method works exactly as AddSign, which is optimized //! Can be redefined, accorded with AddSign.
 ") Sign;
 		virtual opencascade::handle<TCollection_HAsciiString> Sign(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -11995,7 +11995,7 @@ opencascade::handle<IFSelect_Signature>
 
 Description
 -----------
-Returns the signature used to count entities. it can be null.
+Returns the Signature used to count entities. It can be null.
 ") Signature;
 		opencascade::handle<IFSelect_Signature> Signature();
 
@@ -12029,7 +12029,7 @@ None
 
 Description
 -----------
-Creates an empty signmultiple with a name this name should take expected tabulations into account.
+Creates an empty SignMultiple with a Name This name should take expected tabulations into account.
 ") IFSelect_SignMultiple;
 		 IFSelect_SignMultiple(Standard_CString name);
 
@@ -12049,7 +12049,7 @@ None
 
 Description
 -----------
-Adds a signature. width, if given, gives the tabulation if <maxi> is true, it is a forced tabulation (overlength is replaced by a final dot) if <maxi> is false, just 3 blanks follow an overlength.
+Adds a Signature. Width, if given, gives the tabulation If <maxi> is True, it is a forced tabulation (overlength is replaced by a final dot) If <maxi> is False, just 3 blanks follow an overlength.
 ") Add;
 		void Add(const opencascade::handle<IFSelect_Signature> & subsign, const Standard_Integer width = 0, const Standard_Boolean maxi = Standard_False);
 
@@ -12070,7 +12070,7 @@ bool
 
 Description
 -----------
-Specialized match rule if <exact> is false, simply checks if at least one sub-item matches if <exact> is true, standard match with value (i.e. tabulations must be respected).
+Specialized Match Rule If <exact> is False, simply checks if at least one sub-item matches If <exact> is True, standard match with Value (i.e. tabulations must be respected).
 ") Matches;
 		virtual Standard_Boolean Matches(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model, TCollection_AsciiString text, const Standard_Boolean exact);
 
@@ -12123,7 +12123,7 @@ None
 
 Description
 -----------
-Returns a signtype <nopk> false (d): complete dynamic type (name = dynamic type) <nopk> true: class type without pk (name = class type).
+Returns a SignType <nopk> false (D): complete dynamic type (name = Dynamic Type) <nopk> true: class type without pk (name = Class Type).
 ") IFSelect_SignType;
 		 IFSelect_SignType(const Standard_Boolean nopk = Standard_False);
 
@@ -12142,7 +12142,7 @@ str
 
 Description
 -----------
-Returns the signature for a transient object, as its dynamic type, with or without package name, according starting option.
+Returns the Signature for a Transient object, as its Dynamic Type, with or without package name, according starting option.
 ") Value;
 		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -12171,7 +12171,7 @@ None
 
 Description
 -----------
-Returns a signvalidity.
+Returns a SignValidity.
 ") IFSelect_SignValidity;
 		 IFSelect_SignValidity();
 
@@ -12190,7 +12190,7 @@ str
 
 Description
 -----------
-Returns the signature for a transient object, as a validity deducted from data (reports) stored in the model. class method, can be called by any one.
+Returns the Signature for a Transient object, as a validity deducted from data (reports) stored in the model. Class method, can be called by any one.
 ") CVal;
 		static Standard_CString CVal(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -12209,7 +12209,7 @@ str
 
 Description
 -----------
-Returns the signature for a transient object, as a validity deducted from data (reports) stored in the model calls the class method cval.
+Returns the Signature for a Transient object, as a validity deducted from data (reports) stored in the model Calls the class method CVal.
 ") Value;
 		Standard_CString Value(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -12238,7 +12238,7 @@ None
 
 Description
 -----------
-Creates a transformstandard, option standardcopy, no modifier.
+Creates a TransformStandard, option StandardCopy, no Modifier.
 ") IFSelect_TransformStandard;
 		 IFSelect_TransformStandard();
 
@@ -12257,7 +12257,7 @@ bool
 
 Description
 -----------
-Adds a modifier to the list: - <atnum> = 0 (default): at the end of the list - <atnum> > 0: at rank <atnum> returns true if done, false if <atnum> is out of range.
+Adds a Modifier to the list: - <atnum> = 0 (default): at the end of the list - <atnum> > 0: at rank <atnum> Returns True if done, False if <atnum> is out of range.
 ") AddModifier;
 		Standard_Boolean AddModifier(const opencascade::handle<IFSelect_Modifier> & modif, const Standard_Integer atnum = 0);
 
@@ -12279,7 +12279,7 @@ bool
 
 Description
 -----------
-Applies the modifiers sequentially. for each one, prepares required data (if a selection is associated as a filter). for the option onthespot, it determines if the graph may be changed and updates <newmod> if required if a modifier causes an error (check 'hasfailed'), applymodifier stops: the following modifiers are ignored.
+Applies the modifiers sequentially. For each one, prepares required data (if a Selection is associated as a filter). For the option OnTheSpot, it determines if the graph may be changed and updates <newmod> if required If a Modifier causes an error (check 'HasFailed'), ApplyModifier stops: the following Modifiers are ignored.
 ") ApplyModifiers;
 		Standard_Boolean ApplyModifiers(const Interface_Graph & G, const opencascade::handle<Interface_Protocol> & protocol, Interface_CopyTool & TC, Interface_CheckIterator & checks, opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -12299,7 +12299,7 @@ None
 
 Description
 -----------
-This the first operation. it calls standardcopy or onthespot according the option.
+This the first operation. It calls StandardCopy or OnTheSpot according the option.
 ") Copy;
 		void Copy(const Interface_Graph & G, Interface_CopyTool & TC, opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -12312,7 +12312,7 @@ bool
 
 Description
 -----------
-Returns the copy option.
+Returns the Copy option.
 ") CopyOption;
 		Standard_Boolean CopyOption();
 
@@ -12325,7 +12325,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text which defines the way a transformer works: 'on the spot edition' or 'standard copy' followed by '<nn> modifiers'.
+Returns a text which defines the way a Transformer works: 'On the spot edition' or 'Standard Copy' followed by '<nn> Modifiers'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -12343,7 +12343,7 @@ opencascade::handle<IFSelect_Modifier>
 
 Description
 -----------
-Returns a modifier given its rank in the list.
+Returns a Modifier given its rank in the list.
 ") Modifier;
 		opencascade::handle<IFSelect_Modifier> Modifier(const Standard_Integer num);
 
@@ -12361,7 +12361,7 @@ int
 
 Description
 -----------
-Returns the rank of a modifier in the list, 0 if unknown.
+Returns the rank of a Modifier in the list, 0 if unknown.
 ") ModifierRank;
 		Standard_Integer ModifierRank(const opencascade::handle<IFSelect_Modifier> & modif);
 
@@ -12374,7 +12374,7 @@ int
 
 Description
 -----------
-Returns the count of recorded modifiers.
+Returns the count of recorded Modifiers.
 ") NbModifiers;
 		Standard_Integer NbModifiers();
 
@@ -12394,7 +12394,7 @@ None
 
 Description
 -----------
-This is the onthespot action: each entity is bound with ... itself. the produced model is the same as the starting one.
+This is the OnTheSpot action: each entity is bound with ... itself. The produced model is the same as the starting one.
 ") OnTheSpot;
 		void OnTheSpot(const Interface_Graph & G, Interface_CopyTool & TC, opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -12415,7 +12415,7 @@ bool
 
 Description
 -----------
-Performs the standard transformation, by calling copy then applymodifiers (which can return an error status).
+Performs the Standard Transformation, by calling Copy then ApplyModifiers (which can return an error status).
 ") Perform;
 		Standard_Boolean Perform(const Interface_Graph & G, const opencascade::handle<Interface_Protocol> & protocol, Interface_CheckIterator & checks, opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -12433,7 +12433,7 @@ bool
 
 Description
 -----------
-Removes a modifier from the list returns true if done, false if <modif> not in the list.
+Removes a Modifier from the list Returns True if done, False if <modif> not in the list.
 ") RemoveModifier;
 		Standard_Boolean RemoveModifier(const opencascade::handle<IFSelect_Modifier> & modif);
 
@@ -12451,7 +12451,7 @@ bool
 
 Description
 -----------
-Removes a modifier from the list, given its rank returns true if done, false if <num> is out of range.
+Removes a Modifier from the list, given its rank Returns True if done, False if <num> is out of range.
 ") RemoveModifier;
 		Standard_Boolean RemoveModifier(const Standard_Integer num);
 
@@ -12464,7 +12464,7 @@ opencascade::handle<IFSelect_Selection>
 
 Description
 -----------
-Returns the selection, null by default.
+Returns the Selection, Null by default.
 ") Selection;
 		opencascade::handle<IFSelect_Selection> Selection();
 
@@ -12482,7 +12482,7 @@ None
 
 Description
 -----------
-Sets the copy option to a new value: - true for standardcopy - false for onthespot.
+Sets the Copy option to a new value: - True for StandardCopy - False for OnTheSpot.
 ") SetCopyOption;
 		void SetCopyOption(const Standard_Boolean option);
 
@@ -12500,7 +12500,7 @@ None
 
 Description
 -----------
-Sets a selection (or unsets if null) this selection then defines the list of entities on which the modifiers will be applied if it is set, it has priority on selections of modifiers else, for each modifier its selection is evaluated by default, all the model is taken.
+Sets a Selection (or unsets if Null) This Selection then defines the list of entities on which the Modifiers will be applied If it is set, it has priority on Selections of Modifiers Else, for each Modifier its Selection is evaluated By default, all the Model is taken.
 ") SetSelection;
 		void SetSelection(const opencascade::handle<IFSelect_Selection> & sel);
 
@@ -12520,7 +12520,7 @@ None
 
 Description
 -----------
-This is the standard action of copy: its takes into account only the remaining entities (noted by graph status positive) and their proper dependances of course. produces a new model.
+This is the standard action of Copy: its takes into account only the remaining entities (noted by Graph Status positive) and their proper dependances of course. Produces a new model.
 ") StandardCopy;
 		void StandardCopy(const Interface_Graph & G, Interface_CopyTool & TC, opencascade::handle<Interface_InterfaceModel> & newmod);
 
@@ -12539,7 +12539,7 @@ bool
 
 Description
 -----------
-This methods allows to know what happened to a starting entity after the last perform. it reads result from the map which was filled by perform.
+This methods allows to know what happened to a starting entity after the last Perform. It reads result from the map which was filled by Perform.
 ") Updated;
 		Standard_Boolean Updated(const opencascade::handle<Standard_Transient> & entfrom, opencascade::handle<Standard_Transient> & entto);
 
@@ -12574,7 +12574,7 @@ None
 
 Description
 -----------
-Creates a graphcounter, without applied selection.
+Creates a GraphCounter, without applied selection.
 ") IFSelect_GraphCounter;
 		 IFSelect_GraphCounter(const Standard_Boolean withmap = Standard_True, const Standard_Boolean withlist = Standard_False);
 
@@ -12593,7 +12593,7 @@ None
 
 Description
 -----------
-Adds a list of entities in the context given by the graph default takes the count of entities selected by the applied selection, when it is given each entity of the list can be redefined.
+Adds a list of entities in the context given by the graph Default takes the count of entities selected by the applied selection, when it is given each entity of the list Can be redefined.
 ") AddWithGraph;
 		virtual void AddWithGraph(const opencascade::handle<TColStd_HSequenceOfTransient> & list, const Interface_Graph & graph);
 
@@ -12658,7 +12658,7 @@ None
 
 Description
 -----------
-Creates a modifeditform. it may not change the graph.
+Creates a ModifEditForm. It may not change the graph.
 ") IFSelect_ModifEditForm;
 		 IFSelect_ModifEditForm(const opencascade::handle<IFSelect_EditForm> & editform);
 
@@ -12671,7 +12671,7 @@ opencascade::handle<IFSelect_EditForm>
 
 Description
 -----------
-Returns the editform.
+Returns the EditForm.
 ") EditForm;
 		opencascade::handle<IFSelect_EditForm> EditForm();
 
@@ -12684,7 +12684,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns label as 'apply editform <+ label of editform>'.
+Returns Label as 'Apply EditForm <+ label of EditForm>'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -12705,7 +12705,7 @@ None
 
 Description
 -----------
-Acts by applying an editform to entities, selected or all model.
+Acts by applying an EditForm to entities, selected or all model.
 ") Perform;
 		void Perform(IFSelect_ContextModif & ctx, const opencascade::handle<Interface_InterfaceModel> & target, const opencascade::handle<Interface_Protocol> & protocol, Interface_CopyTool & TC);
 
@@ -12739,7 +12739,7 @@ None
 
 Description
 -----------
-Creates a modifreorder. it may change the graph (it does !) if <rootlast> is true (d), roots are set at the end of packets else, they are set at beginning (as done by addwithrefs).
+Creates a ModifReorder. It may change the graph (it does !) If <rootlast> is True (D), roots are set at the end of packets Else, they are set at beginning (as done by AddWithRefs).
 ") IFSelect_ModifReorder;
 		 IFSelect_ModifReorder(const Standard_Boolean rootlast = Standard_True);
 
@@ -12752,7 +12752,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns label as 'reorder, roots (last or first)'.
+Returns Label as 'Reorder, Roots (last or first)'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -12773,7 +12773,7 @@ None
 
 Description
 -----------
-Acts by computing orders (by method all from sharetool) then forcing them in the model. remark that selection is ignored: all the model is processed in once.
+Acts by computing orders (by method All from ShareTool) then forcing them in the model. Remark that selection is ignored: ALL the model is processed in once.
 ") Perform;
 		void Perform(IFSelect_ContextModif & ctx, const opencascade::handle<Interface_InterfaceModel> & target, const opencascade::handle<Interface_Protocol> & protocol, Interface_CopyTool & TC);
 
@@ -12811,7 +12811,7 @@ None
 
 Description
 -----------
-Puts into <res>, the sub-entities of the list, from n1 to n2 included. remark that adequation with entity's type and length of list has already been made at this stage called by rootresult.
+Puts into <res>, the sub-entities of the list, from n1 to n2 included. Remark that adequation with Entity's type and length of list has already been made at this stage Called by RootResult.
 ") FillResult;
 		virtual void FillResult(const Standard_Integer n1, const Standard_Integer n2, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & res);
 
@@ -12824,7 +12824,7 @@ bool
 
 Description
 -----------
-Returns true if a lower limit is defined.
+Returns True if a Lower limit is defined.
 ") HasLower;
 		Standard_Boolean HasLower();
 
@@ -12837,7 +12837,7 @@ bool
 
 Description
 -----------
-Returns true if a lower limit is defined.
+Returns True if a Lower limit is defined.
 ") HasUpper;
 		Standard_Boolean HasUpper();
 
@@ -12855,7 +12855,7 @@ None
 
 Description
 -----------
-Keeps input entity, as having required type. it works by keeping in <iter>, only suitable entities (selecttype can be used). called by rootresult (which waits for one entity max).
+Keeps Input Entity, as having required type. It works by keeping in <iter>, only suitable Entities (SelectType can be used). Called by RootResult (which waits for ONE ENTITY MAX).
 ") KeepInputEntity;
 		virtual void KeepInputEntity(Interface_EntityIterator & iter);
 
@@ -12868,7 +12868,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'components of list ' then specific list label, then, following cases: ' from .. until ..' or 'from ..' or 'until ..' or 'rank no ..' specific type is given by deferred method listlabel.
+Returns a text defining the criterium: 'Components of List ' then Specific List Label, then, following cases: ' From .. Until ..' or 'From ..' or 'Until ..' or 'Rank no ..' Specific type is given by deferred method ListLabel.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -12881,7 +12881,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the specific label for the list, which is included as a part of label.
+Returns the specific label for the list, which is included as a part of Label.
 ") ListLabel;
 		virtual TCollection_AsciiString ListLabel();
 
@@ -12894,7 +12894,7 @@ opencascade::handle<IFSelect_IntParam>
 
 Description
 -----------
-Returns lower limit (if there is; else, value is senseless).
+Returns Lower limit (if there is; else, value is senseless).
 ") Lower;
 		opencascade::handle<IFSelect_IntParam> Lower();
 
@@ -12907,7 +12907,7 @@ int
 
 Description
 -----------
-Returns integer value of lower limit (0 if none).
+Returns Integer Value of Lower Limit (0 if none).
 ") LowerValue;
 		Standard_Integer LowerValue();
 
@@ -12925,7 +12925,7 @@ int
 
 Description
 -----------
-Returns count of items in the list in the entity <ent> if <ent> has not required type, returned value must be zero.
+Returns count of Items in the list in the Entity <ent> If <ent> has not required type, returned value must be Zero.
 ") NbItems;
 		virtual Standard_Integer NbItems(const opencascade::handle<Standard_Transient> & ent);
 
@@ -12943,7 +12943,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities (list of entities complying with rank criterium) error if the input list has more than one item.
+Returns the list of selected entities (list of entities complying with rank criterium) Error if the input list has more than one Item.
 ") RootResult;
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -12961,7 +12961,7 @@ None
 
 Description
 -----------
-Sets a lower limit but no upper limit.
+Sets a Lower limit but no upper limit.
 ") SetFrom;
 		void SetFrom(const opencascade::handle<IFSelect_IntParam> & rankfrom);
 
@@ -12979,7 +12979,7 @@ None
 
 Description
 -----------
-Sets a unique number (only one entity will be sorted as true).
+Sets a unique number (only one Entity will be sorted as True).
 ") SetOne;
 		void SetOne(const opencascade::handle<IFSelect_IntParam> & rank);
 
@@ -12998,7 +12998,7 @@ None
 
 Description
 -----------
-Sets a range for numbers, with a lower and a upper limits.
+Sets a Range for numbers, with a lower and a upper limits.
 ") SetRange;
 		void SetRange(const opencascade::handle<IFSelect_IntParam> & rankfrom, const opencascade::handle<IFSelect_IntParam> & rankto);
 
@@ -13016,7 +13016,7 @@ None
 
 Description
 -----------
-Sets an upper limit but no lower limit (equivalent to lower 1).
+Sets an Upper limit but no lower limit (equivalent to lower 1).
 ") SetUntil;
 		void SetUntil(const opencascade::handle<IFSelect_IntParam> & rankto);
 
@@ -13029,7 +13029,7 @@ opencascade::handle<IFSelect_IntParam>
 
 Description
 -----------
-Returns upper limit (if there is; else, value is senseless).
+Returns Upper limit (if there is; else, value is senseless).
 ") Upper;
 		opencascade::handle<IFSelect_IntParam> Upper();
 
@@ -13042,7 +13042,7 @@ int
 
 Description
 -----------
-Returns integer value of upper limit (0 if none).
+Returns Integer Value of Upper Limit (0 if none).
 ") UpperValue;
 		Standard_Integer UpperValue();
 
@@ -13071,7 +13071,7 @@ None
 
 Description
 -----------
-Creates an empty selectdiff.
+Creates an empty SelectDiff.
 ") IFSelect_SelectDiff;
 		 IFSelect_SelectDiff();
 
@@ -13084,7 +13084,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'difference'.
+Returns a text defining the criterium: 'Difference'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -13102,7 +13102,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities: they are the entities gotten from the main input but not from the diff input.
+Returns the list of selected entities: they are the Entities gotten from the Main Input but not from the Diff Input.
 ") RootResult;
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -13131,7 +13131,7 @@ None
 
 Description
 -----------
-Creates a selectentitynumber, initially with no specified number.
+Creates a SelectEntityNumber, initially with no specified Number.
 ") IFSelect_SelectEntityNumber;
 		 IFSelect_SelectEntityNumber();
 
@@ -13144,7 +13144,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'entity number ...'.
+Returns a text defining the criterium: 'Entity Number ...'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -13157,7 +13157,7 @@ opencascade::handle<IFSelect_IntParam>
 
 Description
 -----------
-Returns specified number (as a parameter).
+Returns specified Number (as a Parameter).
 ") Number;
 		opencascade::handle<IFSelect_IntParam> Number();
 
@@ -13175,7 +13175,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities: the entity having the specified number (this result assures naturally uniqueness).
+Returns the list of selected entities: the Entity having the specified Number (this result assures naturally uniqueness).
 ") RootResult;
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -13193,7 +13193,7 @@ None
 
 Description
 -----------
-Sets entity number to be taken (initially, none is set: 0).
+Sets Entity Number to be taken (initially, none is set: 0).
 ") SetNumber;
 		void SetNumber(const opencascade::handle<IFSelect_IntParam> & num);
 
@@ -13231,7 +13231,7 @@ bool
 
 Description
 -----------
-Analyses and, if required, explores an entity, as follows: the explored list starts as empty, it has to be filled by this method. if it returns false, <ent> is rejected for result (this is to be used only as safety) if it returns true and <explored> remains empty, <ent> is taken itself for result, not explored if it returns true and <explored> is not empty, the content of this list is considered: if maximum level is attained, it is taken for result else (or no max), each of its entity will be itself explored.
+Analyses and, if required, Explores an entity, as follows: The explored list starts as empty, it has to be filled by this method. If it returns False, <ent> is rejected for result (this is to be used only as safety) If it returns True and <explored> remains empty, <ent> is taken itself for result, not explored If it returns True and <explored> is not empty, the content of this list is considered: If maximum level is attained, it is taken for result Else (or no max), each of its entity will be itself explored.
 ") Explore;
 		virtual Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
@@ -13257,7 +13257,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text saying '(recursive)' or '(level nn)' plus specific criterium returned by explorelabel (see below).
+Returns a text saying '(Recursive)' or '(Level nn)' plus specific criterium returned by ExploreLabel (see below).
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -13288,7 +13288,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities. works by calling the method explore on each input entity: it can be rejected, taken for output, or to explore. if the maximum level has not yet been attained, or if no max level is specified, entities to be explored are themselves used as if they were input.
+Returns the list of selected entities. Works by calling the method Explore on each input entity: it can be rejected, taken for output, or to explore. If the maximum level has not yet been attained, or if no max level is specified, entities to be explored are themselves used as if they were input.
 ") RootResult;
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -13331,7 +13331,7 @@ bool
 
 Description
 -----------
-Returns true if sort criterium is direct, false if reverse.
+Returns True if Sort criterium is Direct, False if Reverse.
 ") IsDirect;
 		Standard_Boolean IsDirect();
 
@@ -13344,7 +13344,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text saying 'picked' or 'removed', plus the specific criterium returned by extractlabel (see below).
+Returns a text saying 'Picked' or 'Removed', plus the specific criterium returned by ExtractLabel (see below).
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -13362,7 +13362,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities. works by calling the method sort on each input entity: the entity is kept as output if sort returns the same value as direct status.
+Returns the list of selected entities. Works by calling the method Sort on each input Entity: the Entity is kept as output if Sort returns the same value as Direct status.
 ") RootResult;
 		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -13380,7 +13380,7 @@ None
 
 Description
 -----------
-Sets sort criterium sense to a new value (true: direct , false: reverse).
+Sets Sort criterium sense to a new value (True: Direct , False: Reverse).
 ") SetDirect;
 		void SetDirect(const Standard_Boolean direct);
 
@@ -13400,7 +13400,7 @@ bool
 
 Description
 -----------
-Returns true for an entity if it satisfies the sort criterium it receives: - <rank>, the rank of the entity in the iteration, - <ent> , the entity itself, and - <model>, the starting model hence, the entity to check is 'model->value(num)' (but an interfacemodel allows other checks) this method is specific to each class of selectextract.
+Returns True for an Entity if it satisfies the Sort criterium It receives: - <rank>, the rank of the Entity in the Iteration, - <ent> , the Entity itself, and - <model>, the Starting Model Hence, the Entity to check is 'model->Value(num)' (but an InterfaceModel allows other checks) This method is specific to each class of SelectExtract.
 ") Sort;
 		virtual Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -13420,7 +13420,7 @@ bool
 
 Description
 -----------
-Works as sort but works on the graph default directly calls sort, but it can be redefined if sortingraph is redefined, sort should be defined even if not called (to avoid deferred methods in a final class).
+Works as Sort but works on the Graph Default directly calls Sort, but it can be redefined If SortInGraph is redefined, Sort should be defined even if not called (to avoid deferred methods in a final class).
 ") SortInGraph;
 		virtual Standard_Boolean SortInGraph(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
 
@@ -13449,7 +13449,7 @@ None
 
 Description
 -----------
-Creates an empty selectintersection.
+Creates an empty SelectIntersection.
 ") IFSelect_SelectIntersection;
 		 IFSelect_SelectIntersection();
 
@@ -13462,7 +13462,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'intersection (and)'.
+Returns a text defining the criterium: 'Intersection (AND)'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -13480,7 +13480,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities, which is the common part of results from all input selections. uniqueness is guaranteed.
+Returns the list of selected Entities, which is the common part of results from all input selections. Uniqueness is guaranteed.
 ") RootResult;
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -13509,7 +13509,7 @@ None
 
 Description
 -----------
-Creates a selectmodelroot.
+Creates a SelectModelRoot.
 ") IFSelect_SelectModelEntities;
 		 IFSelect_SelectModelEntities();
 
@@ -13527,7 +13527,7 @@ Interface_EntityIterator
 
 Description
 -----------
-The complete list of entities (including shared ones) ... is exactly identical to rootresults in this case.
+The complete list of Entities (including shared ones) ... is exactly identical to RootResults in this case.
 ") CompleteResult;
 		virtual Interface_EntityIterator CompleteResult(const Interface_Graph & G);
 
@@ -13540,7 +13540,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'model entities'.
+Returns a text defining the criterium: 'Model Entities'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -13558,7 +13558,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities: the entities of the model (note that this result assures naturally uniqueness).
+Returns the list of selected entities: the Entities of the Model (note that this result assures naturally uniqueness).
 ") RootResult;
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -13587,7 +13587,7 @@ None
 
 Description
 -----------
-Creates a selectmodelroot.
+Creates a SelectModelRoot.
 ") IFSelect_SelectModelRoots;
 		 IFSelect_SelectModelRoots();
 
@@ -13600,7 +13600,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'model roots'.
+Returns a text defining the criterium: 'Model Roots'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -13618,7 +13618,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities: the roots of the model (note that this result assures naturally uniqueness).
+Returns the list of selected entities: the Roots of the Model (note that this result assures naturally uniqueness).
 ") RootResult;
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -13647,7 +13647,7 @@ None
 
 Description
 -----------
-Creates a selectpointed.
+Creates a SelectPointed.
 ") IFSelect_SelectPointed;
 		 IFSelect_SelectPointed();
 
@@ -13665,7 +13665,7 @@ bool
 
 Description
 -----------
-Adds an item. returns true if done, false if <item> is already in the selected list.
+Adds an item. Returns True if Done, False if <item> is already in the selected list.
 ") Add;
 		Standard_Boolean Add(const opencascade::handle<Standard_Transient> & item);
 
@@ -13683,7 +13683,7 @@ bool
 
 Description
 -----------
-Adds all the items defined in a list. returns true if at least one item has been added, false else.
+Adds all the items defined in a list. Returns True if at least one item has been added, False else.
 ") AddList;
 		Standard_Boolean AddList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -13696,7 +13696,7 @@ None
 
 Description
 -----------
-Clears the list of selected items also says the list is unset all add* methods and setlist say the list is set.
+Clears the list of selected items Also says the list is unset All Add* methods and SetList say the list is set.
 ") Clear;
 		void Clear();
 
@@ -13709,7 +13709,7 @@ bool
 
 Description
 -----------
-Tells if the list has been set. even if empty.
+Tells if the list has been set. Even if empty.
 ") IsSet;
 		Standard_Boolean IsSet();
 
@@ -13727,7 +13727,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an item given its rank, or a null handle.
+Returns an item given its rank, or a Null Handle.
 ") Item;
 		opencascade::handle<Standard_Transient> Item(const Standard_Integer num);
 
@@ -13740,7 +13740,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text which identifies the type of selection made. it is 'pointed entities'.
+Returns a text which identifies the type of selection made. It is 'Pointed Entities'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -13789,7 +13789,7 @@ bool
 
 Description
 -----------
-Removes an item. returns true if done, false if <item> was not in the selected list.
+Removes an item. Returns True if Done, False if <item> was not in the selected list.
 ") Remove;
 		Standard_Boolean Remove(const opencascade::handle<Standard_Transient> & item);
 
@@ -13807,7 +13807,7 @@ bool
 
 Description
 -----------
-Removes all the items defined in a list. returns true if at least one item has been removed, false else.
+Removes all the items defined in a list. Returns True if at least one item has been removed, False else.
 ") RemoveList;
 		Standard_Boolean RemoveList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -13825,7 +13825,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected items. only the selected entities which are present in the graph are given (this result assures uniqueness).
+Returns the list of selected items. Only the selected entities which are present in the graph are given (this result assures uniqueness).
 ") RootResult;
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -13843,7 +13843,7 @@ None
 
 Description
 -----------
-As setlist but with only one entity if <ent> is null, the list is said as being set but is empty.
+As SetList but with only one entity If <ent> is Null, the list is said as being set but is empty.
 ") SetEntity;
 		void SetEntity(const opencascade::handle<Standard_Transient> & item);
 
@@ -13861,7 +13861,7 @@ None
 
 Description
 -----------
-Sets a given list to define the list of selected items <list> can be empty or null: in this case, the list is said as being set, but it is empty //! to use it as an alternate input, one shot: - setlist or setentity to define the input list - rootresult to get it - then clear to drop it.
+Sets a given list to define the list of selected items <list> can be empty or null: in this case, the list is said as being set, but it is empty //! To use it as an alternate input, one shot: - SetList or SetEntity to define the input list - RootResult to get it - then Clear to drop it.
 ") SetList;
 		void SetList(const opencascade::handle<TColStd_HSequenceOfTransient> & list);
 
@@ -13879,7 +13879,7 @@ bool
 
 Description
 -----------
-Toggles status of an item: adds it if not pointed or removes it if already pointed. returns the new status (pointed or not).
+Toggles status of an item: adds it if not pointed or removes it if already pointed. Returns the new status (Pointed or not).
 ") Toggle;
 		Standard_Boolean Toggle(const opencascade::handle<Standard_Transient> & item);
 
@@ -13915,7 +13915,7 @@ None
 
 Description
 -----------
-Rebuilds the selected list. any selected entity which has a bound result is replaced by this result, else it is removed.
+Rebuilds the selected list. Any selected entity which has a bound result is replaced by this result, else it is removed.
 ") Update;
 		void Update(const opencascade::handle<Interface_CopyControl> & control);
 
@@ -13933,7 +13933,7 @@ None
 
 Description
 -----------
-Rebuilds the selected list, by querying a transformer (same principle as from a copycontrol).
+Rebuilds the selected list, by querying a Transformer (same principle as from a CopyControl).
 ") Update;
 		void Update(const opencascade::handle<IFSelect_Transformer> & trf);
 
@@ -13962,7 +13962,7 @@ None
 
 Description
 -----------
-Creates a selectshared;.
+Creates a SelectShared;.
 ") IFSelect_SelectShared;
 		 IFSelect_SelectShared();
 
@@ -13975,7 +13975,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'shared (one level)'.
+Returns a text defining the criterium: 'Shared (one level)'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -14022,7 +14022,7 @@ None
 
 Description
 -----------
-Creates a selectsharing;.
+Creates a SelectSharing;.
 ") IFSelect_SelectSharing;
 		 IFSelect_SelectSharing();
 
@@ -14035,7 +14035,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'sharing (one level)'.
+Returns a text defining the criterium: 'Sharing (one level)'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -14082,7 +14082,7 @@ None
 
 Description
 -----------
-Creates an empty selectsuite.
+Creates an empty SelectSuite.
 ") IFSelect_SelectSuite;
 		 IFSelect_SelectSuite();
 
@@ -14100,7 +14100,7 @@ bool
 
 Description
 -----------
-Adds an input selection. i.e.: if <item> is a selectdeduct, adds it as previous, not as input else, sets it as input returns true when done returns false and refuses to work if input is already defined.
+Adds an input selection. I.E.: If <item> is a SelectDeduct, adds it as Previous, not as Input Else, sets it as Input Returns True when done Returns False and refuses to work if Input is already defined.
 ") AddInput;
 		Standard_Boolean AddInput(const opencascade::handle<IFSelect_Selection> & item);
 
@@ -14118,7 +14118,7 @@ None
 
 Description
 -----------
-Adds a new last item (prepends to the list) if <item> is null, does nothing.
+Adds a new last item (prepends to the list) If <item> is null, does nothing.
 ") AddNext;
 		void AddNext(const opencascade::handle<IFSelect_SelectDeduct> & item);
 
@@ -14136,7 +14136,7 @@ None
 
 Description
 -----------
-Adds a new first item (prepends to the list). the input is not touched if <item> is null, does nothing.
+Adds a new first item (prepends to the list). The Input is not touched If <item> is null, does nothing.
 ") AddPrevious;
 		void AddPrevious(const opencascade::handle<IFSelect_SelectDeduct> & item);
 
@@ -14154,7 +14154,7 @@ opencascade::handle<IFSelect_SelectDeduct>
 
 Description
 -----------
-Returns an item from its rank in the list (the input is always apart).
+Returns an item from its rank in the list (the Input is always apart).
 ") Item;
 		opencascade::handle<IFSelect_SelectDeduct> Item(const Standard_Integer num);
 
@@ -14167,7 +14167,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the label either it has been defined by setlabel, or it will give 'suite of nn selections'.
+Returns the Label Either it has been defined by SetLabel, or it will give 'Suite of nn Selections'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -14180,7 +14180,7 @@ int
 
 Description
 -----------
-Returns the count of items.
+Returns the count of Items.
 ") NbItems;
 		Standard_Integer NbItems();
 
@@ -14198,7 +14198,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities to do this, once inputresult has been taken (if input or alternate has been defined, else the first item gives it): this result is set as alternate input for the first item, which computes its result: this result is set as alternate input for the second item, etc...
+Returns the list of selected entities To do this, once InputResult has been taken (if Input or Alternate has been defined, else the first Item gives it): this result is set as alternate input for the first item, which computes its result: this result is set as alternate input for the second item, etc...
 ") RootResult;
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -14216,7 +14216,7 @@ None
 
 Description
 -----------
-Sets a value for the label.
+Sets a value for the Label.
 ") SetLabel;
 		void SetLabel(Standard_CString lab);
 
@@ -14245,7 +14245,7 @@ None
 
 Description
 -----------
-Creates an empty selectunion.
+Creates an empty SelectUnion.
 ") IFSelect_SelectUnion;
 		 IFSelect_SelectUnion();
 
@@ -14258,7 +14258,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'union (or)'.
+Returns a text defining the criterium: 'Union (OR)'.
 ") Label;
 		TCollection_AsciiString Label();
 
@@ -14276,7 +14276,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities, which is the addition result from all input selections. uniqueness is guaranteed.
+Returns the list of selected Entities, which is the addition result from all input selections. Uniqueness is guaranteed.
 ") RootResult;
 		Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -14368,7 +14368,7 @@ bool
 
 Description
 -----------
-Returns true for an entity (model->value(num)) which is kind of the chosen type, given by the method typeformatch. criterium is iskind.
+Returns True for an Entity (model->Value(num)) which is kind of the chosen type, given by the method TypeForMatch. Criterium is IsKind.
 ") Sort;
 		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -14381,7 +14381,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type which has to be matched for select.
+Returns the Type which has to be matched for select.
 ") TypeForMatch;
 		virtual opencascade::handle<Standard_Type> TypeForMatch();
 
@@ -14410,7 +14410,7 @@ None
 
 Description
 -----------
-Creates a selecterrorentities.
+Creates a SelectErrorEntities.
 ") IFSelect_SelectErrorEntities;
 		 IFSelect_SelectErrorEntities();
 
@@ -14423,7 +14423,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'error entities'.
+Returns a text defining the criterium: 'Error Entities'.
 ") ExtractLabel;
 		TCollection_AsciiString ExtractLabel();
 
@@ -14443,7 +14443,7 @@ bool
 
 Description
 -----------
-Returns true for an entity which is qualified as 'error', i.e. if <model> explicitly knows <ent> (through its number) as erroneous.
+Returns True for an Entity which is qualified as 'Error', i.e. if <model> explicitly knows <ent> (through its Number) as Erroneous.
 ") Sort;
 		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -14477,7 +14477,7 @@ None
 
 Description
 -----------
-Creates a select flag, to query a flag designated by its name.
+Creates a Select Flag, to query a flag designated by its name.
 ") IFSelect_SelectFlag;
 		 IFSelect_SelectFlag(Standard_CString flagname);
 
@@ -14521,7 +14521,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities. it is redefined to work on the graph itself (not queried by sort) //! an entity is selected if its flag is true on direct mode, false on reversed mode //! if flag does not exist for the given name, returns an empty result, whatever the direct/reversed sense.
+Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) //! An entity is selected if its flag is True on Direct mode, False on Reversed mode //! If flag does not exist for the given name, returns an empty result, whatever the Direct/Reversed sense.
 ") RootResult;
 		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -14541,7 +14541,7 @@ bool
 
 Description
 -----------
-Returns always false because rootresult has done the work.
+Returns always False because RootResult has done the work.
 ") Sort;
 		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -14579,7 +14579,7 @@ None
 
 Description
 -----------
-Puts into the result, the sub-entities of the list, from n1 to n2 included. remark that adequation with entity's type and length of list has already been made at this stage called by rootresult; calls listedentity (see below).
+Puts into the result, the sub-entities of the list, from n1 to n2 included. Remark that adequation with Entity's type and length of list has already been made at this stage Called by RootResult; calls ListedEntity (see below).
 ") FillResult;
 		void FillResult(const Standard_Integer n1, const Standard_Integer n2, const opencascade::handle<Standard_Transient> & ent, Interface_EntityIterator & result);
 
@@ -14598,7 +14598,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an entity, given its rank in the list.
+Returns an Entity, given its rank in the list.
 ") ListedEntity;
 		virtual opencascade::handle<Standard_Transient> ListedEntity(const Standard_Integer num, const opencascade::handle<Standard_Transient> & ent);
 
@@ -14627,7 +14627,7 @@ None
 
 Description
 -----------
-Creates a selectrange. default is take all the input list.
+Creates a SelectRange. Default is Take all the input list.
 ") IFSelect_SelectRange;
 		 IFSelect_SelectRange();
 
@@ -14640,7 +14640,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: following cases, ' from .. until ..' or 'from ..' or 'until ..' or 'rank no ..'.
+Returns a text defining the criterium: following cases, ' From .. Until ..' or 'From ..' or 'Until ..' or 'Rank no ..'.
 ") ExtractLabel;
 		TCollection_AsciiString ExtractLabel();
 
@@ -14653,7 +14653,7 @@ bool
 
 Description
 -----------
-Returns true if a lower limit is defined.
+Returns True if a Lower limit is defined.
 ") HasLower;
 		Standard_Boolean HasLower();
 
@@ -14666,7 +14666,7 @@ bool
 
 Description
 -----------
-Returns true if a lower limit is defined.
+Returns True if a Lower limit is defined.
 ") HasUpper;
 		Standard_Boolean HasUpper();
 
@@ -14679,7 +14679,7 @@ opencascade::handle<IFSelect_IntParam>
 
 Description
 -----------
-Returns lower limit (if there is; else, value is senseless).
+Returns Lower limit (if there is; else, value is senseless).
 ") Lower;
 		opencascade::handle<IFSelect_IntParam> Lower();
 
@@ -14692,7 +14692,7 @@ int
 
 Description
 -----------
-Returns value of lower limit (0 if none is defined).
+Returns Value of Lower Limit (0 if none is defined).
 ") LowerValue;
 		Standard_Integer LowerValue();
 
@@ -14710,7 +14710,7 @@ None
 
 Description
 -----------
-Sets a lower limit but no upper limit.
+Sets a Lower limit but no upper limit.
 ") SetFrom;
 		void SetFrom(const opencascade::handle<IFSelect_IntParam> & rankfrom);
 
@@ -14728,7 +14728,7 @@ None
 
 Description
 -----------
-Sets a unique number (only one entity will be sorted as true).
+Sets a unique number (only one Entity will be sorted as True).
 ") SetOne;
 		void SetOne(const opencascade::handle<IFSelect_IntParam> & rank);
 
@@ -14747,7 +14747,7 @@ None
 
 Description
 -----------
-Sets a range for numbers, with a lower and a upper limits error if rankto is lower then rankfrom.
+Sets a Range for numbers, with a lower and a upper limits Error if rankto is lower then rankfrom.
 ") SetRange;
 		void SetRange(const opencascade::handle<IFSelect_IntParam> & rankfrom, const opencascade::handle<IFSelect_IntParam> & rankto);
 
@@ -14765,7 +14765,7 @@ None
 
 Description
 -----------
-Sets an upper limit but no lower limit (equivalent to lower 1).
+Sets an Upper limit but no lower limit (equivalent to lower 1).
 ") SetUntil;
 		void SetUntil(const opencascade::handle<IFSelect_IntParam> & rankto);
 
@@ -14785,7 +14785,7 @@ bool
 
 Description
 -----------
-Returns true for an entity of which occurrence number in the iteration is inside the selected range (considers <rank>).
+Returns True for an Entity of which occurrence number in the iteration is inside the selected Range (considers <rank>).
 ") Sort;
 		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -14798,7 +14798,7 @@ opencascade::handle<IFSelect_IntParam>
 
 Description
 -----------
-Returns upper limit (if there is; else, value is senseless).
+Returns Upper limit (if there is; else, value is senseless).
 ") Upper;
 		opencascade::handle<IFSelect_IntParam> Upper();
 
@@ -14811,7 +14811,7 @@ int
 
 Description
 -----------
-Returns value of upper limit (0 if none is defined).
+Returns Value of Upper Limit (0 if none is defined).
 ") UpperValue;
 		Standard_Integer UpperValue();
 
@@ -14840,7 +14840,7 @@ None
 
 Description
 -----------
-Creates a selectrootcomps.
+Creates a SelectRootComps.
 ") IFSelect_SelectRootComps;
 		 IFSelect_SelectRootComps();
 
@@ -14853,7 +14853,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'local root components'.
+Returns a text defining the criterium: 'Local Root Components'.
 ") ExtractLabel;
 		TCollection_AsciiString ExtractLabel();
 
@@ -14871,7 +14871,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of local root strong components, by one entity per component. it is redefined for a purpose of efficiency: calling a sort routine for each entity would cost more resources than to work in once using a map rootresult takes in account the direct status.
+Returns the list of local root strong components, by one Entity per component. It is redefined for a purpose of efficiency: calling a Sort routine for each Entity would cost more resources than to work in once using a Map RootResult takes in account the Direct status.
 ") RootResult;
 		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -14891,7 +14891,7 @@ bool
 
 Description
 -----------
-Returns always true, because rootresult has done work.
+Returns always True, because RootResult has done work.
 ") Sort;
 		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -14920,7 +14920,7 @@ None
 
 Description
 -----------
-Creates a selectroots.
+Creates a SelectRoots.
 ") IFSelect_SelectRoots;
 		 IFSelect_SelectRoots();
 
@@ -14933,7 +14933,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'local root entities'.
+Returns a text defining the criterium: 'Local Root Entities'.
 ") ExtractLabel;
 		TCollection_AsciiString ExtractLabel();
 
@@ -14951,7 +14951,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of local roots. it is redefined for a purpose of efficiency: calling a sort routine for each entity would cost more resources than to work in once using a map rootresult takes in account the direct status.
+Returns the list of local roots. It is redefined for a purpose of efficiency: calling a Sort routine for each Entity would cost more resources than to work in once using a Map RootResult takes in account the Direct status.
 ") RootResult;
 		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -14971,7 +14971,7 @@ bool
 
 Description
 -----------
-Returns always true, because rootresult has done work.
+Returns always True, because RootResult has done work.
 ") Sort;
 		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -15006,7 +15006,7 @@ None
 
 Description
 -----------
-Creates a selectsent: sentcount = 0 -> remaining (non-sent) entities sentcount = 1, atleast = true (d) -> sent (at least once) sentcount = 2, atleast = true -> duplicated (sent least twice) etc... sentcount = 1, atleast = false -> sent just once (non-dupl.d) sentcount = 2, atleast = false -> sent just twice etc...
+Creates a SelectSent: sentcount = 0 -> remaining (non-sent) entities sentcount = 1, atleast = True (D) -> sent (at least once) sentcount = 2, atleast = True -> duplicated (sent least twice) etc... sentcount = 1, atleast = False -> sent just once (non-dupl.d) sentcount = 2, atleast = False -> sent just twice etc...
 ") IFSelect_SelectSent;
 		 IFSelect_SelectSent(const Standard_Integer sentcount = 1, const Standard_Boolean atleast = Standard_True);
 
@@ -15019,7 +15019,7 @@ bool
 
 Description
 -----------
-Returns the <atleast> status, true for sending at least the sending count, false for sending exactly the sending count remark: if sentcount is 0, atleast is ignored.
+Returns the <atleast> status, True for sending at least the sending count, False for sending exactly the sending count Remark: if SentCount is 0, AtLeast is ignored.
 ") AtLeast;
 		Standard_Boolean AtLeast();
 
@@ -15032,7 +15032,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: query: sentcount = 0 -> 'remaining (non-sent) entities' sentcount = 1, atleast = true -> 'sent entities' sentcount = 1, atleast = false -> 'sent once (no duplicated)' sentcount = 2, atleast = true -> 'sent several times entities' sentcount = 2, atleast = false -> 'sent twice entities' sentcount > 2, atleast = true -> 'sent at least <count> times entities' sentcount > 2, atleast = false -> 'sent <count> times entities'.
+Returns a text defining the criterium: query: SentCount = 0 -> 'Remaining (non-sent) entities' SentCount = 1, AtLeast = True -> 'Sent entities' SentCount = 1, AtLeast = False -> 'Sent once (no duplicated)' SentCount = 2, AtLeast = True -> 'Sent several times entities' SentCount = 2, AtLeast = False -> 'Sent twice entities' SentCount > 2, AtLeast = True -> 'Sent at least <count> times entities' SentCount > 2, AtLeast = False -> 'Sent <count> times entities'.
 ") ExtractLabel;
 		TCollection_AsciiString ExtractLabel();
 
@@ -15050,7 +15050,7 @@ Interface_EntityIterator
 
 Description
 -----------
-Returns the list of selected entities. it is redefined to work on the graph itself (not queried by sort) //! an entity is selected if its count complies to the query in direct mode, rejected in reversed mode //! query works on the sending count recorded as status in graph.
+Returns the list of selected entities. It is redefined to work on the graph itself (not queried by sort) //! An entity is selected if its count complies to the query in Direct Mode, rejected in Reversed Mode //! Query works on the sending count recorded as status in Graph.
 ") RootResult;
 		virtual Interface_EntityIterator RootResult(const Interface_Graph & G);
 
@@ -15083,7 +15083,7 @@ bool
 
 Description
 -----------
-Returns always false because rootresult has done the work.
+Returns always False because RootResult has done the work.
 ") Sort;
 		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -15119,7 +15119,7 @@ None
 
 Description
 -----------
-Creates a selectsignature with its signature and its text to match. <exact> if true requires exact match, if false requires <signtext> to be contained in the signature of the entity (default is 'exact').
+Creates a SelectSignature with its Signature and its Text to Match. <exact> if True requires exact match, if False requires <signtext> to be contained in the Signature of the entity (default is 'exact').
 ") IFSelect_SelectSignature;
 		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_Signature> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True);
 
@@ -15139,7 +15139,7 @@ None
 
 Description
 -----------
-As above with an asciistring.
+As above with an AsciiString.
 ") IFSelect_SelectSignature;
 		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_Signature> & matcher, TCollection_AsciiString signtext, const Standard_Boolean exact = Standard_True);
 
@@ -15159,7 +15159,7 @@ None
 
 Description
 -----------
-Creates a selectsignature with a counter, more precisely a selectsignature. which is used here to just give a signature value (by signonly mode) matching is the default provided by the class signature.
+Creates a SelectSignature with a Counter, more precisely a SelectSignature. Which is used here to just give a Signature Value (by SignOnly Mode) Matching is the default provided by the class Signature.
 ") IFSelect_SelectSignature;
 		 IFSelect_SelectSignature(const opencascade::handle<IFSelect_SignCounter> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True);
 
@@ -15172,7 +15172,7 @@ opencascade::handle<IFSelect_SignCounter>
 
 Description
 -----------
-Returns the used signcounter. can be used as alternative for signature.
+Returns the used SignCounter. Can be used as alternative for Signature.
 ") Counter;
 		opencascade::handle<IFSelect_SignCounter> Counter();
 
@@ -15185,7 +15185,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium. (it refers to the text and exact flag to be matched, and is qualified by the name provided by the signature).
+Returns a text defining the criterium. (it refers to the text and exact flag to be matched, and is qualified by the Name provided by the Signature).
 ") ExtractLabel;
 		TCollection_AsciiString ExtractLabel();
 
@@ -15198,7 +15198,7 @@ bool
 
 Description
 -----------
-Returns true if match must be exact.
+Returns True if match must be exact.
 ") IsExact;
 		Standard_Boolean IsExact();
 
@@ -15211,7 +15211,7 @@ opencascade::handle<IFSelect_Signature>
 
 Description
 -----------
-Returns the used signature, then it is possible to access it, modify it as required. can be null, hence see counter.
+Returns the used Signature, then it is possible to access it, modify it as required. Can be null, hence see Counter.
 ") Signature;
 		opencascade::handle<IFSelect_Signature> Signature();
 
@@ -15224,7 +15224,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns text used to sort entity on its signature or signcounter.
+Returns Text used to Sort Entity on its Signature or SignCounter.
 ") SignatureText;
 		const TCollection_AsciiString & SignatureText();
 
@@ -15264,7 +15264,7 @@ bool
 
 Description
 -----------
-Returns true for an entity (model->value(num)) of which the signature matches the text given as creation time may also work with a counter from the graph.
+Returns True for an Entity (model->Value(num)) of which the signature matches the text given as creation time May also work with a Counter from the Graph.
 ") SortInGraph;
 		virtual Standard_Boolean SortInGraph(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G);
 
@@ -15301,7 +15301,7 @@ None
 
 Description
 -----------
-Creates a selectsignedshared, defaulted for any level with a given signature and text to match.
+Creates a SelectSignedShared, defaulted for any level with a given Signature and text to match.
 ") IFSelect_SelectSignedShared;
 		 IFSelect_SelectSignedShared(const opencascade::handle<IFSelect_Signature> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True, const Standard_Integer level = 0);
 
@@ -15322,7 +15322,7 @@ bool
 
 Description
 -----------
-Explores an entity: its shared entities <ent> to take if it matches the signature at level max, filters the result. else gives all shareds.
+Explores an entity: its Shared entities <ent> to take if it matches the Signature At level max, filters the result. Else gives all Shareds.
 ") Explore;
 		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
@@ -15335,7 +15335,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium. (it refers to the text and exact flag to be matched, and is qualified by the name provided by the signature).
+Returns a text defining the criterium. (it refers to the text and exact flag to be matched, and is qualified by the Name provided by the Signature).
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel();
 
@@ -15348,7 +15348,7 @@ bool
 
 Description
 -----------
-Returns true if match must be exact.
+Returns True if match must be exact.
 ") IsExact;
 		Standard_Boolean IsExact();
 
@@ -15361,7 +15361,7 @@ opencascade::handle<IFSelect_Signature>
 
 Description
 -----------
-Returns the used signature, then it is possible to access it, modify it as required.
+Returns the used Signature, then it is possible to access it, modify it as required.
 ") Signature;
 		opencascade::handle<IFSelect_Signature> Signature();
 
@@ -15374,7 +15374,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns text used to sort entity on its signature.
+Returns Text used to Sort Entity on its Signature.
 ") SignatureText;
 		const TCollection_AsciiString & SignatureText();
 
@@ -15411,7 +15411,7 @@ None
 
 Description
 -----------
-Creates a selectsignedsharing, defaulted for any level with a given signature and text to match.
+Creates a SelectSignedSharing, defaulted for any level with a given Signature and text to match.
 ") IFSelect_SelectSignedSharing;
 		 IFSelect_SelectSignedSharing(const opencascade::handle<IFSelect_Signature> & matcher, Standard_CString signtext, const Standard_Boolean exact = Standard_True, const Standard_Integer level = 0);
 
@@ -15432,7 +15432,7 @@ bool
 
 Description
 -----------
-Explores an entity: its sharing entities <ent> to take if it matches the signature at level max, filters the result. else gives all sharings.
+Explores an entity: its sharing entities <ent> to take if it matches the Signature At level max, filters the result. Else gives all sharings.
 ") Explore;
 		Standard_Boolean Explore(const Standard_Integer level, const opencascade::handle<Standard_Transient> & ent, const Interface_Graph & G, Interface_EntityIterator & explored);
 
@@ -15445,7 +15445,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium. (it refers to the text and exact flag to be matched, and is qualified by the name provided by the signature).
+Returns a text defining the criterium. (it refers to the text and exact flag to be matched, and is qualified by the Name provided by the Signature).
 ") ExploreLabel;
 		TCollection_AsciiString ExploreLabel();
 
@@ -15458,7 +15458,7 @@ bool
 
 Description
 -----------
-Returns true if match must be exact.
+Returns True if match must be exact.
 ") IsExact;
 		Standard_Boolean IsExact();
 
@@ -15471,7 +15471,7 @@ opencascade::handle<IFSelect_Signature>
 
 Description
 -----------
-Returns the used signature, then it is possible to access it, modify it as required.
+Returns the used Signature, then it is possible to access it, modify it as required.
 ") Signature;
 		opencascade::handle<IFSelect_Signature> Signature();
 
@@ -15484,7 +15484,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns text used to sort entity on its signature.
+Returns Text used to Sort Entity on its Signature.
 ") SignatureText;
 		const TCollection_AsciiString & SignatureText();
 
@@ -15513,7 +15513,7 @@ None
 
 Description
 -----------
-Creates a selectunknownentities.
+Creates a SelectUnknownEntities.
 ") IFSelect_SelectUnknownEntities;
 		 IFSelect_SelectUnknownEntities();
 
@@ -15526,7 +15526,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium: 'recognized entities'.
+Returns a text defining the criterium: 'Recognized Entities'.
 ") ExtractLabel;
 		TCollection_AsciiString ExtractLabel();
 
@@ -15546,7 +15546,7 @@ bool
 
 Description
 -----------
-Returns true for an entity which is qualified as 'unknown', i.e. if <model> known <ent> (through its number) as unknown.
+Returns True for an Entity which is qualified as 'Unknown', i.e. if <model> known <ent> (through its Number) as Unknown.
 ") Sort;
 		Standard_Boolean Sort(const Standard_Integer rank, const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Interface_InterfaceModel> & model);
 
@@ -15575,7 +15575,7 @@ None
 
 Description
 -----------
-Creates a selectincorrectentities i.e. a selectflag('incorrect').
+Creates a SelectIncorrectEntities i.e. a SelectFlag('Incorrect').
 ") IFSelect_SelectIncorrectEntities;
 		 IFSelect_SelectIncorrectEntities();
 
@@ -15604,7 +15604,7 @@ None
 
 Description
 -----------
-Creates a selecttype. default is no filter.
+Creates a SelectType. Default is no filter.
 ") IFSelect_SelectType;
 		 IFSelect_SelectType();
 
@@ -15622,7 +15622,7 @@ None
 
 Description
 -----------
-Creates a selecttype for a given type.
+Creates a SelectType for a given Type.
 ") IFSelect_SelectType;
 		 IFSelect_SelectType(const opencascade::handle<Standard_Type> & atype);
 
@@ -15635,7 +15635,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a text defining the criterium. (should by gotten from type of entity used for instantiation).
+Returns a text defining the criterium. (should by gotten from Type of Entity used for instantiation).
 ") ExtractLabel;
 		TCollection_AsciiString ExtractLabel();
 
@@ -15653,7 +15653,7 @@ None
 
 Description
 -----------
-Sets a type for filter.
+Sets a TYpe for filter.
 ") SetType;
 		void SetType(const opencascade::handle<Standard_Type> & atype);
 
@@ -15666,7 +15666,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type to be matched for select: this is the type given at instantiation time.
+Returns the Type to be matched for select: this is the type given at instantiation time.
 ") TypeForMatch;
 		opencascade::handle<Standard_Type> TypeForMatch();
 

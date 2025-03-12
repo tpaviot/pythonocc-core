@@ -136,7 +136,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a new shape with all surfaces, curves and pcurves which type is bspline/bezier or based on them converted having degree less than <maxdegree> or number of spans less than <nbmaxsegment> in dependence on parameter priority <degree>. <gmaxdegree> and <gmaxsegments> are maximum possible degree and number of spans correspondingly. these values will be used in those cases when approximation with specified parameters is impossible and one of gmaxdegree or gmaxsegments is selected in dependence on priority. note that even if approximation is impossible with <gmaxdegree> then number of spans can exceed specified <gmaxsegment> <rational> specifies if to convert rational bspline/bezier into polynomial b-spline. if flags convoffsurf,convoffcurve3d,convoffcurve2d are standard_true there are means that offset surfaces , offset curves 3d and offset curves 2d are converted to bspline correspondingly.
+Returns a new shape with all surfaces, curves and pcurves which type is BSpline/Bezier or based on them converted having Degree less than <MaxDegree> or number of spans less than <NbMaxSegment> in dependence on parameter priority <Degree>. <GmaxDegree> and <GMaxSegments> are maximum possible degree and number of spans correspondingly. These values will be used in those cases when approximation with specified parameters is impossible and one of GmaxDegree or GMaxSegments is selected in dependence on priority. Note that even if approximation is impossible with <GMaxDegree> then number of spans can exceed specified <GMaxSegment> <Rational> specifies if to convert Rational BSpline/Bezier into polynomial B-Spline. If flags ConvOffSurf,ConvOffCurve3d,ConvOffCurve2d are Standard_True there are means that Offset surfaces , Offset curves 3d and Offset curves 2d are converted to BSPline correspondingly.
 ") BSplineRestriction;
 		static TopoDS_Shape BSplineRestriction(const TopoDS_Shape & S, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer MaxDegree, const Standard_Integer MaxNbSegment, const GeomAbs_Shape Continuity3d, const GeomAbs_Shape Continuity2d, const Standard_Boolean Degree, const Standard_Boolean Rational, const opencascade::handle<ShapeCustom_RestrictionParameters> & aParameters);
 
@@ -158,7 +158,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a new shape with all surfaces of linear extrusion, revolution, offset, and planar surfaces converted according to flags to geom_bsplinesurface (with same parameterisation).
+Returns a new shape with all surfaces of linear extrusion, revolution, offset, and planar surfaces converted according to flags to Geom_BSplineSurface (with same parameterisation).
 ") ConvertToBSpline;
 		static TopoDS_Shape ConvertToBSpline(const TopoDS_Shape & S, const Standard_Boolean extrMode, const Standard_Boolean revolMode, const Standard_Boolean offsetMode, const Standard_Boolean planeMode = Standard_False);
 
@@ -176,7 +176,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a new shape with all elementary periodic surfaces converted to geom_surfaceofrevolution.
+Returns a new shape with all elementary periodic surfaces converted to Geom_SurfaceOfRevolution.
 ") ConvertToRevolution;
 		static TopoDS_Shape ConvertToRevolution(const TopoDS_Shape & S);
 
@@ -299,7 +299,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Tries to convert the curve to the periodic form returns the resulting curve works only if the curve is bspline and is closed with precision::confusion() else, or in case of failure, returns a null handle.
+Tries to convert the Curve to the Periodic form Returns the resulting curve Works only if the Curve is BSpline and is closed with Precision::Confusion() Else, or in case of failure, returns a Null Handle.
 ") ConvertToPeriodic;
 		opencascade::handle<Geom_Curve> ConvertToPeriodic(const Standard_Boolean substitute, const Standard_Real preci = -1);
 
@@ -354,7 +354,7 @@ theDeviation: float
 
 Description
 -----------
-Try to convert bspline2d or bezier2d to line 2d only if it is linear. recalculate first and last parameters. returns line2d or null curve2d.
+Try to convert BSpline2d or Bezier2d to line 2d only if it is linear. Recalculate first and last parameters. Returns line2d or null curve2d.
 ") ConvertToLine2d;
 		static opencascade::handle<Geom2d_Line> ConvertToLine2d(const opencascade::handle<Geom2d_Curve> & theCurve, const Standard_Real theFirstIn, const Standard_Real theLastIn, const Standard_Real theTolerance, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -373,7 +373,7 @@ theDeviation: float
 
 Description
 -----------
-Check if poleses is in the plane with given precision returns false if no.
+Check if poleses is in the plane with given precision Returns false if no.
 ") IsLinear;
 		static Standard_Boolean IsLinear(const TColgp_Array1OfPnt2d & thePoles, const Standard_Real theTolerance, Standard_Real &OutValue);
 
@@ -392,7 +392,7 @@ bool
 
 Description
 -----------
-Try to remove knots from bspline where local derivatives are the same. remove knots with given precision. returns false if bsplien was not modified.
+Try to remove knots from bspline where local derivatives are the same. Remove knots with given precision. Returns false if Bsplien was not modified.
 ") SimplifyBSpline2d;
 		static Standard_Boolean SimplifyBSpline2d(opencascade::handle<Geom2d_BSplineCurve> & theBSpline2d, const Standard_Real theTolerance);
 
@@ -440,7 +440,7 @@ None
 
 Description
 -----------
-Sends a message to be attached to the shape. calls corresponding message of message registrator.
+Sends a message to be attached to the shape. Calls corresponding message of message registrator.
 ") SendMsg;
 		void SendMsg(const TopoDS_Shape & shape, const Message_Msg & message, const Message_Gravity gravity = Message_Info);
 
@@ -761,7 +761,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Tries to convert the surface to an analytic form returns the result works only if the surface is bspline or bezier. else, or in case of failure, returns a null handle //! if <substitute> is true, the new surface replaces the actual one in <self> //! it works by analysing the case which can apply, creating the corresponding analytic surface, then checking coincidence warning: parameter laws are not kept, hence pcurves should be redone.
+Tries to convert the Surface to an Analytic form Returns the result Works only if the Surface is BSpline or Bezier. Else, or in case of failure, returns a Null Handle //! If <substitute> is True, the new surface replaces the actual one in <self> //! It works by analysing the case which can apply, creating the corresponding analytic surface, then checking coincidence Warning: Parameter laws are not kept, hence PCurves should be redone.
 ") ConvertToAnalytical;
 		opencascade::handle<Geom_Surface> ConvertToAnalytical(const Standard_Real tol, const Standard_Boolean substitute);
 
@@ -780,7 +780,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Tries to convert the surface to the periodic form returns the resulting surface works only if the surface is bspline and is closed with precision::confusion() else, or in case of failure, returns a null handle.
+Tries to convert the Surface to the Periodic form Returns the resulting surface Works only if the Surface is BSpline and is closed with Precision::Confusion() Else, or in case of failure, returns a Null Handle.
 ") ConvertToPeriodic;
 		opencascade::handle<Geom_Surface> ConvertToPeriodic(const Standard_Boolean substitute, const Standard_Real preci = -1);
 
@@ -793,7 +793,7 @@ float
 
 Description
 -----------
-Returns maximal deviation of converted surface from the original one computed by last call to converttoanalytical.
+Returns maximal deviation of converted surface from the original one computed by last call to ConvertToAnalytical.
 ") Gap;
 		Standard_Real Gap();
 
@@ -863,7 +863,7 @@ Tol: float
 
 Description
 -----------
-Calls inherited method. sets <tol> as actual tolerance of <e> multiplied with scale factor.
+Calls inherited method. Sets <Tol> as actual tolerance of <E> multiplied with scale factor.
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
@@ -885,7 +885,7 @@ Tol: float
 
 Description
 -----------
-Calls inherited method. sets <tol> as actual tolerance of <e> multiplied with scale factor.
+Calls inherited method. Sets <Tol> as actual tolerance of <E> multiplied with scale factor.
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
@@ -905,7 +905,7 @@ Tol: float
 
 Description
 -----------
-Calls inherited method. sets <tol> as actual tolerance of <v> multiplied with scale factor.
+Calls inherited method. Sets <Tol> as actual tolerance of <V> multiplied with scale factor.
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -924,7 +924,7 @@ Tol: float
 
 Description
 -----------
-Calls inherited method. sets <tol> as actual tolerance of <v> multiplied with scale factor.
+Calls inherited method. Sets <Tol> as actual tolerance of <V> multiplied with scale factor.
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
@@ -946,7 +946,7 @@ RevFace: bool
 
 Description
 -----------
-Calls inherited method. sets <tol> as actual tolerance of <f> multiplied with scale factor.
+Calls inherited method. Sets <Tol> as actual tolerance of <F> multiplied with scale factor.
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -1001,7 +1001,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the new edge created from <e>. <newf1> (resp. <newf2>) is the new face created from <f1> (resp. <f2>).
+Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
@@ -1021,7 +1021,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has been modified. in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <c>, <l>, <tol> are not significant.
+Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
@@ -1043,7 +1043,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. //! otherwise, returns standard_false, and <c>, <l>, <tol> are not significant. //! <newe> is the new edge created from <e>. <newf> is the new face created from <f>. they may be useful.
+Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be useful.
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
@@ -1063,7 +1063,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has a new parameter on the edge <e>. in this case, <p> is the parameter, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1082,7 +1082,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has been modified. in this case, <p> is the new geometric support of the vertex, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
@@ -1104,7 +1104,7 @@ RevFace: bool
 
 Description
 -----------
-Returns standard_true if the face <f> has been modified. in this case, <s> is the new geometric support of the face, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <s>, <l>, <tol> are not significant.
+Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <S>, <L>, <Tol> are not significant.
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -1122,7 +1122,7 @@ None
 
 Description
 -----------
-Sets mode for conversion of surfaces of linear extrusion.
+Sets mode for conversion of Surfaces of Linear extrusion.
 ") SetExtrusionMode;
 		void SetExtrusionMode(const Standard_Boolean extrMode);
 
@@ -1140,7 +1140,7 @@ None
 
 Description
 -----------
-Sets mode for conversion of offset surfaces.
+Sets mode for conversion of Offset surfaces.
 ") SetOffsetMode;
 		void SetOffsetMode(const Standard_Boolean offsetMode);
 
@@ -1158,7 +1158,7 @@ None
 
 Description
 -----------
-Sets mode for conversion of plane surfaces.
+Sets mode for conversion of Plane surfaces.
 ") SetPlaneMode;
 		void SetPlaneMode(const Standard_Boolean planeMode);
 
@@ -1176,7 +1176,7 @@ None
 
 Description
 -----------
-Sets mode for conversion of surfaces of revolution.
+Sets mode for conversion of Surfaces of Revolution.
 ") SetRevolutionMode;
 		void SetRevolutionMode(const Standard_Boolean revolMode);
 
@@ -1231,7 +1231,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the new edge created from <e>. <newf1> (resp. <newf2>) is the new face created from <f1> (resp. <f2>).
+Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
@@ -1251,7 +1251,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has been modified. in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <c>, <l>, <tol> are not significant.
+Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
@@ -1273,7 +1273,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. //! otherwise, returns standard_false, and <c>, <l>, <tol> are not significant. //! <newe> is the new edge created from <e>. <newf> is the new face created from <f>. they may be useful.
+Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be useful.
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
@@ -1293,7 +1293,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has a new parameter on the edge <e>. in this case, <p> is the parameter, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1312,7 +1312,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has been modified. in this case, <p> is the new geometric support of the vertex, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
@@ -1334,7 +1334,7 @@ RevFace: bool
 
 Description
 -----------
-Returns standard_true if the face <f> has been modified. in this case, <s> is the new geometric support of the face, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <s>, <l>, <tol> are not significant.
+Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <S>, <L>, <Tol> are not significant.
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 

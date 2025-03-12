@@ -117,7 +117,7 @@ None
 
 Description
 -----------
-Load a face. //! the tolerance <tol> is used to determine if the first point of the segment is near the face. in that case, the parameter of the intersection point on the line can be a negative value (greater than -tol). if arestr = true uv bounding box of face is used to restrict it's underlined surface, otherwise surface is not restricted. if usebtoler = false then the 2d-point of intersection is classified with null-tolerance (relative to face); otherwise it's using maximum between input tolerance(atol) and tolerances of face bounds (edges).
+Load a Face. //! The Tolerance <Tol> is used to determine if the first point of the segment is near the face. In that case, the parameter of the intersection point on the line can be a negative value (greater than -Tol). If aRestr = true UV bounding box of face is used to restrict it's underlined surface, otherwise surface is not restricted. If UseBToler = false then the 2d-point of intersection is classified with null-tolerance (relative to face); otherwise it's using maximum between input tolerance(aTol) and tolerances of face bounds (edges).
 ") IntCurvesFace_Intersector;
 		 IntCurvesFace_Intersector(const TopoDS_Face & F, const Standard_Real aTol, const Standard_Boolean aRestr = Standard_True, const Standard_Boolean UseBToler = Standard_True);
 
@@ -200,7 +200,7 @@ bool
 
 Description
 -----------
-Returns true if curve is parallel or belongs face surface this case is recognized only for some pairs of analytical curves and surfaces (plane - line, ...).
+Returns true if curve is parallel or belongs face surface This case is recognized only for some pairs of analytical curves and surfaces (plane - line, ...).
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -233,7 +233,7 @@ None
 
 Description
 -----------
-Perform the intersection between the segment l and the loaded face. //! pinf is the smallest parameter on the line psup is the highest parameter on the line //! for an infinite line pinf and psup can be +/- reallast.
+Perform the intersection between the segment L and the loaded face. //! PInf is the smallest parameter on the line PSup is the highest parameter on the line //! For an infinite line PInf and PSup can be +/- RealLast.
 ") Perform;
 		void Perform(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
 
@@ -253,7 +253,7 @@ None
 
 Description
 -----------
-Same method for a hcurve from adaptor3d. pinf an psup can also be - and + inf.
+same method for a HCurve from Adaptor3d. PInf an PSup can also be - and + INF.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & HCu, const Standard_Real PInf, const Standard_Real PSup);
 
@@ -307,7 +307,7 @@ TopAbs_State
 
 Description
 -----------
-Returns the ith state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boundary of the face).
+Returns the ith state of the point on the face. The values can be either TopAbs_IN ( the point is in the face) or TopAbs_ON ( the point is on a boundary of the face).
 ") State;
 		TopAbs_State State(const Standard_Integer I);
 
@@ -356,7 +356,7 @@ float
 
 Description
 -----------
-Returns the u parameter of the ith intersection point on the surface.
+Returns the U parameter of the ith intersection point on the surface.
 ") UParameter;
 		Standard_Real UParameter(const Standard_Integer I);
 
@@ -374,7 +374,7 @@ float
 
 Description
 -----------
-Returns the v parameter of the ith intersection point on the surface.
+Returns the V parameter of the ith intersection point on the surface.
 ") VParameter;
 		Standard_Real VParameter(const Standard_Integer I);
 
@@ -504,7 +504,7 @@ None
 
 Description
 -----------
-Perform the intersection between the segment l and the loaded shape. //! pinf is the smallest parameter on the line psup is the highest parameter on the line //! for an infinite line pinf and psup can be +/- reallast.
+Perform the intersection between the segment L and the loaded shape. //! PInf is the smallest parameter on the line PSup is the highest parameter on the line //! For an infinite line PInf and PSup can be +/- RealLast.
 ") Perform;
 		void Perform(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
 
@@ -524,7 +524,7 @@ None
 
 Description
 -----------
-Same method for a hcurve from adaptor3d. pinf an psup can also be -inf and +inf.
+same method for a HCurve from Adaptor3d. PInf an PSup can also be -INF and +INF.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_Curve> & HCu, const Standard_Real PInf, const Standard_Real PSup);
 
@@ -544,7 +544,7 @@ None
 
 Description
 -----------
-Perform the intersection between the segment l and the loaded shape. //! pinf is the smallest parameter on the line psup is the highest parameter on the line //! for an infinite line pinf and psup can be +/- reallast.
+Perform the intersection between the segment L and the loaded shape. //! PInf is the smallest parameter on the line PSup is the highest parameter on the line //! For an infinite line PInf and PSup can be +/- RealLast.
 ") PerformNearest;
 		void PerformNearest(const gp_Lin & L, const Standard_Real PInf, const Standard_Real PSup);
 
@@ -575,7 +575,7 @@ None
 
 Description
 -----------
-Internal method. sort the result on the curve parameter.
+Internal method. Sort the result on the Curve parameter.
 ") SortResult;
 		void SortResult();
 
@@ -593,7 +593,7 @@ TopAbs_State
 
 Description
 -----------
-Returns the ith state of the point on the face. the values can be either topabs_in ( the point is in the face) or topabs_on ( the point is on a boundary of the face).
+Returns the ith state of the point on the face. The values can be either TopAbs_IN ( the point is in the face) or TopAbs_ON ( the point is on a boundary of the face).
 ") State;
 		TopAbs_State State(const Standard_Integer I);
 
@@ -629,7 +629,7 @@ float
 
 Description
 -----------
-Returns the u parameter of the ith intersection point on the surface.
+Returns the U parameter of the ith intersection point on the surface.
 ") UParameter;
 		Standard_Real UParameter(const Standard_Integer I);
 
@@ -647,7 +647,7 @@ float
 
 Description
 -----------
-Returns the v parameter of the ith intersection point on the surface.
+Returns the V parameter of the ith intersection point on the surface.
 ") VParameter;
 		Standard_Real VParameter(const Standard_Integer I);
 

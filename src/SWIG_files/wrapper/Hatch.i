@@ -128,7 +128,7 @@ None
 
 Description
 -----------
-Returns a empty hatcher. <tol> is the tolerance for intersections.
+Returns a empty hatcher. <Tol> is the tolerance for intersections.
 ") Hatch_Hatcher;
 		 Hatch_Hatcher(const Standard_Real Tol, const Standard_Boolean Oriented = Standard_True);
 
@@ -147,7 +147,7 @@ None
 
 Description
 -----------
-Add a line <l> to be trimmed. <t> the type is only kept from information. it is not used in the computation.
+Add a line <L> to be trimmed. <T> the type is only kept from information. It is not used in the computation.
 ") AddLine;
 		void AddLine(const gp_Lin2d & L, const Hatch_LineForm T = Hatch_ANYLINE);
 
@@ -166,7 +166,7 @@ None
 
 Description
 -----------
-Add an infinite line on direction <d> at distance <dist> from the origin to be trimmed. <dist> may be negative. //! if o is the origin of the 2d plane, and v the vector perpendicular to d (in the direct direction). //! a point p is on the line if: op dot v = dist the parameter of p on the line is op dot d.
+Add an infinite line on direction <D> at distance <Dist> from the origin to be trimmed. <Dist> may be negative. //! If O is the origin of the 2D plane, and V the vector perpendicular to D (in the direct direction). //! A point P is on the line if: OP dot V = Dist The parameter of P on the line is OP dot D.
 ") AddLine;
 		void AddLine(const gp_Dir2d & D, const Standard_Real Dist);
 
@@ -184,7 +184,7 @@ None
 
 Description
 -----------
-Add an infinite line parallel to the y-axis at abciss <x>.
+Add an infinite line parallel to the Y-axis at abciss <X>.
 ") AddXLine;
 		void AddXLine(const Standard_Real X);
 
@@ -202,7 +202,7 @@ None
 
 Description
 -----------
-Add an infinite line parallel to the x-axis at ordinate <y>.
+Add an infinite line parallel to the X-axis at ordinate <Y>.
 ") AddYLine;
 		void AddYLine(const Standard_Real Y);
 
@@ -220,7 +220,7 @@ float
 
 Description
 -----------
-Returns the x or y coordinate of the line of index <i> if it is a x or a y line.
+Returns the X or Y coordinate of the line of index <I> if it is a X or a Y line.
 ") Coordinate;
 		Standard_Real Coordinate(const Standard_Integer I);
 
@@ -239,7 +239,7 @@ float
 
 Description
 -----------
-Returns the last parameter of interval <j> on line <i>.
+Returns the last parameter of interval <J> on line <I>.
 ") End;
 		Standard_Real End(const Standard_Integer I, const Standard_Integer J);
 
@@ -259,7 +259,7 @@ Par2: float
 
 Description
 -----------
-Returns the last index and par2 of interval <j> on line <i>.
+Returns the last Index and Par2 of interval <J> on line <I>.
 ") EndIndex;
 		void EndIndex(const Standard_Integer I, const Standard_Integer J, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -277,7 +277,7 @@ bool
 
 Description
 -----------
-Returns true if the line of index <i> has a constant x value.
+Returns True if the line of index <I> has a constant X value.
 ") IsXLine;
 		Standard_Boolean IsXLine(const Standard_Integer I);
 
@@ -295,7 +295,7 @@ bool
 
 Description
 -----------
-Returns true if the line of index <i> has a constant y value.
+Returns True if the line of index <I> has a constant Y value.
 ") IsYLine;
 		Standard_Boolean IsYLine(const Standard_Integer I);
 
@@ -313,7 +313,7 @@ gp_Lin2d
 
 Description
 -----------
-Returns the line of index <i>.
+Returns the line of index <I>.
 ") Line;
 		const gp_Lin2d Line(const Standard_Integer I);
 
@@ -331,7 +331,7 @@ Hatch_LineForm
 
 Description
 -----------
-Returns the type of the line of index <i>.
+Returns the type of the line of index <I>.
 ") LineForm;
 		Hatch_LineForm LineForm(const Standard_Integer I);
 
@@ -362,7 +362,7 @@ int
 
 Description
 -----------
-Returns the number of intervals on line of index <i>.
+Returns the number of intervals on line of index <I>.
 ") NbIntervals;
 		Standard_Integer NbIntervals(const Standard_Integer I);
 
@@ -394,7 +394,7 @@ float
 
 Description
 -----------
-Returns the first parameter of interval <j> on line <i>.
+Returns the first parameter of interval <J> on line <I>.
 ") Start;
 		Standard_Real Start(const Standard_Integer I, const Standard_Integer J);
 
@@ -414,7 +414,7 @@ Par2: float
 
 Description
 -----------
-Returns the first index and par2 of interval <j> on line <i>.
+Returns the first Index and Par2 of interval <J> on line <I>.
 ") StartIndex;
 		void StartIndex(const Standard_Integer I, const Standard_Integer J, Standard_Integer &OutValue, Standard_Real &OutValue);
 
@@ -464,7 +464,7 @@ None
 
 Description
 -----------
-Trims the lines at intersections with <l>.
+Trims the lines at intersections with <L>.
 ") Trim;
 		void Trim(const gp_Lin2d & L, const Standard_Integer Index = 0);
 
@@ -485,7 +485,7 @@ None
 
 Description
 -----------
-Trims the lines at intersections with <l> in the parameter range <start>, <end>.
+Trims the lines at intersections with <L> in the parameter range <Start>, <End>.
 ") Trim;
 		void Trim(const gp_Lin2d & L, const Standard_Real Start, const Standard_Real End, const Standard_Integer Index = 0);
 
@@ -505,7 +505,7 @@ None
 
 Description
 -----------
-Trims the line at intersection with the oriented segment p1,p2.
+Trims the line at intersection with the oriented segment P1,P2.
 ") Trim;
 		void Trim(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Integer Index = 0);
 

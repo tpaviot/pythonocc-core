@@ -312,7 +312,7 @@ float
 
 Description
 -----------
-Returns somme des fi*fi.
+returns somme des fi*fi.
 ") Root;
 		Standard_Real Root();
 
@@ -386,7 +386,7 @@ None
 
 Description
 -----------
-Compute the solution point with the close point.
+compute the solution point with the close point.
 ") IntWalk_TheInt2S;
 		 IntWalk_TheInt2S(const TColStd_Array1OfReal & Param, const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real TolTangency);
 
@@ -406,7 +406,7 @@ None
 
 Description
 -----------
-Initialize the parameters to compute the solution point it 's possible to write to optimize: intimp_int2s inter(s1,s2,func,toltangency); math_functionsetroot rsnld(inter.function()); while ...{ param(1)=... param(2)=... param(3)=... inter.perform(param,rsnld); }.
+initialize the parameters to compute the solution point it 's possible to write to optimize: IntImp_Int2S inter(S1,S2,Func,TolTangency); math_FunctionSetRoot rsnld(inter.Function()); while ...{ Param(1)=... Param(2)=... param(3)=... inter.Perform(Param,rsnld); }.
 ") IntWalk_TheInt2S;
 		 IntWalk_TheInt2S(const opencascade::handle<Adaptor3d_Surface> & S1, const opencascade::handle<Adaptor3d_Surface> & S2, const Standard_Real TolTangency);
 
@@ -419,7 +419,7 @@ IntSurf_PntOn2S
 
 Description
 -----------
-Return the intersection point which is enable for changing.
+return the intersection point which is enable for changing.
 ") ChangePoint;
 		IntSurf_PntOn2S & ChangePoint();
 
@@ -471,7 +471,7 @@ IntWalk_TheFunctionOfTheInt2S
 
 Description
 -----------
-Return the math function which is used to compute the intersection.
+return the math function which is used to compute the intersection.
 ") Function;
 		IntWalk_TheFunctionOfTheInt2S & Function();
 
@@ -484,7 +484,7 @@ bool
 
 Description
 -----------
-Returns true if the creation completed without failure.
+Returns True if the creation completed without failure.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -497,7 +497,7 @@ bool
 
 Description
 -----------
-Returns true when there is no solution to the problem.
+Returns True when there is no solution to the problem.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -510,7 +510,7 @@ bool
 
 Description
 -----------
-Returns true if the surfaces are tangent at the intersection point.
+Returns True if the surfaces are tangent at the intersection point.
 ") IsTangent;
 		Standard_Boolean IsTangent();
 
@@ -529,7 +529,7 @@ IntImp_ConstIsoparametric
 
 Description
 -----------
-Returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is calculated).
+returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is calculated).
 ") Perform;
 		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld);
 
@@ -549,7 +549,7 @@ IntImp_ConstIsoparametric
 
 Description
 -----------
-Returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is given by choixiso).
+returns the best constant isoparametric to find the next intersection's point +stores the solution point (the solution point is found with the close point to intersect the isoparametric with the other patch; the choice of the isoparametic is given by ChoixIso).
 ") Perform;
 		IntImp_ConstIsoparametric Perform(const TColStd_Array1OfReal & Param, math_FunctionSetRoot & Rsnld, const IntImp_ConstIsoparametric ChoixIso);
 
@@ -580,9 +580,6 @@ Returns the intersection point.
 ****************************/
 class IntWalk_WalkingData {
 	public:
-		float ustart;
-		float vstart;
-		int etat;
 };
 
 

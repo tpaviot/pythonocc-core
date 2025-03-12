@@ -130,7 +130,7 @@ opencascade::handle<MAT_BasicElt>
 
 Description
 -----------
-Returns the basicelts located at the position <index> on the contour designed by <indline>. remark: the basicelts on a contour are sorted.
+Returns the BasicElts located at the position <Index> on the contour designed by <IndLine>. Remark: the BasicElts on a contour are sorted.
 ") BasicElt;
 		opencascade::handle<MAT_BasicElt> BasicElt(const Standard_Integer IndLine, const Standard_Integer Index);
 
@@ -152,7 +152,7 @@ None
 
 Description
 -----------
-Computation of the bisector_locus in a set of lines defined in <anexplo>. the bisecting locus are computed on the side <aside> from the line <lineindex> in <anexplo>.
+Computation of the Bisector_Locus in a set of Lines defined in <anExplo>. The bisecting locus are computed on the side <aSide> from the line <LineIndex> in <anExplo>.
 ") Compute;
 		void Compute(BRepMAT2d_Explorer & anExplo, const Standard_Integer LineIndex = 1, const MAT_Side aSide = MAT_Left, const GeomAbs_JoinType aJoinType = GeomAbs_Arc, const Standard_Boolean IsOpenResult = Standard_False);
 
@@ -170,7 +170,7 @@ Reverse: bool
 
 Description
 -----------
-Returns the geometry of type <bissec> linked to the arc <arc>. <reverse> is false when the firstnode of <anarc> correspond to the first point of geometry.
+Returns the geometry of type <Bissec> linked to the arc <ARC>. <Reverse> is False when the FirstNode of <anArc> correspond to the first point of geometry.
 ") GeomBis;
 		Bisector_Bisec GeomBis(const opencascade::handle<MAT_Arc> & anArc, Standard_Boolean &OutValue);
 
@@ -188,7 +188,7 @@ opencascade::handle<Geom2d_Geometry>
 
 Description
 -----------
-Returns the geometry linked to the <basicelt>.
+Returns the geometry linked to the <BasicElt>.
 ") GeomElt;
 		opencascade::handle<Geom2d_Geometry> GeomElt(const opencascade::handle<MAT_BasicElt> & aBasicElt);
 
@@ -206,7 +206,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the geometry of type <gp> linked to the <node>.
+Returns the geometry of type <gp> linked to the <Node>.
 ") GeomElt;
 		gp_Pnt2d GeomElt(const opencascade::handle<MAT_Node> & aNode);
 
@@ -219,7 +219,7 @@ opencascade::handle<MAT_Graph>
 
 Description
 -----------
-Returns <thegraph> of <self>.
+Returns <theGraph> of <self>.
 ") Graph;
 		opencascade::handle<MAT_Graph> Graph();
 
@@ -232,7 +232,7 @@ bool
 
 Description
 -----------
-Returns true if compute has succeeded.
+Returns True if Compute has succeeded.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -263,7 +263,7 @@ int
 
 Description
 -----------
-Returns the number of basicelts on the line <indline>.
+Returns the number of BasicElts on the line <IndLine>.
 ") NumberOfElts;
 		Standard_Integer NumberOfElts(const Standard_Integer IndLine);
 
@@ -282,7 +282,7 @@ int
 
 Description
 -----------
-Returns the number of sections of a curve. this curve is the indexth curve in the indlineth contour given by anexplo.
+Returns the number of sections of a curve. this curve is the Indexth curve in the IndLineth contour given by anExplo.
 ") NumberOfSections;
 		Standard_Integer NumberOfSections(const Standard_Integer IndLine, const Standard_Integer Index);
 
@@ -389,7 +389,7 @@ None
 
 Description
 -----------
-Initialisation of an iterator on the curves of the contour number <indexcontour>.
+Initialisation of an Iterator on the curves of the Contour number <IndexContour>.
 ") Init;
 		void Init(const Standard_Integer IndexContour);
 
@@ -438,7 +438,7 @@ bool
 
 Description
 -----------
-Return false if there is no more curves on the contour initialised by the method init.
+Return False if there is no more curves on the Contour initialised by the method Init.
 ") More;
 		Standard_Boolean More();
 
@@ -451,7 +451,7 @@ None
 
 Description
 -----------
-Move to the next curve of the current contour.
+Move to the next curve of the current Contour.
 ") Next;
 		void Next();
 
@@ -464,7 +464,7 @@ int
 
 Description
 -----------
-Returns the number of contours.
+Returns the Number of contours.
 ") NumberOfContours;
 		Standard_Integer NumberOfContours();
 
@@ -482,7 +482,7 @@ int
 
 Description
 -----------
-Returns the number of curves in the contour number <indexcontour>.
+Returns the Number of Curves in the Contour number <IndexContour>.
 ") NumberOfCurves;
 		Standard_Integer NumberOfCurves(const Standard_Integer IndexContour);
 
@@ -526,7 +526,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Returns the current curve on the current contour.
+Returns the current curve on the current Contour.
 ") Value;
 		opencascade::handle<Geom2d_Curve> Value();
 
@@ -572,7 +572,7 @@ None
 
 Description
 -----------
-Constructs the links between s and bilo. //! raises if <s> is not a face.
+Constructs the links Between S and BiLo. //! raises if <S> is not a face.
 ") BRepMAT2d_LinkTopoBilo;
 		 BRepMAT2d_LinkTopoBilo(const BRepMAT2d_Explorer & Explo, const BRepMAT2d_BisectingLocus & BiLo);
 
@@ -590,7 +590,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape linked to <abe>.
+Returns the Shape linked to <aBE>.
 ") GeneratingShape;
 		TopoDS_Shape GeneratingShape(const opencascade::handle<MAT_BasicElt> & aBE);
 
@@ -608,7 +608,7 @@ None
 
 Description
 -----------
-Initialise the iterator on <s> <s> is an edge or a vertex of the initial wire or face. raises if <s> is not an edge or a vertex.
+Initialise the Iterator on <S> <S> is an edge or a vertex of the initial wire or face. raises if <S> is not an edge or a vertex.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -621,7 +621,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current basicelt.
+Returns True if there is a current BasicElt.
 ") More;
 		Standard_Boolean More();
 
@@ -634,7 +634,7 @@ None
 
 Description
 -----------
-Proceed to the next basicelt.
+Proceed to the next BasicElt.
 ") Next;
 		void Next();
 
@@ -653,7 +653,7 @@ None
 
 Description
 -----------
-Constructs the links between s and bilo. //! raises if <s> is not a face or a wire.
+Constructs the links Between S and BiLo. //! raises if <S> is not a face or a wire.
 ") Perform;
 		void Perform(const BRepMAT2d_Explorer & Explo, const BRepMAT2d_BisectingLocus & BiLo);
 
@@ -666,7 +666,7 @@ opencascade::handle<MAT_BasicElt>
 
 Description
 -----------
-Returns the current basicelt.
+Returns the current BasicElt.
 ") Value;
 		opencascade::handle<MAT_BasicElt> Value();
 

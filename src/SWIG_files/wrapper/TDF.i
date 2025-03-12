@@ -234,7 +234,7 @@ None
 
 Description
 -----------
-Sets link between guid and progid in hidden datamap.
+Sets link between GUID and ProgID in hidden DataMap.
 ") AddLinkGUIDToProgID;
 		static void AddLinkGUIDToProgID(const Standard_GUID & ID, TCollection_ExtendedString ProgID);
 
@@ -253,7 +253,7 @@ bool
 
 Description
 -----------
-Returns true if there is guid for given <progid> then guid is returned in <id>.
+Returns True if there is GUID for given <ProgID> then GUID is returned in <ID>.
 ") GUIDFromProgID;
 		static Standard_Boolean GUIDFromProgID(TCollection_ExtendedString ProgID, Standard_GUID & ID);
 
@@ -266,7 +266,7 @@ Standard_GUID
 
 Description
 -----------
-Returns id '00000000-0000-0000-0000-000000000000', sometimes used as null id.
+Returns ID '00000000-0000-0000-0000-000000000000', sometimes used as null ID.
 ") LowestID;
 		static const Standard_GUID & LowestID();
 
@@ -285,7 +285,7 @@ bool
 
 Description
 -----------
-Returns true if there is progid for given <id> then progid is returned in <progid>.
+Returns True if there is ProgID for given <ID> then ProgID is returned in <ProgID>.
 ") ProgIDFromGUID;
 		static Standard_Boolean ProgIDFromGUID(const Standard_GUID & ID, TCollection_ExtendedString & ProgID);
 
@@ -298,7 +298,7 @@ Standard_GUID
 
 Description
 -----------
-Returns id 'ffffffff-ffff-ffff-ffff-ffffffffffff'.
+Returns ID 'ffffffff-ffff-ffff-ffff-ffffffffffff'.
 ") UppestID;
 		static const Standard_GUID & UppestID();
 
@@ -331,7 +331,7 @@ None
 
 Description
 -----------
-Adds an attribute <other> to the label of <self>.raises if there is already one of the same guid fhan <other>.
+Adds an Attribute <other> to the label of <self>.Raises if there is already one of the same GUID fhan <other>.
 ") AddAttribute;
 		void AddAttribute(const opencascade::handle<TDF_Attribute> & other);
 
@@ -344,7 +344,7 @@ None
 
 Description
 -----------
-Something to do after adding an attribute to a label.
+Something to do after adding an Attribute to a label.
 ") AfterAddition;
 		virtual void AfterAddition();
 
@@ -357,7 +357,7 @@ None
 
 Description
 -----------
-Something to do after resuming an attribute from a label.
+Something to do after resuming an Attribute from a label.
 ") AfterResume;
 		virtual void AfterResume();
 
@@ -375,7 +375,7 @@ bool
 
 Description
 -----------
-Something to do after creation of an attribute by persistent-transient translation. the returned status says if afterundo has been performed (true) or if this callback must be called once again further (false). if <forceit> is set to true, the method must perform and return true. does nothing by default and returns true.
+Something to do AFTER creation of an attribute by persistent-transient translation. The returned status says if AfterUndo has been performed (true) or if this callback must be called once again further (false). If <forceIt> is set to true, the method MUST perform and return true. Does nothing by default and returns true.
 ") AfterRetrieval;
 		virtual Standard_Boolean AfterRetrieval(const Standard_Boolean forceIt = Standard_False);
 
@@ -394,7 +394,7 @@ bool
 
 Description
 -----------
-Something to do after applying <anattdelta>. the returned status says if afterundo has been performed (true) or if this callback must be called once again further (false). if <forceit> is set to true, the method must perform and return true. does nothing by default and returns true.
+Something to do after applying <anAttDelta>. The returned status says if AfterUndo has been performed (true) or if this callback must be called once again further (false). If <forceIt> is set to true, the method MUST perform and return true. Does nothing by default and returns true.
 ") AfterUndo;
 		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
@@ -407,7 +407,7 @@ None
 
 Description
 -----------
-Backups the attribute. the backuped attribute is flagged 'backuped' and not 'valid'. //! the method does nothing: //! 1) if the attribute transaction number is equal to the current transaction number (the attribute has already been backuped). //! 2) if the attribute is not attached to a label.
+Backups the attribute. The backuped attribute is flagged 'Backuped' and not 'Valid'. //! The method does nothing: //! 1) If the attribute transaction number is equal to the current transaction number (the attribute has already been backuped). //! 2) If the attribute is not attached to a label.
 ") Backup;
 		void Backup();
 
@@ -420,7 +420,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Copies the attribute contents into a new other attribute. it is used by backup().
+Copies the attribute contents into a new other attribute. It is used by Backup().
 ") BackupCopy;
 		virtual opencascade::handle<TDF_Attribute> BackupCopy();
 
@@ -433,7 +433,7 @@ None
 
 Description
 -----------
-A callback. by default does nothing. it is called by tdf_data::committransaction() method.
+A callback. By default does nothing. It is called by TDF_Data::CommitTransaction() method.
 ") BeforeCommitTransaction;
 		virtual void BeforeCommitTransaction();
 
@@ -446,7 +446,7 @@ None
 
 Description
 -----------
-Something to do before forgetting an attribute to a label.
+Something to do before forgetting an Attribute to a label.
 ") BeforeForget;
 		virtual void BeforeForget();
 
@@ -459,7 +459,7 @@ None
 
 Description
 -----------
-Something to do before removing an attribute from a label.
+Something to do before removing an Attribute from a label.
 ") BeforeRemoval;
 		virtual void BeforeRemoval();
 
@@ -478,7 +478,7 @@ bool
 
 Description
 -----------
-Something to do before applying <anattdelta>. the returned status says if afterundo has been performed (true) or if this callback must be called once again further (false). if <forceit> is set to true, the method must perform and return true. does nothing by default and returns true.
+Something to do before applying <anAttDelta>. The returned status says if AfterUndo has been performed (true) or if this callback must be called once again further (false). If <forceIt> is set to true, the method MUST perform and return true. Does nothing by default and returns true.
 ") BeforeUndo;
 		virtual Standard_Boolean BeforeUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
@@ -491,7 +491,7 @@ opencascade::handle<TDF_DeltaOnAddition>
 
 Description
 -----------
-Makes an attributedelta because <self> appeared. the only known use of a redefinition of this method is to return a null handle (no delta).
+Makes an AttributeDelta because <self> appeared. The only known use of a redefinition of this method is to return a null handle (no delta).
 ") DeltaOnAddition;
 		virtual opencascade::handle<TDF_DeltaOnAddition> DeltaOnAddition();
 
@@ -504,7 +504,7 @@ opencascade::handle<TDF_DeltaOnForget>
 
 Description
 -----------
-Makes an attributedelta because <self> has been forgotten.
+Makes an AttributeDelta because <self> has been forgotten.
 ") DeltaOnForget;
 		virtual opencascade::handle<TDF_DeltaOnForget> DeltaOnForget();
 
@@ -522,7 +522,7 @@ opencascade::handle<TDF_DeltaOnModification>
 
 Description
 -----------
-Makes a deltaonmodification between <self> and <anoldattribute.
+Makes a DeltaOnModification between <self> and <anOldAttribute.
 ") DeltaOnModification;
 		virtual opencascade::handle<TDF_DeltaOnModification> DeltaOnModification(const opencascade::handle<TDF_Attribute> & anOldAttribute);
 
@@ -540,7 +540,7 @@ None
 
 Description
 -----------
-Applies a deltaonmodification to <self>.
+Applies a DeltaOnModification to <self>.
 ") DeltaOnModification;
 		virtual void DeltaOnModification(const opencascade::handle<TDF_DeltaOnModification> & aDelta);
 
@@ -553,7 +553,7 @@ opencascade::handle<TDF_DeltaOnRemoval>
 
 Description
 -----------
-Makes a deltaonremoval on <self> because <self> has disappeared from the ds.
+Makes a DeltaOnRemoval on <self> because <self> has disappeared from the DS.
 ") DeltaOnRemoval;
 		virtual opencascade::handle<TDF_DeltaOnRemoval> DeltaOnRemoval();
 
@@ -566,7 +566,7 @@ opencascade::handle<TDF_DeltaOnResume>
 
 Description
 -----------
-Makes an attributedelta because <self> has been resumed.
+Makes an AttributeDelta because <self> has been resumed.
 ") DeltaOnResume;
 		virtual opencascade::handle<TDF_DeltaOnResume> DeltaOnResume();
 
@@ -583,7 +583,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps the minimum information about <self> on <astream>.
+Dumps the minimum information about <self> on <aStream>.
 ") Dump;
 		virtual Standard_OStream & Dump(std::ostream &OutValue);
 
@@ -623,7 +623,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps the attribute content on <astream>, using <amap> like this: if an attribute is not in the map, first put add it to the map and then dump it. use the map rank instead of dumping each attribute field.
+Dumps the attribute content on <aStream>, using <aMap> like this: if an attribute is not in the map, first put add it to the map and then dump it. Use the map rank instead of dumping each attribute field.
 ") ExtendedDump;
 		virtual void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, TDF_AttributeIndexedMap & aMap);
 
@@ -642,7 +642,7 @@ bool
 
 Description
 -----------
-Finds an associated attribute of <self>, according to <anid>. the returned <anattribute> is a valid one. the method returns true if found, false otherwise. a removed attribute cannot be found using this method.
+Finds an associated attribute of <self>, according to <anID>. the returned <anAttribute> is a valid one. The method returns True if found, False otherwise. A removed attribute cannot be found using this method.
 ") FindAttribute;
 		Standard_Boolean FindAttribute(const Standard_GUID & anID, opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -660,7 +660,7 @@ None
 
 Description
 -----------
-Forgets the attribute. <atransaction> is the current transaction in which the forget is done. a forgotten attribute is also flagged not 'valid'. //! a forgotten attribute is invisible. set also the 'valid' status to false. obvioulsy, df cannot empty an attribute (this has a semantic signification), but can remove it from the structure. so, a forgotten attribute is not an empty one, but a soon dead one. //! should be private.
+Forgets the attribute. <aTransaction> is the current transaction in which the forget is done. A forgotten attribute is also flagged not 'Valid'. //! A forgotten attribute is invisible. Set also the 'Valid' status to False. Obviously, DF cannot empty an attribute (this has a semantic signification), but can remove it from the structure. So, a forgotten attribute is NOT an empty one, but a soon DEAD one. //! Should be private.
 ") Forget;
 		void Forget(const Standard_Integer aTransaction);
 
@@ -678,7 +678,7 @@ None
 
 Description
 -----------
-Forgets all the attributes attached to the label of <self>. does it on the sub-labels if <clearchildren> is set to true. of course, this method is compatible with transaction & delta mechanisms. be careful that if <self> will have a null label after this call.
+Forgets all the attributes attached to the label of <self>. Does it on the sub-labels if <clearChildren> is set to true. Of course, this method is compatible with Transaction & Delta mechanisms. Be careful that if <self> will have a null label after this call.
 ") ForgetAllAttributes;
 		void ForgetAllAttributes(const Standard_Boolean clearChildren = Standard_True);
 
@@ -696,7 +696,7 @@ bool
 
 Description
 -----------
-Forgets the attribute of guid <aguid> associated to the label of <self>. be careful that if <self> is the attribute of <guid>, <self> will have a null label after this call. if the attribute doesn't exist returns false. otherwise returns true.
+Forgets the Attribute of GUID <aguid> associated to the label of <self>. Be careful that if <self> is the attribute of <guid>, <self> will have a null label after this call. If the attribute doesn't exist returns False. Otherwise returns True.
 ") ForgetAttribute;
 		Standard_Boolean ForgetAttribute(const Standard_GUID & aguid);
 
@@ -709,7 +709,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") ID;
 		virtual const Standard_GUID & ID();
 
@@ -727,7 +727,7 @@ bool
 
 Description
 -----------
-Returns true if it exists an associated attribute of <self> with <anid> as id.
+Returns true if it exists an associated attribute of <self> with <anID> as ID.
 ") IsAttribute;
 		Standard_Boolean IsAttribute(const Standard_GUID & anID);
 
@@ -740,7 +740,7 @@ bool
 
 Description
 -----------
-Returns true if the attribute backup status is set. this status is set/unset by the backup() method.
+Returns true if the attribute backup status is set. This status is set/unset by the Backup() method.
 ") IsBackuped;
 		Standard_Boolean IsBackuped();
 
@@ -753,7 +753,7 @@ bool
 
 Description
 -----------
-Returns true if the attribute forgotten status is set. //! shortcut methods concerning associated attributes =================================================.
+Returns true if the attribute forgotten status is set. //! ShortCut Methods concerning associated attributes =================================================.
 ") IsForgotten;
 		Standard_Boolean IsForgotten();
 
@@ -792,7 +792,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label to which the attribute is attached. if the label is not included in a df, the label is null. see label. warning if the label is not included in a data framework, it is null. this function should not be redefined inline.
+Returns the label to which the attribute is attached. If the label is not included in a DF, the label is null. See Label. Warning If the label is not included in a data framework, it is null. This function should not be redefined inline.
 ") Label;
 		const TDF_Label Label();
 
@@ -805,7 +805,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty attribute from the good end type. it is used by the copy algorithm.
+Returns an new empty attribute from the good end type. It is used by the copy algorithm.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -824,7 +824,7 @@ None
 
 Description
 -----------
-This method is different from the 'copy' one, because it is used when copying an attribute from a source structure into a target structure. this method may paste the contents of <self> into <intoattribute>. //! the given pasted attribute can be full or empty of its contents. but don't make a new! just set the contents! //! it is possible to use <arelocationtable> to get/set the relocation value of a source attribute.
+This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method may paste the contents of <self> into <intoAttribute>. //! The given pasted attribute can be full or empty of its contents. But don't make a NEW! Just set the contents! //! It is possible to use <aRelocationTable> to get/set the relocation value of a source attribute.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
@@ -842,7 +842,7 @@ None
 
 Description
 -----------
-Adds the first level referenced attributes and labels to <adataset>. //! for this, use the addlabel or addattribute of dataset. //! if there is none, do not implement the method.
+Adds the first level referenced attributes and labels to <aDataSet>. //! For this, use the AddLabel or AddAttribute of DataSet. //! If there is none, do not implement the method.
 ") References;
 		virtual void References(const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -860,7 +860,7 @@ None
 
 Description
 -----------
-Restores the backuped contents from <anattribute> into this one. it is used when aborting a transaction.
+Restores the backuped contents from <anAttribute> into this one. It is used when aborting a transaction.
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -878,7 +878,7 @@ None
 
 Description
 -----------
-Sets specific id of the attribute (supports several attributes of one type at the same label feature).
+Sets specific ID of the attribute (supports several attributes of one type at the same label feature).
 ") SetID;
 		virtual void SetID(const Standard_GUID &);
 
@@ -891,7 +891,7 @@ None
 
 Description
 -----------
-Sets default id defined in nested class (to be used for attributes having user id feature).
+Sets default ID defined in nested class (to be used for attributes having User ID feature).
 ") SetID;
 		virtual void SetID();
 
@@ -917,7 +917,7 @@ int
 
 Description
 -----------
-Returns the upper transaction index until which the attribute is/was valid. this number may vary. a removed attribute validity range is reduced to its transaction index.
+Returns the upper transaction index until which the attribute is/was valid. This number may vary. A removed attribute validity range is reduced to its transaction index.
 ") UntilTransaction;
 		Standard_Integer UntilTransaction();
 
@@ -1011,7 +1011,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute concerned by <self>.
+Returns the ID of the attribute concerned by <self>.
 ") ID;
 		Standard_GUID ID();
 
@@ -1149,7 +1149,7 @@ TDF_Attribute *
 
 Description
 -----------
-Provides an access to the internal pointer of the current attribute. the method has better performance as not-creating handle.
+Provides an access to the internal pointer of the current attribute. The method has better performance as not-creating handle.
 ") PtrValue;
 		const TDF_Attribute * PtrValue();
 
@@ -1209,7 +1209,7 @@ None
 
 Description
 -----------
-Iterates on the children of the given label. if <alllevels> option is set to true, it explores not only the first, but all the sub label levels.
+Iterates on the children of the given label. If <allLevels> option is set to true, it explores not only the first, but all the sub label levels.
 ") TDF_ChildIDIterator;
 		 TDF_ChildIDIterator(const TDF_Label & aLabel, const Standard_GUID & anID, const Standard_Boolean allLevels = Standard_False);
 
@@ -1229,7 +1229,7 @@ None
 
 Description
 -----------
-Initializes the iteration on the children of the given label. if <alllevels> option is set to true, it explores not only the first, but all the sub label levels.
+Initializes the iteration on the children of the given label. If <allLevels> option is set to true, it explores not only the first, but all the sub label levels.
 ") Initialize;
 		void Initialize(const TDF_Label & aLabel, const Standard_GUID & anID, const Standard_Boolean allLevels = Standard_False);
 
@@ -1242,7 +1242,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current item in the iteration.
+Returns True if there is a current Item in the iteration.
 ") More;
 		Standard_Boolean More();
 
@@ -1255,7 +1255,7 @@ None
 
 Description
 -----------
-Move to the next item.
+Move to the next Item.
 ") Next;
 		void Next();
 
@@ -1268,7 +1268,7 @@ None
 
 Description
 -----------
-Move to the next brother. if there is none, go up etc. this method is interesting only with 'alllevels' behavior, because it avoids to explore the current label children.
+Move to the next Brother. If there is none, go up etc. This method is interesting only with 'allLevels' behavior, because it avoids to explore the current label children.
 ") NextBrother;
 		void NextBrother();
 
@@ -1327,7 +1327,7 @@ None
 
 Description
 -----------
-Constructs the iterator object defined by the label alabel. iterates on the children of the given label. if <alllevels> option is set to true, it explores not only the first, but all the sub label levels.
+Constructs the iterator object defined by the label aLabel. Iterates on the children of the given label. If <allLevels> option is set to true, it explores not only the first, but all the sub label levels.
 ") TDF_ChildIterator;
 		 TDF_ChildIterator(const TDF_Label & aLabel, const Standard_Boolean allLevels = Standard_False);
 
@@ -1346,7 +1346,7 @@ None
 
 Description
 -----------
-Initializes the iteration on the children of the given label. if <alllevels> option is set to true, it explores not only the first, but all the sub label levels. if alllevels is false, only the first level of child labels is explored. in the example below, the label is iterated using initialize, more and next and its child labels dumped using tdf_tool::entry. example void dumpchildren(const tdf_label& alabel) { tdf_childiterator it; tcollection_asciistring es; for (it.initialize(alabel,standard_true); it.more(); it.next()){ tdf_tool::entry(it.value(),es); std::cout << as.tocstring() << std::endl; } }.
+Initializes the iteration on the children of the given label. If <allLevels> option is set to true, it explores not only the first, but all the sub label levels. If allLevels is false, only the first level of child labels is explored. In the example below, the label is iterated using Initialize, More and Next and its child labels dumped using TDF_Tool::Entry. Example void DumpChildren(const TDF_Label& aLabel) { TDF_ChildIterator it; TCollection_AsciiString es; for (it.Initialize(aLabel,Standard_True); it.More(); it.Next()){ TDF_Tool::Entry(it.Value(),es); std::cout << as.ToCString() << std::endl; } }.
 ") Initialize;
 		void Initialize(const TDF_Label & aLabel, const Standard_Boolean allLevels = Standard_False);
 
@@ -1372,7 +1372,7 @@ None
 
 Description
 -----------
-Move the current iteration to the next item.
+Move the current iteration to the next Item.
 ") Next;
 		void Next();
 
@@ -1385,7 +1385,7 @@ None
 
 Description
 -----------
-Moves this iteration to the next brother label. a brother label is one with the same father as an initial label. use this function when the non-empty constructor or initialize has alllevels set to true. the result is that the iteration does not explore the children of the current label. this method is interesting only with 'alllevels' behavior, because it avoids to explore the current label children.
+Moves this iteration to the next brother label. A brother label is one with the same father as an initial label. Use this function when the non-empty constructor or Initialize has allLevels set to true. The result is that the iteration does not explore the children of the current label. This method is interesting only with 'allLevels' behavior, because it avoids to explore the current label children.
 ") NextBrother;
 		void NextBrother();
 
@@ -1430,7 +1430,7 @@ None
 
 Description
 -----------
-Creates an object with all modes set to <amode>.
+Creates an object with all modes set to <aMode>.
 ") TDF_ClosureMode;
 		 TDF_ClosureMode(const Standard_Boolean aMode = Standard_True);
 
@@ -1448,7 +1448,7 @@ None
 
 Description
 -----------
-Sets the mode 'descendants' to <astatus>. //! 'descendants' mode means we add to the data set the children labels of each user given label. we do not do that with the labels found applying uptofirstlevel option.
+Sets the mode 'Descendants' to <aStatus>. //! 'Descendants' mode means we add to the data set the children labels of each USER GIVEN label. We do not do that with the labels found applying UpToFirstLevel option.
 ") Descendants;
 		void Descendants(const Standard_Boolean aStatus);
 
@@ -1461,7 +1461,7 @@ bool
 
 Description
 -----------
-Returns true if the mode 'descendants' is set.
+Returns true if the mode 'Descendants' is set.
 ") Descendants;
 		Standard_Boolean Descendants();
 
@@ -1479,7 +1479,7 @@ None
 
 Description
 -----------
-Sets the mode 'references' to <astatus>. //! 'references' mode means we add to the data set the descendants of an attribute, by calling the attribute method descendants().
+Sets the mode 'References' to <aStatus>. //! 'References' mode means we add to the data set the descendants of an attribute, by calling the attribute method Descendants().
 ") References;
 		void References(const Standard_Boolean aStatus);
 
@@ -1492,7 +1492,7 @@ bool
 
 Description
 -----------
-Returns true if the mode 'references' is set.
+Returns true if the mode 'References' is set.
 ") References;
 		Standard_Boolean References();
 
@@ -1524,7 +1524,7 @@ None
 
 Description
 -----------
-Builds the transitive closure of label and attribute sets into <adataset>.
+Builds the transitive closure of label and attribute sets into <aDataSet>.
 ") Closure;
 		static void Closure(const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -1544,7 +1544,7 @@ None
 
 Description
 -----------
-Builds the transitive closure of label and attribute sets into <adataset>. uses <afilter> to determine if an attribute has to be taken in account or not. uses <amode> for various way of closing.
+Builds the transitive closure of label and attribute sets into <aDataSet>. Uses <aFilter> to determine if an attribute has to be taken in account or not. Uses <aMode> for various way of closing.
 ") Closure;
 		static void Closure(const opencascade::handle<TDF_DataSet> & aDataSet, const TDF_IDFilter & aFilter, const TDF_ClosureMode & aMode);
 
@@ -1566,7 +1566,7 @@ None
 
 Description
 -----------
-Builds the transitive closure of <alabel>.
+Builds the transitive closure of <aLabel>.
 ") Closure;
 		static void Closure(const TDF_Label & aLabel, TDF_LabelMap & aLabMap, TDF_AttributeMap & anAttMap, const TDF_IDFilter & aFilter, const TDF_ClosureMode & aMode);
 
@@ -1601,7 +1601,7 @@ None
 
 Description
 -----------
-Compares <asourcedataset> with <atargetdataset>, updating <arelocationtable> with labels and attributes found in both sets.
+Compares <aSourceDataSet> with <aTargetDataSet>, updating <aRelocationTable> with labels and attributes found in both sets.
 ") Compare;
 		static void Compare(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_DataSet> & aTargetDataSet, const TDF_IDFilter & aFilter, const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
@@ -1619,7 +1619,7 @@ None
 
 Description
 -----------
-Removes attributes from <adataset>.
+Removes attributes from <aDataSet>.
 ") Cut;
 		static void Cut(const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -1638,7 +1638,7 @@ bool
 
 Description
 -----------
-Returns true if all the labels of <adataset> are descendant of <alabel>.
+Returns true if all the labels of <aDataSet> are descendant of <aLabel>.
 ") IsSelfContained;
 		static Standard_Boolean IsSelfContained(const TDF_Label & aLabel, const opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -1660,7 +1660,7 @@ bool
 
 Description
 -----------
-Finds from <arefdataset> all the keys not bound into <arelocationtable> and put them into <adiffdataset>. returns true if the difference contains at least one key. (a key is a source object). //! <anoption> may take the following values: 1: labels treatment only; 2: attributes treatment only (default value); 3: both labels & attributes treatment.
+Finds from <aRefDataSet> all the keys not bound into <aRelocationTable> and put them into <aDiffDataSet>. Returns True if the difference contains at least one key. (A key is a source object). //! <anOption> may take the following values: 1: labels treatment only; 2: attributes treatment only (default value); 3: both labels & attributes treatment.
 ") SourceUnbound;
 		static Standard_Boolean SourceUnbound(const opencascade::handle<TDF_DataSet> & aRefDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable, const TDF_IDFilter & aFilter, const opencascade::handle<TDF_DataSet> & aDiffDataSet, const Standard_Integer anOption = 2);
 
@@ -1682,7 +1682,7 @@ bool
 
 Description
 -----------
-Substracts from <arefdataset> all the items bound into <arelocationtable>. the result is put into <adiffdataset>. returns true if the difference contains at least one item. (an item is a target object). //! <anoption> may take the following values: 1: labels treatment only; 2: attributes treatment only(default value); 3: both labels & attributes treatment.
+Subtracts from <aRefDataSet> all the items bound into <aRelocationTable>. The result is put into <aDiffDataSet>. Returns True if the difference contains at least one item. (An item is a target object). //! <anOption> may take the following values: 1: labels treatment only; 2: attributes treatment only(default value); 3: both labels & attributes treatment.
 ") TargetUnbound;
 		static Standard_Boolean TargetUnbound(const opencascade::handle<TDF_DataSet> & aRefDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable, const TDF_IDFilter & aFilter, const opencascade::handle<TDF_DataSet> & aDiffDataSet, const Standard_Integer anOption = 2);
 
@@ -1728,7 +1728,7 @@ None
 
 Description
 -----------
-Copytool.
+CopyTool.
 ") TDF_CopyLabel;
 		 TDF_CopyLabel(const TDF_Label & aSource, const TDF_Label & aTarget);
 
@@ -1748,7 +1748,7 @@ bool
 
 Description
 -----------
-Check external references and if exist fills the aexternals map.
+Check external references and if exist fills the aExternals Map.
 ") ExternalReferences;
 		static Standard_Boolean ExternalReferences(const TDF_Label & Lab, TDF_AttributeMap & aExternals, const TDF_IDFilter & aFilter);
 
@@ -1770,7 +1770,7 @@ None
 
 Description
 -----------
-Check external references and if exist fills the aexternals map.
+Check external references and if exist fills the aExternals Map.
 ") ExternalReferences;
 		static void ExternalReferences(const TDF_Label & aRefLab, const TDF_Label & Lab, TDF_AttributeMap & aExternals, const TDF_IDFilter & aFilter, opencascade::handle<TDF_DataSet> & aDataSet);
 
@@ -1815,7 +1815,7 @@ None
 
 Description
 -----------
-Performs algorithm of selfcontained copy.
+performs algorithm of selfcontained copy.
 ") Perform;
 		void Perform();
 
@@ -1828,7 +1828,7 @@ opencascade::handle<TDF_RelocationTable>
 
 Description
 -----------
-Returns relocation table.
+returns relocation table.
 ") RelocationTable;
 		const opencascade::handle<TDF_RelocationTable> & RelocationTable();
 
@@ -1879,7 +1879,7 @@ None
 
 Description
 -----------
-Copy <asourcedataset> with using and updating <arelocationtable>. this method ignores target attributes privilege over source ones.
+Copy <aSourceDataSet> with using and updating <aRelocationTable>. This method ignores target attributes privilege over source ones.
 ") Copy;
 		static void Copy(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable);
 
@@ -1899,7 +1899,7 @@ None
 
 Description
 -----------
-Copy <asourcedataset> using and updating <arelocationtable>. use <aprivilegefilter> to give a list of ids for which the target attribute prevails over the source one.
+Copy <aSourceDataSet> using and updating <aRelocationTable>. Use <aPrivilegeFilter> to give a list of IDs for which the target attribute prevails over the source one.
 ") Copy;
 		static void Copy(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable, const TDF_IDFilter & aPrivilegeFilter);
 
@@ -1921,7 +1921,7 @@ None
 
 Description
 -----------
-Copy <asourcedataset> using and updating <arelocationtable>. use <aprivilegefilter> to give a list of ids for which the target attribute prevails over the source one. if <setselfcontained> is set to true, every tdf_reference will be replaced by the referenced structure according to <areffilter>. //! nb: <areffilter> is used only if <setselfcontained> is true. internal root label copy recursive method.
+Copy <aSourceDataSet> using and updating <aRelocationTable>. Use <aPrivilegeFilter> to give a list of IDs for which the target attribute prevails over the source one. If <setSelfContained> is set to true, every TDF_Reference will be replaced by the referenced structure according to <aRefFilter>. //! NB: <aRefFilter> is used only if <setSelfContained> is true. Internal root label copy recursive method.
 ") Copy;
 		static void Copy(const opencascade::handle<TDF_DataSet> & aSourceDataSet, const opencascade::handle<TDF_RelocationTable> & aRelocationTable, const TDF_IDFilter & aPrivilegeFilter, const TDF_IDFilter & aRefFilter, const Standard_Boolean setSelfContained);
 
@@ -1948,7 +1948,7 @@ None
 
 Description
 -----------
-A new and empty data structure.
+A new and empty Data structure.
 ") TDF_Data;
 		 TDF_Data();
 
@@ -1996,7 +1996,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps the data on <astream>.
+Dumps the Data on <aStream>.
 ") Dump;
 		Standard_OStream & Dump(std::ostream &OutValue);
 
@@ -2036,7 +2036,7 @@ bool
 
 Description
 -----------
-Returns a label by an entry. returns standard_false, if such a label doesn't exist or mechanism for fast access to the label by entry is not initialized.
+Returns a label by an entry. Returns Standard_False, if such a label doesn't exist or mechanism for fast access to the label by entry is not initialized.
 ") GetLabel;
 		Standard_Boolean GetLabel(TCollection_AsciiString anEntry, TDF_Label & aLabel);
 
@@ -2067,7 +2067,7 @@ bool
 
 Description
 -----------
-Returns true if <adelta> is applicable here and now.
+Returns true if <aDelta> is applicable HERE and NOW.
 ") IsApplicable;
 		Standard_Boolean IsApplicable(const opencascade::handle<TDF_Delta> & aDelta);
 
@@ -2080,7 +2080,7 @@ bool
 
 Description
 -----------
-Returns modification mode.
+returns modification mode.
 ") IsModificationAllowed;
 		Standard_Boolean IsModificationAllowed();
 
@@ -2093,7 +2093,7 @@ TDF_HAllocator
 
 Description
 -----------
-Returns tdf_hallocator, which is an incremental allocator used by tdf_labelnode. this allocator is used to manage tdf_labelnode objects, but it can also be used for allocating memory to application-specific data (be careful because this allocator does not release the memory). the benefits of this allocation scheme are noticeable when dealing with large ocaf documents, due to: 1. very quick allocation of objects (memory heap is not used, the algorithm that replaces it is very simple). 2. very quick destruction of objects (memory is released not by destructors of tdf_labelnode, but rather by the destructor of tdf_data). 3. tdf_labelnode objects do not fragmentize the memory; they are kept compactly in a number of arrays of 16k each. 4. swapping is reduced on large data, because each document now occupies a smaller number of memory pages.
+Returns TDF_HAllocator, which is an incremental allocator used by TDF_LabelNode. This allocator is used to manage TDF_LabelNode objects, but it can also be used for allocating memory to application-specific data (be careful because this allocator does not release the memory). The benefits of this allocation scheme are noticeable when dealing with large OCAF documents, due to: 1. Very quick allocation of objects (memory heap is not used, the algorithm that replaces it is very simple). 2. Very quick destruction of objects (memory is released not by destructors of TDF_LabelNode, but rather by the destructor of TDF_Data). 3. TDF_LabelNode objects do not fragmentize the memory; they are kept compactly in a number of arrays of 16K each. 4. Swapping is reduced on large data, because each document now occupies a smaller number of memory pages.
 ") LabelNodeAllocator;
 		const TDF_HAllocator & LabelNodeAllocator();
 
@@ -2124,7 +2124,7 @@ None
 
 Description
 -----------
-An internal method. it is used internally on creation of new labels. it adds a new label into internal table for fast access to the labels by entry.
+An internal method. It is used internally on creation of new labels. It adds a new label into internal table for fast access to the labels by entry.
 ") RegisterLabel;
 		void RegisterLabel(const TDF_Label & aLabel);
 
@@ -2137,7 +2137,7 @@ TDF_Label
 
 Description
 -----------
-Returns the root label of the data structure.
+Returns the root label of the Data structure.
 ") Root;
 		const TDF_Label Root();
 
@@ -2155,7 +2155,7 @@ None
 
 Description
 -----------
-Initializes a mechanism for fast access to the labels by their entries. the fast access is useful for large documents and often access to the labels via entries. internally, a table of entry - label is created, which allows to obtain a label by its entry in a very fast way. if the mechanism is turned off, the internal table is cleaned. new labels are added to the table, if the mechanism is on (no need to re-initialize the mechanism).
+Initializes a mechanism for fast access to the labels by their entries. The fast access is useful for large documents and often access to the labels via entries. Internally, a table of entry - label is created, which allows to obtain a label by its entry in a very fast way. If the mechanism is turned off, the internal table is cleaned. New labels are added to the table, if the mechanism is on (no need to re-initialize the mechanism).
 ") SetAccessByEntries;
 		void SetAccessByEntries(const Standard_Boolean aSet);
 
@@ -2168,7 +2168,7 @@ int
 
 Description
 -----------
-Returns the current tick. it is incremented each commit.
+Returns the current tick. It is incremented each Commit.
 ") Time;
 		Standard_Integer Time();
 
@@ -2200,7 +2200,7 @@ opencascade::handle<TDF_Delta>
 
 Description
 -----------
-Apply <adelta> to undo a set of attribute modifications. //! optional <withdelta> set to true indicates a delta set must be generated. (see above).
+Apply <aDelta> to undo a set of attribute modifications. //! Optional <withDelta> set to True indicates a Delta Set must be generated. (See above).
 ") Undo;
 		opencascade::handle<TDF_Delta> Undo(const opencascade::handle<TDF_Delta> & aDelta, const Standard_Boolean withDelta = Standard_False);
 
@@ -2229,7 +2229,7 @@ None
 
 Description
 -----------
-Creates an empty dataset object.
+Creates an empty DataSet object.
 ") TDF_DataSet;
 		 TDF_DataSet();
 
@@ -2247,7 +2247,7 @@ None
 
 Description
 -----------
-Adds <anattribute> into the current data set.
+Adds <anAttribute> into the current data set.
 ") AddAttribute;
 		void AddAttribute(const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -2265,7 +2265,7 @@ None
 
 Description
 -----------
-Adds <alabel> in the current data set.
+Adds <aLabel> in the current data set.
 ") AddLabel;
 		void AddLabel(const TDF_Label & aLabel);
 
@@ -2283,7 +2283,7 @@ None
 
 Description
 -----------
-Adds a root label to <myrootlabels>.
+Adds a root label to <myRootLabels>.
 ") AddRoot;
 		void AddRoot(const TDF_Label & aLabel);
 
@@ -2296,7 +2296,7 @@ TDF_AttributeMap
 
 Description
 -----------
-Returns the map of attributes in the current data set. this map can be used directly, or updated.
+Returns the map of attributes in the current data set. This map can be used directly, or updated.
 ") Attributes;
 		TDF_AttributeMap & Attributes();
 
@@ -2327,7 +2327,7 @@ bool
 
 Description
 -----------
-Returns true if <anattribute> is in the data set.
+Returns true if <anAttribute> is in the data set.
 ") ContainsAttribute;
 		Standard_Boolean ContainsAttribute(const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -2362,7 +2362,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps the minimum information about <self> on <astream>.
+Dumps the minimum information about <self> on <aStream>.
 ") Dump;
 		Standard_OStream & Dump(std::ostream &OutValue);
 
@@ -2388,7 +2388,7 @@ TDF_LabelMap
 
 Description
 -----------
-Returns the map of labels in this data set. this map can be used directly, or updated.
+Returns the map of labels in this data set. This map can be used directly, or updated.
 ") Labels;
 		TDF_LabelMap & Labels();
 
@@ -2401,7 +2401,7 @@ TDF_LabelList
 
 Description
 -----------
-Returns <myrootlabels> to be used or updated.
+Returns <myRootLabels> to be used or updated.
 ") Roots;
 		TDF_LabelList & Roots();
 
@@ -2443,7 +2443,7 @@ TDF_AttributeDeltaList
 
 Description
 -----------
-Returns the field <myattdeltalist>.
+Returns the field <myAttDeltaList>.
 ") AttributeDeltas;
 		const TDF_AttributeDeltaList & AttributeDeltas();
 
@@ -2456,7 +2456,7 @@ int
 
 Description
 -----------
-Returns the field <mybegintime>.
+Returns the field <myBeginTime>.
 ") BeginTime;
 		Standard_Integer BeginTime();
 
@@ -2507,7 +2507,7 @@ int
 
 Description
 -----------
-Returns the field <myendtime>.
+Returns the field <myEndTime>.
 ") EndTime;
 		Standard_Integer EndTime();
 
@@ -2525,7 +2525,7 @@ bool
 
 Description
 -----------
-Returns true if the undo action of <self> is applicable at <acurrenttime>.
+Returns true if the Undo action of <self> is applicable at <aCurrentTime>.
 ") IsApplicable;
 		Standard_Boolean IsApplicable(const Standard_Integer aCurrentTime);
 
@@ -2556,7 +2556,7 @@ None
 
 Description
 -----------
-Adds in <alabellist> the labels of the attribute deltas. caution: <alabellist> is not cleared before use.
+Adds in <aLabelList> the labels of the attribute deltas. Caution: <aLabelList> is not cleared before use.
 ") Labels;
 		void Labels(TDF_LabelList & aLabelList);
 
@@ -2587,7 +2587,7 @@ None
 
 Description
 -----------
-Associates a name <thename> with this delta.
+Associates a name <theName> with this delta.
 ") SetName;
 		void SetName(TCollection_ExtendedString theName);
 
@@ -2624,7 +2624,7 @@ None
 
 Description
 -----------
-Creates an id/attribute filter based on an id list. the default mode is 'ignore all but...'. //! this filter has 2 working mode: keep and ignore. //! ignore/exclusive mode: all ids are ignored except these set to be kept, using keep(). of course, it is possible set an kept id to be ignored using ignore(). //! keep/inclusive mode: all ids are kept except these set to be ignored, using ignore(). of course, it is possible set an ignored id to be kept using keep().
+Creates an ID/attribute filter based on an ID list. The default mode is 'ignore all but...'. //! This filter has 2 working mode: keep and ignore. //! Ignore/Exclusive mode: all IDs are ignored except these set to be kept, using Keep(). Of course, it is possible set an kept ID to be ignored using Ignore(). //! Keep/Inclusive mode: all IDs are kept except these set to be ignored, using Ignore(). Of course, it is possible set an ignored ID to be kept using Keep().
 ") TDF_IDFilter;
 		 TDF_IDFilter(const Standard_Boolean ignoreMode = Standard_True);
 
@@ -2660,7 +2660,7 @@ None
 
 Description
 -----------
-Copies into <self> the contents of <fromfilter>. <self> is cleared before copy.
+Copies into <self> the contents of <fromFilter>. <self> is cleared before copy.
 ") Copy;
 		void Copy(const TDF_IDFilter & fromFilter);
 
@@ -2677,7 +2677,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Writes the contents of <self> to <os>.
+Writes the contents of <self> to <OS>.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -2695,7 +2695,7 @@ None
 
 Description
 -----------
-Copies the list of id to be kept or ignored in <anidlist>. <anidlist> is cleared before use.
+Copies the list of ID to be kept or ignored in <anIDList>. <anIDList> is cleared before use.
 ") IDList;
 		void IDList(TDF_IDList & anIDList);
 
@@ -2713,7 +2713,7 @@ None
 
 Description
 -----------
-An attribute with <anid> as id is to be ignored and the filter will answer false to the question iskept(<anid>).
+An attribute with <anID> as ID is to be ignored and the filter will answer false to the question IsKept(<anID>).
 ") Ignore;
 		void Ignore(const Standard_GUID & anID);
 
@@ -2731,7 +2731,7 @@ None
 
 Description
 -----------
-Attributes with id owned by <anidlist> are to be ignored and the filter will answer false to the question iskept(<anid>) with id from <anidlist>.
+Attributes with ID owned by <anIDList> are to be ignored and the filter will answer false to the question IsKept(<anID>) with ID from <anIDList>.
 ") Ignore;
 		void Ignore(const TDF_IDList & anIDList);
 
@@ -2749,7 +2749,7 @@ None
 
 Description
 -----------
-The list of id is cleared and the filter mode is set to ignore mode if <keep> is true; false otherwise.
+The list of ID is cleared and the filter mode is set to ignore mode if <keep> is true; false otherwise.
 ") IgnoreAll;
 		void IgnoreAll(const Standard_Boolean ignore);
 
@@ -2780,7 +2780,7 @@ bool
 
 Description
 -----------
-Returns true if the id is to be ignored.
+Returns true if the ID is to be ignored.
 ") IsIgnored;
 		Standard_Boolean IsIgnored(const Standard_GUID & anID);
 
@@ -2816,7 +2816,7 @@ bool
 
 Description
 -----------
-Returns true if the id is to be kept.
+Returns true if the ID is to be kept.
 ") IsKept;
 		Standard_Boolean IsKept(const Standard_GUID & anID);
 
@@ -2852,7 +2852,7 @@ None
 
 Description
 -----------
-An attribute with <anid> as id is to be kept and the filter will answer true to the question iskept(<anid>).
+An attribute with <anID> as ID is to be kept and the filter will answer true to the question IsKept(<anID>).
 ") Keep;
 		void Keep(const Standard_GUID & anID);
 
@@ -2870,7 +2870,7 @@ None
 
 Description
 -----------
-Attributes with id owned by <anidlist> are to be kept and the filter will answer true to the question iskept(<anid>) with id from <anidlist>.
+Attributes with ID owned by <anIDList> are to be kept and the filter will answer true to the question IsKept(<anID>) with ID from <anIDList>.
 ") Keep;
 		void Keep(const TDF_IDList & anIDList);
 
@@ -2888,7 +2888,6 @@ Attributes with id owned by <anidlist> are to be kept and the filter will answer
 ******************/
 class TDF_Label {
 	public:
-		friend struct std::hash ;
 		/****** TDF_Label::TDF_Label ******/
 		/****** md5 signature: 1a8e59ba046467c4e163db826620fcdb ******/
 		%feature("compactdefaultargs") TDF_Label;
@@ -2917,7 +2916,7 @@ None
 
 Description
 -----------
-Adds an attribute to the current label. raises if there is already one.
+Adds an Attribute to the current label. Raises if there is already one.
 ") AddAttribute;
 		void AddAttribute(const opencascade::handle<TDF_Attribute> & anAttribute, const Standard_Boolean append = Standard_True);
 
@@ -2930,7 +2929,7 @@ bool
 
 Description
 -----------
-Returns true if <self> owns attributes not yet available in transaction 0. it means at least one attribute is new, modified or deleted.
+Returns true if <self> owns attributes not yet available in transaction 0. It means at least one attribute is new, modified or deleted.
 ") AttributesModified;
 		Standard_Boolean AttributesModified();
 
@@ -2943,7 +2942,7 @@ opencascade::handle<TDF_Data>
 
 Description
 -----------
-Returns the data owning <self>.
+Returns the Data owning <self>.
 ") Data;
 		opencascade::handle<TDF_Data> Data();
 
@@ -2956,7 +2955,7 @@ int
 
 Description
 -----------
-Returns the depth of the label in the data framework. this corresponds to the number of fathers which this label has, and is used in determining whether a label is root, null or equivalent to another label. exceptions: standard_nullobject if this label is null. this is because a null object can have no depth.
+Returns the depth of the label in the data framework. This corresponds to the number of fathers which this label has, and is used in determining whether a label is root, null or equivalent to another label. Exceptions: Standard_NullObject if this label is null. This is because a null object can have no depth.
 ") Depth;
 		Standard_Integer Depth();
 
@@ -2973,7 +2972,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps the minimum information about <self> on <astream>.
+Dumps the minimum information about <self> on <aStream>.
 ") Dump;
 		Standard_OStream & Dump(std::ostream &OutValue);
 
@@ -3009,7 +3008,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps the label on <astream> and its attributes rank in <amap> if their ids are kept by <idfilter>.
+Dumps the label on <aStream> and its attributes rank in <aMap> if their IDs are kept by <IDFilter>.
 ") ExtendedDump;
 		void ExtendedDump(std::ostream &OutValue, const TDF_IDFilter & aFilter, TDF_AttributeIndexedMap & aMap);
 
@@ -3022,7 +3021,7 @@ TDF_Label
 
 Description
 -----------
-Returns the label father. this label may be null if the label is root.
+Returns the label father. This label may be null if the label is root.
 ") Father;
 		const TDF_Label Father();
 
@@ -3041,7 +3040,7 @@ bool
 
 Description
 -----------
-Finds an attribute of the current label, according to <anid>. if anattribute is not a valid one, false is returned. //! the method returns true if found, false otherwise. //! a removed attribute cannot be found.
+Finds an attribute of the current label, according to <anID>. If anAttribute is not a valid one, false is returned. //! The method returns True if found, False otherwise. //! A removed attribute cannot be found.
 ") FindAttribute;
 		Standard_Boolean FindAttribute(const Standard_GUID & anID, opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -3061,7 +3060,7 @@ bool
 
 Description
 -----------
-Finds an attribute of the current label, according to <anid> and <atransaction>. this attribute has/had to be a valid one for the given transaction index . so, this attribute is not necessary a valid one. //! the method returns true if found, false otherwise. //! a removed attribute cannot be found nor a backuped attribute of a removed one.
+Finds an attribute of the current label, according to <anID> and <aTransaction>. This attribute has/had to be a valid one for the given transaction index . So, this attribute is not necessary a valid one. //! The method returns True if found, False otherwise. //! A removed attribute cannot be found nor a backuped attribute of a removed one.
 ") FindAttribute;
 		Standard_Boolean FindAttribute(const Standard_GUID & anID, const Standard_Integer aTransaction, opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -3080,7 +3079,7 @@ TDF_Label
 
 Description
 -----------
-Finds a child label having <atag> as tag. creates the tag atag identifies the label which will be the parent. if create is true and no child label is found, a new one is created. example: //creating a label with tag 10 at root tdf_label lab1 = adf->root().findchild(10); //creating labels 7 and 2 on label 10 tdf_label lab2 = lab1.findchild(7); tdf_label lab3 = lab1.findchild(2);.
+Finds a child label having <aTag> as tag. Creates The tag aTag identifies the label which will be the parent. If create is true and no child label is found, a new one is created. Example: //creating a label with tag 10 at Root TDF_Label lab1 = aDF->Root().FindChild(10); //creating labels 7 and 2 on label 10 TDF_Label lab2 = lab1.FindChild(7); TDF_Label lab3 = lab1.FindChild(2);.
 ") FindChild;
 		TDF_Label FindChild(const Standard_Integer aTag, const Standard_Boolean create = Standard_True);
 
@@ -3098,7 +3097,7 @@ None
 
 Description
 -----------
-Forgets all the attributes. does it on also on the sub-labels if <clearchildren> is set to true. of course, this method is compatible with transaction & delta mechanisms.
+Forgets all the attributes. Does it on also on the sub-labels if <clearChildren> is set to true. Of course, this method is compatible with Transaction & Delta mechanisms.
 ") ForgetAllAttributes;
 		void ForgetAllAttributes(const Standard_Boolean clearChildren = Standard_True);
 
@@ -3116,7 +3115,7 @@ None
 
 Description
 -----------
-Forgets an attribute from the current label, setting its forgotten status true and its valid status false. raises if the attribute is not in the structure.
+Forgets an Attribute from the current label, setting its forgotten status true and its valid status false. Raises if the attribute is not in the structure.
 ") ForgetAttribute;
 		void ForgetAttribute(const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -3134,7 +3133,7 @@ bool
 
 Description
 -----------
-Forgets the attribute of guid <aguid> from the current label . if the attribute doesn't exist returns false. otherwise returns true.
+Forgets the Attribute of GUID <aguid> from the current label . If the attribute doesn't exist returns False. Otherwise returns True.
 ") ForgetAttribute;
 		Standard_Boolean ForgetAttribute(const Standard_GUID & aguid);
 
@@ -3178,7 +3177,7 @@ bool
 
 Description
 -----------
-Returns true if node address of <self> is greater than <otherlabel> one. used to quickly sort labels (not on entry criterion). //! -c++: inline.
+Returns true if node address of <self> is greater than <otherLabel> one. Used to quickly sort labels (not on entry criterion). //! -C++: inline.
 ") HasGreaterNode;
 		Standard_Boolean HasGreaterNode(const TDF_Label & otherLabel);
 
@@ -3196,7 +3195,7 @@ bool
 
 Description
 -----------
-Returns true if node address of <self> is lower than <otherlabel> one. used to quickly sort labels (not on entry criterion). //! -c++: inline.
+Returns true if node address of <self> is lower than <otherLabel> one. Used to quickly sort labels (not on entry criterion). //! -C++: inline.
 ") HasLowerNode;
 		Standard_Boolean HasLowerNode(const TDF_Label & otherLabel);
 
@@ -3214,7 +3213,7 @@ None
 
 Description
 -----------
-Sets or unsets <self> and all its descendants as imported label, according to <astatus>.
+Sets or unsets <self> and all its descendants as imported label, according to <aStatus>.
 ") Imported;
 		void Imported(const Standard_Boolean aStatus);
 
@@ -3232,7 +3231,7 @@ bool
 
 Description
 -----------
-Returns true if <self> owns an attribute with <anid> as id.
+Returns true if <self> owns an attribute with <anID> as ID.
 ") IsAttribute;
 		Standard_Boolean IsAttribute(const Standard_GUID & anID);
 
@@ -3250,7 +3249,7 @@ bool
 
 Description
 -----------
-Returns true if <self> is a descendant of <alabel>. attention: every label is its own descendant.
+Returns True if <self> is a descendant of <aLabel>. Attention: every label is its own descendant.
 ") IsDescendant;
 		Standard_Boolean IsDescendant(const TDF_Label & aLabel);
 
@@ -3286,7 +3285,7 @@ bool
 
 Description
 -----------
-Returns true if the <alabel> is equal to me (same labelnode*).
+Returns True if the <aLabel> is equal to me (same LabelNode*).
 ") IsEqual;
 		Standard_Boolean IsEqual(const TDF_Label & aLabel);
 
@@ -3299,7 +3298,7 @@ bool
 
 Description
 -----------
-Returns true if the <alabel> is imported.
+Returns True if the <aLabel> is imported.
 ") IsImported;
 		Standard_Boolean IsImported();
 
@@ -3312,7 +3311,7 @@ bool
 
 Description
 -----------
-Returns true if the <alabel> is null, i.e. it has not been included in the data framework.
+Returns True if the <aLabel> is null, i.e. it has not been included in the data framework.
 ") IsNull;
 		Standard_Boolean IsNull();
 
@@ -3338,7 +3337,7 @@ bool
 
 Description
 -----------
-Returns true if <self> or a descendant of <self> owns attributes not yet available in transaction 0. it means at least one of their attributes is new, modified or deleted.
+Returns true if <self> or a DESCENDANT of <self> owns attributes not yet available in transaction 0. It means at least one of their attributes is new, modified or deleted.
 ") MayBeModified;
 		Standard_Boolean MayBeModified();
 
@@ -3377,7 +3376,7 @@ TDF_Label
 
 Description
 -----------
-Create a new child label of me using autoamtic delivery tags provided by tagsource.
+Create a new child label of me using autoamtic delivery tags provided by TagSource.
 ") NewChild;
 		TDF_Label NewChild();
 
@@ -3408,7 +3407,7 @@ None
 
 Description
 -----------
-Undo forget action, setting its forgotten status false and its valid status true. raises if the attribute is not in the structure.
+Undo Forget action, setting its forgotten status false and its valid status true. Raises if the attribute is not in the structure.
 ") ResumeAttribute;
 		void ResumeAttribute(const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -3421,7 +3420,7 @@ TDF_Label
 
 Description
 -----------
-Returns the root label root of the data structure. this has a depth of 0. exceptions: standard_nullobject if this label is null. this is because a null object can have no depth.
+Returns the root label Root of the data structure. This has a depth of 0. Exceptions: Standard_NullObject if this label is null. This is because a null object can have no depth.
 ") Root;
 		const TDF_Label Root();
 
@@ -3434,7 +3433,7 @@ int
 
 Description
 -----------
-Returns the tag of the label. this is the integer assigned randomly to a label in a data framework. this integer is used to identify this label in an entry.
+Returns the tag of the label. This is the integer assigned randomly to a label in a data framework. This integer is used to identify this label in an entry.
 ") Tag;
 		Standard_Integer Tag();
 
@@ -3523,7 +3522,7 @@ None
 
 Description
 -----------
-Creates an relocation table. <selfrelocate> says if a value without explicit relocation is its own relocation.
+Creates an relocation table. <selfRelocate> says if a value without explicit relocation is its own relocation.
 ") TDF_RelocationTable;
 		 TDF_RelocationTable(const Standard_Boolean selfRelocate = Standard_False);
 
@@ -3554,7 +3553,7 @@ bool
 
 Description
 -----------
-Returns <myafterrelocate>.
+Returns <myAfterRelocate>.
 ") AfterRelocate;
 		Standard_Boolean AfterRelocate();
 
@@ -3567,7 +3566,7 @@ TDF_AttributeDataMap
 
 Description
 -----------
-Returns <myattributetable> to be used or updated.
+Returns <myAttributeTable> to be used or updated.
 ") AttributeTable;
 		TDF_AttributeDataMap & AttributeTable();
 
@@ -3619,7 +3618,7 @@ bool
 
 Description
 -----------
-Finds the relocation value of <asourcelabel> and returns it into <atargetlabel>. //! (see above selfrelocate method for more explanation about the method behavior).
+Finds the relocation value of <aSourceLabel> and returns it into <aTargetLabel>. //! (See above SelfRelocate method for more explanation about the method behavior).
 ") HasRelocation;
 		Standard_Boolean HasRelocation(const TDF_Label & aSourceLabel, TDF_Label & aTargetLabel);
 
@@ -3638,7 +3637,7 @@ bool
 
 Description
 -----------
-Finds the relocation value of <asourceattribute> and returns it into <atargetattribute>. //! (see above selfrelocate method for more explanation about the method behavior).
+Finds the relocation value of <aSourceAttribute> and returns it into <aTargetAttribute>. //! (See above SelfRelocate method for more explanation about the method behavior).
 ") HasRelocation;
 		Standard_Boolean HasRelocation(const opencascade::handle<TDF_Attribute> & aSourceAttribute, opencascade::handle<TDF_Attribute> & aTargetAttribute);
 
@@ -3657,7 +3656,7 @@ bool
 
 Description
 -----------
-Finds the relocation value of <asourcetransient> and returns it into <atargettransient>. //! (see above selfrelocate method for more explanation about the method behavior).
+Finds the relocation value of <aSourceTransient> and returns it into <aTargetTransient>. //! (See above SelfRelocate method for more explanation about the method behavior).
 ") HasTransientRelocation;
 		Standard_Boolean HasTransientRelocation(const opencascade::handle<Standard_Transient> & aSourceTransient, opencascade::handle<Standard_Transient> & aTargetTransient);
 
@@ -3670,7 +3669,7 @@ TDF_LabelDataMap
 
 Description
 -----------
-Returns <mylabeltable> to be used or updated.
+Returns <myLabelTable> to be used or updated.
 ") LabelTable;
 		TDF_LabelDataMap & LabelTable();
 
@@ -3688,7 +3687,7 @@ None
 
 Description
 -----------
-Sets <myselfrelocate> to <selfrelocate>. //! this flag affects the hasrelocation method behavior like this: //! <myselfrelocate> == false: //! if no relocation object is found in the map, a null object is returned //! <myselfrelocate> == true: //! if no relocation object is found in the map, the method assumes the source object is relocation value; so the source object is returned as target object.
+Sets <mySelfRelocate> to <selfRelocate>. //! This flag affects the HasRelocation method behavior like this: //! <mySelfRelocate> == False: //! If no relocation object is found in the map, a null object is returned //! <mySelfRelocate> == True: //! If no relocation object is found in the map, the method assumes the source object is relocation value; so the source object is returned as target object.
 ") SelfRelocate;
 		void SelfRelocate(const Standard_Boolean selfRelocate);
 
@@ -3701,7 +3700,7 @@ bool
 
 Description
 -----------
-Returns <myselfrelocate>.
+Returns <mySelfRelocate>.
 ") SelfRelocate;
 		Standard_Boolean SelfRelocate();
 
@@ -3720,7 +3719,7 @@ None
 
 Description
 -----------
-Sets the relocation value of <asourcelabel> to <atargetlabel>.
+Sets the relocation value of <aSourceLabel> to <aTargetLabel>.
 ") SetRelocation;
 		void SetRelocation(const TDF_Label & aSourceLabel, const TDF_Label & aTargetLabel);
 
@@ -3739,7 +3738,7 @@ None
 
 Description
 -----------
-Sets the relocation value of <asourceattribute> to <atargetattribute>.
+Sets the relocation value of <aSourceAttribute> to <aTargetAttribute>.
 ") SetRelocation;
 		void SetRelocation(const opencascade::handle<TDF_Attribute> & aSourceAttribute, const opencascade::handle<TDF_Attribute> & aTargetAttribute);
 
@@ -3758,7 +3757,7 @@ None
 
 Description
 -----------
-Sets the relocation value of <asourcetransient> to <atargettransient>.
+Sets the relocation value of <aSourceTransient> to <aTargetTransient>.
 ") SetTransientRelocation;
 		void SetTransientRelocation(const opencascade::handle<Standard_Transient> & aSourceTransient, const opencascade::handle<Standard_Transient> & aTargetTransient);
 
@@ -3776,7 +3775,7 @@ None
 
 Description
 -----------
-Fills <anattributemap> with target relocation attributes. <anattributemap> is not cleared before use.
+Fills <anAttributeMap> with target relocation attributes. <anAttributeMap> is not cleared before use.
 ") TargetAttributeMap;
 		void TargetAttributeMap(TDF_AttributeMap & anAttributeMap);
 
@@ -3794,7 +3793,7 @@ None
 
 Description
 -----------
-Fills <alabelmap> with target relocation labels. <alabelmap> is not cleared before use.
+Fills <aLabelMap> with target relocation labels. <aLabelMap> is not cleared before use.
 ") TargetLabelMap;
 		void TargetLabelMap(TDF_LabelMap & aLabelMap);
 
@@ -3807,7 +3806,7 @@ TColStd_IndexedDataMapOfTransientTransient
 
 Description
 -----------
-Returns <mytransienttable> to be used or updated.
+Returns <myTransientTable> to be used or updated.
 ") TransientTable;
 		TColStd_IndexedDataMapOfTransientTransient & TransientTable();
 
@@ -3842,7 +3841,7 @@ None
 
 Description
 -----------
-Adds the labels of <alabellist> to <alabelmap> if they are unbound, or increases their reference counters. at the end of the process, <alabellist> contains only the added labels.
+Adds the labels of <aLabelList> to <aLabelMap> if they are unbound, or increases their reference counters. At the end of the process, <aLabelList> contains only the ADDED labels.
 ") CountLabels;
 		static void CountLabels(TDF_LabelList & aLabelList, TDF_LabelIntegerMap & aLabelMap);
 
@@ -3861,7 +3860,7 @@ None
 
 Description
 -----------
-Decreases the reference counters of the labels of <alabellist> to <alabelmap>, and removes labels with null counter. at the end of the process, <alabellist> contains only the suppressed labels.
+Decreases the reference counters of the labels of <aLabelList> to <aLabelMap>, and removes labels with null counter. At the end of the process, <aLabelList> contains only the SUPPRESSED labels.
 ") DeductLabels;
 		static void DeductLabels(TDF_LabelList & aLabelList, TDF_LabelIntegerMap & aLabelMap);
 
@@ -3879,7 +3878,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps <adf> and its labels and their attributes.
+Dumps <aDF> and its labels and their attributes.
 ") DeepDump;
 		static void DeepDump(std::ostream &OutValue, const opencascade::handle<TDF_Data> & aDF);
 
@@ -3897,7 +3896,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps <alabel>, its children and their attributes.
+Dumps <aLabel>, its children and their attributes.
 ") DeepDump;
 		static void DeepDump(std::ostream &OutValue, const TDF_Label & aLabel);
 
@@ -3916,7 +3915,7 @@ None
 
 Description
 -----------
-Returns the entry for the label alabel in the form of the ascii character string anentry containing the tag list for alabel.
+Returns the entry for the label aLabel in the form of the ASCII character string anEntry containing the tag list for aLabel.
 ") Entry;
 		static void Entry(const TDF_Label & aLabel, TCollection_AsciiString & anEntry);
 
@@ -3935,7 +3934,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps <adf> and its labels and their attributes, if their ids are kept by <afilter>. dumps also the attributes content.
+Dumps <aDF> and its labels and their attributes, if their IDs are kept by <aFilter>. Dumps also the attributes content.
 ") ExtendedDeepDump;
 		static void ExtendedDeepDump(std::ostream &OutValue, const opencascade::handle<TDF_Data> & aDF, const TDF_IDFilter & aFilter);
 
@@ -3954,7 +3953,7 @@ anOS: Standard_OStream
 
 Description
 -----------
-Dumps <alabel>, its children and their attributes, if their ids are kept by <afilter>. dumps also the attributes content.
+Dumps <aLabel>, its children and their attributes, if their IDs are kept by <aFilter>. Dumps also the attributes content.
 ") ExtendedDeepDump;
 		static void ExtendedDeepDump(std::ostream &OutValue, const TDF_Label & aLabel, const TDF_IDFilter & aFilter);
 
@@ -3972,7 +3971,7 @@ bool
 
 Description
 -----------
-Returns true if <alabel> and its descendants reference only attributes or labels attached to themselves.
+Returns true if <aLabel> and its descendants reference only attributes or labels attached to themselves.
 ") IsSelfContained;
 		static Standard_Boolean IsSelfContained(const TDF_Label & aLabel);
 
@@ -3991,7 +3990,7 @@ bool
 
 Description
 -----------
-Returns true if <alabel> and its descendants reference only attributes or labels attached to themselves and kept by <afilter>.
+Returns true if <aLabel> and its descendants reference only attributes or labels attached to themselves and kept by <aFilter>.
 ") IsSelfContained;
 		static Standard_Boolean IsSelfContained(const TDF_Label & aLabel, const TDF_IDFilter & aFilter);
 
@@ -4012,7 +4011,7 @@ None
 
 Description
 -----------
-Returns the label expressed by <anentry>; creates the label if it does not exist and if <create> is true.
+Returns the label expressed by <anEntry>; creates the label if it does not exist and if <create> is true.
 ") Label;
 		static void Label(const opencascade::handle<TDF_Data> & aDF, TCollection_AsciiString anEntry, TDF_Label & aLabel, const Standard_Boolean create = Standard_False);
 
@@ -4033,7 +4032,7 @@ None
 
 Description
 -----------
-Returns the label expressed by <anentry>; creates the label if it does not exist and if <create> is true.
+Returns the label expressed by <anEntry>; creates the label if it does not exist and if <create> is true.
 ") Label;
 		static void Label(const opencascade::handle<TDF_Data> & aDF, Standard_CString anEntry, TDF_Label & aLabel, const Standard_Boolean create = Standard_False);
 
@@ -4054,7 +4053,7 @@ None
 
 Description
 -----------
-Returns the label expressed by <anentry>; creates the label if it does not exist and if <create> is true.
+Returns the label expressed by <anEntry>; creates the label if it does not exist and if <create> is true.
 ") Label;
 		static void Label(const opencascade::handle<TDF_Data> & aDF, const TColStd_ListOfInteger & aTagList, TDF_Label & aLabel, const Standard_Boolean create = Standard_False);
 
@@ -4072,7 +4071,7 @@ int
 
 Description
 -----------
-Returns the total number of attributes attached to the labels dependent on the label alabel. the attributes of alabel are also included in this figure. this information is useful in setting the size of an array.
+Returns the total number of attributes attached to the labels dependent on the label aLabel. The attributes of aLabel are also included in this figure. This information is useful in setting the size of an array.
 ") NbAttributes;
 		static Standard_Integer NbAttributes(const TDF_Label & aLabel);
 
@@ -4091,7 +4090,7 @@ int
 
 Description
 -----------
-Returns the number of attributes of the tree, selected by a<filter>, including those of <alabel>.
+Returns the number of attributes of the tree, selected by a<Filter>, including those of <aLabel>.
 ") NbAttributes;
 		static Standard_Integer NbAttributes(const TDF_Label & aLabel, const TDF_IDFilter & aFilter);
 
@@ -4109,7 +4108,7 @@ int
 
 Description
 -----------
-Returns the number of labels of the tree, including <alabel>. alabel is also included in this figure. this information is useful in setting the size of an array.
+Returns the number of labels of the tree, including <aLabel>. aLabel is also included in this figure. This information is useful in setting the size of an array.
 ") NbLabels;
 		static Standard_Integer NbLabels(const TDF_Label & aLabel);
 
@@ -4128,7 +4127,7 @@ None
 
 Description
 -----------
-Returns in <atts> the referenced attributes. caution: <atts> is not cleared before use!.
+Returns in <atts> the referenced attributes. Caution: <atts> is not cleared before use!.
 ") OutReferences;
 		static void OutReferences(const TDF_Label & aLabel, TDF_AttributeMap & atts);
 
@@ -4149,7 +4148,7 @@ None
 
 Description
 -----------
-Returns in <atts> the referenced attributes and kept by <afilterforreferences>. it considers only the referrers kept by <afilterforreferers>. caution: <atts> is not cleared before use!.
+Returns in <atts> the referenced attributes and kept by <aFilterForReferences>. It considers only the referrers kept by <aFilterForReferers>. Caution: <atts> is not cleared before use!.
 ") OutReferences;
 		static void OutReferences(const TDF_Label & aLabel, const TDF_IDFilter & aFilterForReferers, const TDF_IDFilter & aFilterForReferences, TDF_AttributeMap & atts);
 
@@ -4168,7 +4167,7 @@ None
 
 Description
 -----------
-Returns in <theatts> the attributes having out references. //! caution: <theatts> is not cleared before use!.
+Returns in <theAtts> the attributes having out references. //! Caution: <theAtts> is not cleared before use!.
 ") OutReferers;
 		static void OutReferers(const TDF_Label & theLabel, TDF_AttributeMap & theAtts);
 
@@ -4189,7 +4188,7 @@ None
 
 Description
 -----------
-Returns in <atts> the attributes having out references and kept by <afilterforreferers>. it considers only the references kept by <afilterforreferences>. caution: <atts> is not cleared before use!.
+Returns in <atts> the attributes having out references and kept by <aFilterForReferers>. It considers only the references kept by <aFilterForReferences>. Caution: <atts> is not cleared before use!.
 ") OutReferers;
 		static void OutReferers(const TDF_Label & aLabel, const TDF_IDFilter & aFilterForReferers, const TDF_IDFilter & aFilterForReferences, TDF_AttributeMap & atts);
 
@@ -4211,7 +4210,7 @@ None
 
 Description
 -----------
-Returns the label having the same sub-entry as <alabel> but located as descendant as <toroot> instead of <fromroot>. //! example: //! alabel = 0:3:24:7:2:7 fromroot = 0:3:24 toroot = 0:5 returned label = 0:5:7:2:7.
+Returns the label having the same sub-entry as <aLabel> but located as descendant as <toRoot> instead of <fromRoot>. //! Example: //! aLabel = 0:3:24:7:2:7 fromRoot = 0:3:24 toRoot = 0:5 returned label = 0:5:7:2:7.
 ") RelocateLabel;
 		static void RelocateLabel(const TDF_Label & aSourceLabel, const TDF_Label & fromRoot, const TDF_Label & toRoot, TDF_Label & aTargetLabel, const Standard_Boolean create = Standard_False);
 
@@ -4230,7 +4229,7 @@ None
 
 Description
 -----------
-Returns the entry of <alabel> as list of integers in <ataglist>.
+Returns the entry of <aLabel> as list of integers in <aTagList>.
 ") TagList;
 		static void TagList(const TDF_Label & aLabel, TColStd_ListOfInteger & aTagList);
 
@@ -4249,7 +4248,7 @@ None
 
 Description
 -----------
-Returns the entry expressed by <anentry> as list of integers in <ataglist>.
+Returns the entry expressed by <anEntry> as list of integers in <aTagList>.
 ") TagList;
 		static void TagList(TCollection_AsciiString anEntry, TColStd_ListOfInteger & aTagList);
 
@@ -4300,7 +4299,7 @@ None
 
 Description
 -----------
-Creates a transaction context on <adf>, ready to be opened.
+Creates a transaction context on <aDF>, ready to be opened.
 ") TDF_Transaction;
 		 TDF_Transaction(const opencascade::handle<TDF_Data> & aDF, TCollection_AsciiString aName = "");
 
@@ -4313,7 +4312,7 @@ None
 
 Description
 -----------
-Aborts the transactions until and including the current opened one.
+Aborts the transactions until AND including the current opened one.
 ") Abort;
 		void Abort();
 
@@ -4331,7 +4330,7 @@ opencascade::handle<TDF_Delta>
 
 Description
 -----------
-Commits the transactions until and including the current opened one.
+Commits the transactions until AND including the current opened one.
 ") Commit;
 		opencascade::handle<TDF_Delta> Commit(const Standard_Boolean withDelta = Standard_False);
 
@@ -4344,7 +4343,7 @@ opencascade::handle<TDF_Data>
 
 Description
 -----------
-Returns the data from tdf.
+Returns the Data from TDF.
 ") Data;
 		opencascade::handle<TDF_Data> Data();
 
@@ -4383,7 +4382,7 @@ None
 
 Description
 -----------
-Aborts all the transactions on <mydf> and sets <adf> to build a transaction context on <adf>, ready to be opened.
+Aborts all the transactions on <myDF> and sets <aDF> to build a transaction context on <aDF>, ready to be opened.
 ") Initialize;
 		void Initialize(const opencascade::handle<TDF_Data> & aDF);
 
@@ -4422,7 +4421,7 @@ int
 
 Description
 -----------
-If not yet done, opens a new transaction on <mydf>. returns the index of the just opened transaction. //! it raises domainerror if the transaction is already open, and nullobject if there is no current data framework.
+If not yet done, opens a new transaction on <myDF>. Returns the index of the just opened transaction. //! It raises DomainError if the transaction is already open, and NullObject if there is no current Data framework.
 ") Open;
 		Standard_Integer Open();
 
@@ -4467,7 +4466,7 @@ None
 
 Description
 -----------
-Creates a tdf_deltaonaddition.
+Creates a TDF_DeltaOnAddition.
 ") TDF_DeltaOnAddition;
 		 TDF_DeltaOnAddition(const opencascade::handle<TDF_Attribute> & anAtt);
 
@@ -4514,7 +4513,7 @@ None
 
 Description
 -----------
-Creates a tdf_deltaonforget.
+Creates a TDF_DeltaOnForget.
 ") TDF_DeltaOnForget;
 		 TDF_DeltaOnForget(const opencascade::handle<TDF_Attribute> & anAtt);
 
@@ -4608,7 +4607,7 @@ None
 
 Description
 -----------
-Creates a tdf_deltaonresume.
+Creates a TDF_DeltaOnResume.
 ") TDF_DeltaOnResume;
 		 TDF_DeltaOnResume(const opencascade::handle<TDF_Attribute> & anAtt);
 
@@ -4929,7 +4928,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -4960,7 +4959,7 @@ TDF_Label
 
 Description
 -----------
-Find (or create) a tagsource attribute located at <l> and make a new child label. tagsource methods =================.
+Find (or create) a tagSource attribute located at <L> and make a new child label. TagSource methods =================.
 ") NewChild;
 		static TDF_Label NewChild(const TDF_Label & L);
 
@@ -5054,7 +5053,7 @@ opencascade::handle<TDF_TagSource>
 
 Description
 -----------
-Find, or create, a tagsource attribute. the tagsource attribute is returned.
+Find, or create, a TagSource attribute. the TagSource attribute is returned.
 ") Set;
 		static opencascade::handle<TDF_TagSource> Set(const TDF_Label & label);
 
@@ -5072,7 +5071,7 @@ None
 
 Description
 -----------
-Tdf_attribute methods =====================.
+TDF_Attribute methods =====================.
 ") Set;
 		void Set(const Standard_Integer T);
 
@@ -5106,7 +5105,7 @@ None
 
 Description
 -----------
-Creates a tdf_defaultdeltaonmodification. <anattribute> must be the backup copy.
+Creates a TDF_DefaultDeltaOnModification. <anAttribute> must be the backup copy.
 ") TDF_DefaultDeltaOnModification;
 		 TDF_DefaultDeltaOnModification(const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -5153,7 +5152,7 @@ None
 
 Description
 -----------
-Creates a tdf_defaultdeltaonremoval.
+Creates a TDF_DefaultDeltaOnRemoval.
 ") TDF_DefaultDeltaOnRemoval;
 		 TDF_DefaultDeltaOnRemoval(const opencascade::handle<TDF_Attribute> & anAttribute);
 

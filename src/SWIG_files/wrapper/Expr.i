@@ -277,7 +277,7 @@ bool
 
 Description
 -----------
-Tests if <self> contains namedunknowns.
+Tests if <self> contains NamedUnknowns.
 ") ContainsUnknowns;
 		virtual Standard_Boolean ContainsUnknowns();
 
@@ -308,7 +308,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		virtual opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -327,7 +327,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		virtual Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -340,7 +340,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") EvaluateNumeric;
 		Standard_Real EvaluateNumeric();
 
@@ -358,7 +358,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. warning: this method does not include any simplification before testing. it could also be very slow; to be used carefully.
+Tests if <self> and <Other> define the same expression. Warning: This method does not include any simplification before testing. It could also be very slow; to be used carefully.
 ") IsIdentical;
 		virtual Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -371,7 +371,7 @@ bool
 
 Description
 -----------
-Tests if <self> is linear on every namedunknown it contains.
+Tests if <self> is linear on every NamedUnknown it contains.
 ") IsLinear;
 		virtual Standard_Boolean IsLinear();
 
@@ -384,7 +384,7 @@ bool
 
 Description
 -----------
-Tests if <self> can be shared by one or more expressions or must be copied. this method returns false as a default value. to be redefined ( especially for namedunknown).
+Tests if <self> can be shared by one or more expressions or must be copied. This method returns False as a default value. To be redefined ( especially for NamedUnknown).
 ") IsShareable;
 		virtual Standard_Boolean IsShareable();
 
@@ -403,7 +403,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <n>-th derivative on <x> unknown of <self>. raise outofrange if n <= 0.
+Returns the <N>-th derivative on <X> unknown of <self>. Raise OutOfRange if N <= 0.
 ") NDerivative;
 		virtual opencascade::handle<Expr_GeneralExpression> NDerivative(const opencascade::handle<Expr_NamedUnknown> & X, const Standard_Integer N);
 
@@ -435,7 +435,7 @@ None
 
 Description
 -----------
-Replaces all occurrences of <var> with copies of <with> in <self>. copies of <with> are made with the copy() method. raises invalidoperand if <with> contains <self>.
+Replaces all occurrences of <var> with copies of <with> in <self>. Copies of <with> are made with the Copy() method. Raises InvalidOperand if <with> contains <self>.
 ") Replace;
 		virtual void Replace(const opencascade::handle<Expr_NamedUnknown> & var, const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -448,7 +448,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		virtual opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -461,7 +461,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after replacement of namedunknowns by an associated expression and after values computation.
+Returns a GeneralExpression after replacement of NamedUnknowns by an associated expression and after values computation.
 ") Simplified;
 		virtual opencascade::handle<Expr_GeneralExpression> Simplified();
 
@@ -474,7 +474,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		virtual TCollection_AsciiString String();
 
@@ -492,7 +492,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <i>-th sub-expression of <self> raises outofrange if <i> > nbsubexpressions(me).
+Returns the <I>-th sub-expression of <self> raises OutOfRange if <I> > NbSubExpressions(me).
 ") SubExpression;
 		virtual const opencascade::handle<Expr_GeneralExpression> & SubExpression(const Standard_Integer I);
 
@@ -540,7 +540,7 @@ opencascade::handle<Expr_GeneralFunction>
 
 Description
 -----------
-Returns derivative of <self> for variable <var>.
+Returns Derivative of <self> for variable <var>.
 ") Derivative;
 		virtual opencascade::handle<Expr_GeneralFunction> Derivative(const opencascade::handle<Expr_NamedUnknown> & var);
 
@@ -559,7 +559,7 @@ opencascade::handle<Expr_GeneralFunction>
 
 Description
 -----------
-Returns derivative of <self> for variable <var> with degree <deg>.
+Returns Derivative of <self> for variable <var> with degree <deg>.
 ") Derivative;
 		virtual opencascade::handle<Expr_GeneralFunction> Derivative(const opencascade::handle<Expr_NamedUnknown> & var, const Standard_Integer deg);
 
@@ -578,7 +578,7 @@ float
 
 Description
 -----------
-Computes the value of <self> with the given variables. raises notevaluable if <vars> does not match all variables of <self>.
+Computes the value of <self> with the given variables. Raises NotEvaluable if <vars> does not match all variables of <self>.
 ") Evaluate;
 		virtual Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -658,7 +658,7 @@ opencascade::handle<Expr_NamedUnknown>
 
 Description
 -----------
-Returns the variable denoted by <index> in <self>. raises outofrange if index > nbofvariables.
+Returns the variable denoted by <index> in <self>. Raises OutOfRange if index > NbOfVariables.
 ") Variable;
 		virtual opencascade::handle<Expr_NamedUnknown> Variable(const Standard_Integer index);
 
@@ -719,7 +719,7 @@ bool
 
 Description
 -----------
-Tests if <self> is linear between its namedunknowns.
+Tests if <self> is linear between its NamedUnknowns.
 ") IsLinear;
 		virtual Standard_Boolean IsLinear();
 
@@ -745,7 +745,7 @@ int
 
 Description
 -----------
-Returns the number of singlerelations contained in <self>.
+Returns the number of SingleRelations contained in <self>.
 ") NbOfSingleRelations;
 		virtual Standard_Integer NbOfSingleRelations();
 
@@ -790,7 +790,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns a generalrelation after replacement of namedunknowns by an associated expression, and after values computation.
+Returns a GeneralRelation after replacement of NamedUnknowns by an associated expression, and after values computation.
 ") Simplified;
 		virtual opencascade::handle<Expr_GeneralRelation> Simplified();
 
@@ -803,7 +803,7 @@ None
 
 Description
 -----------
-Replaces namedunknowns by associated expressions, and computes values in <self>.
+Replaces NamedUnknowns by associated expressions, and computes values in <self>.
 ") Simplify;
 		virtual void Simplify();
 
@@ -816,7 +816,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		virtual TCollection_AsciiString String();
 
@@ -834,7 +834,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns the relation denoted by <index> in <self>. an exception is raised if <index> is out of range.
+Returns the relation denoted by <index> in <self>. An exception is raised if <index> is out of range.
 ") SubRelation;
 		virtual opencascade::handle<Expr_GeneralRelation> SubRelation(const Standard_Integer index);
 
@@ -868,7 +868,7 @@ None
 
 Description
 -----------
-Creates an iterator on every namedunknown contained in <rel>.
+Creates an iterator on every NamedUnknown contained in <rel>.
 ") Expr_RUIterator;
 		 Expr_RUIterator(const opencascade::handle<Expr_GeneralRelation> & rel);
 
@@ -881,7 +881,7 @@ bool
 
 Description
 -----------
-Returns false if on other unknown remains.
+Returns False if on other unknown remains.
 ") More;
 		Standard_Boolean More();
 
@@ -907,7 +907,7 @@ opencascade::handle<Expr_NamedUnknown>
 
 Description
 -----------
-Returns current namedunknown. raises exception if no more unknowns remain.
+Returns current NamedUnknown. Raises exception if no more unknowns remain.
 ") Value;
 		opencascade::handle<Expr_NamedUnknown> Value();
 
@@ -952,7 +952,7 @@ bool
 
 Description
 -----------
-Returns false if no other relation remains.
+Returns False if no other relation remains.
 ") More;
 		Standard_Boolean More();
 
@@ -978,7 +978,7 @@ opencascade::handle<Expr_SingleRelation>
 
 Description
 -----------
-Returns current basic relation. exception is raised if no more relation remains.
+Returns current basic relation. Exception is raised if no more relation remains.
 ") Value;
 		opencascade::handle<Expr_SingleRelation> Value();
 
@@ -1095,7 +1095,7 @@ bool
 
 Description
 -----------
-Does <self> contain namedunknown ?.
+Does <self> contain NamedUnknown ?.
 ") ContainsUnknowns;
 		Standard_Boolean ContainsUnknowns();
 
@@ -1121,7 +1121,7 @@ int
 
 Description
 -----------
-Returns the number of sub-expressions contained in <self> ( >= 0).
+returns the number of sub-expressions contained in <self> ( >= 0).
 ") NbSubExpressions;
 		Standard_Integer NbSubExpressions();
 
@@ -1140,7 +1140,7 @@ None
 
 Description
 -----------
-Replaces all occurrences of <var> with <with> in <self>. raises invalidoperand if <with> contains <self>.
+Replaces all occurrences of <var> with <with> in <self>. Raises InvalidOperand if <with> contains <self>.
 ") Replace;
 		void Replace(const opencascade::handle<Expr_NamedUnknown> & var, const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -1171,7 +1171,7 @@ None
 
 Description
 -----------
-Sets first operand of <self> raises invalidoperand if exp = me.
+Sets first operand of <self> Raises InvalidOperand if exp = me.
 ") SetFirstOperand;
 		void SetFirstOperand(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1189,7 +1189,7 @@ None
 
 Description
 -----------
-Sets second operand of <self> raises invalidoperand if <exp> contains <self>.
+Sets second operand of <self> Raises InvalidOperand if <exp> contains <self>.
 ") SetSecondOperand;
 		void SetSecondOperand(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1202,7 +1202,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after replacement of namedunknowns by an associated expression and after values computation.
+Returns a GeneralExpression after replacement of NamedUnknowns by an associated expression and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralExpression> Simplified();
 
@@ -1220,7 +1220,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <i>-th sub-expression of <self> raises outofrange if <i> > nbsubexpressions(me).
+returns the <I>-th sub-expression of <self> raises OutOfRange if <I> > NbSubExpressions(me).
 ") SubExpression;
 		const opencascade::handle<Expr_GeneralExpression> & SubExpression(const Standard_Integer I);
 
@@ -1256,7 +1256,7 @@ None
 
 Description
 -----------
-Creates a functionderivative of degree <deg> relative to the <withx> variable. raises outofrange if <deg> lower or equal to zero.
+Creates a FunctionDerivative of degree <deg> relative to the <withX> variable. Raises OutOfRange if <deg> lower or equal to zero.
 ") Expr_FunctionDerivative;
 		 Expr_FunctionDerivative(const opencascade::handle<Expr_GeneralFunction> & func, const opencascade::handle<Expr_NamedUnknown> & withX, const Standard_Integer deg);
 
@@ -1313,7 +1313,7 @@ opencascade::handle<Expr_GeneralFunction>
 
 Description
 -----------
-Returns derivative of <self> for variable <var>.
+Returns Derivative of <self> for variable <var>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralFunction> Derivative(const opencascade::handle<Expr_NamedUnknown> & var);
 
@@ -1332,7 +1332,7 @@ opencascade::handle<Expr_GeneralFunction>
 
 Description
 -----------
-Returns derivative of <self> for variable <var> with degree <deg>.
+Returns Derivative of <self> for variable <var> with degree <deg>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralFunction> Derivative(const opencascade::handle<Expr_NamedUnknown> & var, const Standard_Integer deg);
 
@@ -1351,7 +1351,7 @@ float
 
 Description
 -----------
-Computes the value of <self> with the given variables. raises dimensionmismatch if length(vars) is different from length(values).
+Computes the value of <self> with the given variables. Raises DimensionMismatch if Length(vars) is different from Length(values).
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & values);
 
@@ -1470,7 +1470,7 @@ opencascade::handle<Expr_NamedUnknown>
 
 Description
 -----------
-Returns the variable denoted by <index> in <self>. raises outofrange if <index> greater than nbofvariables of <self>.
+Returns the variable denoted by <index> in <self>. Raises OutOfRange if <index> greater than NbOfVariables of <self>.
 ") Variable;
 		opencascade::handle<Expr_NamedUnknown> Variable(const Standard_Integer index);
 
@@ -1518,7 +1518,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -1531,7 +1531,7 @@ bool
 
 Description
 -----------
-Tests if <self> can be shared by one or more expressions or must be copied. this method redefines to a true value the generalexpression method.
+Tests if <self> can be shared by one or more expressions or must be copied. This method redefines to a True value the GeneralExpression method.
 ") IsShareable;
 		virtual Standard_Boolean IsShareable();
 
@@ -1562,7 +1562,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -1629,7 +1629,7 @@ opencascade::handle<Expr_GeneralFunction>
 
 Description
 -----------
-Returns derivative of <self> for variable <var>.
+Returns Derivative of <self> for variable <var>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralFunction> Derivative(const opencascade::handle<Expr_NamedUnknown> & var);
 
@@ -1648,7 +1648,7 @@ opencascade::handle<Expr_GeneralFunction>
 
 Description
 -----------
-Returns derivative of <self> for variable <var> with degree <deg>.
+Returns Derivative of <self> for variable <var> with degree <deg>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralFunction> Derivative(const opencascade::handle<Expr_NamedUnknown> & var, const Standard_Integer deg);
 
@@ -1667,7 +1667,7 @@ float
 
 Description
 -----------
-Computes the value of <self> with the given variables. raises dimensionmismatch if length(vars) is different from length(values).
+Computes the value of <self> with the given variables. Raises DimensionMismatch if Length(vars) is different from Length(values).
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & values);
 
@@ -1773,7 +1773,7 @@ None
 
 Description
 -----------
-Modifies expression of <self>. warning: beware of derivatives. see functionderivative.
+Modifies expression of <self>. Warning: Beware of derivatives. See FunctionDerivative.
 ") SetExpression;
 		void SetExpression(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -1809,7 +1809,7 @@ opencascade::handle<Expr_NamedUnknown>
 
 Description
 -----------
-Returns the variable denoted by <index> in <self>. raises outofrange if <index> is greater than nbofvariables of <self>, or less than or equal to zero.
+Returns the variable denoted by <index> in <self>. Raises OutOfRange if <index> is greater than NbOfVariables of <self>, or less than or equal to zero.
 ") Variable;
 		opencascade::handle<Expr_NamedUnknown> Variable(const Standard_Integer index);
 
@@ -1874,7 +1874,7 @@ bool
 
 Description
 -----------
-Tests if <self> contains namedunknown.
+Tests if <self> contains NamedUnknown.
 ") ContainsUnknowns;
 		Standard_Boolean ContainsUnknowns();
 
@@ -1905,7 +1905,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -1924,7 +1924,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -1955,7 +1955,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -1987,7 +1987,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <n>-th derivative on <x> unknown of <self>. raises outofrange if <n> <= 0.
+Returns the <N>-th derivative on <X> unknown of <self>. Raises OutOfRange if <N> <= 0.
 ") NDerivative;
 		virtual opencascade::handle<Expr_GeneralExpression> NDerivative(const opencascade::handle<Expr_NamedUnknown> & X, const Standard_Integer N);
 
@@ -2050,7 +2050,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -2063,7 +2063,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after replacement of namedunknowns by an associated expression and after values computation.
+Returns a GeneralExpression after replacement of NamedUnknowns by an associated expression and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralExpression> Simplified();
 
@@ -2076,7 +2076,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -2094,7 +2094,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <i>-th sub-expression of <self> raises outofrange if <i> > nbsubexpressions(me).
+Returns the <I>-th sub-expression of <self> raises OutOfRange if <I> > NbSubExpressions(me).
 ") SubExpression;
 		const opencascade::handle<Expr_GeneralExpression> & SubExpression(const Standard_Integer I);
 
@@ -2142,7 +2142,7 @@ bool
 
 Description
 -----------
-Does <self> contains namedunknown ?.
+Does <self> contains NamedUnknown ?.
 ") ContainsUnknowns;
 		Standard_Boolean ContainsUnknowns();
 
@@ -2155,7 +2155,7 @@ int
 
 Description
 -----------
-Returns the number of operands contained in <self>.
+returns the number of operands contained in <self>.
 ") NbOperands;
 		Standard_Integer NbOperands();
 
@@ -2168,7 +2168,7 @@ int
 
 Description
 -----------
-Returns the number of sub-expressions contained in <self> ( >= 2).
+returns the number of sub-expressions contained in <self> ( >= 2).
 ") NbSubExpressions;
 		Standard_Integer NbSubExpressions();
 
@@ -2186,7 +2186,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <index>-th operand used in <self>. an exception is raised if index is out of range.
+Returns the <index>-th operand used in <self>. An exception is raised if index is out of range.
 ") Operand;
 		const opencascade::handle<Expr_GeneralExpression> & Operand(const Standard_Integer index);
 
@@ -2205,7 +2205,7 @@ None
 
 Description
 -----------
-Replaces all occurrences of <var> with <with> in <self> raises invalidoperand if <with> contains <self>.
+Replaces all occurrences of <var> with <with> in <self> Raises InvalidOperand if <with> contains <self>.
 ") Replace;
 		void Replace(const opencascade::handle<Expr_NamedUnknown> & var, const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -2224,7 +2224,7 @@ None
 
 Description
 -----------
-Sets the <index>-th operand used in <self>. an exception is raised if <index> is out of range raises invalidoperand if <exp> contains <self>.
+Sets the <index>-th operand used in <self>. An exception is raised if <index> is out of range Raises InvalidOperand if <exp> contains <self>.
 ") SetOperand;
 		void SetOperand(const opencascade::handle<Expr_GeneralExpression> & exp, const Standard_Integer index);
 
@@ -2237,7 +2237,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after replacement of namedunknowns by an associated expression and after values computation.
+Returns a GeneralExpression after replacement of NamedUnknowns by an associated expression and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralExpression> Simplified();
 
@@ -2255,7 +2255,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the sub-expression denoted by <i> in <self> raises outofrange if <i> > nbsubexpressions(me).
+Returns the sub-expression denoted by <I> in <self> Raises OutOfRange if <I> > NbSubExpressions(me).
 ") SubExpression;
 		const opencascade::handle<Expr_GeneralExpression> & SubExpression(const Standard_Integer I);
 
@@ -2316,7 +2316,7 @@ bool
 
 Description
 -----------
-Tests if <self> is linear between its namedunknowns.
+Tests if <self> is linear between its NamedUnknowns.
 ") IsLinear;
 		Standard_Boolean IsLinear();
 
@@ -2329,7 +2329,7 @@ int
 
 Description
 -----------
-Returns the number of singlerelations contained in <self> (always 1).
+Returns the number of SingleRelations contained in <self> (Always 1).
 ") NbOfSingleRelations;
 		Standard_Integer NbOfSingleRelations();
 
@@ -2428,7 +2428,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns the relation denoted by <index> in <self>. an exception is raised if index is out of range.
+Returns the relation denoted by <index> in <self>. An exception is raised if index is out of range.
 ") SubRelation;
 		opencascade::handle<Expr_GeneralRelation> SubRelation(const Standard_Integer index);
 
@@ -2524,7 +2524,7 @@ bool
 
 Description
 -----------
-Tests if <self> is linear between its namedunknowns.
+Tests if <self> is linear between its NamedUnknowns.
 ") IsLinear;
 		Standard_Boolean IsLinear();
 
@@ -2550,7 +2550,7 @@ int
 
 Description
 -----------
-Returns the number of singlerelations contained in <self>.
+Returns the number of SingleRelations contained in <self>.
 ") NbOfSingleRelations;
 		Standard_Integer NbOfSingleRelations();
 
@@ -2613,7 +2613,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns a generalrelation after replacement of namedunknowns by an associated expression, and after values computation.
+Returns a GeneralRelation after replacement of NamedUnknowns by an associated expression, and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralRelation> Simplified();
 
@@ -2626,7 +2626,7 @@ None
 
 Description
 -----------
-Replaces namedunknowns by associated expressions, and computes values in <self>.
+Replaces NamedUnknowns by associated expressions, and computes values in <self>.
 ") Simplify;
 		void Simplify();
 
@@ -2639,7 +2639,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -2657,7 +2657,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns the relation denoted by <index> in <self>. an exception is raised if <index> is out of range.
+Returns the relation denoted by <index> in <self>. An exception is raised if <index> is out of range.
 ") SubRelation;
 		opencascade::handle<Expr_GeneralRelation> SubRelation(const Standard_Integer index);
 
@@ -2705,7 +2705,7 @@ bool
 
 Description
 -----------
-Does <self> contains namedunknown ?.
+Does <self> contains NamedUnknown ?.
 ") ContainsUnknowns;
 		Standard_Boolean ContainsUnknowns();
 
@@ -2750,7 +2750,7 @@ None
 
 Description
 -----------
-Replaces all occurrences of <var> with <with> in <self> raises invalidoperand if <with> contains <self>.
+Replaces all occurrences of <var> with <with> in <self> Raises InvalidOperand if <with> contains <self>.
 ") Replace;
 		void Replace(const opencascade::handle<Expr_NamedUnknown> & var, const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -2768,7 +2768,7 @@ None
 
 Description
 -----------
-Sets the operand used raises invalidoperand if <exp> contains <self>.
+Sets the operand used Raises InvalidOperand if <exp> contains <self>.
 ") SetOperand;
 		void SetOperand(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -2781,7 +2781,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after replacement of namedunknowns by an associated expression, and after values computation.
+Returns a GeneralExpression after replacement of NamedUnknowns by an associated expression, and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralExpression> Simplified();
 
@@ -2799,7 +2799,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <i>-th sub-expression of <self>. raises outofrange if <i> > nbsubexpressions(me).
+Returns the <I>-th sub-expression of <self>. Raises OutOfRange if <I> > NbSubExpressions(me).
 ") SubExpression;
 		const opencascade::handle<Expr_GeneralExpression> & SubExpression(const Standard_Integer I);
 
@@ -2833,7 +2833,7 @@ None
 
 Description
 -----------
-Creates the abs of <exp>.
+Creates the Abs of <exp>.
 ") Expr_Absolute;
 		 Expr_Absolute(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -2864,7 +2864,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -2883,7 +2883,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -2901,7 +2901,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -2927,7 +2927,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -2940,7 +2940,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -2974,7 +2974,7 @@ None
 
 Description
 -----------
-Creates the arccos of <exp>.
+Creates the Arccos of <exp>.
 ") Expr_ArcCosine;
 		 Expr_ArcCosine(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3005,7 +3005,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3024,7 +3024,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -3042,7 +3042,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3068,7 +3068,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -3081,7 +3081,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -3115,7 +3115,7 @@ None
 
 Description
 -----------
-Creates the arcsin of <exp>.
+Creates the Arcsin of <exp>.
 ") Expr_ArcSine;
 		 Expr_ArcSine(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3146,7 +3146,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3165,7 +3165,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -3183,7 +3183,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3209,7 +3209,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -3222,7 +3222,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -3256,7 +3256,7 @@ None
 
 Description
 -----------
-Creates the arctan of <exp>.
+Creates the Arctan of <exp>.
 ") Expr_ArcTangent;
 		 Expr_ArcTangent(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3287,7 +3287,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3306,7 +3306,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -3324,7 +3324,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3350,7 +3350,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -3363,7 +3363,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -3397,7 +3397,7 @@ None
 
 Description
 -----------
-Creates the argcosh of <exp>.
+Creates the ArgCosh of <exp>.
 ") Expr_ArgCosh;
 		 Expr_ArgCosh(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3428,7 +3428,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3447,7 +3447,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -3465,7 +3465,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3491,7 +3491,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -3504,7 +3504,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -3538,7 +3538,7 @@ None
 
 Description
 -----------
-Creates the argsinh of <exp>.
+Creates the ArgSinh of <exp>.
 ") Expr_ArgSinh;
 		 Expr_ArgSinh(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3569,7 +3569,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3588,7 +3588,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -3606,7 +3606,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3632,7 +3632,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -3645,7 +3645,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -3679,7 +3679,7 @@ None
 
 Description
 -----------
-Creates the argtanh of <exp>.
+Creates the Argtanh of <exp>.
 ") Expr_ArgTanh;
 		 Expr_ArgTanh(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -3710,7 +3710,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3729,7 +3729,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -3747,7 +3747,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3773,7 +3773,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -3786,7 +3786,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -3822,7 +3822,7 @@ None
 
 Description
 -----------
-Creates <self> as <func> (<exp1>,<exp2>). raises exception if <func> is not binary.
+Creates <self> as <func> (<exp1>,<exp2>). Raises exception if <func> is not binary.
 ") Expr_BinaryFunction;
 		 Expr_BinaryFunction(const opencascade::handle<Expr_GeneralFunction> & func, const opencascade::handle<Expr_GeneralExpression> & exp1, const opencascade::handle<Expr_GeneralExpression> & exp2);
 
@@ -3853,7 +3853,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -3872,7 +3872,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -3903,7 +3903,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -3929,7 +3929,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -3942,7 +3942,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -3976,7 +3976,7 @@ None
 
 Description
 -----------
-Creates the cosh of <exp>.
+Creates the Cosh of <exp>.
 ") Expr_Cosh;
 		 Expr_Cosh(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -4007,7 +4007,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -4026,7 +4026,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -4044,7 +4044,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -4070,7 +4070,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -4083,7 +4083,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -4117,7 +4117,7 @@ None
 
 Description
 -----------
-Creates the cosine of exp.
+Creates the cosine of Exp.
 ") Expr_Cosine;
 		 Expr_Cosine(const opencascade::handle<Expr_GeneralExpression> & Exp);
 
@@ -4148,7 +4148,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -4167,7 +4167,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -4185,7 +4185,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -4211,7 +4211,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -4224,7 +4224,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -4290,7 +4290,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -4309,7 +4309,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -4327,7 +4327,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -4359,7 +4359,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <n>-th derivative on <x> unknown of <self>. raises outofrange if <n> <= 0.
+Returns the <N>-th derivative on <X> unknown of <self>. Raises OutOfRange if <N> <= 0.
 ") NDerivative;
 		virtual opencascade::handle<Expr_GeneralExpression> NDerivative(const opencascade::handle<Expr_NamedUnknown> & X, const Standard_Integer N);
 
@@ -4372,7 +4372,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -4385,7 +4385,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -4459,7 +4459,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns a generalrelation after replacement of namedunknowns by an associated expression, and after values computation.
+Returns a GeneralRelation after replacement of NamedUnknowns by an associated expression, and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralRelation> Simplified();
 
@@ -4472,7 +4472,7 @@ None
 
 Description
 -----------
-Replaces namedunknowns by associated expressions, and computes values in <self>.
+Replaces NamedUnknowns by associated expressions, and computes values in <self>.
 ") Simplify;
 		void Simplify();
 
@@ -4485,7 +4485,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -4551,7 +4551,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -4570,7 +4570,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -4588,7 +4588,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -4614,7 +4614,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -4627,7 +4627,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -4701,7 +4701,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns a generalrelation after replacement of namedunknowns by an associated expression and after values computation.
+returns a GeneralRelation after replacement of NamedUnknowns by an associated expression and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralRelation> Simplified();
 
@@ -4714,7 +4714,7 @@ None
 
 Description
 -----------
-Replaces namedunknowns by an associated expressions and computes values in <self>.
+Replaces NamedUnknowns by an associated expressions and computes values in <self>.
 ") Simplify;
 		void Simplify();
 
@@ -4727,7 +4727,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -4792,7 +4792,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -4811,7 +4811,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -4829,7 +4829,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -4855,7 +4855,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -4868,7 +4868,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -4934,7 +4934,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -4953,7 +4953,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -4971,7 +4971,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -4997,7 +4997,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -5010,7 +5010,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -5084,7 +5084,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns a generalrelation after replacement of namedunknowns by an associated expression, and after values computation.
+Returns a GeneralRelation after replacement of NamedUnknowns by an associated expression, and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralRelation> Simplified();
 
@@ -5097,7 +5097,7 @@ None
 
 Description
 -----------
-Replaces namedunknowns by associated expressions, and computes values in <self>.
+Replaces NamedUnknowns by associated expressions, and computes values in <self>.
 ") Simplify;
 		void Simplify();
 
@@ -5110,7 +5110,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -5184,7 +5184,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns a generalrelation after replacement of namedunknowns by an associated expression, and after values computation.
+Returns a GeneralRelation after replacement of NamedUnknowns by an associated expression, and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralRelation> Simplified();
 
@@ -5197,7 +5197,7 @@ None
 
 Description
 -----------
-Replaces namedunknowns by associated expressions, and computes values in <self>.
+Replaces NamedUnknowns by associated expressions, and computes values in <self>.
 ") Simplify;
 		void Simplify();
 
@@ -5210,7 +5210,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -5284,7 +5284,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns a generalrelation after replacement of namedunknowns by an associated expression, and after values computation.
+Returns a GeneralRelation after replacement of NamedUnknowns by an associated expression, and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralRelation> Simplified();
 
@@ -5297,7 +5297,7 @@ None
 
 Description
 -----------
-Replaces namedunknowns by associated expressions, and computes values in <self>.
+Replaces NamedUnknowns by associated expressions, and computes values in <self>.
 ") Simplify;
 		void Simplify();
 
@@ -5310,7 +5310,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -5384,7 +5384,7 @@ opencascade::handle<Expr_GeneralRelation>
 
 Description
 -----------
-Returns a generalrelation after replacement of namedunknowns by an associated expression, and after values computation.
+Returns a GeneralRelation after replacement of NamedUnknowns by an associated expression, and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralRelation> Simplified();
 
@@ -5397,7 +5397,7 @@ None
 
 Description
 -----------
-Replaces namedunknowns by associated expressions, and computes values in <self>.
+Replaces NamedUnknowns by associated expressions, and computes values in <self>.
 ") Simplify;
 		void Simplify();
 
@@ -5410,7 +5410,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -5475,7 +5475,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -5494,7 +5494,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -5512,7 +5512,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -5538,7 +5538,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -5551,7 +5551,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -5616,7 +5616,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -5635,7 +5635,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -5653,7 +5653,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -5679,7 +5679,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -5692,7 +5692,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -5758,7 +5758,7 @@ bool
 
 Description
 -----------
-Tests if <self> contains namedunknown. (returns always false).
+Tests if <self> contains NamedUnknown. (returns always False).
 ") ContainsUnknowns;
 		Standard_Boolean ContainsUnknowns();
 
@@ -5789,7 +5789,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -5808,7 +5808,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -5853,7 +5853,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <n>-th derivative on <x> unknown of <self>. raises outofrange if <n> <= 0.
+Returns the <N>-th derivative on <X> unknown of <self>. Raises OutOfRange if <N> <= 0.
 ") NDerivative;
 		virtual opencascade::handle<Expr_GeneralExpression> NDerivative(const opencascade::handle<Expr_NamedUnknown> & X, const Standard_Integer N);
 
@@ -5866,7 +5866,7 @@ int
 
 Description
 -----------
-Returns the number of sub-expressions contained in <self> (always returns zero).
+returns the number of sub-expressions contained in <self> (always returns zero).
 ") NbSubExpressions;
 		Standard_Integer NbSubExpressions();
 
@@ -5898,7 +5898,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -5911,7 +5911,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after replacement of namedunknowns by an associated expression and after values computation.
+returns a GeneralExpression after replacement of NamedUnknowns by an associated expression and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralExpression> Simplified();
 
@@ -5929,7 +5929,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <i>-th sub-expression of <self> raises outofrange.
+returns the <I>-th sub-expression of <self> raises OutOfRange.
 ") SubExpression;
 		const opencascade::handle<Expr_GeneralExpression> & SubExpression(const Standard_Integer I);
 
@@ -5981,7 +5981,7 @@ None
 
 Description
 -----------
-Assigns <self> to <exp> expression. raises exception if <exp> refers to <self>.
+Assigns <self> to <exp> expression. Raises exception if <exp> refers to <self>.
 ") Assign;
 		void Assign(const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -5994,7 +5994,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-If exists, returns the assigned expression. an exception is raised if the expression does not exist.
+If exists, returns the assigned expression. An exception is raised if the expression does not exist.
 ") AssignedExpression;
 		const opencascade::handle<Expr_GeneralExpression> & AssignedExpression();
 
@@ -6025,7 +6025,7 @@ bool
 
 Description
 -----------
-Tests if <self> contains namedunknown.
+Tests if <self> contains NamedUnknown.
 ") ContainsUnknowns;
 		Standard_Boolean ContainsUnknowns();
 
@@ -6069,7 +6069,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -6088,7 +6088,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -6146,7 +6146,7 @@ None
 
 Description
 -----------
-Replaces all occurrences of <var> with <with> in <self> raises invalidoperand if <with> contains <self>.
+Replaces all occurrences of <var> with <with> in <self> Raises InvalidOperand if <with> contains <self>.
 ") Replace;
 		void Replace(const opencascade::handle<Expr_NamedUnknown> & var, const opencascade::handle<Expr_GeneralExpression> & with);
 
@@ -6159,7 +6159,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -6172,7 +6172,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after replacement of namedunknowns by an associated expression and after values computation.
+Returns a GeneralExpression after replacement of NamedUnknowns by an associated expression and after values computation.
 ") Simplified;
 		opencascade::handle<Expr_GeneralExpression> Simplified();
 
@@ -6190,7 +6190,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <i>-th sub-expression of <self> raises outofrange if <i> > nbsubexpressions(me).
+Returns the <I>-th sub-expression of <self> raises OutOfRange if <I> > NbSubExpressions(me).
 ") SubExpression;
 		const opencascade::handle<Expr_GeneralExpression> & SubExpression(const Standard_Integer I);
 
@@ -6256,7 +6256,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -6275,7 +6275,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -6306,7 +6306,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -6332,7 +6332,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -6345,7 +6345,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -6429,7 +6429,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -6448,7 +6448,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -6466,7 +6466,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -6492,7 +6492,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -6505,7 +6505,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -6573,7 +6573,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -6592,7 +6592,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -6610,7 +6610,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -6636,7 +6636,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -6649,7 +6649,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -6714,7 +6714,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -6733,7 +6733,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -6751,7 +6751,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -6777,7 +6777,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -6790,7 +6790,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -6855,7 +6855,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -6874,7 +6874,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -6892,7 +6892,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -6918,7 +6918,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -6931,7 +6931,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -6996,7 +6996,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -7015,7 +7015,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -7033,7 +7033,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -7059,7 +7059,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -7072,7 +7072,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -7156,7 +7156,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -7175,7 +7175,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -7193,7 +7193,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -7225,7 +7225,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <n>-th derivative on <x> unknown of <self>. raises outofrange if <n> <= 0.
+Returns the <N>-th derivative on <X> unknown of <self>. Raises OutOfRange if <N> <= 0.
 ") NDerivative;
 		virtual opencascade::handle<Expr_GeneralExpression> NDerivative(const opencascade::handle<Expr_NamedUnknown> & X, const Standard_Integer N);
 
@@ -7238,7 +7238,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -7251,7 +7251,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -7316,7 +7316,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -7335,7 +7335,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -7353,7 +7353,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -7379,7 +7379,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -7392,7 +7392,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -7457,7 +7457,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -7476,7 +7476,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -7494,7 +7494,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -7520,7 +7520,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -7533,7 +7533,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -7568,7 +7568,7 @@ None
 
 Description
 -----------
-Creates me as <func>(<exp>). raises exception if <func> is not unary.
+Creates me as <func>(<exp>). Raises exception if <func> is not unary.
 ") Expr_UnaryFunction;
 		 Expr_UnaryFunction(const opencascade::handle<Expr_GeneralFunction> & func, const opencascade::handle<Expr_GeneralExpression> & exp);
 
@@ -7599,7 +7599,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -7618,7 +7618,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -7649,7 +7649,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -7675,7 +7675,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -7688,7 +7688,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 
@@ -7753,7 +7753,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the derivative on <x> unknown of <self>.
+Returns the derivative on <X> unknown of <self>.
 ") Derivative;
 		opencascade::handle<Expr_GeneralExpression> Derivative(const opencascade::handle<Expr_NamedUnknown> & X);
 
@@ -7772,7 +7772,7 @@ float
 
 Description
 -----------
-Returns the value of <self> (as a real) by replacement of <vars> by <vals>. raises notevaluable if <self> contains namedunknown not in <vars> or numericerror if result cannot be computed.
+Returns the value of <self> (as a Real) by replacement of <vars> by <vals>. Raises NotEvaluable if <self> contains NamedUnknown not in <vars> or NumericError if result cannot be computed.
 ") Evaluate;
 		Standard_Real Evaluate(const Expr_Array1OfNamedUnknown & vars, const TColStd_Array1OfReal & vals);
 
@@ -7790,7 +7790,7 @@ bool
 
 Description
 -----------
-Tests if <self> and <other> define the same expression. this method does not include any simplification before testing.
+Tests if <self> and <Other> define the same expression. This method does not include any simplification before testing.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const opencascade::handle<Expr_GeneralExpression> & Other);
 
@@ -7822,7 +7822,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns the <n>-th derivative on <x> unknown of <self>. raises outofrange if <n> <= 0.
+Returns the <N>-th derivative on <X> unknown of <self>. Raises OutOfRange if <N> <= 0.
 ") NDerivative;
 		virtual opencascade::handle<Expr_GeneralExpression> NDerivative(const opencascade::handle<Expr_NamedUnknown> & X, const Standard_Integer N);
 
@@ -7835,7 +7835,7 @@ opencascade::handle<Expr_GeneralExpression>
 
 Description
 -----------
-Returns a generalexpression after a simplification of the arguments of <self>.
+Returns a GeneralExpression after a simplification of the arguments of <self>.
 ") ShallowSimplified;
 		opencascade::handle<Expr_GeneralExpression> ShallowSimplified();
 
@@ -7848,7 +7848,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns a string representing <self> in a readable way.
+returns a string representing <self> in a readable way.
 ") String;
 		TCollection_AsciiString String();
 

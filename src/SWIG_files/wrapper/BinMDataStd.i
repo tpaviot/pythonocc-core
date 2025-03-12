@@ -127,7 +127,7 @@ None
 
 Description
 -----------
-Adds the attribute drivers to <thedrivertable>.
+Adds the attribute drivers to <theDriverTable>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<BinMDF_ADriverTable> & theDriverTable, const opencascade::handle<Message_Messenger> & aMsgDrv);
 
@@ -196,7 +196,7 @@ bool
 
 Description
 -----------
-Persistent -> transient (retrieve).
+persistent -> transient (retrieve).
 ") Paste;
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
@@ -216,7 +216,7 @@ None
 
 Description
 -----------
-Transient -> persistent (store).
+transient -> persistent (store).
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, BinObjMgt_SRelocationTable & RelocTable);
 
@@ -905,7 +905,7 @@ bool
 
 Description
 -----------
-Persistent -> transient (retrieve).
+persistent -> transient (retrieve).
 ") Paste;
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
@@ -925,12 +925,12 @@ None
 
 Description
 -----------
-Transient -> persistent (store).
+transient -> persistent (store).
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, BinObjMgt_SRelocationTable & RelocTable);
 
 		/****** BinMDataStd_GenericExtStringDriver::SourceType ******/
-		/****** md5 signature: 386e0f76f2b398ec9a89eb891031bc89 ******/
+		/****** md5 signature: a352980563a6f80ea43fdc689b280238 ******/
 		%feature("compactdefaultargs") SourceType;
 		%feature("autodoc", "Return
 -------
@@ -940,7 +940,7 @@ Description
 -----------
 No available documentation.
 ") SourceType;
-		virtual opencascade::handle<Standard_Type> & SourceType();
+		virtual const opencascade::handle<Standard_Type> & SourceType();
 
 };
 
@@ -1005,7 +1005,7 @@ bool
 
 Description
 -----------
-Persistent -> transient (retrieve).
+persistent -> transient (retrieve).
 ") Paste;
 		Standard_Boolean Paste(const BinObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, BinObjMgt_RRelocationTable & RelocTable);
 
@@ -1025,7 +1025,7 @@ None
 
 Description
 -----------
-Transient -> persistent (store).
+transient -> persistent (store).
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Source, BinObjMgt_Persistent & Target, BinObjMgt_SRelocationTable & RelocTable);
 

@@ -105,7 +105,7 @@ bool
 
 Description
 -----------
-Finds the vertex <v> common to the two edges <e1,e2>, returns true if this vertex exists. //! warning: <v> has sense only if the value <true> is returned.
+Finds the vertex <V> common to the two edges <E1,E2>, returns True if this vertex exists. //! Warning: <V> has sense only if the value <True> is returned.
 ") CommonVertex;
 		static Standard_Boolean CommonVertex(const TopoDS_Edge & E1, const TopoDS_Edge & E2, TopoDS_Vertex & V);
 
@@ -124,7 +124,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex of orientation forward in e. if there is none returns a null shape. cumori = true: taking account the edge orientation.
+Returns the Vertex of orientation FORWARD in E. If there is none returns a Null Shape. CumOri = True: taking account the edge orientation.
 ") FirstVertex;
 		static TopoDS_Vertex FirstVertex(const TopoDS_Edge & E, const Standard_Boolean CumOri = Standard_False);
 
@@ -143,7 +143,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex of orientation reversed in e. if there is none returns a null shape. cumori = true: taking account the edge orientation.
+Returns the Vertex of orientation REVERSED in E. If there is none returns a Null Shape. CumOri = True: taking account the edge orientation.
 ") LastVertex;
 		static TopoDS_Vertex LastVertex(const TopoDS_Edge & E, const Standard_Boolean CumOri = Standard_False);
 
@@ -163,7 +163,7 @@ None
 
 Description
 -----------
-Tool to explore a topological data structure. stores in the map <m> all the sub-shapes of <s> of type <t>. //! warning: the map is not cleared at first.
+Tool to explore a topological data structure. Stores in the map <M> all the sub-shapes of <S> of type <T>. //! Warning: The map is not cleared at first.
 ") MapShapes;
 		static void MapShapes(const TopoDS_Shape & S, const TopAbs_ShapeEnum T, TopTools_IndexedMapOfShape & M);
 
@@ -184,7 +184,7 @@ None
 
 Description
 -----------
-Stores in the map <m> all the sub-shapes of <s>. - if cumori is true, the function composes all sub-shapes with the orientation of s. - if cumloc is true, the function multiplies all sub-shapes by the location of s, i.e. it applies to each sub-shape the transformation that is associated with s.
+Stores in the map <M> all the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 ") MapShapes;
 		static void MapShapes(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
 
@@ -205,7 +205,7 @@ None
 
 Description
 -----------
-Stores in the map <m> all the sub-shapes of <s>. - if cumori is true, the function composes all sub-shapes with the orientation of s. - if cumloc is true, the function multiplies all sub-shapes by the location of s, i.e. it applies to each sub-shape the transformation that is associated with s.
+Stores in the map <M> all the sub-shapes of <S>. - If cumOri is true, the function composes all sub-shapes with the orientation of S. - If cumLoc is true, the function multiplies all sub-shapes by the location of S, i.e. it applies to each sub-shape the transformation that is associated with S.
 ") MapShapes;
 		static void MapShapes(const TopoDS_Shape & S, TopTools_MapOfShape & M, const Standard_Boolean cumOri = Standard_True, const Standard_Boolean cumLoc = Standard_True);
 
@@ -226,7 +226,7 @@ None
 
 Description
 -----------
-Stores in the map <m> all the subshape of <s> of type <ts> for each one append to the list all the ancestors of type <ta>. for example map all the edges and bind the list of faces. warning: the map is not cleared at first.
+Stores in the map <M> all the subshape of <S> of type <TS> for each one append to the list all the ancestors of type <TA>. For example map all the edges and bind the list of faces. Warning: The map is not cleared at first.
 ") MapShapesAndAncestors;
 		static void MapShapesAndAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M);
 
@@ -248,7 +248,7 @@ None
 
 Description
 -----------
-Stores in the map <m> all the subshape of <s> of type <ts> for each one append to the list all unique ancestors of type <ta>. for example map all the edges and bind the list of faces. useorientation = true: taking account the ancestor orientation warning: the map is not cleared at first.
+Stores in the map <M> all the subshape of <S> of type <TS> for each one append to the list all unique ancestors of type <TA>. For example map all the edges and bind the list of faces. useOrientation = True: taking account the ancestor orientation Warning: The map is not cleared at first.
 ") MapShapesAndUniqueAncestors;
 		static void MapShapesAndUniqueAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M, const Standard_Boolean useOrientation = Standard_False);
 
@@ -269,7 +269,7 @@ None
 
 Description
 -----------
-Returns in vfirst, vlast the forward and reversed vertices of the edge <e>. may be null shapes. cumori = true: taking account the edge orientation.
+Returns in Vfirst, Vlast the FORWARD and REVERSED vertices of the edge <E>. May be null shapes. CumOri = True: taking account the edge orientation.
 ") Vertices;
 		static void Vertices(const TopoDS_Edge & E, TopoDS_Vertex & Vfirst, TopoDS_Vertex & Vlast, const Standard_Boolean CumOri = Standard_False);
 
@@ -289,7 +289,7 @@ None
 
 Description
 -----------
-Returns in vfirst, vlast the first and last vertices of the open wire <w>. may be null shapes. if <w> is closed vfirst and vlast are a same vertex on <w>. if <w> is no manifold. vfirst and vlast are null shapes.
+Returns in Vfirst, Vlast the first and last vertices of the open wire <W>. May be null shapes. if <W> is closed Vfirst and Vlast are a same vertex on <W>. if <W> is no manifold. VFirst and VLast are null shapes.
 ") Vertices;
 		static void Vertices(const TopoDS_Wire & W, TopoDS_Vertex & Vfirst, TopoDS_Vertex & Vlast);
 
@@ -316,7 +316,7 @@ None
 
 Description
 -----------
-Creates an empty explorer, becomes useful after init.
+Creates an empty explorer, becomes useful after Init.
 ") TopExp_Explorer;
 		 TopExp_Explorer();
 
@@ -336,7 +336,7 @@ None
 
 Description
 -----------
-Creates an explorer on the shape <s>. //! <tofind> is the type of shapes to search. topabs_vertex, topabs_edge, ... //! <toavoid> is the type of shape to skip in the exploration. if <toavoid> is equal or less complex than <tofind> or if <toavoid> is shape it has no effect on the exploration.
+Creates an Explorer on the Shape <S>. //! <ToFind> is the type of shapes to search. TopAbs_VERTEX, TopAbs_EDGE, ... //! <ToAvoid> is the type of shape to skip in the exploration. If <ToAvoid> is equal or less complex than <ToFind> or if <ToAVoid> is SHAPE it has no effect on the exploration.
 ") TopExp_Explorer;
 		 TopExp_Explorer(const TopoDS_Shape & S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
 
@@ -349,7 +349,7 @@ None
 
 Description
 -----------
-Clears the content of the explorer. it will return false on more().
+Clears the content of the explorer. It will return False on More().
 ") Clear;
 		void Clear();
 
@@ -362,7 +362,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the current shape in the exploration. exceptions standard_nosuchobject if this explorer has no more shapes to explore.
+Returns the current shape in the exploration. Exceptions Standard_NoSuchObject if this explorer has no more shapes to explore.
 ") Current;
 		const TopoDS_Shape Current();
 
@@ -408,7 +408,7 @@ None
 
 Description
 -----------
-Resets this explorer on the shape s. it is initialized to search the shape s, for shapes of type tofind, that are not part of a shape toavoid. if the shape toavoid is equal to topabs_shape, or if it is the same as, or less complex than, the shape tofind it has no effect on the search.
+Resets this explorer on the shape S. It is initialized to search the shape S, for shapes of type ToFind, that are not part of a shape ToAvoid. If the shape ToAvoid is equal to TopAbs_SHAPE, or if it is the same as, or less complex than, the shape ToFind it has no effect on the search.
 ") Init;
 		void Init(const TopoDS_Shape & S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
 
@@ -421,7 +421,7 @@ bool
 
 Description
 -----------
-Returns true if there are more shapes in the exploration.
+Returns True if there are more shapes in the exploration.
 ") More;
 		Standard_Boolean More();
 
@@ -434,7 +434,7 @@ None
 
 Description
 -----------
-Moves to the next shape in the exploration. exceptions standard_nomoreobject if there are no more shapes to explore.
+Moves to the next Shape in the exploration. Exceptions Standard_NoMoreObject if there are no more shapes to explore.
 ") Next;
 		void Next();
 
@@ -460,7 +460,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the current shape in the exploration. exceptions standard_nosuchobject if this explorer has no more shapes to explore.
+Returns the current shape in the exploration. Exceptions Standard_NoSuchObject if this explorer has no more shapes to explore.
 ") Value;
 		const TopoDS_Shape Value();
 

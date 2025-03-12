@@ -39,6 +39,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topodstostep.html
 
 
 %{
+#include<StepData_Factors.hxx>
 #include<TopoDSToStep_module.hxx>
 
 //Dependencies
@@ -62,6 +63,16 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_topodstostep.html
 #include<Transfer_module.hxx>
 #include<StepData_module.hxx>
 #include<Resource_module.hxx>
+#include<TDF_module.hxx>
+#include<Geom2d_module.hxx>
+#include<TDocStd_module.hxx>
+#include<TopTools_module.hxx>
+#include<IFSelect_module.hxx>
+#include<Geom_module.hxx>
+#include<XSControl_module.hxx>
+#include<PCDM_module.hxx>
+#include<CDF_module.hxx>
+#include<DE_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -210,7 +221,7 @@ None
 
 Description
 -----------
-Adds an entity into the list of results (binders) for shape stored in finderprocess.
+Adds an entity into the list of results (binders) for shape stored in FinderProcess.
 ") AddResult;
 		static void AddResult(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDS_Shape & Shape, const opencascade::handle<Standard_Transient> & entity);
 
@@ -229,7 +240,7 @@ None
 
 Description
 -----------
-Adds all entities recorded in tool into the map of results (binders) stored in finderprocess.
+Adds all entities recorded in Tool into the map of results (binders) stored in FinderProcess.
 ") AddResult;
 		static void AddResult(const opencascade::handle<Transfer_FinderProcess> & FP, const TopoDSToStep_Tool & Tool);
 
@@ -789,7 +800,7 @@ No available documentation.
 		 TopoDSToStep_Builder();
 
 		/****** TopoDSToStep_Builder::TopoDSToStep_Builder ******/
-		/****** md5 signature: 72a0aae5a13152e2a548dc39ca66f1db ******/
+		/****** md5 signature: cdc7cfb21bd32a65161eebcf41b22e3b ******/
 		%feature("compactdefaultargs") TopoDSToStep_Builder;
 		%feature("autodoc", "
 Parameters
@@ -798,7 +809,7 @@ S: TopoDS_Shape
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
 theTessellatedGeomParam: int
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -809,7 +820,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_Builder;
-		 TopoDSToStep_Builder(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const Standard_Integer theTessellatedGeomParam, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_Builder(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const Standard_Integer theTessellatedGeomParam, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_Builder::Error ******/
 		/****** md5 signature: 4bfee53f7138b72d517fea79437aa1f7 ******/
@@ -825,7 +836,7 @@ No available documentation.
 		TopoDSToStep_BuilderError Error();
 
 		/****** TopoDSToStep_Builder::Init ******/
-		/****** md5 signature: 3c8509b3c2c592f2b26b5b2438ea9a81 ******/
+		/****** md5 signature: d228a304671904895c6d1357dfc5c0d0 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -834,7 +845,7 @@ S: TopoDS_Shape
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
 theTessellatedGeomParam: int
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -845,7 +856,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const Standard_Integer theTessellatedGeomParam, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		void Init(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const Standard_Integer theTessellatedGeomParam, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_Builder::TessellatedValue ******/
 		/****** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ******/
@@ -888,14 +899,14 @@ No available documentation.
 class TopoDSToStep_MakeBrepWithVoids : public TopoDSToStep_Root {
 	public:
 		/****** TopoDSToStep_MakeBrepWithVoids::TopoDSToStep_MakeBrepWithVoids ******/
-		/****** md5 signature: d86d6717d69e5ed0bd5ae2ad22484bc8 ******/
+		/****** md5 signature: a0851ebc9b82f8e99ce050d50d46ceea ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeBrepWithVoids;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Solid
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -906,7 +917,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeBrepWithVoids;
-		 TopoDSToStep_MakeBrepWithVoids(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_MakeBrepWithVoids(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_MakeBrepWithVoids::TessellatedValue ******/
 		/****** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ******/
@@ -949,14 +960,14 @@ No available documentation.
 class TopoDSToStep_MakeFacetedBrep : public TopoDSToStep_Root {
 	public:
 		/****** TopoDSToStep_MakeFacetedBrep::TopoDSToStep_MakeFacetedBrep ******/
-		/****** md5 signature: 56fe31ae998b93861412483cefdcd632 ******/
+		/****** md5 signature: 6fa85019619728882132ddbe2886ed8b ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeFacetedBrep;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shell
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -967,17 +978,17 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeFacetedBrep;
-		 TopoDSToStep_MakeFacetedBrep(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_MakeFacetedBrep(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_MakeFacetedBrep::TopoDSToStep_MakeFacetedBrep ******/
-		/****** md5 signature: cbe6c418af564e4102547052142fb287 ******/
+		/****** md5 signature: b81f67cd008a503f3a3c29805199460b ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeFacetedBrep;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Solid
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -988,7 +999,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeFacetedBrep;
-		 TopoDSToStep_MakeFacetedBrep(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_MakeFacetedBrep(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_MakeFacetedBrep::TessellatedValue ******/
 		/****** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ******/
@@ -1031,14 +1042,14 @@ No available documentation.
 class TopoDSToStep_MakeFacetedBrepAndBrepWithVoids : public TopoDSToStep_Root {
 	public:
 		/****** TopoDSToStep_MakeFacetedBrepAndBrepWithVoids::TopoDSToStep_MakeFacetedBrepAndBrepWithVoids ******/
-		/****** md5 signature: 24c3898a7774605fe3b9f4510eb372d2 ******/
+		/****** md5 signature: 964464541084350ff8fc276d0e3b7794 ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeFacetedBrepAndBrepWithVoids;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Solid
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1049,7 +1060,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeFacetedBrepAndBrepWithVoids;
-		 TopoDSToStep_MakeFacetedBrepAndBrepWithVoids(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_MakeFacetedBrepAndBrepWithVoids(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_MakeFacetedBrepAndBrepWithVoids::TessellatedValue ******/
 		/****** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ******/
@@ -1092,14 +1103,14 @@ No available documentation.
 class TopoDSToStep_MakeGeometricCurveSet : public TopoDSToStep_Root {
 	public:
 		/****** TopoDSToStep_MakeGeometricCurveSet::TopoDSToStep_MakeGeometricCurveSet ******/
-		/****** md5 signature: ea2bf8dbbe5bded5ebf6fb469204999c ******/
+		/****** md5 signature: aa38f6d4459da99eeb12fa263bc51801 ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeGeometricCurveSet;
 		%feature("autodoc", "
 Parameters
 ----------
 SH: TopoDS_Shape
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1109,7 +1120,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeGeometricCurveSet;
-		 TopoDSToStep_MakeGeometricCurveSet(const TopoDS_Shape & SH, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors);
+		 TopoDSToStep_MakeGeometricCurveSet(const TopoDS_Shape & SH, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_MakeGeometricCurveSet::Value ******/
 		/****** md5 signature: 332abd683912d69109235089fdd27780 ******/
@@ -1139,14 +1150,14 @@ No available documentation.
 class TopoDSToStep_MakeManifoldSolidBrep : public TopoDSToStep_Root {
 	public:
 		/****** TopoDSToStep_MakeManifoldSolidBrep::TopoDSToStep_MakeManifoldSolidBrep ******/
-		/****** md5 signature: e01fd293caef9ad05df361c8feb43fc7 ******/
+		/****** md5 signature: 0245db766101b4f28113dfd7638acd7a ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeManifoldSolidBrep;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shell
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1157,17 +1168,17 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeManifoldSolidBrep;
-		 TopoDSToStep_MakeManifoldSolidBrep(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_MakeManifoldSolidBrep(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_MakeManifoldSolidBrep::TopoDSToStep_MakeManifoldSolidBrep ******/
-		/****** md5 signature: ab30653f620b8da0609952516b27979a ******/
+		/****** md5 signature: c589a608701b67eb54a5f1048c3ae2d6 ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeManifoldSolidBrep;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Solid
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1178,7 +1189,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeManifoldSolidBrep;
-		 TopoDSToStep_MakeManifoldSolidBrep(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_MakeManifoldSolidBrep(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_MakeManifoldSolidBrep::TessellatedValue ******/
 		/****** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ******/
@@ -1221,14 +1232,14 @@ No available documentation.
 class TopoDSToStep_MakeShellBasedSurfaceModel : public TopoDSToStep_Root {
 	public:
 		/****** TopoDSToStep_MakeShellBasedSurfaceModel::TopoDSToStep_MakeShellBasedSurfaceModel ******/
-		/****** md5 signature: e214d60a31d92803fcc905f211ae17fb ******/
+		/****** md5 signature: a9d85c4a5b1ab87db67a371b48765aef ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeShellBasedSurfaceModel;
 		%feature("autodoc", "
 Parameters
 ----------
 F: TopoDS_Face
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1239,17 +1250,17 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeShellBasedSurfaceModel;
-		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Face & F, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Face & F, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_MakeShellBasedSurfaceModel::TopoDSToStep_MakeShellBasedSurfaceModel ******/
-		/****** md5 signature: febe081dbd7da826bbaf06d388e23972 ******/
+		/****** md5 signature: 9c0a5e3b85a781e690109e9c0a3f2446 ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeShellBasedSurfaceModel;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shell
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1260,17 +1271,17 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeShellBasedSurfaceModel;
-		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Shell & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_MakeShellBasedSurfaceModel::TopoDSToStep_MakeShellBasedSurfaceModel ******/
-		/****** md5 signature: e00f01bd0ef8ce28cafe04d611b2c165 ******/
+		/****** md5 signature: bbf70bec252bc13bd383064ae05564ac ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeShellBasedSurfaceModel;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Solid
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1281,7 +1292,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeShellBasedSurfaceModel;
-		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		 TopoDSToStep_MakeShellBasedSurfaceModel(const TopoDS_Solid & S, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** TopoDSToStep_MakeShellBasedSurfaceModel::TessellatedValue ******/
 		/****** md5 signature: 154b00c76f3b8e8ab68ed5498da15f8b ******/
@@ -1337,7 +1348,7 @@ No available documentation.
 		 TopoDSToStep_MakeStepEdge();
 
 		/****** TopoDSToStep_MakeStepEdge::TopoDSToStep_MakeStepEdge ******/
-		/****** md5 signature: c742ffe753fe82e1af15bf33e59d4c1f ******/
+		/****** md5 signature: 32171a3fde70658681d86b0ae285b191 ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeStepEdge;
 		%feature("autodoc", "
 Parameters
@@ -1345,7 +1356,7 @@ Parameters
 E: TopoDS_Edge
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1355,7 +1366,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeStepEdge;
-		 TopoDSToStep_MakeStepEdge(const TopoDS_Edge & E, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors);
+		 TopoDSToStep_MakeStepEdge(const TopoDS_Edge & E, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_MakeStepEdge::Error ******/
 		/****** md5 signature: 3de3a6694f58a58e3a3e5adfdbafb765 ******/
@@ -1371,7 +1382,7 @@ No available documentation.
 		TopoDSToStep_MakeEdgeError Error();
 
 		/****** TopoDSToStep_MakeStepEdge::Init ******/
-		/****** md5 signature: 7bd00ce9191157128f61964dca15fe3b ******/
+		/****** md5 signature: b5e63091b65ea6332d775e43a4c95e9d ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1379,7 +1390,7 @@ Parameters
 E: TopoDS_Edge
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1389,7 +1400,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopoDS_Edge & E, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors);
+		void Init(const TopoDS_Edge & E, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_MakeStepEdge::Value ******/
 		/****** md5 signature: 93f870518e0f3e5d539f05051ca83055 ******/
@@ -1432,7 +1443,7 @@ No available documentation.
 		 TopoDSToStep_MakeStepFace();
 
 		/****** TopoDSToStep_MakeStepFace::TopoDSToStep_MakeStepFace ******/
-		/****** md5 signature: a00b99855aac604120171906e8fe1d3f ******/
+		/****** md5 signature: f91f3d0db9d0960bbc2f4642720e4d51 ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeStepFace;
 		%feature("autodoc", "
 Parameters
@@ -1440,7 +1451,7 @@ Parameters
 F: TopoDS_Face
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1450,7 +1461,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeStepFace;
-		 TopoDSToStep_MakeStepFace(const TopoDS_Face & F, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors);
+		 TopoDSToStep_MakeStepFace(const TopoDS_Face & F, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_MakeStepFace::Error ******/
 		/****** md5 signature: e3364d5908c1cf929d202ef4509a97dc ******/
@@ -1466,7 +1477,7 @@ No available documentation.
 		TopoDSToStep_MakeFaceError Error();
 
 		/****** TopoDSToStep_MakeStepFace::Init ******/
-		/****** md5 signature: cbb1aff8a935399b7044dce2cfc996e2 ******/
+		/****** md5 signature: d427e8d24adfd49aa231da34bfd6e466 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1474,7 +1485,7 @@ Parameters
 F: TopoDS_Face
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1484,7 +1495,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopoDS_Face & F, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors);
+		void Init(const TopoDS_Face & F, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_MakeStepFace::Value ******/
 		/****** md5 signature: 93f870518e0f3e5d539f05051ca83055 ******/
@@ -1527,7 +1538,7 @@ No available documentation.
 		 TopoDSToStep_MakeStepVertex();
 
 		/****** TopoDSToStep_MakeStepVertex::TopoDSToStep_MakeStepVertex ******/
-		/****** md5 signature: c3dbfc4570c12c087e05255eaa4609a0 ******/
+		/****** md5 signature: 870e4565e192e8ad00070bc468e425ae ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeStepVertex;
 		%feature("autodoc", "
 Parameters
@@ -1535,7 +1546,7 @@ Parameters
 V: TopoDS_Vertex
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1545,7 +1556,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeStepVertex;
-		 TopoDSToStep_MakeStepVertex(const TopoDS_Vertex & V, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors);
+		 TopoDSToStep_MakeStepVertex(const TopoDS_Vertex & V, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_MakeStepVertex::Error ******/
 		/****** md5 signature: 01ce425bb82586f8b90b0514f5864328 ******/
@@ -1561,7 +1572,7 @@ No available documentation.
 		TopoDSToStep_MakeVertexError Error();
 
 		/****** TopoDSToStep_MakeStepVertex::Init ******/
-		/****** md5 signature: 632f8dd35973e701ed0c2bd6fb10a6e3 ******/
+		/****** md5 signature: b0e7109e2e74a67d5741e4806b9444b1 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1569,7 +1580,7 @@ Parameters
 V: TopoDS_Vertex
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1579,7 +1590,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopoDS_Vertex & V, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors);
+		void Init(const TopoDS_Vertex & V, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_MakeStepVertex::Value ******/
 		/****** md5 signature: 93f870518e0f3e5d539f05051ca83055 ******/
@@ -1622,7 +1633,7 @@ No available documentation.
 		 TopoDSToStep_MakeStepWire();
 
 		/****** TopoDSToStep_MakeStepWire::TopoDSToStep_MakeStepWire ******/
-		/****** md5 signature: c5964f07499494416278e5cf608b04e5 ******/
+		/****** md5 signature: 51b1fd530fa063a306112bf4840a2ff5 ******/
 		%feature("compactdefaultargs") TopoDSToStep_MakeStepWire;
 		%feature("autodoc", "
 Parameters
@@ -1630,7 +1641,7 @@ Parameters
 W: TopoDS_Wire
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1640,7 +1651,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_MakeStepWire;
-		 TopoDSToStep_MakeStepWire(const TopoDS_Wire & W, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors);
+		 TopoDSToStep_MakeStepWire(const TopoDS_Wire & W, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_MakeStepWire::Error ******/
 		/****** md5 signature: 870bd4bf61bd025eb0957624f231f6d7 ******/
@@ -1656,7 +1667,7 @@ No available documentation.
 		TopoDSToStep_MakeWireError Error();
 
 		/****** TopoDSToStep_MakeStepWire::Init ******/
-		/****** md5 signature: 482073a9736d3db5dd6aca549fd72c60 ******/
+		/****** md5 signature: 7efcca4325a90405a59f98ff15203186 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
@@ -1664,7 +1675,7 @@ Parameters
 W: TopoDS_Wire
 T: TopoDSToStep_Tool
 FP: Transfer_FinderProcess
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1674,7 +1685,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopoDS_Wire & W, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors);
+		void Init(const TopoDS_Wire & W, TopoDSToStep_Tool & T, const opencascade::handle<Transfer_FinderProcess> & FP, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_MakeStepWire::Value ******/
 		/****** md5 signature: 93f870518e0f3e5d539f05051ca83055 ******/
@@ -1843,14 +1854,14 @@ No available documentation.
 		 TopoDSToStep_WireframeBuilder();
 
 		/****** TopoDSToStep_WireframeBuilder::TopoDSToStep_WireframeBuilder ******/
-		/****** md5 signature: b32f066fcf25068a977beb7395d2a553 ******/
+		/****** md5 signature: 77f3368f9763012d5ceee7840611dfd8 ******/
 		%feature("compactdefaultargs") TopoDSToStep_WireframeBuilder;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 T: TopoDSToStep_Tool
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1860,7 +1871,7 @@ Description
 -----------
 No available documentation.
 ") TopoDSToStep_WireframeBuilder;
-		 TopoDSToStep_WireframeBuilder(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const StepData_Factors & theLocalFactors);
+		 TopoDSToStep_WireframeBuilder(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_WireframeBuilder::Error ******/
 		/****** md5 signature: 4bfee53f7138b72d517fea79437aa1f7 ******/
@@ -1876,7 +1887,7 @@ No available documentation.
 		TopoDSToStep_BuilderError Error();
 
 		/****** TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromEdge ******/
-		/****** md5 signature: b41a135b9af0c795d01bedca64ab9350 ******/
+		/****** md5 signature: db00877b50a9db4366f5dfb773d5cf4e ******/
 		%feature("compactdefaultargs") GetTrimmedCurveFromEdge;
 		%feature("autodoc", "
 Parameters
@@ -1885,7 +1896,7 @@ E: TopoDS_Edge
 F: TopoDS_Face
 M: MoniTool_DataMapOfShapeTransient
 L: TColStd_HSequenceOfTransient
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1893,12 +1904,12 @@ bool
 
 Description
 -----------
-Extraction of trimmed curves from topods_edge for the creation of a geometricallyboundedwireframerepresentation.
+Extraction of Trimmed Curves from TopoDS_Edge for the Creation of a GeometricallyBoundedWireframeRepresentation.
 ") GetTrimmedCurveFromEdge;
-		Standard_Boolean GetTrimmedCurveFromEdge(const TopoDS_Edge & E, const TopoDS_Face & F, MoniTool_DataMapOfShapeTransient & M, opencascade::handle<TColStd_HSequenceOfTransient> & L, const StepData_Factors & theLocalFactors);
+		Standard_Boolean GetTrimmedCurveFromEdge(const TopoDS_Edge & E, const TopoDS_Face & F, MoniTool_DataMapOfShapeTransient & M, opencascade::handle<TColStd_HSequenceOfTransient> & L, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromFace ******/
-		/****** md5 signature: d0c4194d50444205709bc0ad3d66d8ae ******/
+		/****** md5 signature: 9fc93853cd751fffe38d34bdc6b55ccd ******/
 		%feature("compactdefaultargs") GetTrimmedCurveFromFace;
 		%feature("autodoc", "
 Parameters
@@ -1906,7 +1917,7 @@ Parameters
 F: TopoDS_Face
 M: MoniTool_DataMapOfShapeTransient
 L: TColStd_HSequenceOfTransient
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1914,12 +1925,12 @@ bool
 
 Description
 -----------
-Extraction of trimmed curves from topods_face for the creation of a geometricallyboundedwireframerepresentation.
+Extraction of Trimmed Curves from TopoDS_Face for the Creation of a GeometricallyBoundedWireframeRepresentation.
 ") GetTrimmedCurveFromFace;
-		Standard_Boolean GetTrimmedCurveFromFace(const TopoDS_Face & F, MoniTool_DataMapOfShapeTransient & M, opencascade::handle<TColStd_HSequenceOfTransient> & L, const StepData_Factors & theLocalFactors);
+		Standard_Boolean GetTrimmedCurveFromFace(const TopoDS_Face & F, MoniTool_DataMapOfShapeTransient & M, opencascade::handle<TColStd_HSequenceOfTransient> & L, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_WireframeBuilder::GetTrimmedCurveFromShape ******/
-		/****** md5 signature: f3aeab0a6986dc03fb8aa47748d296a6 ******/
+		/****** md5 signature: 717a9b2adce329e3b53b4719ccf9656b ******/
 		%feature("compactdefaultargs") GetTrimmedCurveFromShape;
 		%feature("autodoc", "
 Parameters
@@ -1927,7 +1938,7 @@ Parameters
 S: TopoDS_Shape
 M: MoniTool_DataMapOfShapeTransient
 L: TColStd_HSequenceOfTransient
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1935,19 +1946,19 @@ bool
 
 Description
 -----------
-Extraction of trimmed curves from any topods_shape for the creation of a geometricallyboundedwireframerepresentation.
+Extraction of Trimmed Curves from any TopoDS_Shape for the Creation of a GeometricallyBoundedWireframeRepresentation.
 ") GetTrimmedCurveFromShape;
-		Standard_Boolean GetTrimmedCurveFromShape(const TopoDS_Shape & S, MoniTool_DataMapOfShapeTransient & M, opencascade::handle<TColStd_HSequenceOfTransient> & L, const StepData_Factors & theLocalFactors);
+		Standard_Boolean GetTrimmedCurveFromShape(const TopoDS_Shape & S, MoniTool_DataMapOfShapeTransient & M, opencascade::handle<TColStd_HSequenceOfTransient> & L, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_WireframeBuilder::Init ******/
-		/****** md5 signature: 53a2d109f0b7078e727307d6a2c2be14 ******/
+		/****** md5 signature: f86f9d8f84df9d0070571c7e6a1d34f8 ******/
 		%feature("compactdefaultargs") Init;
 		%feature("autodoc", "
 Parameters
 ----------
 S: TopoDS_Shape
 T: TopoDSToStep_Tool
-theLocalFactors: StepData_Factors
+theLocalFactors: StepData_Factors (optional, default to StepData_Factors())
 
 Return
 -------
@@ -1957,7 +1968,7 @@ Description
 -----------
 No available documentation.
 ") Init;
-		void Init(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const StepData_Factors & theLocalFactors);
+		void Init(const TopoDS_Shape & S, TopoDSToStep_Tool & T, const StepData_Factors & theLocalFactors = StepData_Factors());
 
 		/****** TopoDSToStep_WireframeBuilder::Value ******/
 		/****** md5 signature: a3f32410191ccadbf4addae27fce695d ******/

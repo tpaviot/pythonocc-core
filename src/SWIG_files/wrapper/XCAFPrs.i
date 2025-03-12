@@ -171,7 +171,7 @@ None
 
 Description
 -----------
-Collect styles defined for shape on label l and its components and subshapes and fills a map of shape - style correspondence the location <loc> is for internal use, it should be null location for external call.
+Collect styles defined for shape on label L and its components and subshapes and fills a map of shape - style correspondence The location <loc> is for internal use, it should be Null location for external call.
 ") CollectStyleSettings;
 		static void CollectStyleSettings(const TDF_Label & L, const TopLoc_Location & loc, XCAFPrs_IndexedDataMapOfShapeStyle & settings, const Quantity_ColorRGBA & theLayerColor = Quantity_ColorRGBA(Quantity_NOC_WHITE));
 
@@ -202,7 +202,7 @@ None
 
 Description
 -----------
-Set viewnamemode for indicate display names or not.
+Set ViewNameMode for indicate display names or not.
 ") SetViewNameMode;
 		static void SetViewNameMode(const Standard_Boolean viewNameMode);
 
@@ -252,7 +252,8 @@ None
 
 Description
 -----------
-Fetch the shape from associated label and fill the map of sub-shapes styles. by default, this method is called implicitly within first ::compute(). application might call this method explicitly to manipulate styles afterwards. @param thetosyncstyles flag indicating if method ::compute() should call this method again on first compute or re-compute.
+Fetch the Shape from associated Label and fill the map of sub-shapes styles. By default, this method is called implicitly within first ::Compute(). Application might call this method explicitly to manipulate styles afterwards. 
+Parameter theToSyncStyles flag indicating if method ::Compute() should call this method again on first compute or re-compute.
 ") DispatchStyles;
 		virtual void DispatchStyles(const Standard_Boolean theToSyncStyles = Standard_False);
 
@@ -283,7 +284,7 @@ None
 
 Description
 -----------
-Assign the label to this presentation (but does not mark it outdated with settoupdate()).
+Assign the label to this presentation (but does not mark it outdated with SetToUpdate()).
 ") SetLabel;
 		void SetLabel(const TDF_Label & theLabel);
 
@@ -301,7 +302,7 @@ None
 
 Description
 -----------
-Sets the material aspect. this method assigns the new default material without overriding xde styles. re-computation of existing presentation is not required after calling this method.
+Sets the material aspect. This method assigns the new default material without overriding XDE styles. Re-computation of existing presentation is not required after calling this method.
 ") SetMaterial;
 		virtual void SetMaterial(const Graphic3d_MaterialAspect & theMaterial);
 
@@ -350,7 +351,10 @@ None
 
 Description
 -----------
-Constructor for exploring the whole document. @param thedocument document to explore @param theflags iteration flags @param thedefstyle default style for nodes with undefined style.
+Constructor for exploring the whole document. 
+Parameter theDocument document to explore 
+Parameter theFlags iteration flags 
+Parameter theDefStyle default style for nodes with undefined style.
 ") XCAFPrs_DocumentExplorer;
 		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
@@ -371,7 +375,11 @@ None
 
 Description
 -----------
-Constructor for exploring specified list of root shapes in the document. @param thedocument document to explore @param theroots root labels to explore within specified document @param theflags iteration flags @param thedefstyle default style for nodes with undefined style.
+Constructor for exploring specified list of root shapes in the document. 
+Parameter theDocument document to explore 
+Parameter theRoots root labels to explore within specified document 
+Parameter theFlags iteration flags 
+Parameter theDefStyle default style for nodes with undefined style.
 ") XCAFPrs_DocumentExplorer;
 		 XCAFPrs_DocumentExplorer(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
@@ -441,7 +449,7 @@ int
 
 Description
 -----------
-Return depth of the current node in hierarchy, starting from 0. zero means root label.
+Return depth of the current node in hierarchy, starting from 0. Zero means Root label.
 ") CurrentDepth;
 		Standard_Integer CurrentDepth();
 
@@ -460,7 +468,9 @@ TCollection_AsciiString
 
 Description
 -----------
-Construct a unique string identifier for the given label. the identifier is a concatenation of label entries (tdf_tool::entry() with tailing '.') of hierarchy from parent to child joined via '/' and looking like this: @code 0:1:1:1./0:1:1:1:9./0:1:1:5:7. @endcode this generation scheme also allows finding originating labels using tdf_tool::label(). the tailing dot simplifies parent equality check. @param thelabel child label to define id @param theparentid parent string identifier defined by this method.
+Construct a unique string identifier for the given label. The identifier is a concatenation of label entries (TDF_Tool::Entry() with tailing '.') of hierarchy from parent to child joined via '/' and looking like this: @code 0:1:1:1./0:1:1:1:9./0:1:1:5:7. @endcode This generation scheme also allows finding originating labels using TDF_Tool::Label(). The tailing dot simplifies parent equality check. 
+Parameter theLabel child label to define id 
+Parameter theParentId parent string identifier defined by this method.
 ") DefineChildId;
 		static TCollection_AsciiString DefineChildId(const TDF_Label & theLabel, TCollection_AsciiString theParentId);
 
@@ -481,7 +491,8 @@ TDF_Label
 
 Description
 -----------
-Find a shape entity based on a text identifier constructed from ocaf labels defining full path. @sa definechildid().
+Find a shape entity based on a text identifier constructed from OCAF labels defining full path. 
+See also: DefineChildId().
 ") FindLabelFromPathId;
 		static TDF_Label FindLabelFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, TCollection_AsciiString theId, TopLoc_Location & theParentLocation, TopLoc_Location & theLocation);
 
@@ -501,7 +512,8 @@ TDF_Label
 
 Description
 -----------
-Find a shape entity based on a text identifier constructed from ocaf labels defining full path. @sa definechildid().
+Find a shape entity based on a text identifier constructed from OCAF labels defining full path. 
+See also: DefineChildId().
 ") FindLabelFromPathId;
 		static TDF_Label FindLabelFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, TCollection_AsciiString theId, TopLoc_Location & theLocation);
 
@@ -520,7 +532,8 @@ TopoDS_Shape
 
 Description
 -----------
-Find a shape entity based on a text identifier constructed from ocaf labels defining full path. @sa definechildid().
+Find a shape entity based on a text identifier constructed from OCAF labels defining full path. 
+See also: DefineChildId().
 ") FindShapeFromPathId;
 		static TopoDS_Shape FindShapeFromPathId(const opencascade::handle<TDocStd_Document> & theDocument, TCollection_AsciiString theId);
 
@@ -541,7 +554,11 @@ None
 
 Description
 -----------
-Initialize the iterator from a single root shape in the document. @param thedocument document to explore @param theroot single root label to explore within specified document @param theflags iteration flags @param thedefstyle default style for nodes with undefined style.
+Initialize the iterator from a single root shape in the document. 
+Parameter theDocument document to explore 
+Parameter theRoot single root label to explore within specified document 
+Parameter theFlags iteration flags 
+Parameter theDefStyle default style for nodes with undefined style.
 ") Init;
 		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_Label & theRoot, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
@@ -562,7 +579,11 @@ None
 
 Description
 -----------
-Initialize the iterator from the list of root shapes in the document. @param thedocument document to explore @param theroots root labels to explore within specified document @param theflags iteration flags @param thedefstyle default style for nodes with undefined style.
+Initialize the iterator from the list of root shapes in the document. 
+Parameter theDocument document to explore 
+Parameter theRoots root labels to explore within specified document 
+Parameter theFlags iteration flags 
+Parameter theDefStyle default style for nodes with undefined style.
 ") Init;
 		void Init(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRoots, int theFlags, const XCAFPrs_Style & theDefStyle = XCAFPrs_Style());
 
@@ -575,7 +596,7 @@ bool
 
 Description
 -----------
-Return true if iterator points to the valid node.
+Return True if iterator points to the valid node.
 ") More;
 		Standard_Boolean More();
 
@@ -646,7 +667,7 @@ bool
 
 Description
 -----------
-Return true if iterator points to a value.
+Return True if iterator points to a value.
 ") More;
 		bool More();
 
@@ -690,14 +711,6 @@ Return current value.
 *****************************/
 class XCAFPrs_DocumentNode {
 	public:
-		TCollection_AsciiString Id;
-		TDF_Label Label;
-		TDF_Label RefLabel;
-		XCAFPrs_Style Style;
-		TopLoc_Location Location;
-		TopLoc_Location LocalTrsf;
-		TDF_ChildIterator ChildIter;
-		bool IsAssembly;
 		/****** XCAFPrs_DocumentNode::XCAFPrs_DocumentNode ******/
 		/****** md5 signature: 2d49950cf26abc8cee5d537bc0321564 ******/
 		%feature("compactdefaultargs") XCAFPrs_DocumentNode;
@@ -748,7 +761,7 @@ Standard_GUID
 
 Description
 -----------
-Returns guid of the driver.
+returns GUID of the driver.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -787,7 +800,6 @@ No available documentation.
 **********************/
 class XCAFPrs_Style {
 	public:
-		friend struct std::hash ;
 		/****** XCAFPrs_Style::XCAFPrs_Style ******/
 		/****** md5 signature: 9543f66d0ab16adfbffa6f1ff76c2dd5 ******/
 		%feature("compactdefaultargs") XCAFPrs_Style;
@@ -797,7 +809,7 @@ None
 
 Description
 -----------
-Empty constructor - colors are unset, visibility is true.
+Empty constructor - colors are unset, visibility is True.
 ") XCAFPrs_Style;
 		 XCAFPrs_Style();
 
@@ -883,7 +895,7 @@ bool
 
 Description
 -----------
-Return true if style is empty - does not override any properties.
+Return True if style is empty - does not override any properties.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -901,7 +913,7 @@ bool
 
 Description
 -----------
-Returns true if styles are the same methods for using style as key in maps.
+Returns True if styles are the same Methods for using Style as key in maps.
 ") IsEqual;
 		Standard_Boolean IsEqual(const XCAFPrs_Style & theOther);
 
@@ -914,7 +926,7 @@ bool
 
 Description
 -----------
-Return true if curve color has been defined.
+Return True if curve color has been defined.
 ") IsSetColorCurv;
 		Standard_Boolean IsSetColorCurv();
 
@@ -927,7 +939,7 @@ bool
 
 Description
 -----------
-Return true if surface color has been defined.
+Return True if surface color has been defined.
 ") IsSetColorSurf;
 		Standard_Boolean IsSetColorSurf();
 

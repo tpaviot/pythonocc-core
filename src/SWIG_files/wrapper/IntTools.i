@@ -252,7 +252,7 @@ None
 
 Description
 -----------
-Find the states (before and after) for each root from the sequence aseq.
+Find the states (before and after) for each Root from the sequence aSeq.
 ") FindRootStates;
 		static void FindRootStates(IntTools_SequenceOfRoots & aSeq, const Standard_Real anEpsNull);
 
@@ -290,7 +290,7 @@ float
 
 Description
 -----------
-Returns the length of the edge;.
+returns the length of the edge;.
 ") Length;
 		static Standard_Real Length(const TopoDS_Edge & E);
 
@@ -351,7 +351,7 @@ None
 
 Description
 -----------
-Remove from the sequence aseq the roots that have values ti and tj such as |ti-tj] < anepst.
+Remove from the sequence aSeq the Roots that have values ti and tj such as |ti-tj] < anEpsT.
 ") RemoveIdenticalRoots;
 		static void RemoveIdenticalRoots(IntTools_SequenceOfRoots & aSeq, const Standard_Real anEpsT);
 
@@ -370,7 +370,7 @@ None
 
 Description
 -----------
-Sort the sequence aseq of the roots to arrange the roots in increasing order.
+Sort the sequence aSeq of the Roots to arrange the Roots in increasing order.
 ") SortRoots;
 		static void SortRoots(IntTools_SequenceOfRoots & aSeq, const Standard_Real anEpsT);
 
@@ -492,7 +492,7 @@ None
 
 Description
 -----------
-Initializes the algorithm //! warning: the parts of the edge which are on the surface of the face and belong to the whole in the face (if there is) is considered as result.
+Initializes the algorithm //! Warning: The parts of the edge which are on the surface of the face and belong to the whole in the face (if there is) is considered as result.
 ") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace);
 
@@ -540,7 +540,7 @@ None
 
 Description
 -----------
-Initializes the algorithm theuminparameter, ... are used for optimization purposes.
+Initializes the algorithm theUMinParameter, ... are used for optimization purposes.
 ") IntTools_BeanFaceIntersector;
 		 IntTools_BeanFaceIntersector(const BRepAdaptor_Curve & theCurve, const BRepAdaptor_Surface & theSurface, const Standard_Real theFirstParOnCurve, const Standard_Real theLastParOnCurve, const Standard_Real theUMinParameter, const Standard_Real theUMaxParameter, const Standard_Real theVMinParameter, const Standard_Real theVMaxParameter, const Standard_Real theBeanTolerance, const Standard_Real theFaceTolerance);
 
@@ -572,7 +572,7 @@ None
 
 Description
 -----------
-Initializes the algorithm //! warning: the parts of the edge which are on the surface of the face and belong to the whole in the face (if there is) is considered as result.
+Initializes the algorithm //! Warning: The parts of the edge which are on the surface of the face and belong to the whole in the face (if there is) is considered as result.
 ") Init;
 		void Init(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace);
 
@@ -620,7 +620,7 @@ None
 
 Description
 -----------
-Initializes the algorithm theuminparameter, ... are used for optimization purposes.
+Initializes the algorithm theUMinParameter, ... are used for optimization purposes.
 ") Init;
 		void Init(const BRepAdaptor_Curve & theCurve, const BRepAdaptor_Surface & theSurface, const Standard_Real theFirstParOnCurve, const Standard_Real theLastParOnCurve, const Standard_Real theUMinParameter, const Standard_Real theUMaxParameter, const Standard_Real theVMinParameter, const Standard_Real theVMaxParameter, const Standard_Real theBeanTolerance, const Standard_Real theFaceTolerance);
 
@@ -633,7 +633,7 @@ bool
 
 Description
 -----------
-Returns done/notdone state of the algorithm.
+Returns Done/NotDone state of the algorithm.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -911,7 +911,7 @@ None
 
 Description
 -----------
-Copies me to another.
+Copies me to anOther.
 ") Copy;
 		void Copy(IntTools_CommonPrt & anOther);
 
@@ -1109,7 +1109,7 @@ None
 
 Description
 -----------
-Sets the type of the common part vertex or edge.
+Sets the type of the common part Vertex or Edge.
 ") SetType;
 		void SetType(const TopAbs_ShapeEnum aType);
 
@@ -1268,7 +1268,7 @@ theDist: float
 
 Description
 -----------
-Computes parameter of the point thep on the edge ae. returns zero if the distance between point and edge is less than sum of tolerance value of edge and thetopp, otherwise and for following conditions returns negative value 1. the edge is degenerated (-1) 2. the edge does not contain 3d curve and pcurves (-2) 3. projection algorithm failed (-3).
+Computes parameter of the Point theP on the edge aE. Returns zero if the distance between point and edge is less than sum of tolerance value of edge and theTopP, otherwise and for following conditions returns negative value 1. the edge is degenerated (-1) 2. the edge does not contain 3d curve and pcurves (-2) 3. projection algorithm failed (-3).
 ") ComputePE;
 		Standard_Integer ComputePE(const gp_Pnt & theP, const Standard_Real theTolP, const TopoDS_Edge & theE, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1289,7 +1289,7 @@ theTol: float
 
 Description
 -----------
-Computes parameter of the vertex av on the edge ae and correct tolerance value for the vertex on the edge. returns zero if the distance between vertex and edge is less than sum of tolerances and the fuzzy value, otherwise and for following conditions returns negative value: 1. the edge is degenerated (-1) 2. the edge does not contain 3d curve and pcurves (-2) 3. projection algorithm failed (-3).
+Computes parameter of the vertex aV on the edge aE and correct tolerance value for the vertex on the edge. Returns zero if the distance between vertex and edge is less than sum of tolerances and the fuzzy value, otherwise and for following conditions returns negative value: 1. the edge is degenerated (-1) 2. the edge does not contain 3d curve and pcurves (-2) 3. projection algorithm failed (-3).
 ") ComputeVE;
 		Standard_Integer ComputeVE(const TopoDS_Vertex & theV, const TopoDS_Edge & theE, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real theFuzz = Precision::Confusion());
 
@@ -1311,7 +1311,7 @@ theTol: float
 
 Description
 -----------
-Computes uv parameters of the vertex av on face af and correct tolerance value for the vertex on the face. returns zero if the distance between vertex and face is less than or equal the sum of tolerances and the fuzzy value and the projection point lays inside boundaries of the face. for following conditions returns negative value 1. projection algorithm failed (-1) 2. distance is more than sum of tolerances (-2) 3. projection point out or on the boundaries of face (-3).
+Computes UV parameters of the vertex aV on face aF and correct tolerance value for the vertex on the face. Returns zero if the distance between vertex and face is less than or equal the sum of tolerances and the fuzzy value and the projection point lays inside boundaries of the face. For following conditions returns negative value 1. projection algorithm failed (-1) 2. distance is more than sum of tolerances (-2) 3. projection point out or on the boundaries of face (-3).
 ") ComputeVF;
 		Standard_Integer ComputeVF(const TopoDS_Vertex & theVertex, const TopoDS_Face & theFace, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real theFuzz = Precision::Confusion());
 
@@ -1347,7 +1347,7 @@ Geom2dHatch_Hatcher
 
 Description
 -----------
-Returns a reference to 2d hatcher for given face.
+Returns a reference to 2D hatcher for given face.
 ") Hatcher;
 		Geom2dHatch_Hatcher & Hatcher(const TopoDS_Face & aF);
 
@@ -1365,7 +1365,7 @@ bool
 
 Description
 -----------
-Returns true if the solid <theface> has infinite bounds.
+Returns true if the solid <theFace> has infinite bounds.
 ") IsInfiniteFace;
 		Standard_Boolean IsInfiniteFace(const TopoDS_Face & theFace);
 
@@ -1384,7 +1384,7 @@ bool
 
 Description
 -----------
-Returns true if the point ap2d is inside the boundaries of the face af, otherwise returns false.
+Returns true if the point aP2D is inside the boundaries of the face aF, otherwise returns false.
 ") IsPointInFace;
 		Standard_Boolean IsPointInFace(const TopoDS_Face & aF, const gp_Pnt2d & aP2D);
 
@@ -1404,7 +1404,7 @@ bool
 
 Description
 -----------
-Returns true if the point ap2d is inside the boundaries of the face af, otherwise returns false.
+Returns true if the point aP2D is inside the boundaries of the face aF, otherwise returns false.
 ") IsPointInFace;
 		Standard_Boolean IsPointInFace(const gp_Pnt & aP3D, const TopoDS_Face & aF, const Standard_Real aTol);
 
@@ -1423,7 +1423,7 @@ bool
 
 Description
 -----------
-Returns true if the point ap2d is inside or on the boundaries of af.
+Returns true if the point aP2D is inside or on the boundaries of aF.
 ") IsPointInOnFace;
 		Standard_Boolean IsPointInOnFace(const TopoDS_Face & aF, const gp_Pnt2d & aP2D);
 
@@ -1445,7 +1445,7 @@ bool
 
 Description
 -----------
-Returns true if isvalidpointforface returns true for some 3d point that lay on the curve aic bounded by parameters at1 and at2.
+Returns true if IsValidPointForFace returns true for some 3d point that lay on the curve aIC bounded by parameters aT1 and aT2.
 ") IsValidBlockForFace;
 		Standard_Boolean IsValidBlockForFace(const Standard_Real aT1, const Standard_Real aT2, const IntTools_Curve & aIC, const TopoDS_Face & aF, const Standard_Real aTol);
 
@@ -1468,7 +1468,7 @@ bool
 
 Description
 -----------
-Returns true if isvalidblockforface returns true for both faces af1 and af2.
+Returns true if IsValidBlockForFace returns true for both faces aF1 and aF2.
 ") IsValidBlockForFaces;
 		Standard_Boolean IsValidBlockForFaces(const Standard_Real aT1, const Standard_Real aT2, const IntTools_Curve & aIC, const TopoDS_Face & aF1, const TopoDS_Face & aF2, const Standard_Real aTol);
 
@@ -1488,7 +1488,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between point ap3d and face af is less or equal to tolerance atol and projection point is inside or on the boundaries of the face af.
+Returns true if the distance between point aP3D and face aF is less or equal to tolerance aTol and projection point is inside or on the boundaries of the face aF.
 ") IsValidPointForFace;
 		Standard_Boolean IsValidPointForFace(const gp_Pnt & aP3D, const TopoDS_Face & aF, const Standard_Real aTol);
 
@@ -1509,7 +1509,7 @@ bool
 
 Description
 -----------
-Returns true if isvalidpointforface returns true for both face af1 and af2.
+Returns true if IsValidPointForFace returns true for both face aF1 and aF2.
 ") IsValidPointForFaces;
 		Standard_Boolean IsValidPointForFaces(const gp_Pnt & aP3D, const TopoDS_Face & aF1, const TopoDS_Face & aF2, const Standard_Real aTol);
 
@@ -1529,7 +1529,7 @@ aT: float
 
 Description
 -----------
-Computes parameter of the vertex av on the curve aic. returns true if the distance between vertex and curve is less than sum of tolerance of av and atolc, otherwise or if projection algorithm failed returns false (in this case at isn't significant).
+Computes parameter of the vertex aV on the curve aIC. Returns true if the distance between vertex and curve is less than sum of tolerance of aV and aTolC, otherwise or if projection algorithm failed returns false (in this case aT isn't significant).
 ") IsVertexOnLine;
 		Standard_Boolean IsVertexOnLine(const TopoDS_Vertex & aV, const IntTools_Curve & aIC, const Standard_Real aTolC, Standard_Real &OutValue);
 
@@ -1550,7 +1550,7 @@ aT: float
 
 Description
 -----------
-Computes parameter of the vertex av on the curve aic. returns true if the distance between vertex and curve is less than sum of tolerance of av and atolc, otherwise or if projection algorithm failed returns false (in this case at isn't significant).
+Computes parameter of the vertex aV on the curve aIC. Returns true if the distance between vertex and curve is less than sum of tolerance of aV and aTolC, otherwise or if projection algorithm failed returns false (in this case aT isn't significant).
 ") IsVertexOnLine;
 		Standard_Boolean IsVertexOnLine(const TopoDS_Vertex & aV, const Standard_Real aTolV, const IntTools_Curve & aIC, const Standard_Real aTolC, Standard_Real &OutValue);
 
@@ -1569,7 +1569,7 @@ Bnd_OBB
 
 Description
 -----------
-Builds and stores an oriented bounding box for the shape. returns a reference to obb.
+Builds and stores an Oriented Bounding Box for the shape. Returns a reference to OBB.
 ") OBB;
 		Bnd_OBB & OBB(const TopoDS_Shape & theShape, const Standard_Real theFuzzyValue = Precision::Confusion());
 
@@ -1642,7 +1642,7 @@ aT: float
 
 Description
 -----------
-Computes parameter of the point ap on the edge ae. returns false if projection algorithm failed other wiese returns true.
+Computes parameter of the point aP on the edge aE. Returns false if projection algorithm failed other wiese returns true.
 ") ProjectPointOnEdge;
 		Standard_Boolean ProjectPointOnEdge(const gp_Pnt & aP, const TopoDS_Edge & aE, Standard_Real &OutValue);
 
@@ -1660,7 +1660,7 @@ None
 
 Description
 -----------
-Sets tolerance to be used for projection of point on surface. clears map of already cached projectors in order to maintain correct value for all projectors.
+Sets tolerance to be used for projection of point on surface. Clears map of already cached projectors in order to maintain correct value for all projectors.
 ") SetPOnSProjectionTolerance;
 		void SetPOnSProjectionTolerance(const Standard_Real theValue);
 
@@ -1697,7 +1697,7 @@ TopAbs_State
 
 Description
 -----------
-Returns the state of the point ap2d relative to face af.
+Returns the state of the point aP2D relative to face aF.
 ") StatePointFace;
 		TopAbs_State StatePointFace(const TopoDS_Face & aF, const gp_Pnt2d & aP2D);
 
@@ -1825,7 +1825,7 @@ theLast: float
 
 Description
 -----------
-If the 3d curve is bounded curve the method will return true and modify the output parameters with boundary parameters of the curve and corresponded 3d points. if the curve does not have bounds, the method will return false and the output parameters will stay untouched.
+If the 3d curve is bounded curve the method will return True and modify the output parameters with boundary parameters of the curve and corresponded 3d points. If the curve does not have bounds, the method will return false and the output parameters will stay untouched.
 ") Bounds;
 		Standard_Boolean Bounds(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt);
 
@@ -1857,7 +1857,7 @@ bool
 
 Description
 -----------
-Computes 3d point corresponded to the given parameter if this parameter is inside the boundaries of the curve. returns true in this case. otherwise, the point will not be computed and the method will return false.
+Computes 3d point corresponded to the given parameter if this parameter is inside the boundaries of the curve. Returns True in this case. Otherwise, the point will not be computed and the method will return False.
 ") D0;
 		Standard_Boolean D0(const Standard_Real & thePar, gp_Pnt & thePnt);
 
@@ -1883,7 +1883,7 @@ bool
 
 Description
 -----------
-Returns true if 3d curve is boundedcurve.
+Returns True if 3d curve is BoundedCurve.
 ") HasBounds;
 		Standard_Boolean HasBounds();
 
@@ -2291,7 +2291,7 @@ float
 
 Description
 -----------
-Returns fuzzy value.
+Returns Fuzzy value.
 ") FuzzyValue;
 		Standard_Real FuzzyValue();
 
@@ -2304,7 +2304,7 @@ bool
 
 Description
 -----------
-Returns the flag myquickcoincidencecheck.
+Returns the flag myQuickCoincidenceCheck.
 ") IsCoincidenceCheckedQuickly;
 		Standard_Boolean IsCoincidenceCheckedQuickly();
 
@@ -2317,7 +2317,7 @@ bool
 
 Description
 -----------
-Returns true if common part(s) is(are) found.
+Returns True if common part(s) is(are) found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2424,7 +2424,7 @@ None
 
 Description
 -----------
-Sets the fuzzy value.
+Sets the Fuzzy value.
 ") SetFuzzyValue;
 		void SetFuzzyValue(const Standard_Real theFuzz);
 
@@ -2516,7 +2516,7 @@ None
 
 Description
 -----------
-Sets the flag myquickcoincidencecheck.
+Sets the flag myQuickCoincidenceCheck.
 ") UseQuickCoincidenceCheck;
 		void UseQuickCoincidenceCheck(const Standard_Boolean bFlag);
 
@@ -2543,7 +2543,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") IntTools_EdgeFace;
 		 IntTools_EdgeFace();
 
@@ -2621,7 +2621,7 @@ float
 
 Description
 -----------
-Returns the fuzzy value.
+Returns the Fuzzy value.
 ") FuzzyValue;
 		Standard_Real FuzzyValue();
 
@@ -2634,7 +2634,7 @@ bool
 
 Description
 -----------
-Returns the flag myquickcoincidencecheck.
+Returns the flag myQuickCoincidenceCheck.
 ") IsCoincidenceCheckedQuickly;
 		Standard_Boolean IsCoincidenceCheckedQuickly();
 
@@ -2647,7 +2647,7 @@ bool
 
 Description
 -----------
-Returns true if computation was successful. otherwise returns false.
+Returns True if computation was successful. Otherwise returns False.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2758,7 +2758,7 @@ None
 
 Description
 -----------
-Sets the fuzzy value.
+Sets the Fuzzy value.
 ") SetFuzzyValue;
 		void SetFuzzyValue(const Standard_Real theFuzz);
 
@@ -2776,7 +2776,7 @@ None
 
 Description
 -----------
-Sets the boundaries for the edge. the algorithm processes edge inside these boundaries.
+Sets the boundaries for the edge. The algorithm processes edge inside these boundaries.
 ") SetRange;
 		void SetRange(const IntTools_Range & theRange);
 
@@ -2795,7 +2795,7 @@ None
 
 Description
 -----------
-Sets the boundaries for the edge. the algorithm processes edge inside these boundaries.
+Sets the boundaries for the edge. The algorithm processes edge inside these boundaries.
 ") SetRange;
 		void SetRange(const Standard_Real theFirst, const Standard_Real theLast);
 
@@ -2813,7 +2813,7 @@ None
 
 Description
 -----------
-Sets the flag for quick coincidence check. it is safe to use the quick check for coincidence only if both of the following conditions are met: - the vertices of edge are lying on the face; - the edge does not intersect the boundaries of the face on the given range.
+Sets the flag for quick coincidence check. It is safe to use the quick check for coincidence only if both of the following conditions are met: - The vertices of edge are lying on the face; - The edge does not intersect the boundaries of the face on the given range.
 ") UseQuickCoincidenceCheck;
 		void UseQuickCoincidenceCheck(const Standard_Boolean theFlag);
 
@@ -2859,7 +2859,7 @@ None
 
 Description
 -----------
-Initializes algorithm by the face f and tolerance tol.
+Initializes algorithm by the face F and tolerance Tol.
 ") IntTools_FClass2d;
 		 IntTools_FClass2d(const TopoDS_Face & F, const Standard_Real Tol);
 
@@ -2878,7 +2878,7 @@ None
 
 Description
 -----------
-Initializes algorithm by the face f and tolerance tol.
+Initializes algorithm by the face F and tolerance Tol.
 ") Init;
 		void Init(const TopoDS_Face & F, const Standard_Real Tol);
 
@@ -2910,7 +2910,7 @@ TopAbs_State
 
 Description
 -----------
-Returns state of the 2d point puv. if recadreonperiodic is true (default value), for the periodic surface 2d point, adjusted to period, is classified.
+Returns state of the 2d point Puv. If RecadreOnPeriodic is true (default value), for the periodic surface 2d point, adjusted to period, is classified.
 ") Perform;
 		TopAbs_State Perform(const gp_Pnt2d & Puv, const Standard_Boolean RecadreOnPeriodic = Standard_True);
 
@@ -2943,7 +2943,7 @@ TopAbs_State
 
 Description
 -----------
-Test a point with +- an offset (tol) and returns on if some points are out an some are in (caution: internal use . see the code for more details).
+Test a point with +- an offset (Tol) and returns On if some points are OUT an some are IN (Caution: Internal use . see the code for more details).
 ") TestOnRestriction;
 		TopAbs_State TestOnRestriction(const gp_Pnt2d & Puv, const Standard_Real Tol, const Standard_Boolean RecadreOnPeriodic = Standard_True);
 
@@ -3022,7 +3022,7 @@ float
 
 Description
 -----------
-Returns fuzzy value.
+Returns Fuzzy value.
 ") FuzzyValue;
 		Standard_Real FuzzyValue();
 
@@ -3035,7 +3035,7 @@ bool
 
 Description
 -----------
-Returns true if the intersection was successful.
+Returns True if the intersection was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -3068,7 +3068,7 @@ None
 
 Description
 -----------
-Intersects underliing surfaces of f1 and f2 use sum of tolerance of f1 and f2 as intersection criteria.
+Intersects underliing surfaces of F1 and F2 Use sum of tolerance of F1 and F2 as intersection criteria.
 ") Perform;
 		void Perform(const TopoDS_Face & F1, const TopoDS_Face & F2, const Standard_Boolean theToRunParallel = Standard_False);
 
@@ -3099,7 +3099,8 @@ None
 
 Description
 -----------
-Provides post-processing the result lines. @param btosplit [in] split the closed 3d-curves on parts when true,  remain untouched otherwise.
+Provides post-processing the result lines. 
+Input parameter: bToSplit split the closed 3D-curves on parts when True,  remain untouched otherwise.
 ") PrepareLines3D;
 		void PrepareLines3D(const Standard_Boolean bToSplit = Standard_True);
 
@@ -3135,7 +3136,7 @@ None
 
 Description
 -----------
-Sets the fuzzy value.
+Sets the Fuzzy value.
 ") SetFuzzyValue;
 		void SetFuzzyValue(const Standard_Real theFuzz);
 
@@ -3187,7 +3188,7 @@ bool
 
 Description
 -----------
-Returns true if faces are tangent.
+Returns True if faces are tangent.
 ") TangentFaces;
 		Standard_Boolean TangentFaces();
 
@@ -3234,7 +3235,7 @@ None
 
 Description
 -----------
-Build set of ranges which consists of one range with boundary values thefirstboundary and thelastboundary.
+build set of ranges which consists of one range with boundary values theFirstBoundary and theLastBoundary.
 ") IntTools_MarkedRangeSet;
 		 IntTools_MarkedRangeSet(const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theInitFlag);
 
@@ -3253,7 +3254,7 @@ None
 
 Description
 -----------
-Build set of ranges based on the array of progressive sorted values //! warning: the constructor do not check if the values of array are not sorted it should be checked before function invocation.
+Build set of ranges based on the array of progressive sorted values //! Warning: The constructor do not check if the values of array are not sorted It should be checked before function invocation.
 ") IntTools_MarkedRangeSet;
 		 IntTools_MarkedRangeSet(const TColStd_Array1OfReal & theSortedArray, const Standard_Integer theInitFlag);
 
@@ -3271,7 +3272,7 @@ int
 
 Description
 -----------
-Returns flag of the range with index theindex.
+Returns flag of the range with index theIndex.
 ") Flag;
 		Standard_Integer Flag(const Standard_Integer theIndex);
 
@@ -3289,7 +3290,7 @@ int
 
 Description
 -----------
-Returns index of range which contains thevalue. if thevalue do not belong any range returns 0.
+Returns index of range which contains theValue. If theValue do not belong any range returns 0.
 ") GetIndex;
 		Standard_Integer GetIndex(const Standard_Real theValue);
 
@@ -3308,7 +3309,7 @@ int
 
 Description
 -----------
-Returns index of range which contains thevalue if thevalue do not belong any range returns 0. if uselower is standard_true then lower boundary of the range can be equal to thevalue, otherwise upper boundary of the range can be equal to thevalue.
+Returns index of range which contains theValue If theValue do not belong any range returns 0. If UseLower is Standard_True then lower boundary of the range can be equal to theValue, otherwise upper boundary of the range can be equal to theValue.
 ") GetIndex;
 		Standard_Integer GetIndex(const Standard_Real theValue, const Standard_Boolean UseLower);
 
@@ -3346,7 +3347,7 @@ bool
 
 Description
 -----------
-Inserts a new range marked with flag theflag it replace the existing ranges or parts of ranges and their flags. returns true if the range is inside the initial boundaries, otherwise or in case of some error returns false.
+Inserts a new range marked with flag theFlag It replace the existing ranges or parts of ranges and their flags. Returns True if the range is inside the initial boundaries, otherwise or in case of some error returns False.
 ") InsertRange;
 		Standard_Boolean InsertRange(const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theFlag);
 
@@ -3365,7 +3366,7 @@ bool
 
 Description
 -----------
-Inserts a new range marked with flag theflag it replace the existing ranges or parts of ranges and their flags. returns true if the range is inside the initial boundaries, otherwise or in case of some error returns false.
+Inserts a new range marked with flag theFlag It replace the existing ranges or parts of ranges and their flags. Returns True if the range is inside the initial boundaries, otherwise or in case of some error returns False.
 ") InsertRange;
 		Standard_Boolean InsertRange(const IntTools_Range & theRange, const Standard_Integer theFlag);
 
@@ -3386,7 +3387,7 @@ bool
 
 Description
 -----------
-Inserts a new range marked with flag theflag it replace the existing ranges or parts of ranges and their flags. the index theindex is a position where the range will be inserted. returns true if the range is inside the initial boundaries, otherwise or in case of some error returns false.
+Inserts a new range marked with flag theFlag It replace the existing ranges or parts of ranges and their flags. The index theIndex is a position where the range will be inserted. Returns True if the range is inside the initial boundaries, otherwise or in case of some error returns False.
 ") InsertRange;
 		Standard_Boolean InsertRange(const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theFlag, const Standard_Integer theIndex);
 
@@ -3406,7 +3407,7 @@ bool
 
 Description
 -----------
-Inserts a new range marked with flag theflag it replace the existing ranges or parts of ranges and their flags. the index theindex is a position where the range will be inserted. returns true if the range is inside the initial boundaries, otherwise or in case of some error returns false.
+Inserts a new range marked with flag theFlag It replace the existing ranges or parts of ranges and their flags. The index theIndex is a position where the range will be inserted. Returns True if the range is inside the initial boundaries, otherwise or in case of some error returns False.
 ") InsertRange;
 		Standard_Boolean InsertRange(const IntTools_Range & theRange, const Standard_Integer theFlag, const Standard_Integer theIndex);
 
@@ -3437,7 +3438,7 @@ IntTools_Range
 
 Description
 -----------
-Returns the range with index theindex. the index can be from 1 to length().
+Returns the range with index theIndex. the Index can be from 1 to Length().
 ") Range;
 		IntTools_Range Range(const Standard_Integer theIndex);
 
@@ -3457,7 +3458,7 @@ None
 
 Description
 -----------
-Build set of ranges which consists of one range with boundary values thefirstboundary and thelastboundary.
+build set of ranges which consists of one range with boundary values theFirstBoundary and theLastBoundary.
 ") SetBoundaries;
 		void SetBoundaries(const Standard_Real theFirstBoundary, const Standard_Real theLastBoundary, const Standard_Integer theInitFlag);
 
@@ -3476,7 +3477,7 @@ None
 
 Description
 -----------
-Set flag theflag for range with index theindex.
+Set flag theFlag for range with index theIndex.
 ") SetFlag;
 		void SetFlag(const Standard_Integer theIndex, const Standard_Integer theFlag);
 
@@ -3495,7 +3496,7 @@ None
 
 Description
 -----------
-Build set of ranges based on the array of progressive sorted values //! warning: the function do not check if the values of array are not sorted it should be checked before function invocation.
+Build set of ranges based on the array of progressive sorted values //! Warning: The function do not check if the values of array are not sorted It should be checked before function invocation.
 ") SetRanges;
 		void SetRanges(const TColStd_Array1OfReal & theSortedArray, const Standard_Integer theInitFlag);
 
@@ -3541,7 +3542,7 @@ None
 
 Description
 -----------
-Initializes me by two points ap1 and ap2.
+Initializes me by two points aP1 and aP2.
 ") IntTools_PntOn2Faces;
 		 IntTools_PntOn2Faces(const IntTools_PntOnFace & aP1, const IntTools_PntOnFace & aP2);
 
@@ -3695,7 +3696,7 @@ None
 
 Description
 -----------
-Initializes me by aface, a 3d point and it's uv parameters on face.
+Initializes me by aFace, a 3d point and it's UV parameters on face.
 ") Init;
 		void Init(const TopoDS_Face & aF, const gp_Pnt & aP, const Standard_Real U, const Standard_Real V);
 
@@ -4008,7 +4009,7 @@ f2: float
 
 Description
 -----------
-Returns the values of interval from which the root was found [t1,t2] and the corresponding values of the function on the bounds f(t1), f(t2).
+Returns the values of interval from which the Root was found [t1,t2] and the corresponding values of the function on the bounds f(t1), f(t2).
 ") Interval;
 		void Interval(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4021,7 +4022,7 @@ bool
 
 Description
 -----------
-Returns the validity flag for the root, true if mystatebefore==topabs_out && mystateafter==topabs_in or mystatebefore==topabs_out && mystateafter==topabs_on or mystatebefore==topabs_on && mystateafter==topabs_out or mystatebefore==topabs_in && mystateafter==topabs_out . for other cases it returns false.
+Returns the validity flag for the root, True if myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_IN or myStateBefore==TopAbs_OUT && myStateAfter==TopAbs_ON or myStateBefore==TopAbs_ON && myStateAfter==TopAbs_OUT or myStateBefore==TopAbs_IN && myStateAfter==TopAbs_OUT . For other cases it returns False.
 ") IsValid;
 		Standard_Boolean IsValid();
 
@@ -4034,7 +4035,7 @@ float
 
 Description
 -----------
-Not used in edge/edge algorithm.
+Not used in Edge/Edge algorithm.
 ") LayerHeight;
 		Standard_Real LayerHeight();
 
@@ -4047,7 +4048,7 @@ float
 
 Description
 -----------
-Returns the root value.
+Returns the Root value.
 ") Root;
 		Standard_Real Root();
 
@@ -4068,7 +4069,7 @@ None
 
 Description
 -----------
-Sets the interval from which the root was found [t1,t2] and the corresponding values of the function on the bounds f(t1), f(t2).
+Sets the interval from which the Root was found [t1,t2] and the corresponding values of the function on the bounds f(t1), f(t2).
 ") SetInterval;
 		void SetInterval(const Standard_Real t1, const Standard_Real t2, const Standard_Real f1, const Standard_Real f2);
 
@@ -4086,7 +4087,7 @@ None
 
 Description
 -----------
-Not used in edge/edge algorithm.
+Not used in Edge/Edge algorithm.
 ") SetLayerHeight;
 		void SetLayerHeight(const Standard_Real aHeight);
 
@@ -4104,7 +4105,7 @@ None
 
 Description
 -----------
-Sets the root's value.
+Sets the Root's value.
 ") SetRoot;
 		void SetRoot(const Standard_Real aRoot);
 
@@ -4122,7 +4123,7 @@ None
 
 Description
 -----------
-Set the value of the state after the root (at t=root-dt).
+Set the value of the state after the root (at t=Root-dt).
 ") SetStateAfter;
 		void SetStateAfter(const TopAbs_State aState);
 
@@ -4140,7 +4141,7 @@ None
 
 Description
 -----------
-Set the value of the state before the root (at t=root-dt).
+Set the value of the state before the root (at t=Root-dt).
 ") SetStateBefore;
 		void SetStateBefore(const TopAbs_State aState);
 
@@ -4158,7 +4159,7 @@ None
 
 Description
 -----------
-Sets the root's type.
+Sets the Root's Type.
 ") SetType;
 		void SetType(const Standard_Integer aType);
 
@@ -4197,7 +4198,7 @@ int
 
 Description
 -----------
-Returns the type of the root =0 - simple (was found by bisection method); =2 - smart when f1=0, f2!=0 or vice versa (was found by fibbonacci method); =1 - pure (pure zero for all t [t1,t2] );.
+Returns the type of the root =0 - Simple (was found by bisection method); =2 - Smart when f1=0, f2!=0 or vice versa (was found by Fibbonacci method); =1 - Pure (pure zero for all t [t1,t2] );.
 ") Type;
 		Standard_Integer Type();
 
@@ -4276,7 +4277,7 @@ bool
 
 Description
 -----------
-Returns true in case the shrunk range is computed.
+Returns True in case the shrunk range is computed.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -4289,7 +4290,7 @@ bool
 
 Description
 -----------
-Returns false in case the shrunk range is too short and the edge cannot be split, otherwise returns true.
+Returns False in case the shrunk range is too short and the edge cannot be split, otherwise returns True.
 ") IsSplittable;
 		Standard_Boolean IsSplittable();
 
@@ -4616,7 +4617,7 @@ int
 
 Description
 -----------
-Returns the number of grid points on u direction in frame.
+Returns the number of grid points on U direction in frame.
 ") GetNBUPointsInFrame;
 		Standard_Integer GetNBUPointsInFrame();
 
@@ -4629,7 +4630,7 @@ int
 
 Description
 -----------
-Returns the number of grid points on v direction in frame.
+Returns the number of grid points on V direction in frame.
 ") GetNBVPointsInFrame;
 		Standard_Integer GetNBVPointsInFrame();
 
@@ -4687,7 +4688,7 @@ int
 
 Description
 -----------
-Query the range u of the grid of points.
+Query the range U of the grid of points.
 ") GetRangeUGrid;
 		Standard_Integer GetRangeUGrid();
 
@@ -4700,7 +4701,7 @@ int
 
 Description
 -----------
-Query the range v of the grid of points.
+Query the range V of the grid of points.
 ") GetRangeVGrid;
 		Standard_Integer GetRangeVGrid();
 
@@ -4718,7 +4719,7 @@ float
 
 Description
 -----------
-Query the u parameter of the grid points at that index.
+Query the U parameter of the grid points at that index.
 ") GetUParam;
 		Standard_Real GetUParam(const Standard_Integer theIndex);
 
@@ -4736,7 +4737,7 @@ float
 
 Description
 -----------
-Query the u parameter of the grid points at that index in frame.
+Query the U parameter of the grid points at that index in frame.
 ") GetUParamInFrame;
 		Standard_Real GetUParamInFrame(const Standard_Integer theIndex);
 
@@ -4754,7 +4755,7 @@ float
 
 Description
 -----------
-Query the v parameter of the grid points at that index.
+Query the V parameter of the grid points at that index.
 ") GetVParam;
 		Standard_Real GetVParam(const Standard_Integer theIndex);
 
@@ -4772,7 +4773,7 @@ float
 
 Description
 -----------
-Query the v parameter of the grid points at that index in frame.
+Query the V parameter of the grid points at that index in frame.
 ") GetVParamInFrame;
 		Standard_Real GetVParamInFrame(const Standard_Integer theIndex);
 
@@ -4842,7 +4843,7 @@ None
 
 Description
 -----------
-Sets the frame area. used to work with grid points.
+Sets the frame area. Used to work with grid points.
 ") SetFrame;
 		void SetFrame(const Standard_Real theUMin, const Standard_Real theUMax, const Standard_Real theVMin, const Standard_Real theVMax);
 
@@ -4898,7 +4899,7 @@ None
 
 Description
 -----------
-Set the range u of the grid of points.
+Set the range U of the grid of points.
 ") SetRangeUGrid;
 		void SetRangeUGrid(const Standard_Integer theNbUGrid);
 
@@ -4916,7 +4917,7 @@ None
 
 Description
 -----------
-Set the range v of the grid of points.
+Set the range V of the grid of points.
 ") SetRangeVGrid;
 		void SetRangeVGrid(const Standard_Integer theNbVGrid);
 
@@ -4935,7 +4936,7 @@ None
 
 Description
 -----------
-Set the u parameter of the grid points at that index.
+Set the U parameter of the grid points at that index.
 ") SetUParam;
 		void SetUParam(const Standard_Integer theIndex, const Standard_Real theUParam);
 
@@ -4954,7 +4955,7 @@ None
 
 Description
 -----------
-Set the v parameter of the grid points at that index.
+Set the V parameter of the grid points at that index.
 ") SetVParam;
 		void SetVParam(const Standard_Integer theIndex, const Standard_Real theVParam);
 
@@ -5477,7 +5478,7 @@ bool
 
 Description
 -----------
-Checks if the curve is not covered by the default tolerance (confusion). builds bounding box for the curve and stores it into <thebox>.
+Checks if the curve is not covered by the default tolerance (confusion). Builds bounding box for the curve and stores it into <theBox>.
 ") CheckCurve;
 		static Standard_Boolean CheckCurve(const IntTools_Curve & theCurve, Bnd_Box & theBox);
 
@@ -5516,7 +5517,7 @@ float
 
 Description
 -----------
-Computes the correct intersection range for line/line, line/plane and plane/plane intersections.
+Computes the correct Intersection range for Line/Line, Line/Plane and Plane/Plane intersections.
 ") ComputeIntRange;
 		static Standard_Real ComputeIntRange(const Standard_Real theTol1, const Standard_Real theTol2, const Standard_Real theAngle);
 
@@ -5541,7 +5542,7 @@ theMaxPar: float
 
 Description
 -----------
-Computes the max distance between points taken from 3d and 2d curves by the same parameter.
+Computes the max distance between points taken from 3D and 2D curves by the same parameter.
 ") ComputeTolerance;
 		static Standard_Boolean ComputeTolerance(const opencascade::handle<Geom_Curve> & theCurve3D, const opencascade::handle<Geom2d_Curve> & theCurve2D, const opencascade::handle<Geom_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real theTolRange = Precision::PConfusion(), const Standard_Boolean theToRunParallel = Standard_False);
 
@@ -5560,7 +5561,7 @@ int
 
 Description
 -----------
-Computes distance between vertex v1 and vertex v2, if the distance is less than sum of vertex tolerances returns zero, otherwise returns negative value.
+Computes distance between vertex V1 and vertex V2, if the distance is less than sum of vertex tolerances returns zero, otherwise returns negative value.
 ") ComputeVV;
 		static Standard_Integer ComputeVV(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
@@ -5579,7 +5580,7 @@ float
 
 Description
 -----------
-Returns adaptive tolerance for given atolbase if ac is trimmed curve and basis curve is parabola, otherwise returns value of atolbase.
+Returns adaptive tolerance for given aTolBase if aC is trimmed curve and basis curve is parabola, otherwise returns value of aTolBase.
 ") CurveTolerance;
 		static Standard_Real CurveTolerance(const opencascade::handle<Geom_Curve> & aC, const Standard_Real aTolBase);
 
@@ -5597,7 +5598,7 @@ bool
 
 Description
 -----------
-Returns true if wire aw contains edges with internal orientation.
+Returns True if wire aW contains edges with INTERNAL orientation.
 ") HasInternalEdge;
 		static Standard_Boolean HasInternalEdge(const TopoDS_Wire & aW);
 
@@ -5616,7 +5617,7 @@ float
 
 Description
 -----------
-Returns some value between afirst and alast.
+Returns some value between aFirst and aLast.
 ") IntermediatePoint;
 		static Standard_Real IntermediatePoint(const Standard_Real aFirst, const Standard_Real aLast);
 
@@ -5634,7 +5635,7 @@ bool
 
 Description
 -----------
-Returns true if ac is boundedcurve from geom and the distance between first point of the curve ac and last point is less than 1.e-12.
+Returns True if aC is BoundedCurve from Geom and the distance between first point of the curve aC and last point is less than 1.e-12.
 ") IsClosed;
 		static Standard_Boolean IsClosed(const opencascade::handle<Geom_Curve> & aC);
 
@@ -5653,7 +5654,7 @@ bool
 
 Description
 -----------
-Returns true if d1 and d2 coincide.
+Returns True if D1 and D2 coincide.
 ") IsDirsCoinside;
 		static Standard_Boolean IsDirsCoinside(const gp_Dir & D1, const gp_Dir & D2);
 
@@ -5673,7 +5674,7 @@ bool
 
 Description
 -----------
-Returns true if d1 and d2 coincide with given tolerance.
+Returns True if D1 and D2 coincide with given tolerance.
 ") IsDirsCoinside;
 		static Standard_Boolean IsDirsCoinside(const gp_Dir & D1, const gp_Dir & D2, const Standard_Real aTol);
 
@@ -5693,7 +5694,7 @@ bool
 
 Description
 -----------
-Checks if the range <ther> interfere with the range <therref>.
+Checks if the range <theR> interfere with the range <theRRef>.
 ") IsInRange;
 		static Standard_Boolean IsInRange(const IntTools_Range & theRRef, const IntTools_Range & theR, const Standard_Real theTol);
 
@@ -5712,7 +5713,7 @@ bool
 
 Description
 -----------
-Gets boundary of parameters of e1 and e2. computes 3d points on each corresponded to average parameters. returns true if distance between computed points is less than sum of edge tolerance, otherwise returns false.
+Gets boundary of parameters of E1 and E2. Computes 3d points on each corresponded to average parameters. Returns True if distance between computed points is less than sum of edge tolerance, otherwise returns False.
 ") IsMiddlePointsEqual;
 		static Standard_Boolean IsMiddlePointsEqual(const TopoDS_Edge & E1, const TopoDS_Edge & E2);
 
@@ -5771,7 +5772,7 @@ bool
 
 Description
 -----------
-Computes square distance between a point on the edge e corresponded to parameter t and vertices of edge e. returns true if this distance is less than square tolerance of vertex, otherwise returns false.
+Computes square distance between a point on the edge E corresponded to parameter t and vertices of edge E. Returns True if this distance is less than square tolerance of vertex, otherwise returns false.
 ") IsVertex;
 		static Standard_Boolean IsVertex(const TopoDS_Edge & E, const Standard_Real t);
 
@@ -5791,7 +5792,7 @@ bool
 
 Description
 -----------
-Returns true if square distance between vertex v and a point on the edge e corresponded to parameter t is less than square tolerance of v.
+Returns True if square distance between vertex V and a point on the edge E corresponded to parameter t is less than square tolerance of V.
 ") IsVertex;
 		static Standard_Boolean IsVertex(const TopoDS_Edge & E, const TopoDS_Vertex & V, const Standard_Real t);
 
@@ -5809,7 +5810,7 @@ bool
 
 Description
 -----------
-Returns true if isvertx for middle parameter of fist range and first edge returns true and if isvertex for middle parameter of second range and second range returns true, otherwise returns false.
+Returns True if IsVertx for middle parameter of fist range and first edge returns True and if IsVertex for middle parameter of second range and second range returns True, otherwise returns False.
 ") IsVertex;
 		static Standard_Boolean IsVertex(const IntTools_CommonPrt & aCmnPrt);
 
@@ -5829,7 +5830,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between point ap and vertex av is less or equal to sum of atolpv and vertex tolerance, otherwise returns false.
+Returns True if the distance between point aP and vertex aV is less or equal to sum of aTolPV and vertex tolerance, otherwise returns False.
 ") IsVertex;
 		static Standard_Boolean IsVertex(const gp_Pnt & aP, const Standard_Real aTolPV, const TopoDS_Vertex & aV);
 
@@ -5849,7 +5850,7 @@ None
 
 Description
 -----------
-Build a face based on surface of given face af and bounded by wire aw.
+Build a face based on surface of given face aF and bounded by wire aW.
 ") MakeFaceFromWireAndFace;
 		static void MakeFaceFromWireAndFace(const TopoDS_Wire & aW, const TopoDS_Face & aF, TopoDS_Face & aFNew);
 
@@ -5868,7 +5869,7 @@ None
 
 Description
 -----------
-Puts curves from asin to asout except those curves that are coincide with first curve from asin.
+Puts curves from aSIn to aSOut except those curves that are coincide with first curve from aSIn.
 ") RejectLines;
 		static void RejectLines(const IntTools_SequenceOfCurves & aSIn, IntTools_SequenceOfCurves & aSOut);
 
@@ -5914,7 +5915,7 @@ int
 
 Description
 -----------
-Split ac by average parameter if ac is closed in 3d. returns positive value if splitting has been done, otherwise returns zero.
+Split aC by average parameter if aC is closed in 3D. Returns positive value if splitting has been done, otherwise returns zero.
 ") SplitCurve;
 		static Standard_Integer SplitCurve(const IntTools_Curve & aC, IntTools_SequenceOfCurves & aS);
 
@@ -6022,7 +6023,7 @@ None
 
 Description
 -----------
-Redefined empty initializer //! warning: raises the exception notimplemented.
+Redefined empty initializer //! Warning: Raises the exception NotImplemented.
 ") Initialize;
 		virtual void Initialize();
 
@@ -6099,7 +6100,7 @@ None
 
 Description
 -----------
-Compute the sample-points for the intersections algorithms by adaptive algorithm for bspline surfaces. for other surfaces algorithm is the same as in method computesamplepoints(), but only fill arrays of u and v sample parameters; thedefl is a required deflection thenumin, thenvmin are minimal nb points for u and v.
+compute the sample-points for the intersections algorithms by adaptive algorithm for BSpline surfaces. For other surfaces algorithm is the same as in method ComputeSamplePoints(), but only fill arrays of U and V sample parameters; theDefl is a required deflection theNUmin, theNVmin are minimal nb points for U and V.
 ") SamplePnts;
 		virtual void SamplePnts(const Standard_Real theDefl, const Standard_Integer theNUmin, const Standard_Integer theNVmin);
 
@@ -6119,7 +6120,7 @@ None
 
 Description
 -----------
-Returns a 2d point from surface mys and a corresponded 3d point for given index. the index should be from 1 to nbsamples().
+Returns a 2d point from surface myS and a corresponded 3d point for given index. The index should be from 1 to NbSamples().
 ") SamplePoint;
 		virtual void SamplePoint(const Standard_Integer Index, gp_Pnt2d & P2d, gp_Pnt & P3d);
 

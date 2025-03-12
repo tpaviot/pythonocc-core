@@ -134,7 +134,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d.
+returns resulting compound of lines of specified type and visibility represented by edges in 3d or 2d.
 ") GetCompoundOf3dEdges;
 		TopoDS_Shape GetCompoundOf3dEdges(const HLRBRep_TypeOfResultingEdge type, const Standard_Boolean visible, const Standard_Boolean In3d);
 
@@ -147,7 +147,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns resulting compound of reflect lines represented by edges in 3d.
+returns resulting compound of reflect lines represented by edges in 3d.
 ") GetResult;
 		TopoDS_Shape GetResult();
 

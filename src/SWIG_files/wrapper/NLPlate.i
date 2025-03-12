@@ -592,7 +592,7 @@ None
 
 Description
 -----------
-Reset the plate in the initial state ( same as after create((surface)).
+reset the Plate in the initial state ( same as after Create((Surface)).
 ") Init;
 		void Init();
 
@@ -605,7 +605,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 

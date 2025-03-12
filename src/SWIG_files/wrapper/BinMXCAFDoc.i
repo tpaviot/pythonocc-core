@@ -128,7 +128,7 @@ None
 
 Description
 -----------
-Adds the attribute drivers to <thedrivertable>.
+Adds the attribute drivers to <theDriverTable>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<BinMDF_ADriverTable> & theDriverTable, const opencascade::handle<Message_Messenger> & theMsgDrv);
 
@@ -1071,7 +1071,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Create new instance of xcafdoc_vismaterial.
+Create new instance of XCAFDoc_VisMaterial.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -1158,7 +1158,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Create new instance of xcafdoc_vismaterialtool.
+Create new instance of XCAFDoc_VisMaterialTool.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 

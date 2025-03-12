@@ -51,11 +51,8 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwply.html"
 #include<TDF_module.hxx>
 #include<TColStd_module.hxx>
 #include<Message_module.hxx>
-#include<DE_module.hxx>
 #include<Graphic3d_module.hxx>
 #include<gp_module.hxx>
-#include<XSControl_module.hxx>
-#include<TopoDS_module.hxx>
 #include<CDF_module.hxx>
 #include<PCDM_module.hxx>
 #include<TDF_module.hxx>
@@ -92,6 +89,7 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwply.html"
 #include<Transfer_module.hxx>
 #include<Interface_module.hxx>
 #include<Poly_module.hxx>
+#include<TopoDS_module.hxx>
 #include<TColgp_module.hxx>
 #include<TColStd_module.hxx>
 #include<TCollection_module.hxx>
@@ -106,11 +104,8 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_rwply.html"
 %import TDF.i
 %import TColStd.i
 %import Message.i
-%import DE.i
 %import Graphic3d.i
 %import gp.i
-%import XSControl.i
-%import TopoDS.i
 
 %pythoncode {
 from enum import IntEnum
@@ -154,7 +149,8 @@ None
 
 Description
 -----------
-Main constructor. @param[in] thefile path to output ply file.
+Main constructor. 
+Input parameter: theFile path to output PLY file.
 ") RWPly_CafWriter;
 		 RWPly_CafWriter(TCollection_AsciiString theFile);
 
@@ -167,7 +163,7 @@ RWMesh_CoordinateSystemConverter
 
 Description
 -----------
-Return transformation from occt to ply coordinate system.
+Return transformation from OCCT to PLY coordinate system.
 ") ChangeCoordinateSystemConverter;
 		RWMesh_CoordinateSystemConverter & ChangeCoordinateSystemConverter();
 
@@ -180,7 +176,7 @@ RWMesh_CoordinateSystemConverter
 
 Description
 -----------
-Return transformation from occt to ply coordinate system.
+Return transformation from OCCT to PLY coordinate system.
 ") CoordinateSystemConverter;
 		const RWMesh_CoordinateSystemConverter & CoordinateSystemConverter();
 
@@ -206,7 +202,7 @@ bool
 
 Description
 -----------
-Return true if point colors should be written; true by default.
+Return True if point colors should be written; True by default.
 ") HasColors;
 		bool HasColors();
 
@@ -219,7 +215,7 @@ bool
 
 Description
 -----------
-Return true if face id should be written as element attribute; false by default.
+Return True if face Id should be written as element attribute; False by default.
 ") HasFaceId;
 		bool HasFaceId();
 
@@ -232,7 +228,7 @@ bool
 
 Description
 -----------
-Return true if normals should be written; true by default.
+Return True if normals should be written; True by default.
 ") HasNormals;
 		bool HasNormals();
 
@@ -245,7 +241,7 @@ bool
 
 Description
 -----------
-Return true if part id should be written as element attribute; true by default.
+Return True if part Id should be written as element attribute; True by default.
 ") HasPartId;
 		bool HasPartId();
 
@@ -258,7 +254,7 @@ bool
 
 Description
 -----------
-Return true if uv / texture coordinates should be written; false by default.
+Return True if UV / texture coordinates should be written; False by default.
 ") HasTexCoords;
 		bool HasTexCoords();
 
@@ -271,7 +267,7 @@ bool
 
 Description
 -----------
-Return true if vertex position should be stored with double floating point precision; false by default.
+Return True if vertex position should be stored with double floating point precision; False by default.
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
@@ -293,7 +289,13 @@ bool
 
 Description
 -----------
-Write ply file and associated mtl material file. triangulation data should be precomputed within shapes! @param[in] thedocument input document @param[in] therootlabels list of root shapes to export @param[in] thelabelfilter optional filter with document nodes to export,  with keys defined by xcafprs_documentexplorer::definechildid() and filled recursively  (leaves and parent assembly nodes at all levels);  when not null, all nodes not included into the map will be ignored @param[in] thefileinfo map with file metadata to put into ply header section @param[in] theprogress optional progress indicator return false on file writing failure.
+Write PLY file and associated MTL material file. Triangulation data should be precomputed within shapes! 
+Input parameter: theDocument input document 
+Input parameter: theRootLabels list of root shapes to export 
+Input parameter: theLabelFilter optional filter with document nodes to export,  with keys defined by XCAFPrs_DocumentExplorer::DefineChildId() and  filled recursively (leaves and parent assembly nodes at all levels);  when not NULL, all nodes not included into the map will be ignored 
+Input parameter: theFileInfo map with file metadata to put into PLY header section 
+Input parameter: theProgress optional progress indicator 
+Return: False on file writing failure.
 ") Perform;
 		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TDF_LabelSequence & theRootLabels, const TColStd_MapOfAsciiString * theLabelFilter, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
@@ -313,7 +315,11 @@ bool
 
 Description
 -----------
-Write ply file and associated mtl material file. triangulation data should be precomputed within shapes! @param[in] thedocument input document @param[in] thefileinfo map with file metadata to put into ply header section @param[in] theprogress optional progress indicator return false on file writing failure.
+Write PLY file and associated MTL material file. Triangulation data should be precomputed within shapes! 
+Input parameter: theDocument input document 
+Input parameter: theFileInfo map with file metadata to put into PLY header section 
+Input parameter: theProgress optional progress indicator 
+Return: False on file writing failure.
 ") Perform;
 		virtual bool Perform(const opencascade::handle<TDocStd_Document> & theDocument, const TColStd_IndexedDataMapOfStringString & theFileInfo, const Message_ProgressRange & theProgress);
 
@@ -349,7 +355,7 @@ None
 
 Description
 -----------
-Set transformation from occt to ply coordinate system.
+Set transformation from OCCT to PLY coordinate system.
 ") SetCoordinateSystemConverter;
 		void SetCoordinateSystemConverter(const RWMesh_CoordinateSystemConverter & theConverter);
 
@@ -403,7 +409,7 @@ None
 
 Description
 -----------
-Set if face id should be written as element attribute; false by default. cannot be combined with haspartid().
+Set if face Id should be written as element attribute; False by default. Cannot be combined with HasPartId().
 ") SetFaceId;
 		void SetFaceId(bool theSurfId);
 
@@ -439,7 +445,7 @@ None
 
 Description
 -----------
-Set if part id should be written as element attribute; false by default. cannot be combined with hasfaceid().
+Set if part Id should be written as element attribute; False by default. Cannot be combined with HasFaceId().
 ") SetPartId;
 		void SetPartId(bool theSurfId);
 
@@ -457,7 +463,7 @@ None
 
 Description
 -----------
-Set if uv / texture coordinates should be written.
+Set if UV / texture coordinates should be written.
 ") SetTexCoords;
 		void SetTexCoords(const bool theHasTexCoords);
 
@@ -467,193 +473,6 @@ Set if uv / texture coordinates should be written.
 %make_alias(RWPly_CafWriter)
 
 %extend RWPly_CafWriter {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/********************************
-* class RWPly_ConfigurationNode *
-********************************/
-class RWPly_ConfigurationNode : public DE_ConfigurationNode {
-	public:
-		class RWPly_InternalSection {};
-		RWPly_InternalSection InternalParameters;
-		/****** RWPly_ConfigurationNode::RWPly_ConfigurationNode ******/
-		/****** md5 signature: 122eb8f7fe95688fbf89fba50434510b ******/
-		%feature("compactdefaultargs") RWPly_ConfigurationNode;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Initializes all field by default.
-") RWPly_ConfigurationNode;
-		 RWPly_ConfigurationNode();
-
-		/****** RWPly_ConfigurationNode::RWPly_ConfigurationNode ******/
-		/****** md5 signature: 4a8817e7dde67848475c0ea90afcfa74 ******/
-		%feature("compactdefaultargs") RWPly_ConfigurationNode;
-		%feature("autodoc", "
-Parameters
-----------
-theNode: RWPly_ConfigurationNode
-
-Return
--------
-None
-
-Description
------------
-Copies values of all fields @param[in] thenode object to copy.
-") RWPly_ConfigurationNode;
-		 RWPly_ConfigurationNode(const opencascade::handle<RWPly_ConfigurationNode> & theNode);
-
-		/****** RWPly_ConfigurationNode::BuildProvider ******/
-		/****** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ******/
-		%feature("compactdefaultargs") BuildProvider;
-		%feature("autodoc", "Return
--------
-opencascade::handle<DE_Provider>
-
-Description
------------
-Creates new provider for the own format return new created provider.
-") BuildProvider;
-		virtual opencascade::handle<DE_Provider> BuildProvider();
-
-		/****** RWPly_ConfigurationNode::CheckContent ******/
-		/****** md5 signature: 2a770b41fb754bfe0ef0260c549f4919 ******/
-		%feature("compactdefaultargs") CheckContent;
-		%feature("autodoc", "
-Parameters
-----------
-theBuffer: NCollection_Buffer
-
-Return
--------
-bool
-
-Description
------------
-Checks the file content to verify a format @param[in] thebuffer read stream buffer to check content return standard_true if file is supported by a current provider.
-") CheckContent;
-		virtual bool CheckContent(const opencascade::handle<NCollection_Buffer> & theBuffer);
-
-		/****** RWPly_ConfigurationNode::Copy ******/
-		/****** md5 signature: 4559608ebdab2961e97de40732291656 ******/
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "Return
--------
-opencascade::handle<DE_ConfigurationNode>
-
-Description
------------
-Copies values of all fields return new object with the same field values.
-") Copy;
-		virtual opencascade::handle<DE_ConfigurationNode> Copy();
-
-		/****** RWPly_ConfigurationNode::GetExtensions ******/
-		/****** md5 signature: a58fd9c22a501a38d695eed6406f94bb ******/
-		%feature("compactdefaultargs") GetExtensions;
-		%feature("autodoc", "Return
--------
-TColStd_ListOfAsciiString
-
-Description
------------
-Gets list of supported file extensions return list of extensions.
-") GetExtensions;
-		virtual TColStd_ListOfAsciiString GetExtensions();
-
-		/****** RWPly_ConfigurationNode::GetFormat ******/
-		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
-		%feature("compactdefaultargs") GetFormat;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets cad format name of associated provider return provider cad format.
-") GetFormat;
-		virtual TCollection_AsciiString GetFormat();
-
-		/****** RWPly_ConfigurationNode::GetVendor ******/
-		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
-		%feature("compactdefaultargs") GetVendor;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets provider's vendor name of associated provider return provider's vendor name.
-") GetVendor;
-		virtual TCollection_AsciiString GetVendor();
-
-		/****** RWPly_ConfigurationNode::IsExportSupported ******/
-		/****** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ******/
-		%feature("compactdefaultargs") IsExportSupported;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Checks the export supporting return true if export is supported.
-") IsExportSupported;
-		virtual bool IsExportSupported();
-
-		/****** RWPly_ConfigurationNode::IsImportSupported ******/
-		/****** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ******/
-		%feature("compactdefaultargs") IsImportSupported;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Checks the import supporting return true if import is supported.
-") IsImportSupported;
-		virtual bool IsImportSupported();
-
-		/****** RWPly_ConfigurationNode::Load ******/
-		/****** md5 signature: 994009254510d81a5f0f9a326a356850 ******/
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "
-Parameters
-----------
-theResource: DE_ConfigurationContext
-
-Return
--------
-bool
-
-Description
------------
-Updates values according the resource @param[in] theresource input resource to use return true if theresource loading has ended correctly.
-") Load;
-		virtual bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
-
-		/****** RWPly_ConfigurationNode::Save ******/
-		/****** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ******/
-		%feature("compactdefaultargs") Save;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Writes configuration to the string return result resource string.
-") Save;
-		virtual TCollection_AsciiString Save();
-
-};
-
-
-%extend RWPly_ConfigurationNode {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -691,7 +510,8 @@ bool
 
 Description
 -----------
-Correctly close the file. return false in case of writing error.
+Correctly close the file. 
+Return: False in case of writing error.
 ") Close;
 		bool Close(bool theIsAborted = false);
 
@@ -704,7 +524,7 @@ bool
 
 Description
 -----------
-Return true if point colors should be written as vertex attribute; false by default.
+Return True if point colors should be written as vertex attribute; False by default.
 ") HasColors;
 		bool HasColors();
 
@@ -717,7 +537,7 @@ bool
 
 Description
 -----------
-Return true if normals should be written as vertex attribute; false by default.
+Return True if normals should be written as vertex attribute; False by default.
 ") HasNormals;
 		bool HasNormals();
 
@@ -730,7 +550,7 @@ bool
 
 Description
 -----------
-Return true if surface id should be written as element attribute; false by default.
+Return True if surface Id should be written as element attribute; False by default.
 ") HasSurfaceId;
 		bool HasSurfaceId();
 
@@ -743,7 +563,7 @@ bool
 
 Description
 -----------
-Return true if uv / texture coordinates should be written as vertex attribute; false by default.
+Return True if UV / texture coordinates should be written as vertex attribute; False by default.
 ") HasTexCoords;
 		bool HasTexCoords();
 
@@ -756,7 +576,7 @@ bool
 
 Description
 -----------
-Return true if vertex position should be stored with double floating point precision; false by default.
+Return True if vertex position should be stored with double floating point precision; False by default.
 ") IsDoublePrecision;
 		bool IsDoublePrecision();
 
@@ -769,7 +589,7 @@ bool
 
 Description
 -----------
-Return true if file has been opened.
+Return True if file has been opened.
 ") IsOpened;
 		bool IsOpened();
 
@@ -867,7 +687,7 @@ None
 
 Description
 -----------
-Set if surface id should be written as element attribute; false by default.
+Set if surface Id should be written as element attribute; False by default.
 ") SetSurfaceId;
 		void SetSurfaceId(bool theSurfId);
 
@@ -903,7 +723,7 @@ None
 
 Description
 -----------
-Set if uv / texture coordinates should be written.
+Set if UV / texture coordinates should be written.
 ") SetTexCoords;
 		void SetTexCoords(const bool theHasTexCoords);
 
@@ -967,7 +787,10 @@ bool
 
 Description
 -----------
-Write the header. @param[in] thenbnodes number of vertex nodes @param[in] thenbelems number of mesh elements @param[in] thefileinfo optional comments.
+Write the header. 
+Input parameter: theNbNodes number of vertex nodes 
+Input parameter: theNbElems number of mesh elements 
+Input parameter: theFileInfo optional comments.
 ") WriteHeader;
 		bool WriteHeader(const Standard_Integer theNbNodes, const Standard_Integer theNbElems, const TColStd_IndexedDataMapOfStringString & theFileInfo);
 
@@ -1024,7 +847,11 @@ bool
 
 Description
 -----------
-Write single point with all attributes. @param[in] thepoint 3d point coordinates @param[in] thenorm surface normal direction at the point @param[in] theuv surface/texture uv coordinates @param[in] thecolor rgb color values.
+Write single point with all attributes. 
+Input parameter: thePoint 3D point coordinates 
+Input parameter: theNorm surface normal direction at the point 
+Input parameter: theUV surface/texture UV coordinates 
+Input parameter: theColor RGB color values.
 ") WriteVertex;
 		bool WriteVertex(const gp_Pnt & thePoint, const Graphic3d_Vec3 & theNorm, const Graphic3d_Vec2 & theUV, const Graphic3d_Vec4ub & theColor);
 
@@ -1038,159 +865,6 @@ Write single point with all attributes. @param[in] thepoint 3d point coordinates
 	@methodnotwrapped
 	def Open(self):
 		pass
-	}
-};
-
-/***********************
-* class RWPly_Provider *
-***********************/
-class RWPly_Provider : public DE_Provider {
-	public:
-		/****** RWPly_Provider::RWPly_Provider ******/
-		/****** md5 signature: 6771db1194c61e7bef3f10a1cc580658 ******/
-		%feature("compactdefaultargs") RWPly_Provider;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Default constructor configure translation process with global configuration.
-") RWPly_Provider;
-		 RWPly_Provider();
-
-		/****** RWPly_Provider::RWPly_Provider ******/
-		/****** md5 signature: e76197b0008bdcfe2baa88e2ac114a8a ******/
-		%feature("compactdefaultargs") RWPly_Provider;
-		%feature("autodoc", "
-Parameters
-----------
-theNode: DE_ConfigurationNode
-
-Return
--------
-None
-
-Description
------------
-Configure translation process @param[in] thenode object to copy.
-") RWPly_Provider;
-		 RWPly_Provider(const opencascade::handle<DE_ConfigurationNode> & theNode);
-
-		/****** RWPly_Provider::GetFormat ******/
-		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
-		%feature("compactdefaultargs") GetFormat;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets cad format name of associated provider return provider cad format.
-") GetFormat;
-		virtual TCollection_AsciiString GetFormat();
-
-		/****** RWPly_Provider::GetVendor ******/
-		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
-		%feature("compactdefaultargs") GetVendor;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets provider's vendor name of associated provider return provider's vendor name.
-") GetVendor;
-		virtual TCollection_AsciiString GetVendor();
-
-		/****** RWPly_Provider::Write ******/
-		/****** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param[in] thews current work session @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** RWPly_Provider::Write ******/
-		/****** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** RWPly_Provider::Write ******/
-		/****** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param[in] thews current work session @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** RWPly_Provider::Write ******/
-		/****** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-};
-
-
-%extend RWPly_Provider {
-	%pythoncode {
-	__repr__ = _dumps_object
 	}
 };
 

@@ -311,7 +311,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -324,7 +324,7 @@ opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset>
 
 Description
 -----------
-Returns field endoffsets.
+Returns field EndOffsets.
 ") EndOffsets;
 		opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset> EndOffsets();
 
@@ -337,7 +337,7 @@ opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease>
 
 Description
 -----------
-Returns field endreleases.
+Returns field EndReleases.
 ") EndReleases;
 		opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease> EndReleases();
 
@@ -372,7 +372,7 @@ opencascade::handle<StepFEA_HArray1OfCurveElementInterval>
 
 Description
 -----------
-Returns field intervaldefinitions.
+Returns field IntervalDefinitions.
 ") IntervalDefinitions;
 		opencascade::handle<StepFEA_HArray1OfCurveElementInterval> IntervalDefinitions();
 
@@ -385,7 +385,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field propertyid.
+Returns field PropertyId.
 ") PropertyId;
 		opencascade::handle<TCollection_HAsciiString> PropertyId();
 
@@ -403,7 +403,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -421,7 +421,7 @@ None
 
 Description
 -----------
-Set field endoffsets.
+Set field EndOffsets.
 ") SetEndOffsets;
 		void SetEndOffsets(const opencascade::handle<StepFEA_HArray1OfCurveElementEndOffset> & EndOffsets);
 
@@ -439,7 +439,7 @@ None
 
 Description
 -----------
-Set field endreleases.
+Set field EndReleases.
 ") SetEndReleases;
 		void SetEndReleases(const opencascade::handle<StepFEA_HArray1OfCurveElementEndRelease> & EndReleases);
 
@@ -457,7 +457,7 @@ None
 
 Description
 -----------
-Set field intervaldefinitions.
+Set field IntervalDefinitions.
 ") SetIntervalDefinitions;
 		void SetIntervalDefinitions(const opencascade::handle<StepFEA_HArray1OfCurveElementInterval> & IntervalDefinitions);
 
@@ -475,7 +475,7 @@ None
 
 Description
 -----------
-Set field propertyid.
+Set field PropertyId.
 ") SetPropertyId;
 		void SetPropertyId(const opencascade::handle<TCollection_HAsciiString> & PropertyId);
 
@@ -517,7 +517,7 @@ opencascade::handle<StepFEA_AlignedCurve3dElementCoordinateSystem>
 
 Description
 -----------
-Returns value as alignedcurve3delementcoordinatesystem (or null if another type).
+Returns Value as AlignedCurve3dElementCoordinateSystem (or Null if another type).
 ") AlignedCurve3dElementCoordinateSystem;
 		opencascade::handle<StepFEA_AlignedCurve3dElementCoordinateSystem> AlignedCurve3dElementCoordinateSystem();
 
@@ -535,7 +535,7 @@ int
 
 Description
 -----------
-Recognizes a kind of curveelementendcoordinatesystem select type 1 -> feaaxis2placement3d from stepfea 2 -> alignedcurve3delementcoordinatesystem from stepfea 3 -> parametriccurve3delementcoordinatesystem from stepfea 0 else.
+Recognizes a kind of CurveElementEndCoordinateSystem select type 1 -> FeaAxis2Placement3d from StepFEA 2 -> AlignedCurve3dElementCoordinateSystem from StepFEA 3 -> ParametricCurve3dElementCoordinateSystem from StepFEA 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -548,7 +548,7 @@ opencascade::handle<StepFEA_FeaAxis2Placement3d>
 
 Description
 -----------
-Returns value as feaaxis2placement3d (or null if another type).
+Returns Value as FeaAxis2Placement3d (or Null if another type).
 ") FeaAxis2Placement3d;
 		opencascade::handle<StepFEA_FeaAxis2Placement3d> FeaAxis2Placement3d();
 
@@ -561,7 +561,7 @@ opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateSystem>
 
 Description
 -----------
-Returns value as parametriccurve3delementcoordinatesystem (or null if another type).
+Returns Value as ParametricCurve3dElementCoordinateSystem (or Null if another type).
 ") ParametricCurve3dElementCoordinateSystem;
 		opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateSystem> ParametricCurve3dElementCoordinateSystem();
 
@@ -601,7 +601,7 @@ StepFEA_CurveElementEndCoordinateSystem
 
 Description
 -----------
-Returns field coordinatesystem.
+Returns field CoordinateSystem.
 ") CoordinateSystem;
 		StepFEA_CurveElementEndCoordinateSystem CoordinateSystem();
 
@@ -633,7 +633,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns field offsetvector.
+Returns field OffsetVector.
 ") OffsetVector;
 		opencascade::handle<TColStd_HArray1OfReal> OffsetVector();
 
@@ -651,7 +651,7 @@ None
 
 Description
 -----------
-Set field coordinatesystem.
+Set field CoordinateSystem.
 ") SetCoordinateSystem;
 		void SetCoordinateSystem(const StepFEA_CurveElementEndCoordinateSystem & CoordinateSystem);
 
@@ -669,7 +669,7 @@ None
 
 Description
 -----------
-Set field offsetvector.
+Set field OffsetVector.
 ") SetOffsetVector;
 		void SetOffsetVector(const opencascade::handle<TColStd_HArray1OfReal> & OffsetVector);
 
@@ -711,7 +711,7 @@ StepFEA_CurveElementEndCoordinateSystem
 
 Description
 -----------
-Returns field coordinatesystem.
+Returns field CoordinateSystem.
 ") CoordinateSystem;
 		StepFEA_CurveElementEndCoordinateSystem CoordinateSystem();
 
@@ -743,7 +743,7 @@ opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket>
 
 Description
 -----------
-Returns field releases.
+Returns field Releases.
 ") Releases;
 		opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket> Releases();
 
@@ -761,7 +761,7 @@ None
 
 Description
 -----------
-Set field coordinatesystem.
+Set field CoordinateSystem.
 ") SetCoordinateSystem;
 		void SetCoordinateSystem(const StepFEA_CurveElementEndCoordinateSystem & CoordinateSystem);
 
@@ -779,7 +779,7 @@ None
 
 Description
 -----------
-Set field releases.
+Set field Releases.
 ") SetReleases;
 		void SetReleases(const opencascade::handle<StepElement_HArray1OfCurveElementEndReleasePacket> & Releases);
 
@@ -821,7 +821,7 @@ opencascade::handle<StepBasic_EulerAngles>
 
 Description
 -----------
-Returns field euangles.
+Returns field EuAngles.
 ") EuAngles;
 		opencascade::handle<StepBasic_EulerAngles> EuAngles();
 
@@ -834,7 +834,7 @@ opencascade::handle<StepFEA_CurveElementLocation>
 
 Description
 -----------
-Returns field finishposition.
+Returns field FinishPosition.
 ") FinishPosition;
 		opencascade::handle<StepFEA_CurveElementLocation> FinishPosition();
 
@@ -871,7 +871,7 @@ None
 
 Description
 -----------
-Set field euangles.
+Set field EuAngles.
 ") SetEuAngles;
 		void SetEuAngles(const opencascade::handle<StepBasic_EulerAngles> & EuAngles);
 
@@ -889,7 +889,7 @@ None
 
 Description
 -----------
-Set field finishposition.
+Set field FinishPosition.
 ") SetFinishPosition;
 		void SetFinishPosition(const opencascade::handle<StepFEA_CurveElementLocation> & FinishPosition);
 
@@ -931,7 +931,7 @@ opencascade::handle<StepFEA_FeaParametricPoint>
 
 Description
 -----------
-Returns field coordinate.
+Returns field Coordinate.
 ") Coordinate;
 		opencascade::handle<StepFEA_FeaParametricPoint> Coordinate();
 
@@ -967,7 +967,7 @@ None
 
 Description
 -----------
-Set field coordinate.
+Set field Coordinate.
 ") SetCoordinate;
 		void SetCoordinate(const opencascade::handle<StepFEA_FeaParametricPoint> & Coordinate);
 
@@ -1009,7 +1009,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns value as applicationdefineddegreeoffreedom (or null if another type).
+Returns Value as ApplicationDefinedDegreeOfFreedom (or Null if another type).
 ") ApplicationDefinedDegreeOfFreedom;
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedDegreeOfFreedom();
 
@@ -1027,7 +1027,7 @@ int
 
 Description
 -----------
-Recognizes a items of select member curveelementfreedommember 1 -> enumeratedcurveelementfreedom 2 -> applicationdefineddegreeoffreedom 0 else.
+Recognizes a items of select member CurveElementFreedomMember 1 -> EnumeratedCurveElementFreedom 2 -> ApplicationDefinedDegreeOfFreedom 0 else.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -1045,7 +1045,7 @@ int
 
 Description
 -----------
-Recognizes a kind of curveelementfreedom select type return 0.
+Recognizes a kind of CurveElementFreedom select type return 0.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1058,7 +1058,7 @@ StepFEA_EnumeratedDegreeOfFreedom
 
 Description
 -----------
-Returns value as enumerateddegreeoffreedom (or null if another type).
+Returns Value as EnumeratedDegreeOfFreedom (or Null if another type).
 ") EnumeratedDegreeOfFreedom;
 		StepFEA_EnumeratedDegreeOfFreedom EnumeratedDegreeOfFreedom();
 
@@ -1071,7 +1071,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a new select member the type curveelementfreedommember.
+Returns a new select member the type CurveElementFreedomMember.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -1089,7 +1089,7 @@ None
 
 Description
 -----------
-Set value for applicationdefineddegreeoffreedom.
+Set Value for ApplicationDefinedDegreeOfFreedom.
 ") SetApplicationDefinedDegreeOfFreedom;
 		void SetApplicationDefinedDegreeOfFreedom(const opencascade::handle<TCollection_HAsciiString> & aVal);
 
@@ -1107,7 +1107,7 @@ None
 
 Description
 -----------
-Returns value as enumerateddegreeoffreedom (or null if another type).
+Returns Value as EnumeratedDegreeOfFreedom (or Null if another type).
 ") SetEnumeratedDegreeOfFreedom;
 		void SetEnumeratedDegreeOfFreedom(const StepFEA_EnumeratedDegreeOfFreedom aVal);
 
@@ -1147,7 +1147,7 @@ bool
 
 Description
 -----------
-Returns true if has name.
+Returns True if has name.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
@@ -1165,7 +1165,7 @@ bool
 
 Description
 -----------
-Tells if the name of a selectmember matches a given one;.
+Tells if the name of a SelectMember matches a given one;.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString name);
 
@@ -1238,7 +1238,7 @@ StepElement_ElementAspect
 
 Description
 -----------
-Returns field aspect.
+Returns field Aspect.
 ") Aspect;
 		StepElement_ElementAspect Aspect();
 
@@ -1251,7 +1251,7 @@ StepFEA_ElementOrElementGroup
 
 Description
 -----------
-Returns field elementref.
+Returns field ElementRef.
 ") ElementRef;
 		StepFEA_ElementOrElementGroup ElementRef();
 
@@ -1284,7 +1284,7 @@ opencascade::handle<StepElement_AnalysisItemWithinRepresentation>
 
 Description
 -----------
-Returns field item.
+Returns field Item.
 ") Item;
 		opencascade::handle<StepElement_AnalysisItemWithinRepresentation> Item();
 
@@ -1302,7 +1302,7 @@ None
 
 Description
 -----------
-Set field aspect.
+Set field Aspect.
 ") SetAspect;
 		void SetAspect(const StepElement_ElementAspect & Aspect);
 
@@ -1320,7 +1320,7 @@ None
 
 Description
 -----------
-Set field elementref.
+Set field ElementRef.
 ") SetElementRef;
 		void SetElementRef(const StepFEA_ElementOrElementGroup & ElementRef);
 
@@ -1338,7 +1338,7 @@ None
 
 Description
 -----------
-Set field item.
+Set field Item.
 ") SetItem;
 		void SetItem(const opencascade::handle<StepElement_AnalysisItemWithinRepresentation> & Item);
 
@@ -1385,7 +1385,7 @@ int
 
 Description
 -----------
-Recognizes a kind of elementorelementgroup select type 1 -> elementrepresentation from stepfea 2 -> elementgroup from stepfea 0 else.
+Recognizes a kind of ElementOrElementGroup select type 1 -> ElementRepresentation from StepFEA 2 -> ElementGroup from StepFEA 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1398,7 +1398,7 @@ opencascade::handle<StepFEA_ElementGroup>
 
 Description
 -----------
-Returns value as elementgroup (or null if another type).
+Returns Value as ElementGroup (or Null if another type).
 ") ElementGroup;
 		opencascade::handle<StepFEA_ElementGroup> ElementGroup();
 
@@ -1411,7 +1411,7 @@ opencascade::handle<StepFEA_ElementRepresentation>
 
 Description
 -----------
-Returns value as elementrepresentation (or null if another type).
+Returns Value as ElementRepresentation (or Null if another type).
 ") ElementRepresentation;
 		opencascade::handle<StepFEA_ElementRepresentation> ElementRepresentation();
 
@@ -1472,7 +1472,7 @@ opencascade::handle<StepFEA_HArray1OfNodeRepresentation>
 
 Description
 -----------
-Returns field nodelist.
+Returns field NodeList.
 ") NodeList;
 		opencascade::handle<StepFEA_HArray1OfNodeRepresentation> NodeList();
 
@@ -1490,7 +1490,7 @@ None
 
 Description
 -----------
-Set field nodelist.
+Set field NodeList.
 ") SetNodeList;
 		void SetNodeList(const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & NodeList);
 
@@ -1532,7 +1532,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -1575,7 +1575,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -1593,7 +1593,7 @@ None
 
 Description
 -----------
-Set field systemtype.
+Set field SystemType.
 ") SetSystemType;
 		void SetSystemType(const StepFEA_CoordinateSystemType SystemType);
 
@@ -1606,7 +1606,7 @@ StepFEA_CoordinateSystemType
 
 Description
 -----------
-Returns field systemtype.
+Returns field SystemType.
 ") SystemType;
 		StepFEA_CoordinateSystemType SystemType();
 
@@ -1667,7 +1667,7 @@ opencascade::handle<StepElement_AnalysisItemWithinRepresentation>
 
 Description
 -----------
-Returns field item.
+Returns field Item.
 ") Item;
 		opencascade::handle<StepElement_AnalysisItemWithinRepresentation> Item();
 
@@ -1680,7 +1680,7 @@ opencascade::handle<StepElement_CurveElementSectionDefinition>
 
 Description
 -----------
-Returns field sectionref.
+Returns field SectionRef.
 ") SectionRef;
 		opencascade::handle<StepElement_CurveElementSectionDefinition> SectionRef();
 
@@ -1698,7 +1698,7 @@ None
 
 Description
 -----------
-Set field item.
+Set field Item.
 ") SetItem;
 		void SetItem(const opencascade::handle<StepElement_AnalysisItemWithinRepresentation> & Item);
 
@@ -1716,7 +1716,7 @@ None
 
 Description
 -----------
-Set field sectionref.
+Set field SectionRef.
 ") SetSectionRef;
 		void SetSectionRef(const opencascade::handle<StepElement_CurveElementSectionDefinition> & SectionRef);
 
@@ -1778,7 +1778,7 @@ opencascade::handle<StepFEA_FeaModel>
 
 Description
 -----------
-Returns field modelref.
+Returns field ModelRef.
 ") ModelRef;
 		opencascade::handle<StepFEA_FeaModel> ModelRef();
 
@@ -1796,7 +1796,7 @@ None
 
 Description
 -----------
-Set field modelref.
+Set field ModelRef.
 ") SetModelRef;
 		void SetModelRef(const opencascade::handle<StepFEA_FeaModel> & ModelRef);
 
@@ -1896,7 +1896,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field analysistype.
+Returns field AnalysisType.
 ") AnalysisType;
 		opencascade::handle<TCollection_HAsciiString> AnalysisType();
 
@@ -1909,7 +1909,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field creatingsoftware.
+Returns field CreatingSoftware.
 ") CreatingSoftware;
 		opencascade::handle<TCollection_HAsciiString> CreatingSoftware();
 
@@ -1922,7 +1922,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -1959,7 +1959,7 @@ opencascade::handle<TColStd_HArray1OfAsciiString>
 
 Description
 -----------
-Returns field intendedanalysiscode.
+Returns field IntendedAnalysisCode.
 ") IntendedAnalysisCode;
 		opencascade::handle<TColStd_HArray1OfAsciiString> IntendedAnalysisCode();
 
@@ -1977,7 +1977,7 @@ None
 
 Description
 -----------
-Set field analysistype.
+Set field AnalysisType.
 ") SetAnalysisType;
 		void SetAnalysisType(const opencascade::handle<TCollection_HAsciiString> & AnalysisType);
 
@@ -1995,7 +1995,7 @@ None
 
 Description
 -----------
-Set field creatingsoftware.
+Set field CreatingSoftware.
 ") SetCreatingSoftware;
 		void SetCreatingSoftware(const opencascade::handle<TCollection_HAsciiString> & CreatingSoftware);
 
@@ -2013,7 +2013,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -2031,7 +2031,7 @@ None
 
 Description
 -----------
-Set field intendedanalysiscode.
+Set field IntendedAnalysisCode.
 ") SetIntendedAnalysisCode;
 		void SetIntendedAnalysisCode(const opencascade::handle<TColStd_HArray1OfAsciiString> & IntendedAnalysisCode);
 
@@ -2102,7 +2102,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns field coordinates.
+Returns field Coordinates.
 ") Coordinates;
 		opencascade::handle<TColStd_HArray1OfReal> Coordinates();
 
@@ -2139,7 +2139,7 @@ None
 
 Description
 -----------
-Set field coordinates.
+Set field Coordinates.
 ") SetCoordinates;
 		void SetCoordinates(const opencascade::handle<TColStd_HArray1OfReal> & Coordinates);
 
@@ -2229,7 +2229,7 @@ opencascade::handle<StepElement_AnalysisItemWithinRepresentation>
 
 Description
 -----------
-Returns field item.
+Returns field Item.
 ") Item;
 		opencascade::handle<StepElement_AnalysisItemWithinRepresentation> Item();
 
@@ -2242,7 +2242,7 @@ opencascade::handle<StepElement_SurfaceSection>
 
 Description
 -----------
-Returns field sectionref.
+Returns field SectionRef.
 ") SectionRef;
 		opencascade::handle<StepElement_SurfaceSection> SectionRef();
 
@@ -2260,7 +2260,7 @@ None
 
 Description
 -----------
-Set field item.
+Set field Item.
 ") SetItem;
 		void SetItem(const opencascade::handle<StepElement_AnalysisItemWithinRepresentation> & Item);
 
@@ -2278,7 +2278,7 @@ None
 
 Description
 -----------
-Set field sectionref.
+Set field SectionRef.
 ") SetSectionRef;
 		void SetSectionRef(const opencascade::handle<StepElement_SurfaceSection> & SectionRef);
 
@@ -2320,7 +2320,7 @@ StepElement_MeasureOrUnspecifiedValue
 
 Description
 -----------
-Returns field a.
+Returns field A.
 ") A;
 		StepElement_MeasureOrUnspecifiedValue A();
 
@@ -2333,7 +2333,7 @@ StepFEA_DegreeOfFreedom
 
 Description
 -----------
-Returns field freedom.
+Returns field Freedom.
 ") Freedom;
 		StepFEA_DegreeOfFreedom Freedom();
 
@@ -2370,7 +2370,7 @@ None
 
 Description
 -----------
-Set field a.
+Set field A.
 ") SetA;
 		void SetA(const StepElement_MeasureOrUnspecifiedValue & A);
 
@@ -2388,7 +2388,7 @@ None
 
 Description
 -----------
-Set field freedom.
+Set field Freedom.
 ") SetFreedom;
 		void SetFreedom(const StepFEA_DegreeOfFreedom & Freedom);
 
@@ -2430,7 +2430,7 @@ opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom>
 
 Description
 -----------
-Returns field freedoms.
+Returns field Freedoms.
 ") Freedoms;
 		opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom> Freedoms();
 
@@ -2466,7 +2466,7 @@ None
 
 Description
 -----------
-Set field freedoms.
+Set field Freedoms.
 ") SetFreedoms;
 		void SetFreedoms(const opencascade::handle<StepFEA_HArray1OfDegreeOfFreedom> & Freedoms);
 
@@ -2558,7 +2558,7 @@ opencascade::handle<StepFEA_FeaModel>
 
 Description
 -----------
-Returns field modelref.
+Returns field ModelRef.
 ") ModelRef;
 		opencascade::handle<StepFEA_FeaModel> ModelRef();
 
@@ -2576,7 +2576,7 @@ None
 
 Description
 -----------
-Set field modelref.
+Set field ModelRef.
 ") SetModelRef;
 		void SetModelRef(const opencascade::handle<StepFEA_FeaModel> & ModelRef);
 
@@ -2637,7 +2637,7 @@ opencascade::handle<StepFEA_HArray1OfNodeRepresentation>
 
 Description
 -----------
-Returns field nodes.
+Returns field Nodes.
 ") Nodes;
 		opencascade::handle<StepFEA_HArray1OfNodeRepresentation> Nodes();
 
@@ -2655,7 +2655,7 @@ None
 
 Description
 -----------
-Set field nodes.
+Set field Nodes.
 ") SetNodes;
 		void SetNodes(const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & Nodes);
 
@@ -2697,7 +2697,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as anisotropicsymmetrictensor22d (or null if another type).
+Returns Value as AnisotropicSymmetricTensor22d (or Null if another type).
 ") AnisotropicSymmetricTensor22d;
 		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor22d();
 
@@ -2715,7 +2715,7 @@ int
 
 Description
 -----------
-Recognizes a kind of symmetrictensor22d select type 1 -> harray1ofreal from tcolstd 0 else.
+Recognizes a kind of SymmetricTensor22d select type 1 -> HArray1OfReal from TColStd 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2755,7 +2755,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as anisotropicsymmetrictensor23d (or null if another type).
+Returns Value as AnisotropicSymmetricTensor23d (or Null if another type).
 ") AnisotropicSymmetricTensor23d;
 		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor23d();
 
@@ -2773,7 +2773,7 @@ int
 
 Description
 -----------
-Recognizes a items of select member symmetrictensor23dmember 1 -> isotropicsymmetrictensor23d 2 -> orthotropicsymmetrictensor23d 3 -> anisotropicsymmetrictensor23d 0 else.
+Recognizes a items of select member SymmetricTensor23dMember 1 -> IsotropicSymmetricTensor23d 2 -> OrthotropicSymmetricTensor23d 3 -> AnisotropicSymmetricTensor23d 0 else.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -2791,7 +2791,7 @@ int
 
 Description
 -----------
-Recognizes a kind of symmetrictensor23d select type return 0.
+Recognizes a kind of SymmetricTensor23d select type return 0.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2804,7 +2804,7 @@ float
 
 Description
 -----------
-Returns value as isotropicsymmetrictensor23d (or null if another type).
+Returns Value as IsotropicSymmetricTensor23d (or Null if another type).
 ") IsotropicSymmetricTensor23d;
 		Standard_Real IsotropicSymmetricTensor23d();
 
@@ -2817,7 +2817,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a new select member the type symmetrictensor23dmember.
+Returns a new select member the type SymmetricTensor23dMember.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -2830,7 +2830,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as orthotropicsymmetrictensor23d (or null if another type).
+Returns Value as OrthotropicSymmetricTensor23d (or Null if another type).
 ") OrthotropicSymmetricTensor23d;
 		opencascade::handle<TColStd_HArray1OfReal> OrthotropicSymmetricTensor23d();
 
@@ -2848,7 +2848,7 @@ None
 
 Description
 -----------
-Set value for anisotropicsymmetrictensor23d.
+Set Value for AnisotropicSymmetricTensor23d.
 ") SetAnisotropicSymmetricTensor23d;
 		void SetAnisotropicSymmetricTensor23d(const opencascade::handle<TColStd_HArray1OfReal> & aVal);
 
@@ -2866,7 +2866,7 @@ None
 
 Description
 -----------
-Set value for isotropicsymmetrictensor23d.
+Set Value for IsotropicSymmetricTensor23d.
 ") SetIsotropicSymmetricTensor23d;
 		void SetIsotropicSymmetricTensor23d(const Standard_Real aVal);
 
@@ -2884,7 +2884,7 @@ None
 
 Description
 -----------
-Set value for orthotropicsymmetrictensor23d.
+Set Value for OrthotropicSymmetricTensor23d.
 ") SetOrthotropicSymmetricTensor23d;
 		void SetOrthotropicSymmetricTensor23d(const opencascade::handle<TColStd_HArray1OfReal> & aVal);
 
@@ -2924,7 +2924,7 @@ bool
 
 Description
 -----------
-Returns true if has name.
+Returns True if has name.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
@@ -2942,7 +2942,7 @@ bool
 
 Description
 -----------
-Tells if the name of a selectmember matches a given one;.
+Tells if the name of a SelectMember matches a given one;.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString name);
 
@@ -3015,7 +3015,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as anisotropicsymmetrictensor42d (or null if another type).
+Returns Value as AnisotropicSymmetricTensor42d (or Null if another type).
 ") AnisotropicSymmetricTensor42d;
 		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor42d();
 
@@ -3033,7 +3033,7 @@ int
 
 Description
 -----------
-Recognizes a kind of symmetrictensor42d select type 1 -> harray1ofreal from tcolstd 0 else.
+Recognizes a kind of SymmetricTensor42d select type 1 -> HArray1OfReal from TColStd 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3073,7 +3073,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as anisotropicsymmetrictensor43d (or null if another type).
+Returns Value as AnisotropicSymmetricTensor43d (or Null if another type).
 ") AnisotropicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> AnisotropicSymmetricTensor43d();
 
@@ -3091,7 +3091,7 @@ int
 
 Description
 -----------
-Recognizes a items of select member curveelementfreedommember 1 -> anisotropicsymmetrictensor43d 2 -> feaisotropicsymmetrictensor43d 3 -> feaisoorthotropicsymmetrictensor43d 4 -> featransverseisotropicsymmetrictensor43d 5 -> feacolumnnormalisedorthotropicsymmetrictensor43d 6 -> feacolumnnormalisedmonoclinicsymmetrictensor43d 0 else.
+Recognizes a items of select member CurveElementFreedomMember 1 -> AnisotropicSymmetricTensor43d 2 -> FeaIsotropicSymmetricTensor43d 3 -> FeaIsoOrthotropicSymmetricTensor43d 4 -> FeaTransverseIsotropicSymmetricTensor43d 5 -> FeaColumnNormalisedOrthotropicSymmetricTensor43d 6 -> FeaColumnNormalisedMonoclinicSymmetricTensor43d 0 else.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -3109,7 +3109,7 @@ int
 
 Description
 -----------
-Return 0.
+return 0.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3122,7 +3122,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as feacolumnnormalisedmonoclinicsymmetrictensor43d (or null if another type).
+Returns Value as FeaColumnNormalisedMonoclinicSymmetricTensor43d (or Null if another type).
 ") FeaColumnNormalisedMonoclinicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> FeaColumnNormalisedMonoclinicSymmetricTensor43d();
 
@@ -3135,7 +3135,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as feacolumnnormalisedorthotropicsymmetrictensor43d (or null if another type).
+Returns Value as FeaColumnNormalisedOrthotropicSymmetricTensor43d (or Null if another type).
 ") FeaColumnNormalisedOrthotropicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> FeaColumnNormalisedOrthotropicSymmetricTensor43d();
 
@@ -3148,7 +3148,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as feaisoorthotropicsymmetrictensor43d (or null if another type).
+Returns Value as FeaIsoOrthotropicSymmetricTensor43d (or Null if another type).
 ") FeaIsoOrthotropicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> FeaIsoOrthotropicSymmetricTensor43d();
 
@@ -3161,7 +3161,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as feaisotropicsymmetrictensor43d (or null if another type).
+Returns Value as FeaIsotropicSymmetricTensor43d (or Null if another type).
 ") FeaIsotropicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> FeaIsotropicSymmetricTensor43d();
 
@@ -3174,7 +3174,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as featransverseisotropicsymmetrictensor43d (or null if another type).
+Returns Value as FeaTransverseIsotropicSymmetricTensor43d (or Null if another type).
 ") FeaTransverseIsotropicSymmetricTensor43d;
 		opencascade::handle<TColStd_HArray1OfReal> FeaTransverseIsotropicSymmetricTensor43d();
 
@@ -3231,7 +3231,7 @@ bool
 
 Description
 -----------
-Returns true if has name.
+Returns True if has name.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
@@ -3249,7 +3249,7 @@ bool
 
 Description
 -----------
-Tells if the name of a selectmember matches a given one;.
+Tells if the name of a SelectMember matches a given one;.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString name);
 
@@ -3322,7 +3322,7 @@ opencascade::handle<StepFEA_FeaAxis2Placement3d>
 
 Description
 -----------
-Returns field coordinatesystem.
+Returns field CoordinateSystem.
 ") CoordinateSystem;
 		opencascade::handle<StepFEA_FeaAxis2Placement3d> CoordinateSystem();
 
@@ -3359,7 +3359,7 @@ None
 
 Description
 -----------
-Set field coordinatesystem.
+Set field CoordinateSystem.
 ") SetCoordinateSystem;
 		void SetCoordinateSystem(const opencascade::handle<StepFEA_FeaAxis2Placement3d> & CoordinateSystem);
 
@@ -3401,7 +3401,7 @@ opencascade::handle<StepFEA_FeaAxis2Placement3d>
 
 Description
 -----------
-Returns field coordinatesystem.
+Returns field CoordinateSystem.
 ") CoordinateSystem;
 		opencascade::handle<StepFEA_FeaAxis2Placement3d> CoordinateSystem();
 
@@ -3438,7 +3438,7 @@ None
 
 Description
 -----------
-Set field coordinatesystem.
+Set field CoordinateSystem.
 ") SetCoordinateSystem;
 		void SetCoordinateSystem(const opencascade::handle<StepFEA_FeaAxis2Placement3d> & CoordinateSystem);
 
@@ -3480,7 +3480,7 @@ opencascade::handle<StepFEA_FeaAxis2Placement3d>
 
 Description
 -----------
-Returns field coordinatesystem.
+Returns field CoordinateSystem.
 ") CoordinateSystem;
 		opencascade::handle<StepFEA_FeaAxis2Placement3d> CoordinateSystem();
 
@@ -3517,7 +3517,7 @@ None
 
 Description
 -----------
-Set field coordinatesystem.
+Set field CoordinateSystem.
 ") SetCoordinateSystem;
 		void SetCoordinateSystem(const opencascade::handle<StepFEA_FeaAxis2Placement3d> & CoordinateSystem);
 
@@ -3559,7 +3559,7 @@ float
 
 Description
 -----------
-Returns field angle.
+Returns field Angle.
 ") Angle;
 		Standard_Real Angle();
 
@@ -3572,7 +3572,7 @@ int
 
 Description
 -----------
-Returns field axis.
+Returns field Axis.
 ") Axis;
 		Standard_Integer Axis();
 
@@ -3610,7 +3610,7 @@ None
 
 Description
 -----------
-Set field angle.
+Set field Angle.
 ") SetAngle;
 		void SetAngle(const Standard_Real Angle);
 
@@ -3628,7 +3628,7 @@ None
 
 Description
 -----------
-Set field axis.
+Set field Axis.
 ") SetAxis;
 		void SetAxis(const Standard_Integer Axis);
 
@@ -3670,7 +3670,7 @@ opencascade::handle<StepElement_Curve3dElementDescriptor>
 
 Description
 -----------
-Returns field elementdescriptor.
+Returns field ElementDescriptor.
 ") ElementDescriptor;
 		opencascade::handle<StepElement_Curve3dElementDescriptor> ElementDescriptor();
 
@@ -3708,7 +3708,7 @@ opencascade::handle<StepElement_ElementMaterial>
 
 Description
 -----------
-Returns field material.
+Returns field Material.
 ") Material;
 		opencascade::handle<StepElement_ElementMaterial> Material();
 
@@ -3721,7 +3721,7 @@ opencascade::handle<StepFEA_FeaModel3d>
 
 Description
 -----------
-Returns field modelref.
+Returns field ModelRef.
 ") ModelRef;
 		opencascade::handle<StepFEA_FeaModel3d> ModelRef();
 
@@ -3734,7 +3734,7 @@ opencascade::handle<StepFEA_Curve3dElementProperty>
 
 Description
 -----------
-Returns field property.
+Returns field Property.
 ") Property;
 		opencascade::handle<StepFEA_Curve3dElementProperty> Property();
 
@@ -3752,7 +3752,7 @@ None
 
 Description
 -----------
-Set field elementdescriptor.
+Set field ElementDescriptor.
 ") SetElementDescriptor;
 		void SetElementDescriptor(const opencascade::handle<StepElement_Curve3dElementDescriptor> & ElementDescriptor);
 
@@ -3770,7 +3770,7 @@ None
 
 Description
 -----------
-Set field material.
+Set field Material.
 ") SetMaterial;
 		void SetMaterial(const opencascade::handle<StepElement_ElementMaterial> & Material);
 
@@ -3788,7 +3788,7 @@ None
 
 Description
 -----------
-Set field modelref.
+Set field ModelRef.
 ") SetModelRef;
 		void SetModelRef(const opencascade::handle<StepFEA_FeaModel3d> & ModelRef);
 
@@ -3806,7 +3806,7 @@ None
 
 Description
 -----------
-Set field property.
+Set field Property.
 ") SetProperty;
 		void SetProperty(const opencascade::handle<StepFEA_Curve3dElementProperty> & Property);
 
@@ -3868,7 +3868,7 @@ opencascade::handle<StepElement_CurveElementSectionDefinition>
 
 Description
 -----------
-Returns field section.
+Returns field Section.
 ") Section;
 		opencascade::handle<StepElement_CurveElementSectionDefinition> Section();
 
@@ -3886,7 +3886,7 @@ None
 
 Description
 -----------
-Set field section.
+Set field Section.
 ") SetSection;
 		void SetSection(const opencascade::handle<StepElement_CurveElementSectionDefinition> & Section);
 
@@ -3948,7 +3948,7 @@ opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition>
 
 Description
 -----------
-Returns field sections.
+Returns field Sections.
 ") Sections;
 		opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition> Sections();
 
@@ -3966,7 +3966,7 @@ None
 
 Description
 -----------
-Set field sections.
+Set field Sections.
 ") SetSections;
 		void SetSections(const opencascade::handle<StepElement_HArray1OfCurveElementSectionDefinition> & Sections);
 
@@ -4037,7 +4037,7 @@ opencascade::handle<StepFEA_HArray1OfElementRepresentation>
 
 Description
 -----------
-Returns field elements.
+Returns field Elements.
 ") Elements;
 		opencascade::handle<StepFEA_HArray1OfElementRepresentation> Elements();
 
@@ -4076,7 +4076,7 @@ None
 
 Description
 -----------
-Set field elements.
+Set field Elements.
 ") SetElements;
 		void SetElements(const opencascade::handle<StepFEA_HArray1OfElementRepresentation> & Elements);
 
@@ -4118,7 +4118,7 @@ float
 
 Description
 -----------
-Returns field feaconstant.
+Returns field FeaConstant.
 ") FeaConstant;
 		Standard_Real FeaConstant();
 
@@ -4155,7 +4155,7 @@ None
 
 Description
 -----------
-Set field feaconstant.
+Set field FeaConstant.
 ") SetFeaConstant;
 		void SetFeaConstant(const Standard_Real FeaConstant);
 
@@ -4197,7 +4197,7 @@ StepFEA_SymmetricTensor43d
 
 Description
 -----------
-Returns field feaconstants.
+Returns field FeaConstants.
 ") FeaConstants;
 		StepFEA_SymmetricTensor43d FeaConstants();
 
@@ -4234,7 +4234,7 @@ None
 
 Description
 -----------
-Set field feaconstants.
+Set field FeaConstants.
 ") SetFeaConstants;
 		void SetFeaConstants(const StepFEA_SymmetricTensor43d & FeaConstants);
 
@@ -4276,7 +4276,7 @@ float
 
 Description
 -----------
-Returns field feaconstant.
+Returns field FeaConstant.
 ") FeaConstant;
 		Standard_Real FeaConstant();
 
@@ -4313,7 +4313,7 @@ None
 
 Description
 -----------
-Set field feaconstant.
+Set field FeaConstant.
 ") SetFeaConstant;
 		void SetFeaConstant(const Standard_Real FeaConstant);
 
@@ -4384,7 +4384,7 @@ StepFEA_SymmetricTensor23d
 
 Description
 -----------
-Returns field feaconstants.
+Returns field FeaConstants.
 ") FeaConstants;
 		StepFEA_SymmetricTensor23d FeaConstants();
 
@@ -4421,7 +4421,7 @@ None
 
 Description
 -----------
-Set field feaconstants.
+Set field FeaConstants.
 ") SetFeaConstants;
 		void SetFeaConstants(const StepFEA_SymmetricTensor23d & FeaConstants);
 
@@ -4463,7 +4463,7 @@ StepFEA_SymmetricTensor23d
 
 Description
 -----------
-Returns field feaconstants.
+Returns field FeaConstants.
 ") FeaConstants;
 		StepFEA_SymmetricTensor23d FeaConstants();
 
@@ -4496,7 +4496,7 @@ float
 
 Description
 -----------
-Returns field referencetemperature.
+Returns field ReferenceTemperature.
 ") ReferenceTemperature;
 		Standard_Real ReferenceTemperature();
 
@@ -4514,7 +4514,7 @@ None
 
 Description
 -----------
-Set field feaconstants.
+Set field FeaConstants.
 ") SetFeaConstants;
 		void SetFeaConstants(const StepFEA_SymmetricTensor23d & FeaConstants);
 
@@ -4532,7 +4532,7 @@ None
 
 Description
 -----------
-Set field referencetemperature.
+Set field ReferenceTemperature.
 ") SetReferenceTemperature;
 		void SetReferenceTemperature(const Standard_Real ReferenceTemperature);
 
@@ -4574,7 +4574,7 @@ StepFEA_SymmetricTensor42d
 
 Description
 -----------
-Returns field feaconstants.
+Returns field FeaConstants.
 ") FeaConstants;
 		StepFEA_SymmetricTensor42d FeaConstants();
 
@@ -4611,7 +4611,7 @@ None
 
 Description
 -----------
-Set field feaconstants.
+Set field FeaConstants.
 ") SetFeaConstants;
 		void SetFeaConstants(const StepFEA_SymmetricTensor42d & FeaConstants);
 
@@ -4653,7 +4653,7 @@ StepFEA_SymmetricTensor42d
 
 Description
 -----------
-Returns field feaconstants.
+Returns field FeaConstants.
 ") FeaConstants;
 		StepFEA_SymmetricTensor42d FeaConstants();
 
@@ -4690,7 +4690,7 @@ None
 
 Description
 -----------
-Set field feaconstants.
+Set field FeaConstants.
 ") SetFeaConstants;
 		void SetFeaConstants(const StepFEA_SymmetricTensor42d & FeaConstants);
 
@@ -4732,7 +4732,7 @@ StepFEA_SymmetricTensor42d
 
 Description
 -----------
-Returns field feaconstants.
+Returns field FeaConstants.
 ") FeaConstants;
 		StepFEA_SymmetricTensor42d FeaConstants();
 
@@ -4769,7 +4769,7 @@ None
 
 Description
 -----------
-Set field feaconstants.
+Set field FeaConstants.
 ") SetFeaConstants;
 		void SetFeaConstants(const StepFEA_SymmetricTensor42d & FeaConstants);
 
@@ -4811,7 +4811,7 @@ StepFEA_SymmetricTensor22d
 
 Description
 -----------
-Returns field feaconstants.
+Returns field FeaConstants.
 ") FeaConstants;
 		StepFEA_SymmetricTensor22d FeaConstants();
 
@@ -4848,7 +4848,7 @@ None
 
 Description
 -----------
-Set field feaconstants.
+Set field FeaConstants.
 ") SetFeaConstants;
 		void SetFeaConstants(const StepFEA_SymmetricTensor22d & FeaConstants);
 
@@ -4890,7 +4890,7 @@ StepFEA_SymmetricTensor23d
 
 Description
 -----------
-Returns field feaconstants.
+Returns field FeaConstants.
 ") FeaConstants;
 		StepFEA_SymmetricTensor23d FeaConstants();
 
@@ -4927,7 +4927,7 @@ None
 
 Description
 -----------
-Set field feaconstants.
+Set field FeaConstants.
 ") SetFeaConstants;
 		void SetFeaConstants(const StepFEA_SymmetricTensor23d & FeaConstants);
 
@@ -5048,7 +5048,7 @@ opencascade::handle<StepFEA_HArray1OfNodeRepresentation>
 
 Description
 -----------
-Returns field nodes.
+Returns field Nodes.
 ") Nodes;
 		opencascade::handle<StepFEA_HArray1OfNodeRepresentation> Nodes();
 
@@ -5066,7 +5066,7 @@ None
 
 Description
 -----------
-Set field nodes.
+Set field Nodes.
 ") SetNodes;
 		void SetNodes(const opencascade::handle<StepFEA_HArray1OfNodeRepresentation> & Nodes);
 
@@ -5127,7 +5127,7 @@ opencascade::handle<StepGeom_Direction>
 
 Description
 -----------
-Returns field orientation.
+Returns field Orientation.
 ") Orientation;
 		opencascade::handle<StepGeom_Direction> Orientation();
 
@@ -5145,7 +5145,7 @@ None
 
 Description
 -----------
-Set field orientation.
+Set field Orientation.
 ") SetOrientation;
 		void SetOrientation(const opencascade::handle<StepGeom_Direction> & Orientation);
 
@@ -5187,7 +5187,7 @@ opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateDirection>
 
 Description
 -----------
-Returns field direction.
+Returns field Direction.
 ") Direction;
 		opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateDirection> Direction();
 
@@ -5224,7 +5224,7 @@ None
 
 Description
 -----------
-Set field direction.
+Set field Direction.
 ") SetDirection;
 		void SetDirection(const opencascade::handle<StepFEA_ParametricCurve3dElementCoordinateDirection> & Direction);
 
@@ -5266,7 +5266,7 @@ float
 
 Description
 -----------
-Returns field angle.
+Returns field Angle.
 ") Angle;
 		Standard_Real Angle();
 
@@ -5279,7 +5279,7 @@ int
 
 Description
 -----------
-Returns field axis.
+Returns field Axis.
 ") Axis;
 		Standard_Integer Axis();
 
@@ -5317,7 +5317,7 @@ None
 
 Description
 -----------
-Set field angle.
+Set field Angle.
 ") SetAngle;
 		void SetAngle(const Standard_Real Angle);
 
@@ -5335,7 +5335,7 @@ None
 
 Description
 -----------
-Set field axis.
+Set field Axis.
 ") SetAxis;
 		void SetAxis(const Standard_Integer Axis);
 
@@ -5377,7 +5377,7 @@ opencascade::handle<StepElement_Surface3dElementDescriptor>
 
 Description
 -----------
-Returns field elementdescriptor.
+Returns field ElementDescriptor.
 ") ElementDescriptor;
 		opencascade::handle<StepElement_Surface3dElementDescriptor> ElementDescriptor();
 
@@ -5415,7 +5415,7 @@ opencascade::handle<StepElement_ElementMaterial>
 
 Description
 -----------
-Returns field material.
+Returns field Material.
 ") Material;
 		opencascade::handle<StepElement_ElementMaterial> Material();
 
@@ -5428,7 +5428,7 @@ opencascade::handle<StepFEA_FeaModel3d>
 
 Description
 -----------
-Returns field modelref.
+Returns field ModelRef.
 ") ModelRef;
 		opencascade::handle<StepFEA_FeaModel3d> ModelRef();
 
@@ -5441,7 +5441,7 @@ opencascade::handle<StepElement_SurfaceElementProperty>
 
 Description
 -----------
-Returns field property.
+Returns field Property.
 ") Property;
 		opencascade::handle<StepElement_SurfaceElementProperty> Property();
 
@@ -5459,7 +5459,7 @@ None
 
 Description
 -----------
-Set field elementdescriptor.
+Set field ElementDescriptor.
 ") SetElementDescriptor;
 		void SetElementDescriptor(const opencascade::handle<StepElement_Surface3dElementDescriptor> & ElementDescriptor);
 
@@ -5477,7 +5477,7 @@ None
 
 Description
 -----------
-Set field material.
+Set field Material.
 ") SetMaterial;
 		void SetMaterial(const opencascade::handle<StepElement_ElementMaterial> & Material);
 
@@ -5495,7 +5495,7 @@ None
 
 Description
 -----------
-Set field modelref.
+Set field ModelRef.
 ") SetModelRef;
 		void SetModelRef(const opencascade::handle<StepFEA_FeaModel3d> & ModelRef);
 
@@ -5513,7 +5513,7 @@ None
 
 Description
 -----------
-Set field property.
+Set field Property.
 ") SetProperty;
 		void SetProperty(const opencascade::handle<StepElement_SurfaceElementProperty> & Property);
 
@@ -5555,7 +5555,7 @@ opencascade::handle<StepElement_Volume3dElementDescriptor>
 
 Description
 -----------
-Returns field elementdescriptor.
+Returns field ElementDescriptor.
 ") ElementDescriptor;
 		opencascade::handle<StepElement_Volume3dElementDescriptor> ElementDescriptor();
 
@@ -5592,7 +5592,7 @@ opencascade::handle<StepElement_ElementMaterial>
 
 Description
 -----------
-Returns field material.
+Returns field Material.
 ") Material;
 		opencascade::handle<StepElement_ElementMaterial> Material();
 
@@ -5605,7 +5605,7 @@ opencascade::handle<StepFEA_FeaModel3d>
 
 Description
 -----------
-Returns field modelref.
+Returns field ModelRef.
 ") ModelRef;
 		opencascade::handle<StepFEA_FeaModel3d> ModelRef();
 
@@ -5623,7 +5623,7 @@ None
 
 Description
 -----------
-Set field elementdescriptor.
+Set field ElementDescriptor.
 ") SetElementDescriptor;
 		void SetElementDescriptor(const opencascade::handle<StepElement_Volume3dElementDescriptor> & ElementDescriptor);
 
@@ -5641,7 +5641,7 @@ None
 
 Description
 -----------
-Set field material.
+Set field Material.
 ") SetMaterial;
 		void SetMaterial(const opencascade::handle<StepElement_ElementMaterial> & Material);
 
@@ -5659,7 +5659,7 @@ None
 
 Description
 -----------
-Set field modelref.
+Set field ModelRef.
 ") SetModelRef;
 		void SetModelRef(const opencascade::handle<StepFEA_FeaModel3d> & ModelRef);
 

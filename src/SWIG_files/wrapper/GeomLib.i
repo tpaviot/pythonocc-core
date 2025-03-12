@@ -167,7 +167,7 @@ IsSingular: bool
 
 Description
 -----------
-Compute axes of inertia, of some points -- -- -- <axe>.location() is the barycentre -- -- -- -- -- <axe>.xdirection is the axe of upper inertia -- -- -- -- <axe>.direction is the normal to the average plane -- -- -- issingular is true if points are on line -- tol is used to determine singular cases.
+Compute axes of inertia, of some points -- -- -- <Axe>.Location() is the BaryCentre -- -- -- -- -- <Axe>.XDirection is the axe of upper inertia -- -- -- -- <Axe>.Direction is the Normal to the average plane -- -- -- IsSingular is True if points are on line -- Tol is used to determine singular cases.
 ") AxeOfInertia;
 		static void AxeOfInertia(const TColgp_Array1OfPnt & Points, gp_Ax2 & Axe, Standard_Boolean &OutValue, const Standard_Real Tol = 1.0e-7);
 
@@ -233,7 +233,7 @@ None
 
 Description
 -----------
-This makes sure that there is at least minnumpoints in outparameters taking into account the parameters in the inparameters array provided those are in order, that is the sequence of real in the inparameter is strictly non decreasing.
+this makes sure that there is at least MinNumPoints in OutParameters taking into account the parameters in the InParameters array provided those are in order, that is the sequence of real in the InParameter is strictly non decreasing.
 ") DensifyArray1OfReal;
 		static void DensifyArray1OfReal(const Standard_Integer MinNumPoints, const TColStd_Array1OfReal & InParameters, opencascade::handle<TColStd_HArray1OfReal> & OutParameters);
 
@@ -254,7 +254,7 @@ MaxDistance: float
 
 Description
 -----------
-This will compute the maximum distance at the parameters given in the parameters array by projecting from the curve to the reference curve and taking the minimum distance than the maximum will be taken on those minimas.
+this will compute the maximum distance at the parameters given in the Parameters array by projecting from the Curve to the reference curve and taking the minimum distance Than the maximum will be taken on those minimas.
 ") EvalMaxDistanceAlongParameter;
 		static void EvalMaxDistanceAlongParameter(const Adaptor3d_Curve & Curve, const Adaptor3d_Curve & AReferenceCurve, const Standard_Real Tolerance, const TColStd_Array1OfReal & Parameters, Standard_Real &OutValue);
 
@@ -275,7 +275,7 @@ MaxDistance: float
 
 Description
 -----------
-This will compute the maximum distance at the parameters given in the parameters array by evaluating each parameter the two curves and taking the maximum of the evaluated distance.
+this will compute the maximum distance at the parameters given in the Parameters array by evaluating each parameter the two curves and taking the maximum of the evaluated distance.
 ") EvalMaxParametricDistance;
 		static void EvalMaxParametricDistance(const Adaptor3d_Curve & Curve, const Adaptor3d_Curve & AReferenceCurve, const Standard_Real Tolerance, const TColStd_Array1OfReal & Parameters, Standard_Real &OutValue);
 
@@ -296,7 +296,7 @@ None
 
 Description
 -----------
-Extends the bounded curve curve to the point point. the extension is built: - at the end of the curve if after equals true, or - at the beginning of the curve if after equals false. the extension is performed according to a degree of continuity equal to cont, which in its turn must be equal to 1, 2 or 3. this function converts the bounded curve curve into a bspline curve. warning - nothing is done, and curve is not modified if cont is not equal to 1, 2 or 3. - it is recommended that the extension should not be too large with respect to the size of the bounded curve curve: point must not be located too far from one of the extremities of curve.
+Extends the bounded curve Curve to the point Point. The extension is built: - at the end of the curve if After equals true, or - at the beginning of the curve if After equals false. The extension is performed according to a degree of continuity equal to Cont, which in its turn must be equal to 1, 2 or 3. This function converts the bounded curve Curve into a BSpline curve. Warning - Nothing is done, and Curve is not modified if Cont is not equal to 1, 2 or 3. - It is recommended that the extension should not be too large with respect to the size of the bounded curve Curve: Point must not be located too far from one of the extremities of Curve.
 ") ExtendCurveToPoint;
 		static void ExtendCurveToPoint(opencascade::handle<Geom_BoundedCurve> & Curve, const gp_Pnt & Point, const Standard_Integer Cont, const Standard_Boolean After);
 
@@ -318,7 +318,7 @@ None
 
 Description
 -----------
-Extends the bounded surface surf along one of its boundaries. the chord length of the extension is equal to length. the direction of the extension is given as: - the u parametric direction of surf, if inu equals true, or - the v parametric direction of surf, if inu equals false. in this parametric direction, the extension is built on the side of: - the last parameter of surf, if after equals true, or - the first parameter of surf, if after equals false. the extension is performed according to a degree of continuity equal to cont, which in its turn must be equal to 1, 2 or 3. this function converts the bounded surface surf into a bspline surface. warning - nothing is done, and surf is not modified if cont is not equal to 1, 2 or 3. - it is recommended that length, the size of the extension should not be too large with respect to the size of the bounded surface surf. - surf must not be a periodic bspline surface in the parametric direction corresponding to the direction of extension.
+Extends the bounded surface Surf along one of its boundaries. The chord length of the extension is equal to Length. The direction of the extension is given as: - the u parametric direction of Surf, if InU equals true, or - the v parametric direction of Surf, if InU equals false. In this parametric direction, the extension is built on the side of: - the last parameter of Surf, if After equals true, or - the first parameter of Surf, if After equals false. The extension is performed according to a degree of continuity equal to Cont, which in its turn must be equal to 1, 2 or 3. This function converts the bounded surface Surf into a BSpline surface. Warning - Nothing is done, and Surf is not modified if Cont is not equal to 1, 2 or 3. - It is recommended that Length, the size of the extension should not be too large with respect to the size of the bounded surface Surf. - Surf must not be a periodic BSpline surface in the parametric direction corresponding to the direction of extension.
 ") ExtendSurfByLength;
 		static void ExtendSurfByLength(opencascade::handle<Geom_BoundedSurface> & Surf, const Standard_Real Length, const Standard_Integer Cont, const Standard_Boolean InU, const Standard_Boolean After);
 
@@ -340,7 +340,11 @@ None
 
 Description
 -----------
-This method fuse intervals interval1 and interval2 with specified confusion @param interval1 [in] first interval to fuse @param interval2 [in] second interval to fuse @param confision [in] tolerance to compare intervals @param isadjusttofirstinterval [in] flag to set method of fusion, if intervals are close  if false, intervals are fusing by half-division methdod  if true, intervals are fusing by selecting value from interval1 @param fusion [out] output interval .
+This method fuse intervals Interval1 and Interval2 with specified Confusion 
+Input parameter: Interval1 first interval to fuse 
+Input parameter: Interval2 second interval to fuse 
+Input parameter: Confision tolerance to compare intervals 
+Input parameter: IsAdjustToFirstInterval flag to set method of fusion, if intervals are close  if false, intervals are fusing by half-division methdod  if true, intervals are fusing by selecting value from Interval1 @param[out] Fusion output interval.
 ") FuseIntervals;
 		static void FuseIntervals(const TColStd_Array1OfReal & Interval1, const TColStd_Array1OfReal & Interval2, TColStd_SequenceOfReal & Fusion, const Standard_Real Confusion = 1.0e-9, const Standard_Boolean IsAdjustToFirstInterval = Standard_False);
 
@@ -359,7 +363,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Computes the curve 3d from package geom corresponding to the curve 3d from package geom, transformed with the transformation <gtrsf> warning: this method may return a null handle if it's impossible to compute the transformation of a curve. it's not implemented when: 1) the curve is an infinite parabola or hyperbola 2) the curve is an offsetcurve.
+Computes the curve 3d from package Geom corresponding to the curve 3d from package Geom, transformed with the transformation <GTrsf> WARNING: this method may return a null Handle if it's impossible to compute the transformation of a curve. It's not implemented when: 1) the curve is an infinite parabola or hyperbola 2) the curve is an offsetcurve.
 ") GTransform;
 		static opencascade::handle<Geom2d_Curve> GTransform(const opencascade::handle<Geom2d_Curve> & Curve, const gp_GTrsf2d & GTrsf);
 
@@ -403,7 +407,7 @@ bool
 
 Description
 -----------
-Returns true if the poles of u1 isoline and the poles of u2 isoline of surface are identical according to tolerance criterion. for rational surfaces weights(i)*poles(i) are checked.
+Returns true if the poles of U1 isoline and the poles of U2 isoline of surface are identical according to tolerance criterion. For rational surfaces Weights(i)*Poles(i) are checked.
 ") IsBSplUClosed;
 		static Standard_Boolean IsBSplUClosed(const opencascade::handle<Geom_BSplineSurface> & S, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
 
@@ -424,7 +428,7 @@ bool
 
 Description
 -----------
-Returns true if the poles of v1 isoline and the poles of v2 isoline of surface are identical according to tolerance criterion. for rational surfaces weights(i)*poles(i) are checked.
+Returns true if the poles of V1 isoline and the poles of V2 isoline of surface are identical according to tolerance criterion. For rational surfaces Weights(i)*Poles(i) are checked.
 ") IsBSplVClosed;
 		static Standard_Boolean IsBSplVClosed(const opencascade::handle<Geom_BSplineSurface> & S, const Standard_Real V1, const Standard_Real V2, const Standard_Real Tol);
 
@@ -445,7 +449,7 @@ bool
 
 Description
 -----------
-Returns true if the poles of u1 isoline and the poles of u2 isoline of surface are identical according to tolerance criterion.
+Returns true if the poles of U1 isoline and the poles of U2 isoline of surface are identical according to tolerance criterion.
 ") IsBzUClosed;
 		static Standard_Boolean IsBzUClosed(const opencascade::handle<Geom_BezierSurface> & S, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
 
@@ -466,7 +470,7 @@ bool
 
 Description
 -----------
-Returns true if the poles of v1 isoline and the poles of v2 isoline of surface are identical according to tolerance criterion.
+Returns true if the poles of V1 isoline and the poles of V2 isoline of surface are identical according to tolerance criterion.
 ") IsBzVClosed;
 		static Standard_Boolean IsBzVClosed(const opencascade::handle<Geom_BezierSurface> & S, const Standard_Real V1, const Standard_Real V2, const Standard_Real Tol);
 
@@ -507,7 +511,11 @@ int
 
 Description
 -----------
-Estimate surface normal at the given (u, v) point. @param[in] thesurf input surface @param[in] theuv (u, v) point coordinates on the surface @param[in] thetol estimation tolerance @param[out] thenorm computed normal return 0 if normal estimated from d1, 1 if estimated from d2 (quasysingular), >=2 in case of failure (undefined or infinite solutions).
+Estimate surface normal at the given (U, V) point. 
+Input parameter: theSurf input surface 
+Input parameter: theUV (U, V) point coordinates on the surface 
+Input parameter: theTol estimation tolerance @param[out] theNorm computed normal 
+Return: 0 if normal estimated from D1, 1 if estimated from D2 (quasysingular), >=2 in case of failure (undefined or infinite solutions).
 ") NormEstim;
 		static Standard_Integer NormEstim(const opencascade::handle<Geom_Surface> & theSurf, const gp_Pnt2d & theUV, const Standard_Real theTol, gp_Dir & theNorm);
 
@@ -527,7 +535,7 @@ None
 
 Description
 -----------
-Warning! this assume that the inparameter is an increasing sequence of real number and it will not check for that: unpredictable result can happen if this is not satisfied. it is the caller responsibility to check for that property. //! this method makes uniform numpoints segments s1,...snumpoints out of the segment defined by the first parameter and the last parameter of the inparameter ; keeps only one point of the inparameters set of parameter in each of the uniform segments taking care of the first and the last parameters. for the ith segment the element of the inparameter is the one that is the first to exceed the midpoint of the segment and to fall before the midpoint of the next segment there will be at the end at most numpoints + 1 if numpoints > 2 in the outparameters array.
+Warning! This assume that the InParameter is an increasing sequence of real number and it will not check for that: Unpredictable result can happen if this is not satisfied. It is the caller responsibility to check for that property. //! This method makes uniform NumPoints segments S1,...SNumPoints out of the segment defined by the first parameter and the last parameter of the InParameter ; keeps only one point of the InParameters set of parameter in each of the uniform segments taking care of the first and the last parameters. For the ith segment the element of the InParameter is the one that is the first to exceed the midpoint of the segment and to fall before the midpoint of the next segment There will be at the end at most NumPoints + 1 if NumPoints > 2 in the OutParameters Array.
 ") RemovePointsFromArray;
 		static void RemovePointsFromArray(const Standard_Integer NumPoints, const TColStd_Array1OfReal & InParameters, opencascade::handle<TColStd_HArray1OfReal> & OutParameters);
 
@@ -551,7 +559,7 @@ None
 
 Description
 -----------
-Make the curve curve2dptr have the imposed range first to list the most economic way, that is if it can change the range without changing the nature of the curve it will try to do that. otherwise it will produce a bspline curve that has the required range.
+Make the curve Curve2dPtr have the imposed range First to List the most economic way, that is if it can change the range without changing the nature of the curve it will try to do that. Otherwise it will produce a Bspline curve that has the required range.
 ") SameRange;
 		static void SameRange(const Standard_Real Tolerance, const opencascade::handle<Geom2d_Curve> & Curve2dPtr, const Standard_Real First, const Standard_Real Last, const Standard_Real RequestedFirst, const Standard_Real RequestedLast, opencascade::handle<Geom2d_Curve> & NewCurve2dPtr);
 
@@ -570,7 +578,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Computes the curve 3d from package geom corresponding to curve 2d from package geom2d, on the plan defined with the local coordinate system position.
+Computes the curve 3d from package Geom corresponding to curve 2d from package Geom2d, on the plan defined with the local coordinate system Position.
 ") To3d;
 		static opencascade::handle<Geom_Curve> To3d(const gp_Ax2 & Position, const opencascade::handle<Geom2d_Curve> & Curve2d);
 
@@ -595,7 +603,12 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Builds 3d curve for a isoline. this method takes corresponding isoline from the input surface. @param thec2d trimmed curve to be approximated. @param theisu flag indicating that line is u const. @param theparam line parameter. @param theisforward flag indicating forward parameterization on a isoline. return standard_true when 3d curve is built and standard_false otherwise.
+Builds 3D curve for a isoline. This method takes corresponding isoline from the input surface. 
+Parameter theC2D Trimmed curve to be approximated. 
+Parameter theIsU Flag indicating that line is u const. 
+Parameter theParam Line parameter. 
+Parameter theIsForward Flag indicating forward parameterization on a isoline. 
+Return: Standard_True when 3d curve is built and Standard_False otherwise.
 ") buildC3dOnIsoLine;
 		static opencascade::handle<Geom_Curve> buildC3dOnIsoLine(const opencascade::handle<Adaptor2d_Curve2d> & theC2D, const opencascade::handle<Adaptor3d_Surface> & theSurf, const Standard_Real theFirst, const Standard_Real theLast, const Standard_Real theTolerance, const Standard_Boolean theIsU, const Standard_Real theParam, const Standard_Boolean theIsForward);
 
@@ -615,7 +628,12 @@ theIsForward: bool
 
 Description
 -----------
-Checks whether the 2d curve is a isoline. it can be represented by b-spline, bezier, or geometric line. this line should have natural parameterization. @param thec2d trimmed curve to be checked. @param theisu flag indicating that line is u const. @param theparam line parameter. @param theisforward flag indicating forward parameterization on a isoline. return standard_true when 2d curve is a line and standard_false otherwise.
+Checks whether the 2d curve is a isoline. It can be represented by b-spline, bezier, or geometric line. This line should have natural parameterization. 
+Parameter theC2D Trimmed curve to be checked. 
+Parameter theIsU Flag indicating that line is u const. 
+Parameter theParam Line parameter. 
+Parameter theIsForward Flag indicating forward parameterization on a isoline. 
+Return: Standard_True when 2d curve is a line and Standard_False otherwise.
 ") isIsoLine;
 		static Standard_Boolean isIsoLine(const opencascade::handle<Adaptor2d_Curve2d> & theC2D, Standard_Boolean &OutValue, Standard_Real &OutValue, Standard_Boolean &OutValue);
 
@@ -687,7 +705,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Modifies the curve by fixing the first or the last tangencies //! if index3d not in the range [1,nb3dspaces] if the approx is not done.
+modifies the curve by fixing the first or the last tangencies //! if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done.
 ") FixedTangent;
 		opencascade::handle<Geom2d_BSplineCurve> FixedTangent(const Standard_Boolean FirstFlag, const Standard_Boolean LastFlag);
 
@@ -790,7 +808,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Modifies the curve by fixing the first or the last tangencies //! if index3d not in the range [1,nb3dspaces] if the approx is not done.
+modifies the curve by fixing the first or the last tangencies //! if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done.
 ") FixedTangent;
 		opencascade::handle<Geom_BSplineCurve> FixedTangent(const Standard_Boolean FirstFlag, const Standard_Boolean LastFlag);
 
@@ -867,7 +885,7 @@ None
 
 Description
 -----------
-No available documentation.
+Constructor.
 ") GeomLib_CheckCurveOnSurface;
 		 GeomLib_CheckCurveOnSurface(const opencascade::handle<Adaptor3d_Curve> & theCurve, const Standard_Real theTolRange = Precision::PConfusion());
 
@@ -880,7 +898,7 @@ int
 
 Description
 -----------
-Returns error status the possible values are: 0 - ok; 1 - null curve or surface or 2d curve; 2 - invalid parametric range; 3 - error in calculations.
+Returns error status The possible values are: 0 - OK; 1 - null curve or surface or 2d curve; 2 - invalid parametric range; 3 - error in calculations.
 ") ErrorStatus;
 		Standard_Integer ErrorStatus();
 
@@ -982,7 +1000,7 @@ None
 
 Description
 -----------
-Computes the max distance for the 3d curve <mycurve> and 2d curve <thecurveonsurface> if ismultithread == standard_true then computation will be performed in parallel.
+Computes the max distance for the 3d curve <myCurve> and 2d curve <theCurveOnSurface> If isMultiThread == Standard_True then computation will be performed in parallel.
 ") Perform;
 		void Perform(const opencascade::handle<Adaptor3d_CurveOnSurface> & theCurveOnSurface);
 
@@ -1033,7 +1051,7 @@ None
 
 Description
 -----------
-If the surface is rational this will define the evaluator of a real function of 2 variables a(u,v) such that if we define a new surface by: a(u,v) * n(u,v) newf(u,v) = ---------------- a(u,v) * d(u,v).
+if the surface is rational this will define the evaluator of a real function of 2 variables a(u,v) such that if we define a new surface by: a(u,v) * N(u,v) NewF(u,v) = ---------------- a(u,v) * D(u,v).
 ") GeomLib_DenominatorMultiplier;
 		 GeomLib_DenominatorMultiplier(const opencascade::handle<Geom_BSplineSurface> & Surface, const TColStd_Array1OfReal & KnotVector);
 
@@ -1052,7 +1070,7 @@ float
 
 Description
 -----------
-Returns the value of a(uparameter,vparameter)= //! h0(uparameter)/denominator(umin,vparameter) //! d denominator(umin,vparameter) - ------------------------------[h1(u)]/(denominator(umin,vparameter)^2) d u //! + h3(uparameter)/denominator(umax,vparameter) //! d denominator(umax,vparameter) - ------------------------------[h2(u)]/(denominator(umax,vparameter)^2) d u.
+Returns the value of a(UParameter,VParameter)= //! H0(UParameter)/Denominator(Umin,Vparameter) //! D Denominator(Umin,Vparameter) - ------------------------------[H1(u)]/(Denominator(Umin,Vparameter)^2) D U //! + H3(UParameter)/Denominator(Umax,Vparameter) //! D Denominator(Umax,Vparameter) - ------------------------------[H2(u)]/(Denominator(Umax,Vparameter)^2) D U.
 ") Value;
 		Standard_Real Value(const Standard_Real UParameter, const Standard_Real VParameter);
 
@@ -1100,7 +1118,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Returns the interpolated curve of the requested degree.
+returns the interpolated curve of the requested degree.
 ") Curve;
 		opencascade::handle<Geom_BSplineCurve> Curve();
 
@@ -1113,7 +1131,7 @@ GeomLib_InterpolationErrors
 
 Description
 -----------
-Returns the error type if any.
+returns the error type if any.
 ") Error;
 		GeomLib_InterpolationErrors Error();
 
@@ -1126,7 +1144,7 @@ bool
 
 Description
 -----------
-Returns if everything went ok.
+returns if everything went OK.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1172,7 +1190,7 @@ bool
 
 Description
 -----------
-Return if the surface is a plan.
+Return if the Surface is a plan.
 ") IsPlanar;
 		Standard_Boolean IsPlanar();
 
@@ -1237,7 +1255,7 @@ float
 
 Description
 -----------
-Returns the value of parameter of the point of range index: a + ((index-1)/(nbpoints-1))*b. an exception is raised if index<=0 or index>nbpoints.
+Returns the value of parameter of the point of range Index: A + ((Index-1)/(NbPoints-1))*B. An exception is raised if Index<=0 or Index>NbPoints.
 ") GetParameter;
 		virtual Standard_Real GetParameter(const Standard_Integer Index);
 
@@ -1287,7 +1305,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Returns a polynomial curve whose poles correspond to the index3d 3d space if index3d not in the range [1,nb3dspaces] if the approx is not done.
+returns a polynomial curve whose poles correspond to the Index3D 3D space if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done.
 ") Curve;
 		opencascade::handle<Geom_BSplineCurve> Curve(const Standard_Integer Index3d);
 
@@ -1306,7 +1324,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Returns a rational curve whose poles correspond to the index3d of the 3d space and whose weights correspond to the index1d 1d space. if index1d not in the range [1,nb1dspaces] if index3d not in the range [1,nb3dspaces] if the approx is not done.
+returns a rational curve whose poles correspond to the index3D of the 3D space and whose weights correspond to the index1d 1D space. if Index1D not in the Range [1,Nb1dSpaces] if Index3D not in the Range [1,Nb3dSpaces] if the Approx is not Done.
 ") Curve;
 		opencascade::handle<Geom_BSplineCurve> Curve(const Standard_Integer Index1D, const Standard_Integer Index3D);
 
@@ -1324,7 +1342,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Returns a polynomial curve whose poles correspond to the index2d 2d space if index2d not in the range [1,nb2dspaces] if the approx is not done.
+returns a polynomial curve whose poles correspond to the Index2d 2D space if Index2d not in the Range [1,Nb2dSpaces] if the Approx is not Done.
 ") Curve2d;
 		opencascade::handle<Geom2d_BSplineCurve> Curve2d(const Standard_Integer Index2d);
 
@@ -1343,7 +1361,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Returns a rational curve whose poles correspond to the index2d of the 2d space and whose weights correspond to one dimensional space of index 1d if index1d not in the range [1,nb1dspaces] if index2d not in the range [1,nb2dspaces] if the approx is not done.
+returns a rational curve whose poles correspond to the index2d of the 2D space and whose weights correspond to one dimensional space of index 1d if Index1d not in the Range [1,Nb1dSpaces] if Index2d not in the Range [1,Nb2dSpaces] if the Approx is not Done.
 ") Curve2d;
 		opencascade::handle<Geom2d_BSplineCurve> Curve2d(const Standard_Integer Index1d, const Standard_Integer Index2d);
 
@@ -1362,7 +1380,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Returns a 2d curve building it from the 1d curve in x at index1d and y at index2d amongst the 1d curves if index1d not in the range [1,nb1dspaces] if index2d not in the range [1,nb1dspaces] if the approx is not done.
+returns a 2D curve building it from the 1D curve in x at Index1d and y at Index2d amongst the 1D curves if Index1d not in the Range [1,Nb1dSpaces] if Index2d not in the Range [1,Nb1dSpaces] if the Approx is not Done.
 ") Curve2dFromTwo1d;
 		opencascade::handle<Geom2d_BSplineCurve> Curve2dFromTwo1d(const Standard_Integer Index1d, const Standard_Integer Index2d);
 
@@ -1388,7 +1406,7 @@ int
 
 Description
 -----------
-Returns the number of 1d spaces of the approx.
+returns the number of 1D spaces of the Approx.
 ") Nb1DSpaces;
 		Standard_Integer Nb1DSpaces();
 
@@ -1401,7 +1419,7 @@ int
 
 Description
 -----------
-Returns the number of 3d spaces of the approx.
+returns the number of 3D spaces of the Approx.
 ") Nb2DSpaces;
 		Standard_Integer Nb2DSpaces();
 
@@ -1414,7 +1432,7 @@ int
 
 Description
 -----------
-Returns the number of 3d spaces of the approx.
+returns the number of 3D spaces of the Approx.
 ") Nb3DSpaces;
 		Standard_Integer Nb3DSpaces();
 
@@ -1464,7 +1482,7 @@ D: float
 
 Description
 -----------
-Computes the derivative <d> of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Derivative;
 		virtual Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
@@ -1482,7 +1500,7 @@ F: float
 
 Description
 -----------
-Computes the value <f>of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the value <F>of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -1501,7 +1519,7 @@ D: float
 
 Description
 -----------
-Computes the value <f> and the derivative <d> of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+computes the value <F> and the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1541,7 +1559,11 @@ float
 
 Description
 -----------
-Computes parameter in thecurve (*theprmoncurve) where maximal deviation between thecurve and the linear segment joining its points with the parameters thefpar and thelpar is obtained. returns the (positive) value of deviation. returns negative value if the deviation cannot be computed. the returned parameter (in case of successful) will always be in the range [thefpar, thelpar]. iterative method is used for computation. so, thestartparameter is needed to be set. recommend value of thestartparameter can be found with the overloaded method. additionally, following values can be returned (optionally): @param theptoncurve - the point on curve where maximal deviation is achieved; @param theprmoncurve - the parameter of theptoncurve; @param theveccurvline - the vector along which is computed (this vector is always  perpendicular theline); @param theline - the linear segment joining the point of thecurve having parameters thefpar and thelpar.
+Computes parameter in theCurve (*thePrmOnCurve) where maximal deviation between theCurve and the linear segment joining its points with the parameters theFPar and theLPar is obtained. Returns the (positive) value of deviation. Returns negative value if the deviation cannot be computed. The returned parameter (in case of successful) will always be in the range [theFPar, theLPar]. Iterative method is used for computation. So, theStartParameter is needed to be set. Recommend value of theStartParameter can be found with the overloaded method. Additionally, following values can be returned (optionally): 
+Parameter thePtOnCurve - the point on curve where maximal deviation is achieved; 
+Parameter thePrmOnCurve - the parameter of thePtOnCurve; 
+Parameter theVecCurvLine - the vector along which is computed (this vector is always  perpendicular theLine); 
+Parameter theLine - the linear segment joining the point of theCurve having parameters theFPar and theLPar.
 ") ComputeDeviation;
 		static Standard_Real ComputeDeviation(const Geom2dAdaptor_Curve & theCurve, const Standard_Real theFPar, const Standard_Real theLPar, const Standard_Real theStartParameter, const Standard_Integer theNbIters = 100, Standard_Real * const thePrmOnCurve = NULL, gp_Pnt2d * const thePtOnCurve = NULL, gp_Vec2d * const theVecCurvLine = NULL, gp_Lin2d * const theLine = NULL);
 
@@ -1564,7 +1586,7 @@ float
 
 Description
 -----------
-Computes parameter in thecurve (*theprmoncurve) where maximal deviation between thecurve and the linear segment joining its points with the parameters thefpar and thelpar is obtained. returns the (positive) value of deviation. returns negative value if the deviation cannot be computed. the returned parameter (in case of successful) will always be in the range [thefpar, thelpar]. thenbsubintervals defines discretization of the given interval [thefpar, thelpar] to provide better search condition. this value should be chosen taking into account complexity of the curve in considered interval. e.g. if there are many oscillations of the curve in the interval then thenbsubintervals mus be great number. however, the greater value of thenbsubintervals the slower the algorithm will compute. thenbiters sets number of iterations. attention!!! this algorithm cannot compute deviation precisely (so, there is no point in setting big value of thenbiters). but it can give some start point for the overloaded method.
+Computes parameter in theCurve (*thePrmOnCurve) where maximal deviation between theCurve and the linear segment joining its points with the parameters theFPar and theLPar is obtained. Returns the (positive) value of deviation. Returns negative value if the deviation cannot be computed. The returned parameter (in case of successful) will always be in the range [theFPar, theLPar]. theNbSubIntervals defines discretization of the given interval [theFPar, theLPar] to provide better search condition. This value should be chosen taking into account complexity of the curve in considered interval. E.g. if there are many oscillations of the curve in the interval then theNbSubIntervals mus be great number. However, the greater value of theNbSubIntervals the slower the algorithm will compute. theNbIters sets number of iterations. ATTENTION!!! This algorithm cannot compute deviation precisely (so, there is no point in setting big value of theNbIters). But it can give some start point for the overloaded method.
 ") ComputeDeviation;
 		static Standard_Real ComputeDeviation(const Geom2dAdaptor_Curve & theCurve, const Standard_Real theFPar, const Standard_Real theLPar, const Standard_Integer theNbSubIntervals, const Standard_Integer theNbIters = 10, Standard_Real * const thePrmOnCurve = NULL);
 
@@ -1584,7 +1606,7 @@ U: float
 
 Description
 -----------
-Extracts the parameter of a 3d point lying on a 3d curve or at a distance less than the maxdist value.
+Extracts the parameter of a 3D point lying on a 3D curve or at a distance less than the MaxDist value.
 ") Parameter;
 		static Standard_Boolean Parameter(const opencascade::handle<Geom_Curve> & Curve, const gp_Pnt & Point, const Standard_Real MaxDist, Standard_Real &OutValue);
 
@@ -1604,7 +1626,7 @@ U: float
 
 Description
 -----------
-Extracts the parameter of a 2d point lying on a 2d curve or at a distance less than the maxdist value.
+Extracts the parameter of a 2D point lying on a 2D curve or at a distance less than the MaxDist value.
 ") Parameter;
 		static Standard_Boolean Parameter(const opencascade::handle<Geom2d_Curve> & Curve, const gp_Pnt2d & Point, const Standard_Real MaxDist, Standard_Real &OutValue);
 
@@ -1625,7 +1647,7 @@ V: float
 
 Description
 -----------
-Extracts the parameter of a 3d point lying on a surface or at a distance less than the maxdist value.
+Extracts the parameter of a 3D point lying on a surface or at a distance less than the MaxDist value.
 ") Parameters;
 		static Standard_Boolean Parameters(const opencascade::handle<Geom_Surface> & Surface, const gp_Pnt & Point, const Standard_Real MaxDist, Standard_Real &OutValue, Standard_Real &OutValue);
 

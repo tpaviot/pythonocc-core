@@ -220,7 +220,7 @@ None
 
 Description
 -----------
-<-----****+****  old one **+**------> tool for cutting <<< <<< <-----****+****  result.
+<-----****+****  Old one **+**------> Tool for cutting <<< <<< <-----****+****  result.
 ") CutAtEnd;
 		void CutAtEnd(const Standard_Real End, const Standard_ShortReal TolEnd);
 
@@ -239,7 +239,7 @@ None
 
 Description
 -----------
-****+****-----------> old one <----------**+** tool for cutting >>> >>> ****+****-----------> result.
+****+****-----------> Old one <----------**+** Tool for cutting >>> >>> ****+****-----------> result.
 ") CutAtStart;
 		void CutAtStart(const Standard_Real Start, const Standard_ShortReal TolStart);
 
@@ -271,7 +271,7 @@ None
 
 Description
 -----------
-<---------------------****+**** old one <-----------------**+**  new one to fuse >>> >>> <---------------------****+**** result.
+<---------------------****+**** Old one <-----------------**+**  New one to fuse >>> >>> <---------------------****+**** result.
 ") FuseAtEnd;
 		void FuseAtEnd(const Standard_Real End, const Standard_ShortReal TolEnd);
 
@@ -290,7 +290,7 @@ None
 
 Description
 -----------
-****+****--------------------> old one ****+****------------------------> new one to fuse <<< <<< ****+****------------------------> result.
+****+****--------------------> Old one ****+****------------------------> New one to fuse <<< <<< ****+****------------------------> result.
 ") FuseAtStart;
 		void FuseAtStart(const Standard_Real Start, const Standard_ShortReal TolStart);
 
@@ -308,7 +308,7 @@ bool
 
 Description
 -----------
-True if me is after other **-----------**** me ***----------------**  other.
+True if me is After Other **-----------**** me ***----------------**  Other.
 ") IsAfter;
 		Standard_Boolean IsAfter(const Intrv_Interval & Other);
 
@@ -326,7 +326,7 @@ bool
 
 Description
 -----------
-True if me is before other ***----------------**  me **-----------**** other.
+True if me is Before Other ***----------------**  me **-----------**** Other.
 ") IsBefore;
 		Standard_Boolean IsBefore(const Intrv_Interval & Other);
 
@@ -344,7 +344,7 @@ bool
 
 Description
 -----------
-True if me is enclosing other ***----------------------------**** me ***------------------** other.
+True if me is Enclosing Other ***----------------------------**** me ***------------------** Other.
 ") IsEnclosing;
 		Standard_Boolean IsEnclosing(const Intrv_Interval & Other);
 
@@ -362,7 +362,7 @@ bool
 
 Description
 -----------
-True if me is inside other **-----------****  me ***--------------------------**  other.
+True if me is Inside Other **-----------****  me ***--------------------------**  Other.
 ") IsInside;
 		Standard_Boolean IsInside(const Intrv_Interval & Other);
 
@@ -380,7 +380,7 @@ bool
 
 Description
 -----------
-True if me is just after other ****-------****  me ***-----------**  other.
+True if me is just after Other ****-------****  me ***-----------**  Other.
 ") IsJustAfter;
 		Standard_Boolean IsJustAfter(const Intrv_Interval & Other);
 
@@ -398,7 +398,7 @@ bool
 
 Description
 -----------
-True if me is just before other ***--------****   me ***-----------** other.
+True if me is just before Other ***--------****   me ***-----------** Other.
 ") IsJustBefore;
 		Standard_Boolean IsJustBefore(const Intrv_Interval & Other);
 
@@ -416,7 +416,7 @@ bool
 
 Description
 -----------
-True if me is just enclosing other at end ***----------------------------**** me ***-----------------****  other.
+True if me is just Enclosing Other at End ***----------------------------**** me ***-----------------****  Other.
 ") IsJustEnclosingAtEnd;
 		Standard_Boolean IsJustEnclosingAtEnd(const Intrv_Interval & Other);
 
@@ -434,7 +434,7 @@ bool
 
 Description
 -----------
-True if me is just enclosing other at start ***---------------------------**** me ***------------------** other.
+True if me is just Enclosing Other at start ***---------------------------**** me ***------------------** Other.
 ") IsJustEnclosingAtStart;
 		Standard_Boolean IsJustEnclosingAtStart(const Intrv_Interval & Other);
 
@@ -452,7 +452,7 @@ bool
 
 Description
 -----------
-True if me is just overlapping other at end ***-----------*  me ***------------------------** other.
+True if me is just overlapping Other at end ***-----------*  me ***------------------------** Other.
 ") IsJustOverlappingAtEnd;
 		Standard_Boolean IsJustOverlappingAtEnd(const Intrv_Interval & Other);
 
@@ -470,7 +470,7 @@ bool
 
 Description
 -----------
-True if me is just overlapping other at start ***-----------***  me ***------------------------** other.
+True if me is just overlapping Other at start ***-----------***  me ***------------------------** Other.
 ") IsJustOverlappingAtStart;
 		Standard_Boolean IsJustOverlappingAtStart(const Intrv_Interval & Other);
 
@@ -488,7 +488,7 @@ bool
 
 Description
 -----------
-True if me is overlapping other at end ***-----------** me ***---------------***  other.
+True if me is overlapping Other at end ***-----------** me ***---------------***  Other.
 ") IsOverlappingAtEnd;
 		Standard_Boolean IsOverlappingAtEnd(const Intrv_Interval & Other);
 
@@ -506,7 +506,7 @@ bool
 
 Description
 -----------
-True if me is overlapping other at start ***---------------***  me ***-----------** other.
+True if me is overlapping Other at start ***---------------***  me ***-----------** Other.
 ") IsOverlappingAtStart;
 		Standard_Boolean IsOverlappingAtStart(const Intrv_Interval & Other);
 
@@ -519,7 +519,7 @@ bool
 
 Description
 -----------
-True if mystart+mytolstart > myend-mytolend or if myend+mytolend > mystart-mytolstart.
+True if myStart+myTolStart > myEnd-myTolEnd or if myEnd+myTolEnd > myStart-myTolStart.
 ") IsProbablyEmpty;
 		Standard_Boolean IsProbablyEmpty();
 
@@ -537,7 +537,7 @@ bool
 
 Description
 -----------
-True if me and other have the same bounds *----------------***  me ***-----------------**  other.
+True if me and Other have the same bounds *----------------***  me ***-----------------**  Other.
 ") IsSimilar;
 		Standard_Boolean IsSimilar(const Intrv_Interval & Other);
 
@@ -555,7 +555,7 @@ Intrv_Position
 
 Description
 -----------
-True if me is before other **-----------**** other ***-----*   before ***------------*  justbefore ***-----------------*  overlappingatstart ***--------------------------*  justenclosingatend ***-------------------------------------* enclosing ***----*  justoverlappingatstart ***-------------*  similar ***------------------------* justenclosingatstart ***-*  inside ***------*  justoverlappingatend ***-----------------* overlappingatend ***--------* justafter ***---* after.
+True if me is Before Other **-----------**** Other ***-----*   Before ***------------*  JustBefore ***-----------------*  OverlappingAtStart ***--------------------------*  JustEnclosingAtEnd ***-------------------------------------* Enclosing ***----*  JustOverlappingAtStart ***-------------*  Similar ***------------------------* JustEnclosingAtStart ***-*  Inside ***------*  JustOverlappingAtEnd ***-----------------* OverlappingAtEnd ***--------* JustAfter ***---* After.
 ") Position;
 		Intrv_Position Position(const Intrv_Interval & Other);
 
@@ -695,7 +695,7 @@ None
 
 Description
 -----------
-Intersects the intervals with the interval <tool>.
+Intersects the intervals with the interval <Tool>.
 ") Intersect;
 		void Intersect(const Intrv_Interval & Tool);
 
@@ -713,7 +713,7 @@ None
 
 Description
 -----------
-Intersects the intervals with the intervals in the sequence <tool>.
+Intersects the intervals with the intervals in the sequence <Tool>.
 ") Intersect;
 		void Intersect(const Intrv_Intervals & Tool);
 

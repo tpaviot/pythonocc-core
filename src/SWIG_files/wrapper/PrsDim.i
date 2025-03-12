@@ -341,7 +341,7 @@ isOnPlane: bool
 
 Description
 -----------
-Checks if acurve belongs to aplane; if not, projects acurve in aplane and returns acurve; return true if ok.
+Checks if aCurve belongs to aPlane; if not, projects aCurve in aPlane and returns aCurve; Return True if ok.
 ") ComputeGeomCurve;
 		static Standard_Boolean ComputeGeomCurve(opencascade::handle<Geom_Curve> & aCurve, const Standard_Real first1, const Standard_Real last1, gp_Pnt & FirstPnt1, gp_Pnt & LastPnt1, const opencascade::handle<Geom_Plane> & aPlane, Standard_Boolean &OutValue);
 
@@ -362,7 +362,7 @@ bool
 
 Description
 -----------
-Used by 2d relation only computes the 3d geometry of <anedge> in the current workingplane and the extremities if any return true if ok.
+Used by 2d Relation only Computes the 3d geometry of <anEdge> in the current WorkingPlane and the extremities if any Return True if ok.
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt);
 
@@ -383,7 +383,7 @@ theIsInfinite: bool
 
 Description
 -----------
-Used by dimensions only. computes the 3d geometry of <anedge>. return true if ok.
+Used by dimensions only. Computes the 3d geometry of <anEdge>. Return True if ok.
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt, Standard_Boolean &OutValue);
 
@@ -407,7 +407,7 @@ theIsOnPlane: bool
 
 Description
 -----------
-Used by 2d relation only computes the 3d geometry of <anedge> in the current workingplane and the extremities if any. if <acurve> is not in the current plane, <extcurve> contains the not projected curve associated to <anedge>. if <anedge> is infinite, <isinfinite> = true and the 2 parameters <firstpnt> and <lastpnt> have no signification. return true if ok.
+Used by 2d Relation only Computes the 3d geometry of <anEdge> in the current WorkingPlane and the extremities if any. If <aCurve> is not in the current plane, <extCurve> contains the not projected curve associated to <anEdge>. If <anEdge> is infinite, <isinfinite> = true and the 2 parameters <FirstPnt> and <LastPnt> have no signification. Return True if ok.
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, gp_Pnt & theFirstPnt, gp_Pnt & theLastPnt, opencascade::handle<Geom_Curve> & theExtCurve, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<Geom_Plane> & thePlane);
 
@@ -433,7 +433,7 @@ bool
 
 Description
 -----------
-Used by 2d relation only computes the 3d geometry of <anedge> in the current workingplane and the extremities if any return true if ok.
+Used by 2d Relation only Computes the 3d geometry of <anEdge> in the current WorkingPlane and the extremities if any Return True if ok.
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge, opencascade::handle<Geom_Curve> & theFirstCurve, opencascade::handle<Geom_Curve> & theSecondCurve, gp_Pnt & theFirstPnt1, gp_Pnt & theLastPnt1, gp_Pnt & theFirstPnt2, gp_Pnt & theLastPnt2, const opencascade::handle<Geom_Plane> & thePlane);
 
@@ -459,7 +459,7 @@ theIsinfinite2: bool
 
 Description
 -----------
-Used by dimensions only.computes the 3d geometry of<anedge1> and <anedge2> and checks if they are infinite.
+Used by dimensions only.Computes the 3d geometry of<anEdge1> and <anEdge2> and checks if they are infinite.
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge, opencascade::handle<Geom_Curve> & theFirstCurve, opencascade::handle<Geom_Curve> & theSecondCurve, gp_Pnt & theFirstPnt1, gp_Pnt & theLastPnt1, gp_Pnt & theFirstPnt2, gp_Pnt & theLastPnt2, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -488,7 +488,7 @@ theIsinfinite2: bool
 
 Description
 -----------
-Used by 2d relation only computes the 3d geometry of<anedge1> and <anedge2> in the current plane and the extremities if any. return in extcurve the 3d curve (not projected in the plane) of the first edge if <indexext> =1 or of the 2nd edge if <indexext> = 2. if <indexext> = 0, extcurve is null. if there is an edge external to the plane, <isinfinite> is true if this edge is infinite. so, the extremities of it are not significant. return true if ok.
+Used by 2d Relation only Computes the 3d geometry of<anEdge1> and <anEdge2> in the current Plane and the extremities if any. Return in ExtCurve the 3d curve (not projected in the plane) of the first edge if <indexExt> =1 or of the 2nd edge if <indexExt> = 2. If <indexExt> = 0, ExtCurve is Null. if there is an edge external to the plane, <isinfinite> is true if this edge is infinite. So, the extremities of it are not significant. Return True if ok.
 ") ComputeGeometry;
 		static Standard_Boolean ComputeGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge, Standard_Integer &OutValue, opencascade::handle<Geom_Curve> & theFirstCurve, opencascade::handle<Geom_Curve> & theSecondCurve, gp_Pnt & theFirstPnt1, gp_Pnt & theLastPnt1, gp_Pnt & theFirstPnt2, gp_Pnt & theLastPnt2, opencascade::handle<Geom_Curve> & theExtCurve, Standard_Boolean &OutValue, Standard_Boolean &OutValue, const opencascade::handle<Geom_Plane> & thePlane);
 
@@ -580,7 +580,7 @@ float
 
 Description
 -----------
-Computes length of ellipse arc in parametric units.
+computes length of ellipse arc in parametric units.
 ") DistanceFromApex;
 		static Standard_Real DistanceFromApex(const gp_Elips & elips, const gp_Pnt & Apex, const Standard_Real par);
 
@@ -620,7 +620,7 @@ Offset: float
 
 Description
 -----------
-Tryes to get plane from face. returns surface of face in asurf. returns standard_true and plane of face in aplane in following cases: face is plane, offset of plane, extrusion of line and offset of extrusion of line returns pure type of surface which can be: plane, cylinder, cone, sphere, torus, surfaceofrevolution, surfaceofextrusion.
+Tries to get Plane from Face. Returns Surface of Face in aSurf. Returns Standard_True and Plane of Face in aPlane in following cases: Face is Plane, Offset of Plane, Extrusion of Line and Offset of Extrusion of Line Returns pure type of Surface which can be: Plane, Cylinder, Cone, Sphere, Torus, SurfaceOfRevolution, SurfaceOfExtrusion.
 ") GetPlaneFromFace;
 		static Standard_Boolean GetPlaneFromFace(const TopoDS_Face & aFace, gp_Pln & aPlane, opencascade::handle<Geom_Surface> & aSurf, PrsDim_KindOfSurface &OutValue, Standard_Real &OutValue);
 
@@ -640,7 +640,7 @@ bool
 
 Description
 -----------
-Returns true if point with anattachpar is in domain of arc.
+returns True if point with anAttachPar is in domain of arc.
 ") InDomain;
 		static Standard_Boolean InDomain(const Standard_Real aFirstPar, const Standard_Real aLastPar, const Standard_Real anAttachPar);
 
@@ -733,7 +733,8 @@ None
 
 Description
 -----------
-Finds attachment points on two curvilinear faces for length dimension. @param theplanedir [in] the direction on the dimension plane to compute the plane automatically. it will not be taken into account if plane is defined by user.
+Finds attachment points on two curvilinear faces for length dimension. 
+Input parameter: thePlaneDir the direction on the dimension plane to compute the plane automatically. It will not be taken into account if plane is defined by user.
 ") InitLengthBetweenCurvilinearFaces;
 		static void InitLengthBetweenCurvilinearFaces(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, opencascade::handle<Geom_Surface> & theFirstSurf, opencascade::handle<Geom_Surface> & theSecondSurf, gp_Pnt & theFirstAttach, gp_Pnt & theSecondAttach, gp_Dir & theDirOnPlane);
 
@@ -752,7 +753,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the nearest point in a shape. this is used by several classes in calculation of dimensions.
+Returns the nearest point in a shape. This is used by several classes in calculation of dimensions.
 ") Nearest;
 		static gp_Pnt Nearest(const TopoDS_Shape & aShape, const gp_Pnt & aPoint);
 
@@ -771,7 +772,7 @@ gp_Pnt
 
 Description
 -----------
-Return the nearest point on the line.
+Return: the nearest point on the line.
 ") Nearest;
 		static gp_Pnt Nearest(const gp_Lin & theLine, const gp_Pnt & thePoint);
 
@@ -793,7 +794,8 @@ bool
 
 Description
 -----------
-For the given point finds nearest point on the curve, return true if found point is belongs to the curve and false otherwise.
+For the given point finds nearest point on the curve, 
+Return: True if found point is belongs to the curve and False otherwise.
 ") Nearest;
 		static Standard_Boolean Nearest(const opencascade::handle<Geom_Curve> & theCurve, const gp_Pnt & thePoint, const gp_Pnt & theFirstPoint, const gp_Pnt & theLastPoint, gp_Pnt & theNearestPoint);
 
@@ -815,7 +817,7 @@ IsInDomain: bool
 
 Description
 -----------
-Computes nearest to ellipse arc apex.
+computes nearest to ellipse arc apex.
 ") NearestApex;
 		static gp_Pnt NearestApex(const gp_Elips & elips, const gp_Pnt & pApex, const gp_Pnt & nApex, const Standard_Real fpara, const Standard_Real lpara, Standard_Boolean &OutValue);
 
@@ -929,7 +931,7 @@ bool
 
 Description
 -----------
-Returns true if the class of objects accepts the display mode themode. the interactive context can have a default mode of representation for the set of interactive objects. this mode may not be accepted by object.
+Returns true if the class of objects accepts the display mode theMode. The interactive context can have a default mode of representation for the set of Interactive Objects. This mode may not be accepted by object.
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
@@ -942,7 +944,7 @@ opencascade::handle<Prs3d_DimensionAspect>
 
 Description
 -----------
-Gets the dimension aspect from ais object drawer. dimension aspect contains aspects of line, text and arrows for dimension presentation.
+Gets the dimension aspect from AIS object drawer. Dimension aspect contains aspects of line, text and arrows for dimension presentation.
 ") DimensionAspect;
 		opencascade::handle<Prs3d_DimensionAspect> DimensionAspect();
 
@@ -955,7 +957,7 @@ PrsDim_DisplaySpecialSymbol
 
 Description
 -----------
-Return dimension special symbol display options.
+Return: dimension special symbol display options.
 ") DisplaySpecialSymbol;
 		PrsDim_DisplaySpecialSymbol DisplaySpecialSymbol();
 
@@ -968,7 +970,8 @@ TCollection_ExtendedString
 
 Description
 -----------
-Gets user-defined dimension value. return dimension value string.
+Gets user-defined dimension value. 
+Return: dimension value string.
 ") GetCustomValue;
 		const TCollection_ExtendedString & GetCustomValue();
 
@@ -994,7 +997,7 @@ float
 
 Description
 -----------
-Return flyout value for dimension.
+Return: flyout value for dimension.
 ") GetFlyout;
 		Standard_Real GetFlyout();
 
@@ -1007,7 +1010,8 @@ int
 
 Description
 -----------
-Geometry type defines type of shapes on which the dimension is to be built. return type of geometry on which the dimension will be built.
+Geometry type defines type of shapes on which the dimension is to be built. 
+Return: type of geometry on which the dimension will be built.
 ") GetGeometryType;
 		Standard_Integer GetGeometryType();
 
@@ -1033,7 +1037,8 @@ gp_Pln
 
 Description
 -----------
-Get the dimension plane in which the 2d dimension presentation is computed. by default, if plane is not defined by user, it is computed automatically after dimension geometry is computed. if computed dimension geometry (points) can't be placed on the user-defined plane, dimension geometry was set as invalid (validity flag is set to false) and dimension presentation will not be computed. if user-defined plane allow geometry placement on it, it will be used for computing of the dimension presentation. return dimension plane used for presentation computing.
+Get the dimension plane in which the 2D dimension presentation is computed. By default, if plane is not defined by user, it is computed automatically after dimension geometry is computed. If computed dimension geometry (points) can't be placed on the user-defined plane, dimension geometry was set as invalid (validity flag is set to false) and dimension presentation will not be computed. If user-defined plane allow geometry placement on it, it will be used for computing of the dimension presentation. 
+Return: dimension plane used for presentation computing.
 ") GetPlane;
 		const gp_Pln GetPlane();
 
@@ -1059,7 +1064,8 @@ float
 
 Description
 -----------
-Gets dimension measurement value. if the value to display is not specified by user, then the dimension object is responsible to compute it on its own in model space coordinates. return the dimension value (in model units) which is used during display of the presentation.
+Gets dimension measurement value. If the value to display is not specified by user, then the dimension object is responsible to compute it on its own in model space coordinates. 
+Return: the dimension value (in model units) which is used during display of the presentation.
 ") GetValue;
 		Standard_Real GetValue();
 
@@ -1072,7 +1078,7 @@ bool
 
 Description
 -----------
-Return true if text position is set by user with method settextposition().
+Return: True if text position is set by user with method SetTextPosition().
 ") IsTextPositionCustom;
 		Standard_Boolean IsTextPositionCustom();
 
@@ -1085,7 +1091,8 @@ bool
 
 Description
 -----------
-Check that the input geometry for dimension is valid and the presentation can be successfully computed. return true if dimension geometry is ok.
+Check that the input geometry for dimension is valid and the presentation can be successfully computed. 
+Return: True if dimension geometry is ok.
 ") IsValid;
 		virtual Standard_Boolean IsValid();
 
@@ -1098,7 +1105,7 @@ PrsDim_KindOfDimension
 
 Description
 -----------
-Return the kind of dimension.
+Return: the kind of dimension.
 ") KindOfDimension;
 		PrsDim_KindOfDimension KindOfDimension();
 
@@ -1111,7 +1118,7 @@ float
 
 Description
 -----------
-Returns selection tolerance for text2d: for 2d text selection detection sensitive point with tolerance is used important! only for 2d text.
+Returns selection tolerance for text2d: For 2d text selection detection sensitive point with tolerance is used Important! Only for 2d text.
 ") SelToleranceForText2d;
 		Standard_Real SelToleranceForText2d();
 
@@ -1124,7 +1131,7 @@ None
 
 Description
 -----------
-Sets computed dimension value. resets custom value mode if it was set.
+Sets computed dimension value. Resets custom value mode if it was set.
 ") SetComputedValue;
 		void SetComputedValue();
 
@@ -1142,7 +1149,7 @@ None
 
 Description
 -----------
-Sets user-defined plane where the 2d dimension presentation will be placed. checks validity of this plane if geometry has been set already. validity of the plane is checked according to the geometry set and has different criteria for different kinds of dimensions.
+Sets user-defined plane where the 2D dimension presentation will be placed. Checks validity of this plane if geometry has been set already. Validity of the plane is checked according to the geometry set and has different criteria for different kinds of dimensions.
 ") SetCustomPlane;
 		virtual void SetCustomPlane(const gp_Pln & thePlane);
 
@@ -1160,7 +1167,8 @@ None
 
 Description
 -----------
-Sets user-defined dimension value. the user-defined dimension value is specified in model space, and affect by unit conversion during the display. @param thevalue [in] the user-defined value to display.
+Sets user-defined dimension value. The user-defined dimension value is specified in model space, and affect by unit conversion during the display. 
+Input parameter: theValue the user-defined value to display.
 ") SetCustomValue;
 		void SetCustomValue(const Standard_Real theValue);
 
@@ -1178,7 +1186,8 @@ None
 
 Description
 -----------
-Sets user-defined dimension value. unit conversion during the display is not applied. @param thevalue [in] the user-defined value to display.
+Sets user-defined dimension value. Unit conversion during the display is not applied. 
+Input parameter: theValue the user-defined value to display.
 ") SetCustomValue;
 		void SetCustomValue(TCollection_ExtendedString theValue);
 
@@ -1196,7 +1205,7 @@ None
 
 Description
 -----------
-Sets new dimension aspect for the interactive object drawer. the dimension aspect provides dynamic properties which are generally used during computation of dimension presentations.
+Sets new dimension aspect for the interactive object drawer. The dimension aspect provides dynamic properties which are generally used during computation of dimension presentations.
 ") SetDimensionAspect;
 		void SetDimensionAspect(const opencascade::handle<Prs3d_DimensionAspect> & theDimensionAspect);
 
@@ -1286,7 +1295,7 @@ None
 
 Description
 -----------
-Sets selection tolerance for text2d: for 2d text selection detection sensitive point with tolerance is used to change this tolerance use this method important! only for 2d text.
+Sets selection tolerance for text2d: For 2d text selection detection sensitive point with tolerance is used to change this tolerance use this method Important! Only for 2d text.
 ") SetSelToleranceForText2d;
 		void SetSelToleranceForText2d(const Standard_Real theTol);
 
@@ -1322,7 +1331,8 @@ None
 
 Description
 -----------
-Fixes the absolute text position and adjusts flyout, plane and text alignment according to it. updates presentation if the text position is valid. attention! it does not change vertical text alignment. @param thetextpos [in] the point of text position.
+Fixes the absolute text position and adjusts flyout, plane and text alignment according to it. Updates presentation if the text position is valid. ATTENTION! It does not change vertical text alignment. 
+Input parameter: theTextPos the point of text position.
 ") SetTextPosition;
 		virtual void SetTextPosition(const gp_Pnt &);
 
@@ -1335,7 +1345,7 @@ Standard_ExtCharacter
 
 Description
 -----------
-Return special symbol.
+Return: special symbol.
 ") SpecialSymbol;
 		Standard_ExtCharacter SpecialSymbol();
 
@@ -1348,7 +1358,7 @@ AIS_KindOfInteractive
 
 Description
 -----------
-Return the kind of interactive.
+Return: the kind of interactive.
 ") Type;
 		virtual AIS_KindOfInteractive Type();
 
@@ -1361,7 +1371,7 @@ None
 
 Description
 -----------
-Unsets user-defined plane. therefore the plane for dimension will be computed automatically.
+Unsets user-defined plane. Therefore the plane for dimension will be computed automatically.
 ") UnsetCustomPlane;
 		void UnsetCustomPlane();
 
@@ -1414,7 +1424,7 @@ None
 
 Description
 -----------
-Initializes the dimension owner, theso, and attributes it the priority, thepriority.
+Initializes the dimension owner, theSO, and attributes it the priority, thePriority.
 ") PrsDim_DimensionOwner;
 		 PrsDim_DimensionOwner(const opencascade::handle<SelectMgr_SelectableObject> & theSelObject, const PrsDim_DimensionSelectionMode theSelMode, const Standard_Integer thePriority = 0);
 
@@ -1453,7 +1463,7 @@ bool
 
 Description
 -----------
-Returns true if an object with the selection mode amode is highlighted in the presentation manager apm.
+Returns true if an object with the selection mode aMode is highlighted in the presentation manager aPM.
 ") IsHilighted;
 		virtual Standard_Boolean IsHilighted(const opencascade::handle<PrsMgr_PresentationManager> & thePM, const Standard_Integer theMode = 0);
 
@@ -1520,7 +1530,7 @@ bool
 
 Description
 -----------
-Returns true if the display mode amode is accepted for the interactive objects in the relation. computeprojpresentation(me; apres: presentation from prs3d; curve1: curve from geom; curve2: curve from geom; firstp1: pnt from gp; lastp1: pnt from gp; firstp2: pnt from gp; lastp2: pnt from gp; acolor: nameofcolor from quantity = quantity_noc_purple; awidth: real  from standard = 2; aprojtol: typeofline  from aspect = aspect_tol_dash; acalltol: typeofline  from aspect = aspect_tol_dot).
+Returns true if the display mode aMode is accepted for the Interactive Objects in the relation. ComputeProjPresentation(me; aPres: Presentation from Prs3d; Curve1: Curve from Geom; Curve2: Curve from Geom; FirstP1: Pnt from gp; LastP1: Pnt from gp; FirstP2: Pnt from gp; LastP2: Pnt from gp; aColor: NameOfColor from Quantity = Quantity_NOC_PURPLE; aWidth: Real  from Standard = 2; aProjTOL: TypeOfLine  from Aspect = Aspect_TOL_DASH; aCallTOL: TypeOfLine  from Aspect = Aspect_TOL_DOT).
 ") AcceptDisplayMode;
 		virtual Standard_Boolean AcceptDisplayMode(const Standard_Integer theMode);
 
@@ -1624,7 +1634,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the position set using setposition.
+Returns the position set using SetPosition.
 ") Position;
 		const gp_Pnt Position();
 
@@ -1655,7 +1665,7 @@ None
 
 Description
 -----------
-Allows you to provide settings for the size of the arrow thearrowsize identifying the relation between the two shapes.
+Allows you to provide settings for the size of the arrow theArrowSize identifying the relation between the two shapes.
 ") SetArrowSize;
 		void SetArrowSize(const Standard_Real theArrowSize);
 
@@ -1714,7 +1724,7 @@ None
 
 Description
 -----------
-Allows you to provide settings for the color thecolor of the lines representing the relation between the two shapes.
+Allows you to provide settings for the color theColor of the lines representing the relation between the two shapes.
 ") SetColor;
 		void SetColor(const Quantity_Color & theColor);
 
@@ -1732,7 +1742,7 @@ None
 
 Description
 -----------
-Allows you to set the status of the extension shape by the index aindex. the status will be one of the following: - 0 - there is no connection to a shape; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape.
+Allows you to set the status of the extension shape by the index aIndex. The status will be one of the following: - 0 - there is no connection to a shape; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape.
 ") SetExtShape;
 		void SetExtShape(const Standard_Integer theIndex);
 
@@ -1768,7 +1778,7 @@ None
 
 Description
 -----------
-Allows you to set the plane theplane. this is used to define relations and dimensions in several daughter classes.
+Allows you to set the plane thePlane. This is used to define relations and dimensions in several daughter classes.
 ") SetPlane;
 		void SetPlane(const opencascade::handle<Geom_Plane> & thePlane);
 
@@ -1804,7 +1814,7 @@ None
 
 Description
 -----------
-Allows you to identify the second shape asshape relative to the first.
+Allows you to identify the second shape aSShape relative to the first.
 ") SetSecondShape;
 		virtual void SetSecondShape(const TopoDS_Shape & aSShape);
 
@@ -1840,7 +1850,7 @@ None
 
 Description
 -----------
-Allows you to provide the settings thetext for text aspect.
+Allows you to provide the settings theText for text aspect.
 ") SetText;
 		void SetText(TCollection_ExtendedString theText);
 
@@ -1858,7 +1868,7 @@ None
 
 Description
 -----------
-Allows you to provide settings for the value theval for each object in the relation.
+Allows you to provide settings for the value theVal for each object in the relation.
 ") SetValue;
 		void SetValue(const Standard_Real theVal);
 
@@ -1871,7 +1881,7 @@ DsgPrs_ArrowSide
 
 Description
 -----------
-Returns the value of the symbol presentation. this will be one of: - as_none - none - as_firstar - first arrow - as_lastar - last arrow - as_bothar - both arrows - as_firstpt - first point - as_lastpt - last point - as_bothpt - both points - as_firstar_lastpt - first arrow, last point - as_firstpt_lastar - first point, last arrow.
+Returns the value of the symbol presentation. This will be one of: - AS_NONE - none - AS_FIRSTAR - first arrow - AS_LASTAR - last arrow - AS_BOTHAR - both arrows - AS_FIRSTPT - first point - AS_LASTPT - last point - AS_BOTHPT - both points - AS_FIRSTAR_LASTPT - first arrow, last point - AS_FIRSTPT_LASTAR - first point, last arrow.
 ") SymbolPrs;
 		DsgPrs_ArrowSide SymbolPrs();
 
@@ -1971,7 +1981,9 @@ None
 
 Description
 -----------
-Constructs minimum angle dimension between two linear edges (where possible). these two edges should be intersected by each other. otherwise the geometry is not valid. @param thefirstedge [in] the first edge. @param thesecondedge [in] the second edge.
+Constructs minimum angle dimension between two linear edges (where possible). These two edges should be intersected by each other. Otherwise the geometry is not valid. 
+Input parameter: theFirstEdge the first edge. 
+Input parameter: theSecondEdge the second edge.
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge);
 
@@ -1991,7 +2003,10 @@ None
 
 Description
 -----------
-Constructs the angle display object defined by three points. @param thefirstpoint [in] the first point (point on first angle flyout). @param thesecondpoint [in] the center point of angle dimension. @param thethirdpoint [in] the second point (point on second angle flyout).
+Constructs the angle display object defined by three points. 
+Input parameter: theFirstPoint the first point (point on first angle flyout). 
+Input parameter: theSecondPoint the center point of angle dimension. 
+Input parameter: theThirdPoint the second point (point on second angle flyout).
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pnt & theThirdPoint);
 
@@ -2011,7 +2026,10 @@ None
 
 Description
 -----------
-Constructs the angle display object defined by three vertices. @param thefirstvertex [in] the first vertex (vertex for first angle flyout). @param thesecondvertex [in] the center vertex of angle dimension. @param thethirdpoint [in] the second vertex (vertex for second angle flyout).
+Constructs the angle display object defined by three vertices. 
+Input parameter: theFirstVertex the first vertex (vertex for first angle flyout). 
+Input parameter: theSecondVertex the center vertex of angle dimension. 
+Input parameter: theThirdPoint the second vertex (vertex for second angle flyout).
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const TopoDS_Vertex & theFirstVertex, const TopoDS_Vertex & theSecondVertex, const TopoDS_Vertex & theThirdVertex);
 
@@ -2029,7 +2047,8 @@ None
 
 Description
 -----------
-Constructs angle dimension for the cone face. @param thecone [in] the conical face.
+Constructs angle dimension for the cone face. 
+Input parameter: theCone the conical face.
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const TopoDS_Face & theCone);
 
@@ -2048,7 +2067,9 @@ None
 
 Description
 -----------
-Constructs angle dimension between two planar faces. @param thefirstface [in] the first face. @param thesecondface [in] the second face.
+Constructs angle dimension between two planar faces. 
+Input parameter: theFirstFace the first face. 
+Input parameter: theSecondFace the second face.
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
 
@@ -2068,7 +2089,10 @@ None
 
 Description
 -----------
-Constructs angle dimension between two planar faces. @param thefirstface [in] the first face. @param thesecondface [in] the second face. @param thepoint [in] the point which the dimension plane should pass through. this point can lay on the one of the faces or not.
+Constructs angle dimension between two planar faces. 
+Input parameter: theFirstFace the first face. 
+Input parameter: theSecondFace the second face. 
+Input parameter: thePoint the point which the dimension plane should pass through. This point can lay on the one of the faces or not.
 ") PrsDim_AngleDimension;
 		 PrsDim_AngleDimension(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, const gp_Pnt & thePoint);
 
@@ -2081,7 +2105,7 @@ gp_Pnt
 
 Description
 -----------
-Return center point forming the angle.
+Return: center point forming the angle.
 ") CenterPoint;
 		const gp_Pnt CenterPoint();
 
@@ -2094,7 +2118,7 @@ gp_Pnt
 
 Description
 -----------
-Return first point forming the angle.
+Return: first point forming the angle.
 ") FirstPoint;
 		const gp_Pnt FirstPoint();
 
@@ -2107,7 +2131,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return first argument shape.
+Return: first argument shape.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
@@ -2120,7 +2144,7 @@ PrsDim_TypeOfAngleArrowVisibility
 
 Description
 -----------
-Return the type of visibility of arrows.
+Return: the type of visibility of arrows.
 ") GetArrowsVisibility;
 		PrsDim_TypeOfAngleArrowVisibility GetArrowsVisibility();
 
@@ -2133,7 +2157,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return the display units string.
+Return: the display units string.
 ") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits();
 
@@ -2146,7 +2170,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return the model units string.
+Return: the model units string.
 ") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits();
 
@@ -2172,7 +2196,7 @@ PrsDim_TypeOfAngle
 
 Description
 -----------
-Return the current angle type.
+Return: the current angle type.
 ") GetType;
 		PrsDim_TypeOfAngle GetType();
 
@@ -2185,7 +2209,7 @@ gp_Pnt
 
 Description
 -----------
-Return second point forming the angle.
+Return: second point forming the angle.
 ") SecondPoint;
 		const gp_Pnt SecondPoint();
 
@@ -2198,7 +2222,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return second argument shape.
+Return: second argument shape.
 ") SecondShape;
 		const TopoDS_Shape SecondShape();
 
@@ -2216,7 +2240,8 @@ None
 
 Description
 -----------
-Sets visible arrows type @param thetype [in] the type of visibility of arrows.
+Sets visible arrows type 
+Input parameter: theType the type of visibility of arrows.
 ") SetArrowsVisibility;
 		void SetArrowsVisibility(const PrsDim_TypeOfAngleArrowVisibility & theType);
 
@@ -2253,7 +2278,9 @@ None
 
 Description
 -----------
-Measures minimum angle dimension between two linear edges. these two edges should be intersected by each other. otherwise the geometry is not valid. @param thefirstedge [in] the first edge. @param thesecondedge [in] the second edge.
+Measures minimum angle dimension between two linear edges. These two edges should be intersected by each other. Otherwise the geometry is not valid. 
+Input parameter: theFirstEdge the first edge. 
+Input parameter: theSecondEdge the second edge.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Edge & theFirstEdge, const TopoDS_Edge & theSecondEdge);
 
@@ -2273,7 +2300,10 @@ None
 
 Description
 -----------
-Measures angle defined by three points. @param thefirstpoint [in] the first point (point on first angle flyout). @param thesecondpoint [in] the center point of angle dimension. @param thethirdpoint [in] the second point (point on second angle flyout).
+Measures angle defined by three points. 
+Input parameter: theFirstPoint the first point (point on first angle flyout). 
+Input parameter: theSecondPoint the center point of angle dimension. 
+Input parameter: theThirdPoint the second point (point on second angle flyout).
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pnt & theThridPoint);
 
@@ -2293,7 +2323,10 @@ None
 
 Description
 -----------
-Measures angle defined by three vertices. @param thefirstvertex [in] the first vertex (vertex for first angle flyout). @param thesecondvertex [in] the center vertex of angle dimension. @param thethirdpoint [in] the second vertex (vertex for second angle flyout).
+Measures angle defined by three vertices. 
+Input parameter: theFirstVertex the first vertex (vertex for first angle flyout). 
+Input parameter: theSecondVertex the center vertex of angle dimension. 
+Input parameter: theThirdPoint the second vertex (vertex for second angle flyout).
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Vertex & theFirstVertex, const TopoDS_Vertex & theSecondVertex, const TopoDS_Vertex & theThirdVertex);
 
@@ -2311,7 +2344,8 @@ None
 
 Description
 -----------
-Measures angle of conical face. @param thecone [in] the shape to measure.
+Measures angle of conical face. 
+Input parameter: theCone the shape to measure.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Face & theCone);
 
@@ -2330,7 +2364,9 @@ None
 
 Description
 -----------
-Measures angle between two planar faces. @param thefirstface [in] the first face. @param thesecondface [in] the second face..
+Measures angle between two planar faces. 
+Input parameter: theFirstFace the first face. 
+Input parameter: theSecondFace the second face..
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
 
@@ -2350,7 +2386,10 @@ None
 
 Description
 -----------
-Measures angle between two planar faces. @param thefirstface [in] the first face. @param thesecondface [in] the second face. @param thepoint [in] the point which the dimension plane should pass through. this point can lay on the one of the faces or not.
+Measures angle between two planar faces. 
+Input parameter: theFirstFace the first face. 
+Input parameter: theSecondFace the second face. 
+Input parameter: thePoint the point which the dimension plane should pass through. This point can lay on the one of the faces or not.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace, const gp_Pnt & thePoint);
 
@@ -2386,7 +2425,7 @@ None
 
 Description
 -----------
-Principle of horizontal text alignment settings: - divide circle into two halves according to attachment points - if atextpos is between attach points -> center + positive flyout - if atextpos is not between attach points but in this half -> left or right + positive flyout - if atextpos is between reflections of attach points -> center + negative flyout - if atextpos is not between reflections of attach points -> left or right + negative flyout.
+Principle of horizontal text alignment settings: - divide circle into two halves according to attachment points - if aTextPos is between attach points -> Center + positive flyout - if aTextPos is not between attach points but in this half -> Left or Right + positive flyout - if aTextPos is between reflections of attach points -> Center + negative flyout - if aTextPos is not between reflections of attach points -> Left or Right + negative flyout.
 ") SetTextPosition;
 		virtual void SetTextPosition(const gp_Pnt & theTextPos);
 
@@ -2404,7 +2443,8 @@ None
 
 Description
 -----------
-Sets angle type. @param thetype [in] the type value.
+Sets angle type. 
+Input parameter: theType the type value.
 ") SetType;
 		void SetType(const PrsDim_TypeOfAngle theType);
 
@@ -2417,7 +2457,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return third argument shape.
+Return: third argument shape.
 ") ThirdShape;
 		const TopoDS_Shape ThirdShape();
 
@@ -2454,7 +2494,7 @@ None
 
 Description
 -----------
-Constructs the display object for 2d chamfers. this object is defined by the face afshape, the dimension aval, the plane aplane and the text atext.
+Constructs the display object for 2D chamfers. This object is defined by the face aFShape, the dimension aVal, the plane aPlane and the text aText.
 ") PrsDim_Chamf2dDimension;
 		 PrsDim_Chamf2dDimension(const TopoDS_Shape & aFShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Real aVal, TCollection_ExtendedString aText);
 
@@ -2478,7 +2518,7 @@ None
 
 Description
 -----------
-Constructs the display object for 2d chamfers. this object is defined by the face afshape, the plane aplane, the dimension aval, the position aposition, the type of arrow asymbolprs with the size anarrowsize, and the text atext.
+Constructs the display object for 2D chamfers. This object is defined by the face aFShape, the plane aPlane, the dimension aVal, the position aPosition, the type of arrow aSymbolPrs with the size anArrowSize, and the text aText.
 ") PrsDim_Chamf2dDimension;
 		 PrsDim_Chamf2dDimension(const TopoDS_Shape & aFShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Real aVal, TCollection_ExtendedString aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
 
@@ -2540,7 +2580,7 @@ None
 
 Description
 -----------
-Constructs a display object for 3d chamfers. this object is defined by the shape afshape, the dimension aval and the text atext.
+Constructs a display object for 3D chamfers. This object is defined by the shape aFShape, the dimension aVal and the text aText.
 ") PrsDim_Chamf3dDimension;
 		 PrsDim_Chamf3dDimension(const TopoDS_Shape & aFShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
@@ -2563,7 +2603,7 @@ None
 
 Description
 -----------
-Constructs a display object for 3d chamfers. this object is defined by the shape afshape, the dimension aval, the text atext, the point of origin of the chamfer aposition, the type of arrow asymbolprs with the size anarrowsize.
+Constructs a display object for 3D chamfers. This object is defined by the shape aFShape, the dimension aVal, the text aText, the point of origin of the chamfer aPosition, the type of arrow aSymbolPrs with the size anArrowSize.
 ") PrsDim_Chamf3dDimension;
 		 PrsDim_Chamf3dDimension(const TopoDS_Shape & aFShape, const Standard_Real aVal, TCollection_ExtendedString aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
 
@@ -2625,7 +2665,7 @@ None
 
 Description
 -----------
-Constructs the display object for concentric relations between shapes. this object is defined by the two shapes, afshape and asshape and the plane aplane. aplane is provided to create an axis along which the relation of concentricity can be extended.
+Constructs the display object for concentric relations between shapes. This object is defined by the two shapes, aFShape and aSShape and the plane aPlane. aPlane is provided to create an axis along which the relation of concentricity can be extended.
 ") PrsDim_ConcentricRelation;
 		 PrsDim_ConcentricRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -2659,7 +2699,8 @@ None
 
 Description
 -----------
-Construct diameter dimension for the circle. @param thecircle [in] the circle to measure.
+Construct diameter dimension for the circle. 
+Input parameter: theCircle the circle to measure.
 ") PrsDim_DiameterDimension;
 		 PrsDim_DiameterDimension(const gp_Circ & theCircle);
 
@@ -2678,7 +2719,9 @@ None
 
 Description
 -----------
-Construct diameter dimension for the circle and orient it correspondingly to the passed plane. @param thecircle [in] the circle to measure. @param theplane [in] the plane defining preferred orientation for dimension.
+Construct diameter dimension for the circle and orient it correspondingly to the passed plane. 
+Input parameter: theCircle the circle to measure. 
+Input parameter: thePlane the plane defining preferred orientation for dimension.
 ") PrsDim_DiameterDimension;
 		 PrsDim_DiameterDimension(const gp_Circ & theCircle, const gp_Pln & thePlane);
 
@@ -2696,7 +2739,8 @@ None
 
 Description
 -----------
-Construct diameter on the passed shape, if applicable. @param theshape [in] the shape to measure.
+Construct diameter on the passed shape, if applicable. 
+Input parameter: theShape the shape to measure.
 ") PrsDim_DiameterDimension;
 		 PrsDim_DiameterDimension(const TopoDS_Shape & theShape);
 
@@ -2715,7 +2759,9 @@ None
 
 Description
 -----------
-Construct diameter on the passed shape, if applicable - and define the preferred plane to orient the dimension. @param theshape [in] the shape to measure. @param theplane [in] the plane defining preferred orientation for dimension.
+Construct diameter on the passed shape, if applicable - and define the preferred plane to orient the dimension. 
+Input parameter: theShape the shape to measure. 
+Input parameter: thePlane the plane defining preferred orientation for dimension.
 ") PrsDim_DiameterDimension;
 		 PrsDim_DiameterDimension(const TopoDS_Shape & theShape, const gp_Pln & thePlane);
 
@@ -2728,7 +2774,7 @@ gp_Pnt
 
 Description
 -----------
-Return anchor point on circle for diameter dimension.
+Return: anchor point on circle for diameter dimension.
 ") AnchorPoint;
 		gp_Pnt AnchorPoint();
 
@@ -2741,7 +2787,7 @@ gp_Circ
 
 Description
 -----------
-Return measured geometry circle.
+Return: measured geometry circle.
 ") Circle;
 		const gp_Circ Circle();
 
@@ -2754,7 +2800,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return the display units string.
+Return: the display units string.
 ") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits();
 
@@ -2767,7 +2813,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return the model units string.
+Return: the model units string.
 ") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits();
 
@@ -2816,7 +2862,8 @@ None
 
 Description
 -----------
-Measure diameter of the circle. the actual dimension plane is used for determining anchor points on the circle to attach the dimension lines to. the dimension will become invalid if the diameter of the circle is less than precision::confusion(). @param thecircle [in] the circle to measure.
+Measure diameter of the circle. The actual dimension plane is used for determining anchor points on the circle to attach the dimension lines to. The dimension will become invalid if the diameter of the circle is less than Precision::Confusion(). 
+Input parameter: theCircle the circle to measure.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const gp_Circ & theCircle);
 
@@ -2834,7 +2881,8 @@ None
 
 Description
 -----------
-Measure diameter on the passed shape, if applicable. the dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than precision::confusion(). @param theshape [in] the shape to measure.
+Measure diameter on the passed shape, if applicable. The dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than Precision::Confusion(). 
+Input parameter: theShape the shape to measure.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Shape & theShape);
 
@@ -2883,7 +2931,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return the measured shape.
+Return: the measured shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
@@ -2977,7 +3025,7 @@ None
 
 Description
 -----------
-Constructs a framework to display equivalent distances between the shapes ashape1, ashape2, ashape3, ashape4 and the plane aplane. the distance is the length of a projection from the shape to the plane.
+Constructs a framework to display equivalent distances between the shapes aShape1, aShape2, aShape3, aShape4 and the plane aPlane. The distance is the length of a projection from the shape to the plane.
 ") PrsDim_EqualDistanceRelation;
 		 PrsDim_EqualDistanceRelation(const TopoDS_Shape & aShape1, const TopoDS_Shape & aShape2, const TopoDS_Shape & aShape3, const TopoDS_Shape & aShape4, const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -3008,7 +3056,7 @@ SymbolPrs: DsgPrs_ArrowSide
 
 Description
 -----------
-Compute the interval location between a vertex and an edge. edge may be a line or a circle.
+Compute the interval location between a vertex and an edge. Edge may be a line or a circle.
 ") ComputeOneEdgeOneVertexLength;
 		static void ComputeOneEdgeOneVertexLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide &OutValue);
 
@@ -3039,7 +3087,7 @@ SymbolPrs: DsgPrs_ArrowSide
 
 Description
 -----------
-Computes the location of an intreval between between two edges. firstattach , secondattach are the returned extreme points of the interval.
+Computes the location of an intreval between between two edges. FirstAttach , SecondAttach are the returned extreme points of the interval.
 ") ComputeTwoEdgesLength;
 		static void ComputeTwoEdgesLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Edge & FirstEdge, const TopoDS_Edge & SecondEdge, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide &OutValue);
 
@@ -3071,7 +3119,7 @@ SymbolPrs: DsgPrs_ArrowSide
 
 Description
 -----------
-Computes the interval position between two vertexs. firstattach, secondattach are the returned extreme points of the interval.
+Computes the interval position between two vertexs. FirstAttach, SecondAttach are the returned extreme points of the interval.
 ") ComputeTwoVerticesLength;
 		static void ComputeTwoVerticesLength(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Real ArrowSize, const TopoDS_Vertex & FirstVertex, const TopoDS_Vertex & SecondVertex, const opencascade::handle<Geom_Plane> & Plane, const Standard_Boolean AutomaticPos, const Standard_Boolean IsSetBndBox, const Bnd_Box & BndBox, const PrsDim_TypeOfDist TypeDist, gp_Pnt & Position, gp_Pnt & FirstAttach, gp_Pnt & SecondAttach, gp_Pnt & FirstExtreme, gp_Pnt & SecondExtreme, DsgPrs_ArrowSide &OutValue);
 
@@ -3089,7 +3137,7 @@ None
 
 Description
 -----------
-Sets the shape ashape to be used as the shape ashape3 in the framework created at construction time.
+Sets the shape aShape to be used as the shape aShape3 in the framework created at construction time.
 ") SetShape3;
 		void SetShape3(const TopoDS_Shape & aShape);
 
@@ -3107,7 +3155,7 @@ None
 
 Description
 -----------
-Sets the shape ashape to be used as the shape ashape4 in the framework created at construction time.
+Sets the shape aShape to be used as the shape aShape4 in the framework created at construction time.
 ") SetShape4;
 		void SetShape4(const TopoDS_Shape & aShape);
 
@@ -3120,7 +3168,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape ashape3 from the framework created at construction time.
+Returns the shape aShape3 from the framework created at construction time.
 ") Shape3;
 		const TopoDS_Shape Shape3();
 
@@ -3133,7 +3181,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape ashape4 from the framework created at construction time.
+Returns the shape aShape4 from the framework created at construction time.
 ") Shape4;
 		const TopoDS_Shape Shape4();
 
@@ -3169,7 +3217,7 @@ None
 
 Description
 -----------
-Creates equal relation of two arc's radiuses. if one of edges is not in the given plane, the presentation method projects it onto the plane.
+Creates equal relation of two arc's radiuses. If one of edges is not in the given plane, the presentation method projects it onto the plane.
 ") PrsDim_EqualRadiusRelation;
 		 PrsDim_EqualRadiusRelation(const TopoDS_Edge & aFirstEdge, const TopoDS_Edge & aSecondEdge, const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -3205,7 +3253,7 @@ None
 
 Description
 -----------
-Initializes the vertex ashape, the plane aplane and the wire awire, which connects the two vertices in a fixed relation.
+initializes the vertex aShape, the plane aPlane and the wire aWire, which connects the two vertices in a fixed relation.
 ") PrsDim_FixRelation;
 		 PrsDim_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane, const TopoDS_Wire & aWire);
 
@@ -3227,7 +3275,7 @@ None
 
 Description
 -----------
-Initializes the vertex ashape, the plane aplane and the wire awire, the position aposition, the arrow size anarrowsize and the wire awire, which connects the two vertices in a fixed relation.
+initializes the vertex aShape, the plane aPlane and the wire aWire, the position aPosition, the arrow size anArrowSize and the wire aWire, which connects the two vertices in a fixed relation.
 ") PrsDim_FixRelation;
 		 PrsDim_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane, const TopoDS_Wire & aWire, const gp_Pnt & aPosition, const Standard_Real anArrowSize = 0.01);
 
@@ -3246,7 +3294,7 @@ None
 
 Description
 -----------
-Initializes the edge ashape and the plane aplane.
+initializes the edge aShape and the plane aPlane.
 ") PrsDim_FixRelation;
 		 PrsDim_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -3267,7 +3315,7 @@ None
 
 Description
 -----------
-Initializes the edge ashape, the plane aplane, the position aposition and the arrow size anarrowsize.
+initializes the edge aShape, the plane aPlane, the position aPosition and the arrow size anArrowSize.
 ") PrsDim_FixRelation;
 		 PrsDim_FixRelation(const TopoDS_Shape & aShape, const opencascade::handle<Geom_Plane> & aPlane, const gp_Pnt & aPosition, const Standard_Real anArrowSize = 0.01);
 
@@ -3280,7 +3328,7 @@ bool
 
 Description
 -----------
-Returns true if the interactive objects in the relation are movable.
+Returns true if the Interactive Objects in the relation are movable.
 ") IsMovable;
 		virtual Standard_Boolean IsMovable();
 
@@ -3298,7 +3346,7 @@ None
 
 Description
 -----------
-Constructs the wire awire. this connects vertices which are in a fixed relation.
+Constructs the wire aWire. This connects vertices which are in a fixed relation.
 ") SetWire;
 		void SetWire(const TopoDS_Wire & aWire);
 
@@ -3347,7 +3395,7 @@ None
 
 Description
 -----------
-Initializes the relation of identity between the two entities, firstshape and secondshape. the plane aplane is initialized in case a visual reference is needed to show identity.
+Initializes the relation of identity between the two entities, FirstShape and SecondShape. The plane aPlane is initialized in case a visual reference is needed to show identity.
 ") PrsDim_IdenticRelation;
 		 PrsDim_IdenticRelation(const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -3446,7 +3494,8 @@ None
 
 Description
 -----------
-Construct an empty length dimension. @sa setmeasuredgeometry(), setmeasuredshapes() for initialization.
+Construct an empty length dimension. 
+See also: SetMeasuredGeometry(), SetMeasuredShapes() for initialization.
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension();
 
@@ -3465,7 +3514,9 @@ None
 
 Description
 -----------
-Construct length dimension between face and edge. here dimension can be built without user-defined plane. @param theface [in] the face (first shape). @param theedge [in] the edge (second shape).
+Construct length dimension between face and edge. Here dimension can be built without user-defined plane. 
+Input parameter: theFace the face (first shape). 
+Input parameter: theEdge the edge (second shape).
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge);
 
@@ -3484,7 +3535,9 @@ None
 
 Description
 -----------
-Construct length dimension between two faces. @param thefirstface [in] the first face (first shape). @param thesecondface [in] the second face (second shape).
+Construct length dimension between two faces. 
+Input parameter: theFirstFace the first face (first shape). 
+Input parameter: theSecondFace the second face (second shape).
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
 
@@ -3504,7 +3557,10 @@ None
 
 Description
 -----------
-Construct length dimension between two points in the specified plane. @param thefirstpoint [in] the first point. @param thesecondpoint [in] the second point. @param theplane [in] the plane to orient dimension.
+Construct length dimension between two points in the specified plane. 
+Input parameter: theFirstPoint the first point. 
+Input parameter: theSecondPoint the second point. 
+Input parameter: thePlane the plane to orient dimension.
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pln & thePlane);
 
@@ -3524,7 +3580,10 @@ None
 
 Description
 -----------
-Construct length dimension between two arbitrary shapes in the specified plane. @param thefirstshape [in] the first shape. @param thesecondshape [in] the second shape. @param theplane [in] the plane to orient dimension.
+Construct length dimension between two arbitrary shapes in the specified plane. 
+Input parameter: theFirstShape the first shape. 
+Input parameter: theSecondShape the second shape. 
+Input parameter: thePlane the plane to orient dimension.
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension(const TopoDS_Shape & theFirstShape, const TopoDS_Shape & theSecondShape, const gp_Pln & thePlane);
 
@@ -3543,7 +3602,9 @@ None
 
 Description
 -----------
-Construct length dimension of linear edge. @param theedge [in] the edge to measure. @param theplane [in] the plane to orient dimension.
+Construct length dimension of linear edge. 
+Input parameter: theEdge the edge to measure. 
+Input parameter: thePlane the plane to orient dimension.
 ") PrsDim_LengthDimension;
 		 PrsDim_LengthDimension(const TopoDS_Edge & theEdge, const gp_Pln & thePlane);
 
@@ -3556,7 +3617,7 @@ gp_Pnt
 
 Description
 -----------
-Return first attachment point.
+Return: first attachment point.
 ") FirstPoint;
 		const gp_Pnt FirstPoint();
 
@@ -3569,7 +3630,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return first attachment shape.
+Return: first attachment shape.
 ") FirstShape;
 		const TopoDS_Shape FirstShape();
 
@@ -3582,7 +3643,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return the display units string.
+Return: the display units string.
 ") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits();
 
@@ -3595,7 +3656,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return the model units string.
+Return: the model units string.
 ") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits();
 
@@ -3621,7 +3682,7 @@ gp_Pnt
 
 Description
 -----------
-Return second attachment point.
+Return: second attachment point.
 ") SecondPoint;
 		const gp_Pnt SecondPoint();
 
@@ -3634,7 +3695,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return second attachment shape.
+Return: second attachment shape.
 ") SecondShape;
 		const TopoDS_Shape SecondShape();
 
@@ -3653,7 +3714,9 @@ None
 
 Description
 -----------
-Set custom direction for dimension. if it is not set, the direction is obtained from the measured geometry (e.g. line between points of dimension) the direction does not change flyout direction of dimension. @param thedirection [in] the dimension direction. @param theusedirection [in] boolean value if custom direction should be used.
+Set custom direction for dimension. If it is not set, the direction is obtained from the measured geometry (e.g. line between points of dimension) The direction does not change flyout direction of dimension. 
+Input parameter: theDirection the dimension direction. 
+Input parameter: theUseDirection boolean value if custom direction should be used.
 ") SetDirection;
 		void SetDirection(const gp_Dir & theDirection, const Standard_Boolean theUseDirection = Standard_True);
 
@@ -3691,7 +3754,10 @@ None
 
 Description
 -----------
-Measure distance between two points. the dimension will become invalid if the new distance between attachment points is less than precision::confusion(). @param thefirstpoint [in] the first point. @param thesecondpoint [in] the second point. @param theplane [in] the user-defined plane.
+Measure distance between two points. The dimension will become invalid if the new distance between attachment points is less than Precision::Confusion(). 
+Input parameter: theFirstPoint the first point. 
+Input parameter: theSecondPoint the second point. 
+Input parameter: thePlane the user-defined plane.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const gp_Pnt & theFirstPoint, const gp_Pnt & theSecondPoint, const gp_Pln & thePlane);
 
@@ -3710,7 +3776,9 @@ None
 
 Description
 -----------
-Measure length of edge. the dimension will become invalid if the new length of edge is less than precision::confusion(). @param theedge [in] the edge to measure. @param theplane [in] the user-defined plane.
+Measure length of edge. The dimension will become invalid if the new length of edge is less than Precision::Confusion(). 
+Input parameter: theEdge the edge to measure. 
+Input parameter: thePlane the user-defined plane.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Edge & theEdge, const gp_Pln & thePlane);
 
@@ -3729,7 +3797,9 @@ None
 
 Description
 -----------
-Measure distance between two faces. the dimension will become invalid if the distance can not be measured or it is less than precision::confusion(). @param thefirstface [in] the first face (first shape). @param thesecondface [in] the second face (second shape).
+Measure distance between two faces. The dimension will become invalid if the distance can not be measured or it is less than Precision::Confusion(). 
+Input parameter: theFirstFace the first face (first shape). 
+Input parameter: theSecondFace the second face (second shape).
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Face & theFirstFace, const TopoDS_Face & theSecondFace);
 
@@ -3748,7 +3818,9 @@ None
 
 Description
 -----------
-Measure distance between face and edge. the dimension will become invalid if the distance can not be measured or it is less than precision::confusion(). @param theface [in] the face (first shape). @param theedge [in] the edge (second shape).
+Measure distance between face and edge. The dimension will become invalid if the distance can not be measured or it is less than Precision::Confusion(). 
+Input parameter: theFace the face (first shape). 
+Input parameter: theEdge the edge (second shape).
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Face & theFace, const TopoDS_Edge & theEdge);
 
@@ -3767,7 +3839,9 @@ None
 
 Description
 -----------
-Measure distance between generic pair of shapes (edges, vertices, length), where measuring is applicable. @param thefirstshape [in] the first shape. @param thesecondshape [in] the second shape.
+Measure distance between generic pair of shapes (edges, vertices, length), where measuring is applicable. 
+Input parameter: theFirstShape the first shape. 
+Input parameter: theSecondShape the second shape.
 ") SetMeasuredShapes;
 		void SetMeasuredShapes(const TopoDS_Shape & theFirstShape, const TopoDS_Shape & theSecondShape);
 
@@ -3921,7 +3995,7 @@ None
 
 Description
 -----------
-Constructs the offset display object defined by the first shape afshape, the second shape asshape, the dimension aval, and the text atext.
+Constructs the offset display object defined by the first shape aFShape, the second shape aSShape, the dimension aVal, and the text aText.
 ") PrsDim_OffsetDimension;
 		 PrsDim_OffsetDimension(const TopoDS_Shape & FistShape, const TopoDS_Shape & SecondShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
@@ -3965,7 +4039,7 @@ None
 
 Description
 -----------
-Sets a transformation atrsf for presentation and selection to a relative position.
+Sets a transformation aTrsf for presentation and selection to a relative position.
 ") SetRelativePos;
 		void SetRelativePos(const gp_Trsf & aTrsf);
 
@@ -4001,7 +4075,7 @@ None
 
 Description
 -----------
-Constructs an object to display parallel constraints. this object is defined by the first shape afshape and the second shape asshape and the plane aplane.
+Constructs an object to display parallel constraints. This object is defined by the first shape aFShape and the second shape aSShape and the plane aPlane.
 ") PrsDim_ParallelRelation;
 		 PrsDim_ParallelRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -4024,7 +4098,7 @@ None
 
 Description
 -----------
-Constructs an object to display parallel constraints. this object is defined by the first shape afshape and the second shape asshape the plane aplane, the position aposition, the type of arrow, asymbolprs and its size anarrowsize.
+Constructs an object to display parallel constraints. This object is defined by the first shape aFShape and the second shape aSShape the plane aPlane, the position aPosition, the type of arrow, aSymbolPrs and its size anArrowSize.
 ") PrsDim_ParallelRelation;
 		 PrsDim_ParallelRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.01);
 
@@ -4073,7 +4147,7 @@ None
 
 Description
 -----------
-Constructs an object to display constraints of perpendicularity on shapes. this object is defined by a first shape afshape, a second shape asshape, and a plane aplane. aplane is the plane of reference to show and test the perpendicular relation between two shapes, at least one of which has a revolved surface.
+Constructs an object to display constraints of perpendicularity on shapes. This object is defined by a first shape aFShape, a second shape aSShape, and a plane aPlane. aPlane is the plane of reference to show and test the perpendicular relation between two shapes, at least one of which has a revolved surface.
 ") PrsDim_PerpendicularRelation;
 		 PrsDim_PerpendicularRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -4092,7 +4166,7 @@ None
 
 Description
 -----------
-Constructs an object to display constraints of perpendicularity on shapes. this object is defined by a first shape afshape and a second shape asshape.
+Constructs an object to display constraints of perpendicularity on shapes. This object is defined by a first shape aFShape and a second shape aSShape.
 ") PrsDim_PerpendicularRelation;
 		 PrsDim_PerpendicularRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape);
 
@@ -4126,7 +4200,8 @@ None
 
 Description
 -----------
-Create radius dimension for the circle geometry. @param thecircle [in] the circle to measure.
+Create radius dimension for the circle geometry. 
+Input parameter: theCircle the circle to measure.
 ") PrsDim_RadiusDimension;
 		 PrsDim_RadiusDimension(const gp_Circ & theCircle);
 
@@ -4145,7 +4220,9 @@ None
 
 Description
 -----------
-Create radius dimension for the circle geometry and define its orientation by location of the first point on that circle. @param thecircle [in] the circle to measure. @param theanchorpoint [in] the point to define the position of the dimension attachment on the circle.
+Create radius dimension for the circle geometry and define its orientation by location of the first point on that circle. 
+Input parameter: theCircle the circle to measure. 
+Input parameter: theAnchorPoint the point to define the position of the dimension attachment on the circle.
 ") PrsDim_RadiusDimension;
 		 PrsDim_RadiusDimension(const gp_Circ & theCircle, const gp_Pnt & theAnchorPoint);
 
@@ -4163,7 +4240,8 @@ None
 
 Description
 -----------
-Create radius dimension for the arbitrary shape (if possible). @param theshape [in] the shape to measure.
+Create radius dimension for the arbitrary shape (if possible). 
+Input parameter: theShape the shape to measure.
 ") PrsDim_RadiusDimension;
 		 PrsDim_RadiusDimension(const TopoDS_Shape & theShape);
 
@@ -4176,7 +4254,7 @@ gp_Pnt
 
 Description
 -----------
-Return anchor point on circle for radius dimension.
+Return: anchor point on circle for radius dimension.
 ") AnchorPoint;
 		const gp_Pnt AnchorPoint();
 
@@ -4189,7 +4267,7 @@ gp_Circ
 
 Description
 -----------
-Return measured geometry circle.
+Return: measured geometry circle.
 ") Circle;
 		const gp_Circ Circle();
 
@@ -4202,7 +4280,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return the display units string.
+Return: the display units string.
 ") GetDisplayUnits;
 		virtual const TCollection_AsciiString & GetDisplayUnits();
 
@@ -4215,7 +4293,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Return the model units string.
+Return: the model units string.
 ") GetModelUnits;
 		virtual const TCollection_AsciiString & GetModelUnits();
 
@@ -4264,7 +4342,8 @@ None
 
 Description
 -----------
-Measure radius of the circle. the dimension will become invalid if the radius of the circle is less than precision::confusion(). @param thecircle [in] the circle to measure.
+Measure radius of the circle. The dimension will become invalid if the radius of the circle is less than Precision::Confusion(). 
+Input parameter: theCircle the circle to measure.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const gp_Circ & theCircle);
 
@@ -4284,7 +4363,10 @@ None
 
 Description
 -----------
-Measure radius of the circle and orient the dimension so the dimension lines attaches to anchor point on the circle. the dimension will become invalid if the radius of the circle is less than precision::confusion(). @param thecircle [in] the circle to measure. @param theanchorpoint [in] the point to attach the dimension lines, should be on the circle @param thehasanchor [in] should be set true if theanchorpoint should be used.
+Measure radius of the circle and orient the dimension so the dimension lines attaches to anchor point on the circle. The dimension will become invalid if the radius of the circle is less than Precision::Confusion(). 
+Input parameter: theCircle the circle to measure. 
+Input parameter: theAnchorPoint the point to attach the dimension lines, should be on the circle 
+Input parameter: theHasAnchor should be set True if theAnchorPoint should be used.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const gp_Circ & theCircle, const gp_Pnt & theAnchorPoint, const Standard_Boolean theHasAnchor = Standard_True);
 
@@ -4302,7 +4384,8 @@ None
 
 Description
 -----------
-Measure radius on the passed shape, if applicable. the dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than precision::confusion(). @param theshape [in] the shape to measure.
+Measure radius on the passed shape, if applicable. The dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than Precision::Confusion(). 
+Input parameter: theShape the shape to measure.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Shape & theShape);
 
@@ -4322,7 +4405,10 @@ None
 
 Description
 -----------
-Measure radius on the passed shape, if applicable. the dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than precision::confusion(). @param theshape [in] the shape to measure. @param theanchorpoint [in] the point to attach the dimension lines, should be on the circle @param thehasanchor [in] should be set true if theanchorpoint should be used.
+Measure radius on the passed shape, if applicable. The dimension will become invalid if the passed shape is not measurable or if measured diameter value is less than Precision::Confusion(). 
+Input parameter: theShape the shape to measure. 
+Input parameter: theAnchorPoint the point to attach the dimension lines, should be on the circle 
+Input parameter: theHasAnchor should be set True if theAnchorPoint should be used.
 ") SetMeasuredGeometry;
 		void SetMeasuredGeometry(const TopoDS_Shape & theShape, const gp_Pnt & theAnchorPoint, const Standard_Boolean theHasAnchor = Standard_True);
 
@@ -4371,7 +4457,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return the measured shape.
+Return: the measured shape.
 ") Shape;
 		const TopoDS_Shape Shape();
 
@@ -4408,7 +4494,7 @@ None
 
 Description
 -----------
-Constructs an object to display constraints of symmetricity. this object is defined by a tool asymmtool, a first shape firstshape, a second shape secondshape, and a plane aplane. aplane serves as the axis of symmetry. asymmtool is the shape composed of firstshape secondshape and aplane. it may be queried and edited using the functions gettool and settool. the two shapes are typically two edges, two vertices or two points.
+Constructs an object to display constraints of symmetricity. This object is defined by a tool aSymmTool, a first shape FirstShape, a second shape SecondShape, and a plane aPlane. aPlane serves as the axis of symmetry. aSymmTool is the shape composed of FirstShape SecondShape and aPlane. It may be queried and edited using the functions GetTool and SetTool. The two shapes are typically two edges, two vertices or two points.
 ") PrsDim_SymmetricRelation;
 		 PrsDim_SymmetricRelation(const TopoDS_Shape & aSymmTool, const TopoDS_Shape & FirstShape, const TopoDS_Shape & SecondShape, const opencascade::handle<Geom_Plane> & aPlane);
 
@@ -4421,7 +4507,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the tool composed of a first shape, a second shape, and a plane. this tool is created at construction time.
+Returns the tool composed of a first shape, a second shape, and a plane. This tool is created at construction time.
 ") GetTool;
 		const TopoDS_Shape GetTool();
 
@@ -4452,7 +4538,7 @@ None
 
 Description
 -----------
-Sets the tool asymmetrictool composed of a first shape, a second shape, and a plane. this tool is initially created at construction time.
+Sets the tool aSymmetricTool composed of a first shape, a second shape, and a plane. This tool is initially created at construction time.
 ") SetTool;
 		void SetTool(const TopoDS_Shape & aSymmetricTool);
 
@@ -4489,7 +4575,7 @@ None
 
 Description
 -----------
-Twofacestangent or twoedgestangent relation constructs an object to display tangency constraints. this object is defined by the first shape afshape, the second shape asshape, the plane aplane and the index anexternref. aplane serves as an optional axis. anexternref set to 0 indicates that there is no relation.
+TwoFacesTangent or TwoEdgesTangent relation Constructs an object to display tangency constraints. This object is defined by the first shape aFShape, the second shape aSShape, the plane aPlane and the index anExternRef. aPlane serves as an optional axis. anExternRef set to 0 indicates that there is no relation.
 ") PrsDim_TangentRelation;
 		 PrsDim_TangentRelation(const TopoDS_Shape & aFShape, const TopoDS_Shape & aSShape, const opencascade::handle<Geom_Plane> & aPlane, const Standard_Integer anExternRef = 0);
 
@@ -4502,7 +4588,7 @@ int
 
 Description
 -----------
-Returns the external reference for tangency. the values are as follows: - 0 - there is no connection; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape. this reference is defined at construction time.
+Returns the external reference for tangency. The values are as follows: - 0 - there is no connection; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape. This reference is defined at construction time.
 ") ExternRef;
 		Standard_Integer ExternRef();
 
@@ -4520,7 +4606,7 @@ None
 
 Description
 -----------
-Sets the external reference for tangency, aref. the values are as follows: - 0 - there is no connection; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape. this reference is initially defined at construction time.
+Sets the external reference for tangency, aRef. The values are as follows: - 0 - there is no connection; - 1 - there is a connection to the first shape; - 2 - there is a connection to the second shape. This reference is initially defined at construction time.
 ") SetExternRef;
 		void SetExternRef(const Standard_Integer aRef);
 
@@ -4556,7 +4642,7 @@ None
 
 Description
 -----------
-Max ellipse radius dimension shape can be edge , planar face or cylindrical face.
+Max Ellipse radius dimension Shape can be edge , planar face or cylindrical face.
 ") PrsDim_MaxRadiusDimension;
 		 PrsDim_MaxRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
@@ -4579,7 +4665,7 @@ None
 
 Description
 -----------
-Max ellipse radius dimension with position shape can be edge , planar face or cylindrical face.
+Max Ellipse radius dimension with position Shape can be edge , planar face or cylindrical face.
 ") PrsDim_MaxRadiusDimension;
 		 PrsDim_MaxRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, TCollection_ExtendedString aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
 
@@ -4615,7 +4701,7 @@ None
 
 Description
 -----------
-Max ellipse radius dimension shape can be edge , planar face or cylindrical face.
+Max Ellipse radius dimension Shape can be edge , planar face or cylindrical face.
 ") PrsDim_MinRadiusDimension;
 		 PrsDim_MinRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, TCollection_ExtendedString aText);
 
@@ -4638,7 +4724,7 @@ None
 
 Description
 -----------
-Max ellipse radius dimension with position shape can be edge , planar face or cylindrical face.
+Max Ellipse radius dimension with position Shape can be edge , planar face or cylindrical face.
 ") PrsDim_MinRadiusDimension;
 		 PrsDim_MinRadiusDimension(const TopoDS_Shape & aShape, const Standard_Real aVal, TCollection_ExtendedString aText, const gp_Pnt & aPosition, const DsgPrs_ArrowSide aSymbolPrs, const Standard_Real anArrowSize = 0.0);
 

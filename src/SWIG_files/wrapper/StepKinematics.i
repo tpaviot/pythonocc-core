@@ -206,7 +206,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_ContextDependentKinematicLinkRepresentation;
 		 StepKinematics_ContextDependentKinematicLinkRepresentation();
 
@@ -238,7 +238,7 @@ opencascade::handle<StepKinematics_KinematicLinkRepresentationAssociation>
 
 Description
 -----------
-Returns field representationrelation.
+Returns field RepresentationRelation.
 ") RepresentationRelation;
 		opencascade::handle<StepKinematics_KinematicLinkRepresentationAssociation> RepresentationRelation();
 
@@ -251,7 +251,7 @@ opencascade::handle<StepKinematics_ProductDefinitionRelationshipKinematics>
 
 Description
 -----------
-Returns field representedproductrelation.
+Returns field RepresentedProductRelation.
 ") RepresentedProductRelation;
 		opencascade::handle<StepKinematics_ProductDefinitionRelationshipKinematics> RepresentedProductRelation();
 
@@ -269,7 +269,7 @@ None
 
 Description
 -----------
-Sets field representationrelation.
+Sets field RepresentationRelation.
 ") SetRepresentationRelation;
 		void SetRepresentationRelation(const opencascade::handle<StepKinematics_KinematicLinkRepresentationAssociation> & theRepresentationRelation);
 
@@ -287,7 +287,7 @@ None
 
 Description
 -----------
-Sets field representedproductrelation.
+Sets field RepresentedProductRelation.
 ") SetRepresentedProductRelation;
 		void SetRepresentedProductRelation(const opencascade::handle<StepKinematics_ProductDefinitionRelationshipKinematics> & theRepresentedProductRelation);
 
@@ -316,7 +316,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_KinematicJoint;
 		 StepKinematics_KinematicJoint();
 
@@ -345,7 +345,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_KinematicLink;
 		 StepKinematics_KinematicLink();
 
@@ -374,7 +374,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_KinematicLinkRepresentation;
 		 StepKinematics_KinematicLinkRepresentation();
 
@@ -408,7 +408,7 @@ opencascade::handle<StepKinematics_KinematicLink>
 
 Description
 -----------
-Returns field representedlink.
+Returns field RepresentedLink.
 ") RepresentedLink;
 		opencascade::handle<StepKinematics_KinematicLink> RepresentedLink();
 
@@ -426,7 +426,7 @@ None
 
 Description
 -----------
-Sets field representedlink.
+Sets field RepresentedLink.
 ") SetRepresentedLink;
 		void SetRepresentedLink(const opencascade::handle<StepKinematics_KinematicLink> & theRepresentedLink);
 
@@ -455,7 +455,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_KinematicLinkRepresentationAssociation;
 		 StepKinematics_KinematicLinkRepresentationAssociation();
 
@@ -484,7 +484,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_KinematicPair;
 		 StepKinematics_KinematicPair();
 
@@ -521,7 +521,7 @@ opencascade::handle<StepRepr_ItemDefinedTransformation>
 
 Description
 -----------
-Returns data for supertype itemdefinedtransformation.
+Returns data for supertype ItemDefinedTransformation.
 ") ItemDefinedTransformation;
 		opencascade::handle<StepRepr_ItemDefinedTransformation> ItemDefinedTransformation();
 
@@ -534,7 +534,7 @@ opencascade::handle<StepKinematics_KinematicJoint>
 
 Description
 -----------
-Returns field joint.
+Returns field Joint.
 ") Joint;
 		opencascade::handle<StepKinematics_KinematicJoint> Joint();
 
@@ -552,7 +552,7 @@ None
 
 Description
 -----------
-Sets data for supertype itemdefinedtransformation.
+Sets data for supertype ItemDefinedTransformation.
 ") SetItemDefinedTransformation;
 		void SetItemDefinedTransformation(const opencascade::handle<StepRepr_ItemDefinedTransformation> & theItemDefinedTransformation);
 
@@ -570,7 +570,7 @@ None
 
 Description
 -----------
-Sets field joint.
+Sets field Joint.
 ") SetJoint;
 		void SetJoint(const opencascade::handle<StepKinematics_KinematicJoint> & theJoint);
 
@@ -599,7 +599,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_KinematicPropertyDefinitionRepresentation;
 		 StepKinematics_KinematicPropertyDefinitionRepresentation();
 
@@ -628,7 +628,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_KinematicTopologyDirectedStructure;
 		 StepKinematics_KinematicTopologyDirectedStructure();
 
@@ -662,7 +662,7 @@ opencascade::handle<StepKinematics_KinematicTopologyStructure>
 
 Description
 -----------
-Returns field parent.
+Returns field Parent.
 ") Parent;
 		opencascade::handle<StepKinematics_KinematicTopologyStructure> Parent();
 
@@ -680,7 +680,7 @@ None
 
 Description
 -----------
-Sets field parent.
+Sets field Parent.
 ") SetParent;
 		void SetParent(const opencascade::handle<StepKinematics_KinematicTopologyStructure> & theParent);
 
@@ -709,7 +709,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_KinematicTopologyNetworkStructure;
 		 StepKinematics_KinematicTopologyNetworkStructure();
 
@@ -743,7 +743,7 @@ opencascade::handle<StepKinematics_KinematicTopologyStructure>
 
 Description
 -----------
-Returns field parent.
+Returns field Parent.
 ") Parent;
 		opencascade::handle<StepKinematics_KinematicTopologyStructure> Parent();
 
@@ -761,7 +761,7 @@ None
 
 Description
 -----------
-Sets field parent.
+Sets field Parent.
 ") SetParent;
 		void SetParent(const opencascade::handle<StepKinematics_KinematicTopologyStructure> & theParent);
 
@@ -808,7 +808,7 @@ int
 
 Description
 -----------
-Recognizes a kind of kinematictopologyrepresentationselect select type -- 1 -> kinematictopologydirectedstructure -- 2 -> kinematictopologynetworkstructure -- 3 -> kinematictopologystructure.
+Recognizes a kind of KinematicTopologyRepresentationSelect select type -- 1 -> KinematicTopologyDirectedStructure -- 2 -> KinematicTopologyNetworkStructure -- 3 -> KinematicTopologyStructure.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -821,7 +821,7 @@ opencascade::handle<StepKinematics_KinematicTopologyDirectedStructure>
 
 Description
 -----------
-Returns value as kinematictopologydirectedstructure (or null if another type).
+Returns Value as KinematicTopologyDirectedStructure (or Null if another type).
 ") KinematicTopologyDirectedStructure;
 		opencascade::handle<StepKinematics_KinematicTopologyDirectedStructure> KinematicTopologyDirectedStructure();
 
@@ -834,7 +834,7 @@ opencascade::handle<StepKinematics_KinematicTopologyNetworkStructure>
 
 Description
 -----------
-Returns value as kinematictopologynetworkstructure (or null if another type).
+Returns Value as KinematicTopologyNetworkStructure (or Null if another type).
 ") KinematicTopologyNetworkStructure;
 		opencascade::handle<StepKinematics_KinematicTopologyNetworkStructure> KinematicTopologyNetworkStructure();
 
@@ -847,7 +847,7 @@ opencascade::handle<StepKinematics_KinematicTopologyStructure>
 
 Description
 -----------
-Returns value as kinematictopologystructure (or null if another type).
+Returns Value as KinematicTopologyStructure (or Null if another type).
 ") KinematicTopologyStructure;
 		opencascade::handle<StepKinematics_KinematicTopologyStructure> KinematicTopologyStructure();
 
@@ -874,7 +874,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_KinematicTopologyStructure;
 		 StepKinematics_KinematicTopologyStructure();
 
@@ -903,7 +903,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_MechanismRepresentation;
 		 StepKinematics_MechanismRepresentation();
 
@@ -937,7 +937,7 @@ StepKinematics_KinematicTopologyRepresentationSelect
 
 Description
 -----------
-Returns field representedtopology.
+Returns field RepresentedTopology.
 ") RepresentedTopology;
 		StepKinematics_KinematicTopologyRepresentationSelect RepresentedTopology();
 
@@ -955,7 +955,7 @@ None
 
 Description
 -----------
-Sets field representedtopology.
+Sets field RepresentedTopology.
 ") SetRepresentedTopology;
 		void SetRepresentedTopology(const StepKinematics_KinematicTopologyRepresentationSelect & theRepresentedTopology);
 
@@ -984,7 +984,7 @@ None
 
 Description
 -----------
-Returns a mechanismstaterepresentation.
+Returns a MechanismStateRepresentation.
 ") StepKinematics_MechanismStateRepresentation;
 		 StepKinematics_MechanismStateRepresentation();
 
@@ -1065,7 +1065,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_OrientedJoint;
 		 StepKinematics_OrientedJoint();
 
@@ -1094,7 +1094,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PairRepresentationRelationship;
 		 StepKinematics_PairRepresentationRelationship();
 
@@ -1131,7 +1131,7 @@ opencascade::handle<StepRepr_RepresentationRelationshipWithTransformation>
 
 Description
 -----------
-Returns data for supertype representationrelationshipwithtransformation.
+Returns data for supertype RepresentationRelationshipWithTransformation.
 ") RepresentationRelationshipWithTransformation;
 		opencascade::handle<StepRepr_RepresentationRelationshipWithTransformation> RepresentationRelationshipWithTransformation();
 
@@ -1149,7 +1149,7 @@ None
 
 Description
 -----------
-Sets data for supertype representationrelationshipwithtransformation.
+Sets data for supertype RepresentationRelationshipWithTransformation.
 ") SetRepresentationRelationshipWithTransformation;
 		void SetRepresentationRelationshipWithTransformation(const opencascade::handle<StepRepr_RepresentationRelationshipWithTransformation> & theRepresentationRelationshipWithTransformation);
 
@@ -1178,7 +1178,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PairValue;
 		 StepKinematics_PairValue();
 
@@ -1191,7 +1191,7 @@ opencascade::handle<StepKinematics_KinematicPair>
 
 Description
 -----------
-Returns field appliestopair.
+Returns field AppliesToPair.
 ") AppliesToPair;
 		opencascade::handle<StepKinematics_KinematicPair> AppliesToPair();
 
@@ -1228,7 +1228,7 @@ None
 
 Description
 -----------
-Sets field appliestopair.
+Sets field AppliesToPair.
 ") SetAppliesToPair;
 		void SetAppliesToPair(const opencascade::handle<StepKinematics_KinematicPair> & theAppliesToPair);
 
@@ -1257,7 +1257,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_ProductDefinitionKinematics;
 		 StepKinematics_ProductDefinitionKinematics();
 
@@ -1286,7 +1286,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_ProductDefinitionRelationshipKinematics;
 		 StepKinematics_ProductDefinitionRelationshipKinematics();
 
@@ -1328,7 +1328,7 @@ opencascade::handle<StepGeom_Axis2Placement3d>
 
 Description
 -----------
-Returns value as axis2placement3d (or null if another type).
+Returns Value as Axis2Placement3d (or Null if another type).
 ") Axis2Placement3d;
 		opencascade::handle<StepGeom_Axis2Placement3d> Axis2Placement3d();
 
@@ -1346,7 +1346,7 @@ int
 
 Description
 -----------
-Recognizes a kind of rigidplacement select type -- 1 -> axis2placement3d -- 2 -> suparameters.
+Recognizes a kind of RigidPlacement select type -- 1 -> Axis2Placement3d -- 2 -> SuParameters.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1359,7 +1359,7 @@ opencascade::handle<StepGeom_SuParameters>
 
 Description
 -----------
-Returns value as suparameters (or null if another type).
+Returns Value as SuParameters (or Null if another type).
 ") SuParameters;
 		opencascade::handle<StepGeom_SuParameters> SuParameters();
 
@@ -1386,7 +1386,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RotationAboutDirection;
 		 StepKinematics_RotationAboutDirection();
 
@@ -1399,7 +1399,7 @@ opencascade::handle<StepGeom_Direction>
 
 Description
 -----------
-Returns field directionofaxis.
+Returns field DirectionOfAxis.
 ") DirectionOfAxis;
 		opencascade::handle<StepGeom_Direction> DirectionOfAxis();
 
@@ -1432,7 +1432,7 @@ float
 
 Description
 -----------
-Returns field rotationangle.
+Returns field RotationAngle.
 ") RotationAngle;
 		Standard_Real RotationAngle();
 
@@ -1450,7 +1450,7 @@ None
 
 Description
 -----------
-Sets field directionofaxis.
+Sets field DirectionOfAxis.
 ") SetDirectionOfAxis;
 		void SetDirectionOfAxis(const opencascade::handle<StepGeom_Direction> & theDirectionOfAxis);
 
@@ -1468,7 +1468,7 @@ None
 
 Description
 -----------
-Sets field rotationangle.
+Sets field RotationAngle.
 ") SetRotationAngle;
 		void SetRotationAngle(const Standard_Real theRotationAngle);
 
@@ -1515,7 +1515,7 @@ int
 
 Description
 -----------
-Recognizes a kind of spatialrotation select type -- 1 -> rotationaboutdirection -- 2 -> yprrotation.
+Recognizes a kind of SpatialRotation select type -- 1 -> RotationAboutDirection -- 2 -> YprRotation.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1528,7 +1528,7 @@ opencascade::handle<StepKinematics_RotationAboutDirection>
 
 Description
 -----------
-Returns value as rotationaboutdirection (or null if another type).
+Returns Value as RotationAboutDirection (or Null if another type).
 ") RotationAboutDirection;
 		opencascade::handle<StepKinematics_RotationAboutDirection> RotationAboutDirection();
 
@@ -1541,7 +1541,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns value as yprrotation (or null if another type).
+Returns Value as YprRotation (or Null if another type).
 ") YprRotation;
 		opencascade::handle<TColStd_HArray1OfReal> YprRotation();
 
@@ -1586,7 +1586,7 @@ int
 
 Description
 -----------
-Recognizes a kind of sphericalpairselect select type -- 1 -> sphericalpair -- 2 -> sphericalpairwithpin.
+Recognizes a kind of SphericalPairSelect select type -- 1 -> SphericalPair -- 2 -> SphericalPairWithPin.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1599,7 +1599,7 @@ opencascade::handle<StepKinematics_SphericalPair>
 
 Description
 -----------
-Returns value as sphericalpair (or null if another type).
+Returns Value as SphericalPair (or Null if another type).
 ") SphericalPair;
 		opencascade::handle<StepKinematics_SphericalPair> SphericalPair();
 
@@ -1612,7 +1612,7 @@ opencascade::handle<StepKinematics_SphericalPairWithPin>
 
 Description
 -----------
-Returns value as sphericalpairwithpin (or null if another type).
+Returns Value as SphericalPairWithPin (or Null if another type).
 ") SphericalPairWithPin;
 		opencascade::handle<StepKinematics_SphericalPairWithPin> SphericalPairWithPin();
 
@@ -1639,7 +1639,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_ActuatedKinPairAndOrderKinPair;
 		 StepKinematics_ActuatedKinPairAndOrderKinPair();
 
@@ -1756,7 +1756,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_ActuatedKinematicPair;
 		 StepKinematics_ActuatedKinematicPair();
 
@@ -1769,7 +1769,7 @@ bool
 
 Description
 -----------
-Returns true if optional field rx is defined.
+Returns True if optional field RX is defined.
 ") HasRX;
 		Standard_Boolean HasRX();
 
@@ -1782,7 +1782,7 @@ bool
 
 Description
 -----------
-Returns true if optional field ry is defined.
+Returns True if optional field RY is defined.
 ") HasRY;
 		Standard_Boolean HasRY();
 
@@ -1795,7 +1795,7 @@ bool
 
 Description
 -----------
-Returns true if optional field rz is defined.
+Returns True if optional field RZ is defined.
 ") HasRZ;
 		Standard_Boolean HasRZ();
 
@@ -1808,7 +1808,7 @@ bool
 
 Description
 -----------
-Returns true if optional field tx is defined.
+Returns True if optional field TX is defined.
 ") HasTX;
 		Standard_Boolean HasTX();
 
@@ -1821,7 +1821,7 @@ bool
 
 Description
 -----------
-Returns true if optional field ty is defined.
+Returns True if optional field TY is defined.
 ") HasTY;
 		Standard_Boolean HasTY();
 
@@ -1834,7 +1834,7 @@ bool
 
 Description
 -----------
-Returns true if optional field tz is defined.
+Returns True if optional field TZ is defined.
 ") HasTZ;
 		Standard_Boolean HasTZ();
 
@@ -1883,7 +1883,7 @@ StepKinematics_ActuatedDirection
 
 Description
 -----------
-Returns field rx.
+Returns field RX.
 ") RX;
 		StepKinematics_ActuatedDirection RX();
 
@@ -1896,7 +1896,7 @@ StepKinematics_ActuatedDirection
 
 Description
 -----------
-Returns field ry.
+Returns field RY.
 ") RY;
 		StepKinematics_ActuatedDirection RY();
 
@@ -1909,7 +1909,7 @@ StepKinematics_ActuatedDirection
 
 Description
 -----------
-Returns field rz.
+Returns field RZ.
 ") RZ;
 		StepKinematics_ActuatedDirection RZ();
 
@@ -1927,7 +1927,7 @@ None
 
 Description
 -----------
-Sets field rx.
+Sets field RX.
 ") SetRX;
 		void SetRX(const StepKinematics_ActuatedDirection theRX);
 
@@ -1945,7 +1945,7 @@ None
 
 Description
 -----------
-Sets field ry.
+Sets field RY.
 ") SetRY;
 		void SetRY(const StepKinematics_ActuatedDirection theRY);
 
@@ -1963,7 +1963,7 @@ None
 
 Description
 -----------
-Sets field rz.
+Sets field RZ.
 ") SetRZ;
 		void SetRZ(const StepKinematics_ActuatedDirection theRZ);
 
@@ -1981,7 +1981,7 @@ None
 
 Description
 -----------
-Sets field tx.
+Sets field TX.
 ") SetTX;
 		void SetTX(const StepKinematics_ActuatedDirection theTX);
 
@@ -1999,7 +1999,7 @@ None
 
 Description
 -----------
-Sets field ty.
+Sets field TY.
 ") SetTY;
 		void SetTY(const StepKinematics_ActuatedDirection theTY);
 
@@ -2017,7 +2017,7 @@ None
 
 Description
 -----------
-Sets field tz.
+Sets field TZ.
 ") SetTZ;
 		void SetTZ(const StepKinematics_ActuatedDirection theTZ);
 
@@ -2030,7 +2030,7 @@ StepKinematics_ActuatedDirection
 
 Description
 -----------
-Returns field tx.
+Returns field TX.
 ") TX;
 		StepKinematics_ActuatedDirection TX();
 
@@ -2043,7 +2043,7 @@ StepKinematics_ActuatedDirection
 
 Description
 -----------
-Returns field ty.
+Returns field TY.
 ") TY;
 		StepKinematics_ActuatedDirection TY();
 
@@ -2056,7 +2056,7 @@ StepKinematics_ActuatedDirection
 
 Description
 -----------
-Returns field tz.
+Returns field TZ.
 ") TZ;
 		StepKinematics_ActuatedDirection TZ();
 
@@ -2085,7 +2085,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_CylindricalPairValue;
 		 StepKinematics_CylindricalPairValue();
 
@@ -2098,7 +2098,7 @@ float
 
 Description
 -----------
-Returns field actualrotation.
+Returns field ActualRotation.
 ") ActualRotation;
 		Standard_Real ActualRotation();
 
@@ -2111,7 +2111,7 @@ float
 
 Description
 -----------
-Returns field actualtranslation.
+Returns field ActualTranslation.
 ") ActualTranslation;
 		Standard_Real ActualTranslation();
 
@@ -2150,7 +2150,7 @@ None
 
 Description
 -----------
-Sets field actualrotation.
+Sets field ActualRotation.
 ") SetActualRotation;
 		void SetActualRotation(const Standard_Real theActualRotation);
 
@@ -2168,7 +2168,7 @@ None
 
 Description
 -----------
-Sets field actualtranslation.
+Sets field ActualTranslation.
 ") SetActualTranslation;
 		void SetActualTranslation(const Standard_Real theActualTranslation);
 
@@ -2197,7 +2197,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_GearPairValue;
 		 StepKinematics_GearPairValue();
 
@@ -2210,7 +2210,7 @@ float
 
 Description
 -----------
-Returns field actualrotation1.
+Returns field ActualRotation1.
 ") ActualRotation1;
 		Standard_Real ActualRotation1();
 
@@ -2248,7 +2248,7 @@ None
 
 Description
 -----------
-Sets field actualrotation1.
+Sets field ActualRotation1.
 ") SetActualRotation1;
 		void SetActualRotation1(const Standard_Real theActualRotation1);
 
@@ -2277,7 +2277,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_HighOrderKinematicPair;
 		 StepKinematics_HighOrderKinematicPair();
 
@@ -2306,7 +2306,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_KinematicPropertyMechanismRepresentation;
 		 StepKinematics_KinematicPropertyMechanismRepresentation();
 
@@ -2319,7 +2319,7 @@ opencascade::handle<StepKinematics_KinematicLinkRepresentation>
 
 Description
 -----------
-Returns field base.
+Returns field Base.
 ") Base;
 		opencascade::handle<StepKinematics_KinematicLinkRepresentation> Base();
 
@@ -2357,7 +2357,7 @@ None
 
 Description
 -----------
-Sets field base.
+Sets field Base.
 ") SetBase;
 		void SetBase(const opencascade::handle<StepKinematics_KinematicLinkRepresentation> & theBase);
 
@@ -2386,7 +2386,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_LinearFlexibleLinkRepresentation;
 		 StepKinematics_LinearFlexibleLinkRepresentation();
 
@@ -2415,7 +2415,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_LowOrderKinematicPair;
 		 StepKinematics_LowOrderKinematicPair();
 
@@ -2458,7 +2458,7 @@ bool
 
 Description
 -----------
-Returns field rx.
+Returns field RX.
 ") RX;
 		Standard_Boolean RX();
 
@@ -2471,7 +2471,7 @@ bool
 
 Description
 -----------
-Returns field ry.
+Returns field RY.
 ") RY;
 		Standard_Boolean RY();
 
@@ -2484,7 +2484,7 @@ bool
 
 Description
 -----------
-Returns field rz.
+Returns field RZ.
 ") RZ;
 		Standard_Boolean RZ();
 
@@ -2502,7 +2502,7 @@ None
 
 Description
 -----------
-Sets field rx.
+Sets field RX.
 ") SetRX;
 		void SetRX(const Standard_Boolean theRX);
 
@@ -2520,7 +2520,7 @@ None
 
 Description
 -----------
-Sets field ry.
+Sets field RY.
 ") SetRY;
 		void SetRY(const Standard_Boolean theRY);
 
@@ -2538,7 +2538,7 @@ None
 
 Description
 -----------
-Sets field rz.
+Sets field RZ.
 ") SetRZ;
 		void SetRZ(const Standard_Boolean theRZ);
 
@@ -2556,7 +2556,7 @@ None
 
 Description
 -----------
-Sets field tx.
+Sets field TX.
 ") SetTX;
 		void SetTX(const Standard_Boolean theTX);
 
@@ -2574,7 +2574,7 @@ None
 
 Description
 -----------
-Sets field ty.
+Sets field TY.
 ") SetTY;
 		void SetTY(const Standard_Boolean theTY);
 
@@ -2592,7 +2592,7 @@ None
 
 Description
 -----------
-Sets field tz.
+Sets field TZ.
 ") SetTZ;
 		void SetTZ(const Standard_Boolean theTZ);
 
@@ -2605,7 +2605,7 @@ bool
 
 Description
 -----------
-Returns field tx.
+Returns field TX.
 ") TX;
 		Standard_Boolean TX();
 
@@ -2618,7 +2618,7 @@ bool
 
 Description
 -----------
-Returns field ty.
+Returns field TY.
 ") TY;
 		Standard_Boolean TY();
 
@@ -2631,7 +2631,7 @@ bool
 
 Description
 -----------
-Returns field tz.
+Returns field TZ.
 ") TZ;
 		Standard_Boolean TZ();
 
@@ -2660,7 +2660,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_LowOrderKinematicPairValue;
 		 StepKinematics_LowOrderKinematicPairValue();
 
@@ -2673,7 +2673,7 @@ float
 
 Description
 -----------
-Returns field actualrotationx.
+Returns field ActualRotationX.
 ") ActualRotationX;
 		Standard_Real ActualRotationX();
 
@@ -2686,7 +2686,7 @@ float
 
 Description
 -----------
-Returns field actualrotationy.
+Returns field ActualRotationY.
 ") ActualRotationY;
 		Standard_Real ActualRotationY();
 
@@ -2699,7 +2699,7 @@ float
 
 Description
 -----------
-Returns field actualrotationz.
+Returns field ActualRotationZ.
 ") ActualRotationZ;
 		Standard_Real ActualRotationZ();
 
@@ -2712,7 +2712,7 @@ float
 
 Description
 -----------
-Returns field actualtranslationx.
+Returns field ActualTranslationX.
 ") ActualTranslationX;
 		Standard_Real ActualTranslationX();
 
@@ -2725,7 +2725,7 @@ float
 
 Description
 -----------
-Returns field actualtranslationy.
+Returns field ActualTranslationY.
 ") ActualTranslationY;
 		Standard_Real ActualTranslationY();
 
@@ -2738,7 +2738,7 @@ float
 
 Description
 -----------
-Returns field actualtranslationz.
+Returns field ActualTranslationZ.
 ") ActualTranslationZ;
 		Standard_Real ActualTranslationZ();
 
@@ -2781,7 +2781,7 @@ None
 
 Description
 -----------
-Sets field actualrotationx.
+Sets field ActualRotationX.
 ") SetActualRotationX;
 		void SetActualRotationX(const Standard_Real theActualRotationX);
 
@@ -2799,7 +2799,7 @@ None
 
 Description
 -----------
-Sets field actualrotationy.
+Sets field ActualRotationY.
 ") SetActualRotationY;
 		void SetActualRotationY(const Standard_Real theActualRotationY);
 
@@ -2817,7 +2817,7 @@ None
 
 Description
 -----------
-Sets field actualrotationz.
+Sets field ActualRotationZ.
 ") SetActualRotationZ;
 		void SetActualRotationZ(const Standard_Real theActualRotationZ);
 
@@ -2835,7 +2835,7 @@ None
 
 Description
 -----------
-Sets field actualtranslationx.
+Sets field ActualTranslationX.
 ") SetActualTranslationX;
 		void SetActualTranslationX(const Standard_Real theActualTranslationX);
 
@@ -2853,7 +2853,7 @@ None
 
 Description
 -----------
-Sets field actualtranslationy.
+Sets field ActualTranslationY.
 ") SetActualTranslationY;
 		void SetActualTranslationY(const Standard_Real theActualTranslationY);
 
@@ -2871,7 +2871,7 @@ None
 
 Description
 -----------
-Sets field actualtranslationz.
+Sets field ActualTranslationZ.
 ") SetActualTranslationZ;
 		void SetActualTranslationZ(const Standard_Real theActualTranslationZ);
 
@@ -2900,7 +2900,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_LowOrderKinematicPairWithMotionCoupling;
 		 StepKinematics_LowOrderKinematicPairWithMotionCoupling();
 
@@ -2929,7 +2929,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PlanarPairValue;
 		 StepKinematics_PlanarPairValue();
 
@@ -2942,7 +2942,7 @@ float
 
 Description
 -----------
-Returns field actualrotation.
+Returns field ActualRotation.
 ") ActualRotation;
 		Standard_Real ActualRotation();
 
@@ -2955,7 +2955,7 @@ float
 
 Description
 -----------
-Returns field actualtranslationx.
+Returns field ActualTranslationX.
 ") ActualTranslationX;
 		Standard_Real ActualTranslationX();
 
@@ -2968,7 +2968,7 @@ float
 
 Description
 -----------
-Returns field actualtranslationy.
+Returns field ActualTranslationY.
 ") ActualTranslationY;
 		Standard_Real ActualTranslationY();
 
@@ -3008,7 +3008,7 @@ None
 
 Description
 -----------
-Sets field actualrotation.
+Sets field ActualRotation.
 ") SetActualRotation;
 		void SetActualRotation(const Standard_Real theActualRotation);
 
@@ -3026,7 +3026,7 @@ None
 
 Description
 -----------
-Sets field actualtranslationx.
+Sets field ActualTranslationX.
 ") SetActualTranslationX;
 		void SetActualTranslationX(const Standard_Real theActualTranslationX);
 
@@ -3044,7 +3044,7 @@ None
 
 Description
 -----------
-Sets field actualtranslationy.
+Sets field ActualTranslationY.
 ") SetActualTranslationY;
 		void SetActualTranslationY(const Standard_Real theActualTranslationY);
 
@@ -3073,7 +3073,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PointOnPlanarCurvePairValue;
 		 StepKinematics_PointOnPlanarCurvePairValue();
 
@@ -3086,7 +3086,7 @@ opencascade::handle<StepGeom_PointOnCurve>
 
 Description
 -----------
-Returns field actualpointoncurve.
+Returns field ActualPointOnCurve.
 ") ActualPointOnCurve;
 		opencascade::handle<StepGeom_PointOnCurve> ActualPointOnCurve();
 
@@ -3120,7 +3120,7 @@ StepKinematics_SpatialRotation
 
 Description
 -----------
-Returns field inputorientation.
+Returns field InputOrientation.
 ") InputOrientation;
 		StepKinematics_SpatialRotation InputOrientation();
 
@@ -3138,7 +3138,7 @@ None
 
 Description
 -----------
-Sets field actualpointoncurve.
+Sets field ActualPointOnCurve.
 ") SetActualPointOnCurve;
 		void SetActualPointOnCurve(const opencascade::handle<StepGeom_PointOnCurve> & theActualPointOnCurve);
 
@@ -3156,7 +3156,7 @@ None
 
 Description
 -----------
-Sets field inputorientation.
+Sets field InputOrientation.
 ") SetInputOrientation;
 		void SetInputOrientation(const StepKinematics_SpatialRotation & theInputOrientation);
 
@@ -3185,7 +3185,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PointOnSurfacePairValue;
 		 StepKinematics_PointOnSurfacePairValue();
 
@@ -3198,7 +3198,7 @@ opencascade::handle<StepGeom_PointOnSurface>
 
 Description
 -----------
-Returns field actualpointonsurface.
+Returns field ActualPointOnSurface.
 ") ActualPointOnSurface;
 		opencascade::handle<StepGeom_PointOnSurface> ActualPointOnSurface();
 
@@ -3232,7 +3232,7 @@ StepKinematics_SpatialRotation
 
 Description
 -----------
-Returns field inputorientation.
+Returns field InputOrientation.
 ") InputOrientation;
 		StepKinematics_SpatialRotation InputOrientation();
 
@@ -3250,7 +3250,7 @@ None
 
 Description
 -----------
-Sets field actualpointonsurface.
+Sets field ActualPointOnSurface.
 ") SetActualPointOnSurface;
 		void SetActualPointOnSurface(const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface);
 
@@ -3268,7 +3268,7 @@ None
 
 Description
 -----------
-Sets field inputorientation.
+Sets field InputOrientation.
 ") SetInputOrientation;
 		void SetInputOrientation(const StepKinematics_SpatialRotation & theInputOrientation);
 
@@ -3297,7 +3297,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PrismaticPairValue;
 		 StepKinematics_PrismaticPairValue();
 
@@ -3310,7 +3310,7 @@ float
 
 Description
 -----------
-Returns field actualtranslation.
+Returns field ActualTranslation.
 ") ActualTranslation;
 		Standard_Real ActualTranslation();
 
@@ -3348,7 +3348,7 @@ None
 
 Description
 -----------
-Sets field actualtranslation.
+Sets field ActualTranslation.
 ") SetActualTranslation;
 		void SetActualTranslation(const Standard_Real theActualTranslation);
 
@@ -3377,7 +3377,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RackAndPinionPairValue;
 		 StepKinematics_RackAndPinionPairValue();
 
@@ -3390,7 +3390,7 @@ float
 
 Description
 -----------
-Returns field actualdisplacement.
+Returns field ActualDisplacement.
 ") ActualDisplacement;
 		Standard_Real ActualDisplacement();
 
@@ -3428,7 +3428,7 @@ None
 
 Description
 -----------
-Sets field actualdisplacement.
+Sets field ActualDisplacement.
 ") SetActualDisplacement;
 		void SetActualDisplacement(const Standard_Real theActualDisplacement);
 
@@ -3457,7 +3457,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RevolutePairValue;
 		 StepKinematics_RevolutePairValue();
 
@@ -3470,7 +3470,7 @@ float
 
 Description
 -----------
-Returns field actualrotation.
+Returns field ActualRotation.
 ") ActualRotation;
 		Standard_Real ActualRotation();
 
@@ -3508,7 +3508,7 @@ None
 
 Description
 -----------
-Sets field actualrotation.
+Sets field ActualRotation.
 ") SetActualRotation;
 		void SetActualRotation(const Standard_Real theActualRotation);
 
@@ -3537,7 +3537,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RigidLinkRepresentation;
 		 StepKinematics_RigidLinkRepresentation();
 
@@ -3566,7 +3566,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RollingCurvePairValue;
 		 StepKinematics_RollingCurvePairValue();
 
@@ -3579,7 +3579,7 @@ opencascade::handle<StepGeom_PointOnCurve>
 
 Description
 -----------
-Returns field actualpointoncurve1.
+Returns field ActualPointOnCurve1.
 ") ActualPointOnCurve1;
 		opencascade::handle<StepGeom_PointOnCurve> ActualPointOnCurve1();
 
@@ -3617,7 +3617,7 @@ None
 
 Description
 -----------
-Sets field actualpointoncurve1.
+Sets field ActualPointOnCurve1.
 ") SetActualPointOnCurve1;
 		void SetActualPointOnCurve1(const opencascade::handle<StepGeom_PointOnCurve> & theActualPointOnCurve1);
 
@@ -3646,7 +3646,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RollingSurfacePairValue;
 		 StepKinematics_RollingSurfacePairValue();
 
@@ -3659,7 +3659,7 @@ opencascade::handle<StepGeom_PointOnSurface>
 
 Description
 -----------
-Returns field actualpointonsurface.
+Returns field ActualPointOnSurface.
 ") ActualPointOnSurface;
 		opencascade::handle<StepGeom_PointOnSurface> ActualPointOnSurface();
 
@@ -3672,7 +3672,7 @@ float
 
 Description
 -----------
-Returns field actualrotation.
+Returns field ActualRotation.
 ") ActualRotation;
 		Standard_Real ActualRotation();
 
@@ -3711,7 +3711,7 @@ None
 
 Description
 -----------
-Sets field actualpointonsurface.
+Sets field ActualPointOnSurface.
 ") SetActualPointOnSurface;
 		void SetActualPointOnSurface(const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface);
 
@@ -3729,7 +3729,7 @@ None
 
 Description
 -----------
-Sets field actualrotation.
+Sets field ActualRotation.
 ") SetActualRotation;
 		void SetActualRotation(const Standard_Real theActualRotation);
 
@@ -3758,7 +3758,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_ScrewPairValue;
 		 StepKinematics_ScrewPairValue();
 
@@ -3771,7 +3771,7 @@ float
 
 Description
 -----------
-Returns field actualrotation.
+Returns field ActualRotation.
 ") ActualRotation;
 		Standard_Real ActualRotation();
 
@@ -3809,7 +3809,7 @@ None
 
 Description
 -----------
-Sets field actualrotation.
+Sets field ActualRotation.
 ") SetActualRotation;
 		void SetActualRotation(const Standard_Real theActualRotation);
 
@@ -3838,7 +3838,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SlidingCurvePairValue;
 		 StepKinematics_SlidingCurvePairValue();
 
@@ -3851,7 +3851,7 @@ opencascade::handle<StepGeom_PointOnCurve>
 
 Description
 -----------
-Returns field actualpointoncurve1.
+Returns field ActualPointOnCurve1.
 ") ActualPointOnCurve1;
 		opencascade::handle<StepGeom_PointOnCurve> ActualPointOnCurve1();
 
@@ -3864,7 +3864,7 @@ opencascade::handle<StepGeom_PointOnCurve>
 
 Description
 -----------
-Returns field actualpointoncurve2.
+Returns field ActualPointOnCurve2.
 ") ActualPointOnCurve2;
 		opencascade::handle<StepGeom_PointOnCurve> ActualPointOnCurve2();
 
@@ -3903,7 +3903,7 @@ None
 
 Description
 -----------
-Sets field actualpointoncurve1.
+Sets field ActualPointOnCurve1.
 ") SetActualPointOnCurve1;
 		void SetActualPointOnCurve1(const opencascade::handle<StepGeom_PointOnCurve> & theActualPointOnCurve1);
 
@@ -3921,7 +3921,7 @@ None
 
 Description
 -----------
-Sets field actualpointoncurve2.
+Sets field ActualPointOnCurve2.
 ") SetActualPointOnCurve2;
 		void SetActualPointOnCurve2(const opencascade::handle<StepGeom_PointOnCurve> & theActualPointOnCurve2);
 
@@ -3950,7 +3950,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SlidingSurfacePairValue;
 		 StepKinematics_SlidingSurfacePairValue();
 
@@ -3963,7 +3963,7 @@ opencascade::handle<StepGeom_PointOnSurface>
 
 Description
 -----------
-Returns field actualpointonsurface1.
+Returns field ActualPointOnSurface1.
 ") ActualPointOnSurface1;
 		opencascade::handle<StepGeom_PointOnSurface> ActualPointOnSurface1();
 
@@ -3976,7 +3976,7 @@ opencascade::handle<StepGeom_PointOnSurface>
 
 Description
 -----------
-Returns field actualpointonsurface2.
+Returns field ActualPointOnSurface2.
 ") ActualPointOnSurface2;
 		opencascade::handle<StepGeom_PointOnSurface> ActualPointOnSurface2();
 
@@ -3989,7 +3989,7 @@ float
 
 Description
 -----------
-Returns field actualrotation.
+Returns field ActualRotation.
 ") ActualRotation;
 		Standard_Real ActualRotation();
 
@@ -4029,7 +4029,7 @@ None
 
 Description
 -----------
-Sets field actualpointonsurface1.
+Sets field ActualPointOnSurface1.
 ") SetActualPointOnSurface1;
 		void SetActualPointOnSurface1(const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface1);
 
@@ -4047,7 +4047,7 @@ None
 
 Description
 -----------
-Sets field actualpointonsurface2.
+Sets field ActualPointOnSurface2.
 ") SetActualPointOnSurface2;
 		void SetActualPointOnSurface2(const opencascade::handle<StepGeom_PointOnSurface> & theActualPointOnSurface2);
 
@@ -4065,7 +4065,7 @@ None
 
 Description
 -----------
-Sets field actualrotation.
+Sets field ActualRotation.
 ") SetActualRotation;
 		void SetActualRotation(const Standard_Real theActualRotation);
 
@@ -4094,7 +4094,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SphericalPairValue;
 		 StepKinematics_SphericalPairValue();
 
@@ -4127,7 +4127,7 @@ StepKinematics_SpatialRotation
 
 Description
 -----------
-Returns field inputorientation.
+Returns field InputOrientation.
 ") InputOrientation;
 		StepKinematics_SpatialRotation InputOrientation();
 
@@ -4145,7 +4145,7 @@ None
 
 Description
 -----------
-Sets field inputorientation.
+Sets field InputOrientation.
 ") SetInputOrientation;
 		void SetInputOrientation(const StepKinematics_SpatialRotation & theInputOrientation);
 
@@ -4174,7 +4174,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_UnconstrainedPairValue;
 		 StepKinematics_UnconstrainedPairValue();
 
@@ -4187,7 +4187,7 @@ opencascade::handle<StepGeom_Axis2Placement3d>
 
 Description
 -----------
-Returns field actualplacement.
+Returns field ActualPlacement.
 ") ActualPlacement;
 		opencascade::handle<StepGeom_Axis2Placement3d> ActualPlacement();
 
@@ -4225,7 +4225,7 @@ None
 
 Description
 -----------
-Sets field actualplacement.
+Sets field ActualPlacement.
 ") SetActualPlacement;
 		void SetActualPlacement(const opencascade::handle<StepGeom_Axis2Placement3d> & theActualPlacement);
 
@@ -4254,7 +4254,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_UniversalPairValue;
 		 StepKinematics_UniversalPairValue();
 
@@ -4267,7 +4267,7 @@ float
 
 Description
 -----------
-Returns field firstrotationangle.
+Returns field FirstRotationAngle.
 ") FirstRotationAngle;
 		Standard_Real FirstRotationAngle();
 
@@ -4301,7 +4301,7 @@ float
 
 Description
 -----------
-Returns field secondrotationangle.
+Returns field SecondRotationAngle.
 ") SecondRotationAngle;
 		Standard_Real SecondRotationAngle();
 
@@ -4319,7 +4319,7 @@ None
 
 Description
 -----------
-Sets field firstrotationangle.
+Sets field FirstRotationAngle.
 ") SetFirstRotationAngle;
 		void SetFirstRotationAngle(const Standard_Real theFirstRotationAngle);
 
@@ -4337,7 +4337,7 @@ None
 
 Description
 -----------
-Sets field secondrotationangle.
+Sets field SecondRotationAngle.
 ") SetSecondRotationAngle;
 		void SetSecondRotationAngle(const Standard_Real theSecondRotationAngle);
 
@@ -4366,7 +4366,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_CylindricalPair;
 		 StepKinematics_CylindricalPair();
 
@@ -4395,7 +4395,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_FullyConstrainedPair;
 		 StepKinematics_FullyConstrainedPair();
 
@@ -4424,7 +4424,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_GearPair;
 		 StepKinematics_GearPair();
 
@@ -4437,7 +4437,7 @@ float
 
 Description
 -----------
-Returns field bevel.
+Returns field Bevel.
 ") Bevel;
 		Standard_Real Bevel();
 
@@ -4450,7 +4450,7 @@ float
 
 Description
 -----------
-Returns field gearratio.
+Returns field GearRatio.
 ") GearRatio;
 		Standard_Real GearRatio();
 
@@ -4463,7 +4463,7 @@ float
 
 Description
 -----------
-Returns field helicalangle.
+Returns field HelicalAngle.
 ") HelicalAngle;
 		Standard_Real HelicalAngle();
 
@@ -4505,7 +4505,7 @@ float
 
 Description
 -----------
-Returns field radiusfirstlink.
+Returns field RadiusFirstLink.
 ") RadiusFirstLink;
 		Standard_Real RadiusFirstLink();
 
@@ -4518,7 +4518,7 @@ float
 
 Description
 -----------
-Returns field radiussecondlink.
+Returns field RadiusSecondLink.
 ") RadiusSecondLink;
 		Standard_Real RadiusSecondLink();
 
@@ -4536,7 +4536,7 @@ None
 
 Description
 -----------
-Sets field bevel.
+Sets field Bevel.
 ") SetBevel;
 		void SetBevel(const Standard_Real theBevel);
 
@@ -4554,7 +4554,7 @@ None
 
 Description
 -----------
-Sets field gearratio.
+Sets field GearRatio.
 ") SetGearRatio;
 		void SetGearRatio(const Standard_Real theGearRatio);
 
@@ -4572,7 +4572,7 @@ None
 
 Description
 -----------
-Sets field helicalangle.
+Sets field HelicalAngle.
 ") SetHelicalAngle;
 		void SetHelicalAngle(const Standard_Real theHelicalAngle);
 
@@ -4590,7 +4590,7 @@ None
 
 Description
 -----------
-Sets field radiusfirstlink.
+Sets field RadiusFirstLink.
 ") SetRadiusFirstLink;
 		void SetRadiusFirstLink(const Standard_Real theRadiusFirstLink);
 
@@ -4608,7 +4608,7 @@ None
 
 Description
 -----------
-Sets field radiussecondlink.
+Sets field RadiusSecondLink.
 ") SetRadiusSecondLink;
 		void SetRadiusSecondLink(const Standard_Real theRadiusSecondLink);
 
@@ -4637,7 +4637,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_LinearFlexibleAndPinionPair;
 		 StepKinematics_LinearFlexibleAndPinionPair();
 
@@ -4675,7 +4675,7 @@ float
 
 Description
 -----------
-Returns field pinionradius.
+Returns field PinionRadius.
 ") PinionRadius;
 		Standard_Real PinionRadius();
 
@@ -4693,7 +4693,7 @@ None
 
 Description
 -----------
-Sets field pinionradius.
+Sets field PinionRadius.
 ") SetPinionRadius;
 		void SetPinionRadius(const Standard_Real thePinionRadius);
 
@@ -4722,7 +4722,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_LinearFlexibleAndPlanarCurvePair;
 		 StepKinematics_LinearFlexibleAndPlanarCurvePair();
 
@@ -4761,7 +4761,7 @@ bool
 
 Description
 -----------
-Returns field orientation.
+Returns field Orientation.
 ") Orientation;
 		Standard_Boolean Orientation();
 
@@ -4774,7 +4774,7 @@ opencascade::handle<StepGeom_Curve>
 
 Description
 -----------
-Returns field paircurve.
+Returns field PairCurve.
 ") PairCurve;
 		opencascade::handle<StepGeom_Curve> PairCurve();
 
@@ -4792,7 +4792,7 @@ None
 
 Description
 -----------
-Sets field orientation.
+Sets field Orientation.
 ") SetOrientation;
 		void SetOrientation(const Standard_Boolean theOrientation);
 
@@ -4810,7 +4810,7 @@ None
 
 Description
 -----------
-Sets field paircurve.
+Sets field PairCurve.
 ") SetPairCurve;
 		void SetPairCurve(const opencascade::handle<StepGeom_Curve> & thePairCurve);
 
@@ -4839,7 +4839,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_LowOrderKinematicPairWithRange;
 		 StepKinematics_LowOrderKinematicPairWithRange();
 
@@ -4852,7 +4852,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualrotationx is defined.
+Returns True if optional field LowerLimitActualRotationX is defined.
 ") HasLowerLimitActualRotationX;
 		Standard_Boolean HasLowerLimitActualRotationX();
 
@@ -4865,7 +4865,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualrotationy is defined.
+Returns True if optional field LowerLimitActualRotationY is defined.
 ") HasLowerLimitActualRotationY;
 		Standard_Boolean HasLowerLimitActualRotationY();
 
@@ -4878,7 +4878,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualrotationz is defined.
+Returns True if optional field LowerLimitActualRotationZ is defined.
 ") HasLowerLimitActualRotationZ;
 		Standard_Boolean HasLowerLimitActualRotationZ();
 
@@ -4891,7 +4891,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualtranslationx is defined.
+Returns True if optional field LowerLimitActualTranslationX is defined.
 ") HasLowerLimitActualTranslationX;
 		Standard_Boolean HasLowerLimitActualTranslationX();
 
@@ -4904,7 +4904,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualtranslationy is defined.
+Returns True if optional field LowerLimitActualTranslationY is defined.
 ") HasLowerLimitActualTranslationY;
 		Standard_Boolean HasLowerLimitActualTranslationY();
 
@@ -4917,7 +4917,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualtranslationz is defined.
+Returns True if optional field LowerLimitActualTranslationZ is defined.
 ") HasLowerLimitActualTranslationZ;
 		Standard_Boolean HasLowerLimitActualTranslationZ();
 
@@ -4930,7 +4930,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualrotationx is defined.
+Returns True if optional field UpperLimitActualRotationX is defined.
 ") HasUpperLimitActualRotationX;
 		Standard_Boolean HasUpperLimitActualRotationX();
 
@@ -4943,7 +4943,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualrotationy is defined.
+Returns True if optional field UpperLimitActualRotationY is defined.
 ") HasUpperLimitActualRotationY;
 		Standard_Boolean HasUpperLimitActualRotationY();
 
@@ -4956,7 +4956,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualrotationz is defined.
+Returns True if optional field UpperLimitActualRotationZ is defined.
 ") HasUpperLimitActualRotationZ;
 		Standard_Boolean HasUpperLimitActualRotationZ();
 
@@ -4969,7 +4969,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualtranslationx is defined.
+Returns True if optional field UpperLimitActualTranslationX is defined.
 ") HasUpperLimitActualTranslationX;
 		Standard_Boolean HasUpperLimitActualTranslationX();
 
@@ -4982,7 +4982,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualtranslationy is defined.
+Returns True if optional field UpperLimitActualTranslationY is defined.
 ") HasUpperLimitActualTranslationY;
 		Standard_Boolean HasUpperLimitActualTranslationY();
 
@@ -4995,7 +4995,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualtranslationz is defined.
+Returns True if optional field UpperLimitActualTranslationZ is defined.
 ") HasUpperLimitActualTranslationZ;
 		Standard_Boolean HasUpperLimitActualTranslationZ();
 
@@ -5062,7 +5062,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualrotationx.
+Returns field LowerLimitActualRotationX.
 ") LowerLimitActualRotationX;
 		Standard_Real LowerLimitActualRotationX();
 
@@ -5075,7 +5075,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualrotationy.
+Returns field LowerLimitActualRotationY.
 ") LowerLimitActualRotationY;
 		Standard_Real LowerLimitActualRotationY();
 
@@ -5088,7 +5088,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualrotationz.
+Returns field LowerLimitActualRotationZ.
 ") LowerLimitActualRotationZ;
 		Standard_Real LowerLimitActualRotationZ();
 
@@ -5101,7 +5101,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualtranslationx.
+Returns field LowerLimitActualTranslationX.
 ") LowerLimitActualTranslationX;
 		Standard_Real LowerLimitActualTranslationX();
 
@@ -5114,7 +5114,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualtranslationy.
+Returns field LowerLimitActualTranslationY.
 ") LowerLimitActualTranslationY;
 		Standard_Real LowerLimitActualTranslationY();
 
@@ -5127,7 +5127,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualtranslationz.
+Returns field LowerLimitActualTranslationZ.
 ") LowerLimitActualTranslationZ;
 		Standard_Real LowerLimitActualTranslationZ();
 
@@ -5145,7 +5145,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualrotationx.
+Sets field LowerLimitActualRotationX.
 ") SetLowerLimitActualRotationX;
 		void SetLowerLimitActualRotationX(const Standard_Real theLowerLimitActualRotationX);
 
@@ -5163,7 +5163,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualrotationy.
+Sets field LowerLimitActualRotationY.
 ") SetLowerLimitActualRotationY;
 		void SetLowerLimitActualRotationY(const Standard_Real theLowerLimitActualRotationY);
 
@@ -5181,7 +5181,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualrotationz.
+Sets field LowerLimitActualRotationZ.
 ") SetLowerLimitActualRotationZ;
 		void SetLowerLimitActualRotationZ(const Standard_Real theLowerLimitActualRotationZ);
 
@@ -5199,7 +5199,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualtranslationx.
+Sets field LowerLimitActualTranslationX.
 ") SetLowerLimitActualTranslationX;
 		void SetLowerLimitActualTranslationX(const Standard_Real theLowerLimitActualTranslationX);
 
@@ -5217,7 +5217,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualtranslationy.
+Sets field LowerLimitActualTranslationY.
 ") SetLowerLimitActualTranslationY;
 		void SetLowerLimitActualTranslationY(const Standard_Real theLowerLimitActualTranslationY);
 
@@ -5235,7 +5235,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualtranslationz.
+Sets field LowerLimitActualTranslationZ.
 ") SetLowerLimitActualTranslationZ;
 		void SetLowerLimitActualTranslationZ(const Standard_Real theLowerLimitActualTranslationZ);
 
@@ -5253,7 +5253,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualrotationx.
+Sets field UpperLimitActualRotationX.
 ") SetUpperLimitActualRotationX;
 		void SetUpperLimitActualRotationX(const Standard_Real theUpperLimitActualRotationX);
 
@@ -5271,7 +5271,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualrotationy.
+Sets field UpperLimitActualRotationY.
 ") SetUpperLimitActualRotationY;
 		void SetUpperLimitActualRotationY(const Standard_Real theUpperLimitActualRotationY);
 
@@ -5289,7 +5289,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualrotationz.
+Sets field UpperLimitActualRotationZ.
 ") SetUpperLimitActualRotationZ;
 		void SetUpperLimitActualRotationZ(const Standard_Real theUpperLimitActualRotationZ);
 
@@ -5307,7 +5307,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualtranslationx.
+Sets field UpperLimitActualTranslationX.
 ") SetUpperLimitActualTranslationX;
 		void SetUpperLimitActualTranslationX(const Standard_Real theUpperLimitActualTranslationX);
 
@@ -5325,7 +5325,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualtranslationy.
+Sets field UpperLimitActualTranslationY.
 ") SetUpperLimitActualTranslationY;
 		void SetUpperLimitActualTranslationY(const Standard_Real theUpperLimitActualTranslationY);
 
@@ -5343,7 +5343,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualtranslationz.
+Sets field UpperLimitActualTranslationZ.
 ") SetUpperLimitActualTranslationZ;
 		void SetUpperLimitActualTranslationZ(const Standard_Real theUpperLimitActualTranslationZ);
 
@@ -5356,7 +5356,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualrotationx.
+Returns field UpperLimitActualRotationX.
 ") UpperLimitActualRotationX;
 		Standard_Real UpperLimitActualRotationX();
 
@@ -5369,7 +5369,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualrotationy.
+Returns field UpperLimitActualRotationY.
 ") UpperLimitActualRotationY;
 		Standard_Real UpperLimitActualRotationY();
 
@@ -5382,7 +5382,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualrotationz.
+Returns field UpperLimitActualRotationZ.
 ") UpperLimitActualRotationZ;
 		Standard_Real UpperLimitActualRotationZ();
 
@@ -5395,7 +5395,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualtranslationx.
+Returns field UpperLimitActualTranslationX.
 ") UpperLimitActualTranslationX;
 		Standard_Real UpperLimitActualTranslationX();
 
@@ -5408,7 +5408,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualtranslationy.
+Returns field UpperLimitActualTranslationY.
 ") UpperLimitActualTranslationY;
 		Standard_Real UpperLimitActualTranslationY();
 
@@ -5421,7 +5421,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualtranslationz.
+Returns field UpperLimitActualTranslationZ.
 ") UpperLimitActualTranslationZ;
 		Standard_Real UpperLimitActualTranslationZ();
 
@@ -5450,7 +5450,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PlanarCurvePair;
 		 StepKinematics_PlanarCurvePair();
 
@@ -5463,7 +5463,7 @@ opencascade::handle<StepGeom_Curve>
 
 Description
 -----------
-Returns field curve1.
+Returns field Curve1.
 ") Curve1;
 		opencascade::handle<StepGeom_Curve> Curve1();
 
@@ -5476,7 +5476,7 @@ opencascade::handle<StepGeom_Curve>
 
 Description
 -----------
-Returns field curve2.
+Returns field Curve2.
 ") Curve2;
 		opencascade::handle<StepGeom_Curve> Curve2();
 
@@ -5516,7 +5516,7 @@ bool
 
 Description
 -----------
-Returns field orientation.
+Returns field Orientation.
 ") Orientation;
 		Standard_Boolean Orientation();
 
@@ -5534,7 +5534,7 @@ None
 
 Description
 -----------
-Sets field curve1.
+Sets field Curve1.
 ") SetCurve1;
 		void SetCurve1(const opencascade::handle<StepGeom_Curve> & theCurve1);
 
@@ -5552,7 +5552,7 @@ None
 
 Description
 -----------
-Sets field curve2.
+Sets field Curve2.
 ") SetCurve2;
 		void SetCurve2(const opencascade::handle<StepGeom_Curve> & theCurve2);
 
@@ -5570,7 +5570,7 @@ None
 
 Description
 -----------
-Sets field orientation.
+Sets field Orientation.
 ") SetOrientation;
 		void SetOrientation(const Standard_Boolean theOrientation);
 
@@ -5599,7 +5599,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PlanarPair;
 		 StepKinematics_PlanarPair();
 
@@ -5628,7 +5628,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PointOnPlanarCurvePair;
 		 StepKinematics_PointOnPlanarCurvePair();
 
@@ -5667,7 +5667,7 @@ bool
 
 Description
 -----------
-Returns field orientation.
+Returns field Orientation.
 ") Orientation;
 		Standard_Boolean Orientation();
 
@@ -5680,7 +5680,7 @@ opencascade::handle<StepGeom_Curve>
 
 Description
 -----------
-Returns field paircurve.
+Returns field PairCurve.
 ") PairCurve;
 		opencascade::handle<StepGeom_Curve> PairCurve();
 
@@ -5698,7 +5698,7 @@ None
 
 Description
 -----------
-Sets field orientation.
+Sets field Orientation.
 ") SetOrientation;
 		void SetOrientation(const Standard_Boolean theOrientation);
 
@@ -5716,7 +5716,7 @@ None
 
 Description
 -----------
-Sets field paircurve.
+Sets field PairCurve.
 ") SetPairCurve;
 		void SetPairCurve(const opencascade::handle<StepGeom_Curve> & thePairCurve);
 
@@ -5745,7 +5745,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PointOnSurfacePair;
 		 StepKinematics_PointOnSurfacePair();
 
@@ -5783,7 +5783,7 @@ opencascade::handle<StepGeom_Surface>
 
 Description
 -----------
-Returns field pairsurface.
+Returns field PairSurface.
 ") PairSurface;
 		opencascade::handle<StepGeom_Surface> PairSurface();
 
@@ -5801,7 +5801,7 @@ None
 
 Description
 -----------
-Sets field pairsurface.
+Sets field PairSurface.
 ") SetPairSurface;
 		void SetPairSurface(const opencascade::handle<StepGeom_Surface> & thePairSurface);
 
@@ -5830,7 +5830,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PrismaticPair;
 		 StepKinematics_PrismaticPair();
 
@@ -5859,7 +5859,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RackAndPinionPair;
 		 StepKinematics_RackAndPinionPair();
 
@@ -5897,7 +5897,7 @@ float
 
 Description
 -----------
-Returns field pinionradius.
+Returns field PinionRadius.
 ") PinionRadius;
 		Standard_Real PinionRadius();
 
@@ -5915,7 +5915,7 @@ None
 
 Description
 -----------
-Sets field pinionradius.
+Sets field PinionRadius.
 ") SetPinionRadius;
 		void SetPinionRadius(const Standard_Real thePinionRadius);
 
@@ -5944,7 +5944,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RevolutePair;
 		 StepKinematics_RevolutePair();
 
@@ -5973,7 +5973,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_ScrewPair;
 		 StepKinematics_ScrewPair();
 
@@ -6011,7 +6011,7 @@ float
 
 Description
 -----------
-Returns field pitch.
+Returns field Pitch.
 ") Pitch;
 		Standard_Real Pitch();
 
@@ -6029,7 +6029,7 @@ None
 
 Description
 -----------
-Sets field pitch.
+Sets field Pitch.
 ") SetPitch;
 		void SetPitch(const Standard_Real thePitch);
 
@@ -6058,7 +6058,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SphericalPair;
 		 StepKinematics_SphericalPair();
 
@@ -6087,7 +6087,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SphericalPairWithPin;
 		 StepKinematics_SphericalPairWithPin();
 
@@ -6116,7 +6116,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SurfacePair;
 		 StepKinematics_SurfacePair();
 
@@ -6156,7 +6156,7 @@ bool
 
 Description
 -----------
-Returns field orientation.
+Returns field Orientation.
 ") Orientation;
 		Standard_Boolean Orientation();
 
@@ -6174,7 +6174,7 @@ None
 
 Description
 -----------
-Sets field orientation.
+Sets field Orientation.
 ") SetOrientation;
 		void SetOrientation(const Standard_Boolean theOrientation);
 
@@ -6192,7 +6192,7 @@ None
 
 Description
 -----------
-Sets field surface1.
+Sets field Surface1.
 ") SetSurface1;
 		void SetSurface1(const opencascade::handle<StepGeom_Surface> & theSurface1);
 
@@ -6210,7 +6210,7 @@ None
 
 Description
 -----------
-Sets field surface2.
+Sets field Surface2.
 ") SetSurface2;
 		void SetSurface2(const opencascade::handle<StepGeom_Surface> & theSurface2);
 
@@ -6223,7 +6223,7 @@ opencascade::handle<StepGeom_Surface>
 
 Description
 -----------
-Returns field surface1.
+Returns field Surface1.
 ") Surface1;
 		opencascade::handle<StepGeom_Surface> Surface1();
 
@@ -6236,7 +6236,7 @@ opencascade::handle<StepGeom_Surface>
 
 Description
 -----------
-Returns field surface2.
+Returns field Surface2.
 ") Surface2;
 		opencascade::handle<StepGeom_Surface> Surface2();
 
@@ -6265,7 +6265,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_UnconstrainedPair;
 		 StepKinematics_UnconstrainedPair();
 
@@ -6294,7 +6294,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_UniversalPair;
 		 StepKinematics_UniversalPair();
 
@@ -6307,7 +6307,7 @@ bool
 
 Description
 -----------
-Returns true if optional field inputskewangle is defined.
+Returns True if optional field InputSkewAngle is defined.
 ") HasInputSkewAngle;
 		Standard_Boolean HasInputSkewAngle();
 
@@ -6352,7 +6352,7 @@ float
 
 Description
 -----------
-Returns field inputskewangle.
+Returns field InputSkewAngle.
 ") InputSkewAngle;
 		Standard_Real InputSkewAngle();
 
@@ -6370,7 +6370,7 @@ None
 
 Description
 -----------
-Sets field inputskewangle.
+Sets field InputSkewAngle.
 ") SetInputSkewAngle;
 		void SetInputSkewAngle(const Standard_Real theInputSkewAngle);
 
@@ -6399,7 +6399,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_CylindricalPairWithRange;
 		 StepKinematics_CylindricalPairWithRange();
 
@@ -6412,7 +6412,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualrotation is defined.
+Returns True if optional field LowerLimitActualRotation is defined.
 ") HasLowerLimitActualRotation;
 		Standard_Boolean HasLowerLimitActualRotation();
 
@@ -6425,7 +6425,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualtranslation is defined.
+Returns True if optional field LowerLimitActualTranslation is defined.
 ") HasLowerLimitActualTranslation;
 		Standard_Boolean HasLowerLimitActualTranslation();
 
@@ -6438,7 +6438,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualrotation is defined.
+Returns True if optional field UpperLimitActualRotation is defined.
 ") HasUpperLimitActualRotation;
 		Standard_Boolean HasUpperLimitActualRotation();
 
@@ -6451,7 +6451,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualtranslation is defined.
+Returns True if optional field UpperLimitActualTranslation is defined.
 ") HasUpperLimitActualTranslation;
 		Standard_Boolean HasUpperLimitActualTranslation();
 
@@ -6502,7 +6502,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualrotation.
+Returns field LowerLimitActualRotation.
 ") LowerLimitActualRotation;
 		Standard_Real LowerLimitActualRotation();
 
@@ -6515,7 +6515,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualtranslation.
+Returns field LowerLimitActualTranslation.
 ") LowerLimitActualTranslation;
 		Standard_Real LowerLimitActualTranslation();
 
@@ -6533,7 +6533,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualrotation.
+Sets field LowerLimitActualRotation.
 ") SetLowerLimitActualRotation;
 		void SetLowerLimitActualRotation(const Standard_Real theLowerLimitActualRotation);
 
@@ -6551,7 +6551,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualtranslation.
+Sets field LowerLimitActualTranslation.
 ") SetLowerLimitActualTranslation;
 		void SetLowerLimitActualTranslation(const Standard_Real theLowerLimitActualTranslation);
 
@@ -6569,7 +6569,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualrotation.
+Sets field UpperLimitActualRotation.
 ") SetUpperLimitActualRotation;
 		void SetUpperLimitActualRotation(const Standard_Real theUpperLimitActualRotation);
 
@@ -6587,7 +6587,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualtranslation.
+Sets field UpperLimitActualTranslation.
 ") SetUpperLimitActualTranslation;
 		void SetUpperLimitActualTranslation(const Standard_Real theUpperLimitActualTranslation);
 
@@ -6600,7 +6600,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualrotation.
+Returns field UpperLimitActualRotation.
 ") UpperLimitActualRotation;
 		Standard_Real UpperLimitActualRotation();
 
@@ -6613,7 +6613,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualtranslation.
+Returns field UpperLimitActualTranslation.
 ") UpperLimitActualTranslation;
 		Standard_Real UpperLimitActualTranslation();
 
@@ -6642,7 +6642,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_GearPairWithRange;
 		 StepKinematics_GearPairWithRange();
 
@@ -6655,7 +6655,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualrotation1 is defined.
+Returns True if optional field LowerLimitActualRotation1 is defined.
 ") HasLowerLimitActualRotation1;
 		Standard_Boolean HasLowerLimitActualRotation1();
 
@@ -6668,7 +6668,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualrotation1 is defined.
+Returns True if optional field UpperLimitActualRotation1 is defined.
 ") HasUpperLimitActualRotation1;
 		Standard_Boolean HasUpperLimitActualRotation1();
 
@@ -6714,7 +6714,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualrotation1.
+Returns field LowerLimitActualRotation1.
 ") LowerLimitActualRotation1;
 		Standard_Real LowerLimitActualRotation1();
 
@@ -6732,7 +6732,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualrotation1.
+Sets field LowerLimitActualRotation1.
 ") SetLowerLimitActualRotation1;
 		void SetLowerLimitActualRotation1(const Standard_Real theLowerLimitActualRotation1);
 
@@ -6750,7 +6750,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualrotation1.
+Sets field UpperLimitActualRotation1.
 ") SetUpperLimitActualRotation1;
 		void SetUpperLimitActualRotation1(const Standard_Real theUpperLimitActualRotation1);
 
@@ -6763,7 +6763,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualrotation1.
+Returns field UpperLimitActualRotation1.
 ") UpperLimitActualRotation1;
 		Standard_Real UpperLimitActualRotation1();
 
@@ -6792,7 +6792,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_HomokineticPair;
 		 StepKinematics_HomokineticPair();
 
@@ -6821,7 +6821,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PlanarCurvePairRange;
 		 StepKinematics_PlanarCurvePairRange();
 
@@ -6863,7 +6863,7 @@ opencascade::handle<StepGeom_TrimmedCurve>
 
 Description
 -----------
-Returns field rangeoncurve1.
+Returns field RangeOnCurve1.
 ") RangeOnCurve1;
 		opencascade::handle<StepGeom_TrimmedCurve> RangeOnCurve1();
 
@@ -6876,7 +6876,7 @@ opencascade::handle<StepGeom_TrimmedCurve>
 
 Description
 -----------
-Returns field rangeoncurve2.
+Returns field RangeOnCurve2.
 ") RangeOnCurve2;
 		opencascade::handle<StepGeom_TrimmedCurve> RangeOnCurve2();
 
@@ -6894,7 +6894,7 @@ None
 
 Description
 -----------
-Sets field rangeoncurve1.
+Sets field RangeOnCurve1.
 ") SetRangeOnCurve1;
 		void SetRangeOnCurve1(const opencascade::handle<StepGeom_TrimmedCurve> & theRangeOnCurve1);
 
@@ -6912,7 +6912,7 @@ None
 
 Description
 -----------
-Sets field rangeoncurve2.
+Sets field RangeOnCurve2.
 ") SetRangeOnCurve2;
 		void SetRangeOnCurve2(const opencascade::handle<StepGeom_TrimmedCurve> & theRangeOnCurve2);
 
@@ -6941,7 +6941,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PlanarPairWithRange;
 		 StepKinematics_PlanarPairWithRange();
 
@@ -6954,7 +6954,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualrotation is defined.
+Returns True if optional field LowerLimitActualRotation is defined.
 ") HasLowerLimitActualRotation;
 		Standard_Boolean HasLowerLimitActualRotation();
 
@@ -6967,7 +6967,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualtranslationx is defined.
+Returns True if optional field LowerLimitActualTranslationX is defined.
 ") HasLowerLimitActualTranslationX;
 		Standard_Boolean HasLowerLimitActualTranslationX();
 
@@ -6980,7 +6980,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualtranslationy is defined.
+Returns True if optional field LowerLimitActualTranslationY is defined.
 ") HasLowerLimitActualTranslationY;
 		Standard_Boolean HasLowerLimitActualTranslationY();
 
@@ -6993,7 +6993,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualrotation is defined.
+Returns True if optional field UpperLimitActualRotation is defined.
 ") HasUpperLimitActualRotation;
 		Standard_Boolean HasUpperLimitActualRotation();
 
@@ -7006,7 +7006,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualtranslationx is defined.
+Returns True if optional field UpperLimitActualTranslationX is defined.
 ") HasUpperLimitActualTranslationX;
 		Standard_Boolean HasUpperLimitActualTranslationX();
 
@@ -7019,7 +7019,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualtranslationy is defined.
+Returns True if optional field UpperLimitActualTranslationY is defined.
 ") HasUpperLimitActualTranslationY;
 		Standard_Boolean HasUpperLimitActualTranslationY();
 
@@ -7074,7 +7074,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualrotation.
+Returns field LowerLimitActualRotation.
 ") LowerLimitActualRotation;
 		Standard_Real LowerLimitActualRotation();
 
@@ -7087,7 +7087,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualtranslationx.
+Returns field LowerLimitActualTranslationX.
 ") LowerLimitActualTranslationX;
 		Standard_Real LowerLimitActualTranslationX();
 
@@ -7100,7 +7100,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualtranslationy.
+Returns field LowerLimitActualTranslationY.
 ") LowerLimitActualTranslationY;
 		Standard_Real LowerLimitActualTranslationY();
 
@@ -7118,7 +7118,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualrotation.
+Sets field LowerLimitActualRotation.
 ") SetLowerLimitActualRotation;
 		void SetLowerLimitActualRotation(const Standard_Real theLowerLimitActualRotation);
 
@@ -7136,7 +7136,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualtranslationx.
+Sets field LowerLimitActualTranslationX.
 ") SetLowerLimitActualTranslationX;
 		void SetLowerLimitActualTranslationX(const Standard_Real theLowerLimitActualTranslationX);
 
@@ -7154,7 +7154,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualtranslationy.
+Sets field LowerLimitActualTranslationY.
 ") SetLowerLimitActualTranslationY;
 		void SetLowerLimitActualTranslationY(const Standard_Real theLowerLimitActualTranslationY);
 
@@ -7172,7 +7172,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualrotation.
+Sets field UpperLimitActualRotation.
 ") SetUpperLimitActualRotation;
 		void SetUpperLimitActualRotation(const Standard_Real theUpperLimitActualRotation);
 
@@ -7190,7 +7190,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualtranslationx.
+Sets field UpperLimitActualTranslationX.
 ") SetUpperLimitActualTranslationX;
 		void SetUpperLimitActualTranslationX(const Standard_Real theUpperLimitActualTranslationX);
 
@@ -7208,7 +7208,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualtranslationy.
+Sets field UpperLimitActualTranslationY.
 ") SetUpperLimitActualTranslationY;
 		void SetUpperLimitActualTranslationY(const Standard_Real theUpperLimitActualTranslationY);
 
@@ -7221,7 +7221,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualrotation.
+Returns field UpperLimitActualRotation.
 ") UpperLimitActualRotation;
 		Standard_Real UpperLimitActualRotation();
 
@@ -7234,7 +7234,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualtranslationx.
+Returns field UpperLimitActualTranslationX.
 ") UpperLimitActualTranslationX;
 		Standard_Real UpperLimitActualTranslationX();
 
@@ -7247,7 +7247,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualtranslationy.
+Returns field UpperLimitActualTranslationY.
 ") UpperLimitActualTranslationY;
 		Standard_Real UpperLimitActualTranslationY();
 
@@ -7276,7 +7276,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PointOnPlanarCurvePairWithRange;
 		 StepKinematics_PointOnPlanarCurvePairWithRange();
 
@@ -7289,7 +7289,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitpitch is defined.
+Returns True if optional field LowerLimitPitch is defined.
 ") HasLowerLimitPitch;
 		Standard_Boolean HasLowerLimitPitch();
 
@@ -7302,7 +7302,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitroll is defined.
+Returns True if optional field LowerLimitRoll is defined.
 ") HasLowerLimitRoll;
 		Standard_Boolean HasLowerLimitRoll();
 
@@ -7315,7 +7315,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimityaw is defined.
+Returns True if optional field LowerLimitYaw is defined.
 ") HasLowerLimitYaw;
 		Standard_Boolean HasLowerLimitYaw();
 
@@ -7328,7 +7328,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitpitch is defined.
+Returns True if optional field UpperLimitPitch is defined.
 ") HasUpperLimitPitch;
 		Standard_Boolean HasUpperLimitPitch();
 
@@ -7341,7 +7341,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitroll is defined.
+Returns True if optional field UpperLimitRoll is defined.
 ") HasUpperLimitRoll;
 		Standard_Boolean HasUpperLimitRoll();
 
@@ -7354,7 +7354,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimityaw is defined.
+Returns True if optional field UpperLimitYaw is defined.
 ") HasUpperLimitYaw;
 		Standard_Boolean HasUpperLimitYaw();
 
@@ -7406,7 +7406,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitpitch.
+Returns field LowerLimitPitch.
 ") LowerLimitPitch;
 		Standard_Real LowerLimitPitch();
 
@@ -7419,7 +7419,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitroll.
+Returns field LowerLimitRoll.
 ") LowerLimitRoll;
 		Standard_Real LowerLimitRoll();
 
@@ -7432,7 +7432,7 @@ float
 
 Description
 -----------
-Returns field lowerlimityaw.
+Returns field LowerLimitYaw.
 ") LowerLimitYaw;
 		Standard_Real LowerLimitYaw();
 
@@ -7445,7 +7445,7 @@ opencascade::handle<StepGeom_TrimmedCurve>
 
 Description
 -----------
-Returns field rangeonpaircurve.
+Returns field RangeOnPairCurve.
 ") RangeOnPairCurve;
 		opencascade::handle<StepGeom_TrimmedCurve> RangeOnPairCurve();
 
@@ -7463,7 +7463,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitpitch.
+Sets field LowerLimitPitch.
 ") SetLowerLimitPitch;
 		void SetLowerLimitPitch(const Standard_Real theLowerLimitPitch);
 
@@ -7481,7 +7481,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitroll.
+Sets field LowerLimitRoll.
 ") SetLowerLimitRoll;
 		void SetLowerLimitRoll(const Standard_Real theLowerLimitRoll);
 
@@ -7499,7 +7499,7 @@ None
 
 Description
 -----------
-Sets field lowerlimityaw.
+Sets field LowerLimitYaw.
 ") SetLowerLimitYaw;
 		void SetLowerLimitYaw(const Standard_Real theLowerLimitYaw);
 
@@ -7517,7 +7517,7 @@ None
 
 Description
 -----------
-Sets field rangeonpaircurve.
+Sets field RangeOnPairCurve.
 ") SetRangeOnPairCurve;
 		void SetRangeOnPairCurve(const opencascade::handle<StepGeom_TrimmedCurve> & theRangeOnPairCurve);
 
@@ -7535,7 +7535,7 @@ None
 
 Description
 -----------
-Sets field upperlimitpitch.
+Sets field UpperLimitPitch.
 ") SetUpperLimitPitch;
 		void SetUpperLimitPitch(const Standard_Real theUpperLimitPitch);
 
@@ -7553,7 +7553,7 @@ None
 
 Description
 -----------
-Sets field upperlimitroll.
+Sets field UpperLimitRoll.
 ") SetUpperLimitRoll;
 		void SetUpperLimitRoll(const Standard_Real theUpperLimitRoll);
 
@@ -7571,7 +7571,7 @@ None
 
 Description
 -----------
-Sets field upperlimityaw.
+Sets field UpperLimitYaw.
 ") SetUpperLimitYaw;
 		void SetUpperLimitYaw(const Standard_Real theUpperLimitYaw);
 
@@ -7584,7 +7584,7 @@ float
 
 Description
 -----------
-Returns field upperlimitpitch.
+Returns field UpperLimitPitch.
 ") UpperLimitPitch;
 		Standard_Real UpperLimitPitch();
 
@@ -7597,7 +7597,7 @@ float
 
 Description
 -----------
-Returns field upperlimitroll.
+Returns field UpperLimitRoll.
 ") UpperLimitRoll;
 		Standard_Real UpperLimitRoll();
 
@@ -7610,7 +7610,7 @@ float
 
 Description
 -----------
-Returns field upperlimityaw.
+Returns field UpperLimitYaw.
 ") UpperLimitYaw;
 		Standard_Real UpperLimitYaw();
 
@@ -7639,7 +7639,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PointOnSurfacePairWithRange;
 		 StepKinematics_PointOnSurfacePairWithRange();
 
@@ -7652,7 +7652,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitpitch is defined.
+Returns True if optional field LowerLimitPitch is defined.
 ") HasLowerLimitPitch;
 		Standard_Boolean HasLowerLimitPitch();
 
@@ -7665,7 +7665,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitroll is defined.
+Returns True if optional field LowerLimitRoll is defined.
 ") HasLowerLimitRoll;
 		Standard_Boolean HasLowerLimitRoll();
 
@@ -7678,7 +7678,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimityaw is defined.
+Returns True if optional field LowerLimitYaw is defined.
 ") HasLowerLimitYaw;
 		Standard_Boolean HasLowerLimitYaw();
 
@@ -7691,7 +7691,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitpitch is defined.
+Returns True if optional field UpperLimitPitch is defined.
 ") HasUpperLimitPitch;
 		Standard_Boolean HasUpperLimitPitch();
 
@@ -7704,7 +7704,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitroll is defined.
+Returns True if optional field UpperLimitRoll is defined.
 ") HasUpperLimitRoll;
 		Standard_Boolean HasUpperLimitRoll();
 
@@ -7717,7 +7717,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimityaw is defined.
+Returns True if optional field UpperLimitYaw is defined.
 ") HasUpperLimitYaw;
 		Standard_Boolean HasUpperLimitYaw();
 
@@ -7768,7 +7768,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitpitch.
+Returns field LowerLimitPitch.
 ") LowerLimitPitch;
 		Standard_Real LowerLimitPitch();
 
@@ -7781,7 +7781,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitroll.
+Returns field LowerLimitRoll.
 ") LowerLimitRoll;
 		Standard_Real LowerLimitRoll();
 
@@ -7794,7 +7794,7 @@ float
 
 Description
 -----------
-Returns field lowerlimityaw.
+Returns field LowerLimitYaw.
 ") LowerLimitYaw;
 		Standard_Real LowerLimitYaw();
 
@@ -7807,7 +7807,7 @@ opencascade::handle<StepGeom_RectangularTrimmedSurface>
 
 Description
 -----------
-Returns field rangeonpairsurface.
+Returns field RangeOnPairSurface.
 ") RangeOnPairSurface;
 		opencascade::handle<StepGeom_RectangularTrimmedSurface> RangeOnPairSurface();
 
@@ -7825,7 +7825,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitpitch.
+Sets field LowerLimitPitch.
 ") SetLowerLimitPitch;
 		void SetLowerLimitPitch(const Standard_Real theLowerLimitPitch);
 
@@ -7843,7 +7843,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitroll.
+Sets field LowerLimitRoll.
 ") SetLowerLimitRoll;
 		void SetLowerLimitRoll(const Standard_Real theLowerLimitRoll);
 
@@ -7861,7 +7861,7 @@ None
 
 Description
 -----------
-Sets field lowerlimityaw.
+Sets field LowerLimitYaw.
 ") SetLowerLimitYaw;
 		void SetLowerLimitYaw(const Standard_Real theLowerLimitYaw);
 
@@ -7879,7 +7879,7 @@ None
 
 Description
 -----------
-Sets field rangeonpairsurface.
+Sets field RangeOnPairSurface.
 ") SetRangeOnPairSurface;
 		void SetRangeOnPairSurface(const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnPairSurface);
 
@@ -7897,7 +7897,7 @@ None
 
 Description
 -----------
-Sets field upperlimitpitch.
+Sets field UpperLimitPitch.
 ") SetUpperLimitPitch;
 		void SetUpperLimitPitch(const Standard_Real theUpperLimitPitch);
 
@@ -7915,7 +7915,7 @@ None
 
 Description
 -----------
-Sets field upperlimitroll.
+Sets field UpperLimitRoll.
 ") SetUpperLimitRoll;
 		void SetUpperLimitRoll(const Standard_Real theUpperLimitRoll);
 
@@ -7933,7 +7933,7 @@ None
 
 Description
 -----------
-Sets field upperlimityaw.
+Sets field UpperLimitYaw.
 ") SetUpperLimitYaw;
 		void SetUpperLimitYaw(const Standard_Real theUpperLimitYaw);
 
@@ -7946,7 +7946,7 @@ float
 
 Description
 -----------
-Returns field upperlimitpitch.
+Returns field UpperLimitPitch.
 ") UpperLimitPitch;
 		Standard_Real UpperLimitPitch();
 
@@ -7959,7 +7959,7 @@ float
 
 Description
 -----------
-Returns field upperlimitroll.
+Returns field UpperLimitRoll.
 ") UpperLimitRoll;
 		Standard_Real UpperLimitRoll();
 
@@ -7972,7 +7972,7 @@ float
 
 Description
 -----------
-Returns field upperlimityaw.
+Returns field UpperLimitYaw.
 ") UpperLimitYaw;
 		Standard_Real UpperLimitYaw();
 
@@ -8001,7 +8001,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_PrismaticPairWithRange;
 		 StepKinematics_PrismaticPairWithRange();
 
@@ -8014,7 +8014,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualtranslation is defined.
+Returns True if optional field LowerLimitActualTranslation is defined.
 ") HasLowerLimitActualTranslation;
 		Standard_Boolean HasLowerLimitActualTranslation();
 
@@ -8027,7 +8027,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualtranslation is defined.
+Returns True if optional field UpperLimitActualTranslation is defined.
 ") HasUpperLimitActualTranslation;
 		Standard_Boolean HasUpperLimitActualTranslation();
 
@@ -8074,7 +8074,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualtranslation.
+Returns field LowerLimitActualTranslation.
 ") LowerLimitActualTranslation;
 		Standard_Real LowerLimitActualTranslation();
 
@@ -8092,7 +8092,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualtranslation.
+Sets field LowerLimitActualTranslation.
 ") SetLowerLimitActualTranslation;
 		void SetLowerLimitActualTranslation(const Standard_Real theLowerLimitActualTranslation);
 
@@ -8110,7 +8110,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualtranslation.
+Sets field UpperLimitActualTranslation.
 ") SetUpperLimitActualTranslation;
 		void SetUpperLimitActualTranslation(const Standard_Real theUpperLimitActualTranslation);
 
@@ -8123,7 +8123,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualtranslation.
+Returns field UpperLimitActualTranslation.
 ") UpperLimitActualTranslation;
 		Standard_Real UpperLimitActualTranslation();
 
@@ -8152,7 +8152,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RackAndPinionPairWithRange;
 		 StepKinematics_RackAndPinionPairWithRange();
 
@@ -8165,7 +8165,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitrackdisplacement is defined.
+Returns True if optional field LowerLimitRackDisplacement is defined.
 ") HasLowerLimitRackDisplacement;
 		Standard_Boolean HasLowerLimitRackDisplacement();
 
@@ -8178,7 +8178,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitrackdisplacement is defined.
+Returns True if optional field UpperLimitRackDisplacement is defined.
 ") HasUpperLimitRackDisplacement;
 		Standard_Boolean HasUpperLimitRackDisplacement();
 
@@ -8220,7 +8220,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitrackdisplacement.
+Returns field LowerLimitRackDisplacement.
 ") LowerLimitRackDisplacement;
 		Standard_Real LowerLimitRackDisplacement();
 
@@ -8238,7 +8238,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitrackdisplacement.
+Sets field LowerLimitRackDisplacement.
 ") SetLowerLimitRackDisplacement;
 		void SetLowerLimitRackDisplacement(const Standard_Real theLowerLimitRackDisplacement);
 
@@ -8256,7 +8256,7 @@ None
 
 Description
 -----------
-Sets field upperlimitrackdisplacement.
+Sets field UpperLimitRackDisplacement.
 ") SetUpperLimitRackDisplacement;
 		void SetUpperLimitRackDisplacement(const Standard_Real theUpperLimitRackDisplacement);
 
@@ -8269,7 +8269,7 @@ float
 
 Description
 -----------
-Returns field upperlimitrackdisplacement.
+Returns field UpperLimitRackDisplacement.
 ") UpperLimitRackDisplacement;
 		Standard_Real UpperLimitRackDisplacement();
 
@@ -8298,7 +8298,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RevolutePairWithRange;
 		 StepKinematics_RevolutePairWithRange();
 
@@ -8311,7 +8311,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualrotation is defined.
+Returns True if optional field LowerLimitActualRotation is defined.
 ") HasLowerLimitActualRotation;
 		Standard_Boolean HasLowerLimitActualRotation();
 
@@ -8324,7 +8324,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualrotation is defined.
+Returns True if optional field UpperLimitActualRotation is defined.
 ") HasUpperLimitActualRotation;
 		Standard_Boolean HasUpperLimitActualRotation();
 
@@ -8371,7 +8371,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualrotation.
+Returns field LowerLimitActualRotation.
 ") LowerLimitActualRotation;
 		Standard_Real LowerLimitActualRotation();
 
@@ -8389,7 +8389,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualrotation.
+Sets field LowerLimitActualRotation.
 ") SetLowerLimitActualRotation;
 		void SetLowerLimitActualRotation(const Standard_Real theLowerLimitActualRotation);
 
@@ -8407,7 +8407,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualrotation.
+Sets field UpperLimitActualRotation.
 ") SetUpperLimitActualRotation;
 		void SetUpperLimitActualRotation(const Standard_Real theUpperLimitActualRotation);
 
@@ -8420,7 +8420,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualrotation.
+Returns field UpperLimitActualRotation.
 ") UpperLimitActualRotation;
 		Standard_Real UpperLimitActualRotation();
 
@@ -8449,7 +8449,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RollingCurvePair;
 		 StepKinematics_RollingCurvePair();
 
@@ -8478,7 +8478,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_RollingSurfacePair;
 		 StepKinematics_RollingSurfacePair();
 
@@ -8507,7 +8507,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_ScrewPairWithRange;
 		 StepKinematics_ScrewPairWithRange();
 
@@ -8520,7 +8520,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualrotation is defined.
+Returns True if optional field LowerLimitActualRotation is defined.
 ") HasLowerLimitActualRotation;
 		Standard_Boolean HasLowerLimitActualRotation();
 
@@ -8533,7 +8533,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualrotation is defined.
+Returns True if optional field UpperLimitActualRotation is defined.
 ") HasUpperLimitActualRotation;
 		Standard_Boolean HasUpperLimitActualRotation();
 
@@ -8575,7 +8575,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualrotation.
+Returns field LowerLimitActualRotation.
 ") LowerLimitActualRotation;
 		Standard_Real LowerLimitActualRotation();
 
@@ -8593,7 +8593,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualrotation.
+Sets field LowerLimitActualRotation.
 ") SetLowerLimitActualRotation;
 		void SetLowerLimitActualRotation(const Standard_Real theLowerLimitActualRotation);
 
@@ -8611,7 +8611,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualrotation.
+Sets field UpperLimitActualRotation.
 ") SetUpperLimitActualRotation;
 		void SetUpperLimitActualRotation(const Standard_Real theUpperLimitActualRotation);
 
@@ -8624,7 +8624,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualrotation.
+Returns field UpperLimitActualRotation.
 ") UpperLimitActualRotation;
 		Standard_Real UpperLimitActualRotation();
 
@@ -8653,7 +8653,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SlidingCurvePair;
 		 StepKinematics_SlidingCurvePair();
 
@@ -8682,7 +8682,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SlidingSurfacePair;
 		 StepKinematics_SlidingSurfacePair();
 
@@ -8711,7 +8711,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SphericalPairWithPinAndRange;
 		 StepKinematics_SphericalPairWithPinAndRange();
 
@@ -8724,7 +8724,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitroll is defined.
+Returns True if optional field LowerLimitRoll is defined.
 ") HasLowerLimitRoll;
 		Standard_Boolean HasLowerLimitRoll();
 
@@ -8737,7 +8737,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimityaw is defined.
+Returns True if optional field LowerLimitYaw is defined.
 ") HasLowerLimitYaw;
 		Standard_Boolean HasLowerLimitYaw();
 
@@ -8750,7 +8750,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitroll is defined.
+Returns True if optional field UpperLimitRoll is defined.
 ") HasUpperLimitRoll;
 		Standard_Boolean HasUpperLimitRoll();
 
@@ -8763,7 +8763,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimityaw is defined.
+Returns True if optional field UpperLimitYaw is defined.
 ") HasUpperLimitYaw;
 		Standard_Boolean HasUpperLimitYaw();
 
@@ -8814,7 +8814,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitroll.
+Returns field LowerLimitRoll.
 ") LowerLimitRoll;
 		Standard_Real LowerLimitRoll();
 
@@ -8827,7 +8827,7 @@ float
 
 Description
 -----------
-Returns field lowerlimityaw.
+Returns field LowerLimitYaw.
 ") LowerLimitYaw;
 		Standard_Real LowerLimitYaw();
 
@@ -8845,7 +8845,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitroll.
+Sets field LowerLimitRoll.
 ") SetLowerLimitRoll;
 		void SetLowerLimitRoll(const Standard_Real theLowerLimitRoll);
 
@@ -8863,7 +8863,7 @@ None
 
 Description
 -----------
-Sets field lowerlimityaw.
+Sets field LowerLimitYaw.
 ") SetLowerLimitYaw;
 		void SetLowerLimitYaw(const Standard_Real theLowerLimitYaw);
 
@@ -8881,7 +8881,7 @@ None
 
 Description
 -----------
-Sets field upperlimitroll.
+Sets field UpperLimitRoll.
 ") SetUpperLimitRoll;
 		void SetUpperLimitRoll(const Standard_Real theUpperLimitRoll);
 
@@ -8899,7 +8899,7 @@ None
 
 Description
 -----------
-Sets field upperlimityaw.
+Sets field UpperLimitYaw.
 ") SetUpperLimitYaw;
 		void SetUpperLimitYaw(const Standard_Real theUpperLimitYaw);
 
@@ -8912,7 +8912,7 @@ float
 
 Description
 -----------
-Returns field upperlimitroll.
+Returns field UpperLimitRoll.
 ") UpperLimitRoll;
 		Standard_Real UpperLimitRoll();
 
@@ -8925,7 +8925,7 @@ float
 
 Description
 -----------
-Returns field upperlimityaw.
+Returns field UpperLimitYaw.
 ") UpperLimitYaw;
 		Standard_Real UpperLimitYaw();
 
@@ -8954,7 +8954,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SphericalPairWithRange;
 		 StepKinematics_SphericalPairWithRange();
 
@@ -8967,7 +8967,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitpitch is defined.
+Returns True if optional field LowerLimitPitch is defined.
 ") HasLowerLimitPitch;
 		Standard_Boolean HasLowerLimitPitch();
 
@@ -8980,7 +8980,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitroll is defined.
+Returns True if optional field LowerLimitRoll is defined.
 ") HasLowerLimitRoll;
 		Standard_Boolean HasLowerLimitRoll();
 
@@ -8993,7 +8993,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimityaw is defined.
+Returns True if optional field LowerLimitYaw is defined.
 ") HasLowerLimitYaw;
 		Standard_Boolean HasLowerLimitYaw();
 
@@ -9006,7 +9006,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitpitch is defined.
+Returns True if optional field UpperLimitPitch is defined.
 ") HasUpperLimitPitch;
 		Standard_Boolean HasUpperLimitPitch();
 
@@ -9019,7 +9019,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitroll is defined.
+Returns True if optional field UpperLimitRoll is defined.
 ") HasUpperLimitRoll;
 		Standard_Boolean HasUpperLimitRoll();
 
@@ -9032,7 +9032,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimityaw is defined.
+Returns True if optional field UpperLimitYaw is defined.
 ") HasUpperLimitYaw;
 		Standard_Boolean HasUpperLimitYaw();
 
@@ -9087,7 +9087,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitpitch.
+Returns field LowerLimitPitch.
 ") LowerLimitPitch;
 		Standard_Real LowerLimitPitch();
 
@@ -9100,7 +9100,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitroll.
+Returns field LowerLimitRoll.
 ") LowerLimitRoll;
 		Standard_Real LowerLimitRoll();
 
@@ -9113,7 +9113,7 @@ float
 
 Description
 -----------
-Returns field lowerlimityaw.
+Returns field LowerLimitYaw.
 ") LowerLimitYaw;
 		Standard_Real LowerLimitYaw();
 
@@ -9131,7 +9131,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitpitch.
+Sets field LowerLimitPitch.
 ") SetLowerLimitPitch;
 		void SetLowerLimitPitch(const Standard_Real theLowerLimitPitch);
 
@@ -9149,7 +9149,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitroll.
+Sets field LowerLimitRoll.
 ") SetLowerLimitRoll;
 		void SetLowerLimitRoll(const Standard_Real theLowerLimitRoll);
 
@@ -9167,7 +9167,7 @@ None
 
 Description
 -----------
-Sets field lowerlimityaw.
+Sets field LowerLimitYaw.
 ") SetLowerLimitYaw;
 		void SetLowerLimitYaw(const Standard_Real theLowerLimitYaw);
 
@@ -9185,7 +9185,7 @@ None
 
 Description
 -----------
-Sets field upperlimitpitch.
+Sets field UpperLimitPitch.
 ") SetUpperLimitPitch;
 		void SetUpperLimitPitch(const Standard_Real theUpperLimitPitch);
 
@@ -9203,7 +9203,7 @@ None
 
 Description
 -----------
-Sets field upperlimitroll.
+Sets field UpperLimitRoll.
 ") SetUpperLimitRoll;
 		void SetUpperLimitRoll(const Standard_Real theUpperLimitRoll);
 
@@ -9221,7 +9221,7 @@ None
 
 Description
 -----------
-Sets field upperlimityaw.
+Sets field UpperLimitYaw.
 ") SetUpperLimitYaw;
 		void SetUpperLimitYaw(const Standard_Real theUpperLimitYaw);
 
@@ -9234,7 +9234,7 @@ float
 
 Description
 -----------
-Returns field upperlimitpitch.
+Returns field UpperLimitPitch.
 ") UpperLimitPitch;
 		Standard_Real UpperLimitPitch();
 
@@ -9247,7 +9247,7 @@ float
 
 Description
 -----------
-Returns field upperlimitroll.
+Returns field UpperLimitRoll.
 ") UpperLimitRoll;
 		Standard_Real UpperLimitRoll();
 
@@ -9260,7 +9260,7 @@ float
 
 Description
 -----------
-Returns field upperlimityaw.
+Returns field UpperLimitYaw.
 ") UpperLimitYaw;
 		Standard_Real UpperLimitYaw();
 
@@ -9289,7 +9289,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_SurfacePairWithRange;
 		 StepKinematics_SurfacePairWithRange();
 
@@ -9302,7 +9302,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitactualrotation is defined.
+Returns True if optional field LowerLimitActualRotation is defined.
 ") HasLowerLimitActualRotation;
 		Standard_Boolean HasLowerLimitActualRotation();
 
@@ -9315,7 +9315,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitactualrotation is defined.
+Returns True if optional field UpperLimitActualRotation is defined.
 ") HasUpperLimitActualRotation;
 		Standard_Boolean HasUpperLimitActualRotation();
 
@@ -9361,7 +9361,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitactualrotation.
+Returns field LowerLimitActualRotation.
 ") LowerLimitActualRotation;
 		Standard_Real LowerLimitActualRotation();
 
@@ -9374,7 +9374,7 @@ opencascade::handle<StepGeom_RectangularTrimmedSurface>
 
 Description
 -----------
-Returns field rangeonsurface1.
+Returns field RangeOnSurface1.
 ") RangeOnSurface1;
 		opencascade::handle<StepGeom_RectangularTrimmedSurface> RangeOnSurface1();
 
@@ -9387,7 +9387,7 @@ opencascade::handle<StepGeom_RectangularTrimmedSurface>
 
 Description
 -----------
-Returns field rangeonsurface2.
+Returns field RangeOnSurface2.
 ") RangeOnSurface2;
 		opencascade::handle<StepGeom_RectangularTrimmedSurface> RangeOnSurface2();
 
@@ -9405,7 +9405,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitactualrotation.
+Sets field LowerLimitActualRotation.
 ") SetLowerLimitActualRotation;
 		void SetLowerLimitActualRotation(const Standard_Real theLowerLimitActualRotation);
 
@@ -9423,7 +9423,7 @@ None
 
 Description
 -----------
-Sets field rangeonsurface1.
+Sets field RangeOnSurface1.
 ") SetRangeOnSurface1;
 		void SetRangeOnSurface1(const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnSurface1);
 
@@ -9441,7 +9441,7 @@ None
 
 Description
 -----------
-Sets field rangeonsurface2.
+Sets field RangeOnSurface2.
 ") SetRangeOnSurface2;
 		void SetRangeOnSurface2(const opencascade::handle<StepGeom_RectangularTrimmedSurface> & theRangeOnSurface2);
 
@@ -9459,7 +9459,7 @@ None
 
 Description
 -----------
-Sets field upperlimitactualrotation.
+Sets field UpperLimitActualRotation.
 ") SetUpperLimitActualRotation;
 		void SetUpperLimitActualRotation(const Standard_Real theUpperLimitActualRotation);
 
@@ -9472,7 +9472,7 @@ float
 
 Description
 -----------
-Returns field upperlimitactualrotation.
+Returns field UpperLimitActualRotation.
 ") UpperLimitActualRotation;
 		Standard_Real UpperLimitActualRotation();
 
@@ -9501,7 +9501,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepKinematics_UniversalPairWithRange;
 		 StepKinematics_UniversalPairWithRange();
 
@@ -9514,7 +9514,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitfirstrotation is defined.
+Returns True if optional field LowerLimitFirstRotation is defined.
 ") HasLowerLimitFirstRotation;
 		Standard_Boolean HasLowerLimitFirstRotation();
 
@@ -9527,7 +9527,7 @@ bool
 
 Description
 -----------
-Returns true if optional field lowerlimitsecondrotation is defined.
+Returns True if optional field LowerLimitSecondRotation is defined.
 ") HasLowerLimitSecondRotation;
 		Standard_Boolean HasLowerLimitSecondRotation();
 
@@ -9540,7 +9540,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitfirstrotation is defined.
+Returns True if optional field UpperLimitFirstRotation is defined.
 ") HasUpperLimitFirstRotation;
 		Standard_Boolean HasUpperLimitFirstRotation();
 
@@ -9553,7 +9553,7 @@ bool
 
 Description
 -----------
-Returns true if optional field upperlimitsecondrotation is defined.
+Returns True if optional field UpperLimitSecondRotation is defined.
 ") HasUpperLimitSecondRotation;
 		Standard_Boolean HasUpperLimitSecondRotation();
 
@@ -9606,7 +9606,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitfirstrotation.
+Returns field LowerLimitFirstRotation.
 ") LowerLimitFirstRotation;
 		Standard_Real LowerLimitFirstRotation();
 
@@ -9619,7 +9619,7 @@ float
 
 Description
 -----------
-Returns field lowerlimitsecondrotation.
+Returns field LowerLimitSecondRotation.
 ") LowerLimitSecondRotation;
 		Standard_Real LowerLimitSecondRotation();
 
@@ -9637,7 +9637,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitfirstrotation.
+Sets field LowerLimitFirstRotation.
 ") SetLowerLimitFirstRotation;
 		void SetLowerLimitFirstRotation(const Standard_Real theLowerLimitFirstRotation);
 
@@ -9655,7 +9655,7 @@ None
 
 Description
 -----------
-Sets field lowerlimitsecondrotation.
+Sets field LowerLimitSecondRotation.
 ") SetLowerLimitSecondRotation;
 		void SetLowerLimitSecondRotation(const Standard_Real theLowerLimitSecondRotation);
 
@@ -9673,7 +9673,7 @@ None
 
 Description
 -----------
-Sets field upperlimitfirstrotation.
+Sets field UpperLimitFirstRotation.
 ") SetUpperLimitFirstRotation;
 		void SetUpperLimitFirstRotation(const Standard_Real theUpperLimitFirstRotation);
 
@@ -9691,7 +9691,7 @@ None
 
 Description
 -----------
-Sets field upperlimitsecondrotation.
+Sets field UpperLimitSecondRotation.
 ") SetUpperLimitSecondRotation;
 		void SetUpperLimitSecondRotation(const Standard_Real theUpperLimitSecondRotation);
 
@@ -9704,7 +9704,7 @@ float
 
 Description
 -----------
-Returns field upperlimitfirstrotation.
+Returns field UpperLimitFirstRotation.
 ") UpperLimitFirstRotation;
 		Standard_Real UpperLimitFirstRotation();
 
@@ -9717,7 +9717,7 @@ float
 
 Description
 -----------
-Returns field upperlimitsecondrotation.
+Returns field UpperLimitSecondRotation.
 ") UpperLimitSecondRotation;
 		Standard_Real UpperLimitSecondRotation();
 

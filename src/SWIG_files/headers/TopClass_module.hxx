@@ -19,6 +19,5 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #define TOPCLASS_HXX
 
 
-#include<TopClass_SolidExplorer.hxx>
 
 #endif // TOPCLASS_HXX

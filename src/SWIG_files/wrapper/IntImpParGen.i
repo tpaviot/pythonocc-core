@@ -127,7 +127,7 @@ None
 
 Description
 -----------
-Template class for an implicit curve. math function, instantiated inside the intersector. tool used by the package intcurve and intimppargen.
+Template class for an implicit curve. Math function, instantiated inside the Intersector. Tool used by the package IntCurve and IntImpParGen.
 ") DetermineTransition;
 		static void DetermineTransition(const IntRes2d_Position Pos1, gp_Vec2d & Tan1, const gp_Vec2d & Norm1, IntRes2d_Transition & Trans1, const IntRes2d_Position Pos2, gp_Vec2d & Tan2, const gp_Vec2d & Norm2, IntRes2d_Transition & Trans2, const Standard_Real Tol);
 

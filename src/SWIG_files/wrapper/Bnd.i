@@ -210,7 +210,7 @@ gp_XY
 
 Description
 -----------
-Query a box corner: (center + hsize). you must make sure that the box is not void (see isvoid()), otherwise the method returns irrelevant result.
+Query a box corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
 ") CornerMax;
 		gp_XY CornerMax();
 
@@ -223,7 +223,7 @@ gp_XY
 
 Description
 -----------
-Query a box corner: (center - hsize). you must make sure that the box is not void (see isvoid()), otherwise the method returns irrelevant result.
+Query a box corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
 ") CornerMin;
 		gp_XY CornerMin();
 
@@ -241,7 +241,7 @@ None
 
 Description
 -----------
-Extend the box by the absolute value of thediff.
+Extend the Box by the absolute value of theDiff.
 ") Enlarge;
 		void Enlarge(const Standard_Real theDiff);
 
@@ -259,7 +259,7 @@ bool
 
 Description
 -----------
-Check that the box 'this' is inside the given box 'thebox'. returns true if 'this' box is fully inside 'thebox'.
+Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'.
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B2d & theBox);
 
@@ -278,7 +278,7 @@ bool
 
 Description
 -----------
-Check that the box 'this' is inside the given box 'thebox' transformed by 'thetrsf'. returns true if 'this' box is fully inside the transformed 'thebox'.
+Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'.
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B2d & theBox, const gp_Trsf2d & theTrsf);
 
@@ -296,7 +296,7 @@ bool
 
 Description
 -----------
-Check the given point for the inclusion in the box. returns true if the point is outside.
+Check the given point for the inclusion in the Box. Returns True if the point is outside.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & thePnt);
 
@@ -316,7 +316,7 @@ bool
 
 Description
 -----------
-Check a circle for the intersection with the current box. returns true if there is no intersection between boxes.
+Check a circle for the intersection with the current box. Returns True if there is no intersection between boxes.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & theCenter, const Standard_Real theRadius, const Standard_Boolean isCircleHollow = Standard_False);
 
@@ -334,7 +334,7 @@ bool
 
 Description
 -----------
-Check the given box for the intersection with the current box. returns true if there is no intersection between boxes.
+Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B2d & theOtherBox);
 
@@ -353,7 +353,7 @@ bool
 
 Description
 -----------
-Check the given box oriented by the given transformation for the intersection with the current box. returns true if there is no intersection between boxes.
+Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B2d & theOtherBox, const gp_Trsf2d & theTrsf);
 
@@ -371,7 +371,7 @@ bool
 
 Description
 -----------
-Check the given line for the intersection with the current box. returns true if there is no intersection.
+Check the given Line for the intersection with the current box. Returns True if there is no intersection.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax2d & theLine);
 
@@ -390,7 +390,7 @@ bool
 
 Description
 -----------
-Check the segment defined by the couple of input points for the intersection with the current box. returns true if there is no intersection.
+Check the Segment defined by the couple of input points for the intersection with the current box. Returns True if there is no intersection.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & theP0, const gp_XY & theP1);
 
@@ -403,7 +403,7 @@ bool
 
 Description
 -----------
-Returns true if the box is void (non-initialized).
+Returns True if the box is void (non-initialized).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
@@ -421,7 +421,7 @@ bool
 
 Description
 -----------
-Limit the box by the internals of theotherbox. returns true if the limitation takes place, otherwise false indicating that the boxes do not intersect.
+Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect.
 ") Limit;
 		Standard_Boolean Limit(const Bnd_B2d & theOtherBox);
 
@@ -439,7 +439,7 @@ None
 
 Description
 -----------
-Set the center coordinates.
+Set the Center coordinates.
 ") SetCenter;
 		void SetCenter(const gp_XY & theCenter);
 
@@ -457,7 +457,7 @@ None
 
 Description
 -----------
-Set the hsize (half-diagonal) coordinates. all components of thehsize must be non-negative.
+Set the HSize (half-diagonal) coordinates. All components of theHSize must be non-negative.
 ") SetHSize;
 		void SetHSize(const gp_XY & theHSize);
 
@@ -470,7 +470,7 @@ float
 
 Description
 -----------
-Query the square diagonal. if the box is void (see method isvoid()) then a very big real value is returned.
+Query the square diagonal. If the box is VOID (see method IsVoid()) then a very big real value is returned.
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
@@ -488,7 +488,7 @@ Bnd_B2d
 
 Description
 -----------
-Transform the bounding box with the given transformation. the resulting box will be larger if thetrsf contains rotation.
+Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
 ") Transformed;
 		Bnd_B2d Transformed(const gp_Trsf2d & theTrsf);
 
@@ -614,7 +614,7 @@ gp_XY
 
 Description
 -----------
-Query a box corner: (center + hsize). you must make sure that the box is not void (see isvoid()), otherwise the method returns irrelevant result.
+Query a box corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
 ") CornerMax;
 		gp_XY CornerMax();
 
@@ -627,7 +627,7 @@ gp_XY
 
 Description
 -----------
-Query a box corner: (center - hsize). you must make sure that the box is not void (see isvoid()), otherwise the method returns irrelevant result.
+Query a box corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
 ") CornerMin;
 		gp_XY CornerMin();
 
@@ -645,7 +645,7 @@ None
 
 Description
 -----------
-Extend the box by the absolute value of thediff.
+Extend the Box by the absolute value of theDiff.
 ") Enlarge;
 		void Enlarge(const Standard_Real theDiff);
 
@@ -663,7 +663,7 @@ bool
 
 Description
 -----------
-Check that the box 'this' is inside the given box 'thebox'. returns true if 'this' box is fully inside 'thebox'.
+Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'.
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B2f & theBox);
 
@@ -682,7 +682,7 @@ bool
 
 Description
 -----------
-Check that the box 'this' is inside the given box 'thebox' transformed by 'thetrsf'. returns true if 'this' box is fully inside the transformed 'thebox'.
+Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'.
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B2f & theBox, const gp_Trsf2d & theTrsf);
 
@@ -700,7 +700,7 @@ bool
 
 Description
 -----------
-Check the given point for the inclusion in the box. returns true if the point is outside.
+Check the given point for the inclusion in the Box. Returns True if the point is outside.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & thePnt);
 
@@ -720,7 +720,7 @@ bool
 
 Description
 -----------
-Check a circle for the intersection with the current box. returns true if there is no intersection between boxes.
+Check a circle for the intersection with the current box. Returns True if there is no intersection between boxes.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & theCenter, const Standard_Real theRadius, const Standard_Boolean isCircleHollow = Standard_False);
 
@@ -738,7 +738,7 @@ bool
 
 Description
 -----------
-Check the given box for the intersection with the current box. returns true if there is no intersection between boxes.
+Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B2f & theOtherBox);
 
@@ -757,7 +757,7 @@ bool
 
 Description
 -----------
-Check the given box oriented by the given transformation for the intersection with the current box. returns true if there is no intersection between boxes.
+Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B2f & theOtherBox, const gp_Trsf2d & theTrsf);
 
@@ -775,7 +775,7 @@ bool
 
 Description
 -----------
-Check the given line for the intersection with the current box. returns true if there is no intersection.
+Check the given Line for the intersection with the current box. Returns True if there is no intersection.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax2d & theLine);
 
@@ -794,7 +794,7 @@ bool
 
 Description
 -----------
-Check the segment defined by the couple of input points for the intersection with the current box. returns true if there is no intersection.
+Check the Segment defined by the couple of input points for the intersection with the current box. Returns True if there is no intersection.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XY & theP0, const gp_XY & theP1);
 
@@ -807,7 +807,7 @@ bool
 
 Description
 -----------
-Returns true if the box is void (non-initialized).
+Returns True if the box is void (non-initialized).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
@@ -825,7 +825,7 @@ bool
 
 Description
 -----------
-Limit the box by the internals of theotherbox. returns true if the limitation takes place, otherwise false indicating that the boxes do not intersect.
+Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect.
 ") Limit;
 		Standard_Boolean Limit(const Bnd_B2f & theOtherBox);
 
@@ -843,7 +843,7 @@ None
 
 Description
 -----------
-Set the center coordinates.
+Set the Center coordinates.
 ") SetCenter;
 		void SetCenter(const gp_XY & theCenter);
 
@@ -861,7 +861,7 @@ None
 
 Description
 -----------
-Set the hsize (half-diagonal) coordinates. all components of thehsize must be non-negative.
+Set the HSize (half-diagonal) coordinates. All components of theHSize must be non-negative.
 ") SetHSize;
 		void SetHSize(const gp_XY & theHSize);
 
@@ -874,7 +874,7 @@ float
 
 Description
 -----------
-Query the square diagonal. if the box is void (see method isvoid()) then a very big real value is returned.
+Query the square diagonal. If the box is VOID (see method IsVoid()) then a very big real value is returned.
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
@@ -892,7 +892,7 @@ Bnd_B2f
 
 Description
 -----------
-Transform the bounding box with the given transformation. the resulting box will be larger if thetrsf contains rotation.
+Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
 ") Transformed;
 		Bnd_B2f Transformed(const gp_Trsf2d & theTrsf);
 
@@ -1018,7 +1018,7 @@ gp_XYZ
 
 Description
 -----------
-Query the upper corner: (center + hsize). you must make sure that the box is not void (see isvoid()), otherwise the method returns irrelevant result.
+Query the upper corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
 ") CornerMax;
 		gp_XYZ CornerMax();
 
@@ -1031,7 +1031,7 @@ gp_XYZ
 
 Description
 -----------
-Query the lower corner: (center - hsize). you must make sure that the box is not void (see isvoid()), otherwise the method returns irrelevant result.
+Query the lower corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
 ") CornerMin;
 		gp_XYZ CornerMin();
 
@@ -1049,7 +1049,7 @@ None
 
 Description
 -----------
-Extend the box by the absolute value of thediff.
+Extend the Box by the absolute value of theDiff.
 ") Enlarge;
 		void Enlarge(const Standard_Real theDiff);
 
@@ -1067,7 +1067,7 @@ bool
 
 Description
 -----------
-Check that the box 'this' is inside the given box 'thebox'. returns true if 'this' box is fully inside 'thebox'.
+Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'.
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B3d & theBox);
 
@@ -1086,7 +1086,7 @@ bool
 
 Description
 -----------
-Check that the box 'this' is inside the given box 'thebox' transformed by 'thetrsf'. returns true if 'this' box is fully inside the transformed 'thebox'.
+Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'.
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B3d & theBox, const gp_Trsf & theTrsf);
 
@@ -1104,7 +1104,7 @@ bool
 
 Description
 -----------
-Check the given point for the inclusion in the box. returns true if the point is outside.
+Check the given point for the inclusion in the Box. Returns True if the point is outside.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XYZ & thePnt);
 
@@ -1124,7 +1124,7 @@ bool
 
 Description
 -----------
-Check a sphere for the intersection with the current box. returns true if there is no intersection between boxes. if the parameter 'isspherehollow' is true, then the intersection is not reported for a box that is completely inside the sphere (otherwise this method would report an intersection).
+Check a sphere for the intersection with the current box. Returns True if there is no intersection between boxes. If the parameter 'IsSphereHollow' is True, then the intersection is not reported for a box that is completely inside the sphere (otherwise this method would report an intersection).
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XYZ & theCenter, const Standard_Real theRadius, const Standard_Boolean isSphereHollow = Standard_False);
 
@@ -1142,7 +1142,7 @@ bool
 
 Description
 -----------
-Check the given box for the intersection with the current box. returns true if there is no intersection between boxes.
+Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B3d & theOtherBox);
 
@@ -1161,7 +1161,7 @@ bool
 
 Description
 -----------
-Check the given box oriented by the given transformation for the intersection with the current box. returns true if there is no intersection between boxes.
+Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B3d & theOtherBox, const gp_Trsf & theTrsf);
 
@@ -1181,7 +1181,7 @@ bool
 
 Description
 -----------
-Check the given line for the intersection with the current box. returns true if there is no intersection. isray==true means intersection check with the positive half-line theoverthickness is the addition to the size of the current box (may be negative). if positive, it can be treated as the thickness of the line 'theline' or the radius of the cylinder along 'theline'.
+Check the given Line for the intersection with the current box. Returns True if there is no intersection. isRay==True means intersection check with the positive half-line theOverthickness is the addition to the size of the current box (may be negative). If positive, it can be treated as the thickness of the line 'theLine' or the radius of the cylinder along 'theLine'.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax1 & theLine, const Standard_Boolean isRay = Standard_False, const Standard_Real theOverthickness = 0.0);
 
@@ -1199,7 +1199,7 @@ bool
 
 Description
 -----------
-Check the given plane for the intersection with the current box. returns true if there is no intersection.
+Check the given Plane for the intersection with the current box. Returns True if there is no intersection.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax3 & thePlane);
 
@@ -1212,7 +1212,7 @@ bool
 
 Description
 -----------
-Returns true if the box is void (non-initialized).
+Returns True if the box is void (non-initialized).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
@@ -1230,7 +1230,7 @@ bool
 
 Description
 -----------
-Limit the box by the internals of theotherbox. returns true if the limitation takes place, otherwise false indicating that the boxes do not intersect.
+Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect.
 ") Limit;
 		Standard_Boolean Limit(const Bnd_B3d & theOtherBox);
 
@@ -1248,7 +1248,7 @@ None
 
 Description
 -----------
-Set the center coordinates.
+Set the Center coordinates.
 ") SetCenter;
 		void SetCenter(const gp_XYZ & theCenter);
 
@@ -1266,7 +1266,7 @@ None
 
 Description
 -----------
-Set the hsize (half-diagonal) coordinates. all components of thehsize must be non-negative.
+Set the HSize (half-diagonal) coordinates. All components of theHSize must be non-negative.
 ") SetHSize;
 		void SetHSize(const gp_XYZ & theHSize);
 
@@ -1279,7 +1279,7 @@ float
 
 Description
 -----------
-Query the square diagonal. if the box is void (see method isvoid()) then a very big real value is returned.
+Query the square diagonal. If the box is VOID (see method IsVoid()) then a very big real value is returned.
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
@@ -1297,7 +1297,7 @@ Bnd_B3d
 
 Description
 -----------
-Transform the bounding box with the given transformation. the resulting box will be larger if thetrsf contains rotation.
+Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
 ") Transformed;
 		Bnd_B3d Transformed(const gp_Trsf & theTrsf);
 
@@ -1423,7 +1423,7 @@ gp_XYZ
 
 Description
 -----------
-Query the upper corner: (center + hsize). you must make sure that the box is not void (see isvoid()), otherwise the method returns irrelevant result.
+Query the upper corner: (Center + HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
 ") CornerMax;
 		gp_XYZ CornerMax();
 
@@ -1436,7 +1436,7 @@ gp_XYZ
 
 Description
 -----------
-Query the lower corner: (center - hsize). you must make sure that the box is not void (see isvoid()), otherwise the method returns irrelevant result.
+Query the lower corner: (Center - HSize). You must make sure that the box is NOT VOID (see IsVoid()), otherwise the method returns irrelevant result.
 ") CornerMin;
 		gp_XYZ CornerMin();
 
@@ -1454,7 +1454,7 @@ None
 
 Description
 -----------
-Extend the box by the absolute value of thediff.
+Extend the Box by the absolute value of theDiff.
 ") Enlarge;
 		void Enlarge(const Standard_Real theDiff);
 
@@ -1472,7 +1472,7 @@ bool
 
 Description
 -----------
-Check that the box 'this' is inside the given box 'thebox'. returns true if 'this' box is fully inside 'thebox'.
+Check that the box 'this' is inside the given box 'theBox'. Returns True if 'this' box is fully inside 'theBox'.
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B3f & theBox);
 
@@ -1491,7 +1491,7 @@ bool
 
 Description
 -----------
-Check that the box 'this' is inside the given box 'thebox' transformed by 'thetrsf'. returns true if 'this' box is fully inside the transformed 'thebox'.
+Check that the box 'this' is inside the given box 'theBox' transformed by 'theTrsf'. Returns True if 'this' box is fully inside the transformed 'theBox'.
 ") IsIn;
 		Standard_Boolean IsIn(const Bnd_B3f & theBox, const gp_Trsf & theTrsf);
 
@@ -1509,7 +1509,7 @@ bool
 
 Description
 -----------
-Check the given point for the inclusion in the box. returns true if the point is outside.
+Check the given point for the inclusion in the Box. Returns True if the point is outside.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XYZ & thePnt);
 
@@ -1529,7 +1529,7 @@ bool
 
 Description
 -----------
-Check a sphere for the intersection with the current box. returns true if there is no intersection between boxes. if the parameter 'isspherehollow' is true, then the intersection is not reported for a box that is completely inside the sphere (otherwise this method would report an intersection).
+Check a sphere for the intersection with the current box. Returns True if there is no intersection between boxes. If the parameter 'IsSphereHollow' is True, then the intersection is not reported for a box that is completely inside the sphere (otherwise this method would report an intersection).
 ") IsOut;
 		Standard_Boolean IsOut(const gp_XYZ & theCenter, const Standard_Real theRadius, const Standard_Boolean isSphereHollow = Standard_False);
 
@@ -1547,7 +1547,7 @@ bool
 
 Description
 -----------
-Check the given box for the intersection with the current box. returns true if there is no intersection between boxes.
+Check the given box for the intersection with the current box. Returns True if there is no intersection between boxes.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B3f & theOtherBox);
 
@@ -1566,7 +1566,7 @@ bool
 
 Description
 -----------
-Check the given box oriented by the given transformation for the intersection with the current box. returns true if there is no intersection between boxes.
+Check the given box oriented by the given transformation for the intersection with the current box. Returns True if there is no intersection between boxes.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_B3f & theOtherBox, const gp_Trsf & theTrsf);
 
@@ -1586,7 +1586,7 @@ bool
 
 Description
 -----------
-Check the given line for the intersection with the current box. returns true if there is no intersection. isray==true means intersection check with the positive half-line theoverthickness is the addition to the size of the current box (may be negative). if positive, it can be treated as the thickness of the line 'theline' or the radius of the cylinder along 'theline'.
+Check the given Line for the intersection with the current box. Returns True if there is no intersection. isRay==True means intersection check with the positive half-line theOverthickness is the addition to the size of the current box (may be negative). If positive, it can be treated as the thickness of the line 'theLine' or the radius of the cylinder along 'theLine'.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax1 & theLine, const Standard_Boolean isRay = Standard_False, const Standard_Real theOverthickness = 0.0);
 
@@ -1604,7 +1604,7 @@ bool
 
 Description
 -----------
-Check the given plane for the intersection with the current box. returns true if there is no intersection.
+Check the given Plane for the intersection with the current box. Returns True if there is no intersection.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Ax3 & thePlane);
 
@@ -1617,7 +1617,7 @@ bool
 
 Description
 -----------
-Returns true if the box is void (non-initialized).
+Returns True if the box is void (non-initialized).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
@@ -1635,7 +1635,7 @@ bool
 
 Description
 -----------
-Limit the box by the internals of theotherbox. returns true if the limitation takes place, otherwise false indicating that the boxes do not intersect.
+Limit the Box by the internals of theOtherBox. Returns True if the limitation takes place, otherwise False indicating that the boxes do not intersect.
 ") Limit;
 		Standard_Boolean Limit(const Bnd_B3f & theOtherBox);
 
@@ -1653,7 +1653,7 @@ None
 
 Description
 -----------
-Set the center coordinates.
+Set the Center coordinates.
 ") SetCenter;
 		void SetCenter(const gp_XYZ & theCenter);
 
@@ -1671,7 +1671,7 @@ None
 
 Description
 -----------
-Set the hsize (half-diagonal) coordinates. all components of thehsize must be non-negative.
+Set the HSize (half-diagonal) coordinates. All components of theHSize must be non-negative.
 ") SetHSize;
 		void SetHSize(const gp_XYZ & theHSize);
 
@@ -1684,7 +1684,7 @@ float
 
 Description
 -----------
-Query the square diagonal. if the box is void (see method isvoid()) then a very big real value is returned.
+Query the square diagonal. If the box is VOID (see method IsVoid()) then a very big real value is returned.
 ") SquareExtent;
 		Standard_Real SquareExtent();
 
@@ -1702,7 +1702,7 @@ Bnd_B3f
 
 Description
 -----------
-Transform the bounding box with the given transformation. the resulting box will be larger if thetrsf contains rotation.
+Transform the bounding box with the given transformation. The resulting box will be larger if theTrsf contains rotation.
 ") Transformed;
 		Bnd_B3f Transformed(const gp_Trsf & theTrsf);
 
@@ -1729,7 +1729,7 @@ None
 
 Description
 -----------
-Constructs an empty comparison algorithm for bounding boxes. the bounding boxes are then defined using the initialize function.
+Constructs an empty comparison algorithm for bounding boxes. The bounding boxes are then defined using the Initialize function.
 ") Bnd_BoundSortBox;
 		 Bnd_BoundSortBox();
 
@@ -1748,7 +1748,7 @@ None
 
 Description
 -----------
-Adds the bounding box thebox at position boxindex in the array of boxes to be sorted by this comparison algorithm. this function is used only in conjunction with the third syntax described in the synopsis of initialize. //! exceptions: //! - standard_outofrange if boxindex is not in the range [ 1,nbcomponents ] where nbcomponents is the maximum number of bounding boxes declared for this comparison algorithm at initialization. //! - standard_multiplydefined if a box already exists at position boxindex in the array of boxes to be sorted by this comparison algorithm.
+Adds the bounding box theBox at position boxIndex in the array of boxes to be sorted by this comparison algorithm. This function is used only in conjunction with the third syntax described in the synopsis of Initialize. //! Exceptions: //! - Standard_OutOfRange if boxIndex is not in the range [ 1,nbComponents ] where nbComponents is the maximum number of bounding boxes declared for this comparison algorithm at initialization. //! - Standard_MultiplyDefined if a box already exists at position boxIndex in the array of boxes to be sorted by this comparison algorithm.
 ") Add;
 		void Add(const Bnd_Box & theBox, const Standard_Integer boxIndex);
 
@@ -1766,7 +1766,7 @@ TColStd_ListOfInteger
 
 Description
 -----------
-Compares the bounding box thebox, with the set of bounding boxes to be sorted by this comparison algorithm, and returns the list of intersecting bounding boxes as a list of indexes on the array of bounding boxes used by this algorithm.
+Compares the bounding box theBox, with the set of bounding boxes to be sorted by this comparison algorithm, and returns the list of intersecting bounding boxes as a list of indexes on the array of bounding boxes used by this algorithm.
 ") Compare;
 		const TColStd_ListOfInteger & Compare(const Bnd_Box & theBox);
 
@@ -1784,7 +1784,7 @@ TColStd_ListOfInteger
 
 Description
 -----------
-Compares the plane p with the set of bounding boxes to be sorted by this comparison algorithm, and returns the list of intersecting bounding boxes as a list of indexes on the array of bounding boxes used by this algorithm.
+Compares the plane P with the set of bounding boxes to be sorted by this comparison algorithm, and returns the list of intersecting bounding boxes as a list of indexes on the array of bounding boxes used by this algorithm.
 ") Compare;
 		const TColStd_ListOfInteger & Compare(const gp_Pln & P);
 
@@ -1829,7 +1829,7 @@ None
 
 Description
 -----------
-Initializes this comparison algorithm with - the set of bounding boxes setofbox.
+Initializes this comparison algorithm with - the set of bounding boxes SetOfBox.
 ") Initialize;
 		void Initialize(const Bnd_Box & CompleteBox, const opencascade::handle<Bnd_HArray1OfBox> & SetOfBox);
 
@@ -1847,7 +1847,7 @@ None
 
 Description
 -----------
-Initializes this comparison algorithm with - the set of bounding boxes setofbox, where completebox is given as the global bounding box of setofbox.
+Initializes this comparison algorithm with - the set of bounding boxes SetOfBox, where CompleteBox is given as the global bounding box of SetOfBox.
 ") Initialize;
 		void Initialize(const opencascade::handle<Bnd_HArray1OfBox> & SetOfBox);
 
@@ -1866,7 +1866,7 @@ None
 
 Description
 -----------
-Initializes this comparison algorithm, giving it only - the maximum number nbcomponents of the bounding boxes to be managed. use the add function to define the array of bounding boxes to be sorted by this algorithm.
+Initializes this comparison algorithm, giving it only - the maximum number nbComponents of the bounding boxes to be managed. Use the Add function to define the array of bounding boxes to be sorted by this algorithm.
 ") Initialize;
 		void Initialize(const Bnd_Box & CompleteBox, const Standard_Integer nbComponents);
 
@@ -1893,7 +1893,7 @@ None
 
 Description
 -----------
-Creates an empty box. the constructed box is qualified void. its gap is null.
+Creates an empty Box. The constructed box is qualified Void. Its gap is null.
 ") Bnd_Box;
 		 Bnd_Box();
 
@@ -1912,7 +1912,7 @@ None
 
 Description
 -----------
-Creates a bounding box, it contains: - minimum/maximum point of bounding box, the constructed box is qualified void. its gap is null.
+Creates a bounding box, it contains: - minimum/maximum point of bounding box, The constructed box is qualified Void. Its gap is null.
 ") Bnd_Box;
 		 Bnd_Box(const gp_Pnt & theMin, const gp_Pnt & theMax);
 
@@ -1930,7 +1930,7 @@ None
 
 Description
 -----------
-Adds the box <other> to <self>.
+Adds the box <Other> to <self>.
 ") Add;
 		void Add(const Bnd_Box & Other);
 
@@ -1948,7 +1948,7 @@ None
 
 Description
 -----------
-Adds a pnt to the box.
+Adds a Pnt to the box.
 ") Add;
 		void Add(const gp_Pnt & P);
 
@@ -1967,7 +1967,7 @@ None
 
 Description
 -----------
-Extends <self> from the pnt <p> in the direction <d>.
+Extends <self> from the Pnt <P> in the direction <D>.
 ") Add;
 		void Add(const gp_Pnt & P, const gp_Dir & D);
 
@@ -1985,7 +1985,7 @@ None
 
 Description
 -----------
-Extends the box in the given direction, i.e. adds an half-line. the box may become infinite in 1,2 or 3 directions.
+Extends the Box in the given Direction, i.e. adds an half-line. The box may become infinite in 1,2 or 3 directions.
 ") Add;
 		void Add(const gp_Dir & D);
 
@@ -1998,7 +1998,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the upper corner of this bounding box. the gap is included. if this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- precision::infinite(). standard_constructionerror exception will be thrown if the box is void. if isvoid().
+Returns the upper corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid().
 ") CornerMax;
 		gp_Pnt CornerMax();
 
@@ -2011,7 +2011,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the lower corner of this bounding box. the gap is included. if this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- precision::infinite(). standard_constructionerror exception will be thrown if the box is void. if isvoid().
+Returns the lower corner of this bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid().
 ") CornerMin;
 		gp_Pnt CornerMin();
 
@@ -2081,7 +2081,7 @@ None
 
 Description
 -----------
-Enlarges the box with a tolerance value. (minvalues-abs(<tol>) and maxvalues+abs(<tol>)) this means that the minimum values of its x, y and z intervals of definition, when they are finite, are reduced by the absolute value of tol, while the maximum values are increased by the same amount.
+Enlarges the box with a tolerance value. (minvalues-Abs(<tol>) and maxvalues+Abs(<tol>)) This means that the minimum values of its X, Y and Z intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
 ") Enlarge;
 		void Enlarge(const Standard_Real Tol);
 
@@ -2094,7 +2094,7 @@ Bnd_Box
 
 Description
 -----------
-Returns a finite part of an infinite bounding box (returns self if this is already finite box). this can be a void box in case if its sides has been defined as infinite (open) without adding any finite points. warning! this method relies on open flags, the infinite points added using add() method will be returned as is.
+Returns a finite part of an infinite bounding box (returns self if this is already finite box). This can be a Void box in case if its sides has been defined as infinite (Open) without adding any finite points. WARNING! This method relies on Open flags, the infinite points added using Add() method will be returned as is.
 ") FinitePart;
 		Bnd_Box FinitePart();
 
@@ -2116,7 +2116,7 @@ theZmax: float
 
 Description
 -----------
-Returns the bounds of this bounding box. the gap is included. if this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- precision::infinite(). standard_constructionerror exception will be thrown if the box is void. if isvoid().
+Returns the bounds of this bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). Standard_ConstructionError exception will be thrown if the box is void. if IsVoid().
 ") Get;
 		void Get(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2142,7 +2142,7 @@ bool
 
 Description
 -----------
-Returns true if this box has finite part.
+Returns True if this box has finite part.
 ") HasFinitePart;
 		Standard_Boolean HasFinitePart();
 
@@ -2189,7 +2189,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is open in the xmax direction.
+Returns true if this bounding box is open in the Xmax direction.
 ") IsOpenXmax;
 		Standard_Boolean IsOpenXmax();
 
@@ -2202,7 +2202,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is open in the xmin direction.
+Returns true if this bounding box is open in the Xmin direction.
 ") IsOpenXmin;
 		Standard_Boolean IsOpenXmin();
 
@@ -2215,7 +2215,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is open in the ymax direction.
+Returns true if this bounding box is open in the Ymax direction.
 ") IsOpenYmax;
 		Standard_Boolean IsOpenYmax();
 
@@ -2228,7 +2228,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is open in the ymix direction.
+Returns true if this bounding box is open in the Ymix direction.
 ") IsOpenYmin;
 		Standard_Boolean IsOpenYmin();
 
@@ -2241,7 +2241,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is open in the zmax direction.
+Returns true if this bounding box is open in the Zmax direction.
 ") IsOpenZmax;
 		Standard_Boolean IsOpenZmax();
 
@@ -2254,7 +2254,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is open in the zmin direction.
+Returns true if this bounding box is open in the Zmin direction.
 ") IsOpenZmin;
 		Standard_Boolean IsOpenZmin();
 
@@ -2272,7 +2272,7 @@ bool
 
 Description
 -----------
-Returns true if the pnt is out the box.
+Returns True if the Pnt is out the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pnt & P);
 
@@ -2290,7 +2290,7 @@ bool
 
 Description
 -----------
-Returns false if the line intersects the box.
+Returns False if the line intersects the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Lin & L);
 
@@ -2308,7 +2308,7 @@ bool
 
 Description
 -----------
-Returns false if the plane intersects the box.
+Returns False if the plane intersects the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pln & P);
 
@@ -2326,7 +2326,7 @@ bool
 
 Description
 -----------
-Returns false if the <box> intersects or is inside <self>.
+Returns False if the <Box> intersects or is inside <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Box & Other);
 
@@ -2345,7 +2345,7 @@ bool
 
 Description
 -----------
-Returns false if the transformed <box> intersects or is inside <self>.
+Returns False if the transformed <Box> intersects or is inside <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Box & Other, const gp_Trsf & T);
 
@@ -2365,7 +2365,7 @@ bool
 
 Description
 -----------
-Returns false if the transformed <box> intersects or is inside the transformed box <self>.
+Returns False if the transformed <Box> intersects or is inside the transformed box <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Trsf & T1, const Bnd_Box & Other, const gp_Trsf & T2);
 
@@ -2385,7 +2385,7 @@ bool
 
 Description
 -----------
-Returns false if the flat band lying between two parallel lines represented by their reference points <p1>, <p2> and direction <d> intersects the box.
+Returns False if the flat band lying between two parallel lines represented by their reference points <P1>, <P2> and direction <D> intersects the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pnt & P1, const gp_Pnt & P2, const gp_Dir & D);
 
@@ -2403,7 +2403,7 @@ bool
 
 Description
 -----------
-Returns true if isxthin, isythin and iszthin are all true, i.e. if the box is thin in all three dimensions.
+Returns true if IsXThin, IsYThin and IsZThin are all true, i.e. if the box is thin in all three dimensions.
 ") IsThin;
 		Standard_Boolean IsThin(const Standard_Real tol);
 
@@ -2416,7 +2416,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is empty (void flag).
+Returns true if this bounding box is empty (Void flag).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
@@ -2429,7 +2429,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is infinite in all 6 directions (wholespace flag).
+Returns true if this bounding box is infinite in all 6 directions (WholeSpace flag).
 ") IsWhole;
 		Standard_Boolean IsWhole();
 
@@ -2447,7 +2447,7 @@ bool
 
 Description
 -----------
-True if xmax-xmin < tol.
+true if xmax-xmin < tol.
 ") IsXThin;
 		Standard_Boolean IsXThin(const Standard_Real tol);
 
@@ -2465,7 +2465,7 @@ bool
 
 Description
 -----------
-True if ymax-ymin < tol.
+true if ymax-ymin < tol.
 ") IsYThin;
 		Standard_Boolean IsYThin(const Standard_Real tol);
 
@@ -2483,7 +2483,7 @@ bool
 
 Description
 -----------
-True if zmax-zmin < tol.
+true if zmax-zmin < tol.
 ") IsZThin;
 		Standard_Boolean IsZThin(const Standard_Real tol);
 
@@ -2496,7 +2496,7 @@ None
 
 Description
 -----------
-The box will be infinitely long in the xmax direction.
+The Box will be infinitely long in the Xmax direction.
 ") OpenXmax;
 		void OpenXmax();
 
@@ -2509,7 +2509,7 @@ None
 
 Description
 -----------
-The box will be infinitely long in the xmin direction.
+The Box will be infinitely long in the Xmin direction.
 ") OpenXmin;
 		void OpenXmin();
 
@@ -2522,7 +2522,7 @@ None
 
 Description
 -----------
-The box will be infinitely long in the ymax direction.
+The Box will be infinitely long in the Ymax direction.
 ") OpenYmax;
 		void OpenYmax();
 
@@ -2535,7 +2535,7 @@ None
 
 Description
 -----------
-The box will be infinitely long in the ymin direction.
+The Box will be infinitely long in the Ymin direction.
 ") OpenYmin;
 		void OpenYmin();
 
@@ -2548,7 +2548,7 @@ None
 
 Description
 -----------
-The box will be infinitely long in the zmax direction.
+The Box will be infinitely long in the Zmax direction.
 ") OpenZmax;
 		void OpenZmax();
 
@@ -2561,7 +2561,7 @@ None
 
 Description
 -----------
-The box will be infinitely long in the zmin direction.
+The Box will be infinitely long in the Zmin direction.
 ") OpenZmin;
 		void OpenZmin();
 
@@ -2579,7 +2579,7 @@ None
 
 Description
 -----------
-Sets this bounding box so that it bounds - the point p. this involves first setting this bounding box to be void and then adding the point p.
+Sets this bounding box so that it bounds - the point P. This involves first setting this bounding box to be void and then adding the point P.
 ") Set;
 		void Set(const gp_Pnt & P);
 
@@ -2598,7 +2598,7 @@ None
 
 Description
 -----------
-Sets this bounding box so that it bounds the half-line defined by point p and direction d, i.e. all points m defined by m=p+u*d, where u is greater than or equal to 0, are inside the bounding volume. this involves first setting this box to be void and then adding the half-line.
+Sets this bounding box so that it bounds the half-line defined by point P and direction D, i.e. all points M defined by M=P+u*D, where u is greater than or equal to 0, are inside the bounding volume. This involves first setting this box to be void and then adding the half-line.
 ") Set;
 		void Set(const gp_Pnt & P, const gp_Dir & D);
 
@@ -2616,7 +2616,7 @@ None
 
 Description
 -----------
-Set the gap of this bounding box to abs(tol).
+Set the gap of this bounding box to abs(Tol).
 ") SetGap;
 		void SetGap(const Standard_Real Tol);
 
@@ -2629,7 +2629,7 @@ None
 
 Description
 -----------
-Sets this bounding box so that it is empty. all points are outside a void box.
+Sets this bounding box so that it is empty. All points are outside a void box.
 ") SetVoid;
 		void SetVoid();
 
@@ -2642,7 +2642,7 @@ None
 
 Description
 -----------
-Sets this bounding box so that it covers the whole of 3d space. it is infinitely long in all directions.
+Sets this bounding box so that it covers the whole of 3D space. It is infinitely long in all directions.
 ") SetWhole;
 		void SetWhole();
 
@@ -2673,7 +2673,7 @@ Bnd_Box
 
 Description
 -----------
-Returns a bounding box which is the result of applying the transformation t to this bounding box. warning applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. this is not optimal for algorithms which use it.
+Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
 ") Transformed;
 		Bnd_Box Transformed(const gp_Trsf & T);
 
@@ -2696,7 +2696,7 @@ None
 
 Description
 -----------
-Enlarges this bounding box, if required, so that it contains at least: - interval [ axmin,axmax ] in the 'x direction', - interval [ aymin,aymax ] in the 'y direction', - interval [ azmin,azmax ] in the 'z direction';.
+Enlarges this bounding box, if required, so that it contains at least: - interval [ aXmin,aXmax ] in the 'X Direction', - interval [ aYmin,aYmax ] in the 'Y Direction', - interval [ aZmin,aZmax ] in the 'Z Direction';.
 ") Update;
 		void Update(const Standard_Real aXmin, const Standard_Real aYmin, const Standard_Real aZmin, const Standard_Real aXmax, const Standard_Real aYmax, const Standard_Real aZmax);
 
@@ -2716,7 +2716,7 @@ None
 
 Description
 -----------
-Adds a point of coordinates (x,y,z) to this bounding box.
+Adds a point of coordinates (X,Y,Z) to this bounding box.
 ") Update;
 		void Update(const Standard_Real X, const Standard_Real Y, const Standard_Real Z);
 
@@ -2761,7 +2761,7 @@ None
 
 Description
 -----------
-Creates an empty 2d bounding box. the constructed box is qualified void. its gap is null.
+Creates an empty 2D bounding box. The constructed box is qualified Void. Its gap is null.
 ") Bnd_Box2d;
 		 Bnd_Box2d();
 
@@ -2779,7 +2779,7 @@ None
 
 Description
 -----------
-Adds the 2d box <other> to <self>.
+Adds the 2d box <Other> to <self>.
 ") Add;
 		void Add(const Bnd_Box2d & Other);
 
@@ -2816,7 +2816,7 @@ None
 
 Description
 -----------
-Extends bounding box from thepnt in the direction thedir.
+Extends bounding box from thePnt in the direction theDir.
 ") Add;
 		void Add(const gp_Pnt2d & thePnt, const gp_Dir2d & theDir);
 
@@ -2834,7 +2834,7 @@ None
 
 Description
 -----------
-Extends the box in the given direction, i.e. adds a half-line. the box may become infinite in 1 or 2 directions.
+Extends the Box in the given Direction, i.e. adds a half-line. The box may become infinite in 1 or 2 directions.
 ") Add;
 		void Add(const gp_Dir2d & D);
 
@@ -2865,7 +2865,7 @@ None
 
 Description
 -----------
-Enlarges the box with a tolerance value. this means that the minimum values of its x and y intervals of definition, when they are finite, are reduced by the absolute value of tol, while the maximum values are increased by the same amount.
+Enlarges the box with a tolerance value. This means that the minimum values of its X and Y intervals of definition, when they are finite, are reduced by the absolute value of Tol, while the maximum values are increased by the same amount.
 ") Enlarge;
 		void Enlarge(const Standard_Real theTol);
 
@@ -2885,7 +2885,7 @@ aYmax: float
 
 Description
 -----------
-Returns the bounds of this 2d bounding box. the gap is included. if this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- precision::infinite(). if isvoid().
+Returns the bounds of this 2D bounding box. The gap is included. If this bounding box is infinite (i.e. 'open'), returned values may be equal to +/- Precision::Infinite(). if IsVoid().
 ") Get;
 		void Get(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2898,7 +2898,7 @@ float
 
 Description
 -----------
-Returns the gap of this 2d bounding box.
+Returns the gap of this 2D bounding box.
 ") GetGap;
 		Standard_Real GetGap();
 
@@ -2911,7 +2911,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is open in the xmax direction.
+Returns true if this bounding box is open in the Xmax direction.
 ") IsOpenXmax;
 		Standard_Boolean IsOpenXmax();
 
@@ -2924,7 +2924,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is open in the xmin direction.
+Returns true if this bounding box is open in the Xmin direction.
 ") IsOpenXmin;
 		Standard_Boolean IsOpenXmin();
 
@@ -2937,7 +2937,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is open in the ymax direction.
+Returns true if this bounding box is open in the Ymax direction.
 ") IsOpenYmax;
 		Standard_Boolean IsOpenYmax();
 
@@ -2950,7 +2950,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is open in the ymin direction.
+Returns true if this bounding box is open in the Ymin direction.
 ") IsOpenYmin;
 		Standard_Boolean IsOpenYmin();
 
@@ -2968,7 +2968,7 @@ bool
 
 Description
 -----------
-Returns true if the 2d pnt <p> is out <self>.
+Returns True if the 2d pnt <P> is out <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pnt2d & P);
 
@@ -2986,7 +2986,7 @@ bool
 
 Description
 -----------
-Returns true if the line doesn't intersect the box.
+Returns True if the line doesn't intersect the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Lin2d & theL);
 
@@ -3005,7 +3005,7 @@ bool
 
 Description
 -----------
-Returns true if the segment doesn't intersect the box.
+Returns True if the segment doesn't intersect the box.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Pnt2d & theP0, const gp_Pnt2d & theP1);
 
@@ -3023,7 +3023,7 @@ bool
 
 Description
 -----------
-Returns true if <box2d> is out <self>.
+Returns True if <Box2d> is out <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Box2d & Other);
 
@@ -3042,7 +3042,7 @@ bool
 
 Description
 -----------
-Returns true if transformed <box2d> is out <self>.
+Returns True if transformed <Box2d> is out <self>.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Box2d & theOther, const gp_Trsf2d & theTrsf);
 
@@ -3062,7 +3062,7 @@ bool
 
 Description
 -----------
-Compares a transformed bounding with a transformed bounding. the default implementation is to make a copy of <self> and <other>, to transform them and to test.
+Compares a transformed bounding with a transformed bounding. The default implementation is to make a copy of <self> and <Other>, to transform them and to test.
 ") IsOut;
 		Standard_Boolean IsOut(const gp_Trsf2d & T1, const Bnd_Box2d & Other, const gp_Trsf2d & T2);
 
@@ -3075,7 +3075,7 @@ bool
 
 Description
 -----------
-Returns true if this 2d bounding box is empty (void flag).
+Returns true if this 2D bounding box is empty (Void flag).
 ") IsVoid;
 		Standard_Boolean IsVoid();
 
@@ -3088,7 +3088,7 @@ bool
 
 Description
 -----------
-Returns true if this bounding box is infinite in all 4 directions (whole space flag).
+Returns true if this bounding box is infinite in all 4 directions (Whole Space flag).
 ") IsWhole;
 		Standard_Boolean IsWhole();
 
@@ -3101,7 +3101,7 @@ None
 
 Description
 -----------
-The box will be infinitely long in the xmax direction.
+The Box will be infinitely long in the Xmax direction.
 ") OpenXmax;
 		void OpenXmax();
 
@@ -3114,7 +3114,7 @@ None
 
 Description
 -----------
-The box will be infinitely long in the xmin direction.
+The Box will be infinitely long in the Xmin direction.
 ") OpenXmin;
 		void OpenXmin();
 
@@ -3127,7 +3127,7 @@ None
 
 Description
 -----------
-The box will be infinitely long in the ymax direction.
+The Box will be infinitely long in the Ymax direction.
 ") OpenYmax;
 		void OpenYmax();
 
@@ -3140,7 +3140,7 @@ None
 
 Description
 -----------
-The box will be infinitely long in the ymin direction.
+The Box will be infinitely long in the Ymin direction.
 ") OpenYmin;
 		void OpenYmin();
 
@@ -3158,7 +3158,7 @@ None
 
 Description
 -----------
-Sets this 2d bounding box so that it bounds the point p. this involves first setting this bounding box to be void and then adding the point pthe rectangle bounds the point <p>.
+Sets this 2D bounding box so that it bounds the point P. This involves first setting this bounding box to be void and then adding the point PThe rectangle bounds the point <P>.
 ") Set;
 		void Set(const gp_Pnt2d & thePnt);
 
@@ -3177,7 +3177,7 @@ None
 
 Description
 -----------
-Sets this 2d bounding box so that it bounds the half-line defined by point p and direction d, i.e. all points m defined by m=p+u*d, where u is greater than or equal to 0, are inside the bounding area. this involves first setting this 2d box to be void and then adding the half-line.
+Sets this 2D bounding box so that it bounds the half-line defined by point P and direction D, i.e. all points M defined by M=P+u*D, where u is greater than or equal to 0, are inside the bounding area. This involves first setting this 2D box to be void and then adding the half-line.
 ") Set;
 		void Set(const gp_Pnt2d & thePnt, const gp_Dir2d & theDir);
 
@@ -3195,7 +3195,7 @@ None
 
 Description
 -----------
-Set the gap of this 2d bounding box to abs(tol).
+Set the gap of this 2D bounding box to abs(Tol).
 ") SetGap;
 		void SetGap(const Standard_Real Tol);
 
@@ -3208,7 +3208,7 @@ None
 
 Description
 -----------
-Sets this 2d bounding box so that it is empty. all points are outside a void box.
+Sets this 2D bounding box so that it is empty. All points are outside a void box.
 ") SetVoid;
 		void SetVoid();
 
@@ -3221,7 +3221,7 @@ None
 
 Description
 -----------
-Sets this bounding box so that it covers the whole 2d space, i.e. it is infinite in all directions.
+Sets this bounding box so that it covers the whole 2D space, i.e. it is infinite in all directions.
 ") SetWhole;
 		void SetWhole();
 
@@ -3252,7 +3252,7 @@ Bnd_Box2d
 
 Description
 -----------
-Returns a bounding box which is the result of applying the transformation t to this bounding box. warning applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. this is not optimal for algorithms which use it.
+Returns a bounding box which is the result of applying the transformation T to this bounding box. Warning Applying a geometric transformation (for example, a rotation) to a bounding box generally increases its dimensions. This is not optimal for algorithms which use it.
 ") Transformed;
 		Bnd_Box2d Transformed(const gp_Trsf2d & T);
 
@@ -3273,7 +3273,7 @@ None
 
 Description
 -----------
-Enlarges this 2d bounding box, if required, so that it contains at least: - interval [ axmin,axmax ] in the 'x direction', - interval [ aymin,aymax ] in the 'y direction'.
+Enlarges this 2D bounding box, if required, so that it contains at least: - interval [ aXmin,aXmax ] in the 'X Direction', - interval [ aYmin,aYmax ] in the 'Y Direction'.
 ") Update;
 		void Update(const Standard_Real aXmin, const Standard_Real aYmin, const Standard_Real aXmax, const Standard_Real aYmax);
 
@@ -3292,7 +3292,7 @@ None
 
 Description
 -----------
-Adds a point of coordinates (x,y) to this bounding box.
+Adds a point of coordinates (X,Y) to this bounding box.
 ") Update;
 		void Update(const Standard_Real X, const Standard_Real Y);
 
@@ -3379,7 +3379,7 @@ None
 
 Description
 -----------
-Constructor to create obb from aabb.
+Constructor to create OBB from AABB.
 ") Bnd_OBB;
 		 Bnd_OBB(const Bnd_Box & theBox);
 
@@ -3397,7 +3397,7 @@ None
 
 Description
 -----------
-Rebuilds this in order to include all previous objects (which it was created from) and theother.
+Rebuilds this in order to include all previous objects (which it was created from) and theOther.
 ") Add;
 		void Add(const Bnd_OBB & theOther);
 
@@ -3415,7 +3415,7 @@ None
 
 Description
 -----------
-Rebuilds this in order to include all previous objects (which it was created from) and thep.
+Rebuilds this in order to include all previous objects (which it was created from) and theP.
 ") Add;
 		void Add(const gp_Pnt & theP);
 
@@ -3428,7 +3428,7 @@ gp_XYZ
 
 Description
 -----------
-Returns the center of obb.
+Returns the center of OBB.
 ") Center;
 		const gp_XYZ Center();
 
@@ -3485,7 +3485,7 @@ bool
 
 Description
 -----------
-Returns the array of vertices in <this>. the local coordinate of the vertex depending on the index of the array are follow: index == 0: (-xhsize(), -yhsize(), -zhsize()) index == 1: ( xhsize(), -yhsize(), -zhsize()) index == 2: (-xhsize(), yhsize(), -zhsize()) index == 3: ( xhsize(), yhsize(), -zhsize()) index == 4: (-xhsize(), -yhsize(), zhsize()) index == 5: ( xhsize(), -yhsize(), zhsize()) index == 6: (-xhsize(), yhsize(), zhsize()) index == 7: ( xhsize(), yhsize(), zhsize()).
+Returns the array of vertices in <this>. The local coordinate of the vertex depending on the index of the array are follow: Index == 0: (-XHSize(), -YHSize(), -ZHSize()) Index == 1: ( XHSize(), -YHSize(), -ZHSize()) Index == 2: (-XHSize(), YHSize(), -ZHSize()) Index == 3: ( XHSize(), YHSize(), -ZHSize()) Index == 4: (-XHSize(), -YHSize(), ZHSize()) Index == 5: ( XHSize(), -YHSize(), ZHSize()) Index == 6: (-XHSize(), YHSize(), ZHSize()) Index == 7: ( XHSize(), YHSize(), ZHSize()).
 ") GetVertex;
 		Standard_Boolean GetVertex(gp_Pnt theP[8]);
 
@@ -3498,7 +3498,7 @@ bool
 
 Description
 -----------
-Returns true if the box is axes aligned.
+Returns True if the box is axes aligned.
 ") IsAABox;
 		Standard_Boolean IsAABox();
 
@@ -3516,7 +3516,7 @@ bool
 
 Description
 -----------
-Check if the theother is completely inside *this.
+Check if the theOther is completely inside *this.
 ") IsCompletelyInside;
 		Standard_Boolean IsCompletelyInside(const Bnd_OBB & theOther);
 
@@ -3578,7 +3578,7 @@ gp_Ax3
 
 Description
 -----------
-Returns the local coordinates system of this oriented box. so that applying it to axis-aligned box ((-xhsize, -yhsize, -zhsize), (xhsize, yhsize, zhsize)) will produce this oriented box. @code gp_trsf aloc; aloc.settransformation (theobb.position(), gp::xoy()); @endcode.
+Returns the local coordinates system of this oriented box. So that applying it to axis-aligned box ((-XHSize, -YHSize, -ZHSize), (XHSize, YHSize, ZHSize)) will produce this oriented box. @code gp_Trsf aLoc; aLoc.SetTransformation (theOBB.Position(), gp::XOY()); @endcode.
 ") Position;
 		gp_Ax3 Position();
 
@@ -3598,7 +3598,7 @@ None
 
 Description
 -----------
-Creates new obb covering every point in thelistofpoints. tolerance of every such point is set by *thelistoftolerances array. if this array is not void (not null-pointer) then the resulted bnd_obb will be enlarged using tolerances of points lying on the box surface. <theisoptimal> flag defines the mode in which the obb will be built. constructing optimal box takes more time, but the resulting box is usually more tight. in case of construction of optimal obb more possible axes are checked.
+Creates new OBB covering every point in theListOfPoints. Tolerance of every such point is set by *theListOfTolerances array. If this array is not void (not null-pointer) then the resulted Bnd_OBB will be enlarged using tolerances of points lying on the box surface. <theIsOptimal> flag defines the mode in which the OBB will be built. Constructing Optimal box takes more time, but the resulting box is usually more tight. In case of construction of Optimal OBB more possible axes are checked.
 ") ReBuild;
 		void ReBuild(const TColgp_Array1OfPnt & theListOfPoints, const TColStd_Array1OfReal * theListOfTolerances = 0, const Standard_Boolean theIsOptimal = Standard_False);
 
@@ -3634,7 +3634,7 @@ None
 
 Description
 -----------
-Sets the center of obb.
+Sets the center of OBB.
 ") SetCenter;
 		void SetCenter(const gp_Pnt & theCenter);
 
@@ -3666,7 +3666,7 @@ None
 
 Description
 -----------
-Sets the x component of obb - direction and size.
+Sets the X component of OBB - direction and size.
 ") SetXComponent;
 		void SetXComponent(const gp_Dir & theXDirection, const Standard_Real theHXSize);
 
@@ -3685,7 +3685,7 @@ None
 
 Description
 -----------
-Sets the y component of obb - direction and size.
+Sets the Y component of OBB - direction and size.
 ") SetYComponent;
 		void SetYComponent(const gp_Dir & theYDirection, const Standard_Real theHYSize);
 
@@ -3704,7 +3704,7 @@ None
 
 Description
 -----------
-Sets the z component of obb - direction and size.
+Sets the Z component of OBB - direction and size.
 ") SetZComponent;
 		void SetZComponent(const gp_Dir & theZDirection, const Standard_Real theHZSize);
 
@@ -3730,7 +3730,7 @@ gp_XYZ
 
 Description
 -----------
-Returns the x direction of obb.
+Returns the X Direction of OBB.
 ") XDirection;
 		const gp_XYZ XDirection();
 
@@ -3743,7 +3743,7 @@ float
 
 Description
 -----------
-Returns the x dimension of obb.
+Returns the X Dimension of OBB.
 ") XHSize;
 		Standard_Real XHSize();
 
@@ -3756,7 +3756,7 @@ gp_XYZ
 
 Description
 -----------
-Returns the y direction of obb.
+Returns the Y Direction of OBB.
 ") YDirection;
 		const gp_XYZ YDirection();
 
@@ -3769,7 +3769,7 @@ float
 
 Description
 -----------
-Returns the y dimension of obb.
+Returns the Y Dimension of OBB.
 ") YHSize;
 		Standard_Real YHSize();
 
@@ -3782,7 +3782,7 @@ gp_XYZ
 
 Description
 -----------
-Returns the z direction of obb.
+Returns the Z Direction of OBB.
 ") ZDirection;
 		const gp_XYZ ZDirection();
 
@@ -3795,7 +3795,7 @@ float
 
 Description
 -----------
-Returns the z dimension of obb.
+Returns the Z Dimension of OBB.
 ") ZHSize;
 		Standard_Real ZHSize();
 
@@ -3840,7 +3840,7 @@ None
 
 Description
 -----------
-Default constructor. creates void range.
+Default constructor. Creates VOID range.
 ") Bnd_Range;
 		 Bnd_Range();
 
@@ -3859,7 +3859,7 @@ None
 
 Description
 -----------
-Constructor. never creates void range.
+Constructor. Never creates VOID range.
 ") Bnd_Range;
 		 Bnd_Range(const Standard_Real theMin, const Standard_Real theMax);
 
@@ -3877,7 +3877,7 @@ None
 
 Description
 -----------
-Extends <this> to include theparameter.
+Extends <this> to include theParameter.
 ") Add;
 		void Add(const Standard_Real theParameter);
 
@@ -3895,7 +3895,8 @@ None
 
 Description
 -----------
-Extends this range to include both ranges. @sa use method ::union() to check if two ranges overlap method merging.
+Extends this range to include both ranges. 
+See also: use method ::Union() to check if two ranges overlap method merging.
 ") Add;
 		void Add(const Bnd_Range & theRange);
 
@@ -3913,7 +3914,7 @@ None
 
 Description
 -----------
-Replaces <this> with common-part of <this> and theother.
+Replaces <this> with common-part of <this> and theOther.
 ") Common;
 		void Common(const Bnd_Range & theOther);
 
@@ -3926,7 +3927,7 @@ float
 
 Description
 -----------
-Returns range value (max-min). returns negative value for void range.
+Returns range value (MAX-MIN). Returns negative value for VOID range.
 ") Delta;
 		Standard_Real Delta();
 
@@ -3983,7 +3984,7 @@ theLastPar: float
 
 Description
 -----------
-Obtain first and last boundary of <this>. if <this> is void the method returns false.
+Obtain first and last boundary of <this>. If <this> is VOID the method returns false.
 ") GetBounds;
 		Standard_Boolean GetBounds(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4001,7 +4002,7 @@ theParameter: float
 
 Description
 -----------
-Obtain theparameter satisfied to the equation (theparameter-min)/(max-min) == thelambda. * thelambda == 0 --> min boundary will be returned; * thelambda == 0.5 --> middle point will be returned; * thelambda == 1 --> max boundary will be returned; * thelambda < 0 --> the value less than min will be returned; * thelambda > 1 --> the value greater than max will be returned. if <this> is void the method returns false.
+Obtain theParameter satisfied to the equation (theParameter-MIN)/(MAX-MIN) == theLambda. * theLambda == 0 --> MIN boundary will be returned; * theLambda == 0.5 --> Middle point will be returned; * theLambda == 1 --> MAX boundary will be returned; * theLambda < 0 --> the value less than MIN will be returned; * theLambda > 1 --> the value greater than MAX will be returned. If <this> is VOID the method returns false.
 ") GetIntermediatePoint;
 		Standard_Boolean GetIntermediatePoint(const Standard_Real theLambda, Standard_Real &OutValue);
 
@@ -4018,7 +4019,7 @@ thePar: float
 
 Description
 -----------
-Obtain max boundary of <this>. if <this> is void the method returns false.
+Obtain MAX boundary of <this>. If <this> is VOID the method returns false.
 ") GetMax;
 		Standard_Boolean GetMax(Standard_Real &OutValue);
 
@@ -4035,7 +4036,7 @@ thePar: float
 
 Description
 -----------
-Obtain min boundary of <this>. if <this> is void the method returns false.
+Obtain MIN boundary of <this>. If <this> is VOID the method returns false.
 ") GetMin;
 		Standard_Boolean GetMin(Standard_Real &OutValue);
 
@@ -4054,7 +4055,7 @@ int
 
 Description
 -----------
-Checks if <this> intersects values like theval+k*theperiod, where k is an integer number (k = 0, +/-1, +/-2, ...). returns: 0 - if <this> does not intersect the theval+k*theperiod. 1 - if <this> intersects theval+k*theperiod. 2 - if myfirst or/and mylast are equal to theval+k*theperiod. //! attention!!! if (myfirst == mylast) then this function will return only either 0 or 2.
+Checks if <this> intersects values like theVal+k*thePeriod, where k is an integer number (k = 0, +/-1, +/-2, ...). Returns: 0 - if <this> does not intersect the theVal+k*thePeriod. 1 - if <this> intersects theVal+k*thePeriod. 2 - if myFirst or/and myLast are equal to theVal+k*thePeriod. //! ATTENTION!!! If (myFirst == myLast) then this function will return only either 0 or 2.
 ") IsIntersected;
 		Standard_Integer IsIntersected(const Standard_Real theVal, const Standard_Real thePeriod = 0.0);
 
@@ -4072,7 +4073,7 @@ bool
 
 Description
 -----------
-Returns true if the value is out of this range.
+Returns True if the value is out of this range.
 ") IsOut;
 		Standard_Boolean IsOut(Standard_Real theValue);
 
@@ -4090,7 +4091,7 @@ bool
 
 Description
 -----------
-Returns true if the given range is out of this range.
+Returns True if the given range is out of this range.
 ") IsOut;
 		Standard_Boolean IsOut(const Bnd_Range & theRange);
 
@@ -4116,7 +4117,7 @@ None
 
 Description
 -----------
-Initializes <this> by default parameters. makes <this> void.
+Initializes <this> by default parameters. Makes <this> VOID.
 ") SetVoid;
 		void SetVoid();
 
@@ -4134,7 +4135,7 @@ None
 
 Description
 -----------
-Shifts <*this> by theval.
+Shifts <*this> by theVal.
 ") Shift;
 		void Shift(const Standard_Real theVal);
 
@@ -4152,7 +4153,7 @@ Bnd_Range
 
 Description
 -----------
-Returns the copy of <*this> shifted by theval.
+Returns the copy of <*this> shifted by theVal.
 ") Shifted;
 		Bnd_Range Shifted(const Standard_Real theVal);
 
@@ -4172,7 +4173,7 @@ None
 
 Description
 -----------
-Splits <this> to several sub-ranges by theval value (e.g. range [3, 15] will be split by theval==5 to the two ranges: [3, 5] and [5, 15]). new ranges will be pushed to thelist (thelist must be initialized correctly before calling this method). if theperiod != 0.0 then at least one boundary of new ranges (if <*this> intersects theval+k*theperiod) will be equal to theval+theperiod*k, where k is an integer number (k = 0, +/-1, +/-2, ...). (let theperiod in above example be 4 ==> we will obtain four ranges: [3, 5], [5, 9], [9, 13] and [13, 15].
+Splits <this> to several sub-ranges by theVal value (e.g. range [3, 15] will be split by theVal==5 to the two ranges: [3, 5] and [5, 15]). New ranges will be pushed to theList (theList must be initialized correctly before calling this method). If thePeriod != 0.0 then at least one boundary of new ranges (if <*this> intersects theVal+k*thePeriod) will be equal to theVal+thePeriod*k, where k is an integer number (k = 0, +/-1, +/-2, ...). (let thePeriod in above example be 4 ==> we will obtain four ranges: [3, 5], [5, 9], [9, 13] and [13, 15].
 ") Split;
 		void Split(const Standard_Real theVal, NCollection_List<Bnd_Range> & theList, const Standard_Real thePeriod = 0.0);
 
@@ -4190,7 +4191,7 @@ None
 
 Description
 -----------
-Trims the first value in range by the given lower limit. marks range as void if the given lower value is greater than range max.
+Trims the First value in range by the given lower limit. Marks range as Void if the given Lower value is greater than range Max.
 ") TrimFrom;
 		void TrimFrom(const Standard_Real theValLower);
 
@@ -4208,7 +4209,7 @@ None
 
 Description
 -----------
-Trim the last value in range by the given upper limit. marks range as void if the given upper value is smaller than range max.
+Trim the Last value in range by the given Upper limit. Marks range as Void if the given Upper value is smaller than range Max.
 ") TrimTo;
 		void TrimTo(const Standard_Real theValUpper);
 
@@ -4226,7 +4227,8 @@ bool
 
 Description
 -----------
-Joins *this and theother to one interval. replaces *this to the result. returns false if the operation cannot be done (e.g. input arguments are empty or separated). @sa use method ::add() to merge two ranges unconditionally.
+Joins *this and theOther to one interval. Replaces *this to the result. Returns false if the operation cannot be done (e.g. input arguments are empty or separated). 
+See also: use method ::Add() to merge two ranges unconditionally.
 ") Union;
 		Standard_Boolean Union(const Bnd_Range & theOther);
 
@@ -4374,7 +4376,7 @@ theMax: float
 
 Description
 -----------
-Calculate and return minimal and maximal distance to sphere. note: this function is tightly optimized; any modifications may affect performance!.
+Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!.
 ") Distances;
 		void Distances(const gp_XYZ & theXYZ, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4443,7 +4445,7 @@ theInside: bool
 
 Description
 -----------
-Projects a point on entity. returns true if success.
+Projects a point on entity. Returns true if success.
 ") Project;
 		Standard_Boolean Project(const gp_XYZ & theNode, gp_XYZ & theProjNode, Standard_Real &OutValue, Standard_Boolean &OutValue);
 
@@ -4511,7 +4513,7 @@ theMax: float
 
 Description
 -----------
-Calculate and return minimal and maximal distance to sphere. note: this function is tightly optimized; any modifications may affect performance!.
+Calculate and return minimal and maximal distance to sphere. NOTE: This function is tightly optimized; any modifications may affect performance!.
 ") SquareDistances;
 		void SquareDistances(const gp_XYZ & theXYZ, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4537,7 +4539,7 @@ int
 
 Description
 -----------
-Returns the u parameter on shape.
+Returns the U parameter on shape.
 ") U;
 		Standard_Integer U();
 
@@ -4550,7 +4552,7 @@ int
 
 Description
 -----------
-Returns the v parameter on shape.
+Returns the V parameter on shape.
 ") V;
 		Standard_Integer V();
 
@@ -4600,7 +4602,7 @@ BVH_Box<float, 2 >
 
 Description
 -----------
-Converts the given bnd_box2d to bvh_box.
+Converts the given Bnd_Box2d to BVH_Box.
 ") Bnd2BVH;
 		static BVH_Box<Standard_Real, 2 > Bnd2BVH(const Bnd_Box2d & theBox);
 
@@ -4618,7 +4620,7 @@ BVH_Box<float, 3 >
 
 Description
 -----------
-Converts the given bnd_box to bvh_box.
+Converts the given Bnd_Box to BVH_Box.
 ") Bnd2BVH;
 		static BVH_Box<Standard_Real, 3 > Bnd2BVH(const Bnd_Box & theBox);
 

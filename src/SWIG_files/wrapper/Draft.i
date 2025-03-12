@@ -140,7 +140,7 @@ float
 
 Description
 -----------
-Returns the draft angle of the face <f> using the direction <direction>. the method is valid for: - plane faces, - cylindrical or conical faces, when the direction of the axis of the surface is colinear with the direction. otherwise, the exception domainerror is raised.
+Returns the draft angle of the face <F> using the direction <Direction>. The method is valid for: - Plane faces, - Cylindrical or conical faces, when the direction of the axis of the surface is colinear with the direction. Otherwise, the exception DomainError is raised.
 ") Angle;
 		static Standard_Real Angle(const TopoDS_Face & F, const gp_Dir & Direction);
 
@@ -676,7 +676,7 @@ bool
 
 Description
 -----------
-Adds the face f and propagates the draft modification to its neighbour faces if they are tangent. if an error occurs, will return false and problematicshape will return the 'bad' face.
+Adds the face F and propagates the draft modification to its neighbour faces if they are tangent. If an error occurs, will return False and ProblematicShape will return the 'bad' face.
 ") Add;
 		Standard_Boolean Add(const TopoDS_Face & F, const gp_Dir & Direction, const Standard_Real Angle, const gp_Pln & NeutralPlane, const Standard_Boolean Flag = Standard_True);
 
@@ -707,7 +707,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns all the faces which have been added together with the face <f>.
+Returns all the faces which have been added together with the face <F>.
 ") ConnectedFaces;
 		const TopTools_ListOfShape & ConnectedFaces(const TopoDS_Face & F);
 
@@ -730,7 +730,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the new edge created from <e>. <newf1> (resp. <newf2>) is the new face created from <f1> (resp. <f2>).
+Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
@@ -774,7 +774,7 @@ bool
 
 Description
 -----------
-Returns true if perform has been successfully called. otherwise more information can be obtained using the methods error() and problematicshape().
+Returns True if Perform has been successfully called. Otherwise more information can be obtained using the methods Error() and ProblematicShape().
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -807,7 +807,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has been modified. in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <c>, <l>, <tol> are not significant.
+Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
@@ -829,7 +829,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. //! otherwise, returns standard_false, and <c>, <l>, <tol> are not significant. //! <newe> is the new edge created from <e>. <newf> is the new face created from <f>. they may be useful.
+Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. //! Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant. //! <NewE> is the new edge created from <E>. <NewF> is the new face created from <F>. They may be useful.
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
@@ -849,7 +849,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has a new parameter on the edge <e>. in this case, <p> is the parameter, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -868,7 +868,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has been modified. in this case, <p> is the new geometric support of the vertex, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
@@ -890,7 +890,7 @@ RevFace: bool
 
 Description
 -----------
-Returns standard_true if the face <f> has been modified. in this case, <s> is the new geometric support of the face, <l> the new location,<tol> the new tolerance.<revwires> has to be set to standard_true when the modification reverses the normal of the surface.(the wires have to be reversed). <revface> has to be set to standard_true if the orientation of the modified face changes in the shells which contain it. here it will be set to standard_false. //! otherwise, returns standard_false, and <s>, <l>, <tol> , <revwires> ,<revface> are not significant.
+Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. Here it will be set to Standard_False. //! Otherwise, returns Standard_False, and <S>, <L>, <Tol> , <RevWires> ,<RevFace> are not significant.
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -903,7 +903,7 @@ None
 
 Description
 -----------
-Performs the draft angle modification and sets the value returned by the method isdone. if an error occurs, isdone will return standard_false, and an error status will be given by the method error, and the shape on which the problem appeared will be given by problematicshape.
+Performs the draft angle modification and sets the value returned by the method IsDone. If an error occurs, IsDone will return Standard_False, and an error status will be given by the method Error, and the shape on which the problem appeared will be given by ProblematicShape.
 ") Perform;
 		void Perform();
 
@@ -916,7 +916,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape (face, edge or vertex) on which an error occurred.
+Returns the shape (Face, Edge or Vertex) on which an error occurred.
 ") ProblematicShape;
 		const TopoDS_Shape ProblematicShape();
 
@@ -934,7 +934,7 @@ None
 
 Description
 -----------
-Removes the face f and the neighbour faces if they are tangent. it will be necessary to call this method if the method add returns standard_false, to unset problematicface.
+Removes the face F and the neighbour faces if they are tangent. It will be necessary to call this method if the method Add returns Standard_False, to unset ProblematicFace.
 ") Remove;
 		void Remove(const TopoDS_Face & F);
 

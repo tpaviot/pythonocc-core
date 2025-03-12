@@ -153,7 +153,7 @@ None
 
 Description
 -----------
-Defines format 'xmllocaf' and registers its read and write drivers in the specified application.
+Defines format 'XmlLOcaf' and registers its read and write drivers in the specified application.
 ") DefineFormat;
 		static void DefineFormat(const opencascade::handle<TDocStd_Application> & theApp);
 

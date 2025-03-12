@@ -208,7 +208,7 @@ bool
 
 Description
 -----------
-Builds up the correct list of faces <loff> from <lof>, using faulty shapes from map <mshnok>. <lof> is the list of <f>'s descendant faces. returns false if building fails.
+Builds up the correct list of faces <LOFF> from <LOF>, using faulty shapes from map <MshNOK>. <LOF> is the list of <F>'s descendant faces. returns false if building fails.
 ") MakeFaces;
 		static Standard_Boolean MakeFaces(const TopoDS_Face & F, const TopTools_ListOfShape & LOF, const TopTools_IndexedMapOfOrientedShape & MshNOK, TopTools_ListOfShape & LOFF);
 
@@ -226,7 +226,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints <oct> as string on stream <s>; returns <s>.
+Prints <OCT> as string on stream <S>; returns <S>.
 ") Print;
 		static Standard_OStream & Print(const TopOpeBRepTool_OutCurveType OCT, std::ostream &OutValue);
 
@@ -247,7 +247,7 @@ bool
 
 Description
 -----------
-Fuse edges (in a wire) of a shape where we have useless vertex. in case face <ff> is built on uv-non-connexed wires (with the two closing edges forward and reversed, in spite of one only), we find out the faulty edge, add the faulty shapes (edge,wire,face) to <mshnok>. <ff> is a face descendant of <f>. <mwisold>(wire) = 1 if wire is wire of <f> 0 wire results from <f>'s wire split. returns false if purge fails.
+Fuse edges (in a wire) of a shape where we have useless vertex. In case face <FF> is built on UV-non-connexed wires (with the two closing edges FORWARD and REVERSED, in spite of one only), we find out the faulty edge, add the faulty shapes (edge,wire,face) to <MshNOK>. <FF> is a face descendant of <F>. <MWisOld>(wire) = 1 if wire is wire of <F> 0 wire results from <F>'s wire split. returns false if purge fails.
 ") PurgeClosingEdges;
 		static Standard_Boolean PurgeClosingEdges(const TopoDS_Face & F, const TopoDS_Face & FF, const TopTools_DataMapOfShapeInteger & MWisOld, TopTools_IndexedMapOfOrientedShape & MshNOK);
 
@@ -288,7 +288,7 @@ bool
 
 Description
 -----------
-Returns <false> if the face is valid (the uv representation of the face is a set of pcurves connexed by points with connexity 2). else, splits <aface> in order to return a list of valid faces.
+Returns <False> if the face is valid (the UV representation of the face is a set of pcurves connexed by points with connexity 2). Else, splits <aFace> in order to return a list of valid faces.
 ") Regularize;
 		static Standard_Boolean Regularize(const TopoDS_Face & aFace, TopTools_ListOfShape & aListOfFaces, TopTools_DataMapOfShapeListOfShape & ESplits);
 
@@ -308,7 +308,7 @@ bool
 
 Description
 -----------
-Classify wire's splits of map <oldwiresnewwires> in order to compute <alistoffaces>, the splits of <aface>.
+Classify wire's splits of map <OldWiresnewWires> in order to compute <aListOfFaces>, the splits of <aFace>.
 ") RegularizeFace;
 		static Standard_Boolean RegularizeFace(const TopoDS_Face & aFace, const TopTools_DataMapOfShapeListOfShape & OldWiresnewWires, TopTools_ListOfShape & aListOfFaces);
 
@@ -328,7 +328,7 @@ bool
 
 Description
 -----------
-Returns <false> if the shell is valid (the solid is a set of faces connexed by edges with connexity 2). else, splits faces of the shell; <oldfacesnewfaces> describes (face, splits of face).
+Returns <False> if the shell is valid (the solid is a set of faces connexed by edges with connexity 2). Else, splits faces of the shell; <OldFacesnewFaces> describes (face, splits of face).
 ") RegularizeShells;
 		static Standard_Boolean RegularizeShells(const TopoDS_Solid & aSolid, TopTools_DataMapOfShapeListOfShape & OldSheNewShe, TopTools_DataMapOfShapeListOfShape & FSplits);
 
@@ -348,7 +348,7 @@ bool
 
 Description
 -----------
-Returns <false> if the face is valid (the uv representation of the face is a set of pcurves connexed by points with connexity 2). else, splits wires of the face, these are boundaries of the new faces to build up; <oldwiresnewwires> describes (wire, splits of wire); <esplits> describes (edge, edge's splits).
+Returns <False> if the face is valid (the UV representation of the face is a set of pcurves connexed by points with connexity 2). Else, splits wires of the face, these are boundaries of the new faces to build up; <OldWiresNewWires> describes (wire, splits of wire); <ESplits> describes (edge, edge's splits).
 ") RegularizeWires;
 		static Standard_Boolean RegularizeWires(const TopoDS_Face & aFace, TopTools_DataMapOfShapeListOfShape & OldWiresNewWires, TopTools_DataMapOfShapeListOfShape & ESplits);
 
@@ -383,7 +383,7 @@ None
 
 Description
 -----------
-Same as package method topexp::mapshapelistofshapes().
+same as package method TopExp::MapShapeListOfShapes().
 ") MakeAncestors;
 		static void MakeAncestors(const TopoDS_Shape & S, const TopAbs_ShapeEnum TS, const TopAbs_ShapeEnum TA, TopTools_IndexedDataMapOfShapeListOfShape & M);
 
@@ -1593,7 +1593,7 @@ Tol2d: float
 
 Description
 -----------
-Approximates curves. returns false in the case of failure.
+Approximates curves. Returns False in the case of failure.
 ") MakeCurves;
 		Standard_Boolean MakeCurves(const Standard_Real min, const Standard_Real max, const opencascade::handle<Geom_Curve> & C3D, const opencascade::handle<Geom2d_Curve> & PC1, const opencascade::handle<Geom2d_Curve> & PC2, const TopoDS_Shape & S1, const TopoDS_Shape & S2, opencascade::handle<Geom_Curve> & C3DN, opencascade::handle<Geom2d_Curve> & PC1N, opencascade::handle<Geom2d_Curve> & PC2N, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1683,7 +1683,7 @@ None
 
 Description
 -----------
-Set edges to avoid being fused.
+set edges to avoid being fused.
 ") AvoidEdges;
 		void AvoidEdges(const TopTools_IndexedMapOfShape & theMapEdg);
 
@@ -1701,7 +1701,7 @@ None
 
 Description
 -----------
-Returns all the list of edges to be fused each list of the map represent a set of connex edges that can be fused.
+returns all the list of edges to be fused each list of the map represent a set of connex edges that can be fused.
 ") Edges;
 		void Edges(TopTools_DataMapOfIntegerListOfShape & theMapLstEdg);
 
@@ -1719,7 +1719,7 @@ None
 
 Description
 -----------
-Returns the map of modified faces.
+returns the map of modified faces.
 ") Faces;
 		void Faces(TopTools_DataMapOfShapeShape & theMapFac);
 
@@ -1732,7 +1732,7 @@ int
 
 Description
 -----------
-Returns the number of vertices candidate to be removed.
+returns the number of vertices candidate to be removed.
 ") NbVertices;
 		Standard_Integer NbVertices();
 
@@ -1745,7 +1745,7 @@ None
 
 Description
 -----------
-Using map of list of connex edges, fuse each list to one edge and then update myshape.
+Using map of list of connex edges, fuse each list to one edge and then update myShape.
 ") Perform;
 		void Perform();
 
@@ -1763,7 +1763,7 @@ None
 
 Description
 -----------
-Returns all the fused edges. each integer entry in the map corresponds to the integer in the datamapofintegerlistofshape we get in method edges. that is to say, to the list of edges in themaplstedg(i) corresponds the resulting edge themapedge(i).
+returns all the fused edges. each integer entry in the map corresponds to the integer in the DataMapOfIntegerListOfShape we get in method Edges. That is to say, to the list of edges in theMapLstEdg(i) corresponds the resulting edge theMapEdge(i).
 ") ResultEdges;
 		void ResultEdges(TopTools_DataMapOfIntegerShape & theMapEdg);
 
@@ -1776,7 +1776,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns myshape modified with the list of internal edges removed from it.
+returns myShape modified with the list of internal edges removed from it.
 ") Shape;
 		TopoDS_Shape Shape();
 
@@ -1811,7 +1811,7 @@ None
 
 Description
 -----------
-Boolean flags <compc3d>, <comppc1>, <comppc2> indicate whether the corresponding result curves <c3d>, <pc1>, <pc2> of makecurves method must or not be computed from an intersection line <l>. when the line <l> is a walking one, <typec3d> is the kind of the 3d curve <c3d> to compute: - bspline1 to compute a bspline of degree 1 on the walking points of <l>, - approx to build an approximation curve on the walking points of <l>.
+Boolean flags <CompC3D>, <CompPC1>, <CompPC2> indicate whether the corresponding result curves <C3D>, <PC1>, <PC2> of MakeCurves method must or not be computed from an intersection line <L>. When the line <L> is a walking one, <TypeC3D> is the kind of the 3D curve <C3D> to compute: - BSPLINE1 to compute a BSpline of degree 1 on the walking points of <L>, - APPROX to build an approximation curve on the walking points of <L>.
 ") TopOpeBRepTool_GeomTool;
 		 TopOpeBRepTool_GeomTool(const TopOpeBRepTool_OutCurveType TypeC3D = TopOpeBRepTool_BSPLINE1, const Standard_Boolean CompC3D = Standard_True, const Standard_Boolean CompPC1 = Standard_True, const Standard_Boolean CompPC2 = Standard_True);
 
@@ -2340,7 +2340,7 @@ None
 
 Description
 -----------
-Initialize members and begin exploration of shape depending of the value of performnow.
+Initialize members and begin exploration of shape depending of the value of PerformNow.
 ") TopOpeBRepTool_PurgeInternalEdges;
 		 TopOpeBRepTool_PurgeInternalEdges(const TopoDS_Shape & theShape, const Standard_Boolean PerformNow = Standard_True);
 
@@ -2358,7 +2358,7 @@ None
 
 Description
 -----------
-Returns the list internal edges associated with the faces of the myshape. if performnow was false when created, then call the private perform method that do the main job.
+returns the list internal edges associated with the faces of the myShape. If PerformNow was False when created, then call the private Perform method that do the main job.
 ") Faces;
 		void Faces(TopTools_DataMapOfShapeListOfShape & theMapFacLstEdg);
 
@@ -2371,7 +2371,7 @@ bool
 
 Description
 -----------
-Returns false if the list of internal edges has not been extracted.
+returns False if the list of internal edges has not been extracted.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2384,7 +2384,7 @@ int
 
 Description
 -----------
-Returns the number of edges candidate to be removed.
+returns the number of edges candidate to be removed.
 ") NbEdges;
 		Standard_Integer NbEdges();
 
@@ -2397,7 +2397,7 @@ None
 
 Description
 -----------
-Using the list of internal edge from each face, rebuild myshape by removing thoses edges.
+Using the list of internal edges from each face, rebuild myShape by removing those edges.
 ") Perform;
 		void Perform();
 
@@ -2410,7 +2410,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns myshape modified with the list of internal edges removed from it.
+returns myShape modified with the list of internal edges removed from it.
 ") Shape;
 		TopoDS_Shape Shape();
 
@@ -3072,7 +3072,7 @@ None
 
 Description
 -----------
-Sref is the reference shape. stateshapeshape(s) calls will classify s with sref.
+SRef is the reference shape. StateShapeShape(S) calls will classify S with SRef.
 ") TopOpeBRepTool_ShapeClassifier;
 		 TopOpeBRepTool_ShapeClassifier(const TopoDS_Shape & SRef);
 
@@ -3098,7 +3098,7 @@ None
 
 Description
 -----------
-Reset all internal data (solidclassifier included).
+reset all internal data (SolidClassifier included).
 ") ClearAll;
 		void ClearAll();
 
@@ -3111,7 +3111,7 @@ None
 
 Description
 -----------
-Reset all internal data (except solidclassified).
+reset all internal data (except SolidClassified).
 ") ClearCurrent;
 		void ClearCurrent();
 
@@ -3168,7 +3168,7 @@ None
 
 Description
 -----------
-Set mode for next stateshapeshape call samedomain = true --> s,sref are same domain --> point on restriction (on s) is used to classify s. samedomain = false --> s,sref are not domain --> point not on restriction of s (in s) is used to classify s. samedomain value is used only in next stateshapeshape call.
+set mode for next StateShapeShape call samedomain = true --> S,Sref are same domain --> point on restriction (ON S) is used to classify S. samedomain = false --> S,Sref are not domain --> point not on restriction of S (IN S) is used to classify S. samedomain value is used only in next StateShapeShape call.
 ") SameDomain;
 		void SameDomain(const Standard_Integer samedomain);
 
@@ -3186,7 +3186,7 @@ None
 
 Description
 -----------
-Set sref as reference shape the next stateshapereference(s,avoids) calls will classify s with sref.
+Set SRef as reference shape the next StateShapeReference(S,AvoidS) calls will classify S with SRef.
 ") SetReference;
 		void SetReference(const TopoDS_Shape & SRef);
 
@@ -3199,7 +3199,7 @@ TopAbs_State
 
 Description
 -----------
-Return field mystate.
+return field myState.
 ") State;
 		TopAbs_State State();
 
@@ -3217,7 +3217,7 @@ None
 
 Description
 -----------
-Classify point p2d with myref.
+classify point P2D with myRef.
 ") StateP2DReference;
 		void StateP2DReference(const gp_Pnt2d & P2D);
 
@@ -3235,7 +3235,7 @@ None
 
 Description
 -----------
-Classify point p3d with myref.
+classify point P3D with myRef.
 ") StateP3DReference;
 		void StateP3DReference(const gp_Pnt & P3D);
 
@@ -3254,7 +3254,7 @@ TopAbs_State
 
 Description
 -----------
-Classify shape s compared with reference shape. avoids is not used in classification; avoids may be isnull(). (useful to avoid on or unknown state in special cases).
+classify shape S compared with reference shape. AvoidS is not used in classification; AvoidS may be IsNull(). (useful to avoid ON or UNKNOWN state in special cases).
 ") StateShapeReference;
 		TopAbs_State StateShapeReference(const TopoDS_Shape & S, const TopoDS_Shape & AvoidS);
 
@@ -3273,7 +3273,7 @@ TopAbs_State
 
 Description
 -----------
-Classify shape s compared with reference shape. lavoids is list of s subshapes to avoid in classification (useful to avoid on or unknown state in special cases).
+classify shape S compared with reference shape. LAvoidS is list of S subshapes to avoid in classification (useful to avoid ON or UNKNOWN state in special cases).
 ") StateShapeReference;
 		TopAbs_State StateShapeReference(const TopoDS_Shape & S, const TopTools_ListOfShape & LAvoidS);
 
@@ -3293,7 +3293,7 @@ TopAbs_State
 
 Description
 -----------
-Classify shape s compared with shape sref. samedomain = 0: s1,s2 are not same domain samedomain = 1: s1,s2 are same domain.
+classify shape S compared with shape SRef. samedomain = 0: S1,S2 are not same domain samedomain = 1: S1,S2 are same domain.
 ") StateShapeShape;
 		TopAbs_State StateShapeShape(const TopoDS_Shape & S, const TopoDS_Shape & SRef, const Standard_Integer samedomain = 0);
 
@@ -3313,7 +3313,7 @@ TopAbs_State
 
 Description
 -----------
-Classify shape s compared with shape sref. avoids is not used in classification; avoids may be isnull(). (useful to avoid on or unknown state in special cases).
+classify shape S compared with shape SRef. AvoidS is not used in classification; AvoidS may be IsNull(). (useful to avoid ON or UNKNOWN state in special cases).
 ") StateShapeShape;
 		TopAbs_State StateShapeShape(const TopoDS_Shape & S, const TopoDS_Shape & AvoidS, const TopoDS_Shape & SRef);
 
@@ -3333,7 +3333,7 @@ TopAbs_State
 
 Description
 -----------
-Classify shape s compared with shape sref. lavoids is list of s subshapes to avoid in classification avoids is not used in classification; avoids may be isnull(). (useful to avoid on or unknown state in special cases).
+classify shape S compared with shape SRef. LAvoidS is list of S subshapes to avoid in classification AvoidS is not used in classification; AvoidS may be IsNull(). (useful to avoid ON or UNKNOWN state in special cases).
 ") StateShapeShape;
 		TopAbs_State StateShapeShape(const TopoDS_Shape & S, const TopTools_ListOfShape & LAvoidS, const TopoDS_Shape & SRef);
 
@@ -3360,7 +3360,7 @@ None
 
 Description
 -----------
-Creates an empty explorer, becomes useful after init.
+Creates an empty explorer, becomes useful after Init.
 ") TopOpeBRepTool_ShapeExplorer;
 		 TopOpeBRepTool_ShapeExplorer();
 
@@ -3380,7 +3380,7 @@ None
 
 Description
 -----------
-Creates an explorer on the shape <s>. //! <tofind> is the type of shapes to search. topabs_vertex, topabs_edge, ... //! <toavoid> is the type of shape to skip in the exploration. if <toavoid> is equal or less complex than <tofind> or if <toavoid> is shape it has no effect on the exploration.
+Creates an Explorer on the Shape <S>. //! <ToFind> is the type of shapes to search. TopAbs_VERTEX, TopAbs_EDGE, ... //! <ToAvoid> is the type of shape to skip in the exploration. If <ToAvoid> is equal or less complex than <ToFind> or if <ToAVoid> is SHAPE it has no effect on the exploration.
 ") TopOpeBRepTool_ShapeExplorer;
 		 TopOpeBRepTool_ShapeExplorer(const TopoDS_Shape & S, const TopAbs_ShapeEnum ToFind, const TopAbs_ShapeEnum ToAvoid = TopAbs_SHAPE);
 
@@ -3443,7 +3443,7 @@ None
 
 Description
 -----------
-Moves to the next shape in the exploration.
+Moves to the next Shape in the exploration.
 ") Next;
 		void Next();
 
@@ -3476,7 +3476,7 @@ v: float
 
 Description
 -----------
-Adjust u,v values in uvbounds of the domain of the geometric shape <s>, according to uperiodicity and vperiodicity of the domain. <s> is assumed to be a face. u and/or v is/are not modified when the domain is not periodic in u and/or v .
+adjust u,v values in UVBounds of the domain of the geometric shape <S>, according to Uperiodicity and VPeriodicity of the domain. <S> is assumed to be a face. u and/or v is/are not modified when the domain is not periodic in U and/or V .
 ") AdjustOnPeriodic;
 		static void AdjustOnPeriodic(const TopoDS_Shape & S, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3567,7 +3567,7 @@ bool
 
 Description
 -----------
-Indicates whether shape s1 is a closing shape on s2 or not.
+indicates whether shape S1 is a closing shape on S2 or not.
 ") Closed;
 		static Standard_Boolean Closed(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -3607,7 +3607,7 @@ C: float
 
 Description
 -----------
-Compute tangent t, normal n, curvature c at point of parameter p on curve brac. returns the tolerance indicating if t,n are null.
+Compute tangent T, normal N, curvature C at point of parameter P on curve BRAC. Returns the tolerance indicating if T,N are null.
 ") EdgeData;
 		static Standard_Real EdgeData(const BRepAdaptor_Curve & BRAC, const Standard_Real P, gp_Dir & T, gp_Dir & N, Standard_Real &OutValue);
 
@@ -3628,7 +3628,7 @@ C: float
 
 Description
 -----------
-Same as previous on edge e.
+Same as previous on edge E.
 ") EdgeData;
 		static Standard_Real EdgeData(const TopoDS_Shape & E, const Standard_Real P, gp_Dir & T, gp_Dir & N, Standard_Real &OutValue);
 
@@ -3704,7 +3704,7 @@ gp_Pnt
 
 Description
 -----------
-Returns 3d point of vertex <s>.
+Returns 3D point of vertex <S>.
 ") Pnt;
 		static gp_Pnt Pnt(const TopoDS_Shape & S);
 
@@ -3836,7 +3836,7 @@ float
 
 Description
 -----------
-Returns the tolerance of the shape <s>. if the shape <s> is null, returns 0.
+Returns the tolerance of the shape <S>. If the shape <S> is Null, returns 0.
 ") Tolerance;
 		static Standard_Real Tolerance(const TopoDS_Shape & S);
 
@@ -3929,7 +3929,7 @@ TopAbs_State
 
 Description
 -----------
-Compute the position of point <p> regarding with the geometric domain of the solid <s>.
+compute the position of point <P> regarding with the geometric domain of the solid <S>.
 ") Classify;
 		TopAbs_State Classify(const TopoDS_Solid & S, const gp_Pnt & P, const Standard_Real Tol);
 
@@ -3949,7 +3949,7 @@ TopAbs_State
 
 Description
 -----------
-Compute the position of point <p> regarding with the geometric domain of the shell <s>.
+compute the position of point <P> regarding with the geometric domain of the shell <S>.
 ") Classify;
 		TopAbs_State Classify(const TopoDS_Shell & S, const gp_Pnt & P, const Standard_Real Tol);
 
@@ -4159,17 +4159,16 @@ Parameters
 p: gp_Pnt
 f: TopoDS_Face
 uv: gp_Pnt2d
-st: TopAbs_State
 
 Return
 -------
-bool
+st: TopAbs_State
 
 Description
 -----------
 No available documentation.
 ") Getstp3dF;
-		static Standard_Boolean Getstp3dF(const gp_Pnt & p, const TopoDS_Face & f, gp_Pnt2d & uv, TopAbs_State & st);
+		static Standard_Boolean Getstp3dF(const gp_Pnt & p, const TopoDS_Face & f, gp_Pnt2d & uv, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepTool_TOOL::IsClosingE ******/
 		/****** md5 signature: b1deb72133a371dcd0c8e2f71ea1743c ******/
@@ -5570,18 +5569,17 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-stb: TopAbs_State
-sta: TopAbs_State
 
 Return
 -------
-bool
+stb: TopAbs_State
+sta: TopAbs_State
 
 Description
 -----------
 No available documentation.
 ") MkT2donE;
-		Standard_Boolean MkT2donE(TopAbs_State & stb, TopAbs_State & sta);
+		Standard_Boolean MkT2donE(TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepTool_makeTransition::MkT3dproj ******/
 		/****** md5 signature: 68012640242489ad984fee9c261695a4 ******/
@@ -5589,18 +5587,17 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-stb: TopAbs_State
-sta: TopAbs_State
 
 Return
 -------
-bool
+stb: TopAbs_State
+sta: TopAbs_State
 
 Description
 -----------
 No available documentation.
 ") MkT3dproj;
-		Standard_Boolean MkT3dproj(TopAbs_State & stb, TopAbs_State & sta);
+		Standard_Boolean MkT3dproj(TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepTool_makeTransition::MkT3onE ******/
 		/****** md5 signature: 9cc4d2c89c6a39036b825ee178bbab15 ******/
@@ -5608,18 +5605,17 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-stb: TopAbs_State
-sta: TopAbs_State
 
 Return
 -------
-bool
+stb: TopAbs_State
+sta: TopAbs_State
 
 Description
 -----------
 No available documentation.
 ") MkT3onE;
-		Standard_Boolean MkT3onE(TopAbs_State & stb, TopAbs_State & sta);
+		Standard_Boolean MkT3onE(TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepTool_makeTransition::MkTonE ******/
 		/****** md5 signature: 6cdb2b05d8ba4be20425b28835a6aeb5 ******/
@@ -5627,18 +5623,17 @@ No available documentation.
 		%feature("autodoc", "
 Parameters
 ----------
-stb: TopAbs_State
-sta: TopAbs_State
 
 Return
 -------
-bool
+stb: TopAbs_State
+sta: TopAbs_State
 
 Description
 -----------
 No available documentation.
 ") MkTonE;
-		Standard_Boolean MkTonE(TopAbs_State & stb, TopAbs_State & sta);
+		Standard_Boolean MkTonE(TopAbs_State &OutValue, TopAbs_State &OutValue);
 
 		/****** TopOpeBRepTool_makeTransition::SetRest ******/
 		/****** md5 signature: 370455842d64ac60659e9621012e9701 ******/
