@@ -249,7 +249,7 @@ Standard_Address
 
 Description
 -----------
-Returns a pointer to the curve specified in the constructor or in setcurve() method.
+Returns a pointer to the curve specified in the constructor or in SetCurve() method.
 ") CurvePtr;
 		Standard_Address CurvePtr(const Standard_Integer theRank);
 
@@ -268,7 +268,7 @@ bool
 
 Description
 -----------
-Calculate fi'(u,v).
+Calculate Fi'(U,V).
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & UV, math_Matrix & DF);
 
@@ -340,7 +340,7 @@ None
 
 Description
 -----------
-Return the points of the nth extreme distance.
+Return the points of the Nth extreme distance.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnCurv & P2);
 
@@ -358,7 +358,7 @@ float
 
 Description
 -----------
-Computes a tol value. if 1st derivative of curve |d1|<tol, it is considered d1=0.
+Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
 ") SearchOfTolerance;
 		Standard_Real SearchOfTolerance(const Standard_Address C);
 
@@ -413,7 +413,7 @@ float
 
 Description
 -----------
-Return the value of the nth distance.
+Return the value of the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -445,7 +445,7 @@ float
 
 Description
 -----------
-Returns a tolerance specified in the constructor or in settolerance() method.
+Returns a tolerance specified in the constructor or in SetTolerance() method.
 ") Tolerance;
 		Standard_Real Tolerance();
 
@@ -464,7 +464,7 @@ bool
 
 Description
 -----------
-Calculate fi(u,v).
+Calculate Fi(U,V).
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & UV, math_Vector & F);
 
@@ -484,7 +484,7 @@ bool
 
 Description
 -----------
-Calculate fi(u,v) and fi'(u,v).
+Calculate Fi(U,V) and Fi'(U,V).
 ") Values;
 		Standard_Boolean Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
 
@@ -554,7 +554,7 @@ Standard_Address
 
 Description
 -----------
-Returns a pointer to the curve specified in the constructor or in setcurve() method.
+Returns a pointer to the curve specified in the constructor or in SetCurve() method.
 ") CurvePtr;
 		Standard_Address CurvePtr(const Standard_Integer theRank);
 
@@ -573,7 +573,7 @@ bool
 
 Description
 -----------
-Calculate fi'(u,v).
+Calculate Fi'(U,V).
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & UV, math_Matrix & DF);
 
@@ -645,7 +645,7 @@ None
 
 Description
 -----------
-Return the points of the nth extreme distance.
+Return the points of the Nth extreme distance.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
 
@@ -663,7 +663,7 @@ float
 
 Description
 -----------
-Computes a tol value. if 1st derivative of curve |d1|<tol, it is considered d1=0.
+Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
 ") SearchOfTolerance;
 		Standard_Real SearchOfTolerance(const Standard_Address C);
 
@@ -718,7 +718,7 @@ float
 
 Description
 -----------
-Return the value of the nth distance.
+Return the value of the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -750,7 +750,7 @@ float
 
 Description
 -----------
-Returns a tolerance specified in the constructor or in settolerance() method.
+Returns a tolerance specified in the constructor or in SetTolerance() method.
 ") Tolerance;
 		Standard_Real Tolerance();
 
@@ -769,7 +769,7 @@ bool
 
 Description
 -----------
-Calculate fi(u,v).
+Calculate Fi(U,V).
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & UV, math_Vector & F);
 
@@ -789,7 +789,7 @@ bool
 
 Description
 -----------
-Calculate fi(u,v) and fi'(u,v).
+Calculate Fi(U,V) and Fi'(U,V).
 ") Values;
 		Standard_Boolean Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
 
@@ -895,7 +895,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") D0;
 		static void D0(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P);
 
@@ -916,7 +916,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u on the curve with its first derivative.
+Computes the point of parameter U on the curve with its first derivative.
 ") D1;
 		static void D1(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V);
 
@@ -938,7 +938,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first and second derivatives v1 and v2.
+Returns the point P of parameter U, the first and second derivatives V1 and V2.
 ") D2;
 		static void D2(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2);
 
@@ -961,7 +961,7 @@ None
 
 Description
 -----------
-Returns the point p of parameter u, the first, the second and the third derivative.
+Returns the point P of parameter U, the first, the second and the third derivative.
 ") D3;
 		static void D3(const Adaptor2d_Curve2d & C, const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1, gp_Vec2d & V2, gp_Vec2d & V3);
 
@@ -981,7 +981,7 @@ gp_Vec2d
 
 Description
 -----------
-The returned vector gives the value of the derivative for the order of derivation n.
+The returned vector gives the value of the derivative for the order of derivation N.
 ") DN;
 		static gp_Vec2d DN(const Adaptor2d_Curve2d & C, const Standard_Real U, const Standard_Integer N);
 
@@ -999,7 +999,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the parameters bounding the intervals of subdivision of curve according to curvature deflection. value of deflection is defined in method. //!.
+Returns the parameters bounding the intervals of subdivision of curve according to Curvature deflection. Value of deflection is defined in method. //!.
 ") DeflCurvIntervals;
 		static opencascade::handle<TColStd_HArray1OfReal> DeflCurvIntervals(const Adaptor2d_Curve2d & C);
 
@@ -1071,7 +1071,7 @@ GeomAbs_CurveType
 
 Description
 -----------
-Returns the type of the curve in the current interval: line, circle, ellipse, hyperbola, parabola, beziercurve, bsplinecurve, othercurve.
+Returns the type of the curve in the current interval: Line, Circle, Ellipse, Hyperbola, Parabola, BezierCurve, BSplineCurve, OtherCurve.
 ") GetType;
 		static GeomAbs_CurveType GetType(const Adaptor2d_Curve2d & C);
 
@@ -1109,7 +1109,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>.
+Stores in <T> the parameters bounding the intervals of continuity <S>.
 ") Intervals;
 		static void Intervals(const Adaptor2d_Curve2d & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1218,7 +1218,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <s>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <S>. And returns the number of intervals.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const Adaptor2d_Curve2d & C, const GeomAbs_Shape S);
 
@@ -1309,7 +1309,7 @@ float
 
 Description
 -----------
-Returns the parametric resolution corresponding to the real space resolution <r3d>.
+Returns the parametric resolution corresponding to the real space resolution <R3d>.
 ") Resolution;
 		static Standard_Real Resolution(const Adaptor2d_Curve2d & C, const Standard_Real R3d);
 
@@ -1328,7 +1328,7 @@ gp_Pnt2d
 
 Description
 -----------
-Computes the point of parameter u on the curve.
+Computes the point of parameter U on the curve.
 ") Value;
 		static gp_Pnt2d Value(const Adaptor2d_Curve2d & C, const Standard_Real U);
 
@@ -1538,7 +1538,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the parameters bounding the intervals of subdivision of curve according to curvature deflection. value of deflection is defined in method. //!.
+Returns the parameters bounding the intervals of subdivision of curve according to Curvature deflection. Value of deflection is defined in method. //!.
 ") DeflCurvIntervals;
 		static opencascade::handle<TColStd_HArray1OfReal> DeflCurvIntervals(const Adaptor3d_Curve & C);
 
@@ -1648,7 +1648,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		static void Intervals(Adaptor3d_Curve & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -1739,7 +1739,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(Adaptor3d_Curve & C, const GeomAbs_Shape S);
 
@@ -1876,7 +1876,7 @@ None
 
 Description
 -----------
-Calculates all the distances as above between uinf and usup for c1 and between vinf and vsup for c2.
+Calculates all the distances as above between Uinf and Usup for C1 and between Vinf and Vsup for C2.
 ") Extrema_ECC;
 		 Extrema_ECC();
 
@@ -1895,7 +1895,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u,v)=distance(c1(u),c2(v)) has an extremum when gradient(f)=0. the algorithm uses evtushenko's global optimization solver.
+It calculates all the distances. The function F(u,v)=distance(C1(u),C2(v)) has an extremum when gradient(f)=0. The algorithm uses Evtushenko's global optimization solver.
 ") Extrema_ECC;
 		 Extrema_ECC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2);
 
@@ -1918,7 +1918,7 @@ None
 
 Description
 -----------
-Calculates all the distances as above between uinf and usup for c1 and between vinf and vsup for c2.
+Calculates all the distances as above between Uinf and Usup for C1 and between Vinf and Vsup for C2.
 ") Extrema_ECC;
 		 Extrema_ECC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup);
 
@@ -1931,7 +1931,7 @@ bool
 
 Description
 -----------
-Get flag for single extrema computation. works on parametric solver only.
+Get flag for single extrema computation. Works on parametric solver only.
 ") GetSingleSolutionFlag;
 		Standard_Boolean GetSingleSolutionFlag();
 
@@ -1944,7 +1944,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1957,7 +1957,7 @@ bool
 
 Description
 -----------
-Returns state of myparallel flag.
+Returns state of myParallel flag.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -2003,7 +2003,7 @@ None
 
 Description
 -----------
-Returns the points of the nth extremum distance. p1 is on the first curve, p2 on the second one.
+Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnCurv & P2);
 
@@ -2044,7 +2044,7 @@ None
 
 Description
 -----------
-Set flag for single extrema computation. works on parametric solver only.
+Set flag for single extrema computation. Works on parametric solver only.
 ") SetSingleSolutionFlag;
 		void SetSingleSolutionFlag(const Standard_Boolean theSingleSolutionFlag);
 
@@ -2080,7 +2080,7 @@ float
 
 Description
 -----------
-Returns the value of the nth square extremum distance.
+Returns the value of the Nth square extremum distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N = 1);
 
@@ -2107,7 +2107,7 @@ None
 
 Description
 -----------
-Calculates all the distances as above between uinf and usup for c1 and between vinf and vsup for c2.
+Calculates all the distances as above between Uinf and Usup for C1 and between Vinf and Vsup for C2.
 ") Extrema_ECC2d;
 		 Extrema_ECC2d();
 
@@ -2126,7 +2126,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u,v)=distance(c1(u),c2(v)) has an extremum when gradient(f)=0. the algorithm uses evtushenko's global optimization solver.
+It calculates all the distances. The function F(u,v)=distance(C1(u),C2(v)) has an extremum when gradient(f)=0. The algorithm uses Evtushenko's global optimization solver.
 ") Extrema_ECC2d;
 		 Extrema_ECC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2);
 
@@ -2149,7 +2149,7 @@ None
 
 Description
 -----------
-Calculates all the distances as above between uinf and usup for c1 and between vinf and vsup for c2.
+Calculates all the distances as above between Uinf and Usup for C1 and between Vinf and Vsup for C2.
 ") Extrema_ECC2d;
 		 Extrema_ECC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup);
 
@@ -2162,7 +2162,7 @@ bool
 
 Description
 -----------
-Get flag for single extrema computation. works on parametric solver only.
+Get flag for single extrema computation. Works on parametric solver only.
 ") GetSingleSolutionFlag;
 		Standard_Boolean GetSingleSolutionFlag();
 
@@ -2175,7 +2175,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2188,7 +2188,7 @@ bool
 
 Description
 -----------
-Returns state of myparallel flag.
+Returns state of myParallel flag.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -2234,7 +2234,7 @@ None
 
 Description
 -----------
-Returns the points of the nth extremum distance. p1 is on the first curve, p2 on the second one.
+Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
 
@@ -2275,7 +2275,7 @@ None
 
 Description
 -----------
-Set flag for single extrema computation. works on parametric solver only.
+Set flag for single extrema computation. Works on parametric solver only.
 ") SetSingleSolutionFlag;
 		void SetSingleSolutionFlag(const Standard_Boolean theSingleSolutionFlag);
 
@@ -2311,7 +2311,7 @@ float
 
 Description
 -----------
-Returns the value of the nth square extremum distance.
+Returns the value of the Nth square extremum distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N = 1);
 
@@ -2360,7 +2360,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Zeros are searched between uinf and usup. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_ELPCOfLocateExtPC;
 		 Extrema_ELPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
 
@@ -2380,7 +2380,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_ELPCOfLocateExtPC;
 		 Extrema_ELPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real TolF = 1.0e-10);
 
@@ -2401,7 +2401,7 @@ None
 
 Description
 -----------
-Initializes the fields of the algorithm.
+initializes the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
 
@@ -2432,7 +2432,7 @@ bool
 
 Description
 -----------
-Returns true if the <n>th extremum distance is a minimum.
+Returns True if the <N>th extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -2481,7 +2481,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the point of the <n>th extremum distance.
+Returns the point of the <N>th extremum distance.
 ") Point;
 		const Extrema_POnCurv & Point(const Standard_Integer N);
 
@@ -2499,7 +2499,7 @@ float
 
 Description
 -----------
-Returns the value of the <n>th extremum square distance.
+Returns the value of the <N>th extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -2519,7 +2519,7 @@ dist2: float
 
 Description
 -----------
-If the curve is a trimmed curve, dist1 is a square distance between <p> and the point of parameter firstparameter <p1> and dist2 is a square distance between <p> and the point of parameter lastparameter <p2>.
+if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
 ") TrimmedSquareDistances;
 		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & P1, gp_Pnt & P2);
 
@@ -2568,7 +2568,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Zeros are searched between uinf and usup. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_ELPCOfLocateExtPC2d;
 		 Extrema_ELPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
 
@@ -2588,7 +2588,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_ELPCOfLocateExtPC2d;
 		 Extrema_ELPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real TolF = 1.0e-10);
 
@@ -2609,7 +2609,7 @@ None
 
 Description
 -----------
-Initializes the fields of the algorithm.
+initializes the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
 
@@ -2640,7 +2640,7 @@ bool
 
 Description
 -----------
-Returns true if the <n>th extremum distance is a minimum.
+Returns True if the <N>th extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -2689,7 +2689,7 @@ Extrema_POnCurv2d
 
 Description
 -----------
-Returns the point of the <n>th extremum distance.
+Returns the point of the <N>th extremum distance.
 ") Point;
 		const Extrema_POnCurv2d & Point(const Standard_Integer N);
 
@@ -2707,7 +2707,7 @@ float
 
 Description
 -----------
-Returns the value of the <n>th extremum square distance.
+Returns the value of the <N>th extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -2727,7 +2727,7 @@ dist2: float
 
 Description
 -----------
-If the curve is a trimmed curve, dist1 is a square distance between <p> and the point of parameter firstparameter <p1> and dist2 is a square distance between <p> and the point of parameter lastparameter <p2>.
+if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
 ") TrimmedSquareDistances;
 		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & P1, gp_Pnt2d & P2);
 
@@ -2776,7 +2776,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_EPCOfELPCOfLocateExtPC;
 		 Extrema_EPCOfELPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -2800,7 +2800,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Zeros are searched between umin and usup. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_EPCOfELPCOfLocateExtPC;
 		 Extrema_EPCOfELPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -2821,7 +2821,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -2844,7 +2844,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -2862,7 +2862,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C);
 
@@ -2884,7 +2884,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -2915,7 +2915,7 @@ bool
 
 Description
 -----------
-Returns true if the nth extremum distance is a minimum.
+Returns True if the Nth extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -2946,7 +2946,7 @@ None
 
 Description
 -----------
-The algorithm is done with the point p. an exception is raised if the fields have not been initialized.
+the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const gp_Pnt & P);
 
@@ -2964,7 +2964,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the point of the nth extremum distance.
+Returns the point of the Nth extremum distance.
 ") Point;
 		const Extrema_POnCurv & Point(const Standard_Integer N);
 
@@ -2982,7 +2982,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -3031,7 +3031,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_EPCOfELPCOfLocateExtPC2d;
 		 Extrema_EPCOfELPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3055,7 +3055,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Zeros are searched between umin and usup. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_EPCOfELPCOfLocateExtPC2d;
 		 Extrema_EPCOfELPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3076,7 +3076,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3099,7 +3099,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3117,7 +3117,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C);
 
@@ -3139,7 +3139,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3170,7 +3170,7 @@ bool
 
 Description
 -----------
-Returns true if the nth extremum distance is a minimum.
+Returns True if the Nth extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -3201,7 +3201,7 @@ None
 
 Description
 -----------
-The algorithm is done with the point p. an exception is raised if the fields have not been initialized.
+the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const gp_Pnt2d & P);
 
@@ -3219,7 +3219,7 @@ Extrema_POnCurv2d
 
 Description
 -----------
-Returns the point of the nth extremum distance.
+Returns the point of the Nth extremum distance.
 ") Point;
 		const Extrema_POnCurv2d & Point(const Standard_Integer N);
 
@@ -3237,7 +3237,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -3286,7 +3286,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_EPCOfExtPC;
 		 Extrema_EPCOfExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3310,7 +3310,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Zeros are searched between umin and usup. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_EPCOfExtPC;
 		 Extrema_EPCOfExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3331,7 +3331,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3354,7 +3354,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3372,7 +3372,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C);
 
@@ -3394,7 +3394,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3425,7 +3425,7 @@ bool
 
 Description
 -----------
-Returns true if the nth extremum distance is a minimum.
+Returns True if the Nth extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -3456,7 +3456,7 @@ None
 
 Description
 -----------
-The algorithm is done with the point p. an exception is raised if the fields have not been initialized.
+the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const gp_Pnt & P);
 
@@ -3474,7 +3474,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the point of the nth extremum distance.
+Returns the point of the Nth extremum distance.
 ") Point;
 		const Extrema_POnCurv & Point(const Standard_Integer N);
 
@@ -3492,7 +3492,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -3541,7 +3541,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_EPCOfExtPC2d;
 		 Extrema_EPCOfExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3565,7 +3565,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. nbu is used to locate the close points to find the zeros. zeros are searched between umin and usup. tol and tolu are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(un-un-1) < tolu and abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. NbU is used to locate the close points to find the zeros. Zeros are searched between umin and usup. Tol and TolU are used to decide to stop the iterations according to the following condition: if n is the number of iterations, abs(Un-Un-1) < TolU and abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_EPCOfExtPC2d;
 		 Extrema_EPCOfExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3586,7 +3586,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3609,7 +3609,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3627,7 +3627,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C);
 
@@ -3649,7 +3649,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Standard_Integer NbU, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU, const Standard_Real TolF);
 
@@ -3680,7 +3680,7 @@ bool
 
 Description
 -----------
-Returns true if the nth extremum distance is a minimum.
+Returns True if the Nth extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -3711,7 +3711,7 @@ None
 
 Description
 -----------
-The algorithm is done with the point p. an exception is raised if the fields have not been initialized.
+the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const gp_Pnt2d & P);
 
@@ -3729,7 +3729,7 @@ Extrema_POnCurv2d
 
 Description
 -----------
-Returns the point of the nth extremum distance.
+Returns the point of the Nth extremum distance.
 ") Point;
 		const Extrema_POnCurv2d & Point(const Standard_Integer N);
 
@@ -3747,7 +3747,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -3839,7 +3839,7 @@ bool
 
 Description
 -----------
-Get flag for single extrema computation. works on parametric solver only.
+Get flag for single extrema computation. Works on parametric solver only.
 ") GetSingleSolutionFlag;
 		Standard_Boolean GetSingleSolutionFlag();
 
@@ -3898,7 +3898,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -3911,7 +3911,7 @@ bool
 
 Description
 -----------
-Returns true if the two curves are parallel.
+Returns True if the two curves are parallel.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -3957,7 +3957,7 @@ None
 
 Description
 -----------
-Returns the points of the nth extremum distance. p1 is on the first curve, p2 on the second one.
+Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnCurv & P2);
 
@@ -4035,7 +4035,7 @@ None
 
 Description
 -----------
-Set flag for single extrema computation. works on parametric solver only.
+Set flag for single extrema computation. Works on parametric solver only.
 ") SetSingleSolutionFlag;
 		void SetSingleSolutionFlag(const Standard_Boolean theSingleSolutionFlag);
 
@@ -4072,7 +4072,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N = 1);
 
@@ -4096,7 +4096,7 @@ distP22: float
 
 Description
 -----------
-If the curve is a trimmed curve, dist11 is a square distance between the point on c1 of parameter firstparameter and the point of parameter firstparameter on c2.
+if the curve is a trimmed curve, dist11 is a square distance between the point on C1 of parameter FirstParameter and the point of parameter FirstParameter on C2.
 ") TrimmedSquareDistances;
 		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & P11, gp_Pnt & P12, gp_Pnt & P21, gp_Pnt & P22);
 
@@ -4182,7 +4182,7 @@ bool
 
 Description
 -----------
-Get flag for single extrema computation. works on parametric solver only.
+Get flag for single extrema computation. Works on parametric solver only.
 ") GetSingleSolutionFlag;
 		Standard_Boolean GetSingleSolutionFlag();
 
@@ -4204,7 +4204,7 @@ None
 
 Description
 -----------
-Initializes the fields.
+initializes the fields.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C2, const Standard_Real V1, const Standard_Real V2, const Standard_Real TolC1 = 1.0e-10, const Standard_Real TolC2 = 1.0e-10);
 
@@ -4217,7 +4217,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -4230,7 +4230,7 @@ bool
 
 Description
 -----------
-Returns true if the two curves are parallel.
+Returns True if the two curves are parallel.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -4283,7 +4283,7 @@ None
 
 Description
 -----------
-Returns the points of the nth extremum distance. p1 is on the first curve, p2 on the second one.
+Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
 
@@ -4301,7 +4301,7 @@ None
 
 Description
 -----------
-Set flag for single extrema computation. works on parametric solver only.
+Set flag for single extrema computation. Works on parametric solver only.
 ") SetSingleSolutionFlag;
 		void SetSingleSolutionFlag(const Standard_Boolean theSingleSolutionFlag);
 
@@ -4319,7 +4319,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N = 1);
 
@@ -4343,7 +4343,7 @@ distP22: float
 
 Description
 -----------
-If the curve is a trimmed curve, dist11 is a square distance between the point on c1 of parameter firstparameter and the point of parameter firstparameter on c2.
+if the curve is a trimmed curve, dist11 is a square distance between the point on C1 of parameter FirstParameter and the point of parameter FirstParameter on C2.
 ") TrimmedSquareDistances;
 		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & P11, gp_Pnt2d & P12, gp_Pnt2d & P21, gp_Pnt2d & P22);
 
@@ -4391,7 +4391,7 @@ None
 
 Description
 -----------
-It calculates all the distances between c and s.
+It calculates all the distances between C and S.
 ") Extrema_ExtCS;
 		 Extrema_ExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Real TolC, const Standard_Real TolS);
 
@@ -4418,7 +4418,7 @@ None
 
 Description
 -----------
-It calculates all the distances between c and s. ucinf and ucmax are the start and end parameters of the curve.
+It calculates all the distances between C and S. UCinf and UCmax are the start and end parameters of the curve.
 ") Extrema_ExtCS;
 		 Extrema_ExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Real UCinf, const Standard_Real UCsup, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolC, const Standard_Real TolS);
 
@@ -4475,7 +4475,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -4488,7 +4488,7 @@ bool
 
 Description
 -----------
-Returns true if the curve is on a parallel surface.
+Returns True if the curve is on a parallel surface.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -4521,7 +4521,7 @@ None
 
 Description
 -----------
-Computes the distances. an exception is raised if the fieds have not been initialized.
+Computes the distances. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -4541,7 +4541,7 @@ None
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnSurf & P2);
 
@@ -4559,7 +4559,7 @@ float
 
 Description
 -----------
-Returns the value of the nth resulting square distance.
+Returns the value of the Nth resulting square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -4606,7 +4606,7 @@ None
 
 Description
 -----------
-Calculates the distance between two lines. angtol is used to test if the lines are parallel: angle(c1,c2) < angtol.
+Calculates the distance between two lines. AngTol is used to test if the lines are parallel: Angle(C1,C2) < AngTol.
 ") Extrema_ExtElC;
 		 Extrema_ExtElC(const gp_Lin & C1, const gp_Lin & C2, const Standard_Real AngTol);
 
@@ -4702,7 +4702,7 @@ None
 
 Description
 -----------
-Calculates the distance between two circles. the circles can be parallel or identical.
+Calculates the distance between two circles. The circles can be parallel or identical.
 ") Extrema_ExtElC;
 		 Extrema_ExtElC(const gp_Circ & C1, const gp_Circ & C2);
 
@@ -4715,7 +4715,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -4728,7 +4728,7 @@ bool
 
 Description
 -----------
-Returns true if the two curves are parallel.
+Returns True if the two curves are parallel.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -4761,7 +4761,7 @@ None
 
 Description
 -----------
-Returns the points of the nth extremum distance. p1 is on the first curve, p2 on the second one.
+Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnCurv & P2);
 
@@ -4779,7 +4779,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N = 1);
 
@@ -4826,7 +4826,7 @@ None
 
 Description
 -----------
-Calculates the distance between two lines. angtol is used to test if the lines are parallel: angle(c1,c2) < angtol.
+Calculates the distance between two lines. AngTol is used to test if the lines are parallel: Angle(C1,C2) < AngTol.
 ") Extrema_ExtElC2d;
 		 Extrema_ExtElC2d(const gp_Lin2d & C1, const gp_Lin2d & C2, const Standard_Real AngTol);
 
@@ -4922,7 +4922,7 @@ None
 
 Description
 -----------
-Calculates the distance between two circles. the circles can be parallel or identical.
+Calculates the distance between two circles. The circles can be parallel or identical.
 ") Extrema_ExtElC2d;
 		 Extrema_ExtElC2d(const gp_Circ2d & C1, const gp_Circ2d & C2);
 
@@ -4992,7 +4992,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -5005,7 +5005,7 @@ bool
 
 Description
 -----------
-Returns true if the two curves are parallel.
+Returns True if the two curves are parallel.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -5038,7 +5038,7 @@ None
 
 Description
 -----------
-Returns the points of the nth extremum distance. p1 is on the first curve, p2 on the second one.
+Returns the points of the Nth extremum distance. P1 is on the first curve, P2 on the second one.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
 
@@ -5056,7 +5056,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N = 1);
 
@@ -5102,7 +5102,7 @@ None
 
 Description
 -----------
-Calculates the distances between a line and a plane. the line can be on the plane or on a parallel plane.
+Calculates the distances between a line and a plane. The line can be on the plane or on a parallel plane.
 ") Extrema_ExtElCS;
 		 Extrema_ExtElCS(const gp_Lin & C, const gp_Pln & S);
 
@@ -5305,7 +5305,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -5318,7 +5318,7 @@ bool
 
 Description
 -----------
-Returns true if the curve is on a parallel surface.
+Returns True if the curve is on a parallel surface.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -5560,7 +5560,7 @@ None
 
 Description
 -----------
-Returns the points of the nth extremum distance. p1 is on the curve, p2 on the surface.
+Returns the points of the Nth extremum distance. P1 is on the curve, P2 on the surface.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnCurv & P1, Extrema_POnSurf & P2);
 
@@ -5578,7 +5578,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N = 1);
 
@@ -5624,7 +5624,7 @@ None
 
 Description
 -----------
-Calculates the distances between 2 planes. these planes can be parallel.
+Calculates the distances between 2 planes. These planes can be parallel.
 ") Extrema_ExtElSS;
 		 Extrema_ExtElSS(const gp_Pln & S1, const gp_Pln & S2);
 
@@ -5662,7 +5662,7 @@ None
 
 Description
 -----------
-Calculates the distances between 2 spheres. these spheres can be parallel.
+Calculates the distances between 2 spheres. These spheres can be parallel.
 ") Extrema_ExtElSS;
 		 Extrema_ExtElSS(const gp_Sphere & S1, const gp_Sphere & S2);
 
@@ -5732,7 +5732,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -5745,7 +5745,7 @@ bool
 
 Description
 -----------
-Returns true if the two surfaces are parallel.
+Returns True if the two surfaces are parallel.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -5892,7 +5892,7 @@ None
 
 Description
 -----------
-Returns the points for the nth resulting distance. p1 is on the first surface, p2 on the second one.
+Returns the points for the Nth resulting distance. P1 is on the first surface, P2 on the second one.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnSurf & P1, Extrema_POnSurf & P2);
 
@@ -5910,7 +5910,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N = 1);
 
@@ -5959,7 +5959,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Zeros are searched between uinf and usup. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_ExtPC;
 		 Extrema_ExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
 
@@ -5979,7 +5979,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_ExtPC;
 		 Extrema_ExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real TolF = 1.0e-10);
 
@@ -6000,7 +6000,7 @@ None
 
 Description
 -----------
-Initializes the fields of the algorithm.
+initializes the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
 
@@ -6031,7 +6031,7 @@ bool
 
 Description
 -----------
-Returns true if the <n>th extremum distance is a minimum.
+Returns True if the <N>th extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -6080,7 +6080,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the point of the <n>th extremum distance.
+Returns the point of the <N>th extremum distance.
 ") Point;
 		const Extrema_POnCurv & Point(const Standard_Integer N);
 
@@ -6098,7 +6098,7 @@ float
 
 Description
 -----------
-Returns the value of the <n>th extremum square distance.
+Returns the value of the <N>th extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -6118,7 +6118,7 @@ dist2: float
 
 Description
 -----------
-If the curve is a trimmed curve, dist1 is a square distance between <p> and the point of parameter firstparameter <p1> and dist2 is a square distance between <p> and the point of parameter lastparameter <p2>.
+if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
 ") TrimmedSquareDistances;
 		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & P1, gp_Pnt & P2);
 
@@ -6167,7 +6167,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. zeros are searched between uinf and usup. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Zeros are searched between uinf and usup. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_ExtPC2d;
 		 Extrema_ExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
 
@@ -6187,7 +6187,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches all the zeros inside the definition range of the curve. tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(f(un)-f(un-1)) < tol.
+It calculates all the distances. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches all the zeros inside the definition range of the curve. Tol is used to decide to stop the iterations according to the following condition: if n is the number of iterations, the algorithm stops when abs(F(Un)-F(Un-1)) < Tol.
 ") Extrema_ExtPC2d;
 		 Extrema_ExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real TolF = 1.0e-10);
 
@@ -6208,7 +6208,7 @@ None
 
 Description
 -----------
-Initializes the fields of the algorithm.
+initializes the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real TolF = 1.0e-10);
 
@@ -6239,7 +6239,7 @@ bool
 
 Description
 -----------
-Returns true if the <n>th extremum distance is a minimum.
+Returns True if the <N>th extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -6288,7 +6288,7 @@ Extrema_POnCurv2d
 
 Description
 -----------
-Returns the point of the <n>th extremum distance.
+Returns the point of the <N>th extremum distance.
 ") Point;
 		const Extrema_POnCurv2d & Point(const Standard_Integer N);
 
@@ -6306,7 +6306,7 @@ float
 
 Description
 -----------
-Returns the value of the <n>th extremum square distance.
+Returns the value of the <N>th extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -6326,7 +6326,7 @@ dist2: float
 
 Description
 -----------
-If the curve is a trimmed curve, dist1 is a square distance between <p> and the point of parameter firstparameter <p1> and dist2 is a square distance between <p> and the point of parameter lastparameter <p2>.
+if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <P1> and dist2 is a square distance between <P> and the point of parameter LastParameter <P2>.
 ") TrimmedSquareDistances;
 		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt2d & P1, gp_Pnt2d & P2);
 
@@ -6375,7 +6375,7 @@ None
 
 Description
 -----------
-Calculates the extremum distance between the point p and the segment [uinf,usup] of the line c.
+Calculates the extremum distance between the point P and the segment [Uinf,Usup] of the line C.
 ") Extrema_ExtPElC;
 		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Lin & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -6397,7 +6397,7 @@ None
 
 Description
 -----------
-Calculates the 2 extremum distances between the point p and the segment [uinf,usup] of the circle c. tol is used to determine if p is on the axis of the circle or if an extremum is on an endpoint of the segment. if p is on the axis of the circle, there are infinite solution then isdone(me)=false. the conditions on the uinf and usup are: 0. <= uinf <= 2.*pi and usup > uinf. if usup > uinf + 2.*pi, then only the solutions in the range [uinf,uinf+2.*pi[ are computed.
+Calculates the 2 extremum distances between the point P and the segment [Uinf,Usup] of the circle C. Tol is used to determine if P is on the axis of the circle or if an extremum is on an endpoint of the segment. If P is on the axis of the circle, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
 ") Extrema_ExtPElC;
 		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Circ & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -6419,7 +6419,7 @@ None
 
 Description
 -----------
-Calculates the 4 extremum distances between the point p and the segment [uinf,usup] of the ellipse c. tol is used to determine if the point is on the axis of the ellipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. if p is on the axis of the ellipse, there are infinite solution then isdone(me)=false. the conditions on the uinf and usup are: 0. <= uinf <= 2.*pi and usup > uinf. if usup > uinf + 2.*pi, then only the solutions in the range [uinf,uinf+2.*pi[ are computed.
+Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the ellipse C. Tol is used to determine if the point is on the axis of the ellipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. If P is on the axis of the ellipse, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
 ") Extrema_ExtPElC;
 		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Elips & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -6441,7 +6441,7 @@ None
 
 Description
 -----------
-Calculates the extremum distances between the point p and the segment [uinf,usup] of the hyperbola c. tol is used to determine if two solutions u and v are identical; the condition is: dist(c(u),c(v)) < tol.
+Calculates the extremum distances between the point P and the segment [Uinf,Usup] of the hyperbola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
 ") Extrema_ExtPElC;
 		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Hypr & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -6463,7 +6463,7 @@ None
 
 Description
 -----------
-Calculates the 4 extremum distances between the point p and the segment [uinf,usup] of the parabola c. tol is used to determine if two solutions u and v are identical; the condition is: dist(c(u),c(v)) < tol.
+Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the parabola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
 ") Extrema_ExtPElC;
 		 Extrema_ExtPElC(const gp_Pnt & P, const gp_Parab & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -6494,7 +6494,7 @@ bool
 
 Description
 -----------
-Returns true if the nth extremum distance is a minimum.
+Returns True if the Nth extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -6635,7 +6635,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the point of the nth extremum distance.
+Returns the point of the Nth extremum distance.
 ") Point;
 		const Extrema_POnCurv & Point(const Standard_Integer N);
 
@@ -6653,7 +6653,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -6702,7 +6702,7 @@ None
 
 Description
 -----------
-Calculates the extremum distance between the point p and the segment [uinf,usup] of the line l.
+Calculates the extremum distance between the point P and the segment [Uinf,Usup] of the line L.
 ") Extrema_ExtPElC2d;
 		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Lin2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -6724,7 +6724,7 @@ None
 
 Description
 -----------
-Calculates the 2 extremum distances between the point p and the segment [uinf,usup] of the circle c. tol is used to determine if p is on the axis of the circle or if an extremum is on an endpoint of the segment. if p is on the axis of the circle, there are infinite solution then isdone(me)=false. the conditions on the uinf and usup are: 0. <= uinf <= 2.*pi and usup > uinf. if usup > uinf + 2.*pi, then only the solutions in the range [uinf,uinf+2.*pi[ are computed.
+Calculates the 2 extremum distances between the point P and the segment [Uinf,Usup] of the circle C. Tol is used to determine if P is on the axis of the circle or if an extremum is on an endpoint of the segment. If P is on the axis of the circle, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
 ") Extrema_ExtPElC2d;
 		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Circ2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -6746,7 +6746,7 @@ None
 
 Description
 -----------
-Calculates the 4 extremum distances between the point p and the segment [uinf,usup] of the ellipse c. tol is used to determine if the point is on the axis of the ellipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. if p is on the axis of the ellipse, there are infinite solution then isdone(me)=false. the conditions on the uinf and usup are: 0. <= uinf <= 2.*pi and usup > uinf. if usup > uinf + 2.*pi, then only the solutions in the range [uinf,uinf+2.*pi[ are computed.
+Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the ellipse C. Tol is used to determine if the point is on the axis of the ellipse and if the major radius is equal to the minor radius or if an extremum is on an endpoint of the segment. If P is on the axis of the ellipse, there are infinite solution then IsDone(me)=False. The conditions on the Uinf and Usup are: 0. <= Uinf <= 2.*PI and Usup > Uinf. If Usup > Uinf + 2.*PI, then only the solutions in the range [Uinf,Uinf+2.*PI[ are computed.
 ") Extrema_ExtPElC2d;
 		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Elips2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -6768,7 +6768,7 @@ None
 
 Description
 -----------
-Calculates the extremum distances between the point p and the segment [uinf,usup] of the hyperbola c. tol is used to determine if two solutions u and v are identical; the condition is: dist(c(u),c(v)) < tol.
+Calculates the extremum distances between the point P and the segment [Uinf,Usup] of the hyperbola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
 ") Extrema_ExtPElC2d;
 		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Hypr2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -6790,7 +6790,7 @@ None
 
 Description
 -----------
-Calculates the 4 extremum distances between the point p and the segment [uinf,usup] of the parabola c. tol is used to determine if two solutions u and v are identical; the condition is: dist(c(u),c(v)) < tol.
+Calculates the 4 extremum distances between the point P and the segment [Uinf,Usup] of the parabola C. Tol is used to determine if two solutions u and v are identical; the condition is: dist(C(u),C(v)) < Tol.
 ") Extrema_ExtPElC2d;
 		 Extrema_ExtPElC2d(const gp_Pnt2d & P, const gp_Parab2d & C, const Standard_Real Tol, const Standard_Real Uinf, const Standard_Real Usup);
 
@@ -6821,7 +6821,7 @@ bool
 
 Description
 -----------
-Returns true if the nth extremum distance is a minimum.
+Returns True if the Nth extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -6962,7 +6962,7 @@ Extrema_POnCurv2d
 
 Description
 -----------
-Returns the point of the nth extremum distance.
+Returns the point of the Nth extremum distance.
 ") Point;
 		const Extrema_POnCurv2d & Point(const Standard_Integer N);
 
@@ -6980,7 +6980,7 @@ float
 
 Description
 -----------
-Returns the value of the nth extremum square distance.
+Returns the value of the Nth extremum square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -7027,7 +7027,7 @@ None
 
 Description
 -----------
-It calculates all the distances between a point and a cylinder from gp. tol is used to test if the point is on the axis.
+It calculates all the distances between a point and a cylinder from gp. Tol is used to test if the point is on the axis.
 ") Extrema_ExtPElS;
 		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Cylinder & S, const Standard_Real Tol);
 
@@ -7047,7 +7047,7 @@ None
 
 Description
 -----------
-It calculates all the distances between a point and a plane from gp. tol is used to test if the point is on the plane.
+It calculates all the distances between a point and a plane from gp. Tol is used to test if the point is on the plane.
 ") Extrema_ExtPElS;
 		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Pln & S, const Standard_Real Tol);
 
@@ -7067,7 +7067,7 @@ None
 
 Description
 -----------
-It calculates all the distances between a point and a cone from gp. tol is used to test if the point is at the apex or on the axis.
+It calculates all the distances between a point and a cone from gp. Tol is used to test if the point is at the apex or on the axis.
 ") Extrema_ExtPElS;
 		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Cone & S, const Standard_Real Tol);
 
@@ -7087,7 +7087,7 @@ None
 
 Description
 -----------
-It calculates all the distances between a point and a torus from gp. tol is used to test if the point is on the axis.
+It calculates all the distances between a point and a torus from gp. Tol is used to test if the point is on the axis.
 ") Extrema_ExtPElS;
 		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Torus & S, const Standard_Real Tol);
 
@@ -7107,7 +7107,7 @@ None
 
 Description
 -----------
-It calculates all the distances between a point and a sphere from gp. tol is used to test if the point is at the center.
+It calculates all the distances between a point and a sphere from gp. Tol is used to test if the point is at the center.
 ") Extrema_ExtPElS;
 		 Extrema_ExtPElS(const gp_Pnt & P, const gp_Sphere & S, const Standard_Real Tol);
 
@@ -7120,7 +7120,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -7251,7 +7251,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") Point;
 		const Extrema_POnSurf & Point(const Standard_Integer N);
 
@@ -7269,7 +7269,7 @@ float
 
 Description
 -----------
-Returns the value of the nth resulting square distance.
+Returns the value of the Nth resulting square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -7321,7 +7321,7 @@ None
 
 Description
 -----------
-It calculates all the distances between a point from gp and a surface.
+It calculates all the distances between a point from gp and a Surface.
 ") Extrema_ExtPExtS;
 		 Extrema_ExtPExtS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
 
@@ -7342,7 +7342,7 @@ None
 
 Description
 -----------
-It calculates all the distances between a point from gp and a surface.
+It calculates all the distances between a point from gp and a Surface.
 ") Extrema_ExtPExtS;
 		 Extrema_ExtPExtS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfLinearExtrusion> & S, const Standard_Real TolU, const Standard_Real TolV);
 
@@ -7379,7 +7379,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -7428,7 +7428,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") Point;
 		const Extrema_POnSurf & Point(const Standard_Integer N);
 
@@ -7446,7 +7446,7 @@ float
 
 Description
 -----------
-Returns the value of the nth resulting square distance.
+Returns the value of the Nth resulting square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -7500,7 +7500,7 @@ None
 
 Description
 -----------
-It calculates all the distances between a point from gp and a surfaceptr from adaptor3d.
+It calculates all the distances between a point from gp and a SurfacePtr from Adaptor3d.
 ") Extrema_ExtPRevS;
 		 Extrema_ExtPRevS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV);
 
@@ -7521,7 +7521,7 @@ None
 
 Description
 -----------
-It calculates all the distances between a point from gp and a surfaceptr from adaptor3d.
+It calculates all the distances between a point from gp and a SurfacePtr from Adaptor3d.
 ") Extrema_ExtPRevS;
 		 Extrema_ExtPRevS(const gp_Pnt & P, const opencascade::handle<GeomAdaptor_SurfaceOfRevolution> & S, const Standard_Real TolU, const Standard_Real TolV);
 
@@ -7558,7 +7558,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -7607,7 +7607,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") Point;
 		const Extrema_POnSurf & Point(const Standard_Integer N);
 
@@ -7625,7 +7625,7 @@ float
 
 Description
 -----------
-Returns the value of the nth resulting square distance.
+Returns the value of the Nth resulting square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -7677,7 +7677,7 @@ None
 
 Description
 -----------
-It calculates all the distances. nbu and nbv are used to locate the close points to find the zeros. they must be great enough such that if there is n extrema, there will be n extrema between p and the grid. tolu et tolv are used to determine the conditions to stop the iterations; at the iteration number n: (un - un-1) < tolu and (vn - vn-1) < tolv .
+It calculates all the distances. NbU and NbV are used to locate the close points to find the zeros. They must be great enough such that if there is N extrema, there will be N extrema between P and the grid. TolU et TolV are used to determine the conditions to stop the iterations; at the iteration number n: (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
 ") Extrema_ExtPS;
 		 Extrema_ExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const Standard_Real TolU, const Standard_Real TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
 
@@ -7704,7 +7704,7 @@ None
 
 Description
 -----------
-It calculates all the distances. nbu and nbv are used to locate the close points to find the zeros. they must be great enough such that if there is n extrema, there will be n extrema between p and the grid. tolu et tolv are used to determine the conditions to stop the iterations; at the iteration number n: (un - un-1) < tolu and (vn - vn-1) < tolv .
+It calculates all the distances. NbU and NbV are used to locate the close points to find the zeros. They must be great enough such that if there is N extrema, there will be N extrema between P and the grid. TolU et TolV are used to determine the conditions to stop the iterations; at the iteration number n: (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
 ") Extrema_ExtPS;
 		 Extrema_ExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const Standard_Real Uinf, const Standard_Real Usup, const Standard_Real Vinf, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
 
@@ -7741,7 +7741,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -7772,7 +7772,7 @@ None
 
 Description
 -----------
-Computes the distances. an exception is raised if the fieds have not been initialized.
+Computes the distances. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const gp_Pnt & P);
 
@@ -7790,7 +7790,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") Point;
 		const Extrema_POnSurf & Point(const Standard_Integer N);
 
@@ -7844,7 +7844,7 @@ float
 
 Description
 -----------
-Returns the value of the nth resulting square distance.
+Returns the value of the Nth resulting square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -7868,7 +7868,7 @@ dUlVl: float
 
 Description
 -----------
-If the surface is a trimmed surface, dufvf is a square distance between <p> and the point of parameter firstuparameter and firstvparameter <pufvf>. dufvl is a square distance between <p> and the point of parameter firstuparameter and lastvparameter <pufvl>. dulvf is a square distance between <p> and the point of parameter lastuparameter and firstvparameter <pulvf>. dulvl is a square distance between <p> and the point of parameter lastuparameter and lastvparameter <pulvl>.
+if the surface is a trimmed surface, dUfVf is a square distance between <P> and the point of parameter FirstUParameter and FirstVParameter <PUfVf>. dUfVl is a square distance between <P> and the point of parameter FirstUParameter and LastVParameter <PUfVl>. dUlVf is a square distance between <P> and the point of parameter LastUParameter and FirstVParameter <PUlVf>. dUlVl is a square distance between <P> and the point of parameter LastUParameter and LastVParameter <PUlVl>.
 ") TrimmedSquareDistances;
 		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & PUfVf, gp_Pnt & PUfVl, gp_Pnt & PUlVf, gp_Pnt & PUlVl);
 
@@ -7916,7 +7916,7 @@ None
 
 Description
 -----------
-It calculates all the distances between s1 and s2.
+It calculates all the distances between S1 and S2.
 ") Extrema_ExtSS;
 		 Extrema_ExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Real TolS1, const Standard_Real TolS2);
 
@@ -7945,7 +7945,7 @@ None
 
 Description
 -----------
-It calculates all the distances between s1 and s2.
+It calculates all the distances between S1 and S2.
 ") Extrema_ExtSS;
 		 Extrema_ExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Real Uinf1, const Standard_Real Usup1, const Standard_Real Vinf1, const Standard_Real Vsup1, const Standard_Real Uinf2, const Standard_Real Usup2, const Standard_Real Vinf2, const Standard_Real Vsup2, const Standard_Real TolS1, const Standard_Real TolS2);
 
@@ -7981,7 +7981,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -7994,7 +7994,7 @@ bool
 
 Description
 -----------
-Returns true if the surfaces are parallel.
+Returns True if the surfaces are parallel.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -8030,7 +8030,7 @@ None
 
 Description
 -----------
-Computes the distances. an exception is raised if the fieds have not been initialized.
+Computes the distances. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const Adaptor3d_Surface & S1, const Standard_Real Uinf1, const Standard_Real Usup1, const Standard_Real Vinf1, const Standard_Real Vsup1, const Standard_Real TolS1);
 
@@ -8050,7 +8050,7 @@ None
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") Points;
 		void Points(const Standard_Integer N, Extrema_POnSurf & P1, Extrema_POnSurf & P2);
 
@@ -8068,7 +8068,7 @@ float
 
 Description
 -----------
-Returns the value of the nth resulting square distance.
+Returns the value of the Nth resulting square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -8133,7 +8133,7 @@ bool
 
 Description
 -----------
-Calculation of fi'(u,v).
+Calculation of Fi'(U,V).
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & UV, math_Matrix & DF);
 
@@ -8165,7 +8165,7 @@ None
 
 Description
 -----------
-Sets the field mysurf of the function.
+sets the field mysurf of the function.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S);
 
@@ -8222,7 +8222,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the nth extremum on c.
+Returns the Nth extremum on C.
 ") PointOnCurve;
 		const Extrema_POnCurv & PointOnCurve(const Standard_Integer N);
 
@@ -8240,7 +8240,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Return the nth extremum on s.
+Return the Nth extremum on S.
 ") PointOnSurface;
 		const Extrema_POnSurf & PointOnSurface(const Standard_Integer N);
 
@@ -8253,7 +8253,7 @@ Extrema_SequenceOfPOnCurv
 
 Description
 -----------
-Change sequence of pointoncurv.
+Change Sequence of PointOnCurv.
 ") PointsOnCurve;
 		Extrema_SequenceOfPOnCurv & PointsOnCurve();
 
@@ -8266,7 +8266,7 @@ Extrema_SequenceOfPOnSurf
 
 Description
 -----------
-Change sequence of pointonsurf.
+Change Sequence of PointOnSurf.
 ") PointsOnSurf;
 		Extrema_SequenceOfPOnSurf & PointsOnSurf();
 
@@ -8284,7 +8284,7 @@ float
 
 Description
 -----------
-Return the value of the nth distance.
+Return the value of the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -8297,7 +8297,7 @@ TColStd_SequenceOfReal
 
 Description
 -----------
-Change sequence of squaredistance.
+Change Sequence of SquareDistance.
 ") SquareDistances;
 		TColStd_SequenceOfReal & SquareDistances();
 
@@ -8316,7 +8316,7 @@ bool
 
 Description
 -----------
-Calculation of fi(u,v).
+Calculation of Fi(U,V).
 ") Value;
 		Standard_Boolean Value(const math_Vector & UV, math_Vector & F);
 
@@ -8336,7 +8336,7 @@ bool
 
 Description
 -----------
-Calculation of fi(u,v) and fi'(u,v).
+Calculation of Fi(U,V) and Fi'(U,V).
 ") Values;
 		Standard_Boolean Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
 
@@ -8401,7 +8401,7 @@ bool
 
 Description
 -----------
-Calculate fi'(u,v).
+Calculate Fi'(U,V).
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & UV, math_Matrix & DF);
 
@@ -8433,7 +8433,7 @@ None
 
 Description
 -----------
-Sets the field mysurf of the function.
+sets the field mysurf of the function.
 ") Initialize;
 		void Initialize(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2);
 
@@ -8490,7 +8490,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Return the nth extremum on s1.
+Return the Nth extremum on S1.
 ") PointOnS1;
 		const Extrema_POnSurf & PointOnS1(const Standard_Integer N);
 
@@ -8508,7 +8508,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Renvoie le nieme extremum sur s2.
+Renvoie le Nieme extremum sur S2.
 ") PointOnS2;
 		const Extrema_POnSurf & PointOnS2(const Standard_Integer N);
 
@@ -8526,7 +8526,7 @@ float
 
 Description
 -----------
-Return the value of the nth distance.
+Return the value of the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -8545,7 +8545,7 @@ bool
 
 Description
 -----------
-Calculate fi(u,v).
+Calculate Fi(U,V).
 ") Value;
 		Standard_Boolean Value(const math_Vector & UV, math_Vector & F);
 
@@ -8565,7 +8565,7 @@ bool
 
 Description
 -----------
-Calculate fi(u,v) and fi'(u,v).
+Calculate Fi(U,V) and Fi'(U,V).
 ") Values;
 		Standard_Boolean Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
 
@@ -8702,7 +8702,7 @@ bool
 
 Description
 -----------
-Calculate fi'(u,v).
+Calculate Fi'(U,V).
 ") Derivatives;
 		Standard_Boolean Derivatives(const math_Vector & UV, math_Matrix & DF);
 
@@ -8733,7 +8733,7 @@ None
 
 Description
 -----------
-Sets the field mysurf of the function.
+sets the field mysurf of the function.
 ") Initialize;
 		void Initialize(const Adaptor3d_Surface & S);
 
@@ -8790,7 +8790,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the nth extremum.
+Returns the Nth extremum.
 ") Point;
 		const Extrema_POnSurf & Point(const Standard_Integer N);
 
@@ -8808,7 +8808,7 @@ None
 
 Description
 -----------
-Sets the field mysurf of the function.
+sets the field mysurf of the function.
 ") SetPoint;
 		void SetPoint(const gp_Pnt & P);
 
@@ -8826,7 +8826,7 @@ float
 
 Description
 -----------
-Return the value of the nth distance.
+Return the value of the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -8845,7 +8845,7 @@ bool
 
 Description
 -----------
-Calculate fi(u,v).
+Calculate Fi(U,V).
 ") Value;
 		Standard_Boolean Value(const math_Vector & UV, math_Vector & F);
 
@@ -8865,7 +8865,7 @@ bool
 
 Description
 -----------
-Calculate fi(u,v) and fi'(u,v).
+Calculate Fi(U,V) and Fi'(U,V).
 ") Values;
 		Standard_Boolean Values(const math_Vector & UV, math_Vector & F, math_Matrix & DF);
 
@@ -8916,7 +8916,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u,v)=distance(s1(u1,v1),s2(u2,v2)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surfaces. nbu and nbv are used to locate the close points on the surface and nbt on the curve to find the zeros.
+It calculates all the distances. The function F(u,v)=distance(S1(u1,v1),S2(u2,v2)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surfaces. NbU and NbV are used to locate the close points on the surface and NbT on the curve to find the zeros.
 ") Extrema_GenExtCS;
 		 Extrema_GenExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Integer NbT, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real Tol1, const Standard_Real Tol2);
 
@@ -8946,7 +8946,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surface. nbt,nbu and nbv are used to locate the close points to find the zeros.
+It calculates all the distances. The function F(u,v)=distance(P,S(u,v)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surface. NbT,NbU and NbV are used to locate the close points to find the zeros.
 ") Extrema_GenExtCS;
 		 Extrema_GenExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Integer NbT, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real tmin, const Standard_Real tsup, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real Tol1, const Standard_Real Tol2);
 
@@ -9005,7 +9005,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -9038,7 +9038,7 @@ None
 
 Description
 -----------
-The algorithm is done with s an exception is raised if the fields have not been initialized.
+the algorithm is done with S An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const Adaptor3d_Curve & C, const Standard_Integer NbT, const Standard_Real Tol1);
 
@@ -9060,7 +9060,7 @@ None
 
 Description
 -----------
-The algorithm is done with c an exception is raised if the fields have not been initialized.
+the algorithm is done with C An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const Adaptor3d_Curve & C, const Standard_Integer NbT, const Standard_Real tmin, const Standard_Real tsup, const Standard_Real Tol1);
 
@@ -9078,7 +9078,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") PointOnCurve;
 		const Extrema_POnCurv & PointOnCurve(const Standard_Integer N);
 
@@ -9096,7 +9096,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") PointOnSurface;
 		const Extrema_POnSurf & PointOnSurface(const Standard_Integer N);
 
@@ -9114,7 +9114,7 @@ float
 
 Description
 -----------
-Returns the value of the nth resulting square distance.
+Returns the value of the Nth resulting square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -9166,7 +9166,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surface. nbu and nbv are used to locate the close points to find the zeros. they must be great enough such that if there is n extrema, there will be n extrema between p and the grid. tolu et tolv are used to determine the conditions to stop the iterations; at the iteration number n: (un - un-1) < tolu and (vn - vn-1) < tolv .
+It calculates all the distances. The function F(u,v)=distance(P,S(u,v)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surface. NbU and NbV are used to locate the close points to find the zeros. They must be great enough such that if there is N extrema, there will be N extrema between P and the grid. TolU et TolV are used to determine the conditions to stop the iterations; at the iteration number n: (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
 ") Extrema_GenExtPS;
 		 Extrema_GenExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real TolU, const Standard_Real TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
 
@@ -9195,7 +9195,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surface. nbu and nbv are used to locate the close points to find the zeros. they must be great enough such that if there is n extrema, there will be n extrema between p and the grid. tolu et tolv are used to determine the conditions to stop the iterations; at the iteration number n: (un - un-1) < tolu and (vn - vn-1) < tolv .
+It calculates all the distances. The function F(u,v)=distance(P,S(u,v)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surface. NbU and NbV are used to locate the close points to find the zeros. They must be great enough such that if there is N extrema, there will be N extrema between P and the grid. TolU et TolV are used to determine the conditions to stop the iterations; at the iteration number n: (Un - Un-1) < TolU and (Vn - Vn-1) < TolV .
 ") Extrema_GenExtPS;
 		 Extrema_GenExtPS(const gp_Pnt & P, const Adaptor3d_Surface & S, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Standard_Real TolU, const Standard_Real TolV, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad);
 
@@ -9256,7 +9256,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -9287,7 +9287,7 @@ None
 
 Description
 -----------
-The algorithm is done with the point p. an exception is raised if the fields have not been initialized.
+the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const gp_Pnt & P);
 
@@ -9305,7 +9305,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") Point;
 		const Extrema_POnSurf & Point(const Standard_Integer N);
 
@@ -9359,7 +9359,7 @@ float
 
 Description
 -----------
-Returns the value of the nth resulting square distance.
+Returns the value of the Nth resulting square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -9409,7 +9409,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u,v)=distance(s1(u1,v1),s2(u2,v2)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surfaces. nbu and nbv are used to locate the close points to find the zeros.
+It calculates all the distances. The function F(u,v)=distance(S1(u1,v1),S2(u2,v2)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surfaces. NbU and NbV are used to locate the close points to find the zeros.
 ") Extrema_GenExtSS;
 		 Extrema_GenExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real Tol1, const Standard_Real Tol2);
 
@@ -9440,7 +9440,7 @@ None
 
 Description
 -----------
-It calculates all the distances. the function f(u,v)=distance(p,s(u,v)) has an extremum when gradient(f)=0. the algorithm searches all the zeros inside the definition ranges of the surface. nbu and nbv are used to locate the close points to find the zeros.
+It calculates all the distances. The function F(u,v)=distance(P,S(u,v)) has an extremum when gradient(F)=0. The algorithm searches all the zeros inside the definition ranges of the surface. NbU and NbV are used to locate the close points to find the zeros.
 ") Extrema_GenExtSS;
 		 Extrema_GenExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Integer NbU, const Standard_Integer NbV, const Standard_Real U1min, const Standard_Real U1sup, const Standard_Real V1min, const Standard_Real V1sup, const Standard_Real U2min, const Standard_Real U2sup, const Standard_Real V2min, const Standard_Real V2sup, const Standard_Real Tol1, const Standard_Real Tol2);
 
@@ -9499,7 +9499,7 @@ bool
 
 Description
 -----------
-Returns true if the distances are found.
+Returns True if the distances are found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -9531,7 +9531,7 @@ None
 
 Description
 -----------
-The algorithm is done with s1 an exception is raised if the fields have not been initialized.
+the algorithm is done with S1 An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const Adaptor3d_Surface & S1, const Standard_Real Tol1);
 
@@ -9554,7 +9554,7 @@ None
 
 Description
 -----------
-The algorithm is done withs1 an exception is raised if the fields have not been initialized.
+the algorithm is done withS1 An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const Adaptor3d_Surface & S1, const Standard_Real U1min, const Standard_Real U1sup, const Standard_Real V1min, const Standard_Real V1sup, const Standard_Real Tol1);
 
@@ -9572,7 +9572,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") PointOnS1;
 		const Extrema_POnSurf & PointOnS1(const Standard_Integer N);
 
@@ -9590,7 +9590,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the nth resulting distance.
+Returns the point of the Nth resulting distance.
 ") PointOnS2;
 		const Extrema_POnSurf & PointOnS2(const Standard_Integer N);
 
@@ -9608,7 +9608,7 @@ float
 
 Description
 -----------
-Returns the value of the nth resulting square distance.
+Returns the value of the Nth resulting square distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -9659,7 +9659,7 @@ None
 
 Description
 -----------
-Calculates the distance with two close points. the close points are defined by the parameter values t for c and (u,v) for s. the function f(t,u,v)=distance(c(t),s(u,v)) has an extremun when gradient(f)=0. the algorithm searches a zero near the close points.
+Calculates the distance with two close points. The close points are defined by the parameter values T for C and (U,V) for S. The function F(t,u,v)=distance(C(t),S(u,v)) has an extremun when gradient(F)=0. The algorithm searches a zero near the close points.
 ") Extrema_GenLocateExtCS;
 		 Extrema_GenLocateExtCS(const Adaptor3d_Curve & C, const Adaptor3d_Surface & S, const Standard_Real T, const Standard_Real U, const Standard_Real V, const Standard_Real Tol1, const Standard_Real Tol2);
 
@@ -9672,7 +9672,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -9709,7 +9709,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the point of the extremum distance on c.
+Returns the point of the extremum distance on C.
 ") PointOnCurve;
 		const Extrema_POnCurv & PointOnCurve();
 
@@ -9722,7 +9722,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the extremum distance on s.
+Returns the point of the extremum distance on S.
 ") PointOnSurface;
 		const Extrema_POnSurf & PointOnSurface();
 
@@ -9782,7 +9782,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -9803,7 +9803,7 @@ bool
 
 Description
 -----------
-Returns true if uv point theu0, thev0 is point of local minimum of square distance between point thep and points thes(u, v), u, v are in small area around theu0, thev0.
+Returns True if UV point theU0, theV0 is point of local minimum of square distance between point theP and points theS(U, V), U, V are in small area around theU0, theV0.
 ") IsMinDist;
 		static Standard_Boolean IsMinDist(const gp_Pnt & theP, const Adaptor3d_Surface & theS, const Standard_Real theU0, const Standard_Real theV0);
 
@@ -9824,7 +9824,7 @@ None
 
 Description
 -----------
-Calculates the extrema between the point and the surface using a close point. the close point is defined by the parameter values theu0 and thev0. type of the algorithm depends on the isdistancecriteria flag. if flag value is false - normal projection criteria will be used. if flag value is true - distance criteria will be used.
+Calculates the extrema between the point and the surface using a close point. The close point is defined by the parameter values theU0 and theV0. Type of the algorithm depends on the isDistanceCriteria flag. If flag value is false - normal projection criteria will be used. If flag value is true - distance criteria will be used.
 ") Perform;
 		void Perform(const gp_Pnt & theP, const Standard_Real theU0, const Standard_Real theV0, const Standard_Boolean isDistanceCriteria = Standard_False);
 
@@ -9902,7 +9902,7 @@ None
 
 Description
 -----------
-Calculates the distance with two close points. the close points are defined by the parameter values (u1,v1) for s1 and (u2,v2) for s2. the function f(u1,v1,u2,v2)=distance(s1(u1,v1),s2(u2,v2)) has an extremun when gradient(f)=0. the algorithm searches a zero near the close points.
+Calculates the distance with two close points. The close points are defined by the parameter values (U1,V1) for S1 and (U2,V2) for S2. The function F(u1,v1,u2,v2)=distance(S1(u1,v1),S2(u2,v2)) has an extremun when gradient(F)=0. The algorithm searches a zero near the close points.
 ") Extrema_GenLocateExtSS;
 		 Extrema_GenLocateExtSS(const Adaptor3d_Surface & S1, const Adaptor3d_Surface & S2, const Standard_Real U1, const Standard_Real V1, const Standard_Real U2, const Standard_Real V2, const Standard_Real Tol1, const Standard_Real Tol2);
 
@@ -9915,7 +9915,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -9953,7 +9953,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the extremum distance on s1.
+Returns the point of the extremum distance on S1.
 ") PointOnS1;
 		const Extrema_POnSurf & PointOnS1();
 
@@ -9966,7 +9966,7 @@ Extrema_POnSurf
 
 Description
 -----------
-Returns the point of the extremum distance on s2.
+Returns the point of the extremum distance on S2.
 ") PointOnS2;
 		const Extrema_POnSurf & PointOnS2();
 
@@ -10356,7 +10356,7 @@ None
 
 Description
 -----------
-Curve and surface should exist during all the lifetime of extrema_globoptfunccquadric.
+Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCQuadric.
 ") Extrema_GlobOptFuncCQuadric;
 		 Extrema_GlobOptFuncCQuadric(const Adaptor3d_Curve * C);
 
@@ -10449,7 +10449,7 @@ None
 
 Description
 -----------
-Parameters of quadric for point on curve defined by thect.
+Parameters of quadric for point on curve defined by theCT.
 ") QuadricParameters;
 		void QuadricParameters(const math_Vector & theCT, math_Vector & theUV);
 
@@ -10500,7 +10500,7 @@ None
 
 Description
 -----------
-Curve and surface should exist during all the lifetime of extrema_globoptfunccs.
+Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncCS.
 ") Extrema_GlobOptFuncCS;
 		 Extrema_GlobOptFuncCS(const Adaptor3d_Curve * C, const Adaptor3d_Surface * S);
 
@@ -10622,7 +10622,7 @@ None
 
 Description
 -----------
-Curve and surface should exist during all the lifetime of extrema_globoptfuncconics.
+Curve and surface should exist during all the lifetime of Extrema_GlobOptFuncConicS.
 ") Extrema_GlobOptFuncConicS;
 		 Extrema_GlobOptFuncConicS(const Adaptor3d_Curve * C, const Adaptor3d_Surface * S);
 
@@ -10680,7 +10680,7 @@ float
 
 Description
 -----------
-Parameter of conic for point on surface defined by theuv.
+Parameter of conic for point on surface defined by theUV.
 ") ConicParameter;
 		Standard_Real ConicParameter(const math_Vector & theUV);
 
@@ -10768,7 +10768,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searches the zero near the close point.
+Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searches the zero near the close point.
 ") Extrema_LocECC;
 		 Extrema_LocECC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real U0, const Standard_Real V0, const Standard_Real TolU, const Standard_Real TolV);
 
@@ -10781,7 +10781,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -10800,7 +10800,7 @@ None
 
 Description
 -----------
-Returns the points of the extremum distance. p1 is on the first curve, p2 on the second one.
+Returns the points of the extremum distance. P1 is on the first curve, P2 on the second one.
 ") Point;
 		void Point(Extrema_POnCurv & P1, Extrema_POnCurv & P2);
 
@@ -10850,7 +10850,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searches the zero near the close point.
+Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searches the zero near the close point.
 ") Extrema_LocECC2d;
 		 Extrema_LocECC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const Standard_Real U0, const Standard_Real V0, const Standard_Real TolU, const Standard_Real TolV);
 
@@ -10863,7 +10863,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -10882,7 +10882,7 @@ None
 
 Description
 -----------
-Returns the points of the extremum distance. p1 is on the first curve, p2 on the second one.
+Returns the points of the extremum distance. P1 is on the first curve, P2 on the second one.
 ") Point;
 		void Point(Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
 
@@ -10943,7 +10943,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
 ") Extrema_LocEPCOfLocateExtPC;
 		 Extrema_LocEPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real U0, const Standard_Real TolU);
 
@@ -10966,7 +10966,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin et usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin et Usup. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
 ") Extrema_LocEPCOfLocateExtPC;
 		 Extrema_LocEPCOfLocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
 
@@ -10987,7 +10987,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
 
@@ -11000,7 +11000,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -11013,7 +11013,7 @@ bool
 
 Description
 -----------
-Returns true if the extremum distance is a minimum.
+Returns True if the extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin();
 
@@ -11032,7 +11032,7 @@ None
 
 Description
 -----------
-The algorithm is done with the point p. an exception is raised if the fields have not been initialized.
+the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const gp_Pnt & P, const Standard_Real U0);
 
@@ -11106,7 +11106,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
 ") Extrema_LocEPCOfLocateExtPC2d;
 		 Extrema_LocEPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real U0, const Standard_Real TolU);
 
@@ -11129,7 +11129,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin et usup. tolu is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolu.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin et Usup. TolU is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolU.
 ") Extrema_LocEPCOfLocateExtPC2d;
 		 Extrema_LocEPCOfLocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
 
@@ -11150,7 +11150,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolU);
 
@@ -11163,7 +11163,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -11176,7 +11176,7 @@ bool
 
 Description
 -----------
-Returns true if the extremum distance is a minimum.
+Returns True if the extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin();
 
@@ -11195,7 +11195,7 @@ None
 
 Description
 -----------
-The algorithm is done with the point p. an exception is raised if the fields have not been initialized.
+the algorithm is done with the point P. An exception is raised if the fields have not been initialized.
 ") Perform;
 		void Perform(const gp_Pnt2d & P, const Standard_Real U0);
 
@@ -11256,7 +11256,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searches the zero near the close point.
+Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searches the zero near the close point.
 ") Extrema_LocateExtCC;
 		 Extrema_LocateExtCC(const Adaptor3d_Curve & C1, const Adaptor3d_Curve & C2, const Standard_Real U0, const Standard_Real V0);
 
@@ -11269,7 +11269,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -11288,7 +11288,7 @@ None
 
 Description
 -----------
-Returns the points of the extremum distance. p1 is on the first curve, p2 on the second one.
+Returns the points of the extremum distance. P1 is on the first curve, P2 on the second one.
 ") Point;
 		void Point(Extrema_POnCurv & P1, Extrema_POnCurv & P2);
 
@@ -11336,7 +11336,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by a parameter value on each curve. the function f(u,v)=distance(c1(u),c2(v)) has an extremun when gradient(f)=0. the algorithm searches the zero near the close point.
+Calculates the distance with a close point. The close point is defined by a parameter value on each curve. The function F(u,v)=distance(C1(u),C2(v)) has an extremun when gradient(f)=0. The algorithm searches the zero near the close point.
 ") Extrema_LocateExtCC2d;
 		 Extrema_LocateExtCC2d(const Adaptor2d_Curve2d & C1, const Adaptor2d_Curve2d & C2, const Standard_Real U0, const Standard_Real V0);
 
@@ -11349,7 +11349,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -11368,7 +11368,7 @@ None
 
 Description
 -----------
-Returns the points of the extremum distance. p1 is on the first curve, p2 on the second one.
+Returns the points of the extremum distance. P1 is on the first curve, P2 on the second one.
 ") Point;
 		void Point(Extrema_POnCurv2d & P1, Extrema_POnCurv2d & P2);
 
@@ -11429,7 +11429,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolF is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolF.
 ") Extrema_LocateExtPC;
 		 Extrema_LocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real U0, const Standard_Real TolF);
 
@@ -11452,7 +11452,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin et usup. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin et Usup. TolF is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolF.
 ") Extrema_LocateExtPC;
 		 Extrema_LocateExtPC(const gp_Pnt & P, const Adaptor3d_Curve & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolF);
 
@@ -11473,7 +11473,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolF);
 
@@ -11486,7 +11486,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -11499,7 +11499,7 @@ bool
 
 Description
 -----------
-Returns true if the extremum distance is a minimum.
+Returns True if the extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin();
 
@@ -11592,7 +11592,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. TolF is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolF.
 ") Extrema_LocateExtPC2d;
 		 Extrema_LocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real U0, const Standard_Real TolF);
 
@@ -11615,7 +11615,7 @@ None
 
 Description
 -----------
-Calculates the distance with a close point. the close point is defined by the parameter value u0. the function f(u)=distance(p,c(u)) has an extremum when g(u)=df/du=0. the algorithm searches a zero near the close point. zeros are searched between umin et usup. tolf is used to decide to stop the iterations. at the nth iteration, the criteria is: abs(un - un-1) < tolf.
+Calculates the distance with a close point. The close point is defined by the parameter value U0. The function F(u)=distance(P,C(u)) has an extremum when g(u)=dF/du=0. The algorithm searches a zero near the close point. Zeros are searched between Umin et Usup. TolF is used to decide to stop the iterations. At the nth iteration, the criteria is: abs(Un - Un-1) < TolF.
 ") Extrema_LocateExtPC2d;
 		 Extrema_LocateExtPC2d(const gp_Pnt2d & P, const Adaptor2d_Curve2d & C, const Standard_Real U0, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolF);
 
@@ -11636,7 +11636,7 @@ None
 
 Description
 -----------
-Sets the fields of the algorithm.
+sets the fields of the algorithm.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real TolF);
 
@@ -11649,7 +11649,7 @@ bool
 
 Description
 -----------
-Returns true if the distance is found.
+Returns True if the distance is found.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -11662,7 +11662,7 @@ bool
 
 Description
 -----------
-Returns true if the extremum distance is a minimum.
+Returns True if the extremum distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin();
 
@@ -11771,7 +11771,7 @@ DF: float
 
 Description
 -----------
-Calculation of f'(u).
+Calculation of F'(U).
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
 
@@ -11802,7 +11802,7 @@ None
 
 Description
 -----------
-Sets the field mycurve of the function.
+sets the field mycurve of the function.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C);
 
@@ -11820,7 +11820,7 @@ bool
 
 Description
 -----------
-Shows if the nth distance is a minimum.
+Shows if the Nth distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -11851,7 +11851,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the nth extremum.
+Returns the Nth extremum.
 ") Point;
 		const Extrema_POnCurv & Point(const Standard_Integer N);
 
@@ -11864,7 +11864,7 @@ float
 
 Description
 -----------
-Computes a tol value. if 1st derivative of curve |d1|<tol, it is considered d1=0.
+Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
 ") SearchOfTolerance;
 		Standard_Real SearchOfTolerance();
 
@@ -11882,7 +11882,7 @@ None
 
 Description
 -----------
-Sets the field p of the function.
+sets the field P of the function.
 ") SetPoint;
 		void SetPoint(const gp_Pnt & P);
 
@@ -11900,7 +11900,7 @@ float
 
 Description
 -----------
-Returns the nth distance.
+Returns the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -11937,7 +11937,7 @@ F: float
 
 Description
 -----------
-Calculation of f(u).
+Calculation of F(U).
 ") Value;
 		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
 
@@ -11956,7 +11956,7 @@ DF: float
 
 Description
 -----------
-Calculation of f(u) and f'(u).
+Calculation of F(U) and F'(U).
 ") Values;
 		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -12020,7 +12020,7 @@ DF: float
 
 Description
 -----------
-Calculation of f'(u).
+Calculation of F'(U).
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
 
@@ -12051,7 +12051,7 @@ None
 
 Description
 -----------
-Sets the field mycurve of the function.
+sets the field mycurve of the function.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C);
 
@@ -12069,7 +12069,7 @@ bool
 
 Description
 -----------
-Shows if the nth distance is a minimum.
+Shows if the Nth distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -12100,7 +12100,7 @@ Extrema_POnCurv2d
 
 Description
 -----------
-Returns the nth extremum.
+Returns the Nth extremum.
 ") Point;
 		const Extrema_POnCurv2d & Point(const Standard_Integer N);
 
@@ -12113,7 +12113,7 @@ float
 
 Description
 -----------
-Computes a tol value. if 1st derivative of curve |d1|<tol, it is considered d1=0.
+Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
 ") SearchOfTolerance;
 		Standard_Real SearchOfTolerance();
 
@@ -12131,7 +12131,7 @@ None
 
 Description
 -----------
-Sets the field p of the function.
+sets the field P of the function.
 ") SetPoint;
 		void SetPoint(const gp_Pnt2d & P);
 
@@ -12149,7 +12149,7 @@ float
 
 Description
 -----------
-Returns the nth distance.
+Returns the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -12186,7 +12186,7 @@ F: float
 
 Description
 -----------
-Calculation of f(u).
+Calculation of F(U).
 ") Value;
 		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
 
@@ -12205,7 +12205,7 @@ DF: float
 
 Description
 -----------
-Calculation of f(u) and f'(u).
+Calculation of F(U) and F'(U).
 ") Values;
 		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -12269,7 +12269,7 @@ DF: float
 
 Description
 -----------
-Calculation of f'(u).
+Calculation of F'(U).
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
 
@@ -12300,7 +12300,7 @@ None
 
 Description
 -----------
-Sets the field mycurve of the function.
+sets the field mycurve of the function.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C);
 
@@ -12318,7 +12318,7 @@ bool
 
 Description
 -----------
-Shows if the nth distance is a minimum.
+Shows if the Nth distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -12349,7 +12349,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the nth extremum.
+Returns the Nth extremum.
 ") Point;
 		const Extrema_POnCurv & Point(const Standard_Integer N);
 
@@ -12362,7 +12362,7 @@ float
 
 Description
 -----------
-Computes a tol value. if 1st derivative of curve |d1|<tol, it is considered d1=0.
+Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
 ") SearchOfTolerance;
 		Standard_Real SearchOfTolerance();
 
@@ -12380,7 +12380,7 @@ None
 
 Description
 -----------
-Sets the field p of the function.
+sets the field P of the function.
 ") SetPoint;
 		void SetPoint(const gp_Pnt & P);
 
@@ -12398,7 +12398,7 @@ float
 
 Description
 -----------
-Returns the nth distance.
+Returns the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -12435,7 +12435,7 @@ F: float
 
 Description
 -----------
-Calculation of f(u).
+Calculation of F(U).
 ") Value;
 		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
 
@@ -12454,7 +12454,7 @@ DF: float
 
 Description
 -----------
-Calculation of f(u) and f'(u).
+Calculation of F(U) and F'(U).
 ") Values;
 		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -12518,7 +12518,7 @@ DF: float
 
 Description
 -----------
-Calculation of f'(u).
+Calculation of F'(U).
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
 
@@ -12549,7 +12549,7 @@ None
 
 Description
 -----------
-Sets the field mycurve of the function.
+sets the field mycurve of the function.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C);
 
@@ -12567,7 +12567,7 @@ bool
 
 Description
 -----------
-Shows if the nth distance is a minimum.
+Shows if the Nth distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -12598,7 +12598,7 @@ Extrema_POnCurv2d
 
 Description
 -----------
-Returns the nth extremum.
+Returns the Nth extremum.
 ") Point;
 		const Extrema_POnCurv2d & Point(const Standard_Integer N);
 
@@ -12611,7 +12611,7 @@ float
 
 Description
 -----------
-Computes a tol value. if 1st derivative of curve |d1|<tol, it is considered d1=0.
+Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
 ") SearchOfTolerance;
 		Standard_Real SearchOfTolerance();
 
@@ -12629,7 +12629,7 @@ None
 
 Description
 -----------
-Sets the field p of the function.
+sets the field P of the function.
 ") SetPoint;
 		void SetPoint(const gp_Pnt2d & P);
 
@@ -12647,7 +12647,7 @@ float
 
 Description
 -----------
-Returns the nth distance.
+Returns the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -12684,7 +12684,7 @@ F: float
 
 Description
 -----------
-Calculation of f(u).
+Calculation of F(U).
 ") Value;
 		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
 
@@ -12703,7 +12703,7 @@ DF: float
 
 Description
 -----------
-Calculation of f(u) and f'(u).
+Calculation of F(U) and F'(U).
 ") Values;
 		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -12767,7 +12767,7 @@ DF: float
 
 Description
 -----------
-Calculation of f'(u).
+Calculation of F'(U).
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
 
@@ -12798,7 +12798,7 @@ None
 
 Description
 -----------
-Sets the field mycurve of the function.
+sets the field mycurve of the function.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C);
 
@@ -12816,7 +12816,7 @@ bool
 
 Description
 -----------
-Shows if the nth distance is a minimum.
+Shows if the Nth distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -12847,7 +12847,7 @@ Extrema_POnCurv
 
 Description
 -----------
-Returns the nth extremum.
+Returns the Nth extremum.
 ") Point;
 		const Extrema_POnCurv & Point(const Standard_Integer N);
 
@@ -12860,7 +12860,7 @@ float
 
 Description
 -----------
-Computes a tol value. if 1st derivative of curve |d1|<tol, it is considered d1=0.
+Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
 ") SearchOfTolerance;
 		Standard_Real SearchOfTolerance();
 
@@ -12878,7 +12878,7 @@ None
 
 Description
 -----------
-Sets the field p of the function.
+sets the field P of the function.
 ") SetPoint;
 		void SetPoint(const gp_Pnt & P);
 
@@ -12896,7 +12896,7 @@ float
 
 Description
 -----------
-Returns the nth distance.
+Returns the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -12933,7 +12933,7 @@ F: float
 
 Description
 -----------
-Calculation of f(u).
+Calculation of F(U).
 ") Value;
 		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
 
@@ -12952,7 +12952,7 @@ DF: float
 
 Description
 -----------
-Calculation of f(u) and f'(u).
+Calculation of F(U) and F'(U).
 ") Values;
 		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -13016,7 +13016,7 @@ DF: float
 
 Description
 -----------
-Calculation of f'(u).
+Calculation of F'(U).
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real U, Standard_Real &OutValue);
 
@@ -13047,7 +13047,7 @@ None
 
 Description
 -----------
-Sets the field mycurve of the function.
+sets the field mycurve of the function.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C);
 
@@ -13065,7 +13065,7 @@ bool
 
 Description
 -----------
-Shows if the nth distance is a minimum.
+Shows if the Nth distance is a minimum.
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -13096,7 +13096,7 @@ Extrema_POnCurv2d
 
 Description
 -----------
-Returns the nth extremum.
+Returns the Nth extremum.
 ") Point;
 		const Extrema_POnCurv2d & Point(const Standard_Integer N);
 
@@ -13109,7 +13109,7 @@ float
 
 Description
 -----------
-Computes a tol value. if 1st derivative of curve |d1|<tol, it is considered d1=0.
+Computes a Tol value. If 1st derivative of curve |D1|<Tol, it is considered D1=0.
 ") SearchOfTolerance;
 		Standard_Real SearchOfTolerance();
 
@@ -13127,7 +13127,7 @@ None
 
 Description
 -----------
-Sets the field p of the function.
+sets the field P of the function.
 ") SetPoint;
 		void SetPoint(const gp_Pnt2d & P);
 
@@ -13145,7 +13145,7 @@ float
 
 Description
 -----------
-Returns the nth distance.
+Returns the Nth distance.
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -13182,7 +13182,7 @@ F: float
 
 Description
 -----------
-Calculation of f(u).
+Calculation of F(U).
 ") Value;
 		Standard_Boolean Value(const Standard_Real U, Standard_Real &OutValue);
 
@@ -13201,7 +13201,7 @@ DF: float
 
 Description
 -----------
-Calculation of f(u) and f'(u).
+Calculation of F(U) and F'(U).
 ") Values;
 		Standard_Boolean Values(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -13247,7 +13247,7 @@ None
 
 Description
 -----------
-Creation of a point on curve with a parameter value on the curve and a pnt from gp.
+Creation of a point on curve with a parameter value on the curve and a Pnt from gp.
 ") Extrema_POnCurv;
 		 Extrema_POnCurv(const Standard_Real U, const gp_Pnt & P);
 
@@ -13279,7 +13279,7 @@ None
 
 Description
 -----------
-Sets the point and parameter values.
+sets the point and parameter values.
 ") SetValues;
 		void SetValues(const Standard_Real U, const gp_Pnt & P);
 
@@ -13338,7 +13338,7 @@ None
 
 Description
 -----------
-Creation of a point on curve with a parameter value on the curve and a pnt from gp.
+Creation of a point on curve with a parameter value on the curve and a Pnt from gp.
 ") Extrema_POnCurv2d;
 		 Extrema_POnCurv2d(const Standard_Real U, const gp_Pnt2d & P);
 
@@ -13370,7 +13370,7 @@ None
 
 Description
 -----------
-Sets the point and parameter values.
+sets the point and parameter values.
 ") SetValues;
 		void SetValues(const Standard_Real U, const gp_Pnt2d & P);
 
@@ -13430,7 +13430,7 @@ None
 
 Description
 -----------
-Creation of a point on surface with parameter values on the surface and a pnt from gp.
+Creation of a point on surface with parameter values on the surface and a Pnt from gp.
 ") Extrema_POnSurf;
 		 Extrema_POnSurf(const Standard_Real U, const Standard_Real V, const gp_Pnt & P);
 
@@ -13468,7 +13468,7 @@ None
 
 Description
 -----------
-Sets the params of current ponsurf instance. (e.g. to the point to be projected).
+Sets the params of current POnSurf instance. (e.g. to the point to be projected).
 ") SetParameters;
 		void SetParameters(const Standard_Real theU, const Standard_Real theV, const gp_Pnt & thePnt);
 
@@ -13508,7 +13508,7 @@ None
 
 Description
 -----------
-Empty constructor.
+empty constructor.
 ") Extrema_POnSurfParams;
 		 Extrema_POnSurfParams();
 
@@ -13528,7 +13528,7 @@ None
 
 Description
 -----------
-Creation of a point on surface with parameter values on the surface and a pnt from gp.
+Creation of a point on surface with parameter values on the surface and a Pnt from gp.
 ") Extrema_POnSurfParams;
 		 Extrema_POnSurfParams(const Standard_Real theU, const Standard_Real theV, const gp_Pnt & thePnt);
 
@@ -13559,7 +13559,7 @@ theIndexV: int
 
 Description
 -----------
-Query the u and v indices of an element that contains this point.
+Query the U and V indices of an element that contains this point.
 ") GetIndices;
 		void GetIndices(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -13609,7 +13609,7 @@ None
 
 Description
 -----------
-Sets the u and v indices of an element that contains this point.
+Sets the U and V indices of an element that contains this point.
 ") SetIndices;
 		void SetIndices(const Standard_Integer theIndexU, const Standard_Integer theIndexV);
 

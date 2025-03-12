@@ -315,7 +315,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Tries to get a format in the file. returns an empty string if the file could not be read or does not have a fileformat information.
+tries to get a format in the file. returns an empty string if the file could not be read or does not have a FileFormat information.
 ") FileFormat;
 		static TCollection_ExtendedString FileFormat(TCollection_ExtendedString aFileName);
 
@@ -334,7 +334,7 @@ TCollection_ExtendedString
 
 Description
 -----------
-Tries to get a format from the stream. returns an empty string if the file could not be read or does not have a fileformat information.
+tries to get a format from the stream. returns an empty string if the file could not be read or does not have a FileFormat information.
 ") FileFormat;
 		static TCollection_ExtendedString FileFormat(std::istream & theIStream, opencascade::handle<Storage_Data> & theData);
 
@@ -450,7 +450,7 @@ opencascade::handle<PCDM_ReadWriter>
 
 Description
 -----------
-Returns the convenient reader for a file.
+returns the convenient Reader for a File.
 ") Reader;
 		static opencascade::handle<PCDM_ReadWriter> Reader(TCollection_ExtendedString aFileName);
 
@@ -463,7 +463,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns pcdm_readwriter_1.
+returns PCDM_ReadWriter_1.
 ") Version;
 		virtual TCollection_AsciiString Version();
 
@@ -624,7 +624,7 @@ None
 
 Description
 -----------
-Retrieves the content of the file into a new document.
+retrieves the content of the file into a new Document.
 ") Read;
 		virtual void Read(TCollection_ExtendedString aFileName, const opencascade::handle<CDM_Document> & aNewDocument, const opencascade::handle<CDM_Application> & anApplication, const opencascade::handle<PCDM_ReaderFilter> & theFilter = opencascade::handle<PCDM_ReaderFilter>(), const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -734,7 +734,7 @@ None
 
 Description
 -----------
-Creates a filter to read only sub-labels of a label-path. like, for '0:2' it will read all attributes for labels '0:2', '0:2:1', etc.
+Creates a filter to read only sub-labels of a label-path. Like, for '0:2' it will read all attributes for labels '0:2', '0:2:1', etc.
 ") PCDM_ReaderFilter;
 		 PCDM_ReaderFilter(TCollection_AsciiString theEntryToRead);
 
@@ -788,7 +788,7 @@ None
 
 Description
 -----------
-Adds attribute to read by type. disables the skipped attributes added.
+Adds attribute to read by type. Disables the skipped attributes added.
 ") AddRead;
 		void AddRead(const opencascade::handle<Standard_Type> & theRead);
 
@@ -806,7 +806,7 @@ None
 
 Description
 -----------
-Adds attribute to read by type name. disables the skipped attributes added.
+Adds attribute to read by type name. Disables the skipped attributes added.
 ") AddRead;
 		void AddRead(TCollection_AsciiString theRead);
 
@@ -1023,7 +1023,7 @@ None
 
 Description
 -----------
-Starts the tree iterator. it is used for fast searching of passed labels if the whole tree of labels is parsed. so, on each iteration step the methods up and down must be called after the iteration start.
+Starts the tree iterator. It is used for fast searching of passed labels if the whole tree of labels is parsed. So, on each iteration step the methods Up and Down must be called after the iteration start.
 ") StartIteration;
 		virtual void StartIteration();
 
@@ -1156,7 +1156,7 @@ None
 
 Description
 -----------
-Warning! the constructor does not initialization.
+Warning! The constructor does not initialization.
 ") PCDM_ReferenceIterator;
 		 PCDM_ReferenceIterator(const opencascade::handle<Message_Messenger> & theMessageDriver);
 
@@ -1251,7 +1251,7 @@ theOStream: Standard_OStream
 
 Description
 -----------
-Write <thedocument> to theostream.
+Write <theDocument> to theOStream.
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1371,7 +1371,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns pcdm_readwriter_1.
+returns PCDM_ReadWriter_1.
 ") Version;
 		TCollection_AsciiString Version();
 
@@ -1607,7 +1607,7 @@ opencascade::handle<PCDM_Document>
 
 Description
 -----------
-Raises notimplemented.
+raises NotImplemented.
 ") Make;
 		virtual opencascade::handle<PCDM_Document> Make(const opencascade::handle<CDM_Document> & aDocument);
 
@@ -1626,7 +1626,7 @@ None
 
 Description
 -----------
-By default, puts in the sequence the document returns by the previous make method.
+By default, puts in the Sequence the document returns by the previous Make method.
 ") Make;
 		virtual void Make(const opencascade::handle<CDM_Document> & aDocument, PCDM_SequenceOfDocument & Documents);
 
@@ -1700,7 +1700,7 @@ None
 
 Description
 -----------
-Warning! raises drivererror if an error occurs during inside the make method. stores the content of the document into a new file. //! by default write will use make method to build a persistent document and the schema method to write the persistent document.
+Warning! raises DriverError if an error occurs during inside the Make method. stores the content of the Document into a new file. //! by default Write will use Make method to build a persistent document and the Schema method to write the persistent document.
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & aDocument, TCollection_ExtendedString aFileName, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -1719,7 +1719,7 @@ theOStream: Standard_OStream
 
 Description
 -----------
-Write <thedocument> to theostream.
+Write <theDocument> to theOStream.
 ") Write;
 		virtual void Write(const opencascade::handle<CDM_Document> & theDocument, std::ostream &OutValue, const Message_ProgressRange & theRange = Message_ProgressRange());
 

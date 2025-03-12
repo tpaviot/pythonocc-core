@@ -123,7 +123,6 @@ CellFilter_Purge = NCollection_CellFilter_Action.CellFilter_Purge
 /* end templates declaration */
 
 /* typedefs */
-typedef void ( * NCollection_DelSeqNode ) ( NCollection_SeqNode *, opencascade::handle<NCollection_BaseAllocator>& theAl );
 typedef NCollection_Utf8String NCollection_String;
 typedef NCollection_UtfIterator<Standard_Utf16Char> NCollection_Utf16Iter;
 typedef NCollection_UtfString<Standard_Utf16Char> NCollection_Utf16String;

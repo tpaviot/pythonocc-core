@@ -113,7 +113,7 @@ opencascade::handle<ShapeAlgo_AlgoContainer>
 
 Description
 -----------
-Returns default algocontainer.
+Returns default AlgoContainer.
 ") AlgoContainer;
 		static opencascade::handle<ShapeAlgo_AlgoContainer> AlgoContainer();
 
@@ -126,7 +126,7 @@ None
 
 Description
 -----------
-Provides initerface to the algorithms from shape healing. creates and initializes default algocontainer.
+Provides initerface to the algorithms from Shape Healing. Creates and initializes default AlgoContainer.
 ") Init;
 		static void Init();
 
@@ -144,7 +144,7 @@ None
 
 Description
 -----------
-Sets default algocontainer.
+Sets default AlgoContainer.
 ") SetAlgoContainer;
 		static void SetAlgoContainer(const opencascade::handle<ShapeAlgo_AlgoContainer> & aContainer);
 
@@ -187,7 +187,7 @@ opencascade::handle<ShapeFix_EdgeProjAux>
 
 Description
 -----------
-Returns shapefix_edgeprojaux.
+Returns ShapeFix_EdgeProjAux.
 ") EdgeProjAux;
 		virtual opencascade::handle<ShapeFix_EdgeProjAux> EdgeProjAux();
 
@@ -200,7 +200,7 @@ opencascade::handle<ShapeFix_Shape>
 
 Description
 -----------
-Returns shapefix_shape.
+Returns ShapeFix_Shape.
 ") FixShape;
 		virtual opencascade::handle<ShapeFix_Shape> FixShape();
 

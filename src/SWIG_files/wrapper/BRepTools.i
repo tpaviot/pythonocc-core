@@ -134,7 +134,11 @@ bool
 
 Description
 -----------
-Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system @param theshape  [in] shape to activate triangulations @param thetriangulationidx [in] index defining what triangulation should be activated. starts from 0. exception will be thrown in case of invalid negative index @param thetoactivatestrictly [in] flag to activate exactly triangulation with defined thetriangulationidx index. in true case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. else the last available triangulation will be activated. return true if at least one active triangulation was changed.
+Activates triangulation data for each face of the shape from some deferred storage using specified shared input file system 
+Input parameter: theShape shape to activate triangulations 
+Input parameter: theTriangulationIdx index defining what triangulation should be activated. Starts from 0. Exception will be thrown in case of invalid negative index 
+Input parameter: theToActivateStrictly flag to activate exactly triangulation with defined theTriangulationIdx index. In True case if some face doesn't contain triangulation with this index, active triangulation will not be changed for it. Else the last available triangulation will be activated. 
+Return: True if at least one active triangulation was changed.
 ") ActivateTriangulation;
 		static Standard_Boolean ActivateTriangulation(const TopoDS_Shape & theShape, const Standard_Integer theTriangulationIdx, const Standard_Boolean theToActivateStrictly = false);
 
@@ -153,7 +157,7 @@ None
 
 Description
 -----------
-Adds to the box <b> the bounding values in the parametric space of f.
+Adds to the box <B> the bounding values in the parametric space of F.
 ") AddUVBounds;
 		static void AddUVBounds(const TopoDS_Face & F, Bnd_Box2d & B);
 
@@ -173,7 +177,7 @@ None
 
 Description
 -----------
-Adds to the box <b> the bounding values of the wire in the parametric space of f.
+Adds to the box <B> the bounding values of the wire in the parametric space of F.
 ") AddUVBounds;
 		static void AddUVBounds(const TopoDS_Face & F, const TopoDS_Wire & W, Bnd_Box2d & B);
 
@@ -193,7 +197,7 @@ None
 
 Description
 -----------
-Adds to the box <b> the bounding values of the edge in the parametric space of f.
+Adds to the box <B> the bounding values of the edge in the parametric space of F.
 ") AddUVBounds;
 		static void AddUVBounds(const TopoDS_Face & F, const TopoDS_Edge & E, Bnd_Box2d & B);
 
@@ -212,7 +216,7 @@ None
 
 Description
 -----------
-Check all locations of shape according criterium: atrsf.isnegative() || (abs(abs(atrsf.scalefactor()) - 1.) > toploc_location::scaleprec()) all sub-shapes having such locations are put in list theproblemshapes.
+Check all locations of shape according criterium: aTrsf.IsNegative() || (Abs(Abs(aTrsf.ScaleFactor()) - 1.) > TopLoc_Location::ScalePrec()) All sub-shapes having such locations are put in list theProblemShapes.
 ") CheckLocations;
 		static void CheckLocations(const TopoDS_Shape & theS, TopTools_ListOfShape & theProblemShapes);
 
@@ -231,7 +235,9 @@ None
 
 Description
 -----------
-Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <s> and polygons on triangulations and polygons 3d of the edges. in case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. @param theshape [in] the shape to clean @param theforce [in] allows removing all polygonal representations from the shape,  including polygons on triangulations irrelevant for the faces of the given shape.
+Removes all cached polygonal representation of the shape, i.e. the triangulations of the faces of <S> and polygons on triangulations and polygons 3d of the edges. In case polygonal representation is the only available representation for the shape (shape does not have geometry) it is not removed. 
+Input parameter: theShape the shape to clean 
+Input parameter: theForce allows removing all polygonal representations from the shape,  including polygons on triangulations irrelevant for the faces of the  given shape.
 ") Clean;
 		static void Clean(const TopoDS_Shape & theShape, const Standard_Boolean theForce = Standard_False);
 
@@ -268,7 +274,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between the two vertices is lower than their tolerance.
+Returns True if the distance between the two vertices is lower than their tolerance.
 ") Compare;
 		static Standard_Boolean Compare(const TopoDS_Vertex & V1, const TopoDS_Vertex & V2);
 
@@ -287,7 +293,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between the two edges is lower than their tolerance.
+Returns True if the distance between the two edges is lower than their tolerance.
 ") Compare;
 		static Standard_Boolean Compare(const TopoDS_Edge & E1, const TopoDS_Edge & E2);
 
@@ -306,7 +312,7 @@ theVclosed: bool
 
 Description
 -----------
-Detect closedness of face in u and v directions.
+Detect closedness of face in U and V directions.
 ") DetectClosedness;
 		static void DetectClosedness(const TopoDS_Face & theFace, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -324,7 +330,7 @@ S: Standard_OStream
 
 Description
 -----------
-Dumps the topological structure and the geometry of <sh> on the stream <s>.
+Dumps the topological structure and the geometry of <Sh> on the stream <S>.
 ") Dump;
 		static void Dump(const TopoDS_Shape & Sh, std::ostream &OutValue);
 
@@ -347,7 +353,7 @@ float
 
 Description
 -----------
-Evals real tolerance of edge <thee>. <thec3d>, <thec2d>, <thes>, <thef>, <thel> are correspondently 3d curve of edge, 2d curve on surface <thes> and rang of edge if calculated tolerance is more then current edge tolerance, edge is updated. method returns actual tolerance of edge.
+Evals real tolerance of edge <theE>. <theC3d>, <theC2d>, <theS>, <theF>, <theL> are correspondently 3d curve of edge, 2d curve on surface <theS> and rang of edge If calculated tolerance is more then current edge tolerance, edge is updated. Method returns actual tolerance of edge.
 ") EvalAndUpdateTol;
 		static Standard_Real EvalAndUpdateTol(const TopoDS_Edge & theE, const opencascade::handle<Geom_Curve> & theC3d, const opencascade::handle<Geom2d_Curve> & theC2d, const opencascade::handle<Geom_Surface> & theS, const Standard_Real theF, const Standard_Real theL);
 
@@ -366,7 +372,7 @@ bool
 
 Description
 -----------
-Verifies that the edge <e> is found two times on the face <f> before calling brep_tool::isclosed.
+Verifies that the edge <E> is found two times on the face <F> before calling BRep_Tool::IsClosed.
 ") IsReallyClosed;
 		static Standard_Boolean IsReallyClosed(const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -385,7 +391,10 @@ bool
 
 Description
 -----------
-Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system @param theshape [in] shape to load triangulations @param thefilesystem [in] shared file system return true if at least one triangulation is loaded.
+Loads all available triangulations for each face of the shape from some deferred storage using specified shared input file system 
+Input parameter: theShape shape to load triangulations 
+Input parameter: theFileSystem shared file system 
+Return: True if at least one triangulation is loaded.
 ") LoadAllTriangulations;
 		static Standard_Boolean LoadAllTriangulations(const TopoDS_Shape & theShape, const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
 
@@ -406,7 +415,12 @@ bool
 
 Description
 -----------
-Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system @param theshape [in] shape to load triangulations @param thetriangulationidx [in] index defining what triangulation should be loaded. starts from 0. -1 is used in specific case to load currently already active triangulation. if some face doesn't contain triangulation with this index, nothing will be loaded for it. exception will be thrown in case of invalid negative index @param thetosetasactive [in] flag to activate triangulation after its loading @param thefilesystem [in] shared file system return true if at least one triangulation is loaded.
+Loads triangulation data for each face of the shape from some deferred storage using specified shared input file system 
+Input parameter: theShape shape to load triangulations 
+Input parameter: theTriangulationIdx index defining what triangulation should be loaded. Starts from 0. -1 is used in specific case to load currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be loaded for it. Exception will be thrown in case of invalid negative index 
+Input parameter: theToSetAsActive flag to activate triangulation after its loading 
+Input parameter: theFileSystem shared file system 
+Return: True if at least one triangulation is loaded.
 ") LoadTriangulation;
 		static Standard_Boolean LoadTriangulation(const TopoDS_Shape & theShape, const Standard_Integer theTriangulationIdx = -1, const Standard_Boolean theToSetAsActive = Standard_False, const opencascade::handle<OSD_FileSystem> & theFileSystem = opencascade::handle<OSD_FileSystem>());
 
@@ -425,7 +439,7 @@ None
 
 Description
 -----------
-Stores in the map <m> all the 3d topology edges of <s>.
+Stores in the map <M> all the 3D topology edges of <S>.
 ") Map3DEdges;
 		static void Map3DEdges(const TopoDS_Shape & S, TopTools_IndexedMapOfShape & M);
 
@@ -444,7 +458,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Returns the cumul of the orientation of <edge> and thc containing wire in <face>.
+returns the cumul of the orientation of <Edge> and thc containing wire in <Face>.
 ") OriEdgeInFace;
 		static TopAbs_Orientation OriEdgeInFace(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace);
 
@@ -462,7 +476,7 @@ TopoDS_Wire
 
 Description
 -----------
-Returns the outer most wire of <f>. returns a null wire if <f> has no wires.
+Returns the outer most wire of <F>. Returns a Null wire if <F> has no wires.
 ") OuterWire;
 		static TopoDS_Wire OuterWire(const TopoDS_Face & F);
 
@@ -483,7 +497,7 @@ None
 
 Description
 -----------
-Reads a shape from <s> in returns it in <sh>. <b> is used to build the shape.
+Reads a Shape from <S> in returns it in <Sh>. <B> is used to build the shape.
 ") Read;
 		static void Read(TopoDS_Shape & Sh, std::istream & S, const BRep_Builder & B, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -504,7 +518,7 @@ bool
 
 Description
 -----------
-Reads a shape from <file>, returns it in <sh>. <b> is used to build the shape.
+Reads a Shape from <File>, returns it in <Sh>. <B> is used to build the shape.
 ") Read;
 		static Standard_Boolean Read(TopoDS_Shape & Sh, Standard_CString File, const BRep_Builder & B, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -523,7 +537,7 @@ None
 
 Description
 -----------
-Removes internal sub-shapes from the shape. the check on internal status is based on orientation of sub-shapes, classification is not performed. before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. the flag <theforce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation.
+Removes internal sub-shapes from the shape. The check on internal status is based on orientation of sub-shapes, classification is not performed. Before removal of internal sub-shapes the algorithm checks if such removal is not going to break topological connectivity between sub-shapes. The flag <theForce> if set to true disables the connectivity check and clears the given shape from all sub-shapes with internal orientation.
 ") RemoveInternals;
 		static void RemoveInternals(TopoDS_Shape & theS, const Standard_Boolean theForce = Standard_False);
 
@@ -541,7 +555,7 @@ None
 
 Description
 -----------
-Removes all the pcurves of the edges of <s> that refer to surfaces not belonging to any face of <s>.
+Removes all the pcurves of the edges of <S> that refer to surfaces not belonging to any face of <S>.
 ") RemoveUnusedPCurves;
 		static void RemoveUnusedPCurves(const TopoDS_Shape & S);
 
@@ -561,7 +575,11 @@ bool
 
 Description
 -----------
-Verifies that each face from the shape has got a triangulation with a deflection smaller or equal to specified one and the edges a discretization on this triangulation. @param theshape [in] shape to verify @param thelindefl [in] maximum allowed linear deflection @param thetocheckfreeedges [in] if true, then free edges are required to have 3d polygon return false if input shape contains faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or edges in shape lack polygons on triangulation or free edges in shape lack 3d polygons.
+Verifies that each Face from the shape has got a triangulation with a deflection smaller or equal to specified one and the Edges a discretization on this triangulation. 
+Input parameter: theShape shape to verify 
+Input parameter: theLinDefl maximum allowed linear deflection 
+Input parameter: theToCheckFreeEdges if True, then free Edges are required to have 3D polygon 
+Return: False if input Shape contains Faces without triangulation, or that triangulation has worse (greater) deflection than specified one, or Edges in Shape lack polygons on triangulation or free Edges in Shape lack 3D polygons.
 ") Triangulation;
 		static Standard_Boolean Triangulation(const TopoDS_Shape & theShape, const Standard_Real theLinDefl, const Standard_Boolean theToCheckFreeEdges = Standard_False);
 
@@ -582,7 +600,7 @@ VMax: float
 
 Description
 -----------
-Returns in umin, umax, vmin, vmax the bounding values in the parametric space of f.
+Returns in UMin, UMax, VMin, VMax the bounding values in the parametric space of F.
 ") UVBounds;
 		static void UVBounds(const TopoDS_Face & F, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -604,7 +622,7 @@ VMax: float
 
 Description
 -----------
-Returns in umin, umax, vmin, vmax the bounding values of the wire in the parametric space of f.
+Returns in UMin, UMax, VMin, VMax the bounding values of the wire in the parametric space of F.
 ") UVBounds;
 		static void UVBounds(const TopoDS_Face & F, const TopoDS_Wire & W, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -626,7 +644,7 @@ VMax: float
 
 Description
 -----------
-Returns in umin, umax, vmin, vmax the bounding values of the edge in the parametric space of f.
+Returns in UMin, UMax, VMin, VMax the bounding values of the edge in the parametric space of F.
 ") UVBounds;
 		static void UVBounds(const TopoDS_Face & F, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -644,7 +662,9 @@ bool
 
 Description
 -----------
-Releases all available triangulations for each face of the shape if there is deferred storage to load them later @param theshape [in] shape to unload triangulations return true if at least one triangulation is unloaded.
+Releases all available triangulations for each face of the shape if there is deferred storage to load them later 
+Input parameter: theShape shape to unload triangulations 
+Return: True if at least one triangulation is unloaded.
 ") UnloadAllTriangulations;
 		static Standard_Boolean UnloadAllTriangulations(const TopoDS_Shape & theShape);
 
@@ -663,7 +683,10 @@ bool
 
 Description
 -----------
-Releases triangulation data for each face of the shape if there is deferred storage to load it later @param theshape [in] shape to unload triangulations @param thetriangulationidx [in] index defining what triangulation should be unloaded. starts from 0. -1 is used in specific case to unload currently already active triangulation. if some face doesn't contain triangulation with this index, nothing will be unloaded for it. exception will be thrown in case of invalid negative index return true if at least one triangulation is unloaded.
+Releases triangulation data for each face of the shape if there is deferred storage to load it later 
+Input parameter: theShape shape to unload triangulations 
+Input parameter: theTriangulationIdx index defining what triangulation should be unloaded. Starts from 0. -1 is used in specific case to unload currently already active triangulation. If some face doesn't contain triangulation with this index, nothing will be unloaded for it. Exception will be thrown in case of invalid negative index 
+Return: True if at least one triangulation is unloaded.
 ") UnloadTriangulation;
 		static Standard_Boolean UnloadTriangulation(const TopoDS_Shape & theShape, const Standard_Integer theTriangulationIdx = -1);
 
@@ -735,7 +758,7 @@ None
 
 Description
 -----------
-Update a face, update uv points.
+Update a Face, update UV points.
 ") Update;
 		static void Update(const TopoDS_Face & F);
 
@@ -843,7 +866,7 @@ None
 
 Description
 -----------
-For each edge of the face <f> reset the uv points to the bounding points of the parametric curve of the edge on the face.
+For each edge of the face <F> reset the UV points to the bounding points of the parametric curve of the edge on the face.
 ") UpdateFaceUVPoints;
 		static void UpdateFaceUVPoints(const TopoDS_Face & theF);
 
@@ -862,7 +885,10 @@ theStream: Standard_OStream
 
 Description
 -----------
-Writes the shape to the stream in an ascii format toptools_formatversion_version_1. this alias writes shape with triangulation data. @param theshape [in] the shape to write @param thestream [in][out] the stream to output shape into @param therange the range of progress indicator to fill in.
+Writes the shape to the stream in an ASCII format TopTools_FormatVersion_VERSION_1. This alias writes shape with triangulation data. 
+Input parameter: theShape the shape to write 
+Input parameter:[out] theStream the stream to output shape into 
+Parameter theRange the range of progress indicator to fill in.
 ") Write;
 		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -884,7 +910,13 @@ theStream: Standard_OStream
 
 Description
 -----------
-Writes the shape to the stream in an ascii format of specified version. @param theshape [in] the shape to write @param thestream [in][out] the stream to output shape into @param thewithtriangles [in] flag which specifies whether to save shape with (true) or without (false) triangles;  has no effect on triangulation-only geometry @param thewithnormals [in] flag which specifies whether to save triangulation with (true) or without (false) normals;  has no effect on triangulation-only geometry @param theversion [in] the toptools format version @param theprogress the range of progress indicator to fill in.
+Writes the shape to the stream in an ASCII format of specified version. 
+Input parameter: theShape the shape to write 
+Input parameter:[out] theStream the stream to output shape into 
+Input parameter: theWithTriangles flag which specifies whether to save shape with (True) or without (False) triangles;  has no effect on triangulation-only geometry 
+Input parameter: theWithNormals flag which specifies whether to save triangulation with (True) or without (False) normals;  has no effect on triangulation-only geometry 
+Input parameter: theVersion the TopTools format version 
+Parameter theProgress the range of progress indicator to fill in.
 ") Write;
 		static void Write(const TopoDS_Shape & theShape, std::ostream &OutValue, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -904,7 +936,10 @@ bool
 
 Description
 -----------
-Writes the shape to the file in an ascii format toptools_formatversion_version_1. this alias writes shape with triangulation data. @param theshape [in] the shape to write @param thefile [in] the path to file to output shape into @param theprogress the range of progress indicator to fill in.
+Writes the shape to the file in an ASCII format TopTools_FormatVersion_VERSION_1. This alias writes shape with triangulation data. 
+Input parameter: theShape the shape to write 
+Input parameter: theFile the path to file to output shape into 
+Parameter theProgress the range of progress indicator to fill in.
 ") Write;
 		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -927,7 +962,13 @@ bool
 
 Description
 -----------
-Writes the shape to the file in an ascii format of specified version. @param theshape [in] the shape to write @param thefile [in] the path to file to output shape into @param thewithtriangles [in] flag which specifies whether to save shape with (true) or without (false) triangles;  has no effect on triangulation-only geometry @param thewithnormals [in] flag which specifies whether to save triangulation with (true) or without (false) normals;  has no effect on triangulation-only geometry @param theversion [in] the toptools format version @param theprogress the range of progress indicator to fill in.
+Writes the shape to the file in an ASCII format of specified version. 
+Input parameter: theShape the shape to write 
+Input parameter: theFile  the path to file to output shape into 
+Input parameter: theWithTriangles flag which specifies whether to save shape with (True) or without (False) triangles;  has no effect on triangulation-only geometry 
+Input parameter: theWithNormals flag which specifies whether to save triangulation with (True) or without (False) normals;  has no effect on triangulation-only geometry 
+Input parameter: theVersion the TopTools format version 
+Parameter theProgress the range of progress indicator to fill in.
 ") Write;
 		static Standard_Boolean Write(const TopoDS_Shape & theShape, Standard_CString theFile, const Standard_Boolean theWithTriangles, const Standard_Boolean theWithNormals, const TopTools_FormatVersion theVersion, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1016,7 +1057,7 @@ None
 
 Description
 -----------
-Set the second shape as generated one from the first shape.
+Methods to set the history. Set the second shape as generated one from the first shape.
 ") AddGenerated;
 		void AddGenerated(const TopoDS_Shape & theInitial, const TopoDS_Shape & theGenerated);
 
@@ -1065,7 +1106,7 @@ theS: Standard_OStream
 
 Description
 -----------
-Prints the brief description of the history into a stream.
+A method to dump a history Prints the brief description of the history into a stream.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -1083,7 +1124,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-No available documentation.
+Methods to read the history. Returns all shapes generated from the shape.
 ") Generated;
 		const TopTools_ListOfShape & Generated(const TopoDS_Shape & theInitial);
 
@@ -1096,7 +1137,7 @@ bool
 
 Description
 -----------
-Returns 'true' if there any shapes with generated elements present.
+Returns 'true' if there any shapes with Generated elements present.
 ") HasGenerated;
 		Standard_Boolean HasGenerated();
 
@@ -1109,7 +1150,7 @@ bool
 
 Description
 -----------
-Returns 'true' if there any modified shapes present.
+Returns 'true' if there any Modified shapes present.
 ") HasModified;
 		Standard_Boolean HasModified();
 
@@ -1140,7 +1181,7 @@ bool
 
 Description
 -----------
-No available documentation.
+Returns 'true' if the shape is removed.
 ") IsRemoved;
 		Standard_Boolean IsRemoved(const TopoDS_Shape & theInitial);
 
@@ -1176,7 +1217,7 @@ None
 
 Description
 -----------
-Merges the next history to this history.
+A method to merge a next history to this history. Merges the next history to this history.
 ") Merge;
 		void Merge(const opencascade::handle<BRepTools_History> & theHistory23);
 
@@ -1212,7 +1253,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-No available documentation.
+Returns all shapes modified from the shape.
 ") Modified;
 		const TopTools_ListOfShape & Modified(const TopoDS_Shape & theInitial);
 
@@ -1308,7 +1349,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity of <newe> between <newf1> and <newf2>. <newe> is the new edge created from <e>. <newf1> (resp. <newf2>) is the new face created from <f1> (resp. <f2>).
+Returns the continuity of <NewE> between <NewF1> and <NewF2>. <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 ") Continuity;
 		virtual GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
@@ -1328,7 +1369,7 @@ Tol: float
 
 Description
 -----------
-Returns true if the edge, e, has been modified. if the edge has been modified: - c is the new geometry associated with the edge, - l is its new location, and - tol is the new tolerance. if the edge has not been modified, this function returns false, and the values of c, l and tol are not significant.
+Returns true if the edge, E, has been modified. If the edge has been modified: - C is the new geometry associated with the edge, - L is its new location, and - Tol is the new tolerance. If the edge has not been modified, this function returns false, and the values of C, L and Tol are not significant.
 ") NewCurve;
 		virtual Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
@@ -1350,7 +1391,7 @@ Tol: float
 
 Description
 -----------
-Returns true if the edge, e, has a new curve on surface on the face, f. if a new curve exists: - c is the new geometry of the edge, - l is the new location, and - tol is the new tolerance. newe is the new edge created from e, and newf is the new face created from f. if there is no new curve on the face, this function returns false, and the values of c, l and tol are not significant.
+Returns true if the edge, E, has a new curve on surface on the face, F. If a new curve exists: - C is the new geometry of the edge, - L is the new location, and - Tol is the new tolerance. NewE is the new edge created from E, and NewF is the new face created from F. If there is no new curve on the face, this function returns false, and the values of C, L and Tol are not significant.
 ") NewCurve2d;
 		virtual Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
@@ -1370,7 +1411,7 @@ Tol: float
 
 Description
 -----------
-Returns true if the vertex v has a new parameter on the edge e. if a new parameter exists: - p is the parameter, and - tol is the new tolerance. if there is no new parameter this function returns false, and the values of p and tol are not significant.
+Returns true if the vertex V has a new parameter on the edge E. If a new parameter exists: - P is the parameter, and - Tol is the new tolerance. If there is no new parameter this function returns false, and the values of P and Tol are not significant.
 ") NewParameter;
 		virtual Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1389,7 +1430,7 @@ Tol: float
 
 Description
 -----------
-Returns true if the vertex v has been modified. if v has been modified: - p is the new geometry of the vertex, and - tol is the new tolerance. if the vertex has not been modified this function returns false, and the values of p and tol are not significant.
+Returns true if the vertex V has been modified. If V has been modified: - P is the new geometry of the vertex, and - Tol is the new tolerance. If the vertex has not been modified this function returns false, and the values of P and Tol are not significant.
 ") NewPoint;
 		virtual Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
@@ -1408,7 +1449,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has been modified according to changed polygon. if the edge has been modified: - p is a new polygon.
+Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - P is a new polygon.
 ") NewPolygon;
 		virtual Standard_Boolean NewPolygon(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon3D> & P);
 
@@ -1428,7 +1469,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has been modified according to changed polygon on triangulation. if the edge has been modified: - p is a new polygon on triangulation.
+Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - P is a new polygon on triangulation.
 ") NewPolygonOnTriangulation;
 		virtual Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & E, const TopoDS_Face & F, opencascade::handle<Poly_PolygonOnTriangulation> & P);
 
@@ -1450,7 +1491,7 @@ RevFace: bool
 
 Description
 -----------
-Returns true if the face, f, has been modified. if the face has been modified: - s is the new geometry of the face, - l is its new location, and - tol is the new tolerance. the flag, revwires, is set to true when the modification reverses the normal of the surface, (i.e. the wires have to be reversed). the flag, revface, is set to true if the orientation of the modified face changes in the shells which contain it. if the face has not been modified this function returns false, and the values of s, l, tol, revwires and revface are not significant.
+Returns true if the face, F, has been modified. If the face has been modified: - S is the new geometry of the face, - L is its new location, and - Tol is the new tolerance. The flag, RevWires, is set to true when the modification reverses the normal of the surface, (i.e. the wires have to be reversed). The flag, RevFace, is set to true if the orientation of the modified face changes in the shells which contain it. If the face has not been modified this function returns false, and the values of S, L, Tol, RevWires and RevFace are not significant.
 ") NewSurface;
 		virtual Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -1469,7 +1510,7 @@ bool
 
 Description
 -----------
-Returns true if the face has been modified according to changed triangulation. if the face has been modified: - t is a new triangulation on the face.
+Returns true if the face has been modified according to changed triangulation. If the face has been modified: - T is a new triangulation on the face.
 ") NewTriangulation;
 		virtual Standard_Boolean NewTriangulation(const TopoDS_Face & F, opencascade::handle<Poly_Triangulation> & T);
 
@@ -1505,7 +1546,7 @@ None
 
 Description
 -----------
-Creates an empty modifier.
+Creates an empty Modifier.
 ") BRepTools_Modifier;
 		 BRepTools_Modifier(Standard_Boolean theMutableInput = Standard_False);
 
@@ -1523,7 +1564,7 @@ None
 
 Description
 -----------
-Creates a modifier on the shape <s>.
+Creates a modifier on the shape <S>.
 ") BRepTools_Modifier;
 		 BRepTools_Modifier(const TopoDS_Shape & S);
 
@@ -1542,7 +1583,7 @@ None
 
 Description
 -----------
-Creates a modifier on the shape <s>, and performs the modifications described by <m>.
+Creates a modifier on the shape <S>, and performs the modifications described by <M>.
 ") BRepTools_Modifier;
 		 BRepTools_Modifier(const TopoDS_Shape & S, const opencascade::handle<BRepTools_Modification> & M);
 
@@ -1560,7 +1601,7 @@ None
 
 Description
 -----------
-Initializes the modifier with the shape <s>.
+Initializes the modifier with the shape <S>.
 ") Init;
 		void Init(const TopoDS_Shape & S);
 
@@ -1573,7 +1614,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the modification has been computed successfully.
+Returns Standard_True if the modification has been computed successfully.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1604,7 +1645,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the modified shape corresponding to <s>.
+Returns the modified shape corresponding to <S>.
 ") ModifiedShape;
 		const TopoDS_Shape ModifiedShape(const TopoDS_Shape & S);
 
@@ -1623,7 +1664,7 @@ None
 
 Description
 -----------
-Performs the modifications described by <m>.
+Performs the modifications described by <M>.
 ") Perform;
 		void Perform(const opencascade::handle<BRepTools_Modification> & M, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1641,7 +1682,7 @@ None
 
 Description
 -----------
-Sets the mutable input state if true then the input (original) shape can be modified during modification process.
+Sets the mutable input state If true then the input (original) shape can be modified during modification process.
 ") SetMutableInput;
 		void SetMutableInput(Standard_Boolean theMutableInput);
 
@@ -1712,7 +1753,7 @@ bool
 
 Description
 -----------
-Removes all locations correspodingly to criterium from theshape.
+Removes all locations correspondingly to criterium from theShape.
 ") Perform;
 		Standard_Boolean Perform(const TopoDS_Shape & theShape);
 
@@ -1761,7 +1802,7 @@ None
 
 Description
 -----------
-Add the faces of <s> to the quilt, the faces containing bounded edges are copied.
+Add the faces of <S> to the Quilt, the faces containing bounded edges are copied.
 ") Add;
 		void Add(const TopoDS_Shape & S);
 
@@ -1780,7 +1821,7 @@ None
 
 Description
 -----------
-Binds <enew> to be the new edge instead of <eold>. //! the faces of the added shape containing <eold> will be copied to substitute <eold> by <enew>. //! the vertices of <eold> will be bound to the vertices of <enew> with the same orientation. //! if <eold> and <enew> have different orientations the curves are considered to be opposite and the pcurves of <eold> will be copied and reversed in the new faces. //! <eold> must belong to the next added shape, <enew> must belong to a shape added before.
+Binds <Enew> to be the new edge instead of <Eold>. //! The faces of the added shape containing <Eold> will be copied to substitute <Eold> by <Enew>. //! The vertices of <Eold> will be bound to the vertices of <Enew> with the same orientation. //! If <Eold> and <Enew> have different orientations the curves are considered to be opposite and the pcurves of <Eold> will be copied and reversed in the new faces. //! <Eold> must belong to the next added shape, <Enew> must belong to a Shape added before.
 ") Bind;
 		void Bind(const TopoDS_Edge & Eold, const TopoDS_Edge & Enew);
 
@@ -1799,7 +1840,7 @@ None
 
 Description
 -----------
-Binds <vnew> to be a new vertex instead of <vold>. //! the faces of the added shape containing <vold> will be copied to substitute <vold> by <vnew>.
+Binds <VNew> to be a new vertex instead of <Vold>. //! The faces of the added shape containing <Vold> will be copied to substitute <Vold> by <Vnew>.
 ") Bind;
 		void Bind(const TopoDS_Vertex & Vold, const TopoDS_Vertex & Vnew);
 
@@ -1817,7 +1858,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape substituted to <s> in the quilt.
+Returns the shape substituted to <S> in the Quilt.
 ") Copy;
 		const TopoDS_Shape Copy(const TopoDS_Shape & S);
 
@@ -1835,7 +1876,7 @@ bool
 
 Description
 -----------
-Returns true if <s> has been copied (<s> is a vertex, an edge or a face).
+Returns True if <S> has been copied (<S> is a vertex, an edge or a face).
 ") IsCopied;
 		Standard_Boolean IsCopied(const TopoDS_Shape & S);
 
@@ -1848,7 +1889,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a compound of shells made from the current set of faces. the shells will be flagged as closed or not closed.
+Returns a Compound of shells made from the current set of faces. The shells will be flagged as closed or not closed.
 ") Shells;
 		TopoDS_Shape Shells();
 
@@ -1876,7 +1917,7 @@ None
 
 Description
 -----------
-Returns an empty reshape.
+Returns an empty Reshape.
 ") BRepTools_ReShape;
 		 BRepTools_ReShape();
 
@@ -1895,7 +1936,7 @@ TopoDS_Shape
 
 Description
 -----------
-Applies the substitutions requests to a shape. //! theuntil gives the level of type until which requests are taken into account. for subshapes of the type <until> no rebuild and further exploring are done. //! note: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, topods_edge can be replaced by topods_edge, topods_wire or topods_compound containing topods_edges). if incompatible shape type is encountered, it is ignored and flag fail1 is set in status.
+Applies the substitutions requests to a shape. //! theUntil gives the level of type until which requests are taken into account. For subshapes of the type <until> no rebuild and further exploring are done. //! NOTE: each subshape can be replaced by shape of the same type or by shape containing only shapes of that type (for example, TopoDS_Edge can be replaced by TopoDS_Edge, TopoDS_Wire or TopoDS_Compound containing TopoDS_Edges). If incompatible shape type is encountered, it is ignored and flag FAIL1 is set in Status.
 ") Apply;
 		virtual TopoDS_Shape Apply(const TopoDS_Shape & theShape, const TopAbs_ShapeEnum theUntil = TopAbs_SHAPE);
 
@@ -1996,7 +2037,7 @@ bool
 
 Description
 -----------
-Tells if a shape is recorded for replace/remove.
+Tells if a shape is recorded for Replace/Remove.
 ") IsRecorded;
 		virtual Standard_Boolean IsRecorded(const TopoDS_Shape & shape);
 
@@ -2009,7 +2050,7 @@ bool
 
 Description
 -----------
-Returns (modifiable) the flag which defines whether location of shape take into account during replacing shapes.
+Returns (modifiable) the flag which defines whether Location of shape take into account during replacing shapes.
 ") ModeConsiderLocation;
 		virtual Standard_Boolean & ModeConsiderLocation();
 
@@ -2027,7 +2068,7 @@ None
 
 Description
 -----------
-Sets a request to remove a shape whatever the orientation.
+Sets a request to Remove a Shape whatever the orientation.
 ") Remove;
 		virtual void Remove(const TopoDS_Shape & shape);
 
@@ -2046,7 +2087,7 @@ None
 
 Description
 -----------
-Sets a request to replace a shape by a new one.
+Sets a request to Replace a Shape by a new one.
 ") Replace;
 		virtual void Replace(const TopoDS_Shape & shape, const TopoDS_Shape & newshape);
 
@@ -2066,7 +2107,7 @@ int
 
 Description
 -----------
-Returns a complete substitution status for a shape 0: not recorded, <newsh> = original <shape> < 0: to be removed, <newsh> is null > 0: to be replaced, <newsh> is a new item if <last> is false, returns status and new shape recorded in the map directly for the shape, if true and status > 0 then recursively searches for the last status and new shape.
+Returns a complete substitution status for a shape 0: not recorded, <newsh> = original <shape> < 0: to be removed, <newsh> is NULL > 0: to be replaced, <newsh> is a new item If <last> is False, returns status and new shape recorded in the map directly for the shape, if True and status > 0 then recursively searches for the last status and new shape.
 ") Status;
 		virtual Standard_Integer Status(const TopoDS_Shape & shape, TopoDS_Shape & newsh, const Standard_Boolean last = Standard_False);
 
@@ -2084,7 +2125,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the new value for an individual shape if not recorded, returns the original shape itself if to be removed, returns a null shape else, returns the replacing item.
+Returns the new value for an individual shape If not recorded, returns the original shape itself If to be Removed, returns a Null Shape Else, returns the replacing item.
 ") Value;
 		virtual TopoDS_Shape Value(const TopoDS_Shape & shape);
 
@@ -2119,7 +2160,8 @@ None
 
 Description
 -----------
-Builds an empty shapeset. @param thewithtriangles flag to write triangulation data.
+Builds an empty ShapeSet. 
+Parameter theWithTriangles flag to write triangulation data.
 ") BRepTools_ShapeSet;
 		 BRepTools_ShapeSet(const Standard_Boolean theWithTriangles = Standard_True, const Standard_Boolean theWithNormals = Standard_False);
 
@@ -2139,7 +2181,8 @@ None
 
 Description
 -----------
-Builds an empty shapeset. @param thewithtriangles flag to write triangulation data.
+Builds an empty ShapeSet. 
+Parameter theWithTriangles flag to write triangulation data.
 ") BRepTools_ShapeSet;
 		 BRepTools_ShapeSet(const BRep_Builder & theBuilder, const Standard_Boolean theWithTriangles = Standard_True, const Standard_Boolean theWithNormals = Standard_False);
 
@@ -2157,7 +2200,7 @@ None
 
 Description
 -----------
-Stores the goemetry of <s>.
+Stores the geometry of <S>.
 ") AddGeometry;
 		virtual void AddGeometry(const TopoDS_Shape & S);
 
@@ -2176,7 +2219,7 @@ None
 
 Description
 -----------
-Inserts the shape <s2> in the shape <s1>. this method must be redefined to use the correct builder.
+Inserts the shape <S2> in the shape <S1>. This method must be redefined to use the correct builder.
 ") AddShapes;
 		virtual void AddShapes(TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -2225,7 +2268,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the geometry of me on the stream <os>.
+Dumps the geometry of me on the stream <OS>.
 ") DumpGeometry;
 		virtual void DumpGeometry(std::ostream &OutValue);
 
@@ -2243,7 +2286,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the geometry of <s> on the stream <os>.
+Dumps the geometry of <S> on the stream <OS>.
 ") DumpGeometry;
 		virtual void DumpGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
 
@@ -2260,7 +2303,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the 3d polygons on the stream <os>.
+Dumps the 3d polygons on the stream <OS>.
 ") DumpPolygon3D;
 		void DumpPolygon3D(std::ostream &OutValue);
 
@@ -2277,7 +2320,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the polygons on triangulation on the stream <os>.
+Dumps the polygons on triangulation on the stream <OS>.
 ") DumpPolygonOnTriangulation;
 		void DumpPolygonOnTriangulation(std::ostream &OutValue);
 
@@ -2294,7 +2337,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Dumps the triangulation on the stream <os>.
+Dumps the triangulation on the stream <OS>.
 ") DumpTriangulation;
 		void DumpTriangulation(std::ostream &OutValue);
 
@@ -2339,7 +2382,7 @@ None
 
 Description
 -----------
-Reads the geometry of me from the stream <is>.
+Reads the geometry of me from the stream <IS>.
 ") ReadGeometry;
 		virtual void ReadGeometry(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2359,7 +2402,7 @@ None
 
 Description
 -----------
-Reads the geometry of a shape of type <t> from the stream <is> and returns it in <s>.
+Reads the geometry of a shape of type <T> from the stream <IS> and returns it in <S>.
 ") ReadGeometry;
 		virtual void ReadGeometry(const TopAbs_ShapeEnum T, std::istream & IS, TopoDS_Shape & S);
 
@@ -2378,7 +2421,7 @@ None
 
 Description
 -----------
-Reads the 3d polygons of me from the stream <is>.
+Reads the 3d polygons of me from the stream <IS>.
 ") ReadPolygon3D;
 		void ReadPolygon3D(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2397,7 +2440,7 @@ None
 
 Description
 -----------
-Reads the polygons on triangulation of me from the stream <is>.
+Reads the polygons on triangulation of me from the stream <IS>.
 ") ReadPolygonOnTriangulation;
 		void ReadPolygonOnTriangulation(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2416,7 +2459,7 @@ None
 
 Description
 -----------
-Reads the triangulation of me from the stream <is>.
+Reads the triangulation of me from the stream <IS>.
 ") ReadTriangulation;
 		void ReadTriangulation(std::istream & IS, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2434,7 +2477,7 @@ None
 
 Description
 -----------
-Define if shape will be stored triangulation with normals. ignored (always written) if face defines only triangulation (no surface).
+Define if shape will be stored triangulation with normals. Ignored (always written) if face defines only triangulation (no surface).
 ") SetWithNormals;
 		void SetWithNormals(const Standard_Boolean theWithNormals);
 
@@ -2452,7 +2495,7 @@ None
 
 Description
 -----------
-Define if shape will be stored with triangles. ignored (always written) if face defines only triangulation (no surface).
+Define if shape will be stored with triangles. Ignored (always written) if face defines only triangulation (no surface).
 ") SetWithTriangles;
 		void SetWithTriangles(const Standard_Boolean theWithTriangles);
 
@@ -2470,7 +2513,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the geometry of me on the stream <os> in a format that can be read back by read.
+Writes the geometry of me on the stream <OS> in a format that can be read back by Read.
 ") WriteGeometry;
 		virtual void WriteGeometry(std::ostream &OutValue, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2488,7 +2531,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the geometry of <s> on the stream <os> in a format that can be read back by read.
+Writes the geometry of <S> on the stream <OS> in a format that can be read back by Read.
 ") WriteGeometry;
 		virtual void WriteGeometry(const TopoDS_Shape & S, std::ostream &OutValue);
 
@@ -2507,7 +2550,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the 3d polygons on the stream <os> in a format that can be read back by read.
+Writes the 3d polygons on the stream <OS> in a format that can be read back by Read.
 ") WritePolygon3D;
 		void WritePolygon3D(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2526,7 +2569,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the polygons on triangulation on the stream <os> in a format that can be read back by read.
+Writes the polygons on triangulation on the stream <OS> in a format that can be read back by Read.
 ") WritePolygonOnTriangulation;
 		void WritePolygonOnTriangulation(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2545,7 +2588,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Writes the triangulation on the stream <os> in a format that can be read back by read.
+Writes the triangulation on the stream <OS> in a format that can be read back by Read.
 ") WriteTriangulation;
 		void WriteTriangulation(std::ostream &OutValue, const Standard_Boolean Compact = Standard_True, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -2611,7 +2654,7 @@ None
 
 Description
 -----------
-Build newshape from <s> if its subshapes has modified. //! the methods <iscopied> and <copy> allows you to keep the resul of <build>.
+Build NewShape from <S> if its subshapes has modified. //! The methods <IsCopied> and <Copy> allows you to keep the resul of <Build>.
 ") Build;
 		void Build(const TopoDS_Shape & S);
 
@@ -2642,7 +2685,7 @@ TopTools_ListOfShape
 
 Description
 -----------
-Returns the set of shapes substituted to <s>.
+Returns the set of shapes substituted to <S>.
 ") Copy;
 		const TopTools_ListOfShape & Copy(const TopoDS_Shape & S);
 
@@ -2660,7 +2703,7 @@ bool
 
 Description
 -----------
-Returns true if <s> has been replaced .
+Returns True if <S> has been replaced .
 ") IsCopied;
 		Standard_Boolean IsCopied(const TopoDS_Shape & S);
 
@@ -2679,7 +2722,7 @@ None
 
 Description
 -----------
-<oldshape> will be replaced by <newshapes>. //! <newshapes> can be empty , in this case <oldshape> will disparate from its ancestors. //! if an item of <newshapes> is oriented forward. it will be oriented as <oldshape> in its ancestors. else it will be reversed.
+<Oldshape> will be replaced by <NewShapes>. //! <NewShapes> can be empty , in this case <OldShape> will disparate from its ancestors. //! if an item of <NewShapes> is oriented FORWARD. it will be oriented as <OldShape> in its ancestors. else it will be reversed.
 ") Substitute;
 		void Substitute(const TopoDS_Shape & OldShape, const TopTools_ListOfShape & NewShapes);
 
@@ -2706,7 +2749,7 @@ None
 
 Description
 -----------
-Constructs an empty explorer (which can be initialized using init).
+Constructs an empty explorer (which can be initialized using Init).
 ") BRepTools_WireExplorer;
 		 BRepTools_WireExplorer();
 
@@ -2724,7 +2767,7 @@ None
 
 Description
 -----------
-Iinitializes an exploration of the wire <w>.
+IInitializes an exploration of the wire <W>.
 ") BRepTools_WireExplorer;
 		 BRepTools_WireExplorer(const TopoDS_Wire & W);
 
@@ -2743,7 +2786,7 @@ None
 
 Description
 -----------
-Initializes an exploration of the wire <w>. f is used to select the edge connected to the previous in the parametric representation of <f>.
+Initializes an exploration of the wire <W>. F is used to select the edge connected to the previous in the parametric representation of <F>.
 ") BRepTools_WireExplorer;
 		 BRepTools_WireExplorer(const TopoDS_Wire & W, const TopoDS_Face & F);
 
@@ -2800,7 +2843,7 @@ None
 
 Description
 -----------
-Initializes an exploration of the wire <w>.
+Initializes an exploration of the wire <W>.
 ") Init;
 		void Init(const TopoDS_Wire & W);
 
@@ -2819,7 +2862,7 @@ None
 
 Description
 -----------
-Initializes an exploration of the wire <w>. f is used to select the edge connected to the previous in the parametric representation of <f>.
+Initializes an exploration of the wire <W>. F is used to select the edge connected to the previous in the parametric representation of <F>.
 ") Init;
 		void Init(const TopoDS_Wire & W, const TopoDS_Face & F);
 
@@ -2842,7 +2885,7 @@ None
 
 Description
 -----------
-Initializes an exploration of the wire <w>. f is used to select the edge connected to the previous in the parametric representation of <f>. <umin>, <umax>, <vmin>, <vmax> - the uv bounds of the face <f>.
+Initializes an exploration of the wire <W>. F is used to select the edge connected to the previous in the parametric representation of <F>. <UMIn>, <UMax>, <VMin>, <VMax> - the UV bounds of the face <F>.
 ") Init;
 		void Init(const TopoDS_Wire & W, const TopoDS_Face & F, const Standard_Real UMin, const Standard_Real UMax, const Standard_Real VMin, const Standard_Real VMax);
 
@@ -2855,7 +2898,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current edge.
+Returns True if there is a current edge.
 ") More;
 		Standard_Boolean More();
 
@@ -2881,7 +2924,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Returns an orientation for the current edge.
+Returns an Orientation for the current edge.
 ") Orientation;
 		TopAbs_Orientation Orientation();
 
@@ -2914,7 +2957,7 @@ None
 
 Description
 -----------
-Constructor. \param[in] thecopygeom indicates that the geomtery (surfaces and curves) should be copied \param[in] thecopymesh indicates that the triangulation should be copied.
+Constructor. \param[in] theCopyGeom indicates that the geometry (surfaces and curves) should be copied \param[in] theCopyMesh indicates that the triangulation should be copied.
 ") BRepTools_CopyModification;
 		 BRepTools_CopyModification(const Standard_Boolean theCopyGeom = Standard_True, const Standard_Boolean theCopyMesh = Standard_True);
 
@@ -2937,7 +2980,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity of thenewedge between thenewface1 and thenewface2. //! thenewedge is the new edge created from theedge. thenewface1 (resp. thenewface2) is the new face created from theface1 (resp. theface2).
+Returns the continuity of theNewEdge between theNewFace1 and theNewFace2. //! theNewEdge is the new edge created from theEdge. theNewFace1 (resp. theNewFace2) is the new face created from theFace1 (resp. theFace2).
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace1, const TopoDS_Face & theFace2, const TopoDS_Edge & theNewEdge, const TopoDS_Face & theNewFace1, const TopoDS_Face & theNewFace2);
 
@@ -2957,7 +3000,7 @@ theTol: float
 
 Description
 -----------
-Returns true if theedge has been modified. if the edge has been modified: - thecurve is the new geometric support of the edge, - theloc is the new location, and - thetol is the new tolerance. if the edge has not been modified, this function returns false, and the values of thecurve, theloc and thetol are not significant.
+Returns true if theEdge has been modified. If the edge has been modified: - theCurve is the new geometric support of the edge, - theLoc is the new location, and - theTol is the new tolerance. If the edge has not been modified, this function returns false, and the values of theCurve, theLoc and theTol are not significant.
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & theEdge, opencascade::handle<Geom_Curve> & theCurve, TopLoc_Location & theLoc, Standard_Real &OutValue);
 
@@ -2979,7 +3022,7 @@ theTol: float
 
 Description
 -----------
-Returns true if theedge has a new curve on surface on theface. if a new curve exists: - thecurve is the new geometric support of the edge, - thetol the new tolerance. if no new curve exists, this function returns false, and the values of thecurve and thetol are not significant.
+Returns true if theEdge has a new curve on surface on theFace. If a new curve exists: - theCurve is the new geometric support of the edge, - theTol the new tolerance. If no new curve exists, this function returns false, and the values of theCurve and theTol are not significant.
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, const TopoDS_Edge & theNewEdge, const TopoDS_Face & theNewFace, opencascade::handle<Geom2d_Curve> & theCurve, Standard_Real &OutValue);
 
@@ -2999,7 +3042,7 @@ theTol: float
 
 Description
 -----------
-Returns true if thevertex has a new parameter on theedge. if a new parameter exists: - thepnt is the parameter, and - thetol is the new tolerance. if no new parameter exists, this function returns false, and the values of thepnt and thetol are not significant.
+Returns true if theVertex has a new parameter on theEdge. If a new parameter exists: - thePnt is the parameter, and - theTol is the new tolerance. If no new parameter exists, this function returns false, and the values of thePnt and theTol are not significant.
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & theVertex, const TopoDS_Edge & theEdge, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3018,7 +3061,7 @@ theTol: float
 
 Description
 -----------
-Returns true if thevertex has been modified. if the vertex has been modified: - thepnt is the new geometry of the vertex, and - thetol is the new tolerance. if the vertex has not been modified this function returns false, and the values of thepnt and thetol are not significant.
+Returns true if theVertex has been modified. If the vertex has been modified: - thePnt is the new geometry of the vertex, and - theTol is the new tolerance. If the vertex has not been modified this function returns false, and the values of thePnt and theTol are not significant.
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & theVertex, gp_Pnt & thePnt, Standard_Real &OutValue);
 
@@ -3037,7 +3080,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has been modified according to changed polygon. if the edge has been modified: - thepoly is a new polygon.
+Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - thePoly is a new polygon.
 ") NewPolygon;
 		Standard_Boolean NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
 
@@ -3057,7 +3100,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has been modified according to changed polygon on triangulation. if the edge has been modified: - thepoly is a new polygon on triangulation.
+Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - thePoly is a new polygon on triangulation.
 ") NewPolygonOnTriangulation;
 		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
 
@@ -3079,7 +3122,7 @@ theRevFace: bool
 
 Description
 -----------
-Returns true if theface has been modified. if the face has been modified: - thesurf is the new geometry of the face, - theloc is its new location, and - thetol is the new tolerance. therevwires, therevface are always set to false, because the orientaion is not changed.
+Returns true if theFace has been modified. If the face has been modified: - theSurf is the new geometry of the face, - theLoc is its new location, and - theTol is the new tolerance. theRevWires, theRevFace are always set to false, because the orientation is not changed.
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & theFace, opencascade::handle<Geom_Surface> & theSurf, TopLoc_Location & theLoc, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -3098,7 +3141,7 @@ bool
 
 Description
 -----------
-Returns true if the face has been modified according to changed triangulation. if the face has been modified: - thetri is a new triangulation on the face.
+Returns true if the face has been modified according to changed triangulation. If the face has been modified: - theTri is a new triangulation on the face.
 ") NewTriangulation;
 		Standard_Boolean NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
 
@@ -3155,7 +3198,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the new edge created from <e>. <newf1> (resp. <newf2>) is the new face created from <f1> (resp. <f2>).
+Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
@@ -3168,7 +3211,7 @@ gp_GTrsf
 
 Description
 -----------
-Gives an access on the gtrsf.
+Gives an access on the GTrsf.
 ") GTrsf;
 		gp_GTrsf GTrsf();
 
@@ -3188,7 +3231,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has been modified. in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <c>, <l>, <tol> are not significant.
+Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
@@ -3210,7 +3253,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <c>, <l>, <tol> are not significant.
+Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
@@ -3230,7 +3273,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has a new parameter on the edge <e>. in this case, <p> is the parameter, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3249,7 +3292,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has been modified. in this case, <p> is the new geometric support of the vertex, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
@@ -3268,7 +3311,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has been modified according to changed polygon. if the edge has been modified: - thepoly is a new polygon.
+Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - thePoly is a new polygon.
 ") NewPolygon;
 		Standard_Boolean NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
 
@@ -3288,7 +3331,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has been modified according to changed polygon on triangulation. if the edge has been modified: - thepoly is a new polygon on triangulation.
+Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - thePoly is a new polygon on triangulation.
 ") NewPolygonOnTriangulation;
 		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
 
@@ -3310,7 +3353,7 @@ RevFace: bool
 
 Description
 -----------
-Returns standard_true if the face <f> has been modified. in this case, <s> is the new geometric support of the face, <l> the new location,<tol> the new tolerance.<revwires> has to be set to standard_true when the modification reverses the normal of the surface.(the wires have to be reversed). <revface> has to be set to standard_true if the orientation of the modified face changes in the shells which contain it. -- here, <revface> will return standard_true if the -- gp_trsf is negative.
+Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. -- Here, <RevFace> will return Standard_True if the -- gp_Trsf is negative.
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -3329,7 +3372,7 @@ bool
 
 Description
 -----------
-Returns true if the face has been modified according to changed triangulation. if the face has been modified: - thetri is a new triangulation on the face.
+Returns true if the face has been modified according to changed triangulation. If the face has been modified: - theTri is a new triangulation on the face.
 ") NewTriangulation;
 		Standard_Boolean NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
 
@@ -3386,7 +3429,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the new edge created from <e>. <newf1> (resp. <newf2>) is the new face created from <f1> (resp. <f2>).
+Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
@@ -3419,7 +3462,7 @@ Tol: float
 
 Description
 -----------
-Returns true if the edge e has been modified. if the edge has been modified: - c is the new geometric support of the edge, - l is the new location, and - tol is the new tolerance. if the edge has not been modified, this function returns false, and the values of c, l and tol are not significant.
+Always returns true indicating that the edge E is always modified. - C is the new geometric support of the edge, - L is the new location, and - Tol is the new tolerance.
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
@@ -3441,7 +3484,7 @@ Tol: float
 
 Description
 -----------
-Returns true if the edge e has a new curve on surface on the face f. if a new curve exists: - c is the new geometric support of the edge, - l is the new location, and - tol the new tolerance. if no new curve exists, this function returns false, and the values of c, l and tol are not significant.
+Returns true if the edge E has a new curve on surface on the face F. If a new curve exists: - C is the new geometric support of the edge, - L is the new location, and - Tol the new tolerance. If no new curve exists, this function returns false, and the values of C, L and Tol are not significant.
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
@@ -3461,7 +3504,7 @@ Tol: float
 
 Description
 -----------
-Returns true if the vertex v has a new parameter on the edge e. if a new parameter exists: - p is the parameter, and - tol is the new tolerance. if no new parameter exists, this function returns false, and the values of p and tol are not significant.
+Returns true if the Vertex V has a new parameter on the edge E. If a new parameter exists: - P is the parameter, and - Tol is the new tolerance. If no new parameter exists, this function returns false, and the values of P and Tol are not significant.
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3480,7 +3523,7 @@ Tol: float
 
 Description
 -----------
-Returns true if the vertex v has been modified. if the vertex has been modified: - p is the new geometry of the vertex, and - tol is the new tolerance. if the vertex has not been modified this function returns false, and the values of p and tol are not significant.
+Returns true if the vertex V has been modified. If the vertex has been modified: - P is the new geometry of the vertex, and - Tol is the new tolerance. If the vertex has not been modified this function returns false, and the values of P and Tol are not significant.
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
@@ -3499,7 +3542,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has been modified according to changed polygon. if the edge has been modified: - p is a new polygon.
+Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - P is a new polygon.
 ") NewPolygon;
 		Standard_Boolean NewPolygon(const TopoDS_Edge & E, opencascade::handle<Poly_Polygon3D> & P);
 
@@ -3519,7 +3562,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has been modified according to changed polygon on triangulation. if the edge has been modified: - p is a new polygon on triangulation.
+Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - P is a new polygon on triangulation.
 ") NewPolygonOnTriangulation;
 		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & E, const TopoDS_Face & F, opencascade::handle<Poly_PolygonOnTriangulation> & P);
 
@@ -3541,7 +3584,7 @@ RevFace: bool
 
 Description
 -----------
-Returns true if the face f has been modified. if the face has been modified: - s is the new geometry of the face, - l is its new location, and - tol is the new tolerance. revwires is set to true when the modification reverses the normal of the surface (the wires have to be reversed). revface is set to true if the orientation of the modified face changes in the shells which contain it. for this class, revface returns true if the gp_trsf associated with this modification is negative.
+Returns true if the face F has been modified. If the face has been modified: - S is the new geometry of the face, - L is its new location, and - Tol is the new tolerance. RevWires is set to true when the modification reverses the normal of the surface (the wires have to be reversed). RevFace is set to true if the orientation of the modified face changes in the shells which contain it. For this class, RevFace returns true if the gp_Trsf associated with this modification is negative.
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -3560,7 +3603,7 @@ bool
 
 Description
 -----------
-Returns true if the face has been modified according to changed triangulation. if the face has been modified: - t is a new triangulation on the face.
+Returns true if the face has been modified according to changed triangulation. If the face has been modified: - T is a new triangulation on the face.
 ") NewTriangulation;
 		Standard_Boolean NewTriangulation(const TopoDS_Face & F, opencascade::handle<Poly_Triangulation> & T);
 
@@ -3573,7 +3616,7 @@ gp_Trsf
 
 Description
 -----------
-Provides access to the gp_trsf associated with this modification. the transformation can be changed.
+Provides access to the gp_Trsf associated with this modification. The transformation can be changed.
 ") Trsf;
 		gp_Trsf Trsf();
 
@@ -3625,7 +3668,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity of <newe> between <newf1> and <newf2>. //! <newe> is the new edge created from <e>. <newf1> (resp. <newf2>) is the new face created from <f1> (resp. <f2>).
+Returns the continuity of <NewE> between <NewF1> and <NewF2>. //! <NewE> is the new edge created from <E>. <NewF1> (resp. <NewF2>) is the new face created from <F1> (resp. <F2>).
 ") Continuity;
 		GeomAbs_Shape Continuity(const TopoDS_Edge & E, const TopoDS_Face & F1, const TopoDS_Face & F2, const TopoDS_Edge & NewE, const TopoDS_Face & NewF1, const TopoDS_Face & NewF2);
 
@@ -3658,7 +3701,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has been modified. in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <c>, <l>, <tol> are not significant.
+Returns Standard_True if the edge <E> has been modified. In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 ") NewCurve;
 		Standard_Boolean NewCurve(const TopoDS_Edge & E, opencascade::handle<Geom_Curve> & C, TopLoc_Location & L, Standard_Real &OutValue);
 
@@ -3680,7 +3723,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the edge <e> has a new curve on surface on the face <f>.in this case, <c> is the new geometric support of the edge, <l> the new location, <tol> the new tolerance. otherwise, returns standard_false, and <c>, <l>, <tol> are not significant.
+Returns Standard_True if the edge <E> has a new curve on surface on the face <F>.In this case, <C> is the new geometric support of the edge, <L> the new location, <Tol> the new tolerance. Otherwise, returns Standard_False, and <C>, <L>, <Tol> are not significant.
 ") NewCurve2d;
 		Standard_Boolean NewCurve2d(const TopoDS_Edge & E, const TopoDS_Face & F, const TopoDS_Edge & NewE, const TopoDS_Face & NewF, opencascade::handle<Geom2d_Curve> & C, Standard_Real &OutValue);
 
@@ -3700,7 +3743,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has a new parameter on the edge <e>. in this case, <p> is the parameter, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the Vertex <V> has a new parameter on the edge <E>. In this case, <P> is the parameter, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewParameter;
 		Standard_Boolean NewParameter(const TopoDS_Vertex & V, const TopoDS_Edge & E, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3719,7 +3762,7 @@ Tol: float
 
 Description
 -----------
-Returns standard_true if the vertex <v> has been modified. in this case, <p> is the new geometric support of the vertex, <tol> the new tolerance. otherwise, returns standard_false, and <p>, <tol> are not significant.
+Returns Standard_True if the vertex <V> has been modified. In this case, <P> is the new geometric support of the vertex, <Tol> the new tolerance. Otherwise, returns Standard_False, and <P>, <Tol> are not significant.
 ") NewPoint;
 		Standard_Boolean NewPoint(const TopoDS_Vertex & V, gp_Pnt & P, Standard_Real &OutValue);
 
@@ -3738,7 +3781,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has been modified according to changed polygon. if the edge has been modified: - thepoly is a new polygon.
+Returns true if the edge has been modified according to changed polygon. If the edge has been modified: - thePoly is a new polygon.
 ") NewPolygon;
 		Standard_Boolean NewPolygon(const TopoDS_Edge & theEdge, opencascade::handle<Poly_Polygon3D> & thePoly);
 
@@ -3758,7 +3801,7 @@ bool
 
 Description
 -----------
-Returns true if the edge has been modified according to changed polygon on triangulation. if the edge has been modified: - thepoly is a new polygon on triangulation.
+Returns true if the edge has been modified according to changed polygon on triangulation. If the edge has been modified: - thePoly is a new polygon on triangulation.
 ") NewPolygonOnTriangulation;
 		Standard_Boolean NewPolygonOnTriangulation(const TopoDS_Edge & theEdge, const TopoDS_Face & theFace, opencascade::handle<Poly_PolygonOnTriangulation> & thePoly);
 
@@ -3780,7 +3823,7 @@ RevFace: bool
 
 Description
 -----------
-Returns standard_true if the face <f> has been modified. in this case, <s> is the new geometric support of the face, <l> the new location,<tol> the new tolerance.<revwires> has to be set to standard_true when the modification reverses the normal of the surface.(the wires have to be reversed). <revface> has to be set to standard_true if the orientation of the modified face changes in the shells which contain it. -- here, <revface> will return standard_true if the -- gp_trsf is negative.
+Returns Standard_True if the face <F> has been modified. In this case, <S> is the new geometric support of the face, <L> the new location,<Tol> the new tolerance.<RevWires> has to be set to Standard_True when the modification reverses the normal of the surface.(the wires have to be reversed). <RevFace> has to be set to Standard_True if the orientation of the modified face changes in the shells which contain it. -- Here, <RevFace> will return Standard_True if the -- gp_Trsf is negative.
 ") NewSurface;
 		Standard_Boolean NewSurface(const TopoDS_Face & F, opencascade::handle<Geom_Surface> & S, TopLoc_Location & L, Standard_Real &OutValue, Standard_Boolean &OutValue, Standard_Boolean &OutValue);
 
@@ -3799,7 +3842,7 @@ bool
 
 Description
 -----------
-Returns true if the face has been modified according to changed triangulation. if the face has been modified: - thetri is a new triangulation on the face.
+Returns true if the face has been modified according to changed triangulation. If the face has been modified: - theTri is a new triangulation on the face.
 ") NewTriangulation;
 		Standard_Boolean NewTriangulation(const TopoDS_Face & theFace, opencascade::handle<Poly_Triangulation> & theTri);
 

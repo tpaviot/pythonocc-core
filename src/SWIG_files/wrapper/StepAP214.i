@@ -227,7 +227,7 @@ opencascade::handle<StepAP214_Protocol>
 
 Description
 -----------
-Creates a protocol.
+creates a Protocol.
 ") Protocol;
 		static opencascade::handle<StepAP214_Protocol> Protocol();
 
@@ -254,7 +254,7 @@ None
 
 Description
 -----------
-Returns a appliedapprovalassignment.
+Returns a AppliedApprovalAssignment.
 ") StepAP214_AppliedApprovalAssignment;
 		 StepAP214_AppliedApprovalAssignment();
 
@@ -364,7 +364,7 @@ None
 
 Description
 -----------
-Returns a applieddateandtimeassignment.
+Returns a AppliedDateAndTimeAssignment.
 ") StepAP214_AppliedDateAndTimeAssignment;
 		 StepAP214_AppliedDateAndTimeAssignment();
 
@@ -475,7 +475,7 @@ None
 
 Description
 -----------
-Returns a applieddateassignment.
+Returns a AppliedDateAssignment.
 ") StepAP214_AppliedDateAssignment;
 		 StepAP214_AppliedDateAssignment();
 
@@ -731,7 +731,7 @@ opencascade::handle<StepAP214_HArray1OfExternalIdentificationItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP214_HArray1OfExternalIdentificationItem> Items();
 
@@ -749,7 +749,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP214_HArray1OfExternalIdentificationItem> & Items);
 
@@ -810,7 +810,7 @@ opencascade::handle<StepAP214_HArray1OfGroupItem>
 
 Description
 -----------
-Returns field items.
+Returns field Items.
 ") Items;
 		opencascade::handle<StepAP214_HArray1OfGroupItem> Items();
 
@@ -828,7 +828,7 @@ None
 
 Description
 -----------
-Set field items.
+Set field Items.
 ") SetItems;
 		void SetItems(const opencascade::handle<StepAP214_HArray1OfGroupItem> & Items);
 
@@ -857,7 +857,7 @@ None
 
 Description
 -----------
-Returns a appliedorganizationassignment.
+Returns a AppliedOrganizationAssignment.
 ") StepAP214_AppliedOrganizationAssignment;
 		 StepAP214_AppliedOrganizationAssignment();
 
@@ -968,7 +968,7 @@ None
 
 Description
 -----------
-Returns a autodesigndateandpersonassignment.
+Returns a AutoDesignDateAndPersonAssignment.
 ") StepAP214_AppliedPersonAndOrganizationAssignment;
 		 StepAP214_AppliedPersonAndOrganizationAssignment();
 
@@ -1079,7 +1079,7 @@ None
 
 Description
 -----------
-Returns a autodesignpresenteditem.
+Returns a AutoDesignPresentedItem.
 ") StepAP214_AppliedPresentedItem;
 		 StepAP214_AppliedPresentedItem();
 
@@ -1188,7 +1188,7 @@ None
 
 Description
 -----------
-Returns a appliedsecurityclassificationassignment.
+Returns a AppliedSecurityClassificationAssignment.
 ") StepAP214_AppliedSecurityClassificationAssignment;
 		 StepAP214_AppliedSecurityClassificationAssignment();
 
@@ -1298,7 +1298,7 @@ None
 
 Description
 -----------
-Returns a approvalitem selecttype.
+Returns a ApprovalItem SelectType.
 ") StepAP214_ApprovalItem;
 		 StepAP214_ApprovalItem();
 
@@ -1311,7 +1311,7 @@ opencascade::handle<StepRepr_AssemblyComponentUsageSubstitute>
 
 Description
 -----------
-Returns value as a assemblycomponentusagesubstitute (null if another type).
+returns Value as a AssemblyComponentUsageSubstitute (Null if another type).
 ") AssemblyComponentUsageSubstitute;
 		virtual opencascade::handle<StepRepr_AssemblyComponentUsageSubstitute> AssemblyComponentUsageSubstitute();
 
@@ -1329,7 +1329,7 @@ int
 
 Description
 -----------
-Recognizes a approvalitem kind entity that is: 1 -> assemblycomponentusagesubstitute 2 -> documentfile 3 -> materialdesignation 4 -> mechanicaldesigngeometricpresentationrepresentation 5 -> presentationarea 6 -> product 7 -> productdefinition 8 -> productdefinitionformation 9 -> productdefinitionrelationship 10 -> propertydefinition 11 -> shaperepresentation 12 -> securityclassification 13 -> configurationitem 14 -> date 15 -> document 16 -> effectivity 17 -> group 18 -> grouprelationship 19 -> productdefinitionformationrelationship 20 -> representation 21 -> shapeaspectrelationship 0 else.
+Recognizes a ApprovalItem Kind Entity that is: 1 -> AssemblyComponentUsageSubstitute 2 -> DocumentFile 3 -> MaterialDesignation 4 -> MechanicalDesignGeometricPresentationRepresentation 5 -> PresentationArea 6 -> Product 7 -> ProductDefinition 8 -> ProductDefinitionFormation 9 -> ProductDefinitionRelationship 10 -> PropertyDefinition 11 -> ShapeRepresentation 12 -> SecurityClassification 13 -> ConfigurationItem 14 -> Date 15 -> Document 16 -> Effectivity 17 -> Group 18 -> GroupRelationship 19 -> ProductDefinitionFormationRelationship 20 -> Representation 21 -> ShapeAspectRelationship 0 else.
 ") CaseNum;
 		virtual Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1342,7 +1342,7 @@ opencascade::handle<StepRepr_ConfigurationItem>
 
 Description
 -----------
-Returns value as a configurationitem (null if another type).
+returns Value as a ConfigurationItem (Null if another type).
 ") ConfigurationItem;
 		virtual opencascade::handle<StepRepr_ConfigurationItem> ConfigurationItem();
 
@@ -1355,7 +1355,7 @@ opencascade::handle<StepBasic_Date>
 
 Description
 -----------
-Returns value as a date (null if another type).
+returns Value as a Date (Null if another type).
 ") Date;
 		virtual opencascade::handle<StepBasic_Date> Date();
 
@@ -1368,7 +1368,7 @@ opencascade::handle<StepBasic_Document>
 
 Description
 -----------
-Returns value as a document (null if another type).
+returns Value as a Document (Null if another type).
 ") Document;
 		virtual opencascade::handle<StepBasic_Document> Document();
 
@@ -1381,7 +1381,7 @@ opencascade::handle<StepBasic_DocumentFile>
 
 Description
 -----------
-Returns value as a documentfile (null if another type).
+returns Value as a DocumentFile (Null if another type).
 ") DocumentFile;
 		virtual opencascade::handle<StepBasic_DocumentFile> DocumentFile();
 
@@ -1394,7 +1394,7 @@ opencascade::handle<StepBasic_Effectivity>
 
 Description
 -----------
-Returns value as a effectivity (null if another type).
+returns Value as a Effectivity (Null if another type).
 ") Effectivity;
 		virtual opencascade::handle<StepBasic_Effectivity> Effectivity();
 
@@ -1407,7 +1407,7 @@ opencascade::handle<StepBasic_Group>
 
 Description
 -----------
-Returns value as a group (null if another type).
+returns Value as a Group (Null if another type).
 ") Group;
 		virtual opencascade::handle<StepBasic_Group> Group();
 
@@ -1420,7 +1420,7 @@ opencascade::handle<StepBasic_GroupRelationship>
 
 Description
 -----------
-Returns value as a grouprelationship (null if another type).
+returns Value as a GroupRelationship (Null if another type).
 ") GroupRelationship;
 		virtual opencascade::handle<StepBasic_GroupRelationship> GroupRelationship();
 
@@ -1433,7 +1433,7 @@ opencascade::handle<StepRepr_MaterialDesignation>
 
 Description
 -----------
-Returns value as a materialdesignation (null if another type).
+returns Value as a MaterialDesignation (Null if another type).
 ") MaterialDesignation;
 		virtual opencascade::handle<StepRepr_MaterialDesignation> MaterialDesignation();
 
@@ -1446,7 +1446,7 @@ opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentati
 
 Description
 -----------
-Returns value as a mechanicaldesigngeometricpresentationrepresentation (null if another type).
+returns Value as a MechanicalDesignGeometricPresentationRepresentation (Null if another type).
 ") MechanicalDesignGeometricPresentationRepresentation;
 		virtual opencascade::handle<StepVisual_MechanicalDesignGeometricPresentationRepresentation> MechanicalDesignGeometricPresentationRepresentation();
 
@@ -1459,7 +1459,7 @@ opencascade::handle<StepVisual_PresentationArea>
 
 Description
 -----------
-Returns value as a presentationarea (null if another type).
+returns Value as a PresentationArea (Null if another type).
 ") PresentationArea;
 		virtual opencascade::handle<StepVisual_PresentationArea> PresentationArea();
 
@@ -1472,7 +1472,7 @@ opencascade::handle<StepBasic_Product>
 
 Description
 -----------
-Returns value as a product (null if another type).
+returns Value as a Product (Null if another type).
 ") Product;
 		virtual opencascade::handle<StepBasic_Product> Product();
 
@@ -1485,7 +1485,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as a productdefinition (null if another type).
+returns Value as a ProductDefinition (Null if another type).
 ") ProductDefinition;
 		virtual opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -1498,7 +1498,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as a productdefinitionformation (null if another type).
+returns Value as a ProductDefinitionFormation (Null if another type).
 ") ProductDefinitionFormation;
 		virtual opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
@@ -1511,7 +1511,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormationRelationship>
 
 Description
 -----------
-Returns value as a productdefinitionformationrelationship (null if another type).
+returns Value as a ProductDefinitionFormationRelationship (Null if another type).
 ") ProductDefinitionFormationRelationship;
 		virtual opencascade::handle<StepBasic_ProductDefinitionFormationRelationship> ProductDefinitionFormationRelationship();
 
@@ -1524,7 +1524,7 @@ opencascade::handle<StepBasic_ProductDefinitionRelationship>
 
 Description
 -----------
-Returns value as aproductdefinitionrelationship (null if another type).
+returns Value as aProductDefinitionRelationship (Null if another type).
 ") ProductDefinitionRelationship;
 		virtual opencascade::handle<StepBasic_ProductDefinitionRelationship> ProductDefinitionRelationship();
 
@@ -1537,7 +1537,7 @@ opencascade::handle<StepRepr_PropertyDefinition>
 
 Description
 -----------
-Returns value as a propertydefinition (null if another type).
+returns Value as a PropertyDefinition (Null if another type).
 ") PropertyDefinition;
 		virtual opencascade::handle<StepRepr_PropertyDefinition> PropertyDefinition();
 
@@ -1550,7 +1550,7 @@ opencascade::handle<StepRepr_Representation>
 
 Description
 -----------
-Returns value as a representation (null if another type).
+returns Value as a Representation (Null if another type).
 ") Representation;
 		virtual opencascade::handle<StepRepr_Representation> Representation();
 
@@ -1563,7 +1563,7 @@ opencascade::handle<StepBasic_SecurityClassification>
 
 Description
 -----------
-Returns value as a securityclassification (null if another type).
+returns Value as a SecurityClassification (Null if another type).
 ") SecurityClassification;
 		virtual opencascade::handle<StepBasic_SecurityClassification> SecurityClassification();
 
@@ -1576,7 +1576,7 @@ opencascade::handle<StepRepr_ShapeAspectRelationship>
 
 Description
 -----------
-Returns value as a shapeaspectrelationship (null if another type).
+returns Value as a ShapeAspectRelationship (Null if another type).
 ") ShapeAspectRelationship;
 		virtual opencascade::handle<StepRepr_ShapeAspectRelationship> ShapeAspectRelationship();
 
@@ -1589,7 +1589,7 @@ opencascade::handle<StepShape_ShapeRepresentation>
 
 Description
 -----------
-Returns value as a shaperepresentation (null if another type).
+returns Value as a ShapeRepresentation (Null if another type).
 ") ShapeRepresentation;
 		virtual opencascade::handle<StepShape_ShapeRepresentation> ShapeRepresentation();
 
@@ -1616,7 +1616,7 @@ None
 
 Description
 -----------
-Returns a autodesignactualdateandtimeassignment.
+Returns a AutoDesignActualDateAndTimeAssignment.
 ") StepAP214_AutoDesignActualDateAndTimeAssignment;
 		 StepAP214_AutoDesignActualDateAndTimeAssignment();
 
@@ -1727,7 +1727,7 @@ None
 
 Description
 -----------
-Returns a autodesignactualdateassignment.
+Returns a AutoDesignActualDateAssignment.
 ") StepAP214_AutoDesignActualDateAssignment;
 		 StepAP214_AutoDesignActualDateAssignment();
 
@@ -1838,7 +1838,7 @@ None
 
 Description
 -----------
-Returns a autodesignapprovalassignment.
+Returns a AutoDesignApprovalAssignment.
 ") StepAP214_AutoDesignApprovalAssignment;
 		 StepAP214_AutoDesignApprovalAssignment();
 
@@ -1948,7 +1948,7 @@ None
 
 Description
 -----------
-Returns a autodesigndateandpersonassignment.
+Returns a AutoDesignDateAndPersonAssignment.
 ") StepAP214_AutoDesignDateAndPersonAssignment;
 		 StepAP214_AutoDesignDateAndPersonAssignment();
 
@@ -2059,7 +2059,7 @@ None
 
 Description
 -----------
-Returns a autodesigndateandpersonitem selecttype.
+Returns a AutoDesignDateAndPersonItem SelectType.
 ") StepAP214_AutoDesignDateAndPersonItem;
 		 StepAP214_AutoDesignDateAndPersonItem();
 
@@ -2103,7 +2103,7 @@ int
 
 Description
 -----------
-Recognizes a autodesigndateandpersonitem kind entity that is: 1 autodesignorganizationassignment from stepap214, 2 product from stepbasic, 3 productdefinition from stepbasic, 4 productdefinitionformation from stepbasic, 5 representation from steprepr, 6 autodesigndocumentreference from stepap214, 7 externallydefinedrepresentation from steprepr, 8 productdefinitionrelationship from stepbasic, 9 productdefinitionwithassociateddocuments from stepbasic 0 else.
+Recognizes a AutoDesignDateAndPersonItem Kind Entity that is: 1 AutoDesignOrganizationAssignment from StepAP214, 2 Product from StepBasic, 3 ProductDefinition from StepBasic, 4 ProductDefinitionFormation from StepBasic, 5 Representation from StepRepr, 6 AutoDesignDocumentReference from StepAP214, 7 ExternallyDefinedRepresentation from StepRepr, 8 ProductDefinitionRelationship from StepBasic, 9 ProductDefinitionWithAssociatedDocuments from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2221,7 +2221,7 @@ None
 
 Description
 -----------
-Returns a autodesigndateandtimeitem selecttype.
+Returns a AutoDesignDateAndTimeItem SelectType.
 ") StepAP214_AutoDesignDateAndTimeItem;
 		 StepAP214_AutoDesignDateAndTimeItem();
 
@@ -2234,7 +2234,7 @@ opencascade::handle<StepBasic_ApprovalPersonOrganization>
 
 Description
 -----------
-Returns value as a approvalpersonorganization (null if another type).
+returns Value as a ApprovalPersonOrganization (Null if another type).
 ") ApprovalPersonOrganization;
 		opencascade::handle<StepBasic_ApprovalPersonOrganization> ApprovalPersonOrganization();
 
@@ -2247,7 +2247,7 @@ opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment>
 
 Description
 -----------
-Returns value as a autodesigndateandpersonassignment (null if another type).
+returns Value as a AutoDesignDateAndPersonAssignment (Null if another type).
 ") AutoDesignDateAndPersonAssignment;
 		opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment> AutoDesignDateAndPersonAssignment();
 
@@ -2265,7 +2265,7 @@ int
 
 Description
 -----------
-Recognizes a autodesigndateandtimeitem kind entity that is: 1 -> approvalpersonorganization 2 -> autodesigndateandpersonassignment 0 else.
+Recognizes a AutoDesignDateAndTimeItem Kind Entity that is: 1 -> ApprovalPersonOrganization 2 -> AutoDesignDateAndPersonAssignment 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2305,7 +2305,7 @@ None
 
 Description
 -----------
-Returns a autodesigndateditem selecttype.
+Returns a AutoDesignDatedItem SelectType.
 ") StepAP214_AutoDesignDatedItem;
 		 StepAP214_AutoDesignDatedItem();
 
@@ -2318,7 +2318,7 @@ opencascade::handle<StepBasic_ApprovalPersonOrganization>
 
 Description
 -----------
-Returns value as a approvalpersonorganization (null if another type).
+returns Value as a ApprovalPersonOrganization (Null if another type).
 ") ApprovalPersonOrganization;
 		opencascade::handle<StepBasic_ApprovalPersonOrganization> ApprovalPersonOrganization();
 
@@ -2331,7 +2331,7 @@ opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment>
 
 Description
 -----------
-Returns value as a autodesigndateandpersonassignment (null if another type).
+returns Value as a AutoDesignDateAndPersonAssignment (Null if another type).
 ") AutoDesignDateAndPersonAssignment;
 		opencascade::handle<StepAP214_AutoDesignDateAndPersonAssignment> AutoDesignDateAndPersonAssignment();
 
@@ -2349,7 +2349,7 @@ int
 
 Description
 -----------
-Recognizes a autodesigndateditem kind entity that is: 1 -> approvalpersonorganization 2 -> autodesigndateandpersonassignment 0 else.
+Recognizes a AutoDesignDatedItem Kind Entity that is: 1 -> ApprovalPersonOrganization 2 -> AutoDesignDateAndPersonAssignment 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2362,7 +2362,7 @@ opencascade::handle<StepBasic_ProductDefinitionEffectivity>
 
 Description
 -----------
-Returns value as a productdefinitioneffectivity.
+returns Value as a ProductDefinitionEffectivity.
 ") ProductDefinitionEffectivity;
 		opencascade::handle<StepBasic_ProductDefinitionEffectivity> ProductDefinitionEffectivity();
 
@@ -2500,7 +2500,7 @@ None
 
 Description
 -----------
-Returns a autodesigngeneralorgitem selecttype.
+Returns a AutoDesignGeneralOrgItem SelectType.
 ") StepAP214_AutoDesignGeneralOrgItem;
 		 StepAP214_AutoDesignGeneralOrgItem();
 
@@ -2531,7 +2531,7 @@ int
 
 Description
 -----------
-Recognizes a autodesigngeneralorgitem kind entity that is: 1 product from stepbasic, 2 productdefinition from stepbasic, 3 productdefinitionformation from stepbasic, 4 productdefinitionrelationship from stepbasic, 5 productdefinitionwithassociateddocuments from stepbasic, 6 representation from steprepr 7 externallydefinedrepresentation from steprepr, 8 autodesigndocumentreference from stepap214, 0 else.
+Recognizes a AutoDesignGeneralOrgItem Kind Entity that is: 1 Product from StepBasic, 2 ProductDefinition from StepBasic, 3 ProductDefinitionFormation from StepBasic, 4 ProductDefinitionRelationship from StepBasic, 5 ProductDefinitionWithAssociatedDocuments from StepBasic, 6 Representation from StepRepr 7 ExternallyDefinedRepresentation from StepRepr, 8 AutoDesignDocumentReference from StepAP214, 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2544,7 +2544,7 @@ opencascade::handle<StepRepr_ExternallyDefinedRepresentation>
 
 Description
 -----------
-Returns value as a representation (null if another type).
+returns Value as a Representation (Null if another type).
 ") ExternallyDefinedRepresentation;
 		opencascade::handle<StepRepr_ExternallyDefinedRepresentation> ExternallyDefinedRepresentation();
 
@@ -2557,7 +2557,7 @@ opencascade::handle<StepBasic_Product>
 
 Description
 -----------
-Returns value as a product (null if another type).
+returns Value as a Product (Null if another type).
 ") Product;
 		opencascade::handle<StepBasic_Product> Product();
 
@@ -2570,7 +2570,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as a productdefinition (null if another type).
+returns Value as a ProductDefinition (Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -2583,7 +2583,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as a productdefinitionformation (null if another type).
+returns Value as a ProductDefinitionFormation (Null if another type).
 ") ProductDefinitionFormation;
 		opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
@@ -2596,7 +2596,7 @@ opencascade::handle<StepBasic_ProductDefinitionRelationship>
 
 Description
 -----------
-Returns value as a productdefinitionrelationship (null if another type).
+returns Value as a ProductDefinitionRelationship (Null if another type).
 ") ProductDefinitionRelationship;
 		opencascade::handle<StepBasic_ProductDefinitionRelationship> ProductDefinitionRelationship();
 
@@ -2609,7 +2609,7 @@ opencascade::handle<StepBasic_ProductDefinitionWithAssociatedDocuments>
 
 Description
 -----------
-Returns value as a productdefinitionwithassociateddocuments (null if another type).
+returns Value as a ProductDefinitionWithAssociatedDocuments (Null if another type).
 ") ProductDefinitionWithAssociatedDocuments;
 		opencascade::handle<StepBasic_ProductDefinitionWithAssociatedDocuments> ProductDefinitionWithAssociatedDocuments();
 
@@ -2622,7 +2622,7 @@ opencascade::handle<StepRepr_Representation>
 
 Description
 -----------
-Returns value as a representation (null if another type).
+returns Value as a Representation (Null if another type).
 ") Representation;
 		opencascade::handle<StepRepr_Representation> Representation();
 
@@ -2649,7 +2649,7 @@ None
 
 Description
 -----------
-Returns a autodesigngroupassignment.
+Returns a AutoDesignGroupAssignment.
 ") StepAP214_AutoDesignGroupAssignment;
 		 StepAP214_AutoDesignGroupAssignment();
 
@@ -2759,7 +2759,7 @@ None
 
 Description
 -----------
-Returns a autodesigngroupeditem selecttype.
+Returns a AutoDesignGroupedItem SelectType.
 ") StepAP214_AutoDesignGroupedItem;
 		 StepAP214_AutoDesignGroupedItem();
 
@@ -2772,7 +2772,7 @@ opencascade::handle<StepShape_AdvancedBrepShapeRepresentation>
 
 Description
 -----------
-Returns value as a advancedbrepshaperepresentation (null if another type).
+returns Value as a AdvancedBrepShapeRepresentation (Null if another type).
 ") AdvancedBrepShapeRepresentation;
 		opencascade::handle<StepShape_AdvancedBrepShapeRepresentation> AdvancedBrepShapeRepresentation();
 
@@ -2790,7 +2790,7 @@ int
 
 Description
 -----------
-Recognizes a autodesigngroupeditem kind entity that is: 1 -> advancedbrepshaperepresentation 2 -> csgshaperepresentation 3 -> facetedbrepshaperepresentation 4 -> geometricallyboundedsurfaceshaperepresentation 5 -> geometricallyboundedwireframeshaperepresentation 6 -> manifoldsurfaceshaperepresentation 7 -> representation 8 -> representationitem 9 -> shapeaspect 10 -> shaperepresentation 11 -> templateinstance 0 else.
+Recognizes a AutoDesignGroupedItem Kind Entity that is: 1 -> AdvancedBrepShapeRepresentation 2 -> CsgShapeRepresentation 3 -> FacetedBrepShapeRepresentation 4 -> GeometricallyBoundedSurfaceShapeRepresentation 5 -> GeometricallyBoundedWireframeShapeRepresentation 6 -> ManifoldSurfaceShapeRepresentation 7 -> Representation 8 -> RepresentationItem 9 -> ShapeAspect 10 -> ShapeRepresentation 11 -> TemplateInstance 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2803,7 +2803,7 @@ opencascade::handle<StepShape_CsgShapeRepresentation>
 
 Description
 -----------
-Returns value as a csgshaperepresentation (null if another type).
+returns Value as a CsgShapeRepresentation (Null if another type).
 ") CsgShapeRepresentation;
 		opencascade::handle<StepShape_CsgShapeRepresentation> CsgShapeRepresentation();
 
@@ -2816,7 +2816,7 @@ opencascade::handle<StepShape_FacetedBrepShapeRepresentation>
 
 Description
 -----------
-Returns value as a facetedbrepshaperepresentation (null if another type).
+returns Value as a FacetedBrepShapeRepresentation (Null if another type).
 ") FacetedBrepShapeRepresentation;
 		opencascade::handle<StepShape_FacetedBrepShapeRepresentation> FacetedBrepShapeRepresentation();
 
@@ -2829,7 +2829,7 @@ opencascade::handle<StepShape_GeometricallyBoundedSurfaceShapeRepresentation>
 
 Description
 -----------
-Returns value as a geometricallyboundedsurfaceshaperepresentation (null if another type).
+returns Value as a GeometricallyBoundedSurfaceShapeRepresentation (Null if another type).
 ") GeometricallyBoundedSurfaceShapeRepresentation;
 		opencascade::handle<StepShape_GeometricallyBoundedSurfaceShapeRepresentation> GeometricallyBoundedSurfaceShapeRepresentation();
 
@@ -2842,7 +2842,7 @@ opencascade::handle<StepShape_GeometricallyBoundedWireframeShapeRepresentation>
 
 Description
 -----------
-Returns value as a geometricallyboundedwireframeshaperepresentation (null if another type).
+returns Value as a GeometricallyBoundedWireframeShapeRepresentation (Null if another type).
 ") GeometricallyBoundedWireframeShapeRepresentation;
 		opencascade::handle<StepShape_GeometricallyBoundedWireframeShapeRepresentation> GeometricallyBoundedWireframeShapeRepresentation();
 
@@ -2855,7 +2855,7 @@ opencascade::handle<StepShape_ManifoldSurfaceShapeRepresentation>
 
 Description
 -----------
-Returns value as a manifoldsurfaceshaperepresentation (null if another type).
+returns Value as a ManifoldSurfaceShapeRepresentation (Null if another type).
 ") ManifoldSurfaceShapeRepresentation;
 		opencascade::handle<StepShape_ManifoldSurfaceShapeRepresentation> ManifoldSurfaceShapeRepresentation();
 
@@ -2868,7 +2868,7 @@ opencascade::handle<StepRepr_Representation>
 
 Description
 -----------
-Returns value as a representation (null if another type).
+returns Value as a Representation (Null if another type).
 ") Representation;
 		opencascade::handle<StepRepr_Representation> Representation();
 
@@ -2881,7 +2881,7 @@ opencascade::handle<StepRepr_RepresentationItem>
 
 Description
 -----------
-Returns value as a representationitem (null if another type).
+returns Value as a RepresentationItem (Null if another type).
 ") RepresentationItem;
 		opencascade::handle<StepRepr_RepresentationItem> RepresentationItem();
 
@@ -2894,7 +2894,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns value as a shapeaspect (null if another type).
+returns Value as a ShapeAspect (Null if another type).
 ") ShapeAspect;
 		opencascade::handle<StepRepr_ShapeAspect> ShapeAspect();
 
@@ -2907,7 +2907,7 @@ opencascade::handle<StepShape_ShapeRepresentation>
 
 Description
 -----------
-Returns value as a shaperepresentation (null if another type).
+returns Value as a ShapeRepresentation (Null if another type).
 ") ShapeRepresentation;
 		opencascade::handle<StepShape_ShapeRepresentation> ShapeRepresentation();
 
@@ -2920,7 +2920,7 @@ opencascade::handle<StepVisual_TemplateInstance>
 
 Description
 -----------
-Returns value as a templateinstance (null if another type).
+returns Value as a TemplateInstance (Null if another type).
 ") TemplateInstance;
 		opencascade::handle<StepVisual_TemplateInstance> TemplateInstance();
 
@@ -2947,7 +2947,7 @@ None
 
 Description
 -----------
-Returns a autodesignnominaldateandtimeassignment.
+Returns a AutoDesignNominalDateAndTimeAssignment.
 ") StepAP214_AutoDesignNominalDateAndTimeAssignment;
 		 StepAP214_AutoDesignNominalDateAndTimeAssignment();
 
@@ -3058,7 +3058,7 @@ None
 
 Description
 -----------
-Returns a autodesignnominaldateassignment.
+Returns a AutoDesignNominalDateAssignment.
 ") StepAP214_AutoDesignNominalDateAssignment;
 		 StepAP214_AutoDesignNominalDateAssignment();
 
@@ -3169,7 +3169,7 @@ None
 
 Description
 -----------
-Returns a autodesignorganizationassignment.
+Returns a AutoDesignOrganizationAssignment.
 ") StepAP214_AutoDesignOrganizationAssignment;
 		 StepAP214_AutoDesignOrganizationAssignment();
 
@@ -3280,7 +3280,7 @@ None
 
 Description
 -----------
-Returns a autodesignpersonandorganizationassignment.
+Returns a AutoDesignPersonAndOrganizationAssignment.
 ") StepAP214_AutoDesignPersonAndOrganizationAssignment;
 		 StepAP214_AutoDesignPersonAndOrganizationAssignment();
 
@@ -3391,7 +3391,7 @@ None
 
 Description
 -----------
-Returns a autodesignpresenteditem.
+Returns a AutoDesignPresentedItem.
 ") StepAP214_AutoDesignPresentedItem;
 		 StepAP214_AutoDesignPresentedItem();
 
@@ -3500,7 +3500,7 @@ None
 
 Description
 -----------
-Returns a autodesignpresenteditemselect selecttype.
+Returns a AutoDesignPresentedItemSelect SelectType.
 ") StepAP214_AutoDesignPresentedItemSelect;
 		 StepAP214_AutoDesignPresentedItemSelect();
 
@@ -3518,7 +3518,7 @@ int
 
 Description
 -----------
-Recognizes a autodesignpresenteditemselect kind entity that is: 1 -> productdefinition, 2 -> productdefinitionrelationship, 3 -> productdefinitionshape 4 -> representationrelationship 5 -> shapeaspect 6 -> documentrelationship, 0 else.
+Recognizes a AutoDesignPresentedItemSelect Kind Entity that is: 1 -> ProductDefinition, 2 -> ProductDefinitionRelationship, 3 -> ProductDefinitionShape 4 -> RepresentationRelationship 5 -> ShapeAspect 6 -> DocumentRelationship, 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3531,7 +3531,7 @@ opencascade::handle<StepBasic_DocumentRelationship>
 
 Description
 -----------
-Returns value as a documentrelationship (null if another type).
+returns Value as a DocumentRelationship (Null if another type).
 ") DocumentRelationship;
 		opencascade::handle<StepBasic_DocumentRelationship> DocumentRelationship();
 
@@ -3544,7 +3544,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as a productdefinition (null if another type).
+returns Value as a ProductDefinition (Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -3557,7 +3557,7 @@ opencascade::handle<StepBasic_ProductDefinitionRelationship>
 
 Description
 -----------
-Returns value as a productdefinitionrelationship (null if another type).
+returns Value as a ProductDefinitionRelationship (Null if another type).
 ") ProductDefinitionRelationship;
 		opencascade::handle<StepBasic_ProductDefinitionRelationship> ProductDefinitionRelationship();
 
@@ -3570,7 +3570,7 @@ opencascade::handle<StepRepr_ProductDefinitionShape>
 
 Description
 -----------
-Returns value as a productdefinitionshape (null if another type).
+returns Value as a ProductDefinitionShape (Null if another type).
 ") ProductDefinitionShape;
 		opencascade::handle<StepRepr_ProductDefinitionShape> ProductDefinitionShape();
 
@@ -3583,7 +3583,7 @@ opencascade::handle<StepRepr_RepresentationRelationship>
 
 Description
 -----------
-Returns value as a representationrelationship (null if another type).
+returns Value as a RepresentationRelationship (Null if another type).
 ") RepresentationRelationship;
 		opencascade::handle<StepRepr_RepresentationRelationship> RepresentationRelationship();
 
@@ -3596,7 +3596,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns value as a shapeaspect (null if another type).
+returns Value as a ShapeAspect (Null if another type).
 ") ShapeAspect;
 		opencascade::handle<StepRepr_ShapeAspect> ShapeAspect();
 
@@ -3623,7 +3623,7 @@ None
 
 Description
 -----------
-Returns a autodesignreferencingitem selecttype.
+Returns a AutoDesignReferencingItem SelectType.
 ") StepAP214_AutoDesignReferencingItem;
 		 StepAP214_AutoDesignReferencingItem();
 
@@ -3654,7 +3654,7 @@ int
 
 Description
 -----------
-Recognizes a autodesignreferencingitem kind entity that is: 1 approval from stepbasic, 2 documentrelationship from stepbasic, 3 externallydefinedrepresentation from steprepr, 4 mappeditem from steprepr, 5 materialdesignation from steprepr, 6 presentationarea from stepvisual, 7 presentationview from stepvisual, 8 productcategory from stepbasic, 9 productdefinition from stepbasic, 10 productdefinitionrelationship from stepbasic, 11 propertydefinition from stepbasic, 12 representation from steprepr, 13 representationrelationship from steprepr, 14 shapeaspect from steprepr 0 else.
+Recognizes a AutoDesignReferencingItem Kind Entity that is: 1 Approval from StepBasic, 2 DocumentRelationship from StepBasic, 3 ExternallyDefinedRepresentation from StepRepr, 4 MappedItem from StepRepr, 5 MaterialDesignation from StepRepr, 6 PresentationArea from StepVisual, 7 PresentationView from StepVisual, 8 ProductCategory from StepBasic, 9 ProductDefinition from StepBasic, 10 ProductDefinitionRelationship from StepBasic, 11 PropertyDefinition from StepBasic, 12 Representation from StepRepr, 13 RepresentationRelationship from StepRepr, 14 ShapeAspect from StepRepr 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -3850,7 +3850,7 @@ None
 
 Description
 -----------
-Returns a autodesignsecurityclassificationassignment.
+Returns a AutoDesignSecurityClassificationAssignment.
 ") StepAP214_AutoDesignSecurityClassificationAssignment;
 		 StepAP214_AutoDesignSecurityClassificationAssignment();
 
@@ -3989,7 +3989,7 @@ None
 
 Description
 -----------
-Returns a documentreferenceitem selecttype.
+Returns a DocumentReferenceItem SelectType.
 ") StepAP214_DocumentReferenceItem;
 		 StepAP214_DocumentReferenceItem();
 
@@ -4002,7 +4002,7 @@ opencascade::handle<StepAP214_AppliedExternalIdentificationAssignment>
 
 Description
 -----------
-Returns value as a appliedexternalidentificationassignment (null if another type).
+returns Value as a AppliedExternalIdentificationAssignment (Null if another type).
 ") AppliedExternalIdentificationAssignment;
 		opencascade::handle<StepAP214_AppliedExternalIdentificationAssignment> AppliedExternalIdentificationAssignment();
 
@@ -4015,7 +4015,7 @@ opencascade::handle<StepBasic_Approval>
 
 Description
 -----------
-Returns value as a approval (null if another type).
+returns Value as a Approval (Null if another type).
 ") Approval;
 		opencascade::handle<StepBasic_Approval> Approval();
 
@@ -4028,7 +4028,7 @@ opencascade::handle<StepRepr_AssemblyComponentUsage>
 
 Description
 -----------
-Returns value as a assemblycomponentusage (null if another type).
+returns Value as a AssemblyComponentUsage (Null if another type).
 ") AssemblyComponentUsage;
 		opencascade::handle<StepRepr_AssemblyComponentUsage> AssemblyComponentUsage();
 
@@ -4046,7 +4046,7 @@ int
 
 Description
 -----------
-Recognizes a documentreferenceitem kind entity that is :.
+Recognizes a DocumentReferenceItem Kind Entity that is :.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4059,7 +4059,7 @@ opencascade::handle<StepBasic_CharacterizedObject>
 
 Description
 -----------
-Returns value as a characterizedobject (null if another type).
+returns Value as a CharacterizedObject (Null if another type).
 ") CharacterizedObject;
 		opencascade::handle<StepBasic_CharacterizedObject> CharacterizedObject();
 
@@ -4072,7 +4072,7 @@ opencascade::handle<StepRepr_DescriptiveRepresentationItem>
 
 Description
 -----------
-Returns value as a (null if another type).
+returns Value as a (Null if another type).
 ") DescriptiveRepresentationItem;
 		opencascade::handle<StepRepr_DescriptiveRepresentationItem> DescriptiveRepresentationItem();
 
@@ -4085,7 +4085,7 @@ opencascade::handle<StepShape_DimensionalSize>
 
 Description
 -----------
-Returns value as a dimensionalsize (null if another type).
+returns Value as a DimensionalSize (Null if another type).
 ") DimensionalSize;
 		opencascade::handle<StepShape_DimensionalSize> DimensionalSize();
 
@@ -4098,7 +4098,7 @@ opencascade::handle<StepBasic_ExternallyDefinedItem>
 
 Description
 -----------
-Returns value as a externallydefineditem (null if another type).
+returns Value as a ExternallyDefinedItem (Null if another type).
 ") ExternallyDefinedItem;
 		opencascade::handle<StepBasic_ExternallyDefinedItem> ExternallyDefinedItem();
 
@@ -4111,7 +4111,7 @@ opencascade::handle<StepBasic_Group>
 
 Description
 -----------
-Returns value as a group (null if another type).
+returns Value as a Group (Null if another type).
 ") Group;
 		opencascade::handle<StepBasic_Group> Group();
 
@@ -4124,7 +4124,7 @@ opencascade::handle<StepBasic_GroupRelationship>
 
 Description
 -----------
-Returns value as a grouprelationship (null if another type).
+returns Value as a GroupRelationship (Null if another type).
 ") GroupRelationship;
 		opencascade::handle<StepBasic_GroupRelationship> GroupRelationship();
 
@@ -4137,7 +4137,7 @@ opencascade::handle<StepRepr_MaterialDesignation>
 
 Description
 -----------
-Returns value as a materialdesignation (null if another type).
+returns Value as a MaterialDesignation (Null if another type).
 ") MaterialDesignation;
 		opencascade::handle<StepRepr_MaterialDesignation> MaterialDesignation();
 
@@ -4150,7 +4150,7 @@ opencascade::handle<StepRepr_MeasureRepresentationItem>
 
 Description
 -----------
-Returns value as a measurerepresentationitem (null if another type).
+returns Value as a MeasureRepresentationItem (Null if another type).
 ") MeasureRepresentationItem;
 		opencascade::handle<StepRepr_MeasureRepresentationItem> MeasureRepresentationItem();
 
@@ -4163,7 +4163,7 @@ opencascade::handle<StepBasic_ProductCategory>
 
 Description
 -----------
-Returns value as a productcategory (null if another type).
+returns Value as a ProductCategory (Null if another type).
 ") ProductCategory;
 		opencascade::handle<StepBasic_ProductCategory> ProductCategory();
 
@@ -4176,7 +4176,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as a productdefinition (null if another type).
+returns Value as a ProductDefinition (Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -4189,7 +4189,7 @@ opencascade::handle<StepBasic_ProductDefinitionContext>
 
 Description
 -----------
-Returns value as a productdefinitioncontext (null if another type).
+returns Value as a ProductDefinitionContext (Null if another type).
 ") ProductDefinitionContext;
 		opencascade::handle<StepBasic_ProductDefinitionContext> ProductDefinitionContext();
 
@@ -4202,7 +4202,7 @@ opencascade::handle<StepBasic_ProductDefinitionRelationship>
 
 Description
 -----------
-Returns value as aproductdefinitionrelationship (null if another type).
+returns Value as aProductDefinitionRelationship (Null if another type).
 ") ProductDefinitionRelationship;
 		opencascade::handle<StepBasic_ProductDefinitionRelationship> ProductDefinitionRelationship();
 
@@ -4215,7 +4215,7 @@ opencascade::handle<StepRepr_PropertyDefinition>
 
 Description
 -----------
-Returns value as a propertydefinition (null if another type).
+returns Value as a PropertyDefinition (Null if another type).
 ") PropertyDefinition;
 		opencascade::handle<StepRepr_PropertyDefinition> PropertyDefinition();
 
@@ -4228,7 +4228,7 @@ opencascade::handle<StepRepr_Representation>
 
 Description
 -----------
-Returns value as a representation (null if another type).
+returns Value as a Representation (Null if another type).
 ") Representation;
 		opencascade::handle<StepRepr_Representation> Representation();
 
@@ -4241,7 +4241,7 @@ opencascade::handle<StepRepr_RepresentationItem>
 
 Description
 -----------
-Returns value as a representationitem (null if another type).
+returns Value as a RepresentationItem (Null if another type).
 ") RepresentationItem;
 		opencascade::handle<StepRepr_RepresentationItem> RepresentationItem();
 
@@ -4254,7 +4254,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns value as a shapeaspect (null if another type).
+returns Value as a ShapeAspect (Null if another type).
 ") ShapeAspect;
 		opencascade::handle<StepRepr_ShapeAspect> ShapeAspect();
 
@@ -4267,7 +4267,7 @@ opencascade::handle<StepRepr_ShapeAspectRelationship>
 
 Description
 -----------
-Returns value as a shapeaspectrelationship (null if another type).
+returns Value as a ShapeAspectRelationship (Null if another type).
 ") ShapeAspectRelationship;
 		opencascade::handle<StepRepr_ShapeAspectRelationship> ShapeAspectRelationship();
 
@@ -4307,7 +4307,7 @@ opencascade::handle<StepAP214_AppliedOrganizationAssignment>
 
 Description
 -----------
-Returns value as appliedorganizationassignment (or null if another type).
+Returns Value as AppliedOrganizationAssignment (or Null if another type).
 ") AppliedOrganizationAssignment;
 		opencascade::handle<StepAP214_AppliedOrganizationAssignment> AppliedOrganizationAssignment();
 
@@ -4320,7 +4320,7 @@ opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment>
 
 Description
 -----------
-Returns value as appliedpersonandorganizationassignment (or null if another type).
+Returns Value as AppliedPersonAndOrganizationAssignment (or Null if another type).
 ") AppliedPersonAndOrganizationAssignment;
 		opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> AppliedPersonAndOrganizationAssignment();
 
@@ -4333,7 +4333,7 @@ opencascade::handle<StepBasic_Approval>
 
 Description
 -----------
-Returns value as approval (or null if another type).
+Returns Value as Approval (or Null if another type).
 ") Approval;
 		opencascade::handle<StepBasic_Approval> Approval();
 
@@ -4346,7 +4346,7 @@ opencascade::handle<StepBasic_ApprovalStatus>
 
 Description
 -----------
-Returns value as approvalstatus (or null if another type).
+Returns Value as ApprovalStatus (or Null if another type).
 ") ApprovalStatus;
 		opencascade::handle<StepBasic_ApprovalStatus> ApprovalStatus();
 
@@ -4364,7 +4364,7 @@ int
 
 Description
 -----------
-Recognizes a kind of externalidentificationitem select type 1 -> documentfile from stepbasic 2 -> externallydefinedclass from stepap214 3 -> externallydefinedgeneralproperty from stepap214 4 -> productdefinition from stepbasic 5 -> appliedorganizationassignment from ap214 6 -> appliedpersonandorganizationassignment from ap214 7 -> approval from stepbasic 8 -> approvalstatus from stepbasic 9 -> externalsource from stepbasic 10 -> organizationaladdress from stepbasic 11 -> securityclassification from stepbasic 12 -> trimmedcurve from stepgeom 13 -> versionedactionrequest from stepbasic 14 -> dateandtimeassignment from stepbasic 15 -> dateassignment from stepbasic 0 else.
+Recognizes a kind of ExternalIdentificationItem select type 1 -> DocumentFile from StepBasic 2 -> ExternallyDefinedClass from StepAP214 3 -> ExternallyDefinedGeneralProperty from StepAP214 4 -> ProductDefinition from StepBasic 5 -> AppliedOrganizationAssignment from AP214 6 -> AppliedPersonAndOrganizationAssignment from AP214 7 -> Approval from StepBasic 8 -> ApprovalStatus from StepBasic 9 -> ExternalSource from StepBasic 10 -> OrganizationalAddress from StepBasic 11 -> SecurityClassification from StepBasic 12 -> TrimmedCurve from StepGeom 13 -> VersionedActionRequest from StepBasic 14 -> DateAndTimeAssignment from StepBasic 15 -> DateAssignment from StepBasic 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4377,7 +4377,7 @@ opencascade::handle<StepBasic_DateAndTimeAssignment>
 
 Description
 -----------
-Returns value as dateandtimeassignment (or null if another type).
+Returns Value as DateAndTimeAssignment (or Null if another type).
 ") DateAndTimeAssignment;
 		opencascade::handle<StepBasic_DateAndTimeAssignment> DateAndTimeAssignment();
 
@@ -4390,7 +4390,7 @@ opencascade::handle<StepBasic_DateAssignment>
 
 Description
 -----------
-Returns value as dateassignment (or null if another type).
+Returns Value as DateAssignment (or Null if another type).
 ") DateAssignment;
 		opencascade::handle<StepBasic_DateAssignment> DateAssignment();
 
@@ -4403,7 +4403,7 @@ opencascade::handle<StepBasic_DocumentFile>
 
 Description
 -----------
-Returns value as documentfile (or null if another type).
+Returns Value as DocumentFile (or Null if another type).
 ") DocumentFile;
 		opencascade::handle<StepBasic_DocumentFile> DocumentFile();
 
@@ -4416,7 +4416,7 @@ opencascade::handle<StepBasic_ExternalSource>
 
 Description
 -----------
-Returns value as externalsource (or null if another type).
+Returns Value as ExternalSource (or Null if another type).
 ") ExternalSource;
 		opencascade::handle<StepBasic_ExternalSource> ExternalSource();
 
@@ -4429,7 +4429,7 @@ opencascade::handle<StepAP214_ExternallyDefinedClass>
 
 Description
 -----------
-Returns value as externallydefinedclass (or null if another type).
+Returns Value as ExternallyDefinedClass (or Null if another type).
 ") ExternallyDefinedClass;
 		opencascade::handle<StepAP214_ExternallyDefinedClass> ExternallyDefinedClass();
 
@@ -4442,7 +4442,7 @@ opencascade::handle<StepAP214_ExternallyDefinedGeneralProperty>
 
 Description
 -----------
-Returns value as externallydefinedgeneralproperty (or null if another type).
+Returns Value as ExternallyDefinedGeneralProperty (or Null if another type).
 ") ExternallyDefinedGeneralProperty;
 		opencascade::handle<StepAP214_ExternallyDefinedGeneralProperty> ExternallyDefinedGeneralProperty();
 
@@ -4455,7 +4455,7 @@ opencascade::handle<StepBasic_OrganizationalAddress>
 
 Description
 -----------
-Returns value as organizationaladdress (or null if another type).
+Returns Value as OrganizationalAddress (or Null if another type).
 ") OrganizationalAddress;
 		opencascade::handle<StepBasic_OrganizationalAddress> OrganizationalAddress();
 
@@ -4468,7 +4468,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as productdefinition (or null if another type).
+Returns Value as ProductDefinition (or Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -4481,7 +4481,7 @@ opencascade::handle<StepBasic_SecurityClassification>
 
 Description
 -----------
-Returns value as securityclassification (or null if another type).
+Returns Value as SecurityClassification (or Null if another type).
 ") SecurityClassification;
 		opencascade::handle<StepBasic_SecurityClassification> SecurityClassification();
 
@@ -4494,7 +4494,7 @@ opencascade::handle<StepGeom_TrimmedCurve>
 
 Description
 -----------
-Returns value as trimmedcurve (or null if another type).
+Returns Value as TrimmedCurve (or Null if another type).
 ") TrimmedCurve;
 		opencascade::handle<StepGeom_TrimmedCurve> TrimmedCurve();
 
@@ -4507,7 +4507,7 @@ opencascade::handle<StepBasic_VersionedActionRequest>
 
 Description
 -----------
-Returns value as versionedactionrequest (or null if another type).
+Returns Value as VersionedActionRequest (or Null if another type).
 ") VersionedActionRequest;
 		opencascade::handle<StepBasic_VersionedActionRequest> VersionedActionRequest();
 
@@ -4547,7 +4547,7 @@ opencascade::handle<StepBasic_ExternallyDefinedItem>
 
 Description
 -----------
-Returns data for supertype externallydefineditem.
+Returns data for supertype ExternallyDefinedItem.
 ") ExternallyDefinedItem;
 		opencascade::handle<StepBasic_ExternallyDefinedItem> ExternallyDefinedItem();
 
@@ -4588,7 +4588,7 @@ None
 
 Description
 -----------
-Set data for supertype externallydefineditem.
+Set data for supertype ExternallyDefinedItem.
 ") SetExternallyDefinedItem;
 		void SetExternallyDefinedItem(const opencascade::handle<StepBasic_ExternallyDefinedItem> & ExternallyDefinedItem);
 
@@ -4617,7 +4617,7 @@ None
 
 Description
 -----------
-Returns a groupitem selecttype.
+Returns a GroupItem SelectType.
 ") StepAP214_GroupItem;
 		 StepAP214_GroupItem();
 
@@ -4635,7 +4635,7 @@ int
 
 Description
 -----------
-Recognizes a groupitem kind entity that is: 1 -> geometricrepresentationitem 2 -> grouprelationship 3 -> mappeditem 4 -> productdefinition 5 -> productdefinitionformation 6 -> propertydefinitionrepresentation 7 -> representation 8 -> representationitem 9 -> representationrelationshipwithtransformation 10 -> shapeaspect 11 -> shapeaspectrelationship 12 -> shaperepresentationrelationship 13 -> styleditem 14 -> topologicalrepresentationitem 0 else.
+Recognizes a GroupItem Kind Entity that is: 1 -> GeometricRepresentationItem 2 -> GroupRelationship 3 -> MappedItem 4 -> ProductDefinition 5 -> ProductDefinitionFormation 6 -> PropertyDefinitionRepresentation 7 -> Representation 8 -> RepresentationItem 9 -> RepresentationRelationshipWithTransformation 10 -> ShapeAspect 11 -> ShapeAspectRelationship 12 -> ShapeRepresentationRelationship 13 -> StyledItem 14 -> TopologicalRepresentationItem 0 else.
 ") CaseNum;
 		virtual Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4648,7 +4648,7 @@ opencascade::handle<StepGeom_GeometricRepresentationItem>
 
 Description
 -----------
-Returns value as a geometricrepresentationitem (null if another type).
+returns Value as a GeometricRepresentationItem (Null if another type).
 ") GeometricRepresentationItem;
 		virtual opencascade::handle<StepGeom_GeometricRepresentationItem> GeometricRepresentationItem();
 
@@ -4661,7 +4661,7 @@ opencascade::handle<StepBasic_GroupRelationship>
 
 Description
 -----------
-Returns value as a grouprelationship (null if another type).
+returns Value as a GroupRelationship (Null if another type).
 ") GroupRelationship;
 		virtual opencascade::handle<StepBasic_GroupRelationship> GroupRelationship();
 
@@ -4674,7 +4674,7 @@ opencascade::handle<StepRepr_MappedItem>
 
 Description
 -----------
-Returns value as a mappeditem (null if another type).
+returns Value as a MappedItem (Null if another type).
 ") MappedItem;
 		virtual opencascade::handle<StepRepr_MappedItem> MappedItem();
 
@@ -4687,7 +4687,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as a productdefinition (null if another type).
+returns Value as a ProductDefinition (Null if another type).
 ") ProductDefinition;
 		virtual opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -4700,7 +4700,7 @@ opencascade::handle<StepBasic_ProductDefinitionFormation>
 
 Description
 -----------
-Returns value as a productdefinitionformation (null if another type).
+returns Value as a ProductDefinitionFormation (Null if another type).
 ") ProductDefinitionFormation;
 		virtual opencascade::handle<StepBasic_ProductDefinitionFormation> ProductDefinitionFormation();
 
@@ -4713,7 +4713,7 @@ opencascade::handle<StepRepr_PropertyDefinitionRepresentation>
 
 Description
 -----------
-Returns value as a propertydefinitionrepresentation (null if another type).
+returns Value as a PropertyDefinitionRepresentation (Null if another type).
 ") PropertyDefinitionRepresentation;
 		virtual opencascade::handle<StepRepr_PropertyDefinitionRepresentation> PropertyDefinitionRepresentation();
 
@@ -4726,7 +4726,7 @@ opencascade::handle<StepRepr_Representation>
 
 Description
 -----------
-Returns value as a representation (null if another type).
+returns Value as a Representation (Null if another type).
 ") Representation;
 		virtual opencascade::handle<StepRepr_Representation> Representation();
 
@@ -4739,7 +4739,7 @@ opencascade::handle<StepRepr_RepresentationItem>
 
 Description
 -----------
-Returns value as a representationitem (null if another type).
+returns Value as a RepresentationItem (Null if another type).
 ") RepresentationItem;
 		virtual opencascade::handle<StepRepr_RepresentationItem> RepresentationItem();
 
@@ -4752,7 +4752,7 @@ opencascade::handle<StepRepr_RepresentationRelationshipWithTransformation>
 
 Description
 -----------
-Returns value as a representationrelationshipwithtransformation (null if another type).
+returns Value as a RepresentationRelationshipWithTransformation (Null if another type).
 ") RepresentationRelationshipWithTransformation;
 		virtual opencascade::handle<StepRepr_RepresentationRelationshipWithTransformation> RepresentationRelationshipWithTransformation();
 
@@ -4765,7 +4765,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns value as a shapeaspect (null if another type).
+returns Value as a ShapeAspect (Null if another type).
 ") ShapeAspect;
 		virtual opencascade::handle<StepRepr_ShapeAspect> ShapeAspect();
 
@@ -4778,7 +4778,7 @@ opencascade::handle<StepRepr_ShapeAspectRelationship>
 
 Description
 -----------
-Returns value as a shapeaspectrelationship (null if another type).
+returns Value as a ShapeAspectRelationship (Null if another type).
 ") ShapeAspectRelationship;
 		virtual opencascade::handle<StepRepr_ShapeAspectRelationship> ShapeAspectRelationship();
 
@@ -4791,7 +4791,7 @@ opencascade::handle<StepRepr_ShapeRepresentationRelationship>
 
 Description
 -----------
-Returns value as a shaperepresentationrelationship (null if another type).
+returns Value as a ShapeRepresentationRelationship (Null if another type).
 ") ShapeRepresentationRelationship;
 		virtual opencascade::handle<StepRepr_ShapeRepresentationRelationship> ShapeRepresentationRelationship();
 
@@ -4804,7 +4804,7 @@ opencascade::handle<StepVisual_StyledItem>
 
 Description
 -----------
-Returns value as a styleditem (null if another type).
+returns Value as a StyledItem (Null if another type).
 ") StyledItem;
 		virtual opencascade::handle<StepVisual_StyledItem> StyledItem();
 
@@ -4817,7 +4817,7 @@ opencascade::handle<StepShape_TopologicalRepresentationItem>
 
 Description
 -----------
-Returns value as a topologicalrepresentationitem (null if another type).
+returns Value as a TopologicalRepresentationItem (Null if another type).
 ") TopologicalRepresentationItem;
 		virtual opencascade::handle<StepShape_TopologicalRepresentationItem> TopologicalRepresentationItem();
 
@@ -4844,7 +4844,7 @@ None
 
 Description
 -----------
-Returns a presenteditemselect selecttype.
+Returns a PresentedItemSelect SelectType.
 ") StepAP214_PresentedItemSelect;
 		 StepAP214_PresentedItemSelect();
 
@@ -4862,7 +4862,7 @@ int
 
 Description
 -----------
-Recognizes a presenteditemselect kind entity that is: 1 -> productdefinition, 2 -> productdefinitionrelationship, 0 else.
+Recognizes a PresentedItemSelect Kind Entity that is: 1 -> ProductDefinition, 2 -> ProductDefinitionRelationship, 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -4875,7 +4875,7 @@ opencascade::handle<StepBasic_ProductDefinition>
 
 Description
 -----------
-Returns value as a productdefinition (null if another type).
+returns Value as a ProductDefinition (Null if another type).
 ") ProductDefinition;
 		opencascade::handle<StepBasic_ProductDefinition> ProductDefinition();
 
@@ -4888,7 +4888,7 @@ opencascade::handle<StepBasic_ProductDefinitionRelationship>
 
 Description
 -----------
-Returns value as a productdefinitionrelationship (null if another type).
+returns Value as a ProductDefinitionRelationship (Null if another type).
 ") ProductDefinitionRelationship;
 		opencascade::handle<StepBasic_ProductDefinitionRelationship> ProductDefinitionRelationship();
 
@@ -4928,7 +4928,7 @@ int
 
 Description
 -----------
-Returns count of protocol used as resources (level one).
+Returns count of Protocol used as Resources (level one).
 ") NbResources;
 		virtual Standard_Integer NbResources();
 
@@ -4946,14 +4946,19 @@ opencascade::handle<Interface_Protocol>
 
 Description
 -----------
-Returns a resource, given its rank (between 1 and nbresources).
+Returns a Resource, given its rank (between 1 and NbResources).
 ") Resource;
 		virtual opencascade::handle<Interface_Protocol> Resource(const Standard_Integer num);
 
 		/****** StepAP214_Protocol::SchemaName ******/
-		/****** md5 signature: 27a898737676170f03381527c0752a7e ******/
+		/****** md5 signature: 52640e28819c7e829718ce5927c4da83 ******/
 		%feature("compactdefaultargs") SchemaName;
-		%feature("autodoc", "Return
+		%feature("autodoc", "
+Parameters
+----------
+theModel: Interface_InterfaceModel
+
+Return
 -------
 str
 
@@ -4961,7 +4966,7 @@ Description
 -----------
 No available documentation.
 ") SchemaName;
-		virtual Standard_CString SchemaName();
+		virtual Standard_CString SchemaName(const opencascade::handle<Interface_InterfaceModel> & theModel);
 
 		/****** StepAP214_Protocol::TypeNumber ******/
 		/****** md5 signature: f4ed4f2e12d80f3bd752f6dd34ed84b4 ******/
@@ -4977,7 +4982,7 @@ int
 
 Description
 -----------
-Returns a case number for each of the stepap214 entities.
+Returns a Case Number for each of the StepAP214 Entities.
 ") TypeNumber;
 		virtual Standard_Integer TypeNumber(const opencascade::handle<Standard_Type> & atype);
 
@@ -5040,7 +5045,7 @@ opencascade::handle<StepRepr_RepresentationItem>
 
 Description
 -----------
-Returns data for supertype representationitem.
+Returns data for supertype RepresentationItem.
 ") RepresentationItem;
 		opencascade::handle<StepRepr_RepresentationItem> RepresentationItem();
 
@@ -5058,7 +5063,7 @@ None
 
 Description
 -----------
-Set data for supertype representationitem.
+Set data for supertype RepresentationItem.
 ") SetRepresentationItem;
 		void SetRepresentationItem(const opencascade::handle<StepRepr_RepresentationItem> & RepresentationItem);
 
@@ -5158,7 +5163,7 @@ None
 
 Description
 -----------
-Returns a dateandtimeitem selecttype.
+Returns a DateAndTimeItem SelectType.
 ") StepAP214_DateAndTimeItem;
 		 StepAP214_DateAndTimeItem();
 
@@ -5171,7 +5176,7 @@ opencascade::handle<StepAP214_AppliedOrganizationAssignment>
 
 Description
 -----------
-Returns value as a appliedorganizationassignment (null if another type).
+returns Value as a AppliedOrganizationAssignment (Null if another type).
 ") AppliedOrganizationAssignment;
 		opencascade::handle<StepAP214_AppliedOrganizationAssignment> AppliedOrganizationAssignment();
 
@@ -5184,7 +5189,7 @@ opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment>
 
 Description
 -----------
-Returns value as a applieddateandpersonassignment (null if another type).
+returns Value as a AppliedDateAndPersonAssignment (Null if another type).
 ") AppliedPersonAndOrganizationAssignment;
 		opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> AppliedPersonAndOrganizationAssignment();
 
@@ -5197,7 +5202,7 @@ opencascade::handle<StepBasic_ApprovalPersonOrganization>
 
 Description
 -----------
-Returns value as a approvalpersonorganization (null if another type).
+returns Value as a ApprovalPersonOrganization (Null if another type).
 ") ApprovalPersonOrganization;
 		opencascade::handle<StepBasic_ApprovalPersonOrganization> ApprovalPersonOrganization();
 
@@ -5215,7 +5220,7 @@ int
 
 Description
 -----------
-Recognizes a dateandtimeitem kind entity that is: 1 -> approvalpersonorganization 2 -> applieddateandpersonassignment 3 -> appliedorganizationassignment 4 -> assemblycomponentusagesubstitute 5 -> documentfile 6 -> effectivity 7 -> materialdesignation 8 -> mechanicaldesigngeometricpresentationrepresentation 9 -> presentationarea 10 -> product 11 -> productdefinition 12 -> productdefinitionformation 13 -> productdefinitionrelationship 14 -> propertydefinition 15 -> shaperepresentation 16 -> securityclassification 0 else.
+Recognizes a DateAndTimeItem Kind Entity that is: 1 -> ApprovalPersonOrganization 2 -> AppliedDateAndPersonAssignment 3 -> AppliedOrganizationAssignment 4 -> AssemblyComponentUsageSubstitute 5 -> DocumentFile 6 -> Effectivity 7 -> MaterialDesignation 8 -> MechanicalDesignGeometricPresentationRepresentation 9 -> PresentationArea 10 -> Product 11 -> ProductDefinition 12 -> ProductDefinitionFormation 13 -> ProductDefinitionRelationship 14 -> PropertyDefinition 15 -> ShapeRepresentation 16 -> SecurityClassification 0 else.
 ") CaseNum;
 		virtual Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5242,7 +5247,7 @@ None
 
 Description
 -----------
-Returns a dateitem selecttype.
+Returns a DateItem SelectType.
 ") StepAP214_DateItem;
 		 StepAP214_DateItem();
 
@@ -5255,7 +5260,7 @@ opencascade::handle<StepAP214_AppliedOrganizationAssignment>
 
 Description
 -----------
-Returns value as a appliedorganizationassignment (null if another type).
+returns Value as a AppliedOrganizationAssignment (Null if another type).
 ") AppliedOrganizationAssignment;
 		opencascade::handle<StepAP214_AppliedOrganizationAssignment> AppliedOrganizationAssignment();
 
@@ -5268,7 +5273,7 @@ opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment>
 
 Description
 -----------
-Returns value as a applieddateandpersonassignment (null if another type).
+returns Value as a AppliedDateAndPersonAssignment (Null if another type).
 ") AppliedPersonAndOrganizationAssignment;
 		opencascade::handle<StepAP214_AppliedPersonAndOrganizationAssignment> AppliedPersonAndOrganizationAssignment();
 
@@ -5281,7 +5286,7 @@ opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment>
 
 Description
 -----------
-Returns value as a appliedsecurityclassificationassignment (null if another type).
+returns Value as a AppliedSecurityClassificationAssignment (Null if another type).
 ") AppliedSecurityClassificationAssignment;
 		opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> AppliedSecurityClassificationAssignment();
 
@@ -5294,7 +5299,7 @@ opencascade::handle<StepBasic_ApprovalPersonOrganization>
 
 Description
 -----------
-Returns value as a approvalpersonorganization (null if another type).
+returns Value as a ApprovalPersonOrganization (Null if another type).
 ") ApprovalPersonOrganization;
 		opencascade::handle<StepBasic_ApprovalPersonOrganization> ApprovalPersonOrganization();
 
@@ -5312,7 +5317,7 @@ int
 
 Description
 -----------
-Recognizes a dateitem kind entity that is: 1 -> approvalpersonorganization 2 -> applieddateandpersonassignment 3 -> appliedorganizationassignment 4 -> assemblycomponentusagesubstitute 5 -> documentfile 6 -> effectivity 7 -> materialdesignation 8 -> mechanicaldesigngeometricpresentationrepresentation 9 -> presentationarea 10 -> product 11 -> productdefinition 12 -> productdefinitionformation 13 -> productdefinitionrelationship 14 -> propertydefinition 15 -> shaperepresentation 16 -> appliedsecurityclassificationassignment 17 -> document 0 else.
+Recognizes a DateItem Kind Entity that is: 1 -> ApprovalPersonOrganization 2 -> AppliedDateAndPersonAssignment 3 -> AppliedOrganizationAssignment 4 -> AssemblyComponentUsageSubstitute 5 -> DocumentFile 6 -> Effectivity 7 -> MaterialDesignation 8 -> MechanicalDesignGeometricPresentationRepresentation 9 -> PresentationArea 10 -> Product 11 -> ProductDefinition 12 -> ProductDefinitionFormation 13 -> ProductDefinitionRelationship 14 -> PropertyDefinition 15 -> ShapeRepresentation 16 -> AppliedSecurityClassificationAssignment 17 -> Document 0 else.
 ") CaseNum;
 		virtual Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5352,7 +5357,7 @@ opencascade::handle<StepBasic_ExternallyDefinedItem>
 
 Description
 -----------
-Returns data for supertype externallydefineditem.
+Returns data for supertype ExternallyDefinedItem.
 ") ExternallyDefinedItem;
 		opencascade::handle<StepBasic_ExternallyDefinedItem> ExternallyDefinedItem();
 
@@ -5392,7 +5397,7 @@ None
 
 Description
 -----------
-Set data for supertype externallydefineditem.
+Set data for supertype ExternallyDefinedItem.
 ") SetExternallyDefinedItem;
 		void SetExternallyDefinedItem(const opencascade::handle<StepBasic_ExternallyDefinedItem> & ExternallyDefinedItem);
 
@@ -5421,7 +5426,7 @@ None
 
 Description
 -----------
-Returns a organizationitem selecttype.
+Returns a OrganizationItem SelectType.
 ") StepAP214_OrganizationItem;
 		 StepAP214_OrganizationItem();
 
@@ -5434,7 +5439,7 @@ opencascade::handle<StepAP214_AppliedOrganizationAssignment>
 
 Description
 -----------
-Returns value as a appliedorganizationassignment (null if another type).
+returns Value as a AppliedOrganizationAssignment (Null if another type).
 ") AppliedOrganizationAssignment;
 		opencascade::handle<StepAP214_AppliedOrganizationAssignment> AppliedOrganizationAssignment();
 
@@ -5447,7 +5452,7 @@ opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment>
 
 Description
 -----------
-Returns value as a appliedsecurityclassificationassignment (null if another type).
+returns Value as a AppliedSecurityClassificationAssignment (Null if another type).
 ") AppliedSecurityClassificationAssignment;
 		opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> AppliedSecurityClassificationAssignment();
 
@@ -5460,7 +5465,7 @@ opencascade::handle<StepBasic_Approval>
 
 Description
 -----------
-Returns value as a approval (null if another type).
+returns Value as a Approval (Null if another type).
 ") Approval;
 		opencascade::handle<StepBasic_Approval> Approval();
 
@@ -5478,7 +5483,7 @@ int
 
 Description
 -----------
-Recognizes a organizationitem kind entity that is :.
+Recognizes a OrganizationItem Kind Entity that is :.
 ") CaseNum;
 		virtual Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5505,7 +5510,7 @@ None
 
 Description
 -----------
-Returns a personandorganizationitem selecttype.
+Returns a PersonAndOrganizationItem SelectType.
 ") StepAP214_PersonAndOrganizationItem;
 		 StepAP214_PersonAndOrganizationItem();
 
@@ -5518,7 +5523,7 @@ opencascade::handle<StepAP214_AppliedOrganizationAssignment>
 
 Description
 -----------
-Returns value as a appliedorganizationassignment (null if another type).
+returns Value as a AppliedOrganizationAssignment (Null if another type).
 ") AppliedOrganizationAssignment;
 		opencascade::handle<StepAP214_AppliedOrganizationAssignment> AppliedOrganizationAssignment();
 
@@ -5531,7 +5536,7 @@ opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment>
 
 Description
 -----------
-Returns value as a appliedsecurityclassificationassignment (null if another type).
+returns Value as a AppliedSecurityClassificationAssignment (Null if another type).
 ") AppliedSecurityClassificationAssignment;
 		opencascade::handle<StepAP214_AppliedSecurityClassificationAssignment> AppliedSecurityClassificationAssignment();
 
@@ -5544,7 +5549,7 @@ opencascade::handle<StepBasic_Approval>
 
 Description
 -----------
-Returns value as a approval (null if another type).
+returns Value as a Approval (Null if another type).
 ") Approval;
 		opencascade::handle<StepBasic_Approval> Approval();
 
@@ -5562,7 +5567,7 @@ int
 
 Description
 -----------
-Recognizes a apersonandorganizationitem kind entity that is: 1 -> appliedorganizationassignment 2 -> assemblycomponentusagesubstitute 3 -> documentfile 4 -> materialdesignation 5 -> mechanicaldesigngeometricpresentationrepresentation 6 -> presentationarea 7 -> product 8 -> productdefinition 9 -> productdefinitionformation 10 -> productdefinitionrelationship 11 -> propertydefinition 12 -> shaperepresentation 13 -> securityclassification 14 -> appliedsecurityclassificationassignment 15 -> approval 0 else.
+Recognizes a APersonAndOrganizationItem Kind Entity that is: 1 -> AppliedOrganizationAssignment 2 -> AssemblyComponentUsageSubstitute 3 -> DocumentFile 4 -> MaterialDesignation 5 -> MechanicalDesignGeometricPresentationRepresentation 6 -> PresentationArea 7 -> Product 8 -> ProductDefinition 9 -> ProductDefinitionFormation 10 -> ProductDefinitionRelationship 11 -> PropertyDefinition 12 -> ShapeRepresentation 13 -> SecurityClassification 14 -> AppliedSecurityClassificationAssignment 15 -> Approval 0 else.
 ") CaseNum;
 		virtual Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5589,7 +5594,7 @@ None
 
 Description
 -----------
-Returns a securityclassificationitem selecttype.
+Returns a SecurityClassificationItem SelectType.
 ") StepAP214_SecurityClassificationItem;
 		 StepAP214_SecurityClassificationItem();
 
@@ -5602,7 +5607,7 @@ opencascade::handle<StepBasic_Action>
 
 Description
 -----------
-Returns value as a action (null if another type).
+returns Value as a Action (Null if another type).
 ") Action;
 		virtual opencascade::handle<StepBasic_Action> Action();
 
@@ -5615,7 +5620,7 @@ opencascade::handle<StepRepr_AssemblyComponentUsage>
 
 Description
 -----------
-Returns value as a assemblycomponentusage (null if another type).
+returns Value as a AssemblyComponentUsage (Null if another type).
 ") AssemblyComponentUsage;
 		virtual opencascade::handle<StepRepr_AssemblyComponentUsage> AssemblyComponentUsage();
 
@@ -5633,7 +5638,7 @@ int
 
 Description
 -----------
-Recognizes a securityclassificationitem kind entity that is: 1 -> action 2 -> assemblycomponentusage 3 -> assemblycomponentusagesubstitute 4 -> configurationdesign 5 -> configurationeffectivity 6 -> document 7 -> documentfile 8 -> draughtingmodel 9 -> generalproperty 10 -> makefromusageoption 11 -> materialdesignation 12 -> mechanicaldesigngeometricpresentationrepresentation 13 -> presentationarea 14 -> product 15 -> productconcept 16 -> productdefinition 17 -> productdefinitionformation 18 -> productdefinitionrelationship 19 -> productdefinitionusage 20 -> propertydefinition 21 -> shaperepresentation 22 -> versionedactionrequest 0 else.
+Recognizes a SecurityClassificationItem Kind Entity that is: 1 -> Action 2 -> AssemblyComponentUsage 3 -> AssemblyComponentUsageSubstitute 4 -> ConfigurationDesign 5 -> ConfigurationEffectivity 6 -> Document 7 -> DocumentFile 8 -> DraughtingModel 9 -> GeneralProperty 10 -> MakeFromUsageOption 11 -> MaterialDesignation 12 -> MechanicalDesignGeometricPresentationRepresentation 13 -> PresentationArea 14 -> Product 15 -> ProductConcept 16 -> ProductDefinition 17 -> ProductDefinitionFormation 18 -> ProductDefinitionRelationship 19 -> ProductDefinitionUsage 20 -> PropertyDefinition 21 -> ShapeRepresentation 22 -> VersionedActionRequest 0 else.
 ") CaseNum;
 		virtual Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -5646,7 +5651,7 @@ opencascade::handle<StepRepr_ConfigurationDesign>
 
 Description
 -----------
-Returns value as a configurationdesign (null if another type).
+returns Value as a ConfigurationDesign (Null if another type).
 ") ConfigurationDesign;
 		virtual opencascade::handle<StepRepr_ConfigurationDesign> ConfigurationDesign();
 
@@ -5659,7 +5664,7 @@ opencascade::handle<StepRepr_ConfigurationEffectivity>
 
 Description
 -----------
-Returns value as a configurationeffectivity (null if another type).
+returns Value as a ConfigurationEffectivity (Null if another type).
 ") ConfigurationEffectivity;
 		virtual opencascade::handle<StepRepr_ConfigurationEffectivity> ConfigurationEffectivity();
 
@@ -5672,7 +5677,7 @@ opencascade::handle<StepVisual_DraughtingModel>
 
 Description
 -----------
-Returns value as a draughtingmodel (null if another type).
+returns Value as a DraughtingModel (Null if another type).
 ") DraughtingModel;
 		virtual opencascade::handle<StepVisual_DraughtingModel> DraughtingModel();
 
@@ -5685,7 +5690,7 @@ opencascade::handle<StepBasic_GeneralProperty>
 
 Description
 -----------
-Returns value as a generalproperty (null if another type).
+returns Value as a GeneralProperty (Null if another type).
 ") GeneralProperty;
 		virtual opencascade::handle<StepBasic_GeneralProperty> GeneralProperty();
 
@@ -5698,7 +5703,7 @@ opencascade::handle<StepRepr_MakeFromUsageOption>
 
 Description
 -----------
-Returns value as a makefromusageoption (null if another type).
+returns Value as a MakeFromUsageOption (Null if another type).
 ") MakeFromUsageOption;
 		virtual opencascade::handle<StepRepr_MakeFromUsageOption> MakeFromUsageOption();
 
@@ -5711,7 +5716,7 @@ opencascade::handle<StepRepr_ProductConcept>
 
 Description
 -----------
-Returns value as a productconcept (null if another type).
+returns Value as a ProductConcept (Null if another type).
 ") ProductConcept;
 		virtual opencascade::handle<StepRepr_ProductConcept> ProductConcept();
 
@@ -5724,7 +5729,7 @@ opencascade::handle<StepRepr_ProductDefinitionUsage>
 
 Description
 -----------
-Returns value as a productdefinitionusage (null if another type).
+returns Value as a ProductDefinitionUsage (Null if another type).
 ") ProductDefinitionUsage;
 		virtual opencascade::handle<StepRepr_ProductDefinitionUsage> ProductDefinitionUsage();
 
@@ -5737,7 +5742,7 @@ opencascade::handle<StepBasic_VersionedActionRequest>
 
 Description
 -----------
-Returns value as a versionedactionrequest (null if another type).
+returns Value as a VersionedActionRequest (Null if another type).
 ") VersionedActionRequest;
 		virtual opencascade::handle<StepBasic_VersionedActionRequest> VersionedActionRequest();
 

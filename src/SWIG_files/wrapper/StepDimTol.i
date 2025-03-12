@@ -417,7 +417,7 @@ opencascade::handle<StepDimTol_Datum>
 
 Description
 -----------
-Returns data for supertype datum.
+Returns data for supertype Datum.
 ") Datum;
 		opencascade::handle<StepDimTol_Datum> Datum();
 
@@ -461,7 +461,7 @@ None
 
 Description
 -----------
-Set data for supertype datum.
+Set data for supertype Datum.
 ") SetDatum;
 		void SetDatum(const opencascade::handle<StepDimTol_Datum> & theDatum);
 
@@ -503,7 +503,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field identification.
+Returns field Identification.
 ") Identification;
 		opencascade::handle<TCollection_HAsciiString> Identification();
 
@@ -543,7 +543,7 @@ None
 
 Description
 -----------
-Set field identification.
+Set field Identification.
 ") SetIdentification;
 		void SetIdentification(const opencascade::handle<TCollection_HAsciiString> & theIdentification);
 
@@ -601,7 +601,7 @@ None
 
 Description
 -----------
-Returns a datumorcommondatum select type.
+Returns a DatumOrCommonDatum select type.
 ") StepDimTol_DatumOrCommonDatum;
 		 StepDimTol_DatumOrCommonDatum();
 
@@ -619,7 +619,7 @@ int
 
 Description
 -----------
-Recognizes a datumorcommondatum kind entity that is: 1 -> datum 2 -> commondatumlist 0 else.
+Recognizes a DatumOrCommonDatum Kind Entity that is: 1 -> Datum 2 -> CommonDatumList 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -632,7 +632,7 @@ opencascade::handle<StepDimTol_HArray1OfDatumReferenceElement>
 
 Description
 -----------
-Returns value as a commondatumlist (null if another type).
+returns Value as a CommonDatumList (Null if another type).
 ") CommonDatumList;
 		opencascade::handle<StepDimTol_HArray1OfDatumReferenceElement> CommonDatumList();
 
@@ -645,7 +645,7 @@ opencascade::handle<StepDimTol_Datum>
 
 Description
 -----------
-Returns value as a datum (null if another type).
+returns Value as a Datum (Null if another type).
 ") Datum;
 		opencascade::handle<StepDimTol_Datum> Datum();
 
@@ -704,7 +704,7 @@ int
 
 Description
 -----------
-Returns field precedence.
+Returns field Precedence.
 ") Precedence;
 		Standard_Integer Precedence();
 
@@ -717,7 +717,7 @@ opencascade::handle<StepDimTol_Datum>
 
 Description
 -----------
-Returns field referenceddatum.
+Returns field ReferencedDatum.
 ") ReferencedDatum;
 		opencascade::handle<StepDimTol_Datum> ReferencedDatum();
 
@@ -735,7 +735,7 @@ None
 
 Description
 -----------
-Set field precedence.
+Set field Precedence.
 ") SetPrecedence;
 		void SetPrecedence(const Standard_Integer thePrecedence);
 
@@ -753,7 +753,7 @@ None
 
 Description
 -----------
-Set field referenceddatum.
+Set field ReferencedDatum.
 ") SetReferencedDatum;
 		void SetReferencedDatum(const opencascade::handle<StepDimTol_Datum> & theReferencedDatum);
 
@@ -782,7 +782,7 @@ None
 
 Description
 -----------
-Returns a datumreferencemodifier select type.
+Returns a DatumReferenceModifier select type.
 ") StepDimTol_DatumReferenceModifier;
 		 StepDimTol_DatumReferenceModifier();
 
@@ -800,7 +800,7 @@ int
 
 Description
 -----------
-Recognizes a datumreferencemodifier kind entity that is: 1 -> datumreferencemodifierwithvalue 2 -> simpledatumreferencemodifiermember 0 else.
+Recognizes a DatumReferenceModifier Kind Entity that is: 1 -> DatumReferenceModifierWithValue 2 -> SimpleDatumReferenceModifierMember 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -813,7 +813,7 @@ opencascade::handle<StepDimTol_DatumReferenceModifierWithValue>
 
 Description
 -----------
-Returns value as a datumreferencemodifierwithvalue (null if another type).
+returns Value as a DatumReferenceModifierWithValue (Null if another type).
 ") DatumReferenceModifierWithValue;
 		opencascade::handle<StepDimTol_DatumReferenceModifierWithValue> DatumReferenceModifierWithValue();
 
@@ -826,7 +826,7 @@ opencascade::handle<StepDimTol_SimpleDatumReferenceModifierMember>
 
 Description
 -----------
-Returns value as a simpledatumreferencemodifiermember (null if another type).
+returns Value as a SimpleDatumReferenceModifierMember (Null if another type).
 ") SimpleDatumReferenceModifierMember;
 		opencascade::handle<StepDimTol_SimpleDatumReferenceModifierMember> SimpleDatumReferenceModifierMember();
 
@@ -885,7 +885,7 @@ StepDimTol_DatumReferenceModifierType
 
 Description
 -----------
-Returns field modifiertype.
+Returns field ModifierType.
 ") ModifierType;
 		StepDimTol_DatumReferenceModifierType ModifierType();
 
@@ -898,7 +898,7 @@ opencascade::handle<StepBasic_LengthMeasureWithUnit>
 
 Description
 -----------
-Returns field modifiervalue.
+Returns field ModifierValue.
 ") ModifierValue;
 		opencascade::handle<StepBasic_LengthMeasureWithUnit> ModifierValue();
 
@@ -916,7 +916,7 @@ None
 
 Description
 -----------
-Set field modifiertype.
+Set field ModifierType.
 ") SetModifierType;
 		void SetModifierType(const StepDimTol_DatumReferenceModifierType & theModifierType);
 
@@ -934,7 +934,7 @@ None
 
 Description
 -----------
-Set field modifiervalue.
+Set field ModifierValue.
 ") SetModifierValue;
 		void SetModifierValue(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theModifierValue);
 
@@ -976,7 +976,7 @@ opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment>
 
 Description
 -----------
-Returns field constituents.
+Returns field Constituents.
 ") Constituents;
 		opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment> Constituents();
 
@@ -994,7 +994,7 @@ opencascade::handle<StepDimTol_DatumReferenceCompartment>
 
 Description
 -----------
-Returns constituents with the given number.
+Returns Constituents with the given number.
 ") ConstituentsValue;
 		opencascade::handle<StepDimTol_DatumReferenceCompartment> ConstituentsValue(const Standard_Integer num);
 
@@ -1013,7 +1013,7 @@ None
 
 Description
 -----------
-Sets constituents with given number.
+Sets Constituents with given number.
 ") ConstituentsValue;
 		void ConstituentsValue(const Standard_Integer num, const opencascade::handle<StepDimTol_DatumReferenceCompartment> & theItem);
 
@@ -1048,7 +1048,7 @@ int
 
 Description
 -----------
-Returns number of constituents.
+Returns number of Constituents.
 ") NbConstituents;
 		Standard_Integer NbConstituents();
 
@@ -1066,7 +1066,7 @@ None
 
 Description
 -----------
-Set field constituents.
+Set field Constituents.
 ") SetConstituents;
 		void SetConstituents(const opencascade::handle<StepDimTol_HArray1OfDatumReferenceCompartment> & theConstituents);
 
@@ -1095,7 +1095,7 @@ None
 
 Description
 -----------
-Returns a datumsystemorreference select type.
+Returns a DatumSystemOrReference select type.
 ") StepDimTol_DatumSystemOrReference;
 		 StepDimTol_DatumSystemOrReference();
 
@@ -1113,7 +1113,7 @@ int
 
 Description
 -----------
-Recognizes a datumsystemorreference kind entity that is: 1 -> datumsystem 2 -> datumreference 0 else.
+Recognizes a DatumSystemOrReference Kind Entity that is: 1 -> DatumSystem 2 -> DatumReference 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1126,7 +1126,7 @@ opencascade::handle<StepDimTol_DatumReference>
 
 Description
 -----------
-Returns value as a datumreference (null if another type).
+returns Value as a DatumReference (Null if another type).
 ") DatumReference;
 		opencascade::handle<StepDimTol_DatumReference> DatumReference();
 
@@ -1139,7 +1139,7 @@ opencascade::handle<StepDimTol_DatumSystem>
 
 Description
 -----------
-Returns value as a datumsystem (null if another type).
+returns Value as a DatumSystem (Null if another type).
 ") DatumSystem;
 		opencascade::handle<StepDimTol_DatumSystem> DatumSystem();
 
@@ -1206,7 +1206,7 @@ None
 
 Description
 -----------
-Set field targetid.
+Set field TargetId.
 ") SetTargetId;
 		void SetTargetId(const opencascade::handle<TCollection_HAsciiString> & theTargetId);
 
@@ -1219,7 +1219,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field targetid.
+Returns field TargetId.
 ") TargetId;
 		opencascade::handle<TCollection_HAsciiString> TargetId();
 
@@ -1261,7 +1261,7 @@ StepDimTol_DatumOrCommonDatum
 
 Description
 -----------
-Returns field base.
+Returns field Base.
 ") Base;
 		StepDimTol_DatumOrCommonDatum Base();
 
@@ -1274,7 +1274,7 @@ bool
 
 Description
 -----------
-Indicates is field modifiers exist.
+Indicates is field Modifiers exist.
 ") HasModifiers;
 		Standard_Boolean HasModifiers();
 
@@ -1311,7 +1311,7 @@ opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier>
 
 Description
 -----------
-Returns field modifiers.
+Returns field Modifiers.
 ") Modifiers;
 		opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> Modifiers();
 
@@ -1329,7 +1329,7 @@ StepDimTol_DatumReferenceModifier
 
 Description
 -----------
-Returns modifiers with the given number.
+Returns Modifiers with the given number.
 ") ModifiersValue;
 		StepDimTol_DatumReferenceModifier ModifiersValue(const Standard_Integer theNum);
 
@@ -1348,7 +1348,7 @@ None
 
 Description
 -----------
-Sets modifiers with given number.
+Sets Modifiers with given number.
 ") ModifiersValue;
 		void ModifiersValue(const Standard_Integer theNum, const StepDimTol_DatumReferenceModifier & theItem);
 
@@ -1361,7 +1361,7 @@ int
 
 Description
 -----------
-Returns number of modifiers.
+Returns number of Modifiers.
 ") NbModifiers;
 		Standard_Integer NbModifiers();
 
@@ -1379,7 +1379,7 @@ None
 
 Description
 -----------
-Set field base.
+Set field Base.
 ") SetBase;
 		void SetBase(const StepDimTol_DatumOrCommonDatum & theBase);
 
@@ -1397,7 +1397,7 @@ None
 
 Description
 -----------
-Set field modifiers.
+Set field Modifiers.
 ") SetModifiers;
 		void SetModifiers(const opencascade::handle<StepDimTol_HArray1OfDatumReferenceModifier> & theModifiers);
 
@@ -1439,7 +1439,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -1460,7 +1460,7 @@ None
 
 Description
 -----------
-Initialize all fields (own and inherited) ap214.
+Initialize all fields (own and inherited) AP214.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect);
 
@@ -1481,7 +1481,7 @@ None
 
 Description
 -----------
-Initialize all fields (own and inherited) ap242.
+Initialize all fields (own and inherited) AP242.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect);
 
@@ -1494,7 +1494,7 @@ opencascade::handle<StepBasic_MeasureWithUnit>
 
 Description
 -----------
-Returns field magnitude.
+Returns field Magnitude.
 ") Magnitude;
 		opencascade::handle<StepBasic_MeasureWithUnit> Magnitude();
 
@@ -1507,7 +1507,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -1525,7 +1525,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
@@ -1543,7 +1543,7 @@ None
 
 Description
 -----------
-Set field magnitude.
+Set field Magnitude.
 ") SetMagnitude;
 		void SetMagnitude(const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude);
 
@@ -1561,7 +1561,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & theName);
 
@@ -1579,7 +1579,7 @@ None
 
 Description
 -----------
-Set field tolerancedshapeaspect ap214.
+Set field TolerancedShapeAspect AP214.
 ") SetTolerancedShapeAspect;
 		void SetTolerancedShapeAspect(const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect);
 
@@ -1597,7 +1597,7 @@ None
 
 Description
 -----------
-Set field tolerancedshapeaspect ap242.
+Set field TolerancedShapeAspect AP242.
 ") SetTolerancedShapeAspect;
 		void SetTolerancedShapeAspect(const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect);
 
@@ -1610,7 +1610,7 @@ StepDimTol_GeometricToleranceTarget
 
 Description
 -----------
-Returns field tolerancedshapeaspect note: in ap214(203) type of this attribute can be only steprepr_shapeaspect.
+Returns field TolerancedShapeAspect Note: in AP214(203) type of this attribute can be only StepRepr_ShapeAspect.
 ") TolerancedShapeAspect;
 		StepDimTol_GeometricToleranceTarget TolerancedShapeAspect();
 
@@ -1652,7 +1652,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -1686,7 +1686,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -1699,7 +1699,7 @@ opencascade::handle<StepDimTol_GeometricTolerance>
 
 Description
 -----------
-Returns field relatedgeometrictolerance.
+Returns field RelatedGeometricTolerance.
 ") RelatedGeometricTolerance;
 		opencascade::handle<StepDimTol_GeometricTolerance> RelatedGeometricTolerance();
 
@@ -1712,7 +1712,7 @@ opencascade::handle<StepDimTol_GeometricTolerance>
 
 Description
 -----------
-Returns field relatinggeometrictolerance.
+Returns field RelatingGeometricTolerance.
 ") RelatingGeometricTolerance;
 		opencascade::handle<StepDimTol_GeometricTolerance> RelatingGeometricTolerance();
 
@@ -1730,7 +1730,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & theDescription);
 
@@ -1748,7 +1748,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & theName);
 
@@ -1766,7 +1766,7 @@ None
 
 Description
 -----------
-Set field relatedgeometrictolerance.
+Set field RelatedGeometricTolerance.
 ") SetRelatedGeometricTolerance;
 		void SetRelatedGeometricTolerance(const opencascade::handle<StepDimTol_GeometricTolerance> & theRelatedGeometricTolerance);
 
@@ -1784,7 +1784,7 @@ None
 
 Description
 -----------
-Set field relatinggeometrictolerance.
+Set field RelatingGeometricTolerance.
 ") SetRelatingGeometricTolerance;
 		void SetRelatingGeometricTolerance(const opencascade::handle<StepDimTol_GeometricTolerance> & theRelatingGeometricTolerance);
 
@@ -1813,7 +1813,7 @@ None
 
 Description
 -----------
-Returns a geometrictolerancetarget select type.
+Returns a GeometricToleranceTarget select type.
 ") StepDimTol_GeometricToleranceTarget;
 		 StepDimTol_GeometricToleranceTarget();
 
@@ -1831,7 +1831,7 @@ int
 
 Description
 -----------
-Recognizes a geometrictolerancetarget kind entity that is: 1 -> dimensionallocation 2 -> dimensionalsize 3 -> productdefinitionshape 4 -> shapeaspect 0 else.
+Recognizes a GeometricToleranceTarget Kind Entity that is: 1 -> DimensionalLocation 2 -> DimensionalSize 3 -> ProductDefinitionShape 4 -> ShapeAspect 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1844,7 +1844,7 @@ opencascade::handle<StepShape_DimensionalLocation>
 
 Description
 -----------
-Returns value as a dimensionallocation (null if another type).
+returns Value as a DimensionalLocation (Null if another type).
 ") DimensionalLocation;
 		opencascade::handle<StepShape_DimensionalLocation> DimensionalLocation();
 
@@ -1857,7 +1857,7 @@ opencascade::handle<StepShape_DimensionalSize>
 
 Description
 -----------
-Returns value as a dimensionalsize (null if another type).
+returns Value as a DimensionalSize (Null if another type).
 ") DimensionalSize;
 		opencascade::handle<StepShape_DimensionalSize> DimensionalSize();
 
@@ -1870,7 +1870,7 @@ opencascade::handle<StepRepr_ProductDefinitionShape>
 
 Description
 -----------
-Returns value as a productdefinitionshape (null if another type).
+returns Value as a ProductDefinitionShape (Null if another type).
 ") ProductDefinitionShape;
 		opencascade::handle<StepRepr_ProductDefinitionShape> ProductDefinitionShape();
 
@@ -1883,7 +1883,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns value as a shapeaspect (null if another type).
+returns Value as a ShapeAspect (Null if another type).
 ") ShapeAspect;
 		opencascade::handle<StepRepr_ShapeAspect> ShapeAspect();
 
@@ -1923,7 +1923,7 @@ opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit>
 
 Description
 -----------
-Returns field angle.
+Returns field Angle.
 ") Angle;
 		opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> Angle();
 
@@ -1959,7 +1959,7 @@ None
 
 Description
 -----------
-Set field angle.
+Set field Angle.
 ") SetAngle;
 		void SetAngle(const opencascade::handle<StepBasic_PlaneAngleMeasureWithUnit> & theAngle);
 
@@ -2006,7 +2006,7 @@ int
 
 Description
 -----------
-Recognizes a kind of shapetoleranceselect select type 1 -> geometrictolerance from stepdimtol 2 -> plusminustolerance from stepshape 0 else.
+Recognizes a kind of ShapeToleranceSelect select type 1 -> GeometricTolerance from StepDimTol 2 -> PlusMinusTolerance from StepShape 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2019,7 +2019,7 @@ opencascade::handle<StepDimTol_GeometricTolerance>
 
 Description
 -----------
-Returns value as geometrictolerance (or null if another type).
+Returns Value as GeometricTolerance (or Null if another type).
 ") GeometricTolerance;
 		opencascade::handle<StepDimTol_GeometricTolerance> GeometricTolerance();
 
@@ -2032,7 +2032,7 @@ opencascade::handle<StepShape_PlusMinusTolerance>
 
 Description
 -----------
-Returns value as plusminustolerance (or null if another type).
+Returns Value as PlusMinusTolerance (or Null if another type).
 ") PlusMinusTolerance;
 		opencascade::handle<StepShape_PlusMinusTolerance> PlusMinusTolerance();
 
@@ -2221,7 +2221,7 @@ opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget>
 
 Description
 -----------
-Returns field definingtolerance.
+Returns field DefiningTolerance.
 ") DefiningTolerance;
 		opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget> DefiningTolerance();
 
@@ -2239,7 +2239,7 @@ StepDimTol_ToleranceZoneTarget
 
 Description
 -----------
-Returns defining tolerance with the given number.
+Returns Defining Tolerance with the given number.
 ") DefiningToleranceValue;
 		StepDimTol_ToleranceZoneTarget DefiningToleranceValue(const Standard_Integer theNum);
 
@@ -2252,7 +2252,7 @@ opencascade::handle<StepDimTol_ToleranceZoneForm>
 
 Description
 -----------
-Returns field form.
+Returns field Form.
 ") Form;
 		opencascade::handle<StepDimTol_ToleranceZoneForm> Form();
 
@@ -2288,7 +2288,7 @@ int
 
 Description
 -----------
-Returns number of defining tolerances.
+Returns number of Defining Tolerances.
 ") NbDefiningTolerances;
 		Standard_Integer NbDefiningTolerances();
 
@@ -2306,7 +2306,7 @@ None
 
 Description
 -----------
-Set field definingtolerance.
+Set field DefiningTolerance.
 ") SetDefiningTolerance;
 		void SetDefiningTolerance(const opencascade::handle<StepDimTol_HArray1OfToleranceZoneTarget> & theDefiningTolerance);
 
@@ -2325,7 +2325,7 @@ None
 
 Description
 -----------
-Sets defining tolerance with given number.
+Sets Defining Tolerance with given number.
 ") SetDefiningToleranceValue;
 		void SetDefiningToleranceValue(const Standard_Integer theNum, const StepDimTol_ToleranceZoneTarget & theItem);
 
@@ -2343,7 +2343,7 @@ None
 
 Description
 -----------
-Set field form.
+Set field Form.
 ") SetForm;
 		void SetForm(const opencascade::handle<StepDimTol_ToleranceZoneForm> & theForm);
 
@@ -2385,7 +2385,7 @@ opencascade::handle<StepRepr_HArray1OfShapeAspect>
 
 Description
 -----------
-Returns field boundaries.
+Returns field Boundaries.
 ") Boundaries;
 		opencascade::handle<StepRepr_HArray1OfShapeAspect> Boundaries();
 
@@ -2403,7 +2403,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns boundaries with the given number.
+Returns Boundaries with the given number.
 ") BoundariesValue;
 		opencascade::handle<StepRepr_ShapeAspect> BoundariesValue(const Standard_Integer theNum);
 
@@ -2435,7 +2435,7 @@ int
 
 Description
 -----------
-Returns number of boundaries.
+Returns number of Boundaries.
 ") NbBoundaries;
 		Standard_Integer NbBoundaries();
 
@@ -2453,7 +2453,7 @@ None
 
 Description
 -----------
-Set field boundaries.
+Set field Boundaries.
 ") SetBoundaries;
 		void SetBoundaries(const opencascade::handle<StepRepr_HArray1OfShapeAspect> & theBoundaries);
 
@@ -2472,7 +2472,7 @@ None
 
 Description
 -----------
-Sets boundaries with given number.
+Sets Boundaries with given number.
 ") SetBoundariesValue;
 		void SetBoundariesValue(const Standard_Integer theNum, const opencascade::handle<StepRepr_ShapeAspect> & theItem);
 
@@ -2490,7 +2490,7 @@ None
 
 Description
 -----------
-Set field zone.
+Set field Zone.
 ") SetZone;
 		void SetZone(const opencascade::handle<StepDimTol_ToleranceZone> & theZone);
 
@@ -2503,7 +2503,7 @@ opencascade::handle<StepDimTol_ToleranceZone>
 
 Description
 -----------
-Returns field zone.
+Returns field Zone.
 ") Zone;
 		opencascade::handle<StepDimTol_ToleranceZone> Zone();
 
@@ -2563,7 +2563,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -2581,7 +2581,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & theName);
 
@@ -2610,7 +2610,7 @@ None
 
 Description
 -----------
-Returns a tolerancezonetarget select type.
+Returns a ToleranceZoneTarget select type.
 ") StepDimTol_ToleranceZoneTarget;
 		 StepDimTol_ToleranceZoneTarget();
 
@@ -2628,7 +2628,7 @@ int
 
 Description
 -----------
-Recognizes a tolerancezonetarget kind entity that is: 1 -> dimensionallocation 2 -> dimensionalsize 3 -> geometrictolerance 4 -> generaldatumreference 0 else.
+Recognizes a ToleranceZoneTarget Kind Entity that is: 1 -> DimensionalLocation 2 -> DimensionalSize 3 -> GeometricTolerance 4 -> GeneralDatumReference 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2641,7 +2641,7 @@ opencascade::handle<StepShape_DimensionalLocation>
 
 Description
 -----------
-Returns value as a dimensionallocation (null if another type).
+returns Value as a DimensionalLocation (Null if another type).
 ") DimensionalLocation;
 		opencascade::handle<StepShape_DimensionalLocation> DimensionalLocation();
 
@@ -2654,7 +2654,7 @@ opencascade::handle<StepShape_DimensionalSize>
 
 Description
 -----------
-Returns value as a dimensionalsize (null if another type).
+returns Value as a DimensionalSize (Null if another type).
 ") DimensionalSize;
 		opencascade::handle<StepShape_DimensionalSize> DimensionalSize();
 
@@ -2667,7 +2667,7 @@ opencascade::handle<StepDimTol_GeneralDatumReference>
 
 Description
 -----------
-Returns value as a generaldatumreference (null if another type).
+returns Value as a GeneralDatumReference (Null if another type).
 ") GeneralDatumReference;
 		opencascade::handle<StepDimTol_GeneralDatumReference> GeneralDatumReference();
 
@@ -2680,7 +2680,7 @@ opencascade::handle<StepDimTol_GeometricTolerance>
 
 Description
 -----------
-Returns value as a geometrictolerance (null if another type).
+returns Value as a GeometricTolerance (Null if another type).
 ") GeometricTolerance;
 		opencascade::handle<StepDimTol_GeometricTolerance> GeometricTolerance();
 
@@ -3448,7 +3448,7 @@ opencascade::handle<StepDimTol_HArray1OfDatumReference>
 
 Description
 -----------
-Returns field datumsystem ap214.
+Returns field DatumSystem AP214.
 ") DatumSystem;
 		opencascade::handle<StepDimTol_HArray1OfDatumReference> DatumSystem();
 
@@ -3461,7 +3461,7 @@ opencascade::handle<StepDimTol_HArray1OfDatumSystemOrReference>
 
 Description
 -----------
-Returns field datumsystem ap242.
+Returns field DatumSystem AP242.
 ") DatumSystemAP242;
 		opencascade::handle<StepDimTol_HArray1OfDatumSystemOrReference> DatumSystemAP242();
 
@@ -3483,7 +3483,7 @@ None
 
 Description
 -----------
-Initialize all fields (own and inherited) ap214.
+Initialize all fields (own and inherited) AP214.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<StepBasic_MeasureWithUnit> & theGeometricTolerance_Magnitude, const opencascade::handle<StepRepr_ShapeAspect> & theGeometricTolerance_TolerancedShapeAspect, const opencascade::handle<StepDimTol_HArray1OfDatumReference> & theDatumSystem);
 
@@ -3505,7 +3505,7 @@ None
 
 Description
 -----------
-Initialize all fields (own and inherited) ap242.
+Initialize all fields (own and inherited) AP242.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<StepBasic_MeasureWithUnit> & theGeometricTolerance_Magnitude, const StepDimTol_GeometricToleranceTarget & theGeometricTolerance_TolerancedShapeAspect, const opencascade::handle<StepDimTol_HArray1OfDatumSystemOrReference> & theDatumSystem);
 
@@ -3523,7 +3523,7 @@ None
 
 Description
 -----------
-Set field datumsystem ap214.
+Set field DatumSystem AP214.
 ") SetDatumSystem;
 		void SetDatumSystem(const opencascade::handle<StepDimTol_HArray1OfDatumReference> & theDatumSystem);
 
@@ -3541,7 +3541,7 @@ None
 
 Description
 -----------
-Set field datumsystem ap242.
+Set field DatumSystem AP242.
 ") SetDatumSystem;
 		void SetDatumSystem(const opencascade::handle<StepDimTol_HArray1OfDatumSystemOrReference> & theDatumSystem);
 
@@ -3592,7 +3592,7 @@ None
 
 Description
 -----------
-Initialize all fields (own and inherited) ap214.
+Initialize all fields (own and inherited) AP214.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const opencascade::handle<StepRepr_ShapeAspect> & theTolerancedShapeAspect, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
 
@@ -3614,7 +3614,7 @@ None
 
 Description
 -----------
-Initialize all fields (own and inherited) ap242.
+Initialize all fields (own and inherited) AP242.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theName, const opencascade::handle<TCollection_HAsciiString> & theDescription, const opencascade::handle<StepBasic_MeasureWithUnit> & theMagnitude, const StepDimTol_GeometricToleranceTarget & theTolerancedShapeAspect, const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
 
@@ -3632,7 +3632,7 @@ None
 
 Description
 -----------
-Set field unitsize.
+Set field UnitSize.
 ") SetUnitSize;
 		void SetUnitSize(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theUnitSize);
 
@@ -3645,7 +3645,7 @@ opencascade::handle<StepBasic_LengthMeasureWithUnit>
 
 Description
 -----------
-Returns field unitsize.
+Returns field UnitSize.
 ") UnitSize;
 		opencascade::handle<StepBasic_LengthMeasureWithUnit> UnitSize();
 
@@ -3727,7 +3727,7 @@ opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier>
 
 Description
 -----------
-Returns field modifiers.
+Returns field Modifiers.
 ") Modifiers;
 		opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier> Modifiers();
 
@@ -3777,7 +3777,7 @@ None
 
 Description
 -----------
-Set field modifiers.
+Set field Modifiers.
 ") SetModifiers;
 		void SetModifiers(const opencascade::handle<StepDimTol_HArray1OfGeometricToleranceModifier> & theModifiers);
 
@@ -3857,7 +3857,7 @@ None
 
 Description
 -----------
-Initialize all fields (own and inherited) ap214.
+Initialize all fields (own and inherited) AP214.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<StepBasic_MeasureWithUnit> & theGeometricTolerance_Magnitude, const opencascade::handle<StepRepr_ShapeAspect> & theGeometricTolerance_TolerancedShapeAspect, const StepDimTol_LimitCondition theModifier);
 
@@ -3879,7 +3879,7 @@ None
 
 Description
 -----------
-Initialize all fields (own and inherited) ap242.
+Initialize all fields (own and inherited) AP242.
 ") Init;
 		void Init(const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Name, const opencascade::handle<TCollection_HAsciiString> & theGeometricTolerance_Description, const opencascade::handle<StepBasic_MeasureWithUnit> & theGeometricTolerance_Magnitude, const StepDimTol_GeometricToleranceTarget & theGeometricTolerance_TolerancedShapeAspect, const StepDimTol_LimitCondition theModifier);
 
@@ -3892,7 +3892,7 @@ StepDimTol_LimitCondition
 
 Description
 -----------
-Returns field modifier.
+Returns field Modifier.
 ") Modifier;
 		StepDimTol_LimitCondition Modifier();
 
@@ -3910,7 +3910,7 @@ None
 
 Description
 -----------
-Set field modifier.
+Set field Modifier.
 ") SetModifier;
 		void SetModifier(const StepDimTol_LimitCondition theModifier);
 
@@ -4060,7 +4060,7 @@ opencascade::handle<StepRepr_ShapeAspect>
 
 Description
 -----------
-Returns field projectionend.
+Returns field ProjectionEnd.
 ") ProjectionEnd;
 		opencascade::handle<StepRepr_ShapeAspect> ProjectionEnd();
 
@@ -4073,7 +4073,7 @@ opencascade::handle<StepBasic_LengthMeasureWithUnit>
 
 Description
 -----------
-Returns field projectionlength.
+Returns field ProjectionLength.
 ") ProjectionLength;
 		opencascade::handle<StepBasic_LengthMeasureWithUnit> ProjectionLength();
 
@@ -4091,7 +4091,7 @@ None
 
 Description
 -----------
-Set field projectionend.
+Set field ProjectionEnd.
 ") SetProjectionEnd;
 		void SetProjectionEnd(const opencascade::handle<StepRepr_ShapeAspect> & theProjectionEnd);
 
@@ -4109,7 +4109,7 @@ None
 
 Description
 -----------
-Set field projectionlength.
+Set field ProjectionLength.
 ") SetProjectionLength;
 		void SetProjectionLength(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theProjectionLength);
 
@@ -4200,7 +4200,7 @@ opencascade::handle<StepDimTol_RunoutZoneOrientation>
 
 Description
 -----------
-Returns field orientation.
+Returns field Orientation.
 ") Orientation;
 		opencascade::handle<StepDimTol_RunoutZoneOrientation> Orientation();
 
@@ -4218,7 +4218,7 @@ None
 
 Description
 -----------
-Set field orientation.
+Set field Orientation.
 ") SetOrientation;
 		void SetOrientation(const opencascade::handle<StepDimTol_RunoutZoneOrientation> & theOrientation);
 
@@ -4318,7 +4318,7 @@ opencascade::handle<StepBasic_LengthMeasureWithUnit>
 
 Description
 -----------
-Returns field displacement.
+Returns field Displacement.
 ") Displacement;
 		opencascade::handle<StepBasic_LengthMeasureWithUnit> Displacement();
 
@@ -4358,7 +4358,7 @@ None
 
 Description
 -----------
-Set field displacement.
+Set field Displacement.
 ") SetDisplacement;
 		void SetDisplacement(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theDisplacement);
 
@@ -4842,7 +4842,7 @@ StepDimTol_AreaUnitType
 
 Description
 -----------
-Returns field areatype.
+Returns field AreaType.
 ") AreaType;
 		StepDimTol_AreaUnitType AreaType();
 
@@ -4855,7 +4855,7 @@ bool
 
 Description
 -----------
-Indicates if secondunitsize field exist.
+Indicates if SecondUnitSize field exist.
 ") HasSecondUnitSize;
 		Standard_Boolean HasSecondUnitSize();
 
@@ -4893,7 +4893,7 @@ opencascade::handle<StepBasic_LengthMeasureWithUnit>
 
 Description
 -----------
-Returns field secondunitsize.
+Returns field SecondUnitSize.
 ") SecondUnitSize;
 		opencascade::handle<StepBasic_LengthMeasureWithUnit> SecondUnitSize();
 
@@ -4911,7 +4911,7 @@ None
 
 Description
 -----------
-Set field areatype.
+Set field AreaType.
 ") SetAreaType;
 		void SetAreaType(const StepDimTol_AreaUnitType theAreaType);
 
@@ -4929,7 +4929,7 @@ None
 
 Description
 -----------
-Set field secondunitsize.
+Set field SecondUnitSize.
 ") SetSecondUnitSize;
 		void SetSecondUnitSize(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theSecondUnitSize);
 
@@ -4994,7 +4994,7 @@ opencascade::handle<StepBasic_LengthMeasureWithUnit>
 
 Description
 -----------
-Returns field maximumuppertolerance.
+Returns field MaximumUpperTolerance.
 ") MaximumUpperTolerance;
 		opencascade::handle<StepBasic_LengthMeasureWithUnit> MaximumUpperTolerance();
 
@@ -5012,7 +5012,7 @@ None
 
 Description
 -----------
-Set field maximumuppertolerance.
+Set field MaximumUpperTolerance.
 ") SetMaximumUpperTolerance;
 		void SetMaximumUpperTolerance(const opencascade::handle<StepBasic_LengthMeasureWithUnit> & theMaximumUpperTolerance);
 

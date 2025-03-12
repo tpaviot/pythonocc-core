@@ -107,7 +107,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Computes the regularity at the junction between c1 and c2. the booleans r1 and r2 are true if the curves must be taken reversed. the point u1 on c1 and the point u2 on c2 must be confused. tl and ta are the linear and angular tolerance used two compare the derivative.
+Computes the regularity at the junction between C1 and C2. The booleans r1 and r2 are true if the curves must be taken reversed. The point u1 on C1 and the point u2 on C2 must be confused. tl and ta are the linear and angular tolerance used two compare the derivative.
 ") Continuity;
 		static GeomAbs_Shape Continuity(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2, const Standard_Real u1, const Standard_Real u2, const Standard_Boolean r1, const Standard_Boolean r2, const Standard_Real tl, const Standard_Real ta);
 
@@ -130,7 +130,7 @@ GeomAbs_Shape
 
 Description
 -----------
-The same as preceding but using the standard tolerances from package precision.
+The same as preceding but using the standard tolerances from package Precision.
 ") Continuity;
 		static GeomAbs_Shape Continuity(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2, const Standard_Real u1, const Standard_Real u2, const Standard_Boolean r1, const Standard_Boolean r2);
 
@@ -164,7 +164,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the curve <c> the current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <n> indicates the maximum number of derivations to be done (0, 1, 2 or 3). for example, to compute only the tangent, n should be equal to 1. <resolution> is the linear tolerance (it is used to test if a vector is null).
+Initializes the local properties of the curve <C> The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, 2 or 3). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 ") GeomLProp_CLProps;
 		 GeomLProp_CLProps(const opencascade::handle<Geom_Curve> & C, const Standard_Integer N, const Standard_Real Resolution);
 
@@ -185,7 +185,7 @@ None
 
 Description
 -----------
-Same as previous constructor but here the parameter is set to the value <u>. all the computations done will be related to <c> and <u>.
+Same as previous constructor but here the parameter is set to the value <U>. All the computations done will be related to <C> and <U>.
 ") GeomLProp_CLProps;
 		 GeomLProp_CLProps(const opencascade::handle<Geom_Curve> & C, const Standard_Real U, const Standard_Integer N, const Standard_Real Resolution);
 
@@ -204,7 +204,7 @@ None
 
 Description
 -----------
-Same as previous constructor but here the parameter is set to the value <u> and the curve is set with setcurve. the curve can have a empty constructor all the computations done will be related to <c> and <u> when the functions 'set' will be done.
+Same as previous constructor but here the parameter is set to the value <U> and the curve is set with SetCurve. the curve can have a empty constructor All the computations done will be related to <C> and <U> when the functions 'set' will be done.
 ") GeomLProp_CLProps;
 		 GeomLProp_CLProps(const Standard_Integer N, const Standard_Real Resolution);
 
@@ -222,7 +222,7 @@ None
 
 Description
 -----------
-Returns the centre of curvature <p>.
+Returns the centre of curvature <P>.
 ") CentreOfCurvature;
 		void CentreOfCurvature(gp_Pnt & P);
 
@@ -248,7 +248,7 @@ gp_Vec
 
 Description
 -----------
-Returns the first derivative. the derivative is computed if it has not been yet.
+Returns the first derivative. The derivative is computed if it has not been yet.
 ") D1;
 		const gp_Vec D1();
 
@@ -261,7 +261,7 @@ gp_Vec
 
 Description
 -----------
-Returns the second derivative. the derivative is computed if it has not been yet.
+Returns the second derivative. The derivative is computed if it has not been yet.
 ") D2;
 		const gp_Vec D2();
 
@@ -274,7 +274,7 @@ gp_Vec
 
 Description
 -----------
-Returns the third derivative. the derivative is computed if it has not been yet.
+Returns the third derivative. The derivative is computed if it has not been yet.
 ") D3;
 		const gp_Vec D3();
 
@@ -287,7 +287,7 @@ bool
 
 Description
 -----------
-Returns true if the tangent is defined. for example, the tangent is not defined if the three first derivatives are all null.
+Returns True if the tangent is defined. For example, the tangent is not defined if the three first derivatives are all null.
 ") IsTangentDefined;
 		Standard_Boolean IsTangentDefined();
 
@@ -305,7 +305,7 @@ None
 
 Description
 -----------
-Returns the normal direction <n>.
+Returns the normal direction <N>.
 ") Normal;
 		void Normal(gp_Dir & N);
 
@@ -341,7 +341,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the curve for the parameter value <u>.
+Initializes the local properties of the curve for the parameter value <U>.
 ") SetParameter;
 		void SetParameter(const Standard_Real U);
 
@@ -359,7 +359,7 @@ None
 
 Description
 -----------
-Output the tangent direction <d>.
+output the tangent direction <D>.
 ") Tangent;
 		void Tangent(gp_Dir & D);
 
@@ -372,7 +372,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point.
+Returns the Point.
 ") Value;
 		const gp_Pnt Value();
 
@@ -404,7 +404,7 @@ int
 
 Description
 -----------
-Returns the order of continuity of the curve <c>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable. returns 3: first, second and third are computable.
+returns the order of continuity of the curve <C>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable. returns 3: first, second and third are computable.
 ") Continuity;
 		static Standard_Integer Continuity(const opencascade::handle<Geom_Curve> & C);
 
@@ -425,7 +425,7 @@ None
 
 Description
 -----------
-Computes the point <p> and first derivative <v1> of parameter <u> on the curve <c>.
+Computes the point <P> and first derivative <V1> of parameter <U> on the curve <C>.
 ") D1;
 		static void D1(const opencascade::handle<Geom_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
 
@@ -447,7 +447,7 @@ None
 
 Description
 -----------
-Computes the point <p>, the first derivative <v1> and second derivative <v2> of parameter <u> on the curve <c>.
+Computes the point <P>, the first derivative <V1> and second derivative <V2> of parameter <U> on the curve <C>.
 ") D2;
 		static void D2(const opencascade::handle<Geom_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2);
 
@@ -470,7 +470,7 @@ None
 
 Description
 -----------
-Computes the point <p>, the first derivative <v1>, the second derivative <v2> and third derivative <v3> of parameter <u> on the curve <c>.
+Computes the point <P>, the first derivative <V1>, the second derivative <V2> and third derivative <V3> of parameter <U> on the curve <C>.
 ") D3;
 		static void D3(const opencascade::handle<Geom_Curve> & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1, gp_Vec & V2, gp_Vec & V3);
 
@@ -488,7 +488,7 @@ float
 
 Description
 -----------
-Returns the first parameter bound of the curve.
+returns the first parameter bound of the curve.
 ") FirstParameter;
 		static Standard_Real FirstParameter(const opencascade::handle<Geom_Curve> & C);
 
@@ -506,7 +506,7 @@ float
 
 Description
 -----------
-Returns the last parameter bound of the curve. firstparameter must be less than lastparamenter.
+returns the last parameter bound of the curve. FirstParameter must be less than LastParamenter.
 ") LastParameter;
 		static Standard_Real LastParameter(const opencascade::handle<Geom_Curve> & C);
 
@@ -526,7 +526,7 @@ None
 
 Description
 -----------
-Computes the point <p> of parameter <u> on the curve <c>.
+Computes the point <P> of parameter <U> on the curve <C>.
 ") Value;
 		static void Value(const opencascade::handle<Geom_Curve> & C, const Standard_Real U, gp_Pnt & P);
 
@@ -562,7 +562,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the surface <s> for the parameter values (<u>, <v>). the current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <n> indicates the maximum number of derivations to be done (0, 1, or 2). for example, to compute only the tangent, n should be equal to 1. <resolution> is the linear tolerance (it is used to test if a vector is null).
+Initializes the local properties of the surface <S> for the parameter values (<U>, <V>). The current point and the derivatives are computed at the same time, which allows an optimization of the computation time. <N> indicates the maximum number of derivations to be done (0, 1, or 2). For example, to compute only the tangent, N should be equal to 1. <Resolution> is the linear tolerance (it is used to test if a vector is null).
 ") GeomLProp_SLProps;
 		 GeomLProp_SLProps(const opencascade::handle<Geom_Surface> & S, const Standard_Real U, const Standard_Real V, const Standard_Integer N, const Standard_Real Resolution);
 
@@ -582,7 +582,7 @@ None
 
 Description
 -----------
-Idem as previous constructor but without setting the value of parameters <u> and <v>.
+idem as previous constructor but without setting the value of parameters <U> and <V>.
 ") GeomLProp_SLProps;
 		 GeomLProp_SLProps(const opencascade::handle<Geom_Surface> & S, const Standard_Integer N, const Standard_Real Resolution);
 
@@ -601,7 +601,7 @@ None
 
 Description
 -----------
-Idem as previous constructor but without setting the value of parameters <u> and <v> and the surface. the surface can have an empty constructor.
+idem as previous constructor but without setting the value of parameters <U> and <V> and the surface. the surface can have an empty constructor.
 ") GeomLProp_SLProps;
 		 GeomLProp_SLProps(const Standard_Integer N, const Standard_Real Resolution);
 
@@ -620,7 +620,7 @@ None
 
 Description
 -----------
-Returns the direction of the maximum and minimum curvature <maxd> and <mind>.
+Returns the direction of the maximum and minimum curvature <MaxD> and <MinD>.
 ") CurvatureDirections;
 		void CurvatureDirections(gp_Dir & MaxD, gp_Dir & MinD);
 
@@ -633,7 +633,7 @@ gp_Vec
 
 Description
 -----------
-Returns the first u derivative. the derivative is computed if it has not been yet.
+Returns the first U derivative. The derivative is computed if it has not been yet.
 ") D1U;
 		const gp_Vec D1U();
 
@@ -646,7 +646,7 @@ gp_Vec
 
 Description
 -----------
-Returns the first v derivative. the derivative is computed if it has not been yet.
+Returns the first V derivative. The derivative is computed if it has not been yet.
 ") D1V;
 		const gp_Vec D1V();
 
@@ -659,7 +659,7 @@ gp_Vec
 
 Description
 -----------
-Returns the second u derivatives the derivative is computed if it has not been yet.
+Returns the second U derivatives The derivative is computed if it has not been yet.
 ") D2U;
 		const gp_Vec D2U();
 
@@ -672,7 +672,7 @@ gp_Vec
 
 Description
 -----------
-Returns the second v derivative. the derivative is computed if it has not been yet.
+Returns the second V derivative. The derivative is computed if it has not been yet.
 ") D2V;
 		const gp_Vec D2V();
 
@@ -685,7 +685,7 @@ gp_Vec
 
 Description
 -----------
-Returns the second uv cross-derivative. the derivative is computed if it has not been yet.
+Returns the second UV cross-derivative. The derivative is computed if it has not been yet.
 ") DUV;
 		const gp_Vec DUV();
 
@@ -698,7 +698,7 @@ float
 
 Description
 -----------
-Returns the gaussian curvature.
+Returns the Gaussian curvature.
 ") GaussianCurvature;
 		Standard_Real GaussianCurvature();
 
@@ -711,7 +711,7 @@ bool
 
 Description
 -----------
-Returns true if the curvature is defined.
+returns True if the curvature is defined.
 ") IsCurvatureDefined;
 		Standard_Boolean IsCurvatureDefined();
 
@@ -737,7 +737,7 @@ bool
 
 Description
 -----------
-Returns true if the u tangent is defined. for example, the tangent is not defined if the two first u derivatives are null.
+returns True if the U tangent is defined. For example, the tangent is not defined if the two first U derivatives are null.
 ") IsTangentUDefined;
 		Standard_Boolean IsTangentUDefined();
 
@@ -750,7 +750,7 @@ bool
 
 Description
 -----------
-Returns if the v tangent is defined. for example, the tangent is not defined if the two first v derivatives are null.
+returns if the V tangent is defined. For example, the tangent is not defined if the two first V derivatives are null.
 ") IsTangentVDefined;
 		Standard_Boolean IsTangentVDefined();
 
@@ -763,7 +763,7 @@ bool
 
 Description
 -----------
-Returns true if the point is umbilic (i.e. if the curvature is constant).
+returns True if the point is umbilic (i.e. if the curvature is constant).
 ") IsUmbilic;
 		Standard_Boolean IsUmbilic();
 
@@ -834,7 +834,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the surface s for the new parameter values (<u>, <v>).
+Initializes the local properties of the surface S for the new parameter values (<U>, <V>).
 ") SetParameters;
 		void SetParameters(const Standard_Real U, const Standard_Real V);
 
@@ -852,7 +852,7 @@ None
 
 Description
 -----------
-Initializes the local properties of the surface s for the new surface.
+Initializes the local properties of the surface S for the new surface.
 ") SetSurface;
 		void SetSurface(const opencascade::handle<Geom_Surface> & S);
 
@@ -870,7 +870,7 @@ None
 
 Description
 -----------
-Returns the tangent direction <d> on the iso-v.
+Returns the tangent direction <D> on the iso-V.
 ") TangentU;
 		void TangentU(gp_Dir & D);
 
@@ -888,7 +888,7 @@ None
 
 Description
 -----------
-Returns the tangent direction <d> on the iso-v.
+Returns the tangent direction <D> on the iso-V.
 ") TangentV;
 		void TangentV(gp_Dir & D);
 
@@ -936,7 +936,7 @@ V2: float
 
 Description
 -----------
-Returns the bounds of the surface.
+returns the bounds of the Surface.
 ") Bounds;
 		static void Bounds(const opencascade::handle<Geom_Surface> & S, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -954,7 +954,7 @@ int
 
 Description
 -----------
-Returns the order of continuity of the surface <s>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable.
+returns the order of continuity of the Surface <S>. returns 1: first derivative only is computable returns 2: first and second derivative only are computable.
 ") Continuity;
 		static Standard_Integer Continuity(const opencascade::handle<Geom_Surface> & S);
 
@@ -977,7 +977,7 @@ None
 
 Description
 -----------
-Computes the point <p> and first derivative <d1*> of parameter <u> and <v> on the surface <s>.
+Computes the point <P> and first derivative <D1*> of parameter <U> and <V> on the Surface <S>.
 ") D1;
 		static void D1(const opencascade::handle<Geom_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V);
 
@@ -1003,7 +1003,7 @@ None
 
 Description
 -----------
-Computes the point <p>, the first derivative <d1*> and second derivative <d2*> of parameter <u> and <v> on the surface <s>.
+Computes the point <P>, the first derivative <D1*> and second derivative <D2*> of parameter <U> and <V> on the Surface <S>.
 ") D2;
 		static void D2(const opencascade::handle<Geom_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & D1U, gp_Vec & D1V, gp_Vec & D2U, gp_Vec & D2V, gp_Vec & DUV);
 
@@ -1046,7 +1046,7 @@ None
 
 Description
 -----------
-Computes the point <p> of parameter <u> and <v> on the surface <s>.
+Computes the point <P> of parameter <U> and <V> on the Surface <S>.
 ") Value;
 		static void Value(const opencascade::handle<Geom_Surface> & S, const Standard_Real U, const Standard_Real V, gp_Pnt & P);
 

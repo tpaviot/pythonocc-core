@@ -353,7 +353,7 @@ None
 
 Description
 -----------
-Returns a axis2placement selecttype.
+Returns a Axis2Placement SelectType.
 ") StepGeom_Axis2Placement;
 		 StepGeom_Axis2Placement();
 
@@ -366,7 +366,7 @@ opencascade::handle<StepGeom_Axis2Placement2d>
 
 Description
 -----------
-Returns value as a axis2placement2d (null if another type).
+returns Value as a Axis2Placement2d (Null if another type).
 ") Axis2Placement2d;
 		opencascade::handle<StepGeom_Axis2Placement2d> Axis2Placement2d();
 
@@ -379,7 +379,7 @@ opencascade::handle<StepGeom_Axis2Placement3d>
 
 Description
 -----------
-Returns value as a axis2placement3d (null if another type).
+returns Value as a Axis2Placement3d (Null if another type).
 ") Axis2Placement3d;
 		opencascade::handle<StepGeom_Axis2Placement3d> Axis2Placement3d();
 
@@ -397,7 +397,7 @@ int
 
 Description
 -----------
-Recognizes a axis2placement kind entity that is: 1 -> axis2placement2d 2 -> axis2placement3d 0 else.
+Recognizes a Axis2Placement Kind Entity that is: 1 -> Axis2Placement2d 2 -> Axis2Placement3d 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -424,7 +424,7 @@ None
 
 Description
 -----------
-Returns a compositecurvesegment.
+Returns a CompositeCurveSegment.
 ") StepGeom_CompositeCurveSegment;
 		 StepGeom_CompositeCurveSegment();
 
@@ -566,7 +566,7 @@ None
 
 Description
 -----------
-Returns a curveonsurface selecttype.
+Returns a CurveOnSurface SelectType.
 ") StepGeom_CurveOnSurface;
 		 StepGeom_CurveOnSurface();
 
@@ -584,7 +584,7 @@ int
 
 Description
 -----------
-Recognizes a curveonsurface kind entity that is: 1 -> pcurve 2 -> surfacecurve 3 -> compositecurveonsurface 0 else.
+Recognizes a CurveOnSurface Kind Entity that is: 1 -> Pcurve 2 -> SurfaceCurve 3 -> CompositeCurveOnSurface 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -597,7 +597,7 @@ opencascade::handle<StepGeom_CompositeCurveOnSurface>
 
 Description
 -----------
-Returns value as a compositecurveonsurface (null if another type).
+returns Value as a CompositeCurveOnSurface (Null if another type).
 ") CompositeCurveOnSurface;
 		opencascade::handle<StepGeom_CompositeCurveOnSurface> CompositeCurveOnSurface();
 
@@ -610,7 +610,7 @@ opencascade::handle<StepGeom_Pcurve>
 
 Description
 -----------
-Returns value as a pcurve (null if another type).
+returns Value as a Pcurve (Null if another type).
 ") Pcurve;
 		opencascade::handle<StepGeom_Pcurve> Pcurve();
 
@@ -623,7 +623,7 @@ opencascade::handle<StepGeom_SurfaceCurve>
 
 Description
 -----------
-Returns value as a surfacecurve (null if another type).
+returns Value as a SurfaceCurve (Null if another type).
 ") SurfaceCurve;
 		opencascade::handle<StepGeom_SurfaceCurve> SurfaceCurve();
 
@@ -971,7 +971,7 @@ None
 
 Description
 -----------
-Returns a geometricrepresentationcontext.
+Returns a GeometricRepresentationContext.
 ") StepGeom_GeometricRepresentationContext;
 		 StepGeom_GeometricRepresentationContext();
 
@@ -1051,7 +1051,7 @@ None
 
 Description
 -----------
-Returns a geometricrepresentationcontextandglobalunitassignedcontext.
+Returns a GeometricRepresentationContextAndGlobalUnitAssignedContext.
 ") StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext;
 		 StepGeom_GeometricRepresentationContextAndGlobalUnitAssignedContext();
 
@@ -1277,7 +1277,7 @@ None
 
 Description
 -----------
-Empty constructor.
+empty constructor.
 ") StepGeom_GeometricRepresentationContextAndParametricRepresentationContext;
 		 StepGeom_GeometricRepresentationContextAndParametricRepresentationContext();
 
@@ -1440,7 +1440,7 @@ None
 
 Description
 -----------
-Returns a geometricrepresentationitem.
+Returns a GeometricRepresentationItem.
 ") StepGeom_GeometricRepresentationItem;
 		 StepGeom_GeometricRepresentationItem();
 
@@ -1469,7 +1469,7 @@ None
 
 Description
 -----------
-Returns a pcurveorsurface selecttype.
+Returns a PcurveOrSurface SelectType.
 ") StepGeom_PcurveOrSurface;
 		 StepGeom_PcurveOrSurface();
 
@@ -1487,7 +1487,7 @@ int
 
 Description
 -----------
-Recognizes a pcurveorsurface kind entity that is: 1 -> pcurve 2 -> surface 0 else.
+Recognizes a PcurveOrSurface Kind Entity that is: 1 -> Pcurve 2 -> Surface 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1500,7 +1500,7 @@ opencascade::handle<StepGeom_Pcurve>
 
 Description
 -----------
-Returns value as a pcurve (null if another type).
+returns Value as a Pcurve (Null if another type).
 ") Pcurve;
 		opencascade::handle<StepGeom_Pcurve> Pcurve();
 
@@ -1513,7 +1513,7 @@ opencascade::handle<StepGeom_Surface>
 
 Description
 -----------
-Returns value as a surface (null if another type).
+returns Value as a Surface (Null if another type).
 ") Surface;
 		opencascade::handle<StepGeom_Surface> Surface();
 
@@ -1553,7 +1553,7 @@ opencascade::handle<StepGeom_BoundaryCurve>
 
 Description
 -----------
-Returns value as boundarycurve (or null if another type).
+Returns Value as BoundaryCurve (or Null if another type).
 ") BoundaryCurve;
 		opencascade::handle<StepGeom_BoundaryCurve> BoundaryCurve();
 
@@ -1571,7 +1571,7 @@ int
 
 Description
 -----------
-Recognizes a kind of surfaceboundary select type 1 -> boundarycurve from stepgeom 2 -> degeneratepcurve from stepgeom 0 else.
+Recognizes a kind of SurfaceBoundary select type 1 -> BoundaryCurve from StepGeom 2 -> DegeneratePcurve from StepGeom 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1584,7 +1584,7 @@ opencascade::handle<StepGeom_DegeneratePcurve>
 
 Description
 -----------
-Returns value as degeneratepcurve (or null if another type).
+Returns Value as DegeneratePcurve (or Null if another type).
 ") DegeneratePcurve;
 		opencascade::handle<StepGeom_DegeneratePcurve> DegeneratePcurve();
 
@@ -1611,7 +1611,7 @@ None
 
 Description
 -----------
-Returns a surfacepatch.
+Returns a SurfacePatch.
 ") StepGeom_SurfacePatch;
 		 StepGeom_SurfacePatch();
 
@@ -1890,7 +1890,7 @@ None
 
 Description
 -----------
-Returns a trimmingselect selecttype.
+Returns a TrimmingSelect SelectType.
 ") StepGeom_TrimmingSelect;
 		 StepGeom_TrimmingSelect();
 
@@ -1903,7 +1903,7 @@ opencascade::handle<StepGeom_CartesianPoint>
 
 Description
 -----------
-Returns value as a cartesianpoint (null if another type).
+returns Value as a CartesianPoint (Null if another type).
 ") CartesianPoint;
 		opencascade::handle<StepGeom_CartesianPoint> CartesianPoint();
 
@@ -1921,7 +1921,7 @@ int
 
 Description
 -----------
-Recognizes a selectmember as real, named as parameter_value 1 -> parametervalue i.e. real 0 else (i.e. entity).
+Recognizes a SelectMember as Real, named as PARAMETER_VALUE 1 -> ParameterValue i.e. Real 0 else (i.e. Entity).
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -1939,7 +1939,7 @@ int
 
 Description
 -----------
-Recognizes a trimmingselect kind entity that is: 1 -> cartesianpoint 0 else (i.e. real).
+Recognizes a TrimmingSelect Kind Entity that is: 1 -> CartesianPoint 0 else (i.e. Real).
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1952,7 +1952,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a trimmingmember (for parameter_value) as preferred.
+Returns a TrimmingMember (for PARAMETER_VALUE) as preferred.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -1965,7 +1965,7 @@ float
 
 Description
 -----------
-Returns value as a real (0.0 if not a real).
+returns Value as a Real (0.0 if not a Real).
 ") ParameterValue;
 		Standard_Real ParameterValue();
 
@@ -1983,7 +1983,7 @@ None
 
 Description
 -----------
-Sets the parametervalue as real.
+sets the ParameterValue as Real.
 ") SetParameterValue;
 		void SetParameterValue(const Standard_Real aParameterValue);
 
@@ -2010,7 +2010,7 @@ None
 
 Description
 -----------
-Returns a vectorordirection selecttype.
+Returns a VectorOrDirection SelectType.
 ") StepGeom_VectorOrDirection;
 		 StepGeom_VectorOrDirection();
 
@@ -2028,7 +2028,7 @@ int
 
 Description
 -----------
-Recognizes a vectorordirection kind entity that is: 1 -> vector 2 -> direction 0 else.
+Recognizes a VectorOrDirection Kind Entity that is: 1 -> Vector 2 -> Direction 0 else.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2041,7 +2041,7 @@ opencascade::handle<StepGeom_Direction>
 
 Description
 -----------
-Returns value as a direction (null if another type).
+returns Value as a Direction (Null if another type).
 ") Direction;
 		opencascade::handle<StepGeom_Direction> Direction();
 
@@ -2054,7 +2054,7 @@ opencascade::handle<StepGeom_Vector>
 
 Description
 -----------
-Returns value as a vector (null if another type).
+returns Value as a Vector (Null if another type).
 ") Vector;
 		opencascade::handle<StepGeom_Vector> Vector();
 
@@ -2081,7 +2081,7 @@ None
 
 Description
 -----------
-Returns a cartesiantransformationoperator.
+Returns a CartesianTransformationOperator.
 ") StepGeom_CartesianTransformationOperator;
 		 StepGeom_CartesianTransformationOperator();
 
@@ -2337,7 +2337,7 @@ None
 
 Description
 -----------
-Returns a curve.
+Returns a Curve.
 ") StepGeom_Curve;
 		 StepGeom_Curve();
 
@@ -2366,7 +2366,7 @@ None
 
 Description
 -----------
-Returns a direction.
+Returns a Direction.
 ") StepGeom_Direction;
 		 StepGeom_Direction();
 
@@ -2476,7 +2476,7 @@ None
 
 Description
 -----------
-Returns a placement.
+Returns a Placement.
 ") StepGeom_Placement;
 		 StepGeom_Placement();
 
@@ -2555,7 +2555,7 @@ None
 
 Description
 -----------
-Returns a point.
+Returns a Point.
 ") StepGeom_Point;
 		 StepGeom_Point();
 
@@ -2584,7 +2584,7 @@ None
 
 Description
 -----------
-Returns a reparametrisedcompositecurvesegment.
+Returns a ReparametrisedCompositeCurveSegment.
 ") StepGeom_ReparametrisedCompositeCurveSegment;
 		 StepGeom_ReparametrisedCompositeCurveSegment();
 
@@ -2665,7 +2665,7 @@ None
 
 Description
 -----------
-Default constructor.
+default constructor.
 ") StepGeom_SuParameters;
 		 StepGeom_SuParameters();
 
@@ -2678,7 +2678,7 @@ float
 
 Description
 -----------
-Returns field a.
+Returns field A.
 ") A;
 		Standard_Real A();
 
@@ -2691,7 +2691,7 @@ float
 
 Description
 -----------
-Returns field alpha.
+Returns field Alpha.
 ") Alpha;
 		Standard_Real Alpha();
 
@@ -2704,7 +2704,7 @@ float
 
 Description
 -----------
-Returns field b.
+Returns field B.
 ") B;
 		Standard_Real B();
 
@@ -2717,7 +2717,7 @@ float
 
 Description
 -----------
-Returns field beta.
+Returns field Beta.
 ") Beta;
 		Standard_Real Beta();
 
@@ -2730,7 +2730,7 @@ float
 
 Description
 -----------
-Returns field c.
+Returns field C.
 ") C;
 		Standard_Real C();
 
@@ -2743,7 +2743,7 @@ float
 
 Description
 -----------
-Returns field gamma.
+Returns field Gamma.
 ") Gamma;
 		Standard_Real Gamma();
 
@@ -2785,7 +2785,7 @@ None
 
 Description
 -----------
-Sets field a.
+Sets field A.
 ") SetA;
 		void SetA(const Standard_Real theA);
 
@@ -2803,7 +2803,7 @@ None
 
 Description
 -----------
-Sets field alpha.
+Sets field Alpha.
 ") SetAlpha;
 		void SetAlpha(const Standard_Real theAlpha);
 
@@ -2821,7 +2821,7 @@ None
 
 Description
 -----------
-Sets field b.
+Sets field B.
 ") SetB;
 		void SetB(const Standard_Real theB);
 
@@ -2839,7 +2839,7 @@ None
 
 Description
 -----------
-Sets field beta.
+Sets field Beta.
 ") SetBeta;
 		void SetBeta(const Standard_Real theBeta);
 
@@ -2857,7 +2857,7 @@ None
 
 Description
 -----------
-Sets field c.
+Sets field C.
 ") SetC;
 		void SetC(const Standard_Real theC);
 
@@ -2875,7 +2875,7 @@ None
 
 Description
 -----------
-Sets field gamma.
+Sets field Gamma.
 ") SetGamma;
 		void SetGamma(const Standard_Real theGamma);
 
@@ -2904,7 +2904,7 @@ None
 
 Description
 -----------
-Returns a surface.
+Returns a Surface.
 ") StepGeom_Surface;
 		 StepGeom_Surface();
 
@@ -2933,7 +2933,7 @@ None
 
 Description
 -----------
-Returns a vector.
+Returns a Vector.
 ") StepGeom_Vector;
 		 StepGeom_Vector();
 
@@ -3044,7 +3044,7 @@ None
 
 Description
 -----------
-Returns a axis1placement.
+Returns a Axis1Placement.
 ") StepGeom_Axis1Placement;
 		 StepGeom_Axis1Placement();
 
@@ -3151,7 +3151,7 @@ None
 
 Description
 -----------
-Returns a axis2placement2d.
+Returns a Axis2Placement2d.
 ") StepGeom_Axis2Placement2d;
 		 StepGeom_Axis2Placement2d();
 
@@ -3258,7 +3258,7 @@ None
 
 Description
 -----------
-Returns a axis2placement3d.
+Returns a Axis2Placement3d.
 ") StepGeom_Axis2Placement3d;
 		 StepGeom_Axis2Placement3d();
 
@@ -3424,7 +3424,7 @@ None
 
 Description
 -----------
-Returns a boundedcurve.
+Returns a BoundedCurve.
 ") StepGeom_BoundedCurve;
 		 StepGeom_BoundedCurve();
 
@@ -3453,7 +3453,7 @@ None
 
 Description
 -----------
-Returns a boundedsurface.
+Returns a BoundedSurface.
 ") StepGeom_BoundedSurface;
 		 StepGeom_BoundedSurface();
 
@@ -3482,7 +3482,7 @@ None
 
 Description
 -----------
-Returns a cartesianpoint.
+Returns a CartesianPoint.
 ") StepGeom_CartesianPoint;
 		 StepGeom_CartesianPoint();
 
@@ -3662,7 +3662,7 @@ None
 
 Description
 -----------
-Returns a cartesiantransformationoperator3d.
+Returns a CartesianTransformationOperator3d.
 ") StepGeom_CartesianTransformationOperator3d;
 		 StepGeom_CartesianTransformationOperator3d();
 
@@ -3775,7 +3775,7 @@ None
 
 Description
 -----------
-Returns a conic.
+Returns a Conic.
 ") StepGeom_Conic;
 		 StepGeom_Conic();
 
@@ -3854,7 +3854,7 @@ None
 
 Description
 -----------
-Returns a curvereplica.
+Returns a CurveReplica.
 ") StepGeom_CurveReplica;
 		 StepGeom_CurveReplica();
 
@@ -3965,7 +3965,7 @@ None
 
 Description
 -----------
-Returns a degeneratepcurve.
+Returns a DegeneratePcurve.
 ") StepGeom_DegeneratePcurve;
 		 StepGeom_DegeneratePcurve();
 
@@ -4076,7 +4076,7 @@ None
 
 Description
 -----------
-Returns a elementarysurface.
+Returns a ElementarySurface.
 ") StepGeom_ElementarySurface;
 		 StepGeom_ElementarySurface();
 
@@ -4155,7 +4155,7 @@ None
 
 Description
 -----------
-Returns a line.
+Returns a Line.
 ") StepGeom_Line;
 		 StepGeom_Line();
 
@@ -4266,7 +4266,7 @@ None
 
 Description
 -----------
-Returns a offsetcurve3d.
+Returns a OffsetCurve3d.
 ") StepGeom_OffsetCurve3d;
 		 StepGeom_OffsetCurve3d();
 
@@ -4441,7 +4441,7 @@ None
 
 Description
 -----------
-Returns a offsetsurface.
+Returns a OffsetSurface.
 ") StepGeom_OffsetSurface;
 		 StepGeom_OffsetSurface();
 
@@ -4616,7 +4616,7 @@ bool
 
 Description
 -----------
-Returns field orientation.
+Returns field Orientation.
 ") Orientation;
 		Standard_Boolean Orientation();
 
@@ -4634,7 +4634,7 @@ None
 
 Description
 -----------
-Set field orientation.
+Set field Orientation.
 ") SetOrientation;
 		void SetOrientation(const Standard_Boolean Orientation);
 
@@ -4663,7 +4663,7 @@ None
 
 Description
 -----------
-Returns a pcurve.
+Returns a Pcurve.
 ") StepGeom_Pcurve;
 		 StepGeom_Pcurve();
 
@@ -4774,7 +4774,7 @@ None
 
 Description
 -----------
-Returns a pointoncurve.
+Returns a PointOnCurve.
 ") StepGeom_PointOnCurve;
 		 StepGeom_PointOnCurve();
 
@@ -4885,7 +4885,7 @@ None
 
 Description
 -----------
-Returns a pointonsurface.
+Returns a PointOnSurface.
 ") StepGeom_PointOnSurface;
 		 StepGeom_PointOnSurface();
 
@@ -5028,7 +5028,7 @@ None
 
 Description
 -----------
-Returns a pointreplica.
+Returns a PointReplica.
 ") StepGeom_PointReplica;
 		 StepGeom_PointReplica();
 
@@ -5139,7 +5139,7 @@ None
 
 Description
 -----------
-Returns a surfacecurve.
+Returns a SurfaceCurve.
 ") StepGeom_SurfaceCurve;
 		 StepGeom_SurfaceCurve();
 
@@ -5313,7 +5313,7 @@ None
 
 Description
 -----------
-Returns a surfacereplica.
+Returns a SurfaceReplica.
 ") StepGeom_SurfaceReplica;
 		 StepGeom_SurfaceReplica();
 
@@ -5424,7 +5424,7 @@ None
 
 Description
 -----------
-Returns a sweptsurface.
+Returns a SweptSurface.
 ") StepGeom_SweptSurface;
 		 StepGeom_SweptSurface();
 
@@ -5503,7 +5503,7 @@ None
 
 Description
 -----------
-Returns a bsplinecurve.
+Returns a BSplineCurve.
 ") StepGeom_BSplineCurve;
 		 StepGeom_BSplineCurve();
 
@@ -5741,7 +5741,7 @@ None
 
 Description
 -----------
-Returns a bsplinesurface.
+Returns a BSplineSurface.
 ") StepGeom_BSplineSurface;
 		 StepGeom_BSplineSurface();
 
@@ -6057,7 +6057,7 @@ None
 
 Description
 -----------
-Returns a circle.
+Returns a Circle.
 ") StepGeom_Circle;
 		 StepGeom_Circle();
 
@@ -6137,7 +6137,7 @@ None
 
 Description
 -----------
-Returns a compositecurve.
+Returns a CompositeCurve.
 ") StepGeom_CompositeCurve;
 		 StepGeom_CompositeCurve();
 
@@ -6279,7 +6279,7 @@ None
 
 Description
 -----------
-Returns a conicalsurface.
+Returns a ConicalSurface.
 ") StepGeom_ConicalSurface;
 		 StepGeom_ConicalSurface();
 
@@ -6404,7 +6404,7 @@ opencascade::handle<StepGeom_Surface>
 
 Description
 -----------
-Returns field basissurface.
+Returns field BasisSurface.
 ") BasisSurface;
 		opencascade::handle<StepGeom_Surface> BasisSurface();
 
@@ -6417,7 +6417,7 @@ opencascade::handle<StepGeom_HArray1OfSurfaceBoundary>
 
 Description
 -----------
-Returns field boundaries.
+Returns field Boundaries.
 ") Boundaries;
 		opencascade::handle<StepGeom_HArray1OfSurfaceBoundary> Boundaries();
 
@@ -6430,7 +6430,7 @@ bool
 
 Description
 -----------
-Returns field implicitouter.
+Returns field ImplicitOuter.
 ") ImplicitOuter;
 		Standard_Boolean ImplicitOuter();
 
@@ -6469,7 +6469,7 @@ None
 
 Description
 -----------
-Set field basissurface.
+Set field BasisSurface.
 ") SetBasisSurface;
 		void SetBasisSurface(const opencascade::handle<StepGeom_Surface> & BasisSurface);
 
@@ -6487,7 +6487,7 @@ None
 
 Description
 -----------
-Set field boundaries.
+Set field Boundaries.
 ") SetBoundaries;
 		void SetBoundaries(const opencascade::handle<StepGeom_HArray1OfSurfaceBoundary> & Boundaries);
 
@@ -6505,7 +6505,7 @@ None
 
 Description
 -----------
-Set field implicitouter.
+Set field ImplicitOuter.
 ") SetImplicitOuter;
 		void SetImplicitOuter(const Standard_Boolean ImplicitOuter);
 
@@ -6534,7 +6534,7 @@ None
 
 Description
 -----------
-Returns a cylindricalsurface.
+Returns a CylindricalSurface.
 ") StepGeom_CylindricalSurface;
 		 StepGeom_CylindricalSurface();
 
@@ -6614,7 +6614,7 @@ None
 
 Description
 -----------
-Returns a ellipse.
+Returns a Ellipse.
 ") StepGeom_Ellipse;
 		 StepGeom_Ellipse();
 
@@ -6726,7 +6726,7 @@ None
 
 Description
 -----------
-Returns a evaluateddegeneratepcurve.
+Returns a EvaluatedDegeneratePcurve.
 ") StepGeom_EvaluatedDegeneratePcurve;
 		 StepGeom_EvaluatedDegeneratePcurve();
 
@@ -6807,7 +6807,7 @@ None
 
 Description
 -----------
-Returns a hyperbola.
+Returns a Hyperbola.
 ") StepGeom_Hyperbola;
 		 StepGeom_Hyperbola();
 
@@ -6919,7 +6919,7 @@ None
 
 Description
 -----------
-Returns a intersectioncurve.
+Returns a IntersectionCurve.
 ") StepGeom_IntersectionCurve;
 		 StepGeom_IntersectionCurve();
 
@@ -6948,7 +6948,7 @@ None
 
 Description
 -----------
-Returns a parabola.
+Returns a Parabola.
 ") StepGeom_Parabola;
 		 StepGeom_Parabola();
 
@@ -7028,7 +7028,7 @@ None
 
 Description
 -----------
-Returns a plane.
+Returns a Plane.
 ") StepGeom_Plane;
 		 StepGeom_Plane();
 
@@ -7057,7 +7057,7 @@ None
 
 Description
 -----------
-Returns a polyline.
+Returns a Polyline.
 ") StepGeom_Polyline;
 		 StepGeom_Polyline();
 
@@ -7167,7 +7167,7 @@ None
 
 Description
 -----------
-Returns a rectangularcompositesurface.
+Returns a RectangularCompositeSurface.
 ") StepGeom_RectangularCompositeSurface;
 		 StepGeom_RectangularCompositeSurface();
 
@@ -7291,7 +7291,7 @@ None
 
 Description
 -----------
-Returns a rectangulartrimmedsurface.
+Returns a RectangularTrimmedSurface.
 ") StepGeom_RectangularTrimmedSurface;
 		 StepGeom_RectangularTrimmedSurface();
 
@@ -7562,7 +7562,7 @@ None
 
 Description
 -----------
-Returns a seamcurve.
+Returns a SeamCurve.
 ") StepGeom_SeamCurve;
 		 StepGeom_SeamCurve();
 
@@ -7591,7 +7591,7 @@ None
 
 Description
 -----------
-Returns a sphericalsurface.
+Returns a SphericalSurface.
 ") StepGeom_SphericalSurface;
 		 StepGeom_SphericalSurface();
 
@@ -7671,7 +7671,7 @@ None
 
 Description
 -----------
-Creates empty object.
+creates empty object.
 ") StepGeom_SurfaceCurveAndBoundedCurve;
 		 StepGeom_SurfaceCurveAndBoundedCurve();
 
@@ -7684,7 +7684,7 @@ opencascade::handle<StepGeom_BoundedCurve>
 
 Description
 -----------
-Returns field boundedcurve.
+returns field BoundedCurve.
 ") BoundedCurve;
 		opencascade::handle<StepGeom_BoundedCurve> & BoundedCurve();
 
@@ -7713,7 +7713,7 @@ None
 
 Description
 -----------
-Returns a surfaceoflinearextrusion.
+Returns a SurfaceOfLinearExtrusion.
 ") StepGeom_SurfaceOfLinearExtrusion;
 		 StepGeom_SurfaceOfLinearExtrusion();
 
@@ -7793,7 +7793,7 @@ None
 
 Description
 -----------
-Returns a surfaceofrevolution.
+Returns a SurfaceOfRevolution.
 ") StepGeom_SurfaceOfRevolution;
 		 StepGeom_SurfaceOfRevolution();
 
@@ -7873,7 +7873,7 @@ None
 
 Description
 -----------
-Returns a toroidalsurface.
+Returns a ToroidalSurface.
 ") StepGeom_ToroidalSurface;
 		 StepGeom_ToroidalSurface();
 
@@ -7985,7 +7985,7 @@ None
 
 Description
 -----------
-Returns a trimmedcurve.
+Returns a TrimmedCurve.
 ") StepGeom_TrimmedCurve;
 		 StepGeom_TrimmedCurve();
 
@@ -8254,7 +8254,7 @@ None
 
 Description
 -----------
-Returns a bsplinecurvewithknots.
+Returns a BSplineCurveWithKnots.
 ") StepGeom_BSplineCurveWithKnots;
 		 StepGeom_BSplineCurveWithKnots();
 
@@ -8464,7 +8464,7 @@ None
 
 Description
 -----------
-Returns a bsplinecurvewithknotsandrationalbsplinecurve.
+Returns a BSplineCurveWithKnotsAndRationalBSplineCurve.
 ") StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve;
 		 StepGeom_BSplineCurveWithKnotsAndRationalBSplineCurve();
 
@@ -8824,7 +8824,7 @@ None
 
 Description
 -----------
-Returns a bsplinesurfacewithknots.
+Returns a BSplineSurfaceWithKnots.
 ") StepGeom_BSplineSurfaceWithKnots;
 		 StepGeom_BSplineSurfaceWithKnots();
 
@@ -9162,7 +9162,7 @@ None
 
 Description
 -----------
-Returns a bsplinesurfacewithknotsandrationalbsplinesurface.
+Returns a BSplineSurfaceWithKnotsAndRationalBSplineSurface.
 ") StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface;
 		 StepGeom_BSplineSurfaceWithKnotsAndRationalBSplineSurface();
 
@@ -9666,7 +9666,7 @@ None
 
 Description
 -----------
-Returns a beziercurve.
+Returns a BezierCurve.
 ") StepGeom_BezierCurve;
 		 StepGeom_BezierCurve();
 
@@ -9695,7 +9695,7 @@ None
 
 Description
 -----------
-Returns a beziercurveandrationalbsplinecurve.
+Returns a BezierCurveAndRationalBSplineCurve.
 ") StepGeom_BezierCurveAndRationalBSplineCurve;
 		 StepGeom_BezierCurveAndRationalBSplineCurve();
 
@@ -9897,7 +9897,7 @@ None
 
 Description
 -----------
-Returns a beziersurface.
+Returns a BezierSurface.
 ") StepGeom_BezierSurface;
 		 StepGeom_BezierSurface();
 
@@ -9926,7 +9926,7 @@ None
 
 Description
 -----------
-Returns a beziersurfaceandrationalbsplinesurface.
+Returns a BezierSurfaceAndRationalBSplineSurface.
 ") StepGeom_BezierSurfaceAndRationalBSplineSurface;
 		 StepGeom_BezierSurfaceAndRationalBSplineSurface();
 
@@ -10146,7 +10146,7 @@ None
 
 Description
 -----------
-Returns a compositecurveonsurface.
+Returns a CompositeCurveOnSurface.
 ") StepGeom_CompositeCurveOnSurface;
 		 StepGeom_CompositeCurveOnSurface();
 
@@ -10175,7 +10175,7 @@ None
 
 Description
 -----------
-Returns a degeneratetoroidalsurface.
+Returns a DegenerateToroidalSurface.
 ") StepGeom_DegenerateToroidalSurface;
 		 StepGeom_DegenerateToroidalSurface();
 
@@ -10257,7 +10257,7 @@ None
 
 Description
 -----------
-Returns a quasiuniformcurve.
+Returns a QuasiUniformCurve.
 ") StepGeom_QuasiUniformCurve;
 		 StepGeom_QuasiUniformCurve();
 
@@ -10286,7 +10286,7 @@ None
 
 Description
 -----------
-Returns a quasiuniformcurveandrationalbsplinecurve.
+Returns a QuasiUniformCurveAndRationalBSplineCurve.
 ") StepGeom_QuasiUniformCurveAndRationalBSplineCurve;
 		 StepGeom_QuasiUniformCurveAndRationalBSplineCurve();
 
@@ -10488,7 +10488,7 @@ None
 
 Description
 -----------
-Returns a quasiuniformsurface.
+Returns a QuasiUniformSurface.
 ") StepGeom_QuasiUniformSurface;
 		 StepGeom_QuasiUniformSurface();
 
@@ -10517,7 +10517,7 @@ None
 
 Description
 -----------
-Returns a quasiuniformsurfaceandrationalbsplinesurface.
+Returns a QuasiUniformSurfaceAndRationalBSplineSurface.
 ") StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface;
 		 StepGeom_QuasiUniformSurfaceAndRationalBSplineSurface();
 
@@ -10737,7 +10737,7 @@ None
 
 Description
 -----------
-Returns a rationalbsplinecurve.
+Returns a RationalBSplineCurve.
 ") StepGeom_RationalBSplineCurve;
 		 StepGeom_RationalBSplineCurve();
 
@@ -10852,7 +10852,7 @@ None
 
 Description
 -----------
-Returns a rationalbsplinesurface.
+Returns a RationalBSplineSurface.
 ") StepGeom_RationalBSplineSurface;
 		 StepGeom_RationalBSplineSurface();
 
@@ -10983,7 +10983,7 @@ None
 
 Description
 -----------
-Returns a uniformcurve.
+Returns a UniformCurve.
 ") StepGeom_UniformCurve;
 		 StepGeom_UniformCurve();
 
@@ -11012,7 +11012,7 @@ None
 
 Description
 -----------
-Returns a uniformcurveandrationalbsplinecurve.
+Returns a UniformCurveAndRationalBSplineCurve.
 ") StepGeom_UniformCurveAndRationalBSplineCurve;
 		 StepGeom_UniformCurveAndRationalBSplineCurve();
 
@@ -11214,7 +11214,7 @@ None
 
 Description
 -----------
-Returns a uniformsurface.
+Returns a UniformSurface.
 ") StepGeom_UniformSurface;
 		 StepGeom_UniformSurface();
 
@@ -11243,7 +11243,7 @@ None
 
 Description
 -----------
-Returns a uniformsurfaceandrationalbsplinesurface.
+Returns a UniformSurfaceAndRationalBSplineSurface.
 ") StepGeom_UniformSurfaceAndRationalBSplineSurface;
 		 StepGeom_UniformSurfaceAndRationalBSplineSurface();
 
@@ -11463,7 +11463,7 @@ None
 
 Description
 -----------
-Returns a boundarycurve.
+Returns a BoundaryCurve.
 ") StepGeom_BoundaryCurve;
 		 StepGeom_BoundaryCurve();
 
@@ -11492,7 +11492,7 @@ None
 
 Description
 -----------
-Returns a outerboundarycurve.
+Returns a OuterBoundaryCurve.
 ") StepGeom_OuterBoundaryCurve;
 		 StepGeom_OuterBoundaryCurve();
 

@@ -28,6 +28,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepRepr_AssemblyComponentUsage.hxx>
 #include<StepRepr_AssemblyComponentUsageSubstitute.hxx>
 #include<StepRepr_BetweenShapeAspect.hxx>
+#include<StepRepr_BooleanRepresentationItem.hxx>
 #include<StepRepr_CentreOfSymmetry.hxx>
 #include<StepRepr_CharacterizedDefinition.hxx>
 #include<StepRepr_CharacterizedRepresentation.hxx>
@@ -68,6 +69,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepRepr_MaterialProperty.hxx>
 #include<StepRepr_MaterialPropertyRepresentation.hxx>
 #include<StepRepr_MeasureRepresentationItem.hxx>
+#include<StepRepr_MechanicalDesignAndDraughtingRelationship.hxx>
 #include<StepRepr_NextAssemblyUsageOccurrence.hxx>
 #include<StepRepr_ParallelOffset.hxx>
 #include<StepRepr_ParametricRepresentationContext.hxx>
@@ -80,6 +82,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<StepRepr_PropertyDefinitionRelationship.hxx>
 #include<StepRepr_PropertyDefinitionRepresentation.hxx>
 #include<StepRepr_QuantifiedAssemblyComponentUsage.hxx>
+#include<StepRepr_RealRepresentationItem.hxx>
 #include<StepRepr_ReprItemAndLengthMeasureWithUnit.hxx>
 #include<StepRepr_ReprItemAndLengthMeasureWithUnitAndQRI.hxx>
 #include<StepRepr_ReprItemAndMeasureWithUnit.hxx>

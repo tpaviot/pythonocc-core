@@ -126,7 +126,7 @@ None
 
 Description
 -----------
-Adds the attribute drivers to <adrivertable>.
+Adds the attribute drivers to <aDriverTable>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & anMsgDrv);
 
@@ -191,7 +191,7 @@ bool
 
 Description
 -----------
-Persistent -> transient (retrieve).
+persistent -> transient (retrieve).
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
@@ -211,7 +211,7 @@ None
 
 Description
 -----------
-Transient -> persistent (store).
+transient -> persistent (store).
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Source, XmlObjMgt_Persistent & Target, XmlObjMgt_SRelocationTable & RelocTable);
 
@@ -1000,7 +1000,7 @@ bool
 
 Description
 -----------
-Persistent -> transient (retrieve).
+persistent -> transient (retrieve).
 ") Paste;
 		Standard_Boolean Paste(const XmlObjMgt_Persistent & Source, const opencascade::handle<TDF_Attribute> & Target, XmlObjMgt_RRelocationTable & RelocTable);
 
@@ -1020,7 +1020,7 @@ None
 
 Description
 -----------
-Transient -> persistent (store).
+transient -> persistent (store).
 ") Paste;
 		void Paste(const opencascade::handle<TDF_Attribute> & Source, XmlObjMgt_Persistent & Target, XmlObjMgt_SRelocationTable & RelocTable);
 

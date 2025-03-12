@@ -134,7 +134,7 @@ gp_Circ2d
 
 Description
 -----------
-Returns the bisecting line when arctype returns cir. an exception domainerror is raised if arctype is not a cir.
+Returns the bisecting line when ArcType returns Cir. An exception DomainError is raised if ArcType is not a Cir.
 ") Circle;
 		virtual gp_Circ2d Circle();
 
@@ -147,7 +147,7 @@ gp_Elips2d
 
 Description
 -----------
-Returns the bisecting line when arctype returns ell. an exception domainerror is raised if arctype is not an ell.
+Returns the bisecting line when ArcType returns Ell. An exception DomainError is raised if ArcType is not an Ell.
 ") Ellipse;
 		virtual gp_Elips2d Ellipse();
 
@@ -160,7 +160,7 @@ gp_Hypr2d
 
 Description
 -----------
-Returns the bisecting line when arctype returns hpr. an exception domainerror is raised if arctype is not a hpr.
+Returns the bisecting line when ArcType returns Hpr. An exception DomainError is raised if ArcType is not a Hpr.
 ") Hyperbola;
 		virtual gp_Hypr2d Hyperbola();
 
@@ -173,7 +173,7 @@ gp_Lin2d
 
 Description
 -----------
-Returns the bisecting line when arctype returns lin. an exception domainerror is raised if arctype is not a lin.
+Returns the bisecting line when ArcType returns Lin. An exception DomainError is raised if ArcType is not a Lin.
 ") Line;
 		virtual gp_Lin2d Line();
 
@@ -186,7 +186,7 @@ gp_Parab2d
 
 Description
 -----------
-Returns the bisecting line when arctype returns par. an exception domainerror is raised if arctype is not a par.
+Returns the bisecting line when ArcType returns Par. An exception DomainError is raised if ArcType is not a Par.
 ") Parabola;
 		virtual gp_Parab2d Parabola();
 
@@ -199,7 +199,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns the bisecting line when arctype returns pnt. an exception domainerror is raised if arctype is not a pnt.
+Returns the bisecting line when ArcType returns Pnt. An exception DomainError is raised if ArcType is not a Pnt.
 ") Point;
 		virtual gp_Pnt2d Point();
 
@@ -233,7 +233,7 @@ None
 
 Description
 -----------
-Constructs a bisecting curve whose geometry is the 2d circle circ.
+Constructs a bisecting curve whose geometry is the 2D circle Circ.
 ") GccInt_BCirc;
 		 GccInt_BCirc(const gp_Circ2d & Circ);
 
@@ -246,7 +246,7 @@ GccInt_IType
 
 Description
 -----------
-Returns gccint_cir, which is the type of any gccint_bcirc bisecting curve.
+Returns GccInt_Cir, which is the type of any GccInt_BCirc bisecting curve.
 ") ArcType;
 		GccInt_IType ArcType();
 
@@ -259,7 +259,7 @@ gp_Circ2d
 
 Description
 -----------
-Returns a 2d circle which is the geometry of this bisecting curve.
+Returns a 2D circle which is the geometry of this bisecting curve.
 ") Circle;
 		virtual gp_Circ2d Circle();
 
@@ -293,7 +293,7 @@ None
 
 Description
 -----------
-Constructs a bisecting curve whose geometry is the 2d ellipse ellipse.
+Constructs a bisecting curve whose geometry is the 2D ellipse Ellipse.
 ") GccInt_BElips;
 		 GccInt_BElips(const gp_Elips2d & Ellipse);
 
@@ -306,7 +306,7 @@ GccInt_IType
 
 Description
 -----------
-Returns gccint_ell, which is the type of any gccint_belips bisecting curve.
+Returns GccInt_Ell, which is the type of any GccInt_BElips bisecting curve.
 ") ArcType;
 		GccInt_IType ArcType();
 
@@ -319,7 +319,7 @@ gp_Elips2d
 
 Description
 -----------
-Returns a 2d ellipse which is the geometry of this bisecting curve.
+Returns a 2D ellipse which is the geometry of this bisecting curve.
 ") Ellipse;
 		virtual gp_Elips2d Ellipse();
 
@@ -353,7 +353,7 @@ None
 
 Description
 -----------
-Constructs a bisecting curve whose geometry is the 2d hyperbola hyper.
+Constructs a bisecting curve whose geometry is the 2D hyperbola Hyper.
 ") GccInt_BHyper;
 		 GccInt_BHyper(const gp_Hypr2d & Hyper);
 
@@ -366,7 +366,7 @@ GccInt_IType
 
 Description
 -----------
-Returns gccint_hpr, which is the type of any gccint_bhyper bisecting curve.
+Returns GccInt_Hpr, which is the type of any GccInt_BHyper bisecting curve.
 ") ArcType;
 		GccInt_IType ArcType();
 
@@ -379,7 +379,7 @@ gp_Hypr2d
 
 Description
 -----------
-Returns a 2d hyperbola which is the geometry of this bisecting curve.
+Returns a 2D hyperbola which is the geometry of this bisecting curve.
 ") Hyperbola;
 		virtual gp_Hypr2d Hyperbola();
 
@@ -413,7 +413,7 @@ None
 
 Description
 -----------
-Constructs a bisecting line whose geometry is the 2d line line.
+Constructs a bisecting line whose geometry is the 2D line Line.
 ") GccInt_BLine;
 		 GccInt_BLine(const gp_Lin2d & Line);
 
@@ -426,7 +426,7 @@ GccInt_IType
 
 Description
 -----------
-Returns gccint_lin, which is the type of any gccint_bline bisecting line.
+Returns GccInt_Lin, which is the type of any GccInt_BLine bisecting line.
 ") ArcType;
 		GccInt_IType ArcType();
 
@@ -439,7 +439,7 @@ gp_Lin2d
 
 Description
 -----------
-Returns a 2d line which is the geometry of this bisecting line.
+Returns a 2D line which is the geometry of this bisecting line.
 ") Line;
 		virtual gp_Lin2d Line();
 
@@ -473,7 +473,7 @@ None
 
 Description
 -----------
-Constructs a bisecting curve whose geometry is the 2d parabola parab.
+Constructs a bisecting curve whose geometry is the 2D parabola Parab.
 ") GccInt_BParab;
 		 GccInt_BParab(const gp_Parab2d & Parab);
 
@@ -486,7 +486,7 @@ GccInt_IType
 
 Description
 -----------
-Returns gccint_par, which is the type of any gccint_bparab bisecting curve.
+Returns GccInt_Par, which is the type of any GccInt_BParab bisecting curve.
 ") ArcType;
 		GccInt_IType ArcType();
 
@@ -499,7 +499,7 @@ gp_Parab2d
 
 Description
 -----------
-Returns a 2d parabola which is the geometry of this bisecting curve.
+Returns a 2D parabola which is the geometry of this bisecting curve.
 ") Parabola;
 		virtual gp_Parab2d Parabola();
 
@@ -533,7 +533,7 @@ None
 
 Description
 -----------
-Constructs a bisecting object whose geometry is the 2d point point.
+Constructs a bisecting object whose geometry is the 2D point Point.
 ") GccInt_BPoint;
 		 GccInt_BPoint(const gp_Pnt2d & Point);
 
@@ -546,7 +546,7 @@ GccInt_IType
 
 Description
 -----------
-Returns gccint_pnt, which is the type of any gccint_bpoint bisecting object.
+Returns GccInt_Pnt, which is the type of any GccInt_BPoint bisecting object.
 ") ArcType;
 		GccInt_IType ArcType();
 
@@ -559,7 +559,7 @@ gp_Pnt2d
 
 Description
 -----------
-Returns a 2d point which is the geometry of this bisecting object.
+Returns a 2D point which is the geometry of this bisecting object.
 ") Point;
 		virtual gp_Pnt2d Point();
 

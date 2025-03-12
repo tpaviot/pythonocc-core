@@ -26,6 +26,7 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<BVH_BuildQueue.hxx>
 #include<BVH_BuildThread.hxx>
 #include<BVH_Builder.hxx>
+#include<BVH_Builder3d.hxx>
 #include<BVH_Constants.hxx>
 #include<BVH_Distance.hxx>
 #include<BVH_DistanceField.hxx>

@@ -180,7 +180,7 @@ None
 
 Description
 -----------
-Initialize of the information necessary for the computation of the fillet on the shape s from a list of edges e and a radius r. //! ta is the angular tolerance tapp3d is the 3d approximation tolerance tapp2d is the 2d approximation tolerance.
+initialize of the information necessary for the computation of the fillet on the Shape S from a list of edges E and a radius R. //! Ta is the angular tolerance Tapp3d is the 3d approximation tolerance Tapp2d is the 2d approximation tolerance.
 ") FilletSurf_Builder;
 		 FilletSurf_Builder(const TopoDS_Shape & S, const TopTools_ListOfShape & E, const Standard_Real R, const Standard_Real Ta = 1.0e-2, const Standard_Real Tapp3d = 1.0e-4, const Standard_Real Tapp2d = 1.0e-5);
 
@@ -198,7 +198,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Gives the 3d curve of surfacefillet(index) on supportface1(index).
+gives the 3d curve of SurfaceFillet(Index) on SupportFace1(Index).
 ") CurveOnFace1;
 		const opencascade::handle<Geom_Curve> & CurveOnFace1(const Standard_Integer Index);
 
@@ -216,7 +216,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Gives the 3d curve of surfacefillet(index) on supportface2(index).
+gives the 3d curve of SurfaceFillet(Index) on SupportFace2(Index).
 ") CurveOnFace2;
 		const opencascade::handle<Geom_Curve> & CurveOnFace2(const Standard_Integer Index);
 
@@ -242,7 +242,7 @@ float
 
 Description
 -----------
-Gives the parameter of the fillet on the first edge.
+gives the parameter of the fillet on the first edge.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
@@ -255,7 +255,7 @@ FilletSurf_StatusDone
 
 Description
 -----------
-Gives the status about the computation of the fillet returns: isok :no problem during the computation isnotok: no result is produced ispartial: the result is partial.
+gives the status about the computation of the fillet returns: IsOK :no problem during the computation IsNotOk: no result is produced IsPartial: the result is partial.
 ") IsDone;
 		FilletSurf_StatusDone IsDone();
 
@@ -268,7 +268,7 @@ float
 
 Description
 -----------
-Gives the parameter of the fillet on the last edge.
+gives the parameter of the fillet on the last edge.
 ") LastParameter;
 		Standard_Real LastParameter();
 
@@ -299,7 +299,7 @@ int
 
 Description
 -----------
-Gives the number of nubs surfaces of the fillet.
+gives the number of NUBS surfaces of the Fillet.
 ") NbSurface;
 		Standard_Integer NbSurface();
 
@@ -317,7 +317,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the pcurve associated to curveonface1(index) on the fillet.
+gives the PCurve associated to CurveOnFace1(Index) on the Fillet.
 ") PCurve1OnFillet;
 		const opencascade::handle<Geom2d_Curve> & PCurve1OnFillet(const Standard_Integer Index);
 
@@ -335,7 +335,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the pcurve associated to curveonsup2(index) on the fillet.
+gives the PCurve associated to CurveOnSup2(Index) on the fillet.
 ") PCurve2OnFillet;
 		const opencascade::handle<Geom2d_Curve> & PCurve2OnFillet(const Standard_Integer Index);
 
@@ -353,7 +353,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the pcurve associated to curvonsup1(index) on the support face.
+gives the PCurve associated to CurvOnSup1(Index) on the support face.
 ") PCurveOnFace1;
 		const opencascade::handle<Geom2d_Curve> & PCurveOnFace1(const Standard_Integer Index);
 
@@ -371,7 +371,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the pcurve associated to curveonsup2(index) on the support face.
+gives the PCurve associated to CurveOnSup2(Index) on the support face.
 ") PCurveOnFace2;
 		const opencascade::handle<Geom2d_Curve> & PCurveOnFace2(const Standard_Integer Index);
 
@@ -384,7 +384,7 @@ None
 
 Description
 -----------
----purpose computation of the fillet (list of nubs).
+---Purpose computation of the fillet (list of NUBS).
 ") Perform;
 		void Perform();
 
@@ -443,7 +443,7 @@ FilletSurf_ErrorTypeStatus
 
 Description
 -----------
-Gives information about error status if isdone=isnotok returns edgenotg1: the edges are not g1 facesnotg1: two connected faces on a same support are not g1 edgenotonshape: the edge is not on shape notsharpedge: the edge is not sharp pbfilletcompute: problem during the computation of the fillet.
+gives information about error status if IsDone=IsNotOk returns EdgeNotG1: the edges are not G1 FacesNotG1: two connected faces on a same support are not G1 EdgeNotOnShape: the edge is not on shape NotSharpEdge: the edge is not sharp PbFilletCompute: problem during the computation of the fillet.
 ") StatusError;
 		FilletSurf_ErrorTypeStatus StatusError();
 
@@ -461,7 +461,7 @@ TopoDS_Face
 
 Description
 -----------
-Gives the first support face relative to surfacefillet(index);.
+gives the first support face relative to SurfaceFillet(Index);.
 ") SupportFace1;
 		const TopoDS_Face SupportFace1(const Standard_Integer Index);
 
@@ -479,7 +479,7 @@ TopoDS_Face
 
 Description
 -----------
-Gives the second support face relative to surfacefillet(index);.
+gives the second support face relative to SurfaceFillet(Index);.
 ") SupportFace2;
 		const TopoDS_Face SupportFace2(const Standard_Integer Index);
 
@@ -497,7 +497,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Gives the nubs surface of index index.
+gives the NUBS surface of index Index.
 ") SurfaceFillet;
 		const opencascade::handle<Geom_Surface> & SurfaceFillet(const Standard_Integer Index);
 
@@ -515,7 +515,7 @@ float
 
 Description
 -----------
-Gives the 3d tolerance reached during approximation of surface of index index.
+gives the 3d tolerance reached during approximation of surface of index Index.
 ") TolApp3d;
 		Standard_Real TolApp3d(const Standard_Integer Index);
 
@@ -570,7 +570,7 @@ int
 
 Description
 -----------
-Initializes the contour with a list of edges 0: no problem 1: empty list 2: the edges are not g1 3: two connected faces on a same support are not g1 4: the edge is not on shape 5: notsharpedge: the edge is not sharp.
+Initializes the contour with a list of Edges 0: no problem 1: empty list 2: the edges are not G1 3: two connected faces on a same support are not G1 4: the edge is not on shape 5: NotSharpEdge: the edge is not sharp.
 ") Add;
 		Standard_Integer Add(const TopTools_ListOfShape & E, const Standard_Real R);
 
@@ -588,7 +588,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Gives the 3d curve of surfacefillet(index) on supportface1(index).
+gives the 3d curve of SurfaceFillet(Index) on SupportFace1(Index).
 ") CurveOnFace1;
 		const opencascade::handle<Geom_Curve> & CurveOnFace1(const Standard_Integer Index);
 
@@ -606,7 +606,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Gives the 3d curve of surfacefillet(index) on supportface2(index).
+gives the 3d curve of SurfaceFillet(Index) on SupportFace2(Index).
 ") CurveOnFace2;
 		const opencascade::handle<Geom_Curve> & CurveOnFace2(const Standard_Integer Index);
 
@@ -645,7 +645,7 @@ float
 
 Description
 -----------
-Gives the parameter of the fillet on the first edge.
+gives the parameter of the fillet on the first edge.
 ") FirstParameter;
 		Standard_Real FirstParameter();
 
@@ -658,7 +658,7 @@ float
 
 Description
 -----------
-Gives the parameter of the fillet on the last edge.
+gives the parameter of the fillet on the last edge.
 ") LastParameter;
 		Standard_Real LastParameter();
 
@@ -689,7 +689,7 @@ int
 
 Description
 -----------
-Gives the number of nubs surfaces of the fillet.
+gives the number of NUBS surfaces of the Fillet.
 ") NbSurface;
 		Standard_Integer NbSurface();
 
@@ -707,7 +707,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the pcurve associated to curveonface1(index) on the fillet.
+gives the PCurve associated to CurveOnFace1(Index) on the Fillet.
 ") PCurve1OnFillet;
 		const opencascade::handle<Geom2d_Curve> & PCurve1OnFillet(const Standard_Integer Index);
 
@@ -725,7 +725,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the pcurve associated to curveonsup2(index) on the fillet.
+gives the PCurve associated to CurveOnSup2(Index) on the fillet.
 ") PCurve2OnFillet;
 		const opencascade::handle<Geom2d_Curve> & PCurve2OnFillet(const Standard_Integer Index);
 
@@ -743,7 +743,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the pcurve associated to curvonsup1(index) on the support face.
+gives the PCurve associated to CurvOnSup1(Index) on the support face.
 ") PCurveOnFace1;
 		const opencascade::handle<Geom2d_Curve> & PCurveOnFace1(const Standard_Integer Index);
 
@@ -761,7 +761,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-Gives the pcurve associated to curveonsup2(index) on the support face.
+gives the PCurve associated to CurveOnSup2(Index) on the support face.
 ") PCurveOnFace2;
 		const opencascade::handle<Geom2d_Curve> & PCurveOnFace2(const Standard_Integer Index);
 
@@ -838,7 +838,7 @@ TopoDS_Face
 
 Description
 -----------
-Gives the first support face relative to surfacefillet(index);.
+gives the first support face relative to SurfaceFillet(Index);.
 ") SupportFace1;
 		const TopoDS_Face SupportFace1(const Standard_Integer Index);
 
@@ -856,7 +856,7 @@ TopoDS_Face
 
 Description
 -----------
-Gives the second support face relative to surfacefillet(index);.
+gives the second support face relative to SurfaceFillet(Index);.
 ") SupportFace2;
 		const TopoDS_Face SupportFace2(const Standard_Integer Index);
 
@@ -874,7 +874,7 @@ opencascade::handle<Geom_Surface>
 
 Description
 -----------
-Gives the nubs surface of index index.
+gives the NUBS surface of index Index.
 ") SurfaceFillet;
 		const opencascade::handle<Geom_Surface> & SurfaceFillet(const Standard_Integer Index);
 
@@ -892,7 +892,7 @@ float
 
 Description
 -----------
-Gives the 3d tolerance reached during approximation of the surface of index index.
+gives the 3d tolerance reached during approximation of the surface of index Index.
 ") TolApp3d;
 		Standard_Real TolApp3d(const Standard_Integer Index);
 

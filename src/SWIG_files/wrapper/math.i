@@ -186,7 +186,7 @@ bool
 
 Description
 -----------
-Returns a vector of kronrod points and a vector of their weights for gauss-kronrod computation method. index should be odd and greater then or equal to 3, as the number of kronrod points is equal to 2*n + 1, where n is a number of gauss points. points and weights should have the size equal to index. each even element of points represents a gauss point value of n-th gauss quadrature. the values from index equal to 3 to 123 are stored in a table (see the file math_kronrod.cxx). if index is greater, then points and weights will be computed. returns standard_true if index is odd, it is equal to the size of points and weights and the computation of points and weights is performed successfully. otherwise this method returns standard_false.
+Returns a vector of Kronrod points and a vector of their weights for Gauss-Kronrod computation method. Index should be odd and greater then or equal to 3, as the number of Kronrod points is equal to 2*N + 1, where N is a number of Gauss points. Points and Weights should have the size equal to Index. Each even element of Points represents a Gauss point value of N-th Gauss quadrature. The values from Index equal to 3 to 123 are stored in a table (see the file math_Kronrod.cxx). If Index is greater, then points and weights will be computed. Returns Standard_True if Index is odd, it is equal to the size of Points and Weights and the computation of Points and Weights is performed successfully. Otherwise this method returns Standard_False.
 ") KronrodPointsAndWeights;
 		static Standard_Boolean KronrodPointsAndWeights(const Standard_Integer Index, math_Vector & Points, math_Vector & Weights);
 
@@ -199,7 +199,7 @@ int
 
 Description
 -----------
-Returns the maximal number of points for that the values are stored in the table. if the number is greater then kronrodpointsmax, the points will be computed.
+Returns the maximal number of points for that the values are stored in the table. If the number is greater then KronrodPointsMax, the points will be computed.
 ") KronrodPointsMax;
 		static Standard_Integer KronrodPointsMax();
 
@@ -219,7 +219,7 @@ bool
 
 Description
 -----------
-Returns a vector of gauss points and a vector of their weights. the difference with the method gausspoints is the following: - the points are returned in increasing order. - if index is greater then gausspointsmax, the points are computed. returns standard_true if index is positive, points' and weights' length is equal to index, points and weights are successfully computed.
+Returns a vector of Gauss points and a vector of their weights. The difference with the method GaussPoints is the following: - the points are returned in increasing order. - if Index is greater then GaussPointsMax, the points are computed. Returns Standard_True if Index is positive, Points' and Weights' length is equal to Index, Points and Weights are successfully computed.
 ") OrderedGaussPointsAndWeights;
 		static Standard_Boolean OrderedGaussPointsAndWeights(const Standard_Integer Index, math_Vector & Points, math_Vector & Weights);
 
@@ -254,7 +254,7 @@ None
 
 Description
 -----------
-Initializes the computation of the minimum of a function with nbvariables. tolerance, zeps and nbiterations are described in the method perform. warning: a call to the perform method must be made after this initialization to effectively compute the minimum of the function f.
+Initializes the computation of the minimum of a function with NbVariables. Tolerance, ZEPS and NbIterations are described in the method Perform. Warning: A call to the Perform method must be made after this initialization to effectively compute the minimum of the function F.
 ") math_BFGS;
 		 math_BFGS(const Standard_Integer NbVariables, const Standard_Real Tolerance = 1.0e-8, const Standard_Integer NbIterations = 200, const Standard_Real ZEPS = 1.0e-12);
 
@@ -271,7 +271,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -284,7 +284,7 @@ math_Vector
 
 Description
 -----------
-Returns the gradient vector at the minimum. exception notdone is raised if the minimum was not found.
+Returns the gradient vector at the minimum. Exception NotDone is raised if the minimum was not found.
 ") Gradient;
 		const math_Vector & Gradient();
 
@@ -302,7 +302,7 @@ None
 
 Description
 -----------
-Returns the value of the gradient vector at the minimum in grad. exception notdone is raised if the minimum was not found. exception dimensionerror is raised if the range of grad is not equal to the range of the startingpoint.
+Returns the value of the gradient vector at the minimum in Grad. Exception NotDone is raised if the minimum was not found. Exception DimensionError is raised if the range of Grad is not equal to the range of the StartingPoint.
 ") Gradient;
 		void Gradient(math_Vector & Grad);
 
@@ -333,7 +333,7 @@ bool
 
 Description
 -----------
-This method is called at the end of each iteration to check if the solution is found. it can be redefined in a sub-class to implement a specific test to stop the iterations.
+This method is called at the end of each iteration to check if the solution is found. It can be redefined in a sub-class to implement a specific test to stop the iterations.
 ") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached(math_MultipleVarFunctionWithGradient & F);
 
@@ -346,7 +346,7 @@ math_Vector
 
 Description
 -----------
-Returns the location vector of the minimum. exception notdone is raised if the minimum was not found.
+returns the location vector of the minimum. Exception NotDone is raised if the minimum was not found.
 ") Location;
 		const math_Vector & Location();
 
@@ -364,7 +364,7 @@ None
 
 Description
 -----------
-Outputs the location vector of the minimum in loc. exception notdone is raised if the minimum was not found. exception dimensionerror is raised if the range of loc is not equal to the range of the startingpoint.
+outputs the location vector of the minimum in Loc. Exception NotDone is raised if the minimum was not found. Exception DimensionError is raised if the range of Loc is not equal to the range of the StartingPoint.
 ") Location;
 		void Location(math_Vector & Loc);
 
@@ -377,7 +377,7 @@ float
 
 Description
 -----------
-Returns the value of the minimum. exception notdone is raised if the minimum was not found.
+returns the value of the minimum. Exception NotDone is raised if the minimum was not found.
 ") Minimum;
 		Standard_Real Minimum();
 
@@ -390,7 +390,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done in the calculation of the minimum. the exception notdone is raised if the minimum was not found.
+Returns the number of iterations really done in the calculation of the minimum. The exception NotDone is raised if the minimum was not found.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -409,7 +409,7 @@ None
 
 Description
 -----------
-Given the starting point startingpoint, minimization is done on the function f. the solution f = fi is found when: 2.0 * abs(fi - fi-1) <= tolerance * (abs(fi) + abs(fi-1) + zeps). tolerance, zeps and maximum number of iterations are given in the constructor.
+Given the starting point StartingPoint, minimization is done on the function F. The solution F = Fi is found when: 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS). Tolerance, ZEPS and maximum number of iterations are given in the constructor.
 ") Perform;
 		void Perform(math_MultipleVarFunctionWithGradient & F, const math_Vector & StartingPoint);
 
@@ -428,7 +428,7 @@ None
 
 Description
 -----------
-Set boundaries for conditional optimization. the expected indices range of vectors is [1, nbvariables].
+Set boundaries for conditional optimization. The expected indices range of vectors is [1, NbVariables].
 ") SetBoundary;
 		void SetBoundary(const math_Vector & theLeftBorder, const math_Vector & theRightBorder);
 
@@ -460,7 +460,8 @@ None
 
 Description
 -----------
-Constructor. @param thextolerance - algorithm tolerance.
+Constructor. 
+Parameter theXTolerance - algorithm tolerance.
 ") math_BissecNewton;
 		 math_BissecNewton(const Standard_Real theXTolerance);
 
@@ -473,7 +474,7 @@ float
 
 Description
 -----------
-Returns the value of the derivative at the root. exception notdone is raised if the minimum was not found.
+returns the value of the derivative at the root. Exception NotDone is raised if the minimum was not found.
 ") Derivative;
 		Standard_Real Derivative();
 
@@ -490,7 +491,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redifine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -521,7 +522,7 @@ bool
 
 Description
 -----------
-This method is called at the end of each iteration to check if the solution has been found. it can be redefined in a sub-class to implement a specific test to stop the iterations.
+This method is called at the end of each iteration to check if the solution has been found. It can be redefined in a sub-class to implement a specific test to stop the iterations.
 ") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached(math_FunctionWithDerivative & theFunction);
 
@@ -542,7 +543,7 @@ None
 
 Description
 -----------
-A combination of newton-raphson and bissection methods is done to find the root of the function f between the bounds bound1 and bound2 on the function f. the tolerance required on the root is given by tolx. the solution is found when: abs(xi - xi-1) <= tolx and f(xi) * f(xi-1) <= 0 the maximum number of iterations allowed is given by nbiterations.
+A combination of Newton-Raphson and bissection methods is done to find the root of the function F between the bounds Bound1 and Bound2 on the function F. The tolerance required on the root is given by TolX. The solution is found when: abs(Xi - Xi-1) <= TolX and F(Xi) * F(Xi-1) <= 0 The maximum number of iterations allowed is given by NbIterations.
 ") Perform;
 		void Perform(math_FunctionWithDerivative & F, const Standard_Real Bound1, const Standard_Real Bound2, const Standard_Integer NbIterations = 100);
 
@@ -555,7 +556,7 @@ float
 
 Description
 -----------
-Returns the value of the root. exception notdone is raised if the minimum was not found.
+returns the value of the root. Exception NotDone is raised if the minimum was not found.
 ") Root;
 		Standard_Real Root();
 
@@ -568,7 +569,7 @@ float
 
 Description
 -----------
-Returns the value of the function at the root. exception notdone is raised if the minimum was not found.
+returns the value of the function at the root. Exception NotDone is raised if the minimum was not found.
 ") Value;
 		Standard_Real Value();
 
@@ -601,7 +602,7 @@ None
 
 Description
 -----------
-Constructor preparing a and b parameters only. it does not perform the job.
+Constructor preparing A and B parameters only. It does not perform the job.
 ") math_BracketMinimum;
 		 math_BracketMinimum(const Standard_Real A, const Standard_Real B);
 
@@ -621,7 +622,7 @@ None
 
 Description
 -----------
-Given two initial values this class computes a bracketing triplet of abscissae ax, bx, cx (such that bx is between ax and cx, f(bx) is less than both f(bx) and f(cx)) the brent minimization is done on the function f.
+Given two initial values this class computes a bracketing triplet of abscissae Ax, Bx, Cx (such that Bx is between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx)) the Brent minimization is done on the function F.
 ") math_BracketMinimum;
 		 math_BracketMinimum(math_Function & F, const Standard_Real A, const Standard_Real B);
 
@@ -642,7 +643,7 @@ None
 
 Description
 -----------
-Given two initial values this class computes a bracketing triplet of abscissae ax, bx, cx (such that bx is between ax and cx, f(bx) is less than both f(bx) and f(cx)) the brent minimization is done on the function f. this constructor has to be used if f(a) is known.
+Given two initial values this class computes a bracketing triplet of abscissae Ax, Bx, Cx (such that Bx is between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx)) the Brent minimization is done on the function F. This constructor has to be used if F(A) is known.
 ") math_BracketMinimum;
 		 math_BracketMinimum(math_Function & F, const Standard_Real A, const Standard_Real B, const Standard_Real FA);
 
@@ -664,7 +665,7 @@ None
 
 Description
 -----------
-Given two initial values this class computes a bracketing triplet of abscissae ax, bx, cx (such that bx is between ax and cx, f(bx) is less than both f(bx) and f(cx)) the brent minimization is done on the function f. this constructor has to be used if f(a) and f(b) are known.
+Given two initial values this class computes a bracketing triplet of abscissae Ax, Bx, Cx (such that Bx is between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx)) the Brent minimization is done on the function F. This constructor has to be used if F(A) and F(B) are known.
 ") math_BracketMinimum;
 		 math_BracketMinimum(math_Function & F, const Standard_Real A, const Standard_Real B, const Standard_Real FA, const Standard_Real FB);
 
@@ -681,7 +682,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -700,7 +701,7 @@ FC: float
 
 Description
 -----------
-Returns the bracketed triplet function values. exceptions stdfail_notdone if the algorithm fails (and isdone returns false).
+returns the bracketed triplet function values. Exceptions StdFail_NotDone if the algorithm fails (and IsDone returns false).
 ") FunctionValues;
 		void FunctionValues(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -731,7 +732,7 @@ None
 
 Description
 -----------
-The method performing the job. it is called automatically by constructors with the function.
+The method performing the job. It is called automatically by constructors with the function.
 ") Perform;
 		void Perform(math_Function & F);
 
@@ -749,7 +750,7 @@ None
 
 Description
 -----------
-Set function value at a.
+Set function value at A.
 ") SetFA;
 		void SetFA(const Standard_Real theValue);
 
@@ -767,7 +768,7 @@ None
 
 Description
 -----------
-Set function value at b.
+Set function value at B.
 ") SetFB;
 		void SetFB(const Standard_Real theValue);
 
@@ -786,7 +787,7 @@ None
 
 Description
 -----------
-Set limits of the parameter. by default no limits are applied to the parameter change. if no minimum is found in limits then isdone() will return false. the user is in charge of providing a and b to be in limits.
+Set limits of the parameter. By default no limits are applied to the parameter change. If no minimum is found in limits then IsDone() will return false. The user is in charge of providing A and B to be in limits.
 ") SetLimits;
 		void SetLimits(const Standard_Real theLeft, const Standard_Real theRight);
 
@@ -805,7 +806,7 @@ C: float
 
 Description
 -----------
-Returns the bracketed triplet of abscissae. exceptions stdfail_notdone if the algorithm fails (and isdone returns false).
+Returns the bracketed triplet of abscissae. Exceptions StdFail_NotDone if the algorithm fails (and IsDone returns false).
 ") Values;
 		void Values(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -842,7 +843,7 @@ None
 
 Description
 -----------
-The brent method is used to find the root of the function f between the bounds bound1 and bound2 on the function f. if f(bound1)*f(bound2) >0 the brent method fails. the tolerance required for the root is given by tolerance. the solution is found when: abs(xi - xi-1) <= tolerance; the maximum number of iterations allowed is given by nbiterations.
+The Brent method is used to find the root of the function F between the bounds Bound1 and Bound2 on the function F. If F(Bound1)*F(Bound2) >0 the Brent method fails. The tolerance required for the root is given by Tolerance. The solution is found when: abs(Xi - Xi-1) <= Tolerance; The maximum number of iterations allowed is given by NbIterations.
 ") math_BracketedRoot;
 		 math_BracketedRoot(math_Function & F, const Standard_Real Bound1, const Standard_Real Bound2, const Standard_Real Tolerance, const Standard_Integer NbIterations = 100, const Standard_Real ZEPS = 1.0e-12);
 
@@ -885,7 +886,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done during the computation of the root. exception notdone is raised if the minimum was not found.
+returns the number of iterations really done during the computation of the Root. Exception NotDone is raised if the minimum was not found.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -898,7 +899,7 @@ float
 
 Description
 -----------
-Returns the value of the root. exception notdone is raised if the minimum was not found.
+returns the value of the root. Exception NotDone is raised if the minimum was not found.
 ") Root;
 		Standard_Real Root();
 
@@ -911,7 +912,7 @@ float
 
 Description
 -----------
-Returns the value of the function at the root. exception notdone is raised if the minimum was not found.
+returns the value of the function at the root. Exception NotDone is raised if the minimum was not found.
 ") Value;
 		Standard_Real Value();
 
@@ -966,7 +967,7 @@ None
 
 Description
 -----------
-This constructor should be used in a sub-class to initialize correctly all the fields of this class. it has to be used if f(bx) is known.
+This constructor should be used in a sub-class to initialize correctly all the fields of this class. It has to be used if F(Bx) is known.
 ") math_BrentMinimum;
 		 math_BrentMinimum(const Standard_Real TolX, const Standard_Real Fbx, const Standard_Integer NbIterations = 100, const Standard_Real ZEPS = 1.0e-12);
 
@@ -983,7 +984,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -1014,7 +1015,7 @@ bool
 
 Description
 -----------
-This method is called at the end of each iteration to check if the solution is found. it can be redefined in a sub-class to implement a specific test to stop the iterations.
+This method is called at the end of each iteration to check if the solution is found. It can be redefined in a sub-class to implement a specific test to stop the iterations.
 ") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached(math_Function & theFunction);
 
@@ -1027,7 +1028,7 @@ float
 
 Description
 -----------
-Returns the location value of the minimum. exception notdone is raised if the minimum was not found.
+returns the location value of the minimum. Exception NotDone is raised if the minimum was not found.
 ") Location;
 		Standard_Real Location();
 
@@ -1040,7 +1041,7 @@ float
 
 Description
 -----------
-Returns the value of the minimum. exception notdone is raised if the minimum was not found.
+returns the value of the minimum. Exception NotDone is raised if the minimum was not found.
 ") Minimum;
 		Standard_Real Minimum();
 
@@ -1053,7 +1054,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done during the computation of the minimum. exception notdone is raised if the minimum was not found.
+returns the number of iterations really done during the computation of the minimum. Exception NotDone is raised if the minimum was not found.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -1074,7 +1075,7 @@ None
 
 Description
 -----------
-Brent minimization is performed on function f from a given bracketing triplet of abscissas ax, bx, cx (such that bx is between ax and cx, f(bx) is less than both f(bx) and f(cx)) the solution is found when: abs(xi - xi-1) <= tolx * abs(xi) + zeps;.
+Brent minimization is performed on function F from a given bracketing triplet of abscissas Ax, Bx, Cx (such that Bx is between Ax and Cx, F(Bx) is less than both F(Bx) and F(Cx)) The solution is found when: abs(Xi - Xi-1) <= TolX * abs(Xi) + ZEPS;.
 ") Perform;
 		void Perform(math_Function & F, const Standard_Real Ax, const Standard_Real Bx, const Standard_Real Cx);
 
@@ -1106,7 +1107,7 @@ None
 
 Description
 -----------
-Creates new xorshift 64-bit rng.
+Creates new Xorshift 64-bit RNG.
 ") math_BullardGenerator;
 		 math_BullardGenerator(unsigned int theSeed = 1);
 
@@ -1325,7 +1326,7 @@ None
 
 Description
 -----------
-Given an input matrix a, this algorithm inverts a by the crout algorithm. the user can give only the inferior triangle for the implementation. a can be decomposed like this: a = l * d * t(l) where l is triangular inferior and d is diagonal. if one element of a is less than minpivot, a is considered as singular. exception notsquare is raised if a is not a square matrix.
+Given an input matrix A, this algorithm inverts A by the Crout algorithm. The user can give only the inferior triangle for the implementation. A can be decomposed like this: A = L * D * T(L) where L is triangular inferior and D is diagonal. If one element of A is less than MinPivot, A is considered as singular. Exception NotSquare is raised if A is not a square matrix.
 ") math_Crout;
 		 math_Crout(const math_Matrix & A, const Standard_Real MinPivot = 1.0e-20);
 
@@ -1338,7 +1339,7 @@ float
 
 Description
 -----------
-Returns the value of the determinant of the previously lu decomposed matrix a. zero is returned if the matrix a is considered as singular. exceptions stdfail_notdone if the algorithm fails (and isdone returns false).
+Returns the value of the determinant of the previously LU decomposed matrix A. Zero is returned if the matrix A is considered as singular. Exceptions StdFail_NotDone if the algorithm fails (and IsDone returns false).
 ") Determinant;
 		Standard_Real Determinant();
 
@@ -1368,7 +1369,7 @@ math_Matrix
 
 Description
 -----------
-Returns the inverse matrix of a. only the inferior triangle is returned. exception notdone is raised if notdone.
+returns the inverse matrix of A. Only the inferior triangle is returned. Exception NotDone is raised if NotDone.
 ") Inverse;
 		const math_Matrix & Inverse();
 
@@ -1386,7 +1387,7 @@ None
 
 Description
 -----------
-Returns in inv the inverse matrix of a. only the inferior triangle is returned. exception notdone is raised if notdone.
+returns in Inv the inverse matrix of A. Only the inferior triangle is returned. Exception NotDone is raised if NotDone.
 ") Invert;
 		void Invert(math_Matrix & Inv);
 
@@ -1399,7 +1400,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+Returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1418,7 +1419,7 @@ None
 
 Description
 -----------
-Given an input vector <b>, this routine returns the solution of the set of linear equations a . x = b. exception notdone is raised if the decomposition was not done successfully. exception dimensionerror is raised if the range of b is not equal to the rowrange of a.
+Given an input vector <B>, this routine returns the solution of the set of linear equations A . X = B. Exception NotDone is raised if the decomposition was not done successfully. Exception DimensionError is raised if the range of B is not equal to the rowrange of A.
 ") Solve;
 		void Solve(const math_Vector & B, math_Vector & X);
 
@@ -1454,7 +1455,7 @@ None
 
 Description
 -----------
-Computes all the real roots of the polynomial ax4 + bx3 + cx2 + dx + e using a direct method.
+computes all the real roots of the polynomial Ax4 + Bx3 + Cx2 + Dx + E using a direct method.
 ") math_DirectPolynomialRoots;
 		 math_DirectPolynomialRoots(const Standard_Real A, const Standard_Real B, const Standard_Real C, const Standard_Real D, const Standard_Real E);
 
@@ -1475,7 +1476,7 @@ None
 
 Description
 -----------
-Computes all the real roots of the polynomial ax3 + bx2 + cx + d using a direct method.
+computes all the real roots of the polynomial Ax3 + Bx2 + Cx + D using a direct method.
 ") math_DirectPolynomialRoots;
 		 math_DirectPolynomialRoots(const Standard_Real A, const Standard_Real B, const Standard_Real C, const Standard_Real D);
 
@@ -1495,7 +1496,7 @@ None
 
 Description
 -----------
-Computes all the real roots of the polynomial ax2 + bx + c using a direct method.
+computes all the real roots of the polynomial Ax2 + Bx + C using a direct method.
 ") math_DirectPolynomialRoots;
 		 math_DirectPolynomialRoots(const Standard_Real A, const Standard_Real B, const Standard_Real C);
 
@@ -1514,7 +1515,7 @@ None
 
 Description
 -----------
-Computes the real root of the polynomial ax + b.
+computes the real root of the polynomial Ax + B.
 ") math_DirectPolynomialRoots;
 		 math_DirectPolynomialRoots(const Standard_Real A, const Standard_Real B);
 
@@ -1531,7 +1532,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -1570,7 +1571,7 @@ int
 
 Description
 -----------
-Returns the number of solutions. an exception is raised if there are an infinity of roots.
+returns the number of solutions. An exception is raised if there are an infinity of roots.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -1588,7 +1589,7 @@ float
 
 Description
 -----------
-Returns the value of the nieme root. an exception is raised if there are an infinity of roots. exception rangeerror is raised if nieme is < 1 or nieme > nbsolutions.
+returns the value of the Nieme root. An exception is raised if there are an infinity of roots. Exception RangeError is raised if Nieme is < 1 or Nieme > NbSolutions.
 ") Value;
 		Standard_Real Value(const Standard_Integer Nieme);
 
@@ -1825,7 +1826,7 @@ float
 
 Description
 -----------
-Returns the index_th eigen value of matrix index must be in [1, dimension()].
+Returns the Index_th eigen value of matrix Index must be in [1, Dimension()].
 ") EigenValue;
 		Standard_Real EigenValue(const Standard_Integer Index);
 
@@ -1843,7 +1844,7 @@ math_Vector
 
 Description
 -----------
-Returns the index_th eigen vector of matrix index must be in [1, dimension()].
+Returns the Index_th eigen vector of matrix Index must be in [1, Dimension()].
 ") EigenVector;
 		math_Vector EigenVector(const Standard_Integer Index);
 
@@ -1856,7 +1857,7 @@ bool
 
 Description
 -----------
-Returns standard_true if computation is performed successfully.
+Returns Standard_True if computation is performed successfully.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1891,7 +1892,7 @@ None
 
 Description
 -----------
-Initializes the computation of the minimum of f. warning: constructor does not perform computations.
+Initializes the computation of the minimum of F. Warning: constructor does not perform computations.
 ") math_FRPR;
 		 math_FRPR(const math_MultipleVarFunctionWithGradient & theFunction, const Standard_Real theTolerance, const Standard_Integer theNbIterations = 200, const Standard_Real theZEPS = 1.0e-12);
 
@@ -1908,7 +1909,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -1921,7 +1922,7 @@ math_Vector
 
 Description
 -----------
-Returns the gradient vector at the minimum. exception notdone is raised if the minimum was not found.
+returns the gradient vector at the minimum. Exception NotDone is raised if the minimum was not found.
 ") Gradient;
 		const math_Vector & Gradient();
 
@@ -1939,7 +1940,7 @@ None
 
 Description
 -----------
-Outputs the gradient vector at the minimum in grad. exception notdone is raised if the minimum was not found. exception dimensionerror is raised if the range of grad is not equal to the range of the startingpoint.
+outputs the gradient vector at the minimum in Grad. Exception NotDone is raised if the minimum was not found. Exception DimensionError is raised if the range of Grad is not equal to the range of the StartingPoint.
 ") Gradient;
 		void Gradient(math_Vector & Grad);
 
@@ -1970,7 +1971,7 @@ bool
 
 Description
 -----------
-The solution f = fi is found when: 2.0 * abs(fi - fi-1) <= tolerance * (abs(fi) + abs(fi-1)) + zeps. the maximum number of iterations allowed is given by nbiterations.
+The solution F = Fi is found when: 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS. The maximum number of iterations allowed is given by NbIterations.
 ") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached(math_MultipleVarFunctionWithGradient & theFunction);
 
@@ -1983,7 +1984,7 @@ math_Vector
 
 Description
 -----------
-Returns the location vector of the minimum. exception notdone is raised if the minimum was not found.
+returns the location vector of the minimum. Exception NotDone is raised if the minimum was not found.
 ") Location;
 		const math_Vector & Location();
 
@@ -2001,7 +2002,7 @@ None
 
 Description
 -----------
-Outputs the location vector of the minimum in loc. exception notdone is raised if the minimum was not found. exception dimensionerror is raised if the range of loc is not equal to the range of the startingpoint.
+outputs the location vector of the minimum in Loc. Exception NotDone is raised if the minimum was not found. Exception DimensionError is raised if the range of Loc is not equal to the range of the StartingPoint.
 ") Location;
 		void Location(math_Vector & Loc);
 
@@ -2014,7 +2015,7 @@ float
 
 Description
 -----------
-Returns the value of the minimum. exception notdone is raised if the minimum was not found.
+returns the value of the minimum. Exception NotDone is raised if the minimum was not found.
 ") Minimum;
 		Standard_Real Minimum();
 
@@ -2027,7 +2028,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done during the computation of the minimum. exception notdone is raised if the minimum was not found.
+returns the number of iterations really done during the computation of the minimum. Exception NotDone is raised if the minimum was not found.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -2046,7 +2047,7 @@ None
 
 Description
 -----------
-The solution f = fi is found when 2.0 * abs(fi - fi-1) <= tolerance * (abs(fi) + abs(fi-1) + zeps).
+The solution F = Fi is found when 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
 ") Perform;
 		void Perform(math_MultipleVarFunctionWithGradient & theFunction, const math_Vector & theStartingPoint);
 
@@ -2074,7 +2075,7 @@ int
 
 Description
 -----------
-Returns the state of the function corresponding to the latest call of any methods associated with the function. this function is called by each of the algorithms described later which defined the function integer algorithm::statenumber(). the algorithm has the responsibility to call this function when it has found a solution (i.e. a root or a minimum) and has to maintain the association between the solution found and this statenumber. byu default, this method returns 0 (which means for the algorithm: no state has been saved). it is the responsibility of the programmer to decide if he needs to save the current state of the function and to return an integer that allows retrieval of the state.
+returns the state of the function corresponding to the latest call of any methods associated with the function. This function is called by each of the algorithms described later which defined the function Integer Algorithm::StateNumber(). The algorithm has the responsibility to call this function when it has found a solution (i.e. a root or a minimum) and has to maintain the association between the solution found and this StateNumber. Byu default, this method returns 0 (which means for the algorithm: no state has been saved). It is the responsibility of the programmer to decide if he needs to save the current state of the function and to return an Integer that allows retrieval of the state.
 ") GetStateNumber;
 		virtual Standard_Integer GetStateNumber();
 
@@ -2092,7 +2093,7 @@ F: float
 
 Description
 -----------
-Computes the value of the function <f> for a given value of variable <x>. returns true if the computation was done successfully, false otherwise.
+Computes the value of the function <F> for a given value of variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -2128,7 +2129,7 @@ None
 
 Description
 -----------
-The algorithm uses the sample to find intervals on which the function is null. an interval is found if, for at least two consecutive points of the sample, ui and ui+1, we get |f(ui)|<=epsnul and |f(ui+1)|<=epsnul. the real bounds of an interval are computed with the functionroots. algorithm. between two intervals, the roots of the function f are calculated using the functionroots algorithm.
+The algorithm uses the sample to find intervals on which the function is null. An interval is found if, for at least two consecutive points of the sample, Ui and Ui+1, we get |F(Ui)|<=EpsNul and |F(Ui+1)|<=EpsNul. The real bounds of an interval are computed with the FunctionRoots. algorithm. Between two intervals, the roots of the function F are calculated using the FunctionRoots algorithm.
 ") math_FunctionAllRoots;
 		 math_FunctionAllRoots(math_FunctionWithDerivative & F, const math_FunctionSample & S, const Standard_Real EpsX, const Standard_Real EpsF, const Standard_Real EpsNul);
 
@@ -2164,7 +2165,7 @@ B: float
 
 Description
 -----------
-Returns the interval of parameter of range index. an exception is raised if isdone returns false; an exception is raised if index<=0 or index >nbintervals.
+Returns the interval of parameter of range Index. An exception is raised if IsDone returns False; An exception is raised if Index<=0 or Index >Nbintervals.
 ") GetInterval;
 		void GetInterval(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2183,7 +2184,7 @@ ILast: int
 
 Description
 -----------
-Returns the state number associated to the interval index. an exception is raised if isdone returns false; an exception is raised if index<=0 or index >nbintervals.
+returns the State Number associated to the interval Index. An exception is raised if IsDone returns False; An exception is raised if Index<=0 or Index >Nbintervals.
 ") GetIntervalState;
 		void GetIntervalState(const Standard_Integer Index, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -2201,7 +2202,7 @@ float
 
 Description
 -----------
-Returns the parameter of the point of range index. an exception is raised if isdone returns false; an exception is raised if index<=0 or index >nbpoints.
+Returns the parameter of the point of range Index. An exception is raised if IsDone returns False; An exception is raised if Index<=0 or Index >NbPoints.
 ") GetPoint;
 		Standard_Real GetPoint(const Standard_Integer Index);
 
@@ -2219,7 +2220,7 @@ int
 
 Description
 -----------
-Returns the state number associated to the point index. an exception is raised if isdone returns false; an exception is raised if index<=0 or index >nbintervals.
+returns the State Number associated to the point Index. An exception is raised if IsDone returns False; An exception is raised if Index<=0 or Index >Nbintervals.
 ") GetPointState;
 		Standard_Integer GetPointState(const Standard_Integer Index);
 
@@ -2232,7 +2233,7 @@ bool
 
 Description
 -----------
-Returns true if the computation has been done successfully.
+Returns True if the computation has been done successfully.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2245,7 +2246,7 @@ int
 
 Description
 -----------
-Returns the number of intervals on which the function is null. an exception is raised if isdone returns false.
+Returns the number of intervals on which the function is Null. An exception is raised if IsDone returns False.
 ") NbIntervals;
 		Standard_Integer NbIntervals();
 
@@ -2258,7 +2259,7 @@ int
 
 Description
 -----------
-Returns the number of points where the function is null. an exception is raised if isdone returns false.
+returns the number of points where the function is Null. An exception is raised if IsDone returns False.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -2293,7 +2294,7 @@ None
 
 Description
 -----------
-The newton-raphson method is done to find the root of the function f from the initial guess guess.the tolerance required on the root is given by tolerance. iterations are stopped if the expected solution does not stay in the range a..b. the solution is found when abs(xi - xi-1) <= tolerance; the maximum number of iterations allowed is given by nbiterations.
+The Newton-Raphson method is done to find the root of the function F from the initial guess Guess.The tolerance required on the root is given by Tolerance. Iterations are stopped if the expected solution does not stay in the range A..B. The solution is found when abs(Xi - Xi-1) <= Tolerance; The maximum number of iterations allowed is given by NbIterations.
 ") math_FunctionRoot;
 		 math_FunctionRoot(math_FunctionWithDerivative & F, const Standard_Real Guess, const Standard_Real Tolerance, const Standard_Integer NbIterations = 100);
 
@@ -2316,7 +2317,7 @@ None
 
 Description
 -----------
-The newton-raphson method is done to find the root of the function f from the initial guess guess. the tolerance required on the root is given by tolerance. iterations are stopped if the expected solution does not stay in the range a..b the solution is found when abs(xi - xi-1) <= tolerance; the maximum number of iterations allowed is given by nbiterations.
+The Newton-Raphson method is done to find the root of the function F from the initial guess Guess. The tolerance required on the root is given by Tolerance. Iterations are stopped if the expected solution does not stay in the range A..B The solution is found when abs(Xi - Xi-1) <= Tolerance; The maximum number of iterations allowed is given by NbIterations.
 ") math_FunctionRoot;
 		 math_FunctionRoot(math_FunctionWithDerivative & F, const Standard_Real Guess, const Standard_Real Tolerance, const Standard_Real A, const Standard_Real B, const Standard_Integer NbIterations = 100);
 
@@ -2329,7 +2330,7 @@ float
 
 Description
 -----------
-Returns the value of the derivative at the root. exception notdone is raised if the root was not found.
+returns the value of the derivative at the root. Exception NotDone is raised if the root was not found.
 ") Derivative;
 		Standard_Real Derivative();
 
@@ -2346,7 +2347,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -2372,7 +2373,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done on the computation of the root. exception notdone is raised if the root was not found.
+returns the number of iterations really done on the computation of the Root. Exception NotDone is raised if the root was not found.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -2385,7 +2386,7 @@ float
 
 Description
 -----------
-Returns the value of the root. exception notdone is raised if the root was not found.
+returns the value of the root. Exception NotDone is raised if the root was not found.
 ") Root;
 		Standard_Real Root();
 
@@ -2398,7 +2399,7 @@ float
 
 Description
 -----------
-Returns the value of the function at the root. exception notdone is raised if the root was not found.
+returns the value of the function at the root. Exception NotDone is raised if the root was not found.
 ") Value;
 		Standard_Real Value();
 
@@ -2437,7 +2438,7 @@ None
 
 Description
 -----------
-Calculates all the real roots of a function f-k within the range a..b. without conditions on a and b a solution x is found when abs(xi - xi-1) <= epsx and abs(f(xi)-k) <= epsf. the function is considered as null between a and b if abs(f-k) <= epsnull within this range.
+Calculates all the real roots of a function F-K within the range A..B. without conditions on A and B A solution X is found when abs(Xi - Xi-1) <= Epsx and abs(F(Xi)-K) <= EpsF. The function is considered as null between A and B if abs(F-K) <= EpsNull within this range.
 ") math_FunctionRoots;
 		 math_FunctionRoots(math_FunctionWithDerivative & F, const Standard_Real A, const Standard_Real B, const Standard_Integer NbSample, const Standard_Real EpsX = 0.0, const Standard_Real EpsF = 0.0, const Standard_Real EpsNull = 0.0, const Standard_Real K = 0.0);
 
@@ -2467,7 +2468,7 @@ bool
 
 Description
 -----------
-Returns true if the function is considered as null between a and b. exceptions stdfail_notdone if the algorithm fails (and isdone returns false).
+returns true if the function is considered as null between A and B. Exceptions StdFail_NotDone if the algorithm fails (and IsDone returns false).
 ") IsAllNull;
 		Standard_Boolean IsAllNull();
 
@@ -2493,7 +2494,7 @@ int
 
 Description
 -----------
-Returns the number of solutions found. exceptions stdfail_notdone if the algorithm fails (and isdone returns false).
+Returns the number of solutions found. Exceptions StdFail_NotDone if the algorithm fails (and IsDone returns false).
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -2511,7 +2512,7 @@ int
 
 Description
 -----------
-Returns the statenumber of the nieme root. exception rangeerror is raised if nieme is < 1 or nieme > nbsolutions.
+returns the StateNumber of the Nieme root. Exception RangeError is raised if Nieme is < 1 or Nieme > NbSolutions.
 ") StateNumber;
 		Standard_Integer StateNumber(const Standard_Integer Nieme);
 
@@ -2529,7 +2530,7 @@ float
 
 Description
 -----------
-Returns the nth value of the root of function f. exceptions stdfail_notdone if the algorithm fails (and isdone returns false).
+Returns the Nth value of the root of function F. Exceptions StdFail_NotDone if the algorithm fails (and IsDone returns false).
 ") Value;
 		Standard_Real Value(const Standard_Integer Nieme);
 
@@ -2599,7 +2600,7 @@ float
 
 Description
 -----------
-Returns the value of parameter of the point of range index: a + ((index-1)/(nbpoints-1))*b. an exception is raised if index<=0 or index>nbpoints.
+Returns the value of parameter of the point of range Index: A + ((Index-1)/(NbPoints-1))*B. An exception is raised if Index<=0 or Index>NbPoints.
 ") GetParameter;
 		virtual Standard_Real GetParameter(const Standard_Integer Index);
 
@@ -2640,7 +2641,7 @@ int
 
 Description
 -----------
-Returns the state of the function corresponding to the latestcall of any methods associated with the function. this function is called by each of the algorithms described later which define the function integer algorithm::statenumber(). the algorithm has the responsibility to call this function when it has found a solution (i.e. a root or a minimum) and has to maintain the association between the solution found and this statenumber. byu default, this method returns 0 (which means for the algorithm: no state has been saved). it is the responsibility of the programmer to decide if he needs to save the current state of the function and to return an integer that allows retrieval of the state.
+Returns the state of the function corresponding to the latestcall of any methods associated with the function. This function is called by each of the algorithms described later which define the function Integer Algorithm::StateNumber(). The algorithm has the responsibility to call this function when it has found a solution (i.e. a root or a minimum) and has to maintain the association between the solution found and this StateNumber. Byu default, this method returns 0 (which means for the algorithm: no state has been saved). It is the responsibility of the programmer to decide if he needs to save the current state of the function and to return an Integer that allows retrieval of the state.
 ") GetStateNumber;
 		virtual Standard_Integer GetStateNumber();
 
@@ -2685,7 +2686,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+Computes the values <F> of the functions for the variable <X>. returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -2719,7 +2720,7 @@ None
 
 Description
 -----------
-Is used in a sub-class to initialize correctly all the fields of this class. the range (1, f.nbvariables()) must be especially respected for all vectors and matrix declarations.
+is used in a sub-class to initialize correctly all the fields of this class. The range (1, F.NbVariables()) must be especially respected for all vectors and matrix declarations.
 ") math_FunctionSetRoot;
 		 math_FunctionSetRoot(math_FunctionSetWithDerivatives & F, const math_Vector & Tolerance, const Standard_Integer NbIterations = 100);
 
@@ -2738,7 +2739,7 @@ None
 
 Description
 -----------
-Is used in a sub-class to initialize correctly all the fields of this class. the range (1, f.nbvariables()) must be especially respected for all vectors and matrix declarations. the method settolerance must be called after this constructor.
+is used in a sub-class to initialize correctly all the fields of this class. The range (1, F.NbVariables()) must be especially respected for all vectors and matrix declarations. The method SetTolerance must be called after this constructor.
 ") math_FunctionSetRoot;
 		 math_FunctionSetRoot(math_FunctionSetWithDerivatives & F, const Standard_Integer NbIterations = 100);
 
@@ -2751,7 +2752,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix value of the derivative at the root. exception notdone is raised if the root was not found.
+Returns the matrix value of the derivative at the root. Exception NotDone is raised if the root was not found.
 ") Derivative;
 		const math_Matrix & Derivative();
 
@@ -2769,7 +2770,7 @@ None
 
 Description
 -----------
-Outputs the matrix value of the derivative at the root in der. exception notdone is raised if the root was not found. exception dimensionerror is raised if the column range of <der> is not equal to the range of the startingpoint.
+outputs the matrix value of the derivative at the root in Der. Exception NotDone is raised if the root was not found. Exception DimensionError is raised if the column range of <Der> is not equal to the range of the startingPoint.
 ") Derivative;
 		void Derivative(math_Matrix & Der);
 
@@ -2786,7 +2787,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -2799,7 +2800,7 @@ math_Vector
 
 Description
 -----------
-Returns the vector value of the error done on the functions at the root. exception notdone is raised if the root was not found.
+returns the vector value of the error done on the functions at the root. Exception NotDone is raised if the root was not found.
 ") FunctionSetErrors;
 		const math_Vector & FunctionSetErrors();
 
@@ -2817,7 +2818,7 @@ None
 
 Description
 -----------
-Outputs the vector value of the error done on the functions at the root in err. exception notdone is raised if the root was not found. exception dimensionerror is raised if the range of err is not equal to the range of the startingpoint.
+outputs the vector value of the error done on the functions at the root in Err. Exception NotDone is raised if the root was not found. Exception DimensionError is raised if the range of Err is not equal to the range of the StartingPoint.
 ") FunctionSetErrors;
 		void FunctionSetErrors(math_Vector & Err);
 
@@ -2861,7 +2862,7 @@ bool
 
 Description
 -----------
-This routine is called at the end of each iteration to check if the solution was found. it can be redefined in a sub-class to implement a specific test to stop the iterations. in this case, the solution is found when: abs(xi - xi-1) <= tolerance for all unknowns.
+This routine is called at the end of each iteration to check if the solution was found. It can be redefined in a sub-class to implement a specific test to stop the iterations. In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance for all unknowns.
 ") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached(math_FunctionSetWithDerivatives &);
 
@@ -2874,7 +2875,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done during the computation of the root. exception notdone is raised if the root was not found.
+Returns the number of iterations really done during the computation of the root. Exception NotDone is raised if the root was not found.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -2894,7 +2895,7 @@ None
 
 Description
 -----------
-Improves the root of function from the initial guess point. the infinum and supremum may be given to constrain the solution. in this case, the solution is found when: abs(xi - xi-1)(j) <= tolerance(j) for all unknowns.
+Improves the root of function from the initial guess point. The infinum and supremum may be given to constrain the solution. In this case, the solution is found when: abs(Xi - Xi-1)(j) <= Tolerance(j) for all unknowns.
 ") Perform;
 		void Perform(math_FunctionSetWithDerivatives & theFunction, const math_Vector & theStartingPoint, const Standard_Boolean theStopOnDivergent = Standard_False);
 
@@ -2916,7 +2917,7 @@ None
 
 Description
 -----------
-Improves the root of function from the initial guess point. the infinum and supremum may be given to constrain the solution. in this case, the solution is found when: abs(xi - xi-1) <= tolerance for all unknowns.
+Improves the root of function from the initial guess point. The infinum and supremum may be given to constrain the solution. In this case, the solution is found when: abs(Xi - Xi-1) <= Tolerance for all unknowns.
 ") Perform;
 		void Perform(math_FunctionSetWithDerivatives & theFunction, const math_Vector & theStartingPoint, const math_Vector & theInfBound, const math_Vector & theSupBound, const Standard_Boolean theStopOnDivergent = Standard_False);
 
@@ -2929,7 +2930,7 @@ math_Vector
 
 Description
 -----------
-Returns the value of the root of function f. exception notdone is raised if the root was not found.
+Returns the value of the root of function F. Exception NotDone is raised if the root was not found.
 ") Root;
 		const math_Vector & Root();
 
@@ -2947,7 +2948,7 @@ None
 
 Description
 -----------
-Outputs the root vector in root. exception notdone is raised if the root was not found. exception dimensionerror is raised if the range of root is not equal to the range of the startingpoint.
+Outputs the root vector in Root. Exception NotDone is raised if the root was not found. Exception DimensionError is raised if the range of Root is not equal to the range of the StartingPoint.
 ") Root;
 		void Root(math_Vector & Root);
 
@@ -2978,7 +2979,7 @@ int
 
 Description
 -----------
-Returns the statenumber (as returned by f.getstatenumber()) associated to the root found.
+returns the stateNumber (as returned by F.GetStateNumber()) associated to the root found.
 ") StateNumber;
 		Standard_Integer StateNumber();
 
@@ -3012,7 +3013,7 @@ None
 
 Description
 -----------
-Given an input n x n matrix a this constructor performs its lu decomposition with partial pivoting (interchange of rows). this lu decomposition is stored internally and may be used to do subsequent calculation. if the largest pivot found is less than minpivot the matrix a is considered as singular. exception notsquare is raised if a is not a square matrix.
+Given an input n X n matrix A this constructor performs its LU decomposition with partial pivoting (interchange of rows). This LU decomposition is stored internally and may be used to do subsequent calculation. If the largest pivot found is less than MinPivot the matrix A is considered as singular. Exception NotSquare is raised if A is not a square matrix.
 ") math_Gauss;
 		 math_Gauss(const math_Matrix & A, const Standard_Real MinPivot = 1.0e-20, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -3025,7 +3026,7 @@ float
 
 Description
 -----------
-This routine returns the value of the determinant of the previously lu decomposed matrix a. exception notdone may be raised if the decomposition of a was not done successfully, zero is returned if the matrix a was considered as singular.
+This routine returns the value of the determinant of the previously LU decomposed matrix A. Exception NotDone may be raised if the decomposition of A was not done successfully, zero is returned if the matrix A was considered as singular.
 ") Determinant;
 		Standard_Real Determinant();
 
@@ -3042,7 +3043,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -3060,7 +3061,7 @@ None
 
 Description
 -----------
-This routine outputs inv the inverse of the previously lu decomposed matrix a. exception dimensionerror is raised if the ranges of b are not equal to the ranges of a.
+This routine outputs Inv the inverse of the previously LU decomposed matrix A. Exception DimensionError is raised if the ranges of B are not equal to the ranges of A.
 ") Invert;
 		void Invert(math_Matrix & Inv);
 
@@ -3092,7 +3093,7 @@ None
 
 Description
 -----------
-Given the input vector b this routine returns the solution x of the set of linear equations a . x = b. exception notdone is raised if the decomposition of a was not done successfully. exception dimensionerror is raised if the range of b is not equal to the number of rows of a.
+Given the input Vector B this routine returns the solution X of the set of linear equations A . X = B. Exception NotDone is raised if the decomposition of A was not done successfully. Exception DimensionError is raised if the range of B is not equal to the number of rows of A.
 ") Solve;
 		void Solve(const math_Vector & B, math_Vector & X);
 
@@ -3110,7 +3111,7 @@ None
 
 Description
 -----------
-Given the input vector b this routine solves the set of linear equations a . x = b. b is replaced by the vector solution x. exception notdone is raised if the decomposition of a was not done successfully. exception dimensionerror is raised if the range of b is not equal to the number of rows of a.
+Given the input Vector B this routine solves the set of linear equations A . X = B. B is replaced by the vector solution X. Exception NotDone is raised if the decomposition of A was not done successfully. Exception DimensionError is raised if the range of B is not equal to the number of rows of A.
 ") Solve;
 		void Solve(math_Vector & B);
 
@@ -3143,7 +3144,7 @@ None
 
 Description
 -----------
-Given an input n x m matrix a with n >= m this constructor performs the lu decomposition with partial pivoting (interchange of rows) of the matrix aa = a.transposed() * a; this lu decomposition is stored internally and may be used to do subsequent calculation. if the largest pivot found is less than minpivot the matrix <a> is considered as singular.
+Given an input n X m matrix A with n >= m this constructor performs the LU decomposition with partial pivoting (interchange of rows) of the matrix AA = A.Transposed() * A; This LU decomposition is stored internally and may be used to do subsequent calculation. If the largest pivot found is less than MinPivot the matrix <A> is considered as singular.
 ") math_GaussLeastSquare;
 		 math_GaussLeastSquare(const math_Matrix & A, const Standard_Real MinPivot = 1.0e-20);
 
@@ -3160,7 +3161,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -3192,7 +3193,7 @@ None
 
 Description
 -----------
-Given the input vector <b> this routine solves the set of linear equations a . x = b. exception notdone is raised if the decomposition of a was not done successfully. exception dimensionerror is raised if the range of b inv is not equal to the rowrange of a. exception dimensionerror is raised if the range of x inv is not equal to the colrange of a.
+Given the input Vector <B> this routine solves the set of linear equations A . X = B. Exception NotDone is raised if the decomposition of A was not done successfully. Exception DimensionError is raised if the range of B Inv is not equal to the rowrange of A. Exception DimensionError is raised if the range of X Inv is not equal to the colrange of A.
 ") Solve;
 		void Solve(const math_Vector & B, math_Vector & X);
 
@@ -3227,7 +3228,7 @@ None
 
 Description
 -----------
-The gauss-legendre integration with order = points of integration for each unknown, is done on the function f between the bounds lower and upper.
+The Gauss-Legendre integration with Order = points of integration for each unknown, is done on the function F between the bounds Lower and Upper.
 ") math_GaussMultipleIntegration;
 		 math_GaussMultipleIntegration(math_MultipleVarFunction & F, const math_Vector & Lower, const math_Vector & Upper, const math_IntegerVector & Order);
 
@@ -3257,7 +3258,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -3270,7 +3271,7 @@ float
 
 Description
 -----------
-Returns the value of the integral.
+returns the value of the integral.
 ") Value;
 		Standard_Real Value();
 
@@ -3305,7 +3306,7 @@ None
 
 Description
 -----------
-The gauss-legendre integration with order = points of integration for each unknown, is done on the function f between the bounds lower and upper.
+The Gauss-Legendre integration with Order = points of integration for each unknown, is done on the function F between the bounds Lower and Upper.
 ") math_GaussSetIntegration;
 		 math_GaussSetIntegration(math_FunctionSet & F, const math_Vector & Lower, const math_Vector & Upper, const math_IntegerVector & Order);
 
@@ -3335,7 +3336,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -3348,7 +3349,7 @@ math_Vector
 
 Description
 -----------
-Returns the value of the integral.
+returns the value of the integral.
 ") Value;
 		const math_Vector & Value();
 
@@ -3396,7 +3397,7 @@ None
 
 Description
 -----------
-The gauss-legendre integration with n = order points of integration, is done on the function f between the bounds lower and upper.
+The Gauss-Legendre integration with N = Order points of integration, is done on the function F between the bounds Lower and Upper.
 ") math_GaussSingleIntegration;
 		 math_GaussSingleIntegration(math_Function & F, const Standard_Real Lower, const Standard_Real Upper, const Standard_Integer Order);
 
@@ -3418,7 +3419,7 @@ None
 
 Description
 -----------
-The gauss-legendre integration with n = order points of integration and given tolerance = tol is done on the function f between the bounds lower and upper.
+The Gauss-Legendre integration with N = Order points of integration and given tolerance = Tol is done on the function F between the bounds Lower and Upper.
 ") math_GaussSingleIntegration;
 		 math_GaussSingleIntegration(math_Function & F, const Standard_Real Lower, const Standard_Real Upper, const Standard_Integer Order, const Standard_Real Tol);
 
@@ -3448,7 +3449,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -3461,7 +3462,7 @@ float
 
 Description
 -----------
-Returns the value of the integral.
+returns the value of the integral.
 ") Value;
 		Standard_Real Value();
 
@@ -3499,7 +3500,13 @@ None
 
 Description
 -----------
-Constructor. perform method is not called from it. @param thefunc - objective functional. @param thelowerborder - lower corner of the search box. @param theupperborder - upper corner of the search box. @param thec - lipschitz constant. @param thediscretizationtol - parameter space discretization tolerance. @param thesametol - functional value space indifference tolerance.
+Constructor. Perform method is not called from it. 
+Parameter theFunc - objective functional. 
+Parameter theLowerBorder - lower corner of the search box. 
+Parameter theUpperBorder - upper corner of the search box. 
+Parameter theC - Lipschitz constant. 
+Parameter theDiscretizationTol - parameter space discretization tolerance. 
+Parameter theSameTol - functional value space indifference tolerance.
 ") math_GlobOptMin;
 		 math_GlobOptMin(math_MultipleVarFunction * theFunc, const math_Vector & theLowerBorder, const math_Vector & theUpperBorder, const Standard_Real theC = 9, const Standard_Real theDiscretizationTol = 1.0e-2, const Standard_Real theSameTol = 1.0e-7);
 
@@ -3569,7 +3576,9 @@ theSameTol: float
 
 Description
 -----------
-Method to get tolerances. @param thediscretizationtol - parameter space discretization tolerance. @param thesametol - functional value space indifference tolerance.
+Method to get tolerances. 
+Parameter theDiscretizationTol - parameter space discretization tolerance. 
+Parameter theSameTol - functional value space indifference tolerance.
 ") GetTol;
 		void GetTol(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3600,7 +3609,7 @@ None
 
 Description
 -----------
-@param isfindsinglesolution - defines whether to find single solution or all solutions.
+Parameter isFindSingleSolution - defines whether to find single solution or all solutions.
 ") Perform;
 		void Perform(const Standard_Boolean isFindSingleSolution = Standard_False);
 
@@ -3619,7 +3628,7 @@ None
 
 Description
 -----------
-Return solution theindex, 1 <= theindex <= nbextrema.
+Return solution theIndex, 1 <= theIndex <= NbExtrema.
 ") Points;
 		void Points(const Standard_Integer theIndex, math_Vector & theSol);
 
@@ -3637,7 +3646,7 @@ None
 
 Description
 -----------
-Set / get continuity of local borders splits (0 ~ c0, 1 ~ c1, 2 ~ c2).
+Set / Get continuity of local borders splits (0 ~ C0, 1 ~ C1, 2 ~ C2).
 ") SetContinuity;
 		void SetContinuity(const Standard_Integer theCont);
 
@@ -3655,7 +3664,7 @@ None
 
 Description
 -----------
-Set / get functional minimal value.
+Set / Get functional minimal value.
 ") SetFunctionalMinimalValue;
 		void SetFunctionalMinimalValue(const Standard_Real theMinimalValue);
 
@@ -3678,7 +3687,12 @@ None
 
 Description
 -----------
-@param thefunc - objective functional. @param thelowerborder - lower corner of the search box. @param theupperborder - upper corner of the search box. @param thec - lipschitz constant. @param thediscretizationtol - parameter space discretization tolerance. @param thesametol - functional value space indifference tolerance.
+Parameter theFunc - objective functional. 
+Parameter theLowerBorder - lower corner of the search box. 
+Parameter theUpperBorder - upper corner of the search box. 
+Parameter theC - Lipschitz constant. 
+Parameter theDiscretizationTol - parameter space discretization tolerance. 
+Parameter theSameTol - functional value space indifference tolerance.
 ") SetGlobalParams;
 		void SetGlobalParams(math_MultipleVarFunction * theFunc, const math_Vector & theLowerBorder, const math_Vector & theUpperBorder, const Standard_Real theC = 9, const Standard_Real theDiscretizationTol = 1.0e-2, const Standard_Real theSameTol = 1.0e-7);
 
@@ -3696,7 +3710,7 @@ None
 
 Description
 -----------
-Set / get lipchitz constant modification state. true means that the constant is locked and unlocked otherwise.
+Set / Get Lipchitz constant modification state. True means that the constant is locked and unlocked otherwise.
 ") SetLipConstState;
 		void SetLipConstState(const Standard_Boolean theFlag);
 
@@ -3715,7 +3729,9 @@ None
 
 Description
 -----------
-Method to reduce bounding box. perform will use this box. @param thelocala - lower corner of the local box. @param thelocalb - upper corner of the local box.
+Method to reduce bounding box. Perform will use this box. 
+Parameter theLocalA - lower corner of the local box. 
+Parameter theLocalB - upper corner of the local box.
 ") SetLocalParams;
 		void SetLocalParams(const math_Vector & theLocalA, const math_Vector & theLocalB);
 
@@ -3734,7 +3750,9 @@ None
 
 Description
 -----------
-Method to set tolerances. @param thediscretizationtol - parameter space discretization tolerance. @param thesametol - functional value space indifference tolerance.
+Method to set tolerances. 
+Parameter theDiscretizationTol - parameter space discretization tolerance. 
+Parameter theSameTol - functional value space indifference tolerance.
 ") SetTol;
 		void SetTol(const Standard_Real theDiscretizationTol, const Standard_Real theSameTol);
 
@@ -3781,7 +3799,7 @@ None
 
 Description
 -----------
-Given an input matrix a with n>= m, given an input matrix b this constructor performs the least square resolution of the set of linear equations a.x = b for each column of b. if a column norm is less than eps, the resolution can't be done. exception dimensionerror is raised if the row number of b is different from the a row number.
+Given an input matrix A with n>= m, given an input matrix B this constructor performs the least square resolution of the set of linear equations A.X = B for each column of B. If a column norm is less than EPS, the resolution can't be done. Exception DimensionError is raised if the row number of B is different from the A row number.
 ") math_Householder;
 		 math_Householder(const math_Matrix & A, const math_Matrix & B, const Standard_Real EPS = 1.0e-20);
 
@@ -3805,7 +3823,7 @@ None
 
 Description
 -----------
-Given an input matrix a with n>= m, given an input matrix b this constructor performs the least square resolution of the set of linear equations a.x = b for each column of b. if a column norm is less than eps, the resolution can't be done. exception dimensionerror is raised if the row number of b is different from the a row number.
+Given an input matrix A with n>= m, given an input matrix B this constructor performs the least square resolution of the set of linear equations A.X = B for each column of B. If a column norm is less than EPS, the resolution can't be done. Exception DimensionError is raised if the row number of B is different from the A row number.
 ") math_Householder;
 		 math_Householder(const math_Matrix & A, const math_Matrix & B, const Standard_Integer lowerArow, const Standard_Integer upperArow, const Standard_Integer lowerAcol, const Standard_Integer upperAcol, const Standard_Real EPS = 1.0e-20);
 
@@ -3825,7 +3843,7 @@ None
 
 Description
 -----------
-Given an input matrix a with n>= m, given an input vector b this constructor performs the least square resolution of the set of linear equations a.x = b. if a column norm is less than eps, the resolution can't be done. exception dimensionerror is raised if the length of b is different from the a row number.
+Given an input matrix A with n>= m, given an input vector B this constructor performs the least square resolution of the set of linear equations A.X = B. If a column norm is less than EPS, the resolution can't be done. Exception DimensionError is raised if the length of B is different from the A row number.
 ") math_Householder;
 		 math_Householder(const math_Matrix & A, const math_Vector & B, const Standard_Real EPS = 1.0e-20);
 
@@ -3838,7 +3856,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix sol of all the solutions of the system a.x = b. exception notdone is raised is the resolution has not be done.
+Returns the matrix sol of all the solutions of the system A.X = B. Exception NotDone is raised is the resolution has not be done.
 ") AllValues;
 		const math_Matrix & AllValues();
 
@@ -3887,7 +3905,7 @@ None
 
 Description
 -----------
-Given the integer index, this routine returns the corresponding least square solution sol. exception notdone is raised if the resolution has not be done. exception outofrange is raised if index <=0 or index is more than the number of columns of b.
+Given the integer Index, this routine returns the corresponding least square solution sol. Exception NotDone is raised if the resolution has not be done. Exception OutOfRange is raised if Index <=0 or Index is more than the number of columns of B.
 ") Value;
 		void Value(math_Vector & sol, const Standard_Integer Index = 1);
 
@@ -3919,7 +3937,7 @@ None
 
 Description
 -----------
-Given a real n x n matrix a, this constructor computes all its eigenvalues and eigenvectors using the jacobi method. the exception notsquare is raised if the matrix is not square. no verification that the matrix a is really symmetric is done.
+Given a Real n X n matrix A, this constructor computes all its eigenvalues and eigenvectors using the Jacobi method. The exception NotSquare is raised if the matrix is not square. No verification that the matrix A is really symmetric is done.
 ") math_Jacobi;
 		 math_Jacobi(const math_Matrix & A);
 
@@ -3936,7 +3954,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints information on the current state of the object. is used to redefine the operator <<.
+Prints information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -3967,7 +3985,7 @@ float
 
 Description
 -----------
-Returns the eigenvalue number num. eigenvalues are in the range (1..n). exception notdone is raised if calculation is not done successfully.
+returns the eigenvalue number Num. Eigenvalues are in the range (1..n). Exception NotDone is raised if calculation is not done successfully.
 ") Value;
 		Standard_Real Value(const Standard_Integer Num);
 
@@ -3980,7 +3998,7 @@ math_Vector
 
 Description
 -----------
-Returns the eigenvalues vector. exception notdone is raised if calculation is not done successfully.
+Returns the eigenvalues vector. Exception NotDone is raised if calculation is not done successfully.
 ") Values;
 		const math_Vector & Values();
 
@@ -3999,7 +4017,7 @@ None
 
 Description
 -----------
-Returns the eigenvector v of number num. eigenvectors are in the range (1..n). exception notdone is raised if calculation is not done successfully.
+Returns the eigenvector V of number Num. Eigenvectors are in the range (1..n). Exception NotDone is raised if calculation is not done successfully.
 ") Vector;
 		void Vector(const Standard_Integer Num, math_Vector & V);
 
@@ -4012,7 +4030,7 @@ math_Matrix
 
 Description
 -----------
-Returns the eigenvectors matrix. exception notdone is raised if calculation is not done successfully.
+returns the eigenvectors matrix. Exception NotDone is raised if calculation is not done successfully.
 ") Vectors;
 		const math_Matrix & Vectors();
 
@@ -4060,7 +4078,7 @@ None
 
 Description
 -----------
-Constructor. takes the function, the lower and upper bound values, the initial number of kronrod points.
+Constructor. Takes the function, the lower and upper bound values, the initial number of Kronrod points.
 ") math_KronrodSingleIntegration;
 		 math_KronrodSingleIntegration(math_Function & theFunction, const Standard_Real theLower, const Standard_Real theUpper, const Standard_Integer theNbPnts);
 
@@ -4083,7 +4101,7 @@ None
 
 Description
 -----------
-Constructor. takes the function, the lower and upper bound values, the initial number of kronrod points, the tolerance value and the maximal number of iterations as parameters.
+Constructor. Takes the function, the lower and upper bound values, the initial number of Kronrod points, the tolerance value and the maximal number of iterations as parameters.
 ") math_KronrodSingleIntegration;
 		 math_KronrodSingleIntegration(math_Function & theFunction, const Standard_Real theLower, const Standard_Real theUpper, const Standard_Integer theNbPnts, const Standard_Real theTolerance, const Standard_Integer theMaxNbIter);
 
@@ -4147,7 +4165,7 @@ bool
 
 Description
 -----------
-Returns standard_true if computation is performed successfully.
+Returns Standard_True if computation is performed successfully.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -4173,7 +4191,7 @@ int
 
 Description
 -----------
-Returns the number of kronrod points for which the result is computed.
+Returns the number of Kronrod points for which the result is computed.
 ") OrderReached;
 		Standard_Integer OrderReached();
 
@@ -4194,7 +4212,7 @@ None
 
 Description
 -----------
-Computation of the integral. takes the function, the lower and upper bound values, the initial number of kronrod points, the relative tolerance value and the maximal number of iterations as parameters. thenbpnts should be odd and greater then or equal to 3.
+Computation of the integral. Takes the function, the lower and upper bound values, the initial number of Kronrod points, the relative tolerance value and the maximal number of iterations as parameters. theNbPnts should be odd and greater then or equal to 3.
 ") Perform;
 		void Perform(math_Function & theFunction, const Standard_Real theLower, const Standard_Real theUpper, const Standard_Integer theNbPnts);
 
@@ -4217,7 +4235,7 @@ None
 
 Description
 -----------
-Computation of the integral. takes the function, the lower and upper bound values, the initial number of kronrod points, the relative tolerance value and the maximal number of iterations as parameters. thenbpnts should be odd and greater then or equal to 3. note that thetolerance is relative, i.e. the criterion of solution reaching is: abs(kronrod - gauss)/abs(kronrod) < thetolerance. thetolerance should be positive.
+Computation of the integral. Takes the function, the lower and upper bound values, the initial number of Kronrod points, the relative tolerance value and the maximal number of iterations as parameters. theNbPnts should be odd and greater then or equal to 3. Note that theTolerance is relative, i.e. the criterion of solution reaching is: Abs(Kronrod - Gauss)/Abs(Kronrod) < theTolerance. theTolerance should be positive.
 ") Perform;
 		void Perform(math_Function & theFunction, const Standard_Real theLower, const Standard_Real theUpper, const Standard_Integer theNbPnts, const Standard_Real theTolerance, const Standard_Integer theMaxNbIter);
 
@@ -4265,7 +4283,7 @@ None
 
 Description
 -----------
-Constructs a non-initialized matrix of range [lowerrow..upperrow, lowercol..uppercol] for the constructed matrix: - lowerrow and upperrow are the indexes of the lower and upper bounds of a row, and - lowercol and uppercol are the indexes of the lower and upper bounds of a column.
+Constructs a non-initialized matrix of range [LowerRow..UpperRow, LowerCol..UpperCol] For the constructed matrix: - LowerRow and UpperRow are the indexes of the lower and upper bounds of a row, and - LowerCol and UpperCol are the indexes of the lower and upper bounds of a column.
 ") math_Matrix;
 		 math_Matrix(const Standard_Integer LowerRow, const Standard_Integer UpperRow, const Standard_Integer LowerCol, const Standard_Integer UpperCol);
 
@@ -4287,7 +4305,7 @@ None
 
 Description
 -----------
-Constructs a non-initialized matrix of range [lowerrow..upperrow, lowercol..uppercol] whose values are all initialized with the value initialvalue.
+constructs a non-initialized matrix of range [LowerRow..UpperRow, LowerCol..UpperCol] whose values are all initialized with the value InitialValue.
 ") math_Matrix;
 		 math_Matrix(const Standard_Integer LowerRow, const Standard_Integer UpperRow, const Standard_Integer LowerCol, const Standard_Integer UpperCol, const Standard_Real InitialValue);
 
@@ -4309,7 +4327,7 @@ None
 
 Description
 -----------
-Constructs a matrix of range [lowerrow..upperrow, lowercol..uppercol] sharing data with a 'c array' pointed by tab.
+constructs a matrix of range [LowerRow..UpperRow, LowerCol..UpperCol] Sharing data with a 'C array' pointed by Tab.
 ") math_Matrix;
 		 math_Matrix(const Standard_Address Tab, const Standard_Integer LowerRow, const Standard_Integer UpperRow, const Standard_Integer LowerCol, const Standard_Integer UpperCol);
 
@@ -4327,7 +4345,7 @@ None
 
 Description
 -----------
-Constructs a matrix for copy in initialization. an exception is raised if the matrixes have not the same dimensions.
+constructs a matrix for copy in initialization. An exception is raised if the matrixes have not the same dimensions.
 ") math_Matrix;
 		 math_Matrix(const math_Matrix & Other);
 
@@ -4345,7 +4363,7 @@ None
 
 Description
 -----------
-Adds the matrix <right> to a matrix. an exception is raised if the dimensions are different. warning in order to save time when copying matrices, it is preferable to use operator += or the function add whenever possible.
+adds the matrix <Right> to a matrix. An exception is raised if the dimensions are different. Warning In order to save time when copying matrices, it is preferable to use operator += or the function Add whenever possible.
 ") Add;
 		void Add(const math_Matrix & Right);
 
@@ -4364,7 +4382,7 @@ None
 
 Description
 -----------
-Sets a matrix to the addition of <left> and <right>. an exception is raised if the dimensions are different.
+sets a matrix to the addition of <Left> and <Right>. An exception is raised if the dimensions are different.
 ") Add;
 		void Add(const math_Matrix & Left, const math_Matrix & Right);
 
@@ -4382,7 +4400,7 @@ math_Matrix
 
 Description
 -----------
-Adds the matrix <right> to a matrix. an exception is raised if the dimensions are different.
+adds the matrix <Right> to a matrix. An exception is raised if the dimensions are different.
 ") Added;
 		math_Matrix Added(const math_Matrix & Right);
 
@@ -4400,7 +4418,7 @@ math_VectorBase<>
 
 Description
 -----------
-Returns the column of index <col> of a matrix.
+Returns the column of index <Col> of a matrix.
 ") Col;
 		math_VectorBase<> Col(const Standard_Integer Col);
 
@@ -4413,7 +4431,7 @@ int
 
 Description
 -----------
-Returns the number of rows of this matrix. note that for a matrix a you always have the following relations: - a.rownumber() = a.upperrow() - a.lowerrow() + 1 - a.colnumber() = a.uppercol() - a.lowercol() + 1 - the length of a row of a is equal to the number of columns of a, - the length of a column of a is equal to the number of rows of a.returns the row range of a matrix.
+Returns the number of rows of this matrix. Note that for a matrix A you always have the following relations: - A.RowNumber() = A.UpperRow() - A.LowerRow() + 1 - A.ColNumber() = A.UpperCol() - A.LowerCol() + 1 - the length of a row of A is equal to the number of columns of A, - the length of a column of A is equal to the number of rows of A.returns the row range of a matrix.
 ") ColNumber;
 		Standard_Integer ColNumber();
 
@@ -4426,7 +4444,7 @@ float
 
 Description
 -----------
-Computes the determinant of a matrix. an exception is raised if the matrix is not a square matrix.
+Computes the determinant of a matrix. An exception is raised if the matrix is not a square matrix.
 ") Determinant;
 		Standard_Real Determinant();
 
@@ -4444,7 +4462,7 @@ None
 
 Description
 -----------
-Divides all the elements of a matrix by the value <right>. an exception is raised if <right> = 0.
+divides all the elements of a matrix by the value <Right>. An exception is raised if <Right> = 0.
 ") Divide;
 		void Divide(const Standard_Real Right);
 
@@ -4462,7 +4480,7 @@ math_Matrix
 
 Description
 -----------
-Divides all the elements of a matrix by the value <right>. an exception is raised if <right> = 0.
+divides all the elements of a matrix by the value <Right>. An exception is raised if <Right> = 0.
 ") Divided;
 		math_Matrix Divided(const Standard_Real Right);
 
@@ -4479,7 +4497,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints information on the current state of the object. is used to redefine the operator <<.
+Prints information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -4497,7 +4515,7 @@ None
 
 Description
 -----------
-Initialize all the elements of a matrix to initialvalue.
+Initialize all the elements of a matrix to InitialValue.
 ") Init;
 		void Init(const Standard_Real InitialValue);
 
@@ -4515,7 +4533,7 @@ math_Matrix
 
 Description
 -----------
-Matrixes are copied through assignment. an exception is raised if the dimensions are different.
+Matrixes are copied through assignment. An exception is raised if the dimensions are different.
 ") Initialized;
 		math_Matrix & Initialized(const math_Matrix & Other);
 
@@ -4528,7 +4546,7 @@ math_Matrix
 
 Description
 -----------
-Returns the inverse of a matrix. exception notsquare is raised if the matrix is not square. exception singularmatrix is raised if the matrix is singular.
+Returns the inverse of a matrix. Exception NotSquare is raised if the matrix is not square. Exception SingularMatrix is raised if the matrix is singular.
 ") Inverse;
 		math_Matrix Inverse();
 
@@ -4541,7 +4559,7 @@ None
 
 Description
 -----------
-Inverts a matrix using gauss algorithm. exception notsquare is raised if the matrix is not square. exception singularmatrix is raised if the matrix is singular.
+Inverts a matrix using Gauss algorithm. Exception NotSquare is raised if the matrix is not square. Exception SingularMatrix is raised if the matrix is singular.
 ") Invert;
 		void Invert();
 
@@ -4554,7 +4572,7 @@ int
 
 Description
 -----------
-Returns the value of the lower index of the column range of a matrix.
+Returns the value of the Lower index of the column range of a matrix.
 ") LowerCol;
 		Standard_Integer LowerCol();
 
@@ -4567,7 +4585,7 @@ int
 
 Description
 -----------
-Returns the value of the lower index of the row range of a matrix.
+Returns the value of the Lower index of the row range of a matrix.
 ") LowerRow;
 		Standard_Integer LowerRow();
 
@@ -4585,7 +4603,7 @@ math_Matrix
 
 Description
 -----------
-Multiplies all the elements of a matrix by the value <right>.
+multiplies all the elements of a matrix by the value <Right>.
 ") Multiplied;
 		math_Matrix Multiplied(const Standard_Real Right);
 
@@ -4603,7 +4621,7 @@ math_Matrix
 
 Description
 -----------
-Returns the product of 2 matrices. an exception is raised if the dimensions are different.
+Returns the product of 2 matrices. An exception is raised if the dimensions are different.
 ") Multiplied;
 		math_Matrix Multiplied(const math_Matrix & Right);
 
@@ -4621,7 +4639,7 @@ math_VectorBase<>
 
 Description
 -----------
-Returns the product of a matrix by a vector. an exception is raised if the dimensions are different.
+Returns the product of a matrix by a vector. An exception is raised if the dimensions are different.
 ") Multiplied;
 		math_VectorBase<> Multiplied(const math_VectorBase<> & Right);
 
@@ -4639,7 +4657,7 @@ None
 
 Description
 -----------
-Sets this matrix to the product of the matrix left, and the matrix right. example math_matrix a (1, 3, 1, 3); math_matrix b (1, 3, 1, 3); // a = ... , b = ... math_matrix c (1, 3, 1, 3); c.multiply(a, b); exceptions standard_dimensionerror if matrices are of incompatible dimensions, i.e. if: - the number of columns of matrix left, or the number of rows of matrix tleft is not equal to the number of rows of matrix right, or - the number of rows of matrix left, or the number of columns of matrix tleft is not equal to the number of rows of this matrix, or - the number of columns of matrix right is not equal to the number of columns of this matrix.
+Sets this matrix to the product of the matrix Left, and the matrix Right. Example math_Matrix A (1, 3, 1, 3); math_Matrix B (1, 3, 1, 3); // A = ... , B = ... math_Matrix C (1, 3, 1, 3); C.Multiply(A, B); Exceptions Standard_DimensionError if matrices are of incompatible dimensions, i.e. if: - the number of columns of matrix Left, or the number of rows of matrix TLeft is not equal to the number of rows of matrix Right, or - the number of rows of matrix Left, or the number of columns of matrix TLeft is not equal to the number of rows of this matrix, or - the number of columns of matrix Right is not equal to the number of columns of this matrix.
 ") Multiply;
 		void Multiply(const Standard_Real Right);
 
@@ -4658,7 +4676,7 @@ None
 
 Description
 -----------
-Computes a matrix as the product of 2 vectors. an exception is raised if the dimensions are different. <self> = <left> * <right>.
+Computes a matrix as the product of 2 vectors. An exception is raised if the dimensions are different. <self> = <Left> * <Right>.
 ") Multiply;
 		void Multiply(const math_VectorBase<> & Left, const math_VectorBase<> & Right);
 
@@ -4677,7 +4695,7 @@ None
 
 Description
 -----------
-Computes a matrix as the product of 2 matrixes. an exception is raised if the dimensions are different.
+Computes a matrix as the product of 2 matrixes. An exception is raised if the dimensions are different.
 ") Multiply;
 		void Multiply(const math_Matrix & Left, const math_Matrix & Right);
 
@@ -4695,7 +4713,7 @@ None
 
 Description
 -----------
-Returns the product of 2 matrices. an exception is raised if the dimensions are different.
+Returns the product of 2 matrices. An exception is raised if the dimensions are different.
 ") Multiply;
 		void Multiply(const math_Matrix & Right);
 
@@ -4708,7 +4726,7 @@ math_Matrix
 
 Description
 -----------
-Returns the opposite of a matrix. an exception is raised if the dimensions are different.
+Returns the opposite of a matrix. An exception is raised if the dimensions are different.
 ") Opposite;
 		math_Matrix Opposite();
 
@@ -4726,7 +4744,7 @@ math_VectorBase<>
 
 Description
 -----------
-Returns the row of index row of a matrix.
+Returns the row of index Row of a matrix.
 ") Row;
 		math_VectorBase<> Row(const Standard_Integer Row);
 
@@ -4739,7 +4757,7 @@ int
 
 Description
 -----------
-Returns the number of rows of this matrix. note that for a matrix a you always have the following relations: - a.rownumber() = a.upperrow() - a.lowerrow() + 1 - a.colnumber() = a.uppercol() - a.lowercol() + 1 - the length of a row of a is equal to the number of columns of a, - the length of a column of a is equal to the number of rows of a.returns the row range of a matrix.
+Returns the number of rows of this matrix. Note that for a matrix A you always have the following relations: - A.RowNumber() = A.UpperRow() - A.LowerRow() + 1 - A.ColNumber() = A.UpperCol() - A.LowerCol() + 1 - the length of a row of A is equal to the number of columns of A, - the length of a column of A is equal to the number of rows of A.returns the row range of a matrix.
 ") RowNumber;
 		Standard_Integer RowNumber();
 
@@ -4761,7 +4779,7 @@ None
 
 Description
 -----------
-Sets the values of this matrix, - from index i1 to index i2 on the row dimension, and - from index j1 to index j2 on the column dimension, to those of matrix m. exceptions standard_dimensionerror if: - i1 is less than the index of the lower row bound of this matrix, or - i2 is greater than the index of the upper row bound of this matrix, or - j1 is less than the index of the lower column bound of this matrix, or - j2 is greater than the index of the upper column bound of this matrix, or - i2 - i1 + 1 is not equal to the number of rows of matrix m, or - j2 - j1 + 1 is not equal to the number of columns of matrix m.
+Sets the values of this matrix, - from index I1 to index I2 on the row dimension, and - from index J1 to index J2 on the column dimension, to those of matrix M. Exceptions Standard_DimensionError if: - I1 is less than the index of the lower row bound of this matrix, or - I2 is greater than the index of the upper row bound of this matrix, or - J1 is less than the index of the lower column bound of this matrix, or - J2 is greater than the index of the upper column bound of this matrix, or - I2 - I1 + 1 is not equal to the number of rows of matrix M, or - J2 - J1 + 1 is not equal to the number of columns of matrix M.
 ") Set;
 		void Set(const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer J1, const Standard_Integer J2, const math_Matrix & M);
 
@@ -4780,7 +4798,7 @@ None
 
 Description
 -----------
-Sets the column of index col of a matrix to the vector <v>. an exception is raised if the dimensions are different. an exception is raises if <col> is inferior to the lower column of the matrix or <col> is superior to the upper column.
+Sets the column of index Col of a matrix to the vector <V>. An exception is raised if the dimensions are different. An exception is raises if <Col> is inferior to the lower column of the matrix or <Col> is superior to the upper column.
 ") SetCol;
 		void SetCol(const Standard_Integer Col, const math_VectorBase<> & V);
 
@@ -4798,7 +4816,7 @@ None
 
 Description
 -----------
-Sets the diagonal of a matrix to the value <value>. an exception is raised if the matrix is not square.
+Sets the diagonal of a matrix to the value <Value>. An exception is raised if the matrix is not square.
 ") SetDiag;
 		void SetDiag(const Standard_Real Value);
 
@@ -4817,7 +4835,7 @@ None
 
 Description
 -----------
-Sets the row of index row of a matrix to the vector <v>. an exception is raised if the dimensions are different. an exception is raises if <row> is inferior to the lower row of the matrix or <row> is superior to the upper row.
+Sets the row of index Row of a matrix to the vector <V>. An exception is raised if the dimensions are different. An exception is raises if <Row> is inferior to the lower row of the matrix or <Row> is superior to the upper row.
 ") SetRow;
 		void SetRow(const Standard_Integer Row, const math_VectorBase<> & V);
 
@@ -4835,7 +4853,7 @@ None
 
 Description
 -----------
-Subtracts the matrix <right> from <self>. an exception is raised if the dimensions are different. warning in order to avoid time-consuming copying of matrices, it is preferable to use operator -= or the function subtract whenever possible.
+Subtracts the matrix <Right> from <self>. An exception is raised if the dimensions are different. Warning In order to avoid time-consuming copying of matrices, it is preferable to use operator -= or the function Subtract whenever possible.
 ") Subtract;
 		void Subtract(const math_Matrix & Right);
 
@@ -4854,7 +4872,7 @@ None
 
 Description
 -----------
-Sets a matrix to the subtraction of the matrix <right> from the matrix <left>. an exception is raised if the dimensions are different.
+Sets a matrix to the Subtraction of the matrix <Right> from the matrix <Left>. An exception is raised if the dimensions are different.
 ") Subtract;
 		void Subtract(const math_Matrix & Left, const math_Matrix & Right);
 
@@ -4872,7 +4890,7 @@ math_Matrix
 
 Description
 -----------
-Returns the result of the subtraction of <right> from <self>. an exception is raised if the dimensions are different.
+Returns the result of the subtraction of <Right> from <self>. An exception is raised if the dimensions are different.
 ") Subtracted;
 		math_Matrix Subtracted(const math_Matrix & Right);
 
@@ -4891,7 +4909,7 @@ None
 
 Description
 -----------
-Swaps the columns of index <col1> and <col2>. an exception is raised if <col1> or <col2> is out of range.
+Swaps the columns of index <Col1> and <Col2>. An exception is raised if <Col1> or <Col2> is out of range.
 ") SwapCol;
 		void SwapCol(const Standard_Integer Col1, const Standard_Integer Col2);
 
@@ -4910,7 +4928,7 @@ None
 
 Description
 -----------
-Swaps the rows of index row1 and row2. an exception is raised if <row1> or <row2> is out of range.
+Swaps the rows of index Row1 and Row2. An exception is raised if <Row1> or <Row2> is out of range.
 ") SwapRow;
 		void SwapRow(const Standard_Integer Row1, const Standard_Integer Row2);
 
@@ -4928,7 +4946,7 @@ math_Matrix
 
 Description
 -----------
-Sets this matrix to the product of the transposed matrix tleft, and the matrix right. example math_matrix a (1, 3, 1, 3); math_matrix b (1, 3, 1, 3); // a = ... , b = ... math_matrix c (1, 3, 1, 3); c.multiply(a, b); exceptions standard_dimensionerror if matrices are of incompatible dimensions, i.e. if: - the number of columns of matrix left, or the number of rows of matrix tleft is not equal to the number of rows of matrix right, or - the number of rows of matrix left, or the number of columns of matrix tleft is not equal to the number of rows of this matrix, or - the number of columns of matrix right is not equal to the number of columns of this matrix.
+Sets this matrix to the product of the transposed matrix TLeft, and the matrix Right. Example math_Matrix A (1, 3, 1, 3); math_Matrix B (1, 3, 1, 3); // A = ... , B = ... math_Matrix C (1, 3, 1, 3); C.Multiply(A, B); Exceptions Standard_DimensionError if matrices are of incompatible dimensions, i.e. if: - the number of columns of matrix Left, or the number of rows of matrix TLeft is not equal to the number of rows of matrix Right, or - the number of rows of matrix Left, or the number of columns of matrix TLeft is not equal to the number of rows of this matrix, or - the number of columns of matrix Right is not equal to the number of columns of this matrix.
 ") TMultiplied;
 		math_Matrix TMultiplied(const Standard_Real Right);
 
@@ -4946,7 +4964,7 @@ math_Matrix
 
 Description
 -----------
-Returns the product of the transpose of a matrix with the matrix <right>. an exception is raised if the dimensions are different.
+Returns the product of the transpose of a matrix with the matrix <Right>. An exception is raised if the dimensions are different.
 ") TMultiply;
 		math_Matrix TMultiply(const math_Matrix & Right);
 
@@ -4965,7 +4983,7 @@ None
 
 Description
 -----------
-Computes a matrix to the product of the transpose of the matrix <tleft> with the matrix <right>. an exception is raised if the dimensions are different.
+Computes a matrix to the product of the transpose of the matrix <TLeft> with the matrix <Right>. An exception is raised if the dimensions are different.
 ") TMultiply;
 		void TMultiply(const math_Matrix & TLeft, const math_Matrix & Right);
 
@@ -4978,7 +4996,7 @@ None
 
 Description
 -----------
-Transposes a given matrix. an exception is raised if the matrix is not a square matrix.
+Transposes a given matrix. An exception is raised if the matrix is not a square matrix.
 ") Transpose;
 		void Transpose();
 
@@ -4991,7 +5009,7 @@ math_Matrix
 
 Description
 -----------
-Teturns the transposed of a matrix. an exception is raised if the matrix is not a square matrix.
+Teturns the transposed of a matrix. An exception is raised if the matrix is not a square matrix.
 ") Transposed;
 		math_Matrix Transposed();
 
@@ -5017,7 +5035,7 @@ int
 
 Description
 -----------
-Returns the upper index of the row range of a matrix.
+Returns the Upper index of the row range of a matrix.
 ") UpperRow;
 		Standard_Integer UpperRow();
 
@@ -5234,7 +5252,7 @@ int
 
 Description
 -----------
-Return the state of the function corresponding to the latestt call of any methods associated to the function. this function is called by each of the algorithms described later which define the function integer algorithm::statenumber(). the algorithm has the responsibility to call this function when it has found a solution (i.e. a root or a minimum) and has to maintain the association between the solution found and this statenumber. byu default, this method returns 0 (which means for the algorithm: no state has been saved). it is the responsibility of the programmer to decide if he needs to save the current state of the function and to return an integer that allows retrieval of the state.
+return the state of the function corresponding to the latestt call of any methods associated to the function. This function is called by each of the algorithms described later which define the function Integer Algorithm::StateNumber(). The algorithm has the responsibility to call this function when it has found a solution (i.e. a root or a minimum) and has to maintain the association between the solution found and this StateNumber. Byu default, this method returns 0 (which means for the algorithm: no state has been saved). It is the responsibility of the programmer to decide if he needs to save the current state of the function and to return an Integer that allows retrieval of the state.
 ") GetStateNumber;
 		virtual Standard_Integer GetStateNumber();
 
@@ -5265,7 +5283,7 @@ F: float
 
 Description
 -----------
-Computes the values of the functions <f> for the variable <x>. returns true if the computation was done successfully, otherwise false.
+Computes the values of the Functions <F> for the variable <X>. returns True if the computation was done successfully, otherwise false.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
@@ -5301,7 +5319,7 @@ None
 
 Description
 -----------
-The newton method is done to find the root of the function f from the initial guess guess. the tolerance required on the root is given by tolerance. the solution is found when: abs(xi - xi-1) <= epsx and abs(f(xi))<= epsf the maximum number of iterations allowed is given by nbiterations.
+The Newton method is done to find the root of the function F from the initial guess Guess. The tolerance required on the root is given by Tolerance. The solution is found when: abs(Xi - Xi-1) <= EpsX and abs(F(Xi))<= EpsF The maximum number of iterations allowed is given by NbIterations.
 ") math_NewtonFunctionRoot;
 		 math_NewtonFunctionRoot(math_FunctionWithDerivative & F, const Standard_Real Guess, const Standard_Real EpsX, const Standard_Real EpsF, const Standard_Integer NbIterations = 100);
 
@@ -5325,7 +5343,7 @@ None
 
 Description
 -----------
-The newton method is done to find the root of the function f from the initial guess guess. the solution must be inside the interval [a, b]. the tolerance required on the root is given by tolerance. the solution is found when: abs(xi - xi-1) <= epsx and abs(f(xi))<= epsf the maximum number of iterations allowed is given by nbiterations.
+The Newton method is done to find the root of the function F from the initial guess Guess. The solution must be inside the interval [A, B]. The tolerance required on the root is given by Tolerance. The solution is found when: abs(Xi - Xi-1) <= EpsX and abs(F(Xi))<= EpsF The maximum number of iterations allowed is given by NbIterations.
 ") math_NewtonFunctionRoot;
 		 math_NewtonFunctionRoot(math_FunctionWithDerivative & F, const Standard_Real Guess, const Standard_Real EpsX, const Standard_Real EpsF, const Standard_Real A, const Standard_Real B, const Standard_Integer NbIterations = 100);
 
@@ -5347,7 +5365,7 @@ None
 
 Description
 -----------
-Is used in a sub-class to initialize correctly all the fields of this class.
+is used in a sub-class to initialize correctly all the fields of this class.
 ") math_NewtonFunctionRoot;
 		 math_NewtonFunctionRoot(const Standard_Real A, const Standard_Real B, const Standard_Real EpsX, const Standard_Real EpsF, const Standard_Integer NbIterations = 100);
 
@@ -5360,7 +5378,7 @@ float
 
 Description
 -----------
-Returns the value of the derivative at the root. exception notdone is raised if the root was not found.
+returns the value of the derivative at the root. Exception NotDone is raised if the root was not found.
 ") Derivative;
 		Standard_Real Derivative();
 
@@ -5403,7 +5421,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done on the computation of the root. exception notdone is raised if the root was not found.
+Returns the number of iterations really done on the computation of the Root. Exception NotDone is raised if the root was not found.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -5422,7 +5440,7 @@ None
 
 Description
 -----------
-Is used internally by the constructors.
+is used internally by the constructors.
 ") Perform;
 		void Perform(math_FunctionWithDerivative & F, const Standard_Real Guess);
 
@@ -5435,7 +5453,7 @@ float
 
 Description
 -----------
-Returns the value of the root of function <f>. exception notdone is raised if the root was not found.
+Returns the value of the root of function <F>. Exception NotDone is raised if the root was not found.
 ") Root;
 		Standard_Real Root();
 
@@ -5448,7 +5466,7 @@ float
 
 Description
 -----------
-Returns the value of the function at the root. exception notdone is raised if the root was not found.
+returns the value of the function at the root. Exception NotDone is raised if the root was not found.
 ") Value;
 		Standard_Real Value();
 
@@ -5483,7 +5501,7 @@ None
 
 Description
 -----------
-Initialize correctly all the fields of this class. the range (1, f.nbvariables()) must be especially respected for all vectors and matrix declarations.
+Initialize correctly all the fields of this class. The range (1, F.NbVariables()) must be especially respected for all vectors and matrix declarations.
 ") math_NewtonFunctionSetRoot;
 		 math_NewtonFunctionSetRoot(math_FunctionSetWithDerivatives & theFunction, const math_Vector & theXTolerance, const Standard_Real theFTolerance, const Standard_Integer tehNbIterations = 100);
 
@@ -5503,7 +5521,7 @@ None
 
 Description
 -----------
-This constructor should be used in a sub-class to initialize correctly all the fields of this class. the range (1, f.nbvariables()) must be especially respected for all vectors and matrix declarations. the method settolerance must be called before performing the algorithm.
+This constructor should be used in a sub-class to initialize correctly all the fields of this class. The range (1, F.NbVariables()) must be especially respected for all vectors and matrix declarations. The method SetTolerance must be called before performing the algorithm.
 ") math_NewtonFunctionSetRoot;
 		 math_NewtonFunctionSetRoot(math_FunctionSetWithDerivatives & theFunction, const Standard_Real theFTolerance, const Standard_Integer theNbIterations = 100);
 
@@ -5516,7 +5534,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix value of the derivative at the root. exception notdone is raised if the root was not found.
+Returns the matrix value of the derivative at the root. Exception NotDone is raised if the root was not found.
 ") Derivative;
 		const math_Matrix & Derivative();
 
@@ -5534,7 +5552,7 @@ None
 
 Description
 -----------
-Outputs the matrix value of the derivative at the root in der. exception notdone is raised if the root was not found. exception dimensionerror is raised if the range of der is not equal to the range of the startingpoint.
+Outputs the matrix value of the derivative at the root in Der. Exception NotDone is raised if the root was not found. Exception DimensionError is raised if the range of Der is not equal to the range of the StartingPoint.
 ") Derivative;
 		void Derivative(math_Matrix & Der);
 
@@ -5551,7 +5569,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints information on the current state of the object. is used to redefine the operator <<.
+Prints information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -5564,7 +5582,7 @@ math_Vector
 
 Description
 -----------
-Returns the vector value of the error done on the functions at the root. exception notdone is raised if the root was not found.
+Returns the vector value of the error done on the functions at the root. Exception NotDone is raised if the root was not found.
 ") FunctionSetErrors;
 		const math_Vector & FunctionSetErrors();
 
@@ -5582,7 +5600,7 @@ None
 
 Description
 -----------
-Outputs the vector value of the error done on the functions at the root in err. exception notdone is raised if the root was not found. exception dimensionerror is raised if the range of err is not equal to the range of the startingpoint.
+Outputs the vector value of the error done on the functions at the root in Err. Exception NotDone is raised if the root was not found. Exception DimensionError is raised if the range of Err is not equal to the range of the StartingPoint.
 ") FunctionSetErrors;
 		void FunctionSetErrors(math_Vector & Err);
 
@@ -5613,7 +5631,7 @@ bool
 
 Description
 -----------
-This method is called at the end of each iteration to check if the solution is found. vectors deltax, fvalues and jacobian matrix are consistent with the possible solution vector sol and can be inspected to decide whether the solution is reached or not.
+This method is called at the end of each iteration to check if the solution is found. Vectors DeltaX, Fvalues and Jacobian Matrix are consistent with the possible solution Vector Sol and can be inspected to decide whether the solution is reached or not.
 ") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached(math_FunctionSetWithDerivatives & F);
 
@@ -5626,7 +5644,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done during the computation of the root. exception notdone is raised if the root was not found.
+Returns the number of iterations really done during the computation of the Root. Exception NotDone is raised if the root was not found.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -5645,7 +5663,7 @@ None
 
 Description
 -----------
-The newton method is done to improve the root of the function from the initial guess point. the solution is found when: abs(xj - xj-1)(i) <= xtol(i) and abs(fi) <= ftol for all i;.
+The Newton method is done to improve the root of the function from the initial guess point. The solution is found when: abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;.
 ") Perform;
 		void Perform(math_FunctionSetWithDerivatives & theFunction, const math_Vector & theStartingPoint);
 
@@ -5666,7 +5684,7 @@ None
 
 Description
 -----------
-The newton method is done to improve the root of the function from the initial guess point. bounds may be given, to constrain the solution. the solution is found when: abs(xj - xj-1)(i) <= xtol(i) and abs(fi) <= ftol for all i;.
+The Newton method is done to improve the root of the function from the initial guess point. Bounds may be given, to constrain the solution. The solution is found when: abs(Xj - Xj-1)(i) <= XTol(i) and abs(Fi) <= FTol for all i;.
 ") Perform;
 		void Perform(math_FunctionSetWithDerivatives & theFunction, const math_Vector & theStartingPoint, const math_Vector & theInfBound, const math_Vector & theSupBound);
 
@@ -5679,7 +5697,7 @@ math_Vector
 
 Description
 -----------
-Returns the value of the root of function f. exceptions stdfail_notdone if the algorithm fails (and isdone returns false).
+Returns the value of the root of function F. Exceptions StdFail_NotDone if the algorithm fails (and IsDone returns false).
 ") Root;
 		const math_Vector & Root();
 
@@ -5697,7 +5715,7 @@ None
 
 Description
 -----------
-Outputs the root vector in root. exception notdone is raised if the root was not found. exception dimensionerror is raised if the range of root is not equal to the range of the startingpoint.
+outputs the root vector in Root. Exception NotDone is raised if the root was not found. Exception DimensionError is raised if the range of Root is not equal to the range of the StartingPoint.
 ") Root;
 		void Root(math_Vector & Root);
 
@@ -5755,7 +5773,7 @@ None
 
 Description
 -----------
-The tolerance required on the solution is given by tolerance. iteration are stopped if (!withsingularity) and h(f(xi)) is not definite positive (if the smaller eigenvalue of h < convexity) or isconverged() returns true for 2 successives iterations. warning: this constructor does not perform computation.
+The tolerance required on the solution is given by Tolerance. Iteration are stopped if (!WithSingularity) and H(F(Xi)) is not definite positive (if the smaller eigenvalue of H < Convexity) or IsConverged() returns True for 2 successives Iterations. Warning: This constructor does not perform computation.
 ") math_NewtonMinimum;
 		 math_NewtonMinimum(const math_MultipleVarFunctionWithHessian & theFunction, const Standard_Real theTolerance = Precision::Confusion(), const Standard_Integer theNbIterations = 40, const Standard_Real theConvexity = 1.0e-6, const Standard_Boolean theWithSingularity = Standard_True);
 
@@ -5772,7 +5790,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -5785,7 +5803,7 @@ math_Status
 
 Description
 -----------
-Returns the status of computation. the exception notdone is raised if an error has occurred.
+Returns the Status of computation. The exception NotDone is raised if an error has occurred.
 ") GetStatus;
 		math_Status GetStatus();
 
@@ -5798,7 +5816,7 @@ math_Vector
 
 Description
 -----------
-Returns the gradient vector at the minimum. exception notdone is raised if an error has occurred. the minimum was not found.
+returns the gradient vector at the minimum. Exception NotDone is raised if an error has occurred. The minimum was not found.
 ") Gradient;
 		const math_Vector & Gradient();
 
@@ -5816,7 +5834,7 @@ None
 
 Description
 -----------
-Outputs the gradient vector at the minimum in grad. exception notdone is raised if the minimum was not found. exception dimensionerror is raised if the range of grad is not equal to the range of the startingpoint.
+outputs the gradient vector at the minimum in Grad. Exception NotDone is raised if the minimum was not found. Exception DimensionError is raised if the range of Grad is not equal to the range of the StartingPoint.
 ") Gradient;
 		void Gradient(math_Vector & Grad);
 
@@ -5829,7 +5847,7 @@ bool
 
 Description
 -----------
-This method is called at the end of each iteration to check the convergence: || xi+1 - xi || < tolerance or || f(xi+1) - f(xi)|| < tolerance * || f(xi) || it can be redefined in a sub-class to implement a specific test.
+This method is called at the end of each iteration to check the convergence: || Xi+1 - Xi || < Tolerance or || F(Xi+1) - F(Xi)|| < Tolerance * || F(Xi) || It can be redefined in a sub-class to implement a specific test.
 ") IsConverged;
 		virtual Standard_Boolean IsConverged();
 
@@ -5855,7 +5873,7 @@ math_Vector
 
 Description
 -----------
-Returns the location vector of the minimum. exception notdone is raised if an error has occurred.
+returns the location vector of the minimum. Exception NotDone is raised if an error has occurred.
 ") Location;
 		const math_Vector & Location();
 
@@ -5873,7 +5891,7 @@ None
 
 Description
 -----------
-Outputs the location vector of the minimum in loc. exception notdone is raised if an error has occurred. exception dimensionerror is raised if the range of loc is not equal to the range of the startingpoint.
+outputs the location vector of the minimum in Loc. Exception NotDone is raised if an error has occurred. Exception DimensionError is raised if the range of Loc is not equal to the range of the StartingPoint.
 ") Location;
 		void Location(math_Vector & Loc);
 
@@ -5886,7 +5904,7 @@ float
 
 Description
 -----------
-Returns the value of the minimum. exception notdone is raised if the minimum was not found.
+returns the value of the minimum. Exception NotDone is raised if the minimum was not found.
 ") Minimum;
 		Standard_Real Minimum();
 
@@ -5899,7 +5917,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done in the calculation of the minimum. the exception notdone is raised if an error has occurred.
+returns the number of iterations really done in the calculation of the minimum. The exception NotDone is raised if an error has occurred.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -5978,7 +5996,13 @@ None
 
 Description
 -----------
-/** * constructor. * * @param thefunc defines the objective function. it should exist during all lifetime of class instance. * @param thelowborder defines lower border of search space. * @param theuppborder defines upper border of search space. * @param thesteps defines steps of regular grid, used for particle generation. this parameter used to define stop condition (terminalvelocity). * @param thenbparticles defines number of particles. * @param thenbiter defines maximum number of iterations. */.
+/** * Constructor. * * 
+Parameter theFunc defines the objective function. It should exist during all lifetime of class instance. * 
+Parameter theLowBorder defines lower border of search space. * 
+Parameter theUppBorder defines upper border of search space. * 
+Parameter theSteps defines steps of regular grid, used for particle generation. This parameter used to define stop condition (TerminalVelocity). * 
+Parameter theNbParticles defines number of particles. * 
+Parameter theNbIter defines maximum number of iterations. */.
 ") math_PSO;
 		 math_PSO(math_MultipleVarFunction * theFunc, const math_Vector & theLowBorder, const math_Vector & theUppBorder, const math_Vector & theSteps, const Standard_Integer theNbParticles = 32, const Standard_Integer theNbIter = 100);
 
@@ -6131,7 +6155,7 @@ None
 
 Description
 -----------
-Constructor. initialize new entity.
+Constructor. Initialize new entity.
 ") math_Powell;
 		 math_Powell(const math_MultipleVarFunction & theFunction, const Standard_Real theTolerance, const Standard_Integer theNbIterations = 200, const Standard_Real theZEPS = 1.0e-12);
 
@@ -6148,7 +6172,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints information on the current state of the object. is used to redefine the operator <<.
+Prints information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -6179,7 +6203,7 @@ bool
 
 Description
 -----------
-Solution f = fi is found when: 2.0 * abs(fi - fi-1) <= tolerance * (abs(fi) + abs(fi-1)) + zeps. the maximum number of iterations allowed is given by nbiterations.
+Solution F = Fi is found when: 2.0 * abs(Fi - Fi-1) <= Tolerance * (abs(Fi) + abs(Fi-1)) + ZEPS. The maximum number of iterations allowed is given by NbIterations.
 ") IsSolutionReached;
 		virtual Standard_Boolean IsSolutionReached(math_MultipleVarFunction & theFunction);
 
@@ -6192,7 +6216,7 @@ math_Vector
 
 Description
 -----------
-Returns the location vector of the minimum. exception notdone is raised if the minimum was not found.
+returns the location vector of the minimum. Exception NotDone is raised if the minimum was not found.
 ") Location;
 		const math_Vector & Location();
 
@@ -6210,7 +6234,7 @@ None
 
 Description
 -----------
-Outputs the location vector of the minimum in loc. exception notdone is raised if the minimum was not found. exception dimensionerror is raised if the range of loc is not equal to the range of the startingpoint.
+outputs the location vector of the minimum in Loc. Exception NotDone is raised if the minimum was not found. Exception DimensionError is raised if the range of Loc is not equal to the range of the StartingPoint.
 ") Location;
 		void Location(math_Vector & Loc);
 
@@ -6223,7 +6247,7 @@ float
 
 Description
 -----------
-Returns the value of the minimum. exception notdone is raised if the minimum was not found.
+Returns the value of the minimum. Exception NotDone is raised if the minimum was not found.
 ") Minimum;
 		Standard_Real Minimum();
 
@@ -6236,7 +6260,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done during the computation of the minimum. exception notdone is raised if the minimum was not found.
+Returns the number of iterations really done during the computation of the minimum. Exception NotDone is raised if the minimum was not found.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -6256,7 +6280,7 @@ None
 
 Description
 -----------
-Computes powell minimization on the function f given thestartingpoint, and an initial matrix thestartingdirection whose columns contain the initial set of directions. the solution f = fi is found when: 2.0 * abs(fi - fi-1) =< tolerance * (abs(fi) + abs(fi-1) + zeps).
+Computes Powell minimization on the function F given theStartingPoint, and an initial matrix theStartingDirection whose columns contain the initial set of directions. The solution F = Fi is found when: 2.0 * abs(Fi - Fi-1) =< Tolerance * (abs(Fi) + abs(Fi-1) + ZEPS).
 ") Perform;
 		void Perform(math_MultipleVarFunction & theFunction, const math_Vector & theStartingPoint, const math_Matrix & theStartingDirections);
 
@@ -6288,7 +6312,7 @@ None
 
 Description
 -----------
-Given as input an n x m matrix a with n < m, n = m or n > m this constructor performs the singular value decomposition.
+Given as input an n X m matrix A with n < m, n = m or n > m this constructor performs the Singular Value Decomposition.
 ") math_SVD;
 		 math_SVD(const math_Matrix & A);
 
@@ -6305,7 +6329,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints information on the current state of the object. is used to redefine the operator <<.
+Prints information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -6337,7 +6361,7 @@ None
 
 Description
 -----------
-Computes the inverse inv of matrix a such as a * inverse = identity. exceptions stdfail_notdone if the algorithm fails (and isdone returns false). standard_dimensionerror if the ranges of inv are compatible with the ranges of a.
+Computes the inverse Inv of matrix A such as A * Inverse = Identity. Exceptions StdFail_NotDone if the algorithm fails (and IsDone returns false). Standard_DimensionError if the ranges of Inv are compatible with the ranges of A.
 ") PseudoInverse;
 		void PseudoInverse(math_Matrix & Inv, const Standard_Real Eps = 1.0e-6);
 
@@ -6357,7 +6381,7 @@ None
 
 Description
 -----------
-Given the input vector b this routine solves the set of linear equations a . x = b. exception notdone is raised if the decomposition of a was not done successfully. exception dimensionerror is raised if the range of b is not equal to the rowrange of a. exception dimensionerror is raised if the range of x is not equal to the colrange of a.
+Given the input Vector B this routine solves the set of linear equations A . X = B. Exception NotDone is raised if the decomposition of A was not done successfully. Exception DimensionError is raised if the range of B is not equal to the rowrange of A. Exception DimensionError is raised if the range of X is not equal to the colrange of A.
 ") Solve;
 		void Solve(const math_Vector & B, math_Vector & X, const Standard_Real Eps = 1.0e-6);
 
@@ -6395,7 +6419,7 @@ None
 
 Description
 -----------
-Given coefficients a, b, c, d , e, this constructor performs the resolution of the equation above. the solutions must be contained in [infbound, supbound]. infbound and supbound can be set by default to 0 and 2*pi.
+Given coefficients a, b, c, d , e, this constructor performs the resolution of the equation above. The solutions must be contained in [InfBound, SupBound]. InfBound and SupBound can be set by default to 0 and 2*PI.
 ") math_TrigonometricFunctionRoots;
 		 math_TrigonometricFunctionRoots(const Standard_Real A, const Standard_Real B, const Standard_Real C, const Standard_Real D, const Standard_Real E, const Standard_Real InfBound, const Standard_Real SupBound);
 
@@ -6416,7 +6440,7 @@ None
 
 Description
 -----------
-Given the two coefficients d and e, it performs the resolution of d*sin(x) + e = 0. the solutions must be contained in [infbound, supbound]. infbound and supbound can be set by default to 0 and 2*pi.
+Given the two coefficients d and e, it performs the resolution of d*sin(x) + e = 0. The solutions must be contained in [InfBound, SupBound]. InfBound and SupBound can be set by default to 0 and 2*PI.
 ") math_TrigonometricFunctionRoots;
 		 math_TrigonometricFunctionRoots(const Standard_Real D, const Standard_Real E, const Standard_Real InfBound, const Standard_Real SupBound);
 
@@ -6438,7 +6462,7 @@ None
 
 Description
 -----------
-Given the three coefficients c, d and e, it performs the resolution of c*cos(x) + d*sin(x) + e = 0. the solutions must be contained in [infbound, supbound]. infbound and supbound can be set by default to 0 and 2*pi.
+Given the three coefficients c, d and e, it performs the resolution of c*Cos(x) + d*sin(x) + e = 0. The solutions must be contained in [InfBound, SupBound]. InfBound and SupBound can be set by default to 0 and 2*PI.
 ") math_TrigonometricFunctionRoots;
 		 math_TrigonometricFunctionRoots(const Standard_Real C, const Standard_Real D, const Standard_Real E, const Standard_Real InfBound, const Standard_Real SupBound);
 
@@ -6494,7 +6518,7 @@ int
 
 Description
 -----------
-Returns the number of solutions found. an exception is raised if notdone. an exception is raised if there is an infinity of solutions.
+Returns the number of solutions found. An exception is raised if NotDone. An exception is raised if there is an infinity of solutions.
 ") NbSolutions;
 		Standard_Integer NbSolutions();
 
@@ -6512,7 +6536,7 @@ float
 
 Description
 -----------
-Returns the solution of range index. an exception is raised if notdone. an exception is raised if index>nbsolutions. an exception is raised if there is an infinity of solutions.
+Returns the solution of range Index. An exception is raised if NotDone. An exception is raised if Index>NbSolutions. An exception is raised if there is an infinity of solutions.
 ") Value;
 		Standard_Real Value(const Standard_Integer Index);
 
@@ -6549,7 +6573,7 @@ None
 
 Description
 -----------
-Given an input matrix cont, two input vectors secont and startingpoint, it solves cont*x = secont (only = equations) with a minimization of norme(x-x0). the maximum iterations number allowed is fixed to nbiterations. the tolerance epslic is fixed for the dual variable convergence. the tolerance epslix is used for the convergence of x. exception constructionerror is raised if the line number of cont is different from the length of secont.
+Given an input matrix Cont, two input vectors Secont and StartingPoint, it solves Cont*X = Secont (only = equations) with a minimization of Norme(X-X0). The maximum iterations number allowed is fixed to NbIterations. The tolerance EpsLic is fixed for the dual variable convergence. The tolerance EpsLix is used for the convergence of X. Exception ConstructionError is raised if the line number of Cont is different from the length of Secont.
 ") math_Uzawa;
 		 math_Uzawa(const math_Matrix & Cont, const math_Vector & Secont, const math_Vector & StartingPoint, const Standard_Real EpsLix = 1.0e-06, const Standard_Real EpsLic = 1.0e-06, const Standard_Integer NbIterations = 500);
 
@@ -6574,7 +6598,7 @@ None
 
 Description
 -----------
-Given an input matrix cont, two input vectors secont and startingpoint, it solves cont*x = secont (the nce first equations are equal equations and the nci last equations are inequalities <) with a minimization of norme(x-x0). the maximum iterations number allowed is fixed to nbiterations. the tolerance epslic is fixed for the dual variable convergence. the tolerance epslix is used for the convergence of x. there are no conditions on nce and nci. exception constructionerror is raised if the line number of cont is different from the length of secont and from nce + nci.
+Given an input matrix Cont, two input vectors Secont and StartingPoint, it solves Cont*X = Secont (the Nce first equations are equal equations and the Nci last equations are inequalities <) with a minimization of Norme(X-X0). The maximum iterations number allowed is fixed to NbIterations. The tolerance EpsLic is fixed for the dual variable convergence. The tolerance EpsLix is used for the convergence of X. There are no conditions on Nce and Nci. Exception ConstructionError is raised if the line number of Cont is different from the length of Secont and from Nce + Nci.
 ") math_Uzawa;
 		 math_Uzawa(const math_Matrix & Cont, const math_Vector & Secont, const math_Vector & StartingPoint, const Standard_Integer Nci, const Standard_Integer Nce, const Standard_Real EpsLix = 1.0e-06, const Standard_Real EpsLic = 1.0e-06, const Standard_Integer NbIterations = 500);
 
@@ -6592,7 +6616,7 @@ None
 
 Description
 -----------
-Returns the duale variables v of the systeme.
+returns the duale variables V of the systeme.
 ") Duale;
 		void Duale(math_Vector & V);
 
@@ -6622,7 +6646,7 @@ math_Vector
 
 Description
 -----------
-Returns the difference between x solution and the startingpoint. an exception is raised if notdone.
+Returns the difference between X solution and the StartingPoint. An exception is raised if NotDone.
 ") Error;
 		const math_Vector & Error();
 
@@ -6635,7 +6659,7 @@ math_Vector
 
 Description
 -----------
-Returns the initial error cont*startingpoint-secont. an exception is raised if notdone.
+Returns the initial error Cont*StartingPoint-Secont. An exception is raised if NotDone.
 ") InitialError;
 		const math_Vector & InitialError();
 
@@ -6648,7 +6672,7 @@ math_Matrix
 
 Description
 -----------
-Returns the inverse matrix of (c * transposed(c)). this result is needed for the computation of the gradient when approximating a curve.
+returns the inverse matrix of (C * Transposed(C)). This result is needed for the computation of the gradient when approximating a curve.
 ") InverseCont;
 		const math_Matrix & InverseCont();
 
@@ -6674,7 +6698,7 @@ int
 
 Description
 -----------
-Returns the number of iterations really done. an exception is raised if notdone.
+returns the number of iterations really done. An exception is raised if NotDone.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -6687,7 +6711,7 @@ math_Vector
 
 Description
 -----------
-Returns the vector solution of the system above. an exception is raised if notdone.
+Returns the vector solution of the system above. An exception is raised if NotDone.
 ") Value;
 		const math_Vector & Value();
 
@@ -6777,7 +6801,6 @@ No available documentation.
 ************************/
 class math_VectorBase {
 	public:
-		DEFINE_NCOLLECTION_ALLOC ;
 		/****** math_VectorBase::math_VectorBase ******/
 		/****** md5 signature: 7686b4feb365f437bc9a18125aa19da4 ******/
 		%feature("compactdefaultargs") math_VectorBase;
@@ -6793,7 +6816,7 @@ None
 
 Description
 -----------
-Constructs a non-initialized vector in the range [thelower..theupper] 'thelower' and 'theupper' are the indexes of the lower and upper bounds of the constructed vector.
+Constructs a non-initialized vector in the range [theLower..theUpper] 'theLower' and 'theUpper' are the indexes of the lower and upper bounds of the constructed vector.
 ") math_VectorBase;
 		 math_VectorBase(const Standard_Integer theLower, const Standard_Integer theUpper);
 
@@ -6813,7 +6836,7 @@ None
 
 Description
 -----------
-Constructs a vector in the range [thelower..theupper] whose values are all initialized with the value 'theinitialvalue'.
+Constructs a vector in the range [theLower..theUpper] whose values are all initialized with the value 'theInitialValue'.
 ") math_VectorBase;
 		 math_VectorBase(const Standard_Integer theLower, const Standard_Integer theUpper, const TheItemType theInitialValue);
 
@@ -6833,7 +6856,7 @@ None
 
 Description
 -----------
-Constructs a vector in the range [thelower..theupper] whose values are all initialized with the value 'theinitialvalue'.
+Constructs a vector in the range [theLower..theUpper] whose values are all initialized with the value 'theInitialValue'.
 ") math_VectorBase;
 		 math_VectorBase(const TheItemType * theTab, const Standard_Integer theLower, const Standard_Integer theUpper);
 
@@ -6851,7 +6874,7 @@ None
 
 Description
 -----------
-Constructor for converting gp_xy to math_vectorbase.
+Constructor for converting gp_XY to math_VectorBase.
 ") math_VectorBase;
 		 math_VectorBase(const gp_XY & Other);
 
@@ -6869,7 +6892,7 @@ None
 
 Description
 -----------
-Constructor for converting gp_xyz to math_vectorbase.
+Constructor for converting gp_XYZ to math_VectorBase.
 ") math_VectorBase;
 		 math_VectorBase(const gp_XYZ & Other);
 
@@ -6887,7 +6910,7 @@ None
 
 Description
 -----------
-Constructs a copy for initialization. an exception is raised if the lengths of the vectors are different.
+Constructs a copy for initialization. An exception is raised if the lengths of the vectors are different.
 ") math_VectorBase;
 		 math_VectorBase(const math_VectorBase & theOther);
 
@@ -6905,7 +6928,7 @@ None
 
 Description
 -----------
-Adds the vector 'theright' to a vector. an exception is raised if the vectors have not the same length. warning in order to avoid time-consuming copying of vectors, it is preferable to use operator += or the function add whenever possible.
+adds the vector 'theRight' to a vector. An exception is raised if the vectors have not the same length. Warning In order to avoid time-consuming copying of vectors, it is preferable to use operator += or the function Add whenever possible.
 ") Add;
 		void Add(const math_VectorBase & theRight);
 
@@ -6924,7 +6947,7 @@ None
 
 Description
 -----------
-Sets a vector to the sum of the vector 'theleft' and the vector 'theright'. an exception is raised if the lengths are different.
+sets a vector to the sum of the vector 'theLeft' and the vector 'theRight'. An exception is raised if the lengths are different.
 ") Add;
 		void Add(const math_VectorBase & theLeft, const math_VectorBase & theRight);
 
@@ -6942,7 +6965,7 @@ math_VectorBase
 
 Description
 -----------
-Returns new vector as adding curent vector with the value 'theright'. an exception is raised if the vectors have not the same length. an exception is raised if the lengths are not equal.
+Returns new vector as adding current vector with the value 'theRight'. An exception is raised if the vectors do not have the same length. An exception is raised if the lengths are not equal.
 ") Added;
 		math_VectorBase Added(const math_VectorBase & theRight);
 
@@ -6960,7 +6983,7 @@ None
 
 Description
 -----------
-Divides a vector by the value 'theright'. an exception is raised if 'theright' = 0.
+divides a vector by the value 'theRight'. An exception is raised if 'theRight' = 0.
 ") Divide;
 		void Divide(const TheItemType theRight);
 
@@ -6978,7 +7001,7 @@ math_VectorBase
 
 Description
 -----------
-Returns new vector as dividing current vector with the value 'theright'. an exception is raised if 'theright' = 0.
+Returns new vector as dividing current vector with the value 'theRight'. An exception is raised if 'theRight' = 0.
 ") Divided;
 		math_VectorBase Divided(const TheItemType theRight);
 
@@ -6995,7 +7018,7 @@ theO: Standard_OStream
 
 Description
 -----------
-Prints information on the current state of the object. is used to redefine the operator <<.
+Prints information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -7013,7 +7036,7 @@ None
 
 Description
 -----------
-Initialize all the elements of a vector with 'theinitialvalue'.
+Initialize all the elements of a vector with 'theInitialValue'.
 ") Init;
 		void Init(const TheItemType theInitialValue);
 
@@ -7031,7 +7054,7 @@ math_VectorBase
 
 Description
 -----------
-Initialises a vector by copying 'theother'. an exception is raised if the lengths are different.
+Initialises a vector by copying 'theOther'. An exception is raised if the Lengths are different.
 ") Initialized;
 		math_VectorBase & Initialized(const math_VectorBase & theOther);
 
@@ -7109,7 +7132,7 @@ int
 
 Description
 -----------
-returns the index of the minimum element of a vector. (first found).
+Returns the index of the minimum element of a vector. (first found).
 ") Min;
 		Standard_Integer Min();
 
@@ -7127,7 +7150,7 @@ math_VectorBase
 
 Description
 -----------
-Returns the product of a vector and a real value.
+returns the product of a vector and a real value.
 ") Multiplied;
 		math_VectorBase Multiplied(const TheItemType theRight);
 
@@ -7145,7 +7168,7 @@ TheItemType
 
 Description
 -----------
-Returns the inner product of 2 vectors. an exception is raised if the lengths are not equal.
+returns the inner product of 2 vectors. An exception is raised if the lengths are not equal.
 ") Multiplied;
 		TheItemType Multiplied(const math_VectorBase & theRight);
 
@@ -7163,7 +7186,7 @@ math_VectorBase
 
 Description
 -----------
-Returns the product of a vector by a matrix.
+returns the product of a vector by a matrix.
 ") Multiplied;
 		math_VectorBase Multiplied(const math_Matrix & theRight);
 
@@ -7200,7 +7223,7 @@ None
 
 Description
 -----------
-Sets a vector to the product of the vector 'theleft' with the matrix 'theright'.
+sets a vector to the product of the vector 'theLeft' with the matrix 'theRight'.
 ") Multiply;
 		void Multiply(const math_VectorBase & theLeft, const math_Matrix & theRight);
 
@@ -7219,7 +7242,7 @@ None
 
 Description
 -----------
-//!sets a vector to the product of the matrix 'theleft' with the vector 'theright'.
+sets a vector to the product of the matrix 'theLeft' with the vector 'theRight'.
 ") Multiply;
 		void Multiply(const math_Matrix & theLeft, const math_VectorBase & theRight);
 
@@ -7238,7 +7261,7 @@ None
 
 Description
 -----------
-Returns the multiplication of a real by a vector. 'me' = 'theleft' * 'theright'.
+returns the multiplication of a real by a vector. 'me' = 'theLeft' * 'theRight'.
 ") Multiply;
 		void Multiply(const TheItemType theLeft, const math_VectorBase & theRight);
 
@@ -7277,7 +7300,7 @@ None
 
 Description
 -----------
-Normalizes this vector (the norm of the result is equal to 1.0) and assigns the result to this vector exceptions standard_nullvalue if this vector is null (i.e. if its norm is less than or equal to standard_real::realepsilon().
+Normalizes this vector (the norm of the result is equal to 1.0) and assigns the result to this vector Exceptions Standard_NullValue if this vector is null (i.e. if its norm is less than or equal to Standard_Real::RealEpsilon().
 ") Normalize;
 		void Normalize();
 
@@ -7290,7 +7313,7 @@ math_VectorBase
 
 Description
 -----------
-Normalizes this vector (the norm of the result is equal to 1.0) and creates a new vector exceptions standard_nullvalue if this vector is null (i.e. if its norm is less than or equal to standard_real::realepsilon().
+Normalizes this vector (the norm of the result is equal to 1.0) and creates a new vector Exceptions Standard_NullValue if this vector is null (i.e. if its norm is less than or equal to Standard_Real::RealEpsilon().
 ") Normalized;
 		math_VectorBase Normalized();
 
@@ -7303,7 +7326,7 @@ math_VectorBase
 
 Description
 -----------
-Returns the opposite of a vector.
+returns the opposite of a vector.
 ") Opposite;
 		math_VectorBase Opposite();
 
@@ -7323,7 +7346,7 @@ None
 
 Description
 -----------
-Sets a vector from 'thei1' to 'thei2' to the vector 'thev'; an exception is raised if 'thei1' is less than 'lowerindex' or 'thei2' is greater than 'upperindex' or 'thei1' is greater than 'thei2'. an exception is raised if 'thei2-thei1+1' is different from the 'length' of 'thev'.
+sets a vector from 'theI1' to 'theI2' to the vector 'theV'; An exception is raised if 'theI1' is less than 'LowerIndex' or 'theI2' is greater than 'UpperIndex' or 'theI1' is greater than 'theI2'. An exception is raised if 'theI2-theI1+1' is different from the 'Length' of 'theV'.
 ") Set;
 		void Set(const Standard_Integer theI1, const Standard_Integer theI2, const math_VectorBase & theV);
 
@@ -7342,7 +7365,7 @@ math_VectorBase
 
 Description
 -----------
-//!creates a new vector by inverting the values of this vector between indexes 'thei1' and 'thei2'. if the values of this vector were (1., 2., 3., 4.,5., 6.), by slicing it between indexes 2 and 5 the values of the resulting vector are (1., 5., 4., 3., 2., 6.).
+Creates a new vector by inverting the values of this vector between indexes 'theI1' and 'theI2'. If the values of this vector were (1., 2., 3., 4.,5., 6.), by slicing it between indexes 2 and 5 the values of the resulting vector are (1., 5., 4., 3., 2., 6.).
 ") Slice;
 		math_VectorBase Slice(const Standard_Integer theI1, const Standard_Integer theI2);
 
@@ -7361,7 +7384,7 @@ None
 
 Description
 -----------
-Sets a vector to the subtraction of the vector theright from the vector theleft. an exception is raised if the vectors have not the same length. warning in order to avoid time-consuming copying of vectors, it is preferable to use operator -= or the function subtract whenever possible.
+sets a vector to the Subtraction of the vector theRight from the vector theLeft. An exception is raised if the vectors have not the same length. Warning In order to avoid time-consuming copying of vectors, it is preferable to use operator -= or the function Subtract whenever possible.
 ") Subtract;
 		void Subtract(const math_VectorBase & theLeft, const math_VectorBase & theRight);
 
@@ -7379,7 +7402,7 @@ None
 
 Description
 -----------
-Returns the subtraction of 'theright' from 'me'. an exception is raised if the vectors have not the same length.
+returns the subtraction of 'theRight' from 'me'. An exception is raised if the vectors have not the same length.
 ") Subtract;
 		void Subtract(const math_VectorBase & theRight);
 
@@ -7397,7 +7420,7 @@ math_VectorBase
 
 Description
 -----------
-Returns the subtraction of 'theright' from 'me'. an exception is raised if the vectors have not the same length.
+returns the subtraction of 'theRight' from 'me'. An exception is raised if the vectors have not the same length.
 ") Subtracted;
 		math_VectorBase Subtracted(const math_VectorBase & theRight);
 
@@ -7415,7 +7438,7 @@ math_VectorBase
 
 Description
 -----------
-Returns the product of a vector and a real value.
+returns the product of a vector and a real value.
 ") TMultiplied;
 		math_VectorBase TMultiplied(const TheItemType theRight);
 
@@ -7434,7 +7457,7 @@ None
 
 Description
 -----------
-Sets a vector to the product of the transpose of the matrix 'thetleft' by the vector 'theright'.
+sets a vector to the product of the transpose of the matrix 'theTLeft' by the vector 'theRight'.
 ") TMultiply;
 		void TMultiply(const math_Matrix & theTLeft, const math_VectorBase & theRight);
 
@@ -7453,7 +7476,7 @@ None
 
 Description
 -----------
-Sets a vector to the product of the vector 'theleft' by the transpose of the matrix 'thetright'.
+sets a vector to the product of the vector 'theLeft' by the transpose of the matrix 'theTRight'.
 ") TMultiply;
 		void TMultiply(const math_VectorBase & theLeft, const math_Matrix & theTRight);
 
@@ -7484,7 +7507,7 @@ TheItemType
 
 Description
 -----------
-Accesses the value of index 'thenum' of a vector.
+accesses the value of index 'theNum' of a vector.
 ") Value;
 		const TheItemType & Value(const Standard_Integer theNum);
 
@@ -7502,7 +7525,7 @@ TheItemType
 
 Description
 -----------
-Accesses (in read or write mode) the value of index 'thenum' of a vector.
+accesses (in read or write mode) the value of index 'theNum' of a vector.
 ") Value;
 		TheItemType & Value(const Standard_Integer theNum);
 
@@ -7701,7 +7724,7 @@ bool
 
 Description
 -----------
-Returns the values <d> of the derivatives for the variable <x>. returns true if the computation was done successfully, false otherwise.
+Returns the values <D> of the derivatives for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Derivatives;
 		virtual Standard_Boolean Derivatives(const math_Vector & X, math_Matrix & D);
 
@@ -7746,7 +7769,7 @@ bool
 
 Description
 -----------
-Computes the values <f> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+Computes the values <F> of the Functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, math_Vector & F);
 
@@ -7766,7 +7789,7 @@ bool
 
 Description
 -----------
-Returns the values <f> of the functions and the derivatives <d> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+returns the values <F> of the functions and the derivatives <D> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, math_Vector & F, math_Matrix & D);
 
@@ -7799,7 +7822,7 @@ D: float
 
 Description
 -----------
-Computes the derivative <d> of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+Computes the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Derivative;
 		virtual Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
@@ -7817,7 +7840,7 @@ F: float
 
 Description
 -----------
-Computes the value <f>of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+Computes the value <F>of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -7836,7 +7859,7 @@ D: float
 
 Description
 -----------
-Computes the value <f> and the derivative <d> of the function for the variable <x>. returns true if the calculation were successfully done, false otherwise.
+Computes the value <F> and the derivative <D> of the function for the variable <X>. Returns True if the calculation were successfully done, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -7870,7 +7893,7 @@ bool
 
 Description
 -----------
-Computes the gradient <g> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+Computes the gradient <G> of the functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Gradient;
 		virtual Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
 
@@ -7901,7 +7924,7 @@ F: float
 
 Description
 -----------
-Computes the values of the functions <f> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+Computes the values of the Functions <F> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
@@ -7920,7 +7943,7 @@ F: float
 
 Description
 -----------
-Computes the value <f> and the gradient <g> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the value <F> and the gradient <G> of the functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
@@ -7954,7 +7977,7 @@ bool
 
 Description
 -----------
-Computes the gradient <g> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the gradient <G> of the functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Gradient;
 		virtual Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
 
@@ -7967,7 +7990,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function.
+returns the number of variables of the function.
 ") NbVariables;
 		virtual Standard_Integer NbVariables();
 
@@ -7985,7 +8008,7 @@ F: float
 
 Description
 -----------
-Computes the values of the functions <f> for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the values of the Functions <F> for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Value;
 		virtual Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
@@ -8004,7 +8027,7 @@ F: float
 
 Description
 -----------
-Computes the value <f> and the gradient <g> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the value <F> and the gradient <G> of the functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
@@ -8024,7 +8047,7 @@ F: float
 
 Description
 -----------
-Computes the value <f>, the gradient <g> and the hessian <h> of the functions for the variable <x>. returns true if the computation was done successfully, false otherwise.
+computes the value <F>, the gradient <G> and the hessian <H> of the functions for the variable <X>. Returns True if the computation was done successfully, False otherwise.
 ") Values;
 		virtual Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G, math_Matrix & H);
 

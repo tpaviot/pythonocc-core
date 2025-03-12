@@ -349,7 +349,6 @@ OSD_WEnvironmentIterator = OSD_WhoAmI.OSD_WEnvironmentIterator
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Address ( * OSD_ThreadFunction ) ( Standard_Address data );
 typedef OSD_StreamBuffer<std::iostream> OSD_IOStreamBuffer;
 typedef OSD_StreamBuffer<std::istream> OSD_IStreamBuffer;
 typedef OSD_StreamBuffer<std::ostream> OSD_OStreamBuffer;

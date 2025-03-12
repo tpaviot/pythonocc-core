@@ -884,7 +884,7 @@ None
 
 Description
 -----------
-Sets the coeff of index (row,col) to value raise if row (respectively col) is greater than the row (respectively column) length of coeff.
+Sets the coeff of index (Row,Col) to Value raise if Row (respectively Col) is greater than the Row (respectively Column) length of coeff.
 ") SetCoeff;
 		void SetCoeff(const Standard_Integer Row, const Standard_Integer Col, const gp_XYZ & Value);
 
@@ -903,7 +903,7 @@ None
 
 Description
 -----------
-Sets the pinpointconstraint of index index to value raise if index is greater than the length of ppc or the row length of coeff or lower than 1.
+Sets the PinPointConstraint of index Index to Value raise if Index is greater than the length of PPC or the Row length of coeff or lower than 1.
 ") SetPPC;
 		void SetPPC(const Standard_Integer Index, const Plate_PinpointConstraint & Value);
 
@@ -1033,7 +1033,7 @@ None
 
 Description
 -----------
-Sets the coeff of index (row,col) to value raise if row (respectively col) is greater than the row (respectively column) length of coeff.
+Sets the coeff of index (Row,Col) to Value raise if Row (respectively Col) is greater than the Row (respectively Column) length of coeff.
 ") SetCoeff;
 		void SetCoeff(const Standard_Integer Row, const Standard_Integer Col, const Standard_Real Value);
 
@@ -1052,7 +1052,7 @@ None
 
 Description
 -----------
-Sets the pinpointconstraint of index index to value raise if index is greater than the length of ppc or the row length of coeff or lower than 1.
+Sets the PinPointConstraint of index Index to Value raise if Index is greater than the length of PPC or the Row length of coeff or lower than 1.
 ") SetPPC;
 		void SetPPC(const Standard_Integer Index, const Plate_PinpointConstraint & Value);
 
@@ -1345,7 +1345,7 @@ None
 
 Description
 -----------
-Reset the plate in the initial state ( same as after create()).
+reset the Plate in the initial state ( same as after Create()).
 ") Init;
 		void Init();
 
@@ -1358,7 +1358,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 

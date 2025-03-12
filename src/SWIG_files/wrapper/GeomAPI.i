@@ -116,7 +116,7 @@ opencascade::handle<Geom2d_Curve>
 
 Description
 -----------
-This function builds (in the parametric space of the plane p) a 2d curve equivalent to the 3d curve c. the 3d curve c is considered to be located in the plane p. warning the 3d curve c must be of one of the following types: - a line - a circle - an ellipse - a hyperbola - a parabola - a bezier curve - a bspline curve exceptions standard_nosuchobject if c is not a defined type curve.
+This function builds (in the parametric space of the plane P) a 2D curve equivalent to the 3D curve C. The 3D curve C is considered to be located in the plane P. Warning The 3D curve C must be of one of the following types: - a line - a circle - an ellipse - a hyperbola - a parabola - a Bezier curve - a BSpline curve Exceptions Standard_NoSuchObject if C is not a defined type curve.
 ") To2d;
 		static opencascade::handle<Geom2d_Curve> To2d(const opencascade::handle<Geom_Curve> & C, const gp_Pln & P);
 
@@ -135,7 +135,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Builds a 3d curve equivalent to the 2d curve c described in the parametric space defined by the local coordinate system of plane p. the resulting 3d curve is of the same nature as that of the curve c.
+Builds a 3D curve equivalent to the 2D curve C described in the parametric space defined by the local coordinate system of plane P. The resulting 3D curve is of the same nature as that of the curve C.
 ") To3d;
 		static opencascade::handle<Geom_Curve> To3d(const opencascade::handle<Geom2d_Curve> & C, const gp_Pln & P);
 
@@ -162,7 +162,7 @@ None
 
 Description
 -----------
-Constructs an empty algorithm for computing extrema between two curves. use an init function to define the curves on which it is going to work.
+Constructs an empty algorithm for computing extrema between two curves. Use an Init function to define the curves on which it is going to work.
 ") GeomAPI_ExtremaCurveCurve;
 		 GeomAPI_ExtremaCurveCurve();
 
@@ -181,7 +181,7 @@ None
 
 Description
 -----------
-Computes the extrema between the curves c1 and c2.
+Computes the extrema between the curves C1 and C2.
 ") GeomAPI_ExtremaCurveCurve;
 		 GeomAPI_ExtremaCurveCurve(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2);
 
@@ -204,7 +204,7 @@ None
 
 Description
 -----------
-Computes the portion of the curve c1 limited by the two points of parameter (u1min,u1max), and - the portion of the curve c2 limited by the two points of parameter (u2min,u2max). warning use the function nbextrema to obtain the number of solutions. if this algorithm fails, nbextrema returns 0.
+Computes the portion of the curve C1 limited by the two points of parameter (U1min,U1max), and - the portion of the curve C2 limited by the two points of parameter (U2min,U2max). Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.
 ") GeomAPI_ExtremaCurveCurve;
 		 GeomAPI_ExtremaCurveCurve(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real U2min, const Standard_Real U2max);
 
@@ -222,7 +222,7 @@ float
 
 Description
 -----------
-Computes the distance between the end points of the extremum of index index computed by this algorithm. exceptions standard_outofrange if index is not in the range [ 1,nbextrema ], where nbextrema is the number of extrema computed by this algorithm.
+Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
@@ -235,7 +235,7 @@ Extrema_ExtCC
 
 Description
 -----------
-Return the algorithmic object from extrema.
+return the algorithmic object from Extrema.
 ") Extrema;
 		const Extrema_ExtCC & Extrema();
 
@@ -254,7 +254,7 @@ None
 
 Description
 -----------
-Initializes this algorithm with the given arguments and computes the extrema between the curves c1 and c2.
+Initializes this algorithm with the given arguments and computes the extrema between the curves C1 and C2.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2);
 
@@ -277,7 +277,7 @@ None
 
 Description
 -----------
-Initializes this algorithm with the given arguments and computes the extrema between: - the portion of the curve c1 limited by the two points of parameter (u1min,u1max), and - the portion of the curve c2 limited by the two points of parameter (u2min,u2max). warning use the function nbextrema to obtain the number of solutions. if this algorithm fails, nbextrema returns 0.
+Initializes this algorithm with the given arguments and computes the extrema between: - the portion of the curve C1 limited by the two points of parameter (U1min,U1max), and - the portion of the curve C2 limited by the two points of parameter (U2min,U2max). Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & C1, const opencascade::handle<Geom_Curve> & C2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real U2min, const Standard_Real U2max);
 
@@ -290,7 +290,7 @@ bool
 
 Description
 -----------
-Returns true if the two curves are parallel.
+Returns True if the two curves are parallel.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -303,7 +303,7 @@ float
 
 Description
 -----------
-Computes the distance between the end points of the shortest extremum computed by this algorithm. exceptions stdfail_notdone if this algorithm fails.
+Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
@@ -321,7 +321,7 @@ U2: float
 
 Description
 -----------
-Returns the parameters u1 of the point on the first curve and u2 of the point on the second curve, which are the ends of the shortest extremum computed by this algorithm. exceptions stdfail_notdone if this algorithm fails.
+Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
 ") LowerDistanceParameters;
 		void LowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -334,7 +334,7 @@ int
 
 Description
 -----------
-Returns the number of extrema computed by this algorithm. note: if this algorithm fails, nbextrema returns 0.
+Returns the number of extrema computed by this algorithm. Note: if this algorithm fails, NbExtrema returns 0.
 ") NbExtrema;
 		Standard_Integer NbExtrema();
 
@@ -353,7 +353,7 @@ None
 
 Description
 -----------
-Returns the points p1 on the first curve and p2 on the second curve, which are the ends of the shortest extremum computed by this algorithm. exceptions stdfail_notdone if this algorithm fails.
+Returns the points P1 on the first curve and P2 on the second curve, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
 ") NearestPoints;
 		void NearestPoints(gp_Pnt & P1, gp_Pnt & P2);
 
@@ -372,7 +372,7 @@ U2: float
 
 Description
 -----------
-Returns the parameters u1 of the point on the first curve and u2 of the point on the second curve, which are the ends of the extremum of index index computed by this algorithm. exceptions standard_outofrange if index is not in the range [ 1,nbextrema ], where nbextrema is the number of extrema computed by this algorithm.
+Returns the parameters U1 of the point on the first curve and U2 of the point on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -392,7 +392,7 @@ None
 
 Description
 -----------
-Returns the points p1 on the first curve and p2 on the second curve, which are the ends of the extremum of index index computed by this algorithm. exceptions standard_outofrange if index is not in the range [ 1,nbextrema ], where nbextrema is the number of extrema computed by this algorithm.
+Returns the points P1 on the first curve and P2 on the second curve, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Points;
 		void Points(const Standard_Integer Index, gp_Pnt & P1, gp_Pnt & P2);
 
@@ -405,7 +405,7 @@ float
 
 Description
 -----------
-Return the distance of the total nearest couple solution point. if <myextcc> is not done.
+return the distance of the total nearest couple solution point. if <myExtCC> is not done.
 ") TotalLowerDistance;
 		Standard_Real TotalLowerDistance();
 
@@ -423,7 +423,7 @@ U2: float
 
 Description
 -----------
-Set in <u1> and <u2> the parameters of the couple solution points which represents the total nearest solution.
+set in <U1> and <U2> the parameters of the couple solution points which represents the total nearest solution.
 ") TotalLowerDistanceParameters;
 		Standard_Boolean TotalLowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -442,7 +442,7 @@ bool
 
 Description
 -----------
-Set in <p1> and <p2> the couple solution points such a the distance [p1,p2] is the minimum. taking in account extremity points of curves.
+set in <P1> and <P2> the couple solution points such a the distance [P1,P2] is the minimum. taking in account extremity points of curves.
 ") TotalNearestPoints;
 		Standard_Boolean TotalNearestPoints(gp_Pnt & P1, gp_Pnt & P2);
 
@@ -469,7 +469,7 @@ None
 
 Description
 -----------
-Constructs an empty algorithm for computing extrema between a curve and a surface. use an init function to define the curve and the surface on which it is going to work.
+Constructs an empty algorithm for computing extrema between a curve and a surface. Use an Init function to define the curve and the surface on which it is going to work.
 ") GeomAPI_ExtremaCurveSurface;
 		 GeomAPI_ExtremaCurveSurface();
 
@@ -488,7 +488,7 @@ None
 
 Description
 -----------
-Computes the extrema distances between the curve <c> and the surface <s>.
+Computes the extrema distances between the curve <C> and the surface <S>.
 ") GeomAPI_ExtremaCurveSurface;
 		 GeomAPI_ExtremaCurveSurface(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Surface> & Surface);
 
@@ -513,7 +513,7 @@ None
 
 Description
 -----------
-Computes the extrema distances between the curve <c> and the surface <s>. the solution point are computed in the domain [wmin,wmax] of the curve and in the domain [umin,umax] [vmin,vmax] of the surface. warning use the function nbextrema to obtain the number of solutions. if this algorithm fails, nbextrema returns 0.
+Computes the extrema distances between the curve <C> and the surface <S>. The solution point are computed in the domain [Wmin,Wmax] of the curve and in the domain [Umin,Umax] [Vmin,Vmax] of the surface. Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.
 ") GeomAPI_ExtremaCurveSurface;
 		 GeomAPI_ExtremaCurveSurface(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Wmin, const Standard_Real Wmax, const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax);
 
@@ -531,7 +531,7 @@ float
 
 Description
 -----------
-Computes the distance between the end points of the extremum of index index computed by this algorithm. exceptions standard_outofrange if index is not in the range [ 1,nbextrema ], where nbextrema is the number of extrema computed by this algorithm.
+Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
@@ -544,7 +544,7 @@ Extrema_ExtCS
 
 Description
 -----------
-Returns the algorithmic object from extrema.
+Returns the algorithmic object from Extrema.
 ") Extrema;
 		const Extrema_ExtCS & Extrema();
 
@@ -563,7 +563,7 @@ None
 
 Description
 -----------
-Computes the extrema distances between the curve <c> and the surface <s>.
+Computes the extrema distances between the curve <C> and the surface <S>.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Surface> & Surface);
 
@@ -588,7 +588,7 @@ None
 
 Description
 -----------
-Computes the extrema distances between the curve <c> and the surface <s>. the solution point are computed in the domain [wmin,wmax] of the curve and in the domain [umin,umax] [vmin,vmax] of the surface. warning use the function nbextrema to obtain the number of solutions. if this algorithm fails, nbextrema returns 0.
+Computes the extrema distances between the curve <C> and the surface <S>. The solution point are computed in the domain [Wmin,Wmax] of the curve and in the domain [Umin,Umax] [Vmin,Vmax] of the surface. Warning Use the function NbExtrema to obtain the number of solutions. If this algorithm fails, NbExtrema returns 0.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Curve, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Wmin, const Standard_Real Wmax, const Standard_Real Umin, const Standard_Real Umax, const Standard_Real Vmin, const Standard_Real Vmax);
 
@@ -601,7 +601,7 @@ bool
 
 Description
 -----------
-Returns true if the curve is on a parallel surface.
+Returns True if the curve is on a parallel surface.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -614,7 +614,7 @@ float
 
 Description
 -----------
-Computes the distance between the end points of the shortest extremum computed by this algorithm. exceptions - stdfail_notdone if this algorithm fails.
+Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
@@ -633,7 +633,7 @@ V: float
 
 Description
 -----------
-Returns the parameters w of the point on the curve and (u,v) of the point on the surface, which are the ends of the shortest extremum computed by this algorithm. exceptions - stdfail_notdone if this algorithm fails.
+Returns the parameters W of the point on the curve and (U,V) of the point on the surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
 ") LowerDistanceParameters;
 		void LowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -646,7 +646,7 @@ int
 
 Description
 -----------
-Returns the number of extrema computed by this algorithm. note: if this algorithm fails, nbextrema returns 0.
+Returns the number of extrema computed by this algorithm. Note: if this algorithm fails, NbExtrema returns 0.
 ") NbExtrema;
 		Standard_Integer NbExtrema();
 
@@ -665,7 +665,7 @@ None
 
 Description
 -----------
-Returns the points pc on the curve and ps on the surface, which are the ends of the shortest extremum computed by this algorithm. exceptions - stdfail_notdone if this algorithm fails.
+Returns the points PC on the curve and PS on the surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
 ") NearestPoints;
 		void NearestPoints(gp_Pnt & PC, gp_Pnt & PS);
 
@@ -685,7 +685,7 @@ V: float
 
 Description
 -----------
-Returns the parameters w of the point on the curve, and (u,v) of the point on the surface, which are the ends of the extremum of index index computed by this algorithm. exceptions standard_outofrange if index is not in the range [ 1,nbextrema ], where nbextrema is the number of extrema computed by this algorithm.
+Returns the parameters W of the point on the curve, and (U,V) of the point on the surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -705,7 +705,7 @@ None
 
 Description
 -----------
-Returns the points p1 on the curve and p2 on the surface, which are the ends of the extremum of index index computed by this algorithm. exceptions standard_outofrange if index is not in the range [ 1,nbextrema ], where nbextrema is the number of extrema computed by this algorithm.
+Returns the points P1 on the curve and P2 on the surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Points;
 		void Points(const Standard_Integer Index, gp_Pnt & P1, gp_Pnt & P2);
 
@@ -732,7 +732,7 @@ None
 
 Description
 -----------
-Constructs an empty algorithm for computing extrema between two surfaces. use an init function to define the surfaces on which it is going to work.
+Constructs an empty algorithm for computing extrema between two surfaces. Use an Init function to define the surfaces on which it is going to work.
 ") GeomAPI_ExtremaSurfaceSurface;
 		 GeomAPI_ExtremaSurfaceSurface();
 
@@ -751,7 +751,7 @@ None
 
 Description
 -----------
-Computes the extrema distances between the surfaces <s1> and <s2>.
+Computes the extrema distances between the surfaces <S1> and <S2>.
 ") GeomAPI_ExtremaSurfaceSurface;
 		 GeomAPI_ExtremaSurfaceSurface(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2);
 
@@ -778,7 +778,7 @@ None
 
 Description
 -----------
-Computes the extrema distances between the portion of the surface s1 limited by the two values of parameter (u1min,u1max) in the u parametric direction, and by the two values of parameter (v1min,v1max) in the v parametric direction, and - the portion of the surface s2 limited by the two values of parameter (u2min,u2max) in the u parametric direction, and by the two values of parameter (v2min,v2max) in the v parametric direction.
+Computes the extrema distances between the portion of the surface S1 limited by the two values of parameter (U1min,U1max) in the u parametric direction, and by the two values of parameter (V1min,V1max) in the v parametric direction, and - the portion of the surface S2 limited by the two values of parameter (U2min,U2max) in the u parametric direction, and by the two values of parameter (V2min,V2max) in the v parametric direction.
 ") GeomAPI_ExtremaSurfaceSurface;
 		 GeomAPI_ExtremaSurfaceSurface(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real V1min, const Standard_Real V1max, const Standard_Real U2min, const Standard_Real U2max, const Standard_Real V2min, const Standard_Real V2max);
 
@@ -796,7 +796,7 @@ float
 
 Description
 -----------
-Computes the distance between the end points of the extremum of index index computed by this algorithm. exceptions standard_outofrange if index is not in the range [ 1,nbextrema ], where nbextrema is the number of extrema computed by this algorithm.
+Computes the distance between the end points of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
@@ -809,7 +809,7 @@ Extrema_ExtSS
 
 Description
 -----------
-Return the algorithmic object from extrema.
+return the algorithmic object from Extrema.
 ") Extrema;
 		const Extrema_ExtSS & Extrema();
 
@@ -828,7 +828,7 @@ None
 
 Description
 -----------
-Initializes this algorithm with the given arguments and computes the extrema distances between the surfaces <s1> and <s2>.
+Initializes this algorithm with the given arguments and computes the extrema distances between the surfaces <S1> and <S2>.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2);
 
@@ -855,7 +855,7 @@ None
 
 Description
 -----------
-Initializes this algorithm with the given arguments and computes the extrema distances between - the portion of the surface s1 limited by the two values of parameter (u1min,u1max) in the u parametric direction, and by the two values of parameter (v1min,v1max) in the v parametric direction, and - the portion of the surface s2 limited by the two values of parameter (u2min,u2max) in the u parametric direction, and by the two values of parameter (v2min,v2max) in the v parametric direction.
+Initializes this algorithm with the given arguments and computes the extrema distances between - the portion of the surface S1 limited by the two values of parameter (U1min,U1max) in the u parametric direction, and by the two values of parameter (V1min,V1max) in the v parametric direction, and - the portion of the surface S2 limited by the two values of parameter (U2min,U2max) in the u parametric direction, and by the two values of parameter (V2min,V2max) in the v parametric direction.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real U1min, const Standard_Real U1max, const Standard_Real V1min, const Standard_Real V1max, const Standard_Real U2min, const Standard_Real U2max, const Standard_Real V2min, const Standard_Real V2max);
 
@@ -868,7 +868,7 @@ bool
 
 Description
 -----------
-Returns true if the surfaces are parallel.
+Returns True if the surfaces are parallel.
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -881,7 +881,7 @@ float
 
 Description
 -----------
-Computes the distance between the end points of the shortest extremum computed by this algorithm. exceptions stdfail_notdone if this algorithm fails.
+Computes the distance between the end points of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
@@ -901,7 +901,7 @@ V2: float
 
 Description
 -----------
-Returns the parameters (u1,v1) of the point on the first surface and (u2,v2) of the point on the second surface, which are the ends of the shortest extremum computed by this algorithm. exceptions - stdfail_notdone if this algorithm fails.
+Returns the parameters (U1,V1) of the point on the first surface and (U2,V2) of the point on the second surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions - StdFail_NotDone if this algorithm fails.
 ") LowerDistanceParameters;
 		void LowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -914,7 +914,7 @@ int
 
 Description
 -----------
-Returns the number of extrema computed by this algorithm. note: if this algorithm fails, nbextrema returns 0.
+Returns the number of extrema computed by this algorithm. Note: if this algorithm fails, NbExtrema returns 0.
 ") NbExtrema;
 		Standard_Integer NbExtrema();
 
@@ -933,7 +933,7 @@ None
 
 Description
 -----------
-Returns the points p1 on the first surface and p2 on the second surface, which are the ends of the shortest extremum computed by this algorithm. exceptions stdfail_notdone if this algorithm fails.
+Returns the points P1 on the first surface and P2 on the second surface, which are the ends of the shortest extremum computed by this algorithm. Exceptions StdFail_NotDone if this algorithm fails.
 ") NearestPoints;
 		void NearestPoints(gp_Pnt & P1, gp_Pnt & P2);
 
@@ -954,7 +954,7 @@ V2: float
 
 Description
 -----------
-Returns the parameters (u1,v1) of the point on the first surface, and (u2,v2) of the point on the second surface, which are the ends of the extremum of index index computed by this algorithm. exceptions standard_outofrange if index is not in the range [ 1,nbextrema ], where nbextrema is the number of extrema computed by this algorithm.
+Returns the parameters (U1,V1) of the point on the first surface, and (U2,V2) of the point on the second surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -974,7 +974,7 @@ None
 
 Description
 -----------
-Returns the points p1 on the first surface and p2 on the second surface, which are the ends of the extremum of index index computed by this algorithm. exceptions standard_outofrange if index is not in the range [ 1,nbextrema ], where nbextrema is the number of extrema computed by this algorithm.
+Returns the points P1 on the first surface and P2 on the second surface, which are the ends of the extremum of index Index computed by this algorithm. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbExtrema ], where NbExtrema is the number of extrema computed by this algorithm.
 ") Points;
 		void Points(const Standard_Integer Index, gp_Pnt & P1, gp_Pnt & P2);
 
@@ -1001,7 +1001,7 @@ None
 
 Description
 -----------
-Creates an empty object. use the function perform for further initialization of the algorithm by the curve and the surface.
+Creates an empty object. Use the function Perform for further initialization of the algorithm by the curve and the surface.
 ") GeomAPI_IntCS;
 		 GeomAPI_IntCS();
 
@@ -1020,7 +1020,7 @@ None
 
 Description
 -----------
-Computes the intersections between the curve c and the surface s. warning use function isdone to verify that the intersections are computed successfully.
+Computes the intersections between the curve C and the surface S. Warning Use function IsDone to verify that the intersections are computed successfully.
 ") GeomAPI_IntCS;
 		 GeomAPI_IntCS(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
@@ -1046,7 +1046,7 @@ int
 
 Description
 -----------
-Returns the number of intersection points if isdone returns true. else notdone is raised.
+Returns the number of Intersection Points if IsDone returns True. else NotDone is raised.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -1059,7 +1059,7 @@ int
 
 Description
 -----------
-Returns the number of computed intersection segments in case of tangential intersection. exceptions stdfail_notdone if the intersection algorithm fails or is not initialized.
+Returns the number of computed intersection segments in case of tangential intersection. Exceptions StdFail_NotDone if the intersection algorithm fails or is not initialized.
 ") NbSegments;
 		Standard_Integer NbSegments();
 
@@ -1079,7 +1079,7 @@ W: float
 
 Description
 -----------
-Returns parameter w on the curve and (parameters u,v) on the surface of the computed intersection point of index index in case of cross intersection. exceptions stdfail_notdone if intersection algorithm fails or is not initialized. standard_outofrange if index is not in the range [ 1,nbpoints ], where nbpoints is the number of computed intersection points.
+Returns parameter W on the curve and (parameters U,V) on the surface of the computed intersection point of index Index in case of cross intersection. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of computed intersection points.
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1100,7 +1100,7 @@ V2: float
 
 Description
 -----------
-Returns the parameters of the first (u1,v1) and the last (u2,v2) points of curve's segment on the surface in case of tangential intersection. index is the number of computed intersection segments. exceptions stdfail_notdone if intersection algorithm fails or is not initialized. standard_outofrange if index is not in the range [ 1,nbsegments ], where nbsegments is the number of computed intersection segments.
+Returns the parameters of the first (U1,V1) and the last (U2,V2) points of curve's segment on the surface in case of tangential intersection. Index is the number of computed intersection segments. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbSegments ], where NbSegments is the number of computed intersection segments.
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1119,7 +1119,7 @@ None
 
 Description
 -----------
-This function initializes an algorithm with the curve c and the surface s and computes the intersections between c and s. warning use function isdone to verify that the intersections are computed successfully.
+This function Initializes an algorithm with the curve C and the surface S and computes the intersections between C and S. Warning Use function IsDone to verify that the intersections are computed successfully.
 ") Perform;
 		void Perform(const opencascade::handle<Geom_Curve> & C, const opencascade::handle<Geom_Surface> & S);
 
@@ -1137,7 +1137,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the intersection point of range <index>in case of cross intersection. raises notdone if the computation has failed or if the computation has not been done raises outofrange if index is not in the range <1..nbpoints>.
+Returns the Intersection Point of range <Index>in case of cross intersection. Raises NotDone if the computation has failed or if the computation has not been done raises OutOfRange if Index is not in the range <1..NbPoints>.
 ") Point;
 		const gp_Pnt Point(const Standard_Integer Index);
 
@@ -1155,7 +1155,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Returns the computed intersection segment of index index in case of tangential intersection. intersection segment is a portion of the initial curve tangent to surface. exceptions stdfail_notdone if intersection algorithm fails or is not initialized. standard_outofrange if index is not in the range [ 1,nbsegments ], where nbsegments is the number of computed intersection segments.
+Returns the computed intersection segment of index Index in case of tangential intersection. Intersection segment is a portion of the initial curve tangent to surface. Exceptions StdFail_NotDone if intersection algorithm fails or is not initialized. Standard_OutOfRange if Index is not in the range [ 1,NbSegments ], where NbSegments is the number of computed intersection segments.
 ") Segment;
 		opencascade::handle<Geom_Curve> Segment(const Standard_Integer Index);
 
@@ -1182,7 +1182,7 @@ None
 
 Description
 -----------
-Constructs an empty object. use the function perform for further initialization algorithm by two surfaces.
+Constructs an empty object. Use the function Perform for further initialization algorithm by two surfaces.
 ") GeomAPI_IntSS;
 		 GeomAPI_IntSS();
 
@@ -1202,7 +1202,7 @@ None
 
 Description
 -----------
-Computes the intersection curves between the two surfaces s1 and s2. parameter tol defines the precision of curves computation. for most cases the value 1.0e-7 is recommended to use. warning use the function isdone to verify that the intersections are successfully computed.i.
+Computes the intersection curves between the two surfaces S1 and S2. Parameter Tol defines the precision of curves computation. For most cases the value 1.0e-7 is recommended to use. Warning Use the function IsDone to verify that the intersections are successfully computed.I.
 ") GeomAPI_IntSS;
 		 GeomAPI_IntSS(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real Tol);
 
@@ -1215,7 +1215,7 @@ bool
 
 Description
 -----------
-Returns true if the intersection was successful.
+Returns True if the intersection was successful.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1233,7 +1233,7 @@ opencascade::handle<Geom_Curve>
 
 Description
 -----------
-Returns the computed intersection curve of index index. exceptions stdfail_notdone if the computation fails. standard_outofrange if index is out of range [1, nblines] where nblines is the number of computed intersection curves.
+Returns the computed intersection curve of index Index. Exceptions StdFail_NotDone if the computation fails. Standard_OutOfRange if Index is out of range [1, NbLines] where NbLines is the number of computed intersection curves.
 ") Line;
 		const opencascade::handle<Geom_Curve> & Line(const Standard_Integer Index);
 
@@ -1246,7 +1246,7 @@ int
 
 Description
 -----------
-Returns the number of computed intersection curves. exceptions stdfail_notdone if the computation fails.
+Returns the number of computed intersection curves. Exceptions StdFail_NotDone if the computation fails.
 ") NbLines;
 		Standard_Integer NbLines();
 
@@ -1266,7 +1266,7 @@ None
 
 Description
 -----------
-Initializes an algorithm with the given arguments and computes the intersection curves between the two surfaces s1 and s2. parameter tol defines the precision of curves computation. for most cases the value 1.0e-7 is recommended to use. warning use function isdone to verify that the intersections are successfully computed.
+Initializes an algorithm with the given arguments and computes the intersection curves between the two surfaces S1 and S2. Parameter Tol defines the precision of curves computation. For most cases the value 1.0e-7 is recommended to use. Warning Use function IsDone to verify that the intersections are successfully computed.
 ") Perform;
 		void Perform(const opencascade::handle<Geom_Surface> & S1, const opencascade::handle<Geom_Surface> & S2, const Standard_Real Tol);
 
@@ -1300,7 +1300,7 @@ None
 
 Description
 -----------
-Initializes an algorithm for constructing a constrained bspline curve passing through the points of the table points. tangential vectors can then be assigned, using the function load. if periodicflag is true, the constrained bspline curve will be periodic and closed. in this case, the junction point is the first point of the table points. the tolerance value tolerance is used to check that: - points are not too close to each other, or - tangential vectors (defined using the function load) are not too small. the resulting bspline curve will be 'c2' continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the load function). in this case, it will be only 'c1' continuous. once all the constraints are defined, use the function perform to compute the curve. warning - there must be at least 2 points in the table points. - if periodicflag is false, there must be as many parameters in the array parameters as there are points in the array points. - if periodicflag is true, there must be one more parameter in the table parameters: this is used to give the parameter on the resulting bspline curve of the junction point of the curve (which is also the first point of the table points). exceptions - standard_constructionerror if the distance between two consecutive points in the table points is less than or equal to tolerance. - standard_outofrange if: - there are less than two points in the table points, or - conditions relating to the respective number of elements in the parallel tables points and parameters are not respected.
+Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: - points are not too close to each other, or - tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be 'C2' continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only 'C1' continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning - There must be at least 2 points in the table Points. - If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. - If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions - Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. - Standard_OutOfRange if: - there are less than two points in the table Points, or - conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected.
 ") GeomAPI_Interpolate;
 		 GeomAPI_Interpolate(const opencascade::handle<TColgp_HArray1OfPnt> & Points, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
 
@@ -1321,7 +1321,7 @@ None
 
 Description
 -----------
-Initializes an algorithm for constructing a constrained bspline curve passing through the points of the table points, where the parameters of each of its points are given by the parallel table parameters. tangential vectors can then be assigned, using the function load. if periodicflag is true, the constrained bspline curve will be periodic and closed. in this case, the junction point is the first point of the table points. the tolerance value tolerance is used to check that: - points are not too close to each other, or - tangential vectors (defined using the function load) are not too small. the resulting bspline curve will be 'c2' continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the load function). in this case, it will be only 'c1' continuous. once all the constraints are defined, use the function perform to compute the curve. warning - there must be at least 2 points in the table points. - if periodicflag is false, there must be as many parameters in the array parameters as there are points in the array points. - if periodicflag is true, there must be one more parameter in the table parameters: this is used to give the parameter on the resulting bspline curve of the junction point of the curve (which is also the first point of the table points). exceptions - standard_constructionerror if the distance between two consecutive points in the table points is less than or equal to tolerance. - standard_outofrange if: - there are less than two points in the table points, or - conditions relating to the respective number of elements in the parallel tables points and parameters are not respected.
+Initializes an algorithm for constructing a constrained BSpline curve passing through the points of the table Points, where the parameters of each of its points are given by the parallel table Parameters. Tangential vectors can then be assigned, using the function Load. If PeriodicFlag is true, the constrained BSpline curve will be periodic and closed. In this case, the junction point is the first point of the table Points. The tolerance value Tolerance is used to check that: - points are not too close to each other, or - tangential vectors (defined using the function Load) are not too small. The resulting BSpline curve will be 'C2' continuous, except where a tangency constraint is defined on a point through which the curve passes (by using the Load function). In this case, it will be only 'C1' continuous. Once all the constraints are defined, use the function Perform to compute the curve. Warning - There must be at least 2 points in the table Points. - If PeriodicFlag is false, there must be as many parameters in the array Parameters as there are points in the array Points. - If PeriodicFlag is true, there must be one more parameter in the table Parameters: this is used to give the parameter on the resulting BSpline curve of the junction point of the curve (which is also the first point of the table Points). Exceptions - Standard_ConstructionError if the distance between two consecutive points in the table Points is less than or equal to Tolerance. - Standard_OutOfRange if: - there are less than two points in the table Points, or - conditions relating to the respective number of elements in the parallel tables Points and Parameters are not respected.
 ") GeomAPI_Interpolate;
 		 GeomAPI_Interpolate(const opencascade::handle<TColgp_HArray1OfPnt> & Points, const opencascade::handle<TColStd_HArray1OfReal> & Parameters, const Standard_Boolean PeriodicFlag, const Standard_Real Tolerance);
 
@@ -1334,7 +1334,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Returns the computed bspline curve. raises stdfail_notdone if the interpolation fails.
+Returns the computed BSpline curve. Raises StdFail_NotDone if the interpolation fails.
 ") Curve;
 		const opencascade::handle<Geom_BSplineCurve> & Curve();
 
@@ -1347,7 +1347,7 @@ bool
 
 Description
 -----------
-Returns true if the constrained bspline curve is successfully constructed. note: in this case, the result is given by the function curve.
+Returns true if the constrained BSpline curve is successfully constructed. Note: in this case, the result is given by the function Curve.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -1367,7 +1367,7 @@ None
 
 Description
 -----------
-Assigns this constrained bspline curve to be tangential to vectors initialtangent and finaltangent at its first and last points respectively (i.e. the first and last points of the table of points through which the curve passes, as defined at the time of initialization).
+Assigns this constrained BSpline curve to be tangential to vectors InitialTangent and FinalTangent at its first and last points respectively (i.e. the first and last points of the table of points through which the curve passes, as defined at the time of initialization).
 ") Load;
 		void Load(const gp_Vec & InitialTangent, const gp_Vec & FinalTangent, const Standard_Boolean Scale = Standard_True);
 
@@ -1387,7 +1387,7 @@ None
 
 Description
 -----------
-Assigns this constrained bspline curve to be tangential to vectors defined in the table tangents, which is parallel to the table of points through which the curve passes, as defined at the time of initialization. vectors in the table tangents are defined only if the flag given in the parallel table tangentflags is true: only these vectors are set as tangency constraints.
+Assigns this constrained BSpline curve to be tangential to vectors defined in the table Tangents, which is parallel to the table of points through which the curve passes, as defined at the time of initialization. Vectors in the table Tangents are defined only if the flag given in the parallel table TangentFlags is true: only these vectors are set as tangency constraints.
 ") Load;
 		void Load(const TColgp_Array1OfVec & Tangents, const opencascade::handle<TColStd_HArray1OfBoolean> & TangentFlags, const Standard_Boolean Scale = Standard_True);
 
@@ -1400,7 +1400,7 @@ None
 
 Description
 -----------
-Computes the constrained bspline curve. use the function isdone to verify that the computation is successful, and then the function curve to obtain the result.
+Computes the constrained BSpline curve. Use the function IsDone to verify that the computation is successful, and then the function Curve to obtain the result.
 ") Perform;
 		void Perform();
 
@@ -1431,7 +1431,7 @@ None
 
 Description
 -----------
-Constructs an empty approximation algorithm. use an init function to define and build the bspline curve.
+Constructs an empty approximation algorithm. Use an Init function to define and build the BSpline curve.
 ") GeomAPI_PointsToBSpline;
 		 GeomAPI_PointsToBSpline();
 
@@ -1453,7 +1453,7 @@ None
 
 Description
 -----------
-Approximate a bspline curve passing through an array of point. the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d.
+Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol3D.
 ") GeomAPI_PointsToBSpline;
 		 GeomAPI_PointsToBSpline(const TColgp_Array1OfPnt & Points, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
@@ -1476,7 +1476,7 @@ None
 
 Description
 -----------
-Approximate a bspline curve passing through an array of point. the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d.
+Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol3D.
 ") GeomAPI_PointsToBSpline;
 		 GeomAPI_PointsToBSpline(const TColgp_Array1OfPnt & Points, const Approx_ParametrizationType ParType, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
@@ -1499,7 +1499,7 @@ None
 
 Description
 -----------
-Approximate a bspline curve passing through an array of point, which parameters are given by the array <parameters>. the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d.
+Approximate a BSpline Curve passing through an array of Point, which parameters are given by the array <Parameters>. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol3D.
 ") GeomAPI_PointsToBSpline;
 		 GeomAPI_PointsToBSpline(const TColgp_Array1OfPnt & Points, const TColStd_Array1OfReal & Parameters, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
@@ -1523,7 +1523,7 @@ None
 
 Description
 -----------
-Approximate a bspline curve passing through an array of point using variational smoothing algorithm, which tries to minimize additional criterium: weight1*curvelength + weight2*curvature + weight3*torsion.
+Approximate a BSpline Curve passing through an array of Point using variational smoothing algorithm, which tries to minimize additional criterium: Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion.
 ") GeomAPI_PointsToBSpline;
 		 GeomAPI_PointsToBSpline(const TColgp_Array1OfPnt & Points, const Standard_Real Weight1, const Standard_Real Weight2, const Standard_Real Weight3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
@@ -1536,7 +1536,7 @@ opencascade::handle<Geom_BSplineCurve>
 
 Description
 -----------
-Returns the computed bspline curve. raises stdfail_notdone if the curve is not built.
+Returns the computed BSpline curve. Raises StdFail_NotDone if the curve is not built.
 ") Curve;
 		const opencascade::handle<Geom_BSplineCurve> & Curve();
 
@@ -1558,7 +1558,7 @@ None
 
 Description
 -----------
-Approximate a bspline curve passing through an array of point. the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d.
+Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol3D.
 ") Init;
 		void Init(const TColgp_Array1OfPnt & Points, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
@@ -1581,7 +1581,7 @@ None
 
 Description
 -----------
-Approximate a bspline curve passing through an array of point. the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d.
+Approximate a BSpline Curve passing through an array of Point. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol3D.
 ") Init;
 		void Init(const TColgp_Array1OfPnt & Points, const Approx_ParametrizationType ParType, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
@@ -1604,7 +1604,7 @@ None
 
 Description
 -----------
-Approximate a bspline curve passing through an array of point, which parameters are given by the array <parameters>. the resulting bspline will have the following properties: 1- his degree will be in the range [degmin,degmax] 2- his continuity will be at least <continuity> 3- the distance from the point <points> to the bspline will be lower to tol3d.
+Approximate a BSpline Curve passing through an array of Point, which parameters are given by the array <Parameters>. The resulting BSpline will have the following properties: 1- his degree will be in the range [Degmin,Degmax] 2- his continuity will be at least <Continuity> 3- the distance from the point <Points> to the BSpline will be lower to Tol3D.
 ") Init;
 		void Init(const TColgp_Array1OfPnt & Points, const TColStd_Array1OfReal & Parameters, const Standard_Integer DegMin = 3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
@@ -1628,7 +1628,7 @@ None
 
 Description
 -----------
-Approximate a bspline curve passing through an array of point using variational smoothing algorithm, which tries to minimize additional criterium: weight1*curvelength + weight2*curvature + weight3*torsion.
+Approximate a BSpline Curve passing through an array of Point using variational smoothing algorithm, which tries to minimize additional criterium: Weight1*CurveLength + Weight2*Curvature + Weight3*Torsion.
 ") Init;
 		void Init(const TColgp_Array1OfPnt & Points, const Standard_Real Weight1, const Standard_Real Weight2, const Standard_Real Weight3, const Standard_Integer DegMax = 8, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Real Tol3D = 1.0e-3);
 
@@ -1668,7 +1668,7 @@ None
 
 Description
 -----------
-Constructs an empty algorithm for approximation or interpolation of a surface. use: - an init function to define and build the bspline surface by approximation, or - an interpolate function to define and build the bspline surface by interpolation.
+Constructs an empty algorithm for approximation or interpolation of a surface. Use: - an Init function to define and build the BSpline surface by approximation, or - an Interpolate function to define and build the BSpline surface by interpolation.
 ") GeomAPI_PointsToBSplineSurface;
 		 GeomAPI_PointsToBSplineSurface();
 
@@ -1946,7 +1946,7 @@ opencascade::handle<Geom_BSplineSurface>
 
 Description
 -----------
-Returns the approximate bspline surface.
+Returns the approximate BSpline Surface.
 ") Surface;
 		const opencascade::handle<Geom_BSplineSurface> & Surface();
 
@@ -1973,7 +1973,7 @@ None
 
 Description
 -----------
-Creates an empty object. use an init function for further initialization.
+Creates an empty object. Use an Init function for further initialization.
 ") GeomAPI_ProjectPointOnCurve;
 		 GeomAPI_ProjectPointOnCurve();
 
@@ -1992,7 +1992,7 @@ None
 
 Description
 -----------
-Create the projection of a point <p> on a curve <curve>.
+Create the projection of a point <P> on a curve <Curve>.
 ") GeomAPI_ProjectPointOnCurve;
 		 GeomAPI_ProjectPointOnCurve(const gp_Pnt & P, const opencascade::handle<Geom_Curve> & Curve);
 
@@ -2013,7 +2013,7 @@ None
 
 Description
 -----------
-Create the projection of a point <p> on a curve <curve> limited by the two points of parameter umin and usup.
+Create the projection of a point <P> on a curve <Curve> limited by the two points of parameter Umin and Usup.
 ") GeomAPI_ProjectPointOnCurve;
 		 GeomAPI_ProjectPointOnCurve(const gp_Pnt & P, const opencascade::handle<Geom_Curve> & Curve, const Standard_Real Umin, const Standard_Real Usup);
 
@@ -2031,7 +2031,7 @@ float
 
 Description
 -----------
-Computes the distance between the point and its orthogonal projection on the curve. index is a number of a computed point. exceptions standard_outofrange if index is not in the range [ 1,nbpoints ], where nbpoints is the number of solution points.
+Computes the distance between the point and its orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
@@ -2044,7 +2044,7 @@ Extrema_ExtPC
 
 Description
 -----------
-Return the algorithmic object from extrema.
+return the algorithmic object from Extrema.
 ") Extrema;
 		const Extrema_ExtPC & Extrema();
 
@@ -2063,7 +2063,7 @@ None
 
 Description
 -----------
-Init the projection of a point <p> on a curve <curve>.
+Init the projection of a point <P> on a curve <Curve>.
 ") Init;
 		void Init(const gp_Pnt & P, const opencascade::handle<Geom_Curve> & Curve);
 
@@ -2084,7 +2084,7 @@ None
 
 Description
 -----------
-Init the projection of a point <p> on a curve <curve> limited by the two points of parameter umin and usup.
+Init the projection of a point <P> on a curve <Curve> limited by the two points of parameter Umin and Usup.
 ") Init;
 		void Init(const gp_Pnt & P, const opencascade::handle<Geom_Curve> & Curve, const Standard_Real Umin, const Standard_Real Usup);
 
@@ -2104,7 +2104,7 @@ None
 
 Description
 -----------
-Init the projection of a point <p> on a curve <curve> limited by the two points of parameter umin and usup.
+Init the projection of a point <P> on a curve <Curve> limited by the two points of parameter Umin and Usup.
 ") Init;
 		void Init(const opencascade::handle<Geom_Curve> & Curve, const Standard_Real Umin, const Standard_Real Usup);
 
@@ -2117,7 +2117,7 @@ float
 
 Description
 -----------
-Computes the distance between the point and its nearest orthogonal projection on the curve. exceptions: stdfail_notdone if this algorithm fails.
+Computes the distance between the point and its nearest orthogonal projection on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
@@ -2130,7 +2130,7 @@ float
 
 Description
 -----------
-Returns the parameter on the curve of the nearest orthogonal projection of the point. exceptions: stdfail_notdone if this algorithm fails.
+Returns the parameter on the curve of the nearest orthogonal projection of the point. Exceptions: StdFail_NotDone if this algorithm fails.
 ") LowerDistanceParameter;
 		Standard_Real LowerDistanceParameter();
 
@@ -2143,7 +2143,7 @@ int
 
 Description
 -----------
-Returns the number of computed orthogonal projection points. note: if this algorithm fails, nbpoints returns 0.
+Returns the number of computed orthogonal projection points. Note: if this algorithm fails, NbPoints returns 0.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -2156,7 +2156,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the nearest orthogonal projection of the point on the curve. exceptions: stdfail_notdone if this algorithm fails.
+Returns the nearest orthogonal projection of the point on the curve. Exceptions: StdFail_NotDone if this algorithm fails.
 ") NearestPoint;
 		gp_Pnt NearestPoint();
 
@@ -2174,7 +2174,7 @@ float
 
 Description
 -----------
-Returns the parameter on the curve of the point, which is the orthogonal projection. index is a number of a computed point. exceptions standard_outofrange if index is not in the range [ 1,nbpoints ], where nbpoints is the number of solution points.
+Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer Index);
 
@@ -2192,7 +2192,7 @@ U: float
 
 Description
 -----------
-Returns the parameter on the curve of the point, which is the orthogonal projection. index is a number of a computed point. exceptions standard_outofrange if index is not in the range [ 1,nbpoints ], where nbpoints is the number of solution points.-.
+Returns the parameter on the curve of the point, which is the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.-.
 ") Parameter;
 		void Parameter(const Standard_Integer Index, Standard_Real &OutValue);
 
@@ -2228,7 +2228,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the orthogonal projection on the curve. index is a number of a computed point. exceptions standard_outofrange if index is not in the range [ 1,nbpoints ], where nbpoints is the number of solution points.
+Returns the orthogonal projection on the curve. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 ") Point;
 		gp_Pnt Point(const Standard_Integer Index);
 
@@ -2255,7 +2255,7 @@ None
 
 Description
 -----------
-Creates an empty object. use the init function for further initialization.
+Creates an empty object. Use the Init function for further initialization.
 ") GeomAPI_ProjectPointOnSurf;
 		 GeomAPI_ProjectPointOnSurf();
 
@@ -2275,7 +2275,7 @@ None
 
 Description
 -----------
-Create the projection of a point <p> on a surface <surface>.
+Create the projection of a point <P> on a surface <Surface>.
 ") GeomAPI_ProjectPointOnSurf;
 		 GeomAPI_ProjectPointOnSurf(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
@@ -2296,7 +2296,7 @@ None
 
 Description
 -----------
-Create the projection of a point <p> on a surface <surface> create the projection of a point <p> on a surface <surface>. the solution are computed in the domain [umin,usup] [vmin,vsup] of the surface.
+Create the projection of a point <P> on a surface <Surface> Create the projection of a point <P> on a surface <Surface>. The solution are computed in the domain [Umin,Usup] [Vmin,Vsup] of the surface.
 ") GeomAPI_ProjectPointOnSurf;
 		 GeomAPI_ProjectPointOnSurf(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Tolerance, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
@@ -2345,7 +2345,7 @@ None
 
 Description
 -----------
-Init the projection of a point <p> on a surface <surface>.
+Init the projection of a point <P> on a surface <Surface>.
 ") GeomAPI_ProjectPointOnSurf;
 		 GeomAPI_ProjectPointOnSurf(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
@@ -2363,7 +2363,7 @@ float
 
 Description
 -----------
-Computes the distance between the point and its orthogonal projection on the surface. index is a number of a computed point. exceptions standard_outofrange if index is not in the range [ 1,nbpoints ], where nbpoints is the number of solution points.
+Computes the distance between the point and its orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 ") Distance;
 		Standard_Real Distance(const Standard_Integer Index);
 
@@ -2376,7 +2376,7 @@ Extrema_ExtPS
 
 Description
 -----------
-Return the algorithmic object from extrema.
+return the algorithmic object from Extrema.
 ") Extrema;
 		const Extrema_ExtPS & Extrema();
 
@@ -2417,7 +2417,7 @@ None
 
 Description
 -----------
-Init the projection of a point <p> on a surface <surface>. the solution are computed in the domain [umin,usup] [vmin,vsup] of the surface.
+Init the projection of a point <P> on a surface <Surface>. The solution are computed in the domain [Umin,Usup] [Vmin,Vsup] of the surface.
 ") Init;
 		void Init(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
@@ -2466,7 +2466,7 @@ None
 
 Description
 -----------
-Init the projection for many points on a surface <surface>. the solutions will be computed in the domain [umin,usup] [vmin,vsup] of the surface.
+Init the projection for many points on a surface <Surface>. The solutions will be computed in the domain [Umin,Usup] [Vmin,Vsup] of the surface.
 ") Init;
 		void Init(const gp_Pnt & P, const opencascade::handle<Geom_Surface> & Surface, const Standard_Real Umin, const Standard_Real Usup, const Standard_Real Vmin, const Standard_Real Vsup, const Extrema_ExtAlgo Algo = Extrema_ExtAlgo_Grad);
 
@@ -2539,7 +2539,7 @@ float
 
 Description
 -----------
-Computes the distance between the point and its nearest orthogonal projection on the surface. exceptions stdfail_notdone if projection fails.
+Computes the distance between the point and its nearest orthogonal projection on the surface. Exceptions StdFail_NotDone if projection fails.
 ") LowerDistance;
 		Standard_Real LowerDistance();
 
@@ -2557,7 +2557,7 @@ V: float
 
 Description
 -----------
-Returns the parameters (u,v) on the surface of the nearest computed orthogonal projection of the point. exceptions stdfail_notdone if projection fails.
+Returns the parameters (U,V) on the surface of the nearest computed orthogonal projection of the point. Exceptions StdFail_NotDone if projection fails.
 ") LowerDistanceParameters;
 		void LowerDistanceParameters(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2570,7 +2570,7 @@ int
 
 Description
 -----------
-Returns the number of computed orthogonal projection points. note: if projection fails, nbpoints returns 0.
+Returns the number of computed orthogonal projection points. Note: if projection fails, NbPoints returns 0.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -2583,7 +2583,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the nearest orthogonal projection of the point on the surface. exceptions stdfail_notdone if projection fails.
+Returns the nearest orthogonal projection of the point on the surface. Exceptions StdFail_NotDone if projection fails.
 ") NearestPoint;
 		gp_Pnt NearestPoint();
 
@@ -2602,7 +2602,7 @@ V: float
 
 Description
 -----------
-Returns the parameters (u,v) on the surface of the orthogonal projection. index is a number of a computed point. exceptions standard_outofrange if index is not in the range [ 1,nbpoints ], where nbpoints is the number of solution points.
+Returns the parameters (U,V) on the surface of the orthogonal projection. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 ") Parameters;
 		void Parameters(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2638,7 +2638,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the orthogonal projection on the surface. index is a number of a computed point. exceptions standard_outofrange if index is not in the range [ 1,nbpoints ], where nbpoints is the number of solution points.
+Returns the orthogonal projection on the surface. Index is a number of a computed point. Exceptions Standard_OutOfRange if Index is not in the range [ 1,NbPoints ], where NbPoints is the number of solution points.
 ") Point;
 		gp_Pnt Point(const Standard_Integer Index);
 
@@ -2656,7 +2656,7 @@ None
 
 Description
 -----------
-Sets the extrema search algorithm - grad or tree. by default the extrema is initialized with grad algorithm.
+Sets the Extrema search algorithm - Grad or Tree. By default the Extrema is initialized with Grad algorithm.
 ") SetExtremaAlgo;
 		void SetExtremaAlgo(const Extrema_ExtAlgo theAlgo);
 
@@ -2674,7 +2674,7 @@ None
 
 Description
 -----------
-Sets the extrema search flag - min or max or minmax. by default the extrema is set to search the minmax solutions.
+Sets the Extrema search flag - MIN or MAX or MINMAX. By default the Extrema is set to search the MinMax solutions.
 ") SetExtremaFlag;
 		void SetExtremaFlag(const Extrema_ExtFlag theExtFlag);
 

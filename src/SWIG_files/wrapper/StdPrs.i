@@ -184,7 +184,10 @@ None
 
 Description
 -----------
-Constructor with initialization. @param thefontpath full path to the font @param thesize the face size in model units @param thefaceid face id within the file (0 by default).
+Constructor with initialization. 
+Parameter theFontPath FULL path to the font 
+Parameter theSize the face size in model units 
+Parameter theFaceId face id within the file (0 by default).
 ") StdPrs_BRepFont;
 		 StdPrs_BRepFont(const NCollection_String & theFontPath, const Standard_Real theSize, const Standard_Integer theFaceId = 0);
 
@@ -205,7 +208,11 @@ None
 
 Description
 -----------
-Constructor with initialization. @param thefontname the font name @param thefontaspect the font style @param thesize the face size in model units @param thestrictlevel search strict level for using aliases and fallback.
+Constructor with initialization. 
+Parameter theFontName the font name 
+Parameter theFontAspect the font style 
+Parameter theSize the face size in model units 
+Parameter theStrictLevel search strict level for using aliases and fallback.
 ") StdPrs_BRepFont;
 		 StdPrs_BRepFont(const NCollection_String & theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
 
@@ -223,7 +230,7 @@ float
 
 Description
 -----------
-Compute advance to the next character with kerning applied when applicable. assuming text rendered horizontally.
+Compute advance to the next character with kerning applied when applicable. Assuming text rendered horizontally.
 ") AdvanceX;
 		Standard_Real AdvanceX(const Standard_Utf32Char theUCharNext);
 
@@ -242,7 +249,7 @@ float
 
 Description
 -----------
-Compute advance to the next character with kerning applied when applicable. assuming text rendered horizontally.
+Compute advance to the next character with kerning applied when applicable. Assuming text rendered horizontally.
 ") AdvanceX;
 		Standard_Real AdvanceX(const Standard_Utf32Char theUChar, const Standard_Utf32Char theUCharNext);
 
@@ -260,7 +267,7 @@ float
 
 Description
 -----------
-Compute advance to the next character with kerning applied when applicable. assuming text rendered vertically.
+Compute advance to the next character with kerning applied when applicable. Assuming text rendered vertically.
 ") AdvanceY;
 		Standard_Real AdvanceY(const Standard_Utf32Char theUCharNext);
 
@@ -279,7 +286,7 @@ float
 
 Description
 -----------
-Compute advance to the next character with kerning applied when applicable. assuming text rendered vertically.
+Compute advance to the next character with kerning applied when applicable. Assuming text rendered vertically.
 ") AdvanceY;
 		Standard_Real AdvanceY(const Standard_Utf32Char theUChar, const Standard_Utf32Char theUCharNext);
 
@@ -292,7 +299,7 @@ float
 
 Description
 -----------
-Return vertical distance from the horizontal baseline to the highest character coordinate.
+Return: vertical distance from the horizontal baseline to the highest character coordinate.
 ") Ascender;
 		Standard_Real Ascender();
 
@@ -305,7 +312,7 @@ float
 
 Description
 -----------
-Return vertical distance from the horizontal baseline to the lowest character coordinate.
+Return: vertical distance from the horizontal baseline to the lowest character coordinate.
 ") Descender;
 		Standard_Real Descender();
 
@@ -318,7 +325,7 @@ opencascade::handle<Font_FTFont>
 
 Description
 -----------
-Return wrapper over freetype font.
+Return wrapper over FreeType font.
 ") FTFont;
 		const opencascade::handle<Font_FTFont> & FTFont();
 
@@ -339,7 +346,12 @@ opencascade::handle<StdPrs_BRepFont>
 
 Description
 -----------
-Find the font initialize the font. @param thefontname the font name @param thefontaspect the font style @param thesize the face size in model units @param thestrictlevel search strict level for using aliases and fallback return true on success.
+Find the font Initialize the font. 
+Parameter theFontName the font name 
+Parameter theFontAspect the font style 
+Parameter theSize the face size in model units 
+Parameter theStrictLevel search strict level for using aliases and fallback 
+Return: true on success.
 ") FindAndCreate;
 		static opencascade::handle<StdPrs_BRepFont> FindAndCreate(TCollection_AsciiString theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
 
@@ -360,7 +372,12 @@ bool
 
 Description
 -----------
-Find (using font_fontmgr) and initialize the font from the given name. please take into account that size is specified not in typography points (pt.). if you need to specify size in points, value should be converted. formula for pt. -> m conversion: asizemeters = 0.0254 * thesizept / 72.0 @param thefontname the font name @param thefontaspect the font style @param thesize the face size in model units @param thestrictlevel search strict level for using aliases and fallback return true on success.
+Find (using Font_FontMgr) and initialize the font from the given name. Please take into account that size is specified NOT in typography points (pt.). If you need to specify size in points, value should be converted. Formula for pt. -> m conversion: aSizeMeters = 0.0254 * theSizePt / 72.0 
+Parameter theFontName the font name 
+Parameter theFontAspect the font style 
+Parameter theSize the face size in model units 
+Parameter theStrictLevel search strict level for using aliases and fallback 
+Return: true on success.
 ") FindAndInit;
 		bool FindAndInit(TCollection_AsciiString theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize, const Font_StrictLevel theStrictLevel = Font_StrictLevel_Any);
 
@@ -380,7 +397,11 @@ bool
 
 Description
 -----------
-Initialize the font. @param thefontpath full path to the font @param thesize the face size in model units @param thefaceid face id within the file (0 by default) return true on success.
+Initialize the font. 
+Parameter theFontPath FULL path to the font 
+Parameter theSize the face size in model units 
+Parameter theFaceId face id within the file (0 by default) 
+Return: true on success.
 ") Init;
 		bool Init(const NCollection_String & theFontPath, const Standard_Real theSize, const Standard_Integer theFaceId);
 
@@ -400,7 +421,7 @@ bool
 
 Description
 -----------
-Find (using font_fontmgr) and initialize the font from the given name. alias for findandinit() for backward compatibility.
+Find (using Font_FontMgr) and initialize the font from the given name. Alias for FindAndInit() for backward compatibility.
 ") Init;
 		bool Init(const NCollection_String & theFontName, const Font_FontAspect theFontAspect, const Standard_Real theSize);
 
@@ -413,7 +434,7 @@ float
 
 Description
 -----------
-Return default line spacing (the baseline-to-baseline distance).
+Return: default line spacing (the baseline-to-baseline distance).
 ") LineSpacing;
 		Standard_Real LineSpacing();
 
@@ -470,7 +491,9 @@ TopoDS_Shape
 
 Description
 -----------
-Render single glyph as topods_shape. @param thechar glyph identifier return rendered glyph within cache, might be null shape.
+Render single glyph as TopoDS_Shape. 
+Parameter theChar glyph identifier 
+Return: rendered glyph within cache, might be NULL shape.
 ") RenderGlyph;
 		TopoDS_Shape RenderGlyph(const Standard_Utf32Char & theChar);
 
@@ -501,7 +524,7 @@ None
 
 Description
 -----------
-Setup glyph geometry construction mode. by default algorithm creates independent topods_edge for each original curve in the glyph (line segment or bezie curve). algorithm might optionally create composite bspline curve for each contour which reduces memory footprint but limits curve class to c0. notice that altering this flag clears currently accumulated cache!.
+Setup glyph geometry construction mode. By default algorithm creates independent TopoDS_Edge for each original curve in the glyph (line segment or Bezie curve). Algorithm might optionally create composite BSpline curve for each contour which reduces memory footprint but limits curve class to C0. Notice that altering this flag clears currently accumulated cache!.
 ") SetCompositeCurveMode;
 		void SetCompositeCurveMode(const Standard_Boolean theToConcatenate);
 
@@ -519,7 +542,7 @@ None
 
 Description
 -----------
-Setup glyph scaling along x-axis. by default glyphs are not scaled (scaling factor = 1.0).
+Setup glyph scaling along X-axis. By default glyphs are not scaled (scaling factor = 1.0).
 ") SetWidthScaling;
 		void SetWidthScaling(const float theScaleFactor);
 
@@ -555,7 +578,10 @@ TopoDS_Shape
 
 Description
 -----------
-Render text as brep shape. @param theformatter formatter which defines aligned text @param thepenloc start position and orientation on the baseline return result shape with pen transformation applied as shape location.
+Render text as BRep shape. 
+Parameter theFormatter formatter which defines aligned text 
+Parameter thePenLoc start position and orientation on the baseline 
+Return: result shape with pen transformation applied as shape location.
 ") Perform;
 		TopoDS_Shape Perform(StdPrs_BRepFont & theFont, const opencascade::handle<Font_TextFormatter> & theFormatter, const gp_Ax3 & thePenLoc = gp_Ax3());
 
@@ -577,7 +603,12 @@ TopoDS_Shape
 
 Description
 -----------
-Render text as brep shape. @param thestring text in utf-8 encoding @param thepenloc start position and orientation on the baseline @param thehalign horizontal alignment of the text @param thevalign vertical alignment of the text return result shape with pen transformation applied as shape location.
+Render text as BRep shape. 
+Parameter theString text in UTF-8 encoding 
+Parameter thePenLoc start position and orientation on the baseline 
+Parameter theHAlign horizontal alignment of the text 
+Parameter theVAlign vertical alignment of the text 
+Return: result shape with pen transformation applied as shape location.
 ") Perform;
 		TopoDS_Shape Perform(StdPrs_BRepFont & theFont, const NCollection_String & theString, const gp_Ax3 & thePenLoc = gp_Ax3(), const Graphic3d_HorizontalTextAlignment theHAlign = Graphic3d_HTA_LEFT, const Graphic3d_VerticalTextAlignment theVAlign = Graphic3d_VTA_BOTTOM);
 
@@ -612,7 +643,7 @@ None
 
 Description
 -----------
-Adds to the presentation apresentation the drawing of the curve acurve. the aspect is defined by lineaspect in adrawer. if drawcurve equals standard_false the curve will not be displayed, it is used if the curve is a part of some shape and primitivearray visualization approach is activated (it is activated by default).
+Adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Boolean drawCurve = Standard_True);
 
@@ -635,7 +666,7 @@ None
 
 Description
 -----------
-Adds to the presentation apresentation the drawing of the curve acurve. the aspect is defined by lineaspect in adrawer. the drawing will be limited between the points of parameter u1 and u2. if drawcurve equals standard_false the curve will not be displayed, it is used if the curve is a part of some shape and primitivearray visualization approach is activated (it is activated by default).
+Adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is defined by LineAspect in aDrawer. The drawing will be limited between the points of parameter U1 and U2. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const opencascade::handle<Prs3d_Drawer> & aDrawer, const Standard_Boolean drawCurve = Standard_True);
 
@@ -657,7 +688,7 @@ None
 
 Description
 -----------
-Adds to the presentation apresentation the drawing of the curve acurve. the aspect is the current aspect. adeflection is used in the circle case. points give a sequence of curve points. if drawcurve equals standard_false the curve will not be displayed, it is used if the curve is a part of some shape and primitivearray visualization approach is activated (it is activated by default).
+adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer, TColgp_SequenceOfPnt & Points, const Standard_Boolean drawCurve = Standard_True);
 
@@ -681,7 +712,7 @@ None
 
 Description
 -----------
-Adds to the presentation apresentation the drawing of the curve acurve. the aspect is the current aspect. the drawing will be limited between the points of parameter u1 and u2. adeflection is used in the circle case. points give a sequence of curve points. if drawcurve equals standard_false the curve will not be displayed, it is used if the curve is a part of some shape and primitivearray visualization approach is activated (it is activated by default).
+adds to the presentation aPresentation the drawing of the curve aCurve. The aspect is the current aspect. The drawing will be limited between the points of parameter U1 and U2. aDeflection is used in the circle case. Points give a sequence of curve points. If drawCurve equals Standard_False the curve will not be displayed, it is used if the curve is a part of some shape and PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, TColgp_SequenceOfPnt & Points, const Standard_Integer aNbPoints = 30, const Standard_Boolean drawCurve = Standard_True);
 
@@ -704,7 +735,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between the point (x,y,z) and the drawing of the curve is less than adistance.
+returns true if the distance between the point (X,Y,Z) and the drawing of the curve is less than aDistance.
 ") Match;
 		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -729,7 +760,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between the point (x,y,z) and the drawing of the curve is less than adistance.
+returns true if the distance between the point (X,Y,Z) and the drawing of the curve is less than aDistance.
 ") Match;
 		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const Standard_Real aDeflection, const Standard_Real aLimit, const Standard_Integer aNbPoints);
 
@@ -754,7 +785,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between the point (x,y,z) and the drawing of the curve acurve is less than adistance. the drawing is considered between the points of parameter u1 and u2;.
+returns true if the distance between the point (X,Y,Z) and the drawing of the curve aCurve is less than aDistance. The drawing is considered between the points of parameter U1 and U2;.
 ") Match;
 		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -780,7 +811,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between the point (x,y,z) and the drawing of the curve acurve is less than adistance. the drawing is considered between the points of parameter u1 and u2;.
+returns true if the distance between the point (X,Y,Z) and the drawing of the curve aCurve is less than aDistance. The drawing is considered between the points of parameter U1 and U2;.
 ") Match;
 		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const Standard_Real U1, const Standard_Real U2, const Standard_Real aDeflection, const Standard_Integer aNbPoints);
 
@@ -1030,7 +1061,11 @@ None
 
 Description
 -----------
-Computes isolines presentation for a topods face. this method chooses proper version of isoline builder algorithm: on triangulation or surface depending on the flag passed from prs3d_drawer attributes. this method is a default way to display isolines for a given topods face. @param thepresentation [in] the presentation. @param theface [in] the face. @param thedrawer [in] the display settings. @param thedeflection [in] the deflection for isolines-on-surface version.
+Computes isolines presentation for a TopoDS face. This method chooses proper version of isoline builder algorithm: on triangulation or surface depending on the flag passed from Prs3d_Drawer attributes. This method is a default way to display isolines for a given TopoDS face. 
+Input parameter: thePresentation the presentation. 
+Input parameter: theFace the face. 
+Input parameter: theDrawer the display settings. 
+Input parameter: theDeflection the deflection for isolines-on-surface version.
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection);
 
@@ -1052,7 +1087,10 @@ None
 
 Description
 -----------
-Computes isolines presentation for a topods face. this method chooses proper version of isoline builder algorithm: on triangulation or surface depending on the flag passed from prs3d_drawer attributes. this method is a default way to display isolines for a given topods face. @param theface [in] the face. @param thedrawer [in] the display settings. @param thedeflection [in] the deflection for isolines-on-surface version.
+Computes isolines presentation for a TopoDS face. This method chooses proper version of isoline builder algorithm: on triangulation or surface depending on the flag passed from Prs3d_Drawer attributes. This method is a default way to display isolines for a given TopoDS face. 
+Input parameter: theFace the face. 
+Input parameter: theDrawer the display settings. 
+Input parameter: theDeflection the deflection for isolines-on-surface version.
 ") Add;
 		static void Add(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, Prs3d_NListOfSequenceOfPnt & theUPolylines, Prs3d_NListOfSequenceOfPnt & theVPolylines);
 
@@ -1073,7 +1111,11 @@ None
 
 Description
 -----------
-Computes isolines on surface and adds them to presentation. @param thepresentation [in] the presentation. @param theface [in] the face. @param thedrawer [in] the display settings. @param thedeflection [in] the deflection value.
+Computes isolines on surface and adds them to presentation. 
+Input parameter: thePresentation the presentation. 
+Input parameter: theFace the face. 
+Input parameter: theDrawer the display settings. 
+Input parameter: theDeflection the deflection value.
 ") AddOnSurface;
 		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection);
 
@@ -1095,7 +1137,10 @@ None
 
 Description
 -----------
-Computes isolines on surface and adds them to presentation. @param theface [in] the face @param thedrawer [in] the display settings @param thedeflection [in] the deflection value @param theupolylines [out] the sequence of result polylines @param thevpolylines [out] the sequence of result polylines.
+Computes isolines on surface and adds them to presentation. 
+Input parameter: theFace the face 
+Input parameter: theDrawer the display settings 
+Input parameter: theDeflection the deflection value @param[out] theUPolylines the sequence of result polylines @param[out] theVPolylines the sequence of result polylines.
 ") AddOnSurface;
 		static void AddOnSurface(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, Prs3d_NListOfSequenceOfPnt & theUPolylines, Prs3d_NListOfSequenceOfPnt & theVPolylines);
 
@@ -1118,7 +1163,13 @@ None
 
 Description
 -----------
-Computes isolines on surface and adds them to presentation. @param thepresentation [in] the presentation. @param thesurface [in] the surface. @param thedrawer [in] the display settings. @param thedeflection [in] the deflection value. @param theuisoparams [in] the parameters of u isolines to compute. @param thevisoparams [in] the parameters of v isolines to compute.
+Computes isolines on surface and adds them to presentation. 
+Input parameter: thePresentation the presentation. 
+Input parameter: theSurface the surface. 
+Input parameter: theDrawer the display settings. 
+Input parameter: theDeflection the deflection value. 
+Input parameter: theUIsoParams the parameters of u isolines to compute. 
+Input parameter: theVIsoParams the parameters of v isolines to compute.
 ") AddOnSurface;
 		static void AddOnSurface(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theSurface, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Real theDeflection, const TColStd_SequenceOfReal & theUIsoParams, const TColStd_SequenceOfReal & theVIsoParams);
 
@@ -1138,7 +1189,10 @@ None
 
 Description
 -----------
-Computes isolines on triangulation and adds them to a presentation. @param thepresentation [in] the presentation. @param theface [in] the face. @param thedrawer [in] the display settings.
+Computes isolines on triangulation and adds them to a presentation. 
+Input parameter: thePresentation the presentation. 
+Input parameter: theFace the face. 
+Input parameter: theDrawer the display settings.
 ") AddOnTriangulation;
 		static void AddOnTriangulation(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -1159,7 +1213,9 @@ None
 
 Description
 -----------
-Computes isolines on triangulation. @param theface [in] the face. @param thedrawer [in] the display settings. @param theupolylines [out] the sequence of result polylines @param thevpolylines [out] the sequence of result polylines.
+Computes isolines on triangulation. 
+Input parameter: theFace the face. 
+Input parameter: theDrawer the display settings. @param[out] theUPolylines the sequence of result polylines @param[out] theVPolylines the sequence of result polylines.
 ") AddOnTriangulation;
 		static void AddOnTriangulation(const TopoDS_Face & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer, Prs3d_NListOfSequenceOfPnt & theUPolylines, Prs3d_NListOfSequenceOfPnt & theVPolylines);
 
@@ -1183,7 +1239,14 @@ None
 
 Description
 -----------
-Computes isolines on triangulation and adds them to a presentation. @param thepresentation [in] the presentation. @param thetriangulation [in] the triangulation. @param thesurface [in] the definition of triangulated surface. the surface adapter is used to precisely evaluate isoline points using surface law and fit them on triangulation. if null is passed, the method will use linear interpolation of triangle node's uv coordinates to evaluate isoline points. @param thelocation [in] the location transformation defined for triangulation (surface). @param thedrawer [in] the display settings. @param theuisoparams [in] the parameters of u isolines to compute. @param thevisoparams [in] the parameters of v isolines to compute.
+Computes isolines on triangulation and adds them to a presentation. 
+Input parameter: thePresentation the presentation. 
+Input parameter: theTriangulation the triangulation. 
+Input parameter: theSurface the definition of triangulated surface. The surface adapter is used to precisely evaluate isoline points using surface law and fit them on triangulation. If NULL is passed, the method will use linear interpolation of triangle node's UV coordinates to evaluate isoline points. 
+Input parameter: theLocation the location transformation defined for triangulation (surface). 
+Input parameter: theDrawer the display settings. 
+Input parameter: theUIsoParams the parameters of u isolines to compute. 
+Input parameter: theVIsoParams the parameters of v isolines to compute.
 ") AddOnTriangulation;
 		static void AddOnTriangulation(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<Poly_Triangulation> & theTriangulation, const opencascade::handle<Geom_Surface> & theSurface, const TopLoc_Location & theLocation, const opencascade::handle<Prs3d_Drawer> & theDrawer, const TColStd_SequenceOfReal & theUIsoParams, const TColStd_SequenceOfReal & theVIsoParams);
 
@@ -1209,7 +1272,11 @@ theVmax: float
 
 Description
 -----------
-Evaluate sequence of parameters for drawing uv isolines for a given face. @param theface [in] the face. @param thenbisou [in] the number of u isolines. @param thenbisov [in] the number of v isolines. @param theuvlimit [in] the u, v parameter value limit. @param theuisoparams [out] the sequence of u isoline parameters. @param thevisoparams [out] the sequence of v isoline parameters. @param theumin [out] the lower u boundary of theface. @param theumax [out] the upper u boundary of theface. @param thevmin [out] the lower v boundary of theface. @param thevmax [out] the upper v boundary of theface.
+Evaluate sequence of parameters for drawing uv isolines for a given face. 
+Input parameter: theFace the face. 
+Input parameter: theNbIsoU the number of u isolines. 
+Input parameter: theNbIsoV the number of v isolines. 
+Input parameter: theUVLimit the u, v parameter value limit. @param[out] theUIsoParams the sequence of u isoline parameters. @param[out] theVIsoParams the sequence of v isoline parameters. @param[out] theUmin the lower U boundary of theFace. @param[out] theUmax the upper U boundary of theFace. @param[out] theVmin the lower V boundary of theFace. @param[out] theVmax the upper V boundary of theFace.
 ") UVIsoParameters;
 		static void UVIsoParameters(const TopoDS_Face & theFace, const Standard_Integer theNbIsoU, const Standard_Integer theNbIsoV, const Standard_Real theUVLimit, TColStd_SequenceOfReal & theUIsoParams, TColStd_SequenceOfReal & theVIsoParams, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1243,7 +1310,7 @@ None
 
 Description
 -----------
-Defines display of infinite planes. the infinite plane aplane is added to the display apresentation, and the attributes of the display are defined by the attribute manager adrawer.
+Defines display of infinite planes. The infinite plane aPlane is added to the display aPresentation, and the attributes of the display are defined by the attribute manager aDrawer.
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Surface & aPlane, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -1266,7 +1333,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between the point (x,y,z) and the plane is less than adistance.
+returns true if the distance between the point (X,Y,Z) and the plane is less than aDistance.
 ") Match;
 		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Surface & aPlane, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -1300,7 +1367,7 @@ None
 
 Description
 -----------
-Defines display of bspline and bezier curves. adds the 3d curve acurve to the stdprs_polecurve algorithm. this shape is found in the presentation object apresentation, and its display attributes are set in the attribute manager adrawer. the curve object from adaptor3d provides data from a geom curve. this makes it possible to use the surface in a geometric algorithm.
+Defines display of BSpline and Bezier curves. Adds the 3D curve aCurve to the StdPrs_PoleCurve algorithm. This shape is found in the presentation object aPresentation, and its display attributes are set in the attribute manager aDrawer. The curve object from Adaptor3d provides data from a Geom curve. This makes it possible to use the surface in a geometric algorithm.
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -1323,7 +1390,7 @@ bool
 
 Description
 -----------
-Returns true if the distance between the point (x,y,z) and the broken line made of the poles is less then adistance.
+returns true if the distance between the point (X,Y,Z) and the broken line made of the poles is less then aDistance.
 ") Match;
 		static Standard_Boolean Match(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -1346,7 +1413,7 @@ int
 
 Description
 -----------
-Returns the pole the most near of the point (x,y,z) and returns its range. the distance between the pole and (x,y,z) must be less then adistance. if no pole corresponds, 0 is returned.
+returns the pole the most near of the point (X,Y,Z) and returns its range. The distance between the pole and (X,Y,Z) must be less then aDistance. If no pole corresponds, 0 is returned.
 ") Pick;
 		static Standard_Integer Pick(const Standard_Real X, const Standard_Real Y, const Standard_Real Z, const Standard_Real aDistance, const Adaptor3d_Curve & aCurve, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -1382,7 +1449,8 @@ None
 
 Description
 -----------
-Shades <theshape>. @param thevolumetype defines the way how to interpret input shapes - as closed volumes (to activate back-face culling and capping plane algorithms), as open volumes (shells or solids with holes) or to perform autodetection (would split input shape into two groups).
+Shades <theShape>. 
+Parameter theVolumeType defines the way how to interpret input shapes - as Closed volumes (to activate back-face culling and capping plane algorithms), as Open volumes (shells or solids with holes) or to perform Autodetection (would split input shape into two groups).
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection, const opencascade::handle<Graphic3d_Group> & theGroup = NULL);
 
@@ -1408,7 +1476,8 @@ None
 
 Description
 -----------
-Shades <theshape> with texture coordinates. @param thevolumetype defines the way how to interpret input shapes - as closed volumes (to activate back-face culling and capping plane algorithms), as open volumes (shells or solids with holes) or to perform autodetection (would split input shape into two groups).
+Shades <theShape> with texture coordinates. 
+Parameter theVolumeType defines the way how to interpret input shapes - as Closed volumes (to activate back-face culling and capping plane algorithms), as Open volumes (shells or solids with holes) or to perform Autodetection (would split input shape into two groups).
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Boolean theHasTexels, const gp_Pnt2d & theUVOrigin, const gp_Pnt2d & theUVRepeat, const gp_Pnt2d & theUVScale, const StdPrs_Volume theVolume = StdPrs_Volume_Autodetection, const opencascade::handle<Graphic3d_Group> & theGroup = NULL);
 
@@ -1489,7 +1558,9 @@ opencascade::handle<Graphic3d_ArrayOfSegments>
 
 Description
 -----------
-Define primitive array of boundary segments for specified shape. @param theshape segments array or null if specified face does not have computed triangulation @param theuppercontinuity the most edge continuity class to be included to result (edges with more continuity will be ignored).
+Define primitive array of boundary segments for specified shape. 
+Parameter theShape segments array or NULL if specified face does not have computed triangulation 
+Parameter theUpperContinuity the most edge continuity class to be included to result (edges with more continuity will be ignored).
 ") FillFaceBoundaries;
 		static opencascade::handle<Graphic3d_ArrayOfSegments> FillFaceBoundaries(const TopoDS_Shape & theShape, GeomAbs_Shape theUpperContinuity = GeomAbs_CN);
 
@@ -1507,7 +1578,8 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 
 Description
 -----------
-Create primitive array with triangles for specified shape. @param theshape [in] the shape with precomputed triangulation.
+Create primitive array with triangles for specified shape. 
+Input parameter: theShape the shape with precomputed triangulation.
 ") FillTriangles;
 		static opencascade::handle<Graphic3d_ArrayOfTriangles> FillTriangles(const TopoDS_Shape & theShape);
 
@@ -1529,7 +1601,13 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 
 Description
 -----------
-Create primitive array of triangles for specified shape. @param theshape the shape with precomputed triangulation @param thehastexels define uv coordinates in primitive array @param theuvorigin origin for uv coordinates @param theuvrepeat repeat parameters for uv coordinates @param theuvscale scale coefficients for uv coordinates return triangles array or null if specified face does not have computed triangulation.
+Create primitive array of triangles for specified shape. 
+Parameter theShape the shape with precomputed triangulation 
+Parameter theHasTexels define UV coordinates in primitive array 
+Parameter theUVOrigin origin for UV coordinates 
+Parameter theUVRepeat repeat parameters for UV coordinates 
+Parameter theUVScale scale coefficients for UV coordinates 
+Return: triangles array or NULL if specified face does not have computed triangulation.
 ") FillTriangles;
 		static opencascade::handle<Graphic3d_ArrayOfTriangles> FillTriangles(const TopoDS_Shape & theShape, const Standard_Boolean theHasTexels, const gp_Pnt2d & theUVOrigin, const gp_Pnt2d & theUVRepeat, const gp_Pnt2d & theUVScale);
 
@@ -1563,7 +1641,7 @@ None
 
 Description
 -----------
-Adds the surface asurface to the presentation object apresentation. the surface's display attributes are set in the attribute manager adrawer. the surface object from adaptor3d provides data from a geom surface in order to use the surface in an algorithm.
+Adds the surface aSurface to the presentation object aPresentation. The surface's display attributes are set in the attribute manager aDrawer. The surface object from Adaptor3d provides data from a Geom surface in order to use the surface in an algorithm.
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Surface & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -1596,7 +1674,7 @@ None
 
 Description
 -----------
-Constructs the tool and initializes it using theshape and theallvertices (optional) arguments. by default, only isolated and internal vertices are considered, however if theallvertices argument is equal to true, all shape's vertices are taken into account.
+Constructs the tool and initializes it using theShape and theAllVertices (optional) arguments. By default, only isolated and internal vertices are considered, however if theAllVertices argument is equal to True, all shape's vertices are taken into account.
 ") StdPrs_ShapeTool;
 		 StdPrs_ShapeTool(const TopoDS_Shape & theShape, const Standard_Boolean theAllVertices = Standard_False);
 
@@ -2035,7 +2113,7 @@ bool
 
 Description
 -----------
-Return true if null curves have been skipped.
+Return True if NULL curves have been skipped.
 ") IsInvalidGeometry;
 		Standard_Boolean IsInvalidGeometry();
 
@@ -2048,7 +2126,7 @@ bool
 
 Description
 -----------
-Return true indicating that iterator looks only for oriented edges.
+Return True indicating that iterator looks only for oriented edges.
 ") IsOriented;
 		Standard_Boolean IsOriented();
 
@@ -2061,7 +2139,7 @@ bool
 
 Description
 -----------
-Return true if iterator points to the curve.
+Return True if iterator points to the curve.
 ") More;
 		Standard_Boolean More();
 
@@ -2134,7 +2212,10 @@ None
 
 Description
 -----------
-If presentation has own deviation coefficient and isautotriangulation() is true, function will compare actual coefficients with previous values and will clear triangulation on their change (regardless actual tessellation quality). function is placed here for compatibility reasons - new code should avoid using isautotriangulation(). @param theshape [in] the shape @param thedrawer [in] the display settings @param thetoresetcoeff [in] updates coefficients in thedrawer to actual state to avoid redundant recomputations.
+If presentation has own deviation coefficient and IsAutoTriangulation() is true, function will compare actual coefficients with previous values and will clear triangulation on their change (regardless actual tessellation quality). Function is placed here for compatibility reasons - new code should avoid using IsAutoTriangulation(). 
+Input parameter: theShape the shape 
+Input parameter: theDrawer the display settings 
+Input parameter: theToResetCoeff updates coefficients in theDrawer to actual state to avoid redundant recomputations.
 ") ClearOnOwnDeflectionChange;
 		static void ClearOnOwnDeflectionChange(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, const Standard_Boolean theToResetCoeff);
 
@@ -2153,7 +2234,7 @@ float
 
 Description
 -----------
-Computes the absolute deflection value depending on the type of deflection in thedrawer: <ul> <li><b>aspect_tod_relative</b>: the absolute deflection is computed using the relative deviation coefficient from thedrawer and the shape's bounding box;</li> <li><b>aspect_tod_absolute</b>: the maximal chordial deviation from thedrawer is returned.</li> </ul> in case of the type of deflection in thedrawer computed relative deflection for shape is stored as absolute deflection. it is necessary to use it later on for sub-shapes. this function should always be used to compute the deflection value for building discrete representations of the shape (triangulation, wireframe) to avoid inconsistencies between different representations of the shape and undesirable visual artifacts.
+Computes the absolute deflection value depending on the type of deflection in theDrawer: <ul> <li><b>Aspect_TOD_RELATIVE</b>: the absolute deflection is computed using the relative deviation coefficient from theDrawer and the shape's bounding box;</li> <li><b>Aspect_TOD_ABSOLUTE</b>: the maximal chordial deviation from theDrawer is returned.</li> </ul> In case of the type of deflection in theDrawer computed relative deflection for shape is stored as absolute deflection. It is necessary to use it later on for sub-shapes. This function should always be used to compute the deflection value for building discrete representations of the shape (triangulation, wireframe) to avoid inconsistencies between different representations of the shape and undesirable visual artifacts.
 ") GetDeflection;
 		static Standard_Real GetDeflection(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -2171,7 +2252,8 @@ bool
 
 Description
 -----------
-Checks back faces visibility for specified shape (to activate back-face culling). return true if shape is closed manifold solid or compound of such solids. .
+Checks back faces visibility for specified shape (to activate back-face culling). 
+Return: true if shape is closed manifold Solid or compound of such Solids. .
 ") IsClosed;
 		static Standard_Boolean IsClosed(const TopoDS_Shape & theShape);
 
@@ -2190,7 +2272,9 @@ bool
 
 Description
 -----------
-Checks whether the shape is properly triangulated for a given display settings. @param theshape [in] the shape. @param thedrawer [in] the display settings.
+Checks whether the shape is properly triangulated for a given display settings. 
+Input parameter: theShape the shape. 
+Input parameter: theDrawer the display settings.
 ") IsTessellated;
 		static Standard_Boolean IsTessellated(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -2208,7 +2292,8 @@ bool
 
 Description
 -----------
-Similar to breptools::triangulation() but without extra checks. return true if all faces within shape are triangulated.
+Similar to BRepTools::Triangulation() but without extra checks. 
+Return: true if all faces within shape are triangulated.
 ") IsTriangulated;
 		static Standard_Boolean IsTriangulated(const TopoDS_Shape & theShape);
 
@@ -2227,7 +2312,10 @@ bool
 
 Description
 -----------
-Validates triangulation within the shape and performs tessellation if necessary. @param theshape [in] the shape. @param thedrawer [in] the display settings. return true if tessellation was recomputed and false otherwise.
+Validates triangulation within the shape and performs tessellation if necessary. 
+Input parameter: theShape the shape. 
+Input parameter: theDrawer the display settings. 
+Return: true if tessellation was recomputed and false otherwise.
 ") Tessellate;
 		static Standard_Boolean Tessellate(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -2295,7 +2383,7 @@ None
 
 Description
 -----------
-Defines a display featuring u and v isoparameters. adds the surface aface to the stdprs_wfrestrictedface algorithm. this face is found in a shape in the presentation object apresentation, and its display attributes - in particular, the number of u and v isoparameters - are set in the attribute manager adrawer. aface is brepadaptor_surface surface created from a face in a topological shape. which is passed as an argument through the brepadaptor_surface surface created from it. this is what allows the topological face to be treated as a geometric surface.
+Defines a display featuring U and V isoparameters. Adds the surface aFace to the StdPrs_WFRestrictedFace algorithm. This face is found in a shape in the presentation object aPresentation, and its display attributes - in particular, the number of U and V isoparameters - are set in the attribute manager aDrawer. aFace is BRepAdaptor_Surface surface created from a face in a topological shape. which is passed as an argument through the BRepAdaptor_Surface surface created from it. This is what allows the topological face to be treated as a geometric surface.
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -2321,7 +2409,7 @@ None
 
 Description
 -----------
-Defines a display of a delection-specified face. the display will feature u and v isoparameters. adds the topology ashape to the stdprs_wfrestrictedface algorithm. this shape is found in the presentation object apresentation, and its display attributes - except the number of u and v isoparameters - are set in the attribute manager adrawer. the function sets the number of u and v isoparameters, nbuiso and nbviso, in the shape. to do this, the arguments drawuiso and drawviso must be true. aface is brepadaptor_surface surface created from a face in a topological shape. which is passed as an argument through the brepadaptor_surface surface created from it. this is what allows the topological face to be treated as a geometric surface. curves give a sequence of face curves, it is used if the primitivearray visualization approach is activated (it is activated by default).
+Defines a display of a delection-specified face. The display will feature U and V isoparameters. Adds the topology aShape to the StdPrs_WFRestrictedFace algorithm. This shape is found in the presentation object aPresentation, and its display attributes - except the number of U and V isoparameters - are set in the attribute manager aDrawer. The function sets the number of U and V isoparameters, NBUiso and NBViso, in the shape. To do this, the arguments DrawUIso and DrawVIso must be true. aFace is BRepAdaptor_Surface surface created from a face in a topological shape. which is passed as an argument through the BRepAdaptor_Surface surface created from it. This is what allows the topological face to be treated as a geometric surface. Curves give a sequence of face curves, it is used if the PrimitiveArray visualization approach is activated (it is activated by default).
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const Standard_Boolean DrawUIso, const Standard_Boolean DrawVIso, const Standard_Real Deflection, const Standard_Integer NBUiso, const Standard_Integer NBViso, const opencascade::handle<Prs3d_Drawer> & aDrawer, Prs3d_NListOfSequenceOfPnt & Curves);
 
@@ -2341,7 +2429,7 @@ None
 
 Description
 -----------
-Defines a display featuring u isoparameters respectively. add the surface aface to the stdprs_wfrestrictedface algorithm. this face is found in a shape in the presentation object apresentation, and its display attributes - in particular, the number of u isoparameters - are set in the attribute manager adrawer. aface is brepadaptor_surface surface created from a face in a topological shape. which is passed to the function as an argument through the brepadaptor_surface surface created from it. this is what allows the topological face to be treated as a geometric surface.
+Defines a display featuring U isoparameters respectively. Add the surface aFace to the StdPrs_WFRestrictedFace algorithm. This face is found in a shape in the presentation object aPresentation, and its display attributes - in particular, the number of U isoparameters - are set in the attribute manager aDrawer. aFace is BRepAdaptor_Surface surface created from a face in a topological shape. which is passed to the function as an argument through the BRepAdaptor_Surface surface created from it. This is what allows the topological face to be treated as a geometric surface.
 ") AddUIso;
 		static void AddUIso(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -2361,7 +2449,7 @@ None
 
 Description
 -----------
-Defines a display featuring v isoparameters respectively. add the surface aface to the stdprs_wfrestrictedface algorithm. this face is found in a shape in the presentation object apresentation, and its display attributes - in particular, the number of v isoparameters - are set in the attribute manager adrawer. aface is brepadaptor_surface surface created from a face in a topological shape. which is passed to the function as an argument through the brepadaptor_surface surface created from it. this is what allows the topological face to be treated as a geometric surface.
+Defines a display featuring V isoparameters respectively. Add the surface aFace to the StdPrs_WFRestrictedFace algorithm. This face is found in a shape in the presentation object aPresentation, and its display attributes - in particular, the number of V isoparameters - are set in the attribute manager aDrawer. aFace is BRepAdaptor_Surface surface created from a face in a topological shape. which is passed to the function as an argument through the BRepAdaptor_Surface surface created from it. This is what allows the topological face to be treated as a geometric surface.
 ") AddVIso;
 		static void AddVIso(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<BRepAdaptor_Surface> & aFace, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -2492,7 +2580,7 @@ None
 
 Description
 -----------
-Adds the surface asurface to the presentation object apresentation, and defines its boundaries and isoparameters. the shape's display attributes are set in the attribute manager adrawer. these include whether deflection is absolute or relative to the size of the shape. the surface asurface is a surface object from adaptor, and provides data from a geom surface. this makes it possible to use the surface in a geometric algorithm. note that this surface object is manipulated by handles.
+Adds the surface aSurface to the presentation object aPresentation, and defines its boundaries and isoparameters. The shape's display attributes are set in the attribute manager aDrawer. These include whether deflection is absolute or relative to the size of the shape. The surface aSurface is a surface object from Adaptor, and provides data from a Geom surface. This makes it possible to use the surface in a geometric algorithm. Note that this surface object is manipulated by handles.
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Adaptor3d_Surface> & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -2526,7 +2614,7 @@ None
 
 Description
 -----------
-Adds the surface asurface to the presentation object apresentation. the shape's display attributes are set in the attribute manager adrawer. the surface asurface is a surface object from adaptor3d, and provides data from a geom surface. this makes it possible to use the surface in a geometric algorithm.
+Adds the surface aSurface to the presentation object aPresentation. The shape's display attributes are set in the attribute manager aDrawer. The surface aSurface is a surface object from Adaptor3d, and provides data from a Geom surface. This makes it possible to use the surface in a geometric algorithm.
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const Adaptor3d_Surface & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 
@@ -2545,12 +2633,12 @@ Adds the surface asurface to the presentation object apresentation. the shape's 
 class StdPrs_WFRestrictedFace : public Prs3d_Root {
 	public:
 		/****** StdPrs_WFRestrictedFace::Add ******/
-		/****** md5 signature: 076538b85d4e03db1c26729f0039250d ******/
+		/****** md5 signature: 997ef5408fc0674910ccf2fdf2cd6526 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
-thePresentation: Handle ( Prs3d_Presentation )
+thePresentation: Prs3d_Presentation
 theFace: BRepAdaptor_Surface
 theDrawUIso: bool
 theDrawVIso: bool
@@ -2567,17 +2655,17 @@ Description
 -----------
 No available documentation.
 ") Add;
-		static void Add(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer, Prs3d_NListOfSequenceOfPnt & theCurves);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer, Prs3d_NListOfSequenceOfPnt & theCurves);
 
 		/****** StdPrs_WFRestrictedFace::Add ******/
-		/****** md5 signature: e45d54c16977319468756914ccb16f96 ******/
+		/****** md5 signature: c9cfe87ac0d1f4614d3646ecf19658e1 ******/
 		%feature("compactdefaultargs") Add;
 		%feature("autodoc", "
 Parameters
 ----------
-thePresentation: Handle ( Prs3d_Presentation )
+thePresentation: Prs3d_Presentation
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Prs3d_Drawer
 
 Return
 -------
@@ -2587,17 +2675,17 @@ Description
 -----------
 No available documentation.
 ") Add;
-		static void Add(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFRestrictedFace::AddUIso ******/
-		/****** md5 signature: 691ce66b22bdadce9b0791ceff26e3e6 ******/
+		/****** md5 signature: 7650dbfe259fdac7aa81c318906e354e ******/
 		%feature("compactdefaultargs") AddUIso;
 		%feature("autodoc", "
 Parameters
 ----------
-thePresentation: Handle ( Prs3d_Presentation )
+thePresentation: Prs3d_Presentation
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Prs3d_Drawer
 
 Return
 -------
@@ -2607,17 +2695,17 @@ Description
 -----------
 No available documentation.
 ") AddUIso;
-		static void AddUIso(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static void AddUIso(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFRestrictedFace::AddVIso ******/
-		/****** md5 signature: e4053cb34cfa26f718bd0aac8e5ab0c8 ******/
+		/****** md5 signature: de55bde426284c0abdb3f783d7f42fa9 ******/
 		%feature("compactdefaultargs") AddVIso;
 		%feature("autodoc", "
 Parameters
 ----------
-thePresentation: Handle ( Prs3d_Presentation )
+thePresentation: Prs3d_Presentation
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Prs3d_Drawer
 
 Return
 -------
@@ -2627,7 +2715,7 @@ Description
 -----------
 No available documentation.
 ") AddVIso;
-		static void AddVIso(const Handle ( Prs3d_Presentation ) & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static void AddVIso(const opencascade::handle<Prs3d_Presentation> & thePresentation, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFRestrictedFace::Match ******/
 		/****** md5 signature: 73807c62eed49a19c080d0ed89c7ee6e ******/
@@ -2658,7 +2746,7 @@ No available documentation.
 		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Standard_Boolean theDrawUIso, const Standard_Boolean theDrawVIso, const Standard_Real theDeflection, const Standard_Integer theNbUIso, const Standard_Integer theNbVIso, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFRestrictedFace::Match ******/
-		/****** md5 signature: 1c3eff0f811bf265e1062653bc20f999 ******/
+		/****** md5 signature: 891c8b650f703671fbbe03256a120ad1 ******/
 		%feature("compactdefaultargs") Match;
 		%feature("autodoc", "
 Parameters
@@ -2668,7 +2756,7 @@ theY: float
 theZ: float
 theDistance: float
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Prs3d_Drawer
 
 Return
 -------
@@ -2678,10 +2766,10 @@ Description
 -----------
 No available documentation.
 ") Match;
-		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static Standard_Boolean Match(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFRestrictedFace::MatchUIso ******/
-		/****** md5 signature: 285b5f5fb51f89038ecfc31952642b0e ******/
+		/****** md5 signature: 69e7da890dd62dbded01cce9b3c2ae5d ******/
 		%feature("compactdefaultargs") MatchUIso;
 		%feature("autodoc", "
 Parameters
@@ -2691,7 +2779,7 @@ theY: float
 theZ: float
 theDistance: float
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Prs3d_Drawer
 
 Return
 -------
@@ -2701,10 +2789,10 @@ Description
 -----------
 No available documentation.
 ") MatchUIso;
-		static Standard_Boolean MatchUIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static Standard_Boolean MatchUIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 		/****** StdPrs_WFRestrictedFace::MatchVIso ******/
-		/****** md5 signature: 8add17f73e226b549cfb6f2f022faec1 ******/
+		/****** md5 signature: 74aa6ea3dafef67728512fa99d853098 ******/
 		%feature("compactdefaultargs") MatchVIso;
 		%feature("autodoc", "
 Parameters
@@ -2714,7 +2802,7 @@ theY: float
 theZ: float
 theDistance: float
 theFace: BRepAdaptor_Surface
-theDrawer: Handle ( Prs3d_Drawer )
+theDrawer: Prs3d_Drawer
 
 Return
 -------
@@ -2724,7 +2812,7 @@ Description
 -----------
 No available documentation.
 ") MatchVIso;
-		static Standard_Boolean MatchVIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const Handle ( Prs3d_Drawer ) & theDrawer);
+		static Standard_Boolean MatchVIso(const Standard_Real theX, const Standard_Real theY, const Standard_Real theZ, const Standard_Real theDistance, const opencascade::handle<BRepAdaptor_Surface> & theFace, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
 };
 
@@ -2757,7 +2845,11 @@ None
 
 Description
 -----------
-Computes wireframe presentation of a shape. @param thepresentation [in] the presentation. @param theshape [in] the shape. @param thedrawer [in] the draw settings. @param theisparallel [in] perform algorithm using multiple threads.
+Computes wireframe presentation of a shape. 
+Input parameter: thePresentation the presentation. 
+Input parameter: theShape the shape. 
+Input parameter: theDrawer the draw settings. 
+Input parameter: theIsParallel perform algorithm using multiple threads.
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & thePresentation, const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer, Standard_Boolean theIsParallel = Standard_False);
 
@@ -2776,7 +2868,9 @@ opencascade::handle<Graphic3d_ArrayOfPrimitives>
 
 Description
 -----------
-Compute all edges (wire, free, unfree) and put them into single primitive array. @param theshape [in] the shape @param thedrawer [in] the drawer settings (deviation angle and maximal parameter value).
+Compute all edges (wire, free, unfree) and put them into single primitive array. 
+Input parameter: theShape the shape 
+Input parameter: theDrawer the drawer settings (deviation angle and maximal parameter value).
 ") AddAllEdges;
 		static opencascade::handle<Graphic3d_ArrayOfPrimitives> AddAllEdges(const TopoDS_Shape & theShape, const opencascade::handle<Prs3d_Drawer> & theDrawer);
 
@@ -2795,7 +2889,9 @@ opencascade::handle<Graphic3d_ArrayOfPrimitives>
 
 Description
 -----------
-Compute free and boundary edges on a triangulation of each face in the given shape. @param theshape  [in] the list of triangulated faces @param thetoexcludegeometric [in] flag indicating that faces with defined surface should be skipped.
+Compute free and boundary edges on a triangulation of each face in the given shape. 
+Input parameter: theShape the list of triangulated faces 
+Input parameter: theToExcludeGeometric flag indicating that Faces with defined Surface should be skipped.
 ") AddEdgesOnTriangulation;
 		static opencascade::handle<Graphic3d_ArrayOfPrimitives> AddEdgesOnTriangulation(const TopoDS_Shape & theShape, const Standard_Boolean theToExcludeGeometric = Standard_True);
 
@@ -2815,7 +2911,10 @@ None
 
 Description
 -----------
-Compute free and boundary edges on a triangulation of each face in the given shape. @param thesegments  [in] the sequence of points defining segments @param theshape  [in] the list of triangulated faces @param thetoexcludegeometric [in] flag indicating that faces with defined surface should be skipped.
+Compute free and boundary edges on a triangulation of each face in the given shape. 
+Input parameter: theSegments the sequence of points defining segments 
+Input parameter: theShape the list of triangulated faces 
+Input parameter: theToExcludeGeometric flag indicating that Faces with defined Surface should be skipped.
 ") AddEdgesOnTriangulation;
 		static void AddEdgesOnTriangulation(TColgp_SequenceOfPnt & theSegments, const TopoDS_Shape & theShape, const Standard_Boolean theToExcludeGeometric = Standard_True);
 
@@ -2834,7 +2933,9 @@ opencascade::handle<Graphic3d_ArrayOfPoints>
 
 Description
 -----------
-Compute vertex presentation for a shape. @param theshape [in] the shape @param thevertexmode [in] vertex filter.
+Compute vertex presentation for a shape. 
+Input parameter: theShape the shape 
+Input parameter: theVertexMode vertex filter.
 ") AddVertexes;
 		static opencascade::handle<Graphic3d_ArrayOfPoints> AddVertexes(const TopoDS_Shape & theShape, Prs3d_VertexDrawMode theVertexMode);
 
@@ -2868,7 +2969,7 @@ None
 
 Description
 -----------
-Draws a surface by drawing the isoparametric curves with respect to a fixed number of points given by the drawer. the number of isoparametric curves to be drawn and their color are controlled by the furnished drawer.
+Draws a surface by drawing the isoparametric curves with respect to a fixed number of points given by the Drawer. The number of isoparametric curves to be drawn and their color are controlled by the furnished Drawer.
 ") Add;
 		static void Add(const opencascade::handle<Prs3d_Presentation> & aPresentation, const opencascade::handle<Adaptor3d_Surface> & aSurface, const opencascade::handle<Prs3d_Drawer> & aDrawer);
 

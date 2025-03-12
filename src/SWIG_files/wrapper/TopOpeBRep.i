@@ -234,7 +234,7 @@ OS: Standard_OStream
 
 Description
 -----------
-Prints the name of <tlc> as a string on the stream <s> and returns <s>.
+Prints the name of <TLC> as a String on the Stream <S> and returns <S>.
 ") Print;
 		static Standard_OStream & Print(const TopOpeBRep_TypeLineCurve TLC, std::ostream &OutValue);
 
@@ -452,7 +452,7 @@ None
 
 Description
 -----------
-Update the data structure with relevant information deduced from the intersections. //! shells containing an intersected face. wires containing an intersected edge.
+Update the data structure with relevant information deduced from the intersections. //! Shells containing an intersected face. Wires containing an intersected edge.
 ") CompleteDS;
 		void CompleteDS(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -470,7 +470,7 @@ None
 
 Description
 -----------
-Update the data structure with relevant information deduced from the intersections 2d. //! shells containing an intersected face. wires containing an intersected edge. //! search for interference identity using edge connexity //nyi.
+Update the data structure with relevant information deduced from the intersections 2d. //! Shells containing an intersected face. Wires containing an intersected edge. //! search for interference identity using edge connexity //NYI.
 ") CompleteDS2d;
 		void CompleteDS2d(const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -527,7 +527,7 @@ None
 
 Description
 -----------
-Stores in <ds> the intersections of <s1> and <s2>. if orientforward = true s forward,reversed --> forward s external,internal --> external,internal.
+Stores in <DS> the intersections of <S1> and <S2>. if orientFORWARD = True S FORWARD,REVERSED --> FORWARD S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL.
 ") Insert;
 		void Insert(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const Standard_Boolean orientFORWARD = Standard_True);
 
@@ -550,7 +550,7 @@ None
 
 Description
 -----------
-Stores in <ds> the intersections of <s1> and <s2>. s1 and s2 are edges or wires. s1 edges have a 2d representation in face f1 s2 edges have a 2d representation in face f2 f1 is the face which surface is taken as reference for 2d description of s1 and s2 edges. if orientforward = true s forward,reversed --> forward s external,internal --> external,internal.
+Stores in <DS> the intersections of <S1> and <S2>. S1 and S2 are edges or wires. S1 edges have a 2d representation in face F1 S2 edges have a 2d representation in face F2 F1 is the face which surface is taken as reference for 2d description of S1 and S2 edges. if orientFORWARD = True S FORWARD,REVERSED --> FORWARD S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL.
 ") Insert1d;
 		void Insert1d(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const TopoDS_Face & F1, const TopoDS_Face & F2, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const Standard_Boolean orientFORWARD = Standard_False);
 
@@ -570,7 +570,7 @@ None
 
 Description
 -----------
-Stores in <ds> the intersections of <s1> and <s2>. s1 et s2 contain only samedomain face.
+Stores in <DS> the intersections of <S1> and <S2>. S1 et S2 contain only SameDomain Face.
 ") Insert2d;
 		void Insert2d(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -591,7 +591,7 @@ None
 
 Description
 -----------
-Stores in <ds> the intersections of <s1> and <s2>. if orientforward = true s forwar,reversed --> forward s external,internal --> external,internal.
+Stores in <DS> the intersections of <S1> and <S2>. if orientFORWARD = True S FORWAR,REVERSED --> FORWARD S EXTERNAL,INTERNAL --> EXTERNAL,INTERNAL.
 ") InsertIntersection;
 		void InsertIntersection(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS, const Standard_Boolean orientFORWARD = Standard_True);
 
@@ -611,7 +611,7 @@ None
 
 Description
 -----------
-S1, s2 set of tangent face lance les intersections 2d pour coder correctement les faces samedomain.
+S1, S2 set of tangent face lance les intersections 2d pour coder correctement les faces SameDomain.
 ") InsertIntersection2d;
 		void InsertIntersection2d(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -660,7 +660,7 @@ TopOpeBRepTool_PShapeClassifier
 
 Description
 -----------
-Return field mypshapeclassifier. set field mypshapeclassifier.
+return field myPShapeClassifier. set field myPShapeClassifier.
 ") PShapeClassifier;
 		TopOpeBRepTool_PShapeClassifier PShapeClassifier();
 
@@ -857,7 +857,7 @@ int
 
 Description
 -----------
-Set working space dimension d = 1 for e &|| w, 2 for e in f.
+set working space dimension D = 1 for E &|| W, 2 for E in F.
 ") Dimension;
 		Standard_Integer Dimension();
 
@@ -958,7 +958,7 @@ bool
 
 Description
 -----------
-True if at least one intersection segment.
+true if at least one intersection segment.
 ") HasSegment;
 		Standard_Boolean HasSegment();
 
@@ -1138,7 +1138,7 @@ bool
 
 Description
 -----------
-= mysamedomain.
+= mySameDomain.
 ") SameDomain;
 		Standard_Boolean SameDomain();
 
@@ -1471,7 +1471,7 @@ TopOpeBRepDS_Transition
 
 Description
 -----------
-Compute transition on 'intpatch_restriction line' edge <r> when crossing edge <e> of face <f> at point <vp>. vp is given on edge <e> of face <f> of index <index> (1 or 2). <vp> has been classified by facesfiller as topabs_on an edge <r> of the other face than <f> of current (face/face) intersection. transition depends on the orientation of e in f. this method should be provided by intpatch_line (nyi).
+compute transition on 'IntPatch_Restriction line' edge <R> when crossing edge <E> of face <F> at point <VP>. VP is given on edge <E> of face <F> of index <Index> (1 or 2). <VP> has been classified by FacesFiller as TopAbs_ON an edge <R> of the other face than <F> of current (face/face) intersection. Transition depends on the orientation of E in F. This method should be provided by IntPatch_Line (NYI).
 ") ProcessEdgeONTransition;
 		static TopOpeBRepDS_Transition ProcessEdgeONTransition(const TopOpeBRep_VPointInter & VP, const Standard_Integer Index, const TopoDS_Shape & R, const TopoDS_Shape & E, const TopoDS_Shape & F);
 
@@ -1643,7 +1643,7 @@ None
 
 Description
 -----------
-Force the tolerance values used by the next perform(s1,s2) call.
+Force the tolerance values used by the next Perform(S1,S2) call.
 ") ForceTolerance;
 		void ForceTolerance(const Standard_Real tol);
 
@@ -1656,7 +1656,7 @@ int
 
 Description
 -----------
-Trace only.
+trace only.
 ") Index;
 		Standard_Integer Index();
 
@@ -1774,7 +1774,7 @@ float
 
 Description
 -----------
-Parametre de value() sur l'arete.
+parametre de Value() sur l'arete.
 ") Parameter;
 		Standard_Real Parameter();
 
@@ -1811,7 +1811,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns intersected face or edge according to value of <index> = 1 or 2.
+returns intersected face or edge according to value of <Index> = 1 or 2.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer Index);
 
@@ -1824,7 +1824,7 @@ TopAbs_State
 
 Description
 -----------
-In ou on / a la face. les points out ne sont pas retournes.
+IN ou ON / a la face. Les points OUT ne sont pas retournes.
 ") State;
 		TopAbs_State State();
 
@@ -1837,7 +1837,7 @@ float
 
 Description
 -----------
-Return the tolerance value used in the last perform() call if forcetolerance() has been called, return the given value. if not, return value extracted from shapes.
+Return the tolerance value used in the last Perform() call If ForceTolerance() has been called, return the given value. If not, return value extracted from shapes.
 ") Tolerance;
 		Standard_Real Tolerance();
 
@@ -1874,7 +1874,7 @@ None
 
 Description
 -----------
-Parametre de value() sur la face.
+parametre de Value() sur la face.
 ") UVPoint;
 		void UVPoint(gp_Pnt2d & P);
 
@@ -1887,7 +1887,7 @@ gp_Pnt
 
 Description
 -----------
-Return the 3d point of the current intersection point.
+return the 3D point of the current intersection point.
 ") Value;
 		gp_Pnt Value();
 
@@ -1927,7 +1927,7 @@ None
 
 Description
 -----------
-Compute 3d curve, pcurves and face/curve interferences for current ndsc. add them to the ds.
+compute 3d curve, pcurves and face/curve interferences for current NDSC. Add them to the DS.
 ") AddShapesLine;
 		void AddShapesLine();
 
@@ -2085,7 +2085,7 @@ None
 
 Description
 -----------
-Vp processing for restriction line and line sharing same domain with section edges: - if restriction: adds restriction edges as section edges and compute face/edge interference. - if same domain: if line share same domain with section edges, compute parts of line in/in the two faces, and compute curve/point interference for vp boundaries.
+VP processing for restriction line and line sharing same domain with section edges: - if restriction: Adds restriction edges as section edges and compute face/edge interference. - if same domain: If line share same domain with section edges, compute parts of line IN/IN the two faces, and compute curve/point interference for VP boundaries.
 ") FillLineVPonR;
 		void FillLineVPonR();
 
@@ -2103,7 +2103,7 @@ None
 
 Description
 -----------
-Get map <mapes > of restriction edges having parts in one of the 2 faces.
+Get map <mapES > of restriction edges having parts IN one of the 2 faces.
 ") GetESL;
 		void GetESL(TopTools_ListOfShape & LES);
 
@@ -2122,7 +2122,7 @@ G: int
 
 Description
 -----------
-Search for g = geometry of point which is identical to <dsp> among the ds points created in the current face/face intersection ( current insert() call).
+search for G = geometry of Point which is identical to <DSP> among the DS Points created in the CURRENT face/face intersection ( current Insert() call).
 ") GetFFGeometry;
 		Standard_Boolean GetFFGeometry(const TopOpeBRepDS_Point & DSP, TopOpeBRepDS_Kind & K, Standard_Integer &OutValue);
 
@@ -2141,7 +2141,7 @@ G: int
 
 Description
 -----------
-Search for g = geometry of point which is identical to <vp> among the ds points created in the current face/face intersection ( current insert() call).
+search for G = geometry of Point which is identical to <VP> among the DS Points created in the CURRENT face/face intersection ( current Insert() call).
 ") GetFFGeometry;
 		Standard_Boolean GetFFGeometry(const TopOpeBRep_VPointInter & VP, TopOpeBRepDS_Kind & K, Standard_Integer &OutValue);
 
@@ -2161,7 +2161,7 @@ G: int
 
 Description
 -----------
-Get the geometry of a ds point <dsp>. search for it with scaninterflist (previous method). if found, set <g> to the geometry of the interference found. else, add the point <dsp> in the <ds> and set <g> to the value of the new geometry such created. returns the value of scaninterflist().
+Get the geometry of a DS point <DSP>. Search for it with ScanInterfList (previous method). if found, set <G> to the geometry of the interference found. else, add the point <DSP> in the <DS> and set <G> to the value of the new geometry such created. returns the value of ScanInterfList().
 ") GetGeometry;
 		Standard_Boolean GetGeometry(TopOpeBRepDS_ListIteratorOfListOfInterference & IT, const TopOpeBRep_VPointInter & VP, Standard_Integer &OutValue, TopOpeBRepDS_Kind & K);
 
@@ -2213,7 +2213,7 @@ None
 
 Description
 -----------
-Stores in <ds> the intersections of <s1> and <s2>.
+Stores in <DS> the intersections of <S1> and <S2>.
 ") Insert;
 		void Insert(const TopoDS_Shape & F1, const TopoDS_Shape & F2, TopOpeBRep_FacesIntersector & FACINT, const opencascade::handle<TopOpeBRepDS_HDataStructure> & HDS);
 
@@ -2234,7 +2234,7 @@ bool
 
 Description
 -----------
-Computes the transition <t> of the vpoint <ivp> on the edge of <si12>. returns <false> if the status is unknown.
+Computes the transition <T> of the VPoint <iVP> on the edge of <SI12>. Returns <False> if the status is unknown.
 ") IsVPtransLok;
 		static Standard_Boolean IsVPtransLok(const TopOpeBRep_LineInter & L, const Standard_Integer iVP, const Standard_Integer SI12, TopOpeBRepDS_Transition & T);
 
@@ -2253,7 +2253,7 @@ bool
 
 Description
 -----------
-Returns <true> if <l> shares a same geometric domain with at least one of the section edges of <erl>.
+Returns <True> if <L> shares a same geometric domain with at least one of the section edges of <ERL>.
 ") LSameDomainERL;
 		static Standard_Boolean LSameDomainERL(const TopOpeBRep_LineInter & L, const TopTools_ListOfShape & ERL);
 
@@ -2272,7 +2272,7 @@ pmax: float
 
 Description
 -----------
-Computes <pmin> and <pmax> the upper and lower bounds of <l> enclosing all vpoints.
+Computes <pmin> and <pmax> the upper and lower bounds of <L> enclosing all vpoints.
 ") Lminmax;
 		static void Lminmax(const TopOpeBRep_LineInter & L, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2362,7 +2362,7 @@ TopOpeBRepTool_PShapeClassifier
 
 Description
 -----------
-Return field mypshapeclassifier.
+return field myPShapeClassifier.
 ") PShapeClassifier;
 		TopOpeBRepTool_PShapeClassifier PShapeClassifier();
 
@@ -2375,7 +2375,7 @@ None
 
 Description
 -----------
-Process current intersection line (set by loadline).
+Process current intersection line (set by LoadLine).
 ") ProcessLine;
 		void ProcessLine();
 
@@ -2419,7 +2419,7 @@ None
 
 Description
 -----------
-Processing processvpnotonr for vpi.
+processing ProcessVPnotonR for VPI.
 ") ProcessVPInotonR;
 		void ProcessVPInotonR(TopOpeBRep_VPointInterIterator & VPI);
 
@@ -2440,7 +2440,7 @@ None
 
 Description
 -----------
-Processing processvponr for vpi.
+processing ProcessVPonR for VPI.
 ") ProcessVPIonR;
 		void ProcessVPIonR(TopOpeBRep_VPointInterIterator & VPI, const TopOpeBRepDS_Transition & trans1, const TopoDS_Shape & F1, const Standard_Integer ShapeIndex);
 
@@ -2459,7 +2459,7 @@ None
 
 Description
 -----------
-Calling the following processvpionr and processvponr.
+calling the following ProcessVPIonR and ProcessVPonR.
 ") ProcessVPR;
 		void ProcessVPR(TopOpeBRep_FacesFiller & FF, const TopOpeBRep_VPointInter & VP);
 
@@ -2477,7 +2477,7 @@ None
 
 Description
 -----------
-Adds <vp>'s geometrical point to the ds (if not stored) and computes curve point interference.
+adds <VP>'s geometrical point to the DS (if not stored) and computes curve point interference.
 ") ProcessVPnotonR;
 		void ProcessVPnotonR(const TopOpeBRep_VPointInter & VP);
 
@@ -2498,7 +2498,7 @@ None
 
 Description
 -----------
-Adds <vp>'s geometric point (if not stored) and computes (curve or edge)/(point or vertex) interference.
+adds <VP>'s geometric point (if not stored) and computes (curve or edge)/(point or vertex) interference.
 ") ProcessVPonR;
 		void ProcessVPonR(const TopOpeBRep_VPointInter & VP, const TopOpeBRepDS_Transition & trans1, const TopoDS_Shape & F1, const Standard_Integer ShapeIndex);
 
@@ -2523,7 +2523,7 @@ None
 
 Description
 -----------
-Vp processing on closing arc.
+VP processing on closing arc.
 ") ProcessVPonclosingR;
 		void ProcessVPonclosingR(const TopOpeBRep_VPointInter & VP, const TopoDS_Shape & F1, const Standard_Integer ShapeIndex, const TopOpeBRepDS_Transition & transEdge, const TopOpeBRepDS_Kind PVKind, const Standard_Integer PVIndex, const Standard_Boolean EPIfound, const opencascade::handle<TopOpeBRepDS_Interference> & IEPI);
 
@@ -2547,7 +2547,7 @@ CPIfound: bool
 
 Description
 -----------
-Vp processing on degenerated arc.
+VP processing on degenerated arc.
 ") ProcessVPondgE;
 		Standard_Boolean ProcessVPondgE(const TopOpeBRep_VPointInter & VP, const Standard_Integer ShapeIndex, TopOpeBRepDS_Kind & PVKind, Standard_Integer &OutValue, Standard_Boolean &OutValue, opencascade::handle<TopOpeBRepDS_Interference> & IEPI, Standard_Boolean &OutValue, opencascade::handle<TopOpeBRepDS_Interference> & ICPI);
 
@@ -2578,7 +2578,7 @@ None
 
 Description
 -----------
-Set field mypshapeclassifier.
+set field myPShapeClassifier.
 ") SetPShapeClassifier;
 		void SetPShapeClassifier(const TopOpeBRepTool_PShapeClassifier & PSC);
 
@@ -2615,7 +2615,7 @@ None
 
 Description
 -----------
-Add interference <i> to list mydscil. on a given line, at first call, add a new ds curve.
+Add interference <I> to list myDSCIL. on a given line, at first call, add a new DS curve.
 ") StoreCurveInterference;
 		void StoreCurveInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -2636,7 +2636,7 @@ bool
 
 Description
 -----------
-Computes transition on line for vp<ivp> on edge restriction of <si>. if <isinout>: returns <true> if transition computed is in/out else: returns <true> if transition computed is out/in.
+Computes transition on line for VP<iVP> on edge restriction of <SI>. If <isINOUT>: returns <true> if transition computed is IN/OUT else: returns <true> if transition computed is OUT/IN.
 ") TransvpOK;
 		static Standard_Boolean TransvpOK(const TopOpeBRep_LineInter & L, const Standard_Integer iVP, const Standard_Integer SI, const Standard_Boolean isINOUT);
 
@@ -2673,7 +2673,7 @@ None
 
 Description
 -----------
-Compute position of vpoints of lines.
+compute position of VPoints of lines.
 ") VP_Position;
 		void VP_Position(TopOpeBRep_FacesIntersector & FACINT);
 
@@ -2691,7 +2691,7 @@ None
 
 Description
 -----------
-Compute position of vpoints of line l.
+compute position of VPoints of line L.
 ") VP_Position;
 		void VP_Position(TopOpeBRep_LineInter & L);
 
@@ -2710,7 +2710,7 @@ None
 
 Description
 -----------
-Compute position of vp with current faces, according to vp.shapeindex() .
+compute position of VP with current faces, according to VP.ShapeIndex() .
 ") VP_Position;
 		void VP_Position(TopOpeBRep_VPointInter & VP, TopOpeBRep_VPointInterClassifier & VPC);
 
@@ -2728,7 +2728,7 @@ None
 
 Description
 -----------
-Compute position of vpoints of non-restriction line l.
+compute position of VPoints of non-restriction line L.
 ") VP_PositionOnL;
 		void VP_PositionOnL(TopOpeBRep_LineInter & L);
 
@@ -2746,7 +2746,7 @@ None
 
 Description
 -----------
-Compute position of vpoints of restriction line l.
+compute position of VPoints of restriction line L.
 ") VP_PositionOnR;
 		void VP_PositionOnR(TopOpeBRep_LineInter & L);
 
@@ -2839,7 +2839,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns first or second intersected face.
+returns first or second intersected face.
 ") Face;
 		const TopoDS_Shape Face(const Standard_Integer Index);
 
@@ -2858,7 +2858,7 @@ None
 
 Description
 -----------
-Force the tolerance values used by the next perform(s1,s2) call.
+Force the tolerance values used by the next Perform(S1,S2) call.
 ") ForceTolerances;
 		void ForceTolerances(const Standard_Real tolarc, const Standard_Real toltang);
 
@@ -2876,7 +2876,7 @@ toltang: float
 
 Description
 -----------
-Return the tolerance values used in the last perform() call if forcetolerances() has been called, return the given values. if not, return values extracted from shapes.
+Return the tolerance values used in the last Perform() call If ForceTolerances() has been called, return the given values. If not, return values extracted from shapes.
 ") GetTolerances;
 		void GetTolerances(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2933,7 +2933,7 @@ bool
 
 Description
 -----------
-Returns true if edge <e> is found as same as the edge associated with a restriction line.
+returns true if edge <E> is found as same as the edge associated with a RESTRICTION line.
 ") IsRestriction;
 		Standard_Boolean IsRestriction(const TopoDS_Shape & E);
 
@@ -3004,7 +3004,7 @@ None
 
 Description
 -----------
-Computes the intersection of faces s1 and s2.
+Computes the intersection of faces S1 and S2.
 ") Perform;
 		void Perform(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -3025,7 +3025,7 @@ None
 
 Description
 -----------
-Computes the intersection of faces s1 and s2.
+Computes the intersection of faces S1 and S2.
 ") Perform;
 		void Perform(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const Bnd_Box & B1, const Bnd_Box & B2);
 
@@ -3051,7 +3051,7 @@ TopTools_IndexedMapOfShape
 
 Description
 -----------
-Returns the map of edges found as topebrepbrep_restriction.
+returns the map of edges found as TopeBRepBRep_RESTRICTION.
 ") Restrictions;
 		const TopTools_IndexedMapOfShape & Restrictions();
 
@@ -3064,7 +3064,7 @@ bool
 
 Description
 -----------
-Returns true if perform() arguments are two faces with the same surface.
+Returns True if Perform() arguments are two faces with the same surface.
 ") SameDomain;
 		Standard_Boolean SameDomain();
 
@@ -3077,7 +3077,7 @@ bool
 
 Description
 -----------
-Returns true if perform() arguments are two faces samedomain() and normals on both side. raise if samedomain is false.
+Returns True if Perform() arguments are two faces SameDomain() and normals on both side. Raise if SameDomain is False.
 ") SurfacesSameOriented;
 		Standard_Boolean SurfacesSameOriented();
 
@@ -3174,7 +3174,7 @@ None
 
 Description
 -----------
-Make the ds curve <c> and the pcurves <pc1,pc2> from intersection line <l> lying on shapes <s1,s2>. <min,max> = <l> bounds.
+Make the DS curve <C> and the pcurves <PC1,PC2> from intersection line <L> lying on shapes <S1,S2>. <min,max> = <L> bounds.
 ") MakeCurves;
 		static void MakeCurves(const Standard_Real min, const Standard_Real max, const TopOpeBRep_LineInter & L, const TopoDS_Shape & S1, const TopoDS_Shape & S2, TopOpeBRepDS_Curve & C, opencascade::handle<Geom2d_Curve> & PC1, opencascade::handle<Geom2d_Curve> & PC2);
 
@@ -3519,7 +3519,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the edge of a restriction line (or a null edge).
+returns the edge of a RESTRICTION line (or a null edge).
 ") Arc;
 		const TopoDS_Shape Arc();
 
@@ -3537,7 +3537,7 @@ bool
 
 Description
 -----------
-Returns true if arc() edge (of a restriction line) is an edge of the original face <index> (1 or 2).
+returns true if Arc() edge (of a RESTRICTION line) is an edge of the original face <Index> (1 or 2).
 ") ArcIsEdge;
 		Standard_Boolean ArcIsEdge(const Standard_Integer I);
 
@@ -4835,7 +4835,7 @@ TopAbs_State
 
 Description
 -----------
-Compute position of point <p> regarding with the face <f>.
+compute position of point <P> regarding with the face <F>.
 ") Classify;
 		TopAbs_State Classify(const TopoDS_Face & F, const gp_Pnt2d & P, const Standard_Real Tol);
 
@@ -5024,7 +5024,7 @@ TopOpeBRep_EdgesIntersector
 
 Description
 -----------
-Return the current intersection of two edges.
+return the current intersection of two Edges.
 ") ChangeEdgesIntersector;
 		TopOpeBRep_EdgesIntersector & ChangeEdgesIntersector();
 
@@ -5037,7 +5037,7 @@ TopOpeBRep_FaceEdgeIntersector
 
 Description
 -----------
-Return the current intersection of a face and an edge.
+return the current intersection of a Face and an Edge.
 ") ChangeFaceEdgeIntersector;
 		TopOpeBRep_FaceEdgeIntersector & ChangeFaceEdgeIntersector();
 
@@ -5050,7 +5050,7 @@ TopOpeBRep_FacesIntersector
 
 Description
 -----------
-Return the current intersection of two faces.
+return the current intersection of two Faces.
 ") ChangeFacesIntersector;
 		TopOpeBRep_FacesIntersector & ChangeFacesIntersector();
 
@@ -5068,7 +5068,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return geometric shape <index> ( = 1 or 2 ) of current intersection.
+return geometric shape <Index> ( = 1 or 2 ) of current intersection.
 ") CurrentGeomShape;
 		const TopoDS_Shape CurrentGeomShape(const Standard_Integer Index);
 
@@ -5104,7 +5104,7 @@ tol2: float
 
 Description
 -----------
-Return max of intersection tolerances with which facesintersector from topopebrep was working.
+return MAX of intersection tolerances with which FacesIntersector from TopOpeBRep was working.
 ") GetTolerances;
 		void GetTolerances(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -5141,7 +5141,7 @@ None
 
 Description
 -----------
-Initialize the intersection of shapes s1,s2.
+Initialize the intersection of shapes S1,S2.
 ") InitIntersection;
 		void InitIntersection(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -5162,7 +5162,7 @@ None
 
 Description
 -----------
-Initialize the intersection of shapes s1,s2.
+Initialize the intersection of shapes S1,S2.
 ") InitIntersection;
 		void InitIntersection(const TopoDS_Shape & S1, const TopoDS_Shape & S2, const TopoDS_Face & F1, const TopoDS_Face & F2);
 
@@ -5175,7 +5175,7 @@ bool
 
 Description
 -----------
-Returns true if there are more intersection between two the shapes.
+returns True if there are more intersection between two the shapes.
 ") MoreIntersection;
 		Standard_Boolean MoreIntersection();
 
@@ -5188,7 +5188,7 @@ None
 
 Description
 -----------
-Search for the next intersection between the two shapes.
+search for the next intersection between the two shapes.
 ") NextIntersection;
 		void NextIntersection();
 
@@ -5226,7 +5226,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return the shape <index> ( = 1 or 2) given to initintersection(). index = 1 will return s1, index = 2 will return s2.
+return the shape <Index> ( = 1 or 2) given to InitIntersection(). Index = 1 will return S1, Index = 2 will return S2.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer Index);
 
@@ -5266,7 +5266,7 @@ TopOpeBRep_EdgesIntersector
 
 Description
 -----------
-Return the current intersection of two edges.
+return the current intersection of two Edges.
 ") ChangeEdgesIntersector;
 		TopOpeBRep_EdgesIntersector & ChangeEdgesIntersector();
 
@@ -5284,7 +5284,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return geometric shape <index> ( = 1 or 2 ) of current intersection.
+return geometric shape <Index> ( = 1 or 2 ) of current intersection.
 ") CurrentGeomShape;
 		const TopoDS_Shape CurrentGeomShape(const Standard_Integer Index);
 
@@ -5339,7 +5339,7 @@ None
 
 Description
 -----------
-Initialize the intersection of shapes s1,s2.
+Initialize the intersection of shapes S1,S2.
 ") InitIntersection;
 		void InitIntersection(const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -5352,7 +5352,7 @@ bool
 
 Description
 -----------
-Returns true if there are more intersection between two the shapes.
+returns True if there are more intersection between two the shapes.
 ") MoreIntersection;
 		Standard_Boolean MoreIntersection();
 
@@ -5365,7 +5365,7 @@ None
 
 Description
 -----------
-Search for the next intersection between the two shapes.
+search for the next intersection between the two shapes.
 ") NextIntersection;
 		void NextIntersection();
 
@@ -5383,7 +5383,7 @@ TopoDS_Shape
 
 Description
 -----------
-Return the shape <index> ( = 1 or 2) given to initintersection(). index = 1 will return s1, index = 2 will return s2.
+return the shape <Index> ( = 1 or 2) given to InitIntersection(). Index = 1 will return S1, Index = 2 will return S2.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer Index);
 
@@ -5645,7 +5645,7 @@ None
 
 Description
 -----------
-Updates vpointinter flag 'keep' with <keep>.
+updates VPointInter flag 'keep' with <keep>.
 ") ChangeKeep;
 		void ChangeKeep(const Standard_Boolean keep);
 
@@ -5701,7 +5701,7 @@ TopoDS_Shape
 
 Description
 -----------
-Get the edge of shape i (1,2) containing the point. returned shape is null if the vpoint is not on an edge of shape i (1,2).
+get the edge of shape I (1,2) containing the point. Returned shape is null if the VPoint is not on an edge of shape I (1,2).
 ") Edge;
 		const TopoDS_Shape Edge(const Standard_Integer I);
 
@@ -5721,7 +5721,7 @@ None
 
 Description
 -----------
-Set the shape eon of shape i (1,2) containing the point, and parameter <par> of point on <eon>.
+set the shape Eon of shape I (1,2) containing the point, and parameter <Par> of point on <Eon>.
 ") EdgeON;
 		void EdgeON(const TopoDS_Shape & Eon, const Standard_Real Par, const Standard_Integer I);
 
@@ -5739,7 +5739,7 @@ TopoDS_Shape
 
 Description
 -----------
-Get the edge of shape i (1,2) containing the point.
+get the edge of shape I (1,2) containing the point.
 ") EdgeON;
 		const TopoDS_Shape EdgeON(const Standard_Integer I);
 
@@ -5757,7 +5757,7 @@ float
 
 Description
 -----------
-Get the parameter on edge of shape i (1,2) containing the point.
+get the parameter on edge of shape I (1,2) containing the point.
 ") EdgeONParameter;
 		Standard_Real EdgeONParameter(const Standard_Integer I);
 
@@ -5775,7 +5775,7 @@ float
 
 Description
 -----------
-Get the parameter on edge of shape i (1,2) containing the point.
+get the parameter on edge of shape I (1,2) containing the point.
 ") EdgeParameter;
 		Standard_Real EdgeParameter(const Standard_Integer I);
 
@@ -5793,7 +5793,7 @@ bool
 
 Description
 -----------
-Returns <true> if the 3d points and the parameters of the vpoints are same.
+returns <True> if the 3d points and the parameters of the VPoints are same.
 ") EqualpP;
 		Standard_Boolean EqualpP(const TopOpeBRep_VPointInter & VP);
 
@@ -5868,7 +5868,7 @@ bool
 
 Description
 -----------
-Returns true if the point belongs to several intersection lines.
+Returns True if the point belongs to several intersection lines.
 ") IsMultiple;
 		Standard_Boolean IsMultiple();
 
@@ -5925,7 +5925,7 @@ bool
 
 Description
 -----------
-Returns true if the point is a vertex on the initial restriction facet of the first surface.
+Returns True if the point is a vertex on the initial restriction facet of the first surface.
 ") IsVertexOnS1;
 		Standard_Boolean IsVertexOnS1();
 
@@ -5938,7 +5938,7 @@ bool
 
 Description
 -----------
-Returns true if the point is a vertex on the initial restriction facet of the second surface.
+Returns True if the point is a vertex on the initial restriction facet of the second surface.
 ") IsVertexOnS2;
 		Standard_Boolean IsVertexOnS2();
 
@@ -5951,7 +5951,7 @@ bool
 
 Description
 -----------
-Returns value of mykeep (does not evaluate states) false at creation of vpoint. updated by state(state from topabs,integer from standard).
+Returns value of myKeep (does not evaluate states) False at creation of VPoint. Updated by State(State from TopAbs,Integer from Standard).
 ") Keep;
 		Standard_Boolean Keep();
 
@@ -6057,7 +6057,7 @@ par: float
 
 Description
 -----------
-Returns <false> if the vpoint is not given on arc <e>, else returns <par> parameter on <e>.
+returns <false> if the vpoint is not given on arc <E>, else returns <par> parameter on <E>.
 ") ParonE;
 		Standard_Boolean ParonE(const TopoDS_Edge & E, Standard_Real &OutValue);
 
@@ -6107,7 +6107,7 @@ int
 
 Description
 -----------
-Returns value of filed myshapeindex = 0,1,2,3 0 means the vpoint is on no restriction 1 means the vpoint is on the restriction 1 2 means the vpoint is on the restriction 2 3 means the vpoint is on the restrictions 1 and 2.
+returns value of filed myShapeIndex = 0,1,2,3 0 means the VPoint is on no restriction 1 means the VPoint is on the restriction 1 2 means the VPoint is on the restriction 2 3 means the VPoint is on the restrictions 1 and 2.
 ") ShapeIndex;
 		Standard_Integer ShapeIndex();
 
@@ -6125,7 +6125,7 @@ None
 
 Description
 -----------
-Set value of shape supporting me (0,1,2,3).
+set value of shape supporting me (0,1,2,3).
 ") ShapeIndex;
 		void ShapeIndex(const Standard_Integer I);
 
@@ -6143,7 +6143,7 @@ TopAbs_State
 
 Description
 -----------
-Get state of vpoint within the domain of geometric shape domain <i> (= 1 or 2).
+get state of VPoint within the domain of geometric shape domain <I> (= 1 or 2).
 ") State;
 		TopAbs_State State(const Standard_Integer I);
 
@@ -6162,7 +6162,7 @@ None
 
 Description
 -----------
-Set the state of vpoint within the domain of the geometric shape <i> (= 1 or 2).
+Set the state of VPoint within the domain of the geometric shape <I> (= 1 or 2).
 ") State;
 		void State(const TopAbs_State S, const Standard_Integer I);
 
@@ -6180,7 +6180,7 @@ gp_Pnt2d
 
 Description
 -----------
-Get the parameter on surface of shape i (1,2) containing the point.
+get the parameter on surface of shape I (1,2) containing the point.
 ") SurfaceParameters;
 		gp_Pnt2d SurfaceParameters(const Standard_Integer I);
 
@@ -6258,7 +6258,7 @@ None
 
 Description
 -----------
-Set mykeep value according to current states.
+set myKeep value according to current states.
 ") UpdateKeep;
 		void UpdateKeep();
 
@@ -6302,7 +6302,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the information about the point when it is on the domain of the first patch, i-e when the function isvertexons1 returns true. otherwise, an exception is raised.
+Returns the information about the point when it is on the domain of the first patch, i-e when the function IsVertexOnS1 returns True. Otherwise, an exception is raised.
 ") VertexOnS1;
 		const TopoDS_Shape VertexOnS1();
 
@@ -6315,7 +6315,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the information about the point when it is on the domain of the second patch, i-e when the function isvertexons2 returns true. otherwise, an exception is raised.
+Returns the information about the point when it is on the domain of the second patch, i-e when the function IsVertexOnS2 returns True. Otherwise, an exception is raised.
 ") VertexOnS2;
 		const TopoDS_Shape VertexOnS2();
 
@@ -6355,7 +6355,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the edge containing the vpoint <vp> used in the last vpointposition() call. edge is defined if the state previously computed is on, else edge is a null shape.
+returns the edge containing the VPoint <VP> used in the last VPointPosition() call. Edge is defined if the state previously computed is ON, else Edge is a null shape.
 ") Edge;
 		const TopoDS_Shape Edge();
 
@@ -6368,7 +6368,7 @@ float
 
 Description
 -----------
-Returns the parameter of the vpoint <vp> on edge().
+returns the parameter of the VPoint <VP> on Edge().
 ") EdgeParameter;
 		Standard_Real EdgeParameter();
 
@@ -6391,7 +6391,7 @@ TopAbs_State
 
 Description
 -----------
-Compute position of vpoint <vp> regarding with face <f>. <shapeindex> (= 1,2) indicates which (u,v) point of <vp> is used. when state is on, set vp.edgeon() with the edge containing <vp> and associated parameter. returns state of vp on shapeindex.
+compute position of VPoint <VP> regarding with face <F>. <ShapeIndex> (= 1,2) indicates which (u,v) point of <VP> is used. when state is ON, set VP.EdgeON() with the edge containing <VP> and associated parameter. returns state of VP on ShapeIndex.
 ") VPointPosition;
 		TopAbs_State VPointPosition(const TopoDS_Shape & F, TopOpeBRep_VPointInter & VP, const Standard_Integer ShapeIndex, TopOpeBRep_PointClassifier & PC, const Standard_Boolean AssumeINON, const Standard_Real Tol);
 

@@ -243,7 +243,7 @@ None
 
 Description
 -----------
-Appends to <anidlist> the list of the attributes ids of this package. caution: <anidlist> is not cleared before use. print of tdataext enumeration =============================.
+Appends to <anIDList> the list of the attributes IDs of this package. CAUTION: <anIDList> is NOT cleared before use. Print of TDataExt enumeration =============================.
 ") IDList;
 		static void IDList(TDF_IDList & anIDList);
 
@@ -261,7 +261,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the name of the geometry dimension <geo> as a string on the stream <s> and returns <s>.
+Prints the name of the geometry dimension <GEO> as a String on the Stream <S> and returns <S>.
 ") Print;
 		static Standard_OStream & Print(const TDataXtd_GeometryEnum GEO, std::ostream &OutValue);
 
@@ -279,7 +279,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the name of the constraint <ctr> as a string on the stream <s> and returns <s>.
+Prints the name of the constraint <CTR> as a String on the Stream <S> and returns <S>.
 ") Print;
 		static Standard_OStream & Print(const TDataXtd_ConstraintEnum CTR, std::ostream &OutValue);
 
@@ -336,7 +336,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= returns the guid for an axis.
+class methods ============= Returns the GUID for an axis.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -367,7 +367,7 @@ opencascade::handle<TDataXtd_Axis>
 
 Description
 -----------
-Finds or creates an axis attribute defined by the label. in the case of a creation of an axis, a compatible named shape should already be associated with label. exceptions standard_nullobject if no compatible named shape is associated with the label.
+Finds or creates an axis attribute defined by the label. In the case of a creation of an axis, a compatible named shape should already be associated with label. Exceptions Standard_NullObject if no compatible named shape is associated with the label.
 ") Set;
 		static opencascade::handle<TDataXtd_Axis> Set(const TDF_Label & label);
 
@@ -386,7 +386,7 @@ opencascade::handle<TDataXtd_Axis>
 
 Description
 -----------
-Find, or create, an axis attribute and set <p> as generated in the associated namedshape. axis methods ============.
+Find, or create, an Axis attribute and set <P> as generated in the associated NamedShape. Axis methods ============.
 ") Set;
 		static opencascade::handle<TDataXtd_Axis> Set(const TDF_Label & label, const gp_Lin & L);
 
@@ -447,7 +447,7 @@ None
 
 Description
 -----------
-Collects constraints on childs for label <alabel>.
+collects constraints on Childs for label <aLabel>.
 ") CollectChildConstraints;
 		static void CollectChildConstraints(const TDF_Label & aLabel, TDF_LabelList & TheList);
 
@@ -482,7 +482,7 @@ opencascade::handle<TNaming_NamedShape>
 
 Description
 -----------
-Returns the integer index index used to access the array of the constraint or stored geometries of a dimension index has a value between 1 and 4. methods to write constraint fields (use builder) ==================================.
+Returns the integer index Index used to access the array of the constraint or stored geometries of a dimension Index has a value between 1 and 4. methods to write constraint fields (use builder) ==================================.
 ") GetGeometry;
 		opencascade::handle<TNaming_NamedShape> GetGeometry(const Standard_Integer Index);
 
@@ -495,7 +495,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid for constraints.
+Returns the GUID for constraints.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -508,7 +508,7 @@ opencascade::handle<TNaming_NamedShape>
 
 Description
 -----------
-Returns the topological attribute of the plane used for planar - i.e., 2d - constraints. this plane is attached to another label. if the constraint is not planar, in other words, 3d, this function will return a null handle.
+Returns the topological attribute of the plane used for planar - i.e., 2D - constraints. This plane is attached to another label. If the constraint is not planar, in other words, 3D, this function will return a null handle.
 ") GetPlane;
 		const opencascade::handle<TNaming_NamedShape> & GetPlane();
 
@@ -521,7 +521,7 @@ TDataXtd_ConstraintEnum
 
 Description
 -----------
-Returns the type of constraint. this will be an element of the tdataxtd_constraintenum enumeration.
+Returns the type of constraint. This will be an element of the TDataXtd_ConstraintEnum enumeration.
 ") GetType;
 		TDataXtd_ConstraintEnum GetType();
 
@@ -534,7 +534,7 @@ opencascade::handle<TDataStd_Real>
 
 Description
 -----------
-Returns the value of a dimension. this value is a reference to a tdatastd_real attribute. if the attribute is not a dimension, this value will be 0. use isdimension to test this condition.
+Returns the value of a dimension. This value is a reference to a TDataStd_Real attribute. If the attribute is not a dimension, this value will be 0. Use IsDimension to test this condition.
 ") GetValue;
 		const opencascade::handle<TDataStd_Real> & GetValue();
 
@@ -617,7 +617,7 @@ int
 
 Description
 -----------
-Returns the number of geometry attributes in this constraint attribute. this number will be between 1 and 4.
+Returns the number of geometry attributes in this constraint attribute. This number will be between 1 and 4.
 ") NbGeometries;
 		Standard_Integer NbGeometries();
 
@@ -734,7 +734,7 @@ opencascade::handle<TDataXtd_Constraint>
 
 Description
 -----------
-Finds or creates the 2d constraint attribute defined by the planar topological attribute plane and the label label. constraint methods ==================.
+Finds or creates the 2D constraint attribute defined by the planar topological attribute plane and the label label. Constraint methods ==================.
 ") Set;
 		static opencascade::handle<TDataXtd_Constraint> Set(const TDF_Label & label);
 
@@ -753,7 +753,7 @@ None
 
 Description
 -----------
-Finds or creates the constraint attribute defined by the topological attribute g1 and the constraint type type.
+Finds or creates the constraint attribute defined by the topological attribute G1 and the constraint type type.
 ") Set;
 		void Set(const TDataXtd_ConstraintEnum type, const opencascade::handle<TNaming_NamedShape> & G1);
 
@@ -773,7 +773,7 @@ None
 
 Description
 -----------
-Finds or creates the constraint attribute defined by the topological attributes g1 and g2, and by the constraint type type.
+Finds or creates the constraint attribute defined by the topological attributes G1 and G2, and by the constraint type type.
 ") Set;
 		void Set(const TDataXtd_ConstraintEnum type, const opencascade::handle<TNaming_NamedShape> & G1, const opencascade::handle<TNaming_NamedShape> & G2);
 
@@ -794,7 +794,7 @@ None
 
 Description
 -----------
-Finds or creates the constraint attribute defined by the topological attributes g1, g2 and g3, and by the constraint type type.
+Finds or creates the constraint attribute defined by the topological attributes G1, G2 and G3, and by the constraint type type.
 ") Set;
 		void Set(const TDataXtd_ConstraintEnum type, const opencascade::handle<TNaming_NamedShape> & G1, const opencascade::handle<TNaming_NamedShape> & G2, const opencascade::handle<TNaming_NamedShape> & G3);
 
@@ -816,7 +816,7 @@ None
 
 Description
 -----------
-Finds or creates the constraint attribute defined by the topological attributes g1, g2, g3 and g4, and by the constraint type type. methods to read constraint fields =================================.
+Finds or creates the constraint attribute defined by the topological attributes G1, G2, G3 and G4, and by the constraint type type. methods to read constraint fields =================================.
 ") Set;
 		void Set(const TDataXtd_ConstraintEnum type, const opencascade::handle<TNaming_NamedShape> & G1, const opencascade::handle<TNaming_NamedShape> & G2, const opencascade::handle<TNaming_NamedShape> & G3, const opencascade::handle<TNaming_NamedShape> & G4);
 
@@ -835,7 +835,7 @@ None
 
 Description
 -----------
-Finds or creates the underlying geometry of the constraint defined by the topological attribute g and the integer index index.
+Finds or creates the underlying geometry of the constraint defined by the topological attribute G and the integer index Index.
 ") SetGeometry;
 		void SetGeometry(const Standard_Integer Index, const opencascade::handle<TNaming_NamedShape> & G);
 
@@ -853,7 +853,7 @@ None
 
 Description
 -----------
-Finds or creates the plane of the 2d constraint attribute, defined by the planar topological attribute plane.
+Finds or creates the plane of the 2D constraint attribute, defined by the planar topological attribute plane.
 ") SetPlane;
 		void SetPlane(const opencascade::handle<TNaming_NamedShape> & plane);
 
@@ -871,7 +871,7 @@ None
 
 Description
 -----------
-Finds or creates the type of constraint ctr.
+Finds or creates the type of constraint CTR.
 ") SetType;
 		void SetType(const TDataXtd_ConstraintEnum CTR);
 
@@ -889,7 +889,7 @@ None
 
 Description
 -----------
-Finds or creates the real number value v of the dimension constraint attribute.
+Finds or creates the real number value V of the dimension constraint attribute.
 ") SetValue;
 		void SetValue(const opencascade::handle<TDataStd_Real> & V);
 
@@ -902,7 +902,7 @@ bool
 
 Description
 -----------
-Returns true if this constraint attribute is valid. by default, true is returned. when the value of a dimension is changed or when a geometry is moved, false is returned until the solver sets it back to true.
+Returns true if this constraint attribute is valid. By default, true is returned. When the value of a dimension is changed or when a geometry is moved, false is returned until the solver sets it back to true.
 ") Verified;
 		Standard_Boolean Verified();
 
@@ -920,7 +920,7 @@ None
 
 Description
 -----------
-Returns true if this constraint attribute defined by status is valid. by default, true is returned. when the value of a dimension is changed or when a geometry is moved, false is returned until the solver sets it back to true. if status is false, verified is set to false.
+Returns true if this constraint attribute defined by status is valid. By default, true is returned. When the value of a dimension is changed or when a geometry is moved, false is returned until the solver sets it back to true. If status is false, Verified is set to false.
 ") Verified;
 		void Verified(const Standard_Boolean status);
 
@@ -949,7 +949,7 @@ None
 
 Description
 -----------
-This and the next methods are used to retrieve underlying geometry of the namedshape, even if no geometry attribute is associated. if not found or not compliant geometry return false.
+This and the next methods are used to retrieve underlying geometry of the NamedShape, even if no Geometry Attribute is associated. if not found or not compliant geometry return False.
 ") TDataXtd_Geometry;
 		 TDataXtd_Geometry();
 
@@ -968,7 +968,7 @@ bool
 
 Description
 -----------
-Returns the axis attribute defined by the label l and the axis g.
+Returns the axis attribute defined by the label L and the axis G.
 ") Axis;
 		static Standard_Boolean Axis(const TDF_Label & L, gp_Ax1 & G);
 
@@ -987,7 +987,7 @@ bool
 
 Description
 -----------
-Returns the axis attribute defined by the topological attribute s and the axis g.
+Returns the axis attribute defined by the topological attribute S and the axis G.
 ") Axis;
 		static Standard_Boolean Axis(const opencascade::handle<TNaming_NamedShape> & S, gp_Ax1 & G);
 
@@ -1006,7 +1006,7 @@ bool
 
 Description
 -----------
-Returns the circle attribute defined by the label l and the circle g.
+Returns the circle attribute defined by the label L and the circle G.
 ") Circle;
 		static Standard_Boolean Circle(const TDF_Label & L, gp_Circ & G);
 
@@ -1025,7 +1025,7 @@ bool
 
 Description
 -----------
-Returns the circle attribute defined by the topological attribute s and the circle g.
+Returns the circle attribute defined by the topological attribute S and the circle G.
 ") Circle;
 		static Standard_Boolean Circle(const opencascade::handle<TNaming_NamedShape> & S, gp_Circ & G);
 
@@ -1044,7 +1044,7 @@ bool
 
 Description
 -----------
-Returns the cylinder attribute defined by the label l and the cylinder g.
+Returns the cylinder attribute defined by the label L and the cylinder G.
 ") Cylinder;
 		static Standard_Boolean Cylinder(const TDF_Label & L, gp_Cylinder & G);
 
@@ -1063,7 +1063,7 @@ bool
 
 Description
 -----------
-Returns the cylinder attribute defined by the topological attribute s and the cylinder g.
+Returns the cylinder attribute defined by the topological attribute S and the cylinder G.
 ") Cylinder;
 		static Standard_Boolean Cylinder(const opencascade::handle<TNaming_NamedShape> & S, gp_Cylinder & G);
 
@@ -1099,7 +1099,7 @@ bool
 
 Description
 -----------
-Returns the ellipse attribute defined by the label l and the ellipse g.
+Returns the ellipse attribute defined by the label L and the ellipse G.
 ") Ellipse;
 		static Standard_Boolean Ellipse(const TDF_Label & L, gp_Elips & G);
 
@@ -1118,7 +1118,7 @@ bool
 
 Description
 -----------
-Returns the ellipse attribute defined by the topological attribute s and the ellipse g.
+Returns the ellipse attribute defined by the topological attribute S and the ellipse G.
 ") Ellipse;
 		static Standard_Boolean Ellipse(const opencascade::handle<TNaming_NamedShape> & S, gp_Elips & G);
 
@@ -1131,7 +1131,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid for geometry attributes.
+Returns the GUID for geometry attributes.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -1176,7 +1176,7 @@ bool
 
 Description
 -----------
-Returns the line attribute defined by the label l and the line g.
+Returns the line attribute defined by the label L and the line G.
 ") Line;
 		static Standard_Boolean Line(const TDF_Label & L, gp_Lin & G);
 
@@ -1195,7 +1195,7 @@ bool
 
 Description
 -----------
-Returns the line attribute defined by the topological attribute s and the line g.
+Returns the line attribute defined by the topological attribute S and the line G.
 ") Line;
 		static Standard_Boolean Line(const opencascade::handle<TNaming_NamedShape> & S, gp_Lin & G);
 
@@ -1246,7 +1246,7 @@ bool
 
 Description
 -----------
-Returns the plane attribute defined by the label l and the plane g.
+Returns the plane attribute defined by the label L and the plane G.
 ") Plane;
 		static Standard_Boolean Plane(const TDF_Label & L, gp_Pln & G);
 
@@ -1265,7 +1265,7 @@ bool
 
 Description
 -----------
-Returns the plane attribute defined by the topological attribute s and the plane g.
+Returns the plane attribute defined by the topological attribute S and the plane G.
 ") Plane;
 		static Standard_Boolean Plane(const opencascade::handle<TNaming_NamedShape> & S, gp_Pln & G);
 
@@ -1284,7 +1284,7 @@ bool
 
 Description
 -----------
-Returns the point attribute defined by the label l and the point g.
+Returns the point attribute defined by the label L and the point G.
 ") Point;
 		static Standard_Boolean Point(const TDF_Label & L, gp_Pnt & G);
 
@@ -1303,7 +1303,7 @@ bool
 
 Description
 -----------
-Returns the point attribute defined by the topological attribute s and the point g.
+Returns the point attribute defined by the topological attribute S and the point G.
 ") Point;
 		static Standard_Boolean Point(const opencascade::handle<TNaming_NamedShape> & S, gp_Pnt & G);
 
@@ -1339,7 +1339,7 @@ opencascade::handle<TDataXtd_Geometry>
 
 Description
 -----------
-Api class methods ================= finds, or creates, a geometry attribute defined by the label label. the default type of geometry is the value any_geom of the enumeration tdataxtd_geometryenum. to specify another value of this enumeration, use the function settype.
+API class methods ================= Finds, or creates, a Geometry attribute defined by the label label. The default type of geometry is the value ANY_GEOM of the enumeration TDataXtd_GeometryEnum. To specify another value of this enumeration, use the function SetType.
 ") Set;
 		static opencascade::handle<TDataXtd_Geometry> Set(const TDF_Label & label);
 
@@ -1357,7 +1357,7 @@ None
 
 Description
 -----------
-Returns the type of geometric construction t of this attribute. t will be a value of the enumeration tdataxtd_geometryenum.
+Returns the type of geometric construction T of this attribute. T will be a value of the enumeration TDataXtd_GeometryEnum.
 ") SetType;
 		void SetType(const TDataXtd_GeometryEnum T);
 
@@ -1375,7 +1375,7 @@ TDataXtd_GeometryEnum
 
 Description
 -----------
-Returns the label l used to define the type of geometric construction for the geometry attribute.
+Returns the label L used to define the type of geometric construction for the geometry attribute.
 ") Type;
 		static TDataXtd_GeometryEnum Type(const TDF_Label & L);
 
@@ -1393,7 +1393,7 @@ TDataXtd_GeometryEnum
 
 Description
 -----------
-Returns the topological attribute s used to define the type of geometric construction for the geometry attribute.
+Returns the topological attribute S used to define the type of geometric construction for the geometry attribute.
 ") Type;
 		static TDataXtd_GeometryEnum Type(const opencascade::handle<TNaming_NamedShape> & S);
 
@@ -1454,7 +1454,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -1480,7 +1480,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") PatternID;
 		virtual const Standard_GUID & PatternID();
 
@@ -1539,7 +1539,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -1570,7 +1570,7 @@ opencascade::handle<TDataXtd_Placement>
 
 Description
 -----------
-Find, or create, an placement attribute. the placement attribute is returned. placement methods =================.
+Find, or create, an Placement attribute. the Placement attribute is returned. Placement methods =================.
 ") Set;
 		static opencascade::handle<TDataXtd_Placement> Set(const TDF_Label & label);
 
@@ -1629,7 +1629,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= //! returns the guid for plane attributes.
+class methods ============= //! Returns the GUID for plane attributes.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -1660,7 +1660,7 @@ opencascade::handle<TDataXtd_Plane>
 
 Description
 -----------
-Finds or creates the plane attribute defined by the label label. warning if you are creating the attribute with this syntax, a planar face should already be associated with label.
+Finds or creates the plane attribute defined by the label label. Warning If you are creating the attribute with this syntax, a planar face should already be associated with label.
 ") Set;
 		static opencascade::handle<TDataXtd_Plane> Set(const TDF_Label & label);
 
@@ -1679,7 +1679,7 @@ opencascade::handle<TDataXtd_Plane>
 
 Description
 -----------
-Finds, or creates, a plane attribute and sets <p> as generated the associated namedshape. plane methods =============.
+Finds, or creates, a Plane attribute and sets <P> as generated the associated NamedShape. Plane methods =============.
 ") Set;
 		static opencascade::handle<TDataXtd_Plane> Set(const TDF_Label & label, const gp_Pln & P);
 
@@ -1738,7 +1738,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods ============= //! returns the guid for point attributes.
+class methods ============= //! Returns the GUID for point attributes.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -1769,7 +1769,7 @@ opencascade::handle<TDataXtd_Point>
 
 Description
 -----------
-Sets the label label as a point attribute. if no object is found, a point attribute is created.
+Sets the label Label as a point attribute. If no object is found, a point attribute is created.
 ") Set;
 		static opencascade::handle<TDataXtd_Point> Set(const TDF_Label & label);
 
@@ -1788,7 +1788,7 @@ opencascade::handle<TDataXtd_Point>
 
 Description
 -----------
-Sets the label label as a point attribute containing the point p. if no object is found, a point attribute is created. point methods =============.
+Sets the label Label as a point attribute containing the point P. If no object is found, a point attribute is created. Point methods =============.
 ") Set;
 		static opencascade::handle<TDataXtd_Point> Set(const TDF_Label & label, const gp_Pnt & P);
 
@@ -1836,7 +1836,7 @@ bool
 
 Description
 -----------
-Search label <alabel) for the tdataxtd_position attribute and get its position if found returns true.
+Search label <aLabel) for the TDataXtd_Position attribute and get its position if found returns True.
 ") Get;
 		static Standard_Boolean Get(const TDF_Label & aLabel, gp_Pnt & aPos);
 
@@ -1849,7 +1849,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -1875,7 +1875,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -1888,7 +1888,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty attribute from the good end type. it is used by the copy algorithm.
+Returns an new empty attribute from the good end type. It is used by the copy algorithm.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -1907,7 +1907,7 @@ None
 
 Description
 -----------
-This method is different from the 'copy' one, because it is used when copying an attribute from a source structure into a target structure. this method pastes the current attribute to the label corresponding to the insertor. the pasted attribute may be a brand new one or a new version of the previous one.
+This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
 
@@ -1925,7 +1925,7 @@ None
 
 Description
 -----------
-Restores the contents from <anattribute> into this one. it is used when aborting a transaction.
+Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -1944,7 +1944,7 @@ None
 
 Description
 -----------
-Create if not found the tdataxtd_position attribute set its position to <apos>.
+Create if not found the TDataXtd_Position attribute set its position to <aPos>.
 ") Set;
 		static void Set(const TDF_Label & aLabel, const gp_Pnt & aPos);
 
@@ -1962,7 +1962,7 @@ opencascade::handle<TDataXtd_Position>
 
 Description
 -----------
-Find an existing, or create an empty, position. the position attribute is returned.
+Find an existing, or create an empty, Position. the Position attribute is returned.
 ") Set;
 		static opencascade::handle<TDataXtd_Position> Set(const TDF_Label & aLabel);
 
@@ -2067,7 +2067,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid of the driver managing display of associated ais object.
+Returns the GUID of the driver managing display of associated AIS object.
 ") GetDriverGUID;
 		Standard_GUID GetDriverGUID();
 
@@ -2080,7 +2080,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2093,7 +2093,7 @@ int
 
 Description
 -----------
-Returns the number of selection modes of the attribute. it starts with 1 .. getnbselectionmodes().
+Returns the number of selection modes of the attribute. It starts with 1 .. GetNbSelectionModes().
 ") GetNbSelectionModes;
 		Standard_Integer GetNbSelectionModes();
 
@@ -2184,7 +2184,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the attribute.
+Returns the ID of the attribute.
 ") ID;
 		const Standard_GUID & ID();
 
@@ -2236,7 +2236,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Returns an new empty attribute from the good end type. it is used by the copy algorithm.
+Returns an new empty attribute from the good end type. It is used by the copy algorithm.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -2255,7 +2255,7 @@ None
 
 Description
 -----------
-This method is different from the 'copy' one, because it is used when copying an attribute from a source structure into a target structure. this method pastes the current attribute to the label corresponding to the insertor. the pasted attribute may be a brand new one or a new version of the previous one.
+This method is different from the 'Copy' one, because it is used when copying an attribute from a source structure into a target structure. This method pastes the current attribute to the label corresponding to the insertor. The pasted attribute may be a brand new one or a new version of the previous one.
 ") Paste;
 		virtual void Paste(const opencascade::handle<TDF_Attribute> & intoAttribute, const opencascade::handle<TDF_RelocationTable> & aRelocTationable);
 
@@ -2273,7 +2273,7 @@ None
 
 Description
 -----------
-Restores the contents from <anattribute> into this one. it is used when aborting a transaction.
+Restores the contents from <anAttribute> into this one. It is used when aborting a transaction.
 ") Restore;
 		virtual void Restore(const opencascade::handle<TDF_Attribute> & anAttribute);
 
@@ -2310,7 +2310,7 @@ opencascade::handle<TDataXtd_Presentation>
 
 Description
 -----------
-Create if not found the tdataxtd_presentation attribute and set its driver guid.
+Create if not found the TDataXtd_Presentation attribute and set its driver GUID.
 ") Set;
 		static opencascade::handle<TDataXtd_Presentation> Set(const TDF_Label & theLabel, const Standard_GUID & theDriverId);
 
@@ -2364,7 +2364,7 @@ None
 
 Description
 -----------
-Sets the guid of the driver managing display of associated ais object.
+Sets the GUID of the driver managing display of associated AIS object.
 ") SetDriverGUID;
 		void SetDriverGUID(const Standard_GUID & theGUID);
 
@@ -2419,7 +2419,7 @@ None
 
 Description
 -----------
-Sets selection mode. if 'thetransaction' flag is off, modification of the attribute doesn't influence the transaction mechanism (the attribute doesn't participate in undo/redo because of this modification). certainly, if any other data of the attribute is modified (display mode, color, ...), the attribute will be included into undo/redo.
+Sets selection mode. If 'theTransaction' flag is OFF, modification of the attribute doesn't influence the transaction mechanism (the attribute doesn't participate in undo/redo because of this modification). Certainly, if any other data of the attribute is modified (display mode, color, ...), the attribute will be included into undo/redo.
 ") SetSelectionMode;
 		void SetSelectionMode(const Standard_Integer theSelectionMode, const Standard_Boolean theTransaction = Standard_True);
 
@@ -2595,7 +2595,7 @@ Quantity_NameOfColor
 
 Description
 -----------
-Convert values of old quantity_nameofcolor to new enumeration for reading old documents after #0030969 (coding rules - refactor quantity_color.cxx color table definition).
+Convert values of old Quantity_NameOfColor to new enumeration for reading old documents after #0030969 (Coding Rules - refactor Quantity_Color.cxx color table definition).
 ") getColorNameFromOldEnum;
 		static Quantity_NameOfColor getColorNameFromOldEnum(Standard_Integer theOld);
 
@@ -2613,7 +2613,7 @@ int
 
 Description
 -----------
-Convert quantity_nameofcolor to old enumeration value for writing documents in compatible format.
+Convert Quantity_NameOfColor to old enumeration value for writing documents in compatible format.
 ") getOldColorNameFromNewEnum;
 		static Standard_Integer getOldColorNameFromNewEnum(Quantity_NameOfColor theNew);
 
@@ -2678,7 +2678,7 @@ bool
 
 Description
 -----------
-Class methods ============= try to retrieve a shape attribute at <current> label or in fathers label of <current>. returns true if found and set <s>.
+class methods ============= try to retrieve a Shape attribute at <current> label or in fathers label of <current>. Returns True if found and set <S>.
 ") Find;
 		static Standard_Boolean Find(const TDF_Label & current, opencascade::handle<TDataXtd_Shape> & S);
 
@@ -2696,7 +2696,7 @@ TopoDS_Shape
 
 Description
 -----------
-The shape from associated namedshape attribute is returned.
+the Shape from associated NamedShape attribute is returned.
 ") Get;
 		static TopoDS_Shape Get(const TDF_Label & label);
 
@@ -2740,7 +2740,7 @@ opencascade::handle<TDataXtd_Shape>
 
 Description
 -----------
-Find, or create, a shape attribute. the shape attribute is returned. raises if <label> has attribute.
+Find, or create, a Shape attribute. the Shape attribute is returned. Raises if <label> has attribute.
 ") New;
 		static opencascade::handle<TDataXtd_Shape> New(const TDF_Label & label);
 
@@ -2777,7 +2777,7 @@ opencascade::handle<TDataXtd_Shape>
 
 Description
 -----------
-Create or update associated namedshape attribute. the shape attribute is returned.
+Create or update associated NamedShape attribute. the Shape attribute is returned.
 ") Set;
 		static opencascade::handle<TDataXtd_Shape> Set(const TDF_Label & label, const TopoDS_Shape & shape);
 
@@ -2806,7 +2806,7 @@ None
 
 Description
 -----------
-A constructor. don't use it directly, use please the static method set(), which returns the attribute attached to a label.
+A constructor. Don't use it directly, use please the static method Set(), which returns the attribute attached to a label.
 ") TDataXtd_Triangulation;
 		 TDataXtd_Triangulation();
 
@@ -2837,7 +2837,7 @@ None
 
 Description
 -----------
-Sets the deflection of this triangulation to thedeflection. see more on deflection in polygon2d.
+Sets the deflection of this triangulation to theDeflection. See more on deflection in Polygon2D.
 ") Deflection;
 		void Deflection(const Standard_Real theDeflection);
 
@@ -2880,7 +2880,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the id of the triangulation attribute.
+Returns the ID of the triangulation attribute.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -2893,7 +2893,7 @@ bool
 
 Description
 -----------
-Returns standard_true if nodal normals are defined.
+Returns Standard_True if nodal normals are defined.
 ") HasNormals;
 		Standard_Boolean HasNormals();
 
@@ -2906,7 +2906,7 @@ bool
 
 Description
 -----------
-Return standard_true if 2d nodes are associated with 3d nodes for this triangulation.
+Return: Standard_True if 2D nodes are associated with 3D nodes for this triangulation.
 ") HasUVNodes;
 		Standard_Boolean HasUVNodes();
 
@@ -2932,7 +2932,7 @@ int
 
 Description
 -----------
-Return the number of nodes for this triangulation.
+Return: the number of nodes for this triangulation.
 ") NbNodes;
 		Standard_Integer NbNodes();
 
@@ -2945,7 +2945,7 @@ int
 
 Description
 -----------
-Return the number of triangles for this triangulation.
+Return: the number of triangles for this triangulation.
 ") NbTriangles;
 		Standard_Integer NbTriangles();
 
@@ -2976,7 +2976,7 @@ gp_Pnt
 
 Description
 -----------
-Return node at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbnodes.
+Return: node at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
 ") Node;
 		gp_Pnt Node(const Standard_Integer theIndex);
 
@@ -2994,7 +2994,7 @@ gp_Dir
 
 Description
 -----------
-Return normal at the given index. raises standard_outofrange exception.
+Return: normal at the given index. Raises Standard_OutOfRange exception.
 ") Normal;
 		gp_Dir Normal(const Standard_Integer theIndex);
 
@@ -3026,7 +3026,7 @@ None
 
 Description
 -----------
-Deallocates the uv nodes.
+Deallocates the UV nodes.
 ") RemoveUVNodes;
 		void RemoveUVNodes();
 
@@ -3081,7 +3081,7 @@ opencascade::handle<TDataXtd_Triangulation>
 
 Description
 -----------
-Finds or creates a triangulation attribute. initializes the attribute by a poly_triangulation object.
+Finds or creates a triangulation attribute. Initializes the attribute by a Poly_Triangulation object.
 ") Set;
 		static opencascade::handle<TDataXtd_Triangulation> Set(const TDF_Label & theLabel, const opencascade::handle<Poly_Triangulation> & theTriangulation);
 
@@ -3118,7 +3118,7 @@ None
 
 Description
 -----------
-The method differs from poly_triangulation! sets a node at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbnodes.
+The method differs from Poly_Triangulation! Sets a node at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
 ") SetNode;
 		void SetNode(const Standard_Integer theIndex, const gp_Pnt & theNode);
 
@@ -3137,7 +3137,7 @@ None
 
 Description
 -----------
-Changes normal at the given index. raises standard_outofrange exception.
+Changes normal at the given index. Raises Standard_OutOfRange exception.
 ") SetNormal;
 		void SetNormal(const Standard_Integer theIndex, const gp_Dir & theNormal);
 
@@ -3156,7 +3156,7 @@ None
 
 Description
 -----------
-The method differs from poly_triangulation! sets a triangle at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbtriangles.
+The method differs from Poly_Triangulation! Sets a triangle at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbTriangles.
 ") SetTriangle;
 		void SetTriangle(const Standard_Integer theIndex, const Poly_Triangle & theTriangle);
 
@@ -3175,7 +3175,7 @@ None
 
 Description
 -----------
-The method differs from poly_triangulation! sets a uvnode at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbnodes.
+The method differs from Poly_Triangulation! Sets a UVNode at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
 ") SetUVNode;
 		void SetUVNode(const Standard_Integer theIndex, const gp_Pnt2d & theUVNode);
 
@@ -3193,7 +3193,7 @@ Poly_Triangle
 
 Description
 -----------
-Return triangle at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbtriangles.
+Return: triangle at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbTriangles.
 ") Triangle;
 		Poly_Triangle Triangle(const Standard_Integer theIndex);
 
@@ -3211,7 +3211,7 @@ gp_Pnt2d
 
 Description
 -----------
-Return uvnode at the given index. raises standard_outofrange exception if theindex is less than 1 or greater than nbnodes.
+Return: UVNode at the given index. Raises Standard_OutOfRange exception if theIndex is less than 1 or greater than NbNodes.
 ") UVNode;
 		gp_Pnt2d UVNode(const Standard_Integer theIndex);
 
@@ -3617,7 +3617,7 @@ opencascade::handle<TDataXtd_PatternStd>
 
 Description
 -----------
-Find, or create, a patternstd attribute.
+Find, or create, a PatternStd attribute.
 ") Set;
 		static opencascade::handle<TDataXtd_PatternStd> Set(const TDF_Label & label);
 

@@ -44,10 +44,10 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_monitool.html"
 //Dependencies
 #include<Standard_module.hxx>
 #include<NCollection_module.hxx>
-#include<TCollection_module.hxx>
 #include<TopoDS_module.hxx>
 #include<gp_module.hxx>
 #include<Message_module.hxx>
+#include<TCollection_module.hxx>
 #include<OSD_module.hxx>
 #include<TColStd_module.hxx>
 #include<TColgp_module.hxx>
@@ -57,10 +57,10 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_monitool.html"
 %};
 %import Standard.i
 %import NCollection.i
-%import TCollection.i
 %import TopoDS.i
 %import gp.i
 %import Message.i
+%import TCollection.i
 %import OSD.i
 %import TColStd.i
 
@@ -143,7 +143,6 @@ MoniTool_ValueBinary = MoniTool_ValueType.MoniTool_ValueBinary
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Boolean ( * MoniTool_ValueSatisfies ) ( const opencascade::handle<TCollection_HAsciiString>& val );
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfShapeTransient;
 typedef NCollection_DataMap<Standard_CString, opencascade::handle<MoniTool_Timer>, Standard_CStringHasher>::Iterator MoniTool_DataMapIteratorOfDataMapOfTimer;
 typedef NCollection_DataMap<TopoDS_Shape, opencascade::handle<Standard_Transient>, TopTools_ShapeMapHasher> MoniTool_DataMapOfShapeTransient;
@@ -166,7 +165,7 @@ None
 
 Description
 -----------
-Creates an attrlist, empty.
+Creates an AttrList, empty.
 ") MoniTool_AttrList;
 		 MoniTool_AttrList();
 
@@ -184,7 +183,7 @@ None
 
 Description
 -----------
-Creates an attrlist from another one, definitions are shared (calls sameattributes).
+Creates an AttrList from another one, definitions are shared (calls SameAttributes).
 ") MoniTool_AttrList;
 		 MoniTool_AttrList(const MoniTool_AttrList & other);
 
@@ -215,7 +214,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns an attribute from its name. null handle if not recorded (whatever transient, integer, real ...) integer is recorded as intval real is recorded as realval text is recorded as hasciistring.
+Returns an attribute from its name. Null Handle if not recorded (whatever Transient, Integer, Real ...) Integer is recorded as IntVal Real is recorded as RealVal Text is recorded as HAsciiString.
 ") Attribute;
 		opencascade::handle<Standard_Transient> Attribute(Standard_CString name);
 
@@ -233,7 +232,7 @@ MoniTool_ValueType
 
 Description
 -----------
-Returns the type of an attribute: valueint , valuereal , valuetext (string) , valueident (any) or valuevoid (not recorded).
+Returns the type of an attribute: ValueInt , ValueReal , ValueText (String) , ValueIdent (any) or ValueVoid (not recorded).
 ") AttributeType;
 		MoniTool_ValueType AttributeType(Standard_CString name);
 
@@ -253,7 +252,7 @@ bool
 
 Description
 -----------
-Returns an attribute from its name, filtered by a type if no attribute has this name, or if it is not kind of this type, <val> is null and returned value is false else, it is true.
+Returns an attribute from its name, filtered by a type If no attribute has this name, or if it is not kind of this type, <val> is Null and returned value is False Else, it is True.
 ") GetAttribute;
 		Standard_Boolean GetAttribute(Standard_CString name, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & val);
 
@@ -273,7 +272,7 @@ None
 
 Description
 -----------
-Gets the list of attributes from <other>, by copying it by default, considers all the attributes from <other> if <fromname> is given, considers only the attributes with name beginning by <fromname> //! for each attribute, if <copied> is true (d), its value is also copied if it is a basic type (integer,real,string), else it remains shared between <other> and <self> //! these new attributes are added to the existing ones in <self>, in case of same name, they replace the existing ones.
+Gets the list of attributes from <other>, by copying it By default, considers all the attributes from <other> If <fromname> is given, considers only the attributes with name beginning by <fromname> //! For each attribute, if <copied> is True (D), its value is also copied if it is a basic type (Integer,Real,String), else it remains shared between <other> and <self> //! These new attributes are added to the existing ones in <self>, in case of same name, they replace the existing ones.
 ") GetAttributes;
 		void GetAttributes(const MoniTool_AttrList & other, Standard_CString fromname = "", const Standard_Boolean copied = Standard_True);
 
@@ -291,7 +290,7 @@ val: int
 
 Description
 -----------
-Returns an attribute from its name, as integer if no attribute has this name, or not an integer, <val> is 0 and returned value is false else, it is true.
+Returns an attribute from its name, as integer If no attribute has this name, or not an integer, <val> is 0 and returned value is False Else, it is True.
 ") GetIntegerAttribute;
 		Standard_Boolean GetIntegerAttribute(Standard_CString name, Standard_Integer &OutValue);
 
@@ -309,7 +308,7 @@ val: float
 
 Description
 -----------
-Returns an attribute from its name, as real if no attribute has this name, or not a real <val> is 0.0 and returned value is false else, it is true.
+Returns an attribute from its name, as real If no attribute has this name, or not a real <val> is 0.0 and returned value is False Else, it is True.
 ") GetRealAttribute;
 		Standard_Boolean GetRealAttribute(Standard_CString name, Standard_Real &OutValue);
 
@@ -328,7 +327,7 @@ bool
 
 Description
 -----------
-Returns an attribute from its name, as string if no attribute has this name, or not a string <val> is 0.0 and returned value is false else, it is true.
+Returns an attribute from its name, as String If no attribute has this name, or not a String <val> is 0.0 and returned value is False Else, it is True.
 ") GetStringAttribute;
 		Standard_Boolean GetStringAttribute(Standard_CString name, Standard_CString val);
 
@@ -382,7 +381,7 @@ bool
 
 Description
 -----------
-Removes an attribute returns true when done, false if this attribute did not exist.
+Removes an attribute Returns True when done, False if this attribute did not exist.
 ") RemoveAttribute;
 		Standard_Boolean RemoveAttribute(Standard_CString name);
 
@@ -400,7 +399,7 @@ None
 
 Description
 -----------
-Gets the list of attributes from <other>, as such, i.e. not copied: attributes are shared, any attribute edited, added, or removed in <other> is also in <self> and vice versa the former list of attributes of <self> is dropped.
+Gets the list of attributes from <other>, as such, i.e. not copied: attributes are shared, any attribute edited, added, or removed in <other> is also in <self> and vice versa The former list of attributes of <self> is dropped.
 ") SameAttributes;
 		void SameAttributes(const MoniTool_AttrList & other);
 
@@ -476,7 +475,7 @@ None
 
 Description
 -----------
-Adds a string value for an attribute.
+Adds a String value for an attribute.
 ") SetStringAttribute;
 		void SetStringAttribute(Standard_CString name, Standard_CString val);
 
@@ -494,7 +493,7 @@ str
 
 Description
 -----------
-Returns a string attribute from its name. '' if not recorded.
+Returns a String attribute from its name. '' if not recorded.
 ") StringAttribute;
 		Standard_CString StringAttribute(Standard_CString name);
 
@@ -527,7 +526,7 @@ None
 
 Description
 -----------
-Creates a casedata with a caseid and a name (by default not defined).
+Creates a CaseData with a CaseId and a Name (by default not defined).
 ") MoniTool_CaseData;
 		 MoniTool_CaseData(Standard_CString caseid = "", Standard_CString name = "");
 
@@ -546,7 +545,7 @@ None
 
 Description
 -----------
-Adds a transient, with no more meaning.
+Adds a Transient, with no more meaning.
 ") AddAny;
 		void AddAny(const opencascade::handle<Standard_Transient> & val, Standard_CString name = "");
 
@@ -566,7 +565,7 @@ None
 
 Description
 -----------
-Adds the cpu time between lastcpu and now if <curcpu> is given, the cpu amount is curcpu-lastcpu else it is currently measured cpu - lastcpu lastcpu has been read by call to getcpu see getcpu to get amount, and largecpu to test large amount.
+Adds the CPU time between lastCPU and now if <curCPU> is given, the CPU amount is curCPU-lastCPU else it is currently measured CPU - lastCPU lastCPU has been read by call to GetCPU See GetCPU to get amount, and LargeCPU to test large amount.
 ") AddCPU;
 		void AddCPU(const Standard_Real lastCPU, const Standard_Real curCPU = 0, Standard_CString name = "");
 
@@ -605,7 +604,7 @@ None
 
 Description
 -----------
-Adds a transient, as an entity from an interfacemodel for instance: it will then be printed with the help of a dbpe.
+Adds a Transient, as an Entity from an InterfaceModel for instance: it will then be printed with the help of a DBPE.
 ") AddEntity;
 		void AddEntity(const opencascade::handle<Standard_Transient> & ent, Standard_CString name = "");
 
@@ -624,7 +623,7 @@ None
 
 Description
 -----------
-Adds a geometric as a transient (curve, surface ...).
+Adds a Geometric as a Transient (Curve, Surface ...).
 ") AddGeom;
 		void AddGeom(const opencascade::handle<Standard_Transient> & geom, Standard_CString name = "");
 
@@ -643,7 +642,7 @@ None
 
 Description
 -----------
-Adds an integer.
+Adds an Integer.
 ") AddInteger;
 		void AddInteger(const Standard_Integer val, Standard_CString name = "");
 
@@ -681,7 +680,7 @@ None
 
 Description
 -----------
-Adds a real.
+Adds a Real.
 ") AddReal;
 		void AddReal(const Standard_Real val, Standard_CString name = "");
 
@@ -720,7 +719,7 @@ None
 
 Description
 -----------
-Adds a shape (recorded as a hshape).
+Adds a Shape (recorded as a HShape).
 ") AddShape;
 		void AddShape(const TopoDS_Shape & sh, Standard_CString name = "");
 
@@ -739,7 +738,7 @@ None
 
 Description
 -----------
-Adds a text (as hasciistring).
+Adds a Text (as HAsciiString).
 ") AddText;
 		void AddText(Standard_CString text, Standard_CString name = "");
 
@@ -758,7 +757,7 @@ None
 
 Description
 -----------
-Adds a xy.
+Adds a XY.
 ") AddXY;
 		void AddXY(const gp_XY & aXY, Standard_CString name = "");
 
@@ -777,7 +776,7 @@ None
 
 Description
 -----------
-Adds a xyz.
+Adds a XYZ.
 ") AddXYZ;
 		void AddXYZ(const gp_XYZ & aXYZ, Standard_CString name = "");
 
@@ -790,7 +789,7 @@ str
 
 Description
 -----------
-Returns the caseid.
+Returns the CaseId.
 ") CaseId;
 		Standard_CString CaseId();
 
@@ -826,7 +825,7 @@ int
 
 Description
 -----------
-Returns check status for a code: 0 non/info (default), 1 warning, 2 fail //! remark: defcheck is used to set the check status of a casedata when it is attached to a case code, it can be changed later (by setfail, setwarning, resetcheck).
+Returns Check Status for a Code: 0 non/info (default), 1 warning, 2 fail //! Remark: DefCheck is used to set the check status of a CaseData when it is attached to a case code, it can be changed later (by SetFail, SetWarning, ResetCheck).
 ") DefCheck;
 		static Standard_Integer DefCheck(Standard_CString acode);
 
@@ -844,7 +843,7 @@ str
 
 Description
 -----------
-Returns the message definition for a case code empty if no message attached.
+Returns the message definition for a case code Empty if no message attached.
 ") DefMsg;
 		static Standard_CString DefMsg(Standard_CString casecode);
 
@@ -857,7 +856,7 @@ float
 
 Description
 -----------
-Returns the current amount of cpu this allows to laterly test and record cpu amount its value has to be given to largecpu and addcpu.
+Returns the current amount of CPU This allows to laterly test and record CPU amount Its value has to be given to LargeCPU and AddCPU.
 ") GetCPU;
 		Standard_Real GetCPU();
 
@@ -877,7 +876,7 @@ bool
 
 Description
 -----------
-Returns a data item, under control of a type if the data item is kind of this type, it is returned in <val> and the returned value is true else, <val> is unchanged and the returned value is false.
+Returns a data item, under control of a Type If the data item is kind of this type, it is returned in <val> and the returned value is True Else, <val> is unchanged and the returned value is False.
 ") GetData;
 		Standard_Boolean GetData(const Standard_Integer nd, const opencascade::handle<Standard_Type> & type, opencascade::handle<Standard_Transient> & val);
 
@@ -895,7 +894,7 @@ val: int
 
 Description
 -----------
-Returns an integer.
+Returns an Integer.
 ") Integer;
 		Standard_Boolean Integer(const Standard_Integer nd, Standard_Integer &OutValue);
 
@@ -908,7 +907,7 @@ bool
 
 Description
 -----------
-Tells if <self> is check (warning or fail), else it is info.
+Tells if <self> is Check (Warning or Fail), else it is Info.
 ") IsCheck;
 		Standard_Boolean IsCheck();
 
@@ -921,7 +920,7 @@ bool
 
 Description
 -----------
-Tells if <self> is fail.
+Tells if <self> is Fail.
 ") IsFail;
 		Standard_Boolean IsFail();
 
@@ -934,7 +933,7 @@ bool
 
 Description
 -----------
-Tells if <self> is warning.
+Tells if <self> is Warning.
 ") IsWarning;
 		Standard_Boolean IsWarning();
 
@@ -952,7 +951,7 @@ int
 
 Description
 -----------
-Returns the kind of a data: kind type meaning 0 any any (not one of the following) 1 ex raised exception 2 en entity 3 g geom 4 sh shape 5 xyz xyz 6 xy or uv xy 7 rr 2 reals 8 r 1 real 9 cpu cpu (1 real) 10 t text 11 i integer //! for namenum, these codes for type must be given exact i.e. sh for a shape, not s nor shape nor solid etc.
+Returns the kind of a data: KIND TYPE MEANING 0 ANY any (not one of the following) 1 EX raised exception 2 EN entity 3 G geom 4 SH shape 5 XYZ XYZ 6 XY or UV XY 7 RR 2 reals 8 R 1 real 9 CPU CPU (1 real) 10 T text 11 I integer //! For NameNum, these codes for TYPE must be given exact i.e. SH for a Shape, not S nor SHAPE nor SOLID etc.
 ") Kind;
 		Standard_Integer Kind(const Standard_Integer nd);
 
@@ -972,7 +971,7 @@ bool
 
 Description
 -----------
-Tells if a cpu time amount is large <maxcpu> gives the amount over which an amount is large <lastcpu> gives the start cpu amount if <curcpu> is given, the tested cpu amount is curcpu-lastcpu else it is currently measured cpu - lastcpu.
+Tells if a CPU time amount is large <maxCPU> gives the amount over which an amount is large <lastCPU> gives the start CPU amount if <curCPU> is given, the tested CPU amount is curCPU-lastCPU else it is currently measured CPU - lastCPU.
 ") LargeCPU;
 		Standard_Boolean LargeCPU(const Standard_Real maxCPU, const Standard_Real lastCPU, const Standard_Real curCPU = 0);
 
@@ -985,7 +984,7 @@ Message_Msg
 
 Description
 -----------
-Returns a msg from a casedata: it is build from defmsg, which gives the message code plus the designation of items of the casedata to be added to the msg empty if no message attached //! remains to be implemented.
+Returns a Msg from a CaseData: it is build from DefMsg, which gives the message code plus the designation of items of the CaseData to be added to the Msg Empty if no message attached //! Remains to be implemented.
 ") Msg;
 		Message_Msg Msg();
 
@@ -998,7 +997,7 @@ str
 
 Description
 -----------
-Returns the name.
+Returns the Name.
 ") Name;
 		Standard_CString Name();
 
@@ -1016,7 +1015,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the name of a data. if it has no name, the string is empty (length = 0).
+Returns the name of a data. If it has no name, the string is empty (length = 0).
 ") Name;
 		const TCollection_AsciiString & Name(const Standard_Integer nd);
 
@@ -1034,7 +1033,7 @@ int
 
 Description
 -----------
-Returns the first suitable data rank for a given name exact matching (exact case, no completion) is required firstly checks the recorded names if not found, considers the name as follows: name = 'type': search for the first item with this type name = 'type:nn': search for the nn.th item with this type see allowed values in method kind.
+Returns the first suitable data rank for a given name Exact matching (exact case, no completion) is required Firstly checks the recorded names If not found, considers the name as follows: Name = 'TYPE': search for the first item with this TYPE Name = 'TYPE:nn': search for the nn.th item with this TYPE See allowed values in method Kind.
 ") NameNum;
 		Standard_Integer NameNum(Standard_CString name);
 
@@ -1065,7 +1064,7 @@ val: float
 
 Description
 -----------
-Returns a real or cpu amount (stored in geom2d_cartesianpoint) (allows an integer converted to a real).
+Returns a real or CPU amount (stored in Geom2d_CartesianPoint) (allows an Integer converted to a Real).
 ") Real;
 		Standard_Boolean Real(const Standard_Integer nd, Standard_Real &OutValue);
 
@@ -1084,7 +1083,7 @@ v2: float
 
 Description
 -----------
-Returns a couple of reals (stored in geom2d_cartesianpoint).
+Returns a couple of reals (stored in Geom2d_CartesianPoint).
 ") Reals;
 		Standard_Boolean Reals(const Standard_Integer nd, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1102,7 +1101,7 @@ None
 
 Description
 -----------
-Removes a data from its rank. does nothing if out of range.
+Removes a Data from its rank. Does nothing if out of range.
 ") RemoveData;
 		void RemoveData(const Standard_Integer num);
 
@@ -1115,7 +1114,7 @@ None
 
 Description
 -----------
-Resets check status, i.e. sets <self> as info.
+Resets Check Status, i.e. sets <self> as Info.
 ") ResetCheck;
 		void ResetCheck();
 
@@ -1133,7 +1132,7 @@ None
 
 Description
 -----------
-Sets a caseid.
+Sets a CaseId.
 ") SetCaseId;
 		void SetCaseId(Standard_CString caseid);
 
@@ -1146,7 +1145,7 @@ None
 
 Description
 -----------
-Sets the next add... not to add but to change the data item designated by its name. if next add... is not called with a name, setchange is ignored reset by next add... , whatever <num> is correct or not.
+Sets the next Add... not to add but to change the data item designated by its name. If next Add... is not called with a name, SetChange is ignored Reset by next Add... , whatever <num> is correct or not.
 ") SetChange;
 		void SetChange();
 
@@ -1164,7 +1163,7 @@ None
 
 Description
 -----------
-Sets a code to give a fail.
+Sets a Code to give a Fail.
 ") SetDefFail;
 		static void SetDefFail(Standard_CString acode);
 
@@ -1183,7 +1182,7 @@ None
 
 Description
 -----------
-Attaches a message definition to a case code this definition includes the message code plus designation of items of the casedata to be added to the message (this part not yet implemented).
+Attaches a message definition to a case code This definition includes the message code plus designation of items of the CaseData to be added to the message (this part not yet implemented).
 ") SetDefMsg;
 		static void SetDefMsg(Standard_CString casecode, Standard_CString mesdef);
 
@@ -1201,7 +1200,7 @@ None
 
 Description
 -----------
-Sets a code to give a warning.
+Sets a Code to give a Warning.
 ") SetDefWarning;
 		static void SetDefWarning(Standard_CString acode);
 
@@ -1214,7 +1213,7 @@ None
 
 Description
 -----------
-Sets <self> as fail.
+Sets <self> as Fail.
 ") SetFail;
 		void SetFail();
 
@@ -1232,7 +1231,7 @@ None
 
 Description
 -----------
-Sets a name.
+Sets a Name.
 ") SetName;
 		void SetName(Standard_CString name);
 
@@ -1250,7 +1249,7 @@ None
 
 Description
 -----------
-Sets the next add... not to add but to replace the data item <num>, if <num> is between 1 and nbdata. reset by next add... , whatever <num> is correct or not.
+Sets the next Add... not to add but to replace the data item <num>, if <num> is between 1 and NbData. Reset by next Add... , whatever <num> is correct or not.
 ") SetReplace;
 		void SetReplace(const Standard_Integer num);
 
@@ -1263,7 +1262,7 @@ None
 
 Description
 -----------
-Sets <self> as warning.
+Sets <self> as Warning.
 ") SetWarning;
 		void SetWarning();
 
@@ -1281,7 +1280,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns a data as a shape, null if not a shape.
+Returns a data as a shape, Null if not a shape.
 ") Shape;
 		TopoDS_Shape Shape(const Standard_Integer nd);
 
@@ -1300,7 +1299,7 @@ bool
 
 Description
 -----------
-Returns a text (stored in tcollection_hasciistring).
+Returns a text (stored in TCollection_HAsciiString).
 ") Text;
 		Standard_Boolean Text(const Standard_Integer nd, Standard_CString text);
 
@@ -1319,7 +1318,7 @@ bool
 
 Description
 -----------
-Returns a data as a xy (i.e. geom2d_cartesianpoint) returns false if not the good type.
+Returns a data as a XY (i.e. Geom2d_CartesianPoint) Returns False if not the good type.
 ") XY;
 		Standard_Boolean XY(const Standard_Integer nd, gp_XY & val);
 
@@ -1338,7 +1337,7 @@ bool
 
 Description
 -----------
-Returns a data as a xyz (i.e. geom_cartesianpoint) returns false if not the good type.
+Returns a data as a XYZ (i.e. Geom_CartesianPoint) Returns False if not the good type.
 ") XYZ;
 		Standard_Boolean XYZ(const Standard_Integer nd, gp_XYZ & val);
 
@@ -1372,7 +1371,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type attached to an object here, the dynamic type of a transient. null type if unknown.
+Returns the Type attached to an object Here, the Dynamic Type of a Transient. Null Type if unknown.
 ") Type;
 		static opencascade::handle<Standard_Type> Type(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1390,7 +1389,7 @@ str
 
 Description
 -----------
-Returns type name (string) allows to name type of non-handled objects.
+Returns Type Name (string) Allows to name type of non-handled objects.
 ") TypeName;
 		static Standard_CString TypeName(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1418,7 +1417,7 @@ MoniTool_AttrList
 
 Description
 -----------
-Returns (modifiable) the attribute list.
+Returns (modifiable) the Attribute List.
 ") ChangeAttr;
 		MoniTool_AttrList & ChangeAttr();
 
@@ -1436,7 +1435,7 @@ bool
 
 Description
 -----------
-Specific testof equality: to be defined by each sub-class, must be false if elements have not the same true type, else their contents must be compared.
+Specific testof equality: to be defined by each sub-class, must be False if Elements have not the same true Type, else their contents must be compared.
 ") Equates;
 		virtual Standard_Boolean Equates(const opencascade::handle<MoniTool_Element> & other);
 
@@ -1449,7 +1448,7 @@ size_t
 
 Description
 -----------
-Returns the hashcode which has been stored by sethashcode (remark that hashcode could be deferred then be defined by sub-classes, the result is the same).
+Returns the HashCode which has been stored by SetHashCode (remark that HashCode could be deferred then be defined by sub-classes, the result is the same).
 ") GetHashCode;
 		size_t GetHashCode();
 
@@ -1462,7 +1461,7 @@ MoniTool_AttrList
 
 Description
 -----------
-Returns (readonly) the attribute list.
+Returns (readonly) the Attribute List.
 ") ListAttr;
 		const MoniTool_AttrList & ListAttr();
 
@@ -1475,7 +1474,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type of the value. by default, returns the dynamictype of <self>, but can be redefined.
+Returns the Type of the Value. By default, returns the DynamicType of <self>, but can be redefined.
 ") ValueType;
 		virtual opencascade::handle<Standard_Type> ValueType();
 
@@ -1488,7 +1487,7 @@ str
 
 Description
 -----------
-Returns the name of the type of the value. default is name of valuetype, unless it is for a non-handled object.
+Returns the name of the Type of the Value. Default is name of ValueType, unless it is for a non-handled object.
 ") ValueTypeName;
 		virtual Standard_CString ValueTypeName();
 
@@ -1638,7 +1637,7 @@ str
 
 Description
 -----------
-Returns an identification of the signature (a word), given at initialization time.
+Returns an identification of the Signature (a word), given at initialization time.
 ") Name;
 		virtual Standard_CString Name();
 
@@ -1657,7 +1656,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Gives a text as a signature for a transient object in a context if the context is senseless, it can be given as null handle empty result if nothing to give (at least the dynamictype could be sent ?).
+Gives a text as a signature for a transient object in a context If the context is senseless, it can be given as Null Handle empty result if nothing to give (at least the DynamicType could be sent ?).
 ") Text;
 		virtual TCollection_AsciiString Text(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & context);
 
@@ -1675,7 +1674,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Gives a text as a signature for a transient object alone, i.e. without defined context. by default, calls text with undefined context (null handle) and if empty, then returns dynamictype.
+Gives a text as a signature for a transient object alone, i.e. without defined context. By default, calls Text with undefined context (Null Handle) and if empty, then returns DynamicType.
 ") TextAlone;
 		virtual TCollection_AsciiString TextAlone(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1709,7 +1708,7 @@ None
 
 Description
 -----------
-Creates a stat form. at start, one default phase is defined, with one default step. then, it suffises to start with a count of items (and cycles if several) then record items, to have a queryable report.
+Creates a Stat form. At start, one default phase is defined, with one default step. Then, it suffises to start with a count of items (and cycles if several) then record items, to have a queryable report.
 ") MoniTool_Stat;
 		 MoniTool_Stat(Standard_CString title = "");
 
@@ -1727,7 +1726,7 @@ None
 
 Description
 -----------
-Used when starting.
+used when starting.
 ") MoniTool_Stat;
 		 MoniTool_Stat(const MoniTool_Stat & other);
 
@@ -1758,7 +1757,7 @@ None
 
 Description
 -----------
-Ends the addsub and cumulates the sub-count to current level.
+Ends the AddSub and cumulates the sub-count to current level.
 ") AddEnd;
 		void AddEnd();
 
@@ -1776,7 +1775,7 @@ None
 
 Description
 -----------
-Declares a count of items to be added later. if a sub-counter is opened, its percentage multiplies this sub-count to compute the percent of current level.
+Declares a count of items to be added later. If a sub-counter is opened, its percentage multiplies this sub-count to compute the percent of current level.
 ") AddSub;
 		void AddSub(const Standard_Integer nb = 1);
 
@@ -1857,7 +1856,7 @@ None
 
 Description
 -----------
-Adds more items to be counted by add... on current level.
+Adds more items to be counted by Add... on current level.
 ") OpenMore;
 		void OpenMore(const Standard_Integer id, const Standard_Integer nb);
 
@@ -1915,7 +1914,7 @@ float
 
 Description
 -----------
-Return value of accumulated amendment on cpu time.
+Return value of accumulated amendment on CPU time.
 ") Amend;
 		Standard_Real Amend();
 
@@ -1928,7 +1927,7 @@ float
 
 Description
 -----------
-Return value of cpu time minus accumulated amendment.
+Return value of CPU time minus accumulated amendment.
 ") CPU;
 		Standard_Real CPU();
 
@@ -1967,7 +1966,7 @@ int
 
 Description
 -----------
-Return value of hits counter (count of start/stop pairs).
+Return value of hits counter (count of Start/Stop pairs).
 ") Count;
 		Standard_Integer Count();
 
@@ -2060,7 +2059,7 @@ None
 
 Description
 -----------
-Start, stop and reset the timer in addition to doing that to embedded osd_timer, manage also counter of hits.
+Start, Stop and reset the timer In addition to doing that to embedded OSD_Timer, manage also counter of hits.
 ") Reset;
 		void Reset();
 
@@ -2122,7 +2121,7 @@ None
 
 Description
 -----------
-Inline methods to conveniently start/stop timer by name shortcut to timer(name)->start/stop().
+Inline methods to conveniently start/stop timer by name Shortcut to Timer(name)->Start/Stop().
 ") Stop;
 		static void Stop(Standard_CString name);
 
@@ -2148,7 +2147,7 @@ OSD_Timer
 
 Description
 -----------
-Return reference to embedded osd_timer.
+Return reference to embedded OSD_Timer.
 ") Timer;
 		OSD_Timer & Timer();
 
@@ -2166,7 +2165,7 @@ opencascade::handle<MoniTool_Timer>
 
 Description
 -----------
-Returns a timer from a dictionary by its name if timer not existed, creates a new one.
+Returns a timer from a dictionary by its name If timer not existed, creates a new one.
 ") Timer;
 		static opencascade::handle<MoniTool_Timer> Timer(Standard_CString name);
 
@@ -2278,7 +2277,7 @@ None
 
 Description
 -----------
-Creates a typedvalue, with a name //! type gives the type of the parameter, default is free text also available: integer, real, enum, entity (i.e. object) more precise specifications, titles, can be given to the typedvalue once created //! init gives an initial value. if it is not given, the typedvalue begins as 'not set', its value is empty.
+Creates a TypedValue, with a name //! type gives the type of the parameter, default is free text Also available: Integer, Real, Enum, Entity (i.e. Object) More precise specifications, titles, can be given to the TypedValue once created //! init gives an initial value. If it is not given, the TypedValue begins as 'not set', its value is empty.
 ") MoniTool_TypedValue;
 		 MoniTool_TypedValue(Standard_CString name, const MoniTool_ValueType type = MoniTool_ValueText, Standard_CString init = "");
 
@@ -2296,7 +2295,7 @@ None
 
 Description
 -----------
-Creates a typedvalue from another one, by duplication.
+Creates a TypedValue from another one, by duplication.
 ") MoniTool_TypedValue;
 		 MoniTool_TypedValue(const opencascade::handle<MoniTool_TypedValue> & other);
 
@@ -2314,7 +2313,7 @@ bool
 
 Description
 -----------
-Completes the definition of a typedvalue by command <initext>, once created with its type returns true if done, false if could not be interpreted <initext> may be: imin ival: minimum value for an integer imax ival: maximum value for an integer rmin rval: minimum value for a real rmax rval: maximum value for a real unit name: name of unit ematch i: enum from integer value i, match required enum i: enum from integer value i, match not required eval text: add an enumerative value (increments max by 1) eval: add a non-authorised enum value (to be skipped) tmax l: maximum length for a text.
+Completes the definition of a TypedValue by command <initext>, once created with its type Returns True if done, False if could not be interpreted <initext> may be: imin ival: minimum value for an integer imax ival: maximum value for an integer rmin rval: minimum value for a real rmax rval: maximum value for a real unit name: name of unit ematch i: enum from integer value i, match required enum i: enum from integer value i, match not required eval text: add an enumerative value (increments max by 1) eval: add a non-authorised enum value (to be skipped) tmax l: maximum length for a text.
 ") AddDef;
 		Standard_Boolean AddDef(Standard_CString initext);
 
@@ -2341,7 +2340,7 @@ None
 
 Description
 -----------
-Adds enumerative definitions. for more than 10, several calls.
+Adds enumerative definitions. For more than 10, several calls.
 ") AddEnum;
 		void AddEnum(Standard_CString v1 = "", Standard_CString v2 = "", Standard_CString v3 = "", Standard_CString v4 = "", Standard_CString v5 = "", Standard_CString v6 = "", Standard_CString v7 = "", Standard_CString v8 = "", Standard_CString v9 = "", Standard_CString v10 = "");
 
@@ -2360,7 +2359,7 @@ None
 
 Description
 -----------
-Adds an enumeration definition, by its string and numeric values. if it is the first setting for this value, it is recorded as main value. else, it is recognized as alternate string for this numeric value.
+Adds an enumeration definition, by its string and numeric values. If it is the first setting for this value, it is recorded as main value. Else, it is recognized as alternate string for this numeric value.
 ") AddEnumValue;
 		void AddEnumValue(Standard_CString val, const Standard_Integer num);
 
@@ -2379,7 +2378,7 @@ bool
 
 Description
 -----------
-Adds a typedvalue in the library. it is recorded then will be accessed by its name its definition may be imposed, else it is computed as usual by default it will be accessed by its definition (string) returns true if done, false if tv is null or brings no definition or <def> not defined //! if a typedvalue was already recorded under this name, it is replaced.
+Adds a TypedValue in the library. It is recorded then will be accessed by its Name Its Definition may be imposed, else it is computed as usual By default it will be accessed by its Definition (string) Returns True if done, False if tv is Null or brings no Definition or <def> not defined //! If a TypedValue was already recorded under this name, it is replaced.
 ") AddLib;
 		static Standard_Boolean AddLib(const opencascade::handle<MoniTool_TypedValue> & tv, Standard_CString def = "");
 
@@ -2392,7 +2391,7 @@ str
 
 Description
 -----------
-Returns the value, as a cstring. empty if not set.
+Returns the value, as a cstring. Empty if not set.
 ") CStringValue;
 		Standard_CString CStringValue();
 
@@ -2405,7 +2404,7 @@ None
 
 Description
 -----------
-Clears the recorded value: it is now unset.
+Clears the recorded Value: it is now unset.
 ") ClearValue;
 		void ClearValue();
 
@@ -2418,7 +2417,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns the definition by priority, the enforced one, else an automatic one, computed from the specification.
+Returns the Definition By priority, the enforced one, else an automatic one, computed from the specification.
 ") Definition;
 		TCollection_AsciiString Definition();
 
@@ -2436,7 +2435,7 @@ int
 
 Description
 -----------
-Returns the case number which corresponds to a string value works with main and additional values returns (startenum - 1) if not ok, -1 if not an enum.
+Returns the case number which corresponds to a string value Works with main and additional values Returns (StartEnum - 1) if not OK, -1 if not an Enum.
 ") EnumCase;
 		Standard_Integer EnumCase(Standard_CString val);
 
@@ -2455,7 +2454,7 @@ match: bool
 
 Description
 -----------
-Gives the enum definitions: start value, end value, match status. returns true for an enum, false else.
+Gives the Enum definitions: start value, end value, match status. Returns True for an Enum, False else.
 ") EnumDef;
 		Standard_Boolean EnumDef(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Boolean &OutValue);
 
@@ -2473,7 +2472,7 @@ str
 
 Description
 -----------
-Returns the value of an enumerative definition, from its rank empty string if out of range or not an enum.
+Returns the value of an enumerative definition, from its rank Empty string if out of range or not an Enum.
 ") EnumVal;
 		Standard_CString EnumVal(const Standard_Integer num);
 
@@ -2491,7 +2490,7 @@ opencascade::handle<MoniTool_TypedValue>
 
 Description
 -----------
-Returns a copy of the typedvalue bound with a given name null handle if none recorded.
+Returns a COPY of the TypedValue bound with a given Name Null Handle if none recorded.
 ") FromLib;
 		static opencascade::handle<MoniTool_TypedValue> FromLib(Standard_CString def);
 
@@ -2509,7 +2508,7 @@ None
 
 Description
 -----------
-Same as objectvalue, but avoids downcast: the receiving variable is directly loaded. it is assumed that it complies with the definition of objecttype ! otherwise, big trouble.
+Same as ObjectValue, but avoids DownCast: the receiving variable is directly loaded. It is assumed that it complies with the definition of ObjectType ! Otherwise, big trouble.
 ") GetObjectValue;
 		void GetObjectValue(opencascade::handle<Standard_Transient> & val);
 
@@ -2522,7 +2521,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns the value, as a handle (can then be shared) null if not defined.
+Returns the value, as a Handle (can then be shared) Null if not defined.
 ") HStringValue;
 		opencascade::handle<TCollection_HAsciiString> HStringValue();
 
@@ -2535,7 +2534,7 @@ bool
 
 Description
 -----------
-Tells if a typedvalue has an interpret.
+Tells if a TypedValue has an Interpret.
 ") HasInterpret;
 		virtual Standard_Boolean HasInterpret();
 
@@ -2553,7 +2552,7 @@ val: int
 
 Description
 -----------
-Gives an integer limit (upper if <max> true, lower if <max> false). returns true if this limit is defined, false else (in that case, gives the natural limit for integer).
+Gives an Integer Limit (upper if <max> True, lower if <max> False). Returns True if this limit is defined, False else (in that case, gives the natural limit for Integer).
 ") IntegerLimit;
 		Standard_Boolean IntegerLimit(const Standard_Boolean max, Standard_Integer &OutValue);
 
@@ -2566,7 +2565,7 @@ int
 
 Description
 -----------
-Returns the value as integer, i.e.: for type = integer, the integer itself; 0 if not set for type = enum, the designated rank (see enum definition) startenum - 1 if not set or not in the definition else, returns 0.
+Returns the value as integer, i.e.: For type = Integer, the integer itself; 0 if not set For type = Enum, the designated rank (see Enum definition) StartEnum - 1 if not set or not in the definition Else, returns 0.
 ") IntegerValue;
 		Standard_Integer IntegerValue();
 
@@ -2606,7 +2605,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Interprets a value. <native> true: returns a native value <native> false: returns a coded value if the interpret function is set, calls it else, for an enum, native returns the text, coded returns the number standard returns: = hval means no specific interpretation null means senseless can also be redefined.
+Interprets a value. <native> True: returns a native value <native> False: returns a coded value If the Interpret function is set, calls it Else, for an Enum, Native returns the Text, Coded returns the number STANDARD RETURNS: = hval means no specific interpretation Null means senseless Can also be redefined.
 ") Interpret;
 		virtual opencascade::handle<TCollection_HAsciiString> Interpret(const opencascade::handle<TCollection_HAsciiString> & hval, const Standard_Boolean native);
 
@@ -2619,7 +2618,7 @@ bool
 
 Description
 -----------
-Returns true if the value is set (not empty/not null object).
+Returns True if the value is set (not empty/not null object).
 ") IsSetValue;
 		Standard_Boolean IsSetValue();
 
@@ -2650,7 +2649,7 @@ opencascade::handle<MoniTool_TypedValue>
 
 Description
 -----------
-Returns the typedvalue bound with a given name null handle if none recorded warning: it is the original, not duplicated.
+Returns the TypedValue bound with a given Name Null Handle if none recorded Warning: it is the original, not duplicated.
 ") Lib;
 		static opencascade::handle<MoniTool_TypedValue> Lib(Standard_CString def);
 
@@ -2663,7 +2662,7 @@ opencascade::handle<TColStd_HSequenceOfAsciiString>
 
 Description
 -----------
-Returns the list of names of items of the library of types -- library of typedvalue as valued parameters, -- -- accessed by parameter name for use by management of static parameters.
+Returns the list of names of items of the Library of Types -- Library of TypedValue as Valued Parameters, -- -- accessed by parameter name for use by management of Static Parameters.
 ") LibList;
 		static opencascade::handle<TColStd_HSequenceOfAsciiString> LibList();
 
@@ -2702,7 +2701,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type of which an object typedvalue must be kind of default is standard_transient null for a typedvalue not an object.
+Returns the type of which an Object TypedValue must be kind of Default is Standard_Transient Null for a TypedValue not an Object.
 ") ObjectType;
 		opencascade::handle<Standard_Type> ObjectType();
 
@@ -2715,7 +2714,7 @@ str
 
 Description
 -----------
-Returns the type name of the objectvalue, or an empty string if not set.
+Returns the type name of the ObjectValue, or an empty string if not set.
 ") ObjectTypeName;
 		Standard_CString ObjectTypeName();
 
@@ -2728,7 +2727,7 @@ opencascade::handle<Standard_Transient>
 
 Description
 -----------
-Returns the value as transient object, only for object/entity remark that the 'hstring value' is ignored here null if not set; remains to be casted.
+Returns the value as Transient Object, only for Object/Entity Remark that the 'HString value' is IGNORED here Null if not set; remains to be casted.
 ") ObjectValue;
 		opencascade::handle<Standard_Transient> ObjectValue();
 
@@ -2762,7 +2761,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints only the value.
+Prints only the Value.
 ") PrintValue;
 		void PrintValue(std::ostream &OutValue);
 
@@ -2780,7 +2779,7 @@ val: float
 
 Description
 -----------
-Gives an real limit (upper if <max> true, lower if <max> false). returns true if this limit is defined, false else (in that case, gives the natural limit for real).
+Gives an Real Limit (upper if <max> True, lower if <max> False). Returns True if this limit is defined, False else (in that case, gives the natural limit for Real).
 ") RealLimit;
 		Standard_Boolean RealLimit(const Standard_Boolean max, Standard_Real &OutValue);
 
@@ -2793,7 +2792,7 @@ float
 
 Description
 -----------
-Returns the value as real, for a real type typedvalue else, returns 0.
+Returns the value as real, for a Real type TypedValue Else, returns 0.
 ") RealValue;
 		Standard_Real RealValue();
 
@@ -2811,7 +2810,7 @@ bool
 
 Description
 -----------
-Returns true if a value statifies the specification (remark: does not apply to entity: see objecttype, for this type, the string is just a comment).
+Returns True if a value statifies the specification (remark: does not apply to Entity: see ObjectType, for this type, the string is just a comment).
 ") Satisfies;
 		virtual Standard_Boolean Satisfies(const opencascade::handle<TCollection_HAsciiString> & hval);
 
@@ -2842,7 +2841,7 @@ bool
 
 Description
 -----------
-Changes the value. the new one must satisfy the specification returns false (and did not set) if the new value does not satisfy the specification can be redefined to be managed (in a subclass).
+Changes the value. The new one must satisfy the specification Returns False (and did not set) if the new value does not satisfy the specification Can be redefined to be managed (in a subclass).
 ") SetCStringValue;
 		virtual Standard_Boolean SetCStringValue(Standard_CString val);
 
@@ -2860,7 +2859,7 @@ None
 
 Description
 -----------
-Enforces a definition.
+Enforces a Definition.
 ") SetDefinition;
 		void SetDefinition(Standard_CString deftext);
 
@@ -2878,7 +2877,7 @@ bool
 
 Description
 -----------
-Forces a new handle for the value it can be empty, else (if type is not free text), it must satisfy the specification. not only the value is changed, but also the way it is shared remark: for type=object, this value is not controlled, it can be set as a comment returns false (and did not set) if the new value does not satisfy the specification can be redefined to be managed (in a subclass).
+Forces a new Handle for the Value It can be empty, else (if Type is not free Text), it must satisfy the specification. Not only the value is changed, but also the way it is shared Remark: for Type=Object, this value is not controlled, it can be set as a comment Returns False (and did not set) if the new value does not satisfy the specification Can be redefined to be managed (in a subclass).
 ") SetHStringValue;
 		virtual Standard_Boolean SetHStringValue(const opencascade::handle<TCollection_HAsciiString> & hval);
 
@@ -2897,7 +2896,7 @@ None
 
 Description
 -----------
-Sets an integer limit (included) to <val>, the upper limit if <max> is true, the lower limit if <max> is false.
+Sets an Integer limit (included) to <val>, the upper limit if <max> is True, the lower limit if <max> is False.
 ") SetIntegerLimit;
 		void SetIntegerLimit(const Standard_Boolean max, const Standard_Integer val);
 
@@ -2915,7 +2914,7 @@ bool
 
 Description
 -----------
-Changes the value as an integer, only for integer or enum.
+Changes the value as an integer, only for Integer or Enum.
 ") SetIntegerValue;
 		virtual Standard_Boolean SetIntegerValue(const Standard_Integer ival);
 
@@ -2933,7 +2932,7 @@ None
 
 Description
 -----------
-Sets a specific interpret function.
+Sets a specific Interpret function.
 ") SetInterpret;
 		void SetInterpret(const MoniTool_ValueInterpret func);
 
@@ -2987,7 +2986,7 @@ None
 
 Description
 -----------
-Sets type of which an object typedvalue must be kind of error for a typedvalue not an object (entity).
+Sets type of which an Object TypedValue must be kind of Error for a TypedValue not an Object (Entity).
 ") SetObjectType;
 		void SetObjectType(const opencascade::handle<Standard_Type> & typ);
 
@@ -3005,7 +3004,7 @@ bool
 
 Description
 -----------
-Changes the value as transient object, only for object/entity returns false if dynamictype does not satisfy objecttype can be redefined to be managed (in a subclass).
+Changes the value as Transient Object, only for Object/Entity Returns False if DynamicType does not satisfy ObjectType Can be redefined to be managed (in a subclass).
 ") SetObjectValue;
 		virtual Standard_Boolean SetObjectValue(const opencascade::handle<Standard_Transient> & obj);
 
@@ -3024,7 +3023,7 @@ None
 
 Description
 -----------
-Sets a real limit (included) to <val>, the upper limit if <max> is true, the lower limit if <max> is false.
+Sets a Real limit (included) to <val>, the upper limit if <max> is True, the lower limit if <max> is False.
 ") SetRealLimit;
 		void SetRealLimit(const Standard_Boolean max, const Standard_Real val);
 
@@ -3042,7 +3041,7 @@ bool
 
 Description
 -----------
-Changes the value as a real, only for real.
+Changes the value as a real, only for Real.
 ") SetRealValue;
 		virtual Standard_Boolean SetRealValue(const Standard_Real rval);
 
@@ -3061,7 +3060,7 @@ None
 
 Description
 -----------
-Sets a specific satisfies function: it is added to the already defined criteria it must match the form: satisfies (val: hasciistring) returns boolean.
+Sets a specific Satisfies function: it is added to the already defined criteria It must match the form: satisfies (val: HAsciiString) returns Boolean.
 ") SetSatisfies;
 		void SetSatisfies(const MoniTool_ValueSatisfies func, Standard_CString name);
 
@@ -3079,7 +3078,7 @@ None
 
 Description
 -----------
-Sets (clears if <def> empty) a unit definition, as an equation of dimensions. typedvalue just records this definition, does not exploit it, to be done as required by user applications.
+Sets (Clears if <def> empty) a unit definition, as an equation of dimensions. TypedValue just records this definition, does not exploit it, to be done as required by user applications.
 ") SetUnitDef;
 		void SetUnitDef(Standard_CString def);
 
@@ -3098,7 +3097,7 @@ None
 
 Description
 -----------
-For an enumeration, precises the starting value (default 0) and the match condition: if true (d), the string value must match the definition, else it may take another value: in that case, the integer value will be start - 1. (empty value remains allowed).
+For an enumeration, precises the starting value (default 0) and the match condition: if True (D), the string value must match the definition, else it may take another value: in that case, the Integer Value will be Start - 1. (empty value remains allowed).
 ") StartEnum;
 		void StartEnum(const Standard_Integer start = 0, const Standard_Boolean match = Standard_True);
 
@@ -3184,7 +3183,7 @@ str
 
 Description
 -----------
-Returns 'shape'.
+Returns 'SHAPE'.
 ") Name;
 		Standard_CString Name();
 
@@ -3203,7 +3202,7 @@ TCollection_AsciiString
 
 Description
 -----------
-Returns for a hshape, the string of its shapeenum the model is absolutely useless (may be null).
+Returns for a HShape, the string of its ShapeEnum The Model is absolutely useless (may be null).
 ") Text;
 		TCollection_AsciiString Text(const opencascade::handle<Standard_Transient> & ent, const opencascade::handle<Standard_Transient> & context);
 
@@ -3237,7 +3236,7 @@ None
 
 Description
 -----------
-Creates a transientelem with a value. this value can then not be changed. it is used by the hasher to compute the hashcode, which will then be stored for an immediate reading.
+Creates a TransientElem with a Value. This Value can then not be changed. It is used by the Hasher to compute the HashCode, which will then be stored for an immediate reading.
 ") MoniTool_TransientElem;
 		 MoniTool_TransientElem(const opencascade::handle<Standard_Transient> & akey);
 
@@ -3255,7 +3254,7 @@ bool
 
 Description
 -----------
-Specific testof equality: defined as false if <other> has not the same true type, else contents are compared (by c++ operator ==).
+Specific testof equality: defined as False if <other> has not the same true Type, else contents are compared (by C++ operator ==).
 ") Equates;
 		Standard_Boolean Equates(const opencascade::handle<MoniTool_Element> & other);
 
@@ -3281,7 +3280,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns the type of the value. by default, returns the dynamictype of <self>, but can be redefined.
+Returns the Type of the Value. By default, returns the DynamicType of <self>, but can be redefined.
 ") ValueType;
 		virtual opencascade::handle<Standard_Type> ValueType();
 
@@ -3294,7 +3293,7 @@ str
 
 Description
 -----------
-Returns the name of the type of the value. default is name of valuetype, unless it is for a non-handled object.
+Returns the name of the Type of the Value. Default is name of ValueType, unless it is for a non-handled object.
 ") ValueTypeName;
 		virtual Standard_CString ValueTypeName();
 

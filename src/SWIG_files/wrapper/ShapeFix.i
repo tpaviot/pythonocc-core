@@ -154,7 +154,7 @@ None
 
 Description
 -----------
-Runs encoderegularity from breplib taking into account shared components of assemblies, so that each component is processed only once.
+Runs EncodeRegularity from BRepLib taking into account shared components of assemblies, so that each component is processed only once.
 ") EncodeRegularity;
 		static void EncodeRegularity(const TopoDS_Shape & shape, const Standard_Real tolang = 1.0e-10);
 
@@ -212,7 +212,7 @@ TopoDS_Shape
 
 Description
 -----------
-Removes edges which are less than given tolerance from shape with help of shapefix_wire::fixsmall().
+Removes edges which are less than given tolerance from shape with help of ShapeFix_Wire::FixSmall().
 ") RemoveSmallEdges;
 		static TopoDS_Shape RemoveSmallEdges(TopoDS_Shape & shape, const Standard_Real Tolerance, opencascade::handle<ShapeBuild_ReShape> & context);
 
@@ -234,7 +234,7 @@ bool
 
 Description
 -----------
-Runs sameparameter from breplib with these adaptations: <enforce> forces computations, else they are made only on edges with flag sameparameter false <preci>, if not precised, is taken for each edge as its own tolerance returns true when done, false if an exception has been raised in case of exception anyway, as many edges as possible have been processed. the passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
+Runs SameParameter from BRepLib with these adaptations: <enforce> forces computations, else they are made only on Edges with flag SameParameter false <preci>, if not precised, is taken for each EDge as its own Tolerance Returns True when done, False if an exception has been raised In case of exception anyway, as many edges as possible have been processed. The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 ") SameParameter;
 		static Standard_Boolean SameParameter(const TopoDS_Shape & shape, const Standard_Boolean enforce, const Standard_Real preci = 0.0, const Message_ProgressRange & theProgress = Message_ProgressRange(), const opencascade::handle<ShapeExtend_BasicMsgRegistrator> & theMsgReg = 0);
 
@@ -279,7 +279,7 @@ bool
 
 Description
 -----------
-Tries to build 3d curve of the edge if missing use: it is to be called after fixremovecurve3d (if removed) or in any case when edge can have no 3d curve returns: true if 3d curve was added, else false status: ok: 3d curve exists fail1: breplib::buildcurve3d() has failed done1: 3d curve was added.
+Tries to build 3d curve of the edge if missing Use: It is to be called after FixRemoveCurve3d (if removed) or in any case when edge can have no 3d curve Returns: True if 3d curve was added, else False Status: OK: 3d curve exists FAIL1: BRepLib::BuildCurve3d() has failed DONE1: 3d curve was added.
 ") FixAddCurve3d;
 		Standard_Boolean FixAddCurve3d(const TopoDS_Edge & edge);
 
@@ -367,7 +367,7 @@ bool
 
 Description
 -----------
-Adds pcurve(s) of the edge if missing (by projecting 3d curve) parameter isseam indicates if the edge is a seam. the parameter <prec> defines the precision for calculations. if it is 0 (default), the tolerance of the edge is taken. remark: this method is rather for internal use since it accepts parameter <surfana> for optimization of computations use: it is to be called after fixremovepcurve (if removed) or in any case when edge can have no pcurve returns: true if pcurve was added, else false status: ok: pcurve exists fail1: no 3d curve fail2: fail during projecting done1: pcurve was added done2: specific case of pcurve going through degenerated point on sphere encountered during projection (see class shapeconstruct_projectcurveonsurface for more info).
+Adds pcurve(s) of the edge if missing (by projecting 3d curve) Parameter isSeam indicates if the edge is a seam. The parameter <prec> defines the precision for calculations. If it is 0 (default), the tolerance of the edge is taken. Remark: This method is rather for internal use since it accepts parameter <surfana> for optimization of computations Use: It is to be called after FixRemovePCurve (if removed) or in any case when edge can have no pcurve Returns: True if pcurve was added, else False Status: OK: Pcurve exists FAIL1: No 3d curve FAIL2: fail during projecting DONE1: Pcurve was added DONE2: specific case of pcurve going through degenerated point on sphere encountered during projection (see class ShapeConstruct_ProjectCurveOnSurface for more info).
 ") FixAddPCurve;
 		Standard_Boolean FixAddPCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location, const Standard_Boolean isSeam, const opencascade::handle<ShapeAnalysis_Surface> & surfana, const Standard_Real prec = 0.0);
 
@@ -385,7 +385,7 @@ bool
 
 Description
 -----------
-Removes 3d curve of the edge if it does not match the vertices returns: true, if does not match, removed (status done) false, (status ok) if matches or (status fail) if no 3d curve, nothing done.
+Removes 3d curve of the edge if it does not match the vertices Returns: True, if does not match, removed (status DONE) False, (status OK) if matches or (status FAIL) if no 3d curve, nothing done.
 ") FixRemoveCurve3d;
 		Standard_Boolean FixRemoveCurve3d(const TopoDS_Edge & edge);
 
@@ -424,7 +424,7 @@ bool
 
 Description
 -----------
-Removes the pcurve(s) of the edge if it does not match the vertices check is done use: it is to be called when pcurve of an edge can be wrong (e.g., after import from iges) returns: true, if does not match, removed (status done) false, (status ok) if matches or (status fail) if no pcurve, nothing done.
+Removes the pcurve(s) of the edge if it does not match the vertices Check is done Use: It is to be called when pcurve of an edge can be wrong (e.g., after import from IGES) Returns: True, if does not match, removed (status DONE) False, (status OK) if matches or (status FAIL) if no pcurve, nothing done.
 ") FixRemovePCurve;
 		Standard_Boolean FixRemovePCurve(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
 
@@ -463,7 +463,7 @@ bool
 
 Description
 -----------
-Fixes edge if pcurve is directed opposite to 3d curve check is done by call to the function shapeanalysis_edge::checkcurve3dwithpcurve() warning: for seam edge this method will check and fix the pcurve in only one direction. hence, it should be called twice for seam edge: once with edge orientation forward and once with reversed. returns: false if nothing done, true if reversed (status done) status: ok - pcurve ok, nothing done fail1 - no pcurve fail2 - no 3d curve done1 - pcurve was reversed.
+Fixes edge if pcurve is directed opposite to 3d curve Check is done by call to the function ShapeAnalysis_Edge::CheckCurve3dWithPCurve() Warning: For seam edge this method will check and fix the pcurve in only one direction. Hence, it should be called twice for seam edge: once with edge orientation FORWARD and once with REVERSED. Returns: False if nothing done, True if reversed (status DONE) Status: OK - pcurve OK, nothing done FAIL1 - no pcurve FAIL2 - no 3d curve DONE1 - pcurve was reversed.
 ") FixReversed2d;
 		Standard_Boolean FixReversed2d(const TopoDS_Edge & edge, const opencascade::handle<Geom_Surface> & surface, const TopLoc_Location & location);
 
@@ -482,7 +482,7 @@ bool
 
 Description
 -----------
-Tries to make edge sameparameter and sets corresponding tolerance and sameparameter flag. first, it makes edge same range if samerange flag is not set. //! if flag sameparameter is set, this method calls the function shapeanalysis_edge::checksameparameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. if deviation > tolerance, the tolerance of edge is increased to a value of deviation. if deviation < tolerance nothing happens. //! if flag sameparameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure breplib::sameparameter and computing deviation (as above). if <tolerance> > 0, it is used as parameter for breplib::sameparameter, otherwise, tolerance of the edge is used. //! use: is to be called after all pcurves and 3d curve of the edge are correctly computed remark: sameparameter flag is always set to true after this method returns: true, if something done, else false status: ok - edge was initially sameparameter, nothing is done fail1 - computation of deviation of pcurves from 3d curve has failed fail2 - breplib::sameparameter() has failed done1 - tolerance of the edge was increased done2 - flag sameparameter was set to true (only if breplib::sameparameter() did not set it) done3 - edge was modified by breplib::sameparameter() to sameparameter done4 - not used anymore done5 - if the edge resulting from breplib has been chosen, i.e. variant b. above (only for edges with not set sameparameter).
+Tries to make edge SameParameter and sets corresponding tolerance and SameParameter flag. First, it makes edge same range if SameRange flag is not set. //! If flag SameParameter is set, this method calls the function ShapeAnalysis_Edge::CheckSameParameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. If deviation > tolerance, the tolerance of edge is increased to a value of deviation. If deviation < tolerance nothing happens. //! If flag SameParameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure BRepLib::SameParameter and computing deviation (as above). If <tolerance> > 0, it is used as parameter for BRepLib::SameParameter, otherwise, tolerance of the edge is used. //! Use: Is to be called after all pcurves and 3d curve of the edge are correctly computed Remark: SameParameter flag is always set to True after this method Returns: True, if something done, else False Status: OK - edge was initially SameParameter, nothing is done FAIL1 - computation of deviation of pcurves from 3d curve has failed FAIL2 - BRepLib::SameParameter() has failed DONE1 - tolerance of the edge was increased DONE2 - flag SameParameter was set to True (only if BRepLib::SameParameter() did not set it) DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter DONE4 - not used anymore DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above (only for edges with not set SameParameter).
 ") FixSameParameter;
 		Standard_Boolean FixSameParameter(const TopoDS_Edge & edge, const Standard_Real tolerance = 0.0);
 
@@ -502,7 +502,7 @@ bool
 
 Description
 -----------
-Tries to make edge sameparameter and sets corresponding tolerance and sameparameter flag. first, it makes edge same range if samerange flag is not set. //! if flag sameparameter is set, this method calls the function shapeanalysis_edge::checksameparameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. if deviation > tolerance, the tolerance of edge is increased to a value of deviation. if deviation < tolerance nothing happens. //! if flag sameparameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure breplib::sameparameter and computing deviation (as above). if <tolerance> > 0, it is used as parameter for breplib::sameparameter, otherwise, tolerance of the edge is used. //! use: is to be called after all pcurves and 3d curve of the edge are correctly computed remark: sameparameter flag is always set to true after this method returns: true, if something done, else false status: ok - edge was initially sameparameter, nothing is done fail1 - computation of deviation of pcurves from 3d curve has failed fail2 - breplib::sameparameter() has failed done1 - tolerance of the edge was increased done2 - flag sameparameter was set to true (only if breplib::sameparameter() did not set it) done3 - edge was modified by breplib::sameparameter() to sameparameter done4 - not used anymore done5 - if the edge resulting from breplib has been chosen, i.e. variant b. above (only for edges with not set sameparameter).
+Tries to make edge SameParameter and sets corresponding tolerance and SameParameter flag. First, it makes edge same range if SameRange flag is not set. //! If flag SameParameter is set, this method calls the function ShapeAnalysis_Edge::CheckSameParameter() that calculates the maximal deviation of pcurves of the edge from its 3d curve. If deviation > tolerance, the tolerance of edge is increased to a value of deviation. If deviation < tolerance nothing happens. //! If flag SameParameter is not set, this method chooses the best variant (one that has minimal tolerance), either a. only after computing deviation (as above) or b. after calling standard procedure BRepLib::SameParameter and computing deviation (as above). If <tolerance> > 0, it is used as parameter for BRepLib::SameParameter, otherwise, tolerance of the edge is used. //! Use: Is to be called after all pcurves and 3d curve of the edge are correctly computed Remark: SameParameter flag is always set to True after this method Returns: True, if something done, else False Status: OK - edge was initially SameParameter, nothing is done FAIL1 - computation of deviation of pcurves from 3d curve has failed FAIL2 - BRepLib::SameParameter() has failed DONE1 - tolerance of the edge was increased DONE2 - flag SameParameter was set to True (only if BRepLib::SameParameter() did not set it) DONE3 - edge was modified by BRepLib::SameParameter() to SameParameter DONE4 - not used anymore DONE5 - if the edge resulting from BRepLib has been chosen, i.e. variant b. above (only for edges with not set SameParameter).
 ") FixSameParameter;
 		Standard_Boolean FixSameParameter(const TopoDS_Edge & edge, const TopoDS_Face & face, const Standard_Real tolerance = 0.0);
 
@@ -539,7 +539,7 @@ bool
 
 Description
 -----------
-Increases the tolerances of the edge vertices to comprise the ends of 3d curve and pcurve on the given face (first method) or all pcurves stored in an edge (second one) returns: true, if tolerances have been increased, otherwise false status: ok: the original tolerances have not been changed done1: the tolerance of first vertex has been increased done2: the tolerance of last vertex has been increased.
+Increases the tolerances of the edge vertices to comprise the ends of 3d curve and pcurve on the given face (first method) or all pcurves stored in an edge (second one) Returns: True, if tolerances have been increased, otherwise False Status: OK: the original tolerances have not been changed DONE1: the tolerance of first vertex has been increased DONE2: the tolerance of last vertex has been increased.
 ") FixVertexTolerance;
 		Standard_Boolean FixVertexTolerance(const TopoDS_Edge & edge);
 
@@ -552,7 +552,7 @@ opencascade::handle<ShapeConstruct_ProjectCurveOnSurface>
 
 Description
 -----------
-Returns the projector used for recomputing missing pcurves can be used for adjusting parameters of projector.
+Returns the projector used for recomputing missing pcurves Can be used for adjusting parameters of projector.
 ") Projector;
 		opencascade::handle<ShapeConstruct_ProjectCurveOnSurface> Projector();
 
@@ -588,7 +588,7 @@ bool
 
 Description
 -----------
-Returns the status (in the form of true/false) of last fix.
+Returns the status (in the form of True/False) of last Fix.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -658,7 +658,7 @@ None
 
 Description
 -----------
-Adds connectivity information for the whole shape. note: edges in wires must be well ordered note: flag closed should be set for closed wires.
+Adds connectivity information for the whole shape. Note: edges in wires must be well ordered Note: flag Closed should be set for closed wires.
 ") Add;
 		void Add(const TopoDS_Shape & aShape);
 
@@ -967,7 +967,7 @@ None
 
 Description
 -----------
-Builds forecasting free bounds of the <shape> and connects open wires with tolerance <closetoler>. <shape> should be a compound of faces. tolerance <closetoler> should be greater than tolerance <sewtoler> used for initializing sewing analyzer, otherwise connection of open wires is not performed.
+Builds forecasting free bounds of the <shape> and connects open wires with tolerance <closetoler>. <shape> should be a compound of faces. Tolerance <closetoler> should be greater than tolerance <sewtoler> used for initializing sewing analyzer, otherwise connection of open wires is not performed.
 ") ShapeFix_FreeBounds;
 		 ShapeFix_FreeBounds(const TopoDS_Shape & shape, const Standard_Real sewtoler, const Standard_Real closetoler, const Standard_Boolean splitclosed, const Standard_Boolean splitopen);
 
@@ -1158,7 +1158,7 @@ bool
 
 Description
 -----------
-Split edge on two new edges using new vertex 'vert' and 'param' - parameter for splitting the 'face' is necessary for pcurves and using transferparameterproj.
+Split edge on two new edges using new vertex 'vert' and 'param' - parameter for splitting The 'face' is necessary for pcurves and using TransferParameterProj.
 ") SplitEdge;
 		Standard_Boolean SplitEdge(const TopoDS_Edge & edge, const Standard_Real param, const TopoDS_Vertex & vert, const TopoDS_Face & face, TopoDS_Edge & newE1, TopoDS_Edge & newE2, const Standard_Real preci);
 
@@ -1185,7 +1185,7 @@ None
 
 Description
 -----------
-Empty constructor (no context is created).
+Empty Constructor (no context is created).
 ") ShapeFix_Root;
 		 ShapeFix_Root();
 
@@ -1216,7 +1216,7 @@ float
 
 Description
 -----------
-Returns tolerance limited by [mymintol,mymaxtol].
+Returns tolerance limited by [myMinTol,myMaxTol].
 ") LimitTolerance;
 		Standard_Real LimitTolerance(const Standard_Real toler);
 
@@ -1287,7 +1287,7 @@ None
 
 Description
 -----------
-Sends a fail to be attached to the shape. calls sendmsg with gravity set to message_fail.
+Sends a fail to be attached to the shape. Calls SendMsg with gravity set to Message_Fail.
 ") SendFail;
 		void SendFail(const TopoDS_Shape & shape, const Message_Msg & message);
 
@@ -1305,7 +1305,7 @@ None
 
 Description
 -----------
-Calls previous method for myshape.
+Calls previous method for myShape.
 ") SendFail;
 		void SendFail(const Message_Msg & message);
 
@@ -1325,7 +1325,7 @@ None
 
 Description
 -----------
-Sends a message to be attached to the shape. calls corresponding message of message registrator.
+Sends a message to be attached to the shape. Calls corresponding message of message registrator.
 ") SendMsg;
 		void SendMsg(const TopoDS_Shape & shape, const Message_Msg & message, const Message_Gravity gravity = Message_Info);
 
@@ -1344,7 +1344,7 @@ None
 
 Description
 -----------
-Sends a message to be attached to myshape. calls previous method.
+Sends a message to be attached to myShape. Calls previous method.
 ") SendMsg;
 		void SendMsg(const Message_Msg & message, const Message_Gravity gravity = Message_Info);
 
@@ -1363,7 +1363,7 @@ None
 
 Description
 -----------
-Sends a warning to be attached to the shape. calls sendmsg with gravity set to message_warning.
+Sends a warning to be attached to the shape. Calls SendMsg with gravity set to Message_Warning.
 ") SendWarning;
 		void SendWarning(const TopoDS_Shape & shape, const Message_Msg & message);
 
@@ -1381,7 +1381,7 @@ None
 
 Description
 -----------
-Calls previous method for myshape.
+Calls previous method for myShape.
 ") SendWarning;
 		void SendWarning(const Message_Msg & message);
 
@@ -1399,7 +1399,7 @@ None
 
 Description
 -----------
-Copy all fields from another root object.
+Copy all fields from another Root object.
 ") Set;
 		virtual void Set(const opencascade::handle<ShapeFix_Root> & Root);
 
@@ -1539,7 +1539,7 @@ bool
 
 Description
 -----------
-Limits tolerances in a shape as follows: tmin = tmax -> as settolerance (forces) tmin = 0 -> maximum tolerance will be <tmax> tmax = 0 or not given (more generally, tmax < tmin) -> <tmax> ignored, minimum will be <tmin> else, maximum will be <max> and minimum will be <min> styp = vertex: only vertices are set styp = edge: only edges are set styp = face: only faces are set styp = wire: to have edges and their vertices set styp = other value: all (vertices,edges,faces) are set returns true if at least one tolerance of the sub-shape has been modified.
+Limits tolerances in a shape as follows: tmin = tmax -> as SetTolerance (forces) tmin = 0 -> maximum tolerance will be <tmax> tmax = 0 or not given (more generally, tmax < tmin) -> <tmax> ignored, minimum will be <tmin> else, maximum will be <max> and minimum will be <min> styp = VERTEX: only vertices are set styp = EDGE: only edges are set styp = FACE: only faces are set styp = WIRE: to have edges and their vertices set styp = other value: all (vertices,edges,faces) are set Returns True if at least one tolerance of the sub-shape has been modified.
 ") LimitTolerance;
 		Standard_Boolean LimitTolerance(const TopoDS_Shape & shape, const Standard_Real tmin, const Standard_Real tmax = 0.0, const TopAbs_ShapeEnum styp = TopAbs_SHAPE);
 
@@ -1559,7 +1559,7 @@ None
 
 Description
 -----------
-Sets (enforces) tolerances in a shape to the given value styp = vertex: only vertices are set styp = edge: only edges are set styp = face: only faces are set styp = wire: to have edges and their vertices set styp = other value: all (vertices,edges,faces) are set.
+Sets (enforces) tolerances in a shape to the given value styp = VERTEX: only vertices are set styp = EDGE: only edges are set styp = FACE: only faces are set styp = WIRE: to have edges and their vertices set styp = other value: all (vertices,edges,faces) are set.
 ") SetTolerance;
 		void SetTolerance(const TopoDS_Shape & shape, const Standard_Real preci, const TopAbs_ShapeEnum styp = TopAbs_SHAPE);
 
@@ -1632,7 +1632,7 @@ bool
 
 Description
 -----------
-Split edge on two new edges using new vertex 'vert' and 'param' - parameter for splitting the 'face' is necessary for pcurves and using transferparameterproj.
+Split edge on two new edges using new vertex 'vert' and 'param' - parameter for splitting The 'face' is necessary for pcurves and using TransferParameterProj.
 ") SplitEdge;
 		Standard_Boolean SplitEdge(const TopoDS_Edge & edge, const Standard_Real param, const TopoDS_Vertex & vert, const TopoDS_Face & face, TopoDS_Edge & newE1, TopoDS_Edge & newE2, const Standard_Real tol3d, const Standard_Real tol2d);
 
@@ -1658,7 +1658,7 @@ bool
 
 Description
 -----------
-Split edge on two new edges using new vertex 'vert' and 'param1' and 'param2' - parameter for splitting and cutting the 'face' is necessary for pcurves and using transferparameterproj.
+Split edge on two new edges using new vertex 'vert' and 'param1' and 'param2' - parameter for splitting and cutting The 'face' is necessary for pcurves and using TransferParameterProj.
 ") SplitEdge;
 		Standard_Boolean SplitEdge(const TopoDS_Edge & edge, const Standard_Real param1, const Standard_Real param2, const TopoDS_Vertex & vert, const TopoDS_Face & face, TopoDS_Edge & newE1, TopoDS_Edge & newE2, const Standard_Real tol3d, const Standard_Real tol2d);
 
@@ -1685,7 +1685,7 @@ aNum: int
 
 Description
 -----------
-Split edge on two new edges using two new vertex v1 and v2 and two parameters for splitting - fp and lp correspondingly the 'face' is necessary for pcurves and using transferparameterproj anum - number of edge in seqe which corresponding to [fp,lp].
+Split edge on two new edges using two new vertex V1 and V2 and two parameters for splitting - fp and lp correspondingly The 'face' is necessary for pcurves and using TransferParameterProj aNum - number of edge in SeqE which corresponding to [fp,lp].
 ") SplitEdge;
 		Standard_Boolean SplitEdge(const TopoDS_Edge & edge, const Standard_Real fp, const TopoDS_Vertex & V1, const Standard_Real lp, const TopoDS_Vertex & V2, const TopoDS_Face & face, TopTools_SequenceOfShape & SeqE, Standard_Integer &OutValue, const opencascade::handle<ShapeBuild_ReShape> & context, const Standard_Real tol3d, const Standard_Real tol2d);
 
@@ -1728,7 +1728,7 @@ ShapeAnalysis_WireVertex
 
 Description
 -----------
-Returns internal analyzer.
+returns internal analyzer.
 ") Analyzer;
 		const ShapeAnalysis_WireVertex & Analyzer();
 
@@ -1741,7 +1741,7 @@ int
 
 Description
 -----------
-Fixes all statuses except 'disjoined', i.e. the cases in which a common value has been set, with or without changing parameters returns the count of fixed vertices, 0 if none.
+Fixes all statuses except 'Disjoined', i.e. the cases in which a common value has been set, with or without changing parameters Returns the count of fixed vertices, 0 if none.
 ") Fix;
 		Standard_Integer Fix();
 
@@ -1754,7 +1754,7 @@ int
 
 Description
 -----------
-Fixes 'same' or 'close' status (same vertex may be set, without changing parameters) returns the count of fixed vertices, 0 if none.
+Fixes 'Same' or 'Close' status (same vertex may be set, without changing parameters) Returns the count of fixed vertices, 0 if none.
 ") FixSame;
 		Standard_Integer FixSame();
 
@@ -1773,7 +1773,7 @@ None
 
 Description
 -----------
-Loads the wire, ininializes internal analyzer (shapeanalysis_wirevertex) with the given precision, and performs analysis.
+Loads the wire, ininializes internal analyzer (ShapeAnalysis_WireVertex) with the given precision, and performs analysis.
 ") Init;
 		void Init(const TopoDS_Wire & wire, const Standard_Real preci);
 
@@ -1792,7 +1792,7 @@ None
 
 Description
 -----------
-Loads the wire, ininializes internal analyzer (shapeanalysis_wirevertex) with the given precision, and performs analysis.
+Loads the wire, ininializes internal analyzer (ShapeAnalysis_WireVertex) with the given precision, and performs analysis.
 ") Init;
 		void Init(const opencascade::handle<ShapeExtend_WireData> & sbwd, const Standard_Real preci);
 
@@ -1810,7 +1810,7 @@ None
 
 Description
 -----------
-Loads all the data on wire, already analysed by shapeanalysis_wirevertex.
+Loads all the data on wire, already analysed by ShapeAnalysis_WireVertex.
 ") Init;
 		void Init(const ShapeAnalysis_WireVertex & sawv);
 
@@ -1823,7 +1823,7 @@ TopoDS_Wire
 
 Description
 -----------
-Returns resulting wire (fixed).
+returns resulting wire (fixed).
 ") Wire;
 		TopoDS_Wire Wire();
 
@@ -1836,7 +1836,7 @@ opencascade::handle<ShapeExtend_WireData>
 
 Description
 -----------
-Returns data on wire (fixed).
+returns data on wire (fixed).
 ") WireData;
 		const opencascade::handle<ShapeExtend_WireData> & WireData();
 
@@ -1895,7 +1895,7 @@ None
 
 Description
 -----------
-Creates new faces from the set of (closed) wires. each wire is put on corresponding patch in the composite surface, and all pcurves on the initial (pseudo)face are reassigned to that surface. if several wires are one inside another, single face is created.
+Creates new faces from the set of (closed) wires. Each wire is put on corresponding patch in the composite surface, and all pcurves on the initial (pseudo)face are reassigned to that surface. If several wires are one inside another, single face is created.
 ") DispatchWires;
 		void DispatchWires(TopTools_SequenceOfShape & faces, ShapeFix_SequenceOfWireSegment & wires);
 
@@ -1929,7 +1929,7 @@ None
 
 Description
 -----------
-Initializes with composite surface, face and precision. here face defines both set of wires and way of getting pcurves. precision is used (together with tolerance of edges) for handling subtle cases, such as tangential intersections.
+Initializes with composite surface, face and precision. Here face defines both set of wires and way of getting pcurves. Precision is used (together with tolerance of edges) for handling subtle cases, such as tangential intersections.
 ") Init;
 		void Init(const opencascade::handle<ShapeExtend_CompositeSurface> & Grid, const TopLoc_Location & L, const TopoDS_Face & Face, const Standard_Real Prec);
 
@@ -1955,7 +1955,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns resulting shell or face (or null shape if not done).
+Returns resulting shell or face (or Null shape if not done).
 ") Result;
 		const TopoDS_Shape Result();
 
@@ -1986,7 +1986,7 @@ None
 
 Description
 -----------
-Splits edges in the original shape by grid. this is a part of perform() which does not produce any resulting shape; the only result is filled context where splittings are recorded. //! note: if edge is split, it is replaced by wire, and order of edges in the wire corresponds to forward orientation of the edge.
+Splits edges in the original shape by grid. This is a part of Perform() which does not produce any resulting shape; the only result is filled context where splittings are recorded. //! NOTE: If edge is split, it is replaced by wire, and order of edges in the wire corresponds to FORWARD orientation of the edge.
 ") SplitEdges;
 		void SplitEdges();
 
@@ -2004,7 +2004,7 @@ bool
 
 Description
 -----------
-Queries status of last call to perform() ok: nothing done (some kind of error) done1: splitting is done, at least one new face created done2: splitting is done, several new faces obtained fail1: misoriented wire encountered (handled) fail2: recoverable parity error fail3: edge with no pcurve on supporting face fail4: unrecoverable algorithm error (parity check).
+Queries status of last call to Perform() OK: nothing done (some kind of error) DONE1: splitting is done, at least one new face created DONE2: splitting is done, several new faces obtained FAIL1: misoriented wire encountered (handled) FAIL2: recoverable parity error FAIL3: edge with no pcurve on supporting face FAIL4: unrecoverable algorithm error (parity check).
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -2069,7 +2069,7 @@ None
 
 Description
 -----------
-Add a wire to current face using brep_builder. wire is added without taking into account orientation of face (as if face were forward).
+Add a wire to current face using BRep_Builder. Wire is added without taking into account orientation of face (as if face were FORWARD).
 ") Add;
 		void Add(const TopoDS_Wire & wire);
 
@@ -2108,7 +2108,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns a face which corresponds to the current state warning: the finally produced face may be another one ... but with the same support.
+Returns a face which corresponds to the current state Warning: The finally produced face may be another one ... but with the same support.
 ") Face;
 		TopoDS_Face Face();
 
@@ -2121,7 +2121,7 @@ bool
 
 Description
 -----------
-Adds natural boundary on face if it is missing. two cases are supported: - face has no wires - face lies on geometrically double-closed surface (sphere or torus) and none of wires is left-oriented returns true if natural boundary was added.
+Adds natural boundary on face if it is missing. Two cases are supported: - face has no wires - face lies on geometrically double-closed surface (sphere or torus) and none of wires is left-oriented Returns True if natural boundary was added.
 ") FixAddNaturalBound;
 		Standard_Boolean FixAddNaturalBound();
 
@@ -2178,7 +2178,7 @@ bool
 
 Description
 -----------
-Detects if wire has a loop and fixes this situation by splitting on the few parts. if wire has a loops and it was split status was set to value shapeextend_done6.
+Detects if wire has a loop and fixes this situation by splitting on the few parts. if wire has a loops and it was split Status was set to value ShapeExtend_DONE6.
 ") FixLoopWire;
 		Standard_Boolean FixLoopWire(TopTools_SequenceOfShape & aResWires);
 
@@ -2204,7 +2204,7 @@ bool
 
 Description
 -----------
-Detects and fixes the special case when face on a closed surface is given by two wires closed in 3d but with gap in 2d. in that case it creates a new wire from the two, and adds a missing seam edge returns true if missing seam was added.
+Detects and fixes the special case when face on a closed surface is given by two wires closed in 3d but with gap in 2d. In that case it creates a new wire from the two, and adds a missing seam edge Returns True if missing seam was added.
 ") FixMissingSeam;
 		Standard_Boolean FixMissingSeam();
 
@@ -2230,7 +2230,7 @@ bool
 
 Description
 -----------
-Fixes orientation of wires on the face it tries to make all wires lie outside all others (according to orientation) by reversing orientation of some of them. if face lying on sphere or torus has single wire and addnaturalboundmode is true, that wire is not reversed in any case (supposing that natural bound will be added). returns true if wires were reversed.
+Fixes orientation of wires on the face It tries to make all wires lie outside all others (according to orientation) by reversing orientation of some of them. If face lying on sphere or torus has single wire and AddNaturalBoundMode is True, that wire is not reversed in any case (supposing that natural bound will be added). Returns True if wires were reversed.
 ") FixOrientation;
 		Standard_Boolean FixOrientation();
 
@@ -2248,7 +2248,7 @@ bool
 
 Description
 -----------
-Fixes orientation of wires on the face it tries to make all wires lie outside all others (according to orientation) by reversing orientation of some of them. if face lying on sphere or torus has single wire and addnaturalboundmode is true, that wire is not reversed in any case (supposing that natural bound will be added). returns true if wires were reversed outwires return information about out wires + list of internal wires for each (for performing split face).
+Fixes orientation of wires on the face It tries to make all wires lie outside all others (according to orientation) by reversing orientation of some of them. If face lying on sphere or torus has single wire and AddNaturalBoundMode is True, that wire is not reversed in any case (supposing that natural bound will be added). Returns True if wires were reversed OutWires return information about out wires + list of internal wires for each (for performing split face).
 ") FixOrientation;
 		Standard_Boolean FixOrientation(TopTools_DataMapOfShapeListOfShape & MapWires);
 
@@ -2274,7 +2274,7 @@ bool
 
 Description
 -----------
-Fixes topology for a specific case when face is composed by a single wire belting a periodic surface. in that case a degenerated edge is reconstructed in the degenerated pole of the surface. initial wire gets consistent orientation. must be used in couple and before fixmissingseam routine.
+Fixes topology for a specific case when face is composed by a single wire belting a periodic surface. In that case a degenerated edge is reconstructed in the degenerated pole of the surface. Initial wire gets consistent orientation. Must be used in couple and before FixMissingSeam routine.
 ") FixPeriodicDegenerated;
 		Standard_Boolean FixPeriodicDegenerated();
 
@@ -2305,7 +2305,7 @@ bool
 
 Description
 -----------
-Detects wires with small area (that is less than 100*precision::pconfusion(). removes these wires if they are internal. returns: true if at least one small wire removed, false if does nothing.
+Detects wires with small area (that is less than 100*Precision::PConfusion(). Removes these wires if they are internal. Returns: True if at least one small wire removed, False if does nothing.
 ") FixSmallAreaWire;
 		Standard_Boolean FixSmallAreaWire(const Standard_Boolean theIsRemoveSmallFace);
 
@@ -2336,7 +2336,7 @@ bool
 
 Description
 -----------
-Split face if there are more than one out wire using inrormation after fixorientation().
+Split face if there are more than one out wire using inrormation after FixOrientation().
 ") FixSplitFace;
 		Standard_Boolean FixSplitFace(const TopTools_DataMapOfShapeListOfShape & MapWires);
 
@@ -2388,7 +2388,7 @@ bool
 
 Description
 -----------
-If wire contains two coincidence edges it must be removed queries on status after perform().
+If wire contains two coincidence edges it must be removed Queries on status after Perform().
 ") FixWiresTwoCoincEdges;
 		Standard_Boolean FixWiresTwoCoincEdges();
 
@@ -2426,7 +2426,7 @@ None
 
 Description
 -----------
-Starts the creation of the face by default it will be forward, or reversed if <fwd> is false.
+Starts the creation of the face By default it will be FORWARD, or REVERSED if <fwd> is False.
 ") Init;
 		void Init(const opencascade::handle<Geom_Surface> & surf, const Standard_Real preci, const Standard_Boolean fwd = Standard_True);
 
@@ -2446,7 +2446,7 @@ None
 
 Description
 -----------
-Starts the creation of the face by default it will be forward, or reversed if <fwd> is false.
+Starts the creation of the face By default it will be FORWARD, or REVERSED if <fwd> is False.
 ") Init;
 		void Init(const opencascade::handle<ShapeAnalysis_Surface> & surf, const Standard_Real preci, const Standard_Boolean fwd = Standard_True);
 
@@ -2459,7 +2459,7 @@ bool
 
 Description
 -----------
-Performs all the fixes, depending on modes function status returns the status of last call to perform() shapeextend_ok: face was ok, nothing done shapeextend_done1: some wires are fixed shapeextend_done2: orientation of wires fixed shapeextend_done3: missing seam added shapeextend_done4: small area wire removed shapeextend_done5: natural bounds added shapeextend_fail1: some fails during fixing wires shapeextend_fail2: cannot fix orientation of wires shapeextend_fail3: cannot add missing seam shapeextend_fail4: cannot remove small area wire.
+Performs all the fixes, depending on modes Function Status returns the status of last call to Perform() ShapeExtend_OK: face was OK, nothing done ShapeExtend_DONE1: some wires are fixed ShapeExtend_DONE2: orientation of wires fixed ShapeExtend_DONE3: missing seam added ShapeExtend_DONE4: small area wire removed ShapeExtend_DONE5: natural bounds added ShapeExtend_FAIL1: some fails during fixing wires ShapeExtend_FAIL2: cannot fix orientation of wires ShapeExtend_FAIL3: cannot add missing seam ShapeExtend_FAIL4: cannot remove small area wire.
 ") Perform;
 		Standard_Boolean Perform();
 
@@ -2485,7 +2485,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns resulting shape (face or shell if split) to be used instead of face() if fixmissingseam involved.
+Returns resulting shape (Face or Shell if split) To be used instead of Face() if FixMissingSeam involved.
 ") Result;
 		TopoDS_Shape Result();
 
@@ -2503,7 +2503,7 @@ None
 
 Description
 -----------
-Sets maximal allowed tolerance (also to fixwiretool).
+Sets maximal allowed tolerance (also to FixWireTool).
 ") SetMaxTolerance;
 		virtual void SetMaxTolerance(const Standard_Real maxtol);
 
@@ -2521,7 +2521,7 @@ None
 
 Description
 -----------
-Sets minimal allowed tolerance (also to fixwiretool).
+Sets minimal allowed tolerance (also to FixWireTool).
 ") SetMinTolerance;
 		virtual void SetMinTolerance(const Standard_Real mintol);
 
@@ -2557,7 +2557,7 @@ None
 
 Description
 -----------
-Sets basic precision value (also to fixwiretool).
+Sets basic precision value (also to FixWireTool).
 ") SetPrecision;
 		virtual void SetPrecision(const Standard_Real preci);
 
@@ -2575,7 +2575,7 @@ bool
 
 Description
 -----------
-Returns the status of last call to perform() shapeextend_ok: face was ok, nothing done shapeextend_done1: some wires are fixed shapeextend_done2: orientation of wires fixed shapeextend_done3: missing seam added shapeextend_done4: small area wire removed shapeextend_done5: natural bounds added shapeextend_done8: face may be splited shapeextend_fail1: some fails during fixing wires shapeextend_fail2: cannot fix orientation of wires shapeextend_fail3: cannot add missing seam shapeextend_fail4: cannot remove small area wire.
+Returns the status of last call to Perform() ShapeExtend_OK: face was OK, nothing done ShapeExtend_DONE1: some wires are fixed ShapeExtend_DONE2: orientation of wires fixed ShapeExtend_DONE3: missing seam added ShapeExtend_DONE4: small area wire removed ShapeExtend_DONE5: natural bounds added ShapeExtend_DONE8: face may be splited ShapeExtend_FAIL1: some fails during fixing wires ShapeExtend_FAIL2: cannot fix orientation of wires ShapeExtend_FAIL3: cannot add missing seam ShapeExtend_FAIL4: cannot remove small area wire.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -2948,7 +2948,7 @@ None
 
 Description
 -----------
-Set working mode for operator: - themode = 0 use both widthfactorthreshold and volumethreshold parameters - themode = 1 use only widthfactorthreshold parameter - themode = 2 use only volumethreshold parameter.
+Set working mode for operator: - theMode = 0 use both WidthFactorThreshold and VolumeThreshold parameters - theMode = 1 use only WidthFactorThreshold parameter - theMode = 2 use only VolumeThreshold parameter.
 ") SetFixMode;
 		void SetFixMode(const Standard_Integer theMode);
 
@@ -3013,7 +3013,7 @@ None
 
 Description
 -----------
-Empty constructor.
+Empty Constructor.
 ") ShapeFix_Shape;
 		 ShapeFix_Shape();
 
@@ -3241,7 +3241,7 @@ None
 
 Description
 -----------
-Sets maximal allowed tolerance (also to fixsolidtool).
+Sets maximal allowed tolerance (also to FixSolidTool).
 ") SetMaxTolerance;
 		virtual void SetMaxTolerance(const Standard_Real maxtol);
 
@@ -3259,7 +3259,7 @@ None
 
 Description
 -----------
-Sets minimal allowed tolerance (also to fixsolidtool).
+Sets minimal allowed tolerance (also to FixSolidTool).
 ") SetMinTolerance;
 		virtual void SetMinTolerance(const Standard_Real mintol);
 
@@ -3295,7 +3295,7 @@ None
 
 Description
 -----------
-Sets basic precision value (also to fixsolidtool).
+Sets basic precision value (also to FixSolidTool).
 ") SetPrecision;
 		virtual void SetPrecision(const Standard_Real preci);
 
@@ -3326,7 +3326,7 @@ bool
 
 Description
 -----------
-Returns the status of the last fix. this can be a combination of the following flags: shapeextend_done1: some free edges were fixed shapeextend_done2: some free wires were fixed shapeextend_done3: some free faces were fixed shapeextend_done4: some free shells were fixed shapeextend_done5: some free solids were fixed shapeextend_done6: shapes in compound(s) were fixed.
+Returns the status of the last Fix. This can be a combination of the following flags: ShapeExtend_DONE1: some free edges were fixed ShapeExtend_DONE2: some free wires were fixed ShapeExtend_DONE3: some free faces were fixed ShapeExtend_DONE4: some free shells were fixed ShapeExtend_DONE5: some free solids were fixed ShapeExtend_DONE6: shapes in compound(s) were fixed.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -3419,7 +3419,7 @@ bool
 
 Description
 -----------
-Fixes orientation of faces in shell. changes orientation of face in the shell, if it is oriented opposite to neighbouring faces. if it is not possible to orient all faces in the shell (like in case of mebious band), this method orients only subset of faces. other faces are stored in error compound. modes: isaccountmulticonex - mode for account cases of multiconnexity. if this mode is equal to standard_true, separate shells will be created in the cases of multiconnexity. if this mode is equal to standard_false, one shell will be created without account of multiconnexity.by defautt - standard_true; nonmanifold - mode for creation of non-manifold shells. if this mode is equal to standard_true one non-manifold will be created from shell contains multishared edges. else if this mode is equal to standard_false only manifold shells will be created. by default - standard_false.
+Fixes orientation of faces in shell. Changes orientation of face in the shell, if it is oriented opposite to neighbouring faces. If it is not possible to orient all faces in the shell (like in case of mebious band), this method orients only subset of faces. Other faces are stored in Error compound. Modes: isAccountMultiConex - mode for account cases of multiconnexity. If this mode is equal to Standard_True, separate shells will be created in the cases of multiconnexity. If this mode is equal to Standard_False, one shell will be created without account of multiconnexity.By default - Standard_True; NonManifold - mode for creation of non-manifold shells. If this mode is equal to Standard_True one non-manifold will be created from shell contains multishared edges. Else if this mode is equal to Standard_False only manifold shells will be created. By default - Standard_False.
 ") FixFaceOrientation;
 		Standard_Boolean FixFaceOrientation(const TopoDS_Shell & shell, const Standard_Boolean isAccountMultiConex = Standard_True, const Standard_Boolean NonManifold = Standard_False);
 
@@ -3476,7 +3476,7 @@ int
 
 Description
 -----------
-Returns number of obtainrd shells;.
+Returns Number of obtainrd shells;.
 ") NbShells;
 		Standard_Integer NbShells();
 
@@ -3494,7 +3494,7 @@ bool
 
 Description
 -----------
-Iterates on subshapes and performs fixes (for each face calls shapefix_face::perform and then calls fixfaceorientation). the passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
+Iterates on subshapes and performs fixes (for each face calls ShapeFix_Face::Perform and then calls FixFaceOrientation). The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 ") Perform;
 		Standard_Boolean Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -3512,7 +3512,7 @@ None
 
 Description
 -----------
-Sets maximal allowed tolerance (also to fixwiretool).
+Sets maximal allowed tolerance (also to FixWireTool).
 ") SetMaxTolerance;
 		virtual void SetMaxTolerance(const Standard_Real maxtol);
 
@@ -3530,7 +3530,7 @@ None
 
 Description
 -----------
-Sets minimal allowed tolerance (also to fixwiretool).
+Sets minimal allowed tolerance (also to FixWireTool).
 ") SetMinTolerance;
 		virtual void SetMinTolerance(const Standard_Real mintol);
 
@@ -3566,7 +3566,7 @@ None
 
 Description
 -----------
-Sets nonmanifold flag.
+Sets NonManifold flag.
 ") SetNonManifoldFlag;
 		virtual void SetNonManifoldFlag(const Standard_Boolean isNonManifold);
 
@@ -3584,7 +3584,7 @@ None
 
 Description
 -----------
-Sets basic precision value (also to fixwiretool).
+Sets basic precision value (also to FixWireTool).
 ") SetPrecision;
 		virtual void SetPrecision(const Standard_Real preci);
 
@@ -3628,7 +3628,7 @@ bool
 
 Description
 -----------
-Returns the status of the last fix.
+Returns the status of the last Fix.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -3763,7 +3763,7 @@ bool
 
 Description
 -----------
-Iterates on shells and performs fixes (calls shapefix_shell for each subshell). the passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
+Iterates on shells and performs fixes (calls ShapeFix_Shell for each subshell). The passed progress indicator allows user to consult the current progress stage and abort algorithm if needed.
 ") Perform;
 		virtual Standard_Boolean Perform(const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -3781,7 +3781,7 @@ None
 
 Description
 -----------
-Sets maximal allowed tolerance (also to fixshelltool).
+Sets maximal allowed tolerance (also to FixShellTool).
 ") SetMaxTolerance;
 		virtual void SetMaxTolerance(const Standard_Real maxtol);
 
@@ -3799,7 +3799,7 @@ None
 
 Description
 -----------
-Sets minimal allowed tolerance (also to fixshelltool).
+Sets minimal allowed tolerance (also to FixShellTool).
 ") SetMinTolerance;
 		virtual void SetMinTolerance(const Standard_Real mintol);
 
@@ -3835,7 +3835,7 @@ None
 
 Description
 -----------
-Sets basic precision value (also to fixshelltool).
+Sets basic precision value (also to FixShellTool).
 ") SetPrecision;
 		virtual void SetPrecision(const Standard_Real preci);
 
@@ -3879,7 +3879,7 @@ TopoDS_Solid
 
 Description
 -----------
-Calls makesolid and orients the solid to be 'not infinite'.
+Calls MakeSolid and orients the solid to be 'not infinite'.
 ") SolidFromShell;
 		TopoDS_Solid SolidFromShell(const TopoDS_Shell & shell);
 
@@ -3897,7 +3897,7 @@ bool
 
 Description
 -----------
-Returns the status of the last fix.
+Returns the status of the last Fix.
 ") Status;
 		Standard_Boolean Status(const ShapeExtend_Status status);
 
@@ -3999,7 +3999,7 @@ None
 
 Description
 -----------
-Empty constructor, creates clear object with default flags.
+Empty Constructor, creates clear object with default flags.
 ") ShapeFix_Wire;
 		 ShapeFix_Wire();
 
@@ -4019,7 +4019,7 @@ None
 
 Description
 -----------
-Create new object with default flags and prepare it for use (loads analyzer with all the data for the wire and face).
+Create new object with default flags and prepare it for use (Loads analyzer with all the data for the wire and face).
 ") ShapeFix_Wire;
 		 ShapeFix_Wire(const TopoDS_Wire & wire, const TopoDS_Face & face, const Standard_Real prec);
 
@@ -4032,7 +4032,7 @@ opencascade::handle<ShapeAnalysis_Wire>
 
 Description
 -----------
-Returns field analyzer (working tool).
+returns field Analyzer (working tool).
 ") Analyzer;
 		opencascade::handle<ShapeAnalysis_Wire> Analyzer();
 
@@ -4084,7 +4084,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns working face (analyzer.face()).
+returns working face (Analyzer.Face()).
 ") Face;
 		const TopoDS_Face Face();
 
@@ -4128,7 +4128,7 @@ bool
 
 Description
 -----------
-Fixes a wire to be well closed it performs fixconnected, fixdegenerated and fixlacking between last and first edges (independingly on flag closedmode and modes for these fixings) if <prec> is -1 then maxtolerance() is taken.
+Fixes a wire to be well closed It performs FixConnected, FixDegenerated and FixLacking between last and first edges (independingly on flag ClosedMode and modes for these fixings) If <prec> is -1 then MaxTolerance() is taken.
 ") FixClosed;
 		Standard_Boolean FixClosed(const Standard_Real prec = -1.0);
 
@@ -4146,7 +4146,7 @@ bool
 
 Description
 -----------
-Applies fixconnected(num) to all edges in the wire connection between first and last edges is treated only if flag closedmode is true if <prec> is -1 then maxtolerance() is taken.
+Applies FixConnected(num) to all edges in the wire Connection between first and last edges is treated only if flag ClosedMode is True If <prec> is -1 then MaxTolerance() is taken.
 ") FixConnected;
 		Standard_Boolean FixConnected(const Standard_Real prec = -1.0);
 
@@ -4165,7 +4165,7 @@ bool
 
 Description
 -----------
-Fixes connected edges (preceding and current) forces vertices (end of preceding-begin of current) to be the same one tests with starting preci or, if given greater, <prec> if <prec> is -1 then maxtolerance() is taken.
+Fixes connected edges (preceding and current) Forces Vertices (end of preceding-begin of current) to be the same one Tests with starting preci or, if given greater, <prec> If <prec> is -1 then MaxTolerance() is taken.
 ") FixConnected;
 		Standard_Boolean FixConnected(const Standard_Integer num, const Standard_Real prec);
 
@@ -4191,7 +4191,7 @@ bool
 
 Description
 -----------
-Applies fixdegenerated(num) to all edges in the wire connection between first and last edges is treated only if flag closedmode is true.
+Applies FixDegenerated(num) to all edges in the wire Connection between first and last edges is treated only if flag ClosedMode is True.
 ") FixDegenerated;
 		Standard_Boolean FixDegenerated();
 
@@ -4209,7 +4209,7 @@ bool
 
 Description
 -----------
-Fixes degenerated edge checks an <num-th> edge or a point between <num>th-1 and <num>th edges for a singularity on a supporting surface. if singularity is detected, either adds new degenerated edge (before <num>th), or makes <num>th edge to be degenerated.
+Fixes Degenerated Edge Checks an <num-th> edge or a point between <num>th-1 and <num>th edges for a singularity on a supporting surface. If singularity is detected, either adds new degenerated edge (before <num>th), or makes <num>th edge to be degenerated.
 ") FixDegenerated;
 		Standard_Boolean FixDegenerated(const Standard_Integer num);
 
@@ -4235,7 +4235,7 @@ bool
 
 Description
 -----------
-Groups the fixes dealing with 3d and pcurves of the edges. the order of the fixes and the default behaviour are: shapefix_edge::fixreversed2d shapefix_edge::fixremovepcurve (only if forced) shapefix_edge::fixaddpcurve shapefix_edge::fixremovecurve3d (only if forced) shapefix_edge::fixaddcurve3d fixseam, fixshifted, shapefix_edge::fixsameparameter.
+Groups the fixes dealing with 3d and pcurves of the edges. The order of the fixes and the default behaviour are: ShapeFix_Edge::FixReversed2d ShapeFix_Edge::FixRemovePCurve (only if forced) ShapeFix_Edge::FixAddPCurve ShapeFix_Edge::FixRemoveCurve3d (only if forced) ShapeFix_Edge::FixAddCurve3d FixSeam, FixShifted, ShapeFix_Edge::FixSameParameter.
 ") FixEdgeCurves;
 		Standard_Boolean FixEdgeCurves();
 
@@ -4280,7 +4280,7 @@ bool
 
 Description
 -----------
-Fixes gap between ends of pcurves on num-1 and num-th edges. myprecision is used to detect the gap. if convert is true, converts pcurves to bsplines to bend.
+Fixes gap between ends of pcurves on num-1 and num-th edges. myPrecision is used to detect the gap. If convert is True, converts pcurves to bsplines to bend.
 ") FixGap2d;
 		Standard_Boolean FixGap2d(const Standard_Integer num, const Standard_Boolean convert = Standard_False);
 
@@ -4299,7 +4299,7 @@ bool
 
 Description
 -----------
-Fixes gap between ends of 3d curves on num-1 and num-th edges. myprecision is used to detect the gap. if convert is true, converts curves to bsplines to bend.
+Fixes gap between ends of 3d curves on num-1 and num-th edges. myPrecision is used to detect the gap. If convert is True, converts curves to bsplines to bend.
 ") FixGap3d;
 		Standard_Boolean FixGap3d(const Standard_Integer num, const Standard_Boolean convert = Standard_False);
 
@@ -4312,7 +4312,7 @@ bool
 
 Description
 -----------
-Fixes gaps between ends of pcurves on adjacent edges myprecision is used to detect the gaps.
+Fixes gaps between ends of pcurves on adjacent edges myPrecision is used to detect the gaps.
 ") FixGaps2d;
 		Standard_Boolean FixGaps2d();
 
@@ -4338,7 +4338,7 @@ bool
 
 Description
 -----------
-Fixes gaps between ends of 3d curves on adjacent edges myprecision is used to detect the gaps.
+Fixes gaps between ends of 3d curves on adjacent edges myPrecision is used to detect the gaps.
 ") FixGaps3d;
 		Standard_Boolean FixGaps3d();
 
@@ -4395,7 +4395,7 @@ bool
 
 Description
 -----------
-Applies fixlacking(num) to all edges in the wire connection between first and last edges is treated only if flag closedmode is true if <force> is false (default), test for connectness is done with precision of vertex between edges, else it is done with minimal value of vertex tolerance and analyzer.precision(). hence, <force> will lead to inserting lacking edges in replacement of vertices which have big tolerances.
+Applies FixLacking(num) to all edges in the wire Connection between first and last edges is treated only if flag ClosedMode is True If <force> is False (default), test for connectness is done with precision of vertex between edges, else it is done with minimal value of vertex tolerance and Analyzer.Precision(). Hence, <force> will lead to inserting lacking edges in replacement of vertices which have big tolerances.
 ") FixLacking;
 		Standard_Boolean FixLacking(const Standard_Boolean force = Standard_False);
 
@@ -4414,7 +4414,7 @@ bool
 
 Description
 -----------
-Fixes lacking edge test if two adjucent edges are disconnected in 2d (while connected in 3d), and in that case either increase tolerance of the vertex or add a new edge (straight in 2d space), in order to close wire in 2d. returns true if edge was added or tolerance was increased.
+Fixes Lacking Edge Test if two adjucent edges are disconnected in 2d (while connected in 3d), and in that case either increase tolerance of the vertex or add a new edge (straight in 2d space), in order to close wire in 2d. Returns True if edge was added or tolerance was increased.
 ") FixLacking;
 		Standard_Boolean FixLacking(const Standard_Integer num, const Standard_Boolean force = Standard_False);
 
@@ -4510,7 +4510,7 @@ bool
 
 Description
 -----------
-Performs an analysis and reorders edges in the wire using class wireorder. flag <themodeboth> determines the use of miscible mode if necessary.
+Performs an analysis and reorders edges in the wire using class WireOrder. Flag <theModeBoth> determines the use of miscible mode if necessary.
 ") FixReorder;
 		Standard_Boolean FixReorder(Standard_Boolean theModeBoth = Standard_False);
 
@@ -4528,7 +4528,7 @@ bool
 
 Description
 -----------
-Reorder edges in the wire as determined by wireorder that should be filled and computed before.
+Reorder edges in the wire as determined by WireOrder that should be filled and computed before.
 ") FixReorder;
 		Standard_Boolean FixReorder(const ShapeAnalysis_WireOrder & wi);
 
@@ -4585,7 +4585,7 @@ bool
 
 Description
 -----------
-Fixes a seam edge a seam edge has two pcurves, one for forward. one for reversed the forward pcurve must be set as first //! note that correct order of pcurves in the seam edge depends on its orientation (i.e., on orientation of the wire, method of exploration of edges etc.). since wire represented by the shapeextend_wiredata is always forward (orientation is accounted by edges), it will work correct if: 1. wire created from shapeextend_wiredata with methods shapeextend_wiredata::wire..() is added into the forward face (orientation can be applied later) 2. wire is extracted from the face with orientation not composed with orientation of the face.
+Fixes a seam edge A Seam edge has two pcurves, one for forward. one for reversed The forward pcurve must be set as first //! NOTE that correct order of pcurves in the seam edge depends on its orientation (i.e., on orientation of the wire, method of exploration of edges etc.). Since wire represented by the ShapeExtend_WireData is always forward (orientation is accounted by edges), it will work correct if: 1. Wire created from ShapeExtend_WireData with methods ShapeExtend_WireData::Wire..() is added into the FORWARD face (orientation can be applied later) 2. Wire is extracted from the face with orientation not composed with orientation of the face.
 ") FixSeam;
 		Standard_Boolean FixSeam(const Standard_Integer num);
 
@@ -4624,7 +4624,7 @@ bool
 
 Description
 -----------
-Applies fixselfintersectingedge(num) and fixintersectingedges(num) to all edges in the wire and fixintersectingedges(num1, num2) for all pairs num1 and num2 such that num2 >= num1 + 2 and removes wrong edges if any.
+Applies FixSelfIntersectingEdge(num) and FixIntersectingEdges(num) to all edges in the wire and FixIntersectingEdges(num1, num2) for all pairs num1 and num2 such that num2 >= num1 + 2 and removes wrong edges if any.
 ") FixSelfIntersection;
 		Standard_Boolean FixSelfIntersection();
 
@@ -4650,7 +4650,7 @@ bool
 
 Description
 -----------
-Fixes edges which have pcurves shifted by whole parameter range on the closed surface (the case may occur if pcurve of edge was computed by projecting 3d curve, which goes along the seam). it compares each two consequent edges and tries to connect them if distance between ends is near to range of the surface. it also can detect and fix the case if all pcurves are connected, but lie out of parametric bounds of the surface. in addition to fixshifted from shapefix_wire, more sophisticated check of degenerate points is performed, and special cases like sphere given by two meridians are treated.
+Fixes edges which have pcurves shifted by whole parameter range on the closed surface (the case may occur if pcurve of edge was computed by projecting 3d curve, which goes along the seam). It compares each two consequent edges and tries to connect them if distance between ends is near to range of the surface. It also can detect and fix the case if all pcurves are connected, but lie out of parametric bounds of the surface. In addition to FixShifted from ShapeFix_Wire, more sophisticated check of degenerate points is performed, and special cases like sphere given by two meridians are treated.
 ") FixShifted;
 		Standard_Boolean FixShifted();
 
@@ -4682,7 +4682,7 @@ int
 
 Description
 -----------
-Applies fixsmall(num) to all edges in the wire.
+Applies FixSmall(num) to all edges in the wire.
 ") FixSmall;
 		Standard_Integer FixSmall(const Standard_Boolean lockvtx, const Standard_Real precsmall = 0.0);
 
@@ -4702,7 +4702,7 @@ bool
 
 Description
 -----------
-Fixes null length edge to be removed if an edge has null length (regarding preci, or <precsmall> - what is smaller), it should be removed it can be with no problem if its two vertices are the same else, if lockvtx is false, it is removed and its end vertex is put on the preceding edge but if lockvtx is true, this edge must be kept ...
+Fixes Null Length Edge to be removed If an Edge has Null Length (regarding preci, or <precsmall> - what is smaller), it should be removed It can be with no problem if its two vertices are the same Else, if lockvtx is False, it is removed and its end vertex is put on the preceding edge But if lockvtx is True, this edge must be kept ...
 ") FixSmall;
 		Standard_Boolean FixSmall(const Standard_Integer num, const Standard_Boolean lockvtx, const Standard_Real precsmall);
 
@@ -4792,7 +4792,7 @@ None
 
 Description
 -----------
-Load analyzer with all the data already prepared and drops all fixing statuses if analyzer contains face, there is no need to set it by setface or setsurface.
+Load analyzer with all the data already prepared and drops all fixing statuses If analyzer contains face, there is no need to set it by SetFace or SetSurface.
 ") Init;
 		void Init(const opencascade::handle<ShapeAnalysis_Wire> & saw);
 
@@ -4836,7 +4836,7 @@ bool
 
 Description
 -----------
-Queries the status of last call to methods fix... of advanced level for details see corresponding methods; universal statuses are: ok: problem not detected; nothing done done: problem was detected and successfully fixed fail: problem cannot be fixed.
+Queries the status of last call to methods Fix... of advanced level For details see corresponding methods; universal statuses are: OK: problem not detected; nothing done DONE: problem was detected and successfully fixed FAIL: problem cannot be fixed.
 ") LastFixStatus;
 		Standard_Boolean LastFixStatus(const ShapeExtend_Status status);
 
@@ -4924,7 +4924,7 @@ int
 
 Description
 -----------
-Returns number of edges in the working wire.
+returns number of edges in the working wire.
 ") NbEdges;
 		Standard_Integer NbEdges();
 
@@ -4937,7 +4937,7 @@ bool
 
 Description
 -----------
-This method performs all the available fixes. if some fix is turned on or off explicitly by the fix..mode() flag, this fix is either called or not depending on that flag. else (i.e. if flag is default) fix is called depending on the situation: some fixes are not called or are limited if order of edges in the wire is not ok, or depending on modes //! the order of the fixes and default behaviour of perform() are: fixreorder fixsmall (with lockvtx true if ! topomode or if wire is not ordered) fixconnected (if wire is ordered) fixedgecurves (without fixshifted if wire is not ordered) fixdegenerated (if wire is ordered) fixselfintersection (if wire is ordered and closedmode is true) fixlacking (if wire is ordered).
+This method performs all the available fixes. If some fix is turned on or off explicitly by the Fix..Mode() flag, this fix is either called or not depending on that flag. Else (i.e. if flag is default) fix is called depending on the situation: some fixes are not called or are limited if order of edges in the wire is not OK, or depending on modes //! The order of the fixes and default behaviour of Perform() are: FixReorder FixSmall (with lockvtx true if ! TopoMode or if wire is not ordered) FixConnected (if wire is ordered) FixEdgeCurves (without FixShifted if wire is not ordered) FixDegenerated (if wire is ordered) FixSelfIntersection (if wire is ordered and ClosedMode is True) FixLacking (if wire is ordered).
 ") Perform;
 		Standard_Boolean Perform();
 
@@ -5234,7 +5234,7 @@ bool
 
 Description
 -----------
-Querying the status of performed api fixing procedures each status..() methods gives information about the last call to the corresponding fix..() method of api level: ok: no problems detected; nothing done done: some problem(s) was(were) detected and successfully fixed fail: some problem(s) cannot be fixed.
+Querying the status of performed API fixing procedures Each Status..() methods gives information about the last call to the corresponding Fix..() method of API level: OK: no problems detected; nothing done DONE: some problem(s) was(were) detected and successfully fixed FAIL: some problem(s) cannot be fixed.
 ") StatusRemovedSegment;
 		Standard_Boolean StatusRemovedSegment();
 
@@ -5301,7 +5301,7 @@ TopoDS_Wire
 
 Description
 -----------
-Makes the resulting wire (by basic brep_builder).
+Makes the resulting Wire (by basic Brep_Builder).
 ") Wire;
 		TopoDS_Wire Wire();
 
@@ -5314,7 +5314,7 @@ TopoDS_Wire
 
 Description
 -----------
-Makes the resulting wire (by brepapi_makewire).
+Makes the resulting Wire (by BRepAPI_MakeWire).
 ") WireAPIMake;
 		TopoDS_Wire WireAPIMake();
 
@@ -5327,7 +5327,7 @@ opencascade::handle<ShapeExtend_WireData>
 
 Description
 -----------
-Returns working wire.
+returns working wire.
 ") WireData;
 		const opencascade::handle<ShapeExtend_WireData> & WireData();
 
@@ -5395,7 +5395,7 @@ bool
 
 Description
 -----------
-Auxiliary tool for fixsmalledges which checks for small edges and fills the maps. returns true if at least one small edge has been found.
+Auxiliary tool for FixSmallEdges which checks for small edges and fills the maps. Returns True if at least one small edge has been found.
 ") CheckSmallEdges;
 		Standard_Boolean CheckSmallEdges(TopTools_MapOfShape & theSmallEdges, TopTools_DataMapOfShapeListOfShape & theEdgeToFaces, TopTools_DataMapOfShapeListOfShape & theFaceWithSmall, TopTools_MapOfShape & theMultyEdges);
 
@@ -5421,7 +5421,7 @@ bool
 
 Description
 -----------
-Fixes small edges in shape by merging adjacent edges if precision is 0.0, uses precision::confusion().
+Fixes small edges in shape by merging adjacent edges If precision is 0.0, uses Precision::Confusion().
 ") FixSmallEdges;
 		Standard_Boolean FixSmallEdges();
 
@@ -5434,7 +5434,7 @@ bool
 
 Description
 -----------
-Fixes gaps between ends of curves of adjacent edges (both 3d and pcurves) in wires if precision is 0.0, uses precision::confusion().
+Fixes gaps between ends of curves of adjacent edges (both 3d and pcurves) in wires If precision is 0.0, uses Precision::Confusion().
 ") FixWireGaps;
 		Standard_Boolean FixWireGaps();
 
@@ -5488,7 +5488,7 @@ bool
 
 Description
 -----------
-Auxiliary tool for fixsmalledges which merges small edges. if themodedrop is equal to standard_true then small edges, which cannot be connected with adjacent edges are dropped. otherwise they are kept. thelimitangle specifies maximum allowed tangency discontinuity between adjacent edges. if thelimitangle is equal to -1, this angle is not taken into account.
+Auxiliary tool for FixSmallEdges which merges small edges. If theModeDrop is equal to Standard_True then small edges, which cannot be connected with adjacent edges are dropped. Otherwise they are kept. theLimitAngle specifies maximum allowed tangency discontinuity between adjacent edges. If theLimitAngle is equal to -1, this angle is not taken into account.
 ") MergeSmallEdges;
 		Standard_Boolean MergeSmallEdges(TopTools_MapOfShape & theSmallEdges, TopTools_DataMapOfShapeListOfShape & theEdgeToFaces, TopTools_DataMapOfShapeListOfShape & theFaceWithSmall, TopTools_MapOfShape & theMultyEdges, const Standard_Boolean theModeDrop = Standard_False, const Standard_Real theLimitAngle = -1);
 
@@ -5550,7 +5550,7 @@ bool
 
 Description
 -----------
-Decodes the status of the last fixsmalledges. ok - no small edges were found done1 - some small edges were fixed fail1 - failed to fix some small edges.
+Decodes the status of the last FixSmallEdges. OK - No small edges were found DONE1 - Some small edges were fixed FAIL1 - Failed to fix some small edges.
 ") StatusSmallEdges;
 		Standard_Boolean StatusSmallEdges(const ShapeExtend_Status status);
 
@@ -5568,7 +5568,7 @@ bool
 
 Description
 -----------
-Decodes the status of the last fixwiregaps. ok - no gaps were found done1 - some gaps in 3d were fixed done2 - some gaps in 2d were fixed fail1 - failed to fix some gaps in 3d fail2 - failed to fix some gaps in 2d.
+Decodes the status of the last FixWireGaps. OK - No gaps were found DONE1 - Some gaps in 3D were fixed DONE2 - Some gaps in 2D were fixed FAIL1 - Failed to fix some gaps in 3D FAIL2 - Failed to fix some gaps in 2D.
 ") StatusWireGaps;
 		Standard_Boolean StatusWireGaps(const ShapeExtend_Status status);
 

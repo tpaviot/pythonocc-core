@@ -217,7 +217,7 @@ bool
 
 Description
 -----------
-Returns true if <left> is lower than <right>.
+Returns True if <Left> is lower than <Right>.
 ") IsLower;
 		Standard_Boolean IsLower(TCollection_AsciiString Left, TCollection_AsciiString Right);
 
@@ -250,7 +250,7 @@ None
 
 Description
 -----------
-Create a resource manager. attempts to find the two following files: $csf_`aname`defaults/aname $csf_`aname`userdefaults/aname and load them respectively into a reference and a user resource structure. //! if csf_resourceverbose defined, seeked files will be printed. //! file syntax the syntax of a resource file is a sequence of resource lines terminated by newline characters or end of file. the syntax of an individual resource line is:.
+Create a Resource manager. Attempts to find the two following files: $CSF_`aName`Defaults/aName $CSF_`aName`UserDefaults/aName and load them respectively into a reference and a user resource structure. //! If CSF_ResourceVerbose defined, seeked files will be printed. //! FILE SYNTAX The syntax of a resource file is a sequence of resource lines terminated by newline characters or end of file. The syntax of an individual resource line is:.
 ") Resource_Manager;
 		 Resource_Manager(Standard_CString aName, const Standard_Boolean Verbose = Standard_False);
 
@@ -263,7 +263,7 @@ None
 
 Description
 -----------
-Create an empty resource manager.
+Create an empty Resource manager.
 ") Resource_Manager;
 		 Resource_Manager();
 
@@ -284,7 +284,11 @@ None
 
 Description
 -----------
-Create a resource manager. @param thename [in] description file name @param thedefaultsdirectory [in] default folder for looking description file @param theuserdefaultsdirectory [in] user folder for looking description file @param theisverbose [in] print verbose messages.
+Create a Resource manager. 
+Input parameter: theName description file name 
+Input parameter: theDefaultsDirectory default folder for looking description file 
+Input parameter: theUserDefaultsDirectory user folder for looking description file 
+Input parameter: theIsVerbose print verbose messages.
 ") Resource_Manager;
 		 Resource_Manager(TCollection_AsciiString theName, TCollection_AsciiString theDefaultsDirectory, TCollection_AsciiString theUserDefaultsDirectory, const Standard_Boolean theIsVerbose = Standard_False);
 
@@ -302,7 +306,7 @@ Standard_ExtString
 
 Description
 -----------
-Gets the value of an extstring resource according to its instance and its type.
+Gets the value of an ExtString resource according to its instance and its type.
 ") ExtValue;
 		virtual Standard_ExtString ExtValue(Standard_CString aResourceName);
 
@@ -320,7 +324,7 @@ bool
 
 Description
 -----------
-Returns true if the resource does exist.
+returns True if the Resource does exist.
 ") Find;
 		Standard_Boolean Find(Standard_CString aResource);
 
@@ -339,7 +343,7 @@ bool
 
 Description
 -----------
-Returns true if the resource does exist.
+returns True if the Resource does exist.
 ") Find;
 		Standard_Boolean Find(TCollection_AsciiString theResource, TCollection_AsciiString & theValue);
 
@@ -357,7 +361,7 @@ Resource_DataMapOfAsciiStringAsciiString
 
 Description
 -----------
-Returns internal ref or user map with parameters .
+Returns internal Ref or User map with parameters.
 ") GetMap;
 		Resource_DataMapOfAsciiStringAsciiString & GetMap(Standard_Boolean theRefMap = Standard_True);
 
@@ -377,7 +381,7 @@ None
 
 Description
 -----------
-Gets the resource file full path by its name. if corresponding environment variable is not set or file doesn't exist returns empty string.
+Gets the resource file full path by its name. If corresponding environment variable is not set or file doesn't exist returns empty string.
 ") GetResourcePath;
 		static void GetResourcePath(TCollection_AsciiString & aPath, Standard_CString aName, const Standard_Boolean isUserDefaults);
 
@@ -398,6 +402,19 @@ Description
 Gets the value of an integer resource according to its instance and its type.
 ") Integer;
 		virtual Standard_Integer Integer(Standard_CString aResourceName);
+
+		/****** Resource_Manager::IsInitialized ******/
+		/****** md5 signature: 5dd1a91f52c88ae79187c35d4cdaba30 ******/
+		%feature("compactdefaultargs") IsInitialized;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+Returns true if Resource have been found.
+") IsInitialized;
+		Standard_Boolean IsInitialized();
 
 		/****** Resource_Manager::Real ******/
 		/****** md5 signature: b6af1db9d303b345bf398c6e044f1093 ******/
@@ -426,7 +443,7 @@ bool
 
 Description
 -----------
-Save the user resource structure in the specified file. creates the file if it does not exist.
+Save the user resource structure in the specified file. Creates the file if it does not exist.
 ") Save;
 		Standard_Boolean Save();
 
@@ -445,7 +462,7 @@ None
 
 Description
 -----------
-Sets the new value of an integer resource. if the resource does not exist, it is created.
+Sets the new value of an integer resource. If the resource does not exist, it is created.
 ") SetResource;
 		virtual void SetResource(Standard_CString aResourceName, const Standard_Integer aValue);
 
@@ -464,7 +481,7 @@ None
 
 Description
 -----------
-Sets the new value of a real resource. if the resource does not exist, it is created.
+Sets the new value of a real resource. If the resource does not exist, it is created.
 ") SetResource;
 		virtual void SetResource(Standard_CString aResourceName, const Standard_Real aValue);
 
@@ -483,7 +500,7 @@ None
 
 Description
 -----------
-Sets the new value of an cstring resource. if the resource does not exist, it is created.
+Sets the new value of an CString resource. If the resource does not exist, it is created.
 ") SetResource;
 		virtual void SetResource(Standard_CString aResourceName, Standard_CString aValue);
 
@@ -502,7 +519,7 @@ None
 
 Description
 -----------
-Sets the new value of an extstring resource. if the resource does not exist, it is created.
+Sets the new value of an ExtString resource. If the resource does not exist, it is created.
 ") SetResource;
 		virtual void SetResource(Standard_CString aResourceName, const Standard_ExtString aValue);
 
@@ -520,7 +537,7 @@ str
 
 Description
 -----------
-Gets the value of a cstring resource according to its instance and its type.
+Gets the value of a CString resource according to its instance and its type.
 ") Value;
 		virtual Standard_CString Value(Standard_CString aResourceName);
 
@@ -555,7 +572,7 @@ bool
 
 Description
 -----------
-Converts non-ascii cstring <fromstr> in big5 format to unicode extendedstring <tostr>.
+Converts non-ASCII CString <fromstr> in Big5 format to Unicode ExtendedString <tostr>.
 ") ConvertBig5ToUnicode;
 		static Standard_Boolean ConvertBig5ToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
@@ -574,7 +591,7 @@ None
 
 Description
 -----------
-Converts non-ascii cstring <fromstr> in euc format to unicode extendedstring <tostr>.
+Converts non-ASCII CString <fromstr> in EUC format to Unicode ExtendedString <tostr>.
 ") ConvertEUCToUnicode;
 		static void ConvertEUCToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
@@ -593,7 +610,7 @@ None
 
 Description
 -----------
-Converts the non-ascii c string (as specified by getformat()) to the unicode string of extended characters.
+Converts the non-ASCII C string (as specified by GetFormat()) to the Unicode string of extended characters.
 ") ConvertFormatToUnicode;
 		static void ConvertFormatToUnicode(Standard_CString theFromStr, TCollection_ExtendedString & theToStr);
 
@@ -613,7 +630,9 @@ None
 
 Description
 -----------
-Converts the non-ascii c string in specified format to the unicode string of extended characters. @param theformat [in] source encoding @param thefromstr [in] text to convert @param thetostr [out] destination string.
+Converts the non-ASCII C string in specified format to the Unicode string of extended characters. 
+Input parameter: theFormat source encoding 
+Input parameter: theFromStr text to convert @param[out] theToStr destination string.
 ") ConvertFormatToUnicode;
 		static void ConvertFormatToUnicode(const Resource_FormatType theFormat, Standard_CString theFromStr, TCollection_ExtendedString & theToStr);
 
@@ -632,7 +651,7 @@ bool
 
 Description
 -----------
-Converts non-ascii cstring <fromstr> in gbk format to unicode extendedstring <tostr>.
+Converts non-ASCII CString <fromstr> in GBK format to Unicode ExtendedString <tostr>.
 ") ConvertGBKToUnicode;
 		static Standard_Boolean ConvertGBKToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
@@ -651,7 +670,7 @@ None
 
 Description
 -----------
-Converts non-ascii cstring <fromstr> in gb format to unicode extendedstring <tostr>.
+Converts non-ASCII CString <fromstr> in GB format to Unicode ExtendedString <tostr>.
 ") ConvertGBToUnicode;
 		static void ConvertGBToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
@@ -670,7 +689,7 @@ None
 
 Description
 -----------
-Converts non-ascii cstring <fromstr> in sjis format to unicode extendedstring <tostr>.
+Converts non-ASCII CString <fromstr> in SJIS format to Unicode ExtendedString <tostr>.
 ") ConvertSJISToUnicode;
 		static void ConvertSJISToUnicode(Standard_CString fromstr, TCollection_ExtendedString & tostr);
 
@@ -690,7 +709,7 @@ bool
 
 Description
 -----------
-Converts unicode extendedstring <fromstr> to non-ascii cstring <tostr> in ansi format, limited to <maxsize> characters. to translate the whole <fromstr>, use more than twice the length of <fromstr>. returns true if <maxsize> has not been reached before end of conversion.
+Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in ANSI format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 ") ConvertUnicodeToANSI;
 		static Standard_Boolean ConvertUnicodeToANSI(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
@@ -710,7 +729,7 @@ bool
 
 Description
 -----------
-Converts unicode extendedstring <fromstr> to non-ascii cstring <tostr> in euc format, limited to <maxsize> characters. to translate the whole <fromstr>, use more than twice the length of <fromstr>. returns true if <maxsize> has not been reached before end of conversion.
+Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in EUC format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 ") ConvertUnicodeToEUC;
 		static Standard_Boolean ConvertUnicodeToEUC(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
@@ -731,7 +750,10 @@ bool
 
 Description
 -----------
-Converts the unicode string of extended characters to the non-ascii string according to specified format. you need more than twice the length of the source string to complete the conversion. the function returns true if conversion is complete, i.e. the maximum number of characters is not reached before the end of conversion. @param theformat [in] destination encoding @param thefromstr [in] text to convert @param thetostr [out] destination buffer @param themaxsize [in] destination buffer length.
+Converts the Unicode string of extended characters to the non-ASCII string according to specified format. You need more than twice the length of the source string to complete the conversion. The function returns true if conversion is complete, i.e. the maximum number of characters is not reached before the end of conversion. 
+Input parameter: theFormat destination encoding 
+Input parameter: theFromStr text to convert @param[out] theToStr destination buffer 
+Input parameter: theMaxSize destination buffer length.
 ") ConvertUnicodeToFormat;
 		static Standard_Boolean ConvertUnicodeToFormat(const Resource_FormatType theFormat, TCollection_ExtendedString theFromStr, Standard_PCharacter & theToStr, const Standard_Integer theMaxSize);
 
@@ -751,7 +773,9 @@ bool
 
 Description
 -----------
-Converts the unicode string of extended characters to the non-ascii string according to the format returned by the function getformat. @param thefromstr [in] text to convert @param thetostr [out] destination buffer @param themaxsize [in] destination buffer length.
+Converts the Unicode string of extended characters to the non-ASCII string according to the format returned by the function GetFormat. 
+Input parameter: theFromStr text to convert @param[out] theToStr destination buffer 
+Input parameter: theMaxSize destination buffer length.
 ") ConvertUnicodeToFormat;
 		static Standard_Boolean ConvertUnicodeToFormat(TCollection_ExtendedString theFromStr, Standard_PCharacter & theToStr, const Standard_Integer theMaxSize);
 
@@ -771,7 +795,7 @@ bool
 
 Description
 -----------
-Converts unicode extendedstring <fromstr> to non-ascii cstring <tostr> in gb format, limited to <maxsize> characters. to translate the whole <fromstr>, use more than twice the length of <fromstr>. returns true if <maxsize> has not been reached before end of conversion.
+Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in GB format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 ") ConvertUnicodeToGB;
 		static Standard_Boolean ConvertUnicodeToGB(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
@@ -791,7 +815,7 @@ bool
 
 Description
 -----------
-Converts unicode extendedstring <fromstr> to non-ascii cstring <tostr> in sjis format, limited to <maxsize> characters. to translate the whole <fromstr>, use more than twice the length of <fromstr>. returns true if <maxsize> has not been reached before end of conversion.
+Converts Unicode ExtendedString <fromstr> to non-ASCII CString <tostr> in SJIS format, limited to <maxsize> characters. To translate the whole <fromstr>, use more than twice the length of <fromstr>. Returns true if <maxsize> has not been reached before end of conversion.
 ") ConvertUnicodeToSJIS;
 		static Standard_Boolean ConvertUnicodeToSJIS(TCollection_ExtendedString fromstr, Standard_PCharacter & tostr, const Standard_Integer maxsize);
 
@@ -804,7 +828,7 @@ Resource_FormatType
 
 Description
 -----------
-Returns the current conversion format (either ansi, euc, gb or sjis). the current converting format must be defined in advance with the setformat function.
+Returns the current conversion format (either ANSI, EUC, GB or SJIS). The current converting format must be defined in advance with the SetFormat function.
 ") GetFormat;
 		static Resource_FormatType GetFormat();
 
@@ -817,7 +841,7 @@ None
 
 Description
 -----------
-Reads converting format from resource 'formattype' in resource manager 'charset'.
+Reads converting format from resource 'FormatType' in Resource Manager 'CharSet'.
 ") ReadFormat;
 		static void ReadFormat();
 
@@ -835,7 +859,7 @@ None
 
 Description
 -----------
-Defines the current conversion format as typecode. this conversion format will then be used by the functions convertformattounicode and convertunicodetoformat to convert the strings.
+Defines the current conversion format as typecode. This conversion format will then be used by the functions ConvertFormatToUnicode and ConvertUnicodeToFormat to convert the strings.
 ") SetFormat;
 		static void SetFormat(const Resource_FormatType typecode);
 

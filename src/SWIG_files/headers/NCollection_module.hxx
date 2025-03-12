@@ -57,9 +57,11 @@ along with pythonOCC.  If not, see <http://www.gnu.org/licenses/>.
 #include<NCollection_ListNode.hxx>
 #include<NCollection_LocalArray.hxx>
 #include<NCollection_Map.hxx>
+#include<NCollection_MapAlgo.hxx>
 #include<NCollection_Mat3.hxx>
 #include<NCollection_Mat4.hxx>
 #include<NCollection_OccAllocator.hxx>
+#include<NCollection_Primes.hxx>
 #include<NCollection_Sequence.hxx>
 #include<NCollection_Shared.hxx>
 #include<NCollection_SparseArray.hxx>

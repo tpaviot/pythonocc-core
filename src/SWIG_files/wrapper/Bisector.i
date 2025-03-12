@@ -150,7 +150,7 @@ opencascade::handle<Geom2d_TrimmedCurve>
 
 Description
 -----------
-Returns the curve of <self>.
+Returns the Curve of <self>.
 ") ChangeValue;
 		const opencascade::handle<Geom2d_TrimmedCurve> & ChangeValue();
 
@@ -176,7 +176,7 @@ None
 
 Description
 -----------
-Performs the bisecting line between the curves <cu1> and <cu2>. <oncurve> is true if the point <p> is common to <cu1> and <cu2>.
+Performs the bisecting line between the curves <Cu1> and <Cu2>. <oncurve> is True if the point <P> is common to <Cu1> and <Cu2>.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const GeomAbs_JoinType ajointype, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
 
@@ -201,7 +201,7 @@ None
 
 Description
 -----------
-Performs the bisecting line between the curve <cu1> and the point <pnt>. <oncurve> is true if the point <p> is the point <pnt>.
+Performs the bisecting line between the curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Curve> & Cu, const opencascade::handle<Geom2d_Point> & Pnt, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
 
@@ -226,7 +226,7 @@ None
 
 Description
 -----------
-Performs the bisecting line between the curve <cu> and the point <pnt>. <oncurve> is true if the point <p> is the point <pnt>.
+Performs the bisecting line between the curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Point> & Pnt, const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
 
@@ -251,7 +251,7 @@ None
 
 Description
 -----------
-Performs the bisecting line between the two points <pnt1> and <pnt2>.
+Performs the bisecting line between the two points <Pnt1> and <Pnt2>.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Point> & Pnt1, const opencascade::handle<Geom2d_Point> & Pnt2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance = 0.0, const Standard_Boolean oncurve = Standard_True);
 
@@ -264,7 +264,7 @@ opencascade::handle<Geom2d_TrimmedCurve>
 
 Description
 -----------
-Returns the curve of <self>.
+Returns the Curve of <self>.
 ") Value;
 		const opencascade::handle<Geom2d_TrimmedCurve> & Value();
 
@@ -354,7 +354,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <c1>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
 ") NbIntervals;
 		virtual Standard_Integer NbIntervals();
 
@@ -444,7 +444,7 @@ F: float
 
 Description
 -----------
-Computes the values of the functions for the variable <x>.
+Computes the values of the Functions for the variable <X>.
 ") Value;
 		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -463,7 +463,7 @@ D: float
 
 Description
 -----------
-Returns the values of the functions and the derivatives for the variable <x>.
+Returns the values of the functions and the derivatives for the variable <X>.
 ") Values;
 		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -566,7 +566,7 @@ F: float
 
 Description
 -----------
-Computes the values of the functions for the variable <x>.
+Computes the values of the Functions for the variable <X>.
 ") Value;
 		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -585,7 +585,7 @@ D: float
 
 Description
 -----------
-Returns the values of the functions and the derivatives for the variable <x>.
+Returns the values of the functions and the derivatives for the variable <X>.
 ") Values;
 		Standard_Boolean Values(const Standard_Real X, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -636,7 +636,7 @@ None
 
 Description
 -----------
-Intersection between 2 curves. c1 separates the element a and b. c2 separates the elements c et d. if b an c have the same geometry. <comunelement> has to be true. it permits an optimiztion of the computation.
+Intersection between 2 curves. C1 separates the element A and B. C2 separates the elements C et D. If B an C have the same geometry. <ComunElement> Has to be True. It Permits an optimization of the computation.
 ") Bisector_Inter;
 		 Bisector_Inter(const Bisector_Bisec & C1, const IntRes2d_Domain & D1, const Bisector_Bisec & C2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean ComunElement);
 
@@ -660,7 +660,7 @@ None
 
 Description
 -----------
-Intersection between 2 curves. c1 separates the element a and b. c2 separates the elements c et d. if b an c have the same geometry. <comunelement> has to be true. it permits an optimiztion of the computation.
+Intersection between 2 curves. C1 separates the element A and B. C2 separates the elements C et D. If B an C have the same geometry. <ComunElement> Has to be True. It Permits an optimization of the computation.
 ") Perform;
 		void Perform(const Bisector_Bisec & C1, const IntRes2d_Domain & D1, const Bisector_Bisec & C2, const IntRes2d_Domain & D2, const Standard_Real TolConf, const Standard_Real Tol, const Standard_Boolean ComunElement);
 
@@ -1330,7 +1330,7 @@ bool
 
 Description
 -----------
-Returns the order of continuity of the curve. raised if n < 0.
+Returns the order of continuity of the curve. Raised if N < 0.
 ") IsCN;
 		Standard_Boolean IsCN(const Standard_Integer N);
 
@@ -1408,7 +1408,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <c1>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
 ") NbIntervals;
 		Standard_Integer NbIntervals();
 
@@ -1478,7 +1478,7 @@ None
 
 Description
 -----------
-Performs the bisecting line between the curves <cu1> and <cu2>. <oncurve> is true if the point <p> is common to <cu1> and <cu2>.
+Performs the bisecting line between the curves <Cu1> and <Cu2>. <oncurve> is True if the point <P> is common to <Cu1> and <Cu2>.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const GeomAbs_JoinType jointype, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
 
@@ -1503,7 +1503,7 @@ None
 
 Description
 -----------
-Performs the bisecting line between the curve <cu1> and the point <pnt>. <oncurve> is true if the point <p> is the point <pnt>.
+Performs the bisecting line between the curve <Cu1> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Curve> & Cu, const opencascade::handle<Geom2d_Point> & Pnt, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
 
@@ -1528,7 +1528,7 @@ None
 
 Description
 -----------
-Performs the bisecting line between the curve <cu> and the point <pnt>. <oncurve> is true if the point <p> is the point <pnt>.
+Performs the bisecting line between the curve <Cu> and the point <Pnt>. <oncurve> is True if the point <P> is the point <Pnt>.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Point> & Pnt, const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance, const Standard_Boolean oncurve = Standard_True);
 
@@ -1553,7 +1553,7 @@ None
 
 Description
 -----------
-Performs the bisecting line between the two points <pnt1> and <pnt2>.
+Performs the bisecting line between the two points <Pnt1> and <Pnt2>.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Point> & Pnt1, const opencascade::handle<Geom2d_Point> & Pnt2, const gp_Pnt2d & P, const gp_Vec2d & V1, const gp_Vec2d & V2, const Standard_Real Sense, const Standard_Real Tolerance = 0.0, const Standard_Boolean oncurve = Standard_True);
 
@@ -1602,7 +1602,7 @@ None
 
 Description
 -----------
-Trim <self> by a domain defined by the curve <cu>. this domain is the set of the points which are nearest from <cu> than the extremitis of <cu>.
+Trim <self> by a domain defined by the curve <Cu>. This domain is the set of the points which are nearest from <Cu> than the extremitis of <Cu>.
 ") SetTrim;
 		void SetTrim(const opencascade::handle<Geom2d_Curve> & Cu);
 
@@ -1691,7 +1691,7 @@ None
 
 Description
 -----------
-Constructs the bisector between the curves <cu1> and <cu2>. //! <side1> (resp <side2>) = 1 if the bisector curve is on the left of <cu1> (resp <cu2>) else <side1> (resp <side2>) = -1. //! the bisector is trimmed by the point <origin>. <distmax> is used to trim the bisector.the distance between the points of the bisector and <cu> is smaller than <distmax>.
+Constructs the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1. //! the Bisector is trimmed by the Point <Origin>. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 ") Bisector_BisecCC;
 		 Bisector_BisecCC(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const Standard_Real Side1, const Standard_Real Side2, const gp_Pnt2d & Origin, const Standard_Real DistMax = 500);
 
@@ -1704,7 +1704,7 @@ opencascade::handle<Bisector_BisecCC>
 
 Description
 -----------
-The parameter on <self> is linked to the parameter on the first curve. this method creates the same bisector where the curves are inversed.
+The parameter on <self> is linked to the parameter on the first curve. This method creates the same bisector where the curves are inversed.
 ") ChangeGuide;
 		opencascade::handle<Bisector_BisecCC> ChangeGuide();
 
@@ -1948,7 +1948,7 @@ bool
 
 Description
 -----------
-Returns the order of continuity of the curve. raised if n < 0.
+Returns the order of continuity of the curve. Raised if N < 0.
 ") IsCN;
 		Standard_Boolean IsCN(const Standard_Integer N);
 
@@ -2044,7 +2044,7 @@ float
 
 Description
 -----------
-Returns the parameter on the curve1 of the projection of the point of parameter u on <self>.
+Returns the parameter on the curve1 of the projection of the point of parameter U on <self>.
 ") LinkBisCurve;
 		Standard_Real LinkBisCurve(const Standard_Real U);
 
@@ -2062,7 +2062,7 @@ float
 
 Description
 -----------
-Returns the reciproque of linkbiscurve.
+Returns the reciproque of LinkBisCurve.
 ") LinkCurveBis;
 		Standard_Real LinkCurveBis(const Standard_Real U);
 
@@ -2075,7 +2075,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <c1>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
 ") NbIntervals;
 		Standard_Integer NbIntervals();
 
@@ -2116,7 +2116,7 @@ None
 
 Description
 -----------
-Computes the bisector between the curves <cu1> and <cu2>. //! <side1> (resp <side2>) = 1 if the bisector curve is on the left of <cu1> (resp <cu2>) else <side1> (resp <side2>) = -1. //! the bisector is trimmed by the point <origin>. //! <distmax> is used to trim the bisector.the distance between the points of the bisector and <cu> is smaller than <distmax>.
+Computes the bisector between the curves <Cu1> and <Cu2>. //! <Side1> (resp <Side2>) = 1 if the bisector curve is on the left of <Cu1> (resp <Cu2>) else <Side1> (resp <Side2>) = -1. //! the Bisector is trimmed by the Point <Origin>. //! <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Curve> & Cu1, const opencascade::handle<Geom2d_Curve> & Cu2, const Standard_Real Side1, const Standard_Real Side2, const gp_Pnt2d & Origin, const Standard_Real DistMax = 500);
 
@@ -2178,7 +2178,7 @@ None
 
 Description
 -----------
-Transformation of a geometric object. this tansformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations.
+Transformation of a geometric object. This transformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations.
 ") Transform;
 		void Transform(const gp_Trsf2d & T);
 
@@ -2198,7 +2198,7 @@ Distance: float
 
 Description
 -----------
-Returns the point of parameter u. computes the distance between the current point and the two curves i separate. computes the parameters on each curve corresponding of the projection of the current point.
+Returns the point of parameter U. Computes the distance between the current point and the two curves I separate. Computes the parameters on each curve corresponding of the projection of the current point.
 ") ValueAndDist;
 		gp_Pnt2d ValueAndDist(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2218,7 +2218,7 @@ Distance: float
 
 Description
 -----------
-Returns the point of parameter u. computes the distance between the current point and the two curves i separate. computes the parameters on each curve corresponding of the projection of the current point.
+Returns the point of parameter U. Computes the distance between the current point and the two curves I separate. Computes the parameters on each curve corresponding of the projection of the current point.
 ") ValueByInt;
 		gp_Pnt2d ValueByInt(const Standard_Real U, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2268,7 +2268,7 @@ None
 
 Description
 -----------
-Constructs the bisector between the point <p> and the curve <cu>. <side> = 1. if the bisector curve is on the left of <cu> else <side> = -1. <distmax> is used to trim the bisector.the distance between the points of the bisector and <cu> is smaller than <distmax>.
+Constructs the bisector between the point <P> and the curve <Cu>. <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 ") Bisector_BisecPC;
 		 Bisector_BisecPC(const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const Standard_Real Side, const Standard_Real DistMax = 500);
 
@@ -2290,7 +2290,7 @@ None
 
 Description
 -----------
-Constructs the bisector between the point <p> and the curve <cu> trimmed by <umin> and <umax> <side> = 1. if the bisector curve is on the left of <cu> else <side> = -1. warning: the bisector is supposed all over defined between <umin> and <umax>.
+Constructs the bisector between the point <P> and the curve <Cu> Trimmed by <UMin> and <UMax> <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. Warning: the bisector is supposed all over defined between <UMin> and <UMax>.
 ") Bisector_BisecPC;
 		 Bisector_BisecPC(const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const Standard_Real Side, const Standard_Real UMin, const Standard_Real UMax);
 
@@ -2435,7 +2435,7 @@ float
 
 Description
 -----------
-Returns the distance between the point of parameter u on <self> and my point or my curve.
+Returns the distance between the point of parameter U on <self> and my point or my curve.
 ") Distance;
 		Standard_Real Distance(const Standard_Real U);
 
@@ -2534,7 +2534,7 @@ bool
 
 Description
 -----------
-Returns the order of continuity of the curve. raised if n < 0.
+Returns the order of continuity of the curve. Raised if N < 0.
 ") IsCN;
 		Standard_Boolean IsCN(const Standard_Integer N);
 
@@ -2560,7 +2560,7 @@ bool
 
 Description
 -----------
-Returns <true> if the bisector is empty.
+Returns <True> if the bisector is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -2573,7 +2573,7 @@ bool
 
 Description
 -----------
-Returns true if the bisector is extended at end.
+Returns True if the bisector is extended at end.
 ") IsExtendAtEnd;
 		Standard_Boolean IsExtendAtEnd();
 
@@ -2586,7 +2586,7 @@ bool
 
 Description
 -----------
-Returns true if the bisector is extended at start.
+Returns True if the bisector is extended at start.
 ") IsExtendAtStart;
 		Standard_Boolean IsExtendAtStart();
 
@@ -2630,7 +2630,7 @@ float
 
 Description
 -----------
-Returns the parameter on the curve1 of the projection of the point of parameter u on <self>.
+Returns the parameter on the curve1 of the projection of the point of parameter U on <self>.
 ") LinkBisCurve;
 		Standard_Real LinkBisCurve(const Standard_Real U);
 
@@ -2648,7 +2648,7 @@ float
 
 Description
 -----------
-Returns the reciproque of linkbiscurve.
+Returns the reciproque of LinkBisCurve.
 ") LinkCurveBis;
 		Standard_Real LinkCurveBis(const Standard_Real U);
 
@@ -2661,7 +2661,7 @@ int
 
 Description
 -----------
-If necessary, breaks the curve in intervals of continuity <c1>. and returns the number of intervals.
+If necessary, breaks the curve in intervals of continuity <C1>. And returns the number of intervals.
 ") NbIntervals;
 		Standard_Integer NbIntervals();
 
@@ -2679,7 +2679,7 @@ float
 
 Description
 -----------
-Returns the parameter on <self> corresponding to <p>.
+Returns the parameter on <self> corresponding to <P>.
 ") Parameter;
 		Standard_Real Parameter(const gp_Pnt2d & P);
 
@@ -2700,7 +2700,7 @@ None
 
 Description
 -----------
-Construct the bisector between the point <p> and the curve <cu>. <side> = 1. if the bisector curve is on the left of <cu> else <side> = -1. <distmax> is used to trim the bisector.the distance between the points of the bisector and <cu> is smaller than <distmax>.
+Construct the bisector between the point <P> and the curve <Cu>. <Side> = 1. if the bisector curve is on the Left of <Cu> else <Side> = -1. <DistMax> is used to trim the bisector.The distance between the points of the bisector and <Cu> is smaller than <DistMax>.
 ") Perform;
 		void Perform(const opencascade::handle<Geom2d_Curve> & Cu, const gp_Pnt2d & P, const Standard_Real Side, const Standard_Real DistMax = 500);
 
@@ -2713,7 +2713,7 @@ None
 
 Description
 -----------
-Changes the direction of parametrization of <self>. the orientation of the curve is modified. if the curve is bounded the startpoint of the initial curve becomes the endpoint of the reversed curve and the endpoint of the initial curve becomes the startpoint of the reversed curve.
+Changes the direction of parametrization of <self>. The orientation of the curve is modified. If the curve is bounded the StartPoint of the initial curve becomes the EndPoint of the reversed curve and the EndPoint of the initial curve becomes the StartPoint of the reversed curve.
 ") Reverse;
 		void Reverse();
 
@@ -2731,7 +2731,7 @@ float
 
 Description
 -----------
-Returns the parameter on the reversed curve for the point of parameter u on <self>.
+Returns the parameter on the reversed curve for the point of parameter U on <self>.
 ") ReversedParameter;
 		Standard_Real ReversedParameter(const Standard_Real U);
 
@@ -2749,7 +2749,7 @@ None
 
 Description
 -----------
-Transformation of a geometric object. this tansformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations.
+Transformation of a geometric object. This transformation can be a translation, a rotation, a symmetry, a scaling or a complex transformation obtained by combination of the previous elementaries transformations.
 ") Transform;
 		void Transform(const gp_Trsf2d & T);
 

@@ -1217,7 +1217,7 @@ None
 
 Description
 -----------
-Creates a window background. default color: noc_matragray.
+Creates a window background. Default color: NOC_MATRAGRAY.
 ") Aspect_Background;
 		 Aspect_Background();
 
@@ -1235,7 +1235,7 @@ None
 
 Description
 -----------
-Creates a window background with the colour <acolor>.
+Creates a window background with the colour <AColor>.
 ") Aspect_Background;
 		 Aspect_Background(const Quantity_Color & AColor);
 
@@ -1314,7 +1314,7 @@ Aspect_FBConfig
 
 Description
 -----------
-Return native window fb config (glxfbconfig on xlib).
+Return: native Window FB config (GLXFBConfig on Xlib).
 ") GetDefaultFBConfig;
 		Aspect_FBConfig GetDefaultFBConfig();
 
@@ -1327,7 +1327,7 @@ Aspect_XVisualInfo *
 
 Description
 -----------
-Return default window visual or null when undefined.
+Return default window visual or NULL when undefined.
 ") GetDefaultVisualInfo;
 		Aspect_XVisualInfo * GetDefaultVisualInfo();
 
@@ -1340,7 +1340,7 @@ Aspect_XDisplay *
 
 Description
 -----------
-Return pointer to display structure that serves as the connection to the x server.
+Return: pointer to Display structure that serves as the connection to the X server.
 ") GetDisplayAspect;
 		Aspect_XDisplay * GetDisplayAspect();
 
@@ -1404,7 +1404,7 @@ None
 
 Description
 -----------
-Creates an available set of identifiers with the lower bound 0 and the upper bound int_max / 2.
+Creates an available set of identifiers with the lower bound 0 and the upper bound INT_MAX / 2.
 ") Aspect_GenId;
 		 Aspect_GenId();
 
@@ -1423,7 +1423,7 @@ None
 
 Description
 -----------
-Creates an available set of identifiers with specified range. raises identdefinitionerror if theupper is less than thelow.
+Creates an available set of identifiers with specified range. Raises IdentDefinitionError if theUpper is less than theLow.
 ") Aspect_GenId;
 		 Aspect_GenId(const Standard_Integer theLow, const Standard_Integer theUpper);
 
@@ -1488,7 +1488,7 @@ None
 
 Description
 -----------
-Free specified identifier. warning - method has no protection against double-freeing!.
+Free specified identifier. Warning - method has no protection against double-freeing!.
 ") Free;
 		void Free(const Standard_Integer theId);
 
@@ -1527,7 +1527,7 @@ int
 
 Description
 -----------
-Returns the next available identifier. warning: raises identdefinitionerror if all identifiers are busy.
+Returns the next available identifier. Warning: Raises IdentDefinitionError if all identifiers are busy.
 ") Next;
 		Standard_Integer Next();
 
@@ -1544,7 +1544,8 @@ theId: int
 
 Description
 -----------
-Generates the next available identifier. @param theid [out] generated identifier return false if all identifiers are busy.
+Generates the next available identifier. @param[out] theId generated identifier 
+Return: False if all identifiers are busy.
 ") Next;
 		Standard_Boolean Next(Standard_Integer &OutValue);
 
@@ -1585,7 +1586,7 @@ None
 
 Description
 -----------
-Activates the grid. the hit method will return gridx and gridx computed according to the steps of the grid.
+activates the grid. The Hit method will return gridx and gridx computed according to the steps of the grid.
 ") Activate;
 		void Activate();
 
@@ -1624,7 +1625,7 @@ gridY: float
 
 Description
 -----------
-Returns the point of the grid the closest to the point x,y.
+returns the point of the grid the closest to the point X,Y.
 ") Compute;
 		virtual void Compute(const Standard_Real X, const Standard_Real Y, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1637,7 +1638,7 @@ None
 
 Description
 -----------
-Deactivates the grid. the hit method will return gridx and gridx as the enter value x & y.
+deactivates the grid. The hit method will return gridx and gridx as the enter value X & Y.
 ") Deactivate;
 		void Deactivate();
 
@@ -1717,7 +1718,7 @@ gridY: float
 
 Description
 -----------
-Returns the point of the grid the closest to the point x,y if the grid is active. if the grid is not active returns x,y.
+returns the point of the grid the closest to the point X,Y if the grid is active. If the grid is not active returns X,Y.
 ") Hit;
 		void Hit(const Standard_Real X, const Standard_Real Y, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1743,7 +1744,7 @@ bool
 
 Description
 -----------
-Returns true when the grid is active.
+Returns True when the grid is active.
 ") IsActive;
 		Standard_Boolean IsActive();
 
@@ -1756,7 +1757,7 @@ bool
 
 Description
 -----------
-Returns true when the grid is displayed at screen.
+Returns True when the grid is displayed at screen.
 ") IsDisplayed;
 		virtual Standard_Boolean IsDisplayed();
 
@@ -1787,7 +1788,7 @@ float
 
 Description
 -----------
-Returns the x angle of the grid.
+returns the x Angle of the grid.
 ") RotationAngle;
 		Standard_Real RotationAngle();
 
@@ -1842,7 +1843,7 @@ None
 
 Description
 -----------
-Defines the orientation of the grid.
+defines the orientation of the grid.
 ") SetRotationAngle;
 		void SetRotationAngle(const Standard_Real anAngle);
 
@@ -1860,7 +1861,7 @@ None
 
 Description
 -----------
-Defines the x origin of the grid.
+defines the x Origin of the grid.
 ") SetXOrigin;
 		void SetXOrigin(const Standard_Real anOrigin);
 
@@ -1878,7 +1879,7 @@ None
 
 Description
 -----------
-Defines the y origin of the grid.
+defines the y Origin of the grid.
 ") SetYOrigin;
 		void SetYOrigin(const Standard_Real anOrigin);
 
@@ -1910,7 +1911,7 @@ float
 
 Description
 -----------
-Returns the x origin of the grid.
+returns the x Origin of the grid.
 ") XOrigin;
 		Standard_Real XOrigin();
 
@@ -1923,7 +1924,7 @@ float
 
 Description
 -----------
-Returns the x origin of the grid.
+returns the x Origin of the grid.
 ") YOrigin;
 		Standard_Real YOrigin();
 
@@ -1943,8 +1944,6 @@ Returns the x origin of the grid.
 ***************************/
 class Aspect_ScrollDelta {
 	public:
-		float Delta;
-		Aspect_VKeyFlags Flags;
 		/****** Aspect_ScrollDelta::Aspect_ScrollDelta ******/
 		/****** md5 signature: 0d3fcbaf34563dcd0f20bf50c1b22bc1 ******/
 		%feature("compactdefaultargs") Aspect_ScrollDelta;
@@ -2046,7 +2045,7 @@ None
 
 Description
 -----------
-Creates a window skydome background. by default skydome is initialized with sun at its zenith (0.0, 1.0, 0.0), average clody (0.2), zero time parameter, zero fogginess, 512x512 texture size.
+Creates a window skydome background. By default skydome is initialized with sun at its zenith (0.0, 1.0, 0.0), average clody (0.2), zero time parameter, zero fogginess, 512x512 texture size.
 ") Aspect_SkydomeBackground;
 		 Aspect_SkydomeBackground();
 
@@ -2068,7 +2067,12 @@ None
 
 Description
 -----------
-Creates a window skydome background with given parameters. @param[in] thesundirection direction to the sun (moon). sun direction with negative y component  represents moon with (-x, -y, -z) direction. @param[in] thecloudiness cloud intensity, 0.0 means no clouds at all and 1.0 - high clody. @param[in] thetime time parameter of simulation. might be tweaked to slightly change appearance. @param[in] thefogginess fog intensity, 0.0 means no fog and 1.0 - high fogginess @param[in] thesize size of cubemap side in pixels.
+Creates a window skydome background with given parameters. 
+Input parameter: theSunDirection direction to the sun (moon). Sun direction with negative Y component  represents moon with (-X, -Y, -Z) direction. 
+Input parameter: theCloudiness cloud intensity, 0.0 means no clouds at all and 1.0 - high clody. 
+Input parameter: theTime time parameter of simulation. Might be tweaked to slightly change appearance. 
+Input parameter: theFogginess fog intensity, 0.0 means no fog and 1.0 - high fogginess 
+Input parameter: theSize size of cubemap side in pixels.
 ") Aspect_SkydomeBackground;
 		 Aspect_SkydomeBackground(const gp_Dir & theSunDirection, Standard_ShortReal theCloudiness, Standard_ShortReal theTime, Standard_ShortReal theFogginess, Standard_Integer theSize);
 
@@ -2081,7 +2085,7 @@ float
 
 Description
 -----------
-Get cloud intensity. by default this value is 0.2 0.0 means no clouds at all and 1.0 - high clody.
+Get cloud intensity. By default this value is 0.2 0.0 means no clouds at all and 1.0 - high clody.
 ") Cloudiness;
 		Standard_ShortReal Cloudiness();
 
@@ -2115,7 +2119,7 @@ float
 
 Description
 -----------
-Get fog intensity. by default this value is 0.0 0.0 means no fog and 1.0 - high fogginess.
+Get fog intensity. By default this value is 0.0 0.0 means no fog and 1.0 - high fogginess.
 ") Fogginess;
 		Standard_ShortReal Fogginess();
 
@@ -2133,7 +2137,7 @@ None
 
 Description
 -----------
-Set cloud intensity. by default this value is 0.2 0.0 means no clouds at all and 1.0 - high clody.
+Set cloud intensity. By default this value is 0.2 0.0 means no clouds at all and 1.0 - high clody.
 ") SetCloudiness;
 		void SetCloudiness(Standard_ShortReal theCloudiness);
 
@@ -2151,7 +2155,7 @@ None
 
 Description
 -----------
-Set fog intensity. by default this value is 0.0 0.0 means no fog and 1.0 - high fogginess.
+Set fog intensity. By default this value is 0.0 0.0 means no fog and 1.0 - high fogginess.
 ") SetFogginess;
 		void SetFogginess(Standard_ShortReal theFogginess);
 
@@ -2169,7 +2173,7 @@ None
 
 Description
 -----------
-Set size of cubemap. by default this value is 512.
+Set size of cubemap. By default this value is 512.
 ") SetSize;
 		void SetSize(Standard_Integer theSize);
 
@@ -2187,7 +2191,7 @@ None
 
 Description
 -----------
-Set sun direction. by default this value is (0, 1, 0) sun direction with negative y component represents moon with (-x, -y, -z) direction.
+Set sun direction. By default this value is (0, 1, 0) Sun direction with negative Y component represents moon with (-X, -Y, -Z) direction.
 ") SetSunDirection;
 		void SetSunDirection(const gp_Dir & theSunDirection);
 
@@ -2205,7 +2209,7 @@ None
 
 Description
 -----------
-Set time of cloud simulation. by default this value is 0.0 this value might be tweaked to slightly change appearance of clouds.
+Set time of cloud simulation. By default this value is 0.0 This value might be tweaked to slightly change appearance of clouds.
 ") SetTimeParameter;
 		void SetTimeParameter(Standard_ShortReal theTime);
 
@@ -2218,7 +2222,7 @@ int
 
 Description
 -----------
-Get size of cubemap. by default this value is 512.
+Get size of cubemap. By default this value is 512.
 ") Size;
 		Standard_Integer Size();
 
@@ -2231,7 +2235,7 @@ gp_Dir
 
 Description
 -----------
-Get sun direction. by default this value is (0, 1, 0) sun direction with negative y component represents moon with (-x, -y, -z) direction.
+Get sun direction. By default this value is (0, 1, 0) Sun direction with negative Y component represents moon with (-X, -Y, -Z) direction.
 ") SunDirection;
 		const gp_Dir SunDirection();
 
@@ -2244,7 +2248,7 @@ float
 
 Description
 -----------
-Get time of cloud simulation. by default this value is 0.0 this value might be tweaked to slightly change appearance of clouds.
+Get time of cloud simulation. By default this value is 0.0 This value might be tweaked to slightly change appearance of clouds.
 ") TimeParameter;
 		Standard_ShortReal TimeParameter();
 
@@ -2262,7 +2266,6 @@ Get time of cloud simulation. by default this value is 0.0 this value might be t
 *********************/
 class Aspect_Touch {
 	public:
-		bool IsPreciseDevice;
 		/****** Aspect_Touch::Aspect_Touch ******/
 		/****** md5 signature: a51d1277d944673675b62a1916b1d065 ******/
 		%feature("compactdefaultargs") Aspect_Touch;
@@ -2342,11 +2345,6 @@ Return values delta.
 *********************************/
 class Aspect_TrackedDevicePose {
 	public:
-		gp_Trsf Orientation;
-		gp_Vec Velocity;
-		gp_Vec AngularVelocity;
-		bool IsValidPose;
-		bool IsConnectedDevice;
 		/****** Aspect_TrackedDevicePose::Aspect_TrackedDevicePose ******/
 		/****** md5 signature: 02737e00df27ee4bc5574676177782f9 ******/
 		%feature("compactdefaultargs") Aspect_TrackedDevicePose;
@@ -2421,7 +2419,11 @@ theDuration: double
 
 Description
 -----------
-Return duration of the button in pressed state. @param thekey key to check @param thetime current time (for computing duration from key down time) @param theduration key press duration return true if key was in pressed state.
+Return duration of the button in pressed state. 
+Parameter theKey key to check 
+Parameter theTime current time (for computing duration from key down time) 
+Parameter theDuration key press duration 
+Return: True if key was in pressed state.
 ") HoldDuration;
 		bool HoldDuration(Aspect_VKey theKey, double theTime, Standard_Real &OutValue);
 
@@ -2441,7 +2443,12 @@ thePressure: double
 
 Description
 -----------
-Return duration of the button in pressed state. @param thekey key to check @param thetime current time (for computing duration from key down time) @param theduration key press duration @param thepressure key pressure return true if key was in pressed state.
+Return duration of the button in pressed state. 
+Parameter theKey key to check 
+Parameter theTime current time (for computing duration from key down time) 
+Parameter theDuration key press duration 
+Parameter thePressure key pressure 
+Return: True if key was in pressed state.
 ") HoldDuration;
 		bool HoldDuration(Aspect_VKey theKey, double theTime, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2459,7 +2466,7 @@ bool
 
 Description
 -----------
-Return true if key is in free state.
+Return True if key is in Free state.
 ") IsFreeKey;
 		bool IsFreeKey(Aspect_VKey theKey);
 
@@ -2477,7 +2484,7 @@ bool
 
 Description
 -----------
-Return true if key is in pressed state.
+Return True if key is in Pressed state.
 ") IsKeyDown;
 		bool IsKeyDown(Aspect_VKey theKey);
 
@@ -2497,7 +2504,9 @@ None
 
 Description
 -----------
-Press key. @param thekey key pressed @param thetime event timestamp.
+Press key. 
+Parameter theKey key pressed 
+Parameter theTime event timestamp.
 ") KeyDown;
 		void KeyDown(Aspect_VKey theKey, double theTime, double thePressure = 1.0);
 
@@ -2537,7 +2546,9 @@ None
 
 Description
 -----------
-Release key. @param thekey key pressed @param thetime event timestamp.
+Release key. 
+Parameter theKey key pressed 
+Parameter theTime event timestamp.
 ") KeyUp;
 		void KeyUp(Aspect_VKey theKey, double theTime);
 
@@ -2563,7 +2574,7 @@ Standard_Mutex
 
 Description
 -----------
-Return mutex for thread-safe updates. all operations in class implicitly locks this mutex, so this method could be used only for batch processing of keys.
+Return mutex for thread-safe updates. All operations in class implicitly locks this mutex, so this method could be used only for batch processing of keys.
 ") Mutex;
 		Standard_Mutex & Mutex();
 
@@ -2712,7 +2723,7 @@ opencascade::handle<Aspect_DisplayConnection>
 
 Description
 -----------
-Returns connection to display or null.
+Returns connection to Display or NULL.
 ") DisplayConnection;
 		const opencascade::handle<Aspect_DisplayConnection> & DisplayConnection();
 
@@ -2725,7 +2736,7 @@ bool
 
 Description
 -----------
-Apply the mapping change to the window <self>. and returns true if the window is mapped at screen.
+Apply the mapping change to the window <self>. and returns True if the window is mapped at screen.
 ") DoMapping;
 		virtual Standard_Boolean DoMapping();
 
@@ -2790,7 +2801,7 @@ None
 
 Description
 -----------
-Invalidate entire window content. //! implementation is expected to allow calling this method from non-gui thread, e.g. by queuing exposure event into window message queue or in other thread-safe manner. //! optional display argument should be passed when called from non-gui thread on platforms implementing thread-unsafe connections to display. null can be passed instead otherwise.
+Invalidate entire window content. //! Implementation is expected to allow calling this method from non-GUI thread, e.g. by queuing exposure event into window message queue or in other thread-safe manner. //! Optional display argument should be passed when called from non-GUI thread on platforms implementing thread-unsafe connections to display. NULL can be passed instead otherwise.
 ") InvalidateContent;
 		virtual void InvalidateContent(const opencascade::handle<Aspect_DisplayConnection> & theDisp);
 
@@ -2803,7 +2814,7 @@ bool
 
 Description
 -----------
-Returns true if the window <self> is opened and false if the window is closed.
+Returns True if the window <self> is opened and False if the window is closed.
 ") IsMapped;
 		virtual Standard_Boolean IsMapped();
 
@@ -2816,7 +2827,7 @@ bool
 
 Description
 -----------
-Returns true if the window <self> is virtual.
+Returns True if the window <self> is virtual.
 ") IsVirtual;
 		Standard_Boolean IsVirtual();
 
@@ -2842,7 +2853,7 @@ Aspect_FBConfig
 
 Description
 -----------
-Returns native window fb config (glxfbconfig on xlib).
+Returns native Window FB config (GLXFBConfig on Xlib).
 ") NativeFBConfig;
 		virtual Aspect_FBConfig NativeFBConfig();
 
@@ -2862,7 +2873,7 @@ Y2: int
 
 Description
 -----------
-Returns the window position in pixel.
+Returns The Window POSITION in PIXEL.
 ") Position;
 		virtual void Position(Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -2875,7 +2886,7 @@ float
 
 Description
 -----------
-Returns the window ratio equal to the physical width/height dimensions.
+Returns The Window RATIO equal to the physical WIDTH/HEIGHT dimensions.
 ") Ratio;
 		virtual Standard_Real Ratio();
 
@@ -3003,7 +3014,7 @@ Height: int
 
 Description
 -----------
-Returns the window size in pixel.
+Returns The Window SIZE in PIXEL.
 ") Size;
 		virtual void Size(Standard_Integer &OutValue, Standard_Integer &OutValue);
 
@@ -3074,7 +3085,10 @@ None
 
 Description
 -----------
-Add touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates @param theclearbefore if true previously registered touches will be removed.
+Add touch point with the given ID. This method is expected to be called from UI thread. 
+Parameter theId touch unique identifier 
+Parameter thePnt touch coordinates 
+Parameter theClearBefore if True previously registered touches will be removed.
 ") AddTouchPoint;
 		virtual void AddTouchPoint(Standard_Size theId, const Graphic3d_Vec2d & thePnt, Standard_Boolean theClearBefore = false);
 
@@ -3087,7 +3101,7 @@ NCollection_Vec3<bool>
 
 Description
 -----------
-Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
+Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (False, False, False) by default.
 ") Change3dMouseIsNoRotate;
 		NCollection_Vec3<bool> & Change3dMouseIsNoRotate();
 
@@ -3100,7 +3114,7 @@ NCollection_Vec3<bool>
 
 Description
 -----------
-Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
+Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (True, False, False) by default.
 ") Change3dMouseToReverse;
 		NCollection_Vec3<bool> & Change3dMouseToReverse();
 
@@ -3139,7 +3153,7 @@ NCollection_Vec3<bool>
 
 Description
 -----------
-Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (false, false, false) by default.
+Return 3d mouse rotation axes (tilt/roll/spin) ignore flag; (False, False, False) by default.
 ") Get3dMouseIsNoRotate;
 		const NCollection_Vec3<bool> & Get3dMouseIsNoRotate();
 
@@ -3165,7 +3179,7 @@ NCollection_Vec3<bool>
 
 Description
 -----------
-Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (true, false, false) by default.
+Return 3d mouse rotation axes (tilt/roll/spin) reverse flag; (True, False, False) by default.
 ") Get3dMouseToReverse;
 		const NCollection_Vec3<bool> & Get3dMouseToReverse();
 
@@ -3191,7 +3205,7 @@ bool
 
 Description
 -----------
-Return true if touches map is not empty.
+Return True if touches map is not empty.
 ") HasTouchPoints;
 		bool HasTouchPoints();
 
@@ -3211,7 +3225,9 @@ None
 
 Description
 -----------
-Press key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
+Press key. Default implementation updates internal cache. 
+Parameter theKey key pressed 
+Parameter theTime event timestamp.
 ") KeyDown;
 		virtual void KeyDown(Aspect_VKey theKey, double theTime, double thePressure = 1.0);
 
@@ -3232,7 +3248,7 @@ None
 
 Description
 -----------
-Simulate key up/down events from axis value. default implementation updates internal cache.
+Simulate key up/down events from axis value. Default implementation updates internal cache.
 ") KeyFromAxis;
 		virtual void KeyFromAxis(Aspect_VKey theNegative, Aspect_VKey thePositive, double theTime, double thePressure);
 
@@ -3251,7 +3267,9 @@ None
 
 Description
 -----------
-Release key. default implementation updates internal cache. @param thekey key pressed @param thetime event timestamp.
+Release key. Default implementation updates internal cache. 
+Parameter theKey key pressed 
+Parameter theTime event timestamp.
 ") KeyUp;
 		virtual void KeyUp(Aspect_VKey theKey, double theTime);
 
@@ -3311,7 +3329,12 @@ bool
 
 Description
 -----------
-Handle mouse button press event. this method is expected to be called from ui thread. default implementation redirects to updatemouseposition(). @param thepoint mouse cursor position @param thebutton pressed button @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen return true if window content should be redrawn.
+Handle mouse button press event. This method is expected to be called from UI thread. Default implementation redirects to UpdateMousePosition(). 
+Parameter thePoint mouse cursor position 
+Parameter theButton pressed button 
+Parameter theModifiers key modifiers 
+Parameter theIsEmulated if True then mouse event comes NOT from real mouse  but emulated from non-precise input like touch on screen 
+Return: True if window content should be redrawn.
 ") PressMouseButton;
 		bool PressMouseButton(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
@@ -3420,7 +3443,12 @@ bool
 
 Description
 -----------
-Handle mouse button release event. this method is expected to be called from ui thread. default implementation redirects to updatemouseposition(). @param thepoint mouse cursor position @param thebutton released button @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen return true if window content should be redrawn.
+Handle mouse button release event. This method is expected to be called from UI thread. Default implementation redirects to UpdateMousePosition(). 
+Parameter thePoint mouse cursor position 
+Parameter theButton released button 
+Parameter theModifiers key modifiers 
+Parameter theIsEmulated if True then mouse event comes NOT from real mouse  but emulated from non-precise input like touch on screen 
+Return: True if window content should be redrawn.
 ") ReleaseMouseButton;
 		bool ReleaseMouseButton(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButton, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
@@ -3439,7 +3467,10 @@ bool
 
 Description
 -----------
-Remove touch point with the given id. this method is expected to be called from ui thread. @param theid touch unique identifier @param theclearselectpnts if true will initiate clearing of selection points return true if point has been removed.
+Remove touch point with the given ID. This method is expected to be called from UI thread. 
+Parameter theId touch unique identifier 
+Parameter theClearSelectPnts if True will initiate clearing of selection points 
+Return: True if point has been removed.
 ") RemoveTouchPoint;
 		virtual bool RemoveTouchPoint(Standard_Size theId, Standard_Boolean theClearSelectPnts = false);
 
@@ -3506,7 +3537,7 @@ bool
 
 Description
 -----------
-Return quadric acceleration flag; true by default.
+Return quadric acceleration flag; True by default.
 ") To3dMousePreciseInput;
 		bool To3dMousePreciseInput();
 
@@ -3558,7 +3589,12 @@ bool
 
 Description
 -----------
-Handle mouse button press/release event. this method is expected to be called from ui thread. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen return true if window content should be redrawn.
+Handle mouse button press/release event. This method is expected to be called from UI thread. 
+Parameter thePoint mouse cursor position 
+Parameter theButtons pressed buttons 
+Parameter theModifiers key modifiers 
+Parameter theIsEmulated if True then mouse event comes NOT from real mouse  but emulated from non-precise input like touch on screen 
+Return: True if window content should be redrawn.
 ") UpdateMouseButtons;
 		virtual bool UpdateMouseButtons(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButtons, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
@@ -3579,7 +3615,12 @@ bool
 
 Description
 -----------
-Handle mouse cursor movement event. this method is expected to be called from ui thread. default implementation does nothing. @param thepoint mouse cursor position @param thebuttons pressed buttons @param themodifiers key modifiers @param theisemulated if true then mouse event comes not from real mouse  but emulated from non-precise input like touch on screen return true if window content should be redrawn.
+Handle mouse cursor movement event. This method is expected to be called from UI thread. Default implementation does nothing. 
+Parameter thePoint mouse cursor position 
+Parameter theButtons pressed buttons 
+Parameter theModifiers key modifiers 
+Parameter theIsEmulated if True then mouse event comes NOT from real mouse  but emulated from non-precise input like touch on screen 
+Return: True if window content should be redrawn.
 ") UpdateMousePosition;
 		virtual bool UpdateMousePosition(const Graphic3d_Vec2i & thePoint, Aspect_VKeyMouse theButtons, Aspect_VKeyFlags theModifiers, bool theIsEmulated);
 
@@ -3597,7 +3638,9 @@ bool
 
 Description
 -----------
-Update mouse scroll event. this method is expected to be called from ui thread. @param thedelta mouse cursor position and delta return true if new event has been created or false if existing one has been updated.
+Update mouse scroll event. This method is expected to be called from UI thread. 
+Parameter theDelta mouse cursor position and delta 
+Return: True if new event has been created or False if existing one has been updated.
 ") UpdateMouseScroll;
 		virtual bool UpdateMouseScroll(const Aspect_ScrollDelta & theDelta);
 
@@ -3616,7 +3659,9 @@ None
 
 Description
 -----------
-Update touch point with the given id. if point with specified id was not registered before, it will be added. this method is expected to be called from ui thread. @param theid touch unique identifier @param thepnt touch coordinates.
+Update touch point with the given ID. If point with specified ID was not registered before, it will be added. This method is expected to be called from UI thread. 
+Parameter theId touch unique identifier 
+Parameter thePnt touch coordinates.
 ") UpdateTouchPoint;
 		virtual void UpdateTouchPoint(Standard_Size theId, const Graphic3d_Vec2d & thePnt);
 
@@ -3729,7 +3774,7 @@ bool
 
 Description
 -----------
-Return true if action is defined.
+Return True if action is defined.
 ") IsValid;
 		bool IsValid();
 
@@ -3902,11 +3947,6 @@ Set action handle.
 **********************************/
 class Aspect_XRAnalogActionData {
 	public:
-		uint64_t ActiveOrigin;
-		float UpdateTime;
-		NCollection_Vec3<float > VecXYZ;
-		NCollection_Vec3<float > DeltaXYZ;
-		bool IsActive;
 		/****** Aspect_XRAnalogActionData::Aspect_XRAnalogActionData ******/
 		/****** md5 signature: 2f2cb24f7e51cc622f48142c162305a9 ******/
 		%feature("compactdefaultargs") Aspect_XRAnalogActionData;
@@ -3929,7 +3969,7 @@ bool
 
 Description
 -----------
-Return true if delta is non-zero.
+Return True if delta is non-zero.
 ") IsChanged;
 		bool IsChanged();
 
@@ -3947,11 +3987,6 @@ Return true if delta is non-zero.
 ***********************************/
 class Aspect_XRDigitalActionData {
 	public:
-		uint64_t ActiveOrigin;
-		float UpdateTime;
-		bool IsActive;
-		bool IsPressed;
-		bool IsChanged;
 		/****** Aspect_XRDigitalActionData::Aspect_XRDigitalActionData ******/
 		/****** md5 signature: 11e9cfb288833ee07981b262b013a14e ******/
 		%feature("compactdefaultargs") Aspect_XRDigitalActionData;
@@ -3979,10 +4014,6 @@ Empty constructor.
 **********************************/
 class Aspect_XRHapticActionData {
 	public:
-		float Delay;
-		float Duration;
-		float Frequency;
-		float Amplitude;
 		/****** Aspect_XRHapticActionData::Aspect_XRHapticActionData ******/
 		/****** md5 signature: c42f3b26d235df1234aa3b319bd587d7 ******/
 		%feature("compactdefaultargs") Aspect_XRHapticActionData;
@@ -4005,7 +4036,7 @@ bool
 
 Description
 -----------
-Return true if data is not empty.
+Return True if data is not empty.
 ") IsValid;
 		bool IsValid();
 
@@ -4023,9 +4054,6 @@ Return true if data is not empty.
 ********************************/
 class Aspect_XRPoseActionData {
 	public:
-		Aspect_TrackedDevicePose Pose;
-		uint64_t ActiveOrigin;
-		bool IsActive;
 		/****** Aspect_XRPoseActionData::Aspect_XRPoseActionData ******/
 		/****** md5 signature: 37cbeeeffeaedd7d742097ec767fe262 ******/
 		%feature("compactdefaultargs") Aspect_XRPoseActionData;
@@ -4193,7 +4221,7 @@ opencascade::handle<Aspect_XRAction>
 
 Description
 -----------
-Return generic action for specific hand or null if undefined.
+Return generic action for specific hand or NULL if undefined.
 ") GenericAction;
 		const opencascade::handle<Aspect_XRAction> & GenericAction(Aspect_XRTrackedDeviceRole theDevice, Aspect_XRGenericAction theAction);
 
@@ -4211,7 +4239,8 @@ Aspect_XRAnalogActionData
 
 Description
 -----------
-Fetch data for digital input action (like axis). @param theaction [in] action of aspect_xractiontype_inputanalog type.
+Fetch data for digital input action (like axis). 
+Input parameter: theAction action of Aspect_XRActionType_InputAnalog type.
 ") GetAnalogActionData;
 		virtual Aspect_XRAnalogActionData GetAnalogActionData(const opencascade::handle<Aspect_XRAction> & theAction);
 
@@ -4229,7 +4258,8 @@ Aspect_XRDigitalActionData
 
 Description
 -----------
-Fetch data for digital input action (like button). @param theaction [in] action of aspect_xractiontype_inputdigital type.
+Fetch data for digital input action (like button). 
+Input parameter: theAction action of Aspect_XRActionType_InputDigital type.
 ") GetDigitalActionData;
 		virtual Aspect_XRDigitalActionData GetDigitalActionData(const opencascade::handle<Aspect_XRAction> & theAction);
 
@@ -4247,7 +4277,8 @@ Aspect_XRPoseActionData
 
 Description
 -----------
-Fetch data for pose input action (like fingertip position). the returned values will match the values returned by the last call to waitposes(). @param theaction [in] action of aspect_xractiontype_inputpose type.
+Fetch data for pose input action (like fingertip position). The returned values will match the values returned by the last call to WaitPoses(). 
+Input parameter: theAction action of Aspect_XRActionType_InputPose type.
 ") GetPoseActionDataForNextFrame;
 		virtual Aspect_XRPoseActionData GetPoseActionDataForNextFrame(const opencascade::handle<Aspect_XRAction> & theAction);
 
@@ -4278,7 +4309,7 @@ bool
 
 Description
 -----------
-Return false if projection frustums are unsupported and general 4x4 projection matrix should be fetched instead.
+Return False if projection frustums are unsupported and general 4x4 projection matrix should be fetched instead.
 ") HasProjectionFrustums;
 		virtual bool HasProjectionFrustums();
 
@@ -4296,7 +4327,7 @@ bool
 
 Description
 -----------
-Return true if device orientation is defined.
+Return True if device orientation is defined.
 ") HasTrackedPose;
 		bool HasTrackedPose(Standard_Integer theDevice);
 
@@ -4309,7 +4340,8 @@ gp_Trsf
 
 Description
 -----------
-Return head orientation in right-handed system: +y is up +x is to the right -z is forward distance unit is meters by default (@sa unitfactor()).
+Return head orientation in right-handed system: +y is up +x is to the right -z is forward Distance unit is meters by default (
+See also: UnitFactor()).
 ") HeadPose;
 		const gp_Trsf HeadPose();
 
@@ -4340,7 +4372,8 @@ float
 
 Description
 -----------
-Return intra-ocular distance (iod); also known as interpupillary distance (ipd). defined in meters by default (@sa unitfactor()).
+Return Intra-ocular Distance (IOD); also known as Interpupillary Distance (IPD). Defined in meters by default (
+See also: UnitFactor()).
 ") IOD;
 		Standard_Real IOD();
 
@@ -4353,7 +4386,7 @@ bool
 
 Description
 -----------
-Return true if session is opened.
+Return True if session is opened.
 ") IsOpen;
 		virtual bool IsOpen();
 
@@ -4385,7 +4418,9 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 
 Description
 -----------
-Load model for displaying device. @param thedevice [in] device index @param thetexture [out] texture source return model triangulation or null if not found.
+Load model for displaying device. 
+Input parameter: theDevice device index @param[out] theTexture texture source 
+Return: model triangulation or NULL if not found.
 ") LoadRenderModel;
 		opencascade::handle<Graphic3d_ArrayOfTriangles> LoadRenderModel(Standard_Integer theDevice, opencascade::handle<Image_Texture> & theTexture);
 
@@ -4405,7 +4440,10 @@ opencascade::handle<Graphic3d_ArrayOfTriangles>
 
 Description
 -----------
-Load model for displaying device. @param thedevice [in] device index @param thetoapplyunitfactor [in] flag to apply unit scale factor @param thetexture [out] texture source return model triangulation or null if not found.
+Load model for displaying device. 
+Input parameter: theDevice device index 
+Input parameter: theToApplyUnitFactor flag to apply unit scale factor @param[out] theTexture texture source 
+Return: model triangulation or NULL if not found.
 ") LoadRenderModel;
 		opencascade::handle<Graphic3d_ArrayOfTriangles> LoadRenderModel(Standard_Integer theDevice, Standard_Boolean theToApplyUnitFactor, opencascade::handle<Image_Texture> & theTexture);
 
@@ -4449,7 +4487,7 @@ None
 
 Description
 -----------
-Receive xr events.
+Receive XR events.
 ") ProcessEvents;
 		virtual void ProcessEvents();
 
@@ -4467,7 +4505,8 @@ Aspect_FrustumLRBT<double>
 
 Description
 -----------
-Return projection frustum. @sa hasprojectionfrustums().
+Return projection frustum. 
+See also: HasProjectionFrustums().
 ") ProjectionFrustum;
 		const Aspect_FrustumLRBT<double> & ProjectionFrustum(Aspect_Eye theEye);
 
@@ -4500,7 +4539,7 @@ NCollection_Vec2<int >
 
 Description
 -----------
-Return recommended viewport width x height for rendering into vr.
+Return recommended viewport Width x Height for rendering into VR.
 ") RecommendedViewport;
 		virtual NCollection_Vec2<int > RecommendedViewport();
 
@@ -4570,7 +4609,12 @@ bool
 
 Description
 -----------
-Submit texture eye to xr composer. @param thetexture [in] texture handle @param thegraphicslib [in] graphics library in which texture handle is defined @param thecolorspace [in] texture color space;  srgb means no color conversion by composer;  linear means to srgb color conversion by composer @param theeye [in] eye to display return false on error.
+Submit texture eye to XR Composer. 
+Input parameter: theTexture texture handle 
+Input parameter: theGraphicsLib graphics library in which texture handle is defined 
+Input parameter: theColorSpace texture color space;  sRGB means no color conversion by composer;  Linear means to sRGB color conversion by composer 
+Input parameter: theEye eye to display 
+Return: False on error.
 ") SubmitEye;
 		virtual bool SubmitEye(void * theTexture, Aspect_GraphicsLibrary theGraphicsLib, Aspect_ColorSpace theColorSpace, Aspect_Eye theEye);
 
@@ -4673,7 +4717,7 @@ None
 
 Description
 -----------
-Creates a window gradient background. default color is quantity_noc_black. default fill method is aspect_gradientfillmethod_none.
+Creates a window gradient background. Default color is Quantity_NOC_BLACK. Default fill method is Aspect_GradientFillMethod_None.
 ") Aspect_GradientBackground;
 		 Aspect_GradientBackground();
 
@@ -4827,7 +4871,7 @@ NCollection_Mat4<double >
 
 Description
 -----------
-Return transformation from eye to head. vr::geteyetoheadtransform() wrapper.
+Return transformation from eye to head. vr::GetEyeToHeadTransform() wrapper.
 ") EyeToHeadTransform;
 		virtual NCollection_Mat4<double > EyeToHeadTransform(Aspect_Eye theEye);
 
@@ -4912,7 +4956,7 @@ bool
 
 Description
 -----------
-Return true.
+Return True.
 ") HasProjectionFrustums;
 		virtual bool HasProjectionFrustums();
 
@@ -4925,7 +4969,7 @@ bool
 
 Description
 -----------
-Return true if an hmd may be presented on the system (e.g. to show vr checkbox in application gui). this is fast check, and even if it returns true, opening session may fail.
+Return True if an HMD may be presented on the system (e.g. to show VR checkbox in application GUI). This is fast check, and even if it returns True, opening session may fail.
 ") IsHmdPresent;
 		static bool IsHmdPresent();
 
@@ -4938,7 +4982,7 @@ bool
 
 Description
 -----------
-Return true if session is opened.
+Return True if session is opened.
 ") IsOpen;
 		virtual bool IsOpen();
 
@@ -4982,7 +5026,7 @@ None
 
 Description
 -----------
-Receive xr events.
+Receive XR events.
 ") ProcessEvents;
 		virtual void ProcessEvents();
 
@@ -5015,7 +5059,7 @@ NCollection_Vec2<int >
 
 Description
 -----------
-Return recommended viewport width x height for rendering into vr.
+Return recommended viewport Width x Height for rendering into VR.
 ") RecommendedViewport;
 		virtual NCollection_Vec2<int > RecommendedViewport();
 
@@ -5054,7 +5098,12 @@ bool
 
 Description
 -----------
-Submit texture eye to xr composer. @param thetexture [in] texture handle @param thegraphicslib [in] graphics library in which texture handle is defined @param thecolorspace [in] texture color space;  srgb means no color conversion by composer;  linear means to srgb color conversion by composer @param theeye [in] eye to display return false on error.
+Submit texture eye to XR Composer. 
+Input parameter: theTexture texture handle 
+Input parameter: theGraphicsLib graphics library in which texture handle is defined 
+Input parameter: theColorSpace texture color space;  sRGB means no color conversion by composer;  Linear means to sRGB color conversion by composer 
+Input parameter: theEye eye to display 
+Return: False on error.
 ") SubmitEye;
 		virtual bool SubmitEye(void * theTexture, Aspect_GraphicsLibrary theGraphicsLib, Aspect_ColorSpace theColorSpace, Aspect_Eye theEye);
 

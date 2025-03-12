@@ -150,7 +150,7 @@ None
 
 Description
 -----------
-Create empty tool.
+create empty tool.
 ") BRepExtrema_DistShapeShape;
 		 BRepExtrema_DistShapeShape();
 
@@ -172,7 +172,12 @@ None
 
 Description
 -----------
-Create tool and computation of the minimum distance (value and pair of points) using default deflection in single thread mode. default deflection value is precision::confusion(). @param shape1 - the first shape for distance computation @param shape2 - the second shape for distance computation @param f and @param a are not used in computation and are obsolete. @param therange - the progress indicator of algorithm.
+create tool and computation of the minimum distance (value and pair of points) using default deflection in single thread mode. Default deflection value is Precision::Confusion(). 
+Parameter Shape1 - the first shape for distance computation 
+Parameter Shape2 - the second shape for distance computation 
+Parameter F and 
+Parameter A are not used in computation and are obsolete. 
+Parameter theRange - the progress indicator of algorithm.
 ") BRepExtrema_DistShapeShape;
 		 BRepExtrema_DistShapeShape(const TopoDS_Shape & Shape1, const TopoDS_Shape & Shape2, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -195,7 +200,13 @@ None
 
 Description
 -----------
-Create tool and computation of the minimum distance (value and pair of points) in single thread mode. default deflection value is precision::confusion(). @param shape1 - the first shape for distance computation @param shape2 - the second shape for distance computation @param thedeflection - the presition of distance computation @param f and @param a are not used in computation and are obsolete. @param therange - the progress indicator of algorithm.
+create tool and computation of the minimum distance (value and pair of points) in single thread mode. Default deflection value is Precision::Confusion(). 
+Parameter Shape1 - the first shape for distance computation 
+Parameter Shape2 - the second shape for distance computation 
+Parameter theDeflection - the presition of distance computation 
+Parameter F and 
+Parameter A are not used in computation and are obsolete. 
+Parameter theRange - the progress indicator of algorithm.
 ") BRepExtrema_DistShapeShape;
 		 BRepExtrema_DistShapeShape(const TopoDS_Shape & Shape1, const TopoDS_Shape & Shape2, const Standard_Real theDeflection, const Extrema_ExtFlag F = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo A = Extrema_ExtAlgo_Grad, const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -251,7 +262,7 @@ bool
 
 Description
 -----------
-Returns standard_true then computation will be performed in parallel default value is standard_false.
+Returns Standard_True then computation will be performed in parallel Default value is Standard_False.
 ") IsMultiThread;
 		Standard_Boolean IsMultiThread();
 
@@ -269,7 +280,7 @@ None
 
 Description
 -----------
-Load first shape into extrema .
+load first shape into extrema .
 ") LoadS1;
 		void LoadS1(const TopoDS_Shape & Shape1);
 
@@ -287,7 +298,7 @@ None
 
 Description
 -----------
-Load second shape into extrema .
+load second shape into extrema .
 ") LoadS2;
 		void LoadS2(const TopoDS_Shape & Shape1);
 
@@ -318,7 +329,7 @@ t: float
 
 Description
 -----------
-Gives the corresponding parameter t if the nth solution is situated on an edge of the first shape .
+gives the corresponding parameter t if the Nth solution is situated on an Edge of the first shape .
 ") ParOnEdgeS1;
 		void ParOnEdgeS1(const Standard_Integer N, Standard_Real &OutValue);
 
@@ -336,7 +347,7 @@ t: float
 
 Description
 -----------
-Gives the corresponding parameter t if the nth solution is situated on an edge of the first shape .
+gives the corresponding parameter t if the Nth solution is situated on an Edge of the first shape .
 ") ParOnEdgeS2;
 		void ParOnEdgeS2(const Standard_Integer N, Standard_Real &OutValue);
 
@@ -355,7 +366,7 @@ v: float
 
 Description
 -----------
-Gives the corresponding parameters (u,v) if the nth solution is situated on an face of the first shape .
+gives the corresponding parameters (U,V) if the Nth solution is situated on an face of the first shape .
 ") ParOnFaceS1;
 		void ParOnFaceS1(const Standard_Integer N, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -374,7 +385,7 @@ v: float
 
 Description
 -----------
-Gives the corresponding parameters (u,v) if the nth solution is situated on an face of the second shape .
+gives the corresponding parameters (U,V) if the Nth solution is situated on an Face of the second shape .
 ") ParOnFaceS2;
 		void ParOnFaceS2(const Standard_Integer N, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -392,7 +403,7 @@ bool
 
 Description
 -----------
-Computation of the minimum distance (value and  couple of points). parameter thedeflection is used  to specify a maximum deviation of extreme distances  from the minimum one.  returns isdone status. therange - the progress indicator of algorithm.
+computation of the minimum distance (value and  couple of points). Parameter theDeflection is used  to specify a maximum deviation of extreme distances  from the minimum one.  Returns IsDone status. theRange - the progress indicator of algorithm.
 ") Perform;
 		Standard_Boolean Perform(const Message_ProgressRange & theRange = Message_ProgressRange());
 
@@ -410,7 +421,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point corresponding to the <n>th solution on the first shape .
+Returns the Point corresponding to the <N>th solution on the first Shape .
 ") PointOnShape1;
 		const gp_Pnt PointOnShape1(const Standard_Integer N);
 
@@ -428,7 +439,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point corresponding to the <n>th solution on the second shape .
+Returns the Point corresponding to the <N>th solution on the second Shape .
 ") PointOnShape2;
 		const gp_Pnt PointOnShape2(const Standard_Integer N);
 
@@ -446,7 +457,7 @@ None
 
 Description
 -----------
-Sets unused parameter obsolete .
+Sets unused parameter Obsolete.
 ") SetAlgo;
 		void SetAlgo(const Extrema_ExtAlgo A);
 
@@ -482,7 +493,7 @@ None
 
 Description
 -----------
-Sets unused parameter obsolete .
+Sets unused parameter Obsolete.
 ") SetFlag;
 		void SetFlag(const Extrema_ExtFlag F);
 
@@ -500,7 +511,7 @@ None
 
 Description
 -----------
-If ismultithread == standard_true then computation will be performed in parallel.
+If isMultiThread == Standard_True then computation will be performed in parallel.
 ") SetMultiThread;
 		void SetMultiThread(Standard_Boolean theIsMultiThread);
 
@@ -518,7 +529,7 @@ TopoDS_Shape
 
 Description
 -----------
-Gives the support where the nth solution on the first shape is situated. this support can be a vertex, an edge or a face. .
+gives the support where the Nth solution on the first shape is situated. This support can be a Vertex, an Edge or a Face. .
 ") SupportOnShape1;
 		TopoDS_Shape SupportOnShape1(const Standard_Integer N);
 
@@ -536,7 +547,7 @@ TopoDS_Shape
 
 Description
 -----------
-Gives the support where the nth solution on the second shape is situated. this support can be a vertex, an edge or a face. .
+gives the support where the Nth solution on the second shape is situated. This support can be a Vertex, an Edge or a Face. .
 ") SupportOnShape2;
 		TopoDS_Shape SupportOnShape2(const Standard_Integer N);
 
@@ -554,7 +565,7 @@ BRepExtrema_SupportType
 
 Description
 -----------
-Gives the type of the support where the nth solution on the first shape is situated: isvertex => the nth solution on the first shape is a vertex isonedge => the nth soluion on the first shape is on a edge isinface => the nth solution on the first shape is inside a face the corresponding support is obtained by the method supportonshape1 .
+gives the type of the support where the Nth solution on the first shape is situated: IsVertex => the Nth solution on the first shape is a Vertex IsOnEdge => the Nth soluion on the first shape is on a Edge IsInFace => the Nth solution on the first shape is inside a face the corresponding support is obtained by the method SupportOnShape1 .
 ") SupportTypeShape1;
 		BRepExtrema_SupportType SupportTypeShape1(const Standard_Integer N);
 
@@ -572,7 +583,7 @@ BRepExtrema_SupportType
 
 Description
 -----------
-Gives the type of the support where the nth solution on the second shape is situated: isvertex => the nth solution on the second shape is a vertex isonedge => the nth soluion on the secondt shape is on a edge isinface => the nth solution on the second shape is inside a face the corresponding support is obtained by the method supportonshape2 .
+gives the type of the support where the Nth solution on the second shape is situated: IsVertex => the Nth solution on the second shape is a Vertex IsOnEdge => the Nth soluion on the secondt shape is on a Edge IsInFace => the Nth solution on the second shape is inside a face the corresponding support is obtained by the method SupportOnShape2 .
 ") SupportTypeShape2;
 		BRepExtrema_SupportType SupportTypeShape2(const Standard_Integer N);
 
@@ -624,7 +635,15 @@ None
 
 Description
 -----------
-Computes the distance between two shapes (face edge vertex). @param thes1 - first shape @param thes2 - second shape @param thebox1 - bounding box of first shape @param thebox2 - bounding box of second shape @param thedstref - initial distance between the shapes to start with @param thedeflection - maximum deviation of extreme distances from the minimum one (default is precision::confusion()). @param theextflag - specifies which extrema solutions to look for (default is minmax, applied only to point-face extrema) @param theextalgo - specifies which extrema algorithm is to be used (default is grad algo, applied only to point-face extrema).
+Computes the distance between two Shapes (face edge vertex). 
+Parameter theS1 - First shape 
+Parameter theS2 - Second shape 
+Parameter theBox1 - Bounding box of first shape 
+Parameter theBox2 - Bounding box of second shape 
+Parameter theDstRef - Initial distance between the shapes to start with 
+Parameter theDeflection - Maximum deviation of extreme distances from the minimum one (default is Precision::Confusion()). 
+Parameter theExtFlag - Specifies which extrema solutions to look for (default is MINMAX, applied only to point-face extrema) 
+Parameter theExtAlgo - Specifies which extrema algorithm is to be used (default is Grad algo, applied only to point-face extrema).
 ") BRepExtrema_DistanceSS;
 		 BRepExtrema_DistanceSS(const TopoDS_Shape & theS1, const TopoDS_Shape & theS2, const Bnd_Box & theBox1, const Bnd_Box & theBox2, const Standard_Real theDstRef, const Standard_Real theDeflection = Precision::Confusion(), const Extrema_ExtFlag theExtFlag = Extrema_ExtFlag_MINMAX, const Extrema_ExtAlgo theExtAlgo = Extrema_ExtAlgo_Grad);
 
@@ -821,7 +840,7 @@ bool
 
 Description
 -----------
-Returns true if e1 and e2 are parallel. .
+Returns True if E1 and E2 are parallel. .
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -852,7 +871,7 @@ float
 
 Description
 -----------
-Returns the parameter on the first edge of the <n>th extremum distance. .
+Returns the parameter on the first edge of the <N>th extremum distance. .
 ") ParameterOnE1;
 		Standard_Real ParameterOnE1(const Standard_Integer N);
 
@@ -870,7 +889,7 @@ float
 
 Description
 -----------
-Returns the parameter on the second edge of the <n>th extremum distance. .
+Returns the parameter on the second edge of the <N>th extremum distance. .
 ") ParameterOnE2;
 		Standard_Real ParameterOnE2(const Standard_Integer N);
 
@@ -906,7 +925,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of the <n>th extremum distance on the edge e1. .
+Returns the Point of the <N>th extremum distance on the edge E1. .
 ") PointOnE1;
 		gp_Pnt PointOnE1(const Standard_Integer N);
 
@@ -924,7 +943,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of the <n>th extremum distance on the edge e2. .
+Returns the Point of the <N>th extremum distance on the edge E2. .
 ") PointOnE2;
 		gp_Pnt PointOnE2(const Standard_Integer N);
 
@@ -942,7 +961,7 @@ float
 
 Description
 -----------
-Returns the value of the <n>th extremum square distance. .
+Returns the value of the <N>th extremum square distance. .
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -966,7 +985,7 @@ distP22: float
 
 Description
 -----------
-If the edges is a trimmed curve, dist11 is a square distance between the point on e1 of parameter firstparameter and the point of parameter firstparameter on e2. .
+if the edges is a trimmed curve, dist11 is a square distance between the point on E1 of parameter FirstParameter and the point of parameter FirstParameter on E2. .
 ") TrimmedSquareDistances;
 		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & P11, gp_Pnt & P12, gp_Pnt & P21, gp_Pnt & P22);
 
@@ -1057,7 +1076,7 @@ bool
 
 Description
 -----------
-Returns true if the curve is on a parallel surface. .
+Returns True if the curve is on a parallel surface. .
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -1088,7 +1107,7 @@ float
 
 Description
 -----------
-Returns the parameters on the edge of the <n>th extremum distance. .
+Returns the parameters on the Edge of the <N>th extremum distance. .
 ") ParameterOnEdge;
 		Standard_Real ParameterOnEdge(const Standard_Integer N);
 
@@ -1107,7 +1126,7 @@ V: float
 
 Description
 -----------
-Returns the parameters on the face of the <n>th extremum distance. .
+Returns the parameters on the Face of the <N>th extremum distance. .
 ") ParameterOnFace;
 		void ParameterOnFace(const Standard_Integer N, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1126,7 +1145,7 @@ None
 
 Description
 -----------
-An exception is raised if the fields have not been initialized. be careful: this method uses the face only for classify not for the fields. .
+An exception is raised if the fields have not been initialized. Be careful: this method uses the Face only for classify not for the fields. .
 ") Perform;
 		void Perform(const TopoDS_Edge & E, const TopoDS_Face & F);
 
@@ -1144,7 +1163,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of the <n>th extremum distance. .
+Returns the Point of the <N>th extremum distance. .
 ") PointOnEdge;
 		gp_Pnt PointOnEdge(const Standard_Integer N);
 
@@ -1162,7 +1181,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of the <n>th extremum distance. .
+Returns the Point of the <N>th extremum distance. .
 ") PointOnFace;
 		gp_Pnt PointOnFace(const Standard_Integer N);
 
@@ -1180,7 +1199,7 @@ float
 
 Description
 -----------
-Returns the value of the <n>th extremum square distance. .
+Returns the value of the <N>th extremum square distance. .
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -1270,7 +1289,7 @@ bool
 
 Description
 -----------
-Returns true if the surfaces are parallel. .
+Returns True if the surfaces are parallel. .
 ") IsParallel;
 		Standard_Boolean IsParallel();
 
@@ -1302,7 +1321,7 @@ V: float
 
 Description
 -----------
-Returns the parameters on the face f1 of the <n>th extremum distance. .
+Returns the parameters on the Face F1 of the <N>th extremum distance. .
 ") ParameterOnFace1;
 		void ParameterOnFace1(const Standard_Integer N, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1321,7 +1340,7 @@ V: float
 
 Description
 -----------
-Returns the parameters on the face f2 of the <n>th extremum distance. .
+Returns the parameters on the Face F2 of the <N>th extremum distance. .
 ") ParameterOnFace2;
 		void ParameterOnFace2(const Standard_Integer N, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1340,7 +1359,7 @@ None
 
 Description
 -----------
-An exception is raised if the fields have not been initialized. be careful: this method uses the face f2 only for classify, not for the fields. .
+An exception is raised if the fields have not been initialized. Be careful: this method uses the Face F2 only for classify, not for the fields. .
 ") Perform;
 		void Perform(const TopoDS_Face & F1, const TopoDS_Face & F2);
 
@@ -1358,7 +1377,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of the <n>th extremum distance. .
+Returns the Point of the <N>th extremum distance. .
 ") PointOnFace1;
 		gp_Pnt PointOnFace1(const Standard_Integer N);
 
@@ -1376,7 +1395,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of the <n>th extremum distance. .
+Returns the Point of the <N>th extremum distance. .
 ") PointOnFace2;
 		gp_Pnt PointOnFace2(const Standard_Integer N);
 
@@ -1394,7 +1413,7 @@ float
 
 Description
 -----------
-Returns the value of the <n>th extremum square distance. .
+Returns the value of the <N>th extremum square distance. .
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -1489,7 +1508,7 @@ bool
 
 Description
 -----------
-Returns true if the <n>th extremum distance is a minimum. .
+Returns True if the <N>th extremum distance is a minimum. .
 ") IsMin;
 		Standard_Boolean IsMin(const Standard_Integer N);
 
@@ -1520,7 +1539,7 @@ float
 
 Description
 -----------
-Returns the parameter on the edge of the <n>th extremum distance. .
+Returns the parameter on the edge of the <N>th extremum distance. .
 ") Parameter;
 		Standard_Real Parameter(const Standard_Integer N);
 
@@ -1556,7 +1575,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of the <n>th extremum distance. .
+Returns the Point of the <N>th extremum distance. .
 ") Point;
 		gp_Pnt Point(const Standard_Integer N);
 
@@ -1574,7 +1593,7 @@ float
 
 Description
 -----------
-Returns the value of the <n>th extremum square distance. .
+Returns the value of the <N>th extremum square distance. .
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -1594,7 +1613,7 @@ dist2: float
 
 Description
 -----------
-If the curve is a trimmed curve, dist1 is a square distance between <p> and the point of parameter firstparameter <pnt1> and dist2 is a square distance between <p> and the point of parameter lastparameter <pnt2>. .
+if the curve is a trimmed curve, dist1 is a square distance between <P> and the point of parameter FirstParameter <pnt1> and dist2 is a square distance between <P> and the point of parameter LastParameter <pnt2>. .
 ") TrimmedSquareDistances;
 		void TrimmedSquareDistances(Standard_Real &OutValue, Standard_Real &OutValue, gp_Pnt & pnt1, gp_Pnt & pnt2);
 
@@ -1707,7 +1726,7 @@ V: float
 
 Description
 -----------
-Returns the parameters on the face of the <n>th extremum distance. .
+Returns the parameters on the Face of the <N>th extremum distance. .
 ") Parameter;
 		void Parameter(const Standard_Integer N, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1726,7 +1745,7 @@ None
 
 Description
 -----------
-An exception is raised if the fields have not been initialized. be careful: this method uses the face only for classify not for the fields. .
+An exception is raised if the fields have not been initialized. Be careful: this method uses the Face only for classify not for the fields. .
 ") Perform;
 		void Perform(const TopoDS_Vertex & TheVertex, const TopoDS_Face & TheFace);
 
@@ -1744,7 +1763,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of the <n>th extremum distance. .
+Returns the Point of the <N>th extremum distance. .
 ") Point;
 		gp_Pnt Point(const Standard_Integer N);
 
@@ -1798,7 +1817,7 @@ float
 
 Description
 -----------
-Returns the value of the <n>th extremum square distance. .
+Returns the value of the <N>th extremum square distance. .
 ") SquareDistance;
 		Standard_Real SquareDistance(const Standard_Integer N);
 
@@ -1836,7 +1855,7 @@ dist: float
 
 Description
 -----------
-Returns standard_true if ok.
+returns Standard_True if OK.
 ") Distance;
 		static Standard_Boolean Distance(const TopoDS_Shape & S1, const TopoDS_Shape & S2, gp_Pnt & P1, gp_Pnt & P2, Standard_Real &OutValue);
 
@@ -1887,7 +1906,7 @@ None
 
 Description
 -----------
-Creates new unitialized tool.
+Creates new uninitialized tool.
 ") BRepExtrema_ProximityDistTool;
 		 BRepExtrema_ProximityDistTool();
 
@@ -1935,7 +1954,7 @@ Defines the rules for leaf acceptance.
 		virtual Standard_Boolean Accept(const Standard_Integer theSgmIdx, const Standard_Real &);
 
 		/****** BRepExtrema_ProximityDistTool::IsEdgeOnBorder ******/
-		/****** md5 signature: 7f2df1d45fe4dd10cb81da19c83428fd ******/
+		/****** md5 signature: 038d26a81843ebeec880a6eff6bf6ec2 ******/
 		%feature("compactdefaultargs") IsEdgeOnBorder;
 		%feature("autodoc", "
 Parameters
@@ -1943,7 +1962,7 @@ Parameters
 theTrgIdx: int
 theFirstEdgeNodeIdx: int
 theSecondEdgeNodeIdx: int
-theTr: Handle ( Poly_Triangulation )
+theTr: Poly_Triangulation
 
 Return
 -------
@@ -1953,16 +1972,16 @@ Description
 -----------
 Returns true if the edge is on the boarder.
 ") IsEdgeOnBorder;
-		static Standard_Boolean IsEdgeOnBorder(const Standard_Integer theTrgIdx, const Standard_Integer theFirstEdgeNodeIdx, const Standard_Integer theSecondEdgeNodeIdx, const Handle ( Poly_Triangulation ) & theTr);
+		static Standard_Boolean IsEdgeOnBorder(const Standard_Integer theTrgIdx, const Standard_Integer theFirstEdgeNodeIdx, const Standard_Integer theSecondEdgeNodeIdx, const opencascade::handle<Poly_Triangulation> & theTr);
 
 		/****** BRepExtrema_ProximityDistTool::IsNodeOnBorder ******/
-		/****** md5 signature: 6a6c9031bf497d7acf6e95de1f2784f6 ******/
+		/****** md5 signature: c8ae4ebe0ba9871a300b8cb277c90189 ******/
 		%feature("compactdefaultargs") IsNodeOnBorder;
 		%feature("autodoc", "
 Parameters
 ----------
 theNodeIdx: int
-theTr: Handle ( Poly_Triangulation )
+theTr: Poly_Triangulation
 
 Return
 -------
@@ -1972,7 +1991,7 @@ Description
 -----------
 Returns true if the node is on the boarder.
 ") IsNodeOnBorder;
-		static Standard_Boolean IsNodeOnBorder(const Standard_Integer theNodeIdx, const Handle ( Poly_Triangulation ) & theTr);
+		static Standard_Boolean IsNodeOnBorder(const Standard_Integer theNodeIdx, const opencascade::handle<Poly_Triangulation> & theTr);
 
 		/****** BRepExtrema_ProximityDistTool::LoadShapeLists ******/
 		/****** md5 signature: 2ec9bfacd5c06102fdebe80e35402ca0 ******/
@@ -2271,7 +2290,7 @@ BRepExtrema_MapOfIntegerPackedMapOfInteger
 
 Description
 -----------
-Returns set of ids of overlapped faces of 1st shape (started from 0).
+Returns set of IDs of overlapped faces of 1st shape (started from 0).
 ") OverlapSubShapes1;
 		const BRepExtrema_MapOfIntegerPackedMapOfInteger & OverlapSubShapes1();
 
@@ -2284,7 +2303,7 @@ BRepExtrema_MapOfIntegerPackedMapOfInteger
 
 Description
 -----------
-Returns set of ids of overlapped faces of 2nd shape (started from 0).
+Returns set of IDs of overlapped faces of 2nd shape (started from 0).
 ") OverlapSubShapes2;
 		const BRepExtrema_MapOfIntegerPackedMapOfInteger & OverlapSubShapes2();
 
@@ -2380,7 +2399,7 @@ None
 
 Description
 -----------
-Set number of sample points on the 1st shape used to compute the proximity value. in case of 0, all triangulation nodes will be used.
+Set number of sample points on the 1st shape used to compute the proximity value. In case of 0, all triangulation nodes will be used.
 ") SetNbSamples1;
 		void SetNbSamples1(const Standard_Integer theNbSamples);
 
@@ -2398,7 +2417,7 @@ None
 
 Description
 -----------
-Set number of sample points on the 2nd shape used to compute the proximity value. in case of 0, all triangulation nodes will be used.
+Set number of sample points on the 2nd shape used to compute the proximity value. In case of 0, all triangulation nodes will be used.
 ") SetNbSamples2;
 		void SetNbSamples2(const Standard_Integer theNbSamples);
 
@@ -2477,7 +2496,11 @@ None
 
 Description
 -----------
-This constructor is used when the solution of a distance is a vertex. the different initialized fields are: @param thedist the distance @param thepoint the solution point @param thesoltype the type of solution @param thevertex and the vertex.
+This constructor is used when the solution of a distance is a Vertex. The different initialized fields are: 
+Parameter theDist the distance 
+Parameter thePoint the solution point 
+Parameter theSolType the type of solution 
+Parameter theVertex and the Vertex.
 ") BRepExtrema_SolutionElem;
 		 BRepExtrema_SolutionElem(const Standard_Real theDist, const gp_Pnt & thePoint, const BRepExtrema_SupportType theSolType, const TopoDS_Vertex & theVertex);
 
@@ -2499,7 +2522,12 @@ None
 
 Description
 -----------
-This constructor is used when the solution of distance is on an edge. the different initialized fields are: @param thedist the distance @param thepoint the solution point @param thesoltype the type of solution @param theedge the edge @param theparam the parameter to locate the solution.
+This constructor is used when the solution of distance is on an Edge. The different initialized fields are: 
+Parameter theDist the distance 
+Parameter thePoint the solution point 
+Parameter theSolType the type of solution 
+Parameter theEdge the Edge 
+Parameter theParam the parameter to locate the solution.
 ") BRepExtrema_SolutionElem;
 		 BRepExtrema_SolutionElem(const Standard_Real theDist, const gp_Pnt & thePoint, const BRepExtrema_SupportType theSolType, const TopoDS_Edge & theEdge, const Standard_Real theParam);
 
@@ -2522,7 +2550,13 @@ None
 
 Description
 -----------
-This constructor is used when the solution of distance is in a face. the different initialized fields are: @param thedist the distance @param thepoint the solution point @param thesoltype the type of solution @param theface the face @param theu u parameter to locate the solution @param thev v parameter to locate the solution.
+This constructor is used when the solution of distance is in a Face. The different initialized fields are: 
+Parameter theDist the distance 
+Parameter thePoint the solution point 
+Parameter theSolType the type of solution 
+Parameter theFace the Face 
+Parameter theU U parameter to locate the solution 
+Parameter theV V parameter to locate the solution.
 ") BRepExtrema_SolutionElem;
 		 BRepExtrema_SolutionElem(const Standard_Real theDist, const gp_Pnt & thePoint, const BRepExtrema_SupportType theSolType, const TopoDS_Face & theFace, const Standard_Real theU, const Standard_Real theV);
 
@@ -2548,7 +2582,7 @@ TopoDS_Edge
 
 Description
 -----------
-Returns the vertex if the solution is an edge.
+Returns the vertex if the solution is an Edge.
 ") Edge;
 		const TopoDS_Edge Edge();
 
@@ -2565,7 +2599,7 @@ theParam: float
 
 Description
 -----------
-Returns the parameter value if the solution is on edge.
+Returns the parameter value if the solution is on Edge.
 ") EdgeParameter;
 		void EdgeParameter(Standard_Real &OutValue);
 
@@ -2578,7 +2612,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the vertex if the solution is an face.
+Returns the vertex if the solution is an Face.
 ") Face;
 		const TopoDS_Face Face();
 
@@ -2596,7 +2630,7 @@ theV: float
 
 Description
 -----------
-Returns the parameters u and v if the solution is in a face.
+Returns the parameters U and V if the solution is in a Face.
 ") FaceParameter;
 		void FaceParameter(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -2622,7 +2656,7 @@ BRepExtrema_SupportType
 
 Description
 -----------
-Returns the support type: isvertex => the solution is a vertex. isonedge => the solution belongs to an edge. isinface => the solution is inside a face.
+Returns the Support type: IsVertex => The solution is a vertex. IsOnEdge => The solution belongs to an Edge. IsInFace => The solution is inside a Face.
 ") SupportKind;
 		BRepExtrema_SupportType SupportKind();
 
@@ -2635,7 +2669,7 @@ TopoDS_Vertex
 
 Description
 -----------
-Returns the vertex if the solution is a vertex.
+Returns the vertex if the solution is a Vertex.
 ") Vertex;
 		const TopoDS_Vertex Vertex();
 
@@ -2698,7 +2732,7 @@ BVH_Box<float, 3 >
 
 Description
 -----------
-Returns aabb of the given triangle.
+Returns AABB of the given triangle.
 ") Box;
 		BVH_Box<Standard_Real, 3 > Box(const Standard_Integer theIndex);
 
@@ -2748,7 +2782,7 @@ int
 
 Description
 -----------
-Returns face id of the given triangle.
+Returns face ID of the given triangle.
 ") GetFaceID;
 		Standard_Integer GetFaceID(const Standard_Integer theIndex);
 
@@ -2766,7 +2800,7 @@ int
 
 Description
 -----------
-Returns shape id of the given vertex index.
+Returns shape ID of the given vertex index.
 ") GetShapeIDOfVtx;
 		Standard_Integer GetShapeIDOfVtx(const Standard_Integer theIndex);
 
@@ -2784,7 +2818,7 @@ int
 
 Description
 -----------
-Returns triangle index (before swapping) in tringulation of the shape, which triangle belongs, with the given trg id in whole set (after swapping).
+Returns triangle index (before swapping) in tringulation of the shape, which triangle belongs, with the given trg ID in whole set (after swapping).
 ") GetTrgIdxInShape;
 		Standard_Integer GetTrgIdxInShape(const Standard_Integer theIndex);
 
@@ -2836,7 +2870,7 @@ int
 
 Description
 -----------
-Returns vertex index in tringulation of the shape, which vertex belongs, with the given vtx id in whole set.
+Returns vertex index in tringulation of the shape, which vertex belongs, with the given vtx ID in whole set.
 ") GetVtxIdxInShape;
 		Standard_Integer GetVtxIdxInShape(const Standard_Integer theIndex);
 
@@ -3033,7 +3067,7 @@ BRepExtrema_MapOfIntegerPackedMapOfInteger
 
 Description
 -----------
-Returns set of ids of overlapped sub-shapes (started from 0).
+Returns set of IDs of overlapped sub-shapes (started from 0).
 ") OverlapElements;
 		const BRepExtrema_MapOfIntegerPackedMapOfInteger & OverlapElements();
 

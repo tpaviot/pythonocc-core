@@ -373,7 +373,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -407,7 +407,7 @@ opencascade::handle<StepRepr_RepresentationItem>
 
 Description
 -----------
-Returns field item.
+Returns field Item.
 ") Item;
 		opencascade::handle<StepRepr_RepresentationItem> Item();
 
@@ -420,7 +420,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field name.
+Returns field Name.
 ") Name;
 		opencascade::handle<TCollection_HAsciiString> Name();
 
@@ -433,7 +433,7 @@ opencascade::handle<StepRepr_Representation>
 
 Description
 -----------
-Returns field rep.
+Returns field Rep.
 ") Rep;
 		opencascade::handle<StepRepr_Representation> Rep();
 
@@ -451,7 +451,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -469,7 +469,7 @@ None
 
 Description
 -----------
-Set field item.
+Set field Item.
 ") SetItem;
 		void SetItem(const opencascade::handle<StepRepr_RepresentationItem> & Item);
 
@@ -487,7 +487,7 @@ None
 
 Description
 -----------
-Set field name.
+Set field Name.
 ") SetName;
 		void SetName(const opencascade::handle<TCollection_HAsciiString> & Name);
 
@@ -505,7 +505,7 @@ None
 
 Description
 -----------
-Set field rep.
+Set field Rep.
 ") SetRep;
 		void SetRep(const opencascade::handle<StepRepr_Representation> & Rep);
 
@@ -566,7 +566,7 @@ StepElement_CurveElementFreedom
 
 Description
 -----------
-Returns field releasefreedom.
+Returns field ReleaseFreedom.
 ") ReleaseFreedom;
 		StepElement_CurveElementFreedom ReleaseFreedom();
 
@@ -579,7 +579,7 @@ float
 
 Description
 -----------
-Returns field releasestiffness.
+Returns field ReleaseStiffness.
 ") ReleaseStiffness;
 		Standard_Real ReleaseStiffness();
 
@@ -597,7 +597,7 @@ None
 
 Description
 -----------
-Set field releasefreedom.
+Set field ReleaseFreedom.
 ") SetReleaseFreedom;
 		void SetReleaseFreedom(const StepElement_CurveElementFreedom & ReleaseFreedom);
 
@@ -615,7 +615,7 @@ None
 
 Description
 -----------
-Set field releasestiffness.
+Set field ReleaseStiffness.
 ") SetReleaseStiffness;
 		void SetReleaseStiffness(const Standard_Real ReleaseStiffness);
 
@@ -657,7 +657,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns value as applicationdefineddegreeoffreedom (or null if another type).
+Returns Value as ApplicationDefinedDegreeOfFreedom (or Null if another type).
 ") ApplicationDefinedDegreeOfFreedom;
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedDegreeOfFreedom();
 
@@ -675,7 +675,7 @@ int
 
 Description
 -----------
-Recognizes a items of select member curveelementfreedommember 1 -> enumeratedcurveelementfreedom 2 -> applicationdefineddegreeoffreedom 0 else.
+Recognizes a items of select member CurveElementFreedomMember 1 -> EnumeratedCurveElementFreedom 2 -> ApplicationDefinedDegreeOfFreedom 0 else.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -693,7 +693,7 @@ int
 
 Description
 -----------
-Recognizes a kind of curveelementfreedom select type return 0.
+Recognizes a kind of CurveElementFreedom select type return 0.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -706,7 +706,7 @@ StepElement_EnumeratedCurveElementFreedom
 
 Description
 -----------
-Returns value as enumeratedcurveelementfreedom (or null if another type).
+Returns Value as EnumeratedCurveElementFreedom (or Null if another type).
 ") EnumeratedCurveElementFreedom;
 		StepElement_EnumeratedCurveElementFreedom EnumeratedCurveElementFreedom();
 
@@ -719,7 +719,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a new select member the type curveelementfreedommember.
+Returns a new select member the type CurveElementFreedomMember.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -737,7 +737,7 @@ None
 
 Description
 -----------
-Set value for applicationdefineddegreeoffreedom.
+Set Value for ApplicationDefinedDegreeOfFreedom.
 ") SetApplicationDefinedDegreeOfFreedom;
 		void SetApplicationDefinedDegreeOfFreedom(const opencascade::handle<TCollection_HAsciiString> & aVal);
 
@@ -755,7 +755,7 @@ None
 
 Description
 -----------
-Set value for enumeratedcurveelementfreedom.
+Set Value for EnumeratedCurveElementFreedom.
 ") SetEnumeratedCurveElementFreedom;
 		void SetEnumeratedCurveElementFreedom(const StepElement_EnumeratedCurveElementFreedom aVal);
 
@@ -795,7 +795,7 @@ bool
 
 Description
 -----------
-Returns true if has name.
+Returns True if has name.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
@@ -813,7 +813,7 @@ bool
 
 Description
 -----------
-Tells if the name of a selectmember matches a given one;.
+Tells if the name of a SelectMember matches a given one;.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString name);
 
@@ -886,7 +886,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns value as applicationdefinedelementpurpose (or null if another type).
+Returns Value as ApplicationDefinedElementPurpose (or Null if another type).
 ") ApplicationDefinedElementPurpose;
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedElementPurpose();
 
@@ -904,7 +904,7 @@ int
 
 Description
 -----------
-Recognizes a items of select member curveelementpurposemember 1 -> enumeratedcurveelementpurpose 2 -> applicationdefinedelementpurpose 0 else.
+Recognizes a items of select member CurveElementPurposeMember 1 -> EnumeratedCurveElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -922,7 +922,7 @@ int
 
 Description
 -----------
-Recognizes a kind of curveelementpurpose select type return 0.
+Recognizes a kind of CurveElementPurpose select type return 0.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -935,7 +935,7 @@ StepElement_EnumeratedCurveElementPurpose
 
 Description
 -----------
-Returns value as enumeratedcurveelementpurpose (or null if another type).
+Returns Value as EnumeratedCurveElementPurpose (or Null if another type).
 ") EnumeratedCurveElementPurpose;
 		StepElement_EnumeratedCurveElementPurpose EnumeratedCurveElementPurpose();
 
@@ -948,7 +948,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a new select member the type curveelementpurposemember.
+Returns a new select member the type CurveElementPurposeMember.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -966,7 +966,7 @@ None
 
 Description
 -----------
-Set value for applicationdefinedelementpurpose.
+Set Value for ApplicationDefinedElementPurpose.
 ") SetApplicationDefinedElementPurpose;
 		void SetApplicationDefinedElementPurpose(const opencascade::handle<TCollection_HAsciiString> & aVal);
 
@@ -984,7 +984,7 @@ None
 
 Description
 -----------
-Set value for enumeratedcurveelementpurpose.
+Set Value for EnumeratedCurveElementPurpose.
 ") SetEnumeratedCurveElementPurpose;
 		void SetEnumeratedCurveElementPurpose(const StepElement_EnumeratedCurveElementPurpose aVal);
 
@@ -1024,7 +1024,7 @@ bool
 
 Description
 -----------
-Returns true if has name.
+Returns True if has name.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
@@ -1042,7 +1042,7 @@ bool
 
 Description
 -----------
-Tells if the name of a selectmember matches a given one;.
+Tells if the name of a SelectMember matches a given one;.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString name);
 
@@ -1115,7 +1115,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -1147,7 +1147,7 @@ float
 
 Description
 -----------
-Returns field sectionangle.
+Returns field SectionAngle.
 ") SectionAngle;
 		Standard_Real SectionAngle();
 
@@ -1165,7 +1165,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -1183,7 +1183,7 @@ None
 
 Description
 -----------
-Set field sectionangle.
+Set field SectionAngle.
 ") SetSectionAngle;
 		void SetSectionAngle(const Standard_Real SectionAngle);
 
@@ -1230,7 +1230,7 @@ int
 
 Description
 -----------
-Recognizes a items of select member elementaspectmember 1 -> elementvolume 2 -> volume3dface 3 -> volume2dface 4 -> volume3dedge 5 -> volume2dedge 6 -> surface3dface 7 -> surface2dface 8 -> surface3dedge 9 -> surface2dedge 10 -> curveedge 0 else.
+Recognizes a items of select member ElementAspectMember 1 -> ElementVolume 2 -> Volume3dFace 3 -> Volume2dFace 4 -> Volume3dEdge 5 -> Volume2dEdge 6 -> Surface3dFace 7 -> Surface2dFace 8 -> Surface3dEdge 9 -> Surface2dEdge 10 -> CurveEdge 0 else.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -1248,7 +1248,7 @@ int
 
 Description
 -----------
-Recognizes a kind of elementaspect select type return 0.
+Recognizes a kind of ElementAspect select type return 0.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1261,7 +1261,7 @@ StepElement_CurveEdge
 
 Description
 -----------
-Returns value as curveedge (or null if another type).
+Returns Value as CurveEdge (or Null if another type).
 ") CurveEdge;
 		StepElement_CurveEdge CurveEdge();
 
@@ -1274,7 +1274,7 @@ StepElement_ElementVolume
 
 Description
 -----------
-Returns value as elementvolume (or null if another type).
+Returns Value as ElementVolume (or Null if another type).
 ") ElementVolume;
 		StepElement_ElementVolume ElementVolume();
 
@@ -1287,7 +1287,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a new select member the type elementaspectmember.
+Returns a new select member the type ElementAspectMember.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -1305,7 +1305,7 @@ None
 
 Description
 -----------
-Set value for curveedge.
+Set Value for CurveEdge.
 ") SetCurveEdge;
 		void SetCurveEdge(const StepElement_CurveEdge aVal);
 
@@ -1323,7 +1323,7 @@ None
 
 Description
 -----------
-Set value for elementvolume.
+Set Value for ElementVolume.
 ") SetElementVolume;
 		void SetElementVolume(const StepElement_ElementVolume aVal);
 
@@ -1341,7 +1341,7 @@ None
 
 Description
 -----------
-Set value for surface2dedge.
+Set Value for Surface2dEdge.
 ") SetSurface2dEdge;
 		void SetSurface2dEdge(const Standard_Integer aVal);
 
@@ -1359,7 +1359,7 @@ None
 
 Description
 -----------
-Set value for surface2dface.
+Set Value for Surface2dFace.
 ") SetSurface2dFace;
 		void SetSurface2dFace(const Standard_Integer aVal);
 
@@ -1377,7 +1377,7 @@ None
 
 Description
 -----------
-Set value for surface3dedge.
+Set Value for Surface3dEdge.
 ") SetSurface3dEdge;
 		void SetSurface3dEdge(const Standard_Integer aVal);
 
@@ -1395,7 +1395,7 @@ None
 
 Description
 -----------
-Set value for surface3dface.
+Set Value for Surface3dFace.
 ") SetSurface3dFace;
 		void SetSurface3dFace(const Standard_Integer aVal);
 
@@ -1413,7 +1413,7 @@ None
 
 Description
 -----------
-Set value for volume2dedge.
+Set Value for Volume2dEdge.
 ") SetVolume2dEdge;
 		void SetVolume2dEdge(const Standard_Integer aVal);
 
@@ -1431,7 +1431,7 @@ None
 
 Description
 -----------
-Set value for volume2dface.
+Set Value for Volume2dFace.
 ") SetVolume2dFace;
 		void SetVolume2dFace(const Standard_Integer aVal);
 
@@ -1449,7 +1449,7 @@ None
 
 Description
 -----------
-Set value for volume3dedge.
+Set Value for Volume3dEdge.
 ") SetVolume3dEdge;
 		void SetVolume3dEdge(const Standard_Integer aVal);
 
@@ -1467,7 +1467,7 @@ None
 
 Description
 -----------
-Set value for volume3dface.
+Set Value for Volume3dFace.
 ") SetVolume3dFace;
 		void SetVolume3dFace(const Standard_Integer aVal);
 
@@ -1480,7 +1480,7 @@ int
 
 Description
 -----------
-Returns value as surface2dedge (or null if another type).
+Returns Value as Surface2dEdge (or Null if another type).
 ") Surface2dEdge;
 		Standard_Integer Surface2dEdge();
 
@@ -1493,7 +1493,7 @@ int
 
 Description
 -----------
-Returns value as surface2dface (or null if another type).
+Returns Value as Surface2dFace (or Null if another type).
 ") Surface2dFace;
 		Standard_Integer Surface2dFace();
 
@@ -1506,7 +1506,7 @@ int
 
 Description
 -----------
-Returns value as surface3dedge (or null if another type).
+Returns Value as Surface3dEdge (or Null if another type).
 ") Surface3dEdge;
 		Standard_Integer Surface3dEdge();
 
@@ -1519,7 +1519,7 @@ int
 
 Description
 -----------
-Returns value as surface3dface (or null if another type).
+Returns Value as Surface3dFace (or Null if another type).
 ") Surface3dFace;
 		Standard_Integer Surface3dFace();
 
@@ -1532,7 +1532,7 @@ int
 
 Description
 -----------
-Returns value as volume2dedge (or null if another type).
+Returns Value as Volume2dEdge (or Null if another type).
 ") Volume2dEdge;
 		Standard_Integer Volume2dEdge();
 
@@ -1545,7 +1545,7 @@ int
 
 Description
 -----------
-Returns value as volume2dface (or null if another type).
+Returns Value as Volume2dFace (or Null if another type).
 ") Volume2dFace;
 		Standard_Integer Volume2dFace();
 
@@ -1558,7 +1558,7 @@ int
 
 Description
 -----------
-Returns value as volume3dedge (or null if another type).
+Returns Value as Volume3dEdge (or Null if another type).
 ") Volume3dEdge;
 		Standard_Integer Volume3dEdge();
 
@@ -1571,7 +1571,7 @@ int
 
 Description
 -----------
-Returns value as volume3dface (or null if another type).
+Returns Value as Volume3dFace (or Null if another type).
 ") Volume3dFace;
 		Standard_Integer Volume3dFace();
 
@@ -1611,7 +1611,7 @@ bool
 
 Description
 -----------
-Returns true if has name.
+Returns True if has name.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
@@ -1629,7 +1629,7 @@ bool
 
 Description
 -----------
-Tells if the name of a selectmember matches a given one;.
+Tells if the name of a SelectMember matches a given one;.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString name);
 
@@ -1702,7 +1702,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -1739,7 +1739,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -1757,7 +1757,7 @@ None
 
 Description
 -----------
-Set field topologyorder.
+Set field TopologyOrder.
 ") SetTopologyOrder;
 		void SetTopologyOrder(const StepElement_ElementOrder TopologyOrder);
 
@@ -1770,7 +1770,7 @@ StepElement_ElementOrder
 
 Description
 -----------
-Returns field topologyorder.
+Returns field TopologyOrder.
 ") TopologyOrder;
 		StepElement_ElementOrder TopologyOrder();
 
@@ -1812,7 +1812,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -1845,7 +1845,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field materialid.
+Returns field MaterialId.
 ") MaterialId;
 		opencascade::handle<TCollection_HAsciiString> MaterialId();
 
@@ -1858,7 +1858,7 @@ opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation>
 
 Description
 -----------
-Returns field properties.
+Returns field Properties.
 ") Properties;
 		opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> Properties();
 
@@ -1876,7 +1876,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -1894,7 +1894,7 @@ None
 
 Description
 -----------
-Set field materialid.
+Set field MaterialId.
 ") SetMaterialId;
 		void SetMaterialId(const opencascade::handle<TCollection_HAsciiString> & MaterialId);
 
@@ -1912,7 +1912,7 @@ None
 
 Description
 -----------
-Set field properties.
+Set field Properties.
 ") SetProperties;
 		void SetProperties(const opencascade::handle<StepRepr_HArray1OfMaterialPropertyRepresentation> & Properties);
 
@@ -1959,7 +1959,7 @@ int
 
 Description
 -----------
-Recognizes a items of select member measureorunspecifiedvaluemember 1 -> contextdependentmeasure 2 -> unspecifiedvalue 0 else.
+Recognizes a items of select member MeasureOrUnspecifiedValueMember 1 -> ContextDependentMeasure 2 -> UnspecifiedValue 0 else.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -1977,7 +1977,7 @@ int
 
 Description
 -----------
-Recognizes a kind of measureorunspecifiedvalue select type return 0.
+Recognizes a kind of MeasureOrUnspecifiedValue select type return 0.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -1990,7 +1990,7 @@ float
 
 Description
 -----------
-Returns value as contextdependentmeasure (or null if another type).
+Returns Value as ContextDependentMeasure (or Null if another type).
 ") ContextDependentMeasure;
 		Standard_Real ContextDependentMeasure();
 
@@ -2003,7 +2003,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a new select member the type measureorunspecifiedvaluemember.
+Returns a new select member the type MeasureOrUnspecifiedValueMember.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -2021,7 +2021,7 @@ None
 
 Description
 -----------
-Set value for contextdependentmeasure.
+Set Value for ContextDependentMeasure.
 ") SetContextDependentMeasure;
 		void SetContextDependentMeasure(const Standard_Real aVal);
 
@@ -2039,7 +2039,7 @@ None
 
 Description
 -----------
-Set value for unspecifiedvalue.
+Set Value for UnspecifiedValue.
 ") SetUnspecifiedValue;
 		void SetUnspecifiedValue(const StepElement_UnspecifiedValue aVal);
 
@@ -2052,7 +2052,7 @@ StepElement_UnspecifiedValue
 
 Description
 -----------
-Returns value as unspecifiedvalue (or null if another type).
+Returns Value as UnspecifiedValue (or Null if another type).
 ") UnspecifiedValue;
 		StepElement_UnspecifiedValue UnspecifiedValue();
 
@@ -2092,7 +2092,7 @@ bool
 
 Description
 -----------
-Returns true if has name.
+Returns True if has name.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
@@ -2110,7 +2110,7 @@ bool
 
 Description
 -----------
-Tells if the name of a selectmember matches a given one;.
+Tells if the name of a SelectMember matches a given one;.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString name);
 
@@ -2183,7 +2183,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field description.
+Returns field Description.
 ") Description;
 		opencascade::handle<TCollection_HAsciiString> Description();
 
@@ -2216,7 +2216,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns field propertyid.
+Returns field PropertyId.
 ") PropertyId;
 		opencascade::handle<TCollection_HAsciiString> PropertyId();
 
@@ -2229,7 +2229,7 @@ opencascade::handle<StepElement_SurfaceSectionField>
 
 Description
 -----------
-Returns field section.
+Returns field Section.
 ") Section;
 		opencascade::handle<StepElement_SurfaceSectionField> Section();
 
@@ -2247,7 +2247,7 @@ None
 
 Description
 -----------
-Set field description.
+Set field Description.
 ") SetDescription;
 		void SetDescription(const opencascade::handle<TCollection_HAsciiString> & Description);
 
@@ -2265,7 +2265,7 @@ None
 
 Description
 -----------
-Set field propertyid.
+Set field PropertyId.
 ") SetPropertyId;
 		void SetPropertyId(const opencascade::handle<TCollection_HAsciiString> & PropertyId);
 
@@ -2283,7 +2283,7 @@ None
 
 Description
 -----------
-Set field section.
+Set field Section.
 ") SetSection;
 		void SetSection(const opencascade::handle<StepElement_SurfaceSectionField> & Section);
 
@@ -2325,7 +2325,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns value as applicationdefinedelementpurpose (or null if another type).
+Returns Value as ApplicationDefinedElementPurpose (or Null if another type).
 ") ApplicationDefinedElementPurpose;
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedElementPurpose();
 
@@ -2343,7 +2343,7 @@ int
 
 Description
 -----------
-Recognizes a items of select member surfaceelementpurposemember 1 -> enumeratedsurfaceelementpurpose 2 -> applicationdefinedelementpurpose 0 else.
+Recognizes a items of select member SurfaceElementPurposeMember 1 -> EnumeratedSurfaceElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -2361,7 +2361,7 @@ int
 
 Description
 -----------
-Recognizes a kind of surfaceelementpurpose select type return 0.
+Recognizes a kind of SurfaceElementPurpose select type return 0.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2374,7 +2374,7 @@ StepElement_EnumeratedSurfaceElementPurpose
 
 Description
 -----------
-Returns value as enumeratedsurfaceelementpurpose (or null if another type).
+Returns Value as EnumeratedSurfaceElementPurpose (or Null if another type).
 ") EnumeratedSurfaceElementPurpose;
 		StepElement_EnumeratedSurfaceElementPurpose EnumeratedSurfaceElementPurpose();
 
@@ -2387,7 +2387,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a new select member the type surfaceelementpurposemember.
+Returns a new select member the type SurfaceElementPurposeMember.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -2405,7 +2405,7 @@ None
 
 Description
 -----------
-Set value for applicationdefinedelementpurpose.
+Set Value for ApplicationDefinedElementPurpose.
 ") SetApplicationDefinedElementPurpose;
 		void SetApplicationDefinedElementPurpose(const opencascade::handle<TCollection_HAsciiString> & aVal);
 
@@ -2423,7 +2423,7 @@ None
 
 Description
 -----------
-Set value for enumeratedsurfaceelementpurpose.
+Set Value for EnumeratedSurfaceElementPurpose.
 ") SetEnumeratedSurfaceElementPurpose;
 		void SetEnumeratedSurfaceElementPurpose(const StepElement_EnumeratedSurfaceElementPurpose aVal);
 
@@ -2463,7 +2463,7 @@ bool
 
 Description
 -----------
-Returns true if has name.
+Returns True if has name.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
@@ -2481,7 +2481,7 @@ bool
 
 Description
 -----------
-Tells if the name of a selectmember matches a given one;.
+Tells if the name of a SelectMember matches a given one;.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString name);
 
@@ -2574,7 +2574,7 @@ StepElement_MeasureOrUnspecifiedValue
 
 Description
 -----------
-Returns field nonstructuralmass.
+Returns field NonStructuralMass.
 ") NonStructuralMass;
 		StepElement_MeasureOrUnspecifiedValue NonStructuralMass();
 
@@ -2587,7 +2587,7 @@ StepElement_MeasureOrUnspecifiedValue
 
 Description
 -----------
-Returns field nonstructuralmassoffset.
+Returns field NonStructuralMassOffset.
 ") NonStructuralMassOffset;
 		StepElement_MeasureOrUnspecifiedValue NonStructuralMassOffset();
 
@@ -2600,7 +2600,7 @@ StepElement_MeasureOrUnspecifiedValue
 
 Description
 -----------
-Returns field offset.
+Returns field Offset.
 ") Offset;
 		StepElement_MeasureOrUnspecifiedValue Offset();
 
@@ -2618,7 +2618,7 @@ None
 
 Description
 -----------
-Set field nonstructuralmass.
+Set field NonStructuralMass.
 ") SetNonStructuralMass;
 		void SetNonStructuralMass(const StepElement_MeasureOrUnspecifiedValue & NonStructuralMass);
 
@@ -2636,7 +2636,7 @@ None
 
 Description
 -----------
-Set field nonstructuralmassoffset.
+Set field NonStructuralMassOffset.
 ") SetNonStructuralMassOffset;
 		void SetNonStructuralMassOffset(const StepElement_MeasureOrUnspecifiedValue & NonStructuralMassOffset);
 
@@ -2654,7 +2654,7 @@ None
 
 Description
 -----------
-Set field offset.
+Set field Offset.
 ") SetOffset;
 		void SetOffset(const StepElement_MeasureOrUnspecifiedValue & Offset);
 
@@ -2725,7 +2725,7 @@ opencascade::handle<TCollection_HAsciiString>
 
 Description
 -----------
-Returns value as applicationdefinedelementpurpose (or null if another type).
+Returns Value as ApplicationDefinedElementPurpose (or Null if another type).
 ") ApplicationDefinedElementPurpose;
 		opencascade::handle<TCollection_HAsciiString> ApplicationDefinedElementPurpose();
 
@@ -2743,7 +2743,7 @@ int
 
 Description
 -----------
-Recognizes a items of select member volumeelementpurposemember 1 -> enumeratedvolumeelementpurpose 2 -> applicationdefinedelementpurpose 0 else.
+Recognizes a items of select member VolumeElementPurposeMember 1 -> EnumeratedVolumeElementPurpose 2 -> ApplicationDefinedElementPurpose 0 else.
 ") CaseMem;
 		virtual Standard_Integer CaseMem(const opencascade::handle<StepData_SelectMember> & ent);
 
@@ -2761,7 +2761,7 @@ int
 
 Description
 -----------
-Recognizes a kind of volumeelementpurpose select type return 0.
+Recognizes a kind of VolumeElementPurpose select type return 0.
 ") CaseNum;
 		Standard_Integer CaseNum(const opencascade::handle<Standard_Transient> & ent);
 
@@ -2774,7 +2774,7 @@ StepElement_EnumeratedVolumeElementPurpose
 
 Description
 -----------
-Returns value as enumeratedvolumeelementpurpose (or null if another type).
+Returns Value as EnumeratedVolumeElementPurpose (or Null if another type).
 ") EnumeratedVolumeElementPurpose;
 		StepElement_EnumeratedVolumeElementPurpose EnumeratedVolumeElementPurpose();
 
@@ -2787,7 +2787,7 @@ opencascade::handle<StepData_SelectMember>
 
 Description
 -----------
-Returns a new select member the type volumeelementpurposemember.
+Returns a new select member the type VolumeElementPurposeMember.
 ") NewMember;
 		virtual opencascade::handle<StepData_SelectMember> NewMember();
 
@@ -2805,7 +2805,7 @@ None
 
 Description
 -----------
-Set value for applicationdefinedelementpurpose.
+Set Value for ApplicationDefinedElementPurpose.
 ") SetApplicationDefinedElementPurpose;
 		void SetApplicationDefinedElementPurpose(const opencascade::handle<TCollection_HAsciiString> & aVal);
 
@@ -2823,7 +2823,7 @@ None
 
 Description
 -----------
-Set value for enumeratedvolumeelementpurpose.
+Set Value for EnumeratedVolumeElementPurpose.
 ") SetEnumeratedVolumeElementPurpose;
 		void SetEnumeratedVolumeElementPurpose(const StepElement_EnumeratedVolumeElementPurpose aVal);
 
@@ -2863,7 +2863,7 @@ bool
 
 Description
 -----------
-Returns true if has name.
+Returns True if has name.
 ") HasName;
 		virtual Standard_Boolean HasName();
 
@@ -2881,7 +2881,7 @@ bool
 
 Description
 -----------
-Tells if the name of a selectmember matches a given one;.
+Tells if the name of a SelectMember matches a given one;.
 ") Matches;
 		virtual Standard_Boolean Matches(Standard_CString name);
 
@@ -2974,7 +2974,7 @@ opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember>
 
 Description
 -----------
-Returns field purpose.
+Returns field Purpose.
 ") Purpose;
 		opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> Purpose();
 
@@ -2992,7 +2992,7 @@ None
 
 Description
 -----------
-Set field purpose.
+Set field Purpose.
 ") SetPurpose;
 		void SetPurpose(const opencascade::handle<StepElement_HArray1OfHSequenceOfCurveElementPurposeMember> & Purpose);
 
@@ -3034,7 +3034,7 @@ float
 
 Description
 -----------
-Returns field crosssectionalarea.
+Returns field CrossSectionalArea.
 ") CrossSectionalArea;
 		Standard_Real CrossSectionalArea();
 
@@ -3076,7 +3076,7 @@ opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
 
 Description
 -----------
-Returns field locationofcentroid.
+Returns field LocationOfCentroid.
 ") LocationOfCentroid;
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> LocationOfCentroid();
 
@@ -3089,7 +3089,7 @@ opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
 
 Description
 -----------
-Returns field locationofnonstructuralmass.
+Returns field LocationOfNonStructuralMass.
 ") LocationOfNonStructuralMass;
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> LocationOfNonStructuralMass();
 
@@ -3102,7 +3102,7 @@ opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
 
 Description
 -----------
-Returns field locationofshearcentre.
+Returns field LocationOfShearCentre.
 ") LocationOfShearCentre;
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> LocationOfShearCentre();
 
@@ -3115,7 +3115,7 @@ StepElement_MeasureOrUnspecifiedValue
 
 Description
 -----------
-Returns field nonstructuralmass.
+Returns field NonStructuralMass.
 ") NonStructuralMass;
 		StepElement_MeasureOrUnspecifiedValue NonStructuralMass();
 
@@ -3128,7 +3128,7 @@ StepElement_MeasureOrUnspecifiedValue
 
 Description
 -----------
-Returns field polarmoment.
+Returns field PolarMoment.
 ") PolarMoment;
 		StepElement_MeasureOrUnspecifiedValue PolarMoment();
 
@@ -3141,7 +3141,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns field secondmomentofarea.
+Returns field SecondMomentOfArea.
 ") SecondMomentOfArea;
 		opencascade::handle<TColStd_HArray1OfReal> SecondMomentOfArea();
 
@@ -3159,7 +3159,7 @@ None
 
 Description
 -----------
-Set field crosssectionalarea.
+Set field CrossSectionalArea.
 ") SetCrossSectionalArea;
 		void SetCrossSectionalArea(const Standard_Real CrossSectionalArea);
 
@@ -3177,7 +3177,7 @@ None
 
 Description
 -----------
-Set field locationofcentroid.
+Set field LocationOfCentroid.
 ") SetLocationOfCentroid;
 		void SetLocationOfCentroid(const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfCentroid);
 
@@ -3195,7 +3195,7 @@ None
 
 Description
 -----------
-Set field locationofnonstructuralmass.
+Set field LocationOfNonStructuralMass.
 ") SetLocationOfNonStructuralMass;
 		void SetLocationOfNonStructuralMass(const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfNonStructuralMass);
 
@@ -3213,7 +3213,7 @@ None
 
 Description
 -----------
-Set field locationofshearcentre.
+Set field LocationOfShearCentre.
 ") SetLocationOfShearCentre;
 		void SetLocationOfShearCentre(const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & LocationOfShearCentre);
 
@@ -3231,7 +3231,7 @@ None
 
 Description
 -----------
-Set field nonstructuralmass.
+Set field NonStructuralMass.
 ") SetNonStructuralMass;
 		void SetNonStructuralMass(const StepElement_MeasureOrUnspecifiedValue & NonStructuralMass);
 
@@ -3249,7 +3249,7 @@ None
 
 Description
 -----------
-Set field polarmoment.
+Set field PolarMoment.
 ") SetPolarMoment;
 		void SetPolarMoment(const StepElement_MeasureOrUnspecifiedValue & PolarMoment);
 
@@ -3267,7 +3267,7 @@ None
 
 Description
 -----------
-Set field secondmomentofarea.
+Set field SecondMomentOfArea.
 ") SetSecondMomentOfArea;
 		void SetSecondMomentOfArea(const opencascade::handle<TColStd_HArray1OfReal> & SecondMomentOfArea);
 
@@ -3285,7 +3285,7 @@ None
 
 Description
 -----------
-Set field sheararea.
+Set field ShearArea.
 ") SetShearArea;
 		void SetShearArea(const opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> & ShearArea);
 
@@ -3303,7 +3303,7 @@ None
 
 Description
 -----------
-Set field torsionalconstant.
+Set field TorsionalConstant.
 ") SetTorsionalConstant;
 		void SetTorsionalConstant(const Standard_Real TorsionalConstant);
 
@@ -3321,7 +3321,7 @@ None
 
 Description
 -----------
-Set field warpingconstant.
+Set field WarpingConstant.
 ") SetWarpingConstant;
 		void SetWarpingConstant(const StepElement_MeasureOrUnspecifiedValue & WarpingConstant);
 
@@ -3334,7 +3334,7 @@ opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue>
 
 Description
 -----------
-Returns field sheararea.
+Returns field ShearArea.
 ") ShearArea;
 		opencascade::handle<StepElement_HArray1OfMeasureOrUnspecifiedValue> ShearArea();
 
@@ -3347,7 +3347,7 @@ float
 
 Description
 -----------
-Returns field torsionalconstant.
+Returns field TorsionalConstant.
 ") TorsionalConstant;
 		Standard_Real TorsionalConstant();
 
@@ -3360,7 +3360,7 @@ StepElement_MeasureOrUnspecifiedValue
 
 Description
 -----------
-Returns field warpingconstant.
+Returns field WarpingConstant.
 ") WarpingConstant;
 		StepElement_MeasureOrUnspecifiedValue WarpingConstant();
 
@@ -3423,7 +3423,7 @@ opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember>
 
 Description
 -----------
-Returns field purpose.
+Returns field Purpose.
 ") Purpose;
 		opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> Purpose();
 
@@ -3441,7 +3441,7 @@ None
 
 Description
 -----------
-Set field purpose.
+Set field Purpose.
 ") SetPurpose;
 		void SetPurpose(const opencascade::handle<StepElement_HArray1OfHSequenceOfSurfaceElementPurposeMember> & Purpose);
 
@@ -3459,7 +3459,7 @@ None
 
 Description
 -----------
-Set field shape.
+Set field Shape.
 ") SetShape;
 		void SetShape(const StepElement_Element2dShape Shape);
 
@@ -3472,7 +3472,7 @@ StepElement_Element2dShape
 
 Description
 -----------
-Returns field shape.
+Returns field Shape.
 ") Shape;
 		StepElement_Element2dShape Shape();
 
@@ -3514,7 +3514,7 @@ opencascade::handle<StepElement_SurfaceSection>
 
 Description
 -----------
-Returns field definition.
+Returns field Definition.
 ") Definition;
 		opencascade::handle<StepElement_SurfaceSection> Definition();
 
@@ -3550,7 +3550,7 @@ None
 
 Description
 -----------
-Set field definition.
+Set field Definition.
 ") SetDefinition;
 		void SetDefinition(const opencascade::handle<StepElement_SurfaceSection> & Definition);
 
@@ -3592,7 +3592,7 @@ bool
 
 Description
 -----------
-Returns field additionalnodevalues.
+Returns field AdditionalNodeValues.
 ") AdditionalNodeValues;
 		Standard_Boolean AdditionalNodeValues();
 
@@ -3605,7 +3605,7 @@ opencascade::handle<StepElement_HArray1OfSurfaceSection>
 
 Description
 -----------
-Returns field definitions.
+Returns field Definitions.
 ") Definitions;
 		opencascade::handle<StepElement_HArray1OfSurfaceSection> Definitions();
 
@@ -3642,7 +3642,7 @@ None
 
 Description
 -----------
-Set field additionalnodevalues.
+Set field AdditionalNodeValues.
 ") SetAdditionalNodeValues;
 		void SetAdditionalNodeValues(const Standard_Boolean AdditionalNodeValues);
 
@@ -3660,7 +3660,7 @@ None
 
 Description
 -----------
-Set field definitions.
+Set field Definitions.
 ") SetDefinitions;
 		void SetDefinitions(const opencascade::handle<StepElement_HArray1OfSurfaceSection> & Definitions);
 
@@ -3702,7 +3702,7 @@ StepElement_MeasureOrUnspecifiedValue
 
 Description
 -----------
-Returns field bendingthickness.
+Returns field BendingThickness.
 ") BendingThickness;
 		StepElement_MeasureOrUnspecifiedValue BendingThickness();
 
@@ -3743,7 +3743,7 @@ None
 
 Description
 -----------
-Set field bendingthickness.
+Set field BendingThickness.
 ") SetBendingThickness;
 		void SetBendingThickness(const StepElement_MeasureOrUnspecifiedValue & BendingThickness);
 
@@ -3761,7 +3761,7 @@ None
 
 Description
 -----------
-Set field shearthickness.
+Set field ShearThickness.
 ") SetShearThickness;
 		void SetShearThickness(const StepElement_MeasureOrUnspecifiedValue & ShearThickness);
 
@@ -3779,7 +3779,7 @@ None
 
 Description
 -----------
-Set field thickness.
+Set field Thickness.
 ") SetThickness;
 		void SetThickness(const Standard_Real Thickness);
 
@@ -3792,7 +3792,7 @@ StepElement_MeasureOrUnspecifiedValue
 
 Description
 -----------
-Returns field shearthickness.
+Returns field ShearThickness.
 ") ShearThickness;
 		StepElement_MeasureOrUnspecifiedValue ShearThickness();
 
@@ -3805,7 +3805,7 @@ float
 
 Description
 -----------
-Returns field thickness.
+Returns field Thickness.
 ") Thickness;
 		Standard_Real Thickness();
 
@@ -3868,7 +3868,7 @@ opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember>
 
 Description
 -----------
-Returns field purpose.
+Returns field Purpose.
 ") Purpose;
 		opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> Purpose();
 
@@ -3886,7 +3886,7 @@ None
 
 Description
 -----------
-Set field purpose.
+Set field Purpose.
 ") SetPurpose;
 		void SetPurpose(const opencascade::handle<StepElement_HArray1OfVolumeElementPurposeMember> & Purpose);
 
@@ -3904,7 +3904,7 @@ None
 
 Description
 -----------
-Set field shape.
+Set field Shape.
 ") SetShape;
 		void SetShape(const StepElement_Volume3dElementShape Shape);
 
@@ -3917,7 +3917,7 @@ StepElement_Volume3dElementShape
 
 Description
 -----------
-Returns field shape.
+Returns field Shape.
 ") Shape;
 		StepElement_Volume3dElementShape Shape();
 

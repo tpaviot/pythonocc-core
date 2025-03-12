@@ -154,7 +154,7 @@ None
 
 Description
 -----------
-Make a symmetry transformation af axis defined by <point> and <direc>.
+Make a symmetry transformation af axis defined by <Point> and <Direc>.
 ") GCE2d_MakeMirror;
 		 GCE2d_MakeMirror(const gp_Pnt2d & Point, const gp_Dir2d & Direc);
 
@@ -200,7 +200,7 @@ None
 
 Description
 -----------
-Constructs a rotation through angle angle about the center point.
+Constructs a rotation through angle Angle about the center Point.
 ") GCE2d_MakeRotation;
 		 GCE2d_MakeRotation(const gp_Pnt2d & Point, const Standard_Real Angle);
 
@@ -246,7 +246,7 @@ None
 
 Description
 -----------
-Constructs a scaling transformation with - point as the center of the transformation, and - scale as the scale factor.
+Constructs a scaling transformation with - Point as the center of the transformation, and - Scale as the scale factor.
 ") GCE2d_MakeScale;
 		 GCE2d_MakeScale(const gp_Pnt2d & Point, const Standard_Real Scale);
 
@@ -291,7 +291,7 @@ None
 
 Description
 -----------
-Constructs a translation along the vector vect.
+Constructs a translation along the vector Vect.
 ") GCE2d_MakeTranslation;
 		 GCE2d_MakeTranslation(const gp_Vec2d & Vect);
 
@@ -310,7 +310,7 @@ None
 
 Description
 -----------
-Constructs a translation along the vector (point1,point2) defined from the point point1 to the point point2.
+Constructs a translation along the vector (Point1,Point2) defined from the point Point1 to the point Point2.
 ") GCE2d_MakeTranslation;
 		 GCE2d_MakeTranslation(const gp_Pnt2d & Point1, const gp_Pnt2d & Point2);
 
@@ -363,7 +363,7 @@ gce_ErrorType
 
 Description
 -----------
-Returns the status of the construction - gce_done, if the construction is successful, or - another value of the gce_errortype enumeration indicating why the construction failed.
+Returns the status of the construction - gce_Done, if the construction is successful, or - another value of the gce_ErrorType enumeration indicating why the construction failed.
 ") Status;
 		gce_ErrorType Status();
 
@@ -398,7 +398,7 @@ None
 
 Description
 -----------
-Makes an arc of circle (trimmedcurve from geom2d) from a circle between two parameters alpha1 and alpha2. the two parameters are angles. the parameters are in radians.
+Makes an arc of circle (TrimmedCurve from Geom2d) from a circle between two parameters Alpha1 and Alpha2. The two parameters are angles. The parameters are in radians.
 ") GCE2d_MakeArcOfCircle;
 		 GCE2d_MakeArcOfCircle(const gp_Circ2d & Circ, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Boolean Sense = Standard_True);
 
@@ -419,7 +419,7 @@ None
 
 Description
 -----------
-Makes an arc of circle (trimmedcurve from geom2d) from a circle between point <p> and the parameter alpha. alpha is given in radians.
+Makes an arc of circle (TrimmedCurve from Geom2d) from a circle between point <P> and the parameter Alpha. Alpha is given in radians.
 ") GCE2d_MakeArcOfCircle;
 		 GCE2d_MakeArcOfCircle(const gp_Circ2d & Circ, const gp_Pnt2d & P, const Standard_Real Alpha, const Standard_Boolean Sense = Standard_True);
 
@@ -440,7 +440,7 @@ None
 
 Description
 -----------
-Makes an arc of circle (trimmedcurve from geom2d) from a circle between two points p1 and p2.
+Makes an arc of circle (TrimmedCurve from Geom2d) from a circle between two points P1 and P2.
 ") GCE2d_MakeArcOfCircle;
 		 GCE2d_MakeArcOfCircle(const gp_Circ2d & Circ, const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Boolean Sense = Standard_True);
 
@@ -460,7 +460,7 @@ None
 
 Description
 -----------
-Makes an arc of circle (trimmedcurve from geom2d) from three points p1,p2,p3 between two points p1 and p3, and passing through the point p2.
+Makes an arc of circle (TrimmedCurve from Geom2d) from three points P1,P2,P3 between two points P1 and P3, and passing through the point P2.
 ") GCE2d_MakeArcOfCircle;
 		 GCE2d_MakeArcOfCircle(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const gp_Pnt2d & P3);
 
@@ -480,7 +480,7 @@ None
 
 Description
 -----------
-Makes an arc of circle (trimmedcurve from geom2d) from two points p1,p2 and the tangente to the solution at the point p1.
+Makes an arc of circle (TrimmedCurve from Geom2d) from two points P1,P2 and the tangente to the solution at the point P1.
 ") GCE2d_MakeArcOfCircle;
 		 GCE2d_MakeArcOfCircle(const gp_Pnt2d & P1, const gp_Vec2d & V, const gp_Pnt2d & P2);
 
@@ -493,7 +493,7 @@ opencascade::handle<Geom2d_TrimmedCurve>
 
 Description
 -----------
-Returns the constructed arc of circle. exceptions stdfail_notdone if no arc of circle is constructed.
+Returns the constructed arc of circle. Exceptions StdFail_NotDone if no arc of circle is constructed.
 ") Value;
 		const opencascade::handle<Geom2d_TrimmedCurve> & Value();
 
@@ -528,7 +528,7 @@ None
 
 Description
 -----------
-Make an arc of ellipse (trimmedcurve from geom2d) from a ellipse between two parameters alpha1 and alpha2.
+Make an arc of Ellipse (TrimmedCurve from Geom2d) from a Ellipse between two parameters Alpha1 and Alpha2.
 ") GCE2d_MakeArcOfEllipse;
 		 GCE2d_MakeArcOfEllipse(const gp_Elips2d & Elips, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Boolean Sense = Standard_True);
 
@@ -549,7 +549,7 @@ None
 
 Description
 -----------
-Make an arc of ellipse (trimmedcurve from geom2d) from a ellipse between point <p> and the parameter alpha.
+Make an arc of Ellipse (TrimmedCurve from Geom2d) from a Ellipse between point <P> and the parameter Alpha.
 ") GCE2d_MakeArcOfEllipse;
 		 GCE2d_MakeArcOfEllipse(const gp_Elips2d & Elips, const gp_Pnt2d & P, const Standard_Real Alpha, const Standard_Boolean Sense = Standard_True);
 
@@ -570,7 +570,7 @@ None
 
 Description
 -----------
-Make an arc of ellipse (trimmedcurve from geom2d) from a ellipse between two points p1 and p2. please, note: the orientation of the arc is: - the trigonometric sense if sense is not defined or is true (default value), or - the opposite sense if sense is false. - alpha1, alpha2 and alpha are angle values, given in radians. - isdone always returns true.
+Make an arc of Ellipse (TrimmedCurve from Geom2d) from a Ellipse between two points P1 and P2. Please, note: The orientation of the arc is: - the trigonometric sense if Sense is not defined or is true (default value), or - the opposite sense if Sense is false. - Alpha1, Alpha2 and Alpha are angle values, given in radians. - IsDone always returns true.
 ") GCE2d_MakeArcOfEllipse;
 		 GCE2d_MakeArcOfEllipse(const gp_Elips2d & Elips, const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Boolean Sense = Standard_True);
 
@@ -618,7 +618,7 @@ None
 
 Description
 -----------
-Makes an arc of hyperbola (trimmedcurve from geom2d) from a hyperbola between two parameters alpha1 and alpha2.
+Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from a Hyperbola between two parameters Alpha1 and Alpha2.
 ") GCE2d_MakeArcOfHyperbola;
 		 GCE2d_MakeArcOfHyperbola(const gp_Hypr2d & Hypr, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Boolean Sense = Standard_True);
 
@@ -639,7 +639,7 @@ None
 
 Description
 -----------
-Makes an arc of hyperbola (trimmedcurve from geom2d) from a hyperbola between point <p> and the parameter alpha.
+Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from a Hyperbola between point <P> and the parameter Alpha.
 ") GCE2d_MakeArcOfHyperbola;
 		 GCE2d_MakeArcOfHyperbola(const gp_Hypr2d & Hypr, const gp_Pnt2d & P, const Standard_Real Alpha, const Standard_Boolean Sense = Standard_True);
 
@@ -660,7 +660,7 @@ None
 
 Description
 -----------
-Makes an arc of hyperbola (trimmedcurve from geom2d) from a hyperbola between two points p1 and p2. note: the orientation of the arc of hyperbola is: - the trigonometric sense if sense is not defined or is true (default value), or - the opposite sense if sense is false. - isdone always returns true.
+Makes an arc of Hyperbola (TrimmedCurve from Geom2d) from a Hyperbola between two points P1 and P2. Note: the orientation of the arc of hyperbola is: - the trigonometric sense if Sense is not defined or is true (default value), or - the opposite sense if Sense is false. - IsDone always returns true.
 ") GCE2d_MakeArcOfHyperbola;
 		 GCE2d_MakeArcOfHyperbola(const gp_Hypr2d & Hypr, const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Boolean Sense = Standard_True);
 
@@ -708,7 +708,7 @@ None
 
 Description
 -----------
-Make an arc of parabola (trimmedcurve from geom2d) from a parabola between two parameters alpha1 and alpha2.
+Make an arc of Parabola (TrimmedCurve from Geom2d) from a Parabola between two parameters Alpha1 and Alpha2.
 ") GCE2d_MakeArcOfParabola;
 		 GCE2d_MakeArcOfParabola(const gp_Parab2d & Parab, const Standard_Real Alpha1, const Standard_Real Alpha2, const Standard_Boolean Sense = Standard_True);
 
@@ -729,7 +729,7 @@ None
 
 Description
 -----------
-Make an arc of parabola (trimmedcurve from geom2d) from a parabola between point <p> and the parameter alpha.
+Make an arc of Parabola (TrimmedCurve from Geom2d) from a Parabola between point <P> and the parameter Alpha.
 ") GCE2d_MakeArcOfParabola;
 		 GCE2d_MakeArcOfParabola(const gp_Parab2d & Parab, const gp_Pnt2d & P, const Standard_Real Alpha, const Standard_Boolean Sense = Standard_True);
 
@@ -750,7 +750,7 @@ None
 
 Description
 -----------
-Make an arc of parabola (trimmedcurve from geom2d) from a parabola between two points p1 and p2. please, note: the orientation of the arc of parabola is: - the trigonometric sense if sense is not defined or is true (default value), or - the opposite sense if sense is false. - isdone always returns true.
+Make an arc of Parabola (TrimmedCurve from Geom2d) from a Parabola between two points P1 and P2. Please, note: the orientation of the arc of parabola is: - the trigonometric sense if Sense is not defined or is true (default value), or - the opposite sense if Sense is false. - IsDone always returns true.
 ") GCE2d_MakeArcOfParabola;
 		 GCE2d_MakeArcOfParabola(const gp_Parab2d & Parab, const gp_Pnt2d & P1, const gp_Pnt2d & P2, const Standard_Boolean Sense = Standard_True);
 
@@ -795,7 +795,7 @@ None
 
 Description
 -----------
-Creates a circle from a non persistent one.
+creates a circle from a non persistent one.
 ") GCE2d_MakeCircle;
 		 GCE2d_MakeCircle(const gp_Circ2d & C);
 
@@ -815,7 +815,7 @@ None
 
 Description
 -----------
-A is the 'xaxis' of the circle which defines the origin of parametrization. it is not forbidden to create a circle with radius = 0.0 the status is 'negativeradius' if radius < 0.
+A is the 'XAxis' of the circle which defines the origin of parametrization. It is not forbidden to create a circle with Radius = 0.0 The status is 'NegativeRadius' if Radius < 0.
 ") GCE2d_MakeCircle;
 		 GCE2d_MakeCircle(const gp_Ax2d & A, const Standard_Real Radius, const Standard_Boolean Sense = Standard_True);
 
@@ -834,7 +834,7 @@ None
 
 Description
 -----------
-A is the local coordinate system of the circle which defines the origin of parametrization. it is not forbidden to create a circle with radius = 0.0 the status is 'negativeradius' if radius < 0.
+A is the local coordinate system of the circle which defines the origin of parametrization. It is not forbidden to create a circle with Radius = 0.0 The status is 'NegativeRadius' if Radius < 0.
 ") GCE2d_MakeCircle;
 		 GCE2d_MakeCircle(const gp_Ax22d & A, const Standard_Real Radius);
 
@@ -853,7 +853,7 @@ None
 
 Description
 -----------
-Make a circle from geom2d <thecirc> parallel to another circ <circ> with a distance <dist>. if dist is greater than zero the result is enclosing the circle <circ>, else the result is enclosed by the circle <circ>.
+Make a Circle from Geom2d <TheCirc> parallel to another Circ <Circ> with a distance <Dist>. If Dist is greater than zero the result is enclosing the circle <Circ>, else the result is enclosed by the circle <Circ>.
 ") GCE2d_MakeCircle;
 		 GCE2d_MakeCircle(const gp_Circ2d & Circ, const Standard_Real Dist);
 
@@ -872,7 +872,7 @@ None
 
 Description
 -----------
-Make a circle from geom2d <thecirc> parallel to another circ <circ> and passing through a pnt <point>.
+Make a Circle from Geom2d <TheCirc> parallel to another Circ <Circ> and passing through a Pnt <Point>.
 ") GCE2d_MakeCircle;
 		 GCE2d_MakeCircle(const gp_Circ2d & Circ, const gp_Pnt2d & Point);
 
@@ -892,7 +892,7 @@ None
 
 Description
 -----------
-Make a circ from gp <thecirc> passing through 3 pnt2d <p1>,<p2>,<p3>.
+Make a Circ from gp <TheCirc> passing through 3 Pnt2d <P1>,<P2>,<P3>.
 ") GCE2d_MakeCircle;
 		 GCE2d_MakeCircle(const gp_Pnt2d & P1, const gp_Pnt2d & P2, const gp_Pnt2d & P3);
 
@@ -912,7 +912,7 @@ None
 
 Description
 -----------
-Make a circ from geom2d <thecirc> by its center an radius.
+Make a Circ from geom2d <TheCirc> by its center an radius.
 ") GCE2d_MakeCircle;
 		 GCE2d_MakeCircle(const gp_Pnt2d & P, const Standard_Real Radius, const Standard_Boolean Sense = Standard_True);
 
@@ -932,7 +932,7 @@ None
 
 Description
 -----------
-Makes a circle from geom2d <thecirc> with its center <center> and a point giving the radius. if sense is true the local coordinate system of the solution is direct and non direct in the other case. warning the makecircle class does not prevent the construction of a circle with a null radius. if an error occurs (that is, when isdone returns false), the status function returns: - gce_negativeradius if radius is less than 0.0, or - gce_intersectionerror if points p1, p2 and p3 are collinear and the three are not coincident.
+Makes a Circle from geom2d <TheCirc> with its center <Center> and a point giving the radius. If Sense is true the local coordinate system of the solution is direct and non direct in the other case. Warning The MakeCircle class does not prevent the construction of a circle with a null radius. If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NegativeRadius if Radius is less than 0.0, or - gce_IntersectionError if points P1, P2 and P3 are collinear and the three are not coincident.
 ") GCE2d_MakeCircle;
 		 GCE2d_MakeCircle(const gp_Pnt2d & Center, const gp_Pnt2d & Point, const Standard_Boolean Sense = Standard_True);
 
@@ -945,7 +945,7 @@ opencascade::handle<Geom2d_Circle>
 
 Description
 -----------
-Returns the constructed circle. exceptions stdfail_notdone if no circle is constructed.
+Returns the constructed circle. Exceptions StdFail_NotDone if no circle is constructed.
 ") Value;
 		const opencascade::handle<Geom2d_Circle> & Value();
 
@@ -998,7 +998,7 @@ None
 
 Description
 -----------
-Majoraxis is the local coordinate system of the ellipse. it is the 'xaxis'. the minor axis is the yaxis of the ellipse. sense give the sense of parametrization of the ellipse. it is not forbidden to create an ellipse with majorradius = minorradius. the status is 'invertradius' if majorradius < minorradius or 'negativeradius' if minorradius < 0.
+MajorAxis is the local coordinate system of the ellipse. It is the 'XAxis'. The minor axis is the YAxis of the ellipse. Sense give the sense of parametrization of the Ellipse. It is not forbidden to create an ellipse with MajorRadius = MinorRadius. The status is 'InvertRadius' if MajorRadius < MinorRadius or 'NegativeRadius' if MinorRadius < 0.
 ") GCE2d_MakeEllipse;
 		 GCE2d_MakeEllipse(const gp_Ax2d & MajorAxis, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Boolean Sense = Standard_True);
 
@@ -1018,7 +1018,7 @@ None
 
 Description
 -----------
-Axis is the local coordinate system of the ellipse. it is not forbidden to create an ellipse with majorradius = minorradius. the status is 'invertradius' if majorradius < minorradius or 'negativeradius' if minorradius < 0.
+Axis is the local coordinate system of the ellipse. It is not forbidden to create an ellipse with MajorRadius = MinorRadius. The status is 'InvertRadius' if MajorRadius < MinorRadius or 'NegativeRadius' if MinorRadius < 0.
 ") GCE2d_MakeEllipse;
 		 GCE2d_MakeEllipse(const gp_Ax22d & Axis, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
 
@@ -1038,7 +1038,7 @@ None
 
 Description
 -----------
-Make an ellipse centered on the point center, where - the major axis of the ellipse is defined by center and s1, - its major radius is the distance between center and s1, and - its minor radius is the distance between s2 and the major axis. the implicit orientation of the ellipse is: - the sense defined by axis or e, - the sense defined by points center, s1 and s2, - the trigonometric sense if sense is not given or is true, or - the opposite sense if sense is false.
+Make an Ellipse centered on the point Center, where - the major axis of the ellipse is defined by Center and S1, - its major radius is the distance between Center and S1, and - its minor radius is the distance between S2 and the major axis. The implicit orientation of the ellipse is: - the sense defined by Axis or E, - the sense defined by points Center, S1 and S2, - the trigonometric sense if Sense is not given or is true, or - the opposite sense if Sense is false.
 ") GCE2d_MakeEllipse;
 		 GCE2d_MakeEllipse(const gp_Pnt2d & S1, const gp_Pnt2d & S2, const gp_Pnt2d & Center);
 
@@ -1051,7 +1051,7 @@ opencascade::handle<Geom2d_Ellipse>
 
 Description
 -----------
-Returns the constructed ellipse. exceptions stdfail_notdone if no ellipse is constructed.
+Returns the constructed ellipse. Exceptions StdFail_NotDone if no ellipse is constructed.
 ") Value;
 		const opencascade::handle<Geom2d_Ellipse> & Value();
 
@@ -1083,7 +1083,7 @@ None
 
 Description
 -----------
-Creates an hyperbola from a non persistent one from package gp.
+Creates an Hyperbola from a non persistent one from package gp.
 ") GCE2d_MakeHyperbola;
 		 GCE2d_MakeHyperbola(const gp_Hypr2d & H);
 
@@ -1104,7 +1104,7 @@ None
 
 Description
 -----------
-Majoraxis is the 'xaxis' of the hyperbola. the major radius of the hyperbola is on this 'xaxis' and the minor radius is on the 'yaxis' of the hyperbola. the status is 'negativeradius' if majorradius < 0.0 or if minorradius < 0.0.
+MajorAxis is the 'XAxis' of the hyperbola. The major radius of the hyperbola is on this 'XAxis' and the minor radius is on the 'YAxis' of the hyperbola. The status is 'NegativeRadius' if MajorRadius < 0.0 or if MinorRadius < 0.0.
 ") GCE2d_MakeHyperbola;
 		 GCE2d_MakeHyperbola(const gp_Ax2d & MajorAxis, const Standard_Real MajorRadius, const Standard_Real MinorRadius, const Standard_Boolean Sense);
 
@@ -1124,7 +1124,7 @@ None
 
 Description
 -----------
-Axis is the local coordinate system of the hyperbola. the major radius of the hyperbola is on this 'xaxis' and the minor radius is on the 'yaxis' of the hyperbola. the status is 'negativeradius' if majorradius < 0.0 or if minorradius < 0.0.
+Axis is the local coordinate system of the hyperbola. The major radius of the hyperbola is on this 'XAxis' and the minor radius is on the 'YAxis' of the hyperbola. The status is 'NegativeRadius' if MajorRadius < 0.0 or if MinorRadius < 0.0.
 ") GCE2d_MakeHyperbola;
 		 GCE2d_MakeHyperbola(const gp_Ax22d & Axis, const Standard_Real MajorRadius, const Standard_Real MinorRadius);
 
@@ -1144,7 +1144,7 @@ None
 
 Description
 -----------
-Creates a hyperbol centered on the origin of the coordinate system axis, with major and minor radii majorradius and minorradius, where the major axis is the 'x axis' of axis (axis is the local coordinate system of the hyperbola). the implicit orientation of the ellipse is: - the sense defined by axis or h, - the sense defined by points center, s1 and s2, - the trigonometric sense if sense is not given or is true, or - the opposite sense if sense is false. warning if an error occurs (that is, when isdone returns false), the status function returns: - gce_negativeradius if majorradius or minorradius is less than 0.0, or - gce_invertaxis if the major radius defined by center and s1 is less than the minor radius defined by center, s1 and s2.make an hyperbola with its center and two apexes.
+Creates a hyperbol centered on the origin of the coordinate system Axis, with major and minor radii MajorRadius and MinorRadius, where the major axis is the 'X Axis' of Axis (Axis is the local coordinate system of the hyperbola). The implicit orientation of the ellipse is: - the sense defined by Axis or H, - the sense defined by points Center, S1 and S2, - the trigonometric sense if Sense is not given or is true, or - the opposite sense if Sense is false. Warning If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NegativeRadius if MajorRadius or MinorRadius is less than 0.0, or - gce_InvertAxis if the major radius defined by Center and S1 is less than the minor radius defined by Center, S1 and S2.Make an Hyperbola with its center and two apexes.
 ") GCE2d_MakeHyperbola;
 		 GCE2d_MakeHyperbola(const gp_Pnt2d & S1, const gp_Pnt2d & S2, const gp_Pnt2d & Center);
 
@@ -1157,7 +1157,7 @@ opencascade::handle<Geom2d_Hyperbola>
 
 Description
 -----------
-Returns the constructed hyperbola. exceptions: stdfail_notdone if no hyperbola is constructed.
+Returns the constructed hyperbola. Exceptions: StdFail_NotDone if no hyperbola is constructed.
 ") Value;
 		const opencascade::handle<Geom2d_Hyperbola> & Value();
 
@@ -1189,7 +1189,7 @@ None
 
 Description
 -----------
-Creates a line located in 2d space with the axis placement a. the location of a is the origin of the line.
+Creates a line located in 2D space with the axis placement A. The Location of A is the origin of the line.
 ") GCE2d_MakeLine;
 		 GCE2d_MakeLine(const gp_Ax2d & A);
 
@@ -1226,7 +1226,7 @@ None
 
 Description
 -----------
-P is the origin and v is the direction of the line.
+P is the origin and V is the direction of the line.
 ") GCE2d_MakeLine;
 		 GCE2d_MakeLine(const gp_Pnt2d & P, const gp_Dir2d & V);
 
@@ -1245,7 +1245,7 @@ None
 
 Description
 -----------
-Make a line from geom2d <thelin> parallel to another lin <lin> and passing through a pnt <point>.
+Make a Line from Geom2d <TheLin> parallel to another Lin <Lin> and passing through a Pnt <Point>.
 ") GCE2d_MakeLine;
 		 GCE2d_MakeLine(const gp_Lin2d & Lin, const gp_Pnt2d & Point);
 
@@ -1264,7 +1264,7 @@ None
 
 Description
 -----------
-Make a line from geom2d <thelin> parallel to another lin <lin> at a distance <dist>.
+Make a Line from Geom2d <TheLin> parallel to another Lin <Lin> at a distance <Dist>.
 ") GCE2d_MakeLine;
 		 GCE2d_MakeLine(const gp_Lin2d & Lin, const Standard_Real Dist);
 
@@ -1283,7 +1283,7 @@ None
 
 Description
 -----------
-Make a line from geom2d <thelin> passing through 2 pnt <p1>,<p2>. it returns false if <p1> and <p2> are confused. warning if points p1 and p2 coincident (that is, when isdone returns false), the status function returns gce_confusedpoints.
+Make a Line from Geom2d <TheLin> passing through 2 Pnt <P1>,<P2>. It returns false if <p1> and <P2> are confused. Warning If points P1 and P2 coincident (that is, when IsDone returns false), the Status function returns gce_ConfusedPoints.
 ") GCE2d_MakeLine;
 		 GCE2d_MakeLine(const gp_Pnt2d & P1, const gp_Pnt2d & P2);
 
@@ -1296,7 +1296,7 @@ opencascade::handle<Geom2d_Line>
 
 Description
 -----------
-Returns the constructed line. exceptions stdfail_notdone if no line is constructed.
+Returns the constructed line. Exceptions StdFail_NotDone if no line is constructed.
 ") Value;
 		const opencascade::handle<Geom2d_Line> & Value();
 
@@ -1347,7 +1347,7 @@ None
 
 Description
 -----------
-Creates a parabola with its local coordinate system and it's focal length 'focal'. the 'location' point of 'axis' is the vertex of the parabola status is 'negativefocuslength' if focal < 0.0.
+Creates a parabola with its local coordinate system and it's focal length 'Focal'. The 'Location' point of 'Axis' is the vertex of the parabola Status is 'NegativeFocusLength' if Focal < 0.0.
 ") GCE2d_MakeParabola;
 		 GCE2d_MakeParabola(const gp_Ax22d & Axis, const Standard_Real Focal);
 
@@ -1367,7 +1367,7 @@ None
 
 Description
 -----------
-Creates a parabola with its 'mirroraxis' and it's focal length 'focal'. mirroraxis is the axis of symmetry of the curve, it is the 'xaxis'. the 'yaxis' is parallel to the directrix of the parabola. the 'location' point of 'mirroraxis' is the vertex of the parabola status is 'negativefocuslength' if focal < 0.0.
+Creates a parabola with its 'MirrorAxis' and it's focal length 'Focal'. MirrorAxis is the axis of symmetry of the curve, it is the 'XAxis'. The 'YAxis' is parallel to the directrix of the parabola. The 'Location' point of 'MirrorAxis' is the vertex of the parabola Status is 'NegativeFocusLength' if Focal < 0.0.
 ") GCE2d_MakeParabola;
 		 GCE2d_MakeParabola(const gp_Ax2d & MirrorAxis, const Standard_Real Focal, const Standard_Boolean Sense);
 
@@ -1387,7 +1387,7 @@ None
 
 Description
 -----------
-D is the directrix of the parabola and f the focus point. the symmetry axis 'xaxis' of the parabola is normal to the directrix and pass through the focus point f, but its 'location' point is the vertex of the parabola. the 'yaxis' of the parabola is parallel to d and its 'location' point is the vertex of the parabola.
+D is the directrix of the parabola and F the focus point. The symmetry axis 'XAxis' of the parabola is normal to the directrix and pass through the focus point F, but its 'Location' point is the vertex of the parabola. The 'YAxis' of the parabola is parallel to D and its 'Location' point is the vertex of the parabola.
 ") GCE2d_MakeParabola;
 		 GCE2d_MakeParabola(const gp_Ax2d & D, const gp_Pnt2d & F, const Standard_Boolean Sense = Standard_True);
 
@@ -1406,7 +1406,7 @@ None
 
 Description
 -----------
-Make a parabola with focal point s1 and center o the branch of the parabola returned will have <s1> as focal point the implicit orientation of the parabola is: - the same one as the parabola prb, - the sense defined by the coordinate system axis or the directrix d, - the trigonometric sense if sense is not given or is true, or - the opposite sense if sense is false. warning the makeparabola class does not prevent the construction of a parabola with a null focal distance. if an error occurs (that is, when isdone returns false), the status function returns: - gce_nullfocuslength if focal is less than 0.0, or - gce_nullaxis if points s1 and o are coincident.
+Make a parabola with focal point S1 and center O The branch of the parabola returned will have <S1> as focal point The implicit orientation of the parabola is: - the same one as the parabola Prb, - the sense defined by the coordinate system Axis or the directrix D, - the trigonometric sense if Sense is not given or is true, or - the opposite sense if Sense is false. Warning The MakeParabola class does not prevent the construction of a parabola with a null focal distance. If an error occurs (that is, when IsDone returns false), the Status function returns: - gce_NullFocusLength if Focal is less than 0.0, or - gce_NullAxis if points S1 and O are coincident.
 ") GCE2d_MakeParabola;
 		 GCE2d_MakeParabola(const gp_Pnt2d & S1, const gp_Pnt2d & O);
 
@@ -1419,7 +1419,7 @@ opencascade::handle<Geom2d_Parabola>
 
 Description
 -----------
-Returns the constructed parabola. exceptions stdfail_notdone if no parabola is constructed.
+Returns the constructed parabola. Exceptions StdFail_NotDone if no parabola is constructed.
 ") Value;
 		const opencascade::handle<Geom2d_Parabola> & Value();
 
@@ -1452,7 +1452,7 @@ None
 
 Description
 -----------
-Make a segment of line from the 2 points <p1> and <p2>. status is 'confusedpoints' if <p1> and <p2> are confused.
+Make a segment of Line from the 2 points <P1> and <P2>. Status is 'ConfusedPoints' if <P1> and <P2> are confused.
 ") GCE2d_MakeSegment;
 		 GCE2d_MakeSegment(const gp_Pnt2d & P1, const gp_Pnt2d & P2);
 
@@ -1472,7 +1472,7 @@ None
 
 Description
 -----------
-Make a segment of line from the point <p1> with the direction <p> and ended by the projection of <p2> on the line <p1,v>. status is 'confusedpoints' if <p1> and <p2> are confused.
+Make a segment of Line from the point <P1> with the direction <P> and ended by the projection of <P2> on the line <P1,V>. Status is 'ConfusedPoints' if <P1> and <P2> are confused.
 ") GCE2d_MakeSegment;
 		 GCE2d_MakeSegment(const gp_Pnt2d & P1, const gp_Dir2d & V, const gp_Pnt2d & P2);
 
@@ -1492,7 +1492,7 @@ None
 
 Description
 -----------
-Make a segment of line from the line <line> between the two parameters u1 and u2. status is 'sameparameters' if <u1> is equal <u2>.
+Make a segment of Line from the line <Line> between the two parameters U1 and U2. Status is 'SameParameters' if <U1> is equal <U2>.
 ") GCE2d_MakeSegment;
 		 GCE2d_MakeSegment(const gp_Lin2d & Line, const Standard_Real U1, const Standard_Real U2);
 
@@ -1512,7 +1512,7 @@ None
 
 Description
 -----------
-Make a segment of line from the line <line> between the point <point> and the parameter ulast. it returns nullobject if <u1> is equal <u2>.
+Make a segment of Line from the line <Line> between the point <Point> and the parameter Ulast. It returns NullObject if <U1> is equal <U2>.
 ") GCE2d_MakeSegment;
 		 GCE2d_MakeSegment(const gp_Lin2d & Line, const gp_Pnt2d & Point, const Standard_Real Ulast);
 
@@ -1532,7 +1532,7 @@ None
 
 Description
 -----------
-Make a segment of line from the line <line> between the two points <p1> and <p2>. it returns nullobject if <p1> and <p2> are confused. warning if the points which limit the segment are coincident for given points or for the projection of given points on the line which supports the line segment (that is, when isdone returns false), the status function returns gce_confusedpoints. this warning only concerns the first two constructors.
+Make a segment of Line from the line <Line> between the two points <P1> and <P2>. It returns NullObject if <P1> and <P2> are confused. Warning If the points which limit the segment are coincident for given points or for the projection of given points on the line which supports the line segment (that is, when IsDone returns false), the Status function returns gce_ConfusedPoints. This warning only concerns the first two constructors.
 ") GCE2d_MakeSegment;
 		 GCE2d_MakeSegment(const gp_Lin2d & Line, const gp_Pnt2d & P1, const gp_Pnt2d & P2);
 
@@ -1545,7 +1545,7 @@ opencascade::handle<Geom2d_TrimmedCurve>
 
 Description
 -----------
-Returns the constructed line segment. exceptions stdfail_notdone if no line segment is constructed.
+Returns the constructed line segment. Exceptions StdFail_NotDone if no line segment is constructed.
 ") Value;
 		const opencascade::handle<Geom2d_TrimmedCurve> & Value();
 

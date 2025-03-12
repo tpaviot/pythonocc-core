@@ -102,7 +102,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Returns the correct spline a(u) which will be multiplicated with bs later.
+returns the correct spline a(u) which will be multiplicated with BS later.
 ") Solution;
 		static opencascade::handle<Geom2d_BSplineCurve> Solution(const opencascade::handle<Geom_BSplineCurve> & BS, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
 
@@ -122,7 +122,7 @@ opencascade::handle<Geom2d_BSplineCurve>
 
 Description
 -----------
-Returns the correct spline a(u) which will be multiplicated with bs later.
+returns the correct spline a(u) which will be multiplicated with BS later.
 ") Solution;
 		static opencascade::handle<Geom2d_BSplineCurve> Solution(const opencascade::handle<Geom2d_BSplineCurve> & BS, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
 
@@ -143,7 +143,7 @@ Knotmax: float
 
 Description
 -----------
-Returns the knots to insert to a(u) to stay with a constant sign and in the tolerances.
+returns the knots to insert to a(u) to stay with a constant sign and in the tolerances.
 ") Solutionbis;
 		static void Solutionbis(const opencascade::handle<Geom_BSplineCurve> & BS, Standard_Real &OutValue, Standard_Real &OutValue, const Standard_Real TolPoles = 0.000001, const Standard_Real TolKnots = 0.000001);
 

@@ -83,7 +83,6 @@ from OCC.Core.Exception import *
 /* end templates declaration */
 
 /* typedefs */
-typedef Standard_Real ( * CPnts_RealFunction ) ( const Standard_Real, const Standard_Address );
 /* end typedefs declaration */
 
 /****************************
@@ -121,7 +120,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0>. <resolution> is the error allowed in the computation. the computed point can be outside of the curve 's bounds.
+the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 ") CPnts_AbscissaPoint;
 		 CPnts_AbscissaPoint(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Resolution);
 
@@ -142,7 +141,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0>. <resolution> is the error allowed in the computation. the computed point can be outside of the curve 's bounds.
+the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 ") CPnts_AbscissaPoint;
 		 CPnts_AbscissaPoint(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Resolution);
 
@@ -164,7 +163,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0>. <ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution <resolution> is the error allowed in the computation. the computed point can be outside of the curve 's bounds.
+the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 ") CPnts_AbscissaPoint;
 		 CPnts_AbscissaPoint(const Adaptor3d_Curve & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui, const Standard_Real Resolution);
 
@@ -186,7 +185,7 @@ None
 
 Description
 -----------
-The algorithm computes a point on a curve <curve> at the distance <abscissa> from the point of parameter <u0>. <ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution <resolution> is the error allowed in the computation. the computed point can be outside of the curve 's bounds.
+the algorithm computes a point on a curve <Curve> at the distance <Abscissa> from the point of parameter <U0>. <Ui> is the starting value used in the iterative process which find the solution, it must be closed to the final solution <Resolution> is the error allowed in the computation. The computed point can be outside of the curve 's bounds.
 ") CPnts_AbscissaPoint;
 		 CPnts_AbscissaPoint(const Adaptor2d_Curve2d & C, const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui, const Standard_Real Resolution);
 
@@ -207,7 +206,7 @@ None
 
 Description
 -----------
-Computes the point at the distance <abscissa> of the curve; performs more appropriate tolerance management; to use this method in right way it is necessary to call empty constructor. then call method init with tolerance = resolution, then call advpermorm. u0 is the parameter of the point from which the distance is measured and ui is the starting value for the iterative process (should be close to the final solution).
+Computes the point at the distance <Abscissa> of the curve; performs more appropriate tolerance management; to use this method in right way it is necessary to call empty constructor. then call method Init with Tolerance = Resolution, then call AdvPermorm. U0 is the parameter of the point from which the distance is measured and Ui is the starting value for the iterative process (should be close to the final solution).
 ") AdvPerform;
 		void AdvPerform(const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui, const Standard_Real Resolution);
 
@@ -225,7 +224,7 @@ None
 
 Description
 -----------
-Initializes the resolution function with <c>.
+Initializes the resolution function with <C>.
 ") Init;
 		void Init(const Adaptor3d_Curve & C);
 
@@ -243,7 +242,7 @@ None
 
 Description
 -----------
-Initializes the resolution function with <c>.
+Initializes the resolution function with <C>.
 ") Init;
 		void Init(const Adaptor2d_Curve2d & C);
 
@@ -262,7 +261,7 @@ None
 
 Description
 -----------
-Initializes the resolution function with <c>.
+Initializes the resolution function with <C>.
 ") Init;
 		void Init(const Adaptor3d_Curve & C, const Standard_Real Tol);
 
@@ -281,7 +280,7 @@ None
 
 Description
 -----------
-Initializes the resolution function with <c>.
+Initializes the resolution function with <C>.
 ") Init;
 		void Init(const Adaptor2d_Curve2d & C, const Standard_Real Tol);
 
@@ -301,7 +300,7 @@ None
 
 Description
 -----------
-Initializes the resolution function with <c> between u1 and u2.
+Initializes the resolution function with <C> between U1 and U2.
 ") Init;
 		void Init(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2);
 
@@ -321,7 +320,7 @@ None
 
 Description
 -----------
-Initializes the resolution function with <c> between u1 and u2.
+Initializes the resolution function with <C> between U1 and U2.
 ") Init;
 		void Init(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2);
 
@@ -342,7 +341,7 @@ None
 
 Description
 -----------
-Initializes the resolution function with <c> between u1 and u2.
+Initializes the resolution function with <C> between U1 and U2.
 ") Init;
 		void Init(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
 
@@ -363,7 +362,7 @@ None
 
 Description
 -----------
-Initializes the resolution function with <c> between u1 and u2.
+Initializes the resolution function with <C> between U1 and U2.
 ") Init;
 		void Init(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
 
@@ -376,7 +375,7 @@ bool
 
 Description
 -----------
-True if the computation was successful, false otherwise.
+True if the computation was successful, False otherwise.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -394,7 +393,7 @@ float
 
 Description
 -----------
-Computes the length of the curve <c>.
+Computes the length of the Curve <C>.
 ") Length;
 		static Standard_Real Length(const Adaptor3d_Curve & C);
 
@@ -412,7 +411,7 @@ float
 
 Description
 -----------
-Computes the length of the curve <c>.
+Computes the length of the Curve <C>.
 ") Length;
 		static Standard_Real Length(const Adaptor2d_Curve2d & C);
 
@@ -431,7 +430,7 @@ float
 
 Description
 -----------
-Computes the length of the curve <c> with the given tolerance.
+Computes the length of the Curve <C> with the given tolerance.
 ") Length;
 		static Standard_Real Length(const Adaptor3d_Curve & C, const Standard_Real Tol);
 
@@ -450,7 +449,7 @@ float
 
 Description
 -----------
-Computes the length of the curve <c> with the given tolerance.
+Computes the length of the Curve <C> with the given tolerance.
 ") Length;
 		static Standard_Real Length(const Adaptor2d_Curve2d & C, const Standard_Real Tol);
 
@@ -470,7 +469,7 @@ float
 
 Description
 -----------
-Computes the length of the curve <c> between <u1> and <u2>.
+Computes the length of the Curve <C> between <U1> and <U2>.
 ") Length;
 		static Standard_Real Length(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2);
 
@@ -490,7 +489,7 @@ float
 
 Description
 -----------
-Computes the length of the curve <c> between <u1> and <u2>.
+Computes the length of the Curve <C> between <U1> and <U2>.
 ") Length;
 		static Standard_Real Length(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2);
 
@@ -511,7 +510,7 @@ float
 
 Description
 -----------
-Computes the length of the curve <c> between <u1> and <u2> with the given tolerance.
+Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance.
 ") Length;
 		static Standard_Real Length(const Adaptor3d_Curve & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
 
@@ -532,7 +531,7 @@ float
 
 Description
 -----------
-Computes the length of the curve <c> between <u1> and <u2> with the given tolerance. creation of a indefinite abscissapoint.
+Computes the length of the Curve <C> between <U1> and <U2> with the given tolerance. creation of a indefinite AbscissaPoint.
 ") Length;
 		static Standard_Real Length(const Adaptor2d_Curve2d & C, const Standard_Real U1, const Standard_Real U2, const Standard_Real Tol);
 
@@ -565,7 +564,7 @@ None
 
 Description
 -----------
-Computes the point at the distance <abscissa> of the curve. u0 is the parameter of the point from which the distance is measured.
+Computes the point at the distance <Abscissa> of the curve. U0 is the parameter of the point from which the distance is measured.
 ") Perform;
 		void Perform(const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Resolution);
 
@@ -586,7 +585,7 @@ None
 
 Description
 -----------
-Computes the point at the distance <abscissa> of the curve. u0 is the parameter of the point from which the distance is measured and ui is the starting value for the iterative process (should be close to the final solution).
+Computes the point at the distance <Abscissa> of the curve. U0 is the parameter of the point from which the distance is measured and Ui is the starting value for the iterative process (should be close to the final solution).
 ") Perform;
 		void Perform(const Standard_Real Abscissa, const Standard_Real U0, const Standard_Real Ui, const Standard_Real Resolution);
 
@@ -604,7 +603,7 @@ None
 
 Description
 -----------
-Enforce the solution, used by gcpnts.
+Enforce the solution, used by GCPnts.
 ") SetParameter;
 		void SetParameter(const Standard_Real P);
 
@@ -650,7 +649,7 @@ None
 
 Description
 -----------
-F is a pointer on a function d is a client data //! each value is computed with f(d).
+F is a pointer on a function D is a client data //! Each value is computed with F(D).
 ") Init;
 		void Init(const CPnts_RealFunction & F, const Standard_Address D);
 
@@ -713,7 +712,7 @@ Df: float
 
 Description
 -----------
-This is f(x,d).
+This is F(X,D).
 ") Derivative;
 		Standard_Boolean Derivative(const Standard_Real X, Standard_Real &OutValue);
 
@@ -733,7 +732,7 @@ None
 
 Description
 -----------
-F is a pointer on a function d is a client data order is the order of integration to use.
+F is a pointer on a function D is a client data Order is the order of integration to use.
 ") Init;
 		void Init(const CPnts_RealFunction & F, const Standard_Address D, const Standard_Integer Order);
 
@@ -752,7 +751,7 @@ None
 
 Description
 -----------
-We want to solve integral(x0,x,f(x,d)) = l.
+We want to solve Integral(X0,X,F(X,D)) = L.
 ") Init;
 		void Init(const Standard_Real X0, const Standard_Real L);
 
@@ -772,7 +771,7 @@ None
 
 Description
 -----------
-We want to solve integral(x0,x,f(x,d)) = l with given tolerance.
+We want to solve Integral(X0,X,F(X,D)) = L with given tolerance.
 ") Init;
 		void Init(const Standard_Real X0, const Standard_Real L, const Standard_Real Tol);
 
@@ -790,7 +789,7 @@ F: float
 
 Description
 -----------
-This is integral(x0,x,f(x,d)) - l.
+This is Integral(X0,X,F(X,D)) - L.
 ") Value;
 		Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -836,7 +835,7 @@ None
 
 Description
 -----------
-Creation of a indefinite uniformdeflection.
+creation of a indefinite UniformDeflection.
 ") CPnts_UniformDeflection;
 		 CPnts_UniformDeflection();
 
@@ -857,7 +856,7 @@ None
 
 Description
 -----------
-Computes a uniform deflection distribution of points on the curve <c>. <deflection> defines the constant deflection value. the algorithm computes the number of points and the points. the curve <c> must be at least c2 else the computation can fail. if just some parts of the curve is c2 it is better to give the parameters bounds and to use the below constructor . if <withcontrol> is true, the algorithm controls the estimate deflection when the curve is singular at the point p(u),the algorithm computes the next point as p(u + max(currentstep,abs(lastparameter-firstparameter))) if the singularity is at the first point ,the next point calculated is the p(lastparameter).
+Computes a uniform deflection distribution of points on the curve <C>. <Deflection> defines the constant deflection value. The algorithm computes the number of points and the points. The curve <C> must be at least C2 else the computation can fail. If just some parts of the curve is C2 it is better to give the parameters bounds and to use the below constructor . if <WithControl> is True, the algorithm controls the estimate deflection when the curve is singular at the point P(u),the algorithm computes the next point as P(u + Max(CurrentStep,Abs(LastParameter-FirstParameter))) if the singularity is at the first point ,the next point calculated is the P(LastParameter).
 ") CPnts_UniformDeflection;
 		 CPnts_UniformDeflection(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real Resolution, const Standard_Boolean WithControl);
 
@@ -901,7 +900,7 @@ None
 
 Description
 -----------
-Computes an uniform deflection distribution of points on a part of the curve <c>. deflection defines the step between the points. <u1> and <u2> define the distribution span. <u1> and <u2> must be in the parametric range of the curve.
+Computes an uniform deflection distribution of points on a part of the curve <C>. Deflection defines the step between the points. <U1> and <U2> define the distribution span. <U1> and <U2> must be in the parametric range of the curve.
 ") CPnts_UniformDeflection;
 		 CPnts_UniformDeflection(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Real Resolution, const Standard_Boolean WithControl);
 
@@ -945,7 +944,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with <c>, <deflection>, <ustep>, <resolution> and <withcontrol>.
+Initialize the algorithms with <C>, <Deflection>, <UStep>, <Resolution> and <WithControl>.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real Resolution, const Standard_Boolean WithControl);
 
@@ -966,7 +965,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with <c>, <deflection>, <ustep>, <resolution> and <withcontrol>.
+Initialize the algorithms with <C>, <Deflection>, <UStep>, <Resolution> and <WithControl>.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Real Resolution, const Standard_Boolean WithControl);
 
@@ -989,7 +988,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with <c>, <deflection>, <ustep>, <u1>, <u2> and <withcontrol>.
+Initialize the algorithms with <C>, <Deflection>, <UStep>, <U1>, <U2> and <WithControl>.
 ") Initialize;
 		void Initialize(const Adaptor3d_Curve & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Real Resolution, const Standard_Boolean WithControl);
 
@@ -1012,7 +1011,7 @@ None
 
 Description
 -----------
-Initialize the algorithms with <c>, <deflection>, <ustep>, <u1>, <u2> and <withcontrol>.
+Initialize the algorithms with <C>, <Deflection>, <UStep>, <U1>, <U2> and <WithControl>.
 ") Initialize;
 		void Initialize(const Adaptor2d_Curve2d & C, const Standard_Real Deflection, const Standard_Real U1, const Standard_Real U2, const Standard_Real Resolution, const Standard_Boolean WithControl);
 
@@ -1025,7 +1024,7 @@ bool
 
 Description
 -----------
-To know if all the calculus were done successfully (ie all the points have been computed). the calculus can fail if the curve is not c1 in the considered domain. returns true if the calculus was successful.
+To know if all the calculus were done successfully (ie all the points have been computed). The calculus can fail if the Curve is not C1 in the considered domain. Returns True if the calculus was successful.
 ") IsAllDone;
 		Standard_Boolean IsAllDone();
 
@@ -1038,7 +1037,7 @@ bool
 
 Description
 -----------
-Returns true if it exists a next point.
+returns True if it exists a next Point.
 ") More;
 		Standard_Boolean More();
 
@@ -1051,7 +1050,7 @@ None
 
 Description
 -----------
-Go to the next point.
+go to the next Point.
 ") Next;
 		void Next();
 
@@ -1064,7 +1063,7 @@ gp_Pnt
 
 Description
 -----------
-Return the computed parameter.
+return the computed parameter.
 ") Point;
 		gp_Pnt Point();
 
@@ -1077,7 +1076,7 @@ float
 
 Description
 -----------
-Return the computed parameter.
+return the computed parameter.
 ") Value;
 		Standard_Real Value();
 

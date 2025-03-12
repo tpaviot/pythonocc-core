@@ -125,7 +125,7 @@ None
 
 Description
 -----------
-Adds the attribute drivers to <adrivertable>.
+Adds the attribute drivers to <aDriverTable>.
 ") AddDrivers;
 		static void AddDrivers(const opencascade::handle<XmlMDF_ADriverTable> & aDriverTable, const opencascade::handle<Message_Messenger> & anMsgDrv);
 
@@ -857,7 +857,7 @@ None
 
 Description
 -----------
-Translate a non storable location to a storable location.
+Translate a non storable Location to a storable Location.
 ") Translate;
 		void Translate(const TopLoc_Location & theLoc, XmlObjMgt_Element & theParent, XmlObjMgt_SRelocationTable & theMap);
 
@@ -877,7 +877,7 @@ bool
 
 Description
 -----------
-Translate a storable location to a non storable location.
+Translate a storable Location to a non storable Location.
 ") Translate;
 		Standard_Boolean Translate(const XmlObjMgt_Element & theParent, TopLoc_Location & theLoc, XmlObjMgt_RRelocationTable & theMap);
 
@@ -1068,7 +1068,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Create new instance of xcafdoc_vismaterial.
+Create new instance of XCAFDoc_VisMaterial.
 ") NewEmpty;
 		opencascade::handle<TDF_Attribute> NewEmpty();
 
@@ -1155,7 +1155,7 @@ opencascade::handle<TDF_Attribute>
 
 Description
 -----------
-Create new instance of xcafdoc_vismaterialtool.
+Create new instance of XCAFDoc_VisMaterialTool.
 ") NewEmpty;
 		virtual opencascade::handle<TDF_Attribute> NewEmpty();
 

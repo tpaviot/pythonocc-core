@@ -123,7 +123,7 @@ None
 
 Description
 -----------
-Computes the linear global properties of the shape s, i.e. the global properties induced by each edge of the shape s, and brings them together with the global properties still retained by the framework lprops. if the current system of lprops was empty, its global properties become equal to the linear global properties of s. for this computation no linear density is attached to the edges. so, for example, the added mass corresponds to the sum of the lengths of the edges of s. the density of the composed systems, i.e. that of each component of the current system of lprops, and that of s which is considered to be equal to 1, must be coherent. note that this coherence cannot be checked. you are advised to use a separate framework for each density, and then to bring these frameworks together into a global one. the point relative to which the inertia of the system is computed is the reference point of the framework lprops. note: if your programming ensures that the framework lprops retains only linear global properties (brought together for example, by the function linearproperties) for objects the density of which is equal to 1 (or is not defined), the function mass will return the total length of edges of the system analysed by lprops. warning no check is performed to verify that the shape s retains truly linear properties. if s is simply a vertex, it is not considered to present any additional global properties. skipshared is a special flag, which allows taking in calculation shared topological entities or not. for ex., if skipshared = true, edges, shared by two or more faces, are taken into calculation only once. if we have cube with sizes 1, 1, 1, its linear properties = 12 for skipedges = true and 24 for skipedges = false. usetriangulation is a special flag, which defines preferable source of geometry data. if usetriangulation = standard_false, exact geometry objects (curves) are used, otherwise polygons of triangulation are used first.
+Computes the linear global properties of the shape S, i.e. the global properties induced by each edge of the shape S, and brings them together with the global properties still retained by the framework LProps. If the current system of LProps was empty, its global properties become equal to the linear global properties of S. For this computation no linear density is attached to the edges. So, for example, the added mass corresponds to the sum of the lengths of the edges of S. The density of the composed systems, i.e. that of each component of the current system of LProps, and that of S which is considered to be equal to 1, must be coherent. Note that this coherence cannot be checked. You are advised to use a separate framework for each density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework LProps. Note: if your programming ensures that the framework LProps retains only linear global properties (brought together for example, by the function LinearProperties) for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total length of edges of the system analysed by LProps. Warning No check is performed to verify that the shape S retains truly linear properties. If S is simply a vertex, it is not considered to present any additional global properties. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, edges, shared by two or more faces, are taken into calculation only once. If we have cube with sizes 1, 1, 1, its linear properties = 12 for SkipEdges = true and 24 for SkipEdges = false. UseTriangulation is a special flag, which defines preferable source of geometry data. If UseTriangulation = Standard_False, exact geometry objects (curves) are used, otherwise polygons of triangulation are used first.
 ") LinearProperties;
 		static void LinearProperties(const TopoDS_Shape & S, GProp_GProps & LProps, const Standard_Boolean SkipShared = Standard_False, const Standard_Boolean UseTriangulation = Standard_False);
 
@@ -144,7 +144,7 @@ None
 
 Description
 -----------
-Computes the surface global properties of the shape s, i.e. the global properties induced by each face of the shape s, and brings them together with the global properties still retained by the framework sprops. if the current system of sprops was empty, its global properties become equal to the surface global properties of s. for this computation, no surface density is attached to the faces. consequently, the added mass corresponds to the sum of the areas of the faces of s. the density of the component systems, i.e. that of each component of the current system of sprops, and that of s which is considered to be equal to 1, must be coherent. note that this coherence cannot be checked. you are advised to use a framework for each different value of density, and then to bring these frameworks together into a global one. the point relative to which the inertia of the system is computed is the reference point of the framework sprops. note: if your programming ensures that the framework sprops retains only surface global properties, brought together, for example, by the function surfaceproperties, for objects the density of which is equal to 1 (or is not defined), the function mass will return the total area of faces of the system analysed by sprops. warning no check is performed to verify that the shape s retains truly surface properties. if s is simply a vertex, an edge or a wire, it is not considered to present any additional global properties. skipshared is a special flag, which allows taking in calculation shared topological entities or not. for ex., if skipshared = true, faces, shared by two or more shells, are taken into calculation only once. usetriangulation is a special flag, which defines preferable source of geometry data. if usetriangulation = standard_false, exact geometry objects (surfaces) are used, otherwise face triangulations are used first.
+Computes the surface global properties of the shape S, i.e. the global properties induced by each face of the shape S, and brings them together with the global properties still retained by the framework SProps. If the current system of SProps was empty, its global properties become equal to the surface global properties of S. For this computation, no surface density is attached to the faces. Consequently, the added mass corresponds to the sum of the areas of the faces of S. The density of the component systems, i.e. that of each component of the current system of SProps, and that of S which is considered to be equal to 1, must be coherent. Note that this coherence cannot be checked. You are advised to use a framework for each different value of density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework SProps. Note: if your programming ensures that the framework SProps retains only surface global properties, brought together, for example, by the function SurfaceProperties, for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total area of faces of the system analysed by SProps. Warning No check is performed to verify that the shape S retains truly surface properties. If S is simply a vertex, an edge or a wire, it is not considered to present any additional global properties. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, faces, shared by two or more shells, are taken into calculation only once. UseTriangulation is a special flag, which defines preferable source of geometry data. If UseTriangulation = Standard_False, exact geometry objects (surfaces) are used, otherwise face triangulations are used first.
 ") SurfaceProperties;
 		static void SurfaceProperties(const TopoDS_Shape & S, GProp_GProps & SProps, const Standard_Boolean SkipShared = Standard_False, const Standard_Boolean UseTriangulation = Standard_False);
 
@@ -165,7 +165,7 @@ float
 
 Description
 -----------
-Updates <sprops> with the shape <s>, that contains its principal properties. the surface properties of all the faces in <s> are computed. adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (area) for each face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration. method returns estimation of relative error reached for whole shape. warning: if eps > 0.001 algorithm performs non-adaptive integration. skipshared is a special flag, which allows taking in calculation shared topological entities or not for ex., if skipshared = true, faces, shared by two or more shells, are taken into calculation only once.
+Updates <SProps> with the shape <S>, that contains its principal properties. The surface properties of all the faces in <S> are computed. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (area) for each face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. Method returns estimation of relative error reached for whole shape. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. SkipShared is a special flag, which allows taking in calculation shared topological entities or not For ex., if SkipShared = True, faces, shared by two or more shells, are taken into calculation only once.
 ") SurfaceProperties;
 		static Standard_Real SurfaceProperties(const TopoDS_Shape & S, GProp_GProps & SProps, const Standard_Real Eps, const Standard_Boolean SkipShared = Standard_False);
 
@@ -187,7 +187,7 @@ None
 
 Description
 -----------
-//! computes the global volume properties of the solid s, and brings them together with the global properties still retained by the framework vprops. if the current system of vprops was empty, its global properties become equal to the global properties of s for volume. for this computation, no volume density is attached to the solid. consequently, the added mass corresponds to the volume of s. the density of the component systems, i.e. that of each component of the current system of vprops, and that of s which is considered to be equal to 1, must be coherent to each other. note that this coherence cannot be checked. you are advised to use a separate framework for each density, and then to bring these frameworks together into a global one. the point relative to which the inertia of the system is computed is the reference point of the framework vprops. note: if your programming ensures that the framework vprops retains only global properties of volume (brought together for example, by the function volumeproperties) for objects the density of which is equal to 1 (or is not defined), the function mass will return the total volume of the solids of the system analysed by vprops. warning the shape s must represent an object whose global volume properties can be computed. it may be a finite solid, or a series of finite solids all oriented in a coherent way. nonetheless, s must be exempt of any free boundary. note that these conditions of coherence are not checked by this algorithm, and results will be false if they are not respected. skipshared a is special flag, which allows taking in calculation shared topological entities or not. for ex., if skipshared = true, the volumes formed by the equal (the same tshape, location and orientation) faces are taken into calculation only once. usetriangulation is a special flag, which defines preferable source of geometry data. if usetriangulation = standard_false, exact geometry objects (surfaces) are used, otherwise face triangulations are used first.
+//! Computes the global volume properties of the solid S, and brings them together with the global properties still retained by the framework VProps. If the current system of VProps was empty, its global properties become equal to the global properties of S for volume. For this computation, no volume density is attached to the solid. Consequently, the added mass corresponds to the volume of S. The density of the component systems, i.e. that of each component of the current system of VProps, and that of S which is considered to be equal to 1, must be coherent to each other. Note that this coherence cannot be checked. You are advised to use a separate framework for each density, and then to bring these frameworks together into a global one. The point relative to which the inertia of the system is computed is the reference point of the framework VProps. Note: if your programming ensures that the framework VProps retains only global properties of volume (brought together for example, by the function VolumeProperties) for objects the density of which is equal to 1 (or is not defined), the function Mass will return the total volume of the solids of the system analysed by VProps. Warning The shape S must represent an object whose global volume properties can be computed. It may be a finite solid, or a series of finite solids all oriented in a coherent way. Nonetheless, S must be exempt of any free boundary. Note that these conditions of coherence are not checked by this algorithm, and results will be false if they are not respected. SkipShared a is special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, the volumes formed by the equal (the same TShape, location and orientation) faces are taken into calculation only once. UseTriangulation is a special flag, which defines preferable source of geometry data. If UseTriangulation = Standard_False, exact geometry objects (surfaces) are used, otherwise face triangulations are used first.
 ") VolumeProperties;
 		static void VolumeProperties(const TopoDS_Shape & S, GProp_GProps & VProps, const Standard_Boolean OnlyClosed = Standard_False, const Standard_Boolean SkipShared = Standard_False, const Standard_Boolean UseTriangulation = Standard_False);
 
@@ -209,7 +209,7 @@ float
 
 Description
 -----------
-Updates <vprops> with the shape <s>, that contains its principal properties. the volume properties of all the forward and reversed faces in <s> are computed. if onlyclosed is true then computed faces must belong to closed shells. adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (volume) for each face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration. method returns estimation of relative error reached for whole shape. warning: if eps > 0.001 algorithm performs non-adaptive integration. skipshared is a special flag, which allows taking in calculation shared topological entities or not. for ex., if skipshared = true, the volumes formed by the equal (the same tshape, location and orientation) faces are taken into calculation only once.
+Updates <VProps> with the shape <S>, that contains its principal properties. The volume properties of all the FORWARD and REVERSED faces in <S> are computed. If OnlyClosed is True then computed faces must belong to closed Shells. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for each face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. Method returns estimation of relative error reached for whole shape. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, the volumes formed by the equal (the same TShape, location and orientation) faces are taken into calculation only once.
 ") VolumeProperties;
 		static Standard_Real VolumeProperties(const TopoDS_Shape & S, GProp_GProps & VProps, const Standard_Real Eps, const Standard_Boolean OnlyClosed = Standard_False, const Standard_Boolean SkipShared = Standard_False);
 
@@ -234,7 +234,7 @@ float
 
 Description
 -----------
-Updates <vprops> with the shape <s>, that contains its principal properties. the volume properties of all the forward and reversed faces in <s> are computed. if onlyclosed is true then computed faces must belong to closed shells. adaptive 2d gauss integration is used. parameter isusespan says if it is necessary to define spans on a face. this option has an effect only for bspline faces. parameter eps sets maximal relative error of computed property for each face. error is delivered by the adaptive gauss-kronrod method of integral computation that is used for properties computation. method returns estimation of relative error reached for whole shape. returns negative value if the computation is failed. skipshared is a special flag, which allows taking in calculation shared topological entities or not. for ex., if skipshared = true, the volumes formed by the equal (the same tshape, location and orientation) faces are taken into calculation only once.
+Updates <VProps> with the shape <S>, that contains its principal properties. The volume properties of all the FORWARD and REVERSED faces in <S> are computed. If OnlyClosed is True then computed faces must belong to closed Shells. Adaptive 2D Gauss integration is used. Parameter IsUseSpan says if it is necessary to define spans on a face. This option has an effect only for BSpline faces. Parameter Eps sets maximal relative error of computed property for each face. Error is delivered by the adaptive Gauss-Kronrod method of integral computation that is used for properties computation. Method returns estimation of relative error reached for whole shape. Returns negative value if the computation is failed. SkipShared is a special flag, which allows taking in calculation shared topological entities or not. For ex., if SkipShared = True, the volumes formed by the equal (the same TShape, location and orientation) faces are taken into calculation only once.
 ") VolumePropertiesGK;
 		static Standard_Real VolumePropertiesGK(const TopoDS_Shape & S, GProp_GProps & VProps, const Standard_Real Eps = 0.001, const Standard_Boolean OnlyClosed = Standard_False, const Standard_Boolean IsUseSpan = Standard_False, const Standard_Boolean CGFlag = Standard_False, const Standard_Boolean IFlag = Standard_False, const Standard_Boolean SkipShared = Standard_False);
 
@@ -387,7 +387,7 @@ None
 
 Description
 -----------
-Constructor. initializes the domain with the face.
+Constructor. Initializes the domain with the face.
 ") BRepGProp_Domain;
 		 BRepGProp_Domain(const TopoDS_Face & F);
 
@@ -431,7 +431,7 @@ bool
 
 Description
 -----------
-Returns true if there is another arc of curve in the list.
+Returns True if there is another arc of curve in the list.
 ") More;
 		Standard_Boolean More();
 
@@ -492,7 +492,7 @@ None
 
 Description
 -----------
-Returns the point of parameter u and the first derivative at this point.
+Returns the point of parameter U and the first derivative at this point.
 ") D1;
 		static void D1(const BRepAdaptor_Curve & C, const Standard_Real U, gp_Pnt & P, gp_Vec & V1);
 
@@ -510,7 +510,7 @@ float
 
 Description
 -----------
-Returns the parametric value of the start point of the curve. the curve is oriented from the start point to the end point.
+Returns the parametric value of the start point of the curve. The curve is oriented from the start point to the end point.
 ") FirstParameter;
 		static Standard_Real FirstParameter(const BRepAdaptor_Curve & C);
 
@@ -528,7 +528,7 @@ int
 
 Description
 -----------
-Returns the number of gauss points required to do the integration with a good accuracy using the gauss method. for a polynomial curve of degree n the maxima of accuracy is obtained with an order of integration equal to 2*n-1.
+Returns the number of Gauss points required to do the integration with a good accuracy using the Gauss method. For a polynomial curve of degree n the maxima of accuracy is obtained with an order of integration equal to 2*n-1.
 ") IntegrationOrder;
 		static Standard_Integer IntegrationOrder(const BRepAdaptor_Curve & C);
 
@@ -548,7 +548,7 @@ None
 
 Description
 -----------
-Stores in <t> the parameters bounding the intervals of continuity <s>. //! the array must provide enough room to accommodate for the parameters. i.e. t.length() > nbintervals().
+Stores in <T> the parameters bounding the intervals of continuity <S>. //! The array must provide enough room to accommodate for the parameters. i.e. T.Length() > NbIntervals().
 ") Intervals;
 		static void Intervals(const BRepAdaptor_Curve & C, TColStd_Array1OfReal & T, const GeomAbs_Shape S);
 
@@ -566,7 +566,7 @@ float
 
 Description
 -----------
-Returns the parametric value of the end point of the curve. the curve is oriented from the start point to the end point.
+Returns the parametric value of the end point of the curve. The curve is oriented from the start point to the end point.
 ") LastParameter;
 		static Standard_Real LastParameter(const BRepAdaptor_Curve & C);
 
@@ -585,7 +585,7 @@ int
 
 Description
 -----------
-Returns the number of intervals for continuity <s>. may be one if continuity(me) >= <s>.
+Returns the number of intervals for continuity <S>. May be one if Continuity(me) >= <S>.
 ") NbIntervals;
 		static Standard_Integer NbIntervals(const BRepAdaptor_Curve & C, const GeomAbs_Shape S);
 
@@ -604,7 +604,7 @@ gp_Pnt
 
 Description
 -----------
-Returns the point of parameter u on the loaded curve.
+Returns the point of parameter U on the loaded curve.
 ") Value;
 		static gp_Pnt Value(const BRepAdaptor_Curve & C, const Standard_Real U);
 
@@ -636,7 +636,7 @@ None
 
 Description
 -----------
-Constructor. initializes the object with a flag isusespan that says if it is necessary to define spans on a face. this option has an effect only for bspline faces. spans are returned by the methods getuknots and gettknots.
+Constructor. Initializes the object with a flag IsUseSpan that says if it is necessary to define spans on a face. This option has an effect only for BSpline faces. Spans are returned by the methods GetUKnots and GetTKnots.
 ") BRepGProp_Face;
 		 BRepGProp_Face(const Standard_Boolean IsUseSpan = Standard_False);
 
@@ -655,7 +655,7 @@ None
 
 Description
 -----------
-Constructor. initializes the object with the face and the flag isusespan that says if it is necessary to define spans on a face. this option has an effect only for bspline faces. spans are returned by the methods getuknots and gettknots.
+Constructor. Initializes the object with the face and the flag IsUseSpan that says if it is necessary to define spans on a face. This option has an effect only for BSpline faces. Spans are returned by the methods GetUKnots and GetTKnots.
 ") BRepGProp_Face;
 		 BRepGProp_Face(const TopoDS_Face & F, const Standard_Boolean IsUseSpan = Standard_False);
 
@@ -675,7 +675,7 @@ V2: float
 
 Description
 -----------
-Returns the parametric bounds of the face.
+Returns the parametric bounds of the Face.
 ") Bounds;
 		void Bounds(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -695,7 +695,7 @@ None
 
 Description
 -----------
-Returns the point of parameter u and the first derivative at this point of a boundary curve.
+Returns the point of parameter U and the first derivative at this point of a boundary curve.
 ") D12d;
 		void D12d(const Standard_Real U, gp_Pnt2d & P, gp_Vec2d & V1);
 
@@ -721,7 +721,7 @@ TopoDS_Face
 
 Description
 -----------
-Returns the topods face.
+Returns the TopoDS face.
 ") GetFace;
 		const TopoDS_Face GetFace();
 
@@ -741,7 +741,7 @@ None
 
 Description
 -----------
-Returns an array of combination of t knots of the arc and v knots of the face. the first and last elements of the array will be thetmin and thetmax. the middle elements will be the knots of the arc and the values of parameters of arc on which the value points have v coordinates close to v knots of face. all the parameter will be greater then thetmin and lower then thetmax in increasing order. if the face is not a bspline, the array initialized with thetmin and thetmax only.
+Returns an array of combination of T knots of the arc and V knots of the face. The first and last elements of the array will be theTMin and theTMax. The middle elements will be the Knots of the arc and the values of parameters of arc on which the value points have V coordinates close to V knots of face. All the parameter will be greater then theTMin and lower then theTMax in increasing order. If the face is not a BSpline, the array initialized with theTMin and theTMax only.
 ") GetTKnots;
 		void GetTKnots(const Standard_Real theTMin, const Standard_Real theTMax, opencascade::handle<TColStd_HArray1OfReal> & theTKnots);
 
@@ -761,7 +761,7 @@ None
 
 Description
 -----------
-Returns an array of u knots of the face. the first and last elements of the array will be theumin and theumax. the middle elements will be the u knots of the face greater then theumin and lower then theumax in increasing order. if the face is not a bspline, the array initialized with theumin and theumax only.
+Returns an array of U knots of the face. The first and last elements of the array will be theUMin and theUMax. The middle elements will be the U Knots of the face greater then theUMin and lower then theUMax in increasing order. If the face is not a BSpline, the array initialized with theUMin and theUMax only.
 ") GetUKnots;
 		void GetUKnots(const Standard_Real theUMin, const Standard_Real theUMax, opencascade::handle<TColStd_HArray1OfReal> & theUKnots);
 
@@ -872,7 +872,7 @@ bool
 
 Description
 -----------
-Loading the boundary arc. returns false if edge has no p-curve.
+Loading the boundary arc. Returns False if edge has no P-Curve.
 ") Load;
 		bool Load(const TopoDS_Edge & E);
 
@@ -891,7 +891,7 @@ None
 
 Description
 -----------
-Loading the boundary arc. this arc is either a top, bottom, left or right bound of a uv rectangle in which the parameters of surface are defined. if isfirstparam is equal to standard_true, the face is initialized by either left of bottom bound. otherwise it is initialized by the top or right one. if theisotype is equal to geomabs_isou, the face is initialized with either left or right bound. otherwise - with either top or bottom one.
+Loading the boundary arc. This arc is either a top, bottom, left or right bound of a UV rectangle in which the parameters of surface are defined. If IsFirstParam is equal to Standard_True, the face is initialized by either left of bottom bound. Otherwise it is initialized by the top or right one. If theIsoType is equal to GeomAbs_IsoU, the face is initialized with either left or right bound. Otherwise - with either top or bottom one.
 ") Load;
 		void Load(const Standard_Boolean IsFirstParam, const GeomAbs_IsoType theIsoType);
 
@@ -904,7 +904,7 @@ bool
 
 Description
 -----------
-Returns standard_true if the face is not trimmed.
+Returns Standard_True if the face is not trimmed.
 ") NaturalRestriction;
 		Standard_Boolean NaturalRestriction();
 
@@ -925,7 +925,7 @@ None
 
 Description
 -----------
-Computes the point of parameter u, v on the face <s> and the normal to the face at this point.
+Computes the point of parameter U, V on the Face <S> and the normal to the face at this point.
 ") Normal;
 		void Normal(const Standard_Real U, const Standard_Real V, gp_Pnt & P, gp_Vec & VNor);
 
@@ -982,7 +982,7 @@ int
 
 Description
 -----------
-Returns the number of points required to do the integration in the u parametric direction with a good accuracy.
+Returns the number of points required to do the integration in the U parametric direction with a good accuracy.
 ") UIntegrationOrder;
 		Standard_Integer UIntegrationOrder();
 
@@ -1169,7 +1169,7 @@ None
 
 Description
 -----------
-Prepare set of 3d points on base of any available edge polygons: 3d polygon, polygon on triangulation, 2d polygon on surface if edge has no polygons, array thepolyg is left unchanged.
+Prepare set of 3d points on base of any available edge polygons: 3D polygon, polygon on triangulation, 2d polygon on surface If edge has no polygons, array thePolyg is left unchanged.
 ") PreparePolygon;
 		static void PreparePolygon(const TopoDS_Edge & theE, opencascade::handle<TColgp_HArray1OfPnt> & thePolyg);
 
@@ -1256,7 +1256,7 @@ None
 
 Description
 -----------
-Builds a sinert to evaluate the global properties of the face <s>. if isnaturalrestriction is true the domain of s is defined with the natural bounds, else it defined with an iterator of edge from topods (see domaintool from gprop).
+Builds a Sinert to evaluate the global properties of the face <S>. If isNaturalRestriction is true the domain of S is defined with the natural bounds, else it defined with an iterator of Edge from TopoDS (see DomainTool from GProp).
 ") BRepGProp_Sinert;
 		 BRepGProp_Sinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & SLocation);
 
@@ -1310,7 +1310,7 @@ float
 
 Description
 -----------
-If previously used method contained eps parameter get actual relative error of the computation, else return 1.0.
+If previously used method contained Eps parameter get actual relative error of the computation, else return 1.0.
 ") GetEpsilon;
 		Standard_Real GetEpsilon();
 
@@ -1441,7 +1441,7 @@ None
 
 Description
 -----------
-Constructor. initializes the function with the face, the location point, the flag isbypoint, the coefficients thecoeff that have different meaning depending on the value of isbypoint. the last two parameters are theumin - the lower bound of the inner integral. this value is fixed for any integral. and the value of tolerance of inner integral computation. if isbypoint is equal to standard_true, the number of the coefficients is equal to 3 and they represent x, y and z coordinates (thecoeff[0], thecoeff[1] and thecoeff[2] correspondingly) of the shift if the inertia is computed with respect to the point different then the location. if isbypoint is equal to standard_false, the number of the coefficients is 4 and they represent the combination of plane parameters and shift values.
+Constructor. Initializes the function with the face, the location point, the flag IsByPoint, the coefficients theCoeff that have different meaning depending on the value of IsByPoint. The last two parameters are theUMin - the lower bound of the inner integral. This value is fixed for any integral. And the value of tolerance of inner integral computation. If IsByPoint is equal to Standard_True, the number of the coefficients is equal to 3 and they represent X, Y and Z coordinates (theCoeff[0], theCoeff[1] and theCoeff[2] correspondingly) of the shift if the inertia is computed with respect to the point different then the location. If IsByPoint is equal to Standard_False, the number of the coefficients is 4 and they represent the combination of plane parameters and shift values.
 ") BRepGProp_TFunction;
 		 BRepGProp_TFunction(const BRepGProp_Face & theSurface, const gp_Pnt & theVertex, const Standard_Boolean IsByPoint, const Standard_Real * theCoeffs, const Standard_Real theUMin, const Standard_Real theTolerance);
 
@@ -1454,7 +1454,7 @@ float
 
 Description
 -----------
-Returns the absolut reached error of all values computation since the last call of getstatenumber method.
+Returns the absolut reached error of all values computation since the last call of GetStateNumber method.
 ") AbsolutError;
 		Standard_Real AbsolutError();
 
@@ -1467,7 +1467,7 @@ float
 
 Description
 -----------
-Returns the relative reached error of all values computation since the last call of getstatenumber method.
+Returns the relative reached error of all values computation since the last call of GetStateNumber method.
 ") ErrorReached;
 		Standard_Real ErrorReached();
 
@@ -1480,7 +1480,7 @@ int
 
 Description
 -----------
-Redefined method. remembers the error reached during computation of integral values since the object creation or the last call of getstatenumber. it is invoked in each algorithm from the package math. particularly in the algorithm math_kronrodsingleintegration that is used to compute the integral of tfunction.
+Redefined method. Remembers the error reached during computation of integral values since the object creation or the last call of GetStateNumber. It is invoked in each algorithm from the package math. Particularly in the algorithm math_KronrodSingleIntegration that is used to compute the integral of TFunction.
 ") GetStateNumber;
 		virtual Standard_Integer GetStateNumber();
 
@@ -1511,7 +1511,7 @@ None
 
 Description
 -----------
-Setting the expected number of kronrod points for the outer integral computation. this number is required for computation of a value of tolerance for inner integral computation. after getstatenumber method call, this number is recomputed by the same law as in math_kronrodsingleintegration, i.e. next number of points is equal to the current number plus a square root of the current number. if the law in math_kronrodsingleintegration is changed, the modification algo should be modified accordingly.
+Setting the expected number of Kronrod points for the outer integral computation. This number is required for computation of a value of tolerance for inner integral computation. After GetStateNumber method call, this number is recomputed by the same law as in math_KronrodSingleIntegration, i.e. next number of points is equal to the current number plus a square root of the current number. If the law in math_KronrodSingleIntegration is changed, the modification algo should be modified accordingly.
 ") SetNbKronrodPoints;
 		void SetNbKronrodPoints(const Standard_Integer theNbPoints);
 
@@ -1547,7 +1547,7 @@ None
 
 Description
 -----------
-Setting the type of the value to be returned. this parameter is directly passed to the ufunction.
+Setting the type of the value to be returned. This parameter is directly passed to the UFunction.
 ") SetValueType;
 		void SetValueType(const GProp_ValueType aType);
 
@@ -1565,7 +1565,7 @@ F: float
 
 Description
 -----------
-Returns a value of the function. the value represents an integral of ufunction. it is computed with the predefined tolerance using the adaptive gauss-kronrod method.
+Returns a value of the function. The value represents an integral of UFunction. It is computed with the predefined tolerance using the adaptive Gauss-Kronrod method.
 ") Value;
 		virtual Standard_Boolean Value(const Standard_Real X, Standard_Real &OutValue);
 
@@ -1600,7 +1600,7 @@ None
 
 Description
 -----------
-Constructor. initializes the function with the face, the location point, the flag isbypoint and the coefficients thecoeff that have different meaning depending on the value of isbypoint. if isbypoint is equal to standard_true, the number of the coefficients is equal to 3 and they represent x, y and z coordinates (thecoeff[0], thecoeff[1] and thecoeff[2] correspondingly) of the shift, if the inertia is computed with respect to the point different then the location. if isbypoint is equal to standard_false, the number of the coefficients is 4 and they represent the combination of plane parameters and shift values.
+Constructor. Initializes the function with the face, the location point, the flag IsByPoint and the coefficients theCoeff that have different meaning depending on the value of IsByPoint. If IsByPoint is equal to Standard_True, the number of the coefficients is equal to 3 and they represent X, Y and Z coordinates (theCoeff[0], theCoeff[1] and theCoeff[2] correspondingly) of the shift, if the inertia is computed with respect to the point different then the location. If IsByPoint is equal to Standard_False, the number of the coefficients is 4 and they represent the combination of plane parameters and shift values.
 ") BRepGProp_UFunction;
 		 BRepGProp_UFunction(const BRepGProp_Face & theSurface, const gp_Pnt & theVertex, const Standard_Boolean IsByPoint, const Standard_Real * theCoeffs);
 
@@ -1618,7 +1618,7 @@ None
 
 Description
 -----------
-Setting the v parameter that is constant during the integral computation.
+Setting the V parameter that is constant during the integral computation.
 ") SetVParam;
 		void SetVParam(const Standard_Real theVParam);
 
@@ -1700,7 +1700,7 @@ None
 
 Description
 -----------
-Computes the global properties of a region of 3d space delimited with the surface <s> and the point vlocation. s can be closed the method is quick and its precision is enough for many cases of analytical surfaces. non-adaptive 2d gauss integration with predefined numbers of gauss points is used. numbers of points depend on types of surfaces and curves. error of the computation is not calculated.
+Computes the global properties of a region of 3D space delimited with the surface <S> and the point VLocation. S can be closed The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Error of the computation is not calculated.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(const BRepGProp_Face & S, const gp_Pnt & VLocation);
 
@@ -1720,7 +1720,7 @@ None
 
 Description
 -----------
-Computes the global properties of a region of 3d space delimited with the surface <s> and the point vlocation. s can be closed adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (volume) for face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration.
+Computes the global properties of a region of 3D space delimited with the surface <S> and the point VLocation. S can be closed Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, const gp_Pnt & VLocation, const Standard_Real Eps);
 
@@ -1740,7 +1740,7 @@ None
 
 Description
 -----------
-Computes the global properties of the region of 3d space delimited with the surface <s> and the point vlocation. the method is quick and its precision is enough for many cases of analytical surfaces. non-adaptive 2d gauss integration with predefined numbers of gauss points is used. numbers of points depend on types of surfaces and curves. error of the computation is not calculated.
+Computes the global properties of the region of 3D space delimited with the surface <S> and the point VLocation. The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Error of the computation is not calculated.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(const BRepGProp_Face & S, const gp_Pnt & O, const gp_Pnt & VLocation);
 
@@ -1761,7 +1761,7 @@ None
 
 Description
 -----------
-Computes the global properties of the region of 3d space delimited with the surface <s> and the point vlocation. adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (volume) for face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration. warning: if eps > 0.001 algorithm performs non-adaptive integration.
+Computes the global properties of the region of 3D space delimited with the surface <S> and the point VLocation. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, const gp_Pnt & O, const gp_Pnt & VLocation, const Standard_Real Eps);
 
@@ -1781,7 +1781,7 @@ None
 
 Description
 -----------
-Computes the global properties of the region of 3d space delimited with the surface <s> and the plane pln. the method is quick and its precision is enough for many cases of analytical surfaces. non-adaptive 2d gauss integration with predefined numbers of gauss points is used. numbers of points depend on types of surfaces and curves. error of the computation is not calculated.
+Computes the global properties of the region of 3D space delimited with the surface <S> and the plane Pln. The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Error of the computation is not calculated.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(const BRepGProp_Face & S, const gp_Pln & Pl, const gp_Pnt & VLocation);
 
@@ -1802,7 +1802,7 @@ None
 
 Description
 -----------
-Computes the global properties of the region of 3d space delimited with the surface <s> and the plane pln. adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (volume) for face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration. warning: if eps > 0.001 algorithm performs non-adaptive integration.
+Computes the global properties of the region of 3D space delimited with the surface <S> and the plane Pln. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, const gp_Pln & Pl, const gp_Pnt & VLocation, const Standard_Real Eps);
 
@@ -1822,7 +1822,7 @@ None
 
 Description
 -----------
-Computes the global properties of a region of 3d space delimited with the surface <s> and the point vlocation. s can be closed the method is quick and its precision is enough for many cases of analytical surfaces. non-adaptive 2d gauss integration with predefined numbers of gauss points is used. numbers of points depend on types of surfaces and curves. error of the computation is not calculated.
+Computes the global properties of a region of 3D space delimited with the surface <S> and the point VLocation. S can be closed The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Error of the computation is not calculated.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & VLocation);
 
@@ -1843,7 +1843,7 @@ None
 
 Description
 -----------
-Computes the global properties of a region of 3d space delimited with the surface <s> and the point vlocation. s can be closed adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (volume) for face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration.
+Computes the global properties of a region of 3D space delimited with the surface <S> and the point VLocation. S can be closed Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & VLocation, const Standard_Real Eps);
 
@@ -1864,7 +1864,7 @@ None
 
 Description
 -----------
-Computes the global properties of the region of 3d space delimited with the surface <s> and the point vlocation. the method is quick and its precision is enough for many cases of analytical surfaces. non-adaptive 2d gauss integration with predefined numbers of gauss points is used. numbers of points depend on types of surfaces and curves. error of the computation is not calculated.
+Computes the global properties of the region of 3D space delimited with the surface <S> and the point VLocation. The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Error of the computation is not calculated.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & O, const gp_Pnt & VLocation);
 
@@ -1886,7 +1886,7 @@ None
 
 Description
 -----------
-Computes the global properties of the region of 3d space delimited with the surface <s> and the point vlocation. adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (volume) for face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration. warning: if eps > 0.001 algorithm performs non-adaptive integration.
+Computes the global properties of the region of 3D space delimited with the surface <S> and the point VLocation. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pnt & O, const gp_Pnt & VLocation, const Standard_Real Eps);
 
@@ -1907,7 +1907,7 @@ None
 
 Description
 -----------
-Computes the global properties of the region of 3d space delimited with the surface <s> and the plane pln. the method is quick and its precision is enough for many cases of analytical surfaces. non-adaptive 2d gauss integration with predefined numbers of gauss points is used. numbers of points depend on types of surfaces and curves. error of the computation is not calculated.
+Computes the global properties of the region of 3D space delimited with the surface <S> and the plane Pln. The method is quick and its precision is enough for many cases of analytical surfaces. Non-adaptive 2D Gauss integration with predefined numbers of Gauss points is used. Numbers of points depend on types of surfaces and curves. Error of the computation is not calculated.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pln & Pl, const gp_Pnt & VLocation);
 
@@ -1929,7 +1929,7 @@ None
 
 Description
 -----------
-Computes the global properties of the region of 3d space delimited with the surface <s> and the plane pln. adaptive 2d gauss integration is used. parameter eps sets maximal relative error of computed mass (volume) for face. error is calculated as abs((m(i+1)-m(i))/m(i+1)), m(i+1) and m(i) are values for two successive steps of adaptive integration. warning: if eps > 0.001 algorithm performs non-adaptive integration.
+Computes the global properties of the region of 3D space delimited with the surface <S> and the plane Pln. Adaptive 2D Gauss integration is used. Parameter Eps sets maximal relative error of computed mass (volume) for face. Error is calculated as Abs((M(i+1)-M(i))/M(i+1)), M(i+1) and M(i) are values for two successive steps of adaptive integration. WARNING: if Eps > 0.001 algorithm performs non-adaptive integration.
 ") BRepGProp_Vinert;
 		 BRepGProp_Vinert(BRepGProp_Face & S, BRepGProp_Domain & D, const gp_Pln & Pl, const gp_Pnt & VLocation, const Standard_Real Eps);
 
@@ -1942,7 +1942,7 @@ float
 
 Description
 -----------
-If previously used methods containe eps parameter gets actual relative error of the computation, else returns 1.0.
+If previously used methods containe Eps parameter gets actual relative error of the computation, else returns 1.0.
 ") GetEpsilon;
 		Standard_Real GetEpsilon();
 
@@ -2245,7 +2245,7 @@ None
 
 Description
 -----------
-Constructor. computes the global properties of a region of 3d space delimited with the naturally restricted surface and the point vlocation.
+Constructor. Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the point VLocation.
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2268,7 +2268,7 @@ None
 
 Description
 -----------
-Constructor. computes the global properties of a region of 3d space delimited with the naturally restricted surface and the point vlocation. the inertia is computed with respect to thepoint.
+Constructor. Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the point VLocation. The inertia is computed with respect to thePoint.
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, const gp_Pnt & thePoint, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2291,7 +2291,7 @@ None
 
 Description
 -----------
-Constructor. computes the global properties of a region of 3d space delimited with the surface bounded by the domain and the point vlocation.
+Constructor. Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the point VLocation.
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2315,7 +2315,7 @@ None
 
 Description
 -----------
-Constructor. computes the global properties of a region of 3d space delimited with the surface bounded by the domain and the point vlocation. the inertia is computed with respect to thepoint.
+Constructor. Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the point VLocation. The inertia is computed with respect to thePoint.
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const gp_Pnt & thePoint, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2338,7 +2338,7 @@ None
 
 Description
 -----------
-Constructor. computes the global properties of a region of 3d space delimited with the naturally restricted surface and the plane.
+Constructor. Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the plane.
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, const gp_Pln & thePlane, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2362,7 +2362,7 @@ None
 
 Description
 -----------
-Constructor. computes the global properties of a region of 3d space delimited with the surface bounded by the domain and the plane.
+Constructor. Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the plane.
 ") BRepGProp_VinertGK;
 		 BRepGProp_VinertGK(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const gp_Pln & thePlane, const gp_Pnt & theLocation, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2396,7 +2396,7 @@ float
 
 Description
 -----------
-Computes the global properties of a region of 3d space delimited with the naturally restricted surface and the point vlocation.
+Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the point VLocation.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2418,7 +2418,7 @@ float
 
 Description
 -----------
-Computes the global properties of a region of 3d space delimited with the naturally restricted surface and the point vlocation. the inertia is computed with respect to thepoint.
+Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the point VLocation. The inertia is computed with respect to thePoint.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, const gp_Pnt & thePoint, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2440,7 +2440,7 @@ float
 
 Description
 -----------
-Computes the global properties of a region of 3d space delimited with the surface bounded by the domain and the point vlocation.
+Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the point VLocation.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2463,7 +2463,7 @@ float
 
 Description
 -----------
-Computes the global properties of a region of 3d space delimited with the surface bounded by the domain and the point vlocation. the inertia is computed with respect to thepoint.
+Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the point VLocation. The inertia is computed with respect to thePoint.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const gp_Pnt & thePoint, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2485,7 +2485,7 @@ float
 
 Description
 -----------
-Computes the global properties of a region of 3d space delimited with the naturally restricted surface and the plane.
+Computes the global properties of a region of 3D space delimited with the naturally restricted surface and the plane.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, const gp_Pln & thePlane, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2508,7 +2508,7 @@ float
 
 Description
 -----------
-Computes the global properties of a region of 3d space delimited with the surface bounded by the domain and the plane.
+Computes the global properties of a region of 3D space delimited with the surface bounded by the domain and the plane.
 ") Perform;
 		Standard_Real Perform(BRepGProp_Face & theSurface, BRepGProp_Domain & theDomain, const gp_Pln & thePlane, const Standard_Real theTolerance = 0.001, const Standard_Boolean theCGFlag = Standard_False, const Standard_Boolean theIFlag = Standard_False);
 
@@ -2526,7 +2526,7 @@ None
 
 Description
 -----------
-Sets the vertex that delimit 3d closed region of space.
+Sets the vertex that delimit 3D closed region of space.
 ") SetLocation;
 		void SetLocation(const gp_Pnt & theLocation);
 

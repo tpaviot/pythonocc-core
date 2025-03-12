@@ -480,7 +480,7 @@ TCollection_AsciiString
 
 Description
 -----------
-In ou on un.
+IN OU ON UN.
 ") SPrint;
 		static TCollection_AsciiString SPrint(const TopAbs_State S);
 
@@ -498,7 +498,7 @@ TCollection_AsciiString
 
 Description
 -----------
-<k>.
+<K>.
 ") SPrint;
 		static TCollection_AsciiString SPrint(const TopOpeBRepDS_Kind K);
 
@@ -519,7 +519,7 @@ TCollection_AsciiString
 
 Description
 -----------
-S1(<k>,<i>)s2.
+S1(<K>,<I>)S2.
 ") SPrint;
 		static TCollection_AsciiString SPrint(const TopOpeBRepDS_Kind K, const Standard_Integer I, TCollection_AsciiString B = "", TCollection_AsciiString A = "");
 
@@ -556,7 +556,7 @@ TCollection_AsciiString
 
 Description
 -----------
-(<t>,<i>).
+(<T>,<I>).
 ") SPrint;
 		static TCollection_AsciiString SPrint(const TopAbs_ShapeEnum T, const Standard_Integer I);
 
@@ -1017,7 +1017,7 @@ None
 
 Description
 -----------
-Make an edge <eou> with the curve of the edge <ein>.
+Make an edge <Eou> with the curve of the edge <Ein>.
 ") CopyEdge;
 		void CopyEdge(const TopoDS_Shape & Ein, TopoDS_Shape & Eou);
 
@@ -1036,7 +1036,7 @@ None
 
 Description
 -----------
-Make a face <fou> with the surface of the face <fin>.
+Make a face <Fou> with the surface of the face <Fin>.
 ") CopyFace;
 		void CopyFace(const TopoDS_Shape & Fin, TopoDS_Shape & Fou);
 
@@ -1056,7 +1056,7 @@ None
 
 Description
 -----------
-Sets the curve <c> for the edge <e>.
+Sets the curve <C> for the edge <E>.
 ") Curve3D;
 		void Curve3D(TopoDS_Shape & E, const opencascade::handle<Geom_Curve> & C, const Standard_Real Tol);
 
@@ -1347,7 +1347,7 @@ None
 
 Description
 -----------
-Sets the pcurve <c> for the edge <e> on the face <f>. if overwrite is true the old pcurve if there is one is overwritten, else the two pcurves are set.
+Sets the pcurve <C> for the edge <E> on the face <F>. If OverWrite is True the old pcurve if there is one is overwritten, else the two pcurves are set.
 ") PCurve;
 		void PCurve(TopoDS_Shape & F, TopoDS_Shape & E, const opencascade::handle<Geom2d_Curve> & C);
 
@@ -1388,7 +1388,7 @@ None
 
 Description
 -----------
-Sets the parameter <p> for the vertex <v> on the edge <e>.
+Sets the parameter <P> for the vertex <V> on the edge <E>.
 ") Parameter;
 		void Parameter(const TopoDS_Shape & E, const TopoDS_Shape & V, const Standard_Real P);
 
@@ -1408,7 +1408,7 @@ None
 
 Description
 -----------
-Compute the parameter of the vertex <v>, supported by the edge <e>, on the curve <c>.
+Compute the parameter of the vertex <V>, supported by the edge <E>, on the curve <C>.
 ") Parameter;
 		void Parameter(const TopOpeBRepDS_Curve & C, TopoDS_Shape & E, TopoDS_Shape & V);
 
@@ -1449,7 +1449,7 @@ None
 
 Description
 -----------
-Sets the range of edge <e>.
+Sets the range of edge <E>.
 ") Range;
 		void Range(const TopoDS_Shape & E, const Standard_Real first, const Standard_Real last);
 
@@ -1520,7 +1520,7 @@ None
 
 Description
 -----------
-Sets the range of edge <eou> from <ein> only when <ein> has a closed geometry.
+Sets the range of edge <Eou> from <Ein> only when <Ein> has a closed geometry.
 ") UpdateEdge;
 		void UpdateEdge(const TopoDS_Shape & Ein, TopoDS_Shape & Eou);
 
@@ -1662,7 +1662,7 @@ bool
 
 Description
 -----------
-Verifie que le ieme element de la ds existe, et pour un k de type topologique, verifie qu'il est du bon type (vertex, edge, wire, face, shell ou solid).
+Verifie que le ieme element de la DS existe, et pour un K de type topologique, verifie qu'il est du bon type (VERTEX, EDGE, WIRE, FACE, SHELL ou SOLID).
 ") CheckDS;
 		Standard_Boolean CheckDS(const Standard_Integer i, const TopOpeBRepDS_Kind K);
 
@@ -1680,7 +1680,7 @@ bool
 
 Description
 -----------
-Verifie que les shapes existent bien dans la ds utile pour les shapes samedomain si la liste est vide, renvoie vrai.
+Verifie que les Shapes existent bien dans la DS Utile pour les Shapes SameDomain si la liste est vide, renvoie vrai.
 ") CheckShapes;
 		Standard_Boolean CheckShapes(const TopTools_ListOfShape & LS);
 
@@ -1693,7 +1693,7 @@ bool
 
 Description
 -----------
-Check integrition of ds.
+Check integrition of DS.
 ") ChkIntg;
 		Standard_Boolean ChkIntg();
 
@@ -1711,7 +1711,7 @@ bool
 
 Description
 -----------
-Check integrition of interferences (les supports et les geometries de li).
+Check integrition of interferences (les supports et les geometries de LI).
 ") ChkIntgInterf;
 		Standard_Boolean ChkIntgInterf(const TopOpeBRepDS_ListOfInterference & LI);
 
@@ -1724,7 +1724,7 @@ bool
 
 Description
 -----------
-Check integrition des champs samedomain de la ds.
+Check integrition des champs SameDomain de la DS.
 ") ChkIntgSamDom;
 		Standard_Boolean ChkIntgSamDom();
 
@@ -1750,7 +1750,7 @@ bool
 
 Description
 -----------
-Verifie que les vertex non samedomain sont bien nonsamedomain, que les vertex samedomain sont bien samedomain, que les points sont non confondus ni entre eux, ni avec des vertex.
+Verifie que les Vertex non SameDomain sont bien nonSameDomain, que les vertex sameDomain sont bien SameDomain, que les Points sont non confondus ni entre eux, ni avec des Vertex.
 ") OneVertexOnPnt;
 		Standard_Boolean OneVertexOnPnt();
 
@@ -1768,7 +1768,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the name of checkstatus <stat> as a string.
+Prints the name of CheckStatus <stat> as a String.
 ") Print;
 		Standard_OStream & Print(const TopOpeBRepDS_CheckStatus stat, std::ostream &OutValue);
 
@@ -1803,7 +1803,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the name of checkstatus <stat> as a string.
+Prints the name of CheckStatus <stat> as a String.
 ") PrintShape;
 		Standard_OStream & PrintShape(const TopAbs_ShapeEnum SE, std::ostream &OutValue);
 
@@ -1821,7 +1821,7 @@ S: Standard_OStream
 
 Description
 -----------
-Prints the name of checkstatus <stat> as a string.
+Prints the name of CheckStatus <stat> as a String.
 ") PrintShape;
 		Standard_OStream & PrintShape(const Standard_Integer index, std::ostream &OutValue);
 
@@ -2267,7 +2267,7 @@ None
 
 Description
 -----------
-Define the interferences face/curve.
+define the interferences face/curve.
 ") SetSCI;
 		void SetSCI(const opencascade::handle<TopOpeBRepDS_Interference> & I1, const opencascade::handle<TopOpeBRepDS_Interference> & I2);
 
@@ -2572,7 +2572,7 @@ int
 
 Description
 -----------
-Insert a new curve. returns the index.
+Insert a new curve. Returns the index.
 ") AddCurve;
 		Standard_Integer AddCurve(const TopOpeBRepDS_Curve & S);
 
@@ -2590,7 +2590,7 @@ int
 
 Description
 -----------
-Insert a new point. returns the index.
+Insert a new point. Returns the index.
 ") AddPoint;
 		Standard_Integer AddPoint(const TopOpeBRepDS_Point & PDS);
 
@@ -2610,7 +2610,7 @@ int
 
 Description
 -----------
-Insert a new point. returns the index.
+Insert a new point. Returns the index.
 ") AddPointSS;
 		Standard_Integer AddPointSS(const TopOpeBRepDS_Point & PDS, const TopoDS_Shape & S1, const TopoDS_Shape & S2);
 
@@ -2646,7 +2646,7 @@ int
 
 Description
 -----------
-Insert a shape s. returns the index.
+Insert a shape S. Returns the index.
 ") AddShape;
 		Standard_Integer AddShape(const TopoDS_Shape & S);
 
@@ -2665,7 +2665,7 @@ int
 
 Description
 -----------
-Insert a shape s which ancestor is i = 1 or 2. returns the index.
+Insert a shape S which ancestor is I = 1 or 2. Returns the index.
 ") AddShape;
 		Standard_Integer AddShape(const TopoDS_Shape & S, const Standard_Integer I);
 
@@ -2721,7 +2721,7 @@ int
 
 Description
 -----------
-Insert a new surface. returns the index.
+Insert a new surface. Returns the index.
 ") AddSurface;
 		Standard_Integer AddSurface(const TopOpeBRepDS_Surface & S);
 
@@ -2813,7 +2813,7 @@ TopOpeBRepDS_Curve
 
 Description
 -----------
-Returns the curve of index <i>.
+Returns the Curve of index <I>.
 ") ChangeCurve;
 		TopOpeBRepDS_Curve & ChangeCurve(const Standard_Integer I);
 
@@ -3089,7 +3089,7 @@ TopOpeBRepDS_Point
 
 Description
 -----------
-Returns the point of index <i>.
+Returns the point of index <I>.
 ") ChangePoint;
 		TopOpeBRepDS_Point & ChangePoint(const Standard_Integer I);
 
@@ -3210,7 +3210,7 @@ TopOpeBRepDS_Surface
 
 Description
 -----------
-Returns the surface of index <i>.
+Returns the surface of index <I>.
 ") ChangeSurface;
 		TopOpeBRepDS_Surface & ChangeSurface(const Standard_Integer I);
 
@@ -3246,7 +3246,7 @@ TopOpeBRepDS_Curve
 
 Description
 -----------
-Returns the curve of index <i>.
+Returns the Curve of index <I>.
 ") Curve;
 		TopOpeBRepDS_Curve Curve(const Standard_Integer I);
 
@@ -3342,7 +3342,7 @@ bool
 
 Description
 -----------
-Returns true if <s> has new geometries, i.e: true si: hasshape(s) true s a une liste d'interferences non vide. s = solid, face, edge: true/false s = shell, wire, vertex: false.
+Returns True if <S> has new geometries, i.e: True si: HasShape(S) True S a une liste d'interferences non vide. S = SOLID, FACE, EDGE: true/false S = SHELL, WIRE, VERTEX: false.
 ") HasGeometry;
 		Standard_Boolean HasGeometry(const TopoDS_Shape & S);
 
@@ -3379,7 +3379,7 @@ bool
 
 Description
 -----------
-Returns true if <s> est dans myshapes.
+Returns True if <S> est dans myShapes.
 ") HasShape;
 		Standard_Boolean HasShape(const TopoDS_Shape & S, const Standard_Boolean FindKeep = Standard_True);
 
@@ -3392,7 +3392,7 @@ None
 
 Description
 -----------
-Reset the data structure.
+reset the data structure.
 ") Init;
 		void Init();
 
@@ -3702,7 +3702,7 @@ TopOpeBRepDS_Point
 
 Description
 -----------
-Returns the point of index <i>.
+Returns the point of index <I>.
 ") Point;
 		const TopOpeBRepDS_Point & Point(const Standard_Integer I);
 
@@ -4110,7 +4110,7 @@ TopoDS_Shape
 
 Description
 -----------
-Returns the shape of index i stored in the map myshapes, accessing a list of interference.
+returns the shape of index I stored in the map myShapes, accessing a list of interference.
 ") Shape;
 		const TopoDS_Shape Shape(const Standard_Integer I, const Standard_Boolean FindKeep = Standard_True);
 
@@ -4129,7 +4129,7 @@ int
 
 Description
 -----------
-Returns the index of shape <s> stored in the map myshapes, accessing a list of interference. returns 0 if <s> is not in the map.
+returns the index of shape <S> stored in the map myShapes, accessing a list of interference. returns 0 if <S> is not in the map.
 ") Shape;
 		Standard_Integer Shape(const TopoDS_Shape & S, const Standard_Boolean FindKeep = Standard_True);
 
@@ -4221,7 +4221,7 @@ TopOpeBRepDS_Surface
 
 Description
 -----------
-Returns the surface of index <i>.
+Returns the surface of index <I>.
 ") Surface;
 		TopOpeBRepDS_Surface Surface(const Standard_Integer I);
 
@@ -4972,7 +4972,7 @@ None
 
 Description
 -----------
-Eisnew = true if e is a new edge built on edge i->geometry() false if e is shape <=> i->geometry().
+Eisnew = true if E is a new edge built on edge I->Geometry() false if E is shape <=> I->Geometry().
 ") Add;
 		void Add(const TopoDS_Shape & FI, const TopoDS_Shape & F, const TopoDS_Shape & E, const Standard_Boolean Eisnew, const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -5031,7 +5031,7 @@ None
 
 Description
 -----------
-Eisnew = true if e is a new edge built on edge i->geometry() false if e is shape <=> i->geometry().
+Eisnew = true if E is a new edge built on edge I->Geometry() false if E is shape <=> I->Geometry().
 ") Init;
 		void Init(const TopoDS_Shape & FI, const TopoDS_Shape & E, const Standard_Boolean Eisnew, const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -5277,7 +5277,7 @@ None
 
 Description
 -----------
-Methodes pour reduire la liste des points qui peuvent correspondre a une point donne.
+Methodes pour reduire la liste des Points qui peuvent correspondre a une Point donne.
 ") AddPointsOnConnexShape;
 		void AddPointsOnConnexShape(const TopoDS_Shape & F, const TopOpeBRepDS_ListOfInterference & LI);
 
@@ -5327,7 +5327,7 @@ bool
 
 Description
 -----------
-Enchaine les sections via les points d'interferences deja associe; renvoit dans <l> les points extremites des lignes. methodes pour construire la liste des points qui peuvent correspondre a une point donne.
+Enchaine les sections via les points d'Interferences deja associe; Renvoit dans <L> les points extremites des Lignes. Methodes pour construire la liste des Points qui peuvent correspondre a une Point donne.
 ") CheckConnexity;
 		Standard_Boolean CheckConnexity(TopOpeBRepDS_ListOfInterference & LI);
 
@@ -5404,7 +5404,7 @@ None
 
 Description
 -----------
-Recherche parmi l'ensemble des points d'interference la liste <li> des points qui correspondent au point d'indice <index>.
+Recherche parmi l'ensemble des points d'Interference la Liste <LI> des points qui correspondent au point d'indice <Index>.
 ") FindAssociatedPoints;
 		void FindAssociatedPoints(const opencascade::handle<TopOpeBRepDS_Interference> & I, TopOpeBRepDS_ListOfInterference & LI);
 
@@ -5423,7 +5423,7 @@ bool
 
 Description
 -----------
-Return true si i ou une de ses representaions a pour support <e>. methodes de reconstructions des geometries des point et des courbes de section.
+Return True si I ou une de ses representaions a pour support <E>. Methodes de reconstructions des geometries des point et des courbes de section.
 ") IsOnEdge;
 		Standard_Boolean IsOnEdge(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Edge & E);
 
@@ -5442,7 +5442,7 @@ bool
 
 Description
 -----------
-Return true si i a ete obtenu par une intersection avec <f>.
+Return True si I a ete obtenu par une intersection avec <F>.
 ") IsOnFace;
 		Standard_Boolean IsOnFace(const opencascade::handle<TopOpeBRepDS_Interference> & I, const TopoDS_Face & F);
 
@@ -5595,7 +5595,7 @@ bool
 
 Description
 -----------
-Return les faces qui ont genere la section origine de i.
+Return les faces qui ont genere la section origine de I.
 ") FacesSupport;
 		Standard_Boolean FacesSupport(const opencascade::handle<TopOpeBRepDS_Interference> & I, TopoDS_Shape & F1, TopoDS_Shape & F2);
 
@@ -5919,7 +5919,7 @@ S: int
 
 Description
 -----------
-Return geometrytype + geometry + supporttype + support.
+return GeometryType + Geometry + SupportType + Support.
 ") GKGSKS;
 		void GKGSKS(TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue, TopOpeBRepDS_Kind &OutValue, Standard_Integer &OutValue);
 
@@ -6175,7 +6175,7 @@ None
 
 Description
 -----------
-Creates an iterator on the interference of list <l>.
+Creates an iterator on the Interference of list <L>.
 ") TopOpeBRepDS_InterferenceIterator;
 		 TopOpeBRepDS_InterferenceIterator(const TopOpeBRepDS_ListOfInterference & L);
 
@@ -6206,7 +6206,7 @@ None
 
 Description
 -----------
-Define a condition on interference iteration process. interference must match the geometry <g>.
+define a condition on interference iteration process. Interference must match the Geometry <G>.
 ") Geometry;
 		void Geometry(const Standard_Integer G);
 
@@ -6224,7 +6224,7 @@ None
 
 Description
 -----------
-Define a condition on interference iteration process. interference must match the geometry kind <st>.
+define a condition on interference iteration process. Interference must match the Geometry Kind <ST>.
 ") GeometryKind;
 		void GeometryKind(const TopOpeBRepDS_Kind GK);
 
@@ -6242,7 +6242,7 @@ None
 
 Description
 -----------
-Re-initialize interference iteration process on the list of interference <l>. conditions are not modified.
+re-initialize interference iteration process on the list of interference <L>. Conditions are not modified.
 ") Init;
 		void Init(const TopOpeBRepDS_ListOfInterference & L);
 
@@ -6255,7 +6255,7 @@ None
 
 Description
 -----------
-Reach for an interference matching the conditions (if defined).
+reach for an interference matching the conditions (if defined).
 ") Match;
 		void Match();
 
@@ -6273,7 +6273,7 @@ bool
 
 Description
 -----------
-Returns true if the interference <i> matches the conditions (if defined). if no conditions defined, returns true.
+Returns True if the Interference <I> matches the conditions (if defined). If no conditions defined, returns True.
 ") MatchInterference;
 		virtual Standard_Boolean MatchInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -6286,7 +6286,7 @@ bool
 
 Description
 -----------
-Returns true if there is a current interference in the iteration.
+Returns True if there is a current Interference in the iteration.
 ") More;
 		Standard_Boolean More();
 
@@ -6299,7 +6299,7 @@ None
 
 Description
 -----------
-Move to the next interference.
+Move to the next Interference.
 ") Next;
 		void Next();
 
@@ -6317,7 +6317,7 @@ None
 
 Description
 -----------
-Define a condition on interference iteration process. interference must match the support <s>.
+define a condition on interference iteration process. Interference must match the Support <S>.
 ") Support;
 		void Support(const Standard_Integer S);
 
@@ -6335,7 +6335,7 @@ None
 
 Description
 -----------
-Define a condition on interference iteration process. interference must match the support kind <st>.
+define a condition on interference iteration process. Interference must match the Support Kind <ST>.
 ") SupportKind;
 		void SupportKind(const TopOpeBRepDS_Kind ST);
 
@@ -6348,7 +6348,7 @@ opencascade::handle<TopOpeBRepDS_Interference>
 
 Description
 -----------
-Returns the current interference, matching the conditions (if defined).
+Returns the current Interference, matching the conditions (if defined).
 ") Value;
 		const opencascade::handle<TopOpeBRepDS_Interference> & Value();
 
@@ -6380,7 +6380,7 @@ opencascade::handle<TopOpeBRepDS_Interference>
 
 Description
 -----------
-Duplicate i in a new interference with complement() transition.
+duplicate I in a new interference with Complement() transition.
 ") DuplicateCurvePointInterference;
 		static opencascade::handle<TopOpeBRepDS_Interference> DuplicateCurvePointInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -8401,7 +8401,7 @@ bool
 
 Description
 -----------
-Returns true if both states are unknown.
+returns True if both states are UNKNOWN.
 ") IsUnknown;
 		Standard_Boolean IsUnknown();
 
@@ -8446,7 +8446,7 @@ TopAbs_Orientation
 
 Description
 -----------
-Returns the orientation corresponding to state <s> //! before and after not equal topabs_on: -------------------------------------- before after computed orientation //! s not s reversed (we leave state s) not s s forward (we enter state s) s s internal (we stay in state s) not s not s external (we stay outside state s).
+returns the orientation corresponding to state <S> //! Before and After not equal TopAbs_ON: -------------------------------------- Before After Computed orientation //! S not S REVERSED (we leave state S) not S S FORWARD (we enter state S) S S INTERNAL (we stay in state S) not S not S EXTERNAL (we stay outside state S).
 ") Orientation;
 		TopAbs_Orientation Orientation(const TopAbs_State S, const TopAbs_ShapeEnum T = TopAbs_FACE);
 
@@ -8485,7 +8485,7 @@ None
 
 Description
 -----------
-Set the transition corresponding to orientation <o> //! o before after //! forward out in reversed in out internal in in external out out.
+set the transition corresponding to orientation <O> //! O Before After //! FORWARD OUT IN REVERSED IN OUT INTERNAL IN IN EXTERNAL OUT OUT.
 ") Set;
 		void Set(const TopAbs_Orientation O);
 
@@ -8660,7 +8660,7 @@ None
 
 Description
 -----------
-Creates an iterator on the curves on surface described by the interferences in <l>.
+Creates an iterator on the curves on surface described by the interferences in <L>.
 ") TopOpeBRepDS_CurveIterator;
 		 TopOpeBRepDS_CurveIterator(const TopOpeBRepDS_ListOfInterference & L);
 
@@ -8691,7 +8691,7 @@ bool
 
 Description
 -----------
-Returns true if the interference <i> has a geometrytype() topopebrepds_curve returns false else.
+Returns True if the Interference <I> has a GeometryType() TopOpeBRepDS_CURVE returns False else.
 ") MatchInterference;
 		virtual Standard_Boolean MatchInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -8926,7 +8926,7 @@ None
 
 Description
 -----------
-Creates an iterator on the points on curves described by the interferences in <l>.
+Creates an iterator on the points on curves described by the interferences in <L>.
 ") TopOpeBRepDS_PointIterator;
 		 TopOpeBRepDS_PointIterator(const TopOpeBRepDS_ListOfInterference & L);
 
@@ -8996,7 +8996,7 @@ bool
 
 Description
 -----------
-Returns true if the interference <i> has a geometrytype() topopebrepds_point or topopebrepds_vertex returns false else.
+Returns True if the Interference <I> has a GeometryType() TopOpeBRepDS_POINT or TopOpeBRepDS_VERTEX returns False else.
 ") MatchInterference;
 		virtual Standard_Boolean MatchInterference(const opencascade::handle<TopOpeBRepDS_Interference> & I);
 
@@ -9091,7 +9091,7 @@ None
 
 Description
 -----------
-A shape interfers on shape <g> with shape <s>. examples: create a shapeshapeinterference describing: vertex v of edge e1 found on edge e2: st,s,gt,g = topopebrepds_edge,e2,topopebrepds_vertex,v //! create a shapeshapeinterference describing vertex v of edge e found on face f: st,s,gt,g = topopebrepds_face,f,topopebrepds_vertex,v //! <gbound> indicates if shape <g> is a bound of shape <s>. //! <scc>: unsh_geometry: <s> and <ancestor> have any types, <s> and <ancestor> don't share the same geometry same_oriented: <s> and <ancestor> have identical types, <s> and <ancestor> orientations are identical. diff_oriented: <s> and <ancestor> have identical types, <s> and <ancestor> orientations are different.
+a shape interferes on shape <G> with shape <S>. examples: create a ShapeShapeInterference describing: vertex V of edge E1 found on edge E2: ST,S,GT,G = TopOpeBRepDS_EDGE,E2,TopOpeBRepDS_VERTEX,V //! create a ShapeShapeInterference describing vertex V of edge E found on face F: ST,S,GT,G = TopOpeBRepDS_FACE,F,TopOpeBRepDS_VERTEX,V //! <GBound> indicates if shape <G> is a bound of shape <S>. //! <SCC>: UNSH_GEOMETRY: <S> and <Ancestor> have any types, <S> and <Ancestor> don't share the same geometry SAME_ORIENTED: <S> and <Ancestor> have identical types, <S> and <Ancestor> orientations are IDENTICAL. DIFF_ORIENTED: <S> and <Ancestor> have identical types, <S> and <Ancestor> orientations are DIFFERENT.
 ") TopOpeBRepDS_ShapeShapeInterference;
 		 TopOpeBRepDS_ShapeShapeInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind ST, const Standard_Integer S, const TopOpeBRepDS_Kind GT, const Standard_Integer G, const Standard_Boolean GBound, const TopOpeBRepDS_Config C);
 
@@ -9353,7 +9353,7 @@ None
 
 Description
 -----------
-Creates an iterator on the surfaces on solid described by the interferences in <l>.
+Creates an iterator on the Surfaces on solid described by the interferences in <L>.
 ") TopOpeBRepDS_SurfaceIterator;
 		 TopOpeBRepDS_SurfaceIterator(const TopOpeBRepDS_ListOfInterference & L);
 
@@ -9422,7 +9422,7 @@ None
 
 Description
 -----------
-Create an interference of vertex <g> on a crossed edge e. //! if support type <st> == edge: <s> is edge e face: <s> is the face with bound e. <t> is the transition along the edge, crossing the crossed edge. e is the crossed edge. <gisbound> indicates if <g> is a bound of the edge. <p> is the parameter of <g> on the edge. //! interference is stored in the list of interfs of the edge.
+Create an interference of VERTEX <G> on a crossed EDGE E. //! if support type <ST> == EDGE: <S> is edge E FACE: <S> is the face with bound E. <T> is the transition along the edge, crossing the crossed edge. E is the crossed edge. <GIsBound> indicates if <G> is a bound of the edge. <P> is the parameter of <G> on the edge. //! interference is stored in the list of interfs of the edge.
 ") TopOpeBRepDS_EdgeVertexInterference;
 		 TopOpeBRepDS_EdgeVertexInterference(const TopOpeBRepDS_Transition & T, const TopOpeBRepDS_Kind ST, const Standard_Integer S, const Standard_Integer G, const Standard_Boolean GIsBound, const TopOpeBRepDS_Config C, const Standard_Real P);
 
@@ -9445,7 +9445,7 @@ None
 
 Description
 -----------
-Create an interference of vertex <g> on crossed edge <s>. //! <t> is the transition along the edge, crossing the crossed edge. <s> is the crossed edge. <gisbound> indicates if <g> is a bound of the edge. <c> indicates the geometric configuration between the edge and the crossed edge. <p> is the parameter of <g> on the edge. //! interference is stored in the list of interfs of the edge.
+Create an interference of VERTEX <G> on crossed EDGE <S>. //! <T> is the transition along the edge, crossing the crossed edge. <S> is the crossed edge. <GIsBound> indicates if <G> is a bound of the edge. <C> indicates the geometric configuration between the edge and the crossed edge. <P> is the parameter of <G> on the edge. //! interference is stored in the list of interfs of the edge.
 ") TopOpeBRepDS_EdgeVertexInterference;
 		 TopOpeBRepDS_EdgeVertexInterference(const TopOpeBRepDS_Transition & T, const Standard_Integer S, const Standard_Integer G, const Standard_Boolean GIsBound, const TopOpeBRepDS_Config C, const Standard_Real P);
 
@@ -9514,7 +9514,7 @@ None
 
 Description
 -----------
-Create an interference of edge <g> on face <s>.
+Create an interference of EDGE <G> on FACE <S>.
 ") TopOpeBRepDS_FaceEdgeInterference;
 		 TopOpeBRepDS_FaceEdgeInterference(const TopOpeBRepDS_Transition & T, const Standard_Integer S, const Standard_Integer G, const Standard_Boolean GIsBound, const TopOpeBRepDS_Config C);
 

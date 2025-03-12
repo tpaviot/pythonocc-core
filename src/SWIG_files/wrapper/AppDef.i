@@ -184,7 +184,7 @@ None
 
 Description
 -----------
-Initializes the fields of the function. the approximating curve has <nbpol> control points.
+initializes the fields of the function. The approximating curve has <NbPol> control points.
 ") AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute;
 		 AppDef_BSpParFunctionOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer NbPol);
 
@@ -197,7 +197,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns the multibspcurve approximating the set after computing the value f or grad(f).
+returns the MultiBSpCurve approximating the set after computing the value F or Grad(F).
 ") CurveValue;
 		AppParCurves_MultiBSpCurve CurveValue();
 
@@ -210,7 +210,7 @@ math_Matrix
 
 Description
 -----------
-Returns the derivative function matrix used to approximate the multiline.
+returns the derivative function matrix used to approximate the multiline.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
@@ -229,7 +229,7 @@ float
 
 Description
 -----------
-Returns the distance between the multipoint of range ipoint and the curve curveindex.
+returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
 		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
 
@@ -261,7 +261,7 @@ math_Matrix
 
 Description
 -----------
-Returns the function matrix used to approximate the multiline.
+returns the function matrix used to approximate the multiline.
 ") FunctionMatrix;
 		const math_Matrix & FunctionMatrix();
 
@@ -280,7 +280,7 @@ bool
 
 Description
 -----------
-Returns the gradient g of the sum above for the parameters xi.
+returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
 		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
 
@@ -293,7 +293,7 @@ math_IntegerVector
 
 Description
 -----------
-Returns the indexes of the first non null values of a and da. the values are non null from index(ieme point) +1 to index(ieme point) + degree +1.
+Returns the indexes of the first non null values of A and DA. The values are non null from Index(ieme point) +1 to Index(ieme point) + degree +1.
 ") Index;
 		const math_IntegerVector & Index();
 
@@ -325,7 +325,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the points and the multibspcurve.
+returns the maximum distance between the points and the MultiBSpCurve.
 ") MaxError2d;
 		Standard_Real MaxError2d();
 
@@ -338,7 +338,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the points and the multibspcurve.
+returns the maximum distance between the points and the MultiBSpCurve.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
@@ -351,7 +351,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function. it corresponds to the number of multipoints.
+returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
@@ -364,7 +364,7 @@ math_Vector
 
 Description
 -----------
-Returns the new parameters of the multiline.
+returns the new parameters of the MultiLine.
 ") NewParameters;
 		const math_Vector & NewParameters();
 
@@ -418,7 +418,7 @@ F: float
 
 Description
 -----------
-This method computes the new approximation of the multiline ssp and calculates f = sum (||pui - bi*pi||2) for each point of the multiline.
+this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
@@ -437,7 +437,7 @@ F: float
 
 Description
 -----------
-Returns the value f=sum(||pui - bi*pi||)2. returns the value g = grad(f) for the parameters xi.
+returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
@@ -475,7 +475,7 @@ None
 
 Description
 -----------
-Given a multiline, this algorithm computes the least square resolution using the householder-qr method. if the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. nbpol is the number of control points wanted for the approximating curves. the system to solve is the following: a x = b. where a is the bernstein matrix computed with the parameters, b the points coordinates and x the poles solutions. the matrix a is the same for each coordinate x, y and z and is also the same for each multiline point because they are approximated in parallel(so with the same parameter, only the vector b changes).
+given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
 
@@ -524,7 +524,7 @@ None
 
 Description
 -----------
-Given a multiline, this algorithm computes the least square resolution using the householder-qr method. if the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. deg is the degree wanted for the approximating curves. the system to solve is the following: a x = b. where a is the bspline functions matrix computed with <parameters>, b the points coordinates and x the poles solutions. the matrix a is the same for each coordinate x, y and z and is also the same for each multiline point because they are approximated in parallel(so with the same parameter, only the vector b changes).
+given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute;
 		 AppDef_BSpParLeastSquareOfMyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
 
@@ -562,7 +562,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
+returns the result of the approximation, i.e. all the Curves. An exception is raised if NotDone.
 ") BSplineValue;
 		AppParCurves_MultiBSpCurve BSplineValue();
 
@@ -575,7 +575,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
+returns the result of the approximation, i.e. all the Curves. An exception is raised if NotDone.
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
@@ -588,7 +588,7 @@ math_Matrix
 
 Description
 -----------
-Returns the derivative function matrix used to approximate the set.
+returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
@@ -601,7 +601,7 @@ math_Matrix
 
 Description
 -----------
-Returns the distances between the points of the multiline and the approximation curves.
+returns the distances between the points of the multiline and the approximation curves.
 ") Distance;
 		const math_Matrix & Distance();
 
@@ -620,7 +620,7 @@ MaxE2d: float
 
 Description
 -----------
-Returns the maximum errors between the multiline and the approximation curves. f is the sum of the square distances.
+returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 ") Error;
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -640,7 +640,7 @@ MaxE2d: float
 
 Description
 -----------
-Returns the maximum errors between the multiline and the approximation curves. f is the sum of the square distances. grad is the derivative vector of the function f.
+returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 ") ErrorGradient;
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -653,7 +653,7 @@ float
 
 Description
 -----------
-Returns the value (p2 - p1)/ v1 if the first point was a tangency point.
+returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		Standard_Real FirstLambda();
 
@@ -666,7 +666,7 @@ math_Matrix
 
 Description
 -----------
-Returns the function matrix used to approximate the set.
+returns the function matrix used to approximate the set.
 ") FunctionMatrix;
 		const math_Matrix & FunctionMatrix();
 
@@ -679,7 +679,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -692,7 +692,7 @@ math_IntegerVector
 
 Description
 -----------
-Returns the indexes of the first non null values of a and da. the values are non null from index(ieme point) +1 to index(ieme point) + degree +1.
+Returns the indexes of the first non null values of A and DA. The values are non null from Index(ieme point) +1 to Index(ieme point) + degree +1.
 ") KIndex;
 		const math_IntegerVector & KIndex();
 
@@ -705,7 +705,7 @@ float
 
 Description
 -----------
-Returns the value (pn - pn-1)/ vn if the last point was a tangency point.
+returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
 		Standard_Real LastLambda();
 
@@ -723,7 +723,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. the case 'curvaturepoint' is not treated in this method.
+Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 ") Perform;
 		void Perform(const math_Vector & Parameters);
 
@@ -765,7 +765,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. <v1t> is the tangent vector at the first point. <v2t> is the tangent vector at the last point.
+Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
 
@@ -789,7 +789,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. <v1t> is the tangent vector at the first point. <v2t> is the tangent vector at the last point. <v1c> is the tangent vector at the first point. <v2c> is the tangent vector at the last point.
+Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
 
@@ -802,7 +802,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix of points value.
+returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
@@ -815,7 +815,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix of resulting control points value.
+returns the matrix of resulting control points value.
 ") Poles;
 		const math_Matrix & Poles();
 
@@ -855,7 +855,7 @@ None
 
 Description
 -----------
-The multiline <line> will be approximated until tolerances will be reached. the approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is true. if <squares> is true, the computation will be done with no iteration at all. //! the multiplicities of the internal knots is set by default.
+The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all. //! The multiplicities of the internal knots is set by default.
 ") AppDef_BSplineCompute;
 		 AppDef_BSplineCompute(const AppDef_MultiLine & Line, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-3, const Standard_Real Tolerance2d = 1.0e-6, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
 
@@ -881,7 +881,7 @@ None
 
 Description
 -----------
-The multiline <line> will be approximated until tolerances will be reached. the approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is true. if <squares> is true, the computation will be done with no iteration at all.
+The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 ") AppDef_BSplineCompute;
 		 AppDef_BSplineCompute(const AppDef_MultiLine & Line, const math_Vector & Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
 
@@ -944,7 +944,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns the result of the approximation.
+returns the result of the approximation.
 ") ChangeValue;
 		AppParCurves_MultiBSpCurve & ChangeValue();
 
@@ -962,7 +962,7 @@ tol2d: float
 
 Description
 -----------
-Returns the tolerances 2d and 3d of the multibspcurve.
+returns the tolerances 2d and 3d of the MultiBSpCurve.
 ") Error;
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1005,7 +1005,7 @@ None
 
 Description
 -----------
-Constructs an interpolation of the multiline <line> the result will be a c2 curve of degree 3.
+Constructs an interpolation of the MultiLine <Line> The result will be a C2 curve of degree 3.
 ") Interpol;
 		void Interpol(const AppDef_MultiLine & Line);
 
@@ -1018,7 +1018,7 @@ bool
 
 Description
 -----------
-Returns false if at a moment of the approximation, the status noapproximation has been sent by the user when more points were needed.
+returns False if at a moment of the approximation, the status NoApproximation has been sent by the user when more points were needed.
 ") IsAllApproximated;
 		Standard_Boolean IsAllApproximated();
 
@@ -1031,7 +1031,7 @@ bool
 
 Description
 -----------
-Returns false if the status nopointsadded has been sent.
+returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
 		Standard_Boolean IsToleranceReached();
 
@@ -1044,7 +1044,7 @@ TColStd_Array1OfReal
 
 Description
 -----------
-Returns the new parameters of the approximation corresponding to the points of the multibspcurve.
+returns the new parameters of the approximation corresponding to the points of the MultiBSpCurve.
 ") Parameters;
 		const TColStd_Array1OfReal & Parameters();
 
@@ -1062,7 +1062,7 @@ None
 
 Description
 -----------
-Runs the algorithm after having initialized the fields.
+runs the algorithm after having initialized the fields.
 ") Perform;
 		void Perform(const AppDef_MultiLine & Line);
 
@@ -1081,7 +1081,7 @@ None
 
 Description
 -----------
-Changes the first and the last constraint points.
+changes the first and the last constraint points.
 ") SetConstraints;
 		void SetConstraints(const AppParCurves_Constraint firstC, const AppParCurves_Constraint lastC);
 
@@ -1099,7 +1099,7 @@ None
 
 Description
 -----------
-Sets the continuity of the spline. if c = 2, the spline will be c2.
+sets the continuity of the spline. if C = 2, the spline will be C2.
 ") SetContinuity;
 		void SetContinuity(const Standard_Integer C);
 
@@ -1118,7 +1118,7 @@ None
 
 Description
 -----------
-Changes the degrees of the approximation.
+changes the degrees of the approximation.
 ") SetDegrees;
 		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
 
@@ -1136,7 +1136,7 @@ None
 
 Description
 -----------
-The approximation will be done with the set of knots <knots>. the multiplicities will be set with the degree and the desired continuity.
+The approximation will be done with the set of knots <Knots>. The multiplicities will be set with the degree and the desired continuity.
 ") SetKnots;
 		void SetKnots(const TColStd_Array1OfReal & Knots);
 
@@ -1155,7 +1155,7 @@ None
 
 Description
 -----------
-The approximation will be done with the set of knots <knots> and the multiplicities <mults>.
+The approximation will be done with the set of knots <Knots> and the multiplicities <Mults>.
 ") SetKnotsAndMultiplicities;
 		void SetKnotsAndMultiplicities(const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults);
 
@@ -1173,7 +1173,7 @@ None
 
 Description
 -----------
-The approximation will begin with the set of parameters <thepar>.
+The approximation will begin with the set of parameters <ThePar>.
 ") SetParameters;
 		void SetParameters(const math_Vector & ThePar);
 
@@ -1191,7 +1191,7 @@ None
 
 Description
 -----------
-Sets periodic flag. if theperiodic = standard_true, algorithm tries to build periodic multicurve using corresponding c1 boundary condition for first and last multipoints. multiline must be closed.
+Sets periodic flag. If thePeriodic = Standard_True, algorithm tries to build periodic multicurve using corresponding C1 boundary condition for first and last multipoints. Multiline must be closed.
 ") SetPeriodic;
 		void SetPeriodic(const Standard_Boolean thePeriodic);
 
@@ -1223,7 +1223,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns the result of the approximation.
+returns the result of the approximation.
 ") Value;
 		AppParCurves_MultiBSpCurve Value();
 
@@ -1263,7 +1263,7 @@ None
 
 Description
 -----------
-The multiline <line> will be approximated until tolerances will be reached. the approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is true. if <squares> is true, the computation will be done with no iteration at all.
+The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 ") AppDef_Compute;
 		 AppDef_Compute(const AppDef_MultiLine & Line, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-3, const Standard_Real Tolerance2d = 1.0e-6, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Approx_ParametrizationType parametrization = Approx_ChordLength, const Standard_Boolean Squares = Standard_False);
 
@@ -1289,7 +1289,7 @@ None
 
 Description
 -----------
-The multiline <line> will be approximated until tolerances will be reached. the approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is true. if <squares> is true, the computation will be done with no iteration at all.
+The MultiLine <Line> will be approximated until tolerances will be reached. The approximation will be done from degreemin to degreemax with a cutting if the corresponding boolean is True. If <Squares> is True, the computation will be done with no iteration at all.
 ") AppDef_Compute;
 		 AppDef_Compute(const AppDef_MultiLine & Line, const math_Vector & Parameters, const Standard_Integer degreemin = 4, const Standard_Integer degreemax = 8, const Standard_Real Tolerance3d = 1.0e-03, const Standard_Real Tolerance2d = 1.0e-06, const Standard_Integer NbIterations = 5, const Standard_Boolean cutting = Standard_True, const Standard_Boolean Squares = Standard_False);
 
@@ -1357,7 +1357,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the result of the approximation.
+returns the result of the approximation.
 ") ChangeValue;
 		AppParCurves_MultiCurve & ChangeValue(const Standard_Integer Index = 1);
 
@@ -1376,7 +1376,7 @@ tol2d: float
 
 Description
 -----------
-Returns the tolerances 2d and 3d of the <index> multicurve.
+returns the tolerances 2d and 3d of the <Index> MultiCurve.
 ") Error;
 		void Error(const Standard_Integer Index, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -1414,7 +1414,7 @@ bool
 
 Description
 -----------
-Returns false if at a moment of the approximation, the status noapproximation has been sent by the user when more points were needed.
+returns False if at a moment of the approximation, the status NoApproximation has been sent by the user when more points were needed.
 ") IsAllApproximated;
 		Standard_Boolean IsAllApproximated();
 
@@ -1427,7 +1427,7 @@ bool
 
 Description
 -----------
-Returns false if the status nopointsadded has been sent.
+returns False if the status NoPointsAdded has been sent.
 ") IsToleranceReached;
 		Standard_Boolean IsToleranceReached();
 
@@ -1440,7 +1440,7 @@ int
 
 Description
 -----------
-Returns the number of multicurve doing the approximation of the multiline.
+Returns the number of MultiCurve doing the approximation of the MultiLine.
 ") NbMultiCurves;
 		Standard_Integer NbMultiCurves();
 
@@ -1458,7 +1458,7 @@ TColStd_Array1OfReal
 
 Description
 -----------
-Returns the new parameters of the approximation corresponding to the points of the multicurve <index>.
+returns the new parameters of the approximation corresponding to the points of the multicurve <Index>.
 ") Parameters;
 		const TColStd_Array1OfReal & Parameters(const Standard_Integer Index = 1);
 
@@ -1471,7 +1471,7 @@ Approx_ParametrizationType
 
 Description
 -----------
-Returns the type of parametrization.
+returns the type of parametrization.
 ") Parametrization;
 		Approx_ParametrizationType Parametrization();
 
@@ -1489,7 +1489,7 @@ None
 
 Description
 -----------
-Runs the algorithm after having initialized the fields.
+runs the algorithm after having initialized the fields.
 ") Perform;
 		void Perform(const AppDef_MultiLine & Line);
 
@@ -1508,7 +1508,7 @@ None
 
 Description
 -----------
-Changes the first and the last constraint points.
+changes the first and the last constraint points.
 ") SetConstraints;
 		void SetConstraints(const AppParCurves_Constraint firstC, const AppParCurves_Constraint lastC);
 
@@ -1527,7 +1527,7 @@ None
 
 Description
 -----------
-Changes the degrees of the approximation.
+changes the degrees of the approximation.
 ") SetDegrees;
 		void SetDegrees(const Standard_Integer degreemin, const Standard_Integer degreemax);
 
@@ -1559,7 +1559,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns the result of the approximation.
+returns the result of the approximation.
 ") SplineValue;
 		AppParCurves_MultiBSpCurve SplineValue();
 
@@ -1577,7 +1577,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the result of the approximation.
+returns the result of the approximation.
 ") Value;
 		AppParCurves_MultiCurve Value(const Standard_Integer Index = 1);
 
@@ -1769,7 +1769,7 @@ None
 
 Description
 -----------
-Creates an undefined multiline.
+creates an undefined MultiLine.
 ") AppDef_MultiLine;
 		 AppDef_MultiLine();
 
@@ -1787,7 +1787,7 @@ None
 
 Description
 -----------
-Given the number nbmult of multipointconstraints of this multiline , it initializes all the fields.setvalue must be called in order for the values of the multipoint constraint to be taken into account. an exception is raised if nbmult < 0.
+given the number NbMult of MultiPointConstraints of this MultiLine , it initializes all the fields.SetValue must be called in order for the values of the multipoint constraint to be taken into account. An exception is raised if NbMult < 0.
 ") AppDef_MultiLine;
 		 AppDef_MultiLine(const Standard_Integer NbMult);
 
@@ -1805,7 +1805,7 @@ None
 
 Description
 -----------
-Constructs a multiline with an array of multipointconstraints.
+Constructs a MultiLine with an array of MultiPointConstraints.
 ") AppDef_MultiLine;
 		 AppDef_MultiLine(const AppDef_Array1OfMultiPointConstraint & tabMultiP);
 
@@ -1823,7 +1823,7 @@ None
 
 Description
 -----------
-The multiline constructed will have one line of 3d points without their tangencies.
+The MultiLine constructed will have one line of 3d points without their tangencies.
 ") AppDef_MultiLine;
 		 AppDef_MultiLine(const TColgp_Array1OfPnt & tabP3d);
 
@@ -1841,7 +1841,7 @@ None
 
 Description
 -----------
-The multiline constructed will have one line of 2d points without their tangencies.
+The MultiLine constructed will have one line of 2d points without their tangencies.
 ") AppDef_MultiLine;
 		 AppDef_MultiLine(const TColgp_Array1OfPnt2d & tabP2d);
 
@@ -1858,7 +1858,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -1871,7 +1871,7 @@ int
 
 Description
 -----------
-Returns the number of multipointconstraints of the multiline.
+returns the number of MultiPointConstraints of the MultiLine.
 ") NbMultiPoints;
 		Standard_Integer NbMultiPoints();
 
@@ -1884,7 +1884,7 @@ int
 
 Description
 -----------
-Returns the number of points from multipoints composing the multiline.
+returns the number of Points from MultiPoints composing the MultiLine.
 ") NbPoints;
 		Standard_Integer NbPoints();
 
@@ -1903,7 +1903,7 @@ None
 
 Description
 -----------
-It sets the multipointconstraint of range index to the value mpoint. an exception is raised if index < 0 or index> mpoint. an exception is raised if the dimensions of the multipoints are different.
+It sets the MultiPointConstraint of range Index to the value MPoint. An exception is raised if Index < 0 or Index> MPoint. An exception is raised if the dimensions of the MultiPoints are different.
 ") SetValue;
 		void SetValue(const Standard_Integer Index, const AppDef_MultiPointConstraint & MPoint);
 
@@ -1921,7 +1921,7 @@ AppDef_MultiPointConstraint
 
 Description
 -----------
-Returns the multipointconstraint of range index an exception is raised if index<0 or index>mpoint.
+returns the MultiPointConstraint of range Index An exception is raised if Index<0 or Index>MPoint.
 ") Value;
 		AppDef_MultiPointConstraint Value(const Standard_Integer Index);
 
@@ -1952,7 +1952,7 @@ None
 
 Description
 -----------
-Creates an undefined multipointconstraint.
+creates an undefined MultiPointConstraint.
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint();
 
@@ -1971,7 +1971,7 @@ None
 
 Description
 -----------
-Constructs a set of points used to approximate a multiline. these points can be of 2 or 3 dimensions. points will be initialized with setpoint and setpoint2d.
+constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d.
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint(const Standard_Integer NbPoints, const Standard_Integer NbPoints2d);
 
@@ -1989,7 +1989,7 @@ None
 
 Description
 -----------
-Creates a multipoint only composed of 3d points.
+creates a MultiPoint only composed of 3D points.
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP);
 
@@ -2007,7 +2007,7 @@ None
 
 Description
 -----------
-Creates a multipoint only composed of 2d points.
+creates a MultiPoint only composed of 2D points.
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt2d & tabP);
 
@@ -2026,7 +2026,7 @@ None
 
 Description
 -----------
-Constructs a set of points used to approximate a multiline. these points can be of 2 or 3 dimensions. points will be initialized with setpoint and setpoint2d.
+constructs a set of Points used to approximate a Multiline. These Points can be of 2 or 3 dimensions. Points will be initialized with SetPoint and SetPoint2d.
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d);
 
@@ -2049,7 +2049,7 @@ None
 
 Description
 -----------
-Creates a multipointconstraint with a constraint of curvature. an exception is raised if (length of <tabp> + length of <tabp2d> ) is different from (length of <tabvec> + length of <tabvec2d> ) or from (length of <tabcur> + length of <tabcur2d> ).
+creates a MultiPointConstraint with a constraint of Curvature. An exception is raised if (length of <tabP> + length of <tabP2d> ) is different from (length of <tabVec> + length of <tabVec2d> ) or from (length of <tabCur> + length of <tabCur2d> ).
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec & tabVec, const TColgp_Array1OfVec2d & tabVec2d, const TColgp_Array1OfVec & tabCur, const TColgp_Array1OfVec2d & tabCur2d);
 
@@ -2070,7 +2070,7 @@ None
 
 Description
 -----------
-Creates a multipointconstraint with a constraint of tangency. an exception is raised if (length of <tabp> + length of <tabp2d> ) is different from (length of <tabvec> + length of <tabvec2d> ).
+creates a MultiPointConstraint with a constraint of Tangency. An exception is raised if (length of <tabP> + length of <tabP2d> ) is different from (length of <tabVec> + length of <tabVec2d> ).
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec & tabVec, const TColgp_Array1OfVec2d & tabVec2d);
 
@@ -2090,7 +2090,7 @@ None
 
 Description
 -----------
-Creates a multipointconstraint only composed of 3d points with constraints of curvature. an exception is raised if the length of tabp is different from the length of tabvec or from tabcur.
+creates a MultiPointConstraint only composed of 3d points with constraints of curvature. An exception is raised if the length of tabP is different from the length of tabVec or from tabCur.
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfVec & tabVec, const TColgp_Array1OfVec & tabCur);
 
@@ -2109,7 +2109,7 @@ None
 
 Description
 -----------
-Creates a multipointconstraint only composed of 3d points with constraints of tangency. an exception is raised if the length of tabp is different from the length of tabvec.
+creates a MultiPointConstraint only composed of 3d points with constraints of tangency. An exception is raised if the length of tabP is different from the length of tabVec.
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt & tabP, const TColgp_Array1OfVec & tabVec);
 
@@ -2128,7 +2128,7 @@ None
 
 Description
 -----------
-Creates a multipointconstraint only composed of 2d points with constraints of tangency. an exception is raised if the length of tabp is different from the length of tabvec2d.
+creates a MultiPointConstraint only composed of 2d points with constraints of tangency. An exception is raised if the length of tabP is different from the length of tabVec2d.
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec2d & tabVec2d);
 
@@ -2148,7 +2148,7 @@ None
 
 Description
 -----------
-Creates a multipointconstraint only composed of 2d points with constraints of curvature. an exception is raised if the length of tabp is different from the length of tabvec2d or from tabcur2d.
+creates a MultiPointConstraint only composed of 2d points with constraints of curvature. An exception is raised if the length of tabP is different from the length of tabVec2d or from tabCur2d.
 ") AppDef_MultiPointConstraint;
 		 AppDef_MultiPointConstraint(const TColgp_Array1OfPnt2d & tabP2d, const TColgp_Array1OfVec2d & tabVec2d, const TColgp_Array1OfVec2d & tabCur2d);
 
@@ -2166,7 +2166,7 @@ gp_Vec
 
 Description
 -----------
-Returns the normal vector at the point of range index. an exception is raised if index < 0 or if index > number of 3d points.
+returns the normal vector at the point of range Index. An exception is raised if Index < 0 or if Index > number of 3d points.
 ") Curv;
 		gp_Vec Curv(const Standard_Integer Index);
 
@@ -2184,7 +2184,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the normal vector at the point of range index. an exception is raised if index < 0 or if index > number of 3d points.
+returns the normal vector at the point of range Index. An exception is raised if Index < 0 or if Index > number of 3d points.
 ") Curv2d;
 		gp_Vec2d Curv2d(const Standard_Integer Index);
 
@@ -2201,7 +2201,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. is used to redefine the operator <<.
+Prints on the stream o information on the current state of the object. Is used to redefine the operator <<.
 ") Dump;
 		virtual void Dump(std::ostream &OutValue);
 
@@ -2214,7 +2214,7 @@ bool
 
 Description
 -----------
-Returns true if the multipoint has a curvature value.
+returns True if the MultiPoint has a curvature value.
 ") IsCurvaturePoint;
 		Standard_Boolean IsCurvaturePoint();
 
@@ -2227,7 +2227,7 @@ bool
 
 Description
 -----------
-Returns true if the multipoint has a tangency value.
+returns True if the MultiPoint has a tangency value.
 ") IsTangencyPoint;
 		Standard_Boolean IsTangencyPoint();
 
@@ -2246,7 +2246,7 @@ None
 
 Description
 -----------
-Vec sets the value of the normal vector at the point of index index. the norm of the normal vector at the point of position index is set to the normal curvature. an exception is raised if index <0 or if index > number of 3d points. an exception is raised if curv has an incorrect number of dimensions.
+Vec sets the value of the normal vector at the point of index Index. The norm of the normal vector at the point of position Index is set to the normal curvature. An exception is raised if Index <0 or if Index > number of 3d points. An exception is raised if Curv has an incorrect number of dimensions.
 ") SetCurv;
 		void SetCurv(const Standard_Integer Index, const gp_Vec & Curv);
 
@@ -2265,7 +2265,7 @@ None
 
 Description
 -----------
-Vec sets the value of the normal vector at the point of index index. the norm of the normal vector at the point of position index is set to the normal curvature. an exception is raised if index <0 or if index > number of 3d points. an exception is raised if curv has an incorrect number of dimensions.
+Vec sets the value of the normal vector at the point of index Index. The norm of the normal vector at the point of position Index is set to the normal curvature. An exception is raised if Index <0 or if Index > number of 3d points. An exception is raised if Curv has an incorrect number of dimensions.
 ") SetCurv2d;
 		void SetCurv2d(const Standard_Integer Index, const gp_Vec2d & Curv2d);
 
@@ -2284,7 +2284,7 @@ None
 
 Description
 -----------
-Sets the value of the tangency of the point of range index. an exception is raised if index <0 or if index > number of 3d points. an exception is raised if tang has an incorrect number of dimensions.
+sets the value of the tangency of the point of range Index. An exception is raised if Index <0 or if Index > number of 3d points. An exception is raised if Tang has an incorrect number of dimensions.
 ") SetTang;
 		void SetTang(const Standard_Integer Index, const gp_Vec & Tang);
 
@@ -2303,7 +2303,7 @@ None
 
 Description
 -----------
-Sets the value of the tangency of the point of range index. an exception is raised if index <number of 3d points or if index > total number of points an exception is raised if tang has an incorrect number of dimensions.
+sets the value of the tangency of the point of range Index. An exception is raised if Index <number of 3d points or if Index > total number of Points An exception is raised if Tang has an incorrect number of dimensions.
 ") SetTang2d;
 		void SetTang2d(const Standard_Integer Index, const gp_Vec2d & Tang2d);
 
@@ -2321,7 +2321,7 @@ gp_Vec
 
 Description
 -----------
-Returns the tangency value of the point of range index. an exception is raised if index < 0 or if index > number of 3d points.
+returns the tangency value of the point of range Index. An exception is raised if Index < 0 or if Index > number of 3d points.
 ") Tang;
 		gp_Vec Tang(const Standard_Integer Index);
 
@@ -2339,7 +2339,7 @@ gp_Vec2d
 
 Description
 -----------
-Returns the tangency value of the point of range index. an exception is raised if index < number of 3d points or if index > total number of points.
+returns the tangency value of the point of range Index. An exception is raised if Index < number of 3d points or if Index > total number of points.
 ") Tang2d;
 		gp_Vec2d Tang2d(const Standard_Integer Index);
 
@@ -2381,7 +2381,7 @@ None
 
 Description
 -----------
-Tries to minimize the sum (square(||qui - bi*pi||)) where pui describe the approximating bspline curves'poles and qi the multiline points with a parameter ui. in this algorithm, the parameters ui are the unknowns. the tolerance required on this sum is given by tol. the desired degree of the resulting curve is deg.
+Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyBSplGradientOfBSplineCompute;
 		 AppDef_MyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 1);
 
@@ -2411,7 +2411,7 @@ None
 
 Description
 -----------
-Tries to minimize the sum (square(||qui - bi*pi||)) where pui describe the approximating bspline curves'poles and qi the multiline points with a parameter ui. in this algorithm, the parameters ui are the unknowns. the tolerance required on this sum is given by tol. the desired degree of the resulting curve is deg.
+Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating BSpline curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyBSplGradientOfBSplineCompute;
 		 AppDef_MyBSplGradientOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations, const Standard_Real lambda1, const Standard_Real lambda2);
 
@@ -2424,7 +2424,7 @@ float
 
 Description
 -----------
-Returns the average error between the old and the new approximation.
+returns the average error between the old and the new approximation.
 ") AverageError;
 		Standard_Real AverageError();
 
@@ -2442,7 +2442,7 @@ float
 
 Description
 -----------
-Returns the difference between the old and the new approximation. an exception is raised if notdone. an exception is raised if index<1 or index>nbparameters.
+returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
 		Standard_Real Error(const Standard_Integer Index);
 
@@ -2455,7 +2455,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2468,7 +2468,7 @@ float
 
 Description
 -----------
-Returns the maximum difference between the old and the new approximation.
+returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
 		Standard_Real MaxError2d();
 
@@ -2481,7 +2481,7 @@ float
 
 Description
 -----------
-Returns the maximum difference between the old and the new approximation.
+returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
@@ -2494,7 +2494,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns all the bspline curves approximating the multiline ssp after minimization of the parameter.
+returns all the BSpline curves approximating the MultiLine SSP after minimization of the parameter.
 ") Value;
 		AppParCurves_MultiBSpCurve Value();
 
@@ -2534,7 +2534,7 @@ None
 
 Description
 -----------
-Tries to minimize the sum (square(||qui - bi*pi||)) where pui describe the approximating bezier curves'poles and qi the multiline points with a parameter ui. in this algorithm, the parameters ui are the unknowns. the tolerance required on this sum is given by tol. the desired degree of the resulting curve is deg.
+Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyGradientOfCompute;
 		 AppDef_MyGradientOfCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 200);
 
@@ -2547,7 +2547,7 @@ float
 
 Description
 -----------
-Returns the average error between the old and the new approximation.
+returns the average error between the old and the new approximation.
 ") AverageError;
 		Standard_Real AverageError();
 
@@ -2565,7 +2565,7 @@ float
 
 Description
 -----------
-Returns the difference between the old and the new approximation. an exception is raised if notdone. an exception is raised if index<1 or index>nbparameters.
+returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
 		Standard_Real Error(const Standard_Integer Index);
 
@@ -2578,7 +2578,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2591,7 +2591,7 @@ float
 
 Description
 -----------
-Returns the maximum difference between the old and the new approximation.
+returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
 		Standard_Real MaxError2d();
 
@@ -2604,7 +2604,7 @@ float
 
 Description
 -----------
-Returns the maximum difference between the old and the new approximation.
+returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
@@ -2617,7 +2617,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns all the bezier curves approximating the multiline ssp after minimization of the parameter.
+returns all the Bezier curves approximating the MultiLine SSP after minimization of the parameter.
 ") Value;
 		AppParCurves_MultiCurve Value();
 
@@ -2657,7 +2657,7 @@ None
 
 Description
 -----------
-Tries to minimize the sum (square(||qui - bi*pi||)) where pui describe the approximating bezier curves'poles and qi the multiline points with a parameter ui. in this algorithm, the parameters ui are the unknowns. the tolerance required on this sum is given by tol. the desired degree of the resulting curve is deg.
+Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_MyGradientbisOfBSplineCompute;
 		 AppDef_MyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 200);
 
@@ -2670,7 +2670,7 @@ float
 
 Description
 -----------
-Returns the average error between the old and the new approximation.
+returns the average error between the old and the new approximation.
 ") AverageError;
 		Standard_Real AverageError();
 
@@ -2688,7 +2688,7 @@ float
 
 Description
 -----------
-Returns the difference between the old and the new approximation. an exception is raised if notdone. an exception is raised if index<1 or index>nbparameters.
+returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
 		Standard_Real Error(const Standard_Integer Index);
 
@@ -2701,7 +2701,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -2714,7 +2714,7 @@ float
 
 Description
 -----------
-Returns the maximum difference between the old and the new approximation.
+returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
 		Standard_Real MaxError2d();
 
@@ -2727,7 +2727,7 @@ float
 
 Description
 -----------
-Returns the maximum difference between the old and the new approximation.
+returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
@@ -2740,7 +2740,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns all the bezier curves approximating the multiline ssp after minimization of the parameter.
+returns all the Bezier curves approximating the MultiLine SSP after minimization of the parameter.
 ") Value;
 		AppParCurves_MultiCurve Value();
 
@@ -2774,7 +2774,7 @@ bool
 
 Description
 -----------
-Returns the 3d curvatures of the multipoint <mpointindex> when only 3d points exist.
+returns the 3d curvatures of the multipoint <MPointIndex> when only 3d points exist.
 ") Curvature;
 		static Standard_Boolean Curvature(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV);
 
@@ -2794,7 +2794,7 @@ bool
 
 Description
 -----------
-Returns the 2d curvatures of the multipoint <mpointindex> only when 2d points exist.
+returns the 2d curvatures of the multipoint <MPointIndex> only when 2d points exist.
 ") Curvature;
 		static Standard_Boolean Curvature(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec2d & tabV2d);
 
@@ -2815,7 +2815,7 @@ bool
 
 Description
 -----------
-Returns the 3d and 2d curvatures of the multipoint <mpointindex>.
+returns the 3d and 2d curvatures of the multipoint <MPointIndex>.
 ") Curvature;
 		static Standard_Boolean Curvature(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
 
@@ -2833,7 +2833,7 @@ int
 
 Description
 -----------
-Returns the first index of multipoints of the multiline.
+Returns the first index of multipoints of the MultiLine.
 ") FirstPoint;
 		static Standard_Integer FirstPoint(const AppDef_MultiLine & ML);
 
@@ -2851,7 +2851,7 @@ int
 
 Description
 -----------
-Returns the last index of multipoints of the multiline.
+Returns the last index of multipoints of the MultiLine.
 ") LastPoint;
 		static Standard_Integer LastPoint(const AppDef_MultiLine & ML);
 
@@ -2872,7 +2872,7 @@ AppDef_MultiLine
 
 Description
 -----------
-Is never called in the algorithms. nothing is done.
+Is never called in the algorithms. Nothing is done.
 ") MakeMLBetween;
 		static AppDef_MultiLine MakeMLBetween(const AppDef_MultiLine & ML, const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer NbPMin);
 
@@ -2894,7 +2894,7 @@ bool
 
 Description
 -----------
-Is never called in the algorithms. nothing is done.
+Is never called in the algorithms. Nothing is done.
 ") MakeMLOneMorePoint;
 		static Standard_Boolean MakeMLOneMorePoint(const AppDef_MultiLine & ML, const Standard_Integer I1, const Standard_Integer I2, const Standard_Integer indbad, AppDef_MultiLine & OtherLine);
 
@@ -2912,7 +2912,7 @@ int
 
 Description
 -----------
-Returns the number of 2d points of a multiline.
+Returns the number of 2d points of a MultiLine.
 ") NbP2d;
 		static Standard_Integer NbP2d(const AppDef_MultiLine & ML);
 
@@ -2930,7 +2930,7 @@ int
 
 Description
 -----------
-Returns the number of 3d points of a multiline.
+Returns the number of 3d points of a MultiLine.
 ") NbP3d;
 		static Standard_Integer NbP3d(const AppDef_MultiLine & ML);
 
@@ -2950,7 +2950,7 @@ bool
 
 Description
 -----------
-Returns the 3d points of the multipoint <mpointindex> when only 3d points exist.
+returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Tangency;
 		static Standard_Boolean Tangency(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV);
 
@@ -2970,7 +2970,7 @@ bool
 
 Description
 -----------
-Returns the 2d tangency points of the multipoint <mpointindex> only when 2d points exist.
+returns the 2d tangency points of the multipoint <MPointIndex> only when 2d points exist.
 ") Tangency;
 		static Standard_Boolean Tangency(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec2d & tabV2d);
 
@@ -2991,7 +2991,7 @@ bool
 
 Description
 -----------
-Returns the 3d and 2d points of the multipoint <mpointindex>.
+returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Tangency;
 		static Standard_Boolean Tangency(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfVec & tabV, TColgp_Array1OfVec2d & tabV2d);
 
@@ -3011,7 +3011,7 @@ None
 
 Description
 -----------
-Returns the 3d points of the multipoint <mpointindex> when only 3d points exist.
+returns the 3d points of the multipoint <MPointIndex> when only 3d points exist.
 ") Value;
 		static void Value(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt);
 
@@ -3031,7 +3031,7 @@ None
 
 Description
 -----------
-Returns the 2d points of the multipoint <mpointindex> when only 2d points exist.
+returns the 2d points of the multipoint <MPointIndex> when only 2d points exist.
 ") Value;
 		static void Value(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt2d & tabPt2d);
 
@@ -3052,7 +3052,7 @@ None
 
 Description
 -----------
-Returns the 3d and 2d points of the multipoint <mpointindex>.
+returns the 3d and 2d points of the multipoint <MPointIndex>.
 ") Value;
 		static void Value(const AppDef_MultiLine & ML, const Standard_Integer MPointIndex, TColgp_Array1OfPnt & tabPt, TColgp_Array1OfPnt2d & tabPt2d);
 
@@ -3072,7 +3072,7 @@ Approx_Status
 
 Description
 -----------
-Returns nopointsadded.
+returns NoPointsAdded.
 ") WhatStatus;
 		static Approx_Status WhatStatus(const AppDef_MultiLine & ML, const Standard_Integer I1, const Standard_Integer I2);
 
@@ -3109,7 +3109,7 @@ None
 
 Description
 -----------
-Initializes the fields of the function. the approximating curve has the desired degree deg.
+initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_ParFunctionOfMyGradientOfCompute;
 		 AppDef_ParFunctionOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const Standard_Integer Deg);
 
@@ -3122,7 +3122,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the multicurve approximating the set after computing the value f or grad(f).
+returns the MultiCurve approximating the set after computing the value F or Grad(F).
 ") CurveValue;
 		AppParCurves_MultiCurve CurveValue();
 
@@ -3141,7 +3141,7 @@ float
 
 Description
 -----------
-Returns the distance between the multipoint of range ipoint and the curve curveindex.
+returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
 		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
 
@@ -3179,7 +3179,7 @@ bool
 
 Description
 -----------
-Returns the gradient g of the sum above for the parameters xi.
+returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
 		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
 
@@ -3211,7 +3211,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the points and the multicurve.
+returns the maximum distance between the points and the MultiCurve.
 ") MaxError2d;
 		Standard_Real MaxError2d();
 
@@ -3224,7 +3224,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the points and the multicurve.
+returns the maximum distance between the points and the MultiCurve.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
@@ -3237,7 +3237,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function. it corresponds to the number of multipoints.
+returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
@@ -3250,7 +3250,7 @@ math_Vector
 
 Description
 -----------
-Returns the new parameters of the multiline.
+returns the new parameters of the MultiLine.
 ") NewParameters;
 		const math_Vector & NewParameters();
 
@@ -3268,7 +3268,7 @@ F: float
 
 Description
 -----------
-This method computes the new approximation of the multiline ssp and calculates f = sum (||pui - bi*pi||2) for each point of the multiline.
+this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
@@ -3287,7 +3287,7 @@ F: float
 
 Description
 -----------
-Returns the value f=sum(||pui - bi*pi||)2. returns the value g = grad(f) for the parameters xi.
+returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
@@ -3324,7 +3324,7 @@ None
 
 Description
 -----------
-Initializes the fields of the function. the approximating curve has the desired degree deg.
+initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_ParFunctionOfMyGradientbisOfBSplineCompute;
 		 AppDef_ParFunctionOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const Standard_Integer Deg);
 
@@ -3337,7 +3337,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the multicurve approximating the set after computing the value f or grad(f).
+returns the MultiCurve approximating the set after computing the value F or Grad(F).
 ") CurveValue;
 		AppParCurves_MultiCurve CurveValue();
 
@@ -3356,7 +3356,7 @@ float
 
 Description
 -----------
-Returns the distance between the multipoint of range ipoint and the curve curveindex.
+returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
 		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
 
@@ -3394,7 +3394,7 @@ bool
 
 Description
 -----------
-Returns the gradient g of the sum above for the parameters xi.
+returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
 		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
 
@@ -3426,7 +3426,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the points and the multicurve.
+returns the maximum distance between the points and the MultiCurve.
 ") MaxError2d;
 		Standard_Real MaxError2d();
 
@@ -3439,7 +3439,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the points and the multicurve.
+returns the maximum distance between the points and the MultiCurve.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
@@ -3452,7 +3452,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function. it corresponds to the number of multipoints.
+returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
@@ -3465,7 +3465,7 @@ math_Vector
 
 Description
 -----------
-Returns the new parameters of the multiline.
+returns the new parameters of the MultiLine.
 ") NewParameters;
 		const math_Vector & NewParameters();
 
@@ -3483,7 +3483,7 @@ F: float
 
 Description
 -----------
-This method computes the new approximation of the multiline ssp and calculates f = sum (||pui - bi*pi||2) for each point of the multiline.
+this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
@@ -3502,7 +3502,7 @@ F: float
 
 Description
 -----------
-Returns the value f=sum(||pui - bi*pi||)2. returns the value g = grad(f) for the parameters xi.
+returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
@@ -3539,7 +3539,7 @@ None
 
 Description
 -----------
-Initializes the fields of the function. the approximating curve has the desired degree deg.
+initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_ParFunctionOfTheGradient;
 		 AppDef_ParFunctionOfTheGradient(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const Standard_Integer Deg);
 
@@ -3552,7 +3552,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the multicurve approximating the set after computing the value f or grad(f).
+returns the MultiCurve approximating the set after computing the value F or Grad(F).
 ") CurveValue;
 		AppParCurves_MultiCurve CurveValue();
 
@@ -3571,7 +3571,7 @@ float
 
 Description
 -----------
-Returns the distance between the multipoint of range ipoint and the curve curveindex.
+returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
 		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
 
@@ -3609,7 +3609,7 @@ bool
 
 Description
 -----------
-Returns the gradient g of the sum above for the parameters xi.
+returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
 		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
 
@@ -3641,7 +3641,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the points and the multicurve.
+returns the maximum distance between the points and the MultiCurve.
 ") MaxError2d;
 		Standard_Real MaxError2d();
 
@@ -3654,7 +3654,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the points and the multicurve.
+returns the maximum distance between the points and the MultiCurve.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
@@ -3667,7 +3667,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function. it corresponds to the number of multipoints.
+returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
@@ -3680,7 +3680,7 @@ math_Vector
 
 Description
 -----------
-Returns the new parameters of the multiline.
+returns the new parameters of the MultiLine.
 ") NewParameters;
 		const math_Vector & NewParameters();
 
@@ -3698,7 +3698,7 @@ F: float
 
 Description
 -----------
-This method computes the new approximation of the multiline ssp and calculates f = sum (||pui - bi*pi||2) for each point of the multiline.
+this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
@@ -3717,7 +3717,7 @@ F: float
 
 Description
 -----------
-Returns the value f=sum(||pui - bi*pi||)2. returns the value g = grad(f) for the parameters xi.
+returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
@@ -3755,7 +3755,7 @@ None
 
 Description
 -----------
-Given a multiline, this algorithm computes the least square resolution using the householder-qr method. if the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. nbpol is the number of control points wanted for the approximating curves. the system to solve is the following: a x = b. where a is the bernstein matrix computed with the parameters, b the points coordinates and x the poles solutions. the matrix a is the same for each coordinate x, y and z and is also the same for each multiline point because they are approximated in parallel(so with the same parameter, only the vector b changes).
+given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfMyGradientOfCompute;
 		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
 
@@ -3804,7 +3804,7 @@ None
 
 Description
 -----------
-Given a multiline, this algorithm computes the least square resolution using the householder-qr method. if the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. deg is the degree wanted for the approximating curves. the system to solve is the following: a x = b. where a is the bspline functions matrix computed with <parameters>, b the points coordinates and x the poles solutions. the matrix a is the same for each coordinate x, y and z and is also the same for each multiline point because they are approximated in parallel(so with the same parameter, only the vector b changes).
+given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfMyGradientOfCompute;
 		 AppDef_ParLeastSquareOfMyGradientOfCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
 
@@ -3842,7 +3842,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
+returns the result of the approximation, i.e. all the Curves. An exception is raised if NotDone.
 ") BSplineValue;
 		AppParCurves_MultiBSpCurve BSplineValue();
 
@@ -3855,7 +3855,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
+returns the result of the approximation, i.e. all the Curves. An exception is raised if NotDone.
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
@@ -3868,7 +3868,7 @@ math_Matrix
 
 Description
 -----------
-Returns the derivative function matrix used to approximate the set.
+returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
@@ -3881,7 +3881,7 @@ math_Matrix
 
 Description
 -----------
-Returns the distances between the points of the multiline and the approximation curves.
+returns the distances between the points of the multiline and the approximation curves.
 ") Distance;
 		const math_Matrix & Distance();
 
@@ -3900,7 +3900,7 @@ MaxE2d: float
 
 Description
 -----------
-Returns the maximum errors between the multiline and the approximation curves. f is the sum of the square distances.
+returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 ") Error;
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3920,7 +3920,7 @@ MaxE2d: float
 
 Description
 -----------
-Returns the maximum errors between the multiline and the approximation curves. f is the sum of the square distances. grad is the derivative vector of the function f.
+returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 ") ErrorGradient;
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -3933,7 +3933,7 @@ float
 
 Description
 -----------
-Returns the value (p2 - p1)/ v1 if the first point was a tangency point.
+returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		Standard_Real FirstLambda();
 
@@ -3946,7 +3946,7 @@ math_Matrix
 
 Description
 -----------
-Returns the function matrix used to approximate the set.
+returns the function matrix used to approximate the set.
 ") FunctionMatrix;
 		const math_Matrix & FunctionMatrix();
 
@@ -3959,7 +3959,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -3972,7 +3972,7 @@ math_IntegerVector
 
 Description
 -----------
-Returns the indexes of the first non null values of a and da. the values are non null from index(ieme point) +1 to index(ieme point) + degree +1.
+Returns the indexes of the first non null values of A and DA. The values are non null from Index(ieme point) +1 to Index(ieme point) + degree +1.
 ") KIndex;
 		const math_IntegerVector & KIndex();
 
@@ -3985,7 +3985,7 @@ float
 
 Description
 -----------
-Returns the value (pn - pn-1)/ vn if the last point was a tangency point.
+returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
 		Standard_Real LastLambda();
 
@@ -4003,7 +4003,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. the case 'curvaturepoint' is not treated in this method.
+Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 ") Perform;
 		void Perform(const math_Vector & Parameters);
 
@@ -4045,7 +4045,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. <v1t> is the tangent vector at the first point. <v2t> is the tangent vector at the last point.
+Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
 
@@ -4069,7 +4069,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. <v1t> is the tangent vector at the first point. <v2t> is the tangent vector at the last point. <v1c> is the tangent vector at the first point. <v2c> is the tangent vector at the last point.
+Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
 
@@ -4082,7 +4082,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix of points value.
+returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
@@ -4095,7 +4095,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix of resulting control points value.
+returns the matrix of resulting control points value.
 ") Poles;
 		const math_Matrix & Poles();
 
@@ -4133,7 +4133,7 @@ None
 
 Description
 -----------
-Given a multiline, this algorithm computes the least square resolution using the householder-qr method. if the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. nbpol is the number of control points wanted for the approximating curves. the system to solve is the following: a x = b. where a is the bernstein matrix computed with the parameters, b the points coordinates and x the poles solutions. the matrix a is the same for each coordinate x, y and z and is also the same for each multiline point because they are approximated in parallel(so with the same parameter, only the vector b changes).
+given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
 
@@ -4182,7 +4182,7 @@ None
 
 Description
 -----------
-Given a multiline, this algorithm computes the least square resolution using the householder-qr method. if the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. deg is the degree wanted for the approximating curves. the system to solve is the following: a x = b. where a is the bspline functions matrix computed with <parameters>, b the points coordinates and x the poles solutions. the matrix a is the same for each coordinate x, y and z and is also the same for each multiline point because they are approximated in parallel(so with the same parameter, only the vector b changes).
+given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute;
 		 AppDef_ParLeastSquareOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
 
@@ -4220,7 +4220,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
+returns the result of the approximation, i.e. all the Curves. An exception is raised if NotDone.
 ") BSplineValue;
 		AppParCurves_MultiBSpCurve BSplineValue();
 
@@ -4233,7 +4233,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
+returns the result of the approximation, i.e. all the Curves. An exception is raised if NotDone.
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
@@ -4246,7 +4246,7 @@ math_Matrix
 
 Description
 -----------
-Returns the derivative function matrix used to approximate the set.
+returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
@@ -4259,7 +4259,7 @@ math_Matrix
 
 Description
 -----------
-Returns the distances between the points of the multiline and the approximation curves.
+returns the distances between the points of the multiline and the approximation curves.
 ") Distance;
 		const math_Matrix & Distance();
 
@@ -4278,7 +4278,7 @@ MaxE2d: float
 
 Description
 -----------
-Returns the maximum errors between the multiline and the approximation curves. f is the sum of the square distances.
+returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 ") Error;
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4298,7 +4298,7 @@ MaxE2d: float
 
 Description
 -----------
-Returns the maximum errors between the multiline and the approximation curves. f is the sum of the square distances. grad is the derivative vector of the function f.
+returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 ") ErrorGradient;
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4311,7 +4311,7 @@ float
 
 Description
 -----------
-Returns the value (p2 - p1)/ v1 if the first point was a tangency point.
+returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		Standard_Real FirstLambda();
 
@@ -4324,7 +4324,7 @@ math_Matrix
 
 Description
 -----------
-Returns the function matrix used to approximate the set.
+returns the function matrix used to approximate the set.
 ") FunctionMatrix;
 		const math_Matrix & FunctionMatrix();
 
@@ -4337,7 +4337,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -4350,7 +4350,7 @@ math_IntegerVector
 
 Description
 -----------
-Returns the indexes of the first non null values of a and da. the values are non null from index(ieme point) +1 to index(ieme point) + degree +1.
+Returns the indexes of the first non null values of A and DA. The values are non null from Index(ieme point) +1 to Index(ieme point) + degree +1.
 ") KIndex;
 		const math_IntegerVector & KIndex();
 
@@ -4363,7 +4363,7 @@ float
 
 Description
 -----------
-Returns the value (pn - pn-1)/ vn if the last point was a tangency point.
+returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
 		Standard_Real LastLambda();
 
@@ -4381,7 +4381,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. the case 'curvaturepoint' is not treated in this method.
+Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 ") Perform;
 		void Perform(const math_Vector & Parameters);
 
@@ -4423,7 +4423,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. <v1t> is the tangent vector at the first point. <v2t> is the tangent vector at the last point.
+Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
 
@@ -4447,7 +4447,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. <v1t> is the tangent vector at the first point. <v2t> is the tangent vector at the last point. <v1c> is the tangent vector at the first point. <v2c> is the tangent vector at the last point.
+Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
 
@@ -4460,7 +4460,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix of points value.
+returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
@@ -4473,7 +4473,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix of resulting control points value.
+returns the matrix of resulting control points value.
 ") Poles;
 		const math_Matrix & Poles();
 
@@ -4511,7 +4511,7 @@ None
 
 Description
 -----------
-Given a multiline, this algorithm computes the least square resolution using the householder-qr method. if the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. nbpol is the number of control points wanted for the approximating curves. the system to solve is the following: a x = b. where a is the bernstein matrix computed with the parameters, b the points coordinates and x the poles solutions. the matrix a is the same for each coordinate x, y and z and is also the same for each multiline point because they are approximated in parallel(so with the same parameter, only the vector b changes).
+given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfTheGradient;
 		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
 
@@ -4560,7 +4560,7 @@ None
 
 Description
 -----------
-Given a multiline, this algorithm computes the least square resolution using the householder-qr method. if the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. deg is the degree wanted for the approximating curves. the system to solve is the following: a x = b. where a is the bspline functions matrix computed with <parameters>, b the points coordinates and x the poles solutions. the matrix a is the same for each coordinate x, y and z and is also the same for each multiline point because they are approximated in parallel(so with the same parameter, only the vector b changes).
+given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_ParLeastSquareOfTheGradient;
 		 AppDef_ParLeastSquareOfTheGradient(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
 
@@ -4598,7 +4598,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
+returns the result of the approximation, i.e. all the Curves. An exception is raised if NotDone.
 ") BSplineValue;
 		AppParCurves_MultiBSpCurve BSplineValue();
 
@@ -4611,7 +4611,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
+returns the result of the approximation, i.e. all the Curves. An exception is raised if NotDone.
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
@@ -4624,7 +4624,7 @@ math_Matrix
 
 Description
 -----------
-Returns the derivative function matrix used to approximate the set.
+returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
@@ -4637,7 +4637,7 @@ math_Matrix
 
 Description
 -----------
-Returns the distances between the points of the multiline and the approximation curves.
+returns the distances between the points of the multiline and the approximation curves.
 ") Distance;
 		const math_Matrix & Distance();
 
@@ -4656,7 +4656,7 @@ MaxE2d: float
 
 Description
 -----------
-Returns the maximum errors between the multiline and the approximation curves. f is the sum of the square distances.
+returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 ") Error;
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4676,7 +4676,7 @@ MaxE2d: float
 
 Description
 -----------
-Returns the maximum errors between the multiline and the approximation curves. f is the sum of the square distances. grad is the derivative vector of the function f.
+returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 ") ErrorGradient;
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -4689,7 +4689,7 @@ float
 
 Description
 -----------
-Returns the value (p2 - p1)/ v1 if the first point was a tangency point.
+returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		Standard_Real FirstLambda();
 
@@ -4702,7 +4702,7 @@ math_Matrix
 
 Description
 -----------
-Returns the function matrix used to approximate the set.
+returns the function matrix used to approximate the set.
 ") FunctionMatrix;
 		const math_Matrix & FunctionMatrix();
 
@@ -4715,7 +4715,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -4728,7 +4728,7 @@ math_IntegerVector
 
 Description
 -----------
-Returns the indexes of the first non null values of a and da. the values are non null from index(ieme point) +1 to index(ieme point) + degree +1.
+Returns the indexes of the first non null values of A and DA. The values are non null from Index(ieme point) +1 to Index(ieme point) + degree +1.
 ") KIndex;
 		const math_IntegerVector & KIndex();
 
@@ -4741,7 +4741,7 @@ float
 
 Description
 -----------
-Returns the value (pn - pn-1)/ vn if the last point was a tangency point.
+returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
 		Standard_Real LastLambda();
 
@@ -4759,7 +4759,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. the case 'curvaturepoint' is not treated in this method.
+Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 ") Perform;
 		void Perform(const math_Vector & Parameters);
 
@@ -4801,7 +4801,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. <v1t> is the tangent vector at the first point. <v2t> is the tangent vector at the last point.
+Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
 
@@ -4825,7 +4825,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. <v1t> is the tangent vector at the first point. <v2t> is the tangent vector at the last point. <v1c> is the tangent vector at the first point. <v2c> is the tangent vector at the last point.
+Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
 
@@ -4838,7 +4838,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix of points value.
+returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
@@ -4851,7 +4851,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix of resulting control points value.
+returns the matrix of resulting control points value.
 ") Poles;
 		const math_Matrix & Poles();
 
@@ -4890,7 +4890,7 @@ None
 
 Description
 -----------
-Given a multiline ssp with constraints points, this algorithm finds the best curve solution to approximate it. the poles from scurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. the tolerance used in the uzawa algorithms is tolerance. a is the bernstein matrix associated to the multiline and da is the derivative bernstein matrix.(they can come from an approximation with parleastsquare.) the multicurve is modified. new multipoles are given.
+Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_ResConstraintOfMyGradientOfCompute;
 		 AppDef_ResConstraintOfMyGradientOfCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
 
@@ -4937,7 +4937,7 @@ math_Vector
 
 Description
 -----------
-Returns the duale variables of the system.
+returns the duale variables of the system.
 ") Duale;
 		const math_Vector & Duale();
 
@@ -4950,7 +4950,7 @@ math_Matrix
 
 Description
 -----------
-Returns the inverse of cont*transposed(cont), where cont is the constraint matrix for the algorithm.
+returns the Inverse of Cont*Transposed(Cont), where Cont is the constraint matrix for the algorithm.
 ") InverseMatrix;
 		const math_Matrix & InverseMatrix();
 
@@ -4963,7 +4963,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -5006,7 +5006,7 @@ None
 
 Description
 -----------
-Given a multiline ssp with constraints points, this algorithm finds the best curve solution to approximate it. the poles from scurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. the tolerance used in the uzawa algorithms is tolerance. a is the bernstein matrix associated to the multiline and da is the derivative bernstein matrix.(they can come from an approximation with parleastsquare.) the multicurve is modified. new multipoles are given.
+Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_ResConstraintOfMyGradientbisOfBSplineCompute;
 		 AppDef_ResConstraintOfMyGradientbisOfBSplineCompute(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
 
@@ -5053,7 +5053,7 @@ math_Vector
 
 Description
 -----------
-Returns the duale variables of the system.
+returns the duale variables of the system.
 ") Duale;
 		const math_Vector & Duale();
 
@@ -5066,7 +5066,7 @@ math_Matrix
 
 Description
 -----------
-Returns the inverse of cont*transposed(cont), where cont is the constraint matrix for the algorithm.
+returns the Inverse of Cont*Transposed(Cont), where Cont is the constraint matrix for the algorithm.
 ") InverseMatrix;
 		const math_Matrix & InverseMatrix();
 
@@ -5079,7 +5079,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -5122,7 +5122,7 @@ None
 
 Description
 -----------
-Given a multiline ssp with constraints points, this algorithm finds the best curve solution to approximate it. the poles from scurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. the tolerance used in the uzawa algorithms is tolerance. a is the bernstein matrix associated to the multiline and da is the derivative bernstein matrix.(they can come from an approximation with parleastsquare.) the multicurve is modified. new multipoles are given.
+Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_ResConstraintOfTheGradient;
 		 AppDef_ResConstraintOfTheGradient(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
 
@@ -5169,7 +5169,7 @@ math_Vector
 
 Description
 -----------
-Returns the duale variables of the system.
+returns the duale variables of the system.
 ") Duale;
 		const math_Vector & Duale();
 
@@ -5182,7 +5182,7 @@ math_Matrix
 
 Description
 -----------
-Returns the inverse of cont*transposed(cont), where cont is the constraint matrix for the algorithm.
+returns the Inverse of Cont*Transposed(Cont), where Cont is the constraint matrix for the algorithm.
 ") InverseMatrix;
 		const math_Matrix & InverseMatrix();
 
@@ -5195,7 +5195,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -5387,7 +5387,7 @@ None
 
 Description
 -----------
-Convert the assembly vector in an curve;.
+Convert the assembly Vector in an Curve;.
 ") InputVector;
 		virtual void InputVector(const math_Vector & X, const opencascade::handle<FEmTool_HAssemblyTable> & AssTable);
 
@@ -5544,7 +5544,7 @@ None
 
 Description
 -----------
-Initializes the fields of the function. the approximating curve has the desired degree deg.
+initializes the fields of the function. The approximating curve has the desired degree Deg.
 ") AppDef_TheFunction;
 		 AppDef_TheFunction(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const math_Vector & Parameters, const Standard_Integer Deg);
 
@@ -5557,7 +5557,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the multicurve approximating the set after computing the value f or grad(f).
+returns the MultiCurve approximating the set after computing the value F or Grad(F).
 ") CurveValue;
 		AppParCurves_MultiCurve CurveValue();
 
@@ -5576,7 +5576,7 @@ float
 
 Description
 -----------
-Returns the distance between the multipoint of range ipoint and the curve curveindex.
+returns the distance between the MultiPoint of range IPoint and the curve CurveIndex.
 ") Error;
 		Standard_Real Error(const Standard_Integer IPoint, const Standard_Integer CurveIndex);
 
@@ -5614,7 +5614,7 @@ bool
 
 Description
 -----------
-Returns the gradient g of the sum above for the parameters xi.
+returns the gradient G of the sum above for the parameters Xi.
 ") Gradient;
 		Standard_Boolean Gradient(const math_Vector & X, math_Vector & G);
 
@@ -5646,7 +5646,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the points and the multicurve.
+returns the maximum distance between the points and the MultiCurve.
 ") MaxError2d;
 		Standard_Real MaxError2d();
 
@@ -5659,7 +5659,7 @@ float
 
 Description
 -----------
-Returns the maximum distance between the points and the multicurve.
+returns the maximum distance between the points and the MultiCurve.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
@@ -5672,7 +5672,7 @@ int
 
 Description
 -----------
-Returns the number of variables of the function. it corresponds to the number of multipoints.
+returns the number of variables of the function. It corresponds to the number of MultiPoints.
 ") NbVariables;
 		Standard_Integer NbVariables();
 
@@ -5685,7 +5685,7 @@ math_Vector
 
 Description
 -----------
-Returns the new parameters of the multiline.
+returns the new parameters of the MultiLine.
 ") NewParameters;
 		const math_Vector & NewParameters();
 
@@ -5703,7 +5703,7 @@ F: float
 
 Description
 -----------
-This method computes the new approximation of the multiline ssp and calculates f = sum (||pui - bi*pi||2) for each point of the multiline.
+this method computes the new approximation of the MultiLine SSP and calculates F = sum (||Pui - Bi*Pi||2) for each point of the MultiLine.
 ") Value;
 		Standard_Boolean Value(const math_Vector & X, Standard_Real &OutValue);
 
@@ -5722,7 +5722,7 @@ F: float
 
 Description
 -----------
-Returns the value f=sum(||pui - bi*pi||)2. returns the value g = grad(f) for the parameters xi.
+returns the value F=sum(||Pui - Bi*Pi||)2. returns the value G = grad(F) for the parameters Xi.
 ") Values;
 		Standard_Boolean Values(const math_Vector & X, Standard_Real &OutValue, math_Vector & G);
 
@@ -5762,7 +5762,7 @@ None
 
 Description
 -----------
-Tries to minimize the sum (square(||qui - bi*pi||)) where pui describe the approximating bezier curves'poles and qi the multiline points with a parameter ui. in this algorithm, the parameters ui are the unknowns. the tolerance required on this sum is given by tol. the desired degree of the resulting curve is deg.
+Tries to minimize the sum (square(||Qui - Bi*Pi||)) where Pui describe the approximating Bezier curves'Poles and Qi the MultiLine points with a parameter ui. In this algorithm, the parameters ui are the unknowns. The tolerance required on this sum is given by Tol. The desired degree of the resulting curve is Deg.
 ") AppDef_TheGradient;
 		 AppDef_TheGradient(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, math_Vector & Parameters, const Standard_Integer Deg, const Standard_Real Tol3d, const Standard_Real Tol2d, const Standard_Integer NbIterations = 200);
 
@@ -5775,7 +5775,7 @@ float
 
 Description
 -----------
-Returns the average error between the old and the new approximation.
+returns the average error between the old and the new approximation.
 ") AverageError;
 		Standard_Real AverageError();
 
@@ -5793,7 +5793,7 @@ float
 
 Description
 -----------
-Returns the difference between the old and the new approximation. an exception is raised if notdone. an exception is raised if index<1 or index>nbparameters.
+returns the difference between the old and the new approximation. An exception is raised if NotDone. An exception is raised if Index<1 or Index>NbParameters.
 ") Error;
 		Standard_Real Error(const Standard_Integer Index);
 
@@ -5806,7 +5806,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -5819,7 +5819,7 @@ float
 
 Description
 -----------
-Returns the maximum difference between the old and the new approximation.
+returns the maximum difference between the old and the new approximation.
 ") MaxError2d;
 		Standard_Real MaxError2d();
 
@@ -5832,7 +5832,7 @@ float
 
 Description
 -----------
-Returns the maximum difference between the old and the new approximation.
+returns the maximum difference between the old and the new approximation.
 ") MaxError3d;
 		Standard_Real MaxError3d();
 
@@ -5845,7 +5845,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns all the bezier curves approximating the multiline ssp after minimization of the parameter.
+returns all the Bezier curves approximating the MultiLine SSP after minimization of the parameter.
 ") Value;
 		AppParCurves_MultiCurve Value();
 
@@ -5883,7 +5883,7 @@ None
 
 Description
 -----------
-Given a multiline, this algorithm computes the least square resolution using the householder-qr method. if the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. nbpol is the number of control points wanted for the approximating curves. the system to solve is the following: a x = b. where a is the bernstein matrix computed with the parameters, b the points coordinates and x the poles solutions. the matrix a is the same for each coordinate x, y and z and is also the same for each multiline point because they are approximated in parallel(so with the same parameter, only the vector b changes).
+given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. NbPol is the number of control points wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the Bernstein matrix computed with the parameters, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_TheLeastSquares;
 		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
 
@@ -5932,7 +5932,7 @@ None
 
 Description
 -----------
-Given a multiline, this algorithm computes the least square resolution using the householder-qr method. if the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. deg is the degree wanted for the approximating curves. the system to solve is the following: a x = b. where a is the bspline functions matrix computed with <parameters>, b the points coordinates and x the poles solutions. the matrix a is the same for each coordinate x, y and z and is also the same for each multiline point because they are approximated in parallel(so with the same parameter, only the vector b changes).
+given a MultiLine, this algorithm computes the least square resolution using the Householder-QR method. If the first and/or the last point is a constraint point, the value of the tangency or curvature is computed in the resolution. Deg is the degree wanted for the approximating curves. The system to solve is the following: A X = B. Where A is the BSpline functions matrix computed with <parameters>, B the points coordinates and X the poles solutions. The matrix A is the same for each coordinate x, y and z and is also the same for each MultiLine point because they are approximated in parallel(so with the same parameter, only the vector B changes).
 ") AppDef_TheLeastSquares;
 		 AppDef_TheLeastSquares(const AppDef_MultiLine & SSP, const TColStd_Array1OfReal & Knots, const TColStd_Array1OfInteger & Mults, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const AppParCurves_Constraint FirstCons, const AppParCurves_Constraint LastCons, const math_Vector & Parameters, const Standard_Integer NbPol);
 
@@ -5970,7 +5970,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
+returns the result of the approximation, i.e. all the Curves. An exception is raised if NotDone.
 ") BSplineValue;
 		AppParCurves_MultiBSpCurve BSplineValue();
 
@@ -5983,7 +5983,7 @@ AppParCurves_MultiCurve
 
 Description
 -----------
-Returns the result of the approximation, i.e. all the curves. an exception is raised if notdone.
+returns the result of the approximation, i.e. all the Curves. An exception is raised if NotDone.
 ") BezierValue;
 		AppParCurves_MultiCurve BezierValue();
 
@@ -5996,7 +5996,7 @@ math_Matrix
 
 Description
 -----------
-Returns the derivative function matrix used to approximate the set.
+returns the derivative function matrix used to approximate the set.
 ") DerivativeFunctionMatrix;
 		const math_Matrix & DerivativeFunctionMatrix();
 
@@ -6009,7 +6009,7 @@ math_Matrix
 
 Description
 -----------
-Returns the distances between the points of the multiline and the approximation curves.
+returns the distances between the points of the multiline and the approximation curves.
 ") Distance;
 		const math_Matrix & Distance();
 
@@ -6028,7 +6028,7 @@ MaxE2d: float
 
 Description
 -----------
-Returns the maximum errors between the multiline and the approximation curves. f is the sum of the square distances.
+returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances.
 ") Error;
 		void Error(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -6048,7 +6048,7 @@ MaxE2d: float
 
 Description
 -----------
-Returns the maximum errors between the multiline and the approximation curves. f is the sum of the square distances. grad is the derivative vector of the function f.
+returns the maximum errors between the MultiLine and the approximation curves. F is the sum of the square distances. Grad is the derivative vector of the function F.
 ") ErrorGradient;
 		void ErrorGradient(math_Vector & Grad, Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -6061,7 +6061,7 @@ float
 
 Description
 -----------
-Returns the value (p2 - p1)/ v1 if the first point was a tangency point.
+returns the value (P2 - P1)/ V1 if the first point was a tangency point.
 ") FirstLambda;
 		Standard_Real FirstLambda();
 
@@ -6074,7 +6074,7 @@ math_Matrix
 
 Description
 -----------
-Returns the function matrix used to approximate the set.
+returns the function matrix used to approximate the set.
 ") FunctionMatrix;
 		const math_Matrix & FunctionMatrix();
 
@@ -6087,7 +6087,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -6100,7 +6100,7 @@ math_IntegerVector
 
 Description
 -----------
-Returns the indexes of the first non null values of a and da. the values are non null from index(ieme point) +1 to index(ieme point) + degree +1.
+Returns the indexes of the first non null values of A and DA. The values are non null from Index(ieme point) +1 to Index(ieme point) + degree +1.
 ") KIndex;
 		const math_IntegerVector & KIndex();
 
@@ -6113,7 +6113,7 @@ float
 
 Description
 -----------
-Returns the value (pn - pn-1)/ vn if the last point was a tangency point.
+returns the value (PN - PN-1)/ VN if the last point was a tangency point.
 ") LastLambda;
 		Standard_Real LastLambda();
 
@@ -6131,7 +6131,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. the case 'curvaturepoint' is not treated in this method.
+Is used after having initialized the fields. The case 'CurvaturePoint' is not treated in this method.
 ") Perform;
 		void Perform(const math_Vector & Parameters);
 
@@ -6173,7 +6173,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. <v1t> is the tangent vector at the first point. <v2t> is the tangent vector at the last point.
+Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point.
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const Standard_Real l1, const Standard_Real l2);
 
@@ -6197,7 +6197,7 @@ None
 
 Description
 -----------
-Is used after having initialized the fields. <v1t> is the tangent vector at the first point. <v2t> is the tangent vector at the last point. <v1c> is the tangent vector at the first point. <v2c> is the tangent vector at the last point.
+Is used after having initialized the fields. <V1t> is the tangent vector at the first point. <V2t> is the tangent vector at the last point. <V1c> is the tangent vector at the first point. <V2c> is the tangent vector at the last point.
 ") Perform;
 		void Perform(const math_Vector & Parameters, const math_Vector & V1t, const math_Vector & V2t, const math_Vector & V1c, const math_Vector & V2c, const Standard_Real l1, const Standard_Real l2);
 
@@ -6210,7 +6210,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix of points value.
+returns the matrix of points value.
 ") Points;
 		const math_Matrix & Points();
 
@@ -6223,7 +6223,7 @@ math_Matrix
 
 Description
 -----------
-Returns the matrix of resulting control points value.
+returns the matrix of resulting control points value.
 ") Poles;
 		const math_Matrix & Poles();
 
@@ -6262,7 +6262,7 @@ None
 
 Description
 -----------
-Given a multiline ssp with constraints points, this algorithm finds the best curve solution to approximate it. the poles from scurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. the tolerance used in the uzawa algorithms is tolerance. a is the bernstein matrix associated to the multiline and da is the derivative bernstein matrix.(they can come from an approximation with parleastsquare.) the multicurve is modified. new multipoles are given.
+Given a MultiLine SSP with constraints points, this algorithm finds the best curve solution to approximate it. The poles from SCurv issued for example from the least squares are used as a guess solution for the uzawa algorithm. The tolerance used in the Uzawa algorithms is Tolerance. A is the Bernstein matrix associated to the MultiLine and DA is the derivative bernstein matrix.(They can come from an approximation with ParLeastSquare.) The MultiCurve is modified. New MultiPoles are given.
 ") AppDef_TheResol;
 		 AppDef_TheResol(const AppDef_MultiLine & SSP, AppParCurves_MultiCurve & SCurv, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & Constraints, const math_Matrix & Bern, const math_Matrix & DerivativeBern, const Standard_Real Tolerance = 1.0e-10);
 
@@ -6309,7 +6309,7 @@ math_Vector
 
 Description
 -----------
-Returns the duale variables of the system.
+returns the duale variables of the system.
 ") Duale;
 		const math_Vector & Duale();
 
@@ -6322,7 +6322,7 @@ math_Matrix
 
 Description
 -----------
-Returns the inverse of cont*transposed(cont), where cont is the constraint matrix for the algorithm.
+returns the Inverse of Cont*Transposed(Cont), where Cont is the constraint matrix for the algorithm.
 ") InverseMatrix;
 		const math_Matrix & InverseMatrix();
 
@@ -6335,7 +6335,7 @@ bool
 
 Description
 -----------
-Returns true if all has been correctly done.
+returns True if all has been correctly done.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -6381,7 +6381,7 @@ None
 
 Description
 -----------
-Constructor. initialization of the fields. warning: nc0: number of passagepoint consraints nc2: number of tangencypoint constraints nc3: number of curvaturepoint constraints if ((maxdegree-continuity)*maxsegment -nc0 - 2*nc1 -3*nc2) is negative the problem is over-constrained. //! limitation: the multiline from appdef has to be composed by only one line ( dimension 2 or 3).
+Constructor. Initialization of the fields. warning: Nc0: number of PassagePoint consraints Nc2: number of TangencyPoint constraints Nc3: number of CurvaturePoint constraints if ((MaxDegree-Continuity)*MaxSegment -Nc0 - 2*Nc1 -3*Nc2) is negative The problem is over-constrained. //! Limitation: The MultiLine from AppDef has to be composed by only one Line ( Dimension 2 or 3).
 ") AppDef_Variational;
 		 AppDef_Variational(const AppDef_MultiLine & SSP, const Standard_Integer FirstPoint, const Standard_Integer LastPoint, const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & TheConstraints, const Standard_Integer MaxDegree = 14, const Standard_Integer MaxSegment = 100, const GeomAbs_Shape Continuity = GeomAbs_C2, const Standard_Boolean WithMinMax = Standard_False, const Standard_Boolean WithCutting = Standard_True, const Standard_Real Tolerance = 1.0, const Standard_Integer NbIterations = 2);
 
@@ -6407,7 +6407,7 @@ float
 
 Description
 -----------
-Returns the average error between the multiline from appdef and the approximation.
+returns the average error between the MultiLine from AppDef and the approximation.
 ") AverageError;
 		Standard_Real AverageError();
 
@@ -6420,7 +6420,7 @@ GeomAbs_Shape
 
 Description
 -----------
-Returns the continuity used in the approximation.
+returns the Continuity used in the approximation.
 ") Continuity;
 		GeomAbs_Shape Continuity();
 
@@ -6439,7 +6439,7 @@ VThirdOrder: float
 
 Description
 -----------
-Returns the values of the quality criterium.
+returns the values of the quality criterium.
 ") Criterium;
 		void Criterium(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -6458,7 +6458,7 @@ Percent3: float
 
 Description
 -----------
-Returns the weights (as percent) associed to the criterium used in the optimization.
+returns the Weights (as percent) associed to the criterium used in the optimization.
 ") CriteriumWeight;
 		void CriteriumWeight(Standard_Real &OutValue, Standard_Real &OutValue, Standard_Real &OutValue);
 
@@ -6476,7 +6476,7 @@ None
 
 Description
 -----------
-Returns the distances between the points of the multiline and the approximation curves.
+returns the distances between the points of the multiline and the approximation curves.
 ") Distance;
 		void Distance(math_Matrix & mat);
 
@@ -6493,7 +6493,7 @@ o: Standard_OStream
 
 Description
 -----------
-Prints on the stream o information on the current state of the object. maxerror,maxerrorindex,averageerror,quadraticerror,criterium distances,degre,nombre de poles, parametres, noeuds.
+Prints on the stream o information on the current state of the object. MaxError,MaxErrorIndex,AverageError,QuadraticError,Criterium Distances,Degre,Nombre de poles, parametres, noeuds.
 ") Dump;
 		void Dump(std::ostream &OutValue);
 
@@ -6506,7 +6506,7 @@ bool
 
 Description
 -----------
-Returns true if the creation is done and correspond to the current fields.
+returns True if the creation is done and correspond to the current fields.
 ") IsCreated;
 		Standard_Boolean IsCreated();
 
@@ -6519,7 +6519,7 @@ bool
 
 Description
 -----------
-Returns true if the approximation is ok and correspond to the current fields.
+returns True if the approximation is ok and correspond to the current fields.
 ") IsDone;
 		Standard_Boolean IsDone();
 
@@ -6532,7 +6532,7 @@ bool
 
 Description
 -----------
-Returns true if the problem is overconstrained in this case, approximation cannot be done.
+returns True if the problem is overconstrained in this case, approximation cannot be done.
 ") IsOverConstrained;
 		Standard_Boolean IsOverConstrained();
 
@@ -6545,7 +6545,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the knots uses to the approximations.
+returns the knots uses to the approximations.
 ") Knots;
 		const opencascade::handle<TColStd_HArray1OfReal> & Knots();
 
@@ -6558,7 +6558,7 @@ int
 
 Description
 -----------
-Returns the maximum degree used in the approximation.
+returns the Maximum Degree used in the approximation.
 ") MaxDegree;
 		Standard_Integer MaxDegree();
 
@@ -6571,7 +6571,7 @@ float
 
 Description
 -----------
-Returns the maximum of the distances between the points of the multiline and the approximation curves.
+returns the maximum of the distances between the points of the multiline and the approximation curves.
 ") MaxError;
 		Standard_Real MaxError();
 
@@ -6584,7 +6584,7 @@ int
 
 Description
 -----------
-Returns the index of the multipoint of errormax.
+returns the index of the MultiPoint of ErrorMax.
 ") MaxErrorIndex;
 		Standard_Integer MaxErrorIndex();
 
@@ -6597,7 +6597,7 @@ int
 
 Description
 -----------
-Returns the maximum of segment used in the approximation.
+returns the Maximum of segment used in the approximation.
 ") MaxSegment;
 		Standard_Integer MaxSegment();
 
@@ -6610,7 +6610,7 @@ int
 
 Description
 -----------
-Returns the number of iterations used in the approximation.
+returns the number of iterations used in the approximation.
 ") NbIterations;
 		Standard_Integer NbIterations();
 
@@ -6623,7 +6623,7 @@ opencascade::handle<TColStd_HArray1OfReal>
 
 Description
 -----------
-Returns the parameters uses to the approximations.
+returns the parameters uses to the approximations.
 ") Parameters;
 		const opencascade::handle<TColStd_HArray1OfReal> & Parameters();
 
@@ -6636,7 +6636,7 @@ float
 
 Description
 -----------
-Returns the quadratic average of the distances between the points of the multiline and the approximation curves.
+returns the quadratic average of the distances between the points of the multiline and the approximation curves.
 ") QuadraticError;
 		Standard_Real QuadraticError();
 
@@ -6654,7 +6654,7 @@ bool
 
 Description
 -----------
-Define the constraints to approximate if this value is incompatible with the others fields this method modify nothing and returns false.
+Define the constraints to approximate If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetConstraints;
 		Standard_Boolean SetConstraints(const opencascade::handle<AppParCurves_HArray1OfConstraintCouple> & aConstrainst);
 
@@ -6672,7 +6672,7 @@ bool
 
 Description
 -----------
-Define the continuity used in the approximation if this value is incompatible with the others fields this method modify nothing and returns false.
+Define the Continuity used in the approximation If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetContinuity;
 		Standard_Boolean SetContinuity(const GeomAbs_Shape C);
 
@@ -6692,7 +6692,7 @@ None
 
 Description
 -----------
-Define the weights (as percent) associed to the criterium used in the optimization. //! if percent <= 0.
+define the Weights (as percent) associed to the criterium used in the optimization. //! if Percent <= 0.
 ") SetCriteriumWeight;
 		void SetCriteriumWeight(const Standard_Real Percent1, const Standard_Real Percent2, const Standard_Real Percent3);
 
@@ -6711,7 +6711,7 @@ None
 
 Description
 -----------
-Define the weight (as percent) associed to the criterium order used in the optimization: others weights are updated. if percent < 0 if order < 1 or order > 3.
+define the Weight (as percent) associed to the criterium Order used in the optimization: Others weights are updated. if Percent < 0 if Order < 1 or Order > 3.
 ") SetCriteriumWeight;
 		void SetCriteriumWeight(const Standard_Integer Order, const Standard_Real Percent);
 
@@ -6729,7 +6729,7 @@ bool
 
 Description
 -----------
-Defines the knots used by the approximations if this value is incompatible with the others fields this method modify nothing and returns false.
+Defines the knots used by the approximations If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetKnots;
 		Standard_Boolean SetKnots(const opencascade::handle<TColStd_HArray1OfReal> & knots);
 
@@ -6747,7 +6747,7 @@ bool
 
 Description
 -----------
-Define the maximum degree used in the approximation if this value is incompatible with the others fields this method modify nothing and returns false.
+Define the Maximum Degree used in the approximation If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetMaxDegree;
 		Standard_Boolean SetMaxDegree(const Standard_Integer Degree);
 
@@ -6765,7 +6765,7 @@ bool
 
 Description
 -----------
-Define the maximum number of segments used in the approximation if this value is incompatible with the others fields this method modify nothing and returns false.
+Define the maximum number of segments used in the approximation If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetMaxSegment;
 		Standard_Boolean SetMaxSegment(const Standard_Integer NbSegment);
 
@@ -6783,7 +6783,7 @@ None
 
 Description
 -----------
-Define the number of iterations used in the approximation. if iter < 1.
+define the number of iterations used in the approximation. if Iter < 1.
 ") SetNbIterations;
 		void SetNbIterations(const Standard_Integer Iter);
 
@@ -6819,7 +6819,7 @@ None
 
 Description
 -----------
-Define the tolerance used in the approximation.
+define the tolerance used in the approximation.
 ") SetTolerance;
 		void SetTolerance(const Standard_Real Tol);
 
@@ -6837,7 +6837,7 @@ bool
 
 Description
 -----------
-Define if the approximation can insert new knots or not. if this value is incompatible with the others fields this method modify nothing and returns false.
+Define if the approximation can insert new Knots or not. If this value is incompatible with the others fields this method modify nothing and returns false.
 ") SetWithCutting;
 		Standard_Boolean SetWithCutting(const Standard_Boolean Cutting);
 
@@ -6855,7 +6855,7 @@ None
 
 Description
 -----------
-Define if the approximation search to minimize the maximum error or not.
+Define if the approximation search to minimize the maximum Error or not.
 ") SetWithMinMax;
 		void SetWithMinMax(const Standard_Boolean MinMax);
 
@@ -6868,7 +6868,7 @@ float
 
 Description
 -----------
-Returns the tolerance used in the approximation.
+returns the tolerance used in the approximation.
 ") Tolerance;
 		Standard_Real Tolerance();
 
@@ -6881,7 +6881,7 @@ AppParCurves_MultiBSpCurve
 
 Description
 -----------
-Returns all the bspline curves approximating the multiline from appdef ssp after minimization of the parameter.
+returns all the BSpline curves approximating the MultiLine from AppDef SSP after minimization of the parameter.
 ") Value;
 		AppParCurves_MultiBSpCurve Value();
 
@@ -6894,7 +6894,7 @@ bool
 
 Description
 -----------
-Returns if the approximation can insert new knots or not.
+returns if the approximation can insert new Knots or not.
 ") WithCutting;
 		Standard_Boolean WithCutting();
 
@@ -6907,7 +6907,7 @@ bool
 
 Description
 -----------
-Returns if the approximation search to minimize the maximum error or not.
+returns if the approximation search to minimize the maximum Error or not.
 ") WithMinMax;
 		Standard_Boolean WithMinMax();
 
@@ -7114,7 +7114,7 @@ None
 
 Description
 -----------
-Convert the assembly vector in an curve;.
+Convert the assembly Vector in an Curve;.
 ") InputVector;
 		void InputVector(const math_Vector & X, const opencascade::handle<FEmTool_HAssemblyTable> & AssTable);
 

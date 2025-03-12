@@ -49,20 +49,19 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepcafcontrol.ht
 #include<STEPControl_module.hxx>
 #include<StepData_module.hxx>
 #include<TopoDS_module.hxx>
-#include<DE_module.hxx>
-#include<TColStd_module.hxx>
-#include<TCollection_module.hxx>
 #include<TDF_module.hxx>
 #include<IFSelect_module.hxx>
+#include<TCollection_module.hxx>
 #include<XSControl_module.hxx>
 #include<XCAFDimTolObjects_module.hxx>
 #include<StepDimTol_module.hxx>
 #include<StepRepr_module.hxx>
 #include<StepVisual_module.hxx>
-#include<TDocStd_module.hxx>
-#include<Message_module.hxx>
 #include<XCAFDoc_module.hxx>
 #include<STEPConstruct_module.hxx>
+#include<TDocStd_module.hxx>
+#include<Message_module.hxx>
+#include<DE_module.hxx>
 #include<Interface_module.hxx>
 #include<TopLoc_module.hxx>
 #include<TopTools_module.hxx>
@@ -103,20 +102,19 @@ https://dev.opencascade.org/doc/occt-7.8.0/refman/html/package_stepcafcontrol.ht
 %import STEPControl.i
 %import StepData.i
 %import TopoDS.i
-%import DE.i
-%import TColStd.i
-%import TCollection.i
 %import TDF.i
 %import IFSelect.i
+%import TCollection.i
 %import XSControl.i
 %import XCAFDimTolObjects.i
 %import StepDimTol.i
 %import StepRepr.i
 %import StepVisual.i
-%import TDocStd.i
-%import Message.i
 %import XCAFDoc.i
 %import STEPConstruct.i
+%import TDocStd.i
+%import Message.i
+%import DE.i
 
 %pythoncode {
 from enum import IntEnum
@@ -133,10 +131,8 @@ from OCC.Core.Exception import *
 
 /* handles */
 %wrap_handle(STEPCAFControl_ActorWrite)
-%wrap_handle(STEPCAFControl_ConfigurationNode)
 %wrap_handle(STEPCAFControl_Controller)
 %wrap_handle(STEPCAFControl_ExternFile)
-%wrap_handle(STEPCAFControl_Provider)
 /* end handles declaration */
 
 /* templates */
@@ -209,7 +205,7 @@ bool
 
 Description
 -----------
-Check whether shape s is assembly returns true if shape is registered in assemblies map.
+Check whether shape S is assembly Returns True if shape is registered in assemblies map.
 ") IsAssembly;
 		virtual Standard_Boolean IsAssembly(const opencascade::handle<StepData_StepModel> & theModel, TopoDS_Shape & S);
 
@@ -227,7 +223,7 @@ None
 
 Description
 -----------
-Registers shape to be written as assembly the shape should be topods_compound (else does nothing).
+Registers shape to be written as assembly The shape should be TopoDS_Compound (else does nothing).
 ") RegisterAssembly;
 		void RegisterAssembly(const TopoDS_Shape & S);
 
@@ -245,7 +241,7 @@ None
 
 Description
 -----------
-Set standard mode of work in standard mode actor (default) behaves exactly as its ancestor, also map is cleared.
+Set standard mode of work In standard mode Actor (default) behaves exactly as its ancestor, also map is cleared.
 ") SetStdMode;
 		void SetStdMode(const Standard_Boolean stdmode = Standard_True);
 
@@ -255,194 +251,6 @@ Set standard mode of work in standard mode actor (default) behaves exactly as it
 %make_alias(STEPCAFControl_ActorWrite)
 
 %extend STEPCAFControl_ActorWrite {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
-/*****************************************
-* class STEPCAFControl_ConfigurationNode *
-*****************************************/
-class STEPCAFControl_ConfigurationNode : public DE_ConfigurationNode {
-	public:
-		StepData_ConfParameters InternalParameters;
-		/****** STEPCAFControl_ConfigurationNode::STEPCAFControl_ConfigurationNode ******/
-		/****** md5 signature: 6f36f5fec71c0b21b0bc1a66ab772a2b ******/
-		%feature("compactdefaultargs") STEPCAFControl_ConfigurationNode;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Initializes all field by default.
-") STEPCAFControl_ConfigurationNode;
-		 STEPCAFControl_ConfigurationNode();
-
-		/****** STEPCAFControl_ConfigurationNode::STEPCAFControl_ConfigurationNode ******/
-		/****** md5 signature: 0998d97bff85e24764099cc27d48b734 ******/
-		%feature("compactdefaultargs") STEPCAFControl_ConfigurationNode;
-		%feature("autodoc", "
-Parameters
-----------
-theNode: STEPCAFControl_ConfigurationNode
-
-Return
--------
-None
-
-Description
------------
-Copies values of all fields @param[in] thenode object to copy.
-") STEPCAFControl_ConfigurationNode;
-		 STEPCAFControl_ConfigurationNode(const opencascade::handle<STEPCAFControl_ConfigurationNode> & theNode);
-
-		/****** STEPCAFControl_ConfigurationNode::BuildProvider ******/
-		/****** md5 signature: 732af66bf7bddbff6fa20c9629ec35a7 ******/
-		%feature("compactdefaultargs") BuildProvider;
-		%feature("autodoc", "Return
--------
-opencascade::handle<DE_Provider>
-
-Description
------------
-Creates new provider for the own format return new created provider.
-") BuildProvider;
-		virtual opencascade::handle<DE_Provider> BuildProvider();
-
-		/****** STEPCAFControl_ConfigurationNode::CheckContent ******/
-		/****** md5 signature: 2a770b41fb754bfe0ef0260c549f4919 ******/
-		%feature("compactdefaultargs") CheckContent;
-		%feature("autodoc", "
-Parameters
-----------
-theBuffer: NCollection_Buffer
-
-Return
--------
-bool
-
-Description
------------
-Checks the file content to verify a format @param[in] thebuffer read stream buffer to check content return standard_true if file is supported by a current provider.
-") CheckContent;
-		virtual bool CheckContent(const opencascade::handle<NCollection_Buffer> & theBuffer);
-
-		/****** STEPCAFControl_ConfigurationNode::Copy ******/
-		/****** md5 signature: 4559608ebdab2961e97de40732291656 ******/
-		%feature("compactdefaultargs") Copy;
-		%feature("autodoc", "Return
--------
-opencascade::handle<DE_ConfigurationNode>
-
-Description
------------
-Copies values of all fields return new object with the same field values.
-") Copy;
-		virtual opencascade::handle<DE_ConfigurationNode> Copy();
-
-		/****** STEPCAFControl_ConfigurationNode::GetExtensions ******/
-		/****** md5 signature: a58fd9c22a501a38d695eed6406f94bb ******/
-		%feature("compactdefaultargs") GetExtensions;
-		%feature("autodoc", "Return
--------
-TColStd_ListOfAsciiString
-
-Description
------------
-Gets list of supported file extensions return list of extensions.
-") GetExtensions;
-		virtual TColStd_ListOfAsciiString GetExtensions();
-
-		/****** STEPCAFControl_ConfigurationNode::GetFormat ******/
-		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
-		%feature("compactdefaultargs") GetFormat;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets cad format name of associated provider return provider cad format.
-") GetFormat;
-		virtual TCollection_AsciiString GetFormat();
-
-		/****** STEPCAFControl_ConfigurationNode::GetVendor ******/
-		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
-		%feature("compactdefaultargs") GetVendor;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets provider's vendor name of associated provider return provider's vendor name.
-") GetVendor;
-		virtual TCollection_AsciiString GetVendor();
-
-		/****** STEPCAFControl_ConfigurationNode::IsExportSupported ******/
-		/****** md5 signature: 7b5a27f839d52b595deb06dd28df5230 ******/
-		%feature("compactdefaultargs") IsExportSupported;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Checks the export supporting return true if export is supported.
-") IsExportSupported;
-		virtual bool IsExportSupported();
-
-		/****** STEPCAFControl_ConfigurationNode::IsImportSupported ******/
-		/****** md5 signature: 54f008ecb7de4dd5dcaeefb3d1d06abc ******/
-		%feature("compactdefaultargs") IsImportSupported;
-		%feature("autodoc", "Return
--------
-bool
-
-Description
------------
-Checks the import supporting return true if import is supported.
-") IsImportSupported;
-		virtual bool IsImportSupported();
-
-		/****** STEPCAFControl_ConfigurationNode::Load ******/
-		/****** md5 signature: 994009254510d81a5f0f9a326a356850 ******/
-		%feature("compactdefaultargs") Load;
-		%feature("autodoc", "
-Parameters
-----------
-theResource: DE_ConfigurationContext
-
-Return
--------
-bool
-
-Description
------------
-Updates values according the resource @param[in] theresource input resource to use return true if theresource loading has ended correctly.
-") Load;
-		virtual bool Load(const opencascade::handle<DE_ConfigurationContext> & theResource);
-
-		/****** STEPCAFControl_ConfigurationNode::Save ******/
-		/****** md5 signature: d6023e92d8565d8e19b0fc2ce7e2a326 ******/
-		%feature("compactdefaultargs") Save;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Writes configuration to the string return result resource string.
-") Save;
-		virtual TCollection_AsciiString Save();
-
-};
-
-
-%make_alias(STEPCAFControl_ConfigurationNode)
-
-%extend STEPCAFControl_ConfigurationNode {
 	%pythoncode {
 	__repr__ = _dumps_object
 	}
@@ -462,7 +270,7 @@ None
 
 Description
 -----------
-Initializes the use of step norm (the first time).
+Initializes the use of STEP Norm (the first time).
 ") STEPCAFControl_Controller;
 		 STEPCAFControl_Controller();
 
@@ -475,7 +283,7 @@ bool
 
 Description
 -----------
-Standard initialisation. it creates a controller for step-xcaf and records it to various names, available to select it later returns true when done, false if could not be done.
+Standard Initialisation. It creates a Controller for STEP-XCAF and records it to various names, available to select it later Returns True when done, False if could not be done.
 ") Init;
 		static Standard_Boolean Init();
 
@@ -1100,243 +908,6 @@ No available documentation.
 	}
 };
 
-/********************************
-* class STEPCAFControl_Provider *
-********************************/
-class STEPCAFControl_Provider : public DE_Provider {
-	public:
-		/****** STEPCAFControl_Provider::STEPCAFControl_Provider ******/
-		/****** md5 signature: 20adbbdc11bc9103b1d42c07a2a70db5 ******/
-		%feature("compactdefaultargs") STEPCAFControl_Provider;
-		%feature("autodoc", "Return
--------
-None
-
-Description
------------
-Default constructor configure translation process with global configuration.
-") STEPCAFControl_Provider;
-		 STEPCAFControl_Provider();
-
-		/****** STEPCAFControl_Provider::STEPCAFControl_Provider ******/
-		/****** md5 signature: 5130c206da3c63a654403b73610c627d ******/
-		%feature("compactdefaultargs") STEPCAFControl_Provider;
-		%feature("autodoc", "
-Parameters
-----------
-theNode: DE_ConfigurationNode
-
-Return
--------
-None
-
-Description
------------
-Configure translation process @param[in] thenode object to copy.
-") STEPCAFControl_Provider;
-		 STEPCAFControl_Provider(const opencascade::handle<DE_ConfigurationNode> & theNode);
-
-		/****** STEPCAFControl_Provider::GetFormat ******/
-		/****** md5 signature: 3a7e97ac1131aefae2f717c160d31ca9 ******/
-		%feature("compactdefaultargs") GetFormat;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets cad format name of associated provider return provider cad format.
-") GetFormat;
-		virtual TCollection_AsciiString GetFormat();
-
-		/****** STEPCAFControl_Provider::GetVendor ******/
-		/****** md5 signature: dec3ae3842639c0f3f7b51f11891135d ******/
-		%feature("compactdefaultargs") GetVendor;
-		%feature("autodoc", "Return
--------
-TCollection_AsciiString
-
-Description
------------
-Gets provider's vendor name of associated provider return provider's vendor name.
-") GetVendor;
-		virtual TCollection_AsciiString GetVendor();
-
-		/****** STEPCAFControl_Provider::Read ******/
-		/****** md5 signature: 5da3d196d6292385962a1e60f3dec8a0 ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param[in] thews current work session @param theprogress[in] progress indicator return true if read operation has ended correctly.
-") Read;
-		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** STEPCAFControl_Provider::Read ******/
-		/****** md5 signature: ec9914af037216c0502c72d0c8784072 ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] thedocument document to save result @param theprogress[in] progress indicator return true if read operation has ended correctly.
-") Read;
-		virtual bool Read(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** STEPCAFControl_Provider::Read ******/
-		/****** md5 signature: f5c487132f5fe207a43ed7a7e7ce6afc ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param[in] thews current work session @param theprogress[in] progress indicator return true if read operation has ended correctly.
-") Read;
-		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** STEPCAFControl_Provider::Read ******/
-		/****** md5 signature: 25ccf35b1d33bce5d3311fc0dff44615 ******/
-		%feature("compactdefaultargs") Read;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Reads a cad file, according internal configuration @param[in] thepath path to the import cad file @param[out] theshape shape to save result @param theprogress[in] progress indicator return true if read operation has ended correctly.
-") Read;
-		virtual bool Read(TCollection_AsciiString thePath, TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** STEPCAFControl_Provider::Write ******/
-		/****** md5 signature: d1d3f520ef648333a2d1d51e7ecf7636 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param[in] thews current work session @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** STEPCAFControl_Provider::Write ******/
-		/****** md5 signature: 5d65a8a954decd50174318516f7bc4f8 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theDocument: TDocStd_Document
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] thedocument document to export @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const opencascade::handle<TDocStd_Document> & theDocument, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** STEPCAFControl_Provider::Write ******/
-		/****** md5 signature: 0d58c2b5e69c703850ad85ac36436410 ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theWS: XSControl_WorkSession
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param[in] thews current work session @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, opencascade::handle<XSControl_WorkSession> & theWS, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-		/****** STEPCAFControl_Provider::Write ******/
-		/****** md5 signature: 2e3eef7d4e677163a76bbbdf8a15c79f ******/
-		%feature("compactdefaultargs") Write;
-		%feature("autodoc", "
-Parameters
-----------
-thePath: str
-theShape: TopoDS_Shape
-theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
-
-Return
--------
-bool
-
-Description
------------
-Writes a cad file, according internal configuration @param[in] thepath path to the export cad file @param[out] theshape shape to export @param theprogress[in] progress indicator return true if write operation has ended correctly.
-") Write;
-		virtual bool Write(TCollection_AsciiString thePath, const TopoDS_Shape & theShape, const Message_ProgressRange & theProgress = Message_ProgressRange());
-
-};
-
-
-%make_alias(STEPCAFControl_Provider)
-
-%extend STEPCAFControl_Provider {
-	%pythoncode {
-	__repr__ = _dumps_object
-	}
-};
-
 /******************************
 * class STEPCAFControl_Reader *
 ******************************/
@@ -1351,7 +922,7 @@ None
 
 Description
 -----------
-Creates a reader with an empty step model and sets colormode, layermode, namemode and propsmode to standard_true.
+Creates a reader with an empty STEP model and sets ColorMode, LayerMode, NameMode and PropsMode to Standard_True.
 ") STEPCAFControl_Reader;
 		 STEPCAFControl_Reader();
 
@@ -1370,7 +941,7 @@ None
 
 Description
 -----------
-Creates a reader tool and attaches it to an already existing session clears the session if it was not yet set for step.
+Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for STEP.
 ") STEPCAFControl_Reader;
 		 STEPCAFControl_Reader(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
 
@@ -1402,7 +973,7 @@ bool
 
 Description
 -----------
-Returns data on external file by its name returns false if no external file with given name is read.
+Returns data on external file by its name Returns False if no external file with given name is read.
 ") ExternFile;
 		Standard_Boolean ExternFile(Standard_CString name, opencascade::handle<STEPCAFControl_ExternFile> & ef);
 
@@ -1415,7 +986,7 @@ NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_
 
 Description
 -----------
-Returns data on external files returns null handle if no external files are read.
+Returns data on external files Returns Null handle if no external files are read.
 ") ExternFiles;
 		const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>> & ExternFiles();
 
@@ -1436,7 +1007,7 @@ TDF_Label
 
 Description
 -----------
-Returns label of instance of an assembly component corresponding to a given nauo.
+Returns label of instance of an assembly component corresponding to a given NAUO.
 ") FindInstance;
 		static TDF_Label FindInstance(const opencascade::handle<StepRepr_NextAssemblyUsageOccurrence> & NAUO, const opencascade::handle<XCAFDoc_ShapeTool> & STool, const STEPConstruct_Tool & Tool, const XCAFDoc_DataMapOfShapeLabel & ShapeLabelMap);
 
@@ -1492,6 +1063,19 @@ No available documentation.
 ") GetMatMode;
 		Standard_Boolean GetMatMode();
 
+		/****** STEPCAFControl_Reader::GetMetaMode ******/
+		/****** md5 signature: c475992e7c1b78aeea70c3d9a92229e1 ******/
+		%feature("compactdefaultargs") GetMetaMode;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") GetMetaMode;
+		Standard_Boolean GetMetaMode();
+
 		/****** STEPCAFControl_Reader::GetNameMode ******/
 		/****** md5 signature: 2dd32a893d6f5f4666ac3752ace2d12f ******/
 		%feature("compactdefaultargs") GetNameMode;
@@ -1504,6 +1088,19 @@ Description
 No available documentation.
 ") GetNameMode;
 		Standard_Boolean GetNameMode();
+
+		/****** STEPCAFControl_Reader::GetProductMetaMode ******/
+		/****** md5 signature: effb911707d95754c4f29ff50407edc7 ******/
+		%feature("compactdefaultargs") GetProductMetaMode;
+		%feature("autodoc", "Return
+-------
+bool
+
+Description
+-----------
+No available documentation.
+") GetProductMetaMode;
+		Standard_Boolean GetProductMetaMode();
 
 		/****** STEPCAFControl_Reader::GetPropsMode ******/
 		/****** md5 signature: 3b2f4c2b61084d1e067d83421e0ea81d ******/
@@ -1531,6 +1128,20 @@ No available documentation.
 ") GetSHUOMode;
 		Standard_Boolean GetSHUOMode();
 
+		/****** STEPCAFControl_Reader::GetShapeFixParameters ******/
+		/****** md5 signature: a8fc513b1f4da60e937ee021147ff2cb ******/
+		%feature("compactdefaultargs") GetShapeFixParameters;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ParameterMap
+
+Description
+-----------
+Returns parameters for shape processing that was set by SetParameters() method. 
+Return: the parameters for shape processing. Empty map if no parameters were set.
+") GetShapeFixParameters;
+		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+
 		/****** STEPCAFControl_Reader::GetShapeLabelMap ******/
 		/****** md5 signature: a27551a2f74ec801c8cbaeeebce293a4 ******/
 		%feature("compactdefaultargs") GetShapeLabelMap;
@@ -1544,6 +1155,20 @@ No available documentation.
 ") GetShapeLabelMap;
 		const XCAFDoc_DataMapOfShapeLabel & GetShapeLabelMap();
 
+		/****** STEPCAFControl_Reader::GetShapeProcessFlags ******/
+		/****** md5 signature: 33b1b591e99340c577e8d056ceb180c5 ******/
+		%feature("compactdefaultargs") GetShapeProcessFlags;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ProcessingFlags
+
+Description
+-----------
+Returns flags defining operations to be performed on shapes. 
+Return: Pair of values defining operations to be performed on shapes and a boolean value that indicates whether the flags were set.
+") GetShapeProcessFlags;
+		const XSAlgo_ShapeProcessor::ProcessingFlags & GetShapeProcessFlags();
+
 		/****** STEPCAFControl_Reader::GetViewMode ******/
 		/****** md5 signature: a843d1c8dafb9fee3990369ff0e366ba ******/
 		%feature("compactdefaultargs") GetViewMode;
@@ -1553,7 +1178,7 @@ bool
 
 Description
 -----------
-Get view mode.
+Get View mode.
 ") GetViewMode;
 		Standard_Boolean GetViewMode();
 
@@ -1572,7 +1197,7 @@ None
 
 Description
 -----------
-Clears the internal data structures and attaches to a new session clears the session if it was not yet set for step.
+Clears the internal data structures and attaches to a new session Clears the session if it was not yet set for STEP.
 ") Init;
 		void Init(const opencascade::handle<XSControl_WorkSession> & WS, const Standard_Boolean scratch = Standard_True);
 
@@ -1585,7 +1210,7 @@ int
 
 Description
 -----------
-Returns number of roots recognized for transfer shortcut for reader().nbrootsfortransfer().
+Returns number of roots recognized for transfer Shortcut for Reader().NbRootsForTransfer().
 ") NbRootsForTransfer;
 		Standard_Integer NbRootsForTransfer();
 
@@ -1610,14 +1235,14 @@ No available documentation.
 		Standard_Boolean Perform(TCollection_AsciiString filename, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Reader::Perform ******/
-		/****** md5 signature: 9c767efac10e8207c6a8cc6042959575 ******/
+		/****** md5 signature: 45200eead1b2bea9448df9457b4779bf ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 filename: str
 doc: TDocStd_Document
-theParams: StepData_ConfParameters
+theParams: DESTEP_Parameters
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1628,7 +1253,7 @@ Description
 -----------
 No available documentation.
 ") Perform;
-		Standard_Boolean Perform(TCollection_AsciiString filename, const opencascade::handle<TDocStd_Document> & doc, const StepData_ConfParameters & theParams, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Perform(TCollection_AsciiString filename, const opencascade::handle<TDocStd_Document> & doc, const DESTEP_Parameters & theParams, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Reader::Perform ******/
 		/****** md5 signature: a4a2998dbb462f3822a286fdffd32a42 ******/
@@ -1646,19 +1271,19 @@ bool
 
 Description
 -----------
-Translate step file given by filename into the document return true if succeeded, and false in case of fail.
+Translate STEP file given by filename into the document Return True if succeeded, and False in case of fail.
 ") Perform;
 		Standard_Boolean Perform(Standard_CString filename, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Reader::Perform ******/
-		/****** md5 signature: 1c21a2a68c9b14dff8925015e1daef71 ******/
+		/****** md5 signature: 167ebdd8bc261e07ca15f7be7fdb9944 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 filename: str
 doc: TDocStd_Document
-theParams: StepData_ConfParameters
+theParams: DESTEP_Parameters
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -1667,9 +1292,9 @@ bool
 
 Description
 -----------
-Translate step file given by filename into the document return true if succeeded, and false in case of fail.
+Translate STEP file given by filename into the document Return True if succeeded, and False in case of fail.
 ") Perform;
-		Standard_Boolean Perform(Standard_CString filename, const opencascade::handle<TDocStd_Document> & doc, const StepData_ConfParameters & theParams, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Perform(Standard_CString filename, const opencascade::handle<TDocStd_Document> & doc, const DESTEP_Parameters & theParams, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Reader::ReadFile ******/
 		/****** md5 signature: d86a92113a329cc8dabf010061f31392 ******/
@@ -1685,18 +1310,20 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Loads a file and returns the read status provided for use like single-file reader. @param thefilename [in] file to open return read status.
+Loads a file and returns the read status Provided for use like single-file reader. 
+Input parameter: theFileName file to open 
+Return: read status.
 ") ReadFile;
 		IFSelect_ReturnStatus ReadFile(Standard_CString theFileName);
 
 		/****** STEPCAFControl_Reader::ReadFile ******/
-		/****** md5 signature: 18ccd7e2ac811941268bab9a4aa374b2 ******/
+		/****** md5 signature: d06da18c6ecebe694fe658b2e8edc0fb ******/
 		%feature("compactdefaultargs") ReadFile;
 		%feature("autodoc", "
 Parameters
 ----------
 theFileName: str
-theParams: StepData_ConfParameters
+theParams: DESTEP_Parameters
 
 Return
 -------
@@ -1704,9 +1331,12 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Loads a file and returns the read status provided for use like single-file reader. @param thefilename [in] file to open @param theparams [in] default configuration parameters return read status.
+Loads a file and returns the read status Provided for use like single-file reader. 
+Input parameter: theFileName file to open 
+Input parameter: theParams default configuration parameters 
+Return: read status.
 ") ReadFile;
-		IFSelect_ReturnStatus ReadFile(Standard_CString theFileName, const StepData_ConfParameters & theParams);
+		IFSelect_ReturnStatus ReadFile(Standard_CString theFileName, const DESTEP_Parameters & theParams);
 
 		/****** STEPCAFControl_Reader::ReadStream ******/
 		/****** md5 signature: ee73b79142d0bdf122db2d304fa9d6f3 ******/
@@ -1723,7 +1353,10 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Loads a file from stream and returns the read status. @param thename [in] auxiliary stream name @param theistream [in] stream to read from return read status.
+Loads a file from stream and returns the read status. 
+Input parameter: theName auxiliary stream name 
+Input parameter: theIStream stream to read from 
+Return: read status.
 ") ReadStream;
 		IFSelect_ReturnStatus ReadStream(Standard_CString theName, std::istream & theIStream);
 
@@ -1754,7 +1387,7 @@ None
 
 Description
 -----------
-Set colormode for indicate read colors or not.
+Set ColorMode for indicate read Colors or not.
 ") SetColorMode;
 		void SetColorMode(const Standard_Boolean colormode);
 
@@ -1772,7 +1405,7 @@ None
 
 Description
 -----------
-Set gdt mode for indicate write gdt or not.
+Set GDT mode for indicate write GDT or not.
 ") SetGDTMode;
 		void SetGDTMode(const Standard_Boolean gdtmode);
 
@@ -1790,7 +1423,7 @@ None
 
 Description
 -----------
-Set layermode for indicate read layers or not.
+Set LayerMode for indicate read Layers or not.
 ") SetLayerMode;
 		void SetLayerMode(const Standard_Boolean layermode);
 
@@ -1808,9 +1441,27 @@ None
 
 Description
 -----------
-Set material mode.
+Set Material mode.
 ") SetMatMode;
 		void SetMatMode(const Standard_Boolean matmode);
+
+		/****** STEPCAFControl_Reader::SetMetaMode ******/
+		/****** md5 signature: ff54065e7b3fd3d833c70428323b12fe ******/
+		%feature("compactdefaultargs") SetMetaMode;
+		%feature("autodoc", "
+Parameters
+----------
+theMetaMode: bool
+
+Return
+-------
+None
+
+Description
+-----------
+MetaMode for indicate read Metadata or not.
+") SetMetaMode;
+		void SetMetaMode(const Standard_Boolean theMetaMode);
 
 		/****** STEPCAFControl_Reader::SetNameMode ******/
 		/****** md5 signature: 43ccb5d3fb024d8191f251ee74d0f6ba ******/
@@ -1826,9 +1477,27 @@ None
 
 Description
 -----------
-Set namemode for indicate read name or not.
+Set NameMode for indicate read Name or not.
 ") SetNameMode;
 		void SetNameMode(const Standard_Boolean namemode);
+
+		/****** STEPCAFControl_Reader::SetProductMetaMode ******/
+		/****** md5 signature: 46bf66e2a9096142722392a3d790d830 ******/
+		%feature("compactdefaultargs") SetProductMetaMode;
+		%feature("autodoc", "
+Parameters
+----------
+theProductMetaMode: bool
+
+Return
+-------
+None
+
+Description
+-----------
+MetaMode for indicate whether to read Product Metadata or not.
+") SetProductMetaMode;
+		void SetProductMetaMode(const Standard_Boolean theProductMetaMode);
 
 		/****** STEPCAFControl_Reader::SetPropsMode ******/
 		/****** md5 signature: 97f3b34eb7a1e38c6cf17d5c26f938a6 ******/
@@ -1844,7 +1513,7 @@ None
 
 Description
 -----------
-Propsmode for indicate read validation properties or not.
+PropsMode for indicate read Validation properties or not.
 ") SetPropsMode;
 		void SetPropsMode(const Standard_Boolean propsmode);
 
@@ -1862,9 +1531,87 @@ None
 
 Description
 -----------
-Set shuo mode for indicate write shuo or not.
+Set SHUO mode for indicate write SHUO or not.
 ") SetSHUOMode;
 		void SetSHUOMode(const Standard_Boolean shuomode);
+
+		/****** STEPCAFControl_Reader::SetShapeFixParameters ******/
+		/****** md5 signature: c121f0c1a1bbbaa2d7732f28ec6b14f9 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** STEPCAFControl_Reader::SetShapeFixParameters ******/
+		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters are moved from the input map. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** STEPCAFControl_Reader::SetShapeFixParameters ******/
+		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: DE_ShapeFixParameters
+theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters from @p theParameters are copied to the internal map. Parameters from @p theAdditionalParameters are copied to the internal map if they are not present in @p theParameters. 
+Parameter theParameters the parameters for shape processing. 
+Parameter theAdditionalParameters the additional parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+
+		/****** STEPCAFControl_Reader::SetShapeProcessFlags ******/
+		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/
+		%feature("compactdefaultargs") SetShapeProcessFlags;
+		%feature("autodoc", "
+Parameters
+----------
+theFlags: ShapeProcess::OperationsFlags
+
+Return
+-------
+None
+
+Description
+-----------
+Sets flags defining operations to be performed on shapes. 
+Parameter theFlags The flags defining operations to be performed on shapes.
+") SetShapeProcessFlags;
+		void SetShapeProcessFlags(const ShapeProcess::OperationsFlags & theFlags);
 
 		/****** STEPCAFControl_Reader::SetViewMode ******/
 		/****** md5 signature: 86451933a668d6b4666beb6106f5e28f ******/
@@ -1880,7 +1627,7 @@ None
 
 Description
 -----------
-Set view mode.
+Set View mode.
 ") SetViewMode;
 		void SetViewMode(const Standard_Boolean viewmode);
 
@@ -1899,7 +1646,7 @@ bool
 
 Description
 -----------
-Translates currently loaded step file into the document returns true if succeeded, and false in case of fail provided for use like single-file reader.
+Translates currently loaded STEP file into the document Returns True if succeeded, and False in case of fail Provided for use like single-file reader.
 ") Transfer;
 		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1919,7 +1666,7 @@ bool
 
 Description
 -----------
-Translates currently loaded step file into the document returns true if succeeded, and false in case of fail provided for use like single-file reader.
+Translates currently loaded STEP file into the document Returns True if succeeded, and False in case of fail Provided for use like single-file reader.
 ") TransferOneRoot;
 		Standard_Boolean TransferOneRoot(const Standard_Integer num, const opencascade::handle<TDocStd_Document> & doc, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
@@ -1946,7 +1693,7 @@ None
 
 Description
 -----------
-Creates a writer with an empty step model and sets colormode, layermode, namemode and propsmode to standard_true.
+Creates a writer with an empty STEP model and sets ColorMode, LayerMode, NameMode and PropsMode to Standard_True.
 ") STEPCAFControl_Writer;
 		 STEPCAFControl_Writer();
 
@@ -1965,7 +1712,7 @@ None
 
 Description
 -----------
-Creates a reader tool and attaches it to an already existing session clears the session if it was not yet set for step clears the internal data structures.
+Creates a reader tool and attaches it to an already existing Session Clears the session if it was not yet set for STEP Clears the internal data structures.
 ") STEPCAFControl_Writer;
 		 STEPCAFControl_Writer(const opencascade::handle<XSControl_WorkSession> & theWS, const Standard_Boolean theScratch = Standard_True);
 
@@ -1997,7 +1744,7 @@ bool
 
 Description
 -----------
-Returns data on external file by its original label returns false if no external file with given name is read.
+Returns data on external file by its original label Returns False if no external file with given name is read.
 ") ExternFile;
 		Standard_Boolean ExternFile(const TDF_Label & theLabel, opencascade::handle<STEPCAFControl_ExternFile> & theExtFile);
 
@@ -2016,7 +1763,7 @@ bool
 
 Description
 -----------
-Returns data on external file by its name returns false if no external file with given name is read.
+Returns data on external file by its name Returns False if no external file with given name is read.
 ") ExternFile;
 		Standard_Boolean ExternFile(Standard_CString theName, opencascade::handle<STEPCAFControl_ExternFile> & theExtFile);
 
@@ -2029,7 +1776,7 @@ NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_
 
 Description
 -----------
-Returns data on external files returns null handle if no external files are read.
+Returns data on external files Returns Null handle if no external files are read.
 ") ExternFiles;
 		const NCollection_DataMap<TCollection_AsciiString, opencascade::handle<STEPCAFControl_ExternFile>> & ExternFiles();
 
@@ -2124,6 +1871,34 @@ No available documentation.
 ") GetSHUOMode;
 		Standard_Boolean GetSHUOMode();
 
+		/****** STEPCAFControl_Writer::GetShapeFixParameters ******/
+		/****** md5 signature: a8fc513b1f4da60e937ee021147ff2cb ******/
+		%feature("compactdefaultargs") GetShapeFixParameters;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ParameterMap
+
+Description
+-----------
+Returns parameters for shape processing that was set by SetParameters() method. 
+Return: the parameters for shape processing. Empty map if no parameters were set.
+") GetShapeFixParameters;
+		const XSAlgo_ShapeProcessor::ParameterMap & GetShapeFixParameters();
+
+		/****** STEPCAFControl_Writer::GetShapeProcessFlags ******/
+		/****** md5 signature: 33b1b591e99340c577e8d056ceb180c5 ******/
+		%feature("compactdefaultargs") GetShapeProcessFlags;
+		%feature("autodoc", "Return
+-------
+XSAlgo_ShapeProcessor::ProcessingFlags
+
+Description
+-----------
+Returns flags defining operations to be performed on shapes. 
+Return: Pair of values defining operations to be performed on shapes and a boolean value that indicates whether the flags were set.
+") GetShapeProcessFlags;
+		const XSAlgo_ShapeProcessor::ProcessingFlags & GetShapeProcessFlags();
+
 		/****** STEPCAFControl_Writer::Init ******/
 		/****** md5 signature: e7d3f870615865a6686f75c3aa077ff3 ******/
 		%feature("compactdefaultargs") Init;
@@ -2139,7 +1914,7 @@ None
 
 Description
 -----------
-Clears the internal data structures and attaches to a new session clears the session if it was not yet set for step.
+Clears the internal data structures and attaches to a new session Clears the session if it was not yet set for STEP.
 ") Init;
 		void Init(const opencascade::handle<XSControl_WorkSession> & theWS, const Standard_Boolean theScratch = Standard_True);
 
@@ -2179,19 +1954,19 @@ bool
 
 Description
 -----------
-Transfers a document and writes it to a step file returns true if translation is ok.
+Transfers a document and writes it to a STEP file Returns True if translation is OK.
 ") Perform;
 		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & theDoc, Standard_CString theFileName, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Writer::Perform ******/
-		/****** md5 signature: 8a60d61459d37e420f614292c6216ca5 ******/
+		/****** md5 signature: 6ea5bb21f21d5cf9a7b38dc922f1ac30 ******/
 		%feature("compactdefaultargs") Perform;
 		%feature("autodoc", "
 Parameters
 ----------
 theDoc: TDocStd_Document
 theFileName: str
-theParams: StepData_ConfParameters
+theParams: DESTEP_Parameters
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
 
 Return
@@ -2200,9 +1975,9 @@ bool
 
 Description
 -----------
-Transfers a document and writes it to a step file this method uses if need to set parameters avoiding initialization from interface_static returns true if translation is ok.
+Transfers a document and writes it to a STEP file This method is utilized if there's a need to set parameters avoiding initialization from Interface_Static Returns True if translation is OK.
 ") Perform;
-		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & theDoc, Standard_CString theFileName, const StepData_ConfParameters & theParams, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Perform(const opencascade::handle<TDocStd_Document> & theDoc, Standard_CString theFileName, const DESTEP_Parameters & theParams, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Writer::SetColorMode ******/
 		/****** md5 signature: f341158b4cc5262e2e5cb7b941cc9031 ******/
@@ -2218,7 +1993,7 @@ None
 
 Description
 -----------
-Set colormode for indicate write colors or not.
+Set ColorMode for indicate write Colors or not.
 ") SetColorMode;
 		void SetColorMode(const Standard_Boolean theColorMode);
 
@@ -2236,7 +2011,7 @@ None
 
 Description
 -----------
-Set dimtolmode for indicate write d&gts or not.
+Set dimtolmode for indicate write D&GTs or not.
 ") SetDimTolMode;
 		void SetDimTolMode(const Standard_Boolean theDimTolMode);
 
@@ -2254,7 +2029,7 @@ None
 
 Description
 -----------
-Set layermode for indicate write layers or not.
+Set LayerMode for indicate write Layers or not.
 ") SetLayerMode;
 		void SetLayerMode(const Standard_Boolean theLayerMode);
 
@@ -2272,7 +2047,7 @@ None
 
 Description
 -----------
-Set dimtolmode for indicate write d&gts or not.
+Set dimtolmode for indicate write D&GTs or not.
 ") SetMaterialMode;
 		void SetMaterialMode(const Standard_Boolean theMaterialMode);
 
@@ -2290,7 +2065,7 @@ None
 
 Description
 -----------
-Set namemode for indicate write name or not.
+Set NameMode for indicate write Name or not.
 ") SetNameMode;
 		void SetNameMode(const Standard_Boolean theNameMode);
 
@@ -2308,7 +2083,7 @@ None
 
 Description
 -----------
-Propsmode for indicate write validation properties or not.
+PropsMode for indicate write Validation properties or not.
 ") SetPropsMode;
 		void SetPropsMode(const Standard_Boolean thePropsMode);
 
@@ -2326,9 +2101,87 @@ None
 
 Description
 -----------
-Set shuo mode for indicate write shuo or not.
+Set SHUO mode for indicate write SHUO or not.
 ") SetSHUOMode;
 		void SetSHUOMode(const Standard_Boolean theSHUOMode);
+
+		/****** STEPCAFControl_Writer::SetShapeFixParameters ******/
+		/****** md5 signature: c121f0c1a1bbbaa2d7732f28ec6b14f9 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** STEPCAFControl_Writer::SetShapeFixParameters ******/
+		/****** md5 signature: 1db31276bf8a0d249a8011e0955a53e7 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: XSAlgo_ShapeProcessor::ParameterMap
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters are moved from the input map. 
+Parameter theParameters the parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(XSAlgo_ShapeProcessor::ParameterMap & theParameters);
+
+		/****** STEPCAFControl_Writer::SetShapeFixParameters ******/
+		/****** md5 signature: e895be254466ec0dab7446ab439d8103 ******/
+		%feature("compactdefaultargs") SetShapeFixParameters;
+		%feature("autodoc", "
+Parameters
+----------
+theParameters: DE_ShapeFixParameters
+theAdditionalParameters: XSAlgo_ShapeProcessor::ParameterMap (optional, default to {})
+
+Return
+-------
+None
+
+Description
+-----------
+Sets parameters for shape processing. Parameters from @p theParameters are copied to the internal map. Parameters from @p theAdditionalParameters are copied to the internal map if they are not present in @p theParameters. 
+Parameter theParameters the parameters for shape processing. 
+Parameter theAdditionalParameters the additional parameters for shape processing.
+") SetShapeFixParameters;
+		void SetShapeFixParameters(const DE_ShapeFixParameters & theParameters, const XSAlgo_ShapeProcessor::ParameterMap & theAdditionalParameters = {});
+
+		/****** STEPCAFControl_Writer::SetShapeProcessFlags ******/
+		/****** md5 signature: 8994bc61257c564f18dec11d989eee9a ******/
+		%feature("compactdefaultargs") SetShapeProcessFlags;
+		%feature("autodoc", "
+Parameters
+----------
+theFlags: ShapeProcess::OperationsFlags
+
+Return
+-------
+None
+
+Description
+-----------
+Sets flags defining operations to be performed on shapes. 
+Parameter theFlags The flags defining operations to be performed on shapes.
+") SetShapeProcessFlags;
+		void SetShapeProcessFlags(const ShapeProcess::OperationsFlags & theFlags);
 
 		/****** STEPCAFControl_Writer::Transfer ******/
 		/****** md5 signature: dd7ebbdc1c22d7845ad531885273adee ******/
@@ -2347,18 +2200,18 @@ bool
 
 Description
 -----------
-Transfers a document (or single label) to a step model the mode of translation of shape is asis if multi is not null pointer, it switches to multifile mode (with external refs), and string pointed by <multi> gives prefix for names of extern files (can be empty string) returns true if translation is ok.
+Transfers a document (or single label) to a STEP model The mode of translation of shape is AsIs If multi is not null pointer, it switches to multifile mode (with external refs), and string pointed by <multi> gives prefix for names of extern files (can be empty string) Returns True if translation is OK.
 ") Transfer;
 		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & theDoc, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Writer::Transfer ******/
-		/****** md5 signature: 970d009e8f79969ac77eca0061e59fda ******/
+		/****** md5 signature: d72ae6720afafe83b8fd48e7c4185603 ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
 ----------
 theDoc: TDocStd_Document
-theParams: StepData_ConfParameters
+theParams: DESTEP_Parameters
 theMode: STEPControl_StepModelType (optional, default to STEPControl_AsIs)
 theIsMulti: str (optional, default to 0)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
@@ -2369,9 +2222,13 @@ bool
 
 Description
 -----------
-Transfers a document (or single label) to a step model this method uses if need to set parameters avoiding initialization from interface_static @param theparams configuration parameters @param themode mode of translation of shape is asis @param theismulti if multi is not null pointer, it switches to multifile  mode (with external refs), and string pointed by <multi>  gives prefix for names of extern files (can be empty string) @param theprogress progress indicator returns true if translation is ok.
+Transfers a document (or single label) to a STEP model This method uses if need to set parameters avoiding initialization from Interface_Static 
+Parameter theParams configuration parameters 
+Parameter theMode mode of translation of shape is AsIs 
+Parameter theIsMulti if multi is not null pointer, it switches to multifile  mode (with external refs), and string pointed by <multi>  gives prefix for names of extern files (can be empty string) 
+Parameter theProgress progress indicator Returns True if translation is OK.
 ") Transfer;
-		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & theDoc, const StepData_ConfParameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Transfer(const opencascade::handle<TDocStd_Document> & theDoc, const DESTEP_Parameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Writer::Transfer ******/
 		/****** md5 signature: 40f710aeab310ab1eff9bbdbe733b162 ******/
@@ -2395,13 +2252,13 @@ Method to transfer part of the document specified by label.
 		Standard_Boolean Transfer(const TDF_Label & theLabel, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Writer::Transfer ******/
-		/****** md5 signature: 0c3ea07a34b582e18aef6a4af8264315 ******/
+		/****** md5 signature: b498040e8d3e1f0c433522af434ffefe ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
 ----------
 theLabel: TDF_Label
-theParams: StepData_ConfParameters
+theParams: DESTEP_Parameters
 theMode: STEPControl_StepModelType (optional, default to STEPControl_AsIs)
 theIsMulti: str (optional, default to 0)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
@@ -2412,9 +2269,9 @@ bool
 
 Description
 -----------
-Method to transfer part of the document specified by label this method uses if need to set parameters avoiding initialization from interface_static.
+Method to transfer part of the document specified by label This method uses if need to set parameters avoiding initialization from Interface_Static.
 ") Transfer;
-		Standard_Boolean Transfer(const TDF_Label & theLabel, const StepData_ConfParameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Transfer(const TDF_Label & theLabel, const DESTEP_Parameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Writer::Transfer ******/
 		/****** md5 signature: 4e3f0900d966cc07a5e2191b2b4ba7a6 ******/
@@ -2433,18 +2290,18 @@ bool
 
 Description
 -----------
-Mehod to writing sequence of root assemblies or part of the file specified by use by one label .
+Method to writing sequence of root assemblies or part of the file specified by use by one label.
 ") Transfer;
 		Standard_Boolean Transfer(const TDF_LabelSequence & theLabelSeq, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Writer::Transfer ******/
-		/****** md5 signature: cb2f8074b76f84b20e521af394ddfe46 ******/
+		/****** md5 signature: 3348000692fdc2d71de30f72c620ad0d ******/
 		%feature("compactdefaultargs") Transfer;
 		%feature("autodoc", "
 Parameters
 ----------
 theLabelSeq: TDF_LabelSequence
-theParams: StepData_ConfParameters
+theParams: DESTEP_Parameters
 theMode: STEPControl_StepModelType (optional, default to STEPControl_AsIs)
 theIsMulti: str (optional, default to 0)
 theProgress: Message_ProgressRange (optional, default to Message_ProgressRange())
@@ -2455,9 +2312,9 @@ bool
 
 Description
 -----------
-Mehod to writing sequence of root assemblies or part of the file specified by use by one label this method uses if need to set parameters avoiding initialization from interface_static.
+Method to writing sequence of root assemblies or part of the file specified by use by one label. This method is utilized if there's a need to set parameters avoiding initialization from Interface_Static.
 ") Transfer;
-		Standard_Boolean Transfer(const TDF_LabelSequence & theLabelSeq, const StepData_ConfParameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
+		Standard_Boolean Transfer(const TDF_LabelSequence & theLabelSeq, const DESTEP_Parameters & theParams, const STEPControl_StepModelType theMode = STEPControl_AsIs, Standard_CString theIsMulti = 0, const Message_ProgressRange & theProgress = Message_ProgressRange());
 
 		/****** STEPCAFControl_Writer::Write ******/
 		/****** md5 signature: 14544d6ececf228a5871ef6afa0279ae ******/
@@ -2473,7 +2330,7 @@ IFSelect_ReturnStatus
 
 Description
 -----------
-Writes all the produced models into file in case of multimodel with extern references, filename will be a name of root file, all other files have names of corresponding parts provided for use like single-file writer.
+Writes all the produced models into file In case of multimodel with extern references, filename will be a name of root file, all other files have names of corresponding parts Provided for use like single-file writer.
 ") Write;
 		IFSelect_ReturnStatus Write(Standard_CString theFileName);
 
@@ -2490,7 +2347,7 @@ theStream: std::ostream
 
 Description
 -----------
-Writes all the produced models into the stream. provided for use like single-file writer.
+Writes all the produced models into the stream. Provided for use like single-file writer.
 ") WriteStream;
 		IFSelect_ReturnStatus WriteStream(std::ostream &OutValue);
 

@@ -147,7 +147,7 @@ Standard_Address
 
 Description
 -----------
-Allocates memory blocks thesize - bytes to allocate.
+Allocates memory blocks theSize - bytes to allocate.
 ") Allocate;
 		static Standard_Address Allocate(const Standard_Size theSize);
 
@@ -166,7 +166,9 @@ Standard_Address
 
 Description
 -----------
-Allocates aligned memory blocks. should be used with cpu instructions which require specific alignment. for example: sse requires 16 bytes, avx requires 32 bytes. @param thesize bytes to allocate @param thealign alignment in bytes.
+Allocates aligned memory blocks. Should be used with CPU instructions which require specific alignment. For example: SSE requires 16 bytes, AVX requires 32 bytes. 
+Parameter theSize bytes to allocate 
+Parameter theAlign alignment in bytes.
 ") AllocateAligned;
 		static Standard_Address AllocateAligned(const Standard_Size theSize, const Standard_Size theAlign);
 
@@ -184,7 +186,7 @@ Standard_Address
 
 Description
 -----------
-Allocates memory blocks thesize - bytes to allocate.
+Allocates memory blocks theSize - bytes to allocate.
 ") AllocateOptimal;
 		static Standard_Address AllocateOptimal(const Standard_Size theSize);
 
@@ -210,7 +212,7 @@ int
 
 Description
 -----------
-Deallocates the storage retained on the free list and clears the list. returns non-zero if some memory has been actually freed.
+Deallocates the storage retained on the free list and clears the list. Returns non-zero if some memory has been actually freed.
 ") Purge;
 		static Standard_Integer Purge();
 
@@ -229,7 +231,7 @@ Standard_Address
 
 Description
 -----------
-Reallocates memory blocks thestorage - previously allocated memory block thenewsize - new size in bytes.
+Reallocates memory blocks theStorage - previously allocated memory block theNewSize - new size in bytes.
 ") Reallocate;
 		static Standard_Address Reallocate(const Standard_Address theStorage, const Standard_Size theNewSize);
 
@@ -251,7 +253,13 @@ bool
 
 Description
 -----------
-Appends backtrace to a message buffer. stack information might be incomplete in case of stripped binaries. implementation details: - not implemented for android, ios, qnx and uwp platforms. - on non-windows platform, this function is a wrapper to backtrace() system call. - on windows (win32) platform, the function loads dbghelp.dll dynamically, and no stack will be provided if this or companion libraries (symsrv.dll, srcsrv.dll, etc.) will not be found; .pdb symbols should be provided on windows platform to retrieve a meaningful stack; only x86_64 cpu architecture is currently implemented. @param thebuffer [in] [out] message buffer to extend @param thebuffersize [in] message buffer size @param thenbtraces [in] maximum number of stack traces @param thecontext [in] optional platform-dependent frame context; in case of dbghelp (windows) should be a pointer to context @param thenbtopskip [in] number of traces on top of the stack to skip return true on success.
+Appends backtrace to a message buffer. Stack information might be incomplete in case of stripped binaries. Implementation details: - Not implemented for Android, iOS, QNX and UWP platforms. - On non-Windows platform, this function is a wrapper to backtrace() system call. - On Windows (Win32) platform, the function loads DbgHelp.dll dynamically, and no stack will be provided if this or companion libraries (SymSrv.dll, SrcSrv.dll, etc.) will not be found; .pdb symbols should be provided on Windows platform to retrieve a meaningful stack; only x86_64 CPU architecture is currently implemented. 
+Input parameter:[out] theBuffer message buffer to extend 
+Input parameter: theBufferSize message buffer size 
+Input parameter: theNbTraces maximum number of stack traces 
+Input parameter: theContext optional platform-dependent frame context; in case of DbgHelp (Windows) should be a pointer to CONTEXT 
+Input parameter: theNbTopSkip number of traces on top of the stack to skip 
+Return: True on success.
 ") StackTrace;
 		static Standard_Boolean StackTrace(char * theBuffer, const int theBufferSize, const int theNbTraces, void * theContext = NULL, const int theNbTopSkip = 0);
 
@@ -292,7 +300,9 @@ None
 
 Description
 -----------
-Main constructor. passed pointer is stored as is (memory is not copied nor released with destructor). @param thebegin pointer to the beginning of pre-allocated buffer @param thesize length of pre-allocated buffer.
+Main constructor. Passed pointer is stored as is (memory is NOT copied nor released with destructor). 
+Parameter theBegin pointer to the beginning of pre-allocated buffer 
+Parameter theSize length of pre-allocated buffer.
 ") Standard_ArrayStreamBuffer;
 		 Standard_ArrayStreamBuffer(const char * theBegin, const size_t theSize);
 
@@ -311,7 +321,9 @@ None
 
 Description
 -----------
-(re)-initialize the stream. passed pointer is stored as is (memory is not copied nor released with destructor). @param thebegin pointer to the beginning of pre-allocated buffer @param thesize length of pre-allocated buffer.
+(Re)-initialize the stream. Passed pointer is stored as is (memory is NOT copied nor released with destructor). 
+Parameter theBegin pointer to the beginning of pre-allocated buffer 
+Parameter theSize length of pre-allocated buffer.
 ") Init;
 		virtual void Init(const char * theBegin, const size_t theSize);
 
@@ -376,7 +388,8 @@ None
 
 Description
 -----------
-Default constructor. @param theisset initial flag state.
+Default constructor. 
+Parameter theIsSet Initial flag state.
 ") Standard_Condition;
 		 Standard_Condition(bool theIsSet);
 
@@ -389,7 +402,8 @@ bool
 
 Description
 -----------
-Do not wait for signal - just test it state. return true if get event.
+Do not wait for signal - just test it state. 
+Return: true if get event.
 ") Check;
 		bool Check();
 
@@ -402,7 +416,8 @@ bool
 
 Description
 -----------
-Method perform two steps at-once - reset the event object and returns true if it was in signaling state. return true if event object was in signaling state.
+Method perform two steps at-once - reset the event object and returns true if it was in signaling state. 
+Return: true if event object was in signaling state.
 ") CheckReset;
 		bool CheckReset();
 
@@ -441,7 +456,7 @@ None
 
 Description
 -----------
-Wait for event (infinity).
+Wait for Event (infinity).
 ") Wait;
 		void Wait();
 
@@ -459,7 +474,9 @@ bool
 
 Description
 -----------
-Wait for signal requested time. @param thetimemilliseconds wait limit in milliseconds return true if get event.
+Wait for signal requested time. 
+Parameter theTimeMilliseconds wait limit in milliseconds 
+Return: true if get event.
 ") Wait;
 		bool Wait(int theTimeMilliseconds);
 
@@ -491,7 +508,7 @@ None
 
 Description
 -----------
-Create a errorhandler (to be used with try{}catch(){}). it uses the 'setjmp' and 'longjmp' routines.
+Create a ErrorHandler (to be used with try{}catch(){}). It uses the 'setjmp' and 'longjmp' routines.
 ") Standard_ErrorHandler;
 		 Standard_ErrorHandler();
 
@@ -509,7 +526,7 @@ bool
 
 Description
 -----------
-Returns 'true' if the caught exception has the same type or inherits from 'atype'.
+Returns 'True' if the caught exception has the same type or inherits from 'aType'.
 ") Catches;
 		Standard_Boolean Catches(const opencascade::handle<Standard_Type> & aType);
 
@@ -535,7 +552,7 @@ opencascade::handle<Standard_Failure>
 
 Description
 -----------
-Returns the current error.
+Returns the current Error.
 ") Error;
 		opencascade::handle<Standard_Failure> Error();
 
@@ -596,7 +613,6 @@ Removes handler from the handlers list.
 **********************/
 class Standard_GUID {
 	public:
-		friend struct std::hash ;
 		/****** Standard_GUID::Standard_GUID ******/
 		/****** md5 signature: bd47278e877fa95d24363f9cfe93d187 ******/
 		%feature("compactdefaultargs") Standard_GUID;
@@ -624,7 +640,7 @@ None
 
 Description
 -----------
-Build a guid from an ascii string with the following format: length: 36 char '00000000-0000-0000-0000-000000000000'.
+build a GUID from an ascii string with the following format: Length: 36 char '00000000-0000-0000-0000-000000000000'.
 ") Standard_GUID;
 		 Standard_GUID(Standard_CString aGuid);
 
@@ -642,7 +658,7 @@ None
 
 Description
 -----------
-Build a guid from an unicode string with the following format: //! '00000000-0000-0000-0000-000000000000'.
+build a GUID from an unicode string with the following format: //! '00000000-0000-0000-0000-000000000000'.
 ") Standard_GUID;
 		 Standard_GUID(const Standard_ExtString aGuid);
 
@@ -759,7 +775,7 @@ bool
 
 Description
 -----------
-Check the format of a guid string. it checks the size, the position of the '-' and the correct size of fields.
+Check the format of a GUID string. It checks the size, the position of the '-' and the correct size of fields.
 ") CheckGUIDFormat;
 		static Standard_Boolean CheckGUIDFormat(Standard_CString aGuid);
 
@@ -812,7 +828,7 @@ aStream: Standard_OStream
 
 Description
 -----------
-Display the guid with the following format: //! '00000000-0000-0000-0000-000000000000'.
+Display the GUID with the following format: //! '00000000-0000-0000-0000-000000000000'.
 ") ShallowDump;
 		void ShallowDump(std::ostream &OutValue);
 
@@ -830,7 +846,7 @@ None
 
 Description
 -----------
-Translate the guid into ascii string the astrguid is allocated by user. the guid have the following format: //! '00000000-0000-0000-0000-000000000000'.
+translate the GUID into ascii string the aStrGuid is allocated by user. the guid have the following format: //! '00000000-0000-0000-0000-000000000000'.
 ") ToCString;
 		void ToCString(const Standard_PCharacter aStrGuid);
 
@@ -848,7 +864,7 @@ None
 
 Description
 -----------
-Translate the guid into unicode string the astrguid is allocated by user. the guid have the following format: //! '00000000-0000-0000-0000-000000000000'.
+translate the GUID into unicode string the aStrGuid is allocated by user. the guid have the following format: //! '00000000-0000-0000-0000-000000000000'.
 ") ToExtString;
 		void ToExtString(const Standard_PExtCharacter aStrGuid);
 
@@ -922,7 +938,7 @@ Standard_Address
 
 Description
 -----------
-Allocate specified number of bytes. the actually allocated space should be rounded up to double word size (4 bytes), as this is expected by implementation of some classes in occ (e.g. tcollection_asciistring).
+Allocate specified number of bytes. The actually allocated space should be rounded up to double word size (4 bytes), as this is expected by implementation of some classes in OCC (e.g. TCollection_AsciiString).
 ") Allocate;
 		virtual Standard_Address Allocate(const Standard_Size theSize);
 
@@ -958,7 +974,7 @@ int
 
 Description
 -----------
-Purge internally cached unused memory blocks (if any) by releasing them to the operating system. must return non-zero if some memory has been actually released, or zero otherwise. if option isdestroyed is true, this means that memory manager is not expected to be used any more; note however that in general case it is still possible to have calls to that instance of memory manager after this (e.g. to free memory of static objects in occ). thus this option should command the memory manager to release any cached memory to the system and not cache any more, but still remain operable... //! default implementation does nothing and returns 0.
+Purge internally cached unused memory blocks (if any) by releasing them to the operating system. Must return non-zero if some memory has been actually released, or zero otherwise. //! If option isDestroyed is True, this means that memory manager is not expected to be used any more; note however that in general case it is still possible to have calls to that instance of memory manager after this (e.g. to free memory of static objects in OCC). Thus this option should command the memory manager to release any cached memory to the system and not cache any more, but still remain operable... //! Default implementation does nothing and returns 0.
 ") Purge;
 		virtual Standard_Integer Purge(Standard_Boolean isDestroyed = Standard_False);
 
@@ -977,7 +993,7 @@ Standard_Address
 
 Description
 -----------
-Reallocate previously allocated memory to contain at least thesize bytes. in case of success, new pointer is returned.
+Reallocate previously allocated memory to contain at least theSize bytes. In case of success, new pointer is returned.
 ") Reallocate;
 		virtual Standard_Address Reallocate(Standard_Address thePtr, const Standard_Size theSize);
 
@@ -1142,7 +1158,7 @@ bool
 
 Description
 -----------
-Returns a true value if this is an instance of type.
+Returns a true value if this is an instance of Type.
 ") IsInstance;
 		Standard_Boolean IsInstance(const opencascade::handle<Standard_Type> & theType);
 
@@ -1160,7 +1176,7 @@ bool
 
 Description
 -----------
-Returns a true value if this is an instance of typename.
+Returns a true value if this is an instance of TypeName.
 ") IsInstance;
 		Standard_Boolean IsInstance(Standard_CString theTypeName);
 
@@ -1178,7 +1194,7 @@ bool
 
 Description
 -----------
-Returns true if this is an instance of type or an instance of any class that inherits from type. note that multiple inheritance is not supported by occt rtti mechanism.
+Returns true if this is an instance of Type or an instance of any class that inherits from Type. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
 ") IsKind;
 		Standard_Boolean IsKind(const opencascade::handle<Standard_Type> & theType);
 
@@ -1196,7 +1212,7 @@ bool
 
 Description
 -----------
-Returns true if this is an instance of typename or an instance of any class that inherits from typename. note that multiple inheritance is not supported by occt rtti mechanism.
+Returns true if this is an instance of TypeName or an instance of any class that inherits from TypeName. Note that multiple inheritance is not supported by OCCT RTTI mechanism.
 ") IsKind;
 		Standard_Boolean IsKind(Standard_CString theTypeName);
 
@@ -1209,7 +1225,7 @@ Standard_Transient *
 
 Description
 -----------
-Returns non-const pointer to this object (like const_cast). for protection against creating handle to objects allocated in stack or call from constructor, it will raise exception standard_programerror if reference counter is zero.
+Returns non-const pointer to this object (like const_cast). For protection against creating handle to objects allocated in stack or call from constructor, it will raise exception Standard_ProgramError if reference counter is zero.
 ") This;
 		Standard_Transient * This();
 
@@ -1222,7 +1238,7 @@ opencascade::handle<Standard_Type>
 
 Description
 -----------
-Returns type descriptor of standard_transient class.
+Returns type descriptor of Standard_Transient class.
 ") get_type_descriptor;
 		static const opencascade::handle<Standard_Type> & get_type_descriptor();
 
@@ -1231,13 +1247,13 @@ Returns type descriptor of standard_transient class.
 		%feature("compactdefaultargs") get_type_name;
 		%feature("autodoc", "Return
 -------
-expr  char *
+char *
 
 Description
 -----------
 No available documentation.
 ") get_type_name;
-		static constexpr const char * get_type_name();
+		static const char * get_type_name();
 
 };
 
@@ -1285,10 +1301,6 @@ No available documentation.
 **********************/
 class Standard_UUID {
 	public:
-		uint32_t Data1;
-		uint16_t Data2;
-		uint16_t Data3;
-		uint8_t Data4[8];
 };
 
 
@@ -1298,27 +1310,12 @@ class Standard_UUID {
 	}
 };
 
-/***********************************
-* class direct_base_class_as_tuple *
-***********************************/
-/***************************************************************************
-* class direct_base_class_as_tuple<std::tr2::__reflection_typelist<Ts...>> *
-***************************************************************************/
 /**************************
 * class disable_deduction *
 **************************/
 /***************
 * class handle *
 ***************/
-/*********************************
-* class has_type<T,std::tuple<>> *
-*********************************/
-/****************************************
-* class has_type<T,std::tuple<T,Ts...>> *
-****************************************/
-/****************************************
-* class has_type<T,std::tuple<U,Ts...>> *
-****************************************/
 /****************************
 * class hash<Standard_GUID> *
 ****************************/
@@ -1334,12 +1331,6 @@ class Standard_UUID {
 /*******************
 * class is_integer *
 *******************/
-/**********************
-* class type_instance *
-**********************/
-/****************************
-* class type_instance<void> *
-****************************/
 /*************************
 * class Standard_Failure *
 *************************/
@@ -1355,7 +1346,7 @@ None
 
 Description
 -----------
-Creates a status object of type 'failure'.
+Creates a status object of type 'Failure'.
 ") Standard_Failure;
 		 Standard_Failure();
 
@@ -1391,7 +1382,8 @@ None
 
 Description
 -----------
-Creates a status object of type 'failure'. @param thedesc [in] exception description.
+Creates a status object of type 'Failure'. 
+Input parameter: theDesc exception description.
 ") Standard_Failure;
 		 Standard_Failure(Standard_CString theDesc);
 
@@ -1410,7 +1402,9 @@ None
 
 Description
 -----------
-Creates a status object of type 'failure' with stack trace. @param thedesc [in] exception description @param thestacktrace [in] associated stack trace.
+Creates a status object of type 'Failure' with stack trace. 
+Input parameter: theDesc exception description 
+Input parameter: theStackTrace associated stack trace.
 ") Standard_Failure;
 		 Standard_Failure(Standard_CString theDesc, Standard_CString theStackTrace);
 
@@ -1423,7 +1417,7 @@ int
 
 Description
 -----------
-Returns the default length of stack trace to be captured by standard_failure constructor; 0 by default meaning no stack trace.
+Returns the default length of stack trace to be captured by Standard_Failure constructor; 0 by default meaning no stack trace.
 ") DefaultStackTraceLength;
 		static Standard_Integer DefaultStackTraceLength();
 
@@ -1462,7 +1456,7 @@ None
 
 Description
 -----------
-Used to throw cascade exception from c signal handler. on platforms that do not allow throwing c++ exceptions from this handler (e.g. linux), uses longjump to get to the current active signal handler, and only then is converted to c++ exception.
+Used to throw CASCADE exception from C signal handler. On platforms that do not allow throwing C++ exceptions from this handler (e.g. Linux), uses longjump to get to the current active signal handler, and only then is converted to C++ exception.
 ") Jump;
 		void Jump();
 
@@ -1480,7 +1474,7 @@ opencascade::handle<Standard_Failure>
 
 Description
 -----------
-Used to construct an instance of the exception object as a handle. shall be used to protect against possible construction of exception object in c stack, which is dangerous since some of methods require that object was allocated dynamically.
+Used to construct an instance of the exception object as a handle. Shall be used to protect against possible construction of exception object in C stack, which is dangerous since some of methods require that object was allocated dynamically.
 ") NewInstance;
 		static opencascade::handle<Standard_Failure> NewInstance(Standard_CString theMessage);
 
@@ -1516,7 +1510,7 @@ theStream: Standard_OStream
 
 Description
 -----------
-Prints on the stream @p thestream the exception name followed by the error message. //! note: there is a short-cut @c operator<< (standard_ostream&, opencascade::handle<standard_failure>&).
+Prints on the stream @p theStream the exception name followed by the error message. //! Note: there is a short-cut @c operator<< (Standard_OStream&, opencascade::handle<Standard_Failure>&).
 ") Print;
 		void Print(std::ostream &OutValue);
 
@@ -1534,7 +1528,7 @@ None
 
 Description
 -----------
-Raises an exception of type 'failure' and associates an error message to it. the message can be printed in an exception handler.
+Raises an exception of type 'Failure' and associates an error message to it. The message can be printed in an exception handler.
 ") Raise;
 		static void Raise(Standard_CString aMessage = "");
 
@@ -1552,7 +1546,7 @@ None
 
 Description
 -----------
-Raises an exception of type 'failure' and associates an error message to it. the message can be constructed at run-time.
+Raises an exception of type 'Failure' and associates an error message to it. The message can be constructed at run-time.
 ") Raise;
 		static void Raise(const std::stringstream & aReason);
 
@@ -1619,7 +1613,7 @@ None
 
 Description
 -----------
-Sets default length of stack trace to be captured by standard_failure constructor.
+Sets default length of stack trace to be captured by Standard_Failure constructor.
 ") SetDefaultStackTraceLength;
 		static void SetDefaultStackTraceLength(Standard_Integer theNbStackTraces);
 
@@ -1693,7 +1687,7 @@ None
 
 Description
 -----------
-Constructor. if aclear is true, the allocated emmory will be nullified. for description of other parameters, see description of the class above.
+Constructor. If aClear is True, the allocated emmory will be nullified. For description of other parameters, see description of the class above.
 ") Standard_MMgrOpt;
 		 Standard_MMgrOpt(const Standard_Boolean aClear = Standard_True, const Standard_Boolean aMMap = Standard_True, const Standard_Size aCellSize = 200, const Standard_Integer aNbPages = 10000, const Standard_Size aThreshold = 40000);
 
@@ -1711,7 +1705,7 @@ Standard_Address
 
 Description
 -----------
-Allocate asize bytes; see class description above.
+Allocate aSize bytes; see class description above.
 ") Allocate;
 		virtual Standard_Address Allocate(const Standard_Size aSize);
 
@@ -1729,7 +1723,7 @@ None
 
 Description
 -----------
-Free previously allocated block. note that block can not all blocks are released to the os by this method (see class description).
+Free previously allocated block. Note that block can not all blocks are released to the OS by this method (see class description).
 ") Free;
 		virtual void Free(Standard_Address thePtr);
 
@@ -1747,7 +1741,7 @@ int
 
 Description
 -----------
-Release medium-sized blocks of memory in free lists to the system. returns number of actually freed blocks.
+Release medium-sized blocks of memory in free lists to the system. Returns number of actually freed blocks.
 ") Purge;
 		virtual Standard_Integer Purge(Standard_Boolean isDestroyed);
 
@@ -1766,7 +1760,7 @@ Standard_Address
 
 Description
 -----------
-Reallocate previously allocated aptr to a new size; new address is returned. in case that aptr is null, the function behaves exactly as allocate.
+Reallocate previously allocated aPtr to a new size; new address is returned. In case that aPtr is null, the function behaves exactly as Allocate.
 ") Reallocate;
 		virtual Standard_Address Reallocate(Standard_Address thePtr, const Standard_Size theSize);
 
@@ -2032,7 +2026,11 @@ Standard_Type *
 
 Description
 -----------
-Register a type; returns either new or existing descriptor. //! @param theinfo object stores system name of the class @param thename name of the class to be stored in name field @param thesize size of the class instance @param theparent base class in the transient hierarchy //! note that this function is intended for use by opencascade::type_instance only. .
+Register a type; returns either new or existing descriptor. //! 
+Parameter theInfo object stores system name of the class 
+Parameter theName name of the class to be stored in Name field 
+Parameter theSize size of the class instance 
+Parameter theParent base class in the Transient hierarchy //! Note that this function is intended for use by STANDARD_RTTIEXT macros only.
 ") Register;
 		static Standard_Type * Register(const std::type_info & theInfo, const char * theName, Standard_Size theSize, const opencascade::handle<Standard_Type> & theParent);
 
@@ -2063,7 +2061,7 @@ bool
 
 Description
 -----------
-Returns true if this type is the same as theother, or inherits from theother. note that multiple inheritance is not supported.
+Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported.
 ") SubType;
 		Standard_Boolean SubType(const opencascade::handle<Standard_Type> & theOther);
 
@@ -2081,7 +2079,7 @@ bool
 
 Description
 -----------
-Returns true if this type is the same as theother, or inherits from theother. note that multiple inheritance is not supported.
+Returns True if this type is the same as theOther, or inherits from theOther. Note that multiple inheritance is not supported.
 ") SubType;
 		Standard_Boolean SubType(Standard_CString theOther);
 

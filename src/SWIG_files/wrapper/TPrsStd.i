@@ -211,7 +211,7 @@ bool
 
 Description
 -----------
-Update ais viewer according to delta.
+update AIS viewer according to delta.
 ") AfterUndo;
 		virtual Standard_Boolean AfterUndo(const opencascade::handle<TDF_AttributeDelta> & anAttDelta, const Standard_Boolean forceIt = Standard_False);
 
@@ -300,7 +300,7 @@ None
 
 Description
 -----------
-Display presentation of object in ais viewer. if <update> = true then aisobject is recomputed and all the visualization settings are applied.
+Display presentation of object in AIS viewer. If <update> = True then AISObject is recomputed and all the visualization settings are applied.
 ") Display;
 		void Display(const Standard_Boolean update = Standard_False);
 
@@ -339,7 +339,7 @@ None
 
 Description
 -----------
-Removes the presentation of this ais presentation attribute from the tprsstd_aisviewer. if remove is true, this ais presentation attribute is removed from the interactive context.
+Removes the presentation of this AIS presentation attribute from the TPrsStd_AISViewer. If remove is true, this AIS presentation attribute is removed from the interactive context.
 ") Erase;
 		void Erase(const Standard_Boolean remove = Standard_False);
 
@@ -352,7 +352,7 @@ opencascade::handle<AIS_InteractiveObject>
 
 Description
 -----------
-Returns ais_interactiveobject stored in the presentation attribute.
+Returns AIS_InteractiveObject stored in the presentation attribute.
 ") GetAIS;
 		opencascade::handle<AIS_InteractiveObject> GetAIS();
 
@@ -378,7 +378,7 @@ Standard_GUID
 
 Description
 -----------
-Returns the guid for tprsstd_aispresentation attributes.
+Returns the GUID for TPrsStd_AISPresentation attributes.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -391,7 +391,7 @@ int
 
 Description
 -----------
-Returns selection mode(s) of the attribute. it starts with 1 .. getnbselectionmodes().
+Returns selection mode(s) of the attribute. It starts with 1 .. GetNbSelectionModes().
 ") GetNbSelectionModes;
 		Standard_Integer GetNbSelectionModes();
 
@@ -495,7 +495,7 @@ bool
 
 Description
 -----------
-Returns true if this ais presentation attribute is displayed.
+Returns true if this AIS presentation attribute is displayed.
 ") IsDisplayed;
 		Standard_Boolean IsDisplayed();
 
@@ -608,7 +608,7 @@ opencascade::handle<TPrsStd_AISPresentation>
 
 Description
 -----------
-Creates or retrieves the presentation attribute on the label l, and sets the guid driver.
+Creates or retrieves the presentation attribute on the label L, and sets the GUID driver.
 ") Set;
 		static opencascade::handle<TPrsStd_AISPresentation> Set(const TDF_Label & L, const Standard_GUID & driver);
 
@@ -626,7 +626,7 @@ opencascade::handle<TPrsStd_AISPresentation>
 
 Description
 -----------
-Creates or retrieves the aispresentation attribute attached to master. the guid of the driver will be the guid of master. master is the attribute you want to display.
+Creates or retrieves the AISPresentation attribute attached to master. The GUID of the driver will be the GUID of master. master is the attribute you want to display.
 ") Set;
 		static opencascade::handle<TPrsStd_AISPresentation> Set(const opencascade::handle<TDF_Attribute> & master);
 
@@ -644,7 +644,7 @@ None
 
 Description
 -----------
-Sets the color acolor for this presentation attribute.
+Sets the color aColor for this presentation attribute.
 ") SetColor;
 		void SetColor(const Quantity_NameOfColor aColor);
 
@@ -698,7 +698,7 @@ None
 
 Description
 -----------
-Sets the material aname for this presentation attribute.
+Sets the material aName for this presentation attribute.
 ") SetMaterial;
 		void SetMaterial(const Graphic3d_NameOfMaterial aName);
 
@@ -735,7 +735,7 @@ None
 
 Description
 -----------
-Sets selection mode. if 'thetransaction' flag is off, modification of the attribute doesn't influence the transaction mechanism (the attribute doesn't participate in undo/redo because of this modification). certainly, if any other data of the attribute is modified (display mode, color, ...), the attribute will be included into undo/redo.
+Sets selection mode. If 'theTransaction' flag is OFF, modification of the attribute doesn't influence the transaction mechanism (the attribute doesn't participate in undo/redo because of this modification). Certainly, if any other data of the attribute is modified (display mode, color, ...), the attribute will be included into undo/redo.
 ") SetSelectionMode;
 		void SetSelectionMode(const Standard_Integer theSelectionMode, const Standard_Boolean theTransaction = Standard_True);
 
@@ -753,7 +753,7 @@ None
 
 Description
 -----------
-Sets the transparency value avalue for this presentation attribute. this value is 0.6 by default.
+Sets the transparency value aValue for this presentation attribute. This value is 0.6 by default.
 ") SetTransparency;
 		void SetTransparency(const Standard_Real aValue = 0.6);
 
@@ -771,7 +771,7 @@ None
 
 Description
 -----------
-Sets the width awidth for this presentation attribute.
+Sets the width aWidth for this presentation attribute.
 ") SetWidth;
 		void SetWidth(const Standard_Real aWidth);
 
@@ -802,7 +802,7 @@ None
 
 Description
 -----------
-Delete (if exist) the presentation attribute associated to the label <l>.
+Delete (if exist) the presentation attribute associated to the label <L>.
 ") Unset;
 		static void Unset(const TDF_Label & L);
 
@@ -975,7 +975,7 @@ bool
 
 Description
 -----------
-Finds the viewer attribute at the label access, the root of the data framework. calling this function can be used to initialize an ais viewer.
+Finds the viewer attribute at the label access, the root of the data framework. Calling this function can be used to initialize an AIS viewer.
 ") Find;
 		static Standard_Boolean Find(const TDF_Label & acces, opencascade::handle<TPrsStd_AISViewer> & A);
 
@@ -1026,7 +1026,7 @@ Standard_GUID
 
 Description
 -----------
-Class methods =============.
+class methods =============.
 ") GetID;
 		static const Standard_GUID & GetID();
 
@@ -1057,7 +1057,7 @@ bool
 
 Description
 -----------
-Returns true if there is an aisviewer attribute in <acces> data framework.
+returns True if there is an AISViewer attribute in <acces> Data Framework.
 ") Has;
 		static Standard_Boolean Has(const TDF_Label & acces);
 
@@ -1089,7 +1089,7 @@ opencascade::handle<TPrsStd_AISViewer>
 
 Description
 -----------
-Create and set an aisviewer at. raise an exception if has.
+create and set an AISViewer at. Raise an exception if Has.
 ") New;
 		static opencascade::handle<TPrsStd_AISViewer> New(const TDF_Label & access, const opencascade::handle<AIS_InteractiveContext> & selector);
 
@@ -1108,7 +1108,7 @@ opencascade::handle<TPrsStd_AISViewer>
 
 Description
 -----------
-Create and set an aisattribute at root label. the interactive context is build. raise an exception if has.
+create and set an AISAttribute at root label. The interactive context is build. Raise an exception if Has.
 ") New;
 		static opencascade::handle<TPrsStd_AISViewer> New(const TDF_Label & acces, const opencascade::handle<V3d_Viewer> & viewer);
 
@@ -1194,7 +1194,7 @@ None
 
 Description
 -----------
-Aisviewer methods =================.
+AISViewer methods =================.
 ") Update;
 		static void Update(const TDF_Label & acces);
 
@@ -1695,7 +1695,7 @@ bool
 
 Description
 -----------
-Updates the interactive object ais with information found on the attributes associated with the label l.
+Updates the interactive object ais with information found on the attributes associated with the label L.
 ") Update;
 		virtual Standard_Boolean Update(const TDF_Label & L, opencascade::handle<AIS_InteractiveObject> & ais);
 
@@ -1756,7 +1756,7 @@ None
 
 Description
 -----------
-Removes all drivers. returns true if the driver has been removed successfully. if this method is used, the initstandarddrivers method should be called to fill the table with standard drivers.
+Removes all drivers. Returns true if the driver has been removed successfully. If this method is used, the InitStandardDrivers method should be called to fill the table with standard drivers.
 ") Clear;
 		void Clear();
 
@@ -1788,7 +1788,7 @@ opencascade::handle<TPrsStd_DriverTable>
 
 Description
 -----------
-Returns the static table. if it does not exist, creates it and fills it with standard drivers.
+Returns the static table. If it does not exist, creates it and fills it with standard drivers.
 ") Get;
 		static opencascade::handle<TPrsStd_DriverTable> Get();
 
@@ -1819,7 +1819,7 @@ bool
 
 Description
 -----------
-Removes a driver with the given guid. returns true if the driver has been removed successfully.
+Removes a driver with the given GUID. Returns true if the driver has been removed successfully.
 ") RemoveDriver;
 		Standard_Boolean RemoveDriver(const Standard_GUID & guid);
 
@@ -1867,7 +1867,7 @@ bool
 
 Description
 -----------
-Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
+Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
 		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
@@ -1915,7 +1915,7 @@ bool
 
 Description
 -----------
-Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
+Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
 		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
@@ -1963,7 +1963,7 @@ bool
 
 Description
 -----------
-Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
+Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
 		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
@@ -2011,7 +2011,7 @@ bool
 
 Description
 -----------
-Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
+Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
 		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
@@ -2059,7 +2059,7 @@ bool
 
 Description
 -----------
-Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
+Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
 		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 
@@ -2107,7 +2107,7 @@ bool
 
 Description
 -----------
-Build the aisobject (if null) or update it. no compute is done. returns <true> if information was found and aisobject updated.
+Build the AISObject (if null) or update it. No compute is done. Returns <True> if information was found and AISObject updated.
 ") Update;
 		virtual Standard_Boolean Update(const TDF_Label & aLabel, opencascade::handle<AIS_InteractiveObject> & anAISObject);
 

@@ -194,7 +194,7 @@ None
 
 Description
 -----------
-Creates a semi-infinite domain for the curve associated to a hatching. the `first' flag means that the given point is the first one.
+Creates a semi-infinite domain for the curve associated to a hatching. The `First' flag means that the given point is the first one.
 ") HatchGen_Domain;
 		 HatchGen_Domain(const HatchGen_PointOnHatching & P, const Standard_Boolean First);
 
@@ -225,7 +225,7 @@ HatchGen_PointOnHatching
 
 Description
 -----------
-Returns the first point of the domain. the exception domainerror is raised if hasfirstpoint returns false.
+Returns the first point of the domain. The exception DomainError is raised if HasFirstPoint returns False.
 ") FirstPoint;
 		const HatchGen_PointOnHatching & FirstPoint();
 
@@ -238,7 +238,7 @@ bool
 
 Description
 -----------
-Returns true if the domain has a first point.
+Returns True if the domain has a first point.
 ") HasFirstPoint;
 		Standard_Boolean HasFirstPoint();
 
@@ -251,7 +251,7 @@ bool
 
 Description
 -----------
-Returns true if the domain has a second point.
+Returns True if the domain has a second point.
 ") HasSecondPoint;
 		Standard_Boolean HasSecondPoint();
 
@@ -264,7 +264,7 @@ HatchGen_PointOnHatching
 
 Description
 -----------
-Returns the second point of the domain. the exception domainerror is raised if hassecondpoint returns false.
+Returns the second point of the domain. The exception DomainError is raised if HasSecondPoint returns False.
 ") SecondPoint;
 		const HatchGen_PointOnHatching & SecondPoint();
 
@@ -636,7 +636,7 @@ None
 
 Description
 -----------
----purpose; creates an empty point on element.
+---Purpose; Creates an empty point on element.
 ") HatchGen_PointOnElement;
 		 HatchGen_PointOnElement();
 
@@ -723,7 +723,7 @@ bool
 
 Description
 -----------
-Tests if the point is identical to an other. that is to say: p1.myindex = p2.myindex abs (p1.myparam - p2.myparam) <= confusion p1.myposit = p2.myposit p1.mybefore = p2.mybefore p1.myafter = p2.myafter p1.mysegbeg = p2.mysegbeg p1.mysegend = p2.mysegend p1.mytype = p2.mytype.
+Tests if the point is identical to an other. That is to say: P1.myIndex = P2.myIndex Abs (P1.myParam - P2.myParam) <= Confusion P1.myPosit = P2.myPosit P1.myBefore = P2.myBefore P1.myAfter = P2.myAfter P1.mySegBeg = P2.mySegBeg P1.mySegEnd = P2.mySegEnd P1.myType = P2.myType.
 ") IsIdentical;
 		Standard_Boolean IsIdentical(const HatchGen_PointOnElement & Point, const Standard_Real Confusion);
 
@@ -855,7 +855,7 @@ bool
 
 Description
 -----------
-Tests if the point is equal to an other. a point on hatching p1 is said to be equal to an other p2 if: | p2.myparam - p1.myparam | <= confusion.
+Tests if the point is equal to an other. A point on hatching P1 is said to be equal to an other P2 if: | P2.myParam - P1.myParam | <= Confusion.
 ") IsEqual;
 		Standard_Boolean IsEqual(const HatchGen_PointOnHatching & Point, const Standard_Real Confusion);
 
@@ -874,7 +874,7 @@ bool
 
 Description
 -----------
-Tests if the point is greater than an other. a point on hatching p1 is said to be greater than an other p2 if: p1.myparam - p2.myparam > confusion.
+Tests if the point is greater than an other. A point on hatching P1 is said to be greater than an other P2 if: P1.myParam - P2.myParam > Confusion.
 ") IsGreater;
 		Standard_Boolean IsGreater(const HatchGen_PointOnHatching & Point, const Standard_Real Confusion);
 
@@ -893,7 +893,7 @@ bool
 
 Description
 -----------
-Tests if the point is lower than an other. a point on hatching p1 is said to be lower than an other p2 if: p2.myparam - p1.myparam > confusion.
+Tests if the point is lower than an other. A point on hatching P1 is said to be lower than an other P2 if: P2.myParam - P1.myParam > Confusion.
 ") IsLower;
 		Standard_Boolean IsLower(const HatchGen_PointOnHatching & Point, const Standard_Real Confusion);
 
@@ -924,7 +924,7 @@ HatchGen_PointOnElement
 
 Description
 -----------
-Returns the index-th point on element of the point. the exception outofrange is raised if index > nbpoints.
+Returns the Index-th point on element of the point. The exception OutOfRange is raised if Index > NbPoints.
 ") Point;
 		const HatchGen_PointOnElement & Point(const Standard_Integer Index);
 
@@ -942,7 +942,7 @@ None
 
 Description
 -----------
-Removes the index-th point on element of the point. the exception outofrange is raised if index > nbpoints.
+Removes the Index-th point on element of the point. The exception OutOfRange is raised if Index > NbPoints.
 ") RemPoint;
 		void RemPoint(const Standard_Integer Index);
 

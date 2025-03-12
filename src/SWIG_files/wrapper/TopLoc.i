@@ -97,7 +97,7 @@ None
 
 Description
 -----------
-Constructs a default datum3d.
+Constructs a default Datum3D.
 ") TopLoc_Datum3D;
 		 TopLoc_Datum3D();
 
@@ -115,7 +115,7 @@ None
 
 Description
 -----------
-Constructs a datum3d form a trsf from gp. an error is raised if the trsf is not a rigid transformation.
+Constructs a Datum3D form a Trsf from gp. An error is raised if the Trsf is not a rigid transformation.
 ") TopLoc_Datum3D;
 		 TopLoc_Datum3D(const gp_Trsf & T);
 
@@ -166,7 +166,7 @@ S: Standard_OStream
 
 Description
 -----------
-Writes the contents of this datum3d to the stream s.
+Writes the contents of this Datum3D to the stream S.
 ") ShallowDump;
 		void ShallowDump(std::ostream &OutValue);
 
@@ -179,7 +179,7 @@ gp_Trsf
 
 Description
 -----------
-Returns a gp_trsf which, when applied to this datum, produces the default datum.
+Returns a gp_Trsf which, when applied to this datum, produces the default datum.
 ") Transformation;
 		const gp_Trsf Transformation();
 
@@ -192,7 +192,7 @@ gp_Trsf
 
 Description
 -----------
-Returns a gp_trsf which, when applied to this datum, produces the default datum.
+Returns a gp_Trsf which, when applied to this datum, produces the default datum.
 ") Trsf;
 		const gp_Trsf Trsf();
 
@@ -227,7 +227,7 @@ None
 
 Description
 -----------
-Sets the elementary datum to <d> sets the exponent to <p>.
+Sets the elementary Datum to <D> Sets the exponent to <P>.
 ") TopLoc_ItemLocation;
 		 TopLoc_ItemLocation(const opencascade::handle<TopLoc_Datum3D> & D, const Standard_Integer P);
 
@@ -275,7 +275,7 @@ None
 
 Description
 -----------
-Constructs an empty local coordinate system object. note: a location constructed from a default datum is said to be 'empty'.
+Constructs an empty local coordinate system object. Note: A Location constructed from a default datum is said to be 'empty'.
 ") TopLoc_Location;
 		 TopLoc_Location();
 
@@ -293,7 +293,7 @@ None
 
 Description
 -----------
-Constructs the local coordinate system object defined by the transformation t. t invokes in turn, a toploc_datum3d object.
+Constructs the local coordinate system object defined by the transformation T. T invokes in turn, a TopLoc_Datum3D object.
 ") TopLoc_Location;
 		 TopLoc_Location(const gp_Trsf & T);
 
@@ -311,7 +311,7 @@ None
 
 Description
 -----------
-Constructs the local coordinate system object defined by the 3d datum d. exceptions standard_constructionerror if the transformation t does not represent a 3d coordinate system.
+Constructs the local coordinate system object defined by the 3D datum D. Exceptions Standard_ConstructionError if the transformation T does not represent a 3D coordinate system.
 ") TopLoc_Location;
 		 TopLoc_Location(const opencascade::handle<TopLoc_Datum3D> & D);
 
@@ -324,7 +324,7 @@ None
 
 Description
 -----------
-Clear myitems.
+Clear myItems.
 ") Clear;
 		void Clear();
 
@@ -342,7 +342,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns <self> / <other>.
+Returns <self> / <Other>.
 ") Divided;
 		TopLoc_Location Divided(const TopLoc_Location & Other);
 
@@ -376,7 +376,7 @@ opencascade::handle<TopLoc_Datum3D>
 
 Description
 -----------
-Returns the first elementary datum of the location. use the nextlocation function recursively to access the other data comprising this location. exceptions standard_nosuchobject if this location is empty.
+Returns the first elementary datum of the Location. Use the NextLocation function recursively to access the other data comprising this location. Exceptions Standard_NoSuchObject if this location is empty.
 ") FirstDatum;
 		const opencascade::handle<TopLoc_Datum3D> & FirstDatum();
 
@@ -389,7 +389,7 @@ int
 
 Description
 -----------
-Returns the power elevation of the first elementary datum. exceptions standard_nosuchobject if this location is empty.
+Returns the power elevation of the first elementary datum. Exceptions Standard_NoSuchObject if this location is empty.
 ") FirstPower;
 		Standard_Integer FirstPower();
 
@@ -402,7 +402,8 @@ size_t
 
 Description
 -----------
-Returns a hashed value for this local coordinate system. this value is used, with map tables, to store and retrieve the object easily return a computed hash code.
+Returns a hashed value for this local coordinate system. This value is used, with map tables, to store and retrieve the object easily 
+Return: a computed hash code.
 ") HashCode;
 		size_t HashCode();
 
@@ -415,7 +416,7 @@ None
 
 Description
 -----------
-Resets this location to the identity transformation.
+Resets this location to the Identity transformation.
 ") Identity;
 		void Identity();
 
@@ -428,7 +429,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns the inverse of <self>. //! <self> * inverted() is an identity.
+Returns the inverse of <self>. //! <self> * Inverted() is an Identity.
 ") Inverted;
 		TopLoc_Location Inverted();
 
@@ -446,7 +447,7 @@ bool
 
 Description
 -----------
-Returns true if this location and the location other do not have the same elementary data, i.e. do not contain the same series of toploc_datum3d and respective powers. this method is an alias for operator !=.
+Returns true if this location and the location Other do not have the same elementary data, i.e. do not contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator !=.
 ") IsDifferent;
 		Standard_Boolean IsDifferent(const TopLoc_Location & Other);
 
@@ -464,7 +465,7 @@ bool
 
 Description
 -----------
-Returns true if this location and the location other have the same elementary data, i.e. contain the same series of toploc_datum3d and respective powers. this method is an alias for operator ==.
+Returns true if this location and the location Other have the same elementary data, i.e. contain the same series of TopLoc_Datum3D and respective powers. This method is an alias for operator ==.
 ") IsEqual;
 		Standard_Boolean IsEqual(const TopLoc_Location & Other);
 
@@ -477,7 +478,7 @@ bool
 
 Description
 -----------
-Returns true if this location is equal to the identity transformation.
+Returns true if this location is equal to the Identity transformation.
 ") IsIdentity;
 		Standard_Boolean IsIdentity();
 
@@ -495,7 +496,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns <self> * <other>, the elementary datums are concatenated.
+Returns <self> * <Other>, the elementary datums are concatenated.
 ") Multiplied;
 		TopLoc_Location Multiplied(const TopLoc_Location & Other);
 
@@ -508,7 +509,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns a location representing <self> without the first datum. we have the relation: //! <self> = nextlocation() * firstdatum() ^ firstpower() exceptions standard_nosuchobject if this location is empty.
+Returns a Location representing <self> without the first datum. We have the relation: //! <self> = NextLocation() * FirstDatum() ^ FirstPower() Exceptions Standard_NoSuchObject if this location is empty.
 ") NextLocation;
 		const TopLoc_Location & NextLocation();
 
@@ -526,7 +527,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns me at the power <pwr>. if <pwr> is zero returns identity. <pwr> can be lower than zero (usual meaning for powers).
+Returns me at the power <pwr>. If <pwr> is zero returns Identity. <pwr> can be lower than zero (usual meaning for powers).
 ") Powered;
 		TopLoc_Location Powered(const Standard_Integer pwr);
 
@@ -544,7 +545,7 @@ TopLoc_Location
 
 Description
 -----------
-Returns <other>.inverted() * <self>.
+Returns <Other>.Inverted() * <self>.
 ") Predivided;
 		TopLoc_Location Predivided(const TopLoc_Location & Other);
 
@@ -743,7 +744,7 @@ None
 
 Description
 -----------
-Creates an empty list.
+Creates an empty List.
 ") TopLoc_SListOfItemLocation;
 		 TopLoc_SListOfItemLocation();
 
@@ -762,7 +763,7 @@ None
 
 Description
 -----------
-Creates a list with <anitem> as value and <atail> as tail.
+Creates a List with <anItem> as value and <aTail> as tail.
 ") TopLoc_SListOfItemLocation;
 		 TopLoc_SListOfItemLocation(const TopLoc_ItemLocation & anItem, const TopLoc_SListOfItemLocation & aTail);
 
@@ -780,7 +781,7 @@ None
 
 Description
 -----------
-Creates a list from an other one. the lists are shared.
+Creates a list from an other one. The lists are shared.
 ") TopLoc_SListOfItemLocation;
 		 TopLoc_SListOfItemLocation(const TopLoc_SListOfItemLocation & Other);
 
@@ -816,7 +817,7 @@ TopLoc_SListOfItemLocation
 
 Description
 -----------
-Sets a list from an other one. the lists are shared. the list itself is returned.
+Sets a list from an other one. The lists are shared. The list itself is returned.
 ") Assign;
 		TopLoc_SListOfItemLocation & Assign(const TopLoc_SListOfItemLocation & Other);
 
@@ -847,7 +848,7 @@ None
 
 Description
 -----------
-Replaces the list by a list with <anitem> as value and the list <self> as tail.
+Replaces the list by a list with <anItem> as Value and the list <self> as tail.
 ") Construct;
 		void Construct(const TopLoc_ItemLocation & anItem);
 
@@ -860,7 +861,7 @@ bool
 
 Description
 -----------
-Returne true if this list is empty.
+Return true if this list is empty.
 ") IsEmpty;
 		Standard_Boolean IsEmpty();
 
@@ -873,7 +874,7 @@ bool
 
 Description
 -----------
-Returns true if the iterator has a current value. this is !isempty().
+Returns True if the iterator has a current value. This is !IsEmpty().
 ") More;
 		Standard_Boolean More();
 
@@ -886,7 +887,7 @@ None
 
 Description
 -----------
-Moves the iterator to the next object in the list. if the iterator is empty it will stay empty. this is totail().
+Moves the iterator to the next object in the list. If the iterator is empty it will stay empty. This is ToTail().
 ") Next;
 		void Next();
 
@@ -899,7 +900,7 @@ TopLoc_SListOfItemLocation
 
 Description
 -----------
-Returns the current tail of the list. on an empty list the tail is the list itself.
+Returns the current tail of the list. On an empty list the tail is the list itself.
 ") Tail;
 		const TopLoc_SListOfItemLocation & Tail();
 
@@ -925,7 +926,7 @@ TopLoc_ItemLocation
 
 Description
 -----------
-Returns the current value of the list. an error is raised if the list is empty.
+Returns the current value of the list. An error is raised if the list is empty.
 ") Value;
 		const TopLoc_ItemLocation & Value();
 
